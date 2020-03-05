@@ -3,13 +3,34 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev --port=3001",
     "build": "next build",
     "start": "next start"
   },
   "dependencies": {
-    "next": "9.2.2",
-    "react": "16.13.0",
-    "react-dom": "16.13.0"
+    "@material-ui/core": "^4.5.0",
+    "@material-ui/icons": "^4.4.3",
+    "@material-ui/lab": "^4.0.0-alpha.32",
+    "@material-ui/styles": "^4.5.0",
+    "@svgr/webpack": "^5.1.0",
+    "clsx": "^1.0.4",
+    "isomorphic-fetch": "^2.2.1",
+    "lodash": "^4.17.15",
+    "lunr": "^2.3.8",
+    "next": "^9.2.1",
+    "prismjs": "^1.17.1",
+    "raw-loader": "^4.0.0",
+    "react": "16.12.0",
+    "react-dom": "16.12.0",
+    "react-github-buttons": "^0.4.0",
+    "react-markdown": "^4.2.2",
+    "react-resizable": "^1.10.1",
+    "react-syntax-highlighter": "^12.2.1",
+    "xdn-next": "0.7.2",
+    "xdn-router": "0.7.2"
+  },
+  "devDependencies": {
+    "prettier": "^1.19.1",
+    "xdn": "0.0.7"
   }
 }

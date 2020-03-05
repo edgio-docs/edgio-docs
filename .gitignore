@@ -18,8 +18,13 @@
 # misc
 .DS_Store
 .env*
+/.idea/
 
 # debug
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+.xdn
+.yalc
+yalc.lock

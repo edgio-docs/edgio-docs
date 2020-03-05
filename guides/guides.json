@@ -1,0 +1,12 @@
+[
+  {
+    "text": "Guides",
+    "items": [
+      {
+        "text": "Getting Started",
+        "as": "/guides/getting_started",
+        "href": "/guides/[...guide]"
+      }
+    ]
+  }
+]

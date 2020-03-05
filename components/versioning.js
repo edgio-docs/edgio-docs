@@ -28,7 +28,7 @@ export default function useVersioning() {
       if (as === '/') {
         return '/'
       }
-      const pathWithoutVersion = as.replace(/\/v7.\d*.\d*\//, '/')
+      const pathWithoutVersion = as.replace(/\/v\d.\d*.\d*\//, '/')
       const routeWithoutModule = href.replace(/\/\[.*]/, '')
       return `${routeWithoutModule}${
         isLatestVersion(version) ? '' : `/${version}`

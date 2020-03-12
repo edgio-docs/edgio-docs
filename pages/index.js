@@ -8,9 +8,9 @@ import Features from '../components/home/Features'
 import getBaseUrl from '../components/utils/getBaseUrl'
 import ApiLink from '../components/ApiLink'
 import Link from 'next/link'
-import ReactIcon from '../components/icons/React.svg'
-import VueIcon from '../components/icons/Vue.svg'
-import AngularIcon from '../components/icons/Angular.svg'
+import ReactIcon from '../components/icons/react.svg'
+import VueIcon from '../components/icons/vue.svg'
+import AngularIcon from '../components/icons/angular.svg'
 
 const useStyles = makeStyles(theme => ({
   hero: {

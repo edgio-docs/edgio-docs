@@ -3,14 +3,18 @@ import React from 'react'
 import Head from 'next/head'
 import Nav from '../components/nav'
 import PageWrapper from '../components/PageWrapper'
-import { Typography, makeStyles, Container } from '@material-ui/core'
+import { Typography, makeStyles, Container, Card, CardContent, Grid, Paper, CardActions, CardActionArea } from '@material-ui/core'
 import Features from '../components/home/Features'
 import getBaseUrl from '../components/utils/getBaseUrl'
 import ApiLink from '../components/ApiLink'
+import Link from 'next/link'
+import ReactIcon from '../components/icons/React.svg'
+import VueIcon from '../components/icons/Vue.svg'
+import AngularIcon from '../components/icons/Angular.svg'
 
 const useStyles = makeStyles(theme => ({
   hero: {
-    paddingTop: 30,
+    paddingTop: theme.spacing(15),
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
@@ -31,6 +35,38 @@ const useStyles = makeStyles(theme => ({
     border: `1px solid ${theme.palette.divider}`,
     borderRadius: 5,
   },
+
+  cardActionArea: {
+    flex: 1,
+  },
+
+  frameworks: {
+    marginTop: theme.spacing(4),
+  },
+
+  framework: {
+    border: `1px solid ${theme.palette.divider}`,
+    width: 250,
+    margin: 15,
+    height: 200,
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    padding: theme.spacing(2),
+    '&:hover': {
+      boxShadow: theme.shadows[8]
+    }
+  },
+
+  frameworkText: {
+    display: 'flex',
+    justifyContent: 'center',
+  },
+
+  icon: {
+    flex: 1,
+    padding: theme.spacing(2),
+  },
 }))
 
 const Home = ({ navData }) => {
@@ -42,15 +78,36 @@ const Home = ({ navData }) => {
       </Head>
       <div className={classes.hero}>
         <Typography variant="h1" style={{ margin: '0.5em 0' }}>
-         Moovweb XDN
+          Moovweb XDN
         </Typography>
         <Typography variant="h2" style={{ maxWidth: 800 }}>
-          Moovweb's XDN is an ultra-fast, scalable, cloud-based platform for hosting modern web applications. The XDN allows you to control powerful caching and routing capabilities at the network edge via JavaScript code.
+          <div style={{ position: 'relative' }}>Impossibly fast infrastructure for edge PWAs.</div>
         </Typography>
       </div>
-      <div style={{ display: 'flex', justifyContent: 'center', margin: 20 }}>
-        {/*<code className={classes.gettingStarted}>$ npm create react-storefront myapp --yes</code>*/}
-      </div>
+      <Grid container className={classes.frameworks}>
+        <Grid item xs={12}>
+          <Grid container justify="center" spacing={2}>
+            <Grid item>
+              <Paper className={classes.framework} elevation={0}>
+                <ReactIcon className={classes.icon} />
+                <Typography className={classes.frameworkText}>Get started with Next.js</Typography>
+              </Paper>
+            </Grid>
+            <Grid item>
+              <Paper className={classes.framework} elevation={0}>
+                <VueIcon className={classes.icon} />
+                <Typography className={classes.frameworkText}>Get started with Nuxt.js</Typography>
+              </Paper>
+            </Grid>
+            <Grid item>
+              <Paper className={classes.framework} elevation={0}>
+                <AngularIcon className={classes.icon} />
+                <Typography className={classes.frameworkText}>Get started with Angular</Typography>
+              </Paper>
+            </Grid>
+          </Grid>
+        </Grid>
+      </Grid>
       <Container maxWidth="md">
         <Features />
       </Container>

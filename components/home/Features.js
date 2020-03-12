@@ -10,7 +10,6 @@ export default function Features() {
 
   return (
     <Grid container className={classes.root}>
-      Docs coming soon!
     </Grid>
   )
 }

@@ -9,6 +9,7 @@ import { Typography } from '@material-ui/core'
 import NextLink from 'next/link'
 import Logo from './Logo'
 import useVersioning from './versioning'
+import Icon from './icons/Icon'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -26,12 +27,16 @@ const useStyles = makeStyles(theme => ({
   },
   link: {
     margin: theme.spacing(1, 0, 0, 0),
-    display: 'block',
+    display: 'flex',
+    flexDirection: 'row',
     textDecoration: 'none',
     color: theme.palette.text.primary,
     '&:hover': {
       textDecoration: 'underline',
     },
+  },
+  icon: {
+    marginRight: theme.spacing(0.5)
   },
   treeNodeSelected: {
     '& span': {
@@ -92,6 +97,7 @@ export default function Nav({ navData, tree, aboveAdornments, currentRoute }) {
   const renderLink = (item, contents) => (
     <Link
       as={createUrl(item)}
+      icon={item.icon}
       href={item.href}
       key={item.as}
       className={clsx(classes.link, item.selected && classes.treeNodeSelected)}
@@ -209,12 +215,13 @@ Nav.defaultProps = {
   navData: [],
 }
 
-function Link({ children, className, ...props }) {
+function Link({ children, icon, className, ...props }) {
   const classes = useStyles()
 
   return (
     <NextLink {...props}>
       <a className={clsx(className, classes.link)}>
+        {icon && <Icon classes={{ root: classes.icon }} type={icon} />}
         <Typography component="span">{children}</Typography>
       </a>
     </NextLink>

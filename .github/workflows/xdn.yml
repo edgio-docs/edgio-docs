@@ -1,0 +1,29 @@
+name: Deploy to XDN
+on: [push]
+jobs:
+  deploy-to-xdn:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Extract branch name
+        shell: bash
+        run: echo "::set-env name=BRANCH_NAME::$(echo ${GITHUB_REF#refs/heads/} | sed 's/\//_/g')"
+      - uses: actions/checkout@v1
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 12
+      - name: Cache node modules
+        uses: actions/cache@v1
+        env:
+          cache-name: cache-node-modules
+        with:
+          path: ~/.npm # npm cache files are stored in `~/.npm` on Linux/macOS
+          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-build-${{ env.cache-name }}-
+            ${{ runner.os }}-build-
+            ${{ runner.os }}-
+      - run: npm ci
+      - name: Deploy to XDN
+        run: npm run deploy -- --branch=$BRANCH_NAME --token=$xdn_deploy_token ${{env.BRANCH_NAME == 'master' && '--environment=production'}}
+        env:
+          xdn_deploy_token: ${{secrets.xdn_deploy_token}}

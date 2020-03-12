@@ -3,8 +3,96 @@
     "text": "Guides",
     "items": [
       {
-        "text": "Getting Started",
-        "as": "/guides/getting_started",
+        "text": "Overview",
+        "as": "/guides/overview",
+        "href": "/guides/[...guide]"
+      },
+      {
+        "text": "Deploying",
+        "as": "/guides/overview",
+        "href": "/guides/[...guide]"
+      },
+      {
+        "text": "Teams",
+        "as": "/guides/environments",
+        "href": "/guides/[...guide]"
+      },
+      {
+        "text": "Environments",
+        "as": "/guides/environments",
+        "href": "/guides/[...guide]"
+      },
+      {
+        "text": "Routing",
+        "as": "/guides/routing",
+        "href": "/guides/[...guide]"
+      },
+      {
+        "text": "Caching",
+        "as": "/guides/caching",
+        "href": "/guides/[...guide]"
+      },
+      {
+        "text": "Prefetching",
+        "as": "/guides/caching",
+        "href": "/guides/[...guide]"
+      },
+      {
+        "text": "Domains and DNS",
+        "as": "/guides/domains",
+        "href": "/guides/[...guide]"
+      },
+      {
+        "text": "Split Testing",
+        "as": "/guides/caching",
+        "href": "/guides/[...guide]"
+      },
+      {
+        "text": "CLI",
+        "as": "/guides/cli",
+        "href": "/guides/[...guide]"
+      }
+    ]
+  },
+  {
+    "text": "Web Frameworks",
+    "items": [
+      {
+        "text": "Next.js",
+        "icon": "react",
+        "as": "/guides/next",
+        "href": "/guides/[...guide]"
+      },
+      {
+        "text": "Nuxt.js",
+        "icon": "vue",
+        "as": "/guides/next",
+        "href": "/guides/[...guide]"
+      },
+      {
+        "text": "Angular",
+        "icon": "angular",
+        "as": "/guides/next",
+        "href": "/guides/[...guide]"
+      }
+    ]
+  },
+  {
+    "text": "Reference",
+    "items": [
+      {
+        "text": "Whitelisting IPs",
+        "as": "/guides/next",
+        "href": "/guides/[...guide]"
+      },
+      {
+        "text": "Status Codes",
+        "as": "/guides/next",
+        "href": "/guides/[...guide]"
+      },
+      {
+        "text": "Response Headers",
+        "as": "/guides/next",
         "href": "/guides/[...guide]"
       }
     ]

@@ -16,6 +16,8 @@ const styles = theme => ({
     flex: 1,
     overflowX: 'auto',
     paddingLeft: 300,
+    margin: 'auto',
+    maxWidth: theme.breakpoints.values.lg
   },
 })
 

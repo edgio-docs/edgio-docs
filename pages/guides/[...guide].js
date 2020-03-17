@@ -41,8 +41,6 @@ Guide.getInitialProps = async function({ req, query, version, versions }) {
   const baseUrl = getBaseUrl(req)
   let { guide } = query
 
-  console.log('guide', guide)
-
   if (Array.isArray(guide)) {
     if (guide.length > 1) {
       version = guide[0]

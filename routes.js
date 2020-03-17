@@ -1,5 +1,5 @@
-const Router = require('xdn-router/Router')
-const createNextPlugin = require('xdn-next/router/createNextPlugin')
+const Router = require('@xdn/router/Router')
+const createNextPlugin = require('@xdn/next/router/createNextPlugin')
 
 module.exports = app => {
   const { nextMiddleware } = createNextPlugin(app)

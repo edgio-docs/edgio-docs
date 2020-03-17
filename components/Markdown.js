@@ -8,6 +8,7 @@ import { Link as LinkIcon } from '@material-ui/icons'
 const useStyles = makeStyles(theme => ({
   heading: {
     marginTop: '1em',
+    marginBottom: '0.5em',
     display: 'flex',
     alignItems: 'center',
     fontWeight: '500',
@@ -57,6 +58,10 @@ const useStyles = makeStyles(theme => ({
       color: '#000',
       fontWeight: 500,
     },
+    '& img': {
+      maxWidth: theme.breakpoints.values.md,
+      boxShadow: theme.shadows[7]
+    }
   },
 }))
 

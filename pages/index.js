@@ -3,7 +3,17 @@ import React from 'react'
 import Head from 'next/head'
 import Nav from '../components/nav'
 import PageWrapper from '../components/PageWrapper'
-import { Typography, makeStyles, Container, Card, CardContent, Grid, Paper, CardActions, CardActionArea } from '@material-ui/core'
+import {
+  Typography,
+  makeStyles,
+  Container,
+  Card,
+  CardContent,
+  Grid,
+  Paper,
+  CardActions,
+  CardActionArea,
+} from '@material-ui/core'
 import Features from '../components/home/Features'
 import getBaseUrl from '../components/utils/getBaseUrl'
 import ApiLink from '../components/ApiLink'
@@ -53,9 +63,10 @@ const useStyles = makeStyles(theme => ({
     flexDirection: 'column',
     alignItems: 'center',
     padding: theme.spacing(2),
+    cursor: 'pointer',
     '&:hover': {
-      boxShadow: theme.shadows[8]
-    }
+      boxShadow: theme.shadows[8],
+    },
   },
 
   frameworkText: {
@@ -88,22 +99,34 @@ const Home = ({ navData }) => {
         <Grid item xs={12}>
           <Grid container justify="center" spacing={2}>
             <Grid item>
-              <Paper className={classes.framework} elevation={0}>
-                <ReactIcon className={classes.icon} />
-                <Typography className={classes.frameworkText}>Get started with Next.js</Typography>
-              </Paper>
+              <Link href="/guides/[...guide]" as="/guides/next">
+                <Paper className={classes.framework} elevation={0}>
+                  <ReactIcon className={classes.icon} />
+                  <Typography className={classes.frameworkText}>
+                    Get started with Next.js
+                  </Typography>
+                </Paper>
+              </Link>
             </Grid>
             <Grid item>
-              <Paper className={classes.framework} elevation={0}>
-                <VueIcon className={classes.icon} />
-                <Typography className={classes.frameworkText}>Get started with Nuxt.js</Typography>
-              </Paper>
+              <Link href="/guides/[...guide]" as="/guides/nuxt">
+                <Paper className={classes.framework} elevation={0}>
+                  <VueIcon className={classes.icon} />
+                  <Typography className={classes.frameworkText}>
+                    Get started with Nuxt.js
+                  </Typography>
+                </Paper>
+              </Link>
             </Grid>
             <Grid item>
-              <Paper className={classes.framework} elevation={0}>
-                <AngularIcon className={classes.icon} />
-                <Typography className={classes.frameworkText}>Get started with Angular</Typography>
-              </Paper>
+              <Link href="/guides/[...guide]" as="/guides/angular">
+                <Paper className={classes.framework} elevation={0}>
+                  <AngularIcon className={classes.icon} />
+                  <Typography className={classes.frameworkText}>
+                    Get started with Angular
+                  </Typography>
+                </Paper>
+              </Link>
             </Grid>
           </Grid>
         </Grid>

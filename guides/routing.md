@@ -1,6 +1,6 @@
 # Routing
 
-The `@xdn/router` package provides a JavaScript API for controlling routing and caching from your code base rather than a CDN web portal.  Using this "CDN-as-Code" approach allows this vital routing logic to be properly tested, reviewed, and version controlled, just like the rest of your application code. 
+The `@xdn/core` package provides a JavaScript API for controlling routing and caching from your code base rather than a CDN web portal. Using this "CDN-as-Code" approach allows this vital routing logic to be properly tested, reviewed, and version controlled, just like the rest of your application code.
 
 Using the Router, you can:
 
@@ -15,11 +15,11 @@ Using the Router, you can:
 
 To define routes for the Moovweb XDN, create a `routes.js` file in the root of your project. You can override the default path to the router by setting the `routes` key in `xdn.config.js`.
 
-The `routes.js` file should export an instance of `@xdn/router/Router`:
+The `routes.js` file should export an instance of `@xdn/core/Router`:
 
 ```js
 // routes.js
-const Router = require('@xdn/router/Router')
+const Router = require('@xdn/core/Router')
 
 module.exports = new Router()
 ```
@@ -30,7 +30,7 @@ Declare routes using the `match` method:
 
 ```js
 // routes.js
-const Router = require('@xdn/router/Router')
+const Router = require('@xdn/core/Router')
 const router = new Router()
 
 router.match('/some-path', edge => {
@@ -67,9 +67,9 @@ Match can either take a URL path, or an object which allows you to match based o
 router.match(
   {
     path: '/some-path', // value is route-pattern syntax
-    method: 'GET|POST', // value is a regular expression
-    cookies: { currency: '^(usd)$' }, // keys are cookie names, values are regular expressions
-    headers: { 'x-moov-device': '^desktop$' }, // keys are header names, values are regular expressions
+    method: /GET|POST/i, // value is a regular expression
+    cookies: { currency: /^(usd)$/i }, // keys are cookie names, values are regular expressions
+    headers: { 'x-moov-device': /^desktop$/i }, // keys are header names, values are regular expressions
   },
   edge => {},
 )
@@ -87,7 +87,7 @@ The proxy method allows you to route the request to an upstream site configured 
 
 | Name         | Type   | Description                                                                                                                           |
 | ------------ | ------ | ------------------------------------------------------------------------------------------------------------------------------------- |
-| backend      | String | The name of an backend configured in xdn.config.js to which the request should be routed                                             |
+| backend      | String | The name of an backend configured in xdn.config.js to which the request should be routed                                              |
 | options      | Object | An object with the following params                                                                                                   |
 | options.path | String | The path to request from the upstream site. You can reference params in your route pattern using `{variable}`. See the example below. |
 
@@ -145,8 +145,8 @@ The render method allows you to return a server-side rendered HTML response.
 | params   | Object                                                                                 | The query and path params as key/value pairs |
 
 ```js
-const Router = require('@xdn/router/Router')
-const createNextPlugin = require('@xdn/next/router/createNextPlugin')
+const { Router } = require('@xdn/core/router')
+const { createNextPlugin } = require('@xdn/next')
 
 module.exports = app => {
   const { renderNext, nextMiddleware } = createNextPlugin(app)
@@ -172,8 +172,8 @@ Renders a response using a specific page component. Use this function to declare
 
 ```js
 // routes.js
-const Router = require('@xdn/router/Router')
-const createNextPlugin = require('@xdn/next/router/createNextPlugin')
+const { Router } = require('@xdn/core/router')
+const { createNextPlugin } = require('@xdn/next')
 
 module.exports = app => {
   const { renderNext, nextMiddleware } = createNextPlugin(app)
@@ -186,7 +186,7 @@ module.exports = app => {
 }
 ```
 
-#### renderNextJs(request, response, params, page)
+#### renderNext(request, response, params, page)
 
 | Name     | Type                                                                                   | Description                                                                                                                                                                                                                                                                                                                                                    |
 | -------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -201,8 +201,8 @@ A middleware that delegates routing to next.js's conventional routing based on d
 
 ```js
 // routes.js
-const Router = require('@xdn/router/Router')
-const createNextPlugin = require('@xdn/next/router/createNextPlugin')
+const { Router } = require('@xdn/core/router')
+const { createNextPlugin } = require('@xdn/next')
 
 module.exports = app => {
   const { renderNext, nextMiddleware } = createNextPlugin(app)
@@ -227,12 +227,44 @@ route.match('/static/:file', async ({ serveStatic }) => {
 })
 ```
 
+## cache({ browser, edge })
+
+Controls caching both in the browser and at the edge
+
+```js
+router.match('/some/path' ({ cache }) => {
+  cache({
+    browser: {
+      // Sets the cache-control: maxage=n header sent to the browser.  To prevent the browser from caching this route
+      // set maxAgeSeconds: 0
+      maxAgeSeconds: 0,
+
+      // Sends a non-standard header `x-sw-cache-control: n` that you can use to control caching your service worker.
+      // Note that service workers do not understand this header by default so would you need to add code to your service
+      // worker to support it
+      serviceWorkerSeconds: 60 * 60
+    },
+    edge: {
+      // Sets the TTL for a response in the XDN's edge cache
+      maxAgeSeconds: 60 * 60 * 24
+
+      // Sets the amount of time a stale response will be served from the cache.  When a stale response is sent, the XDN
+      // will simultaneously fetch a new response to serve subsequent requests.
+      // Using stale-while-revalidate helps raise your effective cache hit rate to near 100%.
+      staleWhileRevalidateSeconds: 60 * 60 // serve stale responses for up to 1 hour while fetching a new response
+    }
+  })
+})
+```
+
+[See the Caching guide for more information.](./caching)
+
 ## Fallback
 
 You can provide a fallback route to handle requests that don't match any explicit route. Generally apps use Next.js's default routing to respond to unmatched requests:
 
 ```js
-router.fallback(({ render }) => render(renderNextJs)))
+router.fallback(({ proxy }) => proxy('legacy')))
 ```
 
 The `fallback` route should be the last route.
@@ -289,11 +321,11 @@ Removes a response header returned from the backend
 
 ## Full Example
 
-This example shows typical usage of @xdn/router, including serving a service worker, next.js routes (varnity and conventional routes), and falling back to a legacy backend.
+This example shows typical usage of @xdn/core, including serving a service worker, next.js routes (varnity and conventional routes), and falling back to a legacy backend.
 
 ```js
-const Router = require('@xdn/router/Router')
-const createNextPlugin = require('@xdn/next/router/createNextPlugin')
+const { Router } = require('@xdn/core/router')
+const { createNextPlugin } = require('@xdn/next')
 
 module.exports = app => {
   const { renderNext, nextMiddleware } = createNextPlugin(app)

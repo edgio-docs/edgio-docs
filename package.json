@@ -13,13 +13,13 @@
     "@material-ui/lab": "^4.0.0-alpha.32",
     "@material-ui/styles": "^4.5.0",
     "@svgr/webpack": "^5.1.0",
-    "@xdn/next": "^1.1.6",
-    "@xdn/router": "^1.1.6",
+    "@xdn/core": "^1.2.2",
+    "@xdn/next": "^1.2.2",
     "clsx": "^1.0.4",
     "isomorphic-fetch": "^2.2.1",
     "lodash": "^4.17.15",
     "lunr": "^2.3.8",
-    "next": "^9.2.1",
+    "next": "^9.3.1",
     "prismjs": "^1.17.1",
     "raw-loader": "^4.0.0",
     "react": "16.12.0",
@@ -30,7 +30,7 @@
     "react-syntax-highlighter": "^12.2.1"
   },
   "devDependencies": {
-    "prettier": "^1.19.1",
-    "@xdn/cli": "^1.0.0"
+    "@xdn/cli": "^1.2.2",
+    "prettier": "^1.19.1"
   }
 }

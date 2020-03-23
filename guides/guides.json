@@ -34,7 +34,7 @@
       },
       {
         "text": "Prefetching",
-        "as": "/guides/caching",
+        "as": "/guides/prefetching",
         "href": "/guides/[...guide]"
       },
       {
@@ -81,8 +81,8 @@
     "text": "Reference",
     "items": [
       {
-        "text": "Whitelisting IPs",
-        "as": "/guides/ips",
+        "text": "xdn.config.js",
+        "as": "/guides/xdn_config",
         "href": "/guides/[...guide]"
       },
       {

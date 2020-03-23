@@ -1,6 +1,6 @@
 import React from 'react'
 import { PrismLight as SyntaxHighlighter } from 'react-syntax-highlighter'
-import { prism } from 'react-syntax-highlighter/dist/cjs/styles/prism'
+import { atomDark as prism } from 'react-syntax-highlighter/dist/cjs/styles/prism'
 import { makeStyles } from '@material-ui/core/styles'
 import jsx from 'react-syntax-highlighter/dist/cjs/languages/prism/jsx'
 
@@ -19,7 +19,7 @@ const useStyles = makeStyles(theme => ({
     '& pre': {
       borderRadius: 3,
       border: `1px solid ${theme.palette.divider}`,
-    }
+    },
   },
 }))
 

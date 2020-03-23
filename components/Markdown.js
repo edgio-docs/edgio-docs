@@ -4,6 +4,7 @@ import ReactMarkdown from 'react-markdown'
 import { makeStyles } from '@material-ui/core/styles'
 import Code from './Code'
 import { Link as LinkIcon } from '@material-ui/icons'
+import NextLink from 'next/link'
 
 const useStyles = makeStyles(theme => ({
   heading: {
@@ -44,6 +45,7 @@ const useStyles = makeStyles(theme => ({
       padding: '3px 5px',
       borderRadius: '3px',
       fontSize: '12px',
+      whiteSpace: 'nowrap',
     },
     '& pre code, & h1 code': {
       backgroundColor: 'initial',
@@ -60,8 +62,8 @@ const useStyles = makeStyles(theme => ({
     },
     '& img': {
       maxWidth: theme.breakpoints.values.md,
-      boxShadow: theme.shadows[7]
-    }
+      boxShadow: theme.shadows[7],
+    },
   },
 }))
 
@@ -83,13 +85,11 @@ export default function Markdown({ source }) {
 
 function Link({ href, children }) {
   return (
-    <a
-      href={href}
-      target={href.startsWith('#') || href.startsWith('/') ? '_self' : '_blank'}
-      rel="noopener noreferrer"
-    >
-      {children}
-    </a>
+    <NextLink href="/guides/[...guide]" as={href}>
+      <a target={href.startsWith('http:') ? '_blank' : '_self'} rel="noopener noreferrer">
+        {children}
+      </a>
+    </NextLink>
   )
 }
 

@@ -5,7 +5,8 @@
   "scripts": {
     "build": "next build",
     "start": "next dev --port=4000",
-    "deploy": "xdn deploy platform"
+    "deploy": "xdn deploy platform",
+    "xdn:upgrade": "npm i --save @xdn/core@latest @xdn/next@latest @xdn/cli@latest"
   },
   "dependencies": {
     "@material-ui/core": "^4.5.0",
@@ -13,8 +14,8 @@
     "@material-ui/lab": "^4.0.0-alpha.32",
     "@material-ui/styles": "^4.5.0",
     "@svgr/webpack": "^5.1.0",
-    "@xdn/core": "^1.2.3",
-    "@xdn/next": "^1.2.3",
+    "@xdn/core": "^1.2.6",
+    "@xdn/next": "^1.2.6",
     "clsx": "^1.0.4",
     "isomorphic-fetch": "^2.2.1",
     "lodash": "^4.17.15",
@@ -30,7 +31,7 @@
     "react-syntax-highlighter": "^12.2.1"
   },
   "devDependencies": {
-    "@xdn/cli": "^1.2.3",
+    "@xdn/cli": "^1.2.6",
     "prettier": "^1.19.1"
   }
 }

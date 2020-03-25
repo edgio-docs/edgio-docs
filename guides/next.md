@@ -96,7 +96,7 @@ module.exports = app => {
 ### Caching
 
 The easiest way to add edge caching to your next.js app is to add caching routes before the middleware.  For example, 
-imaging you have `/pages/c/[categoryId].js`:
+imagine you have `/pages/c/[categoryId].js`:
 
 
 ```js
@@ -104,7 +104,8 @@ new Router()
   .match('/pages/c/:categoryId', async ({ cache }) => {
     cache({
       browser: {
-        maxAgeSeconds: 0
+        maxAgeSeconds: 0,
+        serviceWorkerSeconds: 60 * 60 * 24,
       },
       edge: {
         maxAgeSeconds: 60 * 60 * 24,

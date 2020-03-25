@@ -24,7 +24,7 @@ module.exports = {
 
 This will automatically add all of the required dependencies and files to your project. These include:
 
-- The `@xdn/router` package
+- The `@xdn/core` package
 - The `@xdn/next` package
 - `xdn.config.js`
 - `routes.js` - A default routes file that sends all requests to `next.js`. Update this file to add caching or proxy some URLs to a different origin.

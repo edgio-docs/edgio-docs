@@ -14,8 +14,8 @@
     "@material-ui/lab": "^4.0.0-alpha.32",
     "@material-ui/styles": "^4.5.0",
     "@svgr/webpack": "^5.1.0",
-    "@xdn/core": "^1.2.6",
-    "@xdn/next": "^1.2.6",
+    "@xdn/core": "^1.5.2",
+    "@xdn/next": "^1.5.2",
     "clsx": "^1.0.4",
     "isomorphic-fetch": "^2.2.1",
     "lodash": "^4.17.15",
@@ -31,7 +31,7 @@
     "react-syntax-highlighter": "^12.2.1"
   },
   "devDependencies": {
-    "@xdn/cli": "^1.2.6",
+    "@xdn/cli": "^1.5.2",
     "prettier": "^1.19.1"
   }
 }

@@ -24,5 +24,4 @@ jobs:
             ${{ runner.os }}-
       - run: npm ci
       - name: Deploy to XDN
-        run: npm run deploy -- --branch=$BRANCH_NAME --token=${{secrets.xdn_deploy_token}} ${{env.BRANCH_NAME == 'master' && '--environment=production'}}
-        
+        run: npm run deploy -- --branch=$BRANCH_NAME --token=${{secrets.xdn_deploy_token}} ${{env.BRANCH_NAME == 'master' && '--environment=production' || '--environment=default'}}

@@ -1,5 +1,12 @@
-"use strict";
+'use strict'
 
 // This file was automatically added by xdn deploy.
 // You should commit this file to source control.
-module.exports = {};
+module.exports = {
+  backends: {
+    api: {
+      domainOrIp: 'moovweb.github.io',
+      hostHeader: 'moovweb.github.io',
+    },
+  },
+}

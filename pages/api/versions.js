@@ -7,7 +7,6 @@ export default async function versions(req, res) {
     const versions = (await verRes.text())
       .split(',')
       .map(ver => ver.trim())
-      .sort()
       .reverse()
 
     if (res) {

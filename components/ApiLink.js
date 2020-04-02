@@ -8,7 +8,7 @@ export default function ApiLink() {
   return (
     <Button
       key="back"
-      href={`/reference/${currentVersion}/api/docs/core/index.html`}
+      href={`/reference/${currentVersion}/api/core/index.html`}
       variant="contained"
       color="primary"
       style={{ width: '100%' }}

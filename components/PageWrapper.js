@@ -14,7 +14,7 @@ const styles = theme => ({
   },
   center: {
     flex: 1,
-    overflowX: 'auto',
+    overflowX: 'hidden',
     paddingLeft: 300,
     margin: 'auto',
     maxWidth: theme.breakpoints.values.lg

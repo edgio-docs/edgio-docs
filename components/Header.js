@@ -14,7 +14,6 @@ import MenuIcon from '@material-ui/icons/Menu'
 import Link from 'next/link'
 import VersionChooser from './modules/VersionChooser'
 import SearchField from './SearchField'
-import GitHubButton from './GitHubButton'
 import Logo from './Logo'
 import Router from 'next/router'
 const useStyles = makeStyles(theme => ({
@@ -26,8 +25,8 @@ const useStyles = makeStyles(theme => ({
   progress: {
     bottom: 0,
     height: 2,
-    left:0,
-    right: 0
+    left: 0,
+    right: 0,
   },
   root: {
     flexGrow: 1,
@@ -85,10 +84,12 @@ export default function Header() {
               <SearchField />
             </Hidden>
             <div style={{ width: 10 }} />
-            <GitHubButton />
           </Toolbar>
         </Container>
-        <LinearProgress className={classes.progress} style={{ display: loading ? 'block' : 'none' }}/>
+        <LinearProgress
+          className={classes.progress}
+          style={{ display: loading ? 'block' : 'none' }}
+        />
       </AppBar>
     </Slide>
   )

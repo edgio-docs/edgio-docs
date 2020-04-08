@@ -38,11 +38,6 @@
         "href": "/guides/[...guide]"
       },
       {
-        "text": "Domains and DNS",
-        "as": "/guides/domains_and_dns",
-        "href": "/guides/[...guide]"
-      },
-      {
         "text": "Split Testing",
         "as": "/guides/split_testing",
         "href": "/guides/[...guide]"
@@ -50,6 +45,11 @@
       {
         "text": "CLI",
         "as": "/guides/cli",
+        "href": "/guides/[...guide]"
+      },
+      {
+        "text": "Production",
+        "as": "/guides/production",
         "href": "/guides/[...guide]"
       }
     ]

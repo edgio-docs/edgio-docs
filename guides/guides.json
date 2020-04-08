@@ -51,6 +51,11 @@
         "text": "CLI",
         "as": "/guides/cli",
         "href": "/guides/[...guide]"
+      },
+      {
+        "text": "Certificates",
+        "as": "/guides/certificates",
+        "href": "/guides/[...guide]"
       }
     ]
   },

@@ -53,8 +53,8 @@
         "href": "/guides/[...guide]"
       },
       {
-        "text": "Certificates",
-        "as": "/guides/certificates",
+        "text": "TLS/SSL",
+        "as": "/guides/tls-ssl",
         "href": "/guides/[...guide]"
       }
     ]

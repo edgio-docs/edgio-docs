@@ -1,4 +1,4 @@
-# Certificates
+# TLS/SSL
 
 All data transmitted to and from your Moovweb XDN project must be secured with TLS (Transport Layer Security). TLS, also known as SSL (Secure Sockets Layer), is a cryptographic protocol to communicate securely over the Internet. TLS provides end-to-end data encryption and data integrity for all web requests.
 
@@ -12,7 +12,10 @@ This guide describes the creation of the CSR and private key with OpenSSL. OpenS
 
 To create CSR and private key do the following:
 
-1. Log into wherever you have OpenSSL installed (locally in your terminal window or maybe a separate certificate management box)
+1. Open your terminal window and make sure that you have OpenSSL installed:
+* On MacOS you can install it by using [`brew`](https://brew.sh/) package manager (e.g. `brew install openssl`)
+* On Windows you can install it by using [`Chocolatey`](https://chocolatey.org/) package manager (e.g. `choco install openssl`)
+* On Linux/Unix you can install it by running the built-in OS package manager (e.g. `apt-get install openssl`, `apk add openssl` and so on)
 2. Go to the directory of your choice and create a configuration file `moovweb-xdn.conf` based on this template:
 
 ```
@@ -56,4 +59,12 @@ Moovweb XDN needs three things to correctly host your certificate:
 * Intermediate certificates (IC) used by CA including CA's signing certificate
 * Private key that was generated at the same time with CSR
 
+![empty-certificate](../images/tls-ssl/empty-certificate.png)
+
 The private key part is non-public data and must not be shared with parties other than Moovweb. In Moovweb XDN it is stored securely at rest, never shown in UI and only used to provision parts of the infrastructure that are used to terminate TLS connections.
+
+You need to copy the certificate, intermediate certificates and the private key into the corresponding edit boxes and once done click on "Save Changes" button. This will change the status of your certificate to "Activation in Progress".
+
+![in-progress-certificate](../images/tls-ssl/in-progress-certificate.png)
+
+Note that the certificate hosting process is not immediate.

@@ -6,8 +6,7 @@
     "build": "next build",
     "start": "next dev --port=4000",
     "start:xdn": "xdn run",
-    "deploy": "xdn deploy",
-    "deploy:prod": "xdn deploy platform",
+    "deploy": "xdn deploy platform",
     "xdn:upgrade": "npm i --save @xdn/core@latest @xdn/next@latest @xdn/cli@latest"
   },
   "dependencies": {

@@ -21,6 +21,7 @@ import Link from 'next/link'
 import ReactIcon from '../components/icons/react.svg'
 import VueIcon from '../components/icons/vue.svg'
 import AngularIcon from '../components/icons/angular.svg'
+import MoovwebXDN from '../components/icons/MoovwebXDN.svg'
 
 const useStyles = makeStyles(theme => ({
   hero: {
@@ -78,6 +79,17 @@ const useStyles = makeStyles(theme => ({
     flex: 1,
     padding: theme.spacing(2),
   },
+
+  logo: {
+    margin: '1em 0',
+    width: 300,
+    [theme.breakpoints.up('sm')]: {
+      width: 500,
+    },
+    [theme.breakpoints.up('md')]: {
+      width: 600,
+    },
+  },
 }))
 
 const Home = ({ navData }) => {
@@ -88,9 +100,7 @@ const Home = ({ navData }) => {
         <title>Moovweb XDN - Home</title>
       </Head>
       <div className={classes.hero}>
-        <Typography variant="h1" style={{ margin: '0.5em 0' }}>
-          Moovweb XDN
-        </Typography>
+        <MoovwebXDN className={classes.logo} />
         <Typography variant="h2" style={{ maxWidth: 800 }}>
           <div style={{ position: 'relative' }}>Impossibly fast infrastructure for edge PWAs.</div>
         </Typography>

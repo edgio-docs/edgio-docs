@@ -14,10 +14,13 @@ const styles = theme => ({
   },
   center: {
     flex: 1,
-    overflowX: 'hidden',
-    paddingLeft: 300,
+    maxWidth: theme.breakpoints.values.lg,
+    width: '100%',
+    overflow: 'hidden',
     margin: 'auto',
-    maxWidth: theme.breakpoints.values.lg
+    [theme.breakpoints.up('lg')]: {
+      paddingLeft: 300,
+    },
   },
 })
 

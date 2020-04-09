@@ -10,7 +10,6 @@ const useStyles = makeStyles(theme => ({
   root: {
     fontSize: '14px',
     [theme.breakpoints.down('xs')]: {
-      margin: '0 -15px',
       background: '#1d1f21',
     },
     '& span': {

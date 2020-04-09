@@ -1,26 +1,59 @@
+import React, { Fragment, useContext } from 'react'
 import { TreeItem, TreeView } from '@material-ui/lab'
-import React, { Fragment } from 'react'
 import PropTypes from 'prop-types'
 import clsx from 'clsx'
 import { makeStyles } from '@material-ui/core/styles'
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
 import ChevronRightIcon from '@material-ui/icons/ChevronRight'
-import { Typography } from '@material-ui/core'
+import CloseIcon from '@material-ui/icons/Close'
+import { Typography, IconButton, Hidden } from '@material-ui/core'
 import NextLink from 'next/link'
 import Logo from './Logo'
 import useVersioning from './versioning'
 import Icon from './icons/Icon'
+import { MenuContext } from './MenuProvider'
+import MoovwebXDN from './icons/MoovwebXDN.svg'
+
+const width = 275
 
 const useStyles = makeStyles(theme => ({
   root: {
     height: 'calc(100vh)',
     overflowY: 'auto',
     position: 'fixed',
-    minWidth: 250,
-    width: 250,
+    minWidth: width,
+    width,
     padding: theme.spacing(1, 4, 1, 0),
     top: 0,
     borderRight: `1px solid ${theme.palette.divider}`,
+
+    [theme.breakpoints.down('md')]: {
+      transition: 'transform .1s ease-out',
+      position: 'fixed',
+      left: 0,
+      bottom: 0,
+      height: '100%',
+      transform: `translateX(-${width}px)`,
+      padding: theme.spacing(1, 2, 2, 2),
+      background: theme.palette.background.paper,
+      zIndex: theme.zIndex.drawer,
+      borderRight: `1px solid ${theme.palette.divider}`,
+    },
+
+    [theme.breakpoints.down('xs')]: {
+      width: '100%',
+      transform: `translateX(-100%)`,
+    },
+  },
+  open: {
+    transform: 'translateX(1px)',
+  },
+  logo: {
+    width: 180,
+    [theme.breakpoints.up('lg')]: {
+      width: '100%',
+      margin: theme.spacing(2, 0),
+    },
   },
   section: {
     marginLeft: theme.spacing(2),
@@ -36,7 +69,7 @@ const useStyles = makeStyles(theme => ({
     },
   },
   icon: {
-    marginRight: theme.spacing(0.5)
+    marginRight: theme.spacing(0.5),
   },
   treeNodeSelected: {
     '& span': {
@@ -73,9 +106,13 @@ const useStyles = makeStyles(theme => ({
     width: theme.spacing(2),
     marginLeft: theme.spacing(-2) - 2,
   },
+  menuButton: {
+    marginRight: theme.spacing(-1.5),
+  },
 }))
 
 export default function Nav({ navData, tree, aboveAdornments, currentRoute }) {
+  const { open, setOpen } = useContext(MenuContext)
   const classes = useStyles()
   const { createUrl } = useVersioning()
   const createNodeId = node => (node.as ? `${node.as}-${node.text}` : node.text)
@@ -172,9 +209,27 @@ export default function Nav({ navData, tree, aboveAdornments, currentRoute }) {
   })
 
   return (
-    <nav className={classes.root}>
-      <Logo />
-      <div style={{ marginTop: 30 }}>{aboveAdornments}</div>
+    <nav
+      className={clsx({
+        [classes.root]: true,
+        [classes.open]: open,
+      })}
+    >
+      <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
+        <MoovwebXDN className={classes.logo} />
+        <Hidden lgUp implementation="css">
+          <IconButton
+            edge="start"
+            className={classes.menuButton}
+            color="inherit"
+            aria-label="menu"
+            onClick={() => setOpen(false)}
+          >
+            <CloseIcon />
+          </IconButton>
+        </Hidden>
+      </div>
+      <div style={{ marginTop: 10 }}>{aboveAdornments}</div>
       {navData.map(section => {
         const sectionTitle = <SectionTitle>{section.text}</SectionTitle>
         const contents = (

@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react'
+import React, { useContext, useState, useEffect, useCallback } from 'react'
+import { MenuContext } from './MenuProvider'
 import { makeStyles } from '@material-ui/core/styles'
 import {
   AppBar,
@@ -21,6 +22,16 @@ const useStyles = makeStyles(theme => ({
     backgroundColor: theme.palette.background.default,
     boxShadow: 'none',
     borderBottom: `1px solid ${theme.palette.divider}`,
+    [theme.breakpoints.up('lg')]: {
+      left: 299,
+      width: 'calc(100% - 300px)',
+      paddingLeft: 0,
+    },
+  },
+  container: {
+    [theme.breakpoints.up('lg')]: {
+      paddingLeft: theme.spacing(1),
+    },
   },
   progress: {
     bottom: 0,
@@ -32,11 +43,11 @@ const useStyles = makeStyles(theme => ({
     flexGrow: 1,
   },
   toolbar: {
-    justifyContent: 'space-between',
     alignItems: 'center',
   },
   menuButton: {
     marginRight: theme.spacing(2),
+    color: theme.palette.grey[500],
   },
   title: {
     flexGrow: 1,
@@ -44,46 +55,64 @@ const useStyles = makeStyles(theme => ({
   link: {
     textDecoration: 'none',
   },
+  smUp: {
+    display: 'none',
+    [theme.breakpoints.up('sm')]: {
+      display: 'block',
+    },
+  },
+  xsDown: {
+    display: 'none',
+    [theme.breakpoints.down('xs')]: {
+      display: 'block',
+    },
+  },
 }))
 
 export default function Header() {
   const trigger = useScrollTrigger()
   const classes = useStyles()
   const [loading, setLoading] = useState(false)
+  const { open, setOpen } = useContext(MenuContext)
 
   useEffect(() => {
     Router.events.on('routeChangeStart', () => setLoading(true))
     Router.events.on('routeChangeComplete', () => setLoading(false))
   }, [])
 
+  const handleMenuClick = useCallback(() => {
+    setOpen(open => !open)
+  }, [setOpen])
+
   return (
     <Slide appear={false} direction="down" in={!trigger}>
       <AppBar className={classes.appBar}>
-        <Container maxWidth="xl">
+        <Container maxWidth="xl" className={classes.container}>
           <Toolbar disableGutters className={classes.toolbar}>
-            <Hidden xsUp implementation="css">
+            <Hidden lgUp implementation="css">
               <IconButton
                 edge="start"
                 className={classes.menuButton}
                 color="inherit"
                 aria-label="menu"
+                onClick={handleMenuClick}
               >
                 <MenuIcon />
               </IconButton>
             </Hidden>
-            <div style={{ display: 'flex' }}>
+            <Hidden lgUp implementation="css">
               <Link href="/" as="/">
                 <a href="/" className={classes.link}>
-                  <Logo />
+                  <Logo style={{ marginRight: 12 }} />
                 </a>
               </Link>
-              <VersionChooser />
-            </div>
-            <div style={{ flex: 1 }} />
+            </Hidden>
+            <div style={{ flex: 1 }} className={classes.xsDown} />
+            <VersionChooser />
+            <div style={{ flex: 1 }} className={classes.smUp} />
             <Hidden xsDown implementation="css">
               <SearchField />
             </Hidden>
-            <div style={{ width: 10 }} />
           </Toolbar>
         </Container>
         <LinearProgress

@@ -8,6 +8,7 @@ import useJssStyles from '../components/useJssStyles'
 import Head from 'next/head'
 import getBaseUrl from '../components/utils/getBaseUrl'
 import { VersionProvider } from '../components/versioning'
+import MenuProvider from '../components/MenuProvider'
 
 export default function MyApp({ Component, pageProps, currentVersion, versions }) {
   useJssStyles()
@@ -23,10 +24,12 @@ export default function MyApp({ Component, pageProps, currentVersion, versions }
           />
         </Head>
         <CssBaseline />
-        <Header />
-        <main>
-          <Component {...pageProps} />
-        </main>
+        <MenuProvider>
+          <Header />
+          <main>
+            <Component {...pageProps} />
+          </main>
+        </MenuProvider>
       </VersionProvider>
     </MuiThemeProvider>
   )

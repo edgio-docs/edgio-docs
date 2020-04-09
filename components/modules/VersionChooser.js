@@ -6,18 +6,25 @@ import useVersioning from '../versioning'
 
 const useStyles = makeStyles(theme => ({
   control: {
-    width: '100%',
-    marginLeft: theme.spacing(2),
     '& > div': {
       borderRadius: 3,
       backgroundColor: 'transparent',
     },
+    [theme.breakpoints.down('xs')]: {
+      marginRight: theme.spacing(-1.5),
+    },
+  },
+  selectMenu: {
+    textOverflow: 'clip',
   },
   selectRoot: {
     border: 0,
     padding: theme.spacing(2, 4, 2, 2),
     fontSize: '1.25em',
     color: '#666',
+    [theme.breakpoints.down('xs')]: {
+      fontSize: '1em',
+    },
   },
 }))
 
@@ -41,6 +48,7 @@ export default function VersionChooser() {
         autoWidth
         classes={{
           root: classes.selectRoot,
+          selectMenu: classes.selectMenu,
         }}
       >
         {versions.map(version => (

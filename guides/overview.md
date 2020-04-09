@@ -54,6 +54,10 @@ export default nextJSApp => {
 
 The Moovweb XDN automatically scales to handle increased traffic. No configuration is required. You simply write your application code and the XDN provides compute resources to handle any level of traffic.
 
+## High Availability
+
+The Moovweb XDN provides high availability (HA) in all of its components. When going to production you choose a particular region of the world in which your API servers are located and Moovweb XDN provisions two datacenters closest to it, connecting them with automatic DNS failover. HA is also provided within the datacenters themselves, with all individual processes being (at least) duplicated and sharing the traffic load among themselves. This in-depth HA architecture minimizes the chances of loss of traffic.
+
 ## Productivity
 
 The Moovweb XDN empowers your team to build apps faster and be more transparent. Every time a developer pushes commits to source control, that version of the site is automatically given a permanent preview URL so that QA testers, code reviewers, and other stakeholders can try out the changes immediately. Find a bug in your app? The Moovweb XDN makes it easy to go back in time and try out older versions of the app to find the point in when the bug was introduced. This is especially useful for meeting performance targets as it makes it easy to compare speed measurements between multiple iterations of your app.

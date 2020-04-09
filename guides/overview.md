@@ -56,7 +56,7 @@ The Moovweb XDN automatically scales to handle increased traffic. No configurati
 
 ## High Availability
 
-The Moovweb XDN provides high availability (HA) in all of its components. When going to production you choose a particular region of the world in which your API servers are located and Moovweb XDN provisions two datacenters closest to it, connecting them with automatic DNS failover. HA is also provided within the datacenters themselves, with all individual processes being (at least) duplicated and sharing the traffic load among themselves. This in-depth HA architecture minimizes the chances of loss of traffic.
+The Moovweb XDN provides high availability (HA) in all of its components. You can choose a particular region of the world in which your API servers are located. The Moovweb XDN will provision two data centers closest to it, connecting them with automatic DNS failover. HA is also provided within the data centers themselves, with all individual processes being (at least) duplicated and sharing the traffic load among themselves. This in-depth HA architecture minimizes the chances of loss of traffic.
 
 ## Productivity
 

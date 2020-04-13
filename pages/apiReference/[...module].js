@@ -64,7 +64,7 @@ export default function Module({ defaultNavData, defaultModuleData }) {
       }
     >
       <Head>
-        <title>React Storefront API {moduleData.name ? `- ${module.name}` : ''}</title>
+        <title>Moovweb XDN API {moduleData.name ? `- ${module.name}` : ''}</title>
       </Head>
       {content}
     </PageWrapper>

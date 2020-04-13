@@ -10,7 +10,7 @@ If you don't already have a next.js application, you can create one using:
 npm create next-app my-next-app
 ```
 
-To deploy you Next.js application on the Moovweb XDN:
+To deploy your Next.js application on the Moovweb XDN:
 
 1. Set `target: 'serverless'` in `next.config.js`. If this file doesn't exist, create it with the following content:
 

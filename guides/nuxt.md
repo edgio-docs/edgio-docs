@@ -72,7 +72,23 @@ Using environment variables here allows you to configure different legacy domain
 
 ### Vanity Routes
 
-For SEO purposes, you may want to add additional "vanity" routes that point to Nuxt.js. You can do this using the `renderNuxt` function returned from `createNuxtPlugin()`:
+For SEO purposes, you may want to add additional "vanity" routes that point to Nuxt.js. You can do this by combining the [@nuxtjs/router-extras](https://github.com/nuxt-community/router-extras-module) library with an update to your XDN Router.
+
+First, install the `@nuxtjs/router-extras` library:
+```bash
+npm install --save-dev @nuxtjs/router-extras
+```
+
+In your `xdn.config.js` file, add the module under the `buildModules` config (*Note*: use `modules` if using Nuxt `< 2.9.0`):
+```js
+{
+  buildModules: [
+    '@nuxtjs/router-extras',
+  ]
+}
+```
+
+Now, using the `renderNuxt` function returned from `createNuxtPlugin()`, update your router to use the vanity route:
 
 ```js
 const { Router } = require('@xdn/core/router')
@@ -82,10 +98,22 @@ const { renderNuxt, nuxtMiddleware } = createNuxtPlugin()
 module.exports = new Router()
   .use(nuxtMiddleware)
   .match('/some/vanity/url/:p', async ({ render }) => {
-    await render((req, res, params) =>
-      renderNuxt(req, res, '/p/_productId', { productId: params.p }),
+    await render(async (req, res, params) =>
+      renderNuxt(req, res, "/p/{p}", { id: params.p })
     )
   })
+```
+
+Finally, define the vanity route as an `alias` in a `<router>` tag within the page file:
+
+```vue
+<router>
+{
+  alias: [
+    '/some/vanity/url/:p',
+  ]
+}
+</router>
 ```
 
 ### Caching

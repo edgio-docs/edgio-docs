@@ -97,7 +97,7 @@ const Home = ({ navData }) => {
   return (
     <PageWrapper nav={<Nav navData={navData} aboveAdornments={[<ApiLink key="link" />]} />}>
       <Head>
-        <title>Moovweb XDN - Home</title>
+        <title>Moovweb XDN Documentation</title>
       </Head>
       <div className={classes.hero}>
         <MoovwebXDN className={classes.logo} />

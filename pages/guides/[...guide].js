@@ -30,7 +30,7 @@ export default function Guide({ notFound, markdown, navData, guide }) {
   return (
     <PageWrapper nav={<Nav navData={navData} aboveAdornments={[<ApiLink key="link" />]} />}>
       <Head>
-        <title>React Storefront {pageTitle ? `- ${pageTitle}` : ''}</title>
+        <title>Moovweb XDN Documentation {pageTitle ? `- ${pageTitle}` : ''}</title>
       </Head>
       <Markdown source={markdown} />
     </PageWrapper>

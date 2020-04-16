@@ -3,11 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "start": "xdn run",
     "build": "next build",
-    "start": "next dev --port=4000",
-    "build:xdn": "xdn build",
-    "start:xdn": "xdn run",
-    "prod": "xdn run --production",
     "deploy": "xdn deploy platform",
     "xdn:upgrade": "npm i --save @xdn/core@latest @xdn/next@latest @xdn/cli@latest"
   },

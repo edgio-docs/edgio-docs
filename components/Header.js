@@ -73,7 +73,7 @@ export default function Header() {
   const trigger = useScrollTrigger()
   const classes = useStyles()
   const [loading, setLoading] = useState(false)
-  const { open, setOpen } = useContext(MenuContext)
+  const { setOpen } = useContext(MenuContext)
 
   useEffect(() => {
     Router.events.on('routeChangeStart', () => setLoading(true))

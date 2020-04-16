@@ -20,4 +20,7 @@ module.exports = app => {
       return proxy('api', { path: '/xdn-docs-pages/{path}' })
     })
     .use(nextMiddleware)
+    .fallback(({ redirect }) => {
+      return redirect('/')
+    })
 }

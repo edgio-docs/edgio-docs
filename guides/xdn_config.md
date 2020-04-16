@@ -21,5 +21,4 @@ The path to a custom server used to run your JavaScript functions in the cloud. 
 
 ## includeNodeModules
 
-If `true`, the `node_modules` created for a production build will be included in the Lambda directory. 
-
+If `true`, the packages listed in the `dependencies` property of `package.json` will be included in the build that is deployed to the Moovweb XDN. 

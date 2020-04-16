@@ -15,7 +15,7 @@ export const VersionProvider = ({ children, selectedVersion, versions }) => {
 // export function useVersioning() {
 export default function useVersioning() {
   const { currentVersion, setCurrentVersion, versions } = useContext(VersionContext)
-  const { route, asPath } = useRouter()
+  const { asPath } = useRouter()
 
   const isLatestVersion = (version = currentVersion) => version === versions[0]
 
@@ -24,15 +24,15 @@ export default function useVersioning() {
     currentVersion,
     setCurrentVersion,
     isLatestVersion,
-    createUrl: ({ version = currentVersion, as = asPath, href = route }) => {
+    createUrl: ({ version = currentVersion, as = asPath, forceVersion = false }) => {
       if (as === '/') {
         return '/'
+      } else if (isLatestVersion(version) && !forceVersion) {
+        return as
+      } else {
+        const [_, prefix, ...parts] = as.split('/')
+        return '/' + [prefix, version, ...parts].join('/')
       }
-      const pathWithoutVersion = as.replace(/\/v\d.\d*.\d*\//, '/')
-      const routeWithoutModule = href.replace(/\/\[.*]/, '')
-      return `${routeWithoutModule}${
-        isLatestVersion(version) ? '' : `/${version}`
-      }${pathWithoutVersion.replace(routeWithoutModule, '')}`
     },
   }
 }

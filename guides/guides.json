@@ -78,6 +78,15 @@
     ]
   },
   {
+    "text": "API Documentation",
+    "items": [
+      {
+        "text": "@xdn/core",
+        "as": "/docs/api/core"
+      }
+    ]
+  },
+  {
     "text": "Reference",
     "items": [
       {

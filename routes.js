@@ -16,8 +16,11 @@ module.exports = app => {
         },
       })
     })
-    .match('/reference/*path', ({ proxy }) => {
+    .match('/docs/*path', ({ proxy }) => {
       return proxy('api', { path: '/xdn-docs-pages/{path}' })
     })
     .use(nextMiddleware)
+    .fallback(({ redirect }) => {
+      return redirect('/')
+    })
 }

@@ -1,7 +1,7 @@
 import fetch from 'isomorphic-fetch'
 import React from 'react'
 import Head from 'next/head'
-import Nav from '../components/nav'
+import Nav from '../components/nav/Nav'
 import PageWrapper from '../components/PageWrapper'
 import {
   Typography,
@@ -95,7 +95,7 @@ const useStyles = makeStyles(theme => ({
 const Home = ({ navData }) => {
   const classes = useStyles()
   return (
-    <PageWrapper nav={<Nav navData={navData} aboveAdornments={[<ApiLink key="link" />]} />}>
+    <PageWrapper nav={<Nav navData={navData} />}>
       <Head>
         <title>Moovweb XDN Documentation</title>
       </Head>

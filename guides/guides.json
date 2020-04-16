@@ -100,6 +100,11 @@
         "href": "/guides/[...guide]"
       },
       {
+        "text": "Request Headers",
+        "as": "/guides/request_headers",
+        "href": "/guides/[...guide]"
+      },
+      {
         "text": "Response Headers",
         "as": "/guides/response_headers",
         "href": "/guides/[...guide]"

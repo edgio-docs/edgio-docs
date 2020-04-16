@@ -19,3 +19,6 @@ The path to your routes file relative to the root of your app.  Defaults to `rou
 
 The path to a custom server used to run your JavaScript functions in the cloud.  The function takes an [http.ClientRequest](https://nodejs.org/api/http.html#http_class_http_clientrequest) and an [http.ServerResponse](https://nodejs.org/api/http.html#http_class_http_serverresponse). An [Express Application](https://expressjs.com/en/4x/api.html#app) can also be used here.
 
+## includeNodeModules
+
+If `true`, the packages listed in the `dependencies` property of `package.json` will be included in the build that is deployed to the Moovweb XDN. 

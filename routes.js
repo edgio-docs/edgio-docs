@@ -21,6 +21,6 @@ module.exports = app => {
     })
     .use(nextMiddleware)
     .fallback(({ redirect }) => {
-      return redirect('/')
+      return redirect('/', '302')
     })
 }

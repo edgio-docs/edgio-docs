@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "xdn": "xdn",
     "start": "xdn run",
     "build": "next build",
     "deploy": "xdn deploy platform",
@@ -14,8 +15,8 @@
     "@material-ui/lab": "^4.0.0-alpha.32",
     "@material-ui/styles": "^4.5.0",
     "@svgr/webpack": "^5.1.0",
-    "@xdn/core": "^1.13.0",
-    "@xdn/next": "^1.13.0",
+    "@xdn/core": "^1.14.2",
+    "@xdn/next": "^1.14.2",
     "clsx": "^1.0.4",
     "isomorphic-fetch": "^2.2.1",
     "lodash": "^4.17.15",
@@ -31,7 +32,7 @@
     "react-syntax-highlighter": "^12.2.1"
   },
   "devDependencies": {
-    "@xdn/cli": "^1.13.0",
+    "@xdn/cli": "^1.14.2",
     "prettier": "^1.19.1"
   }
 }

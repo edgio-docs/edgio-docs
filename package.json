@@ -5,6 +5,7 @@
   "scripts": {
     "xdn": "xdn",
     "start": "xdn run",
+    "dev": "next dev",
     "build": "next build",
     "deploy": "xdn deploy platform",
     "xdn:upgrade": "npm i --save @xdn/core@latest @xdn/next@latest @xdn/cli@latest"

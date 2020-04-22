@@ -108,6 +108,11 @@
         "text": "Response Headers",
         "as": "/guides/response_headers",
         "href": "/guides/[...guide]"
+      },
+      {
+        "text": "REST API",
+        "as": "/guides/rest_api",
+        "href": "/guides/[...guide]"
       }
     ]
   }

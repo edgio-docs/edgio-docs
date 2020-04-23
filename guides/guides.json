@@ -8,6 +8,11 @@
         "href": "/guides/[...guide]"
       },
       {
+        "text": "Getting Started",
+        "as": "/guides/getting_started",
+        "href": "/guides/[...guide]"
+      },
+      {
         "text": "Deploying",
         "as": "/guides/deploying",
         "href": "/guides/[...guide]"

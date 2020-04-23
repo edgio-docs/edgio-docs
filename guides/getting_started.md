@@ -5,13 +5,13 @@
 To create a new XDN app, run:
 
 ```
-npm create xdn-app
+npm create xdn-app@latest
 ```
 
 ... or using yarn ...
 
 ```
-yarn create xdn-app
+yarn create xdn-app@latest
 ```
 
 ## Adding the XDN to an existing app

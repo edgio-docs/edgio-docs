@@ -72,7 +72,7 @@ The default `routes.js` file created by `xdn init` sends all requests to Angular
 ```js
 // This file was automatically added by xdn deploy.
 // You should commit this file to source control.
-const { Router } = require('@xdn/core/Router')
+const { Router } = require('@xdn/core/router')
 
 const createAngularPlugin = require('@xdn/angular/router/createAngularPlugin')
 

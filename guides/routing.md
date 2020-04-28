@@ -15,11 +15,11 @@ Using the Router, you can:
 
 To define routes for the Moovweb XDN, create a `routes.js` file in the root of your project. You can override the default path to the router by setting the `routes` key in `xdn.config.js`.
 
-The `routes.js` file should export an instance of `@xdn/core/Router`:
+The `routes.js` file should export an instance of `@xdn/core/router/Router`:
 
 ```js
 // routes.js
-const Router = require('@xdn/core/Router')
+const { Router } = require('@xdn/core/router')
 
 module.exports = new Router()
 ```
@@ -30,14 +30,12 @@ Declare routes using the `match` method:
 
 ```js
 // routes.js
-const Router = require('@xdn/core/Router')
-const router = new Router()
+const { Router } = require('@xdn/core/router')
 
-router.match('/some-path', edge => {
-  // handle the request here
-})
-
-module.exports = router
+module.exports = new Router()
+  .match('/some-path', edge => {
+    // handle the request here
+  })
 ```
 
 ## Route Pattern Syntax

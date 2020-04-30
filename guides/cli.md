@@ -129,7 +129,7 @@ xdn logout
 
 ## completion
 
-Creates XDN autocompletion script that can be added to bash profile.
+Creates a script that provides autocompletion for xdn cli commands that can be installed in your shell.
 
 #### Example
 

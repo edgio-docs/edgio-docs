@@ -1,4 +1,6 @@
-module.exports = {
+const { withServiceWorker } = require('@xdn/next/sw')
+
+module.exports = withServiceWorker({
   target: 'serverless',
   webpack: function(config) {
     config.module.rules.push({
@@ -11,4 +13,4 @@ module.exports = {
     })
     return config
   },
-}
+})

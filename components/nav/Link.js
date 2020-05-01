@@ -4,6 +4,7 @@ import { Typography, makeStyles } from '@material-ui/core'
 import Icon from '../icons/Icon'
 import clsx from 'clsx'
 import useVersioning from '../versioning'
+import { Prefetch } from '@xdn/react'
 
 const useStyles = makeStyles(theme => ({
   icon: {
@@ -24,20 +25,20 @@ const useStyles = makeStyles(theme => ({
 export default function Link({ className, icon, text, as, href, ...props }) {
   const classes = useStyles()
   const { createUrl, currentVersion } = useVersioning()
+  const url = createUrl({ text, as, href, forceVersion: true })
 
   let link = (
-    <a
-      href={createUrl({ text, as, href, forceVersion: true })}
-      className={clsx(className, classes.link)}
-    >
-      {icon && <Icon classes={{ root: classes.icon }} type={icon} />}
-      <Typography component="span">{text}</Typography>
-    </a>
+    <Prefetch url={`/api${as}?version=${currentVersion}`}>
+      <a href={url} className={clsx(className, classes.link)}>
+        {icon && <Icon classes={{ root: classes.icon }} type={icon} />}
+        <Typography component="span">{text}</Typography>
+      </a>
+    </Prefetch>
   )
 
   if (href) {
     link = (
-      <NextLink as={createUrl({ text, as, href })} href={href} {...props} passHref>
+      <NextLink as={url} href={href} {...props} passHref>
         {link}
       </NextLink>
     )

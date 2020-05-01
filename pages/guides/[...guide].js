@@ -50,13 +50,12 @@ Guide.getInitialProps = async function({ req, query, version, versions }) {
     }
   }
 
-  const sendVersion = version === versions[0] ? '' : version
   try {
     const [navData, content] = await Promise.all([
-      fetch(`${baseUrl}/api/guides?version=${sendVersion}`)
+      fetch(`${baseUrl}/api/guides?version=${version}`)
         .then(res => res.json())
         .catch(e => console.log('error', e)),
-      fetch(`${baseUrl}/api/guides/${guide}?version=${sendVersion}`)
+      fetch(`${baseUrl}/api/guides/${guide}?version=${version}`)
         .then(res => res.text())
         .catch(e => console.log('error', e)),
     ])

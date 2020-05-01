@@ -5,10 +5,12 @@
   "scripts": {
     "xdn": "xdn",
     "start": "xdn run",
+    "prod": "xdn run --production",
     "dev": "next dev",
-    "build": "next build",
+    "build": "xdn build",
     "deploy": "xdn deploy platform",
-    "xdn:upgrade": "npm i --save @xdn/core@latest @xdn/next@latest @xdn/cli@latest"
+    "xdn:update": "npm i --save @xdn/core@latest @xdn/next@latest @xdn/cli@latest @xdn/prefetch@latest @xdn/react@latest",
+    "xdn:link": "yalc add @xdn/core @xdn/next @xdn/cli @xdn/prefetch @xdn/react"
   },
   "dependencies": {
     "@material-ui/core": "^4.5.0",
@@ -16,8 +18,10 @@
     "@material-ui/lab": "^4.0.0-alpha.32",
     "@material-ui/styles": "^4.5.0",
     "@svgr/webpack": "^5.1.0",
-    "@xdn/core": "^1.14.2",
-    "@xdn/next": "^1.14.2",
+    "@xdn/core": "^1.16.0",
+    "@xdn/next": "^1.16.0",
+    "@xdn/prefetch": "^1.16.0",
+    "@xdn/react": "^1.16.0",
     "clsx": "^1.0.4",
     "isomorphic-fetch": "^2.2.1",
     "lodash": "^4.17.15",
@@ -33,7 +37,7 @@
     "react-syntax-highlighter": "^12.2.1"
   },
   "devDependencies": {
-    "@xdn/cli": "^1.14.2",
+    "@xdn/cli": "^1.16.0",
     "prettier": "^1.19.1"
   }
 }

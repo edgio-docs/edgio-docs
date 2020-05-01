@@ -7,7 +7,6 @@ import { IconButton, Hidden } from '@material-ui/core'
 import { MenuContext } from '../MenuProvider'
 import MoovwebXDN from '../icons/MoovwebXDN.svg'
 import Section from './Section'
-
 const width = 275
 
 const useStyles = makeStyles(theme => ({

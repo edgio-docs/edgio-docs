@@ -7,7 +7,7 @@ import { MuiThemeProvider } from '@material-ui/core/styles'
 import useJssStyles from '../components/useJssStyles'
 import Head from 'next/head'
 import getBaseUrl from '../components/utils/getBaseUrl'
-import { VersionProvider } from '../components/versioning'
+import { VERSION_REGEX, VersionProvider } from '../components/versioning'
 import MenuProvider from '../components/MenuProvider'
 
 export default function MyApp({ Component, pageProps, currentVersion, versions }) {
@@ -41,7 +41,7 @@ MyApp.getInitialProps = async function({ Component, ctx }) {
   const baseUrl = getBaseUrl(ctx.req)
   const versions = await fetch(`${baseUrl}/api/versions`).then(res => res.json())
   const splitPath = ctx.asPath.split('/')
-  const currentVersion = (splitPath[2] || '').startsWith('v7') ? splitPath[2] : versions[0]
+  const currentVersion = (splitPath[2] || '').match(VERSION_REGEX) ? splitPath[2] : versions[0]
 
   if (Component.getInitialProps) {
     pageProps = await Component.getInitialProps({ ...ctx, version: currentVersion, versions })

@@ -41,6 +41,11 @@ Guide.getInitialProps = async function({ req, query, version, versions }) {
   const baseUrl = getBaseUrl(req)
   let { guide } = query
 
+  // guide will come in as single string, or with a version prepended (e.g. v1.2.3/overview)
+  if (typeof guide === 'string') {
+    guide = decodeURIComponent(guide).split('/')
+  }
+
   if (Array.isArray(guide)) {
     if (guide.length > 1) {
       version = guide[0]

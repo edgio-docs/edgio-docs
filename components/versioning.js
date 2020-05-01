@@ -3,6 +3,8 @@ import { createContext, useContext, useState } from 'react'
 
 export const VersionContext = createContext()
 
+export const VERSION_REGEX = /(v\d+.\d+.\d+\/?)/
+
 export const VersionProvider = ({ children, selectedVersion, versions }) => {
   const [currentVersion, setCurrentVersion] = useState(selectedVersion)
   return (
@@ -28,10 +30,11 @@ export default function useVersioning() {
       if (as === '/') {
         return '/'
       } else if (isLatestVersion(version) && !forceVersion) {
-        return as
+        return as.replace(VERSION_REGEX, '')
       } else {
         const [_, prefix, ...parts] = as.split('/')
-        return '/' + [prefix, version, ...parts].join('/')
+        const partsNoVersion = parts.filter(part => !part.match(VERSION_REGEX))
+        return '/' + [prefix, version, ...partsNoVersion].join('/')
       }
     },
   }

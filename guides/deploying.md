@@ -38,7 +38,7 @@ Each time you deploy your site to the Moovweb XDN a "deployment" is created and 
 
 ![deployments](/images/deploying/deployments.png)
 
-Having each deployment be simultaneaously and permanently accessible makes it easy to preview other developer's work before merging a pull request and enables you to "go back in time" to find where a bug or change in behavior originated. We recommend configuring your CI environment to deploy every push to the XDN. For more information.
+Having each deployment be simultaneously and permanently accessible makes it easy to preview other developers' work before merging a pull request and enables you to "go back in time" to find where a bug or change in behavior originated. We recommend configuring your CI environment to deploy every push to the XDN. For more information.
 
 ## Deploying from CI
 

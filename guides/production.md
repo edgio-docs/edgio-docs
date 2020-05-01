@@ -11,19 +11,19 @@ To configure your custom domains:
 1. Create an environment by navigating to your site and selecting *Environments* => *New Environment*
 2. Click *Edit* to create a draft. Enter your domains here, save changes, and activate:
 
-![domains](../images/production/domains.png)
+![domains](/images/production/domains.png)
 
 ## DNS
 
 In order to configure your DNS provider to direct traffic for a particular set of domains to the Moovweb XDN, create a CNAME record with the value shown under *DNS Configuration*:
 
-![dns](../images/production/dns.png)
+![dns](/images/production/dns.png)
 
 ## Whitelisting XDN IP Addresses
 
 Before going live, ensure that all Moovweb XDN IP addresses are whitelisted in the security layer in front of your origin and/or API servers.  The IP addresses you need to whitelist can be found on the "IP Whitelist" tab on your production environment.  Note that your IP addresses may differ from the ones shown below:
 
-![ip_whitelist](../images/production/whitelist.png)
+![ip_whitelist](/images/production/whitelist.png)
 
 ## TLS/SSL
 
@@ -86,15 +86,15 @@ Moovweb XDN needs three things to correctly host your certificate:
 * Intermediate certificates (IC) used by CA including CA's signing certificate
 * Private key that was generated at the same time with CSR
 
-![empty-certificate](../images/production/empty-certificate.png)
+![empty-certificate](/images/production/empty-certificate.png)
 
 The private key part is non-public data and must not be shared with parties other than Moovweb. The Moovweb XDN stores your private key securely at rest.  It is never shown in the developer console and only used to provision parts of the infrastructure that are used to terminate TLS connections.
 
 You need to copy the certificate, intermediate certificates and the private key into the corresponding edit boxes and, once done, click on "Save Changes" button. This will change the status of your certificate to "Activation in Progress".
 
-![in-progress-certificate](../images/production/in-progress-certificate.png)
+![in-progress-certificate](/images/production/in-progress-certificate.png)
 
 Note that the certificate hosting process is not immediate. It may take up to five business days for the certificate to be activated.  Once it is activated, you'll see the following:
 
-![activated-certificate](../images/production/activated-certificate.png)
+![activated-certificate](/images/production/activated-certificate.png)
 

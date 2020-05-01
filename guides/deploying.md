@@ -36,7 +36,7 @@ Once the deployment is complete, the CLI will output the URL for your site. The 
 
 Each time you deploy your site to the Moovweb XDN a "deployment" is created and given a unique and permanent URL based on the team name, site name, branch name in source control, and an incrementing deployment number. If you use Git, the branch name is set by the default. If not, you can specify the `--branch` option when running `xdn deploy`.
 
-![deployments](../images/deploying/deployments.png)
+![deployments](/images/deploying/deployments.png)
 
 Having each deployment be simultaneaously and permanently accessible makes it easy to preview other developer's work before merging a pull request and enables you to "go back in time" to find where a bug or change in behavior originated. We recommend configuring your CI environment to deploy every push to the XDN. For more information.
 
@@ -44,7 +44,7 @@ Having each deployment be simultaneaously and permanently accessible makes it ea
 
 To deploy from your CI environment, create a deploy token using the site settings tab in the XDN console:
 
-![deployments](../images/deploying/token.png)
+![deployments](/images/deploying/token.png)
 
 Then use the `--token` option when deploying from your CI script:
 

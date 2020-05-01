@@ -8,7 +8,7 @@ XDN stands for "e**X**perience **D**eliver **N**etwork". It extends the capabili
 
 ## Architecture
 
-![architecture](../images/overview/architecture.svg)
+![architecture](/images/overview/architecture.svg)
 
 ### L1 Edge Cache
 

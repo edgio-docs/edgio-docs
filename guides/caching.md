@@ -47,4 +47,4 @@ The `cache` function can be used in the same route as other functions such as `s
 
 The cache is automatically cleared when you deploy to an environment. You can also clear the cache using the environment's Caching tab in the Moovweb XDN console.
 
-![deployments](../images/caching/purge.png)
+![deployments](/images/caching/purge.png)

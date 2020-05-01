@@ -15,7 +15,7 @@ In order to serve your site on a specific domain, you need to configure an envir
 
 To create an environment, navigate to your site and select the *Environments* tab, and click *New Environment*:
 
-![environments](../images/environments/environments.png)
+![environments](/images/environments/environments.png)
 
 ## Deploying to an Environment
 
@@ -27,7 +27,7 @@ xdn deploy <team name> --environment=<environment name>
 
 You can also promote any existing deployment to an environment using the *Promote to Environment* button at the top of the deployment view:
 
-![promote](../images/environments/promote.png)
+![promote](/images/environments/promote.png)
 
 When configuring CI, we recommend:
 
@@ -38,10 +38,10 @@ When configuring CI, we recommend:
 
 Since environments contain important settings that affect how your site functions, they are versioned. This makes it easy to roll back to a previous version of the environment if you make a change that breaks the site. To change your environment settings, create a new draft version by clicking the *Edit* button:
 
-![edit](../images/environments/edit.png)
+![edit](/images/environments/edit.png)
 
 As you make changes they are saved in the draft version. Once your ready to deploy your changes, click *Activate*.
 
-![activate](../images/environments/activate.png)
+![activate](/images/environments/activate.png)
 
 Doing so will redeploy the environment's active deployment updated with the new environment configuration.

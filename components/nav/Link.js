@@ -25,7 +25,7 @@ const useStyles = makeStyles(theme => ({
 export default function Link({ className, icon, text, as, href, ...props }) {
   const classes = useStyles()
   const { createUrl, currentVersion } = useVersioning()
-  const url = createUrl({ text, as, href, forceVersion: false })
+  const url = createUrl({ text, as, href, forceVersion: href == null })
   const apiUrl = `/api${as}?version=${currentVersion}`
 
   let link = (

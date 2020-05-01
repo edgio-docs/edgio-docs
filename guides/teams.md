@@ -4,7 +4,7 @@ This guide shows you how to share your project with other collaborators using te
 
 ## Private Space
 
-When you first log into the Moovweb XDN console, you'll see your private space:
+When you first log into the Moovweb XDN console, you'll see your private space xxx:
 
 ![private space](/images/deploying/private_space.png)
 

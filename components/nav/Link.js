@@ -25,10 +25,11 @@ const useStyles = makeStyles(theme => ({
 export default function Link({ className, icon, text, as, href, ...props }) {
   const classes = useStyles()
   const { createUrl, currentVersion } = useVersioning()
-  const url = createUrl({ text, as, href, forceVersion: true })
+  const url = createUrl({ text, as, href, forceVersion: false })
+  const apiUrl = `/api${as}?version=${currentVersion}`
 
   let link = (
-    <Prefetch url={`/api${as}?version=${currentVersion}`}>
+    <Prefetch url={apiUrl}>
       <a href={url} className={clsx(className, classes.link)}>
         {icon && <Icon classes={{ root: classes.icon }} type={icon} />}
         <Typography component="span">{text}</Typography>

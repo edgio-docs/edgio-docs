@@ -50,9 +50,9 @@ Creates a build of your app optimized for production
 
 #### Options
 
-| Name            | Description                                                                                                   |
-| --------------- | ------------------------------------------------------------------------------------------------------------- |
-| `--skip-build`  | Skips the framework (Next.js, Vue, Angular, etc..) build and simply rebundles your router                     |
+| Name           | Description                                                                               |
+| -------------- | ----------------------------------------------------------------------------------------- |
+| `--skip-build` | Skips the framework (Next.js, Vue, Angular, etc..) build and simply rebundles your router |
 
 #### Example
 
@@ -125,4 +125,26 @@ Logs out of the XDN
 
 ```
 xdn logout
+```
+
+## completion
+
+Creates a script that provides autocompletion for xdn cli commands that can be installed in your shell.
+
+#### Example
+
+```
+xdn completion
+```
+
+###### Using ZSH
+
+```
+xdn completion >> ~/.zshrc
+```
+
+###### Using BASH
+
+```
+xdn completion >> ~/.bashrc
 ```

@@ -43,9 +43,9 @@ const useStyles = makeStyles(theme => ({
   },
   logo: {
     width: 180,
+    height: 48,
     [theme.breakpoints.up('lg')]: {
-      width: '100%',
-      margin: theme.spacing(2, 0, 1, 0),
+      width: '95%',
     },
   },
   section: {

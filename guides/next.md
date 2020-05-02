@@ -12,13 +12,17 @@ npm create next-app my-next-app
 
 To deploy your Next.js application on the Moovweb XDN:
 
-1. Set `target: 'serverless'` in `next.config.js`. If this file doesn't exist, create it with the following content:
+1. Set `target: 'serverless'` and add the `withServiceWorker` plugin to `next.config.js`. If this file doesn't exist, create it with the following content:
 
 ```js
-module.exports = {
+const { withServiceWorker } = require('@xdn/next/sw')
+
+module.exports = withServiceWorker({
   target: 'serverless',
-}
+})
 ```
+
+If you're already using `next-offline`, you should remove it in favor of `withServiceWorker`, which itself uses `next-offline`.
 
 2. Run `xdn init`
 
@@ -28,6 +32,14 @@ This will automatically add all of the required dependencies and files to your p
 - The `@xdn/next` package
 - `xdn.config.js`
 - `routes.js` - A default routes file that sends all requests to `next.js`. Update this file to add caching or proxy some URLs to a different origin.
+- `sw/service-worker.js` A service worker implemented using Workbox.
+
+## Service Worker
+
+The `xdn init` command adds a service worker at `sw/service-worker.js`.  If you have an existing service worker that uses workbox, you can copy its contents into `sw/service-worker.js`, or con:
+
+```
+```
 
 ## Routing
 

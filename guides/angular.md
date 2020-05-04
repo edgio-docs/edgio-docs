@@ -31,10 +31,10 @@ You can now run `npm run build:ssr && npm run serve:ssr` to access your server-s
 
 To integrate XDN:
 
-1. Install XDN cli globally
+1. Install the XDN CLI globally:
 
 ```
-npm install -g @xdn/cli@latest
+npm install -g @xdn/cli
 ```
 
 2. Run `xdn init`

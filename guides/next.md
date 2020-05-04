@@ -24,7 +24,13 @@ module.exports = withServiceWorker({
 
 If you're already using `next-offline`, you should remove it in favor of `withServiceWorker`, which itself uses `next-offline`.
 
-2. Run `xdn init`
+2. Install the XDN CLI globally:
+
+```
+npm install -g @xdn/cli
+```
+
+3. Run `xdn init`
 
 This will automatically add all of the required dependencies and files to your project. These include:
 

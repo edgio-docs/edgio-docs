@@ -52,7 +52,7 @@ Update `app.module.ts` to include a `baseSite` configuration:
  }),
 ```
 
-# Integrating XDN
+# Preparing for deployment on the XDN
 
 ```
 npm install -g @xdn/cli

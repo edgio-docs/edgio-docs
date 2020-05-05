@@ -59,7 +59,7 @@ npm install -g @xdn/cli
 xdn init
 ```
 
-The app should now have @xdn dependencies installed and auto-generated `routes.js` and `xdn.config.js` files created by @xdn/angular.
+The app should now have `@xdn` dependencies installed and auto-generated `routes.js` and `xdn.config.js` files created by `@xdn/angular`.
 
 `@xdn/angular` follows Angular 9 SSR scaffolding so the following changes are necessary to the server build:
 

@@ -1,6 +1,6 @@
 # Creating Spartacus app
 
-Below is a summary of the Spartacus official docs, full docs here: https://sap.github.io/spartacus-docs/building-the-spartacus-storefront-from-libraries/
+The steps below are pulled from the Spartacus official docs, which are published here: https://sap.github.io/spartacus-docs/building-the-spartacus-storefront-from-libraries/
 
 Make sure to install @angular/cli 8. Spartacus does not support 9. `npm install -g @angular/cli@8`
 

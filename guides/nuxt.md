@@ -90,6 +90,7 @@ And here is the `package.json` after the required modifications:
     "dev": "xdn run",
     "build": "xdn build",
     "start": "xdn run",
+    "prod": "xdn run --production",
     "generate": "nuxt generate"
   },
   "dependencies": {

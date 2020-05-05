@@ -45,7 +45,7 @@ This will automatically add all of the required dependencies and files to your p
 - `xdn.config.js`
 - `routes.js` - A default routes file that sends all requests to `nuxt.js`. You can update this file to add caching or proxy some URLs to a different origin as described later this in guide.
 
-3. Update your `package.json` with the follwing changes:
+3. Update your `package.json` with the following changes:
 
 - Move all of the `dependencies` in `package.json` to `devDependencies`
 - Add `dotenv`, `serverless`, `serverless-dotenv-plugin`, and `serverless-offline` to the `devDependencies`

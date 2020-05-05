@@ -19,7 +19,7 @@ Add the Spartacus scaffold via schematic
 ng add @spartacus/schematics --pwa --ssr
 ```
 
-Note the PWA and SSR parameters.
+Note the PWA and SSR parameters. These are needed for server-side rendering to work properly when deploying on the XDN.
 
 Replace the contents of src/app/app.component.html with:
 

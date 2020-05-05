@@ -1,0 +1,26 @@
+name: Publish to docs-pages
+on:
+  push:
+    branches:
+      - master
+jobs:
+  publish-docs:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - run: npm ci
+      - uses: actions/checkout@v2
+        with:
+          repository: moovweb/xdn-docs-pages
+          token: ${{ secrets.MOOVWEB_GITHUB_TOKEN }}
+          path: pages-repo
+      - name: Push guides to GitHub Pages repo
+        run: |
+          cd pages-repo
+          VERSION=$(tail -n 1 versions.csv)
+          cp -r ../guides ${VERSION}
+          git add -A
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git commit -am "Update guides for version ${VERSION}"
+          git push -u origin

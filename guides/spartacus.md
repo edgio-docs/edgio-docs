@@ -153,7 +153,7 @@ module.exports = app => {
 
 Here you can also configure all caching for individual paths.
 
-Configure Commerce baseUrl to point to XDN.
+Configure the commerce baseUrl to point to XDN.
 
 In `app.module.ts`:
 

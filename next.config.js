@@ -11,6 +11,10 @@ module.exports = withServiceWorker({
       test: /\.svg$/,
       use: ['@svgr/webpack'],
     })
+    config.module.rules.push({
+      test: /\.(jpg|png)$/,
+      loader: 'url-loader',
+    })
     return config
   },
 })

@@ -18,11 +18,12 @@
     "@material-ui/lab": "^4.0.0-alpha.32",
     "@material-ui/styles": "^4.5.0",
     "@svgr/webpack": "^5.1.0",
-    "@xdn/core": "^1.16.2",
-    "@xdn/next": "^1.16.2",
-    "@xdn/prefetch": "^1.16.2",
-    "@xdn/react": "^1.16.2",
+    "@xdn/core": "file:.yalc/@xdn/core",
+    "@xdn/next": "file:.yalc/@xdn/next",
+    "@xdn/prefetch": "file:.yalc/@xdn/prefetch",
+    "@xdn/react": "file:.yalc/@xdn/react",
     "clsx": "^1.0.4",
+    "file-loader": "^6.0.0",
     "isomorphic-fetch": "^2.2.1",
     "lodash": "^4.17.15",
     "lunr": "^2.3.8",
@@ -34,10 +35,11 @@
     "react-github-buttons": "^0.4.0",
     "react-markdown": "^4.2.2",
     "react-resizable": "^1.10.1",
-    "react-syntax-highlighter": "^12.2.1"
+    "react-syntax-highlighter": "^12.2.1",
+    "url-loader": "^4.1.0"
   },
   "devDependencies": {
-    "@xdn/cli": "^1.16.2",
+    "@xdn/cli": "file:.yalc/@xdn/cli",
     "prettier": "^1.19.1"
   }
 }

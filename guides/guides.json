@@ -82,7 +82,7 @@
       },
       {
         "text": "Spartacus",
-        "icon": "angular",
+        "icon": "spartacus",
         "as": "/guides/spartacus",
         "href": "/guides/[...guide]"
       }

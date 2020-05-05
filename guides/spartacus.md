@@ -13,7 +13,7 @@ ng new xdn-spartacus-app --style=scss
 cd xdn-spartacus-app
 ```
 
-Add Spartacus scaffold via schematic
+Add the Spartacus scaffold via schematic
 
 ```
 ng add @spartacus/schematics --pwa --ssr

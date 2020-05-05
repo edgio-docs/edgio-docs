@@ -108,7 +108,7 @@ And here is the `package.json` after the required modifications:
 }
 ```
 
-The next few sections of this guide explain how the XDN interacts with Nuxt's routing which is important if you are migrating an existing application. If you just created a new nuxt app, you can jump to [Running Locally](#section-running-locally) and come back to these sections later.
+The next few sections of this guide explain how the XDN interacts with Nuxt's routing, which is important if you are migrating an existing application. If you just created a new nuxt app, you can jump to [Running Locally](#section-running-locally) and come back to these sections later.
 
 ## Routing
 

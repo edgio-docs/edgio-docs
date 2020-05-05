@@ -107,8 +107,6 @@ module.exports = {
 Configure a backend in `xdn.config.js` that points to the commerce API:
 
 ```diff
-"use strict";
-
 // This file was automatically added by xdn deploy.
 // You should commit this file to source control.
 

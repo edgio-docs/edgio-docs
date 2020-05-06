@@ -17,7 +17,32 @@ The path to your routes file relative to the root of your app.  Defaults to `rou
 
 ## server
 
-The path to a custom server used to run your JavaScript functions in the cloud.  The function takes an [http.ClientRequest](https://nodejs.org/api/http.html#http_class_http_clientrequest) and an [http.ServerResponse](https://nodejs.org/api/http.html#http_class_http_serverresponse). An [Express Application](https://expressjs.com/en/4x/api.html#app) can also be used here.
+Allows you to configure a custom server used to run your JavaScript functions in the cloud. The value is an object with two properties:
+
+* path - The path to the custom server module 
+* export - The name of the export. You don't need to specify this if using `export default`.
+
+The custom server module must export a function which accepts a [http.ClientRequest](https://nodejs.org/api/http.html#http_class_http_clientrequest) and an [http.ServerResponse](https://nodejs.org/api/http.html#http_class_http_serverresponse). An [Express Application](https://expressjs.com/en/4x/api.html#app) can also be used here.
+
+** Example **
+
+```
+// xdn.config.js
+
+module.exports = {
+  server: {
+    path: '/server/server.js'
+  }
+}
+```
+
+```
+// server/server.js
+
+export default function(req, res) {
+  // send a response and call res.end()
+}
+```
 
 ## includeNodeModules
 

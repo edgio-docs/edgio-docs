@@ -53,3 +53,73 @@ xdn deploy my-site --token=$XDN_DEPLOY_TOKEN
 ```
 
 You should always store your deploy token using your CI environment's secrets manager. Never commit your deploy token to source control.
+
+## GitHub Actions
+
+Here is an example GitHub action that deploys your site to the Moovweb XDN:
+
+This action assumes that you have created environments called "staging" and "production" and you have created a deploy key for your site and added it as a secret in your repo called "xdn_deploy_token".
+
+```yml
+# Add this file to your project at .github/workflows/xdn.yml
+#
+# This GitHub action deploys your site on the Moovweb XDN.
+#
+# The site is deployed each time commits are pushed. The environment to which the changes are deployed
+# is based on the following rules:
+#
+# 1.) When pushing to master, changes deployed to the "staging" environment. This environment does not exist 
+#     by default. You must create it using moovweb.app.
+# 2.) When pushing to any other branch, changes are deployed to the default environment.  An unique URL is created based on the branch and deployment number.
+# 3.) When you publish a release in GitHub, the associated tag will be deployed to the production 
+#     environment. This environment does not exist by default, you must create it using moovweb.app.
+#     Therefore, you can push to production by creating a GitHub release, or by using the "Promote to Environment" 
+#     menu when viewing a deployment in moovweb.app.
+#
+# In order for this action to deploy your site, you must create a deploy token from the site settings page
+# in Moovweb.app and configure it as a secret called "xdn_deploy_token" in your repo on GitHub.
+
+name: Deploy branch to XDN
+
+on:
+  push:
+  release:
+    types: [published]
+
+jobs:
+  deploy-to-xdn:
+    # cancels the deployment for the automatic merge push created when tagging a release
+    if: contains(github.ref, 'refs/tags') == false || github.event_name == 'release'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check for XDN deploy token secret
+        if: env.xdn_deploy_token == ''
+        run: |
+          echo You must define the "xdn_deploy_token" secret in GitHub project settings
+          exit 1
+        env:
+          xdn_deploy_token: ${{secrets.xdn_deploy_token}}
+      - name: Extract branch name
+        shell: bash
+        run: echo "::set-env name=BRANCH_NAME::$(echo ${GITHUB_REF#refs/heads/} | sed 's/\//_/g')"
+      - uses: actions/checkout@v1
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 12
+      - name: Cache node modules
+        uses: actions/cache@v1
+        env:
+          cache-name: cache-node-modules
+        with:
+          path: ~/.npm # npm cache files are stored in `~/.npm` on Linux/macOS
+          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-build-${{ env.cache-name }}-
+            ${{ runner.os }}-build-
+            ${{ runner.os }}-
+      - run: npm ci
+      - name: Deploy to XDN
+        run: npm run deploy -- ${{'--branch=$BRANCH_NAME' || ''}} --token=$xdn_deploy_token ${{github.event_name == 'push' && env.BRANCH_NAME == 'master' && '--environment=staging' || ''}} ${{github.event_name == 'release' && '--environment=production' || ''}}
+        env:
+          xdn_deploy_token: ${{secrets.xdn_deploy_token}}
+```

@@ -100,7 +100,9 @@ function Heading({ children, level }) {
 
   return (
     <Typography variant={`h${level + 1}`} className={classes.heading}>
-      <a href={`#${id}`}>{children}</a>
+      <a id={id} href={`#${id}`}>
+        {children}
+      </a>
       <LinkIcon style={{ marginLeft: 8, height: 20, width: 20 }} />
     </Typography>
   )

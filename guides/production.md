@@ -45,7 +45,7 @@ To create CSR and private key do the following:
 * On Linux/Unix you can install it by running the built-in OS package manager (e.g. `apt-get install openssl`, `apk add openssl` and so on)
 2. Go to the directory of your choice and create a configuration file `moovweb-xdn.conf` based on this template:
 
-```
+```properties
 [req]
 default_bits=2048
 

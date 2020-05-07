@@ -6,7 +6,7 @@ This guide shows you how to deploy an Angular application on the Moovweb XDN:
 
 If you don't already have an Angular application, you can create one using:
 
-```
+```bash
 npm install -g @angular/cli
 ng new my-xdn-angular-app
 ```
@@ -14,7 +14,7 @@ ng new my-xdn-angular-app
 You should now have a working starter app. Run `ng serve` to see the application running on `localhost:4200`.
 To deploy your Angular application on the Moovweb XDN it needs to support server-side rendering (SSR). To add SSR support run:
 
-```
+```bash
 ng add @nguniversal/express-engine
 ```
 
@@ -33,7 +33,7 @@ To integrate XDN:
 
 1. Install the XDN CLI globally:
 
-```
+```bash
 npm install -g @xdn/cli
 ```
 
@@ -108,13 +108,13 @@ new Router()
 
 To test your app locally, run:
 
-```
+```bash
 xdn run
 ```
 
 You can do a production build of your app and test it locally using:
 
-```
+```bash
 xdn build && xdn run --production
 ```
 
@@ -124,7 +124,7 @@ Setting `--production` runs your app exactly as it will be uploaded to the Moovw
 
 To deploy your app to the Moovweb XDN, run:
 
-```
+```bash
 xdn deploy
 ```
 

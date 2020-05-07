@@ -6,7 +6,7 @@ This guide shows you how to deploy a Next.js application on the Moovweb XDN:
 
 If you don't already have a next.js application, you can create one using:
 
-```
+```bash
 npm create next-app my-next-app
 ```
 
@@ -26,7 +26,7 @@ If you're already using `next-offline`, you should remove it in favor of `withSe
 
 2. Install the XDN CLI globally:
 
-```
+```bash
 npm install -g @xdn/cli
 ```
 
@@ -42,9 +42,9 @@ This will automatically add all of the required dependencies and files to your p
 
 ## Service Worker
 
-The `xdn init` command adds a service worker at `sw/service-worker.js`.  If you have an existing service worker that uses workbox, you can copy its contents into `sw/service-worker.js`, or con:
+The `xdn init` command adds a service worker at `sw/service-worker.js`.  If you have an existing service worker that uses workbox, you can copy its contents into `sw/service-worker.js`, or run:
 
-```
+```bash
 ```
 
 ## Routing
@@ -138,13 +138,13 @@ new Router()
 
 To test your app locally, run:
 
-```
+```bash
 xdn run
 ```
 
 You can do a production build of your app and test it locally using:
 
-```
+```bash
 xdn build && xdn run --production
 ```
 
@@ -154,7 +154,7 @@ Setting `--production` runs your app exactly as it will be uploaded to the Moovw
 
 To deploy your app to the Moovweb XDN, run:
 
-```
+```bash
 xdn deploy
 ```
 

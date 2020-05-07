@@ -22,12 +22,12 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-export default function Code({ value }) {
+export default function Code({ value, language = 'javascript' }) {
   const classes = useStyles()
 
   return (
     <div className={classes.root}>
-      <SyntaxHighlighter language="javascript" style={prism}>
+      <SyntaxHighlighter language={language} style={prism}>
         {value}
       </SyntaxHighlighter>
     </div>

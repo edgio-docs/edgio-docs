@@ -61,11 +61,11 @@ module.exports = app => {
       .match('/*path', ({ cache }) => {
         cache(htmlCacheConfig)
       })
-      .match('/reference/:version/api/:lib', ({ proxy, cache }) => {
+      .match('/docs/:version/api/:lib', ({ proxy, cache }) => {
         cache(htmlCacheConfig)
         return proxy('api', { path: '/xdn-docs-pages/{version}/api/{lib}/' })
       })
-      .match('/reference/:version/*path', ({ proxy, cache }) => {
+      .match('/docs/:version/api/*path', ({ proxy, cache }) => {
         cache(htmlCacheConfig)
         return proxy('api', { path: '/xdn-docs-pages/{version}/{path}' })
       })

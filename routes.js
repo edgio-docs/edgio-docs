@@ -61,13 +61,13 @@ module.exports = app => {
       .match('/*path', ({ cache }) => {
         cache(htmlCacheConfig)
       })
-      .match('/docs/:version/api/:lib', ({ proxy, cache }) => {
+      .match('/docs/*path/', ({ proxy, cache }) => {
         cache(htmlCacheConfig)
-        return proxy('api', { path: '/xdn-docs-pages/{version}/api/{lib}/' })
+        return proxy('api', { path: '/xdn-docs-pages/{path}/' })
       })
-      .match('/docs/:version/api/*path', ({ proxy, cache }) => {
+      .match('/docs/*path', ({ proxy, cache }) => {
         cache(htmlCacheConfig)
-        return proxy('api', { path: '/xdn-docs-pages/{version}/{path}' })
+        return proxy('api', { path: '/xdn-docs-pages/{path}' })
       })
       .use(nextMiddleware)
       .fallback(({ redirect }) => {

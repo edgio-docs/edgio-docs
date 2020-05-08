@@ -65,9 +65,9 @@ module.exports = app => {
         cache(htmlCacheConfig)
         return proxy('api', { path: '/xdn-docs-pages/{version}/api/{lib}/' })
       })
-      .match('/reference/*path', ({ proxy, cache }) => {
+      .match('/reference/:version/*path', ({ proxy, cache }) => {
         cache(htmlCacheConfig)
-        return proxy('api', { path: '/xdn-docs-pages/{path}' })
+        return proxy('api', { path: '/xdn-docs-pages/{version}/{path}' })
       })
       .use(nextMiddleware)
       .fallback(({ redirect }) => {

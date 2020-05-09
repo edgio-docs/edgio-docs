@@ -70,8 +70,10 @@ module.exports = app => {
         return proxy('api', { path: '/xdn-docs-pages/{version}/api/{path}' })
       })
       .use(nextMiddleware)
-      .fallback(({ redirect }) => {
-        return redirect('/', 302)
+      .fallback(({ send, setResponseHeader }) => {
+        setResponseHeader('location', '/')
+        return send('', 302)
+        // return redirect('/', 302)
       })
   )
 }

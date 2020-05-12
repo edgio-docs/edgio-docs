@@ -21,7 +21,7 @@ To create an environment, navigate to your site and select the *Environments* ta
 
 To deploy to an environment, you can `xdn deploy` with the `--environment` option:
 
-```
+```bash
 xdn deploy <team name> --environment=<environment name>
 ```
 

@@ -10,13 +10,13 @@ To deploy your site to the Moovweb XDN, you must first sign up for an account. [
 
 Next, globally install the XDN cli using npm:
 
-```js
+```bash
 npm i -g @xdn/cli
 ```
 
 Or using yarn:
 
-```js
+```bash
 yarn global add @xdn/cli
 ```
 
@@ -24,7 +24,7 @@ yarn global add @xdn/cli
 
 Then, run the following to deploy your site to your private space on the Moovweb XDN:
 
-```
+```bash
 xdn deploy
 ```
 
@@ -48,7 +48,7 @@ To deploy from your CI environment, create a deploy token using the site setting
 
 Then use the `--token` option when deploying from your CI script:
 
-```
+```bash
 xdn deploy my-site --token=$XDN_DEPLOY_TOKEN
 ```
 

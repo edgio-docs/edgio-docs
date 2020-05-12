@@ -6,7 +6,7 @@ This guide shows you how to deploy a Next.js application on the Moovweb XDN:
 
 If you don't already have a Next.js application, you can create one using:
 
-```
+```bash
 npm create next-app my-next-app
 ```
 
@@ -26,7 +26,7 @@ If you're already using `next-offline`, you should remove it in favor of `withSe
 
 2. Install the XDN CLI globally:
 
-```
+```bash
 npm install -g @xdn/cli
 ```
 
@@ -46,7 +46,7 @@ This will automatically add all of the required dependencies and files to your p
 
 To simulate your app within the XDN locally, run:
 
-```
+```bash
 npm run xdn:start
 ```
 
@@ -54,7 +54,7 @@ npm run xdn:start
 
 To deploy your app to the XDN, run:
 
-```
+```bash
 npm run xdn:deploy
 ```
 

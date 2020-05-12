@@ -10,13 +10,13 @@ If you do not have Node.js installed on your system, download and install it fro
 
 If you have not already done so, install the [XDN CLI](cli)
 
-```
+```bash
 npm i -g @xdn/cli
 ```
 
 If you don't already have a nuxt.js application, you can create one using:
 
-```
+```bash
 npm create nuxt-app my-nuxt-app
 ```
 
@@ -38,7 +38,7 @@ module.exports = {
 
 2. Install the XDN CLI globally:
 
-```
+```bash
 npm install -g @xdn/cli
 ```
 
@@ -60,7 +60,7 @@ This will automatically add all of the required dependencies and files to your p
 
 As an example, here's the original `package.json` from Nuxt's create step:
 
-```
+```json
 {
   "name": "my-nuxt-app",
   "version": "1.0.0",
@@ -85,7 +85,7 @@ As an example, here's the original `package.json` from Nuxt's create step:
 
 And here is the `package.json` after the required modifications:
 
-```
+```json
 {
   "name": "my-nuxt-app",
   "version": "1.0.0",
@@ -194,7 +194,7 @@ module.exports = new Router()
 
 Finally, define the vanity route as an `alias` in a `<router>` tag within the page file:
 
-```vue
+```jsx
 <router>
 {
   alias: [
@@ -231,13 +231,13 @@ new Router()
 
 To test your app locally, run:
 
-```
+```bash
 xdn run
 ```
 
 You can do a production build of your app and test it locally using:
 
-```
+```bash
 xdn build && xdn run --production
 ```
 
@@ -247,7 +247,7 @@ Setting `--production` runs your app exactly as it will be uploaded to the Moovw
 
 Deploying requires an account on the Moovweb XDN. [Sign up here for free.](https://moovweb.app/signup) Once you have an account, you can deploy to the Moovweb XDN:
 
-```
+```bash
 xdn deploy
 ```
 
@@ -266,14 +266,14 @@ This may be because you have a custom server framework (such as Express). Please
 
 If you get a command not found error such as:
 
-```
+```bash
 $ xdn init
 - bash: xdn: command not found
 ```
 
 Make sure you installed the XDN CLI
 
-```
+```bash
 npm i -g @xdn/cli
 ```
 
@@ -284,20 +284,20 @@ If you previously installed the XDN CLI, make sure your version is current.
 
 Check npm for the latest released version of the CLI:
 
-```
+```bash
 $ npm show @xdn/cli version
 1.16.2
 ```
 
 Compare the latest release against the version currently installed on your system:
 
-```
+```bash
 $ xdn --version
 1.16.2
 ```
 
 If your version is out of date you can update it by running
 
-```
+```bash
 npm update -g @xdn/cli
 ```

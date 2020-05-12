@@ -87,13 +87,13 @@ The proxy method allows you to route the request to an upstream site configured 
 | ------------ | ------ | ------------------------------------------------------------------------------------------------------------------------------------- |
 | backend      | String | The name of an backend configured in xdn.config.js to which the request should be routed                                              |
 | options      | Object | An object with the following params                                                                                                   |
-| options.path | String | The path to request from the upstream site. You can reference params in your route pattern using `{variable}`. See the example below. |
+| options.path | String | The path to request from the upstream site. You can reference params in your route pattern using `:variable`. See the example below. |
 
 ```js
 // routes.js
 
 router.match('/blog/:slug', async ({ proxy }) => {
-  await proxy('legacy', { path: '/insights/{slug}' })
+  await proxy('legacy', { path: '/insights/:slug' })
 })
 ```
 
@@ -115,12 +115,12 @@ The redirect method allows you to redirect the browser to a new URL from the net
 
 | Name   | Type    | Description                                                                                                |
 | ------ | ------- | ---------------------------------------------------------------------------------------------------------- |
-| path   | String  | The target path. You can reference params in your route pattern using `{variable}`. See the example below. |
+| path   | String  | The target path. You can reference params in your route pattern using `:variable`. See the example below. |
 | status | Integer | The HTTP response status to send. Defaults to `302` (Temporary redirect).                                  |
 
 ```js
 router.match('/sale/:product', ({ redirect }) => {
-  redirect('/holiday-sale/{product}', 301) // reference a path variable and send a 301 http status
+  redirect('/holiday-sale/:product', 301) // reference a path variable and send a 301 http status
 })
 ```
 
@@ -221,7 +221,7 @@ Serves a static asset.
 
 ```js
 route.match('/static/:file', async ({ serveStatic }) => {
-  await serveStatic('static/{file}')
+  await serveStatic('static/:file')
 })
 ```
 

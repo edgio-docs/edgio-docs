@@ -87,11 +87,11 @@
     "items": [
       {
         "text": "@xdn/core",
-        "as": "/docs/api/core"
+        "as": "/docs/api/core/"
       },
       {
         "text": "@xdn/prefetch",
-        "as": "/docs/api/prefetch"
+        "as": "/docs/api/prefetch/"
       }
     ]
   },

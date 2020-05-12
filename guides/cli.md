@@ -148,3 +148,13 @@ xdn completion >> ~/.zshrc
 ```
 xdn completion >> ~/.bashrc
 ```
+
+## docs
+
+Open the XDN documentation in your browser.
+
+#### Example
+
+```
+xdn docs
+```

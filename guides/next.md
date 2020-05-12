@@ -4,7 +4,7 @@ This guide shows you how to deploy a Next.js application on the Moovweb XDN:
 
 ## Getting Started
 
-If you don't already have a next.js application, you can create one using:
+If you don't already have a Next.js application, you can create one using:
 
 ```
 npm create next-app my-next-app
@@ -34,17 +34,75 @@ npm install -g @xdn/cli
 
 This will automatically add all of the required dependencies and files to your project. These include:
 
-- The `@xdn/core` package
-- The `@xdn/next` package
+- The `@xdn/core` package - Allows you to declare routes and deploy your application on the Moovweb XDN
+- The `@xdn/next` package - Provides router middleware that automatically adds Next.js pages and api routes to the XDN router.
+- The `@xdn/prefetch` package - Allows you to configure a service worker to prefetch and cache pages to improve browsing speed
+- The `@xdn/react` package - Provides a `Prefetch` component for prefetching pages
 - `xdn.config.js`
-- `routes.js` - A default routes file that sends all requests to `next.js`. Update this file to add caching or proxy some URLs to a different origin.
+- `routes.js` - A default routes file that sends all requests to Next.js. Update this file to add caching or proxy some URLs to a different origin.
 - `sw/service-worker.js` A service worker implemented using Workbox.
 
-## Service Worker
+## Running Locally
 
-The `xdn init` command adds a service worker at `sw/service-worker.js`.  If you have an existing service worker that uses workbox, you can copy its contents into `sw/service-worker.js`, or con:
+To simulate your app within the XDN locally, run:
 
 ```
+npm run xdn:start
+```
+
+## Deploying
+
+To deploy your app to the XDN, run:
+
+```
+npm run xdn:deploy
+```
+
+See [deploying](deploying) for more information.
+
+## Prefetching
+
+The `xdn init` command adds a service worker based on [Workbox](https://developers.google.com/web/tools/workbox) at `sw/service-worker.js`.  If you have an existing service worker that uses workbox, you can copy its contents into `sw/service-worker.js` and simply add the following to your service worker:
+
+```js
+import { Prefetcher } from '@xdn/prefetch/sw'
+
+new Prefetcher().route()
+```
+
+The above allows you to prefetch pages from the XDN's edge cache to greatly improve browsing speed. To prefetch a page, add the `Prefetch` component from `@xdn/react` to any Next `Link` element:
+
+```js
+import { Prefetch } from '@xdn/react'
+import Link from 'next/link'
+
+export default function ProductListing({ products }) {
+  return (
+    <ul>
+      {products.map((product, i) => (
+        <li key={i}>
+          <Link as={product.url} href="/p/[productId]">
+            <Prefetch>
+              <a><img src={product.thumbnail}></a>
+            </Prefetch>
+          </Link>
+        </li>
+      ))}
+    </ul>
+  )
+}
+```
+
+The `Prefetch` component fetches data for the linked page from the XDN's edge cache and adds it to the service worker's cache when the link becomes visible in the viewport. When the user taps on the link, the page transition will be instantaneous because the browser won't need to fetch data from the network.
+
+The `Prefetch` component assumes you're using `getServerSideProps` and will prefetch the data URL corresponding to the target page. If you need to prefetch a different url, you can do so using the `url` prop:
+
+```js
+<Link as={product.url} href="/p/[productId]">
+  <Prefetch url="/some/url/to/prefetch">
+    <a><img src={product.thumbnail}></a>
+  </Prefetch>
+</Link>
 ```
 
 ## Routing
@@ -56,16 +114,26 @@ The XDN supports Next.js's built-in routing scheme for both page and api routes,
 // You should commit this file to source control.
 const { Router } = require('@xdn/core/router')
 const { createNextPlugin } = require('@xdn/next')
+const { nextMiddleware } = createNextPlugin()
 
-module.exports = app => {
-  const { nextMiddleware } = createNextPlugin(app)
-  return new Router().use(nextMiddleware)
-}
+module.exports = new Router()
+  .match('/service-worker.js', ({ cache, serveStatic }) => {
+    cache({
+      edge: {
+        maxAgeSeconds: 60 * 60 * 24 * 365,
+      },
+      browser: {
+        maxAgeSeconds: 0,
+      },
+    })
+    return serveStatic('.next/static/service-worker.js')
+  })
+  .use(nextMiddleware)
 ```
 
 ### Middleware
 
-In the code above `nextMiddleware` adds all Next.js routes router based on the /pages directory. You can add additional routes before and after the middleware, for example to send some URLs to an alternate backend. This is useful for gradually replacing an existing site with a new Next.js app.
+In the code above `nextMiddleware` adds all Next.js routes to the router based on the `/pages` directory. You can add additional routes before and after the middleware, for example to send some URLs to an alternate backend. This is useful for gradually replacing an existing site with a new Next.js app.
 
 A popular use case is to fallback to a legacy site for any route that your Next.js app isn't configured to handle:
 
@@ -113,7 +181,7 @@ module.exports = app => {
 
 ### Caching
 
-The easiest way to add edge caching to your next.js app is to add caching routes before the middleware.  For example, 
+The easiest way to add edge caching to your Next.js app is to add caching routes before the middleware.  For example, 
 imagine you have `/pages/c/[categoryId].js`:
 
 
@@ -133,29 +201,3 @@ new Router()
   })
   .use(nextMiddleware)
 ```
-
-### Running Locally
-
-To test your app locally, run:
-
-```
-xdn run
-```
-
-You can do a production build of your app and test it locally using:
-
-```
-xdn build && xdn run --production
-```
-
-Setting `--production` runs your app exactly as it will be uploaded to the Moovweb cloud using serverless-offline.
-
-### Deploying
-
-To deploy your app to the Moovweb XDN, run:
-
-```
-xdn deploy
-```
-
-See [deploying](deploying) for more information.

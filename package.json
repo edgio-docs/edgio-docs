@@ -18,7 +18,7 @@
     "@material-ui/lab": "^4.0.0-alpha.32",
     "@material-ui/styles": "^4.5.0",
     "@svgr/webpack": "^5.1.0",
-    "@xdn/core": "^1.20.0",
+    "@xdn/core": "file:.yalc/@xdn/core",
     "@xdn/next": "^1.20.0",
     "@xdn/prefetch": "^1.20.0",
     "@xdn/react": "^1.20.0",

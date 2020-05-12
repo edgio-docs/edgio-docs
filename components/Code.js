@@ -2,9 +2,17 @@ import React from 'react'
 import { PrismLight as SyntaxHighlighter } from 'react-syntax-highlighter'
 import { atomDark as prism } from 'react-syntax-highlighter/dist/cjs/styles/prism'
 import { makeStyles } from '@material-ui/core/styles'
+import bash from 'react-syntax-highlighter/dist/cjs/languages/prism/bash'
 import jsx from 'react-syntax-highlighter/dist/cjs/languages/prism/jsx'
+import json from 'react-syntax-highlighter/dist/cjs/languages/prism/json'
+import properties from 'react-syntax-highlighter/dist/cjs/languages/prism/properties'
+import yml from 'react-syntax-highlighter/dist/cjs/languages/prism/yaml'
 
+SyntaxHighlighter.registerLanguage('bash', bash)
+SyntaxHighlighter.registerLanguage('json', json)
 SyntaxHighlighter.registerLanguage('jsx', jsx)
+SyntaxHighlighter.registerLanguage('properties', properties)
+SyntaxHighlighter.registerLanguage('yml', yml)
 
 const useStyles = makeStyles(theme => ({
   root: {

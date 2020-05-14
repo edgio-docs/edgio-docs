@@ -76,7 +76,7 @@ Select the amount of traffic to send to each destination and click "Apply".
 
 You can add additional rules to, for example, allow testers to get to the new experience all of the time by adding a cookie. Here's an example:
 
-![edit](/images/split-testing/critera.png)
+![edit](/images/split-testing/criteria.png)
 
 The order of rules is critical. Rules are matched from top to bottom.  When handling a requst, the first matching rule will be used. Given the rules we've set up in the examples above, we need to move the force-new cookie rule to the top so that it takes precedence since the other rule contains no critera.  We can reorder the rules by dragging and dropping:
 

@@ -1,17 +1,15 @@
 import fetch from 'isomorphic-fetch'
 import Head from 'next/dist/next-server/lib/head'
 import React from 'react'
+import Footer from "../../components/Footer";
 import Markdown from '../../components/Markdown'
 import Nav from '../../components/nav/Nav'
 import PageWrapper from '../../components/PageWrapper'
 import getBaseUrl from '../../components/utils/getBaseUrl'
-import useVersioning from '../../components/versioning'
 import ApiLink from '../../components/ApiLink'
 import { Typography } from '@material-ui/core'
 
 export default function Guide({ notFound, markdown, navData, guide }) {
-  const { isLatestVersion } = useVersioning()
-
   if (notFound) {
     return <Typography>Page not found.</Typography>
   }
@@ -33,11 +31,12 @@ export default function Guide({ notFound, markdown, navData, guide }) {
         <title>Moovweb XDN Documentation {pageTitle ? `- ${pageTitle}` : ''}</title>
       </Head>
       <Markdown source={markdown} />
+      <Footer navData={navData} guide={guide} />
     </PageWrapper>
   )
 }
 
-Guide.getInitialProps = async function({ req, query, version, versions }) {
+Guide.getInitialProps = async function({ req, query, version }) {
   const baseUrl = getBaseUrl(req)
   let { guide } = query
 

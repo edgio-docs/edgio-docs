@@ -1,3 +1,4 @@
+import { ChevronLeft, ChevronRight } from "@material-ui/icons";
 import React from 'react'
 import makeStyles from '@material-ui/core/styles/makeStyles'
 import ReactIcon from './react.svg'
@@ -7,7 +8,9 @@ import AngularIcon from './angular.svg'
 const icons = {
   react: ReactIcon,
   vue: VueIcon,
-  angular: AngularIcon
+  angular: AngularIcon,
+  prev: ChevronLeft,
+  next: ChevronRight
 }
 
 export const styles = theme => ({

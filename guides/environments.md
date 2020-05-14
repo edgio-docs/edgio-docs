@@ -45,3 +45,38 @@ As you make changes they are saved in the draft version. Once your ready to depl
 ![activate](/images/environments/activate.png)
 
 Doing so will redeploy the environment's active deployment updated with the new environment configuration.
+
+## Environment Variables
+
+The variables you configure on an environment can be accessed in your code using `process.env`.  A common use case is to configure
+different backend host names in `xdn.config.js` based on the environment.  Here is an example where the origin backend is determined 
+by a `HOST` environment variable.  
+
+```js
+// xdn.config.js
+const defaultHostname = 'origin.my-site.com'
+
+module.exports = {
+  backends: {
+    origin: {
+      domainOrIp: process.env.HOST || defaultHostname, // Falling back to defaultHostname is needed during the initial 
+      hostHeader: process.env.HOST || defaultHostname, // deployment of your site, when an environment is not yet configured.
+    },
+  },
+}
+```
+
+Note that your `xdn.config.js` file is loaded during deployment to configure the edge for your environment.  The first time you 
+deploy your site, there won't be any environment variables defined, so you need to include defaults in `xdn.config.js` as
+shown in the example above.
+
+## dotenv
+
+To configure secrets during local development, we recommend using [dotenv](https://github.com/motdotla/dotenv). 
+If you would like to reference environment variables read from `.env` in `xdn.config.js`, add the following at the top
+of `xdn.config.js`
+
+```js
+// xdn.config.js
+require('dotenv').config()
+```

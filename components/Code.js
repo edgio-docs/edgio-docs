@@ -1,12 +1,15 @@
-import React from 'react'
+import { FileCopyTwoTone } from '@material-ui/icons'
+import React, { useState } from 'react'
 import { PrismLight as SyntaxHighlighter } from 'react-syntax-highlighter'
 import { atomDark as prism } from 'react-syntax-highlighter/dist/cjs/styles/prism'
-import { makeStyles } from '@material-ui/core/styles'
+import { IconButton, Snackbar, makeStyles } from '@material-ui/core'
+import { Alert } from '@material-ui/lab'
 import bash from 'react-syntax-highlighter/dist/cjs/languages/prism/bash'
 import jsx from 'react-syntax-highlighter/dist/cjs/languages/prism/jsx'
 import json from 'react-syntax-highlighter/dist/cjs/languages/prism/json'
 import properties from 'react-syntax-highlighter/dist/cjs/languages/prism/properties'
 import yml from 'react-syntax-highlighter/dist/cjs/languages/prism/yaml'
+import copyToClipboard from './utils/copyToClipboard'
 
 SyntaxHighlighter.registerLanguage('bash', bash)
 SyntaxHighlighter.registerLanguage('json', json)
@@ -28,16 +31,53 @@ const useStyles = makeStyles(theme => ({
       border: `1px solid ${theme.palette.divider}`,
     },
   },
+  copyBtn: {
+    position: 'absolute',
+    cursor: 'pointer',
+    right: theme.spacing(3),
+    color: theme.palette.common.white,
+  },
 }))
 
 export default function Code({ value, language = 'javascript' }) {
   const classes = useStyles()
+  const [copyResult, setCopyResult] = useState({ open: false })
+
+  const onCopyClick = () => {
+    copyToClipboard(value)
+      .then(() => {
+        setCopyResult({ open: true, message: 'Copied to clipboard' })
+      })
+      .catch(() => {
+        setCopyResult({ open: true, message: 'Could not copy to clipboard' })
+      })
+  }
+
+  const onClose = () => {
+    setCopyResult({ open: false })
+  }
 
   return (
     <div className={classes.root}>
+      <IconButton className={classes.copyBtn} onClick={onCopyClick}>
+        <FileCopyTwoTone fontSize="small" />
+      </IconButton>
       <SyntaxHighlighter language={language} style={prism}>
         {value}
       </SyntaxHighlighter>
+      <Snackbar
+        anchorOrigin={{
+          vertical: 'bottom',
+          horizontal: 'right',
+        }}
+        open={copyResult.open}
+        onClose={onClose}
+        autoHideDuration={4000}
+      >
+        <Alert variant="filled" severity="info" onClose={onClose}>
+          {copyResult.message}
+        </Alert>
+      </Snackbar>
     </div>
   )
 }

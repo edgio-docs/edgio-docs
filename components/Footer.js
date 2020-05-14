@@ -1,12 +1,12 @@
-import { Divider, Grid, makeStyles } from "@material-ui/core";
-import { lightBlue } from "@material-ui/core/colors";
-import clsx from "clsx";
+import { Divider, Grid, makeStyles } from '@material-ui/core'
+import { lightBlue } from '@material-ui/core/colors'
+import clsx from 'clsx'
 import React from 'react'
 import Link from './nav/Link'
 
 const useStyles = makeStyles(theme => ({
   divider: {
-    marginTop: theme.spacing(4)
+    marginTop: theme.spacing(4),
   },
   buttonGrid: {
     margin: theme.spacing(2, 0, 3, 0),
@@ -15,16 +15,16 @@ const useStyles = makeStyles(theme => ({
     borderRadius: 4,
     color: 'blue',
     '&:hover': {
-      background: theme.palette.grey[100]
-    }
+      background: theme.palette.grey[100],
+    },
   },
   prevLink: {
     padding: theme.spacing(1, 2, 1, 1),
   },
   nextLink: {
     padding: theme.spacing(1, 1, 1, 2),
-    flexDirection: 'row-reverse'
-  }
+    flexDirection: 'row-reverse',
+  },
 }))
 
 const GUIDES_REGEX = /\/guides\//
@@ -45,8 +45,16 @@ export default function Footer({ guide, navData }) {
     <>
       <Divider className={classes.divider} />
       <Grid container justify="space-between" className={classes.buttonGrid}>
-        <Grid item>{prevGuide && <Link {...prevGuide} icon="prev" className={clsx(classes.link, classes.prevLink)} />}</Grid>
-        <Grid item>{nextGuide && <Link {...nextGuide} icon="next" className={clsx(classes.link, classes.nextLink)} />}</Grid>
+        <Grid item>
+          {prevGuide && (
+            <Link {...prevGuide} icon="prev" className={clsx(classes.link, classes.prevLink)} />
+          )}
+        </Grid>
+        <Grid item>
+          {nextGuide && (
+            <Link {...nextGuide} icon="next" className={clsx(classes.link, classes.nextLink)} />
+          )}
+        </Grid>
       </Grid>
     </>
   )

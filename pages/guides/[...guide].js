@@ -7,7 +7,7 @@ import Nav from '../../components/nav/Nav'
 import PageWrapper from '../../components/PageWrapper'
 import getBaseUrl from '../../components/utils/getBaseUrl'
 import ApiLink from '../../components/ApiLink'
-import { Typography } from '@material-ui/core'
+import { Typography, makeStyles } from '@material-ui/core'
 
 export default function Guide({ notFound, markdown, navData, guide }) {
   if (notFound) {

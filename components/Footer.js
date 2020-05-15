@@ -1,29 +1,21 @@
-import { Divider, Grid, makeStyles } from '@material-ui/core'
-import { lightBlue } from '@material-ui/core/colors'
+import { Divider, Grid, makeStyles, Button } from '@material-ui/core'
+import NextIcon from '@material-ui/icons/ArrowForward'
+import PreviousIcon from '@material-ui/icons/ArrowBack'
 import clsx from 'clsx'
 import React from 'react'
-import Link from './nav/Link'
+import Link from 'next/link'
 
 const useStyles = makeStyles(theme => ({
   divider: {
     marginTop: theme.spacing(4),
   },
-  buttonGrid: {
-    margin: theme.spacing(2, 0, 3, 0),
+  label: {
+    marginRight: theme.spacing(1),
   },
   link: {
-    borderRadius: 4,
-    color: 'blue',
-    '&:hover': {
-      background: theme.palette.grey[100],
-    },
-  },
-  prevLink: {
-    padding: theme.spacing(1, 2, 1, 1),
-  },
-  nextLink: {
-    padding: theme.spacing(1, 1, 1, 2),
-    flexDirection: 'row-reverse',
+    textTransform: 'none',
+    fontWeight: 'normal',
+    margin: theme.spacing(6, 0, 3, 2),
   },
 }))
 
@@ -42,20 +34,34 @@ export default function Footer({ guide, navData }) {
   }
 
   return (
-    <>
-      <Divider className={classes.divider} />
-      <Grid container justify="space-between" className={classes.buttonGrid}>
-        <Grid item>
-          {prevGuide && (
-            <Link {...prevGuide} icon="prev" className={clsx(classes.link, classes.prevLink)} />
-          )}
-        </Grid>
-        <Grid item>
-          {nextGuide && (
-            <Link {...nextGuide} icon="next" className={clsx(classes.link, classes.nextLink)} />
-          )}
-        </Grid>
-      </Grid>
-    </>
+    <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
+      {prevGuide && <GuideLink variant="previous" guide={prevGuide} />}
+      {nextGuide && <GuideLink variant="next" guide={nextGuide} />}
+    </div>
+  )
+}
+
+function GuideLink({ variant, guide }) {
+  const classes = useStyles()
+  const linkProps = {}
+
+  if (variant === 'next') {
+    linkProps.endIcon = <NextIcon />
+  } else {
+    linkProps.startIcon = <PreviousIcon />
+  }
+
+  return (
+    <Link as={guide.as} href={guide.href}>
+      <Button
+        variant={variant === 'next' ? 'contained' : undefined}
+        elevation={3}
+        color="primary"
+        className={classes.link}
+        {...linkProps}
+      >
+        {variant === 'next' ? 'Next' : 'Previous'}: {guide.text}
+      </Button>
+    </Link>
   )
 }

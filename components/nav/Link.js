@@ -15,6 +15,7 @@ const useStyles = makeStyles(theme => ({
     display: 'flex',
     flexDirection: 'row',
     textDecoration: 'none',
+    alignItems: 'center',
     color: theme.palette.text.primary,
     '&:hover': {
       textDecoration: 'underline',

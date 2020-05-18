@@ -56,7 +56,7 @@ This command will also update your `package.json` with the following changes:
 - Moves all of the `dependencies` to `devDependencies`
 - Adds `dotenv`, `serverless`, `serverless-dotenv-plugin`, and `serverless-offline` to the `devDependencies`
 - Adds `nuxt-start` as the sole module in `dependencies`
-- Changes the `scripts` to call `xdn` instead of `nuxt`
+- Adds several `scripts` to run the available `xdn` commands
 
 As an example, here's the original `package.json` from Nuxt's create step:
 

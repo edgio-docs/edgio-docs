@@ -53,7 +53,7 @@ module.exports = app => {
       // the following route is needed for older guides and should not be removed
       .match('/guides/images/*path', ({ cache, serveStatic }) => {
         cache(staticCacheConfig)
-        return serveStatic('public/images/{path}')
+        return serveStatic('public/images/*path')
       })
       .match('/api/*path', ({ cache }) => {
         cache(apiCacheConfig)
@@ -63,11 +63,11 @@ module.exports = app => {
       })
       .match('/docs/:version/api/*path/', ({ proxy, cache }) => {
         cache(htmlCacheConfig)
-        return proxy('api', { path: '/xdn-docs-pages/{version}/api/{path}/' })
+        return proxy('api', { path: '/xdn-docs-pages/:version/api/*path/' })
       })
       .match('/docs/:version/api/*path', ({ proxy, cache }) => {
         cache(htmlCacheConfig)
-        return proxy('api', { path: '/xdn-docs-pages/{version}/api/{path}' })
+        return proxy('api', { path: '/xdn-docs-pages/:version/api/*path' })
       })
       .use(nextMiddleware)
       .fallback(({ redirect }) => {

@@ -44,19 +44,19 @@ npm install -g @xdn/cli
 
 3. Run `xdn init`
 
-This will automatically add all of the required dependencies and files to your project. These include:
+This will automatically add all the required dependencies and files to your project. These include:
 
 - The `@xdn/core` package
 - The `@xdn/nuxt` package
 - `xdn.config.js`
-- `routes.js` - A default routes file that sends all requests to `nuxt.js`. You can update this file to add caching or proxy some URLs to a different origin as described later this in guide.
+- `routes.js` - A default routes file that sends all requests to `nuxt.js`. You can update this file to add caching or proxy some URLs to a different origin as described later in this guide.
 
-3. Update your `package.json` with the following changes:
+This command will also update your `package.json` with the following changes:
 
-- Move all of the `dependencies` in `package.json` to `devDependencies`
-- Add `dotenv`, `serverless`, `serverless-dotenv-plugin`, and `serverless-offline` to the `devDependencies`
-- Add `nuxt-start` as the sole module in `dependencies`
-- Change the `scripts` to call `xdn` instead of `nuxt.
+- Moves all of the `dependencies` to `devDependencies`
+- Adds `dotenv`, `serverless`, `serverless-dotenv-plugin`, and `serverless-offline` to the `devDependencies`
+- Adds `nuxt-start` as the sole module in `dependencies`
+- Adds several `scripts` to run the available `xdn` commands
 
 As an example, here's the original `package.json` from Nuxt's create step:
 
@@ -74,9 +74,9 @@ As an example, here's the original `package.json` from Nuxt's create step:
     "generate": "nuxt generate"
   },
   "dependencies": {
-    "@xdn/cli": "^1.16.2",
-    "@xdn/core": "^1.16.2",
-    "@xdn/nuxt": "^1.16.2",
+    "@xdn/cli": "^1.23.2",
+    "@xdn/core": "^1.23.2",
+    "@xdn/nuxt": "^1.23.2",
     "nuxt": "^2.0.0"
   },
   "devDependencies": {}
@@ -103,9 +103,9 @@ And here is the `package.json` after the required modifications:
     "nuxt-start": "^2.12.2"
   },
   "devDependencies": {
-    "@xdn/cli": "^1.16.2",
-    "@xdn/core": "^1.16.2",
-    "@xdn/nuxt": "^1.16.2",
+    "@xdn/cli": "^1.23.2",
+    "@xdn/core": "^1.23.2",
+    "@xdn/nuxt": "^1.23.2",
     "dotenv": "^8.2.0",
     "nuxt": "^2.0.0",
     "serverless": "^1.64.0",

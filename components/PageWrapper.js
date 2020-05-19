@@ -29,11 +29,9 @@ const useStyles = makeStyles(styles)
 export default function PageWrapper({ children, nav }) {
   const classes = useStyles()
   return (
-    <>
-      <Container maxWidth="xl" className={classes.main}>
-        {nav}
-        <div className={classes.center}>{children}</div>
-      </Container>
-    </>
+    <Container maxWidth="xl" className={classes.main}>
+      {nav}
+      <div className={classes.center}>{children}</div>
+    </Container>
   )
 }

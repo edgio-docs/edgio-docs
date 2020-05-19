@@ -16,7 +16,7 @@ request at a time for each cachable URL will reach your origin servers.
 To cache a response, use the `cache` function passed in your route's callback:
 
 ```js
-router.match('/some/path' ({ cache }) => {
+router.get('/some/path' ({ cache }) => {
   cache({
     browser: {
       // Sets the cache-control: maxage=n header sent to the browser.  To prevent the browser from caching this route

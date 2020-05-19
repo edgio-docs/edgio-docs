@@ -26,14 +26,35 @@ module.exports = new Router()
 
 ## Declaring Routes
 
-Declare routes using the `match` method:
+Declare routes using the method corresponding to the HTTP method you want to match.
 
 ```js
 // routes.js
 const { Router } = require('@xdn/core/router')
 
 module.exports = new Router()
-  .match('/some-path', edge => {
+  .get('/some-path', ({ cache, proxy }) => {
+    // handle the request here
+  })
+```
+
+All HTTP methods are available:
+
+* get
+* put
+* post
+* patch
+* delete
+* head
+
+To match all methods, use `match`:
+
+```js
+// routes.js
+const { Router } = require('@xdn/core/router')
+
+module.exports = new Router()
+  .match('/some-path', ({ cache, proxy }) => {
     // handle the request here
   })
 ```
@@ -92,7 +113,7 @@ The proxy method allows you to route the request to an upstream site configured 
 ```js
 // routes.js
 
-router.match('/blog/:slug', async ({ proxy }) => {
+router.get('/blog/:slug', async ({ proxy }) => {
   await proxy('legacy', { path: '/insights/:slug' })
 })
 ```
@@ -119,7 +140,7 @@ The redirect method allows you to redirect the browser to a new URL from the net
 | status | Integer | The HTTP response status to send. Defaults to `302` (Temporary redirect).                                  |
 
 ```js
-router.match('/sale/:product', ({ redirect }) => {
+router.get('/sale/:product', ({ redirect }) => {
   redirect('/holiday-sale/:product', 301) // reference a path variable and send a 301 http status
 })
 ```
@@ -149,7 +170,7 @@ const { createNextPlugin } = require('@xdn/next')
 module.exports = app => {
   const { renderNext, nextMiddleware } = createNextPlugin(app)
 
-  return new Router().match('/holiday-sale/:productId', async ({ render }) => {
+  return new Router().get('/holiday-sale/:productId', async ({ render }) => {
     await render((req, res, params) => renderNext(req, res, '/p/[productId]', params))
   })
 }
@@ -176,7 +197,7 @@ const { createNextPlugin } = require('@xdn/next')
 module.exports = app => {
   const { renderNext, nextMiddleware } = createNextPlugin(app)
 
-  return new Router().match('/some/vanity/url/:p', async ({ render }) => {
+  return new Router().get('/some/vanity/url/:p', async ({ render }) => {
     await render((req, res, params) =>
       renderNext(req, res, '/p/[productId]', { productId: params.p }),
     )
@@ -193,22 +214,6 @@ module.exports = app => {
 | params   | Object                                                                                 | The query and path params as key/value pairs                                                                                                                                                                                                                                                                                                                   |
 | page     | String                                                                                 | The path to the page component to render. If omitted, next.js will attempt to automatically determine the page based on it's own standard routing. You generally only need to supply a page when creating an explicit route. When using next.js to handle requests that don't match an explicit route, the page argument can be omitted. See "Fallback" below. |
 
-#### nextMiddleware
-
-A middleware that delegates routing to next.js's conventional routing based on directory structure. This includes serving static assets from the `/public` directory.
-
-```js
-// routes.js
-const { Router } = require('@xdn/core/router')
-const { createNextPlugin } = require('@xdn/next')
-
-module.exports = app => {
-  const { renderNext, nextMiddleware } = createNextPlugin(app)
-
-  return new Router().use(nextMiddleware) // matches URLs based on next.js's built-in routing
-}
-```
-
 ## serveStatic(path)
 
 Serves a static asset.
@@ -220,7 +225,7 @@ Serves a static asset.
 | path | String | The path to the asset from the root of your app. This path can contain variables captured in the route. |
 
 ```js
-route.match('/static/:file', async ({ serveStatic }) => {
+route.get('/static/:file', async ({ serveStatic }) => {
   await serveStatic('static/:file')
 })
 ```
@@ -230,7 +235,7 @@ route.match('/static/:file', async ({ serveStatic }) => {
 Controls caching both in the browser and at the edge
 
 ```js
-router.match('/some/path' ({ cache }) => {
+router.get('/some/path' ({ cache }) => {
   cache({
     browser: {
       // Sets the cache-control: maxage=n header sent to the browser.  To prevent the browser from caching this route
@@ -319,27 +324,41 @@ Removes a response header returned from the backend
 
 ## Full Example
 
-This example shows typical usage of @xdn/core, including serving a service worker, next.js routes (varnity and conventional routes), and falling back to a legacy backend.
+This example shows typical usage of `@xdn/core`, including serving a service worker, next.js routes (varnity and conventional routes), and falling back to a legacy backend.
 
 ```js
+// routes.js
+
 const { Router } = require('@xdn/core/router')
-const { createNextPlugin } = require('@xdn/next')
 
-module.exports = app => {
-  const { renderNext, nextMiddleware } = createNextPlugin(app)
-
-  return new Router()
-    .match('/service-worker.js', async ({ serveStatic }) => {
-      await serveStatic('.next/static/service-worker.js')
+module.exports = new Router()
+  .get('/service-worker.js', async ({ cache, serveStatic }) => {
+    // serve the service worker and cache only at edge
+    cache({
+      edge: {
+        maxAgeSeconds: 60 * 60 * 365
+      },
+      browser: {
+        maxAgeSeconds: 0
+      }
     })
-    .match('/some/vanity/url/:p', async ({ render }) => {
-      await render((req, res, params) =>
-        renderNext(req, res, '/p/[productId]', { productId: params.p }),
-      )
+    await serveStatic('dist/service-worker.js')
+  })
+  .get('/p/:productId', async ({ cache }) => {
+    // cache products for one hour at edge and using the service worker
+    cache({
+      edge: {
+        maxAgeSeconds: 60 * 60,
+        staleWhileRevalidateSeconds: 60 * 60
+      },
+      browser: {
+        maxAgeSeconds: 0
+        serviceWorkerSeconds: 60 * 60
+      }
     })
-    .use(nextMiddleware)
-    .fallback(async ({ proxy }) => {
-      await proxy('legacy')
-    })
-}
+  })
+  .fallback(async ({ proxy }) => {
+    // serve all unmatched URLs from the origin backend configured in xdn.config.js
+    await proxy('origin')
+  })
 ```

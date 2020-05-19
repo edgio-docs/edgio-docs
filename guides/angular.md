@@ -89,7 +89,7 @@ imagine you have a route `/pages/c/:categoryId`:
 
 ```js
 new Router()
-  .match('/pages/c/:categoryId', async ({ cache }) => {
+  .get('/pages/c/:categoryId', async ({ cache }) => {
     cache({
       browser: {
         maxAgeSeconds: 0,

@@ -36,7 +36,7 @@ export default nextJSApp => {
   const { nextMiddleware } = createNextPlugin(nextJSApp)
 
   return new Router()
-    .match('/p/:productId', ({ cache }) => {
+    .get('/p/:productId', ({ cache }) => {
       cache({
         edge: {
           // cache the SSR response at the edge

@@ -119,7 +119,7 @@ const { createNextPlugin } = require('@xdn/next')
 const { nextMiddleware } = createNextPlugin()
 
 module.exports = new Router()
-  .match('/service-worker.js', ({ cache, serveStatic }) => {
+  .get('/service-worker.js', ({ cache, serveStatic }) => {
     cache({
       edge: {
         maxAgeSeconds: 60 * 60 * 24 * 365,
@@ -173,7 +173,7 @@ module.exports = app => {
 
   return new Router()
     .use(nextMiddleware)
-    .match('/some/vanity/url/:p', async ({ render }) => {
+    .get('/some/vanity/url/:p', async ({ render }) => {
       await render((req, res, params) =>
         renderNext(req, res, '/p/[productId]', { productId: params.p }),
       )
@@ -189,7 +189,7 @@ imagine you have `/pages/c/[categoryId].js`:
 
 ```js
 new Router()
-  .match('/pages/c/:categoryId', async ({ cache }) => {
+  .get('/pages/c/:categoryId', async ({ cache }) => {
     cache({
       browser: {
         maxAgeSeconds: 0,

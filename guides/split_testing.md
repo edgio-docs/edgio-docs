@@ -52,6 +52,12 @@ module.exports = {
 }
 ```
 
+## Identifying the experience on the client
+
+When a split test is active, the XDN will automatically set an `xdn_destination` cookie to the name 
+of the chosen destination.  You can use this value in the browser to report the split test experience assignment to
+analytics.
+
 ## Deploy your application
 
 Once you've added destinations to your application, deploy your application to an environment using:

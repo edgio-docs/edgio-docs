@@ -57,14 +57,14 @@ Guide.getInitialProps = async function({ req, query, version, versions }) {
   // This prevents sending the version if user is on latest version.
   // If no version is present, the API will send latest version, or will
   // send the local repo's version if running locally
-  // const sendVersion = version === versions && versions[0] ? '' : version
+  const sendVersion = version === versions[0] ? '' : version
 
   try {
     const [navData, content] = await Promise.all([
-      fetch(`${baseUrl}/api/guides?version=${version}`)
+      fetch(`${baseUrl}/api/guides?version=${sendVersion}`)
         .then(res => res.json())
         .catch(e => console.log('error', e)),
-      fetch(`${baseUrl}/api/guides/${guide}?version=${version}`)
+      fetch(`${baseUrl}/api/guides/${guide}?version=${sendVersion}`)
         .then(res => res.text())
         .catch(e => console.log('error', e)),
     ])

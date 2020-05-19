@@ -26,7 +26,7 @@ The custom server module must export a function which accepts a [http.ClientRequ
 
 ** Example **
 
-```
+```js
 // xdn.config.js
 
 module.exports = {
@@ -36,7 +36,7 @@ module.exports = {
 }
 ```
 
-```
+```js
 // server/server.js
 
 export default function(req, res) {

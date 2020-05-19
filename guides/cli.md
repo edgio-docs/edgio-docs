@@ -6,13 +6,13 @@ This guide shows you everything you can do with the XDN command line interface.
 
 To install the XDN CLI run
 
-```
+```bash
 npm i -g @xdn/cli
 ```
 
 Or with yarn:
 
-```
+```bash
 yarn global add @xdn/cli
 ```
 
@@ -24,7 +24,7 @@ Run in an existing app to add all required packages and files need to publish yo
 
 #### Example
 
-```
+```bash
 xdn init
 ```
 
@@ -40,7 +40,7 @@ Runs your app locally. Uses port 3000 by default. You can change this by setting
 
 #### Example
 
-```
+```bash
 xdn run --production
 ```
 
@@ -56,7 +56,7 @@ Creates a build of your app optimized for production
 
 #### Example
 
-```
+```bash
 xdn build
 ```
 
@@ -82,7 +82,7 @@ Builds and deploys your site on the Moovweb XDN.
 
 #### Example
 
-```
+```bash
 xdn deploy my-team --environment=production
 ```
 
@@ -103,7 +103,7 @@ specified environment will be cleared.
 
 #### Example
 
-```
+```bash
 xdn cache-clear --team=my-team --site=my-site --environment=production --path=/p/*
 ```
 
@@ -113,7 +113,7 @@ Logs into the XDN via the developer console.
 
 #### Example
 
-```
+```bash
 xdn login
 ```
 
@@ -123,7 +123,7 @@ Logs out of the XDN
 
 #### Example
 
-```
+```bash
 xdn logout
 ```
 
@@ -133,18 +133,28 @@ Creates a script that provides autocompletion for xdn cli commands that can be i
 
 #### Example
 
-```
+```bash
 xdn completion
 ```
 
 ###### Using ZSH
 
-```
+```bash
 xdn completion >> ~/.zshrc
 ```
 
 ###### Using BASH
 
-```
+```bash
 xdn completion >> ~/.bashrc
+```
+
+## docs
+
+Open the XDN documentation in your browser.
+
+#### Example
+
+```
+xdn docs
 ```

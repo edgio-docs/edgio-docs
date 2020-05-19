@@ -4,7 +4,7 @@ This guide shows you how to share your project with other collaborators using te
 
 ## Private Space
 
-When you first log into the Moovweb XDN console, you'll see your private space xxx:
+When you first log into the Moovweb XDN console, you'll see your private space:
 
 ![private space](/images/deploying/private_space.png)
 
@@ -12,7 +12,7 @@ When you run `xdn deploy` your site will be created here.  Sites in your private
 
 ## Creating a Team
 
-To create a team, use the menu button located to the right of your name in the upper left of your window 
+To create a team, use the menu button located to the right of your name in the upper left of your window:
 
 ![create a team](/images/teams/create.png)
 

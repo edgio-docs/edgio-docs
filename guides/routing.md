@@ -90,7 +90,7 @@ router.match(
     cookies: { currency: /^(usd)$/i }, // keys are cookie names, values are regular expressions
     headers: { 'x-moov-device': /^desktop$/i }, // keys are header names, values are regular expressions
   },
-  edge => {},
+  () => {},
 )
 ```
 

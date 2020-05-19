@@ -121,6 +121,14 @@ const Home = ({ navData }) => {
               </Link>
             </Grid>
             <Grid item>
+              <Link href="/guides/[...guide]" as="/guides/react">
+                <Paper className={classes.framework} elevation={0}>
+                  <ReactIcon className={classes.icon} />
+                  <Typography className={classes.frameworkText}>Get started with React</Typography>
+                </Paper>
+              </Link>
+            </Grid>
+            <Grid item>
               <Link href="/guides/[...guide]" as="/guides/nuxt">
                 <Paper className={classes.framework} elevation={0}>
                   <NuxtIcon className={classes.icon} />
@@ -141,14 +149,6 @@ const Home = ({ navData }) => {
               </Link>
             </Grid>
             {/* <Grid item>
-              <Link href="/guides/[...guide]" as="/guides/react">
-                <Paper className={classes.framework} elevation={0}>
-                  <ReactIcon className={classes.icon} />
-                  <Typography className={classes.frameworkText}>Get started with React</Typography>
-                </Paper>
-              </Link>
-            </Grid>
-            <Grid item>
               <Link href="/guides/[...guide]" as="/guides/vue">
                 <Paper className={classes.framework} elevation={0}>
                   <VueIcon className={classes.icon} />

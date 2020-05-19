@@ -64,13 +64,19 @@
     "items": [
       {
         "text": "Next.js",
-        "icon": "react",
+        "icon": "nextjs",
         "as": "/guides/next",
         "href": "/guides/[...guide]"
       },
       {
+        "text": "React",
+        "icon": "react",
+        "as": "/guides/react",
+        "href": "/guides/[...guide]"
+      },
+      {
         "text": "Nuxt.js",
-        "icon": "vue",
+        "icon": "nuxt",
         "as": "/guides/nuxt",
         "href": "/guides/[...guide]"
       },

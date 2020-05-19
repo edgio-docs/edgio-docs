@@ -7,6 +7,8 @@ import { IconButton, Hidden } from '@material-ui/core'
 import { MenuContext } from '../MenuProvider'
 import MoovwebXDN from '../icons/MoovwebXDN.svg'
 import Section from './Section'
+import Link from 'next/link'
+
 const width = 275
 
 const useStyles = makeStyles(theme => ({
@@ -68,7 +70,11 @@ export default function Nav({ navData }) {
       })}
     >
       <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
-        <MoovwebXDN className={classes.logo} />
+        <Link href="/">
+          <a>
+            <MoovwebXDN className={classes.logo} />
+          </a>
+        </Link>
         <Hidden lgUp implementation="css">
           <IconButton
             edge="start"

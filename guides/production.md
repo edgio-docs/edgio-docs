@@ -75,8 +75,8 @@ Replace the country, state/provice, locality, organization name and, most import
 
 You will want to add all the additional domains into the `alt_names` section. There you should add your development, staging and other domains although Moovweb strongly encourages the use of wildcard certs.
 
-3. Run `openssl req -out moovweb-xdn.csr -newkey rsa:2048 -nodes -keyout moovweb-xdn.key -config moovweb-xdn.conf -batch`. This should generate your CSR in `moovweb-xdn.crs` and private key in `moovweb-xdn.key`. If you want OpenSSL to ask you for each different input, remove `-batch` option and re-run the command.
-4. Read the CSR (e.g. `cat moovweb-xdn.crs`) and send it to your CA for certification.
+3. Run `openssl req -out moovweb-xdn.csr -newkey rsa:2048 -nodes -keyout moovweb-xdn.key -config moovweb-xdn.conf -batch`. This should generate your CSR in `moovweb-xdn.csr` and private key in `moovweb-xdn.key`. If you want OpenSSL to ask you for each different input, remove `-batch` option and re-run the command.
+4. Read the CSR (e.g. `cat moovweb-xdn.csr`) and send it to your CA for certification.
 
 ### Uploading certificate to Moovweb XDN
 

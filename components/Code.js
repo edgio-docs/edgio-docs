@@ -20,6 +20,7 @@ SyntaxHighlighter.registerLanguage('yml', yml)
 const useStyles = makeStyles(theme => ({
   root: {
     fontSize: '14px',
+    position: 'relative',
     [theme.breakpoints.down('xs')]: {
       background: '#1d1f21',
     },
@@ -34,8 +35,13 @@ const useStyles = makeStyles(theme => ({
   copyBtn: {
     position: 'absolute',
     cursor: 'pointer',
-    right: theme.spacing(3),
+    right: 4,
+    top: 4,
     color: theme.palette.common.white,
+    opacity: 0.8,
+    '&:hover': {
+      opacity: 1,
+    },
   },
 }))
 

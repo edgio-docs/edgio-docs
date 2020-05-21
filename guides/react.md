@@ -98,7 +98,7 @@ new Router()
         maxAgeSeconds: 0, // it's critical to never cache the service worker itself in the browser - the browser checks for updates in the background anyway, so it won't slow anything down.
       },
     })
-    return serveStatic('dist/service-worker.js')
+    serveStatic('dist/service-worker.js')
   })
   .get('/p/:id', ({ cache }) => {
     // cache product pages at the edge for 1 day
@@ -110,7 +110,7 @@ new Router()
   })
   .fallback(({ proxy }) => {
     // send all requests to the server module configured in xdn.config.js
-    return proxy(BACKENDS.js) 
+    proxy(BACKENDS.js) 
   })
 ```
 

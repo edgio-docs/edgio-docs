@@ -127,7 +127,7 @@ module.exports = new Router()
         maxAgeSeconds: 0,
       },
     })
-    return serveStatic('.next/static/service-worker.js')
+    serveStatic('.next/static/service-worker.js')
   })
   .use(nextRoutes)
 ```

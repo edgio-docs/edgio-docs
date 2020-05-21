@@ -36,15 +36,13 @@ module.exports = {
 }
 ```
 
-2. Install the XDN CLI globally:
+2. Run `xdn init` which will configure your project for the XDN.
 
 ```bash
-npm install -g @xdn/cli
+xdn init
 ```
 
-3. Run `xdn init`
-
-This will automatically add all the required dependencies and files to your project. These include:
+The `xdn init` command will automatically add all the required dependencies and files to your project. These include:
 
 - The `@xdn/core` package
 - The `@xdn/nuxt` package
@@ -83,7 +81,7 @@ As an example, here's the original `package.json` from Nuxt's create step:
 }
 ```
 
-And here is the `package.json` after the required modifications:
+And here is the `package.json` after modifications by `xdn init`:
 
 ```json
 {

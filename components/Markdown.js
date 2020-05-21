@@ -5,6 +5,7 @@ import { makeStyles } from '@material-ui/core/styles'
 import Code from './Code'
 import { Link as LinkIcon } from '@material-ui/icons'
 import NextLink from 'next/link'
+import useVersioning from './versioning'
 
 const useStyles = makeStyles(theme => ({
   heading: {
@@ -84,13 +85,29 @@ export default function Markdown({ source }) {
 }
 
 function Link({ href, children }) {
-  return (
-    <NextLink href="/guides/[...guide]" as={href}>
-      <a target={href.startsWith('http:') ? '_blank' : '_self'} rel="noopener noreferrer">
+  const { currentVersion } = useVersioning()
+
+  href = href.replace('__version__', currentVersion)
+
+  if (href.match(/\/guides\//)) {
+    return (
+      <NextLink href="/guides/[...guide]" as={href}>
+        <a target={href.startsWith('http:') ? '_blank' : '_self'} rel="noopener noreferrer">
+          {children}
+        </a>
+      </NextLink>
+    )
+  } else {
+    return (
+      <a
+        href={href}
+        target={href.startsWith('http:') ? '_blank' : '_self'}
+        rel="noopener noreferrer"
+      >
         {children}
       </a>
-    </NextLink>
-  )
+    )
+  }
 }
 
 function Heading({ children, level }) {

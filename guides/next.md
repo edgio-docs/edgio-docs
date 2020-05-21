@@ -115,8 +115,7 @@ The XDN supports Next.js's built-in routing scheme for both page and api routes,
 // This file was automatically added by xdn deploy.
 // You should commit this file to source control.
 const { Router } = require('@xdn/core/router')
-const { createNextPlugin } = require('@xdn/next')
-const { nextMiddleware } = createNextPlugin()
+const { nextRoutes } = require('@xdn/next')
 
 module.exports = new Router()
   .get('/service-worker.js', ({ cache, serveStatic }) => {
@@ -130,18 +129,18 @@ module.exports = new Router()
     })
     return serveStatic('.next/static/service-worker.js')
   })
-  .use(nextMiddleware)
+  .use(nextRoutes)
 ```
 
-### Middleware
+### nextRoutes middleware
 
-In the code above `nextMiddleware` adds all Next.js routes to the router based on the `/pages` directory. You can add additional routes before and after the middleware, for example to send some URLs to an alternate backend. This is useful for gradually replacing an existing site with a new Next.js app.
+In the code above, the `nextRoutes` middleware adds all Next.js routes to the router based on the `/pages` directory. You can add additional routes before and after the middleware, for example to send some URLs to an alternate backend. This is useful for gradually replacing an existing site with a new Next.js app.
 
 A popular use case is to fallback to a legacy site for any route that your Next.js app isn't configured to handle:
 
 ```js
 new Router()
-  .use(nextMiddleware)
+  .use(nextRoutes)
   .fallback(({ proxy }) => proxy('legacy'))
 ```
 
@@ -166,20 +165,20 @@ For SEO purposes you may want to add additional "vanity" routes that point to Ne
 
 ```js
 const { Router } = require('@xdn/core/router')
-const { createNextPlugin } = require('@xdn/next')
+const { renderNextPage, nextRoutes } = require('@xdn/next')
 
-module.exports = app => {
-  const { renderNext, nextMiddleware } = createNextPlugin(app)
-
-  return new Router()
-    .use(nextMiddleware)
-    .get('/some/vanity/url/:p', async ({ render }) => {
-      await render((req, res, params) =>
-        renderNext(req, res, '/p/[productId]', { productId: params.p }),
-      )
-    })
-}
+module.exports = new Router()
+  .get('/some/vanity/url/:p', async res => {
+    await renderNextPage('/p/[productId]', res, params => ({ productId: params.p })
+  })
+  .use(nextRoutes)
 ```
+
+The `renderNextPage` function returns a promise that resolves when Next.js has rendered the response and takes the following parameters:
+
+* nextRoute - `String` The next.js route path
+* res - `ResponseWriter` The ResponseWriter passed to your route handler
+* params - `Object|Function` An object containing query params to provide to the next page, or a function that takes the route's path params and the request and returns a params object.
 
 ### Caching
 
@@ -201,5 +200,5 @@ new Router()
       }
     })
   })
-  .use(nextMiddleware)
+  .use(nextRoutes)
 ```

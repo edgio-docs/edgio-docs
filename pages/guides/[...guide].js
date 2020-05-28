@@ -1,17 +1,15 @@
 import fetch from 'isomorphic-fetch'
 import Head from 'next/dist/next-server/lib/head'
 import React from 'react'
+import Footer from '../../components/Footer'
 import Markdown from '../../components/Markdown'
 import Nav from '../../components/nav/Nav'
 import PageWrapper from '../../components/PageWrapper'
 import getBaseUrl from '../../components/utils/getBaseUrl'
-import useVersioning from '../../components/versioning'
 import ApiLink from '../../components/ApiLink'
-import { Typography } from '@material-ui/core'
+import { Typography, makeStyles } from '@material-ui/core'
 
 export default function Guide({ notFound, markdown, navData, guide }) {
-  const { isLatestVersion } = useVersioning()
-
   if (notFound) {
     return <Typography>Page not found.</Typography>
   }
@@ -33,6 +31,7 @@ export default function Guide({ notFound, markdown, navData, guide }) {
         <title>Moovweb XDN Documentation {pageTitle ? `- ${pageTitle}` : ''}</title>
       </Head>
       <Markdown source={markdown} />
+      <Footer navData={navData} guide={guide} />
     </PageWrapper>
   )
 }
@@ -55,12 +54,17 @@ Guide.getInitialProps = async function({ req, query, version, versions }) {
     }
   }
 
+  // This prevents sending the version if user is on latest version.
+  // If no version is present, the API will send latest version, or will
+  // send the local repo's version if running locally
+  const sendVersion = version === versions[0] ? '' : version
+
   try {
     const [navData, content] = await Promise.all([
-      fetch(`${baseUrl}/api/guides?version=${version}`)
+      fetch(`${baseUrl}/api/guides?version=${sendVersion}`)
         .then(res => res.json())
         .catch(e => console.log('error', e)),
-      fetch(`${baseUrl}/api/guides/${guide}?version=${version}`)
+      fetch(`${baseUrl}/api/guides/${guide}?version=${sendVersion}`)
         .then(res => res.text())
         .catch(e => console.log('error', e)),
     ])

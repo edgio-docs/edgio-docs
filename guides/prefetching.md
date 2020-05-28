@@ -64,7 +64,7 @@ function MyComponent() {
 }
 ```
 
-By default `Prefetch` will fetch and cache the URL in the link's `href` attribute. If you have a single page app, you most likely want to prefetch an API call for the page rather than the page's HTML.  The example above shows you how to set the `url` property to control which URL is prefetched.
+By default, `Prefetch` will fetch and cache the URL in the link's `href` attribute. If you have a single page app, you most likely want to prefetch an API call for the page rather than the page's HTML.  The example above shows you how to set the `url` property to control which URL is prefetched.
 
 If you're using Next.js, the `Prefetch` component assumes you're using `getServerSideProps` and will prefetch the corresponding URL unless your specify a `url` prop. The `Prefetch` component should be placed between Next's `<Link>` and the `<a>` element:
 
@@ -76,7 +76,6 @@ export default function ProductListingPage() {
   return (
     <Link as="/p/1" href="/p/[productId]">
       <Prefetch>
-        {/* Without a url prop, this will prefetch the URL for getServerSideProps*/}
         <a>Some Page</a>
       </Prefetch>
     </Link>
@@ -89,4 +88,32 @@ export function getServerSideProps(context) {
   }
 }
 ```
+
+If you need to prefetch a different url, you can do so using the `url` prop:
+
+```js
+<Link as="/p/1" href="/p/[productId]">
+  <Prefetch url="/some/url/to/prefetch">
+    <a>Some Page</a>
+  </Prefetch>
+</Link>
+```
+
+## Vue
+
+The `@xdn/vue` package provides a `Prefetch` component that you can wrap around any link to prefetch the link when it becomes visible in the viewport:
+
+```jsx
+<script>
+  import Prefetch from '@xdn/vue/Prefetch'
+</script>
+
+<template>
+  <Prefetch v-bind:url="/api/for/some/page">
+    <router-link v-bind:to="/some/page">Some page</router-link>
+  </Prefetch>
+</template>
+```
+
+By default `Prefetch` will fetch and cache the URL in the link's `to` attribute (for both `router-link` and `nuxt-link`). If you have a single page app, you most likely want to prefetch an API call for the page rather than the page's HTML.  The example above shows you how to set the `url` property to control which URL is prefetched.
 

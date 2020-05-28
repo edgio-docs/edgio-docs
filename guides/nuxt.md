@@ -1,16 +1,32 @@
 # Nuxt.js
 
-This guide shows you how to deploy a Nuxt.js application on the Moovweb XDN:
+This guide shows you how to deploy a Nuxt.js application on the Moovweb XDN. If you run into any issues please consult the [Troubleshooting](#section_troubleshooting) section.
+
+## Install Node.js and npm
+
+If you do not have Node.js installed on your system, download and install it from official [Node.js downloads](https://nodejs.org/en/download/) page. Select the download labeled "LTS (Recommended For Most Users)" and that matches your operating system, and run the installer. Note that the installer for Node.js will also install npm.
 
 ## Getting Started
 
+If you have not already done so, install the [XDN CLI](cli)
+
+```bash
+npm i -g @xdn/cli
+```
+
 If you don't already have a nuxt.js application, you can create one using:
 
-```
+```bash
 npm create nuxt-app my-nuxt-app
 ```
 
-To deploy your Nuxt.js application on the Moovweb XDN:
+Nuxt's create module will ask you a series of questions to configure your app. Make sure you answer as follows:
+
+- For `Choose custom server framework` select `None`
+- For `Choose rendering mode` select `Universal (SSR)`
+- Your answers to the other questions should not matter for the purposes of this guide. 
+
+To prepare your Nuxt.js application for the Moovweb XDN:
 
 1. Set `mode: 'universal'` in `nuxt.config.js`. Also, ensure that this file uses `module.exports = {`, rather than `export default {`. If this file doesn't exist, create it with the following content:
 
@@ -20,20 +36,84 @@ module.exports = {
 }
 ```
 
-2. Install the XDN CLI globally:
+2. Run `xdn init` which will configure your project for the XDN.
 
+```bash
+xdn init
 ```
-npm install -g @xdn/cli
-```
 
-3. Run `xdn init`
-
-This will automatically add all of the required dependencies and files to your project. These include:
+The `xdn init` command will automatically add all the required dependencies and files to your project. These include:
 
 - The `@xdn/core` package
 - The `@xdn/nuxt` package
 - `xdn.config.js`
-- `routes.js` - A default routes file that sends all requests to `nuxt.js`. Update this file to add caching or proxy some URLs to a different origin.
+- `routes.js` - A default routes file that sends all requests to `nuxt.js`. You can update this file to add caching or proxy some URLs to a different origin as described later in this guide.
+
+This command will also update your `package.json` with the following changes:
+
+- Moves all of the `dependencies` to `devDependencies`
+- Adds `dotenv`, `serverless`, `serverless-dotenv-plugin`, and `serverless-offline` to the `devDependencies`
+- Adds `nuxt-start` as the sole module in `dependencies`
+- Adds several `scripts` to run the available `xdn` commands
+
+As an example, here's the original `package.json` from Nuxt's create step:
+
+```json
+{
+  "name": "my-nuxt-app",
+  "version": "1.0.0",
+  "description": "My remarkable Nuxt.js project",
+  "author": "Techy Ted",
+  "private": true,
+  "scripts": {
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "generate": "nuxt generate"
+  },
+  "dependencies": {
+    "@xdn/cli": "^1.23.2",
+    "@xdn/core": "^1.23.2",
+    "@xdn/nuxt": "^1.23.2",
+    "nuxt": "^2.0.0"
+  },
+  "devDependencies": {}
+}
+```
+
+And here is the `package.json` after modifications by `xdn init`:
+
+```json
+{
+  "name": "my-nuxt-app",
+  "version": "1.0.0",
+  "description": "My remarkable Nuxt.js project",
+  "author": "Techy Ted",
+  "private": true,
+  "scripts": {
+    "dev": "xdn run",
+    "build": "xdn build",
+    "start": "xdn run",
+    "prod": "xdn run --production",
+    "generate": "nuxt generate"
+  },
+  "dependencies": {
+    "nuxt-start": "^2.12.2"
+  },
+  "devDependencies": {
+    "@xdn/cli": "^1.23.2",
+    "@xdn/core": "^1.23.2",
+    "@xdn/nuxt": "^1.23.2",
+    "dotenv": "^8.2.0",
+    "nuxt": "^2.0.0",
+    "serverless": "^1.64.0",
+    "serverless-dotenv-plugin": "^2.3.2",
+    "serverless-offline": "^5.12.1"
+  }
+}
+```
+
+The next few sections of this guide explain how the XDN interacts with Nuxt's routing, which is important if you are migrating an existing application. If you just created a new nuxt app, you can jump to [Running Locally](#section-running-locally) and come back to these sections later.
 
 ## Routing
 
@@ -103,7 +183,7 @@ const { renderNuxt, nuxtMiddleware } = createNuxtPlugin()
 
 module.exports = new Router()
   .use(nuxtMiddleware)
-  .match('/some/vanity/url/:p', async ({ render }) => {
+  .get('/some/vanity/url/:p', async ({ render }) => {
     await render(async (req, res, params) =>
       renderNuxt(req, res, "/p/{p}", { id: params.p })
     )
@@ -112,7 +192,7 @@ module.exports = new Router()
 
 Finally, define the vanity route as an `alias` in a `<router>` tag within the page file:
 
-```vue
+```jsx
 <router>
 {
   alias: [
@@ -130,7 +210,7 @@ imagine you have `/pages/c/_categoryId.js`:
 
 ```js
 new Router()
-  .match('/pages/c/:categoryId', async ({ cache }) => {
+  .get('/pages/c/:categoryId', async ({ cache }) => {
     cache({
       browser: {
         maxAgeSeconds: 0,
@@ -145,28 +225,77 @@ new Router()
   .use(nuxtMiddleware)
 ```
 
-### Running Locally
+## Running Locally
 
 To test your app locally, run:
 
-```
+```bash
 xdn run
 ```
 
 You can do a production build of your app and test it locally using:
 
-```
+```bash
 xdn build && xdn run --production
 ```
 
 Setting `--production` runs your app exactly as it will be uploaded to the Moovweb cloud using serverless-offline.
 
-### Deploying
+## Deploying
 
-To deploy your app to the Moovweb XDN, run:
+Deploying requires an account on the Moovweb XDN. [Sign up here for free.](https://moovweb.app/signup) Once you have an account, you can deploy to the Moovweb XDN:
 
-```
+```bash
 xdn deploy
 ```
 
 See [deploying](deploying) for more information.
+
+
+## Troubleshooting
+
+The following section describes common gotchas and their workarounds.
+
+### I get an error message `Nuxt.js Internal Server Error`
+
+This may be because you have a custom server framework (such as Express). Please make sure you selected `None` when asked to choose `Choose custom server framework` during the creation of your nuxt app.
+
+### xdn init doesn't work 
+
+If you get a command not found error such as:
+
+```bash
+$ xdn init
+- bash: xdn: command not found
+```
+
+Make sure you installed the XDN CLI
+
+```bash
+npm i -g @xdn/cli
+```
+
+
+### Make sure your version of XDN CLI is current
+
+If you previously installed the XDN CLI, make sure your version is current.
+
+Check npm for the latest released version of the CLI:
+
+```bash
+$ npm show @xdn/cli version
+1.16.2
+```
+
+Compare the latest release against the version currently installed on your system:
+
+```bash
+$ xdn --version
+1.16.2
+```
+
+If your version is out of date you can update it by running
+
+```bash
+npm update -g @xdn/cli
+```

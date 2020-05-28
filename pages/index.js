@@ -20,8 +20,13 @@ import ApiLink from '../components/ApiLink'
 import Link from 'next/link'
 import ReactIcon from '../components/icons/react.svg'
 import VueIcon from '../components/icons/vue.svg'
+import NextIcon from '../components/icons/next.svg'
+import NuxtIcon from '../components/icons/nuxt.svg'
 import AngularIcon from '../components/icons/angular.svg'
 import MoovwebXDN from '../components/icons/MoovwebXDN.svg'
+import { icons } from '../components/icons/Icon'
+
+const SpartacusIcon = icons['spartacus']
 
 const useStyles = makeStyles(theme => ({
   hero: {
@@ -111,7 +116,7 @@ const Home = ({ navData }) => {
             <Grid item>
               <Link href="/guides/[...guide]" as="/guides/next">
                 <Paper className={classes.framework} elevation={0}>
-                  <ReactIcon className={classes.icon} />
+                  <NextIcon className={classes.icon} />
                   <Typography className={classes.frameworkText}>
                     Get started with Next.js
                   </Typography>
@@ -119,9 +124,17 @@ const Home = ({ navData }) => {
               </Link>
             </Grid>
             <Grid item>
+              <Link href="/guides/[...guide]" as="/guides/react">
+                <Paper className={classes.framework} elevation={0}>
+                  <ReactIcon className={classes.icon} />
+                  <Typography className={classes.frameworkText}>Get started with React</Typography>
+                </Paper>
+              </Link>
+            </Grid>
+            <Grid item>
               <Link href="/guides/[...guide]" as="/guides/nuxt">
                 <Paper className={classes.framework} elevation={0}>
-                  <VueIcon className={classes.icon} />
+                  <NuxtIcon className={classes.icon} />
                   <Typography className={classes.frameworkText}>
                     Get started with Nuxt.js
                   </Typography>
@@ -138,6 +151,24 @@ const Home = ({ navData }) => {
                 </Paper>
               </Link>
             </Grid>
+            <Grid item>
+              <Link href="/guides/[...guide]" as="/guides/spartacus">
+                <Paper className={classes.framework} elevation={0}>
+                  <SpartacusIcon className={classes.icon} style={{ height: 142, width: 142 }} />
+                  <Typography className={classes.frameworkText}>
+                    Get started with Spartacus
+                  </Typography>
+                </Paper>
+              </Link>
+            </Grid>
+            {/* <Grid item>
+              <Link href="/guides/[...guide]" as="/guides/vue">
+                <Paper className={classes.framework} elevation={0}>
+                  <VueIcon className={classes.icon} />
+                  <Typography className={classes.frameworkText}>Get started with Vue</Typography>
+                </Paper>
+              </Link>
+            </Grid> */}
           </Grid>
         </Grid>
       </Grid>

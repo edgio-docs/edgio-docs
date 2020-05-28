@@ -48,12 +48,12 @@ module.exports = app => {
             maxAgeSeconds: 60 * 60 * 365,
           },
         })
-        return serveStatic('.next/static/service-worker.js')
+        serveStatic('.next/static/service-worker.js')
       })
       // the following route is needed for older guides and should not be removed
       .match('/guides/images/*path', ({ cache, serveStatic }) => {
         cache(staticCacheConfig)
-        return serveStatic('public/images/{path}')
+        serveStatic('public/images/*path')
       })
       .match('/api/*path', ({ cache }) => {
         cache(apiCacheConfig)
@@ -61,9 +61,13 @@ module.exports = app => {
       .match('/*path', ({ cache }) => {
         cache(htmlCacheConfig)
       })
-      .match('/docs/*path', ({ proxy, cache }) => {
+      .match('/docs/:version/api/*path/', ({ proxy, cache }) => {
         cache(htmlCacheConfig)
-        return proxy('api', { path: '/xdn-docs-pages/{path}' })
+        proxy('api', { path: '/xdn-docs-pages/:version/api/*path/' })
+      })
+      .match('/docs/:version/api/*path', ({ proxy, cache }) => {
+        cache(htmlCacheConfig)
+        proxy('api', { path: '/xdn-docs-pages/:version/api/*path' })
       })
       .use(nextMiddleware)
       .fallback(({ redirect }) => {

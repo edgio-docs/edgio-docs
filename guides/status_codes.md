@@ -13,6 +13,7 @@
 | 536 | Access Denied Error | The upstream address resolved to an IP that is blocked by a proxy (via ip-blacklist config). Check your project for invalid host or IP address. |
 | 537 | DNS Resolution Error | The Moovweb servers received a DNS error when attempting to resolve the upstream hostname. Check your project config and your domain’s DNS setup. |
 | 538 | Request Loop Error | User exceeded the maximum level (4) of nested Moovweb requests. “Nested” means a Moovweb site is the upstream of another Moovweb site. Exceeding the limit results in a request loop error, indicating the request’s upstream origin site is itself. |
+| 539 | JS Worker Timeout | The JavaScript engine did not respond, usually due to badly handled asynchronous requests in the user’s code. |
 | 540 | Reserved |
 | 541 | Reserved |
 | 542 | Reserved |

@@ -2,6 +2,7 @@ import fetch from 'isomorphic-fetch'
 
 export default async function guide(req, res) {
   const { version, guide } = req.query
+
   const guideResp = version
     ? await fetch(
         `http://moovweb.github.io/xdn-docs-pages/${version}/guides/${guide}.md`,

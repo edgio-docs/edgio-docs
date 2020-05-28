@@ -14,6 +14,7 @@ const useStyles = makeStyles(theme => ({
     margin: theme.spacing(1, 0, 0, 0),
     display: 'flex',
     flexDirection: 'row',
+    alignItems: 'center',
     textDecoration: 'none',
     alignItems: 'center',
     color: theme.palette.text.primary,

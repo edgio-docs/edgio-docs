@@ -24,6 +24,9 @@ import NextIcon from '../components/icons/next.svg'
 import NuxtIcon from '../components/icons/nuxt.svg'
 import AngularIcon from '../components/icons/angular.svg'
 import MoovwebXDN from '../components/icons/MoovwebXDN.svg'
+import { icons } from '../components/icons/Icon'
+
+const SpartacusIcon = icons['spartacus']
 
 const useStyles = makeStyles(theme => ({
   hero: {
@@ -144,6 +147,16 @@ const Home = ({ navData }) => {
                   <AngularIcon className={classes.icon} />
                   <Typography className={classes.frameworkText}>
                     Get started with Angular
+                  </Typography>
+                </Paper>
+              </Link>
+            </Grid>
+            <Grid item>
+              <Link href="/guides/[...guide]" as="/guides/spartacus">
+                <Paper className={classes.framework} elevation={0}>
+                  <SpartacusIcon className={classes.icon} style={{ height: 142, width: 142 }} />
+                  <Typography className={classes.frameworkText}>
+                    Get started with Spartacus
                   </Typography>
                 </Paper>
               </Link>

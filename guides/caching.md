@@ -43,6 +43,56 @@ router.get('/some/path' ({ cache }) => {
 
 The `cache` function can be used in the same route as other functions such as `serveStatic`, `proxy` and `render`, or in a separate route prior to sending the response.
 
+### Caching Responses for POST and similar requests
+
+By default XDN only caches responses for `GET` and `HEAD` requests. It is not often that it makes sense to cache a response to `POST` and similar requests that are, from the point of view of HTTP semantics, supposed to change the state of the underlying entities. However, some query languages like GraphQL are implemented excluisively through `POST` requests with queries being sent through request body, and when such solutions are used it is often desireable to be able to cache responses to some of these requests (namely those do not mutate any state).
+
+To cache a response to a `POST`, a separate route must be created which, together with `cache` function will enable this behaviour:
+
+```js
+router.post('/api' ({ cache }) => {
+  cache({
+    // Same options as the normal cache function with whatever is suitable for your API route.
+    browser: {
+      maxAgeSeconds: 0,
+      serviceWorkerSeconds: 60 * 60
+    },
+    edge: {
+      maxAgeSeconds: 60 * 60 * 24,
+      staleWhileRevalidateSeconds: 60 * 60
+    }
+  })
+})
+```
+
+This will automatically add request method and body to the caching key. There are two limitations to this:
+
+1. If the request body is longer than 8,000 bytes, the caching will automatically be turned off.
+2. Since both mutating and non-mutating requests are executed on the same route, there is no way for XDN to distinguish between such operations and the responsibility for never caching the mutating requests lies with you as the developer. The way to avoid caching responses to mutating requests is to inject `private` into `cache-control` of your response (e.g. `res.setHeader('cache-control', 'private')`)
+
+### Caching Private Responses
+
+By default XDN never caches responses which have `private` clause in their `cache-control` header. Sometimes though it is desireable to cache such responses, intended for a single user of your site:
+
+```js
+router.get('/some/path' ({ cache }) => {
+  cache({
+    // Same options as the normal cache function with whatever is suitable for your route.
+    browser: {
+      maxAgeSeconds: 0,
+      serviceWorkerSeconds: 60 * 60
+    },
+    edge: {
+      maxAgeSeconds: 60 * 60 * 24,
+      staleWhileRevalidateSeconds: 60 * 60,
+      forcePrivateCaching: true // Force caching of `private` responses
+    }
+  })
+})
+```
+
+Note that this feature cannot be safely used with caching of `POST` and similar requests: if the way to signal that something must not be cached is through `private` but then you force caching of `private` responses, all responses will be cached.
+
 ## Clearing the Cache
 
 The cache is automatically cleared when you deploy to an environment. You can also clear the cache using the environment's Caching tab in the Moovweb XDN console.

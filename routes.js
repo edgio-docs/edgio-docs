@@ -39,7 +39,7 @@ module.exports = app => {
 
   return (
     new Router()
-      .match('/service-worker.js', ({ cache, serveStatic }) => {
+      .get('/service-worker.js', ({ cache, serveStatic }) => {
         cache({
           browser: {
             maxAgeSeconds: 0,
@@ -51,21 +51,21 @@ module.exports = app => {
         serveStatic('.next/static/service-worker.js')
       })
       // the following route is needed for older guides and should not be removed
-      .match('/guides/images/*path', ({ cache, serveStatic }) => {
+      .get('/guides/images/*path', ({ cache, serveStatic }) => {
         cache(staticCacheConfig)
         serveStatic('public/images/*path')
       })
-      .match('/api/*path', ({ cache }) => {
+      .get('/api/*path', ({ cache }) => {
         cache(apiCacheConfig)
       })
-      .match('/*path', ({ cache }) => {
+      .get('/*path', ({ cache }) => {
         cache(htmlCacheConfig)
       })
-      .match('/docs/:version/api/*path/', ({ proxy, cache }) => {
+      .get('/docs/:version/api/*path/', ({ proxy, cache }) => {
         cache(htmlCacheConfig)
         proxy('api', { path: '/xdn-docs-pages/:version/api/*path/' })
       })
-      .match('/docs/:version/api/*path', ({ proxy, cache }) => {
+      .get('/docs/:version/api/*path', ({ proxy, cache }) => {
         cache(htmlCacheConfig)
         proxy('api', { path: '/xdn-docs-pages/:version/api/*path' })
       })

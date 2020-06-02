@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import fetch from 'isomorphic-fetch'
 import Header from '../components/Header'
 import theme from '../components/theme'
@@ -9,15 +9,14 @@ import Head from 'next/head'
 import getBaseUrl from '../components/utils/getBaseUrl'
 import { VERSION_REGEX, VersionProvider } from '../components/versioning'
 import MenuProvider from '../components/MenuProvider'
-import { useEffect } from 'react'
 import { configure as configurePrefetching } from '@xdn/prefetch/window/prefetch'
+
+if (typeof window !== 'undefined') {
+  configurePrefetching({ includeCacheMisses: true })
+}
 
 export default function MyApp({ Component, pageProps, currentVersion, versions }) {
   useJssStyles()
-
-  useEffect(() => {
-    configurePrefetching({ includeCacheMisses: true })
-  }, [])
 
   return (
     <MuiThemeProvider theme={theme}>

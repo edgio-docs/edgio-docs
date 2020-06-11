@@ -37,7 +37,7 @@ router.get('/some/path' ({ cache }) => {
       staleWhileRevalidateSeconds: 60 * 60, // serve stale responses for up to 1 hour while fetching a new response
 
       // Optionally customizes the cache key.
-      cacheKey: createCustomCacheKey()
+      cacheKey: new CustomCacheKey()
         .addBrowser() // Split cache by browser type
         .addCookie('some-cookie') // Split cache by some-cookie cookie
         // And many other options
@@ -59,7 +59,7 @@ Moovweb XDN provides you with a default cache key out of the box. It is a broad 
 
 #### Customizing Cache Key
 
-It is often useful to customize caching key, either to improve the cache hit ratio or to account for complexities of your site. As seen above XDN provides an easy way to customize the keys by using `createCustomCacheKey` function. The function is the bases for the fluent interface that offers many different methods. Here we will focus on two common examples:
+It is often useful to customize the cache key, either to improve the cache hit ratio or to account for complexities of your site. As seen above, the XDN provides an easy way to customize the keys by using the `CustomCacheKey` class. Here we will focus on two common examples:
 
 * Increasing the cache hit ratio by excluding query parameters that are not used in the rendering of the content:
 
@@ -69,7 +69,7 @@ router.get('/some/path' ({ cache }) => {
     // Other options...
     edge: {
       // Other options...
-      cacheKey: createCustomCacheKey()
+      cacheKey: new CustomCacheKey()
         .excludeQueryParameters('to-be-excluded-1', 'to-be-excluded-2')
     }
   })
@@ -86,7 +86,7 @@ router.get('/some/path' ({ cache }) => {
     // Other options...
     edge: {
       // Other options...
-      cacheKey: createCustomCacheKey()
+      cacheKey: new CustomCacheKey()
         .addCookie('language')
         .addCookie('currency')
     }
@@ -94,15 +94,15 @@ router.get('/some/path' ({ cache }) => {
 })
 ```
 
-This will take the values of `language` and `currency` cookies from `cookie` request header and use them in the cache key. This would allow you to cache different content, depending on the language and currency in this example, on same routes.
+This will take the values of `language` and `currency` cookies from `cookie` request header and use them in the cache key. This would allow you to cache different content, depending on the language and currency in this example, for the same URL.
 
 Customizing caching keys is a very powerful tool to make your site faster. But at the same time it is easy to apply it too broadly leading to loss of performance due to lower cache hit ratio. The key to correctly using customization is to apply it judiciously and narrowly, for specific routes.
 
 ### Caching Responses for POST and similar requests
 
-By default Moovweb XDN only caches responses for `GET` and `HEAD` requests. It is not often that it makes sense to cache a response to `POST` and similar requests that are, from the point of view of HTTP semantics, supposed to change the state of the underlying entities. However, some query languages like GraphQL are implemented excluisively through `POST` requests with queries being sent through request body, and when such solutions are used it is often desireable to be able to cache responses to some of these requests (namely those do not mutate any state).
+By default, Moovweb XDN only caches responses for `GET` and `HEAD` requests. It rarely makes sense to cache  `POST`, `PUT`, `PATCH`, or `DELETE` requests. These methods, from the point of view of HTTP semantics, are supposed to change the state of the underlying entities. Some query languages, however, like GraphQL, are implemented exclusively through `POST` requests with queries being sent through request body. When such solutions are used it is often desirable to be able to cache responses to some of these requests (namely those do not mutate any state).
 
-To cache a response to a `POST`, a separate route must be created which, together with `cache` function will enable this behaviour:
+To cache a response to a `POST`, a separate route must be created which, together with `cache` function, will enable this behavior:
 
 ```js
 router.post('/api' ({ cache }) => {

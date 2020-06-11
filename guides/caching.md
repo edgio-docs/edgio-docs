@@ -15,6 +15,8 @@ Each edge point-of-presence (POP) has its own L1 cache. If a request cannot be f
 To cache a response, use the `cache` function passed in your route's callback:
 
 ```js
+import { CustomCacheKey } from '@xdn/core/router'
+
 router.get('/some/path' ({ cache }) => {
   cache({
     browser: {
@@ -64,6 +66,8 @@ It is often useful to customize the cache key, either to improve the cache hit r
 * Increasing the cache hit ratio by excluding query parameters that are not used in the rendering of the content:
 
 ```js
+import { CustomCacheKey } from '@xdn/core/router'
+
 router.get('/some/path' ({ cache }) => {
   cache({
     // Other options...
@@ -81,6 +85,8 @@ This will remove the given query parameters from the URL before it is used in ca
 * Including other request parameters like cookies:
 
 ```js
+import { CustomCacheKey } from '@xdn/core/router'
+
 router.get('/some/path' ({ cache }) => {
   cache({
     // Other options...

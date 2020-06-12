@@ -2,6 +2,10 @@
 
 This guide covers the steps you need to take your site live on the Moovweb XDN.
 
+## Region
+
+If you are an enterprise customer you can choose from multiple global [regions](regions) in which you compute and caching resources will be provisioned.
+
 ## Domains
 
 Before going live, you need to create a production environment and configure your domains.  For more information on environments, see [Environments](./environments)

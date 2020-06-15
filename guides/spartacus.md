@@ -1,4 +1,85 @@
-# Creating Spartacus app
+# XDN Spartacus for SAP Commerce Cloud (formerly SAP Hybris)
+
+Spartacus is the official JavaScript headless front end for SAP Commerce Cloud. You can read more about Spartacus at the [official docs](https://sap.github.io/spartacus-docs/). Spartacus is written in Angular. Note that using Spartacus on the XDN requires an instance of SAP Commerce Cloud 1905 or later.
+
+This repo is a Moovweb XDN optimized template of SAP Spartacus. It leverages the official SAP Spartacus template and adds libraries to support XDN features that enhance Spartacus such as,
+
+- **CDN-as-JavaScript**: configure the edge within your application
+- **Serverless JavaScript**: zero devops with unlimited scale to power Spartacus server-side rendering (SSR) and OCC API orchestration
+- **Performance**: deliver instant site page loads with server-side rendering, caching, and predictive prefetching
+- **Iterative migration**: adopt Spartacus gradually, one page at a time
+- **Edge Experiments**: experiment and use A/B testing without sacrificing speed
+
+If you just want to get started quickly with Spartacus and deploy it to the XDN in a few minutes follow the [Getting started](#section_getting_started) section below.
+
+The [Building from scratch](#section_building_from_scratch) section describes how to manually recreate an XDN optimized version of Spartacus from the official libraries. You don't need to do these steps but it's left there for the curious or for those trying to upgrade an existing Spartacus app.
+
+# Getting Started
+
+If you have not already done so, sign up for an account on the [XDN Console](https://moovweb.app/signup?redirectTo=/) and install the [XDN CLI](cli)
+
+```bash
+npm i -g @xdn/cli
+```
+
+Next, run the XDN create module to pull down the XDN Spartacus template to your machine:
+
+```bash
+npm create xdn-app@latest
+```
+
+The XDN create module will ask you a series of questions to configure your app. Make sure you answer as follows:
+
+- For `Select an app template` select `Spartacus`
+- For `Enter the hostname for the origin site (e.g. domain.com)` enter the domain of the SAP Commerce Cloud server that will serve as the OCC API backend for Spartacus.
+
+As an example, below is a sample transcript from running XDN create module:
+
+```
+$ npm create xdn-app@latest
+✔ Enter a name for your app … my-xdn-site
+✔ Select an app template › Spartacus
+✔ Enter the hostname for the origin site (e.g. domain.com) … spartacusapiserver.mycompany.com
+✔ Which package manager would you like to use? › npm
+```
+
+Next, configure the `occBaseUrl` in `environment.ts`. If this is your first time getting started, the XDN will automatically assign you a URL of the format `{username}-{project-name}-default.moovweb-edge.io` where the `project-name` is pulled from the `package.json` of your project. For example, if your username is `alice` and your project has the name of `my-xdn-site`, then set the `occBaseUrl` in `environment.prod.ts` as follows and save your changes:
+
+```js
+export const environment = {
+  production: false,
+  occBaseUrl: 'https://https://alice-xdn-spartacus-default.moovweb-edge.io'
+};
+```
+
+To run your app locally in development mode
+
+
+
+Finally, deploy your site on the XDN using the `deploy` command:
+
+```
+xdn deploy
+```
+
+Be aware that the deploy step will automatically build Spartacus for you which can take a few minutes. When the deploy finishes the output will confirm the final deployment URL. Below is an example:
+
+```
+📡️ Uploading...
+> Uploading package
+done (9425ms)
+
+⌛ Deploying to the Moovweb XDN...
+done (48565ms)
+🚀 Site deployed on default environment https://alice-my-xdn-site-default.moovweb-edge.io
+```
+
+Congrats! Your Spartacus site is now live on the XDN and you can login to the [XDN Console](https://moovweb.app) to manage your project.
+
+# Building from scratch
+
+This section describes how to manually recreate an XDN optimized version of Spartacus from the official libraries. We recommend using the pre-built template in this repository but we've left these steps for those trying to upgrade an existing Spartacus app or looking to apply the XDN to a different version of Spartacus.
+
 
 The steps below are pulled from the Spartacus official docs, which are published here: https://sap.github.io/spartacus-docs/building-the-spartacus-storefront-from-libraries/
 
@@ -51,7 +132,7 @@ Update `app.module.ts` to include a `baseSite` configuration:
  }),
 ```
 
-# Preparing for deployment on the XDN
+## Preparing for deployment on the XDN
 
 ```
 npm install -g @xdn/cli
@@ -187,15 +268,15 @@ environment = {
 };
 ```
 
-# Deploying to XDN
+## Deploying to XDN
 
 ```
 xdn deploy
 ```
 
-# Adding prefetching
+## Adding prefetching
 
-## Upstream request tracking
+### Upstream request tracking
 
 Prefetching for a Spartacus app can be enabled by listening to upstream requests made when server-side rendering a specific page. `@xdn/prefetch` library will pick up on the upstream requests made by reading the `x-xdn-backend-requests` response header. An example scenario:
 1) User A lands on `/product/1`.
@@ -307,7 +388,7 @@ app.get('*', (req, res) => {
 export default app
 ```
 
-## Service worker
+### Service worker
 
 `@xdn/prefetch` relies on Google's `workbox` library. Thus in the context of an Angular app a custom service-worker solution is necessary. Under the `src/sw` directory create the following files:
 
@@ -473,7 +554,7 @@ export class AppComponent implements OnInit {
 }
 ```
 
-## Cache configuration
+### Cache configuration
 
 An example cache configuration to optimally support prefetching:
 

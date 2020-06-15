@@ -16,6 +16,7 @@ async function loadGuides(version) {
   const guideNames = []
   const guidePromises = []
   guideMeta.forEach(group => {
+    if (group.text === 'API Documentation') return
     ;(group.items || []).forEach(guide => {
       const guideId = guide.as.substr(guide.as.lastIndexOf('/') + 1)
       guideNames.push(guideId)
@@ -102,7 +103,8 @@ export default async function search({ query: { query, version } }, res) {
     await loadGuides(version)
   }
   if (!modules[version]) {
-    await loadModules(version)
+    // TODO - searching of API docs
+    modules[version] = []
   }
   const index = lunr(function() {
     this.ref('id')

@@ -33,7 +33,7 @@ export default function SearchField() {
     setQuery(newQuery)
 
     const results = newQuery
-      ? await fetch(`/api/search?query=${query}&version=${currentVersion}`).then(res => res.json())
+      ? await fetch(`/api/search?query=${newQuery}&version=${currentVersion}`).then(res => res.json())
       : { results: [] }
 
     if (currentLoad === loadId.current) {

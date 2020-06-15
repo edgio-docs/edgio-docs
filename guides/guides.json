@@ -56,6 +56,11 @@
         "text": "Production",
         "as": "/guides/production",
         "href": "/guides/[...guide]"
+      },
+      {
+        "text": "Regions",
+        "as": "/guides/regions",
+        "href": "/guides/[...guide]"
       }
     ]
   },

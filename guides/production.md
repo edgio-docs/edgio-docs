@@ -2,6 +2,10 @@
 
 This guide covers the steps you need to take your site live on the Moovweb XDN.
 
+## Region
+
+If you are an enterprise customer you can choose from multiple global [regions](regions) in which your compute and caching resources will be provisioned.
+
 ## Domains
 
 Before going live, you need to create a production environment and configure your domains.  For more information on environments, see [Environments](./environments)
@@ -97,4 +101,3 @@ You need to copy the certificate, intermediate certificates and the private key 
 Note that the certificate hosting process is not immediate. It may take up to five business days for the certificate to be activated.  Once it is activated, you'll see the following:
 
 ![activated-certificate](/images/production/activated-certificate.png)
-

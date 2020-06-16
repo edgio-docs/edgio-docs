@@ -22,6 +22,8 @@ const useStyles = makeStyles(theme => ({
     padding: theme.spacing(2, 4, 2, 2),
     fontSize: '1.25em',
     color: '#666',
+    display: 'flex',
+    alignItems: 'center',
     [theme.breakpoints.down('xs')]: {
       fontSize: '1em',
     },

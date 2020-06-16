@@ -168,7 +168,7 @@ const { Router } = require('@xdn/core/router')
 const { renderNextPage, nextRoutes } = require('@xdn/next')
 
 module.exports = new Router()
-  .get('/some/vanity/url/:p', async () => {
+  .get('/some/vanity/url/:p', async res => {
     await renderNextPage('/p/[productId]', res, params => ({ productId: params.p }))
   })
   .use(nextRoutes)

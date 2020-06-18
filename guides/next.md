@@ -30,16 +30,14 @@ This will automatically add all of the required dependencies and files to your p
 - `routes.js` - A default routes file that sends all requests to Next.js. Update this file to add caching or proxy some URLs to a different origin.
 - `sw/service-worker.js` A service worker implemented using Workbox.
 
-3. Set `target: 'serverless'` and add the `withServiceWorker` plugin to `next.config.js`. If this file doesn't exist, create it with the following content:
+3. Add the `withServiceWorker` plugin to `next.config.js`. If this file doesn't exist, create it with the following content:
 
 ```js
 // next.config.js
 
 const { withServiceWorker } = require('@xdn/next/sw')
 
-module.exports = withServiceWorker({
-  target: 'serverless'
-})
+module.exports = withServiceWorker()
 ```
 
 If you're already using `next-offline`, you should remove it in favor of `withServiceWorker`, which itself uses `next-offline`.

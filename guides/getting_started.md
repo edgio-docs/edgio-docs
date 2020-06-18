@@ -20,5 +20,5 @@ To run an existing app on the XDN, run the following:
 
 ```bash
 npm i -g @xdn/cli
-npm init
+xdn init
 ```

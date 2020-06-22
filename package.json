@@ -8,7 +8,7 @@
     "prod": "xdn run --production",
     "dev": "next dev",
     "build": "xdn build",
-    "deploy": "xdn deploy platform",
+    "deploy": "xdn deploy moovweb-docs",
     "xdn:update": "npm i --save @xdn/core@latest @xdn/next@latest @xdn/cli@latest @xdn/prefetch@latest @xdn/react@latest",
     "xdn:link": "yalc add @xdn/core @xdn/next @xdn/cli @xdn/prefetch @xdn/react"
   },

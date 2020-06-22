@@ -3,7 +3,7 @@ import fetch from 'isomorphic-fetch'
 export default async function version(req, res) {
   const { version } = req.query
   const modules = await fetch(
-    `http://moovweb.github.io/xdn-docs-pages/${version}/modules.json`,
+    `http://moovweb-docs.github.io/xdn-docs-pages/${version}/modules.json`,
   ).then(resp => resp.json())
 
   const updateMenu = node => {

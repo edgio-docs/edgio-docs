@@ -5,7 +5,7 @@ export default async function guide(req, res) {
 
   const guideResp = version
     ? await fetch(
-        `http://moovweb.github.io/xdn-docs-pages/${version}/guides/${guide}.md`,
+        `http://moovweb-docs.github.io/xdn-docs-pages/${version}/guides/${guide}.md`,
       ).then(resp => resp.text())
     : require(`../../../guides/${guide}.md`).default
 

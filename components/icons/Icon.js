@@ -7,6 +7,7 @@ import AngularIcon from './angular.svg'
 import SpartacusIcon from './spartacus-blue.png'
 import NextIcon from './next.svg'
 import NuxtIcon from './nuxt.svg'
+import ReactStorefrontIcon from './react-storefront.svg'
 
 export const icons = {
   react: ReactIcon,
@@ -19,6 +20,7 @@ export const icons = {
   nuxt: NuxtIcon,
   prev: ChevronLeft,
   next: ChevronRight,
+  'react-storefront': ReactStorefrontIcon,
 }
 
 export const styles = theme => ({

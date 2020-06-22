@@ -19,7 +19,7 @@ import getBaseUrl from '../components/utils/getBaseUrl'
 import ApiLink from '../components/ApiLink'
 import Link from 'next/link'
 import ReactIcon from '../components/icons/react.svg'
-import VueIcon from '../components/icons/vue.svg'
+import ReactStorefrontIcon from '../components/icons/react-storefront.svg'
 import NextIcon from '../components/icons/next.svg'
 import NuxtIcon from '../components/icons/nuxt.svg'
 import AngularIcon from '../components/icons/angular.svg'
@@ -78,6 +78,7 @@ const useStyles = makeStyles(theme => ({
   frameworkText: {
     display: 'flex',
     justifyContent: 'center',
+    textAlign: 'center',
   },
 
   icon: {
@@ -128,6 +129,16 @@ const Home = ({ navData }) => {
                 <Paper className={classes.framework} elevation={0}>
                   <ReactIcon className={classes.icon} />
                   <Typography className={classes.frameworkText}>Get started with React</Typography>
+                </Paper>
+              </Link>
+            </Grid>
+            <Grid item>
+              <Link href="/guides/[...guide]" as="/guides/react-storefront">
+                <Paper className={classes.framework} elevation={0}>
+                  <ReactStorefrontIcon className={classes.icon} />
+                  <Typography className={classes.frameworkText}>
+                    Get started with React Storefront
+                  </Typography>
                 </Paper>
               </Link>
             </Grid>

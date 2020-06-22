@@ -80,6 +80,12 @@
         "href": "/guides/[...guide]"
       },
       {
+        "text": "React Storefront",
+        "icon": "react-storefront",
+        "as": "/guides/react-storefront",
+        "href": "/guides/[...guide]"
+      },
+      {
         "text": "Nuxt.js",
         "icon": "nuxt",
         "as": "/guides/nuxt",

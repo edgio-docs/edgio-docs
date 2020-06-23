@@ -117,11 +117,11 @@ This example shows typical usage of `@xdn/core`, including serving a service wor
 const { Router } = require('@xdn/core/router')
 
 module.exports = new Router()
-  .get('/service-worker.js', async ({ serviceWorker }) => {
+  .get('/service-worker.js', ({ serviceWorker }) => {
     // serve the service worker built by webpack
     serviceWorker('dist/service-worker.js')
   })
-  .get('/p/:productId', async ({ cache }) => {
+  .get('/p/:productId', ({ cache }) => {
     // cache products for one hour at edge and using the service worker
     cache({
       edge: {
@@ -135,7 +135,7 @@ module.exports = new Router()
     })
     proxy('origin')
   })
-  .fallback(async ({ proxy }) => {
+  .fallback(({ proxy }) => {
     // serve all unmatched URLs from the origin backend configured in xdn.config.js
     proxy('origin')
   })

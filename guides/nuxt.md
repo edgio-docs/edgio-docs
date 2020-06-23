@@ -183,8 +183,8 @@ const { renderNuxt, nuxtMiddleware } = createNuxtPlugin()
 
 module.exports = new Router()
   .use(nuxtMiddleware)
-  .get('/some/vanity/url/:p', async ({ render }) => {
-    await render(async (req, res, params) =>
+  .get('/some/vanity/url/:p', ({ render }) => {
+    render((req, res, params) =>
       renderNuxt(req, res, "/p/{p}", { id: params.p })
     )
   })
@@ -210,7 +210,7 @@ imagine you have `/pages/c/_categoryId.js`:
 
 ```js
 new Router()
-  .get('/pages/c/:categoryId', async ({ cache }) => {
+  .get('/pages/c/:categoryId', ({ cache }) => {
     cache({
       browser: {
         maxAgeSeconds: 0,

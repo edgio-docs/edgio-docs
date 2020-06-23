@@ -166,8 +166,8 @@ const { Router } = require('@xdn/core/router')
 const { renderNextPage, nextRoutes } = require('@xdn/next')
 
 module.exports = new Router()
-  .get('/some/vanity/url/:p', async res => {
-    await renderNextPage('/p/[productId]', res, params => ({ productId: params.p }))
+  .get('/some/vanity/url/:p', res => {
+    renderNextPage('/p/[productId]', res, params => ({ productId: params.p }))
   })
   .use(nextRoutes)
 ```
@@ -186,7 +186,7 @@ imagine you have `/pages/c/[categoryId].js`:
 
 ```js
 new Router()
-  .get('/pages/c/:categoryId', async ({ cache }) => {
+  .get('/pages/c/:categoryId', ({ cache }) => {
     cache({
       browser: {
         maxAgeSeconds: 0,

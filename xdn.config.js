@@ -5,8 +5,8 @@
 module.exports = {
   backends: {
     api: {
-      domainOrIp: 'moovweb.github.io',
-      hostHeader: 'moovweb.github.io',
+      domainOrIp: 'moovweb-docs.github.io',
+      hostHeader: 'moovweb-docs.github.io',
     },
   },
 }

@@ -43,12 +43,12 @@ $ npm create xdn-app@latest
 ✔ Which package manager would you like to use? › npm
 ```
 
-Next, configure the `occBaseUrl` in `environment.ts`. If this is your first time getting started, the XDN will automatically assign you a URL of the format `{username}-{project-name}-default.moovweb-edge.io` where the `project-name` is pulled from the `package.json` of your project. For example, if your username is `alice` and your project has the name of `my-xdn-site`, then set the `occBaseUrl` in `environment.prod.ts` as follows and save your changes:
+Next, configure the `occBaseUrl` in `environment.prod.ts`. If this is your first time getting started, the XDN will automatically assign you a URL of the format `{username}-{project-name}-default.moovweb-edge.io` where the `project-name` is pulled from the `package.json` of your project. For example, if your username is `alice` and your project has the name of `my-xdn-site`, then set the `occBaseUrl` in `environment.prod.ts` as follows and save your changes:
 
 ```js
 export const environment = {
   production: false,
-  occBaseUrl: 'https://https://alice-xdn-spartacus-default.moovweb-edge.io'
+  occBaseUrl: 'https://alice-xdn-spartacus-default.moovweb-edge.io'
 };
 ```
 

@@ -117,3 +117,45 @@ The `@xdn/vue` package provides a `Prefetch` component that you can wrap around 
 
 By default `Prefetch` will fetch and cache the URL in the link's `to` attribute (for both `router-link` and `nuxt-link`). If you have a single page app, you most likely want to prefetch an API call for the page rather than the page's HTML.  The example above shows you how to set the `url` property to control which URL is prefetched.
 
+## Using the XDN for Prefetching Only
+
+If you have an existing site already in production, it is possible to prefetch from the XDN while still serving the from the existing CDN.
+
+To achieve this:
+
+1. Create a new XDN app using `npm create xdn-app`.
+2. Use your site's hostname as the origin site.
+3. Once the app is created, configure your routes file to cache the URLs you want to prefetch.
+4. Deploy your XDN app.
+5. Optionally give it a custom domain by creating a production environment, assigning a custom domain, and uploading an SSL certificate.
+6. In your service-worker source, use the `cacheHost` option when configuring the `Prefetcher`. For example:
+
+```js
+import { skipWaiting, clientsClaim } from 'workbox-core'
+import { Prefetcher } from '@xdn/prefetch/sw'
+
+skipWaiting()
+clientsClaim()
+
+new Prefetcher({
+  cacheHost: 'your.xdn.domain.here.com', // specify the domain name for your XDN app here
+})
+```
+
+7. Serve the service worker from your site's origin domain. This is critical because service-worker's can only intercept fetch calls from apps served from the same origin as the service worker.
+8. Add a script to your app's source to install the service worker on each page. Here's an example:
+
+```js
+import install from '@xdn/prefetch/window/install'
+
+document.addEventListener('DOMContentLoaded', function () {
+  install({ 
+    // Since there is no direct traffic to the XDN, the cache will only be populated from prefetch 
+    // requests, so we need to serve prefetch requests even when they are not cached.
+    includeCacheMisses: true, 
+
+    // You can change this if you need to serve the service worker on a different path
+    serviceWorkerPath: '/service-worker.js' 
+  }) 
+})
+```

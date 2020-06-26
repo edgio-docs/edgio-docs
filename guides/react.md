@@ -163,7 +163,7 @@ new Prefetcher().route()
 In order to install the service worker in the browser when your site loads, call the `install` function from `@xdn/prefetch`:
 
 ```js
-import { install } from '@xdn/prefetch/window`
+import { install } from '@xdn/prefetch/window'
 
 install()
 ```

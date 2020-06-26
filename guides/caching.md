@@ -8,7 +8,7 @@ To cache responses at edge you need to create an [environment](environments). Ea
 
 ## L1 and L2 Caches
 
-Each edge point-of-presence (POP) has its own L1 cache. If a request cannot be fulfilled from the L1 cache, the XDN will attempt to fulfill the request from a single global L2 cache POP in order to maximize your effective cache hit ratio. There is very little difference in time to first byte for responses served from the L1 vs L2 cache. In either case the response is served nearly instantly (typically 25-100ms). Concurrent requests for the same URL on different POPs that result in a cache miss will be coalesced at the L2 cache. This means that only one request at a time for each cachable URL will reach your origin servers.
+Each edge point-of-presence (POP) has its own L1 cache. If a request cannot be fulfilled from the L1 cache, the XDN will attempt to fulfill the request from a single global L2 cache POP in order to maximize your effective cache hit ratio. There is very little difference in time to first byte for responses served from the L1 vs L2 cache. In either case the response is served nearly instantly (typically 25-100ms). Concurrent requests for the same URL on different POPs that result in a cache miss will be coalesced at the L2 cache. This means that only one request at a time for each cacheable URL will reach your origin servers.
 
 ## Caching a Response
 
@@ -17,7 +17,7 @@ To cache a response, use the `cache` function passed in your route's callback:
 ```js
 import { CustomCacheKey } from '@xdn/core/router'
 
-router.get('/some/path' ({ cache }) => {
+router.get('/some/path', ({ cache }) => {
   cache({
     browser: {
       // Sets the cache-control: maxage=n header sent to the browser.  To prevent the browser from caching this route
@@ -31,7 +31,7 @@ router.get('/some/path' ({ cache }) => {
     },
     edge: {
       // Sets the TTL for a response in the XDN's edge cache
-      maxAgeSeconds: 60 * 60 * 24
+      maxAgeSeconds: 60 * 60 * 24,
 
       // Sets the amount of time a stale response will be served from the cache.  When a stale response is sent, the XDN
       // will simultaneously fetch a new response to serve subsequent requests.
@@ -68,7 +68,7 @@ It is often useful to customize the cache key, either to improve the cache hit r
 ```js
 import { CustomCacheKey } from '@xdn/core/router'
 
-router.get('/some/path' ({ cache }) => {
+router.get('/some/path', ({ cache }) => {
   cache({
     // Other options...
     edge: {
@@ -87,7 +87,7 @@ This will remove the given query parameters from the URL before it is used in ca
 ```js
 import { CustomCacheKey } from '@xdn/core/router'
 
-router.get('/some/path' ({ cache }) => {
+router.get('/some/path', ({ cache }) => {
   cache({
     // Other options...
     edge: {
@@ -111,7 +111,7 @@ By default, Moovweb XDN only caches responses for `GET` and `HEAD` requests. It 
 To cache a response to a `POST`, a separate route must be created which, together with `cache` function, will enable this behavior:
 
 ```js
-router.post('/api' ({ cache }) => {
+router.post('/api', ({ cache }) => {
   cache({
     // Caching options...
   })
@@ -125,10 +125,10 @@ This will automatically add request method and body to the caching key. There ar
 
 ### Caching Private Responses
 
-By default Moovweb XDN never caches responses which have `private` clause in their `cache-control` header. Sometimes though it is desireable to cache such responses, intended for a single user of your site:
+By default Moovweb XDN never caches responses which have `private` clause in their `cache-control` header. Sometimes though it is desirable to cache such responses, intended for a single user of your site:
 
 ```js
-router.get('/some/path' ({ cache }) => {
+router.get('/some/path', ({ cache }) => {
   cache({
     // Other options...
     edge: {

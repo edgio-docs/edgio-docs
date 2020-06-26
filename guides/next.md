@@ -83,7 +83,7 @@ export default function ProductListing({ products }) {
         <li key={i}>
           <Link as={product.url} href="/p/[productId]">
             <Prefetch>
-              <a><img src={product.thumbnail}></a>
+              <a><img src={product.thumbnail} /></a>
             </Prefetch>
           </Link>
         </li>
@@ -100,7 +100,7 @@ The `Prefetch` component assumes you're using `getServerSideProps` and will pref
 ```js
 <Link as={product.url} href="/p/[productId]">
   <Prefetch url="/some/url/to/prefetch">
-    <a><img src={product.thumbnail}></a>
+    <a><img src={product.thumbnail} /></a>
   </Prefetch>
 </Link>
 ```

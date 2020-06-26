@@ -109,7 +109,7 @@ The second argument to routes is a function that receives a `ResponseWriter` and
 
 ## Full Example
 
-This example shows typical usage of `@xdn/core`, including serving a service worker, next.js routes (varnity and conventional routes), and falling back to a legacy backend.
+This example shows typical usage of `@xdn/core`, including serving a service worker, next.js routes (vanity and conventional routes), and falling back to a legacy backend.
 
 ```js
 // routes.js
@@ -129,7 +129,7 @@ module.exports = new Router()
         staleWhileRevalidateSeconds: 60 * 60
       },
       browser: {
-        maxAgeSeconds: 0
+        maxAgeSeconds: 0,
         serviceWorkerSeconds: 60 * 60
       }
     })

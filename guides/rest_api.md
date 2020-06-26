@@ -25,13 +25,13 @@ The following request headers are required:
 
 Provide the following parameters as JSON in the post body:
 
-```js
+```json
 {
   "team": "the team name",
   "site": "the site name",
   "environment": "the environment name",
   "paths": ["Optional. An array of paths to clear. Use * as a wildcard."],
-  "surrogateKeys" ["Optional. An array of surrogate keys to clear"]
+  "surrogateKeys": ["Optional. An array of surrogate keys to clear"]
 }
 ```
 

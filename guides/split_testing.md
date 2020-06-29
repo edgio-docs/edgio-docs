@@ -9,7 +9,7 @@ To set up a split test using the Moovweb XDN you need to:
 1. Configure your router with two or more destinations
 2. Configure the rules for splitting traffic between router destinations using the [XDN Developer Console](http://moovweb.app).
 
-When a split test is active, all users are assigned to a random number between 0 and 99 via a cookie called `moov_bucket`.  This cookie assignment is done at edge before before the user's first request hits cache and so there is no performance penalty for new users. 
+When a split test is active, all users are assigned to a random number between 0 and 99 via a cookie called `moov_bucket`.  This cookie assignment is done at edge, before the user's first request hits cache, and so there is no performance penalty for new users. 
 
 The experience the user sees is determined by the traffic split percentage you set in the environment configuration in the Moovweb Developer Console and on which side of the split the user's `moov_bucket` value falls.
 
@@ -33,7 +33,6 @@ module.exports = new Router()
       // additional routing rules for the new experience go here
       .fallback(({ proxy }) => proxy('new'))
   )
-}
 ```
 
 In the example above, `legacy` and `new` correspond to backends in `xdn.config.js`:
@@ -84,7 +83,7 @@ You can add additional rules to, for example, allow testers to get to the new ex
 
 ![edit](/images/split-testing/criteria.png)
 
-The order of rules is critical. Rules are matched from top to bottom.  When handling a requst, the first matching rule will be used. Given the rules we've set up in the examples above, we need to move the force-new cookie rule to the top so that it takes precedence since the other rule contains no critera.  We can reorder the rules by dragging and dropping:
+The order of rules is critical. Rules are matched from top to bottom.  When handling a request, the first matching rule will be used. Given the rules we've set up in the examples above, we need to move the force-new cookie rule to the top so that it takes precedence since the other rule contains no criteria.  We can reorder the rules by dragging and dropping:
 
 ![edit](/images/split-testing/order.png)
 

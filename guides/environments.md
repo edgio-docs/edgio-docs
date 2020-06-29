@@ -4,7 +4,7 @@ This guide shows you how to create production, staging, and other environments.
 
 ## Overview
 
-In order to serve your site on a specific domain, you need to configure an environment. Most sites have at least three environments: default, staging, and production. Free accounts are limited to the a single environment (default). Paid accounts allow you to create as many environments as you need. Each environment consists of:
+In order to serve your site on a specific domain, you need to configure an environment. Most sites have at least three environments: default, staging, and production. Free accounts are limited to a single environment (default). Paid accounts allow you to create as many environments as you need. Each environment consists of:
 
 - **Domains** - one or more domains on which the site will be served. Domains cannot be set on the default environment. The domain name for the default environment is derived from your team and site's name.
 - **Environment Variables** - secrets and other values that are specific to the environment and are not appropriate to check into source control. For example, API keys are commonly stored as environment variables

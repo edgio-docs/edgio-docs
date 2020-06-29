@@ -4,7 +4,7 @@ The XDN allows you to speed up the user's browsing experience by prefetching pag
 
 ## Traffic Shielding
 
-You might think that prefetching will put siginifcant additional load on the infrastructure hosting your APIs. That's actually not the case! The Moovweb XDN only serves prefetch requests from the edge cache. It will never make a request to the origin if a prefetch request cannot be served from the edge cache, so your servers will never see an increased load.
+You might think that prefetching will put significant additional load on the infrastructure hosting your APIs. That's actually not the case! The Moovweb XDN only serves prefetch requests from the edge cache. It will never make a request to the origin if a prefetch request cannot be served from the edge cache, so your servers will never see an increased load.
 
 ## Service Worker
 
@@ -26,7 +26,7 @@ new Prefetcher().route()
 
 ## Window
 
-Once you've created a service worker, code running in the browser window needs to register the service worker before pretching can begin.  How you do this depends on the front-end framework that you use.
+Once you've created a service worker, code running in the browser window needs to register the service worker before prefetching can begin.  How you do this depends on the front-end framework that you use.
 
 If you're not using a front-end framework, you can use the `install` function from `@xdn/prefetch` to install the service worker.  Here's an example:
 

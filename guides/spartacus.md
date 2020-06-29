@@ -12,7 +12,7 @@ This repo is a Moovweb XDN optimized template of SAP Spartacus. It leverages the
 
 If you just want to get started quickly with Spartacus and deploy it to the XDN in a few minutes follow the [Getting started](#section_getting_started) section below.
 
-The [Building from scratch](#section_building_from_scratch) section describes how to manually recreate an XDN optimized version of Spartacus from the official libraries. You don't need to do these steps but it's left there for the curious or for those trying to upgrade an existing Spartacus app.
+The [Building from scratch](#section_building_from_scratch) section describes how to manually recreate an XDN optimized version of Spartacus from the official libraries. You don't need to do these steps, but it's left there for the curious or for those trying to upgrade an existing Spartacus app.
 
 # Getting Started
 
@@ -62,7 +62,7 @@ Finally, deploy your site on the XDN using the `deploy` command:
 xdn deploy
 ```
 
-Be aware that the deploy step will automatically build Spartacus for you which can take a few minutes. When the deploy finishes the output will confirm the final deployment URL. Below is an example:
+Be aware that the deploy step will automatically build Spartacus for you which can take a few minutes. When the deployment finishes, the output will confirm the final deployment URL. Below is an example:
 
 ```
 📡️ Uploading...
@@ -78,7 +78,7 @@ Congrats! Your Spartacus site is now live on the XDN and you can login to the [X
 
 # Building from scratch
 
-This section describes how to manually recreate an XDN optimized version of Spartacus from the official libraries. We recommend using the pre-built template in this repository but we've left these steps for those trying to upgrade an existing Spartacus app or looking to apply the XDN to a different version of Spartacus.
+This section describes how to manually recreate an XDN optimized version of Spartacus from the official libraries. We recommend using the pre-built template in this repository, but we've left these steps for those trying to upgrade an existing Spartacus app or looking to apply the XDN to a different version of Spartacus.
 
 
 The steps below are pulled from the Spartacus official docs, which are published here: https://sap.github.io/spartacus-docs/building-the-spartacus-storefront-from-libraries/
@@ -141,7 +141,7 @@ xdn init
 
 The app should now have `@xdn` dependencies installed and auto-generated `routes.js` and `xdn.config.js` files created by `@xdn/angular`.
 
-`@xdn/angular` follows Angular 9 SSR scaffolding so the following changes are necessary to the server build:
+`@xdn/angular` follows Angular 9 SSR scaffolding, so the following changes are necessary to the server build:
 
 1. Modify the `output` block of `webpack.server.config.js` to a UMD library target with `default` export
 
@@ -290,10 +290,10 @@ Prefetching for a Spartacus app can be enabled by listening to upstream requests
 Example implementation of upstream request tracking:
 
 ```js
-import 'zone.js/dist/zone-node';
+import 'zone.js/dist/zone-node'
 
-import * as express from 'express';
-import { join } from 'path';
+import * as express from 'express'
+import { join } from 'path'
 import * as http from 'http'
 import * as https from 'https'
 
@@ -390,15 +390,13 @@ export default app
 
 ### Service worker
 
-`@xdn/prefetch` relies on Google's `workbox` library. Thus in the context of an Angular app a custom service-worker solution is necessary. Under the `src/sw` directory create the following files:
+`@xdn/prefetch` relies on Google's `workbox` library. Thus, in the context of an Angular app, a custom service-worker solution is necessary. Under the `src/sw` directory, create the following files:
 
 `service-worker.js`
 ```js
 import { skipWaiting, clientsClaim } from 'workbox-core'
 import { precacheAndRoute } from 'workbox-precaching'
 import { Prefetcher } from '@xdn/prefetch/sw'
-
-declare const self: any;
 
 skipWaiting()
 clientsClaim()
@@ -498,7 +496,7 @@ module.exports = {
 These files form the base for building a functional service-worker and can be further customized for any app-specific needs.
 
 To build the service worker add the following command to `package.json`:
-```js
+```json
 {
   ...
   "build:pwa:web": "rimraf ./dist/xdn-spartacus-app/service-worker.js && webpack --config ./src/sw/webpack.prod.config.js --progress --colors && node ./src/sw/workbox-build-inject.js",
@@ -510,7 +508,7 @@ To build the service worker add the following command to `package.json`:
 `workbox-build` needs to be installed for the injection.
 
 Add a polyfill for `window.process` if not already present in `polyfills.ts`:
-```js
+```typescript
 ...
 (window as any).process = {
   env: {
@@ -525,7 +523,7 @@ The build command places the built `service-worker.js` under `dist` so `@xdn/ang
 Installing the service worker and any further prefetching will be handled by `@xdn/prefetch` by invoking the `install` function imported from `@xdn/prefetch/window/install`.
 
 Example implementation in `app.component.ts`:
-```js
+```typescript
 import { Component, OnInit, Inject } from '@angular/core';
 import install from '@xdn/prefetch/window/install';
 import { isPlatformBrowser } from '@angular/common';

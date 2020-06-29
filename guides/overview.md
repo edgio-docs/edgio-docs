@@ -4,7 +4,7 @@ This guide introduces the high-level concepts behind Moovweb's XDN.
 
 ## What is an XDN?
 
-XDN stands for "e**X**perience **D**eliver **N**etwork". It extends the capabilities of a traditional **CDN** by not only hosting your static content, but also providing **server-side rendering** for progressive web applications as well as caching both your APIs and HTML at the network edge to provide your users with the **fastest browsing experience**.
+XDN stands for "e**X**perience **D**elivery **N**etwork". It extends the capabilities of a traditional **CDN** by not only hosting your static content, but also providing **server-side rendering** for progressive web applications as well as caching both your APIs and HTML at the network edge to provide your users with the **fastest browsing experience**.
 
 ## Architecture
 
@@ -24,17 +24,15 @@ The Moovweb XDN provides server side rendering (SSR) via JS workers in multiple 
 
 ## Speed
 
-The Moovweb XDN makes it possible to deliver subsecond page load-times and instantaneous client-side page transitions through the use of prefetching and caching. It empowers developers to optimize peformance by leveraging powerful caching and edge logic capabilities right from their application code using a "CDN-as-code" JavaScript API. Rather than manually configuring your CDN through a web portal, the XDN allows you to put your edge logic in code, so that it's source-controlled, reviewed, and tested using the same software development lifecycle as the rest of your vital application code. You can even A/B test edge logic in production!
+The Moovweb XDN makes it possible to deliver subsecond page load-times and instantaneous client-side page transitions through the use of prefetching and caching. It empowers developers to optimize performance by leveraging powerful caching and edge logic capabilities right from their application code using a "CDN-as-code" JavaScript API. Rather than manually configuring your CDN through a web portal, the XDN allows you to put your edge logic in code, so that it's source-controlled, reviewed, and tested using the same software development lifecycle as the rest of your vital application code. You can even A/B test edge logic in production!
 
 ```js
 // Example XDN routes file for a Next.js app
 
 const { Router } = require('@xdn/core/router')
-const { createNextPlugin } = require('@xdn/next')
+const { nextRoutes } = require('@xdn/next')
 
-export default nextJSApp => {
-  const { nextMiddleware } = createNextPlugin(nextJSApp)
-
+export default nextJSApp => {  
   return new Router()
     .get('/p/:productId', ({ cache }) => {
       cache({
@@ -45,7 +43,7 @@ export default nextJSApp => {
         },
       })
     })
-    .use(nextMiddleware) // serve pages using Next.js's built-in routing
+    .use(nextRoutes) // serve pages using Next.js's built-in routing
     .fallback(({ proxy }) => proxy('legacy')) // serve unmatched URLs from the legacy implementation of the site so we can gradually role out the new PWA page by page.
 }
 ```

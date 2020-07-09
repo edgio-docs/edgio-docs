@@ -147,6 +147,7 @@ new Prefetcher({
 
 ```js
 import install from '@xdn/prefetch/window/install'
+import prefetch from '@xdn/prefetch/window/prefetch'
 
 document.addEventListener('DOMContentLoaded', function () {
   install({ 
@@ -155,7 +156,18 @@ document.addEventListener('DOMContentLoaded', function () {
     includeCacheMisses: true, 
 
     // You can change this if you need to serve the service worker on a different path
-    serviceWorkerPath: '/service-worker.js' 
+    serviceWorkerPath: '/service-worker.js',
+
+    // If you don't have links specified with a `<a>` tags with `href` attributes, you can also
+    // specify watchers to prefetch when other elements are added to the page:
+    watch: [{
+      selector: 'div.product-tile',
+      callback: el => {
+        const productId = el.getAttribute('data-product-id')
+        const catId = document.getElementById('cat-listing').getAttribute('data-category-id')
+        prefetch(`/api/${catId}/${productId}`, 'fetch')
+      }
+    }]
   }) 
 })
 ```

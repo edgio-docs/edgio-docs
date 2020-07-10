@@ -43,6 +43,11 @@
         "href": "/guides/[...guide]"
       },
       {
+        "text": "Image Optimization",
+        "as": "/guides/image_optimization",
+        "href": "/guides/[...guide]"
+      },
+      {
         "text": "Split Testing",
         "as": "/guides/split_testing",
         "href": "/guides/[...guide]"

@@ -39,7 +39,7 @@
     "url-loader": "^4.1.0"
   },
   "devDependencies": {
-    "@xdn/cli": "^2.0.0-alpha.5",
+    "@xdn/cli": "^1.38.2",
     "babel-loader": "^8.1.0",
     "prettier": "^1.19.1"
   }

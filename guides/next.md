@@ -30,15 +30,17 @@ This will automatically add all of the required dependencies and files to your p
 - `routes.js` - A default routes file that sends all requests to Next.js. Update this file to add caching or proxy some URLs to a different origin.
 - `sw/service-worker.js` A service worker implemented using Workbox.
 
-3. Add the `withServiceWorker` plugin to `next.config.js`. If this file doesn't exist, create it with the following content:
+3. Add the `withXDN` and `withServiceWorker` plugins to `next.config.js`. If this file doesn't exist, create it with the following content:
 
 ```js
 // next.config.js
 
-const { withServiceWorker } = require('@xdn/next/sw')
+const { withXDN, withServiceWorker } = require('@xdn/next/config')
 
-module.exports = withServiceWorker()
+module.exports = withXDN(withServiceWorker())
 ```
+
+The `withXDN` plugin ensures that your app is bundled properly for running on the XDN, and `withServiceWorker` provides a service worker based on `sw/service-worker.js`.
 
 If you're already using `next-offline`, you should remove it in favor of `withServiceWorker`, which itself uses `next-offline`.
 

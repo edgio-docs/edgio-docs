@@ -81,7 +81,7 @@ export default function ProductListing({ products }) {
     <ul>
       {products.map((product, i) => (
         <li key={i}>
-          <Link as={product.url} href="/p/[productId]">
+          <Link as={product.url} href="/p/[productId]" passHref>
             <Prefetch>
               <a><img src={product.thumbnail} /></a>
             </Prefetch>
@@ -104,6 +104,8 @@ The `Prefetch` component assumes you're using `getServerSideProps` and will pref
   </Prefetch>
 </Link>
 ```
+
+Note that if you don't provide a `url` prop to `Prefetch`, you must specify the `passHref` prop on `Link` in order for the `Prefetch` component to know what URL to prefetch.
 
 ## Routing
 
@@ -181,12 +183,24 @@ The `renderNextPage` function returns a promise that resolves when Next.js has r
 ### Caching
 
 The easiest way to add edge caching to your Next.js app is to add caching routes before the middleware.  For example, 
-imagine you have `/pages/c/[categoryId].js`:
-
+imagine you have `/pages/p/[productId].js`.  Here's how you can SSR responses as well as cache calls to `getServerSideProps`:
 
 ```js
 new Router()
-  .get('/pages/c/:categoryId', ({ cache }) => {
+  // Products - SSR
+  .get('/p/:productId', ({ cache }) => {
+    cache({
+      browser: {
+        maxAgeSeconds: 0,
+      },
+      edge: {
+        maxAgeSeconds: 60 * 60 * 24,
+        staleWhileRevalidateSeconds: 60 * 60
+      }
+    })
+  })
+  // Products - getServerSideProps
+  .get('/_next/data/:version/p/:productId.json', ({ cache }) => {
     cache({
       browser: {
         maxAgeSeconds: 0,

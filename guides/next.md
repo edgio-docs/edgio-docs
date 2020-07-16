@@ -216,3 +216,30 @@ new Router()
   })
   .use(nextRoutes)
 ```
+
+### Additional steps to enable caching for getServerSideProps
+
+By default, Next.js adds a `cache-control: private, no-cache, no-store, must-revalidate' header to all responses from getServerSideProps.  The presence of `private` will prevent the XDN from caching the response. You can tell this is the case when your code is deployed on the XDN by looking at the `x-xdn-cache-status` response header.  You will see a value of `private` which indicates that the presence of "private" in cache-control is preventing the XDN from caching the response.
+
+To fix this, you have two choices:
+
+1.) You can set your own cache-control header in getServerSideProps without `private`:
+
+```js
+export async function getServerSideProps({ query, res }) {
+  res.setHeader("Cache-Control", "max-age=0, no-cache, no-store");
+}
+```
+
+2.) You can set the `edge.forcePrivateCaching` property to `true` in your router.  For example:
+
+```js
+const { Router } = require("@xdn/core/router");
+const { nextRoutes } = require("@xdn/next");
+
+module.exports = new Router()
+  .get("/", ({ cache }) => {
+    cache({ edge: { maxAgeSeconds: 60 * 60, forcePrivateCaching: true } });
+  })
+```
+

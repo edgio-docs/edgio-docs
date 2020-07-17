@@ -30,15 +30,17 @@ This will automatically add all of the required dependencies and files to your p
 - `routes.js` - A default routes file that sends all requests to Next.js. Update this file to add caching or proxy some URLs to a different origin.
 - `sw/service-worker.js` A service worker implemented using Workbox.
 
-3. Add the `withServiceWorker` plugin to `next.config.js`. If this file doesn't exist, create it with the following content:
+3. Add the `withXDN` and `withServiceWorker` plugins to `next.config.js`. If this file doesn't exist, create it with the following content:
 
 ```js
 // next.config.js
 
-const { withServiceWorker } = require('@xdn/next/sw')
+const { withXDN, withServiceWorker } = require('@xdn/next/config')
 
-module.exports = withServiceWorker()
+module.exports = withXDN(withServiceWorker())
 ```
+
+The `withXDN` plugin ensures that your app is bundled properly for running on the XDN, and `withServiceWorker` provides a service worker based on `sw/service-worker.js`.
 
 If you're already using `next-offline`, you should remove it in favor of `withServiceWorker`, which itself uses `next-offline`.
 
@@ -81,7 +83,7 @@ export default function ProductListing({ products }) {
     <ul>
       {products.map((product, i) => (
         <li key={i}>
-          <Link as={product.url} href="/p/[productId]">
+          <Link as={product.url} href="/p/[productId]" passHref>
             <Prefetch>
               <a><img src={product.thumbnail} /></a>
             </Prefetch>
@@ -104,6 +106,8 @@ The `Prefetch` component assumes you're using `getServerSideProps` and will pref
   </Prefetch>
 </Link>
 ```
+
+Note that if you don't provide a `url` prop to `Prefetch`, you must specify the `passHref` prop on `Link` in order for the `Prefetch` component to know what URL to prefetch.
 
 ## Routing
 
@@ -181,12 +185,24 @@ The `renderNextPage` function returns a promise that resolves when Next.js has r
 ### Caching
 
 The easiest way to add edge caching to your Next.js app is to add caching routes before the middleware.  For example, 
-imagine you have `/pages/c/[categoryId].js`:
-
+imagine you have `/pages/p/[productId].js`.  Here's how you can SSR responses as well as cache calls to `getServerSideProps`:
 
 ```js
 new Router()
-  .get('/pages/c/:categoryId', ({ cache }) => {
+  // Products - SSR
+  .get('/p/:productId', ({ cache }) => {
+    cache({
+      browser: {
+        maxAgeSeconds: 0,
+      },
+      edge: {
+        maxAgeSeconds: 60 * 60 * 24,
+        staleWhileRevalidateSeconds: 60 * 60
+      }
+    })
+  })
+  // Products - getServerSideProps
+  .get('/_next/data/:version/p/:productId.json', ({ cache }) => {
     cache({
       browser: {
         maxAgeSeconds: 0,
@@ -200,3 +216,30 @@ new Router()
   })
   .use(nextRoutes)
 ```
+
+### Additional steps to enable caching for getServerSideProps
+
+By default, Next.js adds a `cache-control: private, no-cache, no-store, must-revalidate' header to all responses from getServerSideProps.  The presence of `private` will prevent the XDN from caching the response. You can tell this is the case when your code is deployed on the XDN by looking at the `x-xdn-cache-status` response header.  You will see a value of `private` which indicates that the presence of "private" in cache-control is preventing the XDN from caching the response.
+
+To fix this, you have two choices:
+
+1.) You can set your own cache-control header in getServerSideProps without `private`:
+
+```js
+export async function getServerSideProps({ query, res }) {
+  res.setHeader("Cache-Control", "max-age=0, no-cache, no-store");
+}
+```
+
+2.) You can set the `edge.forcePrivateCaching` property to `true` in your router.  For example:
+
+```js
+const { Router } = require("@xdn/core/router");
+const { nextRoutes } = require("@xdn/next");
+
+module.exports = new Router()
+  .get("/", ({ cache }) => {
+    cache({ edge: { maxAgeSeconds: 60 * 60, forcePrivateCaching: true } });
+  })
+```
+

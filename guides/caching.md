@@ -27,7 +27,7 @@ router.get('/some/path', ({ cache }) => {
       // Sends a non-standard header `x-sw-cache-control: n` that you can use to control caching your service worker.
       // Note that service workers do not understand this header by default so would you need to add code to your service
       // worker to support it
-      serviceWorkerSeconds: 60 * 60
+      serviceWorkerSeconds: 60 * 60,
     },
     edge: {
       // Sets the TTL for a response in the XDN's edge cache
@@ -41,9 +41,9 @@ router.get('/some/path', ({ cache }) => {
       // Optionally customizes the cache key.
       cacheKey: new CustomCacheKey()
         .addBrowser() // Split cache by browser type
-        .addCookie('some-cookie') // Split cache by some-cookie cookie
-        // And many other options
-    }
+        .addCookie('some-cookie'), // Split cache by some-cookie cookie
+      // And many other options
+    },
   })
 })
 ```
@@ -54,16 +54,16 @@ The `cache` function can be used in the same route as other functions such as `s
 
 Moovweb XDN provides you with a default cache key out of the box. It is a broad cache key that ensures general correctness but that can be further customized by you. The default cache key consists of:
 
-* Value of request `host` request header
-* Complete request URL, including the query params (this can be customized)
-* Value of `accept-encoding` request header
-* Name of the destination when [split testing](./split_testing) is in effect
+- Value of request `host` request header
+- Complete request URL, including the query params (this can be customized)
+- Value of `accept-encoding` request header
+- Name of the destination when [split testing](./split_testing) is in effect
 
-#### Customizing Cache Key
+#### Customizing the Cache Key
 
 It is often useful to customize the cache key, either to improve the cache hit ratio or to account for complexities of your site. As seen above, the XDN provides an easy way to customize the keys by using the `CustomCacheKey` class. Here we will focus on two common examples:
 
-* Increasing the cache hit ratio by excluding query parameters that are not used in the rendering of the content:
+- Increasing the cache hit ratio by excluding query parameters that are not used in the rendering of the content:
 
 ```js
 import { CustomCacheKey } from '@xdn/core/router'
@@ -73,16 +73,15 @@ router.get('/some/path', ({ cache }) => {
     // Other options...
     edge: {
       // Other options...
-      cacheKey: new CustomCacheKey()
-        .excludeQueryParameters('to-be-excluded-1', 'to-be-excluded-2')
-    }
+      cacheKey: new CustomCacheKey().excludeQueryParameters('to-be-excluded-1', 'to-be-excluded-2'),
+    },
   })
 })
 ```
 
 This will remove the given query parameters from the URL before it is used in cache. On cache miss the transformed URL will be passed to your code with the original query strings available to your code in `x-xdn-original-qs` request header.
 
-* Including other request parameters like cookies:
+- Including other request parameters like cookies:
 
 ```js
 import { CustomCacheKey } from '@xdn/core/router'
@@ -92,10 +91,8 @@ router.get('/some/path', ({ cache }) => {
     // Other options...
     edge: {
       // Other options...
-      cacheKey: new CustomCacheKey()
-        .addCookie('language')
-        .addCookie('currency')
-    }
+      cacheKey: new CustomCacheKey().addCookie('language').addCookie('currency'),
+    },
   })
 })
 ```
@@ -106,7 +103,7 @@ Customizing caching keys is a very powerful tool to make your site faster. But a
 
 ### Caching Responses for POST and similar requests
 
-By default, Moovweb XDN only caches responses for `GET` and `HEAD` requests. It rarely makes sense to cache  `POST`, `PUT`, `PATCH`, or `DELETE` requests. These methods, from the point of view of HTTP semantics, are supposed to change the state of the underlying entities. Some query languages, however, like GraphQL, are implemented exclusively through `POST` requests with queries being sent through request body. When such solutions are used it is often desirable to be able to cache responses to some of these requests (namely those do not mutate any state).
+By default, Moovweb XDN only caches responses for `GET` and `HEAD` requests. It rarely makes sense to cache `POST`, `PUT`, `PATCH`, or `DELETE` requests. These methods, from the point of view of HTTP semantics, are supposed to change the state of the underlying entities. Some query languages, however, like GraphQL, are implemented exclusively through `POST` requests with queries being sent through request body. When such solutions are used it is often desirable to be able to cache responses to some of these requests (namely those do not mutate any state).
 
 To cache a response to a `POST`, a separate route must be created which, together with `cache` function, will enable this behavior:
 
@@ -133,13 +130,95 @@ router.get('/some/path', ({ cache }) => {
     // Other options...
     edge: {
       // Other options...
-      forcePrivateCaching: true // Force caching of `private` responses
-    }
+      forcePrivateCaching: true, // Force caching of `private` responses
+    },
   })
 })
 ```
 
 Note that this feature cannot be safely used with caching of `POST` and similar requests: if the way to signal that something must not be cached is through `private` but then you force caching of `private` responses, all responses will be cached.
+
+## How do I know if a response was served from the cache?
+
+To know if a response is being cached, examine the `x-xdn-t` response header. There are two components that indicate caching status:
+
+- `oc` - The outer (level 1) cache
+- `sc` - The shield (level 2) cache
+
+You will see one of the following values for these components:
+
+- `pass` - The response was not cached (aka a cache "miss")
+- `cached` - The response was added to the cache, but was not served from the cache (aka a cache "miss" that may be a "hit" for the next request)
+- `hit` - The response was served from the cache.
+
+## Why is my response not being cached?
+
+To understand why a response was not cached, examine the `x-xdn-caching-status` response header. It will have one of the following values:
+
+### ok
+
+The response was cached or served from the cache (see `x-xdn-t`).
+
+### no-max-age
+
+The response was not cached because no `cache-control` response header with a non-zero `max-age` or `s-maxage` value was found. To cache the response, call `cache` in your route handler with `edge.maxAgeSeconds` set. For example:
+
+```js
+new Router().get('/', ({ cache }) => {
+  cache({
+    edge: {
+      maxAgeSeconds: 60 * 60 * 24,
+    },
+  })
+})
+```
+
+You can also cache the response by adding a `cache-control` header with non-zero `max-age` or `s-maxage` value to the upstream response.
+
+### code
+
+The response was not cached because the response had a status code >= 400.
+
+### private
+
+The response was not cached because it contained a `cache-control` header with `private`. To cache the response, use:
+
+```js
+new Router().get('/', ({ cache }) => {
+  cache({
+    edge: {
+      forcePrivateCaching: 60 * 60 * 24,
+    },
+  })
+})
+```
+
+You can also remove the `private` value from the upstream response's `cache-control` header.
+
+### method
+
+The response was not cached because the request method was something other than `HEAD` or `GET`, and the route that set the caching behavior used `match`. To cache the `POST` responses, for example, use `router.post()` instead of `router.match()`.
+
+### body-too-big
+
+The response was not cached because the request body was more than 8000 bytes.
+
+### set-cookie
+
+The response was not cached because it contained a `set-cookie` header. To cache the response, use `removeUpstreamResponseHeader('set-cookie')` to remove the set-cookie header.
+
+## Caching During Development
+
+By default, caching is turned off during development. This is done to ensure that developers don't see stale responses after making changes to their code or other upstream APIs. You can enable caching during development by running your app with:
+
+```
+xdn run --cache
+```
+
+The cache will automatically be cleared when you make changes to your router. A few aspects of caching are not yet supported during local development:
+
+- `edge.staleWhileRevalidateSeconds` is not yet implemented. Only `edge.maxAgeSeconds` is used to set the cache time to live.
+- `edge.key` is not supported. Cache keys are always based soley on url, method, `accept-encoding` and `host` headers, and body.
 
 ## Clearing the Cache
 

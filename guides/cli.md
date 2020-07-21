@@ -34,9 +34,10 @@ Runs your app locally. Uses port 3000 by default. You can change this by setting
 
 #### Options
 
-| Name           | Description                                                                                                                                                                                      |
-| -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `--production` | Runs your app using serverless-offline to more closely simulate the cloud environment. This is equivalend to setting NODE_ENV environment variable to `true`. You need to run `xdn build` first. |
+| Name           | Description                                                                                                                                                                                                                        |
+| -------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `--production` | Runs your app using serverless-offline to more closely simulate the cloud environment. This is equivalend to setting NODE_ENV environment variable to `true`. You need to run `xdn build` first.                                   |
+| `--cache`      | Enables caching during local development. By default caching is turned off in local development to ensure you don't see stale responses as you make changes to your code. Enable caching to test the caching logic in your router. |
 
 #### Example
 

@@ -2,7 +2,7 @@ const { withXDN, withServiceWorker } = require('@xdn/next/config')
 
 module.exports = withXDN(
   withServiceWorker({
-    webpack: function (config) {
+    webpack: function(config) {
       config.module.rules.push({
         test: /\.md$/,
         use: 'raw-loader',

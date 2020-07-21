@@ -30,7 +30,7 @@ xdn init
 
 ## run
 
-Runs your app locally. Uses port 3000 by default. You can change this by setting the `port` environment variable. For example: `port=5000 xdn run`.
+Runs your app locally. Uses port 3000 by default. You can change this by setting the `PORT` environment variable. For example: `PORT=5000 xdn run`.
 
 #### Options
 

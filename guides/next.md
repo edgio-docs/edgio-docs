@@ -217,29 +217,15 @@ new Router()
   .use(nextRoutes)
 ```
 
-### Additional steps to enable caching for getServerSideProps
+### Preventing Next.js pages from being cached by other CDNs
 
-By default, Next.js adds a `cache-control: private, no-cache, no-store, must-revalidate' header to all responses from getServerSideProps.  The presence of `private` will prevent the XDN from caching the response. You can tell this is the case when your code is deployed on the XDN by looking at the `x-xdn-cache-status` response header.  You will see a value of `private` which indicates that the presence of "private" in cache-control is preventing the XDN from caching the response.
+By default, Next.js adds a `cache-control: private, no-cache, no-store, must-revalidate` header to all responses from `getServerSideProps`.  The presence of `private` would prevent the XDN from caching the response, so `nextRoutes` middleware from `@xdn/next` automatically removes the `private` portion of the header to enable caching at edge.  If you want your responses to be private, you need to specify a `cache-control` header using the router:
 
-To fix this, you have two choices:
-
-1.) You can set your own cache-control header in getServerSideProps without `private`:
-
-```js
-export async function getServerSideProps({ query, res }) {
-  res.setHeader("Cache-Control", "max-age=0, no-cache, no-store");
-}
 ```
-
-2.) You can set the `edge.forcePrivateCaching` property to `true` in your router.  For example:
-
-```js
-const { Router } = require("@xdn/core/router");
-const { nextRoutes } = require("@xdn/next");
-
-module.exports = new Router()
-  .get("/", ({ cache }) => {
-    cache({ edge: { maxAgeSeconds: 60 * 60, forcePrivateCaching: true } });
+new Router()
+  .get('/my-private-page', ({ setResponseHeader }) => {
+    setResponseHeader('cache-control', 'private, no-cache, no-store, must-revalidate') 
   })
 ```
 
+Doing so will prevent other CDNs running in front of the XDN from caching the response.

@@ -59,6 +59,11 @@ Moovweb XDN provides you with a default cache key out of the box. It is a broad 
 - Value of `accept-encoding` request header
 - Name of the destination when [split testing](./split_testing) is in effect
 
+When [POST and other non-GET/HEAD](#section_caching_responses_for_post_and_other_non_get_head_requests) methods caching is enabled XDN automatically adds the following to the cache key:
+
+- Request HTTP method
+- Request body
+
 #### Customizing the Cache Key
 
 It is often useful to customize the cache key, either to improve the cache hit ratio or to account for complexities of your site. As seen above, the XDN provides an easy way to customize the keys by using the `CustomCacheKey` class. Here we will focus on two common examples:
@@ -101,9 +106,9 @@ This will take the values of `language` and `currency` cookies from `cookie` req
 
 Customizing caching keys is a very powerful tool to make your site faster. But at the same time it is easy to apply it too broadly leading to loss of performance due to lower cache hit ratio. The key to correctly using customization is to apply it judiciously and narrowly, for specific routes.
 
-### Caching Responses for POST and similar requests
+### Caching Responses for POST and other non-GET/HEAD requests
 
-By default, Moovweb XDN only caches responses for `GET` and `HEAD` requests. It rarely makes sense to cache `POST`, `PUT`, `PATCH`, or `DELETE` requests. These methods, from the point of view of HTTP semantics, are supposed to change the state of the underlying entities. Some query languages, however, like GraphQL, are implemented exclusively through `POST` requests with queries being sent through request body. When such solutions are used it is often desirable to be able to cache responses to some of these requests (namely those do not mutate any state).
+By default, Moovweb XDN only caches responses for `GET` and `HEAD` requests. It rarely makes sense to cache `POST`, `PUT`, `PATCH`, or `DELETE` requests. These methods, from the point of view of HTTP semantics, are supposed to change the state of the underlying entities. However, some APIs, like GraphQL APIs, are implemented exclusively through `POST` requests with queries being sent through request body. When such solutions are used it is often desirable to be able to cache responses to some of these requests (namely those do not mutate any state).
 
 To cache a response to a `POST`, a separate route must be created which, together with `cache` function, will enable this behavior:
 
@@ -115,10 +120,15 @@ router.post('/api', ({ cache }) => {
 })
 ```
 
-This will automatically add request method and body to the caching key. There are two limitations to this:
+This will automatically add request method and body to the caching key.
+
+#### Limitations
+
+There are a number of limitations in caching of `POST` and similar requests:
 
 1. If the request body is longer than 8,000 bytes, the caching will automatically be turned off.
 2. Since both mutating and non-mutating requests are executed on the same route, there is no way for XDN to distinguish between such operations and the responsibility for never caching the mutating requests lies with you as the developer. The way to avoid caching responses to mutating requests is to inject `private` into `cache-control` of your response (e.g. `res.setHeader('cache-control', 'private')`)
+3. Multiple requests are often need to "warm" the cache for non-`GET` requests.
 
 ### Caching Private Responses
 

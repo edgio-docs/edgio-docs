@@ -59,6 +59,11 @@ Moovweb XDN provides you with a default cache key out of the box. It is a broad 
 - Value of `accept-encoding` request header
 - Name of the destination when [split testing](./split_testing) is in effect
 
+When POST and similar methods caching is enabled XDN automatically adds the following to the cache key:
+
+- Request HTTP method
+- Request body
+
 #### Customizing the Cache Key
 
 It is often useful to customize the cache key, either to improve the cache hit ratio or to account for complexities of your site. As seen above, the XDN provides an easy way to customize the keys by using the `CustomCacheKey` class. Here we will focus on two common examples:

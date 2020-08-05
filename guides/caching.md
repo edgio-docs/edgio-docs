@@ -197,7 +197,7 @@ The response was not cached because it contained a `cache-control` header with `
 new Router().get('/', ({ cache }) => {
   cache({
     edge: {
-      forcePrivateCaching: 60 * 60 * 24,
+      forcePrivateCaching: true,
     },
   })
 })

@@ -22,7 +22,7 @@ export default function MyApp({ Component, pageProps, currentVersion, versions }
     <MuiThemeProvider theme={theme}>
       <VersionProvider selectedVersion={currentVersion} versions={versions}>
         <Head>
-          <link rel="icon" href="/favicon.ico" />
+          <link rel="icon" href="/favicon.png" />
           <link
             rel="stylesheet"
             href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"

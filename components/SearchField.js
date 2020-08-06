@@ -5,7 +5,25 @@ import SearchIcon from '@material-ui/icons/Search'
 import SearchResults from './SearchResults'
 import useVersioning from './versioning'
 
-const useStyles = makeStyles(theme => ({}))
+const useStyles = makeStyles(theme => ({
+  root: {
+    color: theme.palette.grey[300],
+    '&:hover $notchedOutline': {
+      borderColor: theme.palette.grey[100],
+      borderWidth: 2,
+    },
+    '&$focused input': {
+      color: theme.palette.grey[100],
+    },
+    '&$focused $notchedOutline': {
+      borderColor: 'blue',
+      borderWidth: 2,
+    },
+  },
+  notchedOutline: {
+    borderColor: theme.palette.grey[300],
+  },
+}))
 
 export default function SearchField() {
   const classes = useStyles()
@@ -33,7 +51,9 @@ export default function SearchField() {
     setQuery(newQuery)
 
     const results = newQuery
-      ? await fetch(`/api/search?query=${newQuery}&version=${currentVersion}`).then(res => res.json())
+      ? await fetch(`/api/search?query=${newQuery}&version=${currentVersion}`).then(res =>
+          res.json(),
+        )
       : { results: [] }
 
     if (currentLoad === loadId.current) {
@@ -57,6 +77,7 @@ export default function SearchField() {
           onFocus={onFocus}
           onChange={onChangeText}
           InputProps={{
+            classes,
             startAdornment: (
               <InputAdornment position="start" classes={{ root: classes.icon }}>
                 <SearchIcon />

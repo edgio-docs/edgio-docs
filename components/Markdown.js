@@ -16,7 +16,7 @@ const useStyles = makeStyles(theme => ({
     fontWeight: '500',
     '& a': {
       textDecoration: 'none',
-      color: theme.palette.text.primary,
+      color: theme.palette.main,
       '&:hover': {
         textDecoration: 'underline',
       },

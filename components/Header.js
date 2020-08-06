@@ -19,12 +19,12 @@ import Logo from './Logo'
 import Router from 'next/router'
 const useStyles = makeStyles(theme => ({
   appBar: {
-    backgroundColor: theme.palette.background.default,
+    backgroundColor: '#242349',
     boxShadow: 'none',
     borderBottom: `1px solid ${theme.palette.divider}`,
     [theme.breakpoints.up('lg')]: {
       left: 299,
-      width: 'calc(100% - 300px)',
+      width: 'calc(100% - 299px)',
       paddingLeft: 0,
     },
   },
@@ -34,10 +34,16 @@ const useStyles = makeStyles(theme => ({
     },
   },
   progress: {
-    bottom: 0,
-    height: 2,
+    top: 0,
     left: 0,
     right: 0,
+    position: 'fixed',
+    zIndex: 9999,
+    backgroundColor: 'transparent',
+    height: 2,
+  },
+  barColorPrimary: {
+    backgroundColor: '#DD549F',
   },
   root: {
     flexGrow: 1,
@@ -47,7 +53,7 @@ const useStyles = makeStyles(theme => ({
   },
   menuButton: {
     marginRight: theme.spacing(2),
-    color: theme.palette.grey[500],
+    color: theme.palette.grey[200],
   },
   title: {
     flexGrow: 1,
@@ -85,41 +91,46 @@ export default function Header() {
   }, [setOpen])
 
   return (
-    <Slide appear={false} direction="down" in={!trigger}>
-      <AppBar className={classes.appBar}>
-        <Container maxWidth="xl" className={classes.container}>
-          <Toolbar disableGutters className={classes.toolbar}>
-            <Hidden lgUp implementation="css">
-              <IconButton
-                edge="start"
-                className={classes.menuButton}
-                color="inherit"
-                aria-label="menu"
-                onClick={handleMenuClick}
-              >
-                <MenuIcon />
-              </IconButton>
-            </Hidden>
-            <Hidden lgUp implementation="css">
-              <Link href="/" as="/">
-                <a href="/" className={classes.link}>
-                  <Logo style={{ marginRight: 12 }} />
-                </a>
-              </Link>
-            </Hidden>
-            <div style={{ flex: 1 }} className={classes.xsDown} />
-            <VersionChooser />
-            <div style={{ flex: 1 }} className={classes.smUp} />
-            <Hidden xsDown implementation="css">
-              <SearchField />
-            </Hidden>
-          </Toolbar>
-        </Container>
-        <LinearProgress
-          className={classes.progress}
-          style={{ display: loading ? 'block' : 'none' }}
-        />
-      </AppBar>
-    </Slide>
+    <>
+      <Slide appear={false} direction="down" in={!trigger}>
+        <AppBar className={classes.appBar}>
+          <Container maxWidth="xl" className={classes.container}>
+            <Toolbar disableGutters className={classes.toolbar}>
+              <Hidden lgUp implementation="css">
+                <IconButton
+                  edge="start"
+                  className={classes.menuButton}
+                  color="inherit"
+                  aria-label="menu"
+                  onClick={handleMenuClick}
+                >
+                  <MenuIcon />
+                </IconButton>
+              </Hidden>
+              <Hidden lgUp implementation="css">
+                <Link href="/" as="/">
+                  <a href="/" className={classes.link}>
+                    <Logo style={{ marginRight: 12 }} />
+                  </a>
+                </Link>
+              </Hidden>
+              <div style={{ flex: 1 }} className={classes.xsDown} />
+              <VersionChooser />
+              <div style={{ flex: 1 }} className={classes.smUp} />
+              <Hidden xsDown implementation="css">
+                <SearchField />
+              </Hidden>
+            </Toolbar>
+          </Container>
+        </AppBar>
+      </Slide>
+      <LinearProgress
+        classes={{
+          root: classes.progress,
+          barColorPrimary: classes.barColorPrimary,
+        }}
+        style={{ display: loading ? 'block' : 'none' }}
+      />
+    </>
   )
 }

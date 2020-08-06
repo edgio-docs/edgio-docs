@@ -17,11 +17,17 @@ const useStyles = makeStyles(theme => ({
   selectMenu: {
     textOverflow: 'clip',
   },
+  icon: {
+    color: theme.palette.grey[200],
+  },
   selectRoot: {
+    '&:hover': {
+      backgroundColor: 'rgba(255,255,255,0.1)',
+    },
     border: 0,
-    padding: theme.spacing(2, 4, 2, 2),
+    padding: theme.spacing(1, 2),
     fontSize: '1.25em',
-    color: '#666',
+    color: theme.palette.grey[200],
     display: 'flex',
     alignItems: 'center',
     [theme.breakpoints.down('xs')]: {
@@ -50,6 +56,7 @@ export default function VersionChooser() {
         autoWidth
         classes={{
           root: classes.selectRoot,
+          icon: classes.icon,
           selectMenu: classes.selectMenu,
         }}
       >

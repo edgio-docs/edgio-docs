@@ -23,7 +23,7 @@ import ReactStorefrontIcon from '../components/icons/react-storefront.svg'
 import NextIcon from '../components/icons/next.svg'
 import NuxtIcon from '../components/icons/nuxt.svg'
 import AngularIcon from '../components/icons/angular.svg'
-import MoovwebXDN from '../components/icons/MoovwebXDN.svg'
+import MoovwebXDN from '../components/icons/moovweb-xdn-black.svg'
 import { icons } from '../components/icons/Icon'
 
 const SpartacusIcon = icons['spartacus']

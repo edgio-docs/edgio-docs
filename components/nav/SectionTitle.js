@@ -3,7 +3,7 @@ import { Typography, makeStyles } from '@material-ui/core'
 
 const useStyles = makeStyles(theme => ({
   root: {
-    color: theme.palette.text.secondary,
+    color: 'rgba(0, 0, 0, 0.44)',
     textTransform: 'uppercase',
     margin: theme.spacing(3, 0, 2, 0),
   },

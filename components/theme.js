@@ -1,11 +1,13 @@
 import { createMuiTheme } from '@material-ui/core/styles'
 import { red } from '@material-ui/core/colors'
 
+const color = '#242349'
+
 // Create a theme instance.
 const theme = createMuiTheme({
   palette: {
     primary: {
-      main: '#556cd6',
+      main: '#fff',
     },
     secondary: {
       main: '#19857b',
@@ -16,6 +18,7 @@ const theme = createMuiTheme({
     background: {
       default: '#fff',
     },
+    main: color,
   },
   headerHeight: 64,
   fonts: {
@@ -26,38 +29,39 @@ const theme = createMuiTheme({
       fontSize: '2.8125rem',
       fontWeight: 400,
       lineHeight: '1.13333em',
-      color: 'rgba(0, 0, 0, 0.54)',
+      color,
       marginTop: '0.67em',
     },
     h2: {
       fontSize: '2.125rem',
       fontWeight: 400,
       lineHeight: '1.20588em',
-      color: 'rgba(0, 0, 0, 0.54)',
+      color,
     },
     h3: {
       fontSize: '1.5rem',
       fontWeight: 400,
       lineHeight: '1.35417em',
-      color: 'rgba(0, 0, 0, 0.87)',
+      color,
     },
     h4: {
       fontSize: '1.3125rem',
       fontWeight: 500,
       lineHeight: '1.16667em',
-      color: 'rgba(0, 0, 0, 0.87)',
+      color,
     },
     h5: {
       fontSize: '1rem',
       fontWeight: 400,
       lineHeight: '1.5em',
-      color: 'rgba(0, 0, 0, 0.87)',
+      color,
     },
     body1: {
       fontSize: '1rem',
     },
     body2: {
       fontSize: '1rem',
+      fontWeight: 'bold',
     },
   },
   overrides: {},

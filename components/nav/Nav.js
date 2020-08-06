@@ -5,11 +5,11 @@ import { makeStyles } from '@material-ui/core/styles'
 import CloseIcon from '@material-ui/icons/Close'
 import { IconButton, Hidden } from '@material-ui/core'
 import { MenuContext } from '../MenuProvider'
-import MoovwebXDN from '../icons/MoovwebXDN.svg'
+import MoovwebXDN from '../icons/moovweb-xdn-white-nav.svg'
 import Section from './Section'
 import Link from 'next/link'
 
-const width = 275
+const width = 300
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -18,9 +18,10 @@ const useStyles = makeStyles(theme => ({
     position: 'fixed',
     minWidth: width,
     width,
-    padding: theme.spacing(1, 4, 1, 0),
     top: 0,
     borderRight: `1px solid ${theme.palette.divider}`,
+    margin: theme.spacing(0, -3),
+    background: theme.palette.grey[100],
 
     [theme.breakpoints.down('md')]: {
       transition: 'transform .1s ease-out',
@@ -29,10 +30,10 @@ const useStyles = makeStyles(theme => ({
       bottom: 0,
       height: '100%',
       transform: `translateX(-${width}px)`,
-      padding: theme.spacing(1, 2, 2, 2),
       background: theme.palette.background.paper,
       zIndex: theme.zIndex.drawer,
       borderRight: `1px solid ${theme.palette.divider}`,
+      margin: theme.spacing(0),
     },
 
     [theme.breakpoints.down('xs')]: {
@@ -40,8 +41,19 @@ const useStyles = makeStyles(theme => ({
       transform: `translateX(-100%)`,
     },
   },
+  navBody: {
+    padding: theme.spacing(0, 4, 1, 3),
+  },
   open: {
     transform: 'translateX(1px)',
+  },
+  header: {
+    backgroundColor: '#242349',
+    padding: '7px 24px 3px',
+
+    [theme.breakpoints.down('xs')]: {
+      padding: '2px 24px 0 24px',
+    },
   },
   logo: {
     width: 180,
@@ -55,6 +67,7 @@ const useStyles = makeStyles(theme => ({
   },
   menuButton: {
     marginRight: theme.spacing(-1.5),
+    color: theme.palette.grey[200],
   },
 }))
 
@@ -69,7 +82,10 @@ export default function Nav({ navData }) {
         [classes.open]: open,
       })}
     >
-      <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
+      <div
+        style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}
+        className={classes.header}
+      >
         <Link href="/">
           <a>
             <MoovwebXDN className={classes.logo} />
@@ -87,9 +103,11 @@ export default function Nav({ navData }) {
           </IconButton>
         </Hidden>
       </div>
-      {navData.map((section, i) => (
-        <Section key={i} section={section} />
-      ))}
+      <div className={classes.navBody}>
+        {navData.map((section, i) => (
+          <Section key={i} section={section} />
+        ))}
+      </div>
     </nav>
   )
 }

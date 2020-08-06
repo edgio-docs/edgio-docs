@@ -41,7 +41,7 @@ const useStyles = makeStyles(theme => ({
     height: 'auto',
 
     '& .highlight': {
-      backgroundColor: 'rgba(0,0,0,0.05)',
+      backgroundColor: '#DD549F',
       borderRadius: '2px',
       color: theme.palette.primary.main,
     },

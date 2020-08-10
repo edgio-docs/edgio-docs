@@ -48,7 +48,7 @@ Next, configure the `occBaseUrl` in `environment.prod.ts`. If this is your first
 ```js
 export const environment = {
   production: false,
-  occBaseUrl: 'https://alice-xdn-spartacus-default.moovweb-edge.io'
+  occBaseUrl: 'https://alice-my-xdn-site-default.moovweb-edge.io'
 };
 ```
 

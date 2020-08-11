@@ -63,6 +63,11 @@
         "href": "/guides/[...guide]"
       },
       {
+        "text": "Logs",
+        "as": "/guides/logs",
+        "href": "/guides/[...guide]"
+      },
+      {
         "text": "Regions",
         "as": "/guides/regions",
         "href": "/guides/[...guide]"

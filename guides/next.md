@@ -64,7 +64,7 @@ See [deploying](deploying) for more information.
 
 ## Prefetching
 
-The `xdn init` command adds a service worker based on [Workbox](https://developers.google.com/web/tools/workbox) at `sw/service-worker.js`.  If you have an existing service worker that uses workbox, you can copy its contents into `sw/service-worker.js` and simply add the following to your service worker:
+The `xdn init` command adds a service worker based on [Workbox](https://developers.google.com/web/tools/workbox) at `sw/service-worker.js`. If you have an existing service worker that uses workbox, you can copy its contents into `sw/service-worker.js` and simply add the following to your service worker:
 
 ```js
 import { Prefetcher } from '@xdn/prefetch/sw'
@@ -85,7 +85,9 @@ export default function ProductListing({ products }) {
         <li key={i}>
           <Link as={product.url} href="/p/[productId]" passHref>
             <Prefetch>
-              <a><img src={product.thumbnail} /></a>
+              <a>
+                <img src={product.thumbnail} />
+              </a>
             </Prefetch>
           </Link>
         </li>
@@ -102,7 +104,9 @@ The `Prefetch` component assumes you're using `getServerSideProps` and will pref
 ```js
 <Link as={product.url} href="/p/[productId]">
   <Prefetch url="/some/url/to/prefetch">
-    <a><img src={product.thumbnail} /></a>
+    <a>
+      <img src={product.thumbnail} />
+    </a>
   </Prefetch>
 </Link>
 ```
@@ -141,9 +145,7 @@ In the code above, the `nextRoutes` middleware adds all Next.js routes to the ro
 A popular use case is to fallback to a legacy site for any route that your Next.js app isn't configured to handle:
 
 ```js
-new Router()
-  .use(nextRoutes)
-  .fallback(({ proxy }) => proxy('legacy'))
+new Router().use(nextRoutes).fallback(({ proxy }) => proxy('legacy'))
 ```
 
 To configure the legacy backend, use xdn.config.js:
@@ -161,9 +163,13 @@ module.exports = {
 
 Using environment variables here allows you to configure different legacy domains for each XDN environment.
 
-### Vanity Routes
+### rewrites and redirects
 
-For SEO purposes you may want to add additional "vanity" routes that point to Next.js. You can do this using the `renderNext` function returned from `createNextPlugin(app)`:
+The `nextRoutes` middleware automatically adds routes for [rewrites](https://nextjs.org/docs/api-reference/next.config.js/rewrites) and [redirects](https://nextjs.org/docs/api-reference/next.config.js/redirects) specified in `next.config.js`. Redirects are served directly from the network edge to maximize performance.
+
+### Explicit Routes
+
+To render a specific page, use the `renderNextPage` function:
 
 ```js
 const { Router } = require('@xdn/core/router')
@@ -176,16 +182,16 @@ module.exports = new Router()
   .use(nextRoutes)
 ```
 
-The `renderNextPage` function returns a promise that resolves when Next.js has rendered the response and takes the following parameters:
+The `renderNextPage` function takes the following parameters:
 
-* nextRoute - `String` The next.js route path
-* res - `ResponseWriter` The ResponseWriter passed to your route handler
-* params - `Object|Function` An object containing query params to provide to the next page, or a function that takes the route's path params and the request and returns a params object.
+- nextRoute - `String` The next.js route path
+- res - `ResponseWriter` The ResponseWriter passed to your route handler
+- params - `Object|Function` An object containing query params to provide to the next page, or a function that takes the route's path params and the request and returns a params object.
 
 ### Caching
 
-The easiest way to add edge caching to your Next.js app is to add caching routes before the middleware.  For example, 
-imagine you have `/pages/p/[productId].js`.  Here's how you can SSR responses as well as cache calls to `getServerSideProps`:
+The easiest way to add edge caching to your Next.js app is to add caching routes before the middleware. For example,
+imagine you have `/pages/p/[productId].js`. Here's how you can SSR responses as well as cache calls to `getServerSideProps`:
 
 ```js
 new Router()
@@ -197,8 +203,8 @@ new Router()
       },
       edge: {
         maxAgeSeconds: 60 * 60 * 24,
-        staleWhileRevalidateSeconds: 60 * 60
-      }
+        staleWhileRevalidateSeconds: 60 * 60,
+      },
     })
   })
   // Products - getServerSideProps
@@ -210,8 +216,8 @@ new Router()
       },
       edge: {
         maxAgeSeconds: 60 * 60 * 24,
-        staleWhileRevalidateSeconds: 60 * 60
-      }
+        staleWhileRevalidateSeconds: 60 * 60,
+      },
     })
   })
   .use(nextRoutes)
@@ -219,12 +225,12 @@ new Router()
 
 ### Preventing Next.js pages from being cached by other CDNs
 
-By default, Next.js adds a `cache-control: private, no-cache, no-store, must-revalidate` header to all responses from `getServerSideProps`.  The presence of `private` would prevent the XDN from caching the response, so `nextRoutes` middleware from `@xdn/next` automatically removes the `private` portion of the header to enable caching at edge.  If you want your responses to be private, you need to specify a `cache-control` header using the router:
+By default, Next.js adds a `cache-control: private, no-cache, no-store, must-revalidate` header to all responses from `getServerSideProps`. The presence of `private` would prevent the XDN from caching the response, so `nextRoutes` middleware from `@xdn/next` automatically removes the `private` portion of the header to enable caching at edge. If you want your responses to be private, you need to specify a `cache-control` header using the router:
 
 ```
 new Router()
   .get('/my-private-page', ({ setResponseHeader }) => {
-    setResponseHeader('cache-control', 'private, no-cache, no-store, must-revalidate') 
+    setResponseHeader('cache-control', 'private, no-cache, no-store, must-revalidate')
   })
 ```
 

@@ -1,7 +1,9 @@
-const { Router } = require('@xdn/core/router')
+const { Router, CustomCacheKey } = require('@xdn/core/router')
 const { nextRoutes } = require('@xdn/next')
+const key = new CustomCacheKey().excludeAllQueryParametersExcept('query', 'version')
 
 const htmlCacheConfig = {
+  key,
   browser: {
     maxAgeSeconds: 0,
     serviceWorkerSeconds: 0,
@@ -13,6 +15,7 @@ const htmlCacheConfig = {
 }
 
 const apiCacheConfig = {
+  key,
   browser: {
     maxAgeSeconds: 0,
     serviceWorkerSeconds: 60 * 60,
@@ -24,6 +27,7 @@ const apiCacheConfig = {
 }
 
 const staticCacheConfig = {
+  key,
   browser: {
     maxAgeSeconds: 60 * 60,
     serviceWorkerSeconds: 60 * 60,
@@ -47,23 +51,23 @@ module.exports = new Router()
     serveStatic('.next/static/service-worker.js')
   })
   // the following route is needed for older guides and should not be removed
-  .match('/guides/images/*path', ({ cache, serveStatic }) => {
+  .match('/guides/images/:path*', ({ cache, serveStatic }) => {
     cache(staticCacheConfig)
-    serveStatic('public/images/*path')
+    serveStatic('public/images/:path*')
   })
-  .match('/api/*path', ({ cache }) => {
+  .match('/api/:path*', ({ cache }) => {
     cache(apiCacheConfig)
   })
-  .match('/*path', ({ cache }) => {
+  .match('/:path*', ({ cache }) => {
     cache(htmlCacheConfig)
   })
-  .match('/docs/:version/api/*path/', ({ proxy, cache }) => {
+  .match('/docs/:version/api/:path*/', ({ proxy, cache }) => {
     cache(htmlCacheConfig)
-    proxy('api', { path: '/xdn-docs-pages/:version/api/*path/' })
+    proxy('api', { path: '/xdn-docs-pages/:version/api/:path*/' })
   })
-  .match('/docs/:version/api/*path', ({ proxy, cache }) => {
+  .match('/docs/:version/api/:path*', ({ proxy, cache }) => {
     cache(htmlCacheConfig)
-    proxy('api', { path: '/xdn-docs-pages/:version/api/*path' })
+    proxy('api', { path: '/xdn-docs-pages/:version/api/:path*' })
   })
   .use(nextRoutes)
   .fallback(({ redirect }) => {

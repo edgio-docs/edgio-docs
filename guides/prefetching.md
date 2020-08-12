@@ -8,7 +8,7 @@ You might think that prefetching will put significant additional load on the inf
 
 ## Service Worker
 
-To enable prefetching, your site's service worker needs to use the `@xdn/prefetch` library's `Prefetcher` class.  If your site doesn't currently have a service worker, one can easily be created using Google's [Workbox](https://developers.google.com/web/tools/workbox)
+To enable prefetching, your site's service worker needs to use the `@xdn/prefetch` library's `Prefetcher` class. If your site doesn't currently have a service worker, one can easily be created using Google's [Workbox](https://developers.google.com/web/tools/workbox)
 
 Here's an example service worker based on Workbox:
 
@@ -26,9 +26,9 @@ new Prefetcher().route()
 
 ## Window
 
-Once you've created a service worker, code running in the browser window needs to register the service worker before prefetching can begin.  How you do this depends on the front-end framework that you use.
+Once you've created a service worker, code running in the browser window needs to register the service worker before prefetching can begin. How you do this depends on the front-end framework that you use.
 
-If you're not using a front-end framework, you can use the `install` function from `@xdn/prefetch` to install the service worker.  Here's an example:
+If you're not using a front-end framework, you can use the `install` function from `@xdn/prefetch` to install the service worker. Here's an example:
 
 ```js
 import install from '@xdn/prefetch/window/install'
@@ -64,7 +64,7 @@ function MyComponent() {
 }
 ```
 
-By default, `Prefetch` will fetch and cache the URL in the link's `href` attribute. If you have a single page app, you most likely want to prefetch an API call for the page rather than the page's HTML.  The example above shows you how to set the `url` property to control which URL is prefetched.
+By default, `Prefetch` will fetch and cache the URL in the link's `href` attribute. If you have a single page app, you most likely want to prefetch an API call for the page rather than the page's HTML. The example above shows you how to set the `url` property to control which URL is prefetched.
 
 If you're using Next.js, the `Prefetch` component assumes you're using `getServerSideProps` and will prefetch the corresponding URL unless your specify a `url` prop. The `Prefetch` component should be placed between Next's `<Link>` and the `<a>` element:
 
@@ -115,7 +115,7 @@ The `@xdn/vue` package provides a `Prefetch` component that you can wrap around 
 </template>
 ```
 
-By default `Prefetch` will fetch and cache the URL in the link's `to` attribute (for both `router-link` and `nuxt-link`). If you have a single page app, you most likely want to prefetch an API call for the page rather than the page's HTML.  The example above shows you how to set the `url` property to control which URL is prefetched.
+By default `Prefetch` will fetch and cache the URL in the link's `to` attribute (for both `router-link` and `nuxt-link`). If you have a single page app, you most likely want to prefetch an API call for the page rather than the page's HTML. The example above shows you how to set the `url` property to control which URL is prefetched.
 
 ## Using the XDN for Prefetching Only
 
@@ -149,11 +149,12 @@ new Prefetcher({
 import install from '@xdn/prefetch/window/install'
 import prefetch from '@xdn/prefetch/window/prefetch'
 
-document.addEventListener('DOMContentLoaded', function () {
-  install({ 
-    // Since there is no direct traffic to the XDN, the cache will only be populated from prefetch 
-    // requests, so we need to serve prefetch requests even when they are not cached.
-    includeCacheMisses: true, 
+document.addEventListener('DOMContentLoaded', function() {
+  install({
+    // Since there is no direct traffic to the XDN, the cache will only be populated from prefetch
+    // requests, so we need to serve some of the prefetch requests even when they are not cached.
+    // Here we choose to do so with 20% of the prefetch requests.
+    forcePrefetchRatio: 0.2,
 
     // You can change this if you need to serve the service worker on a different path
     serviceWorkerPath: '/service-worker.js',

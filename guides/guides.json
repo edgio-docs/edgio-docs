@@ -160,6 +160,11 @@
         "text": "REST API",
         "as": "/guides/rest_api",
         "href": "/guides/[...guide]"
+      },
+      {
+        "text": "Migration Guide",
+        "as": "/guides/migration",
+        "href": "/guides/[...guide]"
       }
     ]
   }

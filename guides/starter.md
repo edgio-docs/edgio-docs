@@ -183,7 +183,7 @@ To test the caching behavior locally, run your project with the [local cache opt
 xdn run --cache
 ```
 
-## Running on the XDN
+### Running on the XDN
 
 Now that you're satisfied with your site in local development it's time to deploy it to the XDN Cloud. Once your code is deployed to the XDN Cloud you can formally evaluate site performance and QA functionality.
 

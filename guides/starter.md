@@ -32,6 +32,8 @@ We highly recommend performing this process on a staging server before attemptin
 
 The XDN will only prefetch and accelerate pages that are cachable, i.e. do not have user specific content. The good news is that most pages can be made cachable with only a few adjustments. Let's walk through an example.
 
+![Ecommerce homepage with a badge indicating the number of items in the cart](/images/starter/user-content-example.png)
+
 Consider the ecommerce page shown above. Most of the content on this page such as the main hero image, the menu items, the company logo, and more are not user specific. However, the badge indicating the number of items in the cart is specific to that user browsing the page. The cart count can't be stored in the cache otherwise, every user would get a page with the same cart count. However to make this page cacheable we can simply remove the user specific parts and "late load" them with JavaScript. In this case, we could change the page so that the cart count is empty in the page HTML and let JavaScript on the page fetch the cart count and update the page HTML after it loads. This strategy of late load is fairly universal and you may want to delegate all the user specific content to a single late load request that is made by JavaScript on your page.
 
 Here are some of common types of page content that may need this approach:

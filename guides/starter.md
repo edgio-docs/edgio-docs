@@ -8,7 +8,7 @@ As shown below, in XDN Starter the XDN becomes the main CDN for your site:
 
 ![traffic](/images/starter/traffic.png)
 
-Requests for your site will now pass through the XDN's globally distributed network of computers and then to your server. Your site's main domain, such as "www.site.com" now points to the XDN, and your original server now responds to a new domain such as "origin.site.com" that the XDN will use for fetching your page data. Note "origin.site.com" in this example is hidden from users; users continue to access your site transparently from your original domain "www.site.com"
+Requests for your site will now pass through the XDN's globally distributed network of computers and then to your server. Your site's main domain, such as `www.site.com` now points to the XDN, and your original server now responds to a new domain such as `origin.site.com` that the XDN will use for fetching your page data. Note that `origin.site.com` in this example is hidden from users; users continue to access your site transparently from your original domain `www.site.com`.
 
 The XDN will do two things that accelerate your pages:
 
@@ -23,7 +23,7 @@ The high level implementation process for XDN Starter is:
 2. Add the XDN JavaScript libraries to your site
 3. Set up a Starter project
 4. Configure caching and prefetching
-5. Deploy and test on the XDN
+5. Test locally and on the XDN
 6. Go live by changing the DNS
 
 We highly recommend performing this process on a staging server before attempting to try it on your production website.
@@ -99,7 +99,7 @@ npm run deploy
 $
 ```
 
-## Project Structure
+### Project Structure
 
 Before we get started you should familiarize yourself with some of key files in the XDN project:
 
@@ -110,7 +110,7 @@ Before we get started you should familiarize yourself with some of key files in 
 - `routes.ts`: This is where the routes to be cached and prefetched are defined as well as what to pass through without modification and what to serve up as static content.
 - `browser.ts`: This is entry point for the `main.js` javascript bundle which is added to the window.
 
-## Caching
+## Configure Caching and Prefetching
 
 Next we need to configure the caching in our newly created project. To do so, add a route for each URL you want to cache to the `routes.ts` file. For example consider a site where the homepage (`/`), category pages (`/category/xxxx`), and product pages (`/product/yyyy`) are to be cached. Then your routes.js file would look like:
 
@@ -159,13 +159,53 @@ export const CACHE_PAGES = {
 }
 ```
 
-Refer to the guides on [Routing]() and [Caching]() for the full syntax to use in your routes.js file.
+Refer to the guides on [Routing](routing) and [Caching](caching) for the full syntax to use in your `routes.js` file. 
 
-## Prefetching
+In addition to configuring your caching in `routes.js` as shown above, you you may need to employ [advanced prefetching techniques](#section_advanced_prefetching_techniques) to achieve the best possible performance 
+ 
+### Understanding Caching and Prefetching
 
-By injecting `main.js` into your app's front-end code, your app will automatically prefetch all visible HTML links with URLs that match a route configured with `edge.maxAgeSeconds` and `browser.serviceWorkerSeconds`. Links that are visible when the page first loads are fetched immediately. Additional links will be fetched when the user scrolls down the page and more links become visible.
+By injecting `main.js` into your app's front-end code, your app will automatically prefetch all visible HTML links with URLs that match a route configured with `edge.maxAgeSeconds` and `browser.serviceWorkerSeconds` (in essence, when you configure a route to be cached you are also declaring it to be a candidate for prefetching as well). Links that are visible when the page first loads are fetched immediately. Additional links will be fetched when the user scrolls down the page and more links become visible.
 
-## Deep Fetching
+Prefetching can generate substantial additional network traffic. The XDN automatically shields your origin from this additional traffic by only serving prefetch requests from the edge cache. If a prefetch request cannot be served from the cache, the XDN will return an HTTP 412 status and the request will not be proxied to the origin. When this happens, the only effect for the user is that they will not see the speed benefit of prefetching. Therefore, the effectiveness of prefetching ramps up over time as users visit pages throughout your site. When the edge cache is cleared, either through [XDN Console](caching#section_clearing_the_cache) or automatically following a deployment, the speed benefit of prefetching is decreased until the cache fills up based on organic traffic.
+
+## Test your code locally and on the XDN
+
+Now that you've configured your caching in `routes.js` you should test it in your local development environment and on the XDN.
+
+### Running Locally
+
+To test the caching behavior locally, run your project with the [local cache option](caching#section_caching_during_development) as shown below:
+
+```bash
+xdn run --cache
+```
+
+## Running on the XDN
+
+Now that you're satisfied with your site in local development it's time to deploy it to the XDN Cloud. Once your code is deployed to the XDN Cloud you can formally evaluate site performance and QA functionality.
+
+To deploy your site to the Moovweb XDN, you must first sign up for an account. [Sign up here for free.](https://moovweb.app/signup) Once you have an account you can deploy your site using the `deploy` command:
+
+```bash
+xdn deploy --team=[team-name]
+```
+
+Consult the [Deploying guide](deploying) for more information on the options for deploying your site.
+
+## Go live by changing the DNS
+
+After you've configured and tested your site on the XDN, it's time to take it live. At a high level, the process is:
+
+1. Specify the domain name of the site in the XDN Console
+2. Configure your SSL certificate in the XDN Console.
+3. Create a CNAME record with your DNS provider with the value shown under DNS Configuration section of the XDN Console
+
+Each of these steps is described in more detail in the [Production guide](production). Note that third step (configuring your DNS) will be the crucial step that effectively transitions your domain to the XDN and should be done last.
+
+## Advanced Prefetching Techniques
+
+### Deep Fetching
 
 By default, only HTML content is prefetched. In order to achieve truly instant page transitions, all of the assets needed to render the content that appears above the fold need to be prefetched. These typically include images, CSS, and JavaScript.
 
@@ -189,7 +229,7 @@ new Prefetcher({
 })
 ```
 
-### Computing the URL to be prefetched
+#### Computing the URL to be prefetched
 
 In the example above the `img` element's `src` attribute contains URL that needs to be prefetched. Sometimes finding the URL to prefetch is not so straightforward. For example, apps sometimes use JavaScript to compute the URL for responsive images based on the user's device size. In such cases you can provide a `callback` function which will be passed all matching elements and decide what URLs to prefetch. Here is an example:
 
@@ -226,7 +266,7 @@ function deepFetchResponsiveImages({ $el, el, $ }: DeepFetchCallbackParam) {
 }
 ```
 
-## Deep fetching URLs in JSON responses
+### Deep fetching URLs in JSON responses
 
 In addition to deep fetching URLs found in HTML responses, you can also configure deep fetching for URLs found in JSON responses such as API calls. Here is an example which finds product images to deep fetch for a category page:
 
@@ -249,11 +289,11 @@ new DeepFetchPlugin([
 
 The `jsonQuery` syntax is provided by the [json-query](https://github.com/auditassistant/json-query) library.
 
-## Prefetching POSTs
+### Prefetching POSTs
 
 Most assets that need to be prefetched are HTTP GET requests. It is also possible to prefetch POST requests with some additional configuration.
 
-When your app prefetches assets, the actual prefetch request is always a GET, so you need to make sure that your router is configured to respond to both GET and POST requests for any POST URL. In order to ensure that the response is cached as a POST by the service worker, you need to specify `method: 'post'` in the cache config and convert get requests to posts:
+When your app prefetches assets, the actual prefetch request is always a GET, so you need to make sure that your router is configured to respond to both GET and POST requests for any POST URL. In order to ensure that the response is cached as a POST by the service worker, you need to specify `method: 'post'` in the cache config and convert GET requests to POSTs:
 
 ```js
 const cacheConfig = {
@@ -298,14 +338,4 @@ export default new Router()
   })
 ```
 
-## Shielding
 
-Prefetching can generate substantial additional network traffic. The XDN automatically shields your origin from this additional traffic by only serving prefetch requests from the edge cache. If a prefetch request cannot be served from the cache, the XDN will return an HTTP 412 status and the request will not be proxied to the origin. When this happens, the only effect for the user is that they will not see the speed benefit of prefetching. Therefore, the effectiveness of prefetching ramps up over time as users visit pages throughout your site. When the edge cache is cleared, either through moovweb.app or automatically following a deployment, the speed benefit of prefetching is decreased until the cache fills up based on organic traffic.
-
-## Running Locally
-
-To test caching behavior locally, run your project with:
-
-```bash
-xdn run --cache
-```

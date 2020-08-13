@@ -76,6 +76,11 @@
         "text": "Contributing",
         "as": "/guides/contributing",
         "href": "/guides/[...guide]"
+      },
+      {
+        "text": "Starter",
+        "as": "/guides/starter",
+        "href": "/guides/[...guide]"
       }
     ]
   },

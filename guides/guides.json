@@ -76,11 +76,6 @@
         "text": "Contributing",
         "as": "/guides/contributing",
         "href": "/guides/[...guide]"
-      },
-      {
-        "text": "Starter",
-        "as": "/guides/starter",
-        "href": "/guides/[...guide]"
       }
     ]
   },
@@ -169,6 +164,11 @@
       {
         "text": "Migration Guide",
         "as": "/guides/migration",
+        "href": "/guides/[...guide]"
+      },
+      {
+        "text": "XDN Starter",
+        "as": "/guides/starter",
         "href": "/guides/[...guide]"
       }
     ]

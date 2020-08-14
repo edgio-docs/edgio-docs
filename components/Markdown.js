@@ -62,8 +62,14 @@ const useStyles = makeStyles(theme => ({
       fontWeight: 500,
     },
     '& img': {
-      maxWidth: theme.breakpoints.values.md,
+      maxWidth: 'calc(100% - 10px)',
       boxShadow: theme.shadows[7],
+    },
+    [theme.breakpoints.down('md')]: {
+      '& img': {
+        maxWidth: '100%',
+        boxShadow: 'none',
+      },
     },
   },
 }))

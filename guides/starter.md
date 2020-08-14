@@ -2,6 +2,8 @@
 
 This guide describes how to get up and running with XDN Starter. XDN Starter enables traditional websites (i.e. jQuery, PHP, VanillaJS, etc.) to take advantage of the performance benefits of the XDN's advanced caching and predictive prefetching. If your website is built on a modern framework such as React, Angular, or Vue, we recommend considering our framework specific guides that can be found on the [homepage](/) as an alternative to XDN Starter.
 
+Note that the speed benefit from XDN Starter is dependent on a site’s JavaScript usage during the page load. If a page has JavaScript heavy processing during load it may reduce the benefit from XDN Starter. Please contact our team via the chat button in the bottom right of this page if you're interested in a site analysis prior to beginning installation — turnaround time is typically 1-2 business days.
+
 ## How XDN Starter works
 
 As shown below, in XDN Starter the XDN becomes the main CDN for your site:

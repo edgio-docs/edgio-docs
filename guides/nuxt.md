@@ -205,9 +205,40 @@ new Router()
   .use(nuxtMiddleware)
 ```
 
-## Service Worker
+## Prefetching
 
-The `@xdn/nuxt/module` builds a service worker that enables prefetching using the XDN and injects it into your app's browser code. The service worker is based on Google's [Workbox](https://developers.google.com/web/tools/workbox) library. The entry point for the service worker source code is `sw/service-worker.js`. By default the service worker will prefetch all static JavaScript assets produced by the Nuxt build as well as enable your app to prefetch data requests for all visible links on the page.
+The `@xdn/nuxt/module` builds a service worker that enables prefetching using the XDN and injects it into your app's browser code. The service worker is based on Google's [Workbox](https://developers.google.com/web/tools/workbox) library. The entry point for the service worker source code is `sw/service-worker.js`. If your app has an existing service worker that uses workbox, you can copy its contents into `sw/service-worker.js` and simply add the following to your service worker:
+
+```js
+import { Prefetcher } from '@xdn/prefetch/sw'
+new Prefetcher().route()
+```
+
+The above allows you to prefetch pages from the XDN's edge cache to greatly improve browsing speed. To prefetch a page, add the `Prefetch` component from `@xdn/vue` to any `router-link` or `nuxt-link` element:
+
+```jsx
+<template>
+  <ul v-for="product in products">
+    <li>
+      <Prefetch v-bind:url="'/api/' + product.url">
+        <nuxt-link v-bind:to="product.url">
+          <img v-bind:src="product.thumbnail" />
+        </nuxt-link>
+      </Prefetch>
+    </li>
+  </ul>
+</template>
+<script>
+  import { Prefetch } from '@xdn/vue'
+  export default {
+    components: {
+      Prefetch,
+    },
+  }
+</script>
+```
+
+The `Prefetch` component fetches data for the linked page from the XDN's edge cache based on the `url` property and adds it to the service worker's cache when the link becomes visible in the viewport. When the user taps on the link, the page transition will be instantaneous because the browser won't need to fetch data from the network.
 
 ## Running Locally
 

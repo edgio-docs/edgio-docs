@@ -172,15 +172,5 @@
         "href": "/guides/[...guide]"
       }
     ]
-  },
-  {
-    "text": "Examples",
-    "items": [
-      {
-        "text": "Scheduled Cache Clearing",
-        "as": "/guides/scheduled_cache_clearing",
-        "href": "/guides/[...guide]"
-      }
-    ]
   }
 ]

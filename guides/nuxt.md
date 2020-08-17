@@ -14,6 +14,8 @@ If you have not already done so, install the [XDN CLI](cli)
 npm i -g @xdn/cli
 ```
 
+## Creating a new Nuxt app
+
 If you don't already have a nuxt.js application, you can create one using:
 
 ```bash
@@ -24,15 +26,20 @@ Nuxt's create module will ask you a series of questions to configure your app. M
 
 - For `Choose custom server framework` select `None`
 - For `Choose rendering mode` select `Universal (SSR)`
-- Your answers to the other questions should not matter for the purposes of this guide. 
+- Your answers to the other questions should not matter for the purposes of this guide.
+
+## Adding the XDN to an existing Nuxt app
 
 To prepare your Nuxt.js application for the Moovweb XDN:
 
-1. Set `mode: 'universal'` in `nuxt.config.js`. Also, ensure that this file uses `module.exports = {`, rather than `export default {`. If this file doesn't exist, create it with the following content:
+1. In `nuxt.config.js`, set `mode` to "universal" and add "@xdn/nuxt/module" to `modules`:
 
 ```js
+// nuxt.config.js
+
 module.exports = {
   mode: 'universal',
+  modules: ['@xdn/nuxt/module'],
 }
 ```
 
@@ -46,8 +53,10 @@ The `xdn init` command will automatically add all the required dependencies and 
 
 - The `@xdn/core` package
 - The `@xdn/nuxt` package
-- `xdn.config.js`
+- The `@xdn/vue` package
+- `xdn.config.js` - Contains various configuration options for the XDN.
 - `routes.js` - A default routes file that sends all requests to `nuxt.js`. You can update this file to add caching or proxy some URLs to a different origin as described later in this guide.
+- `sw/service-worker.js` - A service worker that provides static asset and API prefetching.
 
 This command will also update your `package.json` with the following changes:
 
@@ -72,9 +81,9 @@ As an example, here's the original `package.json` from Nuxt's create step:
     "generate": "nuxt generate"
   },
   "dependencies": {
-    "@xdn/cli": "^1.23.2",
-    "@xdn/core": "^1.23.2",
-    "@xdn/nuxt": "^1.23.2",
+    "@xdn/cli": "^2.0.0",
+    "@xdn/core": "^2.0.0",
+    "@xdn/nuxt": "^2.0.0",
     "nuxt": "^2.0.0"
   },
   "devDependencies": {}
@@ -101,9 +110,10 @@ And here is the `package.json` after modifications by `xdn init`:
     "nuxt-start": "^2.12.2"
   },
   "devDependencies": {
-    "@xdn/cli": "^1.23.2",
-    "@xdn/core": "^1.23.2",
-    "@xdn/nuxt": "^1.23.2",
+    "@xdn/cli": "^2.0.0",
+    "@xdn/core": "^2.0.0",
+    "@xdn/nuxt": "^2.0.0",
+    "@xdn/vue": "^2.0.0",
     "dotenv": "^8.2.0",
     "nuxt": "^2.0.0",
     "serverless": "^1.64.0",
@@ -123,22 +133,39 @@ The XDN supports Nuxt.js's built-in routing scheme. The default `routes.js` file
 // This file was automatically added by xdn deploy.
 // You should commit this file to source control.
 const { Router } = require('@xdn/core/router')
-const { createNuxtPlugin } = require('@xdn/nuxt')
-const { nuxtMiddleware } = createNuxtPlugin()
+const { nuxtRoutes, renderNuxtPage } = require('@xdn/nuxt')
 
-module.exports = new Router().use(nuxtMiddleware)
+module.exports = new Router().use(nuxtRoutes)
 ```
 
-### Middleware
+### nuxtRoutes Middleware
 
-In the code above, `nuxtMiddleware` adds all Nuxt.js routes based on the `/pages` directory. You can add additional routes before and after the middleware, for example to send some URLs to an alternate backend. This is useful for gradually replacing an existing site with a new Nuxt.js app.
+In the code above, `nuxtRoutes` adds all Nuxt.js routes based on the `/pages` directory. It's also compatible with extending Nuxt's router via the `router` config in `nuxt.config.js`, for example:
+
+```js
+// nuxt.config.js
+export default {
+  // ... more config ...
+  router: {
+    // For example, we can extend the nuxt router to accept /products in addition to /p.
+    // The nuxtRoutes middleware automatically picks this up and adds it to the XDN router
+    extendRoutes(routes, resolve) {
+      routes.push({
+        path: '/products/:id?',
+        component: resolve(__dirname, 'pages/p/_id.vue'),
+      })
+    },
+  },
+  // ... more config ...
+}
+```
+
+You can add additional routes before and after `nuxtRoutes`, for example to send some URLs to an alternate backend. This is useful for gradually replacing an existing site with a new Nuxt.js app.
 
 A popular use case is to fallback to a legacy site for any route that your Nuxt.js app isn't configured to handle:
 
 ```js
-new Router()
-  .use(nuxtMiddleware)
-  .fallback(({ proxy }) => proxy('legacy'))
+new Router().use(nuxtRoutes).fallback(({ proxy }) => proxy('legacy'))
 ```
 
 To configure the legacy backend, use xdn.config.js:
@@ -156,57 +183,10 @@ module.exports = {
 
 Using environment variables here allows you to configure different legacy domains for each XDN environment.
 
-### Vanity Routes
-
-For SEO purposes, you may want to add additional "vanity" routes that point to Nuxt.js. You can do this by combining the [@nuxtjs/router-extras](https://github.com/nuxt-community/router-extras-module) library with an update to your XDN Router.
-
-First, install the `@nuxtjs/router-extras` library:
-```bash
-npm install --save-dev @nuxtjs/router-extras
-```
-
-In your `xdn.config.js` file, add the module under the `buildModules` config (*Note*: use `modules` if using Nuxt `< 2.9.0`):
-```js
-{
-  buildModules: [
-    '@nuxtjs/router-extras',
-  ]
-}
-```
-
-Now, using the `renderNuxt` function returned from `createNuxtPlugin()`, update your router to use the vanity route:
-
-```js
-const { Router } = require('@xdn/core/router')
-const { createNuxtPlugin } = require('@xdn/nuxt')
-const { renderNuxt, nuxtMiddleware } = createNuxtPlugin()
-
-module.exports = new Router()
-  .use(nuxtMiddleware)
-  .get('/some/vanity/url/:p', ({ render }) => {
-    render((req, res, params) =>
-      renderNuxt(req, res, "/p/{p}", { id: params.p })
-    )
-  })
-```
-
-Finally, define the vanity route as an `alias` in a `<router>` tag within the page file:
-
-```jsx
-<router>
-{
-  alias: [
-    '/some/vanity/url/:p',
-  ]
-}
-</router>
-```
-
 ### Caching
 
-The easiest way to add edge caching to your nuxt.js app is to add caching routes before the middleware.  For example, 
+The easiest way to add edge caching to your nuxt.js app is to add caching routes before the middleware. For example,
 imagine you have `/pages/c/_categoryId.js`:
-
 
 ```js
 new Router()
@@ -218,12 +198,16 @@ new Router()
       },
       edge: {
         maxAgeSeconds: 60 * 60 * 24,
-        staleWhileRevalidateSeconds: 60 * 60
-      }
+        staleWhileRevalidateSeconds: 60 * 60,
+      },
     })
   })
   .use(nuxtMiddleware)
 ```
+
+## Service Worker
+
+The `@xdn/nuxt/module` builds a service worker that enables prefetching using the XDN and injects it into your app's browser code. The service worker is based on Google's [Workbox](https://developers.google.com/web/tools/workbox) library. The entry point for the service worker source code is `sw/service-worker.js`. By default the service worker will prefetch all static JavaScript assets produced by the Nuxt build as well as enable your app to prefetch data requests for all visible links on the page.
 
 ## Running Locally
 
@@ -251,7 +235,6 @@ xdn deploy
 
 See [deploying](deploying) for more information.
 
-
 ## Troubleshooting
 
 The following section describes common gotchas and their workarounds.
@@ -260,7 +243,7 @@ The following section describes common gotchas and their workarounds.
 
 This may be because you have a custom server framework (such as Express). Please make sure you selected `None` when asked to choose `Choose custom server framework` during the creation of your nuxt app.
 
-### xdn init doesn't work 
+### xdn init doesn't work
 
 If you get a command not found error such as:
 
@@ -274,7 +257,6 @@ Make sure you installed the XDN CLI
 ```bash
 npm i -g @xdn/cli
 ```
-
 
 ### Make sure your version of XDN CLI is current
 

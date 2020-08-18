@@ -61,6 +61,14 @@ module.exports = new Router()
   .match('/:path*', ({ cache }) => {
     cache(htmlCacheConfig)
   })
+  .match('/docs/api/:path*/', ({ proxy, cache }) => {
+    cache(htmlCacheConfig)
+    proxy('api', { path: '/xdn-docs-pages/current/api/:path*/' })
+  })
+  .match('/docs/api/:path*', ({ proxy, cache }) => {
+    cache(htmlCacheConfig)
+    proxy('api', { path: '/xdn-docs-pages/current/api/:path*' })
+  })
   .match('/docs/:version/api/:path*/', ({ proxy, cache }) => {
     cache(htmlCacheConfig)
     proxy('api', { path: '/xdn-docs-pages/:version/api/:path*/' })

@@ -165,7 +165,7 @@ export const CACHE_PAGES = {
 
 Refer to the guides on [Routing](routing) and [Caching](caching) for the full syntax to use in your `routes.js` file. 
 
-In addition to configuring your caching in `routes.jt` as shown above, you may need to employ [advanced prefetching techniques](#section_advanced_prefetching_techniques) to achieve the best possible performance 
+In addition to configuring your caching in `routes.ts` as shown above, you may need to employ [advanced prefetching techniques](#section_advanced_prefetching_techniques) to achieve the best possible performance 
  
 ### Understanding Caching and Prefetching
 
@@ -342,5 +342,4 @@ export default new Router()
     })
   })
 ```
-
 

@@ -49,9 +49,9 @@ Here are some of common types of page content that may need this approach:
 
 Next install the XDN JavaScript libraries to your site by adding the following to your site's HTML:
 
-```
-    <script src="/__xdn__/cache-manifest.js" defer="defer"></script>
-    <script src="/main.js" defer="defer"></script>
+```html
+<script src="/__xdn__/cache-manifest.js" defer="defer"></script>
+<script src="/main.js" defer="defer"></script>
 ```
 
 These tags power the predictive prefetching and caching that will be used by the XDN. Note that the JavaScript assets referenced in the above script tags are not on your server. The XDN server the assets for these script tags once the XDN is installed in front of your server as described in [How XDN Starter works](#section_how_xdn_starter_works).
@@ -68,7 +68,7 @@ npm i -g @xdn/cli
 
 Create your Starter project using the XDN's create module:
 
-```
+```bash
 npm create xdn-app@latest
 ```
 
@@ -81,7 +81,7 @@ The XDN create module will prompt you for the following information:
 
 Here's an example output from running XDN create:
 
-```
+```bash
 $ npm create xdn-app@latest
 npx: installed 170 in 10.375s
 ✔ Enter a name for your app … my-starter-app

@@ -6,24 +6,24 @@ The XDN is all about putting power in the hands of developers and our documentat
 
 To run the XDN docs on your machine, first clone the repository locally,
 
-```
+```bash
 git clone git@github.com:moovweb-docs/xdn-docs.git
 ```
 
 Then install the dependencies:
 
-```
+```bash
 cd xdn-docs
 npm install
 ```
 
 Next, start the Next.js dev server locally,
 
-```
+```bash
 npm start
 ```
 
-Finally visit the site in your browser at http://127.0.0.1:3000.
+Finally, visit the site in your browser at http://127.0.0.1:3000.
 
 ## Architecture
 
@@ -31,7 +31,7 @@ The XDN docs are a simple Next.js application running on the Moovweb XDN (yes we
 
 ## How to contribute
 
-If you need to modify an existing guide, you can use the `guides.json` file to locate the corresponding Markdown file to edit. If you contribution needs its own guide, you'll need to create a new Markdown file in the `guides` folder and add a reference to it to the `guides.json` file.
+If you need to modify an existing guide, you can use the `guides.json` file to locate the corresponding Markdown file to edit. If your contribution needs its own guide, you'll need to create a new Markdown file in the `guides` folder and add a reference to it to the `guides.json` file.
 
 We recommend the following process for submitting a change:
 

@@ -109,7 +109,7 @@ Open the XDN documentation in your browser.
 
 #### Example
 
-```
+```bash
 xdn docs
 ```
 

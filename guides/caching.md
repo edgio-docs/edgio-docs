@@ -238,7 +238,7 @@ The cache is automatically cleared when you deploy to an environment. You can al
 
 # Scheduled Cache Clearing using Github Actions
 
-This guide walks you through clearing the cache on your site at a scheduled day and time
+This guide walks you through clearing the cache on your site at a scheduled day and time.
 
 ## NPM script
 

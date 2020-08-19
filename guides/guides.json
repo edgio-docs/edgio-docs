@@ -68,6 +68,11 @@
         "href": "/guides/[...guide]"
       },
       {
+        "text": "Performance",
+        "as": "/guides/performance",
+        "href": "/guides/[...guide]"
+      },
+      {
         "text": "Regions",
         "as": "/guides/regions",
         "href": "/guides/[...guide]"

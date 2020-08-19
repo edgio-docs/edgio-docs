@@ -56,7 +56,7 @@ function GuideLink({ variant, guide }) {
       <Button
         variant={variant === 'next' ? 'contained' : undefined}
         elevation={3}
-        color="primary"
+        color="secondary"
         className={classes.link}
         {...linkProps}
       >

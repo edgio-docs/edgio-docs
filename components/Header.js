@@ -22,11 +22,6 @@ const useStyles = makeStyles(theme => ({
     backgroundColor: '#242349',
     boxShadow: 'none',
     borderBottom: `1px solid ${theme.palette.divider}`,
-    [theme.breakpoints.up('lg')]: {
-      left: 299,
-      width: 'calc(100% - 299px)',
-      paddingLeft: 0,
-    },
   },
   container: {
     [theme.breakpoints.up('lg')]: {
@@ -52,14 +47,26 @@ const useStyles = makeStyles(theme => ({
     alignItems: 'center',
   },
   menuButton: {
-    marginRight: theme.spacing(2),
     color: theme.palette.grey[200],
   },
   title: {
     flexGrow: 1,
   },
-  link: {
+  home: {
     textDecoration: 'none',
+    marginLeft: theme.spacing(2),
+    [theme.breakpoints.down('md')]: {
+      marginLeft: theme.spacing(1),
+    },
+  },
+  link: {
+    color: 'white',
+    marginRight: theme.spacing(2),
+    fontWeight: 'normal',
+    textDecoration: 'none',
+    '&:hover': {
+      textDecoration: 'underline',
+    },
   },
   smUp: {
     display: 'none',
@@ -79,7 +86,7 @@ export default function Header() {
   const trigger = useScrollTrigger()
   const classes = useStyles()
   const [loading, setLoading] = useState(false)
-  const { setOpen } = useContext(MenuContext)
+  const { setOpen, open } = useContext(MenuContext)
 
   useEffect(() => {
     Router.events.on('routeChangeStart', () => setLoading(true))
@@ -92,7 +99,7 @@ export default function Header() {
 
   return (
     <>
-      <Slide appear={false} direction="down" in={!trigger}>
+      <Slide appear={false} direction="down" in={!trigger || open}>
         <AppBar className={classes.appBar}>
           <Container maxWidth="xl" className={classes.container}>
             <Toolbar disableGutters className={classes.toolbar}>
@@ -107,13 +114,11 @@ export default function Header() {
                   <MenuIcon />
                 </IconButton>
               </Hidden>
-              <Hidden lgUp implementation="css">
-                <Link href="/" as="/">
-                  <a href="/" className={classes.link}>
-                    <Logo style={{ marginRight: 12 }} />
-                  </a>
-                </Link>
-              </Hidden>
+              <Link href="/" as="/">
+                <a href="/" className={classes.home}>
+                  <Logo style={{ marginRight: 12 }} />
+                </a>
+              </Link>
               <div style={{ flex: 1 }} className={classes.xsDown} />
               <VersionChooser />
               <div style={{ flex: 1 }} className={classes.smUp} />

@@ -15,11 +15,11 @@ const styles = theme => ({
   center: {
     flex: 1,
     maxWidth: theme.breakpoints.values.lg,
-    width: '100%',
+    paddingLeft: theme.spacing(4),
     overflow: 'hidden',
-    margin: 'auto',
-    [theme.breakpoints.up('lg')]: {
-      paddingLeft: 300,
+    margin: '0 auto',
+    [theme.breakpoints.down('md')]: {
+      paddingLeft: 0,
     },
   },
 })

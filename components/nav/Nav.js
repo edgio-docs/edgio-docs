@@ -13,14 +13,11 @@ const width = 300
 
 const useStyles = makeStyles(theme => ({
   root: {
-    height: 'calc(100vh)',
-    overflowY: 'auto',
-    position: 'fixed',
     minWidth: width,
     width,
     top: 0,
     borderRight: `1px solid ${theme.palette.divider}`,
-    margin: theme.spacing(0, -3),
+    margin: theme.spacing(0, 0, 0, -3),
     background: theme.palette.grey[100],
 
     [theme.breakpoints.down('md')]: {
@@ -28,12 +25,15 @@ const useStyles = makeStyles(theme => ({
       position: 'fixed',
       left: 0,
       bottom: 0,
+      top: 65,
+      overflowY: 'auto',
       height: '100%',
       transform: `translateX(-${width}px)`,
       background: theme.palette.background.paper,
       zIndex: theme.zIndex.drawer,
       borderRight: `1px solid ${theme.palette.divider}`,
       margin: theme.spacing(0),
+      boxShadow: theme.shadows[5],
     },
 
     [theme.breakpoints.down('xs')]: {
@@ -82,27 +82,6 @@ export default function Nav({ navData }) {
         [classes.open]: open,
       })}
     >
-      <div
-        style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}
-        className={classes.header}
-      >
-        <Link href="/">
-          <a>
-            <MoovwebXDN className={classes.logo} />
-          </a>
-        </Link>
-        <Hidden lgUp implementation="css">
-          <IconButton
-            edge="start"
-            className={classes.menuButton}
-            color="inherit"
-            aria-label="menu"
-            onClick={() => setOpen(false)}
-          >
-            <CloseIcon />
-          </IconButton>
-        </Hidden>
-      </div>
       <div className={classes.navBody}>
         {navData.map((section, i) => (
           <Section key={i} section={section} />

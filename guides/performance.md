@@ -26,4 +26,4 @@ try {
 - All timings are returned in an `x-xdn-user-t` response header.
 - The value is a comma-delimited list of pairs of the form `(name)=(duration-in-millis)`.
 - The total length of this header is limited to 50 bytes. Anything over 50 bytes will be truncated.
-- Any timings that are not ended before the response is sent will have a value of "x"
+- Any timings that are not ended before the response is sent will have a value of "na"

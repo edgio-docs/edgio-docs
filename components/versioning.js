@@ -29,6 +29,8 @@ export default function useVersioning() {
     createUrl: ({ version = currentVersion, as = asPath, forceVersion = false }) => {
       if (as === '/') {
         return '/'
+      } else if (as.startsWith('http')) {
+        return as
       } else if (isLatestVersion(version) && !forceVersion) {
         return as.replace(VERSION_REGEX, '')
       } else {

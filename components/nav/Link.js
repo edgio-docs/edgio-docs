@@ -32,7 +32,7 @@ export default function Link({ className, icon, text, as, href, ...props }) {
 
   let link = (
     <Prefetch url={apiUrl}>
-      <a href={url} className={clsx(className, classes.link)}>
+      <a href={url} className={clsx(className, classes.link)} target={href ? '_self' : '_blank'}>
         {icon && <Icon classes={{ root: classes.icon }} type={icon} />}
         <Typography component="span">{text}</Typography>
       </a>

@@ -124,7 +124,7 @@ By default `Prefetch` will fetch and cache the URL in the link's `to` attribute 
 
 ## Using the XDN for Prefetching Only
 
-If you have an existing site already in production, it is possible to prefetch from the XDN while still serving the from the existing CDN.
+If you have an existing site already in production, it is possible to prefetch from the XDN while still serving the site from the existing CDN.
 
 To achieve this:
 
@@ -151,8 +151,7 @@ new Prefetcher({
 8. Add a script to your app's source to install the service worker on each page. Here's an example:
 
 ```js
-import install from '@xdn/prefetch/window/install'
-import prefetch from '@xdn/prefetch/window/prefetch'
+import { install, prefetch } from '@xdn/prefetch/window'
 
 document.addEventListener('DOMContentLoaded', function() {
   install({

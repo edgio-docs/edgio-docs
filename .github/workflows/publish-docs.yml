@@ -19,6 +19,7 @@ jobs:
           cd pages-repo
           VERSION=$(tail -n 1 versions.csv)
           cp -r ../guides ${VERSION}
+          cp -r ../guides current
           git add -A
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"

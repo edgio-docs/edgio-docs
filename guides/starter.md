@@ -209,6 +209,8 @@ Each of these steps is described in more detail in the [Production guide](produc
 
 ## Advanced Prefetching Techniques
 
+An introduction to prefetching is available in the [Prefetching guide](prefetching). In addition, here are some techniques to take full advantage of the power of prefetching. 
+
 ### Deep Fetching
 
 By default, only HTML content is prefetched. In order to achieve truly instant page transitions, all of the assets needed to render the content that appears above the fold need to be prefetched. These typically include images, CSS, and JavaScript.
@@ -242,7 +244,6 @@ import { Prefetcher, prefetch } from '@xdn/prefetch/sw'
 import DeepFetchPlugin, { DeepFetchCallbackParam } from '@xdn/prefetch/sw/DeepFetchPlugin'
 
 new Prefetcher({
-  cacheHost,
   plugins: [
     new DeepFetchPlugin([
       {
@@ -343,3 +344,30 @@ export default new Router()
   })
 ```
 
+### Prefetching based on element visibility
+
+By default, `<a>` tags are watched by the Prefetcher so that the value of their `href` attributes are prefetched once the links become visible in the viewport. However, sometimes you might need to trigger a prefetch based on the visibility of other types of elements.
+ 
+When installing the service worker, you can specify a `watch` list. Elements that match `watch` selectors can trigger a callback function when they become visible in the viewport:
+
+```js
+import { install, prefetch } from '@xdn/prefetch/window'
+
+document.addEventListener('DOMContentLoaded', function() {
+  install({
+    // If you don't have links specified with a `<a>` tags with `href` attributes, you can also
+    // specify watchers to prefetch when other elements are added to the page:
+    watch: [
+      {
+        selector: 'div.product-tile',
+        callback: el => {
+          const productId = el.getAttribute('data-product-id')
+          const catId = document.getElementById('cat-listing').getAttribute('data-category-id')
+          prefetch(`/api/${catId}/${productId}`, 'fetch')
+        },
+      },
+    ],
+  })
+})
+```
+ 

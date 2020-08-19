@@ -227,7 +227,7 @@ new Router()
 
 By default, Next.js adds a `cache-control: private, no-cache, no-store, must-revalidate` header to all responses from `getServerSideProps`. The presence of `private` would prevent the XDN from caching the response, so `nextRoutes` middleware from `@xdn/next` automatically removes the `private` portion of the header to enable caching at edge. If you want your responses to be private, you need to specify a `cache-control` header using the router:
 
-```
+```js
 new Router()
   .get('/my-private-page', ({ setResponseHeader }) => {
     setResponseHeader('cache-control', 'private, no-cache, no-store, must-revalidate')

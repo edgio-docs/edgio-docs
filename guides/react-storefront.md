@@ -12,7 +12,7 @@ npm create react-storefront@^8.0.0 myapp
 
 Select "Yes" when answering the following question:
 
-```
+```bash
 ? Will you be deploying your app on the Moovweb XDN? › no / yes
 ```
 

@@ -221,7 +221,7 @@ The response was not cached because it contained a `set-cookie` header. To cache
 
 By default, caching is turned off during development. This is done to ensure that developers don't see stale responses after making changes to their code or other upstream APIs. You can enable caching during development by running your app with:
 
-```
+```bash
 xdn run --cache
 ```
 

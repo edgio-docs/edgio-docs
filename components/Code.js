@@ -5,16 +5,22 @@ import { atomDark as prism } from 'react-syntax-highlighter/dist/cjs/styles/pris
 import { IconButton, Snackbar, makeStyles } from '@material-ui/core'
 import { Alert } from '@material-ui/lab'
 import bash from 'react-syntax-highlighter/dist/cjs/languages/prism/bash'
+import diff from 'react-syntax-highlighter/dist/cjs/languages/prism/diff'
 import jsx from 'react-syntax-highlighter/dist/cjs/languages/prism/jsx'
 import json from 'react-syntax-highlighter/dist/cjs/languages/prism/json'
 import properties from 'react-syntax-highlighter/dist/cjs/languages/prism/properties'
+import typescript from 'react-syntax-highlighter/dist/cjs/languages/prism/typescript'
 import yml from 'react-syntax-highlighter/dist/cjs/languages/prism/yaml'
 import copyToClipboard from './utils/copyToClipboard'
 
 SyntaxHighlighter.registerLanguage('bash', bash)
+SyntaxHighlighter.registerLanguage('diff', diff)
+SyntaxHighlighter.registerLanguage('html', jsx)
 SyntaxHighlighter.registerLanguage('json', json)
 SyntaxHighlighter.registerLanguage('jsx', jsx)
 SyntaxHighlighter.registerLanguage('properties', properties)
+SyntaxHighlighter.registerLanguage('ts', typescript)
+SyntaxHighlighter.registerLanguage('typescript', typescript)
 SyntaxHighlighter.registerLanguage('yml', yml)
 
 const useStyles = makeStyles(theme => ({

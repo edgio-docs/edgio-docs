@@ -35,7 +35,7 @@ The XDN create module will ask you a series of questions to configure your app. 
 
 As an example, below is a sample transcript from running XDN create module:
 
-```
+```bash
 $ npm create xdn-app@latest
 ✔ Enter a name for your app … my-xdn-site
 ✔ Select an app template › Spartacus
@@ -58,13 +58,13 @@ To run your app locally in development mode
 
 Finally, deploy your site on the XDN using the `deploy` command:
 
-```
+```bash
 xdn deploy
 ```
 
 Be aware that the deploy step will automatically build Spartacus for you which can take a few minutes. When the deployment finishes, the output will confirm the final deployment URL. Below is an example:
 
-```
+```bash
 📡️ Uploading...
 > Uploading package
 done (9425ms)
@@ -88,14 +88,14 @@ Make sure to install @angular/cli 8. Spartacus does not support 9. `npm install 
 Create an angular app
 
 > When prompted if you would like to add Angular routing, enter n for ‘no’.
-```
+```bash
 ng new xdn-spartacus-app --style=scss
 cd xdn-spartacus-app
 ```
 
 Add the Spartacus scaffold via schematic
 
-```
+```bash
 ng add @spartacus/schematics --ssr
 ```
 
@@ -134,7 +134,7 @@ Update `app.module.ts` to include a `baseSite` configuration:
 
 ## Preparing for deployment on the XDN
 
-```
+```bash
 npm install -g @xdn/cli
 xdn init
 ```
@@ -270,7 +270,7 @@ environment = {
 
 ## Deploying to XDN
 
-```
+```bash
 xdn deploy
 ```
 

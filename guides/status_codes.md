@@ -10,7 +10,7 @@
 | 532 | Obsolete | Not used by Moovweb XDN. |
 | 533 | Obsolete | Not used by Moovweb XDN. |
 | 534 | Project Error | The serverless project code has failed unexpectedly. Use [server logs](/guides/logs#section_server_logs) to debug. |
-| 535 | Project Fetch Error | The HTTP header`‘host` is missing or does not match any Moovweb XDN deployment. Check your requesting URL and your project config. |
+| 535 | Project Fetch Error | The HTTP header `host` is missing or does not match any Moovweb XDN deployment. Check your requesting URL and your project config. |
 | 536 | Obsolete | Not used by Moovweb XDN. |
 | 537 | Obsolete | Not used by Moovweb XDN. |
 | 538 | Request Loop Error | User exceeded the maximum level (4) of nested Moovweb XDN requests. “Nested” means an XDN site is the upstream of another XDN site. Exceeding the limit results in a request loop error, indicating the request’s upstream origin site is itself. |

@@ -4,7 +4,7 @@
 
 | CODE | NAME | DESCRIPTION |
 | -- | -- | -- |
-| 412 | Precondition Failed | This code is returned when query string `xdn_prefetch` equals `1` and the result is not found in the edge cache. |
+| 412 | Precondition Failed | This code is returned when query string parameter `xdn_prefetch` equals `1` and the result is not found in the edge cache. |
 | 530 | Internal Moovweb Error | Unexpected error in the Moovweb XDN. Please contact [support](https://help.moovweb.com). |
 | 531 | Obsolete | Not used by Moovweb XDN. |
 | 532 | Obsolete | Not used by Moovweb XDN. |

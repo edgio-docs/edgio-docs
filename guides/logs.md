@@ -143,7 +143,7 @@ Flag indicating if the response has completed (analogous to 499 in Nginx)
 
 ### cs
 
-Caching status (why something was or wasn't cached)
+[Caching status](/guides/caching#section_why_is_my_response_not_being_cached_) (why something was or wasn't cached)
 
 ### ct
 
@@ -163,7 +163,11 @@ User agent.
 
 ### xmt
 
-Response x-xdn-t header with different critical path timings
+Response [x-xdn-t](/guides/response_headers#section_structure_of_) header with different critical path timings
+
+### xut
+
+Response x-xdn-user-t header with different user [performance](/guides/performance) metrics
 
 ### xms
 

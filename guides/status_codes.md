@@ -14,7 +14,7 @@
 | 536 | Obsolete | Not used by Moovweb XDN. |
 | 537 | Obsolete | Not used by Moovweb XDN. |
 | 538 | Request Loop Error | User exceeded the maximum level (4) of nested Moovweb XDN requests. “Nested” means an XDN site is the upstream of another XDN site. Exceeding the limit results in a request loop error, indicating the request’s upstream origin site is itself. |
-| 539 | Worker Timeout | The serverless project code did not respond on time, either due to slow upstreams or to badly handled asynchronous requests in the user’s code. Use [server logs](/guides/logs#section_server_logs) to debug. |
-| 540 | Worker Out of Memory | The serverless project code ran out of memory (see [limits](/guides/limits)) before it could respond. Use [server logs](/guides/logs#section_server_logs) to debug. |
-| 541 | Reserved | Reserved for experimental limits and features. Please contact [support](https://help.moovweb.com). |
+| 539 | Worker Timeout | The serverless project code did not respond on time, either due to slow upstreams or to badly handled asynchronous requests in the user’s code. Use [server logs](/guides/logs#section_server_logs) and [performance profiling](/guides/performance) to debug. |
+| 540 | Reserved | Reserved for experimental limits and features. Please contact [support](https://help.moovweb.com). |
+| 541 | Out of Workers | The traffic was so high that request could not be scheduled for processing within the scheduling timeout. Please contact [support](/guides/support) to upgrade your account. |
 | 542 | Header Overflow | Either the request or response had too many HTTP headers. See [limits](/guides/limits) |

@@ -370,4 +370,10 @@ document.addEventListener('DOMContentLoaded', function() {
   })
 })
 ```
+
+### Maintenance
+
+Following are the scenarios in which the XDN starter configuration needs to be updated, if:
+* Any of the cached/accelerated pages are changed
+* Personalization/Segmentation of Content and/or analytics have been changed, added, or removed.
  

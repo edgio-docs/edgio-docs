@@ -150,14 +150,14 @@ Note that this feature cannot be safely used with caching of `POST` and similar 
 
 ## Preventing a response from being cached
 
-By default XDN will cache the responses that satisfy the following conditions:
+By default, the XDN will cache responses that satisfy all of the following conditions:
 
-1. Response is to a `GET` or `HEAD` request. To override this see [POST and other non-GET/HEAD](#section_caching_responses_for_post_and_other_non_get_head_requests) section.
-2. Response has 1xx, 2xx or 3xx status code. You cannot override this.
-3. Response does not have any `set-cookie` headers. You cannot override this but you can use `removeUpstreamResponseHeader('set-cookie')` to remove cookies.
-4. Response has validly formed `cached-control` that includes positive `max-age` or `s-maxage` and does not include `private` clause. You can override this by leveraging [router caching](#section_caching_a_response) and [forcing private responses](#section_caching_private_responses)
+1. The response must correspond to a `GET` or `HEAD` request. To override this see [POST and other non-GET/HEAD](#section_caching_responses_for_post_and_other_non_get_head_requests) section.
+2. The response status must be 1xx, 2xx or 3xx. You cannot override this.
+3. The response must not not have any `set-cookie` headers. You cannot override this but you can use `removeUpstreamResponseHeader('set-cookie')` to remove set-cookie headers.
+4. The response must have a valid cached-control` header that includes a positive `max-age` or `s-maxage` and does not include a `private` clause. You can override this by using [router caching](#section_caching_a_response) and [forcing private responses](#section_caching_private_responses)
 
-However, sometimes you don't want to cache anything, even if upstream is returning some kind of `max-age`. And other times you want to [improve the performance](/guides/performance#section_turn_off_caching_when_not_needed) on pages that can never be cached at edge. In those cases you can turn off caching:
+Sometimes, however, you don't want to cache anything, even if the upstream backend returns a `max-age`. Other times you might want to [improve the performance](/guides/performance#section_turn_off_caching_when_not_needed) of pages that can never be cached at edge. In those cases you can turn off caching:
 
 ```js
 router.get('/some/uncacheable/path', ({ cache }) => {
@@ -243,7 +243,7 @@ The response was not cached because it contained a `set-cookie` header. To cache
 
 ### deployment
 
-The response was not cached because it was received during the brief time (less than 1 minute) that the new version was being propagated through the global network of POPs. There is no need to take any action because as soon as the new version is completely propagated this status goes away.
+The response was not cached because it was received during the brief time (less than 1 minute) that a new version of the app was being propagated through the global network of POPs. There is no need to take any action because as soon as the new version is completely propagated this status goes away.
 
 ## Caching During Development
 

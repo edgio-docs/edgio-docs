@@ -32,9 +32,9 @@ try {
 
 ### Turn off caching when not needed
 
-For `GET` routes that you know you will or must not cache not cache, always explicitly disable caching. This indicates to XDN that it should not try to coalesce requests which leads to improved performance especially on slower upstreams.
+For `GET` routes that you know you will or must not cache not cache, always explicitly disable caching. This indicates to the XDN that it should not try to coalesce requests which leads to improved performance especially on slower upstreams.
 
-For example if you know that nothing from your legacy upstream will or can ever be cached then do this:
+For example, if you know that nothing from your legacy upstream will or can ever be cached, do this:
 
 ```js
 new Router().fallback(({ proxy, cache }) => {

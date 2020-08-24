@@ -371,6 +371,13 @@ document.addEventListener('DOMContentLoaded', function() {
 })
 ```
 
+### Evaluating sites for un-cacheable items
+* Using cURL command (or by clearing page specific cookies b/w refreshes), evaluate which elements of the page change with each new request made to the page.
+* Generate a diff b/w the pages from different requests
+* Scan the diffs for Origin Content Changes (i.e. Personalized Content) for the users.
+
+These diffs in Origin Content Changes (i.e. Personalized Content) cannot be cached by XDN Starter
+
 ### Maintenance
 
 Following are the scenarios in which the XDN starter configuration needs to be updated, if:

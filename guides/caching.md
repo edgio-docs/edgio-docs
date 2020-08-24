@@ -148,7 +148,7 @@ router.get('/some/path', ({ cache }) => {
 
 Note that this feature cannot be safely used with caching of `POST` and similar requests: if the way to signal that something must not be cached is through `private` but then you force caching of `private` responses, all responses will be cached.
 
-## Not Caching a Response
+## Preventing a response from being cached
 
 By default XDN will cache the responses that satisfy the following conditions:
 

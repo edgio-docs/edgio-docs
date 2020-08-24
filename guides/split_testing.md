@@ -13,7 +13,9 @@ When a split test is active, all users are assigned to a random number between 0
 
 The experience the user sees is determined by the traffic split percentage you set in the environment configuration in the Moovweb Developer Console and on which side of the split the user's `xdn_bucket` value falls.
 
-#### Note: If the XDN is behind a third party CDN, update the third party CDN to not cache responses from the XDN.
+## Third-Party CDNs
+
+If the XDN is behind a third party CDN, it is critical that you update the third party CDN to not cache responses from the XDN.  This is extremely important when running a split test.  If the third-party CDN caches responses from the XDN, users will likely receive a mix of content from both experiences in the split test, which can lead to a broken app and invalid split testing results.
 
 ## Preparing your router
 

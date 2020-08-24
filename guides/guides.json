@@ -161,6 +161,11 @@
         "href": "/guides/[...guide]"
       },
       {
+        "text": "Limits",
+        "as": "/guides/limits",
+        "href": "/guides/[...guide]"
+      },
+      {
         "text": "Request Headers",
         "as": "/guides/request_headers",
         "href": "/guides/[...guide]"

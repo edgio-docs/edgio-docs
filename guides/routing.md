@@ -32,20 +32,19 @@ Declare routes using the method corresponding to the HTTP method you want to mat
 // routes.js
 const { Router } = require('@xdn/core/router')
 
-module.exports = new Router()
-  .get('/some-path', ({ cache, proxy }) => {
-    // handle the request here
-  })
+module.exports = new Router().get('/some-path', ({ cache, proxy }) => {
+  // handle the request here
+})
 ```
 
 All HTTP methods are available:
 
-* get
-* put
-* post
-* patch
-* delete
-* head
+- get
+- put
+- post
+- patch
+- delete
+- head
 
 To match all methods, use `match`:
 
@@ -53,30 +52,98 @@ To match all methods, use `match`:
 // routes.js
 const { Router } = require('@xdn/core/router')
 
-module.exports = new Router()
-  .match('/some-path', ({ cache, proxy }) => {
-    // handle the request here
-  })
+module.exports = new Router().match('/some-path', ({ cache, proxy }) => {
+  // handle the request here
+})
 ```
 
 ## Route Pattern Syntax
 
-The syntax for route paths is provided by [route-parser](https://github.com/rcs/route-parser). It is similar to express's route syntax:
+The syntax for route paths is provided by [route-parser](https://github.com/pillarjs/path-to-regexp#path-to-regexp), which is the same library used by [Express](https://expressjs.com/).
 
-| Example       | Description                                                                                                      |
-| ------------- | ---------------------------------------------------------------------------------------------------------------- |
-| `:name`       | a parameter to capture from the route up to `/`, `?`, or end of string                                           |
-| `*splat`      | a splat to capture from the route up to `?` or end of string                                                     |
-| `()`          | Optional group that doesn't have to be part of the query. Can contain nested optional groups, params, and splats |
-| anything else | free form literals                                                                                               |
+### Named Parameters
 
-Some examples:
+Named parameters are defined by prefixing a colon to the parameter name (`:foo`).
 
-- `/some/(optional/):thing`
-- `/users/:id/comments/:comment`
-- `/*a/foo/*b`
-- `/books/*section/:title`
-- `/books?author=:author`
+```js
+new Router().get('/:foo/:bar', res => {
+  /* ... */
+})
+```
+
+**Please note:** Parameter names must use "word characters" (`[A-Za-z0-9_]`).
+
+#### Custom Matching Parameters
+
+Parameters can have a custom regexp, which overrides the default match (`[^/]+`). For example, you can match digits or names in a path:
+
+```js
+new Router().get('/icon-:foo(\\d+).png', res => {
+  /* ... */
+})
+```
+
+**Tip:** Backslashes need to be escaped with another backslash in JavaScript strings.
+
+#### Custom Prefix and Suffix
+
+Parameters can be wrapped in `{}` to create custom prefixes or suffixes for your segment:
+
+```js
+new Router().get('/:attr1?{-:attr2}?{-:attr3}?', res => {
+  /* ... */
+})
+```
+
+### Unnamed Parameters
+
+It is possible to write an unnamed parameter that only consists of a regexp. It works the same the named parameter, except it will be numerically indexed:
+
+```js
+new Router().get('/:foo/(.*)', res => {
+  /* ... */
+})
+```
+
+### Modifiers
+
+Modifiers must be placed after the parameter (e.g. `/:foo?`, `/(test)?`, `/:foo(test)?`, or `{-:foo(test)}?`).
+
+#### Optional
+
+Parameters can be suffixed with a question mark (`?`) to make the parameter optional.
+
+```js
+new Router().get('/:foo/:bar?', res => {
+  /* ... */
+})
+```
+
+**Tip:** The prefix is also optional, escape the prefix `\/` to make it required.
+
+#### Zero or more
+
+Parameters can be suffixed with an asterisk (`*`) to denote a zero or more parameter matches.
+
+```js
+new Router().get('/:foo*', res => {
+  /* res.params.foo will be an array */
+})
+```
+
+The captured parameter value will be provided as an array.
+
+#### One or more
+
+Parameters can be suffixed with a plus sign (`+`) to denote a one or more parameter matches.
+
+```js
+new Router().get('/:foo+', res => {
+  /* res.params.foo will be an array */
+})
+```
+
+The captured parameter value will be provided as an array.
 
 ## Matching Method, Cookies, and Headers
 
@@ -98,12 +165,12 @@ router.match(
 
 The second argument to routes is a function that receives a `ResponseWriter` and uses it to send a response. Using `ResponseWriter` you can:
 
-* proxy a backend configured in `xdn.config.js`
-* serve a static file
-* send a redirect
-* send a synthetic response
-* cache the response at edge and in the browser
-* manipulate request and response headers
+- proxy a backend configured in `xdn.config.js`
+- serve a static file
+- send a redirect
+- send a synthetic response
+- cache the response at edge and in the browser
+- manipulate request and response headers
 
 [See the API Docs for Response Writer](/docs/__version__/api/core/classes/_router_responsewriter_.responsewriter.html)
 
@@ -126,12 +193,12 @@ module.exports = new Router()
     cache({
       edge: {
         maxAgeSeconds: 60 * 60,
-        staleWhileRevalidateSeconds: 60 * 60
+        staleWhileRevalidateSeconds: 60 * 60,
       },
       browser: {
         maxAgeSeconds: 0,
-        serviceWorkerSeconds: 60 * 60
-      }
+        serviceWorkerSeconds: 60 * 60,
+      },
     })
     proxy('origin')
   })

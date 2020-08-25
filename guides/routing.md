@@ -59,7 +59,7 @@ module.exports = new Router().match('/some-path', ({ cache, proxy }) => {
 
 ## Route Pattern Syntax
 
-The syntax for route paths is provided by [route-parser](https://github.com/pillarjs/path-to-regexp#path-to-regexp), which is the same library used by [Express](https://expressjs.com/).
+The syntax for route paths is provided by [path-to-regexp](https://github.com/pillarjs/path-to-regexp#path-to-regexp), which is the same library used by [Express](https://expressjs.com/).
 
 ### Named Parameters
 

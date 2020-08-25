@@ -27,3 +27,20 @@ try {
 - The value is a comma-delimited list of pairs of the form `(name)=(duration-in-millis)`.
 - The total length of this header is limited to 50 bytes. Anything over 50 bytes will be truncated.
 - Any timings that are not ended before the response is sent will have a value of "na"
+
+## Peformance optimizations
+
+### Turn off caching when not needed
+
+For `GET` routes that you know you will or must not cache not cache, always explicitly disable caching. This indicates to the XDN that it should not try to coalesce requests which leads to improved performance especially on slower upstreams.
+
+For example, if you know that nothing from your legacy upstream will or can ever be cached, do this:
+
+```js
+new Router().fallback(({ proxy, cache }) => {
+  cache({
+    edge: false,
+  })
+  proxy('legacy')
+})
+```

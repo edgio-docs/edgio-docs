@@ -374,7 +374,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 ### Maintenance
 
-For the most part maintenence for XDN starter is minimal. However the typical scenarios that require changes are: 
+For the most part maintenance for XDN starter is minimal. However, the typical scenarios that require changes are: 
 
 * If you add personalized or user-specific content to the page you will need to make sure it is late loaded as described in the [Make sure your pages are cachable](#section_make_sure_your_pages_are_cachable) section. 
 * If you introduce a new segementation of content (i.e. support a new language or currency), you may need to update your [custom cache key](/guides/caching#section_customizing_the_cache_key).

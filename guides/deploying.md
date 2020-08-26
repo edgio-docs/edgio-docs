@@ -38,7 +38,7 @@ Each time you deploy your site to the Moovweb XDN a "deployment" is created and 
 
 ![deployments](/images/deploying/deployments.png)
 
-Having each deployment be simultaneously and permanently accessible makes it easy to preview other developers' work before merging a pull request and enables you to "go back in time" to find where a bug or change in behavior originated. We recommend configuring your CI environment to deploy every push to the XDN. For more information.
+Having each deployment be simultaneously and permanently accessible makes it easy to preview other developers' work before merging a pull request and enables you to "go back in time" to find where a bug or change in behavior originated. We recommend configuring your CI environment to deploy every push to the XDN.
 
 ## Deploying from CI
 
@@ -68,12 +68,12 @@ This action assumes that you have created environments called "staging" and "pro
 # The site is deployed each time commits are pushed. The environment to which the changes are deployed
 # is based on the following rules:
 #
-# 1.) When pushing to master, changes deployed to the "staging" environment. This environment does not exist 
+# 1.) When pushing to master, changes deployed to the "staging" environment. This environment does not exist
 #     by default. You must create it using moovweb.app.
 # 2.) When pushing to any other branch, changes are deployed to the default environment.  An unique URL is created based on the branch and deployment number.
-# 3.) When you publish a release in GitHub, the associated tag will be deployed to the production 
+# 3.) When you publish a release in GitHub, the associated tag will be deployed to the production
 #     environment. This environment does not exist by default, you must create it using moovweb.app.
-#     Therefore, you can push to production by creating a GitHub release, or by using the "Promote to Environment" 
+#     Therefore, you can push to production by creating a GitHub release, or by using the "Promote to Environment"
 #     menu when viewing a deployment in moovweb.app.
 #
 # In order for this action to deploy your site, you must create a deploy token from the site settings page

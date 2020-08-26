@@ -93,7 +93,7 @@ You can manipulate cookies before they are sent to the browser using cookie resp
 ```js
 router.get('/some/path', ({
   setUpstreamResponseCookie,
-  setResponseCookie,
+  addResponseCookie,
   removeResponseCookie,
   removeUpstreamResponseCookie,
   updateResponseCookie

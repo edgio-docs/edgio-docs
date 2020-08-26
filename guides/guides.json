@@ -38,6 +38,11 @@
         "href": "/guides/[...guide]"
       },
       {
+        "text": "Cookbook",
+        "as": "/guides/cookbook",
+        "href": "/guides/[...guide]"
+      },
+      {
         "text": "Prefetching",
         "as": "/guides/prefetching",
         "href": "/guides/[...guide]"

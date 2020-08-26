@@ -159,7 +159,7 @@ router.get('/some-path', ({ cache, setResponseHeader, send }) => {
       maxAgeSeconds: 60 * 60 * 24, // cache for 24 hours
     },
   })
-  setResponseHeader('Content-Type', 'html/text')
+  setResponseHeader('Content-Type', 'text/html')
   send(`
     <!doctype html>
     <html>
@@ -178,7 +178,7 @@ router.get('/hello/:name', ({ cache, setResponseHeader, compute, send }) => {
       maxAgeSeconds: 60 * 60 * 24, // cache for 24 hours
     },
   })
-  setResponseHeader('Content-Type', 'html/text')
+  setResponseHeader('Content-Type', 'text/html')
   compute((request, response) => {
     send(`
       <!doctype html>

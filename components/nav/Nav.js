@@ -37,6 +37,7 @@ const useStyles = makeStyles(theme => ({
     },
 
     [theme.breakpoints.down('xs')]: {
+      top: 57,
       width: '100%',
       transform: `translateX(-100%)`,
     },

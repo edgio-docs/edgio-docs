@@ -4,24 +4,43 @@ The Moovweb XDN makes it easy to conduct split testing without performance penal
 
 ## How split testing works
 
-To set up a split test using the Moovweb XDN you need to:
+You can perform two kinds of split tests with the Moovweb XDN:
 
-1. Configure your router with two or more destinations
-2. Configure the rules for splitting traffic between router destinations using the [XDN Developer Console](http://moovweb.app).
+- A/B test multiple implementations of the same site
+- Split traffic between multiple sites - This is commonly used to test a new experience against a legacy one.
 
-When a split test is active, all users are assigned to a random number between 0 and 99 via a cookie called `xdn_bucket`. This cookie assignment is done at edge, before the user's first request hits cache, and so there is no performance penalty for new users.
+## A/B testing multiple implementations of the same site
 
-The experience the user sees is determined by the traffic split percentage you set in the environment configuration in the Moovweb Developer Console and on which side of the split the user's `xdn_bucket` value falls.
+To A/B test mutliple implementations of the same site, simply deploy each implementation to a separate [environment](environments), then [configure the rules for splitting traffic between using the XDN Developer Console](#section_configuring_the_split_test).
 
-## Third-Party CDNs
+To use CI to deploy A/B tests we recommend that you:
 
-If the XDN is behind a third party CDN, it is critical that you update the third party CDN to not cache responses from the XDN.  This is extremely important when running a split test.  If the third-party CDN caches responses from the XDN, users will likely receive a mix of content from both experiences in the split test, which can lead to a broken app and invalid split testing results.
+1. Set up separate branches in source control for the main experience and the new experience, for example `master` and `preview`
+2. Create environments called `production` and `preview` in the XDN Developer Console.
+3. Configure CI to deploy the `master` branch to the `production` environment and the `preview` branch to the `preview` environment. (Using `xdn deploy --environment={environment name}`)
 
-## Preparing your router
+## Splitting traffic between multiple sites
 
-In order to conduct a split test, you need to add at least two destinations to your router. In the example below we set up two destinations: a legacy experience and a new experience:
+To split traffic between multiple sites, first add a backend for each site to `xdn.config.js`. For example, to split traffic between a new experience hosted on `origin.my-site.com` and a legacy experience hosted on `legacy-origin.my-site.com`:
 
 ```js
+// xdn.config.js
+module.exports = {
+  backends: {
+    legacy: {
+      domainOrIp: 'legacy-origin.my-site.com',
+    },
+    new: {
+      domainOrIp: 'origin.my-site.com',
+    },
+  },
+}
+```
+
+Then, add a `destination` for each site to your router. For example,
+
+```js
+// routes.js
 const { Router } = require('@xdn/core/router')
 
 module.exports = new Router()
@@ -39,35 +58,7 @@ module.exports = new Router()
   )
 ```
 
-In the example above, `legacy` and `new` correspond to backends in `xdn.config.js`:
-
-```js
-// xdn.config.js
-module.exports = {
-  backends: {
-    legacy: {
-      domainOrIp: 'legacy-origin.my-site.com',
-    },
-    new: {
-      domainOrIp: 'origin.my-site.com',
-    },
-  },
-}
-```
-
-## Identifying the experience on the client
-
-When a split test is active, the XDN will automatically set an `xdn_destination` cookie to the name
-of the chosen destination. You can use this value in the browser to report the split test experience assignment to
-analytics.
-
-## Deploy your application
-
-Once you've added destinations to your application, deploy your application to an environment using:
-
-```bash
-xdn deploy <team> --environment=<environment>
-```
+Once you have made these changes, deploy your site using `xdn deploy --environment={my production environment name}`, then [configure the rules for splitting traffic between using the XDN Developer Console](#section_configuring_the_split_test).
 
 ## Configuring the split test
 
@@ -79,7 +70,7 @@ Scroll to the Split Testing section and click "Add Rule":
 
 ![edit](/images/split-testing/split-testing.png)
 
-Select the amount of traffic to send to each destination and click "Apply".
+Select the amount of traffic to send to each destination or environment and click "Apply".
 
 ![edit](/images/split-testing/add-rule.png)
 
@@ -99,3 +90,19 @@ To begin the split test, click the "Activate" button at the top of the environme
 
 To end the split test, you can either deploy a new version of your app with the router destinations removed, or update the environment
 to send 100% of traffic to a specific destination.
+
+## Third-Party CDNs
+
+If the XDN is behind a third party CDN, it is critical that you update the third party CDN to not cache responses from the XDN. This is extremely important when running a split test. If the third-party CDN caches responses from the XDN, users will likely receive a mix of content from both experiences in the split test, which can lead to a broken app and invalid split testing results.
+
+## How requests are routed
+
+When a split test is active, all users are assigned to a random number between 0 and 99 via a cookie called `xdn_bucket`. This cookie assignment is done at edge, before the user's first request hits cache, and so there is no performance penalty for new users.
+
+The experience the user sees is determined by the traffic split percentage you set in the environment configuration in the Moovweb Developer Console and on which side of the split the user's `xdn_bucket` value falls.
+
+## Identifying the experience on the client
+
+When a split test is active, the XDN will automatically set an `xdn_destination` cookie to the name
+of the chosen destination. You can use this value in the browser to report the split test experience assignment to
+analytics.

@@ -65,6 +65,8 @@ module.exports = {
 
 If your project's server build path or name is different, you will need to make changes to `xdn.config.js`. The `export` key specifies the name of the function exported that returns an Express app. With a UMD build and default export of the Express app only specifying the path is enough.
 
+If you have several projects and the `defaultProject` as specified in `angular.json` is not the project with the SSR build, specify the correct project with the `angularProject` flag. For example `xdn build --angularProject=my-ssr-project`.
+
 ## Routing
 
 The default `routes.js` file created by `xdn init` sends all requests to Angular server via a fallback route.

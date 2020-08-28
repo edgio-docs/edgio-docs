@@ -52,9 +52,7 @@ export const environment = {
 };
 ```
 
-To run your app locally in development mode
-
-
+To run your app locally in development mode run `xdn run`. To emulate a serverless runtime locally run `xdn run --serverless`.
 
 Finally, deploy your site on the XDN using the `deploy` command:
 
@@ -83,7 +81,9 @@ This section describes how to manually recreate an XDN optimized version of Spar
 
 The steps below are pulled from the Spartacus official docs, which are published here: https://sap.github.io/spartacus-docs/building-the-spartacus-storefront-from-libraries/
 
-Make sure to install @angular/cli 8. Spartacus does not support 9. `npm install -g @angular/cli@8`
+
+
+Make sure to install @angular/cli 8 if targeting a Spartacus version lower than v2. Spartacus v1 does not support 9. `npm install -g @angular/cli@8`
 
 Create an angular app
 
@@ -141,7 +141,7 @@ xdn init
 
 The app should now have `@xdn` dependencies installed and auto-generated `routes.js` and `xdn.config.js` files created by `@xdn/angular`.
 
-`@xdn/angular` follows Angular 9 SSR scaffolding, so the following changes are necessary to the server build:
+The following three steps are necessary when using Spartacus 1.x / Angular 8. Angular 9 Universal has an Express server export by default.
 
 1. Modify the `output` block of `webpack.server.config.js` to a UMD library target with `default` export
 
@@ -174,8 +174,8 @@ output: {
 const { join } = require('path')
 module.exports = {
   server: {
-+   path: join(__dirname, 'dist/server.js')
--   path: join(__dirname, 'dist/xdn-spartacus-app-server/main.js'),
++   path: 'dist/server.js'
+-   path: 'dist/xdn-spartacus-app-server/main.js',
 -   export: 'app'
   },
 }
@@ -212,10 +212,10 @@ module.exports = app => {
   const { angularMiddleware } = createAngularPlugin(app)
 - return new Router().use(angularMiddleware)
 + return new Router()
-+   .match('/rest/v2/*path', ({ proxy }) => {
++   .match('/rest/v2/:path*', ({ proxy }) => {
 +     return proxy('commerce')
 +   })
-+   .match('/medias/*path', ({ proxy }) => {
++   .match('/medias/:path*', ({ proxy }) => {
 +     return proxy('commerce')
 +   })
 +   .use(angularMiddleware)
@@ -284,7 +284,7 @@ Prefetching for a Spartacus app can be enabled by listening to upstream requests
 3) The rendering server has been modified to track upstream requests by patching `https.request`.
 4) The rendering server sets `x-xdn-backend-requests` to for example `/rest/v2/1;/rest/v2/2;`
 5) The HTML response for `/product/1` is now cached and for future requests served from the edge along with the `x-xdn-backend-requests` response header.
-6) User B lands on a page that has a link to `/product/1`. `/product/*path` has been configured with `cache.browser.spa: true`. Because of this configuration `@xdn/prefetch` will know to make a prefetch HEAD request for `/product/1` and only if `product/1` can be served from the edge will prefetch all requests specified in `x-xdn-backend-requests` response header.
+6) User B lands on a page that has a link to `/product/1`. `/product/:path*` has been configured with `cache.browser.spa: true`. Because of this configuration `@xdn/prefetch` will know to make a prefetch HEAD request for `/product/1` and only if `product/1` can be served from the edge will prefetch all requests specified in `x-xdn-backend-requests` response header.
 7) When user B click the link to `/product/1` the navigation will be faster since the requests needed to render the new page will be in service worker cache.
 
 Example implementation of upstream request tracking:
@@ -570,7 +570,7 @@ const FAR_FUTURE_TTL = 60 * 60 * 24 * 365 * 10
 module.exports = app => {
   const { angularMiddleware } = createAngularPlugin(app)
   return new Router()
-    .match('/rest/v2/*path', ({ cache, proxy }) => {
+    .match('/rest/v2/:path*', ({ cache, proxy }) => {
       cache({
         browser: {
           maxAgeSeconds: PAGE_TTL,
@@ -583,7 +583,7 @@ module.exports = app => {
       })
       return proxy('commerce')
     })
-    .match('/medias/*path', ({ cache, proxy }) => {
+    .match('/medias/:path*', ({ cache, proxy }) => {
       cache({
         browser: {
           maxAgeSeconds: PAGE_TTL,
@@ -596,7 +596,7 @@ module.exports = app => {
       })
       return proxy('commerce')
     })
-    .match('/Open-Catalogue/*path', ({cache}) => {
+    .match('/Open-Catalogue/:path*', ({cache}) => {
       cache({
         browser: {
           maxAgeSeconds: PAGE_TTL,
@@ -609,7 +609,7 @@ module.exports = app => {
         },
       })
     })
-    .match('/product/*path', ({cache}) => {
+    .match('/product/:path*', ({cache}) => {
       cache({
         browser: {
           maxAgeSeconds: PAGE_TTL,
@@ -626,7 +626,7 @@ module.exports = app => {
 }
 ```
 
-Notice the `spa: true` in `/product/*path` and `/Open-Catalogue/*path` browser cache configuration. These are both routes that can appear in the form of links on any given page. With `spa: true` `@xdn/prefetch` will know to optimally only fully prefetch the upstream requests specified in the cached responses for those routes.
+Notice the `spa: true` in `/product/:path*` and `/Open-Catalogue/:path*` browser cache configuration. These are both routes that can appear in the form of links on any given page. With `spa: true` `@xdn/prefetch` will know to optimally only fully prefetch the upstream requests specified in the cached responses for those routes.
 
 NB! To avoid spartacus installing ngsw-worker set `production: false` in `environment.prod.ts` as a temporary workaround.
 Add `"skipLibCheck": true,` to `tsconfig.json` to avoid type errors from `workbox` library during build.

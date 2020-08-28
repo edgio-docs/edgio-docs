@@ -41,4 +41,5 @@ We recommend the following process for submitting a change:
 4. Commit and push your change back to your fork on Github.
 5. Submit a [pull request](https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/about-pull-requests) back to the XDN Docs repository via Github web interface.
 
+For more details, the Pro Git book has a [helpful contributing guide](https://git-scm.com/book/en/v2/GitHub-Contributing-to-a-Project) that walks you through the process of submitting a pull request to an open source repository on Github.
 

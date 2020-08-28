@@ -188,6 +188,19 @@ The `renderNextPage` function takes the following parameters:
 - res - `ResponseWriter` The ResponseWriter passed to your route handler
 - params - `Object|Function` An object containing query params to provide to the next page, or a function that takes the route's path params and the request and returns a params object.
 
+### Dynamic Fallback Route
+
+Usually Next.js requires 404.js to be a static page. The XDN enables you to render a specific page when no other route is matched using `router.fallback`:
+
+```js
+const { Router } = require('@xdn/core/router')
+const { renderNextPage, nextRoutes } = require('@xdn/next')
+
+module.exports = new Router().use(nextRoutes).fallback(res => {
+  renderNextPage('/not-found', res) // render pages/not-found.js, which can be dynamic (using getInitialProps or getServerSideProps)
+})
+```
+
 ### Caching
 
 The easiest way to add edge caching to your Next.js app is to add caching routes before the middleware. For example,
@@ -228,10 +241,9 @@ new Router()
 By default, Next.js adds a `cache-control: private, no-cache, no-store, must-revalidate` header to all responses from `getServerSideProps`. The presence of `private` would prevent the XDN from caching the response, so `nextRoutes` middleware from `@xdn/next` automatically removes the `private` portion of the header to enable caching at edge. If you want your responses to be private, you need to specify a `cache-control` header using the router:
 
 ```js
-new Router()
-  .get('/my-private-page', ({ setResponseHeader }) => {
-    setResponseHeader('cache-control', 'private, no-cache, no-store, must-revalidate')
-  })
+new Router().get('/my-private-page', ({ setResponseHeader }) => {
+  setResponseHeader('cache-control', 'private, no-cache, no-store, must-revalidate')
+})
 ```
 
 Doing so will prevent other CDNs running in front of the XDN from caching the response.

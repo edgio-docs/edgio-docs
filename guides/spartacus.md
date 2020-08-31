@@ -16,6 +16,8 @@ The [Building from scratch](#section_building_from_scratch) section describes ho
 
 # Getting Started
 
+[![Getting Started Tutorial Video](/images/spartacus/spartacus_getting_started_youtube.png)](https://www.youtube.com/watch?v=hcU7uaZYvBU "Getting Started Tutorial Video")
+
 If you have not already done so, sign up for an account on the [XDN Console](https://moovweb.app/signup?redirectTo=/) and install the [XDN CLI](cli)
 
 ```bash

@@ -17,21 +17,23 @@ To configure your custom domains:
 
 ![domains](/images/production/domains.png)
 
-## DNS
+## Network configuration
 
-In order to configure your DNS provider to direct traffic for a particular set of domains to the Moovweb XDN, create a CNAME record with the value shown under *DNS Configuration*:
+On the "Networking" tab for your environment you can find the DNS and whitelisting IP configurations.
 
-![dns](/images/production/dns.png)
+![networking](/images/production/networking.png)
 
-## Whitelisting XDN IP Addresses
+### DNS
 
-Before going live, ensure that all Moovweb XDN IP addresses are whitelisted in the security layer in front of your origin and/or API servers.  The IP addresses you need to whitelist can be found on the "IP Whitelist" tab on your production environment.  Note that your IP addresses may differ from the ones shown below:
+In order to configure your DNS provider to direct traffic for a particular set of domains to the Moovweb XDN, create a CNAME record with the value shown under *DNS Configuration* (see above).  If you are launching a brand new site then you can set this up whenever you feel ready. For sites that are already live, the DNS update is the last step.  Once you have updated your DNS you are committed to launching.
 
-![ip_whitelist](/images/production/whitelist.png)
+### Whitelisting XDN IP Addresses
+
+Before going live, ensure that all Moovweb XDN IP addresses are whitelisted in the security layer in front of your origin and/or API servers.  The IP addresses you need to whitelist can be found on the "IP Whitelist" section of the "Networking" tab.  Note that your IP addresses may differ from the ones show above.
 
 ## TLS/SSL
 
-All data transmitted to and from your Moovweb XDN project must be secured with TLS (Transport Layer Security). TLS, also known as SSL (Secure Sockets Layer), is a cryptographic protocol to communicate securely over the Internet. TLS provides end-to-end data encryption and data integrity for all web requests. 
+All data transmitted to and from your Moovweb XDN project must be secured with TLS (Transport Layer Security).  TLS, also known as SSL (Secure Sockets Layer), is a cryptographic protocol to communicate securely over the Internet.  TLS provides end-to-end data encryption and data integrity for all web requests.
 
 The XDN provides a wildcard TLS certificate that covers the auto-generated domains that it assigns to your site (e.g {team}-{site}-{branch}-{version}.moovweb.io).  You need to provide your own certificate for your site's custom domains.
 

@@ -1,6 +1,10 @@
 # Logs
 
-The XDN platform exposes three types of logs to users: build logs, server logs, and access logs.
+The XDN platform exposes three types of logs to users:
+
+* [Build logs](#section_build_logs) capture all the build output from your XDN deploys.
+* [Server logs](#section_server_logs) capture your XDN serverless console output at real time.
+* [Access logs](#section_access_logs) capture information about all the requests served by XDN.
 
 ## Build Logs
 
@@ -18,7 +22,13 @@ Here you can limit the output to only those statements coming from your IP addre
 
 ## Access Logs
 
-XDN customers can receive streaming access logs that capture information about each request served by the XDN. Access logs contain the following fields:
+XDN [Enterprise tier](https://www.moovweb.com/pricing) customers can receive streaming access logs that capture information about each request served by the XDN. To do so refer to the "Access Logs" tab:
+
+![access](/images/logs/access.png)
+
+Note that if you are not an Enterprise tier customer you will see a message to contact support to upgrade your account.
+
+Access logs contain the following fields:
 
 ### timestamp
 

@@ -8,12 +8,12 @@ If you are an enterprise customer you can choose from multiple global [regions](
 
 ## Domains
 
-Before going live, you need to create a production environment and configure your domains.  For more information on environments, see [Environments](./environments)
+Before going live, you need to create a production environment and configure your domains. For more information on environments, see [Environments](./environments)
 
 To configure your custom domains:
 
-1. Create an environment by navigating to your site and selecting *Environments* => *New Environment*
-2. Click *Edit* to create a draft. Enter your domains here, save changes, and activate:
+1. Create an environment by navigating to your site and selecting _Environments_ => _New Environment_
+2. Click _Edit_ to create a draft. Enter your domains here, save changes, and activate:
 
 ![domains](/images/production/domains.png)
 
@@ -25,17 +25,17 @@ On the "Networking" tab for your environment you can find the DNS and whitelisti
 
 ### DNS
 
-In order to configure your DNS provider to direct traffic for a particular set of domains to the Moovweb XDN, create a CNAME record with the value shown under *DNS Configuration* (see above).  If you are launching a brand new site then you can set this up whenever you feel ready. For sites that are already live, the DNS update is the last step.  Once you have updated your DNS you are committed to launching.
+In order to configure your DNS provider to direct traffic for a particular set of domains to the Moovweb XDN, create a CNAME record with the value shown under _DNS Configuration_ (see above). If you are launching a brand new site then you can set this up whenever you feel ready. For sites that are already live, the DNS update is the last step. Once you have updated your DNS you are committed to launching.
 
 ### Whitelisting XDN IP Addresses
 
-Before going live, ensure that all Moovweb XDN IP addresses are whitelisted in the security layer in front of your origin and/or API servers.  The IP addresses you need to whitelist can be found on the "IP Whitelist" section of the "Networking" tab.  Note that your IP addresses may differ from the ones show above.
+Before going live, ensure that all Moovweb XDN IP addresses are whitelisted in the security layer in front of your origin and/or API servers. The IP addresses you need to whitelist can be found on the "IP Whitelist" section of the "Networking" tab. Note that your IP addresses may differ from the ones show above.
 
 ## TLS/SSL
 
-All data transmitted to and from your Moovweb XDN project must be secured with TLS (Transport Layer Security).  TLS, also known as SSL (Secure Sockets Layer), is a cryptographic protocol to communicate securely over the Internet.  TLS provides end-to-end data encryption and data integrity for all web requests.
+All data transmitted to and from your Moovweb XDN project must be secured with TLS (Transport Layer Security). TLS, also known as SSL (Secure Sockets Layer), is a cryptographic protocol to communicate securely over the Internet. TLS provides end-to-end data encryption and data integrity for all web requests.
 
-The XDN provides a wildcard TLS certificate that covers the auto-generated domains that it assigns to your site (e.g {team}-{site}-{branch}-{version}.moovweb.io).  You need to provide your own certificate for your site's custom domains.
+The XDN provides a wildcard TLS certificate that covers the auto-generated domains that it assigns to your site (e.g {team}-{site}-{branch}-{version}.moovweb.io). You need to provide your own certificate for your site's custom domains.
 
 ### Obtaining a certificate
 
@@ -46,9 +46,11 @@ This guide describes the creation of the CSR and private key with OpenSSL. OpenS
 To create CSR and private key do the following:
 
 1. Open your terminal window and make sure that you have OpenSSL installed:
-* On MacOS you can install it by using [`brew`](https://brew.sh/) package manager (e.g. `brew install openssl`)
-* On Windows you can install it by using [`Chocolatey`](https://chocolatey.org/) package manager (e.g. `choco install openssl`)
-* On Linux/Unix you can install it by running the built-in OS package manager (e.g. `apt-get install openssl`, `apk add openssl` and so on)
+
+- On MacOS you can install it by using [`brew`](https://brew.sh/) package manager (e.g. `brew install openssl`)
+- On Windows you can install it by using [`Chocolatey`](https://chocolatey.org/) package manager (e.g. `choco install openssl`)
+- On Linux/Unix you can install it by running the built-in OS package manager (e.g. `apt-get install openssl`, `apk add openssl` and so on)
+
 2. Go to the directory of your choice and create a configuration file `moovweb-xdn.conf` based on this template:
 
 ```properties
@@ -86,20 +88,26 @@ You will want to add all the additional domains into the `alt_names` section. Th
 
 ### Uploading certificate to Moovweb XDN
 
-Moovweb XDN needs three things to correctly host your certificate:
+To upload your SSL certificate, navigate to the **Settings** tab on your site and
 
-* Certificate issued by CA
-* Intermediate certificates (IC) used by CA including CA's signing certificate
-* Private key that was generated at the same time with CSR
+![ssl](/images/production/ssl.png)
+
+Then, scroll down to **SSL Certificate**. _Note that you need to be in the **Admin** role on your team and your team needs to be upgraded to XDN Enterprise to see this section:_
 
 ![empty-certificate](/images/production/empty-certificate.png)
 
-The private key part is non-public data and must not be shared with parties other than Moovweb. The Moovweb XDN stores your private key securely at rest.  It is never shown in the developer console and only used to provision parts of the infrastructure that are used to terminate TLS connections.
+Moovweb XDN needs three things to correctly host your certificate:
+
+- Certificate issued by CA
+- Intermediate certificates (IC) used by CA including CA's signing certificate
+- Private key that was generated at the same time with CSR
+
+The private key part is non-public data and must not be shared with parties other than Moovweb. The Moovweb XDN stores your private key securely at rest. It is never shown in the developer console and only used to provision parts of the infrastructure that are used to terminate TLS connections.
 
 You need to copy the certificate, intermediate certificates and the private key into the corresponding edit boxes and, once done, click on "Save Changes" button. This will change the status of your certificate to "Activation in Progress".
 
 ![in-progress-certificate](/images/production/in-progress-certificate.png)
 
-Note that the certificate hosting process is not immediate. It may take up to five business days for the certificate to be activated.  Once it is activated, you'll see the following:
+Note that the certificate hosting process is not immediate. It may take up to five business days for the certificate to be activated. Once it is activated, you'll see the following:
 
 ![activated-certificate](/images/production/activated-certificate.png)

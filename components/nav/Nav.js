@@ -27,7 +27,7 @@ const useStyles = makeStyles(theme => ({
       bottom: 0,
       top: 65,
       overflowY: 'auto',
-      height: '100%',
+      height: 'calc(100% - 65px)',
       transform: `translateX(-${width}px)`,
       background: theme.palette.background.paper,
       zIndex: theme.zIndex.drawer,
@@ -38,6 +38,7 @@ const useStyles = makeStyles(theme => ({
 
     [theme.breakpoints.down('xs')]: {
       top: 57,
+      height: 'calc(100% - 57px)',
       width: '100%',
       transform: `translateX(-100%)`,
     },

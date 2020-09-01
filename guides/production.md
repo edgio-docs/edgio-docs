@@ -86,7 +86,7 @@ You will want to add all the additional domains into the `alt_names` section. Th
 3. Run `openssl req -out moovweb-xdn.csr -newkey rsa:2048 -nodes -keyout moovweb-xdn.key -config moovweb-xdn.conf -batch`. This should generate your CSR in `moovweb-xdn.csr` and private key in `moovweb-xdn.key`. If you want OpenSSL to ask you for each different input, remove `-batch` option and re-run the command.
 4. Read the CSR (e.g. `cat moovweb-xdn.csr`) and send it to your CA for certification.
 
-### Uploading certificate to Moovweb XDN
+### Uploading your certificate
 
 To upload your SSL certificate, navigate to the **Settings** tab on your site and
 

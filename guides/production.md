@@ -19,7 +19,7 @@ To configure your custom domains:
 
 ## Network configuration
 
-On "Networking" tab for your environment you can find DNS and whitelisting IP configuration.
+On the "Networking" tab for your environment you can find the DNS and whitelisting IP configurations.
 
 ![networking](/images/production/networking.png)
 

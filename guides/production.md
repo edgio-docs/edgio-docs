@@ -25,7 +25,7 @@ On the "Networking" tab for your environment you can find the DNS and whitelisti
 
 ### DNS
 
-In order to configure your DNS provider to direct traffic for a particular set of domains to the Moovweb XDN, create a CNAME record with the value shown under *DNS Configuration* (see above).  If you are launching a brand new site then you can set this up whenever you feel ready but for already live sites the DNS update is the last step - the commit to launch.
+In order to configure your DNS provider to direct traffic for a particular set of domains to the Moovweb XDN, create a CNAME record with the value shown under *DNS Configuration* (see above).  If you are launching a brand new site then you can set this up whenever you feel ready. For sites that are already live, the DNS update is the last step.  Once you have updated your DNS you are committed to launching.
 
 ### Whitelisting XDN IP Addresses
 

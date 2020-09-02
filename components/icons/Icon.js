@@ -8,6 +8,7 @@ import SpartacusIcon from './spartacus-blue.png'
 import NextIcon from './next.svg'
 import NuxtIcon from './nuxt.svg'
 import ReactStorefrontIcon from './react-storefront.svg'
+import SapperIcon from './sapper.svg'
 
 export const icons = {
   react: ReactIcon,
@@ -21,6 +22,7 @@ export const icons = {
   prev: ChevronLeft,
   next: ChevronRight,
   'react-storefront': ReactStorefrontIcon,
+  sapper: SapperIcon,
 }
 
 export const styles = theme => ({

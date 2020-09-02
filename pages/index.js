@@ -24,13 +24,14 @@ import NextIcon from '../components/icons/next.svg'
 import NuxtIcon from '../components/icons/nuxt.svg'
 import AngularIcon from '../components/icons/angular.svg'
 import MoovwebXDN from '../components/icons/moovweb-xdn-black.svg'
+import SapperIcon from '../components/icons/sapper.svg'
 import { icons } from '../components/icons/Icon'
 
 const SpartacusIcon = icons['spartacus']
 
 const useStyles = makeStyles(theme => ({
   hero: {
-    paddingTop: theme.spacing(15),
+    paddingTop: theme.spacing(10),
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
@@ -57,7 +58,7 @@ const useStyles = makeStyles(theme => ({
   },
 
   frameworks: {
-    marginTop: theme.spacing(4),
+    marginTop: theme.spacing(5),
   },
 
   framework: {
@@ -169,6 +170,14 @@ const Home = ({ navData }) => {
                   <Typography className={classes.frameworkText}>
                     Get started with Spartacus
                   </Typography>
+                </Paper>
+              </Link>
+            </Grid>
+            <Grid item>
+              <Link href="/guides/[...guide]" as="/guides/sapper">
+                <Paper className={classes.framework} elevation={0}>
+                  <SapperIcon className={classes.icon} style={{ height: 142, width: 142 }} />
+                  <Typography className={classes.frameworkText}>Get started with Sapper</Typography>
                 </Paper>
               </Link>
             </Grid>

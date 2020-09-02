@@ -127,6 +127,12 @@
         "icon": "spartacus",
         "as": "/guides/spartacus",
         "href": "/guides/[...guide]"
+      },
+      {
+        "text": "Sapper",
+        "icon": "sapper",
+        "as": "/guides/sapper",
+        "href": "/guides/[...guide]"
       }
     ]
   },

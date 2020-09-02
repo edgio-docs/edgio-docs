@@ -25,10 +25,10 @@ try {
 
 - All timings are returned in an `x-xdn-user-t` response header.
 - The value is a comma-delimited list of pairs of the form `(name)=(duration-in-millis)`.
-- The total length of this header is limited to 50 bytes. Anything over 50 bytes will be truncated.
-- Any timings that are not ended before the response is sent will have a value of "na"
+- The value of this header will be logged into `xut` field in [access logs](/guides/logs#section_access_logs). The logged data is limited to 50 bytes after which it will be truncated.
+- Any timings that are not ended before the response is sent will have a value of `na`
 
-## Peformance optimizations
+## Performance optimizations
 
 ### Turn off caching when not needed
 

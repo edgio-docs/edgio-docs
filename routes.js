@@ -50,6 +50,9 @@ module.exports = new Router()
     })
     serveStatic('.next/static/service-worker.js')
   })
+  .get('/images/:path*', ({ cache }) => {
+    cache(staticCacheConfig)
+  })
   // the following route is needed for older guides and should not be removed
   .match('/guides/images/:path*', ({ cache, serveStatic }) => {
     cache(staticCacheConfig)

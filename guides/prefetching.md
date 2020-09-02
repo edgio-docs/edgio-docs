@@ -178,3 +178,23 @@ document.addEventListener('DOMContentLoaded', function() {
   })
 })
 ```
+
+## Reducing 412s
+
+By default, the XDN will only serve prefetch requests from the edge cache. If a request cannot be served from the cache, a 412 status is returned. This protects your origin servers from additional traffic associated with prefetching. If you're seeing a surprisingly high number of 412s in your logs:
+
+1. Ensure that the URLs you're prefetching match exactly those that are fetched during page navigation. Prefetch URLs will have `?xdn_prefetch=1` whereas the URLs associated with page navigation won't. That's ok. The `xdn_*` query parameters are automatically excluded from the cache key. Just ensure that there are no other differences.
+2. Ensure that `cache` settings have stale-while-revalidate enabled. For example:
+
+```js
+router.get('/p/:productId', ({ cache }) => {
+  cache({
+    edge: {
+      maxAgeSeconds: 60 * 60,
+      staleWhileRevalidateSeconds: 60 * 60 * 24, // this way stale items can still be prefetched
+    },
+  })
+})
+```
+
+3. Consider increasing `edge.maxAgeSeconds`. The shorter the cache time to live is, the more prefetches will fail.

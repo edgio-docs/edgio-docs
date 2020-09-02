@@ -38,12 +38,12 @@ router.get('/some/path', ({ cache }) => {
       // Using stale-while-revalidate helps raise your effective cache hit rate to near 100%.
       staleWhileRevalidateSeconds: 60 * 60, // serve stale responses for up to 1 hour while fetching a new response
 
-      // Optionally customizes the cache key.
-      cacheKey: new CustomCacheKey()
-        .addBrowser() // Split cache by browser type
-        .addCookie('some-cookie'), // Split cache by some-cookie cookie
       // And many other options
     },
+    // Optionally customizes the cache key for both edge and browser
+    key: new CustomCacheKey()
+      .addBrowser() // Split cache by browser type
+      .addCookie('some-cookie'), // Split cache by some-cookie cookie
   })
 })
 ```
@@ -76,10 +76,7 @@ import { CustomCacheKey } from '@xdn/core/router'
 router.get('/some/path', ({ cache }) => {
   cache({
     // Other options...
-    edge: {
-      // Other options...
-      cacheKey: new CustomCacheKey().excludeQueryParameters('to-be-excluded-1', 'to-be-excluded-2'),
-    },
+    key: new CustomCacheKey().excludeQueryParameters('to-be-excluded-1', 'to-be-excluded-2'),
   })
 })
 ```
@@ -93,11 +90,8 @@ import { CustomCacheKey } from '@xdn/core/router'
 
 router.get('/some/path', ({ cache }) => {
   cache({
+    key: new CustomCacheKey().addCookie('language').addCookie('currency'),
     // Other options...
-    edge: {
-      // Other options...
-      cacheKey: new CustomCacheKey().addCookie('language').addCookie('currency'),
-    },
   })
 })
 ```

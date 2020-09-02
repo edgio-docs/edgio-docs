@@ -72,7 +72,7 @@ import { precacheAndRoute } from 'workbox-precaching'
 import { Prefetcher } from '@xdn/prefetch/sw'
 
 precacheAndRoute([])
-new Prefetcher().route([])
+new Prefetcher().route()
 /* end: add this to src/service-worker.js */
 ```
 

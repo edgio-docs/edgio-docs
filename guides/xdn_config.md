@@ -8,8 +8,9 @@ The `backends` config is an object whose keys are backend names and whose values
 
 | Property | Type | Description |
 | -------- | ---- | ----------- |
-| domainOrIp | String | (Required) The domain or ip address for the backend site |
-| hostHeader | String | A value to send as the `host` header when sending requests to the backend site.  By default the host header sent from the browser is used. |
+| domainOrIp | String | (Required) The domain or ip address for the backend site or API. |
+| hostHeader | String | A value to send as the `host` header when sending requests to the backend site or API.  By default the host header sent from the browser is used. |
+| disableCheckCert | Boolean | A flag to turn off the TLS certificate check when making proxy requests to the backend site or API.  By default it is `false` and for security purposes we strongly recommend that it is kept `false` in production environments. |
 
 ## routes
 

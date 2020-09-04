@@ -159,7 +159,7 @@ router.get('/some/uncacheable/path', ({ cache, proxy }) => {
     // Other options...
     edge: false
   })
-  // The route will need to send a response for the routing to finish processing
+  // The route will need to send a response to prevent the request from continuing on to subsequent routes.
   // This example sends the request through to a backend defined as "origin" which will complete the request cycle
   await proxy('origin')
 })

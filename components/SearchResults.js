@@ -1,22 +1,15 @@
-import {
-  CircularProgress,
-  Divider,
-  Grow,
-  MenuItem,
-  MenuList,
-  Paper,
-  Popper,
-  Typography,
-} from '@material-ui/core'
+import { Divider, Grow, MenuItem, MenuList, Paper, Popper, Typography } from '@material-ui/core'
 import { makeStyles } from '@material-ui/styles'
 import Router from 'next/router'
 import React from 'react'
 import useVersioning from './versioning'
+import Markdown from './Markdown'
+import highlight from './highlight'
 
 const useStyles = makeStyles(theme => ({
   paper: {
-    height: '500px',
-    width: '500px',
+    height: 600,
+    width: 700,
     overflowY: 'auto',
     position: 'relative',
   },
@@ -34,11 +27,19 @@ const useStyles = makeStyles(theme => ({
     margin: theme.spacing(2),
   },
   title: {
-    fontWeight: 500,
+    width: 150,
+    minWidth: 150,
+    textAlign: 'right',
   },
+  icon: {
+    minWidth: 40,
+    alignSelf: 'flex-start',
+  },
+  divider: {},
   item: {
-    display: 'block',
     height: 'auto',
+    padding: theme.spacing(1.5, 0),
+    whiteSpace: 'normal',
 
     '& .highlight': {
       backgroundColor: '#DD549F',
@@ -47,7 +48,11 @@ const useStyles = makeStyles(theme => ({
     },
   },
   match: {
-    color: '#666',
+    borderLeft: `1px solid ${theme.palette.divider}`,
+    paddingLeft: theme.spacing(2),
+    marginLeft: theme.spacing(2),
+    flex: 1,
+    fontSize: '0.8em',
   },
   loadMask: {
     margin: '50%',
@@ -74,20 +79,17 @@ export default function SearchResults({ loading, results, query, open, anchorEl 
 
   const content = (
     <>
-      {loading && <CircularProgress className={classes.loadMask} />}
-      {results.count === 0 && (
+      <Typography variant="h4" className={classes.heading}>
+        Results
+      </Typography>
+      <Divider className={classes.divider} />
+      {guides.length === 0 && (
         <Typography variant="body2" className={classes.empty}>
           No results found.
         </Typography>
       )}
       {guides.length === 0 ? null : (
-        <Collection
-          heading="Guides"
-          collection={guides}
-          onClick={onResultClick}
-          classes={classes}
-          query={query}
-        />
+        <Collection collection={guides} onClick={onResultClick} classes={classes} query={query} />
       )}
       {api.length === 0 ? null : (
         <Collection
@@ -117,31 +119,20 @@ SearchResults.defaultProps = {
 }
 
 function Collection({ heading, collection, onClick, classes, query }) {
-  const highlight = text => {
-    return text.replace(new RegExp(query, 'gi'), match => `<span class="highlight">${match}</span>`)
-  }
-
   return (
     <>
-      <Typography variant="h4" className={classes.heading}>
-        {heading}
-      </Typography>
-      <Divider className={classes.divider} />
       <MenuList>
         {collection.map((result, i) => (
           <MenuItem className={classes.item} key={i} onClick={() => onClick(result)}>
             <Typography
               component="div"
-              variant="body2"
+              variant="h6"
               className={classes.title}
-              dangerouslySetInnerHTML={{ __html: highlight(result.name) }}
+              dangerouslySetInnerHTML={{ __html: highlight(result.name, query) }}
             />
-            <Typography
-              component="div"
-              variant="caption"
-              className={classes.match}
-              dangerouslySetInnerHTML={{ __html: highlight(result.match) }}
-            />
+            <Typography component="div" variant="subtitle1" className={classes.match}>
+              <Markdown source={result.match} highlight={query} />
+            </Typography>
           </MenuItem>
         ))}
       </MenuList>

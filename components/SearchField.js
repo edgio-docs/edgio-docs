@@ -1,9 +1,11 @@
 import { makeStyles } from '@material-ui/styles'
-import React, { useRef, useState } from 'react'
+import React, { useRef, useState, useCallback, useEffect } from 'react'
 import { ClickAwayListener, InputAdornment, TextField } from '@material-ui/core'
 import SearchIcon from '@material-ui/icons/Search'
 import SearchResults from './SearchResults'
 import useVersioning from './versioning'
+import lunr from 'lunr'
+import debounce from 'lodash/debounce'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -31,8 +33,10 @@ export default function SearchField() {
   const [anchor, setAnchor] = useState()
   const [query, setQuery] = useState('')
   const [loading, setLoading] = useState(false)
+  const [searchIndex, setSearchIndex] = useState()
   const [results, setResults] = useState({})
   const { currentVersion } = useVersioning()
+
   const loadId = useRef(0)
 
   const onFocus = async evt => {
@@ -41,26 +45,61 @@ export default function SearchField() {
     setOpen(!!query.length)
   }
 
-  const onChangeText = async evt => {
-    const currentLoad = loadId.current + 1
-    loadId.current = currentLoad
-    const newQuery = evt.target.value
-
+  useEffect(async () => {
     setLoading(true)
-    setOpen(!!newQuery)
-    setQuery(newQuery)
 
-    const results = newQuery
-      ? await fetch(`/api/search?query=${newQuery}&version=${currentVersion}`).then(res =>
-          res.json(),
-        )
-      : { results: [] }
+    setSearchIndex(
+      fetch(`/api/searchIndex?version=${encodeURIComponent(currentVersion)}`)
+        .then(res => res.json())
+        .then(content => {
+          setLoading(false)
 
-    if (currentLoad === loadId.current) {
-      setResults(results)
-      setLoading(false)
-    }
-  }
+          return {
+            content,
+            index: lunr(function() {
+              this.ref('id')
+              this.field('name')
+              this.field('content')
+              this.metadataWhitelist = ['position']
+              content.forEach(guide => this.add(guide))
+            }),
+          }
+        }),
+    )
+  }, [currentVersion])
+
+  const onChangeText = useCallback(
+    debounce(async query => {
+      setOpen(!!query)
+      setQuery(query)
+
+      const { content, index } = await searchIndex
+      const search = index.search(`*${query}*`)
+
+      const results = search.slice(0, 10).map(match => {
+        const document = content.find(item => item.id === match.ref)
+        const metadata = match.matchData.metadata
+        const fields = metadata[Object.keys(metadata)[0]]
+        const firstMatch = fields[Object.keys(fields)[0]].position[0][0]
+        const start = Math.max(0, firstMatch - 10)
+        const end = firstMatch + 150
+        let text = document.content.slice(start, end)
+
+        if (start > 0) {
+          text = `...${text}`
+        }
+
+        if (end < document.content.length) {
+          text = `${text}...`
+        }
+
+        return { ...document, match: text }
+      })
+
+      setResults({ count: search.length, results })
+    }, 250),
+    [searchIndex],
+  )
 
   const onClose = () => {
     setOpen(false)
@@ -75,7 +114,7 @@ export default function SearchField() {
           size="small"
           classes={{}}
           onFocus={onFocus}
-          onChange={onChangeText}
+          onChange={e => onChangeText(e.target.value)}
           InputProps={{
             classes,
             startAdornment: (

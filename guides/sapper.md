@@ -1,4 +1,4 @@
-## Sapper
+# Sapper
 
 This guide shows you how to deploy [Sapper](https://sapper.svelte.dev/) apps on the Moovweb XDN
 

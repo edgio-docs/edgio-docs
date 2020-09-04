@@ -6,6 +6,7 @@ import Code from './Code'
 import { Link as LinkIcon } from '@material-ui/icons'
 import NextLink from 'next/link'
 import useVersioning from './versioning'
+import doHighlight from './highlight'
 
 const useStyles = makeStyles(theme => ({
   heading: {
@@ -74,8 +75,19 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-export default function Markdown({ source }) {
+export default function Markdown({ source, highlight }) {
   const classes = useStyles()
+
+  function Text({ value }) {
+    let html = value
+
+    if (highlight) {
+      html = doHighlight(html, highlight)
+    }
+
+    return <span dangerouslySetInnerHTML={{ __html: html }} />
+  }
+
   return (
     <div className={classes.root}>
       <ReactMarkdown
@@ -84,6 +96,7 @@ export default function Markdown({ source }) {
           code: Code,
           heading: Heading,
           link: Link,
+          text: Text,
         }}
       />
     </div>

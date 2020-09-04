@@ -154,11 +154,14 @@ By default, the XDN will cache responses that satisfy all of the following condi
 Sometimes, however, you don't want to cache anything, even if the upstream backend returns a `max-age`. Other times you might want to [improve the performance](/guides/performance#section_turn_off_caching_when_not_needed) of pages that can never be cached at edge. In those cases you can turn off caching:
 
 ```js
-router.get('/some/uncacheable/path', ({ cache }) => {
+router.get('/some/uncacheable/path', ({ cache, proxy }) => {
   cache({
     // Other options...
     edge: false
   })
+  // The route will need to send a response to prevent the request from continuing on to subsequent routes.
+  // This example sends the request through to a backend defined as "origin" which will complete the request cycle
+  await proxy('origin')
 })
 ```
 

@@ -42,9 +42,15 @@ The application's XDN version processing this request.
 
 The application's build number processing this request.
 
+### eid
+
+The active environment ID in XDN.
+
+_Available since XDN v2.9.0._
+
 ### ev
 
-The active environment version number
+The active environment version number.
 
 ### ip
 

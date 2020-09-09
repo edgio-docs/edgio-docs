@@ -37,6 +37,23 @@ router.get('/products/:productId', ({ proxy }) => {
 })
 ```
 
+### Adding Caching
+
+To cache proxied requests at the edge, use the [`cache`](https://developer.moovweb.com/docs/api/core/classes/_router_responsewriter_.responsewriter.html#cache) method.
+
+```js
+router.get('/products/:productId', ({ proxy }) => {
+  cache({
+    edge: {
+      maxAgeSeconds: 60 * 60 * 24           // keep entries in the cache for 24 hours
+      staleWhileRevalidateSeconds: 60 * 60  // when a cached page is older than 24 hours, serve it one more time
+                                            // for up to 60 minutes while fetching a new version from the origin
+    }
+  })
+  proxy('origin')
+})
+```
+
 ### Altering the request
 
 You can alter request headers when forwarding a request to a backend:

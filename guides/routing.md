@@ -145,7 +145,7 @@ new Router().get('/:foo+', res => {
 
 The captured parameter value will be provided as an array.
 
-## Matching Method, Query Params, Cookies, and Headers
+## Matching Method, Query Parameters, Cookies, and Headers
 
 Match can either take a URL path, or an object which allows you to match based on method, query parameters, cookies, and request headers:
 

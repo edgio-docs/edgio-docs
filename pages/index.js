@@ -25,6 +25,7 @@ import NuxtIcon from '../components/icons/nuxt.svg'
 import AngularIcon from '../components/icons/angular.svg'
 import MoovwebXDN from '../components/icons/moovweb-xdn-black.svg'
 import SapperIcon from '../components/icons/sapper.svg'
+import GatsbyIcon from '../components/icons/gatsby.svg'
 import { icons } from '../components/icons/Icon'
 
 const SpartacusIcon = icons['spartacus']
@@ -178,6 +179,14 @@ const Home = ({ navData }) => {
                 <Paper className={classes.framework} elevation={0}>
                   <SapperIcon className={classes.icon} style={{ height: 142, width: 142 }} />
                   <Typography className={classes.frameworkText}>Get started with Sapper</Typography>
+                </Paper>
+              </Link>
+            </Grid>
+            <Grid item>
+              <Link href="/guides/[...guide]" as="/guides/gatsby">
+                <Paper className={classes.framework} elevation={0}>
+                  <GatsbyIcon className={classes.icon} style={{ height: 142, width: 142 }} />
+                  <Typography className={classes.frameworkText}>Get started with Gatsby</Typography>
                 </Paper>
               </Link>
             </Grid>

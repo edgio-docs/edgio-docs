@@ -184,7 +184,7 @@ const Home = ({ navData }) => {
             <Grid item container xs={12} m={12} l={12} xl={12} justify="center">
                 Don't see your framework?&nbsp;
               <Link href="/guides/[...guide]" as="/guides/starter">
-                Checkout XDN Starter
+                Check out XDN Starter
               </Link>
             </Grid>
             {/* <Grid item>

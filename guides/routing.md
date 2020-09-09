@@ -145,9 +145,9 @@ new Router().get('/:foo+', res => {
 
 The captured parameter value will be provided as an array.
 
-## Matching Method, Cookies, and Headers
+## Matching Method, Query Parameters, Cookies, and Headers
 
-Match can either take a URL path, or an object which allows you to match based on method, cookies, and request headers:
+Match can either take a URL path, or an object which allows you to match based on method, query parameters, cookies, and request headers:
 
 ```js
 router.match(
@@ -156,6 +156,7 @@ router.match(
     method: /GET|POST/i, // value is a regular expression
     cookies: { currency: /^(usd)$/i }, // keys are cookie names, values are regular expressions
     headers: { 'x-moov-device': /^desktop$/i }, // keys are header names, values are regular expressions
+    query: { page: /^(1|2|3))$/ }, // keys are query parameter names, values are regular expressions
   },
   () => {},
 )

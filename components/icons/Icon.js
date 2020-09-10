@@ -9,6 +9,7 @@ import NextIcon from './next.svg'
 import NuxtIcon from './nuxt.svg'
 import ReactStorefrontIcon from './react-storefront.svg'
 import SapperIcon from './sapper.svg'
+import GatsbyIcon from './gatsby.svg'
 
 export const icons = {
   react: ReactIcon,
@@ -23,6 +24,7 @@ export const icons = {
   next: ChevronRight,
   'react-storefront': ReactStorefrontIcon,
   sapper: SapperIcon,
+  gatsby: GatsbyIcon
 }
 
 export const styles = theme => ({

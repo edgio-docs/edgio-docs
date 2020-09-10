@@ -133,6 +133,12 @@
         "icon": "sapper",
         "as": "/guides/sapper",
         "href": "/guides/[...guide]"
+      },
+      {
+        "text": "Gatsby",
+        "icon": "gatsby",
+        "as": "/guides/gatsby",
+        "href": "/guides/[...guide]"
       }
     ]
   },

@@ -232,3 +232,25 @@ router.get('/p/:productId', ({ redirect, compute, cache }) => {
   })
 })
 ```
+
+## Blocking unwanted traffic
+
+### Blocking traffic from specific countries
+
+If you need to block all traffic from a specific country or set of countries, you can do so by matching requests by the [country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) geolocation header:
+
+```js
+router
+  .get(
+    {
+      headers: {
+        'x-xdn-geo-country-code': /XX|XY|XZ/ // Regex matching two-letter country codes of the countries you want to block
+      }
+    },
+    ({ send }) => {
+      send('Blocked', 403)
+    }
+  )
+```
+
+You can find more about geolocation headers [here](/guides/request_headers).

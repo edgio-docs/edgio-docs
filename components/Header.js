@@ -133,6 +133,9 @@ export default function Header() {
               <VersionChooser />
               <div style={{ flex: 1 }} className={classes.smUp} />
               <Button href="https://forum.moovweb.com" target="_blank" className={classes.button}>
+                CONSOLE
+              </Button>
+              <Button href="https://forum.moovweb.com" target="_blank" className={classes.button}>
                 FORUMS
               </Button>
               <Button href="https://status.moovweb.com" target="_blank" className={classes.button}>

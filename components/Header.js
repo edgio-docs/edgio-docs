@@ -10,6 +10,7 @@ import {
   Slide,
   Hidden,
   LinearProgress,
+  Button,
 } from '@material-ui/core'
 import MenuIcon from '@material-ui/icons/Menu'
 import Link from 'next/link'
@@ -17,6 +18,8 @@ import VersionChooser from './modules/VersionChooser'
 import SearchField from './SearchField'
 import Logo from './Logo'
 import Router from 'next/router'
+import clsx from 'clsx'
+
 const useStyles = makeStyles(theme => ({
   appBar: {
     backgroundColor: '#242349',
@@ -46,8 +49,15 @@ const useStyles = makeStyles(theme => ({
   toolbar: {
     alignItems: 'center',
   },
-  menuButton: {
+  button: {
     color: theme.palette.grey[200],
+    width: 90,
+    '&:hover': {
+      backgroundColor: 'rgba(255,255,255,0.1)',
+    },
+  },
+  menuButton: {
+    width: 'initial',
   },
   title: {
     flexGrow: 1,
@@ -106,7 +116,7 @@ export default function Header() {
               <Hidden lgUp implementation="css">
                 <IconButton
                   edge="start"
-                  className={classes.menuButton}
+                  className={clsx(classes.button, classes.menuButton)}
                   color="inherit"
                   aria-label="menu"
                   onClick={handleMenuClick}
@@ -122,6 +132,16 @@ export default function Header() {
               <div style={{ flex: 1 }} className={classes.xsDown} />
               <VersionChooser />
               <div style={{ flex: 1 }} className={classes.smUp} />
+              <Button href="https://forum.moovweb.com" target="_blank" className={classes.button}>
+                FORUMS
+              </Button>
+              <Button href="https://status.moovweb.com" target="_blank" className={classes.button}>
+                STATUS
+              </Button>
+              <Button href="https://help.moovweb.com" target="_blank" className={classes.button}>
+                SUPPORT
+              </Button>
+              <div style={{ width: 16 }} />
               <Hidden xsDown implementation="css">
                 <SearchField />
               </Hidden>

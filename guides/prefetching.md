@@ -179,6 +179,109 @@ document.addEventListener('DOMContentLoaded', function() {
 })
 ```
 
+## GraphQL
+
+The XDN also enables caching and prefetching of GraphQL requests via a middleware for [Apollo](https://www.apollographql.com/apollo-client). To enable prefetching of GraphQL queries in both the edge and the service worker:
+
+1. Add `@xdn/apollo` to your project:
+
+```
+npm i --save @xdn/apollo
+```
+
+2. Add your GraphQL API as a backend to `xdn.config.js`. For example:
+
+```js
+// xdn.config.js
+
+module.exports = {
+  backends: {
+    graphql: {
+      domainOrIp: 'graphql.my-site.com',
+      hostHeader: 'graphql.my-site.com',
+    },
+  },
+}
+```
+
+3. Add GET and POST routes for the GraphQL endpoint to your router:
+
+```js
+const { Router, CustomCacheKey } = require('@xdn/core/router')
+
+// The handler for both GET and POST requests to /graphql
+const gqlHandler = ({ cache, removeUpstreamResponseHeader, proxy }) => {
+  cache({
+    // Here we cache both GETs and POSTs in the same key space, we also ignore the
+    // body since @xdn/apollo's middleware adds a hash of the query and parameters to the URL,
+    // making the URL alone a sufficiently unique key for caching. This is necessary because prefetch
+    // requests are always GETs, and thus will not have a body.
+    key: new CustomCacheKey().removeMethod().removeBody(),
+    edge: {
+      maxAgeSeconds: 60 * 60 * 24,
+      staleWhileRevalidateSeconds: 60 * 60 * 24,
+    },
+    browser: {
+      maxAgeSeconds: 0,
+      serviceWorkerSeconds: 60 * 60 * 24,
+    },
+  })
+
+  // Some APIs, like Shopify, attempt to establish a session by setting a cookie. The XDN will
+  // not cache responses with a set-cookie header, so we remove it before attempting to write
+  // the response to the cache
+  removeUpstreamResponseHeader('set-cookie')
+
+  // Proxy the request to the "graphql" backend end configured in xdn.config.js
+  proxy('graphql', { path: '/graphql' })
+}
+
+module.exports = new Router()
+  // An explicit post route is required to cache POSTs at edge
+  .post('/api/graphql', gqlHandler)
+  // Prefetch requests are always GETs
+  .get('/api/graphql', gqlHandler)
+```
+
+4. Add the `@xdn/apollo` middleware to your Apollo Client configuration when running in the browser. For example:
+
+```js
+import { createApolloMiddleware } from '@xdn/apollo'
+
+// Use a relative URL when running in the browser so that GraphQL requests are fetched via the XDN's edge cache.
+const httpEndpoint = typeof window === 'undefined' ? process.env.GQL_ENDPOINT : '/api/graphql'
+
+export default function(context) {
+  return {
+    httpEndpoint,
+    // We only need the apollo middleware in the browser. On the server we can omit it because we're already past the edge cache.
+    link: typeof window === 'undefined' ? undefined : createApolloMiddleware(httpEndpoint),
+  }
+}
+```
+
+5. Use `createApolloURL(query, variables)` to create the URL to prefetch:
+
+```js
+import { Prefetch } from '@xdn/react'
+import { createApolloURL } from '@xdn/apollo'
+import productById from '../apollo/queries/productById.gql'
+
+function MyProductLink({ product }) {
+  return (
+    <Prefetch url={createApolloURL(productById, { id: product.id })}>
+      <a href={product.url}>{product.name}</a>
+    </Prefetch>
+  )
+}
+```
+
+You can test that everything is running locally by running your project with:
+
+```
+xdn run --cache
+```
+
 ## Reducing 412s
 
 By default, the XDN will only serve prefetch requests from the edge cache. If a request cannot be served from the cache, a 412 status is returned. This protects your origin servers from additional traffic associated with prefetching. If you're seeing a surprisingly high number of 412s in your logs:

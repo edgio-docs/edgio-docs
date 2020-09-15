@@ -128,7 +128,11 @@ jobs:
 
 Here is an example Jenkins pipeline that deploys your site to the Moovweb XDN:
 
-This guide assumes your project is hosted on GitHub, have a Jenkins environment configured with Docker and to receive GitHub `push` events, have created environments called "staging" and "production" and you have created a deploy key for your site and added it as an environment variable in your Jenkins configuration called "xdn_deploy_token".
+This guide assumes:
+- Your project is hosted on GitHub
+- You have a Jenkins environment configured with Docker and to receive GitHub `push` events
+- You have created environments called "staging" and "production" 
+- You have created a deploy key for your site and added it as an environment variable in your Jenkins configuration called "xdn_deploy_token".
 
 ```groovy
 // Add this file to your project at ./Jenkinsfile

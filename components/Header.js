@@ -132,18 +132,26 @@ export default function Header() {
               <div style={{ flex: 1 }} className={classes.xsDown} />
               <VersionChooser />
               <div style={{ flex: 1 }} className={classes.smUp} />
-              <Button href="https://moovweb.app" target="_blank" className={classes.button}>
-                CONSOLE
-              </Button>
-              <Button href="https://forum.moovweb.com" target="_blank" className={classes.button}>
-                FORUMS
-              </Button>
-              <Button href="https://status.moovweb.com" target="_blank" className={classes.button}>
-                STATUS
-              </Button>
-              <Button href="https://help.moovweb.com" target="_blank" className={classes.button}>
-                SUPPORT
-              </Button>
+              <Hidden mdDown implementation="css">
+                <Button href="https://moovweb.app" target="_blank" className={classes.button}>
+                  CONSOLE
+                </Button>
+              </Hidden>
+              <Hidden smDown implementation="css">
+                <Button href="https://forum.moovweb.com" target="_blank" className={classes.button}>
+                  FORUMS
+                </Button>
+                <Button
+                  href="https://status.moovweb.com"
+                  target="_blank"
+                  className={classes.button}
+                >
+                  STATUS
+                </Button>
+                <Button href="https://help.moovweb.com" target="_blank" className={classes.button}>
+                  SUPPORT
+                </Button>
+              </Hidden>
               <div style={{ width: 16 }} />
               <Hidden xsDown implementation="css">
                 <SearchField />

@@ -151,7 +151,7 @@ This guide assumes:
 //
 // In order for this pipeline to deploy your site, you must create a deploy token from the site settings page
 // in Moovweb.app and configure it as an environment variable called "xdn_deploy_token" in your Jenkins configuration.
-// 
+
 pipeline {
   agent { 
     docker {
@@ -159,6 +159,8 @@ pipeline {
     }
   }
   environment {
+    REPO_URL = "https://github.com/{your-org}/{your-repo}/" // (required)
+
     npm_config_cache = "npm-cache"
     HOME = "."
   }
@@ -176,17 +178,19 @@ pipeline {
     }
     stage("Install packages") {
       steps {
-        sh "npm ci"
+        sh "npm i"
       }
     }
     stage("Deploy to XDN") {
       steps {
         script {
           def branch = env.GIT_BRANCH // typically referenced as `origin/{branch}`
+          def url = env.REPO_URL
+          env.XDN_COMMIT_URL = (url.endsWith("/") ? url : url + "/") + "commit/$GIT_COMMIT"
           env.BRANCH_NAME = branch.tokenize("/").last()
           env.XDN_ENV_ARG = (env.BRANCH_NAME != "master") ? "--branch=$BRANCH_NAME" : "--environment=staging"
         }
-        sh "npm run deploy -- --token=$xdn_deploy_token ${XDN_ENV_ARG}"
+        sh "npm run deploy -- --token=$xdn_deploy_token ${XDN_ENV_ARG} --commit-url=${XDN_COMMIT_URL}"
       }
     }
   }

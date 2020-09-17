@@ -62,13 +62,14 @@ module.exports = new Router().match('/some-path', ({ cache, proxy }) => {
 When the XDN receives a request, it executes **each route that matches the request** in the order in which they are declared until one sends a response. The following methods return a response:
 
 - appShell
-- compute
-- proxy
-- send
-- serveStatic
-- serviceWorker
-- stream
-- use
+- [compute](https://developer.moovweb.com/docs/api/core/classes/_router_responsewriter_.responsewriter.html#compute)
+- [proxy](https://developer.moovweb.com/docs/api/core/classes/_router_responsewriter_.responsewriter.html#proxy)
+- [redirect](https://developer.moovweb.com/docs/api/core/classes/_router_responsewriter_.responsewriter.html#redirect)
+- [send](https://developer.moovweb.com/docs/api/core/classes/_router_responsewriter_.responsewriter.html#send)
+- [serveStatic](https://developer.moovweb.com/docs/api/core/classes/_router_responsewriter_.responsewriter.html#servestatic)
+- [serviceWorker](https://developer.moovweb.com/docs/api/core/classes/_router_responsewriter_.responsewriter.html#serviceworker)
+- [stream](https://developer.moovweb.com/docs/api/core/classes/_router_responsewriter_.responsewriter.html#stream)
+- [use](https://developer.moovweb.com/docs/api/core/classes/_router_responsewriter_.responsewriter.html#compute)
 
 Multiple routes can therefore be executed for a given request. A common pattern is to add caching with one route and render the response with a later one using middleware. In the following example we cache then render a response with Next.js:
 

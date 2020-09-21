@@ -1,7 +1,12 @@
 import fetch from 'isomorphic-fetch'
 
 export default async function guide(req, res) {
-  const { version, guide } = req.query
+  let { version, guide } = req.query
+
+  // changelogs always pull from the current version
+  if (guide === 'changelog') {
+    version = 'current'
+  }
 
   const guideResp = version
     ? await fetch(

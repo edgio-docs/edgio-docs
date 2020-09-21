@@ -183,13 +183,18 @@ document.addEventListener('DOMContentLoaded', function() {
 
 The XDN also enables caching and prefetching of GraphQL requests via a middleware for [Apollo](https://www.apollographql.com/apollo-client). To enable prefetching of GraphQL queries in both the edge and the service worker:
 
-1. Add `@xdn/apollo` to your project:
+1. Ensure that your GraphQL API is configured to accept GET requests. The Apollo client uses POST requests by default, but the Apollo server [automatically accepts both GETs and POSTs](https://www.apollographql.com/docs/apollo-server/v1/requests/). We use GETs instead of POSTs for two reasons:
+
+- So that the URLs are sufficiently unique cache keys
+- Browser cache APIs only support caching GETs
+
+2. Add `@xdn/apollo` to your project:
 
 ```
 npm i --save @xdn/apollo
 ```
 
-2. Add your GraphQL API as a backend to `xdn.config.js`. For example:
+3. Add your GraphQL API as a backend to `xdn.config.js`. For example:
 
 ```js
 // xdn.config.js
@@ -204,22 +209,16 @@ module.exports = {
 }
 ```
 
-3. Add GET and POST routes for the GraphQL endpoint to your router:
+4. Add a GET route for the GraphQL endpoint to your router:
 
 ```js
 const { Router, CustomCacheKey } = require('@xdn/core/router')
 
-// The handler for both GET and POST requests to /graphql
-const gqlHandler = ({ cache, removeUpstreamResponseHeader, proxy }) => {
+module.exports = new Router().get('/graphql', ({ cache, removeUpstreamResponseHeader, proxy }) => {
   cache({
-    // Here we cache both GETs and POSTs in the same key space, we also ignore the
-    // body since @xdn/apollo's middleware adds a hash of the query and parameters to the URL,
-    // making the URL alone a sufficiently unique key for caching. This is necessary because prefetch
-    // requests are always GETs, and thus will not have a body.
-    key: new CustomCacheKey().removeMethod().removeBody(),
     edge: {
       maxAgeSeconds: 60 * 60 * 24,
-      staleWhileRevalidateSeconds: 60 * 60 * 24,
+      staleWhileRevalidateSeconds: 60 * 60,
     },
     browser: {
       maxAgeSeconds: 0,
@@ -234,33 +233,33 @@ const gqlHandler = ({ cache, removeUpstreamResponseHeader, proxy }) => {
 
   // Proxy the request to the "graphql" backend end configured in xdn.config.js
   proxy('graphql', { path: '/graphql' })
-}
-
-module.exports = new Router()
-  // An explicit post route is required to cache POSTs at edge
-  .post('/api/graphql', gqlHandler)
-  // Prefetch requests are always GETs
-  .get('/api/graphql', gqlHandler)
+})
 ```
 
-4. Add the `@xdn/apollo` middleware to your Apollo Client configuration when running in the browser. For example:
+5. Configure your Apollo client to use a custom link from @xdn/apollo's `createHttpLink` function. For example:
 
 ```js
-import { createApolloMiddleware } from '@xdn/apollo'
+import { createHttpLink } from '@xdn/apollo'
 
-// Use a relative URL when running in the browser so that GraphQL requests are fetched via the XDN's edge cache.
-const httpEndpoint = typeof window === 'undefined' ? process.env.GQL_ENDPOINT : '/api/graphql'
-
-export default function(context) {
-  return {
-    httpEndpoint,
-    // We only need the apollo middleware in the browser. On the server we can omit it because we're already past the edge cache.
-    link: typeof window === 'undefined' ? undefined : createApolloMiddleware(httpEndpoint),
-  }
-}
+export default () => ({
+  defaultHttpLink: false,
+  link: createHttpLink({
+    credentials: 'omit',
+    uri:
+      typeof window === 'undefined' // Use a relative URL when running in the browser so that GraphQL requests are fetched via the XDN's edge cache.
+        ? process.env.GQL_ENDPOINT
+        : '/graphql',
+    headers: {
+      'X-Shopify-Storefront-Access-Token': process.env.GQL_ACCESS_TOKEN,
+    },
+  }),
+})
 ```
 
-5. Use `createApolloURL(query, variables)` to create the URL to prefetch:
+The `createHttpLink` function accepts all of the options [documented here](https://www.apollographql.com/docs/link/links/http/#options) and automatically
+uses GET requests for all queries so that they can be cached at the edge and prefetched by the service worker.
+
+6. Use `createApolloURL(client, query, variables)` to create the URL to prefetch:
 
 ```js
 import { Prefetch } from '@xdn/react'
@@ -269,7 +268,7 @@ import productById from '../apollo/queries/productById.gql'
 
 function MyProductLink({ product }) {
   return (
-    <Prefetch url={createApolloURL(productById, { id: product.id })}>
+    <Prefetch url={createApolloURL(this.$apollo, productById, { id: product.id })}>
       <a href={product.url}>{product.name}</a>
     </Prefetch>
   )
@@ -281,6 +280,14 @@ You can test that everything is running locally by running your project with:
 ```
 xdn run --cache
 ```
+
+### Advantages over Apollo's prefetch functionality
+
+[Apollo provides it's own ability to prefetch data.](https://www.apollographql.com/docs/react/performance/performance/). Prefetching using the method described above has a number of advantages:
+
+- It minimizes the amount of data that needs to be transmitted in response to the initial request, making the page faster.
+- Prefetched data is held in the service worker cache so it can be used in the event that the user navigates away from your website and returns later.
+- Data is prefetched with low priority so that prefetch requests will not block other more important requests like navigation and images.
 
 ## Reducing 412s
 

@@ -206,6 +206,11 @@
         "text": "XDN Starter",
         "as": "/guides/starter",
         "href": "/guides/[...guide]"
+      },
+      {
+        "text": "Changelog",
+        "as": "/guides/changelog",
+        "href": "/guides/[...guide]"
       }
     ]
   }

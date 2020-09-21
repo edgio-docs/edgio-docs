@@ -2,6 +2,12 @@
 
 This guide shows you how to deploy an Gatsby application on the Moovweb XDN:
 
+## Install Node.js and npm
+
+__XDN only supports Node.js version 12 and higher__
+
+If you do not have Node.js installed on your system, download and install it from official [Node.js downloads](https://nodejs.org/en/download/) page. Select the download labeled "LTS (Recommended For Most Users)" and that matches your operating system, and run the installer. Note that the installer for Node.js will also install npm.
+
 ## Getting Started
 
 If you don't already have a Gatsby application, you can create one using:
@@ -31,6 +37,23 @@ This will automatically add all of the required dependencies and files to your p
 - `xdn.config.js`
 - `routes.js` - A default routes file that sends all requests to your Gatsby static site. Update this file to add caching or proxy some URLs to a different origin.
 
+## Running Locally
+
+You can test the integration of the XDN router with your gatsby site locally using:
+
+```bash
+xdn run
+```
+
+### Deploying
+
+To deploy your app to the Moovweb XDN, run:
+
+```bash
+xdn deploy
+```
+
+See [deploying](deploying) for more information.
 
 ## Routing
 
@@ -84,24 +107,6 @@ module.exports = new Router()
   })
   .use(gatsbyRoutes)
 
-````
+```
 
 Check [routing](routing) and [caching](caching) for more information.
-
-### Running Locally
-
-You can test the integration of the XDN router with your gatsby site locally using:
-
-```bash
-xdn build && xdn run
-```
-
-### Deploying
-
-To deploy your app to the Moovweb XDN, run:
-
-```bash
-xdn deploy
-```
-
-See [deploying](deploying) for more information.

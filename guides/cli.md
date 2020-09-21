@@ -89,13 +89,14 @@ Builds and deploys your site on the Moovweb XDN.
 
 #### Options
 
-| Name            | Description                                                                                                   |
-| --------------- | ------------------------------------------------------------------------------------------------------------- |
-| `--site`        | The name of the site to deploy. By default the `name` field in `package.json` is used.                        |
-| `--environment` | The environment to deploy to. By default the `default` environment is used.                                   |
-| `--branch`      | The name of the source control branch. This is automatically set when using Git.                              |
-| `--skip-build`  | Skips the build step                                                                                          |
-| `--token`       | Authenticates using a deploy token rather than your user credentials. Use this option when deploying from CI. |
+| Name            | Description                                                                                                                                                                                                             |
+| --------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `--site`        | The name of the site to deploy. By default the `name` field in `package.json` is used.                                                                                                                                  |
+| `--environment` | The environment to deploy to. By default the `default` environment is used.                                                                                                                                             |
+| `--branch`      | The name of the source control branch. This is automatically set when using Git.                                                                                                                                        |
+| `--skip-build`  | Skips the build step                                                                                                                                                                                                    |
+| `--token`       | Authenticates using a deploy token rather than your user credentials. Use this option when deploying from CI.                                                                                                           |
+| `--commit-url`  | The URL at which the commit can be viewed in your source control provided. If your package.json provides the repository attribute the commit URL will be derived automatically if you use GitHub, GitLab, or BitBucket. |
 
 #### Example
 
@@ -162,7 +163,7 @@ xdn run --production
 
 ## use
 
-Switches the version of all @xdn/* packages in your project.
+Switches the version of all @xdn/\* packages in your project.
 
 #### Example
 

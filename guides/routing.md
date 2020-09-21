@@ -57,6 +57,36 @@ module.exports = new Router().match('/some-path', ({ cache, proxy }) => {
 })
 ```
 
+## Route Execution
+
+When the XDN receives a request, it executes **each route that matches the request** in the order in which they are declared until one sends a response. The following methods return a response:
+
+- appShell
+- [compute](https://developer.moovweb.com/docs/api/core/classes/_router_responsewriter_.responsewriter.html#compute)
+- [proxy](https://developer.moovweb.com/docs/api/core/classes/_router_responsewriter_.responsewriter.html#proxy)
+- [redirect](https://developer.moovweb.com/docs/api/core/classes/_router_responsewriter_.responsewriter.html#redirect)
+- [send](https://developer.moovweb.com/docs/api/core/classes/_router_responsewriter_.responsewriter.html#send)
+- [serveStatic](https://developer.moovweb.com/docs/api/core/classes/_router_responsewriter_.responsewriter.html#servestatic)
+- [serviceWorker](https://developer.moovweb.com/docs/api/core/classes/_router_responsewriter_.responsewriter.html#serviceworker)
+- [stream](https://developer.moovweb.com/docs/api/core/classes/_router_responsewriter_.responsewriter.html#stream)
+- [use](https://developer.moovweb.com/docs/api/core/classes/_router_responsewriter_.responsewriter.html#compute)
+
+Multiple routes can therefore be executed for a given request. A common pattern is to add caching with one route and render the response with a later one using middleware. In the following example we cache then render a response with Next.js:
+
+```js
+const { Router } = require('@xdn/core/router')
+const { nextRoutes } = require('@xdn/next')
+
+// In this example a request to /products/1 will be cached by the first route, then served by the `nextRoutes` middleware
+new Router()
+  .get('/products/:id', ({ cache }) => {
+    cache({
+      edge: { maxAgeSeconds: 60 * 60, staleWhileRevalidateSeconds: 60 * 60 },
+    })
+  })
+  .use(nextRoutes)
+```
+
 ## Route Pattern Syntax
 
 The syntax for route paths is provided by [path-to-regexp](https://github.com/pillarjs/path-to-regexp#path-to-regexp), which is the same library used by [Express](https://expressjs.com/).

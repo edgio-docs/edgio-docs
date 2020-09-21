@@ -283,7 +283,7 @@ xdn run --cache
 
 ### Advantages over Apollo's prefetch functionality
 
-[Apollo provides it's own ability to prefetch data.](https://www.apollographql.com/docs/react/performance/performance/). Prefetching using the method described above has a number of advantages:
+[Apollo provides it's own ability to prefetch data.](https://www.apollographql.com/docs/react/performance/performance/) Prefetching using the method described above has a number of advantages:
 
 - It minimizes the amount of data that needs to be transmitted in response to the initial request, making the page faster.
 - Prefetched data is held in the service worker cache so it can be used in the event that the user navigates away from your website and returns later.

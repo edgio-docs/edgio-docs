@@ -110,7 +110,7 @@ const Home = ({ navData }) => {
       <div className={classes.hero}>
         <MoovwebXDN className={classes.logo} />
         <Typography variant="h2" style={{ maxWidth: 800 }}>
-          <div style={{ position: 'relative' }}>Infrastructure for sub-second dynamic websites</div>
+          <div style={{ position: 'relative' }}>Instant sites. Happy developers.</div>
         </Typography>
       </div>
       <Grid container className={classes.frameworks}>
@@ -191,7 +191,7 @@ const Home = ({ navData }) => {
               </Link>
             </Grid>
             <Grid item container xs={12} m={12} l={12} xl={12} justify="center">
-                Don't see your framework?&nbsp;
+              Don't see your framework?&nbsp;
               <Link href="/guides/[...guide]" as="/guides/starter">
                 Check out XDN Starter
               </Link>

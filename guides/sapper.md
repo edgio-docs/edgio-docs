@@ -42,7 +42,7 @@ This will automatically add all of the required dependencies and files to your p
 
 ## Webpack
 
-Update your `webpack.config.js` to bundle all dependencies in the server build:
+If you're using webpack to build your app, update `webpack.config.js` to bundle all dependencies in the server build:
 
 ```diff
                 output: config.server.output(),
@@ -55,24 +55,63 @@ Update your `webpack.config.js` to bundle all dependencies in the server build:
                                 {
 ```
 
+## Rollup
+
+If you're using Rollup to build your app, install `@rollup/plugin-json`:
+
+```
+npm i -D @rollup/plugin-json
+```
+
+Then make the following changes to `rollup.config.js`:
+
+```diff
+ import babel from '@rollup/plugin-babel';
+ import { terser } from 'rollup-plugin-terser';
+ import config from 'sapper/config/rollup.js';
+-import pkg from './package.json';
++import json from '@rollup/plugin-json';
+
+ const mode = process.env.NODE_ENV;
+ const dev = mode === 'development';
+```
+
+... and add the following to the `server` config ...
+
+```diff
+                input: config.server.input(),
+                output: config.server.output(),
+                plugins: [
++                       json(),
+                        replace({
+                                'process.browser': false,
+                                'process.env.NODE_ENV': JSON.stringify(mode)
+```
+
 ## Running Locally
 
 To simulate your app within the XDN locally, run:
 
 ```
+
 xdn run
+
 ```
 
 To simulate edge caching locally, run:
 
 ```
+
 xdn run --cache
+
 ```
 
 To deploy your app to the XDN, run:
 
 ```
+
 xdn deploy
+
 ```
 
 See [deploying](deploying) for more information.

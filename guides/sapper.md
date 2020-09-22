@@ -4,7 +4,7 @@ This guide shows you how to deploy [Sapper](https://sapper.svelte.dev/) apps on 
 
 ## Install Node.js and npm
 
-__XDN only supports Node.js version 12 and higher__
+**XDN only supports Node.js version 12 and higher**
 
 If you do not have Node.js installed on your system, download and install it from official [Node.js downloads](https://nodejs.org/en/download/) page. Select the download labeled "LTS (Recommended For Most Users)" and that matches your operating system, and run the installer. Note that the installer for Node.js will also install npm.
 
@@ -39,6 +39,21 @@ This will automatically add all of the required dependencies and files to your p
 - The `@xdn/svelte` package - Provides a `Prefetch` component for prefetching pages
 - `xdn.config.js`
 - `routes.js` - A default routes file that sends all requests to Sapper. Update this file to add caching or proxy some URLs to a different origin.
+
+## Webpack
+
+Update your `webpack.config.js` to bundle all dependencies in the server build:
+
+```diff
+                output: config.server.output(),
+                target: 'node',
+                resolve: { alias, extensions, mainFields },
+-               externals: Object.keys(pkg.dependencies).concat('encoding'),
++               externals: ['encoding'],
+                module: {
+                        rules: [
+                                {
+```
 
 ## Running Locally
 

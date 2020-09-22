@@ -23,10 +23,7 @@ To enable a content security policy in report-only mode:
 
 ```js
 new Router().get('/:path*', ({ setResponseHeader }) => {
-  setResponseHeader(
-    'Content-Security-Policy-Report-Only',
-    "default-src 'self'
-  )
+  setResponseHeader('Content-Security-Policy-Report-Only', "default-src 'self'")
 })
 ```
 

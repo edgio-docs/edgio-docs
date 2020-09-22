@@ -68,6 +68,11 @@
         "href": "/guides/[...guide]"
       },
       {
+        "text": "Security",
+        "as": "/guides/security",
+        "href": "/guides/[...guide]"
+      },
+      {
         "text": "Logs",
         "as": "/guides/logs",
         "href": "/guides/[...guide]"

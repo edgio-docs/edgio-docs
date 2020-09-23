@@ -3,20 +3,9 @@ import React from 'react'
 import Head from 'next/head'
 import Nav from '../components/nav/Nav'
 import PageWrapper from '../components/PageWrapper'
-import {
-  Typography,
-  makeStyles,
-  Container,
-  Card,
-  CardContent,
-  Grid,
-  Paper,
-  CardActions,
-  CardActionArea,
-} from '@material-ui/core'
+import { Typography, makeStyles, Container, Grid, Paper } from '@material-ui/core'
 import Features from '../components/home/Features'
 import getBaseUrl from '../components/utils/getBaseUrl'
-import ApiLink from '../components/ApiLink'
 import Link from 'next/link'
 import ReactIcon from '../components/icons/react.svg'
 import ReactStorefrontIcon from '../components/icons/react-storefront.svg'
@@ -26,6 +15,7 @@ import AngularIcon from '../components/icons/angular.svg'
 import MoovwebXDN from '../components/icons/moovweb-xdn-black.svg'
 import SapperIcon from '../components/icons/sapper.svg'
 import GatsbyIcon from '../components/icons/gatsby.svg'
+import VSFIcon from '../components/icons/vsf.svg'
 import { icons } from '../components/icons/Icon'
 
 const SpartacusIcon = icons['spartacus']
@@ -127,30 +117,30 @@ const Home = ({ navData }) => {
               </Link>
             </Grid>
             <Grid item>
-              <Link href="/guides/[...guide]" as="/guides/react">
-                <Paper className={classes.framework} elevation={0}>
-                  <ReactIcon className={classes.icon} />
-                  <Typography className={classes.frameworkText}>Get started with React</Typography>
-                </Paper>
-              </Link>
-            </Grid>
-            <Grid item>
-              <Link href="/guides/[...guide]" as="/guides/react-storefront">
-                <Paper className={classes.framework} elevation={0}>
-                  <ReactStorefrontIcon className={classes.icon} />
-                  <Typography className={classes.frameworkText}>
-                    Get started with React Storefront
-                  </Typography>
-                </Paper>
-              </Link>
-            </Grid>
-            <Grid item>
               <Link href="/guides/[...guide]" as="/guides/nuxt">
                 <Paper className={classes.framework} elevation={0}>
                   <NuxtIcon className={classes.icon} />
                   <Typography className={classes.frameworkText}>
                     Get started with Nuxt.js
                   </Typography>
+                </Paper>
+              </Link>
+            </Grid>
+            <Grid item>
+              <Link href="/guides/[...guide]" as="/guides/vsf">
+                <Paper className={classes.framework} elevation={0}>
+                  <VSFIcon className={classes.icon} />
+                  <Typography className={classes.frameworkText}>
+                    Get started with Vue Storefront
+                  </Typography>
+                </Paper>
+              </Link>
+            </Grid>
+            <Grid item>
+              <Link href="/guides/[...guide]" as="/guides/react">
+                <Paper className={classes.framework} elevation={0}>
+                  <ReactIcon className={classes.icon} />
+                  <Typography className={classes.frameworkText}>Get started with React</Typography>
                 </Paper>
               </Link>
             </Grid>
@@ -165,11 +155,11 @@ const Home = ({ navData }) => {
               </Link>
             </Grid>
             <Grid item>
-              <Link href="/guides/[...guide]" as="/guides/spartacus">
+              <Link href="/guides/[...guide]" as="/guides/react-storefront">
                 <Paper className={classes.framework} elevation={0}>
-                  <SpartacusIcon className={classes.icon} style={{ height: 142, width: 142 }} />
+                  <ReactStorefrontIcon className={classes.icon} />
                   <Typography className={classes.frameworkText}>
-                    Get started with Spartacus
+                    Get started with React Storefront
                   </Typography>
                 </Paper>
               </Link>
@@ -187,6 +177,16 @@ const Home = ({ navData }) => {
                 <Paper className={classes.framework} elevation={0}>
                   <GatsbyIcon className={classes.icon} style={{ height: 142, width: 142 }} />
                   <Typography className={classes.frameworkText}>Get started with Gatsby</Typography>
+                </Paper>
+              </Link>
+            </Grid>
+            <Grid item>
+              <Link href="/guides/[...guide]" as="/guides/spartacus">
+                <Paper className={classes.framework} elevation={0}>
+                  <SpartacusIcon className={classes.icon} style={{ height: 142, width: 142 }} />
+                  <Typography className={classes.frameworkText}>
+                    Get started with Spartacus
+                  </Typography>
                 </Paper>
               </Link>
             </Grid>

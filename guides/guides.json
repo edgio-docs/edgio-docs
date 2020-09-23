@@ -144,6 +144,12 @@
         "icon": "gatsby",
         "as": "/guides/gatsby",
         "href": "/guides/[...guide]"
+      },
+      {
+        "text": "Vue Storefront",
+        "icon": "vsf",
+        "as": "/guides/vsf",
+        "href": "/guides/[...guide]"
       }
     ]
   },

@@ -102,7 +102,7 @@ XDN offers APIs to manipulate request and response headers and cookies. The APIs
 
 `*` Adding, updating and removing a request cookie can all be achieved with `updateRequestHeader` applied to `cookie` header.
 
-You can find detailed descriptions of these APIs at `@xdn/core` [documentation](/docs/api/core/classes/_router_responsewriter_.responsewriter.html)
+You can find detailed descriptions of these APIs in the `@xdn/core` [documentation](/docs/api/core/classes/_router_responsewriter_.responsewriter.html)
 
 #### Embedded values
 

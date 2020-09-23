@@ -12,7 +12,7 @@ When behind a third-party CDN, Moovweb XDN will analyze `x-forwarded-for` to cor
 
 ## Caching
 
-When XDN is behind a third-party CDN, we most strongly recommend that all caching on it be turned off. If you cannot do this for whatever reason, it is then your responsibility to purge the cache on XDN and only afterwards on CDN - in that exact order. Failing to do so will almost certainly lead to a situation where stale responses that you wanted to purge are served from XDN to your CDN and cached there as non-stale responses before XDN itself is purged (so-called cache poisoning)
+When the XDN is behind a third-party CDN, we strongly recommend that all caching on it be turned off. If you cannot do this for whatever reason, it is then your responsibility to purge the cache on XDN and only afterwards on CDN - in that exact order. Failing to do so will almost certainly lead to a situation where stale responses that you wanted to purge are served from the XDN to your CDN and cached there as non-stale responses before XDN itself is purged (so-called cache poisoning).
 
 Caching and traffic metrics are another area that is affected by CDN caching or any kind of traffic shaping where XDN no longer sees all the traffic that your site is serving. If downstream CDN is caching then perceived cache hit ration on XDN will be lower than it actually is (XDN would only see cache misses but never see cache hits). If downstream CDN is routing some traffic away from XDN, then the traffic metrics will be affected as XDN will only account the traffic that goes through it.
 

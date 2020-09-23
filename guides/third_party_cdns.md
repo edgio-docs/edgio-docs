@@ -18,7 +18,7 @@ Caching and traffic metrics are another area that is affected by CDN caching or 
 
 ## Access Logs
 
-Moovweb XDN access log continue to function normally but since they are not on the edge they may not be capturing all the traffic that is coming to your site.
+Moovweb XDN access logs continue to function normally but since they are not on the edge they may not include all of the traffic that comes to your site.
 
 ## Whitelisting
 

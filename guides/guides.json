@@ -88,6 +88,11 @@
         "href": "/guides/[...guide]"
       },
       {
+        "text": "Third party CDNs",
+        "as": "/guides/third_party_cdns",
+        "href": "/guides/[...guide]"
+      },
+      {
         "text": "Contributing",
         "as": "/guides/contributing",
         "href": "/guides/[...guide]"

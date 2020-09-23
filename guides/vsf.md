@@ -1,6 +1,6 @@
 # Vue Storefront
 
-## Getting Started
+Follow these steps to deploy a Vue Storefront app on the Moovweb XDN. As of now the XDN is only compatible with [Vue Storefront Next](https://github.com/DivanteLTD/vue-storefront#about-vue-storefront-next).
 
 ## Install Node.js and npm
 
@@ -93,6 +93,48 @@ build: webpack && {
 ### tsconfig.json
 
 In tsconfig.json, add `"sw"` to `exclude`.
+
+### routes.js
+
+Update the XDN router located in `packages/<platform>/theme/routes.js`:
+
+```js
+const { Router } = require('@xdn/core/router')
+const { nuxtRoutes, renderNuxtPage } = require('@xdn/nuxt')
+
+const HTML = {
+  edge: {
+    maxAgeSeconds: 60 * 60 * 24,
+    staleWhileRevalidateSeconds: 60 * 60 * 24,
+    forcePrivateCaching: true,
+  },
+  browser: false,
+}
+
+module.exports = new Router()
+  .match('/service-worker.js', ({ serviceWorker }) => {
+    serviceWorker('.nuxt/dist/client/service-worker.js')
+  })
+  .get('/', ({ cache }) => {
+    cache(HTML)
+  })
+  .get('/c/:id', ({ cache }) => {
+    cache(HTML)
+  })
+  .get('/p/:id', ({ cache }) => {
+    cache(HTML)
+  })
+  .use(nuxtRoutes)
+  .fallback(renderNuxtPage)
+```
+
+## Install additional webpack loaders
+
+Run the following in `packages/<platform>/theme`:
+
+```
+yarn add --dev  css-loader@^3.6.0 file-loader@^6.1.0 url-loader@^4.1.0 vue-loader@^15.9.3
+```
 
 ## Building and Deploying
 

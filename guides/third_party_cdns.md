@@ -10,7 +10,7 @@ Options to solve these all rely on different ways of configuring the third-party
 
 1. Add an HTTP to HTTPS redirect on the CDN rather than relying on XDN.
 2. Rewrite the `location` header on the CDN whenever you see a response from the XDN.
-3. Use XDN domain for IP resolution on the CDN but set the value for `host` to be the same as public facing domain. In this case XDN site has to be configured to accept requests with this header so that the reverse proxy works correctly.
+3. Use the XDN domain for IP resolution on the CDN but set the value for `host` to be the same as the public facing domain. In this case the XDN site has to be configured to accept requests with this header so that the reverse proxy works correctly.
 
 ## Split Testing
 

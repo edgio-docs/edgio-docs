@@ -9,7 +9,7 @@ The Moovweb XDN does not support HTTP traffic and has a built-in redirect to HTT
 Options to solve these all rely on different ways of configuring the third-party CDN:
 
 1. Add HTTP to HTTPS redirect on the CDN rather than relying on XDN.
-2. Rewrite `location` header on the CDN whenever you see response from XDN.
+2. Rewrite the `location` header on the CDN whenever you see a response from the XDN.
 3. Use XDN domain for IP resolution on the CDN but set the value for `host` to be the same as public facing domain. In this case XDN site has to be configured to accept requests with this header so that the reverse proxy works correctly.
 
 ## Split Testing

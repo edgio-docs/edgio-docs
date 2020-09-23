@@ -106,7 +106,7 @@ You can find detailed descriptions of these APIs in the `@xdn/core` [documentati
 
 #### Embedded values
 
-The values that ar used for adding or updating are template literals that into which you can embed values from requests and responses. Such values are all embedded by using `${value}` format.
+You can inject values from the request or response into headers or cookies as template literals using the `${value}` format. For example: `setResponseHeader('original-request-path', '${path}')` would add an `original-request-path` response header whose value is the request path.
 
 | Value           | Embedded value         | Description                                                          |
 |-----------------|------------------------|----------------------------------------------------------------------|

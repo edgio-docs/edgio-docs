@@ -100,7 +100,7 @@ XDN offers APIs to manipulate request and response headers and cookies. The APIs
 | Remove header | `removeRequestHeader`   | `removeUpstreamResponseHeader` | `removeResponseHeader` |
 | Remove cookie | `*`                     | `removeUpstreamResponseCookie` | `removeResponseCookie` |
 
-`*` Adding, updating and removing a request cookie can all be achieved with `updateRequestHeader` applied to `cookie` header.
+`*` Adding, updating, or removing a request cookie can be achieved with `updateRequestHeader` applied to `cookie` header.
 
 You can find detailed descriptions of these APIs in the `@xdn/core` [documentation](/docs/api/core/classes/_router_responsewriter_.responsewriter.html)
 

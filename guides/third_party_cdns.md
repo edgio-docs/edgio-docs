@@ -4,7 +4,7 @@ Moovweb XDN is designed and built to be the component of your site that your use
 
 ## Split Testing
 
-Moovweb XDN offers fully featured [split testing](/guides/split_testing) but when running behind another CDN, you must configure that CDN in a very [specific way](https://developer.moovweb.com/guides/split_testing#section_third_party_cdns)
+Moovweb XDN offers fully featured [split testing](/guides/split_testing) but when running behind another CDN, you must configure that CDN in a very [specific way](split_testing#section_third_party_cdns)
 
 ## IPs
 

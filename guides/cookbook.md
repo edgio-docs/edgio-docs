@@ -124,7 +124,7 @@ router.match({
   // The rest of your router...
 ```
 
-The rules for interpolating the values of request and response objects can be found in the [routing](/guides/routing#section_embedded_values) guide.
+The rules for interpolating the values of request and response objects can be found in the [routing](routing#section_embedded_values) guide.
 Note that catch-all routes that alter headers, cookies, or caching can be placed at the start of your router while allowing subsequent routes to run because they alter the request or the response without actually sending a response. See [route execution](/guides/routing#section_route_execution) for more information on route execution order and sending responses.
 ### Manipulating Cookies
 

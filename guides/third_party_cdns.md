@@ -8,7 +8,7 @@ Moovweb XDN offers fully featured [split testing](/guides/split_testing) but whe
 
 ## IPs
 
-When behind a third-party CDN, Moovweb XDN will analyze `x-forwarded-for` to correctly extract the client IP from it and inject it into `x-xdn-client-ip`. You can continue to use `x-xdn-client-ip` as you otherwise would.
+When behind a third-party CDN, Moovweb XDN will analyze `x-forwarded-for` to correctly extract the client IP from it and inject it into [`x-xdn-client-ip`](request_headers#section_general_headers). You can continue to use `x-xdn-client-ip` as you otherwise would.
 
 ## Caching
 

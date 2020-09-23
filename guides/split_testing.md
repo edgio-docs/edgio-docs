@@ -93,7 +93,7 @@ to send 100% of traffic to a specific destination.
 
 ## Third-Party CDNs
 
-If the XDN is behind a third party CDN, it is critical that you update the third party CDN to not cache responses from the XDN. This is extremely important when running a split test. If the third-party CDN caches responses from the XDN, users will likely receive a mix of content from both experiences in the split test, which can lead to a broken app and invalid split testing results.
+If the XDN is behind a third-party CDN, it is critical that you update the third party CDN to not cache responses from the XDN nor to affect any cookies that begin with `xdn_`. This is extremely important when running a split test. If the third-party CDN is not so configured, users will likely receive a mix of content from both experiences in the split test, which can lead to a broken app and invalid split testing results. See more information on running XDN behind third-party CDNs [here](third_party_cdns)
 
 ## How requests are routed
 

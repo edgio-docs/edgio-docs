@@ -103,9 +103,32 @@ router.get(
 )
 ```
 
+#### Altering all responses
+
+You can also write catch-all routes that will alter all responses. One example where this is useful is injecting [Content Security Policy](security#section_content_security_policy__csp_) headers.
+
+Another example is adding response headers for debugging, which is often useful if [XDN is behind another CDN](split_testing#section_third_party_cdns) or if you are troubleshooting your router rules. For example, you could respond with the value of request `x-forwarded-for` into `x-debug-xff` to see the value that XDN is receiving from the CDN:
+
+```js
+router.match({
+  path: '/:path*',
+  query: {
+    'my_site_debug': 'true',
+  }
+}, ({ setResponseHeader }) => {
+  setResponseHeader(
+    'x-debug-xff',
+    '${req:x-forwarded-for}',
+  )
+})
+  // The rest of your router...
+```
+
+The rules for interpolating the values of request and response objects can be found in the [routing](routing#section_embedded_values) guide.
+Note that catch-all routes that alter headers, cookies, or caching can be placed at the start of your router while allowing subsequent routes to run because they alter the request or the response without actually sending a response. See [route execution](/guides/routing#section_route_execution) for more information on route execution order and sending responses.
 ### Manipulating Cookies
 
-You can manipulate cookies before they are sent to the browser using cookie response API calls like [`addResponseCookie`](https://developer.moovweb.com/docs/api/core/classes/_router_responsewriter_.responsewriter.html#addresponsecookie):
+You can manipulate cookies before they are sent to the browser using cookie response API calls like [`addResponseCookie`](/docs/api/core/classes/_router_responsewriter_.responsewriter.html#addresponsecookie):
 
 ```js
 router.get('/some/path', ({

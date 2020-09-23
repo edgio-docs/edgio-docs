@@ -105,7 +105,7 @@ router.get(
 
 #### Altering all responses
 
-You can also write catch-all route that will then alter all the responses. One example where this is useful would be injecting [Content Security Policy](/guides/security#section_content_security_policy__csp_).
+You can also write catch-all routes that will alter all responses. One example where this is useful is injecting [Content Security Policy](security#section_content_security_policy__csp_) headers.
 
 Another example is adding response headers for debugging, which is often useful if [XDN is behind another CDN](/guides/split_testing#section_third_party_cdns) or if you are troubleshooting your router rules. For example, you could respond with the value of request `x-forwarded-for` into `x-debug-xff` to see the value that XDN is receiving from the CDN:
 

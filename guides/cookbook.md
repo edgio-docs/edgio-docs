@@ -128,7 +128,7 @@ The rules for interpolating the values of request and response objects can be fo
 Note that catch-all routes that alter headers, cookies, or caching can be placed at the start of your router while allowing subsequent routes to run because they alter the request or the response without actually sending a response. See [route execution](/guides/routing#section_route_execution) for more information on route execution order and sending responses.
 ### Manipulating Cookies
 
-You can manipulate cookies before they are sent to the browser using cookie response API calls like [`addResponseCookie`](https://developer.moovweb.com/docs/api/core/classes/_router_responsewriter_.responsewriter.html#addresponsecookie):
+You can manipulate cookies before they are sent to the browser using cookie response API calls like [`addResponseCookie`](/docs/api/core/classes/_router_responsewriter_.responsewriter.html#addresponsecookie):
 
 ```js
 router.get('/some/path', ({

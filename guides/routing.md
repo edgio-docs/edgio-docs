@@ -87,6 +87,36 @@ new Router()
   .use(nextRoutes)
 ```
 
+### Altering requests and responses
+
+XDN offers APIs to manipulate request and response headers and cookies. The APIs are:
+
+| Operation     | Request                 | Upstream Response              | XDN Response           |
+|---------------|-------------------------|--------------------------------|------------------------|
+| Set header    | `setRequestHeader`      | `setUpstreamResponseHeader`    | `setResponseHeader`    |
+| Add cookie    | `*`                     | `addUpstreamResponseCookie`    | `addResponseCookie`    |
+| Update header | `updateRequestHeader`   | `updateUpstreamResponseHeader` | `updateResponseHeader` |
+| Update cookie | `*`                     | `updateUpstreamResponseCookie` | `updateResponseCookie` |
+| Remove header | `removeRequestHeader`   | `removeUpstreamResponseHeader` | `removeResponseHeader` |
+| Remove cookie | `*`                     | `removeUpstreamResponseCookie` | `removeResponseCookie` |
+
+`*` Adding, updating and removing a request cookie can all be achieved with `updateRequestHeader` applied to `cookie` header.
+
+You can find detailed descriptions of these APIs at `@xdn/core` [documentation](/docs/api/core/classes/_router_responsewriter_.responsewriter.html)
+
+#### Embedded values
+
+The values that ar used for adding or updating are template literals that into which you can embed values from requests and responses. Such values are all embedded by using `${value}` format.
+
+| Value           | Embedded value         | Description                                                          |
+|-----------------|------------------------|----------------------------------------------------------------------|
+| HTTP method     | `${method}`            | The value of HTTP method used for the request (e.g. `GET`)           |
+| URL             | `${url}`               | The complete URL path including any query strings.                   |
+| Path            | `${path}`              | The URL path excluding any query strings.                            |
+| Query string    | `${query:<name>}`      | The value of the `<name>` query string or empty if not available.    |
+| Request header  | `${req:<name>}`        | The value of the `<name>` request header or empty if not available.  |
+| Response header | `${res:<name>}`        | The value of the `<name>` response header or empty if not available. |
+
 ## Route Pattern Syntax
 
 The syntax for route paths is provided by [path-to-regexp](https://github.com/pillarjs/path-to-regexp#path-to-regexp), which is the same library used by [Express](https://expressjs.com/).

@@ -18,8 +18,8 @@ The format is `x-xdn-t: <id>=<time>[,<id2>=<time2>...]`
 
 The components are:
 
-- Level 1 CDN POP = `o`
-- Level 2 CDN POP = `s`
+- Level 1 XDN POP = `o`
+- Level 2 XDN POP = `s`
 - Custom Moovweb Proxy = `p`
 - JavaScript Compute Workers = `w`
 

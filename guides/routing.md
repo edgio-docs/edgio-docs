@@ -91,7 +91,7 @@ new Router()
 
 XDN offers APIs to manipulate request and response headers and cookies. The APIs are:
 
-| Operation     | Request                 | Upstream Response              | XDN Response           |
+| Operation     | Request                 | Upstream Response              | Response sent to Browser          |
 |---------------|-------------------------|--------------------------------|------------------------|
 | Set header    | `setRequestHeader`      | `setUpstreamResponseHeader`    | `setResponseHeader`    |
 | Add cookie    | `*`                     | `addUpstreamResponseCookie`    | `addResponseCookie`    |

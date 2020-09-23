@@ -1,6 +1,6 @@
 # Third Party CDNs
 
-Moovweb XDN is designed and built to be the component of your site that your users will directly connect to from their devices. Such components are colloquially known as "edge components". But sometimes you may prefer, usually not due to technical reasons, to run XDN behind a third-party CDN. XDN fully supports this use case but it's important to call out some common pitfals with this kind of network topology.
+Moovweb XDN is designed and built to be the component of your site to which your users will directly connect to from their devices. Such components are colloquially known as "edge components". But sometimes you may prefer to run the XDN behind a third-party CDN due to a preexisting contract. The XDN fully supports this use case but it's important to call out some common pitfalls with this kind of network topology.
 
 ## HTTP traffic
 

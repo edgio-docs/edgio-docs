@@ -110,7 +110,7 @@ The values that ar used for adding or updating are template literals that into w
 
 | Value           | Embedded value         | Description                                                          |
 |-----------------|------------------------|----------------------------------------------------------------------|
-| HTTP method     | `${method}`            | The value of HTTP method used for the request (e.g. `GET`)           |
+| HTTP method     | `${method}`            | The value of the HTTP method used for the request (e.g. `GET`)           |
 | URL             | `${url}`               | The complete URL path including any query strings.                   |
 | Path            | `${path}`              | The URL path excluding any query strings.                            |
 | Query string    | `${query:<name>}`      | The value of the `<name>` query string or empty if not available.    |

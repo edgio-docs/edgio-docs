@@ -2,6 +2,16 @@
 
 Moovweb XDN is designed and built to be the component of your site that your users will directly connect to from their devices. Such components are colloquially known as "edge components". But sometimes you may prefer, usually not due to technical reasons, to run XDN behind a third-party CDN. XDN fully supports this use case but it's important to call out some common pitfals with this kind of network topology.
 
+## HTTP traffic
+
+Moovweb XDN does not support HTTP traffic and has a built-in redirect to HTTPS. That redirect relies on the value of `host` request header in order to form the value of `location` response header (e.g. `host` value of `developer.moovweb.com` will result in `location` value of `https://developer.moovweb.com`). When a third-party CDN is in front of XDN, the `host` header is not the public facing domain but rather then XDN domain to which downstream CDN is routing traffic. If downstream CDN allows HTTP traffic to reach XDN then XDN will respond with incorrect value in `location` response header.
+
+Options to solve these all rely on different ways of configuring the third-party CDN:
+
+1. Add HTTP to HTTPS redirect on the CDN rather than relying on XDN.
+2. Rewrite `location` header on the CDN whenever you see response from XDN.
+3. Use XDN domain for IP resolution on the CDN but set the value for `host` to be the same as public facing domain. In this case XDN site has to be configured to accept requests with this header so that the reverse proxy works correctly.
+
 ## Split Testing
 
 Moovweb XDN offers fully featured [split testing](/guides/split_testing) but when running behind another CDN, you must configure that CDN in a very [specific way](https://developer.moovweb.com/guides/split_testing#section_third_party_cdns)

@@ -262,8 +262,8 @@ router.get('/p/:productId', ({ redirect, compute, cache }) => {
 This example redirects all traffic from www.mysite.com to mysite.com. It should be placed at the top of your router:
 
 ```js
-router.match({ headers: { host: /^www\.mysite\.com$/ } }, ({ redirect }) => {
-  redirect('https://mysite.com')
+router.match({ headers: { host: /^www\.mysite\.com$/, path: '/:path*' } }, ({ redirect }) => {
+  redirect('https://mysite.com/:path*')
 })
 ```
 

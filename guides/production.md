@@ -27,31 +27,33 @@ On the "Networking" tab for your environment you can find the DNS and whitelisti
 
 In order to configure your DNS provider to direct traffic for a particular set of domains to the Moovweb XDN, you will have to create DNS records with values depending on the type of domain you are using for your website. If you are launching a brand new site then you can set this up whenever you feel ready. For sites that are already live, the DNS update is the last step. Once you have updated your DNS you are committed to launching.
 
-# Using a sub-domain (i.e. www.mywebsite.xyz):
+#### Using a sub-domain (i.e. www.mywebsite.xyz):
 
-To host your site on a subdomain, add a CNAME record with the value shown under _DNS Configuration_ (see above).
+To host your site on a subdomain, add a `CNAME` record with the value shown under _DNS Configuration_ (see above).
 
-    ```
-    ; <<>> DiG 9.10.6 <<>> www.mywebsite.xyz
-    ;; ANSWER SECTION:
-    www.mywebsite.xyz.   599    IN    CNAME    d12ea738-71b3-25e8-c771-6fdd3f6bd8ba.moovweb-edge.io.
-    ```
-# Using an apex domain (i.e. mywebsite.xyz):
+```
+; <<>> DiG 9.10.6 <<>> www.mywebsite.xyz
+;; ANSWER SECTION:
+www.mywebsite.xyz.   599    IN    CNAME    d12ea738-71b3-25e8-c771-6fdd3f6bd8ba.moovweb-edge.io.
+```
+
+#### Using an apex domain (i.e. mywebsite.xyz):
 
 To host your site on the apex domain, create multiple `A` records on your apex domain, with the following Anycast IP Addresses values: 151.101.1.79, 151.101.65.79, 151.101.129.79, 151.101.193.79.
 
-    ```
-    ; <<>> DiG 9.10.6 <<>> mywebsite.xyz
-    ;; ANSWER SECTION:
-    mywebsite.xyz.        599    IN    A        151.101.1.79
-    mywebsite.xyz.        599    IN    A        151.101.65.79
-    mywebsite.xyz.        599    IN    A        151.101.129.79
-    mywebsite.xyz.        599    IN    A        151.101.193.79
-    ```
-# Using both an apex domain and a sub-domain (i.e. mywebsite.xyz and www.mywebsite.xyz):
+```
+; <<>> DiG 9.10.6 <<>> mywebsite.xyz
+;; ANSWER SECTION:
+mywebsite.xyz.        599    IN    A        151.101.1.79
+mywebsite.xyz.        599    IN    A        151.101.65.79
+mywebsite.xyz.        599    IN    A        151.101.129.79
+mywebsite.xyz.        599    IN    A        151.101.193.79
+```
 
-- Create the multiple A records with the IPs, on your apex domain (see above).
-- Create a CNAME record for your sub-domain, with the value of your apex domain.
+#### Using both an apex domain and a sub-domain (i.e. mywebsite.xyz and www.mywebsite.xyz):
+
+- Create the multiple `A` records with the IPs, on your apex domain (see above).
+- Create a `CNAME` record for your sub-domain, with the value of your apex domain.
 
     ```
     ; <<>> DiG 9.10.6 <<>> www.mywebsite.xyz

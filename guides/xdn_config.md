@@ -61,7 +61,7 @@ includeFiles: {
 },
 ```
 
-or if you need to copy into a specific directory within the XDN build
+or if you need to copy into a specific directory within the XDN build:
 
 ```js
 includeFiles: {

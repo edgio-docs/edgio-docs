@@ -48,3 +48,23 @@ export default function(req, res) {
 ## includeNodeModules
 
 If `true`, the packages listed in the `dependencies` property of `package.json` will be included in the build that is deployed to the Moovweb XDN.
+
+## includeFiles
+
+Allows you to include additional resources in the bundle that is deployed to the Moovweb XDN's serverless JS workers. Keys are [globs](https://www.npmjs.com/package/glob), value can be a boolean or string. This is typically used to ensure that resources that need to be dynamically required at runtime such as build manifests for server-side rendering or other config files are present in the cloud.
+
+** Examples **
+
+```js
+includeFiles: {
+  'lang/**/*': true,
+},
+```
+
+or if you need to copy into a specific directory within the XDN build:
+
+```js
+includeFiles: {
+  'lang/**/*': 'another/dir/in/xdn/lambda',
+},
+```

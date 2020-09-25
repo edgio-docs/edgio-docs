@@ -48,3 +48,23 @@ export default function(req, res) {
 ## includeNodeModules
 
 If `true`, the packages listed in the `dependencies` property of `package.json` will be included in the build that is deployed to the Moovweb XDN.
+
+## includeFiles
+
+Allows you to define an object of [globs](https://www.npmjs.com/package/glob) which will be included in the build that is deployed to the Moovweb XDN.
+
+** Examples **
+
+```js
+includeFiles: {
+  'lang/**/*': true,
+},
+```
+
+or if you need to copy into a specific directory within the XDN build
+
+```js
+includeFiles: {
+  'lang/**/*': 'another/dir/in/xdn/lambda',
+},
+```

@@ -19,7 +19,7 @@ Moovweb XDN offers fully featured [split testing](/guides/split_testing). When X
 1. Downstream CDN must be configured to not [cache](#section_caching) anything.
 2. The CDN must be configured to not affect any cookies that begin with [`xdn_`](split_testing#section_how_requests_are_routed).
 
-Unless these conditions are met, the users will almost certainly receieve a mix of content from both xperiences in the split test, which can lead to a broken app and invalid split testing results.
+Unless these conditions are met, the users will almost certainly receive a mix of content from both experiences in the split test, which can lead to a broken app and invalid split testing results.
 
 ## Caching
 

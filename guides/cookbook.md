@@ -155,7 +155,7 @@ router.get('/some/path', ({
 })
 ```
 
-### Proxying to different backends based on different host name
+### Proxying to different backends based on different host names
 
 To proxy to different backends by matching the `host` header (e.g. different backends for different international sites):
 

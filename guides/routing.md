@@ -111,7 +111,7 @@ You can inject values from the request or response into headers or cookies as te
 | Value           | Embedded value         | Description                                                                            |
 |-----------------|------------------------|----------------------------------------------------------------------------------------|
 | HTTP method     | `${method}`            | The value of the HTTP method used for the request (e.g. `GET`)                         |
-| URL             | `${url}`               | The complete URL path including any query strings (e.g. `/search?query=docs`)          |
+| URL             | `${url}`               | The complete URL path including any query strings (e.g. `/search?query=docs`). Protocol, hostname, and port are not included.          |
 | Path            | `${path}`              | The URL path excluding any query strings (e.g. `/search`)                              |
 | Query string    | `${query:<name>}`      | The value of the `<name>` query string or empty if not available.                      |
 | Request header  | `${req:<name>}`        | The value of the `<name>` request header or empty if not available.                    |

@@ -51,7 +51,7 @@ If `true`, the packages listed in the `dependencies` property of `package.json` 
 
 ## includeFiles
 
-Allows you to define an object of [globs](https://www.npmjs.com/package/glob) which will be included in the build that is deployed to the Moovweb XDN.
+Allows you to include additional resources in the bundle that is deployed to the Moovweb XDN's serverless JS workers. Keys are [globs](https://www.npmjs.com/package/glob), value can be a boolean or string. This is typically used to ensure that resources that need to be dynamically required at runtime such as build manifests for server-side rendering or other config files are present in the cloud.
 
 ** Examples **
 

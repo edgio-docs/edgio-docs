@@ -31,7 +31,7 @@ In order to configure your DNS provider to direct traffic for a particular set o
 
 To host your site on a subdomain, add a CNAME record with the value shown under _DNS Configuration_ (see above).
 
-    ```DNS Setup 1
+    ```
     ; <<>> DiG 9.10.6 <<>> www.mywebsite.xyz
     ;; ANSWER SECTION:
     www.mywebsite.xyz.   599    IN    CNAME    d12ea738-71b3-25e8-c771-6fdd3f6bd8ba.moovweb-edge.io.
@@ -40,7 +40,7 @@ To host your site on a subdomain, add a CNAME record with the value shown under 
 
 To host your site on the apex domain, create multiple `A` records on your apex domain, with the following Anycast IP Addresses values: 151.101.1.79, 151.101.65.79, 151.101.129.79, 151.101.193.79.
 
-    ```DNS Setup 2
+    ```
     ; <<>> DiG 9.10.6 <<>> mywebsite.xyz
     ;; ANSWER SECTION:
     mywebsite.xyz.        599    IN    A        151.101.1.79
@@ -48,11 +48,12 @@ To host your site on the apex domain, create multiple `A` records on your apex d
     mywebsite.xyz.        599    IN    A        151.101.129.79
     mywebsite.xyz.        599    IN    A        151.101.193.79
     ```
-Setup 3 - If you are using both an apex domain and a sub-domain (i.e. mywebsite.xyz and www.mywebsite.xyz):
+# Using both an apex domain and a sub-domain (i.e. mywebsite.xyz and www.mywebsite.xyz):
+
 - Create the multiple A records with the IPs, on your apex domain (see above).
 - Create a CNAME record for your sub-domain, with the value of your apex domain.
 
-    ```DNS Setup 3
+    ```
     ; <<>> DiG 9.10.6 <<>> www.mywebsite.xyz
     ;; ANSWER SECTION:
     www.mywebsite.xyz.    599    IN    CNAME.   mywebsite.xyz.

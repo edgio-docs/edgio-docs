@@ -293,55 +293,40 @@ new DeepFetchPlugin([
 ])
 ```
 
-The `jsonQuery` syntax is provided by the [json-query](https://github.com/auditassistant/json-query) library.
+The `jsonQuery` syntax is provided by the [json-query](https://github.com/auditassistant/json-query) library. You can test your JSON queries using their [JSON-query Tester Sandbox](https://maxleiko.github.io/json-query-tester/).
 
 ### Prefetching POSTs
 
 Most assets that need to be prefetched are HTTP GET requests. It is also possible to prefetch POST requests with some additional configuration.
 
-When your app prefetches assets, the actual prefetch request is always a GET, so you need to make sure that your router is configured to respond to GET requests for any POST URL. In order to ensure that the response is cached as a POST by the service worker, you need to specify `asMethod: 'post'` in the cache config, but specify the POST requests as GETs:
+When your app prefetches assets, the actual prefetch request is always a GET, so you need to make sure that your router is configured to respond to GET requests for any POST URL. In order to ensure that the response is cached as a POST by the service worker, you need to specify `convertToGet: true` in the cache config for the prefetch route handler, and to also use the `transformMethod` function to properly transform the GET request into a POST on the server:
 
 ```js
-import { POST_BODY_QUERY_PARAM, PREFETCH_HEADERS_QUERY_PARAM } from '@xdn/core/constants'
+import { transformMethod } from '@xdn/core/transform'
 
-const cacheConfig = {
+const postCacheConfig = {
   edge: {
     maxAgeSeconds: 60 * 60 * 24,
+    staleWhileRevalidateSeconds: 60 * 60,
   },
   browser: {
-    maxAgeSeconds: 0,
     serviceWorkerSeconds: 60 * 60 * 24,
-    asMethod: 'post'
+    convertToGet: true,
   },
 }
 
 export default new Router()
+  // When the request is a GET, convert it to post using serverless compute and cache the result
   .get('/some-post-path', ({ cache, proxy }) => {
-    cache(cacheConfig)
-    // proxy the request to the origin as a post
+    cache(postCacheConfig)
     proxy('origin', {
-      transformRequest: request => {
-        if (request.method === 'get') {
-          const url = new URL(`http://dummy.com${request.url}`)
-
-          // convert the request to a post
-          request.method = 'post'
-
-          // get the post body from body query param
-          request.body = url.searchParams.get(POST_BODY_QUERY_PARAM) || ''
-
-          // optionally add headers like { content-type: 'application/json' } to the
-          // request from the headers query param:
-          const headers = JSON.parse(url.searchParams.get(PREFETCH_HEADERS_QUERY_PARAM) || '{}')
-          Object.keys(headers).forEach(key => (request.headers[key] = headers[key]))
-
-          // remove body and headers from the URL
-          url.searchParams.delete(POST_BODY_QUERY_PARAM)
-          url.searchParams.delete(PREFETCH_HEADERS_QUERY_PARAM)
-          request.url = url.pathname + url.search
-        }
-      },
+      transformRequest: transformMethod('post'),
     })
+  })
+  // When the request is a POST, forward it to origin from the edge without using serverless compute
+  .post('/some-post-path', ({ cache, proxy }) => {
+    cache(postCacheConfig)
+    proxy('origin')
   })
 ```
 

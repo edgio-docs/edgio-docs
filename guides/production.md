@@ -36,8 +36,9 @@ To host your site on a subdomain, add a CNAME record with the value shown under 
     ;; ANSWER SECTION:
     www.mywebsite.xyz.   599    IN    CNAME    d12ea738-71b3-25e8-c771-6fdd3f6bd8ba.moovweb-edge.io.
     ```
-Setup 2 - If you are only using an apex domain (i.e. mywebsite.xyz):
-- Create multiple A records on your apex domain, with the following Anycast IP Addresses values: 151.101.1.79, 151.101.65.79, 151.101.129.79, 151.101.193.79.
+Using an apex domain (i.e. mywebsite.xyz):
+
+To host your site on the apex domain, create multiple `A` records on your apex domain, with the following Anycast IP Addresses values: 151.101.1.79, 151.101.65.79, 151.101.129.79, 151.101.193.79.
 
     ```DNS Setup 2
     ; <<>> DiG 9.10.6 <<>> mywebsite.xyz

@@ -27,7 +27,7 @@ On the "Networking" tab for your environment you can find the DNS and whitelisti
 
 In order to configure your DNS provider to direct traffic for a particular set of domains to the Moovweb XDN, you will have to create DNS records with values depending on the type of domain you are using for your website. If you are launching a brand new site then you can set this up whenever you feel ready. For sites that are already live, the DNS update is the last step. Once you have updated your DNS you are committed to launching.
 
-Setup 1 - If you are only using a sub-domain (i.e. www.mywebsite.xyz):
+# Using a sub-domain (i.e. www.mywebsite.xyz):
 - Create a CNAME record with the value shown under _DNS Configuration_ (see above).
 
     ```DNS Setup 1

@@ -17,6 +17,13 @@ To configure your custom domains:
 
 ![domains](/images/production/domains.png)
 
+### Migrating from Fastly
+
+If you're migrating to the XDN from [Fastly](https://www.fastly.com/), you will need to do the following before adding your domains to your XDN environment:
+
+- [Contact Fastly support](https://support.fastly.com/hc/en-us/requests/new?ticket_form_id=360000269711) and request that control of your domains be transferred to Moovweb. Be sure to explicitly list each domain that needs to transferred and ask Fastly to contact xdn-support(at)moovweb.com if they need Moovweb to confirm the transfer.
+- Before going live with the XDN, you will need to ensure that you've removed your domains from all active Fastly services. To remove domains from a service, clone the service, remove the domains, then activate the new version of the service. Once the new service version is activated you can add the domains to your XDN environment and activate it.
+
 ## Network configuration
 
 On the "Networking" tab for your environment you can find the DNS and whitelisting IP configurations.
@@ -55,15 +62,15 @@ mywebsite.xyz.        599    IN    A        151.101.193.79
 - Create the multiple `A` records with the IPs, on your apex domain (see above).
 - Create a `CNAME` record for your sub-domain, with the value of your apex domain.
 
-    ```
-    ; <<>> DiG 9.10.6 <<>> www.mywebsite.xyz
-    ;; ANSWER SECTION:
-    www.mywebsite.xyz.    599    IN    CNAME.   mywebsite.xyz.
-    mywebsite.xyz.        599    IN    A        151.101.1.79
-    mywebsite.xyz.        599    IN    A        151.101.65.79
-    mywebsite.xyz.        599    IN    A        151.101.129.79
-    mywebsite.xyz.        599    IN    A        151.101.193.79
-    ```
+  ```
+  ; <<>> DiG 9.10.6 <<>> www.mywebsite.xyz
+  ;; ANSWER SECTION:
+  www.mywebsite.xyz.    599    IN    CNAME.   mywebsite.xyz.
+  mywebsite.xyz.        599    IN    A        151.101.1.79
+  mywebsite.xyz.        599    IN    A        151.101.65.79
+  mywebsite.xyz.        599    IN    A        151.101.129.79
+  mywebsite.xyz.        599    IN    A        151.101.193.79
+  ```
 
 ### Whitelisting XDN IP Addresses
 

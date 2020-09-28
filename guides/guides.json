@@ -209,6 +209,11 @@
         "href": "/guides/[...guide]"
       },
       {
+        "text": "Cookies",
+        "as": "/guides/cookies",
+        "href": "/guides/[...guide]"
+      },
+      {
         "text": "REST API",
         "as": "/guides/rest_api",
         "href": "/guides/[...guide]"

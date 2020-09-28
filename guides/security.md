@@ -11,24 +11,22 @@ You can easily add CSP headers to your site via a catch-all route near the top o
 To enforce a content security policy:
 
 ```js
-new Router()
-  .match('/:path*', ({ setResponseHeader }) => {
-    setResponseHeader(
-      'Content-Security-Policy',
-      "default-src 'self'; report-uri http://reportcollector.example.com/collector.cgi",
-    )
-  })
-  // The rest of your router...
+new Router().match('/:path*', ({ setResponseHeader }) => {
+  setResponseHeader(
+    'Content-Security-Policy',
+    "default-src 'self'; report-uri http://reportcollector.example.com/collector.cgi",
+  )
+})
+// The rest of your router...
 ```
 
 To enable a content security policy in report-only mode:
 
 ```js
-new Router()
-  .match('/:path*', ({ setResponseHeader }) => {
-    setResponseHeader('Content-Security-Policy-Report-Only', "default-src 'self'")
-  })
-  // The rest of your router...
+new Router().match('/:path*', ({ setResponseHeader }) => {
+  setResponseHeader('Content-Security-Policy-Report-Only', "default-src 'self'")
+})
+// The rest of your router...
 ```
 
 ## Enabling Basic Authentication
@@ -57,15 +55,3 @@ store them in environment variables, then access them in your code from `process
 navigate to your environment, click _EDIT_, then under _Environment Variables_, click _ADD VARIABLE_.
 
 ![networking](/images/security/environment-variables.png)
-
-## Putting your site behind basic auth
-
-If you would like to protect your site behind [HTTP Basic authentication](https://developer.mozilla.org/en-US/docs/Web/HTTP/Authentication) schema, you can respond with a challenge per [environment](environments) (note reading user and password from the environment):
-
-```js
-new Router()
-  .requireBasicAuth({ 
-    username: process.env.BASIC_AUTH_USERNAME, 
-    password: process.env.BASIC_AUTH_PASSWORD 
-  })
-  // ... the rest of your router...

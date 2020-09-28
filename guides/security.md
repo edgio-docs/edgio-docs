@@ -31,6 +31,21 @@ new Router()
   // The rest of your router...
 ```
 
+## Enabling Basic Authentication
+
+You can add basic authentication to your site using the `requireBasicAuth` router method. For example, add the following to the
+top of your router:
+
+```js
+router.requireBasicAuth({
+  username: process.env.BASIC_AUTH_USERNAME,
+  password: process.env.BASIC_AUTH_PASSWORD,
+})
+```
+
+Then, add `BASIC_AUTH_USERNAME` and `BASIC_AUTH_PASSWORD` environment variables to each environment that should enforce basic authentication. Any environment without those
+environment variables will not enforce basic authentication.
+
 ## SSL
 
 The Moovweb XDN only accepts traffic over `https`. It automatically redirects `http` requests to the same URL, including any query strings, on `https`.

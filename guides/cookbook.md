@@ -155,6 +155,35 @@ router.get('/some/path', ({
 })
 ```
 
+### Proxying to different backends based on different host names
+
+To proxy to different backends by matching the `host` header (e.g. different backends for different international sites):
+
+```js
+router
+  .match({
+    path: '/:path*',
+    headers: {
+      host: 'yoursite.c1'
+    }
+  }, ({ proxy }) => {
+    proxy('country1-backend')
+  })
+  .match({
+    path: '/:path*',
+    headers: {
+      host: 'yoursite.c2'
+    }
+  }, ({ proxy }) => {
+    proxy('country2-backend')
+  })
+  .match({
+    path: '/:path*',
+  }, ({ proxy }) => {
+    proxy('everybody-else-backend')
+  })
+```
+
 ## Serving a static file
 
 To serve a specific file use the [`serveStatic`](https://developer.moovweb.com/docs/api/core/classes/_router_responsewriter_.responsewriter.html#servestatic) API:

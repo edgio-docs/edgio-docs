@@ -93,11 +93,11 @@ to send 100% of traffic to a specific destination.
 
 ## Third-Party CDNs
 
-If the XDN is behind a third-party CDN, it is critical that you update the third party CDN to not cache responses from the XDN nor to affect any cookies that begin with `xdn_`. This is extremely important when running a split test. If the third-party CDN is not so configured, users will likely receive a mix of content from both experiences in the split test, which can lead to a broken app and invalid split testing results. See more information on running XDN behind third-party CDNs [here](third_party_cdns)
+If the XDN is behind a third-party CDN, it is critical that you update the third party CDN to not cache responses from the XDN nor to affect any cookies that begin with `xdn_`. You can find more details [here](third_party_cdns#section_split_testing).
 
 ## How requests are routed
 
-When a split test is active, all users are assigned to a random number between 0 and 99 via a cookie called `xdn_bucket`. This cookie assignment is done at edge, before the user's first request hits cache, and so there is no performance penalty for new users.
+When a split test is active, all users are assigned to a random number between 1 and 100 via a cookie called `xdn_bucket`. This cookie assignment is done at edge, before the user's first request hits cache, and so there is no performance penalty for new users.
 
 The experience the user sees is determined by the traffic split percentage you set in the environment configuration in the Moovweb Developer Console and on which side of the split the user's `xdn_bucket` value falls.
 

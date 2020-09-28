@@ -108,14 +108,15 @@ You can find detailed descriptions of these APIs in the `@xdn/core` [documentati
 
 You can inject values from the request or response into headers or cookies as template literals using the `${value}` format. For example: `setResponseHeader('original-request-path', '${path}')` would add an `original-request-path` response header whose value is the request path.
 
-| Value           | Embedded value         | Description                                                          |
-|-----------------|------------------------|----------------------------------------------------------------------|
-| HTTP method     | `${method}`            | The value of the HTTP method used for the request (e.g. `GET`)           |
-| URL             | `${url}`               | The complete URL path including any query strings.                   |
-| Path            | `${path}`              | The URL path excluding any query strings.                            |
-| Query string    | `${query:<name>}`      | The value of the `<name>` query string or empty if not available.    |
-| Request header  | `${req:<name>}`        | The value of the `<name>` request header or empty if not available.  |
-| Response header | `${res:<name>}`        | The value of the `<name>` response header or empty if not available. |
+| Value           | Embedded value         | Description                                                                            |
+|-----------------|------------------------|----------------------------------------------------------------------------------------|
+| HTTP method     | `${method}`            | The value of the HTTP method used for the request (e.g. `GET`)                         |
+| URL             | `${url}`               | The complete URL path including any query strings (e.g. `/search?query=docs`). Protocol, hostname, and port are not included.          |
+| Path            | `${path}`              | The URL path excluding any query strings (e.g. `/search`)                              |
+| Query string    | `${query:<name>}`      | The value of the `<name>` query string or empty if not available.                      |
+| Request header  | `${req:<name>}`        | The value of the `<name>` request header or empty if not available.                    |
+| Request cookie  | `${req:cookie:<name>}` | The value of the `<name>` cookie in `cookie` request header or empty if not available. |
+| Response header | `${res:<name>}`        | The value of the `<name>` response header or empty if not available.                   |
 
 ## Route Pattern Syntax
 

@@ -1,4 +1,4 @@
-## Security
+# Security
 
 This guide shows you how to keep your site secure using the Moovweb XDN.
 
@@ -17,6 +17,7 @@ new Router().match('/:path*', ({ setResponseHeader }) => {
     "default-src 'self'; report-uri http://reportcollector.example.com/collector.cgi",
   )
 })
+// The rest of your router...
 ```
 
 To enable a content security policy in report-only mode:
@@ -25,6 +26,7 @@ To enable a content security policy in report-only mode:
 new Router().match('/:path*', ({ setResponseHeader }) => {
   setResponseHeader('Content-Security-Policy-Report-Only', "default-src 'self'")
 })
+// The rest of your router...
 ```
 
 ## Enabling Basic Authentication
@@ -44,7 +46,7 @@ environment variables will not enforce basic authentication.
 
 ## SSL
 
-The Moovweb XDN only accepts traffic over `https`. It automatically redirects `http` requests to the same URL on `https`.
+The Moovweb XDN only accepts traffic over `https`. It automatically redirects `http` requests to the same URL, including any query strings, on `https`.
 
 ## Secrets
 

@@ -54,3 +54,25 @@ new Router()
     password: process.env.BASIC_AUTH_PASSWORD 
   })
   // ... the rest of your router...
+```
+
+## Cache poisoning
+
+[Cache poisoning attack](https://owasp.org/www-community/attacks/Cache_Poisoning) is described by OWASP as:
+
+> The impact of a maliciously constructed response can be magnified if it is cached either by a web cache used by multiple users or even the browser cache of a single user. If a response is cached in a shared web cache, such as those commonly found in proxy servers, then all users of that cache will continue to receive the malicious content until the cache entry is purged.
+
+To guard against this attack you must ensure that all the request parameters that influence the rendering of the content are part of your [custom cache key](caching#section_customizing_the_cache_key). XDN will [automatically include](caching#section_cache_key) `host` header and URL but including other request headers and cookies are your responsibility.
+
+For example, if you are rendering content based on a custom language cookie, then you must include it in your custom cache key:
+
+```js
+import { CustomCacheKey } from '@xdn/core/router'
+
+router.get('/some/path/depending/on/language/cookie', ({ cache }) => {
+  cache({
+    key: new CustomCacheKey().addCookie('language'),
+    // Other options...
+  })
+})
+```

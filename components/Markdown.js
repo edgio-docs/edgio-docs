@@ -130,7 +130,8 @@ function Link({ href, children }) {
 }
 
 function Heading({ children, level }) {
-  const text = children[0].props.value
+  const firstChild = children[0]
+  const text = firstChild && firstChild.props.value
   const id = typeof text === 'string' ? `section_${text.replace(/\W/g, '_').toLowerCase()}` : ''
   const classes = useStyles()
 

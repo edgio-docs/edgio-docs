@@ -45,27 +45,30 @@ export default function SearchField() {
     setOpen(!!query.length)
   }
 
-  useEffect(async () => {
-    setLoading(true)
+  useEffect(() => {
+    const doEffect = async () => {
+      setLoading(true)
 
-    setSearchIndex(
-      fetch(`/api/searchIndex?version=${encodeURIComponent(currentVersion)}`)
-        .then(res => res.json())
-        .then(content => {
-          setLoading(false)
+      setSearchIndex(
+        fetch(`/api/searchIndex?version=${encodeURIComponent(currentVersion)}`)
+          .then(res => res.json())
+          .then(content => {
+            setLoading(false)
 
-          return {
-            content,
-            index: lunr(function() {
-              this.ref('id')
-              this.field('name')
-              this.field('content')
-              this.metadataWhitelist = ['position']
-              content.forEach(guide => this.add(guide))
-            }),
-          }
-        }),
-    )
+            return {
+              content,
+              index: lunr(function() {
+                this.ref('id')
+                this.field('name')
+                this.field('content')
+                this.metadataWhitelist = ['position']
+                content.forEach(guide => this.add(guide))
+              }),
+            }
+          }),
+      )
+    }
+    doEffect()
   }, [currentVersion])
 
   const onChangeText = useCallback(

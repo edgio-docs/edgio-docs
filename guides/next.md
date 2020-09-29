@@ -24,7 +24,12 @@ To prepare your Next.js application for deployment on the Moovweb XDN:
 npm install -g @xdn/cli
 ```
 
-2. Run `xdn init`
+2. Initialize your Next.js project
+
+```bash
+cd my-next-app
+xdn init
+```
 
 This will automatically add all of the required dependencies and files to your project. These include:
 

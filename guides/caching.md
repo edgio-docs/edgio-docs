@@ -64,7 +64,7 @@ When [POST and other non-GET/HEAD](#section_caching_responses_for_post_and_other
 - Request HTTP method
 - Request body
 
-To ensure that you are resilient to [cache poisoning attacks](security#section_cache_poisoning) you must ensure that every request header that influences the rendering of the content is also part of the custom cache key. 
+To ensure that your site is resilient to [cache poisoning attacks](security#section_cache_poisoning) every request header that influences the rendering of the content must be included in your custom cache key.
 
 #### Customizing the Cache Key
 

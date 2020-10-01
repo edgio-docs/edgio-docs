@@ -53,7 +53,7 @@ To deploy your app to the Moovweb XDN, run:
 xdn deploy
 ```
 
-See [deploying](deploying) for more information.
+See [Deploying](deploying) guide for more information.
 
 ## Routing
 
@@ -109,4 +109,4 @@ module.exports = new Router()
 
 ```
 
-Check [routing](routing) and [caching](caching) for more information.
+Check [Routing](routing) and [Caching](caching) guides for more information.

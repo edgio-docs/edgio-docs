@@ -27,7 +27,12 @@ To deploy your Gatsby on Moovweb XDN:
 npm install -g @xdn/cli
 ```
 
-2. Run `xdn init`
+2. Run `xdn init` in your project directory:
+
+```bash
+cd gatsby-site
+xdn init
+```
 
 This will automatically add all of the required dependencies and files to your project. These include:
 

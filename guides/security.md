@@ -48,7 +48,7 @@ environment variables will not enforce basic authentication.
 
 By default the Moovweb XDN only serves traffic over the `https` protocol. It automatically redirects `http` requests to the same URL, including any query strings, on `https`.
 
-We strongly discourage the use of `http` protocol but if you *must* enable it then you can explicitly match on `http` protocol. For example:
+We strongly discourage the use of `http` protocol but if you *must* enable it then you can do so by adding `protocol: 'http'` to your route criteria. For example:
 
 ```js
 // routes.js

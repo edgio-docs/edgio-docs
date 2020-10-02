@@ -45,7 +45,7 @@ module.exports = {
 }
 ```
 
-2. Run `xdn init` which will configure your project for the XDN.
+2. Run `xdn init` to configure your project for the XDN.
 
 ```bash
 xdn init
@@ -270,7 +270,7 @@ Setting `--production` runs your app exactly as it will be uploaded to the Moovw
 
 ## Deploying
 
-Deploying requires an account on the Moovweb XDN. [Sign up here for free.](https://moovweb.app/signup) Once you have an account, you can deploy to the Moovweb XDN:
+Deploying requires an account on the Moovweb XDN. [Sign up here for free.](https://moovweb.app/signup) Once you have an account, you can deploy to the Moovweb XDN by running the following in the root folder of your project:
 
 ```bash
 xdn deploy

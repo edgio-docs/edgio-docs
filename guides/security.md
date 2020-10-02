@@ -62,7 +62,7 @@ router.match({
 })
 ```
 
-If no route is matched on `http` protocol then the XDN will fallback on its default behavior of automatically redirecting the traffic to `https`.
+If no route is matched on `http` protocol then the XDN will fallback on its default behavior of automatically redirecting the request to `https`.
 
 Additionally:
 

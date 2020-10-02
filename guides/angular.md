@@ -134,7 +134,7 @@ Setting `--production` runs your app exactly as it will be uploaded to the Moovw
 
 ### Deploying
 
-To deploy your app to the Moovweb XDN, run:
+Deploying requires an account on the Moovweb XDN. [Sign up here for free.](https://moovweb.app/signup) Once you have an account, you can deploy to the Moovweb XDN by running the following in the root folder of your project:
 
 ```bash
 xdn deploy

@@ -187,7 +187,7 @@ install()
 
 ## Deploying
 
-To deploy, create a production build of your site and run:
+Deploying requires an account on the Moovweb XDN. [Sign up here for free.](https://moovweb.app/signup) Once you have an account, you can deploy to the Moovweb XDN by running the following in the root folder of your project:
 
 ```
 xdn deploy

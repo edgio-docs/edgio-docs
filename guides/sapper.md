@@ -98,6 +98,8 @@ xdn run
 
 ```
 
+### Simulate edge caching on local
+
 To simulate edge caching locally, run:
 
 ```
@@ -106,7 +108,9 @@ xdn run --cache
 
 ```
 
-To deploy your app to the XDN, run:
+## Deploying
+
+Deploying requires an account on the Moovweb XDN. [Sign up here for free.](https://moovweb.app/signup) Once you have an account, you can deploy to the Moovweb XDN by running the following in the root folder of your project
 
 ```
 

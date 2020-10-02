@@ -16,7 +16,7 @@ To prepare your React app for deployment on the Moovweb XDN, install the XDN CLI
 npm install -g @xdn/cli
 ```
 
-Then, in the root of your project, run:
+Then, in the root folder of your project, run:
 
 ```bash
 xdn init

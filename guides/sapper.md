@@ -10,7 +10,7 @@ If you do not have Node.js installed on your system, download and install it fro
 
 ## Getting Started
 
-If you don't already have a Sapper app, you can create one using the commands below:
+If you don't already have a Sapper app, use the terminal (or command prompt on Windows) to create one using the commands below:
 
 ```
 # for Rollup
@@ -24,7 +24,7 @@ npm install
 npm run dev & open http://localhost:3000
 ```
 
-To prepare your Sapper app for deployment on the Moovweb XDN:
+To prepare your Sapper app for deployment on the Moovweb XDN, run the following in the root folder of your project:
 
 ```
 npm install -g @xdn/cli

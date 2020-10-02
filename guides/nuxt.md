@@ -45,7 +45,7 @@ module.exports = {
 }
 ```
 
-2. Run `xdn init` which will configure your project for the XDN.
+2. Run `xdn init` to configure your project for the XDN.
 
 ```bash
 xdn init

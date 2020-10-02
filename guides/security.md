@@ -46,7 +46,28 @@ environment variables will not enforce basic authentication.
 
 ## SSL
 
-The Moovweb XDN only accepts traffic over `https`. It automatically redirects `http` requests to the same URL, including any query strings, on `https`.
+The Moovweb XDN by default only serves the traffic over `https` protocol. It automatically redirects `http` requests to the same URL, including any query strings, on `https`.
+
+We strongly discourage the use of `http` protocol but if you *must* enable it then you can explicitly match on `http` protocol. For example:
+
+```js
+// routes.js
+
+// Respond to Let's Encrypt HTTP-01 challenge.
+router.match({
+  protocol: 'http',
+  path: '/.well-known/acme-challenge/<your token>'
+}, ({ send }) => {
+  send('<token value>')
+})
+```
+
+If no route is matched on `http` protocol then the XDN will fallback on its default behavior of automatically redirecting the traffic to `https`.
+
+Additionally:
+
+* The received protocol can be read from [`x-xdn-protocol`](request_headers#section_general_headers) request header or from [`req.secure`](/docs/api/core/interfaces/_router_request_.request.html#secure) flag in serverless.
+* Running in local development assumes that you are developing on `https` protocol. When you want to test your router for `http` protocol matching you should either set `xdn_emulate_local_http` cookie to `true` (if using a browser) or send `x-xdn-protocol` request header set to `http`.
 
 ## Secrets
 

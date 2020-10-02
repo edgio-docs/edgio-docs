@@ -7,6 +7,7 @@ This guide covers the headers that Moovweb XDN injects into requests making them
 * `x-xdn-client-ip`: client IP from which the request originated *or* first IP in `x-forwarded-for` is already present (which may happen when [XDN is behind another CDN](third_party_cdns)).
 * `x-xdn-destination`: the routing destination as determined by traffic splitting rules if any; the name of the destinations are taken from Moovweb XDN router code and if not specified then default is `default`
 * `x-xdn-original-qs`: contains the original query string if [custom caching](caching#section_customizing_the_cache_key) rules exclude query strings for the matching route; otherwise not set
+* `x-xdn-protocol`: the protocol on which the connection to your site has been established; it can either be `https` or `http`; see more details [here](security#section_ssl)
 
 ## User agent headers
 

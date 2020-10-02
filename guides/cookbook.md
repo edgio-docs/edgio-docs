@@ -6,7 +6,7 @@ This guide gives examples of common routing patterns using the XDN.
 
 ### Same Path
 
-To forward a request to the same path to one of the backends listed in `xdn.config.js` use the [`proxy`](https://developer.moovweb.com/docs/api/core/classes/_router_responsewriter_.responsewriter.html#proxy) method of `ResponseWriter`:
+To forward a request to the same path to one of the backends listed in `xdn.config.js` use the [`proxy`](/docs/api/core/classes/_router_responsewriter_.responsewriter.html#proxy) method of `ResponseWriter`:
 
 ```js
 router.get('/some-path', ({ proxy }) => {
@@ -29,7 +29,7 @@ module.exports = {
 
 ### Different Path
 
-To forward the request to a different path use the [`path`](https://developer.moovweb.com/docs/api/core/interfaces/_router_responsewriter_.proxyoptions.html#path) option of the `ProxyOptions` interface:
+To forward the request to a different path use the [`path`](/docs/api/core/interfaces/_router_responsewriter_.proxyoptions.html#path) option of the `ProxyOptions` interface:
 
 ```js
 router.get('/products/:productId', ({ proxy }) => {
@@ -39,7 +39,7 @@ router.get('/products/:productId', ({ proxy }) => {
 
 ### Adding Caching
 
-To cache proxied requests at the edge, use the [`cache`](https://developer.moovweb.com/docs/api/core/classes/_router_responsewriter_.responsewriter.html#cache) method.
+To cache proxied requests at the edge, use the [`cache`](/docs/api/core/classes/_router_responsewriter_.responsewriter.html#cache) method.
 
 ```js
 router.get('/products/:productId', ({ proxy }) => {
@@ -70,7 +70,7 @@ router.get(
 )
 ```
 
-The above example makes use of [`setRequestHeader`](https://developer.moovweb.com/docs/api/core/classes/_router_responsewriter_.responsewriter.html#setrequestheader), [`updateRequestHeader`](https://developer.moovweb.com/docs/api/core/classes/_router_responsewriter_.responsewriter.html#updaterequestheader), and [`removeRequestHeader`](https://developer.moovweb.com/docs/api/core/classes/_router_responsewriter_.responsewriter.html#removerequestheader) API calls.
+The above example makes use of [`setRequestHeader`](/docs/api/core/classes/_router_responsewriter_.responsewriter.html#setrequestheader), [`updateRequestHeader`](/docs/api/core/classes/_router_responsewriter_.responsewriter.html#updaterequestheader), and [`removeRequestHeader`](/docs/api/core/classes/_router_responsewriter_.responsewriter.html#removerequestheader) API calls.
 
 ### Altering the response
 
@@ -186,7 +186,7 @@ router
 
 ## Serving a static file
 
-To serve a specific file use the [`serveStatic`](https://developer.moovweb.com/docs/api/core/classes/_router_responsewriter_.responsewriter.html#servestatic) API:
+To serve a specific file use the [`serveStatic`](/docs/api/core/classes/_router_responsewriter_.responsewriter.html#servestatic) API:
 
 ```js
 router.get('/favicon.ico', ({ serveStatic, cache }) => {
@@ -220,7 +220,7 @@ router.get('/assets/:path*', ({ serveStatic, cache }) => {
 
 ## Responding with a string response body
 
-To respond with a simple, constant string as the response body use the [`send`](https://developer.moovweb.com/docs/api/core/classes/_router_responsewriter_.responsewriter.html#send) method:
+To respond with a simple, constant string as the response body use the [`send`](/docs/api/core/classes/_router_responsewriter_.responsewriter.html#send) method:
 
 ```js
 router.get('/some-path', ({ cache, setResponseHeader, send }) => {
@@ -239,7 +239,7 @@ router.get('/some-path', ({ cache, setResponseHeader, send }) => {
 })
 ```
 
-To compute a dynamic response use the [`compute`](https://developer.moovweb.com/docs/api/core/classes/_router_responsewriter_.responsewriter.html#compute) method:
+To compute a dynamic response use the [`compute`](/docs/api/core/classes/_router_responsewriter_.responsewriter.html#compute) method:
 
 ```js
 router.get('/hello/:name', ({ cache, setResponseHeader, compute, send }) => {
@@ -262,7 +262,7 @@ router.get('/hello/:name', ({ cache, setResponseHeader, compute, send }) => {
 
 ## Redirecting
 
-To redirect the browser to a different URL use the [`redirect`](https://developer.moovweb.com/docs/api/core/classes/_router_responsewriter_.responsewriter.html#redirect) API:
+To redirect the browser to a different URL use the [`redirect`](/docs/api/core/classes/_router_responsewriter_.responsewriter.html#redirect) API:
 
 ```js
 router.get('/p/:productId', ({ redirect }) => {

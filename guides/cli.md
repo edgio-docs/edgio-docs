@@ -89,14 +89,15 @@ Builds and deploys your site on the Moovweb XDN.
 
 #### Options
 
-| Name            | Description                                                                                                                                                                                                             |
-| --------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `--site`        | The name of the site to deploy. By default the `name` field in `package.json` is used.                                                                                                                                  |
-| `--environment` | The environment to deploy to. By default the `default` environment is used.                                                                                                                                             |
-| `--branch`      | The name of the source control branch. This is automatically set when using Git.                                                                                                                                        |
-| `--skip-build`  | Skips the build step                                                                                                                                                                                                    |
-| `--token`       | Authenticates using a deploy token rather than your user credentials. Use this option when deploying from CI.                                                                                                           |
-| `--commit-url`  | The URL at which the commit can be viewed in your source control provided. If your package.json provides the repository attribute the commit URL will be derived automatically if you use GitHub, GitLab, or BitBucket. |
+| Name                | Description                                                                                                                                                                                                                                                                              |
+| ------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `--site`            | The name of the site to deploy. By default the `name` field in `package.json` is used.                                                                                                                                                                                                   |
+| `--environment`     | The environment to deploy to. By default the `default` environment is used.                                                                                                                                                                                                              |
+| `--branch`          | The name of the source control branch. This is automatically set when using Git.                                                                                                                                                                                                         |
+| `--skip-build`      | Skips the build step                                                                                                                                                                                                                                                                     |
+| `--token`           | Authenticates using a deploy token rather than your user credentials. Use this option when deploying from CI.                                                                                                                                                                            |
+| `--commit-url`      | The URL at which the commit can be viewed in your source control provided. If your package.json provides the repository attribute the commit URL will be derived automatically if you use GitHub, GitLab, or BitBucket.                                                                  |
+| `--include-sources` | Includes all non-gitignored source files in the bundle uploaded to the XDN. This can be helpful when debugging, especially when working with Moovweb support. You can limit the files that are uploaded using the [sources](/guides/xdn_config#section_sources) config in xdn.config.js. |
 
 #### Example
 

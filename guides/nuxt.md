@@ -4,7 +4,7 @@ This guide shows you how to deploy a Nuxt.js application on the Moovweb XDN. If 
 
 ## Install Node.js and npm
 
-__XDN only supports Node.js version 12 and higher__
+**XDN only supports Node.js version 12 and higher**
 
 If you do not have Node.js installed on your system, download and install it from official [Node.js downloads](https://nodejs.org/en/download/) page. Select the download labeled "LTS (Recommended For Most Users)" and that matches your operating system, and run the installer. Note that the installer for Node.js will also install npm.
 
@@ -62,9 +62,8 @@ The `xdn init` command will automatically add all the required dependencies and 
 
 This command will also update your `package.json` with the following changes:
 
-- Moves all of the `dependencies` to `devDependencies`
-- Adds `dotenv`, `serverless`, `serverless-dotenv-plugin`, and `serverless-offline` to the `devDependencies`
-- Adds `nuxt-start` as the sole module in `dependencies`
+- Moves all packages in `dependencies` to `devDependencies` except those listed in the `modules` property of `nuxt.config.js`.
+- Adds `@nuxt/core` to `dependencies`
 - Adds several `scripts` to run the available `xdn` commands
 
 As an example, here's the original `package.json` from Nuxt's create step:
@@ -109,7 +108,7 @@ And here is the `package.json` after modifications by `xdn init`:
     "generate": "nuxt generate"
   },
   "dependencies": {
-    "nuxt-start": "^2.12.2"
+    "@nuxt/core": "^2.12.2"
   },
   "devDependencies": {
     "@xdn/cli": "^2.0.0",
@@ -125,10 +124,21 @@ And here is the `package.json` after modifications by `xdn init`:
 }
 ```
 
-The next few sections of this guide explain how the XDN interacts with Nuxt's routing, which is important if you are migrating an existing application. If you just created a new nuxt app, you can jump to [Running Locally](#section_running_locally) and come back to these sections later.
+## modules vs buildModules
+
+Nuxt does not bundle packages listed in the `modules` property of `nuxt.config.js` when building your app for production.
+This can lead to an increased bundle size and slow down server-side rendering. Most Nuxt modules can be moved to
+`buildModules`. We recommend the following to maximize performance of server-side rendering in the cloud:
+
+- Move all entries from `modules` to `buildModules` in `nuxt.config.js`
+- Move all corresponding packages from `dependencies` to `devDependencies` in package.json
+- Run `yarn install` or `npm install` to update your lock file.
+
+Doing so will exclude these modules from your production deployment and keep the bundle size as small as possible.
 
 ## Routing
 
+The next few sections of this guide explain how the XDN interacts with Nuxt's routing, which is important if you are migrating an existing application. If you just created a new nuxt app, you can jump to [Running Locally](#section_running_locally) and come back to these sections later.
 The XDN supports Nuxt.js's built-in routing scheme. The default `routes.js` file created by `xdn init` sends all requests to Nuxt.js via a fallback route:
 
 ```js

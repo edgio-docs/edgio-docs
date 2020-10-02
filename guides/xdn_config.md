@@ -72,7 +72,7 @@ includeFiles: {
 
 ## sources
 
-A list of glob patterns identifying which source files should be uploaded when running `xdn deploy --includeSources`. This option is primary used to share source code with Moovweb support personnel for the purpose of debugging. If omitted, `xdn deploy --includeSources` will result in all files which are not gitignored being uploaded to the XDN when the application is containing within a Git repository, or an error if the application is not contained within a Git repository.
+A list of glob patterns identifying which source files should be uploaded when running `xdn deploy --includeSources`. This option is primary used to share source code with Moovweb support personnel for the purpose of debugging. If omitted, `xdn deploy --includeSources` will result in all files which are not gitignored being uploaded to the XDN.
 
 Example:
 

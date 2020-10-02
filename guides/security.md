@@ -66,7 +66,7 @@ If no route is matched on `http` protocol then the XDN will fallback on its defa
 
 Additionally:
 
-* The received protocol can be read from [`x-xdn-protocol`](request_headers#section_general_headers) request header or from [`req.secure`](/docs/api/core/interfaces/_router_request_.request.html#secure) flag in serverless.
+* A request's protocol can be determined by reading the [`x-xdn-protocol`](request_headers#section_general_headers) request header or the [`request.secure`](/docs/api/core/interfaces/_router_request_.request.html#secure) property.
 * During local development all requests will appear secure by default.  To test your router for `http` protocol matching you must either set the `xdn_emulate_local_http` cookie to `true` (if using a browser) or send an `x-xdn-protocol` request header set to `http`.
 
 ## Secrets

@@ -76,7 +76,7 @@ Then make the following changes to `rollup.config.js`:
  const dev = mode === 'development';
 ```
 
-... and add the following to the `server` config ...
+... and make the following changes to the `server` config ...
 
 ```diff
                 input: config.server.input(),
@@ -86,6 +86,13 @@ Then make the following changes to `rollup.config.js`:
                         replace({
                                 'process.browser': false,
                                 'process.env.NODE_ENV': JSON.stringify(mode)
+```
+
+and
+
+```diff
+-		            external: Object.keys(pkg.dependencies).concat(require('module').builtinModules),
++		            external: require('module').builtinModules,
 ```
 
 ## Running Locally

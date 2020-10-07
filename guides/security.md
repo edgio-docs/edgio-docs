@@ -62,7 +62,7 @@ router.match({
 })
 ```
 
-If no route is matched on `http` protocol then the XDN will fallback on its default behavior of automatically redirecting the request to `https`.
+If you want the route to match both `http` and `https` protocols you can match on `protocol: /^https?$/`. If no route is matched on `http` protocol then the XDN will fallback on its default behavior of automatically redirecting the request to `https`.
 
 Additionally:
 

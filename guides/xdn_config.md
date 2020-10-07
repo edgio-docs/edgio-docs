@@ -69,3 +69,16 @@ includeFiles: {
   'lang/**/*': 'another/dir/in/xdn/lambda',
 },
 ```
+
+## sources
+
+A list of glob patterns identifying which source files should be uploaded when running `xdn deploy --includeSources`. This option is primary used to share source code with Moovweb support personnel for the purpose of debugging. If omitted, `xdn deploy --includeSources` will result in all files which are not gitignored being uploaded to the XDN.
+
+Example:
+
+```js
+sources: [
+  '**/*', // include all files
+  '!(**/secrets/**/*)', // except everything in the secrets directory
+]
+```

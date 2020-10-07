@@ -2,6 +2,12 @@
 
 This guide shows you how to deploy an Angular application on the Moovweb XDN:
 
+## Install Node.js and npm
+
+**XDN only supports Node.js version 12 and higher**
+
+If you do not have Node.js installed on your system, download and install it from official [Node.js downloads](https://nodejs.org/en/download/) page. Select the download labeled "LTS (Recommended For Most Users)" and that matches your operating system, and run the installer. Note that the installer for Node.js will also install npm.
+
 ## Getting Started
 
 If you don't already have an Angular application, you can create one using:
@@ -37,7 +43,11 @@ To integrate XDN:
 npm install -g @xdn/cli
 ```
 
-2. Run `xdn init`
+2. Run the following in the root folder of your project. This will configure your project for the XDN.
+
+```bash
+xdn init
+```
 
 This will automatically add all of the required dependencies and files to your project. These include:
 
@@ -124,7 +134,7 @@ Setting `--production` runs your app exactly as it will be uploaded to the Moovw
 
 ### Deploying
 
-To deploy your app to the Moovweb XDN, run:
+Deploying requires an account on the Moovweb XDN. [Sign up here for free.](https://moovweb.app/signup) Once you have an account, you can deploy to the Moovweb XDN by running the following in the root folder of your project:
 
 ```bash
 xdn deploy

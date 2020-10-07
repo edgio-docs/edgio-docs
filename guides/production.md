@@ -1,6 +1,6 @@
-# Production
+# Custom Domains & SSL
 
-This guide covers the steps you need to take your site live on the Moovweb XDN.
+This guide covers the steps you need to take your site live on the Moovweb XDN with a secure, custom domain.
 
 ## Region
 

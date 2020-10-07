@@ -14,7 +14,9 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-export default ({ style }) => {
+const Logo = ({ style }) => {
   const classes = useStyles()
   return <MoovwebXDN className={classes.logo} style={style} />
-}
+};
+
+export default Logo;

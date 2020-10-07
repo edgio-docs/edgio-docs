@@ -10,7 +10,7 @@ If you do not have Node.js installed on your system, download and install it fro
 
 ## Getting Started
 
-If you don't already have a Sapper app, you can create one using the commands below:
+If you don't already have a Sapper app, use the terminal (or command prompt on Windows) to create one using the commands below:
 
 ```
 # for Rollup
@@ -24,7 +24,7 @@ npm install
 npm run dev & open http://localhost:3000
 ```
 
-To prepare your Sapper app for deployment on the Moovweb XDN:
+To prepare your Sapper app for deployment on the Moovweb XDN, run the following in the root folder of your project:
 
 ```
 npm install -g @xdn/cli
@@ -76,7 +76,7 @@ Then make the following changes to `rollup.config.js`:
  const dev = mode === 'development';
 ```
 
-... and add the following to the `server` config ...
+... and make the following changes to the `server` config ...
 
 ```diff
                 input: config.server.input(),
@@ -86,6 +86,13 @@ Then make the following changes to `rollup.config.js`:
                         replace({
                                 'process.browser': false,
                                 'process.env.NODE_ENV': JSON.stringify(mode)
+```
+
+and
+
+```diff
+-		            external: Object.keys(pkg.dependencies).concat(require('module').builtinModules),
++		            external: require('module').builtinModules,
 ```
 
 ## Running Locally
@@ -98,6 +105,8 @@ xdn run
 
 ```
 
+### Simulate edge caching on local
+
 To simulate edge caching locally, run:
 
 ```
@@ -106,7 +115,9 @@ xdn run --cache
 
 ```
 
-To deploy your app to the XDN, run:
+## Deploying
+
+Deploying requires an account on the Moovweb XDN. [Sign up here for free.](https://moovweb.app/signup) Once you have an account, you can deploy to the Moovweb XDN by running the following in the root folder of your project
 
 ```
 

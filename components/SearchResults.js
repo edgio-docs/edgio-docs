@@ -27,9 +27,12 @@ const useStyles = makeStyles(theme => ({
     margin: theme.spacing(2),
   },
   title: {
-    width: 150,
-    minWidth: 150,
+    width: 175,
+    minWidth: 175,
     textAlign: 'right',
+    maxWidth: 175,
+    overflow: 'hidden',
+    textOverflow: 'ellipsis',
   },
   icon: {
     minWidth: 40,

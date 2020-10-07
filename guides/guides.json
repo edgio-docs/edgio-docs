@@ -63,7 +63,7 @@
         "href": "/guides/[...guide]"
       },
       {
-        "text": "Production",
+        "text": "Custom Domains & SSL",
         "as": "/guides/production",
         "href": "/guides/[...guide]"
       },

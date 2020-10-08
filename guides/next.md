@@ -53,7 +53,7 @@ module.exports = withXDN(withServiceWorker())
 
 The `withXDN` plugin ensures that your app is bundled properly for running on the XDN, and `withServiceWorker` provides a service worker based on `sw/service-worker.js`.
 
-If you're already using `next-offline`, you should remove it in favor of `withServiceWorker`, which itself uses `next-offline`.
+#### If you're already using `next-offline`, you should remove it in favor of `withServiceWorker`, which itself uses `next-offline`.
 
 ## Running Locally
 

@@ -16,6 +16,9 @@ import MoovwebXDN from '../components/icons/moovweb-xdn-black.svg'
 import SapperIcon from '../components/icons/sapper.svg'
 import GatsbyIcon from '../components/icons/gatsby.svg'
 import VSFIcon from '../components/icons/vsf.svg'
+import SAPCCIcon from '../components/icons/sapcc.svg'
+import ShopifyIcon from '../components/icons/shopify.svg'
+import CommerceToolsIcon from '../components/icons/commercetools.svg'
 import { icons } from '../components/icons/Icon'
 
 const SpartacusIcon = icons['spartacus']
@@ -210,6 +213,28 @@ const Home = ({ navData }) => {
       <Container maxWidth="md">
         <Features />
       </Container>
+      <div className={classes.hero}>
+        <Typography variant="h2" style={{ maxWidth: 800 }}>
+          <div style={{ position: 'relative' }}>Supported E-Commerce Platforms</div>
+        </Typography>
+      </div>
+      <Grid container spacing={2} alignItems="center" justify="center" style={{padding:10}}>
+        <Grid item>
+          <Paper elevation={0} border={0}>
+            <ShopifyIcon className={classes.icon} style={{ height: 200, width: 350}} />
+          </Paper>
+        </Grid>
+        <Grid item>
+          <Paper elevation={0} border={0}>
+            <SAPCCIcon className={classes.icon} style={{ height: 200, width: 250}} />
+            </Paper>
+        </Grid>
+        <Grid item>
+          <Paper elevation={0} border={0}>
+            <CommerceToolsIcon className={classes.icon} style={{ height: 200, width: 250 }} />
+            </Paper>
+        </Grid>
+      </Grid>
     </PageWrapper>
   )
 }

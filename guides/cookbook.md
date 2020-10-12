@@ -316,3 +316,23 @@ router.get(
 ```
 
 You can find more about geolocation headers [here](/guides/request_headers).
+
+### Whitelisting Specific IPs
+
+If you need to block all traffic from a specific country or set of countries, you can do so by matching requests by the [x-xdn-client-ip](/guides/request_headers#section_general_headers) header:
+
+```js
+router.get(
+  {
+    headers: {
+      // Regex that will do a negative lookahead for IPs you want to allow.
+      // In this example 172.16.16.0/24 and 10.10.10.3/32 will be allowed and everything else will receive a 403
+      'x-xdn-client-ip': /\b((?!172\.16\.16)(?!10.10.10.3)\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})\b/, 
+    },
+  },
+  ({ send }) => {
+    send('Blocked', 403)
+  },
+)
+```
+

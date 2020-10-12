@@ -6,7 +6,7 @@ This guide shows you how to configure the XDN to prenderer pages to the edge cac
 
 The XDN allows you to specify the set of URLs that should be prerendered and cached at the edge during deployment to ensure that users get a subsecond
 experience when accessing your site. Static prerendering works by sending requests to your application code and caching the result right after your site is deployed.
-In this way, you simply build your app to implement server-side rendering and get the speed benefits of a static site for some or all of your pages. This feature is especially useful for large, complex sites that have too many URLs to prerender without exceptionally long build times.
+In this way, you simply build your app to implement server-side rendering and get the speed benefits of a static site for some or all of your pages. This feature is especially useful for large, complex sites that have too many URLs to prerender without incurring exceptionally long build times.
 
 ## Specifying the URLs to Prerender
 

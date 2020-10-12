@@ -15,6 +15,8 @@ To specify which URLs should prerendered, use the Router's [prerender](https://d
 ### Example: Hardcoded Paths
 
 ```js
+const { Router } = require('@xdn/core/router')
+
 module.exports = new Router().prerender([
   // HTML pages
   { path: '/' },
@@ -39,6 +41,8 @@ module.exports = new Router().prerender([
 ### Example: Async Paths
 
 ```js
+const { Router } = require('@xdn/core/router')
+
 module.exports = new Router().prerender(async () => {
   const paths = await fetchCategoryPathsFromAPI()
   return paths.map(path => ({ path }))
@@ -48,6 +52,8 @@ module.exports = new Router().prerender(async () => {
 ### Example: Defining Paths via an Environment Variable
 
 ```js
+const { Router } = require('@xdn/core/router')
+
 module.exports = new Router().prerender(async () => {
   const paths = process.env.PRERENDER_PATHS.split(/\n/) // define the list of paths to prerender in the XDN Developer Console.
   return paths.map(path => ({ path }))
@@ -99,23 +105,30 @@ If you're splitting the cache by cookies or headers using a `CustomCacheKey`, yo
 your preload configuration. For example, if you're splitting the cache by a `language` cookie:
 
 ```js
-module.exports = new Router().prerender([
-  // German
-  { path: '/', headers: { cookie: 'language=de' } },
-  { path: '/categories/mens', headers: { cookie: 'language=de' } },
-  { path: '/categories/mens/shirts', headers: { cookie: 'language=de' } },
-  { path: '/categories/mens/pants', headers: { cookie: 'language=de' } },
-  { path: '/categories/womens', headers: { cookie: 'language=de' } },
-  { path: '/categories/womens/shirts', headers: { cookie: 'language=de' } },
-  { path: '/categories/womens/pants', headers: { cookie: 'language=de' } },
+const { Router, CustomCacheKey } = require('@xdn/core/router')
 
-  // English
-  { path: '/', headers: { cookie: 'language=en' } },
-  { path: '/categories/mens', headers: { cookie: 'language=en' } },
-  { path: '/categories/mens/shirts', headers: { cookie: 'language=en' } },
-  { path: '/categories/mens/pants', headers: { cookie: 'language=en' } },
-  { path: '/categories/womens', headers: { cookie: 'language=en' } },
-  { path: '/categories/womens/shirts', headers: { cookie: 'language=en' } },
-  { path: '/categories/womens/pants', headers: { cookie: 'language=en' } },
-])
+module.exports = new Router()
+  .prerender([
+    // German
+    { path: '/categories/mens', headers: { cookie: 'language=de' } },
+    { path: '/categories/mens/shirts', headers: { cookie: 'language=de' } },
+    { path: '/categories/mens/pants', headers: { cookie: 'language=de' } },
+    { path: '/categories/womens', headers: { cookie: 'language=de' } },
+    { path: '/categories/womens/shirts', headers: { cookie: 'language=de' } },
+    { path: '/categories/womens/pants', headers: { cookie: 'language=de' } },
+
+    // English
+    { path: '/categories/mens', headers: { cookie: 'language=en' } },
+    { path: '/categories/mens/shirts', headers: { cookie: 'language=en' } },
+    { path: '/categories/mens/pants', headers: { cookie: 'language=en' } },
+    { path: '/categories/womens', headers: { cookie: 'language=en' } },
+    { path: '/categories/womens/shirts', headers: { cookie: 'language=en' } },
+    { path: '/categories/womens/pants', headers: { cookie: 'language=en' } },
+  ])
+  .get('/categories/:slug*', ({ cache }) => {
+    cache({
+      key: new CustomCacheKey().addCookie('language'),
+      edge: { maxAgeSeconds: 60 * 60 * 24, staleWhileRevalidate: 60 * 60 * 24 * 365 },
+    })
+  })
 ```

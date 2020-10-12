@@ -132,3 +132,13 @@ module.exports = new Router()
     })
   })
 ```
+
+## Viewing Prerendering Results in the XDN Developer Console
+
+When you deploy a new version of your site, you can view the progress and results of prerendering from the deployment
+view in XDN Developer Console:
+
+![progress](/images/static-prerendering/progress.png)
+
+This section updates in real time as pages are prerendered and will show you any errors that occur. If an error occurs, more
+information can be found in the build logs.

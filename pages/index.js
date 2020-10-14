@@ -213,7 +213,7 @@ const Home = ({ navData }) => {
       <Container maxWidth="md">
         <Features />
       </Container>
-      <div className={classes.hero}>
+      {/* <div className={classes.hero}>
         <Typography variant="h2" style={{ maxWidth: 800 }}>
           <div style={{ position: 'relative' }}>Supported E-Commerce Platforms</div>
         </Typography>
@@ -234,7 +234,7 @@ const Home = ({ navData }) => {
             <CommerceToolsIcon className={classes.icon} style={{ height: 200, width: 250 }} />
             </Paper>
         </Grid>
-      </Grid>
+      </Grid> */}
     </PageWrapper>
   )
 }

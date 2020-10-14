@@ -16,6 +16,7 @@ import MoovwebXDN from '../components/icons/moovweb-xdn-black.svg'
 import SapperIcon from '../components/icons/sapper.svg'
 import GatsbyIcon from '../components/icons/gatsby.svg'
 import VSFIcon from '../components/icons/vsf.svg'
+import VueIcon from '../components/icons/vue.svg'
 import { icons } from '../components/icons/Icon'
 
 const SpartacusIcon = icons['spartacus']
@@ -141,6 +142,14 @@ const Home = ({ navData }) => {
                 <Paper className={classes.framework} elevation={0}>
                   <ReactIcon className={classes.icon} />
                   <Typography className={classes.frameworkText}>Get started with React</Typography>
+                </Paper>
+              </Link>
+            </Grid>
+            <Grid item>
+              <Link href="/guides/[...guide]" as="/guides/vue">
+                <Paper className={classes.framework} elevation={0}>
+                  <VueIcon className={classes.icon} />
+                  <Typography className={classes.frameworkText}>Get started with Vue.js</Typography>
                 </Paper>
               </Link>
             </Grid>

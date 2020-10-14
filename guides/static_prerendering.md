@@ -137,10 +137,10 @@ module.exports = new Router()
 
 By default, the XDN prerenders a maximum of 200 URLs at a time. This can create significant additional load on your APIs at the time of deployment. You can lower this limit by setting the [prerenderConcurrency](/guides/xdn_config#section_prerenderconcurrency) property in `xdn.config.js`. The XDN imposes the following limits on prerendering:
 
-| Property                 | Limit                 |
-| ------------------------ | --------------------- |
-| Concurrency              | 200                   |
-| Total number of requests | 25,000 per deployment |
+| Tier       | Concurrency | Total number of requests |
+| ---------- | ----------- | ------------------------ |
+| ENTERPRISE | 200         | 25,000 per deployment    |
+| FREE       | 10          | 100 per deployment       |
 
 ## Viewing Prerendering Results in the XDN Developer Console
 

@@ -37,3 +37,6 @@ Users in the "Admin" role have full control over all team and site settings
 ### Member
 
 Users in the "Member" can see all of the team's sites and settings, and deploy updates to existing sites via `xdn deploy` but cannot change site or team settings.
+
+When creating an environment, you can specify whether all members or only admins should be able to deploy to that environment
+![limit environment](/images/teams/environment-permissions.png) 

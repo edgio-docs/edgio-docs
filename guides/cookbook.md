@@ -161,27 +161,36 @@ To proxy to different backends by matching the `host` header (e.g. different bac
 
 ```js
 router
-  .match({
-    path: '/:path*',
-    headers: {
-      host: 'yoursite.c1'
-    }
-  }, ({ proxy }) => {
-    proxy('country1-backend')
-  })
-  .match({
-    path: '/:path*',
-    headers: {
-      host: 'yoursite.c2'
-    }
-  }, ({ proxy }) => {
-    proxy('country2-backend')
-  })
-  .match({
-    path: '/:path*',
-  }, ({ proxy }) => {
-    proxy('everybody-else-backend')
-  })
+  .match(
+    {
+      path: '/:path*',
+      headers: {
+        host: 'yoursite.c1',
+      },
+    },
+    ({ proxy }) => {
+      proxy('country1-backend')
+    },
+  )
+  .match(
+    {
+      path: '/:path*',
+      headers: {
+        host: 'yoursite.c2',
+      },
+    },
+    ({ proxy }) => {
+      proxy('country2-backend')
+    },
+  )
+  .match(
+    {
+      path: '/:path*',
+    },
+    ({ proxy }) => {
+      proxy('everybody-else-backend')
+    },
+  )
 ```
 
 ## Serving a static file
@@ -288,11 +297,11 @@ router.get('/p/:productId', ({ redirect, compute, cache }) => {
 
 ### Redirecting all traffic to a different domain
 
-This example redirects all traffic from www.mysite.com to mysite.com. It should be placed at the top of your router:
+This example redirects all traffic on domains other than www.mydomain.com to www.mydomain.com. So for example, mydomain.com => www.mydomain.com
 
 ```js
-router.match({ headers: { host: /^www\.mysite\.com$/, path: '/:path*' } }, ({ redirect }) => {
-  redirect('https://mysite.com/:path*')
+router.match({ headers: { host: /^(?!www\.).*$/ } }, ({ redirect }) => {
+  redirect('https://www.mysite.com${url}')
 })
 ```
 

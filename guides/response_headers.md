@@ -31,12 +31,14 @@ All times are in milliseconds.
 |or|The time spent matching routes at the edge pop|
 |of|The time spent fetching the response at the edge pop|
 |oc|The caching status for the edge pop|
-|ow|???|
+|ow|The free memory left after request processing at the edge pop|
+|oq|The time spent at the edge pop in fetch queue during the request coalescing|
 |st|The time spent processing the request at the shield pop|
 |sr|The time spent matching routes at the shield pop|
 |sf|The time spent waiting for a response from the serverless backend or origin, including request queueing|
 |sc|The caching status for the shield pop|
-|sw|???|
+|sw|The free memory left after request processing at the shield pop|
+|sq|The time spent at the shield pop in fetch queue during the request coalescing|
 |bf|???| 
 |pc|???| 
 |pf|The time spent waiting for a response from the serverless backend or origin, excluding request queueing| 

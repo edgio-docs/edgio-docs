@@ -25,6 +25,28 @@ The components are:
 
 All times are in milliseconds.
 
+|Name|Description|
+|----|-----------|
+|ot|The total time spent processing the request|
+|or|The time spent matching routes at the edge pop|
+|of|The time spent fetching the response at the edge pop|
+|oc|The caching status for the edge pop|
+|ow|???|
+|st|The time spent processing the request at the shield pop|
+|sr|The time spent matching routes at the shield pop|
+|sf|The time spent waiting for a response from the serverless backend or origin, including request queueing|
+|sc|The caching status for the shield pop|
+|sw|???|
+|bf|???| 
+|pc|???| 
+|pf|The time spent waiting for a response from the serverless backend or origin, excluding request queueing| 
+|wm|The amount of memory used in MB by the JavaScript worker to process the request| 
+|wt|The JavaScript worker execution time| 
+|wr|The time spent matching routes in the JavaScript worker| 
+|wa|The time spent transforming the request in JavaScript worker. Will only be provided if the request was transformed.| 
+|wp|The time spent waiting for your application (Next, Nuxt, Sapper, Angular, etc...) or origin to respond| 
+|wz|The time spent transforming the response in JavaScript worker. Will only be provided if the response was transformed.| 
+
 ## Troubleshooting headers
 
 The following headers are used internally by Moovweb staff to troubleshoot issues with requests.

@@ -37,7 +37,7 @@ All times are in milliseconds.
 |sr|The time spent matching routes at the shield pop|
 |sf|The time spent waiting for a response from the serverless backend or origin, including request queueing|
 |sc|The caching status for the shield pop|
-|sw|The free memory left after request processing at the shield pop|
+|ow|The free memory in bytes on the shield pop after processing the request|
 |sq|The time spent at the shield pop in fetch queue during the request coalescing|
 |bf|???| 
 |pc|???| 

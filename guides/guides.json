@@ -126,6 +126,12 @@
         "href": "/guides/[...guide]"
       },
       {
+        "text": "Vue.js",
+        "icon": "vue",
+        "as": "/guides/vue",
+        "href": "/guides/[...guide]"
+      },
+      {
         "text": "Nuxt.js",
         "icon": "nuxt",
         "as": "/guides/nuxt",

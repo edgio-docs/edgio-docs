@@ -6,7 +6,7 @@ This guide gives examples of common routing patterns using the XDN.
 
 ### Same Path
 
-To forward a request to the same path to one of the backends listed in `xdn.config.js` use the [`proxy`](https://developer.moovweb.com/docs/api/core/classes/_router_responsewriter_.responsewriter.html#proxy) method of `ResponseWriter`:
+To forward a request to the same path to one of the backends listed in `xdn.config.js` use the [`proxy`](/docs/api/core/classes/_router_responsewriter_.responsewriter.html#proxy) method of `ResponseWriter`:
 
 ```js
 router.get('/some-path', ({ proxy }) => {
@@ -29,7 +29,7 @@ module.exports = {
 
 ### Different Path
 
-To forward the request to a different path use the [`path`](https://developer.moovweb.com/docs/api/core/interfaces/_router_responsewriter_.proxyoptions.html#path) option of the `ProxyOptions` interface:
+To forward the request to a different path use the [`path`](/docs/api/core/interfaces/_router_responsewriter_.proxyoptions.html#path) option of the `ProxyOptions` interface:
 
 ```js
 router.get('/products/:productId', ({ proxy }) => {
@@ -39,7 +39,7 @@ router.get('/products/:productId', ({ proxy }) => {
 
 ### Adding Caching
 
-To cache proxied requests at the edge, use the [`cache`](https://developer.moovweb.com/docs/api/core/classes/_router_responsewriter_.responsewriter.html#cache) method.
+To cache proxied requests at the edge, use the [`cache`](/docs/api/core/classes/_router_responsewriter_.responsewriter.html#cache) method.
 
 ```js
 router.get('/products/:productId', ({ proxy }) => {
@@ -70,7 +70,7 @@ router.get(
 )
 ```
 
-The above example makes use of [`setRequestHeader`](https://developer.moovweb.com/docs/api/core/classes/_router_responsewriter_.responsewriter.html#setrequestheader), [`updateRequestHeader`](https://developer.moovweb.com/docs/api/core/classes/_router_responsewriter_.responsewriter.html#updaterequestheader), and [`removeRequestHeader`](https://developer.moovweb.com/docs/api/core/classes/_router_responsewriter_.responsewriter.html#removerequestheader) API calls.
+The above example makes use of [`setRequestHeader`](/docs/api/core/classes/_router_responsewriter_.responsewriter.html#setrequestheader), [`updateRequestHeader`](/docs/api/core/classes/_router_responsewriter_.responsewriter.html#updaterequestheader), and [`removeRequestHeader`](/docs/api/core/classes/_router_responsewriter_.responsewriter.html#removerequestheader) API calls.
 
 ### Altering the response
 
@@ -161,32 +161,41 @@ To proxy to different backends by matching the `host` header (e.g. different bac
 
 ```js
 router
-  .match({
-    path: '/:path*',
-    headers: {
-      host: 'yoursite.c1'
-    }
-  }, ({ proxy }) => {
-    proxy('country1-backend')
-  })
-  .match({
-    path: '/:path*',
-    headers: {
-      host: 'yoursite.c2'
-    }
-  }, ({ proxy }) => {
-    proxy('country2-backend')
-  })
-  .match({
-    path: '/:path*',
-  }, ({ proxy }) => {
-    proxy('everybody-else-backend')
-  })
+  .match(
+    {
+      path: '/:path*',
+      headers: {
+        host: 'yoursite.c1',
+      },
+    },
+    ({ proxy }) => {
+      proxy('country1-backend')
+    },
+  )
+  .match(
+    {
+      path: '/:path*',
+      headers: {
+        host: 'yoursite.c2',
+      },
+    },
+    ({ proxy }) => {
+      proxy('country2-backend')
+    },
+  )
+  .match(
+    {
+      path: '/:path*',
+    },
+    ({ proxy }) => {
+      proxy('everybody-else-backend')
+    },
+  )
 ```
 
 ## Serving a static file
 
-To serve a specific file use the [`serveStatic`](https://developer.moovweb.com/docs/api/core/classes/_router_responsewriter_.responsewriter.html#servestatic) API:
+To serve a specific file use the [`serveStatic`](/docs/api/core/classes/_router_responsewriter_.responsewriter.html#servestatic) API:
 
 ```js
 router.get('/favicon.ico', ({ serveStatic, cache }) => {
@@ -220,7 +229,7 @@ router.get('/assets/:path*', ({ serveStatic, cache }) => {
 
 ## Responding with a string response body
 
-To respond with a simple, constant string as the response body use the [`send`](https://developer.moovweb.com/docs/api/core/classes/_router_responsewriter_.responsewriter.html#send) method:
+To respond with a simple, constant string as the response body use the [`send`](/docs/api/core/classes/_router_responsewriter_.responsewriter.html#send) method:
 
 ```js
 router.get('/some-path', ({ cache, setResponseHeader, send }) => {
@@ -239,7 +248,7 @@ router.get('/some-path', ({ cache, setResponseHeader, send }) => {
 })
 ```
 
-To compute a dynamic response use the [`compute`](https://developer.moovweb.com/docs/api/core/classes/_router_responsewriter_.responsewriter.html#compute) method:
+To compute a dynamic response use the [`compute`](/docs/api/core/classes/_router_responsewriter_.responsewriter.html#compute) method:
 
 ```js
 router.get('/hello/:name', ({ cache, setResponseHeader, compute, send }) => {
@@ -262,7 +271,7 @@ router.get('/hello/:name', ({ cache, setResponseHeader, compute, send }) => {
 
 ## Redirecting
 
-To redirect the browser to a different URL use the [`redirect`](https://developer.moovweb.com/docs/api/core/classes/_router_responsewriter_.responsewriter.html#redirect) API:
+To redirect the browser to a different URL use the [`redirect`](/docs/api/core/classes/_router_responsewriter_.responsewriter.html#redirect) API:
 
 ```js
 router.get('/p/:productId', ({ redirect }) => {
@@ -288,11 +297,11 @@ router.get('/p/:productId', ({ redirect, compute, cache }) => {
 
 ### Redirecting all traffic to a different domain
 
-This example redirects all traffic from www.mysite.com to mysite.com. It should be placed at the top of your router:
+This example redirects all traffic on domains other than www.mydomain.com to www.mydomain.com. So for example, mydomain.com => www.mydomain.com
 
 ```js
-router.match({ headers: { host: /^www\.mysite\.com$/, path: '/:path*' } }, ({ redirect }) => {
-  redirect('https://mysite.com/:path*')
+router.match({ headers: { host: /^(?!www\.).*$/ } }, ({ redirect }) => {
+  redirect('https://www.mysite.com${url}')
 })
 ```
 
@@ -316,3 +325,23 @@ router.get(
 ```
 
 You can find more about geolocation headers [here](/guides/request_headers).
+
+### Whitelisting Specific IPs
+
+If you need to block all traffic from a specific country or set of countries, you can do so by matching requests by the [x-xdn-client-ip](/guides/request_headers#section_general_headers) header:
+
+```js
+router.get(
+  {
+    headers: {
+      // Regex that will do a negative lookahead for IPs you want to allow.
+      // In this example 172.16.16.0/24 and 10.10.10.3/32 will be allowed and everything else will receive a 403
+      'x-xdn-client-ip': /\b((?!172\.16\.16)(?!10.10.10.3)\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})\b/, 
+    },
+  },
+  ({ send }) => {
+    send('Blocked', 403)
+  },
+)
+```
+

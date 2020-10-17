@@ -29,7 +29,7 @@ All times are in milliseconds.
 |----|-----------|
 |ot|The total time spent processing the request|
 |or|The time spent matching routes at the edge pop|
-|of|The time spent fetching the response at the edge pop|
+|of|The time spent fetching the response at the edge pop, either from the shield pop or from the serverless backend or origin|
 |oc|The caching status for the edge pop|
 |ow|The free memory in bytes on the edge pop after processing the request|
 |oq|The time spent at the edge pop in fetch queue during the request coalescing|
@@ -39,9 +39,9 @@ All times are in milliseconds.
 |sc|The caching status for the shield pop|
 |ow|The free memory in bytes on the shield pop after processing the request|
 |sq|The time spent at the shield pop in fetch queue during the request coalescing|
-|bf|???| 
-|pc|???| 
-|pf|The time spent waiting for a response from the serverless backend or origin, excluding request queueing| 
+|bf|The time spent waiting for a response from the serverless backend or origin, including request queueing|
+|pc|The number of times the request was scheduled to execute. If it's present it is normally `1`, if not your account is under significant pressure and you should consider upgrading it.|
+|pf|The time spent waiting for a response from the JavaScript worker|
 |wm|The amount of memory used in MB by the JavaScript worker to process the request| 
 |wt|The JavaScript worker execution time| 
 |wr|The time spent matching routes in the JavaScript worker| 

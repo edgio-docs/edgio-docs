@@ -34,4 +34,4 @@ These values are provided as best effort as Moovweb cannot guarantee that client
 
 ## Static prerendering headers
 
-- `x-xdn-preload`: determines if the request originated from [Static Prerendering](/guides/static_prerendering)
+- `x-xdn-preload`: Will be "1" if the request originated from [Static Prerendering](/guides/static_prerendering). Otherwise this header will not be present.

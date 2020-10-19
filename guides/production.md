@@ -103,8 +103,9 @@ To create CSR and private key do the following:
 ```properties
 [req]
 default_bits=2048
+distinguished_name = req_distinguished_name
 
-[distinguished_name]
+[req_distinguished_name]
 countryName=Country Name (2 letter code)
 countryName_default=US
 stateOrProvinceName=State or Province Name (full name)

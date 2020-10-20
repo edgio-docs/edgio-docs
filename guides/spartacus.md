@@ -290,14 +290,14 @@ xdn deploy
 
 ### Upstream request tracking
 
-Prefetching for a Spartacus app can be enabled by listening to upstream requests made when server-side rendering a specific page. `@xdn/prefetch` library will pick up on the upstream requests made by reading the `x-xdn-backend-requests` response header. An example scenario:
+Prefetching for a Spartacus app can be enabled by listening to upstream requests made when server-side rendering a specific page. `@xdn/prefetch` library will pick up on the upstream requests made by reading the `x-xdn-upstream-requests` response header. An example scenario:
 
 1. User A lands on `/product/1`.
 1. `/product/1` has not been cached in the edge and thus will be server-side rendered.
 1. The rendering server has been modified to track upstream requests by patching `https.request`.
-1. The rendering server sets `x-xdn-backend-requests` to, for example: `/rest/v2/1;/rest/v2/2;`
-1. The HTML response for `/product/1` is now cached and for future requests served from the edge along with the `x-xdn-backend-requests` response header.
-1. User B lands on a page that has a link to `/product/1`. `/product/:path*` has been configured with `cache.browser.spa: true`. Because of this configuration, `@xdn/prefetch` will know to make a prefetch HEAD request for `/product/1`, and only if `product/1` can be served from the edge will it prefetch all requests specified in `x-xdn-backend-requests` response header.
+1. The rendering server sets `x-xdn-upstream-requests` to, for example: `/rest/v2/1;/rest/v2/2;`
+1. The HTML response for `/product/1` is now cached and for future requests served from the edge along with the `x-xdn-upstream-requests` response header.
+1. User B lands on a page that has a link to `/product/1`. `/product/:path*` has been configured with `cache.browser.spa: true`. Because of this configuration, `@xdn/prefetch` will know to make a prefetch HEAD request for `/product/1`, and only if `product/1` can be served from the edge will it prefetch all requests specified in `x-xdn-upstream-requests` response header.
 1. When User B click the link to `/product/1`, the navigation will be faster since the requests needed to render the new page will be in service worker cache.
 
 Example implementation of upstream request tracking:
@@ -391,7 +391,7 @@ app.get('*', (req, res) => {
     requestsArray.forEach(request => {
       header += request + ';'
     })
-    res.set('x-xdn-backend-requests', header)
+    res.set('x-xdn-upstream-requests', header)
 
     res.send(html)
   }
@@ -463,7 +463,6 @@ module.exports = {
       XDN_PREFETCH_CACHE_NAME: 'prefetch',
       BACKEND_REQUESTS_RESPONSE_HEADER_NAME: 'x-xdn-upstream-requests',
       XDN_HEADER_PREFETCH_QUERY_PARAM: '__header-prefetch__',
-      PREFETCH_RESPONSE_HEADER_NAME: 'x-xdn-backend-requests',
       PREFETCH_HEADER_NAME: 'x-xdn-prefetch',
       XDN_PREFETCH_HEADER_VALUE: '1',
       NODE_ENV: 'production',

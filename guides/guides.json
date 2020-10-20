@@ -63,6 +63,11 @@
         "href": "/guides/[...guide]"
       },
       {
+        "text": "Devtools",
+        "as": "/guides/devtools",
+        "href": "/guides/[...guide]"
+      },
+      {
         "text": "CLI",
         "as": "/guides/cli",
         "href": "/guides/[...guide]"

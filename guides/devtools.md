@@ -1,12 +1,12 @@
 # Devtools
 
-The XDN Devtools is a widget that helps developers understand:
+The XDN Devtools is a widget that helps developers understand how their site interacts with the XDN, including:
 
-- Edge and Browser Caching
+- Edge and browser caching
 - Prefetching
-- How data flows from serverless to the edge and browser caches
+- The flow of responses from serverless to the edge and browser caches
 
-![devtools](/images/devtools/devtools.png)
+![devtools](/images/devtools/devtools.png?width=275)
 
 ## Installation
 

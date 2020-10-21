@@ -19,6 +19,7 @@ import VSFIcon from '../components/icons/vsf.svg'
 import SAPCCIcon from '../components/icons/sapcc.svg'
 import ShopifyIcon from '../components/icons/shopify.svg'
 import CommerceToolsIcon from '../components/icons/commercetools.svg'
+import VueIcon from '../components/icons/vue.svg'
 import { icons } from '../components/icons/Icon'
 
 const SpartacusIcon = icons['spartacus']
@@ -144,6 +145,14 @@ const Home = ({ navData }) => {
                 <Paper className={classes.framework} elevation={0}>
                   <ReactIcon className={classes.icon} />
                   <Typography className={classes.frameworkText}>Get started with React</Typography>
+                </Paper>
+              </Link>
+            </Grid>
+            <Grid item>
+              <Link href="/guides/[...guide]" as="/guides/vue">
+                <Paper className={classes.framework} elevation={0}>
+                  <VueIcon className={classes.icon} />
+                  <Typography className={classes.frameworkText}>Get started with Vue.js</Typography>
                 </Paper>
               </Link>
             </Grid>

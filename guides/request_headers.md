@@ -13,10 +13,10 @@ This guide covers the headers that Moovweb XDN injects into requests making them
 
 User agent headers are headers that Moovweb XDN derives by analyzing the received `user-agent` request header.
 
-* `x-xdn-device`: device type which can be `smartphone`, `tablet`, `mobile` (feature phones) or `desktop`
-* `x-xdn-vendor`: vendor of the device which can be `apple`, `android` or `generic`
-* `x-xdn-device-is-bot`: flag indicating a bot device (`0` for not identified as bot, `1` for identified as bot)
-* `x-xdn-browser`: browser type which can be `chrome`, `safari`, `firefox`, `opera`, `edge`, `msie` or `generic`
+- `x-xdn-device`: device type which can be `smartphone`, `tablet`, `mobile` (feature phones) or `desktop`
+- `x-xdn-vendor`: vendor of the device which can be `apple`, `android` or `generic`
+- `x-xdn-device-is-bot`: flag indicating a bot device (`0` for not identified as bot, `1` for identified as bot)
+- `x-xdn-browser`: browser type which can be `chrome`, `safari`, `firefox`, `opera`, `edge`, `msie` or `generic`
 
 These values are provided as best effort as user agent, especially adversarial ones, can control the values by which we determine the values above.
 
@@ -24,10 +24,14 @@ These values are provided as best effort as user agent, especially adversarial o
 
 Geolocation headers contain the geographical information about the provenance of the request. They are based on the IP of the actual request or, if overriding need is presented, on the content of `x-xdn-client-ip` request header.
 
-* `x-xdn-geo-country-code`: two letter country code from which the request originated
-* `x-xdn-geo-city `: the name of the city from which the request originated
-* `x-xdn-geo-postal-code`: the ZIP or postal code from which the request originated
-* `x-xdn-geo-latitude `: the geographical latitude from which the request originated
-* `x-xdn-geo-longitude `: the geographical longitude from which the request originated
+- `x-xdn-geo-country-code`: two letter country code from which the request originated
+- `x-xdn-geo-city`: the name of the city from which the request originated
+- `x-xdn-geo-postal-code`: the ZIP or postal code from which the request originated
+- `x-xdn-geo-latitude`: the geographical latitude from which the request originated
+- `x-xdn-geo-longitude`: the geographical longitude from which the request originated
 
 These values are provided as best effort as Moovweb cannot guarantee that client IP to geographical location is always accurate.
+
+## Static prerendering headers
+
+- `x-xdn-preload`: Will be "1" if the request originated from [Static Prerendering](/guides/static_prerendering). Otherwise this header will not be present.

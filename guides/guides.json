@@ -48,6 +48,11 @@
         "href": "/guides/[...guide]"
       },
       {
+        "text": "Static Prerendering",
+        "as": "/guides/static_prerendering",
+        "href": "/guides/[...guide]"
+      },
+      {
         "text": "Image Optimization",
         "as": "/guides/image_optimization",
         "href": "/guides/[...guide]"
@@ -55,6 +60,11 @@
       {
         "text": "Split Testing",
         "as": "/guides/split_testing",
+        "href": "/guides/[...guide]"
+      },
+      {
+        "text": "Devtools",
+        "as": "/guides/devtools",
         "href": "/guides/[...guide]"
       },
       {
@@ -118,6 +128,12 @@
         "text": "React Storefront",
         "icon": "react-storefront",
         "as": "/guides/react-storefront",
+        "href": "/guides/[...guide]"
+      },
+      {
+        "text": "Vue.js",
+        "icon": "vue",
+        "as": "/guides/vue",
         "href": "/guides/[...guide]"
       },
       {

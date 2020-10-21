@@ -97,6 +97,7 @@ export default function Markdown({ source, highlight }) {
           heading: Heading,
           link: Link,
           text: Text,
+          image: Image,
         }}
       />
     </div>
@@ -143,4 +144,17 @@ function Heading({ children, level }) {
       <LinkIcon style={{ marginLeft: 8, height: 20, width: 20 }} />
     </Typography>
   )
+}
+
+function Image({ src, ...others }) {
+  const url = new URL(src, 'https://dummy.org')
+  const width = url.searchParams.get('width')
+  const height = url.searchParams.get('height')
+
+  const style = {
+    width: width && parseInt(width),
+    height: height && parseInt(height),
+  }
+
+  return <img src={src} {...others} style={style} />
 }

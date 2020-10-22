@@ -30,7 +30,7 @@ yarn add --dev @xdn/devtools @xdn/prefetch
 
 **Note**: you can skip this step if you are using `@xdn/next` or `@xdn/nuxt`
 
-Then load the widget in the Browser's javascript
+Add the following to your client JavaScript bundle:
 
 ```js
 import installDevtools from '@xdn/devtools/install'
@@ -38,7 +38,7 @@ import installDevtools from '@xdn/devtools/install'
 installDevtools()
 ```
 
-Alternatively you can also inject the widget install script directly in your HTML `<head>`
+Alternatively, you can add the following `script` tag to your app's HTML:
 
 ```html
   <script defer src="/__xdn__/devtools/install.js"></script>

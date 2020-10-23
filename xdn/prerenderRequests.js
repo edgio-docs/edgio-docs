@@ -14,8 +14,8 @@ function requestsForItem(item) {
   const requests = []
 
   if (item.as && item.as.startsWith('/')) {
-    requests.push({ path: `/guides${item.as}` })
-    requests.push({ path: `/api/guides${item.as}?version=` })
+    requests.push({ path: item.as })
+    requests.push({ path: `/api${item.as}?version=` })
   }
 
   if (item.items) {

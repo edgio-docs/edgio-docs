@@ -14,13 +14,6 @@ const useStyles = makeStyles(theme => ({
       borderColor: theme.palette.grey[100],
       borderWidth: 2,
     },
-    '&$focused input': {
-      color: theme.palette.grey[100],
-    },
-    '&$focused $notchedOutline': {
-      borderColor: 'blue',
-      borderWidth: 2,
-    },
   },
   notchedOutline: {
     borderColor: theme.palette.grey[300],

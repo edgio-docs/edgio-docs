@@ -18,10 +18,10 @@
     "@material-ui/lab": "^4.0.0-alpha.56",
     "@material-ui/styles": "^4.10.0",
     "@svgr/webpack": "^5.4.0",
-    "@xdn/core": "^2.17.0",
-    "@xdn/next": "^2.17.0",
-    "@xdn/prefetch": "^2.17.0",
-    "@xdn/react": "^2.17.0",
+    "@xdn/core": "file:.yalc/@xdn/core",
+    "@xdn/next": "file:.yalc/@xdn/next",
+    "@xdn/prefetch": "file:.yalc/@xdn/prefetch",
+    "@xdn/react": "file:.yalc/@xdn/react",
     "clsx": "^1.1.1",
     "file-loader": "^6.0.0",
     "isomorphic-fetch": "^2.2.1",
@@ -39,7 +39,7 @@
     "url-loader": "^4.1.0"
   },
   "devDependencies": {
-    "@xdn/cli": "^2.17.0",
+    "@xdn/cli": "file:.yalc/@xdn/cli",
     "babel-loader": "^8.1.0",
     "prettier": "^1.19.1"
   }

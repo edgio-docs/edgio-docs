@@ -1,10 +1,10 @@
 const guides = require('../guides/guides.json')
 
-module.exports = function prerenderRequests() {
+module.exports = async function prerenderRequests() {
   const requests = []
 
   for (let group in guides) {
-    requests.push(...requestsForItem(group))
+    requests.push(...requestsForItem(guides[group]))
   }
 
   return requests
@@ -13,9 +13,9 @@ module.exports = function prerenderRequests() {
 function requestsForItem(item) {
   const requests = []
 
-  if (item.as) {
-    requests.push({ path: `/guides/${item.as}` })
-    requests.push({ path: `/api/guides/${item.as}?version=` })
+  if (item.as && item.as.startsWith('/')) {
+    requests.push({ path: `/guides${item.as}` })
+    requests.push({ path: `/api/guides${item.as}?version=` })
   }
 
   if (item.items) {

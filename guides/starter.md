@@ -80,6 +80,8 @@ The XDN create module will prompt you for the following information:
 - Hostname: Enter the domain of the origin server that the XDN will be accelerating.
 - Package manager: Pick `npm` unless you have strong preference and experience with `yarn`. This guide will assume `npm`.
 
+Refer to the [xdn.config.js](xdn_config) guide for more details
+
 Here's an example output from running XDN create:
 
 ```bash

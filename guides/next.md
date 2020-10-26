@@ -24,6 +24,13 @@ To prepare your Next.js application for deployment on the Moovweb XDN:
 npm install -g @xdn/cli
 ```
 
+**Note
+If you're installing XDN CLI in a virtual environment, with NPM installed globally, the above command can run into permission issues ([example](https://forum.moovweb.com/t/xdn-cli-npm-install-error/83)). Use `sudo` to install XDN CLI to avoid this error.
+
+```bash
+sudo npm install -g @xdn/cli
+```
+
 2. Initialize your Next.js project
 
 ```bash

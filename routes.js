@@ -1,6 +1,7 @@
 const { Router, CustomCacheKey } = require('@xdn/core/router')
 const { nextRoutes } = require('@xdn/next')
 const key = new CustomCacheKey().excludeAllQueryParametersExcept('query', 'version')
+const prerenderRequests = require('./xdn/prerenderRequests')
 
 const htmlCacheConfig = {
   key,
@@ -39,6 +40,7 @@ const staticCacheConfig = {
 }
 
 module.exports = new Router()
+  .prerender(prerenderRequests)
   .match('/service-worker.js', ({ cache, serveStatic }) => {
     cache({
       browser: {

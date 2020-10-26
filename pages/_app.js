@@ -19,24 +19,32 @@ export default function MyApp({ Component, pageProps, currentVersion, versions }
   useJssStyles()
 
   return (
-    <MuiThemeProvider theme={theme}>
-      <VersionProvider selectedVersion={currentVersion} versions={versions}>
-        <Head>
-          <link rel="icon" href="/favicon.png" />
-          <link
-            rel="stylesheet"
-            href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
-          />
-        </Head>
-        <CssBaseline />
-        <MenuProvider>
-          <Header />
-          <main>
-            <Component {...pageProps} />
-          </main>
-        </MenuProvider>
-      </VersionProvider>
-    </MuiThemeProvider>
+    <>
+      <Head>
+        <meta charSet="utf-8" />
+        {/* PWA primary color */}
+        <meta name="theme-color" content={theme.palette.primary.main} />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+      </Head>
+      <MuiThemeProvider theme={theme}>
+        <VersionProvider selectedVersion={currentVersion} versions={versions}>
+          <Head>
+            <link rel="icon" href="/favicon.png" />
+            <link
+              rel="stylesheet"
+              href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+            />
+          </Head>
+          <CssBaseline />
+          <MenuProvider>
+            <Header />
+            <main>
+              <Component {...pageProps} />
+            </main>
+          </MenuProvider>
+        </VersionProvider>
+      </MuiThemeProvider>
+    </>
   )
 }
 

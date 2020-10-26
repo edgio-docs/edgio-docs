@@ -26,6 +26,24 @@ Or with Yarn:
 yarn add --dev @xdn/devtools @xdn/prefetch
 ```
 
+### Client widget
+
+**Note**: you can skip this step if you are using `@xdn/next` or `@xdn/nuxt`
+
+Add the following to your client JavaScript bundle:
+
+```js
+import installDevtools from '@xdn/devtools/install'
+
+installDevtools()
+```
+
+Alternatively, you can add the following `script` tag to your app's HTML:
+
+```html
+  <script defer src="/__xdn__/devtools/install.js"></script>
+```
+
 ### Service Worker
 
 Then, if you haven't already, enable `@xdn/prefetch` in your service worker. See [Prefetching](https://developer.moovweb.com/guides/prefetching) for more information on enabling `@xdn/prefetch`.

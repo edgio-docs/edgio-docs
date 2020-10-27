@@ -25,7 +25,9 @@ npm install -g @xdn/cli
 ```
 
 **Note
-If you're installing XDN CLI in a virtual environment, with NPM installed globally, the above command can run into permission issues ([example](https://forum.moovweb.com/t/xdn-cli-npm-install-error/83)). Use `sudo` to install XDN CLI to avoid this error.
+When installing the XDN CLI globally in a virtual environment that has Node and NPM installed globally, you [may run into permission issues](https://forum.moovweb.com/t/xdn-cli-npm-install-error/83). In that case, you can install the XDN CLI locally within you app using `npm i -D @xdn/cli` and running commands using `./node_modules/@xdn/cli` instead of `xdn`.
+
+If you run into permission issues while attempting to install the XDN CLI globally on your local development machine, these may be fixed by using [nvm](https://github.com/nvm-sh/nvm) to manage Node and NPM.
 
 ```bash
 sudo npm install -g @xdn/cli
@@ -60,7 +62,7 @@ module.exports = withXDN(withServiceWorker())
 
 The `withXDN` plugin ensures that your app is bundled properly for running on the XDN, and `withServiceWorker` provides a service worker based on `sw/service-worker.js`.
 
-#### If you're already using `next-offline`, you should remove it in favor of `withServiceWorker`, which itself uses `next-offline`.
+**If you're already using `next-offline`, you should remove it in favor of `withServiceWorker`, which itself uses `next-offline.**
 
 ## Running Locally
 

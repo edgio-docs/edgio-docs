@@ -8,6 +8,8 @@ The XDN Devtools is a widget that helps developers understand how their site int
 
 ![devtools](/images/devtools/devtools.png?width=275)
 
+[Live demo of XDN Devtools running on a React Storefront site](https://demo.reactstorefront.io/__xdn__/devtools/enable)
+
 ## Installation
 
 It's likely that the Devtools was added to your app when you ran `xdn init`. If that's not the case, or your app predates XDN v2.22.0, follow these steps to add the Devtools to your app:

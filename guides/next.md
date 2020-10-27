@@ -28,11 +28,6 @@ npm install -g @xdn/cli
 When installing the XDN CLI globally in a virtual environment that has Node and NPM installed globally, you [may run into permission issues](https://forum.moovweb.com/t/xdn-cli-npm-install-error/83). In that case, you can install the XDN CLI locally within you app using `npm i -D @xdn/cli` and running commands using `./node_modules/@xdn/cli` instead of `xdn`.
 
 If you run into permission issues while attempting to install the XDN CLI globally on your local development machine, these may be fixed by using [nvm](https://github.com/nvm-sh/nvm) to manage Node and NPM.
-
-```bash
-sudo npm install -g @xdn/cli
-```
-
 2. Initialize your Next.js project
 
 ```bash

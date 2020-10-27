@@ -1,6 +1,6 @@
 # Vue Storefront
 
-Follow these steps to deploy a Vue Storefront app on the Moovweb XDN. As of now the XDN is only compatible with [Vue Storefront Next](https://github.com/DivanteLTD/vue-storefront#about-vue-storefront-next).
+Follow these steps to deploy a Vue Storefront app on the Moovweb XDN. As of now the XDN is only compatible with the [Vue Storefront Next CLI tool](https://docs-next.vuestorefront.io/commercetools/getting-started.html#with-vue-storefront-cli-recommended).
 
 ## Install Node.js and npm
 
@@ -12,136 +12,33 @@ To prepare your Vue Storefront app for deployment on the Moovweb XDN, run the fo
 
 ```
 npm install -g @xdn/cli
-cd packages/<platform>/theme # where platform is the ecommerce platform you're deploying on. For example, "shopify".
+cd <vue-storefront-project-directory>
 xdn init
 ```
 
-## Changes necessary to deploy to the XDN
+## Vue Storefront compatible package versions
 
-### package.json
+The VSF team is still working on the next version of VSF. Currently, the XDN only works with these package versions:
 
-Update the xdn:build and xdn:deploy scripts as follows:
-
-```js
-"xdn:build": "xdn build && cp -r lang .xdn/lambda/lang",
-"xdn:deploy": "yarn xdn:build && xdn deploy --skip-build platform",
 ```
+"@vue-storefront/commercetools": "0.2.4",
+"@vue-storefront/nuxt": "0.0.8",
+"@vue-storefront/nuxt-theme": "0.0.4"
+```
+
+Please update your package.json with these changes and re-run `npm install`
 
 ### nuxt.config.js
 
-Make the following changes to `nuxt.config.js`:
+The XDN init command should have automatically moved all your `modules` to `buildModules` in order to deploy the smallest possible build to the XDN.
 
-1. Move all entries in `modules` to `buildModules`
-2. Remove `@nuxtjs/pwa` from `buildModules`. It is not needed because `@xdn/nuxt/module` builds and injects its own service worker.
-3. Add `@xdn/nuxt/module` to `buildModules`
-4. Ensure that loading `nuxt.config.js` does not fail when webpack is not present.
-
-In nuxt.config.js, replace this:
-
-```js
-require('dotenv').config()
-const webpack = require('webpack')
-```
-
-with this:
-
-```js
-let webpack
-
-try {
-  require('dotenv').config()
-  webpack = require('webpack')
-} catch (e) {
-  // will get here in the cloud, but we can just catch this error because webpack is only needed during the build phase
-}
-```
-
-And replace this:
-
-```js
-build: {
-  transpile: ['vee-validate/dist/rules'],
-  plugins: [
-    new webpack.DefinePlugin({
-      'process.VERSION': JSON.stringify({
-        // eslint-disable-next-line global-require
-        version: require('./package.json').version,
-        lastCommit: process.env.LAST_COMMIT || ''
-      })
-    })
-  ]
-}
-```
-
-with this:
-
-```js
-build: webpack && {
-  transpile: ['vee-validate/dist/rules'],
-  plugins: [
-    new webpack.DefinePlugin({
-      'process.VERSION': JSON.stringify({
-        // eslint-disable-next-line global-require
-        version: require('./package.json').version,
-        lastCommit: process.env.LAST_COMMIT || '',
-      }),
-    }),
-  ],
-}
-```
-
-### tsconfig.json
-
-In tsconfig.json, add `"sw"` to `exclude`.
-
-### routes.js
-
-Update the XDN router located in `packages/<platform>/theme/routes.js`:
-
-```js
-const { Router } = require('@xdn/core/router')
-const { nuxtRoutes, renderNuxtPage } = require('@xdn/nuxt')
-
-const HTML = {
-  edge: {
-    maxAgeSeconds: 60 * 60 * 24,
-    staleWhileRevalidateSeconds: 60 * 60 * 24,
-    forcePrivateCaching: true,
-  },
-  browser: false,
-}
-
-module.exports = new Router()
-  .match('/service-worker.js', ({ serviceWorker }) => {
-    serviceWorker('.nuxt/dist/client/service-worker.js')
-  })
-  .get('/', ({ cache }) => {
-    cache(HTML)
-  })
-  .get('/c/:id', ({ cache }) => {
-    cache(HTML)
-  })
-  .get('/p/:id', ({ cache }) => {
-    cache(HTML)
-  })
-  .use(nuxtRoutes)
-  .fallback(renderNuxtPage)
-```
-
-## Install additional webpack loaders
-
-Run the following in `packages/<platform>/theme`:
-
-```
-yarn add --dev  css-loader@^3.6.0 file-loader@^6.1.0 url-loader@^4.1.0 vue-loader@^15.9.3
-```
+Ensure `@nuxtjs/pwa` is not present in the `buildModules`. It is not needed because `@xdn/nuxt/module` builds and injects its own service worker.
 
 ## Building and Deploying
 
 To build and deploy your app to the XDN, run the following from the root directory of your app:
 
 ```
-yarn build:core
-cd packages/<platform>/theme # where platform is the ecommerce platform you're deploying on. For example, "shopify".
-yarn xdn:deploy <team> # where team is the name of the XDN team to which the app should be deployed.
+npm run xdn:build
+npm run xdn:deploy <team> # where team is the name of the XDN team to which the app should be deployed.
 ```

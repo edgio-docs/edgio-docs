@@ -2,6 +2,9 @@ import React, { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 
 export default function AddMixpanelIds() {
+  const MOOVWEB = 'moovweb.'
+  const RSF = 'reactstorefront.'
+
   const { asPath } = useRouter()
   const [mpId, setMpId] = useState(false)
 
@@ -21,7 +24,7 @@ export default function AddMixpanelIds() {
       const anchors = document.querySelectorAll('a')
 
       anchors.forEach(anchor => {
-        if (anchor.href.includes('moovweb.app')) {
+        if (anchor.href.includes(MOOVWEB) || anchor.href.includes(RSF)) {
           const url = new URL(anchor.href)
           url.searchParams.append('mpId', mpId)
 

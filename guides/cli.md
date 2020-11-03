@@ -153,7 +153,7 @@ Runs your app locally. Uses port 3000 by default. You can change this by setting
 
 | Name           | Description                                                                                                                                                                                                                        |
 | -------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `--production` | Runs your app using serverless-offline to more closely simulate the cloud environment. This is equivalend to setting NODE_ENV environment variable to `true`. You need to run `xdn build` first.                                   |
+| `--production` | Runs a production build of your app, simulating the cloud environment. This can also be achieved by setting the NODE_ENV environment variable to `true`. You need to run `xdn build` first. |
 | `--cache`      | Enables caching during local development. By default caching is turned off in local development to ensure you don't see stale responses as you make changes to your code. Enable caching to test the caching logic in your router. |
 
 #### Example
@@ -161,6 +161,14 @@ Runs your app locally. Uses port 3000 by default. You can change this by setting
 ```bash
 xdn run --production
 ```
+
+Or to run a deployment bundle downloaded from the XDN Developer Console, use:
+
+```bash
+xdn run /path/to/bundle.zip
+```
+
+Production mode is always used whe running downloaded bundles.
 
 ## use
 

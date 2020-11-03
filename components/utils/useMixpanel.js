@@ -24,7 +24,10 @@ export default function useMixpanel() {
       const anchors = document.querySelectorAll('a')
 
       anchors.forEach(anchor => {
-        if (anchor.href.includes(MOOVWEB) || anchor.href.includes(RSF)) {
+        if (
+          (anchor.href.includes(MOOVWEB) || anchor.href.includes(RSF)) &&
+          !anchor.href.includes(window.location.hostname)
+        ) {
           const url = new URL(anchor.href)
           url.searchParams.append('mpId', mpId)
 

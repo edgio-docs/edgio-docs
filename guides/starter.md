@@ -59,7 +59,9 @@ These tags power the predictive prefetching and caching that will be used by the
 
 ## Setup a Starter project
 
-As with any XDN project make sure you have Node and npm installed. If you do not have Node.js installed on your system, download and install it from official [Node.js downloads page](https://nodejs.org/en/download/). Select the download labeled "LTS (Recommended For Most Users)" and that matches your operating system, and run the installer. Note that the installer for Node.js will also install npm.
+**XDN only supports Node.js version 12.x**
+
+As with any XDN project make sure you have Node and npm installed. If you do not have Node.js installed on your system, download and install it from the official [Node.js v12.x downloads](https://nodejs.org/dist/latest-v12.x/) page. Select the download that matches your operating system and run the installer. Note that the installer for Node.js will also install npm.
 
 Next, install the [XDN CLI](cli)
 

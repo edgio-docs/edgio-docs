@@ -8,6 +8,8 @@ This guide shows you how to deploy a Vue.js application on the Moovweb XDN.
 
 If you do not have Node.js installed on your system, download and install it from official [Node.js downloads](https://nodejs.org/en/download/) page. Select the download labeled "LTS (Recommended For Most Users)" and that matches your operating system, and run the installer. Note that the installer for Node.js will also install npm.
 
+_Note that while you can use any version of Node.js >= 12 locally, your app will run in Node 12 when deployed to the XDN cloud. Therefore we highly suggest using Node 12 for all development._
+
 ## Sign up for the XDN
 
 Deploying requires an account on the Moovweb XDN. [Sign up here for free.](https://moovweb.app/signup).
@@ -29,14 +31,14 @@ npm install -g @vue/cli @vue/cli-service-global
 vue create hello-world
 ```
 
-When running `vue create` select `Vue 2` as a preset, 
+When running `vue create` select `Vue 2` as a preset,
 
 ```bash
 Vue CLI v4.5.7
 ? Please pick a preset: (Use arrow keys)
-❯ Default ([Vue 2] babel, eslint) 
-  Default (Vue 3 Preview) ([Vue 3] babel, eslint) 
-  Manually select features 
+❯ Default ([Vue 2] babel, eslint)
+  Default (Vue 3 Preview) ([Vue 3] babel, eslint)
+  Manually select features
 ```
 
 You can verify your app works by running it locally:
@@ -53,7 +55,7 @@ You should see an output like this in the terminal:
 
 
   App running at:
-  - Local:   http://localhost:8080/ 
+  - Local:   http://localhost:8080/
   - Network: http://172.20.10.8:8080/
 
   Note that the development build is not optimized.
@@ -63,7 +65,7 @@ You should see an output like this in the terminal:
 
 ## Configuring your Vue.js app for the XDN
 
-###  Initialize your project
+### Initialize your project
 
 In the root directory of your project run `xdn init`:
 
@@ -76,11 +78,11 @@ This will automatically update your `package.json` and add all of the required X
 - The `@xdn/core` package - Allows you to declare routes and deploy your application on the Moovweb XDN
 - The `@xdn/prefetch` package - Allows you to configure a service worker to prefetch and cache pages to improve browsing speed
 - `xdn.config.js` - A configuration file for the XDN
-- `routes.js` - A default routes file that sends all requests to Vue.js. 
+- `routes.js` - A default routes file that sends all requests to Vue.js.
 
 ### Configure the routes
 
-Next you'll need to configure the XDN routing in the `routes.js` file. 
+Next you'll need to configure the XDN routing in the `routes.js` file.
 
 For the Vue `hello-world` template, replace your `routes.js` file with the following:
 
@@ -93,11 +95,11 @@ module.exports = new Router()
 
   // Send everything else to the App Shell
   .fallback(({ appShell }) => {
-    appShell('dist/index.html')  
+    appShell('dist/index.html')
   })
 ```
 
-The example above assumes you're using Vue as a single page app. It routes the static assets (JavaScript, CSS, and Images) in the production build folder `dist` and maps all other requests to the app shell in `dist/index.html`. 
+The example above assumes you're using Vue as a single page app. It routes the static assets (JavaScript, CSS, and Images) in the production build folder `dist` and maps all other requests to the app shell in `dist/index.html`.
 
 Refer to the [Routing](routing) guide for the full syntax of the `routes.js` file and how to configure it for your use case.
 

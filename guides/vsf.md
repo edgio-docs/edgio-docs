@@ -8,6 +8,8 @@ Follow these steps to deploy a Vue Storefront app on the Moovweb XDN. As of now 
 
 If you do not have Node.js installed on your system, download and install it from official [Node.js downloads](https://nodejs.org/en/download/) page. Select the download labeled "LTS (Recommended For Most Users)" and that matches your operating system, and run the installer. Note that the installer for Node.js will also install npm.
 
+_Note that while you can use any version of Node.js >= 12 locally, your app will run in Node 12 when deployed to the XDN cloud. Therefore we highly suggest using Node 12 for all development._
+
 To prepare your Vue Storefront app for deployment on the Moovweb XDN, run the following commands in the root folder of your project:
 
 ```

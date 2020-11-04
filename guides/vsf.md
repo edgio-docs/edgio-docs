@@ -8,31 +8,64 @@ Follow these steps to deploy a Vue Storefront app on the Moovweb XDN. As of now 
 
 If you do not have Node.js installed on your system, download and install it from official [Node.js downloads](https://nodejs.org/en/download/) page. Select the download labeled "LTS (Recommended For Most Users)" and that matches your operating system, and run the installer. Note that the installer for Node.js will also install npm.
 
+## Install the VSF CLI
+
+The Vue Storefront CLI tool will generate a preconfigured boilerplate project for you. Use these commands to create a new project and update to the latest dependencies.
+
+```
+npm i -g @vue-storefront/cli@next
+vsf init <project-name>
+cd <project-name>
+npm install
+npm install --save @vue-storefront/commercetools@latest @vue-storefront/nuxt@latest @vue-storefront/nuxt-theme@latest
+```
+
+## Vue Storefront bugfixes
+
+The VSF team is still working on the next version of VSF, and there are a few bugs.
+
+In order to get the boilerplate project building, please make these changes:
+
+In `composables/useUiHelpers/index.ts`, remove this line:
+
+```js
+import { FacetSearchInput } from '@vue-storefront/commercetools'
+```
+
+and change this line:
+
+```js
+const getFacetsFromURL = (): FacetSearchInput => {
+```
+
+to
+
+```js
+const getFacetsFromURL = (): any => {
+```
+
+## Install the XDN CLI
+
 To prepare your Vue Storefront app for deployment on the Moovweb XDN, run the following commands in the root folder of your project:
 
 ```
 npm install -g @xdn/cli
-cd <vue-storefront-project-directory>
 xdn init
 ```
-
-## Vue Storefront compatible package versions
-
-The VSF team is still working on the next version of VSF. Currently, the XDN only works with these package versions:
-
-```
-"@vue-storefront/commercetools": "0.2.4",
-"@vue-storefront/nuxt": "0.0.8",
-"@vue-storefront/nuxt-theme": "0.0.4"
-```
-
-Please update your package.json with these changes and re-run `npm install`
 
 ### nuxt.config.js
 
 The XDN init command should have automatically moved all your `modules` to `buildModules` in order to deploy the smallest possible build to the XDN.
 
 Ensure `@nuxtjs/pwa` is not present in the `buildModules`. It is not needed because `@xdn/nuxt/module` builds and injects its own service worker.
+
+## Development
+
+To run locally in development mode, use this command:
+
+```
+xdn run --cache
+```
 
 ## Building and Deploying
 

@@ -2,6 +2,23 @@
 
 This guide gives examples of common routing patterns using the XDN.
 
+- [Proxying a backend](#section_proxying_a_backend)
+  - [Same Path](#section_same_path)
+  - [Different Path](#section_different_path)
+  - [Adding Caching](#section_adding_caching)
+  - [Altering the request](#section_altering_the_request)
+  - [Altering the response](#section_altering_the_response)
+    - [Altering all responses](#section_altering_all_responses)
+  - [Manipulating Cookies](#section_manipulating_cookies)
+  - [Proxying to different backends based on different host names](#section_proxying_to_different_backends_based_on_different_host_names)
+- [Serving a static file](#section_serving_a_static_file)
+- [Responding with a string response body](#section_responding_with_a_string_response_body)
+- [Redirecting](#section_redirecting)
+  - [Redirecting all traffic to a different domain](#section_redirecting_all_traffic_to_a_different_domain)
+- [Blocking unwanted traffic](#section_blocking_unwanted_traffic)
+  - [Blocking traffic from specific countries](#section_blocking_traffic_from_specific_countries)
+  - [Whitelisting Specific IPs](#section_whitelisting_specific_ips)
+
 ## Proxying a backend
 
 ### Same Path

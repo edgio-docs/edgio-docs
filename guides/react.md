@@ -212,18 +212,18 @@ const edgeAndBrowser = {
 
 module.exports = new Router()
   .prerender([{ path: '/' }])
-  // assets in build/static are hashed and can be far-future cached in the browser and at the edge
+  // js and css assets are hashed and can be far-future cached in the browser
   .get('/static/:path*', ({ cache, serveStatic }) => {
     cache(edgeAndBrowser)
     serveStatic('build/static/:path*')
   })
-  // all paths that do not have a "." should serve the app shell (index.html)
-  .get('/:path*([^\\.]+)', ({ cache, appShell }) => {
+  // all paths that do not have a "." as well as "/"" should serve the app shell (index.html)
+  .get('/:path*/:file([^\\.]+|)', ({ cache, appShell }) => {
     cache(edgeOnly)
     appShell('build/index.html')
   })
   // all other paths should be served from the build directory
-  .fallback(({ cache, serveStatic }) => {
+  .get('/:path*', ({ cache, serveStatic }) => {
     cache(edgeOnly)
     serveStatic('build/:path*')
   })

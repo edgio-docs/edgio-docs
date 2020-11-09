@@ -19,7 +19,7 @@ npm install -g gatsby-cli
 gatsby new gatsby-site https://github.com/gatsbyjs/gatsby-starter-hello-world
 ```
 
-You should now have a working Gatsby site. Run `gatsby serve` to see the application running on `localhost:8000`.
+You should now have a working Gatsby site. Run `gatsby develop` to see the application running on `localhost:8000`.
 
 To deploy your Gatsby on Moovweb XDN:
 

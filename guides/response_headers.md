@@ -9,6 +9,7 @@ This guide covers the headers that Moovweb XDN injects into responses making the
 - `x-xdn-request-id`: the unique ID of the request on Moovweb XDN infrastructure
 - `x-xdn-hit-request-id`: the unique ID of the request whose cached response is being returned (not present if cache miss)
 - `x-xdn-caching-status`: indicates why a response was or was not cached. See [Caching](/guides/caching#section_why_is_my_response_not_being_cached_).
+- `x-xdn-surrogate-key`: a space separated list of secondary cache keys used for [cache clearing](/guides/caching#section_clearing_the_cache)
 
 ### Structure of `x-xdn-t`
 

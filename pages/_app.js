@@ -9,6 +9,7 @@ import Head from 'next/head'
 import getBaseUrl from '../components/utils/getBaseUrl'
 import { VERSION_REGEX, VersionProvider } from '../components/versioning'
 import MenuProvider from '../components/MenuProvider'
+import useMixpanel from '../components/utils/useMixpanel'
 import { configure as configurePrefetching } from '@xdn/prefetch/window/prefetch'
 
 if (typeof window !== 'undefined') {
@@ -17,6 +18,9 @@ if (typeof window !== 'undefined') {
 
 export default function MyApp({ Component, pageProps, currentVersion, versions }) {
   useJssStyles()
+
+  // We add mixpanel id to every moovweb.app/rsf anchor
+  useMixpanel()
 
   return (
     <>

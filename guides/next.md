@@ -20,7 +20,7 @@ npm create next-app my-next-app
 
 To prepare your Next.js application for deployment on the Moovweb XDN:
 
-1. Install the XDN CLI globally:
+#### 1. Install the XDN CLI globally:
 
 ```bash
 npm install -g @xdn/cli
@@ -31,7 +31,7 @@ When installing the XDN CLI globally in a virtual environment that has Node and 
 
 If you run into permission issues while attempting to install the XDN CLI globally on your local development machine, these may be fixed by using [nvm](https://github.com/nvm-sh/nvm) to manage Node and NPM.
 
-2. Initialize your Next.js project
+#### 2. Initialize your Next.js project
 
 ```bash
 cd my-next-app
@@ -48,7 +48,9 @@ This will automatically add all of the required dependencies and files to your p
 - `routes.js` - A default routes file that sends all requests to Next.js. Update this file to add caching or proxy some URLs to a different origin.
 - `sw/service-worker.js` A service worker implemented using Workbox.
 
-3. Add the `withXDN` and `withServiceWorker` plugins to `next.config.js`. If this file doesn't exist, create it in the root directory of your project folder, with the following content:
+#### 3. Edit `next.config.js`
+
+Add the `withXDN` and `withServiceWorker` plugins to `next.config.js`. If this file doesn't exist, create it in the root directory of your project folder, with the following content:
 
 ```js
 // next.config.js
@@ -60,7 +62,7 @@ module.exports = withXDN(withServiceWorker())
 
 The `withXDN` plugin ensures that your app is bundled properly for running on the XDN, and `withServiceWorker` provides a service worker based on `sw/service-worker.js`.
 
-**If you're already using `next-offline`, you should remove it in favor of `withServiceWorker`, which itself uses `next-offline.**
+*If you're already using `next-offline`, you should remove it in favor of `withServiceWorker`, which itself uses `next-offline.*
 
 ## Running Locally
 

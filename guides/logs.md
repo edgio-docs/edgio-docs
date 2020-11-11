@@ -206,3 +206,7 @@ we don't have access to beresp from moov_log so we preserve it in req
 ### bip
 
 IP of the backend that responded to the request
+
+### hrid
+
+Request ID of the response hit in the cache. Corresponds to [`x-xdn-hit-request-id`](response_headers#section_general_headers) response header.

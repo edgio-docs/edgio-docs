@@ -5,7 +5,7 @@ export default async function versions(req, res) {
     // Here we add a cache buster to ensure that when the XDN cache is cleared we get the latest versions file from
     // GitHub
     const verRes = await fetch(
-      `http://moovweb-docs.github.io/xdn-docs-pages/versions.csv?nc=${new Date().getTime()}`,
+      `https://moovweb-docs.github.io/xdn-docs-pages/versions.csv?nc=${new Date().getTime()}`,
     )
 
     const versions = (await verRes.text())

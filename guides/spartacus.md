@@ -187,7 +187,7 @@ Angular 9 Universal has an Express server export by default, so these 3 steps ca
     module.exports = {
       server: {
     +   path: 'dist/server.js'
-    -   path: 'dist/xdn-spartacus-app-server/main.js',
+    -   path: 'dist/<your-project-name>-server/main.js',
     -   export: 'app'
       },
     }
@@ -302,60 +302,25 @@ Prefetching for a Spartacus app can be enabled by listening to upstream requests
 
 Example implementation of upstream request tracking:
 
-```js
+```diff
 import 'zone.js/dist/zone-node'
-
 import * as express from 'express'
 import { join } from 'path'
-import * as http from 'http'
-import * as https from 'https'
 
-import { createNamespace } from 'cls-hooked'
-const ns = createNamespace('app')
++ // xdn
++ import * as http from 'http'
++ import * as https from 'https'
++ import createRenderCallback from '@xdn/spartacus/createRenderCallback'
++ import installXdnMiddleware from '@xdn/spartacus/installXdnMiddleware'
 
-const originalHttpRequest = http.request
-const originalHttpsRequest = https.request
-
-const requestTrackingMiddleware = (req, res, next) => {
-  ns.bindEmitter(req)
-  ns.bindEmitter(res)
-  ns.run(() => {
-    patchHttp()
-    const requests = new Set()
-    ns.set('requests', requests)
-    next()
-  })
-}
-
-const patchHttpModule = (module, orig) => {
-  module.request = ns.bind(function(...args) {
-    const requestsSet = ns.get('requests')
-    if (requestsSet && args[0]) {
-      let path
-      const options = args[0]
-      if (typeof options === 'string') {
-        path = options
-      } else {
-        path = options.path
-      }
-      const newSet = requestsSet.add(path)
-      ns.set('requests', newSet)
-    }
-    return orig(...args)
-  })
-}
-
-const patchHttp = () => {
-  patchHttpModule(http, originalHttpRequest)
-  patchHttpModule(https, originalHttpsRequest)
-}
 
 // Express server
-const app = express()
-app.use(requestTrackingMiddleware)
+const server = express()
+
++ installXdnMiddleware({ server, http, https });
 
 const PORT = process.env.PORT || 4200
-const DIST_FOLDER = join(process.cwd(), 'dist/xdn-spartacus-app')
+const DIST_FOLDER = join(process.cwd(), 'dist/<your-project-name>')
 
 // * NOTE :: leave this as require() since this file is built Dynamically from webpack
 const {
@@ -363,9 +328,9 @@ const {
   LAZY_MODULE_MAP,
   ngExpressEngine,
   provideModuleMap,
-} = require('./dist/xdn-spartacus-app-server/main')
+} = require('./dist/<your-project-name>-server/main')
 
-app.engine(
+server.engine(
   'html',
   ngExpressEngine({
     bootstrap: AppServerModuleNgFactory,
@@ -373,10 +338,10 @@ app.engine(
   }),
 )
 
-app.set('view engine', 'html')
-app.set('views', DIST_FOLDER)
+server.set('view engine', 'html')
++ server.set('views', DIST_FOLDER)
 
-app.get(
+server.get(
   '*.*',
   express.static(DIST_FOLDER, {
     maxAge: '1y',
@@ -384,21 +349,14 @@ app.get(
 )
 
 // All regular routes use the Universal engine
-app.get('*', (req, res) => {
-  const callback = (err, html) => {
-    const requestsArray = Array.from(ns.get('requests'))
-    let header = ''
-    requestsArray.forEach(request => {
-      header += request + ';'
-    })
-    res.set('x-xdn-upstream-requests', header)
-
-    res.send(html)
-  }
-  res.render('index', { req }, ns.bind(callback))
+server.get('*', (req, res) => {
+  res.render(
+    'index',
+    { req },
++   createRenderCallback(res),
 })
 
-export default app
+export default server
 ```
 
 ### Service worker
@@ -432,7 +390,7 @@ new Prefetcher().route()
 
 const path = require('path')
 const webpack = require('webpack')
-const webBuildTargetFolder = path.join(__dirname, '..', '..', 'dist', 'xdn-spartacus-app')
+const webBuildTargetFolder = path.join(__dirname, '..', '..', 'dist', '<your-project-name>')
 const targetServiceWorkerFilename = 'service-worker.js'
 
 module.exports = {
@@ -505,7 +463,7 @@ injectManifest(workboxConfig).then(({ count, size }) => {
 
 ```js
 module.exports = {
-  globDirectory: 'dist/xdn-spartacus-app/',
+  globDirectory: 'dist/<your-project-name>/',
   globPatterns: [
     '**/*.{css,eot,html,ico,jpg,js,json,png,svg,ttf,txt,webmanifest,woff,woff2,webm,xml}',
   ],
@@ -516,8 +474,8 @@ module.exports = {
   // Allows to avoid using cache busting for Angular files because Angular already takes care of that!
   dontCacheBustURLsMatching: new RegExp('.+.[a-f0-9]{20}..+'),
   maximumFileSizeToCacheInBytes: 4 * 1024 * 1024, // 4Mb
-  swSrc: 'dist/xdn-spartacus-app/service-worker.js',
-  swDest: 'dist/xdn-spartacus-app/service-worker.js',
+  swSrc: 'dist/<your-project-name>/service-worker.js',
+  swDest: 'dist/<your-project-name>/service-worker.js',
 }
 ```
 
@@ -528,8 +486,8 @@ To build the service worker add the following command to `package.json`:
 ```json
 {
   ...
-  "build:pwa:web": "rimraf ./dist/xdn-spartacus-app/service-worker.js && webpack --config ./src/sw/webpack.prod.config.js --progress --colors && node ./src/sw/workbox-build-inject.js",
-  "postbuild:ssr": "npm run build:pwa:web", // or: "yarn build:web:pwa"
+  "build:pwa:web": "rimraf ./dist/<your-project-name>/service-worker.js && webpack --config ./src/sw/webpack.prod.config.js --progress --colors && node ./src/sw/workbox-build-inject.js",
+  "postbuild:ssr": "npm run build:pwa:web", // or: "yarn build:pwa:web"
   ...
 }
 ```
@@ -554,11 +512,11 @@ Installing the service worker and any further prefetching will be handled by `@x
 
 Example implementation in `app.component.ts`:
 
-```typescript
+```diff
 import { Component, OnInit, Inject } from '@angular/core'
-import install from '@xdn/prefetch/window/install'
 import { isPlatformBrowser } from '@angular/common'
 import { PLATFORM_ID } from '@angular/core'
++ import install from '@xdn/prefetch/window/install'
 
 @Component({
   selector: 'app-root',
@@ -567,18 +525,18 @@ import { PLATFORM_ID } from '@angular/core'
 })
 export class AppComponent implements OnInit {
   isBrowser: boolean
-  title = 'xdn-spartacus-app'
+  title = '<your-project-name>'
 
   constructor(@Inject(PLATFORM_ID) platformId: Object) {
     this.isBrowser = isPlatformBrowser(platformId)
   }
 
   ngOnInit() {
-    setTimeout(() => {
-      if (this.isBrowser) {
-        install()
-      }
-    })
++   setTimeout(() => {
++     if (this.isBrowser) {
++       install()
++     }
++   })
   }
 }
 ```
@@ -656,7 +614,7 @@ module.exports = app => {
     })
     .match('/service-worker.js', ({ setResponseHeader, serviceWorker }) => {
       setResponseHeader('content-type', 'application/javascript')
-      serviceWorker('dist/xdn-spartacus-app/service-worker.js')
+      serviceWorker('dist/<your-project-name>/service-worker.js')
     })
     .use(angularMiddleware)
 }

@@ -5,16 +5,16 @@
 | CODE | NAME | DESCRIPTION |
 | -- | -- | -- |
 | 412 | Precondition Failed | This code is returned when query string parameter `xdn_prefetch` equals `1` and the result is not found in the edge cache. |
-| 530 | Internal Moovweb Error | Unexpected error in the Moovweb XDN. Please contact [support](https://help.moovweb.com). |
-| 531 | Obsolete | Not used by Moovweb XDN. |
-| 532 | Obsolete | Not used by Moovweb XDN. |
+| 530 | Internal Error | Unexpected error in the Moovweb XDN. Please contact [support](https://help.moovweb.com). |
+| 531 | Project Upstream Timeout | User's XDN project timed out while waiting for an upstream response. |
+| 532 | Project Response Too Large | User's XDN project returned a response size greater than the allowed 6MB. |
 | 533 | Obsolete | Not used by Moovweb XDN. |
 | 534 | Project Error | The serverless project code has failed unexpectedly. Use [server logs](/guides/logs#section_server_logs) to debug. |
-| 535 | Project Fetch Error | The HTTP header `host` is missing or does not match any Moovweb XDN deployment. Check your requesting URL and your project config. |
+| 535 | Unknown Project | The HTTP header `host` is missing or does not match any Moovweb XDN deployment. Check your requesting URL and your project config. |
 | 536 | Obsolete | Not used by Moovweb XDN. |
 | 537 | Obsolete | Not used by Moovweb XDN. |
-| 538 | Request Loop Error | User exceeded the maximum level (4) of nested Moovweb XDN requests. “Nested” means an XDN site is the upstream of another XDN site. Exceeding the limit results in a request loop error, indicating the request’s upstream origin site is itself. |
-| 539 | Worker Timeout | The serverless project code did not respond on time, either due to slow upstreams or to badly handled asynchronous requests in the user’s code (e.g. missing `await` or call to `callback`). Use [server logs](/guides/logs#section_server_logs) and [performance profiling](/guides/performance) to debug. |
-| 540 | Reserved | Reserved for experimental limits and features. Please contact [support](https://help.moovweb.com). |
+| 538 | Project Request Loop | User exceeded the maximum level (4) of nested Moovweb XDN requests. “Nested” means an XDN site is the upstream of another XDN site. Exceeding the limit results in a request loop error, indicating the request’s upstream origin site is itself. |
+| 539 | Project Timeout | The serverless project code did not respond on time, either due to slow upstreams or to badly handled asynchronous requests in the user’s code (e.g. missing `await` or call to `callback`). Use [server logs](/guides/logs#section_server_logs) and [performance profiling](/guides/performance) to debug. |
+| 540 | Project Out of Memory | User's CDN project consumed memory greater than the allows 1,792MB |
 | 541 | Out of Workers | The traffic was so high that request could not be scheduled for processing within the scheduling timeout. Please contact [support](/guides/support) to upgrade your account. |
-| 542 | Header Overflow | Either the request or response had too many HTTP headers. See [limits](/guides/limits) |
+| 542 | Project Header Overflow | Either the request or response had too many HTTP headers. See [limits](/guides/limits) |

@@ -11,6 +11,8 @@ import {
   Hidden,
   LinearProgress,
   Button,
+  lighten,
+  darken,
 } from '@material-ui/core'
 import MenuIcon from '@material-ui/icons/Menu'
 import Link from 'next/link'
@@ -19,6 +21,7 @@ import SearchField from './SearchField'
 import Logo from './Logo'
 import Router from 'next/router'
 import clsx from 'clsx'
+import HeaderCollapseMenu from './HeaderCollapseMenu'
 
 const useStyles = makeStyles(theme => ({
   appBar: {
@@ -90,6 +93,15 @@ const useStyles = makeStyles(theme => ({
       display: 'block',
     },
   },
+  signUpButton: {
+    color: theme.palette.secondary.light,
+    borderColor: theme.palette.secondary.light,
+    transition: 'color border-color 200ms linear',
+    '&:hover': {
+      color: darken(theme.palette.secondary.light, 0.1),
+      borderColor: darken(theme.palette.secondary.light, 0.1),
+    },
+  },
 }))
 
 export default function Header() {
@@ -132,9 +144,19 @@ export default function Header() {
               <div style={{ flex: 1 }} className={classes.xsDown} />
               <VersionChooser />
               <div style={{ flex: 1 }} className={classes.smUp} />
+              <Hidden smDown implementation="css">
+                <Button
+                  href="https://moovweb.app/signup?redirectTo=/"
+                  target="_blank"
+                  className={classes.signUpButton}
+                  variant="outlined"
+                >
+                  SIGN UP
+                </Button>
+              </Hidden>
               <Hidden mdDown implementation="css">
                 <Button href="https://moovweb.app" target="_blank" className={classes.button}>
-                  CONSOLE
+                  LOGIN
                 </Button>
               </Hidden>
               <Hidden smDown implementation="css">
@@ -148,6 +170,8 @@ export default function Header() {
                 >
                   STATUS
                 </Button>
+              </Hidden>
+              <Hidden mdDown implementation="css">
                 <Button href="https://help.moovweb.com" target="_blank" className={classes.button}>
                   SUPPORT
                 </Button>
@@ -155,6 +179,10 @@ export default function Header() {
               <div style={{ width: 16 }} />
               <Hidden xsDown implementation="css">
                 <SearchField />
+              </Hidden>
+              <Hidden lgUp implementation="css">
+                <div style={{ width: 8 }} />
+                <HeaderCollapseMenu className={classes.button} />
               </Hidden>
             </Toolbar>
           </Container>

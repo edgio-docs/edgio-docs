@@ -1,5 +1,5 @@
 import { createMuiTheme } from '@material-ui/core/styles'
-import { red, purple } from '@material-ui/core/colors'
+import { red, purple, pink } from '@material-ui/core/colors'
 
 const color = '#242349'
 
@@ -11,6 +11,7 @@ const theme = createMuiTheme({
     },
     secondary: {
       main: purple[600],
+      light: pink[300],
     },
     error: {
       main: red.A400,

@@ -233,7 +233,7 @@ export default Home
 
 Home.getInitialProps = async ({ version, versions, req }) => {
   const baseUrl = getBaseUrl(req)
-  const changelogURL = `http://moovweb-docs.github.io/xdn-docs-pages/current/guides/changelog.md`
+  const changelogURL = `https://moovweb-docs.github.io/xdn-docs-pages/current/guides/changelog.md`
   const navURL = `${baseUrl}/api/guides?version=${version === versions[0] ? '' : version}`
 
   const [navData, changeLog] = await Promise.all([

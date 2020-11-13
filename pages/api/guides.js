@@ -4,7 +4,7 @@ export default async function guides(req, res) {
   const { version } = req.query
   const guides = version
     ? await fetch(
-        `http://moovweb-docs.github.io/xdn-docs-pages/${version}/guides.json`,
+        `https://moovweb-docs.github.io/xdn-docs-pages/${version}/guides.json`,
       ).then(resp => resp.json())
     : require('../../guides/guides.json')
 

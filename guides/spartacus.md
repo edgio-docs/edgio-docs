@@ -310,8 +310,8 @@ import { join } from 'path'
 + // xdn
 + import * as http from 'http'
 + import * as https from 'https'
-+ import createRenderCallback from '@xdn/spartacus/createRenderCallback'
-+ import installXdnMiddleware from '@xdn/spartacus/installXdnMiddleware'
++ import createRenderCallback from '@xdn/spartacus/server/createRenderCallback'
++ import installXdnMiddleware from '@xdn/spartacus/server/installXdnMiddleware'
 
 
 // Express server
@@ -339,7 +339,7 @@ server.engine(
 )
 
 server.set('view engine', 'html')
-+ server.set('views', DIST_FOLDER)
+server.set('views', DIST_FOLDER)
 
 server.get(
   '*.*',
@@ -354,6 +354,7 @@ server.get('*', (req, res) => {
     'index',
     { req },
 +   createRenderCallback(res),
+  )
 })
 
 export default server
@@ -361,138 +362,21 @@ export default server
 
 ### Service worker
 
-`@xdn/prefetch` relies on Google's `workbox` library. Thus, in the context of an Angular app, a custom service-worker solution is necessary. First, add `workbox-build` to your project:
- 
- ```bash
-npm install --save-dev workbox-build 
-```
- 
-Under the `src/sw` directory, create the following files:
-
-`service-worker.js`
-
-```js
-import { skipWaiting, clientsClaim } from 'workbox-core'
-import { precacheAndRoute } from 'workbox-precaching'
-import { Prefetcher } from '@xdn/prefetch/sw'
-
-skipWaiting()
-clientsClaim()
-precacheAndRoute(self.__WB_MANIFEST || [])
-
-new Prefetcher().route()
-```
-
-`webpack.dev.config.js`
-
-```js
-// DEV Webpack configuration used to build the service worker
-
-const path = require('path')
-const webpack = require('webpack')
-const webBuildTargetFolder = path.join(__dirname, '..', '..', 'dist', '<your-project-name>')
-const targetServiceWorkerFilename = 'service-worker.js'
-
-module.exports = {
-  target: 'node',
-  mode: 'none',
-  entry: {
-    index: path.join(__dirname, 'service-worker.js'),
-  },
-  resolve: { extensions: ['.js', '.ts'] },
-  output: {
-    path: webBuildTargetFolder,
-    filename: targetServiceWorkerFilename,
-  },
-  module: {
-    rules: [
-      {
-        test: /\.ts$/,
-        loader: 'ts-loader',
-        options: {
-          onlyCompileBundledFiles: true,
-        },
-      },
-    ],
-  },
-  plugins: [
-    new webpack.EnvironmentPlugin({
-      XDN_PREFETCH_QUERY_PARAM: '__prefetch__',
-      XDN_PREFETCH_CACHE_NAME: 'prefetch',
-      BACKEND_REQUESTS_RESPONSE_HEADER_NAME: 'x-xdn-upstream-requests',
-      XDN_HEADER_PREFETCH_QUERY_PARAM: '__header-prefetch__',
-      PREFETCH_HEADER_NAME: 'x-xdn-prefetch',
-      XDN_PREFETCH_HEADER_VALUE: '1',
-      NODE_ENV: 'production',
-      DEEP_FETCH_HEADER_NAME: 'x-xdn-deep-prefetch',
-    }),
-  ],
-}
-```
-
-`webpack.prod.config.js`
-
-```js
-const webpackDevConfig = require('./webpack.dev.config')
-
-module.exports = Object.assign({}, webpackDevConfig, {
-  mode: 'production',
-})
-```
-
-`workbox-build-inject.js`
-
-```js
-// Script that modifies the service-worker.js configuration using workbox-build
-// Reference: https://developers.google.com/web/tools/workbox/modules/workbox-build
-
-const { injectManifest } = require('workbox-build')
-
-const workboxConfig = require('./workbox-config')
-
-console.log(`Workbox configuration: `, workboxConfig)
-
-injectManifest(workboxConfig).then(({ count, size }) => {
-  console.log(
-    `Generated ${workboxConfig.swDest}, which will precache ${count} files (${size} bytes)`,
-  )
-})
-```
-
-`workbox-config.js`
-
+Update the new `xdn.config.js` file, replacing `<your-api-server>` with your API server host. Also, make sure that the server path is the correct path to your server file:
 ```js
 module.exports = {
-  globDirectory: 'dist/<your-project-name>/',
-  globPatterns: [
-    '**/*.{css,eot,html,ico,jpg,js,json,png,svg,ttf,txt,webmanifest,woff,woff2,webm,xml}',
-  ],
-  globFollow: true, // follow symlinks
-  globStrict: true, // fail the build if anything goes wrong while reading the files
-  globIgnores: [`**/*-es5.*.js`],
-  // Look for a 20 character hex string in the file names
-  // Allows to avoid using cache busting for Angular files because Angular already takes care of that!
-  dontCacheBustURLsMatching: new RegExp('.+.[a-f0-9]{20}..+'),
-  maximumFileSizeToCacheInBytes: 4 * 1024 * 1024, // 4Mb
-  swSrc: 'dist/<your-project-name>/service-worker.js',
-  swDest: 'dist/<your-project-name>/service-worker.js',
+  server: {
+    path: 'dist/server.js',
+    export: 'app',
+  },
+  backends: {
+    commerce: {
+      domainOrIp: 'api-commerce.my-site.com',
+      hostHeader: 'api-commerce.my-site.com'
+    },
+  },
 }
 ```
-
-These files form the base for building a functional service-worker and can be further customized for any app-specific needs.
-
-To build the service worker add the following command to `package.json`:
-
-```json
-{
-  ...
-  "build:pwa:web": "rimraf ./dist/<your-project-name>/service-worker.js && webpack --config ./src/sw/webpack.prod.config.js --progress --colors && node ./src/sw/workbox-build-inject.js",
-  "postbuild:ssr": "npm run build:pwa:web", // or: "yarn build:pwa:web"
-  ...
-}
-```
-
-`workbox-build` needs to be installed for the injection.
 
 Add a polyfill for `window.process` if not already present in `polyfills.ts`:
 
@@ -539,6 +423,27 @@ export class AppComponent implements OnInit {
 +   })
   }
 }
+```
+
+To avoid Spartacus installing `ngsw-worker`, set `production: false` in `environment.prod.ts` as a temporary workaround:
+
+```diff
+pwa: {
+- enabled: environment.production
++ enabled: false
+},
+```
+
+You may also need to disable it in your `app.module.ts` file:
+
+```diff
+ServiceWorkerModule.register(
+  'ngsw-worker.js',
+  {
+-   enabled: environment.production,
++   enabled: false
+  }
+),
 ```
 
 ### Cache configuration
@@ -622,5 +527,4 @@ module.exports = app => {
 
 Notice the `spa: true` in `/product/:path*` and `/Open-Catalogue/:path*` browser cache configuration. These are both routes that can appear in the form of links on any given page. With `spa: true`, `@xdn/prefetch` will know to optimally only fully prefetch the upstream requests specified in the cached responses for those routes.
 
-NB! To avoid spartacus installing `ngsw-worker`, set `production: false` in `environment.prod.ts` as a temporary workaround.
 Add `"skipLibCheck": true,` to `tsconfig.json` to avoid type errors from `workbox` library during build.

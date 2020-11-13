@@ -1,4 +1,4 @@
-import { Typography } from '@material-ui/core'
+import { Divider, Typography } from '@material-ui/core'
 import React from 'react'
 import ReactMarkdown from 'react-markdown'
 import { makeStyles } from '@material-ui/core/styles'
@@ -98,6 +98,7 @@ export default function Markdown({ source, highlight }) {
           link: Link,
           text: Text,
           image: Image,
+          thematicBreak: Divider,
         }}
       />
     </div>

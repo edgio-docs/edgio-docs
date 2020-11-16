@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+User-agent: *
+Disallow: /docs/v*
+
+User-agent: *
+Disallow: /guides/v*

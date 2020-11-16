@@ -152,9 +152,12 @@ function Image({ src, ...others }) {
   const width = url.searchParams.get('width')
   const height = url.searchParams.get('height')
 
+  console.log('src', src, 'others', others)
+
   const style = {
     width: width && parseInt(width),
     height: height && parseInt(height),
+    display: 'block',
   }
 
   return <img src={src} {...others} style={style} />

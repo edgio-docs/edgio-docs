@@ -18,7 +18,8 @@ To create an environment, navigate to your site and select the _Environments_ ta
 ![environments](/images/environments/environments.png)
 
 When creating an environment, you can choose whether or not to limit deployment capabilities to admins and deploy tokens, or to make it available to all members of the team:
-![limit environment](/images/teams/environment-permissions.png) 
+
+![limit environment](/images/teams/environment-permissions.png?width=550)
 
 ## Deploying to an Environment
 

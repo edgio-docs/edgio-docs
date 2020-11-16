@@ -52,8 +52,7 @@ To prepare your Vue Storefront app for deployment on the Moovweb XDN, run the fo
 
 ```
 npm install -g @xdn/cli
-npm i --save-dev @xdn/cli@2.27.1-next-1604428707-ccdfc873.0
-xdn init --xdnVersion 2.27.1-next-1604428707-ccdfc873.0
+xdn init
 ```
 
 ### nuxt.config.js

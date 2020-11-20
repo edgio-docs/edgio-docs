@@ -1,6 +1,9 @@
 # Next.js
 
-This guide shows you how to deploy a Next.js application on the Moovweb XDN:
+This guide shows you how to deploy a Next.js application on the Moovweb XDN.
+
+[Try the Next.js Example Site](https://moovweb-docs-xdn-next-example-default.moovweb-edge.io/category/hats?button)
+[View the Code](https://github.com/moovweb-docs/xdn-examples/tree/main/xdn-next-example?button)
 
 ## Install Node.js and npm
 
@@ -62,7 +65,7 @@ module.exports = withXDN(withServiceWorker())
 
 The `withXDN` plugin ensures that your app is bundled properly for running on the XDN, and `withServiceWorker` provides a service worker based on `sw/service-worker.js`.
 
-*If you're already using `next-offline`, you should remove it in favor of `withServiceWorker`, which itself uses `next-offline.*
+_If you're already using `next-offline`, you should remove it in favor of `withServiceWorker`, which itself uses `next-offline._
 
 ## Running Locally
 

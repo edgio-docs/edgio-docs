@@ -42,11 +42,11 @@ To leverage server logs to debug routing issues going to custom backends, you ca
   .get('/p/:productId', ({ cache }) => {
     proxy('origin', {
       transformRequest: (req) => {
-        console.log('Request ID', req.headers.get('x-request-id'))
+        console.log('Request ID', req.headers['x-request-id'])
         // Log request properties that you want to troubleshoot.
       },
       transformResponse: (req, res) => {
-        console.log('Response for request ID', req.headers.get('x-request-id'))
+        console.log('Response for request ID', req.headers['x-request-id'], 'status code', res.statusCode)
         // Log response properties that you want to troubleshoot.
       }
     })

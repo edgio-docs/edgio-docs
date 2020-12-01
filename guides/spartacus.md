@@ -2,6 +2,9 @@
 
 This guide shows you how to deploy [Spartacus](https://sap.github.io/spartacus-docs) apps on the Moovweb XDN.
 
+[Try the Spartacus Example Site](https://moovweb-docs-xdn-spartacus-example-default.moovweb-edge.io/?button)
+[View the Code](https://github.com/moovweb-docs/xdn-examples/tree/main/xdn-spartacus-example?button)
+
 ## Install Node.js and npm
 
 **XDN only supports Node.js version 12.x**
@@ -96,6 +99,12 @@ module.exports = {
 If your project's server build path or name is different, you will need to make changes to the `path` of the `server`. The `export` key specifies the name of the function exported that returns an Express app. With a UMD build and default export of the Express app, only specifying the path is enough.
 
 If you have several projects and the `defaultProject` as specified in `angular.json` is not the project with the SSR build, specify the correct project with the `angularProject` flag. For example: `xdn build --angularProject=my-ssr-project`.
+
+#### 4. Update OCC `baseUrl` endpoint
+
+The `baseUrl` should be updated to use `localhost:3000` when running locally, and your deployed XDN app URL once your site is [deployed](#section_deploying).
+
+This value is defined in the `backend` property of the options parameter to `B2cStorefrontModule.withConfig({})` in the `app.module.ts` file, but is best set using environment variables in the `environment.ts` and `environment.prod.ts` files.
 
 ## Adding prefetching
 

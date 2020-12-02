@@ -151,7 +151,7 @@ By default, the XDN will cache responses that satisfy all of the following condi
 1. The response must correspond to a `GET` or `HEAD` request. To override this see [POST and other non-GET/HEAD](#section_caching_responses_for_post_and_other_non_get_head_requests) section.
 2. The response status must be 1xx, 2xx or 3xx. You cannot override this.
 3. The response must not not have any `set-cookie` headers. You cannot override this but you can use `removeUpstreamResponseHeader('set-cookie')` to remove set-cookie headers.
-4. The response must have a valid cached-control`header that includes a positive`max-age`or`s-maxage`and does not include a`private` clause. You can override this by using [router caching](#section_caching_a_response) and [forcing private responses](#section_caching_private_responses)
+4. The response must have a valid `cached-control` header that includes a positive `max-age` or `s-maxage`and does not include a `private` clause. You can override this by using [router caching](#section_caching_a_response) and [forcing private responses](#section_caching_private_responses)
 
 Sometimes, however, you don't want to cache anything, even if the upstream backend returns a `max-age`. Other times you might want to [improve the performance](/guides/performance#section_turn_off_caching_when_not_needed) of pages that can never be cached at edge. In those cases you can turn off caching:
 

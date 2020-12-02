@@ -42,7 +42,6 @@ To prepare your Nuxt.js application for the Moovweb XDN:
 // nuxt.config.js
 
 module.exports = {
-  mode: 'universal',
   buildModules: ['@xdn/nuxt/module'],
 }
 ```

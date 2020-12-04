@@ -59,26 +59,6 @@ This will automatically add all of the required dependencies and files to your p
 - `xdn.config.js`
 - `routes.js` - A default routes file that sends all requests to the Angular Universal server. Update this file to add caching or proxy some URLs to a different origin.
 
-The location of the `server.ts` build needs to be specified in `xdn.config.js`. `xdn init` will read the project's `angular.json` and derive a server build location. For an app called `my-xdn-angular-app` the XDN config file created by `xdn init` will look like so:
-
-```js
-// This file was automatically added by xdn deploy.
-// You should commit this file to source control.
-
-const { join } = require('path')
-
-module.exports = {
-  server: {
-    path: join(__dirname, 'dist/my-xdn-angular-app/server/main.js'),
-    export: 'app',
-  },
-}
-```
-
-If your project's server build path or name is different, you will need to make changes to `xdn.config.js`. The `export` key specifies the name of the function exported that returns an Express app. With a UMD build and default export of the Express app only specifying the path is enough.
-
-If you have several projects and the `defaultProject` as specified in `angular.json` is not the project with the SSR build, specify the correct project with the `angularProject` flag. For example `xdn build --angularProject=my-ssr-project`.
-
 ## Routing
 
 The default `routes.js` file created by `xdn init` sends all requests to Angular server via a fallback route.
@@ -132,7 +112,15 @@ You can do a production build of your app and test it locally using:
 xdn build && xdn run --production
 ```
 
-Setting `--production` runs your app exactly as it will be uploaded to the Moovweb cloud using serverless-offline.
+Setting `--production` runs your app exactly as it will be when deployed to the Moovweb cloud.
+
+If you have several projects and the `defaultProject` in `angular.json` is not the project you would like to deploy, specify the correct project by setting the `ANGULAR_PROJECT` environment variable when running `xdn run`.
+
+For example:
+
+```
+ANGULAR_PROJECT=my-project xdn run
+```
 
 ### Deploying
 
@@ -140,6 +128,14 @@ Deploying requires an account on the Moovweb XDN. [Sign up here for free.](https
 
 ```bash
 xdn deploy
+```
+
+If you have several projects and the `defaultProject` in `angular.json` is not the project you would like to deploy, specify the correct project by setting the `ANGULAR_PROJECT` environment variable when running `xdn deploy`.
+
+For example:
+
+```
+ANGULAR_PROJECT=my-project xdn deploy
 ```
 
 See [deploying](deploying) for more information.

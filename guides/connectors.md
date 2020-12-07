@@ -1,6 +1,6 @@
 # Connectors
 
-Connector packages help build and run your app within the XDN. When you run `xdn init`, the XDN CLI detects the framework used by your app and installs the corresponding connector package. For example, if you use Next.js, `@xdn/next` will be installed. If no connector package exists for the application framework that you use, you can still deploy to the XDN by defining the following properties in `xdn.config.js`:
+Connector packages help build and run your app within the XDN. When you run `xdn init`, the XDN CLI detects the framework used by your app and installs the corresponding connector package. For example, if you use Next.js, `@xdn/next` will be installed. If no connector package exists for the application framework that you use, you can still deploy to the XDN by adding the following files to your application:
 
 ## xdn/dev.js
 
@@ -32,7 +32,7 @@ module.exports = function() {
 }
 ```
 
-### xdn/prod.js
+## xdn/prod.js
 
 Exports a function that is called when a new serverless function is provisioned in the XDN cloud. It is responsibility for starting your app on the provided port.
 
@@ -49,7 +49,7 @@ module.exports = async function prod(port) {
 }
 ```
 
-### xdn/build.js
+## xdn/build.js
 
 _An xdn/build.js script is not required, and in many cases is not needed. The xdn build command automatically creates a bundle that includes all static assets referenced in your routes file as well as the `prod` entrypoint mentioned above._
 
@@ -58,9 +58,10 @@ Exports a function that is called when you run `xdn build`. It is responsible fo
 Example:
 
 ```js
-export default async function build(options: BuildOptions) {
-  const { skipFramework } = options
+const { DeploymentBuilder } = require('@xdn/core/deploy')
 
+export default async function build({ skipFramework }) {
+  const builder = new DeploymentBuilder(appDir)
   builder.clearPreviousBuildOutput()
 
   if (!skipFramework) {
@@ -76,7 +77,10 @@ export default async function build(options: BuildOptions) {
     // add the xdn/prod.js entrypoint
     .addProdEntrypoint(join(__dirname, 'prod.js'))
 
-    // Add some file required by the app at runtime.  This is equivalent to setting the includeFiles config in xdn.config.js
+    // optionally add some file required by the app at runtime.  This is equivalent to setting the includeFiles config in xdn.config.js
     .addJSAsset('path/to/file/in/project')
+
+  // build the XDN deployment bundle in the .xdn directory
+  await builder.build()
 }
 ```

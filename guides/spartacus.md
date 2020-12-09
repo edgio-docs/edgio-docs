@@ -276,6 +276,9 @@ The default router also includes common cache configurations for most Spartacus 
     })
     .match('/medias/:path*', ({ cache, proxy }) => {
       cache({
+        browser: {
+          maxAgeSeconds: FAR_FUTURE_TTL,
+        },
         edge: {
           maxAgeSeconds: FAR_FUTURE_TTL,
           staleWhileRevalidateSeconds: 60 * 60 * 24,

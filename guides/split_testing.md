@@ -1,6 +1,6 @@
 # Split Testing
 
-The Moovweb XDN makes it easy to conduct split testing without performance penalties. This guide shows you how to configure a split test.
+The Moovweb XDN makes it easy to conduct split testing without performance penalties. This guide shows you how to configure a split test. This feauture is known as Edge Experiments on moovweb.com and in our sales materials.
 
 ## How split testing works
 

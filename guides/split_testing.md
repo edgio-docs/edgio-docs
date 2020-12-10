@@ -109,4 +109,4 @@ analytics.
 
 ## Compatibility with A/B testing tools
 
-Moovweb XDN split testing routes traffic at the edge based on a variety of criteria. It does not split users into cohorts or report business metrics about A/B tests since there are many great tools for that. We recommend you utlize an A/B testing tool that supports server-side integration such as Monetate, Optimizely, Adobe Test, Google Experiments, or Visual Web Optimizer. These tools will set a cookie or header that can be used to split traffic using the appropriate criteria described above.
+Moovweb XDN split testing routes traffic at the edge based on a variety of criteria. It does not identify user cohorts (although it can split on cohorts identified by annother tool) or report business metrics about A/B tests since there are many great tools for that. We recommend you utlize an A/B testing tool that supports server-side integration such as Monetate, Optimizely, Adobe Test, Google Experiments, or Visual Web Optimizer. These tools will set a cookie or header that can be used to split traffic using the appropriate criteria described above.

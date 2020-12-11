@@ -53,6 +53,11 @@
         "href": "/guides/[...guide]"
       },
       {
+        "text": "Incremental Static (Re)Generation",
+        "as": "/guides/isg",
+        "href": "/guides/[...guide]"
+      },
+      {
         "text": "Image Optimization",
         "as": "/guides/image_optimization",
         "href": "/guides/[...guide]"

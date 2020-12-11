@@ -13,6 +13,17 @@ If you do not have Node.js installed on your system, download and install it fro
 
 _Note that while you can use any version of Node.js >= 12 locally, your app will run in Node 12 when deployed to the XDN cloud. Therefore we highly suggest using Node 12 for all development._
 
+## Supported Features
+
+The Moovweb XDN supports all of the most powerful features of Next.js 10, including:
+
+- Localization
+- Image Optimization
+- `getStaticPaths` (including `fallback`)
+- `getStaticProps` (including `revalidate`)
+- `getServerSideProps`
+- `getInitialProps`
+
 ## Getting Started
 
 If you don't already have a Next.js application, you can create one using:

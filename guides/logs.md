@@ -210,3 +210,14 @@ IP of the backend that responded to the request
 ### hrid
 
 Request ID of the response hit in the cache. Corresponds to [`x-xdn-hit-request-id`](response_headers#section_general_headers) response header.
+
+## Setting up log aggregation tools
+
+XDN saves its logs to Amazon S3. Most log aggregation tools are able to ingest logs from S3. We attempt to link to the docs that explain how to ingest logs from S3 for each popular log aggregation tool below. Even if your tool is not listed, there's a good chance it can ingest logs from S3.
+
+* Sematext | [[Logagent docs]](https://sematext.com/docs/logagent/)
+* Sumo Logic | [[S3 ingest docs]](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/AWS-S3-Source)
+* AWS Athena | [[docs]](https://aws.amazon.com/blogs/big-data/analyzing-data-in-s3-using-amazon-athena/)
+* Splunk | [[S3 ingest docs]](https://docs.splunk.com/Documentation/AddOns/released/AWS/S3)
+* Loggly | [[S3 ingest docs]](https://documentation.solarwinds.com/en/Success_Center/loggly/Content/admin/s3-ingestion-auto.htm)
+

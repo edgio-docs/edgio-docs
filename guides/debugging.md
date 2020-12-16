@@ -45,7 +45,7 @@ To leverage server logs to debug routing issues going to custom backends, you ca
         console.log('Request ID', req.headers['x-request-id'])
         // Log request properties that you want to troubleshoot.
       },
-      transformResponse: (req, res) => {
+      transformResponse: (res, req) => {
         console.log('Response for request ID', req.headers['x-request-id'], 'status code', res.statusCode)
         // Log response properties that you want to troubleshoot.
       }

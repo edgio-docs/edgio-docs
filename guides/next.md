@@ -2,16 +2,20 @@
 
 This guide shows you how to deploy a Next.js application on the Moovweb XDN.
 
-[Try the Next.js Example Site](https://moovweb-docs-xdn-next-example-default.moovweb-edge.io/category/hats?button)
+## Example SSR Site
+
+This Next.js example app uses server-side rendering and prefetching to provide lightening-fast transitions between pages.
+
+[Try the Next.js SSR Example Site](https://moovweb-docs-xdn-next-example-default.moovweb-edge.io/category/hats?button)
 [View the Code](https://github.com/moovweb-docs/xdn-examples/tree/main/xdn-next-example?button)
 
-## Install Node.js and npm
+## Next.js Commerce Example
 
-**XDN only supports Node.js version 12 and higher**
+Here is an example of the [Next.js Commerce](https://nextjs.org/commerce) template running on the XDN. It uses all of the latest Next.js 10 features
+including image optimization, localization, and incremental static regeneration with stale-while-revalidate.
 
-If you do not have Node.js installed on your system, download and install it from the official [Node.js v12.x downloads](https://nodejs.org/dist/latest-v12.x/) page. Select the download that matches your operating system and run the installer. Note that the installer for Node.js will also install npm.
-
-_Note that while you can use any version of Node.js >= 12 locally, your app will run in Node 12 when deployed to the XDN cloud. Therefore we highly suggest using Node 12 for all development._
+[Try the Next.js Commerce Example Site](https://moovweb-docs-nextjs-commerce-default.moovweb-edge.io/?button)
+[View the Code](https://github.com/moovweb-docs/xdn-examples/tree/main/nextjs-commerce?button)
 
 ## Supported Features
 
@@ -26,6 +30,16 @@ The Moovweb XDN supports all of the most powerful features of Next.js 10, includ
 
 ## Getting Started
 
+### Install Node.js and npm
+
+**XDN only supports Node.js version 12 and higher**
+
+If you do not have Node.js installed on your system, download and install it from the official [Node.js v12.x downloads](https://nodejs.org/dist/latest-v12.x/) page. Select the download that matches your operating system and run the installer. Note that the installer for Node.js will also install npm.
+
+_Note that while you can use any version of Node.js >= 12 locally, your app will run in Node 12 when deployed to the XDN cloud. Therefore we highly suggest using Node 12 for all development._
+
+### Create a Next.js Application
+
 If you don't already have a Next.js application, you can create one using:
 
 ```bash
@@ -34,7 +48,7 @@ npm create next-app my-next-app
 
 To prepare your Next.js application for deployment on the Moovweb XDN:
 
-#### 1. Install the XDN CLI globally:
+### Install the XDN CLI globally
 
 ```bash
 npm install -g @xdn/cli
@@ -45,7 +59,7 @@ When installing the XDN CLI globally in a virtual environment that has Node and 
 
 If you run into permission issues while attempting to install the XDN CLI globally on your local development machine, these may be fixed by using [nvm](https://github.com/nvm-sh/nvm) to manage Node and NPM.
 
-#### 2. Initialize your Next.js project
+### Initialize your Next.js project
 
 ```bash
 cd my-next-app
@@ -62,7 +76,7 @@ This will automatically add all of the required dependencies and files to your p
 - `routes.js` - A default routes file that sends all requests to Next.js. Update this file to add caching or proxy some URLs to a different origin.
 - `sw/service-worker.js` A service worker implemented using Workbox.
 
-#### 3. Edit `next.config.js`
+### Edit next.config.js
 
 Add the `withXDN` and `withServiceWorker` plugins to `next.config.js`. If this file doesn't exist, create it in the root directory of your project folder, with the following content:
 

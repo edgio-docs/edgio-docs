@@ -23,7 +23,7 @@ The Moovweb XDN supports all of the most powerful features of Next.js 10, includ
 
 - Localization
 - Image Optimization
-- `getStaticPaths` (including `fallback`)
+- `getStaticPaths` (including `fallback: (true|false|'blocking')`)
 - `getStaticProps` (including `revalidate`)
 - `getServerSideProps`
 - `getInitialProps`

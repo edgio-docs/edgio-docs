@@ -36,14 +36,13 @@ Nuxt's create module will ask you a series of questions to configure your app. M
 
 To prepare your Nuxt.js application for the Moovweb XDN:
 
-1. In `nuxt.config.js`, set `mode` to "universal" and add "@xdn/nuxt/module" to `modules`:
+1. In `nuxt.config.js`, add "@xdn/nuxt/module" to `buildModules`:
 
 ```js
 // nuxt.config.js
 
 module.exports = {
-  mode: 'universal',
-  modules: ['@xdn/nuxt/module'],
+  buildModules: ['@xdn/nuxt/module'],
 }
 ```
 

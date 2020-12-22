@@ -20,6 +20,8 @@ jobs:
           VERSION=$(tail -n 1 versions.csv)
           cp -r ../guides ${VERSION}
           cp -r ../guides current
+          cp ../guides/guides.json ${VERSION}/guides.json
+          cp ../guides/guides.json current/guides.json
           git add -A
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"

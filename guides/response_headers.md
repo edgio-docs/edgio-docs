@@ -38,7 +38,7 @@ All times are in milliseconds.
 |sr|The time spent matching routes at the shield pop|
 |sf|The time spent waiting for a response from the serverless backend or origin, including request queueing|
 |sc|The caching status for the shield pop|
-|ow|The free memory in bytes on the shield pop after processing the request|
+|sw|The free memory in bytes on the shield pop after processing the request|
 |sq|The time spent at the shield pop in fetch queue during the request coalescing|
 |bf|The time spent waiting for a response from the serverless backend or origin, including request queueing|
 |pc|The number of times the request was scheduled to execute. If it's present it is normally `1`, if not your account is under significant pressure and you should consider upgrading it.|

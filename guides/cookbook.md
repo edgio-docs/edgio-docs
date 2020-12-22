@@ -2,22 +2,25 @@
 
 This guide gives examples of common routing patterns using the XDN.
 
-- [Proxying a backend](#section_proxying_a_backend)
-  - [Same Path](#section_same_path)
-  - [Different Path](#section_different_path)
-  - [Adding Caching](#section_adding_caching)
-  - [Altering the request](#section_altering_the_request)
-  - [Altering the response](#section_altering_the_response)
-    - [Altering all responses](#section_altering_all_responses)
-  - [Manipulating Cookies](#section_manipulating_cookies)
-  - [Proxying to different backends based on different host names](#section_proxying_to_different_backends_based_on_different_host_names)
-- [Serving a static file](#section_serving_a_static_file)
-- [Responding with a string response body](#section_responding_with_a_string_response_body)
-- [Redirecting](#section_redirecting)
-  - [Redirecting all traffic to a different domain](#section_redirecting_all_traffic_to_a_different_domain)
-- [Blocking unwanted traffic](#section_blocking_unwanted_traffic)
-  - [Blocking traffic from specific countries](#section_blocking_traffic_from_specific_countries)
-  - [Whitelisting Specific IPs](#section_whitelisting_specific_ips)
+- [Cookbook](#cookbook)
+  - [Proxying a backend](#proxying-a-backend)
+    - [Same Path](#same-path)
+    - [Different Path](#different-path)
+    - [Adding Caching](#adding-caching)
+    - [Altering the request](#altering-the-request)
+    - [Altering the response](#altering-the-response)
+      - [Altering all responses](#altering-all-responses)
+    - [Manipulating Cookies](#manipulating-cookies)
+    - [Proxying to different backends based on different host names](#proxying-to-different-backends-based-on-different-host-names)
+  - [Serving a static file](#serving-a-static-file)
+    - [Falling back to server-side rendering](#falling-back-to-server-side-rendering)
+    - [Returning a custom 404 page](#returning-a-custom-404-page)
+  - [Responding with a string response body](#responding-with-a-string-response-body)
+  - [Redirecting](#redirecting)
+    - [Redirecting all traffic to a different domain](#redirecting-all-traffic-to-a-different-domain)
+  - [Blocking unwanted traffic](#blocking-unwanted-traffic)
+    - [Blocking traffic from specific countries](#blocking-traffic-from-specific-countries)
+    - [Whitelisting Specific IPs](#whitelisting-specific-ips)
 
 ## Proxying a backend
 
@@ -244,6 +247,50 @@ router.get('/assets/:path*', ({ serveStatic, cache }) => {
 })
 ```
 
+### Falling back to server-side rendering
+
+If you render some but not all paths for a given route at build time, you can fall back to server side rendering using the `onNotFound` option. Add the `loadingPage`
+option to display a loading page while server-side rendering is in progress.
+
+```js
+router.get('/products/:id', ({ serveStatic, cache, renderWithApp }) => {
+  cache({
+    edge: {
+      maxAgeSeconds: 60 * 60 * 24, // cache at the edge for 24 hours
+    },
+  })
+  serveStatic('dist/products/:id.html', {
+    onNotFound: () => renderWithApp(),
+    loadingPage: 'dist/products/loading.html',
+  })
+})
+```
+
+This hybrid of static and dynamic rendering was first introduced in Next.js as [Incremental Static Generation (ISG)](https://nextjs.org/docs/basic-features/data-fetching#the-fallback-key-required). In Next.js apps, developers enable this behavior by returning `fallback: true` from
+`getStaticPaths()`. The `@xdn/next` package automatically configures the routes for ISG pages to use `onNotFound` and `loadingPage`.
+
+### Returning a custom 404 page
+
+When a request matches a route with `serveStatic`, but no matching static asset exists, you can serve a custom 404 page using the `onNotFound` option.
+
+```js
+router.get('/products/:id', ({ serveStatic, cache }) => {
+  cache({
+    edge: {
+      maxAgeSeconds: 60 * 60 * 24, // cache at the edge for 24 hours
+    },
+  })
+  serveStatic('dist/products/:id.html', {
+    onNotFound: async () => {
+      await serveStatic('/products/not-found.html', {
+        statusCode: 404,
+        statusMessage: 'Not Found',
+      })
+    },
+  })
+})
+```
+
 ## Responding with a string response body
 
 To respond with a simple, constant string as the response body use the [`send`](/docs/api/core/classes/_router_responsewriter_.responsewriter.html#send) method:
@@ -353,7 +400,7 @@ router.get(
     headers: {
       // Regex that will do a negative lookahead for IPs you want to allow.
       // In this example 172.16.16.0/24 and 10.10.10.3/32 will be allowed and everything else will receive a 403
-      'x-xdn-client-ip': /\b((?!172\.16\.16)(?!10.10.10.3)\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})\b/, 
+      'x-xdn-client-ip': /\b((?!172\.16\.16)(?!10.10.10.3)\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})\b/,
     },
   },
   ({ send }) => {
@@ -361,4 +408,3 @@ router.get(
   },
 )
 ```
-

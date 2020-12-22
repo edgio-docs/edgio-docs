@@ -118,7 +118,15 @@ You can do a production build of your app and test it locally using:
 xdn build && xdn run --production
 ```
 
-Setting `--production` runs your app exactly as it will be uploaded to the Moovweb cloud using serverless-offline.
+Setting `--production` runs your app exactly as it will be when deployed to the Moovweb cloud.
+
+If you have several projects and the `defaultProject` in `angular.json` is not the project you would like to deploy, specify the correct project by setting the `ANGULAR_PROJECT` environment variable when running `xdn run`.
+
+For example:
+
+```
+ANGULAR_PROJECT=my-project xdn run
+```
 
 ## Deploying
 
@@ -126,6 +134,14 @@ Deploying requires an account on the Moovweb XDN. [Sign up here for free.](https
 
 ```bash
 xdn deploy
+```
+
+If you have several projects and the `defaultProject` in `angular.json` is not the project you would like to deploy, specify the correct project by setting the `ANGULAR_PROJECT` environment variable when running `xdn deploy`.
+
+For example:
+
+```
+ANGULAR_PROJECT=my-project xdn deploy
 ```
 
 See [deploying](deploying) for more information.

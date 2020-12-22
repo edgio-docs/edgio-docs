@@ -53,6 +53,11 @@
         "href": "/guides/[...guide]"
       },
       {
+        "text": "Incremental Static (Re)Generation",
+        "as": "/guides/isg",
+        "href": "/guides/[...guide]"
+      },
+      {
         "text": "Image Optimization",
         "as": "/guides/image_optimization",
         "href": "/guides/[...guide]"
@@ -105,6 +110,11 @@
       {
         "text": "Third party CDNs",
         "as": "/guides/third_party_cdns",
+        "href": "/guides/[...guide]"
+      },
+      {
+        "text": "Connectors",
+        "as": "/guides/connectors",
         "href": "/guides/[...guide]"
       },
       {

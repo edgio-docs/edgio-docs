@@ -1,10 +1,10 @@
 # Connectors
 
-Connector packages help build and run your app within the XDN. When you run `xdn init`, the XDN CLI detects the framework used by your app and installs the corresponding connector package. For example, if you use Next.js, `@xdn/next` will be installed. If no connector package exists for the application framework that you use, you can still deploy to the XDN by implementing the connector interface directly in your app.
+Connector packages help build and run your app within the XDN. When you run `xdn init`, the XDN CLI detects the framework used by your app and installs the corresponding connector package. For example, if you use Next.js, `@xdn/next` will be installed. If no connector package exists for the framework that you use, you can still deploy to the XDN by implementing the connector interface directly in your app.
 
 ## Writing a connector
 
-An XDN connector consists of four entrypoints:
+An XDN connector consists of four entry points:
 
 - `init.js` - Called when the user runs `xdn init`, adding resources to the project necessary for deploying on the XDN. May also modify existing files with the project.
 - `dev.js` - Called when the user runs `xdn dev` to run their app in development mode.
@@ -15,9 +15,9 @@ These files should be placed in the root directory of your connector package.
 
 ## init.js
 
-Called when the user runs `xdn init`. This entry point adds resources to the project necessary for deploying on the XDN. It may also modify existing files with the project.
+Called when the user runs `xdn init`. This entry point adds resources to the project necessary for deploying on the XDN. It may also modify existing files within the project.
 
-_Optional, if not provided, xdn init will add a default router and xdn.config.js file to the user's project._
+_Optional, if not provided, xdn init will add a default router and xdn.config.js to the user's project._
 
 Example:
 
@@ -47,17 +47,17 @@ The default-app directory typically contains the following files:
   /default-app
     /all              # resources to be added to both JavaScript and TypeScript projects
       xdn.config.js   # a default xdn.config.js file
-    /js               # resources to be added to projects that do not use projects
+    /js               # resources to be added to projects that do not use TypeScript
       routes.js       # a JavaScript implementation of the default routes file
     /ts               # resouces to be added to projects that use TypeScript
       routes.ts       # a TypeScript implementation of the default routes file
 ```
 
-Additional files can be added beyond the ones listed above. They will be copied to the root directory of the user's application.
+Additional files can be added beyond the ones listed above. They will be copied into the root directory of the user's application.
 
 ## dev.js
 
-Called the user runs `xdn dev`. It should start the user's application in development mode. The `@xdn/core` library provides a `createDevServer` function to help with this.
+Called when the user runs `xdn dev`. This entry point is responsible for starting the user's application in development mode. The `@xdn/core` library provides a `createDevServer` function to help with this.
 
 _Optional, if not provided, xdn dev will simply start the XDN in local development mode, but will not start a framework application server._
 
@@ -80,9 +80,7 @@ module.exports = function() {
     // A function that is called with every line of output from your app. Return true to show that line to the user, false to hide it.
     // Many connectors use this to hide lines like "Next.js ready on http://localhost:3001", which might confuse the user as to
     // which URL to use when testing their app behind the XDN.
-    filterOutput: line => {
-      return !line.match(/some pattern/)
-    },
+    filterOutput: line => !line.match(/some pattern/),
   })
 }
 ```
@@ -91,12 +89,13 @@ module.exports = function() {
 
 Exports a function that is called when you run `xdn build`. It is responsible for constructing the bundle that is deployed to the XDN cloud. This function typically uses `@xdn/core/deploy/DeploymentBuilder` to stage the exploded bundle in the `.xdn` directory.
 
-_Optional, and in many cases is not needed. The xdn build command automatically creates a bundle that includes all static assets referenced in your routes file as well as the `prod` entrypoint mentioned above._
+_Optional, and not needed in most cases. The xdn build command automatically creates a bundle that includes all static assets referenced in your routes file as well as the `prod` entry point mentioned above._
 
 Example:
 
 ```js
 const { DeploymentBuilder } = require('@xdn/core/deploy')
+const FrameworkBuildError = require('@xdn/core/errors/FrameworkBuildError')
 
 export default async function build({ skipFramework }) {
   const builder = new DeploymentBuilder(appDir)
@@ -107,14 +106,12 @@ export default async function build({ skipFramework }) {
     try {
       await builder.exec('npx sapper build')
     } catch (e) {
+      // this lets the user know that the build error was within their application code, not their XDN router or configuration.
       throw new FrameworkBuildError('Sapper')
     }
   }
 
   builder
-    // add the xdn/prod.js entrypoint
-    .addProdEntrypoint(join(__dirname, 'prod.js'))
-
     // optionally add some file required by the app at runtime.  This is equivalent to setting the includeFiles config in xdn.config.js
     .addJSAsset('path/to/file/in/project')
 
@@ -125,7 +122,7 @@ export default async function build({ skipFramework }) {
 
 ## prod.js
 
-Exports a function that is called when a new serverless function is provisioned in the XDN cloud. It is responsibility for starting your app on the provided port.
+The XDN runs your application in its serverless cloud by proxying requests to your framework's application server, which it expects to be running on a specific port. The prod.js entry point exports a function that is called when a new serverless function is provisioned. It is responsible for starting your app on the provided port so that it can receive requests from the XDN.
 
 _Optional. This entry point is only needed if your app uses server-side rendering or calls the_ [renderWithApp](/docs/api/core/classes/_router_responsewriter_.responsewriter.html#renderwithapp) _method on ResponseWriter._
 
@@ -142,7 +139,7 @@ module.exports = async function prod(port) {
 }
 ```
 
-Note that the prod entrypoint cannot have any external dependencies. If your prod entrypoint imports any non-native node modules, you need to bundle it with something like webpack or rollup before publishing your package.
+Note that the prod entry point cannot have any external dependencies. If your prod entry point imports any non-native node modules, you'll need to bundle it with something like webpack or rollup before publishing your package.
 
 Here is an example webpack config:
 

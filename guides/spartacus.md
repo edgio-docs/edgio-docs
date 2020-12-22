@@ -1,295 +1,108 @@
-# XDN Spartacus for SAP Commerce Cloud (formerly SAP Hybris)
+# Spartacus for SAP Commerce Cloud (formerly SAP Hybris)
 
-This guide shows you how to deploy a Spartacus application on the Moovweb XDN.
+This guide shows you how to deploy [Spartacus](https://sap.github.io/spartacus-docs) apps on the Moovweb XDN.
 
 [Try the Spartacus Example Site](https://moovweb-docs-xdn-spartacus-example-default.moovweb-edge.io/?button)
 [View the Code](https://github.com/moovweb-docs/xdn-examples/tree/main/xdn-spartacus-example?button)
 
-Spartacus is the official JavaScript headless front end for SAP Commerce Cloud. You can read more about Spartacus at the [official docs](https://sap.github.io/spartacus-docs/). Spartacus is written in Angular. Note that using Spartacus on the XDN requires an instance of SAP Commerce Cloud 1905 or later.
+## Install Node.js and npm
 
-This repo is a Moovweb XDN optimized template of SAP Spartacus. It leverages the official SAP Spartacus template and adds libraries to support XDN features that enhance Spartacus such as,
+**XDN only supports Node.js version 12.x**
 
-- **CDN-as-JavaScript**: configure the edge within your application
-- **Serverless JavaScript**: zero devops with unlimited scale to power Spartacus server-side rendering (SSR) and OCC API orchestration
-- **Performance**: deliver instant site page loads with server-side rendering, caching, and predictive prefetching
-- **Iterative migration**: adopt Spartacus gradually, one page at a time
-- **Edge Experiments**: experiment and use A/B testing without sacrificing speed
+If you do not have Node.js installed on your system, download and install it from the official [Node.js v12.x downloads](https://nodejs.org/dist/latest-v12.x/) page. Select the download that matches your operating system and run the installer. Note that the installer for Node.js will also install npm.
 
-If you just want to get started quickly with Spartacus and deploy it to the XDN in a few minutes follow the [Getting started](#section_getting_started) section below.
+_Note that while you can use any version of Node.js >= 12 locally, your app will run in Node 12 when deployed to the XDN cloud. Therefore, we highly suggest using Node 12 for all development._
 
-The [Building from scratch](#section_building_from_scratch) section describes how to manually recreate an XDN optimized version of Spartacus from the official libraries. You don't need to do these steps, but it's left there for the curious or for those trying to upgrade an existing Spartacus app.
+## Getting Started
 
-# Getting Started
+If you don't already have a Spartacus application, you can create one using:
 
-[![Getting Started Tutorial Video](/images/spartacus/spartacus_getting_started_youtube.png)](https://www.youtube.com/watch?v=hcU7uaZYvBU 'Getting Started Tutorial Video')
+#### 1. Create a new Angular App
 
-If you have not already done so, sign up for an account on the [XDN Console](https://moovweb.app/signup?redirectTo=/) and install the [XDN CLI](cli)
+**Spartacus 2.x only supports Angular version 9.x**
+**Spartacus 3.x only supports Angular version 10.x**
 
 ```bash
-npm i -g @xdn/cli
+npm install -g @angular/cli@9
+ng new my-xdn-spartacus-app
 ```
 
-Next, run the XDN `create` module to pull down the XDN Spartacus template to your machine:
+You should now have a working starter app. Run `ng serve` to see the application running on `localhost:4200`.
+
+#### 2. Add Spartacus with SSR
+
+To deploy your Spartacus application on the Moovweb XDN it needs to support server-side rendering (SSR). To add SSR support, run:
 
 ```bash
-npm create xdn-app@latest
+ng add @spartacus/schematics --ssr
 ```
 
-The XDN `create` module will ask you a series of questions to configure your app. Make sure you answer as follows:
+Read more about server-side rendering in Spartacus [here](https://sap.github.io/spartacus-docs/server-side-rendering-in-spartacus/).
 
-- For `Select an app template` select `Spartacus`
-- For `Enter the hostname for the origin site (e.g. domain.com)` enter the domain of the SAP Commerce Cloud server that will serve as the OCC API backend for Spartacus.
+The previous command created:
 
-As an example, below is a sample transcript from running XDN `create` module:
+- A server-side application module (`app.server.module.ts`)
+- A bootstrapper for the server app (`main.server.ts`)
+- `server.ts` which exports an Express app
+- TypeScript configuration for the server (`tsconfig.server.json`)
 
-```bash
-$ npm create xdn-app@latest
-✔ Enter a name for your app … my-xdn-site
-✔ Select an app template › Spartacus
-✔ Enter the hostname for the origin site (e.g. domain.com) … spartacusapiserver.mycompany.com
-✔ Which package manager would you like to use? › npm
-```
+You can now run `npm run build:ssr && npm run serve:ssr` to access your server-side rendered app at `localhost:4000`.
 
-Next, configure the `occBaseUrl` in `environment.prod.ts`. If this is your first time getting started, the XDN will automatically assign you a URL of the format `{username}-{project-name}-default.moovweb-edge.io` where the `project-name` is pulled from the `package.json` of your project. For example, if your username is `alice` and your project has the name of `my-xdn-site`, then set the `occBaseUrl` in `environment.prod.ts` as follows and save your changes:
+To prepare your Spartacus application for deployment on the Moovweb XDN:
 
-```js
-export const environment = {
-  production: false,
-  occBaseUrl: 'https://alice-my-xdn-site-default.moovweb-edge.io',
-}
-```
-
-To run your app locally in development mode run `xdn run`. To emulate a serverless runtime locally run `xdn run --serverless`.
-
-## Deploying
-
-Deploying requires an account on the Moovweb XDN. [Sign up here for free.](https://moovweb.app/signup) Once you have an account, you can deploy to the Moovweb XDN by running the following in the root folder of your project
-
-```bash
-xdn deploy
-```
-
-Be aware that the `deploy` step will automatically build Spartacus for you which can take a few minutes. When the deployment finishes, the output will confirm the final deployment URL. Below is an example:
-
-```bash
-📡️ Uploading...
-> Uploading package
-done (9425ms)
-
-⌛ Deploying to the Moovweb XDN...
-done (48565ms)
-
-***** Deployment Complete ***************************************
-*                                                               *
-*  🖥  XDN Developer Console:                                   *
-*  https://moovweb.app/alice/my-xdn-site/env/default/builds/1   *
-*                                                               *
-*  🌎 Website:                                                  *
-*  https://alice-my-xdn-site-default.moovweb-edge.io            *
-*                                                               *
-*****************************************************************
-```
-
-Congrats! Your Spartacus site is now live on the XDN and you can login to the [XDN Console](https://moovweb.app) to manage your project.
-
-# Building from scratch
-
-This section describes how to manually recreate an XDN optimized version of Spartacus from the official libraries. We recommend using the pre-built template in this repository, but we've left these steps for those trying to upgrade an existing Spartacus app or looking to apply the XDN to a different version of Spartacus.
-
-The steps below are pulled from the [Spartacus official docs](https://sap.github.io/spartacus-docs/building-the-spartacus-storefront-from-libraries/).
-
-Make sure to install `@angular/cli` 8 if targeting a Spartacus version lower than v2. Spartacus v1 does not support 9. `npm install -g @angular/cli@8`
-
-1. Create an angular app
-
-    ```bash
-    ng new xdn-spartacus-app --style=scss
-    cd xdn-spartacus-app
-    ```
-    
-    When prompted if you would like to add Angular routing, enter n for ‘no’.
-
-1. Add the Spartacus scaffold via schematic
-
-    ```bash
-    ng add @spartacus/schematics --ssr
-    ```
-    
-    Note the SSR parameter. This is needed for server-side rendering to work properly when deploying on the XDN.
-
-1. Replace the contents of `src/app/app.component.html` with:
-    
-    ```html
-    <cx-storefront>Loading...</cx-storefront>
-    ```
-
-1. Update `app.module.ts` to include a `baseSite` configuration:
-    
-    ```diff
-     B2cStorefrontModule.withConfig({
-      backend: {
-        occ: {
-          baseUrl: 'https://localhost:9002',
-          prefix: '/rest/v2/'
-        }
-      },
-    + context: {
-    +   baseSite: ['electronics-spa']
-    + },
-      i18n: {
-        resources: translations,
-        chunks: translationChunksConfig,
-        fallbackLang: 'en'
-      },
-      features: {
-        level: '1.5',
-        anonymousConsents: true
-      }
-     }),
-    ```
-
-## Preparing for deployment on the XDN
+#### 1. Install the XDN CLI globally:
 
 ```bash
 npm install -g @xdn/cli
+```
+
+2. Run the following in the root folder of your project. This will configure your project for the XDN.
+
+```bash
 xdn init
 ```
 
-The app should now have `@xdn` dependencies installed and auto-generated `routes.js` and `xdn.config.js` files created by `@xdn/angular`.
+This will automatically add all of the required dependencies and files to your project. These include:
 
-The following three steps are necessary when using **Spartacus 1.x / Angular 8**.
-Angular 9 Universal has an Express server export by default, so these 3 steps can be skipped.
+- The `@xdn/core` package
+- The `@xdn/angular` package
+- The `@xdn/cli` package
+- The `@xdn/spartacus` package
+- The `@xdn/prefetch` package
+- `xdn.config.js`- Contains various configuration options for the XDN.
+- `routes.js` - A default routes file that sends all requests to the Angular Universal server. Update this file to add caching or proxy some URLs to a different origin.
+- The `sw` folder - Contains the files needed to build the service worker that that provides static asset and API prefetching.
 
-1. Modify the `output` block of `webpack.server.config.js` to a UMD library target with `default` export
+#### 3. Update `xdn.config.js`
 
-    ```diff
-    output: {
-    +   libraryTarget: 'umd',
-    +   libraryExport: 'default',
-        // Puts the output at the root of the dist folder
-        path: path.join(__dirname, 'dist'),
-        filename: '[name].js',
-      },
-    ```
+For an app called `my-xdn-spartacus-app` the XDN config file created by `xdn init` will look like so:
 
-1. Have `server.ts` export the Express app and remove server initialization:
-
-    ```diff
-    -// Start up the Node server
-    -app.listen(PORT, () => {
-    -  console.log(`Node server listening on http://localhost:${PORT}`);
-    -});
-    +export default app
-    ```
-
-1. Update `xdn.config.js` to specify the location of the server build:
-
-    ```diff
-    "use strict";
-    // This file was automatically added by xdn deploy.
-    // You should commit this file to source control.
-    const { join } = require('path')
-    module.exports = {
-      server: {
-    +   path: 'dist/server.js'
-    -   path: 'dist/<your-project-name>-server/main.js',
-    -   export: 'app'
-      },
-    }
-    ```
-
-Configure a backend in `xdn.config.js` that points to the commerce API:
-
-```diff
+```js
 // This file was automatically added by xdn deploy.
 // You should commit this file to source control.
-const { join } = require('path')
+
 module.exports = {
-  server: {
-    path: join(__dirname, 'dist/server.js')
-    export: 'app'
+  backends: {
+    commerce: {
+      domainOrIp: 'api-commerce.my-site.com',
+      hostHeader: 'api-commerce.my-site.com'
+    },
   },
-+ backends: {
-+   commerce: {
-+     domainOrIp: 'aemspartacusapi.tmg.codes',
-+     hostHeader: 'aemspartacusapi.tmg.codes',
-+   },
-+ }
 }
 ```
 
-Configure `routes.js` to proxy API and media requests to the Commerce backend:
+If you have several projects and the `defaultProject` as specified in `angular.json` is not the project with the SSR build, specify the correct project with the `ANGULAR_PROJECT` environment variable. For example: `ANGULAR_PROJECT=my-ssr-project xdn build`.
 
-```diff
-// This file was automatically added by xdn deploy.
-// You should commit this file to source control.
-const { Router } = require('@xdn/core/Router')
-const createAngularPlugin = require('@xdn/angular/router/createAngularPlugin')
-module.exports = app => {
-  const { angularMiddleware } = createAngularPlugin(app)
-- return new Router().use(angularMiddleware)
-+ return new Router()
-+   .match('/rest/v2/:path*', ({ proxy }) => {
-+     return proxy('commerce')
-+   })
-+   .match('/medias/:path*', ({ proxy }) => {
-+     return proxy('commerce')
-+   })
-+   .use(angularMiddleware)
-}
+#### 4. Update OCC `baseUrl` endpoint
+
+The `baseUrl` should be updated to use the remote URL when `window` is not defined (i.e., for SSR), and the current host when `window` is defined. For example:
+```js
+baseUrl: typeof window !== 'undefined'
+    ? `${window.location.protocol}//${window.location.host}`
+    : 'https://api-commerce.my-site.com'
 ```
 
-Here you can also configure all caching for individual paths.
-
-Configure the commerce `baseUrl` to point to XDN.
-
-In `app.module.ts`:
-
-```diff
- B2cStorefrontModule.withConfig({
-  backend: {
-    occ: {
--     baseUrl: 'https://localhost:9002',
-+     baseUrl: 'https://YOUR_XDN_DEPLOYMENT_URL'
-      prefix: '/rest/v2/'
-    }
-  },
-  context: {
-    baseSite: ['electronics-spa']
-  },
-  i18n: {
-    resources: translations,
-    chunks: translationChunksConfig,
-    fallbackLang: 'en'
-  },
-  features: {
-    level: '1.5',
-    anonymousConsents: true
-  }
- }),
-```
-
-In `ìndex.html`:
-
-```diff
--<meta name="occ-backend-base-url" content="https://localhost:9002" />
-+<meta name="occ-backend-base-url" content="https://YOUR_XDN_DEPLOYMENT_URL" />
-```
-
-In `environment.prod.ts`:
-
-```diff
-environment = {
-  production: true,
-+ occBaseUrl: 'https://YOUR_XDN_DEPLOYMENT_URL',
-};
-```
-
-## Deploying to XDN
-
-```bash
-xdn deploy
-```
+This value is defined in the `backend` property of the options parameter to `B2cStorefrontModule.withConfig({})` in the `app.module.ts` file, but is best set using environment variables in the `environment.ts` and `environment.prod.ts` files.
 
 ## Adding prefetching
 
@@ -305,7 +118,7 @@ Prefetching for a Spartacus app can be enabled by listening to upstream requests
 1. User B lands on a page that has a link to `/product/1`. `/product/:path*` has been configured with `cache.browser.spa: true`. Because of this configuration, `@xdn/prefetch` will know to make a prefetch HEAD request for `/product/1`, and only if `product/1` can be served from the edge will it prefetch all requests specified in `x-xdn-upstream-requests` response header.
 1. When User B click the link to `/product/1`, the navigation will be faster since the requests needed to render the new page will be in service worker cache.
 
-Example implementation of upstream request tracking:
+Example implementation of upstream request tracking changes required in your `server.ts` file:
 
 ```diff
 import 'zone.js/dist/zone-node'
@@ -367,34 +180,6 @@ export default server
 
 ### Service worker
 
-Update the new `xdn.config.js` file, replacing `<your-api-server>` with your API server host. Also, make sure that the server path is the correct path to your server file:
-```js
-module.exports = {
-  server: {
-    path: 'dist/server.js',
-    export: 'app',
-  },
-  backends: {
-    commerce: {
-      domainOrIp: 'api-commerce.my-site.com',
-      hostHeader: 'api-commerce.my-site.com'
-    },
-  },
-}
-```
-
-Add a polyfill for `window.process` if not already present in `polyfills.ts`:
-
-```typescript
-...
-(window as any).process = {
-  env: {
-    'DEBUG_SW': true
-  }
-}
-...
-```
-
 The build command places the built `service-worker.js` under `dist` so `@xdn/angular` will know to static serve the file.
 
 Installing the service worker and any further prefetching will be handled by `@xdn/prefetch` by invoking the `install` function imported from `@xdn/prefetch/window/install`.
@@ -451,24 +236,28 @@ ServiceWorkerModule.register(
 ),
 ```
 
-### Cache configuration
+Add `"skipLibCheck": true,` to `tsconfig.json` to avoid type errors from `workbox` library during build.
 
-An example cache configuration to optimally support prefetching:
 
-`routes.js`
+## Routing and Cache Configuration
+
+The default `routes.js` file created by `xdn init` sends all requests to Angular server via a fallback route.
 
 ```js
 // This file was automatically added by xdn deploy.
 // You should commit this file to source control.
 
-const { Router } = require('@xdn/core/Router')
-const createAngularPlugin = require('@xdn/angular/router/createAngularPlugin')
+import { Router } from '@xdn/core/router'
+import { angularRoutes } from '@xdn/angular'
 
-const PAGE_TTL = 60 * 60 * 24
-const FAR_FUTURE_TTL = 60 * 60 * 24 * 365 * 10
+export default new Router()
+  // other routes removed
+  .use(angularRoutes)
+```
 
-module.exports = app => {
-  const { angularMiddleware } = createAngularPlugin(app)
+The default router also includes common cache configurations for most Spartacus apps:
+
+```js
   return new Router()
     .match('/rest/v2/:path*', ({ cache, proxy }) => {
       cache({
@@ -486,8 +275,7 @@ module.exports = app => {
     .match('/medias/:path*', ({ cache, proxy }) => {
       cache({
         browser: {
-          maxAgeSeconds: PAGE_TTL,
-          serviceWorkerSeconds: PAGE_TTL,
+          maxAgeSeconds: FAR_FUTURE_TTL,
         },
         edge: {
           maxAgeSeconds: FAR_FUTURE_TTL,
@@ -496,40 +284,52 @@ module.exports = app => {
       })
       return proxy('commerce')
     })
-    .match('/Open-Catalogue/:path*', ({ cache }) => {
-      cache({
-        browser: {
-          maxAgeSeconds: PAGE_TTL,
-          serviceWorkerSeconds: PAGE_TTL,
-          spa: true,
-        },
-        edge: {
-          maxAgeSeconds: PAGE_TTL,
-          staleWhileRevalidateSeconds: PAGE_TTL,
-        },
-      })
-    })
-    .match('/product/:path*', ({ cache }) => {
-      cache({
-        browser: {
-          maxAgeSeconds: PAGE_TTL,
-          serviceWorkerSeconds: PAGE_TTL,
-          spa: true,
-        },
-        edge: {
-          maxAgeSeconds: PAGE_TTL,
-          staleWhileRevalidateSeconds: PAGE_TTL,
-        },
-      })
-    })
-    .match('/service-worker.js', ({ setResponseHeader, serviceWorker }) => {
-      setResponseHeader('content-type', 'application/javascript')
-      serviceWorker('dist/<your-project-name>/service-worker.js')
-    })
-    .use(angularMiddleware)
+    ...
 }
 ```
 
-Notice the `spa: true` in `/product/:path*` and `/Open-Catalogue/:path*` browser cache configuration. These are both routes that can appear in the form of links on any given page. With `spa: true`, `@xdn/prefetch` will know to optimally only fully prefetch the upstream requests specified in the cached responses for those routes.
+These routes are set up to cache the default API endpoints from SAP Commerce Cloud, but should be configured to suit your application as needed.
 
-Add `"skipLibCheck": true,` to `tsconfig.json` to avoid type errors from `workbox` library during build.
+Finally, to configure prefetching for your pages, configure the routes that use SSR using the `prefetchUpstreamRequests: true` flag for the `cache` function:
+
+```js
+const CACHE_SSR_PAGE = {
+  prefetchUpstreamRequests: true,
+  edge: {
+    maxAgeSeconds: PAGE_TTL * 365,
+    staleWhileRevalidateSeconds: PAGE_TTL * 365,
+    forcePrivateCaching: true,
+  },
+}
+
+return new Router()
+  ...
+  .get('/base-site-path/:path*', ({ cache }) => {
+    cache(CACHE_SSR_PAGE)
+  })
+}
+```
+
+## Running Locally
+
+To test your app locally, run:
+
+```bash
+xdn run
+```
+
+You can do a production build of your app and test it locally using:
+
+```bash
+xdn build && xdn run --production
+```
+
+Setting `--production` runs your app exactly as it will be uploaded to the Moovweb cloud using serverless-offline.
+
+## Deploying
+
+Deploying requires an account on the Moovweb XDN. [Sign up here for free.](https://moovweb.app/signup) Once you have an account, you can deploy to the Moovweb XDN by running the following in the root folder of your project:
+
+```bash
+xdn deploy
+```

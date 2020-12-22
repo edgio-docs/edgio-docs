@@ -12,7 +12,9 @@ _Note that while you can use any version of Node.js >= 12 locally, your app will
 
 ## Getting Started
 
-If you don't already have an Angular application, you can create one using:
+If you don't already have an Angular application, you can create one using the following steps:
+
+#### 1. Create a new Angular App
 
 ```bash
 npm install -g @angular/cli
@@ -20,32 +22,35 @@ ng new my-xdn-angular-app
 ```
 
 You should now have a working starter app. Run `ng serve` to see the application running on `localhost:4200`.
-To deploy your Angular application on the Moovweb XDN it needs to support server-side rendering (SSR). To add SSR support run:
+
+#### 2. Add SSR
+
+To deploy your Angular application on the Moovweb XDN it needs to support server-side rendering (SSR). To add SSR support, run:
 
 ```bash
 ng add @nguniversal/express-engine
 ```
 
-Read more about server-side rendering in Angular here: https://angular.io/guide/universal
+Read more about server-side rendering in Angular [here](https://angular.io/guide/universal).
 
 The previous command created:
 
 - A server-side application module (`app.server.module.ts`)
-- A bootsrapper for the server app (`main.server.ts`)
+- A bootstrapper for the server app (`main.server.ts`)
 - `server.ts` which exports an Express app
 - TypeScript configuration for the server (`tsconfig.server.json`)
 
 You can now run `npm run build:ssr && npm run serve:ssr` to access your server-side rendered app at `localhost:4000`.
 
-To integrate XDN:
+To prepare your Angular application for deployment on the Moovweb XDN:
 
-1. Install the XDN CLI globally:
+#### 1. Install the XDN CLI globally:
 
 ```bash
 npm install -g @xdn/cli
 ```
 
-2. Run the following in the root folder of your project. This will configure your project for the XDN.
+#### 2. Run the following in the root folder of your project. This will configure your project for the XDN.
 
 ```bash
 xdn init
@@ -56,8 +61,12 @@ This will automatically add all of the required dependencies and files to your p
 - The `@xdn/core` package
 - The `@xdn/angular` package
 - The `@xdn/cli` package
-- `xdn.config.js`
+- `xdn.config.js`- Contains various configuration options for the XDN.
 - `routes.js` - A default routes file that sends all requests to the Angular Universal server. Update this file to add caching or proxy some URLs to a different origin.
+
+#### 3. Use the right angular project
+
+If you have several projects and the `defaultProject` as specified in `angular.json` is not the project with the SSR build, specify the correct project with the `ANGULAR_PROJECT` environment variable. For example: `ANGULAR_PROJECT=my-ssr-project xdn build`.
 
 ## Routing
 
@@ -66,17 +75,14 @@ The default `routes.js` file created by `xdn init` sends all requests to Angular
 ```js
 // This file was automatically added by xdn deploy.
 // You should commit this file to source control.
+
 const { Router } = require('@xdn/core/router')
+import { angularRoutes } from '@xdn/angular'
 
-const createAngularPlugin = require('@xdn/angular/router/createAngularPlugin')
-
-module.exports = app => {
-  const { angularMiddleware } = createAngularPlugin(app)
-  return new Router().use(angularMiddleware)
-}
+export default new Router().use(angularRoutes)
 ```
 
-### Caching
+## Caching
 
 The easiest way to add edge caching to your Angular app is to add caching routes before the middleware. For example,
 imagine you have a route `/pages/c/:categoryId`:
@@ -95,10 +101,10 @@ new Router()
       },
     })
   })
-  .use(angularMiddleware)
+  .use(angularRoutes)
 ```
 
-### Running Locally
+## Running Locally
 
 To test your app locally, run:
 
@@ -122,7 +128,7 @@ For example:
 ANGULAR_PROJECT=my-project xdn run
 ```
 
-### Deploying
+## Deploying
 
 Deploying requires an account on the Moovweb XDN. [Sign up here for free.](https://moovweb.app/signup) Once you have an account, you can deploy to the Moovweb XDN by running the following in the root folder of your project:
 

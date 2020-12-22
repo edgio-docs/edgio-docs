@@ -115,6 +115,22 @@ Open the XDN documentation in your browser.
 xdn docs
 ```
 
+## dev
+
+Runs your project in development mode, simulating the XDN cloud environment. This command is a simplified version of `xdn run`, with only the --cache option being supported.
+
+#### Options
+
+| Name      | Description                                                                                     |
+| --------- | ----------------------------------------------------------------------------------------------- |
+| `--cache` | Enables caching during local development so that you can test the caching logic in your router. |
+
+#### Example
+
+```bash
+xdn dev
+```
+
 ## init
 
 Run in an existing app to add all required packages and files need to publish your app on the Moovweb XDN
@@ -151,10 +167,10 @@ Runs your app locally. Uses port 3000 by default. You can change this by setting
 
 #### Options
 
-| Name           | Description                                                                                                                                                                                                                        |
-| -------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `--production` | Runs a production build of your app, simulating the cloud environment. This can also be achieved by setting the NODE_ENV environment variable to `true`. You need to run `xdn build` first. |
-| `--cache`      | Enables caching during local development. By default caching is turned off in local development to ensure you don't see stale responses as you make changes to your code. Enable caching to test the caching logic in your router. |
+| Name           | Description                                                                                                                                                                                                                     |
+| -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `--production` | Runs a production build of your app, simulating the cloud environment. This can also be achieved by setting the NODE_ENV environment variable to `true`. You need to run `xdn build` first.                                     |
+| `--cache`      | Enables caching during local development so that you can test the caching logic in your router. By default caching is turned off in local development to ensure you don't see stale responses as you make changes to your code. |
 
 #### Example
 

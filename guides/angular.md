@@ -64,25 +64,9 @@ This will automatically add all of the required dependencies and files to your p
 - `xdn.config.js`- Contains various configuration options for the XDN.
 - `routes.js` - A default routes file that sends all requests to the Angular Universal server. Update this file to add caching or proxy some URLs to a different origin.
 
-#### 3. Update `xdn.config.js`
+#### 3. Use the right angular project
 
-The location of the `server.ts` build needs to be specified in `xdn.config.js`. `xdn init` will read the project's `angular.json` and derive a server build location. For an app called `my-xdn-angular-app` the XDN config file created by `xdn init` will look like so:
-
-```js
-// This file was automatically added by xdn deploy.
-// You should commit this file to source control.
-
-module.exports = {
-  server: {
-    path: 'dist/my-xdn-angular-app/server/main.js',
-    export: 'app',
-  },
-}
-```
-
-If your project's server build path or name is different, you will need to make changes to `xdn.config.js`. The `export` key specifies the name of the function exported that returns an Express app. With a UMD build and default export of the Express app, only specifying the path is enough.
-
-If you have several projects and the `defaultProject` as specified in `angular.json` is not the project with the SSR build, specify the correct project with the `angularProject` flag. For example: `xdn build --angularProject=my-ssr-project`.
+If you have several projects and the `defaultProject` as specified in `angular.json` is not the project with the SSR build, specify the correct project with the `ANGULAR_PROJECT` environment variable. For example: `ANGULAR_PROJECT=my-ssr-project xdn build`.
 
 ## Routing
 

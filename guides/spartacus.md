@@ -20,6 +20,7 @@ If you don't already have a Spartacus application, you can create one using:
 #### 1. Create a new Angular App
 
 **Spartacus 2.x only supports Angular version 9.x**
+**Spartacus 3.x only supports Angular version 10.x**
 
 ```bash
 npm install -g @angular/cli@9
@@ -74,8 +75,6 @@ This will automatically add all of the required dependencies and files to your p
 
 #### 3. Update `xdn.config.js`
 
-The location of the `server.ts` build needs to be specified in `xdn.config.js`. `xdn init` will read the project's `angular.json` and derive a server build location. Also, replace `<your-api-server>` with your API server host.
-
 For an app called `my-xdn-spartacus-app` the XDN config file created by `xdn init` will look like so:
 
 ```js
@@ -83,10 +82,6 @@ For an app called `my-xdn-spartacus-app` the XDN config file created by `xdn ini
 // You should commit this file to source control.
 
 module.exports = {
-  server: {
-    path: 'dist/my-xdn-spartacus-app/server/main.js',
-    export: 'app',
-  },
   backends: {
     commerce: {
       domainOrIp: 'api-commerce.my-site.com',
@@ -96,13 +91,16 @@ module.exports = {
 }
 ```
 
-If your project's server build path or name is different, you will need to make changes to the `path` of the `server`. The `export` key specifies the name of the function exported that returns an Express app. With a UMD build and default export of the Express app, only specifying the path is enough.
-
-If you have several projects and the `defaultProject` as specified in `angular.json` is not the project with the SSR build, specify the correct project with the `angularProject` flag. For example: `xdn build --angularProject=my-ssr-project`.
+If you have several projects and the `defaultProject` as specified in `angular.json` is not the project with the SSR build, specify the correct project with the `ANGULAR_PROJECT` environment variable. For example: `ANGULAR_PROJECT=my-ssr-project xdn build`.
 
 #### 4. Update OCC `baseUrl` endpoint
 
-The `baseUrl` should be updated to use `localhost:3000` when running locally, and your deployed XDN app URL once your site is [deployed](#section_deploying).
+The `baseUrl` should be updated to use the remote URL when `window` is not defined (i.e., for SSR), and the current host when `window` is defined. For example:
+```js
+baseUrl: typeof window !== 'undefined'
+    ? `${window.location.protocol}//${window.location.host}`
+    : 'https://api-commerce.my-site.com'
+```
 
 This value is defined in the `backend` property of the options parameter to `B2cStorefrontModule.withConfig({})` in the `app.module.ts` file, but is best set using environment variables in the `environment.ts` and `environment.prod.ts` files.
 
@@ -286,11 +284,31 @@ The default router also includes common cache configurations for most Spartacus 
       })
       return proxy('commerce')
     })
-   ...
+    ...
 }
 ```
 
 These routes are set up to cache the default API endpoints from SAP Commerce Cloud, but should be configured to suit your application as needed.
+
+Finally, to configure prefetching for your pages, configure the routes that use SSR using the `prefetchUpstreamRequests: true` flag for the `cache` function:
+
+```js
+const CACHE_SSR_PAGE = {
+  prefetchUpstreamRequests: true,
+  edge: {
+    maxAgeSeconds: PAGE_TTL * 365,
+    staleWhileRevalidateSeconds: PAGE_TTL * 365,
+    forcePrivateCaching: true,
+  },
+}
+
+return new Router()
+  ...
+  .get('/base-site-path/:path*', ({ cache }) => {
+    cache(CACHE_SSR_PAGE)
+  })
+}
+```
 
 ## Running Locally
 

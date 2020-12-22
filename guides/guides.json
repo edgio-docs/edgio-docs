@@ -113,6 +113,11 @@
         "href": "/guides/[...guide]"
       },
       {
+        "text": "Connectors",
+        "as": "/guides/connectors",
+        "href": "/guides/[...guide]"
+      },
+      {
         "text": "Contributing",
         "as": "/guides/contributing",
         "href": "/guides/[...guide]"

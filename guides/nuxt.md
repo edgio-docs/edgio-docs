@@ -2,6 +2,13 @@
 
 This guide shows you how to deploy a Nuxt.js application on the Moovweb XDN. If you run into any issues please consult the [Troubleshooting](#section_troubleshooting) section.
 
+## Example SSR Site
+
+This Nuxt.js example app uses server-side rendering and prefetching to provide lightening-fast transitions between pages.
+
+[Try the Nuxt.js SSR Example Site](https://moovweb-docs-xdn-nuxt-example-default.moovweb-edge.io/category/hats?button)
+[View the Code](https://github.com/moovweb-docs/xdn-examples/tree/main/xdn-nuxt-example?button)
+
 ## Install Node.js and npm
 
 **XDN only supports Node.js version 12.x**

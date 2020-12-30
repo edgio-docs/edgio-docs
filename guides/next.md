@@ -9,13 +9,9 @@ This Next.js example app uses server-side rendering and prefetching to provide l
 [Try the Next.js SSR Example Site](https://moovweb-docs-xdn-next-example-default.moovweb-edge.io/category/hats?button)
 [View the Code](https://github.com/moovweb-docs/xdn-examples/tree/main/xdn-next-example?button)
 
-## Next.js Commerce Example
+## Next.js Commerce 
 
-Here is an example of the [Next.js Commerce](https://nextjs.org/commerce) template running on the XDN. It uses all of the latest Next.js 10 features
-including image optimization, localization, and incremental static regeneration with stale-while-revalidate.
-
-[Try the Next.js Commerce Example Site](https://moovweb-docs-nextjs-commerce-default.moovweb-edge.io/?button)
-[View the Code](https://github.com/moovweb-docs/xdn-examples/tree/main/nextjs-commerce?button)
+For details on using the Next.js Commerce template with the XDN refer to our [Next.js Commerce Guide](next_commerce).
 
 ## Supported Features
 

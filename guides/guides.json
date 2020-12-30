@@ -134,6 +134,12 @@
         "href": "/guides/[...guide]"
       },
       {
+        "text": "Next.js Commerce",
+        "icon": "nextjs",
+        "as": "/guides/next_commerce",
+        "href": "/guides/[...guide]"
+      },
+      {
         "text": "React",
         "icon": "react",
         "as": "/guides/react",

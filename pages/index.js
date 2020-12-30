@@ -16,6 +16,7 @@ import SapperIcon from '../components/icons/sapper.svg'
 import GatsbyIcon from '../components/icons/gatsby.svg'
 import VSFIcon from '../components/icons/vsf.svg'
 import VueIcon from '../components/icons/vue.svg'
+import NextCommerceIcon from '../components/icons/next-commerce.svg' 
 import { icons } from '../components/icons/Icon'
 import Markdown from '../components/Markdown'
 
@@ -117,6 +118,16 @@ const Home = ({ navData, changeLog }) => {
                   <NextIcon className={classes.icon} />
                   <Typography className={classes.frameworkText}>
                     Get started with Next.js
+                  </Typography>
+                </Paper>
+              </Link>
+            </Grid>
+            <Grid item>
+              <Link href="/guides/[...guide]" as="/guides/next_commerce">
+                <Paper className={classes.framework} elevation={0}>
+                  <NextCommerceIcon className={classes.icon} />
+                  <Typography className={classes.frameworkText}>
+                    Start with Next.js Commerce
                   </Typography>
                 </Paper>
               </Link>

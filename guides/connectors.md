@@ -162,3 +162,44 @@ module.exports = {
   },
 }
 ```
+
+## Testing your connector locally before publishing it to NPM
+
+To test your connector locally without publishing it to NPM:
+
+1. Use `npm link`, `yarn link` or `yalc add` to add the local connector package as a project dependency.
+2. Create an `xdn.config.js` file in the root directory of your project.
+3. Set the `connector` property to name of the connector package.
+
+Now `xdn init`, `xdn dev`, `xdn build`, and `xdn deploy` commands will use the entry points in the connector, and your `prod.js` entrypoint will be used to serve requests in the XDN cloud.
+
+## Implementing a connector directly within your project
+
+If your project uses a framework that isn't supported by one of the official connector packages, you can still deploy to the XDN by implementing your own connector directly within your project. To do so:
+
+1. Create a directory for your connector.
+2. Implement the entry points listed above.
+3. Create an `xdn.config.js` file in the root directory of your project.
+4. Set the `connector` property to the relative path to the directory containing the connector
+
+Example project structure:
+
+```
+/my-project
+  /xdn              # reference this directory in the connector property in xdn.config.js
+    dev.js
+    prod.js
+    build.js
+  xdn.config.js
+  ... other source files and directories ...
+```
+
+Example xdn.config.js:
+
+```js
+module.exports = {
+  connector: './xdn', // use the local connector located in the xdn directory
+}
+```
+
+Once the connector is in place, `xdn dev`, `xdn build`, and `xdn deploy` commands will use the entry points in the connector, and your `prod.js` entrypoint will be used to serve requests in the XDN cloud.

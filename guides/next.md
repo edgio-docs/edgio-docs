@@ -93,7 +93,7 @@ _If you're already using `next-offline`, you should remove it in favor of `withS
 To simulate your app within the XDN locally, run:
 
 ```bash
-npm run xdn:start
+xdn dev
 ```
 
 ## Deploying
@@ -101,7 +101,7 @@ npm run xdn:start
 Deploying requires an account on the Moovweb XDN. [Sign up here for free.](https://moovweb.app/signup) Once you have an account, you can deploy to the Moovweb XDN by running the following in the root folder of your project:
 
 ```bash
-npm run xdn:deploy
+xdn deploy
 ```
 
 See [deploying](deploying) for more information.

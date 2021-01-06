@@ -265,7 +265,7 @@ The cache is automatically cleared when you deploy to an environment. You can al
 
 ## Deploy without cache clear
 
-By default, XDN clears your environment edge cache on every new deploy.
+By default, XDN clears your environment edge cache on every time you deploy a new version of your site.
 
 This behavior can be turned off in [Environment](environments) options by enabling the following option:
 

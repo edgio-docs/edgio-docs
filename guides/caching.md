@@ -263,6 +263,16 @@ The cache is automatically cleared when you deploy to an environment. You can al
 
 ![deployments](/images/caching/purge.png)
 
+## Deploy without cache clear
+
+By default, XDN clears your environment edge cache on every new deploy.
+
+This behaviour can be turned off in [Environment](environments) options by ticking the following checkbox:
+
+![keep-cache](/images/caching/keep-cache.png)
+
+After activating that new environment version, future deploys will re-use the existing edge cache.
+
 # Scheduled Cache Clearing using Github Actions
 
 This guide walks you through clearing the cache on your site at a scheduled day and time.

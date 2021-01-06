@@ -267,7 +267,7 @@ The cache is automatically cleared when you deploy to an environment. You can al
 
 By default, XDN clears your environment edge cache on every new deploy.
 
-This behaviour can be turned off in [Environment](environments) options by ticking the following checkbox:
+This behavior can be turned off in [Environment](environments) options by enabling the following option:
 
 ![keep-cache](/images/caching/keep-cache.png)
 

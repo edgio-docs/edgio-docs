@@ -273,6 +273,29 @@ This behavior can be turned off by editing your [Environment](environment) confi
 
 After activating that new environment version, future deploys will re-use the existing edge cache.
 
+## Ensuring unique assets are permanently available
+
+In order to ensure that users who are actively browsing your site do not experience issues during a deployment, developers can
+configure certain client-side assets to be permanently available, even after a new version of the site has been deployed. For example,
+browsers using on an old version of the site may continue to request JavaScript chunks for the old version of the site for some time after a new
+version is deployed. The XDN automatically makes client-side scripts permanently available if you use Next.js, Nuxt.js, Angular, or Sapper.
+
+If you are using another framework or would like to make sure a particular asset is permanently available, you can do so by setting the `permanent` option in `serveStatic`. For example:
+
+```js
+router.get('/scripts/:file', ({ serveStatic }) => {
+  serveStatic('path/to/scripts', {
+    permanent: true, // ensure that files are permanently accessible, even after a new version of the site has been deployed.
+    exclude: ['some-non-versioned-file.js'], // you can exclude specific files from being served permanently.  You should do this for any files that do not have a hash of the content in the name.
+  })
+})
+```
+
+You should only make assets permanently available if they have a hash of the content or a version number in the filename, or are accessed via a globally unique URL. For example:
+
+- /assets/main-989b11c4c35bc9b6e505.js
+- /assets/v99/main.js
+
 # Scheduled Cache Clearing using Github Actions
 
 This guide walks you through clearing the cache on your site at a scheduled day and time.

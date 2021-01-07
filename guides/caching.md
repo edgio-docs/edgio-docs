@@ -263,6 +263,16 @@ The cache is automatically cleared when you deploy to an environment. You can al
 
 ![deployments](/images/caching/purge.png)
 
+Additionally, the cache can be [cleared via the CLI](/guides/cli#section_cache_clear):
+
+```bash
+$ xdn cache-clear --team=my-team --site=my-site --environment=production --path=/p/*
+```
+
+## Static prerendering after clearing the cache
+
+If you have [static prerendering] enabled, the cache will automatically be repopulated when you clear all entries from the cache (when you select "Purge all entries" in the XDN Developer Console or run `xdn cache-clear` without providing `--path` or `--surrogate-key`). You can view the prerendering progress by clicking on the active deployment for the environment that was cleared.
+
 ## Preserving the cache when deploying a new version of your site
 
 By default, XDN clears your environment edge cache on every time you deploy a new version of your site.
@@ -273,7 +283,7 @@ This behavior can be turned off by editing your [Environment](environment) confi
 
 After activating that new environment version, future deploys will re-use the existing edge cache.
 
-## Ensuring unique assets are permanently available
+## Ensuring versioned browser assets are permanently available
 
 In order to ensure that users who are actively browsing your site do not experience issues during a deployment, developers can
 configure certain client-side assets to be permanently available, even after a new version of the site has been deployed. For example,

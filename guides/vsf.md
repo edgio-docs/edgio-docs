@@ -19,31 +19,6 @@ npm i -g @vue-storefront/cli@next
 vsf init <project-name>
 cd <project-name>
 npm install
-npm install --save @vue-storefront/commercetools@latest @vue-storefront/nuxt@latest @vue-storefront/nuxt-theme@latest
-```
-
-## Vue Storefront bugfixes
-
-The VSF team is still working on the next version of VSF, and there are a few bugs.
-
-In order to get the boilerplate project building, please make these changes:
-
-In `composables/useUiHelpers/index.ts`, remove this line:
-
-```js
-import { FacetSearchInput } from '@vue-storefront/commercetools'
-```
-
-and change this line:
-
-```js
-const getFacetsFromURL = (): FacetSearchInput => {
-```
-
-to
-
-```js
-const getFacetsFromURL = (): any => {
 ```
 
 ## Install the XDN CLI

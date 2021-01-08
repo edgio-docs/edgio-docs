@@ -141,6 +141,12 @@ Run in an existing app to add all required packages and files need to publish yo
 xdn init
 ```
 
+#### Options
+
+| Name          | Description                                                                                                                                                                                                |
+| ------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `--connector` | The name of a specific connector package to install, or a path to a directory that implements the [connector interface](/guides/connectors#section_implementing_a_connector_directly_within_your_project). |
+
 ## login
 
 Logs into the XDN via the developer console.

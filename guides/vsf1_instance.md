@@ -16,7 +16,7 @@ nvm use 12
 
 ## 3. Install XDN
 
-- Install XDN packages: `yarn add -D @xdn/cli && yarn add @xdn/core @xdn/prefetch @xdn/devtools`
+- Install XDN packages: `yarn add -D -W @xdn/cli && yarn add -W @xdn/core @xdn/prefetch @xdn/devtools`
 - Create a file called `xdn.config.js` in the root directory of your project and configure your origin and images hosts as backends. For example:
 ```js
 module.exports = {

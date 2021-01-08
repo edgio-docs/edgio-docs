@@ -2,7 +2,7 @@
 
 ## 1. Install Vue Storefront
 
-Install VSF application using this guide: https://docs.vuestorefront.io/guide/installation/linux-mac.html
+Install the Vue Storefront application using this guide: https://docs.vuestorefront.io/guide/installation/linux-mac.html
 
 <b>Note</b>: XDN requires Node version >= 12, so before the installation it's recommended to run:
 ```bash

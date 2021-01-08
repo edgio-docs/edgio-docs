@@ -59,7 +59,7 @@ document.addEventListener("DOMContentLoaded", () => {
   installDevtools();
 });
 ```
-- Add `xdn/routes.js` file. For example:
+- Create `xdn/routes.js`. Here you will configure caching for each route in your application. Here is an example:
 ```js
 import { Router } from "@xdn/core/router";
 import { CACHE_ASSETS, CACHE_PAGES } from "./cache";

@@ -207,7 +207,7 @@ function deepFetchResponsiveImages({ $el, el, $ }: DeepFetchCallbackParam) {
 }
 ```
 
-### Deep fetching URLs in JSON responses (XDN Headless)
+### Deep fetching URLs in JSON responses
 
 In addition to deep fetching URLs found in HTML responses, you can also configure deep fetching for URLs found in JSON responses such as API calls. In this case you pass objects that match the [DeepFetchJsonConfig interface](https://developer.moovweb.com/docs/api/prefetch/interfaces/_sw_deepfetchplugin_.deepfetchjsonconfig.html) and describe which JSON fields need to be prefetched.
 

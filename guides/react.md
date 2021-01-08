@@ -127,9 +127,9 @@ new Router()
       },
     })
   })
-  .fallback(({ proxy }) => {
+  .fallback(({ renderWithApp }) => {
     // send all requests to the server module configured in xdn.config.js
-    proxy(BACKENDS.js)
+    renderWithApp()
   })
 ```
 

@@ -45,7 +45,7 @@ clientsClaim();
 precacheAndRoute(self.__WB_MANIFEST || []);
 new Prefetcher().route()
 ```
-- Add `xdn/browser.js` file. For example:
+- Create `xdn/browser.js` with the following content:
 ```js
 import installDevtools from "@xdn/devtools/install";
 import install from "@xdn/prefetch/window/install";

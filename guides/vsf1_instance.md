@@ -17,7 +17,6 @@ nvm use 12
 ## 3. Install XDN
 
 - Install XDN packages: `yarn add -D @xdn/cli && yarn add @xdn/core @xdn/prefetch @xdn/devtools`
-- Next steps will cover the XDN key files you need to add. For more information about them see https://developer.moovweb.com/guides/starter
 - Add `xdn.config.js` file with your origin and images hosts. For example:
 ```js
 module.exports = {

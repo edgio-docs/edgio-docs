@@ -33,7 +33,7 @@ module.exports = {
   includeNodeModules: true,
 };
 ```
-- Add `xdn/service-worker.js` file:
+- Create `xdn/service-worker.js`, which will contain the source code for your service worker:
 ```js
 import { Prefetcher } from "@xdn/prefetch/sw";
 import { clientsClaim, skipWaiting } from "workbox-core";

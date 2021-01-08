@@ -365,7 +365,7 @@ export const CACHE_ASSETS = {
   },
 };
 ```
-- Add `xdn/webpack.xdn.client.config.js` file:
+- Create `xdn/webpack.xdn.client.config.js`.  This webpack configuration will bundle the service worker and the code to install it when the app loads in the browser.
 ```js
 const path = require('path')
 const webpack = require('webpack')

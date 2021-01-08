@@ -147,7 +147,7 @@ new Prefetcher({
 The DeepFetchPlugin can parse both HTML and JSON documents, and the configuration objects are different between them as described in the next sections. For XDN projects that are headless (i.e. the front end communicates with the backend through an API), you'll probably use the JSON option. For projects on XDN Starter, which is typically used to accelerate HTML pages, you'll probably want to use the HTML option. Note that  you can mix both HTML and JSON configuration objects in the an array of configuration objects to the `DeepFetchPlugin`.
 
 
-### Deep Fetching for HTML documents (XDN Starter)
+### Deep Fetching for HTML documents
 
 To deep fetch HTML documents, use objects that match the [DeepFetchHtmlConfig interface](https://developer.moovweb.com/docs/api/prefetch/interfaces/_sw_deepfetchplugin_.deepfetchhtmlconfig.html) and describe which HTML elements need to be prefetched via CSS selectors.
 

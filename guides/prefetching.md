@@ -144,12 +144,35 @@ new Prefetcher({
 })
 ```
 
-The DeepFetchPlugin can parse both HTML and JSON documents, and the configuration objects are different between them as described in the next sections. For XDN projects that are headless (i.e. the front end communicates with the backend through an API), you'll probably use the JSON option. For projects on XDN Starter, which is typically used to accelerate HTML pages, you'll probably want to use the HTML option. Note that  you can mix both HTML and JSON configuration objects in the an array of configuration objects to the `DeepFetchPlugin`.
+The `DeepFetchPlugin` can parse both HTML and JSON documents to extract the page assets that must be deep fetched. For XDN projects that are headless (i.e. the front end communicates with the backend through an API), you'll typically use the JSON option. However if the backend and front-end endpoints are communicating using HTML responses then you'll want to use the HTML option. Note that you can mix both HTML and JSON configuration objects in the an array passed to the `DeepFetchPlugin`.
+
+### Deep fetching URLs in JSON responses
+
+For JSON responses, you'll pass the `DeepFetchPlugin` an array of `[DeepFetchJsonConfig interface](https://developer.moovweb.com/docs/api/prefetch/interfaces/_sw_deepfetchplugin_.deepfetchjsonconfig.html)` objects. These `DeepFetchJsonConfig` objects  describe the asset URLs in the JSON response that should be prefetched. For example, the snippet below finds product images to deep fetch for a category page response:
+
+```js
+new DeepFetchPlugin([
+  // parses the category API response to deep fetch the product images:
+  {
+    jsonQuery: 'Bundles.[**].Products:products(Product).MediumImageFile',
+    jsonQueryOptions: {
+      locals: {
+        // filters out null products:
+        products: input => input.filter(prod => prod),
+      },
+    },
+    maxMatches: 10,
+    as: 'image',
+  },
+])
+```
+
+The `jsonQuery` syntax is provided by the [json-query](https://github.com/auditassistant/json-query) library. You can test your JSON queries using their [JSON-query Tester Sandbox](https://maxleiko.github.io/json-query-tester/).
 
 
 ### Deep Fetching for HTML documents
 
-To deep fetch HTML documents, use objects that match the [DeepFetchHtmlConfig interface](https://developer.moovweb.com/docs/api/prefetch/interfaces/_sw_deepfetchplugin_.deepfetchhtmlconfig.html) and describe which HTML elements need to be prefetched via CSS selectors.
+To deep fetch HTML documents, pass the plugin objects that match the [DeepFetchHtmlConfig interface](https://developer.moovweb.com/docs/api/prefetch/interfaces/_sw_deepfetchplugin_.deepfetchhtmlconfig.html) and describe which HTML elements need to be prefetched via CSS selectors.
 
 For example, imagine you're configuring prefetching for a product page and you want to ensure the main product image is prefetched so that it appears immediately when the page loads. If the main product image is displayed with an HTML `img` element with a CSS class called `product-featured-media`, it can be prefetched by adding the following to the DeepFetchPlugin:
 
@@ -171,7 +194,7 @@ new Prefetcher({
 })
 ```
 
-#### Computing the URL to be prefetched (XDN Starter)
+#### Computing the URL to be prefetched
 
 In the example above the `img` element's `src` attribute contains URL that needs to be prefetched. Sometimes finding the URL to prefetch is not so straightforward. For example, apps sometimes use JavaScript to compute the URL for responsive images based on the user's device size. In such cases you can provide a `callback` function which will be passed all matching elements and decide what URLs to prefetch. Here is an example:
 
@@ -206,32 +229,6 @@ function deepFetchResponsiveImages({ $el, el, $ }: DeepFetchCallbackParam) {
   }
 }
 ```
-
-### Deep fetching URLs in JSON responses
-
-In addition to deep fetching URLs found in HTML responses, you can also configure deep fetching for URLs found in JSON responses such as API calls. In this case you pass objects that match the [DeepFetchJsonConfig interface](https://developer.moovweb.com/docs/api/prefetch/interfaces/_sw_deepfetchplugin_.deepfetchjsonconfig.html) and describe which JSON fields need to be prefetched.
-
-Here is an example which finds product images to deep fetch for a category page:
-
-```js
-new DeepFetchPlugin([
-  // deep fetches the "category" API call to get PLP images:
-  {
-    jsonQuery: 'Bundles.[**].Products:products(Product).MediumImageFile',
-    jsonQueryOptions: {
-      locals: {
-        // filters out null products:
-        products: input => input.filter(prod => prod),
-      },
-    },
-    maxMatches: 10,
-    as: 'image',
-  },
-])
-```
-
-The `jsonQuery` syntax is provided by the [json-query](https://github.com/auditassistant/json-query) library. You can test your JSON queries using their [JSON-query Tester Sandbox](https://maxleiko.github.io/json-query-tester/).
-
 
 ## Using the XDN for Prefetching Only
 

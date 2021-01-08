@@ -403,6 +403,7 @@ import config from 'config';
 // const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 // eslint-disable-next-line import/first
 import themeRoot from './theme-path';
+
 const themesRoot = '../../src/themes'
 const themeResources = themeRoot + '/resource'
 const themeCSS = themeRoot + '/css'

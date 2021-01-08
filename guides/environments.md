@@ -74,6 +74,13 @@ Note that your `xdn.config.js` file is loaded during deployment to configure the
 deploy your site, there won't be any environment variables defined, so you need to include defaults in `xdn.config.js` as
 shown in the example above.
 
+### Built-in Environment Variables
+
+XDN automatically injects the following environment variables:
+
+- `NODE_ENV`: Set to `production` by default but you can override it through the console
+- `XDN_ENVIRONMENT_NAME`: The name of the environment (e.g. `default`, `production` and so on). This cannot be overriden by you.
+
 ### Accessing Environment Variables at Build Time
 
 As of XDN CLI version 2.19.0, when you deploy to an environment using a deploy token, for example by running `xdn deploy my-team --environment=production --token=(my token)` option, all environment variables are pulled down from the XDN Developer Console and applied to `process.env` so they can be accessed at build time. This allows you to store all of your build and runtime secrets in a single place, the XDN Developer Consoler, rather than storing some in your CI system's secret manager.

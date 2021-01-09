@@ -1,12 +1,14 @@
-import { Typography } from '@material-ui/core'
+import { Button, Divider, Typography } from '@material-ui/core'
 import React from 'react'
 import ReactMarkdown from 'react-markdown'
-import { makeStyles } from '@material-ui/core/styles'
+import { darken, makeStyles } from '@material-ui/core/styles'
 import Code from './Code'
 import { Link as LinkIcon } from '@material-ui/icons'
 import NextLink from 'next/link'
 import useVersioning from './versioning'
 import doHighlight from './highlight'
+import GithubIcon from './icons/github.svg'
+import clsx from 'clsx'
 
 const useStyles = makeStyles(theme => ({
   heading: {
@@ -73,6 +75,18 @@ const useStyles = makeStyles(theme => ({
       },
     },
   },
+  button: {
+    transition: 'color border-color 200ms linear',
+    '&:hover': {
+      borderColor: darken(theme.palette.secondary.light, 0.1),
+    },
+    '& span': {
+      textDecoration: 'none',
+    },
+  },
+  buttonLink: {
+    textDecoration: 'none',
+  },
 }))
 
 export default function Markdown({ source, highlight }) {
@@ -98,6 +112,7 @@ export default function Markdown({ source, highlight }) {
           link: Link,
           text: Text,
           image: Image,
+          thematicBreak: Divider,
         }}
       />
     </div>
@@ -106,8 +121,37 @@ export default function Markdown({ source, highlight }) {
 
 function Link({ href, children }) {
   const { currentVersion } = useVersioning()
-
+  const classes = useStyles()
   href = href.replace('__version__', currentVersion)
+
+  let el
+
+  const uri = new URL(href, 'http://dummy.org')
+  const code = href.match(/github/)
+  let button = false
+
+  if (uri.searchParams.has('button')) {
+    button = true
+    href = href.replace(/(\?|&)button/, '')
+    el = (
+      <Button
+        variant={code ? 'outlined' : 'contained'}
+        color="secondary"
+        className={classes.button}
+      >
+        {code && (
+          <GithubIcon
+            width={20}
+            fill="white"
+            style={{ marginLeft: -4, marginRight: 8, color: 'white' }}
+          />
+        )}
+        {children}
+      </Button>
+    )
+  } else {
+    el = children
+  }
 
   if (href.match(/\/guides\//)) {
     return (
@@ -120,11 +164,12 @@ function Link({ href, children }) {
   } else {
     return (
       <a
+        className={clsx({ [classes.buttonLink]: button })}
         href={href}
-        target={href.startsWith('http:') ? '_blank' : '_self'}
+        target={href.startsWith('https:') ? '_blank' : '_self'}
         rel="noopener noreferrer"
       >
-        {children}
+        {el}
       </a>
     )
   }
@@ -151,9 +196,12 @@ function Image({ src, ...others }) {
   const width = url.searchParams.get('width')
   const height = url.searchParams.get('height')
 
+  console.log('src', src, 'others', others)
+
   const style = {
     width: width && parseInt(width),
     height: height && parseInt(height),
+    display: 'block',
   }
 
   return <img src={src} {...others} style={style} />

@@ -32,7 +32,7 @@ async function loadGuides(version) {
   for (let idx = 0; idx < guideNames.length; idx++) {
     const content = guideList[idx]
     const id = guideNames[idx]
-    const nameMatch = content.match(/^# (.+)\n/)
+    const nameMatch = content && content.match(/^# (.+)\n/)
 
     if (nameMatch) {
       guides.push({

@@ -26,7 +26,7 @@ const useStyles = makeStyles(theme => ({
     },
     border: 0,
     padding: theme.spacing(1, 2),
-    fontSize: '1.25em',
+    fontSize: '1.00em',
     color: theme.palette.grey[200],
     display: 'flex',
     alignItems: 'center',

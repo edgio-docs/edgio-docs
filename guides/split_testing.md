@@ -1,6 +1,6 @@
-# Split Testing
+# Split Testing (aka Edge Experiments)
 
-The Moovweb XDN makes it easy to conduct split testing without performance penalties. This guide shows you how to configure a split test.
+The Moovweb XDN makes it easy to conduct split testing without performance penalties by executing splits at the edge through an easy-to-use yet powerful interface. It can be used for A/B and multivariate tests, canary deploys, blue-green tests, iterative migration off of a legacy website, personalization, and more. This guide shows you how to configure a split test.
 
 ## How split testing works
 
@@ -74,7 +74,7 @@ Select the amount of traffic to send to each destination or environment and clic
 
 ![edit](/images/split-testing/add-rule.png)
 
-You can add additional rules to, for example, allow testers to get to the new experience all of the time by adding a cookie. Here's an example:
+You can add additional rules to, for example, allow testers to get to the new experience all of the time by adding a cookie. In addition to cookie value, you can split traffic based on header value, path, IP address, URL parameters, device type, browser type, and bot boolean. Here's an example:
 
 ![edit](/images/split-testing/criteria.png)
 
@@ -106,3 +106,7 @@ The experience the user sees is determined by the traffic split percentage you s
 When a split test is active, the XDN will automatically set an `xdn_destination` cookie to the name
 of the chosen destination. You can use this value in the browser to report the split test experience assignment to
 analytics.
+
+## Compatibility with A/B testing tools
+
+Moovweb XDN split testing routes traffic at the edge based on a variety of criteria. It does not identify user cohorts (although it can split on cohorts identified by another tool) or report business metrics about A/B tests since there are many great tools for that. We recommend you utilize an A/B testing tool that supports server-side integration such as Monetate, Optimizely, Adobe Test, Google Experiments, or Visual Web Optimizer. These tools will set a cookie or header that can be used to split traffic using the appropriate criteria described above.

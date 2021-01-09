@@ -3,8 +3,7 @@ import React from 'react'
 import Head from 'next/head'
 import Nav from '../components/nav/Nav'
 import PageWrapper from '../components/PageWrapper'
-import { Typography, makeStyles, Container, Grid, Paper } from '@material-ui/core'
-import Features from '../components/home/Features'
+import { Typography, makeStyles, Container, Grid, Paper, Divider } from '@material-ui/core'
 import getBaseUrl from '../components/utils/getBaseUrl'
 import Link from 'next/link'
 import ReactIcon from '../components/icons/react.svg'
@@ -20,7 +19,9 @@ import SAPCCIcon from '../components/icons/sapcc.svg'
 import ShopifyIcon from '../components/icons/shopify.svg'
 import CommerceToolsIcon from '../components/icons/commercetools.svg'
 import VueIcon from '../components/icons/vue.svg'
+import NextCommerceIcon from '../components/icons/next-commerce.svg' 
 import { icons } from '../components/icons/Icon'
+import Markdown from '../components/Markdown'
 
 const SpartacusIcon = icons['spartacus']
 
@@ -92,9 +93,13 @@ const useStyles = makeStyles(theme => ({
       width: 600,
     },
   },
+
+  changeLog: {
+    marginTop: theme.spacing(8),
+  },
 }))
 
-const Home = ({ navData }) => {
+const Home = ({ navData, changeLog }) => {
   const classes = useStyles()
   return (
     <PageWrapper nav={<Nav navData={navData} />}>
@@ -116,6 +121,16 @@ const Home = ({ navData }) => {
                   <NextIcon className={classes.icon} />
                   <Typography className={classes.frameworkText}>
                     Get started with Next.js
+                  </Typography>
+                </Paper>
+              </Link>
+            </Grid>
+            <Grid item>
+              <Link href="/guides/[...guide]" as="/guides/next_commerce">
+                <Paper className={classes.framework} elevation={0}>
+                  <NextCommerceIcon className={classes.icon} />
+                  <Typography className={classes.frameworkText}>
+                    Start with Next.js Commerce
                   </Typography>
                 </Paper>
               </Link>
@@ -219,8 +234,10 @@ const Home = ({ navData }) => {
           </Grid>
         </Grid>
       </Grid>
-      <Container maxWidth="md">
-        <Features />
+      <Container className={classes.changeLog}>
+        <Divider />
+        <h2>Changelog</h2>
+        <Markdown source={changeLog} />
       </Container>
       {/* <div className={classes.hero}>
         <Typography variant="h2" style={{ maxWidth: 800 }}>
@@ -252,8 +269,13 @@ export default Home
 
 Home.getInitialProps = async ({ version, versions, req }) => {
   const baseUrl = getBaseUrl(req)
-  const navData = await fetch(
-    `${baseUrl}/api/guides?version=${version === versions[0] ? '' : version}`,
-  ).then(res => res.json())
-  return { navData }
+  const changelogURL = `https://moovweb-docs.github.io/xdn-docs-pages/current/guides/changelog.md`
+  const navURL = `${baseUrl}/api/guides?version=${version === versions[0] ? '' : version}`
+
+  const [navData, changeLog] = await Promise.all([
+    fetch(navURL).then(res => res.json()),
+    fetch(changelogURL).then(res => res.text()),
+  ])
+
+  return { navData, changeLog }
 }

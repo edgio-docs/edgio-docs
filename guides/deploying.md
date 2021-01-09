@@ -101,7 +101,7 @@ jobs:
           xdn_deploy_token: ${{secrets.xdn_deploy_token}}
       - name: Extract branch name
         shell: bash
-        run: echo "::set-env name=BRANCH_NAME::$(echo ${GITHUB_REF#refs/heads/} | sed 's/\//_/g')"
+        run: echo "BRANCH_NAME=$(echo ${GITHUB_REF#refs/heads/} | sed 's/\//_/g')" >> $GITHUB_ENV
       - uses: actions/checkout@v1
       - uses: actions/setup-node@v1
         with:

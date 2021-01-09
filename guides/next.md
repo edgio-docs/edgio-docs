@@ -1,14 +1,40 @@
 # Next.js
 
-This guide shows you how to deploy a Next.js application on the Moovweb XDN:
+This guide shows you how to deploy a Next.js application on the Moovweb XDN.
 
-## Install Node.js and npm
+## Example SSR Site
 
-__XDN only supports Node.js version 12 and higher__
+This Next.js example app uses server-side rendering and prefetching to provide lightening-fast transitions between pages.
 
-If you do not have Node.js installed on your system, download and install it from official [Node.js downloads](https://nodejs.org/en/download/) page. Select the download labeled "LTS (Recommended For Most Users)" and that matches your operating system, and run the installer. Note that the installer for Node.js will also install npm.
+[Try the Next.js SSR Example Site](https://moovweb-docs-xdn-next-example-default.moovweb-edge.io/category/hats?button)
+[View the Code](https://github.com/moovweb-docs/xdn-examples/tree/main/xdn-next-example?button)
+
+## Next.js Commerce 
+
+For details on using the Next.js Commerce template with the XDN refer to our [Next.js Commerce Guide](next_commerce).
+
+## Supported Features
+
+The Moovweb XDN supports all of the most powerful features of Next.js 10, including:
+
+- Localization
+- Image Optimization
+- `getStaticPaths` (including `fallback: (true|false|'blocking')`)
+- `getStaticProps` (including `revalidate`)
+- `getServerSideProps`
+- `getInitialProps`
 
 ## Getting Started
+
+### Install Node.js and npm
+
+**XDN only supports Node.js version 12 and higher**
+
+If you do not have Node.js installed on your system, download and install it from the official [Node.js v12.x downloads](https://nodejs.org/dist/latest-v12.x/) page. Select the download that matches your operating system and run the installer. Note that the installer for Node.js will also install npm.
+
+_Note that while you can use any version of Node.js >= 12 locally, your app will run in Node 12 when deployed to the XDN cloud. Therefore we highly suggest using Node 12 for all development._
+
+### Create a Next.js Application
 
 If you don't already have a Next.js application, you can create one using:
 
@@ -18,17 +44,18 @@ npm create next-app my-next-app
 
 To prepare your Next.js application for deployment on the Moovweb XDN:
 
-1. Install the XDN CLI globally:
+### Install the XDN CLI globally
 
 ```bash
 npm install -g @xdn/cli
 ```
 
-**Note
+\*\*Note
 When installing the XDN CLI globally in a virtual environment that has Node and NPM installed globally, you [may run into permission issues](https://forum.moovweb.com/t/xdn-cli-npm-install-error/83). In that case, you can install the XDN CLI locally within you app using `npm i -D @xdn/cli` and running commands using `./node_modules/@xdn/cli` instead of `xdn`.
 
 If you run into permission issues while attempting to install the XDN CLI globally on your local development machine, these may be fixed by using [nvm](https://github.com/nvm-sh/nvm) to manage Node and NPM.
-2. Initialize your Next.js project
+
+### Initialize your Next.js project
 
 ```bash
 cd my-next-app
@@ -45,7 +72,9 @@ This will automatically add all of the required dependencies and files to your p
 - `routes.js` - A default routes file that sends all requests to Next.js. Update this file to add caching or proxy some URLs to a different origin.
 - `sw/service-worker.js` A service worker implemented using Workbox.
 
-3. Add the `withXDN` and `withServiceWorker` plugins to `next.config.js`. If this file doesn't exist, create it in the root directory of your project folder, with the following content:
+### Edit next.config.js
+
+Add the `withXDN` and `withServiceWorker` plugins to `next.config.js`. If this file doesn't exist, create it in the root directory of your project folder, with the following content:
 
 ```js
 // next.config.js
@@ -57,14 +86,14 @@ module.exports = withXDN(withServiceWorker())
 
 The `withXDN` plugin ensures that your app is bundled properly for running on the XDN, and `withServiceWorker` provides a service worker based on `sw/service-worker.js`.
 
-**If you're already using `next-offline`, you should remove it in favor of `withServiceWorker`, which itself uses `next-offline.**
+_If you're already using `next-offline`, you should remove it in favor of `withServiceWorker`, which itself uses `next-offline._
 
 ## Running Locally
 
 To simulate your app within the XDN locally, run:
 
 ```bash
-npm run xdn:start
+xdn dev
 ```
 
 ## Deploying
@@ -72,7 +101,7 @@ npm run xdn:start
 Deploying requires an account on the Moovweb XDN. [Sign up here for free.](https://moovweb.app/signup) Once you have an account, you can deploy to the Moovweb XDN by running the following in the root folder of your project:
 
 ```bash
-npm run xdn:deploy
+xdn deploy
 ```
 
 See [deploying](deploying) for more information.

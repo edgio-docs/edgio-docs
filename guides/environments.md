@@ -18,7 +18,8 @@ To create an environment, navigate to your site and select the _Environments_ ta
 ![environments](/images/environments/environments.png)
 
 When creating an environment, you can choose whether or not to limit deployment capabilities to admins and deploy tokens, or to make it available to all members of the team:
-![limit environment](/images/teams/environment-permissions.png) 
+
+![limit environment](/images/teams/environment-permissions.png?width=550)
 
 ## Deploying to an Environment
 
@@ -72,6 +73,13 @@ module.exports = {
 Note that your `xdn.config.js` file is loaded during deployment to configure the edge for your environment. The first time you
 deploy your site, there won't be any environment variables defined, so you need to include defaults in `xdn.config.js` as
 shown in the example above.
+
+### Built-in Environment Variables
+
+XDN automatically injects the following environment variables:
+
+- `NODE_ENV`: Set to `production` by default but you can override it through the console
+- `XDN_ENVIRONMENT_NAME`: The name of the environment (e.g. `default`, `production` and so on). This cannot be overriden by you.
 
 ### Accessing Environment Variables at Build Time
 

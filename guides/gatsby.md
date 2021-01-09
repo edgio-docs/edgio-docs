@@ -4,9 +4,11 @@ This guide shows you how to deploy an Gatsby application on the Moovweb XDN:
 
 ## Install Node.js and npm
 
-__XDN only supports Node.js version 12 and higher__
+**XDN only supports Node.js version 12 and higher**
 
-If you do not have Node.js installed on your system, download and install it from official [Node.js downloads](https://nodejs.org/en/download/) page. Select the download labeled "LTS (Recommended For Most Users)" and that matches your operating system, and run the installer. Note that the installer for Node.js will also install npm.
+If you do not have Node.js installed on your system, download and install it from the official [Node.js v12.x downloads](https://nodejs.org/dist/latest-v12.x/) page. Select the download that matches your operating system and run the installer. Note that the installer for Node.js will also install npm.
+
+_Note that while you can use any version of Node.js >= 12 locally, your app will run in Node 12 when deployed to the XDN cloud. Therefore we highly suggest using Node 12 for all development._
 
 ## Getting Started
 
@@ -17,7 +19,7 @@ npm install -g gatsby-cli
 gatsby new gatsby-site https://github.com/gatsbyjs/gatsby-starter-hello-world
 ```
 
-You should now have a working Gatsby site. Run `gatsby serve` to see the application running on `localhost:8000`.
+You should now have a working Gatsby site. Run `gatsby develop` to see the application running on `localhost:8000`.
 
 To deploy your Gatsby on Moovweb XDN:
 
@@ -67,11 +69,10 @@ The default `routes.js` file created by `xdn init` sends all requests to the Gat
 // This file was automatically added by xdn deploy.
 // You should commit this file to source control.
 
-const { Router } = require('@xdn/core/Router')
+const { Router } = require('@xdn/core/router')
 const { gatsbyRoutes } = require('@xdn/gatsby')
 
 module.exports = new Router().use(gatsbyRoutes)
-
 ```
 
 ### Adding routes to a different origin
@@ -102,7 +103,7 @@ For example:
 ```js
 // routes.js
 
-const { Router } = require('@xdn/core/Router')
+const { Router } = require('@xdn/core/router')
 const { gatsbyRoutes } = require('@xdn/gatsby')
 
 module.exports = new Router()
@@ -110,7 +111,6 @@ module.exports = new Router()
     proxy('legacy')
   })
   .use(gatsbyRoutes)
-
 ```
 
 Check [Routing](routing) and [Caching](caching) guides for more information.

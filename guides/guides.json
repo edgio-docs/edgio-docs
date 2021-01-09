@@ -53,6 +53,11 @@
         "href": "/guides/[...guide]"
       },
       {
+        "text": "Incremental Static (Re)Generation",
+        "as": "/guides/isg",
+        "href": "/guides/[...guide]"
+      },
+      {
         "text": "Image Optimization",
         "as": "/guides/image_optimization",
         "href": "/guides/[...guide]"
@@ -108,6 +113,11 @@
         "href": "/guides/[...guide]"
       },
       {
+        "text": "Connectors",
+        "as": "/guides/connectors",
+        "href": "/guides/[...guide]"
+      },
+      {
         "text": "Contributing",
         "as": "/guides/contributing",
         "href": "/guides/[...guide]"
@@ -121,6 +131,12 @@
         "text": "Next.js",
         "icon": "nextjs",
         "as": "/guides/next",
+        "href": "/guides/[...guide]"
+      },
+      {
+        "text": "Next.js Commerce",
+        "icon": "nextjs",
+        "as": "/guides/next_commerce",
         "href": "/guides/[...guide]"
       },
       {

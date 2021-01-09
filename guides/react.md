@@ -4,9 +4,11 @@ This guide shows you how to a React application on the Moovweb XDN. If you're us
 
 ## Install Node.js and npm
 
-__XDN only supports Node.js version 12 and higher__
+**XDN only supports Node.js version 12 and higher**
 
-If you do not have Node.js installed on your system, download and install it from official [Node.js downloads](https://nodejs.org/en/download/) page. Select the download labeled "LTS (Recommended For Most Users)" and that matches your operating system, and run the installer. Note that the installer for Node.js will also install npm.
+If you do not have Node.js installed on your system, download and install it from the official [Node.js v12.x downloads](https://nodejs.org/dist/latest-v12.x/) page. Select the download that matches your operating system and run the installer. Note that the installer for Node.js will also install npm.
+
+_Note that while you can use any version of Node.js >= 12 locally, your app will run in Node 12 when deployed to the XDN cloud. Therefore we highly suggest using Node 12 for all development._
 
 ## Getting Started
 
@@ -125,9 +127,9 @@ new Router()
       },
     })
   })
-  .fallback(({ proxy }) => {
+  .fallback(({ renderWithApp }) => {
     // send all requests to the server module configured in xdn.config.js
-    proxy(BACKENDS.js)
+    renderWithApp()
   })
 ```
 
@@ -183,6 +185,48 @@ In order to install the service worker in the browser when your site loads, call
 import { install } from '@xdn/prefetch/window'
 
 install()
+```
+
+### Create React App Example
+
+If you're building an app with [create-react-app](https://github.com/facebook/create-react-app), you can use this router to get started:
+
+```js
+// routes.js
+
+const { Router } = require('@xdn/core/router')
+
+const ONE_HOUR = 60 * 60
+const ONE_DAY = 24 * ONE_HOUR
+const ONE_YEAR = 365 * ONE_DAY
+
+const edgeOnly = {
+  browser: false,
+  edge: { maxAgeSeconds: ONE_YEAR },
+}
+
+const edgeAndBrowser = {
+  browser: { maxAgeSeconds: ONE_YEAR },
+  edge: { maxAgeSeconds: ONE_YEAR },
+}
+
+module.exports = new Router()
+  .prerender([{ path: '/' }])
+  // js and css assets are hashed and can be far-future cached in the browser
+  .get('/static/:path*', ({ cache, serveStatic }) => {
+    cache(edgeAndBrowser)
+    serveStatic('build/static/:path*')
+  })
+  // all paths that do not have a "." as well as "/"" should serve the app shell (index.html)
+  .get('/:path*/:file([^\\.]+|)', ({ cache, appShell }) => {
+    cache(edgeOnly)
+    appShell('build/index.html')
+  })
+  // all other paths should be served from the build directory
+  .get('/:path*', ({ cache, serveStatic }) => {
+    cache(edgeOnly)
+    serveStatic('build/:path*')
+  })
 ```
 
 ## Deploying

@@ -9,6 +9,7 @@ This guide covers the headers that Moovweb XDN injects into responses making the
 - `x-xdn-request-id`: the unique ID of the request on Moovweb XDN infrastructure
 - `x-xdn-hit-request-id`: the unique ID of the request whose cached response is being returned (not present if cache miss)
 - `x-xdn-caching-status`: indicates why a response was or was not cached. See [Caching](/guides/caching#section_why_is_my_response_not_being_cached_).
+- `x-xdn-surrogate-key`: a space separated list of secondary cache keys used for [cache clearing](/guides/caching#section_clearing_the_cache)
 
 ### Structure of `x-xdn-t`
 
@@ -37,7 +38,7 @@ All times are in milliseconds.
 |sr|The time spent matching routes at the shield pop|
 |sf|The time spent waiting for a response from the serverless backend or origin, including request queueing|
 |sc|The caching status for the shield pop|
-|ow|The free memory in bytes on the shield pop after processing the request|
+|sw|The free memory in bytes on the shield pop after processing the request|
 |sq|The time spent at the shield pop in fetch queue during the request coalescing|
 |bf|The time spent waiting for a response from the serverless backend or origin, including request queueing|
 |pc|The number of times the request was scheduled to execute. If it's present it is normally `1`, if not your account is under significant pressure and you should consider upgrading it.|

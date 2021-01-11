@@ -10,7 +10,9 @@ export default async function guide(req, res) {
 
   try {
     const guideResp =
-      process.env.NODE_ENV === 'production'
+      // To allow correct previews in local/cloud/edge, read the versioned docs only in production,
+      // otherwise just read it from this version itself.
+      process.env.XDN_ENVIRONMENT_NAME === 'production'
         ? await fetch(
             `http://moovweb-docs.github.io/xdn-docs-pages/${version}/guides/${guide}.md`,
           ).then(resp => resp.text())

@@ -122,6 +122,114 @@ The `@xdn/vue` package provides a `Prefetch` component that you can wrap around 
 
 By default `Prefetch` will fetch and cache the URL in the link's `to` attribute (for both `router-link` and `nuxt-link`). If you have a single page app, you most likely want to prefetch an API call for the page rather than the page's HTML. The example above shows you how to set the `url` property to control which URL is prefetched.
 
+
+## Deep Fetching
+
+By default, prefetching only fetches the JSON API data or HTML document for a prefetched page. In order to achieve truly instant page transitions, all of the page's assets above the fold need to be prefetched as well. These typically include images, CSS, and JavaScript. This is where "deep fetching" comes in. Deep fetching parses the prefetched page and then fetches the important assets of the prefetched page that you specify.
+
+To add deep fetching to your project, add the [DeepFetchPlugin](/docs/api/prefetch/classes/_sw_deepfetchplugin_.deepfetchplugin.html) to your service worker. The `DeepFetchPlugin` is then configured with an array of selectors that describe which assets need to be prefetched:
+
+```js
+import { Prefetcher } from '@xdn/prefetch/sw'
+import DeepFetchPlugin from '@xdn/prefetch/sw/DeepFetchPlugin'
+
+new Prefetcher({
+  plugins: [
+    new DeepFetchPlugin([
+      {
+        /* Deep fetching configuration objects go here */
+      },
+    ]),
+  ],
+})
+```
+
+The `DeepFetchPlugin` can parse both HTML and JSON documents to extract the page assets that must be deep fetched. For XDN projects that are headless (i.e. the front end communicates with the backend through an API), you'll typically use the JSON option. However if the backend and front-end endpoints are communicating using HTML responses then you'll want to use the HTML option. Note that you can mix both HTML and JSON configuration objects in the an array passed to the `DeepFetchPlugin`.
+
+### Deep fetching URLs in JSON responses
+
+For JSON responses, you'll pass the `DeepFetchPlugin` an array of `[DeepFetchJsonConfig interface](https://developer.moovweb.com/docs/api/prefetch/interfaces/_sw_deepfetchplugin_.deepfetchjsonconfig.html)` objects. These `DeepFetchJsonConfig` objects  describe the asset URLs in the JSON response that should be prefetched. For example, the snippet below finds product images to deep fetch for a category page response:
+
+```js
+new DeepFetchPlugin([
+  // parses the category API response to deep fetch the product images:
+  {
+    jsonQuery: 'Bundles.[**].Products:products(Product).MediumImageFile',
+    jsonQueryOptions: {
+      locals: {
+        // filters out null products:
+        products: input => input.filter(prod => prod),
+      },
+    },
+    maxMatches: 10,
+    as: 'image',
+  },
+])
+```
+
+The `jsonQuery` syntax is provided by the [json-query](https://github.com/auditassistant/json-query) library. You can test your JSON queries using their [JSON-query Tester Sandbox](https://maxleiko.github.io/json-query-tester/).
+
+
+### Deep Fetching for HTML documents
+
+To deep fetch HTML documents, pass the plugin objects that match the [DeepFetchHtmlConfig interface](https://developer.moovweb.com/docs/api/prefetch/interfaces/_sw_deepfetchplugin_.deepfetchhtmlconfig.html) and describe which HTML elements need to be prefetched via CSS selectors.
+
+For example, imagine you're configuring prefetching for a product page and you want to ensure the main product image is prefetched so that it appears immediately when the page loads. If the main product image is displayed with an HTML `img` element with a CSS class called `product-featured-media`, it can be prefetched by adding the following to the DeepFetchPlugin:
+
+```js
+import { Prefetcher } from '@xdn/prefetch/sw'
+import DeepFetchPlugin from '@xdn/prefetch/sw/DeepFetchPlugin'
+
+new Prefetcher({
+  plugins: [
+    new DeepFetchPlugin([
+      {
+        selector: 'img.product-featured-media', // CSS selector syntax - just like you would use with document.querySelector()
+        maxMatches: 1, // limits the number of matched elements to prefetch to 1 per page
+        attribute: 'src', // the attribute holding the URL to prefetching
+        as: 'image', // the type of asset being prefetched
+      },
+    ]),
+  ],
+})
+```
+
+#### Computing the URL to be prefetched
+
+In the example above the `img` element's `src` attribute contains URL that needs to be prefetched. Sometimes finding the URL to prefetch is not so straightforward. For example, apps sometimes use JavaScript to compute the URL for responsive images based on the user's device size. In such cases you can provide a `callback` function which will be passed all matching elements and decide what URLs to prefetch. Here is an example:
+
+```typescript
+import { Prefetcher, prefetch } from '@xdn/prefetch/sw'
+import DeepFetchPlugin, { DeepFetchCallbackParam } from '@xdn/prefetch/sw/DeepFetchPlugin'
+
+new Prefetcher({
+  plugins: [
+    new DeepFetchPlugin([
+      {
+        selector: 'img.grid-view-item__image',
+        maxMatches: 4,
+        as: 'image',
+        callback: deepFetchResponsiveImages,
+      },
+    ]),
+  ],
+})
+
+function deepFetchResponsiveImages({ $el, el, $ }: DeepFetchCallbackParam) {
+  const urlTemplate = $el.attr('data-src')
+  const dataWidths = $el.attr('data-widths')
+
+  if (dataWidths && urlTemplate) {
+    const widths = JSON.parse(dataWidths)
+
+    for (let width of widths.slice(0, 2)) {
+      const url = urlTemplate?.replace(/\{width\}/, width)
+      prefetch(url, 'image')
+    }
+  }
+}
+```
+
 ## Using the XDN for Prefetching Only
 
 If you have an existing site already in production, it is possible to prefetch from the XDN while still serving the site from the existing CDN.

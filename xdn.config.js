@@ -9,4 +9,5 @@ module.exports = {
       hostHeader: 'moovweb-docs.github.io',
     },
   },
+  connector: '@xdn/next'
 }

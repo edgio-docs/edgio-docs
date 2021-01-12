@@ -102,32 +102,9 @@ export default function SearchField() {
   }
 
   return (
-    <>
-      <ClickAwayListener onClickAway={onClose}>
-        <TextField
-          placeholder="Search"
-          variant="outlined"
-          size="small"
-          classes={{}}
-          onFocus={onFocus}
-          onChange={e => onChangeText(e.target.value)}
-          InputProps={{
-            classes,
-            startAdornment: (
-              <InputAdornment position="start" classes={{ root: classes.icon }}>
-                <SearchIcon />
-              </InputAdornment>
-            ),
-          }}
-        />
-      </ClickAwayListener>
-      <SearchResults
-        query={query}
-        loading={loading}
-        results={results.results}
-        anchorEl={anchor}
-        open={open}
-      />
-    </>
+    <div style={{minWidth: 300}}>
+      <script async src="https://cse.google.com/cse.js?cx=fae95cbf58a8f51b0"></script>
+      <div className='gcse-search'></div>
+    </div>
   )
 }

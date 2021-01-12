@@ -72,27 +72,6 @@ export default function SearchField() {
       const { content, index } = await searchIndex
       const search = index.search(`*${query}*`)
 
-      const results = search.slice(0, 10).map(match => {
-        const document = content.find(item => item.id === match.ref)
-        const metadata = match.matchData.metadata
-        const fields = metadata[Object.keys(metadata)[0]]
-        const firstMatch = fields[Object.keys(fields)[0]].position[0][0]
-        const start = Math.max(0, firstMatch - 10)
-        const end = firstMatch + 150
-        let text = document.content.slice(start, end)
-
-        if (start > 0) {
-          text = `...${text}`
-        }
-
-        if (end < document.content.length) {
-          text = `${text}...`
-        }
-
-        return { ...document, match: text }
-      })
-
-      setResults({ count: search.length, results })
     }, 250),
     [searchIndex],
   )
@@ -104,7 +83,7 @@ export default function SearchField() {
   return (
     <div style={{minWidth: 300}}>
       <script async src="https://cse.google.com/cse.js?cx=fae95cbf58a8f51b0"></script>
-      <div className='gcse-search'></div>
+      <div className="gcse-search"></div>
     </div>
   )
 }

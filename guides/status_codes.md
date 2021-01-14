@@ -29,6 +29,8 @@ Obviously, your project can set status codes of their own, which may sometimes m
 
 Moovweb XDN also issues these standard response codes:
 
+| CODE | NAME | DESCRIPTION |
+| -- | -- | -- |
 | 400 | Bad Request | The URL is too long or the request headers are too large. See [limits](limits) |
 | 404 | Not Found | The request did not match any route that would send a response and there is no fallback. See [routing](routing) |
 | 412 | Precondition Failed | The query string parameter `xdn_prefetch` equals `1` and the result is not found in the edge cache. |

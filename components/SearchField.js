@@ -22,68 +22,49 @@ const useStyles = makeStyles(theme => ({
 
 export default function SearchField() {
   const classes = useStyles()
-  const [open, setOpen] = useState(false)
-  const [anchor, setAnchor] = useState()
-  const [query, setQuery] = useState('')
-  const [loading, setLoading] = useState(false)
-  const [searchIndex, setSearchIndex] = useState()
-  const [results, setResults] = useState({})
   const { currentVersion } = useVersioning()
-
-  const loadId = useRef(0)
-
-  const onFocus = async evt => {
-    evt.target.select()
-    setAnchor(evt.target)
-    setOpen(!!query.length)
-  }
 
   useEffect(() => {
     const doEffect = async () => {
-      setLoading(true)
-
-      setSearchIndex(
-        fetch(`/api/searchIndex?version=${encodeURIComponent(currentVersion)}`)
-          .then(res => res.json())
-          .then(content => {
-            setLoading(false)
-
-            return {
-              content,
-              index: lunr(function() {
-                this.ref('id')
-                this.field('name')
-                this.field('content')
-                this.metadataWhitelist = ['position']
-                content.forEach(guide => this.add(guide))
-              }),
-            }
-          }),
-      )
+      if (window.docsearch) {
+        docsearch({
+          apiKey: 'ac2f5be6d523eaf51cbf0ec8c629b882',
+          indexName: 'example',
+          appId: '86GYGZYT5L',
+          inputSelector: '#docsearch',
+          algoliaOptions: {
+            hitsPerPage: 10,
+            // See https://www.algolia.com/doc/api-reference/api-parameters/
+          },
+          debug: true,
+        })
+      }
     }
     doEffect()
   }, [currentVersion])
 
-  const onChangeText = useCallback(
-    debounce(async query => {
-      setOpen(!!query)
-      setQuery(query)
-
-      const { content, index } = await searchIndex
-      const search = index.search(`*${query}*`)
-
-    }, 250),
-    [searchIndex],
-  )
-
-  const onClose = () => {
-    setOpen(false)
-  }
-
   return (
-    <div style={{minWidth: 300}}>
-      <script async src="https://cse.google.com/cse.js?cx=fae95cbf58a8f51b0"></script>
-      <div className="gcse-search"></div>
+    <div style={{ minWidth: 300 }}>
+      <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/docsearch.js@latest/dist/cdn/docsearch.min.css"
+      />
+      <script src="https://cdn.jsdelivr.net/npm/docsearch.js@latest/dist/cdn/docsearch.min.js"></script>
+      <TextField
+        placeholder="Search"
+        variant="outlined"
+        size="small"
+        classes={{}}
+        InputProps={{
+          classes,
+          id: 'docsearch',
+          startAdornment: (
+            <InputAdornment position="start" classes={{ root: classes.icon }}>
+              <SearchIcon />
+            </InputAdornment>
+          ),
+        }}
+      />
     </div>
   )
 }

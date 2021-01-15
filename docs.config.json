@@ -1,0 +1,10 @@
+{
+  "index_name": "docs",
+  "start_urls": ["https://developer.moovweb.com"],
+  "selectors": {
+    "lvl0": "h2",
+    "lvl1": "h3",
+    "lvl2": "p,pre>code",
+    "text": "p,pre>code"
+  }
+}

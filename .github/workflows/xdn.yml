@@ -4,15 +4,15 @@ jobs:
   deploy-to-xdn:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v1
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 12
       - name: Setup Environment
         shell: bash
         run: |
           echo "BRANCH_NAME=$(echo ${GITHUB_REF#refs/heads/} | sed 's/\//_/g')" >> $GITHUB_ENV
           echo "DOCS_CONFIG=$(cat ./docs.config.json | jq -r tostring)" >> $GITHUB_ENV
-      - uses: actions/checkout@v1
-      - uses: actions/setup-node@v1
-        with:
-          node-version: 12
       - name: Cache node modules
         uses: actions/cache@v1
         env:

@@ -27,10 +27,11 @@ jobs:
       - run: npm ci
       - name: Deploy to XDN
         run: npm run deploy -- --branch=$BRANCH_NAME --token=${{secrets.xdn_deploy_token}} ${{env.BRANCH_NAME == 'master' && '--environment=production' || '--environment=default'}}
-  # crawl-docs:
-  #   runs-on: ubuntu-latest
-  #   container:
-  #     image: algolia/docsearch-scraper
-  #     env:
-  #       APPLICATION_ID: foo
-  #       API_KEY: bar
+  crawl-docs:
+    runs-on: ubuntu-latest
+    container:
+      image: algolia/docsearch-scraper
+      env:
+        APPLICATION_ID: 86GYGZYT5L
+        API_KEY: foobar
+        CONFIG: ${{ env.DOCS_CONFIG }}

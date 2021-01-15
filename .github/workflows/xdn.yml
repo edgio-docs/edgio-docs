@@ -4,15 +4,14 @@ jobs:
   deploy-to-xdn:
     runs-on: ubuntu-latest
     steps:
+      - name: Extract branch name
+        shell: bash
+        run: |
+          echo "BRANCH_NAME=$(echo ${GITHUB_REF#refs/heads/} | sed 's/\//_/g')" >> $GITHUB_ENV
       - uses: actions/checkout@v1
       - uses: actions/setup-node@v1
         with:
           node-version: 12
-      - name: Setup Environment
-        shell: bash
-        run: |
-          echo "BRANCH_NAME=$(echo ${GITHUB_REF#refs/heads/} | sed 's/\//_/g')" >> $GITHUB_ENV
-          echo "DOCS_CONFIG=$(cat ./docs.config.json | jq -r tostring)" >> $GITHUB_ENV
       - name: Cache node modules
         uses: actions/cache@v1
         env:
@@ -27,11 +26,10 @@ jobs:
       - run: npm ci
       - name: Deploy to XDN
         run: npm run deploy -- --branch=$BRANCH_NAME --token=${{secrets.xdn_deploy_token}} ${{env.BRANCH_NAME == 'master' && '--environment=production' || '--environment=default'}}
-  crawl-docs:
-    runs-on: ubuntu-latest
-    container:
-      image: algolia/docsearch-scraper
-      env:
-        APPLICATION_ID: 86GYGZYT5L
-        API_KEY: foobar
-        CONFIG: ${{ env.DOCS_CONFIG }}
+      - name: Crawl Docs
+        run: |
+          docker run -it \
+          -e APPLICATION_ID=86GYGZYT5L \
+          -e API_KEY=foobar \
+          -e CONFIG="$(cat ./docs.config.json | jq -r tostring)" \
+          algolia/docsearch-scraper

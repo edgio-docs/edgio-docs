@@ -28,7 +28,7 @@ jobs:
         run: npm run deploy -- --branch=$BRANCH_NAME --token=${{secrets.xdn_deploy_token}} ${{env.BRANCH_NAME == 'master' && '--environment=production' || '--environment=default'}}
       - name: Crawl Docs
         run: |
-          docker run -it \
+          docker run \
           -e APPLICATION_ID=86GYGZYT5L \
           -e API_KEY=foobar \
           -e CONFIG="$(cat ./docs.config.json | jq -r tostring)" \

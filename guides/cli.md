@@ -26,7 +26,7 @@ Creates a build of your app optimized for production
 
 | Name           | Description                                                                               |
 | -------------- | ----------------------------------------------------------------------------------------- |
-| `--skip-build` | Skips the framework (Next.js, Vue, Angular, etc..) build and simply rebundles your router |
+| `--skip-framework` | Alias: "-s". Skips the framework (Next.js, Vue, Angular, etc..) build and simply rebundles your router |
 
 #### Example
 

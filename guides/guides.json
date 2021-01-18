@@ -192,6 +192,12 @@
         "icon": "vsf",
         "as": "/guides/vsf",
         "href": "/guides/[...guide]"
+      },
+      {
+        "text": "NX",
+        "icon": "nx",
+        "as": "/guides/nx",
+        "href": "/guides/[...guide]"
       }
     ]
   },

@@ -11,6 +11,7 @@ import ReactStorefrontIcon from './react-storefront.svg'
 import SapperIcon from './sapper.svg'
 import GatsbyIcon from './gatsby.svg'
 import VSFIcon from './vsf.svg'
+import NXIcon from './nx.png'
 
 export const icons = {
   react: ReactIcon,
@@ -27,6 +28,7 @@ export const icons = {
   sapper: SapperIcon,
   gatsby: GatsbyIcon,
   vsf: VSFIcon,
+  nx: NXIcon,
 }
 
 export const styles = theme => ({

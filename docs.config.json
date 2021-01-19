@@ -1,14 +1,41 @@
 {
   "index_name": "docs",
-  "start_urls": ["https://developer.moovweb.com"],
-  "selectors": {
-    "lvl0": "h2",
-    "lvl1": {
-      "selector": "h3",
-      "selectors_exclude": ["section"]
+  "start_urls": [
+    {
+      "url": "https://developer.moovweb.com"
     },
-    "lvl2": "h4,h5",
-    "lvl3": "p,pre>code",
-    "text": "p,pre>code"
+    {
+      "url": "https://developer.moovweb.com/docs",
+      "selectors_key": "api_docs"
+    }
+  ],
+  "stop_urls": ["https://developer.moovweb.com/docs/v.*"],
+  "selectors": {
+    "default": {
+      "lvl0": "h2",
+      "lvl1": {
+        "selector": "h3",
+        "selectors_exclude": ["section"]
+      },
+      "lvl2": {
+        "selector": "h4,h5",
+        "selectors_exclude": [".tsd-returns-title"]
+      },
+      "lvl5": "p,pre code",
+      "text": "p,pre code,ul li"
+    },
+    "api_docs": {
+      "lvl0": "h2",
+      "lvl1": {
+        "selector": "h3",
+        "selectors_exclude": ["section"]
+      },
+      "lvl2": {
+        "selector": "h4,h5",
+        "selectors_exclude": [".tsd-returns-title"]
+      },
+      "lvl5": "p,pre code",
+      "text": "p,pre code, ul li"
+    }
   }
 }

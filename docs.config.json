@@ -3,7 +3,10 @@
   "start_urls": ["https://developer.moovweb.com"],
   "selectors": {
     "lvl0": "h2",
-    "lvl1": "h3",
+    "lvl1": {
+      "selector": "h3",
+      "selectors_exclude": ["section"]
+    },
     "lvl2": "h4,h5",
     "lvl3": "p,pre>code",
     "text": "p,pre>code"

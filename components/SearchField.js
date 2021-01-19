@@ -29,7 +29,7 @@ export default function SearchField() {
       if (window.docsearch) {
         docsearch({
           apiKey: 'ac2f5be6d523eaf51cbf0ec8c629b882',
-          indexName: 'example',
+          indexName: 'docs',
           appId: '86GYGZYT5L',
           inputSelector: '#docsearch',
           algoliaOptions: {

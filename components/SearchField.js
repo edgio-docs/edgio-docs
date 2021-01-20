@@ -1,8 +1,7 @@
 import { makeStyles } from '@material-ui/styles'
 import React, { useEffect } from 'react'
-import { ClickAwayListener, InputAdornment, TextField } from '@material-ui/core'
+import { InputAdornment, TextField } from '@material-ui/core'
 import SearchIcon from '@material-ui/icons/Search'
-import useVersioning from './versioning'
 import searchConfig from '../docs.config.json'
 
 const { app_id: algoliaAppId, search_api_key: algoliaApiKey, index_name: indexName } = searchConfig
@@ -22,7 +21,6 @@ const useStyles = makeStyles(theme => ({
 
 export default function SearchField() {
   const classes = useStyles()
-  const { currentVersion } = useVersioning()
 
   const onSearchLoad = () => {
     if (window.docsearch) {

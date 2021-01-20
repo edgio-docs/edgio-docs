@@ -29,7 +29,7 @@ jobs:
       - name: Crawl Docs
         run: |
           docker run \
-          -e APPLICATION_ID=86GYGZYT5L \
-          -e API_KEY=fcc6a83b5d6ac0e61090723246750993 \
+          -e APPLICATION_ID=${{ secrets.ALGOLIA_APP_ID }} \
+          -e API_KEY=${{ secrets.ALGOLIA_API_KEY }} \
           -e CONFIG="$(cat ./docs.config.json | jq -r tostring)" \
           algolia/docsearch-scraper

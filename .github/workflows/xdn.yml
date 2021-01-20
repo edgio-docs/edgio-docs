@@ -26,10 +26,3 @@ jobs:
       - run: npm ci
       - name: Deploy to XDN
         run: npm run deploy -- --branch=$BRANCH_NAME --token=${{secrets.xdn_deploy_token}} ${{env.BRANCH_NAME == 'master' && '--environment=production' || '--environment=default'}}
-      - name: Crawl Docs
-        run: |
-          docker run \
-          -e APPLICATION_ID=${{ secrets.ALGOLIA_APP_ID }} \
-          -e API_KEY=${{ secrets.ALGOLIA_API_KEY }} \
-          -e CONFIG="$(cat ./docs.config.json | jq -r tostring)" \
-          algolia/docsearch-scraper

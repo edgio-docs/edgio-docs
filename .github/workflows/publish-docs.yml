@@ -27,3 +27,10 @@ jobs:
           git config --local user.name "GitHub Action"
           git commit -am "Update guides for version ${VERSION}"
           git push -u origin
+      - name: Crawl Docs
+        run: |
+          docker run \
+          -e APPLICATION_ID=${{ secrets.ALGOLIA_APP_ID }} \
+          -e API_KEY=${{ secrets.ALGOLIA_API_KEY }} \
+          -e CONFIG="$(cat ./docs.config.json | jq -r tostring)" \
+          algolia/docsearch-scraper

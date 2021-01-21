@@ -6,6 +6,8 @@ This guide introduces the high-level concepts behind Moovweb's XDN.
 
 XDN stands for "e**X**perience **D**elivery **N**etwork". It extends the capabilities of a traditional **CDN** by not only hosting your static content, but also providing **server-side rendering** for progressive web applications as well as caching both your APIs and HTML at the network edge to provide your users with the **fastest browsing experience**.
 
+Check out our video [Moovweb XDN - What & Why](https://www.youtube.com/watch?v=sJ6AkTrcZvg) for more details.
+
 ## Architecture
 
 ![architecture](/images/overview/architecture.svg)

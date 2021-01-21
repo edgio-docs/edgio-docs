@@ -3,7 +3,7 @@ import React from 'react'
 import Head from 'next/head'
 import Nav from '../components/nav/Nav'
 import PageWrapper from '../components/PageWrapper'
-import { Typography, makeStyles, Container, Grid, Paper, Divider } from '@material-ui/core'
+import { Typography, makeStyles, Container, Grid, Paper, Divider, CardMedia } from '@material-ui/core'
 import getBaseUrl from '../components/utils/getBaseUrl'
 import Link from 'next/link'
 import ReactIcon from '../components/icons/react.svg'
@@ -92,7 +92,8 @@ const useStyles = makeStyles(theme => ({
   },
 
   changeLog: {
-    marginTop: theme.spacing(8),
+    paddingTop: theme.spacing(8),
+    paddingBottom: theme.spacing(8),
   },
 }))
 
@@ -231,6 +232,20 @@ const Home = ({ navData, changeLog }) => {
           </Grid>
         </Grid>
       </Grid>
+      <Container className={classes.changeLog}>
+        <Divider/>
+        <h1>Moovweb Tutorial</h1>
+        <Grid container spacing={5}>
+          <Grid item>
+            <h4>Moovweb XDN - What & Why</h4>
+            <iframe width="100%" height="90%" src="https://www.youtube.com/embed/sJ6AkTrcZvg"></iframe>
+          </Grid>
+          <Grid item>
+            <h4>Moovweb XDN - Deploying GitHub Project</h4>
+            <iframe width="100%" height="90%" src="https://www.youtube.com/embed/F8uN03ps1As"></iframe>
+          </Grid>
+        </Grid>
+      </Container>
       <Container className={classes.changeLog}>
         <Divider />
         <h2>Changelog</h2>

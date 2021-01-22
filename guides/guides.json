@@ -192,12 +192,6 @@
         "icon": "vsf",
         "as": "/guides/vsf",
         "href": "/guides/[...guide]"
-      },
-      {
-        "text": "Vue Storefront Instance",
-        "icon": "vsf",
-        "as": "/guides/vsf1_instance",
-        "href": "/guides/[...guide]"
       }
     ]
   },

@@ -1,4 +1,9 @@
-# Adding XDN to Vue Storefront Instance guide
+# Vue Storefront 1
+
+## Example Site
+
+[Try the VSF1 Example Site](https://moovweb-demos-vsf1-default.moovweb-edge.io/?button)
+[View the Code](https://github.com/moovweb-docs/xdn-examples/tree/main/xdn-vue-storefront-example?button)
 
 ## 1. Install Vue Storefront
 

@@ -45,14 +45,15 @@ export const styles = theme => ({
 
 const useStyles = makeStyles(styles, { name: 'RSFIcon' })
 
-export default function Icon({ classes, type }) {
+export default function Icon({ style, classes, type }) {
   classes = useStyles({ classes })
   const El = icons[type]
 
   if (!El) {
-    console.log('could not find icon', type)
     return null
+  } else if (typeof El === 'string') {
+    return <img style={style} src={El} className={classes.root} />
+  } else {
+    return <El style={style} className={classes.root} classes={classes} />
   }
-
-  return <El className={classes.root} classes={classes} />
 }

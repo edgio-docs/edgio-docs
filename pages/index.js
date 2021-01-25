@@ -3,7 +3,7 @@ import React from 'react'
 import Head from 'next/head'
 import Nav from '../components/nav/Nav'
 import PageWrapper from '../components/PageWrapper'
-import { Typography, makeStyles, Container, Grid, Paper, Divider, CardMedia } from '@material-ui/core'
+import { Typography, makeStyles, Container, Grid, Paper, Divider } from '@material-ui/core'
 import getBaseUrl from '../components/utils/getBaseUrl'
 import Link from 'next/link'
 import ReactIcon from '../components/icons/react.svg'
@@ -16,7 +16,8 @@ import SapperIcon from '../components/icons/sapper.svg'
 import GatsbyIcon from '../components/icons/gatsby.svg'
 import VSFIcon from '../components/icons/vsf.svg'
 import VueIcon from '../components/icons/vue.svg'
-import NextCommerceIcon from '../components/icons/next-commerce.svg' 
+import Icon from '../components/icons/Icon'
+import NextCommerceIcon from '../components/icons/next-commerce.svg'
 import { icons } from '../components/icons/Icon'
 import Markdown from '../components/Markdown'
 
@@ -215,34 +216,42 @@ const Home = ({ navData, changeLog }) => {
                 </Paper>
               </Link>
             </Grid>
+            <Grid item>
+              <Link href="/guides/[...guide]" as="/guides/nx">
+                <Paper className={classes.framework} elevation={0}>
+                  <Icon type="nx" className={classes.icon} style={{ height: 142, width: 142 }} />
+                  <Typography className={classes.frameworkText}>Get started with Nx</Typography>
+                </Paper>
+              </Link>
+            </Grid>
             <Grid item container xs={12} m={12} l={12} xl={12} justify="center">
               Don't see your framework?&nbsp;
               <Link href="/guides/[...guide]" as="/guides/starter">
                 Check out XDN Starter
               </Link>
             </Grid>
-            {/* <Grid item>
-              <Link href="/guides/[...guide]" as="/guides/vue">
-                <Paper className={classes.framework} elevation={0}>
-                  <VueIcon className={classes.icon} />
-                  <Typography className={classes.frameworkText}>Get started with Vue</Typography>
-                </Paper>
-              </Link>
-            </Grid> */}
           </Grid>
         </Grid>
       </Grid>
       <Container className={classes.changeLog}>
-        <Divider/>
+        <Divider />
         <h1>Moovweb Tutorial</h1>
         <Grid container spacing={5}>
           <Grid item>
             <h4>Moovweb XDN - What & Why</h4>
-            <iframe width="100%" height="90%" src="https://www.youtube.com/embed/sJ6AkTrcZvg"></iframe>
+            <iframe
+              width="100%"
+              height="90%"
+              src="https://www.youtube.com/embed/sJ6AkTrcZvg"
+            ></iframe>
           </Grid>
           <Grid item>
             <h4>Moovweb XDN - Deploying GitHub Project</h4>
-            <iframe width="100%" height="90%" src="https://www.youtube.com/embed/F8uN03ps1As"></iframe>
+            <iframe
+              width="100%"
+              height="90%"
+              src="https://www.youtube.com/embed/F8uN03ps1As"
+            ></iframe>
           </Grid>
         </Grid>
       </Container>

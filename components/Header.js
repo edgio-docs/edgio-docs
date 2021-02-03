@@ -172,7 +172,7 @@ export default function Header() {
                 </Button>
               </Hidden>
               <Hidden mdDown implementation="css">
-                <Button href="https://help.moovweb.com" target="_blank" className={classes.button}>
+                <Button href="https://moovweb.app/help" target="_blank" className={classes.button}>
                   SUPPORT
                 </Button>
               </Hidden>

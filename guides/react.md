@@ -91,7 +91,6 @@ We recommend bundling your server with [Webpack](https://webpack.js.org/). Your 
 ```js
 module.exports = {
   target: 'node',
-  devtool: 'none',
   mode: 'production',
   output: {
     filename: '[name].js',

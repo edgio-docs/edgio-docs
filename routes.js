@@ -82,6 +82,9 @@ module.exports = new Router()
     cache(htmlCacheConfig)
     proxy('api', { path: '/xdn-docs-pages/:version/api/:path*' })
   })
+  .get("/googleb2732cddf1383cf4.html", ({ send }) =>
+    send("google-site-verification: googleb2732cddf1383cf4.html", 200, "OK")
+  )
   .use(nextRoutes)
   .fallback(({ redirect }) => {
     return redirect('/', 302)

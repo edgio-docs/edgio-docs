@@ -9,7 +9,7 @@ This Next.js example app uses server-side rendering and prefetching to provide l
 [Try the Next.js SSR Example Site](https://moovweb-docs-xdn-next-example-default.moovweb-edge.io/category/hats?button)
 [View the Code](https://github.com/moovweb-docs/xdn-examples/tree/main/xdn-next-example?button)
 
-## Next.js Commerce 
+## Next.js Commerce
 
 For details on using the Next.js Commerce template with the XDN refer to our [Next.js Commerce Guide](next_commerce).
 
@@ -231,6 +231,21 @@ The `renderNextPage` function takes the following parameters:
 - nextRoute - `String` The next.js route path
 - res - `ResponseWriter` The ResponseWriter passed to your route handler
 - params - `Object|Function` An object containing query params to provide to the next page, or a function that takes the route's path params and the request and returns a params object.
+
+### Rendering the 404 page
+
+You can explicitly render the Next.js 404 page using `nextRoutes.render404(res)`:
+
+```js
+const { Router } = require('@xdn/core/router')
+const { renderNextPage, nextRoutes } = require('@xdn/next')
+
+module.exports = new Router()
+  .get('/some/missing/page', res => {
+    nextRoutes.render404(res)
+  })
+  .use(nextRoutes)
+```
 
 ### Dynamic Fallback Route
 

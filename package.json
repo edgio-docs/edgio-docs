@@ -22,6 +22,7 @@
     "@xdn/next": "^2.42.1-next-1612394810-d380b62c.0",
     "@xdn/prefetch": "^2.42.1-next-1612394810-d380b62c.0",
     "@xdn/react": "^2.42.1-next-1612394810-d380b62c.0",
+    "@xdn/rum": "2.42.1-next-1612394810-d380b62c.0",
     "clsx": "^1.1.1",
     "file-loader": "^6.0.0",
     "isomorphic-fetch": "^2.2.1",
@@ -40,7 +41,6 @@
   },
   "devDependencies": {
     "@xdn/cli": "^2.42.1-next-1612394810-d380b62c.0",
-    "@xdn/rum": "^2.41.2-next-1612273953-0cef40a8.0",
     "babel-loader": "^8.1.0",
     "prettier": "^1.19.1"
   }

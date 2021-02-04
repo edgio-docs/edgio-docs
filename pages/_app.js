@@ -15,7 +15,9 @@ import { Metrics } from '@xdn/rum'
 
 if (typeof window !== 'undefined') {
   if (process.env.NODE_ENV === 'production') {
-    new Metrics().collect()
+    new Metrics({
+      sendTo: 'https://rum.ingress.moovweb.app/ingress/rum/v1',
+    }).collect()
   }
   configurePrefetching({ includeCacheMisses: true })
 }

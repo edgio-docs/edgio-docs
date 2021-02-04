@@ -11,8 +11,12 @@ import { VERSION_REGEX, VersionProvider } from '../components/versioning'
 import MenuProvider from '../components/MenuProvider'
 import useMixpanel from '../components/utils/useMixpanel'
 import { configure as configurePrefetching } from '@xdn/prefetch/window/prefetch'
+import { Metrics } from '@xdn/rum'
 
 if (typeof window !== 'undefined') {
+  if (process.env.NODE_ENV === 'production') {
+    new Metrics().collect()
+  }
   configurePrefetching({ includeCacheMisses: true })
 }
 

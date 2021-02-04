@@ -81,7 +81,13 @@ Add the `withXDN` and `withServiceWorker` plugins to `next.config.js`. If this f
 
 const { withXDN, withServiceWorker } = require('@xdn/next/config')
 
-module.exports = withXDN(withServiceWorker())
+module.exports = withXDN(
+  withServiceWorker({
+    future: {
+      webpack5: true, // Google's Workbox library requires webpack 5 when building on Next.js 10+
+    },
+  }),
+)
 ```
 
 The `withXDN` plugin ensures that your app is bundled properly for running on the XDN, and `withServiceWorker` provides a service worker based on `sw/service-worker.js`.

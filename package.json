@@ -18,11 +18,11 @@
     "@material-ui/lab": "^4.0.0-alpha.56",
     "@material-ui/styles": "^4.10.0",
     "@svgr/webpack": "^5.4.0",
-    "@xdn/core": "^2.42.1-next-1612394810-d380b62c.0",
-    "@xdn/next": "^2.42.1-next-1612394810-d380b62c.0",
-    "@xdn/prefetch": "^2.42.1-next-1612394810-d380b62c.0",
-    "@xdn/react": "^2.42.1-next-1612394810-d380b62c.0",
-    "@xdn/rum": "2.42.1-next-1612394810-d380b62c.0",
+    "@xdn/core": "^2.42.1-next-1612441950-e0f0fc1c.0",
+    "@xdn/next": "^2.42.1-next-1612441950-e0f0fc1c.0",
+    "@xdn/prefetch": "^2.42.1-next-1612441950-e0f0fc1c.0",
+    "@xdn/react": "^2.42.1-next-1612441950-e0f0fc1c.0",
+    "@xdn/rum": "^2.42.1-next-1612441950-e0f0fc1c.0",
     "clsx": "^1.1.1",
     "file-loader": "^6.0.0",
     "isomorphic-fetch": "^2.2.1",
@@ -40,7 +40,7 @@
     "url-loader": "^4.1.0"
   },
   "devDependencies": {
-    "@xdn/cli": "^2.42.1-next-1612394810-d380b62c.0",
+    "@xdn/cli": "^2.42.1-next-1612441950-e0f0fc1c.0",
     "babel-loader": "^8.1.0",
     "prettier": "^1.19.1"
   }

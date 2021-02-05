@@ -64,7 +64,7 @@ module.exports = new Router().prerender(async () => {
 
 The XDN can choose which pages to prerender based on site traffic, ensuring most popular pages are always prerendered.
 
-### Example: Prerender 100 most requested pages
+### Example: Prerender the 100 most frequently viewed pages
 
 ```js
 const { Router } = require('@xdn/core/router')

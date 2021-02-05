@@ -74,7 +74,8 @@ export default function Link({ className, icon, text, as, href, ...props }) {
       </div>
     )
   }
-  const active = asPath === url
+
+  const active = asPath.split(/\?/)[0] === as
 
   return (
     <div className={clsx({ [classes.root]: true, [classes.active]: active })}>

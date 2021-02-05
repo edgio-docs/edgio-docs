@@ -2,12 +2,8 @@ import React, { useContext } from 'react'
 import PropTypes from 'prop-types'
 import clsx from 'clsx'
 import { makeStyles } from '@material-ui/core/styles'
-import CloseIcon from '@material-ui/icons/Close'
-import { IconButton, Hidden } from '@material-ui/core'
 import { MenuContext } from '../MenuProvider'
-import MoovwebXDN from '../icons/moovweb-xdn-white-nav.svg'
 import Section from './Section'
-import Link from 'next/link'
 
 const width = 300
 

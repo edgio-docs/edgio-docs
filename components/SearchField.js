@@ -17,6 +17,9 @@ const useStyles = makeStyles(theme => ({
   notchedOutline: {
     borderColor: theme.palette.grey[300],
   },
+  searchField: {
+    paddingRight: theme.spacing(1),
+  },
 }))
 
 export default function SearchField() {
@@ -55,7 +58,8 @@ export default function SearchField() {
         placeholder="Search"
         variant="outlined"
         size="small"
-        classes={{}}
+        className={classes.searchField}
+        fullWidth
         InputProps={{
           classes,
           id: 'docsearch',

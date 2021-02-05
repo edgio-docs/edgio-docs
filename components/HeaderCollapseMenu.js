@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { forwardRef } from 'react'
 import Button from '@material-ui/core/Button'
 import Menu from '@material-ui/core/Menu'
 import MenuItem from '@material-ui/core/MenuItem'
@@ -17,6 +17,12 @@ const useStyles = makeStyles(theme => ({
     },
   },
 }))
+
+const HideWhenLarge = forwardRef(({ children }, ref) => (
+  <Hidden mdUp implementation="css">
+    {children}
+  </Hidden>
+))
 
 export default function HeaderCollapseMenu({ className }) {
   const classes = useStyles()
@@ -49,25 +55,25 @@ export default function HeaderCollapseMenu({ className }) {
         className={classes.menu}
         onClose={handleClose}
       >
-        <Hidden mdUp implementation="css">
+        <HideWhenLarge mdUp implementation="css">
           <MenuItem onClick={handleClose}>
             <Link href="https://moovweb.app/signup?redirectTo=/">
               <a>SIGN UP</a>
             </Link>
           </MenuItem>
-        </Hidden>
+        </HideWhenLarge>
         <MenuItem onClick={handleClose}>
           <Link href="https://moovweb.app">
             <a>SIGN IN</a>
           </Link>
         </MenuItem>
-        <Hidden mdUp implementation="css">
+        <HideWhenLarge mdUp implementation="css">
           <MenuItem onClick={handleClose}>
             <Link href="https://forum.moovweb.com">
               <a>FORUMS</a>
             </Link>
           </MenuItem>
-        </Hidden>
+        </HideWhenLarge>
         <MenuItem onClick={handleClose}>
           <Link href="https://help.moovweb.com">
             <a>SUPPORT</a>

@@ -2,6 +2,11 @@ import { makeStyles } from '@material-ui/core'
 import clsx from 'clsx'
 
 const useStyles = makeStyles(theme => ({
+  '@global': {
+    html: {
+      '-webkit-font-smoothing': 'subpixel-antialiased',
+    },
+  },
   root: {
     display: 'grid',
     gridTemplateColumns: '1fr',

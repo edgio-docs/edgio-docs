@@ -55,6 +55,7 @@ const useStyles = makeStyles(theme => ({
   button: {
     color: theme.palette.grey[200],
     width: 90,
+    fontWeight: 400,
     '&:hover': {
       backgroundColor: 'rgba(255,255,255,0.1)',
     },

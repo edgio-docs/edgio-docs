@@ -19,6 +19,7 @@ const styles = theme => ({
     overflow: 'hidden',
     margin: '0 auto',
     [theme.breakpoints.down('md')]: {
+      padding: theme.spacing(0, 0, 0, 8),
       paddingLeft: 0,
     },
   },

@@ -121,73 +121,67 @@ export default function Header() {
 
   return (
     <>
-      <Slide appear={false} direction="down" in={!trigger || open}>
-        <AppBar className={classes.appBar}>
-          <Container maxWidth="xl" className={classes.container}>
-            <Toolbar disableGutters className={classes.toolbar}>
-              <Hidden lgUp implementation="css">
-                <IconButton
-                  edge="start"
-                  className={clsx(classes.button, classes.menuButton)}
-                  color="inherit"
-                  aria-label="menu"
-                  onClick={handleMenuClick}
-                >
-                  <MenuIcon />
-                </IconButton>
-              </Hidden>
-              <Link href="/" as="/">
-                <a href="/" className={classes.home}>
-                  <Logo style={{ marginRight: 12 }} />
-                </a>
-              </Link>
-              <div style={{ flex: 1 }} className={classes.xsDown} />
-              <VersionChooser />
-              <div style={{ flex: 1 }} className={classes.smUp} />
-              <Hidden smDown implementation="css">
-                <Button
-                  href="https://moovweb.app/signup?redirectTo=/"
-                  target="_blank"
-                  className={classes.signUpButton}
-                  variant="outlined"
-                >
-                  SIGN UP
-                </Button>
-              </Hidden>
-              <Hidden mdDown implementation="css">
-                <Button href="https://moovweb.app" target="_blank" className={classes.button}>
-                  LOGIN
-                </Button>
-              </Hidden>
-              <Hidden smDown implementation="css">
-                <Button href="https://forum.moovweb.com" target="_blank" className={classes.button}>
-                  FORUMS
-                </Button>
-                <Button
-                  href="https://status.moovweb.com"
-                  target="_blank"
-                  className={classes.button}
-                >
-                  STATUS
-                </Button>
-              </Hidden>
-              <Hidden mdDown implementation="css">
-                <Button href="https://moovweb.app/help" target="_blank" className={classes.button}>
-                  SUPPORT
-                </Button>
-              </Hidden>
-              <div style={{ width: 16 }} />
-              <Hidden xsDown implementation="css">
-                <SearchField />
-              </Hidden>
-              <Hidden lgUp implementation="css">
-                <div style={{ width: 8 }} />
-                <HeaderCollapseMenu className={classes.button} />
-              </Hidden>
-            </Toolbar>
-          </Container>
-        </AppBar>
-      </Slide>
+      <AppBar className={classes.appBar}>
+        <Container maxWidth="xl" className={classes.container}>
+          <Toolbar disableGutters className={classes.toolbar}>
+            <Hidden lgUp implementation="css">
+              <IconButton
+                edge="start"
+                className={clsx(classes.button, classes.menuButton)}
+                color="inherit"
+                aria-label="menu"
+                onClick={handleMenuClick}
+              >
+                <MenuIcon />
+              </IconButton>
+            </Hidden>
+            <Link href="/" as="/">
+              <a href="/" className={classes.home}>
+                <Logo style={{ marginRight: 12 }} />
+              </a>
+            </Link>
+            <div style={{ flex: 1 }} className={classes.xsDown} />
+            <VersionChooser />
+            <div style={{ flex: 1 }} className={classes.smUp} />
+            <Hidden smDown implementation="css">
+              <Button
+                href="https://moovweb.app/signup?redirectTo=/"
+                target="_blank"
+                className={classes.signUpButton}
+                variant="outlined"
+              >
+                SIGN UP
+              </Button>
+            </Hidden>
+            <Hidden mdDown implementation="css">
+              <Button href="https://moovweb.app" target="_blank" className={classes.button}>
+                LOGIN
+              </Button>
+            </Hidden>
+            <Hidden smDown implementation="css">
+              <Button href="https://forum.moovweb.com" target="_blank" className={classes.button}>
+                FORUMS
+              </Button>
+              <Button href="https://status.moovweb.com" target="_blank" className={classes.button}>
+                STATUS
+              </Button>
+            </Hidden>
+            <Hidden mdDown implementation="css">
+              <Button href="https://moovweb.app/help" target="_blank" className={classes.button}>
+                SUPPORT
+              </Button>
+            </Hidden>
+            <div style={{ width: 16 }} />
+            <Hidden xsDown implementation="css">
+              <SearchField />
+            </Hidden>
+            <Hidden lgUp implementation="css">
+              <div style={{ width: 8 }} />
+              <HeaderCollapseMenu className={classes.button} />
+            </Hidden>
+          </Toolbar>
+        </Container>
+      </AppBar>
       <LinearProgress
         classes={{
           root: classes.progress,

@@ -61,8 +61,7 @@ const theme = createMuiTheme({
       fontSize: '1rem',
     },
     body2: {
-      fontSize: '1rem',
-      fontWeight: 'bold',
+      fontSize: '1.1rem',
     },
   },
   overrides: {},

@@ -9,14 +9,26 @@ import useVersioning from './versioning'
 import doHighlight from './highlight'
 import GithubIcon from './icons/github.svg'
 import clsx from 'clsx'
+import Toc from './Toc'
+import idForHeading from './utils/idForHeading'
 
 const useStyles = makeStyles(theme => ({
   heading: {
+    '&::before': {
+      height: 85,
+      marginTop: -85,
+      display: 'block',
+      content: '""',
+      position: 'static',
+    },
+    display: 'block',
     marginTop: '1em',
     marginBottom: '0.5em',
-    display: 'flex',
-    alignItems: 'center',
     fontWeight: '500',
+    '& > div': {
+      display: 'flex',
+      alignItems: 'center',
+    },
     '& a': {
       textDecoration: 'none',
       color: theme.palette.main,
@@ -32,6 +44,8 @@ const useStyles = makeStyles(theme => ({
     },
   },
   root: {
+    display: 'flex',
+
     '& table': {
       borderSpacing: '0',
       borderCollapse: 'collapse',
@@ -104,17 +118,20 @@ export default function Markdown({ source, highlight }) {
 
   return (
     <div className={classes.root}>
-      <ReactMarkdown
-        source={source}
-        renderers={{
-          code: Code,
-          heading: Heading,
-          link: Link,
-          text: Text,
-          image: Image,
-          thematicBreak: Divider,
-        }}
-      />
+      <div style={{ maxWidth: '100%' }}>
+        <ReactMarkdown
+          source={source}
+          renderers={{
+            code: Code,
+            heading: Heading,
+            link: Link,
+            text: Text,
+            image: Image,
+            thematicBreak: Divider,
+          }}
+        />
+      </div>
+      <Toc source={source} />
     </div>
   )
 }
@@ -178,15 +195,15 @@ function Link({ href, children }) {
 function Heading({ children, level }) {
   const firstChild = children[0]
   const text = firstChild && firstChild.props.value
-  const id = typeof text === 'string' ? `section_${text.replace(/\W/g, '_').toLowerCase()}` : ''
+  const id = idForHeading(text)
   const classes = useStyles()
 
   return (
-    <Typography variant={`h${level + 1}`} className={classes.heading}>
-      <a id={id} href={`#${id}`}>
-        {children}
-      </a>
-      <LinkIcon style={{ marginLeft: 8, height: 20, width: 20 }} />
+    <Typography id={id} variant={`h${level + 1}`} className={classes.heading}>
+      <div>
+        <a href={`#${id}`}>{children}</a>
+        <LinkIcon style={{ marginLeft: 8, height: 20, width: 20 }} />
+      </div>
     </Typography>
   )
 }
@@ -195,8 +212,6 @@ function Image({ src, ...others }) {
   const url = new URL(src, 'https://dummy.org')
   const width = url.searchParams.get('width')
   const height = url.searchParams.get('height')
-
-  console.log('src', src, 'others', others)
 
   const style = {
     width: width && parseInt(width),

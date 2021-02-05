@@ -1,8 +1,8 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import fetch from 'isomorphic-fetch'
 import Header from '../components/Header'
 import theme from '../components/theme'
-import { CssBaseline } from '@material-ui/core'
+import { CssBaseline, Hidden } from '@material-ui/core'
 import { MuiThemeProvider } from '@material-ui/core/styles'
 import useJssStyles from '../components/useJssStyles'
 import Head from 'next/head'
@@ -12,6 +12,9 @@ import MenuProvider from '../components/MenuProvider'
 import useMixpanel from '../components/utils/useMixpanel'
 import { configure as configurePrefetching } from '@xdn/prefetch/window/prefetch'
 import { Metrics } from '@xdn/rum'
+import { TocContext, TocPortal } from '../components/Toc'
+import Main from '../components/Main'
+import { useRouter } from 'next/router'
 
 if (typeof window !== 'undefined') {
   if (process.env.NODE_ENV === 'production') {
@@ -27,6 +30,10 @@ export default function MyApp({ Component, pageProps, currentVersion, versions }
 
   // We add mixpanel id to every moovweb.app/rsf anchor
   useMixpanel()
+
+  const toc = useRef()
+  const { asPath } = useRouter()
+  const showToc = asPath.match(/guides\//)
 
   return (
     <>
@@ -48,9 +55,18 @@ export default function MyApp({ Component, pageProps, currentVersion, versions }
           <CssBaseline />
           <MenuProvider>
             <Header />
-            <main>
-              <Component {...pageProps} />
-            </main>
+            <Main showToc={showToc}>
+              {showToc && (
+                <Hidden xsDown implementation="css">
+                  <TocPortal ref={toc} style={{ gridColumn: 2 }} />
+                </Hidden>
+              )}
+              <TocContext.Provider value={toc}>
+                <div style={{ gridColumn: 1, gridRow: 1, overflow: 'hidden' }}>
+                  <Component {...pageProps} />
+                </div>
+              </TocContext.Provider>
+            </Main>
           </MenuProvider>
         </VersionProvider>
       </MuiThemeProvider>

@@ -2,26 +2,6 @@
 
 This guide gives examples of common routing patterns using the XDN.
 
-- [Cookbook](#cookbook)
-  - [Proxying a backend](#proxying-a-backend)
-    - [Same Path](#same-path)
-    - [Different Path](#different-path)
-    - [Adding Caching](#adding-caching)
-    - [Altering the request](#altering-the-request)
-    - [Altering the response](#altering-the-response)
-      - [Altering all responses](#altering-all-responses)
-    - [Manipulating Cookies](#manipulating-cookies)
-    - [Proxying to different backends based on different host names](#proxying-to-different-backends-based-on-different-host-names)
-  - [Serving a static file](#serving-a-static-file)
-    - [Falling back to server-side rendering](#falling-back-to-server-side-rendering)
-    - [Returning a custom 404 page](#returning-a-custom-404-page)
-  - [Responding with a string response body](#responding-with-a-string-response-body)
-  - [Redirecting](#redirecting)
-    - [Redirecting all traffic to a different domain](#redirecting-all-traffic-to-a-different-domain)
-  - [Blocking unwanted traffic](#blocking-unwanted-traffic)
-    - [Blocking traffic from specific countries](#blocking-traffic-from-specific-countries)
-    - [Whitelisting Specific IPs](#whitelisting-specific-ips)
-
 ## Proxying a backend
 
 ### Same Path

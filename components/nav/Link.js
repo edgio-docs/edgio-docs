@@ -11,7 +11,7 @@ const useStyles = makeStyles(theme => ({
     marginRight: theme.spacing(0.5),
   },
   link: {
-    margin: theme.spacing(1, 0, 0, 0),
+    margin: theme.spacing(2, 0, 0, 0),
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',

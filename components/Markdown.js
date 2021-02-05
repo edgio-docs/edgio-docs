@@ -14,6 +14,11 @@ import idForHeading from './utils/idForHeading'
 
 const useStyles = makeStyles(theme => ({
   heading: {
+    display: 'block',
+    fontWeight: '500',
+    'h1& + p': {
+      ...theme.typography.body2,
+    },
     '&::before': {
       height: 85,
       marginTop: -85,
@@ -21,17 +26,13 @@ const useStyles = makeStyles(theme => ({
       content: '""',
       position: 'static',
     },
-    display: 'block',
-    marginTop: '1em',
-    marginBottom: '0.5em',
-    fontWeight: '500',
     '& > div': {
       display: 'flex',
       alignItems: 'center',
     },
     '& a': {
       textDecoration: 'none',
-      color: theme.palette.main,
+      color: theme.palette.text.primary,
       '&:hover': {
         textDecoration: 'underline',
       },
@@ -45,11 +46,11 @@ const useStyles = makeStyles(theme => ({
   },
   root: {
     display: 'flex',
-
     '& table': {
       borderSpacing: '0',
       borderCollapse: 'collapse',
       padding: theme.spacing(2, 0),
+      marginTop: '1em',
     },
     '& td,th': {
       padding: '10px',
@@ -101,9 +102,13 @@ const useStyles = makeStyles(theme => ({
   buttonLink: {
     textDecoration: 'none',
   },
+  link: {
+    color: theme.palette.link,
+    fontWeight: 500,
+  },
 }))
 
-export default function Markdown({ source, highlight }) {
+export default function Markdown({ source, highlight, toc }) {
   const classes = useStyles()
 
   function Text({ value }) {
@@ -131,7 +136,7 @@ export default function Markdown({ source, highlight }) {
           }}
         />
       </div>
-      <Toc source={source} />
+      {toc && <Toc source={source} />}
     </div>
   )
 }
@@ -181,7 +186,7 @@ function Link({ href, children }) {
   } else {
     return (
       <a
-        className={clsx({ [classes.buttonLink]: button })}
+        className={clsx({ [classes.link]: !button, [classes.buttonLink]: button })}
         href={href}
         target={href.startsWith('https:') ? '_blank' : '_self'}
         rel="noopener noreferrer"
@@ -199,7 +204,7 @@ function Heading({ children, level }) {
   const classes = useStyles()
 
   return (
-    <Typography id={id} variant={`h${level + 1}`} className={classes.heading}>
+    <Typography id={id} variant={`h${level}`} className={classes.heading}>
       <div>
         <a href={`#${id}`}>{children}</a>
         <LinkIcon style={{ marginLeft: 8, height: 20, width: 20 }} />

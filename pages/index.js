@@ -107,7 +107,7 @@ const Home = ({ navData, changeLog }) => {
       </Head>
       <div className={classes.hero}>
         <MoovwebXDN className={classes.logo} />
-        <Typography variant="h2" style={{ maxWidth: 800 }}>
+        <Typography variant="h2" style={{ maxWidth: 800, marginTop: 0, fontSize: '34px' }}>
           <div style={{ position: 'relative' }}>Instant sites. Happy developers.</div>
         </Typography>
       </div>

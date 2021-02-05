@@ -24,6 +24,7 @@ const useStyles = makeStyles(theme => ({
     maxHeight: 'calc(100vh - 64px)',
     overflowY: 'auto',
     paddingLeft: theme.spacing(4),
+    width: '100%',
   },
   title: {
     opacity: 0.5,
@@ -54,6 +55,7 @@ const useStyles = makeStyles(theme => ({
   link: {
     color: theme.palette.text.primary,
     textDecoration: 'none',
+    fontSize: '1.1rem',
     '&:hover': {
       textDecoration: 'underline',
       color: green[700],
@@ -101,7 +103,7 @@ export default function Toc({ source }) {
   const onScroll = useCallback(
     throttle(() => {
       if (typeof window !== 'undefined') {
-        const firstHeading = Array.from(document.querySelectorAll('h3,h4')).find(
+        const firstHeading = Array.from(document.querySelectorAll('h2,h3')).find(
           isElementInViewport,
         )
         const id = firstHeading?.id
@@ -110,9 +112,9 @@ export default function Toc({ source }) {
           setActiveHeading(activeHeading => {
             if (id !== activeHeading) {
               const el = document.getElementById(`${id}-toc`)
+              const toc = document.getElementById('toc')
 
-              if (el && !isElementInViewport(el)) {
-                const toc = document.getElementById('toc')
+              if (toc && el && !isElementInViewport(el)) {
                 const scrollTop = el.offsetTop + el.offsetHeight - toc.offsetHeight + 16
                 toc.scrollTop = scrollTop
               }
@@ -159,7 +161,7 @@ function Item({ heading, activeHeading }) {
         className={classes.dot}
         style={{ visibility: id === activeHeading ? 'visible' : 'hidden' }}
       />
-      <Typography variant="body2">
+      <Typography variant="body1">
         <a
           href={`#${id}`}
           id={`${id}-toc`}

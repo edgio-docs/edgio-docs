@@ -27,6 +27,7 @@ const useStyles = makeStyles(theme => ({
   root: {
     fontSize: '14px',
     position: 'relative',
+    marginTop: '1em',
     [theme.breakpoints.down('xs')]: {
       background: '#1d1f21',
     },

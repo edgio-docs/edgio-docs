@@ -8,11 +8,14 @@ import PageWrapper from '../../components/PageWrapper'
 import getBaseUrl from '../../components/utils/getBaseUrl'
 import ApiLink from '../../components/ApiLink'
 import { Typography, makeStyles } from '@material-ui/core'
+import { useTheme } from '@material-ui/styles'
 
 export default function Guide({ notFound, markdown, navData, guide }) {
   if (notFound) {
     return <Typography>Page not found.</Typography>
   }
+
+  const theme = useTheme()
 
   let pageTitle
 
@@ -26,11 +29,14 @@ export default function Guide({ notFound, markdown, navData, guide }) {
   })
 
   return (
-    <PageWrapper nav={<Nav navData={navData} aboveAdornments={[<ApiLink key="link" />]} />}>
+    <PageWrapper
+      centerStyle={{ paddingTop: theme.spacing(4) }}
+      nav={<Nav navData={navData} aboveAdornments={[<ApiLink key="link" />]} />}
+    >
       <Head>
         <title>Moovweb XDN Documentation {pageTitle ? `- ${pageTitle}` : ''}</title>
       </Head>
-      <Markdown source={markdown} />
+      <Markdown source={markdown} toc />
       <Footer navData={navData} guide={guide} />
     </PageWrapper>
   )

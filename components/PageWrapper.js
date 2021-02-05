@@ -15,7 +15,7 @@ const styles = theme => ({
   center: {
     flex: 1,
     maxWidth: theme.breakpoints.values.lg,
-    paddingLeft: theme.spacing(4),
+    padding: theme.spacing(0, 4, 0, 8),
     overflow: 'hidden',
     margin: '0 auto',
     [theme.breakpoints.down('md')]: {
@@ -26,12 +26,14 @@ const styles = theme => ({
 
 const useStyles = makeStyles(styles)
 
-export default function PageWrapper({ children, nav }) {
+export default function PageWrapper({ children, nav, centerStyle }) {
   const classes = useStyles()
   return (
     <Container maxWidth="xl" className={classes.main}>
       {nav}
-      <div className={classes.center}>{children}</div>
+      <div className={classes.center} style={centerStyle}>
+        {children}
+      </div>
     </Container>
   )
 }

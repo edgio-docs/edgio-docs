@@ -22,7 +22,7 @@ const useStyles = makeStyles(theme => ({
     borderRadius: '50%',
     background: theme.palette.main,
     marginRight: theme.spacing(1),
-    marginTop: theme.spacing(2) + 8,
+    marginTop: theme.spacing(2) + 9,
   },
   active: {
     '& a span': {
@@ -42,6 +42,9 @@ const useStyles = makeStyles(theme => ({
       textDecoration: 'underline',
     },
   },
+  linkText: {
+    fontSize: '1.1rem',
+  },
 }))
 
 export default function Link({ className, icon, text, as, href, ...props }) {
@@ -55,7 +58,7 @@ export default function Link({ className, icon, text, as, href, ...props }) {
     <Prefetch url={apiUrl}>
       <a href={url} className={clsx(className, classes.link)} target={href ? '_self' : '_blank'}>
         {icon && <Icon classes={{ root: classes.icon }} type={icon} />}
-        <Typography component="span" variant="body2">
+        <Typography component="span" variant="body1" className={classes.linkText}>
           {text}
         </Typography>
       </a>

@@ -8,7 +8,7 @@ const useStyles = makeStyles(theme => ({
   },
   toc: {
     [theme.breakpoints.up('sm')]: {
-      gridTemplateColumns: '1fr 350px',
+      gridTemplateColumns: 'fit-content(75%) 1fr',
     },
   },
 }))

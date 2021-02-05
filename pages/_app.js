@@ -62,7 +62,14 @@ export default function MyApp({ Component, pageProps, currentVersion, versions }
                 </Hidden>
               )}
               <TocContext.Provider value={toc}>
-                <div style={{ gridColumn: 1, gridRow: 1, overflow: 'hidden' }}>
+                <div
+                  style={{
+                    gridColumn: 1,
+                    gridRow: 1,
+                    overflow: 'hidden',
+                    maxWidth: showToc ? '87.5rem' : undefined,
+                  }}
+                >
                   <Component {...pageProps} />
                 </div>
               </TocContext.Provider>

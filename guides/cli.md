@@ -16,16 +16,16 @@ Or with yarn:
 yarn global add @xdn/cli
 ```
 
-# Commands
+## Commands
 
-## build
+### build
 
 Creates a build of your app optimized for production
 
 #### Options
 
-| Name           | Description                                                                               |
-| -------------- | ----------------------------------------------------------------------------------------- |
+| Name               | Description                                                                                            |
+| ------------------ | ------------------------------------------------------------------------------------------------------ |
 | `--skip-framework` | Alias: "-s". Skips the framework (Next.js, Vue, Angular, etc..) build and simply rebundles your router |
 
 #### Example
@@ -34,7 +34,7 @@ Creates a build of your app optimized for production
 xdn build
 ```
 
-## cache-clear
+### cache-clear
 
 Clears the cache. If neither `--path` nor `--surrogate-key` is specified, the entire cache for the
 specified environment will be cleared.
@@ -55,7 +55,7 @@ specified environment will be cleared.
 xdn cache-clear --team=my-team --site=my-site --environment=production --path=/p/*
 ```
 
-## completion
+### completion
 
 Creates a script that provides autocompletion for xdn cli commands that can be installed in your shell.
 
@@ -65,19 +65,19 @@ Creates a script that provides autocompletion for xdn cli commands that can be i
 xdn completion
 ```
 
-###### Using ZSH
+#### Using ZSH
 
 ```bash
 xdn completion >> ~/.zshrc
 ```
 
-###### Using BASH
+#### Using BASH
 
 ```bash
 xdn completion >> ~/.bashrc
 ```
 
-## deploy
+### deploy
 
 Builds and deploys your site on the Moovweb XDN.
 
@@ -105,7 +105,7 @@ Builds and deploys your site on the Moovweb XDN.
 xdn deploy my-team --environment=production
 ```
 
-## docs
+### docs
 
 Open the XDN documentation in your browser.
 
@@ -115,7 +115,7 @@ Open the XDN documentation in your browser.
 xdn docs
 ```
 
-## dev
+### dev
 
 Runs your project in development mode, simulating the XDN cloud environment. This command is a simplified version of `xdn run`, with only the --cache option being supported.
 
@@ -131,7 +131,7 @@ Runs your project in development mode, simulating the XDN cloud environment. Thi
 xdn dev
 ```
 
-## init
+### init
 
 Run in an existing app to add all required packages and files need to publish your app on the Moovweb XDN
 
@@ -147,7 +147,7 @@ xdn init
 | ------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `--connector` | The name of a specific connector package to install, or a path to a directory that implements the [connector interface](/guides/connectors#section_implementing_a_connector_directly_within_your_project). |
 
-## login
+### login
 
 Logs into the XDN via the developer console.
 
@@ -157,7 +157,7 @@ Logs into the XDN via the developer console.
 xdn login
 ```
 
-## logout
+### logout
 
 Logs out of the XDN
 
@@ -167,7 +167,7 @@ Logs out of the XDN
 xdn logout
 ```
 
-## run
+### run
 
 Runs your app locally. Uses port 3000 by default. You can change this by setting the `PORT` environment variable. For example: `PORT=5000 xdn run`.
 
@@ -192,7 +192,7 @@ xdn run /path/to/bundle.zip
 
 Production mode is always used whe running downloaded bundles.
 
-## use
+### use
 
 Switches the version of all @xdn/\* packages in your project.
 

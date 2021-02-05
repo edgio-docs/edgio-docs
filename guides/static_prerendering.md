@@ -60,6 +60,18 @@ module.exports = new Router().prerender(async () => {
 })
 ```
 
+## Prerendering with traffic data
+
+XDN allows to prerender based on site traffic. This will ensure that most popular pages are always prerendered.
+
+### Example: Prerender 100 most requested pages
+
+```js
+const { Router } = require('@xdn/core/router')
+
+module.exports = new Router().prerender([{ top: 100, headers: { foo: 'bar' } }])
+```
+
 ## Prerendering API Calls
 
 It is important to prerender not just HTML responses, but API calls as well, to ensure that client-side navigation is as fast as possible. Some frameworks, such as Next.js, embed a build ID in API URLs to ensure that client receives responses from the correct version of the back end. In other frameworks the convention for how API URLs are structured is left to the developer.

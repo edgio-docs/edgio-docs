@@ -5,10 +5,30 @@ import Icon from '../icons/Icon'
 import clsx from 'clsx'
 import useVersioning from '../versioning'
 import { Prefetch } from '@xdn/react'
+import { useRouter } from 'next/router'
 
 const useStyles = makeStyles(theme => ({
+  root: {
+    display: 'flex',
+    alignItems: 'flex-start',
+    marginLeft: theme.spacing(-2),
+  },
   icon: {
     marginRight: theme.spacing(0.5),
+  },
+  dot: {
+    minHeight: 8,
+    minWidth: 8,
+    borderRadius: '50%',
+    background: theme.palette.main,
+    marginRight: theme.spacing(1),
+    marginTop: theme.spacing(2) + 8,
+  },
+  active: {
+    '& a span': {
+      fontWeight: 500,
+      color: theme.palette.main,
+    },
   },
   link: {
     margin: theme.spacing(2, 0, 0, 0),
@@ -29,23 +49,34 @@ export default function Link({ className, icon, text, as, href, ...props }) {
   const { createUrl, currentVersion } = useVersioning()
   const url = createUrl({ text, as, href })
   const apiUrl = `/api${as}?version=${currentVersion}`
+  const { asPath } = useRouter()
 
   let link = (
     <Prefetch url={apiUrl}>
       <a href={url} className={clsx(className, classes.link)} target={href ? '_self' : '_blank'}>
         {icon && <Icon classes={{ root: classes.icon }} type={icon} />}
-        <Typography component="span">{text}</Typography>
+        <Typography component="span" variant="body2">
+          {text}
+        </Typography>
       </a>
     </Prefetch>
   )
 
   if (href) {
     link = (
-      <NextLink as={url} href={href} {...props} passHref>
-        {link}
-      </NextLink>
+      <div className={clsx({ [classes.active]: asPath === url })}>
+        <NextLink as={url} href={href} {...props} passHref>
+          {link}
+        </NextLink>
+      </div>
     )
   }
+  const active = asPath === url
 
-  return link
+  return (
+    <div className={clsx({ [classes.root]: true, [classes.active]: active })}>
+      <div className={classes.dot} style={{ visibility: active ? 'visible' : 'hidden' }}></div>
+      {link}
+    </div>
+  )
 }

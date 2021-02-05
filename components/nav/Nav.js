@@ -44,7 +44,7 @@ const useStyles = makeStyles(theme => ({
     },
   },
   navBody: {
-    padding: theme.spacing(0, 4, 1, 3),
+    padding: theme.spacing(0, 4, 1, 4),
   },
   open: {
     transform: 'translateX(1px)',

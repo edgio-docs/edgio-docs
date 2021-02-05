@@ -5,7 +5,8 @@ const useStyles = makeStyles(theme => ({
   root: {
     color: 'rgba(0, 0, 0, 0.44)',
     textTransform: 'uppercase',
-    margin: theme.spacing(3, 0, 2, 0),
+    margin: theme.spacing(4, 0, 2, 0),
+    fontWeight: 'bold',
   },
 }))
 

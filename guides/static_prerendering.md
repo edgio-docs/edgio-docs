@@ -62,7 +62,7 @@ module.exports = new Router().prerender(async () => {
 
 ## Prerendering with traffic data
 
-XDN allows to prerender based on site traffic. This will ensure that most popular pages are always prerendered.
+The XDN can choose which pages to prerender based on site traffic, ensuring most popular pages are always prerendered.
 
 ### Example: Prerender 100 most requested pages
 

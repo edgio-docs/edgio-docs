@@ -50,7 +50,7 @@ const useStyles = makeStyles(theme => ({
     borderRadius: '50%',
     background: theme.palette.main,
     marginRight: theme.spacing(1),
-    marginTop: 8,
+    marginTop: 9,
   },
   link: {
     color: theme.palette.text.primary,

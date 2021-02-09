@@ -19,6 +19,7 @@ import { useRouter } from 'next/router'
 if (typeof window !== 'undefined') {
   if (process.env.NODE_ENV === 'production') {
     new Metrics({
+      debug: true,
       sendTo: 'https://rum.ingress.moovweb.app/ingress/rum/v1',
     }).collect()
   }

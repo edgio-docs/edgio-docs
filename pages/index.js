@@ -262,7 +262,7 @@ const Home = ({ navData, changeLog }) => {
             ></iframe>
           </Grid>
           <Grid item>
-            <h4>Moovweb XDN - What is XDN DevTools?</h4>
+            <h4>Moovweb XDN - What are the XDN DevTools?</h4>
             <iframe
               width="100%"
               height="90%"

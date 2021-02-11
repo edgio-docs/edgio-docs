@@ -70,7 +70,7 @@ This action assumes that you have created environments called "staging" and "pro
 #
 # 1.) When pushing to master, changes deployed to the "staging" environment. This environment does not exist
 #     by default. You must create it using moovweb.app.
-# 2.) When pushing to any other branch, changes are deployed to the default environment.  An unique URL is created based on the branch and deployment number.
+# 2.) When pushing to any other branch, changes are deployed to the default environment. A unique URL is created based on the branch and deployment number.
 # 3.) When you publish a release in GitHub, the associated tag will be deployed to the production
 #     environment. This environment does not exist by default, you must create it using moovweb.app.
 #     Therefore, you can push to production by creating a GitHub release, or by using the "Promote to Environment"
@@ -119,7 +119,7 @@ jobs:
             ${{ runner.os }}-
       - run: npm ci
       - name: Deploy to XDN
-        run: npm run xdn:deploy -- ${{'--branch=$BRANCH_NAME' || ''}} --token=$xdn_deploy_token ${{github.event_name == 'push' && env.BRANCH_NAME == 'master' && '--environment=staging' || ''}} ${{github.event_name == 'release' && '--environment=production' || ''}}
+        run: npm run xdn:deploy -- ${{'--branch=$BRANCH_NAME' || ''}} --token=$xdn_deploy_token ${{github.event_name == 'push' && env.BRANCH_NAME == 'main' && '--environment=staging' || ''}} ${{github.event_name == 'release' && '--environment=production' || ''}}
         env:
           xdn_deploy_token: ${{secrets.xdn_deploy_token}}
 ```

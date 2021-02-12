@@ -10,20 +10,16 @@ import getBaseUrl from '../components/utils/getBaseUrl'
 import { VERSION_REGEX, VersionProvider } from '../components/versioning'
 import MenuProvider from '../components/MenuProvider'
 import useMixpanel from '../components/utils/useMixpanel'
-import { configure as configurePrefetching } from '@xdn/prefetch/window/prefetch'
 import { Metrics } from '@xdn/rum'
 import { TocContext, TocPortal } from '../components/Toc'
 import Main from '../components/Main'
 import { useRouter } from 'next/router'
 
-if (typeof window !== 'undefined') {
-  if (process.env.NODE_ENV === 'production') {
-    new Metrics({
-      debug: true,
-      sendTo: 'https://rum.ingress.moovweb.app/ingress/rum/v1',
-    }).collect()
-  }
-  configurePrefetching({ includeCacheMisses: true })
+if (typeof window !== 'undefined' && process.env.NODE_ENV === 'production') {
+  new Metrics({
+    debug: true,
+    sendTo: 'https://rum.ingress.moovweb.app/ingress/rum/v1',
+  }).collect()
 }
 
 export default function MyApp({ Component, pageProps, currentVersion, versions }) {

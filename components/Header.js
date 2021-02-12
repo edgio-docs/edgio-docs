@@ -30,6 +30,7 @@ const useStyles = makeStyles(theme => ({
     borderBottom: `1px solid ${theme.palette.divider}`,
   },
   container: {
+    padding: theme.spacing(0, 3),
     [theme.breakpoints.up('lg')]: {
       paddingLeft: theme.spacing(1),
     },
@@ -123,7 +124,7 @@ export default function Header() {
   return (
     <>
       <AppBar className={classes.appBar}>
-        <Container maxWidth="xl" className={classes.container}>
+        <div className={classes.container}>
           <Toolbar disableGutters className={classes.toolbar}>
             <Hidden lgUp implementation="css">
               <IconButton
@@ -181,7 +182,7 @@ export default function Header() {
               <HeaderCollapseMenu className={classes.button} />
             </Hidden>
           </Toolbar>
-        </Container>
+        </div>
       </AppBar>
       <LinearProgress
         classes={{

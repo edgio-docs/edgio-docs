@@ -4,10 +4,12 @@ import { makeStyles } from '@material-ui/core/styles'
 
 const styles = theme => ({
   main: {
+    padding: theme.spacing(0, 3),
     paddingTop: 64,
     display: 'flex',
     flexDirection: 'row',
     ...theme.typography.body1,
+
     '& code': {
       fontFamily: theme.fonts.code,
     },
@@ -30,11 +32,11 @@ const useStyles = makeStyles(styles)
 export default function PageWrapper({ children, nav, centerStyle }) {
   const classes = useStyles()
   return (
-    <Container maxWidth="xl" className={classes.main}>
+    <div className={classes.main}>
       {nav}
       <div className={classes.center} style={centerStyle}>
         {children}
       </div>
-    </Container>
+    </div>
   )
 }

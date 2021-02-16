@@ -122,7 +122,6 @@ The `@xdn/vue` package provides a `Prefetch` component that you can wrap around 
 
 By default `Prefetch` will fetch and cache the URL in the link's `to` attribute (for both `router-link` and `nuxt-link`). If you have a single page app, you most likely want to prefetch an API call for the page rather than the page's HTML. The example above shows you how to set the `url` property to control which URL is prefetched.
 
-
 ## Deep Fetching
 
 By default, prefetching only fetches the JSON API data or HTML document for a prefetched page. In order to achieve truly instant page transitions, all of the page's assets above the fold need to be prefetched as well. These typically include images, CSS, and JavaScript. This is where "deep fetching" comes in. Deep fetching parses the prefetched page and then fetches the important assets of the prefetched page that you specify.
@@ -148,7 +147,7 @@ The `DeepFetchPlugin` can parse both HTML and JSON documents to extract the page
 
 ### Deep fetching URLs in JSON responses
 
-For JSON responses, you'll pass the `DeepFetchPlugin` an array of `[DeepFetchJsonConfig interface](https://developer.moovweb.com/docs/api/prefetch/interfaces/_sw_deepfetchplugin_.deepfetchjsonconfig.html)` objects. These `DeepFetchJsonConfig` objects  describe the asset URLs in the JSON response that should be prefetched. For example, the snippet below finds product images to deep fetch for a category page response:
+For JSON responses, you'll pass the `DeepFetchPlugin` an array of `[DeepFetchJsonConfig interface](https://developer.moovweb.com/docs/api/prefetch/interfaces/_sw_deepfetchplugin_.deepfetchjsonconfig.html)` objects. These `DeepFetchJsonConfig` objects describe the asset URLs in the JSON response that should be prefetched. For example, the snippet below finds product images to deep fetch for a category page response:
 
 ```js
 new DeepFetchPlugin([
@@ -168,7 +167,6 @@ new DeepFetchPlugin([
 ```
 
 The `jsonQuery` syntax is provided by the [json-query](https://github.com/auditassistant/json-query) library. You can test your JSON queries using their [JSON-query Tester Sandbox](https://maxleiko.github.io/json-query-tester/).
-
 
 ### Deep Fetching for HTML documents
 
@@ -386,7 +384,7 @@ function MyProductLink({ product }) {
 You can test that everything is running locally by running your project with:
 
 ```
-xdn run --cache
+xdn dev --cache
 ```
 
 ### Advantages over Apollo's prefetch functionality

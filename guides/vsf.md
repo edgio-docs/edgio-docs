@@ -43,7 +43,7 @@ Ensure `@nuxtjs/pwa` is not present in the `buildModules`. It is not needed beca
 To run locally in development mode, use this command:
 
 ```
-xdn run --cache
+xdn dev --cache
 ```
 
 ## Building and Deploying

@@ -12,6 +12,7 @@ import SapperIcon from './sapper.svg'
 import GatsbyIcon from './gatsby.svg'
 import VSFIcon from './vsf.svg'
 import NXIcon from './nx.png'
+import FrontityIcon from './frontity.svg'
 
 export const icons = {
   react: ReactIcon,
@@ -29,6 +30,7 @@ export const icons = {
   gatsby: GatsbyIcon,
   vsf: VSFIcon,
   nx: NXIcon,
+  frontity: FrontityIcon,
 }
 
 export const styles = theme => ({

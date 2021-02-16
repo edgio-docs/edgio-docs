@@ -16,6 +16,7 @@ import SapperIcon from '../components/icons/sapper.svg'
 import GatsbyIcon from '../components/icons/gatsby.svg'
 import VSFIcon from '../components/icons/vsf.svg'
 import VueIcon from '../components/icons/vue.svg'
+import FrontityIcon from '../components/icons/frontity.svg'
 import Icon from '../components/icons/Icon'
 import NextCommerceIcon from '../components/icons/next-commerce.svg'
 import { icons } from '../components/icons/Icon'
@@ -221,6 +222,20 @@ const Home = ({ navData, changeLog }) => {
                 <Paper className={classes.framework} elevation={0}>
                   <Icon type="nx" className={classes.icon} style={{ height: 142, width: 142 }} />
                   <Typography className={classes.frameworkText}>Get started with Nx</Typography>
+                </Paper>
+              </Link>
+            </Grid>
+            <Grid item>
+              <Link href="/guides/[...guide]" as="/guides/frontity">
+                <Paper className={classes.framework} elevation={0}>
+                  <Icon
+                    type="frontity"
+                    className={classes.icon}
+                    style={{ height: 142, width: 142 }}
+                  />
+                  <Typography className={classes.frameworkText}>
+                    Get started with Frontity
+                  </Typography>
                 </Paper>
               </Link>
             </Grid>

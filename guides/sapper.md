@@ -110,17 +110,17 @@ To simulate your app within the XDN locally, run:
 
 ```
 
-xdn run
+xdn dev
 
 ```
 
-### Simulate edge caching on local
+### Simulate edge caching locally
 
 To simulate edge caching locally, run:
 
 ```
 
-xdn run --cache
+xdn dev --cache
 
 ```
 

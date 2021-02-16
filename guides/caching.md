@@ -249,7 +249,7 @@ The response was not cached because it was received during the brief time (less 
 By default, caching is turned off during development. This is done to ensure that developers don't see stale responses after making changes to their code or other upstream APIs. You can enable caching during development by running your app with:
 
 ```bash
-xdn run --cache
+xdn dev --cache
 ```
 
 The cache will automatically be cleared when you make changes to your router. A few aspects of caching are not yet supported during local development:

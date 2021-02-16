@@ -134,6 +134,12 @@
         "href": "/guides/[...guide]"
       },
       {
+        "text": "Frontity",
+        "icon": "frontity",
+        "as": "/guides/frontity",
+        "href": "/guides/[...guide]"
+      },
+      {
         "text": "Gatsby",
         "icon": "gatsby",
         "as": "/guides/gatsby",

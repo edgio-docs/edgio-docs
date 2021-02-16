@@ -45,7 +45,6 @@ Here are some of common types of page content that may need this approach:
 - Segmented or personalized content such as recommended products based on the user's profile or browsing behavior (note that recommended products based on page data _are_ cachable because the same recommended product would be shown to all users).
 - User specific parameters for analytics (e.g. if analytics tracks users by their userid or how frequently they visit the site).
 
-
 ## Add the XDN JavaScript libraries to your site
 
 Next install the XDN JavaScript libraries to your site by adding the following to your site's HTML:
@@ -168,10 +167,10 @@ export const CACHE_PAGES = {
 }
 ```
 
-Refer to the guides on [Routing](routing) and [Caching](caching) for the full syntax to use in your `routes.js` file. 
+Refer to the guides on [Routing](routing) and [Caching](caching) for the full syntax to use in your `routes.js` file.
 
-In addition to configuring your caching in `routes.ts` as shown above, you may need to employ [advanced prefetching techniques](#section_advanced_prefetching_techniques) to achieve the best possible performance 
- 
+In addition to configuring your caching in `routes.ts` as shown above, you may need to employ [advanced prefetching techniques](#section_advanced_prefetching_techniques) to achieve the best possible performance
+
 ### Understanding Caching and Prefetching
 
 By injecting `main.js` into your app's front-end code, your app will automatically prefetch all visible HTML links with URLs that match a route configured with `edge.maxAgeSeconds` and `browser.serviceWorkerSeconds` (in essence, when you configure a route to be cached, you are also declaring it to be a candidate for prefetching as well). Links that are visible when the page first loads are fetched immediately. Additional links will be fetched when the user scrolls down the page and more links become visible.
@@ -187,7 +186,7 @@ Now that you've configured your caching in `routes.ts`, you should test it in yo
 To test the caching behavior locally, run your project with the [local cache option](caching#section_caching_during_development) as shown below:
 
 ```bash
-xdn run --cache
+xdn dev --cache
 ```
 
 ### Running on the XDN
@@ -214,7 +213,7 @@ Each of these steps is described in more detail in the [Production guide](produc
 
 ## Advanced Prefetching Techniques
 
-An introduction to prefetching is available in the [Prefetching guide](prefetching). In addition, here are some techniques to take full advantage of the power of prefetching. 
+An introduction to prefetching is available in the [Prefetching guide](prefetching). In addition, here are some techniques to take full advantage of the power of prefetching.
 
 ### Deep Fetching
 
@@ -258,7 +257,7 @@ export default new Router()
 ### Prefetching based on element visibility
 
 By default, `<a>` tags are watched by the Prefetcher so that the value of their `href` attributes are prefetched once the links become visible in the viewport. However, sometimes you might need to trigger a prefetch based on the visibility of other types of elements.
- 
+
 When installing the service worker, you can specify a `watch` list. Elements that match `watch` selectors can trigger a callback function when they become visible in the viewport:
 
 ```js
@@ -284,8 +283,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
 ### Maintenance
 
-For the most part maintenance for XDN starter is minimal. However, the typical scenarios that require changes are: 
+For the most part maintenance for XDN starter is minimal. However, the typical scenarios that require changes are:
 
-* If you add personalized or user-specific content to the page you will need to make sure it is late loaded as described in the [Make sure your pages are cachable](#section_make_sure_your_pages_are_cachable) section. 
-* If you introduce a new segmentation of content (i.e. support a new language or currency), you may need to update your [custom cache key](/guides/caching#section_customizing_the_cache_key).
-* If you change the layout of the page (especially above the "fold"), it may alter the assets you need to prefetch or [deepfetch](#section_deep_fetching) to achieve the best performance.
+- If you add personalized or user-specific content to the page you will need to make sure it is late loaded as described in the [Make sure your pages are cachable](#section_make_sure_your_pages_are_cachable) section.
+- If you introduce a new segmentation of content (i.e. support a new language or currency), you may need to update your [custom cache key](/guides/caching#section_customizing_the_cache_key).
+- If you change the layout of the page (especially above the "fold"), it may alter the assets you need to prefetch or [deepfetch](#section_deep_fetching) to achieve the best performance.

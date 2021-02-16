@@ -48,7 +48,7 @@ This will automatically add all of the required dependencies and files to your p
 You can test the integration of the XDN router with your gatsby site locally using:
 
 ```bash
-xdn run
+xdn dev
 ```
 
 ## Deploying

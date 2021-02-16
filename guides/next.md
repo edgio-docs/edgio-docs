@@ -312,3 +312,48 @@ new Router().get('/my-private-page', ({ setResponseHeader }) => {
 ```
 
 Doing so will prevent other CDNs running in front of the XDN from caching the response.
+
+## Building with Webpack 5
+
+As of Next.js v10.0.6, Webpack 4 is still used by default. You can upgrade to Webpack 5 by making the following changes to your app:
+
+### package.json
+
+Add `"webpack": "^5.0.0"` to `resolutions`:
+
+```js
+"resolutions": {
+  "webpack": "^5.0.0"
+}
+```
+
+### next.config.js
+
+Add the following to next.config.js:
+
+```js
+future: {
+  webpack5: true,
+}
+```
+
+Then run `yarn install` followed by `xdn build` to verify that your app builds successfully using Webpack 5.
+
+Some additional notes:
+
+- In order to use Webpack 5 you must use yarn to install dependencies. NPM does not support `resolutions` in package.json.
+- Webpack 5 contains many breaking changes, so it is possible that you'll need to make additional changes to the webpack config via next.config.js to get your app to build successfully.
+- You'll also see some deprecation warnings, like these, which are fine, as long as `xdn build` is successful:
+
+```
+(node:95329) [DEP_WEBPACK_SINGLE_ENTRY_PLUGIN] DeprecationWarning: SingleEntryPlugin was renamed to EntryPlugin
+info  - Creating an optimized production build...
+(node:95339) [DEP_WEBPACK_SINGLE_ENTRY_PLUGIN] DeprecationWarning: SingleEntryPlugin was renamed to EntryPlugin
+> Creating service worker...
+(node:95339) [DEP_WEBPACK_COMPILATION_ASSETS] DeprecationWarning: Compilation.assets will be frozen in future, all modifications are deprecated.
+BREAKING CHANGE: No more changes should happen to Compilation.assets after sealing the Compilation.
+        Do changes to assets earlier, e. g. in Compilation.hooks.processAssets.
+        Make sure to select an appropriate stage from Compilation.PROCESS_ASSETS_STAGE_*.
+> Optimizing serverless functions (Webpack 5)
+(node:95339) [DEP_WEBPACK_CHUNK_HAS_ENTRY_MODULE] DeprecationWarning: Chunk.hasEntryModule: Use new ChunkGraph API
+```

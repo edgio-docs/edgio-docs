@@ -10,6 +10,7 @@
 Install the Vue Storefront application using this guide: https://docs.vuestorefront.io/guide/installation/linux-mac.html
 
 <b>Note</b>: XDN requires Node version >= 12, so before the installation it's recommended to run:
+
 ```bash
 nvm use 12
 ```
@@ -23,6 +24,7 @@ nvm use 12
 
 - Install XDN packages: `yarn add -D -W @xdn/cli && yarn add -W @xdn/core @xdn/prefetch @xdn/devtools`
 - Create a file called `xdn.config.js` in the root directory of your project and configure your origin and images hosts as backends. For example:
+
 ```js
 module.exports = {
   routes: './xdn/routes.js',
@@ -36,46 +38,52 @@ module.exports = {
     path: './dist-xdn-server/server.js',
   },
   includeNodeModules: true,
-};
+}
 ```
+
 - Create `xdn/service-worker.js`, which will contain the source code for your service worker:
+
 ```js
-import { Prefetcher } from "@xdn/prefetch/sw";
-import { clientsClaim, skipWaiting } from "workbox-core";
-import { precacheAndRoute } from 'workbox-precaching';
+import { Prefetcher } from '@xdn/prefetch/sw'
+import { clientsClaim, skipWaiting } from 'workbox-core'
+import { precacheAndRoute } from 'workbox-precaching'
 import DeepFetchPlugin, { DeepFetchCallbackParam } from '@xdn/prefetch/sw/DeepFetchPlugin'
-import { prefetch } from "@xdn/prefetch/window/prefetch";
-skipWaiting();
-clientsClaim();
-precacheAndRoute(self.__WB_MANIFEST || []);
+import { prefetch } from '@xdn/prefetch/window/prefetch'
+skipWaiting()
+clientsClaim()
+precacheAndRoute(self.__WB_MANIFEST || [])
 new Prefetcher().route()
 ```
-- Create `xdn/browser.js` with the following content:
-```js
-import installDevtools from "@xdn/devtools/install";
-import install from "@xdn/prefetch/window/install";
 
-document.addEventListener("DOMContentLoaded", () => {
-  console.info("[XDN browser] DOMContentLoaded -> running install()");
+- Create `xdn/browser.js` with the following content:
+
+```js
+import installDevtools from '@xdn/devtools/install'
+import install from '@xdn/prefetch/window/install'
+
+document.addEventListener('DOMContentLoaded', () => {
+  console.info('[XDN browser] DOMContentLoaded -> running install()')
   install({
     forcePrefetchRatio: 0.5, // forcely prefetch 50% of non-cached content for higher hit rate
-  });
-  console.info("[XDN browser] DOMContentLoaded -> running installDevtools()");
-  installDevtools();
-});
+  })
+  console.info('[XDN browser] DOMContentLoaded -> running installDevtools()')
+  installDevtools()
+})
 ```
+
 - Create `xdn/routes.js`. Here you will configure caching for each route in your application. Here is an example:
+
 ```js
-import { Router } from "@xdn/core/router";
-import { CACHE_ASSETS, CACHE_PAGES } from "./cache";
-import { BACKENDS } from '@xdn/core/constants';
-const DIST_APP = 'dist';
-const DIST_XDN_CLIENT = 'dist-xdn-client';
-const DIST_XDN_ASSETS = 'dist-xdn-assets';
-const SPLAT = ':path*';
-const SUFFIX_SPLAT = `:suffix/${SPLAT}`;
+import { Router } from '@xdn/core/router'
+import { CACHE_ASSETS, CACHE_PAGES } from './cache'
+import { BACKENDS } from '@xdn/core/constants'
+const DIST_APP = 'dist'
+const DIST_XDN_CLIENT = 'dist-xdn-client'
+const DIST_XDN_ASSETS = 'dist-xdn-assets'
+const SPLAT = ':path*'
+const SUFFIX_SPLAT = `:suffix/${SPLAT}`
 // //////////////////////////////////////////
-const router = new Router();
+const router = new Router()
 const pages = [
   // home
   `/`,
@@ -287,58 +295,60 @@ const pages = [
   `/zing-${SUFFIX_SPLAT}`,
   `/zoe-${SUFFIX_SPLAT}`,
   `/zoltan-${SUFFIX_SPLAT}`,
-];
+]
 // static prerendering
-router.prerender(pages.filter(page => !page.includes(SPLAT)));
+router.prerender(pages.filter(page => !page.includes(SPLAT)))
 // xdn static files
 router.get('/service-worker.js', ({ serviceWorker, cache }) => {
-  cache(CACHE_ASSETS);
-  serviceWorker(`${DIST_XDN_CLIENT}/service-worker.js`);
-});
+  cache(CACHE_ASSETS)
+  serviceWorker(`${DIST_XDN_CLIENT}/service-worker.js`)
+})
 router.get('/main.js', ({ serveStatic, cache }) => {
-  cache(CACHE_ASSETS);
-  serveStatic(`${DIST_XDN_CLIENT}/browser.js`);
-});
+  cache(CACHE_ASSETS)
+  serveStatic(`${DIST_XDN_CLIENT}/browser.js`)
+})
 // assets
 router.get(`/dist/${SPLAT}`, ({ serveStatic, cache }) => {
-  cache(CACHE_ASSETS);
-  serveStatic(`${DIST_APP}/${SPLAT}`);
-});
+  cache(CACHE_ASSETS)
+  serveStatic(`${DIST_APP}/${SPLAT}`)
+})
 router.get(`/assets/${SPLAT}`, ({ serveStatic, cache }) => {
-  cache(CACHE_ASSETS);
-  serveStatic(`${DIST_XDN_ASSETS}/${SPLAT}`);
-});
+  cache(CACHE_ASSETS)
+  serveStatic(`${DIST_XDN_ASSETS}/${SPLAT}`)
+})
 router.get(`/img/${SPLAT}`, ({ proxy, cache }) => {
-  cache(CACHE_ASSETS);
+  cache(CACHE_ASSETS)
   proxy('origin')
-});
+})
 // api
 router.get(`/api/catalog/${SPLAT}`, ({ proxy, cache }) => {
-  cache(CACHE_PAGES);
-  proxy('origin');
-});
+  cache(CACHE_PAGES)
+  proxy('origin')
+})
 router.get(`/api/stock/${SPLAT}`, ({ proxy, cache }) => {
-  cache(CACHE_PAGES);
-  proxy('origin');
-});
+  cache(CACHE_PAGES)
+  proxy('origin')
+})
 // pages
 pages.forEach(page => {
   router.get(page, ({ cache, proxy }) => {
-    cache(CACHE_PAGES);
-    proxy(BACKENDS.js);
-  });
-});
+    cache(CACHE_PAGES)
+    proxy(BACKENDS.js)
+  })
+})
 // fallback
 router.fallback(({ proxy }) => {
-  proxy(BACKENDS.js);
-});
-export default router;
+  proxy(BACKENDS.js)
+})
+export default router
 ```
+
 - Add `xdn/cache.js` file. For example:
+
 ```js
-const TIME_1H = 60 * 60;
-const TIME_4H = TIME_1H * 4;
-const TIME_1D = TIME_1H * 24;
+const TIME_1H = 60 * 60
+const TIME_4H = TIME_1H * 4
+const TIME_1D = TIME_1H * 24
 /**
  * The default cache setting for pages in the shopping flow
  */
@@ -353,7 +363,7 @@ export const CACHE_PAGES = {
     serviceWorkerSeconds: TIME_4H,
     spa: true,
   },
-};
+}
 /**
  * The default cache setting for static assets like JS, CSS, and images.
  */
@@ -368,9 +378,11 @@ export const CACHE_ASSETS = {
     serviceWorkerSeconds: TIME_1D,
     spa: true,
   },
-};
+}
 ```
-- Create `xdn/webpack.xdn.client.config.js`.  This webpack configuration will bundle the service worker and the code to install it when the app loads in the browser.
+
+- Create `xdn/webpack.xdn.client.config.js`. This webpack configuration will bundle the service worker and the code to install it when the app loads in the browser.
+
 ```js
 const path = require('path')
 const webpack = require('webpack')
@@ -394,20 +406,22 @@ module.exports = {
   ],
 }
 ```
+
 - Add `core/build/webpack.xdn.config.ts` file:
+
 ```ts
-import { buildLocaleIgnorePattern } from '@vue-storefront/i18n/helpers';
-import path from 'path';
-import fs from 'fs';
-import CaseSensitivePathsPlugin from 'case-sensitive-paths-webpack-plugin';
-import VueLoaderPlugin from 'vue-loader/lib/plugin';
-import autoprefixer from 'autoprefixer';
-import webpack from 'webpack';
-import dayjs from 'dayjs';
-import config from 'config';
+import { buildLocaleIgnorePattern } from '@vue-storefront/i18n/helpers'
+import path from 'path'
+import fs from 'fs'
+import CaseSensitivePathsPlugin from 'case-sensitive-paths-webpack-plugin'
+import VueLoaderPlugin from 'vue-loader/lib/plugin'
+import autoprefixer from 'autoprefixer'
+import webpack from 'webpack'
+import dayjs from 'dayjs'
+import config from 'config'
 // const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 // eslint-disable-next-line import/first
-import themeRoot from './theme-path';
+import themeRoot from './theme-path'
 
 const themesRoot = '../../src/themes'
 const themeResources = themeRoot + '/resource'
@@ -421,22 +435,22 @@ const postcssConfig = {
   loader: 'postcss-loader',
   options: {
     ident: 'postcss',
-    plugins: (loader) => [
+    plugins: loader => [
       require('postcss-flexbugs-fixes'),
       require('autoprefixer')({
-        flexbox: 'no-2009'
-      })
-    ]
-  }
-};
-var nodeModules = {};
+        flexbox: 'no-2009',
+      }),
+    ],
+  },
+}
+var nodeModules = {}
 fs.readdirSync(path.resolve(__dirname, '../../node_modules'))
   .filter(function(x) {
-    return ['.bin'].indexOf(x) === -1;
+    return ['.bin'].indexOf(x) === -1
   })
   .forEach(function(mod) {
-    nodeModules[mod] = 'commonjs ' + mod;
-  });
+    nodeModules[mod] = 'commonjs ' + mod
+  })
 const isProd = process.env.NODE_ENV === 'production'
 // todo: usemultipage-webpack-plugin for multistore
 export default {
@@ -450,14 +464,14 @@ export default {
     new VueLoaderPlugin(),
     new webpack.DefinePlugin({
       'process.env.__APPVERSION__': JSON.stringify(require('../../package.json').version),
-      'process.env.__BUILDTIME__': JSON.stringify(dayjs().format('YYYY-MM-DD HH:mm:ss'))
+      'process.env.__BUILDTIME__': JSON.stringify(dayjs().format('YYYY-MM-DD HH:mm:ss')),
     }),
     // Server
     new webpack.DefinePlugin({
-      'process.env.VUE_ENV': '"server"'
+      'process.env.VUE_ENV': '"server"',
     }),
     // define `config` package
-    new webpack.DefinePlugin({ CONFIG: JSON.stringify(require("config")) }),
+    new webpack.DefinePlugin({ CONFIG: JSON.stringify(require('config')) }),
   ],
   // devtool: 'source-map',
   output: {
@@ -467,35 +481,38 @@ export default {
     libraryTarget: 'commonjs',
   },
   resolveLoader: {
-    modules: [
-      'node_modules',
-      path.resolve(__dirname, themesRoot)
-    ]
+    modules: ['node_modules', path.resolve(__dirname, themesRoot)],
   },
   resolve: {
-    modules: [
-      'node_modules',
-      path.resolve(__dirname, themesRoot)
-    ],
+    modules: ['node_modules', path.resolve(__dirname, themesRoot)],
     extensions: ['.js', '.vue', '.gql', '.graphqls', '.ts'],
     alias: {
       // Main aliases
       // 'config': path.resolve(__dirname, './config.json'),
-      'src': path.resolve(__dirname, '../../src'),
+      src: path.resolve(__dirname, '../../src'),
       // Theme aliases
-      'theme': themeRoot,
+      theme: themeRoot,
       'theme/app': themeApp,
       'theme/css': themeCSS,
       'theme/resource': themeResources,
       // Backward compatible
       '@vue-storefront/core/lib/store/multistore': path.resolve(__dirname, '../lib/multistore.ts'),
-      'src/modules/order-history/components/UserOrders': path.resolve(__dirname, '../../core/modules/order/components/UserOrdersHistory'),
-      '@vue-storefront/core/modules/social-share/components/WebShare': path.resolve(__dirname, '../../src/themes/default/components/theme/WebShare.vue'),
-      '@vue-storefront/core/helpers/initCacheStorage': path.resolve(__dirname, '../lib/storage-manager.ts'),
-      
+      'src/modules/order-history/components/UserOrders': path.resolve(
+        __dirname,
+        '../../core/modules/order/components/UserOrdersHistory',
+      ),
+      '@vue-storefront/core/modules/social-share/components/WebShare': path.resolve(
+        __dirname,
+        '../../src/themes/default/components/theme/WebShare.vue',
+      ),
+      '@vue-storefront/core/helpers/initCacheStorage': path.resolve(
+        __dirname,
+        '../lib/storage-manager.ts',
+      ),
+
       // Server aliases
-      'create-api': './create-api-server.js'
-    }
+      'create-api': './create-api-server.js',
+    },
   },
   module: {
     rules: [
@@ -503,23 +520,23 @@ export default {
         enforce: 'pre',
         test: /\.(js|vue,ts)$/,
         loader: 'eslint-loader',
-        exclude: [/node_modules/, /test/]
+        exclude: [/node_modules/, /test/],
       },
       {
         test: /\.vue$/,
         loader: 'vue-loader',
         options: {
           preserveWhitespace: false,
-          postcss: [autoprefixer()]
-        }
+          postcss: [autoprefixer()],
+        },
       },
       {
         test: /\.ts$/,
         loader: 'ts-loader',
         options: {
-          appendTsSuffixTo: [/\.vue$/]
+          appendTsSuffixTo: [/\.vue$/],
         },
-        exclude: /node_modules/
+        exclude: /node_modules/,
       },
       {
         test: /\.js$/,
@@ -527,32 +544,23 @@ export default {
         include: [
           path.resolve(__dirname, '../../node_modules/@vue-storefront'),
           path.resolve(__dirname, '../../src'),
-          path.resolve(__dirname, '../../core')
-        ]
+          path.resolve(__dirname, '../../core'),
+        ],
       },
       {
         test: /\.(png|jpg|gif|svg)$/,
         loader: 'file-loader',
         options: {
-          name: '[name].[ext]?[hash]'
-        }
+          name: '[name].[ext]?[hash]',
+        },
       },
       {
         test: /\.css$/,
-        use: [
-          'vue-style-loader',
-          'css-loader',
-          postcssConfig
-        ]
+        use: ['vue-style-loader', 'css-loader', postcssConfig],
       },
       {
         test: /\.scss$/,
-        use: [
-          'vue-style-loader',
-          'css-loader',
-          postcssConfig,
-          'sass-loader'
-        ]
+        use: ['vue-style-loader', 'css-loader', postcssConfig, 'sass-loader'],
       },
       {
         test: /\.sass$/,
@@ -563,25 +571,25 @@ export default {
           {
             loader: 'sass-loader',
             options: {
-              indentedSyntax: true
-            }
-          }
-        ]
+              indentedSyntax: true,
+            },
+          },
+        ],
       },
       {
         test: /\.(woff|woff2|eot|ttf)(\?.*$|$)/,
-        loader: 'url-loader?importLoaders=1&limit=10000'
+        loader: 'url-loader?importLoaders=1&limit=10000',
       },
       {
         test: /\.(graphqls|gql)$/,
         exclude: /node_modules/,
-        loader: ['graphql-tag/loader']
+        loader: ['graphql-tag/loader'],
       },
       // {
       //   test: /core\/build\/config\.json$/,
       //   loader: path.resolve('core/build/purge-config.js')
       // }
-    ]
+    ],
   },
   // Server
   mode: 'production',
@@ -596,7 +604,9 @@ export default {
   externals: nodeModules,
 }
 ```
+
 - Add `xdn:*` scripts into `package.json` file:
+
 ```json
 ...
 "xdn:build:server": "cross-env NODE_ENV=production TS_NODE_PROJECT=\"tsconfig-build.json\" webpack --config ./core/build/webpack.xdn.config.ts --mode production --progress --hide-modules",
@@ -610,7 +620,9 @@ export default {
 "xdn:deploy": "xdn deploy --team=moovweb-demos --site=vsf1 --skip-build"
 ...
 ```
+
 - Ignore XDN build in `.gitignore`:
+
 ```bash
 # XDN
 /dist-xdn-assets
@@ -618,15 +630,19 @@ export default {
 /dist-xdn-server
 /.xdn
 ```
+
 - Find all `*.template.html` files in VSF app and add XDN scripts into `<head>` there:
+
 ```html
-  <!-- XDN -->
-  <script src="/service-worker.js" defer></script>
-  <script src="/__xdn__/cache-manifest.js" defer></script>
-  <script src="/main.js" defer></script>
-  <script src="/__xdn__/devtools/install.js" defer></script>
+<!-- XDN -->
+<script src="/service-worker.js" defer></script>
+<script src="/__xdn__/cache-manifest.js" defer></script>
+<script src="/main.js" defer></script>
+<script src="/__xdn__/devtools/install.js" defer></script>
 ```
+
 - Finally, you are ready to build and deploy the app:
+
 ```bash
 yarn build
 yarn xdn:build

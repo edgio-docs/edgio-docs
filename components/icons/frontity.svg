@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="24"
+   height="14"
+   viewBox="0 0 24 24"
+   version="1.1"
+   id="svg90"
+   sodipodi:docname="frontity.svg"
+   inkscape:version="1.0.2 (e86c8708, 2021-01-15)">
+  <metadata
+     id="metadata96">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs94" />
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1430"
+     inkscape:window-height="812"
+     id="namedview92"
+     showgrid="false"
+     inkscape:zoom="7.7801418"
+     inkscape:cx="35.571779"
+     inkscape:cy="0.46668094"
+     inkscape:window-x="2054"
+     inkscape:window-y="124"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="frontity-blue-text-logo" />
+  <!-- Generator: Sketch 52.3 (67297) - http://www.bohemiancoding.com/sketch -->
+  <title
+     id="title81">frontity-blue-text-logo</title>
+  <desc
+     id="desc83">Created with Sketch.</desc>
+  <g
+     id="Page-1"
+     stroke="none"
+     stroke-width="1"
+     fill="none"
+     fill-rule="evenodd"
+     transform="translate(-0.03168542,-2.979536)">
+    <g
+       id="frontity-blue-text-logo"
+       fill="#1f38c5"
+       fill-rule="nonzero">
+      <g
+         id="Imagotype"
+         transform="translate(0,2.897676)">
+        <path
+           d="M 3.7630663,0.08186001 13.047386,9.3661792 12.527685,9.88486 12.542385,9.8989388 3.258066,19.183258 0.03168542,15.956877 6.6086854,9.37986 0.5366858,3.3082405 Z m 10.6046517,0 9.28432,9.28431919 -0.519353,0.5186808 0.01435,0.014079 -9.284319,9.284319 -3.22638,-3.226381 6.576347,-6.5770168 -6.071347,-6.0716195 z"
+           id="Combined-Shape" />
+      </g>
+    </g>
+  </g>
+</svg>

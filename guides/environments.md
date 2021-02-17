@@ -38,6 +38,18 @@ When configuring CI, we recommend:
 - Automatically deploying to your staging environment when a PR is merged to the master branch of your repo.
 - Manually promoting deployments to production using the Moovweb Console to prevent unwanted builds from being published by misconfigured CI workflows.
 
+## Production Environment
+
+To ensure that your production environment gets priority over all other environments during periods of high traffic, mark it as "production" by selecting this option during creation:
+
+![promote](/images/environments/production.png)
+
+Or from the environments list in the site view:
+
+![promote](/images/environments/environments_table.png)
+
+Failure to do so could cause your production environment to become slow if another environment experiences an unexpected surge in traffic, for example due to an attack or load test.
+
 ## Environment Versions
 
 Since environments contain important settings that affect how your site functions, they are versioned. This makes it easy to roll back to a previous version of the environment if you make a change that breaks the site. To change your environment settings, create a new draft version by clicking the _Edit_ button:

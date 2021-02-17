@@ -38,8 +38,47 @@ This will automatically add all of the required dependencies and files to your p
 - The `@xdn/frontity` package - Provides router middleware that automatically adds Frontity routes to the XDN router.
 - The `@xdn/prefetch` package - Allows you to configure a service worker to prefetch and cache pages to improve browsing speed
 - The `@xdn/react` package - Provides a `Prefetch` component for prefetching pages
-- `xdn.config.js`
 - `routes.js` - A default routes file that sends all requests to Frontity. Update this file to add caching or proxy some URLs to a different origin.
+- `sw/service-worker.js` - The source code for your service worker, which enables prefetching when running on the XDN.
+- `xdn.config.js` - Contains configuration options for deploying on the XDN.
+
+## Adding the XDN Service Worker
+
+To add the XDN service worker to your app, call the `install` function from `@xdn/prefetch/window` in a `useEffect` hook when the app first loads. For example, you can alter
+the Header component in your theme as follows:
+
+```js
+// mars-theme/src/components/header.js
+
+import { useEffect } from 'react'
+
+const Header = ({ state }) => {
+  useEffect(() => {
+    if (process.env.NODE_ENV === 'production') {
+      install()
+    }
+  }, [])
+
+  /* ... */
+}
+```
+
+## Prefetching Content
+
+To prefetch data into the browser cache using the service worker, use the `Prefetch` component from `@xdn/react`. This component prefetches a specific url from the XDN edge when it becomes visible in the viewport. You typically wrap it around links. For example:
+
+```js
+import { Prefetch } from '@xdn/react'
+
+function MyComponent() {
+  return (
+    <Prefetch url="/some/data/url.json">
+      {/* When this link is scrolled into view, /some/data/url.json in JSON will be fetched in the background and put in the browser cache */}
+      <a href="/link/to/page">My Page</a>
+    </Prefetch>
+  )
+}
+```
 
 ## Running Locally
 

@@ -82,9 +82,137 @@ All data transmitted to and from your Moovweb XDN project must be secured with T
 
 The XDN provides a wildcard TLS certificate that covers the auto-generated domains that it assigns to your site (e.g {team}-{site}-{branch}-{version}.moovweb.io). You need to provide your own certificate for your site's custom domains.
 
-### Obtaining a certificate
-
 _Note: If you already have an existing certificate, you can use it by skipping ahead to [Uploading your certificate](#section_uploading_your_certificate). Many customers who have existing certificates still choose to obtain a new one when adopting the XDN so as not to reuse the same private key with more than one vendor/system_
+
+### Obtain a certificate automatically from the XDN Console
+
+The XDN console can use [**Let's Encrypt**](https://letsencrypt.org/) to generate a SSL Certificate on your behalf and deploy it on your XDN website. This certificate is free, it is valid for 3 months, and will be automatically renewed as long as the technical requirements, shown below, remains met.
+
+If you are interested by allowing the XDN Console to generate an SSL Certificate from [**Let's Encrypt**](https://letsencrypt.org/), please make sure that the following requirements are met:
+
+1. Make sure that you have added a Custom Domain to your Site's Environment, see _DNS Configuration_ above.
+
+2. Add a `CAA` DNS record on your DNS zone to allow Let's Encrypt to generate certificates on your domain
+
+    Log into your DNS registrar, and add a `CAA` type DNS record with the following values :
+
+      - Type : `CAA`
+      - Name : empty (or `@`, depending on the DNS registrar)
+      - Flags: `0`
+      - Tag: `issue`
+      - Value: `letsencrypt.org` (or `"letsencrypt.org"`)
+    
+    Example with Godaddy:
+
+    ![CAA Record on GoDady](/images/production/godaddy-caa.jpg)
+
+    Example with Gandi:
+
+    ![CAA Record on Gandi](/images/production/gandi-caa.jpg)
+
+    You can use the following links to see how to configure the CAA record on commonly used DNS registrars:
+      - [How to add a CAA record on Gandi](https://docs.gandi.net/en/domain_names/faq/record_types/caa_record.html)
+      - [How to add a CAA record on Godaddy](https://uk.godaddy.com/help/add-a-caa-record-27288)
+      - [How to add a CAA record on AWS](https://docs.aws.amazon.com/acm/latest/userguide/setup-caa.html)
+      - [How to add a CAA record on NameCheap](https://www.namecheap.com/support/knowledgebase/article.aspx/9991/38/caa-record-and-why-it-is-needed-ssl-related/)
+
+    Once the DNS entry has been added, use the following websites and/or CLI commands to verify that it is correctly configured.
+
+    Verify the CAA record using these websites:
+
+      - [CAA Test](https://caatest.co.uk/)
+      - [Entrust CAA Lookup](https://www.entrust.com/resources/certificate-solutions/tools/caa-lookup)
+
+    Verify the CAA record using the Terminal:
+
+    ```
+    # Run the following command
+    dig caa +short <your-primary-domain> # (without the 'www')
+
+    # Example
+    dig caa +short mywebsite.xyz
+    ```
+
+    The result of your CAA check should contain the following line:
+    ```
+    0 issue "letsencrypt.org"
+    ```
+
+    Notes :
+
+      - Many DNS registrars have already added this `CAA` DNS record by default
+      - Some cheap DNS registrars does not allow the creation of `CAA` DNS records
+      - You can learn more about CAA DNS records on [Let's Encrypt website](https://letsencrypt.org/docs/caa/), on [Wikipedia](https://en.wikipedia.org/wiki/DNS_Certification_Authority_Authorization), on [Gandi](https://docs.gandi.net/en/domain_names/faq/record_types/caa_record.html) and on [eff.org](https://www.eff.org/deeplinks/2018/02/technical-deep-dive-securing-automation-acme-dns-challenge-validation)
+
+3. Add an `_acme-challenge.` CNAME DNS entry on your DNS zone to allow Moovweb to issue a certificate request to Let's Encrypt
+
+    In order to prove to Let's Encrypt that you have allowed Moovweb to generate an SSL Certificate on your behalf, you have to create a special DNS entry called `_acme-challenge.` on your DNS zone. This entry is simply to prove to Let's Encrypt that you allow Moovweb to generate a certificate on your domain.
+
+    Moovweb owns the domain `xdn-validation.com`, and we use this domain to prove that we received the permission to issue a certificate request on the behalf of someone else (you).
+
+    In order to allow us to issue a certificate creation request for one of your domains, you will have to add the `_acme-challenge.` DNS entry and make it point towards our `xdn-validation.com` domain.
+
+    To do so, log into your DNS registrar, and add a `CNAME` type DNS entry with the value `_acme-challenge.` on your domain, and have it resolve to `_acme-challenge.xdn-validation.com`.
+
+    Example with Godaddy:
+
+    ![ACME Challenge Record on GoDady](/images/production/godaddy-acme-challenge.jpg)
+
+    Example with Gandi:
+
+    ![ACME Challenge Record on Gandi](/images/production/gandi-acme-challenge.jpg)
+
+    Once the DNS entry has been added, use the following websites and/or CLI commands to verify that it is correctly configured.
+
+    Verify the CNAME `_acme-challenge.<your-domain>` record using these websites:
+
+      - [MX ToolBox DNS Lookup](https://mxtoolbox.com/DNSLookup.aspx)
+      - [Ultra Tools DNS Lookup](https://www.ultratools.com/tools/dnsLookup)
+
+    Verify the CNAME record using the Terminal:
+
+    ```
+    # Run the following 'dig' command to verify the presence of the '_acme-challenge.' CNAME :
+    dig +short cname _acme-challenge.<your-domain>
+
+    # For example:
+    dig +short cname _acme-challenge.www.mywebsite.xyz
+    ```
+
+    Expected result for the DNS query:
+
+    ```
+    _acme-challenge.www.xdn-validation.com
+    ```
+    
+    If you use multiple domains for your website, like `mywebsite.xyz` and `www.mywebsite.xyz`, then you will have to add the `_acme-challenge` DNS record for both domains:
+
+    ```
+    _acme-challenge.www.xdn-validation.com
+    _acme-challenge.xdn-validation.com
+    ```
+
+    Notes:
+    
+      - You can read more about the `_acme-challenge.` process by visiting [Let's Encrypt Website](https://letsencrypt.org/docs/challenge-types/#dns-01-challenge)
+
+4. Once the requirements above are met, Moovweb should be able to generate a certificate for your site on your behalf
+
+    a. On the XDN Console, select your site and navigate to _Settings_ => _SSL Configuration_
+    
+    b. Check the state of your Certificate (you should see that there's no certificate provided yet for your website):
+
+    ![ssl-generation-01](/images/production/ssl-generation-01.png)
+
+    c. Click on the _Generate SSL_ button:
+
+    ![ssl-generation-02](/images/production/ssl-generation-02.png)
+
+    d. After a couple of minutes, you should see that your website has received a new SSL Certificate:
+
+    ![ssl-generation-03](/images/production/ssl-generation-03.png)
+
+### Create a certificate manually
 
 TLS certificates are issued by Certificate Authorities (CA) based on Certificate Signing Request (CSR) that they receive from you. Alongside the CSR the same process creates certificate's private key. You only need to share your CSR with CA, not the private key which you should store securely.
 

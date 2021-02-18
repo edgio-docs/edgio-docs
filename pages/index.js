@@ -250,7 +250,7 @@ const Home = ({ navData, changeLog }) => {
       </Grid>
       <Container className={classes.changeLog}>
         <Divider />
-        <h1>Moovweb Tutorial</h1>
+        <h1>Moovweb Tutorials</h1>
         <Grid container spacing={5}>
           <Grid item>
             <h4>Moovweb XDN - What & Why</h4>

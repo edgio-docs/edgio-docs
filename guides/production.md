@@ -82,11 +82,11 @@ All data transmitted to and from your Moovweb XDN project must be secured with T
 
 The XDN provides a wildcard TLS certificate that covers the auto-generated domains that it assigns to your site (e.g {team}-{site}-{branch}-{version}.moovweb.io). You need to provide your own certificate for your site's custom domains.
 
-_Note: If you already have an existing certificate, you can use it by skipping ahead to [Uploading your certificate](#section_uploading_your_certificate). Many customers who have existing certificates still choose to obtain a new one when adopting the XDN so as not to reuse the same private key with more than one vendor/system_
+_Note: If you already have an existing certificate, you can use it by skipping ahead to [Uploading your certificate](#section_uploading_your_certificate). Many customers who have existing certificates still choose to obtain a new one when adopting the XDN so as not to reuse the same private key with more than one vendor/system._
 
 ### Obtain a certificate automatically from the XDN Console
 
-The XDN console can use [**Let's Encrypt**](https://letsencrypt.org/) to generate a SSL Certificate on your behalf and deploy it on your XDN website. This certificate is free, it is valid for 3 months, and will be automatically renewed as long as the technical requirements, shown below, remains met.
+The XDN console can use [**Let's Encrypt**](https://letsencrypt.org/) to generate a SSL Certificate on your behalf and deploy it on your XDN website. This certificate is free, it is valid for 3 months, and will be automatically renewed as long as the technical requirements, shown below, remain met.
 
 If you are interested by allowing the XDN Console to generate an SSL Certificate from [**Let's Encrypt**](https://letsencrypt.org/), please make sure that the following requirements are met:
 

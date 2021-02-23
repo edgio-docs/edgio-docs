@@ -217,7 +217,7 @@ router.match(
     method: /GET|POST/i, // value is a regular expression
     cookies: { currency: /^(usd)$/i }, // keys are cookie names, values are regular expressions
     headers: { 'x-moov-device': /^desktop$/i }, // keys are header names, values are regular expressions
-    query: { page: /^(1|2|3))$/ }, // keys are query parameter names, values are regular expressions
+    query: { page: /^(1|2|3)$/ }, // keys are query parameter names, values are regular expressions
   },
   () => {},
 )

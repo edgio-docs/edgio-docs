@@ -146,6 +146,12 @@
         "href": "/guides/[...guide]"
       },
       {
+        "text": "Generic Static",
+        "icon": "react",
+        "as": "/guides/static_sites",
+        "href": "/guides/[...guide]"
+      },
+      {
         "text": "Next.js",
         "icon": "nextjs",
         "as": "/guides/next",

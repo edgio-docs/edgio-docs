@@ -45,6 +45,21 @@ Here are some of common types of page content that may need this approach:
 - Segmented or personalized content such as recommended products based on the user's profile or browsing behavior (note that recommended products based on page data _are_ cachable because the same recommended product would be shown to all users).
 - User specific parameters for analytics (e.g. if analytics tracks users by their userid or how frequently they visit the site).
 
+See common things you need to look for on an eCommmerce site:
+
+| Non-cacheable content    | How to change               | Location |
+|--------------------------|-----------------------------|----------|
+| Cart item count          | Late load via API           | Global   |
+| Welcome message          | Late load                   | Global   |
+| Localized currency       | Split cache based on cookie | Global   |
+| Inline analytics         | Refactor                    | Global   |
+| Personalized banners     | Late load                   | Homepage |
+| Promo pricing            | Late load                   | PLP      |
+| Inventory                | Lower cache TTL             | PLP      |
+| Product recommendations  | Late load                   | PDP      |
+| Inventory                | Targetted cache clearing    | PDP      |
+
+
 ## Add the XDN JavaScript libraries to your site
 
 Next install the XDN JavaScript libraries to your site by adding the following to your site's HTML:

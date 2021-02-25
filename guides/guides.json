@@ -147,7 +147,7 @@
       },
       {
         "text": "Generic Static",
-        "icon": "react",
+        "icon": "html",
         "as": "/guides/static_sites",
         "href": "/guides/[...guide]"
       },

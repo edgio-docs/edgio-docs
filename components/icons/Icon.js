@@ -13,6 +13,7 @@ import GatsbyIcon from './gatsby.svg'
 import VSFIcon from './vsf.svg'
 import NXIcon from './nx.png'
 import FrontityIcon from './frontity.svg'
+import HTMLIcon from './html.svg'
 
 export const icons = {
   react: ReactIcon,
@@ -31,6 +32,7 @@ export const icons = {
   vsf: VSFIcon,
   nx: NXIcon,
   frontity: FrontityIcon,
+  html: HTMLIcon,
 }
 
 export const styles = theme => ({

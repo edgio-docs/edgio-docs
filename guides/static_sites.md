@@ -6,9 +6,14 @@ This guide shows you how to serve generic static sites on the Moovweb XDN.
 
 Here are a few examples of common static sites served by the XDN.
 
-[Static Backbone.js](https://github.com/moovweb-docs/xdn-examples/tree/main/static-backbonejs-example?button)
-[Static React](https://github.com/moovweb-docs/xdn-examples/tree/main/static-react-example?button)
-[Static Vue.js](https://github.com/moovweb-docs/xdn-examples/tree/main/static-vuejs-example?button)
+[Backbone.js Static Example](https://moovweb-docs-static-backbonejs-example-default.moovweb-edge.io/?button)
+[View the Code](https://github.com/moovweb-docs/xdn-examples/tree/main/static-backbonejs-example?button)
+
+[React Static Example](https://moovweb-docs-static-react-example-default.moovweb-edge.io/?button)
+[View the Code](https://github.com/moovweb-docs/xdn-examples/tree/main/static-react-example?button)
+
+[Vue.js Static Example](https://moovweb-docs-static-vuejs-example-default.moovweb-edge.io/?button)
+[View the Code](https://github.com/moovweb-docs/xdn-examples/tree/main/static-vuejs-example?button)
 
 ## Install Node.js and npm
 

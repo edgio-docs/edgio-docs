@@ -55,6 +55,7 @@ See common things you need to look for on an eCommmerce site:
 | Inline analytics         | Refactor                    | Global   |
 | Personalized banners     | Late load                   | Homepage |
 | Promo pricing            | Late load                   | PLP      |
+| Complex pricing (e.g. employee discounts, affiliate discounts, pricing based on item combinations or dollar amount in the cart)     | Late load                   | PLP, PDP |
 | Inventory                | Lower cache TTL             | PLP      |
 | Product recommendations  | Late load                   | PDP      |
 | Inventory                | Targetted cache clearing    | PDP      |

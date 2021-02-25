@@ -6,6 +6,7 @@ import VueIcon from './vue.svg'
 import AngularIcon from './angular.svg'
 import SpartacusIcon from './spartacus-blue.png'
 import NextIcon from './next.svg'
+import NextCommerceIcon from './next-commerce.svg'
 import NuxtIcon from './nuxt.svg'
 import ReactStorefrontIcon from './react-storefront.svg'
 import SapperIcon from './sapper.svg'
@@ -23,6 +24,7 @@ export const icons = {
     <img className={classes && classes.png} {...others} src={SpartacusIcon} />
   ),
   nextjs: NextIcon,
+  'next-commerce': NextCommerceIcon,
   nuxt: NuxtIcon,
   prev: ChevronLeft,
   next: ChevronRight,

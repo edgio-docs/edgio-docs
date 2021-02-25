@@ -146,12 +146,6 @@
         "href": "/guides/[...guide]"
       },
       {
-        "text": "Generic Static",
-        "icon": "html",
-        "as": "/guides/static_sites",
-        "href": "/guides/[...guide]"
-      },
-      {
         "text": "Next.js",
         "icon": "nextjs",
         "as": "/guides/next",
@@ -197,6 +191,12 @@
         "text": "Spartacus",
         "icon": "spartacus",
         "as": "/guides/spartacus",
+        "href": "/guides/[...guide]"
+      },
+      {
+        "text": "Static HTML/JS",
+        "icon": "html",
+        "as": "/guides/static_sites",
         "href": "/guides/[...guide]"
       },
       {

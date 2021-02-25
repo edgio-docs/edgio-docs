@@ -6,23 +6,9 @@ import PageWrapper from '../components/PageWrapper'
 import { Typography, makeStyles, Container, Grid, Paper, Divider } from '@material-ui/core'
 import getBaseUrl from '../components/utils/getBaseUrl'
 import Link from 'next/link'
-import ReactIcon from '../components/icons/react.svg'
-import ReactStorefrontIcon from '../components/icons/react-storefront.svg'
-import NextIcon from '../components/icons/next.svg'
-import NuxtIcon from '../components/icons/nuxt.svg'
-import AngularIcon from '../components/icons/angular.svg'
 import MoovwebXDN from '../components/icons/moovweb-xdn-black.svg'
-import SapperIcon from '../components/icons/sapper.svg'
-import GatsbyIcon from '../components/icons/gatsby.svg'
-import VSFIcon from '../components/icons/vsf.svg'
-import VueIcon from '../components/icons/vue.svg'
-import FrontityIcon from '../components/icons/frontity.svg'
 import Icon from '../components/icons/Icon'
-import NextCommerceIcon from '../components/icons/next-commerce.svg'
-import { icons } from '../components/icons/Icon'
 import Markdown from '../components/Markdown'
-
-const SpartacusIcon = icons['spartacus']
 
 const useStyles = makeStyles(theme => ({
   hero: {
@@ -99,6 +85,10 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
+const iconProps = {
+  style: { height: 142, width: 142 },
+}
+
 const Home = ({ navData, changeLog }) => {
   const classes = useStyles()
   return (
@@ -118,7 +108,7 @@ const Home = ({ navData, changeLog }) => {
             <Grid item>
               <Link href="/guides/[...guide]" as="/guides/next">
                 <Paper className={classes.framework} elevation={0}>
-                  <NextIcon className={classes.icon} />
+                  <Icon type="nextjs" className={classes.icon} {...iconProps} />
                   <Typography className={classes.frameworkText}>
                     Get started with Next.js
                   </Typography>
@@ -128,7 +118,7 @@ const Home = ({ navData, changeLog }) => {
             <Grid item>
               <Link href="/guides/[...guide]" as="/guides/next_commerce">
                 <Paper className={classes.framework} elevation={0}>
-                  <NextCommerceIcon className={classes.icon} />
+                  <Icon type="next-commerce" className={classes.icon} {...iconProps} />
                   <Typography className={classes.frameworkText}>
                     Start with Next.js Commerce
                   </Typography>
@@ -138,7 +128,7 @@ const Home = ({ navData, changeLog }) => {
             <Grid item>
               <Link href="/guides/[...guide]" as="/guides/nuxt">
                 <Paper className={classes.framework} elevation={0}>
-                  <NuxtIcon className={classes.icon} />
+                  <Icon type="nuxt" className={classes.icon} {...iconProps} />
                   <Typography className={classes.frameworkText}>
                     Get started with Nuxt.js
                   </Typography>
@@ -148,7 +138,7 @@ const Home = ({ navData, changeLog }) => {
             <Grid item>
               <Link href="/guides/[...guide]" as="/guides/vsf">
                 <Paper className={classes.framework} elevation={0}>
-                  <VSFIcon className={classes.icon} />
+                  <Icon type="vsf" className={classes.icon} {...iconProps} />
                   <Typography className={classes.frameworkText}>
                     Get started with Vue Storefront
                   </Typography>
@@ -158,7 +148,7 @@ const Home = ({ navData, changeLog }) => {
             <Grid item>
               <Link href="/guides/[...guide]" as="/guides/react">
                 <Paper className={classes.framework} elevation={0}>
-                  <ReactIcon className={classes.icon} />
+                  <Icon type="react" className={classes.icon} {...iconProps} />
                   <Typography className={classes.frameworkText}>Get started with React</Typography>
                 </Paper>
               </Link>
@@ -166,7 +156,7 @@ const Home = ({ navData, changeLog }) => {
             <Grid item>
               <Link href="/guides/[...guide]" as="/guides/vue">
                 <Paper className={classes.framework} elevation={0}>
-                  <VueIcon className={classes.icon} />
+                  <Icon type="vue" className={classes.icon} {...iconProps} />
                   <Typography className={classes.frameworkText}>Get started with Vue.js</Typography>
                 </Paper>
               </Link>
@@ -174,7 +164,7 @@ const Home = ({ navData, changeLog }) => {
             <Grid item>
               <Link href="/guides/[...guide]" as="/guides/angular">
                 <Paper className={classes.framework} elevation={0}>
-                  <AngularIcon className={classes.icon} />
+                  <Icon type="angular" className={classes.icon} {...iconProps} />
                   <Typography className={classes.frameworkText}>
                     Get started with Angular
                   </Typography>
@@ -184,7 +174,7 @@ const Home = ({ navData, changeLog }) => {
             <Grid item>
               <Link href="/guides/[...guide]" as="/guides/react-storefront">
                 <Paper className={classes.framework} elevation={0}>
-                  <ReactStorefrontIcon className={classes.icon} />
+                  <Icon type="react-storefront" className={classes.icon} {...iconProps} />
                   <Typography className={classes.frameworkText}>
                     Get started with React Storefront
                   </Typography>
@@ -194,7 +184,7 @@ const Home = ({ navData, changeLog }) => {
             <Grid item>
               <Link href="/guides/[...guide]" as="/guides/sapper">
                 <Paper className={classes.framework} elevation={0}>
-                  <SapperIcon className={classes.icon} style={{ height: 142, width: 142 }} />
+                  <Icon type="sapper" className={classes.icon} {...iconProps} />
                   <Typography className={classes.frameworkText}>Get started with Sapper</Typography>
                 </Paper>
               </Link>
@@ -202,7 +192,7 @@ const Home = ({ navData, changeLog }) => {
             <Grid item>
               <Link href="/guides/[...guide]" as="/guides/gatsby">
                 <Paper className={classes.framework} elevation={0}>
-                  <GatsbyIcon className={classes.icon} style={{ height: 142, width: 142 }} />
+                  <Icon type="gatsby" className={classes.icon} {...iconProps} />
                   <Typography className={classes.frameworkText}>Get started with Gatsby</Typography>
                 </Paper>
               </Link>
@@ -210,7 +200,7 @@ const Home = ({ navData, changeLog }) => {
             <Grid item>
               <Link href="/guides/[...guide]" as="/guides/spartacus">
                 <Paper className={classes.framework} elevation={0}>
-                  <SpartacusIcon className={classes.icon} style={{ height: 142, width: 142 }} />
+                  <Icon type="spartacus" className={classes.icon} {...iconProps} />
                   <Typography className={classes.frameworkText}>
                     Get started with Spartacus
                   </Typography>
@@ -220,7 +210,7 @@ const Home = ({ navData, changeLog }) => {
             <Grid item>
               <Link href="/guides/[...guide]" as="/guides/nx">
                 <Paper className={classes.framework} elevation={0}>
-                  <Icon type="nx" className={classes.icon} style={{ height: 142, width: 142 }} />
+                  <Icon type="nx" className={classes.icon} {...iconProps} />
                   <Typography className={classes.frameworkText}>Get started with Nx</Typography>
                 </Paper>
               </Link>
@@ -228,13 +218,19 @@ const Home = ({ navData, changeLog }) => {
             <Grid item>
               <Link href="/guides/[...guide]" as="/guides/frontity">
                 <Paper className={classes.framework} elevation={0}>
-                  <Icon
-                    type="frontity"
-                    className={classes.icon}
-                    style={{ height: 142, width: 142 }}
-                  />
+                  <Icon type="frontity" className={classes.icon} {...iconProps} />
                   <Typography className={classes.frameworkText}>
                     Get started with Frontity
+                  </Typography>
+                </Paper>
+              </Link>
+            </Grid>
+            <Grid item>
+              <Link href="/guides/[...guide]" as="/guides/static_sites">
+                <Paper className={classes.framework} elevation={0}>
+                  <Icon type="html" className={classes.icon} {...iconProps} />
+                  <Typography className={classes.frameworkText}>
+                    Get started with Static HTML/JS
                   </Typography>
                 </Paper>
               </Link>

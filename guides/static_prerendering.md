@@ -64,12 +64,41 @@ module.exports = new Router().prerender(async () => {
 
 The XDN can choose which pages to prerender based on site traffic, ensuring most popular pages are always prerendered.
 
-### Example: Prerender the 100 most frequently viewed pages
+### Example: Basic Usage
 
 ```js
 const { Router } = require('@xdn/core/router')
 
-module.exports = new Router().prerender([{ top: 100, headers: { foo: 'bar' } }])
+router = new Router().prerender([
+  {
+    // How many pages should be prerendered based on site traffic and current configuration.
+    top: 50,
+  },
+])
+```
+
+### Example: With cache splitting
+
+```js
+router = new Router().prerender([
+  // Prerender with language cookie
+  {
+    top: 10,
+    // Request headers that will be passed to your prerender request.
+    // If you're splitting the cache by cookies or headers you can provide them
+    // using headers option
+    headers: {
+      cookie: 'language=en',
+    },
+  },
+  // Prerender other language
+  {
+    top: 10,
+    headers: {
+      cookie: 'language=de',
+    },
+  },
+])
 ```
 
 ## Prerendering API Calls

@@ -62,7 +62,7 @@ module.exports = new Router().prerender(async () => {
 
 ## Prerendering with traffic data
 
-The XDN can choose which pages to prerender based on site traffic, ensuring most popular pages are always prerendered.
+The XDN can choose which pages to prerender based on site traffic, ensuring the most popular pages are always available in the edge cache.
 
 ### Example: Basic Usage
 
@@ -71,7 +71,7 @@ const { Router } = require('@xdn/core/router')
 
 router = new Router().prerender([
   {
-    // How many pages should be prerendered based on site traffic and current configuration.
+    // the maximum number of pages that should be prerendered based on site traffic.
     top: 50,
   },
 ])
@@ -86,7 +86,7 @@ router = new Router().prerender([
     top: 10,
     // Request headers that will be passed to your prerender request.
     // If you're splitting the cache by cookies or headers you can provide them
-    // using headers option
+    // using headers option.
     headers: {
       cookie: 'language=en',
     },

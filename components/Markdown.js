@@ -1,5 +1,5 @@
 import { Button, Divider, Typography, Fab } from '@material-ui/core'
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import ReactMarkdown from 'react-markdown'
 import { darken, makeStyles } from '@material-ui/core/styles'
 import Code from './Code'
@@ -11,7 +11,7 @@ import GithubIcon from './icons/github.svg'
 import clsx from 'clsx'
 import Toc from './Toc'
 import idForHeading from './utils/idForHeading'
-import videos from '../guides/videos.json'
+import getYTVideoDetails from './utils/getYTVideoDetails'
 
 const useStyles = makeStyles(theme => ({
   heading: {
@@ -118,11 +118,21 @@ const useStyles = makeStyles(theme => ({
     top: 0,
     backgroundColor: 'rgb(0,0,0,.65)',
   },
+  videoTitle: {
+    ...theme.typography.h3,
+    color: '#fff',
+    textAlign: 'center',
+    marginTop: '1em',
+    backgroundColor: 'rgb(96,96,96,.45)',
+  },
   videoButton: {
     position: 'absolute',
     left: '50%',
     top: '50%',
     transform: 'translateX(-50%) translateY(-50%)',
+  },
+  playIcon: {
+    marginRight: 10,
   },
 }))
 
@@ -253,22 +263,31 @@ function Image({ src, ...others }) {
   return <img src={src} {...others} style={style} />
 }
 
-function Video(name) {
+function Video(videoId) {
   const classes = useStyles()
-  const { videoId, text, image } = videos[name]
-  if (!videoId) return
+  const [video, setVideo] = useState()
+
+  useEffect(() => {
+    const getVideoData = async () => {
+      const data = await getYTVideoDetails(videoId)
+      setVideo(data)
+    }
+    getVideoData()
+  }, [])
+
+  if (!video || !video.snippet) return null
 
   return (
-    <Link href={`https://www.youtube.com/watch?v=${videoId}`}>
+    <Link href={video.fullUrl}>
       <div className={classes.videoWrapper}>
-        <Image
-          src={`https://img.youtube.com/vi/${videoId}/${image || 'hqdefault.jpg'}`}
-          alt={text}
-        />
-        <div className={classes.videoOverlay}></div>
+        <Image src={video.snippet.thumbnails.high.url} alt={video.snippet.title} />
+        <div className={classes.videoOverlay}>
+          <div className={classes.videoTitle}>{video.snippet.title}</div>
+        </div>
         <div className={classes.videoButton}>
           <Fab variant="extended">
-            <PlayCircleOutline fontSize="large" /> Watch Video
+            <PlayCircleOutline fontSize="large" className={classes.playIcon} />{' '}
+            <span>Watch Video</span>
           </Fab>
         </div>
       </div>

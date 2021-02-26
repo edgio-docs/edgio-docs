@@ -56,7 +56,7 @@ You should always store your deploy token using your CI environment's secrets ma
 
 ## GitHub Actions
 
-![video](github-deploy)
+![video](https://www.youtube.com/watch?v=F8uN03ps1As)
 
 Here is an example GitHub action that deploys your site to the Moovweb XDN:
 

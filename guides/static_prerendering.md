@@ -60,6 +60,47 @@ module.exports = new Router().prerender(async () => {
 })
 ```
 
+## Prerendering with traffic data
+
+The XDN can choose which pages to prerender based on site traffic, ensuring the most popular pages are always available in the edge cache.
+
+### Example: Basic Usage
+
+```js
+const { Router } = require('@xdn/core/router')
+
+router = new Router().prerender([
+  {
+    // the maximum number of pages that should be prerendered based on site traffic.
+    top: 50,
+  },
+])
+```
+
+### Example: With cache splitting
+
+```js
+router = new Router().prerender([
+  // Prerender with language cookie
+  {
+    top: 10,
+    // Request headers that will be passed to your prerender request.
+    // If you're splitting the cache by cookies or headers you can provide them
+    // using headers option.
+    headers: {
+      cookie: 'language=en',
+    },
+  },
+  // Prerender other language
+  {
+    top: 10,
+    headers: {
+      cookie: 'language=de',
+    },
+  },
+])
+```
+
 ## Prerendering API Calls
 
 It is important to prerender not just HTML responses, but API calls as well, to ensure that client-side navigation is as fast as possible. Some frameworks, such as Next.js, embed a build ID in API URLs to ensure that client receives responses from the correct version of the back end. In other frameworks the convention for how API URLs are structured is left to the developer.

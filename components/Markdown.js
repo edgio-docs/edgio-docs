@@ -1,9 +1,9 @@
-import { Button, Divider, Typography } from '@material-ui/core'
+import { Button, Divider, Typography, Fab } from '@material-ui/core'
 import React from 'react'
 import ReactMarkdown from 'react-markdown'
 import { darken, makeStyles } from '@material-ui/core/styles'
 import Code from './Code'
-import { Link as LinkIcon } from '@material-ui/icons'
+import { Link as LinkIcon, PlayCircleOutline } from '@material-ui/icons'
 import NextLink from 'next/link'
 import useVersioning from './versioning'
 import doHighlight from './highlight'
@@ -11,6 +11,7 @@ import GithubIcon from './icons/github.svg'
 import clsx from 'clsx'
 import Toc from './Toc'
 import idForHeading from './utils/idForHeading'
+import videos from '../guides/videos.json'
 
 const useStyles = makeStyles(theme => ({
   heading: {
@@ -105,6 +106,23 @@ const useStyles = makeStyles(theme => ({
   link: {
     color: theme.palette.link,
     fontWeight: 500,
+  },
+  videoWrapper: {
+    position: 'relative',
+    display: 'inline-block',
+  },
+  videoOverlay: {
+    width: '100%',
+    height: '100%',
+    position: 'absolute',
+    top: 0,
+    backgroundColor: 'rgb(0,0,0,.65)',
+  },
+  videoButton: {
+    position: 'absolute',
+    left: '50%',
+    top: '50%',
+    transform: 'translateX(-50%) translateY(-50%)',
   },
 }))
 
@@ -214,6 +232,14 @@ function Heading({ children, level }) {
 }
 
 function Image({ src, ...others }) {
+  if (
+    String(others.alt)
+      .trim()
+      .toLowerCase() === 'video'
+  ) {
+    return Video(src)
+  }
+
   const url = new URL(src, 'https://dummy.org')
   const width = url.searchParams.get('width')
   const height = url.searchParams.get('height')
@@ -225,4 +251,27 @@ function Image({ src, ...others }) {
   }
 
   return <img src={src} {...others} style={style} />
+}
+
+function Video(name) {
+  const classes = useStyles()
+  const { videoId, text, image } = videos[name]
+  if (!videoId) return
+
+  return (
+    <Link href={`https://www.youtube.com/watch?v=${videoId}`}>
+      <div className={classes.videoWrapper}>
+        <Image
+          src={`https://img.youtube.com/vi/${videoId}/${image || 'hqdefault.jpg'}`}
+          alt={text}
+        />
+        <div className={classes.videoOverlay}></div>
+        <div className={classes.videoButton}>
+          <Fab variant="extended">
+            <PlayCircleOutline fontSize="large" /> Watch Video
+          </Fab>
+        </div>
+      </div>
+    </Link>
+  )
 }

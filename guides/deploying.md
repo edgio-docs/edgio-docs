@@ -56,6 +56,8 @@ You should always store your deploy token using your CI environment's secrets ma
 
 ## GitHub Actions
 
+![video](github-deploy)
+
 Here is an example GitHub action that deploys your site to the Moovweb XDN:
 
 This action assumes that you have created environments called "staging" and "production" and you have created a deploy key for your site and added it as a secret in your repo called "xdn_deploy_token".
@@ -129,9 +131,10 @@ jobs:
 Here is an example Jenkins pipeline that deploys your site to the Moovweb XDN:
 
 This guide assumes:
+
 - Your project is hosted on GitHub
 - You have a Jenkins environment configured with Docker and to receive GitHub `push` events
-- You have created environments called "staging" and "production" 
+- You have created environments called "staging" and "production"
 - You have created a deploy key for your site and added it as an environment variable in your Jenkins configuration called "xdn_deploy_token".
 
 ```groovy
@@ -146,14 +149,14 @@ This guide assumes:
 //     by default. You must create it using moovweb.app.
 // 2.) When pushing to any other branch, changes are deployed to the default environment. An unique URL is created
 //     based on the branch and deployment number.
-// 3.) To deploy to the "production" environment, use moovweb.app to promote the build. This environment does not 
+// 3.) To deploy to the "production" environment, use moovweb.app to promote the build. This environment does not
 //     exist by default, you must create it using moovweb.app.
 //
 // In order for this pipeline to deploy your site, you must create a deploy token from the site settings page
 // in Moovweb.app and configure it as an environment variable called "xdn_deploy_token" in your Jenkins configuration.
 
 pipeline {
-  agent { 
+  agent {
     docker {
       image "node:12-alpine"
     }

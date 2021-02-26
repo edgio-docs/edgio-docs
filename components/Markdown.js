@@ -1,5 +1,5 @@
-import { Button, Divider, Typography, Fab } from '@material-ui/core'
-import React, { useState, useEffect } from 'react'
+import { Button, Divider, Typography } from '@material-ui/core'
+import React from 'react'
 import ReactMarkdown from 'react-markdown'
 import { darken, makeStyles } from '@material-ui/core/styles'
 import Code from './Code'
@@ -215,6 +215,7 @@ function Heading({ children, level }) {
 }
 
 function Image({ src, ...others }) {
+  // serve a video based on `alt` value of markdown image syntax
   if (
     String(others.alt)
       .trim()
@@ -239,25 +240,28 @@ function Image({ src, ...others }) {
 function Video(videoId) {
   if (!videoId) return null
 
-  const classes = useStyles()
-  const [video, setVideo] = useState()
+  // retained for future use of YT API
+  // const classes = useStyles()
+  // const [video, setVideo] = useState()
 
-  useEffect(() => {
-    const getVideoData = async () => {
-      const data = await getYTVideoDetails(videoId)
-      setVideo(data)
-    }
-    getVideoData()
-  }, [videoId])
+  // useEffect(() => {
+  //   const getVideoData = async () => {
+  //     const data = await getYTVideoDetails(videoId)
+  //     setVideo(data)
+  //   }
+  //   getVideoData()
+  // }, [videoId])
 
-  if (!video || !video.snippet) return null
+  // if (!video || !video.snippet) return null
+
+  const video = getYTVideoDetails(videoId)
 
   return (
     <iframe
-      width="560"
-      height="315"
+      width={516}
+      height={315}
       src={video.embedUrl}
-      frameborder="0"
+      frameBorder={0}
       allow="picture-in-picture"
       allowFullScreen
     ></iframe>

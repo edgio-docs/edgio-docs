@@ -1,5 +1,3 @@
-import fetch from 'isomorphic-fetch'
-
 export default async function getVersions() {
   // Here we add a cache buster to ensure that when the XDN cache is cleared we get the latest versions file from
   // GitHub

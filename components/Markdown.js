@@ -264,6 +264,8 @@ function Image({ src, ...others }) {
 }
 
 function Video(videoId) {
+  if (!videoId) return null
+
   const classes = useStyles()
   const [video, setVideo] = useState()
 
@@ -273,7 +275,7 @@ function Video(videoId) {
       setVideo(data)
     }
     getVideoData()
-  }, [])
+  }, [videoId])
 
   if (!video || !video.snippet) return null
 

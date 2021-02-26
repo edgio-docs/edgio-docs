@@ -10,6 +10,8 @@ The XDN Devtools is a widget that helps developers understand how their site int
 
 [Live demo of XDN Devtools running on a React Storefront site](https://demo.reactstorefront.io/__xdn__/devtools/enable)
 
+![video](https://www.youtube.com/watch?v=4AYQAvkc0UY)
+
 ## Installation
 
 It's likely that the Devtools was added to your app when you ran `xdn init`. If that's not the case, or your app predates XDN v2.22.0, follow these steps to add the Devtools to your app:
@@ -43,7 +45,7 @@ installDevtools()
 Alternatively, you can add the following `script` tag to your app's HTML:
 
 ```html
-  <script defer src="/__xdn__/devtools/install.js"></script>
+<script defer src="/__xdn__/devtools/install.js"></script>
 ```
 
 ### Service Worker

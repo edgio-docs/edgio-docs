@@ -2,6 +2,8 @@
 
 This guide introduces the high-level concepts behind Moovweb's XDN.
 
+![video](https://www.youtube.com/watch?v=sJ6AkTrcZvg)
+
 ## What is an XDN?
 
 XDN stands for "e**X**perience **D**elivery **N**etwork". It extends the capabilities of a traditional **CDN** by not only hosting your static content, but also providing **server-side rendering** for progressive web applications as well as caching both your APIs and HTML at the network edge to provide your users with the **fastest browsing experience**.
@@ -34,7 +36,7 @@ The Moovweb XDN makes it possible to deliver subsecond page load-times and insta
 const { Router } = require('@xdn/core/router')
 const { nextRoutes } = require('@xdn/next')
 
-export default nextJSApp => {  
+export default nextJSApp => {
   return new Router()
     .get('/p/:productId', ({ cache }) => {
       cache({

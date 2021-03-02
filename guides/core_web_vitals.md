@@ -125,14 +125,14 @@ new Metrics({
 
 The router supports the same pattern syntax as Express. [More information on routing syntax.](/guides/routing#section_route_pattern_syntax)
 
-For non single page applications (e.g. traditional "multi-page apps"), you can also explicitly set the page label by passing a `label` property during initialization. An example is shown below where the `label` is pulled from `document.title`:
+For non single page applications (e.g. traditional "multi-page apps"), you can also explicitly set the page label by passing a `pageLabel` property during initialization. An example is shown below where the `pageLabel` is pulled from `document.title`:
 
 ```js
 <script>
   function initXDNMetrics() {
     new XDN.Metrics({
       token: 'your-token-here',
-      label: document.title ? document.title : "(No title)",
+      pageLabel: document.title ? document.title : "(No title)",
     }).collect();
   }
   var rumScriptTag = document.createElement('script');

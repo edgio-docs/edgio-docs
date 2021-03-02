@@ -68,7 +68,7 @@ To ensure that your site is resilient to [cache poisoning attacks](security#sect
 
 #### Customizing the Cache Key
 
-It is often useful to customize the cache key, either to improve the cache hit ratio or to account for complexities of your site. As seen above, the XDN provides an easy way to customize the keys by using the `CustomCacheKey` class. Here we will focus on two common examples:
+It is often useful to customize the cache key, either to improve the cache hit ratio or to account for complexities of your site. As seen above, the XDN provides an easy way to customize the keys by using the `CustomCacheKey` class. Here we will focus on three common examples:
 
 - Increasing the cache hit ratio by excluding query parameters that are not used in the rendering of the content:
 
@@ -99,6 +99,28 @@ router.get('/some/path', ({ cache }) => {
 ```
 
 This will take the values of `language` and `currency` cookies from `cookie` request header and use them in the cache key. This would allow you to cache different content, depending on the language and currency in this example, for the same URL.
+
+- Splitting the cache based on device type:
+
+```js
+import { CustomCacheKey } from '@xdn/core/router'
+
+router.get('/some/path', ({ cache }) => {
+  cache({
+    key: new CustomCacheKey().addDevice(),
+    // Other options...
+  })
+})
+```
+
+This will take the value of the `x-xdn-device` request header and split based on the following devices:
+
+- `smartphone`
+- `tablet`
+- `mobile` (feature phones)
+- `desktop`
+
+This allows you to cache different content, depending on the type of device in this example, for the same URL.
 
 Customizing caching keys is a very powerful tool to make your site faster. But at the same time it is easy to apply it too broadly leading to loss of performance due to lower cache hit ratio. The key to correctly using customization is to apply it judiciously and narrowly, for specific routes.
 

@@ -120,7 +120,7 @@ This will take the value of the `x-xdn-device` request header and split based on
 - `mobile` (feature phones)
 - `desktop`
 
-This would allow you to cache different content, depending on the type of device in this example, for the same URL.
+This allows you to cache different content, depending on the type of device in this example, for the same URL.
 
 Customizing caching keys is a very powerful tool to make your site faster. But at the same time it is easy to apply it too broadly leading to loss of performance due to lower cache hit ratio. The key to correctly using customization is to apply it judiciously and narrowly, for specific routes.
 

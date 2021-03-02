@@ -4,7 +4,7 @@ This guide shows you how to track your website's [Core Web Vitals](https://web.d
 
 ## What are Core Web Vitals?
 
-As of March 2021, Google will begin ranking websites based on a set of performance metrics called [Core Web Vitals](https://web.dev/vitals/). Websites with
+As of May 2021, Google will begin ranking websites based on a set of performance metrics called [Core Web Vitals](https://web.dev/vitals/). Websites with
 good Core Web Vitals will be placed higher in search results, while those with poor Core Web Vitals will be placed lower. Core Web Vitals can
 be tracked via [Google Search Console](https://search.google.com/search-console/welcome), but the experience presents a number of challenges:
 

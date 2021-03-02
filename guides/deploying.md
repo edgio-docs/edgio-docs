@@ -20,6 +20,13 @@ Or using yarn:
 yarn global add @xdn/cli
 ```
 
+## xdn login
+
+Run the following to authenticate with your XDN account on the Moovweb XDN:
+
+```bash
+xdn login
+```
 ## xdn deploy
 
 Then, run the following to deploy your site to your private space on the Moovweb XDN:

@@ -34,10 +34,13 @@ module.exports = {
       hostHeader: 'demo.vuestorefront.io',
     },
   },
-  server: {
-    path: './dist-xdn-server/server.js',
-  },
+  connector: './xdn',
   includeNodeModules: true,
+  includeFiles: {
+    './dist-xdn-server/server.js': true,
+    './dist': true,
+    './config/default.json': 'config/production.json',
+  },
 }
 ```
 
@@ -407,6 +410,18 @@ module.exports = {
 }
 ```
 
+- Add `xdn/prod.js`:
+
+```js
+const { createServer } = require('http')
+const { join } = require('path')
+
+module.exports = function prod(port) {
+  const server = require(join(process.cwd(), 'dist-xdn-server', 'server.js')).default
+  return new Promise(resolve => createServer(server).listen(port, resolve))
+}
+```
+
 - Add `core/build/webpack.xdn.config.ts` file:
 
 ```ts
@@ -609,15 +624,13 @@ export default {
 
 ```json
 ...
-"xdn:build:server": "cross-env NODE_ENV=production TS_NODE_PROJECT=\"tsconfig-build.json\" webpack --config ./core/build/webpack.xdn.config.ts --mode production --progress --hide-modules",
+"xdn:build:server": "cross-env NODE_ENV=production TS_NODE_PROJECT=\"tsconfig-build.json\" webpack --config ./core/build/webpack.xdn.config.ts --mode production --hide-modules",
 "xdn:build:assets": "ncp ./src/themes/default/assets ./dist-xdn-assets",
 "xdn:build:client": "cross-env NODE_ENV=production webpack --progress --config xdn/webpack.xdn.client.config.js && xdn build",
-"xdn:build:config": "mkdir ./.xdn/lambda/config && ncp ./config/default.json ./.xdn/lambda/config/production.json",
-"xdn:build:ssr-files": "mkdir ./.xdn/lambda/dist && ncp ./dist ./.xdn/lambda/dist",
-"xdn:build": "yarn xdn:build:server && yarn xdn:build:assets && yarn xdn:build:client && yarn xdn:build:config && yarn xdn:build:ssr-files",
+"xdn:build": "yarn xdn:build:server && yarn xdn:build:assets && yarn xdn:build:client",
 "xdn:clean": "rimraf dist-xdn-assets && rimraf dist-xdn-client && rimraf dist-xdn-server && rimraf .xdn",
 "xdn:start:prod": "xdn run --production",
-"xdn:deploy": "xdn deploy --team=moovweb-demos --site=vsf1 --skip-build"
+"xdn:deploy": "xdn deploy --team=my-team --skip-build",
 ...
 ```
 

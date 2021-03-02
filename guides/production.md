@@ -4,16 +4,16 @@ This guide covers the steps you need to take your site live on the Moovweb XDN w
 
 ## Region
 
-If you are an enterprise customer you can choose from multiple global [regions](regions) in which your compute and caching resources will be provisioned.
+XDN enterprise customers can choose the [region](regions) in which their serverless functions will run, as well as backup region to which traffic will be diverted in the event of an outage. Choose the regions which are closest to the datacenter which hosts your origin site or APIs.
 
 ## Domains
 
-Before going live, you need to create a production environment and configure your domains. For more information on environments, see [Environments](./environments)
+Before going live, you must create a production environment and configure your domains. For more information on environments, see [Environments](./environments)
 
 To configure your custom domains:
 
 1. Create an environment by navigating to your site and selecting _Environments_ => _New Environment_
-2. Click _Edit_ to create a draft. Enter your domains here, save changes, and activate:
+2. Click _Edit_ to create a draft. Enter your domains here, save the changes, and activate:
 
 ![domains](/images/production/domains.png)
 
@@ -26,13 +26,13 @@ If you're migrating to the XDN from [Fastly](https://www.fastly.com/), you will 
 
 ## Network configuration
 
-On the "Networking" tab for your environment you can find the DNS and whitelisting IP configurations.
+You can find the DNS and whitelisting IP configurations in the "Networking" tab for your environment.
 
 ![networking](/images/production/networking.png)
 
 ### DNS
 
-In order to configure your DNS provider to direct traffic for a particular set of domains to the Moovweb XDN, you will have to create DNS records with values depending on the type of domain you are using for your website. If you are launching a brand new site then you can set this up whenever you feel ready. For sites that are already live, the DNS update is the last step. Once you have updated your DNS you are committed to launching.
+In order to configure your DNS provider to direct traffic for a particular set of domains to the Moovweb XDN, you must create DNS records with values depending on the type of domain you are using for your website. If you are launching a new site then you can set this up whenever you feel ready. For sites that are already live, the DNS update is the last step. Once you have updated your DNS you are committed to launching.
 
 #### Using a sub-domain (i.e. www.mywebsite.xyz):
 
@@ -78,17 +78,135 @@ Before going live, ensure that all Moovweb XDN IP addresses are whitelisted in t
 
 ## TLS/SSL
 
-All data transmitted to and from your Moovweb XDN project must be secured with TLS (Transport Layer Security). TLS, also known as SSL (Secure Sockets Layer), is a cryptographic protocol to communicate securely over the Internet. TLS provides end-to-end data encryption and data integrity for all web requests.
+All data transmitted to and from your Moovweb XDN site must be secured with TLS (Transport Layer Security). TLS, also known as SSL (Secure Sockets Layer), is a cryptographic protocol to communicate securely over the Internet. TLS provides end-to-end data encryption and data integrity for all web requests.
 
 The XDN provides a wildcard TLS certificate that covers the auto-generated domains that it assigns to your site (e.g {team}-{site}-{branch}-{version}.moovweb.io). You need to provide your own certificate for your site's custom domains.
 
-### Obtaining a certificate
+_Note: If you already have an existing certificate, you can use it by skipping ahead to [Uploading your certificate](#section_uploading_your_certificate). Many customers who have existing certificates still choose to obtain a new one when adopting the XDN so as not to reuse the same private key with more than one vendor/system._
 
-_Note: If you already have an existing certificate, you can use it by skipping ahead to [Uploading your certificate](#section_uploading_your_certificate). Many customers who have existing certificates still choose to obtain a new one when adopting the XDN so as not to reuse the same private key with more than one vendor/system_
+### Obtaining a certificate automatically
+
+The XDN can generate SSL Certificates on your behalf using [**Let's Encrypt**](https://letsencrypt.org/). Certificates are free, valid for 3 months, and automatically renewed as long as the technical requirements, shown below, remain met:
+
+1. Make sure each environment is configured with the custom domains on which it will receive traffic. For more information on configuring custom domains, see [Domains](#section_domains) above.
+
+2. Using your DNS provider, add a `CAA` record to allow Let's Encrypt to generate certificates for your domains.
+
+   Log into your DNS provider, and add a `CAA` type DNS record with the following values:
+
+   - Type : `CAA`
+   - Name : empty (or `@`, depending on the DNS provider)
+   - Flags: `0`
+   - Tag: `issue`
+   - Value: `letsencrypt.org` (or `"letsencrypt.org"`)
+
+   Example with GoDaddy:
+
+   ![CAA Record on GoDaddy](/images/production/godaddy-caa.jpg)
+
+   Example with Gandi:
+
+   ![CAA Record on Gandi](/images/production/gandi-caa.jpg)
+
+   You can use the following links to see how to configure the CAA record on commonly used DNS providers:
+
+   - [How to add a CAA record on Gandi](https://docs.gandi.net/en/domain_names/faq/record_types/caa_record.html)
+   - [How to add a CAA record on Godaddy](https://uk.godaddy.com/help/add-a-caa-record-27288)
+   - [How to add a CAA record on AWS](https://docs.aws.amazon.com/acm/latest/userguide/setup-caa.html)
+   - [How to add a CAA record on NameCheap](https://www.namecheap.com/support/knowledgebase/article.aspx/9991/38/caa-record-and-why-it-is-needed-ssl-related/)
+
+   Once the DNS entry has been added, you can verify the CAA record using one of the following:
+
+   - [CAA Test](https://caatest.co.uk/)
+   - [Entrust CAA Lookup](https://www.entrust.com/resources/certificate-solutions/tools/caa-lookup)
+
+   You can also verify the CAA record from the command line:
+
+   ```
+   # Run the following command
+   dig caa +short <your-primary-domain> # (without the 'www')
+
+   # Example
+   dig caa +short mywebsite.xyz
+   ```
+
+   The result of your CAA check should contain the following line:
+
+   ```
+   0 issue "letsencrypt.org"
+   ```
+
+   Notes:
+
+   - Many DNS providers have already added this `CAA` DNS record by default
+   - Some DNS providers does not allow the creation of `CAA` DNS records
+   - You can learn more about CAA DNS records on [Let's Encrypt website](https://letsencrypt.org/docs/caa/), on [Wikipedia](https://en.wikipedia.org/wiki/DNS_Certification_Authority_Authorization), on [Gandi](https://docs.gandi.net/en/domain_names/faq/record_types/caa_record.html) and on [eff.org](https://www.eff.org/deeplinks/2018/02/technical-deep-dive-securing-automation-acme-dns-challenge-validation)
+
+3. Add an `_acme-challenge.` CNAME DNS entry to allow Moovweb to issue a certificate request on your behalf.
+
+   Log into your DNS provider and add one `CNAME` type DNS entry with the value `_acme-challenge.<your-domain-here>` for each custom domain. For example, if your custom domain is `mysite.com`, the DNS entry should have a value of `_acme-challenge.mysite.com`. Each record should point to `_acme-challenge.xdn-validation.com`.
+
+   Example with Godaddy:
+
+   ![ACME Challenge Record on GoDady](/images/production/godaddy-acme-challenge.jpg)
+
+   Example with Gandi:
+
+   ![ACME Challenge Record on Gandi](/images/production/gandi-acme-challenge.jpg)
+
+   Once the DNS entries have been added, you can use one of the following to verify that they are correctly configured:
+
+   - [MX ToolBox DNS Lookup](https://mxtoolbox.com/DNSLookup.aspx)
+   - [Ultra Tools DNS Lookup](https://www.ultratools.com/tools/dnsLookup)
+
+   You can also verify the CNAME records using the command line:
+
+   ```
+   # Run the following 'dig' command to verify the presence of the '_acme-challenge.' CNAME :
+   dig +short cname _acme-challenge.<your-domain>
+
+   # For example:
+   dig +short cname _acme-challenge.www.mywebsite.xyz
+   ```
+
+   Expected result for the DNS query:
+
+   ```
+   _acme-challenge.www.xdn-validation.com
+   ```
+
+   If you use multiple domains for your website, like `mywebsite.xyz` and `www.mywebsite.xyz`, then you will have to add the `_acme-challenge` DNS record for both domains:
+
+   ```
+   _acme-challenge.www.xdn-validation.com
+   _acme-challenge.xdn-validation.com
+   ```
+
+   Notes:
+
+   - You can read more about the `_acme-challenge.` process by visiting [Let's Encrypt Website](https://letsencrypt.org/docs/challenge-types/#dns-01-challenge)
+
+4. Once the requirements above are met, you can generate the certificate using the [XDN Developer Console](https://moovweb.app):
+
+   1. Select your site and navigate to _Settings_ => _SSL Certificate_
+
+   2. Verify the state of your certificate (you should see that there's no certificate provided yet for your website):
+
+   ![ssl-generation-01](/images/production/ssl-generation-01.png)
+
+   3. Click on the _Generate SSL Certificate_ button:
+
+   ![ssl-generation-02](/images/production/ssl-generation-02.png)
+
+   4. After a couple of minutes, you should see that your website has received a valid certificate:
+
+   ![ssl-generation-03](/images/production/ssl-generation-03.png)
+
+### Creating a certificate manually
 
 TLS certificates are issued by Certificate Authorities (CA) based on Certificate Signing Request (CSR) that they receive from you. Alongside the CSR the same process creates certificate's private key. You only need to share your CSR with CA, not the private key which you should store securely.
 
-This guide describes the creation of the CSR and private key with OpenSSL. OpenSSL is an open-source toolkit for the TLS protocol. We recommend using OpenSSL because it ensures that your private key will only be stored locally on your infrastructure. Your CA may to have more customized guides or entirely customized certification process.
+The following steps describe the creation of the CSR and private key with OpenSSL. OpenSSL is an open-source toolkit for the TLS protocol. We recommend using OpenSSL because it ensures that your private key will only be stored locally on your infrastructure. Your CA may to have more customized guides or entirely customized certification process.
 
 To create CSR and private key do the following:
 

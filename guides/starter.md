@@ -59,6 +59,10 @@ See common things you need to look for on an eCommmerce site:
 | Product recommendations  | Late load                   | PDP      |
 | Inventory                | Targetted cache clearing    | PDP      |
 
+Use this worksheet when auditing your site for personalized content to inventory and track the changes you will be making:
+
+[XDN Starter Origin Content Changes Worksheet](https://docs.google.com/spreadsheets/d/1WDc5tB0tbrDT3To6bNQ0jYpXRFmgUuA_4gb3lVgzmjE/edit?usp=sharing)
+ 
 
 ## Add the XDN JavaScript libraries to your site
 

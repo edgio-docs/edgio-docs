@@ -1,6 +1,6 @@
 # React
 
-This guide shows you how to a React application on the Moovweb XDN. If you're using Next.js specifically, we suggest using the [Next.js guide](/guides/next).
+This guide shows you how to serve a React application on the Moovweb XDN. If you're using Next.js specifically, we suggest using the [Next.js guide](/guides/next).
 
 ## Install Node.js and npm
 

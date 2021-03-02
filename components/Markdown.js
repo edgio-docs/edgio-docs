@@ -11,6 +11,7 @@ import GithubIcon from './icons/github.svg'
 import clsx from 'clsx'
 import Toc from './Toc'
 import idForHeading from './utils/idForHeading'
+import getYTVideoDetails from './utils/getYTVideoDetails'
 
 const useStyles = makeStyles(theme => ({
   heading: {
@@ -214,6 +215,15 @@ function Heading({ children, level }) {
 }
 
 function Image({ src, ...others }) {
+  // serve a video based on `alt` value of markdown image syntax
+  if (
+    String(others.alt)
+      .trim()
+      .toLowerCase() === 'video'
+  ) {
+    return Video(src)
+  }
+
   const url = new URL(src, 'https://dummy.org')
   const width = url.searchParams.get('width')
   const height = url.searchParams.get('height')
@@ -225,4 +235,35 @@ function Image({ src, ...others }) {
   }
 
   return <img src={src} {...others} style={style} />
+}
+
+function Video(videoId) {
+  if (!videoId) return null
+
+  // retained for future use of YT API
+  // const classes = useStyles()
+  // const [video, setVideo] = useState()
+
+  // useEffect(() => {
+  //   const getVideoData = async () => {
+  //     const data = await getYTVideoDetails(videoId)
+  //     setVideo(data)
+  //   }
+  //   getVideoData()
+  // }, [videoId])
+
+  // if (!video || !video.snippet) return null
+
+  const video = getYTVideoDetails(videoId)
+
+  return (
+    <iframe
+      width={516}
+      height={315}
+      src={video.embedUrl}
+      frameBorder={0}
+      allow="picture-in-picture"
+      allowFullScreen
+    ></iframe>
+  )
 }

@@ -2,6 +2,8 @@
 
 This guide shows you how to deploy [Sapper](https://sapper.svelte.dev/) apps on the Moovweb XDN
 
+![video](https://www.youtube.com/watch?v=Xt_UlQiXDgQ)
+
 ## Example SSR Site
 
 This Sapper example app uses server-side rendering and prefetching to provide lightening-fast transitions between pages.

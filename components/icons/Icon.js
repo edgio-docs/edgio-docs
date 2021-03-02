@@ -6,6 +6,7 @@ import VueIcon from './vue.svg'
 import AngularIcon from './angular.svg'
 import SpartacusIcon from './spartacus-blue.png'
 import NextIcon from './next.svg'
+import NextCommerceIcon from './next-commerce.svg'
 import NuxtIcon from './nuxt.svg'
 import ReactStorefrontIcon from './react-storefront.svg'
 import SapperIcon from './sapper.svg'
@@ -13,6 +14,7 @@ import GatsbyIcon from './gatsby.svg'
 import VSFIcon from './vsf.svg'
 import NXIcon from './nx.png'
 import FrontityIcon from './frontity.svg'
+import HTMLIcon from './html.svg'
 
 export const icons = {
   react: ReactIcon,
@@ -22,6 +24,7 @@ export const icons = {
     <img className={classes && classes.png} {...others} src={SpartacusIcon} />
   ),
   nextjs: NextIcon,
+  'next-commerce': NextCommerceIcon,
   nuxt: NuxtIcon,
   prev: ChevronLeft,
   next: ChevronRight,
@@ -31,6 +34,7 @@ export const icons = {
   vsf: VSFIcon,
   nx: NXIcon,
   frontity: FrontityIcon,
+  html: HTMLIcon,
 }
 
 export const styles = theme => ({

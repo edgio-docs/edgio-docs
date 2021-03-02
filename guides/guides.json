@@ -194,6 +194,12 @@
         "href": "/guides/[...guide]"
       },
       {
+        "text": "Static HTML/JS",
+        "icon": "html",
+        "as": "/guides/static_sites",
+        "href": "/guides/[...guide]"
+      },
+      {
         "text": "Vue.js",
         "icon": "vue",
         "as": "/guides/vue",

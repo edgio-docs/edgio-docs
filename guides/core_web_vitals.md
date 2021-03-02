@@ -1,15 +1,19 @@
 # Core Web Vitals
 
-This guide shows you how to track your website's [Core Web Vitals](https://web.dev/vitals/) in real time using the XDN.
+This guide shows you how to track your website's [Core Web Vitals](https://web.dev/vitals/) on the XDN in real time using real user monitoring (RUM).
 
 ## What are Core Web Vitals?
 
-As of May 2021, Google will begin ranking websites based on a set of performance metrics called [Core Web Vitals](https://web.dev/vitals/). Websites with
-good Core Web Vitals will be placed higher in search results, while those with poor Core Web Vitals will be placed lower. Core Web Vitals can
-be tracked via [Google Search Console](https://search.google.com/search-console/welcome), but the experience presents a number of challenges:
+As of [May 2021](https://developers.google.com/search/blog/2020/11/timing-for-page-experience), Google will begin ranking websites based on a 
+set of performance metrics called [Core Web Vitals](https://web.dev/vitals/). This change effectively makes site performance an SEO ranking factor. 
+Websites with good Core Web Vitals may be placed higher in search results, while those with poor Core Web Vitals may be placed lower. 
 
-- It can take weeks to see the affect that changes to your site have on Core Web Vitals in Google Search Console.
-- Google Search Console provides little help with diagnosing the cause or severity of Core Web Vitals issues.
+Unlike Lighthouse performance scores which are based on synthetic tests, Core Web Vitals scores are based on measurements from real users of Chrome as reported in the [Chrome User Experience Report](https://developers.google.com/web/tools/chrome-user-experience-report). Core Web Vitals can
+be tracked via [Google Search Console](https://search.google.com/search-console/welcome) and [PageSpeed Insights](https://developers.google.com/speed/pagespeed/insights/). Optimizing Core Web Vitals using the official tools presents a number of challenges:
+
+- It can take days to weeks to see the affect that changes to your site have on Core Web Vitals.
+- It's hard to diagnose Core Web Vitals by page type or URL.
+- It's impossible to A/B test the impact of site optimizations on Core Web Vitals. Note that to effectively A/B test performance optimizations you need both a RUM measurement tool and split testing at the edge, both of which the XDN provides.
 
 ## Why use the XDN to track Core Web Vitals?
 
@@ -19,6 +23,7 @@ Instead of relying solely on Google Search Console, we recommend tracking Core W
 - Correlate web vitals to your application's routes
 - Analyze score across a number of dimensions such as country, device, and connection type
 - Identify which pages are most negatively impacting your search ranking.
+- Use XDN's [Edge based split testing](split_testing) to A/B test the impact of performance optimizations on Core Web Vitals.
 
 ## Installation
 
@@ -119,6 +124,25 @@ new Metrics({
 ```
 
 The router supports the same pattern syntax as Express. [More information on routing syntax.](/guides/routing#section_route_pattern_syntax)
+
+For non single page applications (e.g. traditional "multi-page apps"), you can also explicitly set the page label by passing a `label` property during initialization. An example is shown below where the `label` is pulled from `document.title`:
+
+```js
+<script>
+  function initXDNMetrics() {
+    new XDN.Metrics({
+      token: 'your-token-here',
+      label: document.title ? document.title : "(No title)",
+    }).collect();
+  }
+  var rumScriptTag = document.createElement('script');
+  rumScriptTag.src = "https://rum.moovweb.app/latest.js";
+  rumScriptTag.setAttribute("defer", "");
+  rumScriptTag.type = "text/javascript";
+  rumScriptTag.onload = initXDNMetrics;
+  document.body.appendChild(rumScriptTag);
+</script>
+```
 
 ## Tracking Additional Data
 

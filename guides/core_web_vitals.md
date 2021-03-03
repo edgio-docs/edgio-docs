@@ -108,7 +108,7 @@ new XDN.Metrics({
 When installing @xdn/rum via NPM or Yarn use:
 
 ```js
-import { Router } from '@xdn/core/router'
+import { Router } from '@xdn/rum/Router'
 import { Metrics } from '@xdn/rum'
 
 new Metrics({

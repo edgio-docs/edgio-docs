@@ -4,9 +4,9 @@ This guide shows you how to track your website's [Core Web Vitals](https://web.d
 
 ## What are Core Web Vitals?
 
-As of [May 2021](https://developers.google.com/search/blog/2020/11/timing-for-page-experience), Google will begin ranking websites based on a 
-set of performance metrics called [Core Web Vitals](https://web.dev/vitals/). This change effectively makes site performance an SEO ranking factor. 
-Websites with good Core Web Vitals may be placed higher in search results, while those with poor Core Web Vitals may be placed lower. 
+As of [May 2021](https://developers.google.com/search/blog/2020/11/timing-for-page-experience), Google will begin ranking websites based on a
+set of performance metrics called [Core Web Vitals](https://web.dev/vitals/). This change effectively makes site performance an SEO ranking factor.
+Websites with good Core Web Vitals may be placed higher in search results, while those with poor Core Web Vitals may be placed lower.
 
 Unlike Lighthouse performance scores which are based on synthetic tests, Core Web Vitals scores are based on measurements from real users of Chrome as reported in the [Chrome User Experience Report](https://developers.google.com/web/tools/chrome-user-experience-report). Core Web Vitals can
 be tracked via [Google Search Console](https://search.google.com/search-console/welcome) and [PageSpeed Insights](https://developers.google.com/speed/pagespeed/insights/). Optimizing Core Web Vitals using the official tools presents a number of challenges:
@@ -155,14 +155,20 @@ new XDN.Metrics({
   // rather than adding it to the main application template.
   pageLabel: 'home',
 
+  // When running a split test, use this field to specify which variant is active.
+  // This is automatically set for sites that are deployed on the Moovweb XDN.
+  splitTestVariant: 'name-of-variant',
+
   // The version of your application that is running.
   appVersion: 'v1.0.0',
 
   // Whether or not the page was served from the CDN cache, if this is known.
+  // This is automatically set for sites that are deployed on the Moovweb XDN.
   cacheHit: true | false,
 
   // The country code in which the browser is running. This is often provided by CDNs
   // as a request header that can be embedded in your script tab by your application code.
+  // This is automatically set for sites that are deployed on the Moovweb XDN.
   country: 'US',
 })
 ```

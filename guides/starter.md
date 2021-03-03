@@ -231,6 +231,8 @@ After you've configured and tested your site on the XDN, it's time to take it li
 
 Each of these steps is described in more detail in the [Production guide](production). Note that third step (configuring your DNS) will be the crucial step that effectively transitions your domain to the XDN and should be done last.
 
+Before going live, you should use the [XDN Starter Onboarding Discovery Worksheet](https://docs.google.com/spreadsheets/d/1PGdcV_HoMKSAQsBi3th6gV6XhBn0gpWYm7Ix2sTcDbs/edit?usp=sharing) to help you think through common use cases and concerns and ensure a smooth launch. 
+
 ## Advanced Prefetching Techniques
 
 An introduction to prefetching is available in the [Prefetching guide](prefetching). In addition, here are some techniques to take full advantage of the power of prefetching.

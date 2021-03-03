@@ -15,12 +15,7 @@ import { TocContext, TocPortal } from '../components/Toc'
 import Main from '../components/Main'
 import { useRouter } from 'next/router'
 
-if (typeof window !== 'undefined' && process.env.NODE_ENV === 'production') {
-  new Metrics({
-    debug: true,
-    sendTo: 'https://rum.ingress.moovweb.app/ingress/rum/v1',
-  }).collect()
-}
+new Metrics({ debug: true, token: '0f577165-236e-4264-8684-c29ba912d1cc' }).collect()
 
 export default function MyApp({ Component, pageProps, currentVersion, versions }) {
   useJssStyles()

@@ -22,7 +22,7 @@
     "@xdn/next": "^2.46.9",
     "@xdn/prefetch": "^2.46.9",
     "@xdn/react": "^2.46.9",
-    "@xdn/rum": "0.0.2-alpha.3",
+    "@xdn/rum": "0.0.2-alpha.4",
     "clsx": "^1.1.1",
     "cross-fetch": "^3.0.6",
     "file-loader": "^6.0.0",
@@ -30,7 +30,7 @@
     "lodash.throttle": "^4.1.1",
     "lunr": "^2.3.8",
     "markdown-headings": "^2.0.0",
-    "next": "^10.0.6",
+    "next": "^10.0.7",
     "prismjs": "^1.23.0",
     "raw-loader": "^4.0.1",
     "react": "^17.0.1",
@@ -45,6 +45,6 @@
     "@xdn/cli": "^2.46.9",
     "babel-loader": "^8.1.0",
     "prettier": "^1.19.1",
-    "webpack": "^5.20.2"
+    "webpack": "^4.46.0"
   }
 }

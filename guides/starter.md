@@ -160,7 +160,7 @@ import { RouteHandler } from '@xdn/core/router/Router'
 
 const handler: RouteHandler = async ({ cache, removeResponseHeader, proxy }) => {
   cache(CACHE_PAGES)
-  removeResponseHeader('set-cookie') // The presence of a set-cookie header would prevent the response from being cached, so ensure set-cookie headers are removed.
+  removeUpstreamResponseHeader('set-cookie') // The presence of a set-cookie header would prevent the response from being cached, so ensure set-cookie headers are removed.
   proxy('origin')
 }
 

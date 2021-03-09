@@ -7,6 +7,16 @@ export default function useSegment() {
 
   const { asPath, query } = useRouter()
   const [sgId, setSgId] = useState(false)
+  const [firstLoad, setFirstLoad] = useState(true)
+
+  useEffect(() => {
+    if (window.analytics && !firstLoad) {
+      window.analytics.page()
+    }
+
+    // to prevent first load page double tracking
+    setFirstLoad(false)
+  }, [asPath])
 
   useEffect(() => {
     const segmentLoadInterval = setInterval(() => {
@@ -22,12 +32,6 @@ export default function useSegment() {
 
     return () => clearInterval(segmentLoadInterval)
   }, [])
-
-  useEffect(() => {
-    if (window.analytics) {
-      window.analytics.page()
-    }
-  }, [asPath])
 
   useEffect(() => {
     if (sgId) {

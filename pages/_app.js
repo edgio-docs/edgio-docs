@@ -9,7 +9,7 @@ import Head from 'next/head'
 import getBaseUrl from '../components/utils/getBaseUrl'
 import { VERSION_REGEX, VersionProvider } from '../components/versioning'
 import MenuProvider from '../components/MenuProvider'
-import useMixpanel from '../components/utils/useMixpanel'
+import useSegment from '../components/utils/useSegment'
 import { Metrics } from '@xdn/rum'
 import { TocContext, TocPortal } from '../components/Toc'
 import Main from '../components/Main'
@@ -20,8 +20,8 @@ new Metrics({ debug: true, token: '0f577165-236e-4264-8684-c29ba912d1cc' }).coll
 export default function MyApp({ Component, pageProps, currentVersion, versions }) {
   useJssStyles()
 
-  // We add mixpanel id to every moovweb.app/rsf anchor
-  useMixpanel()
+  // We add segment id to every moovweb.app/rsf anchor
+  useSegment()
 
   const toc = useRef()
   const { asPath } = useRouter()

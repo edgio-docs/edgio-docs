@@ -68,6 +68,11 @@
         "href": "/guides/[...guide]"
       },
       {
+        "text": "Core Web Vitals",
+        "as": "/guides/core_web_vitals",
+        "href": "/guides/[...guide]"
+      },
+      {
         "text": "Debugging",
         "as": "/guides/debugging",
         "href": "/guides/[...guide]"

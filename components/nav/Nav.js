@@ -10,8 +10,13 @@ const width = 300
 const useStyles = makeStyles(theme => ({
   root: {
     minWidth: width,
+    maxHeight: '100vh',
+    paddingTop: 64,
     width,
+    position: 'fixed',
+    left: 24,
     top: 0,
+    overflowY: 'auto',
     borderRight: `1px solid ${theme.palette.divider}`,
     margin: theme.spacing(0, 0, 0, -3),
     background: theme.palette.grey[100],
@@ -19,6 +24,7 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.down('md')]: {
       transition: 'transform .1s ease-out',
       position: 'fixed',
+      paddingTop: 0,
       left: 0,
       bottom: 0,
       top: 65,

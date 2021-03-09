@@ -15,7 +15,7 @@ import { TocContext, TocPortal } from '../components/Toc'
 import Main from '../components/Main'
 import { useRouter } from 'next/router'
 
-new Metrics({ debug: true, token: '0f577165-236e-4264-8684-c29ba912d1cc' }).collect()
+new Metrics({ token: 'cdc8d6df-476b-4e2d-ae1a-f8c6893a39a8' }).collect()
 
 export default function MyApp({ Component, pageProps, currentVersion, versions }) {
   useJssStyles()

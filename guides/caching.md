@@ -291,7 +291,7 @@ The cache can be [cleared via the CLI](/guides/cli#section_cache_clear):
 $ xdn cache-clear --team=my-team --site=my-site --environment=production --path=/p/*
 ```
 
-The cache can also be [cleared via the REST API](/guides/rest_api#section_clear_cache)
+The cache can also be [cleared via the REST API](/guides/rest_api#section_clear_cache).
 
 ## Static prerendering after clearing the cache
 

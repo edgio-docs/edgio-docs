@@ -2,6 +2,13 @@
 
 This guide shows you how to deploy an Angular application on the Moovweb XDN:
 
+## Example SSR Site
+
+This Angular example app uses server-side rendering and prefetching to provide lightening-fast transitions between pages.
+
+[Try the Angular SSR Example Site](https://moovweb-docs-xdn-angular-example-default.moovweb-edge.io/category/hats?button)
+[View the Code](https://github.com/moovweb-docs/xdn-examples/tree/main/xdn-angular-example?button)
+
 ## Install Node.js and npm
 
 **XDN only supports Node.js version 12.x**

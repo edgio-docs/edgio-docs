@@ -285,11 +285,13 @@ The cache is automatically cleared when you deploy to an environment. You can al
 
 ![deployments](/images/caching/purge.png)
 
-Additionally, the cache can be [cleared via the CLI](/guides/cli#section_cache_clear):
+The cache can be [cleared via the CLI](/guides/cli#section_cache_clear):
 
 ```bash
 $ xdn cache-clear --team=my-team --site=my-site --environment=production --path=/p/*
 ```
+
+The cache can also be [cleared via the REST API](/guides/rest_api#section_clear_cache)
 
 ## Static prerendering after clearing the cache
 

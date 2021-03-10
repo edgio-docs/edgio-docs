@@ -97,7 +97,9 @@ export default function Toc({ source }) {
   const [activeHeading, setActiveHeading] = useState(null)
 
   useEffect(() => {
-    setActiveHeading(idForHeading(headings[0].replace(/^#*\s*/, '')))
+    if (headings.length) {
+      setActiveHeading(idForHeading(headings[0].replace(/^#*\s*/, '')))
+    }
   }, [source])
 
   const onScroll = useCallback(
@@ -133,6 +135,8 @@ export default function Toc({ source }) {
       return () => window.removeEventListener('scroll', onScroll)
     }
   }, [])
+
+  if (!headings.length) return null
 
   return (
     <Portal container={tocContainer.current}>

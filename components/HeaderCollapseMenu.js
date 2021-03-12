@@ -6,6 +6,7 @@ import Link from 'next/link'
 import { MoreVert } from '@material-ui/icons'
 import { makeStyles } from '@material-ui/core/styles'
 import { Hidden } from '@material-ui/core'
+import { APP_URL, FORUM_URL, STATUS_URL, HELP_URL } from '../consts'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -57,30 +58,30 @@ export default function HeaderCollapseMenu({ className }) {
       >
         <HideWhenLarge mdUp implementation="css">
           <MenuItem onClick={handleClose}>
-            <Link href="https://moovweb.app/signup?redirectTo=/">
+            <Link href={`${APP_URL}/signup?redirectTo=/`}>
               <a>SIGN UP</a>
             </Link>
           </MenuItem>
         </HideWhenLarge>
         <MenuItem onClick={handleClose}>
-          <Link href="https://moovweb.app">
+          <Link href={APP_URL}>
             <a>SIGN IN</a>
           </Link>
         </MenuItem>
         <HideWhenLarge mdUp implementation="css">
           <MenuItem onClick={handleClose}>
-            <Link href="https://forum.moovweb.com">
+            <Link href={FORUM_URL}>
               <a>FORUMS</a>
             </Link>
           </MenuItem>
         </HideWhenLarge>
         <MenuItem onClick={handleClose}>
-          <Link href="https://help.moovweb.com">
+          <Link href={HELP_URL}>
             <a>SUPPORT</a>
           </Link>
         </MenuItem>
         <MenuItem onClick={handleClose}>
-          <Link href="https://status.moovweb.com">
+          <Link href={STATUS_URL}>
             <a>STATUS</a>
           </Link>
         </MenuItem>

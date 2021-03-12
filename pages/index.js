@@ -9,6 +9,7 @@ import Link from 'next/link'
 import MoovwebXDN from '../components/icons/moovweb-xdn-black.svg'
 import Icon from '../components/icons/Icon'
 import Markdown from '../components/Markdown'
+import { DOCS_PAGES_REPO_URL, PRODUCT_NAME } from '../consts'
 
 const useStyles = makeStyles(theme => ({
   hero: {
@@ -94,7 +95,7 @@ const Home = ({ navData, changeLog }) => {
   return (
     <PageWrapper nav={<Nav navData={navData} />}>
       <Head>
-        <title>Moovweb XDN Documentation</title>
+        <title>{PRODUCT_NAME} Documentation</title>
       </Head>
       <div className={classes.hero}>
         <MoovwebXDN className={classes.logo} />
@@ -238,7 +239,7 @@ const Home = ({ navData, changeLog }) => {
             <Grid item container xs={12} m={12} l={12} xl={12} justify="center">
               Don't see your framework?&nbsp;
               <Link href="/guides/[...guide]" as="/guides/starter">
-                Check out XDN Starter
+                {`Check out ${PRODUCT_NAME} Starter`}
               </Link>
             </Grid>
           </Grid>
@@ -246,10 +247,10 @@ const Home = ({ navData, changeLog }) => {
       </Grid>
       <Container className={classes.changeLog}>
         <Divider />
-        <h1>Moovweb Tutorials</h1>
+        <h1>{PRODUCT_NAME} Tutorials</h1>
         <Grid container spacing={5}>
           <Grid item>
-            <h4>Moovweb XDN - What & Why</h4>
+            <h4>{PRODUCT_NAME} - What & Why</h4>
             <iframe
               width="100%"
               height="90%"
@@ -257,7 +258,7 @@ const Home = ({ navData, changeLog }) => {
             ></iframe>
           </Grid>
           <Grid item>
-            <h4>Moovweb XDN - Deploying GitHub Project</h4>
+            <h4>{PRODUCT_NAME} - Deploying GitHub Project</h4>
             <iframe
               width="100%"
               height="90%"
@@ -265,7 +266,7 @@ const Home = ({ navData, changeLog }) => {
             ></iframe>
           </Grid>
           <Grid item>
-            <h4>Moovweb XDN - How to Prefetch</h4>
+            <h4>{PRODUCT_NAME} - How to Prefetch</h4>
             <iframe
               width="100%"
               height="90%"
@@ -273,7 +274,9 @@ const Home = ({ navData, changeLog }) => {
             ></iframe>
           </Grid>
           <Grid item>
-            <h4>Moovweb XDN - What are the XDN DevTools?</h4>
+            <h4>
+              {PRODUCT_NAME} - What are the {PRODUCT_NAME} DevTools?
+            </h4>
             <iframe
               width="100%"
               height="90%"
@@ -295,7 +298,7 @@ export default Home
 
 Home.getInitialProps = async ({ version, versions, req }) => {
   const baseUrl = getBaseUrl(req)
-  const changelogURL = `https://moovweb-docs.github.io/xdn-docs-pages/current/guides/changelog.md`
+  const changelogURL = `${DOCS_PAGES_REPO_URL}/current/guides/changelog.md`
   const navURL = `${baseUrl}/api/guides?version=${version === versions[0] ? '' : version}`
 
   const [navData, changeLog] = await Promise.all([

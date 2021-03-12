@@ -2,6 +2,7 @@ import React from 'react'
 import Document, { Html, Head, Main, NextScript } from 'next/document'
 import { ServerStyleSheets } from '@material-ui/core/styles'
 import theme from '../components/theme'
+import { DOCS_DOMAIN } from '../consts'
 
 class MyDocument extends Document {
   render() {
@@ -11,7 +12,7 @@ class MyDocument extends Document {
           <script
             dangerouslySetInnerHTML={{
               __html: `
-            const gtmID = window.location.hostname == "developer.moovweb.com" ? "GTM-5XH2P83" : "GTM-PQWGJWT";
+            const gtmID = window.location.hostname == "${DOCS_DOMAIN}" ? "GTM-5XH2P83" : "GTM-PQWGJWT";
             (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
             new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
             j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
@@ -23,7 +24,7 @@ class MyDocument extends Document {
             dangerouslySetInnerHTML={{
               __html: `
             !function(){var analytics=window.analytics=window.analytics||[];if(!analytics.initialize)if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","reset","group","track","ready","alias","debug","page","once","off","on","addSourceMiddleware","addIntegrationMiddleware","setAnonymousId","addDestinationMiddleware"];analytics.factory=function(e){return function(){var t=Array.prototype.slice.call(arguments);t.unshift(e);analytics.push(t);return analytics}};for(var e=0;e<analytics.methods.length;e++){var key=analytics.methods[e];analytics[key]=analytics.factory(key)}analytics.load=function(key,e){var t=document.createElement("script");t.type="text/javascript";t.async=!0;t.src="https://cdn.segment.com/analytics.js/v1/" + key + "/analytics.min.js";var n=document.getElementsByTagName("script")[0];n.parentNode.insertBefore(t,n);analytics._loadOptions=e};analytics._writeKey="gER2Fq4athAwZDM4MmmqBC9aI02BK1MI";analytics.SNIPPET_VERSION="4.13.2";
-            analytics.load(window.location.hostname == "developer.moovweb.com" ? "gER2Fq4athAwZDM4MmmqBC9aI02BK1MI" : "CGpFCA06VrpwNIUbgqUuPpTrIIoIthzs");
+            analytics.load(window.location.hostname == "${DOCS_DOMAIN}" ? "gER2Fq4athAwZDM4MmmqBC9aI02BK1MI" : "CGpFCA06VrpwNIUbgqUuPpTrIIoIthzs");
             analytics.page();
             }}();
           `,

@@ -20,7 +20,7 @@ new Metrics({ token: 'cdc8d6df-476b-4e2d-ae1a-f8c6893a39a8' }).collect()
 export default function MyApp({ Component, pageProps, currentVersion, versions }) {
   useJssStyles()
 
-  // We add segment id to every moovweb.app/rsf anchor
+  // We add segment id to every app.layer0.co/rsf anchor
   useSegment()
 
   const toc = useRef()

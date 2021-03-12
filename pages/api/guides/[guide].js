@@ -1,4 +1,5 @@
 import fetch from 'isomorphic-fetch'
+import { DOCS_PAGES_REPO_URL } from '../../../consts'
 
 export default async function guide(req, res) {
   let { version, guide } = req.query
@@ -14,9 +15,9 @@ export default async function guide(req, res) {
       // To allow correct previews in local/cloud/edge, read the versioned docs only in production,
       // otherwise just read it from this version itself.
       process.env.XDN_ENVIRONMENT_NAME === 'production' || isChangelog
-        ? await fetch(
-            `http://moovweb-docs.github.io/xdn-docs-pages/${version}/guides/${guide}.md`,
-          ).then(resp => resp.text())
+        ? await fetch(`${DOCS_PAGES_REPO_URL}/${version}/guides/${guide}.md`).then(resp =>
+            resp.text(),
+          )
         : require(`../../../guides/${guide}.md`).default
 
     if (res) {

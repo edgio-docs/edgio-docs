@@ -1,10 +1,11 @@
 import fetch from 'isomorphic-fetch'
+import { DOCS_PAGES_REPO_URL } from '../../../consts'
 
 export default async function version(req, res) {
   const { version } = req.query
-  const modules = await fetch(
-    `http://moovweb-docs.github.io/xdn-docs-pages/${version}/modules.json`,
-  ).then(resp => resp.json())
+  const modules = await fetch(`${DOCS_PAGES_REPO_URL}/${version}/modules.json`).then(resp =>
+    resp.json(),
+  )
 
   const updateMenu = node => {
     if (node.as) {

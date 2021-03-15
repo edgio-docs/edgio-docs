@@ -74,11 +74,11 @@ mywebsite.xyz.        599    IN    A        151.101.193.79
 
 ### Whitelisting XDN IP Addresses
 
-Before going live, ensure that all Moovweb XDN IP addresses are whitelisted in the security layer in front of your origin and/or API servers. The IP addresses you need to whitelist can be found on the "IP Whitelist" section of the "Networking" tab. Note that your IP addresses may differ from the ones show above.
+Before going live, ensure that all {{ PRODUCT_NAME }} IP addresses are whitelisted in the security layer in front of your origin and/or API servers. The IP addresses you need to whitelist can be found on the "IP Whitelist" section of the "Networking" tab. Note that your IP addresses may differ from the ones show above.
 
 ## TLS/SSL
 
-All data transmitted to and from your Moovweb XDN site must be secured with TLS (Transport Layer Security). TLS, also known as SSL (Secure Sockets Layer), is a cryptographic protocol to communicate securely over the Internet. TLS provides end-to-end data encryption and data integrity for all web requests.
+All data transmitted to and from your {{ PRODUCT_NAME }} site must be secured with TLS (Transport Layer Security). TLS, also known as SSL (Secure Sockets Layer), is a cryptographic protocol to communicate securely over the Internet. TLS provides end-to-end data encryption and data integrity for all web requests.
 
 The XDN provides a wildcard TLS certificate that covers the auto-generated domains that it assigns to your site (e.g {team}-{site}-{branch}-{version}.moovweb.io). You need to provide your own certificate for your site's custom domains.
 
@@ -262,7 +262,7 @@ Then, scroll down to **SSL Certificate**. _Note that you need to be in the **Adm
 
 ![empty-certificate](/images/production/empty-certificate.png)
 
-Moovweb XDN needs three things to correctly host your certificate:
+{{ PRODUCT_NAME }} needs three things to correctly host your certificate:
 
 - Certificate issued by CA
 - Intermediate certificates (IC) used by CA including CA's signing certificate

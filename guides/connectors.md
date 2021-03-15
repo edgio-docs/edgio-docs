@@ -74,7 +74,7 @@ module.exports = function() {
     // The command to start your app in dev mode
     command: () => 'npx sapper dev',
 
-    // Once your app's console output has matched all of the following patterns, the "MOOVWEB XDN ready on ..." message will be displayed
+    // Once your app's console output has matched all of the following patterns, the "{{ PRODUCT_NAME }} ready on ..." message will be displayed
     ready: [/listening on/i],
 
     // A function that is called with every line of output from your app. Return true to show that line to the user, false to hide it.

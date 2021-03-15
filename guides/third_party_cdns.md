@@ -1,6 +1,6 @@
 # Third Party CDNs
 
-Moovweb XDN is designed and built to be the component of your site to which your users will directly connect to from their devices. Such components are colloquially known as "edge components". But sometimes you may prefer to run the XDN behind a third-party CDN due to a preexisting contract. The XDN fully supports this use case but it's important to call out some common pitfalls with this kind of network topology.
+{{ PRODUCT_NAME }} is designed and built to be the component of your site to which your users will directly connect to from their devices. Such components are colloquially known as "edge components". But sometimes you may prefer to run the XDN behind a third-party CDN due to a preexisting contract. The XDN fully supports this use case but it's important to call out some common pitfalls with this kind of network topology.
 
 ## HTTP traffic
 
@@ -14,7 +14,7 @@ Options to solve these all rely on different ways of configuring the third-party
 
 ## Split Testing
 
-Moovweb XDN offers fully featured [split testing](/guides/split_testing). When XDN is running behind another CDN, the CDN must be configured in a very specific way in order for split testing to work:
+{{ PRODUCT_NAME }} offers fully featured [split testing](/guides/split_testing). When XDN is running behind another CDN, the CDN must be configured in a very specific way in order for split testing to work:
 
 1. Downstream CDN must be configured to not [cache](#section_caching) anything.
 2. The CDN must be configured to not affect any cookies that begin with [`xdn_`](split_testing#section_how_requests_are_routed).
@@ -29,12 +29,12 @@ Caching and traffic metrics are another area that is affected by CDN caching or 
 
 ## IPs
 
-When behind a third-party CDN, Moovweb XDN will analyze `x-forwarded-for` to correctly extract the client IP from it and inject it into [`x-xdn-client-ip`](request_headers#section_general_headers). You can continue to use `x-xdn-client-ip` as you otherwise would.
+When behind a third-party CDN, {{ PRODUCT_NAME }} will analyze `x-forwarded-for` to correctly extract the client IP from it and inject it into [`x-xdn-client-ip`](request_headers#section_general_headers). You can continue to use `x-xdn-client-ip` as you otherwise would.
 
 ## Access Logs
 
-Moovweb XDN access logs continue to function normally but since they are not on the edge they may not include all of the traffic that comes to your site.
+{{ PRODUCT_NAME }} access logs continue to function normally but since they are not on the edge they may not include all of the traffic that comes to your site.
 
 ## Whitelisting
 
-Moovweb XDN does not block any validly formed HTTP traffic coming from any IP so there is no need to specifically whitelist the backend IPs of your third party CDN.
+{{ PRODUCT_NAME }} does not block any validly formed HTTP traffic coming from any IP so there is no need to specifically whitelist the backend IPs of your third party CDN.

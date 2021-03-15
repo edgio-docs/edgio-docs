@@ -1,6 +1,6 @@
 # Cookies
 
-This guide covers the cookies that Moovweb XDN creates and uses.
+This guide covers the cookies that {{ PRODUCT_NAME }} creates and uses.
 
 ## Split testing cookies
 

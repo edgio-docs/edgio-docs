@@ -52,7 +52,7 @@ The `cache` function can be used in the same route as other functions such as `s
 
 ### Cache Key
 
-Moovweb XDN provides you with a default cache key out of the box. It is a broad cache key that ensures general correctness but that can be further customized by you. The default cache key consists of:
+{{ PRODUCT_NAME }} provides you with a default cache key out of the box. It is a broad cache key that ensures general correctness but that can be further customized by you. The default cache key consists of:
 
 - Value of request `host` request header
 - Complete request URL, including the query params (this can be customized)
@@ -126,7 +126,7 @@ Customizing caching keys is a very powerful tool to make your site faster. But a
 
 ### Caching Responses for POST and other non-GET/HEAD requests
 
-By default, Moovweb XDN only caches responses for `GET` and `HEAD` requests. It rarely makes sense to cache `POST`, `PUT`, `PATCH`, or `DELETE` requests. These methods, from the point of view of HTTP semantics, are supposed to change the state of the underlying entities. However, some APIs, like GraphQL APIs, are implemented exclusively through `POST` requests with queries being sent through request body. When such solutions are used it is often desirable to be able to cache responses to some of these requests (namely those do not mutate any state).
+By default, {{ PRODUCT_NAME }} only caches responses for `GET` and `HEAD` requests. It rarely makes sense to cache `POST`, `PUT`, `PATCH`, or `DELETE` requests. These methods, from the point of view of HTTP semantics, are supposed to change the state of the underlying entities. However, some APIs, like GraphQL APIs, are implemented exclusively through `POST` requests with queries being sent through request body. When such solutions are used it is often desirable to be able to cache responses to some of these requests (namely those do not mutate any state).
 
 To cache a response to a `POST`, a separate route must be created which, together with `cache` function, will enable this behavior:
 
@@ -150,7 +150,7 @@ There are a number of limitations in caching of `POST` and similar requests:
 
 ### Caching Private Responses
 
-By default Moovweb XDN never caches responses which have `private` clause in their `cache-control` header. Sometimes though it is desirable to cache such responses, intended for a single user of your site:
+By default {{ PRODUCT_NAME }} never caches responses which have `private` clause in their `cache-control` header. Sometimes though it is desirable to cache such responses, intended for a single user of your site:
 
 ```js
 router.get('/some/path', ({ cache }) => {

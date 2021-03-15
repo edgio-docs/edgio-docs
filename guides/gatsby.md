@@ -23,7 +23,7 @@ gatsby new gatsby-site https://github.com/gatsbyjs/gatsby-starter-hello-world
 
 You should now have a working Gatsby site. Run `gatsby develop` to see the application running on `localhost:8000`.
 
-To deploy your Gatsby on Moovweb XDN:
+To deploy your Gatsby on {{ PRODUCT_NAME }}:
 
 1. Install the XDN CLI globally:
 

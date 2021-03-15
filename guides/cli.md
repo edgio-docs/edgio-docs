@@ -81,7 +81,7 @@ xdn completion >> ~/.bashrc
 
 ### deploy
 
-Builds and deploys your site on the Moovweb XDN.
+Builds and deploys your site on {{ PRODUCT_NAME }}.
 
 #### Parameters
 
@@ -136,7 +136,7 @@ xdn dev
 
 ### init
 
-Run in an existing app to add all required packages and files need to publish your app on the Moovweb XDN
+Run in an existing app to add all required packages and files need to publish your app on {{ PRODUCT_NAME }}
 
 #### Example
 

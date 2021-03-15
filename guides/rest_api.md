@@ -1,6 +1,6 @@
 # API
 
-This guide covers the REST API provided by the Moovweb XDN.
+This guide covers the REST API provided by {{ PRODUCT_NAME }}.
 
 ## Authentication
 
@@ -12,14 +12,14 @@ To gain access to the api, provide a deploy token via the `x-api-key` header. De
 
 `POST https://moovweb.app/api/v1/clear-cache`
 
-Purges entries from the cache for a specific environment.  You can purge specific paths or surrogate keys.  If no paths or surrogate keys are provided all entries will be purged.
+Purges entries from the cache for a specific environment. You can purge specific paths or surrogate keys. If no paths or surrogate keys are provided all entries will be purged.
 
 #### Request Headers
 
 The following request headers are required:
 
-* `x-api-key`: A site deploy token 
-* `content-type`: `"application/json"`
+- `x-api-key`: A site deploy token
+- `content-type`: `"application/json"`
 
 #### Body
 

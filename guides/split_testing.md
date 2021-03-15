@@ -1,10 +1,10 @@
 # Split Testing (aka Edge Experiments)
 
-The Moovweb XDN makes it easy to conduct split testing without performance penalties by executing splits at the edge through an easy-to-use yet powerful interface. It can be used for A/B and multivariate tests, canary deploys, blue-green tests, iterative migration off of a legacy website, personalization, and more. This guide shows you how to configure a split test.
+{{ PRODUCT_NAME }} makes it easy to conduct split testing without performance penalties by executing splits at the edge through an easy-to-use yet powerful interface. It can be used for A/B and multivariate tests, canary deploys, blue-green tests, iterative migration off of a legacy website, personalization, and more. This guide shows you how to configure a split test.
 
 ## How split testing works
 
-You can perform two kinds of split tests with the Moovweb XDN:
+You can perform two kinds of split tests with {{ PRODUCT_NAME }}:
 
 - A/B test multiple implementations of the same site
 - Split traffic between multiple sites - This is commonly used to test a new experience against a legacy one.

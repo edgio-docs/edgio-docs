@@ -1,6 +1,6 @@
 # Vue Storefront
 
-Follow these steps to deploy a Vue Storefront app on the Moovweb XDN. As of now the XDN is only compatible with the [Vue Storefront Next CLI tool](https://docs-next.vuestorefront.io/commercetools/getting-started.html#with-vue-storefront-cli-recommended).
+Follow these steps to deploy a Vue Storefront app on {{ PRODUCT_NAME }}. As of now the XDN is only compatible with the [Vue Storefront Next CLI tool](https://docs-next.vuestorefront.io/commercetools/getting-started.html#with-vue-storefront-cli-recommended).
 
 For adding XDN to Vue Storefront 1 app follow this [guide](/guides/vsf1).
 
@@ -25,7 +25,7 @@ npm install
 
 ## Install the XDN CLI
 
-To prepare your Vue Storefront app for deployment on the Moovweb XDN, run the following commands in the root folder of your project:
+To prepare your Vue Storefront app for deployment on {{ PRODUCT_NAME }}, run the following commands in the root folder of your project:
 
 ```
 npm install -g @xdn/cli

@@ -4,7 +4,7 @@ This guide shows you how to share your project with other collaborators using te
 
 ## Private Space
 
-When you first log into the Moovweb XDN console, you'll see your private space:
+When you first log into {{ PRODUCT_NAME }} console, you'll see your private space:
 
 ![private space](/images/deploying/private_space.png)
 
@@ -28,7 +28,7 @@ To add team members, click the "Team Members" tab:
 
 ## Roles
 
-The Moovweb XDN provides two roles:
+{{ PRODUCT_NAME }} provides two roles:
 
 ### Admin
 

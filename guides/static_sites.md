@@ -1,6 +1,6 @@
 # Serving Static Sites
 
-This guide shows you how to serve generic static sites on the Moovweb XDN.
+This guide shows you how to serve generic static sites on {{ PRODUCT_NAME }}.
 
 ## Example Static Sites
 
@@ -25,7 +25,7 @@ _Note that while you can use any version of Node.js >= 12 locally, your app will
 
 ## Getting Started
 
-To prepare your static app for deployment on the Moovweb XDN, install the XDN CLI globally:
+To prepare your static app for deployment on {{ PRODUCT_NAME }}, install the XDN CLI globally:
 
 ```bash
 npm install -g @xdn/cli
@@ -40,7 +40,7 @@ xdn init
 This will automatically add all of the required dependencies and files to your
 project. These include:
 
-- The `@xdn/core` package - Allows you to declare routes and deploy your application on the Moovweb XDN
+- The `@xdn/core` package - Allows you to declare routes and deploy your application on {{ PRODUCT_NAME }}
 - The `@xdn/prefetch` package - Allows you to configure a service worker to prefetch and cache pages to improve browsing speed
 - `xdn.config.js` - The main configuration file for the XDN.
 - `routes.js` - A default routes file that sends all requests to Next.js. Update this file to add caching or proxy some URLs to a different origin.
@@ -131,7 +131,7 @@ module.exports = new Router()
 
 ## Deploying
 
-Deploying requires an account on the Moovweb XDN. [Sign up here for free.](https://moovweb.app/signup) Once you have an account, you can deploy to the Moovweb XDN by running the following in the root folder of your project:
+Deploying requires an account on {{ PRODUCT_NAME }}. [Sign up here for free.](https://moovweb.app/signup) Once you have an account, you can deploy to {{ PRODUCT_NAME }} by running the following in the root folder of your project:
 
 ```
 xdn deploy

@@ -27,7 +27,7 @@ Instead of relying solely on Google Search Console, we recommend tracking Core W
 
 ## Installation
 
-In order to start tracking Core Web Vitals on the Moovweb XDN, you need add the `@xdn/rum` client library to your application. There are a number of ways to do this:
+In order to start tracking Core Web Vitals on {{ PRODUCT_NAME }}, you need add the `@xdn/rum` client library to your application. There are a number of ways to do this:
 
 ### Script Tag
 
@@ -156,19 +156,19 @@ new XDN.Metrics({
   pageLabel: 'home',
 
   // When running a split test, use this field to specify which variant is active.
-  // This is automatically set for sites that are deployed on the Moovweb XDN.
+  // This is automatically set for sites that are deployed on {{ PRODUCT_NAME }}.
   splitTestVariant: 'name-of-variant',
 
   // The version of your application that is running.
   appVersion: 'v1.0.0',
 
   // Whether or not the page was served from the CDN cache, if this is known.
-  // This is automatically set for sites that are deployed on the Moovweb XDN.
+  // This is automatically set for sites that are deployed on {{ PRODUCT_NAME }}.
   cacheHit: true | false,
 
   // The country code in which the browser is running. This is often provided by CDNs
   // as a request header that can be embedded in your script tab by your application code.
-  // This is automatically set for sites that are deployed on the Moovweb XDN.
+  // This is automatically set for sites that are deployed on {{ PRODUCT_NAME }}.
   country: 'US',
 })
 ```

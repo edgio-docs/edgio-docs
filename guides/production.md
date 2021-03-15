@@ -1,6 +1,6 @@
 # Custom Domains & SSL
 
-This guide covers the steps you need to take your site live on the Moovweb XDN with a secure, custom domain.
+This guide covers the steps you need to take your site live on {{ PRODUCT_NAME }} with a secure, custom domain.
 
 ## Region
 
@@ -32,7 +32,7 @@ You can find the DNS and whitelisting IP configurations in the "Networking" tab 
 
 ### DNS
 
-In order to configure your DNS provider to direct traffic for a particular set of domains to the Moovweb XDN, you must create DNS records with values depending on the type of domain you are using for your website. If you are launching a new site then you can set this up whenever you feel ready. For sites that are already live, the DNS update is the last step. Once you have updated your DNS you are committed to launching.
+In order to configure your DNS provider to direct traffic for a particular set of domains to {{ PRODUCT_NAME }}, you must create DNS records with values depending on the type of domain you are using for your website. If you are launching a new site then you can set this up whenever you feel ready. For sites that are already live, the DNS update is the last step. Once you have updated your DNS you are committed to launching.
 
 #### Using a sub-domain (i.e. www.mywebsite.xyz):
 
@@ -268,7 +268,7 @@ Moovweb XDN needs three things to correctly host your certificate:
 - Intermediate certificates (IC) used by CA including CA's signing certificate
 - Private key that was generated at the same time with CSR
 
-The private key part is non-public data and must not be shared with parties other than Moovweb. The Moovweb XDN stores your private key securely at rest. It is never shown in the developer console and only used to provision parts of the infrastructure that are used to terminate TLS connections.
+The private key part is non-public data and must not be shared with parties other than Moovweb. {{ PRODUCT_NAME }} stores your private key securely at rest. It is never shown in the developer console and only used to provision parts of the infrastructure that are used to terminate TLS connections.
 
 You need to copy the certificate, intermediate certificates and the private key into the corresponding edit boxes and, once done, click on "Save Changes" button. This will change the status of your certificate to "Activation in Progress".
 

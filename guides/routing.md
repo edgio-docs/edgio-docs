@@ -13,7 +13,7 @@ Using the Router, you can:
 
 ## Configuration
 
-To define routes for the Moovweb XDN, create a `routes.js` file in the root of your project. You can override the default path to the router by setting the `routes` key in `xdn.config.js`.
+To define routes for {{ PRODUCT_NAME }}, create a `routes.js` file in the root of your project. You can override the default path to the router by setting the `routes` key in `xdn.config.js`.
 
 The `routes.js` file should export an instance of `@xdn/core/router/Router`:
 
@@ -91,14 +91,14 @@ new Router()
 
 XDN offers APIs to manipulate request and response headers and cookies. The APIs are:
 
-| Operation     | Request                 | Upstream Response              | Response sent to Browser          |
-|---------------|-------------------------|--------------------------------|------------------------|
-| Set header    | `setRequestHeader`      | `setUpstreamResponseHeader`    | `setResponseHeader`    |
-| Add cookie    | `*`                     | `addUpstreamResponseCookie`    | `addResponseCookie`    |
-| Update header | `updateRequestHeader`   | `updateUpstreamResponseHeader` | `updateResponseHeader` |
-| Update cookie | `*`                     | `updateUpstreamResponseCookie` | `updateResponseCookie` |
-| Remove header | `removeRequestHeader`   | `removeUpstreamResponseHeader` | `removeResponseHeader` |
-| Remove cookie | `*`                     | `removeUpstreamResponseCookie` | `removeResponseCookie` |
+| Operation     | Request               | Upstream Response              | Response sent to Browser |
+| ------------- | --------------------- | ------------------------------ | ------------------------ |
+| Set header    | `setRequestHeader`    | `setUpstreamResponseHeader`    | `setResponseHeader`      |
+| Add cookie    | `*`                   | `addUpstreamResponseCookie`    | `addResponseCookie`      |
+| Update header | `updateRequestHeader` | `updateUpstreamResponseHeader` | `updateResponseHeader`   |
+| Update cookie | `*`                   | `updateUpstreamResponseCookie` | `updateResponseCookie`   |
+| Remove header | `removeRequestHeader` | `removeUpstreamResponseHeader` | `removeResponseHeader`   |
+| Remove cookie | `*`                   | `removeUpstreamResponseCookie` | `removeResponseCookie`   |
 
 `*` Adding, updating, or removing a request cookie can be achieved with `updateRequestHeader` applied to `cookie` header.
 
@@ -108,15 +108,15 @@ You can find detailed descriptions of these APIs in the `@xdn/core` [documentati
 
 You can inject values from the request or response into headers or cookies as template literals using the `${value}` format. For example: `setResponseHeader('original-request-path', '${path}')` would add an `original-request-path` response header whose value is the request path.
 
-| Value           | Embedded value         | Description                                                                            |
-|-----------------|------------------------|----------------------------------------------------------------------------------------|
-| HTTP method     | `${method}`            | The value of the HTTP method used for the request (e.g. `GET`)                         |
-| URL             | `${url}`               | The complete URL path including any query strings (e.g. `/search?query=docs`). Protocol, hostname, and port are not included.          |
-| Path            | `${path}`              | The URL path excluding any query strings (e.g. `/search`)                              |
-| Query string    | `${query:<name>}`      | The value of the `<name>` query string or empty if not available.                      |
-| Request header  | `${req:<name>}`        | The value of the `<name>` request header or empty if not available.                    |
-| Request cookie  | `${req:cookie:<name>}` | The value of the `<name>` cookie in `cookie` request header or empty if not available. |
-| Response header | `${res:<name>}`        | The value of the `<name>` response header or empty if not available.                   |
+| Value           | Embedded value         | Description                                                                                                                   |
+| --------------- | ---------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
+| HTTP method     | `${method}`            | The value of the HTTP method used for the request (e.g. `GET`)                                                                |
+| URL             | `${url}`               | The complete URL path including any query strings (e.g. `/search?query=docs`). Protocol, hostname, and port are not included. |
+| Path            | `${path}`              | The URL path excluding any query strings (e.g. `/search`)                                                                     |
+| Query string    | `${query:<name>}`      | The value of the `<name>` query string or empty if not available.                                                             |
+| Request header  | `${req:<name>}`        | The value of the `<name>` request header or empty if not available.                                                           |
+| Request cookie  | `${req:cookie:<name>}` | The value of the `<name>` cookie in `cookie` request header or empty if not available.                                        |
+| Response header | `${res:<name>}`        | The value of the `<name>` response header or empty if not available.                                                          |
 
 ## Route Pattern Syntax
 

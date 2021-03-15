@@ -1,6 +1,6 @@
 # Performance
 
-This guide shows you how to monitor and improve the performance of your application running on the Moovweb XDN.
+This guide shows you how to monitor and improve the performance of your application running on {{ PRODUCT_NAME }}.
 
 ## Built-in timings
 

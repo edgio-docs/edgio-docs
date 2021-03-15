@@ -2,7 +2,7 @@
 
 [NX](https://nx.dev/) is a tool for managing monorepos.
 
-This guide shows you how to create a [connector](/guides/connectors) for your NX application on the Moovweb XDN. Here we use [Next.js](https://nextjs.org/) for the default NX project.
+This guide shows you how to create a [connector](/guides/connectors) for your NX application on {{ PRODUCT_NAME }}. Here we use [Next.js](https://nextjs.org/) for the default NX project.
 
 ## Example App
 

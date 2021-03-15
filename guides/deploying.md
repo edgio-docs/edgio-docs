@@ -1,10 +1,10 @@
 # Deploying
 
-This guide walks you through deploying your first site to the Moovweb XDN.
+This guide walks you through deploying your first site to {{ PRODUCT_NAME }}.
 
 ## Create your Account
 
-To deploy your site to the Moovweb XDN, you must first sign up for an account. [Sign up here for free.](https://moovweb.app/signup)
+To deploy your site to {{ PRODUCT_NAME }}, you must first sign up for an account. [Sign up here for free.](https://moovweb.app/signup)
 
 ## Install the XDN CLI
 
@@ -22,26 +22,27 @@ yarn global add @xdn/cli
 
 ## xdn login
 
-Run the following to authenticate with your XDN account on the Moovweb XDN:
+Run the following to authenticate with your XDN account on {{ PRODUCT_NAME }}:
 
 ```bash
 xdn login
 ```
+
 ## xdn deploy
 
-Then, run the following to deploy your site to your private space on the Moovweb XDN:
+Then, run the following to deploy your site to your private space on {{ PRODUCT_NAME }}:
 
 ```bash
 xdn deploy
 ```
 
-The CLI will automatically detect the framework you're using, create an optimized production build, and upload it to the Moovweb XDN. This takes about a minute for most applications.
+The CLI will automatically detect the framework you're using, create an optimized production build, and upload it to {{ PRODUCT_NAME }}. This takes about a minute for most applications.
 
 Once the deployment is complete, the CLI will output the URL for your site. The site name is automatically derived from the `name` field in `package.json`. This can be overriden by using `--site` option when running `xdn deploy`.
 
 ## Branches and Deployments
 
-Each time you deploy your site to the Moovweb XDN a "deployment" is created and given a unique and permanent URL based on the team name, site name, branch name in source control, and an incrementing deployment number. If you use Git, the branch name is set by the default. If not, you can specify the `--branch` option when running `xdn deploy`.
+Each time you deploy your site to {{ PRODUCT_NAME }} a "deployment" is created and given a unique and permanent URL based on the team name, site name, branch name in source control, and an incrementing deployment number. If you use Git, the branch name is set by the default. If not, you can specify the `--branch` option when running `xdn deploy`.
 
 ![deployments](/images/deploying/deployments.png)
 
@@ -65,14 +66,14 @@ You should always store your deploy token using your CI environment's secrets ma
 
 ![video](https://www.youtube.com/watch?v=F8uN03ps1As)
 
-Here is an example GitHub action that deploys your site to the Moovweb XDN:
+Here is an example GitHub action that deploys your site to {{ PRODUCT_NAME }}:
 
 This action assumes that you have created environments called "staging" and "production" and you have created a deploy key for your site and added it as a secret in your repo called "xdn_deploy_token".
 
 ```yml
 # Add this file to your project at .github/workflows/xdn.yml
 #
-# This GitHub action deploys your site on the Moovweb XDN.
+# This GitHub action deploys your site on {{ PRODUCT_NAME }}.
 #
 # The site is deployed each time commits are pushed. The environment to which the changes are deployed
 # is based on the following rules:
@@ -135,7 +136,7 @@ jobs:
 
 ## Jenkins Pipeline
 
-Here is an example Jenkins pipeline that deploys your site to the Moovweb XDN:
+Here is an example Jenkins pipeline that deploys your site to {{ PRODUCT_NAME }}:
 
 This guide assumes:
 
@@ -147,7 +148,7 @@ This guide assumes:
 ```groovy
 // Add this file to your project at ./Jenkinsfile
 //
-// This Jenkins pipeline deploys your site on the Moovweb XDN.
+// This Jenkins pipeline deploys your site on {{ PRODUCT_NAME }}.
 //
 // The site is deployed each time commits are pushed. The environment to which the changes are deployed
 // is based on the following rules:

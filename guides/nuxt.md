@@ -1,6 +1,6 @@
 # Nuxt.js
 
-This guide shows you how to deploy a Nuxt.js application on the Moovweb XDN. If you run into any issues please consult the [Troubleshooting](#section_troubleshooting) section.
+This guide shows you how to deploy a Nuxt.js application on {{ PRODUCT_NAME }}. If you run into any issues please consult the [Troubleshooting](#section_troubleshooting) section.
 
 ## Example SSR Site
 
@@ -41,7 +41,7 @@ Nuxt's create module will ask you a series of questions to configure your app. M
 
 ## Adding the XDN to an existing Nuxt app
 
-To prepare your Nuxt.js application for the Moovweb XDN:
+To prepare your Nuxt.js application for {{ PRODUCT_NAME }}:
 
 1. In `nuxt.config.js`, add "@xdn/nuxt/module" to `buildModules`:
 
@@ -310,7 +310,7 @@ Setting `--production` runs your app exactly as it will be uploaded to the Moovw
 
 ## Deploying
 
-Deploying requires an account on the Moovweb XDN. [Sign up here for free.](https://moovweb.app/signup) Once you have an account, you can deploy to the Moovweb XDN by running the following in the root folder of your project:
+Deploying requires an account on {{ PRODUCT_NAME }}. [Sign up here for free.](https://moovweb.app/signup) Once you have an account, you can deploy to {{ PRODUCT_NAME }} by running the following in the root folder of your project:
 
 ```bash
 xdn deploy

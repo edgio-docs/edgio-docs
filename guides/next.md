@@ -1,6 +1,6 @@
 # Next.js
 
-This guide shows you how to deploy a Next.js application on the Moovweb XDN.
+This guide shows you how to deploy a Next.js application on {{ PRODUCT_NAME }}.
 
 ## Example SSR Site
 
@@ -15,7 +15,7 @@ For details on using the Next.js Commerce template with the XDN refer to our [Ne
 
 ## Supported Features
 
-The Moovweb XDN supports all of the most powerful features of Next.js 10, including:
+{{ PRODUCT_NAME }} supports all of the most powerful features of Next.js 10, including:
 
 - Localization
 - Image Optimization
@@ -42,7 +42,7 @@ If you don't already have a Next.js application, you can create one using:
 npm create next-app my-next-app
 ```
 
-To prepare your Next.js application for deployment on the Moovweb XDN:
+To prepare your Next.js application for deployment on {{ PRODUCT_NAME }}:
 
 ### Install the XDN CLI globally
 
@@ -64,7 +64,7 @@ xdn init
 
 This will automatically add all of the required dependencies and files to your project. These include:
 
-- The `@xdn/core` package - Allows you to declare routes and deploy your application on the Moovweb XDN
+- The `@xdn/core` package - Allows you to declare routes and deploy your application on {{ PRODUCT_NAME }}
 - The `@xdn/next` package - Provides router middleware that automatically adds Next.js pages and api routes to the XDN router.
 - The `@xdn/prefetch` package - Allows you to configure a service worker to prefetch and cache pages to improve browsing speed
 - The `@xdn/react` package - Provides a `Prefetch` component for prefetching pages
@@ -104,7 +104,7 @@ xdn dev
 
 ## Deploying
 
-Deploying requires an account on the Moovweb XDN. [Sign up here for free.](https://moovweb.app/signup) Once you have an account, you can deploy to the Moovweb XDN by running the following in the root folder of your project:
+Deploying requires an account on {{ PRODUCT_NAME }}. [Sign up here for free.](https://moovweb.app/signup) Once you have an account, you can deploy to {{ PRODUCT_NAME }} by running the following in the root folder of your project:
 
 ```bash
 xdn deploy

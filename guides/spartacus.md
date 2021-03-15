@@ -1,6 +1,6 @@
 # Spartacus for SAP Commerce Cloud (formerly SAP Hybris)
 
-This guide shows you how to deploy [Spartacus](https://sap.github.io/spartacus-docs) apps on the Moovweb XDN.
+This guide shows you how to deploy [Spartacus](https://sap.github.io/spartacus-docs) apps on {{ PRODUCT_NAME }}.
 
 [Try the Spartacus Example Site](https://moovweb-docs-xdn-spartacus-example-default.moovweb-edge.io/?button)
 [View the Code](https://github.com/moovweb-docs/xdn-examples/tree/main/xdn-spartacus-example?button)
@@ -31,7 +31,7 @@ You should now have a working starter app. Run `ng serve` to see the application
 
 #### 2. Add Spartacus with SSR
 
-To deploy your Spartacus application on the Moovweb XDN it needs to support server-side rendering (SSR). To add SSR support, run:
+To deploy your Spartacus application on {{ PRODUCT_NAME }} it needs to support server-side rendering (SSR). To add SSR support, run:
 
 ```bash
 ng add @spartacus/schematics --ssr
@@ -48,7 +48,7 @@ The previous command created:
 
 You can now run `npm run build:ssr && npm run serve:ssr` to access your server-side rendered app at `localhost:4000`.
 
-To prepare your Spartacus application for deployment on the Moovweb XDN:
+To prepare your Spartacus application for deployment on {{ PRODUCT_NAME }}:
 
 #### 1. Install the XDN CLI globally:
 
@@ -85,7 +85,7 @@ module.exports = {
   backends: {
     commerce: {
       domainOrIp: 'api-commerce.my-site.com',
-      hostHeader: 'api-commerce.my-site.com'
+      hostHeader: 'api-commerce.my-site.com',
     },
   },
 }
@@ -96,10 +96,11 @@ If you have several projects and the `defaultProject` as specified in `angular.j
 #### 4. Update OCC `baseUrl` endpoint
 
 The `baseUrl` should be updated to use the remote URL when `window` is not defined (i.e., for SSR), and the current host when `window` is defined. For example:
+
 ```js
 baseUrl: typeof window !== 'undefined'
-    ? `${window.location.protocol}//${window.location.host}`
-    : 'https://api-commerce.my-site.com'
+  ? `${window.location.protocol}//${window.location.host}`
+  : 'https://api-commerce.my-site.com'
 ```
 
 This value is defined in the `backend` property of the options parameter to `B2cStorefrontModule.withConfig({})` in the `app.module.ts` file, but is best set using environment variables in the `environment.ts` and `environment.prod.ts` files.
@@ -238,7 +239,6 @@ ServiceWorkerModule.register(
 
 Add `"skipLibCheck": true,` to `tsconfig.json` to avoid type errors from `workbox` library during build.
 
-
 ## Routing and Cache Configuration
 
 The default `routes.js` file created by `xdn init` sends all requests to Angular server via a fallback route.
@@ -328,7 +328,7 @@ Setting `--production` runs your app exactly as it will be uploaded to the Moovw
 
 ## Deploying
 
-Deploying requires an account on the Moovweb XDN. [Sign up here for free.](https://moovweb.app/signup) Once you have an account, you can deploy to the Moovweb XDN by running the following in the root folder of your project:
+Deploying requires an account on {{ PRODUCT_NAME }}. [Sign up here for free.](https://moovweb.app/signup) Once you have an account, you can deploy to {{ PRODUCT_NAME }} by running the following in the root folder of your project:
 
 ```bash
 xdn deploy

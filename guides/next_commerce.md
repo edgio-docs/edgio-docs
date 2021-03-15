@@ -1,6 +1,6 @@
 # Next.js Commerce
 
-This guide shows you how to deploy the [Next.js Commerce](https://github.com/vercel/commerce) starter kit on the Moovweb XDN. Note that Next.js Commerce is currently under development and requires an account on the [BigCommerce](https://www.bigcommerce.com/) platform.
+This guide shows you how to deploy the [Next.js Commerce](https://github.com/vercel/commerce) starter kit on {{ PRODUCT_NAME }}. Note that Next.js Commerce is currently under development and requires an account on the [BigCommerce](https://www.bigcommerce.com/) platform.
 
 ## Next.js Commerce Example
 
@@ -39,7 +39,6 @@ npm run xdn:deploy
 
 For more details on using Next.js on the XDN refer to the [Next.js Guide](next).
 
-
 ## Deploying the official Next.js Commerce repository
 
 If you wish to deploy to the XDN from the official Next.js Commerce repository, follow these steps:
@@ -71,13 +70,14 @@ xdn init
 ```js
 const { withXDN, withServiceWorker } = require('@xdn/next/config')
 
-module.exports =  withXDN(withServiceWorker(bundleAnalyzer({
-
-  // ...rest of the next.config.js content
-
-
-  // !! Don't forget to add two additional closing parenthesis in the line below !!
-})))
+module.exports = withXDN(
+  withServiceWorker(
+    bundleAnalyzer({
+      // ...rest of the next.config.js content
+      // !! Don't forget to add two additional closing parenthesis in the line below !!
+    }),
+  ),
+)
 ```
 
 6. Remove this section from `package.json` which uses Webpack 5:
@@ -94,7 +94,7 @@ module.exports =  withXDN(withServiceWorker(bundleAnalyzer({
 yarn add encoding
 ```
 
-8. Create a file called `.env.local` in the project directory and add your BigCommerce API keys to it: 
+8. Create a file called `.env.local` in the project directory and add your BigCommerce API keys to it:
 
 ```
 # Created by Vercel CLI
@@ -127,6 +127,3 @@ This should result in output like the following which confirms the deployment:
 *                                                                                       *
 *****************************************************************************************
 ```
-
-
-

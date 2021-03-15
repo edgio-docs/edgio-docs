@@ -1,6 +1,6 @@
 # Gatsby
 
-This guide shows you how to deploy an Gatsby application on the Moovweb XDN:
+This guide shows you how to deploy an Gatsby application on {{ PRODUCT_NAME }}:
 
 ![video](https://www.youtube.com/watch?v=ici9j6oF_5E)
 
@@ -55,7 +55,7 @@ xdn dev
 
 ## Deploying
 
-Deploying requires an account on the Moovweb XDN. [Sign up here for free.](https://moovweb.app/signup) Once you have an account, you can deploy to the Moovweb XDN by running the following in the root folder of your project:
+Deploying requires an account on {{ PRODUCT_NAME }}. [Sign up here for free.](https://moovweb.app/signup) Once you have an account, you can deploy to {{ PRODUCT_NAME }} by running the following in the root folder of your project:
 
 ```bash
 xdn deploy

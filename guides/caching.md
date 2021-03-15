@@ -1,6 +1,6 @@
 # Caching
 
-This guide introduces the caching capabilities of the Moovweb XDN
+This guide introduces the caching capabilities of {{ PRODUCT_NAME }}
 
 ## Environments and Caching
 
@@ -281,7 +281,7 @@ The cache will automatically be cleared when you make changes to your router. A 
 
 ## Clearing the Cache
 
-The cache is automatically cleared when you deploy to an environment. You can also clear the cache using the environment's Caching tab in the Moovweb XDN console.
+The cache is automatically cleared when you deploy to an environment. You can also clear the cache using the environment's Caching tab in {{ PRODUCT_NAME }} console.
 
 ![deployments](/images/caching/purge.png)
 

@@ -1,6 +1,6 @@
 # Frontity
 
-This guide shows you how to deploy [Frontity](https://frontity.org/) apps on the Moovweb XDN
+This guide shows you how to deploy [Frontity](https://frontity.org/) apps on {{ PRODUCT_NAME }}
 
 ## Example Site
 
@@ -25,7 +25,7 @@ If you don't already have a Frontity app, use the terminal (or command prompt on
 npx frontity create my-app
 ```
 
-To prepare your Frontity app for deployment on the Moovweb XDN, run the following in the root folder of your project:
+To prepare your Frontity app for deployment on {{ PRODUCT_NAME }}, run the following in the root folder of your project:
 
 ```
 npm install -g @xdn/cli
@@ -34,7 +34,7 @@ xdn init
 
 This will automatically add all of the required dependencies and files to your project. These include:
 
-- The `@xdn/core` package - Allows you to declare routes and deploy your application on the Moovweb XDN
+- The `@xdn/core` package - Allows you to declare routes and deploy your application on {{ PRODUCT_NAME }}
 - The `@xdn/frontity` package - Provides router middleware that automatically adds Frontity routes to the XDN router.
 - The `@xdn/prefetch` package - Allows you to configure a service worker to prefetch and cache pages to improve browsing speed
 - The `@xdn/react` package - Provides a `Prefetch` component for prefetching pages
@@ -98,7 +98,7 @@ xdn dev --cache
 
 ## Deploying
 
-Deploying requires an account on the Moovweb XDN. [Sign up here for free.](https://moovweb.app/signup) Once you have an account, you can deploy to the Moovweb XDN by running the following in the root folder of your project
+Deploying requires an account on {{ PRODUCT_NAME }}. [Sign up here for free.](https://moovweb.app/signup) Once you have an account, you can deploy to {{ PRODUCT_NAME }} by running the following in the root folder of your project
 
 ```
 xdn deploy

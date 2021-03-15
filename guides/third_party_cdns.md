@@ -4,7 +4,7 @@ Moovweb XDN is designed and built to be the component of your site to which your
 
 ## HTTP traffic
 
-The Moovweb XDN does not support HTTP traffic and has a built-in redirect to HTTPS. That redirect relies on the value of `host` request header in order to form the value of `location` response header (e.g. a `host` value of `developer.moovweb.com` will result in a `location` value of `https://developer.moovweb.com`). When a third-party CDN is in front of XDN, the `host` header is not the public facing domain but rather the domain to which the downstream CDN is routing traffic. If the downstream CDN allows HTTP traffic to reach the XDN then the XDN will respond with an incorrect value in `location` response header.
+{{ PRODUCT_NAME }} does not support HTTP traffic and has a built-in redirect to HTTPS. That redirect relies on the value of `host` request header in order to form the value of `location` response header (e.g. a `host` value of `developer.moovweb.com` will result in a `location` value of `https://developer.moovweb.com`). When a third-party CDN is in front of XDN, the `host` header is not the public facing domain but rather the domain to which the downstream CDN is routing traffic. If the downstream CDN allows HTTP traffic to reach the XDN then the XDN will respond with an incorrect value in `location` response header.
 
 Options to solve these all rely on different ways of configuring the third-party CDN:
 

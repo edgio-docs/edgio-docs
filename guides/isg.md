@@ -2,11 +2,11 @@
 
 The Next.js framework first introduced the pattern of Incremental Static (Re)Generation (commonly referred to as **ISG**) to the JAMStack community. With ISG, some URLs are rendered at build time, while others aren't rendered until a user actually visits the page (the app essentially falls back to server-side rendering). A static loading page is returned while server-side rendering is in progress. Individual statically rendered URLs can also be configured to expire after some time (this is the *re*generation part).
 
-The Moovweb XDN provides full support for Incremental Static (Re)Generation, not just on apps built with Next.js (where the `@xdn/next` package makes this automatic), but on apps built with any framework.
+{{ PRODUCT_NAME }} provides full support for Incremental Static (Re)Generation, not just on apps built with Next.js (where the `@xdn/next` package makes this automatic), but on apps built with any framework.
 
 ## Adding ISG to Next.js apps
 
-Developers using Next.js don't need to do anything special to support ISG on the Moovweb XDN. Simply use the `NextRoutes` router plugin:
+Developers using Next.js don't need to do anything special to support ISG on {{ PRODUCT_NAME }}. Simply use the `NextRoutes` router plugin:
 
 ```js
 // routes.js

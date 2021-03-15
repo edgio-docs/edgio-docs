@@ -1,6 +1,6 @@
 # Image Optimization
 
-The Moovweb XDN provides a simple HTTP service for optimizing images:
+{{ PRODUCT_NAME }} provides a simple HTTP service for optimizing images:
 
 ```js
 https://opt.moovweb.net

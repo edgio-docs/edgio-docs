@@ -1,6 +1,6 @@
 # Vue.js
 
-This guide shows you how to deploy a Vue.js application on the Moovweb XDN.
+This guide shows you how to deploy a Vue.js application on {{ PRODUCT_NAME }}.
 
 ## Install Node.js and npm
 
@@ -12,7 +12,7 @@ _Note that while you can use any version of Node.js >= 12 locally, your app will
 
 ## Sign up for the XDN
 
-Deploying requires an account on the Moovweb XDN. [Sign up here for free.](https://moovweb.app/signup).
+Deploying requires an account on {{ PRODUCT_NAME }}. [Sign up here for free.](https://moovweb.app/signup).
 
 ## Install the XDN CLI
 
@@ -75,7 +75,7 @@ xdn init
 
 This will automatically update your `package.json` and add all of the required XDN dependencies and files to your project. These include:
 
-- The `@xdn/core` package - Allows you to declare routes and deploy your application on the Moovweb XDN
+- The `@xdn/core` package - Allows you to declare routes and deploy your application on {{ PRODUCT_NAME }}
 - The `@xdn/prefetch` package - Allows you to configure a service worker to prefetch and cache pages to improve browsing speed
 - `xdn.config.js` - A configuration file for the XDN
 - `routes.js` - A default routes file that sends all requests to Vue.js.
@@ -111,7 +111,7 @@ Create a production build of your app by running the following in your project's
 npm run build
 ```
 
-Next, deploy the build to the Moovweb XDN by running the `xdn deploy` command:
+Next, deploy the build to {{ PRODUCT_NAME }} by running the `xdn deploy` command:
 
 ```bash
 xdn deploy

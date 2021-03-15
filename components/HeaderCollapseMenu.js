@@ -6,7 +6,7 @@ import Link from 'next/link'
 import { MoreVert } from '@material-ui/icons'
 import { makeStyles } from '@material-ui/core/styles'
 import { Hidden } from '@material-ui/core'
-import { APP_URL, FORUM_URL, STATUS_URL, HELP_URL } from '../consts'
+import { APP_URL, FORUM_URL, STATUS_URL, HELP_URL } from '../constants'
 
 const useStyles = makeStyles(theme => ({
   root: {

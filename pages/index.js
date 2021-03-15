@@ -9,7 +9,7 @@ import Link from 'next/link'
 import MoovwebXDN from '../components/icons/moovweb-xdn-black.svg'
 import Icon from '../components/icons/Icon'
 import Markdown from '../components/Markdown'
-import { DOCS_PAGES_REPO_URL, PRODUCT_NAME } from '../consts'
+import { DOCS_PAGES_REPO_URL, PRODUCT_NAME } from '../constants'
 
 const useStyles = makeStyles(theme => ({
   hero: {

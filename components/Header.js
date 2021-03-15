@@ -22,7 +22,7 @@ import Logo from './Logo'
 import Router from 'next/router'
 import clsx from 'clsx'
 import HeaderCollapseMenu from './HeaderCollapseMenu'
-import { APP_URL, FORUM_URL, STATUS_URL } from '../consts'
+import { APP_URL, FORUM_URL, STATUS_URL } from '../constants'
 
 const useStyles = makeStyles(theme => ({
   appBar: {

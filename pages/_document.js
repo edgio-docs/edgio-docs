@@ -2,7 +2,7 @@ import React from 'react'
 import Document, { Html, Head, Main, NextScript } from 'next/document'
 import { ServerStyleSheets } from '@material-ui/core/styles'
 import theme from '../components/theme'
-import { DOCS_DOMAIN } from '../consts'
+import { DOCS_DOMAIN } from '../constants'
 
 class MyDocument extends Document {
   render() {

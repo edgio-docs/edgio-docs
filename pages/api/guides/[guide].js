@@ -1,5 +1,5 @@
 import fetch from 'isomorphic-fetch'
-import { DOCS_PAGES_REPO_URL } from '../../../consts'
+import { DOCS_PAGES_REPO_URL } from '../../../constants'
 
 export default async function guide(req, res) {
   let { version, guide } = req.query

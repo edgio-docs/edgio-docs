@@ -1,6 +1,6 @@
 # Angular
 
-This guide shows you how to deploy an Angular application on the Moovweb XDN:
+This guide shows you how to deploy an Angular application on {{ PRODUCT_NAME }}:
 
 ## Example SSR Site
 
@@ -11,11 +11,11 @@ This Angular example app uses server-side rendering and prefetching to provide l
 
 ## Install Node.js and npm
 
-**XDN only supports Node.js version 12.x**
+**{{ PRODUCT_NAME }} only supports Node.js version 12.x**
 
 If you do not have Node.js installed on your system, download and install it from the official [Node.js v12.x downloads](https://nodejs.org/dist/latest-v12.x/) page. Select the download that matches your operating system and run the installer. Note that the installer for Node.js will also install npm.
 
-_Note that while you can use any version of Node.js >= 12 locally, your app will run in Node 12 when deployed to the XDN cloud. Therefore we highly suggest using Node 12 for all development._
+_Note that while you can use any version of Node.js >= 12 locally, your app will run in Node 12 when deployed to the {{ PRODUCT_NAME }} cloud. Therefore we highly suggest using Node 12 for all development._
 
 ## Getting Started
 
@@ -32,7 +32,7 @@ You should now have a working starter app. Run `ng serve` to see the application
 
 #### 2. Add SSR
 
-To deploy your Angular application on the Moovweb XDN it needs to support server-side rendering (SSR). To add SSR support, run:
+To deploy your Angular application on {{ PRODUCT_NAME }} it needs to support server-side rendering (SSR). To add SSR support, run:
 
 ```bash
 ng add @nguniversal/express-engine
@@ -49,15 +49,15 @@ The previous command created:
 
 You can now run `npm run build:ssr && npm run serve:ssr` to access your server-side rendered app at `localhost:4000`.
 
-To prepare your Angular application for deployment on the Moovweb XDN:
+To prepare your Angular application for deployment on {{ PRODUCT_NAME }}:
 
-#### 1. Install the XDN CLI globally:
+#### 1. Install {{ PRODUCT_NAME }} CLI globally:
 
 ```bash
 npm install -g @xdn/cli
 ```
 
-#### 2. Run the following in the root folder of your project. This will configure your project for the XDN.
+#### 2. Run the following in the root folder of your project. This will configure your project for {{ PRODUCT_NAME }}.
 
 ```bash
 xdn init
@@ -68,7 +68,7 @@ This will automatically add all of the required dependencies and files to your p
 - The `@xdn/core` package
 - The `@xdn/angular` package
 - The `@xdn/cli` package
-- `xdn.config.js`- Contains various configuration options for the XDN.
+- `xdn.config.js`- Contains various configuration options for {{ PRODUCT_NAME }}.
 - `routes.js` - A default routes file that sends all requests to the Angular Universal server. Update this file to add caching or proxy some URLs to a different origin.
 
 #### 3. Use the right angular project
@@ -137,7 +137,7 @@ ANGULAR_PROJECT=my-project xdn run
 
 ## Deploying
 
-Deploying requires an account on the Moovweb XDN. [Sign up here for free.](https://moovweb.app/signup) Once you have an account, you can deploy to the Moovweb XDN by running the following in the root folder of your project:
+Deploying requires an account on {{ PRODUCT_NAME }}. [Sign up here for free.](https://moovweb.app/signup) Once you have an account, you can deploy to {{ PRODUCT_NAME }} by running the following in the root folder of your project:
 
 ```bash
 xdn deploy

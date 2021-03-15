@@ -9,7 +9,8 @@ import getBaseUrl from '../../components/utils/getBaseUrl'
 import ApiLink from '../../components/ApiLink'
 import { Typography } from '@material-ui/core'
 import { useTheme } from '@material-ui/styles'
-import { PRODUCT_NAME } from '../../consts'
+import { PRODUCT_NAME } from '../../constants'
+import { populatePlaceholders } from '../../components/utils/markdownUtils'
 
 export default function Guide({ notFound, markdown, navData, guide }) {
   if (notFound) {
@@ -74,7 +75,7 @@ Guide.getInitialProps = async function({ req, query, version }) {
     ])
 
     return {
-      markdown: content,
+      markdown: populatePlaceholders(content),
       navData,
       guide,
     }

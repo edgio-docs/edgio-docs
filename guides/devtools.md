@@ -18,26 +18,26 @@ It's likely that the Devtools was added to your app when you ran `xdn init`. If 
 
 ### Packages
 
-In order to enable the XDN Devtools, first ensure that the `@xdn/devtools` and `@xdn/prefetch` packages have been added to your project. To install them using NPM, run:
+In order to enable the XDN Devtools, first ensure that the `{{ PACKAGE_NAME }}/devtools` and `{{ PACKAGE_NAME }}/prefetch` packages have been added to your project. To install them using NPM, run:
 
 ```
-npm i -D @xdn/devtools @xdn/prefetch
+npm i -D {{ PACKAGE_NAME }}/devtools {{ PACKAGE_NAME }}/prefetch
 ```
 
 Or with Yarn:
 
 ```
-yarn add --dev @xdn/devtools @xdn/prefetch
+yarn add --dev {{ PACKAGE_NAME }}/devtools {{ PACKAGE_NAME }}/prefetch
 ```
 
 ### Client widget
 
-**Note**: you can skip this step if you are using `@xdn/next` or `@xdn/nuxt`
+**Note**: you can skip this step if you are using `{{ PACKAGE_NAME }}/next` or `{{ PACKAGE_NAME }}/nuxt`
 
 Add the following to your client JavaScript bundle:
 
 ```js
-import installDevtools from '@xdn/devtools/install'
+import installDevtools from '{{ PACKAGE_NAME }}/devtools/install'
 
 installDevtools()
 ```
@@ -50,7 +50,7 @@ Alternatively, you can add the following `script` tag to your app's HTML:
 
 ### Service Worker
 
-Then, if you haven't already, enable `@xdn/prefetch` in your service worker. See [Prefetching](https://developer.moovweb.com/guides/prefetching) for more information on enabling `@xdn/prefetch`.
+Then, if you haven't already, enable `{{ PACKAGE_NAME }}/prefetch` in your service worker. See [Prefetching](https://developer.moovweb.com/guides/prefetching) for more information on enabling `{{ PACKAGE_NAME }}/prefetch`.
 
 ## Enabling or Disabling the Devtools
 

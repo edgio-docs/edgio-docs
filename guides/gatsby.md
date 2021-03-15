@@ -28,7 +28,7 @@ To deploy your Gatsby on {{ PRODUCT_NAME }}:
 1. Install the XDN CLI globally:
 
 ```bash
-npm install -g @xdn/cli
+npm install -g {{ PACKAGE_NAME }}/cli
 ```
 
 2. Run the following in the root folder of your project. This will configure your project for the XDN.
@@ -39,9 +39,9 @@ xdn init
 
 This will automatically add all of the required dependencies and files to your project. These include:
 
-- The `@xdn/core` package
-- The `@xdn/gatsby` package
-- The `@xdn/cli` package
+- The `{{ PACKAGE_NAME }}/core` package
+- The `{{ PACKAGE_NAME }}/gatsby` package
+- The `{{ PACKAGE_NAME }}/cli` package
 - `xdn.config.js`
 - `routes.js` - A default routes file that sends all requests to your Gatsby static site. Update this file to add caching or proxy some URLs to a different origin.
 
@@ -71,8 +71,8 @@ The default `routes.js` file created by `xdn init` sends all requests to the Gat
 // This file was automatically added by xdn deploy.
 // You should commit this file to source control.
 
-const { Router } = require('@xdn/core/router')
-const { gatsbyRoutes } = require('@xdn/gatsby')
+const { Router } = require('{{ PACKAGE_NAME }}/core/router')
+const { gatsbyRoutes } = require('{{ PACKAGE_NAME }}/gatsby')
 
 module.exports = new Router().use(gatsbyRoutes)
 ```
@@ -105,8 +105,8 @@ For example:
 ```js
 // routes.js
 
-const { Router } = require('@xdn/core/router')
-const { gatsbyRoutes } = require('@xdn/gatsby')
+const { Router } = require('{{ PACKAGE_NAME }}/core/router')
+const { gatsbyRoutes } = require('{{ PACKAGE_NAME }}/gatsby')
 
 module.exports = new Router()
   .get('/some/legacy/url/:p', ({ proxy }) => {

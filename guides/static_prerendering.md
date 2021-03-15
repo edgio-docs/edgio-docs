@@ -15,7 +15,7 @@ To specify which URLs should prerendered, use the Router's [prerender](https://d
 ### Example: Hardcoded Paths
 
 ```js
-const { Router } = require('@xdn/core/router')
+const { Router } = require('{{ PACKAGE_NAME }}/core/router')
 
 module.exports = new Router().prerender([
   // HTML pages
@@ -41,7 +41,7 @@ module.exports = new Router().prerender([
 ### Example: Async Paths
 
 ```js
-const { Router } = require('@xdn/core/router')
+const { Router } = require('{{ PACKAGE_NAME }}/core/router')
 
 module.exports = new Router().prerender(async () => {
   const paths = await fetchCategoryPathsFromAPI()
@@ -52,7 +52,7 @@ module.exports = new Router().prerender(async () => {
 ### Example: Defining Paths via an Environment Variable
 
 ```js
-const { Router } = require('@xdn/core/router')
+const { Router } = require('{{ PACKAGE_NAME }}/core/router')
 
 module.exports = new Router().prerender(async () => {
   const paths = process.env.PRERENDER_PATHS.split(/\n/) // define the list of paths to prerender in the XDN Developer Console.
@@ -67,7 +67,7 @@ The XDN can choose which pages to prerender based on site traffic, ensuring the 
 ### Example: Basic Usage
 
 ```js
-const { Router } = require('@xdn/core/router')
+const { Router } = require('{{ PACKAGE_NAME }}/core/router')
 
 router = new Router().prerender([
   {
@@ -108,8 +108,8 @@ It is important to prerender not just HTML responses, but API calls as well, to 
 ### Example: Next.js getServerSideProps
 
 ```js
-const { Router } = require('@xdn/core/router')
-const { nextRoutes } = require('@xdn/next')
+const { Router } = require('{{ PACKAGE_NAME }}/core/router')
+const { nextRoutes } = require('{{ PACKAGE_NAME }}/next')
 const { existsSync, readFileSync } = require('fs')
 const { join } = require('path')
 
@@ -146,7 +146,7 @@ If you're splitting the cache by cookies or headers using a `CustomCacheKey`, yo
 your preload configuration. For example, if you're splitting the cache by a `language` cookie:
 
 ```js
-const { Router, CustomCacheKey } = require('@xdn/core/router')
+const { Router, CustomCacheKey } = require('{{ PACKAGE_NAME }}/core/router')
 
 module.exports = new Router()
   .prerender([

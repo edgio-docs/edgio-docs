@@ -20,7 +20,7 @@ export default function useSegment() {
 
   useEffect(() => {
     const segmentLoadInterval = setInterval(() => {
-      if (window.analytics) {
+      if (window.analytics && window.analytics.user) {
         const id = query.sgId || window.analytics.user().anonymousId()
         if (query.sgId) {
           window.analytics.alias(id)

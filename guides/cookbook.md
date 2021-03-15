@@ -247,7 +247,7 @@ router.get('/products/:id', ({ serveStatic, cache, renderWithApp }) => {
 ```
 
 This hybrid of static and dynamic rendering was first introduced in Next.js as [Incremental Static Generation (ISG)](https://nextjs.org/docs/basic-features/data-fetching#the-fallback-key-required). In Next.js apps, developers enable this behavior by returning `fallback: true` from
-`getStaticPaths()`. The `@xdn/next` package automatically configures the routes for ISG pages to use `onNotFound` and `loadingPage`.
+`getStaticPaths()`. The `{{ PACKAGE_NAME }}/next` package automatically configures the routes for ISG pages to use `onNotFound` and `loadingPage`.
 
 ### Returning a custom 404 page
 

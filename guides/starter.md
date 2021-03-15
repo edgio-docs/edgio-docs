@@ -84,7 +84,7 @@ As with any XDN project make sure you have Node and npm installed. If you do not
 Next, install the [XDN CLI](cli)
 
 ```bash
-npm i -g @xdn/cli
+npm i -g {{ PACKAGE_NAME }}/cli
 ```
 
 Create your Starter project using the XDN's create module:
@@ -143,7 +143,7 @@ Next we need to configure the caching in our newly created project. To do so, ad
 
 ```typescript
 // routes.ts
-import { Router } from '@xdn/core/router'
+import { Router } from '{{ PACKAGE_NAME }}/core/router'
 import shoppingFlowRouteHandler from './shoppingFlowRouteHandler'
 
 export default new Router()
@@ -155,7 +155,7 @@ export default new Router()
 ```typescript
 // shoppingFlowRouteHandler.ts
 import { CACHE_PAGES } from './cache'
-import { RouteHandler } from '@xdn/core/router/Router'
+import { RouteHandler } from '{{ PACKAGE_NAME }}/core/router/Router'
 
 const handler: RouteHandler = async ({ cache, removeResponseHeader, proxy }) => {
   cache(CACHE_PAGES)
@@ -247,7 +247,7 @@ Most assets that need to be prefetched are HTTP GET requests. It is also possibl
 When your app prefetches assets, the actual prefetch request is always a GET, so you need to make sure that your router is configured to respond to GET requests for any POST URL. In order to ensure that the response is cached as a POST by the service worker, you need to specify `convertToGet: true` in the cache config for the prefetch route handler, and to also use the `transformMethod` function to properly transform the GET request into a POST on the server:
 
 ```js
-import { transformMethod } from '@xdn/core/transform'
+import { transformMethod } from '{{ PACKAGE_NAME }}/core/transform'
 
 const postCacheConfig = {
   edge: {
@@ -282,7 +282,7 @@ By default, `<a>` tags are watched by the Prefetcher so that the value of their 
 When installing the service worker, you can specify a `watch` list. Elements that match `watch` selectors can trigger a callback function when they become visible in the viewport:
 
 ```js
-import { install, prefetch } from '@xdn/prefetch/window'
+import { install, prefetch } from '{{ PACKAGE_NAME }}/prefetch/window'
 
 document.addEventListener('DOMContentLoaded', function() {
   install({

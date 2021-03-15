@@ -22,7 +22,7 @@ The name of the connector package corresponding to the framework your app uses, 
 To use a connector package:
 
 ```
-connector: '@xdn/next'
+connector: '{{ PACKAGE_NAME }}/next'
 ```
 
 To implement a connector directly within your project:

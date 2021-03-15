@@ -48,7 +48,7 @@ If you wish to deploy to the XDN from the official Next.js Commerce repository, 
 2. Install the XDN [CLI](cli) globally
 
 ```bash
-npm i -g @xdn/cli
+npm i -g {{ PACKAGE_NAME }}/cli
 ```
 
 3. Clone the official Next.js Commerce repository and install the dependencies via `yarn`:
@@ -68,7 +68,7 @@ xdn init
 5. Update the top of your `next.config.js` file to wrap the module export with `withXDN` and `withServiceWorker` like so:
 
 ```js
-const { withXDN, withServiceWorker } = require('@xdn/next/config')
+const { withXDN, withServiceWorker } = require('{{ PACKAGE_NAME }}/next/config')
 
 module.exports = withXDN(
   withServiceWorker(

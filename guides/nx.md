@@ -14,13 +14,13 @@ This guide shows you how to create a [connector](/guides/connectors) for your NX
 In the root of your nx monorepo, run:
 
 ```sh
-npm i -g @xdn/cli
+npm i -g {{ PACKAGE_NAME }}/cli
 xdn init
 ```
 
 ## 2. Create a custom XDN connector
 
-Since our Next.js app isn't located in the root of the project as the `@xdn/next` connector expects, we'll need to define our own custom connector. To do so:
+Since our Next.js app isn't located in the root of the project as the `{{ PACKAGE_NAME }}/next` connector expects, we'll need to define our own custom connector. To do so:
 
 1. Set `connector: './xdn'` in `xdn.config.js`
 2. Copy the [xdn directory from the example](https://github.com/moovweb-docs/xdn-examples/tree/main/xdn-nx-example/xdn) into the root of your monorepo.
@@ -28,8 +28,8 @@ Since our Next.js app isn't located in the root of the project as the `@xdn/next
 ## 3. Update routes.js
 
 ```js
-const { Router } = require('@xdn/core/router')
-const { default: NextRoutes } = require('@xdn/next/router/NextRoutes')
+const { Router } = require('{{ PACKAGE_NAME }}/core/router')
+const { default: NextRoutes } = require('{{ PACKAGE_NAME }}/next/router/NextRoutes')
 
 module.exports = new Router()
   .match('/service-worker.js', ({ serviceWorker }) => {

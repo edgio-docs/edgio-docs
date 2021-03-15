@@ -47,11 +47,11 @@ To prepare your Next.js application for deployment on {{ PRODUCT_NAME }}:
 ### Install the XDN CLI globally
 
 ```bash
-npm install -g @xdn/cli
+npm install -g {{ PACKAGE_NAME }}/cli
 ```
 
 \*\*Note
-When installing the XDN CLI globally in a virtual environment that has Node and NPM installed globally, you [may run into permission issues](https://forum.moovweb.com/t/xdn-cli-npm-install-error/83). In that case, you can install the XDN CLI locally within you app using `npm i -D @xdn/cli` and running commands using `./node_modules/@xdn/cli` instead of `xdn`.
+When installing the XDN CLI globally in a virtual environment that has Node and NPM installed globally, you [may run into permission issues](https://forum.moovweb.com/t/xdn-cli-npm-install-error/83). In that case, you can install the XDN CLI locally within you app using `npm i -D {{ PACKAGE_NAME }}/cli` and running commands using `./node_modules/{{ PACKAGE_NAME }}/cli` instead of `xdn`.
 
 If you run into permission issues while attempting to install the XDN CLI globally on your local development machine, these may be fixed by using [nvm](https://github.com/nvm-sh/nvm) to manage Node and NPM.
 
@@ -64,10 +64,10 @@ xdn init
 
 This will automatically add all of the required dependencies and files to your project. These include:
 
-- The `@xdn/core` package - Allows you to declare routes and deploy your application on {{ PRODUCT_NAME }}
-- The `@xdn/next` package - Provides router middleware that automatically adds Next.js pages and api routes to the XDN router.
-- The `@xdn/prefetch` package - Allows you to configure a service worker to prefetch and cache pages to improve browsing speed
-- The `@xdn/react` package - Provides a `Prefetch` component for prefetching pages
+- The `{{ PACKAGE_NAME }}/core` package - Allows you to declare routes and deploy your application on {{ PRODUCT_NAME }}
+- The `{{ PACKAGE_NAME }}/next` package - Provides router middleware that automatically adds Next.js pages and api routes to the XDN router.
+- The `{{ PACKAGE_NAME }}/prefetch` package - Allows you to configure a service worker to prefetch and cache pages to improve browsing speed
+- The `{{ PACKAGE_NAME }}/react` package - Provides a `Prefetch` component for prefetching pages
 - `xdn.config.js`
 - `routes.js` - A default routes file that sends all requests to Next.js. Update this file to add caching or proxy some URLs to a different origin.
 - `sw/service-worker.js` A service worker implemented using Workbox.
@@ -79,7 +79,7 @@ Add the `withXDN` and `withServiceWorker` plugins to `next.config.js`. If this f
 ```js
 // next.config.js
 
-const { withXDN, withServiceWorker } = require('@xdn/next/config')
+const { withXDN, withServiceWorker } = require('{{ PACKAGE_NAME }}/next/config')
 
 module.exports = withXDN(
   withServiceWorker({
@@ -117,15 +117,15 @@ See [deploying](deploying) for more information.
 The `xdn init` command adds a service worker based on [Workbox](https://developers.google.com/web/tools/workbox) at `sw/service-worker.js`. If you have an existing service worker that uses workbox, you can copy its contents into `sw/service-worker.js` and simply add the following to your service worker:
 
 ```js
-import { Prefetcher } from '@xdn/prefetch/sw'
+import { Prefetcher } from '{{ PACKAGE_NAME }}/prefetch/sw'
 
 new Prefetcher().route()
 ```
 
-The above allows you to prefetch pages from the XDN's edge cache to greatly improve browsing speed. To prefetch a page, add the `Prefetch` component from `@xdn/react` to any Next `Link` element:
+The above allows you to prefetch pages from the XDN's edge cache to greatly improve browsing speed. To prefetch a page, add the `Prefetch` component from `{{ PACKAGE_NAME }}/react` to any Next `Link` element:
 
 ```js
-import { Prefetch } from '@xdn/react'
+import { Prefetch } from '{{ PACKAGE_NAME }}/react'
 import Link from 'next/link'
 
 export default function ProductListing({ products }) {
@@ -170,8 +170,8 @@ The XDN supports Next.js's built-in routing scheme for both page and api routes,
 ```js
 // This file was automatically added by xdn deploy.
 // You should commit this file to source control.
-const { Router } = require('@xdn/core/router')
-const { nextRoutes } = require('@xdn/next')
+const { Router } = require('{{ PACKAGE_NAME }}/core/router')
+const { nextRoutes } = require('{{ PACKAGE_NAME }}/next')
 
 module.exports = new Router()
   .get('/service-worker.js', ({ cache, serveStatic }) => {
@@ -222,8 +222,8 @@ The `nextRoutes` middleware automatically adds routes for [rewrites](https://nex
 To render a specific page, use the `renderNextPage` function:
 
 ```js
-const { Router } = require('@xdn/core/router')
-const { renderNextPage, nextRoutes } = require('@xdn/next')
+const { Router } = require('{{ PACKAGE_NAME }}/core/router')
+const { renderNextPage, nextRoutes } = require('{{ PACKAGE_NAME }}/next')
 
 module.exports = new Router()
   .get('/some/vanity/url/:p', res => {
@@ -243,8 +243,8 @@ The `renderNextPage` function takes the following parameters:
 You can explicitly render the Next.js 404 page using `nextRoutes.render404(res)`:
 
 ```js
-const { Router } = require('@xdn/core/router')
-const { renderNextPage, nextRoutes } = require('@xdn/next')
+const { Router } = require('{{ PACKAGE_NAME }}/core/router')
+const { renderNextPage, nextRoutes } = require('{{ PACKAGE_NAME }}/next')
 
 module.exports = new Router()
   .get('/some/missing/page', res => {
@@ -258,8 +258,8 @@ module.exports = new Router()
 Usually Next.js requires 404.js to be a static page. The XDN enables you to render a specific page when no other route is matched using `router.fallback`:
 
 ```js
-const { Router } = require('@xdn/core/router')
-const { renderNextPage, nextRoutes } = require('@xdn/next')
+const { Router } = require('{{ PACKAGE_NAME }}/core/router')
+const { renderNextPage, nextRoutes } = require('{{ PACKAGE_NAME }}/next')
 
 module.exports = new Router().use(nextRoutes).fallback(res => {
   renderNextPage('/not-found', res) // render pages/not-found.js, which can be dynamic (using getInitialProps or getServerSideProps)
@@ -303,7 +303,7 @@ new Router()
 
 ### Preventing Next.js pages from being cached by other CDNs
 
-By default, Next.js adds a `cache-control: private, no-cache, no-store, must-revalidate` header to all responses from `getServerSideProps`. The presence of `private` would prevent the XDN from caching the response, so `nextRoutes` middleware from `@xdn/next` automatically removes the `private` portion of the header to enable caching at edge. If you want your responses to be private, you need to specify a `cache-control` header using the router:
+By default, Next.js adds a `cache-control: private, no-cache, no-store, must-revalidate` header to all responses from `getServerSideProps`. The presence of `private` would prevent the XDN from caching the response, so `nextRoutes` middleware from `{{ PACKAGE_NAME }}/next` automatically removes the `private` portion of the header to enable caching at edge. If you want your responses to be private, you need to specify a `cache-control` header using the router:
 
 ```js
 new Router().get('/my-private-page', ({ setResponseHeader }) => {

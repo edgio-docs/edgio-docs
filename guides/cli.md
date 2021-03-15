@@ -7,13 +7,13 @@ This guide shows you everything you can do with the XDN command line interface.
 To install the XDN CLI run
 
 ```bash
-npm i -g @xdn/cli
+npm i -g {{ PACKAGE_NAME }}/cli
 ```
 
 Or with yarn:
 
 ```bash
-yarn global add @xdn/cli
+yarn global add {{ PACKAGE_NAME }}/cli
 ```
 
 ## Commands
@@ -197,7 +197,7 @@ Production mode is always used whe running downloaded bundles.
 
 ### use
 
-Switches the version of all @xdn/\* packages in your project.
+Switches the version of all {{ PACKAGE_NAME }}/\* packages in your project.
 
 #### Example
 

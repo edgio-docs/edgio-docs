@@ -27,7 +27,7 @@ Instead of relying solely on Google Search Console, we recommend tracking Core W
 
 ## Installation
 
-In order to start tracking Core Web Vitals on {{ PRODUCT_NAME }}, you need add the `@xdn/rum` client library to your application. There are a number of ways to do this:
+In order to start tracking Core Web Vitals on {{ PRODUCT_NAME }}, you need add the `{{ PACKAGE_NAME }}/rum` client library to your application. There are a number of ways to do this:
 
 ### Script Tag
 
@@ -67,19 +67,19 @@ To add Core Web Vitals tracking via a script tag, add the following to each page
 To install the Core Web Vitals library using npm, run:
 
 ```
-npm install --save @xdn/rum
+npm install --save {{ PACKAGE_NAME }}/rum
 ```
 
 Or, using yarn:
 
 ```
-yarn add @xdn/rum
+yarn add {{ PACKAGE_NAME }}/rum
 ```
 
 Then, add the following to your application's browser bundle:
 
 ```js
-import { Metrics } from '@xdn/rum'
+import { Metrics } from '{{ PACKAGE_NAME }}/rum'
 
 new Metrics({
   token: 'your-token-here', // get this from https://moovweb.app
@@ -90,7 +90,7 @@ new Metrics({
 
 You can tie URLs to pages templates by providing an optional `router` parameter to `Metrics`.
 
-When installing @xdn/rum using a script tag, use:
+When installing {{ PACKAGE_NAME }}/rum using a script tag, use:
 
 ```js
 new XDN.Metrics({
@@ -105,11 +105,11 @@ new XDN.Metrics({
 }).collect()
 ```
 
-When installing @xdn/rum via NPM or Yarn use:
+When installing {{ PACKAGE_NAME }}/rum via NPM or Yarn use:
 
 ```js
-import { Router } from '@xdn/rum/Router'
-import { Metrics } from '@xdn/rum'
+import { Router } from '{{ PACKAGE_NAME }}/rum/Router'
+import { Metrics } from '{{ PACKAGE_NAME }}/rum'
 
 new Metrics({
   // get this from https://moovweb.app

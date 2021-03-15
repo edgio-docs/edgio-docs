@@ -93,7 +93,7 @@ To guard against this attack you must ensure that all the request parameters tha
 For example, if you are rendering content based on a custom language cookie, then you must include it in your custom cache key:
 
 ```js
-import { CustomCacheKey } from '@xdn/core/router'
+import { CustomCacheKey } from '{{ PACKAGE_NAME }}/core/router'
 
 router.get('/some/path/depending/on/language/cookie', ({ cache }) => {
   cache({

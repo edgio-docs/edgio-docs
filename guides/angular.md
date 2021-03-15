@@ -54,7 +54,7 @@ To prepare your Angular application for deployment on {{ PRODUCT_NAME }}:
 #### 1. Install {{ PRODUCT_NAME }} CLI globally:
 
 ```bash
-npm install -g @xdn/cli
+npm install -g {{ PACKAGE_NAME }}/cli
 ```
 
 #### 2. Run the following in the root folder of your project. This will configure your project for {{ PRODUCT_NAME }}.
@@ -65,9 +65,9 @@ xdn init
 
 This will automatically add all of the required dependencies and files to your project. These include:
 
-- The `@xdn/core` package
-- The `@xdn/angular` package
-- The `@xdn/cli` package
+- The `{{ PACKAGE_NAME }}/core` package
+- The `{{ PACKAGE_NAME }}/angular` package
+- The `{{ PACKAGE_NAME }}/cli` package
 - `xdn.config.js`- Contains various configuration options for {{ PRODUCT_NAME }}.
 - `routes.js` - A default routes file that sends all requests to the Angular Universal server. Update this file to add caching or proxy some URLs to a different origin.
 
@@ -83,8 +83,8 @@ The default `routes.js` file created by `xdn init` sends all requests to Angular
 // This file was automatically added by xdn deploy.
 // You should commit this file to source control.
 
-const { Router } = require('@xdn/core/router')
-import { angularRoutes } from '@xdn/angular'
+const { Router } = require('{{ PACKAGE_NAME }}/core/router')
+import { angularRoutes } from '{{ PACKAGE_NAME }}/angular'
 
 export default new Router().use(angularRoutes)
 ```

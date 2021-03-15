@@ -22,7 +22,7 @@ _Note that while you can use any version of Node.js >= 12 locally, your app will
 If you have not already done so, install the [XDN CLI](cli)
 
 ```bash
-npm i -g @xdn/cli
+npm i -g {{ PACKAGE_NAME }}/cli
 ```
 
 ## Creating a new Nuxt app
@@ -43,13 +43,13 @@ Nuxt's create module will ask you a series of questions to configure your app. M
 
 To prepare your Nuxt.js application for {{ PRODUCT_NAME }}:
 
-1. In `nuxt.config.js`, add "@xdn/nuxt/module" to `buildModules`:
+1. In `nuxt.config.js`, add "{{ PACKAGE_NAME }}/nuxt/module" to `buildModules`:
 
 ```js
 // nuxt.config.js
 
 module.exports = {
-  buildModules: ['@xdn/nuxt/module'],
+  buildModules: ['{{ PACKAGE_NAME }}/nuxt/module'],
 }
 ```
 
@@ -61,9 +61,9 @@ xdn init
 
 The `xdn init` command will automatically add all the required dependencies and files to your project. These include:
 
-- The `@xdn/core` package
-- The `@xdn/nuxt` package
-- The `@xdn/vue` package
+- The `{{ PACKAGE_NAME }}/core` package
+- The `{{ PACKAGE_NAME }}/nuxt` package
+- The `{{ PACKAGE_NAME }}/vue` package
 - `xdn.config.js` - Contains various configuration options for the XDN.
 - `routes.js` - A default routes file that sends all requests to `nuxt.js`. You can update this file to add caching or proxy some URLs to a different origin as described later in this guide.
 - `sw/service-worker.js` - A service worker that provides static asset and API prefetching.
@@ -90,9 +90,9 @@ As an example, here's the original `package.json` from Nuxt's create step:
     "generate": "nuxt generate"
   },
   "dependencies": {
-    "@xdn/cli": "^2.0.0",
-    "@xdn/core": "^2.0.0",
-    "@xdn/nuxt": "^2.0.0",
+    "{{ PACKAGE_NAME }}/cli": "^2.0.0",
+    "{{ PACKAGE_NAME }}/core": "^2.0.0",
+    "{{ PACKAGE_NAME }}/nuxt": "^2.0.0",
     "nuxt": "^2.0.0"
   },
   "devDependencies": {}
@@ -119,10 +119,10 @@ And here is the `package.json` after modifications by `xdn init`:
     "@nuxt/core": "^2.12.2"
   },
   "devDependencies": {
-    "@xdn/cli": "^2.0.0",
-    "@xdn/core": "^2.0.0",
-    "@xdn/nuxt": "^2.0.0",
-    "@xdn/vue": "^2.0.0",
+    "{{ PACKAGE_NAME }}/cli": "^2.0.0",
+    "{{ PACKAGE_NAME }}/core": "^2.0.0",
+    "{{ PACKAGE_NAME }}/nuxt": "^2.0.0",
+    "{{ PACKAGE_NAME }}/vue": "^2.0.0",
     "dotenv": "^8.2.0",
     "nuxt": "^2.0.0",
     "serverless": "^1.64.0",
@@ -152,8 +152,8 @@ The XDN supports Nuxt.js's built-in routing scheme. The default `routes.js` file
 ```js
 // This file was automatically added by xdn deploy.
 // You should commit this file to source control.
-const { Router } = require('@xdn/core/router')
-const { nuxtRoutes, renderNuxtPage } = require('@xdn/nuxt')
+const { Router } = require('{{ PACKAGE_NAME }}/core/router')
+const { nuxtRoutes, renderNuxtPage } = require('{{ PACKAGE_NAME }}/nuxt')
 
 module.exports = new Router().use(nuxtRoutes)
 ```
@@ -227,14 +227,14 @@ new Router()
 
 ## Prefetching
 
-The `@xdn/nuxt/module` builds a service worker that enables prefetching using the XDN and injects it into your app's browser code. The service worker is based on Google's [Workbox](https://developers.google.com/web/tools/workbox) library. The entry point for the service worker source code is `sw/service-worker.js`. If your app has an existing service worker that uses workbox, you can copy its contents into `sw/service-worker.js` and simply add the following to your service worker:
+The `{{ PACKAGE_NAME }}/nuxt/module` builds a service worker that enables prefetching using the XDN and injects it into your app's browser code. The service worker is based on Google's [Workbox](https://developers.google.com/web/tools/workbox) library. The entry point for the service worker source code is `sw/service-worker.js`. If your app has an existing service worker that uses workbox, you can copy its contents into `sw/service-worker.js` and simply add the following to your service worker:
 
 ```js
-import { Prefetcher } from '@xdn/prefetch/sw'
+import { Prefetcher } from '{{ PACKAGE_NAME }}/prefetch/sw'
 new Prefetcher().route()
 ```
 
-The above allows you to prefetch pages from the XDN's edge cache to greatly improve browsing speed. To prefetch a page, add the `Prefetch` component from `@xdn/vue` to any `router-link` or `nuxt-link` element:
+The above allows you to prefetch pages from the XDN's edge cache to greatly improve browsing speed. To prefetch a page, add the `Prefetch` component from `{{ PACKAGE_NAME }}/vue` to any `router-link` or `nuxt-link` element:
 
 ```jsx
 <template>
@@ -249,7 +249,7 @@ The above allows you to prefetch pages from the XDN's edge cache to greatly impr
   </ul>
 </template>
 <script>
-  import { Prefetch } from '@xdn/vue'
+  import { Prefetch } from '{{ PACKAGE_NAME }}/vue'
   export default {
     components: {
       Prefetch,
@@ -269,8 +269,8 @@ The XDN supports fully and partially static sites using Nuxt [generate](https://
 By default, requests for any pages that are not statically rendered at build time will fall back to server side rendering. If you use the XDN router to cache pages that are not statically rendered, the first user who attempts to access the page will see the fallback HTML page generated by Nuxt (200.html by default). The XDN will render and cache the HTML in the background so that subsequent visits result in a full HTML response. This behavior is similar to Next.js incremental static rendering (ISG). Here is an example route that adds caching for a partially static page:
 
 ```js
-import { Router } from '@xdn/core/router'
-import { nuxtRoutes } from '@xdn/nuxt'
+import { Router } from '{{ PACKAGE_NAME }}/core/router'
+import { nuxtRoutes } from '{{ PACKAGE_NAME }}/nuxt'
 
 export default new Router()
   .get('/products/:id', ({ cache }) => {
@@ -338,7 +338,7 @@ $ xdn init
 Make sure you installed the XDN CLI
 
 ```bash
-npm i -g @xdn/cli
+npm i -g {{ PACKAGE_NAME }}/cli
 ```
 
 ### Make sure your version of XDN CLI is current
@@ -348,7 +348,7 @@ If you previously installed the XDN CLI, make sure your version is current.
 Check npm for the latest released version of the CLI:
 
 ```bash
-$ npm show @xdn/cli version
+$ npm show {{ PACKAGE_NAME }}/cli version
 1.16.2
 ```
 
@@ -362,5 +362,5 @@ $ xdn --version
 If your version is out of date you can update it by running
 
 ```bash
-npm update -g @xdn/cli
+npm update -g {{ PACKAGE_NAME }}/cli
 ```

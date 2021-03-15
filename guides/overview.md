@@ -33,8 +33,8 @@ Check out our video [{{ PRODUCT_NAME }} - What & Why](https://www.youtube.com/wa
 ```js
 // Example XDN routes file for a Next.js app
 
-const { Router } = require('@xdn/core/router')
-const { nextRoutes } = require('@xdn/next')
+const { Router } = require('{{ PACKAGE_NAME }}/core/router')
+const { nextRoutes } = require('{{ PACKAGE_NAME }}/next')
 
 export default nextJSApp => {
   return new Router()

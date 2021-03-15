@@ -11,13 +11,13 @@ To deploy your site to {{ PRODUCT_NAME }}, you must first sign up for an account
 Next, globally install the XDN cli using npm:
 
 ```bash
-npm i -g @xdn/cli
+npm i -g {{ PACKAGE_NAME }}/cli
 ```
 
 Or using yarn:
 
 ```bash
-yarn global add @xdn/cli
+yarn global add {{ PACKAGE_NAME }}/cli
 ```
 
 ## xdn login

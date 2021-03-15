@@ -28,7 +28,7 @@ npm install
 To prepare your Vue Storefront app for deployment on {{ PRODUCT_NAME }}, run the following commands in the root folder of your project:
 
 ```
-npm install -g @xdn/cli
+npm install -g {{ PACKAGE_NAME }}/cli
 xdn init
 ```
 
@@ -36,7 +36,7 @@ xdn init
 
 The XDN init command should have automatically moved all your `modules` to `buildModules` in order to deploy the smallest possible build to the XDN.
 
-Ensure `@nuxtjs/pwa` is not present in the `buildModules`. It is not needed because `@xdn/nuxt/module` builds and injects its own service worker.
+Ensure `@nuxtjs/pwa` is not present in the `buildModules`. It is not needed because `{{ PACKAGE_NAME }}/nuxt/module` builds and injects its own service worker.
 
 ## Development
 

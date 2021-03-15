@@ -22,7 +22,7 @@ nvm use 12
 
 ## 3. Install XDN
 
-- Install XDN packages: `yarn add -D -W @xdn/cli && yarn add -W @xdn/core @xdn/prefetch @xdn/devtools`
+- Install XDN packages: `yarn add -D -W {{ PACKAGE_NAME }}/cli && yarn add -W {{ PACKAGE_NAME }}/core {{ PACKAGE_NAME }}/prefetch {{ PACKAGE_NAME }}/devtools`
 - Create a file called `xdn.config.js` in the root directory of your project and configure your origin and images hosts as backends. For example:
 
 ```js
@@ -47,11 +47,13 @@ module.exports = {
 - Create `xdn/service-worker.js`, which will contain the source code for your service worker:
 
 ```js
-import { Prefetcher } from '@xdn/prefetch/sw'
+import { Prefetcher } from '{{ PACKAGE_NAME }}/prefetch/sw'
 import { clientsClaim, skipWaiting } from 'workbox-core'
 import { precacheAndRoute } from 'workbox-precaching'
-import DeepFetchPlugin, { DeepFetchCallbackParam } from '@xdn/prefetch/sw/DeepFetchPlugin'
-import { prefetch } from '@xdn/prefetch/window/prefetch'
+import DeepFetchPlugin, {
+  DeepFetchCallbackParam,
+} from '{{ PACKAGE_NAME }}/prefetch/sw/DeepFetchPlugin'
+import { prefetch } from '{{ PACKAGE_NAME }}/prefetch/window/prefetch'
 skipWaiting()
 clientsClaim()
 precacheAndRoute(self.__WB_MANIFEST || [])
@@ -61,8 +63,8 @@ new Prefetcher().route()
 - Create `xdn/browser.js` with the following content:
 
 ```js
-import installDevtools from '@xdn/devtools/install'
-import install from '@xdn/prefetch/window/install'
+import installDevtools from '{{ PACKAGE_NAME }}/devtools/install'
+import install from '{{ PACKAGE_NAME }}/prefetch/window/install'
 
 document.addEventListener('DOMContentLoaded', () => {
   console.info('[XDN browser] DOMContentLoaded -> running install()')
@@ -77,9 +79,9 @@ document.addEventListener('DOMContentLoaded', () => {
 - Create `xdn/routes.js`. Here you will configure caching for each route in your application. Here is an example:
 
 ```js
-import { Router } from '@xdn/core/router'
+import { Router } from '{{ PACKAGE_NAME }}/core/router'
 import { CACHE_ASSETS, CACHE_PAGES } from './cache'
-import { BACKENDS } from '@xdn/core/constants'
+import { BACKENDS } from '{{ PACKAGE_NAME }}/core/constants'
 const DIST_APP = 'dist'
 const DIST_XDN_CLIENT = 'dist-xdn-client'
 const DIST_XDN_ASSETS = 'dist-xdn-assets'

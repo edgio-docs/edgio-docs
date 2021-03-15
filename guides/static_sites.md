@@ -28,7 +28,7 @@ _Note that while you can use any version of Node.js >= 12 locally, your app will
 To prepare your static app for deployment on {{ PRODUCT_NAME }}, install the XDN CLI globally:
 
 ```bash
-npm install -g @xdn/cli
+npm install -g {{ PACKAGE_NAME }}/cli
 ```
 
 Then, in the root folder of your project, run:
@@ -40,8 +40,8 @@ xdn init
 This will automatically add all of the required dependencies and files to your
 project. These include:
 
-- The `@xdn/core` package - Allows you to declare routes and deploy your application on {{ PRODUCT_NAME }}
-- The `@xdn/prefetch` package - Allows you to configure a service worker to prefetch and cache pages to improve browsing speed
+- The `{{ PACKAGE_NAME }}/core` package - Allows you to declare routes and deploy your application on {{ PRODUCT_NAME }}
+- The `{{ PACKAGE_NAME }}/prefetch` package - Allows you to configure a service worker to prefetch and cache pages to improve browsing speed
 - `xdn.config.js` - The main configuration file for the XDN.
 - `routes.js` - A default routes file that sends all requests to Next.js. Update this file to add caching or proxy some URLs to a different origin.
 - `sw/service-worker.js` A service worker implemented using Workbox.
@@ -65,7 +65,7 @@ You will need to define route handlers to serve `index.html` and the CSS/JS reso
 ```js
 // routes.js
 
-const { Router } = require('@xdn/core/router')
+const { Router } = require('{{ PACKAGE_NAME }}/core/router')
 
 const ONE_HOUR = 60 * 60
 const ONE_DAY = 24 * ONE_HOUR

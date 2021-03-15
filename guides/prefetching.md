@@ -10,14 +10,14 @@ You might think that prefetching will put significant additional load on the inf
 
 ## Service Worker
 
-To enable prefetching, your site's service worker needs to use the `@xdn/prefetch` library's `Prefetcher` class. If your site doesn't currently have a service worker, one can easily be created using Google's [Workbox](https://developers.google.com/web/tools/workbox)
+To enable prefetching, your site's service worker needs to use the `{{ PACKAGE_NAME }}/prefetch` library's `Prefetcher` class. If your site doesn't currently have a service worker, one can easily be created using Google's [Workbox](https://developers.google.com/web/tools/workbox)
 
 Here's an example service worker based on Workbox:
 
 ```js
 import { skipWaiting, clientsClaim } from 'workbox-core'
 import { precacheAndRoute } from 'workbox-precaching'
-import { Prefetcher } from '@xdn/prefetch/sw'
+import { Prefetcher } from '{{ PACKAGE_NAME }}/prefetch/sw'
 
 skipWaiting()
 clientsClaim()
@@ -30,20 +30,20 @@ new Prefetcher().route()
 
 Once you've created a service worker, code running in the browser window needs to register the service worker before prefetching can begin. How you do this depends on the front-end framework that you use.
 
-If you're not using a front-end framework, you can use the `install` function from `@xdn/prefetch` to install the service worker. Here's an example:
+If you're not using a front-end framework, you can use the `install` function from `{{ PACKAGE_NAME }}/prefetch` to install the service worker. Here's an example:
 
 ```js
-import install from '@xdn/prefetch/window/install'
+import install from '{{ PACKAGE_NAME }}/prefetch/window/install'
 
 install()
 ```
 
 ## Prefetching a URL
 
-To prefetch a URL, call the `prefetch` function from `@xdn/prefetch/window`:
+To prefetch a URL, call the `prefetch` function from `{{ PACKAGE_NAME }}/prefetch/window`:
 
 ```js
-import { prefetch } from '@xdn/prefetch/window'
+import { prefetch } from '{{ PACKAGE_NAME }}/prefetch/window'
 
 prefetch('/some/url')
 ```
@@ -52,10 +52,10 @@ Prefetch requests are given the lowest priority. This ensures that they do not b
 
 ## React
 
-The `@xdn/react` package provides a `Prefetch` component that you can wrap around any link to prefetch the link when it becomes visible in the viewport:
+The `{{ PACKAGE_NAME }}/react` package provides a `Prefetch` component that you can wrap around any link to prefetch the link when it becomes visible in the viewport:
 
 ```js
-import { Prefetch } from '@xdn/react'
+import { Prefetch } from '{{ PACKAGE_NAME }}/react'
 
 function MyComponent() {
   return (
@@ -72,7 +72,7 @@ If you're using Next.js, the `Prefetch` component assumes you're using `getServe
 
 ```js
 import Link from 'next/link'
-import { Prefetch } from '@xdn/react'
+import { Prefetch } from '{{ PACKAGE_NAME }}/react'
 
 export default function ProductListingPage() {
   return (
@@ -103,7 +103,7 @@ If you need to prefetch a different url, you can do so using the `url` prop:
 
 ## Vue
 
-The `@xdn/vue` package provides a `Prefetch` component that you can wrap around any link to prefetch the link when it becomes visible in the viewport:
+The `{{ PACKAGE_NAME }}/vue` package provides a `Prefetch` component that you can wrap around any link to prefetch the link when it becomes visible in the viewport:
 
 ```jsx
 <template>
@@ -113,7 +113,7 @@ The `@xdn/vue` package provides a `Prefetch` component that you can wrap around 
 </template>
 
 <script>
-  import Prefetch from '@xdn/vue/Prefetch'
+  import Prefetch from '{{ PACKAGE_NAME }}/vue/Prefetch'
   export default {
     components: {
       Prefetch,
@@ -131,8 +131,8 @@ By default, prefetching only fetches the JSON API data or HTML document for a pr
 To add deep fetching to your project, add the [DeepFetchPlugin](/docs/api/prefetch/classes/_sw_deepfetchplugin_.deepfetchplugin.html) to your service worker. The `DeepFetchPlugin` is then configured with an array of selectors that describe which assets need to be prefetched:
 
 ```js
-import { Prefetcher } from '@xdn/prefetch/sw'
-import DeepFetchPlugin from '@xdn/prefetch/sw/DeepFetchPlugin'
+import { Prefetcher } from '{{ PACKAGE_NAME }}/prefetch/sw'
+import DeepFetchPlugin from '{{ PACKAGE_NAME }}/prefetch/sw/DeepFetchPlugin'
 
 new Prefetcher({
   plugins: [
@@ -177,8 +177,8 @@ To deep fetch HTML documents, pass the plugin objects that match the [DeepFetchH
 For example, imagine you're configuring prefetching for a product page and you want to ensure the main product image is prefetched so that it appears immediately when the page loads. If the main product image is displayed with an HTML `img` element with a CSS class called `product-featured-media`, it can be prefetched by adding the following to the DeepFetchPlugin:
 
 ```js
-import { Prefetcher } from '@xdn/prefetch/sw'
-import DeepFetchPlugin from '@xdn/prefetch/sw/DeepFetchPlugin'
+import { Prefetcher } from '{{ PACKAGE_NAME }}/prefetch/sw'
+import DeepFetchPlugin from '{{ PACKAGE_NAME }}/prefetch/sw/DeepFetchPlugin'
 
 new Prefetcher({
   plugins: [
@@ -199,8 +199,10 @@ new Prefetcher({
 In the example above the `img` element's `src` attribute contains URL that needs to be prefetched. Sometimes finding the URL to prefetch is not so straightforward. For example, apps sometimes use JavaScript to compute the URL for responsive images based on the user's device size. In such cases you can provide a `callback` function which will be passed all matching elements and decide what URLs to prefetch. Here is an example:
 
 ```typescript
-import { Prefetcher, prefetch } from '@xdn/prefetch/sw'
-import DeepFetchPlugin, { DeepFetchCallbackParam } from '@xdn/prefetch/sw/DeepFetchPlugin'
+import { Prefetcher, prefetch } from '{{ PACKAGE_NAME }}/prefetch/sw'
+import DeepFetchPlugin, {
+  DeepFetchCallbackParam,
+} from '{{ PACKAGE_NAME }}/prefetch/sw/DeepFetchPlugin'
 
 new Prefetcher({
   plugins: [
@@ -245,7 +247,7 @@ To achieve this:
 
 ```js
 import { skipWaiting, clientsClaim } from 'workbox-core'
-import { Prefetcher } from '@xdn/prefetch/sw'
+import { Prefetcher } from '{{ PACKAGE_NAME }}/prefetch/sw'
 
 skipWaiting()
 clientsClaim()
@@ -259,7 +261,7 @@ new Prefetcher({
 8. Add a script to your app's source to install the service worker on each page. Here's an example:
 
 ```js
-import { install, prefetch } from '@xdn/prefetch/window'
+import { install, prefetch } from '{{ PACKAGE_NAME }}/prefetch/window'
 
 document.addEventListener('DOMContentLoaded', function() {
   install({
@@ -296,10 +298,10 @@ The XDN also enables caching and prefetching of GraphQL requests via a middlewar
 - So that the URLs are sufficiently unique cache keys
 - Browser cache APIs only support caching GETs
 
-2. Add `@xdn/apollo` to your project:
+2. Add `{{ PACKAGE_NAME }}/apollo` to your project:
 
 ```
-npm i --save @xdn/apollo
+npm i --save {{ PACKAGE_NAME }}/apollo
 ```
 
 3. Add your GraphQL API as a backend to `xdn.config.js`. For example:
@@ -320,7 +322,7 @@ module.exports = {
 4. Add a GET route for the GraphQL endpoint to your router:
 
 ```js
-const { Router, CustomCacheKey } = require('@xdn/core/router')
+const { Router, CustomCacheKey } = require('{{ PACKAGE_NAME }}/core/router')
 
 module.exports = new Router().get('/graphql', ({ cache, removeUpstreamResponseHeader, proxy }) => {
   cache({
@@ -344,10 +346,10 @@ module.exports = new Router().get('/graphql', ({ cache, removeUpstreamResponseHe
 })
 ```
 
-5. Configure your Apollo client to use a custom link from @xdn/apollo's `createHttpLink` function. For example:
+5. Configure your Apollo client to use a custom link from {{ PACKAGE_NAME }}/apollo's `createHttpLink` function. For example:
 
 ```js
-import { createHttpLink } from '@xdn/apollo'
+import { createHttpLink } from '{{ PACKAGE_NAME }}/apollo'
 
 export default () => ({
   defaultHttpLink: false,
@@ -370,8 +372,8 @@ uses GET requests for all queries so that they can be cached at the edge and pre
 6. Use `createApolloURL(client, query, variables)` to create the URL to prefetch:
 
 ```js
-import { Prefetch } from '@xdn/react'
-import { createApolloURL } from '@xdn/apollo'
+import { Prefetch } from '{{ PACKAGE_NAME }}/react'
+import { createApolloURL } from '{{ PACKAGE_NAME }}/apollo'
 import productById from '../apollo/queries/productById.gql'
 
 function MyProductLink({ product }) {

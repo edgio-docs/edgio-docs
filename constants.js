@@ -1,5 +1,6 @@
 export const PRODUCT_NAME = 'Layer0'
 export const CLI_NAME = 'l0'
+export const PACKAGE_NAME = '@l0'
 
 export const DOMAIN = 'layer0.co'
 export const APP_DOMAIN = `app.${DOMAIN}`

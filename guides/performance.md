@@ -8,11 +8,11 @@ All responses contain an [x-xdn-t](/guides/response_headers#section_structure_of
 
 ## Tracking your own timings
 
-You can use the `@xdn/core/timing` module to track how long it takes parts of your code to execute. A common case is
+You can use the `{{ PACKAGE_NAME }}/core/timing` module to track how long it takes parts of your code to execute. A common case is
 tracking how long it takes to fetch a result from an upstream API. For example:
 
 ```js
-import Timing from '@xdn/core/timing'
+import Timing from '{{ PACKAGE_NAME }}/core/timing'
 
 const timing = new Timing('api').start()
 

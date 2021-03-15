@@ -1,6 +1,6 @@
 # Connectors
 
-Connector packages help build and run your app within the XDN. When you run `xdn init`, the XDN CLI detects the framework used by your app and installs the corresponding connector package. For example, if you use Next.js, `@xdn/next` will be installed. If no connector package exists for the framework that you use, you can still deploy to the XDN by implementing the connector interface directly in your app.
+Connector packages help build and run your app within the XDN. When you run `xdn init`, the XDN CLI detects the framework used by your app and installs the corresponding connector package. For example, if you use Next.js, `{{ PACKAGE_NAME }}/next` will be installed. If no connector package exists for the framework that you use, you can still deploy to the XDN by implementing the connector interface directly in your app.
 
 ## Writing a connector
 
@@ -24,7 +24,7 @@ Example:
 ```js
 /* istanbul ignore file */
 const { join } = require('path')
-const { DeploymentBuilder } = require('@xdn/core/deploy')
+const { DeploymentBuilder } = require('{{ PACKAGE_NAME }}/core/deploy')
 
 /**
  * Called when the user runs xdn init.
@@ -57,14 +57,14 @@ Additional files can be added beyond the ones listed above. They will be copied 
 
 ## dev.js
 
-Called when the user runs `xdn dev`. This entry point is responsible for starting the user's application in development mode. The `@xdn/core` library provides a `createDevServer` function to help with this.
+Called when the user runs `xdn dev`. This entry point is responsible for starting the user's application in development mode. The `{{ PACKAGE_NAME }}/core` library provides a `createDevServer` function to help with this.
 
 _Optional, if not provided, xdn dev will simply start the XDN in local development mode, but will not start a framework application server._
 
 Example:
 
 ```js
-const { createDevServer } = require('@xdn/core/dev')
+const { createDevServer } = require('{{ PACKAGE_NAME }}/core/dev')
 
 module.exports = function() {
   return createDevServer({
@@ -87,15 +87,15 @@ module.exports = function() {
 
 ## build.js
 
-Exports a function that is called when you run `xdn build`. It is responsible for constructing the bundle that is deployed to the XDN cloud. This function typically uses `@xdn/core/deploy/DeploymentBuilder` to stage the exploded bundle in the `.xdn` directory.
+Exports a function that is called when you run `xdn build`. It is responsible for constructing the bundle that is deployed to the XDN cloud. This function typically uses `{{ PACKAGE_NAME }}/core/deploy/DeploymentBuilder` to stage the exploded bundle in the `.xdn` directory.
 
 _Optional, and not needed in most cases. The xdn build command automatically creates a bundle that includes all static assets referenced in your routes file as well as the `prod` entry point mentioned above._
 
 Example:
 
 ```js
-const { DeploymentBuilder } = require('@xdn/core/deploy')
-const FrameworkBuildError = require('@xdn/core/errors/FrameworkBuildError')
+const { DeploymentBuilder } = require('{{ PACKAGE_NAME }}/core/deploy')
+const FrameworkBuildError = require('{{ PACKAGE_NAME }}/core/errors/FrameworkBuildError')
 
 export default async function build({ skipFramework }) {
   const builder = new DeploymentBuilder(appDir)

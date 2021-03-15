@@ -13,7 +13,7 @@ _Note that while you can use any version of Node.js >= 12 locally, your app will
 To add the XDN to an existing app, run the following:
 
 ```bash
-npm i -g @xdn/cli
+npm i -g {{ PACKAGE_NAME }}/cli
 xdn init
 ```
 

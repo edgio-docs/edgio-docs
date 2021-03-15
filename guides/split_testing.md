@@ -41,7 +41,7 @@ Then, add a `destination` for each site to your router. For example,
 
 ```js
 // routes.js
-const { Router } = require('@xdn/core/router')
+const { Router } = require('{{ PACKAGE_NAME }}/core/router')
 
 module.exports = new Router()
   .destination(

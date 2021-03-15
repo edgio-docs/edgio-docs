@@ -28,23 +28,23 @@ npx frontity create my-app
 To prepare your Frontity app for deployment on {{ PRODUCT_NAME }}, run the following in the root folder of your project:
 
 ```
-npm install -g @xdn/cli
+npm install -g {{ PACKAGE_NAME }}/cli
 xdn init
 ```
 
 This will automatically add all of the required dependencies and files to your project. These include:
 
-- The `@xdn/core` package - Allows you to declare routes and deploy your application on {{ PRODUCT_NAME }}
-- The `@xdn/frontity` package - Provides router middleware that automatically adds Frontity routes to the XDN router.
-- The `@xdn/prefetch` package - Allows you to configure a service worker to prefetch and cache pages to improve browsing speed
-- The `@xdn/react` package - Provides a `Prefetch` component for prefetching pages
+- The `{{ PACKAGE_NAME }}/core` package - Allows you to declare routes and deploy your application on {{ PRODUCT_NAME }}
+- The `{{ PACKAGE_NAME }}/frontity` package - Provides router middleware that automatically adds Frontity routes to the XDN router.
+- The `{{ PACKAGE_NAME }}/prefetch` package - Allows you to configure a service worker to prefetch and cache pages to improve browsing speed
+- The `{{ PACKAGE_NAME }}/react` package - Provides a `Prefetch` component for prefetching pages
 - `routes.js` - A default routes file that sends all requests to Frontity. Update this file to add caching or proxy some URLs to a different origin.
 - `sw/service-worker.js` - The source code for your service worker, which enables prefetching when running on the XDN.
 - `xdn.config.js` - Contains configuration options for deploying on the XDN.
 
 ## Adding the XDN Service Worker
 
-To add the XDN service worker to your app, call the `install` function from `@xdn/prefetch/window` in a `useEffect` hook when the app first loads. For example, you can alter
+To add the XDN service worker to your app, call the `install` function from `{{ PACKAGE_NAME }}/prefetch/window` in a `useEffect` hook when the app first loads. For example, you can alter
 the Header component in your theme as follows:
 
 ```js
@@ -65,10 +65,10 @@ const Header = ({ state }) => {
 
 ## Prefetching Content
 
-To prefetch data into the browser cache using the service worker, use the `Prefetch` component from `@xdn/react`. This component prefetches a specific url from the XDN edge when it becomes visible in the viewport. You typically wrap it around links. For example:
+To prefetch data into the browser cache using the service worker, use the `Prefetch` component from `{{ PACKAGE_NAME }}/react`. This component prefetches a specific url from the XDN edge when it becomes visible in the viewport. You typically wrap it around links. For example:
 
 ```js
-import { Prefetch } from '@xdn/react'
+import { Prefetch } from '{{ PACKAGE_NAME }}/react'
 
 function MyComponent() {
   return (

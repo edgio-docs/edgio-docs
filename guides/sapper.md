@@ -38,16 +38,16 @@ npm run dev & open http://localhost:3000
 To prepare your Sapper app for deployment on {{ PRODUCT_NAME }}, run the following in the root folder of your project:
 
 ```
-npm install -g @xdn/cli
+npm install -g {{ PACKAGE_NAME }}/cli
 xdn init
 ```
 
 This will automatically add all of the required dependencies and files to your project. These include:
 
-- The `@xdn/core` package - Allows you to declare routes and deploy your application on {{ PRODUCT_NAME }}
-- The `@xdn/sapper` package - Provides router middleware that automatically adds Sapper routes to the XDN router.
-- The `@xdn/prefetch` package - Allows you to configure a service worker to prefetch and cache pages to improve browsing speed
-- The `@xdn/svelte` package - Provides a `Prefetch` component for prefetching pages
+- The `{{ PACKAGE_NAME }}/core` package - Allows you to declare routes and deploy your application on {{ PRODUCT_NAME }}
+- The `{{ PACKAGE_NAME }}/sapper` package - Provides router middleware that automatically adds Sapper routes to the XDN router.
+- The `{{ PACKAGE_NAME }}/prefetch` package - Allows you to configure a service worker to prefetch and cache pages to improve browsing speed
+- The `{{ PACKAGE_NAME }}/svelte` package - Provides a `Prefetch` component for prefetching pages
 - `xdn.config.js`
 - `routes.js` - A default routes file that sends all requests to Sapper. Update this file to add caching or proxy some URLs to a different origin.
 
@@ -151,7 +151,7 @@ import { timestamp, files, shell, routes } from '@sapper/service-worker'
 
 /* begin: add this to src/service-worker.js */
 import { precacheAndRoute } from 'workbox-precaching'
-import { Prefetcher } from '@xdn/prefetch/sw'
+import { Prefetcher } from '{{ PACKAGE_NAME }}/prefetch/sw'
 
 precacheAndRoute([])
 new Prefetcher().route()
@@ -160,11 +160,11 @@ new Prefetcher().route()
 
 ### Prefetch Component
 
-To prefetch data when links become visible in the viewport, wrap the link in the `Prefetch` component from `@xdn/svelte`
+To prefetch data when links become visible in the viewport, wrap the link in the `Prefetch` component from `{{ PACKAGE_NAME }}/svelte`
 
 ```html
 <script>
-  import { Prefetch } from '@xdn/svelte'
+  import { Prefetch } from '{{ PACKAGE_NAME }}/svelte'
 </script>
 
 <Prefetch url="/blog.json">

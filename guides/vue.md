@@ -19,7 +19,7 @@ Deploying requires an account on {{ PRODUCT_NAME }}. [Sign up here for free.](ht
 If you have not already done so, install the [XDN CLI](cli)
 
 ```bash
-npm i -g @xdn/cli
+npm i -g {{ PACKAGE_NAME }}/cli
 ```
 
 ## Create a new Vue.js app
@@ -75,8 +75,8 @@ xdn init
 
 This will automatically update your `package.json` and add all of the required XDN dependencies and files to your project. These include:
 
-- The `@xdn/core` package - Allows you to declare routes and deploy your application on {{ PRODUCT_NAME }}
-- The `@xdn/prefetch` package - Allows you to configure a service worker to prefetch and cache pages to improve browsing speed
+- The `{{ PACKAGE_NAME }}/core` package - Allows you to declare routes and deploy your application on {{ PRODUCT_NAME }}
+- The `{{ PACKAGE_NAME }}/prefetch` package - Allows you to configure a service worker to prefetch and cache pages to improve browsing speed
 - `xdn.config.js` - A configuration file for the XDN
 - `routes.js` - A default routes file that sends all requests to Vue.js.
 
@@ -87,7 +87,7 @@ Next you'll need to configure the XDN routing in the `routes.js` file.
 For the Vue `hello-world` template, replace your `routes.js` file with the following:
 
 ```js
-const { Router } = require('@xdn/core/router')
+const { Router } = require('{{ PACKAGE_NAME }}/core/router')
 
 module.exports = new Router()
   // Send requests to static assets in the build output folder `dist`

@@ -53,7 +53,7 @@ To prepare your Spartacus application for deployment on {{ PRODUCT_NAME }}:
 #### 1. Install the XDN CLI globally:
 
 ```bash
-npm install -g @xdn/cli
+npm install -g {{ PACKAGE_NAME }}/cli
 ```
 
 2. Run the following in the root folder of your project. This will configure your project for the XDN.
@@ -64,11 +64,11 @@ xdn init
 
 This will automatically add all of the required dependencies and files to your project. These include:
 
-- The `@xdn/core` package
-- The `@xdn/angular` package
-- The `@xdn/cli` package
-- The `@xdn/spartacus` package
-- The `@xdn/prefetch` package
+- The `{{ PACKAGE_NAME }}/core` package
+- The `{{ PACKAGE_NAME }}/angular` package
+- The `{{ PACKAGE_NAME }}/cli` package
+- The `{{ PACKAGE_NAME }}/spartacus` package
+- The `{{ PACKAGE_NAME }}/prefetch` package
 - `xdn.config.js`- Contains various configuration options for the XDN.
 - `routes.js` - A default routes file that sends all requests to the Angular Universal server. Update this file to add caching or proxy some URLs to a different origin.
 - The `sw` folder - Contains the files needed to build the service worker that that provides static asset and API prefetching.
@@ -109,14 +109,14 @@ This value is defined in the `backend` property of the options parameter to `B2c
 
 ### Upstream request tracking
 
-Prefetching for a Spartacus app can be enabled by listening to upstream requests made when server-side rendering a specific page. `@xdn/prefetch` library will pick up on the upstream requests made by reading the `x-xdn-upstream-requests` response header. An example scenario:
+Prefetching for a Spartacus app can be enabled by listening to upstream requests made when server-side rendering a specific page. `{{ PACKAGE_NAME }}/prefetch` library will pick up on the upstream requests made by reading the `x-xdn-upstream-requests` response header. An example scenario:
 
 1. User A lands on `/product/1`.
 1. `/product/1` has not been cached in the edge and thus will be server-side rendered.
 1. The rendering server has been modified to track upstream requests by patching `https.request`.
 1. The rendering server sets `x-xdn-upstream-requests` to, for example: `/rest/v2/1;/rest/v2/2;`
 1. The HTML response for `/product/1` is now cached and for future requests served from the edge along with the `x-xdn-upstream-requests` response header.
-1. User B lands on a page that has a link to `/product/1`. `/product/:path*` has been configured with `cache.browser.spa: true`. Because of this configuration, `@xdn/prefetch` will know to make a prefetch HEAD request for `/product/1`, and only if `product/1` can be served from the edge will it prefetch all requests specified in `x-xdn-upstream-requests` response header.
+1. User B lands on a page that has a link to `/product/1`. `/product/:path*` has been configured with `cache.browser.spa: true`. Because of this configuration, `{{ PACKAGE_NAME }}/prefetch` will know to make a prefetch HEAD request for `/product/1`, and only if `product/1` can be served from the edge will it prefetch all requests specified in `x-xdn-upstream-requests` response header.
 1. When User B click the link to `/product/1`, the navigation will be faster since the requests needed to render the new page will be in service worker cache.
 
 Example implementation of upstream request tracking changes required in your `server.ts` file:
@@ -129,8 +129,8 @@ import { join } from 'path'
 + // xdn
 + import * as http from 'http'
 + import * as https from 'https'
-+ import createRenderCallback from '@xdn/spartacus/server/createRenderCallback'
-+ import installXdnMiddleware from '@xdn/spartacus/server/installXdnMiddleware'
++ import createRenderCallback from '{{ PACKAGE_NAME }}/spartacus/server/createRenderCallback'
++ import installXdnMiddleware from '{{ PACKAGE_NAME }}/spartacus/server/installXdnMiddleware'
 
 
 // Express server
@@ -181,9 +181,9 @@ export default server
 
 ### Service worker
 
-The build command places the built `service-worker.js` under `dist` so `@xdn/angular` will know to static serve the file.
+The build command places the built `service-worker.js` under `dist` so `{{ PACKAGE_NAME }}/angular` will know to static serve the file.
 
-Installing the service worker and any further prefetching will be handled by `@xdn/prefetch` by invoking the `install` function imported from `@xdn/prefetch/window/install`.
+Installing the service worker and any further prefetching will be handled by `{{ PACKAGE_NAME }}/prefetch` by invoking the `install` function imported from `{{ PACKAGE_NAME }}/prefetch/window/install`.
 
 Example implementation in `app.component.ts`:
 
@@ -191,7 +191,7 @@ Example implementation in `app.component.ts`:
 import { Component, OnInit, Inject } from '@angular/core'
 import { isPlatformBrowser } from '@angular/common'
 import { PLATFORM_ID } from '@angular/core'
-+ import install from '@xdn/prefetch/window/install'
++ import install from '{{ PACKAGE_NAME }}/prefetch/window/install'
 
 @Component({
   selector: 'app-root',
@@ -247,8 +247,8 @@ The default `routes.js` file created by `xdn init` sends all requests to Angular
 // This file was automatically added by xdn deploy.
 // You should commit this file to source control.
 
-import { Router } from '@xdn/core/router'
-import { angularRoutes } from '@xdn/angular'
+import { Router } from '{{ PACKAGE_NAME }}/core/router'
+import { angularRoutes } from '{{ PACKAGE_NAME }}/angular'
 
 export default new Router()
   // other routes removed

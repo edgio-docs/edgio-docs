@@ -33,7 +33,7 @@ Creates a build of your app optimized for production
 #### Example
 
 ```bash
-xdn build
+{{ CLI_NAME }} build
 ```
 
 ### cache-clear
@@ -54,7 +54,7 @@ specified environment will be cleared.
 #### Example
 
 ```bash
-xdn cache-clear --team=my-team --site=my-site --environment=production --path=/p/*
+{{ CLI_NAME }} cache-clear --team=my-team --site=my-site --environment=production --path=/p/*
 ```
 
 ### completion
@@ -64,19 +64,19 @@ Creates a script that provides autocompletion for {{ PRODUCT_NAME }} CLI command
 #### Example
 
 ```bash
-xdn completion
+{{ CLI_NAME }} completion
 ```
 
 #### Using ZSH
 
 ```bash
-xdn completion >> ~/.zshrc
+{{ CLI_NAME }} completion >> ~/.zshrc
 ```
 
 #### Using BASH
 
 ```bash
-xdn completion >> ~/.bashrc
+{{ CLI_NAME }} completion >> ~/.bashrc
 ```
 
 ### deploy
@@ -105,7 +105,7 @@ Builds and deploys your site on {{ PRODUCT_NAME }}.
 #### Example
 
 ```bash
-xdn deploy my-team --environment=production
+{{ CLI_NAME }} deploy my-team --environment=production
 ```
 
 ### docs
@@ -115,12 +115,12 @@ Open the {{ PRODUCT_NAME }} documentation in your browser.
 #### Example
 
 ```bash
-xdn docs
+{{ CLI_NAME }} docs
 ```
 
 ### dev
 
-Runs your project in development mode, simulating the {{ PRODUCT_NAME }} cloud environment. This command is a simplified version of `xdn run`, with only the --cache option being supported.
+Runs your project in development mode, simulating the {{ PRODUCT_NAME }} cloud environment. This command is a simplified version of `{{ CLI_NAME }} run`, with only the --cache option being supported.
 
 #### Options
 
@@ -131,7 +131,7 @@ Runs your project in development mode, simulating the {{ PRODUCT_NAME }} cloud e
 #### Example
 
 ```bash
-xdn dev
+{{ CLI_NAME }} dev
 ```
 
 ### init
@@ -141,7 +141,7 @@ Run in an existing app to add all required packages and files need to publish yo
 #### Example
 
 ```bash
-xdn init
+{{ CLI_NAME }} init
 ```
 
 #### Options
@@ -157,7 +157,7 @@ Logs into {{ PRODUCT_NAME }} via the developer console.
 #### Example
 
 ```bash
-xdn login
+{{ CLI_NAME }} login
 ```
 
 ### logout
@@ -167,30 +167,30 @@ Logs out of {{ PRODUCT_NAME }}
 #### Example
 
 ```bash
-xdn logout
+{{ CLI_NAME }} logout
 ```
 
 ### run
 
-Runs your app locally. Uses port 3000 by default. You can change this by setting the `PORT` environment variable. For example: `PORT=5000 xdn run`.
+Runs your app locally. Uses port 3000 by default. You can change this by setting the `PORT` environment variable. For example: `PORT=5000 {{ CLI_NAME }} run`.
 
 #### Options
 
 | Name           | Description                                                                                                                                                                                                                     |
 | -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `--production` | Runs a production build of your app, simulating the cloud environment. This can also be achieved by setting the NODE_ENV environment variable to `true`. You need to run `xdn build` first.                                     |
+| `--production` | Runs a production build of your app, simulating the cloud environment. This can also be achieved by setting the NODE_ENV environment variable to `true`. You need to run `{{ CLI_NAME }} build` first.                          |
 | `--cache`      | Enables caching during local development so that you can test the caching logic in your router. By default caching is turned off in local development to ensure you don't see stale responses as you make changes to your code. |
 
 #### Example
 
 ```bash
-xdn run --production
+{{ CLI_NAME }} run --production
 ```
 
 Or to run a deployment bundle downloaded from {{ PRODUCT_NAME }} Developer Console, use:
 
 ```bash
-xdn run /path/to/bundle.zip
+{{ CLI_NAME }} run /path/to/bundle.zip
 ```
 
 Production mode is always used whe running downloaded bundles.
@@ -204,17 +204,17 @@ Switches the version of all {{ PACKAGE_NAME }}/\* packages in your project.
 To install a particular version:
 
 ```bash
-xdn use 1.45.0
+{{ CLI_NAME }} use 1.45.0
 ```
 
 To install the latest stable:
 
 ```bash
-xdn use latest
+{{ CLI_NAME }} use latest
 ```
 
 To install the latest preview:
 
 ```bash
-xdn use next
+{{ CLI_NAME }} use next
 ```

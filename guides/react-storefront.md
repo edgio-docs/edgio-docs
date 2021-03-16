@@ -29,7 +29,7 @@ npm start
 Deploying requires an account on {{ PRODUCT_NAME }}. [Sign up here for free.](https://moovweb.app/signup) Once you have an account, you can deploy to {{ PRODUCT_NAME }} by running the following in the root folder of your project:
 
 ```bash
-xdn deploy
+{{ CLI_NAME }} deploy
 ```
 
 ## Prefetching

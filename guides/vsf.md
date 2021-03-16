@@ -29,7 +29,7 @@ To prepare your Vue Storefront app for deployment on {{ PRODUCT_NAME }}, run the
 
 ```
 npm install -g {{ PACKAGE_NAME }}/cli
-xdn init
+{{ CLI_NAME }} init
 ```
 
 ### nuxt.config.js
@@ -43,7 +43,7 @@ Ensure `@nuxtjs/pwa` is not present in the `buildModules`. It is not needed beca
 To run locally in development mode, use this command:
 
 ```
-xdn dev --cache
+{{ CLI_NAME }} dev --cache
 ```
 
 ## Building and Deploying
@@ -51,5 +51,5 @@ xdn dev --cache
 To build and deploy your app to {{ PRODUCT_NAME }}, run the following from the root directory of your app:
 
 ```
-xdn deploy <team> # where team is the name of the {{ PRODUCT_NAME }} team to which the app should be deployed.
+{{ CLI_NAME }} deploy <team> # where team is the name of the {{ PRODUCT_NAME }} team to which the app should be deployed.
 ```

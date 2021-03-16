@@ -59,7 +59,7 @@ If you run into permission issues while attempting to install the {{ PRODUCT_NAM
 
 ```bash
 cd my-next-app
-xdn init
+{{ CLI_NAME }} init
 ```
 
 This will automatically add all of the required dependencies and files to your project. These include:
@@ -99,7 +99,7 @@ _If you're already using `next-offline`, you should remove it in favor of `withS
 To simulate your app within {{ PRODUCT_NAME }} locally, run:
 
 ```bash
-xdn dev
+{{ CLI_NAME }} dev
 ```
 
 ## Deploying
@@ -107,14 +107,14 @@ xdn dev
 Deploying requires an account on {{ PRODUCT_NAME }}. [Sign up here for free.](https://moovweb.app/signup) Once you have an account, you can deploy to {{ PRODUCT_NAME }} by running the following in the root folder of your project:
 
 ```bash
-xdn deploy
+{{ CLI_NAME }} deploy
 ```
 
 See [deploying](deploying) for more information.
 
 ## Prefetching
 
-The `xdn init` command adds a service worker based on [Workbox](https://developers.google.com/web/tools/workbox) at `sw/service-worker.js`. If you have an existing service worker that uses workbox, you can copy its contents into `sw/service-worker.js` and simply add the following to your service worker:
+The `{{ CLI_NAME }} init` command adds a service worker based on [Workbox](https://developers.google.com/web/tools/workbox) at `sw/service-worker.js`. If you have an existing service worker that uses workbox, you can copy its contents into `sw/service-worker.js` and simply add the following to your service worker:
 
 ```js
 import { Prefetcher } from '{{ PACKAGE_NAME }}/prefetch/sw'
@@ -165,10 +165,10 @@ Note that if you don't provide a `url` prop to `Prefetch`, you must specify the 
 
 ## Routing
 
-{{ PRODUCT_NAME }} supports Next.js's built-in routing scheme for both page and api routes, including Next.js 9's clean dynamic routes. The default `routes.js` file created by `xdn init` sends all requests to Next.js via a fallback route:
+{{ PRODUCT_NAME }} supports Next.js's built-in routing scheme for both page and api routes, including Next.js 9's clean dynamic routes. The default `routes.js` file created by `{{ CLI_NAME }} init` sends all requests to Next.js via a fallback route:
 
 ```js
-// This file was automatically added by xdn deploy.
+// This file was automatically added by {{ CLI_NAME }} deploy.
 // You should commit this file to source control.
 const { Router } = require('{{ PACKAGE_NAME }}/core/router')
 const { nextRoutes } = require('{{ PACKAGE_NAME }}/next')
@@ -337,13 +337,13 @@ future: {
 }
 ```
 
-Then run `yarn install` followed by `xdn build` to verify that your app builds successfully using Webpack 5.
+Then run `yarn install` followed by `{{ CLI_NAME }} build` to verify that your app builds successfully using Webpack 5.
 
 Some additional notes:
 
 - In order to use Webpack 5 you must use yarn to install dependencies. NPM does not support `resolutions` in package.json.
 - Webpack 5 contains many breaking changes, so it is possible that you'll need to make additional changes to the webpack config via next.config.js to get your app to build successfully.
-- You'll also see some deprecation warnings, like these, which are fine, as long as `xdn build` is successful:
+- You'll also see some deprecation warnings, like these, which are fine, as long as `{{ CLI_NAME }} build` is successful:
 
 ```
 (node:95329) [DEP_WEBPACK_SINGLE_ENTRY_PLUGIN] DeprecationWarning: SingleEntryPlugin was renamed to EntryPlugin

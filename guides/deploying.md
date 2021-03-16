@@ -20,29 +20,29 @@ Or using yarn:
 yarn global add {{ PACKAGE_NAME }}/cli
 ```
 
-## xdn login
+## {{ CLI_NAME }} login
 
 Run the following to authenticate with your XDN account on {{ PRODUCT_NAME }}:
 
 ```bash
-xdn login
+{{ CLI_NAME }} login
 ```
 
-## xdn deploy
+## {{ CLI_NAME }} deploy
 
 Then, run the following to deploy your site to your private space on {{ PRODUCT_NAME }}:
 
 ```bash
-xdn deploy
+{{ CLI_NAME }} deploy
 ```
 
 The CLI will automatically detect the framework you're using, create an optimized production build, and upload it to {{ PRODUCT_NAME }}. This takes about a minute for most applications.
 
-Once the deployment is complete, the CLI will output the URL for your site. The site name is automatically derived from the `name` field in `package.json`. This can be overriden by using `--site` option when running `xdn deploy`.
+Once the deployment is complete, the CLI will output the URL for your site. The site name is automatically derived from the `name` field in `package.json`. This can be overriden by using `--site` option when running `{{ CLI_NAME }} deploy`.
 
 ## Branches and Deployments
 
-Each time you deploy your site to {{ PRODUCT_NAME }} a "deployment" is created and given a unique and permanent URL based on the team name, site name, branch name in source control, and an incrementing deployment number. If you use Git, the branch name is set by the default. If not, you can specify the `--branch` option when running `xdn deploy`.
+Each time you deploy your site to {{ PRODUCT_NAME }} a "deployment" is created and given a unique and permanent URL based on the team name, site name, branch name in source control, and an incrementing deployment number. If you use Git, the branch name is set by the default. If not, you can specify the `--branch` option when running `{{ CLI_NAME }} deploy`.
 
 ![deployments](/images/deploying/deployments.png)
 
@@ -57,7 +57,7 @@ To deploy from your CI environment, create a deploy token using the site setting
 Then use the `--token` option when deploying from your CI script:
 
 ```bash
-xdn deploy my-site --token=$XDN_DEPLOY_TOKEN
+{{ CLI_NAME }} deploy my-site --token=$XDN_DEPLOY_TOKEN
 ```
 
 You should always store your deploy token using your CI environment's secrets manager. Never commit your deploy token to source control.

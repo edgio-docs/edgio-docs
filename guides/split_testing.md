@@ -17,7 +17,7 @@ To use CI to deploy A/B tests we recommend that you:
 
 1. Set up separate branches in source control for the main experience and the new experience, for example `master` and `preview`
 2. Create environments called `production` and `preview` in the {{ PRODUCT_NAME }} Developer Console.
-3. Configure CI to deploy the `master` branch to the `production` environment and the `preview` branch to the `preview` environment. (Using `xdn deploy --environment={environment name}`)
+3. Configure CI to deploy the `master` branch to the `production` environment and the `preview` branch to the `preview` environment. (Using `{{ CLI_NAME }} deploy --environment={environment name}`)
 
 ## Splitting traffic between multiple sites
 
@@ -58,7 +58,7 @@ module.exports = new Router()
   )
 ```
 
-Once you have made these changes, deploy your site using `xdn deploy --environment={my production environment name}`, then [configure the rules for splitting traffic between using the {{ PRODUCT_NAME }} Developer Console](#section_configuring_the_split_test).
+Once you have made these changes, deploy your site using `{{ CLI_NAME }} deploy --environment={my production environment name}`, then [configure the rules for splitting traffic between using the {{ PRODUCT_NAME }} Developer Console](#section_configuring_the_split_test).
 
 ## Configuring the split test
 

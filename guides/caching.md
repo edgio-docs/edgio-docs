@@ -271,7 +271,7 @@ The response was not cached because it was received during the brief time (less 
 By default, caching is turned off during development. This is done to ensure that developers don't see stale responses after making changes to their code or other upstream APIs. You can enable caching during development by running your app with:
 
 ```bash
-xdn dev --cache
+{{ CLI_NAME }} dev --cache
 ```
 
 The cache will automatically be cleared when you make changes to your router. A few aspects of caching are not yet supported during local development:
@@ -288,14 +288,14 @@ The cache is automatically cleared when you deploy to an environment. You can al
 The cache can be [cleared via the CLI](/guides/cli#section_cache_clear):
 
 ```bash
-$ xdn cache-clear --team=my-team --site=my-site --environment=production --path=/p/*
+$ {{ CLI_NAME }} cache-clear --team=my-team --site=my-site --environment=production --path=/p/*
 ```
 
 The cache can also be [cleared via the REST API](/guides/rest_api#section_clear_cache).
 
 ## Static prerendering after clearing the cache
 
-If you have [static prerendering] enabled, the cache will automatically be repopulated when you clear all entries from the cache (when you select "Purge all entries" in {{ PRODUCT_NAME }} Developer Console or run `xdn cache-clear` without providing `--path` or `--surrogate-key`). You can view the prerendering progress by clicking on the active deployment for the environment that was cleared.
+If you have [static prerendering] enabled, the cache will automatically be repopulated when you clear all entries from the cache (when you select "Purge all entries" in {{ PRODUCT_NAME }} Developer Console or run `{{ CLI_NAME }} cache-clear` without providing `--path` or `--surrogate-key`). You can view the prerendering progress by clicking on the active deployment for the environment that was cleared.
 
 ## Preserving the cache when deploying a new version of your site
 
@@ -343,11 +343,11 @@ These scripts assume that you have created environments called "production", "st
 ```js
   "scripts": {
     ...
-    "clearcache:dev": "xdn cache-clear --team=myTeam --site=my{{ PRODUCT_NAME }}App --environment=development --token=${{ PRODUCT_NAME_LOWER }}_deploy_token",
-    "clearcache:stage": "xdn cache-clear --team=myTeam --site=my{{ PRODUCT_NAME }}App --environment=staging --token=${{ PRODUCT_NAME_LOWER }}_deploy_token",
-    "clearcache:prod": "xdn cache-clear --team=myTeam --site=my{{ PRODUCT_NAME }}App --environment=production --token=${{ PRODUCT_NAME_LOWER }}_deploy_token",
-    "clearcache:prod:pdps": "xdn cache-clear --team=myTeam --site=my{{ PRODUCT_NAME }}App --environment=production --surrogate-key=pdp --token=${{ PRODUCT_NAME_LOWER }}_deploy_token",
-    "clearcache:prod:plps": "xdn cache-clear --team=myTeam --site=my{{ PRODUCT_NAME }}App --environment=production --surrogate-key=plp --token=${{ PRODUCT_NAME_LOWER }}_deploy_token",
+    "clearcache:dev": "{{ CLI_NAME }} cache-clear --team=myTeam --site=my{{ PRODUCT_NAME }}App --environment=development --token=${{ PRODUCT_NAME_LOWER }}_deploy_token",
+    "clearcache:stage": "{{ CLI_NAME }} cache-clear --team=myTeam --site=my{{ PRODUCT_NAME }}App --environment=staging --token=${{ PRODUCT_NAME_LOWER }}_deploy_token",
+    "clearcache:prod": "{{ CLI_NAME }} cache-clear --team=myTeam --site=my{{ PRODUCT_NAME }}App --environment=production --token=${{ PRODUCT_NAME_LOWER }}_deploy_token",
+    "clearcache:prod:pdps": "{{ CLI_NAME }} cache-clear --team=myTeam --site=my{{ PRODUCT_NAME }}App --environment=production --surrogate-key=pdp --token=${{ PRODUCT_NAME_LOWER }}_deploy_token",
+    "clearcache:prod:plps": "{{ CLI_NAME }} cache-clear --team=myTeam --site=my{{ PRODUCT_NAME }}App --environment=production --surrogate-key=plp --token=${{ PRODUCT_NAME_LOWER }}_deploy_token",
     ...
   },
 ```

@@ -1,6 +1,6 @@
 # {{ CONFIG_FILE }}
 
-The `{{ CONFIG_FILE }}` config file in your app's root directory contains configuration options that control how your app runs on {{ PRODUCT_NAME }}. This file is automatically created when you run `xdn init`. It should export an object with the following properties:
+The `{{ CONFIG_FILE }}` config file in your app's root directory contains configuration options that control how your app runs on {{ PRODUCT_NAME }}. This file is automatically created when you run `{{ CLI_NAME }} init`. It should export an object with the following properties:
 
 ## backends
 
@@ -65,7 +65,7 @@ The maximum number of URLs that will be concurrently prendered during deployment
 
 ## sources
 
-A list of glob patterns identifying which source files should be uploaded when running `xdn deploy --includeSources`. This option is primary used to share source code with Moovweb support personnel for the purpose of debugging. If omitted, `xdn deploy --includeSources` will result in all files which are not gitignored being uploaded to {{ PRODUCT_NAME }}.
+A list of glob patterns identifying which source files should be uploaded when running `{{ CLI_NAME }} deploy --includeSources`. This option is primary used to share source code with Moovweb support personnel for the purpose of debugging. If omitted, `{{ CLI_NAME }} deploy --includeSources` will result in all files which are not gitignored being uploaded to {{ PRODUCT_NAME }}.
 
 Example:
 

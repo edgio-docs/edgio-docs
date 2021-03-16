@@ -8,7 +8,7 @@ The {{ PRODUCT_NAME }} platform exposes three types of logs to users:
 
 ## Build Logs
 
-Each time you deploy to {{ PRODUCT_NAME }} using the `xdn deploy` command, information about the deployment is logged, including the output of the `xdn deploy` command itself. You can view these logs in real-time by viewing your deployment on [moovweb.app](https://moovweb.app).
+Each time you deploy to {{ PRODUCT_NAME }} using the `{{ CLI_NAME }} deploy` command, information about the deployment is logged, including the output of the `{{ CLI_NAME }} deploy` command itself. You can view these logs in real-time by viewing your deployment on [moovweb.app](https://moovweb.app).
 
 ![build](/images/logs/build.png)
 

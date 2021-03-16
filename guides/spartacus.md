@@ -59,7 +59,7 @@ npm install -g {{ PACKAGE_NAME }}/cli
 2. Run the following in the root folder of your project. This will configure your project for {{ PRODUCT_NAME }}.
 
 ```bash
-xdn init
+{{ CLI_NAME }} init
 ```
 
 This will automatically add all of the required dependencies and files to your project. These include:
@@ -75,10 +75,10 @@ This will automatically add all of the required dependencies and files to your p
 
 #### 3. Update `{{ CONFIG_FILE }}`
 
-For an app called `my-xdn-spartacus-app` the {{ PRODUCT_NAME }} config file created by `xdn init` will look like so:
+For an app called `my-xdn-spartacus-app` the {{ PRODUCT_NAME }} config file created by `{{ CLI_NAME }} init` will look like so:
 
 ```js
-// This file was automatically added by xdn deploy.
+// This file was automatically added by {{ CLI_NAME }} deploy.
 // You should commit this file to source control.
 
 module.exports = {
@@ -91,7 +91,7 @@ module.exports = {
 }
 ```
 
-If you have several projects and the `defaultProject` as specified in `angular.json` is not the project with the SSR build, specify the correct project with the `ANGULAR_PROJECT` environment variable. For example: `ANGULAR_PROJECT=my-ssr-project xdn build`.
+If you have several projects and the `defaultProject` as specified in `angular.json` is not the project with the SSR build, specify the correct project with the `ANGULAR_PROJECT` environment variable. For example: `ANGULAR_PROJECT=my-ssr-project {{ CLI_NAME }} build`.
 
 #### 4. Update OCC `baseUrl` endpoint
 
@@ -241,10 +241,10 @@ Add `"skipLibCheck": true,` to `tsconfig.json` to avoid type errors from `workbo
 
 ## Routing and Cache Configuration
 
-The default `routes.js` file created by `xdn init` sends all requests to Angular server via a fallback route.
+The default `routes.js` file created by `{{ CLI_NAME }} init` sends all requests to Angular server via a fallback route.
 
 ```js
-// This file was automatically added by xdn deploy.
+// This file was automatically added by {{ CLI_NAME }} deploy.
 // You should commit this file to source control.
 
 import { Router } from '{{ PACKAGE_NAME }}/core/router'
@@ -315,13 +315,13 @@ return new Router()
 To test your app locally, run:
 
 ```bash
-xdn run
+{{ CLI_NAME }} run
 ```
 
 You can do a production build of your app and test it locally using:
 
 ```bash
-xdn build && xdn run --production
+{{ CLI_NAME }} build && {{ CLI_NAME }} run --production
 ```
 
 Setting `--production` runs your app exactly as it will be uploaded to the Moovweb cloud using serverless-offline.
@@ -331,5 +331,5 @@ Setting `--production` runs your app exactly as it will be uploaded to the Moovw
 Deploying requires an account on {{ PRODUCT_NAME }}. [Sign up here for free.](https://moovweb.app/signup) Once you have an account, you can deploy to {{ PRODUCT_NAME }} by running the following in the root folder of your project:
 
 ```bash
-xdn deploy
+{{ CLI_NAME }} deploy
 ```

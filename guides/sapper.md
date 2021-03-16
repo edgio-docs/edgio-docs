@@ -39,7 +39,7 @@ To prepare your Sapper app for deployment on {{ PRODUCT_NAME }}, run the followi
 
 ```
 npm install -g {{ PACKAGE_NAME }}/cli
-xdn init
+{{ CLI_NAME }} init
 ```
 
 This will automatically add all of the required dependencies and files to your project. These include:
@@ -112,7 +112,7 @@ To simulate your app within {{ PRODUCT_NAME }} locally, run:
 
 ```
 
-xdn dev
+{{ CLI_NAME }} dev
 
 ```
 
@@ -122,7 +122,7 @@ To simulate edge caching locally, run:
 
 ```
 
-xdn dev --cache
+{{ CLI_NAME }} dev --cache
 
 ```
 
@@ -132,7 +132,7 @@ Deploying requires an account on {{ PRODUCT_NAME }}. [Sign up here for free.](ht
 
 ```
 
-xdn deploy
+{{ CLI_NAME }} deploy
 
 ```
 

@@ -9,13 +9,13 @@ This guide shows you how to create a [connector](/guides/connectors) for your NX
 [Try the Nx Example App](https://moovweb-docs-xdn-nx-example-default.moovweb-edge.io?button)
 [View the Code](https://github.com/moovweb-docs/xdn-examples/tree/main/xdn-next-example?button)
 
-## 1. Install the {{ PRODUCT_NAME }} CLI and run xdn init
+## 1. Install the {{ PRODUCT_NAME }} CLI and run {{ CLI_NAME }} init
 
 In the root of your nx monorepo, run:
 
 ```sh
 npm i -g {{ PACKAGE_NAME }}/cli
-xdn init
+{{ CLI_NAME }} init
 ```
 
 ## 2. Create a custom XDN connector
@@ -43,7 +43,7 @@ module.exports = new Router()
 To run your Next.js app in development mode behind {{ PRODUCT_NAME }}, run:
 
 ```sh
-xdn dev
+{{ CLI_NAME }} dev
 ```
 
 ## Deploy to {{ PRODUCT_NAME }}
@@ -51,5 +51,5 @@ xdn dev
 To deploy your app to {{ PRODUCT_NAME }}, run:
 
 ```sh
-xdn deploy
+{{ CLI_NAME }} deploy
 ```

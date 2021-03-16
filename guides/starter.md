@@ -205,7 +205,7 @@ Now that you've configured your caching in `routes.ts`, you should test it in yo
 To test the caching behavior locally, run your project with the [local cache option](caching#section_caching_during_development) as shown below:
 
 ```bash
-xdn dev --cache
+{{ CLI_NAME }} dev --cache
 ```
 
 ### Running on {{ PRODUCT_NAME }}
@@ -215,7 +215,7 @@ Now that you're satisfied with your site in local development, it's time to depl
 To deploy your site to {{ PRODUCT_NAME }}, you must first sign up for an account. [Sign up here for free.](https://moovweb.app/signup) Once you have an account, you can deploy your site using the `deploy` command:
 
 ```bash
-xdn deploy --team=[team-name]
+{{ CLI_NAME }} deploy --team=[team-name]
 ```
 
 Consult the [Deploying guide](deploying) for more information on the options for deploying your site.

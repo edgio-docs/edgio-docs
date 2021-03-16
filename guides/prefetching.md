@@ -388,7 +388,7 @@ function MyProductLink({ product }) {
 You can test that everything is running locally by running your project with:
 
 ```
-xdn dev --cache
+{{ CLI_NAME }} dev --cache
 ```
 
 ### Advantages over Apollo's prefetch functionality

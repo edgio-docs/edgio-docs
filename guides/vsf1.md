@@ -628,11 +628,11 @@ export default {
 ...
 "xdn:build:server": "cross-env NODE_ENV=production TS_NODE_PROJECT=\"tsconfig-build.json\" webpack --config ./core/build/webpack.xdn.config.ts --mode production --hide-modules",
 "xdn:build:assets": "ncp ./src/themes/default/assets ./dist-xdn-assets",
-"xdn:build:client": "cross-env NODE_ENV=production webpack --progress --config xdn/webpack.xdn.client.config.js && xdn build",
+"xdn:build:client": "cross-env NODE_ENV=production webpack --progress --config xdn/webpack.xdn.client.config.js && {{ CLI_NAME }} build",
 "xdn:build": "yarn xdn:build:server && yarn xdn:build:assets && yarn xdn:build:client",
 "xdn:clean": "rimraf dist-xdn-assets && rimraf dist-xdn-client && rimraf dist-xdn-server && rimraf .xdn",
-"xdn:start:prod": "xdn run --production",
-"xdn:deploy": "xdn deploy --team=my-team --skip-build",
+"xdn:start:prod": "{{ CLI_NAME }} run --production",
+"xdn:deploy": "{{ CLI_NAME }} deploy --team=my-team --skip-build",
 ...
 ```
 

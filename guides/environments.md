@@ -23,10 +23,10 @@ When creating an environment, you can choose whether or not to limit deployment 
 
 ## Deploying to an Environment
 
-To deploy to an environment, you can `xdn deploy` with the `--environment` option:
+To deploy to an environment, you can `{{ CLI_NAME }} deploy` with the `--environment` option:
 
 ```bash
-xdn deploy <team name> --environment=<environment name>
+{{ CLI_NAME }} deploy <team name> --environment=<environment name>
 ```
 
 You can also promote any existing deployment to an environment using the _Promote to Environment_ button at the top of the deployment view:
@@ -95,7 +95,7 @@ XDN automatically injects the following environment variables:
 
 ### Accessing Environment Variables at Build Time
 
-As of XDN CLI version 2.19.0, when you deploy to an environment using a deploy token, for example by running `xdn deploy my-team --environment=production --token=(my token)` option, all environment variables are pulled down from {{ PRODUCT_NAME }} Developer Console and applied to `process.env` so they can be accessed at build time. This allows you to store all of your build and runtime secrets in a single place, {{ PRODUCT_NAME }} Developer Console, rather than storing some in your CI system's secret manager.
+As of XDN CLI version 2.19.0, when you deploy to an environment using a deploy token, for example by running `{{ CLI_NAME }} deploy my-team --environment=production --token=(my token)` option, all environment variables are pulled down from {{ PRODUCT_NAME }} Developer Console and applied to `process.env` so they can be accessed at build time. This allows you to store all of your build and runtime secrets in a single place, {{ PRODUCT_NAME }} Developer Console, rather than storing some in your CI system's secret manager.
 
 ## dotenv
 

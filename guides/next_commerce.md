@@ -62,7 +62,7 @@ yarn install
 4. Run XDN `init` in the project directory:
 
 ```
-xdn init
+{{ CLI_NAME }} init
 ```
 
 5. Update the top of your `next.config.js` file to wrap the module export with `withXDN` and `withServiceWorker` like so:
@@ -111,7 +111,7 @@ An [example `.env.local` file](https://github.com/moovweb-docs/xdn-examples/blob
 9. Deploy to {{ PRODUCT_NAME }}:
 
 ```bash
-xdn deploy
+{{ CLI_NAME }} deploy
 ```
 
 This should result in output like the following which confirms the deployment:

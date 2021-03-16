@@ -34,7 +34,7 @@ npm install -g {{ PACKAGE_NAME }}/cli
 Then, in the root folder of your project, run:
 
 ```bash
-xdn init
+{{ CLI_NAME }} init
 ```
 
 This will automatically add all of the required dependencies and files to your
@@ -134,7 +134,7 @@ module.exports = new Router()
 Deploying requires an account on {{ PRODUCT_NAME }}. [Sign up here for free.](https://moovweb.app/signup) Once you have an account, you can deploy to {{ PRODUCT_NAME }} by running the following in the root folder of your project:
 
 ```
-xdn deploy
+{{ CLI_NAME }} deploy
 ```
 
 For more on deploying, see [Deploying](/guides/deploying).

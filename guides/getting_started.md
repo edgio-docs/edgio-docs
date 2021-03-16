@@ -14,7 +14,7 @@ To add {{ PRODUCT_NAME }} to an existing app, run the following:
 
 ```bash
 npm i -g {{ PACKAGE_NAME }}/cli
-xdn init
+{{ CLI_NAME }} init
 ```
 
 ## Creating a new XDN app

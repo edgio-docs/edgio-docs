@@ -14,7 +14,7 @@
 
 ## Installation
 
-It's likely that the Devtools was added to your app when you ran `xdn init`. If that's not the case, or your app predates XDN v2.22.0, follow these steps to add the Devtools to your app:
+It's likely that the Devtools was added to your app when you ran `{{ CLI_NAME }} init`. If that's not the case, or your app predates XDN v2.22.0, follow these steps to add the Devtools to your app:
 
 ### Packages
 

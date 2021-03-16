@@ -2,7 +2,7 @@
 
 ## v2
 
-To upgrade your project to XDN v2, run `xdn use latest`. XDN v2 introduces the following breaking changes:
+To upgrade your project to XDN v2, run `{{ CLI_NAME }} use latest`. XDN v2 introduces the following breaking changes:
 
 ### Path syntax change
 

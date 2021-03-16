@@ -53,13 +53,13 @@ module.exports = {
 }
 ```
 
-2. Run `xdn init` to configure your project for {{ PRODUCT_NAME }}.
+2. Run `{{ CLI_NAME }} init` to configure your project for {{ PRODUCT_NAME }}.
 
 ```bash
-xdn init
+{{ CLI_NAME }} init
 ```
 
-The `xdn init` command will automatically add all the required dependencies and files to your project. These include:
+The `{{ CLI_NAME }} init` command will automatically add all the required dependencies and files to your project. These include:
 
 - The `{{ PACKAGE_NAME }}/core` package
 - The `{{ PACKAGE_NAME }}/nuxt` package
@@ -99,7 +99,7 @@ As an example, here's the original `package.json` from Nuxt's create step:
 }
 ```
 
-And here is the `package.json` after modifications by `xdn init`:
+And here is the `package.json` after modifications by `{{ CLI_NAME }} init`:
 
 ```json
 {
@@ -109,10 +109,10 @@ And here is the `package.json` after modifications by `xdn init`:
   "author": "Techy Ted",
   "private": true,
   "scripts": {
-    "dev": "xdn run",
-    "build": "xdn build",
-    "start": "xdn run",
-    "prod": "xdn run --production",
+    "dev": "{{ CLI_NAME }} run",
+    "build": "{{ CLI_NAME }} build",
+    "start": "{{ CLI_NAME }} run",
+    "prod": "{{ CLI_NAME }} run --production",
     "generate": "nuxt generate"
   },
   "dependencies": {
@@ -147,10 +147,10 @@ Doing so will exclude these modules from your production deployment and keep the
 ## Routing
 
 The next few sections of this guide explain how {{ PRODUCT_NAME }} interacts with Nuxt's routing, which is important if you are migrating an existing application. If you just created a new nuxt app, you can jump to [Running Locally](#section_running_locally) and come back to these sections later.
-{{ PRODUCT_NAME }} supports Nuxt.js's built-in routing scheme. The default `routes.js` file created by `xdn init` sends all requests to Nuxt.js via a fallback route:
+{{ PRODUCT_NAME }} supports Nuxt.js's built-in routing scheme. The default `routes.js` file created by `{{ CLI_NAME }} init` sends all requests to Nuxt.js via a fallback route:
 
 ```js
-// This file was automatically added by xdn deploy.
+// This file was automatically added by {{ CLI_NAME }} deploy.
 // You should commit this file to source control.
 const { Router } = require('{{ PACKAGE_NAME }}/core/router')
 const { nuxtRoutes, renderNuxtPage } = require('{{ PACKAGE_NAME }}/nuxt')
@@ -262,7 +262,7 @@ The `Prefetch` component fetches data for the linked page from {{ PRODUCT_NAME }
 
 ## Static Sites
 
-{{ PRODUCT_NAME }} supports fully and partially static sites using Nuxt [generate](https://nuxtjs.org/docs/2.x/configuration-glossary/configuration-generate). To deploy a static Nuxt site on {{ PRODUCT_NAME }}, simply set `target: 'static'` in `nuxt.config.js` and run `xdn deploy`. This will run `nuxt build` and `nuxt generate` to generate a static version of your site.
+{{ PRODUCT_NAME }} supports fully and partially static sites using Nuxt [generate](https://nuxtjs.org/docs/2.x/configuration-glossary/configuration-generate). To deploy a static Nuxt site on {{ PRODUCT_NAME }}, simply set `target: 'static'` in `nuxt.config.js` and run `{{ CLI_NAME }} deploy`. This will run `nuxt build` and `nuxt generate` to generate a static version of your site.
 
 ### Incremental Static Rendering (ISG)
 
@@ -297,13 +297,13 @@ If you set the `fallback` property in the [generate](https://nuxtjs.org/docs/2.x
 To test your app locally, run:
 
 ```bash
-xdn run
+{{ CLI_NAME }} run
 ```
 
 You can do a production build of your app and test it locally using:
 
 ```bash
-xdn build && xdn run --production
+{{ CLI_NAME }} build && {{ CLI_NAME }} run --production
 ```
 
 Setting `--production` runs your app exactly as it will be uploaded to the Moovweb cloud using serverless-offline.
@@ -313,7 +313,7 @@ Setting `--production` runs your app exactly as it will be uploaded to the Moovw
 Deploying requires an account on {{ PRODUCT_NAME }}. [Sign up here for free.](https://moovweb.app/signup) Once you have an account, you can deploy to {{ PRODUCT_NAME }} by running the following in the root folder of your project:
 
 ```bash
-xdn deploy
+{{ CLI_NAME }} deploy
 ```
 
 See [deploying](deploying) for more information.
@@ -326,12 +326,12 @@ The following section describes common gotchas and their workarounds.
 
 This may be because you have a custom server framework (such as Express). Please make sure you selected `None` when asked to choose `Choose custom server framework` during the creation of your nuxt app.
 
-### xdn init doesn't work
+### {{ CLI_NAME }} init doesn't work
 
 If you get a command not found error such as:
 
 ```bash
-$ xdn init
+$ {{ CLI_NAME }} init
 - bash: xdn: command not found
 ```
 
@@ -355,7 +355,7 @@ $ npm show {{ PACKAGE_NAME }}/cli version
 Compare the latest release against the version currently installed on your system:
 
 ```bash
-$ xdn --version
+$ {{ CLI_NAME }} --version
 1.16.2
 ```
 

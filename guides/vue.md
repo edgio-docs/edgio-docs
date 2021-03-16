@@ -67,10 +67,10 @@ You should see an output like this in the terminal:
 
 ### Initialize your project
 
-In the root directory of your project run `xdn init`:
+In the root directory of your project run `{{ CLI_NAME }} init`:
 
 ```bash
-xdn init
+{{ CLI_NAME }} init
 ```
 
 This will automatically update your `package.json` and add all of the required XDN dependencies and files to your project. These include:
@@ -111,10 +111,10 @@ Create a production build of your app by running the following in your project's
 npm run build
 ```
 
-Next, deploy the build to {{ PRODUCT_NAME }} by running the `xdn deploy` command:
+Next, deploy the build to {{ PRODUCT_NAME }} by running the `{{ CLI_NAME }} deploy` command:
 
 ```bash
-xdn deploy
+{{ CLI_NAME }} deploy
 ```
 
 Refer to the [Deploying](deploying) guide for more information on the `deploy` command and its options.

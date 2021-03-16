@@ -9,7 +9,7 @@
 
 ## Edge POPs
 
-The XDN is available in the following global regions:
+{{ PRODUCT_NAME }} is available in the following global regions:
 
 |                   |                             |             |              |
 | ----------------- | --------------------------- | ----------- | ------------ |

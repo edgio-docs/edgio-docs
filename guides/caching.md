@@ -59,7 +59,7 @@ The `cache` function can be used in the same route as other functions such as `s
 - Value of `accept-encoding` request header
 - Name of the destination when [split testing](./split_testing) is in effect
 
-When [POST and other non-GET/HEAD](#section_caching_responses_for_post_and_other_non_get_head_requests) methods caching is enabled XDN automatically adds the following to the cache key:
+When [POST and other non-GET/HEAD](#section_caching_responses_for_post_and_other_non_get_head_requests) methods caching is enabled, {{ PRODUCT_NAME }} automatically adds the following to the cache key:
 
 - Request HTTP method
 - Request body
@@ -145,7 +145,7 @@ This will automatically add request method and body to the caching key.
 There are a number of limitations in caching of `POST` and similar requests:
 
 1. If the request body is longer than 8,000 bytes, the caching will automatically be turned off.
-2. Since both mutating and non-mutating requests are executed on the same route, there is no way for XDN to distinguish between such operations and the responsibility for never caching the mutating requests lies with you as the developer. The way to avoid caching responses to mutating requests is to inject `private` into `cache-control` of your response (e.g. `res.setHeader('cache-control', 'private')`)
+2. Since both mutating and non-mutating requests are executed on the same route, there is no way for {{ PRODUCT_NAME }} to distinguish between such operations and the responsibility for never caching the mutating requests lies with you as the developer. The way to avoid caching responses to mutating requests is to inject `private` into `cache-control` of your response (e.g. `res.setHeader('cache-control', 'private')`)
 3. Multiple requests are often need to "warm" the cache for non-`GET` requests.
 
 ### Caching Private Responses
@@ -299,7 +299,7 @@ If you have [static prerendering] enabled, the cache will automatically be repop
 
 ## Preserving the cache when deploying a new version of your site
 
-By default, XDN clears your environment edge cache on every time you deploy a new version of your site.
+By default, {{ PRODUCT_NAME }} clears your environment edge cache on every time you deploy a new version of your site.
 
 This behavior can be turned off by editing your [Environment](environment) config and enabling the following option:
 
@@ -312,7 +312,7 @@ After activating that new environment version, future deploys will re-use the ex
 In order to ensure that users who are actively browsing your site do not experience issues during a deployment, developers can
 configure certain client-side assets to be permanently available, even after a new version of the site has been deployed. For example,
 browsers using on an old version of the site may continue to request JavaScript chunks for the old version of the site for some time after a new
-version is deployed. The XDN automatically makes client-side scripts permanently available if you use Next.js, Nuxt.js, Angular, or Sapper.
+version is deployed. {{ PRODUCT_NAME }} automatically makes client-side scripts permanently available if you use Next.js, Nuxt.js, Angular, or Sapper.
 
 If you are using another framework or would like to make sure a particular asset is permanently available, you can do so by setting the `permanent` option in `serveStatic`. For example:
 
@@ -343,11 +343,11 @@ These scripts assume that you have created environments called "production", "st
 ```js
   "scripts": {
     ...
-    "clearcache:dev": "xdn cache-clear --team=myTeam --site=myXDNApp --environment=development --token=$xdn_deploy_token",
-    "clearcache:stage": "xdn cache-clear --team=myTeam --site=myXDNApp --environment=staging --token=$xdn_deploy_token",
-    "clearcache:prod": "xdn cache-clear --team=myTeam --site=myXDNApp --environment=production --token=$xdn_deploy_token",
-    "clearcache:prod:pdps": "xdn cache-clear --team=myTeam --site=myXDNApp --environment=production --surrogate-key=pdp --token=$xdn_deploy_token",
-    "clearcache:prod:plps": "xdn cache-clear --team=myTeam --site=myXDNApp --environment=production --surrogate-key=plp --token=$xdn_deploy_token",
+    "clearcache:dev": "xdn cache-clear --team=myTeam --site=my{{ PRODUCT_NAME }}App --environment=development --token=$xdn_deploy_token",
+    "clearcache:stage": "xdn cache-clear --team=myTeam --site=my{{ PRODUCT_NAME }}App --environment=staging --token=$xdn_deploy_token",
+    "clearcache:prod": "xdn cache-clear --team=myTeam --site=my{{ PRODUCT_NAME }}App --environment=production --token=$xdn_deploy_token",
+    "clearcache:prod:pdps": "xdn cache-clear --team=myTeam --site=my{{ PRODUCT_NAME }}App --environment=production --surrogate-key=pdp --token=$xdn_deploy_token",
+    "clearcache:prod:plps": "xdn cache-clear --team=myTeam --site=my{{ PRODUCT_NAME }}App --environment=production --surrogate-key=plp --token=$xdn_deploy_token",
     ...
   },
 ```

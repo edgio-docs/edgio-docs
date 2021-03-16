@@ -4,7 +4,7 @@ This guide shows you how to configure {{ PRODUCT_NAME }} to prenderer pages to t
 
 ## Overview
 
-The XDN allows you to specify the set of URLs that should be prerendered and cached at the edge during deployment to ensure that users get a subsecond
+{{ PRODUCT_NAME }} allows you to specify the set of URLs that should be prerendered and cached at the edge during deployment to ensure that users get a subsecond
 experience when accessing your site. Static prerendering works by sending requests to your application code and caching the result right after your site is deployed.
 In this way, you simply build your app to implement server-side rendering and get the speed benefits of a static site for some or all of your pages. This feature is especially useful for large, complex sites that have too many URLs to prerender without incurring exceptionally long build times.
 
@@ -62,7 +62,7 @@ module.exports = new Router().prerender(async () => {
 
 ## Prerendering with traffic data
 
-The XDN can choose which pages to prerender based on site traffic, ensuring the most popular pages are always available in the edge cache.
+{{ PRODUCT_NAME }} can choose which pages to prerender based on site traffic, ensuring the most popular pages are always available in the edge cache.
 
 ### Example: Basic Usage
 
@@ -176,7 +176,7 @@ module.exports = new Router()
 
 ## Concurrency and Limits
 
-By default, {{ PRODUCT_NAME }} prerenders a maximum of 200 URLs at a time. This can create significant additional load on your APIs at the time of deployment. You can lower this limit by setting the [prerenderConcurrency](/guides/xdn_config#section_prerenderconcurrency) property in `xdn.config.js`. The XDN imposes the following limits on prerendering:
+By default, {{ PRODUCT_NAME }} prerenders a maximum of 200 URLs at a time. This can create significant additional load on your APIs at the time of deployment. You can lower this limit by setting the [prerenderConcurrency](/guides/xdn_config#section_prerenderconcurrency) property in `xdn.config.js`. {{ PRODUCT_NAME }} imposes the following limits on prerendering:
 
 | Tier       | Concurrency | Total number of requests |
 | ---------- | ----------- | ------------------------ |

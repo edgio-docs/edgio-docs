@@ -66,4 +66,4 @@ export default nextJSApp => {
 
 ## React, Vue, and Angular
 
-{{ PRODUCT_NAME }} supports the most widely used technologies for building progressive web applications. The XDN CLI automatically detects whether you're using [React (Next.js)](next), [Vue (Nuxt.js)](nuxt), or [Angular](angular) and configures your app accordingly so you can publish your app to the cloud in seconds.
+{{ PRODUCT_NAME }} supports the most widely used technologies for building progressive web applications. The {{ PRODUCT_NAME }} CLI automatically detects whether you're using [React (Next.js)](next), [Vue (Nuxt.js)](nuxt), or [Angular](angular) and configures your app accordingly so you can publish your app to the cloud in seconds.

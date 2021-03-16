@@ -6,7 +6,7 @@ To upgrade your project to XDN v2, run `xdn use latest`. XDN v2 introduces the f
 
 ### Path syntax change
 
-The syntax for capturing multiple path tokens has been changed from `*variable` to `:variable*`. The XDN now uses [path-to-regexp](https://github.com/pillarjs/path-to-regexp) for route path matching, which is the same library used by express.
+The syntax for capturing multiple path tokens has been changed from `*variable` to `:variable*`. {{ PRODUCT_NAME }} now uses [path-to-regexp](https://github.com/pillarjs/path-to-regexp) for route path matching, which is the same library used by express.
 
 ### Custom cache keys
 

@@ -54,7 +54,7 @@ The built version of your app will typically reside in a `/build` or `/dist` dir
 
 ## Router Configuration
 
-The XDN router is used for configuring where the static resources reside and how to serve them. Using the example above, let's assume your site is bundled under the `/build` directory and has the following structure:
+The {{ PRODUCT_NAME }} router is used for configuring where the static resources reside and how to serve them. Using the example above, let's assume your site is bundled under the `/build` directory and has the following structure:
 
 - `/build/index.html`
 - `/build/static/css/main.css`

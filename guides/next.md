@@ -165,7 +165,7 @@ Note that if you don't provide a `url` prop to `Prefetch`, you must specify the 
 
 ## Routing
 
-The XDN supports Next.js's built-in routing scheme for both page and api routes, including Next.js 9's clean dynamic routes. The default `routes.js` file created by `xdn init` sends all requests to Next.js via a fallback route:
+{{ PRODUCT_NAME }} supports Next.js's built-in routing scheme for both page and api routes, including Next.js 9's clean dynamic routes. The default `routes.js` file created by `xdn init` sends all requests to Next.js via a fallback route:
 
 ```js
 // This file was automatically added by xdn deploy.
@@ -255,7 +255,7 @@ module.exports = new Router()
 
 ### Dynamic Fallback Route
 
-Usually Next.js requires 404.js to be a static page. The XDN enables you to render a specific page when no other route is matched using `router.fallback`:
+Usually Next.js requires 404.js to be a static page. {{ PRODUCT_NAME }} enables you to render a specific page when no other route is matched using `router.fallback`:
 
 ```js
 const { Router } = require('{{ PACKAGE_NAME }}/core/router')

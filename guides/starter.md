@@ -12,10 +12,10 @@ As shown below, in XDN Starter {{ PRODUCT_NAME }} becomes the main CDN for your 
 
 Requests for your site will now pass through {{ PRODUCT_NAME }}'s globally distributed network of computers and then to your server. Your site's main domain, such as `www.site.com` now points to {{ PRODUCT_NAME }}, and your original server now responds to a new domain such as `origin.site.com` that {{ PRODUCT_NAME }} will use for fetching your page data. Note that `origin.site.com` in this example is hidden from users; users continue to access your site transparently from your original domain `www.site.com`.
 
-The XDN will do two things that accelerate your pages:
+{{ PRODUCT_NAME }} will do two things that accelerate your pages:
 
 - Globally distributed caching: Pages and content that are in {{ PRODUCT_NAME }} cache will be returned to the user faster than being fetched from your server.
-- Predictive prefetching: The XDN predictively prefetch and serve data to the device _before_ the user even requests it. By effectively streaming page data to the device a few seconds ahead of the shopper, the page load becomes instantaneous because there is no network to wait for. Normally the increased traffic from this kind of data streaming would overload your server, but {{ PRODUCT_NAME }}'s caching layer acting as a "shield" protecting your origin for this load.
+- Predictive prefetching: {{ PRODUCT_NAME }} predictively prefetch and serve data to the device _before_ the user even requests it. By effectively streaming page data to the device a few seconds ahead of the shopper, the page load becomes instantaneous because there is no network to wait for. Normally the increased traffic from this kind of data streaming would overload your server, but {{ PRODUCT_NAME }}'s caching layer acting as a "shield" protecting your origin for this load.
 
 ## Implementation Process
 
@@ -32,7 +32,7 @@ We highly recommend performing this process on a staging server before attemptin
 
 ## Make sure your pages are cachable
 
-The XDN will only prefetch and accelerate pages that are cachable, i.e. do not have user specific content. The good news is that most pages can be made cachable with only a few adjustments. Let's walk through an example.
+{{ PRODUCT_NAME }} will only prefetch and accelerate pages that are cachable, i.e. do not have user specific content. The good news is that most pages can be made cachable with only a few adjustments. Let's walk through an example.
 
 ![Ecommerce homepage with a badge indicating the number of items in the cart](/images/starter/user-content-example.png)
 
@@ -73,7 +73,7 @@ Next install {{ PRODUCT_NAME }} JavaScript libraries to your site by adding the 
 <script src="/main.js" defer="defer"></script>
 ```
 
-These tags power the predictive prefetching and caching that will be used by {{ PRODUCT_NAME }}. Note that the JavaScript assets referenced in the above script tags are not on your server. The XDN server the assets for these script tags once {{ PRODUCT_NAME }} is installed in front of your server as described in [How XDN Starter works](#section_how_xdn_starter_works).
+These tags power the predictive prefetching and caching that will be used by {{ PRODUCT_NAME }}. Note that the JavaScript assets referenced in the above script tags are not on your server. {{ PRODUCT_NAME }} serves the assets for these script tags once {{ PRODUCT_NAME }} is installed in front of your server as described in [How XDN Starter works](#section_how_xdn_starter_works).
 
 ## Setup a Starter project
 
@@ -93,7 +93,7 @@ Create your Starter project using {{ PRODUCT_NAME }}'s create module:
 npm create xdn-app@latest
 ```
 
-The XDN create module will prompt you for the following information:
+The {{ PRODUCT_NAME }} create module will prompt you for the following information:
 
 - Name: Give your project name.
 - Template: Select the `Default Starter template` option.
@@ -194,7 +194,7 @@ In addition to configuring your caching in `routes.ts` as shown above, you may n
 
 By injecting `main.js` into your app's front-end code, your app will automatically prefetch all visible HTML links with URLs that match a route configured with `edge.maxAgeSeconds` and `browser.serviceWorkerSeconds` (in essence, when you configure a route to be cached, you are also declaring it to be a candidate for prefetching as well). Links that are visible when the page first loads are fetched immediately. Additional links will be fetched when the user scrolls down the page and more links become visible.
 
-Prefetching can generate substantial additional network traffic. The XDN automatically shields your origin from this additional traffic by only serving prefetch requests from the edge cache. If a prefetch request cannot be served from the cache, {{ PRODUCT_NAME }} will return an HTTP 412 status and the request will not be proxied to the origin. When this happens, the only effect for the user is that they will not see the speed benefit of prefetching. Therefore, the effectiveness of prefetching ramps up over time as users visit pages throughout your site. When the edge cache is cleared, either through [XDN Console](caching#section_clearing_the_cache) or automatically following a deployment, the speed benefit of prefetching is decreased until the cache fills up based on organic traffic.
+Prefetching can generate substantial additional network traffic. {{ PRODUCT_NAME }} automatically shields your origin from this additional traffic by only serving prefetch requests from the edge cache. If a prefetch request cannot be served from the cache, {{ PRODUCT_NAME }} will return an HTTP 412 status and the request will not be proxied to the origin. When this happens, the only effect for the user is that they will not see the speed benefit of prefetching. Therefore, the effectiveness of prefetching ramps up over time as users visit pages throughout your site. When the edge cache is cleared, either through [XDN Console](caching#section_clearing_the_cache) or automatically following a deployment, the speed benefit of prefetching is decreased until the cache fills up based on organic traffic.
 
 ## Test your code locally and on {{ PRODUCT_NAME }}
 

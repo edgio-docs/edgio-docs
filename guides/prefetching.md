@@ -1,6 +1,6 @@
 # Prefetching
 
-The XDN allows you to speed up the user's browsing experience by prefetching pages and API calls that they are likely to need.
+{{ PRODUCT_NAME }} allows you to speed up the user's browsing experience by prefetching pages and API calls that they are likely to need.
 
 ![video](https://www.youtube.com/watch?v=lfhSDCNgzfs)
 
@@ -291,7 +291,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 ## GraphQL
 
-The XDN also enables caching and prefetching of GraphQL requests via a middleware for [Apollo](https://www.apollographql.com/apollo-client). To enable prefetching of GraphQL queries in both the edge and the service worker:
+{{ PRODUCT_NAME }} also enables caching and prefetching of GraphQL requests via a middleware for [Apollo](https://www.apollographql.com/apollo-client). To enable prefetching of GraphQL queries in both the edge and the service worker:
 
 1. Ensure that your GraphQL API is configured to accept GET requests. The Apollo client uses POST requests by default, but the Apollo server [automatically accepts both GETs and POSTs](https://www.apollographql.com/docs/apollo-server/v1/requests/). We use GETs instead of POSTs for two reasons:
 
@@ -336,7 +336,7 @@ module.exports = new Router().get('/graphql', ({ cache, removeUpstreamResponseHe
     },
   })
 
-  // Some APIs, like Shopify, attempt to establish a session by setting a cookie. The XDN will
+  // Some APIs, like Shopify, attempt to establish a session by setting a cookie. {{ PRODUCT_NAME }} will
   // not cache responses with a set-cookie header, so we remove it before attempting to write
   // the response to the cache
   removeUpstreamResponseHeader('set-cookie')

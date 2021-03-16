@@ -1,6 +1,6 @@
 # Devtools
 
-The XDN Devtools is a widget that helps developers understand how their site interacts with {{ PRODUCT_NAME }}, including:
+{{ PRODUCT_NAME }} Devtools is a widget that helps developers understand how their site interacts with {{ PRODUCT_NAME }}, including:
 
 - Edge and browser caching
 - Prefetching

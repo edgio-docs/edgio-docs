@@ -1,6 +1,6 @@
 # Logs
 
-The XDN platform exposes three types of logs to users:
+The {{ PRODUCT_NAME }} platform exposes three types of logs to users:
 
 - [Build logs](#section_build_logs) capture all the build output from your XDN deploys.
 - [Server logs](#section_server_logs) capture your XDN serverless console output at real time.

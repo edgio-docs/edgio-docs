@@ -1,10 +1,10 @@
 # CLI
 
-This guide shows you everything you can do with the XDN command line interface.
+This guide shows you everything you can do with {{ PRODUCT_NAME }} command line interface.
 
 ## Installation
 
-To install the XDN CLI run
+To install the {{ PRODUCT_NAME }} CLI run
 
 ```bash
 npm i -g {{ PACKAGE_NAME }}/cli
@@ -24,11 +24,11 @@ Creates a build of your app optimized for production
 
 #### Options
 
-| Name                         | Description                                                                                                                                                                                                                                                                              |
-| ---------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `--skip-framework`           | Alias: "-s". Skips the framework (Next.js, Vue, Angular, etc..) build and simply rebundles your router                                                                                                                                                                                   |
-| `--disable-permanent-assets` | Set this to true to suppress errors like "Immutable file (...) content was changed" during deployment.                                                                                                                                                                                   |
-| `--include-sources`          | Includes all non-gitignored source files in the bundle uploaded to the XDN. This can be helpful when debugging, especially when working with Moovweb support. You can limit the files that are uploaded using the [sources](/guides/xdn_config#section_sources) config in xdn.config.js. |
+| Name                         | Description                                                                                                                                                                                                                                                                                         |
+| ---------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `--skip-framework`           | Alias: "-s". Skips the framework (Next.js, Vue, Angular, etc..) build and simply rebundles your router                                                                                                                                                                                              |
+| `--disable-permanent-assets` | Set this to true to suppress errors like "Immutable file (...) content was changed" during deployment.                                                                                                                                                                                              |
+| `--include-sources`          | Includes all non-gitignored source files in the bundle uploaded to {{ PRODUCT_NAME }}. This can be helpful when debugging, especially when working with Moovweb support. You can limit the files that are uploaded using the [sources](/guides/xdn_config#section_sources) config in xdn.config.js. |
 
 #### Example
 
@@ -91,16 +91,16 @@ Builds and deploys your site on {{ PRODUCT_NAME }}.
 
 #### Options
 
-| Name                         | Description                                                                                                                                                                                                                                                                              |
-| ---------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `--site`                     | The name of the site to deploy. By default the `name` field in `package.json` is used.                                                                                                                                                                                                   |
-| `--environment`              | The environment to deploy to. By default the `default` environment is used.                                                                                                                                                                                                              |
-| `--branch`                   | The name of the source control branch. This is automatically set when using Git.                                                                                                                                                                                                         |
-| `--skip-build`               | Skips the build step                                                                                                                                                                                                                                                                     |
-| `--token`                    | Authenticates using a deploy token rather than your user credentials. Use this option when deploying from CI.                                                                                                                                                                            |
-| `--commit-url`               | The URL at which the commit can be viewed in your source control provided. If your package.json provides the repository attribute the commit URL will be derived automatically if you use GitHub, GitLab, or BitBucket.                                                                  |
-| `--include-sources`          | Includes all non-gitignored source files in the bundle uploaded to the XDN. This can be helpful when debugging, especially when working with Moovweb support. You can limit the files that are uploaded using the [sources](/guides/xdn_config#section_sources) config in xdn.config.js. |
-| `--disable-permanent-assets` | Set this to true to suppress errors like "Immutable file (...) content was changed" during deployment.                                                                                                                                                                                   |
+| Name                         | Description                                                                                                                                                                                                                                                                                         |
+| ---------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `--site`                     | The name of the site to deploy. By default the `name` field in `package.json` is used.                                                                                                                                                                                                              |
+| `--environment`              | The environment to deploy to. By default the `default` environment is used.                                                                                                                                                                                                                         |
+| `--branch`                   | The name of the source control branch. This is automatically set when using Git.                                                                                                                                                                                                                    |
+| `--skip-build`               | Skips the build step                                                                                                                                                                                                                                                                                |
+| `--token`                    | Authenticates using a deploy token rather than your user credentials. Use this option when deploying from CI.                                                                                                                                                                                       |
+| `--commit-url`               | The URL at which the commit can be viewed in your source control provided. If your package.json provides the repository attribute the commit URL will be derived automatically if you use GitHub, GitLab, or BitBucket.                                                                             |
+| `--include-sources`          | Includes all non-gitignored source files in the bundle uploaded to {{ PRODUCT_NAME }}. This can be helpful when debugging, especially when working with Moovweb support. You can limit the files that are uploaded using the [sources](/guides/xdn_config#section_sources) config in xdn.config.js. |
+| `--disable-permanent-assets` | Set this to true to suppress errors like "Immutable file (...) content was changed" during deployment.                                                                                                                                                                                              |
 
 #### Example
 
@@ -110,7 +110,7 @@ xdn deploy my-team --environment=production
 
 ### docs
 
-Open the XDN documentation in your browser.
+Open the {{ PRODUCT_NAME }} documentation in your browser.
 
 #### Example
 
@@ -120,7 +120,7 @@ xdn docs
 
 ### dev
 
-Runs your project in development mode, simulating the XDN cloud environment. This command is a simplified version of `xdn run`, with only the --cache option being supported.
+Runs your project in development mode, simulating the {{ PRODUCT_NAME }} cloud environment. This command is a simplified version of `xdn run`, with only the --cache option being supported.
 
 #### Options
 
@@ -152,7 +152,7 @@ xdn init
 
 ### login
 
-Logs into the XDN via the developer console.
+Logs into {{ PRODUCT_NAME }} via the developer console.
 
 #### Example
 
@@ -162,7 +162,7 @@ xdn login
 
 ### logout
 
-Logs out of the XDN
+Logs out of {{ PRODUCT_NAME }}
 
 #### Example
 
@@ -187,7 +187,7 @@ Runs your app locally. Uses port 3000 by default. You can change this by setting
 xdn run --production
 ```
 
-Or to run a deployment bundle downloaded from the XDN Developer Console, use:
+Or to run a deployment bundle downloaded from {{ PRODUCT_NAME }} Developer Console, use:
 
 ```bash
 xdn run /path/to/bundle.zip

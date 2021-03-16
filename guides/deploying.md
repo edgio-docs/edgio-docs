@@ -6,9 +6,9 @@ This guide walks you through deploying your first site to {{ PRODUCT_NAME }}.
 
 To deploy your site to {{ PRODUCT_NAME }}, you must first sign up for an account. [Sign up here for free.](https://moovweb.app/signup)
 
-## Install the XDN CLI
+## Install the {{ PRODUCT_NAME }} CLI
 
-Next, globally install the XDN cli using npm:
+Next, globally install the {{ PRODUCT_NAME }} cli using npm:
 
 ```bash
 npm i -g {{ PACKAGE_NAME }}/cli
@@ -46,11 +46,11 @@ Each time you deploy your site to {{ PRODUCT_NAME }} a "deployment" is created a
 
 ![deployments](/images/deploying/deployments.png)
 
-Having each deployment be simultaneously and permanently accessible makes it easy to preview other developers' work before merging a pull request and enables you to "go back in time" to find where a bug or change in behavior originated. We recommend configuring your CI environment to deploy every push to the XDN.
+Having each deployment be simultaneously and permanently accessible makes it easy to preview other developers' work before merging a pull request and enables you to "go back in time" to find where a bug or change in behavior originated. We recommend configuring your CI environment to deploy every push to {{ PRODUCT_NAME }}.
 
 ## Deploying from CI
 
-To deploy from your CI environment, create a deploy token using the site settings tab in the XDN console:
+To deploy from your CI environment, create a deploy token using the site settings tab in the {{ PRODUCT_NAME }} console:
 
 ![deployments](/images/deploying/token.png)
 

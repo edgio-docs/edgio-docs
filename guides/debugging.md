@@ -1,6 +1,6 @@
 # Debugging
 
-This guide shows you how to debug applications running locally behind the XDN.
+This guide shows you how to debug applications running locally behind {{ PRODUCT_NAME }}.
 
 ## Visual Studio Code
 

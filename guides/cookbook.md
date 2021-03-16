@@ -1,6 +1,6 @@
 # Cookbook
 
-This guide gives examples of common routing patterns using the XDN.
+This guide gives examples of common routing patterns using {{ PRODUCT_NAME }}.
 
 ## Proxying a backend
 

@@ -4,7 +4,7 @@ This guide shows you how to serve generic static sites on {{ PRODUCT_NAME }}.
 
 ## Example Static Sites
 
-Here are a few examples of common static sites served by the XDN.
+Here are a few examples of common static sites served by {{ PRODUCT_NAME }}.
 
 [Backbone.js Static Example](https://moovweb-docs-static-backbonejs-example-default.moovweb-edge.io/?button)
 [View the Code](https://github.com/moovweb-docs/xdn-examples/tree/main/static-backbonejs-example?button)
@@ -21,11 +21,11 @@ Here are a few examples of common static sites served by the XDN.
 
 If you do not have Node.js installed on your system, download and install it from the official [Node.js v12.x downloads](https://nodejs.org/dist/latest-v12.x/) page. Select the download that matches your operating system and run the installer. Note that the installer for Node.js will also install npm.
 
-_Note that while you can use any version of Node.js >= 12 locally, your app will run in Node 12 when deployed to the XDN cloud. Therefore we highly suggest using Node 12 for all development._
+_Note that while you can use any version of Node.js >= 12 locally, your app will run in Node 12 when deployed to the {{ PRODUCT_NAME }} cloud. Therefore we highly suggest using Node 12 for all development._
 
 ## Getting Started
 
-To prepare your static app for deployment on {{ PRODUCT_NAME }}, install the XDN CLI globally:
+To prepare your static app for deployment on {{ PRODUCT_NAME }}, install the {{ PRODUCT_NAME }} CLI globally:
 
 ```bash
 npm install -g {{ PACKAGE_NAME }}/cli
@@ -42,7 +42,7 @@ project. These include:
 
 - The `{{ PACKAGE_NAME }}/core` package - Allows you to declare routes and deploy your application on {{ PRODUCT_NAME }}
 - The `{{ PACKAGE_NAME }}/prefetch` package - Allows you to configure a service worker to prefetch and cache pages to improve browsing speed
-- `xdn.config.js` - The main configuration file for the XDN.
+- `xdn.config.js` - The main configuration file for {{ PRODUCT_NAME }}.
 - `routes.js` - A default routes file that sends all requests to Next.js. Update this file to add caching or proxy some URLs to a different origin.
 - `sw/service-worker.js` A service worker implemented using Workbox.
 
@@ -100,7 +100,7 @@ module.exports = new Router()
   })
 ```
 
-If your site does not use a bundler for generating a build output, you can still serve the assets using `serveStatic` and reference the relative path to the resources. Any resource referenced using `serveStatic` or `appShell` will automatically be included in the XDN deployment. An example of serving assets from your `src` directory:
+If your site does not use a bundler for generating a build output, you can still serve the assets using `serveStatic` and reference the relative path to the resources. Any resource referenced using `serveStatic` or `appShell` will automatically be included in the {{ PRODUCT_NAME }} deployment. An example of serving assets from your `src` directory:
 
 ```js
 // routes.js

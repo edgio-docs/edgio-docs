@@ -4,7 +4,7 @@ This guide shows you how to deploy the [Next.js Commerce](https://github.com/ver
 
 ## Next.js Commerce Example
 
-Here is an example of the [Next.js Commerce](https://nextjs.org/commerce) template running on the XDN. It uses all of the latest Next.js 10 features
+Here is an example of the [Next.js Commerce](https://nextjs.org/commerce) template running on {{ PRODUCT_NAME }}. It uses all of the latest Next.js 10 features
 including image optimization, localization, and incremental static regeneration with stale-while-revalidate.
 
 [Try the Next.js Commerce Example Site](https://moovweb-docs-nextjs-commerce-default.moovweb-edge.io/?button)
@@ -12,11 +12,11 @@ including image optimization, localization, and incremental static regeneration 
 
 ## Getting Started
 
-The easiest way to try Next.js Commerce on the XDN is to clone and deploy the version from the XDN examples:
+The easiest way to try Next.js Commerce on {{ PRODUCT_NAME }} is to clone and deploy the version from the {{ PRODUCT_NAME }} examples:
 
 1. Register for a free account on the [XDN sign up page](https://moovweb.app/signup).
 
-2. Clone the XDN examples repository:
+2. Clone the {{ PRODUCT_NAME }} examples repository:
 
 ```bash
 git clone git@github.com:moovweb-docs/xdn-examples.git
@@ -29,7 +29,7 @@ cd xdn-examples/nextjs-commerce/
 yarn install
 ```
 
-4. Deploy to the XDN:
+4. Deploy to {{ PRODUCT_NAME }}:
 
 ```bash
 npm run xdn:deploy
@@ -37,15 +37,15 @@ npm run xdn:deploy
 
 ## Learn more
 
-For more details on using Next.js on the XDN refer to the [Next.js Guide](next).
+For more details on using Next.js on {{ PRODUCT_NAME }} refer to the [Next.js Guide](next).
 
 ## Deploying the official Next.js Commerce repository
 
-If you wish to deploy to the XDN from the official Next.js Commerce repository, follow these steps:
+If you wish to deploy to {{ PRODUCT_NAME }} from the official Next.js Commerce repository, follow these steps:
 
 1. Register for a free account on the [XDN sign up page](https://moovweb.app/signup).
 
-2. Install the XDN [CLI](cli) globally
+2. Install the {{ PRODUCT_NAME }} [CLI](cli) globally
 
 ```bash
 npm i -g {{ PACKAGE_NAME }}/cli
@@ -106,9 +106,9 @@ BIGCOMMERCE_STOREFRONT_API_URL="https://store-XXXX-XXXX.mybigcommerce.com/graphq
 BIGCOMMERCE_STORE_API_URL="https://api.bigcommerce.com/stores/XXXX"
 ```
 
-An [example `.env.local` file](https://github.com/moovweb-docs/xdn-examples/blob/main/nextjs-commerce/.env.local) is in the the XDN examples repo.
+An [example `.env.local` file](https://github.com/moovweb-docs/xdn-examples/blob/main/nextjs-commerce/.env.local) is in the the {{ PRODUCT_NAME }} examples repo.
 
-9. Deploy to the XDN:
+9. Deploy to {{ PRODUCT_NAME }}:
 
 ```bash
 xdn deploy

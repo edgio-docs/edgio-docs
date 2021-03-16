@@ -11,12 +11,12 @@ You can perform two kinds of split tests with {{ PRODUCT_NAME }}:
 
 ## A/B testing multiple implementations of the same site
 
-To A/B test mutliple implementations of the same site, simply deploy each implementation to a separate [environment](environments), then [configure the rules for splitting traffic between using the XDN Developer Console](#section_configuring_the_split_test).
+To A/B test mutliple implementations of the same site, simply deploy each implementation to a separate [environment](environments), then [configure the rules for splitting traffic between using the {{ PRODUCT_NAME }} Developer Console](#section_configuring_the_split_test).
 
 To use CI to deploy A/B tests we recommend that you:
 
 1. Set up separate branches in source control for the main experience and the new experience, for example `master` and `preview`
-2. Create environments called `production` and `preview` in the XDN Developer Console.
+2. Create environments called `production` and `preview` in the {{ PRODUCT_NAME }} Developer Console.
 3. Configure CI to deploy the `master` branch to the `production` environment and the `preview` branch to the `preview` environment. (Using `xdn deploy --environment={environment name}`)
 
 ## Splitting traffic between multiple sites
@@ -45,20 +45,20 @@ const { Router } = require('{{ PACKAGE_NAME }}/core/router')
 
 module.exports = new Router()
   .destination(
-    'legacy_experience', // displayed in the destination dropdown in the traffic splitting section of your environment configuration in the XDN Developer Console
+    'legacy_experience', // displayed in the destination dropdown in the traffic splitting section of your environment configuration in the {{ PRODUCT_NAME }} Developer Console
     new Router()
       // additional routing rules for the legacy experience go here
       .fallback(({ proxy }) => proxy('legacy')),
   )
   .destination(
-    'new_experience', // displayed in the destination dropdown in the traffic splitting section of your environment configuration in the XDN Developer Console
+    'new_experience', // displayed in the destination dropdown in the traffic splitting section of your environment configuration in the {{ PRODUCT_NAME }} Developer Console
     new Router()
       // additional routing rules for the new experience go here
       .fallback(({ proxy }) => proxy('new')),
   )
 ```
 
-Once you have made these changes, deploy your site using `xdn deploy --environment={my production environment name}`, then [configure the rules for splitting traffic between using the XDN Developer Console](#section_configuring_the_split_test).
+Once you have made these changes, deploy your site using `xdn deploy --environment={my production environment name}`, then [configure the rules for splitting traffic between using the {{ PRODUCT_NAME }} Developer Console](#section_configuring_the_split_test).
 
 ## Configuring the split test
 
@@ -93,7 +93,7 @@ to send 100% of traffic to a specific destination.
 
 ## Third-Party CDNs
 
-If the XDN is behind a third-party CDN, it is critical that you update the third party CDN to not cache responses from the XDN nor to affect any cookies that begin with `xdn_`. You can find more details [here](third_party_cdns#section_split_testing).
+If {{ PRODUCT_NAME }} is behind a third-party CDN, it is critical that you update the third party CDN to not cache responses from {{ PRODUCT_NAME }} nor to affect any cookies that begin with `xdn_`. You can find more details [here](third_party_cdns#section_split_testing).
 
 ## How requests are routed
 
@@ -103,7 +103,7 @@ The experience the user sees is determined by the traffic split percentage you s
 
 ## Identifying the experience on the client
 
-When a split test is active, the XDN will automatically set an `xdn_destination` cookie to the name
+When a split test is active, {{ PRODUCT_NAME }} will automatically set an `xdn_destination` cookie to the name
 of the chosen destination. You can use this value in the browser to report the split test experience assignment to
 analytics.
 

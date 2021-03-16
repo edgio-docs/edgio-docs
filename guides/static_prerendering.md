@@ -1,6 +1,6 @@
 # Static Prerendering
 
-This guide shows you how to configure the XDN to prenderer pages to the edge cache to improve the performance of your site.
+This guide shows you how to configure {{ PRODUCT_NAME }} to prenderer pages to the edge cache to improve the performance of your site.
 
 ## Overview
 
@@ -55,7 +55,7 @@ module.exports = new Router().prerender(async () => {
 const { Router } = require('{{ PACKAGE_NAME }}/core/router')
 
 module.exports = new Router().prerender(async () => {
-  const paths = process.env.PRERENDER_PATHS.split(/\n/) // define the list of paths to prerender in the XDN Developer Console.
+  const paths = process.env.PRERENDER_PATHS.split(/\n/) // define the list of paths to prerender in the {{ PRODUCT_NAME }} Developer Console.
   return paths.map(path => ({ path }))
 })
 ```
@@ -176,14 +176,14 @@ module.exports = new Router()
 
 ## Concurrency and Limits
 
-By default, the XDN prerenders a maximum of 200 URLs at a time. This can create significant additional load on your APIs at the time of deployment. You can lower this limit by setting the [prerenderConcurrency](/guides/xdn_config#section_prerenderconcurrency) property in `xdn.config.js`. The XDN imposes the following limits on prerendering:
+By default, {{ PRODUCT_NAME }} prerenders a maximum of 200 URLs at a time. This can create significant additional load on your APIs at the time of deployment. You can lower this limit by setting the [prerenderConcurrency](/guides/xdn_config#section_prerenderconcurrency) property in `xdn.config.js`. The XDN imposes the following limits on prerendering:
 
 | Tier       | Concurrency | Total number of requests |
 | ---------- | ----------- | ------------------------ |
 | ENTERPRISE | 200         | 25,000 per deployment    |
 | FREE       | 10          | 100 per deployment       |
 
-## Viewing Prerendering Results in the XDN Developer Console
+## Viewing Prerendering Results in the {{ PRODUCT_NAME }} Developer Console
 
 When you deploy a new version of your site, you can view the progress and results of prerendering from the deployment
 view in XDN Developer Console:

@@ -1,21 +1,21 @@
 # Connectors
 
-Connector packages help build and run your app within the XDN. When you run `xdn init`, the XDN CLI detects the framework used by your app and installs the corresponding connector package. For example, if you use Next.js, `{{ PACKAGE_NAME }}/next` will be installed. If no connector package exists for the framework that you use, you can still deploy to the XDN by implementing the connector interface directly in your app.
+Connector packages help build and run your app within {{ PRODUCT_NAME }}. When you run `xdn init`, {{ PRODUCT_NAME }} CLI detects the framework used by your app and installs the corresponding connector package. For example, if you use Next.js, `{{ PACKAGE_NAME }}/next` will be installed. If no connector package exists for the framework that you use, you can still deploy to {{ PRODUCT_NAME }} by implementing the connector interface directly in your app.
 
 ## Writing a connector
 
 An XDN connector consists of four entry points:
 
-- `init.js` - Called when the user runs `xdn init`, adding resources to the project necessary for deploying on the XDN. May also modify existing files with the project.
+- `init.js` - Called when the user runs `xdn init`, adding resources to the project necessary for deploying on {{ PRODUCT_NAME }}. May also modify existing files with the project.
 - `dev.js` - Called when the user runs `xdn dev` to run their app in development mode.
-- `build.js` - Called when the user runs `xdn build` or `xdn deploy`. Builds the application, copying resources into the `.xdn` directory, which is ultimately zipped and uploaded to the XDN.
-- `prod.js` - Starts the application server in the XDN cloud's serverless environment.
+- `build.js` - Called when the user runs `xdn build` or `xdn deploy`. Builds the application, copying resources into the `.xdn` directory, which is ultimately zipped and uploaded to {{ PRODUCT_NAME }}.
+- `prod.js` - Starts the application server in {{ PRODUCT_NAME }} cloud's serverless environment.
 
 These files should be placed in the root directory of your connector package.
 
 ## init.js
 
-Called when the user runs `xdn init`. This entry point adds resources to the project necessary for deploying on the XDN. It may also modify existing files within the project.
+Called when the user runs `xdn init`. This entry point adds resources to the project necessary for deploying on {{ PRODUCT_NAME }}. It may also modify existing files within the project.
 
 _Optional, if not provided, xdn init will add a default router and xdn.config.js to the user's project._
 
@@ -59,7 +59,7 @@ Additional files can be added beyond the ones listed above. They will be copied 
 
 Called when the user runs `xdn dev`. This entry point is responsible for starting the user's application in development mode. The `{{ PACKAGE_NAME }}/core` library provides a `createDevServer` function to help with this.
 
-_Optional, if not provided, xdn dev will simply start the XDN in local development mode, but will not start a framework application server._
+_Optional, if not provided, xdn dev will simply start {{ PRODUCT_NAME }} in local development mode, but will not start a framework application server._
 
 Example:
 
@@ -79,7 +79,7 @@ module.exports = function() {
 
     // A function that is called with every line of output from your app. Return true to show that line to the user, false to hide it.
     // Many connectors use this to hide lines like "Next.js ready on http://localhost:3001", which might confuse the user as to
-    // which URL to use when testing their app behind the XDN.
+    // which URL to use when testing their app behind {{ PRODUCT_NAME }}.
     filterOutput: line => !line.match(/some pattern/),
   })
 }
@@ -87,7 +87,7 @@ module.exports = function() {
 
 ## build.js
 
-Exports a function that is called when you run `xdn build`. It is responsible for constructing the bundle that is deployed to the XDN cloud. This function typically uses `{{ PACKAGE_NAME }}/core/deploy/DeploymentBuilder` to stage the exploded bundle in the `.xdn` directory.
+Exports a function that is called when you run `xdn build`. It is responsible for constructing the bundle that is deployed to the {{ PRODUCT_NAME }} cloud. This function typically uses `{{ PACKAGE_NAME }}/core/deploy/DeploymentBuilder` to stage the exploded bundle in the `.xdn` directory.
 
 _Optional, and not needed in most cases. The xdn build command automatically creates a bundle that includes all static assets referenced in your routes file as well as the `prod` entry point mentioned above._
 
@@ -115,14 +115,14 @@ export default async function build({ skipFramework }) {
     // optionally add some file required by the app at runtime.  This is equivalent to setting the includeFiles config in xdn.config.js
     .addJSAsset('path/to/file/in/project')
 
-  // build the XDN deployment bundle in the .xdn directory
+  // build the {{ PRODUCT_NAME }} deployment bundle in the .xdn directory
   await builder.build()
 }
 ```
 
 ## prod.js
 
-The XDN runs your application in its serverless cloud by proxying requests to your framework's application server, which it expects to be running on a specific port. The prod.js entry point exports a function that is called when a new serverless function is provisioned. It is responsible for starting your app on the provided port so that it can receive requests from the XDN.
+The XDN runs your application in its serverless cloud by proxying requests to your framework's application server, which it expects to be running on a specific port. The prod.js entry point exports a function that is called when a new serverless function is provisioned. It is responsible for starting your app on the provided port so that it can receive requests from {{ PRODUCT_NAME }}.
 
 _Optional. This entry point is only needed if your app uses server-side rendering or calls the_ [renderWithApp](/docs/api/core/classes/_router_responsewriter_.responsewriter.html#renderwithapp) _method on ResponseWriter._
 
@@ -170,11 +170,11 @@ To test your connector locally without publishing it to NPM:
 2. Create an `xdn.config.js` file in the root directory of your project.
 3. Set the `connector` property to name of the connector package.
 
-Now `xdn init`, `xdn dev`, `xdn build`, and `xdn deploy` commands will use the entry points in the connector, and your `prod.js` entrypoint will be used to serve requests in the XDN cloud.
+Now `xdn init`, `xdn dev`, `xdn build`, and `xdn deploy` commands will use the entry points in the connector, and your `prod.js` entrypoint will be used to serve requests in the {{ PRODUCT_NAME }} cloud.
 
 ## Implementing a connector directly within your project
 
-If your project uses a framework that isn't supported by one of the official connector packages, you can still deploy to the XDN by implementing your own connector directly within your project. To do so:
+If your project uses a framework that isn't supported by one of the official connector packages, you can still deploy to {{ PRODUCT_NAME }} by implementing your own connector directly within your project. To do so:
 
 1. Create a directory for your connector.
 2. Implement the entry points listed above.
@@ -201,4 +201,4 @@ module.exports = {
 }
 ```
 
-Once the connector is in place, `xdn dev`, `xdn build`, and `xdn deploy` commands will use the entry points in the connector, and your `prod.js` entrypoint will be used to serve requests in the XDN cloud.
+Once the connector is in place, `xdn dev`, `xdn build`, and `xdn deploy` commands will use the entry points in the connector, and your `prod.js` entrypoint will be used to serve requests in the {{ PRODUCT_NAME }} cloud.

@@ -4,7 +4,7 @@ This guide covers the REST API provided by {{ PRODUCT_NAME }}.
 
 ## Authentication
 
-To gain access to the api, provide a deploy token via the `x-api-key` header. Deploy tokens can be created from a site's settings tab in the XDN Developer Console.
+To gain access to the api, provide a deploy token via the `x-api-key` header. Deploy tokens can be created from a site's settings tab in the {{ PRODUCT_NAME }} Developer Console.
 
 ## Methods
 

@@ -2,13 +2,13 @@
 
 The XDN platform exposes three types of logs to users:
 
-* [Build logs](#section_build_logs) capture all the build output from your XDN deploys.
-* [Server logs](#section_server_logs) capture your XDN serverless console output at real time.
-* [Access logs](#section_access_logs) capture information about all the requests served by XDN.
+- [Build logs](#section_build_logs) capture all the build output from your XDN deploys.
+- [Server logs](#section_server_logs) capture your XDN serverless console output at real time.
+- [Access logs](#section_access_logs) capture information about all the requests served by XDN.
 
 ## Build Logs
 
-Each time you deploy to the XDN using the `xdn deploy` command, information about the deployment is logged, including the output of the `xdn deploy` command itself. You can view these logs in real-time by viewing your deployment on [moovweb.app](https://moovweb.app).
+Each time you deploy to {{ PRODUCT_NAME }} using the `xdn deploy` command, information about the deployment is logged, including the output of the `xdn deploy` command itself. You can view these logs in real-time by viewing your deployment on [moovweb.app](https://moovweb.app).
 
 ![build](/images/logs/build.png)
 
@@ -22,7 +22,7 @@ Here you can limit the output to only those statements coming from your IP addre
 
 ## Access Logs
 
-XDN [Enterprise tier](https://www.moovweb.com/pricing) customers can receive streaming access logs that capture information about each request served by the XDN. To do so refer to the "Access Logs" tab:
+XDN [Enterprise tier](https://www.moovweb.com/pricing) customers can receive streaming access logs that capture information about each request served by {{ PRODUCT_NAME }}. To do so refer to the "Access Logs" tab:
 
 ![access](/images/logs/access.png)
 
@@ -215,9 +215,8 @@ Request ID of the response hit in the cache. Corresponds to [`x-xdn-hit-request-
 
 XDN saves its logs to Amazon S3. Most log aggregation tools are able to ingest logs from S3. We attempt to link to the docs that explain how to ingest logs from S3 for each popular log aggregation tool below. Even if your tool is not listed, there's a good chance it can ingest logs from S3.
 
-* Sematext | [[Logagent docs]](https://sematext.com/docs/logagent/)
-* Sumo Logic | [[S3 ingest docs]](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/AWS-S3-Source)
-* AWS Athena | [[docs]](https://aws.amazon.com/blogs/big-data/analyzing-data-in-s3-using-amazon-athena/)
-* Splunk | [[S3 ingest docs]](https://docs.splunk.com/Documentation/AddOns/released/AWS/S3)
-* Loggly | [[S3 ingest docs]](https://documentation.solarwinds.com/en/Success_Center/loggly/Content/admin/s3-ingestion-auto.htm)
-
+- Sematext | [[Logagent docs]](https://sematext.com/docs/logagent/)
+- Sumo Logic | [[S3 ingest docs]](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/AWS-S3-Source)
+- AWS Athena | [[docs]](https://aws.amazon.com/blogs/big-data/analyzing-data-in-s3-using-amazon-athena/)
+- Splunk | [[S3 ingest docs]](https://docs.splunk.com/Documentation/AddOns/released/AWS/S3)
+- Loggly | [[S3 ingest docs]](https://documentation.solarwinds.com/en/Success_Center/loggly/Content/admin/s3-ingestion-auto.htm)

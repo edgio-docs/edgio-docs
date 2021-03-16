@@ -11,7 +11,7 @@ This Next.js example app uses server-side rendering and prefetching to provide l
 
 ## Next.js Commerce
 
-For details on using the Next.js Commerce template with the XDN refer to our [Next.js Commerce Guide](next_commerce).
+For details on using the Next.js Commerce template with {{ PRODUCT_NAME }} refer to our [Next.js Commerce Guide](next_commerce).
 
 ## Supported Features
 
@@ -32,7 +32,7 @@ For details on using the Next.js Commerce template with the XDN refer to our [Ne
 
 If you do not have Node.js installed on your system, download and install it from the official [Node.js v12.x downloads](https://nodejs.org/dist/latest-v12.x/) page. Select the download that matches your operating system and run the installer. Note that the installer for Node.js will also install npm.
 
-_Note that while you can use any version of Node.js >= 12 locally, your app will run in Node 12 when deployed to the XDN cloud. Therefore we highly suggest using Node 12 for all development._
+_Note that while you can use any version of Node.js >= 12 locally, your app will run in Node 12 when deployed to the {{ PRODUCT_NAME }} cloud. Therefore we highly suggest using Node 12 for all development._
 
 ### Create a Next.js Application
 
@@ -44,16 +44,16 @@ npm create next-app my-next-app
 
 To prepare your Next.js application for deployment on {{ PRODUCT_NAME }}:
 
-### Install the XDN CLI globally
+### Install the {{ PRODUCT_NAME }} CLI globally
 
 ```bash
 npm install -g {{ PACKAGE_NAME }}/cli
 ```
 
 \*\*Note
-When installing the XDN CLI globally in a virtual environment that has Node and NPM installed globally, you [may run into permission issues](https://forum.moovweb.com/t/xdn-cli-npm-install-error/83). In that case, you can install the XDN CLI locally within you app using `npm i -D {{ PACKAGE_NAME }}/cli` and running commands using `./node_modules/{{ PACKAGE_NAME }}/cli` instead of `xdn`.
+When installing the {{ PRODUCT_NAME }} CLI globally in a virtual environment that has Node and NPM installed globally, you [may run into permission issues](https://forum.moovweb.com/t/xdn-cli-npm-install-error/83). In that case, you can install the {{ PRODUCT_NAME }} CLI locally within you app using `npm i -D {{ PACKAGE_NAME }}/cli` and running commands using `./node_modules/{{ PACKAGE_NAME }}/cli` instead of `xdn`.
 
-If you run into permission issues while attempting to install the XDN CLI globally on your local development machine, these may be fixed by using [nvm](https://github.com/nvm-sh/nvm) to manage Node and NPM.
+If you run into permission issues while attempting to install the {{ PRODUCT_NAME }} CLI globally on your local development machine, these may be fixed by using [nvm](https://github.com/nvm-sh/nvm) to manage Node and NPM.
 
 ### Initialize your Next.js project
 
@@ -65,7 +65,7 @@ xdn init
 This will automatically add all of the required dependencies and files to your project. These include:
 
 - The `{{ PACKAGE_NAME }}/core` package - Allows you to declare routes and deploy your application on {{ PRODUCT_NAME }}
-- The `{{ PACKAGE_NAME }}/next` package - Provides router middleware that automatically adds Next.js pages and api routes to the XDN router.
+- The `{{ PACKAGE_NAME }}/next` package - Provides router middleware that automatically adds Next.js pages and api routes to the {{ PRODUCT_NAME }} router.
 - The `{{ PACKAGE_NAME }}/prefetch` package - Allows you to configure a service worker to prefetch and cache pages to improve browsing speed
 - The `{{ PACKAGE_NAME }}/react` package - Provides a `Prefetch` component for prefetching pages
 - `xdn.config.js`
@@ -90,13 +90,13 @@ module.exports = withXDN(
 )
 ```
 
-The `withXDN` plugin ensures that your app is bundled properly for running on the XDN, and `withServiceWorker` provides a service worker based on `sw/service-worker.js`.
+The `withXDN` plugin ensures that your app is bundled properly for running on {{ PRODUCT_NAME }}, and `withServiceWorker` provides a service worker based on `sw/service-worker.js`.
 
 _If you're already using `next-offline`, you should remove it in favor of `withServiceWorker`, which itself uses `next-offline._
 
 ## Running Locally
 
-To simulate your app within the XDN locally, run:
+To simulate your app within {{ PRODUCT_NAME }} locally, run:
 
 ```bash
 xdn dev
@@ -122,7 +122,7 @@ import { Prefetcher } from '{{ PACKAGE_NAME }}/prefetch/sw'
 new Prefetcher().route()
 ```
 
-The above allows you to prefetch pages from the XDN's edge cache to greatly improve browsing speed. To prefetch a page, add the `Prefetch` component from `{{ PACKAGE_NAME }}/react` to any Next `Link` element:
+The above allows you to prefetch pages from {{ PRODUCT_NAME }}'s edge cache to greatly improve browsing speed. To prefetch a page, add the `Prefetch` component from `{{ PACKAGE_NAME }}/react` to any Next `Link` element:
 
 ```js
 import { Prefetch } from '{{ PACKAGE_NAME }}/react'
@@ -147,7 +147,7 @@ export default function ProductListing({ products }) {
 }
 ```
 
-The `Prefetch` component fetches data for the linked page from the XDN's edge cache and adds it to the service worker's cache when the link becomes visible in the viewport. When the user taps on the link, the page transition will be instantaneous because the browser won't need to fetch data from the network.
+The `Prefetch` component fetches data for the linked page from {{ PRODUCT_NAME }}'s edge cache and adds it to the service worker's cache when the link becomes visible in the viewport. When the user taps on the link, the page transition will be instantaneous because the browser won't need to fetch data from the network.
 
 The `Prefetch` component assumes you're using `getServerSideProps` and will prefetch the data URL corresponding to the target page. If you need to prefetch a different url, you can do so using the `url` prop:
 
@@ -303,7 +303,7 @@ new Router()
 
 ### Preventing Next.js pages from being cached by other CDNs
 
-By default, Next.js adds a `cache-control: private, no-cache, no-store, must-revalidate` header to all responses from `getServerSideProps`. The presence of `private` would prevent the XDN from caching the response, so `nextRoutes` middleware from `{{ PACKAGE_NAME }}/next` automatically removes the `private` portion of the header to enable caching at edge. If you want your responses to be private, you need to specify a `cache-control` header using the router:
+By default, Next.js adds a `cache-control: private, no-cache, no-store, must-revalidate` header to all responses from `getServerSideProps`. The presence of `private` would prevent {{ PRODUCT_NAME }} from caching the response, so `nextRoutes` middleware from `{{ PACKAGE_NAME }}/next` automatically removes the `private` portion of the header to enable caching at edge. If you want your responses to be private, you need to specify a `cache-control` header using the router:
 
 ```js
 new Router().get('/my-private-page', ({ setResponseHeader }) => {
@@ -311,7 +311,7 @@ new Router().get('/my-private-page', ({ setResponseHeader }) => {
 })
 ```
 
-Doing so will prevent other CDNs running in front of the XDN from caching the response.
+Doing so will prevent other CDNs running in front of {{ PRODUCT_NAME }} from caching the response.
 
 ## Building with Webpack 5
 

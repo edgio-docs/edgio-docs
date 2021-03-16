@@ -1,6 +1,6 @@
 # Core Web Vitals
 
-This guide shows you how to track your website's [Core Web Vitals](https://web.dev/vitals/) on the XDN in real time using real user monitoring (RUM).
+This guide shows you how to track your website's [Core Web Vitals](https://web.dev/vitals/) on {{ PRODUCT_NAME }} in real time using real user monitoring (RUM).
 
 ## What are Core Web Vitals?
 
@@ -13,11 +13,11 @@ be tracked via [Google Search Console](https://search.google.com/search-console/
 
 - It can take days to weeks to see the affect that changes to your site have on Core Web Vitals.
 - It's hard to diagnose Core Web Vitals by page type or URL.
-- It's impossible to A/B test the impact of site optimizations on Core Web Vitals. Note that to effectively A/B test performance optimizations you need both a RUM measurement tool and split testing at the edge, both of which the XDN provides.
+- It's impossible to A/B test the impact of site optimizations on Core Web Vitals. Note that to effectively A/B test performance optimizations you need both a RUM measurement tool and split testing at the edge, both of which {{ PRODUCT_NAME }} provides.
 
-## Why use the XDN to track Core Web Vitals?
+## Why use {{ PRODUCT_NAME }} to track Core Web Vitals?
 
-Instead of relying solely on Google Search Console, we recommend tracking Core Web Vitals using the XDN so that you can:
+Instead of relying solely on Google Search Console, we recommend tracking Core Web Vitals using {{ PRODUCT_NAME }} so that you can:
 
 - See how changes to your site impact Core Web Vitals in real time
 - Correlate web vitals to your application's routes

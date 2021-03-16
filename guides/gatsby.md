@@ -10,7 +10,7 @@ This guide shows you how to deploy an Gatsby application on {{ PRODUCT_NAME }}:
 
 If you do not have Node.js installed on your system, download and install it from the official [Node.js v12.x downloads](https://nodejs.org/dist/latest-v12.x/) page. Select the download that matches your operating system and run the installer. Note that the installer for Node.js will also install npm.
 
-_Note that while you can use any version of Node.js >= 12 locally, your app will run in Node 12 when deployed to the XDN cloud. Therefore we highly suggest using Node 12 for all development._
+_Note that while you can use any version of Node.js >= 12 locally, your app will run in Node 12 when deployed to the {{ PRODUCT_NAME }} cloud. Therefore we highly suggest using Node 12 for all development._
 
 ## Getting Started
 
@@ -25,13 +25,13 @@ You should now have a working Gatsby site. Run `gatsby develop` to see the appli
 
 To deploy your Gatsby on {{ PRODUCT_NAME }}:
 
-1. Install the XDN CLI globally:
+1. Install the {{ PRODUCT_NAME }} CLI globally:
 
 ```bash
 npm install -g {{ PACKAGE_NAME }}/cli
 ```
 
-2. Run the following in the root folder of your project. This will configure your project for the XDN.
+2. Run the following in the root folder of your project. This will configure your project for {{ PRODUCT_NAME }}.
 
 ```bash
 xdn init
@@ -47,7 +47,7 @@ This will automatically add all of the required dependencies and files to your p
 
 ## Running Locally
 
-You can test the integration of the XDN router with your gatsby site locally using:
+You can test the integration of the {{ PRODUCT_NAME }} router with your gatsby site locally using:
 
 ```bash
 xdn dev

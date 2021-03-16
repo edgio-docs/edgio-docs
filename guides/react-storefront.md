@@ -1,6 +1,6 @@
 # React Storefront
 
-[React Storefront](https://docs.reactstorefront.io) helps developers build sub-second e-commerce progressive web apps in record time. This guide shows you how to deploy a React Storefront app on the XDN.
+[React Storefront](https://docs.reactstorefront.io) helps developers build sub-second e-commerce progressive web apps in record time. This guide shows you how to deploy a React Storefront app on {{ PRODUCT_NAME }}.
 
 ## Creating a React Storefront App
 

@@ -8,7 +8,7 @@ To cache responses at edge you need to create an [environment](environments). Ea
 
 ## L1 and L2 Caches
 
-Each edge point-of-presence (POP) has its own L1 cache. If a request cannot be fulfilled from the L1 cache, the XDN will attempt to fulfill the request from a single global L2 cache POP in order to maximize your effective cache hit ratio. There is very little difference in time to first byte for responses served from the L1 vs L2 cache. In either case the response is served nearly instantly (typically 25-100ms). Concurrent requests for the same URL on different POPs that result in a cache miss will be coalesced at the L2 cache. This means that only one request at a time for each cacheable URL will reach your origin servers.
+Each edge point-of-presence (POP) has its own L1 cache. If a request cannot be fulfilled from the L1 cache, {{ PRODUCT_NAME }} will attempt to fulfill the request from a single global L2 cache POP in order to maximize your effective cache hit ratio. There is very little difference in time to first byte for responses served from the L1 vs L2 cache. In either case the response is served nearly instantly (typically 25-100ms). Concurrent requests for the same URL on different POPs that result in a cache miss will be coalesced at the L2 cache. This means that only one request at a time for each cacheable URL will reach your origin servers.
 
 ## Caching a Response
 
@@ -30,10 +30,10 @@ router.get('/some/path', ({ cache }) => {
       serviceWorkerSeconds: 60 * 60,
     },
     edge: {
-      // Sets the TTL for a response in the XDN's edge cache
+      // Sets the TTL for a response in {{ PRODUCT_NAME }}'s edge cache
       maxAgeSeconds: 60 * 60 * 24,
 
-      // Sets the amount of time a stale response will be served from the cache.  When a stale response is sent, the XDN
+      // Sets the amount of time a stale response will be served from the cache.  When a stale response is sent, {{ PRODUCT_NAME }}
       // will simultaneously fetch a new response to serve subsequent requests.
       // Using stale-while-revalidate helps raise your effective cache hit rate to near 100%.
       staleWhileRevalidateSeconds: 60 * 60, // serve stale responses for up to 1 hour while fetching a new response
@@ -68,7 +68,7 @@ To ensure that your site is resilient to [cache poisoning attacks](security#sect
 
 #### Customizing the Cache Key
 
-It is often useful to customize the cache key, either to improve the cache hit ratio or to account for complexities of your site. As seen above, the XDN provides an easy way to customize the keys by using the `CustomCacheKey` class. Here we will focus on three common examples:
+It is often useful to customize the cache key, either to improve the cache hit ratio or to account for complexities of your site. As seen above, {{ PRODUCT_NAME }} provides an easy way to customize the keys by using the `CustomCacheKey` class. Here we will focus on three common examples:
 
 - Increasing the cache hit ratio by excluding query parameters that are not used in the rendering of the content:
 
@@ -168,7 +168,7 @@ Note that this feature cannot be safely used with caching of `POST` and similar 
 
 ## Preventing a response from being cached
 
-By default, the XDN will cache responses that satisfy all of the following conditions:
+By default, {{ PRODUCT_NAME }} will cache responses that satisfy all of the following conditions:
 
 1. The response must correspond to a `GET` or `HEAD` request. To override this see [POST and other non-GET/HEAD](#section_caching_responses_for_post_and_other_non_get_head_requests) section.
 2. The response status must be 1xx, 2xx or 3xx. You cannot override this.
@@ -295,7 +295,7 @@ The cache can also be [cleared via the REST API](/guides/rest_api#section_clear_
 
 ## Static prerendering after clearing the cache
 
-If you have [static prerendering] enabled, the cache will automatically be repopulated when you clear all entries from the cache (when you select "Purge all entries" in the XDN Developer Console or run `xdn cache-clear` without providing `--path` or `--surrogate-key`). You can view the prerendering progress by clicking on the active deployment for the environment that was cleared.
+If you have [static prerendering] enabled, the cache will automatically be repopulated when you clear all entries from the cache (when you select "Purge all entries" in {{ PRODUCT_NAME }} Developer Console or run `xdn cache-clear` without providing `--path` or `--surrogate-key`). You can view the prerendering progress by clicking on the active deployment for the environment that was cleared.
 
 ## Preserving the cache when deploying a new version of your site
 
@@ -336,7 +336,7 @@ This guide walks you through clearing the cache on your site at a scheduled day 
 
 ## NPM script
 
-Here is an example script you can add to your `package.json` to handle cache clearing for each environment. You can also configure scripts to clear by surrogate key, path, or group (As defined in the XDN Console)
+Here is an example script you can add to your `package.json` to handle cache clearing for each environment. You can also configure scripts to clear by surrogate key, path, or group (As defined in {{ PRODUCT_NAME }} Console)
 
 These scripts assume that you have created environments called "production", "staging", and "development and you have created a deploy key for your site and added it as a secret in your repo called "xdn_deploy_token".
 

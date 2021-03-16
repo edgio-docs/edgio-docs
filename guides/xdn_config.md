@@ -51,7 +51,7 @@ includeFiles: {
 },
 ```
 
-or if you need to copy into a specific directory within the XDN build:
+or if you need to copy into a specific directory within the {{ PRODUCT_NAME }} build:
 
 ```js
 includeFiles: {
@@ -65,7 +65,7 @@ The maximum number of URLs that will be concurrently prendered during deployment
 
 ## sources
 
-A list of glob patterns identifying which source files should be uploaded when running `xdn deploy --includeSources`. This option is primary used to share source code with Moovweb support personnel for the purpose of debugging. If omitted, `xdn deploy --includeSources` will result in all files which are not gitignored being uploaded to the XDN.
+A list of glob patterns identifying which source files should be uploaded when running `xdn deploy --includeSources`. This option is primary used to share source code with Moovweb support personnel for the purpose of debugging. If omitted, `xdn deploy --includeSources` will result in all files which are not gitignored being uploaded to {{ PRODUCT_NAME }}.
 
 Example:
 

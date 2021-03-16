@@ -232,9 +232,9 @@ function deepFetchResponsiveImages({ $el, el, $ }: DeepFetchCallbackParam) {
 }
 ```
 
-## Using the XDN for Prefetching Only
+## Using {{ PRODUCT_NAME }} for Prefetching Only
 
-If you have an existing site already in production, it is possible to prefetch from the XDN while still serving the site from the existing CDN.
+If you have an existing site already in production, it is possible to prefetch from {{ PRODUCT_NAME }} while still serving the site from the existing CDN.
 
 To achieve this:
 
@@ -265,7 +265,7 @@ import { install, prefetch } from '{{ PACKAGE_NAME }}/prefetch/window'
 
 document.addEventListener('DOMContentLoaded', function() {
   install({
-    // Since there is no direct traffic to the XDN, the cache will only be populated from prefetch
+    // Since there is no direct traffic to {{ PRODUCT_NAME }}, the cache will only be populated from prefetch
     // requests, so we need to serve some of the prefetch requests even when they are not cached.
     // Here we choose to do so with 20% of the prefetch requests.
     forcePrefetchRatio: 0.2,
@@ -356,7 +356,7 @@ export default () => ({
   link: createHttpLink({
     credentials: 'omit',
     uri:
-      typeof window === 'undefined' // Use a relative URL when running in the browser so that GraphQL requests are fetched via the XDN's edge cache.
+      typeof window === 'undefined' // Use a relative URL when running in the browser so that GraphQL requests are fetched via {{ PRODUCT_NAME }}'s edge cache.
         ? process.env.GQL_ENDPOINT
         : '/graphql',
     headers: {
@@ -401,7 +401,7 @@ xdn dev --cache
 
 ## Reducing 412s
 
-By default, the XDN will only serve prefetch requests from the edge cache. If a request cannot be served from the cache, a 412 status is returned. This protects your origin servers from additional traffic associated with prefetching. If you're seeing a surprisingly high number of 412s in your logs:
+By default, {{ PRODUCT_NAME }} will only serve prefetch requests from the edge cache. If a request cannot be served from the cache, a 412 status is returned. This protects your origin servers from additional traffic associated with prefetching. If you're seeing a surprisingly high number of 412s in your logs:
 
 1. Ensure that the URLs you're prefetching match exactly those that are fetched during page navigation. Prefetch URLs will have `?xdn_prefetch=1` whereas the URLs associated with page navigation won't. That's ok. The `xdn_*` query parameters are automatically excluded from the cache key. Just ensure that there are no other differences.
 2. Ensure that `cache` settings have stale-while-revalidate enabled. For example:

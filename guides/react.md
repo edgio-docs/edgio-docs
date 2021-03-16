@@ -8,11 +8,11 @@ This guide shows you how to serve a React application on {{ PRODUCT_NAME }}. If 
 
 If you do not have Node.js installed on your system, download and install it from the official [Node.js v12.x downloads](https://nodejs.org/dist/latest-v12.x/) page. Select the download that matches your operating system and run the installer. Note that the installer for Node.js will also install npm.
 
-_Note that while you can use any version of Node.js >= 12 locally, your app will run in Node 12 when deployed to the XDN cloud. Therefore we highly suggest using Node 12 for all development._
+_Note that while you can use any version of Node.js >= 12 locally, your app will run in Node 12 when deployed to the {{ PRODUCT_NAME }} cloud. Therefore we highly suggest using Node 12 for all development._
 
 ## Getting Started
 
-To prepare your React app for deployment on {{ PRODUCT_NAME }}, install the XDN CLI globally:
+To prepare your React app for deployment on {{ PRODUCT_NAME }}, install the {{ PRODUCT_NAME }} CLI globally:
 
 ```bash
 npm install -g {{ PACKAGE_NAME }}/cli
@@ -30,7 +30,7 @@ project. These include:
 - The `{{ PACKAGE_NAME }}/core` package - Allows you to declare routes and deploy your application on {{ PRODUCT_NAME }}
 - The `{{ PACKAGE_NAME }}/prefetch` package - Allows you to configure a service worker to prefetch and cache pages to improve browsing speed
 - The `{{ PACKAGE_NAME }}/react` package - Provides a `Prefetch` component for prefetching pages
-- `xdn.config.js` - The main configuration file for the XDN.
+- `xdn.config.js` - The main configuration file for {{ PRODUCT_NAME }}.
 - `routes.js` - A default routes file that sends all requests to Next.js. Update this file to add caching or proxy some URLs to a different origin.
 - `sw/service-worker.js` A service worker implemented using Workbox.
 
@@ -38,7 +38,7 @@ project. These include:
 
 React offers a great amount of flexibility in how you set up server side rendering. Frameworks like Next.js offer a standardized, built-in way of implementing SSR. If you're using Next.js specifically, we suggest using the [Next.js guide](/guides/next). We'll assume at this point that you're not using Next.js, but have an existing Node app that is doing server-side rendering.
 
-In order to render on the XDN, you need to provide a function that takes a node `Request` and `Response` and sends the HTML that results from the `renderToString()` method from `react-dom/server`. Configure that function using the `server` property of `xdn.config.js`. Here's an example:
+In order to render on {{ PRODUCT_NAME }}, you need to provide a function that takes a node `Request` and `Response` and sends the HTML that results from the `renderToString()` method from `react-dom/server`. Configure that function using the `server` property of `xdn.config.js`. Here's an example:
 
 ```js
 // xdn.config.js
@@ -104,7 +104,7 @@ module.exports = {
 }
 ```
 
-## Configuring the XDN Router
+## Configuring the {{ PRODUCT_NAME }} Router
 
 Using the `Router` class from `{{ PACKAGE_NAME }}/core`, you'll configure caching for each of your routes, and forward requests to the server module you configured in the previous section using the `proxy` function.
 

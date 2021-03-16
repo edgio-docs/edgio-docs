@@ -4,7 +4,7 @@ This guide shows you how to deploy [Frontity](https://frontity.org/) apps on {{ 
 
 ## Example Site
 
-Here is an example of the Frontity starter app running on the XDN:
+Here is an example of the Frontity starter app running on {{ PRODUCT_NAME }}:
 
 [Try the Frontity Example Site](https://moovweb-docs-xdn-frontity-example-default.moovweb-edge.io?button)
 [View the Code](https://github.com/moovweb-docs/xdn-examples/tree/main/xdn-frontity-example?button)
@@ -15,7 +15,7 @@ Here is an example of the Frontity starter app running on the XDN:
 
 If you do not have Node.js installed on your system, download and install it from the official [Node.js v12.x downloads](https://nodejs.org/dist/latest-v12.x/) page. Select the download that matches your operating system and run the installer. Note that the installer for Node.js will also install npm.
 
-_Note that while you can use any version of Node.js >= 12 locally, your app will run in Node 12 when deployed to the XDN cloud. Therefore we highly suggest using Node 12 for all development._
+_Note that while you can use any version of Node.js >= 12 locally, your app will run in Node 12 when deployed to the {{ PRODUCT_NAME }} cloud. Therefore we highly suggest using Node 12 for all development._
 
 ## Getting Started
 
@@ -35,16 +35,16 @@ xdn init
 This will automatically add all of the required dependencies and files to your project. These include:
 
 - The `{{ PACKAGE_NAME }}/core` package - Allows you to declare routes and deploy your application on {{ PRODUCT_NAME }}
-- The `{{ PACKAGE_NAME }}/frontity` package - Provides router middleware that automatically adds Frontity routes to the XDN router.
+- The `{{ PACKAGE_NAME }}/frontity` package - Provides router middleware that automatically adds Frontity routes to the {{ PRODUCT_NAME }} router.
 - The `{{ PACKAGE_NAME }}/prefetch` package - Allows you to configure a service worker to prefetch and cache pages to improve browsing speed
 - The `{{ PACKAGE_NAME }}/react` package - Provides a `Prefetch` component for prefetching pages
 - `routes.js` - A default routes file that sends all requests to Frontity. Update this file to add caching or proxy some URLs to a different origin.
-- `sw/service-worker.js` - The source code for your service worker, which enables prefetching when running on the XDN.
-- `xdn.config.js` - Contains configuration options for deploying on the XDN.
+- `sw/service-worker.js` - The source code for your service worker, which enables prefetching when running on {{ PRODUCT_NAME }}.
+- `xdn.config.js` - Contains configuration options for deploying on {{ PRODUCT_NAME }}.
 
-## Adding the XDN Service Worker
+## Adding the {{ PRODUCT_NAME }} Service Worker
 
-To add the XDN service worker to your app, call the `install` function from `{{ PACKAGE_NAME }}/prefetch/window` in a `useEffect` hook when the app first loads. For example, you can alter
+To add the {{ PRODUCT_NAME }} service worker to your app, call the `install` function from `{{ PACKAGE_NAME }}/prefetch/window` in a `useEffect` hook when the app first loads. For example, you can alter
 the Header component in your theme as follows:
 
 ```js
@@ -65,7 +65,7 @@ const Header = ({ state }) => {
 
 ## Prefetching Content
 
-To prefetch data into the browser cache using the service worker, use the `Prefetch` component from `{{ PACKAGE_NAME }}/react`. This component prefetches a specific url from the XDN edge when it becomes visible in the viewport. You typically wrap it around links. For example:
+To prefetch data into the browser cache using the service worker, use the `Prefetch` component from `{{ PACKAGE_NAME }}/react`. This component prefetches a specific url from the {{ PRODUCT_NAME }} edge when it becomes visible in the viewport. You typically wrap it around links. For example:
 
 ```js
 import { Prefetch } from '{{ PACKAGE_NAME }}/react'
@@ -82,7 +82,7 @@ function MyComponent() {
 
 ## Running Locally
 
-To simulate your app within the XDN locally, run:
+To simulate your app within {{ PRODUCT_NAME }} locally, run:
 
 ```
 xdn dev

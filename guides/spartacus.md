@@ -11,7 +11,7 @@ This guide shows you how to deploy [Spartacus](https://sap.github.io/spartacus-d
 
 If you do not have Node.js installed on your system, download and install it from the official [Node.js v12.x downloads](https://nodejs.org/dist/latest-v12.x/) page. Select the download that matches your operating system and run the installer. Note that the installer for Node.js will also install npm.
 
-_Note that while you can use any version of Node.js >= 12 locally, your app will run in Node 12 when deployed to the XDN cloud. Therefore, we highly suggest using Node 12 for all development._
+_Note that while you can use any version of Node.js >= 12 locally, your app will run in Node 12 when deployed to the {{ PRODUCT_NAME }} cloud. Therefore, we highly suggest using Node 12 for all development._
 
 ## Getting Started
 
@@ -50,13 +50,13 @@ You can now run `npm run build:ssr && npm run serve:ssr` to access your server-s
 
 To prepare your Spartacus application for deployment on {{ PRODUCT_NAME }}:
 
-#### 1. Install the XDN CLI globally:
+#### 1. Install the {{ PRODUCT_NAME }} CLI globally:
 
 ```bash
 npm install -g {{ PACKAGE_NAME }}/cli
 ```
 
-2. Run the following in the root folder of your project. This will configure your project for the XDN.
+2. Run the following in the root folder of your project. This will configure your project for {{ PRODUCT_NAME }}.
 
 ```bash
 xdn init
@@ -69,13 +69,13 @@ This will automatically add all of the required dependencies and files to your p
 - The `{{ PACKAGE_NAME }}/cli` package
 - The `{{ PACKAGE_NAME }}/spartacus` package
 - The `{{ PACKAGE_NAME }}/prefetch` package
-- `xdn.config.js`- Contains various configuration options for the XDN.
+- `xdn.config.js`- Contains various configuration options for {{ PRODUCT_NAME }}.
 - `routes.js` - A default routes file that sends all requests to the Angular Universal server. Update this file to add caching or proxy some URLs to a different origin.
 - The `sw` folder - Contains the files needed to build the service worker that that provides static asset and API prefetching.
 
 #### 3. Update `xdn.config.js`
 
-For an app called `my-xdn-spartacus-app` the XDN config file created by `xdn init` will look like so:
+For an app called `my-xdn-spartacus-app` the {{ PRODUCT_NAME }} config file created by `xdn init` will look like so:
 
 ```js
 // This file was automatically added by xdn deploy.

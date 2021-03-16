@@ -65,7 +65,7 @@ router.match(
 )
 ```
 
-If you want the route to match both `http` and `https` protocols you can match on `protocol: /^https?$/`. If no route is matched on `http` protocol then the XDN will fallback on its default behavior of automatically redirecting the request to `https`.
+If you want the route to match both `http` and `https` protocols you can match on `protocol: /^https?$/`. If no route is matched on `http` protocol then {{ PRODUCT_NAME }} will fallback on its default behavior of automatically redirecting the request to `https`.
 
 Additionally:
 
@@ -80,7 +80,7 @@ navigate to your environment, click _EDIT_, then under _Environment Variables_, 
 
 ![networking](/images/security/environment-variables.png)
 
-As of XDN CLI version 2.19.0, when you deploy to an environment using a deploy token, for example by running `xdn deploy my-team --environment=production --token=(my token)` option, all environment variables are pulled down from the XDN Developer Console and applied to `process.env` so they can be accessed at build time. This allows you to store all of your build and runtime secrets in a single place, the XDN Developer Consoler, rather than storing some in your CI system's secret manager.
+As of XDN CLI version 2.19.0, when you deploy to an environment using a deploy token, for example by running `xdn deploy my-team --environment=production --token=(my token)` option, all environment variables are pulled down from the {{ PRODUCT_NAME }} Developer Console and applied to `process.env` so they can be accessed at build time. This allows you to store all of your build and runtime secrets in a single place, {{ PRODUCT_NAME }} Developer Console, rather than storing some in your CI system's secret manager.
 
 ## Cache poisoning
 

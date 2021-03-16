@@ -17,7 +17,7 @@ This Sapper example app uses server-side rendering and prefetching to provide li
 
 If you do not have Node.js installed on your system, download and install it from the official [Node.js v12.x downloads](https://nodejs.org/dist/latest-v12.x/) page. Select the download that matches your operating system and run the installer. Note that the installer for Node.js will also install npm.
 
-_Note that while you can use any version of Node.js >= 12 locally, your app will run in Node 12 when deployed to the XDN cloud. Therefore we highly suggest using Node 12 for all development._
+_Note that while you can use any version of Node.js >= 12 locally, your app will run in Node 12 when deployed to the {{ PRODUCT_NAME }} cloud. Therefore we highly suggest using Node 12 for all development._
 
 ## Getting Started
 
@@ -45,7 +45,7 @@ xdn init
 This will automatically add all of the required dependencies and files to your project. These include:
 
 - The `{{ PACKAGE_NAME }}/core` package - Allows you to declare routes and deploy your application on {{ PRODUCT_NAME }}
-- The `{{ PACKAGE_NAME }}/sapper` package - Provides router middleware that automatically adds Sapper routes to the XDN router.
+- The `{{ PACKAGE_NAME }}/sapper` package - Provides router middleware that automatically adds Sapper routes to the {{ PRODUCT_NAME }} router.
 - The `{{ PACKAGE_NAME }}/prefetch` package - Allows you to configure a service worker to prefetch and cache pages to improve browsing speed
 - The `{{ PACKAGE_NAME }}/svelte` package - Provides a `Prefetch` component for prefetching pages
 - `xdn.config.js`
@@ -108,7 +108,7 @@ and
 
 ## Running Locally
 
-To simulate your app within the XDN locally, run:
+To simulate your app within {{ PRODUCT_NAME }} locally, run:
 
 ```
 
@@ -175,6 +175,6 @@ To prefetch data when links become visible in the viewport, wrap the link in the
 Note that the behavior of the `Prefetch` component is different from Sapper's built-in support for `<a rel="prefetch">` in two ways:
 
 - `rel="prefetch"` only prefetches data when the user hovers over the link. The `Prefetch` component will prefetch data when the link becomes visible, or, if the `immediately` prop is present, as soon as the page loads.
-- `Prefetch` will only prefetch from the XDN edge cache, which means that additional traffic due to prefetching will never reach your API servers.
+- `Prefetch` will only prefetch from the {{ PRODUCT_NAME }} edge cache, which means that additional traffic due to prefetching will never reach your API servers.
 
 See [Prefetching](/guides/prefetching) for more information.

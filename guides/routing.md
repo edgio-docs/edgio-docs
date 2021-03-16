@@ -59,7 +59,7 @@ module.exports = new Router().match('/some-path', ({ cache, proxy }) => {
 
 ## Route Execution
 
-When the XDN receives a request, it executes **each route that matches the request** in the order in which they are declared until one sends a response. The following methods return a response:
+When {{ PRODUCT_NAME }} receives a request, it executes **each route that matches the request** in the order in which they are declared until one sends a response. The following methods return a response:
 
 - [appShell](/docs/api/core/classes/_router_responsewriter_.responsewriter.html#appshell)
 - [compute](/docs/api/core/classes/_router_responsewriter_.responsewriter.html#compute)

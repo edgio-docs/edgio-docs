@@ -8,13 +8,13 @@ This guide shows you how to deploy a Vue.js application on {{ PRODUCT_NAME }}.
 
 If you do not have Node.js installed on your system, download and install it from the official [Node.js v12.x downloads](https://nodejs.org/dist/latest-v12.x/) page. Select the download that matches your operating system and run the installer. Note that the installer for Node.js will also install npm.
 
-_Note that while you can use any version of Node.js >= 12 locally, your app will run in Node 12 when deployed to the XDN cloud. Therefore we highly suggest using Node 12 for all development._
+_Note that while you can use any version of Node.js >= 12 locally, your app will run in Node 12 when deployed to the {{ PRODUCT_NAME }} cloud. Therefore we highly suggest using Node 12 for all development._
 
-## Sign up for the XDN
+## Sign up for {{ PRODUCT_NAME }}
 
 Deploying requires an account on {{ PRODUCT_NAME }}. [Sign up here for free.](https://moovweb.app/signup).
 
-## Install the XDN CLI
+## Install the {{ PRODUCT_NAME }} CLI
 
 If you have not already done so, install the [XDN CLI](cli)
 
@@ -63,7 +63,7 @@ You should see an output like this in the terminal:
 
 ```
 
-## Configuring your Vue.js app for the XDN
+## Configuring your Vue.js app for {{ PRODUCT_NAME }}
 
 ### Initialize your project
 
@@ -77,12 +77,12 @@ This will automatically update your `package.json` and add all of the required X
 
 - The `{{ PACKAGE_NAME }}/core` package - Allows you to declare routes and deploy your application on {{ PRODUCT_NAME }}
 - The `{{ PACKAGE_NAME }}/prefetch` package - Allows you to configure a service worker to prefetch and cache pages to improve browsing speed
-- `xdn.config.js` - A configuration file for the XDN
+- `xdn.config.js` - A configuration file for {{ PRODUCT_NAME }}
 - `routes.js` - A default routes file that sends all requests to Vue.js.
 
 ### Configure the routes
 
-Next you'll need to configure the XDN routing in the `routes.js` file.
+Next you'll need to configure {{ PRODUCT_NAME }} routing in the `routes.js` file.
 
 For the Vue `hello-world` template, replace your `routes.js` file with the following:
 
@@ -121,4 +121,4 @@ Refer to the [Deploying](deploying) guide for more information on the `deploy` c
 
 ## Server Side Rendering
 
-For server side rendered Vue.js apps we recommend using the Nuxt.js framework which is supported on the XDN. Refer to the [Nuxt](nuxt) guide for more information.
+For server side rendered Vue.js apps we recommend using the Nuxt.js framework which is supported on {{ PRODUCT_NAME }}. Refer to the [Nuxt](nuxt) guide for more information.

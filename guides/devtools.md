@@ -1,6 +1,6 @@
 # Devtools
 
-The XDN Devtools is a widget that helps developers understand how their site interacts with the XDN, including:
+The XDN Devtools is a widget that helps developers understand how their site interacts with {{ PRODUCT_NAME }}, including:
 
 - Edge and browser caching
 - Prefetching
@@ -18,7 +18,7 @@ It's likely that the Devtools was added to your app when you ran `xdn init`. If 
 
 ### Packages
 
-In order to enable the XDN Devtools, first ensure that the `{{ PACKAGE_NAME }}/devtools` and `{{ PACKAGE_NAME }}/prefetch` packages have been added to your project. To install them using NPM, run:
+In order to enable {{ PRODUCT_NAME }} Devtools, first ensure that the `{{ PACKAGE_NAME }}/devtools` and `{{ PACKAGE_NAME }}/prefetch` packages have been added to your project. To install them using NPM, run:
 
 ```
 npm i -D {{ PACKAGE_NAME }}/devtools {{ PACKAGE_NAME }}/prefetch
@@ -56,7 +56,7 @@ Then, if you haven't already, enable `{{ PACKAGE_NAME }}/prefetch` in your servi
 
 By default, XDN Devtools is enabled when your app is served from `localhost`, `127.0.0.1` or any `*.moovweb-edge.io` domain.
 
-To customize when the XDN Devtools appear:
+To customize when {{ PRODUCT_NAME }} Devtools appear:
 
 ### Per Environment
 
@@ -64,6 +64,6 @@ Using the [XDN Developer Console](https://moovweb.app), navigate to your environ
 
 ### Per Browsing Session
 
-Point your browser to `/__xdn__/devtools/enable` or `/__xdn__/devtools/disable` to explicitly enable or disable the XDN Devtools for your browsing session. This takes precedence over the environment config and the domain default.
+Point your browser to `/__xdn__/devtools/enable` or `/__xdn__/devtools/disable` to explicitly enable or disable {{ PRODUCT_NAME }} Devtools for your browsing session. This takes precedence over the environment config and the domain default.
 
 If the Devtools were previously enabled and you disable them, you may want to remove the service worker to get rid of the Devtools-specific route handlers that were installed on-demand when enabling it. This can be done using the Application tab in Chrome Developer Tools.

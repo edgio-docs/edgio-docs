@@ -19,10 +19,10 @@ To configure your custom domains:
 
 ### Migrating from Fastly
 
-If you're migrating to the XDN from [Fastly](https://www.fastly.com/), you will need to do the following before adding your domains to your XDN environment:
+If you're migrating to {{ PRODUCT_NAME }} from [Fastly](https://www.fastly.com/), you will need to do the following before adding your domains to your XDN environment:
 
 - [Contact Fastly support](https://support.fastly.com/hc/en-us/requests/new?ticket_form_id=360000269711) and request that control of your domains be transferred to Moovweb. Be sure to explicitly list each domain that needs to transferred and ask Fastly to contact xdn-support(at)moovweb.com if they need Moovweb to confirm the transfer.
-- Before going live with the XDN, you will need to ensure that you've removed your domains from all active Fastly services. To remove domains from a service, clone the service, remove the domains, then activate the new version of the service. Once the new service version is activated you can add the domains to your XDN environment and activate it.
+- Before going live with {{ PRODUCT_NAME }}, you will need to ensure that you've removed your domains from all active Fastly services. To remove domains from a service, clone the service, remove the domains, then activate the new version of the service. Once the new service version is activated you can add the domains to your XDN environment and activate it.
 
 ## Network configuration
 
@@ -82,7 +82,7 @@ All data transmitted to and from your {{ PRODUCT_NAME }} site must be secured wi
 
 The XDN provides a wildcard TLS certificate that covers the auto-generated domains that it assigns to your site (e.g {team}-{site}-{branch}-{version}.moovweb.io). You need to provide your own certificate for your site's custom domains.
 
-_Note: If you already have an existing certificate, you can use it by skipping ahead to [Uploading your certificate](#section_uploading_your_certificate). Many customers who have existing certificates still choose to obtain a new one when adopting the XDN so as not to reuse the same private key with more than one vendor/system._
+_Note: If you already have an existing certificate, you can use it by skipping ahead to [Uploading your certificate](#section_uploading_your_certificate). Many customers who have existing certificates still choose to obtain a new one when adopting {{ PRODUCT_NAME }} so as not to reuse the same private key with more than one vendor/system._
 
 ### Obtaining a certificate automatically
 

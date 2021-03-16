@@ -15,7 +15,7 @@ This Nuxt.js example app uses server-side rendering and prefetching to provide l
 
 If you do not have Node.js installed on your system, download and install it from the official [Node.js v12.x downloads](https://nodejs.org/dist/latest-v12.x/) page. Select the download that matches your operating system and run the installer. Note that the installer for Node.js will also install npm.
 
-_Note that while you can use any version of Node.js >= 12 locally, your app will run in Node 12 when deployed to the XDN cloud. Therefore we highly suggest using Node 12 for all development._
+_Note that while you can use any version of Node.js >= 12 locally, your app will run in Node 12 when deployed to the {{ PRODUCT_NAME }} cloud. Therefore we highly suggest using Node 12 for all development._
 
 ## Getting Started
 
@@ -39,7 +39,7 @@ Nuxt's create module will ask you a series of questions to configure your app. M
 - For `Choose rendering mode` select `Universal (SSR)`
 - Your answers to the other questions should not matter for the purposes of this guide.
 
-## Adding the XDN to an existing Nuxt app
+## Adding {{ PRODUCT_NAME }} to an existing Nuxt app
 
 To prepare your Nuxt.js application for {{ PRODUCT_NAME }}:
 
@@ -53,7 +53,7 @@ module.exports = {
 }
 ```
 
-2. Run `xdn init` to configure your project for the XDN.
+2. Run `xdn init` to configure your project for {{ PRODUCT_NAME }}.
 
 ```bash
 xdn init
@@ -64,7 +64,7 @@ The `xdn init` command will automatically add all the required dependencies and 
 - The `{{ PACKAGE_NAME }}/core` package
 - The `{{ PACKAGE_NAME }}/nuxt` package
 - The `{{ PACKAGE_NAME }}/vue` package
-- `xdn.config.js` - Contains various configuration options for the XDN.
+- `xdn.config.js` - Contains various configuration options for {{ PRODUCT_NAME }}.
 - `routes.js` - A default routes file that sends all requests to `nuxt.js`. You can update this file to add caching or proxy some URLs to a different origin as described later in this guide.
 - `sw/service-worker.js` - A service worker that provides static asset and API prefetching.
 
@@ -146,7 +146,7 @@ Doing so will exclude these modules from your production deployment and keep the
 
 ## Routing
 
-The next few sections of this guide explain how the XDN interacts with Nuxt's routing, which is important if you are migrating an existing application. If you just created a new nuxt app, you can jump to [Running Locally](#section_running_locally) and come back to these sections later.
+The next few sections of this guide explain how {{ PRODUCT_NAME }} interacts with Nuxt's routing, which is important if you are migrating an existing application. If you just created a new nuxt app, you can jump to [Running Locally](#section_running_locally) and come back to these sections later.
 The XDN supports Nuxt.js's built-in routing scheme. The default `routes.js` file created by `xdn init` sends all requests to Nuxt.js via a fallback route:
 
 ```js
@@ -168,7 +168,7 @@ export default {
   // ... more config ...
   router: {
     // For example, we can extend the nuxt router to accept /products in addition to /p.
-    // The nuxtRoutes middleware automatically picks this up and adds it to the XDN router
+    // The nuxtRoutes middleware automatically picks this up and adds it to the {{ PRODUCT_NAME }} router
     extendRoutes(routes, resolve) {
       routes.push({
         path: '/products/:id?',
@@ -227,14 +227,14 @@ new Router()
 
 ## Prefetching
 
-The `{{ PACKAGE_NAME }}/nuxt/module` builds a service worker that enables prefetching using the XDN and injects it into your app's browser code. The service worker is based on Google's [Workbox](https://developers.google.com/web/tools/workbox) library. The entry point for the service worker source code is `sw/service-worker.js`. If your app has an existing service worker that uses workbox, you can copy its contents into `sw/service-worker.js` and simply add the following to your service worker:
+The `{{ PACKAGE_NAME }}/nuxt/module` builds a service worker that enables prefetching using {{ PRODUCT_NAME }} and injects it into your app's browser code. The service worker is based on Google's [Workbox](https://developers.google.com/web/tools/workbox) library. The entry point for the service worker source code is `sw/service-worker.js`. If your app has an existing service worker that uses workbox, you can copy its contents into `sw/service-worker.js` and simply add the following to your service worker:
 
 ```js
 import { Prefetcher } from '{{ PACKAGE_NAME }}/prefetch/sw'
 new Prefetcher().route()
 ```
 
-The above allows you to prefetch pages from the XDN's edge cache to greatly improve browsing speed. To prefetch a page, add the `Prefetch` component from `{{ PACKAGE_NAME }}/vue` to any `router-link` or `nuxt-link` element:
+The above allows you to prefetch pages from {{ PRODUCT_NAME }}'s edge cache to greatly improve browsing speed. To prefetch a page, add the `Prefetch` component from `{{ PACKAGE_NAME }}/vue` to any `router-link` or `nuxt-link` element:
 
 ```jsx
 <template>
@@ -258,15 +258,15 @@ The above allows you to prefetch pages from the XDN's edge cache to greatly impr
 </script>
 ```
 
-The `Prefetch` component fetches data for the linked page from the XDN's edge cache based on the `url` property and adds it to the service worker's cache when the link becomes visible in the viewport. When the user taps on the link, the page transition will be instantaneous because the browser won't need to fetch data from the network.
+The `Prefetch` component fetches data for the linked page from {{ PRODUCT_NAME }}'s edge cache based on the `url` property and adds it to the service worker's cache when the link becomes visible in the viewport. When the user taps on the link, the page transition will be instantaneous because the browser won't need to fetch data from the network.
 
 ## Static Sites
 
-The XDN supports fully and partially static sites using Nuxt [generate](https://nuxtjs.org/docs/2.x/configuration-glossary/configuration-generate). To deploy a static Nuxt site on the XDN, simply set `target: 'static'` in `nuxt.config.js` and run `xdn deploy`. This will run `nuxt build` and `nuxt generate` to generate a static version of your site.
+The XDN supports fully and partially static sites using Nuxt [generate](https://nuxtjs.org/docs/2.x/configuration-glossary/configuration-generate). To deploy a static Nuxt site on {{ PRODUCT_NAME }}, simply set `target: 'static'` in `nuxt.config.js` and run `xdn deploy`. This will run `nuxt build` and `nuxt generate` to generate a static version of your site.
 
 ### Incremental Static Rendering (ISG)
 
-By default, requests for any pages that are not statically rendered at build time will fall back to server side rendering. If you use the XDN router to cache pages that are not statically rendered, the first user who attempts to access the page will see the fallback HTML page generated by Nuxt (200.html by default). The XDN will render and cache the HTML in the background so that subsequent visits result in a full HTML response. This behavior is similar to Next.js incremental static rendering (ISG). Here is an example route that adds caching for a partially static page:
+By default, requests for any pages that are not statically rendered at build time will fall back to server side rendering. If you use the {{ PRODUCT_NAME }} router to cache pages that are not statically rendered, the first user who attempts to access the page will see the fallback HTML page generated by Nuxt (200.html by default). The XDN will render and cache the HTML in the background so that subsequent visits result in a full HTML response. This behavior is similar to Next.js incremental static rendering (ISG). Here is an example route that adds caching for a partially static page:
 
 ```js
 import { Router } from '{{ PACKAGE_NAME }}/core/router'
@@ -290,7 +290,7 @@ export default new Router()
 
 ### Rendering a 404 Page
 
-If you set the `fallback` property in the [generate](https://nuxtjs.org/docs/2.x/configuration-glossary/configuration-generate/#fallback) config to `true`, Nuxt.js will generate a 404.html page that will be served whenever the URL does not match a static page. The XDN will send a 404 http status for these URLs. Note that if you set the fallback property to a string, Nuxt will generate a fallback page with that name, and the XDN will serve it with a 200 http status when the URL does not match a statically generated page.
+If you set the `fallback` property in the [generate](https://nuxtjs.org/docs/2.x/configuration-glossary/configuration-generate/#fallback) config to `true`, Nuxt.js will generate a 404.html page that will be served whenever the URL does not match a static page. The XDN will send a 404 http status for these URLs. Note that if you set the fallback property to a string, Nuxt will generate a fallback page with that name, and {{ PRODUCT_NAME }} will serve it with a 200 http status when the URL does not match a statically generated page.
 
 ## Running Locally
 
@@ -335,7 +335,7 @@ $ xdn init
 - bash: xdn: command not found
 ```
 
-Make sure you installed the XDN CLI
+Make sure you installed the {{ PRODUCT_NAME }} CLI
 
 ```bash
 npm i -g {{ PACKAGE_NAME }}/cli
@@ -343,7 +343,7 @@ npm i -g {{ PACKAGE_NAME }}/cli
 
 ### Make sure your version of XDN CLI is current
 
-If you previously installed the XDN CLI, make sure your version is current.
+If you previously installed the {{ PRODUCT_NAME }} CLI, make sure your version is current.
 
 Check npm for the latest released version of the CLI:
 

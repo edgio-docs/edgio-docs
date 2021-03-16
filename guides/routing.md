@@ -13,7 +13,7 @@ Using the Router, you can:
 
 ## Configuration
 
-To define routes for {{ PRODUCT_NAME }}, create a `routes.js` file in the root of your project. You can override the default path to the router by setting the `routes` key in `xdn.config.js`.
+To define routes for {{ PRODUCT_NAME }}, create a `routes.js` file in the root of your project. You can override the default path to the router by setting the `routes` key in `{{ CONFIG_FILE }}`.
 
 The `routes.js` file should export an instance of `{{ PACKAGE_NAME }}/core/router/Router`:
 
@@ -227,7 +227,7 @@ router.match(
 
 The second argument to routes is a function that receives a `ResponseWriter` and uses it to send a response. Using `ResponseWriter` you can:
 
-- Proxy a backend configured in `xdn.config.js`
+- Proxy a backend configured in `{{ CONFIG_FILE }}`
 - Serve a static file
 - Send a redirect
 - Send a synthetic response
@@ -265,7 +265,7 @@ module.exports = new Router()
     proxy('origin')
   })
   .fallback(({ proxy }) => {
-    // serve all unmatched URLs from the origin backend configured in xdn.config.js
+    // serve all unmatched URLs from the origin backend configured in {{ CONFIG_FILE }}
     proxy('origin')
   })
 ```

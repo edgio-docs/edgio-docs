@@ -77,7 +77,7 @@ This will automatically update your `package.json` and add all of the required X
 
 - The `{{ PACKAGE_NAME }}/core` package - Allows you to declare routes and deploy your application on {{ PRODUCT_NAME }}
 - The `{{ PACKAGE_NAME }}/prefetch` package - Allows you to configure a service worker to prefetch and cache pages to improve browsing speed
-- `xdn.config.js` - A configuration file for {{ PRODUCT_NAME }}
+- `{{ CONFIG_FILE }}` - A configuration file for {{ PRODUCT_NAME }}
 - `routes.js` - A default routes file that sends all requests to Vue.js.
 
 ### Configure the routes

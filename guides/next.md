@@ -68,7 +68,7 @@ This will automatically add all of the required dependencies and files to your p
 - The `{{ PACKAGE_NAME }}/next` package - Provides router middleware that automatically adds Next.js pages and api routes to the {{ PRODUCT_NAME }} router.
 - The `{{ PACKAGE_NAME }}/prefetch` package - Allows you to configure a service worker to prefetch and cache pages to improve browsing speed
 - The `{{ PACKAGE_NAME }}/react` package - Provides a `Prefetch` component for prefetching pages
-- `xdn.config.js`
+- `{{ CONFIG_FILE }}`
 - `routes.js` - A default routes file that sends all requests to Next.js. Update this file to add caching or proxy some URLs to a different origin.
 - `sw/service-worker.js` A service worker implemented using Workbox.
 
@@ -198,7 +198,7 @@ A popular use case is to fallback to a legacy site for any route that your Next.
 new Router().use(nextRoutes).fallback(({ proxy }) => proxy('legacy'))
 ```
 
-To configure the legacy backend, use xdn.config.js:
+To configure the legacy backend, use {{ CONFIG_FILE }}:
 
 ```js
 module.exports = {

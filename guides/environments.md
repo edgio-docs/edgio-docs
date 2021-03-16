@@ -65,11 +65,11 @@ Doing so will redeploy the environment's active deployment updated with the new 
 ## Environment Variables
 
 The variables you configure on an environment can be accessed in your code using `process.env`. A common use case is to configure
-different backend host names in `xdn.config.js` based on the environment. Here is an example where the origin backend is determined
+different backend host names in `{{ CONFIG_FILE }}` based on the environment. Here is an example where the origin backend is determined
 by a `HOST` environment variable.
 
 ```js
-// xdn.config.js
+// {{ CONFIG_FILE }}
 const defaultHostname = 'origin.my-site.com'
 
 module.exports = {
@@ -82,8 +82,8 @@ module.exports = {
 }
 ```
 
-Note that your `xdn.config.js` file is loaded during deployment to configure the edge for your environment. The first time you
-deploy your site, there won't be any environment variables defined, so you need to include defaults in `xdn.config.js` as
+Note that your `{{ CONFIG_FILE }}` file is loaded during deployment to configure the edge for your environment. The first time you
+deploy your site, there won't be any environment variables defined, so you need to include defaults in `{{ CONFIG_FILE }}` as
 shown in the example above.
 
 ### Built-in Environment Variables
@@ -100,10 +100,10 @@ As of XDN CLI version 2.19.0, when you deploy to an environment using a deploy t
 ## dotenv
 
 To configure secrets during local development, we recommend using [dotenv](https://github.com/motdotla/dotenv).
-If you would like to reference environment variables read from `.env` in `xdn.config.js`, add the following at the top
-of `xdn.config.js`
+If you would like to reference environment variables read from `.env` in `{{ CONFIG_FILE }}`, add the following at the top
+of `{{ CONFIG_FILE }}`
 
 ```js
-// xdn.config.js
+// {{ CONFIG_FILE }}
 require('dotenv').config()
 ```

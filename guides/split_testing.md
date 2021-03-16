@@ -21,10 +21,10 @@ To use CI to deploy A/B tests we recommend that you:
 
 ## Splitting traffic between multiple sites
 
-To split traffic between multiple sites, first add a backend for each site to `xdn.config.js`. For example, to split traffic between a new experience hosted on `origin.my-site.com` and a legacy experience hosted on `legacy-origin.my-site.com`:
+To split traffic between multiple sites, first add a backend for each site to `{{ CONFIG_FILE }}`. For example, to split traffic between a new experience hosted on `origin.my-site.com` and a legacy experience hosted on `legacy-origin.my-site.com`:
 
 ```js
-// xdn.config.js
+// {{ CONFIG_FILE }}
 module.exports = {
   backends: {
     legacy: {

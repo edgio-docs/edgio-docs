@@ -42,7 +42,7 @@ project. These include:
 
 - The `{{ PACKAGE_NAME }}/core` package - Allows you to declare routes and deploy your application on {{ PRODUCT_NAME }}
 - The `{{ PACKAGE_NAME }}/prefetch` package - Allows you to configure a service worker to prefetch and cache pages to improve browsing speed
-- `xdn.config.js` - The main configuration file for {{ PRODUCT_NAME }}.
+- `{{ CONFIG_FILE }}` - The main configuration file for {{ PRODUCT_NAME }}.
 - `routes.js` - A default routes file that sends all requests to Next.js. Update this file to add caching or proxy some URLs to a different origin.
 - `sw/service-worker.js` A service worker implemented using Workbox.
 

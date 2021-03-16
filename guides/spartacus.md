@@ -69,11 +69,11 @@ This will automatically add all of the required dependencies and files to your p
 - The `{{ PACKAGE_NAME }}/cli` package
 - The `{{ PACKAGE_NAME }}/spartacus` package
 - The `{{ PACKAGE_NAME }}/prefetch` package
-- `xdn.config.js`- Contains various configuration options for {{ PRODUCT_NAME }}.
+- `{{ CONFIG_FILE }}`- Contains various configuration options for {{ PRODUCT_NAME }}.
 - `routes.js` - A default routes file that sends all requests to the Angular Universal server. Update this file to add caching or proxy some URLs to a different origin.
 - The `sw` folder - Contains the files needed to build the service worker that that provides static asset and API prefetching.
 
-#### 3. Update `xdn.config.js`
+#### 3. Update `{{ CONFIG_FILE }}`
 
 For an app called `my-xdn-spartacus-app` the {{ PRODUCT_NAME }} config file created by `xdn init` will look like so:
 
@@ -109,14 +109,14 @@ This value is defined in the `backend` property of the options parameter to `B2c
 
 ### Upstream request tracking
 
-Prefetching for a Spartacus app can be enabled by listening to upstream requests made when server-side rendering a specific page. `{{ PACKAGE_NAME }}/prefetch` library will pick up on the upstream requests made by reading the `x-xdn-upstream-requests` response header. An example scenario:
+Prefetching for a Spartacus app can be enabled by listening to upstream requests made when server-side rendering a specific page. `{{ PACKAGE_NAME }}/prefetch` library will pick up on the upstream requests made by reading the `{{ HEADER_PREFIX }}upstream-requests` response header. An example scenario:
 
 1. User A lands on `/product/1`.
 1. `/product/1` has not been cached in the edge and thus will be server-side rendered.
 1. The rendering server has been modified to track upstream requests by patching `https.request`.
-1. The rendering server sets `x-xdn-upstream-requests` to, for example: `/rest/v2/1;/rest/v2/2;`
-1. The HTML response for `/product/1` is now cached and for future requests served from the edge along with the `x-xdn-upstream-requests` response header.
-1. User B lands on a page that has a link to `/product/1`. `/product/:path*` has been configured with `cache.browser.spa: true`. Because of this configuration, `{{ PACKAGE_NAME }}/prefetch` will know to make a prefetch HEAD request for `/product/1`, and only if `product/1` can be served from the edge will it prefetch all requests specified in `x-xdn-upstream-requests` response header.
+1. The rendering server sets `{{ HEADER_PREFIX }}upstream-requests` to, for example: `/rest/v2/1;/rest/v2/2;`
+1. The HTML response for `/product/1` is now cached and for future requests served from the edge along with the `{{ HEADER_PREFIX }}upstream-requests` response header.
+1. User B lands on a page that has a link to `/product/1`. `/product/:path*` has been configured with `cache.browser.spa: true`. Because of this configuration, `{{ PACKAGE_NAME }}/prefetch` will know to make a prefetch HEAD request for `/product/1`, and only if `product/1` can be served from the edge will it prefetch all requests specified in `{{ HEADER_PREFIX }}upstream-requests` response header.
 1. When User B click the link to `/product/1`, the navigation will be faster since the requests needed to render the new page will be in service worker cache.
 
 Example implementation of upstream request tracking changes required in your `server.ts` file:

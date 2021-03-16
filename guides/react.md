@@ -30,7 +30,7 @@ project. These include:
 - The `{{ PACKAGE_NAME }}/core` package - Allows you to declare routes and deploy your application on {{ PRODUCT_NAME }}
 - The `{{ PACKAGE_NAME }}/prefetch` package - Allows you to configure a service worker to prefetch and cache pages to improve browsing speed
 - The `{{ PACKAGE_NAME }}/react` package - Provides a `Prefetch` component for prefetching pages
-- `xdn.config.js` - The main configuration file for {{ PRODUCT_NAME }}.
+- `{{ CONFIG_FILE }}` - The main configuration file for {{ PRODUCT_NAME }}.
 - `routes.js` - A default routes file that sends all requests to Next.js. Update this file to add caching or proxy some URLs to a different origin.
 - `sw/service-worker.js` A service worker implemented using Workbox.
 
@@ -38,10 +38,10 @@ project. These include:
 
 React offers a great amount of flexibility in how you set up server side rendering. Frameworks like Next.js offer a standardized, built-in way of implementing SSR. If you're using Next.js specifically, we suggest using the [Next.js guide](/guides/next). We'll assume at this point that you're not using Next.js, but have an existing Node app that is doing server-side rendering.
 
-In order to render on {{ PRODUCT_NAME }}, you need to provide a function that takes a node `Request` and `Response` and sends the HTML that results from the `renderToString()` method from `react-dom/server`. Configure that function using the `server` property of `xdn.config.js`. Here's an example:
+In order to render on {{ PRODUCT_NAME }}, you need to provide a function that takes a node `Request` and `Response` and sends the HTML that results from the `renderToString()` method from `react-dom/server`. Configure that function using the `server` property of `{{ CONFIG_FILE }}`. Here's an example:
 
 ```js
-// xdn.config.js
+// {{ CONFIG_FILE }}
 
 module.exports = {
   server: {
@@ -94,7 +94,7 @@ module.exports = {
   mode: 'production',
   output: {
     filename: '[name].js',
-    path: path.resolve(__dirname, '..', 'dist'), // should match server.path in xdn.config.js
+    path: path.resolve(__dirname, '..', 'dist'), // should match server.path in {{ CONFIG_FILE }}
     libraryTarget: 'umd',
     libraryExport: 'default',
   },
@@ -127,7 +127,7 @@ new Router()
     })
   })
   .fallback(({ renderWithApp }) => {
-    // send all requests to the server module configured in xdn.config.js
+    // send all requests to the server module configured in {{ CONFIG_FILE }}
     renderWithApp()
   })
 ```

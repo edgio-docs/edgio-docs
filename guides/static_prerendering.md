@@ -176,7 +176,7 @@ module.exports = new Router()
 
 ## Concurrency and Limits
 
-By default, {{ PRODUCT_NAME }} prerenders a maximum of 200 URLs at a time. This can create significant additional load on your APIs at the time of deployment. You can lower this limit by setting the [prerenderConcurrency](/guides/xdn_config#section_prerenderconcurrency) property in `xdn.config.js`. {{ PRODUCT_NAME }} imposes the following limits on prerendering:
+By default, {{ PRODUCT_NAME }} prerenders a maximum of 200 URLs at a time. This can create significant additional load on your APIs at the time of deployment. You can lower this limit by setting the [prerenderConcurrency](/guides/xdn_config#section_prerenderconcurrency) property in `{{ CONFIG_FILE }}`. {{ PRODUCT_NAME }} imposes the following limits on prerendering:
 
 | Tier       | Concurrency | Total number of requests |
 | ---------- | ----------- | ------------------------ |

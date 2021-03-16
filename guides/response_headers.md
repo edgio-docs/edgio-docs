@@ -4,18 +4,18 @@ This guide covers the headers that {{ PRODUCT_NAME }} injects into responses mak
 
 ## General headers
 
-- `x-xdn-version`: version fingerprint that includes XDN version number, site build number and UTC timestamp of the build
-- `x-xdn-t`: timings of all the components in Moovweb critical path that served your request
-- `x-xdn-request-id`: the unique ID of the request on {{ PRODUCT_NAME }} infrastructure
-- `x-xdn-hit-request-id`: the unique ID of the request whose cached response is being returned (not present if cache miss)
-- `x-xdn-caching-status`: indicates why a response was or was not cached. See [Caching](/guides/caching#section_why_is_my_response_not_being_cached_).
-- `x-xdn-surrogate-key`: a space separated list of secondary cache keys used for [cache clearing](/guides/caching#section_clearing_the_cache)
+- `{{ HEADER_PREFIX }}version`: version fingerprint that includes XDN version number, site build number and UTC timestamp of the build
+- `{{ HEADER_PREFIX }}t`: timings of all the components in Moovweb critical path that served your request
+- `{{ HEADER_PREFIX }}request-id`: the unique ID of the request on {{ PRODUCT_NAME }} infrastructure
+- `{{ HEADER_PREFIX }}hit-request-id`: the unique ID of the request whose cached response is being returned (not present if cache miss)
+- `{{ HEADER_PREFIX }}caching-status`: indicates why a response was or was not cached. See [Caching](/guides/caching#section_why_is_my_response_not_being_cached_).
+- `{{ HEADER_PREFIX }}surrogate-key`: a space separated list of secondary cache keys used for [cache clearing](/guides/caching#section_clearing_the_cache)
 
-### Structure of `x-xdn-t`
+### Structure of `{{ HEADER_PREFIX }}t`
 
-The format is `x-xdn-t: <id>=<time>[,<id2>=<time2>...]`
+The format is `{{ HEADER_PREFIX }}t: <id>=<time>[,<id2>=<time2>...]`
 
-`x-xdn-t` is an order list of timings: values are prepended at response time. Thus reading them left to right goes from the outermost edge component to the innermost cloud component that handled the request.
+`{{ HEADER_PREFIX }}t` is an order list of timings: values are prepended at response time. Thus reading them left to right goes from the outermost edge component to the innermost cloud component that handled the request.
 
 The components are:
 
@@ -54,5 +54,5 @@ All times are in milliseconds.
 
 The following headers are used internally by Moovweb staff to troubleshoot issues with requests.
 
-- `x-xdn-status`: statuses of different components in {{ PRODUCT_NAME }} critical path that serviced your request
-- `x-xdn-components`: versions of different components in {{ PRODUCT_NAME }} critical path that serviced your request
+- `{{ HEADER_PREFIX }}status`: statuses of different components in {{ PRODUCT_NAME }} critical path that serviced your request
+- `{{ HEADER_PREFIX }}components`: versions of different components in {{ PRODUCT_NAME }} critical path that serviced your request

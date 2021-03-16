@@ -22,7 +22,7 @@ xdn init
 
 Since our Next.js app isn't located in the root of the project as the `{{ PACKAGE_NAME }}/next` connector expects, we'll need to define our own custom connector. To do so:
 
-1. Set `connector: './xdn'` in `xdn.config.js`
+1. Set `connector: './xdn'` in `{{ CONFIG_FILE }}`
 2. Copy the [xdn directory from the example](https://github.com/moovweb-docs/xdn-examples/tree/main/xdn-nx-example/xdn) into the root of your monorepo.
 
 ## 3. Update routes.js

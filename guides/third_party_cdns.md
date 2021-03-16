@@ -29,7 +29,7 @@ Caching and traffic metrics are another area that is affected by CDN caching or 
 
 ## IPs
 
-When behind a third-party CDN, {{ PRODUCT_NAME }} will analyze `x-forwarded-for` to correctly extract the client IP from it and inject it into [`x-xdn-client-ip`](request_headers#section_general_headers). You can continue to use `x-xdn-client-ip` as you otherwise would.
+When behind a third-party CDN, {{ PRODUCT_NAME }} will analyze `x-forwarded-for` to correctly extract the client IP from it and inject it into [`{{ HEADER_PREFIX }}client-ip`](request_headers#section_general_headers). You can continue to use `{{ HEADER_PREFIX }}client-ip` as you otherwise would.
 
 ## Access Logs
 

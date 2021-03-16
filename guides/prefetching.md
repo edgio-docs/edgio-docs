@@ -304,10 +304,10 @@ document.addEventListener('DOMContentLoaded', function() {
 npm i --save {{ PACKAGE_NAME }}/apollo
 ```
 
-3. Add your GraphQL API as a backend to `xdn.config.js`. For example:
+3. Add your GraphQL API as a backend to `{{ CONFIG_FILE }}`. For example:
 
 ```js
-// xdn.config.js
+// {{ CONFIG_FILE }}
 
 module.exports = {
   backends: {
@@ -341,7 +341,7 @@ module.exports = new Router().get('/graphql', ({ cache, removeUpstreamResponseHe
   // the response to the cache
   removeUpstreamResponseHeader('set-cookie')
 
-  // Proxy the request to the "graphql" backend end configured in xdn.config.js
+  // Proxy the request to the "graphql" backend end configured in {{ CONFIG_FILE }}
   proxy('graphql', { path: '/graphql' })
 })
 ```

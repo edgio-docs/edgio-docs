@@ -1,6 +1,6 @@
-# xdn.config.js
+# {{ CONFIG_FILE }}
 
-The `xdn.config.js` config file in your app's root directory contains configuration options that control how your app runs on {{ PRODUCT_NAME }}. This file is automatically created when you run `xdn init`. It should export an object with the following properties:
+The `{{ CONFIG_FILE }}` config file in your app's root directory contains configuration options that control how your app runs on {{ PRODUCT_NAME }}. This file is automatically created when you run `xdn init`. It should export an object with the following properties:
 
 ## backends
 

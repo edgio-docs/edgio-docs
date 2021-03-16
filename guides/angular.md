@@ -25,7 +25,7 @@ If you don't already have an Angular application, you can create one using the f
 
 ```bash
 npm install -g @angular/cli
-ng new my-xdn-angular-app
+ng new my-{{ PRODUCT_NAME_LOWER }}-angular-app
 ```
 
 You should now have a working starter app. Run `ng serve` to see the application running on `localhost:4200`.
@@ -68,7 +68,7 @@ This will automatically add all of the required dependencies and files to your p
 - The `{{ PACKAGE_NAME }}/core` package
 - The `{{ PACKAGE_NAME }}/angular` package
 - The `{{ PACKAGE_NAME }}/cli` package
-- `xdn.config.js`- Contains various configuration options for {{ PRODUCT_NAME }}.
+- `{{ CONFIG_FILE }}`- Contains various configuration options for {{ PRODUCT_NAME }}.
 - `routes.js` - A default routes file that sends all requests to the Angular Universal server. Update this file to add caching or proxy some URLs to a different origin.
 
 #### 3. Use the right angular project

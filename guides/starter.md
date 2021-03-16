@@ -100,7 +100,7 @@ The {{ PRODUCT_NAME }} create module will prompt you for the following informati
 - Hostname: Enter the domain of the origin server that {{ PRODUCT_NAME }} will be accelerating.
 - Package manager: Pick `npm` unless you have strong preference and experience with `yarn`. This guide will assume `npm`.
 
-Refer to the [xdn.config.js](xdn_config) guide for more details
+Refer to the [{{ CONFIG_FILE }}](xdn_config) guide for more details
 
 Here's an example output from running XDN create:
 

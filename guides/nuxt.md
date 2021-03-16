@@ -64,7 +64,7 @@ The `xdn init` command will automatically add all the required dependencies and 
 - The `{{ PACKAGE_NAME }}/core` package
 - The `{{ PACKAGE_NAME }}/nuxt` package
 - The `{{ PACKAGE_NAME }}/vue` package
-- `xdn.config.js` - Contains various configuration options for {{ PRODUCT_NAME }}.
+- `{{ CONFIG_FILE }}` - Contains various configuration options for {{ PRODUCT_NAME }}.
 - `routes.js` - A default routes file that sends all requests to `nuxt.js`. You can update this file to add caching or proxy some URLs to a different origin as described later in this guide.
 - `sw/service-worker.js` - A service worker that provides static asset and API prefetching.
 
@@ -188,7 +188,7 @@ A popular use case is to fallback to a legacy site for any route that your Nuxt.
 new Router().use(nuxtRoutes).fallback(({ proxy }) => proxy('legacy'))
 ```
 
-To configure the legacy backend, use xdn.config.js:
+To configure the legacy backend, use {{ CONFIG_FILE }}:
 
 ```js
 module.exports = {

@@ -167,7 +167,7 @@ Response content type.
 
 ### xmr
 
-Request header x-xdn-matched-routes, logs all routes matched and is required to order the routes table in caching metrics
+Request header {{ HEADER_PREFIX }}matched-routes, logs all routes matched and is required to order the routes table in caching metrics
 
 ### rfr
 
@@ -179,15 +179,15 @@ User agent.
 
 ### xmt
 
-Response [x-xdn-t](/guides/response_headers#section_structure_of_) header with different critical path timings
+Response [{{ HEADER_PREFIX }}t](/guides/response_headers#section_structure_of_) header with different critical path timings
 
 ### xut
 
-Response x-xdn-user-t header with different user [performance](/guides/performance) metrics
+Response {{ HEADER_PREFIX }}user-t header with different user [performance](/guides/performance) metrics
 
 ### xms
 
-Response x-xdn-status header with different critical path status codes
+Response {{ HEADER_PREFIX }}status header with different critical path status codes
 
 ### pre
 
@@ -209,7 +209,7 @@ IP of the backend that responded to the request
 
 ### hrid
 
-Request ID of the response hit in the cache. Corresponds to [`x-xdn-hit-request-id`](response_headers#section_general_headers) response header.
+Request ID of the response hit in the cache. Corresponds to [`{{ HEADER_PREFIX }}hit-request-id`](response_headers#section_general_headers) response header.
 
 ## Setting up log aggregation tools
 

@@ -8,7 +8,7 @@ A {{ PRODUCT_NAME }} connector consists of four entry points:
 
 - `init.js` - Called when the user runs `xdn init`, adding resources to the project necessary for deploying on {{ PRODUCT_NAME }}. May also modify existing files with the project.
 - `dev.js` - Called when the user runs `xdn dev` to run their app in development mode.
-- `build.js` - Called when the user runs `xdn build` or `xdn deploy`. Builds the application, copying resources into the `.xdn` directory, which is ultimately zipped and uploaded to {{ PRODUCT_NAME }}.
+- `build.js` - Called when the user runs `xdn build` or `xdn deploy`. Builds the application, copying resources into the `.{{ PRODUCT_NAME_LOWER }}` directory, which is ultimately zipped and uploaded to {{ PRODUCT_NAME }}.
 - `prod.js` - Starts the application server in {{ PRODUCT_NAME }} cloud's serverless environment.
 
 These files should be placed in the root directory of your connector package.
@@ -17,7 +17,7 @@ These files should be placed in the root directory of your connector package.
 
 Called when the user runs `xdn init`. This entry point adds resources to the project necessary for deploying on {{ PRODUCT_NAME }}. It may also modify existing files within the project.
 
-_Optional, if not provided, xdn init will add a default router and xdn.config.js to the user's project._
+_Optional, if not provided, xdn init will add a default router and {{ CONFIG_FILE }} to the user's project._
 
 Example:
 
@@ -32,7 +32,7 @@ const { DeploymentBuilder } = require('{{ PACKAGE_NAME }}/core/deploy')
 export default async function init() {
   new DeploymentBuilder(process.cwd())
     // Copy files from the default-app directory within the connector package.
-    // These typically include the routes.js file and xdn.config.js. Typescript alternatives are often provided.
+    // These typically include the routes.js file and {{ CONFIG_FILE }}. Typescript alternatives are often provided.
     .addDefaultAppResources(join(__dirname, 'default-app'))
 
     // Adds xdn:* scripts to package.json
@@ -46,7 +46,7 @@ The default-app directory typically contains the following files:
 /(connector-root)
   /default-app
     /all              # resources to be added to both JavaScript and TypeScript projects
-      xdn.config.js   # a default xdn.config.js file
+      {{ CONFIG_FILE }}   # a default {{ CONFIG_FILE }} file
     /js               # resources to be added to projects that do not use TypeScript
       routes.js       # a JavaScript implementation of the default routes file
     /ts               # resouces to be added to projects that use TypeScript
@@ -112,7 +112,7 @@ export default async function build({ skipFramework }) {
   }
 
   builder
-    // optionally add some file required by the app at runtime.  This is equivalent to setting the includeFiles config in xdn.config.js
+    // optionally add some file required by the app at runtime.  This is equivalent to setting the includeFiles config in {{ CONFIG_FILE }}
     .addJSAsset('path/to/file/in/project')
 
   // build the {{ PRODUCT_NAME }} deployment bundle in the .xdn directory
@@ -167,7 +167,7 @@ module.exports = {
 To test your connector locally without publishing it to NPM:
 
 1. Use `npm link`, `yarn link` or `yalc add` to add the local connector package as a project dependency.
-2. Create an `xdn.config.js` file in the root directory of your project.
+2. Create an `{{ CONFIG_FILE }}` file in the root directory of your project.
 3. Set the `connector` property to name of the connector package.
 
 Now `xdn init`, `xdn dev`, `xdn build`, and `xdn deploy` commands will use the entry points in the connector, and your `prod.js` entrypoint will be used to serve requests in the {{ PRODUCT_NAME }} cloud.
@@ -178,22 +178,22 @@ If your project uses a framework that isn't supported by one of the official con
 
 1. Create a directory for your connector.
 2. Implement the entry points listed above.
-3. Create an `xdn.config.js` file in the root directory of your project.
+3. Create an `{{ CONFIG_FILE }}` file in the root directory of your project.
 4. Set the `connector` property to the relative path to the directory containing the connector
 
 Example project structure:
 
 ```
 /my-project
-  /xdn              # reference this directory in the connector property in xdn.config.js
+  /xdn              # reference this directory in the connector property in {{ CONFIG_FILE }}
     dev.js
     prod.js
     build.js
-  xdn.config.js
+  {{ CONFIG_FILE }}
   ... other source files and directories ...
 ```
 
-Example xdn.config.js:
+Example {{ CONFIG_FILE }}:
 
 ```js
 module.exports = {

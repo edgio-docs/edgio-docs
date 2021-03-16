@@ -42,7 +42,7 @@ This will automatically add all of the required dependencies and files to your p
 - The `{{ PACKAGE_NAME }}/core` package
 - The `{{ PACKAGE_NAME }}/gatsby` package
 - The `{{ PACKAGE_NAME }}/cli` package
-- `xdn.config.js`
+- `{{ CONFIG_FILE }}`
 - `routes.js` - A default routes file that sends all requests to your Gatsby static site. Update this file to add caching or proxy some URLs to a different origin.
 
 ## Running Locally
@@ -79,12 +79,12 @@ module.exports = new Router().use(gatsbyRoutes)
 
 ### Adding routes to a different origin
 
-To proxy some URLs to a different origin, you need first to configure that origin in your `xdn.config.js` file.
+To proxy some URLs to a different origin, you need first to configure that origin in your `{{ CONFIG_FILE }}` file.
 
 For example:
 
 ```js
-// xdn.config.js
+// {{ CONFIG_FILE }}
 
 module.exports = {
   backends: {

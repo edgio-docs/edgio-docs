@@ -72,9 +72,21 @@ This will automatically add all of the required dependencies and files to your p
 - `routes.js` - A default routes file that sends all requests to Next.js. Update this file to add caching or proxy some URLs to a different origin.
 - `sw/service-worker.js` A service worker implemented using Workbox.
 
-### Edit next.config.js
+### Using `withServiceWorker` with Next.js
+The next.config.js was updated to use `withXDN` and `withServiceWorker`.
 
-Add the `withXDN` and `withServiceWorker` plugins to `next.config.js`. If this file doesn't exist, create it in the root directory of your project folder, with the following content:
+```js
+// next.config.js
+
+const { withXDN, withServiceWorker } = require('@xdn/next/config')
+const { default: next } = require('next')
+
+module.exports = withXDN(withServiceWorker())
+```
+
+The `withXDN` plugin ensures that your app is bundled properly for running on the XDN, and `withServiceWorker` provides a service worker based on `sw/service-worker.js`.
+
+If you are running Next.js 10 or above, you will need to use webpack5.
 
 ```js
 // next.config.js
@@ -89,8 +101,7 @@ module.exports = withXDN(
   }),
 )
 ```
-
-The `withXDN` plugin ensures that your app is bundled properly for running on the XDN, and `withServiceWorker` provides a service worker based on `sw/service-worker.js`.
+This is because `sw/service-worker.js` is implemented using Google's Workbox library, and it requires webpack 5 when building on Next.js 10+
 
 _If you're already using `next-offline`, you should remove it in favor of `withServiceWorker`, which itself uses `next-offline._
 

@@ -86,7 +86,7 @@ module.exports = withXDN(withServiceWorker())
 
 The `withXDN` plugin ensures that your app is bundled properly for running on the XDN, and `withServiceWorker` provides a service worker based on `sw/service-worker.js`.
 
-If you are running Next.js 10 or above, you will need to use webpack5.
+Webpack 5 is required for Next.js 10 or above.
 
 ```js
 // next.config.js

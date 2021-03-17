@@ -79,7 +79,6 @@ The next.config.js was updated to use `withXDN` and `withServiceWorker`.
 // next.config.js
 
 const { withXDN, withServiceWorker } = require('@xdn/next/config')
-const { default: next } = require('next')
 
 module.exports = withXDN(withServiceWorker())
 ```

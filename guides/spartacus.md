@@ -5,6 +5,12 @@ This guide shows you how to deploy [Spartacus](https://sap.github.io/spartacus-d
 [Try the Spartacus Example Site](https://moovweb-docs-xdn-spartacus-example-default.moovweb-edge.io/?button)
 [View the Code](https://github.com/moovweb-docs/xdn-examples/tree/main/xdn-spartacus-example?button)
 
+## Connector
+
+This framework has a connector developed for the XDN. See [Connectors](connectors) for more information.
+
+[View the Connector Code](https://github.com/moovweb-docs/xdn-connectors/tree/main/xdn-spartacus-connector?button)
+
 ## Install Node.js and npm
 
 **XDN only supports Node.js version 12.x**
@@ -85,7 +91,7 @@ module.exports = {
   backends: {
     commerce: {
       domainOrIp: 'api-commerce.my-site.com',
-      hostHeader: 'api-commerce.my-site.com'
+      hostHeader: 'api-commerce.my-site.com',
     },
   },
 }
@@ -96,10 +102,11 @@ If you have several projects and the `defaultProject` as specified in `angular.j
 #### 4. Update OCC `baseUrl` endpoint
 
 The `baseUrl` should be updated to use the remote URL when `window` is not defined (i.e., for SSR), and the current host when `window` is defined. For example:
+
 ```js
 baseUrl: typeof window !== 'undefined'
-    ? `${window.location.protocol}//${window.location.host}`
-    : 'https://api-commerce.my-site.com'
+  ? `${window.location.protocol}//${window.location.host}`
+  : 'https://api-commerce.my-site.com'
 ```
 
 This value is defined in the `backend` property of the options parameter to `B2cStorefrontModule.withConfig({})` in the `app.module.ts` file, but is best set using environment variables in the `environment.ts` and `environment.prod.ts` files.
@@ -237,7 +244,6 @@ ServiceWorkerModule.register(
 ```
 
 Add `"skipLibCheck": true,` to `tsconfig.json` to avoid type errors from `workbox` library during build.
-
 
 ## Routing and Cache Configuration
 

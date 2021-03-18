@@ -1,6 +1,6 @@
 export const PRODUCT_NAME = 'Layer0'
 export const PRODUCT_NAME_LOWER = PRODUCT_NAME.toLowerCase()
-export const CLI_NAME = 'zero'
+export const CLI_NAME = 'layer0'
 export const PACKAGE_NAME = '@layer0'
 export const CONFIG_FILE = 'layer0.config.js'
 export const HEADER_PREFIX = 'x-layer0-'

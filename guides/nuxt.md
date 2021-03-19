@@ -303,7 +303,7 @@ If you set the `fallback` property in the [generate](https://nuxtjs.org/docs/2.x
 To test your app locally, run:
 
 ```bash
-{{ CLI_NAME }} run
+{{ CLI_NAME }} build && {{ CLI_NAME }} run
 ```
 
 You can do a production build of your app and test it locally using:

@@ -132,6 +132,14 @@ And here is the `package.json` after modifications by `xdn init`:
 }
 ```
 
+## Run the Nuxt.js app locally on the XDN
+Run the Nuxt.js app with the command:
+
+```
+npm run xdn:dev
+```
+Load the site: http://127.0.0.1:3000
+
 ## modules vs buildModules
 
 Nuxt does not bundle packages listed in the `modules` property of `nuxt.config.js` when building your app for production.

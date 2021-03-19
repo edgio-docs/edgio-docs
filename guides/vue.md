@@ -84,7 +84,7 @@ This will automatically update your `package.json` and add all of the required X
 
 Next you'll need to configure {{ PRODUCT_NAME }} routing in the `routes.js` file.
 
-For the Vue `hello-world` template, replace the `routes.js` file that was created during `xdn init` with the following:
+For the Vue `hello-world` template, replace the `routes.js` file that was created during `{{ CLI_NAME }} init` with the following:
 
 ```js
 const { Router } = require('{{ PACKAGE_NAME }}/core/router')
@@ -111,10 +111,10 @@ Create a production build of your app by running the following in your project's
 npm run build
 ```
 
-Run the XDN on your local machine:
+Run {{ PRODUCT_NAME }} on your local machine:
 
 ```bash
-npm run xdn:dev
+npm run {{ CLI_NAME }}:dev
 ```
 
 Load the site: http://127.0.0.1:3000 !

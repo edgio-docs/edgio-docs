@@ -9,6 +9,12 @@ This Nuxt.js example app uses server-side rendering and prefetching to provide l
 [Try the Nuxt.js SSR Example Site](https://moovweb-docs-xdn-nuxt-example-default.moovweb-edge.io/category/hats?button)
 [View the Code](https://github.com/moovweb-docs/xdn-examples/tree/main/xdn-nuxt-example?button)
 
+## Connector
+
+This framework has a connector developed for the XDN. See [Connectors](connectors) for more information.
+
+[View the Connector Code](https://github.com/moovweb-docs/xdn-connectors/tree/main/xdn-nuxt-connector?button)
+
 ## Install Node.js and npm
 
 **XDN only supports Node.js version 12.x**

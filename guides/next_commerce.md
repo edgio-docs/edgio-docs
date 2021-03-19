@@ -10,6 +10,12 @@ including image optimization, localization, and incremental static regeneration 
 [Try the Next.js Commerce Example Site](https://moovweb-docs-nextjs-commerce-default.moovweb-edge.io/?button)
 [View the Code](https://github.com/moovweb-docs/xdn-examples/tree/main/nextjs-commerce?button)
 
+## Connector
+
+This framework has a connector developed for the XDN. See [Connectors](connectors) for more information.
+
+[View the Connector Code](https://github.com/moovweb-docs/xdn-connectors/tree/main/xdn-next-connector?button)
+
 ## Getting Started
 
 The easiest way to try Next.js Commerce on {{ PRODUCT_NAME }} is to clone and deploy the version from the {{ PRODUCT_NAME }} examples:

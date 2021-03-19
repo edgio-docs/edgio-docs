@@ -75,6 +75,12 @@ Next install {{ PRODUCT_NAME }} JavaScript libraries to your site by adding the 
 
 These tags power the predictive prefetching and caching that will be used by {{ PRODUCT_NAME }}. Note that the JavaScript assets referenced in the above script tags are not on your server. {{ PRODUCT_NAME }} serves the assets for these script tags once {{ PRODUCT_NAME }} is installed in front of your server as described in [How XDN Starter works](#section_how_xdn_starter_works).
 
+## Connector
+
+This framework has a connector developed for the XDN. See [Connectors](connectors) for more information.
+
+[View the Connector Code](https://github.com/moovweb-docs/xdn-connectors/tree/main/xdn-starter-connector?button)
+
 ## Setup a Starter project
 
 **XDN only supports Node.js version 12.x**

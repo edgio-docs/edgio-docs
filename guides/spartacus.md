@@ -5,6 +5,12 @@ This guide shows you how to deploy [Spartacus](https://sap.github.io/spartacus-d
 [Try the Spartacus Example Site](https://moovweb-docs-xdn-spartacus-example-default.moovweb-edge.io/?button)
 [View the Code](https://github.com/moovweb-docs/xdn-examples/tree/main/xdn-spartacus-example?button)
 
+## Connector
+
+This framework has a connector developed for the XDN. See [Connectors](connectors) for more information.
+
+[View the Connector Code](https://github.com/moovweb-docs/xdn-connectors/tree/main/xdn-spartacus-connector?button)
+
 ## Install Node.js and npm
 
 **XDN only supports Node.js version 12.x**

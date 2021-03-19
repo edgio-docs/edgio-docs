@@ -57,5 +57,5 @@ xdn dev --cache
 To build and deploy your app to the XDN, run the following from the root directory of your app:
 
 ```
-xdn deploy <team> # where team is the name of the XDN team to which the app should be deployed.
+xdn deploy 
 ```

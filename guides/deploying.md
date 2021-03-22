@@ -57,7 +57,7 @@ To deploy from your CI environment, create a deploy token using the site setting
 Then use the `--token` option when deploying from your CI script:
 
 ```bash
-{{ CLI_NAME }} deploy my-site --token=$XDN_DEPLOY_TOKEN
+{{ CLI_NAME }} deploy my-site --token=$layer0_deploy_token
 ```
 
 You should always store your deploy token using your CI environment's secrets manager. Never commit your deploy token to source control.
@@ -68,7 +68,7 @@ You should always store your deploy token using your CI environment's secrets ma
 
 Here is an example GitHub action that deploys your site to {{ PRODUCT_NAME }}:
 
-This action assumes that you have created environments called "staging" and "production" and you have created a deploy key for your site and added it as a secret in your repo called "xdn_deploy_token".
+This action assumes that you have created environments called "staging" and "production" and you have created a deploy key for your site and added it as a secret in your repo called "layer0_deploy_token".
 
 ```yml
 # Add this file to your project at .github/workflows/xdn.yml
@@ -87,7 +87,7 @@ This action assumes that you have created environments called "staging" and "pro
 #     menu when viewing a deployment in moovweb.app.
 #
 # In order for this action to deploy your site, you must create a deploy token from the site settings page
-# in Moovweb.app and configure it as a secret called "xdn_deploy_token" in your repo on GitHub.
+# in Moovweb.app and configure it as a secret called "layer0_deploy_token" in your repo on GitHub.
 
 name: Deploy branch to XDN
 
@@ -103,12 +103,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check for XDN deploy token secret
-        if: env.xdn_deploy_token == ''
+        if: env.layer0_deploy_token == ''
         run: |
-          echo You must define the "xdn_deploy_token" secret in GitHub project settings
+          echo You must define the "layer0_deploy_token" secret in GitHub project settings
           exit 1
         env:
-          xdn_deploy_token: ${{secrets.xdn_deploy_token}}
+          layer0_deploy_token: ${{secrets.layer0_deploy_token}}
       - name: Extract branch name
         shell: bash
         run: echo "BRANCH_NAME=$(echo ${GITHUB_REF#refs/heads/} | sed 's/\//_/g')" >> $GITHUB_ENV
@@ -129,9 +129,9 @@ jobs:
             ${{ runner.os }}-
       - run: npm ci
       - name: Deploy to XDN
-        run: npm run xdn:deploy -- ${{'--branch=$BRANCH_NAME' || ''}} --token=$xdn_deploy_token ${{github.event_name == 'push' && env.BRANCH_NAME == 'main' && '--environment=staging' || ''}} ${{github.event_name == 'release' && '--environment=production' || ''}}
+        run: npm run xdn:deploy -- ${{'--branch=$BRANCH_NAME' || ''}} --token=$layer0_deploy_token ${{github.event_name == 'push' && env.BRANCH_NAME == 'main' && '--environment=staging' || ''}} ${{github.event_name == 'release' && '--environment=production' || ''}}
         env:
-          xdn_deploy_token: ${{secrets.xdn_deploy_token}}
+          layer0_deploy_token: ${{secrets.layer0_deploy_token}}
 ```
 
 ## Jenkins Pipeline
@@ -143,7 +143,7 @@ This guide assumes:
 - Your project is hosted on GitHub
 - You have a Jenkins environment configured with Docker and to receive GitHub `push` events
 - You have created environments called "staging" and "production"
-- You have created a deploy key for your site and added it as an environment variable in your Jenkins configuration called "xdn_deploy_token".
+- You have created a deploy key for your site and added it as an environment variable in your Jenkins configuration called "layer0_deploy_token".
 
 ```groovy
 // Add this file to your project at ./Jenkinsfile
@@ -161,7 +161,7 @@ This guide assumes:
 //     exist by default, you must create it using moovweb.app.
 //
 // In order for this pipeline to deploy your site, you must create a deploy token from the site settings page
-// in Moovweb.app and configure it as an environment variable called "xdn_deploy_token" in your Jenkins configuration.
+// in Moovweb.app and configure it as an environment variable called "layer0_deploy_token" in your Jenkins configuration.
 
 pipeline {
   agent {
@@ -179,11 +179,11 @@ pipeline {
     stage("Checking environment") {
       when {
         expression {
-          env.xdn_deploy_token == null
+          env.layer0_deploy_token == null
         }
       }
       steps {
-        echo "You must define the 'xdn_deploy_token' secret in your environment variables"
+        echo "You must define the 'layer0_deploy_token' secret in your environment variables"
         sh "exit 1"
       }
     }
@@ -201,7 +201,7 @@ pipeline {
           env.BRANCH_NAME = branch.tokenize("/").last()
           env.XDN_ENV_ARG = (env.BRANCH_NAME != "master") ? "--branch=$BRANCH_NAME" : "--environment=staging"
         }
-        sh "npm run deploy -- --token=$xdn_deploy_token ${XDN_ENV_ARG} --commit-url=${XDN_COMMIT_URL}"
+        sh "npm run deploy -- --token=$layer0_deploy_token ${XDN_ENV_ARG} --commit-url=${XDN_COMMIT_URL}"
       }
     }
   }

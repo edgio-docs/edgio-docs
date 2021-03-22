@@ -328,9 +328,13 @@ See [deploying](deploying) for more information.
 
 The following section describes common gotchas and their workarounds.
 
+---
+
 ### I get an error message `Nuxt.js Internal Server Error`
 
 This may be because you have a custom server framework (such as Express). Please make sure you selected `None` when asked to choose `Choose custom server framework` during the creation of your nuxt app.
+
+---
 
 ### xdn init doesn't work
 
@@ -346,6 +350,8 @@ Make sure you installed the XDN CLI
 ```bash
 npm i -g @xdn/cli
 ```
+
+---
 
 ### Make sure your version of XDN CLI is current
 
@@ -370,3 +376,14 @@ If your version is out of date you can update it by running
 ```bash
 npm update -g @xdn/cli
 ```
+
+---
+
+### Error on deploy: `xdn-deploy-lambda: Unzipped size must be smaller than...`
+
+As the error states, there is an upper limit on how big a package can be when deployed to our serverless infrastructure. Some common strategies for solving:
+
+- You may need to move some dependencies as [described here](#section_modules_vs_buildmodules). Only dependencies are copied up to the lambda.
+- Make sure you are using imports in a smart way. A common example is changing: `import { get } from lodash` to `import get from lodash/get` to avoid unnecessary bloat in your modules
+
+You can view what is included in your package under `.xdn/lambda/` after a build, and running `du -h -d 1` on the directories in a shell will output the size of each directory and help you identify where space savings can be found, ie `du -h -d 1 .xdn/lambda/.nuxt`

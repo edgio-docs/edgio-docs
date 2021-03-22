@@ -86,8 +86,18 @@ To simulate your app within the XDN locally, run:
 xdn dev
 ```
 
-### Using `withServiceWorker` with Next.js
-The next.config.js was updated to use `withXDN` and `withServiceWorker`.
+## Deploying
+
+Deploying requires an account on the Moovweb XDN. [Sign up here for free.](https://moovweb.app/signup) Once you have an account, you can deploy to the Moovweb XDN by running the following in the root folder of your project:
+
+```bash
+xdn deploy
+```
+See [deploying](deploying) for more information.
+
+
+## Using `withServiceWorker` with Next.js
+The `next.config.js` file was updated to use `withXDN` and `withServiceWorker`.
 
 ```js
 // next.config.js
@@ -99,17 +109,6 @@ module.exports = withXDN(withServiceWorker())
 
 The `withXDN` plugin ensures that your app is bundled properly for running on the XDN, and `withServiceWorker` provides a service worker based on `sw/service-worker.js`.
 _If you're already using `next-offline`, you should remove it in favor of `withServiceWorker`, which itself uses `next-offline`._
-
-
-## Deploying
-
-Deploying requires an account on the Moovweb XDN. [Sign up here for free.](https://moovweb.app/signup) Once you have an account, you can deploy to the Moovweb XDN by running the following in the root folder of your project:
-
-```bash
-xdn deploy
-```
-
-See [deploying](deploying) for more information.
 
 ## Prefetching
 

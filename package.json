@@ -1,16 +1,16 @@
 {
-  "name": "xdn-docs",
+  "name": "layer0-docs",
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "xdn": "xdn",
-    "start": "xdn run",
-    "prod": "xdn run --production",
+    "layer0": "layer0",
+    "start": "layer0 run",
+    "prod": "layer0 run --production",
     "dev": "next dev",
-    "build": "xdn build",
-    "deploy": "xdn deploy moovweb-docs",
-    "xdn:update": "npm i --save @layer0/core@latest @layer0/next@latest @layer0/cli@latest @layer0/prefetch@latest @layer0/react@latest",
-    "xdn:link": "yalc add @layer0/core @layer0/next @layer0/cli @layer0/prefetch @layer0/react"
+    "build": "layer0 build",
+    "deploy": "layer0 deploy moovweb-docs",
+    "layer0:update": "npm i --save @layer0/core@latest @layer0/next@latest @layer0/cli@latest @layer0/prefetch@latest @layer0/react@latest",
+    "layer0:link": "yalc add @layer0/core @layer0/next @layer0/cli @layer0/prefetch @layer0/react"
   },
   "dependencies": {
     "@material-ui/core": "^4.10.2",

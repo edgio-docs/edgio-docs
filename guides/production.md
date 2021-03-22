@@ -274,6 +274,6 @@ You need to copy the certificate, intermediate certificates and the private key 
 
 ![in-progress-certificate](/images/production/in-progress-certificate.png)
 
-Note that the certificate activation should take a few minutes. If you don't see the following within the hour, please contact support at xdn-support(at)moovweb.com. Once activated, you should see the following:
+Note that the certificate activation should take a few minutes. If you don't see the following within the hour, please contact [support](https://moovweb.app/help). Once activated, you should see the following:
 
 ![activated-certificate](/images/production/activated-certificate.png)

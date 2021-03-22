@@ -13,6 +13,12 @@ This Next.js example app uses server-side rendering and prefetching to provide l
 
 For details on using the Next.js Commerce template with the XDN refer to our [Next.js Commerce Guide](next_commerce).
 
+## Connector
+
+This framework has a connector developed for the XDN. See [Connectors](connectors) for more information.
+
+[View the Connector Code](https://github.com/moovweb-docs/xdn-connectors/tree/main/xdn-next-connector?button)
+
 ## Supported Features
 
 The Moovweb XDN supports all of the most powerful features of Next.js 10, including:

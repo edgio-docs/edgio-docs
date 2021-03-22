@@ -84,7 +84,7 @@ This will automatically update your `package.json` and add all of the required X
 
 Next you'll need to configure the XDN routing in the `routes.js` file.
 
-For the Vue `hello-world` template, replace your `routes.js` file with the following:
+For the Vue `hello-world` template, replace the `routes.js` file that was created during `xdn init` with the following:
 
 ```js
 const { Router } = require('@xdn/core/router')
@@ -102,6 +102,22 @@ module.exports = new Router()
 The example above assumes you're using Vue as a single page app. It routes the static assets (JavaScript, CSS, and Images) in the production build folder `dist` and maps all other requests to the app shell in `dist/index.html`.
 
 Refer to the [Routing](routing) guide for the full syntax of the `routes.js` file and how to configure it for your use case.
+
+### Run the Vue.js app locally on the XDN
+
+Create a production build of your app by running the following in your project's root directory:
+
+```bash
+npm run build
+```
+
+Run the XDN on your local machine:
+
+```bash
+npm run xdn:dev
+```
+
+Load the site: http://127.0.0.1:3000 !
 
 ## Deploying
 

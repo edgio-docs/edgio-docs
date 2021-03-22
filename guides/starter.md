@@ -47,23 +47,22 @@ Here are some of common types of page content that may need this approach:
 
 See common things you need to look for on an eCommmerce site:
 
-| Non-cacheable content    | How to change               | Location |
-|--------------------------|-----------------------------|----------|
-| Cart item count          | Late load via API           | Global   |
-| Welcome message          | Late load                   | Global   |
-| Localized currency       | Split cache based on cookie | Global   |
-| Inline analytics         | Refactor                    | Global   |
-| Personalized banners     | Late load                   | Homepage |
-| Promo pricing            | Late load                   | PLP      |
-| Complex pricing (e.g. employee discounts, affiliate discounts, pricing based on item combinations or dollar amount in the cart)     | Late load                   | PLP, PDP |
-| Inventory                | Lower cache TTL             | PLP      |
-| Product recommendations  | Late load                   | PDP      |
-| Inventory                | Targetted cache clearing    | PDP      |
+| Non-cacheable content                                                                                                           | How to change               | Location |
+| ------------------------------------------------------------------------------------------------------------------------------- | --------------------------- | -------- |
+| Cart item count                                                                                                                 | Late load via API           | Global   |
+| Welcome message                                                                                                                 | Late load                   | Global   |
+| Localized currency                                                                                                              | Split cache based on cookie | Global   |
+| Inline analytics                                                                                                                | Refactor                    | Global   |
+| Personalized banners                                                                                                            | Late load                   | Homepage |
+| Promo pricing                                                                                                                   | Late load                   | PLP      |
+| Complex pricing (e.g. employee discounts, affiliate discounts, pricing based on item combinations or dollar amount in the cart) | Late load                   | PLP, PDP |
+| Inventory                                                                                                                       | Lower cache TTL             | PLP      |
+| Product recommendations                                                                                                         | Late load                   | PDP      |
+| Inventory                                                                                                                       | Targetted cache clearing    | PDP      |
 
 Use this worksheet when auditing your site for personalized content to inventory and track the changes you will be making:
 
 [XDN Starter Origin Content Changes Worksheet](https://docs.google.com/spreadsheets/d/1WDc5tB0tbrDT3To6bNQ0jYpXRFmgUuA_4gb3lVgzmjE/edit?usp=sharing)
- 
 
 ## Add the XDN JavaScript libraries to your site
 
@@ -75,6 +74,12 @@ Next install the XDN JavaScript libraries to your site by adding the following t
 ```
 
 These tags power the predictive prefetching and caching that will be used by the XDN. Note that the JavaScript assets referenced in the above script tags are not on your server. The XDN server the assets for these script tags once the XDN is installed in front of your server as described in [How XDN Starter works](#section_how_xdn_starter_works).
+
+## Connector
+
+This framework has a connector developed for the XDN. See [Connectors](connectors) for more information.
+
+[View the Connector Code](https://github.com/moovweb-docs/xdn-connectors/tree/main/xdn-starter-connector?button)
 
 ## Setup a Starter project
 
@@ -231,7 +236,7 @@ After you've configured and tested your site on the XDN, it's time to take it li
 
 Each of these steps is described in more detail in the [Production guide](production). Note that third step (configuring your DNS) will be the crucial step that effectively transitions your domain to the XDN and should be done last.
 
-Before going live, you should use the [XDN Starter Onboarding Discovery Worksheet](https://docs.google.com/spreadsheets/d/1PGdcV_HoMKSAQsBi3th6gV6XhBn0gpWYm7Ix2sTcDbs/edit?usp=sharing) to help you think through common use cases and concerns and ensure a smooth launch. 
+Before going live, you should use the [XDN Starter Onboarding Discovery Worksheet](https://docs.google.com/spreadsheets/d/1PGdcV_HoMKSAQsBi3th6gV6XhBn0gpWYm7Ix2sTcDbs/edit?usp=sharing) to help you think through common use cases and concerns and ensure a smooth launch.
 
 ## Advanced Prefetching Techniques
 

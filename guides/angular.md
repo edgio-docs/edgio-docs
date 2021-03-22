@@ -9,6 +9,12 @@ This Angular example app uses server-side rendering and prefetching to provide l
 [Try the Angular SSR Example Site](https://moovweb-docs-xdn-angular-example-default.moovweb-edge.io/category/hats?button)
 [View the Code](https://github.com/moovweb-docs/xdn-examples/tree/main/xdn-angular-example?button)
 
+## Connector
+
+This framework has a connector developed for the XDN. See [Connectors](connectors) for more information.
+
+[View the Connector Code](https://github.com/moovweb-docs/xdn-connectors/tree/main/xdn-angular-connector?button)
+
 ## Install Node.js and npm
 
 **XDN only supports Node.js version 12.x**

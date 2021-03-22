@@ -4,6 +4,12 @@ This guide shows you how to deploy an Gatsby application on the Moovweb XDN:
 
 ![video](https://www.youtube.com/watch?v=ici9j6oF_5E)
 
+## Connector
+
+This framework has a connector developed for the XDN. See [Connectors](connectors) for more information.
+
+[View the Connector Code](https://github.com/moovweb-docs/xdn-connectors/tree/main/xdn-gatsby-connector?button)
+
 ## Install Node.js and npm
 
 **XDN only supports Node.js version 12 and higher**

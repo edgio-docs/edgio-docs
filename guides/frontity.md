@@ -9,6 +9,12 @@ Here is an example of the Frontity starter app running on the XDN:
 [Try the Frontity Example Site](https://moovweb-docs-xdn-frontity-example-default.moovweb-edge.io?button)
 [View the Code](https://github.com/moovweb-docs/xdn-examples/tree/main/xdn-frontity-example?button)
 
+## Connector
+
+This framework has a connector developed for the XDN. See [Connectors](connectors) for more information.
+
+[View the Connector Code](https://github.com/moovweb-docs/xdn-connectors/tree/main/xdn-frontity-connector?button)
+
 ## Install Node.js and npm
 
 **XDN only supports Node.js version 12.x**

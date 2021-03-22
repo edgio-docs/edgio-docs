@@ -266,6 +266,14 @@ The response was not cached because it contained a `set-cookie` header. To cache
 
 The response was not cached because it was received during the brief time (less than 1 minute) that a new version of the app was being propagated through the global network of POPs. There is no need to take any action because as soon as the new version is completely propagated this status goes away.
 
+### debug
+
+The response was not cached because the request was issued with `x-xdn-debug` header set to `1`. In debug mode XDN will respond with more data useful for troubleshooting. However, the increased header footprint may lead to header overflow and other failures, so this should be used only during actual troubleshooting.
+
+### pass
+
+The response was not cached due to unknown reasons. If you happen to receive this status then please contact [support](https://moovweb.app/help)
+
 ## Caching During Development
 
 By default, caching is turned off during development. This is done to ensure that developers don't see stale responses after making changes to their code or other upstream APIs. You can enable caching during development by running your app with:

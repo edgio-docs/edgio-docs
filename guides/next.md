@@ -78,6 +78,14 @@ This will automatically add all of the required dependencies and files to your p
 - `routes.js` - A default routes file that sends all requests to Next.js. Update this file to add caching or proxy some URLs to a different origin.
 - `sw/service-worker.js` A service worker implemented using Workbox.
 
+## Running Locally
+
+To simulate your app within the XDN locally, run:
+
+```bash
+xdn dev
+```
+
 ### Using `withServiceWorker` with Next.js
 The next.config.js was updated to use `withXDN` and `withServiceWorker`.
 
@@ -90,33 +98,8 @@ module.exports = withXDN(withServiceWorker())
 ```
 
 The `withXDN` plugin ensures that your app is bundled properly for running on the XDN, and `withServiceWorker` provides a service worker based on `sw/service-worker.js`.
+_If you're already using `next-offline`, you should remove it in favor of `withServiceWorker`, which itself uses `next-offline`._
 
-Webpack 5 is required for Next.js 10 or above.
-
-```js
-// next.config.js
-
-const { withXDN, withServiceWorker } = require('@xdn/next/config')
-
-module.exports = withXDN(
-  withServiceWorker({
-    future: {
-      webpack5: true, // Google's Workbox library requires webpack 5 when building on Next.js 10+
-    },
-  }),
-)
-```
-This is because `sw/service-worker.js` is implemented using Google's Workbox library, and it requires webpack 5 when building on Next.js 10+
-
-_If you're already using `next-offline`, you should remove it in favor of `withServiceWorker`, which itself uses `next-offline._
-
-## Running Locally
-
-To simulate your app within the XDN locally, run:
-
-```bash
-xdn dev
-```
 
 ## Deploying
 

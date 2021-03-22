@@ -11,7 +11,7 @@ This Angular example app uses server-side rendering and prefetching to provide l
 
 ## Connector
 
-This framework has a connector developed for the XDN. See [Connectors](connectors) for more information.
+This framework has a connector developed for {{ PRDUCT_NAME }}. See [Connectors](connectors) for more information.
 
 [View the Connector Code](https://github.com/moovweb-docs/xdn-connectors/tree/main/xdn-angular-connector?button)
 
@@ -131,7 +131,7 @@ You can do a production build of your app and test it locally using:
 {{ CLI_NAME }} build && {{ CLI_NAME }} run --production
 ```
 
-Setting `--production` runs your app exactly as it will be when deployed to the Moovweb cloud.
+Setting `--production` runs your app exactly as it will be when deployed to the {{ PRODUCT_NAME }} cloud.
 
 If you have several projects and the `defaultProject` in `angular.json` is not the project you would like to deploy, specify the correct project by setting the `ANGULAR_PROJECT` environment variable when running `{{ CLI_NAME }} run`.
 

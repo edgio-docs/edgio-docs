@@ -8,13 +8,13 @@
 
 ![devtools](/images/devtools/devtools.png?width=275)
 
-[Live demo of XDN Devtools running on a React Storefront site](https://demo.reactstorefront.io/__xdn__/devtools/enable)
+[Live demo of {{ PRODUCT_NAME }} Devtools running on a React Storefront site](https://demo.reactstorefront.io/__xdn__/devtools/enable)
 
 ![video](https://www.youtube.com/watch?v=4AYQAvkc0UY)
 
 ## Installation
 
-It's likely that the Devtools was added to your app when you ran `{{ CLI_NAME }} init`. If that's not the case, or your app predates XDN v2.22.0, follow these steps to add the Devtools to your app:
+It's likely that the Devtools was added to your app when you ran `{{ CLI_NAME }} init`. If that's not the case, or your app predates {{ PRODUCT_NAME }} v2.22.0, follow these steps to add the Devtools to your app:
 
 ### Packages
 
@@ -54,13 +54,13 @@ Then, if you haven't already, enable `{{ PACKAGE_NAME }}/prefetch` in your servi
 
 ## Enabling or Disabling the Devtools
 
-By default, XDN Devtools is enabled when your app is served from `localhost`, `127.0.0.1` or any `*.moovweb-edge.io` domain.
+By default, {{ PRODUCT_NAME }} Devtools is enabled when your app is served from `localhost`, `127.0.0.1` or any `*.moovweb-edge.io` domain.
 
 To customize when {{ PRODUCT_NAME }} Devtools appear:
 
 ### Per Environment
 
-Using the [XDN Developer Console](https://moovweb.app), navigate to your environment and create an environment variable named `PREVIEW_XDN_DEVTOOLS_ENABLED`. Set the value to `true` or `false` to explicitly enable or disable the Devtools on the given environment.
+Using the [{{ PRODUCT_NAME }} Developer Console](https://moovweb.app), navigate to your environment and create an environment variable named `PREVIEW_{{ PRODUCT_NAME_UPPER }}_DEVTOOLS_ENABLED`. Set the value to `true` or `false` to explicitly enable or disable the Devtools on the given environment.
 
 ### Per Browsing Session
 

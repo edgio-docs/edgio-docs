@@ -103,7 +103,7 @@ The example above assumes you're using Vue as a single page app. It routes the s
 
 Refer to the [Routing](routing) guide for the full syntax of the `routes.js` file and how to configure it for your use case.
 
-### Run the Vue.js app locally on the XDN
+### Run the Vue.js app locally on {{ PRODUCT_NAME }}
 
 Create a production build of your app by running the following in your project's root directory:
 

@@ -6,7 +6,7 @@ For adding XDN to Vue Storefront 1 app follow this [guide](/guides/vsf1).
 
 ## Connector
 
-This framework has a connector developed for the XDN. See [Connectors](connectors) for more information.
+This framework has a connector developed for {{ PRODUCT_NAME }}. See [Connectors](connectors) for more information.
 
 [View the Connector Code](https://github.com/moovweb-docs/xdn-connectors/tree/main/xdn-vue-storefront-connector?button)
 
@@ -58,3 +58,4 @@ To build and deploy your app to {{ PRODUCT_NAME }}, run the following from the r
 
 ```
 {{ CLI_NAME }} deploy
+```

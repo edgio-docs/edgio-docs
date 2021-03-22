@@ -35,6 +35,7 @@ export default async function init() {
     // These typically include the routes.js file and {{ CONFIG_FILE }}. Typescript alternatives are often provided.
     .addDefaultAppResources(join(__dirname, 'default-app'))
 
+    // TODO layer0
     // Adds xdn:* scripts to package.json
     .addDefaultXdnScripts()
 }
@@ -197,7 +198,7 @@ Example {{ CONFIG_FILE }}:
 
 ```js
 module.exports = {
-  connector: './xdn', // use the local connector located in the xdn directory
+  connector: './xdn', // use the local connector located in {{ PRODUCT_NAME_LOWER }} directory
 }
 ```
 

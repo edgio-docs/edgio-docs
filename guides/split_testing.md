@@ -99,7 +99,7 @@ If {{ PRODUCT_NAME }} is behind a third-party CDN, it is critical that you updat
 
 When a split test is active, all users are assigned to a random number between 1 and 100 via a cookie called `xdn_bucket`. This cookie assignment is done at edge, before the user's first request hits cache, and so there is no performance penalty for new users.
 
-The experience the user sees is determined by the traffic split percentage you set in the environment configuration in the Moovweb Developer Console and on which side of the split the user's `xdn_bucket` value falls.
+The experience the user sees is determined by the traffic split percentage you set in the environment configuration in the {{ PRODUCT_NAME }} Developer Console and on which side of the split the user's `xdn_bucket` value falls.
 
 ## Identifying the experience on the client
 

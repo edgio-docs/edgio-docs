@@ -23,7 +23,7 @@ Instead of relying solely on Google Search Console, we recommend tracking Core W
 - Correlate web vitals to your application's routes
 - Analyze score across a number of dimensions such as country, device, and connection type
 - Identify which pages are most negatively impacting your search ranking.
-- Use XDN's [Edge based split testing](split_testing) to A/B test the impact of performance optimizations on Core Web Vitals.
+- Use {{ PRODUCT_NAME }}'s [Edge based split testing](split_testing) to A/B test the impact of performance optimizations on Core Web Vitals.
 
 ## Installation
 
@@ -35,6 +35,7 @@ To add Core Web Vitals tracking via a script tag, add the following to each page
 
 ```html
 <script defer>
+  // TODO Layer0
   function initXdnRum() {
     new XDN.Metrics({
       token: 'your-token-here', // get this from https://moovweb.app
@@ -48,6 +49,7 @@ To add Core Web Vitals tracking via a script tag, add the following to each page
 
 ```html
 <script>
+  // TODO layer0
   function initXDNMetrics() {
     new XDN.Metrics({
       token: 'your-token-here', // get this from https://moovweb.app
@@ -93,6 +95,7 @@ You can tie URLs to pages templates by providing an optional `router` parameter 
 When installing {{ PACKAGE_NAME }}/rum using a script tag, use:
 
 ```js
+// TODO layer0
 new XDN.Metrics({
   // get this from https://moovweb.app
   token: 'your-token-here',
@@ -129,6 +132,7 @@ For non single page applications (e.g. traditional "multi-page apps"), you can a
 
 ```js
 <script>
+  // TODO layer0
   function initXDNMetrics() {
     new XDN.Metrics({
       token: 'your-token-here',
@@ -149,6 +153,7 @@ For non single page applications (e.g. traditional "multi-page apps"), you can a
 Additionally, you can tie the following data to Core Web Vitals:
 
 ```js
+// TODO layer0
 new XDN.Metrics({
   // Rather than providing a router, you can also define the page label for each page explicitly.
   // Use this option if it is more convenient to add the script tag to each page template individually

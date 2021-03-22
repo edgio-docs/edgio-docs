@@ -1,7 +1,7 @@
 'use strict'
 const { DOCS_PAGES_DOMAIN } = require('./constants')
 
-// This file was automatically added by xdn deploy.
+// This file was automatically added by `layer0 init`.
 // You should commit this file to source control.
 module.exports = {
   backends: {

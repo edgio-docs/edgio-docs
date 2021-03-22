@@ -11,7 +11,7 @@ This Nuxt.js example app uses server-side rendering and prefetching to provide l
 
 ## Connector
 
-This framework has a connector developed for the XDN. See [Connectors](connectors) for more information.
+This framework has a connector developed for {{ PRODUCT_NAME }}. See [Connectors](connectors) for more information.
 
 [View the Connector Code](https://github.com/moovweb-docs/xdn-connectors/tree/main/xdn-nuxt-connector?button)
 
@@ -312,7 +312,7 @@ You can do a production build of your app and test it locally using:
 {{ CLI_NAME }} build && {{ CLI_NAME }} run --production
 ```
 
-Setting `--production` runs your app exactly as it will be uploaded to the Moovweb cloud using serverless-offline.
+Setting `--production` runs your app exactly as it will be uploaded to the {{ PRODUCT_NAME }} cloud using serverless-offline.
 
 ## Deploying
 

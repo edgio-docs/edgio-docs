@@ -13,7 +13,7 @@ This Sapper example app uses server-side rendering and prefetching to provide li
 
 ## Connector
 
-This framework has a connector developed for the XDN. See [Connectors](connectors) for more information.
+This framework has a connector developed for {{ PRODUCT_NAME }}. See [Connectors](connectors) for more information.
 
 [View the Connector Code](https://github.com/moovweb-docs/xdn-connectors/tree/main/xdn-sapper-connector?button)
 

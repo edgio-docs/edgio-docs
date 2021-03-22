@@ -36,7 +36,7 @@ You can also promote any existing deployment to an environment using the _Promot
 When configuring CI, we recommend:
 
 - Automatically deploying to your staging environment when a PR is merged to the master branch of your repo.
-- Manually promoting deployments to production using the Moovweb Console to prevent unwanted builds from being published by misconfigured CI workflows.
+- Manually promoting deployments to production using the {{ PRODUCT_NAME }} Console to prevent unwanted builds from being published by misconfigured CI workflows.
 
 ## Production Environment
 
@@ -88,14 +88,14 @@ shown in the example above.
 
 ### Built-in Environment Variables
 
-XDN automatically injects the following environment variables:
+{{ PRODUCT_NAME }} automatically injects the following environment variables:
 
 - `NODE_ENV`: Set to `production` by default but you can override it through the console
 - `XDN_ENVIRONMENT_NAME`: The name of the environment (e.g. `default`, `production` and so on). This cannot be overriden by you.
 
 ### Accessing Environment Variables at Build Time
 
-As of XDN CLI version 2.19.0, when you deploy to an environment using a deploy token, for example by running `{{ CLI_NAME }} deploy my-team --environment=production --token=(my token)` option, all environment variables are pulled down from {{ PRODUCT_NAME }} Developer Console and applied to `process.env` so they can be accessed at build time. This allows you to store all of your build and runtime secrets in a single place, {{ PRODUCT_NAME }} Developer Console, rather than storing some in your CI system's secret manager.
+As of {{ PRODUCT_NAME }} CLI version 2.19.0, when you deploy to an environment using a deploy token, for example by running `{{ CLI_NAME }} deploy my-team --environment=production --token=(my token)` option, all environment variables are pulled down from {{ PRODUCT_NAME }} Developer Console and applied to `process.env` so they can be accessed at build time. This allows you to store all of your build and runtime secrets in a single place, {{ PRODUCT_NAME }} Developer Console, rather than storing some in your CI system's secret manager.
 
 ## dotenv
 

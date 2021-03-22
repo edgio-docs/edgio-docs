@@ -1,7 +1,7 @@
-name: Deploy to XDN
+name: Deploy to Layer0
 on: [push]
 jobs:
-  deploy-to-xdn:
+  deploy-to-layer0:
     runs-on: ubuntu-latest
     steps:
       - name: Extract branch name
@@ -23,5 +23,5 @@ jobs:
             ${{ runner.os }}-build-
             ${{ runner.os }}-
       - run: npm ci
-      - name: Deploy to XDN
+      - name: Deploy to Layer0
         run: npm run deploy -- --branch=$BRANCH_NAME --token=${{secrets.layer0_deploy_token}} ${{env.BRANCH_NAME == 'master' && '--environment=production' || '--environment=default'}}

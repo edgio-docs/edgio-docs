@@ -22,7 +22,7 @@ yarn global add {{ PACKAGE_NAME }}/cli
 
 ## {{ CLI_NAME }} login
 
-Run the following to authenticate with your XDN account on {{ PRODUCT_NAME }}:
+Run the following to authenticate with your {{ PRODUCT_NAME }} account on {{ PRODUCT_NAME }}:
 
 ```bash
 {{ CLI_NAME }} login
@@ -71,7 +71,7 @@ Here is an example GitHub action that deploys your site to {{ PRODUCT_NAME }}:
 This action assumes that you have created environments called "staging" and "production" and you have created a deploy key for your site and added it as a secret in your repo called "layer0_deploy_token".
 
 ```yml
-# Add this file to your project at .github/workflows/xdn.yml
+# Add this file to your project at .github/workflows/{{ PRODUCT_NAME_LOWER }}.yml
 #
 # This GitHub action deploys your site on {{ PRODUCT_NAME }}.
 #
@@ -89,7 +89,7 @@ This action assumes that you have created environments called "staging" and "pro
 # In order for this action to deploy your site, you must create a deploy token from the site settings page
 # in Moovweb.app and configure it as a secret called "layer0_deploy_token" in your repo on GitHub.
 
-name: Deploy branch to XDN
+name: Deploy branch to {{ PRODUCT_NAME }}
 
 on:
   push:
@@ -97,12 +97,12 @@ on:
     types: [published]
 
 jobs:
-  deploy-to-xdn:
+  deploy-to-{{ PRODUCT_NAME_LOWER }}:
     # cancels the deployment for the automatic merge push created when tagging a release
     if: contains(github.ref, 'refs/tags') == false || github.event_name == 'release'
     runs-on: ubuntu-latest
     steps:
-      - name: Check for XDN deploy token secret
+      - name: Check for {{ PRODUCT_NAME }} deploy token secret
         if: env.layer0_deploy_token == ''
         run: |
           echo You must define the "layer0_deploy_token" secret in GitHub project settings
@@ -128,8 +128,8 @@ jobs:
             ${{ runner.os }}-build-
             ${{ runner.os }}-
       - run: npm ci
-      - name: Deploy to XDN
-        run: npm run xdn:deploy -- ${{'--branch=$BRANCH_NAME' || ''}} --token=$layer0_deploy_token ${{github.event_name == 'push' && env.BRANCH_NAME == 'main' && '--environment=staging' || ''}} ${{github.event_name == 'release' && '--environment=production' || ''}}
+      - name: Deploy to {{ PRODUCT_NAME }}
+        run: npm run {{ CLI_NAME }}:deploy -- ${{'--branch=$BRANCH_NAME' || ''}} --token=$layer0_deploy_token ${{github.event_name == 'push' && env.BRANCH_NAME == 'main' && '--environment=staging' || ''}} ${{github.event_name == 'release' && '--environment=production' || ''}}
         env:
           layer0_deploy_token: ${{secrets.layer0_deploy_token}}
 ```
@@ -192,16 +192,16 @@ pipeline {
         sh "npm i"
       }
     }
-    stage("Deploy to XDN") {
+    stage("Deploy to {{ PRODUCT_NAME }}") {
       steps {
         script {
           def branch = env.GIT_BRANCH // typically referenced as `origin/{branch}`
           def url = env.REPO_URL
-          env.XDN_COMMIT_URL = (url.endsWith("/") ? url : url + "/") + "commit/$GIT_COMMIT"
+          env.{{ PRODUCT_NAME_UPPER }}_COMMIT_URL = (url.endsWith("/") ? url : url + "/") + "commit/$GIT_COMMIT"
           env.BRANCH_NAME = branch.tokenize("/").last()
-          env.XDN_ENV_ARG = (env.BRANCH_NAME != "master") ? "--branch=$BRANCH_NAME" : "--environment=staging"
+          env.{{ PRODUCT_NAME_UPPER }}_ENV_ARG = (env.BRANCH_NAME != "master") ? "--branch=$BRANCH_NAME" : "--environment=staging"
         }
-        sh "npm run deploy -- --token=$layer0_deploy_token ${XDN_ENV_ARG} --commit-url=${XDN_COMMIT_URL}"
+        sh "npm run deploy -- --token=$layer0_deploy_token ${{{ PRODUCT_NAME_UPPER }}_ENV_ARG} --commit-url=${{{ PRODUCT_NAME_UPPER }}_COMMIT_URL}"
       }
     }
   }

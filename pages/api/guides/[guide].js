@@ -14,6 +14,7 @@ export default async function guide(req, res) {
     const guideResp =
       // To allow correct previews in local/cloud/edge, read the versioned docs only in production,
       // otherwise just read it from this version itself.
+      // TODO layer0 check env name
       process.env.XDN_ENVIRONMENT_NAME === 'production' || isChangelog
         ? await fetch(`${DOCS_PAGES_REPO_URL}/${version}/guides/${guide}.md`).then(resp =>
             resp.text(),

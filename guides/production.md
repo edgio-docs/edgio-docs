@@ -144,7 +144,7 @@ _Note: If you already have an existing certificate, you can use it by skipping a
 
 3. Add an `_acme-challenge.` CNAME DNS entry to allow Moovweb to issue a certificate request on your behalf.
 
-   Log into your DNS provider and add one `CNAME` type DNS entry with the value `_acme-challenge.<your-domain-here>` for each custom domain. For example, if your custom domain is `mysite.com`, the DNS entry should have a value of `_acme-challenge.mysite.com`. Each record should point to `_acme-challenge.xdn-validation.com`.
+   Log into your DNS provider and add one `CNAME` type DNS entry with the value `_acme-challenge.<your-domain-here>` for each custom domain. For example, if your custom domain is `mysite.com`, the DNS entry should have a value of `_acme-challenge.mysite.com`. Each record should point to `_acme-challenge.{{ PRODUCT_NAME_LOWER }}-validation.com`.
 
    Example with Godaddy:
 
@@ -172,14 +172,14 @@ _Note: If you already have an existing certificate, you can use it by skipping a
    Expected result for the DNS query:
 
    ```
-   _acme-challenge.www.xdn-validation.com
+   _acme-challenge.www.{{ PRODUCT_NAME_LOWER }}-validation.com
    ```
 
    If you use multiple domains for your website, like `mywebsite.xyz` and `www.mywebsite.xyz`, then you will have to add the `_acme-challenge` DNS record for both domains:
 
    ```
-   _acme-challenge.www.xdn-validation.com
-   _acme-challenge.xdn-validation.com
+   _acme-challenge.www.{{ PRODUCT_NAME_LOWER }}-validation.com
+   _acme-challenge.{{ PRODUCT_NAME_LOWER }}-validation.com
    ```
 
    Notes:

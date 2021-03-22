@@ -88,7 +88,7 @@ module.exports = function() {
 
 ## build.js
 
-Exports a function that is called when you run `{{ CLI_NAME }} build`. It is responsible for constructing the bundle that is deployed to the {{ PRODUCT_NAME }} cloud. This function typically uses `{{ PACKAGE_NAME }}/core/deploy/DeploymentBuilder` to stage the exploded bundle in the `.xdn` directory.
+Exports a function that is called when you run `{{ CLI_NAME }} build`. It is responsible for constructing the bundle that is deployed to the {{ PRODUCT_NAME }} cloud. This function typically uses `{{ PACKAGE_NAME }}/core/deploy/DeploymentBuilder` to stage the exploded bundle in the `.{{ PRODUCT_NAME_LOWER }}` directory.
 
 _Optional, and not needed in most cases. The {{ CLI_NAME }} build command automatically creates a bundle that includes all static assets referenced in your routes file as well as the `prod` entry point mentioned above._
 
@@ -116,7 +116,7 @@ export default async function build({ skipFramework }) {
     // optionally add some file required by the app at runtime.  This is equivalent to setting the includeFiles config in {{ CONFIG_FILE }}
     .addJSAsset('path/to/file/in/project')
 
-  // build the {{ PRODUCT_NAME }} deployment bundle in the .xdn directory
+  // build the {{ PRODUCT_NAME }} deployment bundle in the .{{ PRODUCT_NAME_LOWER }} directory
   await builder.build()
 }
 ```
@@ -198,7 +198,7 @@ Example {{ CONFIG_FILE }}:
 
 ```js
 module.exports = {
-  connector: './xdn', // use the local connector located in {{ PRODUCT_NAME_LOWER }} directory
+  connector: './{{ PRODUCT_NAME_LOWER }}', // use the local connector located in {{ PRODUCT_NAME_LOWER }} directory
 }
 ```
 

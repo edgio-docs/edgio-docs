@@ -99,7 +99,7 @@ module.exports = {
     libraryExport: 'default',
   },
   entry: {
-    server: './xdn/server.js', // this should point to your server entry point, which should export a function of type (request: Request, response: Response) => void or an express app as the default export.
+    server: './{{ PRODUCT_NAME_LOWER }}/server.js', // this should point to your server entry point, which should export a function of type (request: Request, response: Response) => void or an express app as the default export.
   },
 }
 ```

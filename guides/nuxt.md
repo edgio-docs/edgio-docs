@@ -386,4 +386,4 @@ As the error states, there is an upper limit on how big a package can be when de
 - You may need to move some dependencies as [described here](#section_modules_vs_buildmodules). Only dependencies are copied up to the lambda.
 - Make sure you are using imports in a smart way. A common example is changing: `import { get } from lodash` to `import get from lodash/get` to avoid unnecessary bloat in your modules
 
-You can view what is included in your package under `.xdn/lambda/` after a build, and running `du -h -d 1` on the directories in a shell will output the size of each directory and help you identify where space savings can be found, ie `du -h -d 1 .xdn/lambda/.nuxt`
+You can view what is included in your package under `.{{ PRODUCT_NAME_LOWER }}/lambda/` after a build, and running `du -h -d 1` on the directories in a shell will output the size of each directory and help you identify where space savings can be found, ie `du -h -d 1 .{{ PRODUCT_NAME_LOWER }}/lambda/.nuxt`

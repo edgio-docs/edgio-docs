@@ -253,7 +253,7 @@ skipWaiting()
 clientsClaim()
 
 new Prefetcher({
-  cacheHost: 'your.xdn.domain.here.com', // specify the domain name for your {{ PRODUCT_NAME }} app here
+  cacheHost: 'your.{{ PRODUCT_NAME_LOWER }}.domain.here.com', // specify the domain name for your {{ PRODUCT_NAME }} app here
 })
 ```
 

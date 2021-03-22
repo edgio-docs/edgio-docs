@@ -10,5 +10,5 @@ module.exports = {
       hostHeader: DOCS_PAGES_DOMAIN,
     },
   },
-  connector: '@xdn/next',
+  connector: '@layer0/next',
 }

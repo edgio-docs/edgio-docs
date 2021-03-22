@@ -9,8 +9,8 @@
     "dev": "next dev",
     "build": "xdn build",
     "deploy": "xdn deploy moovweb-docs",
-    "xdn:update": "npm i --save @xdn/core@latest @xdn/next@latest @xdn/cli@latest @xdn/prefetch@latest @xdn/react@latest",
-    "xdn:link": "yalc add @xdn/core @xdn/next @xdn/cli @xdn/prefetch @xdn/react"
+    "xdn:update": "npm i --save @layer0/core@latest @layer0/next@latest @layer0/cli@latest @layer0/prefetch@latest @layer0/react@latest",
+    "xdn:link": "yalc add @layer0/core @layer0/next @layer0/cli @layer0/prefetch @layer0/react"
   },
   "dependencies": {
     "@material-ui/core": "^4.10.2",
@@ -18,11 +18,11 @@
     "@material-ui/lab": "^4.0.0-alpha.56",
     "@material-ui/styles": "^4.10.0",
     "@svgr/webpack": "^5.4.0",
-    "@xdn/core": "^2.46.9",
-    "@xdn/next": "^2.46.9",
-    "@xdn/prefetch": "^2.46.9",
-    "@xdn/react": "^2.46.9",
-    "@xdn/rum": "0.0.2-alpha.4",
+    "@layer0/core": "^2.46.9",
+    "@layer0/next": "^2.46.9",
+    "@layer0/prefetch": "^2.46.9",
+    "@layer0/react": "^2.46.9",
+    "@layer0/rum": "0.0.2-alpha.4",
     "clsx": "^1.1.1",
     "cross-fetch": "^3.0.6",
     "file-loader": "^6.0.0",
@@ -42,7 +42,7 @@
     "url-loader": "^4.1.0"
   },
   "devDependencies": {
-    "@xdn/cli": "^2.46.9",
+    "@layer0/cli": "^2.46.9",
     "babel-loader": "^8.1.0",
     "prettier": "^1.19.1",
     "webpack": "^4.46.0"

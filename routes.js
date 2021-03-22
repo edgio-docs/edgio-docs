@@ -1,5 +1,5 @@
-const { Router, CustomCacheKey } = require('@xdn/core/router')
-const { nextRoutes } = require('@xdn/next')
+const { Router, CustomCacheKey } = require('@layer0/core/router')
+const { nextRoutes } = require('@layer0/next')
 const key = new CustomCacheKey().excludeAllQueryParametersExcept('query', 'version')
 const prerenderRequests = require('./xdn/prerenderRequests')
 
@@ -82,8 +82,8 @@ module.exports = new Router()
     cache(htmlCacheConfig)
     proxy('api', { path: '/xdn-docs-pages/:version/api/:path*' })
   })
-  .get("/googleb2732cddf1383cf4.html", ({ send }) =>
-    send("google-site-verification: googleb2732cddf1383cf4.html", 200, "OK")
+  .get('/googleb2732cddf1383cf4.html', ({ send }) =>
+    send('google-site-verification: googleb2732cddf1383cf4.html', 200, 'OK'),
   )
   .use(nextRoutes)
   .fallback(({ redirect }) => {

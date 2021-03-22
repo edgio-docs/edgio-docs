@@ -4,7 +4,7 @@ import { Typography, makeStyles } from '@material-ui/core'
 import Icon from '../icons/Icon'
 import clsx from 'clsx'
 import useVersioning from '../versioning'
-import { Prefetch } from '@xdn/react'
+import { Prefetch } from '@layer0/react'
 import { useRouter } from 'next/router'
 
 const useStyles = makeStyles(theme => ({

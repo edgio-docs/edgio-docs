@@ -80,14 +80,14 @@ This will automatically add all of the required dependencies and files to your p
 
 ### Edit next.config.js
 
-Add the `withXDN` and `withServiceWorker` plugins to `next.config.js`. If this file doesn't exist, create it in the root directory of your project folder, with the following content:
+Add the `withLayer0` and `withServiceWorker` plugins to `next.config.js`. If this file doesn't exist, create it in the root directory of your project folder, with the following content:
 
 ```js
 // next.config.js
 
-const { withXDN, withServiceWorker } = require('{{ PACKAGE_NAME }}/next/config')
+const { withLayer0, withServiceWorker } = require('{{ PACKAGE_NAME }}/next/config')
 
-module.exports = withXDN(
+module.exports = withLayer0(
   withServiceWorker({
     future: {
       webpack5: true, // Google's Workbox library requires webpack 5 when building on Next.js 10+
@@ -96,7 +96,7 @@ module.exports = withXDN(
 )
 ```
 
-The `withXDN` plugin ensures that your app is bundled properly for running on {{ PRODUCT_NAME }}, and `withServiceWorker` provides a service worker based on `sw/service-worker.js`.
+The `withLayer0` plugin ensures that your app is bundled properly for running on {{ PRODUCT_NAME }}, and `withServiceWorker` provides a service worker based on `sw/service-worker.js`.
 
 _If you're already using `next-offline`, you should remove it in favor of `withServiceWorker`, which itself uses `next-offline._
 

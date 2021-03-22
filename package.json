@@ -9,20 +9,20 @@
     "dev": "next dev",
     "build": "layer0 build",
     "deploy": "layer0 deploy moovweb-docs",
-    "layer0:update": "npm i --save @layer0/core@latest @layer0/next@latest @layer0/cli@latest @layer0/prefetch@latest @layer0/react@latest",
+    "layer0:update": "npm i --save @layer0/core@next @layer0/next@next @layer0/cli@next @layer0/prefetch@next @layer0/react@next",
     "layer0:link": "yalc add @layer0/core @layer0/next @layer0/cli @layer0/prefetch @layer0/react"
   },
   "dependencies": {
+    "@layer0/core": "^2.47.1-next-1616013005-559fba09.0",
+    "@layer0/next": "^2.47.1-next-1616013005-559fba09.0",
+    "@layer0/prefetch": "^2.47.1-next-1616013005-559fba09.0",
+    "@layer0/react": "^2.47.1-next-1616013005-559fba09.0",
+    "@layer0/rum": "0.0.2-alpha.4",
     "@material-ui/core": "^4.10.2",
     "@material-ui/icons": "^4.9.1",
     "@material-ui/lab": "^4.0.0-alpha.56",
     "@material-ui/styles": "^4.10.0",
     "@svgr/webpack": "^5.4.0",
-    "@layer0/core": "^2.46.9",
-    "@layer0/next": "^2.46.9",
-    "@layer0/prefetch": "^2.46.9",
-    "@layer0/react": "^2.46.9",
-    "@layer0/rum": "0.0.2-alpha.4",
     "clsx": "^1.1.1",
     "cross-fetch": "^3.0.6",
     "file-loader": "^6.0.0",
@@ -42,7 +42,7 @@
     "url-loader": "^4.1.0"
   },
   "devDependencies": {
-    "@layer0/cli": "^2.46.9",
+    "@layer0/cli": "^2.47.1-next-1616013005-559fba09.0",
     "babel-loader": "^8.1.0",
     "prettier": "^1.19.1",
     "webpack": "^4.46.0"

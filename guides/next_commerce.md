@@ -71,12 +71,12 @@ yarn install
 {{ CLI_NAME }} init
 ```
 
-5. Update the top of your `next.config.js` file to wrap the module export with `withXDN` and `withServiceWorker` like so:
+5. Update the top of your `next.config.js` file to wrap the module export with `withLayer0` and `withServiceWorker` like so:
 
 ```js
-const { withXDN, withServiceWorker } = require('{{ PACKAGE_NAME }}/next/config')
+const { withLayer0, withServiceWorker } = require('{{ PACKAGE_NAME }}/next/config')
 
-module.exports = withXDN(
+module.exports = withLayer0(
   withServiceWorker(
     bundleAnalyzer({
       // ...rest of the next.config.js content

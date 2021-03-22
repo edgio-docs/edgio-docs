@@ -268,7 +268,7 @@ The response was not cached because it was received during the brief time (less 
 
 ### debug
 
-The response was not cached because the request was issued with `x-xdn-debug` header set to `1`. In debug mode XDN will respond with more data useful for troubleshooting. However, the increased header footprint may lead to header overflow and other failures, so this should be used only during actual troubleshooting.
+The response was not cached because the request was issued with `x-xdn-debug` header set to `1`. In debug mode {{ PRODUCT_NAME }} will respond with more data useful for troubleshooting. However, the increased header footprint may lead to header overflow and other failures, so this should be used only during actual troubleshooting.
 
 ### pass
 

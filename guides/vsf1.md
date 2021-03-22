@@ -9,20 +9,20 @@
 
 Install the Vue Storefront application using this guide: https://docs.vuestorefront.io/guide/installation/linux-mac.html
 
-<b>Note</b>: XDN requires Node version >= 12, so before the installation it's recommended to run:
+<b>Note</b>: {{ PRODUCT_NAME }} requires Node version >= 12, so before the installation it's recommended to run:
 
 ```bash
 nvm use 12
 ```
 
-## 2. Prepare VSF files for XDN
+## 2. Prepare VSF files for {{ PRODUCT_NAME }}
 
 - In the new VSF project, go to `src/themes/default` (or any theme you're using) and remove `.git` folder from it to save that in Git VCS.
 - Go to `.gitignore` file and remove `config/local.json` line to keep it tracked.
 
-## 3. Install XDN
+## 3. Install {{ PRODUCT_NAME }}
 
-- Install XDN packages: `yarn add -D -W {{ PACKAGE_NAME }}/cli && yarn add -W {{ PACKAGE_NAME }}/core {{ PACKAGE_NAME }}/prefetch {{ PACKAGE_NAME }}/devtools`
+- Install {{ PRODUCT_NAME }} packages: `yarn add -D -W {{ PACKAGE_NAME }}/cli && yarn add -W {{ PACKAGE_NAME }}/core {{ PACKAGE_NAME }}/prefetch {{ PACKAGE_NAME }}/devtools`
 - Create a file called `{{ CONFIG_FILE }}` in the root directory of your project and configure your origin and images hosts as backends. For example:
 
 ```js
@@ -67,11 +67,11 @@ import installDevtools from '{{ PACKAGE_NAME }}/devtools/install'
 import install from '{{ PACKAGE_NAME }}/prefetch/window/install'
 
 document.addEventListener('DOMContentLoaded', () => {
-  console.info('[XDN browser] DOMContentLoaded -> running install()')
+  console.info('[{{ PRODUCT_NAME }} browser] DOMContentLoaded -> running install()')
   install({
     forcePrefetchRatio: 0.5, // forcely prefetch 50% of non-cached content for higher hit rate
   })
-  console.info('[XDN browser] DOMContentLoaded -> running installDevtools()')
+  console.info('[{{ PRODUCT_NAME }} browser] DOMContentLoaded -> running installDevtools()')
   installDevtools()
 })
 ```
@@ -636,20 +636,20 @@ export default {
 ...
 ```
 
-- Ignore XDN build in `.gitignore`:
+- Ignore {{ PRODUCT_NAME }} build in `.gitignore`:
 
 ```bash
-# XDN
+# {{ PRODUCT_NAME }}
 /dist-xdn-assets
 /dist-xdn-client
 /dist-xdn-server
 /.xdn
 ```
 
-- Find all `*.template.html` files in VSF app and add XDN scripts into `<head>` there:
+- Find all `*.template.html` files in VSF app and add {{ PRODUCT_NAME }} scripts into `<head>` there:
 
 ```html
-<!-- XDN -->
+<!-- {{ PRODUCT_NAME }} -->
 <script src="/service-worker.js" defer></script>
 <script src="/__xdn__/cache-manifest.js" defer></script>
 <script src="/main.js" defer></script>

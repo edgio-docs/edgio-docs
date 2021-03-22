@@ -4,7 +4,7 @@ This guide shows you how to deploy a Vue.js application on {{ PRODUCT_NAME }}.
 
 ## Install Node.js and npm
 
-**XDN only supports Node.js version 12.x**
+**{{ PRODUCT_NAME }} only supports Node.js version 12.x**
 
 If you do not have Node.js installed on your system, download and install it from the official [Node.js v12.x downloads](https://nodejs.org/dist/latest-v12.x/) page. Select the download that matches your operating system and run the installer. Note that the installer for Node.js will also install npm.
 
@@ -16,7 +16,7 @@ Deploying requires an account on {{ PRODUCT_NAME }}. [Sign up here for free.](ht
 
 ## Install the {{ PRODUCT_NAME }} CLI
 
-If you have not already done so, install the [XDN CLI](cli)
+If you have not already done so, install the [{{ PRODUCT_NAME }} CLI](cli)
 
 ```bash
 npm i -g {{ PACKAGE_NAME }}/cli
@@ -73,7 +73,7 @@ In the root directory of your project run `{{ CLI_NAME }} init`:
 {{ CLI_NAME }} init
 ```
 
-This will automatically update your `package.json` and add all of the required XDN dependencies and files to your project. These include:
+This will automatically update your `package.json` and add all of the required {{ PRODUCT_NAME }} dependencies and files to your project. These include:
 
 - The `{{ PACKAGE_NAME }}/core` package - Allows you to declare routes and deploy your application on {{ PRODUCT_NAME }}
 - The `{{ PACKAGE_NAME }}/prefetch` package - Allows you to configure a service worker to prefetch and cache pages to improve browsing speed

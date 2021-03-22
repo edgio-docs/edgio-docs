@@ -1,4 +1,4 @@
-# XDN regions
+# {{ PRODUCT_NAME }} regions
 
 ## Serverless Compute
 

@@ -17,7 +17,7 @@ This framework has a connector developed for {{ PRODUCT_NAME }}. See [Connectors
 
 ## Install Node.js and npm
 
-**XDN only supports Node.js version 12.x**
+**{{ PRODUCT_NAME }} only supports Node.js version 12.x**
 
 If you do not have Node.js installed on your system, download and install it from the official [Node.js v12.x downloads](https://nodejs.org/dist/latest-v12.x/) page. Select the download that matches your operating system and run the installer. Note that the installer for Node.js will also install npm.
 
@@ -25,7 +25,7 @@ _Note that while you can use any version of Node.js >= 12 locally, your app will
 
 ## Getting Started
 
-If you have not already done so, install the [XDN CLI](cli)
+If you have not already done so, install the [{{ PRODUCT_NAME }} CLI](cli)
 
 ```bash
 npm i -g {{ PACKAGE_NAME }}/cli
@@ -207,7 +207,7 @@ module.exports = {
 }
 ```
 
-Using environment variables here allows you to configure different legacy domains for each XDN environment.
+Using environment variables here allows you to configure different legacy domains for each {{ PRODUCT_NAME }} environment.
 
 ### Caching
 
@@ -353,7 +353,7 @@ npm i -g {{ PACKAGE_NAME }}/cli
 
 ---
 
-### Make sure your version of XDN CLI is current
+### Make sure your version of {{ PRODUCT_NAME }} CLI is current
 
 If you previously installed the {{ PRODUCT_NAME }} CLI, make sure your version is current.
 

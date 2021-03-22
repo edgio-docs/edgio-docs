@@ -1,12 +1,12 @@
-# XDN Starter
+# {{ PRODUCT_NAME }} Starter
 
-This guide describes how to get up and running with XDN Starter. XDN Starter enables traditional websites (i.e. jQuery, PHP, VanillaJS, etc.) to take advantage of the performance benefits of {{ PRODUCT_NAME }}'s advanced caching and predictive prefetching. If your website is built on a modern framework such as React, Angular, or Vue, we recommend considering our framework specific guides that can be found on the [homepage](/) as an alternative to XDN Starter.
+This guide describes how to get up and running with {{ PRODUCT_NAME }} Starter. {{ PRODUCT_NAME }} Starter enables traditional websites (i.e. jQuery, PHP, VanillaJS, etc.) to take advantage of the performance benefits of {{ PRODUCT_NAME }}'s advanced caching and predictive prefetching. If your website is built on a modern framework such as React, Angular, or Vue, we recommend considering our framework specific guides that can be found on the [homepage](/) as an alternative to {{ PRODUCT_NAME }} Starter.
 
-Note that the speed benefit from XDN Starter is dependent on a site’s JavaScript usage during the page load. If a page has JavaScript heavy processing during load it may reduce the benefit from XDN Starter. Please contact our team via the chat button in the bottom right of this page if you're interested in a site analysis prior to beginning installation — turnaround time is typically 1-2 business days.
+Note that the speed benefit from {{ PRODUCT_NAME }} Starter is dependent on a site’s JavaScript usage during the page load. If a page has JavaScript heavy processing during load it may reduce the benefit from {{ PRODUCT_NAME }} Starter. Please contact our team via the chat button in the bottom right of this page if you're interested in a site analysis prior to beginning installation — turnaround time is typically 1-2 business days.
 
-## How XDN Starter works
+## How {{ PRODUCT_NAME }} Starter works
 
-As shown below, in XDN Starter {{ PRODUCT_NAME }} becomes the main CDN for your site:
+As shown below, in {{ PRODUCT_NAME }} Starter {{ PRODUCT_NAME }} becomes the main CDN for your site:
 
 ![traffic](/images/starter/traffic.png)
 
@@ -19,7 +19,7 @@ Requests for your site will now pass through {{ PRODUCT_NAME }}'s globally distr
 
 ## Implementation Process
 
-The high level implementation process for XDN Starter is:
+The high level implementation process for {{ PRODUCT_NAME }} Starter is:
 
 1. Make sure your pages are cachable
 2. Add {{ PRODUCT_NAME }} JavaScript libraries to your site
@@ -62,7 +62,7 @@ See common things you need to look for on an eCommmerce site:
 
 Use this worksheet when auditing your site for personalized content to inventory and track the changes you will be making:
 
-[XDN Starter Origin Content Changes Worksheet](https://docs.google.com/spreadsheets/d/1WDc5tB0tbrDT3To6bNQ0jYpXRFmgUuA_4gb3lVgzmjE/edit?usp=sharing)
+[{{ PRODUCT_NAME }} Starter Origin Content Changes Worksheet](https://docs.google.com/spreadsheets/d/1WDc5tB0tbrDT3To6bNQ0jYpXRFmgUuA_4gb3lVgzmjE/edit?usp=sharing)
 
 ## Add {{ PRODUCT_NAME }} JavaScript libraries to your site
 
@@ -73,7 +73,7 @@ Next install {{ PRODUCT_NAME }} JavaScript libraries to your site by adding the 
 <script src="/main.js" defer="defer"></script>
 ```
 
-These tags power the predictive prefetching and caching that will be used by {{ PRODUCT_NAME }}. Note that the JavaScript assets referenced in the above script tags are not on your server. {{ PRODUCT_NAME }} serves the assets for these script tags once {{ PRODUCT_NAME }} is installed in front of your server as described in [How XDN Starter works](#section_how_xdn_starter_works).
+These tags power the predictive prefetching and caching that will be used by {{ PRODUCT_NAME }}. Note that the JavaScript assets referenced in the above script tags are not on your server. {{ PRODUCT_NAME }} serves the assets for these script tags once {{ PRODUCT_NAME }} is installed in front of your server as described in [How {{ PRODUCT_NAME }} Starter works](#section_how_xdn_starter_works).
 
 ## Connector
 
@@ -83,11 +83,11 @@ This framework has a connector developed for {{ PRODUCT_NAME }}. See [Connectors
 
 ## Setup a Starter project
 
-**XDN only supports Node.js version 12.x**
+**{{ PRODUCT_NAME }} only supports Node.js version 12.x**
 
-As with any XDN project make sure you have Node and npm installed. If you do not have Node.js installed on your system, download and install it from the official [Node.js v12.x downloads](https://nodejs.org/dist/latest-v12.x/) page. Select the download that matches your operating system and run the installer. Note that the installer for Node.js will also install npm.
+As with any {{ PRODUCT_NAME }} project make sure you have Node and npm installed. If you do not have Node.js installed on your system, download and install it from the official [Node.js v12.x downloads](https://nodejs.org/dist/latest-v12.x/) page. Select the download that matches your operating system and run the installer. Note that the installer for Node.js will also install npm.
 
-Next, install the [XDN CLI](cli)
+Next, install the [{{ PRODUCT_NAME }} CLI](cli)
 
 ```bash
 npm i -g {{ PACKAGE_NAME }}/cli
@@ -108,7 +108,7 @@ The {{ PRODUCT_NAME }} create module will prompt you for the following informati
 
 Refer to the [{{ CONFIG_FILE }}](xdn_config) guide for more details
 
-Here's an example output from running XDN create:
+Here's an example output from running {{ PRODUCT_NAME }} create:
 
 ```bash
 $ npm create xdn-app@latest
@@ -117,10 +117,10 @@ npx: installed 170 in 10.375s
 ✔ Select an app template › Default starter template
 ✔ Enter the hostname for the origin site (e.g. domain.com) … origin.site.com
 ✔ Which package manager would you like to use? › npm
-✔ Downloading Default starter template XDN template... done.
+✔ Downloading Default starter template {{ PRODUCT_NAME }} template... done.
 ✔ Installing dependencies... done.
 
-XDN app created! Run the following to start your app in development mode:
+{{ PRODUCT_NAME }} app created! Run the following to start your app in development mode:
 
 cd my-starter-app
 npm start
@@ -200,7 +200,7 @@ In addition to configuring your caching in `routes.ts` as shown above, you may n
 
 By injecting `main.js` into your app's front-end code, your app will automatically prefetch all visible HTML links with URLs that match a route configured with `edge.maxAgeSeconds` and `browser.serviceWorkerSeconds` (in essence, when you configure a route to be cached, you are also declaring it to be a candidate for prefetching as well). Links that are visible when the page first loads are fetched immediately. Additional links will be fetched when the user scrolls down the page and more links become visible.
 
-Prefetching can generate substantial additional network traffic. {{ PRODUCT_NAME }} automatically shields your origin from this additional traffic by only serving prefetch requests from the edge cache. If a prefetch request cannot be served from the cache, {{ PRODUCT_NAME }} will return an HTTP 412 status and the request will not be proxied to the origin. When this happens, the only effect for the user is that they will not see the speed benefit of prefetching. Therefore, the effectiveness of prefetching ramps up over time as users visit pages throughout your site. When the edge cache is cleared, either through [XDN Console](caching#section_clearing_the_cache) or automatically following a deployment, the speed benefit of prefetching is decreased until the cache fills up based on organic traffic.
+Prefetching can generate substantial additional network traffic. {{ PRODUCT_NAME }} automatically shields your origin from this additional traffic by only serving prefetch requests from the edge cache. If a prefetch request cannot be served from the cache, {{ PRODUCT_NAME }} will return an HTTP 412 status and the request will not be proxied to the origin. When this happens, the only effect for the user is that they will not see the speed benefit of prefetching. Therefore, the effectiveness of prefetching ramps up over time as users visit pages throughout your site. When the edge cache is cleared, either through [{{ PRODUCT_NAME }} Console](caching#section_clearing_the_cache) or automatically following a deployment, the speed benefit of prefetching is decreased until the cache fills up based on organic traffic.
 
 ## Test your code locally and on {{ PRODUCT_NAME }}
 
@@ -236,7 +236,7 @@ After you've configured and tested your site on {{ PRODUCT_NAME }}, it's time to
 
 Each of these steps is described in more detail in the [Production guide](production). Note that third step (configuring your DNS) will be the crucial step that effectively transitions your domain to {{ PRODUCT_NAME }} and should be done last.
 
-Before going live, you should use the [XDN Starter Onboarding Discovery Worksheet](https://docs.google.com/spreadsheets/d/1PGdcV_HoMKSAQsBi3th6gV6XhBn0gpWYm7Ix2sTcDbs/edit?usp=sharing) to help you think through common use cases and concerns and ensure a smooth launch.
+Before going live, you should use the [{{ PRODUCT_NAME }} Starter Onboarding Discovery Worksheet](https://docs.google.com/spreadsheets/d/1PGdcV_HoMKSAQsBi3th6gV6XhBn0gpWYm7Ix2sTcDbs/edit?usp=sharing) to help you think through common use cases and concerns and ensure a smooth launch.
 
 ## Advanced Prefetching Techniques
 
@@ -244,7 +244,7 @@ An introduction to prefetching is available in the [Prefetching guide](prefetchi
 
 ### Deep Fetching
 
-Deep fetching is an important technique for XDN Starter projects. By default, only HTML content is prefetched. In order to achieve truly instant page transitions, all of the assets needed to render the content that appears above the fold needs to be deep fetched. Refer to the [Deep Fetching section](prefetching#section_deep_fetching) of the Prefetching guide for more details on how to configure deep fetching in your project.
+Deep fetching is an important technique for {{ PRODUCT_NAME }} Starter projects. By default, only HTML content is prefetched. In order to achieve truly instant page transitions, all of the assets needed to render the content that appears above the fold needs to be deep fetched. Refer to the [Deep Fetching section](prefetching#section_deep_fetching) of the Prefetching guide for more details on how to configure deep fetching in your project.
 
 ### Prefetching POSTs
 
@@ -310,7 +310,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 ### Maintenance
 
-For the most part maintenance for XDN starter is minimal. However, the typical scenarios that require changes are:
+For the most part maintenance for {{ PRODUCT_NAME }} starter is minimal. However, the typical scenarios that require changes are:
 
 - If you add personalized or user-specific content to the page you will need to make sure it is late loaded as described in the [Make sure your pages are cachable](#section_make_sure_your_pages_are_cachable) section.
 - If you introduce a new segmentation of content (i.e. support a new language or currency), you may need to update your [custom cache key](/guides/caching#section_customizing_the_cache_key).

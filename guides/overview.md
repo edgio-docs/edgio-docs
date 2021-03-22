@@ -1,11 +1,12 @@
 # Overview
 
-This guide introduces the high-level concepts behind Moovweb's XDN.
+This guide introduces the high-level concepts behind Moovweb's {{ PRODUCT_NAME }}.
 
 ![video](https://www.youtube.com/watch?v=sJ6AkTrcZvg)
 
-## What is an XDN?
+## What is an {{ PRODUCT_NAME }}?
 
+// TODO layer0
 XDN stands for "e**X**perience **D**elivery **N**etwork". It extends the capabilities of a traditional **CDN** by not only hosting your static content, but also providing **server-side rendering** for progressive web applications as well as caching both your APIs and HTML at the network edge to provide your users with the **fastest browsing experience**.
 
 Check out our video [{{ PRODUCT_NAME }} - What & Why](https://www.youtube.com/watch?v=sJ6AkTrcZvg) for more details.
@@ -31,7 +32,7 @@ Check out our video [{{ PRODUCT_NAME }} - What & Why](https://www.youtube.com/wa
 {{ PRODUCT_NAME }} makes it possible to deliver subsecond page load-times and instantaneous client-side page transitions through the use of prefetching and caching. It empowers developers to optimize performance by leveraging powerful caching and edge logic capabilities right from their application code using a "CDN-as-code" JavaScript API. Rather than manually configuring your CDN through a web portal, {{ PRODUCT_NAME }} allows you to put your edge logic in code, so that it's source-controlled, reviewed, and tested using the same software development lifecycle as the rest of your vital application code. You can even A/B test edge logic in production!
 
 ```js
-// Example XDN routes file for a Next.js app
+// Example {{ PRODUCT_NAME }} routes file for a Next.js app
 
 const { Router } = require('{{ PACKAGE_NAME }}/core/router')
 const { nextRoutes } = require('{{ PACKAGE_NAME }}/next')

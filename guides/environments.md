@@ -91,7 +91,7 @@ shown in the example above.
 {{ PRODUCT_NAME }} automatically injects the following environment variables:
 
 - `NODE_ENV`: Set to `production` by default but you can override it through the console
-- `XDN_ENVIRONMENT_NAME`: The name of the environment (e.g. `default`, `production` and so on). This cannot be overriden by you.
+- `{{ PRODUCT_NAME_UPPER }}_ENVIRONMENT_NAME`: The name of the environment (e.g. `default`, `production` and so on). This cannot be overriden by you.
 
 ### Accessing Environment Variables at Build Time
 

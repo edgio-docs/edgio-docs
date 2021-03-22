@@ -186,7 +186,7 @@ By default, {{ PRODUCT_NAME }} prerenders a maximum of 200 URLs at a time. This 
 ## Viewing Prerendering Results in the {{ PRODUCT_NAME }} Developer Console
 
 When you deploy a new version of your site, you can view the progress and results of prerendering from the deployment
-view in XDN Developer Console:
+view in {{ PRODUCT_NAME }} Developer Console:
 
 ![progress](/images/static-prerendering/progress.png)
 

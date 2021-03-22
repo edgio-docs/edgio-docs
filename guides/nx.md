@@ -18,7 +18,7 @@ npm i -g {{ PACKAGE_NAME }}/cli
 {{ CLI_NAME }} init
 ```
 
-## 2. Create a custom XDN connector
+## 2. Create a custom {{ PRODUCT_NAME }} connector
 
 Since our Next.js app isn't located in the root of the project as the `{{ PACKAGE_NAME }}/next` connector expects, we'll need to define our own custom connector. To do so:
 

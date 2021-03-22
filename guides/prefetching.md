@@ -145,7 +145,7 @@ new Prefetcher({
 })
 ```
 
-The `DeepFetchPlugin` can parse both HTML and JSON documents to extract the page assets that must be deep fetched. For XDN projects that are headless (i.e. the front end communicates with the backend through an API), you'll typically use the JSON option. However if the backend and front-end endpoints are communicating using HTML responses then you'll want to use the HTML option. Note that you can mix both HTML and JSON configuration objects in the an array passed to the `DeepFetchPlugin`.
+The `DeepFetchPlugin` can parse both HTML and JSON documents to extract the page assets that must be deep fetched. For {{ PRODUCT_NAME }} projects that are headless (i.e. the front end communicates with the backend through an API), you'll typically use the JSON option. However if the backend and front-end endpoints are communicating using HTML responses then you'll want to use the HTML option. Note that you can mix both HTML and JSON configuration objects in the an array passed to the `DeepFetchPlugin`.
 
 ### Deep fetching URLs in JSON responses
 
@@ -238,10 +238,10 @@ If you have an existing site already in production, it is possible to prefetch f
 
 To achieve this:
 
-1. Create a new XDN app using `npm create xdn-app`.
+1. Create a new {{ PRODUCT_NAME }} app using `npm create xdn-app`.
 2. Use your site's hostname as the origin site.
 3. Once the app is created, configure your routes file to cache the URLs you want to prefetch.
-4. Deploy your XDN app.
+4. Deploy your {{ PRODUCT_NAME }} app.
 5. Optionally give it a custom domain by creating a production environment, assigning a custom domain, and uploading an SSL certificate.
 6. In your service-worker source, use the `cacheHost` option when configuring the `Prefetcher`. For example:
 
@@ -253,7 +253,7 @@ skipWaiting()
 clientsClaim()
 
 new Prefetcher({
-  cacheHost: 'your.xdn.domain.here.com', // specify the domain name for your XDN app here
+  cacheHost: 'your.xdn.domain.here.com', // specify the domain name for your {{ PRODUCT_NAME }} app here
 })
 ```
 

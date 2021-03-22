@@ -89,7 +89,7 @@ new Router()
 
 ### Altering requests and responses
 
-XDN offers APIs to manipulate request and response headers and cookies. The APIs are:
+{{ PRODUCT_NAME }} offers APIs to manipulate request and response headers and cookies. The APIs are:
 
 | Operation     | Request               | Upstream Response              | Response sent to Browser |
 | ------------- | --------------------- | ------------------------------ | ------------------------ |

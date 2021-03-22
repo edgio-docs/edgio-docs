@@ -17,7 +17,7 @@ Here are a few examples of common static sites served by {{ PRODUCT_NAME }}.
 
 ## Install Node.js and npm
 
-**XDN only supports Node.js version 12 and higher**
+**{{ PRODUCT_NAME }} only supports Node.js version 12 and higher**
 
 If you do not have Node.js installed on your system, download and install it from the official [Node.js v12.x downloads](https://nodejs.org/dist/latest-v12.x/) page. Select the download that matches your operating system and run the installer. Note that the installer for Node.js will also install npm.
 

@@ -2,9 +2,9 @@
 
 The {{ PRODUCT_NAME }} platform exposes three types of logs to users:
 
-- [Build logs](#section_build_logs) capture all the build output from your XDN deploys.
-- [Server logs](#section_server_logs) capture your XDN serverless console output at real time.
-- [Access logs](#section_access_logs) capture information about all the requests served by XDN.
+- [Build logs](#section_build_logs) capture all the build output from your {{ PRODUCT_NAME }} deploys.
+- [Server logs](#section_server_logs) capture your {{ PRODUCT_NAME }} serverless console output at real time.
+- [Access logs](#section_access_logs) capture information about all the requests served by {{ PRODUCT_NAME }}.
 
 ## Build Logs
 
@@ -22,7 +22,7 @@ Here you can limit the output to only those statements coming from your IP addre
 
 ## Access Logs
 
-XDN [Enterprise tier](https://www.moovweb.com/pricing) customers can receive streaming access logs that capture information about each request served by {{ PRODUCT_NAME }}. To do so refer to the "Access Logs" tab:
+{{ PRODUCT_NAME }} [Enterprise tier](https://www.moovweb.com/pricing) customers can receive streaming access logs that capture information about each request served by {{ PRODUCT_NAME }}. To do so refer to the "Access Logs" tab:
 
 ![access](/images/logs/access.png)
 
@@ -36,7 +36,7 @@ Millisecond resolution of the request start time in UNIX epoch.
 
 ### xdn
 
-The application's XDN version processing this request.
+The application's {{ PRODUCT_NAME }} version processing this request.
 
 ### bld
 
@@ -44,9 +44,9 @@ The application's build number processing this request.
 
 ### eid
 
-The active environment ID in XDN.
+The active environment ID in {{ PRODUCT_NAME }}.
 
-_Available since XDN v2.9.0._
+_Available since {{ PRODUCT_NAME }} v2.9.0._
 
 ### ev
 
@@ -213,7 +213,7 @@ Request ID of the response hit in the cache. Corresponds to [`{{ HEADER_PREFIX }
 
 ## Setting up log aggregation tools
 
-XDN saves its logs to Amazon S3. Most log aggregation tools are able to ingest logs from S3. We attempt to link to the docs that explain how to ingest logs from S3 for each popular log aggregation tool below. Even if your tool is not listed, there's a good chance it can ingest logs from S3.
+{{ PRODUCT_NAME }} saves its logs to Amazon S3. Most log aggregation tools are able to ingest logs from S3. We attempt to link to the docs that explain how to ingest logs from S3 for each popular log aggregation tool below. Even if your tool is not listed, there's a good chance it can ingest logs from S3.
 
 - Sematext | [[Logagent docs]](https://sematext.com/docs/logagent/)
 - Sumo Logic | [[S3 ingest docs]](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/AWS-S3-Source)

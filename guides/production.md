@@ -4,7 +4,7 @@ This guide covers the steps you need to take your site live on {{ PRODUCT_NAME }
 
 ## Region
 
-XDN enterprise customers can choose the [region](regions) in which their serverless functions will run, as well as backup region to which traffic will be diverted in the event of an outage. Choose the regions which are closest to the datacenter which hosts your origin site or APIs.
+{{ PRODUCT_NAME }} enterprise customers can choose the [region](regions) in which their serverless functions will run, as well as backup region to which traffic will be diverted in the event of an outage. Choose the regions which are closest to the datacenter which hosts your origin site or APIs.
 
 ## Domains
 
@@ -19,10 +19,10 @@ To configure your custom domains:
 
 ### Migrating from Fastly
 
-If you're migrating to {{ PRODUCT_NAME }} from [Fastly](https://www.fastly.com/), you will need to do the following before adding your domains to your XDN environment:
+If you're migrating to {{ PRODUCT_NAME }} from [Fastly](https://www.fastly.com/), you will need to do the following before adding your domains to your {{ PRODUCT_NAME }} environment:
 
 - [Contact Fastly support](https://support.fastly.com/hc/en-us/requests/new?ticket_form_id=360000269711) and request that control of your domains be transferred to Moovweb. Be sure to explicitly list each domain that needs to transferred and ask Fastly to contact xdn-support(at)moovweb.com if they need Moovweb to confirm the transfer.
-- Before going live with {{ PRODUCT_NAME }}, you will need to ensure that you've removed your domains from all active Fastly services. To remove domains from a service, clone the service, remove the domains, then activate the new version of the service. Once the new service version is activated you can add the domains to your XDN environment and activate it.
+- Before going live with {{ PRODUCT_NAME }}, you will need to ensure that you've removed your domains from all active Fastly services. To remove domains from a service, clone the service, remove the domains, then activate the new version of the service. Once the new service version is activated you can add the domains to your {{ PRODUCT_NAME }} environment and activate it.
 
 ## Network configuration
 
@@ -72,7 +72,7 @@ mywebsite.xyz.        599    IN    A        151.101.193.79
   mywebsite.xyz.        599    IN    A        151.101.193.79
   ```
 
-### Whitelisting XDN IP Addresses
+### Whitelisting {{ PRODUCT_NAME }} IP Addresses
 
 Before going live, ensure that all {{ PRODUCT_NAME }} IP addresses are whitelisted in the security layer in front of your origin and/or API servers. The IP addresses you need to whitelist can be found on the "IP Whitelist" section of the "Networking" tab. Note that your IP addresses may differ from the ones show above.
 
@@ -186,7 +186,7 @@ _Note: If you already have an existing certificate, you can use it by skipping a
 
    - You can read more about the `_acme-challenge.` process by visiting [Let's Encrypt Website](https://letsencrypt.org/docs/challenge-types/#dns-01-challenge)
 
-4. Once the requirements above are met, you can generate the certificate using the [XDN Developer Console](https://moovweb.app):
+4. Once the requirements above are met, you can generate the certificate using the [{{ PRODUCT_NAME }} Developer Console](https://moovweb.app):
 
    1. Select your site and navigate to _Settings_ => _SSL Certificate_
 
@@ -258,7 +258,7 @@ To upload your SSL certificate, navigate to the **Settings** tab on your site an
 
 ![ssl](/images/production/ssl.png)
 
-Then, scroll down to **SSL Certificate**. _Note that you need to be in the **Admin** role on your team and your team needs to be upgraded to XDN Enterprise to see this section:_
+Then, scroll down to **SSL Certificate**. _Note that you need to be in the **Admin** role on your team and your team needs to be upgraded to {{ PRODUCT_NAME }} Enterprise to see this section:_
 
 ![empty-certificate](/images/production/empty-certificate.png)
 

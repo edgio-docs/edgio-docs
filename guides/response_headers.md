@@ -4,7 +4,7 @@ This guide covers the headers that {{ PRODUCT_NAME }} injects into responses mak
 
 ## General headers
 
-- `{{ HEADER_PREFIX }}version`: version fingerprint that includes XDN version number, site build number and UTC timestamp of the build
+- `{{ HEADER_PREFIX }}version`: version fingerprint that includes {{ PRODUCT_NAME }} version number, site build number and UTC timestamp of the build
 - `{{ HEADER_PREFIX }}t`: timings of all the components in Moovweb critical path that served your request
 - `{{ HEADER_PREFIX }}request-id`: the unique ID of the request on {{ PRODUCT_NAME }} infrastructure
 - `{{ HEADER_PREFIX }}hit-request-id`: the unique ID of the request whose cached response is being returned (not present if cache miss)

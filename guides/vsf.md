@@ -57,5 +57,4 @@ To run locally in development mode, use this command:
 To build and deploy your app to {{ PRODUCT_NAME }}, run the following from the root directory of your app:
 
 ```
-{{ CLI_NAME }} deploy <team> # where team is the name of the {{ PRODUCT_NAME }} team to which the app should be deployed.
-```
+{{ CLI_NAME }} deploy

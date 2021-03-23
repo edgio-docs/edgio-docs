@@ -1,4 +1,4 @@
-# Contributing to developer.moovweb.com
+# Contributing to {{ DOCS_URL }}
 
 {{ PRODUCT_NAME }} is all about putting power in the hands of developers and our documentation is no different. The source code for the {{ PRODUCT_NAME }} developer docs (i.e. this site your reading now) is in an open [repository on Github](https://github.com/moovweb-docs/xdn-docs) and we welcome feedback and pull requests. If you've found a typo or a better way to explain something, please submit a pull request or a file issue! Others will likely stumble over the same problem and benefit from your insight.
 

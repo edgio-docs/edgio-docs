@@ -149,7 +149,7 @@ The `DeepFetchPlugin` can parse both HTML and JSON documents to extract the page
 
 ### Deep fetching URLs in JSON responses
 
-For JSON responses, you'll pass the `DeepFetchPlugin` an array of `[DeepFetchJsonConfig interface](https://developer.moovweb.com/docs/api/prefetch/interfaces/_sw_deepfetchplugin_.deepfetchjsonconfig.html)` objects. These `DeepFetchJsonConfig` objects describe the asset URLs in the JSON response that should be prefetched. For example, the snippet below finds product images to deep fetch for a category page response:
+For JSON responses, you'll pass the `DeepFetchPlugin` an array of `[DeepFetchJsonConfig interface]({{ DOCS_URL }}/docs/api/prefetch/interfaces/_sw_deepfetchplugin_.deepfetchjsonconfig.html)` objects. These `DeepFetchJsonConfig` objects describe the asset URLs in the JSON response that should be prefetched. For example, the snippet below finds product images to deep fetch for a category page response:
 
 ```js
 new DeepFetchPlugin([
@@ -172,7 +172,7 @@ The `jsonQuery` syntax is provided by the [json-query](https://github.com/audita
 
 ### Deep Fetching for HTML documents
 
-To deep fetch HTML documents, pass the plugin objects that match the [DeepFetchHtmlConfig interface](https://developer.moovweb.com/docs/api/prefetch/interfaces/_sw_deepfetchplugin_.deepfetchhtmlconfig.html) and describe which HTML elements need to be prefetched via CSS selectors.
+To deep fetch HTML documents, pass the plugin objects that match the [DeepFetchHtmlConfig interface]({{ DOCS_URL }}/docs/api/prefetch/interfaces/_sw_deepfetchplugin_.deepfetchhtmlconfig.html) and describe which HTML elements need to be prefetched via CSS selectors.
 
 For example, imagine you're configuring prefetching for a product page and you want to ensure the main product image is prefetched so that it appears immediately when the page loads. If the main product image is displayed with an HTML `img` element with a CSS class called `product-featured-media`, it can be prefetched by adding the following to the DeepFetchPlugin:
 
@@ -238,7 +238,7 @@ If you have an existing site already in production, it is possible to prefetch f
 
 To achieve this:
 
-1. Create a new {{ PRODUCT_NAME }} app using `npm create xdn-app`.
+1. Create a new {{ PRODUCT_NAME }} app using `npm create {{ STARTER_NAME }}`.
 2. Use your site's hostname as the origin site.
 3. Once the app is created, configure your routes file to cache the URLs you want to prefetch.
 4. Deploy your {{ PRODUCT_NAME }} app.

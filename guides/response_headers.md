@@ -4,24 +4,24 @@ This guide covers the headers that {{ PRODUCT_NAME }} injects into responses mak
 
 ## General headers
 
-- `{{ HEADER_PREFIX }}version`: version fingerprint that includes {{ PRODUCT_NAME }} version number, site build number and UTC timestamp of the build
-- `{{ HEADER_PREFIX }}t`: timings of all the components in Moovweb critical path that served your request
-- `{{ HEADER_PREFIX }}request-id`: the unique ID of the request on {{ PRODUCT_NAME }} infrastructure
-- `{{ HEADER_PREFIX }}hit-request-id`: the unique ID of the request whose cached response is being returned (not present if cache miss)
-- `{{ HEADER_PREFIX }}caching-status`: indicates why a response was or was not cached. See [Caching](/guides/caching#section_why_is_my_response_not_being_cached_).
-- `{{ HEADER_PREFIX }}surrogate-key`: a space separated list of secondary cache keys used for [cache clearing](/guides/caching#section_clearing_the_cache)
+- `{{ HEADER_PREFIX }}-version`: version fingerprint that includes {{ PRODUCT_NAME }} version number, site build number and UTC timestamp of the build
+- `{{ HEADER_PREFIX }}-t`: timings of all the components in {{ PRODUCT_NAME }} critical path that served your request
+- `{{ HEADER_PREFIX }}-request-id`: the unique ID of the request on {{ PRODUCT_NAME }} infrastructure
+- `{{ HEADER_PREFIX }}-hit-request-id`: the unique ID of the request whose cached response is being returned (not present if cache miss)
+- `{{ HEADER_PREFIX }}-caching-status`: indicates why a response was or was not cached. See [Caching](/guides/caching#section_why_is_my_response_not_being_cached_).
+- `{{ HEADER_PREFIX }}-surrogate-key`: a space separated list of secondary cache keys used for [cache clearing](/guides/caching#section_clearing_the_cache)
 
-### Structure of `{{ HEADER_PREFIX }}t`
+### Structure of `{{ HEADER_PREFIX }}-t`
 
-The format is `{{ HEADER_PREFIX }}t: <id>=<time>[,<id2>=<time2>...]`
+The format is `{{ HEADER_PREFIX }}-t: <id>=<time>[,<id2>=<time2>...]`
 
-`{{ HEADER_PREFIX }}t` is an order list of timings: values are prepended at response time. Thus reading them left to right goes from the outermost edge component to the innermost cloud component that handled the request.
+`{{ HEADER_PREFIX }}-t` is an order list of timings: values are prepended at response time. Thus reading them left to right goes from the outermost edge component to the innermost cloud component that handled the request.
 
 The components are:
 
 - Level 1 Edge POP = `o`
 - Level 2 Shield POP = `s`
-- Custom Moovweb Proxy = `p`
+- Custom {{ PRODUCT_NAME }} Proxy = `p`
 - JavaScript Compute Workers = `w`
 
 All times are in milliseconds.
@@ -52,7 +52,7 @@ All times are in milliseconds.
 
 ## Troubleshooting headers
 
-The following headers are used internally by Moovweb staff to troubleshoot issues with requests.
+The following headers are used internally by {{ PRODUCT_NAME }} staff to troubleshoot issues with requests.
 
-- `{{ HEADER_PREFIX }}status`: statuses of different components in {{ PRODUCT_NAME }} critical path that serviced your request
-- `{{ HEADER_PREFIX }}components`: versions of different components in {{ PRODUCT_NAME }} critical path that serviced your request
+- `{{ HEADER_PREFIX }}-status`: statuses of different components in {{ PRODUCT_NAME }} critical path that serviced your request
+- `{{ HEADER_PREFIX }}-components`: versions of different components in {{ PRODUCT_NAME }} critical path that serviced your request

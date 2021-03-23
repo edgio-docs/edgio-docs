@@ -83,9 +83,9 @@ This framework has a connector developed for {{ PRODUCT_NAME }}. See [Connectors
 
 ## Setup a Starter project
 
-**{{ PRODUCT_NAME }} only supports Node.js version 12.x**
+**{{ PRODUCT_NAME }} only supports Node.js version {{ NODE_VERSION }}**
 
-As with any {{ PRODUCT_NAME }} project make sure you have Node and npm installed. If you do not have Node.js installed on your system, download and install it from the official [Node.js v12.x downloads](https://nodejs.org/dist/latest-v12.x/) page. Select the download that matches your operating system and run the installer. Note that the installer for Node.js will also install npm.
+As with any {{ PRODUCT_NAME }} project make sure you have Node and npm installed. If you do not have Node.js installed on your system, download and install it from the official [Node.js v{{ NODE_VERSION }} downloads](https://nodejs.org/dist/latest-v{{ NODE_VERSION }}/) page. Select the download that matches your operating system and run the installer. Note that the installer for Node.js will also install npm.
 
 Next, install the [{{ PRODUCT_NAME }} CLI](cli)
 
@@ -96,7 +96,7 @@ npm i -g {{ PACKAGE_NAME }}/cli
 Create your Starter project using {{ PRODUCT_NAME }}'s create module:
 
 ```bash
-npm create xdn-app@latest
+npm create {{ STARTER_NAME }}@latest
 ```
 
 The {{ PRODUCT_NAME }} create module will prompt you for the following information:
@@ -111,7 +111,7 @@ Refer to the [{{ CONFIG_FILE }}](xdn_config) guide for more details
 Here's an example output from running {{ PRODUCT_NAME }} create:
 
 ```bash
-$ npm create xdn-app@latest
+$ npm create {{ STARTER_NAME }}@latest
 npx: installed 170 in 10.375s
 ✔ Enter a name for your app … my-starter-app
 ✔ Select an app template › Default starter template
@@ -218,7 +218,7 @@ To test the caching behavior locally, run your project with the [local cache opt
 
 Now that you're satisfied with your site in local development, it's time to deploy it to {{ PRODUCT_NAME }} Cloud. Once your code is deployed to {{ PRODUCT_NAME }} Cloud, you can formally evaluate site performance and QA functionality.
 
-To deploy your site to {{ PRODUCT_NAME }}, you must first sign up for an account. [Sign up here for free.](https://moovweb.app/signup) Once you have an account, you can deploy your site using the `deploy` command:
+To deploy your site to {{ PRODUCT_NAME }}, you must first sign up for an account. [Sign up here for free.]({{ APP_URL }}/signup) Once you have an account, you can deploy your site using the `deploy` command:
 
 ```bash
 {{ CLI_NAME }} deploy --team=[team-name]

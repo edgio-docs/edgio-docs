@@ -50,7 +50,7 @@ Alternatively, you can add the following `script` tag to your app's HTML:
 
 ### Service Worker
 
-Then, if you haven't already, enable `{{ PACKAGE_NAME }}/prefetch` in your service worker. See [Prefetching](https://developer.moovweb.com/guides/prefetching) for more information on enabling `{{ PACKAGE_NAME }}/prefetch`.
+Then, if you haven't already, enable `{{ PACKAGE_NAME }}/prefetch` in your service worker. See [Prefetching]({{ DOCS_URL }}/guides/prefetching) for more information on enabling `{{ PACKAGE_NAME }}/prefetch`.
 
 ## Enabling or Disabling the Devtools
 
@@ -60,7 +60,7 @@ To customize when {{ PRODUCT_NAME }} Devtools appear:
 
 ### Per Environment
 
-Using the [{{ PRODUCT_NAME }} Developer Console](https://moovweb.app), navigate to your environment and create an environment variable named `PREVIEW_{{ PRODUCT_NAME_UPPER }}_DEVTOOLS_ENABLED`. Set the value to `true` or `false` to explicitly enable or disable the Devtools on the given environment.
+Using the [{{ PRODUCT_NAME }} Developer Console]({{ APP_URL }}), navigate to your environment and create an environment variable named `PREVIEW_{{ PRODUCT_NAME_UPPER }}_DEVTOOLS_ENABLED`. Set the value to `true` or `false` to explicitly enable or disable the Devtools on the given environment.
 
 ### Per Browsing Session
 

@@ -17,9 +17,9 @@ This framework has a connector developed for {{ PRDUCT_NAME }}. See [Connectors]
 
 ## Install Node.js and npm
 
-**{{ PRODUCT_NAME }} only supports Node.js version 12.x**
+**{{ PRODUCT_NAME }} only supports Node.js version {{ NODE_VERSION }}**
 
-If you do not have Node.js installed on your system, download and install it from the official [Node.js v12.x downloads](https://nodejs.org/dist/latest-v12.x/) page. Select the download that matches your operating system and run the installer. Note that the installer for Node.js will also install npm.
+If you do not have Node.js installed on your system, download and install it from the official [Node.js v{{ NODE_VERSION }} downloads](https://nodejs.org/dist/latest-v{{ NODE_VERSION }}/) page. Select the download that matches your operating system and run the installer. Note that the installer for Node.js will also install npm.
 
 _Note that while you can use any version of Node.js >= 12 locally, your app will run in Node 12 when deployed to the {{ PRODUCT_NAME }} cloud. Therefore we highly suggest using Node 12 for all development._
 
@@ -143,7 +143,7 @@ ANGULAR_PROJECT=my-project {{ CLI_NAME }} run
 
 ## Deploying
 
-Deploying requires an account on {{ PRODUCT_NAME }}. [Sign up here for free.](https://moovweb.app/signup) Once you have an account, you can deploy to {{ PRODUCT_NAME }} by running the following in the root folder of your project:
+Deploying requires an account on {{ PRODUCT_NAME }}. [Sign up here for free.]({{ APP_URL }}/signup) Once you have an account, you can deploy to {{ PRODUCT_NAME }} by running the following in the root folder of your project:
 
 ```bash
 {{ CLI_NAME }} deploy

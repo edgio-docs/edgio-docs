@@ -10,7 +10,7 @@ To gain access to the api, provide a deploy token via the `x-api-key` header. De
 
 ### clear-cache
 
-`POST https://moovweb.app/api/v1/clear-cache`
+`POST {{ APP_URL }}/api/v1/clear-cache`
 
 Purges entries from the cache for a specific environment. You can purge specific paths or surrogate keys. If no paths or surrogate keys are provided all entries will be purged.
 
@@ -47,7 +47,7 @@ const environment = 'production'
 const paths = ['/some/path']
 
 async function clearCache() {
-  const res = await fetch('https://moovweb.app/api/v1/clear-cache', {
+  const res = await fetch('{{ APP_URL }}/api/v1/clear-cache', {
     method: 'POST',
     headers: {
       'content-type': 'application/json',

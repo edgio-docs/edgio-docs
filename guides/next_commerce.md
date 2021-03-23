@@ -20,7 +20,7 @@ This framework has a connector developed for {{ PRODUCT_NAME }}. See [Connectors
 
 The easiest way to try Next.js Commerce on {{ PRODUCT_NAME }} is to clone and deploy the version from the {{ PRODUCT_NAME }} examples:
 
-1. Register for a free account on the [{{ PRODUCT_NAME }} sign up page](https://moovweb.app/signup).
+1. Register for a free account on the [{{ PRODUCT_NAME }} sign up page]({{ APP_URL }}/signup).
 
 2. Clone the {{ PRODUCT_NAME }} examples repository:
 
@@ -49,7 +49,7 @@ For more details on using Next.js on {{ PRODUCT_NAME }} refer to the [Next.js Gu
 
 If you wish to deploy to {{ PRODUCT_NAME }} from the official Next.js Commerce repository, follow these steps:
 
-1. Register for a free account on the [{{ PRODUCT_NAME }} sign up page](https://moovweb.app/signup).
+1. Register for a free account on the [{{ PRODUCT_NAME }} sign up page]({{ APP_URL }}/signup).
 
 2. Install the {{ PRODUCT_NAME }} [CLI](cli) globally
 
@@ -126,7 +126,7 @@ This should result in output like the following which confirms the deployment:
 ***** Deployment Complete ***************************************************************
 *                                                                                       *
 *  🖥  {{ PRODUCT_NAME }} Developer Console:                                                            *
-*  https://moovweb.app/ishan-scratch/nextjs-commerce/env/default/builds/1               *
+*  {{ APP_URL }}/ishan-scratch/nextjs-commerce/env/default/builds/1               *
 *                                                                                       *
 *  🌎 Website:                                                                          *
 *  https://ishan-scratch-nextjs-commerce-default.moovweb-edge.io                        *

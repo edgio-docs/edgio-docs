@@ -4,7 +4,7 @@ This guide walks you through deploying your first site to {{ PRODUCT_NAME }}.
 
 ## Create your Account
 
-To deploy your site to {{ PRODUCT_NAME }}, you must first sign up for an account. [Sign up here for free.](https://moovweb.app/signup)
+To deploy your site to {{ PRODUCT_NAME }}, you must first sign up for an account. [Sign up here for free.]({{ APP_URL }}/signup)
 
 ## Install the {{ PRODUCT_NAME }} CLI
 
@@ -79,15 +79,15 @@ This action assumes that you have created environments called "staging" and "pro
 # is based on the following rules:
 #
 # 1.) When pushing to master, changes deployed to the "staging" environment. This environment does not exist
-#     by default. You must create it using moovweb.app.
+#     by default. You must create it using {{ APP_URL }}.
 # 2.) When pushing to any other branch, changes are deployed to the default environment. A unique URL is created based on the branch and deployment number.
 # 3.) When you publish a release in GitHub, the associated tag will be deployed to the production
-#     environment. This environment does not exist by default, you must create it using moovweb.app.
+#     environment. This environment does not exist by default, you must create it using {{ APP_URL }}.
 #     Therefore, you can push to production by creating a GitHub release, or by using the "Promote to Environment"
-#     menu when viewing a deployment in moovweb.app.
+#     menu when viewing a deployment in {{ APP_URL }}.
 #
 # In order for this action to deploy your site, you must create a deploy token from the site settings page
-# in Moovweb.app and configure it as a secret called "layer0_deploy_token" in your repo on GitHub.
+# in {{ APP_URL }} and configure it as a secret called "layer0_deploy_token" in your repo on GitHub.
 
 name: Deploy branch to {{ PRODUCT_NAME }}
 
@@ -154,14 +154,14 @@ This guide assumes:
 // is based on the following rules:
 //
 // 1.) When pushing to `master`, changes are deployed to the "staging" environment. This environment does not exist
-//     by default. You must create it using moovweb.app.
+//     by default. You must create it using {{ APP_URL }}.
 // 2.) When pushing to any other branch, changes are deployed to the default environment. An unique URL is created
 //     based on the branch and deployment number.
-// 3.) To deploy to the "production" environment, use moovweb.app to promote the build. This environment does not
-//     exist by default, you must create it using moovweb.app.
+// 3.) To deploy to the "production" environment, use {{ APP_URL }} to promote the build. This environment does not
+//     exist by default, you must create it using {{ APP_URL }}.
 //
 // In order for this pipeline to deploy your site, you must create a deploy token from the site settings page
-// in Moovweb.app and configure it as an environment variable called "layer0_deploy_token" in your Jenkins configuration.
+// in {{ APP_URL }} and configure it as an environment variable called "layer0_deploy_token" in your Jenkins configuration.
 
 pipeline {
   agent {

@@ -38,7 +38,7 @@ To add Core Web Vitals tracking via a script tag, add the following to each page
   // TODO Layer0
   function initXdnRum() {
     new XDN.Metrics({
-      token: 'your-token-here', // get this from https://moovweb.app
+      token: 'your-token-here', // get this from {{ APP_URL }}
     }).collect()
   }
 </script>
@@ -52,7 +52,7 @@ To add Core Web Vitals tracking via a script tag, add the following to each page
   // TODO layer0
   function initXDNMetrics() {
     new XDN.Metrics({
-      token: 'your-token-here', // get this from https://moovweb.app
+      token: 'your-token-here', // get this from {{ APP_URL }}
     }).collect()
   }
   var rumScriptTag = document.createElement('script')
@@ -84,7 +84,7 @@ Then, add the following to your application's browser bundle:
 import { Metrics } from '{{ PACKAGE_NAME }}/rum'
 
 new Metrics({
-  token: 'your-token-here', // get this from https://moovweb.app
+  token: 'your-token-here', // get this from {{ APP_URL }}
 }).collect()
 ```
 
@@ -97,7 +97,7 @@ When installing {{ PACKAGE_NAME }}/rum using a script tag, use:
 ```js
 // TODO layer0
 new XDN.Metrics({
-  // get this from https://moovweb.app
+  // get this from {{ APP_URL }}
   token: 'your-token-here',
 
   // assign a page label for each route:
@@ -115,7 +115,7 @@ import { Router } from '{{ PACKAGE_NAME }}/rum/Router'
 import { Metrics } from '{{ PACKAGE_NAME }}/rum'
 
 new Metrics({
-  // get this from https://moovweb.app
+  // get this from {{ APP_URL }}
   token: 'your-token-here',
 
   // assign a page label for each route:

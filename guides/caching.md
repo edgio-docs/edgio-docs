@@ -83,7 +83,7 @@ router.get('/some/path', ({ cache }) => {
 })
 ```
 
-This will remove the given query parameters from the URL before it is used in cache. On cache miss the transformed URL will be passed to your code with the original query strings available to your code in `{{ HEADER_PREFIX }}original-qs` request header.
+This will remove the given query parameters from the URL before it is used in cache. On cache miss the transformed URL will be passed to your code with the original query strings available to your code in `{{ HEADER_PREFIX }}-original-qs` request header.
 
 - Including other request parameters like cookies:
 
@@ -113,7 +113,7 @@ router.get('/some/path', ({ cache }) => {
 })
 ```
 
-This will take the value of the `{{ HEADER_PREFIX }}device` request header and split based on the following devices:
+This will take the value of the `{{ HEADER_PREFIX }}-device` request header and split based on the following devices:
 
 - `smartphone`
 - `tablet`
@@ -191,7 +191,7 @@ router.get('/some/uncacheable/path', ({ cache, proxy }) => {
 
 ## How do I know if a response was served from the cache?
 
-To know if a response is being cached, examine the `{{ HEADER_PREFIX }}t` response header. There are two components that indicate caching status:
+To know if a response is being cached, examine the `{{ HEADER_PREFIX }}-t` response header. There are two components that indicate caching status:
 
 - `oc` - The outer (level 1) cache
 - `sc` - The shield (level 2) cache
@@ -204,11 +204,11 @@ You will see one of the following values for these components:
 
 ## Why is my response not being cached?
 
-To understand why a response was not cached, examine the `{{ HEADER_PREFIX }}caching-status` response header. It will have one of the following values:
+To understand why a response was not cached, examine the `{{ HEADER_PREFIX }}-caching-status` response header. It will have one of the following values:
 
 ### ok
 
-The response was cached or served from the cache (see `{{ HEADER_PREFIX }}t`).
+The response was cached or served from the cache (see `{{ HEADER_PREFIX }}-t`).
 
 ### disabled
 
@@ -268,11 +268,11 @@ The response was not cached because it was received during the brief time (less 
 
 ### debug
 
-The response was not cached because the request was issued with `x-xdn-debug` header set to `1`. In debug mode {{ PRODUCT_NAME }} will respond with more data useful for troubleshooting. However, the increased header footprint may lead to header overflow and other failures, so this should be used only during actual troubleshooting.
+The response was not cached because the request was issued with `{{ HEADER_PREFIX }}-debug` header set to `1`. In debug mode {{ PRODUCT_NAME }} will respond with more data useful for troubleshooting. However, the increased header footprint may lead to header overflow and other failures, so this should be used only during actual troubleshooting.
 
 ### pass
 
-The response was not cached due to unknown reasons. If you happen to receive this status then please contact [support](https://moovweb.app/help)
+The response was not cached due to unknown reasons. If you happen to receive this status then please contact [support]({{ APP_URL }}/help)
 
 ## Caching During Development
 
@@ -376,7 +376,7 @@ Here is an example GitHub action that clears the cache at a scheduled time using
 # 1.) This example depends on a script being defined in your package.json called clearcache:prod
 #
 # In order for this action to clear your cache, you must create a deploy token from the site settings page
-# in Moovweb.app and configure it as a secret called "{{ PRODUCT_NAME_LOWER }}_deploy_token" in your repo on GitHub.
+# in {{ APP_URL }} and configure it as a secret called "{{ PRODUCT_NAME_LOWER }}_deploy_token" in your repo on GitHub.
 
 name: Clear PRODUCTION cache at 5am
 on:

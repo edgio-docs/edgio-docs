@@ -10,7 +10,7 @@ In this way, you simply build your app to implement server-side rendering and ge
 
 ## Specifying the URLs to Prerender
 
-To specify which URLs should prerendered, use the Router's [prerender](https://developer.moovweb.com/docs/api/core/classes/_router_router_.router.html#prerender) function. The prerender function accepts an array of [PrerenderRequest] objects or an async function that returns the same:
+To specify which URLs should prerendered, use the Router's [prerender]({{ DOCS_URL }}/docs/api/core/classes/_router_router_.router.html#prerender) function. The prerender function accepts an array of [PrerenderRequest] objects or an async function that returns the same:
 
 ### Example: Hardcoded Paths
 

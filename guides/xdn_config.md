@@ -65,7 +65,7 @@ The maximum number of URLs that will be concurrently prendered during deployment
 
 ## sources
 
-A list of glob patterns identifying which source files should be uploaded when running `{{ CLI_NAME }} deploy --includeSources`. This option is primary used to share source code with Moovweb support personnel for the purpose of debugging. If omitted, `{{ CLI_NAME }} deploy --includeSources` will result in all files which are not gitignored being uploaded to {{ PRODUCT_NAME }}.
+A list of glob patterns identifying which source files should be uploaded when running `{{ CLI_NAME }} deploy --includeSources`. This option is primary used to share source code with {{ PRODUCT_NAME }} support personnel for the purpose of debugging. If omitted, `{{ CLI_NAME }} deploy --includeSources` will result in all files which are not gitignored being uploaded to {{ PRODUCT_NAME }}.
 
 Example:
 

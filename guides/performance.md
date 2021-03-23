@@ -4,7 +4,7 @@ This guide shows you how to monitor and improve the performance of your applicat
 
 ## Built-in timings
 
-All responses contain an [{{ HEADER_PREFIX }}t](/guides/response_headers#section_structure_of_) header that contains the time the request spent at each layer of the {{ PRODUCT_NAME }} stack.
+All responses contain an [{{ HEADER_PREFIX }}-t](/guides/response_headers#section_structure_of_) header that contains the time the request spent at each layer of the {{ PRODUCT_NAME }} stack.
 
 ## Tracking your own timings
 
@@ -19,11 +19,11 @@ const timing = new Timing('api').start()
 try {
   const result = await fetch(API_URL)
 } finally {
-  timing.end() // this will result in a `{{ HEADER_PREFIX }}user-t: api=(millis)` response header
+  timing.end() // this will result in a `{{ HEADER_PREFIX }}-user-t: api=(millis)` response header
 }
 ```
 
-- All timings are returned in an `{{ HEADER_PREFIX }}user-t` response header.
+- All timings are returned in an `{{ HEADER_PREFIX }}-user-t` response header.
 - The value is a comma-delimited list of pairs of the form `(name)=(duration-in-millis)`.
 - The value of this header will be logged into `xut` field in [access logs](/guides/logs#section_access_logs). The logged data is limited to 50 bytes after which it will be truncated.
 - Any timings that are not ended before the response is sent will have a value of `na`

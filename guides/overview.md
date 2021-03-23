@@ -1,6 +1,6 @@
 # Overview
 
-This guide introduces the high-level concepts behind Moovweb's {{ PRODUCT_NAME }}.
+This guide introduces the high-level concepts behind {{ PRODUCT_NAME }}.
 
 ![video](https://www.youtube.com/watch?v=sJ6AkTrcZvg)
 

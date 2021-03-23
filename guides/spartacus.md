@@ -13,9 +13,9 @@ This framework has a connector developed for {{ PRODUCT_NAME }}. See [Connectors
 
 ## Install Node.js and npm
 
-**{{ PRODUCT_NAME }} only supports Node.js version 12.x**
+**{{ PRODUCT_NAME }} only supports Node.js version {{ NODE_VERSION }}**
 
-If you do not have Node.js installed on your system, download and install it from the official [Node.js v12.x downloads](https://nodejs.org/dist/latest-v12.x/) page. Select the download that matches your operating system and run the installer. Note that the installer for Node.js will also install npm.
+If you do not have Node.js installed on your system, download and install it from the official [Node.js v{{ NODE_VERSION }} downloads](https://nodejs.org/dist/latest-v{{ NODE_VERSION }}/) page. Select the download that matches your operating system and run the installer. Note that the installer for Node.js will also install npm.
 
 _Note that while you can use any version of Node.js >= 12 locally, your app will run in Node 12 when deployed to the {{ PRODUCT_NAME }} cloud. Therefore, we highly suggest using Node 12 for all development._
 
@@ -115,14 +115,14 @@ This value is defined in the `backend` property of the options parameter to `B2c
 
 ### Upstream request tracking
 
-Prefetching for a Spartacus app can be enabled by listening to upstream requests made when server-side rendering a specific page. `{{ PACKAGE_NAME }}/prefetch` library will pick up on the upstream requests made by reading the `{{ HEADER_PREFIX }}upstream-requests` response header. An example scenario:
+Prefetching for a Spartacus app can be enabled by listening to upstream requests made when server-side rendering a specific page. `{{ PACKAGE_NAME }}/prefetch` library will pick up on the upstream requests made by reading the `{{ HEADER_PREFIX }}-upstream-requests` response header. An example scenario:
 
 1. User A lands on `/product/1`.
 1. `/product/1` has not been cached in the edge and thus will be server-side rendered.
 1. The rendering server has been modified to track upstream requests by patching `https.request`.
-1. The rendering server sets `{{ HEADER_PREFIX }}upstream-requests` to, for example: `/rest/v2/1;/rest/v2/2;`
-1. The HTML response for `/product/1` is now cached and for future requests served from the edge along with the `{{ HEADER_PREFIX }}upstream-requests` response header.
-1. User B lands on a page that has a link to `/product/1`. `/product/:path*` has been configured with `cache.browser.spa: true`. Because of this configuration, `{{ PACKAGE_NAME }}/prefetch` will know to make a prefetch HEAD request for `/product/1`, and only if `product/1` can be served from the edge will it prefetch all requests specified in `{{ HEADER_PREFIX }}upstream-requests` response header.
+1. The rendering server sets `{{ HEADER_PREFIX }}-upstream-requests` to, for example: `/rest/v2/1;/rest/v2/2;`
+1. The HTML response for `/product/1` is now cached and for future requests served from the edge along with the `{{ HEADER_PREFIX }}-upstream-requests` response header.
+1. User B lands on a page that has a link to `/product/1`. `/product/:path*` has been configured with `cache.browser.spa: true`. Because of this configuration, `{{ PACKAGE_NAME }}/prefetch` will know to make a prefetch HEAD request for `/product/1`, and only if `product/1` can be served from the edge will it prefetch all requests specified in `{{ HEADER_PREFIX }}-upstream-requests` response header.
 1. When User B click the link to `/product/1`, the navigation will be faster since the requests needed to render the new page will be in service worker cache.
 
 Example implementation of upstream request tracking changes required in your `server.ts` file:
@@ -334,7 +334,7 @@ Setting `--production` runs your app exactly as it will be uploaded to the {{ PR
 
 ## Deploying
 
-Deploying requires an account on {{ PRODUCT_NAME }}. [Sign up here for free.](https://moovweb.app/signup) Once you have an account, you can deploy to {{ PRODUCT_NAME }} by running the following in the root folder of your project:
+Deploying requires an account on {{ PRODUCT_NAME }}. [Sign up here for free.]({{ APP_URL }}/signup) Once you have an account, you can deploy to {{ PRODUCT_NAME }} by running the following in the root folder of your project:
 
 ```bash
 {{ CLI_NAME }} deploy

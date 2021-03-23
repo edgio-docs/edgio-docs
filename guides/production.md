@@ -21,7 +21,7 @@ To configure your custom domains:
 
 If you're migrating to {{ PRODUCT_NAME }} from [Fastly](https://www.fastly.com/), you will need to do the following before adding your domains to your {{ PRODUCT_NAME }} environment:
 
-- [Contact Fastly support](https://support.fastly.com/hc/en-us/requests/new?ticket_form_id=360000269711) and request that control of your domains be transferred to Moovweb. Be sure to explicitly list each domain that needs to transferred and ask Fastly to contact xdn-support(at)moovweb.com if they need Moovweb to confirm the transfer.
+- [Contact Fastly support](https://support.fastly.com/hc/en-us/requests/new?ticket_form_id=360000269711) and request that control of your domains be transferred to {{ PRODUCT_NAME }}. Be sure to explicitly list each domain that needs to transferred and ask Fastly to contact support(at){{ DOMAIN }} if they need {{ PRODUCT_NAME }} to confirm the transfer.
 - Before going live with {{ PRODUCT_NAME }}, you will need to ensure that you've removed your domains from all active Fastly services. To remove domains from a service, clone the service, remove the domains, then activate the new version of the service. Once the new service version is activated you can add the domains to your {{ PRODUCT_NAME }} environment and activate it.
 
 ## Network configuration
@@ -142,7 +142,7 @@ _Note: If you already have an existing certificate, you can use it by skipping a
    - Some DNS providers does not allow the creation of `CAA` DNS records
    - You can learn more about CAA DNS records on [Let's Encrypt website](https://letsencrypt.org/docs/caa/), on [Wikipedia](https://en.wikipedia.org/wiki/DNS_Certification_Authority_Authorization), on [Gandi](https://docs.gandi.net/en/domain_names/faq/record_types/caa_record.html) and on [eff.org](https://www.eff.org/deeplinks/2018/02/technical-deep-dive-securing-automation-acme-dns-challenge-validation)
 
-3. Add an `_acme-challenge.` CNAME DNS entry to allow Moovweb to issue a certificate request on your behalf.
+3. Add an `_acme-challenge.` CNAME DNS entry to allow {{ PRODUCT_NAME }} to issue a certificate request on your behalf.
 
    Log into your DNS provider and add one `CNAME` type DNS entry with the value `_acme-challenge.<your-domain-here>` for each custom domain. For example, if your custom domain is `mysite.com`, the DNS entry should have a value of `_acme-challenge.mysite.com`. Each record should point to `_acme-challenge.{{ PRODUCT_NAME_LOWER }}-validation.com`.
 
@@ -186,7 +186,7 @@ _Note: If you already have an existing certificate, you can use it by skipping a
 
    - You can read more about the `_acme-challenge.` process by visiting [Let's Encrypt Website](https://letsencrypt.org/docs/challenge-types/#dns-01-challenge)
 
-4. Once the requirements above are met, you can generate the certificate using the [{{ PRODUCT_NAME }} Developer Console](https://moovweb.app):
+4. Once the requirements above are met, you can generate the certificate using the [{{ PRODUCT_NAME }} Developer Console]({{ APP_URL }}):
 
    1. Select your site and navigate to _Settings_ => _SSL Certificate_
 
@@ -245,11 +245,11 @@ DNS.3=your-apex-domain.com
 # And so on
 ```
 
-Replace the country, state/province, locality, organization name and, most importantly Common Name (CN), for the cert which must be the fully qualified domain name for your domain (e.g. for Moovweb that is `www.moovweb.com`)
+Replace the country, state/province, locality, organization name and, most importantly Common Name (CN), for the cert which must be the fully qualified domain name for your domain (e.g. for {{ PRODUCT_NAME }} that is `www.{{ DOMAIN }}`)
 
-You will want to add all the additional domains into the `alt_names` section. There you should add your development, staging and other domains although Moovweb strongly encourages the use of wildcard certs.
+You will want to add all the additional domains into the `alt_names` section. There you should add your development, staging and other domains although {{ PRODUCT_NAME }} strongly encourages the use of wildcard certs.
 
-3. Run `openssl req -out moovweb-xdn.csr -newkey rsa:2048 -nodes -keyout moovweb-xdn.key -config moovweb-xdn.conf -batch`. This should generate your CSR in `moovweb-xdn.csr` and private key in `moovweb-xdn.key`. If you want OpenSSL to ask you for each different input, remove `-batch` option and re-run the command.
+3. Run `openssl req -out {{ PRODUCT_NAME_LOWER }}-xdn.csr -newkey rsa:2048 -nodes -keyout moovweb-xdn.key -config moovweb-xdn.conf -batch`. This should generate your CSR in `moovweb-xdn.csr` and private key in `moovweb-xdn.key`. If you want OpenSSL to ask you for each different input, remove `-batch` option and re-run the command.
 4. Read the CSR (e.g. `cat moovweb-xdn.csr`) and send it to your CA for certification.
 
 ### Uploading your certificate
@@ -268,12 +268,12 @@ Then, scroll down to **SSL Certificate**. _Note that you need to be in the **Adm
 - Intermediate certificates (IC) used by CA including CA's signing certificate
 - Private key that was generated at the same time with CSR
 
-The private key part is non-public data and must not be shared with parties other than Moovweb. {{ PRODUCT_NAME }} stores your private key securely at rest. It is never shown in the developer console and only used to provision parts of the infrastructure that are used to terminate TLS connections.
+The private key part is non-public data and must not be shared with parties other than {{ PRODUCT_NAME }}. {{ PRODUCT_NAME }} stores your private key securely at rest. It is never shown in the developer console and only used to provision parts of the infrastructure that are used to terminate TLS connections.
 
 You need to copy the certificate, intermediate certificates and the private key into the corresponding edit boxes and, once done, click on "Save Changes" button. This will change the status of your certificate to "Activation in Progress".
 
 ![in-progress-certificate](/images/production/in-progress-certificate.png)
 
-Note that the certificate activation should take a few minutes. If you don't see the following within the hour, please contact [support](https://moovweb.app/help). Once activated, you should see the following:
+Note that the certificate activation should take a few minutes. If you don't see the following within the hour, please contact [support]({{ APP_URL }}/help). Once activated, you should see the following:
 
 ![activated-certificate](/images/production/activated-certificate.png)

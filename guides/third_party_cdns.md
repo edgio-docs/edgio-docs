@@ -4,7 +4,7 @@
 
 ## HTTP traffic
 
-{{ PRODUCT_NAME }} does not support HTTP traffic and has a built-in redirect to HTTPS. That redirect relies on the value of `host` request header in order to form the value of `location` response header (e.g. a `host` value of `developer.moovweb.com` will result in a `location` value of `https://developer.moovweb.com`). When a third-party CDN is in front of {{ PRODUCT_NAME }}, the `host` header is not the public facing domain but rather the domain to which the downstream CDN is routing traffic. If the downstream CDN allows HTTP traffic to reach {{ PRODUCT_NAME }} then {{ PRODUCT_NAME }} will respond with an incorrect value in `location` response header.
+{{ PRODUCT_NAME }} does not support HTTP traffic and has a built-in redirect to HTTPS. That redirect relies on the value of `host` request header in order to form the value of `location` response header (e.g. a `host` value of `{{ DOCS_DOMAIN }}` will result in a `location` value of `{{ DOCS_URL }}`). When a third-party CDN is in front of {{ PRODUCT_NAME }}, the `host` header is not the public facing domain but rather the domain to which the downstream CDN is routing traffic. If the downstream CDN allows HTTP traffic to reach {{ PRODUCT_NAME }} then {{ PRODUCT_NAME }} will respond with an incorrect value in `location` response header.
 
 Options to solve these all rely on different ways of configuring the third-party CDN:
 
@@ -29,7 +29,7 @@ Caching and traffic metrics are another area that is affected by CDN caching or 
 
 ## IPs
 
-When behind a third-party CDN, {{ PRODUCT_NAME }} will analyze `x-forwarded-for` to correctly extract the client IP from it and inject it into [`{{ HEADER_PREFIX }}client-ip`](request_headers#section_general_headers). You can continue to use `{{ HEADER_PREFIX }}client-ip` as you otherwise would.
+When behind a third-party CDN, {{ PRODUCT_NAME }} will analyze `x-forwarded-for` to correctly extract the client IP from it and inject it into [`{{ HEADER_PREFIX }}-client-ip`](request_headers#section_general_headers). You can continue to use `{{ HEADER_PREFIX }}-client-ip` as you otherwise would.
 
 ## Access Logs
 

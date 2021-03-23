@@ -8,7 +8,7 @@ The {{ PRODUCT_NAME }} platform exposes three types of logs to users:
 
 ## Build Logs
 
-Each time you deploy to {{ PRODUCT_NAME }} using the `{{ CLI_NAME }} deploy` command, information about the deployment is logged, including the output of the `{{ CLI_NAME }} deploy` command itself. You can view these logs in real-time by viewing your deployment on [moovweb.app](https://moovweb.app).
+Each time you deploy to {{ PRODUCT_NAME }} using the `{{ CLI_NAME }} deploy` command, information about the deployment is logged, including the output of the `{{ CLI_NAME }} deploy` command itself. You can view these logs in real-time by viewing your deployment on [{{ APP_DOMAIN }}]({{ APP_URL }}).
 
 ![build](/images/logs/build.png)
 
@@ -22,7 +22,7 @@ Here you can limit the output to only those statements coming from your IP addre
 
 ## Access Logs
 
-{{ PRODUCT_NAME }} [Enterprise tier](https://www.moovweb.com/pricing) customers can receive streaming access logs that capture information about each request served by {{ PRODUCT_NAME }}. To do so refer to the "Access Logs" tab:
+{{ PRODUCT_NAME }} [Enterprise tier]({{ WWW_URL }}/pricing) customers can receive streaming access logs that capture information about each request served by {{ PRODUCT_NAME }}. To do so refer to the "Access Logs" tab:
 
 ![access](/images/logs/access.png)
 
@@ -167,7 +167,7 @@ Response content type.
 
 ### xmr
 
-Request header {{ HEADER_PREFIX }}matched-routes, logs all routes matched and is required to order the routes table in caching metrics
+Request header {{ HEADER_PREFIX }}-matched-routes, logs all routes matched and is required to order the routes table in caching metrics
 
 ### rfr
 
@@ -179,15 +179,15 @@ User agent.
 
 ### xmt
 
-Response [{{ HEADER_PREFIX }}t](/guides/response_headers#section_structure_of_) header with different critical path timings
+Response [{{ HEADER_PREFIX }}-t](/guides/response_headers#section_structure_of_) header with different critical path timings
 
 ### xut
 
-Response {{ HEADER_PREFIX }}user-t header with different user [performance](/guides/performance) metrics
+Response {{ HEADER_PREFIX }}-user-t header with different user [performance](/guides/performance) metrics
 
 ### xms
 
-Response {{ HEADER_PREFIX }}status header with different critical path status codes
+Response {{ HEADER_PREFIX }}-status header with different critical path status codes
 
 ### pre
 
@@ -209,7 +209,7 @@ IP of the backend that responded to the request
 
 ### hrid
 
-Request ID of the response hit in the cache. Corresponds to [`{{ HEADER_PREFIX }}hit-request-id`](response_headers#section_general_headers) response header.
+Request ID of the response hit in the cache. Corresponds to [`{{ HEADER_PREFIX }}-hit-request-id`](response_headers#section_general_headers) response header.
 
 ## Setting up log aggregation tools
 

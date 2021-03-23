@@ -8,7 +8,7 @@ Here is an example of the [Next.js Commerce](https://nextjs.org/commerce) templa
 including image optimization, localization, and incremental static regeneration with stale-while-revalidate.
 
 [Try the Next.js Commerce Example Site](https://moovweb-docs-nextjs-commerce-default.moovweb-edge.io/?button)
-[View the Code](https://github.com/moovweb-docs/xdn-examples/tree/main/nextjs-commerce?button)
+[View the Code](https://github.com/{{ EXAMPLES_REPO }}/tree/main/nextjs-commerce?button)
 
 ## Connector
 
@@ -25,7 +25,7 @@ The easiest way to try Next.js Commerce on {{ PRODUCT_NAME }} is to clone and de
 2. Clone the {{ PRODUCT_NAME }} examples repository:
 
 ```bash
-git clone git@github.com:moovweb-docs/xdn-examples.git
+git clone git@github.com:{{ EXAMPLES_REPO }}.git
 ```
 
 3. Navigate to the `nextjs-commerce` example directory and install the required modules via `yarn`:
@@ -112,7 +112,7 @@ BIGCOMMERCE_STOREFRONT_API_URL="https://store-XXXX-XXXX.mybigcommerce.com/graphq
 BIGCOMMERCE_STORE_API_URL="https://api.bigcommerce.com/stores/XXXX"
 ```
 
-An [example `.env.local` file](https://github.com/moovweb-docs/xdn-examples/blob/main/nextjs-commerce/.env.local) is in the the {{ PRODUCT_NAME }} examples repo.
+An [example `.env.local` file](https://github.com/{{ EXAMPLES_REPO }}/blob/main/nextjs-commerce/.env.local) is in the the {{ PRODUCT_NAME }} examples repo.
 
 9. Deploy to {{ PRODUCT_NAME }}:
 

@@ -3,7 +3,7 @@
 This guide shows you how to deploy [Spartacus](https://sap.github.io/spartacus-docs) apps on {{ PRODUCT_NAME }}.
 
 [Try the Spartacus Example Site](https://moovweb-docs-xdn-spartacus-example-default.moovweb-edge.io/?button)
-[View the Code](https://github.com/moovweb-docs/xdn-examples/tree/main/xdn-spartacus-example?button)
+[View the Code](https://github.com/{{ EXAMPLES_REPO }}/tree/main/xdn-spartacus-example?button)
 
 ## Connector
 

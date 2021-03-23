@@ -7,13 +7,13 @@ This guide shows you how to serve generic static sites on {{ PRODUCT_NAME }}.
 Here are a few examples of common static sites served by {{ PRODUCT_NAME }}.
 
 [Backbone.js Static Example](https://moovweb-docs-static-backbonejs-example-default.moovweb-edge.io/?button)
-[View the Code](https://github.com/moovweb-docs/xdn-examples/tree/main/static-backbonejs-example?button)
+[View the Code](https://github.com/{{ EXAMPLES_REPO }}/tree/main/static-backbonejs-example?button)
 
 [React Static Example](https://moovweb-docs-static-react-example-default.moovweb-edge.io/?button)
-[View the Code](https://github.com/moovweb-docs/xdn-examples/tree/main/static-react-example?button)
+[View the Code](https://github.com/{{ EXAMPLES_REPO }}/tree/main/static-react-example?button)
 
 [Vue.js Static Example](https://moovweb-docs-static-vuejs-example-default.moovweb-edge.io/?button)
-[View the Code](https://github.com/moovweb-docs/xdn-examples/tree/main/static-vuejs-example?button)
+[View the Code](https://github.com/{{ EXAMPLES_REPO }}/tree/main/static-vuejs-example?button)
 
 ## Install Node.js and npm
 

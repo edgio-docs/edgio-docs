@@ -3,7 +3,7 @@
 ## Example Site
 
 [Try the VSF1 Example Site](https://moovweb-demos-vsf1-default.moovweb-edge.io/?button)
-[View the Code](https://github.com/moovweb-docs/xdn-examples/tree/main/xdn-vue-storefront-example?button)
+[View the Code](https://github.com/{{ EXAMPLES_REPO }}/tree/main/xdn-vue-storefront-example?button)
 
 ## 1. Install Vue Storefront
 

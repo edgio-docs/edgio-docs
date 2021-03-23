@@ -7,7 +7,7 @@ This guide shows you how to deploy [Frontity](https://frontity.org/) apps on {{ 
 Here is an example of the Frontity starter app running on {{ PRODUCT_NAME }}:
 
 [Try the Frontity Example Site](https://moovweb-docs-xdn-frontity-example-default.moovweb-edge.io?button)
-[View the Code](https://github.com/moovweb-docs/xdn-examples/tree/main/xdn-frontity-example?button)
+[View the Code](https://github.com/{{ EXAMPLES_REPO }}/tree/main/xdn-frontity-example?button)
 
 ## Connector
 

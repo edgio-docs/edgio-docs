@@ -10,6 +10,8 @@ const DOMAIN = 'layer0.co'
 const APP_DOMAIN = `app.${DOMAIN}`
 const DOCS_DOMAIN = `docs.${DOMAIN}`
 const DOCS_PAGES_DOMAIN = 'layer0-docs.github.io'
+const DOCS_REPO = 'layer0-docs/layer0-docs'
+const EXAMPLES_REPO = 'layer0-docs/layer0-examples'
 
 const WWW_URL = `https://www.${DOMAIN}`
 const APP_URL = `https://${APP_DOMAIN}`
@@ -43,4 +45,6 @@ module.exports = {
   DOCS_PAGES_REPO_URL,
   NODE_VERSION,
   STARTER_NAME,
+  DOCS_REPO,
+  EXAMPLES_REPO,
 }

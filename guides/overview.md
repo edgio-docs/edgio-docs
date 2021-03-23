@@ -6,8 +6,7 @@ This guide introduces the high-level concepts behind {{ PRODUCT_NAME }}.
 
 ## What is an {{ PRODUCT_NAME }}?
 
-// TODO layer0
-XDN stands for "e**X**perience **D**elivery **N**etwork". It extends the capabilities of a traditional **CDN** by not only hosting your static content, but also providing **server-side rendering** for progressive web applications as well as caching both your APIs and HTML at the network edge to provide your users with the **fastest browsing experience**.
+{{ PRODUCT_NAME }} extends the capabilities of a traditional **CDN** by not only hosting your static content, but also providing **server-side rendering** for progressive web applications as well as caching both your APIs and HTML at the network edge to provide your users with the **fastest browsing experience**.
 
 Check out our video [{{ PRODUCT_NAME }} - What & Why](https://www.youtube.com/watch?v=sJ6AkTrcZvg) for more details.
 

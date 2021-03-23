@@ -35,9 +35,8 @@ export default async function init() {
     // These typically include the routes.js file and {{ CONFIG_FILE }}. Typescript alternatives are often provided.
     .addDefaultAppResources(join(__dirname, 'default-app'))
 
-    // TODO layer0
-    // Adds xdn:* scripts to package.json
-    .addDefaultXdnScripts()
+    // Adds {{ CLI_NAME }}:* scripts to package.json
+    .addDefault{{ PRODUCT_NAME }}Scripts()
 }
 ```
 

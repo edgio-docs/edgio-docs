@@ -35,23 +35,21 @@ To add Core Web Vitals tracking via a script tag, add the following to each page
 
 ```html
 <script defer>
-  // TODO Layer0
-  function initXdnRum() {
-    new XDN.Metrics({
+  function initRum() {
+    new {{ PRODUCT_NAME }}.Metrics({
       token: 'your-token-here', // get this from {{ APP_URL }}
     }).collect()
   }
 </script>
-<script src="https://rum.moovweb.app/latest.js" defer onload="initXdnRum()"></script>
+<script src="https://rum.moovweb.app/latest.js" defer onload="initRum()"></script>
 ```
 
 ### Google Tag Manager
 
 ```html
 <script>
-  // TODO layer0
-  function initXDNMetrics() {
-    new XDN.Metrics({
+  function initMetrics() {
+    new {{ PRODUCT_NAME }}.Metrics({
       token: 'your-token-here', // get this from {{ APP_URL }}
     }).collect()
   }
@@ -59,7 +57,7 @@ To add Core Web Vitals tracking via a script tag, add the following to each page
   rumScriptTag.src = 'https://rum.moovweb.app/latest.js'
   rumScriptTag.setAttribute('defer', '')
   rumScriptTag.type = 'text/javascript'
-  rumScriptTag.onload = initXDNMetrics
+  rumScriptTag.onload = initMetrics
   document.body.appendChild(rumScriptTag)
 </script>
 ```
@@ -95,13 +93,12 @@ You can tie URLs to pages templates by providing an optional `router` parameter 
 When installing {{ PACKAGE_NAME }}/rum using a script tag, use:
 
 ```js
-// TODO layer0
-new XDN.Metrics({
+new {{ PRODUCT_NAME }}.Metrics({
   // get this from {{ APP_URL }}
   token: 'your-token-here',
 
   // assign a page label for each route:
-  router: new XDN.Router()
+  router: new {{ PRODUCT_NAME }}.Router()
     .match('/', ({ setPageLabel }) => setPageLabel('home'))
     .match('/p/:id', ({ setPageLabel }) => setPageLabel('product'))
     .match('/c/:id', ({ setPageLabel }) => setPageLabel('category')),
@@ -132,9 +129,8 @@ For non single page applications (e.g. traditional "multi-page apps"), you can a
 
 ```js
 <script>
-  // TODO layer0
-  function initXDNMetrics() {
-    new XDN.Metrics({
+  function initMetrics() {
+    new {{ PRODUCT_NAME }}.Metrics({
       token: 'your-token-here',
       pageLabel: document.title ? document.title : "(No title)",
     }).collect();
@@ -143,7 +139,7 @@ For non single page applications (e.g. traditional "multi-page apps"), you can a
   rumScriptTag.src = "https://rum.moovweb.app/latest.js";
   rumScriptTag.setAttribute("defer", "");
   rumScriptTag.type = "text/javascript";
-  rumScriptTag.onload = initXDNMetrics;
+  rumScriptTag.onload = initMetrics;
   document.body.appendChild(rumScriptTag);
 </script>
 ```
@@ -153,8 +149,7 @@ For non single page applications (e.g. traditional "multi-page apps"), you can a
 Additionally, you can tie the following data to Core Web Vitals:
 
 ```js
-// TODO layer0
-new XDN.Metrics({
+new {{ PRODUCT_NAME }}.Metrics({
   // Rather than providing a router, you can also define the page label for each page explicitly.
   // Use this option if it is more convenient to add the script tag to each page template individually
   // rather than adding it to the main application template.

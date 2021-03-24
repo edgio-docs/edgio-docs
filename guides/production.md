@@ -182,6 +182,8 @@ The XDN can generate SSL Certificates on your behalf using [**Let's Encrypt**](h
    _acme-challenge.www.mywebsite.xyz -> _acme-challenge.xdn-validation.com
    ```
 
+   If you have been previously using Let's Encrypt to generate certificates for this domain, please verify that there are no remaining TXT records named `_acme-challenge.mywebsite.xyz`.
+
    Notes:
 
    - You can read more about the `_acme-challenge.` process by visiting [Let's Encrypt Website](https://letsencrypt.org/docs/challenge-types/#dns-01-challenge)

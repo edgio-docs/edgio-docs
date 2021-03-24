@@ -166,20 +166,20 @@ The XDN can generate SSL Certificates on your behalf using [**Let's Encrypt**](h
    dig +short cname _acme-challenge.<your-domain>
 
    # For example:
-   dig +short cname _acme-challenge.www.mywebsite.xyz
+   dig +short cname _acme-challenge.mywebsite.xyz
    ```
 
    Expected result for the DNS query:
 
    ```
-   _acme-challenge.www.xdn-validation.com
+   _acme-challenge.xdn-validation.com
    ```
 
    If you use multiple domains for your website, like `mywebsite.xyz` and `www.mywebsite.xyz`, then you will have to add the `_acme-challenge` DNS record for both domains:
 
    ```
-   _acme-challenge.www.xdn-validation.com
-   _acme-challenge.xdn-validation.com
+   _acme-challenge.mywebsite.xyz -> _acme-challenge.xdn-validation.com
+   _acme-challenge.www.mywebsite.xyz -> _acme-challenge.xdn-validation.com
    ```
 
    Notes:

@@ -341,6 +341,7 @@ Some additional notes:
 
 - In order to use Webpack 5 you must use yarn to install dependencies. NPM does not support `resolutions` in package.json.
 - Webpack 5 contains many breaking changes, so it is possible that you'll need to make additional changes to the webpack config via next.config.js to get your app to build successfully.
+- You may run into this error: `UnhandledPromiseRejectionWarning: TypeError: dependency.getCondition is not a function`.  You can fix this by adding `next-offline` as a dependency using `npm i -D next-offline` or `yarn add --dev next-offline`.
 - You'll also see some deprecation warnings, like these, which are fine, as long as `xdn build` is successful:
 
 ```

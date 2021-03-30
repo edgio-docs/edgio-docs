@@ -218,3 +218,16 @@ To install the latest preview:
 ```bash
 xdn use next
 ```
+
+## Troubleshooting
+
+---
+
+### Error: Cannot find module ... on `xdn init`
+
+An uncommon issue when running `xdn init` can present a similar error:
+
+> installing @xdn/core, @xdn/cli, @xdn/prefetch, @xdn/devtools, @xdn/angular… done.
+> Error: Cannot find module ‘/Users/myUser/Projects/my-xdn-poc/node_modules/@xdn/angular/bin/init’
+
+This may be related to an outdated global version of XDN CLI. The telltale sign is reference to `/bin/` in the module path. This is an old convention. Recommended approach would be to `npm i -g @xdn/cli@latest` and then run `xdn init` on the project.

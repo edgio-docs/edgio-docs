@@ -166,21 +166,23 @@ _Note: If you already have an existing certificate, you can use it by skipping a
    dig +short cname _acme-challenge.<your-domain>
 
    # For example:
-   dig +short cname _acme-challenge.www.mywebsite.xyz
+   dig +short cname _acme-challenge.mywebsite.xyz
    ```
 
    Expected result for the DNS query:
 
    ```
-   _acme-challenge.www.{{ PRODUCT_NAME_LOWER }}-validation.com
+   _acme-challenge.{{ PRODUCT_NAME_LOWER }}-validation.com
    ```
 
    If you use multiple domains for your website, like `mywebsite.xyz` and `www.mywebsite.xyz`, then you will have to add the `_acme-challenge` DNS record for both domains:
 
    ```
-   _acme-challenge.www.{{ PRODUCT_NAME_LOWER }}-validation.com
-   _acme-challenge.{{ PRODUCT_NAME_LOWER }}-validation.com
+   _acme-challenge.mywebsite.xyz -> _acme-challenge.{{ PRODUCT_NAME_LOWER }}-validation.com
+   _acme-challenge.www.mywebsite.xyz -> _acme-challenge.{{ PRODUCT_NAME_LOWER }}-validation.com
    ```
+
+   If you have been previously using Let's Encrypt to generate certificates for this domain, please verify that there are no remaining TXT records named `_acme-challenge.mywebsite.xyz`.
 
    Notes:
 

@@ -2,7 +2,9 @@
 
 {{ PRODUCT_NAME }} is all about putting power in the hands of developers and our documentation is no different. The source code for the {{ PRODUCT_NAME }} developer docs (i.e. this site your reading now) is in an open [repository on Github](https://github.com/{{ DOCS_REPO }}) and we welcome feedback and pull requests. If you've found a typo or a better way to explain something, please submit a pull request or a file issue! Others will likely stumble over the same problem and benefit from your insight.
 
-## Running locally
+If you've found a typo or a better way to explain something, please submit a [pull request](https://github.com/layer0-docs/layer0-docs/pulls) or [file an issue](https://github.com/layer0-docs/layer0-docs/issues)!. Others will likely stumble over the same problem and benefit from your insight.
+
+## Running locally 
 
 To run the {{ PRODUCT_NAME }} docs on your machine, first clone the repository locally,
 
@@ -27,7 +29,7 @@ Finally, visit the site in your browser at http://127.0.0.1:3000.
 
 ## Architecture
 
-{{ PRODUCT_NAME }} docs are a simple Next.js application running on {{ PRODUCT_NAME }} (yes we [dogfood](https://en.wikipedia.org/wiki/Eating_your_own_dog_food)). The content is stored as pages called "guides". Each guide is a Markdown file located in the [guides folder](https://github.com/{{ DOCS_REPO }}/tree/master/guides) and the [guides.json](https://github.com/{{ DOCS_REPO }}/blob/master/guides/guides.json) controls the navigation menu for reaching the guides.
+{{ PRODUCT_NAME }} docs is a simple Next.js application running on {{ PRODUCT_NAME }} (yes we [dogfood](https://en.wikipedia.org/wiki/Eating_your_own_dog_food)). The content is stored as pages called "guides". Each guide is a Markdown file located in the [guides folder](https://github.com/{{ DOCS_REPO }}/tree/master/guides) and the [guides.json](https://github.com/{{ DOCS_REPO }}/blob/master/guides/guides.json) controls the navigation menu for reaching the guides.
 
 ## How to contribute
 

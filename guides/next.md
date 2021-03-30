@@ -78,28 +78,6 @@ This will automatically add all of the required dependencies and files to your p
 - `routes.js` - A default routes file that sends all requests to Next.js. Update this file to add caching or proxy some URLs to a different origin.
 - `sw/service-worker.js` A service worker implemented using Workbox.
 
-### Edit next.config.js
-
-Add the `withLayer0` and `withServiceWorker` plugins to `next.config.js`. If this file doesn't exist, create it in the root directory of your project folder, with the following content:
-
-```js
-// next.config.js
-
-const { withLayer0, withServiceWorker } = require('{{ PACKAGE_NAME }}/next/config')
-
-module.exports = withLayer0(
-  withServiceWorker({
-    future: {
-      webpack5: true, // Google's Workbox library requires webpack 5 when building on Next.js 10+
-    },
-  }),
-)
-```
-
-The `withLayer0` plugin ensures that your app is bundled properly for running on {{ PRODUCT_NAME }}, and `withServiceWorker` provides a service worker based on `sw/service-worker.js`.
-
-_If you're already using `next-offline`, you should remove it in favor of `withServiceWorker`, which itself uses `next-offline._
-
 ## Running Locally
 
 To simulate your app within {{ PRODUCT_NAME }} locally, run:
@@ -115,8 +93,22 @@ Deploying requires an account on {{ PRODUCT_NAME }}. [Sign up here for free.]({{
 ```bash
 {{ CLI_NAME }} deploy
 ```
-
 See [deploying](deploying) for more information.
+
+
+## Using `withServiceWorker` with Next.js
+The `next.config.js` file was updated to use `withXDN` and `withServiceWorker`.
+
+```js
+// next.config.js
+
+const { withXDN, withServiceWorker } = require('@xdn/next/config')
+
+module.exports = withXDN(withServiceWorker())
+```
+
+The `withXDN` plugin ensures that your app is bundled properly for running on the XDN, and `withServiceWorker` provides a service worker based on `sw/service-worker.js`.
+_If you're already using `next-offline`, you should remove it in favor of `withServiceWorker`, which itself uses `next-offline`._
 
 ## Prefetching
 
@@ -349,6 +341,7 @@ Some additional notes:
 
 - In order to use Webpack 5 you must use yarn to install dependencies. NPM does not support `resolutions` in package.json.
 - Webpack 5 contains many breaking changes, so it is possible that you'll need to make additional changes to the webpack config via next.config.js to get your app to build successfully.
+- You may run into this error: `UnhandledPromiseRejectionWarning: TypeError: dependency.getCondition is not a function`.  You can fix this by adding `next-offline` as a dependency using `npm i -D next-offline` or `yarn add --dev next-offline`.
 - You'll also see some deprecation warnings, like these, which are fine, as long as `{{ CLI_NAME }} build` is successful:
 
 ```

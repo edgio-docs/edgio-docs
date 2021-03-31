@@ -6,8 +6,8 @@ This guide shows you how to deploy [Ember Fastboot](https://ember-fastboot.com/)
 
 Here is an example of a Fastboot app running on the XDN:
 
-[Try the Fastboot Example Site](https://moovweb-docs-xdn-fastboot-example-default.moovweb-edge.io?button)
-[View the Code](https://github.com/moovweb-docs/xdn-examples/tree/main/xdn-fastboot-example?button)
+[Try the Fastboot Example Site](https://moovweb-docs-xdn-ember-fastboot-example-default.moovweb-edge.io?button)
+[View the Code](https://github.com/moovweb-docs/xdn-examples/tree/main/xdn-ember-fastboot-example?button)
 
 ## Connector
 

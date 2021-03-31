@@ -65,7 +65,7 @@ export default class App extends Application {
 loadInitializers(App, config.modulePrefix)
 
 // add this to install the service worker when your app loads
-if (typeof window != 'undefined') {
+if (typeof navigator != 'undefined') {
   install()
 }
 ```

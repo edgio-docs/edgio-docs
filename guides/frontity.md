@@ -55,8 +55,8 @@ the Header component in your theme as follows:
 
 ```js
 // mars-theme/src/components/header.js
-
 import { useEffect } from 'react'
+import { install } from '@xdn/prefetch/window'
 
 const Header = ({ state }) => {
   useEffect(() => {

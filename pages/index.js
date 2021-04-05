@@ -6,7 +6,7 @@ import PageWrapper from '../components/PageWrapper'
 import { Typography, makeStyles, Container, Grid, Paper, Divider } from '@material-ui/core'
 import getBaseUrl from '../components/utils/getBaseUrl'
 import Link from 'next/link'
-import MoovwebXDN from '../components/icons/moovweb-xdn-black.svg'
+import Layer0Icon from '../components/icons/layer0-black.svg'
 import Icon from '../components/icons/Icon'
 import Markdown from '../components/Markdown'
 import { DOCS_PAGES_REPO_URL, PRODUCT_NAME } from '../constants'
@@ -98,7 +98,7 @@ const Home = ({ navData, changeLog }) => {
         <title>{PRODUCT_NAME} Documentation</title>
       </Head>
       <div className={classes.hero}>
-        <MoovwebXDN className={classes.logo} />
+        <Layer0Icon className={classes.logo} />
         <Typography variant="h2" style={{ maxWidth: 800, marginTop: 0, fontSize: '34px' }}>
           <div style={{ position: 'relative' }}>Instant sites. Happy developers.</div>
         </Typography>

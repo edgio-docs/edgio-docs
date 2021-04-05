@@ -1,6 +1,6 @@
 import { makeStyles } from '@material-ui/core'
 import React from 'react'
-import Layer0 from './icons/moovweb-xdn-white.svg'
+import Layer0 from './icons/layer0-white.svg'
 
 const useStyles = makeStyles(theme => ({
   logo: {

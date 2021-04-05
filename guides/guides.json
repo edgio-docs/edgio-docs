@@ -145,6 +145,12 @@
         "href": "/guides/[...guide]"
       },
       {
+        "text": "Ember Fastboot",
+        "icon": "fastboot",
+        "as": "/guides/ember_fastboot",
+        "href": "/guides/[...guide]"
+      },
+      {
         "text": "Gatsby",
         "icon": "gatsby",
         "as": "/guides/gatsby",

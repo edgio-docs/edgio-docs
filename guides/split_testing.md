@@ -93,17 +93,17 @@ to send 100% of traffic to a specific destination.
 
 ## Third-Party CDNs
 
-If {{ PRODUCT_NAME }} is behind a third-party CDN, it is critical that you update the third party CDN to not cache responses from {{ PRODUCT_NAME }} nor to affect any cookies that begin with `xdn_`. You can find more details [here](third_party_cdns#section_split_testing).
+If {{ PRODUCT_NAME }} is behind a third-party CDN, it is critical that you update the third party CDN to not cache responses from {{ PRODUCT_NAME }} nor to affect any cookies that begin with `{{ COOKIE_PREFIX }}_`. You can find more details [here](third_party_cdns#section_split_testing).
 
 ## How requests are routed
 
-When a split test is active, all users are assigned to a random number between 1 and 100 via a cookie called `xdn_bucket`. This cookie assignment is done at edge, before the user's first request hits cache, and so there is no performance penalty for new users.
+When a split test is active, all users are assigned to a random number between 1 and 100 via a cookie called `{{ COOKIE_PREFIX }}_bucket`. This cookie assignment is done at edge, before the user's first request hits cache, and so there is no performance penalty for new users.
 
-The experience the user sees is determined by the traffic split percentage you set in the environment configuration in the {{ PRODUCT_NAME }} Developer Console and on which side of the split the user's `xdn_bucket` value falls.
+The experience the user sees is determined by the traffic split percentage you set in the environment configuration in the {{ PRODUCT_NAME }} Developer Console and on which side of the split the user's `{{ COOKIE_PREFIX }}_bucket` value falls.
 
 ## Identifying the experience on the client
 
-When a split test is active, {{ PRODUCT_NAME }} will automatically set an `xdn_destination` cookie to the name
+When a split test is active, {{ PRODUCT_NAME }} will automatically set an `{{ COOKIE_PREFIX }}_destination` cookie to the name
 of the chosen destination. You can use this value in the browser to report the split test experience assignment to
 analytics.
 

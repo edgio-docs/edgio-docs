@@ -218,7 +218,7 @@ To create CSR and private key do the following:
 - On Windows you can install it by using [`Chocolatey`](https://chocolatey.org/) package manager (e.g. `choco install openssl`)
 - On Linux/Unix you can install it by running the built-in OS package manager (e.g. `apt-get install openssl`, `apk add openssl` and so on)
 
-2. Go to the directory of your choice and create a configuration file `moovweb-xdn.conf` based on this template:
+2. Go to the directory of your choice and create a configuration file `layer0.conf` based on this template:
 
 ```properties
 [req]
@@ -251,8 +251,8 @@ Replace the country, state/province, locality, organization name and, most impor
 
 You will want to add all the additional domains into the `alt_names` section. There you should add your development, staging and other domains although {{ PRODUCT_NAME }} strongly encourages the use of wildcard certs.
 
-3. Run `openssl req -out {{ PRODUCT_NAME_LOWER }}-xdn.csr -newkey rsa:2048 -nodes -keyout moovweb-xdn.key -config moovweb-xdn.conf -batch`. This should generate your CSR in `moovweb-xdn.csr` and private key in `moovweb-xdn.key`. If you want OpenSSL to ask you for each different input, remove `-batch` option and re-run the command.
-4. Read the CSR (e.g. `cat moovweb-xdn.csr`) and send it to your CA for certification.
+3. Run `openssl req -out {{ PRODUCT_NAME_LOWER }}.csr -newkey rsa:2048 -nodes -keyout {{ PRODUCT_NAME_LOWER }}.key -config {{ PRODUCT_NAME_LOWER }}.conf -batch`. This should generate your CSR in `{{ PRODUCT_NAME_LOWER }}.csr` and private key in `{{ PRODUCT_NAME_LOWER }}.key`. If you want OpenSSL to ask you for each different input, remove `-batch` option and re-run the command.
+4. Read the CSR (e.g. `cat {{ PRODUCT_NAME_LOWER }}.csr`) and send it to your CA for certification.
 
 ### Uploading your certificate
 

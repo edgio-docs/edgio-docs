@@ -185,7 +185,7 @@ Example project structure:
 
 ```
 /my-project
-  /xdn              # reference this directory in the connector property in {{ CONFIG_FILE }}
+  /layer0              # reference this directory in the connector property in {{ CONFIG_FILE }}
     dev.js
     prod.js
     build.js

@@ -8,7 +8,7 @@
 
 ![devtools](/images/devtools/devtools.png?width=275)
 
-[Live demo of {{ PRODUCT_NAME }} Devtools running on a React Storefront site](https://demo.reactstorefront.io/__xdn__/devtools/enable)
+[Live demo of {{ PRODUCT_NAME }} Devtools running on a React Storefront site](https://demo.reactstorefront.io/__layer0__/devtools/enable)
 
 ![video](https://www.youtube.com/watch?v=4AYQAvkc0UY)
 
@@ -45,7 +45,7 @@ installDevtools()
 Alternatively, you can add the following `script` tag to your app's HTML:
 
 ```html
-<script defer src="/__xdn__/devtools/install.js"></script>
+<script defer src="/__layer0__/devtools/install.js"></script>
 ```
 
 ### Service Worker
@@ -64,6 +64,6 @@ Using the [{{ PRODUCT_NAME }} Developer Console]({{ APP_URL }}), navigate to you
 
 ### Per Browsing Session
 
-Point your browser to `/__xdn__/devtools/enable` or `/__xdn__/devtools/disable` to explicitly enable or disable {{ PRODUCT_NAME }} Devtools for your browsing session. This takes precedence over the environment config and the domain default.
+Point your browser to `/__layer0__/devtools/enable` or `/__layer0__/devtools/disable` to explicitly enable or disable {{ PRODUCT_NAME }} Devtools for your browsing session. This takes precedence over the environment config and the domain default.
 
 If the Devtools were previously enabled and you disable them, you may want to remove the service worker to get rid of the Devtools-specific route handlers that were installed on-demand when enabling it. This can be done using the Application tab in Chrome Developer Tools.

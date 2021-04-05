@@ -55,7 +55,7 @@ or if you need to copy into a specific directory within the {{ PRODUCT_NAME }} b
 
 ```js
 includeFiles: {
-  'lang/**/*': 'another/dir/in/xdn/lambda',
+  'lang/**/*': 'another/dir/in/layer0/lambda',
 },
 ```
 

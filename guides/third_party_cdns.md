@@ -17,7 +17,7 @@ Options to solve these all rely on different ways of configuring the third-party
 {{ PRODUCT_NAME }} offers fully featured [split testing](/guides/split_testing). When {{ PRODUCT_NAME }} is running behind another CDN, the CDN must be configured in a very specific way in order for split testing to work:
 
 1. Downstream CDN must be configured to not [cache](#section_caching) anything.
-2. The CDN must be configured to not affect any cookies that begin with [`xdn_`](split_testing#section_how_requests_are_routed).
+2. The CDN must be configured to not affect any cookies that begin with [`{{ COOKIE_PREFIX }}_`](split_testing#section_how_requests_are_routed).
 
 Unless these conditions are met, the users will almost certainly receive a mix of content from both experiences in the split test, which can lead to a broken app and invalid split testing results.
 

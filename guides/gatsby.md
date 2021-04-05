@@ -8,7 +8,7 @@ This guide shows you how to deploy an Gatsby application on {{ PRODUCT_NAME }}:
 
 This framework has a connector developed for {{ PRODUCT_NAME }}. See [Connectors](connectors) for more information.
 
-[View the Connector Code](https://github.com/moovweb-docs/xdn-connectors/tree/main/xdn-gatsby-connector?button)
+[View the Connector Code](https://github.com/moovweb-docs/layer0-connectors/tree/main/layer0-gatsby-connector?button)
 
 ## Install Node.js and npm
 

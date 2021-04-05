@@ -393,7 +393,7 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: 12
-          registry-url: https://npm-proxy.fury.io/moovweb/
+          registry-url: https://npm-proxy.fury.io/layer0/
       - name: Cache node modules
         uses: actions/cache@v1
         env:

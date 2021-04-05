@@ -34,7 +34,7 @@ Access logs contain the following fields:
 
 Millisecond resolution of the request start time in UNIX epoch.
 
-### xdn
+### {{ PRODUCT_NAME_LOWER }}
 
 The application's {{ PRODUCT_NAME }} version processing this request.
 
@@ -191,7 +191,7 @@ Response {{ HEADER_PREFIX }}-status header with different critical path status c
 
 ### pre
 
-If xdn_prefetch parameter was specified value of 1, otherwise not present.
+If {{ COOKIE_PREFIX }}_prefetch parameter was specified value of 1, otherwise not present.
 
 ### ttl
 

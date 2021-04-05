@@ -15,7 +15,7 @@ git clone git@github.com:{{ DOCS_REPO }}.git
 Then install the dependencies:
 
 ```bash
-cd xdn-docs
+cd layer0-docs
 npm install
 ```
 

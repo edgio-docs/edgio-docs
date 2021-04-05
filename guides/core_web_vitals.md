@@ -41,7 +41,7 @@ To add Core Web Vitals tracking via a script tag, add the following to each page
     }).collect()
   }
 </script>
-<script src="https://rum.moovweb.app/latest.js" defer onload="initRum()"></script>
+<script src="https://rum.{{ DOMAIN }}/latest.js" defer onload="initRum()"></script>
 ```
 
 ### Google Tag Manager
@@ -54,7 +54,7 @@ To add Core Web Vitals tracking via a script tag, add the following to each page
     }).collect()
   }
   var rumScriptTag = document.createElement('script')
-  rumScriptTag.src = 'https://rum.moovweb.app/latest.js'
+  rumScriptTag.src = 'https://rum.{{ DOMAIN }}/latest.js'
   rumScriptTag.setAttribute('defer', '')
   rumScriptTag.type = 'text/javascript'
   rumScriptTag.onload = initMetrics
@@ -136,7 +136,7 @@ For non single page applications (e.g. traditional "multi-page apps"), you can a
     }).collect();
   }
   var rumScriptTag = document.createElement('script');
-  rumScriptTag.src = "https://rum.moovweb.app/latest.js";
+  rumScriptTag.src = "https://rum.{{ DOMAIN }}/latest.js";
   rumScriptTag.setAttribute("defer", "");
   rumScriptTag.type = "text/javascript";
   rumScriptTag.onload = initMetrics;

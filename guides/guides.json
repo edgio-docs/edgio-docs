@@ -228,11 +228,11 @@
     "text": "API Documentation",
     "items": [
       {
-        "text": "@xdn/core",
+        "text": "@layer0/core",
         "as": "/docs/api/core/"
       },
       {
-        "text": "@xdn/prefetch",
+        "text": "@layer0/prefetch",
         "as": "/docs/api/prefetch/"
       }
     ]
@@ -245,7 +245,7 @@
         "as": "https://www.youtube.com/playlist?list=PLv3_GoCvQgUn8pKufafW2Ufy0DXTL3BCp"
       },
       {
-        "text": "XDN Tutorials",
+        "text": "Layer0 Tutorials",
         "as": "https://www.youtube.com/playlist?list=PLv3_GoCvQgUnbIlR-OFhS9dQW4oSHv4ji"
       }
     ]
@@ -254,8 +254,8 @@
     "text": "Reference",
     "items": [
       {
-        "text": "xdn.config.js",
-        "as": "/guides/xdn_config",
+        "text": "layer0.config.js",
+        "as": "/guides/layer0_config",
         "href": "/guides/[...guide]"
       },
       {
@@ -294,7 +294,7 @@
         "href": "/guides/[...guide]"
       },
       {
-        "text": "XDN Starter",
+        "text": "Layer0 Starter",
         "as": "/guides/starter",
         "href": "/guides/[...guide]"
       },

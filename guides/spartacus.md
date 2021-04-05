@@ -2,14 +2,14 @@
 
 This guide shows you how to deploy [Spartacus](https://sap.github.io/spartacus-docs) apps on {{ PRODUCT_NAME }}.
 
-[Try the Spartacus Example Site](https://moovweb-docs-xdn-spartacus-example-default.moovweb-edge.io/?button)
-[View the Code](https://github.com/{{ EXAMPLES_REPO }}/tree/main/xdn-spartacus-example?button)
+[Try the Spartacus Example Site](https://moovweb-docs-layer0-spartacus-example-default.moovweb-edge.io/?button)
+[View the Code](https://github.com/{{ EXAMPLES_REPO }}/tree/main/layer0-spartacus-example?button)
 
 ## Connector
 
 This framework has a connector developed for {{ PRODUCT_NAME }}. See [Connectors](connectors) for more information.
 
-[View the Connector Code](https://github.com/moovweb-docs/xdn-connectors/tree/main/xdn-spartacus-connector?button)
+[View the Connector Code](https://github.com/moovweb-docs/layer0-connectors/tree/main/layer0-spartacus-connector?button)
 
 ## Install Node.js and npm
 
@@ -30,7 +30,7 @@ If you don't already have a Spartacus application, you can create one using:
 
 ```bash
 npm install -g @angular/cli@9
-ng new my-xdn-spartacus-app
+ng new my-layer0-spartacus-app
 ```
 
 You should now have a working starter app. Run `ng serve` to see the application running on `localhost:4200`.
@@ -81,7 +81,7 @@ This will automatically add all of the required dependencies and files to your p
 
 #### 3. Update `{{ CONFIG_FILE }}`
 
-For an app called `my-xdn-spartacus-app` the {{ PRODUCT_NAME }} config file created by `{{ CLI_NAME }} init` will look like so:
+For an app called `my-layer0-spartacus-app` the {{ PRODUCT_NAME }} config file created by `{{ CLI_NAME }} init` will look like so:
 
 ```js
 // This file was automatically added by {{ CLI_NAME }} deploy.
@@ -132,17 +132,17 @@ import 'zone.js/dist/zone-node'
 import * as express from 'express'
 import { join } from 'path'
 
-+ // xdn
++ // layer0
 + import * as http from 'http'
 + import * as https from 'https'
 + import createRenderCallback from '{{ PACKAGE_NAME }}/spartacus/server/createRenderCallback'
-+ import installXdnMiddleware from '{{ PACKAGE_NAME }}/spartacus/server/installXdnMiddleware'
++ import installLayer0Middleware from '{{ PACKAGE_NAME }}/spartacus/server/installLayer0Middleware'
 
 
 // Express server
 const server = express()
 
-+ installXdnMiddleware({ server, http, https });
++ installLayer0Middleware({ server, http, https });
 
 const PORT = process.env.PORT || 4200
 const DIST_FOLDER = join(process.cwd(), 'dist/<your-project-name>')

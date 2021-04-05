@@ -6,8 +6,8 @@ This guide shows you how to deploy a Next.js application on {{ PRODUCT_NAME }}.
 
 This Next.js example app uses server-side rendering and prefetching to provide lightening-fast transitions between pages.
 
-[Try the Next.js SSR Example Site](https://moovweb-docs-xdn-next-example-default.moovweb-edge.io/category/hats?button)
-[View the Code](https://github.com/{{ EXAMPLES_REPO }}/tree/main/xdn-next-example?button)
+[Try the Next.js SSR Example Site](https://moovweb-docs-layer0-next-example-default.moovweb-edge.io/category/hats?button)
+[View the Code](https://github.com/{{ EXAMPLES_REPO }}/tree/main/layer0-next-example?button)
 
 ## Next.js Commerce
 
@@ -17,7 +17,7 @@ For details on using the Next.js Commerce template with {{ PRODUCT_NAME }} refer
 
 This framework has a connector developed for {{ PRODUCT_NAME }}. See [Connectors](connectors) for more information.
 
-[View the Connector Code](https://github.com/moovweb-docs/xdn-connectors/tree/main/xdn-next-connector?button)
+[View the Connector Code](https://github.com/moovweb-docs/layer0-connectors/tree/main/layer0-next-connector?button)
 
 ## Supported Features
 
@@ -57,7 +57,7 @@ npm install -g {{ PACKAGE_NAME }}/cli
 ```
 
 \*\*Note
-When installing the {{ PRODUCT_NAME }} CLI globally in a virtual environment that has Node and NPM installed globally, you [may run into permission issues]({{ FORUM_URL }}/t/xdn-cli-npm-install-error/83). In that case, you can install the {{ PRODUCT_NAME }} CLI locally within you app using `npm i -D {{ PACKAGE_NAME }}/cli` and running commands using `./node_modules/{{ PACKAGE_NAME }}/cli` instead of `xdn`.
+When installing the {{ PRODUCT_NAME }} CLI globally in a virtual environment that has Node and NPM installed globally, you [may run into permission issues]({{ FORUM_URL }}/t/xdn-cli-npm-install-error/83). In that case, you can install the {{ PRODUCT_NAME }} CLI locally within you app using `npm i -D {{ PACKAGE_NAME }}/cli` and running commands using `./node_modules/{{ PACKAGE_NAME }}/cli` instead of `{{ CLI_NAME }}`.
 
 If you run into permission issues while attempting to install the {{ PRODUCT_NAME }} CLI globally on your local development machine, these may be fixed by using [nvm](https://github.com/nvm-sh/nvm) to manage Node and NPM.
 
@@ -97,17 +97,17 @@ See [deploying](deploying) for more information.
 
 
 ## Using `withServiceWorker` with Next.js
-The `next.config.js` file was updated to use `withXDN` and `withServiceWorker`.
+The `next.config.js` file was updated to use `with{{ PRODUCT_NAME }}` and `withServiceWorker`.
 
 ```js
 // next.config.js
 
-const { withXDN, withServiceWorker } = require('@xdn/next/config')
+const { with{{ PRODUCT_NAME }}, withServiceWorker } = require('{{ CLI_NAME }}/next/config')
 
-module.exports = withXDN(withServiceWorker())
+module.exports = with{{ PRODUCT_NAME }}(withServiceWorker())
 ```
 
-The `withXDN` plugin ensures that your app is bundled properly for running on the XDN, and `withServiceWorker` provides a service worker based on `sw/service-worker.js`.
+The `with{{ PRODUCT_NAME }}` plugin ensures that your app is bundled properly for running on {{ PRODUCT_NAME }}, and `withServiceWorker` provides a service worker based on `sw/service-worker.js`.
 _If you're already using `next-offline`, you should remove it in favor of `withServiceWorker`, which itself uses `next-offline`._
 
 ## Prefetching

@@ -8,7 +8,7 @@ For adding {{ PRODUCT_NAME }} to Vue Storefront 1 app follow this [guide](/guide
 
 This framework has a connector developed for {{ PRODUCT_NAME }}. See [Connectors](connectors) for more information.
 
-[View the Connector Code](https://github.com/moovweb-docs/xdn-connectors/tree/main/xdn-vue-storefront-connector?button)
+[View the Connector Code](https://github.com/layer0-docs/layer0-connectors/tree/main/layer0-vue-storefront-connector?button)
 
 ## Install Node.js and npm
 

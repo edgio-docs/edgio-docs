@@ -45,7 +45,7 @@ In order to render on {{ PRODUCT_NAME }}, you need to provide a function that ta
 
 module.exports = {
   server: {
-    path: 'xdn/server.js',
+    path: 'layer0/server.js',
   },
 }
 ```

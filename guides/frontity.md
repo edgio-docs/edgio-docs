@@ -6,14 +6,14 @@ This guide shows you how to deploy [Frontity](https://frontity.org/) apps on {{ 
 
 Here is an example of the Frontity starter app running on {{ PRODUCT_NAME }}:
 
-[Try the Frontity Example Site](https://moovweb-docs-xdn-frontity-example-default.moovweb-edge.io?button)
-[View the Code](https://github.com/{{ EXAMPLES_REPO }}/tree/main/xdn-frontity-example?button)
+[Try the Frontity Example Site](https://moovweb-docs-layer0-frontity-example-default.moovweb-edge.io?button)
+[View the Code](https://github.com/{{ EXAMPLES_REPO }}/tree/main/layer0-frontity-example?button)
 
 ## Connector
 
 This framework has a connector developed for {{ PRODUCT_NAME }}. See [Connectors](connectors) for more information.
 
-[View the Connector Code](https://github.com/moovweb-docs/xdn-connectors/tree/main/xdn-frontity-connector?button)
+[View the Connector Code](https://github.com/moovweb-docs/layer0-connectors/tree/main/layer0-frontity-connector?button)
 
 ## Install Node.js and npm
 
@@ -56,7 +56,7 @@ the Header component in your theme as follows:
 ```js
 // mars-theme/src/components/header.js
 import { useEffect } from 'react'
-import { install } from '@xdn/prefetch/window'
+import { install } from '{{ CLI_NAME }}/prefetch/window'
 
 const Header = ({ state }) => {
   useEffect(() => {

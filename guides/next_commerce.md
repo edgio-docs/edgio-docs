@@ -14,7 +14,7 @@ including image optimization, localization, and incremental static regeneration 
 
 This framework has a connector developed for {{ PRODUCT_NAME }}. See [Connectors](connectors) for more information.
 
-[View the Connector Code](https://github.com/moovweb-docs/xdn-connectors/tree/main/xdn-next-connector?button)
+[View the Connector Code](https://github.com/moovweb-docs/layer0-connectors/tree/main/layer0-next-connector?button)
 
 ## Getting Started
 
@@ -31,14 +31,14 @@ git clone git@github.com:{{ EXAMPLES_REPO }}.git
 3. Navigate to the `nextjs-commerce` example directory and install the required modules via `yarn`:
 
 ```bash
-cd xdn-examples/nextjs-commerce/
+cd layer0-examples/nextjs-commerce/
 yarn install
 ```
 
 4. Deploy to {{ PRODUCT_NAME }}:
 
 ```bash
-npm run xdn:deploy
+npm run {{ CLI_NAME }}:deploy
 ```
 
 ## Learn more

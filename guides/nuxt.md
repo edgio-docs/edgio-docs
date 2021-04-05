@@ -6,14 +6,14 @@ This guide shows you how to deploy a Nuxt.js application on {{ PRODUCT_NAME }}. 
 
 This Nuxt.js example app uses server-side rendering and prefetching to provide lightening-fast transitions between pages.
 
-[Try the Nuxt.js SSR Example Site](https://moovweb-docs-xdn-nuxt-example-default.moovweb-edge.io/category/hats?button)
-[View the Code](https://github.com/{{ EXAMPLES_REPO }}/tree/main/xdn-nuxt-example?button)
+[Try the Nuxt.js SSR Example Site](https://moovweb-docs-layer0-nuxt-example-default.moovweb-edge.io/category/hats?button)
+[View the Code](https://github.com/{{ EXAMPLES_REPO }}/tree/main/layer0-nuxt-example?button)
 
 ## Connector
 
 This framework has a connector developed for {{ PRODUCT_NAME }}. See [Connectors](connectors) for more information.
 
-[View the Connector Code](https://github.com/moovweb-docs/xdn-connectors/tree/main/xdn-nuxt-connector?button)
+[View the Connector Code](https://github.com/moovweb-docs/layer0-connectors/tree/main/layer0-nuxt-connector?button)
 
 ## Install Node.js and npm
 
@@ -78,7 +78,7 @@ This command will also update your `package.json` with the following changes:
 
 - Moves all packages in `dependencies` to `devDependencies` except those listed in the `modules` property of `nuxt.config.js`.
 - Adds `@nuxt/core` to `dependencies`
-- Adds several `scripts` to run the available `xdn` commands
+- Adds several `scripts` to run the available `{{{ CLI_NAME }}` commands
 
 As an example, here's the original `package.json` from Nuxt's create step:
 
@@ -138,11 +138,11 @@ And here is the `package.json` after modifications by `{{ CLI_NAME }} init`:
 }
 ```
 
-## Run the Nuxt.js app locally on the XDN
+## Run the Nuxt.js app locally on {{ PRODUCT_NAME }}
 Run the Nuxt.js app with the command:
 
 ```
-npm run xdn:dev
+npm run {{ CLI_NAME }}:dev
 ```
 Load the site: http://127.0.0.1:3000
 
@@ -350,7 +350,7 @@ If you get a command not found error such as:
 
 ```bash
 $ {{ CLI_NAME }} init
-- bash: xdn: command not found
+- bash: {{ CLI_NAME }}: command not found
 ```
 
 Make sure you installed the {{ PRODUCT_NAME }} CLI
@@ -387,7 +387,7 @@ npm update -g {{ PACKAGE_NAME }}/cli
 
 ---
 
-### Error on deploy: `xdn-deploy-lambda: Unzipped size must be smaller than...`
+### Error on deploy: `{{ PRODUCT_NAME_LOWER }}-deploy-lambda: Unzipped size must be smaller than...`
 
 As the error states, there is an upper limit on how big a package can be when deployed to our serverless infrastructure. Some common strategies for solving:
 

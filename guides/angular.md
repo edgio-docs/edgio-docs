@@ -6,14 +6,14 @@ This guide shows you how to deploy an Angular application on {{ PRODUCT_NAME }}:
 
 This Angular example app uses server-side rendering and prefetching to provide lightening-fast transitions between pages.
 
-[Try the Angular SSR Example Site](https://moovweb-docs-xdn-angular-example-default.moovweb-edge.io/category/hats?button)
-[View the Code](https://github.com/{{ EXAMPLES_REPO }}/tree/main/xdn-angular-example?button)
+[Try the Angular SSR Example Site](https://moovweb-docs-layer0-angular-example-default.moovweb-edge.io/category/hats?button)
+[View the Code](https://github.com/{{ EXAMPLES_REPO }}/tree/main/layer0-angular-example?button)
 
 ## Connector
 
 This framework has a connector developed for {{ PRDUCT_NAME }}. See [Connectors](connectors) for more information.
 
-[View the Connector Code](https://github.com/moovweb-docs/xdn-connectors/tree/main/xdn-angular-connector?button)
+[View the Connector Code](https://github.com/layer0-docs/layer0-connectors/tree/main/layer0-angular-connector?button)
 
 ## Install Node.js and npm
 

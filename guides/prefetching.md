@@ -403,7 +403,7 @@ You can test that everything is running locally by running your project with:
 
 By default, {{ PRODUCT_NAME }} will only serve prefetch requests from the edge cache. If a request cannot be served from the cache, a 412 status is returned. This protects your origin servers from additional traffic associated with prefetching. If you're seeing a surprisingly high number of 412s in your logs:
 
-1. Ensure that the URLs you're prefetching match exactly those that are fetched during page navigation. Prefetch URLs will have `?xdn_prefetch=1` whereas the URLs associated with page navigation won't. That's ok. The `xdn_*` query parameters are automatically excluded from the cache key. Just ensure that there are no other differences.
+1. Ensure that the URLs you're prefetching match exactly those that are fetched during page navigation. Prefetch URLs will have `?{{ COOKIE_PREFIX }}_prefetch=1` whereas the URLs associated with page navigation won't. That's ok. The `{{ COOKIE_PREFIX }}_*` query parameters are automatically excluded from the cache key. Just ensure that there are no other differences.
 2. Ensure that `cache` settings have stale-while-revalidate enabled. For example:
 
 ```js

@@ -5,6 +5,7 @@ const CLI_NAME = 'layer0'
 const PACKAGE_NAME = '@layer0'
 const CONFIG_FILE = 'layer0.config.js'
 const HEADER_PREFIX = 'x-layer0'
+const COOKIE_PREFIX = 'layer0'
 
 const DOMAIN = 'layer0.co'
 const APP_DOMAIN = `app.${DOMAIN}`
@@ -32,6 +33,7 @@ module.exports = {
   PACKAGE_NAME,
   CONFIG_FILE,
   HEADER_PREFIX,
+  COOKIE_PREFIX,
   DOMAIN,
   APP_DOMAIN,
   DOCS_DOMAIN,

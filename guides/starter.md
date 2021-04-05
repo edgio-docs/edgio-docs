@@ -69,17 +69,17 @@ Use this worksheet when auditing your site for personalized content to inventory
 Next install {{ PRODUCT_NAME }} JavaScript libraries to your site by adding the following to your site's HTML:
 
 ```html
-<script src="/__xdn__/cache-manifest.js" defer="defer"></script>
+<script src="/__layer0__/cache-manifest.js" defer="defer"></script>
 <script src="/main.js" defer="defer"></script>
 ```
 
-These tags power the predictive prefetching and caching that will be used by {{ PRODUCT_NAME }}. Note that the JavaScript assets referenced in the above script tags are not on your server. {{ PRODUCT_NAME }} serves the assets for these script tags once {{ PRODUCT_NAME }} is installed in front of your server as described in [How {{ PRODUCT_NAME }} Starter works](#section_how_xdn_starter_works).
+These tags power the predictive prefetching and caching that will be used by {{ PRODUCT_NAME }}. Note that the JavaScript assets referenced in the above script tags are not on your server. {{ PRODUCT_NAME }} serves the assets for these script tags once {{ PRODUCT_NAME }} is installed in front of your server as described in [How {{ PRODUCT_NAME }} Starter works](#section_how_layer0_starter_works).
 
 ## Connector
 
 This framework has a connector developed for {{ PRODUCT_NAME }}. See [Connectors](connectors) for more information.
 
-[View the Connector Code](https://github.com/moovweb-docs/xdn-connectors/tree/main/xdn-starter-connector?button)
+[View the Connector Code](https://github.com/moovweb-docs/layer0-connectors/tree/main/layer0-starter-connector?button)
 
 ## Setup a Starter project
 
@@ -106,7 +106,7 @@ The {{ PRODUCT_NAME }} create module will prompt you for the following informati
 - Hostname: Enter the domain of the origin server that {{ PRODUCT_NAME }} will be accelerating.
 - Package manager: Pick `npm` unless you have strong preference and experience with `yarn`. This guide will assume `npm`.
 
-Refer to the [{{ CONFIG_FILE }}](xdn_config) guide for more details
+Refer to the [{{ CONFIG_FILE }}](layer0_config) guide for more details
 
 Here's an example output from running {{ PRODUCT_NAME }} create:
 

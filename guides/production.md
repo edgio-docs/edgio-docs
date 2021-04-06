@@ -113,7 +113,7 @@ The XDN can generate SSL Certificates on your behalf using [**Let's Encrypt**](h
 
    If there are CAA records, it means that only **certain** Certificate Authorities are allowed to generate certificates for that domain.
 
-   So in order for *Let's Encrypt* to be able to generate a certificate for your domains, you must either not have defined any CAA records, or the **Let's Encrypt CAA entry** must be among those defined in the list of CAA records.
+   So in order for *Let's Encrypt* to be able to generate a certificate for your domains, you must either not have defined any CAA records, or *Let's Encrypt*'s CAA entry must be among those defined in the list of CAA records.
 
    You can verify the value of the CAA records for your domain from the command line using the command below.
 
@@ -125,7 +125,7 @@ The XDN can generate SSL Certificates on your behalf using [**Let's Encrypt**](h
    dig caa +short mywebsite.xyz
    ```
 
-   Example of a CAA query showing that only *certain* Certificate Authorities are allowed to generate certificates on that domain:
+   Example of a CAA query showing that only **certain** Certificate Authorities are allowed to generate certificates for that domain:
 
    ```
    0 issue "amazon.com"
@@ -134,9 +134,9 @@ The XDN can generate SSL Certificates on your behalf using [**Let's Encrypt**](h
    0 issue "letsencrypt.org"
    ```
 
-   If the result of the CAA DNS query is empty, it means that *any* Certificate Authorities are allowed to generate certificates on that domain. If so, you can directly go to the next step.
+   If the result of the CAA DNS query is empty, it means that **any** Certificate Authorities are allowed to generate certificates on that domain. If so, you can directly go to the next step.
 
-   If there are already some CAA DNS entries defined on your domain, and if *Let's Encrypt* CAA is not among those, you will have to add an additionnal CCA entry for *Let's Encrypt*.
+   If there are already some CAA DNS entries defined on your domain, and if *Let's Encrypt*'s CAA entry is not among those, you will have to add an additionnal CCA entry for *Let's Encrypt*.
 
    To do so, log into your DNS provider, and add a `CAA` type DNS record with the following values:
 

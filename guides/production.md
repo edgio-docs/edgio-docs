@@ -109,7 +109,7 @@ The XDN can generate SSL Certificates on your behalf using [**Let's Encrypt**](h
 
    The CAA DNS entries of a domain behave like a whitelist to indicate wheither **any** or only **certain** Certificate Autorities are allowed to generate certificates for that domain.
 
-   If there are no CAA records, it means that **any** Certificate Authority are allowed to generate certificates for that domain.
+   If there are no CAA records, it means that **any** Certificate Authority is allowed to generate certificates for that domain.
 
    If there are CAA records, it means that only **certain** Certificate Authorities are allowed to generate certificates for that domain.
 

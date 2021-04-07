@@ -134,7 +134,7 @@ The XDN can generate SSL Certificates on your behalf using [**Let's Encrypt**](h
    0 issue "letsencrypt.org"
    ```
 
-   If the result of the CAA DNS query is empty, it means that **any** Certificate Authorities are allowed to generate certificates on that domain. If so, you can directly go to the next step.
+   If the result of the CAA DNS query is empty, it means that **any** Certificate Authority is allowed to generate certificates on that domain. If so, you can directly go to the next step.
 
    If there are already some CAA DNS entries defined on your domain, and if *Let's Encrypt*'s CAA entry is not among those, you will have to add an additionnal CCA entry for *Let's Encrypt*.
 

@@ -1,6 +1,6 @@
 import { makeStyles } from '@material-ui/core'
 import React from 'react'
-import MoovwebXDN from './icons/moovweb-xdn-white.svg'
+import Layer0 from './icons/layer0-white.svg'
 
 const useStyles = makeStyles(theme => ({
   logo: {
@@ -16,7 +16,7 @@ const useStyles = makeStyles(theme => ({
 
 const Logo = ({ style }) => {
   const classes = useStyles()
-  return <MoovwebXDN className={classes.logo} style={style} />
-};
+  return <Layer0 className={classes.logo} style={style} />
+}
 
-export default Logo;
+export default Logo

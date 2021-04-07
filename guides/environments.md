@@ -23,10 +23,10 @@ When creating an environment, you can choose whether or not to limit deployment 
 
 ## Deploying to an Environment
 
-To deploy to an environment, you can `xdn deploy` with the `--environment` option:
+To deploy to an environment, you can `{{ CLI_NAME }} deploy` with the `--environment` option:
 
 ```bash
-xdn deploy <team name> --environment=<environment name>
+{{ CLI_NAME }} deploy <team name> --environment=<environment name>
 ```
 
 You can also promote any existing deployment to an environment using the _Promote to Environment_ button at the top of the deployment view:
@@ -36,7 +36,7 @@ You can also promote any existing deployment to an environment using the _Promot
 When configuring CI, we recommend:
 
 - Automatically deploying to your staging environment when a PR is merged to the master branch of your repo.
-- Manually promoting deployments to production using the Moovweb Console to prevent unwanted builds from being published by misconfigured CI workflows.
+- Manually promoting deployments to production using the {{ PRODUCT_NAME }} Console to prevent unwanted builds from being published by misconfigured CI workflows.
 
 ## Production Environment
 
@@ -65,11 +65,11 @@ Doing so will redeploy the environment's active deployment updated with the new 
 ## Environment Variables
 
 The variables you configure on an environment can be accessed in your code using `process.env`. A common use case is to configure
-different backend host names in `xdn.config.js` based on the environment. Here is an example where the origin backend is determined
+different backend host names in `{{ CONFIG_FILE }}` based on the environment. Here is an example where the origin backend is determined
 by a `HOST` environment variable.
 
 ```js
-// xdn.config.js
+// {{ CONFIG_FILE }}
 const defaultHostname = 'origin.my-site.com'
 
 module.exports = {
@@ -82,28 +82,28 @@ module.exports = {
 }
 ```
 
-Note that your `xdn.config.js` file is loaded during deployment to configure the edge for your environment. The first time you
-deploy your site, there won't be any environment variables defined, so you need to include defaults in `xdn.config.js` as
+Note that your `{{ CONFIG_FILE }}` file is loaded during deployment to configure the edge for your environment. The first time you
+deploy your site, there won't be any environment variables defined, so you need to include defaults in `{{ CONFIG_FILE }}` as
 shown in the example above.
 
 ### Built-in Environment Variables
 
-XDN automatically injects the following environment variables:
+{{ PRODUCT_NAME }} automatically injects the following environment variables:
 
 - `NODE_ENV`: Set to `production` by default but you can override it through the console
-- `XDN_ENVIRONMENT_NAME`: The name of the environment (e.g. `default`, `production` and so on). This cannot be overriden by you.
+- `{{ PRODUCT_NAME_UPPER }}_ENVIRONMENT_NAME`: The name of the environment (e.g. `default`, `production` and so on). This cannot be overriden by you.
 
 ### Accessing Environment Variables at Build Time
 
-As of XDN CLI version 2.19.0, when you deploy to an environment using a deploy token, for example by running `xdn deploy my-team --environment=production --token=(my token)` option, all environment variables are pulled down from the XDN Developer Console and applied to `process.env` so they can be accessed at build time. This allows you to store all of your build and runtime secrets in a single place, the XDN Developer Consoler, rather than storing some in your CI system's secret manager.
+As of {{ PRODUCT_NAME }} CLI version 2.19.0, when you deploy to an environment using a deploy token, for example by running `{{ CLI_NAME }} deploy my-team --environment=production --token=(my token)` option, all environment variables are pulled down from {{ PRODUCT_NAME }} Developer Console and applied to `process.env` so they can be accessed at build time. This allows you to store all of your build and runtime secrets in a single place, {{ PRODUCT_NAME }} Developer Console, rather than storing some in your CI system's secret manager.
 
 ## dotenv
 
 To configure secrets during local development, we recommend using [dotenv](https://github.com/motdotla/dotenv).
-If you would like to reference environment variables read from `.env` in `xdn.config.js`, add the following at the top
-of `xdn.config.js`
+If you would like to reference environment variables read from `.env` in `{{ CONFIG_FILE }}`, add the following at the top
+of `{{ CONFIG_FILE }}`
 
 ```js
-// xdn.config.js
+// {{ CONFIG_FILE }}
 require('dotenv').config()
 ```

@@ -1,60 +1,60 @@
 # Next.js Commerce
 
-This guide shows you how to deploy the [Next.js Commerce](https://github.com/vercel/commerce) starter kit on the Moovweb XDN. Note that Next.js Commerce is currently under development and requires an account on the [BigCommerce](https://www.bigcommerce.com/) platform.
+This guide shows you how to deploy the [Next.js Commerce](https://github.com/vercel/commerce) starter kit on {{ PRODUCT_NAME }}. Note that Next.js Commerce is currently under development and requires an account on the [BigCommerce](https://www.bigcommerce.com/) platform.
 
 ## Next.js Commerce Example
 
-Here is an example of the [Next.js Commerce](https://nextjs.org/commerce) template running on the XDN. It uses all of the latest Next.js 10 features
+Here is an example of the [Next.js Commerce](https://nextjs.org/commerce) template running on {{ PRODUCT_NAME }}. It uses all of the latest Next.js 10 features
 including image optimization, localization, and incremental static regeneration with stale-while-revalidate.
 
 [Try the Next.js Commerce Example Site](https://moovweb-docs-nextjs-commerce-default.moovweb-edge.io/?button)
-[View the Code](https://github.com/moovweb-docs/xdn-examples/tree/main/nextjs-commerce?button)
+[View the Code](https://github.com/{{ EXAMPLES_REPO }}/tree/main/nextjs-commerce?button)
 
 ## Connector
 
-This framework has a connector developed for the XDN. See [Connectors](connectors) for more information.
+This framework has a connector developed for {{ PRODUCT_NAME }}. See [Connectors](connectors) for more information.
 
-[View the Connector Code](https://github.com/moovweb-docs/xdn-connectors/tree/main/xdn-next-connector?button)
+[View the Connector Code](https://github.com/moovweb-docs/layer0-connectors/tree/main/layer0-next-connector?button)
 
 ## Getting Started
 
-The easiest way to try Next.js Commerce on the XDN is to clone and deploy the version from the XDN examples:
+The easiest way to try Next.js Commerce on {{ PRODUCT_NAME }} is to clone and deploy the version from the {{ PRODUCT_NAME }} examples:
 
-1. Register for a free account on the [XDN sign up page](https://moovweb.app/signup).
+1. Register for a free account on the [{{ PRODUCT_NAME }} sign up page]({{ APP_URL }}/signup).
 
-2. Clone the XDN examples repository:
+2. Clone the {{ PRODUCT_NAME }} examples repository:
 
 ```bash
-git clone git@github.com:moovweb-docs/xdn-examples.git
+git clone git@github.com:{{ EXAMPLES_REPO }}.git
 ```
 
 3. Navigate to the `nextjs-commerce` example directory and install the required modules via `yarn`:
 
 ```bash
-cd xdn-examples/nextjs-commerce/
+cd layer0-examples/nextjs-commerce/
 yarn install
 ```
 
-4. Deploy to the XDN:
+4. Deploy to {{ PRODUCT_NAME }}:
 
 ```bash
-npm run xdn:deploy
+npm run {{ CLI_NAME }}:deploy
 ```
 
 ## Learn more
 
-For more details on using Next.js on the XDN refer to the [Next.js Guide](next).
+For more details on using Next.js on {{ PRODUCT_NAME }} refer to the [Next.js Guide](next).
 
 ## Deploying the official Next.js Commerce repository
 
-If you wish to deploy to the XDN from the official Next.js Commerce repository, follow these steps:
+If you wish to deploy to {{ PRODUCT_NAME }} from the official Next.js Commerce repository, follow these steps:
 
-1. Register for a free account on the [XDN sign up page](https://moovweb.app/signup).
+1. Register for a free account on the [{{ PRODUCT_NAME }} sign up page]({{ APP_URL }}/signup).
 
-2. Install the XDN [CLI](cli) globally
+2. Install the {{ PRODUCT_NAME }} [CLI](cli) globally
 
 ```bash
-npm i -g @xdn/cli
+npm i -g {{ PACKAGE_NAME }}/cli
 ```
 
 3. Clone the official Next.js Commerce repository and install the dependencies via `yarn`:
@@ -65,18 +65,18 @@ cd commerce
 yarn install
 ```
 
-4. Run XDN `init` in the project directory:
+4. Run {{ PRODUCT_NAME }} `init` in the project directory:
 
 ```
-xdn init
+{{ CLI_NAME }} init
 ```
 
-5. Update the top of your `next.config.js` file to wrap the module export with `withXDN` and `withServiceWorker` like so:
+5. Update the top of your `next.config.js` file to wrap the module export with `withLayer0` and `withServiceWorker` like so:
 
 ```js
-const { withXDN, withServiceWorker } = require('@xdn/next/config')
+const { withLayer0, withServiceWorker } = require('{{ PACKAGE_NAME }}/next/config')
 
-module.exports = withXDN(
+module.exports = withLayer0(
   withServiceWorker(
     bundleAnalyzer({
       // ...rest of the next.config.js content
@@ -112,12 +112,12 @@ BIGCOMMERCE_STOREFRONT_API_URL="https://store-XXXX-XXXX.mybigcommerce.com/graphq
 BIGCOMMERCE_STORE_API_URL="https://api.bigcommerce.com/stores/XXXX"
 ```
 
-An [example `.env.local` file](https://github.com/moovweb-docs/xdn-examples/blob/main/nextjs-commerce/.env.local) is in the the XDN examples repo.
+An [example `.env.local` file](https://github.com/{{ EXAMPLES_REPO }}/blob/main/nextjs-commerce/.env.local) is in the the {{ PRODUCT_NAME }} examples repo.
 
-9. Deploy to the XDN:
+9. Deploy to {{ PRODUCT_NAME }}:
 
 ```bash
-xdn deploy
+{{ CLI_NAME }} deploy
 ```
 
 This should result in output like the following which confirms the deployment:
@@ -125,8 +125,8 @@ This should result in output like the following which confirms the deployment:
 ```
 ***** Deployment Complete ***************************************************************
 *                                                                                       *
-*  🖥  XDN Developer Console:                                                            *
-*  https://moovweb.app/ishan-scratch/nextjs-commerce/env/default/builds/1               *
+*  🖥  {{ PRODUCT_NAME }} Developer Console:                                                            *
+*  {{ APP_URL }}/ishan-scratch/nextjs-commerce/env/default/builds/1               *
 *                                                                                       *
 *  🌎 Website:                                                                          *
 *  https://ishan-scratch-nextjs-commerce-default.moovweb-edge.io                        *

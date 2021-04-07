@@ -9,6 +9,8 @@ import getBaseUrl from '../../components/utils/getBaseUrl'
 import ApiLink from '../../components/ApiLink'
 import { Typography } from '@material-ui/core'
 import { useTheme } from '@material-ui/styles'
+import { PRODUCT_NAME } from '../../constants'
+import { populatePlaceholders } from '../../components/utils/markdownUtils'
 
 export default function Guide({ notFound, markdown, navData, guide }) {
   if (notFound) {
@@ -34,7 +36,9 @@ export default function Guide({ notFound, markdown, navData, guide }) {
       nav={<Nav navData={navData} aboveAdornments={[<ApiLink key="link" />]} />}
     >
       <Head>
-        <title>Moovweb XDN Documentation {pageTitle ? `- ${pageTitle}` : ''}</title>
+        <title>
+          {PRODUCT_NAME} Documentation {pageTitle ? `- ${pageTitle}` : ''}
+        </title>
       </Head>
       <Markdown source={markdown} toc />
       <Footer navData={navData} guide={guide} />
@@ -71,7 +75,7 @@ Guide.getInitialProps = async function({ req, query, version }) {
     ])
 
     return {
-      markdown: content,
+      markdown: populatePlaceholders(content),
       navData,
       guide,
     }

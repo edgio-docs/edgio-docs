@@ -22,6 +22,7 @@ import Logo from './Logo'
 import Router from 'next/router'
 import clsx from 'clsx'
 import HeaderCollapseMenu from './HeaderCollapseMenu'
+import { APP_URL, FORUM_URL, STATUS_URL } from '../constants'
 
 const useStyles = makeStyles(theme => ({
   appBar: {
@@ -147,7 +148,7 @@ export default function Header() {
             <div style={{ flex: 1 }} className={classes.smUp} />
             <Hidden smDown implementation="css">
               <Button
-                href="https://moovweb.app/signup?redirectTo=/"
+                href={`${APP_URL}/signup?redirectTo=/`}
                 target="_blank"
                 className={classes.signUpButton}
                 variant="outlined"
@@ -156,20 +157,20 @@ export default function Header() {
               </Button>
             </Hidden>
             <Hidden mdDown implementation="css">
-              <Button href="https://moovweb.app" target="_blank" className={classes.button}>
+              <Button href={APP_URL} target="_blank" className={classes.button}>
                 LOGIN
               </Button>
             </Hidden>
             <Hidden smDown implementation="css">
-              <Button href="https://forum.moovweb.com" target="_blank" className={classes.button}>
+              <Button href={FORUM_URL} target="_blank" className={classes.button}>
                 FORUMS
               </Button>
-              <Button href="https://status.moovweb.com" target="_blank" className={classes.button}>
+              <Button href={STATUS_URL} target="_blank" className={classes.button}>
                 STATUS
               </Button>
             </Hidden>
             <Hidden mdDown implementation="css">
-              <Button href="https://moovweb.app/help" target="_blank" className={classes.button}>
+              <Button href={`${APP_URL}/help`} target="_blank" className={classes.button}>
                 SUPPORT
               </Button>
             </Hidden>

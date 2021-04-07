@@ -1,27 +1,27 @@
 # Next.js
 
-This guide shows you how to deploy a Next.js application on the Moovweb XDN.
+This guide shows you how to deploy a Next.js application on {{ PRODUCT_NAME }}.
 
 ## Example SSR Site
 
 This Next.js example app uses server-side rendering and prefetching to provide lightening-fast transitions between pages.
 
-[Try the Next.js SSR Example Site](https://moovweb-docs-xdn-next-example-default.moovweb-edge.io/category/hats?button)
-[View the Code](https://github.com/moovweb-docs/xdn-examples/tree/main/xdn-next-example?button)
+[Try the Next.js SSR Example Site](https://moovweb-docs-layer0-next-example-default.moovweb-edge.io/category/hats?button)
+[View the Code](https://github.com/{{ EXAMPLES_REPO }}/tree/main/layer0-next-example?button)
 
 ## Next.js Commerce
 
-For details on using the Next.js Commerce template with the XDN refer to our [Next.js Commerce Guide](next_commerce).
+For details on using the Next.js Commerce template with {{ PRODUCT_NAME }} refer to our [Next.js Commerce Guide](next_commerce).
 
 ## Connector
 
-This framework has a connector developed for the XDN. See [Connectors](connectors) for more information.
+This framework has a connector developed for {{ PRODUCT_NAME }}. See [Connectors](connectors) for more information.
 
-[View the Connector Code](https://github.com/moovweb-docs/xdn-connectors/tree/main/xdn-next-connector?button)
+[View the Connector Code](https://github.com/moovweb-docs/layer0-connectors/tree/main/layer0-next-connector?button)
 
 ## Supported Features
 
-The Moovweb XDN supports all of the most powerful features of Next.js 10, including:
+{{ PRODUCT_NAME }} supports all of the most powerful features of Next.js 10, including:
 
 - Localization
 - Image Optimization
@@ -34,11 +34,11 @@ The Moovweb XDN supports all of the most powerful features of Next.js 10, includ
 
 ### Install Node.js and npm
 
-**XDN only supports Node.js version 12 and higher**
+**{{ PRODUCT_NAME }} only supports Node.js version 12 and higher**
 
-If you do not have Node.js installed on your system, download and install it from the official [Node.js v12.x downloads](https://nodejs.org/dist/latest-v12.x/) page. Select the download that matches your operating system and run the installer. Note that the installer for Node.js will also install npm.
+If you do not have Node.js installed on your system, download and install it from the official [Node.js v{{ NODE_VERSION }} downloads](https://nodejs.org/dist/latest-v{{ NODE_VERSION }}/) page. Select the download that matches your operating system and run the installer. Note that the installer for Node.js will also install npm.
 
-_Note that while you can use any version of Node.js >= 12 locally, your app will run in Node 12 when deployed to the XDN cloud. Therefore we highly suggest using Node 12 for all development._
+_Note that while you can use any version of Node.js >= 12 locally, your app will run in Node 12 when deployed to the {{ PRODUCT_NAME }} cloud. Therefore we highly suggest using Node 12 for all development._
 
 ### Create a Next.js Application
 
@@ -48,90 +48,82 @@ If you don't already have a Next.js application, you can create one using:
 npm create next-app my-next-app
 ```
 
-To prepare your Next.js application for deployment on the Moovweb XDN:
+To prepare your Next.js application for deployment on {{ PRODUCT_NAME }}:
 
-### Install the XDN CLI globally
+### Install the {{ PRODUCT_NAME }} CLI globally
 
 ```bash
-npm install -g @xdn/cli
+npm install -g {{ PACKAGE_NAME }}/cli
 ```
 
 \*\*Note
-When installing the XDN CLI globally in a virtual environment that has Node and NPM installed globally, you [may run into permission issues](https://forum.moovweb.com/t/xdn-cli-npm-install-error/83). In that case, you can install the XDN CLI locally within you app using `npm i -D @xdn/cli` and running commands using `./node_modules/@xdn/cli` instead of `xdn`.
+When installing the {{ PRODUCT_NAME }} CLI globally in a virtual environment that has Node and NPM installed globally, you [may run into permission issues]({{ FORUM_URL }}/t/xdn-cli-npm-install-error/83). In that case, you can install the {{ PRODUCT_NAME }} CLI locally within you app using `npm i -D {{ PACKAGE_NAME }}/cli` and running commands using `./node_modules/{{ PACKAGE_NAME }}/cli` instead of `{{ CLI_NAME }}`.
 
-If you run into permission issues while attempting to install the XDN CLI globally on your local development machine, these may be fixed by using [nvm](https://github.com/nvm-sh/nvm) to manage Node and NPM.
+If you run into permission issues while attempting to install the {{ PRODUCT_NAME }} CLI globally on your local development machine, these may be fixed by using [nvm](https://github.com/nvm-sh/nvm) to manage Node and NPM.
 
 ### Initialize your Next.js project
 
 ```bash
 cd my-next-app
-xdn init
+{{ CLI_NAME }} init
 ```
 
 This will automatically add all of the required dependencies and files to your project. These include:
 
-- The `@xdn/core` package - Allows you to declare routes and deploy your application on the Moovweb XDN
-- The `@xdn/next` package - Provides router middleware that automatically adds Next.js pages and api routes to the XDN router.
-- The `@xdn/prefetch` package - Allows you to configure a service worker to prefetch and cache pages to improve browsing speed
-- The `@xdn/react` package - Provides a `Prefetch` component for prefetching pages
-- `xdn.config.js`
+- The `{{ PACKAGE_NAME }}/core` package - Allows you to declare routes and deploy your application on {{ PRODUCT_NAME }}
+- The `{{ PACKAGE_NAME }}/next` package - Provides router middleware that automatically adds Next.js pages and api routes to the {{ PRODUCT_NAME }} router.
+- The `{{ PACKAGE_NAME }}/prefetch` package - Allows you to configure a service worker to prefetch and cache pages to improve browsing speed
+- The `{{ PACKAGE_NAME }}/react` package - Provides a `Prefetch` component for prefetching pages
+- `{{ CONFIG_FILE }}`
 - `routes.js` - A default routes file that sends all requests to Next.js. Update this file to add caching or proxy some URLs to a different origin.
 - `sw/service-worker.js` A service worker implemented using Workbox.
 
-### Edit next.config.js
-
-Add the `withXDN` and `withServiceWorker` plugins to `next.config.js`. If this file doesn't exist, create it in the root directory of your project folder, with the following content:
-
-```js
-// next.config.js
-
-const { withXDN, withServiceWorker } = require('@xdn/next/config')
-
-module.exports = withXDN(
-  withServiceWorker({
-    future: {
-      webpack5: true, // Google's Workbox library requires webpack 5 when building on Next.js 10+
-    },
-  }),
-)
-```
-
-The `withXDN` plugin ensures that your app is bundled properly for running on the XDN, and `withServiceWorker` provides a service worker based on `sw/service-worker.js`.
-
-_If you're already using `next-offline`, you should remove it in favor of `withServiceWorker`, which itself uses `next-offline._
-
 ## Running Locally
 
-To simulate your app within the XDN locally, run:
+To simulate your app within {{ PRODUCT_NAME }} locally, run:
 
 ```bash
-xdn dev
+{{ CLI_NAME }} dev
 ```
 
 ## Deploying
 
-Deploying requires an account on the Moovweb XDN. [Sign up here for free.](https://moovweb.app/signup) Once you have an account, you can deploy to the Moovweb XDN by running the following in the root folder of your project:
+Deploying requires an account on {{ PRODUCT_NAME }}. [Sign up here for free.]({{ APP_URL }}/signup) Once you have an account, you can deploy to {{ PRODUCT_NAME }} by running the following in the root folder of your project:
 
 ```bash
-xdn deploy
+{{ CLI_NAME }} deploy
+```
+See [deploying](deploying) for more information.
+
+
+## Using `withServiceWorker` with Next.js
+The `next.config.js` file was updated to use `with{{ PRODUCT_NAME }}` and `withServiceWorker`.
+
+```js
+// next.config.js
+
+const { with{{ PRODUCT_NAME }}, withServiceWorker } = require('{{ CLI_NAME }}/next/config')
+
+module.exports = with{{ PRODUCT_NAME }}(withServiceWorker())
 ```
 
-See [deploying](deploying) for more information.
+The `with{{ PRODUCT_NAME }}` plugin ensures that your app is bundled properly for running on {{ PRODUCT_NAME }}, and `withServiceWorker` provides a service worker based on `sw/service-worker.js`.
+_If you're already using `next-offline`, you should remove it in favor of `withServiceWorker`, which itself uses `next-offline`._
 
 ## Prefetching
 
-The `xdn init` command adds a service worker based on [Workbox](https://developers.google.com/web/tools/workbox) at `sw/service-worker.js`. If you have an existing service worker that uses workbox, you can copy its contents into `sw/service-worker.js` and simply add the following to your service worker:
+The `{{ CLI_NAME }} init` command adds a service worker based on [Workbox](https://developers.google.com/web/tools/workbox) at `sw/service-worker.js`. If you have an existing service worker that uses workbox, you can copy its contents into `sw/service-worker.js` and simply add the following to your service worker:
 
 ```js
-import { Prefetcher } from '@xdn/prefetch/sw'
+import { Prefetcher } from '{{ PACKAGE_NAME }}/prefetch/sw'
 
 new Prefetcher().route()
 ```
 
-The above allows you to prefetch pages from the XDN's edge cache to greatly improve browsing speed. To prefetch a page, add the `Prefetch` component from `@xdn/react` to any Next `Link` element:
+The above allows you to prefetch pages from {{ PRODUCT_NAME }}'s edge cache to greatly improve browsing speed. To prefetch a page, add the `Prefetch` component from `{{ PACKAGE_NAME }}/react` to any Next `Link` element:
 
 ```js
-import { Prefetch } from '@xdn/react'
+import { Prefetch } from '{{ PACKAGE_NAME }}/react'
 import Link from 'next/link'
 
 export default function ProductListing({ products }) {
@@ -153,7 +145,7 @@ export default function ProductListing({ products }) {
 }
 ```
 
-The `Prefetch` component fetches data for the linked page from the XDN's edge cache and adds it to the service worker's cache when the link becomes visible in the viewport. When the user taps on the link, the page transition will be instantaneous because the browser won't need to fetch data from the network.
+The `Prefetch` component fetches data for the linked page from {{ PRODUCT_NAME }}'s edge cache and adds it to the service worker's cache when the link becomes visible in the viewport. When the user taps on the link, the page transition will be instantaneous because the browser won't need to fetch data from the network.
 
 The `Prefetch` component assumes you're using `getServerSideProps` and will prefetch the data URL corresponding to the target page. If you need to prefetch a different url, you can do so using the `url` prop:
 
@@ -171,13 +163,13 @@ Note that if you don't provide a `url` prop to `Prefetch`, you must specify the 
 
 ## Routing
 
-The XDN supports Next.js's built-in routing scheme for both page and api routes, including Next.js 9's clean dynamic routes. The default `routes.js` file created by `xdn init` sends all requests to Next.js via a fallback route:
+{{ PRODUCT_NAME }} supports Next.js's built-in routing scheme for both page and api routes, including Next.js 9's clean dynamic routes. The default `routes.js` file created by `{{ CLI_NAME }} init` sends all requests to Next.js via a fallback route:
 
 ```js
-// This file was automatically added by xdn deploy.
+// This file was automatically added by {{ CLI_NAME }} deploy.
 // You should commit this file to source control.
-const { Router } = require('@xdn/core/router')
-const { nextRoutes } = require('@xdn/next')
+const { Router } = require('{{ PACKAGE_NAME }}/core/router')
+const { nextRoutes } = require('{{ PACKAGE_NAME }}/next')
 
 module.exports = new Router()
   .get('/service-worker.js', ({ cache, serveStatic }) => {
@@ -204,7 +196,7 @@ A popular use case is to fallback to a legacy site for any route that your Next.
 new Router().use(nextRoutes).fallback(({ proxy }) => proxy('legacy'))
 ```
 
-To configure the legacy backend, use xdn.config.js:
+To configure the legacy backend, use {{ CONFIG_FILE }}:
 
 ```js
 module.exports = {
@@ -217,7 +209,7 @@ module.exports = {
 }
 ```
 
-Using environment variables here allows you to configure different legacy domains for each XDN environment.
+Using environment variables here allows you to configure different legacy domains for each {{ PRODUCT_NAME }} environment.
 
 ### rewrites and redirects
 
@@ -228,8 +220,8 @@ The `nextRoutes` middleware automatically adds routes for [rewrites](https://nex
 To render a specific page, use the `renderNextPage` function:
 
 ```js
-const { Router } = require('@xdn/core/router')
-const { renderNextPage, nextRoutes } = require('@xdn/next')
+const { Router } = require('{{ PACKAGE_NAME }}/core/router')
+const { renderNextPage, nextRoutes } = require('{{ PACKAGE_NAME }}/next')
 
 module.exports = new Router()
   .get('/some/vanity/url/:p', res => {
@@ -249,8 +241,8 @@ The `renderNextPage` function takes the following parameters:
 You can explicitly render the Next.js 404 page using `nextRoutes.render404(res)`:
 
 ```js
-const { Router } = require('@xdn/core/router')
-const { renderNextPage, nextRoutes } = require('@xdn/next')
+const { Router } = require('{{ PACKAGE_NAME }}/core/router')
+const { renderNextPage, nextRoutes } = require('{{ PACKAGE_NAME }}/next')
 
 module.exports = new Router()
   .get('/some/missing/page', res => {
@@ -261,11 +253,11 @@ module.exports = new Router()
 
 ### Dynamic Fallback Route
 
-Usually Next.js requires 404.js to be a static page. The XDN enables you to render a specific page when no other route is matched using `router.fallback`:
+Usually Next.js requires 404.js to be a static page. {{ PRODUCT_NAME }} enables you to render a specific page when no other route is matched using `router.fallback`:
 
 ```js
-const { Router } = require('@xdn/core/router')
-const { renderNextPage, nextRoutes } = require('@xdn/next')
+const { Router } = require('{{ PACKAGE_NAME }}/core/router')
+const { renderNextPage, nextRoutes } = require('{{ PACKAGE_NAME }}/next')
 
 module.exports = new Router().use(nextRoutes).fallback(res => {
   renderNextPage('/not-found', res) // render pages/not-found.js, which can be dynamic (using getInitialProps or getServerSideProps)
@@ -309,7 +301,7 @@ new Router()
 
 ### Preventing Next.js pages from being cached by other CDNs
 
-By default, Next.js adds a `cache-control: private, no-cache, no-store, must-revalidate` header to all responses from `getServerSideProps`. The presence of `private` would prevent the XDN from caching the response, so `nextRoutes` middleware from `@xdn/next` automatically removes the `private` portion of the header to enable caching at edge. If you want your responses to be private, you need to specify a `cache-control` header using the router:
+By default, Next.js adds a `cache-control: private, no-cache, no-store, must-revalidate` header to all responses from `getServerSideProps`. The presence of `private` would prevent {{ PRODUCT_NAME }} from caching the response, so `nextRoutes` middleware from `{{ PACKAGE_NAME }}/next` automatically removes the `private` portion of the header to enable caching at edge. If you want your responses to be private, you need to specify a `cache-control` header using the router:
 
 ```js
 new Router().get('/my-private-page', ({ setResponseHeader }) => {
@@ -317,7 +309,7 @@ new Router().get('/my-private-page', ({ setResponseHeader }) => {
 })
 ```
 
-Doing so will prevent other CDNs running in front of the XDN from caching the response.
+Doing so will prevent other CDNs running in front of {{ PRODUCT_NAME }} from caching the response.
 
 ## Building with Webpack 5
 
@@ -343,13 +335,14 @@ future: {
 }
 ```
 
-Then run `yarn install` followed by `xdn build` to verify that your app builds successfully using Webpack 5.
+Then run `yarn install` followed by `{{ CLI_NAME }} build` to verify that your app builds successfully using Webpack 5.
 
 Some additional notes:
 
 - In order to use Webpack 5 you must use yarn to install dependencies. NPM does not support `resolutions` in package.json.
 - Webpack 5 contains many breaking changes, so it is possible that you'll need to make additional changes to the webpack config via next.config.js to get your app to build successfully.
-- You'll also see some deprecation warnings, like these, which are fine, as long as `xdn build` is successful:
+- You may run into this error: `UnhandledPromiseRejectionWarning: TypeError: dependency.getCondition is not a function`.  You can fix this by adding `next-offline` as a dependency using `npm i -D next-offline` or `yarn add --dev next-offline`.
+- You'll also see some deprecation warnings, like these, which are fine, as long as `{{ CLI_NAME }} build` is successful:
 
 ```
 (node:95329) [DEP_WEBPACK_SINGLE_ENTRY_PLUGIN] DeprecationWarning: SingleEntryPlugin was renamed to EntryPlugin

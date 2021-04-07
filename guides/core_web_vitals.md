@@ -1,6 +1,6 @@
 # Core Web Vitals
 
-This guide shows you how to track your website's [Core Web Vitals](https://web.dev/vitals/) on the XDN in real time using real user monitoring (RUM).
+This guide shows you how to track your website's [Core Web Vitals](https://web.dev/vitals/) on {{ PRODUCT_NAME }} in real time using real user monitoring (RUM).
 
 ## What are Core Web Vitals?
 
@@ -13,21 +13,21 @@ be tracked via [Google Search Console](https://search.google.com/search-console/
 
 - It can take days to weeks to see the affect that changes to your site have on Core Web Vitals.
 - It's hard to diagnose Core Web Vitals by page type or URL.
-- It's impossible to A/B test the impact of site optimizations on Core Web Vitals. Note that to effectively A/B test performance optimizations you need both a RUM measurement tool and split testing at the edge, both of which the XDN provides.
+- It's impossible to A/B test the impact of site optimizations on Core Web Vitals. Note that to effectively A/B test performance optimizations you need both a RUM measurement tool and split testing at the edge, both of which {{ PRODUCT_NAME }} provides.
 
-## Why use the XDN to track Core Web Vitals?
+## Why use {{ PRODUCT_NAME }} to track Core Web Vitals?
 
-Instead of relying solely on Google Search Console, we recommend tracking Core Web Vitals using the XDN so that you can:
+Instead of relying solely on Google Search Console, we recommend tracking Core Web Vitals using {{ PRODUCT_NAME }} so that you can:
 
 - See how changes to your site impact Core Web Vitals in real time
 - Correlate web vitals to your application's routes
 - Analyze score across a number of dimensions such as country, device, and connection type
 - Identify which pages are most negatively impacting your search ranking.
-- Use XDN's [Edge based split testing](split_testing) to A/B test the impact of performance optimizations on Core Web Vitals.
+- Use {{ PRODUCT_NAME }}'s [Edge based split testing](split_testing) to A/B test the impact of performance optimizations on Core Web Vitals.
 
 ## Installation
 
-In order to start tracking Core Web Vitals on the Moovweb XDN, you need add the `@xdn/rum` client library to your application. There are a number of ways to do this:
+In order to start tracking Core Web Vitals on {{ PRODUCT_NAME }}, you need add the `{{ PACKAGE_NAME }}/rum` client library to your application. There are a number of ways to do this:
 
 ### Script Tag
 
@@ -35,29 +35,29 @@ To add Core Web Vitals tracking via a script tag, add the following to each page
 
 ```html
 <script defer>
-  function initXdnRum() {
-    new XDN.Metrics({
-      token: 'your-token-here', // get this from https://moovweb.app
+  function initRum() {
+    new {{ PRODUCT_NAME }}.Metrics({
+      token: 'your-token-here', // get this from {{ APP_URL }}
     }).collect()
   }
 </script>
-<script src="https://rum.moovweb.app/latest.js" defer onload="initXdnRum()"></script>
+<script src="https://rum.{{ DOMAIN }}/latest.js" defer onload="initRum()"></script>
 ```
 
 ### Google Tag Manager
 
 ```html
 <script>
-  function initXDNMetrics() {
-    new XDN.Metrics({
-      token: 'your-token-here', // get this from https://moovweb.app
+  function initMetrics() {
+    new {{ PRODUCT_NAME }}.Metrics({
+      token: 'your-token-here', // get this from {{ APP_URL }}
     }).collect()
   }
   var rumScriptTag = document.createElement('script')
-  rumScriptTag.src = 'https://rum.moovweb.app/latest.js'
+  rumScriptTag.src = 'https://rum.{{ DOMAIN }}/latest.js'
   rumScriptTag.setAttribute('defer', '')
   rumScriptTag.type = 'text/javascript'
-  rumScriptTag.onload = initXDNMetrics
+  rumScriptTag.onload = initMetrics
   document.body.appendChild(rumScriptTag)
 </script>
 ```
@@ -67,22 +67,22 @@ To add Core Web Vitals tracking via a script tag, add the following to each page
 To install the Core Web Vitals library using npm, run:
 
 ```
-npm install --save @xdn/rum
+npm install --save {{ PACKAGE_NAME }}/rum
 ```
 
 Or, using yarn:
 
 ```
-yarn add @xdn/rum
+yarn add {{ PACKAGE_NAME }}/rum
 ```
 
 Then, add the following to your application's browser bundle:
 
 ```js
-import { Metrics } from '@xdn/rum'
+import { Metrics } from '{{ PACKAGE_NAME }}/rum'
 
 new Metrics({
-  token: 'your-token-here', // get this from https://moovweb.app
+  token: 'your-token-here', // get this from {{ APP_URL }}
 }).collect()
 ```
 
@@ -90,29 +90,29 @@ new Metrics({
 
 You can tie URLs to pages templates by providing an optional `router` parameter to `Metrics`.
 
-When installing @xdn/rum using a script tag, use:
+When installing {{ PACKAGE_NAME }}/rum using a script tag, use:
 
 ```js
-new XDN.Metrics({
-  // get this from https://moovweb.app
+new {{ PRODUCT_NAME }}.Metrics({
+  // get this from {{ APP_URL }}
   token: 'your-token-here',
 
   // assign a page label for each route:
-  router: new XDN.Router()
+  router: new {{ PRODUCT_NAME }}.Router()
     .match('/', ({ setPageLabel }) => setPageLabel('home'))
     .match('/p/:id', ({ setPageLabel }) => setPageLabel('product'))
     .match('/c/:id', ({ setPageLabel }) => setPageLabel('category')),
 }).collect()
 ```
 
-When installing @xdn/rum via NPM or Yarn use:
+When installing {{ PACKAGE_NAME }}/rum via NPM or Yarn use:
 
 ```js
-import { Router } from '@xdn/rum/Router'
-import { Metrics } from '@xdn/rum'
+import { Router } from '{{ PACKAGE_NAME }}/rum/Router'
+import { Metrics } from '{{ PACKAGE_NAME }}/rum'
 
 new Metrics({
-  // get this from https://moovweb.app
+  // get this from {{ APP_URL }}
   token: 'your-token-here',
 
   // assign a page label for each route:
@@ -129,17 +129,17 @@ For non single page applications (e.g. traditional "multi-page apps"), you can a
 
 ```js
 <script>
-  function initXDNMetrics() {
-    new XDN.Metrics({
+  function initMetrics() {
+    new {{ PRODUCT_NAME }}.Metrics({
       token: 'your-token-here',
       pageLabel: document.title ? document.title : "(No title)",
     }).collect();
   }
   var rumScriptTag = document.createElement('script');
-  rumScriptTag.src = "https://rum.moovweb.app/latest.js";
+  rumScriptTag.src = "https://rum.{{ DOMAIN }}/latest.js";
   rumScriptTag.setAttribute("defer", "");
   rumScriptTag.type = "text/javascript";
-  rumScriptTag.onload = initXDNMetrics;
+  rumScriptTag.onload = initMetrics;
   document.body.appendChild(rumScriptTag);
 </script>
 ```
@@ -149,26 +149,26 @@ For non single page applications (e.g. traditional "multi-page apps"), you can a
 Additionally, you can tie the following data to Core Web Vitals:
 
 ```js
-new XDN.Metrics({
+new {{ PRODUCT_NAME }}.Metrics({
   // Rather than providing a router, you can also define the page label for each page explicitly.
   // Use this option if it is more convenient to add the script tag to each page template individually
   // rather than adding it to the main application template.
   pageLabel: 'home',
 
   // When running a split test, use this field to specify which variant is active.
-  // This is automatically set for sites that are deployed on the Moovweb XDN.
+  // This is automatically set for sites that are deployed on {{ PRODUCT_NAME }}.
   splitTestVariant: 'name-of-variant',
 
   // The version of your application that is running.
   appVersion: 'v1.0.0',
 
   // Whether or not the page was served from the CDN cache, if this is known.
-  // This is automatically set for sites that are deployed on the Moovweb XDN.
+  // This is automatically set for sites that are deployed on {{ PRODUCT_NAME }}.
   cacheHit: true | false,
 
   // The country code in which the browser is running. This is often provided by CDNs
   // as a request header that can be embedded in your script tab by your application code.
-  // This is automatically set for sites that are deployed on the Moovweb XDN.
+  // This is automatically set for sites that are deployed on {{ PRODUCT_NAME }}.
   country: 'US',
 })
 ```

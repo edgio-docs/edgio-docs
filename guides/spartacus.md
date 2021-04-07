@@ -1,23 +1,23 @@
 # Spartacus for SAP Commerce Cloud (formerly SAP Hybris)
 
-This guide shows you how to deploy [Spartacus](https://sap.github.io/spartacus-docs) apps on the Moovweb XDN.
+This guide shows you how to deploy [Spartacus](https://sap.github.io/spartacus-docs) apps on {{ PRODUCT_NAME }}.
 
-[Try the Spartacus Example Site](https://moovweb-docs-xdn-spartacus-example-default.moovweb-edge.io/?button)
-[View the Code](https://github.com/moovweb-docs/xdn-examples/tree/main/xdn-spartacus-example?button)
+[Try the Spartacus Example Site](https://moovweb-docs-layer0-spartacus-example-default.moovweb-edge.io/?button)
+[View the Code](https://github.com/{{ EXAMPLES_REPO }}/tree/main/layer0-spartacus-example?button)
 
 ## Connector
 
-This framework has a connector developed for the XDN. See [Connectors](connectors) for more information.
+This framework has a connector developed for {{ PRODUCT_NAME }}. See [Connectors](connectors) for more information.
 
-[View the Connector Code](https://github.com/moovweb-docs/xdn-connectors/tree/main/xdn-spartacus-connector?button)
+[View the Connector Code](https://github.com/moovweb-docs/layer0-connectors/tree/main/layer0-spartacus-connector?button)
 
 ## Install Node.js and npm
 
-**XDN only supports Node.js version 12.x**
+**{{ PRODUCT_NAME }} only supports Node.js version {{ NODE_VERSION }}**
 
-If you do not have Node.js installed on your system, download and install it from the official [Node.js v12.x downloads](https://nodejs.org/dist/latest-v12.x/) page. Select the download that matches your operating system and run the installer. Note that the installer for Node.js will also install npm.
+If you do not have Node.js installed on your system, download and install it from the official [Node.js v{{ NODE_VERSION }} downloads](https://nodejs.org/dist/latest-v{{ NODE_VERSION }}/) page. Select the download that matches your operating system and run the installer. Note that the installer for Node.js will also install npm.
 
-_Note that while you can use any version of Node.js >= 12 locally, your app will run in Node 12 when deployed to the XDN cloud. Therefore, we highly suggest using Node 12 for all development._
+_Note that while you can use any version of Node.js >= 12 locally, your app will run in Node 12 when deployed to the {{ PRODUCT_NAME }} cloud. Therefore, we highly suggest using Node 12 for all development._
 
 ## Getting Started
 
@@ -30,14 +30,14 @@ If you don't already have a Spartacus application, you can create one using:
 
 ```bash
 npm install -g @angular/cli@9
-ng new my-xdn-spartacus-app
+ng new my-layer0-spartacus-app
 ```
 
 You should now have a working starter app. Run `ng serve` to see the application running on `localhost:4200`.
 
 #### 2. Add Spartacus with SSR
 
-To deploy your Spartacus application on the Moovweb XDN it needs to support server-side rendering (SSR). To add SSR support, run:
+To deploy your Spartacus application on {{ PRODUCT_NAME }} it needs to support server-side rendering (SSR). To add SSR support, run:
 
 ```bash
 ng add @spartacus/schematics --ssr
@@ -54,37 +54,37 @@ The previous command created:
 
 You can now run `npm run build:ssr && npm run serve:ssr` to access your server-side rendered app at `localhost:4000`.
 
-To prepare your Spartacus application for deployment on the Moovweb XDN:
+To prepare your Spartacus application for deployment on {{ PRODUCT_NAME }}:
 
-#### 1. Install the XDN CLI globally:
+#### 1. Install the {{ PRODUCT_NAME }} CLI globally:
 
 ```bash
-npm install -g @xdn/cli
+npm install -g {{ PACKAGE_NAME }}/cli
 ```
 
-2. Run the following in the root folder of your project. This will configure your project for the XDN.
+2. Run the following in the root folder of your project. This will configure your project for {{ PRODUCT_NAME }}.
 
 ```bash
-xdn init
+{{ CLI_NAME }} init
 ```
 
 This will automatically add all of the required dependencies and files to your project. These include:
 
-- The `@xdn/core` package
-- The `@xdn/angular` package
-- The `@xdn/cli` package
-- The `@xdn/spartacus` package
-- The `@xdn/prefetch` package
-- `xdn.config.js`- Contains various configuration options for the XDN.
+- The `{{ PACKAGE_NAME }}/core` package
+- The `{{ PACKAGE_NAME }}/angular` package
+- The `{{ PACKAGE_NAME }}/cli` package
+- The `{{ PACKAGE_NAME }}/spartacus` package
+- The `{{ PACKAGE_NAME }}/prefetch` package
+- `{{ CONFIG_FILE }}`- Contains various configuration options for {{ PRODUCT_NAME }}.
 - `routes.js` - A default routes file that sends all requests to the Angular Universal server. Update this file to add caching or proxy some URLs to a different origin.
 - The `sw` folder - Contains the files needed to build the service worker that that provides static asset and API prefetching.
 
-#### 3. Update `xdn.config.js`
+#### 3. Update `{{ CONFIG_FILE }}`
 
-For an app called `my-xdn-spartacus-app` the XDN config file created by `xdn init` will look like so:
+For an app called `my-layer0-spartacus-app` the {{ PRODUCT_NAME }} config file created by `{{ CLI_NAME }} init` will look like so:
 
 ```js
-// This file was automatically added by xdn deploy.
+// This file was automatically added by {{ CLI_NAME }} deploy.
 // You should commit this file to source control.
 
 module.exports = {
@@ -97,7 +97,7 @@ module.exports = {
 }
 ```
 
-If you have several projects and the `defaultProject` as specified in `angular.json` is not the project with the SSR build, specify the correct project with the `ANGULAR_PROJECT` environment variable. For example: `ANGULAR_PROJECT=my-ssr-project xdn build`.
+If you have several projects and the `defaultProject` as specified in `angular.json` is not the project with the SSR build, specify the correct project with the `ANGULAR_PROJECT` environment variable. For example: `ANGULAR_PROJECT=my-ssr-project {{ CLI_NAME }} build`.
 
 #### 4. Update OCC `baseUrl` endpoint
 
@@ -115,14 +115,14 @@ This value is defined in the `backend` property of the options parameter to `B2c
 
 ### Upstream request tracking
 
-Prefetching for a Spartacus app can be enabled by listening to upstream requests made when server-side rendering a specific page. `@xdn/prefetch` library will pick up on the upstream requests made by reading the `x-xdn-upstream-requests` response header. An example scenario:
+Prefetching for a Spartacus app can be enabled by listening to upstream requests made when server-side rendering a specific page. `{{ PACKAGE_NAME }}/prefetch` library will pick up on the upstream requests made by reading the `{{ HEADER_PREFIX }}-upstream-requests` response header. An example scenario:
 
 1. User A lands on `/product/1`.
 1. `/product/1` has not been cached in the edge and thus will be server-side rendered.
 1. The rendering server has been modified to track upstream requests by patching `https.request`.
-1. The rendering server sets `x-xdn-upstream-requests` to, for example: `/rest/v2/1;/rest/v2/2;`
-1. The HTML response for `/product/1` is now cached and for future requests served from the edge along with the `x-xdn-upstream-requests` response header.
-1. User B lands on a page that has a link to `/product/1`. `/product/:path*` has been configured with `cache.browser.spa: true`. Because of this configuration, `@xdn/prefetch` will know to make a prefetch HEAD request for `/product/1`, and only if `product/1` can be served from the edge will it prefetch all requests specified in `x-xdn-upstream-requests` response header.
+1. The rendering server sets `{{ HEADER_PREFIX }}-upstream-requests` to, for example: `/rest/v2/1;/rest/v2/2;`
+1. The HTML response for `/product/1` is now cached and for future requests served from the edge along with the `{{ HEADER_PREFIX }}-upstream-requests` response header.
+1. User B lands on a page that has a link to `/product/1`. `/product/:path*` has been configured with `cache.browser.spa: true`. Because of this configuration, `{{ PACKAGE_NAME }}/prefetch` will know to make a prefetch HEAD request for `/product/1`, and only if `product/1` can be served from the edge will it prefetch all requests specified in `{{ HEADER_PREFIX }}-upstream-requests` response header.
 1. When User B click the link to `/product/1`, the navigation will be faster since the requests needed to render the new page will be in service worker cache.
 
 Example implementation of upstream request tracking changes required in your `server.ts` file:
@@ -132,17 +132,17 @@ import 'zone.js/dist/zone-node'
 import * as express from 'express'
 import { join } from 'path'
 
-+ // xdn
++ // layer0
 + import * as http from 'http'
 + import * as https from 'https'
-+ import createRenderCallback from '@xdn/spartacus/server/createRenderCallback'
-+ import installXdnMiddleware from '@xdn/spartacus/server/installXdnMiddleware'
++ import createRenderCallback from '{{ PACKAGE_NAME }}/spartacus/server/createRenderCallback'
++ import installLayer0Middleware from '{{ PACKAGE_NAME }}/spartacus/server/installLayer0Middleware'
 
 
 // Express server
 const server = express()
 
-+ installXdnMiddleware({ server, http, https });
++ installLayer0Middleware({ server, http, https });
 
 const PORT = process.env.PORT || 4200
 const DIST_FOLDER = join(process.cwd(), 'dist/<your-project-name>')
@@ -187,9 +187,9 @@ export default server
 
 ### Service worker
 
-The build command places the built `service-worker.js` under `dist` so `@xdn/angular` will know to static serve the file.
+The build command places the built `service-worker.js` under `dist` so `{{ PACKAGE_NAME }}/angular` will know to static serve the file.
 
-Installing the service worker and any further prefetching will be handled by `@xdn/prefetch` by invoking the `install` function imported from `@xdn/prefetch/window/install`.
+Installing the service worker and any further prefetching will be handled by `{{ PACKAGE_NAME }}/prefetch` by invoking the `install` function imported from `{{ PACKAGE_NAME }}/prefetch/window/install`.
 
 Example implementation in `app.component.ts`:
 
@@ -197,7 +197,7 @@ Example implementation in `app.component.ts`:
 import { Component, OnInit, Inject } from '@angular/core'
 import { isPlatformBrowser } from '@angular/common'
 import { PLATFORM_ID } from '@angular/core'
-+ import install from '@xdn/prefetch/window/install'
++ import install from '{{ PACKAGE_NAME }}/prefetch/window/install'
 
 @Component({
   selector: 'app-root',
@@ -247,14 +247,14 @@ Add `"skipLibCheck": true,` to `tsconfig.json` to avoid type errors from `workbo
 
 ## Routing and Cache Configuration
 
-The default `routes.js` file created by `xdn init` sends all requests to Angular server via a fallback route.
+The default `routes.js` file created by `{{ CLI_NAME }} init` sends all requests to Angular server via a fallback route.
 
 ```js
-// This file was automatically added by xdn deploy.
+// This file was automatically added by {{ CLI_NAME }} deploy.
 // You should commit this file to source control.
 
-import { Router } from '@xdn/core/router'
-import { angularRoutes } from '@xdn/angular'
+import { Router } from '{{ PACKAGE_NAME }}/core/router'
+import { angularRoutes } from '{{ PACKAGE_NAME }}/angular'
 
 export default new Router()
   // other routes removed
@@ -321,21 +321,21 @@ return new Router()
 To test your app locally, run:
 
 ```bash
-xdn run
+{{ CLI_NAME }} run
 ```
 
 You can do a production build of your app and test it locally using:
 
 ```bash
-xdn build && xdn run --production
+{{ CLI_NAME }} build && {{ CLI_NAME }} run --production
 ```
 
-Setting `--production` runs your app exactly as it will be uploaded to the Moovweb cloud using serverless-offline.
+Setting `--production` runs your app exactly as it will be uploaded to the {{ PRODUCT_NAME }} cloud using serverless-offline.
 
 ## Deploying
 
-Deploying requires an account on the Moovweb XDN. [Sign up here for free.](https://moovweb.app/signup) Once you have an account, you can deploy to the Moovweb XDN by running the following in the root folder of your project:
+Deploying requires an account on {{ PRODUCT_NAME }}. [Sign up here for free.]({{ APP_URL }}/signup) Once you have an account, you can deploy to {{ PRODUCT_NAME }} by running the following in the root folder of your project:
 
 ```bash
-xdn deploy
+{{ CLI_NAME }} deploy
 ```

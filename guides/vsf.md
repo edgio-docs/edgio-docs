@@ -1,22 +1,22 @@
 # Vue Storefront
 
-Follow these steps to deploy a Vue Storefront app on the Moovweb XDN. As of now the XDN is only compatible with the [Vue Storefront Next CLI tool](https://docs-next.vuestorefront.io/commercetools/getting-started.html#with-vue-storefront-cli-recommended).
+Follow these steps to deploy a Vue Storefront app on {{ PRODUCT_NAME }}. As of now {{ PRODUCT_NAME }} is only compatible with the [Vue Storefront Next CLI tool](https://docs-next.vuestorefront.io/commercetools/getting-started.html#with-vue-storefront-cli-recommended).
 
-For adding XDN to Vue Storefront 1 app follow this [guide](/guides/vsf1).
+For adding {{ PRODUCT_NAME }} to Vue Storefront 1 app follow this [guide](/guides/vsf1).
 
 ## Connector
 
-This framework has a connector developed for the XDN. See [Connectors](connectors) for more information.
+This framework has a connector developed for {{ PRODUCT_NAME }}. See [Connectors](connectors) for more information.
 
-[View the Connector Code](https://github.com/moovweb-docs/xdn-connectors/tree/main/xdn-vue-storefront-connector?button)
+[View the Connector Code](https://github.com/layer0-docs/layer0-connectors/tree/main/layer0-vue-storefront-connector?button)
 
 ## Install Node.js and npm
 
-**XDN only supports Node.js version 12.x**
+**{{ PRODUCT_NAME }} only supports Node.js version {{ NODE_VERSION }}**
 
-If you do not have Node.js installed on your system, download and install it from the official [Node.js v12.x downloads](https://nodejs.org/dist/latest-v12.x/) page. Select the download that matches your operating system and run the installer. Note that the installer for Node.js will also install npm.
+If you do not have Node.js installed on your system, download and install it from the official [Node.js v{{ NODE_VERSION }} downloads](https://nodejs.org/dist/latest-v{{ NODE_VERSION }}/) page. Select the download that matches your operating system and run the installer. Note that the installer for Node.js will also install npm.
 
-_Note that while you can use any version of Node.js >= 12 locally, your app will run in Node 12 when deployed to the XDN cloud. Therefore we highly suggest using Node 12 for all development._
+_Note that while you can use any version of Node.js >= 12 locally, your app will run in Node 12 when deployed to the {{ PRODUCT_NAME }} cloud. Therefore we highly suggest using Node 12 for all development._
 
 ## Install the VSF CLI
 
@@ -29,33 +29,33 @@ cd <project-name>
 npm install
 ```
 
-## Install the XDN CLI
+## Install the {{ PRODUCT_NAME }} CLI
 
-To prepare your Vue Storefront app for deployment on the Moovweb XDN, run the following commands in the root folder of your project:
+To prepare your Vue Storefront app for deployment on {{ PRODUCT_NAME }}, run the following commands in the root folder of your project:
 
 ```
-npm install -g @xdn/cli
-xdn init
+npm install -g {{ PACKAGE_NAME }}/cli
+{{ CLI_NAME }} init
 ```
 
 ### nuxt.config.js
 
-The XDN init command should have automatically moved all your `modules` to `buildModules` in order to deploy the smallest possible build to the XDN.
+The {{ PRODUCT_NAME }} init command should have automatically moved all your `modules` to `buildModules` in order to deploy the smallest possible build to {{ PRODUCT_NAME }}.
 
-Ensure `@nuxtjs/pwa` is not present in the `buildModules`. It is not needed because `@xdn/nuxt/module` builds and injects its own service worker.
+Ensure `@nuxtjs/pwa` is not present in the `buildModules`. It is not needed because `{{ PACKAGE_NAME }}/nuxt/module` builds and injects its own service worker.
 
 ## Development
 
 To run locally in development mode, use this command:
 
 ```
-xdn dev --cache
+{{ CLI_NAME }} dev --cache
 ```
 
 ## Building and Deploying
 
-To build and deploy your app to the XDN, run the following from the root directory of your app:
+To build and deploy your app to {{ PRODUCT_NAME }}, run the following from the root directory of your app:
 
 ```
-xdn deploy <team> # where team is the name of the XDN team to which the app should be deployed.
+{{ CLI_NAME }} deploy
 ```

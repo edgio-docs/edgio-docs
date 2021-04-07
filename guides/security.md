@@ -1,6 +1,6 @@
 # Security
 
-This guide shows you how to keep your site secure using the Moovweb XDN.
+This guide shows you how to keep your site secure using {{ PRODUCT_NAME }}.
 
 ## Content Security Policy (CSP)
 
@@ -46,28 +46,31 @@ environment variables will not enforce basic authentication.
 
 ## SSL
 
-By default the Moovweb XDN only serves traffic over the `https` protocol. It automatically redirects `http` requests to the same URL, including any query strings, on `https`.
+By default {{ PRODUCT_NAME }} only serves traffic over the `https` protocol. It automatically redirects `http` requests to the same URL, including any query strings, on `https`.
 
-We strongly discourage the use of `http` protocol but if you *must* enable it then you can do so by adding `protocol: 'http'` to your route criteria. For example:
+We strongly discourage the use of `http` protocol but if you _must_ enable it then you can do so by adding `protocol: 'http'` to your route criteria. For example:
 
 ```js
 // routes.js
 
 // Respond to Let's Encrypt HTTP-01 challenge.
-router.match({
-  protocol: 'http',
-  path: '/.well-known/acme-challenge/<your token>'
-}, ({ send }) => {
-  send('<token value>')
-})
+router.match(
+  {
+    protocol: 'http',
+    path: '/.well-known/acme-challenge/<your token>',
+  },
+  ({ send }) => {
+    send('<token value>')
+  },
+)
 ```
 
-If you want the route to match both `http` and `https` protocols you can match on `protocol: /^https?$/`. If no route is matched on `http` protocol then the XDN will fallback on its default behavior of automatically redirecting the request to `https`.
+If you want the route to match both `http` and `https` protocols you can match on `protocol: /^https?$/`. If no route is matched on `http` protocol then {{ PRODUCT_NAME }} will fallback on its default behavior of automatically redirecting the request to `https`.
 
 Additionally:
 
-* A request's protocol can be determined by reading the [`x-xdn-protocol`](request_headers#section_general_headers) request header or the [`request.secure`](/docs/api/core/interfaces/_router_request_.request.html#secure) property.
-* During local development all requests will appear secure by default.  To test your router for `http` protocol matching you must either set the `xdn_emulate_local_http` cookie to `true` (if using a browser) or send an `x-xdn-protocol` request header set to `http`.
+- A request's protocol can be determined by reading the [`{{ HEADER_PREFIX }}-protocol`](request_headers#section_general_headers) request header or the [`request.secure`](/docs/api/core/interfaces/_router_request_.request.html#secure) property.
+- During local development all requests will appear secure by default. To test your router for `http` protocol matching you must either set the `{{ COOKIE_PREFIX }}_emulate_local_http` cookie to `true` (if using a browser) or send an `{{ HEADER_PREFIX }}-protocol` request header set to `http`.
 
 ## Secrets
 
@@ -77,7 +80,7 @@ navigate to your environment, click _EDIT_, then under _Environment Variables_, 
 
 ![networking](/images/security/environment-variables.png)
 
-As of XDN CLI version 2.19.0, when you deploy to an environment using a deploy token, for example by running `xdn deploy my-team --environment=production --token=(my token)` option, all environment variables are pulled down from the XDN Developer Console and applied to `process.env` so they can be accessed at build time. This allows you to store all of your build and runtime secrets in a single place, the XDN Developer Consoler, rather than storing some in your CI system's secret manager.
+As of {{ PRODUCT_NAME }} CLI version 2.19.0, when you deploy to an environment using a deploy token, for example by running `{{ CLI_NAME }} deploy my-team --environment=production --token=(my token)` option, all environment variables are pulled down from the {{ PRODUCT_NAME }} Developer Console and applied to `process.env` so they can be accessed at build time. This allows you to store all of your build and runtime secrets in a single place, {{ PRODUCT_NAME }} Developer Console, rather than storing some in your CI system's secret manager.
 
 ## Cache poisoning
 
@@ -85,12 +88,12 @@ As of XDN CLI version 2.19.0, when you deploy to an environment using a deploy t
 
 > The impact of a maliciously constructed response can be magnified if it is cached either by a web cache used by multiple users or even the browser cache of a single user. If a response is cached in a shared web cache, such as those commonly found in proxy servers, then all users of that cache will continue to receive the malicious content until the cache entry is purged.
 
-To guard against this attack you must ensure that all the request parameters that influence the rendering of the content are part of your [custom cache key](caching#section_customizing_the_cache_key). The XDN will [automatically include](caching#section_cache_key) the `host` header and URL. Including other request headers and cookies are your responsibility.
+To guard against this attack you must ensure that all the request parameters that influence the rendering of the content are part of your [custom cache key](caching#section_customizing_the_cache_key). {{ PRODUCT_NAME }} will [automatically include](caching#section_cache_key) the `host` header and URL. Including other request headers and cookies are your responsibility.
 
 For example, if you are rendering content based on a custom language cookie, then you must include it in your custom cache key:
 
 ```js
-import { CustomCacheKey } from '@xdn/core/router'
+import { CustomCacheKey } from '{{ PACKAGE_NAME }}/core/router'
 
 router.get('/some/path/depending/on/language/cookie', ({ cache }) => {
   cache({

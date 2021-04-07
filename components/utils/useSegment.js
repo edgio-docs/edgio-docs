@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 
 export default function useSegment() {
-  const MOOVWEB = 'moovweb.'
+  const LAYERZ = 'layer0.'
   const RSF = 'reactstorefront.'
 
   const { asPath, query } = useRouter()
@@ -39,7 +39,7 @@ export default function useSegment() {
 
       anchors.forEach(anchor => {
         if (
-          (anchor.href.includes(MOOVWEB) || anchor.href.includes(RSF)) &&
+          (anchor.href.includes(LAYERZ) || anchor.href.includes(RSF)) &&
           !anchor.href.includes(window.location.hostname)
         ) {
           const url = new URL(anchor.href)

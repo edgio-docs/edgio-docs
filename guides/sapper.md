@@ -1,6 +1,6 @@
 # Sapper
 
-This guide shows you how to deploy [Sapper](https://sapper.svelte.dev/) apps on the Moovweb XDN
+This guide shows you how to deploy [Sapper](https://sapper.svelte.dev/) apps on {{ PRODUCT_NAME }}
 
 ![video](https://www.youtube.com/watch?v=Xt_UlQiXDgQ)
 
@@ -8,22 +8,22 @@ This guide shows you how to deploy [Sapper](https://sapper.svelte.dev/) apps on 
 
 This Sapper example app uses server-side rendering and prefetching to provide lightening-fast transitions between pages.
 
-[Try the Sapper SSR Example Site](https://moovweb-docs-xdn-sapper-example-default.moovweb-edge.io/category/hats?button)
-[View the Code](https://github.com/moovweb-docs/xdn-examples/tree/main/xdn-sapper-example?button)
+[Try the Sapper SSR Example Site](https://moovweb-docs-layer0-sapper-example-default.moovweb-edge.io/category/hats?button)
+[View the Code](https://github.com/{{ EXAMPLES_REPO }}/tree/main/layer0-sapper-example?button)
 
 ## Connector
 
-This framework has a connector developed for the XDN. See [Connectors](connectors) for more information.
+This framework has a connector developed for {{ PRODUCT_NAME }}. See [Connectors](connectors) for more information.
 
-[View the Connector Code](https://github.com/moovweb-docs/xdn-connectors/tree/main/xdn-sapper-connector?button)
+[View the Connector Code](https://github.com/moovweb-docs/layer0-connectors/tree/main/layer0-sapper-connector?button)
 
 ## Install Node.js and npm
 
-**XDN only supports Node.js version 12.x**
+**{{ PRODUCT_NAME }} only supports Node.js version {{ NODE_VERSION }}**
 
-If you do not have Node.js installed on your system, download and install it from the official [Node.js v12.x downloads](https://nodejs.org/dist/latest-v12.x/) page. Select the download that matches your operating system and run the installer. Note that the installer for Node.js will also install npm.
+If you do not have Node.js installed on your system, download and install it from the official [Node.js v{{ NODE_VERSION }} downloads](https://nodejs.org/dist/latest-v{{ NODE_VERSION }}/) page. Select the download that matches your operating system and run the installer. Note that the installer for Node.js will also install npm.
 
-_Note that while you can use any version of Node.js >= 12 locally, your app will run in Node 12 when deployed to the XDN cloud. Therefore we highly suggest using Node 12 for all development._
+_Note that while you can use any version of Node.js >= 12 locally, your app will run in Node 12 when deployed to the {{ PRODUCT_NAME }} cloud. Therefore we highly suggest using Node 12 for all development._
 
 ## Getting Started
 
@@ -41,20 +41,20 @@ npm install
 npm run dev & open http://localhost:3000
 ```
 
-To prepare your Sapper app for deployment on the Moovweb XDN, run the following in the root folder of your project:
+To prepare your Sapper app for deployment on {{ PRODUCT_NAME }}, run the following in the root folder of your project:
 
 ```
-npm install -g @xdn/cli
-xdn init
+npm install -g {{ PACKAGE_NAME }}/cli
+{{ CLI_NAME }} init
 ```
 
 This will automatically add all of the required dependencies and files to your project. These include:
 
-- The `@xdn/core` package - Allows you to declare routes and deploy your application on the Moovweb XDN
-- The `@xdn/sapper` package - Provides router middleware that automatically adds Sapper routes to the XDN router.
-- The `@xdn/prefetch` package - Allows you to configure a service worker to prefetch and cache pages to improve browsing speed
-- The `@xdn/svelte` package - Provides a `Prefetch` component for prefetching pages
-- `xdn.config.js`
+- The `{{ PACKAGE_NAME }}/core` package - Allows you to declare routes and deploy your application on {{ PRODUCT_NAME }}
+- The `{{ PACKAGE_NAME }}/sapper` package - Provides router middleware that automatically adds Sapper routes to the {{ PRODUCT_NAME }} router.
+- The `{{ PACKAGE_NAME }}/prefetch` package - Allows you to configure a service worker to prefetch and cache pages to improve browsing speed
+- The `{{ PACKAGE_NAME }}/svelte` package - Provides a `Prefetch` component for prefetching pages
+- `{{ CONFIG_FILE }}`
 - `routes.js` - A default routes file that sends all requests to Sapper. Update this file to add caching or proxy some URLs to a different origin.
 
 ## Webpack
@@ -114,11 +114,11 @@ and
 
 ## Running Locally
 
-To simulate your app within the XDN locally, run:
+To simulate your app within {{ PRODUCT_NAME }} locally, run:
 
 ```
 
-xdn dev
+{{ CLI_NAME }} dev
 
 ```
 
@@ -128,17 +128,17 @@ To simulate edge caching locally, run:
 
 ```
 
-xdn dev --cache
+{{ CLI_NAME }} dev --cache
 
 ```
 
 ## Deploying
 
-Deploying requires an account on the Moovweb XDN. [Sign up here for free.](https://moovweb.app/signup) Once you have an account, you can deploy to the Moovweb XDN by running the following in the root folder of your project
+Deploying requires an account on {{ PRODUCT_NAME }}. [Sign up here for free.]({{ APP_URL }}/signup) Once you have an account, you can deploy to {{ PRODUCT_NAME }} by running the following in the root folder of your project
 
 ```
 
-xdn deploy
+{{ CLI_NAME }} deploy
 
 ```
 
@@ -157,7 +157,7 @@ import { timestamp, files, shell, routes } from '@sapper/service-worker'
 
 /* begin: add this to src/service-worker.js */
 import { precacheAndRoute } from 'workbox-precaching'
-import { Prefetcher } from '@xdn/prefetch/sw'
+import { Prefetcher } from '{{ PACKAGE_NAME }}/prefetch/sw'
 
 precacheAndRoute([])
 new Prefetcher().route()
@@ -166,11 +166,11 @@ new Prefetcher().route()
 
 ### Prefetch Component
 
-To prefetch data when links become visible in the viewport, wrap the link in the `Prefetch` component from `@xdn/svelte`
+To prefetch data when links become visible in the viewport, wrap the link in the `Prefetch` component from `{{ PACKAGE_NAME }}/svelte`
 
 ```html
 <script>
-  import { Prefetch } from '@xdn/svelte'
+  import { Prefetch } from '{{ PACKAGE_NAME }}/svelte'
 </script>
 
 <Prefetch url="/blog.json">
@@ -181,6 +181,6 @@ To prefetch data when links become visible in the viewport, wrap the link in the
 Note that the behavior of the `Prefetch` component is different from Sapper's built-in support for `<a rel="prefetch">` in two ways:
 
 - `rel="prefetch"` only prefetches data when the user hovers over the link. The `Prefetch` component will prefetch data when the link becomes visible, or, if the `immediately` prop is present, as soon as the page loads.
-- `Prefetch` will only prefetch from the XDN edge cache, which means that additional traffic due to prefetching will never reach your API servers.
+- `Prefetch` will only prefetch from the {{ PRODUCT_NAME }} edge cache, which means that additional traffic due to prefetching will never reach your API servers.
 
 See [Prefetching](/guides/prefetching) for more information.

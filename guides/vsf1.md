@@ -3,86 +3,88 @@
 ## Example Site
 
 [Try the VSF1 Example Site](https://moovweb-demos-vsf1-default.moovweb-edge.io/?button)
-[View the Code](https://github.com/moovweb-docs/xdn-examples/tree/main/xdn-vue-storefront-example?button)
+[View the Code](https://github.com/{{ EXAMPLES_REPO }}/tree/main/layer0-vue-storefront-example?button)
 
 ## 1. Install Vue Storefront
 
 Install the Vue Storefront application using this guide: https://docs.vuestorefront.io/guide/installation/linux-mac.html
 
-<b>Note</b>: XDN requires Node version >= 12, so before the installation it's recommended to run:
+<b>Note</b>: {{ PRODUCT_NAME }} requires Node version >= 12, so before the installation it's recommended to run:
 
 ```bash
 nvm use 12
 ```
 
-## 2. Prepare VSF files for XDN
+## 2. Prepare VSF files for {{ PRODUCT_NAME }}
 
 - In the new VSF project, go to `src/themes/default` (or any theme you're using) and remove `.git` folder from it to save that in Git VCS.
 - Go to `.gitignore` file and remove `config/local.json` line to keep it tracked.
 
-## 3. Install XDN
+## 3. Install {{ PRODUCT_NAME }}
 
-- Install XDN packages: `yarn add -D -W @xdn/cli && yarn add -W @xdn/core @xdn/prefetch @xdn/devtools`
-- Create a file called `xdn.config.js` in the root directory of your project and configure your origin and images hosts as backends. For example:
+- Install {{ PRODUCT_NAME }} packages: `yarn add -D -W {{ PACKAGE_NAME }}/cli && yarn add -W {{ PACKAGE_NAME }}/core {{ PACKAGE_NAME }}/prefetch {{ PACKAGE_NAME }}/devtools`
+- Create a file called `{{ CONFIG_FILE }}` in the root directory of your project and configure your origin and images hosts as backends. For example:
 
 ```js
 module.exports = {
-  routes: './xdn/routes.js',
+  routes: './{{ PRODUCT_NAME_LOWER }}/routes.js',
   backends: {
     origin: {
       domainOrIp: 'demo.vuestorefront.io',
       hostHeader: 'demo.vuestorefront.io',
     },
   },
-  connector: './xdn',
+  connector: './{{ PRODUCT_NAME_LOWER }}',
   includeNodeModules: true,
   includeFiles: {
-    './dist-xdn-server/server.js': true,
+    './dist-{{ PRODUCT_NAME_LOWER }}-server/server.js': true,
     './dist': true,
     './config/default.json': 'config/production.json',
   },
 }
 ```
 
-- Create `xdn/service-worker.js`, which will contain the source code for your service worker:
+- Create `{{ PRODUCT_NAME_LOWER }}/service-worker.js`, which will contain the source code for your service worker:
 
 ```js
-import { Prefetcher } from '@xdn/prefetch/sw'
+import { Prefetcher } from '{{ PACKAGE_NAME }}/prefetch/sw'
 import { clientsClaim, skipWaiting } from 'workbox-core'
 import { precacheAndRoute } from 'workbox-precaching'
-import DeepFetchPlugin, { DeepFetchCallbackParam } from '@xdn/prefetch/sw/DeepFetchPlugin'
-import { prefetch } from '@xdn/prefetch/window/prefetch'
+import DeepFetchPlugin, {
+  DeepFetchCallbackParam,
+} from '{{ PACKAGE_NAME }}/prefetch/sw/DeepFetchPlugin'
+import { prefetch } from '{{ PACKAGE_NAME }}/prefetch/window/prefetch'
 skipWaiting()
 clientsClaim()
 precacheAndRoute(self.__WB_MANIFEST || [])
 new Prefetcher().route()
 ```
 
-- Create `xdn/browser.js` with the following content:
+- Create `{{ PRODUCT_NAME_LOWER }}/browser.js` with the following content:
 
 ```js
-import installDevtools from '@xdn/devtools/install'
-import install from '@xdn/prefetch/window/install'
+import installDevtools from '{{ PACKAGE_NAME }}/devtools/install'
+import install from '{{ PACKAGE_NAME }}/prefetch/window/install'
 
 document.addEventListener('DOMContentLoaded', () => {
-  console.info('[XDN browser] DOMContentLoaded -> running install()')
+  console.info('[{{ PRODUCT_NAME }} browser] DOMContentLoaded -> running install()')
   install({
     forcePrefetchRatio: 0.5, // forcely prefetch 50% of non-cached content for higher hit rate
   })
-  console.info('[XDN browser] DOMContentLoaded -> running installDevtools()')
+  console.info('[{{ PRODUCT_NAME }} browser] DOMContentLoaded -> running installDevtools()')
   installDevtools()
 })
 ```
 
-- Create `xdn/routes.js`. Here you will configure caching for each route in your application. Here is an example:
+- Create `{{ PRODUCT_NAME_LOWER }}/routes.js`. Here you will configure caching for each route in your application. Here is an example:
 
 ```js
-import { Router } from '@xdn/core/router'
+import { Router } from '{{ PACKAGE_NAME }}/core/router'
 import { CACHE_ASSETS, CACHE_PAGES } from './cache'
-import { BACKENDS } from '@xdn/core/constants'
+import { BACKENDS } from '{{ PACKAGE_NAME }}/core/constants'
 const DIST_APP = 'dist'
-const DIST_XDN_CLIENT = 'dist-xdn-client'
-const DIST_XDN_ASSETS = 'dist-xdn-assets'
+const DIST_{{ PRODUCT_NAME_UPPER }}_CLIENT = 'dist-{{ PRODUCT_NAME_LOWER }}-client'
+const DIST_{{ PRODUCT_NAME_UPPER }}_ASSETS = 'dist-{{ PRODUCT_NAME_LOWER }}-assets'
 const SPLAT = ':path*'
 const SUFFIX_SPLAT = `:suffix/${SPLAT}`
 // //////////////////////////////////////////
@@ -301,14 +303,14 @@ const pages = [
 ]
 // static prerendering
 router.prerender(pages.filter(page => !page.includes(SPLAT)))
-// xdn static files
+// {{ PRODUCT_NAME_LOWER }} static files
 router.get('/service-worker.js', ({ serviceWorker, cache }) => {
   cache(CACHE_ASSETS)
-  serviceWorker(`${DIST_XDN_CLIENT}/service-worker.js`)
+  serviceWorker(`${DIST_{{ PRODUCT_NAME_UPPER }}_CLIENT}/service-worker.js`)
 })
 router.get('/main.js', ({ serveStatic, cache }) => {
   cache(CACHE_ASSETS)
-  serveStatic(`${DIST_XDN_CLIENT}/browser.js`)
+  serveStatic(`${DIST_{{ PRODUCT_NAME_UPPER }}_CLIENT}/browser.js`)
 })
 // assets
 router.get(`/dist/${SPLAT}`, ({ serveStatic, cache }) => {
@@ -317,7 +319,7 @@ router.get(`/dist/${SPLAT}`, ({ serveStatic, cache }) => {
 })
 router.get(`/assets/${SPLAT}`, ({ serveStatic, cache }) => {
   cache(CACHE_ASSETS)
-  serveStatic(`${DIST_XDN_ASSETS}/${SPLAT}`)
+  serveStatic(`${DIST_{{ PRODUCT_NAME_UPPER }}_ASSETS}/${SPLAT}`)
 })
 router.get(`/img/${SPLAT}`, ({ proxy, cache }) => {
   cache(CACHE_ASSETS)
@@ -346,7 +348,7 @@ router.fallback(({ proxy }) => {
 export default router
 ```
 
-- Add `xdn/cache.js` file. For example:
+- Add `{{ PRODUCT_NAME_LOWER }}/cache.js` file. For example:
 
 ```js
 const TIME_1H = 60 * 60
@@ -384,15 +386,15 @@ export const CACHE_ASSETS = {
 }
 ```
 
-- Create `xdn/webpack.xdn.client.config.js`. This webpack configuration will bundle the service worker and the code to install it when the app loads in the browser.
+- Create `{{ PRODUCT_NAME_LOWER }}/webpack.{{ PRODUCT_NAME_LOWER }}.client.config.js`. This webpack configuration will bundle the service worker and the code to install it when the app loads in the browser.
 
 ```js
 const path = require('path')
 const webpack = require('webpack')
 module.exports = {
   entry: {
-    browser: './xdn/browser.js',
-    'service-worker': './xdn/service-worker.js',
+    browser: './{{ PRODUCT_NAME_LOWER }}/browser.js',
+    'service-worker': './{{ PRODUCT_NAME_LOWER }}/service-worker.js',
   },
   mode: 'production',
   resolve: {
@@ -400,7 +402,7 @@ module.exports = {
   },
   output: {
     filename: '[name].js',
-    path: path.resolve(__dirname, '../dist-xdn'),
+    path: path.resolve(__dirname, '../dist-{{ PRODUCT_NAME_LOWER }}'),
   },
   plugins: [
     new webpack.DefinePlugin({
@@ -410,19 +412,20 @@ module.exports = {
 }
 ```
 
-- Add `xdn/prod.js`:
+- Add `{{ PRODUCT_NAME_LOWER }}/prod.js`:
 
 ```js
 const { createServer } = require('http')
 const { join } = require('path')
 
 module.exports = function prod(port) {
-  const server = require(join(process.cwd(), 'dist-xdn-server', 'server.js')).default
+  const server = require(join(process.cwd(), 'dist-{{ PRODUCT_NAME_LOWER }}-server', 'server.js'))
+    .default
   return new Promise(resolve => createServer(server).listen(port, resolve))
 }
 ```
 
-- Add `core/build/webpack.xdn.config.ts` file:
+- Add `core/build/webpack.{{ PRODUCT_NAME_LOWER }}.config.ts` file:
 
 ```ts
 import { buildLocaleIgnorePattern } from '@vue-storefront/i18n/helpers'
@@ -490,8 +493,8 @@ export default {
   ],
   // devtool: 'source-map',
   output: {
-    path: path.resolve(__dirname, '../../dist-xdn-server'),
-    publicPath: '/dist-xdn-server/',
+    path: path.resolve(__dirname, '../../dist-{{ PRODUCT_NAME_LOWER }}-server'),
+    publicPath: '/dist-{{ PRODUCT_NAME_LOWER }}-server/',
     filename: 'server.js',
     libraryTarget: 'commonjs',
   },
@@ -620,44 +623,44 @@ export default {
 }
 ```
 
-- Add `xdn:*` scripts into `package.json` file:
+- Add `{{ PRODUCT_NAME_LOWER }}:*` scripts into `package.json` file:
 
 ```json
 ...
-"xdn:build:server": "cross-env NODE_ENV=production TS_NODE_PROJECT=\"tsconfig-build.json\" webpack --config ./core/build/webpack.xdn.config.ts --mode production --hide-modules",
-"xdn:build:assets": "ncp ./src/themes/default/assets ./dist-xdn-assets",
-"xdn:build:client": "cross-env NODE_ENV=production webpack --progress --config xdn/webpack.xdn.client.config.js && xdn build",
-"xdn:build": "yarn xdn:build:server && yarn xdn:build:assets && yarn xdn:build:client",
-"xdn:clean": "rimraf dist-xdn-assets && rimraf dist-xdn-client && rimraf dist-xdn-server && rimraf .xdn",
-"xdn:start:prod": "xdn run --production",
-"xdn:deploy": "xdn deploy --team=my-team --skip-build",
+"{{ PRODUCT_NAME_LOWER }}:build:server": "cross-env NODE_ENV=production TS_NODE_PROJECT=\"tsconfig-build.json\" webpack --config ./core/build/webpack.{{ PRODUCT_NAME_LOWER }}.config.ts --mode production --hide-modules",
+"{{ PRODUCT_NAME_LOWER }}:build:assets": "ncp ./src/themes/default/assets ./dist-{{ PRODUCT_NAME_LOWER }}-assets",
+"{{ PRODUCT_NAME_LOWER }}:build:client": "cross-env NODE_ENV=production webpack --progress --config {{ PRODUCT_NAME_LOWER }}/webpack.{{ PRODUCT_NAME_LOWER }}.client.config.js && {{ CLI_NAME }} build",
+"{{ PRODUCT_NAME_LOWER }}:build": "yarn {{ PRODUCT_NAME_LOWER }}:build:server && yarn {{ PRODUCT_NAME_LOWER }}:build:assets && yarn {{ PRODUCT_NAME_LOWER }}:build:client",
+"{{ PRODUCT_NAME_LOWER }}:clean": "rimraf dist-{{ PRODUCT_NAME_LOWER }}-assets && rimraf dist-{{ PRODUCT_NAME_LOWER }}-client && rimraf dist-{{ PRODUCT_NAME_LOWER }}-server && rimraf .{{ PRODUCT_NAME_LOWER }}",
+"{{ PRODUCT_NAME_LOWER }}:start:prod": "{{ CLI_NAME }} run --production",
+"{{ PRODUCT_NAME_LOWER }}:deploy": "{{ CLI_NAME }} deploy --team=my-team --skip-build",
 ...
 ```
 
-- Ignore XDN build in `.gitignore`:
+- Ignore {{ PRODUCT_NAME }} build in `.gitignore`:
 
 ```bash
-# XDN
-/dist-xdn-assets
-/dist-xdn-client
-/dist-xdn-server
-/.xdn
+# {{ PRODUCT_NAME }}
+/dist-{{ PRODUCT_NAME_LOWER }}-assets
+/dist-{{ PRODUCT_NAME_LOWER }}-client
+/dist-{{ PRODUCT_NAME_LOWER }}-server
+/.{{ PRODUCT_NAME_LOWER }}
 ```
 
-- Find all `*.template.html` files in VSF app and add XDN scripts into `<head>` there:
+- Find all `*.template.html` files in VSF app and add {{ PRODUCT_NAME }} scripts into `<head>` there:
 
 ```html
-<!-- XDN -->
+<!-- {{ PRODUCT_NAME }} -->
 <script src="/service-worker.js" defer></script>
-<script src="/__xdn__/cache-manifest.js" defer></script>
+<script src="/__{{ PRODUCT_NAME_LOWER }}__/cache-manifest.js" defer></script>
 <script src="/main.js" defer></script>
-<script src="/__xdn__/devtools/install.js" defer></script>
+<script src="/__{{ PRODUCT_NAME_LOWER }}__/devtools/install.js" defer></script>
 ```
 
 - Finally, you are ready to build and deploy the app:
 
 ```bash
 yarn build
-yarn xdn:build
-yarn xdn:deploy
+yarn {{ PRODUCT_NAME_LOWER }}:build
+yarn {{ PRODUCT_NAME_LOWER }}:deploy
 ```

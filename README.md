@@ -1,4 +1,4 @@
-# XDN Documentation
+# Layer0 Documentation
 
 ## Setup
 

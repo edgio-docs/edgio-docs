@@ -4,11 +4,11 @@ This guide shows you how to share your project with other collaborators using te
 
 ## Private Space
 
-When you first log into the Moovweb XDN console, you'll see your private space:
+When you first log into {{ PRODUCT_NAME }} console, you'll see your private space:
 
 ![private space](/images/deploying/private_space.png)
 
-When you run `xdn deploy` your site will be created here. Sites in your private space can only be seen by you. To collaborate with other developers, create a team.
+When you run `{{ CLI_NAME }} deploy` your site will be created here. Sites in your private space can only be seen by you. To collaborate with other developers, create a team.
 
 ## Creating a Team
 
@@ -28,7 +28,7 @@ To add team members, click the "Team Members" tab:
 
 ## Roles
 
-The Moovweb XDN provides two roles:
+{{ PRODUCT_NAME }} provides two roles:
 
 ### Admin
 
@@ -36,7 +36,7 @@ Users in the "Admin" role have full control over all team and site settings
 
 ### Member
 
-Users in the "Member" can see all of the team's sites and settings, and deploy updates to existing sites via `xdn deploy` but cannot change site or team settings.
+Users in the "Member" can see all of the team's sites and settings, and deploy updates to existing sites via `{{ CLI_NAME }} deploy` but cannot change site or team settings.
 
 When creating an environment, you can specify whether all members or only admins should be able to deploy to that environment
 

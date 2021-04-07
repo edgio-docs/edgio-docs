@@ -1,6 +1,6 @@
 # Routing
 
-The `@xdn/core` package provides a JavaScript API for controlling routing and caching from your code base rather than a CDN web portal. Using this "CDN-as-Code" approach allows this vital routing logic to be properly tested, reviewed, and version controlled, just like the rest of your application code.
+The `{{ PACKAGE_NAME }}/core` package provides a JavaScript API for controlling routing and caching from your code base rather than a CDN web portal. Using this "CDN-as-Code" approach allows this vital routing logic to be properly tested, reviewed, and version controlled, just like the rest of your application code.
 
 Using the Router, you can:
 
@@ -13,13 +13,13 @@ Using the Router, you can:
 
 ## Configuration
 
-To define routes for the Moovweb XDN, create a `routes.js` file in the root of your project. You can override the default path to the router by setting the `routes` key in `xdn.config.js`.
+To define routes for {{ PRODUCT_NAME }}, create a `routes.js` file in the root of your project. You can override the default path to the router by setting the `routes` key in `{{ CONFIG_FILE }}`.
 
-The `routes.js` file should export an instance of `@xdn/core/router/Router`:
+The `routes.js` file should export an instance of `{{ PACKAGE_NAME }}/core/router/Router`:
 
 ```js
 // routes.js
-const { Router } = require('@xdn/core/router')
+const { Router } = require('{{ PACKAGE_NAME }}/core/router')
 
 module.exports = new Router()
 ```
@@ -30,7 +30,7 @@ Declare routes using the method corresponding to the HTTP method you want to mat
 
 ```js
 // routes.js
-const { Router } = require('@xdn/core/router')
+const { Router } = require('{{ PACKAGE_NAME }}/core/router')
 
 module.exports = new Router().get('/some-path', ({ cache, proxy }) => {
   // handle the request here
@@ -50,7 +50,7 @@ To match all methods, use `match`:
 
 ```js
 // routes.js
-const { Router } = require('@xdn/core/router')
+const { Router } = require('{{ PACKAGE_NAME }}/core/router')
 
 module.exports = new Router().match('/some-path', ({ cache, proxy }) => {
   // handle the request here
@@ -59,7 +59,7 @@ module.exports = new Router().match('/some-path', ({ cache, proxy }) => {
 
 ## Route Execution
 
-When the XDN receives a request, it executes **each route that matches the request** in the order in which they are declared until one sends a response. The following methods return a response:
+When {{ PRODUCT_NAME }} receives a request, it executes **each route that matches the request** in the order in which they are declared until one sends a response. The following methods return a response:
 
 - [appShell](/docs/api/core/classes/_router_responsewriter_.responsewriter.html#appshell)
 - [compute](/docs/api/core/classes/_router_responsewriter_.responsewriter.html#compute)
@@ -74,8 +74,8 @@ When the XDN receives a request, it executes **each route that matches the reque
 Multiple routes can therefore be executed for a given request. A common pattern is to add caching with one route and render the response with a later one using middleware. In the following example we cache then render a response with Next.js:
 
 ```js
-const { Router } = require('@xdn/core/router')
-const { nextRoutes } = require('@xdn/next')
+const { Router } = require('{{ PACKAGE_NAME }}/core/router')
+const { nextRoutes } = require('{{ PACKAGE_NAME }}/next')
 
 // In this example a request to /products/1 will be cached by the first route, then served by the `nextRoutes` middleware
 new Router()
@@ -89,34 +89,34 @@ new Router()
 
 ### Altering requests and responses
 
-XDN offers APIs to manipulate request and response headers and cookies. The APIs are:
+{{ PRODUCT_NAME }} offers APIs to manipulate request and response headers and cookies. The APIs are:
 
-| Operation     | Request                 | Upstream Response              | Response sent to Browser          |
-|---------------|-------------------------|--------------------------------|------------------------|
-| Set header    | `setRequestHeader`      | `setUpstreamResponseHeader`    | `setResponseHeader`    |
-| Add cookie    | `*`                     | `addUpstreamResponseCookie`    | `addResponseCookie`    |
-| Update header | `updateRequestHeader`   | `updateUpstreamResponseHeader` | `updateResponseHeader` |
-| Update cookie | `*`                     | `updateUpstreamResponseCookie` | `updateResponseCookie` |
-| Remove header | `removeRequestHeader`   | `removeUpstreamResponseHeader` | `removeResponseHeader` |
-| Remove cookie | `*`                     | `removeUpstreamResponseCookie` | `removeResponseCookie` |
+| Operation     | Request               | Upstream Response              | Response sent to Browser |
+| ------------- | --------------------- | ------------------------------ | ------------------------ |
+| Set header    | `setRequestHeader`    | `setUpstreamResponseHeader`    | `setResponseHeader`      |
+| Add cookie    | `*`                   | `addUpstreamResponseCookie`    | `addResponseCookie`      |
+| Update header | `updateRequestHeader` | `updateUpstreamResponseHeader` | `updateResponseHeader`   |
+| Update cookie | `*`                   | `updateUpstreamResponseCookie` | `updateResponseCookie`   |
+| Remove header | `removeRequestHeader` | `removeUpstreamResponseHeader` | `removeResponseHeader`   |
+| Remove cookie | `*`                   | `removeUpstreamResponseCookie` | `removeResponseCookie`   |
 
 `*` Adding, updating, or removing a request cookie can be achieved with `updateRequestHeader` applied to `cookie` header.
 
-You can find detailed descriptions of these APIs in the `@xdn/core` [documentation](/docs/api/core/classes/_router_responsewriter_.responsewriter.html)
+You can find detailed descriptions of these APIs in the `{{ PACKAGE_NAME }}/core` [documentation](/docs/api/core/classes/_router_responsewriter_.responsewriter.html)
 
 #### Embedded values
 
 You can inject values from the request or response into headers or cookies as template literals using the `${value}` format. For example: `setResponseHeader('original-request-path', '${path}')` would add an `original-request-path` response header whose value is the request path.
 
-| Value           | Embedded value         | Description                                                                            |
-|-----------------|------------------------|----------------------------------------------------------------------------------------|
-| HTTP method     | `${method}`            | The value of the HTTP method used for the request (e.g. `GET`)                         |
-| URL             | `${url}`               | The complete URL path including any query strings (e.g. `/search?query=docs`). Protocol, hostname, and port are not included.          |
-| Path            | `${path}`              | The URL path excluding any query strings (e.g. `/search`)                              |
-| Query string    | `${query:<name>}`      | The value of the `<name>` query string or empty if not available.                      |
-| Request header  | `${req:<name>}`        | The value of the `<name>` request header or empty if not available.                    |
-| Request cookie  | `${req:cookie:<name>}` | The value of the `<name>` cookie in `cookie` request header or empty if not available. |
-| Response header | `${res:<name>}`        | The value of the `<name>` response header or empty if not available.                   |
+| Value           | Embedded value         | Description                                                                                                                   |
+| --------------- | ---------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
+| HTTP method     | `${method}`            | The value of the HTTP method used for the request (e.g. `GET`)                                                                |
+| URL             | `${url}`               | The complete URL path including any query strings (e.g. `/search?query=docs`). Protocol, hostname, and port are not included. |
+| Path            | `${path}`              | The URL path excluding any query strings (e.g. `/search`)                                                                     |
+| Query string    | `${query:<name>}`      | The value of the `<name>` query string or empty if not available.                                                             |
+| Request header  | `${req:<name>}`        | The value of the `<name>` request header or empty if not available.                                                           |
+| Request cookie  | `${req:cookie:<name>}` | The value of the `<name>` cookie in `cookie` request header or empty if not available.                                        |
+| Response header | `${res:<name>}`        | The value of the `<name>` response header or empty if not available.                                                          |
 
 ## Route Pattern Syntax
 
@@ -227,7 +227,7 @@ router.match(
 
 The second argument to routes is a function that receives a `ResponseWriter` and uses it to send a response. Using `ResponseWriter` you can:
 
-- Proxy a backend configured in `xdn.config.js`
+- Proxy a backend configured in `{{ CONFIG_FILE }}`
 - Serve a static file
 - Send a redirect
 - Send a synthetic response
@@ -238,12 +238,12 @@ The second argument to routes is a function that receives a `ResponseWriter` and
 
 ## Full Example
 
-This example shows typical usage of `@xdn/core`, including serving a service worker, next.js routes (vanity and conventional routes), and falling back to a legacy backend.
+This example shows typical usage of `{{ PACKAGE_NAME }}/core`, including serving a service worker, next.js routes (vanity and conventional routes), and falling back to a legacy backend.
 
 ```js
 // routes.js
 
-const { Router } = require('@xdn/core/router')
+const { Router } = require('{{ PACKAGE_NAME }}/core/router')
 
 module.exports = new Router()
   .get('/service-worker.js', ({ serviceWorker }) => {
@@ -265,7 +265,7 @@ module.exports = new Router()
     proxy('origin')
   })
   .fallback(({ proxy }) => {
-    // serve all unmatched URLs from the origin backend configured in xdn.config.js
+    // serve all unmatched URLs from the origin backend configured in {{ CONFIG_FILE }}
     proxy('origin')
   })
 ```

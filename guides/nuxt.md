@@ -1,34 +1,34 @@
 # Nuxt.js
 
-This guide shows you how to deploy a Nuxt.js application on the Moovweb XDN. If you run into any issues please consult the [Troubleshooting](#section_troubleshooting) section.
+This guide shows you how to deploy a Nuxt.js application on {{ PRODUCT_NAME }}. If you run into any issues please consult the [Troubleshooting](#section_troubleshooting) section.
 
 ## Example SSR Site
 
 This Nuxt.js example app uses server-side rendering and prefetching to provide lightening-fast transitions between pages.
 
-[Try the Nuxt.js SSR Example Site](https://moovweb-docs-xdn-nuxt-example-default.moovweb-edge.io/category/hats?button)
-[View the Code](https://github.com/moovweb-docs/xdn-examples/tree/main/xdn-nuxt-example?button)
+[Try the Nuxt.js SSR Example Site](https://moovweb-docs-layer0-nuxt-example-default.moovweb-edge.io/category/hats?button)
+[View the Code](https://github.com/{{ EXAMPLES_REPO }}/tree/main/layer0-nuxt-example?button)
 
 ## Connector
 
-This framework has a connector developed for the XDN. See [Connectors](connectors) for more information.
+This framework has a connector developed for {{ PRODUCT_NAME }}. See [Connectors](connectors) for more information.
 
-[View the Connector Code](https://github.com/moovweb-docs/xdn-connectors/tree/main/xdn-nuxt-connector?button)
+[View the Connector Code](https://github.com/moovweb-docs/layer0-connectors/tree/main/layer0-nuxt-connector?button)
 
 ## Install Node.js and npm
 
-**XDN only supports Node.js version 12.x**
+**{{ PRODUCT_NAME }} only supports Node.js version {{ NODE_VERSION }}**
 
-If you do not have Node.js installed on your system, download and install it from the official [Node.js v12.x downloads](https://nodejs.org/dist/latest-v12.x/) page. Select the download that matches your operating system and run the installer. Note that the installer for Node.js will also install npm.
+If you do not have Node.js installed on your system, download and install it from the official [Node.js v{{ NODE_VERSION }} downloads](https://nodejs.org/dist/latest-v{{ NODE_VERSION }}/) page. Select the download that matches your operating system and run the installer. Note that the installer for Node.js will also install npm.
 
-_Note that while you can use any version of Node.js >= 12 locally, your app will run in Node 12 when deployed to the XDN cloud. Therefore we highly suggest using Node 12 for all development._
+_Note that while you can use any version of Node.js >= 12 locally, your app will run in Node 12 when deployed to the {{ PRODUCT_NAME }} cloud. Therefore we highly suggest using Node 12 for all development._
 
 ## Getting Started
 
-If you have not already done so, install the [XDN CLI](cli)
+If you have not already done so, install the [{{ PRODUCT_NAME }} CLI](cli)
 
 ```bash
-npm i -g @xdn/cli
+npm i -g {{ PACKAGE_NAME }}/cli
 ```
 
 ## Creating a new Nuxt app
@@ -45,32 +45,32 @@ Nuxt's create module will ask you a series of questions to configure your app. M
 - For `Choose rendering mode` select `Universal (SSR)`
 - Your answers to the other questions should not matter for the purposes of this guide.
 
-## Adding the XDN to an existing Nuxt app
+## Adding {{ PRODUCT_NAME }} to an existing Nuxt app
 
-To prepare your Nuxt.js application for the Moovweb XDN:
+To prepare your Nuxt.js application for {{ PRODUCT_NAME }}:
 
-1. In `nuxt.config.js`, add "@xdn/nuxt/module" to `buildModules`:
+1. In `nuxt.config.js`, add "{{ PACKAGE_NAME }}/nuxt/module" to `buildModules`:
 
 ```js
 // nuxt.config.js
 
 module.exports = {
-  buildModules: ['@xdn/nuxt/module'],
+  buildModules: ['{{ PACKAGE_NAME }}/nuxt/module'],
 }
 ```
 
-2. Run `xdn init` to configure your project for the XDN.
+2. Run `{{ CLI_NAME }} init` to configure your project for {{ PRODUCT_NAME }}.
 
 ```bash
-xdn init
+{{ CLI_NAME }} init
 ```
 
-The `xdn init` command will automatically add all the required dependencies and files to your project. These include:
+The `{{ CLI_NAME }} init` command will automatically add all the required dependencies and files to your project. These include:
 
-- The `@xdn/core` package
-- The `@xdn/nuxt` package
-- The `@xdn/vue` package
-- `xdn.config.js` - Contains various configuration options for the XDN.
+- The `{{ PACKAGE_NAME }}/core` package
+- The `{{ PACKAGE_NAME }}/nuxt` package
+- The `{{ PACKAGE_NAME }}/vue` package
+- `{{ CONFIG_FILE }}` - Contains various configuration options for {{ PRODUCT_NAME }}.
 - `routes.js` - A default routes file that sends all requests to `nuxt.js`. You can update this file to add caching or proxy some URLs to a different origin as described later in this guide.
 - `sw/service-worker.js` - A service worker that provides static asset and API prefetching.
 
@@ -78,7 +78,7 @@ This command will also update your `package.json` with the following changes:
 
 - Moves all packages in `dependencies` to `devDependencies` except those listed in the `modules` property of `nuxt.config.js`.
 - Adds `@nuxt/core` to `dependencies`
-- Adds several `scripts` to run the available `xdn` commands
+- Adds several `scripts` to run the available `{{{ CLI_NAME }}` commands
 
 As an example, here's the original `package.json` from Nuxt's create step:
 
@@ -96,16 +96,16 @@ As an example, here's the original `package.json` from Nuxt's create step:
     "generate": "nuxt generate"
   },
   "dependencies": {
-    "@xdn/cli": "^2.0.0",
-    "@xdn/core": "^2.0.0",
-    "@xdn/nuxt": "^2.0.0",
+    "{{ PACKAGE_NAME }}/cli": "^2.0.0",
+    "{{ PACKAGE_NAME }}/core": "^2.0.0",
+    "{{ PACKAGE_NAME }}/nuxt": "^2.0.0",
     "nuxt": "^2.0.0"
   },
   "devDependencies": {}
 }
 ```
 
-And here is the `package.json` after modifications by `xdn init`:
+And here is the `package.json` after modifications by `{{ CLI_NAME }} init`:
 
 ```json
 {
@@ -115,20 +115,20 @@ And here is the `package.json` after modifications by `xdn init`:
   "author": "Techy Ted",
   "private": true,
   "scripts": {
-    "dev": "xdn run",
-    "build": "xdn build",
-    "start": "xdn run",
-    "prod": "xdn run --production",
+    "dev": "{{ CLI_NAME }} run",
+    "build": "{{ CLI_NAME }} build",
+    "start": "{{ CLI_NAME }} run",
+    "prod": "{{ CLI_NAME }} run --production",
     "generate": "nuxt generate"
   },
   "dependencies": {
     "@nuxt/core": "^2.12.2"
   },
   "devDependencies": {
-    "@xdn/cli": "^2.0.0",
-    "@xdn/core": "^2.0.0",
-    "@xdn/nuxt": "^2.0.0",
-    "@xdn/vue": "^2.0.0",
+    "{{ PACKAGE_NAME }}/cli": "^2.0.0",
+    "{{ PACKAGE_NAME }}/core": "^2.0.0",
+    "{{ PACKAGE_NAME }}/nuxt": "^2.0.0",
+    "{{ PACKAGE_NAME }}/vue": "^2.0.0",
     "dotenv": "^8.2.0",
     "nuxt": "^2.0.0",
     "serverless": "^1.64.0",
@@ -137,6 +137,14 @@ And here is the `package.json` after modifications by `xdn init`:
   }
 }
 ```
+
+## Run the Nuxt.js app locally on {{ PRODUCT_NAME }}
+Run the Nuxt.js app with the command:
+
+```
+npm run {{ CLI_NAME }}:dev
+```
+Load the site: http://127.0.0.1:3000
 
 ## modules vs buildModules
 
@@ -152,14 +160,14 @@ Doing so will exclude these modules from your production deployment and keep the
 
 ## Routing
 
-The next few sections of this guide explain how the XDN interacts with Nuxt's routing, which is important if you are migrating an existing application. If you just created a new nuxt app, you can jump to [Running Locally](#section_running_locally) and come back to these sections later.
-The XDN supports Nuxt.js's built-in routing scheme. The default `routes.js` file created by `xdn init` sends all requests to Nuxt.js via a fallback route:
+The next few sections of this guide explain how {{ PRODUCT_NAME }} interacts with Nuxt's routing, which is important if you are migrating an existing application. If you just created a new nuxt app, you can jump to [Running Locally](#section_running_locally) and come back to these sections later.
+{{ PRODUCT_NAME }} supports Nuxt.js's built-in routing scheme. The default `routes.js` file created by `{{ CLI_NAME }} init` sends all requests to Nuxt.js via a fallback route:
 
 ```js
-// This file was automatically added by xdn deploy.
+// This file was automatically added by {{ CLI_NAME }} deploy.
 // You should commit this file to source control.
-const { Router } = require('@xdn/core/router')
-const { nuxtRoutes, renderNuxtPage } = require('@xdn/nuxt')
+const { Router } = require('{{ PACKAGE_NAME }}/core/router')
+const { nuxtRoutes, renderNuxtPage } = require('{{ PACKAGE_NAME }}/nuxt')
 
 module.exports = new Router().use(nuxtRoutes)
 ```
@@ -174,7 +182,7 @@ export default {
   // ... more config ...
   router: {
     // For example, we can extend the nuxt router to accept /products in addition to /p.
-    // The nuxtRoutes middleware automatically picks this up and adds it to the XDN router
+    // The nuxtRoutes middleware automatically picks this up and adds it to the {{ PRODUCT_NAME }} router
     extendRoutes(routes, resolve) {
       routes.push({
         path: '/products/:id?',
@@ -194,7 +202,7 @@ A popular use case is to fallback to a legacy site for any route that your Nuxt.
 new Router().use(nuxtRoutes).fallback(({ proxy }) => proxy('legacy'))
 ```
 
-To configure the legacy backend, use xdn.config.js:
+To configure the legacy backend, use {{ CONFIG_FILE }}:
 
 ```js
 module.exports = {
@@ -207,7 +215,7 @@ module.exports = {
 }
 ```
 
-Using environment variables here allows you to configure different legacy domains for each XDN environment.
+Using environment variables here allows you to configure different legacy domains for each {{ PRODUCT_NAME }} environment.
 
 ### Caching
 
@@ -233,14 +241,14 @@ new Router()
 
 ## Prefetching
 
-The `@xdn/nuxt/module` builds a service worker that enables prefetching using the XDN and injects it into your app's browser code. The service worker is based on Google's [Workbox](https://developers.google.com/web/tools/workbox) library. The entry point for the service worker source code is `sw/service-worker.js`. If your app has an existing service worker that uses workbox, you can copy its contents into `sw/service-worker.js` and simply add the following to your service worker:
+The `{{ PACKAGE_NAME }}/nuxt/module` builds a service worker that enables prefetching using {{ PRODUCT_NAME }} and injects it into your app's browser code. The service worker is based on Google's [Workbox](https://developers.google.com/web/tools/workbox) library. The entry point for the service worker source code is `sw/service-worker.js`. If your app has an existing service worker that uses workbox, you can copy its contents into `sw/service-worker.js` and simply add the following to your service worker:
 
 ```js
-import { Prefetcher } from '@xdn/prefetch/sw'
+import { Prefetcher } from '{{ PACKAGE_NAME }}/prefetch/sw'
 new Prefetcher().route()
 ```
 
-The above allows you to prefetch pages from the XDN's edge cache to greatly improve browsing speed. To prefetch a page, add the `Prefetch` component from `@xdn/vue` to any `router-link` or `nuxt-link` element:
+The above allows you to prefetch pages from {{ PRODUCT_NAME }}'s edge cache to greatly improve browsing speed. To prefetch a page, add the `Prefetch` component from `{{ PACKAGE_NAME }}/vue` to any `router-link` or `nuxt-link` element:
 
 ```jsx
 <template>
@@ -255,7 +263,7 @@ The above allows you to prefetch pages from the XDN's edge cache to greatly impr
   </ul>
 </template>
 <script>
-  import { Prefetch } from '@xdn/vue'
+  import { Prefetch } from '{{ PACKAGE_NAME }}/vue'
   export default {
     components: {
       Prefetch,
@@ -264,19 +272,19 @@ The above allows you to prefetch pages from the XDN's edge cache to greatly impr
 </script>
 ```
 
-The `Prefetch` component fetches data for the linked page from the XDN's edge cache based on the `url` property and adds it to the service worker's cache when the link becomes visible in the viewport. When the user taps on the link, the page transition will be instantaneous because the browser won't need to fetch data from the network.
+The `Prefetch` component fetches data for the linked page from {{ PRODUCT_NAME }}'s edge cache based on the `url` property and adds it to the service worker's cache when the link becomes visible in the viewport. When the user taps on the link, the page transition will be instantaneous because the browser won't need to fetch data from the network.
 
 ## Static Sites
 
-The XDN supports fully and partially static sites using Nuxt [generate](https://nuxtjs.org/docs/2.x/configuration-glossary/configuration-generate). To deploy a static Nuxt site on the XDN, simply set `target: 'static'` in `nuxt.config.js` and run `xdn deploy`. This will run `nuxt build` and `nuxt generate` to generate a static version of your site.
+{{ PRODUCT_NAME }} supports fully and partially static sites using Nuxt [generate](https://nuxtjs.org/docs/2.x/configuration-glossary/configuration-generate). To deploy a static Nuxt site on {{ PRODUCT_NAME }}, simply set `target: 'static'` in `nuxt.config.js` and run `{{ CLI_NAME }} deploy`. This will run `nuxt build` and `nuxt generate` to generate a static version of your site.
 
 ### Incremental Static Rendering (ISG)
 
-By default, requests for any pages that are not statically rendered at build time will fall back to server side rendering. If you use the XDN router to cache pages that are not statically rendered, the first user who attempts to access the page will see the fallback HTML page generated by Nuxt (200.html by default). The XDN will render and cache the HTML in the background so that subsequent visits result in a full HTML response. This behavior is similar to Next.js incremental static rendering (ISG). Here is an example route that adds caching for a partially static page:
+By default, requests for any pages that are not statically rendered at build time will fall back to server side rendering. If you use the {{ PRODUCT_NAME }} router to cache pages that are not statically rendered, the first user who attempts to access the page will see the fallback HTML page generated by Nuxt (200.html by default). {{ PRODUCT_NAME }} will render and cache the HTML in the background so that subsequent visits result in a full HTML response. This behavior is similar to Next.js incremental static rendering (ISG). Here is an example route that adds caching for a partially static page:
 
 ```js
-import { Router } from '@xdn/core/router'
-import { nuxtRoutes } from '@xdn/nuxt'
+import { Router } from '{{ PACKAGE_NAME }}/core/router'
+import { nuxtRoutes } from '{{ PACKAGE_NAME }}/nuxt'
 
 export default new Router()
   .get('/products/:id', ({ cache }) => {
@@ -284,7 +292,7 @@ export default new Router()
       edge: {
         // Requests for product pages that are not statically generated will fall back to SSR.
         // The first user will see the 200.html loading page generated by Nuxt.
-        // The XDN will render full HTML response in the background and cache it for one hour at the edge.
+        // {{ PRODUCT_NAME }} will render full HTML response in the background and cache it for one hour at the edge.
         // All future requests to the page will result in the full HTML response.
         maxAgeSeconds: 60 * 60 * 24,
         staleWhileRevalidateSeconds: 60 * 60, // continue to serve stale responses from the edge cache while refreshing via SSR in the background
@@ -296,30 +304,30 @@ export default new Router()
 
 ### Rendering a 404 Page
 
-If you set the `fallback` property in the [generate](https://nuxtjs.org/docs/2.x/configuration-glossary/configuration-generate/#fallback) config to `true`, Nuxt.js will generate a 404.html page that will be served whenever the URL does not match a static page. The XDN will send a 404 http status for these URLs. Note that if you set the fallback property to a string, Nuxt will generate a fallback page with that name, and the XDN will serve it with a 200 http status when the URL does not match a statically generated page.
+If you set the `fallback` property in the [generate](https://nuxtjs.org/docs/2.x/configuration-glossary/configuration-generate/#fallback) config to `true`, Nuxt.js will generate a 404.html page that will be served whenever the URL does not match a static page. {{ PRODUCT_NAME }} will send a 404 http status for these URLs. Note that if you set the fallback property to a string, Nuxt will generate a fallback page with that name, and {{ PRODUCT_NAME }} will serve it with a 200 http status when the URL does not match a statically generated page.
 
 ## Running Locally
 
 To test your app locally, run:
 
 ```bash
-xdn run
+{{ CLI_NAME }} build && {{ CLI_NAME }} run
 ```
 
 You can do a production build of your app and test it locally using:
 
 ```bash
-xdn build && xdn run --production
+{{ CLI_NAME }} build && {{ CLI_NAME }} run --production
 ```
 
-Setting `--production` runs your app exactly as it will be uploaded to the Moovweb cloud using serverless-offline.
+Setting `--production` runs your app exactly as it will be uploaded to the {{ PRODUCT_NAME }} cloud using serverless-offline.
 
 ## Deploying
 
-Deploying requires an account on the Moovweb XDN. [Sign up here for free.](https://moovweb.app/signup) Once you have an account, you can deploy to the Moovweb XDN by running the following in the root folder of your project:
+Deploying requires an account on {{ PRODUCT_NAME }}. [Sign up here for free.]({{ APP_URL }}/signup) Once you have an account, you can deploy to {{ PRODUCT_NAME }} by running the following in the root folder of your project:
 
 ```bash
-xdn deploy
+{{ CLI_NAME }} deploy
 ```
 
 See [deploying](deploying) for more information.
@@ -328,45 +336,62 @@ See [deploying](deploying) for more information.
 
 The following section describes common gotchas and their workarounds.
 
+---
+
 ### I get an error message `Nuxt.js Internal Server Error`
 
 This may be because you have a custom server framework (such as Express). Please make sure you selected `None` when asked to choose `Choose custom server framework` during the creation of your nuxt app.
 
-### xdn init doesn't work
+---
+
+### {{ CLI_NAME }} init doesn't work
 
 If you get a command not found error such as:
 
 ```bash
-$ xdn init
-- bash: xdn: command not found
+$ {{ CLI_NAME }} init
+- bash: {{ CLI_NAME }}: command not found
 ```
 
-Make sure you installed the XDN CLI
+Make sure you installed the {{ PRODUCT_NAME }} CLI
 
 ```bash
-npm i -g @xdn/cli
+npm i -g {{ PACKAGE_NAME }}/cli
 ```
 
-### Make sure your version of XDN CLI is current
+---
 
-If you previously installed the XDN CLI, make sure your version is current.
+### Make sure your version of {{ PRODUCT_NAME }} CLI is current
+
+If you previously installed the {{ PRODUCT_NAME }} CLI, make sure your version is current.
 
 Check npm for the latest released version of the CLI:
 
 ```bash
-$ npm show @xdn/cli version
+$ npm show {{ PACKAGE_NAME }}/cli version
 1.16.2
 ```
 
 Compare the latest release against the version currently installed on your system:
 
 ```bash
-$ xdn --version
+$ {{ CLI_NAME }} --version
 1.16.2
 ```
 
 If your version is out of date you can update it by running
 
 ```bash
-npm update -g @xdn/cli
+npm update -g {{ PACKAGE_NAME }}/cli
 ```
+
+---
+
+### Error on deploy: `{{ PRODUCT_NAME_LOWER }}-deploy-lambda: Unzipped size must be smaller than...`
+
+As the error states, there is an upper limit on how big a package can be when deployed to our serverless infrastructure. Some common strategies for solving:
+
+- You may need to move some dependencies as [described here](#section_modules_vs_buildmodules). Only dependencies are copied up to the lambda.
+- Make sure you are using imports in a smart way. A common example is changing: `import { get } from lodash` to `import get from lodash/get` to avoid unnecessary bloat in your modules
+
+You can view what is included in your package under `.{{ PRODUCT_NAME_LOWER }}/lambda/` after a build, and running `du -h -d 1` on the directories in a shell will output the size of each directory and help you identify where space savings can be found, ie `du -h -d 1 .{{ PRODUCT_NAME_LOWER }}/lambda/.nuxt`

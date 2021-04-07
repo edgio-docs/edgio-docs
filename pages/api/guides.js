@@ -1,11 +1,10 @@
 import fetch from 'isomorphic-fetch'
+import { DOCS_PAGES_REPO_URL } from '../../constants'
 
 export default async function guides(req, res) {
   const { version } = req.query
   const guides = version
-    ? await fetch(
-        `https://moovweb-docs.github.io/xdn-docs-pages/${version}/guides.json`,
-      ).then(resp => resp.json())
+    ? await fetch(`${DOCS_PAGES_REPO_URL}/${version}/guides.json`).then(resp => resp.json())
     : require('../../guides/guides.json')
 
   if (res) {

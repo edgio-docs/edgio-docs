@@ -1,14 +1,14 @@
 # Logs
 
-The XDN platform exposes three types of logs to users:
+The {{ PRODUCT_NAME }} platform exposes three types of logs to users:
 
-* [Build logs](#section_build_logs) capture all the build output from your XDN deploys.
-* [Server logs](#section_server_logs) capture your XDN serverless console output at real time.
-* [Access logs](#section_access_logs) capture information about all the requests served by XDN.
+- [Build logs](#section_build_logs) capture all the build output from your {{ PRODUCT_NAME }} deploys.
+- [Server logs](#section_server_logs) capture your {{ PRODUCT_NAME }} serverless console output at real time.
+- [Access logs](#section_access_logs) capture information about all the requests served by {{ PRODUCT_NAME }}.
 
 ## Build Logs
 
-Each time you deploy to the XDN using the `xdn deploy` command, information about the deployment is logged, including the output of the `xdn deploy` command itself. You can view these logs in real-time by viewing your deployment on [moovweb.app](https://moovweb.app).
+Each time you deploy to {{ PRODUCT_NAME }} using the `{{ CLI_NAME }} deploy` command, information about the deployment is logged, including the output of the `{{ CLI_NAME }} deploy` command itself. You can view these logs in real-time by viewing your deployment on [{{ APP_DOMAIN }}]({{ APP_URL }}).
 
 ![build](/images/logs/build.png)
 
@@ -22,7 +22,7 @@ Here you can limit the output to only those statements coming from your IP addre
 
 ## Access Logs
 
-XDN [Enterprise tier](https://www.moovweb.com/pricing) customers can receive streaming access logs that capture information about each request served by the XDN. To do so refer to the "Access Logs" tab:
+{{ PRODUCT_NAME }} [Enterprise tier]({{ WWW_URL }}/pricing) customers can receive streaming access logs that capture information about each request served by {{ PRODUCT_NAME }}. To do so refer to the "Access Logs" tab:
 
 ![access](/images/logs/access.png)
 
@@ -34,9 +34,9 @@ Access logs contain the following fields:
 
 Millisecond resolution of the request start time in UNIX epoch.
 
-### xdn
+### {{ PRODUCT_NAME_LOWER }}
 
-The application's XDN version processing this request.
+The application's {{ PRODUCT_NAME }} version processing this request.
 
 ### bld
 
@@ -44,9 +44,9 @@ The application's build number processing this request.
 
 ### eid
 
-The active environment ID in XDN.
+The active environment ID in {{ PRODUCT_NAME }}.
 
-_Available since XDN v2.9.0._
+_Available since {{ PRODUCT_NAME }} v2.9.0._
 
 ### ev
 
@@ -167,7 +167,7 @@ Response content type.
 
 ### xmr
 
-Request header x-xdn-matched-routes, logs all routes matched and is required to order the routes table in caching metrics
+Request header {{ HEADER_PREFIX }}-matched-routes, logs all routes matched and is required to order the routes table in caching metrics
 
 ### rfr
 
@@ -179,19 +179,19 @@ User agent.
 
 ### xmt
 
-Response [x-xdn-t](/guides/response_headers#section_structure_of_) header with different critical path timings
+Response [{{ HEADER_PREFIX }}-t](/guides/response_headers#section_structure_of_) header with different critical path timings
 
 ### xut
 
-Response x-xdn-user-t header with different user [performance](/guides/performance) metrics
+Response {{ HEADER_PREFIX }}-user-t header with different user [performance](/guides/performance) metrics
 
 ### xms
 
-Response x-xdn-status header with different critical path status codes
+Response {{ HEADER_PREFIX }}-status header with different critical path status codes
 
 ### pre
 
-If xdn_prefetch parameter was specified value of 1, otherwise not present.
+If {{ COOKIE_PREFIX }}_prefetch parameter was specified value of 1, otherwise not present.
 
 ### ttl
 
@@ -209,15 +209,14 @@ IP of the backend that responded to the request
 
 ### hrid
 
-Request ID of the response hit in the cache. Corresponds to [`x-xdn-hit-request-id`](response_headers#section_general_headers) response header.
+Request ID of the response hit in the cache. Corresponds to [`{{ HEADER_PREFIX }}-hit-request-id`](response_headers#section_general_headers) response header.
 
 ## Setting up log aggregation tools
 
-XDN saves its logs to Amazon S3. Most log aggregation tools are able to ingest logs from S3. We attempt to link to the docs that explain how to ingest logs from S3 for each popular log aggregation tool below. Even if your tool is not listed, there's a good chance it can ingest logs from S3.
+{{ PRODUCT_NAME }} saves its logs to Amazon S3. Most log aggregation tools are able to ingest logs from S3. We attempt to link to the docs that explain how to ingest logs from S3 for each popular log aggregation tool below. Even if your tool is not listed, there's a good chance it can ingest logs from S3.
 
-* Sematext | [[Logagent docs]](https://sematext.com/docs/logagent/)
-* Sumo Logic | [[S3 ingest docs]](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/AWS-S3-Source)
-* AWS Athena | [[docs]](https://aws.amazon.com/blogs/big-data/analyzing-data-in-s3-using-amazon-athena/)
-* Splunk | [[S3 ingest docs]](https://docs.splunk.com/Documentation/AddOns/released/AWS/S3)
-* Loggly | [[S3 ingest docs]](https://documentation.solarwinds.com/en/Success_Center/loggly/Content/admin/s3-ingestion-auto.htm)
-
+- Sematext | [[Logagent docs]](https://sematext.com/docs/logagent/)
+- Sumo Logic | [[S3 ingest docs]](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/AWS-S3-Source)
+- AWS Athena | [[docs]](https://aws.amazon.com/blogs/big-data/analyzing-data-in-s3-using-amazon-athena/)
+- Splunk | [[S3 ingest docs]](https://docs.splunk.com/Documentation/AddOns/released/AWS/S3)
+- Loggly | [[S3 ingest docs]](https://documentation.solarwinds.com/en/Success_Center/loggly/Content/admin/s3-ingestion-auto.htm)

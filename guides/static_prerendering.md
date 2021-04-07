@@ -1,21 +1,21 @@
 # Static Prerendering
 
-This guide shows you how to configure the XDN to prenderer pages to the edge cache to improve the performance of your site.
+This guide shows you how to configure {{ PRODUCT_NAME }} to prenderer pages to the edge cache to improve the performance of your site.
 
 ## Overview
 
-The XDN allows you to specify the set of URLs that should be prerendered and cached at the edge during deployment to ensure that users get a subsecond
+{{ PRODUCT_NAME }} allows you to specify the set of URLs that should be prerendered and cached at the edge during deployment to ensure that users get a subsecond
 experience when accessing your site. Static prerendering works by sending requests to your application code and caching the result right after your site is deployed.
 In this way, you simply build your app to implement server-side rendering and get the speed benefits of a static site for some or all of your pages. This feature is especially useful for large, complex sites that have too many URLs to prerender without incurring exceptionally long build times.
 
 ## Specifying the URLs to Prerender
 
-To specify which URLs should prerendered, use the Router's [prerender](https://developer.moovweb.com/docs/api/core/classes/_router_router_.router.html#prerender) function. The prerender function accepts an array of [PrerenderRequest] objects or an async function that returns the same:
+To specify which URLs should prerendered, use the Router's [prerender]({{ DOCS_URL }}/docs/api/core/classes/_router_router_.router.html#prerender) function. The prerender function accepts an array of [PrerenderRequest] objects or an async function that returns the same:
 
 ### Example: Hardcoded Paths
 
 ```js
-const { Router } = require('@xdn/core/router')
+const { Router } = require('{{ PACKAGE_NAME }}/core/router')
 
 module.exports = new Router().prerender([
   // HTML pages
@@ -41,7 +41,7 @@ module.exports = new Router().prerender([
 ### Example: Async Paths
 
 ```js
-const { Router } = require('@xdn/core/router')
+const { Router } = require('{{ PACKAGE_NAME }}/core/router')
 
 module.exports = new Router().prerender(async () => {
   const paths = await fetchCategoryPathsFromAPI()
@@ -52,22 +52,22 @@ module.exports = new Router().prerender(async () => {
 ### Example: Defining Paths via an Environment Variable
 
 ```js
-const { Router } = require('@xdn/core/router')
+const { Router } = require('{{ PACKAGE_NAME }}/core/router')
 
 module.exports = new Router().prerender(async () => {
-  const paths = process.env.PRERENDER_PATHS.split(/\n/) // define the list of paths to prerender in the XDN Developer Console.
+  const paths = process.env.PRERENDER_PATHS.split(/\n/) // define the list of paths to prerender in the {{ PRODUCT_NAME }} Developer Console.
   return paths.map(path => ({ path }))
 })
 ```
 
 ## Prerendering with traffic data
 
-The XDN can choose which pages to prerender based on site traffic, ensuring the most popular pages are always available in the edge cache.
+{{ PRODUCT_NAME }} can choose which pages to prerender based on site traffic, ensuring the most popular pages are always available in the edge cache.
 
 ### Example: Basic Usage
 
 ```js
-const { Router } = require('@xdn/core/router')
+const { Router } = require('{{ PACKAGE_NAME }}/core/router')
 
 router = new Router().prerender([
   {
@@ -108,8 +108,8 @@ It is important to prerender not just HTML responses, but API calls as well, to 
 ### Example: Next.js getServerSideProps
 
 ```js
-const { Router } = require('@xdn/core/router')
-const { nextRoutes } = require('@xdn/next')
+const { Router } = require('{{ PACKAGE_NAME }}/core/router')
+const { nextRoutes } = require('{{ PACKAGE_NAME }}/next')
 const { existsSync, readFileSync } = require('fs')
 const { join } = require('path')
 
@@ -146,7 +146,7 @@ If you're splitting the cache by cookies or headers using a `CustomCacheKey`, yo
 your preload configuration. For example, if you're splitting the cache by a `language` cookie:
 
 ```js
-const { Router, CustomCacheKey } = require('@xdn/core/router')
+const { Router, CustomCacheKey } = require('{{ PACKAGE_NAME }}/core/router')
 
 module.exports = new Router()
   .prerender([
@@ -176,17 +176,17 @@ module.exports = new Router()
 
 ## Concurrency and Limits
 
-By default, the XDN prerenders a maximum of 200 URLs at a time. This can create significant additional load on your APIs at the time of deployment. You can lower this limit by setting the [prerenderConcurrency](/guides/xdn_config#section_prerenderconcurrency) property in `xdn.config.js`. The XDN imposes the following limits on prerendering:
+By default, {{ PRODUCT_NAME }} prerenders a maximum of 200 URLs at a time. This can create significant additional load on your APIs at the time of deployment. You can lower this limit by setting the [prerenderConcurrency](/guides/layer0_config#section_prerenderconcurrency) property in `{{ CONFIG_FILE }}`. {{ PRODUCT_NAME }} imposes the following limits on prerendering:
 
 | Tier       | Concurrency | Total number of requests |
 | ---------- | ----------- | ------------------------ |
 | ENTERPRISE | 200         | 25,000 per deployment    |
 | FREE       | 10          | 100 per deployment       |
 
-## Viewing Prerendering Results in the XDN Developer Console
+## Viewing Prerendering Results in the {{ PRODUCT_NAME }} Developer Console
 
 When you deploy a new version of your site, you can view the progress and results of prerendering from the deployment
-view in XDN Developer Console:
+view in {{ PRODUCT_NAME }} Developer Console:
 
 ![progress](/images/static-prerendering/progress.png)
 

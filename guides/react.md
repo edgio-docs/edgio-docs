@@ -1,36 +1,36 @@
 # React
 
-This guide shows you how to serve a React application on the Moovweb XDN. If you're using Next.js specifically, we suggest using the [Next.js guide](/guides/next).
+This guide shows you how to serve a React application on {{ PRODUCT_NAME }}. If you're using Next.js specifically, we suggest using the [Next.js guide](/guides/next).
 
 ## Install Node.js and npm
 
-**XDN only supports Node.js version 12 and higher**
+**{{ PRODUCT_NAME }} only supports Node.js version 12 and higher**
 
-If you do not have Node.js installed on your system, download and install it from the official [Node.js v12.x downloads](https://nodejs.org/dist/latest-v12.x/) page. Select the download that matches your operating system and run the installer. Note that the installer for Node.js will also install npm.
+If you do not have Node.js installed on your system, download and install it from the official [Node.js v{{ NODE_VERSION }} downloads](https://nodejs.org/dist/latest-v{{ NODE_VERSION }}/) page. Select the download that matches your operating system and run the installer. Note that the installer for Node.js will also install npm.
 
-_Note that while you can use any version of Node.js >= 12 locally, your app will run in Node 12 when deployed to the XDN cloud. Therefore we highly suggest using Node 12 for all development._
+_Note that while you can use any version of Node.js >= 12 locally, your app will run in Node 12 when deployed to the {{ PRODUCT_NAME }} cloud. Therefore we highly suggest using Node 12 for all development._
 
 ## Getting Started
 
-To prepare your React app for deployment on the Moovweb XDN, install the XDN CLI globally:
+To prepare your React app for deployment on {{ PRODUCT_NAME }}, install the {{ PRODUCT_NAME }} CLI globally:
 
 ```bash
-npm install -g @xdn/cli
+npm install -g {{ PACKAGE_NAME }}/cli
 ```
 
 Then, in the root folder of your project, run:
 
 ```bash
-xdn init
+{{ CLI_NAME }} init
 ```
 
 This will automatically add all of the required dependencies and files to your
 project. These include:
 
-- The `@xdn/core` package - Allows you to declare routes and deploy your application on the Moovweb XDN
-- The `@xdn/prefetch` package - Allows you to configure a service worker to prefetch and cache pages to improve browsing speed
-- The `@xdn/react` package - Provides a `Prefetch` component for prefetching pages
-- `xdn.config.js` - The main configuration file for the XDN.
+- The `{{ PACKAGE_NAME }}/core` package - Allows you to declare routes and deploy your application on {{ PRODUCT_NAME }}
+- The `{{ PACKAGE_NAME }}/prefetch` package - Allows you to configure a service worker to prefetch and cache pages to improve browsing speed
+- The `{{ PACKAGE_NAME }}/react` package - Provides a `Prefetch` component for prefetching pages
+- `{{ CONFIG_FILE }}` - The main configuration file for {{ PRODUCT_NAME }}.
 - `routes.js` - A default routes file that sends all requests to Next.js. Update this file to add caching or proxy some URLs to a different origin.
 - `sw/service-worker.js` A service worker implemented using Workbox.
 
@@ -38,14 +38,14 @@ project. These include:
 
 React offers a great amount of flexibility in how you set up server side rendering. Frameworks like Next.js offer a standardized, built-in way of implementing SSR. If you're using Next.js specifically, we suggest using the [Next.js guide](/guides/next). We'll assume at this point that you're not using Next.js, but have an existing Node app that is doing server-side rendering.
 
-In order to render on the XDN, you need to provide a function that takes a node `Request` and `Response` and sends the HTML that results from the `renderToString()` method from `react-dom/server`. Configure that function using the `server` property of `xdn.config.js`. Here's an example:
+In order to render on {{ PRODUCT_NAME }}, you need to provide a function that takes a node `Request` and `Response` and sends the HTML that results from the `renderToString()` method from `react-dom/server`. Configure that function using the `server` property of `{{ CONFIG_FILE }}`. Here's an example:
 
 ```js
-// xdn.config.js
+// {{ CONFIG_FILE }}
 
 module.exports = {
   server: {
-    path: 'xdn/server.js',
+    path: 'layer0/server.js',
   },
 }
 ```
@@ -94,25 +94,25 @@ module.exports = {
   mode: 'production',
   output: {
     filename: '[name].js',
-    path: path.resolve(__dirname, '..', 'dist'), // should match server.path in xdn.config.js
+    path: path.resolve(__dirname, '..', 'dist'), // should match server.path in {{ CONFIG_FILE }}
     libraryTarget: 'umd',
     libraryExport: 'default',
   },
   entry: {
-    server: './xdn/server.js', // this should point to your server entry point, which should export a function of type (request: Request, response: Response) => void or an express app as the default export.
+    server: './{{ PRODUCT_NAME_LOWER }}/server.js', // this should point to your server entry point, which should export a function of type (request: Request, response: Response) => void or an express app as the default export.
   },
 }
 ```
 
-## Configuring the XDN Router
+## Configuring the {{ PRODUCT_NAME }} Router
 
-Using the `Router` class from `@xdn/core`, you'll configure caching for each of your routes, and forward requests to the server module you configured in the previous section using the `proxy` function.
+Using the `Router` class from `{{ PACKAGE_NAME }}/core`, you'll configure caching for each of your routes, and forward requests to the server module you configured in the previous section using the `proxy` function.
 
 ```js
 // routes.js
 
-import { Router } from '@xdn/core/router'
-import { BACKENDS } from '@xdn/core'
+import { Router } from '{{ PACKAGE_NAME }}/core/router'
+import { BACKENDS } from '{{ PACKAGE_NAME }}/core'
 
 new Router()
   .get('/service-worker.js', ({ serviceWorker }) => {
@@ -127,18 +127,18 @@ new Router()
     })
   })
   .fallback(({ renderWithApp }) => {
-    // send all requests to the server module configured in xdn.config.js
+    // send all requests to the server module configured in {{ CONFIG_FILE }}
     renderWithApp()
   })
 ```
 
 ## Prefetching
 
-Add the `Prefetch` component from `@xdn/react` to your links to cache pages before the user clicks on them. Here's an example:
+Add the `Prefetch` component from `{{ PACKAGE_NAME }}/react` to your links to cache pages before the user clicks on them. Here's an example:
 
 ```js
 import { Link } from 'react-router'
-import { Prefetch } from '@xdn/react'
+import { Prefetch } from '{{ PACKAGE_NAME }}/react'
 
 export default function ProductListing() {
   return (
@@ -164,13 +164,13 @@ By default, `Prefetch` waits until the link appears in the viewport before prefe
 
 ## Service Worker
 
-In order for prefetching to work, you need to configure a service worker that uses the `Prefetcher` class from `@xdn/prefetch`. Here is an example service worker built using workbox:
+In order for prefetching to work, you need to configure a service worker that uses the `Prefetcher` class from `{{ PACKAGE_NAME }}/prefetch`. Here is an example service worker built using workbox:
 
 ```js
 // sw/service-worker.js
 
 import { skipWaiting, clientsClaim } from 'workbox-core'
-import { Prefetcher } from '@xdn/prefetch/sw'
+import { Prefetcher } from '{{ PACKAGE_NAME }}/prefetch/sw'
 
 skipWaiting()
 clientsClaim()
@@ -178,10 +178,10 @@ clientsClaim()
 new Prefetcher().route()
 ```
 
-In order to install the service worker in the browser when your site loads, call the `install` function from `@xdn/prefetch`:
+In order to install the service worker in the browser when your site loads, call the `install` function from `{{ PACKAGE_NAME }}/prefetch`:
 
 ```js
-import { install } from '@xdn/prefetch/window'
+import { install } from '{{ PACKAGE_NAME }}/prefetch/window'
 
 install()
 ```
@@ -193,7 +193,7 @@ If you're building an app with [create-react-app](https://github.com/facebook/cr
 ```js
 // routes.js
 
-const { Router } = require('@xdn/core/router')
+const { Router } = require('{{ PACKAGE_NAME }}/core/router')
 
 const ONE_HOUR = 60 * 60
 const ONE_DAY = 24 * ONE_HOUR
@@ -230,10 +230,10 @@ module.exports = new Router()
 
 ## Deploying
 
-Deploying requires an account on the Moovweb XDN. [Sign up here for free.](https://moovweb.app/signup) Once you have an account, you can deploy to the Moovweb XDN by running the following in the root folder of your project:
+Deploying requires an account on {{ PRODUCT_NAME }}. [Sign up here for free.]({{ APP_URL }}/signup) Once you have an account, you can deploy to {{ PRODUCT_NAME }} by running the following in the root folder of your project:
 
 ```
-xdn deploy
+{{ CLI_NAME }} deploy
 ```
 
 For more on deploying, see [Deploying](/guides/deploying).

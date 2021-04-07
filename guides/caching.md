@@ -1,6 +1,6 @@
 # Caching
 
-This guide introduces the caching capabilities of the Moovweb XDN
+This guide introduces the caching capabilities of {{ PRODUCT_NAME }}
 
 ## Environments and Caching
 
@@ -8,14 +8,14 @@ To cache responses at edge you need to create an [environment](environments). Ea
 
 ## L1 and L2 Caches
 
-Each edge point-of-presence (POP) has its own L1 cache. If a request cannot be fulfilled from the L1 cache, the XDN will attempt to fulfill the request from a single global L2 cache POP in order to maximize your effective cache hit ratio. There is very little difference in time to first byte for responses served from the L1 vs L2 cache. In either case the response is served nearly instantly (typically 25-100ms). Concurrent requests for the same URL on different POPs that result in a cache miss will be coalesced at the L2 cache. This means that only one request at a time for each cacheable URL will reach your origin servers.
+Each edge point-of-presence (POP) has its own L1 cache. If a request cannot be fulfilled from the L1 cache, {{ PRODUCT_NAME }} will attempt to fulfill the request from a single global L2 cache POP in order to maximize your effective cache hit ratio. There is very little difference in time to first byte for responses served from the L1 vs L2 cache. In either case the response is served nearly instantly (typically 25-100ms). Concurrent requests for the same URL on different POPs that result in a cache miss will be coalesced at the L2 cache. This means that only one request at a time for each cacheable URL will reach your origin servers.
 
 ## Caching a Response
 
 To cache a response, use the [cache](/docs/api/core/classes/_router_responsewriter_.responsewriter.html#cache) function in your route's callback:
 
 ```js
-import { CustomCacheKey } from '@xdn/core/router'
+import { CustomCacheKey } from '{{ PACKAGE_NAME }}/core/router'
 
 router.get('/some/path', ({ cache }) => {
   cache({
@@ -30,10 +30,10 @@ router.get('/some/path', ({ cache }) => {
       serviceWorkerSeconds: 60 * 60,
     },
     edge: {
-      // Sets the TTL for a response in the XDN's edge cache
+      // Sets the TTL for a response in {{ PRODUCT_NAME }}'s edge cache
       maxAgeSeconds: 60 * 60 * 24,
 
-      // Sets the amount of time a stale response will be served from the cache.  When a stale response is sent, the XDN
+      // Sets the amount of time a stale response will be served from the cache.  When a stale response is sent, {{ PRODUCT_NAME }}
       // will simultaneously fetch a new response to serve subsequent requests.
       // Using stale-while-revalidate helps raise your effective cache hit rate to near 100%.
       staleWhileRevalidateSeconds: 60 * 60, // serve stale responses for up to 1 hour while fetching a new response
@@ -52,14 +52,14 @@ The `cache` function can be used in the same route as other functions such as `s
 
 ### Cache Key
 
-Moovweb XDN provides you with a default cache key out of the box. It is a broad cache key that ensures general correctness but that can be further customized by you. The default cache key consists of:
+{{ PRODUCT_NAME }} provides you with a default cache key out of the box. It is a broad cache key that ensures general correctness but that can be further customized by you. The default cache key consists of:
 
 - Value of request `host` request header
 - Complete request URL, including the query params (this can be customized)
 - Value of `accept-encoding` request header
 - Name of the destination when [split testing](./split_testing) is in effect
 
-When [POST and other non-GET/HEAD](#section_caching_responses_for_post_and_other_non_get_head_requests) methods caching is enabled XDN automatically adds the following to the cache key:
+When [POST and other non-GET/HEAD](#section_caching_responses_for_post_and_other_non_get_head_requests) methods caching is enabled, {{ PRODUCT_NAME }} automatically adds the following to the cache key:
 
 - Request HTTP method
 - Request body
@@ -68,12 +68,12 @@ To ensure that your site is resilient to [cache poisoning attacks](security#sect
 
 #### Customizing the Cache Key
 
-It is often useful to customize the cache key, either to improve the cache hit ratio or to account for complexities of your site. As seen above, the XDN provides an easy way to customize the keys by using the `CustomCacheKey` class. Here we will focus on three common examples:
+It is often useful to customize the cache key, either to improve the cache hit ratio or to account for complexities of your site. As seen above, {{ PRODUCT_NAME }} provides an easy way to customize the keys by using the `CustomCacheKey` class. Here we will focus on three common examples:
 
 - Increasing the cache hit ratio by excluding query parameters that are not used in the rendering of the content:
 
 ```js
-import { CustomCacheKey } from '@xdn/core/router'
+import { CustomCacheKey } from '{{ PACKAGE_NAME }}/core/router'
 
 router.get('/some/path', ({ cache }) => {
   cache({
@@ -83,12 +83,12 @@ router.get('/some/path', ({ cache }) => {
 })
 ```
 
-This will remove the given query parameters from the URL before it is used in cache. On cache miss the transformed URL will be passed to your code with the original query strings available to your code in `x-xdn-original-qs` request header.
+This will remove the given query parameters from the URL before it is used in cache. On cache miss the transformed URL will be passed to your code with the original query strings available to your code in `{{ HEADER_PREFIX }}-original-qs` request header.
 
 - Including other request parameters like cookies:
 
 ```js
-import { CustomCacheKey } from '@xdn/core/router'
+import { CustomCacheKey } from '{{ PACKAGE_NAME }}/core/router'
 
 router.get('/some/path', ({ cache }) => {
   cache({
@@ -103,7 +103,7 @@ This will take the values of `language` and `currency` cookies from `cookie` req
 - Splitting the cache based on device type:
 
 ```js
-import { CustomCacheKey } from '@xdn/core/router'
+import { CustomCacheKey } from '{{ PACKAGE_NAME }}/core/router'
 
 router.get('/some/path', ({ cache }) => {
   cache({
@@ -113,7 +113,7 @@ router.get('/some/path', ({ cache }) => {
 })
 ```
 
-This will take the value of the `x-xdn-device` request header and split based on the following devices:
+This will take the value of the `{{ HEADER_PREFIX }}-device` request header and split based on the following devices:
 
 - `smartphone`
 - `tablet`
@@ -126,7 +126,7 @@ Customizing caching keys is a very powerful tool to make your site faster. But a
 
 ### Caching Responses for POST and other non-GET/HEAD requests
 
-By default, Moovweb XDN only caches responses for `GET` and `HEAD` requests. It rarely makes sense to cache `POST`, `PUT`, `PATCH`, or `DELETE` requests. These methods, from the point of view of HTTP semantics, are supposed to change the state of the underlying entities. However, some APIs, like GraphQL APIs, are implemented exclusively through `POST` requests with queries being sent through request body. When such solutions are used it is often desirable to be able to cache responses to some of these requests (namely those do not mutate any state).
+By default, {{ PRODUCT_NAME }} only caches responses for `GET` and `HEAD` requests. It rarely makes sense to cache `POST`, `PUT`, `PATCH`, or `DELETE` requests. These methods, from the point of view of HTTP semantics, are supposed to change the state of the underlying entities. However, some APIs, like GraphQL APIs, are implemented exclusively through `POST` requests with queries being sent through request body. When such solutions are used it is often desirable to be able to cache responses to some of these requests (namely those do not mutate any state).
 
 To cache a response to a `POST`, a separate route must be created which, together with `cache` function, will enable this behavior:
 
@@ -145,12 +145,12 @@ This will automatically add request method and body to the caching key.
 There are a number of limitations in caching of `POST` and similar requests:
 
 1. If the request body is longer than 8,000 bytes, the caching will automatically be turned off.
-2. Since both mutating and non-mutating requests are executed on the same route, there is no way for XDN to distinguish between such operations and the responsibility for never caching the mutating requests lies with you as the developer. The way to avoid caching responses to mutating requests is to inject `private` into `cache-control` of your response (e.g. `res.setHeader('cache-control', 'private')`)
+2. Since both mutating and non-mutating requests are executed on the same route, there is no way for {{ PRODUCT_NAME }} to distinguish between such operations and the responsibility for never caching the mutating requests lies with you as the developer. The way to avoid caching responses to mutating requests is to inject `private` into `cache-control` of your response (e.g. `res.setHeader('cache-control', 'private')`)
 3. Multiple requests are often need to "warm" the cache for non-`GET` requests.
 
 ### Caching Private Responses
 
-By default Moovweb XDN never caches responses which have `private` clause in their `cache-control` header. Sometimes though it is desirable to cache such responses, intended for a single user of your site:
+By default {{ PRODUCT_NAME }} never caches responses which have `private` clause in their `cache-control` header. Sometimes though it is desirable to cache such responses, intended for a single user of your site:
 
 ```js
 router.get('/some/path', ({ cache }) => {
@@ -168,7 +168,7 @@ Note that this feature cannot be safely used with caching of `POST` and similar 
 
 ## Preventing a response from being cached
 
-By default, the XDN will cache responses that satisfy all of the following conditions:
+By default, {{ PRODUCT_NAME }} will cache responses that satisfy all of the following conditions:
 
 1. The response must correspond to a `GET` or `HEAD` request. To override this see [POST and other non-GET/HEAD](#section_caching_responses_for_post_and_other_non_get_head_requests) section.
 2. The response status must be 1xx, 2xx or 3xx. You cannot override this.
@@ -191,7 +191,7 @@ router.get('/some/uncacheable/path', ({ cache, proxy }) => {
 
 ## How do I know if a response was served from the cache?
 
-To know if a response is being cached, examine the `x-xdn-t` response header. There are two components that indicate caching status:
+To know if a response is being cached, examine the `{{ HEADER_PREFIX }}-t` response header. There are two components that indicate caching status:
 
 - `oc` - The outer (level 1) cache
 - `sc` - The shield (level 2) cache
@@ -204,11 +204,11 @@ You will see one of the following values for these components:
 
 ## Why is my response not being cached?
 
-To understand why a response was not cached, examine the `x-xdn-caching-status` response header. It will have one of the following values:
+To understand why a response was not cached, examine the `{{ HEADER_PREFIX }}-caching-status` response header. It will have one of the following values:
 
 ### ok
 
-The response was cached or served from the cache (see `x-xdn-t`).
+The response was cached or served from the cache (see `{{ HEADER_PREFIX }}-t`).
 
 ### disabled
 
@@ -266,12 +266,20 @@ The response was not cached because it contained a `set-cookie` header. To cache
 
 The response was not cached because it was received during the brief time (less than 1 minute) that a new version of the app was being propagated through the global network of POPs. There is no need to take any action because as soon as the new version is completely propagated this status goes away.
 
+### debug
+
+The response was not cached because the request was issued with `{{ HEADER_PREFIX }}-debug` header set to `1`. In debug mode {{ PRODUCT_NAME }} will respond with more data useful for troubleshooting. However, the increased header footprint may lead to header overflow and other failures, so this should be used only during actual troubleshooting.
+
+### pass
+
+The response was not cached due to unknown reasons. If you happen to receive this status then please contact [support]({{ APP_URL }}/help)
+
 ## Caching During Development
 
 By default, caching is turned off during development. This is done to ensure that developers don't see stale responses after making changes to their code or other upstream APIs. You can enable caching during development by running your app with:
 
 ```bash
-xdn dev --cache
+{{ CLI_NAME }} dev --cache
 ```
 
 The cache will automatically be cleared when you make changes to your router. A few aspects of caching are not yet supported during local development:
@@ -281,25 +289,25 @@ The cache will automatically be cleared when you make changes to your router. A 
 
 ## Clearing the Cache
 
-The cache is automatically cleared when you deploy to an environment. You can also clear the cache using the environment's Caching tab in the Moovweb XDN console.
+The cache is automatically cleared when you deploy to an environment. You can also clear the cache using the environment's Caching tab in {{ PRODUCT_NAME }} console.
 
 ![deployments](/images/caching/purge.png)
 
 The cache can be [cleared via the CLI](/guides/cli#section_cache_clear):
 
 ```bash
-$ xdn cache-clear --team=my-team --site=my-site --environment=production --path=/p/*
+$ {{ CLI_NAME }} cache-clear --team=my-team --site=my-site --environment=production --path=/p/*
 ```
 
 The cache can also be [cleared via the REST API](/guides/rest_api#section_clear_cache).
 
 ## Static prerendering after clearing the cache
 
-If you have [static prerendering] enabled, the cache will automatically be repopulated when you clear all entries from the cache (when you select "Purge all entries" in the XDN Developer Console or run `xdn cache-clear` without providing `--path` or `--surrogate-key`). You can view the prerendering progress by clicking on the active deployment for the environment that was cleared.
+If you have [static prerendering] enabled, the cache will automatically be repopulated when you clear all entries from the cache (when you select "Purge all entries" in {{ PRODUCT_NAME }} Developer Console or run `{{ CLI_NAME }} cache-clear` without providing `--path` or `--surrogate-key`). You can view the prerendering progress by clicking on the active deployment for the environment that was cleared.
 
 ## Preserving the cache when deploying a new version of your site
 
-By default, XDN clears your environment edge cache on every time you deploy a new version of your site.
+By default, {{ PRODUCT_NAME }} clears your environment edge cache on every time you deploy a new version of your site.
 
 This behavior can be turned off by editing your [Environment](environment) config and enabling the following option:
 
@@ -312,7 +320,7 @@ After activating that new environment version, future deploys will re-use the ex
 In order to ensure that users who are actively browsing your site do not experience issues during a deployment, developers can
 configure certain client-side assets to be permanently available, even after a new version of the site has been deployed. For example,
 browsers using on an old version of the site may continue to request JavaScript chunks for the old version of the site for some time after a new
-version is deployed. The XDN automatically makes client-side scripts permanently available if you use Next.js, Nuxt.js, Angular, or Sapper.
+version is deployed. {{ PRODUCT_NAME }} automatically makes client-side scripts permanently available if you use Next.js, Nuxt.js, Angular, or Sapper.
 
 If you are using another framework or would like to make sure a particular asset is permanently available, you can do so by setting the `permanent` option in `serveStatic`. For example:
 
@@ -336,18 +344,18 @@ This guide walks you through clearing the cache on your site at a scheduled day 
 
 ## NPM script
 
-Here is an example script you can add to your `package.json` to handle cache clearing for each environment. You can also configure scripts to clear by surrogate key, path, or group (As defined in the XDN Console)
+Here is an example script you can add to your `package.json` to handle cache clearing for each environment. You can also configure scripts to clear by surrogate key, path, or group (As defined in {{ PRODUCT_NAME }} Console)
 
-These scripts assume that you have created environments called "production", "staging", and "development and you have created a deploy key for your site and added it as a secret in your repo called "xdn_deploy_token".
+These scripts assume that you have created environments called "production", "staging", and "development and you have created a deploy key for your site and added it as a secret in your repo called "{{ PRODUCT_NAME_LOWER }}\_deploy_token".
 
 ```js
   "scripts": {
     ...
-    "clearcache:dev": "xdn cache-clear --team=myTeam --site=myXDNApp --environment=development --token=$xdn_deploy_token",
-    "clearcache:stage": "xdn cache-clear --team=myTeam --site=myXDNApp --environment=staging --token=$xdn_deploy_token",
-    "clearcache:prod": "xdn cache-clear --team=myTeam --site=myXDNApp --environment=production --token=$xdn_deploy_token",
-    "clearcache:prod:pdps": "xdn cache-clear --team=myTeam --site=myXDNApp --environment=production --surrogate-key=pdp --token=$xdn_deploy_token",
-    "clearcache:prod:plps": "xdn cache-clear --team=myTeam --site=myXDNApp --environment=production --surrogate-key=plp --token=$xdn_deploy_token",
+    "clearcache:dev": "{{ CLI_NAME }} cache-clear --team=myTeam --site=my{{ PRODUCT_NAME }}App --environment=development --token=${{ PRODUCT_NAME_LOWER }}_deploy_token",
+    "clearcache:stage": "{{ CLI_NAME }} cache-clear --team=myTeam --site=my{{ PRODUCT_NAME }}App --environment=staging --token=${{ PRODUCT_NAME_LOWER }}_deploy_token",
+    "clearcache:prod": "{{ CLI_NAME }} cache-clear --team=myTeam --site=my{{ PRODUCT_NAME }}App --environment=production --token=${{ PRODUCT_NAME_LOWER }}_deploy_token",
+    "clearcache:prod:pdps": "{{ CLI_NAME }} cache-clear --team=myTeam --site=my{{ PRODUCT_NAME }}App --environment=production --surrogate-key=pdp --token=${{ PRODUCT_NAME_LOWER }}_deploy_token",
+    "clearcache:prod:plps": "{{ CLI_NAME }} cache-clear --team=myTeam --site=my{{ PRODUCT_NAME }}App --environment=production --surrogate-key=plp --token=${{ PRODUCT_NAME_LOWER }}_deploy_token",
     ...
   },
 ```
@@ -368,7 +376,7 @@ Here is an example GitHub action that clears the cache at a scheduled time using
 # 1.) This example depends on a script being defined in your package.json called clearcache:prod
 #
 # In order for this action to clear your cache, you must create a deploy token from the site settings page
-# in Moovweb.app and configure it as a secret called "xdn_deploy_token" in your repo on GitHub.
+# in {{ APP_URL }} and configure it as a secret called "{{ PRODUCT_NAME_LOWER }}_deploy_token" in your repo on GitHub.
 
 name: Clear PRODUCTION cache at 5am
 on:
@@ -385,7 +393,7 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: 12
-          registry-url: https://npm-proxy.fury.io/moovweb/
+          registry-url: https://npm-proxy.fury.io/layer0/
       - name: Cache node modules
         uses: actions/cache@v1
         env:
@@ -401,5 +409,5 @@ jobs:
       - name: Clear cache in production
         run: npm run clearcache:prod
         env:
-          xdn_deploy_token: ${{secrets.xdn_deploy_token}}
+          {{ PRODUCT_NAME_LOWER }}_deploy_token: ${{secrets.{{ PRODUCT_NAME_LOWER }}_deploy_token}}
 ```

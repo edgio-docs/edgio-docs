@@ -1,6 +1,6 @@
-const { withXDN, withServiceWorker } = require('@xdn/next/config')
+const { withLayer0, withServiceWorker } = require('@layer0/next/config')
 
-module.exports = withXDN(
+module.exports = withLayer0(
   withServiceWorker({
     generateInDevMode: false,
     webpack: function(config) {

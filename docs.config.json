@@ -4,14 +4,14 @@
   "index_name": "docs",
   "start_urls": [
     {
-      "url": "https://developer.moovweb.com"
+      "url": "https://docs.layer0.co"
     },
     {
-      "url": "https://developer.moovweb.com/docs",
+      "url": "https://docs.layer0.co/docs",
       "selectors_key": "api_docs"
     }
   ],
-  "stop_urls": ["https://developer.moovweb.com/docs/v.*"],
+  "stop_urls": ["https://docs.layer0.co/docs/v.*"],
   "selectors": {
     "default": {
       "lvl0": "h2",

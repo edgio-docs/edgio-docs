@@ -1,12 +1,12 @@
 # Cookbook
 
-This guide gives examples of common routing patterns using the XDN.
+This guide gives examples of common routing patterns using {{ PRODUCT_NAME }}.
 
 ## Proxying a backend
 
 ### Same Path
 
-To forward a request to the same path to one of the backends listed in `xdn.config.js` use the [`proxy`](/docs/api/core/classes/_router_responsewriter_.responsewriter.html#proxy) method of `ResponseWriter`:
+To forward a request to the same path to one of the backends listed in `{{ CONFIG_FILE }}` use the [`proxy`](/docs/api/core/classes/_router_responsewriter_.responsewriter.html#proxy) method of `ResponseWriter`:
 
 ```js
 router.get('/some-path', ({ proxy }) => {
@@ -14,7 +14,7 @@ router.get('/some-path', ({ proxy }) => {
 })
 ```
 
-The first argument corresponds to the name of a backend in `xdn.config.js`. For example:
+The first argument corresponds to the name of a backend in `{{ CONFIG_FILE }}`. For example:
 
 ```js
 module.exports = {
@@ -107,7 +107,7 @@ router.get(
 
 You can also write catch-all routes that will alter all responses. One example where this is useful is injecting [Content Security Policy](security#section_content_security_policy__csp_) headers.
 
-Another example is adding response headers for debugging, which is often useful if [XDN is behind another CDN](split_testing#section_third_party_cdns) or if you are troubleshooting your router rules. For example, you could respond with the value of request `x-forwarded-for` into `x-debug-xff` to see the value that XDN is receiving from the CDN:
+Another example is adding response headers for debugging, which is often useful if [{{ PRODUCT_NAME }} is behind another CDN](split_testing#section_third_party_cdns) or if you are troubleshooting your router rules. For example, you could respond with the value of request `x-forwarded-for` into `x-debug-xff` to see the value that {{{{ PRODUCT_NAME }} is receiving from the CDN:
 
 ```js
 router.match(
@@ -247,7 +247,7 @@ router.get('/products/:id', ({ serveStatic, cache, renderWithApp }) => {
 ```
 
 This hybrid of static and dynamic rendering was first introduced in Next.js as [Incremental Static Generation (ISG)](https://nextjs.org/docs/basic-features/data-fetching#the-fallback-key-required). In Next.js apps, developers enable this behavior by returning `fallback: true` from
-`getStaticPaths()`. The `@xdn/next` package automatically configures the routes for ISG pages to use `onNotFound` and `loadingPage`.
+`getStaticPaths()`. The `{{ PACKAGE_NAME }}/next` package automatically configures the routes for ISG pages to use `onNotFound` and `loadingPage`.
 
 ### Returning a custom 404 page
 
@@ -359,7 +359,7 @@ If you need to block all traffic from a specific country or set of countries, yo
 router.get(
   {
     headers: {
-      'x-xdn-geo-country-code': /XX|XY|XZ/, // Regex matching two-letter country codes of the countries you want to block
+      '{{ HEADER_PREFIX }}-geo-country-code': /XX|XY|XZ/, // Regex matching two-letter country codes of the countries you want to block
     },
   },
   ({ send }) => {
@@ -372,7 +372,7 @@ You can find more about geolocation headers [here](/guides/request_headers).
 
 ### Whitelisting Specific IPs
 
-If you need to block all traffic from a specific country or set of countries, you can do so by matching requests by the [x-xdn-client-ip](/guides/request_headers#section_general_headers) header:
+If you need to block all traffic from a specific country or set of countries, you can do so by matching requests by the [{{ HEADER_PREFIX }}-client-ip](/guides/request_headers#section_general_headers) header:
 
 ```js
 router.get(
@@ -380,7 +380,7 @@ router.get(
     headers: {
       // Regex that will do a negative lookahead for IPs you want to allow.
       // In this example 172.16.16.0/24 and 10.10.10.3/32 will be allowed and everything else will receive a 403
-      'x-xdn-client-ip': /\b((?!172\.16\.16)(?!10.10.10.3)\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})\b/,
+      '{{ HEADER_PREFIX }}-client-ip': /\b((?!172\.16\.16)(?!10.10.10.3)\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})\b/,
     },
   },
   ({ send }) => {

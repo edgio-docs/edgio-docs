@@ -55,9 +55,12 @@ To prepare your Nuxt.js application for {{ PRODUCT_NAME }}:
 // nuxt.config.js
 
 module.exports = {
-  buildModules: ['{{ PACKAGE_NAME }}/nuxt/module'],
+  buildModules: [['{{ PACKAGE_NAME }}/nuxt/module', { layer0SourceMaps: true }]],
 }
 ```
+
+Options:
+- `layer0SourceMaps: true|false`: when true, the serverless build includes sourcemaps files which makes debugging easier using the Log Streamer available in Layer0 Console. On the other hand it increases the serverless bundle side.
 
 2. Run `{{ CLI_NAME }} init` to configure your project for {{ PRODUCT_NAME }}.
 

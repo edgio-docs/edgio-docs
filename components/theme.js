@@ -1,17 +1,24 @@
 import { createMuiTheme } from '@material-ui/core/styles'
-import { red, purple, pink, green } from '@material-ui/core/colors'
+import { red, purple, pink, cyan, grey } from '@material-ui/core/colors'
 
 const color = '#242349'
+
+const linkColor = cyan[700]
+
+const primary = {
+  main: pink[600],
+  light: pink[400],
+  dark: pink[700],
+  contrastText: '#fff',
+}
 
 // Create a theme instance.
 const theme = createMuiTheme({
   palette: {
-    primary: {
-      main: '#fff',
-    },
+    primary,
     secondary: {
-      main: purple[600],
-      light: pink[300],
+      main: purple[500],
+      light: purple[400],
     },
     error: {
       main: red.A400,
@@ -20,7 +27,10 @@ const theme = createMuiTheme({
       default: '#fff',
     },
     main: color,
-    link: green[600],
+    link: linkColor,
+    brand: {
+      primary: grey[800],
+    },
   },
   headerHeight: 64,
   fonts: {
@@ -76,7 +86,28 @@ const theme = createMuiTheme({
       fontSize: '1.2rem',
     },
   },
-  overrides: {},
+  overrides: {
+    MuiLink: {
+      root: {
+        color: linkColor,
+      },
+    },
+  },
+})
+
+Object.assign(theme.overrides, {
+  MuiCssBaseline: {
+    '@global': {
+      a: {
+        color: theme.palette.primary.main,
+        color: linkColor,
+        textDecoration: 'none',
+        '&:hover': {
+          textDecoration: 'underline',
+        },
+      },
+    },
+  },
 })
 
 export default theme

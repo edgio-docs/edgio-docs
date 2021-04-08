@@ -23,10 +23,11 @@ import Router from 'next/router'
 import clsx from 'clsx'
 import HeaderCollapseMenu from './HeaderCollapseMenu'
 import { APP_URL, FORUM_URL, STATUS_URL } from '../constants'
+import { grey } from '@material-ui/core/colors'
 
 const useStyles = makeStyles(theme => ({
   appBar: {
-    backgroundColor: '#242349',
+    backgroundColor: theme.palette.brand.primary,
     boxShadow: 'none',
     borderBottom: `1px solid ${theme.palette.divider}`,
   },
@@ -97,13 +98,8 @@ const useStyles = makeStyles(theme => ({
     },
   },
   signUpButton: {
-    color: theme.palette.secondary.light,
-    borderColor: theme.palette.secondary.light,
-    transition: 'color border-color 200ms linear',
-    '&:hover': {
-      color: darken(theme.palette.secondary.light, 0.1),
-      borderColor: darken(theme.palette.secondary.light, 0.1),
-    },
+    color: grey[200],
+    borderColor: grey[200],
   },
 }))
 

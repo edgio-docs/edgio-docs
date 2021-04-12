@@ -39,8 +39,13 @@ In order to configure your DNS provider to direct traffic for a particular set o
 To host your site on a subdomain, add a `CNAME` record with the value shown under _DNS Configuration_ (see above).
 
 ```
-; <<>> DiG 9.10.6 <<>> www.mywebsite.xyz
-;; ANSWER SECTION:
+# To verify your DNS entry, run the following command
+dig <your-sub-domain>
+
+# Example 
+dig www.mywebsite.xyz
+
+# Result
 www.mywebsite.xyz.   599    IN    CNAME    d12ea738-71b3-25e8-c771-6fdd3f6bd8ba.moovweb-edge.io.
 ```
 
@@ -49,8 +54,13 @@ www.mywebsite.xyz.   599    IN    CNAME    d12ea738-71b3-25e8-c771-6fdd3f6bd8ba.
 To host your site on the apex domain, create multiple `A` records on your apex domain, with the following Anycast IP Addresses values: 151.101.1.79, 151.101.65.79, 151.101.129.79, 151.101.193.79.
 
 ```
-; <<>> DiG 9.10.6 <<>> mywebsite.xyz
-;; ANSWER SECTION:
+# To verify your DNS entry, run the following command
+dig <your-apex-domain>
+
+# Example 
+dig mywebsite.xyz
+
+# Result
 mywebsite.xyz.        599    IN    A        151.101.1.79
 mywebsite.xyz.        599    IN    A        151.101.65.79
 mywebsite.xyz.        599    IN    A        151.101.129.79
@@ -63,8 +73,13 @@ mywebsite.xyz.        599    IN    A        151.101.193.79
 - Create a `CNAME` record for your sub-domain, with the value of your apex domain.
 
   ```
-  ; <<>> DiG 9.10.6 <<>> www.mywebsite.xyz
-  ;; ANSWER SECTION:
+  # To verify your DNS entries, run the following command
+  dig <your-sub-domain>
+
+  # Example 
+  dig www.mywebsite.xyz
+
+  # Result
   www.mywebsite.xyz.    599    IN    CNAME.   mywebsite.xyz.
   mywebsite.xyz.        599    IN    A        151.101.1.79
   mywebsite.xyz.        599    IN    A        151.101.65.79
@@ -90,9 +105,40 @@ _Note: If you already have an existing certificate, you can use it by skipping a
 
 1. Make sure each environment is configured with the custom domains on which it will receive traffic. For more information on configuring custom domains, see [Domains](#section_domains) above.
 
-2. Using your DNS provider, add a `CAA` record to allow Let's Encrypt to generate certificates for your domains.
+2. Using your DNS provider, verify and possibly add a `CAA` record to allow *Let's Encrypt* to generate certificates for your domains.
 
-   Log into your DNS provider, and add a `CAA` type DNS record with the following values:
+   The CAA DNS entries of a domain behave like a whitelist to indicate wheither **any** or only **certain** Certificate Autorities are allowed to generate certificates for that domain.
+
+   If there are no CAA records, it means that **any** Certificate Authority is allowed to generate certificates for that domain.
+
+   If there are CAA records, it means that only **certain** Certificate Authorities are allowed to generate certificates for that domain.
+
+   So in order for *Let's Encrypt* to be able to generate a certificate for your domains, you must either not have defined any CAA records, or *Let's Encrypt*'s CAA entry must be among those defined in the list of CAA records.
+
+   You can verify the value of the CAA records for your domain from the command line using the command below.
+
+   ```
+   # Run the following command
+   dig caa +short <your-apex-domain>
+
+   # Example
+   dig caa +short mywebsite.xyz
+   ```
+
+   Example of a CAA query showing that only **certain** Certificate Authorities are allowed to generate certificates for that domain:
+
+   ```
+   0 issue "amazon.com"
+   0 issue "digicert.com"
+   0 issue "globalsign.com"
+   0 issue "letsencrypt.org"
+   ```
+
+   If the result of the CAA DNS query is empty, it means that **any** Certificate Authority is allowed to generate certificates on that domain. If so, you can directly go to the next step.
+
+   If there are already some CAA DNS entries defined on your domain, and if *Let's Encrypt*'s CAA entry is not among those, you will have to add an additionnal CCA entry for *Let's Encrypt*.
+
+   To do so, log into your DNS provider, and add a `CAA` type DNS record with the following values:
 
    - Type : `CAA`
    - Name : empty (or `@`, depending on the DNS provider)
@@ -120,31 +166,15 @@ _Note: If you already have an existing certificate, you can use it by skipping a
    - [CAA Test](https://caatest.co.uk/)
    - [Entrust CAA Lookup](https://www.entrust.com/resources/certificate-solutions/tools/caa-lookup)
 
-   You can also verify the CAA record from the command line:
-
-   ```
-   # Run the following command
-   dig caa +short <your-primary-domain> # (without the 'www')
-
-   # Example
-   dig caa +short mywebsite.xyz
-   ```
-
-   The result of your CAA check should contain the following line:
-
-   ```
-   0 issue "letsencrypt.org"
-   ```
-
    Notes:
 
    - Many DNS providers have already added this `CAA` DNS record by default
-   - Some DNS providers does not allow the creation of `CAA` DNS records
+   - Some DNS providers does not allow the creation of `CAA` DNS records and therefore allow any Certificate Authority to generate certificates
    - You can learn more about CAA DNS records on [Let's Encrypt website](https://letsencrypt.org/docs/caa/), on [Wikipedia](https://en.wikipedia.org/wiki/DNS_Certification_Authority_Authorization), on [Gandi](https://docs.gandi.net/en/domain_names/faq/record_types/caa_record.html) and on [eff.org](https://www.eff.org/deeplinks/2018/02/technical-deep-dive-securing-automation-acme-dns-challenge-validation)
 
 3. Add an `_acme-challenge.` CNAME DNS entry to allow {{ PRODUCT_NAME }} to issue a certificate request on your behalf.
 
-   Log into your DNS provider and add one `CNAME` type DNS entry with the value `_acme-challenge.<your-domain-here>` for each custom domain. For example, if your custom domain is `mysite.com`, the DNS entry should have a value of `_acme-challenge.mysite.com`. Each record should point to `_acme-challenge.{{ PRODUCT_NAME_LOWER }}-validation.com`.
+   Log into your DNS provider and add one `CNAME` type DNS entry with the value `_acme-challenge.<your-domain-here>` for each domains you use on your XDN website. For example, if your domain is `mywebsite.xyz`, the DNS entry should have a value of `_acme-challenge.mywebsite.xyz`. This record should point to `_acme-challenge.{{ PRODUCT_NAME_LOWER }}-validation.com`. Repeat the operation of each domain associated with your XDN website.
 
    Example with Godaddy:
 
@@ -172,14 +202,14 @@ _Note: If you already have an existing certificate, you can use it by skipping a
    Expected result for the DNS query:
 
    ```
-   _acme-challenge.{{ PRODUCT_NAME_LOWER }}-validation.com
+   _acme-challenge.{{ PRODUCT_NAME_LOWER }}-validation.com.
    ```
 
-   If you use multiple domains for your website, like `mywebsite.xyz` and `www.mywebsite.xyz`, then you will have to add the `_acme-challenge` DNS record for both domains:
+   If you use multiple domains for your website, like `mywebsite.xyz` and `www.mywebsite.xyz`, you will have to make sure that the `_acme-challenge` DNS record has been added for both domains:
 
    ```
-   _acme-challenge.mywebsite.xyz -> _acme-challenge.{{ PRODUCT_NAME_LOWER }}-validation.com
-   _acme-challenge.www.mywebsite.xyz -> _acme-challenge.{{ PRODUCT_NAME_LOWER }}-validation.com
+   _acme-challenge.mywebsite.xyz -> _acme-challenge.{{ PRODUCT_NAME_LOWER }}-validation.com.
+   _acme-challenge.www.mywebsite.xyz -> _acme-challenge.{{ PRODUCT_NAME_LOWER }}-validation.com.
    ```
 
    If you have been previously using Let's Encrypt to generate certificates for this domain, please verify that there are no remaining TXT records named `_acme-challenge.mywebsite.xyz`.

@@ -99,7 +99,6 @@ Object.assign(theme.overrides, {
   MuiCssBaseline: {
     '@global': {
       a: {
-        color: theme.palette.primary.main,
         color: linkColor,
         textDecoration: 'none',
         '&:hover': {

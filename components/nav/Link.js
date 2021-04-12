@@ -27,7 +27,7 @@ const useStyles = makeStyles(theme => ({
   active: {
     '& a span': {
       fontWeight: 500,
-      color: theme.palette.main,
+      color: theme.palette.secondary.main,
     },
   },
   link: {

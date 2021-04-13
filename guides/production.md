@@ -46,7 +46,7 @@ dig <your-sub-domain>
 dig www.mywebsite.xyz
 
 # Result
-www.mywebsite.xyz.   599    IN    CNAME    d12ea738-71b3-25e8-c771-6fdd3f6bd8ba.moovweb-edge.io.
+www.mywebsite.xyz.   599    IN    CNAME    d12ea738-71b3-25e8-c771-6fdd3f6bd8ba.layer0.link.
 ```
 
 #### Using an apex domain (i.e. mywebsite.xyz):
@@ -95,7 +95,7 @@ Before going live, ensure that all {{ PRODUCT_NAME }} IP addresses are whitelist
 
 All data transmitted to and from your {{ PRODUCT_NAME }} site must be secured with TLS (Transport Layer Security). TLS, also known as SSL (Secure Sockets Layer), is a cryptographic protocol to communicate securely over the Internet. TLS provides end-to-end data encryption and data integrity for all web requests.
 
-{{ PRODUCT_NAME }} provides a wildcard TLS certificate that covers the auto-generated domains that it assigns to your site (e.g {team}-{site}-{branch}-{version}.moovweb.io). You need to provide your own certificate for your site's custom domains.
+{{ PRODUCT_NAME }} provides a wildcard TLS certificate that covers the auto-generated domains that it assigns to your site (e.g {team}-{site}-{branch}-{version}.layer0.link). You need to provide your own certificate for your site's custom domains.
 
 _Note: If you already have an existing certificate, you can use it by skipping ahead to [Uploading your certificate](#section_uploading_your_certificate). Many customers who have existing certificates still choose to obtain a new one when adopting {{ PRODUCT_NAME }} so as not to reuse the same private key with more than one vendor/system._
 
@@ -174,7 +174,7 @@ _Note: If you already have an existing certificate, you can use it by skipping a
 
 3. Add an `_acme-challenge.` CNAME DNS entry to allow {{ PRODUCT_NAME }} to issue a certificate request on your behalf.
 
-   Log into your DNS provider and add one `CNAME` type DNS entry with the value `_acme-challenge.<your-domain-here>` for each domains you use on your XDN website. For example, if your domain is `mywebsite.xyz`, the DNS entry should have a value of `_acme-challenge.mywebsite.xyz`. This record should point to `_acme-challenge.{{ PRODUCT_NAME_LOWER }}-validation.com`. Repeat the operation of each domain associated with your XDN website.
+   Log into your DNS provider and add one `CNAME` type DNS entry with the value `_acme-challenge.<your-domain-here>` for each domains you use on your {{ PRODUCT_NAME }} website. For example, if your domain is `mywebsite.xyz`, the DNS entry should have a value of `_acme-challenge.mywebsite.xyz`. This record should point to `_acme-challenge.xdn-validation.com`. Repeat the operation of each domain associated with your {{ PRODUCT_NAME }} website.
 
    Example with Godaddy:
 
@@ -202,14 +202,14 @@ _Note: If you already have an existing certificate, you can use it by skipping a
    Expected result for the DNS query:
 
    ```
-   _acme-challenge.{{ PRODUCT_NAME_LOWER }}-validation.com.
+   _acme-challenge.xdn-validation.com.
    ```
 
    If you use multiple domains for your website, like `mywebsite.xyz` and `www.mywebsite.xyz`, you will have to make sure that the `_acme-challenge` DNS record has been added for both domains:
 
    ```
-   _acme-challenge.mywebsite.xyz -> _acme-challenge.{{ PRODUCT_NAME_LOWER }}-validation.com.
-   _acme-challenge.www.mywebsite.xyz -> _acme-challenge.{{ PRODUCT_NAME_LOWER }}-validation.com.
+   _acme-challenge.mywebsite.xyz -> _acme-challenge.xdn-validation.com.
+   _acme-challenge.www.mywebsite.xyz -> _acme-challenge.xdn-validation.com.
    ```
 
    If you have been previously using Let's Encrypt to generate certificates for this domain, please verify that there are no remaining TXT records named `_acme-challenge.mywebsite.xyz`.

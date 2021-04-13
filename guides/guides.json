@@ -289,8 +289,8 @@
         "href": "/guides/[...guide]"
       },
       {
-        "text": "Migration Guide",
-        "as": "/guides/migration",
+        "text": "Migrating from XDN to Layer0",
+        "as": "/guides/layer0_migration",
         "href": "/guides/[...guide]"
       },
       {

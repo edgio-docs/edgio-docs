@@ -99,7 +99,7 @@ const useStyles = makeStyles(theme => ({
   },
   signUpButton: {
     color: grey[200],
-    borderColor: grey[200],
+    borderColor: theme.palette.primary.light,
   },
 }))
 

@@ -64,7 +64,7 @@ const useStyles = makeStyles(theme => ({
   active: {
     fontWeight: 'bold',
     opacity: 1,
-    color: `${theme.palette.main} !important`,
+    color: `${theme.palette.secondary.main} !important`,
   },
 }))
 

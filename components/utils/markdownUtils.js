@@ -18,7 +18,7 @@ function replaceMatch(content, match) {
  * @returns {String}
  */
 export function populatePlaceholders(content) {
-  const matcher = /{{\s*(\w+)\s*}}/g
+  const matcher = /{{\s*(\w+)\s*}}/
   let result
 
   while ((result = matcher.exec(content)) !== null) {

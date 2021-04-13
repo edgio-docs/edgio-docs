@@ -2,14 +2,14 @@
 
 This guide shows you how to deploy [Spartacus](https://sap.github.io/spartacus-docs) apps on {{ PRODUCT_NAME }}.
 
-[Try the Spartacus Example Site](https://moovweb-docs-layer0-spartacus-example-default.moovweb-edge.io/?button)
+[Try the Spartacus Example Site](https://layer0-docs-layer0-spartacus-example-default.moovweb-edge.io/?button)
 [View the Code](https://github.com/{{ EXAMPLES_REPO }}/tree/main/layer0-spartacus-example?button)
 
 ## Connector
 
 This framework has a connector developed for {{ PRODUCT_NAME }}. See [Connectors](connectors) for more information.
 
-[View the Connector Code](https://github.com/moovweb-docs/layer0-connectors/tree/main/layer0-spartacus-connector?button)
+[View the Connector Code](https://github.com/layer0-docs/layer0-connectors/tree/main/layer0-spartacus-connector?button)
 
 ## Install Node.js and npm
 

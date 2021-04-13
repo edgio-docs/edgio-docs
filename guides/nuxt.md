@@ -6,14 +6,14 @@ This guide shows you how to deploy a Nuxt.js application on {{ PRODUCT_NAME }}. 
 
 This Nuxt.js example app uses server-side rendering and prefetching to provide lightening-fast transitions between pages.
 
-[Try the Nuxt.js SSR Example Site](https://moovweb-docs-layer0-nuxt-example-default.moovweb-edge.io/category/hats?button)
+[Try the Nuxt.js SSR Example Site](https://layer0-docs-layer0-nuxt-example-default.moovweb-edge.io/category/hats?button)
 [View the Code](https://github.com/{{ EXAMPLES_REPO }}/tree/main/layer0-nuxt-example?button)
 
 ## Connector
 
 This framework has a connector developed for {{ PRODUCT_NAME }}. See [Connectors](connectors) for more information.
 
-[View the Connector Code](https://github.com/moovweb-docs/layer0-connectors/tree/main/layer0-nuxt-connector?button)
+[View the Connector Code](https://github.com/layer0-docs/layer0-connectors/tree/main/layer0-nuxt-connector?button)
 
 ## Install Node.js and npm
 
@@ -139,11 +139,13 @@ And here is the `package.json` after modifications by `{{ CLI_NAME }} init`:
 ```
 
 ## Run the Nuxt.js app locally on {{ PRODUCT_NAME }}
+
 Run the Nuxt.js app with the command:
 
 ```
 npm run {{ CLI_NAME }}:dev
 ```
+
 Load the site: http://127.0.0.1:3000
 
 ## modules vs buildModules

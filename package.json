@@ -8,7 +8,7 @@
     "prod": "layer0 run --production",
     "dev": "next dev",
     "build": "layer0 build",
-    "deploy": "layer0 deploy moovweb-docs",
+    "deploy": "layer0 deploy layer0-docs",
     "layer0:update": "npm i --save @layer0/core@next @layer0/next@next @layer0/cli@next @layer0/prefetch@next @layer0/react@next",
     "layer0:link": "yalc add @layer0/core @layer0/next @layer0/cli @layer0/prefetch @layer0/react"
   },

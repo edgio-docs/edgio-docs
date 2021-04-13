@@ -42,7 +42,7 @@ To host your site on a subdomain, add a `CNAME` record with the value shown unde
 # To verify your DNS entry, run the following command
 dig <your-sub-domain>
 
-# Example 
+# Example
 dig www.mywebsite.xyz
 
 # Result
@@ -57,7 +57,7 @@ To host your site on the apex domain, create multiple `A` records on your apex d
 # To verify your DNS entry, run the following command
 dig <your-apex-domain>
 
-# Example 
+# Example
 dig mywebsite.xyz
 
 # Result
@@ -76,7 +76,7 @@ mywebsite.xyz.        599    IN    A        151.101.193.79
   # To verify your DNS entries, run the following command
   dig <your-sub-domain>
 
-  # Example 
+  # Example
   dig www.mywebsite.xyz
 
   # Result
@@ -105,7 +105,7 @@ _Note: If you already have an existing certificate, you can use it by skipping a
 
 1. Make sure each environment is configured with the custom domains on which it will receive traffic. For more information on configuring custom domains, see [Domains](#section_domains) above.
 
-2. Using your DNS provider, verify and possibly add a `CAA` record to allow *Let's Encrypt* to generate certificates for your domains.
+2. Using your DNS provider, verify and possibly add a `CAA` record to allow _Let's Encrypt_ to generate certificates for your domains.
 
    The CAA DNS entries of a domain behave like a whitelist to indicate wheither **any** or only **certain** Certificate Autorities are allowed to generate certificates for that domain.
 
@@ -113,7 +113,7 @@ _Note: If you already have an existing certificate, you can use it by skipping a
 
    If there are CAA records, it means that only **certain** Certificate Authorities are allowed to generate certificates for that domain.
 
-   So in order for *Let's Encrypt* to be able to generate a certificate for your domains, you must either not have defined any CAA records, or *Let's Encrypt*'s CAA entry must be among those defined in the list of CAA records.
+   So in order for _Let's Encrypt_ to be able to generate a certificate for your domains, you must either not have defined any CAA records, or _Let's Encrypt_'s CAA entry must be among those defined in the list of CAA records.
 
    You can verify the value of the CAA records for your domain from the command line using the command below.
 
@@ -136,7 +136,7 @@ _Note: If you already have an existing certificate, you can use it by skipping a
 
    If the result of the CAA DNS query is empty, it means that **any** Certificate Authority is allowed to generate certificates on that domain. If so, you can directly go to the next step.
 
-   If there are already some CAA DNS entries defined on your domain, and if *Let's Encrypt*'s CAA entry is not among those, you will have to add an additionnal CCA entry for *Let's Encrypt*.
+   If there are already some CAA DNS entries defined on your domain, and if _Let's Encrypt_'s CAA entry is not among those, you will have to add an additionnal CCA entry for _Let's Encrypt_.
 
    To do so, log into your DNS provider, and add a `CAA` type DNS record with the following values:
 
@@ -174,7 +174,7 @@ _Note: If you already have an existing certificate, you can use it by skipping a
 
 3. Add an `_acme-challenge.` CNAME DNS entry to allow {{ PRODUCT_NAME }} to issue a certificate request on your behalf.
 
-   Log into your DNS provider and add one `CNAME` type DNS entry with the value `_acme-challenge.<your-domain-here>` for each domains you use on your {{ PRODUCT_NAME }} website. For example, if your domain is `mywebsite.xyz`, the DNS entry should have a value of `_acme-challenge.mywebsite.xyz`. This record should point to `_acme-challenge.xdn-validation.com`. Repeat the operation of each domain associated with your {{ PRODUCT_NAME }} website.
+   Log into your DNS provider and add one `CNAME` type DNS entry with the value `_acme-challenge.<your-domain-here>` for each domains you use on your Layer0 website. For example, if your domain is `mywebsite.xyz`, the DNS entry should have a value of `_acme-challenge.mywebsite.xyz`. This record should point to `_acme-challenge.{{ PRODUCT_NAME_LOWER }}-validation.com`. Repeat the operation of each domain associated with your Layer0 website.
 
    Example with Godaddy:
 

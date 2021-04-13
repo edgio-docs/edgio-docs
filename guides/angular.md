@@ -6,7 +6,7 @@ This guide shows you how to deploy an Angular application on {{ PRODUCT_NAME }}:
 
 This Angular example app uses server-side rendering and prefetching to provide lightening-fast transitions between pages.
 
-[Try the Angular SSR Example Site](https://moovweb-docs-layer0-angular-example-default.moovweb-edge.io/category/hats?button)
+[Try the Angular SSR Example Site](https://layer0-docs-layer0-angular-example-default.moovweb-edge.io/category/hats?button)
 [View the Code](https://github.com/{{ EXAMPLES_REPO }}/tree/main/layer0-angular-example?button)
 
 ## Connector

@@ -6,7 +6,7 @@ This guide shows you how to deploy a Next.js application on {{ PRODUCT_NAME }}.
 
 This Next.js example app uses server-side rendering and prefetching to provide lightening-fast transitions between pages.
 
-[Try the Next.js SSR Example Site](https://moovweb-docs-layer0-next-example-default.moovweb-edge.io/category/hats?button)
+[Try the Next.js SSR Example Site](https://layer0-docs-layer0-next-example-default.moovweb-edge.io/category/hats?button)
 [View the Code](https://github.com/{{ EXAMPLES_REPO }}/tree/main/layer0-next-example?button)
 
 ## Next.js Commerce
@@ -17,7 +17,7 @@ For details on using the Next.js Commerce template with {{ PRODUCT_NAME }} refer
 
 This framework has a connector developed for {{ PRODUCT_NAME }}. See [Connectors](connectors) for more information.
 
-[View the Connector Code](https://github.com/moovweb-docs/layer0-connectors/tree/main/layer0-next-connector?button)
+[View the Connector Code](https://github.com/layer0-docs/layer0-connectors/tree/main/layer0-next-connector?button)
 
 ## Supported Features
 
@@ -93,10 +93,11 @@ Deploying requires an account on {{ PRODUCT_NAME }}. [Sign up here for free.]({{
 ```bash
 {{ CLI_NAME }} deploy
 ```
+
 See [deploying](deploying) for more information.
 
-
 ## Using `withServiceWorker` with Next.js
+
 The `next.config.js` file was updated to use `with{{ PRODUCT_NAME }}` and `withServiceWorker`.
 
 ```js
@@ -341,7 +342,7 @@ Some additional notes:
 
 - In order to use Webpack 5 you must use yarn to install dependencies. NPM does not support `resolutions` in package.json.
 - Webpack 5 contains many breaking changes, so it is possible that you'll need to make additional changes to the webpack config via next.config.js to get your app to build successfully.
-- You may run into this error: `UnhandledPromiseRejectionWarning: TypeError: dependency.getCondition is not a function`.  You can fix this by adding `next-offline` as a dependency using `npm i -D next-offline` or `yarn add --dev next-offline`.
+- You may run into this error: `UnhandledPromiseRejectionWarning: TypeError: dependency.getCondition is not a function`. You can fix this by adding `next-offline` as a dependency using `npm i -D next-offline` or `yarn add --dev next-offline`.
 - You'll also see some deprecation warnings, like these, which are fine, as long as `{{ CLI_NAME }} build` is successful:
 
 ```

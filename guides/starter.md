@@ -79,7 +79,7 @@ These tags power the predictive prefetching and caching that will be used by {{ 
 
 This framework has a connector developed for {{ PRODUCT_NAME }}. See [Connectors](connectors) for more information.
 
-[View the Connector Code](https://github.com/moovweb-docs/layer0-connectors/tree/main/layer0-starter-connector?button)
+[View the Connector Code](https://github.com/layer0-docs/layer0-connectors/tree/main/layer0-starter-connector?button)
 
 ## Setup a Starter project
 

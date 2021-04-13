@@ -6,7 +6,7 @@ This guide shows you how to deploy a Nuxt.js application on {{ PRODUCT_NAME }}. 
 
 This Nuxt.js example app uses server-side rendering and prefetching to provide lightening-fast transitions between pages.
 
-[Try the Nuxt.js SSR Example Site](https://layer0-docs-layer0-nuxt-example-default.moovweb-edge.io/category/hats?button)
+[Try the Nuxt.js SSR Example Site](https://layer0-docs-layer0-nuxt-example-default.layer0.link/category/hats?button)
 [View the Code](https://github.com/{{ EXAMPLES_REPO }}/tree/main/layer0-nuxt-example?button)
 
 ## Connector

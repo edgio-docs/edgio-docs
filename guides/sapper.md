@@ -8,7 +8,7 @@ This guide shows you how to deploy [Sapper](https://sapper.svelte.dev/) apps on 
 
 This Sapper example app uses server-side rendering and prefetching to provide lightening-fast transitions between pages.
 
-[Try the Sapper SSR Example Site](https://layer0-docs-layer0-sapper-example-default.moovweb-edge.io/category/hats?button)
+[Try the Sapper SSR Example Site](https://layer0-docs-layer0-sapper-example-default.layer0.link/category/hats?button)
 [View the Code](https://github.com/{{ EXAMPLES_REPO }}/tree/main/layer0-sapper-example?button)
 
 ## Connector

@@ -6,7 +6,7 @@ This guide shows you how to deploy [Frontity](https://frontity.org/) apps on {{ 
 
 Here is an example of the Frontity starter app running on {{ PRODUCT_NAME }}:
 
-[Try the Frontity Example Site](https://layer0-docs-layer0-frontity-example-default.moovweb-edge.io?button)
+[Try the Frontity Example Site](https://layer0-docs-layer0-frontity-example-default.layer0.link/?button)
 [View the Code](https://github.com/{{ EXAMPLES_REPO }}/tree/main/layer0-frontity-example?button)
 
 ## Connector

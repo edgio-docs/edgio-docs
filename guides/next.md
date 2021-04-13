@@ -6,7 +6,7 @@ This guide shows you how to deploy a Next.js application on {{ PRODUCT_NAME }}.
 
 This Next.js example app uses server-side rendering and prefetching to provide lightening-fast transitions between pages.
 
-[Try the Next.js SSR Example Site](https://layer0-docs-layer0-next-example-default.moovweb-edge.io/category/hats?button)
+[Try the Next.js SSR Example Site](https://layer0-docs-layer0-next-example-default.layer0.link/category/hats?button)
 [View the Code](https://github.com/{{ EXAMPLES_REPO }}/tree/main/layer0-next-example?button)
 
 ## Next.js Commerce

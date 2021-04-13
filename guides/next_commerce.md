@@ -7,7 +7,7 @@ This guide shows you how to deploy the [Next.js Commerce](https://github.com/ver
 Here is an example of the [Next.js Commerce](https://nextjs.org/commerce) template running on {{ PRODUCT_NAME }}. It uses all of the latest Next.js 10 features
 including image optimization, localization, and incremental static regeneration with stale-while-revalidate.
 
-[Try the Next.js Commerce Example Site](https://layer0-docs-nextjs-commerce-default.moovweb-edge.io/?button)
+[Try the Next.js Commerce Example Site](https://layer0-docs-layer0-nextjs-commerce-default.layer0.link/?button)
 [View the Code](https://github.com/{{ EXAMPLES_REPO }}/tree/main/nextjs-commerce?button)
 
 ## Connector

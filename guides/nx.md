@@ -6,7 +6,7 @@ This guide shows you how to create a [connector](/guides/connectors) for your NX
 
 ## Example App
 
-[Try the Nx Example App](https://layer0-docs-layer0-nx-example-default.moovweb-edge.io?button)
+[Try the Nx Example App](https://layer0-docs-layer0-nx-example-default.layer0.link/?button)
 [View the Code](https://github.com/{{ EXAMPLES_REPO }}/tree/main/layer0-next-example?button)
 
 ## 1. Install the {{ PRODUCT_NAME }} CLI and run {{ CLI_NAME }} init

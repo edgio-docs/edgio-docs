@@ -289,11 +289,6 @@
         "href": "/guides/[...guide]"
       },
       {
-        "text": "Migrating from XDN to Layer0",
-        "as": "/guides/layer0_migration",
-        "href": "/guides/[...guide]"
-      },
-      {
         "text": "Layer0 Starter",
         "as": "/guides/starter",
         "href": "/guides/[...guide]"

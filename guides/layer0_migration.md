@@ -1,4 +1,6 @@
-[[blurb about migrating from Moovweb XDN to Layer0]]
+We are excited to announce that our company and platform name will be changing as of April 13, 2021 to Layer0. Our product will remain the same and your site will not be affected.
+
+After April 13th, you'll login to a new Layer0 branded console at [app.layer0.co]() instead of [moovweb.app]() but can continue to use the same login method and credentials you use today. We look forward to launching this new branding with you!
 
 ## What will change automatically?
 
@@ -10,9 +12,9 @@ https://moovweb.app will become https://app.layer0.co. Use this new link going f
 
 ### Edge and Permalinks
 
-Edge links with `*.moovweb-edge.io` will become `*.layer0.link`. Your current edge links will switch to the new format on the next deployment for that environment. Old edge links will continue to work even after the first deployment for next 90 days.
+Edge links with `*.moovweb-edge.io` will become `*.layer0.link`. Your current edge links will switch to the new format on the next deployment for that environment. Old edge links will continue to work even after the first deployment.
 
-Permalinks with `*.free.moovweb.io` will become `*.free.layer0-perma.link`. These links will all automatically switch to the new Layer0 links in the Developer Console and, unlike edge links, will be available without needing a deployment of your site. However, we will continue to support old and new permalinks for the next 90 days.
+Permalinks with `*.free.moovweb.io` will become `*.free.layer0-perma.link`. These links will all automatically switch to the new Layer0 links in the Developer Console and, unlike edge links, will be available without needing a deployment of your site. However, we will continue to support old and new permalinks.
 
 During this transition, your live site is unaffected and custom domains URLs are not affected.
 

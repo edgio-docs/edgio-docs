@@ -12,9 +12,7 @@ When you run `{{ CLI_NAME }} deploy` your site will be created here. Sites in yo
 
 ## Creating a Team
 
-To create a team, use the menu button located to the right of your name in the upper left of your window:
-
-![create a team](/images/teams/create.png)
+To create a team, use the **Create A Team** button located to the right of your name in the upper left of your window.
 
 The name you choose also determines the default URL from which your site will accessible. To configure custom domains, see [Environments](../environments).
 

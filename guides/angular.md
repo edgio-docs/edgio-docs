@@ -11,7 +11,7 @@ This Angular example app uses server-side rendering and prefetching to provide l
 
 ## Connector
 
-This framework has a connector developed for {{ PRDUCT_NAME }}. See [Connectors](connectors) for more information.
+This framework has a connector developed for {{ PRODUCT_NAME }}. See [Connectors](connectors) for more information.
 
 [View the Connector Code](https://github.com/layer0-docs/layer0-connectors/tree/main/layer0-angular-connector?button)
 

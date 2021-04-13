@@ -18,7 +18,7 @@ function replaceMatch(content, match) {
  * @returns {String}
  */
 export function populatePlaceholders(content) {
-  const matcher = /{{\s*(\w+)\s*}}/
+  const matcher = /{{\s*(\w+)\s*}}/g
   let result
 
   while ((result = matcher.exec(content)) !== null) {
@@ -26,6 +26,7 @@ export function populatePlaceholders(content) {
 
     if (constants[variable]) {
       content = replaceMatch(content, result)
+      matcher.lastIndex = -1 // reset index since content has changed
     }
   }
 

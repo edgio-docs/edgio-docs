@@ -294,8 +294,8 @@
         "href": "/guides/[...guide]"
       },
       {
-        "text": "Layer0 Starter",
-        "as": "/guides/starter",
+        "text": "Layer0 for Traditional Sites",
+        "as": "/guides/traditional_sites",
         "href": "/guides/[...guide]"
       },
       {

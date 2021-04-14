@@ -1,12 +1,12 @@
-# {{ PRODUCT_NAME }} Starter
+# {{ PRODUCT_NAME }} for Traditional Sites
 
-This guide describes how to get up and running with {{ PRODUCT_NAME }} Starter. {{ PRODUCT_NAME }} Starter enables traditional websites (i.e. jQuery, PHP, VanillaJS, etc.) to take advantage of the performance benefits of {{ PRODUCT_NAME }}'s advanced caching and predictive prefetching. If your website is built on a modern framework such as React, Angular, or Vue, we recommend considering our framework specific guides that can be found on the [homepage](/) as an alternative to {{ PRODUCT_NAME }} Starter.
+This guide describes how to get up and running with {{ PRODUCT_NAME }} for traditional, multi-page applications. {{ PRODUCT_NAME }} can enable traditional websites (i.e. jQuery, PHP, VanillaJS, etc.) to take advantage of the performance benefits of advanced caching and predictive prefetching. If your website is built on a modern framework such as React, Angular, or Vue, we recommend considering our framework specific guides that can be found on the [homepage](/).
 
-Note that the speed benefit from {{ PRODUCT_NAME }} Starter is dependent on a site’s JavaScript usage during the page load. If a page has JavaScript heavy processing during load it may reduce the benefit from {{ PRODUCT_NAME }} Starter. Please contact our team via the chat button in the bottom right of this page if you're interested in a site analysis prior to beginning installation — turnaround time is typically 1-2 business days.
+Note that the speed benefit for traditional sites from {{ PRODUCT_NAME }} is dependent on the site’s JavaScript usage during the page load. If a page has JavaScript heavy processing during load it may reduce the benefit from {{ PRODUCT_NAME }} Starter. Please contact our team via the chat button in the bottom right of this page if you're interested in a site analysis prior to beginning installation — turnaround time is typically 1-2 business days.
 
-## How {{ PRODUCT_NAME }} Starter works
+## How {{ PRODUCT_NAME }} for Traditional Sites Works
 
-As shown below, in {{ PRODUCT_NAME }} Starter {{ PRODUCT_NAME }} becomes the main CDN for your site:
+As shown below, {{ PRODUCT_NAME }} becomes the main CDN for your site:
 
 ![traffic](/images/starter/traffic.png)
 
@@ -73,7 +73,7 @@ Next install {{ PRODUCT_NAME }} JavaScript libraries to your site by adding the 
 <script src="/main.js" defer="defer"></script>
 ```
 
-These tags power the predictive prefetching and caching that will be used by {{ PRODUCT_NAME }}. Note that the JavaScript assets referenced in the above script tags are not on your server. {{ PRODUCT_NAME }} serves the assets for these script tags once {{ PRODUCT_NAME }} is installed in front of your server as described in [How {{ PRODUCT_NAME }} Starter works](#section_how_layer0_starter_works).
+These tags power the predictive prefetching and caching that will be used by {{ PRODUCT_NAME }}. Note that the JavaScript assets referenced in the above script tags are not on your server. {{ PRODUCT_NAME }} serves the assets for these script tags once {{ PRODUCT_NAME }} is installed in front of your server as described in [How {{ PRODUCT_NAME }} for Traditional Sites Works](#section_how_layer0_for_traditional_sites_works).
 
 ## Connector
 
@@ -113,16 +113,16 @@ Here's an example output from running {{ PRODUCT_NAME }} create:
 ```bash
 $ npm create {{ STARTER_NAME }}@latest
 npx: installed 170 in 10.375s
-✔ Enter a name for your app … my-starter-app
-✔ Select an app template › Default starter template
+✔ Enter a name for your app … my-app
+✔ Select an app template › Default traditional site template
 ✔ Enter the hostname for the origin site (e.g. domain.com) … origin.site.com
 ✔ Which package manager would you like to use? › npm
-✔ Downloading Default starter template {{ PRODUCT_NAME }} template... done.
+✔ Downloading Default traditional site {{ PRODUCT_NAME }} template... done.
 ✔ Installing dependencies... done.
 
 {{ PRODUCT_NAME }} app created! Run the following to start your app in development mode:
 
-cd my-starter-app
+cd my-app
 npm start
 
 To deploy your app on {{ PRODUCT_NAME }}, run:
@@ -310,7 +310,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 ### Maintenance
 
-For the most part maintenance for {{ PRODUCT_NAME }} starter is minimal. However, the typical scenarios that require changes are:
+For the most part maintenance for traditional sites running on {{ PRODUCT_NAME }} is minimal. However, the typical scenarios that require changes are:
 
 - If you add personalized or user-specific content to the page you will need to make sure it is late loaded as described in the [Make sure your pages are cachable](#section_make_sure_your_pages_are_cachable) section.
 - If you introduce a new segmentation of content (i.e. support a new language or currency), you may need to update your [custom cache key](/guides/caching#section_customizing_the_cache_key).

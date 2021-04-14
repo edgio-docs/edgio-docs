@@ -100,7 +100,7 @@ const Home = ({ navData, changeLog }) => {
       <div className={classes.hero}>
         <Layer0Icon className={classes.logo} />
         <Typography variant="h2" style={{ maxWidth: 800, marginTop: 0, fontSize: '34px' }}>
-          <div style={{ position: 'relative' }}>JAMStack for Production.</div>
+          <div style={{ position: 'relative' }}>Jamstack for Production.</div>
         </Typography>
       </div>
       <Grid container className={classes.frameworks}>

@@ -254,6 +254,7 @@ To create CSR and private key do the following:
 [req]
 default_bits=2048
 distinguished_name = req_distinguished_name
+req_extensions = v3_req
 
 [req_distinguished_name]
 countryName=Country Name (2 letter code)
@@ -267,7 +268,7 @@ organizationName_default=YourCompanyName
 commonName=Fully Qualified Domain Name (FQDN) e.g. www.your-company-name.com
 commonName_default=www.your-company-domain.com
 
-[req_extensions]
+[ v3_req ]
 subjectAltName=@alt_names
 
 [alt_names] # Other domains: apex domain, wildcard domain for staging and dev, and so on
@@ -282,7 +283,8 @@ Replace the country, state/province, locality, organization name and, most impor
 You will want to add all the additional domains into the `alt_names` section. There you should add your development, staging and other domains although {{ PRODUCT_NAME }} strongly encourages the use of wildcard certs.
 
 3. Run `openssl req -out {{ PRODUCT_NAME_LOWER }}.csr -newkey rsa:2048 -nodes -keyout {{ PRODUCT_NAME_LOWER }}.key -config {{ PRODUCT_NAME_LOWER }}.conf -batch`. This should generate your CSR in `{{ PRODUCT_NAME_LOWER }}.csr` and private key in `{{ PRODUCT_NAME_LOWER }}.key`. If you want OpenSSL to ask you for each different input, remove `-batch` option and re-run the command.
-4. Read the CSR (e.g. `cat {{ PRODUCT_NAME_LOWER }}.csr`) and send it to your CA for certification.
+4. Verify your CSR contains the expected domains by running `openssl req -in {{ PRODUCT_NAME_LOWER }}.csr -noout -text | grep DNS`
+5. Read the CSR (e.g. `cat {{ PRODUCT_NAME_LOWER }}.csr`) or copy to your clipboard (on OSX `cat {{ PRODUCT_NAME_LOWER }}.csr | pbcopy`) and send it to your CA for certification.
 
 ### Uploading your certificate
 

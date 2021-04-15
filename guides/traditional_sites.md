@@ -8,7 +8,7 @@ Note that the speed benefit for traditional sites from {{ PRODUCT_NAME }} is dep
 
 As shown below, {{ PRODUCT_NAME }} becomes the main CDN for your site:
 
-![traffic](/images/starter/traffic.png)
+![traffic](/images/starter/traffic.svg)
 
 Requests for your site will now pass through {{ PRODUCT_NAME }}'s globally distributed network of computers and then to your server. Your site's main domain, such as `www.site.com` now points to {{ PRODUCT_NAME }}, and your original server now responds to a new domain such as `origin.site.com` that {{ PRODUCT_NAME }} will use for fetching your page data. Note that `origin.site.com` in this example is hidden from users; users continue to access your site transparently from your original domain `www.site.com`.
 

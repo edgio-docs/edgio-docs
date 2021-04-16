@@ -103,7 +103,7 @@ The `next.config.js` file was updated to use `with{{ PRODUCT_NAME }}` and `withS
 ```js
 // next.config.js
 
-const { with{{ PRODUCT_NAME }}, withServiceWorker } = require('{{ CLI_NAME }}/next/config')
+const { with{{ PRODUCT_NAME }}, withServiceWorker } = require('{{ PACKAGE_NAME }}/next/config')
 
 module.exports = with{{ PRODUCT_NAME }}(withServiceWorker())
 ```

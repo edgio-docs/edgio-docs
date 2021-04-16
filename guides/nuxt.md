@@ -21,7 +21,7 @@ This framework has a connector developed for {{ PRODUCT_NAME }}. See [Connectors
 
 If you do not have Node.js installed on your system, download and install it from the official [Node.js v{{ NODE_VERSION }} downloads](https://nodejs.org/dist/latest-v{{ NODE_VERSION }}/) page. Select the download that matches your operating system and run the installer. Note that the installer for Node.js will also install npm.
 
-_Note that while you can use any version of Node.js >= 12 locally, your app will run in Node 12 when deployed to the {{ PRODUCT_NAME }} cloud. Therefore we highly suggest using Node 12 for all development._
+_Note that while you can use any version of Node.js >= 14 locally, your app will run in Node 14 when deployed to the {{ PRODUCT_NAME }} cloud. Therefore we highly suggest using Node 14 for all development._
 
 ## Getting Started
 
@@ -122,7 +122,7 @@ And here is the `package.json` after modifications by `{{ CLI_NAME }} init`:
     "generate": "nuxt generate"
   },
   "dependencies": {
-    "@nuxt/core": "^2.12.2"
+    "@nuxt/core": "^2.14.2"
   },
   "devDependencies": {
     "{{ PACKAGE_NAME }}/cli": "^2.0.0",
@@ -133,7 +133,7 @@ And here is the `package.json` after modifications by `{{ CLI_NAME }} init`:
     "nuxt": "^2.0.0",
     "serverless": "^1.64.0",
     "serverless-dotenv-plugin": "^2.3.2",
-    "serverless-offline": "^5.12.1"
+    "serverless-offline": "^5.14.1"
   }
 }
 ```

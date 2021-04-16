@@ -115,7 +115,7 @@ jobs:
       - uses: actions/checkout@v1
       - uses: actions/setup-node@v1
         with:
-          node-version: 12
+          node-version: 14
       - name: Cache node modules
         uses: actions/cache@v1
         env:
@@ -166,7 +166,7 @@ This guide assumes:
 pipeline {
   agent {
     docker {
-      image "node:12-alpine"
+      image "node:14-alpine"
     }
   }
   environment {

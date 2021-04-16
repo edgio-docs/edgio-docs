@@ -392,7 +392,7 @@ jobs:
       - uses: actions/checkout@v1
       - uses: actions/setup-node@v1
         with:
-          node-version: 12
+          node-version: 14
           registry-url: https://npm-proxy.fury.io/layer0/
       - name: Cache node modules
         uses: actions/cache@v1

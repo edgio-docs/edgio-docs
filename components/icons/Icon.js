@@ -16,6 +16,7 @@ import NXIcon from './nx.png'
 import FrontityIcon from './frontity.svg'
 import HTMLIcon from './html.svg'
 import Fastboot from './fastboot.svg'
+import Razzle from './razzle.svg'
 
 export const icons = {
   react: ReactIcon,
@@ -37,6 +38,7 @@ export const icons = {
   frontity: FrontityIcon,
   html: HTMLIcon,
   fastboot: Fastboot,
+  razzle: Razzle,
 }
 
 export const styles = theme => ({

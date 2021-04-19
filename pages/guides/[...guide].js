@@ -17,21 +17,6 @@ export default function Guide({ notFound, markdown, navData, guide }) {
 
   let pageTitle
 
-  if (notFound) {
-    return (
-      <PageWrapper centerStyle={{ paddingTop: theme.spacing(4) }}>
-        <Head>
-          <title>
-            {PRODUCT_NAME} Documentation {pageTitle ? `- ${pageTitle}` : ''}
-          </title>
-        </Head>
-        <Typography variant="h1" align="center">
-          Page not found.
-        </Typography>
-      </PageWrapper>
-    )
-  }
-
   navData.some(section => {
     return section.items.some(page => {
       if ((page.as || '').endsWith(guide)) {
@@ -51,7 +36,13 @@ export default function Guide({ notFound, markdown, navData, guide }) {
           {PRODUCT_NAME} Documentation {pageTitle ? `- ${pageTitle}` : ''}
         </title>
       </Head>
-      <Markdown source={markdown} toc />
+      {notFound ? (
+        <Typography variant="h1" align="center">
+          Page not found.
+        </Typography>
+      ) : (
+        <Markdown source={markdown} toc />
+      )}
       <Footer navData={navData} guide={guide} />
     </PageWrapper>
   )

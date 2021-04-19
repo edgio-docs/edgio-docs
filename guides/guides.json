@@ -186,6 +186,12 @@
         "href": "/guides/[...guide]"
       },
       {
+        "text": "Razzle",
+        "icon": "razzle",
+        "as": "/guides/razzle",
+        "href": "/guides/[...guide]"
+      },
+      {
         "text": "React",
         "icon": "react",
         "as": "/guides/react",

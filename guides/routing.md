@@ -1,6 +1,6 @@
 # Routing
 
-The `{{ PACKAGE_NAME }}/core` package provides a JavaScript API for controlling routing and caching from your code base rather than a CDN web portal. Using this "CDN-as-Code" approach allows this vital routing logic to be properly tested, reviewed, and version controlled, just like the rest of your application code.
+The `{{ PACKAGE_NAME }}/core` package provides a JavaScript API for controlling routing and caching from your code base rather than a CDN web portal. Using this "{{ EDGEJS_LABEL }}" approach allows this vital routing logic to be properly tested, reviewed, and version controlled, just like the rest of your application code.
 
 Using the Router, you can:
 

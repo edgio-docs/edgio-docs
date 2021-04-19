@@ -28,7 +28,7 @@ Check out our video [{{ PRODUCT_NAME }} - What & Why](https://www.youtube.com/wa
 
 ## Speed
 
-{{ PRODUCT_NAME }} makes it possible to deliver subsecond page load-times and instantaneous client-side page transitions through the use of prefetching and caching. It empowers developers to optimize performance by leveraging powerful caching and edge logic capabilities right from their application code using a "CDN-as-code" JavaScript API. Rather than manually configuring your CDN through a web portal, {{ PRODUCT_NAME }} allows you to put your edge logic in code, so that it's source-controlled, reviewed, and tested using the same software development lifecycle as the rest of your vital application code. You can even A/B test edge logic in production!
+{{ PRODUCT_NAME }} makes it possible to deliver subsecond page load-times and instantaneous client-side page transitions through the use of prefetching and caching. It empowers developers to optimize performance by leveraging powerful caching and edge logic capabilities right from their application code using an "{{ EDGEJS_LABEL }}" JavaScript API. Rather than manually configuring your CDN through a web portal, {{ PRODUCT_NAME }} allows you to put your edge logic in code, so that it's source-controlled, reviewed, and tested using the same software development lifecycle as the rest of your vital application code. You can even A/B test edge logic in production!
 
 ```js
 // Example {{ PRODUCT_NAME }} routes file for a Next.js app

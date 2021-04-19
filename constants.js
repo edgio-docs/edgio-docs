@@ -4,7 +4,7 @@ const PRODUCT_NAME_UPPER = PRODUCT_NAME.toUpperCase()
 const CLI_NAME = 'layer0'
 const PACKAGE_NAME = '@layer0'
 const CONFIG_FILE = 'layer0.config.js'
-const HEADER_PREFIX = 'x-layer0'
+const HEADER_PREFIX = 'x-0'
 const COOKIE_PREFIX = 'layer0'
 
 const DOMAIN = 'layer0.co'
@@ -24,6 +24,7 @@ const DOCS_PAGES_REPO_URL = `https://${DOCS_PAGES_DOMAIN}/layer0-docs-pages`
 
 const NODE_VERSION = '12.x'
 const STARTER_NAME = 'layer0-app'
+const EDGEJS_LABEL = 'EdgeJS'
 
 module.exports = {
   PRODUCT_NAME,
@@ -49,4 +50,5 @@ module.exports = {
   STARTER_NAME,
   DOCS_REPO,
   EXAMPLES_REPO,
+  EDGEJS_LABEL,
 }

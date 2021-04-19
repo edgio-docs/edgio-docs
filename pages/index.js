@@ -246,11 +246,20 @@ const Home = ({ navData, changeLog }) => {
                 </Paper>
               </Link>
             </Grid>
+            <Grid item>
+              <Link href="/guides/[...guide]" as="/guides/razzle">
+                <Paper className={classes.framework} elevation={0}>
+                  <Icon type="razzle" className={classes.icon} {...iconProps} />
+                  <Typography className={classes.frameworkText}>Get started with Razzle</Typography>
+                </Paper>
+              </Link>
+            </Grid>
             <Grid item container xs={12} m={12} l={12} xl={12} justify="center">
               Don't see your framework?&nbsp;
               <Link href="/guides/[...guide]" as="/guides/traditional_sites">
-                {`Check out ${PRODUCT_NAME} for Traditional Sites`}
+                {`Check out ${PRODUCT_NAME} for traditional websites`}
               </Link>
+              .
             </Grid>
           </Grid>
         </Grid>

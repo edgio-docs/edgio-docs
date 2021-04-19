@@ -9,10 +9,10 @@
 
 Install the Vue Storefront application using this guide: https://docs.vuestorefront.io/guide/installation/linux-mac.html
 
-<b>Note</b>: {{ PRODUCT_NAME }} requires Node version >= 12, so before the installation it's recommended to run:
+<b>Note</b>: {{ PRODUCT_NAME }} requires Node version >= 14, so before the installation it's recommended to run:
 
 ```bash
-nvm use 12
+nvm use 14
 ```
 
 ## 2. Prepare VSF files for {{ PRODUCT_NAME }}

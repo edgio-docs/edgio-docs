@@ -78,6 +78,37 @@ This will automatically add all of the required dependencies and files to your p
 - `routes.js` - A default routes file that sends all requests to Next.js. Update this file to add caching or proxy some URLs to a different origin.
 - `sw/service-worker.js` A service worker implemented using Workbox.
 
+## Next.js Config Plugins
+
+If your project does not have a next.config.js file, one will automatically be added when you run `layer0 init`. Doing so adds two plugins:
+
+- with{{ PRODUCT_NAME }} (required)
+- withServiceWorker (optional)
+
+If your project already has a next.config.js file, you need to add these plugins yourself.
+
+```js
+const { with{{ PRODUCT_NAME }}, withServiceWorker } = require('{{ PACKAGE_NAME }}/next/config')
+
+module.exports = with{{ PRODUCT_NAME }}(
+  withServiceWorker({
+    // Output sourcemaps so that stacktraces have original source filenames and line numbers when tailing
+    // the logs in the Layer0 developer console.
+    layer0SourceMaps: true,
+  })
+)
+```
+
+### with{{ PRODUCT_NAME }}
+
+The `with{{ PRODUCT_NAME }}` optimizes the Next.js build for running on {{ PRODUCT_NAME }}. It is required to deploy your application on {{ PRODUCT_NAME }} and accepts the following parameters:
+
+- layer0SourceMaps: Defaults to `false`. Set to `true` to add server-side sourcemaps so that so that stacktraces have original source filenames and line numbers when tailing the logs in the Layer0 developer console. This will increase the serverless bundle size but will not affect performance. If you find that your app exceeds the maximum serverless bundle size allowed by {{ PRODUCT_NAME }}, you can disable this option to conserve space.
+
+### withServiceWorker
+
+The `withServiceWorker` plugin builds a service worker from `sw/service-worker.js` that prefetches and caches all static JS assets and enables {{ PRODUCT_NAME }}'s [prefetching](/guides/next#section_prefetching) functionality.
+
 ## Running Locally
 
 To simulate your app within {{ PRODUCT_NAME }} locally, run:
@@ -95,21 +126,6 @@ Deploying requires an account on {{ PRODUCT_NAME }}. [Sign up here for free.]({{
 ```
 
 See [deploying](deploying) for more information.
-
-## Using `withServiceWorker` with Next.js
-
-The `next.config.js` file was updated to use `with{{ PRODUCT_NAME }}` and `withServiceWorker`.
-
-```js
-// next.config.js
-
-const { with{{ PRODUCT_NAME }}, withServiceWorker } = require('{{ PACKAGE_NAME }}/next/config')
-
-module.exports = with{{ PRODUCT_NAME }}(withServiceWorker())
-```
-
-The `with{{ PRODUCT_NAME }}` plugin ensures that your app is bundled properly for running on {{ PRODUCT_NAME }}, and `withServiceWorker` provides a service worker based on `sw/service-worker.js`.
-_If you're already using `next-offline`, you should remove it in favor of `withServiceWorker`, which itself uses `next-offline`._
 
 ## Prefetching
 

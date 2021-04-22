@@ -185,6 +185,16 @@ server.get('*', (req, res) => {
 export default server
 ```
 
+### Fixing response header overflows
+
+Some CDNs, such as Akamai, impose low limits on the size of response headers. Prefetching works by listing all of the upstream API URLs fetched during SSR in
+a `x-0-upstream-requests` response header. If your application makes many upstream requests for each page during SSR, this header can
+be quite long and exceed the maximum length allowed by your CDN. To mitigate this, using the `maxHeaderLength` option when calling `createRenderCallback`:
+
+```js
+createRenderCallback(res, { maxHeaderLength: 500 })
+```
+
 ### Service worker
 
 The build command places the built `service-worker.js` under `dist` so `{{ PACKAGE_NAME }}/angular` will know to static serve the file.

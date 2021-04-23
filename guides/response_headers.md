@@ -50,6 +50,17 @@ All times are in milliseconds.
 | wp   | The time spent waiting for your application (Next, Nuxt, Sapper, Angular, etc...) or origin to respond                                                                                |
 | wz   | The time spent transforming the response in JavaScript worker. Will only be provided if the response was transformed.                                                                 |
 
+## server-timing
+
+{{ PRODUCT_NAME }} adds the following values to the standard [server-timing](https://www.w3.org/TR/server-timing/) response header:
+
+- layer0-cache: desc=`value` - value will be one of:
+  - `HIT-L1` - The page was served from the edge cache
+  - `HIT-L2` - The page was served from the shield cache
+  - `MISS` - The page could not be served from the cache
+- country: desc=`country_code` - where country_code is the two letter code of the country from which the request was sent.
+- xrj: desc=`route` - where route is the matched route serialized as JSON.
+
 ## Troubleshooting headers
 
 The following headers are used internally by {{ PRODUCT_NAME }} staff to troubleshoot issues with requests.

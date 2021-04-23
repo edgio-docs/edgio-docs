@@ -13,10 +13,6 @@ import { PRODUCT_NAME } from '../../constants'
 import { populatePlaceholders } from '../../components/utils/markdownUtils'
 
 export default function Guide({ notFound, markdown, navData, guide }) {
-  if (notFound) {
-    return <Typography>Page not found.</Typography>
-  }
-
   const theme = useTheme()
 
   let pageTitle
@@ -40,7 +36,13 @@ export default function Guide({ notFound, markdown, navData, guide }) {
           {PRODUCT_NAME} Documentation {pageTitle ? `- ${pageTitle}` : ''}
         </title>
       </Head>
-      <Markdown source={markdown} toc />
+      {notFound ? (
+        <Typography variant="h1" align="center">
+          Page not found.
+        </Typography>
+      ) : (
+        <Markdown source={markdown} toc />
+      )}
       <Footer navData={navData} guide={guide} />
     </PageWrapper>
   )
@@ -78,6 +80,7 @@ Guide.getInitialProps = async function({ req, query, version }) {
       markdown: populatePlaceholders(content),
       navData,
       guide,
+      notFound: !content.trim().length,
     }
   } catch (e) {
     return {

@@ -78,6 +78,20 @@ import { CustomCacheKey } from '{{ PACKAGE_NAME }}/core/router'
 router.get('/some/path', ({ cache }) => {
   cache({
     // Other options...
+    key: new CustomCacheKey().excludeAllQueryParametersExcept('whitelisted-param-1', 'whitelisted-param-2'),
+  })
+})
+```
+
+We recommend using this method over `excludeQueryParameters` as it's difficult to know all of the query parameters your application might receive and unexpected query parameters can lead to significantly lower cache hit rates.
+
+
+```js
+import { CustomCacheKey } from '{{ PACKAGE_NAME }}/core/router'
+
+router.get('/some/path', ({ cache }) => {
+  cache({
+    // Other options...
     key: new CustomCacheKey().excludeQueryParameters('to-be-excluded-1', 'to-be-excluded-2'),
   })
 })

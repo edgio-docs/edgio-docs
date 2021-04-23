@@ -2,7 +2,7 @@
 
 This guide describes how to get up and running with {{ PRODUCT_NAME }} for traditional, multi-page applications. {{ PRODUCT_NAME }} can enable traditional websites (i.e. jQuery, PHP, VanillaJS, etc.) to take advantage of the performance benefits of advanced caching and predictive prefetching. If your website is built on a modern framework such as React, Angular, or Vue, we recommend considering our framework specific guides that can be found on the [homepage](/).
 
-Note that the speed benefit for traditional sites from {{ PRODUCT_NAME }} is dependent on the site’s JavaScript usage during the page load. If a page has JavaScript heavy processing during load it may reduce the benefit from {{ PRODUCT_NAME }} Starter. Please contact our team via the chat button in the bottom right of this page if you're interested in a site analysis prior to beginning installation — turnaround time is typically 1-2 business days.
+Note that the speed benefit for traditional sites from {{ PRODUCT_NAME }} is dependent on the site’s JavaScript usage during the page load. If a page has JavaScript heavy processing during load it may reduce the benefit from {{ PRODUCT_NAME }} for Traditional Sites. Please contact our team via the chat button in the bottom right of this page if you're interested in a site analysis prior to beginning installation — turnaround time is typically 1-2 business days.
 
 ## How {{ PRODUCT_NAME }} for Traditional Sites Works
 
@@ -19,11 +19,11 @@ Requests for your site will now pass through {{ PRODUCT_NAME }}'s globally distr
 
 ## Implementation Process
 
-The high level implementation process for {{ PRODUCT_NAME }} Starter is:
+The high level implementation process for {{ PRODUCT_NAME }} for Traditional is:
 
 1. Make sure your pages are cachable
 2. Add {{ PRODUCT_NAME }} JavaScript libraries to your site
-3. Set up a Starter project
+3. Set up a {{ PRODUCT_NAME }} for Traditional Sites project
 4. Configure caching and prefetching
 5. Test locally and on {{ PRODUCT_NAME }}
 6. Go live by changing the DNS
@@ -62,7 +62,7 @@ See common things you need to look for on an eCommmerce site:
 
 Use this worksheet when auditing your site for personalized content to inventory and track the changes you will be making:
 
-[{{ PRODUCT_NAME }} Starter Origin Content Changes Worksheet](https://docs.google.com/spreadsheets/d/1WDc5tB0tbrDT3To6bNQ0jYpXRFmgUuA_4gb3lVgzmjE/edit?usp=sharing)
+[{{ PRODUCT_NAME }} for Traditional Sites Origin Content Changes Worksheet](https://docs.google.com/spreadsheets/d/1WDc5tB0tbrDT3To6bNQ0jYpXRFmgUuA_4gb3lVgzmjE/edit?usp=sharing)
 
 ## Add {{ PRODUCT_NAME }} JavaScript libraries to your site
 
@@ -81,7 +81,7 @@ This framework has a connector developed for {{ PRODUCT_NAME }}. See [Connectors
 
 [View the Connector Code](https://github.com/layer0-docs/layer0-connectors/tree/main/layer0-starter-connector?button)
 
-## Setup a Starter project
+## Setup a {{ PRODUCT_NAME }} for Traditional Sites project
 
 **{{ PRODUCT_NAME }} only supports Node.js version {{ NODE_VERSION }}**
 
@@ -93,7 +93,7 @@ Next, install the [{{ PRODUCT_NAME }} CLI](cli)
 npm i -g {{ PACKAGE_NAME }}/cli
 ```
 
-Create your Starter project using {{ PRODUCT_NAME }}'s create module:
+Create your {{ PRODUCT_NAME }} for Traditional Sites project using {{ PRODUCT_NAME }}'s create module:
 
 ```bash
 npm create {{ STARTER_NAME }}@latest
@@ -236,7 +236,7 @@ After you've configured and tested your site on {{ PRODUCT_NAME }}, it's time to
 
 Each of these steps is described in more detail in the [Production guide](production). Note that third step (configuring your DNS) will be the crucial step that effectively transitions your domain to {{ PRODUCT_NAME }} and should be done last.
 
-Before going live, you should use the [{{ PRODUCT_NAME }} Starter Onboarding Discovery Worksheet](https://docs.google.com/spreadsheets/d/1PGdcV_HoMKSAQsBi3th6gV6XhBn0gpWYm7Ix2sTcDbs/edit?usp=sharing) to help you think through common use cases and concerns and ensure a smooth launch.
+Before going live, you should use the [{{ PRODUCT_NAME }} for Traditional Sites Onboarding Discovery Worksheet](https://docs.google.com/spreadsheets/d/1PGdcV_HoMKSAQsBi3th6gV6XhBn0gpWYm7Ix2sTcDbs/edit?usp=sharing) to help you think through common use cases and concerns and ensure a smooth launch.
 
 ## Advanced Prefetching Techniques
 
@@ -244,7 +244,7 @@ An introduction to prefetching is available in the [Prefetching guide](prefetchi
 
 ### Deep Fetching
 
-Deep fetching is an important technique for {{ PRODUCT_NAME }} Starter projects. By default, only HTML content is prefetched. In order to achieve truly instant page transitions, all of the assets needed to render the content that appears above the fold needs to be deep fetched. Refer to the [Deep Fetching section](prefetching#section_deep_fetching) of the Prefetching guide for more details on how to configure deep fetching in your project.
+Deep fetching is an important technique for {{ PRODUCT_NAME }} for Traditional Sites projects. By default, only HTML content is prefetched. In order to achieve truly instant page transitions, all of the assets needed to render the content that appears above the fold needs to be deep fetched. Refer to the [Deep Fetching section](prefetching#section_deep_fetching) of the Prefetching guide for more details on how to configure deep fetching in your project.
 
 ### Prefetching POSTs
 

@@ -43,7 +43,7 @@ module.exports = new Router()
   .prerender(prerenderRequests)
   .match('/:path*', ({ addResponseHeader }) => {
     setResponseHeader('some-header', 'some-value')
-  }),
+  })
   .match('/service-worker.js', ({ cache, serveStatic }) => {
     cache({
       browser: {

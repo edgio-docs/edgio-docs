@@ -17,7 +17,7 @@ export default async function guide(req, res) {
       // TODO layer0 check env name
       process.env.LAYER0_ENVIRONMENT_NAME === 'production' || isChangelog
         ? await fetch(`${DOCS_PAGES_REPO_URL}/${version}/guides/${guide}.md`).then(resp =>
-            resp.text(),
+            resp.ok ? resp.text() : '',
           )
         : require(`../../../guides/${guide}.md`).default
 

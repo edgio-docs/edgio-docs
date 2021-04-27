@@ -3,11 +3,6 @@
     "text": "Guides",
     "items": [
       {
-        "text": "Layer0 Migration Guide",
-        "as": "/guides/layer0_migration",
-        "href": "/guides/[...guide]"
-      },
-      {
         "text": "Overview",
         "as": "/guides/overview",
         "href": "/guides/[...guide]"

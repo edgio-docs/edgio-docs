@@ -57,7 +57,7 @@ module.exports = new Router()
           `base-uri 'self'`,
           `frame-ancestors 'self'`,
           `media-src www.youtube.com`,
-          `connect-src *.layer0.co *.segment.io analytics.google.com *.intercom.io *.github.io`,
+          `connect-src *.layer0.co *.segment.io analytics.google.com *.intercom.io *.github.io *.algolianet.com`,
         ].join('; '),
       )
       setResponseHeader('X-XSS-Protection', '1; mode=block')

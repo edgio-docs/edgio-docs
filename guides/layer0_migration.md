@@ -30,7 +30,7 @@ With Layer0 v3, your app will run in Node v{{ NODE_VERSION }} when deployed to t
 
 If you do not have Node.js installed on your system, download and install it from the official [Node.js v{{ NODE_VERSION }} downloads](https://nodejs.org/dist/latest-v{{ NODE_VERSION }}/) page. Select the download that matches your operating system and run the installer. Note that the installer for Node.js will also install npm.
 
-If you are currently on a version of Node < v{{ NODE_VERSION }}, we recommend using `nvm` (Node Version Manager) to switch between your current version and our supported version. This will help test and resolve any issues you may face during migration before deploying your site live on Layer0.
+If you are currently on a version of Node < v{{ NODE_VERSION }}, we recommend using `nvm` ([Node Version Manager](https://github.com/nvm-sh/nvm)) to switch between your current version and our supported version. This will help test and resolve any issues you may face during migration before deploying your site live on Layer0.
 
 ### Upgrading Packages
 

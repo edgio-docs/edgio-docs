@@ -24,6 +24,14 @@ Going forward, you will access your site(s) via https://app.layer0.co. For devel
 
 In the meantime, your site will continue to function as normal with no code changes. However, to ensure your project remains up-to-date with the latest platform features, you will need to upgrade to the latest Layer0 packages available on NPM.
 
+### Node Version
+
+With Layer0 v3, your app will run in Node v{{ NODE_VERSION }} when deployed to the {{ PRODUCT_NAME }} cloud. Therefore we highly suggest using Node v{{ NODE_VERSION }} for all development. All previous versions of Node are not supported and may cause instability in your application.
+
+If you do not have Node.js installed on your system, download and install it from the official [Node.js v{{ NODE_VERSION }} downloads](https://nodejs.org/dist/latest-v{{ NODE_VERSION }}/) page. Select the download that matches your operating system and run the installer. Note that the installer for Node.js will also install npm.
+
+If you are currently on a version of Node < v{{ NODE_VERSION }}, we recommend using `nvm` (Node Version Manager) to switch between your current version and our supported version. This will help test and resolve any issues you may face during migration before deploying your site live on Layer0.
+
 ### Upgrading Packages
 
 To upgrade your packages, you will need to install the latest version of the Layer0 CLI. You should install this globally using: `npm i -g @layer0/cli`.

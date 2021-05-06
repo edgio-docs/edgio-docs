@@ -2,6 +2,8 @@ We are excited to announce that our company and platform name will be changing a
 
 After April 13th, you'll login to a new Layer0 branded console at [app.layer0.co]() instead of [moovweb.app]() but can continue to use the same login method and credentials you use today. We look forward to launching this new branding with you!
 
+**IMPORTANT**: Moovweb XDN v2 and earlier operated on Node 12. Layer0 v3 now requires Node 14. See below on steps to upgrade your Node version.
+
 ## What will change automatically?
 
 During the migration, there are a few key items that will automatically be updated that you should be aware of.
@@ -23,6 +25,14 @@ During this transition, your live site is unaffected and custom domains URLs are
 Going forward, you will access your site(s) via https://app.layer0.co. For developer documentation about Layer0, visit https://docs.layer0.co.
 
 In the meantime, your site will continue to function as normal with no code changes. However, to ensure your project remains up-to-date with the latest platform features, you will need to upgrade to the latest Layer0 packages available on NPM.
+
+### Node Version
+
+With Layer0 v3, your app will run in Node v{{ NODE_VERSION }} when deployed to the {{ PRODUCT_NAME }} cloud. Therefore we highly suggest using Node v{{ NODE_VERSION }} for all development. All previous versions of Node are not supported and may cause instability in your application.
+
+If you do not have Node.js installed on your system, download and install it from the official [Node.js v{{ NODE_VERSION }} downloads](https://nodejs.org/dist/latest-v{{ NODE_VERSION }}/) page. Select the download that matches your operating system and run the installer. Note that the installer for Node.js will also install npm.
+
+If you are currently on a version of Node < v{{ NODE_VERSION }}, we recommend using `nvm` ([Node Version Manager](https://github.com/nvm-sh/nvm)) to switch between your current version and our supported version. This will help test and resolve any issues you may face during migration before deploying your site live on Layer0.
 
 ### Upgrading Packages
 

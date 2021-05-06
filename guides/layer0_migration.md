@@ -2,7 +2,7 @@ We are excited to announce that our company and platform name will be changing a
 
 After April 13th, you'll login to a new Layer0 branded console at [app.layer0.co]() instead of [moovweb.app]() but can continue to use the same login method and credentials you use today. We look forward to launching this new branding with you!
 
-IMPORTANT: Moovweb XDN v2 and earlier operated on Node 12. Layer0 v3 now requires Node 14. See below on steps to upgrade your Node version.
+**IMPORTANT**: Moovweb XDN v2 and earlier operated on Node 12. Layer0 v3 now requires Node 14. See below on steps to upgrade your Node version.
 
 ## What will change automatically?
 

@@ -1,30 +1,6 @@
-We are excited to announce that our company and platform name will be changing as of April 13, 2021 to Layer0. Our product will remain the same and your site will not be affected.
+# Layer0 Version 2.x.x to 3.x.x Migration Guide
 
-After April 13th, you'll login to a new Layer0 branded console at [app.layer0.co]() instead of [moovweb.app]() but can continue to use the same login method and credentials you use today. We look forward to launching this new branding with you!
-
-**IMPORTANT**: Moovweb XDN v2 and earlier operated on Node 12. Layer0 v3 now requires Node 14. See below on steps to upgrade your Node version.
-
-## What will change automatically?
-
-During the migration, there are a few key items that will automatically be updated that you should be aware of.
-
-### Developer Console
-
-https://moovweb.app will become https://app.layer0.co. Use this new link going forward to access your site(s).
-
-### Edge and Permalinks
-
-Edge links with `*.moovweb-edge.io` will become `*.layer0.link`. Your current edge links will switch to the new format on the next deployment for that environment. Old edge links will continue to work even after the first deployment.
-
-Permalinks with `*.free.moovweb.io` will become `*.free.layer0-perma.link`. These links will all automatically switch to the new Layer0 links in the Developer Console and, unlike edge links, will be available without needing a deployment of your site. However, we will continue to support old and new permalinks.
-
-During this transition, your live site is unaffected and custom domains URLs are not affected.
-
-## What will I need to change going forward?
-
-Going forward, you will access your site(s) via https://app.layer0.co. For developer documentation about Layer0, visit https://docs.layer0.co.
-
-In the meantime, your site will continue to function as normal with no code changes. However, to ensure your project remains up-to-date with the latest platform features, you will need to upgrade to the latest Layer0 packages available on NPM.
+This guide describes what you need to know when migrating from version 2.x.x to version 3.x.x. Note that you can continue to use version 2.x.x but we highly recommend upgrading to version 3.x.x. The biggest key change is that in keeping with industry best practices, v3 of the platform now requires Node 14 whereas v2 was on Node 12. 
 
 ### Node Version
 
@@ -36,7 +12,7 @@ If you are currently on a version of Node < v{{ NODE_VERSION }}, we recommend us
 
 ### Upgrading Packages
 
-To upgrade your packages, you will need to install the latest version of the Layer0 CLI. You should install this globally using: `npm i -g @layer0/cli`.
+You will need to upgrade to the latest Layer0 packages available on NPM and remove the equivalent XDN packages. To upgrade your packages, you will need to install the latest version of the Layer0 CLI. You should install this globally using: `npm i -g @layer0/cli`.
 
 Once installed, change into your project’s directory. The original XDN configuration file has been renamed. Run `mv xdn.config.js layer0.config.js` or manually rename the file to move the configuration to Layer0.
 
@@ -52,7 +28,15 @@ Lastly, your site code will need to be updated to reference the new `@layer0` mo
 
 Build your project and verify everything is functioning as expected. You should then deploy your site to your testing environment and re-verify functionality.
 
-## What else has changed?
+## Edge and Permalinks will change automatically
+
+Once you deploy the new version of Layer0, you Edge links will change to have the format `*.layer0.link`. Your current edge links will switch to the new format on the next deployment for that environment. Old edge links will continue to work even after the first deployment.
+
+Permalinks will become `*.free.layer0-perma.link`. These links will all automatically switch to the new links in the Developer Console and, unlike edge links, will be available without needing a deployment of your site. However, we will continue to support old and new permalinks.
+
+During this transition, your live site is unaffected and custom domains URLs are not affected.
+
+## What else will changed?
 
 ### Access Logs
 
@@ -68,4 +52,4 @@ The prefixes of the cookies have changed from `xdn` to `layer0`. For example, `x
 
 #### REST API
 
-If you are using the REST API, the current URL will continue to work, but it is recommended to update to the new endpoint. For example, https://moovweb.app/api/v1/ should be changed to https://app.layer0.co/api/v1/.
+If you are using the REST API, it is recommended to update to the new endpoint, https://app.layer0.co/api/v1/.

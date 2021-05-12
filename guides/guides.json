@@ -126,7 +126,12 @@
         "text": "Contributing",
         "as": "/guides/contributing",
         "href": "/guides/[...guide]"
-      }
+      },
+      {
+        "text": "Layer0 v3 Migration Guide",
+        "as": "/guides/layer0_migration",
+        "href": "/guides/[...guide]"
+      }      
     ]
   },
   {

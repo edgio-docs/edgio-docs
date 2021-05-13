@@ -8,7 +8,7 @@ Here is an example of the [Next.js Commerce](https://nextjs.org/commerce) templa
 including image optimization, localization, and incremental static regeneration with stale-while-revalidate.
 
 [Try the Next.js Commerce Example Site](https://layer0-docs-layer0-nextjs-commerce-default.layer0.link/?button)
-[View the Code](https://github.com/{{ EXAMPLES_REPO }}/tree/main/nextjs-commerce?button)
+[View the Code](https://github.com/layer0-docs/layer0-nextjs-commerce-example?button)
 
 ## Connector
 
@@ -112,9 +112,9 @@ BIGCOMMERCE_STOREFRONT_API_URL="https://store-XXXX-XXXX.mybigcommerce.com/graphq
 BIGCOMMERCE_STORE_API_URL="https://api.bigcommerce.com/stores/XXXX"
 ```
 
-An [example `.env.local` file](https://github.com/{{ EXAMPLES_REPO }}/blob/main/nextjs-commerce/.env.local) is in the the {{ PRODUCT_NAME }} examples repo.
+An [example `.env.local` file](https://github.com/layer0-docs/layer0-nextjs-commerce-example/blob/master/.env.local) is in the the {{ PRODUCT_NAME }} examples repo.
 
-9. Deploy to {{ PRODUCT_NAME }}:
+1. Deploy to {{ PRODUCT_NAME }}:
 
 ```bash
 {{ CLI_NAME }} deploy

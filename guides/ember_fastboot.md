@@ -6,8 +6,8 @@ This guide shows you how to deploy [Ember Fastboot](https://ember-fastboot.com/)
 
 Here is an example of a Fastboot app running on {{ PRODUCT_NAME }}:
 
-[Try the Fastboot Example Site](https://layer0-docs-layer0-ember-fastboot-example-default.moovweb-edge.io?button)
-[View the Code](https://github.com/layer0-docs/layer0-examples/tree/main/layer0-ember-fastboot-example?button)
+[Try the Fastboot Example Site](https://layer0-docs-layer0-ember-fastboot-example-default.layer0.link/?button)
+[View the Code](https://github.com/layer0-docs/layer0-ember-fastboot-example?button)
 
 ## Connector
 

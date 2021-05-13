@@ -3,7 +3,7 @@
 ## Example Site
 
 [Try the VSF1 Example Site](https://layer0-docs-layer0-vue-storefront-example-default.layer0.link/?button)
-[View the Code](https://github.com/{{ EXAMPLES_REPO }}/tree/main/layer0-vue-storefront-example?button)
+[View the Code](https://github.com/layer0-docs/layer0-vue-storefront-example?button)
 
 ## 1. Install Vue Storefront
 

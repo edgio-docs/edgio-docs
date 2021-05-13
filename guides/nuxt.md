@@ -7,7 +7,7 @@ This guide shows you how to deploy a Nuxt.js application on {{ PRODUCT_NAME }}. 
 This Nuxt.js example app uses server-side rendering and prefetching to provide lightening-fast transitions between pages.
 
 [Try the Nuxt.js SSR Example Site](https://layer0-docs-layer0-nuxt-example-default.layer0.link/category/hats?button)
-[View the Code](https://github.com/{{ EXAMPLES_REPO }}/tree/main/layer0-nuxt-example?button)
+[View the Code](https://github.com/layer0-docs/layer0-nuxt-example?button)
 
 ## Connector
 
@@ -60,6 +60,7 @@ module.exports = {
 ```
 
 Options:
+
 - `layer0SourceMaps: true|false`: when true, the serverless build includes sourcemap files which make debugging easier when tailing the server logs in the Layer0 Developer Console. It also increases the serverless bundle size, which may push your deployments over the 50MB (compressed) limit.
 
 2. Run `{{ CLI_NAME }} init` to configure your project for {{ PRODUCT_NAME }}.

@@ -7,7 +7,7 @@ This guide shows you how to create a [connector](/guides/connectors) for your NX
 ## Example App
 
 [Try the Nx Example App](https://layer0-docs-layer0-nx-example-default.layer0.link/?button)
-[View the Code](https://github.com/{{ EXAMPLES_REPO }}/tree/main/layer0-next-example?button)
+[View the Code](https://github.com/layer0-docs/layer0-nx-example?button)
 
 ## 1. Install the {{ PRODUCT_NAME }} CLI and run {{ CLI_NAME }} init
 
@@ -23,7 +23,7 @@ npm i -g {{ PACKAGE_NAME }}/cli
 Since our Next.js app isn't located in the root of the project as the `{{ PACKAGE_NAME }}/next` connector expects, we'll need to define our own custom connector. To do so:
 
 1. Set `connector: './{{ PRODUCT_NAME_LOWER }}'` in `{{ CONFIG_FILE }}`
-2. Copy the [layer0 directory from the example](https://github.com/{{ EXAMPLES_REPO }}/tree/main/layer0-nx-example/layer0) into the root of your monorepo.
+2. Copy the [layer0 directory from the example](https://github.com/layer0-docs/layer0-nx-example/tree/master/layer0) into the root of your monorepo.
 
 ## 3. Update routes.js
 

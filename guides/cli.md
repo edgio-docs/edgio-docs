@@ -102,6 +102,21 @@ Builds and deploys your site on {{ PRODUCT_NAME }}.
 | `--include-sources`          | Includes all non-gitignored source files in the bundle uploaded to {{ PRODUCT_NAME }}. This can be helpful when debugging, especially when working with {{ PRODUCT_NAME }} support. You can limit the files that are uploaded using the [sources](/guides/{{ PRODUCT_NAME_LOWER }}\_config#section_sources) config in {{ CONFIG_FILE }}. |
 | `--disable-permanent-assets` | Set this to true to suppress errors like "Immutable file (...) content was changed" during deployment.                                                                                                                                                                                                                                   |
 
+#### Getting information about the deployment
+
+The `layer0 deploy` command writes a file called `.layer0/deployment-manifest.json`, which contains the following information:
+
+```js
+{
+  "number": /* the deployment number */,
+  "url": /* the permalink URL for the deployment */,
+  "environment": {
+    "url": /* The edge URL for the deployment */,
+    "name": /* The name of the environment that was deployed to */
+  }
+}
+```
+
 #### Example
 
 ```bash

@@ -8,6 +8,7 @@ Here is an example of a Fastboot app running on {{ PRODUCT_NAME }}:
 
 [Try the Fastboot Example Site](https://layer0-docs-layer0-ember-fastboot-example-default.layer0.link/?button)
 [View the Code](https://github.com/layer0-docs/layer0-ember-fastboot-example?button)
+[1-Click Deploy](https://app.layer0.co/deploy?repo=https://github.com/layer0-docs/layer0-ember-fastboot-example)
 
 ## Connector
 

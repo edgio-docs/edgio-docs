@@ -4,6 +4,7 @@ This guide shows you how to deploy [Spartacus](https://sap.github.io/spartacus-d
 
 [Try the Spartacus Example Site](https://layer0-docs-layer0-spartacus-example-default.layer0.link/?button)
 [View the Code](https://github.com/layer0-docs/layer0-spartacus-example?button)
+[1-Click Deploy](https://app.layer0.co/deploy?repo=https://github.com/layer0-docs/layer0-spartacus-example)
 
 ## Connector
 

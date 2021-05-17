@@ -4,6 +4,7 @@
 
 [Try the VSF1 Example Site](https://layer0-docs-layer0-vue-storefront-example-default.layer0.link/?button)
 [View the Code](https://github.com/layer0-docs/layer0-vue-storefront-example?button)
+[1-Click Deploy](https://app.layer0.co/deploy?repo=https://github.com/layer0-docs/layer0-vue-storefront-example)
 
 ## 1. Install Vue Storefront
 

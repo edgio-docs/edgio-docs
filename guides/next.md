@@ -8,6 +8,7 @@ This Next.js example app uses server-side rendering and prefetching to provide l
 
 [Try the Next.js SSR Example Site](https://layer0-docs-layer0-next-example-default.layer0.link/category/hats?button)
 [View the Code](https://github.com/layer0-docs/layer0-nextjs-example?button)
+[1-Click Deploy](https://app.layer0.co/deploy?repo=https://github.com/layer0-docs/layer0-nextjs-example)
 
 ## Next.js Commerce
 

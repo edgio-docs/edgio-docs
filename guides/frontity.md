@@ -8,6 +8,7 @@ Here is an example of the Frontity starter app running on {{ PRODUCT_NAME }}:
 
 [Try the Frontity Example Site](https://layer0-docs-layer0-frontity-example-default.layer0.link/?button)
 [View the Code](https://github.com/layer0-docs/layer0-frontity-example?button)
+[1-Click Deploy](https://app.layer0.co/deploy?repo=https://github.com/layer0-docs/layer0-frontity-example)
 
 ## Connector
 

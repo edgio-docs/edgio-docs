@@ -8,12 +8,15 @@ Here are a few examples of common static sites served by {{ PRODUCT_NAME }}.
 
 [Backbone.js Static Example](https://layer0-docs-layer0-static-backbonejs-example-default.layer0.link/?button)
 [View the Code](https://github.com/layer0-docs/static-backbonejs-example?button)
+[1-Click Deploy](https://app.layer0.co/deploy?repo=https://github.com/layer0-docs/static-backbonejs-example)
 
 [React Static Example](https://layer0-docs-layer0-static-react-example-default.layer0.link/?button)
 [View the Code](https://github.com/layer0-docs/static-react-example?button)
+[1-Click Deploy](https://app.layer0.co/deploy?repo=https://github.com/layer0-docs/static-react-example)
 
 [Vue.js Static Example](https://layer0-docs-layer0-static-vuejs-example-default.layer0.link/?button)
 [View the Code](https://github.com/layer0-docs/static-vuejs-example?button)
+[1-Click Deploy](https://app.layer0.co/deploy?repo=https://github.com/layer0-docs/static-vuejs-example)
 
 ## Install Node.js and npm
 

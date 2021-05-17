@@ -9,6 +9,7 @@ including image optimization, localization, and incremental static regeneration 
 
 [Try the Next.js Commerce Example Site](https://layer0-docs-layer0-nextjs-commerce-default.layer0.link/?button)
 [View the Code](https://github.com/layer0-docs/layer0-nextjs-commerce-example?button)
+[1-Click Deploy](https://app.layer0.co/deploy?repo=https://github.com/layer0-docs/layer0-nextjs-commerce-example)
 
 ## Connector
 

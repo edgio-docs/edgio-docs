@@ -10,7 +10,7 @@ This Sapper example app uses server-side rendering and prefetching to provide li
 
 [Try the Sapper SSR Example Site](https://layer0-docs-layer0-sapper-example-default.layer0.link/category/hats?button)
 [View the Code](https://github.com/layer0-docs/layer0-sapper-example?button)
-[1-Click Deploy](https://app.layer0.co/deploy?repo=https://github.com/layer0-docs/layer0-sapper-example)
+[Deploy to Layer0](https://app.layer0.co/deploy?repo=https%3A%2F%2Fgithub.com%2Flayer0-docs%2Flayer0-sapper-example)
 
 ## Connector
 

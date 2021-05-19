@@ -8,7 +8,7 @@ This guide shows you how to create a [connector](/guides/connectors) for your NX
 
 [Try the Nx Example App](https://layer0-docs-layer0-nx-example-default.layer0.link/?button)
 [View the Code](https://github.com/layer0-docs/layer0-nx-example?button)
-[1-Click Deploy](https://app.layer0.co/deploy?repo=https://github.com/layer0-docs/layer0-nx-example)
+[Deploy to Layer0](https://app.layer0.co/deploy?repo=https%3A%2F%2Fgithub.com%2Flayer0-docs%2Flayer0-nx-example)
 
 ## 1. Install the {{ PRODUCT_NAME }} CLI and run {{ CLI_NAME }} init
 

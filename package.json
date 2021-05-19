@@ -39,6 +39,7 @@
     "react-markdown": "^4.2.2",
     "react-resizable": "^1.10.1",
     "react-syntax-highlighter": "^12.2.1",
+    "semver": "^7.3.5",
     "url-loader": "^4.1.0"
   },
   "devDependencies": {

@@ -1,4 +1,5 @@
 import fetch from 'cross-fetch'
+import semverRSort from 'semver/functions/rsort'
 import { DOCS_PAGES_REPO_URL } from '../constants'
 
 export default async function getVersions() {
@@ -6,8 +7,5 @@ export default async function getVersions() {
   // GitHub
   const verRes = await fetch(`${DOCS_PAGES_REPO_URL}/versions.csv?nc=${new Date().getTime()}`)
 
-  return (await verRes.text())
-    .split(',')
-    .map(ver => ver.trim())
-    .reverse()
+  return semverRSort((await verRes.text()).split(',').map(ver => ver.trim()))
 }

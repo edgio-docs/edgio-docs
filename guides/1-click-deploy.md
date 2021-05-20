@@ -1,6 +1,6 @@
 # 1-Click Deploy to {{ PRODUCT_NAME }}
 
-This guide walks you through various 1-click deploy examples ready for {{ PRODUCT_NAME }} and how you can setup your site to deploy to {{ PRODUCT_NAME }} with a simple click.
+This guide walks you through various 1-Click Deploy examples ready for Layer0 and how you can setup your site to deploy to Layer0 with a simple click.
 
 ## What is 1-Click Deploy?
 
@@ -10,7 +10,7 @@ To deploy to Layer0 using this method, you will need to have an existing GitHub 
 
 ## Layer0 Examples
 
-Below are a list of example site you can deploy right now using our 1-click deploy feature:
+Below are a list of example site you can deploy right now using our 1-Click Deploy feature:
 
 [Angular SSR Example](https://layer0-docs-layer0-angular-example-default.layer0.link/category/hats?button) &#8594; [Deploy to Layer0](https://app.layer0.co/deploy?repo=https%3A%2F%2Fgithub.com%2Flayer0-docs%2Flayer0-angular-example&button)
 
@@ -42,6 +42,10 @@ Below are a list of example site you can deploy right now using our 1-click depl
 
 ## Deploying Your Template Repo to Layer0
 
+To configure your own project to be 1-Click Deploy ready, there's a few steps to take. First, your project needs to already be configured and initialized with Layer0. See our [Getting Started](getting_started) guide for initial setup.
+
+Next, create a basic `deploy` script. Typically, this can simply be `layer0 deploy`, but if your site requires additional processing outside of the standard Layer0 build/deploy process, you will need to modify this script to include the necessary steps to make your site production-ready.
+
 #### Add `deploy` script to `package.json`
 
 ```json
@@ -49,7 +53,9 @@ Below are a list of example site you can deploy right now using our 1-click depl
 "deploy": "layer0 deploy",
 ```
 
-#### Create `layer0.yml` workflow
+Lastly, create a GitHub workflow file called `layer0.yml`. This will be triggered automatically by Layer0 during the 1-Click Deploy process.
+
+#### Create `.github/workflows/layer0.yml` workflow
 
 ```yml
 name: Deploy to Layer0
@@ -71,3 +77,11 @@ jobs:
         env:
           LAYER0_DEPLOY_TOKEN: ${{secrets.LAYER0_DEPLOY_TOKEN}}
 ```
+
+`secrets.LAYER0_DEPLOY_TOKEN` is automatically injected into your cloned repository during the 1-Click Deploy process. Do not change the name of this variable or the deploy process will fail.
+
+Once everything is setup, you can test your 1-Click Deploy process by appending your GitHub repository full URL to `https://app.layer0.co/deploy?repo=`.
+
+For example, using our Next.js example located at `https://github.com/layer0-docs/layer0-nextjs-example` would become `https://app.layer0.co/deploy?repo=https%3A%2F%2Fgithub.com%2Flayer0-docs%2Flayer0-nextjs-example`
+
+Now, you can pass this link on to have your site be instantly cloned and deployed to Layer0!

@@ -86,6 +86,7 @@ export async function getStaticProps({ params }) {
   }
 
   console.log('guide is now', guide, version)
+
   try {
     const [navData, content] = await Promise.all([
       getGuides(version),
@@ -93,15 +94,19 @@ export async function getStaticProps({ params }) {
     ])
 
     return {
-      markdown: populatePlaceholders(content),
-      navData,
-      guide,
-      notFound: !content.trim().length,
+      props: {
+        markdown: populatePlaceholders(content),
+        navData,
+        guide,
+        notFound: !content.trim().length,
+      },
     }
   } catch (e) {
     console.log('exception', e)
     return {
-      notFound: true,
+      props: {
+        notFound: true,
+      },
     }
   }
 }

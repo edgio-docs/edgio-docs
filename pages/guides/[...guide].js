@@ -5,12 +5,13 @@ import Footer from '../../components/Footer'
 import Markdown from '../../components/Markdown'
 import Nav from '../../components/nav/Nav'
 import PageWrapper from '../../components/PageWrapper'
-import getBaseUrl from '../../components/utils/getBaseUrl'
 import ApiLink from '../../components/ApiLink'
 import { Typography } from '@material-ui/core'
 import { useTheme } from '@material-ui/styles'
 import { PRODUCT_NAME } from '../../constants'
 import { populatePlaceholders } from '../../components/utils/markdownUtils'
+import prerenderRequests from '../../layer0/prerenderRequests'
+import { getGuides, getGuideByName } from '../../components/getGuides'
 
 export default function Guide({ notFound, markdown, navData, guide }) {
   const theme = useTheme()
@@ -48,14 +49,32 @@ export default function Guide({ notFound, markdown, navData, guide }) {
   )
 }
 
-Guide.getInitialProps = async function({ req, query, version }) {
-  const baseUrl = getBaseUrl(req)
-  let { guide } = query
+export async function getStaticPaths(...args) {
+  console.log('guide.js getstaticpaths', args)
+  const requests = await prerenderRequests()
+
+  const ret = {
+    paths: requests
+      .filter(({ path }) => path.startsWith('/guides'))
+      .map(({ path }) => ({
+        params: { guide: [path.split('/')[2]] },
+      })),
+    fallback: false,
+  }
+
+  return ret
+}
+
+export async function getStaticProps({ params }) {
+  console.log('guides.js getstaticprops', params)
+  let { guide, version } = params
 
   // guide will come in as single string, or with a version prepended (e.g. v1.2.3/overview)
   if (typeof guide === 'string') {
     guide = decodeURIComponent(guide).split('/')
   }
+
+  console.log('guide is', guide, version)
 
   if (Array.isArray(guide)) {
     if (guide.length > 1) {
@@ -66,14 +85,11 @@ Guide.getInitialProps = async function({ req, query, version }) {
     }
   }
 
+  console.log('guide is now', guide, version)
   try {
     const [navData, content] = await Promise.all([
-      fetch(`${baseUrl}/api/guides?version=${version}`)
-        .then(res => res.json())
-        .catch(e => console.log('error', e)),
-      fetch(`${baseUrl}/api/guides/${guide}?version=${version}`)
-        .then(res => res.text())
-        .catch(e => console.log('error', e)),
+      getGuides(version),
+      getGuideByName(guide, version),
     ])
 
     return {
@@ -83,6 +99,7 @@ Guide.getInitialProps = async function({ req, query, version }) {
       notFound: !content.trim().length,
     }
   } catch (e) {
+    console.log('exception', e)
     return {
       notFound: true,
     }

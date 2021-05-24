@@ -14,6 +14,7 @@ import { Metrics } from '@layer0/rum'
 import { TocContext, TocPortal } from '../components/Toc'
 import Main from '../components/Main'
 import { useRouter } from 'next/router'
+import getVersions from '../components/getVersions'
 
 new Metrics({ token: 'cdc8d6df-476b-4e2d-ae1a-f8c6893a39a8' }).collect()
 
@@ -77,7 +78,7 @@ MyApp.getInitialProps = async function({ Component, ctx }) {
   let pageProps = {}
 
   const baseUrl = getBaseUrl(ctx.req)
-  const versions = await fetch(`${baseUrl}/api/versions`).then(res => res.json())
+  const versions = await getVersions()
   const splitPath = ctx.asPath.split('/')
   const currentVersion = (splitPath[2] || '').match(VERSION_REGEX) ? splitPath[2] : versions[0]
 

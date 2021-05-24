@@ -10,6 +10,7 @@ import Layer0Icon from '../components/icons/layer0-black.svg'
 import Icon from '../components/icons/Icon'
 import Markdown from '../components/Markdown'
 import { DOCS_PAGES_REPO_URL, PRODUCT_NAME } from '../constants'
+import { getGuides, getGuideByName } from '../components/getGuides'
 
 const useStyles = makeStyles(theme => ({
   hero: {
@@ -315,15 +316,8 @@ const Home = ({ navData, changeLog }) => {
 
 export default Home
 
-Home.getInitialProps = async ({ version, versions, req }) => {
-  const baseUrl = getBaseUrl(req)
-  const changelogURL = `${DOCS_PAGES_REPO_URL}/current/guides/changelog.md`
-  const navURL = `${baseUrl}/api/guides?version=${version === versions[0] ? '' : version}`
+export async function getStaticProps() {
+  const [navData, changeLog] = await Promise.all([getGuides(), getGuideByName('changelog')])
 
-  const [navData, changeLog] = await Promise.all([
-    fetch(navURL).then(res => res.json()),
-    fetch(changelogURL).then(res => res.text()),
-  ])
-
-  return { navData, changeLog }
+  return { props: { navData, changeLog } }
 }

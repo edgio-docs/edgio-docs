@@ -18,7 +18,7 @@ function requestsForItem(item, version) {
 
   if (item.as && item.as.startsWith('/guides')) {
     requests.push({ path: item.as })
-    requests.push({ path: `/api${item.as}?version=${version}` })
+    // requests.push({ path: `/api${item.as}?version=${version}` })
   }
 
   if (item.items) {

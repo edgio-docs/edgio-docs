@@ -78,13 +78,15 @@ import { CustomCacheKey } from '{{ PACKAGE_NAME }}/core/router'
 router.get('/some/path', ({ cache }) => {
   cache({
     // Other options...
-    key: new CustomCacheKey().excludeAllQueryParametersExcept('whitelisted-param-1', 'whitelisted-param-2'),
+    key: new CustomCacheKey().excludeAllQueryParametersExcept(
+      'whitelisted-param-1',
+      'whitelisted-param-2',
+    ),
   })
 })
 ```
 
 We recommend using this method over `excludeQueryParameters` as it's difficult to know all of the query parameters your application might receive and unexpected query parameters can lead to significantly lower cache hit rates.
-
 
 ```js
 import { CustomCacheKey } from '{{ PACKAGE_NAME }}/core/router'
@@ -352,7 +354,7 @@ You should only make assets permanently available if they have a hash of the con
 - /assets/main-989b11c4c35bc9b6e505.js
 - /assets/v99/main.js
 
-# Scheduled Cache Clearing using Github Actions
+# Scheduled Cache Clearing using GitHub Actions
 
 This guide walks you through clearing the cache on your site at a scheduled day and time.
 

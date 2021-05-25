@@ -1,10 +1,10 @@
 # Deploy to {{ PRODUCT_NAME }} Button
 
-This guide walks you through various deploy button examples and how you can setup a Github repository for your users to deploy to {{PRODUCT_NAME}} with a simple click.
+This guide walks you through various deploy button examples and how you can setup a GitHub repository for your users to deploy to {{PRODUCT_NAME}} with a simple click.
 
 ## What is the Deploy to {{ PRODUCT_NAME }} Button?
 
-The Deploy to {{PRODUCT_NAME}} button lets users easily clone and deploy an example project to {{ PRODUCT_NAME}}. Under the hood the platform will clone the example to the user's GitHub account and leverage Github Actions to deploy to it to their personal {{PRODUCT_NAME}} account.
+The Deploy to {{PRODUCT_NAME}} button lets users easily clone and deploy an example project to {{ PRODUCT_NAME}}. Under the hood the platform will clone the example to the user's GitHub account and leverage GitHub Actions to deploy to it to their personal {{PRODUCT_NAME}} account.
 
 To deploy using this method, users need to have an existing GitHub account.
 
@@ -40,14 +40,13 @@ Below are a list of example site you can deploy right now using our deploy butto
 
 [Vue.js Static Example](https://layer0-docs-layer0-static-vuejs-example-default.layer0.link/?button) &#8594; [Deploy to Layer0](https://app.layer0.co/deploy?repo=https%3A%2F%2Fgithub.com%2Flayer0-docs%2Fstatic-vuejs-example&button)
 
-## Creating your own deploy button 
+## Creating your own deploy button
 
-To configure your own project to be deploy button ready, there's a few steps to take. 
+To configure your own project to be deploy button ready, there's a few steps to take.
 
 1. First, your project needs to already be configured and initialized with {{PRODUCT_NAME}}. See our [Getting Started](getting_started) guide for initial setup.
 2. Next, create a basic `deploy` script as described below. Typically, this can simply be `layer0 deploy`, but if your site requires additional processing outside of the standard {{PRODUCT_NAME}} build/deploy process, you will need to modify this script to include the necessary steps to make your site production-ready.
-3. Create a github workflow as described below. This makes sure Github Actions is properly configured to build the project.
-
+3. Create a GitHub workflow as described below. This makes sure GitHub Actions is properly configured to build the project.
 
 #### Add `deploy` script to `package.json`
 
@@ -87,4 +86,4 @@ Once everything is setup, you can test your deploy button by appending your GitH
 
 For example, using our Next.js example located at `https://github.com/layer0-docs/layer0-nextjs-example` would become `https://app.layer0.co/deploy?repo=https%3A%2F%2Fgithub.com%2Flayer0-docs%2Flayer0-nextjs-example`
 
-Now, you can embed this link to let users instantly clone and deploy the project to to {{PRODUCT_NAME}}!
+Now, you can embed this link to let users instantly clone and deploy the project to {{PRODUCT_NAME}}!

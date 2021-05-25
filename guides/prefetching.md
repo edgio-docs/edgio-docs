@@ -418,3 +418,4 @@ router.get('/p/:productId', ({ cache }) => {
 ```
 
 3. Consider increasing `edge.maxAgeSeconds`. The shorter the cache time to live is, the more prefetches will fail.
+4. Set the `includeCacheMisses: true` prefetch install option. This should be used with caution and is not recommneded for use in Production becuase it  will significantly increase requests to your origin or API servers.

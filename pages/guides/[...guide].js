@@ -49,32 +49,21 @@ export default function Guide({ notFound, markdown, navData, guide }) {
   )
 }
 
-export async function getStaticPaths(...args) {
-  console.log('guide.js getstaticpaths', args)
+export async function getStaticPaths() {
   const requests = await prerenderRequests()
 
-  const ret = {
+  return {
     paths: requests
       .filter(({ path }) => path.startsWith('/guides'))
       .map(({ path }) => ({
         params: { guide: [path.split('/')[2]] },
       })),
-    fallback: false,
+    fallback: 'blocking',
   }
-
-  return ret
 }
 
 export async function getStaticProps({ params }) {
-  console.log('guides.js getstaticprops', params)
-  let { guide, version } = params
-
-  // guide will come in as single string, or with a version prepended (e.g. v1.2.3/overview)
-  if (typeof guide === 'string') {
-    guide = decodeURIComponent(guide).split('/')
-  }
-
-  console.log('guide is', guide, version)
+  let { guide, version /* undefined */ } = params
 
   if (Array.isArray(guide)) {
     if (guide.length > 1) {
@@ -84,8 +73,6 @@ export async function getStaticProps({ params }) {
       guide = guide[0]
     }
   }
-
-  console.log('guide is now', guide, version)
 
   try {
     const [navData, content] = await Promise.all([
@@ -102,7 +89,6 @@ export async function getStaticProps({ params }) {
       },
     }
   } catch (e) {
-    console.log('exception', e)
     return {
       props: {
         notFound: true,

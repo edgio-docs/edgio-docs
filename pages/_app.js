@@ -1,12 +1,10 @@
 import React, { useRef } from 'react'
-import fetch from 'isomorphic-fetch'
 import Header from '../components/Header'
 import theme from '../components/theme'
 import { CssBaseline, Hidden } from '@material-ui/core'
 import { MuiThemeProvider } from '@material-ui/core/styles'
 import useJssStyles from '../components/useJssStyles'
 import Head from 'next/head'
-import getBaseUrl from '../components/utils/getBaseUrl'
 import { VERSION_REGEX, VersionProvider } from '../components/versioning'
 import MenuProvider from '../components/MenuProvider'
 import useSegment from '../components/utils/useSegment'
@@ -77,7 +75,6 @@ export default function MyApp({ Component, pageProps, currentVersion, versions }
 MyApp.getInitialProps = async function({ Component, ctx }) {
   let pageProps = {}
 
-  const baseUrl = getBaseUrl(ctx.req)
   const versions = await getVersions()
   const splitPath = ctx.asPath.split('/')
   const currentVersion = (splitPath[2] || '').match(VERSION_REGEX) ? splitPath[2] : versions[0]

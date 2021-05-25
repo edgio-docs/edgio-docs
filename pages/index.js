@@ -1,15 +1,13 @@
-import fetch from 'isomorphic-fetch'
 import React from 'react'
 import Head from 'next/head'
 import Nav from '../components/nav/Nav'
 import PageWrapper from '../components/PageWrapper'
 import { Typography, makeStyles, Container, Grid, Paper, Divider } from '@material-ui/core'
-import getBaseUrl from '../components/utils/getBaseUrl'
 import Link from 'next/link'
 import Layer0Icon from '../components/icons/layer0-black.svg'
 import Icon from '../components/icons/Icon'
 import Markdown from '../components/Markdown'
-import { DOCS_PAGES_REPO_URL, PRODUCT_NAME } from '../constants'
+import { PRODUCT_NAME } from '../constants'
 import { getGuides, getGuideByName } from '../components/getGuides'
 
 const useStyles = makeStyles(theme => ({

@@ -82,9 +82,6 @@ module.exports = new Router()
     cache(staticCacheConfig)
     serveStatic('public/images/:path*')
   })
-  .match('/api/:path*', ({ cache }) => {
-    cache(apiCacheConfig)
-  })
   .match('/:path*', ({ cache }) => {
     cache(htmlCacheConfig)
   })

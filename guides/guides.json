@@ -18,8 +18,8 @@
         "href": "/guides/[...guide]"
       },
       {
-        "text": "1-Click Deploy",
-        "as": "/guides/1-click-deploy",
+        "text": "Deploy to Layer0 Button",
+        "as": "/guides/deploy-to-layer0",
         "href": "/guides/[...guide]"
       },
       {

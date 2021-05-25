@@ -87,6 +87,7 @@ export async function getStaticProps({ params }) {
         guide,
         notFound: !content.trim().length,
       },
+      revalidate: 10,
     }
   } catch (e) {
     return {

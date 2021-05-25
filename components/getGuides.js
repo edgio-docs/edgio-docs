@@ -21,7 +21,7 @@ export async function getGuideByName(guide, version = 'current') {
     const guideResp =
       // To allow correct previews in local/cloud/edge, read the versioned docs only in production,
       // otherwise just read it from this version itself.
-      process.env.LAYER0_ENVIRONMENT_NAME === 'production' || isChangelog
+      process.env.NODE_ENV === 'production' || isChangelog
         ? await fetch(`${DOCS_PAGES_REPO_URL}/${version}/guides/${guide}.md`).then(resp =>
             resp.ok ? resp.text() : '',
           )

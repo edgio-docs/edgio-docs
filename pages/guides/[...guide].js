@@ -53,9 +53,11 @@ export async function getStaticPaths() {
   const requests = await prerenderRequests()
 
   return {
-    paths: requests.map(({ path }) => ({
-      params: { guide: [path.split('/')[2]] },
-    })),
+    paths: requests
+      .filter(({ path }) => path.startsWith('/guides'))
+      .map(({ path }) => ({
+        params: { guide: [path.split('/')[2]] },
+      })),
     fallback: 'blocking',
   }
 }

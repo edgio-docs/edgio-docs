@@ -18,14 +18,15 @@ export async function getGuideByName(guide, version = 'current') {
   }
 
   try {
+    const sourceGuide = require(`../guides/${guide}.md`).default
     const guideResp =
       // To allow correct previews in local/cloud/edge, read the versioned docs only in production,
       // otherwise just read it from this version itself.
       process.env.NODE_ENV === 'production' || isChangelog
         ? await fetch(`${DOCS_PAGES_REPO_URL}/${version}/guides/${guide}.md`).then(resp =>
-            resp.ok ? resp.text() : '',
+            resp.ok ? resp.text() : sourceGuide,
           )
-        : require(`../guides/${guide}.md`).default
+        : sourceGuide
 
     return guideResp
   } catch (e) {

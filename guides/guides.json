@@ -18,7 +18,7 @@
         "href": "/guides/[...guide]"
       },
       {
-        "text": "\"Deploy to Layer0\" Button",
+        "text": "Deploy to Layer0 button",
         "as": "/guides/deploy-to-layer0",
         "href": "/guides/[...guide]"
       },

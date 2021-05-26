@@ -78,13 +78,15 @@ import { CustomCacheKey } from '{{ PACKAGE_NAME }}/core/router'
 router.get('/some/path', ({ cache }) => {
   cache({
     // Other options...
-    key: new CustomCacheKey().excludeAllQueryParametersExcept('whitelisted-param-1', 'whitelisted-param-2'),
+    key: new CustomCacheKey().excludeAllQueryParametersExcept(
+      'whitelisted-param-1',
+      'whitelisted-param-2',
+    ),
   })
 })
 ```
 
 We recommend using this method over `excludeQueryParameters` as it's difficult to know all of the query parameters your application might receive and unexpected query parameters can lead to significantly lower cache hit rates.
-
 
 ```js
 import { CustomCacheKey } from '{{ PACKAGE_NAME }}/core/router'
@@ -140,19 +142,7 @@ Customizing caching keys is a very powerful tool to make your site faster. But a
 
 ### Caching Responses for POST and other non-GET/HEAD requests
 
-By default, {{ PRODUCT_NAME }} only caches responses for `GET` and `HEAD` requests. It rarely makes sense to cache `POST`, `PUT`, `PATCH`, or `DELETE` requests. These methods, from the point of view of HTTP semantics, are supposed to change the state of the underlying entities. However, some APIs, like GraphQL APIs, are implemented exclusively through `POST` requests with queries being sent through request body. When such solutions are used it is often desirable to be able to cache responses to some of these requests (namely those do not mutate any state).
-
-To cache a response to a `POST`, a separate route must be created which, together with `cache` function, will enable this behavior:
-
-```js
-router.post('/api', ({ cache }) => {
-  cache({
-    // Caching options...
-  })
-})
-```
-
-This will automatically add request method and body to the caching key.
+{{ PRODUCT_NAME }} only supports caching responses for `GET` and `HEAD` requests. Some APIs, particularly those implemented with GraphQL, use `POST` requests by default, with queries being sent through request body. See [Prefetching - GraphQL](prefetching#section_graphql) for more information on caching GraphQL with {{ PRODUCT_NAME }}.
 
 #### Limitations
 

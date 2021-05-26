@@ -323,27 +323,34 @@ module.exports = {
 
 ```js
 const { Router, CustomCacheKey } = require('{{ PACKAGE_NAME }}/core/router')
+const { decompressRequest } = require('{{ PACKAGE_NAME }}/apollo')
 
-module.exports = new Router().get('/graphql', ({ cache, removeUpstreamResponseHeader, proxy }) => {
-  cache({
-    edge: {
-      maxAgeSeconds: 60 * 60 * 24,
-      staleWhileRevalidateSeconds: 60 * 60,
-    },
-    browser: {
-      maxAgeSeconds: 0,
-      serviceWorkerSeconds: 60 * 60 * 24,
-    },
+module.exports = new Router()
+  .post('/graphql', ({ proxy }) => {
+    proxy('graphql') // forward posts requests to apollo unaltered
   })
+  .get('/graphql', ({ cache, removeUpstreamResponseHeader, proxy }) => {
+    cache({
+      edge: {
+        maxAgeSeconds: 60 * 60 * 24,
+        staleWhileRevalidateSeconds: 60 * 60,
+      },
+      browser: {
+        maxAgeSeconds: 0,
+        serviceWorkerSeconds: 60 * 60 * 24,
+      },
+    })
 
-  // Some APIs, like Shopify, attempt to establish a session by setting a cookie. {{ PRODUCT_NAME }} will
-  // not cache responses with a set-cookie header, so we remove it before attempting to write
-  // the response to the cache
-  removeUpstreamResponseHeader('set-cookie')
+    // Some APIs, like Shopify, attempt to establish a session by setting a cookie. {{ PRODUCT_NAME }} will
+    // not cache responses with a set-cookie header, so we remove it before attempting to write
+    // the response to the cache
+    removeUpstreamResponseHeader('set-cookie')
 
-  // Proxy the request to the "graphql" backend end configured in {{ CONFIG_FILE }}
-  proxy('graphql', { path: '/graphql' })
-})
+    // Proxy the request to the "graphql" backend end configured in {{ CONFIG_FILE }}
+    // Here we use decompressRequest to decompress and extract the GraphQL query from the URL's query string
+    // and convert the GET to a POST when connecting to the GraphQL server.
+    proxy('graphql', { transformRequest: decompressRequest })
+  })
 ```
 
 5. Configure your Apollo client to use a custom link from {{ PACKAGE_NAME }}/apollo's `createHttpLink` function. For example:

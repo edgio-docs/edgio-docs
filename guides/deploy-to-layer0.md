@@ -1,6 +1,8 @@
 # Deploy to {{ PRODUCT_NAME }} Button
 
-This guide walks you through various deploy button examples and how you can setup a GitHub repository for your users to deploy to {{PRODUCT_NAME}} with a simple click.
+The Deploy to {{ PRODUCT_NAME }} button lets users deploy a project to the {{ PRODUCT_NAME }} platform with just a few clicks, no command-line needed! It's a quick and easy way for users to get a working instance of your framework or project template.
+
+This guide walks you through some deploy button examples and how you can setup a GitHub repository for your users to deploy to {{PRODUCT_NAME}} with a simple click.
 
 ## What is the Deploy to {{ PRODUCT_NAME }} Button?
 

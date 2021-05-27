@@ -37,6 +37,7 @@ export async function getGuideByName(guide, version = 'current') {
 
     return guideResp
   } catch (e) {
-    return 'Guide not found'
+    console.log('Guide not found', e)
+    return sourceGuide
   }
 }

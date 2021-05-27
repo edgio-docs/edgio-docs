@@ -4,10 +4,10 @@ This guide shows you how to create production, staging, and other environments.
 
 ## Overview
 
-In order to serve your site on a specific domain, you need to configure an environment. Most sites have at least three environments: default, staging, and production. Free accounts are limited to a single environment (default). Paid accounts allow you to create as many environments as you need. Each environment consists of:
+In order to serve your site on a specific domain, you need to configure an environment. Most sites have at least three environments: default, staging, and production. Free accounts are limited to three environments. Paid accounts allow you to create either five environments (on the Hyper plan) or as many environments as you need (on Enterprise plans). Each environment consists of:
 
 - **Domains** - one or more domains on which the site will be served. Domains cannot be set on the default environment. The domain name for the default environment is derived from your team and site's name.
-- **Environment Variables** - secrets and other values that are specific to the environment and are not appropriate to check into source control. For example, API keys are commonly stored as environment variables
+- **Environment Variables** - secrets and other values that are specific to the environment and are not appropriate to check into source control. For example, API keys are commonly stored as environment variables.
 - **Split Testing** - Split traffic between multiple router destinations or other environments to conduct A/B testing or implement blue/green deployments.
 - **Caching** - Each environment has a separate cache space that is automatically cleared each time you deploy. Use the _Caching_ tab to clear the cache by path or surrogate key.
 
@@ -56,11 +56,11 @@ Since environments contain important settings that affect how your site function
 
 ![edit](/images/environments/edit.png)
 
-As you make changes they are saved in the draft version. Once your ready to deploy your changes, click _Activate_.
+As you make changes they are saved in the draft version. Once you're ready to deploy your changes, click _Activate_.
 
 ![activate](/images/environments/activate.png)
 
-Doing so will redeploy the environment's active deployment updated with the new environment configuration.
+Doing so will redeploy the environment's active deployment, but updated with the new environment configuration.
 
 ## Environment Variables
 
@@ -90,18 +90,18 @@ shown in the example above.
 
 {{ PRODUCT_NAME }} automatically injects the following environment variables:
 
-- `NODE_ENV`: Set to `production` by default but you can override it through the console
+- `NODE_ENV`: Set to `production` by default, but you can override this through the console.
 - `{{ PRODUCT_NAME_UPPER }}_ENVIRONMENT_NAME`: The name of the environment (e.g. `default`, `production` and so on). This cannot be overriden by you.
 
 ### Accessing Environment Variables at Build Time
 
-As of {{ PRODUCT_NAME }} CLI version 2.19.0, when you deploy to an environment using a deploy token, for example by running `{{ CLI_NAME }} deploy my-team --environment=production --token=(my token)` option, all environment variables are pulled down from {{ PRODUCT_NAME }} Developer Console and applied to `process.env` so they can be accessed at build time. This allows you to store all of your build and runtime secrets in a single place, {{ PRODUCT_NAME }} Developer Console, rather than storing some in your CI system's secret manager.
+As of {{ PRODUCT_NAME }} CLI version 2.19.0, when you deploy to an environment using a deploy token, for example by running `{{ CLI_NAME }} deploy my-team --environment=production --token=(my token)` option, all environment variables are pulled down from the {{ PRODUCT_NAME }} Developer Console and applied to `process.env` so they can be accessed at build time. This allows you to store all of your build and runtime secrets in a single place, the {{ PRODUCT_NAME }} Developer Console, rather than storing some in your CI system's secret manager.
 
 ## dotenv
 
 To configure secrets during local development, we recommend using [dotenv](https://github.com/motdotla/dotenv).
 If you would like to reference environment variables read from `.env` in `{{ CONFIG_FILE }}`, add the following at the top
-of `{{ CONFIG_FILE }}`
+of `{{ CONFIG_FILE }}`:
 
 ```js
 // {{ CONFIG_FILE }}

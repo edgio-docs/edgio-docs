@@ -144,14 +144,6 @@ Customizing caching keys is a very powerful tool to make your site faster. But a
 
 {{ PRODUCT_NAME }} only supports caching responses for `GET` and `HEAD` requests. Some APIs, particularly those implemented with GraphQL, use `POST` requests by default, with queries being sent through request body. See [Prefetching - GraphQL](prefetching#section_graphql) for more information on caching GraphQL with {{ PRODUCT_NAME }}.
 
-#### Limitations
-
-There are a number of limitations in caching of `POST` and similar requests:
-
-1. If the request body is longer than 8,000 bytes, the caching will automatically be turned off.
-2. Since both mutating and non-mutating requests are executed on the same route, there is no way for {{ PRODUCT_NAME }} to distinguish between such operations and the responsibility for never caching the mutating requests lies with you as the developer. The way to avoid caching responses to mutating requests is to inject `private` into `cache-control` of your response (e.g. `res.setHeader('cache-control', 'private')`)
-3. Multiple requests are often need to "warm" the cache for non-`GET` requests.
-
 ### Caching Private Responses
 
 By default {{ PRODUCT_NAME }} never caches responses which have `private` clause in their `cache-control` header. Sometimes though it is desirable to cache such responses, intended for a single user of your site:

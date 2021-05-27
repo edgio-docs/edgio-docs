@@ -34,7 +34,7 @@ Users in the "Admin" role have full control over all team and site settings.
 
 ### Member
 
-Users in the "Member" can see all of the team's sites and settings, and deploy updates to existing sites via `{{ CLI_NAME }} deploy` but cannot change site or team settings.
+Users in the "Member" role can see all of the team's sites and settings, and deploy updates to existing sites via `{{ CLI_NAME }} deploy`, but cannot change site or team settings.
 
 When creating an environment, you can specify whether all members or only admins should be able to deploy to that environment.
 

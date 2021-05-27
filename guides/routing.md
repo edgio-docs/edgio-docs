@@ -6,7 +6,7 @@ Using the Router, you can:
 
 - Proxy requests to upstream sites
 - Send redirects from the network edge
-- Render responses on the server using Next.js, Nuxt.js, or Angular.
+- Render responses on the server using Next.js, Nuxt.js, or Angular
 - Alter request and response headers
 - Send synthetic responses
 - Configure multiple destinations for split testing

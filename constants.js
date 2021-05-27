@@ -26,6 +26,23 @@ const NODE_VERSION = '14.x'
 const STARTER_NAME = 'layer0-app'
 const EDGEJS_LABEL = 'EdgeJS'
 
+const EXAMPLES_REPOS = {
+  angular: 'https://github.com/layer0-docs/layer0-angular-example',
+  fastboot: 'https://github.com/layer0-docs/layer0-ember-fastboot-example',
+  frontity: 'https://github.com/layer0-docs/layer0-frontity-example',
+  next: 'https://github.com/layer0-docs/layer0-nextjs-example',
+  nextcommerce: 'https://github.com/layer0-docs/layer0-nextjs-commerce-example',
+  nuxt: 'https://github.com/layer0-docs/layer0-nuxt-example',
+  nx: 'https://github.com/layer0-docs/layer0-nx-example',
+  razzle: 'https://github.com/layer0-docs/layer0-razzle-example',
+  sapper: 'https://github.com/layer0-docs/layer0-sapper-example',
+  spartacus: 'https://github.com/layer0-docs/layer0-spartacus-example',
+  vsf: 'https://github.com/layer0-docs/layer0-vue-storefront-example',
+  'static-backbone': 'https://github.com/layer0-docs/static-backbonejs-example',
+  'static-react': 'https://github.com/layer0-docs/static-react-example',
+  'static-vue': 'https://github.com/layer0-docs/static-vuejs-example',
+}
+
 module.exports = {
   PRODUCT_NAME,
   PRODUCT_NAME_LOWER,
@@ -51,4 +68,5 @@ module.exports = {
   DOCS_REPO,
   EXAMPLES_REPO,
   EDGEJS_LABEL,
+  EXAMPLES_REPOS,
 }

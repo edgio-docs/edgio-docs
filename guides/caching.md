@@ -342,7 +342,7 @@ You should only make assets permanently available if they have a hash of the con
 - /assets/main-989b11c4c35bc9b6e505.js
 - /assets/v99/main.js
 
-# Scheduled Cache Clearing using Github Actions
+# Scheduled Cache Clearing using GitHub Actions
 
 This guide walks you through clearing the cache on your site at a scheduled day and time.
 

@@ -4,7 +4,7 @@ import makeStyles from '@material-ui/core/styles/makeStyles'
 import ReactIcon from './react.svg'
 import VueIcon from './vue.svg'
 import AngularIcon from './angular.svg'
-import SpartacusIcon from './spartacus-blue.png'
+import SpartacusIcon from './spartacus.svg'
 import NextIcon from './next.svg'
 import NextCommerceIcon from './next-commerce.svg'
 import NuxtIcon from './nuxt.svg'
@@ -12,7 +12,7 @@ import ReactStorefrontIcon from './react-storefront.svg'
 import SapperIcon from './sapper.svg'
 import GatsbyIcon from './gatsby.svg'
 import VSFIcon from './vsf.svg'
-import NXIcon from './nx.png'
+import NXIcon from './nx.svg'
 import FrontityIcon from './frontity.svg'
 import HTMLIcon from './html.svg'
 import Fastboot from './fastboot.svg'
@@ -22,9 +22,7 @@ export const icons = {
   react: ReactIcon,
   vue: VueIcon,
   angular: AngularIcon,
-  spartacus: ({ classes, ...others }) => (
-    <img className={classes && classes.png} {...others} src={SpartacusIcon} />
-  ),
+  spartacus: SpartacusIcon,
   nextjs: NextIcon,
   'next-commerce': NextCommerceIcon,
   nuxt: NuxtIcon,

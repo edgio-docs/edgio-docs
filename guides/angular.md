@@ -8,6 +8,7 @@ This Angular example app uses server-side rendering and prefetching to provide l
 
 [Try the Angular SSR Example Site](https://layer0-docs-layer0-angular-example-default.layer0.link/category/hats?button)
 [View the Code](https://github.com/layer0-docs/layer0-angular-example?button)
+[Deploy to Layer0](https://app.layer0.co/deploy?repo=https%3A%2F%2Fgithub.com%2Flayer0-docs%2Flayer0-angular-example)
 
 ## Connector
 

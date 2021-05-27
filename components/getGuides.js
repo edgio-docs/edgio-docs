@@ -18,7 +18,14 @@ export async function getGuideByName(guide, version = 'current') {
   }
 
   try {
-    const sourceGuide = require(`../guides/${guide}.md`).default
+    let sourceGuide = ''
+
+    try {
+      sourceGuide = require(`../guides/${guide}.md`).default
+    } catch (e) {
+      /* ignore */
+    }
+
     const guideResp =
       // To allow correct previews in local/cloud/edge, read the versioned docs only in production,
       // otherwise just read it from this version itself.
@@ -30,6 +37,7 @@ export async function getGuideByName(guide, version = 'current') {
 
     return guideResp
   } catch (e) {
-    return 'Guide not found'
+    console.log('Guide not found', e)
+    return sourceGuide
   }
 }

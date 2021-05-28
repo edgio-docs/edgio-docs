@@ -27,11 +27,11 @@ Finally, visit the site in your browser at http://127.0.0.1:3000.
 
 ## Architecture
 
-{{ PRODUCT_NAME }} docs is a simple Next.js application running on {{ PRODUCT_NAME }} (yes we [dogfood](https://en.wikipedia.org/wiki/Eating_your_own_dog_food)). The content is stored as pages called "guides". Each guide is a Markdown file located in the [guides folder](https://github.com/{{ DOCS_REPO }}/tree/master/guides) and the [guides.json](https://github.com/{{ DOCS_REPO }}/blob/master/guides/guides.json) controls the navigation menu for reaching the guides.
+{{ PRODUCT_NAME }} docs is a simple Next.js application running on {{ PRODUCT_NAME }} (yes we [dogfood](https://en.wikipedia.org/wiki/Eating_your_own_dog_food)). The content is stored as pages called "guides". Each guide is a Markdown file located in the [guides folder](https://github.com/{{ DOCS_REPO }}/tree/master/guides) and [guides.json](https://github.com/{{ DOCS_REPO }}/blob/master/guides/guides.json) controls the navigation menu for reaching the guides.
 
 ## How to contribute
 
-If you need to modify an existing guide, you can use the `guides.json` file to locate the corresponding Markdown file to edit. If your contribution needs its own guide, you'll need to create a new Markdown file in the `guides` folder and add a reference to it to the `guides.json` file.
+If you need to modify an existing guide, you can use the `guides.json` file to locate the corresponding Markdown file to edit. If your contribution needs its own guide, you'll need to create a new Markdown file in the `guides` folder and add a reference to it in `guides.json`.
 
 We recommend the following process for submitting a change:
 

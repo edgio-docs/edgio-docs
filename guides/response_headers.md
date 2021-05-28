@@ -29,17 +29,17 @@ All times are in milliseconds.
 | Name | Description                                                                                                                                                                           |
 | ---- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | ot   | The total time spent processing the request                                                                                                                                           |
-| or   | The time spent matching routes at the edge pop                                                                                                                                        |
-| of   | The time spent fetching the response at the edge pop, either from the shield pop or from the serverless backend or origin                                                             |
-| oc   | The caching status for the edge pop                                                                                                                                                   |
-| ow   | The free memory in bytes on the edge pop after processing the request                                                                                                                 |
-| oq   | The time spent at the edge pop in fetch queue during the request coalescing                                                                                                           |
-| st   | The time spent processing the request at the shield pop                                                                                                                               |
-| sr   | The time spent matching routes at the shield pop                                                                                                                                      |
+| or   | The time spent matching routes at the edge POP                                                                                                                                        |
+| of   | The time spent fetching the response at the edge POP, either from the shield POP or from the serverless backend or origin                                                             |
+| oc   | The caching status for the edge POP                                                                                                                                                   |
+| ow   | The free memory in bytes on the edge POP after processing the request                                                                                                                 |
+| oq   | The time spent at the edge POP in fetch queue during the request coalescing                                                                                                           |
+| st   | The time spent processing the request at the shield POP                                                                                                                               |
+| sr   | The time spent matching routes at the shield POP                                                                                                                                      |
 | sf   | The time spent waiting for a response from the serverless backend or origin, including request queueing                                                                               |
-| sc   | The caching status for the shield pop                                                                                                                                                 |
-| sw   | The free memory in bytes on the shield pop after processing the request                                                                                                               |
-| sq   | The time spent at the shield pop in fetch queue during the request coalescing                                                                                                         |
+| sc   | The caching status for the shield POP                                                                                                                                                 |
+| sw   | The free memory in bytes on the shield POP after processing the request                                                                                                               |
+| sq   | The time spent at the shield POP in fetch queue during the request coalescing                                                                                                         |
 | bf   | The time spent waiting for a response from the serverless backend or origin, including request queueing                                                                               |
 | pc   | The number of times the request was scheduled to execute. If it's present it is normally `1`, if not your account is under significant pressure and you should consider upgrading it. |
 | pf   | The time spent waiting for a response from the JavaScript worker                                                                                                                      |

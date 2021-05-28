@@ -1,14 +1,14 @@
 # Caching
 
-This guide introduces the caching capabilities of {{ PRODUCT_NAME }}
+This guide introduces the caching capabilities of {{ PRODUCT_NAME }}. While most CDNs only cache content on your asset URLs, {{ PRODUCT_NAME }} caches content on your page URLs using {{ EDGEJS_LABEL }}, allowing you to control caching within your application code.
 
 ## Environments and Caching
 
-To cache responses at edge you need to create an [environment](environments). Each environment provides a separate edge cache. Older deployments that are no longer the latest for an environment will not have edge caching.
+To begin caching responses, you need to create an [environment](environments). Each environment provides a separate edge cache for the most recent deployment. Older deployments will no longer have edge caching, but can always be [redeployed](deploying#section_branches_and_deployments) to re-enable caching.
 
 ## L1 and L2 Caches
 
-Each edge point-of-presence (POP) has its own L1 cache. If a request cannot be fulfilled from the L1 cache, {{ PRODUCT_NAME }} will attempt to fulfill the request from a single global L2 cache POP in order to maximize your effective cache hit ratio. There is very little difference in time to first byte for responses served from the L1 vs L2 cache. In either case the response is served nearly instantly (typically 25-100ms). Concurrent requests for the same URL on different POPs that result in a cache miss will be coalesced at the L2 cache. This means that only one request at a time for each cacheable URL will reach your origin servers.
+Each edge point-of-presence (POP) has its own L1 cache. If a request cannot be fulfilled from the L1 cache, {{ PRODUCT_NAME }} will attempt to fulfill the request from a single global L2 cache POP in order to maximize your effective cache hit ratio. There is very little difference in time to first byte (TTFB) for responses served from the L1 vs L2 cache. In either case, the response is served nearly instantly (typically 25-100ms). Concurrent requests for the same URL on different POPs that result in a cache miss will be coalesced at the L2 cache. This means that only one request at a time will be sent to your origin servers for each cacheable URL.
 
 ## Caching a Response
 
@@ -25,7 +25,7 @@ router.get('/some/path', ({ cache }) => {
       maxAgeSeconds: 0,
 
       // Sends a non-standard header `x-sw-cache-control: n` that you can use to control caching your service worker.
-      // Note that service workers do not understand this header by default so would you need to add code to your service
+      // Note that service workers do not understand this header by default, so you would need to add code to your service
       // worker to support it
       serviceWorkerSeconds: 60 * 60,
     },
@@ -52,10 +52,10 @@ The `cache` function can be used in the same route as other functions such as `s
 
 ### Cache Key
 
-{{ PRODUCT_NAME }} provides you with a default cache key out of the box. It is a broad cache key that ensures general correctness but that can be further customized by you. The default cache key consists of:
+{{ PRODUCT_NAME }} provides you with a default cache key out of the box. It is a broad cache key that ensures general correctness but can be further customized by you. The default cache key consists of:
 
-- Value of request `host` request header
-- Complete request URL, including the query params (this can be customized)
+- Value of `host` request header
+- Complete request URL, including the query parameters (this can be customized)
 - Value of `accept-encoding` request header
 - Name of the destination when [split testing](./split_testing) is in effect
 
@@ -64,7 +64,7 @@ When [POST and other non-GET/HEAD](#section_caching_responses_for_post_and_other
 - Request HTTP method
 - Request body
 
-To ensure that your site is resilient to [cache poisoning attacks](security#section_cache_poisoning) every request header that influences the rendering of the content must be included in your custom cache key.
+To ensure that your site is resilient to [cache poisoning attacks](security#section_cache_poisoning), every request header that influences the rendering of the content must be included in your custom cache key.
 
 #### Customizing the Cache Key
 
@@ -99,7 +99,7 @@ router.get('/some/path', ({ cache }) => {
 })
 ```
 
-This will remove the given query parameters from the URL before it is used in cache. On cache miss the transformed URL will be passed to your code with the original query strings available to your code in `{{ HEADER_PREFIX }}-original-qs` request header.
+This will remove the given query parameters from the URL before it is used in cache. On cache miss, the transformed URL will be passed to your code with the original query strings available to your code in `{{ HEADER_PREFIX }}-original-qs` request header.
 
 - Including other request parameters like cookies:
 
@@ -114,7 +114,7 @@ router.get('/some/path', ({ cache }) => {
 })
 ```
 
-This will take the values of `language` and `currency` cookies from `cookie` request header and use them in the cache key. This would allow you to cache different content, depending on the language and currency in this example, for the same URL.
+This will take the values of `language` and `currency` cookies from the `cookie` request header and use them in the cache key. This would allow you to cache different content for the same URL by creating different caches dependent on the `language` and `currency` values.
 
 - Splitting the cache based on device type:
 
@@ -138,7 +138,7 @@ This will take the value of the `{{ HEADER_PREFIX }}-device` request header and 
 
 This allows you to cache different content, depending on the type of device in this example, for the same URL.
 
-Customizing caching keys is a very powerful tool to make your site faster. But at the same time it is easy to apply it too broadly leading to loss of performance due to lower cache hit ratio. The key to correctly using customization is to apply it judiciously and narrowly, for specific routes.
+Customizing caching keys is a very powerful tool to make your site faster. At the same time, it is easy to apply it too broadly causing a loss of performance due to lower cache hit ratio. The key to correctly using cache customization is to apply it judiciously and narrowly for specific routes.
 
 ### Caching Responses for POST and other non-GET/HEAD requests
 
@@ -146,7 +146,7 @@ Customizing caching keys is a very powerful tool to make your site faster. But a
 
 ### Caching Private Responses
 
-By default {{ PRODUCT_NAME }} never caches responses which have `private` clause in their `cache-control` header. Sometimes though it is desirable to cache such responses, intended for a single user of your site:
+By default, {{ PRODUCT_NAME }} never caches responses which have the `private` clause in their `cache-control` header. Sometimes though, it's desirable to cache such responses, intended for a single user of your site:
 
 ```js
 router.get('/some/path', ({ cache }) => {
@@ -160,18 +160,18 @@ router.get('/some/path', ({ cache }) => {
 })
 ```
 
-Note that this feature cannot be safely used with caching of `POST` and similar requests: if the way to signal that something must not be cached is through `private` but then you force caching of `private` responses, all responses will be cached.
+Note that this feature cannot be safely used with caching of `POST` and similar requests. If your signal that something must not be cached is through `private` but then you force caching of `private` responses, **all responses will be cached**.
 
 ## Preventing a response from being cached
 
 By default, {{ PRODUCT_NAME }} will cache responses that satisfy all of the following conditions:
 
-1. The response must correspond to a `GET` or `HEAD` request. To override this see [POST and other non-GET/HEAD](#section_caching_responses_for_post_and_other_non_get_head_requests) section.
-2. The response status must be 1xx, 2xx or 3xx. You cannot override this.
-3. The response must not not have any `set-cookie` headers. You cannot override this but you can use `removeUpstreamResponseHeader('set-cookie')` to remove set-cookie headers.
-4. The response must have a valid `cached-control` header that includes a positive `max-age` or `s-maxage`and does not include a `private` clause. You can override this by using [router caching](#section_caching_a_response) and [forcing private responses](#section_caching_private_responses)
+1. The response must correspond to a `GET` or `HEAD` request. To override this, see [POST and other non-GET/HEAD](#section_caching_responses_for_post_and_other_non_get_head_requests) section.
+2. The response status must have a status code of 1xx, 2xx or 3xx. You cannot override this.
+3. The response must not not have any `set-cookie` headers. You cannot override this, but you can use `removeUpstreamResponseHeader('set-cookie')` to remove `set-cookie` headers.
+4. The response must have a valid `cache-control` header that includes a positive `max-age` or `s-maxage` and does not include a `private` clause. You can override this by using [router caching](#section_caching_a_response) and [forcing private responses](#section_caching_private_responses).
 
-Sometimes, however, you don't want to cache anything, even if the upstream backend returns a `max-age`. Other times you might want to [improve the performance](/guides/performance#section_turn_off_caching_when_not_needed) of pages that can never be cached at edge. In those cases you can turn off caching:
+However, sometimes you may not want to cache anything, even if the upstream backend returns a `max-age`. Other times, you might want to [improve the performance](/guides/performance#section_turn_off_caching_when_not_needed) of pages that can never be cached at edge. In those cases, you can turn off caching:
 
 ```js
 router.get('/some/uncacheable/path', ({ cache, proxy }) => {
@@ -196,7 +196,7 @@ You will see one of the following values for these components:
 
 - `pass` - The response was not cached (aka a cache "miss")
 - `cached` - The response was added to the cache, but was not served from the cache (aka a cache "miss" that may be a "hit" for the next request)
-- `hit` - The response was served from the cache.
+- `hit` - The response was served from the cache
 
 ## Why is my response not being cached?
 
@@ -212,7 +212,7 @@ The response was not cached because the edge caching was explicitly [disabled](#
 
 ### no-max-age
 
-The response was not cached because no `cache-control` response header with a non-zero `max-age` or `s-maxage` value was found. To cache the response, call `cache` in your route handler with `edge.maxAgeSeconds` set. For example:
+The response was not cached because no was no `cache-control` response header with a non-zero `max-age` or `s-maxage` value. To cache the response, call `cache` in your route handler with `edge.maxAgeSeconds` set. For example:
 
 ```js
 new Router().get('/', ({ cache }) => {
@@ -260,11 +260,11 @@ The response was not cached because it contained a `set-cookie` header. To cache
 
 ### deployment
 
-The response was not cached because it was received during the brief time (less than 1 minute) that a new version of the app was being propagated through the global network of POPs. There is no need to take any action because as soon as the new version is completely propagated this status goes away.
+The response was not cached because it was received during the brief time (less than 1 minute) that a new version of the app was being propagated through the global network of POPs. There is no need to take any action because this status goes away as soon as the new version is completely propagated.
 
 ### debug
 
-The response was not cached because the request was issued with `{{ HEADER_PREFIX }}-debug` header set to `1`. In debug mode {{ PRODUCT_NAME }} will respond with more data useful for troubleshooting. However, the increased header footprint may lead to header overflow and other failures, so this should be used only during actual troubleshooting.
+The response was not cached because the request was issued with `{{ HEADER_PREFIX }}-debug` header set to `1`. In debug mode, {{ PRODUCT_NAME }} will respond with more data that is useful for troubleshooting. However, the increased header footprint may lead to header overflow and other failures, so this should be used only during actual troubleshooting.
 
 ### pass
 
@@ -281,11 +281,11 @@ By default, caching is turned off during development. This is done to ensure tha
 The cache will automatically be cleared when you make changes to your router. A few aspects of caching are not yet supported during local development:
 
 - `edge.staleWhileRevalidateSeconds` is not yet implemented. Only `edge.maxAgeSeconds` is used to set the cache time to live.
-- `edge.key` is not supported. Cache keys are always based soley on url, method, `accept-encoding` and `host` headers, and body.
+- `edge.key` is not supported. Cache keys are always based solely on url, method, the `accept-encoding` and `host` headers, and body.
 
 ## Clearing the Cache
 
-The cache is automatically cleared when you deploy to an environment. You can also clear the cache using the environment's Caching tab in {{ PRODUCT_NAME }} console.
+The cache is automatically cleared when you deploy to an environment. You can also clear the cache using the environment's Caching tab in the {{ PRODUCT_NAME }} console.
 
 ![deployments](/images/caching/purge.png)
 
@@ -299,11 +299,11 @@ The cache can also be [cleared via the REST API](/guides/rest_api#section_clear_
 
 ## Static prerendering after clearing the cache
 
-If you have [static prerendering] enabled, the cache will automatically be repopulated when you clear all entries from the cache (when you select "Purge all entries" in {{ PRODUCT_NAME }} Developer Console or run `{{ CLI_NAME }} cache-clear` without providing `--path` or `--surrogate-key`). You can view the prerendering progress by clicking on the active deployment for the environment that was cleared.
+If you have [static prerendering] enabled, the cache will automatically be repopulated when you clear all entries from the cache (such as when you select "Purge all entries" in the {{ PRODUCT_NAME }} Developer Console or run `{{ CLI_NAME }} cache-clear` without providing `--path` or `--surrogate-key`). You can view the prerendering progress by clicking on the active deployment for the environment that was cleared.
 
 ## Preserving the cache when deploying a new version of your site
 
-By default, {{ PRODUCT_NAME }} clears your environment edge cache on every time you deploy a new version of your site.
+By default, {{ PRODUCT_NAME }} clears your environment edge cache every time you deploy a new version of your site.
 
 This behavior can be turned off by editing your [Environment](environment) config and enabling the following option:
 
@@ -384,7 +384,7 @@ jobs:
     steps:
       - name: Extract branch name
         shell: bash
-        run: echo "::set-env name=BRANCH_NAME::$(echo ${GITHUB_REF#refs/heads/} | sed 's/\//_/g')"
+        run: echo "BRANCH_NAME=$(echo ${GITHUB_REF#refs/heads/} | sed 's/\//_/g')" >> $GITHUB_ENV
       - uses: actions/checkout@v1
       - uses: actions/setup-node@v1
         with:

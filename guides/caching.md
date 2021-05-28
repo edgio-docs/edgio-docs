@@ -299,11 +299,11 @@ The cache can also be [cleared via the REST API](/guides/rest_api#section_clear_
 
 ## Static prerendering after clearing the cache
 
-If you have [static prerendering] enabled, the cache will automatically be repopulated when you clear all entries from the cache (when you select "Purge all entries" in {{ PRODUCT_NAME }} Developer Console or run `{{ CLI_NAME }} cache-clear` without providing `--path` or `--surrogate-key`). You can view the prerendering progress by clicking on the active deployment for the environment that was cleared.
+If you have [static prerendering] enabled, the cache will automatically be repopulated when you clear all entries from the cache (such as when you select "Purge all entries" in the {{ PRODUCT_NAME }} Developer Console or run `{{ CLI_NAME }} cache-clear` without providing `--path` or `--surrogate-key`). You can view the prerendering progress by clicking on the active deployment for the environment that was cleared.
 
 ## Preserving the cache when deploying a new version of your site
 
-By default, {{ PRODUCT_NAME }} clears your environment edge cache on every time you deploy a new version of your site.
+By default, {{ PRODUCT_NAME }} clears your environment edge cache every time you deploy a new version of your site.
 
 This behavior can be turned off by editing your [Environment](environment) config and enabling the following option:
 

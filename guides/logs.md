@@ -14,11 +14,17 @@ Each time you deploy to {{ PRODUCT_NAME }} using the `{{ CLI_NAME }} deploy` com
 
 ## Server Logs
 
-The output of `console.log`, `console.warn`, `console.error`, etc... calls within your code can be viewed in real time from the "Server" tab on any deployment:
+All messages logged using `console.log`, `console.warn`, `console.error`, etc... within your application can be viewed in real time from the "Server" tab on any deployment:
 
 ![server](/images/logs/server.png)
 
 Here you can limit the output to only those statements coming from your IP address, or filter by regex. This can use useful when trying to sift through noisy logs on high-traffic sites.
+
+By enabling HTTP request logging in your environment, you can also see the headers and body of every request and response served by your application via the Layer0 serverless cloud. You can also see each upstream API request made by your application. To enable HTTP request logging, navigate to the environment in the Layer0 Developer Console, select the configuration tab, click "Edit" and enable "HTTP request logging" in the Debugging section. 
+
+![http request logging](/images/logs/http-request-loggin.png)
+
+Finally, activate the new environment configuration and tail the server logs on any deployment to see detailed information about every request served by that deployment.
 
 ## Access Logs
 

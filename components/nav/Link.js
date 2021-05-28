@@ -49,13 +49,12 @@ const useStyles = makeStyles(theme => ({
 
 export default function Link({ className, icon, text, as, href, ...props }) {
   const classes = useStyles()
-  const { createUrl, currentVersion } = useVersioning()
+  const { createUrl } = useVersioning()
   const url = createUrl({ text, as, href })
-  const apiUrl = `/api${as}?version=${currentVersion}`
   const { asPath } = useRouter()
 
   let link = (
-    <Prefetch url={apiUrl}>
+    <Prefetch url={url}>
       <a href={url} className={clsx(className, classes.link)} target={href ? '_self' : '_blank'}>
         {icon && <Icon classes={{ root: classes.icon }} type={icon} />}
         <Typography component="span" variant="body1" className={classes.linkText}>

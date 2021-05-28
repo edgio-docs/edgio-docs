@@ -29,18 +29,18 @@ Note that this configuration will allow you to set breakpoints in both your {{ P
 
 ## Cloud
 
-Your main tool in debugging {{ PRODUCT_NAME }} appplications that have been deployed are two sources of logs:
+{{ PRODUCT_NAME }} provides two types of logs to you debug issues with your application:
 
 - [Server logs](/guides/logs#section_server_logs)
-- [Access logs](/guides/logs#section_access_logs)
 
-Server logs will capture the output of your serverless in real time while access logs have complete traffic that is being served by your site including all the traffic that never reaches your serverless (e.g. cache hits, static assets, requests routed to custom backends, edge redirects, and so on).
+By viewing the server logs in the {{ PRODUCT_NAME }} Developer Console, you can see all of the messages logged by your application using console.log, console.warn, etc...  By enabling HTTP request logging in your environment, you can also see the headers and body of every request and response served by your application via the Layer0 serverless cloud. You can also see each upstream API request made by your application. 
 
-To leverage server logs to debug routing issues going to custom backends, you can temporarily move the proxying from the edge to serverless:
+You can also use the server logs to debug routing issues going to custom backends by temporarily moving the proxying from the edge to serverless:
 
 ```js
   .get('/p/:productId', ({ cache }) => {
     proxy('origin', {
+      // The presence of transformRequest and transformResponse ensure that proxying is done in serverless, not at the edge.
       transformRequest: (req) => {
         console.log('Request ID', req.headers['x-request-id'])
         // Log request properties that you want to troubleshoot.
@@ -53,6 +53,11 @@ To leverage server logs to debug routing issues going to custom backends, you ca
   })
 ```
 
-Once you have this deployed, you can observe the logs in your [server logs](/guides/logs#section_server_logs).
+Once you have this deployed, you can observe the output in your [server logs](/guides/logs#section_server_logs).
 
-Note that, whenever possible, we strongly recommend to always proxy the traffic from the edge, as that is more performant and avoids serverless surcharges. The solution above should only be used as a temporary measure while debugging issues.
+Note that whenever possible, we strongly recommend to always proxy the traffic from the edge, as that is more performant and avoids serverless surcharges. The solution above should only be used as a temporary measure while debugging issues.
+
+- [Access logs](/guides/logs#section_access_logs)
+
+Access logs contain information about all requests, even those that never reach your application code (e.g. cache hits, static assets, requests routed to custom backends, edge redirects, and so on).
+

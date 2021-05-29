@@ -287,7 +287,7 @@ export default Home
 export async function getStaticProps() {
   const [navData, changeLog] = await Promise.all([getGuides(), getGuideByName('changelog')])
 
-  return { props: { navData, changeLog } }
+  return { props: { navData, changeLog }, revalidate: 10 }
 }
 
 const FrameworkItem = ({ framework, text, guide, icon }) => {

@@ -15,6 +15,7 @@ import { getGuides, getGuideByName } from '../../components/getGuides'
 
 export default function Guide({ notFound, markdown, navData, guide }) {
   const theme = useTheme()
+  const skipToC = guide === 'changelog'
 
   let pageTitle
 
@@ -42,7 +43,7 @@ export default function Guide({ notFound, markdown, navData, guide }) {
           Page not found.
         </Typography>
       ) : (
-        <Markdown source={markdown} toc />
+        <Markdown source={markdown} toc={!skipToC} />
       )}
       <Footer navData={navData} guide={guide} />
     </PageWrapper>

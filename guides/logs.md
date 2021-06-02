@@ -22,7 +22,7 @@ Here you can limit the output to only those statements coming from your IP addre
 
 By enabling HTTP request logging in your environment, you can also see the headers and body of every request and response served by your application via the Layer0 serverless cloud. You can also see each upstream API request made by your application. To enable HTTP request logging, navigate to the environment in the Layer0 Developer Console, select the configuration tab, click "Edit" and enable "HTTP request logging" in the Debugging section. 
 
-![http request logging](/images/logs/http-request-loggin.png)
+![http request logging](/images/logs/http-request-logging.png)
 
 Finally, activate the new environment configuration and tail the server logs on any deployment to see detailed information about every request served by that deployment.
 

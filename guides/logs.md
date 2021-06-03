@@ -20,7 +20,9 @@ All messages logged using `console.log`, `console.warn`, `console.error`, etc...
 
 Here you can limit the output to only those statements coming from your IP address, or filter by regex. This can use useful when trying to sift through noisy logs on high-traffic sites.
 
-By enabling HTTP request logging in your environment, you can also see the headers and body of every request and response served by your application via the Layer0 serverless cloud. You can also see each upstream API request made by your application. To enable HTTP request logging, navigate to the environment in the Layer0 Developer Console, select the configuration tab, click "Edit" and enable "HTTP request logging" in the Debugging section. 
+### HTTP Request Logging
+
+By enabling HTTP request logging in your environment, you can also see the headers and body of every request and response served by your application via the Layer0 serverless cloud. You can also see each upstream API request made by your application. To enable HTTP request logging, navigate to the environment in the Layer0 Developer Console, select the configuration tab, click "Edit" and enable "HTTP request logging" in the Debugging section.
 
 ![http request logging](/images/logs/http-request-logging.png)
 
@@ -197,7 +199,7 @@ Response {{ HEADER_PREFIX }}-status header with different critical path status c
 
 ### pre
 
-If {{ COOKIE_PREFIX }}_prefetch parameter was specified value of 1, otherwise not present.
+If {{ COOKIE_PREFIX }}\_prefetch parameter was specified value of 1, otherwise not present.
 
 ### ttl
 

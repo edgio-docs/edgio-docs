@@ -313,6 +313,46 @@ export default new Router()
 
 If you set the `fallback` property in the [generate](https://nuxtjs.org/docs/2.x/configuration-glossary/configuration-generate/#fallback) config to `true`, Nuxt.js will generate a 404.html page that will be served whenever the URL does not match a static page. {{ PRODUCT_NAME }} will send a 404 http status for these URLs. Note that if you set the fallback property to a string, Nuxt will generate a fallback page with that name, and {{ PRODUCT_NAME }} will serve it with a 200 http status when the URL does not match a statically generated page.
 
+## Nitro
+
+The Nuxt team provides a renderer called [Nitro](https://www.npmjs.com/package/@nuxt/nitro) which optimizes your application for serverless deployment and greatly minimizes the size of your server application bundle. If you're running into the size limitation for serverless bundles (50MB), you might try adding Nitro to your app. As of June 2021 Nitro is still not production ready, so use at your own risk.
+
+Layer0 provides a connector specifically for Nuxt apps that use nitro called `@layer0/nuxt-nitro`.
+
+To add Nitro to your app, make the following changes:
+
+1. Install nitro and the connector as dev dependencies:
+
+```
+npm install -D @nuxt/nitro @layer0/nuxt-nitro`
+```
+
+2. Ensure `buildModules` in nuxt.config.js contains the following:
+
+```js
+  buildModules: [
+    '@nuxt/nitro/compat',
+    '@layer0/nuxt-nitro/module', // If you have previously added @layer0/nuxt/module you can remove it.
+    // ...others...
+  ],
+```
+
+3. Add the following to nuxt.config.js:
+
+```js
+  publicRuntimeConfig: {
+    nitroVersion: require('@nuxt/nitro/package.json').version,
+  },
+```
+
+4. If your nuxt.config.js has a `target` property, remove it.
+
+5. If you've previously added `@layer0/nuxt` as a dependency, you can remove it.
+
+### Additional Nitro Resources
+
+- [Nitro Demo Application from the Nuxt Team](https://github.com/nuxt/nitro-demo)
+
 ## Running Locally
 
 To test your app locally, run:

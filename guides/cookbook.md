@@ -315,7 +315,7 @@ router.get('/hello/:name', ({ cache, setResponseHeader, compute, send }) => {
 
 ## Redirecting
 
-To redirect the browser to a different URL use the [`redirect`](/docs/api/core/classes/_router_responsewriter_.responsewriter.html#redirect) API:
+To redirect the browser to a different URL, use the [`redirect`](/docs/api/core/classes/_router_responsewriter_.responsewriter.html#redirect) API:
 
 ```js
 router.get('/p/:productId', ({ redirect }) => {
@@ -388,3 +388,23 @@ router.get(
   },
 )
 ```
+
+### Blocking Search Engine Crawlers
+
+If you need to block all traffic from search engines for specific environments (such as your default or staging environment), the easiest way is to include the `x-robots-tag` header with the same directives you would otherwise set in a `meta` tag. This example :
+
+```js
+router.get(
+  {
+    headers: {
+      // Regex to catch multiple hostnames
+      host: /layer0.link|layer0-perma.link|staging.example.com/,
+    },
+  },
+  ({ setResponseHeader }) => {
+    setResponseHeader('x-robots-tag', 'noindex')
+  }
+)
+```
+
+For other directives, [Google Developer Central](https://developers.google.com/search/docs/advanced/robots/robots_meta_tag#directives) includes a list of available options.

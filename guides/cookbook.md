@@ -391,7 +391,7 @@ router.get(
 
 ### Blocking Search Engine Crawlers
 
-If you need to block all traffic from search engines for specific environments (such as your default or staging environment), the easiest way is to include the `x-robots-tag` header with the same directives you would otherwise set in a `meta` tag. This example :
+If you need to block all search engine bot traffic to specific environments (such as your default or staging environment), the easiest way is to include the `x-robots-tag` header with the same directives you would otherwise set in a `meta` tag. This example blocks traffic to {{ PRODUCT_NAME }} edge links, permalinks, and to a staging website based on the `host` header of the request:
 
 ```js
 router.get(

@@ -407,4 +407,4 @@ router.get(
 )
 ```
 
-For other directives, [Google Developer Central](https://developers.google.com/search/docs/advanced/robots/robots_meta_tag#directives) includes a list of available options.
+For other available directives, see [Google Developer Central](https://developers.google.com/search/docs/advanced/robots/robots_meta_tag#directives) and [Bing Webmaster Tools](https://www.bing.com/webmasters/help/which-robots-metatags-does-bing-support-5198d240) for lists of supported options.

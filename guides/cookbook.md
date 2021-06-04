@@ -20,8 +20,8 @@ The first argument corresponds to the name of a backend in `{{ CONFIG_FILE }}`. 
 module.exports = {
   backends: {
     origin: {
-      domainOrIp: 'my-shop.myshopify.com',
-      hostHeader: 'my-shop.myshopify.com',
+      domainOrIp: 'my-shop.example.com',
+      hostHeader: 'my-shop.example.com',
     },
   },
 }
@@ -345,7 +345,7 @@ This example redirects all traffic on domains other than www.mydomain.com to www
 
 ```js
 router.match({ headers: { host: /^(?!www\.).*$/ } }, ({ redirect }) => {
-  redirect('https://www.mysite.com${url}')
+  redirect('https://www.example.com${url}')
 })
 ```
 

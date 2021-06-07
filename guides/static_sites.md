@@ -8,15 +8,15 @@ Here are a few examples of common static sites served by {{ PRODUCT_NAME }}.
 
 [Backbone.js Static Example](https://layer0-docs-layer0-static-backbonejs-example-default.layer0.link/?button)
 [View the Code](https://github.com/layer0-docs/static-backbonejs-example?button)
-[Deploy to Layer0](https://app.layer0.co/deploy?repo=https%3A%2F%2Fgithub.com%2Flayer0-docs%2Fstatic-backbonejs-example)
+[Deploy to Layer0](https://app.layer0.co/deploy?button&deploy&repo=https%3A%2F%2Fgithub.com%2Flayer0-docs%2Fstatic-backbonejs-example)
 
 [React Static Example](https://layer0-docs-layer0-static-react-example-default.layer0.link/?button)
 [View the Code](https://github.com/layer0-docs/static-react-example?button)
-[Deploy to Layer0](https://app.layer0.co/deploy?repo=https%3A%2F%2Fgithub.com%2Flayer0-docs%2Fstatic-react-example)
+[Deploy to Layer0](https://app.layer0.co/deploy?button&deploy&repo=https%3A%2F%2Fgithub.com%2Flayer0-docs%2Fstatic-react-example)
 
 [Vue.js Static Example](https://layer0-docs-layer0-static-vuejs-example-default.layer0.link/?button)
 [View the Code](https://github.com/layer0-docs/static-vuejs-example?button)
-[Deploy to Layer0](https://app.layer0.co/deploy?repo=https%3A%2F%2Fgithub.com%2Flayer0-docs%2Fstatic-vuejs-example)
+[Deploy to Layer0](https://app.layer0.co/deploy?button&deploy&repo=https%3A%2F%2Fgithub.com%2Flayer0-docs%2Fstatic-vuejs-example)
 
 ## Install Node.js and npm
 

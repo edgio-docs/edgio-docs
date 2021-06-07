@@ -60,3 +60,41 @@ Note that whenever possible, we strongly recommend to always proxy the traffic f
 - [Access logs](/guides/logs#section_access_logs)
 
 Access logs contain information about all requests, even those that never reach your application code (e.g. cache hits, static assets, requests routed to custom backends, edge redirects, and so on).
+
+## Source Maps
+
+Layer0 automatically produces a source map for your router file so that all runtime errors that occur during routing will have a stacktrace that references the original source file. If your application build produces source maps for the server bundle, these will also be used when reporting errors. Layer0 provides a convenient way to enable source maps when using Next and Nuxt:
+
+### Next.js
+
+Set `layer0SourceMaps: true` in your `next.config.js`:
+
+```js
+// next.config.js
+
+const { withLayer0, withServiceWorker } = require('@layer0/next/config')
+
+module.exports = withLayer0(
+  withServiceWorker({
+    // Output sourcemaps so that stacktraces have original source filenames and line numbers when tailing
+    // the logs in the Layer0 developer console.
+    layer0SourceMaps: true,
+  }),
+)
+```
+
+### Nuxt.js
+
+Set `layer0SourceMaps: true` in the config for `@layer0/nuxt/module` in `buildModules` in `nuxt.config.js`:
+
+```js
+// nuxt.config.js
+
+module.exports = {
+  // ...
+  buildModules: [['@layer0/nuxt/module', { layer0SourceMaps: true }]],
+  // ...
+}
+```
+
+Note: The reason that application level source maps are not enabled by default is that they can be quite large and cause the serverless bundle to be larger than the 50MB limit.

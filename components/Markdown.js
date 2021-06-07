@@ -149,7 +149,7 @@ function Link({ href, children }) {
   href = href.replace('__version__', currentVersion)
 
   let el,
-    Icon,
+    Icon = <></>,
     style = 'contained',
     button = false
 

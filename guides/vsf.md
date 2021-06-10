@@ -4,6 +4,13 @@ Follow these steps to deploy a Vue Storefront app on {{ PRODUCT_NAME }}. As of n
 
 For adding {{ PRODUCT_NAME }} to Vue Storefront 1 app follow this [guide](/guides/vsf1).
 
+## Example
+
+Here's an example Vue Storefront 2 app running on Layer0:
+
+[Try the Vue Storefront Example](https://layer0-docs-layer0-vue-storefront-commercetools-example-default.layer0.link?button)
+[View the Code](https://github.com/layer0-docs/layer0-vue-storefront-commercetools-example?button)
+
 ## Connector
 
 This framework has a connector developed for {{ PRODUCT_NAME }}. See [Connectors](connectors) for more information.

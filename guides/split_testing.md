@@ -60,6 +60,8 @@ module.exports = new Router()
 
 Once you have made these changes, deploy your site using `{{ CLI_NAME }} deploy --environment={my production environment name}`, then [configure the rules for splitting traffic between using the {{ PRODUCT_NAME }} Developer Console](#section_configuring_the_split_test).
 
+Note: after deploying a router with multiple destinations, all requests will be sent to the first destination until you have configured the split test in the Layer0 Developer Console.
+
 ## Configuring the split test
 
 Navigate to the environment in which you want to configure the split test and click "Edit":

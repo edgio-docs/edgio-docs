@@ -375,7 +375,7 @@ BREAKING CHANGE: No more changes should happen to Compilation.assets after seali
 (node:95339) [DEP_WEBPACK_CHUNK_HAS_ENTRY_MODULE] DeprecationWarning: Chunk.hasEntryModule: Use new ChunkGraph API
 ```
 
-### Using next-i18next
+## Using next-i18next
 
 The [next-i18next](https://github.com/isaachinman/next-i18next) package is a popular solution for adding localization to Next.js apps. It has some issues when running in serverless deployments, but you can work around these:
 

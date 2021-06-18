@@ -367,7 +367,6 @@ export const CACHE_PAGES = {
   browser: {
     maxAgeSeconds: TIME_4H,
     serviceWorkerSeconds: TIME_4H,
-    spa: true,
   },
 }
 /**
@@ -382,7 +381,6 @@ export const CACHE_ASSETS = {
   browser: {
     maxAgeSeconds: TIME_1D,
     serviceWorkerSeconds: TIME_1D,
-    spa: true,
   },
 }
 ```

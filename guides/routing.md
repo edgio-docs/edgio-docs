@@ -269,3 +269,15 @@ module.exports = new Router()
     proxy('origin')
   })
 ```
+
+## Environment Edge Redirects
+
+In addition to sending redirects at the edge within the router configuration, this can also be configured at the environment level within the Layer0 Developer Console.
+
+Under _&lt;Your Environment&gt; &#8594; Configuration_, click _Edit_ to draft a new configuration. Scroll down to the _Redirects_ section:
+![redirects](/images/environments/redirects.png)
+
+Click _Add A Redirect_ to configure the path or host you wish to redirect to:
+![add redirect](/images/environments/add_redirects.png)
+
+Note: you will need to activate and redeploy your site for this change to take effect.

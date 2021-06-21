@@ -9,20 +9,19 @@ jobs:
     steps:
       - uses: actions/checkout@v1
       - run: npm ci
-      - uses: actions/checkout@v2
-        with:
-          repository: layer0-docs/layer0-docs-pages
-          token: ${{ secrets.MOOVWEB_GITHUB_TOKEN }}
-          path: pages-repo
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
           aws-access-key-id: ${{ secrets.PROD_AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.PROD_AWS_SECRET_ACCESS_KEY }}
           aws-region: us-east-1
-      - name: Push guides to GitHub Pages repo
+      - name: Pull docs from S3 bucket
         run: |
-          cd pages-repo
+          mkdir s3
+          aws s3 sync s3://layer0-docs ./s3  --delete
+      - name: Sync guides to latest version path
+        run: |
+          cd s3
           VERSION=$(tail -n 1 versions.csv)
           cp -r ../guides ${VERSION}
           cp -r ../guides current
@@ -30,8 +29,7 @@ jobs:
           cp ../guides/guides.json current/guides.json
       - name: Deploy static site to S3 bucket
         run: |
-          cd pages-repo
-          aws s3 rm s3://layer0-docs --recursive
+          cd s3
           aws s3 sync . s3://layer0-docs --delete
       # - name: Crawl Docs
       #   run: |

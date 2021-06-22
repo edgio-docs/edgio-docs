@@ -1,4 +1,4 @@
-name: Publish to docs-pages
+name: Publish docs to S3
 on:
   push:
     branches:
@@ -9,24 +9,28 @@ jobs:
     steps:
       - uses: actions/checkout@v1
       - run: npm ci
-      - uses: actions/checkout@v2
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v1
         with:
-          repository: layer0-docs/layer0-docs-pages
-          token: ${{ secrets.MOOVWEB_GITHUB_TOKEN }}
-          path: pages-repo
-      - name: Push guides to GitHub Pages repo
+          aws-access-key-id: ${{ secrets.PROD_AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.PROD_AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-east-1
+      - name: Pull docs from S3 bucket
         run: |
-          cd pages-repo
+          mkdir s3
+          aws s3 sync s3://layer0-docs ./s3  --delete
+      - name: Sync guides to latest version path
+        run: |
+          cd s3
           VERSION=$(tail -n 1 versions.csv)
           cp -r ../guides ${VERSION}
           cp -r ../guides current
           cp ../guides/guides.json ${VERSION}/guides.json
           cp ../guides/guides.json current/guides.json
-          git add -A
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
-          git commit -am "Update guides for version ${VERSION}"
-          git push -u origin
+      - name: Deploy docs to S3 bucket
+        run: |
+          cd s3
+          aws s3 sync . s3://layer0-docs --delete
       - name: Crawl Docs
         run: |
           docker run \

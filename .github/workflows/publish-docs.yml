@@ -1,4 +1,4 @@
-name: Publish to docs-pages
+name: Publish docs to S3
 on:
   push:
     branches:

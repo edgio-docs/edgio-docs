@@ -2,6 +2,8 @@
 
 This guide shows you how to serve generic static sites on {{ PRODUCT_NAME }}.
 
+![video](https://www.youtube.com/watch?v=X2QdmVUC4Xw)
+
 ## Example Static Sites
 
 Here are a few examples of common static sites served by {{ PRODUCT_NAME }}.

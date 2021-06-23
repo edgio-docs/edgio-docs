@@ -10,7 +10,7 @@
 
 [Live demo of {{ PRODUCT_NAME }} Devtools running on a React Storefront site](https://demo.reactstorefront.io/__layer0__/devtools/enable)
 
-![video](https://www.youtube.com/watch?v=4AYQAvkc0UY)
+![video](https://www.youtube.com/watch?v=xXWSGIfe9sI)
 
 ## Installation
 

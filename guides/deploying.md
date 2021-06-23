@@ -64,7 +64,7 @@ You should always store your deploy token using your CI environment's secrets ma
 
 ## GitHub Actions
 
-![video](https://www.youtube.com/watch?v=F8uN03ps1As)
+![video](https://www.youtube.com/watch?v=Ms1TmY0oDYc)
 
 Here is an example GitHub action that deploys your site to {{ PRODUCT_NAME }}:
 

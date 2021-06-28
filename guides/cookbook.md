@@ -6,7 +6,7 @@ This guide gives examples of common routing patterns using {{ PRODUCT_NAME }}.
 
 ### Same Path
 
-To forward a request to the same path to one of the backends listed in `{{ CONFIG_FILE }}` use the [`proxy`](/docs/api/core/classes/_router_responsewriter_.responsewriter.html#proxy) method of `ResponseWriter`:
+To forward a request to the same path on one of the backends listed in `{{ CONFIG_FILE }}`, use the [`proxy`](/docs/api/core/classes/_router_responsewriter_.responsewriter.html#proxy) method of `ResponseWriter`:
 
 ```js
 router.get('/some-path', ({ proxy }) => {
@@ -20,8 +20,8 @@ The first argument corresponds to the name of a backend in `{{ CONFIG_FILE }}`. 
 module.exports = {
   backends: {
     origin: {
-      domainOrIp: 'my-shop.myshopify.com',
-      hostHeader: 'my-shop.myshopify.com',
+      domainOrIp: 'my-shop.example.com',
+      hostHeader: 'my-shop.example.com',
     },
   },
 }
@@ -29,7 +29,7 @@ module.exports = {
 
 ### Different Path
 
-To forward the request to a different path use the [`path`](/docs/api/core/interfaces/_router_responsewriter_.proxyoptions.html#path) option of the `ProxyOptions` interface:
+To forward the request to a different path, use the [`path`](/docs/api/core/interfaces/_router_responsewriter_.proxyoptions.html#path) option of the `ProxyOptions` interface:
 
 ```js
 router.get('/products/:productId', ({ proxy }) => {
@@ -107,7 +107,7 @@ router.get(
 
 You can also write catch-all routes that will alter all responses. One example where this is useful is injecting [Content Security Policy](security#section_content_security_policy__csp_) headers.
 
-Another example is adding response headers for debugging, which is often useful if [{{ PRODUCT_NAME }} is behind another CDN](split_testing#section_third_party_cdns) or if you are troubleshooting your router rules. For example, you could respond with the value of request `x-forwarded-for` into `x-debug-xff` to see the value that {{{{ PRODUCT_NAME }} is receiving from the CDN:
+Another example is adding response headers for debugging, which is often useful if [{{ PRODUCT_NAME }} is behind another CDN](split_testing#section_third_party_cdns) or if you are troubleshooting your router rules. For example, you could respond with the value of request `x-forwarded-for` into `x-debug-xff` to see the value that {{ PRODUCT_NAME }} is receiving from the CDN:
 
 ```js
 router.match(
@@ -315,7 +315,7 @@ router.get('/hello/:name', ({ cache, setResponseHeader, compute, send }) => {
 
 ## Redirecting
 
-To redirect the browser to a different URL use the [`redirect`](/docs/api/core/classes/_router_responsewriter_.responsewriter.html#redirect) API:
+To redirect the browser to a different URL, use the [`redirect`](/docs/api/core/classes/_router_responsewriter_.responsewriter.html#redirect) API:
 
 ```js
 router.get('/p/:productId', ({ redirect }) => {
@@ -345,7 +345,7 @@ This example redirects all traffic on domains other than www.mydomain.com to www
 
 ```js
 router.match({ headers: { host: /^(?!www\.).*$/ } }, ({ redirect }) => {
-  redirect('https://www.mysite.com${url}')
+  redirect('https://www.example.com${url}')
 })
 ```
 
@@ -388,3 +388,23 @@ router.get(
   },
 )
 ```
+
+### Blocking Search Engine Crawlers
+
+If you need to block all search engine bot traffic to specific environments (such as your default or staging environment), the easiest way is to include the `x-robots-tag` header with the same directives you would otherwise set in a `meta` tag. This example blocks traffic to {{ PRODUCT_NAME }} edge links, permalinks, and to a staging website based on the `host` header of the request:
+
+```js
+router.get(
+  {
+    headers: {
+      // Regex to catch multiple hostnames
+      host: /layer0.link|layer0-perma.link|staging.example.com/,
+    },
+  },
+  ({ setResponseHeader }) => {
+    setResponseHeader('x-robots-tag', 'noindex')
+  }
+)
+```
+
+For other available directives, see [Google Developer Central](https://developers.google.com/search/docs/advanced/robots/robots_meta_tag#directives) and [Bing Webmaster Tools](https://www.bing.com/webmasters/help/which-robots-metatags-does-bing-support-5198d240) for lists of supported options.

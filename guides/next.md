@@ -8,7 +8,7 @@ This Next.js example app uses server-side rendering and prefetching to provide l
 
 [Try the Next.js SSR Example Site](https://layer0-docs-layer0-next-example-default.layer0.link/category/hats?button)
 [View the Code](https://github.com/layer0-docs/layer0-nextjs-example?button)
-[Deploy to Layer0](https://app.layer0.co/deploy?repo=https%253A%252F%252Fgithub.com%252Flayer0-docs%252Flayer0-nextjs-example)
+[Deploy to Layer0](https://app.layer0.co/deploy?button&deploy&repo=https%253A%252F%252Fgithub.com%252Flayer0-docs%252Flayer0-nextjs-example)
 
 ## Next.js Commerce
 
@@ -374,3 +374,48 @@ BREAKING CHANGE: No more changes should happen to Compilation.assets after seali
 > Optimizing serverless functions (Webpack 5)
 (node:95339) [DEP_WEBPACK_CHUNK_HAS_ENTRY_MODULE] DeprecationWarning: Chunk.hasEntryModule: Use new ChunkGraph API
 ```
+
+## Using next-i18next
+
+The [next-i18next](https://github.com/isaachinman/next-i18next) package is a popular solution for adding localization to Next.js apps. It has some issues when running in serverless deployments, but you can work around these:
+
+First, you need to _not_ use the default name for the `next-i18next.config.js` file. We recommend renaming it `i18next.config.js`. When you use the default name, next-i18next will try to load the config when the serverless function starts and since it is not bundled with the app, it will fail.
+
+Then, you need to explicitly provide the config to `appWithTranslation` and `serverSideTranslations`.
+
+So in your `pages/_app.js`:
+
+```js
+export default appWithTranslation(MyApp, require('../i18next.config')) // <~ need to explicitly pass the config here
+```
+
+and in your pages:
+
+```js
+export async function getStaticProps({ locale }) {
+  return {
+    props: {
+      ...(await serverSideTranslations(locale, ['common', 'footer'], require('../i18next.config'))), // <~ need to explicitly pass the config here.
+      // Will be passed to the page component as props
+    },
+  }
+}
+```
+
+Make sure you also import the config correctly with the new name into your next.config.js:
+
+```js
+const { withLayer0, withServiceWorker } = require('@layer0/next/config')
+const { i18n } = require('./i18next.config')
+
+module.exports = withLayer0(
+  withServiceWorker({
+    // Output sourcemaps so that stacktraces have original source filenames and line numbers when tailing
+    // the logs in the Layer0 developer console.
+    layer0SourceMaps: true,
+    i18n,
+  }),
+)
+```
+
+A working example app can be found [here](https://github.com/layer0-docs/layer0-next-i18n-example).

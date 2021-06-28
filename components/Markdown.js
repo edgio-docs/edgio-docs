@@ -8,6 +8,7 @@ import NextLink from 'next/link'
 import useVersioning from './versioning'
 import doHighlight from './highlight'
 import GithubIcon from './icons/github.svg'
+import Layer0Icon from './icons/layer0-logo.svg'
 import clsx from 'clsx'
 import Toc from './Toc'
 import idForHeading from './utils/idForHeading'
@@ -147,28 +148,44 @@ function Link({ href, children }) {
   const classes = useStyles()
   href = href.replace('__version__', currentVersion)
 
-  let el
+  let el,
+    Icon = <></>,
+    style = 'contained',
+    button = false
 
   const uri = new URL(href, 'http://dummy.org')
-  const code = href.match(/github/)
-  let button = false
+  const isGitHubLink = href.match(/github/)
+  const isLayer0DeployLink = uri.searchParams.has('deploy')
+
+  if (isGitHubLink) {
+    Icon = (
+      <GithubIcon
+        width={20}
+        fill="white"
+        style={{ marginLeft: -4, marginRight: 8, color: 'white' }}
+      />
+    )
+    style = 'outlined'
+  }
+
+  if (isLayer0DeployLink) {
+    Icon = <Layer0Icon width={25} style={{ marginLeft: -4, marginRight: 8 }} />
+    style = 'outlined'
+  }
 
   if (uri.searchParams.has('button')) {
+    // clean up params used for markdown formatting and set a clean href
+    const params = new URLSearchParams(uri.searchParams)
+    params.delete('button')
+    params.delete('deploy')
+    params.forEach((value, key) => params.set(key, decodeURIComponent(value)))
+    uri.search = params.toString()
+    href = uri.href
     button = true
-    href = href.replace(/(\?|&)button/, '')
+
     el = (
-      <Button
-        variant={code ? 'outlined' : 'contained'}
-        color="secondary"
-        className={classes.button}
-      >
-        {code && (
-          <GithubIcon
-            width={20}
-            fill="white"
-            style={{ marginLeft: -4, marginRight: 8, color: 'white' }}
-          />
-        )}
+      <Button variant={style} color="secondary" className={classes.button}>
+        {Icon}
         {children}
       </Button>
     )
@@ -224,9 +241,18 @@ function Image({ src, ...others }) {
     return Video(src)
   }
 
-  const url = new URL(src, 'https://dummy.org')
+  const dummyOrigin = 'https://dummy.org'
+  const url = new URL(src, dummyOrigin)
   const width = url.searchParams.get('width')
   const height = url.searchParams.get('height')
+  url.searchParams.append('_cb', process.env.__BUILD_ID__)
+
+  // relative src was passed in
+  if (url.origin === dummyOrigin) {
+    src = `${url.pathname}${url.search}`
+  } else {
+    src = url.toString()
+  }
 
   const style = {
     width: width && parseInt(width),

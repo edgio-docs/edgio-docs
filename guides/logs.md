@@ -22,6 +22,8 @@ Here you can limit the output to only those statements coming from your IP addre
 
 ### Deep Request Inspection
 
+![video](https://www.youtube.com/watch?v=M0KPpX89nO4)
+
 By enabling Deep Request Inspection in your environment, you can also see the headers and body of every request and response served by your application via the Layer0 serverless cloud. You can also see each upstream API request made by your application. To enable Deep Request Inspection, navigate to the environment in the Layer0 Developer Console, select the configuration tab, click "Edit" and enable "Deep Request Inspection" in the Debugging section.
 
 ![Deep Request Inspection](/images/logs/http-request-logging.png)

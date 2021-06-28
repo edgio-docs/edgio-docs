@@ -241,9 +241,18 @@ function Image({ src, ...others }) {
     return Video(src)
   }
 
-  const url = new URL(src, 'https://dummy.org')
+  const dummyOrigin = 'https://dummy.org'
+  const url = new URL(src, dummyOrigin)
   const width = url.searchParams.get('width')
   const height = url.searchParams.get('height')
+  url.searchParams.append('_cb', process.env.__BUILD_ID__)
+
+  // relative src was passed in
+  if (url.origin === dummyOrigin) {
+    src = `${url.pathname}${url.search}`
+  } else {
+    src = url.toString()
+  }
 
   const style = {
     width: width && parseInt(width),

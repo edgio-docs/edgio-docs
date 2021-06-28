@@ -2,6 +2,8 @@
 
 This guide shows you how to track your website's [Core Web Vitals](https://web.dev/vitals/) on {{ PRODUCT_NAME }} in real time using real user monitoring (RUM).
 
+![video](https://youtu.be/XNsCMaHt3DI)
+
 ## What are Core Web Vitals?
 
 As of [May 2021](https://developers.google.com/search/blog/2020/11/timing-for-page-experience), Google will begin ranking websites based on a

@@ -20,7 +20,7 @@ const FORUM_URL = `https://forum.${DOMAIN}`
 const STATUS_URL = `https://status.${DOMAIN}`
 const HELP_URL = `https://help.${DOMAIN}`
 const DOCS_URL = `https://${DOCS_DOMAIN}`
-const DOCS_PAGES_REPO_URL = `https://${DOCS_PAGES_DOMAIN}/layer0-docs-pages`
+const DOCS_PAGES_REPO_URL = 'https://layer0-docs.s3.amazonaws.com'
 
 const NODE_VERSION = '14.x'
 const STARTER_NAME = 'layer0-app'

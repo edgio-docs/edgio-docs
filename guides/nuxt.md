@@ -50,13 +50,15 @@ Nuxt's create module will ask you a series of questions to configure your app. M
 
 To prepare your Nuxt.js application for {{ PRODUCT_NAME }}:
 
-1. In `nuxt.config.js`, add "{{ PACKAGE_NAME }}/nuxt/module" to `buildModules`:
+1. In the existing `nuxt.config.js` configuration, add "{{ PACKAGE_NAME }}/nuxt/module" to `buildModules`:
 
 ```js
 // nuxt.config.js
 
 module.exports = {
+  ...
   buildModules: [['{{ PACKAGE_NAME }}/nuxt/module', { layer0SourceMaps: true }]],
+  ...
 }
 ```
 

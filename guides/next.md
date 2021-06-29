@@ -4,7 +4,7 @@ This guide shows you how to deploy a Next.js application on {{ PRODUCT_NAME }}.
 
 ## Example SSR Site
 
-This Next.js example app uses server-side rendering and prefetching to provide lightening-fast transitions between pages.
+This Next.js example app uses server-side rendering and prefetching to provide lightning-fast transitions between pages.
 
 [Try the Next.js SSR Example Site](https://layer0-docs-layer0-next-example-default.layer0.link/category/hats?button)
 [View the Code](https://github.com/layer0-docs/layer0-nextjs-example?button)
@@ -12,7 +12,7 @@ This Next.js example app uses server-side rendering and prefetching to provide l
 
 ## Next.js Commerce
 
-For details on using the Next.js Commerce template with {{ PRODUCT_NAME }} refer to our [Next.js Commerce Guide](next_commerce).
+For details on using the Next.js Commerce template with {{ PRODUCT_NAME }}, refer to our [Next.js Commerce Guide](next_commerce).
 
 ## Connector
 
@@ -39,7 +39,7 @@ This framework has a connector developed for {{ PRODUCT_NAME }}. See [Connectors
 
 If you do not have Node.js installed on your system, download and install it from the official [Node.js v{{ NODE_VERSION }} downloads](https://nodejs.org/dist/latest-v{{ NODE_VERSION }}/) page. Select the download that matches your operating system and run the installer. Note that the installer for Node.js will also install npm.
 
-_Note that while you can use any version of Node.js >= 14 locally, your app will run in Node 14 when deployed to the {{ PRODUCT_NAME }} cloud. Therefore we highly suggest using Node 14 for all development._
+_While you can use any version of Node.js >= 14 locally, your app will run in Node 14 when deployed to the {{ PRODUCT_NAME }} cloud. Therefore we highly suggest using Node 14 for all development. You can do this easily by using `nvm` ([Node Version Manager](https://github.com/nvm-sh/nvm))._
 
 ### Create a Next.js Application
 
@@ -57,8 +57,7 @@ To prepare your Next.js application for deployment on {{ PRODUCT_NAME }}:
 npm install -g {{ PACKAGE_NAME }}/cli
 ```
 
-\*\*Note
-When installing the {{ PRODUCT_NAME }} CLI globally in a virtual environment that has Node and NPM installed globally, you [may run into permission issues]({{ FORUM_URL }}/t/xdn-cli-npm-install-error/83). In that case, you can install the {{ PRODUCT_NAME }} CLI locally within you app using `npm i -D {{ PACKAGE_NAME }}/cli` and running commands using `./node_modules/{{ PACKAGE_NAME }}/cli` instead of `{{ CLI_NAME }}`.
+When installing the {{ PRODUCT_NAME }} CLI globally in a virtual environment that has Node and NPM installed globally, you [may run into permission issues]({{ FORUM_URL }}/t/xdn-cli-npm-install-error/83). In that case, you can install the {{ PRODUCT_NAME }} CLI locally within your app using `npm i -D {{ PACKAGE_NAME }}/cli` and running commands using `./node_modules/{{ PACKAGE_NAME }}/cli` instead of `{{ CLI_NAME }}`.
 
 If you run into permission issues while attempting to install the {{ PRODUCT_NAME }} CLI globally on your local development machine, these may be fixed by using [nvm](https://github.com/nvm-sh/nvm) to manage Node and NPM.
 
@@ -71,9 +70,9 @@ cd my-next-app
 
 This will automatically add all of the required dependencies and files to your project. These include:
 
-- The `{{ PACKAGE_NAME }}/core` package - Allows you to declare routes and deploy your application on {{ PRODUCT_NAME }}
+- The `{{ PACKAGE_NAME }}/core` package - Allows you to declare routes and deploy your application on {{ PRODUCT_NAME }}.
 - The `{{ PACKAGE_NAME }}/next` package - Provides router middleware that automatically adds Next.js pages and api routes to the {{ PRODUCT_NAME }} router.
-- The `{{ PACKAGE_NAME }}/prefetch` package - Allows you to configure a service worker to prefetch and cache pages to improve browsing speed
+- The `{{ PACKAGE_NAME }}/prefetch` package - Allows you to configure a service worker to prefetch and cache pages to improve browsing speed.
 - The `{{ PACKAGE_NAME }}/react` package - Provides a `Prefetch` component for prefetching pages
 - `{{ CONFIG_FILE }}`
 - `routes.js` - A default routes file that sends all requests to Next.js. Update this file to add caching or proxy some URLs to a different origin.
@@ -81,20 +80,20 @@ This will automatically add all of the required dependencies and files to your p
 
 ## Next.js Config Plugins
 
-If your project does not have a next.config.js file, one will automatically be added when you run `layer0 init`. Doing so adds two plugins:
+If your project does not have a `next.config.js` file, one will automatically be added when you run `{{ CLI_NAME }} init`. Doing so adds two plugins:
 
-- with{{ PRODUCT_NAME }} (required)
-- withServiceWorker (optional)
+- `with{{ PRODUCT_NAME }}` (required)
+- `withServiceWorker` (optional)
 
-If your project already has a next.config.js file, you need to add these plugins yourself.
+If your project already has this config file, you need to add these plugins yourself.
 
 ```js
 const { with{{ PRODUCT_NAME }}, withServiceWorker } = require('{{ PACKAGE_NAME }}/next/config')
 
 module.exports = with{{ PRODUCT_NAME }}(
   withServiceWorker({
-    // Output sourcemaps so that stacktraces have original source filenames and line numbers when tailing
-    // the logs in the Layer0 developer console.
+    // Output source maps so that stack traces have original source filenames and line numbers when tailing
+    // the logs in the {{ PRODUCT_NAME }} developer console.
     layer0SourceMaps: true,
   })
 )
@@ -102,9 +101,9 @@ module.exports = with{{ PRODUCT_NAME }}(
 
 ### with{{ PRODUCT_NAME }}
 
-The `with{{ PRODUCT_NAME }}` optimizes the Next.js build for running on {{ PRODUCT_NAME }}. It is required to deploy your application on {{ PRODUCT_NAME }} and accepts the following parameters:
+The `with{{ PRODUCT_NAME }}` plugin optimizes the Next.js build for running on {{ PRODUCT_NAME }}. It is required to deploy your application on {{ PRODUCT_NAME }} and accepts the following parameters:
 
-- layer0SourceMaps: Defaults to `false`. Set to `true` to add server-side sourcemaps so that so that stacktraces have original source filenames and line numbers when tailing the logs in the Layer0 developer console. This will increase the serverless bundle size but will not affect performance. If you find that your app exceeds the maximum serverless bundle size allowed by {{ PRODUCT_NAME }}, you can disable this option to conserve space.
+- `layer0SourceMaps`: Defaults to `false`. Set to `true` to add server-side source maps so that stack traces have original source filenames and line numbers when tailing the logs in the {{ PRODUCT_NAME }} developer console. This will increase the serverless bundle size but will not affect performance. If you find that your app exceeds the maximum serverless bundle size allowed by {{ PRODUCT_NAME }}, you can disable this option to conserve space.
 
 ### withServiceWorker
 
@@ -138,7 +137,7 @@ import { Prefetcher } from '{{ PACKAGE_NAME }}/prefetch/sw'
 new Prefetcher().route()
 ```
 
-The above allows you to prefetch pages from {{ PRODUCT_NAME }}'s edge cache to greatly improve browsing speed. To prefetch a page, add the `Prefetch` component from `{{ PACKAGE_NAME }}/react` to any Next `Link` element:
+The code above allows you to prefetch pages from {{ PRODUCT_NAME }}'s edge cache to greatly improve browsing speed. To prefetch a page, add the `Prefetch` component from `{{ PACKAGE_NAME }}/react` to any Next `Link` element:
 
 ```js
 import { Prefetch } from '{{ PACKAGE_NAME }}/react'
@@ -177,11 +176,11 @@ The `Prefetch` component assumes you're using `getServerSideProps` and will pref
 </Link>
 ```
 
-Note that if you don't provide a `url` prop to `Prefetch`, you must specify the `passHref` prop on `Link` in order for the `Prefetch` component to know what URL to prefetch.
+Note that if you don't provide a `url` prop to `Prefetch`, you must specify the `passHref` prop on `Link` in order for the `Prefetch` component to know which URL to prefetch.
 
 ## Routing
 
-{{ PRODUCT_NAME }} supports Next.js's built-in routing scheme for both page and api routes, including Next.js 9's clean dynamic routes. The default `routes.js` file created by `{{ CLI_NAME }} init` sends all requests to Next.js via a fallback route:
+{{ PRODUCT_NAME }} supports Next.js's built-in routing scheme for both page and API routes, including Next.js 9's clean dynamic routes. The default `routes.js` file created by `{{ CLI_NAME }} init` sends all requests to Next.js via a fallback route:
 
 ```js
 // This file was automatically added by {{ CLI_NAME }} deploy.
@@ -206,7 +205,7 @@ module.exports = new Router()
 
 ### nextRoutes middleware
 
-In the code above, the `nextRoutes` middleware adds all Next.js routes to the router based on the `/pages` directory. You can add additional routes before and after the middleware, for example to send some URLs to an alternate backend. This is useful for gradually replacing an existing site with a new Next.js app.
+In the code above, the `nextRoutes` middleware adds all Next.js routes to the router based on the `/pages` directory. You can add additional routes before and after the middleware. For example, you can choose to send some URLs to an alternate backend. This is useful for gradually replacing an existing site with a new Next.js app.
 
 A popular use case is to fallback to a legacy site for any route that your Next.js app isn't configured to handle:
 
@@ -250,9 +249,9 @@ module.exports = new Router()
 
 The `renderNextPage` function takes the following parameters:
 
-- nextRoute - `String` The next.js route path
+- nextRoute - `String` The Next.js route path
 - res - `ResponseWriter` The ResponseWriter passed to your route handler
-- params - `Object|Function` An object containing query params to provide to the next page, or a function that takes the route's path params and the request and returns a params object.
+- params - `Object|Function` An object containing query params to provide to the next page, or a function that takes the route's path params and the request and returns a params object
 
 ### Rendering the 404 page
 
@@ -319,7 +318,7 @@ new Router()
 
 ### Preventing Next.js pages from being cached by other CDNs
 
-By default, Next.js adds a `cache-control: private, no-cache, no-store, must-revalidate` header to all responses from `getServerSideProps`. The presence of `private` would prevent {{ PRODUCT_NAME }} from caching the response, so `nextRoutes` middleware from `{{ PACKAGE_NAME }}/next` automatically removes the `private` portion of the header to enable caching at edge. If you want your responses to be private, you need to specify a `cache-control` header using the router:
+By default, Next.js adds a `cache-control: private, no-cache, no-store, must-revalidate` header to all responses from `getServerSideProps`. The presence of `private` would prevent {{ PRODUCT_NAME }} from caching the response, so `nextRoutes` middleware from `{{ PACKAGE_NAME }}/next` automatically removes the `private` portion of the header to enable caching at the edge. If you want your responses to be private, you need to specify a `cache-control` header using the router:
 
 ```js
 new Router().get('/my-private-page', ({ setResponseHeader }) => {
@@ -345,7 +344,7 @@ Add `"webpack": "^5.0.0"` to `resolutions`:
 
 ### next.config.js
 
-Add the following to next.config.js:
+Add the following to `next.config.js`:
 
 ```js
 future: {
@@ -358,7 +357,7 @@ Then run `yarn install` followed by `{{ CLI_NAME }} build` to verify that your a
 Some additional notes:
 
 - In order to use Webpack 5 you must use yarn to install dependencies. NPM does not support `resolutions` in package.json.
-- Webpack 5 contains many breaking changes, so it is possible that you'll need to make additional changes to the webpack config via next.config.js to get your app to build successfully.
+- Webpack 5 contains many breaking changes, so it is possible that you'll need to make additional changes to the webpack config via `next.config.js` to get your app to build successfully.
 - You may run into this error: `UnhandledPromiseRejectionWarning: TypeError: dependency.getCondition is not a function`. You can fix this by adding `next-offline` as a dependency using `npm i -D next-offline` or `yarn add --dev next-offline`.
 - You'll also see some deprecation warnings, like these, which are fine, as long as `{{ CLI_NAME }} build` is successful:
 
@@ -402,15 +401,15 @@ export async function getStaticProps({ locale }) {
 }
 ```
 
-Make sure you also import the config correctly with the new name into your next.config.js:
+Make sure you also import the config correctly with the new name into your `next.config.js`:
 
 ```js
-const { withLayer0, withServiceWorker } = require('@layer0/next/config')
+const { withLayer0, withServiceWorker } = require('{{ PACKAGE_NAME }}/next/config')
 const { i18n } = require('./i18next.config')
 
 module.exports = withLayer0(
   withServiceWorker({
-    // Output sourcemaps so that stacktraces have original source filenames and line numbers when tailing
+    // Output source maps so that stack traces have original source filenames and line numbers when tailing
     // the logs in the Layer0 developer console.
     layer0SourceMaps: true,
     i18n,

@@ -39,16 +39,16 @@ import nock from 'nock'
 
 By default, importing `@layer0/core/test-utils` will automatically add the following assertions to Jest's `expect` function:
 
-- `toHaveHeader`
-- `toHaveBody`
-- `toBeCachedByTheEdge`
-- `toBeCachedByTheEdgeFor`
-- `toBeCachedByTheBrowser`
-- `toBeCachedByTheBrowserFor`
-- `toBeCachedByTheServiceWorker`
-- `toBeCachedByTheServiceWorkerFor`
-- `toBeServedStale`
-- `toBeServedStaleFor`
+- `toHaveHeader(name, [value])`
+- `toHaveBody(string|RegExp)`
+- `toBeCachedByTheEdge()`
+- `toBeCachedByTheEdgeFor(seconds)`
+- `toBeCachedByTheBrowser()`
+- `toBeCachedByTheBrowserFor(seconds)`
+- `toBeCachedByTheServiceWorker()`
+- `toBeCachedByTheServiceWorkerFor(seconds)`
+- `toBeServedStale()`
+- `toBeServedStaleFor(seconds)`
 
 ### Route Testing
 

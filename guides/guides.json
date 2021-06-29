@@ -73,6 +73,11 @@
         "href": "/guides/[...guide]"
       },
       {
+        "text": "EdgeJS Unit Testing",
+        "as": "/guides/edgejs_testing",
+        "href": "/guides/[...guide]"
+      },
+      {
         "text": "Core Web Vitals",
         "as": "/guides/core_web_vitals",
         "href": "/guides/[...guide]"

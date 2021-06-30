@@ -68,7 +68,7 @@ You should always store your deploy token using your CI environment's secrets ma
 
 Here is an example GitHub action that deploys your site to {{ PRODUCT_NAME }}:
 
-This action assumes that you have created environments called "staging" and "production" and you have created a deploy key for your site and added it as a secret in your repo called "layer0_deploy_token". Read more on [accessing environment variables (other than layer0_deploy_token)](https://docs.layer0.co/guides/environments#section_accessing_environment_variables_at_build_time) which might be essential for your app during the build time and for server side requests (including SSG/SSR).
+This action assumes that you have created environments called "staging" and "production" and you have created a deploy key for your site and added it as a secret in your repo called "layer0_deploy_token". Read more on [accessing environment variables](https://docs.layer0.co/guides/environments#section_accessing_environment_variables_at_build_time) which might be essential for your app during the build time and for server-side requests (including SSG/SSR).
 
 ```yml
 # Add this file to your project at .github/workflows/{{ PRODUCT_NAME_LOWER }}.yml

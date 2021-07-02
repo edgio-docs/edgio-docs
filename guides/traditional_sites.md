@@ -64,17 +64,6 @@ Use this worksheet when auditing your site for personalized content to inventory
 
 [{{ PRODUCT_NAME }} Origin Content Changes Worksheet](https://docs.google.com/spreadsheets/d/1WDc5tB0tbrDT3To6bNQ0jYpXRFmgUuA_4gb3lVgzmjE/edit?usp=sharing)
 
-## Add {{ PRODUCT_NAME }} JavaScript libraries to your site
-
-Next install {{ PRODUCT_NAME }} JavaScript libraries to your site by adding the following to your site's HTML:
-
-```html
-<script src="/__layer0__/cache-manifest.js" defer="defer"></script>
-<script src="/main.js" defer="defer"></script>
-```
-
-These tags power the predictive prefetching and caching that will be used by {{ PRODUCT_NAME }}. Note that the JavaScript assets referenced in the above script tags are not on your server. {{ PRODUCT_NAME }} serves the assets for these script tags once {{ PRODUCT_NAME }} is installed in front of your server as described in [How {{ PRODUCT_NAME }} for Traditional Sites Works](#section_how_layer0_for_traditional_sites_works).
-
 ## Connector
 
 This framework has a connector developed for {{ PRODUCT_NAME }}. See [Connectors](connectors) for more information.

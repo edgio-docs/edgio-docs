@@ -73,7 +73,7 @@ This will automatically add all of the required dependencies and files to your p
 - The `{{ PACKAGE_NAME }}/core` package - Allows you to declare routes and deploy your application on {{ PRODUCT_NAME }}.
 - The `{{ PACKAGE_NAME }}/next` package - Provides router middleware that automatically adds Next.js pages and api routes to the {{ PRODUCT_NAME }} router.
 - The `{{ PACKAGE_NAME }}/prefetch` package - Allows you to configure a service worker to prefetch and cache pages to improve browsing speed.
-- The `{{ PACKAGE_NAME }}/react` package - Provides a `Prefetch` component for prefetching pages
+- The `{{ PACKAGE_NAME }}/react` package - Provides a `Prefetch` component for prefetching pages.
 - `{{ CONFIG_FILE }}`
 - `routes.js` - A default routes file that sends all requests to Next.js. Update this file to add caching or proxy some URLs to a different origin.
 - `sw/service-worker.js` A service worker implemented using Workbox.
@@ -94,7 +94,7 @@ module.exports = with{{ PRODUCT_NAME }}(
   withServiceWorker({
     // Output source maps so that stack traces have original source filenames and line numbers when tailing
     // the logs in the {{ PRODUCT_NAME }} developer console.
-    layer0SourceMaps: true,
+    {{ CLI_NAME }}SourceMaps: true,
   })
 )
 ```
@@ -103,7 +103,7 @@ module.exports = with{{ PRODUCT_NAME }}(
 
 The `with{{ PRODUCT_NAME }}` plugin optimizes the Next.js build for running on {{ PRODUCT_NAME }}. It is required to deploy your application on {{ PRODUCT_NAME }} and accepts the following parameters:
 
-- `layer0SourceMaps`: Defaults to `false`. Set to `true` to add server-side source maps so that stack traces have original source filenames and line numbers when tailing the logs in the {{ PRODUCT_NAME }} developer console. This will increase the serverless bundle size but will not affect performance. If you find that your app exceeds the maximum serverless bundle size allowed by {{ PRODUCT_NAME }}, you can disable this option to conserve space.
+- `{{ CLI_NAME }}SourceMaps`: Defaults to `false`. Set to `true` to add server-side source maps so that stack traces have original source filenames and line numbers when tailing the logs in the {{ PRODUCT_NAME }} developer console. This will increase the serverless bundle size but will not affect performance. If you find that your app exceeds the maximum serverless bundle size allowed by {{ PRODUCT_NAME }}, you can disable this option to conserve space.
 
 ### withServiceWorker
 
@@ -404,14 +404,14 @@ export async function getStaticProps({ locale }) {
 Make sure you also import the config correctly with the new name into your `next.config.js`:
 
 ```js
-const { withLayer0, withServiceWorker } = require('{{ PACKAGE_NAME }}/next/config')
+const { with{{ PRODUCT_NAME }}, withServiceWorker } = require('{{ PACKAGE_NAME }}/next/config')
 const { i18n } = require('./i18next.config')
 
-module.exports = withLayer0(
+module.exports = with{{ PRODUCT_NAME }}(
   withServiceWorker({
     // Output source maps so that stack traces have original source filenames and line numbers when tailing
-    // the logs in the Layer0 developer console.
-    layer0SourceMaps: true,
+    // the logs in the {{ PRODUCT_NAME }} developer console.
+    {{ CLI_NAME }}SourceMaps: true,
     i18n,
   }),
 )

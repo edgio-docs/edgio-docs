@@ -82,6 +82,9 @@ module.exports = new Router()
     cache(staticCacheConfig)
     serveStatic('public/images/:path*')
   })
+  .match('/:path*', ({ cache }) => {
+    cache(htmlCacheConfig)
+  })
   .match('/docs/api/:path*/', ({ proxy, cache }) => {
     cache(htmlCacheConfig)
     proxy('api', { path: '/layer0-docs-pages/current/api/:path*/' })

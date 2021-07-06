@@ -10,13 +10,13 @@ The API accepts the following query parameters:
 
 Required:
 
-- img - the source image URL
+- `img` - the source image URL
 
 Optional (specify one of the following):
 
-- quality - quality between 1 and 99
-- width - the maximimum output width
-- height - the maximimum output height
+- `quality` - quality between 1 and 99
+- `width` - the maximimum output width
+- `height` - the maximimum output height
 
 The image optimizer will only return an optimized image for mobile browsers. Desktop browsers are served the original image.
 

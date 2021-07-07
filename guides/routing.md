@@ -270,6 +270,43 @@ module.exports = new Router()
   })
 ```
 
+# Recovering from upstream errors
+
+This example shows how to recover from upstream errors. This can be used to alter the `statusCode` and `response` on the edge before issuing a response to the user.
+
+Example definition
+
+```
+  router.catch(number | Regexp, routeHandler: Function)
+```
+
+Example how to issue a custom error page on upstream response
+
+```js
+// routes.js
+
+const { Router } = require('{{ PACKAGE_NAME }}/core/router')
+
+module.exports = new Router()
+  // Example route
+  .get('/failing-route', ({ proxy }) => {
+    proxy('broken-origin')
+  })
+  // So let's assume that backend "broken-origin" returns 500, so instead
+  // of rendering the broken-origin response we can alter that by specifing .catch
+  .catch(500, ({ serveStatic }) => {
+    serveStatic('./broken-origin-500-page.html', {
+      statusCode: 502,
+    })
+  })
+```
+
+`.catch` allows to use the edge router to render the response based on the result of the upstream. So in the example above whenever we receive a 500 we issue a static html called `broken-origin-500-page.html` with statusCode 502
+
+You can use all routeHandler methods that you use in your other routes, except we do not allow to use `proxy` inside `.catch`.
+
+We highly recommend to keep those error handling routes simple and serve an static file instead sending of a synthetic response.
+
 ## Environment Edge Redirects
 
 In addition to sending redirects at the edge within the router configuration, this can also be configured at the environment level within the Layer0 Developer Console.

@@ -270,17 +270,17 @@ module.exports = new Router()
   })
 ```
 
-# Handling Errors
+## Handling Errors
 
 You can use the router's `catch` method to return specific content when the request results in an error status (For example, a 500). Using `catch`, you can also alter the `statusCode` and `response` on the edge before issuing a response to the user.
 
-Example definition
-
-```
-  router.catch(number | Regexp, routeHandler: Function)
+```js
+router.catch(number | Regexp, (routeHandler: Function))
 ```
 
-Example how to issue a custom error page on upstream response
+### Examples
+
+To issue a custom error page when the origin returns a 500:
 
 ```js
 // routes.js
@@ -295,17 +295,16 @@ module.exports = new Router()
   // So let's assume that backend "broken-origin" returns 500, so instead
   // of rendering the broken-origin response we can alter that by specifing .catch
   .catch(500, ({ serveStatic }) => {
-    serveStatic('./broken-origin-500-page.html', {
+    serveStatic('static/broken-origin-500-page.html', {
       statusCode: 502,
     })
   })
 ```
 
-`.catch` allows to use the edge router to render the response based on the result of the upstream. So in the example above whenever we receive a 500 we issue a static html called `broken-origin-500-page.html` with statusCode 502
+The `.catch` method allows the edge router to render a response based on the result preceeding routes. So in the example above whenever we receive a 500 we respond with `broken-origin-500-page.html` from the application's `static` directory and change the status code to 502.
 
-You can use all routeHandler methods that you use in your other routes, except we do not allow to use `proxy` inside `.catch`.
-
-We highly recommend to keep those error handling routes simple and serve an static file instead of sending a synthetic response.
+- Your catch callback is provided a [ResponseWriter](/docs/api/core/classes/_router_responsewriter_.responsewriter.html) instance. You can use any ResponseWriter method except `proxy` inside `.catch`.
+- We highly recommend keeping `catch` routes simple. Serve responses using `serveStatic` instead of `send` to minimize the size of the edge bundle.
 
 ## Environment Edge Redirects
 

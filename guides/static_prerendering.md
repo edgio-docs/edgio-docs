@@ -103,7 +103,7 @@ router = new Router().prerender([
 
 ## Prerendering API Calls
 
-It is important to prerender not just HTML responses, but API calls as well, to ensure that client-side navigation is as fast as possible. Some frameworks, such as Next.js, embed a build ID in API URLs to ensure the client receives responses from the correct version of the backend. In other frameworks, the convention for how API URLs are structured is left to the developer.
+To ensure that client-side navigation is as fast as possible, it is important to prerender not just HTML responses but API calls as well. Some frameworks, such as Next.js, embed a build ID in API URLs to ensure the client receives responses from the correct version of the backend. In other frameworks, the convention for how API URLs are structured is left to the developer.
 
 ### Example: Next.js getServerSideProps
 
@@ -143,7 +143,7 @@ module.exports = new Router().prerender(getPrerenderRequests).use(nextRoutes)
 ## Advanced Configuration: Custom Cache Keys
 
 If you're splitting the cache by cookies or headers using a `CustomCacheKey`, you'll need to include the cookie or header values in
-your preload configuration. For example, if you're splitting the cache by a `language` cookie:
+your prerender configuration. For example, if you're splitting the cache by a `language` cookie:
 
 ```js
 const { Router, CustomCacheKey } = require('{{ PACKAGE_NAME }}/core/router')

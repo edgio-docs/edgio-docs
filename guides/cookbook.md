@@ -42,7 +42,7 @@ router.get('/products/:productId', ({ proxy }) => {
 To cache proxied requests at the edge, use the [`cache`](/docs/api/core/classes/_router_responsewriter_.responsewriter.html#cache) method.
 
 ```js
-router.get('/products/:productId', ({ proxy }) => {
+router.get('/products/:productId', ({ cache, proxy }) => {
   cache({
     edge: {
       maxAgeSeconds: 60 * 60 * 24           // keep entries in the cache for 24 hours

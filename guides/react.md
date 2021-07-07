@@ -24,28 +24,27 @@ Then, in the root folder of your project, run:
 {{ CLI_NAME }} init
 ```
 
-This will automatically add all of the required dependencies and files to your
-project. These include:
+This will automatically add all of the required dependencies and files to your project. These include:
 
-- The `{{ PACKAGE_NAME }}/core` package - Allows you to declare routes and deploy your application on {{ PRODUCT_NAME }}
-- The `{{ PACKAGE_NAME }}/prefetch` package - Allows you to configure a service worker to prefetch and cache pages to improve browsing speed
-- The `{{ PACKAGE_NAME }}/react` package - Provides a `Prefetch` component for prefetching pages
+- The `{{ PACKAGE_NAME }}/core` package - Allows you to declare routes and deploy your application on {{ PRODUCT_NAME }}.
+- The `{{ PACKAGE_NAME }}/prefetch` package - Allows you to configure a service worker to prefetch and cache pages to improve browsing speed.
+- The `{{ PACKAGE_NAME }}/react` package - Provides a `Prefetch` component for prefetching pages.
 - `{{ CONFIG_FILE }}` - The main configuration file for {{ PRODUCT_NAME }}.
-- `routes.js` - A default routes file that sends all requests to Next.js. Update this file to add caching or proxy some URLs to a different origin.
-- `sw/service-worker.js` A service worker implemented using Workbox.
+- `routes.js` - A default routes file that sends all requests to React. This file can be updated add caching or proxy URLs to a different origin.
+- `sw/service-worker.js` - A service worker implemented using Workbox.
 
 ## Server Side Rendering
 
 React offers a great amount of flexibility in how you set up server side rendering. Frameworks like Next.js offer a standardized, built-in way of implementing SSR. If you're using Next.js specifically, we suggest using the [Next.js guide](/guides/next). We'll assume at this point that you're not using Next.js, but have an existing Node app that is doing server-side rendering.
 
-In order to render on {{ PRODUCT_NAME }}, you need to provide a function that takes a node `Request` and `Response` and sends the HTML that results from the `renderToString()` method from `react-dom/server`. Configure that function using the `server` property of `{{ CONFIG_FILE }}`. Here's an example:
+In order to render on {{ PRODUCT_NAME }}, you need to provide a function that takes a Node `Request` and `Response` and sends the HTML that results from the `renderToString()` method from `react-dom/server`. Configure that function using the `server` property of `{{ CONFIG_FILE }}`. Here's an example:
 
 ```js
 // {{ CONFIG_FILE }}
 
 module.exports = {
   server: {
-    path: 'layer0/server.js',
+    path: '{{ CLI_NAME }}/server.js',
   },
 }
 ```

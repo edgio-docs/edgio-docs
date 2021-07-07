@@ -270,9 +270,9 @@ module.exports = new Router()
   })
 ```
 
-# Recovering from upstream errors
+# Handling Errors
 
-This example shows how to recover from upstream errors. This can be used to alter the `statusCode` and `response` on the edge before issuing a response to the user.
+You can use the router's `catch` method to return specific content when the request results in an error status (For example, a 500). Using `catch`, you can also alter the `statusCode` and `response` on the edge before issuing a response to the user.
 
 Example definition
 

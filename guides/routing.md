@@ -305,7 +305,7 @@ module.exports = new Router()
 
 You can use all routeHandler methods that you use in your other routes, except we do not allow to use `proxy` inside `.catch`.
 
-We highly recommend to keep those error handling routes simple and serve an static file instead sending of a synthetic response.
+We highly recommend to keep those error handling routes simple and serve an static file instead of sending a synthetic response.
 
 ## Environment Edge Redirects
 

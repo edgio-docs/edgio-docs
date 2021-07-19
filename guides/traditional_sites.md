@@ -22,11 +22,10 @@ Requests for your site will now pass through {{ PRODUCT_NAME }}'s globally distr
 The high level implementation process for {{ PRODUCT_NAME }} is:
 
 1. Make sure your pages are cachable
-2. Add {{ PRODUCT_NAME }} JavaScript libraries to your site
-3. Set up a project
-4. Configure caching and prefetching
-5. Test locally and on {{ PRODUCT_NAME }}
-6. Go live by changing the DNS
+2. Set up a project
+3. Configure caching and prefetching
+4. Test locally and on {{ PRODUCT_NAME }}
+5. Go live by changing the DNS
 
 We highly recommend performing this process on a staging server before attempting to try it on your production website.
 

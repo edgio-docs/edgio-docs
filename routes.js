@@ -87,19 +87,19 @@ module.exports = new Router()
   })
   .match('/docs/api/:path*/', ({ proxy, cache }) => {
     cache(htmlCacheConfig)
-    proxy('api', { path: '/layer0-docs-pages/current/api/:path*/' })
+    proxy('api', { path: '/current/api/:path*/index.html' })
   })
   .match('/docs/api/:path*', ({ proxy, cache }) => {
     cache(htmlCacheConfig)
-    proxy('api', { path: '/layer0-docs-pages/current/api/:path*' })
+    proxy('api', { path: '/current/api/:path*' })
   })
   .match('/docs/:version/api/:path*/', ({ proxy, cache }) => {
     cache(htmlCacheConfig)
-    proxy('api', { path: '/layer0-docs-pages/:version/api/:path*/' })
+    proxy('api', { path: '/:version/api/:path*/index.html' })
   })
   .match('/docs/:version/api/:path*', ({ proxy, cache }) => {
     cache(htmlCacheConfig)
-    proxy('api', { path: '/layer0-docs-pages/:version/api/:path*' })
+    proxy('api', { path: '/:version/api/:path*' })
   })
   .get('/googleb2732cddf1383cf4.html', ({ send }) =>
     send('google-site-verification: googleb2732cddf1383cf4.html', 200, 'OK'),

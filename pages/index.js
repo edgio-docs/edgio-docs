@@ -202,7 +202,11 @@ const Home = ({ navData, changeLog }) => {
 
             <FrameworkItem guide="/guides/nx" framework="nx" text="Get started with Nx" />
 
-            <FrameworkItem guide="/guides/" framework="frontity" text="Get started with Frontity" />
+            <FrameworkItem
+              guide="/guides/frontity"
+              framework="frontity"
+              text="Get started with Frontity"
+            />
 
             <FrameworkItem
               guide="/guides/static_sites"
@@ -287,7 +291,7 @@ export default Home
 export async function getStaticProps() {
   const [navData, changeLog] = await Promise.all([getGuides(), getGuideByName('changelog')])
 
-  return { props: { navData, changeLog }}
+  return { props: { navData, changeLog } }
 }
 
 const FrameworkItem = ({ framework, text, guide, icon }) => {

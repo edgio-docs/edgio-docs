@@ -31,13 +31,13 @@ npm install -g @vue/cli @vue/cli-service-global
 vue create hello-world
 ```
 
-When running `vue create` select `Vue 2` as a preset,
+When running `vue create` select `Vue 2` or `Vue 3` as a preset,
 
 ```bash
-Vue CLI v4.5.7
+Vue CLI v4.5.13
 ? Please pick a preset: (Use arrow keys)
 ❯ Default ([Vue 2] babel, eslint)
-  Default (Vue 3 Preview) ([Vue 3] babel, eslint)
+  Default (Vue 3) ([Vue 3] babel, eslint)
   Manually select features
 ```
 

@@ -162,6 +162,27 @@ module.exports = {
 }
 ```
 
+## routing to serverless
+If your connector needs to be run on the serverless tier, you can use the `js` backend exposed by `@layer0/core` 
+
+Example using the `BACKENDS.js` backend:
+
+```js
+const { BACKENDS } = require('@layer0/core/constants');
+const router = new Router()
+
+... 
+
+router.get('/some/:path*', ({ proxy, cache }) => {
+  cache(CACHE_PAGES)
+  proxy(BACKENDS.js)
+})
+
+...
+
+export default router
+```
+
 ## Testing your connector locally before publishing it to NPM
 
 To test your connector locally without publishing it to NPM:

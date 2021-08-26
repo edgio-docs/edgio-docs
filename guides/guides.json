@@ -78,8 +78,8 @@
         "href": "/guides/[...guide]"
       },
       {
-        "text": "Debugging",
-        "as": "/guides/debugging",
+        "text": "Troubleshooting",
+        "as": "/guides/troubleshooting",
         "href": "/guides/[...guide]"
       },
       {

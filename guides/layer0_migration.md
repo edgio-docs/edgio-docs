@@ -53,3 +53,12 @@ The prefixes of the cookies have changed from `xdn` to `layer0`. For example, `x
 #### REST API
 
 If you are using the REST API, it is recommended to update to the new endpoint, https://app.layer0.co/api/v1/.
+
+#### Cache Manifest
+
+The file `/__xdn__/cache-manifest.js` has changed to `/__layer0__/cache-manifest.js`. A quick way of implementing this change is to add redirect in your existing routes config:
+```js
+router.match('/__xdn__/cache-manifest.js', ({ redirect }) => {
+  redirect('/__layer0__/cache-manifest.js')
+})
+```

@@ -85,8 +85,7 @@ This will automatically update your `package.json` and add all of the required {
 To add service worker to your Vue app, run the following in the root folder of your project:
 
 ```bash
-npm install register-service-worker
-npm install workbox-webpack-plugin
+npm i register-service-worker workbox-webpack-plugin
 ```
 
 Create `service-worker.js` at the root of your project with the following:

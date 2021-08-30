@@ -2,6 +2,13 @@
 
 This guide shows you how to deploy a Vue.js application on {{ PRODUCT_NAME }}.
 
+## Example
+
+Here's an example Vue app running on Layer0:
+[Try the Vue Example Site](https://layer0-docs-layer0-static-vuejs-example-default.layer0.link/)
+[View the Code](https://github.com/layer0-docs/static-vuejs-example)
+[Deploy to Layer0](https://app.layer0.co/deploy?button&deploy&repo=https://github.com/layer0-docs/static-vuejs-example)
+
 ## Install Node.js and npm
 
 **{{ PRODUCT_NAME }} only supports Node.js version {{ NODE_VERSION }}**

@@ -2,6 +2,13 @@
 
 This guide shows you how to deploy a Vue.js application on {{ PRODUCT_NAME }}.
 
+## Example
+
+Here's an example Vue app running on Layer0:
+[Try the Vue Example Site](https://layer0-docs-layer0-static-vuejs-example-default.layer0.link/)
+[View the Code](https://github.com/layer0-docs/static-vuejs-example)
+[Deploy to Layer0](https://app.layer0.co/deploy?button&deploy&repo=https://github.com/layer0-docs/static-vuejs-example)
+
 ## Install Node.js and npm
 
 **{{ PRODUCT_NAME }} only supports Node.js version {{ NODE_VERSION }}**
@@ -31,13 +38,13 @@ npm install -g @vue/cli @vue/cli-service-global
 vue create hello-world
 ```
 
-When running `vue create` select `Vue 2` as a preset,
+When running `vue create` select `Vue 2` or `Vue 3` as a preset,
 
 ```bash
-Vue CLI v4.5.7
+Vue CLI v4.5.13
 ? Please pick a preset: (Use arrow keys)
 ❯ Default ([Vue 2] babel, eslint)
-  Default (Vue 3 Preview) ([Vue 3] babel, eslint)
+  Default (Vue 3) ([Vue 3] babel, eslint)
   Manually select features
 ```
 
@@ -79,6 +86,95 @@ This will automatically update your `package.json` and add all of the required {
 - The `{{ PACKAGE_NAME }}/prefetch` package - Allows you to configure a service worker to prefetch and cache pages to improve browsing speed
 - `{{ CONFIG_FILE }}` - A configuration file for {{ PRODUCT_NAME }}
 - `routes.js` - A default routes file that sends all requests to Vue.js.
+
+### Adding Layer0 Service Worker
+
+To add service worker to your Vue app, run the following in the root folder of your project:
+
+```bash
+npm i register-service-worker workbox-webpack-plugin
+```
+
+Create `service-worker.js` at the root of your project with the following:
+
+```js
+import { skipWaiting, clientsClaim } from 'workbox-core'
+import { precacheAndRoute } from 'workbox-precaching'
+import { Prefetcher } from '@layer0/prefetch/sw'
+
+skipWaiting()
+clientsClaim()
+precacheAndRoute(self.__WB_MANIFEST || [])
+
+new Prefetcher().route()
+```
+
+To register the service worker, first create `registerServiceWorker.js` in the `src` folder:
+
+```js
+/* eslint-disable no-console */
+
+import { register } from 'register-service-worker'
+
+if (process.env.NODE_ENV === 'production') {
+  register(`${process.env.BASE_URL}service-worker.js`, {
+    ready () {
+      console.log(
+        'App is being served from cache by a service worker.\n' +
+        'For more details, visit https://goo.gl/AFskqB'
+      )
+    },
+    registered () {
+      console.log('Service worker has been registered.')
+    },
+    cached () {
+      console.log('Content has been cached for offline use.')
+    },
+    updatefound () {
+      console.log('New content is downloading.')
+    },
+    updated () {
+      console.log('New content is available; please refresh.')
+    },
+    offline () {
+      console.log('No internet connection found. App is running in offline mode.')
+    },
+    error (error) {
+      console.error('Error during service worker registration:', error)
+    }
+  })
+}
+```
+
+and to include the service worker in the app, edit `main.js` (in the `src` folder) as follows:
+
+```diff
+import { createApp } from 'vue'
+import App from './App.vue'
++ import './registerServiceWorker'
+
+createApp(App).mount('#app')
+```
+
+Now, create `vue.config.js` at the root of your project with the following config:
+
+```js
+const { InjectManifest } = require("workbox-webpack-plugin")
+
+const config = {}
+
+if (process.env.NODE_ENV === "production") {
+  config["configureWebpack"] = {
+    plugins: [
+      new InjectManifest({
+        swSrc: "./service-worker.js",
+      }),
+    ],
+  }
+}
+
+module.exports = config
+```
 
 ### Configure the routes
 

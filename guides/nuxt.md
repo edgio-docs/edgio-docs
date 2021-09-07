@@ -327,6 +327,14 @@ includeFiles: {
 },
 ```
 
+In addition, if `includeNodeModules` does not copy over the necessary package that may be needed in production, it can be included via this key as well. For instance, 
+
+```js
+includeFiles: {
+  'node_modules/some_package/**/*': true,
+}
+```
+
 ## Nitro
 
 The Nuxt team provides a renderer called [Nitro](https://www.npmjs.com/package/@nuxt/nitro) which optimizes your application for serverless deployment and greatly minimizes the size of your server application bundle. If you're running into the size limitation for serverless bundles (50MB), you might try adding Nitro to your app. As of June 2021 Nitro is still not production ready, so use at your own risk.

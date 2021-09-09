@@ -35,9 +35,6 @@ const useStyles = makeStyles(theme => ({
     '& a': {
       textDecoration: 'none',
       color: theme.palette.text.primary,
-      '&:hover': {
-        textDecoration: 'underline',
-      },
     },
     '& svg': {
       display: 'none',

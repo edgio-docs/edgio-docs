@@ -1,5 +1,6 @@
 import React from 'react'
 import { makeStyles } from '@material-ui/core/styles'
+import { NAV_WIDTH } from './nav/Nav'
 
 const styles = theme => ({
   main: {
@@ -7,17 +8,15 @@ const styles = theme => ({
     paddingTop: 64,
     display: 'flex',
     flexDirection: 'row',
-    ...theme.typography.body1,
-
     '& code': {
       fontFamily: theme.fonts.code,
     },
   },
   center: {
     flex: 1,
-    maxWidth: theme.breakpoints.values.lg + 300,
+    maxWidth: theme.breakpoints.values.lg + NAV_WIDTH,
     padding: theme.spacing(0, 4, 0, 8),
-    paddingLeft: 340,
+    paddingLeft: `calc(${NAV_WIDTH}px + 40px)`,
     overflow: 'hidden',
     margin: '0 auto',
     [theme.breakpoints.down('md')]: {

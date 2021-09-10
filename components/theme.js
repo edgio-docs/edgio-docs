@@ -65,6 +65,9 @@ Object.assign(theme.overrides, {
         color: theme.palette.secondary.main,
         textDecoration: 'none',
       },
+      '.MuiDivider-root': {
+        marginBottom: '1rem !important',
+      },
     },
   },
 })

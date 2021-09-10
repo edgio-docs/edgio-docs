@@ -15,8 +15,7 @@ const styles = theme => ({
   center: {
     flex: 1,
     maxWidth: theme.breakpoints.values.lg + NAV_WIDTH,
-    padding: theme.spacing(0, 4, 0, 8),
-    paddingLeft: `calc(${NAV_WIDTH}px + 40px)`,
+    paddingLeft: `calc(${NAV_WIDTH}px + ${theme.spacing(1)}px)`,
     overflow: 'hidden',
     margin: '0 auto',
     [theme.breakpoints.down('md')]: {

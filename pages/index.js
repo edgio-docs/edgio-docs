@@ -171,6 +171,13 @@ const Home = ({ navData, changeLog }) => {
             />
 
             <FrameworkItem
+              guide="/guides/svelte"
+              framework="svelte"
+              icon="svelte"
+              text="Get started with Svelte"
+            />
+
+            <FrameworkItem
               guide="/guides/angular"
               framework="angular"
               text="Get started with Angular"

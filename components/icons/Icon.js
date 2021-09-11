@@ -17,6 +17,7 @@ import FrontityIcon from './frontity.svg'
 import HTMLIcon from './html.svg'
 import Fastboot from './fastboot.svg'
 import Razzle from './razzle.svg'
+import SvelteIcon from './svelte.svg'
 
 export const icons = {
   react: ReactIcon,
@@ -37,6 +38,7 @@ export const icons = {
   html: HTMLIcon,
   fastboot: Fastboot,
   razzle: Razzle,
+  svelte: SvelteIcon
 }
 
 export const styles = theme => ({

@@ -32,42 +32,10 @@ cd svelte-app
 npm install
 ```
 
-You can verify your app works by running it locally:
+You can verify your app works by running it locally with:
 
 ```bash
 npm run dev
-```
-
-You should see an output like this in the terminal:
-
-```bash
- ❯ npm run dev
-$ webpack serve --content-base public
-ℹ ｢wds｣: Project is running at http://localhost:8080/
-ℹ ｢wds｣: webpack output is served from /
-ℹ ｢wds｣: Content not from webpack is served from public
-ℹ ｢wdm｣: wait until bundle finished: /
-ℹ ｢wdm｣: asset build/bundle.js 529 KiB [emitted] (name: build/bundle) 1 related asset
-asset build/bundle.css 929 bytes [emitted] (name: build/bundle) 1 related asset
-Entrypoint build/bundle 529 KiB (580 KiB) = build/bundle.css 929 bytes build/bundle.js 529 KiB 2 auxiliary assets
-runtime modules 30.1 KiB 15 modules
-modules by path ./node_modules/ 443 KiB
-  modules by path ./node_modules/webpack-dev-server/client/ 20.9 KiB 10 modules
-  modules by path ./node_modules/svelte-hmr/runtime/*.js 29.7 KiB 6 modules
-  modules by path ./node_modules/webpack/hot/ 4.46 KiB 5 modules
-  modules by path ./node_modules/html-entities/lib/*.js 61 KiB 5 modules
-  modules by path ./node_modules/url/ 37.4 KiB 3 modules
-  modules by path ./node_modules/querystring/*.js 4.51 KiB 3 modules
-  modules by path ./node_modules/mini-css-extract-plugin/dist/hmr/*.js 5.14 KiB 2 modules
-modules by path ./src/ 6.41 KiB (javascript) 890 bytes (css/mini-extract)
-  modules by path ./src/*.css 352 bytes (javascript) 890 bytes (css/mini-extract)
-    ./src/global.css 352 bytes [built] [code generated]
-    css ./node_modules/css-loader/dist/cjs.js!./src/global.css 890 bytes [built] [code generated]
-  ./src/main.js 157 bytes [built] [code generated]
-  ./src/App.svelte 5.91 KiB [built] [code generated]
-webpack 5.52.1 compiled successfully in 442 ms
-ℹ ｢wdm｣: Compiled successfully.
-
 ```
 
 ## Configuring your Svelte app for {{ PRODUCT_NAME }}

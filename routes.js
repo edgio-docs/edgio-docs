@@ -74,6 +74,9 @@ module.exports = new Router()
     })
     serveStatic('.next/static/service-worker.js')
   })
+  .get('/guides/debugging', ({ redirect }) => {
+    redirect('/guides/troubleshooting', 302)
+  })
   .get('/images/:path*', ({ cache }) => {
     cache(staticCacheConfig)
   })

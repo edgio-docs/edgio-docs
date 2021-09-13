@@ -418,13 +418,20 @@ module.exports = with{{ PRODUCT_NAME }}(
 ```
 
 Finally, you will need to update your `layer0.config.js` to (includeFiles)[/guides/layer0_config#section_includefiles] where the locale files are stored. Example using the default of `/public`:
+
 ```js
 module.exports = {
   connector: '@layer0/next',
   includeFiles: {
-    "public": true,
-  }
+    public: true,
+  },
 }
 ```
 
 A working example app can be found [here](https://github.com/layer0-docs/layer0-next-i18n-example).
+
+## Using experimental-serverless-trace
+
+As of **v3.16.6**, Next.js apps built with layer0 will use the `experimental-serverless-trace` target by default. The serverless target does not support most modern Next.js features like preview mode, revalidate, fallback. For backwards compatibility reasons, the serverless target will still be supported.
+
+At build time, layer0 will run a trace on your application code and find only the required modules needed to run your production application, then add those to the deployment bundle.

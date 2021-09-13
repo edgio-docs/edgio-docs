@@ -237,6 +237,12 @@
         "icon": "vsf",
         "as": "/guides/vsf",
         "href": "/guides/[...guide]"
+      },
+      {
+        "text": "Svelte",
+        "icon": "svelte",
+        "as": "/guides/svelte",
+        "href": "/guides/[...guide]"
       }
     ]
   },

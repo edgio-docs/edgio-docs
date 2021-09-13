@@ -85,7 +85,7 @@ curl -o/dev/null -vv https://www.yoursite.com
 
 **Bypass DNS resolution**
 
-Connect directly to the address listed after. This is good for sending a request straight to origin and bypassing L0, or testing a connection to Layer0 before DNS cutover. Setting up a localhost DNS configuration is usually better for this if possible.
+Connect directly to the address listed after. This is good for sending a request straight to origin and bypassing Layer0, or testing a connection to Layer0 before DNS cutover. Setting up a localhost DNS configuration is usually better for this if possible.
 
 ```bash
 curl -o/dev/null -vv
@@ -110,7 +110,7 @@ curl -o/dev/null -vv
 
 **Skip the cache**
 
-Adding a `layer0_debug=true` to the query parameter will skip the cache and make it easy to check for dynamic data (i.e. personalized content). Append grep to search for something you might want.
+Adding a `layer0_debug=true` to the query parameter will skip the cache and make it easy to check for dynamic data (i.e. personalized content). Append grep to search for specific values within the response output.
 
 ```bash
 curl -vv --silent https://www.yoursite.com/?layer0_debug=true 2>&1 | grep minicart-quantity

@@ -13,12 +13,13 @@ const useStyles = makeStyles(theme => ({
       borderColor: theme.palette.grey[100],
       borderWidth: 2,
     },
+    '& .algolia-autocomplete': {
+      flex: 1,
+      width: '98%',
+    },
   },
   notchedOutline: {
     borderColor: theme.palette.grey[300],
-  },
-  searchField: {
-    paddingRight: theme.spacing(1),
   },
 }))
 
@@ -58,7 +59,6 @@ export default function SearchField() {
         placeholder="Search"
         variant="outlined"
         size="small"
-        className={classes.searchField}
         fullWidth
         InputProps={{
           classes,

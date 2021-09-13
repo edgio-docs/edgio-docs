@@ -11,7 +11,6 @@ const useStyles = makeStyles(theme => ({
   root: {
     display: 'flex',
     alignItems: 'flex-start',
-    marginLeft: theme.spacing(-2),
   },
   icon: {
     marginRight: theme.spacing(0.5),
@@ -76,10 +75,5 @@ export default function Link({ className, icon, text, as, href, ...props }) {
 
   const active = asPath.split(/\?/)[0] === as
 
-  return (
-    <div className={clsx({ [classes.root]: true, [classes.active]: active })}>
-      <div className={classes.dot} style={{ visibility: active ? 'visible' : 'hidden' }}></div>
-      {link}
-    </div>
-  )
+  return <div className={clsx({ [classes.root]: true, [classes.active]: active })}>{link}</div>
 }

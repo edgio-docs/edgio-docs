@@ -30,7 +30,6 @@ const useStyles = makeStyles(theme => ({
     opacity: 0.5,
     fontWeight: 'normal',
     paddingBottom: theme.spacing(2),
-    paddingLeft: 16,
   },
   item: {
     paddingBottom: theme.spacing(2),
@@ -161,10 +160,6 @@ function Item({ heading, activeHeading }) {
 
   return (
     <div className={classes.item} style={{ marginLeft: theme.spacing((tokens.length - 2) * 2) }}>
-      <div
-        className={classes.dot}
-        style={{ visibility: id === activeHeading ? 'visible' : 'hidden' }}
-      />
       <Typography variant="body1">
         <a
           href={`#${id}`}

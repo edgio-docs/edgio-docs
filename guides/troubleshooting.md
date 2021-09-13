@@ -37,7 +37,7 @@ Note that this configuration will allow you to set breakpoints in both your {{ P
 
 ### [Server logs](/guides/logs#section_server_logs)
 
-By viewing the server logs in the {{ PRODUCT_NAME }} Developer Console, you can see all of the messages logged by your application using console.log, console.warn, etc...
+By viewing the server logs in the {{ PRODUCT_NAME }} Developer Console, you can see all of the messages logged by your application using `console.log`, `console.warn`, etc...
 
 By enabling [Deep Request Inspection](/guides/logs#section_http_request_logging) in your environment, you can also see the headers and body of every request and response served by your application via the Layer0 serverless cloud. You can also see each upstream API request made by your application.
 

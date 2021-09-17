@@ -25,9 +25,10 @@ SyntaxHighlighter.registerLanguage('yml', yml)
 
 const useStyles = makeStyles(theme => ({
   root: {
-    fontSize: '14px',
+    fontSize: theme.fontSize - 2,
     position: 'relative',
-    marginTop: '1em',
+    marginTop: theme.spacing(1),
+    marginBottom: theme.spacing(3),
     [theme.breakpoints.down('xs')]: {
       background: '#1d1f21',
     },

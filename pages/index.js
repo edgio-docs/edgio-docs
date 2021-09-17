@@ -325,8 +325,8 @@ const DeployLink = ({ framework }) => {
   const classes = useStyles()
   const url = EXAMPLES_REPOS[framework]
 
+  // No url is a valid option
   if (!url) {
-    console.warn(`Invalid deploy url for ${framework}`)
     return null
   }
 

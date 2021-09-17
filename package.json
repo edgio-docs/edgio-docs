@@ -27,6 +27,7 @@
     "cross-fetch": "^3.0.6",
     "file-loader": "^6.0.0",
     "isomorphic-fetch": "^2.2.1",
+    "lodash": "^4.17.21",
     "lodash.throttle": "^4.1.1",
     "lunr": "^2.3.8",
     "markdown-headings": "^2.0.0",

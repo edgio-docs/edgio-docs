@@ -12,6 +12,7 @@ import Icon from '../icons/Icon'
 import { useRouter } from 'next/router'
 import { Prefetch } from '@layer0/react'
 import useVersioning from '../versioning'
+import { first } from 'lodash'
 
 export const NAV_WIDTH = 240
 
@@ -109,7 +110,7 @@ export default function Nav({ navData }) {
   const { open: menuOpen } = useContext(MenuContext)
   const { asPath } = useRouter()
   const { createUrl } = useVersioning()
-  const [collapseOpen, setCollapseOpen] = useState(null)
+  const [collapseOpen, setCollapseOpen] = useState(first(navData)?.text)
   const classes = useStyles()
 
   useEffect(() => {

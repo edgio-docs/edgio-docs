@@ -115,7 +115,7 @@ export default function Nav({ navData }) {
 
   useEffect(() => {
     navData.map(section => {
-      const findSection = section.items.find(si => si.as === asPath)
+      const findSection = section.items.find(si => asPath.startsWith(si.as))
       if (findSection) {
         setCollapseOpen(section.text)
       }

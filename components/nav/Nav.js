@@ -106,8 +106,7 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-export default function Nav({ navData, serverPath }) {
-  console.log('[serverPath]', serverPath)
+export default function Nav({ navData }) {
   const { open: menuOpen } = useContext(MenuContext)
   const { asPath } = useRouter()
   const { createUrl } = useVersioning()
@@ -144,7 +143,7 @@ export default function Nav({ navData, serverPath }) {
       {navData.map((section, i) => {
         const collapseActive = isCollapseActive(section.text)
         return (
-          <React.Fragment key={`${section.text}__${collapseActive}`}>
+          <React.Fragment key={section.text}>
             <ListItem
               button
               onClick={() => setCollapseOpen(collapseActive ? '' : section.text)}
@@ -183,7 +182,7 @@ export default function Nav({ navData, serverPath }) {
                   )
 
                   return (
-                    <Link as={as} href={href} passHref key={`${as}__${collapseActive}`}>
+                    <Link as={as} href={href} passHref key={as}>
                       {external ? LinkItem : <Prefetch url={url}>{LinkItem}</Prefetch>}
                     </Link>
                   )
@@ -223,12 +222,4 @@ Nav.propTypes = {
 
 Nav.defaultProps = {
   navData: [],
-}
-
-export async function getServerSideProps(context) {
-  return {
-    props: {
-      serverPath: context.resolvedUrl,
-    },
-  }
 }

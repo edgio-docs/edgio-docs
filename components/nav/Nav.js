@@ -143,7 +143,7 @@ export default function Nav({ navData }) {
       {navData.map((section, i) => {
         const collapseActive = isCollapseActive(section.text)
         return (
-          <React.Fragment key={section.text}>
+          <React.Fragment key={`${section.text}__${collapseActive}`}>
             <ListItem
               button
               onClick={() => setCollapseOpen(collapseActive ? '' : section.text)}

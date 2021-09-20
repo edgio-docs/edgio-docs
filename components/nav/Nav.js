@@ -106,7 +106,8 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-export default function Nav({ navData }) {
+export default function Nav({ navData, serverPath }) {
+  console.log('[serverPath]', serverPath)
   const { open: menuOpen } = useContext(MenuContext)
   const { asPath } = useRouter()
   const { createUrl } = useVersioning()
@@ -127,7 +128,7 @@ export default function Nav({ navData }) {
   }
 
   function isPathSelected(selectedPath) {
-    return asPath === selectedPath
+    return asPath === selectedPath || serverPath === selectedPath
   }
 
   return (
@@ -222,4 +223,12 @@ Nav.propTypes = {
 
 Nav.defaultProps = {
   navData: [],
+}
+
+export async function getServerSideProps(context) {
+  return {
+    props: {
+      serverPath: context.resolvedUrl,
+    },
+  }
 }

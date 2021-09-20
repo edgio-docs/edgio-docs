@@ -127,7 +127,7 @@ export default function Nav({ navData }) {
   }
 
   function isPathSelected(selectedPath) {
-    return asPath === selectedPath || serverPath === selectedPath
+    return asPath === selectedPath
   }
 
   return (

@@ -95,6 +95,9 @@ const useStyles = makeStyles(theme => ({
   changeLog: {
     paddingTop: theme.spacing(8),
     paddingBottom: theme.spacing(8),
+    '& h2': {
+      marginTop: theme.spacing(2),
+    },
   },
   button: {
     transition: 'color border-color 200ms linear',

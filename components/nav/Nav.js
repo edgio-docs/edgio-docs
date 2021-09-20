@@ -126,6 +126,10 @@ export default function Nav({ navData }) {
     return collapseOpen === sectionText
   }
 
+  function isPathSelected(selectedPath) {
+    return asPath === selectedPath
+  }
+
   return (
     <List
       component="nav"
@@ -162,11 +166,11 @@ export default function Nav({ navData }) {
                       button
                       component="a"
                       target={external && '_blank'}
-                      selected={asPath === as}
+                      selected={isPathSelected(as)}
                       className={clsx({
                         [classes.nested]: true,
-                        [classes.selected]: asPath === as,
-                        [classes.selectedMenuItem]: asPath === as,
+                        [classes.selected]: isPathSelected(as),
+                        [classes.selectedMenuItem]: isPathSelected(as),
                       })}
                     >
                       {icon && <Icon type={icon} classes={{ root: classes.icon }} />}

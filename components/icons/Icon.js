@@ -18,6 +18,7 @@ import HTMLIcon from './html.svg'
 import Fastboot from './fastboot.svg'
 import Razzle from './razzle.svg'
 import SvelteIcon from './svelte.svg'
+import RazzlePng from './razzle.png'
 
 export const icons = {
   react: ReactIcon,
@@ -37,8 +38,9 @@ export const icons = {
   frontity: FrontityIcon,
   html: HTMLIcon,
   fastboot: Fastboot,
+  razzleP: RazzlePng,
   razzle: Razzle,
-  svelte: SvelteIcon
+  svelte: SvelteIcon,
 }
 
 export const styles = theme => ({
@@ -64,6 +66,6 @@ export default function Icon({ style, classes, type }) {
   } else if (typeof El === 'string') {
     return <img style={style} src={El} className={classes.root} />
   } else {
-    return <El style={style} className={classes.root} classes={classes} />
+    return <El style={style} className={classes.root} />
   }
 }

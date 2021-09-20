@@ -5,8 +5,9 @@ This guide shows you how to deploy a Vue.js application on {{ PRODUCT_NAME }}.
 ## Example
 
 Here's an example Vue app running on Layer0:
-[Try the Vue Example Site](https://layer0-docs-layer0-static-vuejs-example-default.layer0.link/)
-[View the Code](https://github.com/layer0-docs/static-vuejs-example)
+
+[Try the Vue Example Site](https://layer0-docs-layer0-static-vuejs-example-default.layer0.link/?button)
+[View the Code](https://github.com/layer0-docs/static-vuejs-example?button)
 [Deploy to Layer0](https://app.layer0.co/deploy?button&deploy&repo=https://github.com/layer0-docs/static-vuejs-example)
 
 ## Install Node.js and npm
@@ -118,30 +119,30 @@ import { register } from 'register-service-worker'
 
 if (process.env.NODE_ENV === 'production') {
   register(`${process.env.BASE_URL}service-worker.js`, {
-    ready () {
+    ready() {
       console.log(
         'App is being served from cache by a service worker.\n' +
-        'For more details, visit https://goo.gl/AFskqB'
+          'For more details, visit https://goo.gl/AFskqB',
       )
     },
-    registered () {
+    registered() {
       console.log('Service worker has been registered.')
     },
-    cached () {
+    cached() {
       console.log('Content has been cached for offline use.')
     },
-    updatefound () {
+    updatefound() {
       console.log('New content is downloading.')
     },
-    updated () {
+    updated() {
       console.log('New content is available; please refresh.')
     },
-    offline () {
+    offline() {
       console.log('No internet connection found. App is running in offline mode.')
     },
-    error (error) {
+    error(error) {
       console.error('Error during service worker registration:', error)
-    }
+    },
   })
 }
 ```
@@ -159,15 +160,15 @@ createApp(App).mount('#app')
 Now, create `vue.config.js` at the root of your project with the following config:
 
 ```js
-const { InjectManifest } = require("workbox-webpack-plugin")
+const { InjectManifest } = require('workbox-webpack-plugin')
 
 const config = {}
 
-if (process.env.NODE_ENV === "production") {
-  config["configureWebpack"] = {
+if (process.env.NODE_ENV === 'production') {
+  config['configureWebpack'] = {
     plugins: [
       new InjectManifest({
-        swSrc: "./service-worker.js",
+        swSrc: './service-worker.js',
       }),
     ],
   }

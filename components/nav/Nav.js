@@ -12,6 +12,7 @@ import Icon from '../icons/Icon'
 import { useRouter } from 'next/router'
 import { Prefetch } from '@layer0/react'
 import useVersioning from '../versioning'
+import { first } from 'lodash'
 
 export const NAV_WIDTH = 240
 
@@ -109,7 +110,7 @@ export default function Nav({ navData }) {
   const { open: menuOpen } = useContext(MenuContext)
   const { asPath } = useRouter()
   const { createUrl } = useVersioning()
-  const [collapseOpen, setCollapseOpen] = useState(null)
+  const [collapseOpen, setCollapseOpen] = useState(first(navData)?.text)
   const classes = useStyles()
 
   useEffect(() => {
@@ -123,6 +124,10 @@ export default function Nav({ navData }) {
 
   function isCollapseActive(sectionText) {
     return collapseOpen === sectionText
+  }
+
+  function isPathSelected(selectedPath) {
+    return asPath === selectedPath
   }
 
   return (
@@ -161,11 +166,11 @@ export default function Nav({ navData }) {
                       button
                       component="a"
                       target={external && '_blank'}
-                      selected={asPath === as}
+                      selected={isPathSelected(as)}
                       className={clsx({
                         [classes.nested]: true,
-                        [classes.selected]: asPath === as,
-                        [classes.selectedMenuItem]: asPath === as,
+                        [classes.selected]: isPathSelected(as),
+                        [classes.selectedMenuItem]: isPathSelected(as),
                       })}
                     >
                       {icon && <Icon type={icon} classes={{ root: classes.icon }} />}

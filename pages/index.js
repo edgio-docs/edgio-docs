@@ -95,6 +95,9 @@ const useStyles = makeStyles(theme => ({
   changeLog: {
     paddingTop: theme.spacing(8),
     paddingBottom: theme.spacing(8),
+    '& h2': {
+      marginTop: theme.spacing(2),
+    },
   },
   button: {
     transition: 'color border-color 200ms linear',
@@ -115,7 +118,7 @@ const useStyles = makeStyles(theme => ({
 }))
 
 const iconProps = {
-  style: { height: 142, width: 142 },
+  style: { height: 142, width: 142, objectFit: 'contain' },
 }
 
 const Home = ({ navData, changeLog }) => {
@@ -232,6 +235,7 @@ const Home = ({ navData, changeLog }) => {
               guide="/guides/razzle"
               framework="razzle"
               text="Get started with Razzle"
+              icon="razzleP"
             />
 
             <Grid item container xs={12} m={12} l={12} xl={12} justify="center">
@@ -324,8 +328,8 @@ const DeployLink = ({ framework }) => {
   const classes = useStyles()
   const url = EXAMPLES_REPOS[framework]
 
+  // No url is a valid option
   if (!url) {
-    console.warn(`Invalid deploy url for ${framework}`)
     return null
   }
 

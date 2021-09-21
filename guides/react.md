@@ -2,6 +2,14 @@
 
 This guide shows you how to serve a React application on {{ PRODUCT_NAME }}. If you're using Next.js specifically, we suggest using the [Next.js guide](/guides/next).
 
+## Example
+
+Here's an example React app running on Layer0:
+
+[Try the React Example Site](https://layer0-docs-layer0-static-react-example-default.layer0.link/?button)
+[View the Code](https://github.com/layer0-docs/static-react-example?button)
+[Deploy to Layer0](https://app.layer0.co/deploy?button&deploy&repo=https://github.com/layer0-docs/static-react-example)
+
 ## Install Node.js and npm
 
 **{{ PRODUCT_NAME }} only supports Node.js version 14 and higher**

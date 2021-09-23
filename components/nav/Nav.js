@@ -158,7 +158,7 @@ export default function Nav({ navData }) {
             </ListItem>
             <Collapse in={collapseActive}>
               <List component="div" disablePadding dense>
-                {section.items.map(({ icon, text, as, href, external }) => {
+                {section.items.map(({ icon, text, as = '', href = '', external }) => {
                   const url = createUrl({ text, as, href })
 
                   const LinkItem = (

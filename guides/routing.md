@@ -206,9 +206,9 @@ new Router().get('/:foo+', res => {
 
 The captured parameter value will be provided as an array.
 
-## Matching Method, Query Parameters, Cookies, and Headers
+## Matching Method, Query Parameters, Cookies, Headers, and Body
 
-Match can either take a URL path, or an object which allows you to match based on method, query parameters, cookies, and request headers:
+Match can either take a URL path, or an object which allows you to match based on method, query parameters, cookies, request headers, and JSON body content:
 
 ```js
 router.match(
@@ -218,9 +218,28 @@ router.match(
     cookies: { currency: /^(usd)$/i }, // keys are cookie names, values are regular expressions
     headers: { 'x-moov-device': /^desktop$/i }, // keys are header names, values are regular expressions
     query: { page: /^(1|2|3)$/ }, // keys are query parameter names, values are regular expressions
+    body: { parse: 'json', criteria: { foo: 'bar' } }, // route will be matched based on if body contains criteria
   },
   () => {},
 )
+```
+
+## Matching GraphQL Queries
+
+Using the default behavior, which targets the `/graphql` endpoint:
+
+```js
+router.graphqlOperation('GetProducts', res => {
+  /* Handle the POST for the GetProducts query specifically */
+})
+```
+
+Or use a custom endpoint:
+
+```js
+router.graphqlOperation({ path: '/api/graphql', name: 'GetProducts' }, res => {
+  /* Handle the POST for the GetProducts query specifically */
+})
 ```
 
 ## Handling Requests

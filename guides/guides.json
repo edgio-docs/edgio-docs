@@ -83,8 +83,8 @@
         "href": "/guides/[...guide]"
       },
       {
-        "text": "Debugging",
-        "as": "/guides/debugging",
+        "text": "Troubleshooting",
+        "as": "/guides/troubleshooting",
         "href": "/guides/[...guide]"
       },
       {
@@ -242,6 +242,12 @@
         "icon": "vsf",
         "as": "/guides/vsf",
         "href": "/guides/[...guide]"
+      },
+      {
+        "text": "Svelte",
+        "icon": "svelte",
+        "as": "/guides/svelte",
+        "href": "/guides/[...guide]"
       }
     ]
   },
@@ -250,11 +256,15 @@
     "items": [
       {
         "text": "@layer0/core",
-        "as": "/docs/api/core/"
+        "as": "/docs/api/core/",
+        "href": "/docs/api/core/",
+        "external": true
       },
       {
         "text": "@layer0/prefetch",
-        "as": "/docs/api/prefetch/"
+        "as": "/docs/api/prefetch/",
+        "href": "/docs/api/prefetch/",
+        "external": true
       }
     ]
   },
@@ -263,11 +273,15 @@
     "items": [
       {
         "text": "Product Updates",
-        "as": "https://www.youtube.com/playlist?list=PLv3_GoCvQgUn8pKufafW2Ufy0DXTL3BCp"
+        "as": "https://www.youtube.com/playlist?list=PLv3_GoCvQgUn8pKufafW2Ufy0DXTL3BCp",
+        "href": "https://www.youtube.com/playlist?list=PLv3_GoCvQgUn8pKufafW2Ufy0DXTL3BCp",
+        "external": true
       },
       {
         "text": "Layer0 Tutorials",
-        "as": "https://www.youtube.com/playlist?list=PLv3_GoCvQgUnbIlR-OFhS9dQW4oSHv4ji"
+        "as": "https://www.youtube.com/playlist?list=PLv3_GoCvQgUnbIlR-OFhS9dQW4oSHv4ji",
+        "href": "https://www.youtube.com/playlist?list=PLv3_GoCvQgUnbIlR-OFhS9dQW4oSHv4ji",
+        "external": true
       }
     ]
   },

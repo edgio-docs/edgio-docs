@@ -227,6 +227,19 @@ router.get('/assets/:path*', ({ serveStatic, cache }) => {
 })
 ```
 
+## Routing to serverless
+
+If your request needs to be run on the serverless tier, you can use the `renderWithApp` handler to render your result using your application. Use this method to respond with an SSR or API result from your application.
+
+Example using the `renderWithApp` handler:
+
+```js
+router.get('/some/:path*', ({ renderWithApp, cache }) => {
+  cache(CACHE_PAGES)
+  renderWithApp()
+})
+```
+
 ### Falling back to server-side rendering
 
 If you render some but not all paths for a given route at build time, you can fall back to server side rendering using the `onNotFound` option. Add the `loadingPage`
@@ -403,7 +416,7 @@ router.get(
   },
   ({ setResponseHeader }) => {
     setResponseHeader('x-robots-tag', 'noindex')
-  }
+  },
 )
 ```
 

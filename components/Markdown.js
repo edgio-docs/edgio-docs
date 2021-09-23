@@ -35,9 +35,6 @@ const useStyles = makeStyles(theme => ({
     '& a': {
       textDecoration: 'none',
       color: theme.palette.text.primary,
-      '&:hover': {
-        textDecoration: 'underline',
-      },
     },
     '& svg': {
       display: 'none',
@@ -52,7 +49,8 @@ const useStyles = makeStyles(theme => ({
       borderSpacing: '0',
       borderCollapse: 'collapse',
       padding: theme.spacing(2, 0),
-      marginTop: '1em',
+      marginTop: theme.spacing(2),
+      marginBottom: theme.spacing(3),
     },
     '& td,th': {
       padding: '10px',
@@ -72,7 +70,7 @@ const useStyles = makeStyles(theme => ({
       backgroundColor: 'initial',
       padding: 'initial',
       borderRadius: 'initial',
-      fontSize: '14px',
+      fontSize: '12px',
     },
     '& li': {
       lineHeight: '1.5rem',

@@ -51,13 +51,13 @@ module.exports = new Router()
           `default-src 'self'`,
           `style-src 'unsafe-inline' 'self' fonts.googleapis.com cdn.jsdelivr.net`,
           `font-src fonts.gstatic.com`,
-          `img-src 'self' www.google-analytics.com analytics.twitter.com www.facebook.com px.ads.linkedin.com tr.lfeeder.com data:`,
+          `img-src 'self' www.google-analytics.com analytics.twitter.com www.facebook.com px.ads.linkedin.com *.intercomcdn.com tr.lfeeder.com data:`,
           `frame-src www.youtube.com`,
           `script-src 'unsafe-inline' 'self' 'unsafe-eval' cdn.jsdelivr.net www.googletagmanager.com cdn.segment.com cdn4.mxpnl.com www.google-analytics.com widget.intercom.io sc.lfeeder.com snap.licdn.com connect.facebook.net www.youtube.com js.intercomcdn.com`,
           `base-uri 'self'`,
           `frame-ancestors 'self'`,
           `media-src www.youtube.com`,
-          `connect-src *.layer0.co *.layer0.link *.layer0-perma.link *.segment.io analytics.google.com *.intercom.io *.intercomcdn.com *.intercomassets.com *.github.io *.algolianet.com *.algolia.net`,
+          `connect-src *.layer0.co *.layer0.link *.layer0-perma.link *.segment.io *.segment.com analytics.google.com *.intercom.io *.intercomcdn.com *.intercomassets.com *.github.io *.algolianet.com *.algolia.net`,
         ].join('; '),
       )
       setResponseHeader('X-XSS-Protection', '1; mode=block')
@@ -73,6 +73,9 @@ module.exports = new Router()
       },
     })
     serveStatic('.next/static/service-worker.js')
+  })
+  .get('/guides/debugging', ({ redirect }) => {
+    redirect('/guides/troubleshooting', 302)
   })
   .get('/images/:path*', ({ cache }) => {
     cache(staticCacheConfig)

@@ -182,7 +182,7 @@ export default function Nav({ navData }) {
                   )
 
                   return (
-                    <Link as={as} href={href} passHref key={as}>
+                    <Link as={url} href={href} passHref key={as}>
                       {external ? LinkItem : <Prefetch url={url}>{LinkItem}</Prefetch>}
                     </Link>
                   )

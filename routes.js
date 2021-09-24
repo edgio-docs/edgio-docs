@@ -88,21 +88,35 @@ module.exports = new Router()
   .match('/:path*', ({ cache }) => {
     cache(htmlCacheConfig)
   })
-  .match('/docs/api/:path*/', ({ proxy, cache }) => {
+  // match api docs with a file extension
+  .match('/docs/api/:path*:file(\\.[css|js|html]+)', ({ proxy, cache, request }) => {
+    cache(htmlCacheConfig)
+    proxy('api', { path: '/current/api/:path*:file' })
+  })
+  // match api docs with a terminating /
+  .match('/docs/api/:path*/', ({ proxy, cache, request }) => {
     cache(htmlCacheConfig)
     proxy('api', { path: '/current/api/:path*/index.html' })
   })
-  .match('/docs/api/:path*', ({ proxy, cache }) => {
-    cache(htmlCacheConfig)
-    proxy('api', { path: '/current/api/:path*' })
+  // match api docs without terminating /,
+  // gets redirected to :path*/ to satisfy relative asset paths
+  .match('/docs/api/:path*', ({ redirect }) => {
+    redirect('/docs/api/:path*/')
   })
-  .match('/docs/:version/api/:path*/', ({ proxy, cache }) => {
+  // match versioned api docs with a file extension
+  .match('/docs/:version/api/:path*:file(\\.[css|js|html]+)', ({ proxy, cache, request }) => {
+    cache(htmlCacheConfig)
+    proxy('api', { path: '/:version/api/:path*:file' })
+  })
+  // match versioned api docs with a terminating /
+  .match('/docs/:version/api/:path*/', ({ proxy, cache, request }) => {
     cache(htmlCacheConfig)
     proxy('api', { path: '/:version/api/:path*/index.html' })
   })
-  .match('/docs/:version/api/:path*', ({ proxy, cache }) => {
-    cache(htmlCacheConfig)
-    proxy('api', { path: '/:version/api/:path*' })
+  // match versioned api docs without terminating /,
+  // gets redirected to :path*/ to satisfy relative asset paths
+  .match('/docs/:version/api/:path*', ({ redirect }) => {
+    redirect('/docs/:version/api/:path*/')
   })
   .get('/googleb2732cddf1383cf4.html', ({ send }) =>
     send('google-site-verification: googleb2732cddf1383cf4.html', 200, 'OK'),

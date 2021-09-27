@@ -1,6 +1,6 @@
 # GraphQL
 
-{{ PRODUCT_NAME }} also enables customized caching of GraphQL requests via a middleware for [Apollo](https://www.apollographql.com/apollo-client) and a body content matcher built into the router. What follows is a guide to install and setup Layer0 to handle your GraphQL requests query by query:
+{{ PRODUCT_NAME }} enables individual caching of GraphQL queries via our middleware for [Apollo](https://www.apollographql.com/apollo-client) and a body content matcher built into the layer0 router. What follows is a guide to installing and setting up Layer0 to handle your GraphQL requests with more control.
 
 ### Installation of packages
 

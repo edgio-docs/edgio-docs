@@ -227,7 +227,7 @@ router.match(
 
 You can also match based on the presence of JSON body content:
 
-Specific property key and value
+### By specific property key and value
 
 ```js
 router.match(
@@ -238,7 +238,16 @@ router.match(
 )
 ```
 
-Use a regex matcher for the value
+matches body containing:
+
+```js
+{
+  "foo": "bar",
+  "bar": "foo
+}
+```
+
+### Use a regex matcher for the value
 
 ```js
 router.match(
@@ -249,7 +258,17 @@ router.match(
 )
 ```
 
-Nested criteria is also acceptable
+matches body containing:
+
+```js
+{
+  "operationName": "GetShops",
+  "query": "...",
+  "variables": {}
+}
+```
+
+### By a nested object criteria
 
 ```js
 router.match(
@@ -258,13 +277,24 @@ router.match(
       parse: 'json',
       criteria: {
         operation: {
-          name: 'GetProducts',
+          name: 'GetShops',
         },
       },
     },
   },
   () => {},
 )
+```
+
+matches body containing:
+
+```js
+{
+  "operation": {
+    "name": "GetShops",
+    "query": "..."
+  }
+}
 ```
 
 ## Matching GraphQL Queries

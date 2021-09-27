@@ -206,9 +206,9 @@ new Router().get('/:foo+', res => {
 
 The captured parameter value will be provided as an array.
 
-## Matching Method, Query Parameters, Cookies, Headers, and Body
+## Matching Method, Query Parameters, Cookies, and Headers
 
-Match can either take a URL path, or an object which allows you to match based on method, query parameters, cookies, request headers, and JSON body content:
+Match can either take a URL path, or an object which allows you to match based on method, query parameters, cookies, or request headers:
 
 ```js
 router.match(
@@ -218,7 +218,50 @@ router.match(
     cookies: { currency: /^(usd)$/i }, // keys are cookie names, values are regular expressions
     headers: { 'x-moov-device': /^desktop$/i }, // keys are header names, values are regular expressions
     query: { page: /^(1|2|3)$/ }, // keys are query parameter names, values are regular expressions
-    body: { parse: 'json', criteria: { foo: 'bar' } }, // route will be matched based on if body contains criteria
+  },
+  () => {},
+)
+```
+
+## Body Matching
+
+You can also match based on the presence of JSON body content:
+
+Specific property key and value
+
+```js
+router.match(
+  {
+    body: { parse: 'json', criteria: { foo: 'bar' } },
+  },
+  () => {},
+)
+```
+
+Use a regex matcher for the value
+
+```js
+router.match(
+  {
+    body: { parse: 'json', criteria: { operationName: /^Get/ } },
+  },
+  () => {},
+)
+```
+
+Nested criteria is also acceptable
+
+```js
+router.match(
+  {
+    body: {
+      parse: 'json',
+      criteria: {
+        operation: {
+          name: 'GetProducts',
+        },
+      },
+    },
   },
   () => {},
 )
@@ -226,7 +269,7 @@ router.match(
 
 ## Matching GraphQL Queries
 
-Using the default behavior, which targets the `/graphql` endpoint:
+Using the default behavior targets a `/graphql` endpoint:
 
 ```js
 router.graphqlOperation('GetProducts', res => {
@@ -241,6 +284,10 @@ router.graphqlOperation({ path: '/api/graphql', name: 'GetProducts' }, res => {
   /* Handle the POST for the GetProducts query specifically */
 })
 ```
+
+**When matching for caching purposes, the body content will be used as a cache key.**
+
+A guide on implementing GraphQL routing can be found [here](/guides/graphql).
 
 ## Handling Requests
 

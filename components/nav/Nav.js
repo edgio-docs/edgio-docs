@@ -158,7 +158,7 @@ export default function Nav({ navData }) {
             </ListItem>
             <Collapse in={collapseActive}>
               <List component="div" disablePadding dense>
-                {section.items.map(({ icon, text, as, href, external }) => {
+                {section.items.map(({ icon, text, as = '', href = '', external }) => {
                   const url = createUrl({ text, as, href })
 
                   const LinkItem = (
@@ -182,7 +182,7 @@ export default function Nav({ navData }) {
                   )
 
                   return (
-                    <Link as={as} href={href} passHref key={as}>
+                    <Link as={url} href={href} passHref key={as}>
                       {external ? LinkItem : <Prefetch url={url}>{LinkItem}</Prefetch>}
                     </Link>
                   )

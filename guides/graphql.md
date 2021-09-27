@@ -29,7 +29,7 @@ module.exports = {
 
 ### Routing
 
-Add routes for GraphQL queries to your router:
+Add routes for GraphQL queries to your layer0 router:
 
 ```js
 const { Router } = require('{{ PACKAGE_NAME }}/core/router')

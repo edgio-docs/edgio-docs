@@ -2,13 +2,13 @@
 
 {{ PRODUCT_NAME }} enables caching of GraphQL queries via our body content matcher built into the {{ PRODUCT_NAME }} router.
 
+You can view a [demo](https://layer0-docs-graphql-caching-example-default.layer0-limelight.link/) of this feature working and it's [source code](https://github.com/layer0-docs/graphql-caching-example).
+
 This guide will walk you through configuring your {{ PRODUCT_NAME }} project and the relevant routing commands for GraphQL caching.
 
-## Preparing your project
+### Project configuration
 
 This section assumes you already have a project that deploys to {{PRODUCT_NAME}}. If you have a new project please consult [these instructions](/guides/getting_started#section_adding_layer0_to_an_existing_app) for adding {{PRODUCT_NAME}} to an existing app.
-
-### Project configuration
 
 {{ PRODUCT_NAME }} needs to know the domain of your GraphQL API. You can do this adding the GraphQL API as a backend to `{{ CONFIG_FILE }}`. For example:
 
@@ -67,7 +67,7 @@ export const DATA = gql`
 const { loading, error, data } = useQuery(DATA)
 ```
 
-## Enabling GraphQL Caching
+### Enabling GraphQL Caching
 
 GraphQL routes are cached by configuring the caching parameters in the {{PRODUCT_NAME}} router. To make a GraphQL route cachable, use the `graphqlOperation` method and specify a `cache` property. For example, the code below will cache all GraphQL operations named `GetData` and proxy them the `graphql` endpoint defined in `{{ CONFIG_FILE }}`.
 

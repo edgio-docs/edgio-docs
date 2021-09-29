@@ -218,17 +218,83 @@ router.match(
     cookies: { currency: /^(usd)$/i }, // keys are cookie names, values are regular expressions
     headers: { 'x-moov-device': /^desktop$/i }, // keys are header names, values are regular expressions
     query: { page: /^(1|2|3)$/ }, // keys are query parameter names, values are regular expressions
-    body: { parse: 'json', criteria: { operationName: 'GetProducts' } }, // the body content will be matched against the presence of the criteria properties
   },
   () => {},
 )
 ```
 
-## Body Matching
+## Body Matching for POST requests
 
-You can also match based on the presence of JSON body content:
+You can also match HTTP `POST` requests based on their request body content as in the following example:
 
-### By specific property key and value
+```js
+router.match(
+  {
+    body: { parse: 'json', criteria: { operationName: 'GetProducts' } }, // the body content will parsed as JSON and the parsed JSON matched against the presence of the criteria properties (in this case a GraphQL operation named 'GetProducts')
+  },
+  () => {},
+)
+```
+Currently the only body content supported is JSON. Body content is parsed parsed as JSON and the parsed JSON matched against the presence of the fields specified in the `criteria` field. The [POST Body Matching Criteria](#section_post_body_matching_criteria) section below contains examples of using the `criteria` field.
+
+Body matching can be combined with other match parameters such as headers and cookies. For example,
+
+```js
+router.match(
+  {
+    // Only matches GetProducts operations to the /graphql endpoint
+    // for logged in users
+    path: '/graphql', 
+    cookies: { loginStatus: /^(loggedIn)$/i }, // loggedin users
+    body: { parse: 'json', criteria: { operationName: 'GetProducts' } } 
+  },
+  () => {},
+)
+```
+
+### Caching & POST body matching
+
+When body matching is combined with `cache` in a route, **the HTTP request body will automatically be used as the cache key.** For example, the code below will cache GraphQL `GetProducts` queries using the entire request body as the cache key:
+
+```js
+router.match(
+  {
+    body: { parse: 'json', criteria: { operationName: 'GetProducts' } } 
+  },
+  ({cache}) => {
+      edge: {
+        maxAgeSeconds: 60 * 60,
+        staleWhileRevalidateSeconds: 60 * 60 * 24, // this way stale items can still be prefetched
+      },
+  }
+)
+```
+
+You can still add additional parameters to the cache key using the normal {{ EDGEJS_LABEL }} `key` property. For example, the code below will cache GraphQL `GetProducts` queries separately for each user based on their userID cookie *and* the HTTP body of the request.
+
+```js
+router.match(
+  {
+    body: { parse: 'json', criteria: { operationName: 'GetProducts' } } 
+  },
+  ({cache}) => {
+    cache({
+      edge: {
+        maxAgeSeconds: 60 * 60,
+        staleWhileRevalidateSeconds: 60 * 60 * 24, // this way stale items can still be prefetched
+      },
+      key: new CustomCacheKey()
+      .addHeader('userID') // Split cache by userID
+    })
+  },
+)
+```
+
+### POST body matching criteria
+
+The `criteria` property can be a string or regular expression. 
+
+For example, the router below,
 
 ```js
 router.match(
@@ -239,16 +305,18 @@ router.match(
 )
 ```
 
-matches body containing:
+would match an HTTP POST request body containing:
 
 ```js
 {
   "foo": "bar",
-  "bar": "foo
+  "bar": "foo"
 }
 ```
 
-### Use a regex matcher for the value
+### Regular expression criteria
+
+Regular expressions can also be used as `criteria`. For example,
 
 ```js
 router.match(
@@ -259,7 +327,7 @@ router.match(
 )
 ```
 
-matches body containing:
+would match an HTTP POST body containing:
 
 ```js
 {
@@ -269,7 +337,9 @@ matches body containing:
 }
 ```
 
-### By a nested object criteria
+### Nested JSON criteria
+
+You can also use a nested object to match a field at a specific location in the JSON. For example,
 
 ```js
 router.match(
@@ -287,7 +357,7 @@ router.match(
 )
 ```
 
-matches body containing:
+would match an HTTP POST body containing:
 
 ```js
 {
@@ -298,9 +368,9 @@ matches body containing:
 }
 ```
 
-## Matching GraphQL Queries
+## GraphQL Queries
 
-Using the default behavior targets a `/graphql` endpoint:
+The {{ EDGEJS_LABEL }} router provides a `graphqlOperation` method for matching GraphQL. 
 
 ```js
 router.graphqlOperation('GetProducts', res => {
@@ -308,7 +378,7 @@ router.graphqlOperation('GetProducts', res => {
 })
 ```
 
-Or use a custom endpoint:
+By default, the `graphqlOperation` assumes your GraphQL endpoint is at `/graphql`. You can alter this behavior by using the `path` property as shown below:
 
 ```js
 router.graphqlOperation({ path: '/api/graphql', name: 'GetProducts' }, res => {
@@ -316,9 +386,11 @@ router.graphqlOperation({ path: '/api/graphql', name: 'GetProducts' }, res => {
 })
 ```
 
-**When matching for caching purposes, the body content will be used as a cache key.**
+Note that when the `graphqlOperation` function is used, the HTTP request body will automatically be included in the cache key.
 
-A guide on implementing GraphQL routing can be found [here](/guides/graphql).
+The `graphqlOperation` function is provided to simplify matching of common GraphQL scenarios. For complex GraphQL matching (such as authenticated data), you can use the generic [Body Matching for POST requests](#section_body_matching_for_post_requests) feature.
+
+A guide on implementing GraphQL routing in your project can be found [here](/guides/graphql).
 
 ## Handling Requests
 

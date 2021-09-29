@@ -53,7 +53,7 @@ module.exports = new Router()
           `font-src fonts.gstatic.com`,
           `img-src 'self' www.google-analytics.com analytics.twitter.com www.facebook.com px.ads.linkedin.com *.intercomcdn.com tr.lfeeder.com data:`,
           `frame-src www.youtube.com`,
-          `script-src 'unsafe-inline' 'self' 'unsafe-eval' cdn.jsdelivr.net www.googletagmanager.com cdn.segment.com cdn4.mxpnl.com www.google-analytics.com widget.intercom.io sc.lfeeder.com snap.licdn.com connect.facebook.net www.youtube.com js.intercomcdn.com`,
+          `script-src 'unsafe-inline' 'self' 'unsafe-eval' cdn.jsdelivr.net www.googletagmanager.com cdn.segment.com cdn4.mxpnl.com www.google-analytics.com widget.intercom.io sc.lfeeder.com snap.licdn.com connect.facebook.net www.youtube.com js.intercomcdn.com static.hotjar.com s.adroll.com px4.ads.linkedin.com`,
           `base-uri 'self'`,
           `frame-ancestors 'self'`,
           `media-src www.youtube.com`,

@@ -53,6 +53,11 @@
         "href": "/guides/[...guide]"
       },
       {
+        "text": "GraphQL",
+        "as": "/guides/graphql",
+        "href": "/guides/[...guide]"
+      },
+      {
         "text": "Static Prerendering",
         "as": "/guides/static_prerendering",
         "href": "/guides/[...guide]"

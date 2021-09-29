@@ -236,7 +236,7 @@ router.match(
 )
 ```
 
-Currently the only body content supported is JSON. Body content is parsed parsed as JSON and the parsed JSON matched against the presence of the fields specified in the `criteria` field. The [POST Body Matching Criteria](#section_post_body_matching_criteria) section below contains examples of using the `criteria` field.
+Currently the only body content supported is JSON. Body content is parsed as JSON and is matched against the presence of the fields specified in the `criteria` field. The [POST Body Matching Criteria](#section_post_body_matching_criteria) section below contains examples of using the `criteria` field.
 
 Body matching can be combined with other match parameters such as headers and cookies. For example,
 

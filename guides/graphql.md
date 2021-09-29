@@ -1,8 +1,8 @@
 # GraphQL
 
-{{ PRODUCT_NAME }} enables caching of GraphQL queries via our middleware for [Apollo](https://www.apollographql.com/apollo-client) and a body content matcher built into the {{ PRODUCT_NAME }} router. 
+{{ PRODUCT_NAME }} enables caching of GraphQL queries via our middleware for [Apollo](https://www.apollographql.com/apollo-client) and a body content matcher built into the {{ PRODUCT_NAME }} router.
 
-This guide will walk you through configuring your {{ PRODUCT_NAME }} project and the relevant routing commands for GraphQL caching,
+This guide will walk you through configuring your {{ PRODUCT_NAME }} project and the relevant routing commands for GraphQL caching.
 
 ## Preparing your project
 
@@ -77,7 +77,6 @@ export const DATA = gql`
 const { loading, error, data } = useQuery(DATA)
 ```
 
-
 ## Enabling GraphQL Caching
 
 GraphQL routes are cached by configuring the caching parameters in the {{PRODUCT_NAME}} router. To make a GraphQL route cachable, use the `graphqlOperation` method and specify a `cache` property. For example, the code below will cache all GraphQL operations named `GetData` and proxy them the `graphql` endpoint defined in `{{ CONFIG_FILE }}`.
@@ -102,4 +101,3 @@ module.exports = new Router().graphqlOperation('GetData', ({ cache, proxy }) => 
 ```
 
 For more information consult [GraphQL section](/guides/routing#section_graphql_queries) and [Body Matching for POST requests section](/guides/routing#section_body_matching_for_post_requests) of the routing guide.
-

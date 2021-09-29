@@ -235,6 +235,7 @@ router.match(
   () => {},
 )
 ```
+
 Currently the only body content supported is JSON. Body content is parsed parsed as JSON and the parsed JSON matched against the presence of the fields specified in the `criteria` field. The [POST Body Matching Criteria](#section_post_body_matching_criteria) section below contains examples of using the `criteria` field.
 
 Body matching can be combined with other match parameters such as headers and cookies. For example,
@@ -244,9 +245,9 @@ router.match(
   {
     // Only matches GetProducts operations to the /graphql endpoint
     // for logged in users
-    path: '/graphql', 
+    path: '/graphql',
     cookies: { loginStatus: /^(loggedIn)$/i }, // loggedin users
-    body: { parse: 'json', criteria: { operationName: 'GetProducts' } } 
+    body: { parse: 'json', criteria: { operationName: 'GetProducts' } },
   },
   () => {},
 )
@@ -259,32 +260,33 @@ When body matching is combined with `cache` in a route, **the HTTP request body 
 ```js
 router.match(
   {
-    body: { parse: 'json', criteria: { operationName: 'GetProducts' } } 
+    body: { parse: 'json', criteria: { operationName: 'GetProducts' } },
   },
-  ({cache}) => {
-      edge: {
-        maxAgeSeconds: 60 * 60,
-        staleWhileRevalidateSeconds: 60 * 60 * 24, // this way stale items can still be prefetched
-      },
-  }
-)
-```
-
-You can still add additional parameters to the cache key using the normal {{ EDGEJS_LABEL }} `key` property. For example, the code below will cache GraphQL `GetProducts` queries separately for each user based on their userID cookie *and* the HTTP body of the request.
-
-```js
-router.match(
-  {
-    body: { parse: 'json', criteria: { operationName: 'GetProducts' } } 
-  },
-  ({cache}) => {
+  ({ cache }) => {
     cache({
       edge: {
         maxAgeSeconds: 60 * 60,
         staleWhileRevalidateSeconds: 60 * 60 * 24, // this way stale items can still be prefetched
       },
-      key: new CustomCacheKey()
-      .addHeader('userID') // Split cache by userID
+    })
+  },
+)
+```
+
+You can still add additional parameters to the cache key using the normal {{ EDGEJS_LABEL }} `key` property. For example, the code below will cache GraphQL `GetProducts` queries separately for each user based on their userID cookie _and_ the HTTP body of the request.
+
+```js
+router.match(
+  {
+    body: { parse: 'json', criteria: { operationName: 'GetProducts' } },
+  },
+  ({ cache }) => {
+    cache({
+      edge: {
+        maxAgeSeconds: 60 * 60,
+        staleWhileRevalidateSeconds: 60 * 60 * 24, // this way stale items can still be prefetched
+      },
+      key: new CustomCacheKey().addCookie('userID'), // Split cache by userID
     })
   },
 )
@@ -292,7 +294,7 @@ router.match(
 
 ### POST body matching criteria
 
-The `criteria` property can be a string or regular expression. 
+The `criteria` property can be a string or regular expression.
 
 For example, the router below,
 
@@ -370,7 +372,7 @@ would match an HTTP POST body containing:
 
 ## GraphQL Queries
 
-The {{ EDGEJS_LABEL }} router provides a `graphqlOperation` method for matching GraphQL. 
+The {{ EDGEJS_LABEL }} router provides a `graphqlOperation` method for matching GraphQL.
 
 ```js
 router.graphqlOperation('GetProducts', res => {

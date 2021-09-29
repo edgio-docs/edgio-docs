@@ -1,20 +1,12 @@
 # GraphQL
 
-{{ PRODUCT_NAME }} enables caching of GraphQL queries via our middleware for [Apollo](https://www.apollographql.com/apollo-client) and a body content matcher built into the {{ PRODUCT_NAME }} router.
+{{ PRODUCT_NAME }} enables caching of GraphQL queries via our body content matcher built into the {{ PRODUCT_NAME }} router.
 
 This guide will walk you through configuring your {{ PRODUCT_NAME }} project and the relevant routing commands for GraphQL caching.
 
 ## Preparing your project
 
 This section assumes you already have a project that deploys to {{PRODUCT_NAME}}. If you have a new project please consult [these instructions](/guides/getting_started#section_adding_layer0_to_an_existing_app) for adding {{PRODUCT_NAME}} to an existing app.
-
-### Installation of packages
-
-Start by adding `{{ PACKAGE_NAME }}/apollo` and `apollo-link-error` packages to your project:
-
-```
-npm i --save {{ PACKAGE_NAME }}/apollo apollo-link-error
-```
 
 ### Project configuration
 
@@ -33,31 +25,29 @@ module.exports = {
 }
 ```
 
-### Wrap Apollo with Layer0 middleware
+### Example Apollo Setup
 
-Configure your Apollo client to use a custom link from {{ PACKAGE_NAME }}/apollo's `createHttpLink` function.
+We will use a simple Apollo project setup for an example:
+
+Our Apollo Client points to `/graphql`, which is where we will add custom edge routing logic.
 
 ```js
-import { ApolloClient, InMemoryCache, createHttpLink as apolloCreateHttpLink } from '@apollo/client'
-import { createHttpLink } from '@layer0/apollo'
+import { ApolloClient, InMemoryCache, createHttpLink } from '@apollo/client'
 
 const client = new ApolloClient({
   cache: new InMemoryCache(),
-  link: createHttpLink({ uri: '/graphql' }, apolloCreateHttpLink),
+  uri: '/graphql',
 })
+
+// Pass our client to the child components
+return (
+  <ApolloProvider client={client}>
+    <Component />
+  </ApolloProvider>
+)
 ```
 
-The `createHttpLink` function accepts all of the options [documented here](https://www.apollographql.com/docs/link/links/http/#options).
-
-Note that if you are using React or Next, you will need to wrap your components which will be making queries with an `ApolloProvider`:
-
-```js
-<ApolloProvider client={client}>
-  <Component />
-</ApolloProvider>
-```
-
-Children components of the `<ApolloProvider>` can then make GraphQL queries as normal. For example:
+Create a GraphQL query which we will target in a custom route below.
 
 ```js
 import { gql, useQuery } from '@apollo/client'

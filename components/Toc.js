@@ -50,7 +50,7 @@ const useStyles = makeStyles(theme => ({
     fontWeight: 'bold',
     opacity: 1,
     color: theme.palette.secondary.main,
-    borderLeft: `1px solid ${theme.palette.secondary.main}`,
+    borderLeft: `3px solid ${theme.palette.secondary.main}`,
   },
 }))
 

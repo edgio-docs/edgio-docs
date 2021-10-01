@@ -96,9 +96,15 @@ const useStyles = makeStyles(theme => ({
     },
   },
   selectedMenuItem: {
-    '&.Mui-selected span': {
+    opacity: 1,
+    borderLeft: `3px solid ${theme.palette.secondary.main}`,
+    marginLeft: 3,
+    '& a': {
       fontWeight: 'bold',
       color: theme.palette.secondary.main,
+      '& div span': {
+        marginLeft: -6,
+      },
     },
   },
   icon: {
@@ -162,23 +168,28 @@ export default function Nav({ navData }) {
                   const url = createUrl({ text, as, href })
 
                   const LinkItem = (
-                    <ListItem
-                      button
-                      component="a"
-                      target={external && '_blank'}
-                      selected={isPathSelected(as)}
+                    <div
                       className={clsx({
-                        [classes.nested]: true,
-                        [classes.selected]: isPathSelected(as),
                         [classes.selectedMenuItem]: isPathSelected(as),
                       })}
                     >
-                      {icon && <Icon type={icon} classes={{ root: classes.icon }} />}
-                      {external && (
-                        <OpenInNewIcon fontSize="small" classes={{ root: classes.icon }} />
-                      )}
-                      <ListItemText primary={text} />
-                    </ListItem>
+                      <ListItem
+                        button
+                        component="a"
+                        target={external && '_blank'}
+                        selected={isPathSelected(as)}
+                        className={clsx({
+                          [classes.nested]: true,
+                          [classes.selected]: isPathSelected(as),
+                        })}
+                      >
+                        {icon && <Icon type={icon} classes={{ root: classes.icon }} />}
+                        {external && (
+                          <OpenInNewIcon fontSize="small" classes={{ root: classes.icon }} />
+                        )}
+                        <ListItemText primary={text} />
+                      </ListItem>
+                    </div>
                   )
 
                   return (

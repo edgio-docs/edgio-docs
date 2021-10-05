@@ -73,7 +73,7 @@ Object.assign(theme.overrides, {
   MuiCssBaseline: {
     '@global': {
       a: {
-        color: '#0070f3',
+        color: pink[600],
         textDecoration: 'none',
         '&:hover': {
           textDecoration: 'underline',

@@ -78,6 +78,9 @@ Object.assign(theme.overrides, {
         '&:hover': {
           textDecoration: 'underline',
         },
+        '&:hover button': {
+          textDecoration: 'none',
+        },
       },
       '.MuiDivider-root': {
         marginBottom: '1rem !important',

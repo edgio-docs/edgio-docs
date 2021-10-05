@@ -101,9 +101,7 @@ const useStyles = makeStyles(theme => ({
     '& a': {
       fontWeight: 'bold',
       color: theme.palette.secondary.main,
-      '& div span': {
-        marginLeft: -3,
-      },
+      marginLeft: -3,
     },
   },
   icon: {

@@ -100,7 +100,9 @@ const useStyles = makeStyles(theme => ({
     },
   },
   buttonLink: {
-    textDecoration: 'none',
+    '&:hover': {
+      textDecoration: 'none',
+    },
   },
   link: {
     color: theme.palette.link,

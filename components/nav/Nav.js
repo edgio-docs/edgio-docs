@@ -98,12 +98,11 @@ const useStyles = makeStyles(theme => ({
   selectedMenuItem: {
     opacity: 1,
     borderLeft: `3px solid ${theme.palette.secondary.main}`,
-    marginLeft: 3,
     '& a': {
       fontWeight: 'bold',
       color: theme.palette.secondary.main,
       '& div span': {
-        marginLeft: -6,
+        marginLeft: -3,
       },
     },
   },

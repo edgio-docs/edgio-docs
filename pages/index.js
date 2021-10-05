@@ -135,8 +135,10 @@ const Home = ({ navData }) => {
       </Head>
       <div className={classes.hero}>
         <Layer0Icon className={classes.logo} />
-        <Typography variant="h2" style={{ maxWidth: 800, marginTop: 0, fontSize: '34px' }}>
-          <div style={{ position: 'relative' }}>Jamstack for Production.</div>
+        <Typography variant="h2" style={{ maxWidth: 800, marginTop: 0, fontSize: '30px' }}>
+          <div style={{ position: 'relative' }}>
+            Develop, deploy, preview, split test and monitor your frontend.
+          </div>
         </Typography>
       </div>
       <div className={classes.frameworks}>

@@ -12,10 +12,11 @@ const theme = createMuiTheme({
       default: '#fff',
     },
     primary: {
-      main: '#3d3c3c',
+      main: pink[500],
+      light: pink[400],
     },
     secondary: {
-      main: '#e95495',
+      main: pink[500],
     },
     error: {
       main: '#f48fb1',
@@ -30,24 +31,34 @@ const theme = createMuiTheme({
   typography: {
     h1: {
       fontSize: '2.5rem',
+      marginTop: '0.67em',
     },
     h2: {
       fontSize: '2rem',
+      marginTop: '1.5em',
     },
     h3: {
       fontSize: '1.5rem',
+      marginTop: '1.5em',
     },
     h4: {
       fontSize: '1.3125rem',
+      marginTop: '1.5em',
     },
     h5: {
       fontSize: '1rem',
+      marginTop: '1.5em',
     },
     h6: {
       fontSize: '1rem',
+      marginTop: '1.5em',
     },
-    body1: {},
-    body2: {},
+    body1: {
+      fontSize: '1rem',
+    },
+    body2: {
+      fontSize: '1rem',
+    },
   },
   overrides: {
     MuiLink: {
@@ -62,8 +73,11 @@ Object.assign(theme.overrides, {
   MuiCssBaseline: {
     '@global': {
       a: {
-        color: theme.palette.secondary.main,
+        color: '#0070f3',
         textDecoration: 'none',
+        '&:hover': {
+          textDecoration: 'underline',
+        },
       },
       '.MuiDivider-root': {
         marginBottom: '1rem !important',

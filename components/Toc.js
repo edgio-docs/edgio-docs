@@ -51,6 +51,9 @@ const useStyles = makeStyles(theme => ({
     opacity: 1,
     color: theme.palette.secondary.main,
     borderLeft: `3px solid ${theme.palette.secondary.main}`,
+    '& span': {
+      marginLeft: -3,
+    },
   },
 }))
 
@@ -156,7 +159,7 @@ function Item({ heading, activeHeading }) {
             [classes.active]: id === activeHeading,
           })}
         >
-          {text}
+          <span>{text}</span>
         </a>
       </Typography>
     </div>

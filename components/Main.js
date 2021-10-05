@@ -4,7 +4,7 @@ import clsx from 'clsx'
 const useStyles = makeStyles(theme => ({
   '@global': {
     html: {
-      '-webkit-font-smoothing': 'subpixel-antialiased',
+      '-webkit-font-smoothing': 'antialiased',
     },
   },
   root: {

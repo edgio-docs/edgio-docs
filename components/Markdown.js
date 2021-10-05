@@ -104,7 +104,6 @@ const useStyles = makeStyles(theme => ({
   },
   link: {
     color: theme.palette.link,
-    fontWeight: 500,
   },
 }))
 

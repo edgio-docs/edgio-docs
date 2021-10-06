@@ -160,6 +160,8 @@ const Home = ({ navData }) => {
 
         <FrameworkItem guide="/guides/vsf" framework="vsf" text="Get started with Vue Storefront" />
 
+        <FrameworkItem guide="/guides/swell" framework="swell" text="Get started with Swell" />
+
         <FrameworkItem
           guide="/guides/react"
           framework="static-react"

@@ -18,6 +18,7 @@ import HTMLIcon from './html.svg'
 import Fastboot from './fastboot.svg'
 import Razzle from './razzle.svg'
 import SvelteIcon from './svelte.svg'
+import SwellIcon from './swell.svg'
 import RazzlePng from './razzle.png'
 
 export const icons = {
@@ -41,6 +42,7 @@ export const icons = {
   razzleP: RazzlePng,
   razzle: Razzle,
   svelte: SvelteIcon,
+  swell: SwellIcon,
 }
 
 export const styles = theme => ({

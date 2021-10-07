@@ -89,7 +89,7 @@ module.exports = new Router()
     cache(htmlCacheConfig)
   })
   // match api docs with a file extension
-  .match('/docs/api/:path*:file(\\.[css|js|html]+)', ({ proxy, cache, request }) => {
+  .match('/docs/api/:path*:file(\\.[css|js|html|json|png]+)', ({ proxy, cache, request }) => {
     cache(htmlCacheConfig)
     proxy('api', { path: '/current/api/:path*:file' })
   })
@@ -104,10 +104,13 @@ module.exports = new Router()
     redirect('/docs/api/:path*/')
   })
   // match versioned api docs with a file extension
-  .match('/docs/:version/api/:path*:file(\\.[css|js|html]+)', ({ proxy, cache, request }) => {
-    cache(htmlCacheConfig)
-    proxy('api', { path: '/:version/api/:path*:file' })
-  })
+  .match(
+    '/docs/:version/api/:path*:file(\\.[css|js|html|json|png]+)',
+    ({ proxy, cache, request }) => {
+      cache(htmlCacheConfig)
+      proxy('api', { path: '/:version/api/:path*:file' })
+    },
+  )
   // match versioned api docs with a terminating /
   .match('/docs/:version/api/:path*/', ({ proxy, cache, request }) => {
     cache(htmlCacheConfig)

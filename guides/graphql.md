@@ -25,7 +25,6 @@ To configure the origin domain from which your GraphQL API is served, add a back
 
 ```js
 // {{ CONFIG_FILE }}
-
 module.exports = {
   backends: {
     graphql: {
@@ -88,9 +87,6 @@ export default new Router().graphqlOperation(/product/i, ({ cache, proxy }) => {
 Most GraphQL APIs are hosted on the `/graphql` path. The `graphqlOperation` method will only match requests sent to `/graphql` by default. To use a different path, specify the `path` option:
 
 ```js
-// routes.js
-import { Router } from '@layer0/core'
-
 export default new Router().graphqlOperation(
   {
     path: '/gql-api' /* override the default /graphql path */,
@@ -116,6 +112,11 @@ You can also serve stale responses while fetching a fresh response from the orig
 cache-control: max-age=3600, stale-while-revalidate=86400
 ```
 
+### Cache Key
+
+Regardless of the method you choose to define caching rules, Layer0 incorporates the request body into the cache key for all `POST` requests. This means that if two requests have different request bodies,
+their responses will be cached separately.
+
 ## Invalidating stale queries
 
 Layer0 gives you the ability to purge individual queries from the edge cache by assigning surrogate keys to each cached response.
@@ -123,6 +124,8 @@ Layer0 gives you the ability to purge individual queries from the edge cache by 
 ### Assigning Surrogate Keys
 
 To invalidate a cached query, you must first assign a surrogate key to the response before it is cached. You can do this using the router:
+
+#### Using deriveSurrogateKeysFromJson
 
 ```js
 // routes.js
@@ -139,6 +142,31 @@ export default new Router().graphqlOperation('GetProduct', ({ cache, proxy }) =>
     transformResponse: deriveSurrogateKeysFromJson(json => [`product.${json.id}`]), // <~ Assigns a surrogate key to each response
   })
 })
+```
+
+#### Using the x-0-surrogate-key response header
+
+You can also assign surrogate keys by adding an `x-0-surrogate-key` header to the response from the origin. Separate multiple keys with spaces:
+
+```
+x-0-surrogate-key: key1 key2 key3
+```
+
+#### Handling conflicts
+
+If the origin returns an `x-0-surrogate-key` response header and `deriveSurrogateKeysFromJson` is also used for a given request, you can specify whether the surrogate keys should be merged, or the ones
+from the router should override those in the origin response:
+
+To merge surrogate keys:
+
+```js
+deriveSurrogateKeysFromJson(json => [`product.${json.id}`], { onConflict: 'merge' })
+```
+
+To ignore the surrogate keys from the origin:
+
+```js
+deriveSurrogateKeysFromJson(json => [`product.${json.id}`], { onConflict: 'override' })
 ```
 
 ### Purging by Surrogate Key

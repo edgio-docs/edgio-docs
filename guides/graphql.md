@@ -73,6 +73,35 @@ export default new Router().graphqlOperation('GetProduct', ({ cache, proxy }) =>
 })
 ```
 
+#### Matching Operations by Regular Expression
+
+The `graphqlOperation` method also allows you to match operations using a regular expression:
+
+```js
+export default new Router().graphqlOperation(/product/i, ({ cache, proxy }) => {
+  /* ... */
+})
+```
+
+#### Altering the default GraphQL API path
+
+Most GraphQL APIs are hosted on the `/graphql` path. The `graphqlOperation` method will only match requests sent to `/graphql` by default. To use a different path, specify the `path` option:
+
+```js
+// routes.js
+import { Router } from '@layer0/core'
+
+export default new Router().graphqlOperation(
+  {
+    path: '/gql-api' /* override the default /graphql path */,
+    name: 'GetProduct' /* name can also be a regular expression */,
+  },
+  ({ cache, proxy }) => {
+    /* ... */
+  },
+)
+```
+
 ### Using the cache-control header
 
 {{ PRODUCT_NAME }} supports caching GraphQL responses at the network edge using the standard `cache-control` HTTP response header. For example, to cache the results of a query for one hour, adding the following header to your response:

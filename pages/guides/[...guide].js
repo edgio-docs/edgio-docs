@@ -30,7 +30,7 @@ export default function Guide({ notFound, markdown, navData, guide }) {
     title: `${PRODUCT_NAME} Documentation ${pageTitle ? `- ${pageTitle}` : ''}`,
     description: 'Infrastructure for sub-second dynamic websites. Develop, deploy, preview, experiment on, monitor and run your frontend - Deploy for Free in 1 Minute.',
     canonical: `https://docs.layer0.co/guides/${guide}`,
-    image: `https://layer0-docs-og-image-default.layer0.link/api?title=${pageTitle || 'Documentation'}&width=1920&height=1080`
+    image: `https://layer0-docs-og-image-default.layer0.link/api?title=${pageTitle || 'Documentation'}&width=1400&height=720`
   }
 
   return (

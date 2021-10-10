@@ -121,7 +121,7 @@ const Home = ({ navData }) => {
     title: `${PRODUCT_NAME} Documentation`,
     description: 'Infrastructure for sub-second dynamic websites. Develop, deploy, preview, experiment on, monitor and run your frontend - Deploy for Free in 1 Minute.',
     canonical: 'https://docs.layer0.co',
-    image: 'https://layer0-docs-og-image-default.layer0.link/api?title=Documentation&width=1920&height=1080'
+    image: 'https://layer0-docs-og-image-default.layer0.link/api?title=Documentation&width=1400&height=720'
   }
   return (
     <PageWrapper nav={<Nav navData={navData} />}>

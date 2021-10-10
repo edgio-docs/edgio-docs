@@ -1,23 +1,12 @@
-import React from 'react'
-import Head from 'next/head'
-import Nav from '../components/nav/Nav'
-import PageWrapper from '../components/PageWrapper'
-import {
-  Typography,
-  makeStyles,
-  darken,
-  Container,
-  Grid,
-  Paper,
-  Divider,
-  Button,
-} from '@material-ui/core'
+import { getGuides } from '@/components/getGuides'
+import Icon from '@/components/icons/Icon'
+import Layer0Icon from '@/components/icons/layer0-black.svg'
+import Nav from '@/components/nav/Nav'
+import PageWrapper from '@/components/PageWrapper'
+import SEO from '@/components/SEO'
+import { Button, darken, Divider, Grid, makeStyles, Paper, Typography } from '@material-ui/core'
 import Link from 'next/link'
-import Layer0Icon from '../components/icons/layer0-black.svg'
-import Icon from '../components/icons/Icon'
-import Markdown from '../components/Markdown'
-import { PRODUCT_NAME, EXAMPLES_REPOS } from '../constants'
-import { getGuides, getGuideByName } from '../components/getGuides'
+import { EXAMPLES_REPOS, PRODUCT_NAME } from '../constants'
 
 const useStyles = makeStyles(theme => ({
   hero: {
@@ -128,11 +117,15 @@ const iconProps = {
 
 const Home = ({ navData }) => {
   const classes = useStyles()
+  const meta= {
+    title: `${PRODUCT_NAME} Documentation`,
+    description: 'Infrastructure for sub-second dynamic websites. Develop, deploy, preview, experiment on, monitor and run your frontend - Deploy for Free in 1 Minute.',
+    canonical: 'https://docs.layer0.co',
+    image: 'https://layer0-docs-og-image-default.layer0.link/api?title=Documentation&width=1920&height=1080'
+  }
   return (
     <PageWrapper nav={<Nav navData={navData} />}>
-      <Head>
-        <title>{PRODUCT_NAME} Documentation</title>
-      </Head>
+      <SEO meta={meta} />
       <div className={classes.hero}>
         <Layer0Icon className={classes.logo} />
         <Typography variant="h2" style={{ maxWidth: 800, marginTop: 0, fontSize: '30px' }}>

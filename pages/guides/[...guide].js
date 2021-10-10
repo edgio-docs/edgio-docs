@@ -1,17 +1,15 @@
-import fetch from 'isomorphic-fetch'
-import Head from 'next/dist/next-server/lib/head'
-import React from 'react'
-import Footer from '../../components/Footer'
-import Markdown from '../../components/Markdown'
-import Nav from '../../components/nav/Nav'
-import PageWrapper from '../../components/PageWrapper'
-import ApiLink from '../../components/ApiLink'
+import ApiLink from '@/components/ApiLink'
+import Footer from '@/components/Footer'
+import { getGuideByName, getGuides } from '@/components/getGuides'
+import Markdown from '@/components/Markdown'
+import Nav from '@/components/nav/Nav'
+import PageWrapper from '@/components/PageWrapper'
+import SEO from '@/components/SEO'
+import { populatePlaceholders } from '@/components/utils/markdownUtils'
 import { Typography } from '@material-ui/core'
 import { useTheme } from '@material-ui/styles'
 import { PRODUCT_NAME } from '../../constants'
-import { populatePlaceholders } from '../../components/utils/markdownUtils'
 import prerenderRequests from '../../layer0/prerenderRequests'
-import { getGuides, getGuideByName } from '../../components/getGuides'
 
 export default function Guide({ notFound, markdown, navData, guide }) {
   const theme = useTheme()
@@ -28,16 +26,19 @@ export default function Guide({ notFound, markdown, navData, guide }) {
     })
   })
 
+  const meta= {
+    title: `${PRODUCT_NAME} Documentation ${pageTitle ? `- ${pageTitle}` : ''}`,
+    description: 'Infrastructure for sub-second dynamic websites. Develop, deploy, preview, experiment on, monitor and run your frontend - Deploy for Free in 1 Minute.',
+    canonical: `https://docs.layer0.co/guides/${guide}`,
+    image: `https://layer0-docs-og-image-default.layer0.link/api?title=${pageTitle || 'Documentation'}&width=1920&height=1080`
+  }
+
   return (
     <PageWrapper
       centerStyle={{ paddingTop: theme.spacing(4) }}
       nav={<Nav navData={navData} aboveAdornments={[<ApiLink key="link" />]} />}
     >
-      <Head>
-        <title>
-          {PRODUCT_NAME} Documentation {pageTitle ? `- ${pageTitle}` : ''}
-        </title>
-      </Head>
+      <SEO meta={meta} />
       {notFound ? (
         <Typography variant="h1" align="center">
           Page not found.

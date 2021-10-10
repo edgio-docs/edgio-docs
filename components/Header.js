@@ -1,29 +1,17 @@
-import React, { useContext, useState, useEffect, useCallback } from 'react'
-import { MenuContext } from './MenuProvider'
+import { AppBar, Button, Hidden, IconButton, LinearProgress, Toolbar, useScrollTrigger } from '@material-ui/core'
+import { grey } from '@material-ui/core/colors'
 import { makeStyles } from '@material-ui/core/styles'
-import {
-  AppBar,
-  Container,
-  Toolbar,
-  IconButton,
-  useScrollTrigger,
-  Slide,
-  Hidden,
-  LinearProgress,
-  Button,
-  lighten,
-  darken,
-} from '@material-ui/core'
 import MenuIcon from '@material-ui/icons/Menu'
+import clsx from 'clsx'
 import Link from 'next/link'
+import Router from 'next/router'
+import { useCallback, useContext, useEffect, useState } from 'react'
+import { APP_URL, FORUM_URL, STATUS_URL } from '../constants'
+import HeaderCollapseMenu from './HeaderCollapseMenu'
+import Logo from './Logo'
+import { MenuContext } from './MenuProvider'
 import VersionChooser from './modules/VersionChooser'
 import SearchField from './SearchField'
-import Logo from './Logo'
-import Router from 'next/router'
-import clsx from 'clsx'
-import HeaderCollapseMenu from './HeaderCollapseMenu'
-import { APP_URL, FORUM_URL, STATUS_URL } from '../constants'
-import { grey } from '@material-ui/core/colors'
 
 const useStyles = makeStyles(theme => ({
   appBar: {

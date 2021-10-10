@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import { useContext } from 'react'
 import MoonIcon from '@material-ui/icons/Brightness4'
 import SunIcon from '@material-ui/icons/Brightness7'
 import { AppContext } from '@/components'

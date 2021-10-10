@@ -1,5 +1,4 @@
 import { makeStyles } from '@material-ui/core'
-import React from 'react'
 import Layer0 from './icons/logo-dark-full.svg'
 
 const useStyles = makeStyles(theme => ({

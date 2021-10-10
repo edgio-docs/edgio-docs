@@ -1,18 +1,13 @@
 import { makeStyles, Portal, Typography, useTheme } from '@material-ui/core'
-import { blue, green } from '@material-ui/core/colors'
+import clsx from 'clsx'
+import throttle from 'lodash.throttle'
 import markdownHeadings from 'markdown-headings'
 import {
   createContext,
-  forwardRef,
-  useContext,
-  useEffect,
-  useCallback,
-  useState,
-  useMemo,
+  forwardRef, useCallback, useContext,
+  useEffect, useMemo, useState
 } from 'react'
 import idForHeading from './utils/idForHeading'
-import throttle from 'lodash.throttle'
-import clsx from 'clsx'
 
 export const TocContext = createContext()
 

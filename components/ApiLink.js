@@ -1,6 +1,5 @@
+import useVersioning from '@/components/versioning'
 import { Button } from '@material-ui/core'
-import Link from 'next/link'
-import useVersioning from '../components/versioning'
 
 export default function ApiLink() {
   const { currentVersion } = useVersioning()

@@ -1,4 +1,4 @@
-import React, { createContext, useState, useMemo, useEffect } from 'react'
+import { createContext, useState, useMemo, useEffect } from 'react'
 import Router from 'next/router'
 
 export const MenuContext = createContext()

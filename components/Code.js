@@ -1,5 +1,5 @@
 import { FileCopyTwoTone } from '@material-ui/icons'
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { PrismLight as SyntaxHighlighter } from 'react-syntax-highlighter'
 import { atomDark as prism } from 'react-syntax-highlighter/dist/cjs/styles/prism'
 import { IconButton, Snackbar, makeStyles } from '@material-ui/core'

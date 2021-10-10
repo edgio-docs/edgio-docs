@@ -1,8 +1,6 @@
-import { Divider, Grid, makeStyles, Button } from '@material-ui/core'
-import NextIcon from '@material-ui/icons/ArrowForward'
+import { Button, makeStyles } from '@material-ui/core'
 import PreviousIcon from '@material-ui/icons/ArrowBack'
-import clsx from 'clsx'
-import React from 'react'
+import NextIcon from '@material-ui/icons/ArrowForward'
 import Link from 'next/link'
 
 const useStyles = makeStyles(theme => ({

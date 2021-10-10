@@ -1,4 +1,4 @@
-const { default: getVersions } = require('../components/getVersions')
+const { default: getVersions } = require('@/components/getVersions')
 const guides = require('../guides/guides.json')
 
 module.exports = async function prerenderRequests() {

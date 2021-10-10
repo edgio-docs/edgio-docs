@@ -1,5 +1,5 @@
+import { cyan, pink } from '@material-ui/core/colors'
 import { createMuiTheme } from '@material-ui/core/styles'
-import { red, purple, pink, cyan, grey } from '@material-ui/core/colors'
 
 const color = '#242349'
 

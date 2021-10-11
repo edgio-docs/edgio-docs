@@ -6,16 +6,15 @@ import {
   Typography,
   makeStyles,
   darken,
-  Container,
   Grid,
   Paper,
   Divider,
   Button,
+  useTheme,
 } from '@material-ui/core'
 import Link from 'next/link'
 import Layer0Icon from '../components/icons/layer0-black.svg'
 import Icon from '../components/icons/Icon'
-import Markdown from '../components/Markdown'
 import { PRODUCT_NAME, EXAMPLES_REPOS } from '../constants'
 import { getGuides, getGuideByName } from '../components/getGuides'
 
@@ -82,7 +81,7 @@ const useStyles = makeStyles(theme => ({
 
   icon: {
     flex: 1,
-    padding: theme.spacing(2),
+    padding: theme.spacing(2, 1),
   },
 
   logo: {
@@ -128,6 +127,8 @@ const iconProps = {
 
 const Home = ({ navData }) => {
   const classes = useStyles()
+  const theme = useTheme()
+
   return (
     <PageWrapper nav={<Nav navData={navData} />}>
       <Head>
@@ -232,9 +233,16 @@ const Home = ({ navData }) => {
           text="Get started with Razzle"
           icon="razzleP"
         />
+
+        <FrameworkItem
+          guide="/guides/mkdocs"
+          framework="mkdocs"
+          icon="mkdocs"
+          text="Get started with MkDocs"
+        />
       </div>
 
-      <p>
+      <p style={{ textAlign: 'center', marginTop: theme.spacing(8) }}>
         Don't see your framework? Check out {PRODUCT_NAME} for &nbsp;
         <Link href="/guides/[...guide]" as="/guides/traditional_sites">
           traditional websites

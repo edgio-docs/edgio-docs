@@ -172,6 +172,12 @@
         "href": "/guides/[...guide]"
       },
       {
+        "text": "MkDocs",
+        "icon": "mkdocs",
+        "as": "/guides/mkdocs",
+        "href": "/guides/[...guide]"
+      },
+      {
         "text": "Next.js",
         "icon": "nextjs",
         "as": "/guides/next",

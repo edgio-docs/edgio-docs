@@ -81,9 +81,6 @@ const useStyles = makeStyles(theme => ({
     marginRight: theme.spacing(-1.5),
     color: theme.palette.grey[200],
   },
-  nested: {
-    paddingLeft: theme.spacing(4),
-  },
   menuCollapseButton: {
     textTransform: 'upperCase',
   },
@@ -91,7 +88,7 @@ const useStyles = makeStyles(theme => ({
     '&.Mui-selected': {
       background: 'initial',
       '& span': {
-        fontWeight: 500,
+        fontWeight: 700,
       },
     },
   },
@@ -176,7 +173,6 @@ export default function Nav({ navData }) {
                         target={external && '_blank'}
                         selected={isPathSelected(as)}
                         className={clsx({
-                          [classes.nested]: true,
                           [classes.selected]: isPathSelected(as),
                         })}
                       >

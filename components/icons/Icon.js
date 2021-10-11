@@ -20,6 +20,8 @@ import Razzle from './razzle.svg'
 import SvelteIcon from './svelte.svg'
 import SwellIcon from './swell.svg'
 import RazzlePng from './razzle.png'
+import MkDocsIcon from '@material-ui/icons/Book'
+import clsx from 'clsx'
 
 export const icons = {
   react: ReactIcon,
@@ -43,6 +45,7 @@ export const icons = {
   razzle: Razzle,
   svelte: SvelteIcon,
   swell: SwellIcon,
+  mkdocs: MkDocsIcon,
 }
 
 export const styles = theme => ({
@@ -59,15 +62,15 @@ export const styles = theme => ({
 
 const useStyles = makeStyles(styles, { name: 'RSFIcon' })
 
-export default function Icon({ style, classes, type }) {
+export default function Icon({ style, className, classes, type }) {
   classes = useStyles({ classes })
   const El = icons[type]
 
   if (!El) {
     return null
   } else if (typeof El === 'string') {
-    return <img style={style} src={El} className={classes.root} />
+    return <img style={style} src={El} className={clsx([classes.root, className])} />
   } else {
-    return <El style={style} className={classes.root} />
+    return <El style={style} className={clsx([classes.root, className])} />
   }
 }

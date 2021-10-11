@@ -1,10 +1,10 @@
-import { getGuides } from '@/components/getGuides'
+import { getGuides, getGuideByName } from '@/components/getGuides'
 import Icon from '@/components/icons/Icon'
 import Layer0Icon from '@/components/icons/layer0-black.svg'
 import Nav from '@/components/nav/Nav'
 import PageWrapper from '@/components/PageWrapper'
 import SEO from '@/components/SEO'
-import { Button, darken, Divider, Grid, makeStyles, Paper, Typography } from '@material-ui/core'
+import { Button, darken, Divider, Grid, makeStyles, Paper, Typography, useTheme } from '@material-ui/core'
 import Link from 'next/link'
 import { EXAMPLES_REPOS, PRODUCT_NAME } from '../constants'
 
@@ -71,7 +71,7 @@ const useStyles = makeStyles(theme => ({
 
   icon: {
     flex: 1,
-    padding: theme.spacing(2),
+    padding: theme.spacing(2, 1),
   },
 
   logo: {
@@ -117,6 +117,7 @@ const iconProps = {
 
 const Home = ({ navData }) => {
   const classes = useStyles()
+  const theme = useTheme()
   const meta= {
     title: `${PRODUCT_NAME} Documentation`,
     description: 'Infrastructure for sub-second dynamic websites. Develop, deploy, preview, experiment on, monitor and run your frontend - Deploy for Free in 1 Minute.',
@@ -225,9 +226,16 @@ const Home = ({ navData }) => {
           text="Get started with Razzle"
           icon="razzleP"
         />
+
+        <FrameworkItem
+          guide="/guides/mkdocs"
+          framework="mkdocs"
+          icon="mkdocs"
+          text="Get started with MkDocs"
+        />
       </div>
 
-      <p>
+      <p style={{ textAlign: 'center', marginTop: theme.spacing(8) }}>
         Don't see your framework? Check out {PRODUCT_NAME} for &nbsp;
         <Link href="/guides/[...guide]" as="/guides/traditional_sites">
           traditional websites

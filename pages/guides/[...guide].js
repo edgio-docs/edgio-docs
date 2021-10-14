@@ -28,8 +28,7 @@ export default function Guide({ notFound, markdown, navData, guide }) {
 
   const meta= {
     title: `${PRODUCT_NAME} Documentation ${pageTitle ? `- ${pageTitle}` : ''}`,
-    description: 'Infrastructure for sub-second dynamic websites. Develop, deploy, preview, experiment on, monitor and run your frontend - Deploy for Free in 1 Minute.',
-    canonical: `https://docs.layer0.co/guides/${guide}`,
+    url: `https://docs.layer0.co/guides/${guide}`,
     image: `https://layer0-docs-og-image-default.layer0.link/api?title=${pageTitle || 'Documentation'}&width=1400&height=720`
   }
 
@@ -38,7 +37,7 @@ export default function Guide({ notFound, markdown, navData, guide }) {
       centerStyle={{ paddingTop: theme.spacing(4) }}
       nav={<Nav navData={navData} aboveAdornments={[<ApiLink key="link" />]} />}
     >
-      <SEO meta={meta} />
+      <SEO {...meta} />
       {notFound ? (
         <Typography variant="h1" align="center">
           Page not found.

@@ -166,6 +166,12 @@
         "href": "/guides/[...guide]"
       },
       {
+        "text": "Express",
+        "icon": "express",
+        "as": "/guides/express",
+        "href": "/guides/[...guide]"
+      },
+      {
         "text": "Gatsby",
         "icon": "gatsby",
         "as": "/guides/gatsby",

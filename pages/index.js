@@ -178,6 +178,12 @@ const Home = ({ navData }) => {
         />
 
         <FrameworkItem
+          guide="/guides/express"
+          framework="express"
+          text="Get started with Express"
+        />
+
+        <FrameworkItem
           guide="/guides/svelte"
           framework="svelte"
           icon="svelte"

@@ -164,7 +164,7 @@ const Home = ({ navData }) => {
 
         <FrameworkItem guide="/guides/vsf" framework="vsf" text="Get started with Vue Storefront" />
 
-        <FrameworkItem guide="/guides/swell" framework="swell" text="Get started with Swell" />
+        <FrameworkItem guide="/guides/gatsby" framework="gatsby" text="Get started with Gatsby" />
 
         <FrameworkItem
           guide="/guides/react"
@@ -192,6 +192,7 @@ const Home = ({ navData }) => {
           framework="angular"
           text="Get started with Angular"
         />
+        <FrameworkItem guide="/guides/swell" framework="swell" text="Get started with Swell" />
 
         <FrameworkItem
           guide="/guides/react-storefront"
@@ -200,8 +201,6 @@ const Home = ({ navData }) => {
         />
 
         <FrameworkItem guide="/guides/sapper" framework="sapper" text="Get started with Sapper" />
-
-        <FrameworkItem guide="/guides/gatsby" framework="gatsby" text="Get started with Gatsby" />
 
         <FrameworkItem
           guide="/guides/spartacus"

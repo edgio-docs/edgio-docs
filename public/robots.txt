@@ -5,6 +5,5 @@ User-agent: *
 Disallow: /docs/v*
 
 User-agent: *
-Allow: /guides/vsf
-Allow: /guides/vsf1
+Allow: /guides/vsf*
 Disallow: /guides/v*

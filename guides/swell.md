@@ -3,6 +3,7 @@
 This guide shows you how to deploy a Swell application on {{ PRODUCT_NAME }}. Clone the repo [layer0-swell](https://github.com/layer0-docs/layer0-swell) to get the entire setup.
 
 ## What is Swell?
+
 [Swell](https://www.swell.is/) is a customizable headless ecommerce platform that supports unique business models and customer experiences for global B2C and B2B merchants. Swell's API-first backend and modern development tools provide a future-proof platform for innovative businesses from small coffee roasters to international enterprises.
 
 ## Install Node.js and npm
@@ -15,7 +16,7 @@ _Note that while you can use any version of Node.js >= 14 locally, your app will
 
 ## Sign up for {{ PRODUCT_NAME }}
 
-Deploying requires an account on {{ PRODUCT_NAME }}. [Sign up here for free.]({{ APP_URL }}/signup).
+Deploying requires an account on {{ PRODUCT_NAME }}. [Sign up here for free]({{ APP_URL }}/signup).
 
 ## Install the {{ PRODUCT_NAME }} CLI
 
@@ -50,6 +51,7 @@ This account enables access to your store ID and API key which are necessary for
 - Copy the secret key.
 
 ### Add variables to .env
+
 Add your Swell store ID, public key and url to `.env`:
 
 ```
@@ -108,6 +110,7 @@ This command will also update your `package.json` with the following changes:
 - Adds several `scripts` to run the available `{{{ CLI_NAME }}` commands
 
 ## includeFiles
+
 To include the `confing` and `modules` directories in the production build, update your `layer0.config.js` as follows:
 
 ```diff
@@ -129,7 +132,9 @@ module.exports = {
 ```
 
 ## Include dependencies
+
 To preserve packages that are imported in `config` and `modules` directories and are required in the production build, update `package.json` as follows:
+
 ```diff
 "dependencies": {
   "@nuxtjs/sitemap": "2.4.0",
@@ -145,16 +150,17 @@ To preserve packages that are imported in `config` and `modules` directories and
 ```
 
 ## Run Swell app locally on Layer0
+
 Run the Swell app with the command:
 
 ```bash
 npm run layer0:dev
 ```
+
 Load the site: http://127.0.0.1:3000
 
-
-
 ## Test Locally
+
 To test your app locally, run:
 
 ```bash
@@ -166,6 +172,7 @@ You can do a production build of your app and test it locally using:
 ```bash
 layer0 build && layer0 run --production
 ```
+
 Setting --production runs your app exactly as it will be uploaded to the Layer0 cloud using serverless-offline.
 
 ## Deploying

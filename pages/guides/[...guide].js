@@ -8,12 +8,14 @@ import PageWrapper from '../../components/PageWrapper'
 import ApiLink from '../../components/ApiLink'
 import { Typography } from '@material-ui/core'
 import { useTheme } from '@material-ui/styles'
-import { PRODUCT_NAME } from '../../constants'
+import { PRODUCT_NAME, DOCS_DOMAIN } from '../../constants'
 import { populatePlaceholders } from '../../components/utils/markdownUtils'
 import prerenderRequests from '../../layer0/prerenderRequests'
 import { getGuides, getGuideByName } from '../../components/getGuides'
+import SEO from '../../components/Seo'
 
 export default function Guide({ notFound, markdown, navData, guide }) {
+
   const theme = useTheme()
   const skipToC = guide === 'changelog'
 
@@ -28,16 +30,18 @@ export default function Guide({ notFound, markdown, navData, guide }) {
     })
   })
 
+  const meta= {
+    title: `${PRODUCT_NAME} Documentation ${pageTitle ? `- ${pageTitle}` : ''}`,
+    url: `https://${DOCS_DOMAIN}/guides/${guide}`,
+    image: `https://layer0-docs-og-image-default.layer0.link/api?title=${pageTitle || 'Documentation'}&width=1400&height=720`
+  }
+
   return (
     <PageWrapper
       centerStyle={{ paddingTop: theme.spacing(4) }}
       nav={<Nav navData={navData} aboveAdornments={[<ApiLink key="link" />]} />}
     >
-      <Head>
-        <title>
-          {PRODUCT_NAME} Documentation {pageTitle ? `- ${pageTitle}` : ''}
-        </title>
-      </Head>
+      <SEO {...meta} />
       {notFound ? (
         <Typography variant="h1" align="center">
           Page not found.

@@ -20,7 +20,10 @@ import { getGuides, getGuideByName } from '../components/getGuides'
 
 const useStyles = makeStyles(theme => ({
   hero: {
-    paddingTop: theme.spacing(10),
+    [theme.breakpoints.up('sm')]: {
+      paddingTop: theme.spacing(10),
+    },
+
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',

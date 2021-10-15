@@ -50,7 +50,7 @@ export default function SearchField() {
   }, [])
 
   return (
-    <div style={{ minWidth: 300 }}>
+    <div style={{ maxWidth: 300, flex: 1 }}>
       <link
         rel="stylesheet"
         href="https://cdn.jsdelivr.net/npm/docsearch.js@latest/dist/cdn/docsearch.min.css"

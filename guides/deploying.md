@@ -50,65 +50,86 @@ Having each deployment be simultaneously and permanently accessible makes it eas
 
 ## Deploying from CI
 
-To deploy from your CI environment, create a deploy token using the site settings tab in the {{ PRODUCT_NAME }} console:
+To deploy from your CI environment, create a deploy token using the site settings tab in the {{ PRODUCT_NAME }} console.
 
 ![deployments](/images/deploying/token.png)
 
 Then use the `--token` option when deploying from your CI script:
 
 ```bash
-{{ CLI_NAME }} deploy my-site --token=$layer0_deploy_token
+{{ CLI_NAME }} deploy my-site --token=$LAYER0_DEPLOY_TOKEN
 ```
 
 You should always store your deploy token using your CI environment's secrets manager. Never commit your deploy token to source control.
 
 ## GitHub Actions
 
-![video](https://www.youtube.com/watch?v=Ms1TmY0oDYc)
+You need to configure the following items in order to get a GitHub action set up.
 
-Here is an example GitHub action that deploys your site to {{ PRODUCT_NAME }}:
+1. Create a deploy token (see [Deploying from CI](#section_deploying_from_ci)). Copy the value of that token for use in the next step.
+2. Save the deploy token inside GitHub ([more info](https://docs.github.com/en/actions/security-guides/encrypted-secrets#using-encrypted-secrets-in-a-workflow)). Go to your `GitHub project > Settings > Secrets > New repository secret`. Save the item as `LAYER0_DEPLOY_TOKEN`.
+3. Inside your development project, create a top level folder titled `.github`. Inside that create a `workflow` folder. From there create a `layer0.yml` file and use the example below for its content.
 
-This action assumes that you have created environments called "staging" and "production" and you have created a deploy key for your site and added it as a secret in your repo called "layer0_deploy_token". Read more on [accessing environment variables](https://docs.layer0.co/guides/environments#section_accessing_environment_variables_at_build_time) which might be essential for your app during the build time and for server-side requests (including SSG/SSR).
+This is an example GitHub action that will deploy your site to {{ PRODUCT_NAME }}.
+
+For this action to work
+
+- By default, new Layer0 sites are created with a `default` environment. The action below will create a new build for every push on the default environment.
+- To leverage the GitHub release workflow part of the action below, you need to **create an environment** `production`.
+- You need to have created a deploy key for your site (see above) and added it as a secret in your repo called "layer0_deploy_token". Read more on [accessing environment variables](https://docs.layer0.co/guides/environments#section_accessing_environment_variables_at_build_time) which might be essential for your app during the build time and for server-side requests (including SSG/SSR).
+- Depending on your use of NPM or YARN, adjust the "Install packages" step
+
+Read the comments at the top to understand how this action is configured.
+
+### Template
 
 ```yml
-# Add this file to your project at .github/workflows/{{ PRODUCT_NAME_LOWER }}.yml
+# Add this file to your project at .github/workflows/layer0.yml
 #
-# This GitHub action deploys your site on {{ PRODUCT_NAME }}.
+# This GitHub action deploys your site on Layer0.
 #
 # The site is deployed each time commits are pushed. The environment to which the changes are deployed
 # is based on the following rules:
 #
-# 1.) When pushing to master, changes deployed to the "staging" environment. This environment does not exist
-#     by default. You must create it using {{ APP_URL }}.
-# 2.) When pushing to any other branch, changes are deployed to the default environment. A unique URL is created based on the branch and deployment number.
-# 3.) When you publish a release in GitHub, the associated tag will be deployed to the production
-#     environment. This environment does not exist by default, you must create it using {{ APP_URL }}.
-#     Therefore, you can push to production by creating a GitHub release, or by using the "Promote to Environment"
-#     menu when viewing a deployment in {{ APP_URL }}.
+# 1.) When pushing to master or main, changes will be deployed to the "default" environment. This environment exists
+#     by default. Additional environments must be created at https://app.layer0.co.
 #
-# In order for this action to deploy your site, you must create a deploy token from the site settings page
-# in {{ APP_URL }} and configure it as a secret called "layer0_deploy_token" in your repo on GitHub.
+# 2.) When pushing to any other branch, changes are deployed to a staging environment when a pull request is opened.
+#     A unique URL is created based on the branch and deployment number. This environment does not exist by default,
+#     you must create it using https://app.layer0.co.
+#
+# 3.) When you publish a release in GitHub, the associated tag will be deployed to the production
+#     environment. You can push to production by creating a GitHub release, or by using the "Promote to Environment"
+#     menu when viewing a deployment in https://app.layer0.co. This environment does not exist by default,
+#     you must create it using https://app.layer0.co.
+#
+# ** In order for this action to deploy your site, you must create a deploy token from the site settings page
+# ** in https://app.layer0.co and configure it as a secret called "LAYER0_DEPLOY_TOKEN" in your repo on GitHub.
+#
+# ** Depending on your use of NPM or YARN, adjust the "Install packages" step
 
-name: Deploy branch to {{ PRODUCT_NAME }}
+name: Deploy branch to Layer0
 
 on:
   push:
+    branches: [master, main]
+  pull_request:
   release:
     types: [published]
 
 jobs:
-  deploy-to-{{ PRODUCT_NAME_LOWER }}:
+  deploy-to-layer0:
     # cancels the deployment for the automatic merge push created when tagging a release
     if: contains(github.ref, 'refs/tags') == false || github.event_name == 'release'
     runs-on: ubuntu-latest
+    env:
+      deploy_token: ${{secrets.LAYER0_DEPLOY_TOKEN}}
     steps:
-      - name: Check for {{ PRODUCT_NAME }} deploy token secret
-        if: env.layer0_deploy_token == ''
+      - name: Check for Layer0 deploy token secret
+        if: env.deploy_token == ''
         run: |
-          echo You must define the "layer0_deploy_token" secret in GitHub project settings
+          echo You must define the "LAYER0_DEPLOY_TOKEN" secret in GitHub project settings
           exit 1
-        env:
-          layer0_deploy_token: ${{secrets.layer0_deploy_token}}
       - name: Extract branch name
         shell: bash
         run: echo "BRANCH_NAME=$(echo ${GITHUB_REF#refs/heads/} | sed 's/\//_/g')" >> $GITHUB_ENV
@@ -127,12 +148,22 @@ jobs:
             ${{ runner.os }}-build-${{ env.cache-name }}-
             ${{ runner.os }}-build-
             ${{ runner.os }}-
-      - run: npm ci
-      - name: Deploy to {{ PRODUCT_NAME }}
-        run: npm run {{ CLI_NAME }}:deploy -- ${{'--branch=$BRANCH_NAME' || ''}} --token=$layer0_deploy_token ${{github.event_name == 'push' && env.BRANCH_NAME == 'main' && '--environment=staging' || ''}} ${{github.event_name == 'release' && '--environment=production' || ''}}
+      - name: Install packages
+        run: npm ci # if using npm for your project
+        #  run: rm -rf node_modules && yarn install --frozen-lockfile # if using yarn for your project
+      - name: Deploy to Layer0
+        run: |
+          npm run layer0:deploy -- ${{'--branch=$BRANCH_NAME' || ''}} --token=$deploy_token  \
+          ${{github.event_name == 'push' && '--environment=default' || ''}} \
+          ${{github.event_name == 'pull_request' && '--environment=staging' || ''}} \
+          ${{github.event_name == 'release' && '--environment=production' || ''}}
         env:
-          layer0_deploy_token: ${{secrets.layer0_deploy_token}}
+          deploy_token: ${{secrets.LAYER0_DEPLOY_TOKEN}}
 ```
+
+### Screencast tutorial
+
+![video](https://www.youtube.com/watch?v=Ms1TmY0oDYc)
 
 ## Jenkins Pipeline
 

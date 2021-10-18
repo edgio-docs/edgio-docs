@@ -10,14 +10,6 @@ Here's an example Vue app running on Layer0:
 [View the Code](https://github.com/layer0-docs/static-vuejs-example?button)
 [Deploy to Layer0](https://app.layer0.co/deploy?button&deploy&repo=https://github.com/layer0-docs/static-vuejs-example)
 
-## Install Node.js and npm
-
-**{{ PRODUCT_NAME }} only supports Node.js version {{ NODE_VERSION }}**
-
-If you do not have Node.js installed on your system, download and install it from the official [Node.js v{{ NODE_VERSION }} downloads](https://nodejs.org/dist/latest-v{{ NODE_VERSION }}/) page. Select the download that matches your operating system and run the installer. Note that the installer for Node.js will also install npm.
-
-_Note that while you can use any version of Node.js >= 14 locally, your app will run in Node 14 when deployed to the {{ PRODUCT_NAME }} cloud. Therefore we highly suggest using Node 14 for all development._
-
 ## Sign up for {{ PRODUCT_NAME }}
 
 Deploying requires an account on {{ PRODUCT_NAME }}. [Sign up here for free.]({{ APP_URL }}/signup).
@@ -31,6 +23,10 @@ npm i -g {{ PACKAGE_NAME }}/cli
 ```
 
 ## Create a new Vue.js app
+
+#### Required
+
+[Install Node.js](/guides/install-nodejs) (>= 14)
 
 If you don't already have a Vue.js app, create one by using the Vue CLI:
 

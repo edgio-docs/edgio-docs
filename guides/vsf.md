@@ -17,13 +17,17 @@ This framework has a connector developed for {{ PRODUCT_NAME }}. See [Connectors
 
 [View the Connector Code](https://github.com/layer0-docs/layer0-connectors/tree/main/layer0-vue-storefront-connector?button)
 
-## Install Node.js and npm
+## Install the {{ PRODUCT_NAME }} CLI
 
-**{{ PRODUCT_NAME }} only supports Node.js version {{ NODE_VERSION }}**
+#### Required
 
-If you do not have Node.js installed on your system, download and install it from the official [Node.js v{{ NODE_VERSION }} downloads](https://nodejs.org/dist/latest-v{{ NODE_VERSION }}/) page. Select the download that matches your operating system and run the installer. Note that the installer for Node.js will also install npm.
+[Install Node.js](/guides/install-nodejs) (>= 14)
 
-_Note that while you can use any version of Node.js >= 14 locally, your app will run in Node 14 when deployed to the {{ PRODUCT_NAME }} cloud. Therefore we highly suggest using Node 14 for all development._
+To prepare your Vue Storefront app for deployment on {{ PRODUCT_NAME }}, install the {{ PRODUCT_NAME }} CLI:
+
+```
+npm install -g {{ PACKAGE_NAME }}/cli
+```
 
 ## Install the VSF CLI
 
@@ -34,14 +38,6 @@ npm i -g @vue-storefront/cli@next
 vsf init <project-name>
 cd <project-name>
 npm install
-```
-
-## Install the {{ PRODUCT_NAME }} CLI
-
-To prepare your Vue Storefront app for deployment on {{ PRODUCT_NAME }}, run the following commands in the root folder of your project:
-
-```
-npm install -g {{ PACKAGE_NAME }}/cli
 {{ CLI_NAME }} init
 ```
 

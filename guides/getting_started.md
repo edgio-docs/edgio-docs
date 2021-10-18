@@ -16,7 +16,7 @@ Generate a new app or deploy an existing one to {{ PRODUCT_NAME }}. You will nee
 
 #### Required
 
-[Install Node.js](/guides/install-nodejs)
+[Install Node.js](/guides/install-nodejs) (>= 14)
 
 ### Existing app
 

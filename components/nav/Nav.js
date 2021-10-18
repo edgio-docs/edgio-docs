@@ -137,8 +137,6 @@ export default function Nav({ navData }) {
     return asPath === selectedPath
   }
 
-  console.log(navData)
-
   return (
     <List
       component="nav"

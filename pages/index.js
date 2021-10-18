@@ -17,6 +17,7 @@ import Layer0Icon from '../components/icons/layer0-black.svg'
 import Icon from '../components/icons/Icon'
 import { PRODUCT_NAME, EXAMPLES_REPOS } from '../constants'
 import { getGuides, getGuideByName } from '../components/getGuides'
+import SEO from '../components/Seo'
 
 const useStyles = makeStyles(theme => ({
   hero: {
@@ -131,9 +132,7 @@ const Home = ({ navData }) => {
 
   return (
     <PageWrapper nav={<Nav navData={navData} />}>
-      <Head>
-        <title>{PRODUCT_NAME} Documentation</title>
-      </Head>
+      <SEO />
       <div className={classes.hero}>
         <Layer0Icon className={classes.logo} />
         <Typography variant="h2" style={{ maxWidth: 800, marginTop: 0, fontSize: '30px' }}>

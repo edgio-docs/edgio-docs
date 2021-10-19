@@ -16,11 +16,9 @@ If you have not already done so, install the [{{ PRODUCT_NAME }} CLI](cli)
 npm i -g {{ PACKAGE_NAME }}/cli
 ```
 
+{{ SYSTEM_REQUIREMENTS }}
+
 ## Create a new Svelte app
-
-#### Required
-
-[Install Node.js](/guides/install-nodejs) (>= 14)
 
 If you don't already have a Svelte app, create one by running the following:
 

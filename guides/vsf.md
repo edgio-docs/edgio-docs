@@ -17,11 +17,9 @@ This framework has a connector developed for {{ PRODUCT_NAME }}. See [Connectors
 
 [View the Connector Code](https://github.com/layer0-docs/layer0-connectors/tree/main/layer0-vue-storefront-connector?button)
 
+{{ SYSTEM_REQUIREMENTS }}
+
 ## Install the {{ PRODUCT_NAME }} CLI
-
-#### Required
-
-[Install Node.js](/guides/install-nodejs) (>= 14)
 
 To prepare your Vue Storefront app for deployment on {{ PRODUCT_NAME }}, install the {{ PRODUCT_NAME }} CLI:
 

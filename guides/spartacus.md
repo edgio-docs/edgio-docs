@@ -12,11 +12,9 @@ This framework has a connector developed for {{ PRODUCT_NAME }}. See [Connectors
 
 [View the Connector Code](https://github.com/layer0-docs/layer0-connectors/tree/main/layer0-spartacus-connector?button)
 
+{{ SYSTEM_REQUIREMENTS }}
+
 ## Getting Started
-
-#### Required
-
-[Install Node.js](/guides/install-nodejs) (>= 14)
 
 If you don't already have a Spartacus application, you can create one using:
 

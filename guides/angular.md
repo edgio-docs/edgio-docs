@@ -16,13 +16,11 @@ This framework has a connector developed for {{ PRODUCT_NAME }}. See [Connectors
 
 [View the Connector Code](https://github.com/layer0-docs/layer0-connectors/tree/main/layer0-angular-connector?button)
 
+{{ SYSTEM_REQUIREMENTS }}
+
 ## Getting Started
 
 If you don't already have an Angular application, you can create one using the following steps:
-
-#### Required
-
-0. [Install Node.js](/guides/install-nodejs) (>= 14)
 
 #### 1. Create a new Angular App
 

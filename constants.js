@@ -1,3 +1,5 @@
+import * as SECTIONS from './guides/sections'
+
 const PRODUCT_NAME = 'Layer0'
 const PRODUCT_NAME_LOWER = PRODUCT_NAME.toLowerCase()
 const PRODUCT_NAME_UPPER = PRODUCT_NAME.toUpperCase()
@@ -69,4 +71,5 @@ module.exports = {
   EXAMPLES_REPO,
   EDGEJS_LABEL,
   EXAMPLES_REPOS,
+  ...SECTIONS,
 }

@@ -14,18 +14,16 @@ The easiest way to get started is using one of our "Deploy to Layer0" buttons li
 
 Generate a new app or deploy an existing one to {{ PRODUCT_NAME }}. You will need to already have a [{{ PRODUCT_NAME}} account](https://app.layer0.co/signup). Follow the steps below.
 
-#### Required
-
-[Install Node.js](/guides/install-nodejs) (>= 14)
+{{ SYSTEM_REQUIREMENTS_H3 }}
 
 ### Existing app
 
 To add {{ PRODUCT_NAME }} to an existing app, run the following:
 
 ```bash
-npm i -g {{ PACKAGE_NAME }}/cli
-{{ CLI_NAME }} init
-{{ CLI_NAME }} deploy
+$ npm i -g {{ PACKAGE_NAME }}/cli
+$ {{ CLI_NAME }} init
+$ {{ CLI_NAME }} deploy
 ```
 
 ### New app
@@ -34,14 +32,14 @@ To create a new {{ PRODUCT_NAME }} compatible app, run:
 
 ```bash
 # npm
-npm create {{ STARTER_NAME }}@latest
-{{ CLI_NAME }} deploy
+$ npm create {{ STARTER_NAME }}@latest
+$ {{ CLI_NAME }} deploy
 ```
 
 or
 
 ```bash
 # yarn
-yarn create {{ STARTER_NAME }}@latest
-{{ CLI_NAME }} deploy
+$ yarn create {{ STARTER_NAME }}@latest
+$ {{ CLI_NAME }} deploy
 ```

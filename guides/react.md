@@ -10,11 +10,9 @@ Here's an example React app running on Layer0:
 [View the Code](https://github.com/layer0-docs/static-react-example?button)
 [Deploy to Layer0](https://app.layer0.co/deploy?button&deploy&repo=https://github.com/layer0-docs/static-react-example)
 
+{{ SYSTEM_REQUIREMENTS }}
+
 ## Getting Started
-
-#### Required
-
-[Install Node.js](/guides/install-nodejs) (>= 14)
 
 To prepare your React app for deployment on {{ PRODUCT_NAME }}, install the {{ PRODUCT_NAME }} CLI globally:
 

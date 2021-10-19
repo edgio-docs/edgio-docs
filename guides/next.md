@@ -31,11 +31,9 @@ This framework has a connector developed for {{ PRODUCT_NAME }}. See [Connectors
 - `getServerSideProps`
 - `getInitialProps`
 
+{{ SYSTEM_REQUIREMENTS }}
+
 ## Getting Started
-
-#### Required
-
-[Install Node.js](/guides/install-nodejs) (>= 14)
 
 ### Create a Next.js Application
 

@@ -20,11 +20,9 @@ Here are a few examples of common static sites served by {{ PRODUCT_NAME }}.
 [View the Code](https://github.com/layer0-docs/static-vuejs-example?button)
 [Deploy to Layer0](https://app.layer0.co/deploy?button&deploy&repo=https%3A%2F%2Fgithub.com%2Flayer0-docs%2Fstatic-vuejs-example)
 
+{{ SYSTEM_REQUIREMENTS }}
+
 ## Getting Started
-
-#### Required
-
-[Install Node.js](/guides/install-nodejs) (>= 14)
 
 To prepare your static app for deployment on {{ PRODUCT_NAME }}, install the {{ PRODUCT_NAME }} CLI globally:
 

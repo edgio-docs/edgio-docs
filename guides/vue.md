@@ -22,11 +22,9 @@ If you have not already done so, install the [{{ PRODUCT_NAME }} CLI](cli)
 npm i -g {{ PACKAGE_NAME }}/cli
 ```
 
+{{ SYSTEM_REQUIREMENTS }}
+
 ## Create a new Vue.js app
-
-#### Required
-
-[Install Node.js](/guides/install-nodejs) (>= 14)
 
 If you don't already have a Vue.js app, create one by using the Vue CLI:
 

@@ -16,11 +16,9 @@ This framework has a connector developed for {{ PRODUCT_NAME }}. See [Connectors
 
 [View the Connector Code](https://github.com/layer0-docs/layer0-connectors/tree/main/layer0-fastboot-connector?button)
 
+{{ SYSTEM_REQUIREMENTS }}
+
 ## Getting Started
-
-#### Required
-
-[Install Node.js](/guides/install-nodejs) (>= 14)
 
 To prepare your Fastboot app for deployment on {{ PRODUCT_NAME }}, run the following in the root folder of your project:
 

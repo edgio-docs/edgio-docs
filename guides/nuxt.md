@@ -16,9 +16,7 @@ This framework has a connector developed for {{ PRODUCT_NAME }}. See [Connectors
 
 [View the Connector Code](https://github.com/layer0-docs/layer0-connectors/tree/main/layer0-nuxt-connector?button)
 
-#### Required
-
-[Install Node.js](/guides/install-nodejs) (>= 14)
+{{ SYSTEM_REQUIREMENTS }}
 
 ## Getting Started
 

@@ -69,11 +69,9 @@ This framework has a connector developed for {{ PRODUCT_NAME }}. See [Connectors
 
 [View the Connector Code](https://github.com/layer0-docs/layer0-connectors/tree/main/layer0-starter-connector?button)
 
+{{ SYSTEM_REQUIREMENTS }}
+
 ## Setup a project
-
-#### Required
-
-[Install Node.js](/guides/install-nodejs) (>= 14)
 
 Next, install the [{{ PRODUCT_NAME }} CLI](cli)
 

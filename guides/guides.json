@@ -178,6 +178,12 @@
         "href": "/guides/[...guide]"
       },
       {
+        "text": "Jekyll",
+        "icon": "jekyll",
+        "as": "/guides/jekyll",
+        "href": "/guides/[...guide]"
+      },
+      {
         "text": "MkDocs",
         "icon": "mkdocs",
         "as": "/guides/mkdocs",

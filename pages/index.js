@@ -241,6 +241,13 @@ const Home = ({ navData }) => {
           icon="mkdocs"
           text="Get started with MkDocs"
         />
+
+        <FrameworkItem
+          guide="/guides/jekyll"
+          framework="jekyll"
+          icon="jekyll"
+          text="Get started with Jekyll"
+        />
       </div>
 
       <p style={{ textAlign: 'center', marginTop: theme.spacing(8) }}>

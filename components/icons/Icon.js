@@ -22,6 +22,7 @@ import SwellIcon from './swell.svg'
 import RazzlePng from './razzle.png'
 import MkDocsIcon from '@material-ui/icons/Book'
 import AstroIcon from './astro.svg'
+import JekyllIcon from './jekyll.svg'
 
 import clsx from 'clsx'
 
@@ -49,6 +50,7 @@ export const icons = {
   swell: SwellIcon,
   mkdocs: MkDocsIcon,
   astro: AstroIcon,
+  jekyll: JekyllIcon,
 }
 
 export const styles = theme => ({

@@ -154,6 +154,12 @@
         "href": "/guides/[...guide]"
       },
       {
+        "text": "Astro",
+        "icon": "astro",
+        "as": "/guides/astro",
+        "href": "/guides/[...guide]"
+      },
+      {
         "text": "Frontity",
         "icon": "frontity",
         "as": "/guides/frontity",

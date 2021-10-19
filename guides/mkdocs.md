@@ -6,24 +6,20 @@
 
 If you don't have an existing MkDocs site, you can create one by running:
 
-```
-pip install mkdocs
-mkdocs new my-project
-cd my-project
+```bash
+$ pip install mkdocs
+$ mkdocs new my-project
+$ cd my-project
 ```
 
 ## Add Layer0
 
-First, globally install the Layer0 CLI:
+```bash
+# First, globally install the Layer0 CLI:
+$ npm i -g @layer0/cli
 
-```
-npm i -g @layer0/cli
-```
-
-Then, add Layer0 to your MkDocs site:
-
-```
-0 init
+# Then, add Layer0 to your MkDocs site:
+$ 0 init
 ```
 
 ## Update your Layer0 Router
@@ -31,7 +27,7 @@ Then, add Layer0 to your MkDocs site:
 Paste the following into routes.js:
 
 ```js
-import { Router } from '@layer0/core/router'
+import { Router } from '@layer0/core'
 
 const ONE_MINUTE = 60
 const FAR_FUTURE = 60 * 60 * 24 * 365 * 10
@@ -64,7 +60,10 @@ export default new Router()
 
 To deploy your site to Layer0, run:
 
-```
-mkdocs build
-0 deploy
+```bash
+# Create a production build of your mkdocs site
+$ mkdocs build
+
+# Deploy it to Layer0
+$ 0 deploy
 ```

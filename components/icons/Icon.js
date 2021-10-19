@@ -21,6 +21,8 @@ import SvelteIcon from './svelte.svg'
 import SwellIcon from './swell.svg'
 import RazzlePng from './razzle.png'
 import MkDocsIcon from '@material-ui/icons/Book'
+import AstroIcon from './astro.svg'
+
 import clsx from 'clsx'
 
 export const icons = {
@@ -46,6 +48,7 @@ export const icons = {
   svelte: SvelteIcon,
   swell: SwellIcon,
   mkdocs: MkDocsIcon,
+  astro: AstroIcon,
 }
 
 export const styles = theme => ({

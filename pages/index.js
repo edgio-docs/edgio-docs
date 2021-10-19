@@ -195,6 +195,8 @@ const Home = ({ navData }) => {
           text="Get started with React Storefront"
         />
 
+        <FrameworkItem guide="/guides/astro" framework="astro" text="Get started with Astro" />
+
         <FrameworkItem guide="/guides/sapper" framework="sapper" text="Get started with Sapper" />
 
         <FrameworkItem guide="/guides/gatsby" framework="gatsby" text="Get started with Gatsby" />

@@ -207,3 +207,65 @@ pipeline {
   }
 }
 ```
+
+## GitLab CI/CD
+
+Here is an example GitLab CI/CD configuration that deploys your site to {{ PRODUCT_NAME }}:
+
+This guide assumes:
+
+- Your repository is hosted on GitLab
+- Your default git branch is named `master` or `main`
+- You have created environments called "staging" and "production"
+- You have created a deploy key for your site and added it as a variable in your GitLab project's CI/CD settings page, named "LAYER0_DEPLOY_TOKEN"
+
+```yml
+# Add this file to your project at .gitlab-ci.yml
+#
+# This GitLab CI/CD configuration deploys your site on {{ PRODUCT_NAME }}.
+#
+# The site is deployed each time commits are pushed. The environment to which the changes are deployed
+# is based on the following rules:
+#
+# 1.) When pushing to master or main, changes deployed to the "staging" environment. This environment does
+#     not exist by default. You must create it using https://app.layer0.co.
+# 2.) When pushing to any other branch, changes are deployed to the default environment. A unique URL is
+#     created based on the branch and deployment number.
+# 3.) When you push a tag to GitLab, it will be deployed to the production environment. This environment does
+#     not exist by default, you must create it using https://app.layer0.co. Therefore, you can push to
+#     production by creating a tag, or by using the "Promote to Environment" menu when viewing a deployment
+#     in https://app.layer0.co.
+#
+# In order for this pipeline to deploy your site, you must create a deploy token from the site settings page
+# in https://app.layer0.co and configure it as a variable called "LAYER0_DEPLOY_TOKEN" in your GitLab
+# project's settings page. You should mask this variable to prevent it from appearing in logs.
+
+image: node:14
+
+stages:
+  - deploy
+
+cache:
+  key: npm
+  paths:
+    - .npm/
+
+layer0_deploy:
+  stage: deploy
+  rules:
+    - if: '$CI_PIPELINE_SOURCE != "push"'
+      when: never
+    - if: '$CI_COMMIT_BRANCH == "master" || $CI_COMMIT_BRANCH == "main"'
+      variables:
+        LAYER0_DEPLOY_PARAM: ' --environment=staging'
+    - if: '$CI_COMMIT_TAG'
+      variables:
+        LAYER0_DEPLOY_PARAM: ' --environment=production'
+    - if: '$CI_COMMIT_BRANCH'
+      variables:
+        LAYER0_DEPLOY_PARAM: ''
+  before_script:
+    - npm ci --cache .npm --prefer-offline
+  script:
+    - npm run {{ CLI_NAME }}:deploy -- --token=$LAYER0_DEPLOY_TOKEN --non-interactive --branch=$CI_COMMIT_BRANCH$LAYER0_DEPLOY_PARAM
+```

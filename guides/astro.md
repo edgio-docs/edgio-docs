@@ -4,7 +4,7 @@
 
 ## Example Site
 
-Here is an example Astro app running on Layer0:
+For a preconfigured example site based on the Astro documentation template running on Layer0:
 
 [Try the Astro Example Site](https://layer0-docs-layer0-astro-example-default.layer0.link/?button)
 [View the Code](https://github.com/layer0-docs/layer0-astro-example?button)

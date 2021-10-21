@@ -43,6 +43,11 @@
         "href": "/guides/[...guide]"
       },
       {
+        "text": "Purging",
+        "as": "/guides/purging",
+        "href": "/guides/[...guide]"
+      },
+      {
         "text": "Cookbook",
         "as": "/guides/cookbook",
         "href": "/guides/[...guide]"

@@ -28,6 +28,7 @@ const EDGEJS_LABEL = 'EdgeJS'
 
 const EXAMPLES_REPOS = {
   angular: 'https://github.com/layer0-docs/layer0-angular-example',
+  astro: 'https://github.com/layer0-docs/layer0-astro-example',
   fastboot: 'https://github.com/layer0-docs/layer0-ember-fastboot-example',
   frontity: 'https://github.com/layer0-docs/layer0-frontity-example',
   next: 'https://github.com/layer0-docs/layer0-nextjs-example',

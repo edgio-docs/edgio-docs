@@ -10,7 +10,7 @@ Layer0 offers three ways to purge responses from the cache:
 - CLI
 - REST API
 
-## Devloper Console
+## Developer Console
 
 You can purge the cache via the [Layer0 Developer Console](https://app.layer0.co) by navigating to an environment, selecting the _Caching_ tab, and clicking _Purge the Cache_ under _Cache History_:
 
@@ -32,7 +32,7 @@ To purge responses via the REST API, see the [REST API reference](/guides/rest_a
 
 Here are some ways that you can automate cache purging:
 
-### NPM script
+### NPM Scripts
 
 Here is an example script you can add to your `package.json` to handle cache clearing for each environment. You can also configure scripts to clear by surrogate key, path, or group (As defined in {{ PRODUCT_NAME }} Console)
 

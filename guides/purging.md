@@ -28,6 +28,44 @@ To purge responses via the CLI, see the [CLI reference](/guides/cli#section_cach
 
 To purge responses via the REST API, see the [REST API reference](/guides/rest_api#section_clear_cache).
 
+## Deployments
+
+By default, all response are purged from the cache when you deploy a new version of your site. You can override this behavior using the _Preserve cache between deployments_ setting in your environment configuration:
+
+![preserve_cache](/images/purging/preserve.png)
+
+_Caution: While preserving the cache between deployments can greatly reduce the load on your origin following a deployment, it can also lead to inconsistent behavior if the new version of your browser code receives an old, incompatible API response from the cache. Before enabling this feature, we recommend adding an API version number to your URL scheme to ensure that breaking changes to your API don't affect your website's functionality when old responses are served from the cache._
+
+## Static prerendering after clearing the cache
+
+If you have [static prerendering] enabled, the cache will automatically be repopulated when you clear all entries from the cache (such as when you select "Purge all entries" in the {{ PRODUCT_NAME }} Developer Console or run `{{ CLI_NAME }} cache-clear` without providing `--path` or `--surrogate-key`). You can view the prerendering progress by clicking on the active deployment for the environment that was cleared.
+
+## Surrogate Keys
+
+Efficient cache purging is an essential part of keeping your website fast and reducing the load on your origin servers. Purging all entries from the cache all may increase your website's load time while the cache repopulates. If you purge all entries from the cache more than once a week, consider using surrogate keys for more targeted purging.
+
+Surrogate keys are unique identifiers that you assign to groups of responses. They allow you to selectively purge related content. You can assign one or more surrogate keys to a response by sending an `x-0-surrogate-key` header in the response. Multiple keys should be separated by spaces.
+
+For example:
+
+```
+HTTP/1.1 200 OK
+Surrogate-Key: product.123 shoes all-products
+Content-Type: text/html
+```
+
+In the example above you could purge this response from the cache using any of the surrogate keys. For example, to purge via the CLI:
+
+```
+layer0 cache-clear --team=my-team --site=my-site --environment=production --surrogate-key=product.123
+```
+
+... or ...
+
+```
+layer0 cache-clear --team=my-team --site=my-site --environment=production --surrogate-key=shoes
+```
+
 ## Automated Purging
 
 Here are some ways that you can automate cache purging:

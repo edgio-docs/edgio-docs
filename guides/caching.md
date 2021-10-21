@@ -283,34 +283,6 @@ The cache will automatically be cleared when you make changes to your router. A 
 - `edge.staleWhileRevalidateSeconds` is not yet implemented. Only `edge.maxAgeSeconds` is used to set the cache time to live.
 - `edge.key` is not supported. Cache keys are always based solely on url, method, the `accept-encoding` and `host` headers, and body.
 
-## Clearing the Cache
-
-The cache is automatically cleared when you deploy to an environment. You can also clear the cache using the environment's Caching tab in the {{ PRODUCT_NAME }} console.
-
-![deployments](/images/caching/purge.png)
-
-The cache can be [cleared via the CLI](/guides/cli#section_cache_clear):
-
-```bash
-$ {{ CLI_NAME }} cache-clear --team=my-team --site=my-site --environment=production --path=/p/*
-```
-
-The cache can also be [cleared via the REST API](/guides/rest_api#section_clear_cache).
-
-## Static prerendering after clearing the cache
-
-If you have [static prerendering] enabled, the cache will automatically be repopulated when you clear all entries from the cache (such as when you select "Purge all entries" in the {{ PRODUCT_NAME }} Developer Console or run `{{ CLI_NAME }} cache-clear` without providing `--path` or `--surrogate-key`). You can view the prerendering progress by clicking on the active deployment for the environment that was cleared.
-
-## Preserving the cache when deploying a new version of your site
-
-By default, {{ PRODUCT_NAME }} clears your environment edge cache every time you deploy a new version of your site.
-
-This behavior can be turned off by editing your [Environment](environment) config and enabling the following option:
-
-![keep-cache](/images/caching/keep-cache.png)
-
-After activating that new environment version, future deploys will re-use the existing edge cache.
-
 ## Ensuring versioned browser assets are permanently available
 
 In order to ensure that users who are actively browsing your site do not experience issues during a deployment, developers can

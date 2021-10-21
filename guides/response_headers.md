@@ -9,7 +9,7 @@ This guide covers the headers that {{ PRODUCT_NAME }} injects into responses mak
 - `{{ HEADER_PREFIX }}-request-id`: the unique ID of the request on {{ PRODUCT_NAME }} infrastructure
 - `{{ HEADER_PREFIX }}-hit-request-id`: the unique ID of the request whose cached response is being returned (not present if cache miss)
 - `{{ HEADER_PREFIX }}-caching-status`: indicates why a response was or was not cached. See [Caching](/guides/caching#section_why_is_my_response_not_being_cached_).
-- `{{ HEADER_PREFIX }}-surrogate-key`: a space separated list of secondary cache keys used for [cache clearing](/guides/caching#section_clearing_the_cache)
+- `{{ HEADER_PREFIX }}-surrogate-key`: a space separated list of secondary cache keys used for [cache clearing](/guides/purging#surrogate_keys)
 
 ### Structure of `{{ HEADER_PREFIX }}-t`
 

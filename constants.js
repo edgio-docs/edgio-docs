@@ -1,4 +1,4 @@
-import * as SECTIONS from './guides/sections'
+import { SYSTEM_REQUIREMENTS, SYSTEM_REQUIREMENTS_H3 } from './guides/sections'
 
 const PRODUCT_NAME = 'Layer0'
 const PRODUCT_NAME_LOWER = PRODUCT_NAME.toLowerCase()
@@ -72,5 +72,6 @@ module.exports = {
   EXAMPLES_REPO,
   EDGEJS_LABEL,
   EXAMPLES_REPOS,
-  ...SECTIONS,
+  SYSTEM_REQUIREMENTS,
+  SYSTEM_REQUIREMENTS_H3,
 }

@@ -20,7 +20,7 @@ Or using yarn:
 yarn global add {{ PACKAGE_NAME }}/cli
 ```
 
-## {{ CLI_NAME }} login
+### {{ CLI_NAME }} login
 
 Run the following to authenticate with your {{ PRODUCT_NAME }} account on {{ PRODUCT_NAME }}:
 
@@ -28,7 +28,7 @@ Run the following to authenticate with your {{ PRODUCT_NAME }} account on {{ PRO
 {{ CLI_NAME }} login
 ```
 
-## {{ CLI_NAME }} deploy
+### {{ CLI_NAME }} deploy
 
 Then, run the following to deploy your site to your private space on {{ PRODUCT_NAME }}:
 

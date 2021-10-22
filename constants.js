@@ -1,6 +1,3 @@
-// require  SYSTEM_REQUIREMENTS, SYSTEM_REQUIREMENTS_H3 } from './guides/sections'
-const SECTIONS = require('./guides/sections')
-
 const PRODUCT_NAME = 'Layer0'
 const PRODUCT_NAME_LOWER = PRODUCT_NAME.toLowerCase()
 const PRODUCT_NAME_UPPER = PRODUCT_NAME.toUpperCase()
@@ -47,6 +44,14 @@ const EXAMPLES_REPOS = {
   'static-vue': 'https://github.com/layer0-docs/static-vuejs-example',
 }
 
+const SYSTEM_REQUIREMENTS = `## System Requirements
+
+- [Install Node.js 14.0](/guides/install-nodejs) or later`
+
+const SYSTEM_REQUIREMENTS_H3 = `### System Requirements
+
+- [Install Node.js 14.0](/guides/install-nodejs) or later`
+
 module.exports = {
   PRODUCT_NAME,
   PRODUCT_NAME_LOWER,
@@ -73,5 +78,6 @@ module.exports = {
   EXAMPLES_REPO,
   EDGEJS_LABEL,
   EXAMPLES_REPOS,
-  ...SECTIONS,
+  SYSTEM_REQUIREMENTS,
+  SYSTEM_REQUIREMENTS_H3,
 }

@@ -1,14 +1,9 @@
 [
   {
-    "text": "Guides",
+    "text": "Get started",
     "items": [
       {
-        "text": "Overview",
-        "as": "/guides/overview",
-        "href": "/guides/[...guide]"
-      },
-      {
-        "text": "Getting Started",
+        "text": "Projects",
         "as": "/guides/getting_started",
         "href": "/guides/[...guide]"
       },
@@ -18,10 +13,25 @@
         "href": "/guides/[...guide]"
       },
       {
-        "text": "Deploy to Layer0 button",
-        "as": "/guides/deploy-to-layer0",
+        "text": "System overview",
+        "as": "/guides/overview",
         "href": "/guides/[...guide]"
       },
+      {
+        "text": "CLI",
+        "as": "/guides/cli",
+        "href": "/guides/[...guide]"
+      },
+      {
+        "text": "Devtools",
+        "as": "/guides/devtools",
+        "href": "/guides/[...guide]"
+      }
+    ]
+  },
+  {
+    "text": "Accounts & Teams",
+    "items": [
       {
         "text": "Teams",
         "as": "/guides/teams",
@@ -33,23 +43,23 @@
         "href": "/guides/[...guide]"
       },
       {
+        "text": "Custom Domains & SSL",
+        "as": "/guides/production",
+        "href": "/guides/[...guide]"
+      },
+      {
+        "text": "Logs",
+        "as": "/guides/logs",
+        "href": "/guides/[...guide]"
+      }
+    ]
+  },
+  {
+    "text": "Guides",
+    "items": [
+      {
         "text": "Routing",
         "as": "/guides/routing",
-        "href": "/guides/[...guide]"
-      },
-      {
-        "text": "Caching",
-        "as": "/guides/caching",
-        "href": "/guides/[...guide]"
-      },
-      {
-        "text": "Purging",
-        "as": "/guides/purging",
-        "href": "/guides/[...guide]"
-      },
-      {
-        "text": "Cookbook",
-        "as": "/guides/cookbook",
         "href": "/guides/[...guide]"
       },
       {
@@ -58,63 +68,53 @@
         "href": "/guides/[...guide]"
       },
       {
+        "text": "Traditional sites",
+        "as": "/guides/traditional_sites",
+        "href": "/guides/[...guide]"
+      },
+      {
+        "text": "Caching",
+        "as": "/guides/caching",
+        "href": "/guides/[...guide]"
+      },
+      {
+        "text": "Purging cache",
+        "as": "/guides/purging",
+        "href": "/guides/[...guide]"
+      },
+      {
+        "text": "Static prerendering",
+        "as": "/guides/static_prerendering",
+        "href": "/guides/[...guide]"
+      },
+      {
+        "text": "Incremental static (re)generation",
+        "as": "/guides/isg",
+        "href": "/guides/[...guide]"
+      },
+      {
+        "text": "Common patterns",
+        "as": "/guides/cookbook",
+        "href": "/guides/[...guide]"
+      },
+      {
+        "text": "Image optimization",
+        "as": "/guides/image_optimization",
+        "href": "/guides/[...guide]"
+      },
+      {
         "text": "GraphQL",
         "as": "/guides/graphql",
         "href": "/guides/[...guide]"
       },
       {
-        "text": "Static Prerendering",
-        "as": "/guides/static_prerendering",
-        "href": "/guides/[...guide]"
-      },
-      {
-        "text": "Incremental Static (Re)Generation",
-        "as": "/guides/isg",
-        "href": "/guides/[...guide]"
-      },
-      {
-        "text": "Image Optimization",
-        "as": "/guides/image_optimization",
-        "href": "/guides/[...guide]"
-      },
-      {
-        "text": "Split Testing",
+        "text": "Split testing",
         "as": "/guides/split_testing",
         "href": "/guides/[...guide]"
       },
       {
-        "text": "Core Web Vitals",
+        "text": "Core web vitals",
         "as": "/guides/core_web_vitals",
-        "href": "/guides/[...guide]"
-      },
-      {
-        "text": "Troubleshooting",
-        "as": "/guides/troubleshooting",
-        "href": "/guides/[...guide]"
-      },
-      {
-        "text": "Devtools",
-        "as": "/guides/devtools",
-        "href": "/guides/[...guide]"
-      },
-      {
-        "text": "CLI",
-        "as": "/guides/cli",
-        "href": "/guides/[...guide]"
-      },
-      {
-        "text": "Custom Domains & SSL",
-        "as": "/guides/production",
-        "href": "/guides/[...guide]"
-      },
-      {
-        "text": "Security",
-        "as": "/guides/security",
-        "href": "/guides/[...guide]"
-      },
-      {
-        "text": "Logs",
-        "as": "/guides/logs",
         "href": "/guides/[...guide]"
       },
       {
@@ -123,40 +123,25 @@
         "href": "/guides/[...guide]"
       },
       {
-        "text": "Regions",
-        "as": "/guides/regions",
+        "text": "Security",
+        "as": "/guides/security",
         "href": "/guides/[...guide]"
       },
       {
-        "text": "Third party CDNs",
-        "as": "/guides/third_party_cdns",
-        "href": "/guides/[...guide]"
-      },
-      {
-        "text": "Connectors",
-        "as": "/guides/connectors",
-        "href": "/guides/[...guide]"
-      },
-      {
-        "text": "Contributing",
-        "as": "/guides/contributing",
-        "href": "/guides/[...guide]"
-      },
-      {
-        "text": "Layer0 v3 Migration Guide",
-        "as": "/guides/layer0_migration",
+        "text": "Troubleshooting",
+        "as": "/guides/troubleshooting",
         "href": "/guides/[...guide]"
       }
     ]
   },
   {
-    "text": "Web Frameworks",
+    "text": "Frameworks",
     "items": [
       {
         "text": "Angular",
         "icon": "angular",
         "as": "/guides/angular",
-        "href": "/guides/[...guide]"
+        "href": "/guides/[]]"
       },
       {
         "text": "Astro",
@@ -165,15 +150,15 @@
         "href": "/guides/[...guide]"
       },
       {
-        "text": "Frontity",
-        "icon": "frontity",
-        "as": "/guides/frontity",
-        "href": "/guides/[...guide]"
-      },
-      {
         "text": "Ember Fastboot",
         "icon": "fastboot",
         "as": "/guides/ember_fastboot",
+        "href": "/guides/[...guide]"
+      },
+      {
+        "text": "Frontity",
+        "icon": "frontity",
+        "as": "/guides/frontity",
         "href": "/guides/[...guide]"
       },
       {
@@ -281,19 +266,23 @@
     ]
   },
   {
-    "text": "API Documentation",
+    "text": "Advanced",
     "items": [
       {
-        "text": "@layer0/core",
-        "as": "/docs/api/core/",
-        "href": "/docs/api/core/",
-        "external": true
+        "text": "Edge Network",
+        "as": "/guides/regions",
+        "href": "/guides/[...guide]"
       },
       {
-        "text": "@layer0/prefetch",
-        "as": "/docs/api/prefetch/",
-        "href": "/docs/api/prefetch/",
-        "external": true
+        "text": "Third party CDNs",
+        "as": "/guides/third_party_cdns",
+        "href": "/guides/[...guide]"
+      },
+
+      {
+        "text": "Connectors",
+        "as": "/guides/connectors",
+        "href": "/guides/[...guide]"
       }
     ]
   },
@@ -333,12 +322,12 @@
         "href": "/guides/[...guide]"
       },
       {
-        "text": "Request Headers",
+        "text": "Request headers",
         "as": "/guides/request_headers",
         "href": "/guides/[...guide]"
       },
       {
-        "text": "Response Headers",
+        "text": "Response headers",
         "as": "/guides/response_headers",
         "href": "/guides/[...guide]"
       },
@@ -353,14 +342,46 @@
         "href": "/guides/[...guide]"
       },
       {
-        "text": "Layer0 for Traditional Sites",
-        "as": "/guides/traditional_sites",
+        "text": "Install Node.js",
+        "as": "/guides/install-nodejs",
+        "href": "/guides/[...guide]"
+      },
+      {
+        "text": "Deploy to Layer0 button",
+        "as": "/guides/deploy-to-layer0",
+        "href": "/guides/[...guide]"
+      },
+      {
+        "text": "Contributing",
+        "as": "/guides/contributing",
+        "href": "/guides/[...guide]"
+      },
+      {
+        "text": "v3 migration guide",
+        "as": "/guides/layer0_migration",
         "href": "/guides/[...guide]"
       },
       {
         "text": "Changelog",
         "as": "/guides/changelog",
         "href": "/guides/[...guide]"
+      }
+    ]
+  },
+  {
+    "text": "Package APIs",
+    "items": [
+      {
+        "text": "@layer0/core",
+        "as": "/docs/api/core/",
+        "href": "/docs/api/core/",
+        "external": true
+      },
+      {
+        "text": "@layer0/prefetch",
+        "as": "/docs/api/prefetch/",
+        "href": "/docs/api/prefetch/",
+        "external": true
       }
     ]
   }

@@ -52,7 +52,7 @@ export default function Footer({ guide, navData }) {
         color="secondary"
         style={{ fontSize: '.7rem' }}
       >
-        Edit this guide on Github
+        Edit this guide on GitHub
       </Button>
       <div className={classes.footer}>
         {prevGuide && <GuideLink variant="previous" guide={prevGuide} />}

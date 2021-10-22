@@ -133,7 +133,7 @@ You can manipulate cookies before they are sent to the browser using cookie resp
 
 ```js
 router.get('/some/path', ({
-  setUpstreamResponseCookie,
+  addUpstreamResponseCookie,
   addResponseCookie,
   removeResponseCookie,
   removeUpstreamResponseCookie,
@@ -152,6 +152,22 @@ router.get('/some/path', ({
   addResponseCookie('cookie-to-add', 'cookie-value')
   removeResponseCookie('cookie-to-remove')
   updateResponseCookie('cookie-to-alter', /Domain=.+;/, 'Domain=mydomain.com;')
+})
+```
+
+### Adding options to cookies
+
+In addition to the name and value of the cookie, you can also add attributes to each cookie. For specific information on possible cookie attributes, please refer to https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Set-Cookie
+
+```js
+router.get('/some/path', ({ addUpstreamResponseCookie, addResponseCookie, proxy }) => {
+  proxy('origin')
+
+  addUpstreamResponseCookie('cookie-to-add', 'cookie-value', {
+    domain: 'test.com',
+  })
+
+  addResponseCookie('cookie-to-add', 'cookie-value', { 'max-age': 50000 })
 })
 ```
 

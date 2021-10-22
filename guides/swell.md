@@ -8,7 +8,7 @@ This guide shows you how to deploy a Swell application on {{ PRODUCT_NAME }}. Cl
 
 ## Sign up for {{ PRODUCT_NAME }}
 
-Deploying requires an account on {{ PRODUCT_NAME }}. [Sign up here for free.]({{ APP_URL }}/signup).
+Deploying requires an account on {{ PRODUCT_NAME }}. [Sign up here for free]({{ APP_URL }}/signup).
 
 ## Install the {{ PRODUCT_NAME }} CLI
 

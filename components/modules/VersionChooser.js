@@ -13,6 +13,7 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.down('xs')]: {
       marginRight: theme.spacing(-1.5),
     },
+    flexShrink: 0,
   },
   selectMenu: {
     textOverflow: 'clip',
@@ -28,8 +29,6 @@ const useStyles = makeStyles(theme => ({
     padding: theme.spacing(1, 2),
     fontSize: '1.00em',
     color: theme.palette.grey[200],
-    display: 'flex',
-    alignItems: 'center',
     [theme.breakpoints.down('xs')]: {
       fontSize: '1em',
     },

@@ -8,7 +8,7 @@
 
 If you are using multiple versions of Node.js consider installing a Node version manager like [nvm](https://github.com/nvm-sh/nvm) or [n](https://www.npmjs.com/package/n).
 
-Quick node install with nvm or n
+Quick node install with `nvm` or `n`
 
 ```bash
 # nvm

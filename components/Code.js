@@ -1,7 +1,7 @@
 import { FileCopyTwoTone } from '@material-ui/icons'
 import React, { useState } from 'react'
 import { PrismLight as SyntaxHighlighter } from 'react-syntax-highlighter'
-import { atomDark as prism } from 'react-syntax-highlighter/dist/cjs/styles/prism'
+import { a11yDark as prism } from 'react-syntax-highlighter/dist/cjs/styles/prism'
 import { IconButton, Snackbar, makeStyles } from '@material-ui/core'
 import { Alert } from '@material-ui/lab'
 import bash from 'react-syntax-highlighter/dist/cjs/languages/prism/bash'
@@ -76,7 +76,7 @@ export default function Code({ value, language = 'javascript' }) {
       <IconButton className={classes.copyBtn} onClick={onCopyClick}>
         <FileCopyTwoTone fontSize="small" />
       </IconButton>
-      <SyntaxHighlighter language={language} style={prism}>
+      <SyntaxHighlighter language={language} style={prism} keywords={['layer0']}>
         {value}
       </SyntaxHighlighter>
       <Snackbar

@@ -162,6 +162,31 @@ router.get('/some/path', ({ cache }) => {
 
 Note that this feature cannot be safely used with caching of `POST` and similar requests. If your signal that something must not be cached is through `private` but then you force caching of `private` responses, **all responses will be cached**.
 
+## Achieving 100% cache hit rates
+
+The key to really successful cache hit rates, is leveraging `staleWhileRevalidate` in conjunction with `maxAge`. There is a very detailed [article](https://web.dev/stale-while-revalidate/) available from web.dev that covers this concept in more detail. The main points to know is this
+
+- `maxAge` defines the hard cache limit. An asset will be cached this amount of time regardless.
+- `staleWhileRevalidate` defines an additional cache buffer limit past `maxAge` where cache content will still be returned to a client, but a network request will be issued to origin to check for new content.
+- If `maxAge` + `staleWhileRevalidate` value is exceeded, then a network request to origin is made no matter what.
+
+Set keys using the `edge` key in your cache key
+
+```
+edge: {
+  maxAgeSeconds: 60 * 60 * 24, // 24 hours
+  staleWhileRevalidateSeconds: 60 * 60, // serve stale responses for up to 1 hour while fetching a new response
+},
+```
+
+With the following header set, the diagram below shows the age of the previously cached response at the time of the next request
+
+```
+Cache-Control: max-age=1, stale-while-revalidate=59
+```
+
+![maxAge staleWhileRevalidate diagram](images/caching/stale-max-age.png)
+
 ## Preventing a response from being cached
 
 By default, {{ PRODUCT_NAME }} will cache responses that satisfy all of the following conditions:

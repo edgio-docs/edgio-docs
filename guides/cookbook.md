@@ -227,19 +227,19 @@ router.get('/favicon.ico', ({ serveStatic, cache }) => {
 })
 ```
 
-To serve all files in a directory tree under a specific path prefix:
+## Serving static files from a directory
+
+Here's an example that serves all requests by sending the corresponding file in the `public` directory
 
 ```js
-router.get('/assets/:path*', ({ serveStatic, cache }) => {
+router.get('/:path*', ({ serveStatic, cache }) => {
   cache({
     edge: {
       maxAgeSeconds: 60 * 60 * 24, // cache at the edge for 24 hours
     },
-    browser: {
-      maxAgeSeconds: 60 * 60 * 24, // cache for 24 hours
-    },
+    browser: false, // prevent caching of stale html in the browser
   })
-  serveStatic('assets/:path*')
+  serveStatic('public/:path*')
 })
 ```
 

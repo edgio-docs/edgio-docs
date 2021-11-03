@@ -17,6 +17,11 @@ The format is `{{ HEADER_PREFIX }}-t: <id>=<time>[,<id2>=<time2>...]`
 
 `{{ HEADER_PREFIX }}-t` is an ordered list of telemetry measurements, and values are **prepended** at response time. Thus, from left to right, measurements are ordered from the outermost edge component to the innermost cloud component that handled the request.
 
+***
+**Note**: When a request is reentrant, telemetry information is not duplicated; instead, each request logs its own telemetry but does not return it to the downstream Layer0 request. As a result, duplicate entries are not possible.
+***
+
+
 #### Component Names
 
 Component names within the list are abbreviated: 
@@ -51,11 +56,11 @@ All times are in milliseconds.
 
 ##### Varnish mesh cache on global POP
 
-#####
+##### DPS on global POP
 
-#####
+##### XDN Buffer Proxy
 
-#####
+##### Lambda workers
 
 
 | Name | Description                                                                                                                                                                           |
@@ -97,5 +102,5 @@ All times are in milliseconds.
 
 The following headers are used internally by {{ PRODUCT_NAME }} staff to troubleshoot issues with requests.
 
-- `{{ HEADER_PREFIX }}-status`: statuses of different components in {{ PRODUCT_NAME }} critical path that serviced your request
-- `{{ HEADER_PREFIX }}-components`: versions of different components in {{ PRODUCT_NAME }} critical path that serviced your request
+- `{{ HEADER_PREFIX }}-status`: status of various components in {{ PRODUCT_NAME }} critical path that serviced your request
+- `{{ HEADER_PREFIX }}-components`: version of various components in {{ PRODUCT_NAME }} critical path that serviced your request

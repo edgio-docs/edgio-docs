@@ -2,7 +2,7 @@
 
 This guide describes the headers that {{ PRODUCT_NAME }} injects into responses, making them visible to your client code.
 
-## General headers
+## General headersx
 
 - `{{ HEADER_PREFIX }}-version`: version fingerprint that includes {{ PRODUCT_NAME }} version number, site build number and UTC timestamp of the build
 - `{{ HEADER_PREFIX }}-t`: telemetry measurements for all the components in {{ PRODUCT_NAME }} critical path that served your request
@@ -15,7 +15,7 @@ This guide describes the headers that {{ PRODUCT_NAME }} injects into responses,
 
 The format is `{{ HEADER_PREFIX }}-t: <id>=<time>[,<id2>=<time2>...]`
 
-`{{ HEADER_PREFIX }}-t` is an ordered list of telemetry measurements, and values are **prepended** at response time. Thus, from left to right, measurements are ordered from the outermost edge component to the innermost cloud component that handled the request.
+`{{ HEADER_PREFIX }}-t` is an ordered list of telemetry measurements; values are **prepended** at response time. Thus, from left to right, measurements are ordered from the outermost edge component to the innermost cloud component that handled the request.
 
 All times are in milliseconds.
 

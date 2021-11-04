@@ -2,7 +2,7 @@
 
 This guide describes the headers that {{ PRODUCT_NAME }} injects into responses, making them visible to your client code.
 
-## General headers
+## General headersx
 
 - `{{ HEADER_PREFIX }}-version`: version fingerprint that includes {{ PRODUCT_NAME }} version number, site build number and UTC timestamp of the build
 - `{{ HEADER_PREFIX }}-t`: telemetry measurements for all the components in {{ PRODUCT_NAME }} critical path that served your request

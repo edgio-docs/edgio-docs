@@ -17,6 +17,8 @@ The format is `{{ HEADER_PREFIX }}-t: <id>=<time>[,<id2>=<time2>...]`
 
 `{{ HEADER_PREFIX }}-t` is an ordered list of telemetry measurements, and values are **prepended** at response time. Thus, from left to right, measurements are ordered from the outermost edge component to the innermost cloud component that handled the request.
 
+All times are in milliseconds.
+
 ***
 **Note**: When a request is reentrant, telemetry information is not duplicated; instead, each request logs its own telemetry but does not return it to the downstream Layer0 request. As a result, duplicate entries are not possible.
 ***
@@ -40,7 +42,7 @@ Component names within the list are abbreviated:
 | w  | Lambda workers                   |
 
 
-All times are in milliseconds.
+
 
 #### Measurements by Component
 

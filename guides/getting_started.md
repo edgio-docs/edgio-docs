@@ -1,10 +1,12 @@
 # Getting started
 
-The easiest way to get started is using one of our "Deploy to Layer0" buttons listed below. Choose from a couple popular frameworks listed, or expand the menu item for Frameworks and choose your preferred option.
+The easiest way to get started is using one of our "Deploy to Layer0" buttons.
 
-### Vue.js
+Choose from two of our the most popular frameworks below, or expand the menu item for Frameworks and choose your preferred framework to view the specific guide.
 
-[Deploy Vue.js to Layer0](https://app.layer0.co/deploy?repo=https%3A%2F%2Fgithub.com%2Flayer0-docs%2Fstatic-vuejs-example&button&deploy)
+### Nuxt.js
+
+[Deploy Nuxt.js to Layer0](https://layer0-docs-layer0-nuxt-example-default.layer0.link/category/hats?button)
 
 ### Next.js
 

@@ -1,11 +1,11 @@
 # Response Headers
 
-This guide describes the headers that {{ PRODUCT_NAME }} injects into responses, making them visible to your client code.
+This guide covers the headers that {{ PRODUCT_NAME }} injects into responses making them visible to your client code.
 
 ## General headers
 
 - `{{ HEADER_PREFIX }}-version`: version fingerprint that includes {{ PRODUCT_NAME }} version number, site build number and UTC timestamp of the build
-- `{{ HEADER_PREFIX }}-t`: telemetry measurements for all the components in {{ PRODUCT_NAME }} critical path that served your request
+- `{{ HEADER_PREFIX }}-t`: timings of all the components in {{ PRODUCT_NAME }} critical path that served your request
 - `{{ HEADER_PREFIX }}-request-id`: the unique ID of the request on {{ PRODUCT_NAME }} infrastructure
 - `{{ HEADER_PREFIX }}-hit-request-id`: the unique ID of the request whose cached response is being returned (not present if cache miss)
 - `{{ HEADER_PREFIX }}-caching-status`: indicates why a response was or was not cached. See [Caching](/guides/caching#section_why_is_my_response_not_being_cached_).
@@ -15,55 +15,16 @@ This guide describes the headers that {{ PRODUCT_NAME }} injects into responses,
 
 The format is `{{ HEADER_PREFIX }}-t: <id>=<time>[,<id2>=<time2>...]`
 
-`{{ HEADER_PREFIX }}-t` is an ordered list of telemetry measurements; values are **prepended** at response time. Thus, from left to right, measurements are ordered from the outermost edge component to the innermost cloud component that handled the request.
+`{{ HEADER_PREFIX }}-t` is an order list of timings: values are prepended at response time. Thus reading them left to right goes from the outermost edge component to the innermost cloud component that handled the request.
+
+The components are:
+
+- Level 1 Edge POP = `o`
+- Level 2 Shield POP = `s`
+- Custom {{ PRODUCT_NAME }} Proxy = `p`
+- JavaScript Compute Workers = `w`
 
 All times are in milliseconds.
-
-***
-**Note**: When a request is reentrant, telemetry information is not duplicated; instead, each request logs its own telemetry but does not return it to the downstream Layer0 request. As a result, duplicate entries are not possible.
-***
-
-
-#### Component Names
-
-Component names within the list are abbreviated: 
-
-| Abbreviation | Component Name |
-| ------------ | -------------- |
-| h  | HAProxy on edge POP              |
-| c  | Varnish cache on edge POP        |
-| m  | Varnish mesh cache on edge POP   |
-| d  | DPS on edge POP                  |
-| gh | HAProxy on global POP            |
-| gc | Varnish cache on global POP      |
-| gm | Varnish mesh cache on global POP |
-| gd | DPS on global POP                |
-| p  | XDN Buffer Proxy                 |
-| w  | Lambda workers                   |
-
-
-
-
-#### Measurements by Component
-
-##### HAProxy on edge POP
-
-##### Varnish cache on edge POP
-
-##### DPS on edge POP
-
-##### HAProxy on global POP
-
-##### Varnish cache on global POP
-
-##### Varnish mesh cache on global POP
-
-##### DPS on global POP
-
-##### XDN Buffer Proxy
-
-##### Lambda workers
-
 
 | Name | Description                                                                                                                                                                           |
 | ---- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -104,5 +65,5 @@ Component names within the list are abbreviated:
 
 The following headers are used internally by {{ PRODUCT_NAME }} staff to troubleshoot issues with requests.
 
-- `{{ HEADER_PREFIX }}-status`: status of various components in {{ PRODUCT_NAME }} critical path that serviced your request
-- `{{ HEADER_PREFIX }}-components`: version of various components in {{ PRODUCT_NAME }} critical path that serviced your request
+- `{{ HEADER_PREFIX }}-status`: statuses of different components in {{ PRODUCT_NAME }} critical path that serviced your request
+- `{{ HEADER_PREFIX }}-components`: versions of different components in {{ PRODUCT_NAME }} critical path that serviced your request

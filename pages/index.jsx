@@ -1,5 +1,4 @@
 import React from 'react'
-import Head from 'next/head'
 import Nav from '../components/nav/Nav'
 import PageWrapper from '../components/PageWrapper'
 import {
@@ -18,112 +17,7 @@ import Icon from '../components/icons/Icon'
 import { PRODUCT_NAME, EXAMPLES_REPOS } from '../constants'
 import { getGuides, getGuideByName } from '../components/getGuides'
 import SEO from '../components/Seo'
-
-const useStyles = makeStyles(theme => ({
-  hero: {
-    [theme.breakpoints.up('sm')]: {
-      paddingTop: theme.spacing(10),
-    },
-
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    textAlign: 'center',
-    '& h1, & h2': {
-      color: theme.palette.text.secondary,
-      fontWeight: 300,
-    },
-  },
-
-  gettingStarted: {
-    marginTop: '1em',
-    color: theme.palette.text.primary,
-    fontSize: '1.2em',
-    textAlign: 'center',
-    padding: 10,
-    fontFamily: 'Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace',
-    border: `1px solid ${theme.palette.divider}`,
-    borderRadius: 5,
-  },
-
-  cardActionArea: {
-    flex: 1,
-  },
-
-  frameworks: {
-    marginTop: theme.spacing(5),
-    display: 'grid',
-    gridGap: '1.2rem',
-    gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))',
-  },
-
-  frameworkItem: {
-    border: `1px solid ${theme.palette.divider}`,
-    '&:hover': {
-      boxShadow: theme.shadows[8],
-    },
-  },
-
-  framework: {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    padding: theme.spacing(2),
-    height: '100%',
-  },
-
-  frameworkWrapper: {
-    display: 'contents',
-    cursor: 'pointer',
-  },
-
-  frameworkText: {
-    display: 'flex',
-    justifyContent: 'center',
-    textAlign: 'center',
-  },
-
-  icon: {
-    flex: 1,
-    padding: theme.spacing(2, 1),
-  },
-
-  logo: {
-    margin: '1em 0',
-    width: 300,
-    [theme.breakpoints.up('sm')]: {
-      width: 500,
-    },
-    [theme.breakpoints.up('md')]: {
-      width: 600,
-    },
-  },
-
-  changeLog: {
-    marginTop: theme.spacing(8),
-    paddingBottom: theme.spacing(8),
-    '& h2': {
-      marginTop: theme.spacing(2),
-    },
-  },
-  button: {
-    transition: 'color border-color 200ms linear',
-    '&:hover': {
-      borderColor: darken(theme.palette.secondary.light, 0.1),
-    },
-    '& span': {
-      textDecoration: 'none',
-    },
-    marginTop: 10,
-  },
-  buttonLink: {
-    textDecoration: 'none',
-    marginTop: 'auto',
-    '&:hover': {
-      textDecoration: 'none',
-    },
-  },
-}))
+import cs from 'classname'
 
 const iconProps = {
   style: { height: 142, width: 142, objectFit: 'contain' },
@@ -133,17 +27,73 @@ const Home = ({ navData }) => {
   const classes = useStyles()
   const theme = useTheme()
 
+  const PriEm = ({ children, addlClasses = {} }) => (
+    <span className={cs(classes.colorPrimary, classes.fontNormal, addlClasses)}>{children}</span>
+  )
+  const SecEm = ({ children }) => <span className={cs(classes.fontNormal)}>{children}</span>
+
   return (
     <PageWrapper nav={<Nav navData={navData} />}>
       <SEO />
+
       <div className={classes.hero}>
-        <Layer0Icon className={classes.logo} />
         <Typography variant="h2" style={{ maxWidth: 800, marginTop: 0, fontSize: '30px' }}>
-          <div style={{ position: 'relative' }}>
-            Develop, deploy, preview, split test and monitor your frontend.
+          <div>
+            The <PriEm>simplest</PriEm> and most <PriEm>powerful</PriEm> way to{' '}
+            <SecEm>develop</SecEm>, <SecEm>deploy</SecEm>, <SecEm>preview</SecEm>,{' '}
+            <SecEm>split test</SecEm> and <SecEm>monitor</SecEm> your <PriEm>site</PriEm>.
+          </div>
+
+          <div style={{ marginTop: '1.5rem' }}>
+            Get started leveraging the capabilities of Layer0's Edge Network and Deployment
+            Platform.
           </div>
         </Typography>
       </div>
+      <Grid
+        container
+        spacing={5}
+        alignItems="stretch"
+        justify="center"
+        className={classes.choiceBox}
+      >
+        <Grid
+          item
+          xs={12}
+          sm={6}
+          className={cs(classes.placeCenter, classes.grid, classes.alignItemsEnd)}
+        >
+          <h3 className={cs(classes.headerChoice)}>Quickly enable the Layer0 Edge Network</h3>
+          <Typography>
+            The quickest way to start accelerating your site is integrating Layer0's Global Edge
+            Network into your new or existing site / project. Get up and running in under{' '}
+            <PriEm addlClasses={classes.fontBold}>five minutes</PriEm>.
+          </Typography>
+          <Link href="/guides/get_started" as="/guides/traditional_sites">
+            <Button variant="outlined" color="secondary" className={classes.button}>
+              Enable Edge Network
+            </Button>
+          </Link>
+        </Grid>
+        <Grid
+          item
+          xs={12}
+          sm={6}
+          className={cs(classes.placeCenter, classes.grid, classes.alignItemsEnd)}
+        >
+          <h3 className={cs(classes.headerChoice)}>Edge Network + Development Experience</h3>
+          <Typography>
+            Take a leap forward in developer experience using Layer0 to integrate a Global Edge
+            Network and a modern web development workflow. Start with a new project or easily
+            integrate into your existing project.
+          </Typography>
+          <Link href="/guides/get_started" as="/guides/traditional_sites">
+            <Button variant="outlined" color="secondary" className={classes.button}>
+              Enable Edge &amp; Dx
+            </Button>
+          </Link>
+        </Grid>
+      </Grid>
       <div className={classes.frameworks}>
         <FrameworkItem
           guide="/guides/next"
@@ -252,13 +202,6 @@ const Home = ({ navData }) => {
         />
       </div>
 
-      <p style={{ textAlign: 'center', marginTop: theme.spacing(8) }}>
-        Don't see your framework? Check out {PRODUCT_NAME} for &nbsp;
-        <Link href="/guides/[...guide]" as="/guides/traditional_sites">
-          traditional websites
-        </Link>
-        .
-      </p>
       <div className={classes.changeLog}>
         <Divider />
         <h1>{PRODUCT_NAME} Tutorials</h1>
@@ -351,3 +294,142 @@ const DeployLink = ({ framework }) => {
     </a>
   )
 }
+
+const useStyles = makeStyles(theme => ({
+  hero: {
+    [theme.breakpoints.up('sm')]: {
+      paddingTop: theme.spacing(10),
+    },
+
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    textAlign: 'center',
+    '& h1, & h2': {
+      color: theme.palette.text.secondary,
+      fontWeight: 300,
+    },
+  },
+
+  choiceBox: {
+    marginTop: '1.3rem',
+  },
+
+  fontNormal: {
+    fontWeight: 'normal',
+  },
+
+  fontBold: {
+    fontWeight: 'bold',
+  },
+
+  colorPrimary: {
+    color: theme.palette.primary.main,
+  },
+
+  grid: {
+    display: 'grid',
+  },
+
+  placeCenter: {
+    placeItems: 'center',
+  },
+
+  alignItemsEnd: {
+    alignItems: 'end',
+  },
+
+  headerChoice: {
+    color: theme.palette.primary.main,
+    fontSize: '1.4rem',
+  },
+
+  gettingStarted: {
+    marginTop: '1em',
+    color: theme.palette.text.primary,
+    fontSize: '1.2em',
+    textAlign: 'center',
+    padding: 10,
+    fontFamily: 'Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace',
+    border: `1px solid ${theme.palette.divider}`,
+    borderRadius: 5,
+  },
+
+  cardActionArea: {
+    flex: 1,
+  },
+
+  frameworks: {
+    marginTop: theme.spacing(5),
+    display: 'grid',
+    gridGap: '1.2rem',
+    gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))',
+  },
+
+  frameworkItem: {
+    border: `1px solid ${theme.palette.divider}`,
+    '&:hover': {
+      boxShadow: theme.shadows[8],
+    },
+  },
+
+  framework: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    padding: theme.spacing(2),
+    height: '100%',
+  },
+
+  frameworkWrapper: {
+    display: 'contents',
+    cursor: 'pointer',
+  },
+
+  frameworkText: {
+    display: 'flex',
+    justifyContent: 'center',
+    textAlign: 'center',
+  },
+
+  icon: {
+    flex: 1,
+    padding: theme.spacing(2, 1),
+  },
+
+  logo: {
+    margin: '1em 0',
+    width: 300,
+    [theme.breakpoints.up('sm')]: {
+      width: 500,
+    },
+    [theme.breakpoints.up('md')]: {
+      width: 600,
+    },
+  },
+
+  changeLog: {
+    marginTop: theme.spacing(8),
+    paddingBottom: theme.spacing(8),
+    '& h2': {
+      marginTop: theme.spacing(2),
+    },
+  },
+  button: {
+    transition: 'color border-color 200ms linear',
+    '&:hover': {
+      borderColor: darken(theme.palette.secondary.light, 0.1),
+    },
+    '& span': {
+      textDecoration: 'none',
+    },
+    marginTop: 10,
+  },
+  buttonLink: {
+    textDecoration: 'none',
+    marginTop: 'auto',
+    '&:hover': {
+      textDecoration: 'none',
+    },
+  },
+}))

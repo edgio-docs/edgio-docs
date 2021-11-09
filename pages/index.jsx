@@ -69,7 +69,7 @@ const Home = ({ navData }) => {
             Network into your new or existing site / project. Get up and running in under{' '}
             <PriEm addlClasses={classes.fontBold}>five minutes</PriEm>.
           </Typography>
-          <Link href="/guides/get_started" as="/guides/traditional_sites">
+          <Link href="/guides/get_started" as="/guides/enable_edge_network">
             <Button variant="outlined" color="secondary" className={classes.button}>
               Enable Edge Network
             </Button>
@@ -87,7 +87,7 @@ const Home = ({ navData }) => {
             Network and a modern web development workflow. Start with a new project or easily
             integrate into your existing project.
           </Typography>
-          <Link href="/guides/get_started" as="/guides/traditional_sites">
+          <Link href="/guides/get_started" as="/guides/getting_started">
             <Button variant="outlined" color="secondary" className={classes.button}>
               Enable Edge &amp; Dx
             </Button>

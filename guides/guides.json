@@ -8,6 +8,11 @@
         "href": "/guides/[...guide]"
       },
       {
+        "text": "Enable edge network",
+        "as": "/guides/enable_edge_network",
+        "href": "/guides/[...guide]"
+      },
+      {
         "text": "Deploying",
         "as": "/guides/deploying",
         "href": "/guides/[...guide]"
@@ -30,7 +35,7 @@
     ]
   },
   {
-    "text": "Accounts & Teams",
+    "text": "Accounts & teams",
     "items": [
       {
         "text": "Teams",
@@ -43,7 +48,7 @@
         "href": "/guides/[...guide]"
       },
       {
-        "text": "Custom Domains & SSL",
+        "text": "Custom domains & SSL",
         "as": "/guides/production",
         "href": "/guides/[...guide]"
       },
@@ -269,7 +274,7 @@
     "text": "Advanced",
     "items": [
       {
-        "text": "Edge Network",
+        "text": "Edge network",
         "as": "/guides/regions",
         "href": "/guides/[...guide]"
       },
@@ -290,13 +295,13 @@
     "text": "Videos",
     "items": [
       {
-        "text": "Product Updates",
+        "text": "Product updates",
         "as": "https://www.youtube.com/playlist?list=PLv3_GoCvQgUn8pKufafW2Ufy0DXTL3BCp",
         "href": "https://www.youtube.com/playlist?list=PLv3_GoCvQgUn8pKufafW2Ufy0DXTL3BCp",
         "external": true
       },
       {
-        "text": "Layer0 Tutorials",
+        "text": "Layer0 tutorials",
         "as": "https://www.youtube.com/playlist?list=PLv3_GoCvQgUnbIlR-OFhS9dQW4oSHv4ji",
         "href": "https://www.youtube.com/playlist?list=PLv3_GoCvQgUnbIlR-OFhS9dQW4oSHv4ji",
         "external": true
@@ -312,7 +317,7 @@
         "href": "/guides/[...guide]"
       },
       {
-        "text": "Status Codes",
+        "text": "Status codes",
         "as": "/guides/status_codes",
         "href": "/guides/[...guide]"
       },

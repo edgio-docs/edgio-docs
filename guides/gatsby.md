@@ -4,6 +4,14 @@ This guide shows you how to deploy an Gatsby application on {{ PRODUCT_NAME }}:
 
 ![video](https://www.youtube.com/watch?v=ici9j6oF_5E)
 
+## Example SSR Site
+
+This Next.js example app uses server-side rendering and prefetching to provide lightning-fast transitions between pages.
+
+[Try the Gatsby SSR Example Site](https://layer0-docs-layer0-gatsby-example-default.layer0.link?button)
+[View the Code](https://github.com/layer0-docs/gatsby?button)
+[Deploy to Layer0](https://app.layer0.co/deploy?button&deploy&repo=https://github.com/layer0-docs/gatsby)
+
 ## Connector
 
 This framework has a connector developed for {{ PRODUCT_NAME }}. See [Connectors](connectors) for more information.

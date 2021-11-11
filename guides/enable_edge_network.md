@@ -1,10 +1,12 @@
-# Enable {{ PRODUCT_NAME }}'s Edge Network on an existing site
+# Enable CDN Edge Network on an existing site
+
+_Approximate time to completion: 7 mins_
 
 Enabling Layer0 on an existing site is the fastest and easiest way to start seeing performance benefits made possible by the Layer0 Edge Network. In the guide below, we will generate a node project, configure it to cache some static assets, deploy it, and visit the live site. By enabling the Edge Network, we will get both edge caching and predictive prefetching.
 
 If any point, you want a more [detailed guide](/guides/traditional_sites), we've got that too.
 
-## Network Diagram
+## Network diagram
 
 As shown below, {{ PRODUCT_NAME }} becomes the main CDN for your site:
 
@@ -12,25 +14,15 @@ As shown below, {{ PRODUCT_NAME }} becomes the main CDN for your site:
 
 Requests for your site will now pass through {{ PRODUCT_NAME }}'s globally distributed edge network and then to your origin server. A full production deployment requires changing your site's DNS, view our [production](/guides/production) guide for that process.
 
-## Requirements
+## Create an account
 
-This guide will require the following knowledge:
-
-- Terminal
-- Deploy
-- Acct on Layer0
-
-## Connector
-
-This framework has a connector developed for {{ PRODUCT_NAME }}. See [Connectors](connectors) for more information.
-
-[View the Connector Code](https://github.com/layer0-docs/layer0-connectors/tree/main/layer0-starter-connector?button)
+If you do not have an account yet, visit [{{ PRODUCT_NAME }}]({{ APP_URL }}/signup) to create one. Do not create a site in the UI at this point, we will be deploying from the command line.
 
 {{ SYSTEM_REQUIREMENTS }}
 
 ## Setup a project
 
-Next, install the [{{ PRODUCT_NAME }} CLI](cli)
+Install the [{{ PRODUCT_NAME }} CLI](cli)
 
 ```bash
 npm i -g {{ PACKAGE_NAME }}/cli
@@ -44,30 +36,33 @@ npm create {{ STARTER_NAME }}@latest
 
 The {{ PRODUCT_NAME }} create module will prompt you for the following information:
 
-- Name: Give your project name.
-- Template: Select the `Default template` option.
-- Hostname: Enter the domain of the origin server that {{ PRODUCT_NAME }} will be accelerating.
-- Package manager: Pick `npm` unless you have strong preference and experience with `yarn`. This guide will assume `npm`.
+- `Name`: Give your project name.
+- `Template`: Select the `Default template` option.
+- `Hostname`: Enter the domain of the origin server that {{ PRODUCT_NAME }} will be accelerating.
+- `Package manager`: Pick `npm` unless you have strong preference and experience with `yarn`. This guide will assume `npm`.
 
 Refer to the [{{ CONFIG_FILE }}](layer0_config) guide for more details
 
 ### Project Structure
 
-Before we get started, you should familiarize yourself with some of the key files in the {{ PRODUCT_NAME }} project:
+In the `src` folder, there are the following files:
 
-- `service-worker.ts`: Is run on the browser. The service worker is able to prefetch content (main product image, scripts, fonts, links, etc. as defined here) from within the potential next page’s document. We call this method "deepfetching".
-  This file is where deepfetching rules are defined: the selector, how many elements, which attribute to fetch, resource type, and an optional callback function for more complex fetches (as shown in the example). More detailed info about deepfetching is [described below](#section_deep_fetching).
-- `shoppingFlowRouteHandler.ts`: Is run on {{ PRODUCT_NAME }}. It’s where the caching rules get implemented, as well as where the modifications to be made to the requests and/or responses to support caching of dynamic content are defined.
-- `cache.ts`: This is where the caching rules are defined for both {{ PRODUCT_NAME }} (edge) and the browser.
-- `routes.ts`: This is where the routes to be cached and prefetched are defined, as well as what to pass through without modification and what to serve up as static content.
-- `browser.ts`: This is entry point for the `main.js` javascript bundle which is added to the window.
+- `service-worker.ts`: prefetches content and stores in cache
+- `shoppingFlowRouteHandler.ts`: implements caching rules
+- `cache.ts`: contains values applied to caching rules in `shoppingFlowRouteHandler.ts`
+- `routes.ts`: routes to be cached and prefetched are defined, as well as what to pass through without modification and what to serve up as static content.
+- `browser.ts`: entry point for the `main.js` javascript bundle which is added to the window.
 
-## Configure Caching and Prefetching
+## Configure Caching and prefetching
 
-Next we need to configure the caching in our newly created project. To do so, add a route for each URL you want to cache to the `routes.ts` file. For example, consider a site where the homepage (`/`), category pages (`/category/xxxx`), and product pages (`/product/yyyy`) are to be cached. Then your `routes.ts` file would look like:
+We need to configure caching in our newly created project. The project contains some generic starter routes already, but these should be customized to fit your site. These routes should be added in the `routes.ts` file.
+
+At this point, the only item that should require changing is a path match. We suggest starting with a few basic routes to get the feel for how it works.
+
+### Routes file
 
 ```typescript
-// routes.ts
+// src/routes.ts
 import { Router } from '{{ PACKAGE_NAME }}/core/router'
 import shoppingFlowRouteHandler from './shoppingFlowRouteHandler'
 
@@ -77,8 +72,12 @@ export default new Router()
   .get('/products/*path', shoppingFlowRouteHandler)
 ```
 
+### Route handler
+
+The handler function passed into a route match will determine the behavior of the cache for the request. Abstracting this handler function, allows it to apply to multiple routes.
+
 ```typescript
-// shoppingFlowRouteHandler.ts
+// src/shoppingFlowRouteHandler.ts
 import { CACHE_PAGES } from './cache'
 import { RouteHandler } from '{{ PACKAGE_NAME }}/core/router/Router'
 
@@ -91,8 +90,12 @@ const handler: RouteHandler = async ({ cache, removeResponseHeader, proxy }) => 
 export default handler
 ```
 
+#### Cache contsants
+
+Abstracting out the constants of the cache allows them to be reused across different routes.
+
 ```typescript
-// cache.ts
+// src/cache.ts
 const ONE_HOUR = 60 * 60
 const ONE_DAY = 24 * ONE_HOUR
 const ONE_YEAR = 365 * ONE_DAY
@@ -113,26 +116,23 @@ export const CACHE_PAGES = {
 
 Refer to the guides on [Routing](routing) and [Caching](caching) for the full syntax to use in your `routes.js` file.
 
-In addition to configuring your caching in `routes.ts` as shown above, you may need to employ [advanced prefetching techniques](#section_advanced_prefetching_techniques) to achieve the best possible performance
+Learn [advanced prefetching techniques](#section_advanced_prefetching_techniques) to achieve the best possible performance.
 
-## Test your code locally and on {{ PRODUCT_NAME }}
-
-Now that you've configured your caching in `routes.ts`, you should test it in your local development environment and on {{ PRODUCT_NAME }}.
-
-### Running Locally
-
-To test the caching behavior locally, run your project with the [local cache option](caching#section_caching_during_development) as shown below:
-
-```bash
-{{ CLI_NAME }} dev --cache
-```
-
-### Running on {{ PRODUCT_NAME }}
+## Deploy code to {{ PRODUCT_NAME }}
 
 Now that you're satisfied with your site in local development, it's time to deploy it to {{ PRODUCT_NAME }} Cloud. Once your code is deployed to {{ PRODUCT_NAME }} Cloud, you can formally evaluate site performance and QA functionality.
 
-To deploy your site to {{ PRODUCT_NAME }}, you must first sign up for an account. [Sign up here for free.]({{ APP_URL }}/signup) Once you have an account, you can deploy your site using the `deploy` command:
+To deploy your site to {{ PRODUCT_NAME }}, you must first [sign up]({{ APP_URL }}/signup) for an account.
+
+Deploy your site with the following command:
 
 ```bash
-{{ CLI_NAME }} deploy --team=[team-name]
+# Root of project
+{{ CLI_NAME }} deploy
 ```
+
+Once your project code is up and running, you can view its performance from within the [app.layer0.co]({{ APP_URL }}) cockpit. Using the tools available here, you can understanding the caching behavior of the routes you have added. Continue adding routes and dialing in your config until you are ready to launch the site and code.
+
+## Issues?
+
+If you have any issues during this process, check our [forums](FORUM_URL) for assistance.

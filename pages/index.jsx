@@ -67,7 +67,7 @@ const Home = ({ navData }) => {
           <Typography>
             The quickest way to start accelerating your site is integrating Layer0's Global Edge
             Network into your new or existing site / project. Get up and running in under{' '}
-            <PriEm addlClasses={classes.fontBold}>five minutes</PriEm>.
+            <PriEm addlClasses={classes.fontBold}>seven minutes</PriEm>.
           </Typography>
           <Link href="/guides/get_started" as="/guides/enable_edge_network">
             <Button variant="outlined" color="secondary" className={classes.button}>

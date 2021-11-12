@@ -32,7 +32,6 @@ This framework has a connector developed for {{ PRODUCT_NAME }}. See [Connectors
 - `getInitialProps`
 
 {{ SYSTEM_REQUIREMENTS }}
-
 ## Getting Started
 
 ### Create a Next.js Application

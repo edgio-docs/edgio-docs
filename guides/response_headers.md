@@ -1,11 +1,11 @@
 # Response Headers
 
-This guide covers the headers that {{ PRODUCT_NAME }} injects into responses making them visible to your client code.
+This guide describes the headers that {{ PRODUCT_NAME }} injects into responses, making them visible to your client code.
 
 ## General headers
 
 - `{{ HEADER_PREFIX }}-version`: version fingerprint that includes {{ PRODUCT_NAME }} version number, site build number and UTC timestamp of the build
-- `{{ HEADER_PREFIX }}-t`: timings of all the components in {{ PRODUCT_NAME }} critical path that served your request
+- `{{ HEADER_PREFIX }}-t`: telemetry measurements for all the components in {{ PRODUCT_NAME }} critical path that served your request
 - `{{ HEADER_PREFIX }}-request-id`: the unique ID of the request on {{ PRODUCT_NAME }} infrastructure
 - `{{ HEADER_PREFIX }}-hit-request-id`: the unique ID of the request whose cached response is being returned (not present if cache miss)
 - `{{ HEADER_PREFIX }}-caching-status`: indicates why a response was or was not cached. See [Caching](/guides/caching#section_why_is_my_response_not_being_cached_).
@@ -15,40 +15,46 @@ This guide covers the headers that {{ PRODUCT_NAME }} injects into responses mak
 
 The format is `{{ HEADER_PREFIX }}-t: <id>=<time>[,<id2>=<time2>...]`
 
-`{{ HEADER_PREFIX }}-t` is an order list of timings: values are prepended at response time. Thus reading them left to right goes from the outermost edge component to the innermost cloud component that handled the request.
-
-The components are:
-
-- Level 1 Edge POP = `o`
-- Level 2 Shield POP = `s`
-- Custom {{ PRODUCT_NAME }} Proxy = `p`
-- JavaScript Compute Workers = `w`
+`{{ HEADER_PREFIX }}-t` is an ordered list of telemetry measurements; values are **prepended** at response time. Thus, from left to right, measurements are ordered from the outermost edge component to the innermost cloud component that handled the request.
 
 All times are in milliseconds.
 
-| Name | Description                                                                                                                                                                           |
-| ---- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| ot   | The total time spent processing the request                                                                                                                                           |
-| or   | The time spent matching routes at the edge POP                                                                                                                                        |
-| of   | The time spent fetching the response at the edge POP, either from the shield POP or from the serverless backend or origin                                                             |
-| oc   | The caching status for the edge POP                                                                                                                                                   |
-| ow   | The free memory in bytes on the edge POP after processing the request                                                                                                                 |
-| oq   | The time spent at the edge POP in fetch queue during the request coalescing                                                                                                           |
-| st   | The time spent processing the request at the shield POP                                                                                                                               |
-| sr   | The time spent matching routes at the shield POP                                                                                                                                      |
-| sf   | The time spent waiting for a response from the serverless backend or origin, including request queueing                                                                               |
-| sc   | The caching status for the shield POP                                                                                                                                                 |
-| sw   | The free memory in bytes on the shield POP after processing the request                                                                                                               |
-| sq   | The time spent at the shield POP in fetch queue during the request coalescing                                                                                                         |
-| bf   | The time spent waiting for a response from the serverless backend or origin, including request queueing                                                                               |
-| pc   | The number of times the request was scheduled to execute. If it's present it is normally `1`, if not your account is under significant pressure and you should consider upgrading it. |
-| pf   | The time spent waiting for a response from the JavaScript worker                                                                                                                      |
-| wm   | The amount of memory used in MB by the JavaScript worker to process the request                                                                                                       |
-| wt   | The JavaScript worker execution time                                                                                                                                                  |
-| wr   | The time spent matching routes in the JavaScript worker                                                                                                                               |
-| wa   | The time spent transforming the request in JavaScript worker. Will only be provided if the request was transformed.                                                                   |
-| wp   | The time spent waiting for your application (Next, Nuxt, Sapper, Angular, etc...) or origin to respond                                                                                |
-| wz   | The time spent transforming the response in JavaScript worker. Will only be provided if the response was transformed.                                                                 |
+***
+**Note**: When a request is reentrant, telemetry information is not duplicated; instead, each request logs its own telemetry but does not return it to the downstream Layer0 request. As a result, duplicate entries are not possible.
+***
+
+
+#### Component Names and Prefixes
+
+Component names within the header are abbreviated: 
+
+| Abbreviation | Component Name |
+| ------------ | -------------- |
+| eh  | HAProxy on edge POP              |
+| ec  | Varnish cache on edge POP        |
+| ed  | DPS on edge POP                  |
+| gh | HAProxy on global POP            |
+| gc | Varnish cache on global POP      |
+| gd | DPS on global POP                |
+| p  | XDN Buffer Proxy                 |
+| w  | Lambda workers                   |
+
+
+#### Telemetry Types
+| Type | Description |
+| ------------ | -------------- |
+| t | Total time (example: `eht`) total time as measured by edge HAProxy) |
+| f | Fetch time (example: `gdf`) total fetch time time as measured by global DPS) |
+| c | Cache status (example: `ecc=miss,...,gcc=hit`) miss on the edge pop, hit on the global pop |
+ 
+#### Example
+A response that traversed from the edge, to global, to serverless might look like this:
+
+
+`< x-0-components: eh=0.1.6,e=atl,ec=1.1.0,ed=1.0.1,gh=0.1.6,g=hef,gd=1.0.1,p=1.21.10,w=3.11.0,wi=e8ce8753-163d-4be9-a39e-40454ace5146,b=serverless`
+`< x-0-t: eh=1020,ect=1019,ecc=miss,edt=1015,edd=0,edf=1015,gh=952,gct=950,gcc=miss,gdt=945,gdd=24,gdf=921,pt=912,pc=1,pf=912,wm=79,wt=299,wc=1,wa=402,wl=299,wr=21,wp=233,wz=0`
+`< x-0-status: eh=200,ed=200,gh=200,gd=200,p=200,w=200`
+
 
 ## server-timing
 
@@ -65,5 +71,5 @@ All times are in milliseconds.
 
 The following headers are used internally by {{ PRODUCT_NAME }} staff to troubleshoot issues with requests.
 
-- `{{ HEADER_PREFIX }}-status`: statuses of different components in {{ PRODUCT_NAME }} critical path that serviced your request
-- `{{ HEADER_PREFIX }}-components`: versions of different components in {{ PRODUCT_NAME }} critical path that serviced your request
+- `{{ HEADER_PREFIX }}-status`: HTTP status that each component in {{ PRODUCT_NAME }} returned (can vary depending on the component)
+- `{{ HEADER_PREFIX }}-components`: version of various components in {{ PRODUCT_NAME }} critical path that serviced your request

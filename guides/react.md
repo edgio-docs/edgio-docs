@@ -12,7 +12,7 @@ Here's an example React app running on Layer0:
 
 ## Install Node.js and npm
 
-**{{ PRODUCT_NAME }} only supports Node.js version 14 and higher**
+**{{ PRODUCT_NAME }} only supports Node.js version 14**
 
 If you do not have Node.js installed on your system, download and install it from the official [Node.js v{{ NODE_VERSION }} downloads](https://nodejs.org/dist/latest-v{{ NODE_VERSION }}/) page. Select the download that matches your operating system and run the installer. Note that the installer for Node.js will also install npm.
 

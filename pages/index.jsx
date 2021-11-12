@@ -19,9 +19,20 @@ import { getGuides, getGuideByName } from '../components/getGuides'
 import SEO from '../components/Seo'
 import cs from 'classname'
 
-const iconProps = {
-  style: { height: 142, width: 142, objectFit: 'contain' },
-}
+const frameworkItems = [
+  {
+    guide: '/guides/next',
+    framework: 'next',
+    icon: 'nextjs',
+    text: 'Get started with Next.js',
+  },
+  {
+    guide: '/guides/next_commerce',
+    framework: 'nextcommerce',
+    icon: 'next-commerce',
+    text: 'Start with Next.js Commerce',
+  },
+]
 
 const Home = ({ navData }) => {
   const classes = useStyles()
@@ -94,6 +105,53 @@ const Home = ({ navData }) => {
           </Link>
         </Grid>
       </Grid>
+      <div className={classes.frameworksTable}>
+        {frameworkItems.map(({ guide, framework, icon, text }) => {
+          const url = EXAMPLES_REPOS[framework]
+
+          return (
+            <div className={classes.frameworksTableRow}>
+              <Icon
+                type={icon}
+                className={classes.icon}
+                style={{ height: 50, width: 50, padding: 0, flex: 'unset' }}
+              />
+              <Typography
+                className={classes.frameworkText}
+                style={{ marginLeft: theme.spacing(2) }}
+              >
+                {text}
+              </Typography>
+              {/* <div style={{ flex: 1 }}></div> */}
+              <div style={{ flex: 1, display: 'flex', justifyContent: 'flex-end' }}>
+                <Link href="/guides/[...guide]" as={guide}>
+                  <Button
+                    variant="outlined"
+                    color="secondary"
+                    className={classes.buttonRow}
+                    style={{ marginRight: theme.spacing(1) }}
+                  >
+                    Guide
+                  </Button>
+                </Link>
+                {url && (
+                  <a
+                    className={classes.buttonLink}
+                    href={`https://app.layer0.co/deploy?repo=${encodeURIComponent(
+                      EXAMPLES_REPOS[framework],
+                    )}`}
+                    target="_blank"
+                  >
+                    <Button variant="outlined" color="secondary" className={classes.buttonRow}>
+                      Deploy to Layer0
+                    </Button>
+                  </a>
+                )}
+              </div>
+            </div>
+          )
+        })}
+      </div>
       <div className={classes.frameworks}>
         <FrameworkItem
           guide="/guides/next"
@@ -254,6 +312,10 @@ export async function getStaticProps() {
   return { props: { navData } }
 }
 
+const iconProps = {
+  style: { height: 142, width: 142, objectFit: 'contain' },
+}
+
 const FrameworkItem = ({ framework, text, guide, icon }) => {
   const classes = useStyles()
 
@@ -359,6 +421,21 @@ const useStyles = makeStyles(theme => ({
     flex: 1,
   },
 
+  frameworksTable: {
+    marginTop: theme.spacing(5),
+  },
+  frameworksTableRow: {
+    display: 'flex',
+    alignItems: 'center',
+    border: `1px solid ${theme.palette.divider}`,
+    flexWrap: 'wrap',
+    marginBottom: theme.spacing(1),
+    paddingTop: theme.spacing(1),
+    paddingBottom: theme.spacing(1),
+    paddingLeft: theme.spacing(2),
+    paddingRight: theme.spacing(2),
+  },
+
   frameworks: {
     marginTop: theme.spacing(5),
     display: 'grid',
@@ -413,6 +490,15 @@ const useStyles = makeStyles(theme => ({
     paddingBottom: theme.spacing(8),
     '& h2': {
       marginTop: theme.spacing(2),
+    },
+  },
+  buttonRow: {
+    transition: 'color border-color 200ms linear',
+    '&:hover': {
+      borderColor: darken(theme.palette.secondary.light, 0.1),
+    },
+    '& span': {
+      textDecoration: 'none',
     },
   },
   button: {

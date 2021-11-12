@@ -1,6 +1,4 @@
 import React from 'react'
-import Nav from '../components/nav/Nav'
-import PageWrapper from '../components/PageWrapper'
 import {
   Typography,
   makeStyles,
@@ -12,12 +10,14 @@ import {
   useTheme,
 } from '@material-ui/core'
 import Link from 'next/link'
+import cs from 'classname'
+import Nav from '../components/nav/Nav'
+import PageWrapper from '../components/PageWrapper'
 import Layer0Icon from '../components/icons/layer0-black.svg'
 import Icon from '../components/icons/Icon'
 import { PRODUCT_NAME, EXAMPLES_REPOS } from '../constants'
 import { getGuides, getGuideByName } from '../components/getGuides'
 import SEO from '../components/Seo'
-import cs from 'classname'
 
 const frameworkItems = [
   {
@@ -236,74 +236,58 @@ const Home = ({ navData }) => {
               >
                 {text}
               </Typography>
-              {/* <div style={{ flex: 1 }}></div> */}
-              <div style={{ flex: 1, display: 'flex', justifyContent: 'flex-end' }}>
-                <Link href="/guides/[...guide]" as={guide}>
-                  <Button
-                    variant="outlined"
-                    color="secondary"
-                    className={classes.buttonRow}
-                    style={{ marginRight: theme.spacing(1) }}
-                  >
-                    Guide
-                  </Button>
-                </Link>
+              <div style={{ marginLeft: "auto" }}>
                 {url && (
                   <a
+                    style={{ marginRight: theme.spacing(1) }}
                     className={classes.buttonLink}
                     href={`https://app.layer0.co/deploy?repo=${encodeURIComponent(
-                      EXAMPLES_REPOS[framework],
+                      EXAMPLES_REPOS[framework]
                     )}`}
                     target="_blank"
+                    rel="noreferrer"
                   >
                     <Button variant="outlined" color="secondary" className={classes.buttonRow}>
                       Deploy to Layer0
                     </Button>
                   </a>
                 )}
+                <Link href="/guides/[...guide]" as={guide}>
+                  <Button
+                    variant="outlined"
+                    color="secondary"
+                    className={classes.buttonRow}
+                  >
+                    Guide
+                  </Button>
+                </Link>
               </div>
             </div>
           )
         })}
       </div>
-      
+
       <div className={classes.changeLog}>
         <Divider />
         <h1>{PRODUCT_NAME} Tutorials</h1>
         <Grid container spacing={5}>
           <Grid item>
             <h4>{PRODUCT_NAME} - What & Why</h4>
-            <iframe
-              width="100%"
-              height="90%"
-              src="https://www.youtube.com/embed/sJ6AkTrcZvg"
-            ></iframe>
+            <iframe width="100%" height="90%" src="https://www.youtube.com/embed/sJ6AkTrcZvg" />
           </Grid>
           <Grid item>
             <h4>{PRODUCT_NAME} - Deploying GitHub Project</h4>
-            <iframe
-              width="100%"
-              height="90%"
-              src="https://www.youtube.com/embed/F8uN03ps1As"
-            ></iframe>
+            <iframe width="100%" height="90%" src="https://www.youtube.com/embed/F8uN03ps1As" />
           </Grid>
           <Grid item>
             <h4>{PRODUCT_NAME} - How to Prefetch</h4>
-            <iframe
-              width="100%"
-              height="90%"
-              src="https://www.youtube.com/embed/lfhSDCNgzfs"
-            ></iframe>
+            <iframe width="100%" height="90%" src="https://www.youtube.com/embed/lfhSDCNgzfs" />
           </Grid>
           <Grid item>
             <h4>
               {PRODUCT_NAME} - What are the {PRODUCT_NAME} DevTools?
             </h4>
-            <iframe
-              width="100%"
-              height="90%"
-              src="https://www.youtube.com/embed/4AYQAvkc0UY"
-            ></iframe>
+            <iframe width="100%" height="90%" src="https://www.youtube.com/embed/4AYQAvkc0UY" />
           </Grid>
         </Grid>
       </div>
@@ -356,6 +340,7 @@ const DeployLink = ({ framework }) => {
       className={classes.buttonLink}
       href={`https://app.layer0.co/deploy?repo=${encodeURIComponent(EXAMPLES_REPOS[framework])}`}
       target="_blank"
+      rel="noreferrer"
     >
       <Button variant="outlined" color="secondary" className={classes.button}>
         Deploy to Layer0
@@ -364,7 +349,7 @@ const DeployLink = ({ framework }) => {
   )
 }
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   hero: {
     [theme.breakpoints.up('sm')]: {
       paddingTop: theme.spacing(10),

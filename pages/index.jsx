@@ -1,6 +1,4 @@
 import React from 'react'
-import Nav from '../components/nav/Nav'
-import PageWrapper from '../components/PageWrapper'
 import {
   Typography,
   makeStyles,
@@ -12,12 +10,14 @@ import {
   useTheme,
 } from '@material-ui/core'
 import Link from 'next/link'
+import cs from 'classname'
+import Nav from '../components/nav/Nav'
+import PageWrapper from '../components/PageWrapper'
 import Layer0Icon from '../components/icons/layer0-black.svg'
 import Icon from '../components/icons/Icon'
 import { PRODUCT_NAME, EXAMPLES_REPOS } from '../constants'
 import { getGuides, getGuideByName } from '../components/getGuides'
 import SEO from '../components/Seo'
-import cs from 'classname'
 
 const frameworkItems = [
   {
@@ -30,7 +30,121 @@ const frameworkItems = [
     guide: '/guides/next_commerce',
     framework: 'nextcommerce',
     icon: 'next-commerce',
-    text: 'Start with Next.js Commerce',
+    text: 'Get started with Next.js Commerce',
+  },
+  {
+    guide: '/guides/nuxt',
+    framework: 'nuxt',
+    icon: 'nuxt',
+    text: 'Get started with Nuxt.js',
+  },
+  {
+    guide: '/guides/vsf',
+    framework: 'vsf',
+    icon: 'vsf',
+    text: 'Get started with Vue Storefront',
+  },
+  {
+    guide: '/guides/gatsby',
+    framework: 'gatsby',
+    icon: 'gatsby',
+    text: 'Get started with Gatsby',
+  },
+  {
+    guide: '/guides/react',
+    framework: 'static-react',
+    icon: 'react',
+    text: 'Get started with React',
+  },
+  {
+    guide: '/guides/vue',
+    framework: 'static-vue',
+    icon: 'vue',
+    text: 'Get started with Vue.js',
+  },
+  {
+    guide: '/guides/svelte',
+    framework: 'svelte',
+    icon: 'svelte',
+    text: 'Get started with Svelte',
+  },
+  {
+    guide: '/guides/angular',
+    framework: 'angular',
+    icon: 'angular',
+    text: 'Get started with Angular',
+  },
+  {
+    guide: '/guides/swell',
+    framework: 'swell',
+    icon: 'swell',
+    text: 'Get started with Swell',
+  },
+  {
+    guide: '/guides/react-storefront',
+    framework: 'react-storefront',
+    icon: 'react-storefront',
+    text: 'Get started with React Storefront',
+  },
+  {
+    guide: '/guides/astro',
+    framework: 'astro',
+    icon: 'astro',
+    text: 'Get started with Astro',
+  },
+  {
+    guide: '/guides/sapper',
+    framework: 'sapper',
+    icon: 'sapper',
+    text: 'Get started with Sapper',
+  },
+  {
+    guide: '/guides/spartacus',
+    framework: 'spartacus',
+    icon: 'spartacus',
+    text: 'Get started with Spartacus',
+  },
+  {
+    guide: '/guides/nx',
+    framework: 'nx',
+    icon: 'nx',
+    text: 'Get started with React Nx',
+  },
+  {
+    guide: '/guides/frontity',
+    framework: 'frontity',
+    icon: 'frontity',
+    text: 'Get started with Frontity',
+  },
+  {
+    guide: '/guides/static_sites',
+    framework: '',
+    icon: 'html',
+    text: 'Get started with Static HTML/JavaScript',
+  },
+  {
+    guide: '/guides/ember_fastboot',
+    framework: 'fastboot',
+    icon: 'fastboot',
+    text: 'Get started with Ember Fastboot',
+  },
+  {
+    guide: '/guides/razzle',
+    framework: 'razzle',
+    icon: 'razzleP',
+    text: 'Get started with Razzle',
+  },
+  {
+    guide: '/guides/mkdocs',
+    framework: 'mkdocs',
+    icon: 'mkdocs',
+    text: 'Get started with MkDocs',
+  },
+  {
+    guide: '/guides/jekyll',
+    framework: 'jekyll',
+    icon: 'jekyll',
+    text: 'Get started with Jekyll',
   },
 ]
 
@@ -122,142 +236,35 @@ const Home = ({ navData }) => {
               >
                 {text}
               </Typography>
-              {/* <div style={{ flex: 1 }}></div> */}
-              <div style={{ flex: 1, display: 'flex', justifyContent: 'flex-end' }}>
-                <Link href="/guides/[...guide]" as={guide}>
-                  <Button
-                    variant="outlined"
-                    color="secondary"
-                    className={classes.buttonRow}
-                    style={{ marginRight: theme.spacing(1) }}
-                  >
-                    Guide
-                  </Button>
-                </Link>
+              <div style={{ marginLeft: "auto" }}>
                 {url && (
                   <a
+                    style={{ marginRight: theme.spacing(1) }}
                     className={classes.buttonLink}
                     href={`https://app.layer0.co/deploy?repo=${encodeURIComponent(
-                      EXAMPLES_REPOS[framework],
+                      EXAMPLES_REPOS[framework]
                     )}`}
                     target="_blank"
+                    rel="noreferrer"
                   >
                     <Button variant="outlined" color="secondary" className={classes.buttonRow}>
                       Deploy to Layer0
                     </Button>
                   </a>
                 )}
+                <Link href="/guides/[...guide]" as={guide}>
+                  <Button
+                    variant="outlined"
+                    color="secondary"
+                    className={classes.buttonRow}
+                  >
+                    Guide
+                  </Button>
+                </Link>
               </div>
             </div>
           )
         })}
-      </div>
-      <div className={classes.frameworks}>
-        <FrameworkItem
-          guide="/guides/next"
-          framework="next"
-          icon="nextjs"
-          text="Get started with Next.js"
-        />
-
-        <FrameworkItem
-          guide="/guides/next_commerce"
-          framework="nextcommerce"
-          icon="next-commerce"
-          text="Start with Next.js Commerce"
-        />
-
-        <FrameworkItem guide="/guides/nuxt" framework="nuxt" text="Get started with Nuxt.js" />
-
-        <FrameworkItem guide="/guides/vsf" framework="vsf" text="Get started with Vue Storefront" />
-
-        <FrameworkItem guide="/guides/gatsby" framework="gatsby" text="Get started with Gatsby" />
-
-        <FrameworkItem
-          guide="/guides/react"
-          framework="static-react"
-          icon="react"
-          text="Get started with React"
-        />
-
-        <FrameworkItem
-          guide="/guides/vue"
-          framework="static-vue"
-          icon="vue"
-          text="Get started with Vue.js"
-        />
-
-        <FrameworkItem
-          guide="/guides/svelte"
-          framework="svelte"
-          icon="svelte"
-          text="Get started with Svelte"
-        />
-
-        <FrameworkItem
-          guide="/guides/angular"
-          framework="angular"
-          text="Get started with Angular"
-        />
-        <FrameworkItem guide="/guides/swell" framework="swell" text="Get started with Swell" />
-
-        <FrameworkItem
-          guide="/guides/react-storefront"
-          framework="react-storefront"
-          text="Get started with React Storefront"
-        />
-
-        <FrameworkItem guide="/guides/astro" framework="astro" text="Get started with Astro" />
-
-        <FrameworkItem guide="/guides/sapper" framework="sapper" text="Get started with Sapper" />
-
-        <FrameworkItem
-          guide="/guides/spartacus"
-          framework="spartacus"
-          text="Get started with Spartacus"
-        />
-
-        <FrameworkItem guide="/guides/nx" framework="nx" text="Get started with Nx" />
-
-        <FrameworkItem
-          guide="/guides/frontity"
-          framework="frontity"
-          text="Get started with Frontity"
-        />
-
-        <FrameworkItem
-          guide="/guides/static_sites"
-          framework=""
-          icon="html"
-          text=" Get started with Static HTML/JS"
-        />
-
-        <FrameworkItem
-          guide="/guides/ember_fastboot"
-          framework="fastboot"
-          text="Get started with Ember Fastboot"
-        />
-
-        <FrameworkItem
-          guide="/guides/razzle"
-          framework="razzle"
-          text="Get started with Razzle"
-          icon="razzleP"
-        />
-
-        <FrameworkItem
-          guide="/guides/mkdocs"
-          framework="mkdocs"
-          icon="mkdocs"
-          text="Get started with MkDocs"
-        />
-
-        <FrameworkItem
-          guide="/guides/jekyll"
-          framework="jekyll"
-          icon="jekyll"
-          text="Get started with Jekyll"
-        />
       </div>
 
       <div className={classes.changeLog}>
@@ -266,37 +273,21 @@ const Home = ({ navData }) => {
         <Grid container spacing={5}>
           <Grid item>
             <h4>{PRODUCT_NAME} - What & Why</h4>
-            <iframe
-              width="100%"
-              height="90%"
-              src="https://www.youtube.com/embed/sJ6AkTrcZvg"
-            ></iframe>
+            <iframe width="100%" height="90%" src="https://www.youtube.com/embed/sJ6AkTrcZvg" />
           </Grid>
           <Grid item>
             <h4>{PRODUCT_NAME} - Deploying GitHub Project</h4>
-            <iframe
-              width="100%"
-              height="90%"
-              src="https://www.youtube.com/embed/F8uN03ps1As"
-            ></iframe>
+            <iframe width="100%" height="90%" src="https://www.youtube.com/embed/F8uN03ps1As" />
           </Grid>
           <Grid item>
             <h4>{PRODUCT_NAME} - How to Prefetch</h4>
-            <iframe
-              width="100%"
-              height="90%"
-              src="https://www.youtube.com/embed/lfhSDCNgzfs"
-            ></iframe>
+            <iframe width="100%" height="90%" src="https://www.youtube.com/embed/lfhSDCNgzfs" />
           </Grid>
           <Grid item>
             <h4>
               {PRODUCT_NAME} - What are the {PRODUCT_NAME} DevTools?
             </h4>
-            <iframe
-              width="100%"
-              height="90%"
-              src="https://www.youtube.com/embed/4AYQAvkc0UY"
-            ></iframe>
+            <iframe width="100%" height="90%" src="https://www.youtube.com/embed/4AYQAvkc0UY" />
           </Grid>
         </Grid>
       </div>
@@ -349,6 +340,7 @@ const DeployLink = ({ framework }) => {
       className={classes.buttonLink}
       href={`https://app.layer0.co/deploy?repo=${encodeURIComponent(EXAMPLES_REPOS[framework])}`}
       target="_blank"
+      rel="noreferrer"
     >
       <Button variant="outlined" color="secondary" className={classes.button}>
         Deploy to Layer0
@@ -357,7 +349,7 @@ const DeployLink = ({ framework }) => {
   )
 }
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   hero: {
     [theme.breakpoints.up('sm')]: {
       paddingTop: theme.spacing(10),

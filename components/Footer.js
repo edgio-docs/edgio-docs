@@ -37,27 +37,28 @@ export default function Footer({ guide, navData }) {
     guideIdx >= 0 && guideIdx < orderedGuides.length ? orderedGuides[guideIdx + 1] : null
   const editGuide = `https://github.com/layer0-docs/layer0-docs/edit/master/guides/${guide}.md`
 
-  if (!prevGuide && !nextGuide) {
-    return null
-  }
-
   return (
     <>
-      <Button
-        href={editGuide}
-        target="_blank"
-        variant="text"
-        size="small"
-        startIcon={<Launch style={{ fontSize: '.8rem' }} />}
-        color="secondary"
-        style={{ fontSize: '.7rem' }}
-      >
-        Edit this guide on GitHub
-      </Button>
-      <div className={classes.footer}>
-        {prevGuide && <GuideLink variant="previous" guide={prevGuide} />}
-        {nextGuide && <GuideLink variant="next" guide={nextGuide} />}
-      </div>
+      {guide !== 'changelog' && (
+        <Button
+          href={editGuide}
+          target="_blank"
+          variant="text"
+          size="small"
+          startIcon={<Launch style={{ fontSize: '.8rem' }} />}
+          color="secondary"
+          style={{ fontSize: '.7rem' }}
+        >
+          Edit this guide on GitHub
+        </Button>
+      )}
+
+      {(prevGuide || nextGuide) && (
+        <div className={classes.footer}>
+          {prevGuide && <GuideLink variant="previous" guide={prevGuide} />}
+          {nextGuide && <GuideLink variant="next" guide={nextGuide} />}
+        </div>
+      )}
     </>
   )
 }

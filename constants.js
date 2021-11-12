@@ -46,11 +46,11 @@ const EXAMPLES_REPOS = {
 
 const SYSTEM_REQUIREMENTS = `## System requirements
 
-- [Install Node.js 14.0](/guides/install-nodejs) or later`
+- [Install Node.js 14.0](/guides/install-nodejs)`
 
 const SYSTEM_REQUIREMENTS_H3 = `### System Requirements
 
-- [Install Node.js 14.0](/guides/install-nodejs) or later`
+- [Install Node.js 14.0](/guides/install-nodejs)`
 
 module.exports = {
   PRODUCT_NAME,

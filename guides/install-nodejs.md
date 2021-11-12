@@ -1,6 +1,6 @@
 # Install Node.js and npm
 
-**{{ PRODUCT_NAME }} only supports Node.js version 14 and higher**
+**{{ PRODUCT_NAME }} only supports Node.js version 14**
 
 **Current recommended development version is Node.js v14**
 

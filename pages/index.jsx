@@ -30,7 +30,121 @@ const frameworkItems = [
     guide: '/guides/next_commerce',
     framework: 'nextcommerce',
     icon: 'next-commerce',
-    text: 'Start with Next.js Commerce',
+    text: 'Get started with Next.js Commerce',
+  },
+  {
+    guide: '/guides/nuxt',
+    framework: 'nuxt',
+    icon: 'nuxt',
+    text: 'Get started with Nuxt.js',
+  },
+  {
+    guide: '/guides/vsf',
+    framework: 'vsf',
+    icon: 'vsf',
+    text: 'Get started with Vue Storefront',
+  },
+  {
+    guide: '/guides/gatsby',
+    framework: 'gatsby',
+    icon: 'gatsby',
+    text: 'Get started with Gatsby',
+  },
+  {
+    guide: '/guides/react',
+    framework: 'static-react',
+    icon: 'react',
+    text: 'Get started with React',
+  },
+  {
+    guide: '/guides/vue',
+    framework: 'static-vue',
+    icon: 'vue',
+    text: 'Get started with Vue.js',
+  },
+  {
+    guide: '/guides/svelte',
+    framework: 'svelte',
+    icon: 'svelte',
+    text: 'Get started with Svelte',
+  },
+  {
+    guide: '/guides/angular',
+    framework: 'angular',
+    icon: 'angular',
+    text: 'Get started with Angular',
+  },
+  {
+    guide: '/guides/swell',
+    framework: 'swell',
+    icon: 'swell',
+    text: 'Get started with Swell',
+  },
+  {
+    guide: '/guides/react-storefront',
+    framework: 'react-storefront',
+    icon: 'react-storefront',
+    text: 'Get started with React Storefront',
+  },
+  {
+    guide: '/guides/astro',
+    framework: 'astro',
+    icon: 'astro',
+    text: 'Get started with Astro',
+  },
+  {
+    guide: '/guides/sapper',
+    framework: 'sapper',
+    icon: 'sapper',
+    text: 'Get started with Sapper',
+  },
+  {
+    guide: '/guides/spartacus',
+    framework: 'spartacus',
+    icon: 'spartacus',
+    text: 'Get started with Spartacus',
+  },
+  {
+    guide: '/guides/nx',
+    framework: 'nx',
+    icon: 'nx',
+    text: 'Get started with React Nx',
+  },
+  {
+    guide: '/guides/frontity',
+    framework: 'frontity',
+    icon: 'frontity',
+    text: 'Get started with Frontity',
+  },
+  {
+    guide: '/guides/static_sites',
+    framework: '',
+    icon: 'html',
+    text: 'Get started with Static HTML/JavaScript',
+  },
+  {
+    guide: '/guides/ember_fastboot',
+    framework: 'fastboot',
+    icon: 'fastboot',
+    text: 'Get started with Ember Fastboot',
+  },
+  {
+    guide: '/guides/razzle',
+    framework: 'razzle',
+    icon: 'razzleP',
+    text: 'Get started with Razzle',
+  },
+  {
+    guide: '/guides/mkdocs',
+    framework: 'mkdocs',
+    icon: 'mkdocs',
+    text: 'Get started with MkDocs',
+  },
+  {
+    guide: '/guides/jekyll',
+    framework: 'jekyll',
+    icon: 'jekyll',
+    text: 'Get started with Jekyll',
   },
 ]
 
@@ -152,114 +266,7 @@ const Home = ({ navData }) => {
           )
         })}
       </div>
-      <div className={classes.frameworks}>
-        <FrameworkItem
-          guide="/guides/next"
-          framework="next"
-          icon="nextjs"
-          text="Get started with Next.js"
-        />
-
-        <FrameworkItem
-          guide="/guides/next_commerce"
-          framework="nextcommerce"
-          icon="next-commerce"
-          text="Start with Next.js Commerce"
-        />
-
-        <FrameworkItem guide="/guides/nuxt" framework="nuxt" text="Get started with Nuxt.js" />
-
-        <FrameworkItem guide="/guides/vsf" framework="vsf" text="Get started with Vue Storefront" />
-
-        <FrameworkItem guide="/guides/gatsby" framework="gatsby" text="Get started with Gatsby" />
-
-        <FrameworkItem
-          guide="/guides/react"
-          framework="static-react"
-          icon="react"
-          text="Get started with React"
-        />
-
-        <FrameworkItem
-          guide="/guides/vue"
-          framework="static-vue"
-          icon="vue"
-          text="Get started with Vue.js"
-        />
-
-        <FrameworkItem
-          guide="/guides/svelte"
-          framework="svelte"
-          icon="svelte"
-          text="Get started with Svelte"
-        />
-
-        <FrameworkItem
-          guide="/guides/angular"
-          framework="angular"
-          text="Get started with Angular"
-        />
-        <FrameworkItem guide="/guides/swell" framework="swell" text="Get started with Swell" />
-
-        <FrameworkItem
-          guide="/guides/react-storefront"
-          framework="react-storefront"
-          text="Get started with React Storefront"
-        />
-
-        <FrameworkItem guide="/guides/astro" framework="astro" text="Get started with Astro" />
-
-        <FrameworkItem guide="/guides/sapper" framework="sapper" text="Get started with Sapper" />
-
-        <FrameworkItem
-          guide="/guides/spartacus"
-          framework="spartacus"
-          text="Get started with Spartacus"
-        />
-
-        <FrameworkItem guide="/guides/nx" framework="nx" text="Get started with Nx" />
-
-        <FrameworkItem
-          guide="/guides/frontity"
-          framework="frontity"
-          text="Get started with Frontity"
-        />
-
-        <FrameworkItem
-          guide="/guides/static_sites"
-          framework=""
-          icon="html"
-          text=" Get started with Static HTML/JS"
-        />
-
-        <FrameworkItem
-          guide="/guides/ember_fastboot"
-          framework="fastboot"
-          text="Get started with Ember Fastboot"
-        />
-
-        <FrameworkItem
-          guide="/guides/razzle"
-          framework="razzle"
-          text="Get started with Razzle"
-          icon="razzleP"
-        />
-
-        <FrameworkItem
-          guide="/guides/mkdocs"
-          framework="mkdocs"
-          icon="mkdocs"
-          text="Get started with MkDocs"
-        />
-
-        <FrameworkItem
-          guide="/guides/jekyll"
-          framework="jekyll"
-          icon="jekyll"
-          text="Get started with Jekyll"
-        />
-      </div>
-
+      
       <div className={classes.changeLog}>
         <Divider />
         <h1>{PRODUCT_NAME} Tutorials</h1>

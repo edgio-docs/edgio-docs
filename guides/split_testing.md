@@ -6,8 +6,8 @@
 
 You can perform two kinds of split tests with {{ PRODUCT_NAME }}:
 
-- A/B test multiple implementations of the same site
-- Split traffic between multiple sites - This is commonly used to test a new experience against a legacy one.
+1. A/B test multiple implementations of the same site
+2. Split traffic between multiple sites - This is commonly used to test a new experience against a legacy one.
 
 ## A/B testing multiple implementations of the same site
 
@@ -15,9 +15,9 @@ To A/B test mutliple implementations of the same site, simply deploy each implem
 
 To use CI to deploy A/B tests we recommend that you:
 
-1. Set up separate branches in source control for the main experience and the new experience, for example `master` and `preview`
+1. Set up separate branches in source control for the main experience and the new experience, for example `master` and `preview`.
 2. Create environments called `production` and `preview` in the {{ PRODUCT_NAME }} Developer Console.
-3. Configure CI to deploy the `master` branch to the `production` environment and the `preview` branch to the `preview` environment. (Using `{{ CLI_NAME }} deploy --environment={environment name}`)
+3. Configure CI to deploy the `master` branch to the `production` environment and the `preview` branch to the `preview` environment. (Using `{{ CLI_NAME }} deploy --environment={environment name}`).
 
 ## Splitting traffic between multiple sites
 
@@ -58,9 +58,9 @@ module.exports = new Router()
   )
 ```
 
-Once you have made these changes, deploy your site using `{{ CLI_NAME }} deploy --environment={my production environment name}`, then [configure the rules for splitting traffic between using the {{ PRODUCT_NAME }} Developer Console](#section_configuring_the_split_test).
+Once you have made these changes, deploy your site using `{{ CLI_NAME }} deploy --environment={my production environment name}`, then [configure the rules for splitting traffic using the {{ PRODUCT_NAME }} Developer Console](#section_configuring_the_split_test).
 
-Note: after deploying a router with multiple destinations, all requests will be sent to the first destination until you have configured the split test in the Layer0 Developer Console.
+After deploying a router with multiple destinations, all requests will be sent to the first destination until you have configured the split test in the {{ PRODUCT_NAME }} Developer Console.
 
 ## Configuring the split test
 
@@ -76,11 +76,11 @@ Select the amount of traffic to send to each destination or environment and clic
 
 ![edit](/images/split-testing/add-rule.png)
 
-You can add additional rules to, for example, allow testers to get to the new experience all of the time by adding a cookie. In addition to cookie value, you can split traffic based on header value, path, IP address, URL parameters, device type, browser type, and bot boolean. Here's an example:
+You can add additional rules to the traffic split as well. For example, you can allow testers to access a specific experience all of the time by setting a cookie value. In addition to cookie value, you can split traffic based on header value, path, IP address, URL parameters, device type, browser type, and bot boolean. Here's an example:
 
 ![edit](/images/split-testing/criteria.png)
 
-The order of rules is critical. Rules are matched from top to bottom. When handling a request, the first matching rule will be used. Given the rules we've set up in the examples above, we need to move the force-new cookie rule to the top so that it takes precedence since the other rule contains no criteria. We can reorder the rules by dragging and dropping:
+The order of rules is critical. Rules are matched from top to bottom. When handling a request, the first matching rule will be used for the request. Given the rules set up in the examples above, you would need to move the `force-new` cookie rule to the top so that it takes precedence over the other rule that splits all traffic without any criteria. We can reorder the rules by dragging and dropping:
 
 ![edit](/images/split-testing/order.png)
 
@@ -90,8 +90,7 @@ To begin the split test, click the "Activate" button at the top of the environme
 
 ## Ending the split test
 
-To end the split test, you can either deploy a new version of your app with the router destinations removed, or update the environment
-to send 100% of traffic to a specific destination.
+To end the split test, you can either deploy a new version of your app with the router destinations removed, or update the environment to send 100% of traffic to a specific destination.
 
 ## Third-Party CDNs
 
@@ -99,15 +98,13 @@ If {{ PRODUCT_NAME }} is behind a third-party CDN, it is critical that you updat
 
 ## How requests are routed
 
-When a split test is active, all users are assigned to a random number between 1 and 100 via a cookie called `{{ COOKIE_PREFIX }}_bucket`. This cookie assignment is done at edge, before the user's first request hits cache, and so there is no performance penalty for new users.
+When a split test is active, all users are assigned to a random number between 1 and 100 via a cookie called `{{ COOKIE_PREFIX }}_bucket`. This cookie assignment is done at the edge before the user's first request hits the cache, so there is no performance penalty for new users.
 
-The experience the user sees is determined by the traffic split percentage you set in the environment configuration in the {{ PRODUCT_NAME }} Developer Console and on which side of the split the user's `{{ COOKIE_PREFIX }}_bucket` value falls.
+The experience the user sees is determined by the traffic split percentage you set in the environment configuration in the {{ PRODUCT_NAME }} Developer Console and on which side of the split the user's `{{ COOKIE_PREFIX }}_bucket` value falls. 
 
 ## Identifying the experience on the client
 
-When a split test is active, {{ PRODUCT_NAME }} will automatically set an `{{ COOKIE_PREFIX }}_destination` cookie to the name
-of the chosen destination. You can use this value in the browser to report the split test experience assignment to
-analytics.
+When a split test is active, {{ PRODUCT_NAME }} will automatically set an `{{ COOKIE_PREFIX }}_destination` cookie to the name of the chosen destination. You can access this value in the browser and use it to report the split test experience assignment to your analytics.
 
 ## Compatibility with A/B testing tools
 

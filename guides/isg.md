@@ -19,7 +19,7 @@ module.exports = new Router().use(nextRoutes)
 
 ## Adding ISG to an app built with any framework
 
-To enable ISG on any framework, statically render a subset of your app's pages at build time as well as a static loading page. You can have a single loading page for your app or a separate one for each route. Then, configure your {{ PRODUCT_NAME }} router to serve the statically rendered pages using `serveStatic`. Use the `onNotFound` and `loadingPage` options to fall back to SSR while displaying the loading page when a request for a page that has not been statically rendered is received.
+To enable ISG on any framework, statically render a subset of your app's pages at build time as well as a static loading page. You can have a single loading page for your app or a separate one for each route. Then, configure your {{ PRODUCT_NAME }} router to serve the statically rendered pages using `serveStatic`. Use the `onNotFound` and `loadingPage` options to fall back to SSR while displaying the loading page when a request is received for a page that has not been statically rendered.
 
 ```js
 // The HTML route
@@ -39,7 +39,7 @@ router.get('/products/:id', ({ serveStatic, cache, renderWithApp }) => {
 })
 ```
 
-Your loading page will need to fetch the data to render the full page, so you'll likely need a data route as well, which can also be statically rendered. When a request for data that has not been statically rendered has been received, the system should block and wait for SSR to finish rather than returning a loading page (since the user is already seeing a loading page). For example:
+Your loading page will need to fetch the data to render the full page, so you'll likely need a data route as well, which can also be statically rendered. When a request has been received for data that has not been statically rendered, the system should block and wait for SSR to finish rather than returning a loading page (since the user is already seeing a loading page). For example:
 
 ```js
 // The data route

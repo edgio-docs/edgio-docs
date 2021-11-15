@@ -162,6 +162,31 @@ router.get('/some/path', ({ cache }) => {
 
 Note that this feature cannot be safely used with caching of `POST` and similar requests. If your signal that something must not be cached is through `private` but then you force caching of `private` responses, **all responses will be cached**.
 
+## Achieving 100% cache hit rates
+
+The key to really successful cache hit rates, is leveraging `staleWhileRevalidate` in conjunction with `maxAge`. There is a very detailed [article](https://web.dev/stale-while-revalidate/) available from web.dev that covers this concept in more detail. The main points to know is this
+
+- `maxAge` defines the hard cache limit. An asset will be cached this amount of time regardless.
+- `staleWhileRevalidate` defines an additional cache buffer limit past `maxAge` where cache content will still be returned to a client, but a network request will be issued to origin to check for new content.
+- If `maxAge` + `staleWhileRevalidate` value is exceeded, then a network request to origin is made no matter what.
+
+Set keys using the `edge` key in your cache key
+
+```
+edge: {
+  maxAgeSeconds: 60 * 60 * 24, // 24 hours
+  staleWhileRevalidateSeconds: 60 * 60, // serve stale responses for up to 1 hour while fetching a new response
+},
+```
+
+With the following header set, the diagram below shows the age of the previously cached response at the time of the next request
+
+```
+Cache-Control: max-age=1, stale-while-revalidate=59
+```
+
+![maxAge staleWhileRevalidate diagram](images/caching/stale-max-age.png)
+
 ## Preventing a response from being cached
 
 By default, {{ PRODUCT_NAME }} will cache responses that satisfy all of the following conditions:
@@ -283,34 +308,6 @@ The cache will automatically be cleared when you make changes to your router. A 
 - `edge.staleWhileRevalidateSeconds` is not yet implemented. Only `edge.maxAgeSeconds` is used to set the cache time to live.
 - `edge.key` is not supported. Cache keys are always based solely on url, method, the `accept-encoding` and `host` headers, and body.
 
-## Clearing the Cache
-
-The cache is automatically cleared when you deploy to an environment. You can also clear the cache using the environment's Caching tab in the {{ PRODUCT_NAME }} console.
-
-![deployments](/images/caching/purge.png)
-
-The cache can be [cleared via the CLI](/guides/cli#section_cache_clear):
-
-```bash
-$ {{ CLI_NAME }} cache-clear --team=my-team --site=my-site --environment=production --path=/p/*
-```
-
-The cache can also be [cleared via the REST API](/guides/rest_api#section_clear_cache).
-
-## Static prerendering after clearing the cache
-
-If you have [static prerendering] enabled, the cache will automatically be repopulated when you clear all entries from the cache (such as when you select "Purge all entries" in the {{ PRODUCT_NAME }} Developer Console or run `{{ CLI_NAME }} cache-clear` without providing `--path` or `--surrogate-key`). You can view the prerendering progress by clicking on the active deployment for the environment that was cleared.
-
-## Preserving the cache when deploying a new version of your site
-
-By default, {{ PRODUCT_NAME }} clears your environment edge cache every time you deploy a new version of your site.
-
-This behavior can be turned off by editing your [Environment](environment) config and enabling the following option:
-
-![keep-cache](/images/caching/keep-cache.png)
-
-After activating that new environment version, future deploys will re-use the existing edge cache.
-
 ## Ensuring versioned browser assets are permanently available
 
 In order to ensure that users who are actively browsing your site do not experience issues during a deployment, developers can
@@ -333,77 +330,3 @@ You should only make assets permanently available if they have a hash of the con
 
 - /assets/main-989b11c4c35bc9b6e505.js
 - /assets/v99/main.js
-
-# Scheduled Cache Clearing using GitHub Actions
-
-This guide walks you through clearing the cache on your site at a scheduled day and time.
-
-## NPM script
-
-Here is an example script you can add to your `package.json` to handle cache clearing for each environment. You can also configure scripts to clear by surrogate key, path, or group (As defined in {{ PRODUCT_NAME }} Console)
-
-These scripts assume that you have created environments called "production", "staging", and "development and you have created a deploy key for your site and added it as a secret in your repo called "{{ PRODUCT_NAME_LOWER }}\_deploy_token".
-
-```js
-  "scripts": {
-    ...
-    "clearcache:dev": "{{ CLI_NAME }} cache-clear --team=myTeam --site=my{{ PRODUCT_NAME }}App --environment=development --token=${{ PRODUCT_NAME_LOWER }}_deploy_token",
-    "clearcache:stage": "{{ CLI_NAME }} cache-clear --team=myTeam --site=my{{ PRODUCT_NAME }}App --environment=staging --token=${{ PRODUCT_NAME_LOWER }}_deploy_token",
-    "clearcache:prod": "{{ CLI_NAME }} cache-clear --team=myTeam --site=my{{ PRODUCT_NAME }}App --environment=production --token=${{ PRODUCT_NAME_LOWER }}_deploy_token",
-    "clearcache:prod:pdps": "{{ CLI_NAME }} cache-clear --team=myTeam --site=my{{ PRODUCT_NAME }}App --environment=production --surrogate-key=pdp --token=${{ PRODUCT_NAME_LOWER }}_deploy_token",
-    "clearcache:prod:plps": "{{ CLI_NAME }} cache-clear --team=myTeam --site=my{{ PRODUCT_NAME }}App --environment=production --surrogate-key=plp --token=${{ PRODUCT_NAME_LOWER }}_deploy_token",
-    ...
-  },
-```
-
-## GitHub Actions
-
-Here is an example GitHub action that clears the cache at a scheduled time using the jobs defined in your `package.json`
-
-```yml
-# Add this file to your project at .github/workflows/clear-cache.yml
-#
-# This GitHub action clears the sites PRODUCTION cache at 09:15AM UTC every day.
-#
-# The schedule syntax is standard cron syntax
-# minute  hour  day-of-month  month day-of-week
-#   *      *         *          *        *
-#
-# 1.) This example depends on a script being defined in your package.json called clearcache:prod
-#
-# In order for this action to clear your cache, you must create a deploy token from the site settings page
-# in {{ APP_URL }} and configure it as a secret called "{{ PRODUCT_NAME_LOWER }}_deploy_token" in your repo on GitHub.
-
-name: Clear PRODUCTION cache at 5am
-on:
-  schedule:
-    - cron: '15 9 * * *'
-jobs:
-  clear-the-cache:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Extract branch name
-        shell: bash
-        run: echo "BRANCH_NAME=$(echo ${GITHUB_REF#refs/heads/} | sed 's/\//_/g')" >> $GITHUB_ENV
-      - uses: actions/checkout@v1
-      - uses: actions/setup-node@v1
-        with:
-          node-version: 14
-          registry-url: https://npm-proxy.fury.io/layer0/
-      - name: Cache node modules
-        uses: actions/cache@v1
-        env:
-          cache-name: cache-node-modules
-        with:
-          path: ~/.npm # npm cache files are stored in `~/.npm` on Linux/macOS
-          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-build-${{ env.cache-name }}-
-            ${{ runner.os }}-build-
-            ${{ runner.os }}-
-      - run: npm ci
-      - name: Clear cache in production
-        run: npm run clearcache:prod
-        env:
-          {{ PRODUCT_NAME_LOWER }}_deploy_token: ${{secrets.{{ PRODUCT_NAME_LOWER }}_deploy_token}}
-```

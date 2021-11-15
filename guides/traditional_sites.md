@@ -22,11 +22,10 @@ Requests for your site will now pass through {{ PRODUCT_NAME }}'s globally distr
 The high level implementation process for {{ PRODUCT_NAME }} is:
 
 1. Make sure your pages are cachable
-2. Add {{ PRODUCT_NAME }} JavaScript libraries to your site
-3. Set up a project
-4. Configure caching and prefetching
-5. Test locally and on {{ PRODUCT_NAME }}
-6. Go live by changing the DNS
+2. Set up a project
+3. Configure caching and prefetching
+4. Test locally and on {{ PRODUCT_NAME }}
+5. Go live by changing the DNS
 
 We highly recommend performing this process on a staging server before attempting to try it on your production website.
 
@@ -63,17 +62,6 @@ See common things you need to look for on an eCommmerce site:
 Use this worksheet when auditing your site for personalized content to inventory and track the changes you will be making:
 
 [{{ PRODUCT_NAME }} Origin Content Changes Worksheet](https://docs.google.com/spreadsheets/d/1WDc5tB0tbrDT3To6bNQ0jYpXRFmgUuA_4gb3lVgzmjE/edit?usp=sharing)
-
-## Add {{ PRODUCT_NAME }} JavaScript libraries to your site
-
-Next install {{ PRODUCT_NAME }} JavaScript libraries to your site by adding the following to your site's HTML:
-
-```html
-<script src="/__layer0__/cache-manifest.js" defer="defer"></script>
-<script src="/main.js" defer="defer"></script>
-```
-
-These tags power the predictive prefetching and caching that will be used by {{ PRODUCT_NAME }}. Note that the JavaScript assets referenced in the above script tags are not on your server. {{ PRODUCT_NAME }} serves the assets for these script tags once {{ PRODUCT_NAME }} is installed in front of your server as described in [How {{ PRODUCT_NAME }} for Traditional Sites Works](#section_how_layer0_for_traditional_sites_works).
 
 ## Connector
 
@@ -200,7 +188,7 @@ In addition to configuring your caching in `routes.ts` as shown above, you may n
 
 By injecting `main.js` into your app's front-end code, your app will automatically prefetch all visible HTML links with URLs that match a route configured with `edge.maxAgeSeconds` and `browser.serviceWorkerSeconds` (in essence, when you configure a route to be cached, you are also declaring it to be a candidate for prefetching as well). Links that are visible when the page first loads are fetched immediately. Additional links will be fetched when the user scrolls down the page and more links become visible.
 
-Prefetching can generate substantial additional network traffic. {{ PRODUCT_NAME }} automatically shields your origin from this additional traffic by only serving prefetch requests from the edge cache. If a prefetch request cannot be served from the cache, {{ PRODUCT_NAME }} will return an HTTP 412 status and the request will not be proxied to the origin. When this happens, the only effect for the user is that they will not see the speed benefit of prefetching. Therefore, the effectiveness of prefetching ramps up over time as users visit pages throughout your site. When the edge cache is cleared, either through [{{ PRODUCT_NAME }} Console](caching#section_clearing_the_cache) or automatically following a deployment, the speed benefit of prefetching is decreased until the cache fills up based on organic traffic.
+Prefetching can generate substantial additional network traffic. {{ PRODUCT_NAME }} automatically shields your origin from this additional traffic by only serving prefetch requests from the edge cache. If a prefetch request cannot be served from the cache, {{ PRODUCT_NAME }} will return an HTTP 412 status and the request will not be proxied to the origin. When this happens, the only effect for the user is that they will not see the speed benefit of prefetching. Therefore, the effectiveness of prefetching ramps up over time as users visit pages throughout your site. When the edge cache is cleared, either through the {{ PRODUCT_NAME }} Console or automatically following a deployment, the speed benefit of prefetching is decreased until the cache fills up based on organic traffic.
 
 ## Test your code locally and on {{ PRODUCT_NAME }}
 

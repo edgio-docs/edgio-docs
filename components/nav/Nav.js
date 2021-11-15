@@ -1,25 +1,33 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 import clsx from 'clsx'
 import { makeStyles } from '@material-ui/core/styles'
 import { MenuContext } from '../MenuProvider'
-import Section from './Section'
+import { Collapse, List, ListItem, ListItemText } from '@material-ui/core'
+import ExpandLess from '@material-ui/icons/ExpandLess'
+import ExpandMore from '@material-ui/icons/ExpandMore'
+import OpenInNewIcon from '@material-ui/icons/OpenInNew'
+import Link from 'next/link'
+import Icon from '../icons/Icon'
+import { useRouter } from 'next/router'
+import { Prefetch } from '@layer0/react'
+import useVersioning from '../versioning'
+import { first } from 'lodash'
 
-const width = 300
+export const NAV_WIDTH = 240
 
 const useStyles = makeStyles(theme => ({
   root: {
-    minWidth: width,
-    maxHeight: '100vh',
-    paddingTop: 64,
-    width,
+    height: '100%',
+    paddingTop: 74,
+    width: NAV_WIDTH,
     position: 'fixed',
     left: 24,
     top: 0,
     overflowY: 'auto',
     borderRight: `1px solid ${theme.palette.divider}`,
     margin: theme.spacing(0, 0, 0, -3),
-    background: theme.palette.grey[100],
+    // background: theme.palette.grey[100],
 
     [theme.breakpoints.down('md')]: {
       transition: 'transform .1s ease-out',
@@ -30,7 +38,7 @@ const useStyles = makeStyles(theme => ({
       top: 65,
       overflowY: 'auto',
       height: 'calc(100% - 65px)',
-      transform: `translateX(-${width}px)`,
+      transform: `translateX(-${NAV_WIDTH}px)`,
       background: theme.palette.background.paper,
       zIndex: theme.zIndex.drawer,
       borderRight: `1px solid ${theme.palette.divider}`,
@@ -73,25 +81,122 @@ const useStyles = makeStyles(theme => ({
     marginRight: theme.spacing(-1.5),
     color: theme.palette.grey[200],
   },
+  menuCollapseButton: {
+    textTransform: 'upperCase',
+  },
+  selected: {
+    '&.Mui-selected': {
+      background: 'initial',
+      '& span': {
+        fontWeight: 700,
+      },
+    },
+  },
+  selectedMenuItem: {
+    opacity: 1,
+    borderLeft: `3px solid ${theme.palette.secondary.main}`,
+    '& a': {
+      fontWeight: 'bold',
+      color: theme.palette.secondary.main,
+      marginLeft: -3,
+    },
+  },
+  icon: {
+    marginRight: theme.spacing(2),
+  },
 }))
 
 export default function Nav({ navData }) {
-  const { open, setOpen } = useContext(MenuContext)
+  const { open: menuOpen } = useContext(MenuContext)
+  const { asPath } = useRouter()
+  const { createUrl } = useVersioning()
+  const [collapseOpen, setCollapseOpen] = useState(first(navData)?.text)
   const classes = useStyles()
 
+  useEffect(() => {
+    navData.map(section => {
+      const findSection = section.items.find(si => asPath.startsWith(si.as))
+      if (findSection) {
+        setCollapseOpen(section.text)
+      }
+    })
+  }, [asPath])
+
+  function isCollapseActive(sectionText) {
+    return collapseOpen === sectionText
+  }
+
+  function isPathSelected(selectedPath) {
+    return asPath === selectedPath
+  }
+
   return (
-    <nav
+    <List
+      component="nav"
+      aria-labelledby="main-navigation"
+      dense
       className={clsx({
         [classes.root]: true,
-        [classes.open]: open,
+        [classes.open]: menuOpen,
       })}
     >
-      <div className={classes.navBody}>
-        {navData.map((section, i) => (
-          <Section key={i} section={section} />
-        ))}
-      </div>
-    </nav>
+      {navData.map((section, i) => {
+        const collapseActive = isCollapseActive(section.text)
+        return (
+          <React.Fragment key={section.text}>
+            <ListItem
+              button
+              onClick={() => setCollapseOpen(collapseActive ? '' : section.text)}
+              className={clsx({
+                [classes.menuCollapseButton]: true,
+                [classes.selected]: collapseActive,
+              })}
+              selected={collapseActive}
+            >
+              <ListItemText primary={section.text} />
+              {collapseOpen === section.text ? <ExpandLess /> : <ExpandMore />}
+            </ListItem>
+            <Collapse in={collapseActive}>
+              <List component="div" disablePadding dense>
+                {section.items.map(({ icon, text, as = '', href = '', external }) => {
+                  const url = createUrl({ text, as, href })
+
+                  const LinkItem = (
+                    <div
+                      className={clsx({
+                        [classes.selectedMenuItem]: isPathSelected(as),
+                      })}
+                    >
+                      <ListItem
+                        button
+                        component="a"
+                        target={external && '_blank'}
+                        selected={isPathSelected(as)}
+                        className={clsx({
+                          [classes.selected]: isPathSelected(as),
+                        })}
+                      >
+                        {icon && <Icon type={icon} classes={{ root: classes.icon }} />}
+                        {external && (
+                          <OpenInNewIcon fontSize="small" classes={{ root: classes.icon }} />
+                        )}
+                        <ListItemText primary={text} />
+                      </ListItem>
+                    </div>
+                  )
+
+                  return (
+                    <Link as={url} href={href} passHref key={as}>
+                      {external ? LinkItem : <Prefetch url={url}>{LinkItem}</Prefetch>}
+                    </Link>
+                  )
+                })}
+              </List>
+            </Collapse>
+          </React.Fragment>
+        )
+      })}
+    </List>
   )
 }
 
@@ -99,6 +204,8 @@ const navItemPropType = {
   text: PropTypes.string,
   as: PropTypes.string,
   href: PropTypes.string,
+  icon: PropTypes.string,
+  external: PropTypes.bool,
 }
 
 Nav.propTypes = {

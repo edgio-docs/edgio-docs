@@ -1,6 +1,6 @@
 # Static Prerendering
 
-This guide shows you how to configure {{ PRODUCT_NAME }} to prenderer pages to the edge cache to improve the performance of your site.
+This guide shows you how to configure {{ PRODUCT_NAME }} to prerender pages to the edge cache and improve the performance of your site.
 
 ## Overview
 
@@ -10,7 +10,7 @@ In this way, you simply build your app to implement server-side rendering and ge
 
 ## Specifying the URLs to Prerender
 
-To specify which URLs should prerendered, use the Router's [prerender]({{ DOCS_URL }}/docs/api/core/classes/_router_router_.router.html#prerender) function. The prerender function accepts an array of [PrerenderRequest] objects or an async function that returns the same:
+To specify which URLs should prerendered, use the Router's [prerender]({{ DOCS_URL }}/docs/api/core/classes/_router_router_.router.html#prerender) function. The `prerender` function accepts an array of [PrerenderRequest] objects or an async function that returns the same:
 
 ### Example: Hardcoded Paths
 
@@ -103,7 +103,7 @@ router = new Router().prerender([
 
 ## Prerendering API Calls
 
-It is important to prerender not just HTML responses, but API calls as well, to ensure that client-side navigation is as fast as possible. Some frameworks, such as Next.js, embed a build ID in API URLs to ensure that client receives responses from the correct version of the back end. In other frameworks the convention for how API URLs are structured is left to the developer.
+To ensure that client-side navigation is as fast as possible, it is important to prerender not just HTML responses but API calls as well. Some frameworks, such as Next.js, embed a build ID in API URLs to ensure the client receives responses from the correct version of the backend. In other frameworks, the convention for how API URLs are structured is left to the developer.
 
 ### Example: Next.js getServerSideProps
 
@@ -113,7 +113,7 @@ const { nextRoutes } = require('{{ PACKAGE_NAME }}/next')
 const { existsSync, readFileSync } = require('fs')
 const { join } = require('path')
 
-// Read the Next.js build ID from '.next/BUILD_ID
+// Read the Next.js build ID from '.next/BUILD_ID'
 const buildIdPath = join(process.cwd(), '.next', 'BUILD_ID')
 
 function getPrerenderRequests() {
@@ -143,7 +143,7 @@ module.exports = new Router().prerender(getPrerenderRequests).use(nextRoutes)
 ## Advanced Configuration: Custom Cache Keys
 
 If you're splitting the cache by cookies or headers using a `CustomCacheKey`, you'll need to include the cookie or header values in
-your preload configuration. For example, if you're splitting the cache by a `language` cookie:
+your prerender configuration. For example, if you're splitting the cache by a `language` cookie:
 
 ```js
 const { Router, CustomCacheKey } = require('{{ PACKAGE_NAME }}/core/router')

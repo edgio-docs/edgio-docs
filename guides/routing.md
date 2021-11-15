@@ -208,7 +208,7 @@ The captured parameter value will be provided as an array.
 
 ## Matching Method, Query Parameters, Cookies, and Headers
 
-Match can either take a URL path, or an object which allows you to match based on method, query parameters, cookies, and request headers:
+Match can either take a URL path, or an object which allows you to match based on method, query parameters, cookies, or request headers:
 
 ```js
 router.match(
@@ -222,6 +222,177 @@ router.match(
   () => {},
 )
 ```
+
+## Body Matching for POST requests
+
+You can also match HTTP `POST` requests based on their request body content as in the following example:
+
+```js
+router.match(
+  {
+    body: { parse: 'json', criteria: { operationName: 'GetProducts' } }, // the body content will parsed as JSON and the parsed JSON matched against the presence of the criteria properties (in this case a GraphQL operation named 'GetProducts')
+  },
+  () => {},
+)
+```
+
+Currently the only body content supported is JSON. Body content is parsed as JSON and is matched against the presence of the fields specified in the `criteria` field. The [POST Body Matching Criteria](#section_post_body_matching_criteria) section below contains examples of using the `criteria` field.
+
+Body matching can be combined with other match parameters such as headers and cookies. For example,
+
+```js
+router.match(
+  {
+    // Only matches GetProducts operations to the /graphql endpoint
+    // for logged in users
+    path: '/graphql',
+    cookies: { loginStatus: /^(loggedIn)$/i }, // loggedin users
+    body: { parse: 'json', criteria: { operationName: 'GetProducts' } },
+  },
+  () => {},
+)
+```
+
+### Caching & POST body matching
+
+When body matching is combined with `cache` in a route, **the HTTP request body will automatically be used as the cache key.** For example, the code below will cache GraphQL `GetProducts` queries using the entire request body as the cache key:
+
+```js
+router.match(
+  {
+    body: { parse: 'json', criteria: { operationName: 'GetProducts' } },
+  },
+  ({ cache }) => {
+    cache({
+      edge: {
+        maxAgeSeconds: 60 * 60,
+        staleWhileRevalidateSeconds: 60 * 60 * 24, // this way stale items can still be prefetched
+      },
+    })
+  },
+)
+```
+
+You can still add additional parameters to the cache key using the normal {{ EDGEJS_LABEL }} `key` property. For example, the code below will cache GraphQL `GetProducts` queries separately for each user based on their userID cookie _and_ the HTTP body of the request.
+
+```js
+router.match(
+  {
+    body: { parse: 'json', criteria: { operationName: 'GetProducts' } },
+  },
+  ({ cache }) => {
+    cache({
+      edge: {
+        maxAgeSeconds: 60 * 60,
+        staleWhileRevalidateSeconds: 60 * 60 * 24, // this way stale items can still be prefetched
+      },
+      key: new CustomCacheKey().addCookie('userID'), // Split cache by userID
+    })
+  },
+)
+```
+
+### POST body matching criteria
+
+The `criteria` property can be a string or regular expression.
+
+For example, the router below,
+
+```js
+router.match(
+  {
+    body: { parse: 'json', criteria: { foo: 'bar' } },
+  },
+  () => {},
+)
+```
+
+would match an HTTP POST request body containing:
+
+```js
+{
+  "foo": "bar",
+  "bar": "foo"
+}
+```
+
+### Regular expression criteria
+
+Regular expressions can also be used as `criteria`. For example,
+
+```js
+router.match(
+  {
+    body: { parse: 'json', criteria: { operationName: /^Get/ } },
+  },
+  () => {},
+)
+```
+
+would match an HTTP POST body containing:
+
+```js
+{
+  "operationName": "GetShops",
+  "query": "...",
+  "variables": {}
+}
+```
+
+### Nested JSON criteria
+
+You can also use a nested object to match a field at a specific location in the JSON. For example,
+
+```js
+router.match(
+  {
+    body: {
+      parse: 'json',
+      criteria: {
+        operation: {
+          name: 'GetShops',
+        },
+      },
+    },
+  },
+  () => {},
+)
+```
+
+would match an HTTP POST body containing:
+
+```js
+{
+  "operation": {
+    "name": "GetShops",
+    "query": "..."
+  }
+}
+```
+
+## GraphQL Queries
+
+The {{ EDGEJS_LABEL }} router provides a `graphqlOperation` method for matching GraphQL.
+
+```js
+router.graphqlOperation('GetProducts', res => {
+  /* Handle the POST for the GetProducts query specifically */
+})
+```
+
+By default, the `graphqlOperation` assumes your GraphQL endpoint is at `/graphql`. You can alter this behavior by using the `path` property as shown below:
+
+```js
+router.graphqlOperation({ path: '/api/graphql', name: 'GetProducts' }, res => {
+  /* Handle the POST for the GetProducts query specifically */
+})
+```
+
+Note that when the `graphqlOperation` function is used, the HTTP request body will automatically be included in the cache key.
+
+The `graphqlOperation` function is provided to simplify matching of common GraphQL scenarios. For complex GraphQL matching (such as authenticated data), you can use the generic [Body Matching for POST requests](#section_body_matching_for_post_requests) feature.
+
+A guide on implementing GraphQL routing in your project can be found [here](/guides/graphql).
 
 ## Handling Requests
 
@@ -269,6 +440,42 @@ module.exports = new Router()
     proxy('origin')
   })
 ```
+
+## Handling Errors
+
+You can use the router's `catch` method to return specific content when the request results in an error status (For example, a 500). Using `catch`, you can also alter the `statusCode` and `response` on the edge before issuing a response to the user.
+
+```js
+router.catch(number | Regexp, (routeHandler: Function))
+```
+
+### Examples
+
+To issue a custom error page when the origin returns a 500:
+
+```js
+// routes.js
+
+const { Router } = require('{{ PACKAGE_NAME }}/core/router')
+
+module.exports = new Router()
+  // Example route
+  .get('/failing-route', ({ proxy }) => {
+    proxy('broken-origin')
+  })
+  // So let's assume that backend "broken-origin" returns 500, so instead
+  // of rendering the broken-origin response we can alter that by specifing .catch
+  .catch(500, ({ serveStatic }) => {
+    serveStatic('static/broken-origin-500-page.html', {
+      statusCode: 502,
+    })
+  })
+```
+
+The `.catch` method allows the edge router to render a response based on the result preceeding routes. So in the example above whenever we receive a 500 we respond with `broken-origin-500-page.html` from the application's `static` directory and change the status code to 502.
+
+- Your catch callback is provided a [ResponseWriter](/docs/api/core/classes/_router_responsewriter_.responsewriter.html) instance. You can use any ResponseWriter method except `proxy` inside `.catch`.
+- We highly recommend keeping `catch` routes simple. Serve responses using `serveStatic` instead of `send` to minimize the size of the edge bundle.
 
 ## Environment Edge Redirects
 

@@ -23,20 +23,17 @@ const useStyles = makeStyles(theme => ({
     position: 'sticky',
     maxHeight: 'calc(100vh - 64px)',
     overflowY: 'auto',
-    paddingLeft: theme.spacing(4),
+    paddingLeft: theme.spacing(2),
     width: '100%',
   },
   title: {
     opacity: 0.5,
-    fontWeight: 'normal',
-    paddingBottom: theme.spacing(2),
-    paddingLeft: 16,
+    marginBottom: theme.spacing(2),
+    paddingLeft: theme.spacing(2),
   },
   item: {
-    paddingBottom: theme.spacing(2),
+    marginBottom: theme.spacing(2),
     paddingRight: theme.spacing(3),
-    display: 'flex',
-    alignItems: 'flex-start',
     '& a': {
       opacity: 0.8,
     },
@@ -44,27 +41,19 @@ const useStyles = makeStyles(theme => ({
       opacity: 1,
     },
   },
-  dot: {
-    minHeight: 8,
-    minWidth: 8,
-    borderRadius: '50%',
-    background: theme.palette.main,
-    marginRight: theme.spacing(1),
-    marginTop: 9,
-  },
   link: {
     color: theme.palette.text.primary,
-    textDecoration: 'none',
-    fontSize: '1.1rem',
-    '&:hover': {
-      textDecoration: 'underline',
-      color: green[700],
-    },
+    paddingLeft: theme.spacing(2),
+    display: 'block',
   },
   active: {
     fontWeight: 'bold',
     opacity: 1,
-    color: `${theme.palette.secondary.main} !important`,
+    color: theme.palette.secondary.main,
+    borderLeft: `3px solid ${theme.palette.secondary.main}`,
+    '& span': {
+      marginLeft: -3,
+    },
   },
 }))
 
@@ -141,7 +130,7 @@ export default function Toc({ source }) {
   return (
     <Portal container={tocContainer.current}>
       <div>
-        <Typography variant="body1" className={classes.title}>
+        <Typography variant="body2" className={classes.title}>
           ON THIS PAGE
         </Typography>
         {headings.map((heading, i) => (
@@ -161,11 +150,7 @@ function Item({ heading, activeHeading }) {
 
   return (
     <div className={classes.item} style={{ marginLeft: theme.spacing((tokens.length - 2) * 2) }}>
-      <div
-        className={classes.dot}
-        style={{ visibility: id === activeHeading ? 'visible' : 'hidden' }}
-      />
-      <Typography variant="body1">
+      <Typography variant="body2">
         <a
           href={`#${id}`}
           id={`${id}-toc`}
@@ -174,7 +159,7 @@ function Item({ heading, activeHeading }) {
             [classes.active]: id === activeHeading,
           })}
         >
-          {text}
+          <span>{text}</span>
         </a>
       </Typography>
     </div>

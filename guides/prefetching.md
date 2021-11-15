@@ -10,7 +10,7 @@ You might think that prefetching will put significant additional load on the inf
 
 ## Service Worker
 
-To enable prefetching, your site's service worker needs to use the `{{ PACKAGE_NAME }}/prefetch` library's `Prefetcher` class. If your site doesn't currently have a service worker, one can easily be created using Google's [Workbox](https://developers.google.com/web/tools/workbox)
+To enable prefetching, your site's service worker needs to use the `{{ PACKAGE_NAME }}/prefetch` library's `Prefetcher` class. If your site doesn't currently have a service worker, one can easily be created using Google's [Workbox](https://developers.google.com/web/tools/workbox).
 
 Here's an example service worker based on Workbox:
 
@@ -149,7 +149,7 @@ The `DeepFetchPlugin` can parse both HTML and JSON documents to extract the page
 
 ### Deep fetching URLs in JSON responses
 
-For JSON responses, you'll pass the `DeepFetchPlugin` an array of `[DeepFetchJsonConfig interface]({{ DOCS_URL }}/docs/api/prefetch/interfaces/_sw_deepfetchplugin_.deepfetchjsonconfig.html)` objects. These `DeepFetchJsonConfig` objects describe the asset URLs in the JSON response that should be prefetched. For example, the snippet below finds product images to deep fetch for a category page response:
+For JSON responses, you'll pass the `DeepFetchPlugin` an array of [DeepFetchJsonConfig interface]({{ DOCS_URL }}/docs/api/prefetch/interfaces/_sw_deepfetchplugin_.deepfetchjsonconfig.html) objects. These `DeepFetchJsonConfig` objects describe the asset URLs in the JSON response that should be prefetched. For example, the snippet below finds product images to deep fetch for a category page response:
 
 ```js
 new DeepFetchPlugin([
@@ -242,8 +242,8 @@ To achieve this:
 2. Use your site's hostname as the origin site.
 3. Once the app is created, configure your routes file to cache the URLs you want to prefetch.
 4. Deploy your {{ PRODUCT_NAME }} app.
-5. Optionally give it a custom domain by creating a production environment, assigning a custom domain, and uploading an SSL certificate.
-6. In your service-worker source, use the `cacheHost` option when configuring the `Prefetcher`. For example:
+5. (Optional) Give it a custom domain by creating a production environment, assigning a custom domain, and uploading an SSL certificate.
+6. In your service worker source, use the `cacheHost` option when configuring the `Prefetcher`. For example:
 
 ```js
 import { skipWaiting, clientsClaim } from 'workbox-core'
@@ -257,7 +257,7 @@ new Prefetcher({
 })
 ```
 
-7. Serve the service worker from your site's origin domain. This is critical because service-worker's can only intercept fetch calls from apps served from the same origin as the service worker.
+7. Serve the service worker from your site's origin domain. This is critical because service workers can only intercept fetch calls from apps served from the same origin as the service worker.
 8. Add a script to your app's source to install the service worker on each page. Here's an example:
 
 ```js
@@ -295,8 +295,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
 1. Ensure that your GraphQL API is configured to accept GET requests. The Apollo client uses POST requests by default, but the Apollo server [automatically accepts both GETs and POSTs](https://www.apollographql.com/docs/apollo-server/v1/requests/). We use GETs instead of POSTs for two reasons:
 
-- So that the URLs are sufficiently unique cache keys
-- Browser cache APIs only support caching GETs
+    1. So that the URLs are sufficiently unique cache keys
+    2. Browser cache APIs only support caching GETs
 
 2. Add `{{ PACKAGE_NAME }}/apollo` to your project:
 
@@ -346,7 +346,7 @@ module.exports = new Router()
     // the response to the cache
     removeUpstreamResponseHeader('set-cookie')
 
-    // Proxy the request to the "graphql" backend end configured in {{ CONFIG_FILE }}
+    // Proxy the request to the "graphql" backend configured in {{ CONFIG_FILE }}
     // Here we use decompressRequest to decompress and extract the GraphQL query from the URL's query string
     // and convert the GET to a POST when connecting to the GraphQL server.
     proxy('graphql', { transformRequest: decompressRequest })
@@ -410,7 +410,7 @@ You can test that everything is running locally by running your project with:
 
 By default, {{ PRODUCT_NAME }} will only serve prefetch requests from the edge cache. If a request cannot be served from the cache, a 412 status is returned. This protects your origin servers from additional traffic associated with prefetching. If you're seeing a surprisingly high number of 412s in your logs:
 
-1. Ensure that the URLs you're prefetching match exactly those that are fetched during page navigation. Prefetch URLs will have `?{{ COOKIE_PREFIX }}_prefetch=1` whereas the URLs associated with page navigation won't. That's ok. The `{{ COOKIE_PREFIX }}_*` query parameters are automatically excluded from the cache key. Just ensure that there are no other differences.
+1. Ensure that the URLs you're prefetching match exactly those that are fetched during page navigation. Prefetch URLs will have `?{{ COOKIE_PREFIX }}_prefetch=1` whereas the URLs associated with page navigation won't. That's okay. The `{{ COOKIE_PREFIX }}_*` query parameters are automatically excluded from the cache key. Just ensure that there are no other differences.
 2. Ensure that `cache` settings have stale-while-revalidate enabled. For example:
 
 ```js

@@ -6,22 +6,25 @@ import {
   Typography,
   makeStyles,
   darken,
-  Container,
   Grid,
   Paper,
   Divider,
   Button,
+  useTheme,
 } from '@material-ui/core'
 import Link from 'next/link'
 import Layer0Icon from '../components/icons/layer0-black.svg'
 import Icon from '../components/icons/Icon'
-import Markdown from '../components/Markdown'
 import { PRODUCT_NAME, EXAMPLES_REPOS } from '../constants'
 import { getGuides, getGuideByName } from '../components/getGuides'
+import SEO from '../components/Seo'
 
 const useStyles = makeStyles(theme => ({
   hero: {
-    paddingTop: theme.spacing(10),
+    [theme.breakpoints.up('sm')]: {
+      paddingTop: theme.spacing(10),
+    },
+
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
@@ -49,20 +52,24 @@ const useStyles = makeStyles(theme => ({
 
   frameworks: {
     marginTop: theme.spacing(5),
+    display: 'grid',
+    gridGap: '1.2rem',
+    gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))',
+  },
+
+  frameworkItem: {
+    border: `1px solid ${theme.palette.divider}`,
+    '&:hover': {
+      boxShadow: theme.shadows[8],
+    },
   },
 
   framework: {
-    border: `1px solid ${theme.palette.divider}`,
-    width: 250,
-    margin: 15,
-    height: 200,
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
     padding: theme.spacing(2),
-    '&:hover': {
-      boxShadow: theme.shadows[8],
-    },
+    height: '100%',
   },
 
   frameworkWrapper: {
@@ -78,7 +85,7 @@ const useStyles = makeStyles(theme => ({
 
   icon: {
     flex: 1,
-    padding: theme.spacing(2),
+    padding: theme.spacing(2, 1),
   },
 
   logo: {
@@ -93,8 +100,11 @@ const useStyles = makeStyles(theme => ({
   },
 
   changeLog: {
-    paddingTop: theme.spacing(8),
+    marginTop: theme.spacing(8),
     paddingBottom: theme.spacing(8),
+    '& h2': {
+      marginTop: theme.spacing(2),
+    },
   },
   button: {
     transition: 'color border-color 200ms linear',
@@ -108,6 +118,7 @@ const useStyles = makeStyles(theme => ({
   },
   buttonLink: {
     textDecoration: 'none',
+    marginTop: 'auto',
     '&:hover': {
       textDecoration: 'none',
     },
@@ -115,125 +126,140 @@ const useStyles = makeStyles(theme => ({
 }))
 
 const iconProps = {
-  style: { height: 142, width: 142 },
+  style: { height: 142, width: 142, objectFit: 'contain' },
 }
 
-const Home = ({ navData, changeLog }) => {
+const Home = ({ navData }) => {
   const classes = useStyles()
+  const theme = useTheme()
+
   return (
     <PageWrapper nav={<Nav navData={navData} />}>
-      <Head>
-        <title>{PRODUCT_NAME} Documentation</title>
-      </Head>
+      <SEO />
       <div className={classes.hero}>
         <Layer0Icon className={classes.logo} />
-        <Typography variant="h2" style={{ maxWidth: 800, marginTop: 0, fontSize: '34px' }}>
-          <div style={{ position: 'relative' }}>Jamstack for Production.</div>
+        <Typography variant="h2" style={{ maxWidth: 800, marginTop: 0, fontSize: '30px' }}>
+          <div style={{ position: 'relative' }}>
+            Develop, deploy, preview, split test and monitor your frontend.
+          </div>
         </Typography>
       </div>
-      <Grid container className={classes.frameworks}>
-        <Grid item xs={12}>
-          <Grid container justify="center" spacing={2}>
-            <FrameworkItem
-              guide="/guides/next"
-              framework="next"
-              icon="nextjs"
-              text="Get started with Next.js"
-            />
+      <div className={classes.frameworks}>
+        <FrameworkItem
+          guide="/guides/next"
+          framework="next"
+          icon="nextjs"
+          text="Get started with Next.js"
+        />
 
-            <FrameworkItem
-              guide="/guides/next_commerce"
-              framework="nextcommerce"
-              icon="next-commerce"
-              text="Start with Next.js Commerce"
-            />
+        <FrameworkItem
+          guide="/guides/next_commerce"
+          framework="nextcommerce"
+          icon="next-commerce"
+          text="Start with Next.js Commerce"
+        />
 
-            <FrameworkItem guide="/guides/nuxt" framework="nuxt" text="Get started with Nuxt.js" />
+        <FrameworkItem guide="/guides/nuxt" framework="nuxt" text="Get started with Nuxt.js" />
 
-            <FrameworkItem
-              guide="/guides/vsf"
-              framework="vsf"
-              text="Get started with Vue Storefront"
-            />
+        <FrameworkItem guide="/guides/vsf" framework="vsf" text="Get started with Vue Storefront" />
 
-            <FrameworkItem
-              guide="/guides/react"
-              framework="static-react"
-              icon="react"
-              text="Get started with React"
-            />
+        <FrameworkItem guide="/guides/gatsby" framework="gatsby" text="Get started with Gatsby" />
 
-            <FrameworkItem
-              guide="/guides/vue"
-              framework="static-vue"
-              icon="vue"
-              text="Get started with Vue.js"
-            />
+        <FrameworkItem
+          guide="/guides/react"
+          framework="static-react"
+          icon="react"
+          text="Get started with React"
+        />
 
-            <FrameworkItem
-              guide="/guides/angular"
-              framework="angular"
-              text="Get started with Angular"
-            />
+        <FrameworkItem
+          guide="/guides/vue"
+          framework="static-vue"
+          icon="vue"
+          text="Get started with Vue.js"
+        />
 
-            <FrameworkItem
-              guide="/guides/react-storefront"
-              framework="react-storefront"
-              text="Get started with React Storefront"
-            />
+        <FrameworkItem
+          guide="/guides/svelte"
+          framework="svelte"
+          icon="svelte"
+          text="Get started with Svelte"
+        />
 
-            <FrameworkItem
-              guide="/guides/sapper"
-              framework="sapper"
-              text="Get started with Sapper"
-            />
+        <FrameworkItem
+          guide="/guides/angular"
+          framework="angular"
+          text="Get started with Angular"
+        />
+        <FrameworkItem guide="/guides/swell" framework="swell" text="Get started with Swell" />
 
-            <FrameworkItem
-              guide="/guides/gatsby"
-              framework="gatsby"
-              text="Get started with Gatsby"
-            />
+        <FrameworkItem
+          guide="/guides/react-storefront"
+          framework="react-storefront"
+          text="Get started with React Storefront"
+        />
 
-            <FrameworkItem
-              guide="/guides/spartacus"
-              framework="spartacus"
-              text="Get started with Spartacus"
-            />
+        <FrameworkItem guide="/guides/astro" framework="astro" text="Get started with Astro" />
 
-            <FrameworkItem guide="/guides/nx" framework="nx" text="Get started with Nx" />
+        <FrameworkItem guide="/guides/sapper" framework="sapper" text="Get started with Sapper" />
 
-            <FrameworkItem guide="/guides/" framework="frontity" text="Get started with Frontity" />
+        <FrameworkItem
+          guide="/guides/spartacus"
+          framework="spartacus"
+          text="Get started with Spartacus"
+        />
 
-            <FrameworkItem
-              guide="/guides/static_sites"
-              framework=""
-              icon="html"
-              text=" Get started with Static HTML/JS"
-            />
+        <FrameworkItem guide="/guides/nx" framework="nx" text="Get started with Nx" />
 
-            <FrameworkItem
-              guide="/guides/ember_fastboot"
-              framework="fastboot"
-              text="Get started with Ember Fastboot"
-            />
+        <FrameworkItem
+          guide="/guides/frontity"
+          framework="frontity"
+          text="Get started with Frontity"
+        />
 
-            <FrameworkItem
-              guide="/guides/razzle"
-              framework="razzle"
-              text="Get started with Razzle"
-            />
+        <FrameworkItem
+          guide="/guides/static_sites"
+          framework=""
+          icon="html"
+          text=" Get started with Static HTML/JS"
+        />
 
-            <Grid item container xs={12} m={12} l={12} xl={12} justify="center">
-              Don't see your framework?&nbsp;
-              <Link href="/guides/[...guide]" as="/guides/traditional_sites">
-                {`Check out ${PRODUCT_NAME} for traditional websites`}
-              </Link>
-              .
-            </Grid>
-          </Grid>
-        </Grid>
-      </Grid>
-      <Container className={classes.changeLog}>
+        <FrameworkItem
+          guide="/guides/ember_fastboot"
+          framework="fastboot"
+          text="Get started with Ember Fastboot"
+        />
+
+        <FrameworkItem
+          guide="/guides/razzle"
+          framework="razzle"
+          text="Get started with Razzle"
+          icon="razzleP"
+        />
+
+        <FrameworkItem
+          guide="/guides/mkdocs"
+          framework="mkdocs"
+          icon="mkdocs"
+          text="Get started with MkDocs"
+        />
+
+        <FrameworkItem
+          guide="/guides/jekyll"
+          framework="jekyll"
+          icon="jekyll"
+          text="Get started with Jekyll"
+        />
+      </div>
+
+      <p style={{ textAlign: 'center', marginTop: theme.spacing(8) }}>
+        Don't see your framework? Check out {PRODUCT_NAME} for &nbsp;
+        <Link href="/guides/[...guide]" as="/guides/traditional_sites">
+          traditional websites
+        </Link>
+        .
+      </p>
+      <div className={classes.changeLog}>
         <Divider />
         <h1>{PRODUCT_NAME} Tutorials</h1>
         <Grid container spacing={5}>
@@ -272,12 +298,7 @@ const Home = ({ navData, changeLog }) => {
             ></iframe>
           </Grid>
         </Grid>
-      </Container>
-      <Container className={classes.changeLog}>
-        <Divider />
-        <h2>Changelog</h2>
-        <Markdown source={changeLog} />
-      </Container>
+      </div>
     </PageWrapper>
   )
 }
@@ -285,9 +306,9 @@ const Home = ({ navData, changeLog }) => {
 export default Home
 
 export async function getStaticProps() {
-  const [navData, changeLog] = await Promise.all([getGuides(), getGuideByName('changelog')])
+  const [navData] = await Promise.all([getGuides()])
 
-  return { props: { navData, changeLog }}
+  return { props: { navData } }
 }
 
 const FrameworkItem = ({ framework, text, guide, icon }) => {
@@ -295,7 +316,7 @@ const FrameworkItem = ({ framework, text, guide, icon }) => {
 
   if (!icon) icon = framework
   return (
-    <Grid item>
+    <Grid item className={classes.frameworkItem}>
       <Paper className={classes.framework} elevation={0}>
         <Link href="/guides/[...guide]" as={guide}>
           <div className={classes.frameworkWrapper}>
@@ -313,8 +334,8 @@ const DeployLink = ({ framework }) => {
   const classes = useStyles()
   const url = EXAMPLES_REPOS[framework]
 
+  // No url is a valid option
   if (!url) {
-    console.warn(`Invalid deploy url for ${framework}`)
     return null
   }
 

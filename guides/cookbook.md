@@ -6,7 +6,7 @@ This guide gives examples of common routing patterns using {{ PRODUCT_NAME }}.
 
 ### Same Path
 
-To forward a request to the same path to one of the backends listed in `{{ CONFIG_FILE }}` use the [`proxy`](/docs/api/core/classes/_router_responsewriter_.responsewriter.html#proxy) method of `ResponseWriter`:
+To forward a request to the same path on one of the backends listed in `{{ CONFIG_FILE }}`, use the [`proxy`](/docs/api/core/classes/_router_responsewriter_.responsewriter.html#proxy) method of `ResponseWriter`:
 
 ```js
 router.get('/some-path', ({ proxy }) => {
@@ -20,8 +20,8 @@ The first argument corresponds to the name of a backend in `{{ CONFIG_FILE }}`. 
 module.exports = {
   backends: {
     origin: {
-      domainOrIp: 'my-shop.myshopify.com',
-      hostHeader: 'my-shop.myshopify.com',
+      domainOrIp: 'my-shop.example.com',
+      hostHeader: 'my-shop.example.com',
     },
   },
 }
@@ -29,7 +29,7 @@ module.exports = {
 
 ### Different Path
 
-To forward the request to a different path use the [`path`](/docs/api/core/interfaces/_router_responsewriter_.proxyoptions.html#path) option of the `ProxyOptions` interface:
+To forward the request to a different path, use the [`path`](/docs/api/core/interfaces/_router_responsewriter_.proxyoptions.html#path) option of the `ProxyOptions` interface:
 
 ```js
 router.get('/products/:productId', ({ proxy }) => {
@@ -42,7 +42,7 @@ router.get('/products/:productId', ({ proxy }) => {
 To cache proxied requests at the edge, use the [`cache`](/docs/api/core/classes/_router_responsewriter_.responsewriter.html#cache) method.
 
 ```js
-router.get('/products/:productId', ({ proxy }) => {
+router.get('/products/:productId', ({ cache, proxy }) => {
   cache({
     edge: {
       maxAgeSeconds: 60 * 60 * 24           // keep entries in the cache for 24 hours
@@ -107,7 +107,7 @@ router.get(
 
 You can also write catch-all routes that will alter all responses. One example where this is useful is injecting [Content Security Policy](security#section_content_security_policy__csp_) headers.
 
-Another example is adding response headers for debugging, which is often useful if [{{ PRODUCT_NAME }} is behind another CDN](split_testing#section_third_party_cdns) or if you are troubleshooting your router rules. For example, you could respond with the value of request `x-forwarded-for` into `x-debug-xff` to see the value that {{{{ PRODUCT_NAME }} is receiving from the CDN:
+Another example is adding response headers for debugging, which is often useful if [{{ PRODUCT_NAME }} is behind another CDN](split_testing#section_third_party_cdns) or if you are troubleshooting your router rules. For example, you could respond with the value of request `x-forwarded-for` into `x-debug-xff` to see the value that {{ PRODUCT_NAME }} is receiving from the CDN:
 
 ```js
 router.match(
@@ -133,7 +133,7 @@ You can manipulate cookies before they are sent to the browser using cookie resp
 
 ```js
 router.get('/some/path', ({
-  setUpstreamResponseCookie,
+  addUpstreamResponseCookie,
   addResponseCookie,
   removeResponseCookie,
   removeUpstreamResponseCookie,
@@ -152,6 +152,22 @@ router.get('/some/path', ({
   addResponseCookie('cookie-to-add', 'cookie-value')
   removeResponseCookie('cookie-to-remove')
   updateResponseCookie('cookie-to-alter', /Domain=.+;/, 'Domain=mydomain.com;')
+})
+```
+
+### Adding options to cookies
+
+In addition to the name and value of the cookie, you can also add attributes to each cookie. For specific information on possible cookie attributes, please refer to https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Set-Cookie
+
+```js
+router.get('/some/path', ({ addUpstreamResponseCookie, addResponseCookie, proxy }) => {
+  proxy('origin')
+
+  addUpstreamResponseCookie('cookie-to-add', 'cookie-value', {
+    domain: 'test.com',
+  })
+
+  addResponseCookie('cookie-to-add', 'cookie-value', { 'max-age': 50000 })
 })
 ```
 
@@ -211,19 +227,32 @@ router.get('/favicon.ico', ({ serveStatic, cache }) => {
 })
 ```
 
-To serve all files in a directory tree under a specific path prefix:
+## Serving static files from a directory
+
+Here's an example that serves all requests by sending the corresponding file in the `public` directory
 
 ```js
-router.get('/assets/:path*', ({ serveStatic, cache }) => {
+router.get('/:path*', ({ serveStatic, cache }) => {
   cache({
     edge: {
       maxAgeSeconds: 60 * 60 * 24, // cache at the edge for 24 hours
     },
-    browser: {
-      maxAgeSeconds: 60 * 60 * 24, // cache for 24 hours
-    },
+    browser: false, // prevent caching of stale html in the browser
   })
-  serveStatic('assets/:path*')
+  serveStatic('public/:path*')
+})
+```
+
+## Routing to serverless
+
+If your request needs to be run on the serverless tier, you can use the `renderWithApp` handler to render your result using your application. Use this method to respond with an SSR or API result from your application.
+
+Example using the `renderWithApp` handler:
+
+```js
+router.get('/some/:path*', ({ renderWithApp, cache }) => {
+  cache(CACHE_PAGES)
+  renderWithApp()
 })
 ```
 
@@ -315,7 +344,7 @@ router.get('/hello/:name', ({ cache, setResponseHeader, compute, send }) => {
 
 ## Redirecting
 
-To redirect the browser to a different URL use the [`redirect`](/docs/api/core/classes/_router_responsewriter_.responsewriter.html#redirect) API:
+To redirect the browser to a different URL, use the [`redirect`](/docs/api/core/classes/_router_responsewriter_.responsewriter.html#redirect) API:
 
 ```js
 router.get('/p/:productId', ({ redirect }) => {
@@ -345,7 +374,7 @@ This example redirects all traffic on domains other than www.mydomain.com to www
 
 ```js
 router.match({ headers: { host: /^(?!www\.).*$/ } }, ({ redirect }) => {
-  redirect('https://www.mysite.com${url}')
+  redirect('https://www.example.com${url}')
 })
 ```
 
@@ -388,3 +417,23 @@ router.get(
   },
 )
 ```
+
+### Blocking Search Engine Crawlers
+
+If you need to block all search engine bot traffic to specific environments (such as your default or staging environment), the easiest way is to include the `x-robots-tag` header with the same directives you would otherwise set in a `meta` tag. This example blocks traffic to {{ PRODUCT_NAME }} edge links, permalinks, and to a staging website based on the `host` header of the request:
+
+```js
+router.get(
+  {
+    headers: {
+      // Regex to catch multiple hostnames
+      host: /layer0.link|layer0-perma.link|staging.example.com/,
+    },
+  },
+  ({ setResponseHeader }) => {
+    setResponseHeader('x-robots-tag', 'noindex')
+  },
+)
+```
+
+For other available directives, see [Google Developer Central](https://developers.google.com/search/docs/advanced/robots/robots_meta_tag#directives) and [Bing Webmaster Tools](https://www.bing.com/webmasters/help/which-robots-metatags-does-bing-support-5198d240) for lists of supported options.

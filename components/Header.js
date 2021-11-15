@@ -27,7 +27,7 @@ import { grey } from '@material-ui/core/colors'
 
 const useStyles = makeStyles(theme => ({
   appBar: {
-    backgroundColor: theme.palette.brand.primary,
+    backgroundColor: grey[800],
     boxShadow: 'none',
     borderBottom: `1px solid ${theme.palette.divider}`,
   },

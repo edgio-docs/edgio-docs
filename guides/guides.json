@@ -43,6 +43,11 @@
         "href": "/guides/[...guide]"
       },
       {
+        "text": "Purging",
+        "as": "/guides/purging",
+        "href": "/guides/[...guide]"
+      },
+      {
         "text": "Cookbook",
         "as": "/guides/cookbook",
         "href": "/guides/[...guide]"
@@ -50,6 +55,11 @@
       {
         "text": "Prefetching",
         "as": "/guides/prefetching",
+        "href": "/guides/[...guide]"
+      },
+      {
+        "text": "GraphQL",
+        "as": "/guides/graphql",
         "href": "/guides/[...guide]"
       },
       {
@@ -83,8 +93,8 @@
         "href": "/guides/[...guide]"
       },
       {
-        "text": "Debugging",
-        "as": "/guides/debugging",
+        "text": "Troubleshooting",
+        "as": "/guides/troubleshooting",
         "href": "/guides/[...guide]"
       },
       {
@@ -154,6 +164,12 @@
         "href": "/guides/[...guide]"
       },
       {
+        "text": "Astro",
+        "icon": "astro",
+        "as": "/guides/astro",
+        "href": "/guides/[...guide]"
+      },
+      {
         "text": "Frontity",
         "icon": "frontity",
         "as": "/guides/frontity",
@@ -169,6 +185,18 @@
         "text": "Gatsby",
         "icon": "gatsby",
         "as": "/guides/gatsby",
+        "href": "/guides/[...guide]"
+      },
+      {
+        "text": "Jekyll",
+        "icon": "jekyll",
+        "as": "/guides/jekyll",
+        "href": "/guides/[...guide]"
+      },
+      {
+        "text": "MkDocs",
+        "icon": "mkdocs",
+        "as": "/guides/mkdocs",
         "href": "/guides/[...guide]"
       },
       {
@@ -232,6 +260,18 @@
         "href": "/guides/[...guide]"
       },
       {
+        "text": "Svelte",
+        "icon": "svelte",
+        "as": "/guides/svelte",
+        "href": "/guides/[...guide]"
+      },
+      {
+        "text": "Swell",
+        "icon": "swell",
+        "as": "/guides/swell",
+        "href": "/guides/[...guide]"
+      },
+      {
         "text": "Vue.js",
         "icon": "vue",
         "as": "/guides/vue",
@@ -250,11 +290,15 @@
     "items": [
       {
         "text": "@layer0/core",
-        "as": "/docs/api/core/"
+        "as": "/docs/api/core/",
+        "href": "/docs/api/core/",
+        "external": true
       },
       {
         "text": "@layer0/prefetch",
-        "as": "/docs/api/prefetch/"
+        "as": "/docs/api/prefetch/",
+        "href": "/docs/api/prefetch/",
+        "external": true
       }
     ]
   },
@@ -263,11 +307,15 @@
     "items": [
       {
         "text": "Product Updates",
-        "as": "https://www.youtube.com/playlist?list=PLv3_GoCvQgUn8pKufafW2Ufy0DXTL3BCp"
+        "as": "https://www.youtube.com/playlist?list=PLv3_GoCvQgUn8pKufafW2Ufy0DXTL3BCp",
+        "href": "https://www.youtube.com/playlist?list=PLv3_GoCvQgUn8pKufafW2Ufy0DXTL3BCp",
+        "external": true
       },
       {
         "text": "Layer0 Tutorials",
-        "as": "https://www.youtube.com/playlist?list=PLv3_GoCvQgUnbIlR-OFhS9dQW4oSHv4ji"
+        "as": "https://www.youtube.com/playlist?list=PLv3_GoCvQgUnbIlR-OFhS9dQW4oSHv4ji",
+        "href": "https://www.youtube.com/playlist?list=PLv3_GoCvQgUnbIlR-OFhS9dQW4oSHv4ji",
+        "external": true
       }
     ]
   },

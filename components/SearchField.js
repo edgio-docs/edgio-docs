@@ -13,12 +13,13 @@ const useStyles = makeStyles(theme => ({
       borderColor: theme.palette.grey[100],
       borderWidth: 2,
     },
+    '& .algolia-autocomplete': {
+      flex: 1,
+      width: '98%',
+    },
   },
   notchedOutline: {
     borderColor: theme.palette.grey[300],
-  },
-  searchField: {
-    paddingRight: theme.spacing(1),
   },
 }))
 
@@ -49,7 +50,7 @@ export default function SearchField() {
   }, [])
 
   return (
-    <div style={{ minWidth: 300 }}>
+    <div style={{ maxWidth: 300, flex: 1 }}>
       <link
         rel="stylesheet"
         href="https://cdn.jsdelivr.net/npm/docsearch.js@latest/dist/cdn/docsearch.min.css"
@@ -58,7 +59,6 @@ export default function SearchField() {
         placeholder="Search"
         variant="outlined"
         size="small"
-        className={classes.searchField}
         fullWidth
         InputProps={{
           classes,

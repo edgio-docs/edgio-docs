@@ -4,9 +4,9 @@ This guide shows you how to deploy an Gatsby application on {{ PRODUCT_NAME }}:
 
 ![video](https://www.youtube.com/watch?v=ici9j6oF_5E)
 
-## Example SSR Site
+## Example SSG Site
 
-This Gatsby example app uses server-side rendering and prefetching to provide lightning-fast transitions between pages.
+This Gatsby example app uses static site generation and prefetching to provide lightning-fast transitions between pages.
 
 [Try the Gatsby SSR Example Site](https://layer0-docs-layer0-gatsby-example-default.layer0.link?button)
 [View the Code](https://github.com/layer0-docs/gatsby?button)

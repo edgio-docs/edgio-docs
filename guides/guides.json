@@ -9,13 +9,13 @@
       },
       {
         "text": "Build web apps",
-        "as": "/guides/getting_started",
+        "as": "/guides/build_web_apps",
         "href": "/guides/[...guide]"
       },
 
       {
         "text": "Deploy apps",
-        "as": "/guides/deploying",
+        "as": "/guides/deploy_apps",
         "href": "/guides/[...guide]"
       },
       {
@@ -29,12 +29,7 @@
     "text": "CDN",
     "items": [
       {
-        "text": "CLI",
-        "as": "/guides/cli",
-        "href": "/guides/[...guide]"
-      },
-      {
-        "text": "Routing",
+        "text": "EdgeJS routing",
         "as": "/guides/routing",
         "href": "/guides/[...guide]"
       },
@@ -51,11 +46,6 @@
       {
         "text": "Image optimization",
         "as": "/guides/image_optimization",
-        "href": "/guides/[...guide]"
-      },
-      {
-        "text": "Devtools",
-        "as": "/guides/devtools",
         "href": "/guides/[...guide]"
       },
       {
@@ -104,6 +94,11 @@
         "href": "/guides/[...guide]"
       },
       {
+        "text": "Custom domains & SSL",
+        "as": "/guides/production",
+        "href": "/guides/[...guide]"
+      },
+      {
         "text": "Performance",
         "as": "/guides/performance",
         "href": "/guides/[...guide]"
@@ -132,7 +127,27 @@
     ]
   },
   {
-    "text": "Accounts & Teams",
+    "text": "Developer tools",
+    "items": [
+      {
+        "text": "CLI",
+        "as": "/guides/cli",
+        "href": "/guides/[...guide]"
+      },
+      {
+        "text": "Devtools",
+        "as": "/guides/devtools",
+        "href": "/guides/[...guide]"
+      },
+      {
+        "text": "Logs",
+        "as": "/guides/logs",
+        "href": "/guides/[...guide]"
+      }
+    ]
+  },
+  {
+    "text": "Accounts & teams",
     "items": [
       {
         "text": "Teams",
@@ -142,16 +157,6 @@
       {
         "text": "Environments",
         "as": "/guides/environments",
-        "href": "/guides/[...guide]"
-      },
-      {
-        "text": "Custom domains & SSL",
-        "as": "/guides/production",
-        "href": "/guides/[...guide]"
-      },
-      {
-        "text": "Logs",
-        "as": "/guides/logs",
         "href": "/guides/[...guide]"
       }
     ]

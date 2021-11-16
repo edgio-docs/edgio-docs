@@ -1,4 +1,4 @@
-# Deploying
+# Deploying apps
 
 This guide walks you through deploying your first site to {{ PRODUCT_NAME }}.
 

@@ -1,4 +1,4 @@
-# Getting started
+# Build web apps
 
 The easiest way to get started is using one of our "Deploy to Layer0" buttons.
 

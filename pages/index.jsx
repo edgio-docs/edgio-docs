@@ -165,14 +165,15 @@ const Home = ({ navData }) => {
       <div className={classes.hero}>
         <Typography variant="h2" style={{ maxWidth: 800, marginTop: 0, fontSize: '30px' }}>
           <div>
-            The <PriEm>simplest</PriEm> and most <PriEm>powerful</PriEm> way to{' '}
-            <SecEm>develop</SecEm>, <SecEm>deploy</SecEm>, <SecEm>preview</SecEm>,{' '}
-            <SecEm>split test</SecEm> and <SecEm>monitor</SecEm> your <PriEm>site</PriEm>.
+            Leverage the capabilities of Layer0's <PriEm>CDN network</PriEm> and deployment
+            platform.
           </div>
 
           <div style={{ marginTop: '1.5rem' }}>
-            Get started leveraging the capabilities of Layer0's Edge Network and Deployment
-            Platform.
+            The <PriEm>simplest</PriEm> and most <PriEm>powerful</PriEm> way to{' '}
+            <SecEm>develop</SecEm>, <SecEm>deploy</SecEm>, <SecEm>preview</SecEm>,{' '}
+            <SecEm>split test</SecEm>, <SecEm>monitor</SecEm>, and <PriEm>speed up</PriEm> your{' '}
+            <PriEm>site</PriEm>.
           </div>
         </Typography>
       </div>
@@ -231,6 +232,10 @@ const Home = ({ navData }) => {
         style={{ marginTop: theme.spacing(4), fontSize: '30px', marginBottom: theme.spacing(2) }}
       >
         Build a JAMstack site on one of many popular platforms
+      </Typography>
+      <Typography style={{ marginBottom: theme.spacing(2) }}>
+        Leverage the capabilities of a modern web framework and get all the benefits of the Layer0
+        CDN at the same time. Speed up not just your site, but also your development cycles.
       </Typography>
       <Grid container spacing={2} alignItems="stretch">
         {frameworkItems.map(({ guide, framework, icon, text }) => {

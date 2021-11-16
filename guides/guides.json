@@ -3,17 +3,18 @@
     "text": "Get started",
     "items": [
       {
-        "text": "Projects",
+        "text": "Enable cdn",
+        "as": "/guides/enable_cdn",
+        "href": "/guides/[...guide]"
+      },
+      {
+        "text": "Build web apps",
         "as": "/guides/getting_started",
         "href": "/guides/[...guide]"
       },
+
       {
-        "text": "Enable edge network",
-        "as": "/guides/enable_edge_network",
-        "href": "/guides/[...guide]"
-      },
-      {
-        "text": "Deploying",
+        "text": "Deploy apps",
         "as": "/guides/deploying",
         "href": "/guides/[...guide]"
       },
@@ -21,50 +22,40 @@
         "text": "System overview",
         "as": "/guides/overview",
         "href": "/guides/[...guide]"
-      },
+      }
+    ]
+  },
+  {
+    "text": "CDN",
+    "items": [
       {
         "text": "CLI",
         "as": "/guides/cli",
         "href": "/guides/[...guide]"
       },
       {
-        "text": "Devtools",
-        "as": "/guides/devtools",
-        "href": "/guides/[...guide]"
-      }
-    ]
-  },
-  {
-    "text": "Accounts & teams",
-    "items": [
-      {
-        "text": "Teams",
-        "as": "/guides/teams",
-        "href": "/guides/[...guide]"
-      },
-      {
-        "text": "Environments",
-        "as": "/guides/environments",
-        "href": "/guides/[...guide]"
-      },
-      {
-        "text": "Custom domains & SSL",
-        "as": "/guides/production",
-        "href": "/guides/[...guide]"
-      },
-      {
-        "text": "Logs",
-        "as": "/guides/logs",
-        "href": "/guides/[...guide]"
-      }
-    ]
-  },
-  {
-    "text": "Guides",
-    "items": [
-      {
         "text": "Routing",
         "as": "/guides/routing",
+        "href": "/guides/[...guide]"
+      },
+      {
+        "text": "Security",
+        "as": "/guides/security",
+        "href": "/guides/[...guide]"
+      },
+      {
+        "text": "Core web vitals",
+        "as": "/guides/core_web_vitals",
+        "href": "/guides/[...guide]"
+      },
+      {
+        "text": "Image optimization",
+        "as": "/guides/image_optimization",
+        "href": "/guides/[...guide]"
+      },
+      {
+        "text": "Devtools",
+        "as": "/guides/devtools",
         "href": "/guides/[...guide]"
       },
       {
@@ -103,11 +94,6 @@
         "href": "/guides/[...guide]"
       },
       {
-        "text": "Image optimization",
-        "as": "/guides/image_optimization",
-        "href": "/guides/[...guide]"
-      },
-      {
         "text": "GraphQL",
         "as": "/guides/graphql",
         "href": "/guides/[...guide]"
@@ -118,18 +104,24 @@
         "href": "/guides/[...guide]"
       },
       {
-        "text": "Core web vitals",
-        "as": "/guides/core_web_vitals",
-        "href": "/guides/[...guide]"
-      },
-      {
         "text": "Performance",
         "as": "/guides/performance",
         "href": "/guides/[...guide]"
       },
       {
-        "text": "Security",
-        "as": "/guides/security",
+        "text": "Edge network",
+        "as": "/guides/regions",
+        "href": "/guides/[...guide]"
+      },
+      {
+        "text": "Third party CDNs",
+        "as": "/guides/third_party_cdns",
+        "href": "/guides/[...guide]"
+      },
+
+      {
+        "text": "Connectors",
+        "as": "/guides/connectors",
         "href": "/guides/[...guide]"
       },
       {
@@ -140,7 +132,32 @@
     ]
   },
   {
-    "text": "Frameworks",
+    "text": "Developer console",
+    "items": [
+      {
+        "text": "Teams",
+        "as": "/guides/teams",
+        "href": "/guides/[...guide]"
+      },
+      {
+        "text": "Environments",
+        "as": "/guides/environments",
+        "href": "/guides/[...guide]"
+      },
+      {
+        "text": "Custom domains & SSL",
+        "as": "/guides/production",
+        "href": "/guides/[...guide]"
+      },
+      {
+        "text": "Logs",
+        "as": "/guides/logs",
+        "href": "/guides/[...guide]"
+      }
+    ]
+  },
+  {
+    "text": "Framework guides",
     "items": [
       {
         "text": "Angular",
@@ -271,44 +288,6 @@
     ]
   },
   {
-    "text": "Advanced",
-    "items": [
-      {
-        "text": "Edge network",
-        "as": "/guides/regions",
-        "href": "/guides/[...guide]"
-      },
-      {
-        "text": "Third party CDNs",
-        "as": "/guides/third_party_cdns",
-        "href": "/guides/[...guide]"
-      },
-
-      {
-        "text": "Connectors",
-        "as": "/guides/connectors",
-        "href": "/guides/[...guide]"
-      }
-    ]
-  },
-  {
-    "text": "Videos",
-    "items": [
-      {
-        "text": "Product updates",
-        "as": "https://www.youtube.com/playlist?list=PLv3_GoCvQgUn8pKufafW2Ufy0DXTL3BCp",
-        "href": "https://www.youtube.com/playlist?list=PLv3_GoCvQgUn8pKufafW2Ufy0DXTL3BCp",
-        "external": true
-      },
-      {
-        "text": "Layer0 tutorials",
-        "as": "https://www.youtube.com/playlist?list=PLv3_GoCvQgUnbIlR-OFhS9dQW4oSHv4ji",
-        "href": "https://www.youtube.com/playlist?list=PLv3_GoCvQgUnbIlR-OFhS9dQW4oSHv4ji",
-        "external": true
-      }
-    ]
-  },
-  {
     "text": "Reference",
     "items": [
       {
@@ -370,6 +349,23 @@
         "text": "Changelog",
         "as": "/guides/changelog",
         "href": "/guides/[...guide]"
+      }
+    ]
+  },
+  {
+    "text": "Videos",
+    "items": [
+      {
+        "text": "Product updates",
+        "as": "https://www.youtube.com/playlist?list=PLv3_GoCvQgUn8pKufafW2Ufy0DXTL3BCp",
+        "href": "https://www.youtube.com/playlist?list=PLv3_GoCvQgUn8pKufafW2Ufy0DXTL3BCp",
+        "external": true
+      },
+      {
+        "text": "Layer0 tutorials",
+        "as": "https://www.youtube.com/playlist?list=PLv3_GoCvQgUnbIlR-OFhS9dQW4oSHv4ji",
+        "href": "https://www.youtube.com/playlist?list=PLv3_GoCvQgUnbIlR-OFhS9dQW4oSHv4ji",
+        "external": true
       }
     ]
   },

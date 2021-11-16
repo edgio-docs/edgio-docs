@@ -56,6 +56,10 @@ const useStyles = makeStyles(theme => ({
   navBody: {
     padding: theme.spacing(0, 4, 1, 4),
   },
+  navText: {
+    fontWeight: 500,
+    fontSize: '1.2rem',
+  },
   open: {
     transform: 'translateX(1px)',
   },
@@ -90,6 +94,12 @@ const useStyles = makeStyles(theme => ({
       '& span': {
         fontWeight: 700,
       },
+    },
+  },
+  navText: {
+    '& span': {
+      fontSize: '1rem',
+      fontWeight: 500,
     },
   },
 
@@ -157,6 +167,7 @@ export default function Nav({ navData }) {
               className={clsx({
                 [classes.menuCollapseButton]: true,
                 [classes.selected]: collapseActive,
+                [classes.navText]: true,
               })}
               selected={collapseActive}
             >

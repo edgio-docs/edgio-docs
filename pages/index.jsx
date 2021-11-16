@@ -189,14 +189,19 @@ const Home = ({ navData }) => {
           sm={6}
           className={cs(classes.placeCenter, classes.grid, classes.alignItemsBaseline)}
         >
-          <h3 className={cs(classes.headerChoice)}>Quickly enable the Layer0 Edge Network</h3>
+          <h3 className={cs(classes.headerChoice)}>Enable the Layer0 CDN Edge Network</h3>
           <Typography>
             The quickest way to start accelerating your site is integrating Layer0's Global Edge
             Network into your new or existing site / project. Get up and running in under{' '}
             <PriEm addlClasses={classes.fontBold}>seven minutes</PriEm>.
           </Typography>
           <Link href="/guides/get_started" as="/guides/enable_edge_network">
-            <Button variant="outlined" color="secondary" className={classes.button}>
+            <Button
+              variant="contained"
+              color="secondary"
+              className={cs(classes.button, classes.alignSelfEnd)}
+              fullWidth
+            >
               Enable Edge Network
             </Button>
           </Link>
@@ -214,7 +219,7 @@ const Home = ({ navData }) => {
             integrate into your existing project.
           </Typography>
           <Link href="/guides/get_started" as="/guides/getting_started">
-            <Button variant="outlined" color="secondary" className={classes.button}>
+            <Button variant="contained" color="secondary" className={classes.button} fullWidth>
               Enable Edge &amp; Dx
             </Button>
           </Link>
@@ -401,6 +406,12 @@ const useStyles = makeStyles(theme => ({
 
   alignItemsEnd: {
     alignItems: 'end',
+  },
+  alignItemsBaseline: {
+    alignItems: 'baseline',
+  },
+  alignSelfEnd: {
+    alignSelf: 'end',
   },
 
   headerChoice: {

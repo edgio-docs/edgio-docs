@@ -202,7 +202,7 @@ const Home = ({ navData }) => {
               className={cs(classes.button, classes.alignSelfEnd)}
               fullWidth
             >
-              Enable Edge Network
+              Enable CDN
             </Button>
           </Link>
         </Grid>
@@ -220,11 +220,12 @@ const Home = ({ navData }) => {
           </Typography>
           <Link href="/guides/get_started" as="/guides/getting_started">
             <Button variant="contained" color="secondary" className={classes.button} fullWidth>
-              Enable Edge &amp; Dx
+              Enable CDN &amp; Dx
             </Button>
           </Link>
         </Grid>
       </Grid>
+      <hr style={{ marginTop: theme.spacing(6) }} />
       <Typography
         variant="h2"
         style={{ marginTop: theme.spacing(4), fontSize: '30px', marginBottom: theme.spacing(2) }}

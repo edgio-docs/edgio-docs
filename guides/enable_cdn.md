@@ -12,7 +12,9 @@ As shown below, {{ PRODUCT_NAME }} becomes the main CDN for your site:
 
 ![traffic](/images/starter/traffic.svg)
 
-Requests for your site will now pass through {{ PRODUCT_NAME }}'s globally distributed edge network and then to your origin server. A full production deployment requires changing your site's DNS, view our [production](/guides/production) guide for that process.
+Requests for your site will now pass through {{ PRODUCT_NAME }}'s globally distributed edge network and then to your origin server.
+
+A full production deployment requires changing your site's DNS to allow requests to come to Layer0 first. View our [production](/guides/production) guide for that process.
 
 ## Create an account
 

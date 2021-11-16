@@ -42,6 +42,7 @@ const EXAMPLES_REPOS = {
   'static-backbone': 'https://github.com/layer0-docs/static-backbonejs-example',
   'static-react': 'https://github.com/layer0-docs/static-react-example',
   'static-vue': 'https://github.com/layer0-docs/static-vuejs-example',
+  'cdn-template': 'https://github.com/layer0-docs/cdn-template'
 }
 
 const SYSTEM_REQUIREMENTS = `## System requirements

@@ -11,13 +11,13 @@ import {
 } from '@material-ui/core'
 import Link from 'next/link'
 import cs from 'classname'
+import Launch from '@material-ui/icons/Launch'
 import Nav from '../components/nav/Nav'
 import PageWrapper from '../components/PageWrapper'
 import Icon from '../components/icons/Icon'
 import { PRODUCT_NAME, EXAMPLES_REPOS } from '../constants'
 import { getGuides } from '../components/getGuides'
 import SEO from '../components/Seo'
-import Launch from '@material-ui/icons/Launch'
 
 const frameworkItems = [
   {
@@ -26,7 +26,6 @@ const frameworkItems = [
     icon: 'nextjs',
     text: 'Next.js',
   },
-
   {
     guide: '/guides/nuxt',
     framework: 'nuxt',
@@ -147,6 +146,12 @@ const frameworkItems = [
     icon: 'jekyll',
     text: 'Jekyll',
   },
+  {
+    guide: '/guides/enable_cdn',
+    framework: 'cdn-template',
+    icon: '',
+    text: 'Get started with the CDN template',
+  },
 ]
 
 const Home = ({ navData }) => {
@@ -231,7 +236,7 @@ const Home = ({ navData }) => {
         variant="h2"
         style={{ marginTop: theme.spacing(4), fontSize: '30px', marginBottom: theme.spacing(2) }}
       >
-        Build a JAMstack site on one of many popular platforms
+        Build a Jamstack site on one of many popular platforms
       </Typography>
       <Typography style={{ marginBottom: theme.spacing(2) }}>
         Leverage the capabilities of a modern web framework and get all the benefits of the Layer0
@@ -261,7 +266,7 @@ const Home = ({ navData }) => {
                       style={{ marginRight: theme.spacing(1) }}
                       className={classes.buttonLink}
                       href={`https://app.layer0.co/deploy?repo=${encodeURIComponent(
-                        EXAMPLES_REPOS[framework],
+                        EXAMPLES_REPOS[framework]
                       )}`}
                       target="_blank"
                       rel="noreferrer"
@@ -370,7 +375,7 @@ const DeployLink = ({ framework }) => {
   )
 }
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   hero: {
     [theme.breakpoints.up('sm')]: {
       paddingTop: theme.spacing(10),

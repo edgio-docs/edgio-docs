@@ -247,7 +247,7 @@ const Home = ({ navData }) => {
           const url = EXAMPLES_REPOS[framework]
 
           return (
-            <Grid item xs={12} md={6}>
+            <Grid item xs={12} md={6} key={framework}>
               <div className={classes.frameworksTableRow}>
                 <Icon
                   type={icon}

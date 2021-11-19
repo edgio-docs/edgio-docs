@@ -45,10 +45,10 @@ const frameworkItems = [
     text: 'Vue Storefront',
   },
   {
-    guide: '/guides/gatsby',
-    framework: 'gatsby',
-    icon: 'gatsby',
-    text: 'Gatsby',
+    guide: '/guides/vue',
+    framework: 'static-vue',
+    icon: 'vue',
+    text: 'Vue.js',
   },
   {
     guide: '/guides/react',
@@ -57,34 +57,10 @@ const frameworkItems = [
     text: 'React',
   },
   {
-    guide: '/guides/vue',
-    framework: 'static-vue',
-    icon: 'vue',
-    text: 'Vue.js',
-  },
-  {
-    guide: '/guides/svelte',
-    framework: 'svelte',
-    icon: 'svelte',
-    text: 'Svelte',
-  },
-  {
     guide: '/guides/angular',
     framework: 'angular',
     icon: 'angular',
     text: 'Angular',
-  },
-  {
-    guide: '/guides/swell',
-    framework: 'swell',
-    icon: 'swell',
-    text: 'Swell',
-  },
-  {
-    guide: '/guides/react-storefront',
-    framework: 'react-storefront',
-    icon: 'react-storefront',
-    text: 'React Storefront',
   },
   {
     guide: '/guides/astro',
@@ -117,12 +93,6 @@ const frameworkItems = [
     text: 'Frontity',
   },
   {
-    guide: '/guides/static_sites',
-    framework: '',
-    icon: 'html',
-    text: 'Static HTML/JavaScript',
-  },
-  {
     guide: '/guides/ember_fastboot',
     framework: 'fastboot',
     icon: 'fastboot',
@@ -135,6 +105,42 @@ const frameworkItems = [
     text: 'Razzle',
   },
   {
+    guide: '/guides/enable_cdn',
+    framework: 'cdn-template',
+    icon: '',
+    text: 'Get started with the CDN template',
+  },
+  {
+    guide: '/guides/gatsby',
+    framework: 'gatsby',
+    icon: 'gatsby',
+    text: 'Gatsby',
+  },
+  {
+    guide: '/guides/svelte',
+    framework: 'svelte',
+    icon: 'svelte',
+    text: 'Svelte',
+  },
+  {
+    guide: '/guides/swell',
+    framework: 'swell',
+    icon: 'swell',
+    text: 'Swell',
+  },
+  {
+    guide: '/guides/react-storefront',
+    framework: 'react-storefront',
+    icon: 'react-storefront',
+    text: 'React Storefront',
+  },
+  {
+    guide: '/guides/static_sites',
+    framework: '',
+    icon: 'html',
+    text: 'Static HTML/JavaScript',
+  },
+  {
     guide: '/guides/mkdocs',
     framework: 'mkdocs',
     icon: 'mkdocs',
@@ -145,12 +151,6 @@ const frameworkItems = [
     framework: 'jekyll',
     icon: 'jekyll',
     text: 'Jekyll',
-  },
-  {
-    guide: '/guides/enable_cdn',
-    framework: 'cdn-template',
-    icon: '',
-    text: 'Get started with the CDN template',
   },
 ]
 

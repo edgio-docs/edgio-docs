@@ -106,7 +106,7 @@ const frameworkItems = [
   },
   {
     guide: '/guides/enable_cdn',
-    framework: 'cdn-template',
+    framework: 'cdn',
     icon: '',
     text: 'Get started with the CDN template',
   },
@@ -249,11 +249,11 @@ const Home = ({ navData }) => {
           return (
             <Grid item xs={12} md={6} key={framework}>
               <div className={classes.frameworksTableRow}>
-                <Icon
-                  type={icon}
-                  className={classes.icon}
-                  style={{ height: 50, width: 50, padding: 0, flex: 'unset' }}
-                />
+                {icon && (
+                  <Icon type={icon} className={classes.icon}
+                    style={{ height: 50, width: 50, padding: 0, flex: 'unset' }}
+                  />
+                )}
                 <Typography
                   className={classes.frameworkText}
                   style={{ marginLeft: theme.spacing(2), marginRight: 'auto' }}

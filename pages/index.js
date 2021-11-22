@@ -163,6 +163,12 @@ const Home = ({ navData }) => {
 
         <FrameworkItem guide="/guides/vsf" framework="vsf" text="Get started with Vue Storefront" />
 
+        <FrameworkItem
+          guide="/guides/serverless_functions"
+          framework="serverless_functions"
+          text="Get started with serverless functions"
+        />
+
         <FrameworkItem guide="/guides/gatsby" framework="gatsby" text="Get started with Gatsby" />
 
         <FrameworkItem

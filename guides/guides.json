@@ -243,6 +243,12 @@
         "href": "/guides/[...guide]"
       },
       {
+        "text": "Serverless Functions",
+        "icon": "serverless_functions",
+        "as": "/guides/serverless_functions",
+        "href": "/guides/[...guide]"
+      },
+      {
         "text": "Spartacus",
         "icon": "spartacus",
         "as": "/guides/spartacus",

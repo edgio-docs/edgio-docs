@@ -23,6 +23,7 @@ import RazzlePng from './razzle.png'
 import MkDocsIcon from '@material-ui/icons/Book'
 import AstroIcon from './astro.svg'
 import JekyllIcon from './jekyll.svg'
+import ServerlessIcon from '@material-ui/icons/Functions'
 
 import clsx from 'clsx'
 
@@ -51,6 +52,7 @@ export const icons = {
   mkdocs: MkDocsIcon,
   astro: AstroIcon,
   jekyll: JekyllIcon,
+  serverless_functions: ServerlessIcon,
 }
 
 export const styles = theme => ({

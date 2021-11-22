@@ -27,7 +27,7 @@ export default new Router().get('/', ({ compute }) => {
     // req.path   - The request path
     // req.body   - The request body as a string
     // req.method - The request method
-    // req.headers  - The request headers. Keys are header names, values are either a string, or when multiple values for the same header name are present, an array of strings.
+    // req.headers  - The request headers. Keys are lower-case header names, values are either a string, or when multiple values for the same header name are present, an array of strings.
     // req.query - The params extracted from the request URL's query string
     // req.secure - true if the connection to Layer0 is secure (HTTPS) or false if not (HTTP).
 
@@ -90,27 +90,33 @@ export default new Router().get('/', ({ proxy }) => {
       // To alter the request method:
       req.method = 'POST'
 
+      // To get the headers sent from the browser:
+      const headers = res.getHeaders()
+
+      // To get the value of an incoming request header:
+      const someHeader = req.getHeader('some-header') // the header name is case-insensitive
+
       // To set a request header:
-      req.headers['content-type'] = 'application/json'
+      req.setHeader('content-type', 'application/json') // the header name is case-insensitive
 
       // To remove a request header:
-      delete req.headers['some-header']
+      req.removeHeader('some-header') // the header name is case-insensitive
     },
     transformResponse: (res, req) => {
       // To access or modify the body, use:
       res.body = 'some string'
 
       // To set a header:
-      res.setHeader('content-type', 'application/json')
+      res.setHeader('content-type', 'application/json') // the header name is case-insensitive
 
-      // To remove a header
-      res.removeHeader('some-header')
+      // To remove a header:
+      res.removeHeader('some-header') // the header name is case-insensitive
 
-      // To get the headers returned from the origin
+      // To get the headers returned from the origin. Keys are always lower case
       const headers = res.getHeaders()
 
       // To get a specific header returned from the origin:
-      const cookie = headers['cookie']
+      const cookie = res.getHeader('cookie') // the header name is case-insensitive
     },
   })
 })

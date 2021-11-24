@@ -4,6 +4,14 @@ This guide shows you how to deploy an Gatsby application on {{ PRODUCT_NAME }}:
 
 ![video](https://www.youtube.com/watch?v=ici9j6oF_5E)
 
+## Example SSG Site
+
+This Gatsby example app uses static site generation and prefetching to provide lightning-fast transitions between pages.
+
+[Try the Gatsby SSG Example Site](https://layer0-docs-layer0-gatsby-example-default.layer0.link?button)
+[View the Code](https://github.com/layer0-docs/gatsby?button)
+[Deploy to Layer0](https://app.layer0.co/deploy?button&deploy&repo=https://github.com/layer0-docs/gatsby)
+
 ## Connector
 
 This framework has a connector developed for {{ PRODUCT_NAME }}. See [Connectors](connectors) for more information.
@@ -12,7 +20,7 @@ This framework has a connector developed for {{ PRODUCT_NAME }}. See [Connectors
 
 ## Install Node.js and npm
 
-**{{ PRODUCT_NAME }} only supports Node.js version 14 and higher**
+**{{ PRODUCT_NAME }} only supports Node.js version 14**
 
 If you do not have Node.js installed on your system, download and install it from the official [Node.js v{{ NODE_VERSION }} downloads](https://nodejs.org/dist/latest-v{{ NODE_VERSION }}/) page. Select the download that matches your operating system and run the installer. Note that the installer for Node.js will also install npm.
 

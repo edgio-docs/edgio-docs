@@ -1,6 +1,3 @@
-import fetch from 'isomorphic-fetch'
-import Head from 'next/dist/next-server/lib/head'
-import React from 'react'
 import Footer from '../../components/Footer'
 import Markdown from '../../components/Markdown'
 import Nav from '../../components/nav/Nav'

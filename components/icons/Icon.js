@@ -23,7 +23,7 @@ import RazzlePng from './razzle.png'
 import MkDocsIcon from '@material-ui/icons/Book'
 import AstroIcon from './astro.svg'
 import JekyllIcon from './jekyll.svg'
-import ServerlessIcon from '@material-ui/icons/Functions'
+import ServerlessIcon from './serverless-functions.svg'
 
 import clsx from 'clsx'
 

@@ -42,7 +42,8 @@ const EXAMPLES_REPOS = {
   'static-backbone': 'https://github.com/layer0-docs/static-backbonejs-example',
   'static-react': 'https://github.com/layer0-docs/static-react-example',
   'static-vue': 'https://github.com/layer0-docs/static-vuejs-example',
-  gatsby: 'https://github.com/layer0-docs/gatsby'
+  gatsby: 'https://github.com/layer0-docs/gatsby',
+  mkdocs: 'https://github.com/layer0-docs/mkdocs'
 }
 
 module.exports = {

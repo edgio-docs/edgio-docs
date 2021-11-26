@@ -8,11 +8,29 @@ If you don't have an existing MkDocs site, you can create one by running:
 
 ```bash
 $ pip install mkdocs
-$ mkdocs new my-project
+$ python -m mkdocs new my-project
 $ cd my-project
 ```
 
 ## Add Layer0
+
+Create a `package.json` at the root of your project with the following:
+```json
+{
+  "name": "mkdocs",
+  "version": "1.0.0",
+  "scripts": {
+    "build": "python3 -m mkdocs build",
+    "server": "python3 -m mkdocs serve",
+    "layer0:dev": "layer0 dev",
+    "postinstall": "pip3 install mkdocs",
+    "layer0:build": "npm run build && layer0 build",
+    "layer0:deploy": "npm run build && layer0 deploy"
+  },
+  "dependencies": {},
+  "devDependencies": {}
+}
+```
 
 ```bash
 # First, globally install the Layer0 CLI:
@@ -32,8 +50,12 @@ import { Router } from '@layer0/core'
 const ONE_MINUTE = 60
 const FAR_FUTURE = 60 * 60 * 24 * 365 * 10
 
-export default new Router()
-  .match('/assets/:path*', ({ serveStatic, cache }) => {
+const dynamicPaths = ['css', 'fonts', 'img', 'js', 'search']
+
+const router = new Router()
+
+dynamicPaths.forEach((i) => {
+  router.match(`/${i}/:path*`, ({ serveStatic, cache }) => {
     cache({
       browser: {
         maxAgeSeconds: FAR_FUTURE,
@@ -43,17 +65,21 @@ export default new Router()
         staleWhileRevalidateSeconds: FAR_FUTURE,
       },
     })
-    serveStatic('site/assets/:path*')
+    serveStatic(`site/${i}/:path*`)
   })
-  .match('/:path*', ({ serveStatic, cache }) => {
-    cache({
-      browser: false,
-      edge: {
-        maxAgeSeconds: FAR_FUTURE,
-      },
-    })
-    serveStatic('site/:path*')
+})
+
+router.match('/:path*', ({ serveStatic, cache }) => {
+  cache({
+    browser: false,
+    edge: {
+      maxAgeSeconds: FAR_FUTURE,
+    },
   })
+  serveStatic('site/:path*')
+})
+
+export default router
 ```
 
 ## Deploy to Layer0
@@ -62,7 +88,7 @@ To deploy your site to Layer0, run:
 
 ```bash
 # Create a production build of your mkdocs site
-$ mkdocs build
+$ npm run build
 
 # Deploy it to Layer0
 $ 0 deploy

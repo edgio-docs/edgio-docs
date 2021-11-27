@@ -6,8 +6,8 @@ This guide shows you how to deploy [Razzle](https://razzlejs.org/) apps on {{ PR
 
 Here is an example of a Razzle app running on {{ PRODUCT_NAME }}:
 
-[Try the Razzle Example Site](https://layer0-docs-layer0-razzle-example-default.moovweb-edge.io?button)
-[View the Code](https://github.com/layer0-docs/layer0-examples/tree/main/layer0-razzle-example?button)
+[Try the Razzle Example Site](https://layer0-docs-layer0-razzle-example-default.layer0.link?button)
+[View the Code](https://github.com/layer0-docs/layer0-razzle-example?button)
 [Deploy to Layer0](https://app.layer0.co/deploy?button&deploy&repo=https%3A%2F%2Fgithub.com%2Flayer0-docs%2Flayer0-razzle-example)
 
 ## Connector

@@ -24,6 +24,7 @@ import MkDocsIcon from '@material-ui/icons/Book'
 import AstroIcon from './astro.svg'
 import JekyllIcon from './jekyll.svg'
 import ServerlessIcon from './serverless-functions.svg'
+import Docusaurus from './docusaurus.svg'
 
 import clsx from 'clsx'
 
@@ -53,6 +54,7 @@ export const icons = {
   astro: AstroIcon,
   jekyll: JekyllIcon,
   serverless_functions: ServerlessIcon,
+  docusaurus: Docusaurus
 }
 
 export const styles = theme => ({

@@ -165,6 +165,12 @@
         "href": "/guides/[...guide]"
       },
       {
+        "text": "Docusaurus",
+        "icon": "docusaurus",
+        "as": "/guides/docusaurus",
+        "href": "/guides/[...guide]"
+      },
+      {
         "text": "Frontity",
         "icon": "frontity",
         "as": "/guides/frontity",

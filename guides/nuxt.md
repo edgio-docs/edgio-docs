@@ -10,6 +10,14 @@ This Nuxt.js example app uses server-side rendering and prefetching to provide l
 [View the Code](https://github.com/layer0-docs/layer0-nuxt-example?button)
 [Deploy to Layer0](https://app.layer0.co/deploy?button&deploy&repo=https%3A%2F%2Fgithub.com%2Flayer0-docs%2Flayer0-nuxt-example)
 
+## Example ISG Site
+
+This Nuxt.js example app uses ISG (Incremental Static Generation) to provide lightening-fast transitions between pages.
+
+[Try the Nuxt.js ISG example site](https://mark-brocato-nuxt-isg-example-default.layer0.link/?button)
+[View the Code](https://github.com/layer0-docs/layer0-nuxt-isg-example?button)
+[Deploy to Layer0](https://app.layer0.co/deploy?button&deploy&repo=https%3A%2F%2Fgithub.com%2Flayer0-docs%2Flayer0-nuxt-isg-example)
+
 ## Connector
 
 This framework has a connector developed for {{ PRODUCT_NAME }}. See [Connectors](connectors) for more information.
@@ -326,7 +334,7 @@ includeFiles: {
 },
 ```
 
-In addition, if `includeNodeModules` does not copy over the necessary package that may be needed in production, it can be included via this key as well. For instance, 
+In addition, if `includeNodeModules` does not copy over the necessary package that may be needed in production, it can be included via this key as well. For instance,
 
 ```js
 includeFiles: {

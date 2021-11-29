@@ -4,9 +4,9 @@ This guide shows you how to deploy a Docusaurus application on {{ PRODUCT_NAME }
 
 ## Example
 
-[Try the Docusaurus Example Site](https://layer0-docs-docusaurus-default.layer0-limelight.link?button)
-[View the Code](https://github.com/layer0-docs/layer0-docusaurus?button)
-[Deploy to Layer0](https://app.layer0.co/deploy?button&deploy&repo=https://github.com/layer0-docs/layer0-docusaurus)
+[Try the Docusaurus Example Site](https://layer0-docs-layer0-docusaurus-example-default.layer0-limelight.link?button)
+[View the Code](https://github.com/layer0-docs/layer0-docusaurus-example?button)
+[Deploy to Layer0](https://app.layer0.co/deploy?button&deploy&repo=https://github.com/layer0-docs/layer0-docusaurus-example)
 
 ## Install Node.js and npm
 

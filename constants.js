@@ -38,6 +38,7 @@ const EXAMPLES_REPOS = {
   razzle: 'https://github.com/layer0-docs/layer0-razzle-example',
   sapper: 'https://github.com/layer0-docs/layer0-sapper-example',
   spartacus: 'https://github.com/layer0-docs/layer0-spartacus-example',
+  svelte: 'https://github.com/layer0-docs/svelte',
   vsf: 'https://github.com/layer0-docs/layer0-vue-storefront-example',
   'static-backbone': 'https://github.com/layer0-docs/static-backbonejs-example',
   'static-react': 'https://github.com/layer0-docs/static-react-example',

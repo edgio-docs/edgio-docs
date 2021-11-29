@@ -165,6 +165,12 @@
         "href": "/guides/[...guide]"
       },
       {
+        "text": "Docusaurus",
+        "icon": "docusaurus",
+        "as": "/guides/docusaurus",
+        "href": "/guides/[...guide]"
+      },
+      {
         "text": "Ember Fastboot",
         "icon": "fastboot",
         "as": "/guides/ember_fastboot",

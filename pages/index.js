@@ -246,6 +246,13 @@ const Home = ({ navData }) => {
         />
 
         <FrameworkItem
+          guide="/guides/docusaurus"
+          framework="docusaurus"
+          icon="docusaurus"
+          text="Get started with Docusaurus"
+        />
+
+        <FrameworkItem
           guide="/guides/mkdocs"
           framework="mkdocs"
           icon="mkdocs"

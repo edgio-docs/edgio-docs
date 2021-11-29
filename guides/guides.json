@@ -255,6 +255,12 @@
         "href": "/guides/[...guide]"
       },
       {
+        "text": "Shopify Hydrogen",
+        "icon": "shopify_hydrogen",
+        "as": "/guides/shopify_hydrogen",
+        "href": "/guides/[...guide]"
+      },
+      {
         "text": "Spartacus",
         "icon": "spartacus",
         "as": "/guides/spartacus",

@@ -169,6 +169,8 @@ const Home = ({ navData }) => {
           text="Get started with serverless functions"
         />
 
+        <FrameworkItem guide="/guides/shopify_hydrogen" framework="shopify_hydrogen" text="Get started with Shopify Hydrogen" />
+
         <FrameworkItem guide="/guides/gatsby" framework="gatsby" text="Get started with Gatsby" />
 
         <FrameworkItem

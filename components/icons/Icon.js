@@ -24,6 +24,7 @@ import MkDocsIcon from '@material-ui/icons/Book'
 import AstroIcon from './astro.svg'
 import JekyllIcon from './jekyll.svg'
 import ServerlessIcon from './serverless-functions.svg'
+import ShopifyHydrogen from './shopify-hydrogen.svg'
 
 import clsx from 'clsx'
 
@@ -53,6 +54,7 @@ export const icons = {
   astro: AstroIcon,
   jekyll: JekyllIcon,
   serverless_functions: ServerlessIcon,
+  shopify_hydrogen: ShopifyHydrogen,
 }
 
 export const styles = theme => ({

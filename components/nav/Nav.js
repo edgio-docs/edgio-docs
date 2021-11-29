@@ -56,6 +56,10 @@ const useStyles = makeStyles(theme => ({
   navBody: {
     padding: theme.spacing(0, 4, 1, 4),
   },
+  navText: {
+    fontWeight: 500,
+    fontSize: '1.2rem',
+  },
   open: {
     transform: 'translateX(1px)',
   },
@@ -92,13 +96,26 @@ const useStyles = makeStyles(theme => ({
       },
     },
   },
+  navText: {
+    '& span': {
+      fontSize: '1rem',
+      fontWeight: 500,
+    },
+  },
+
+  menuItem: {
+    color: theme.palette.text.primary,
+    '&:hover': {
+      textDecoration: 'none',
+    },
+  },
   selectedMenuItem: {
     opacity: 1,
     borderLeft: `3px solid ${theme.palette.secondary.main}`,
+    paddingLeft: 12,
+    color: theme.palette.secondary.main,
     '& a': {
       fontWeight: 'bold',
-      color: theme.palette.secondary.main,
-      marginLeft: -3,
     },
   },
   icon: {
@@ -150,6 +167,7 @@ export default function Nav({ navData }) {
               className={clsx({
                 [classes.menuCollapseButton]: true,
                 [classes.selected]: collapseActive,
+                [classes.navText]: true,
               })}
               selected={collapseActive}
             >
@@ -162,27 +180,25 @@ export default function Nav({ navData }) {
                   const url = createUrl({ text, as, href })
 
                   const LinkItem = (
-                    <div
-                      className={clsx({
-                        [classes.selectedMenuItem]: isPathSelected(as),
-                      })}
-                    >
-                      <ListItem
-                        button
-                        component="a"
-                        target={external && '_blank'}
-                        selected={isPathSelected(as)}
-                        className={clsx({
+                    <ListItem
+                      component="a"
+                      target={external && '_blank'}
+                      rel={external && 'noreferrer noopener'}
+                      selected={isPathSelected(as)}
+                      className={clsx(
+                        {
                           [classes.selected]: isPathSelected(as),
-                        })}
-                      >
-                        {icon && <Icon type={icon} classes={{ root: classes.icon }} />}
-                        {external && (
-                          <OpenInNewIcon fontSize="small" classes={{ root: classes.icon }} />
-                        )}
-                        <ListItemText primary={text} />
-                      </ListItem>
-                    </div>
+                          [classes.selectedMenuItem]: isPathSelected(as),
+                        },
+                        classes.menuItem,
+                      )}
+                    >
+                      {icon && <Icon type={icon} classes={{ root: classes.icon }} />}
+                      {external && (
+                        <OpenInNewIcon fontSize="small" classes={{ root: classes.icon }} />
+                      )}
+                      <ListItemText primary={text} />
+                    </ListItem>
                   )
 
                   return (

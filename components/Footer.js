@@ -1,8 +1,7 @@
-import { Divider, Grid, makeStyles, Button } from '@material-ui/core'
+import { makeStyles, Button } from '@material-ui/core'
 import NextIcon from '@material-ui/icons/ArrowForward'
 import PreviousIcon from '@material-ui/icons/ArrowBack'
 import Launch from '@material-ui/icons/Launch'
-import clsx from 'clsx'
 import React from 'react'
 import Link from 'next/link'
 

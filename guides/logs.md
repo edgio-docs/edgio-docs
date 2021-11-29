@@ -30,6 +30,16 @@ By enabling Deep Request Inspection in your environment, you can also see the he
 
 Finally, activate the new environment configuration and tail the server logs on any deployment to see detailed information about every request served by that deployment.
 
+## Setting up log aggregation tools
+
+{{ PRODUCT_NAME }} saves its logs to Amazon S3. Most log aggregation tools are able to ingest logs from S3. We attempt to link to the docs that explain how to ingest logs from S3 for each popular log aggregation tool below. Even if your tool is not listed, there's a good chance it can ingest logs from S3.
+
+- Sematext | [[Logagent docs]](https://sematext.com/docs/logagent/)
+- Sumo Logic | [[S3 ingest docs]](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/AWS-S3-Source)
+- AWS Athena | [[docs]](https://aws.amazon.com/blogs/big-data/analyzing-data-in-s3-using-amazon-athena/)
+- Splunk | [[S3 ingest docs]](https://docs.splunk.com/Documentation/AddOns/released/AWS/S3)
+- Loggly | [[S3 ingest docs]](https://documentation.solarwinds.com/en/Success_Center/loggly/Content/admin/s3-ingestion-auto.htm)
+
 ## Access Logs
 
 {{ PRODUCT_NAME }} [Enterprise tier]({{ WWW_URL }}/pricing) customers can receive streaming access logs that capture information about each request served by {{ PRODUCT_NAME }}. To do so refer to the "Access Logs" tab:
@@ -220,13 +230,3 @@ IP of the backend that responded to the request
 ### hrid
 
 Request ID of the response hit in the cache. Corresponds to [`{{ HEADER_PREFIX }}-hit-request-id`](response_headers#section_general_headers) response header.
-
-## Setting up log aggregation tools
-
-{{ PRODUCT_NAME }} saves its logs to Amazon S3. Most log aggregation tools are able to ingest logs from S3. We attempt to link to the docs that explain how to ingest logs from S3 for each popular log aggregation tool below. Even if your tool is not listed, there's a good chance it can ingest logs from S3.
-
-- Sematext | [[Logagent docs]](https://sematext.com/docs/logagent/)
-- Sumo Logic | [[S3 ingest docs]](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/AWS-S3-Source)
-- AWS Athena | [[docs]](https://aws.amazon.com/blogs/big-data/analyzing-data-in-s3-using-amazon-athena/)
-- Splunk | [[S3 ingest docs]](https://docs.splunk.com/Documentation/AddOns/released/AWS/S3)
-- Loggly | [[S3 ingest docs]](https://documentation.solarwinds.com/en/Success_Center/loggly/Content/admin/s3-ingestion-auto.htm)

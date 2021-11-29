@@ -69,11 +69,9 @@ This framework has a connector developed for {{ PRODUCT_NAME }}. See [Connectors
 
 [View the Connector Code](https://github.com/layer0-docs/layer0-connectors/tree/main/layer0-starter-connector?button)
 
+{{ SYSTEM_REQUIREMENTS }}
+
 ## Setup a project
-
-**{{ PRODUCT_NAME }} only supports Node.js version {{ NODE_VERSION }}**
-
-As with any {{ PRODUCT_NAME }} project make sure you have Node and npm installed. If you do not have Node.js installed on your system, download and install it from the official [Node.js v{{ NODE_VERSION }} downloads](https://nodejs.org/dist/latest-v{{ NODE_VERSION }}/) page. Select the download that matches your operating system and run the installer. Note that the installer for Node.js will also install npm.
 
 Next, install the [{{ PRODUCT_NAME }} CLI](cli)
 

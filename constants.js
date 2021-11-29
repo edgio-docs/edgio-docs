@@ -46,6 +46,14 @@ const EXAMPLES_REPOS = {
   gatsby: 'https://github.com/layer0-docs/layer0-gatsby-example',
 }
 
+const SYSTEM_REQUIREMENTS = `## System requirements
+
+- [Install Node.js 14.0](/guides/install-nodejs)`
+
+const SYSTEM_REQUIREMENTS_H3 = `### System Requirements
+
+- [Install Node.js 14.0](/guides/install-nodejs)`
+
 module.exports = {
   PRODUCT_NAME,
   PRODUCT_NAME_LOWER,
@@ -72,4 +80,6 @@ module.exports = {
   EXAMPLES_REPO,
   EDGEJS_LABEL,
   EXAMPLES_REPOS,
+  SYSTEM_REQUIREMENTS,
+  SYSTEM_REQUIREMENTS_H3,
 }

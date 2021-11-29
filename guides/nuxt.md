@@ -14,7 +14,7 @@ This Nuxt.js example app uses server-side rendering and prefetching to provide l
 
 This Nuxt.js example app uses ISG (Incremental Static Generation) to provide lightening-fast transitions between pages.
 
-[Try the Nuxt.js ISG example site](https://mark-brocato-nuxt-isg-example-default.layer0.link/?button)
+[Try the Nuxt.js ISG example site](https://layer0-docs-layer0-nuxt-isg-example-default.layer0-limelight.link/?button)
 [View the Code](https://github.com/layer0-docs/layer0-nuxt-isg-example?button)
 [Deploy to Layer0](https://app.layer0.co/deploy?button&deploy&repo=https%3A%2F%2Fgithub.com%2Flayer0-docs%2Flayer0-nuxt-isg-example)
 

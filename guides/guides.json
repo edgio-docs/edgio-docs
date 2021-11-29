@@ -177,6 +177,12 @@
         "href": "/guides/[...guide]"
       },
       {
+        "text": "Docusaurus",
+        "icon": "docusaurus",
+        "as": "/guides/docusaurus",
+        "href": "/guides/[...guide]"
+      },
+      {
         "text": "Ember Fastboot",
         "icon": "fastboot",
         "as": "/guides/ember_fastboot",
@@ -258,6 +264,12 @@
         "text": "Serverless Functions",
         "icon": "serverless_functions",
         "as": "/guides/serverless_functions",
+        "href": "/guides/[...guide]"
+      },
+      {
+        "text": "Shopify Hydrogen",
+        "icon": "shopify_hydrogen",
+        "as": "/guides/shopify_hydrogen",
         "href": "/guides/[...guide]"
       },
       {

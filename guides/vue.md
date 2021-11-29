@@ -7,8 +7,8 @@ This guide shows you how to deploy a Vue.js application on {{ PRODUCT_NAME }}.
 Here's an example Vue app running on Layer0:
 
 [Try the Vue Example Site](https://layer0-docs-layer0-static-vuejs-example-default.layer0-limelight.link/?button)
-[View the Code](https://github.com/layer0-docs/static-vuejs-example?button)
-[Deploy to Layer0](https://app.layer0.co/deploy?button&deploy&repo=https://github.com/layer0-docs/static-vuejs-example)
+[View the Code](https://github.com/layer0-docs/layer0-static-vuejs-example?button)
+[Deploy to Layer0](https://app.layer0.co/deploy?button&deploy&repo=https://github.com/layer0-docs/layer0-static-vuejs-example)
 
 ## Sign up for {{ PRODUCT_NAME }}
 

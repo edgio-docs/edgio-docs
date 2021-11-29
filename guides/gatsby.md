@@ -9,8 +9,8 @@ This guide shows you how to deploy an Gatsby application on {{ PRODUCT_NAME }}:
 This Gatsby example app uses static site generation and prefetching to provide lightning-fast transitions between pages.
 
 [Try the Gatsby SSG Example Site](https://layer0-docs-layer0-gatsby-example-default.layer0.link?button)
-[View the Code](https://github.com/layer0-docs/gatsby?button)
-[Deploy to Layer0](https://app.layer0.co/deploy?button&deploy&repo=https://github.com/layer0-docs/gatsby)
+[View the Code](https://github.com/layer0-docs/layer0-gatsby-example?button)
+[Deploy to Layer0](https://app.layer0.co/deploy?button&deploy&repo=https://github.com/layer0-docs/layer0-gatsby-example)
 
 ## Connector
 

@@ -7,8 +7,7 @@ Layer0 makes it easy to develop, test, and deploy serverless functions without a
 To create a new Layer0 project using serverless functions, run:
 
 ```bash
-npm i -g @layer0/cli
-npm create layer0-app
+npx @layer0/cli@latest init
 ```
 
 ## Responding to requests

@@ -58,6 +58,12 @@ const frameworkItems = [
     text: 'Gatsby',
   },
   {
+    guide: '/guides/shopify_hydrogen',
+    framework: 'shopify_hydrogen',
+    icon: 'shopify_hydrogen',
+    text: 'Get started with Shopify Hydrogen',
+  },
+  {
     guide: '/guides/react',
     framework: 'static-react',
     icon: 'react',

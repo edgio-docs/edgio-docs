@@ -8,25 +8,10 @@ If you do not have Node.js installed on your system, download and install it fro
 
 _Note that while you can use any version of Node.js >= 14 locally, your app will run in Node 14 when deployed to the {{ PRODUCT_NAME }} cloud. Therefore we highly suggest using Node 14 for all development._
 
-## Adding {{ PRODUCT_NAME }} to an existing app
+## Adding {{ PRODUCT_NAME }} to your app
 
-To add {{ PRODUCT_NAME }} to an existing app, run the following:
-
-```bash
-npm i -g {{ PACKAGE_NAME }}/cli
-{{ CLI_NAME }} init
-```
-
-## Creating a new {{ PRODUCT_NAME }} app
-
-To create a new {{ PRODUCT_NAME }} app, run:
+To create a new {{ PRODUCT_NAME }} app, or add Layer0 to an existing app, run:
 
 ```bash
-npm create {{ STARTER_NAME }}@latest
-```
-
-... or using yarn ...
-
-```bash
-yarn create {{ STARTER_NAME }}@latest
+npx {{ PACKAGE_NAME }}/cli@latest init
 ```

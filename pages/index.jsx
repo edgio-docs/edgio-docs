@@ -46,6 +46,12 @@ const frameworkItems = [
     text: 'Vue Storefront',
   },
   {
+    guide: '/guides/serverless_functions',
+    framework: 'serverless',
+    icon: 'serverless',
+    text: 'Serverless functions',
+  },
+  {
     guide: '/guides/gatsby',
     framework: 'gatsby',
     icon: 'gatsby',

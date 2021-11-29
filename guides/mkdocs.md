@@ -7,8 +7,10 @@
 If you don't have an existing MkDocs site, you can create one by running:
 
 ```bash
+# https://www.mkdocs.org/getting-started
+
 $ pip install mkdocs
-$ python -m mkdocs new my-project
+$ mkdocs new my-project
 $ cd my-project
 ```
 

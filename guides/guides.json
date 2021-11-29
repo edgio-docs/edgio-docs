@@ -207,6 +207,12 @@
         "href": "/guides/[...guide]"
       },
       {
+        "text": "NX",
+        "icon": "nx",
+        "as": "/guides/nx",
+        "href": "/guides/[...guide]"
+      },
+      {
         "text": "Next.js",
         "icon": "nextjs",
         "as": "/guides/next",
@@ -222,12 +228,6 @@
         "text": "Nuxt.js",
         "icon": "nuxt",
         "as": "/guides/nuxt",
-        "href": "/guides/[...guide]"
-      },
-      {
-        "text": "NX",
-        "icon": "nx",
-        "as": "/guides/nx",
         "href": "/guides/[...guide]"
       },
       {
@@ -255,6 +255,12 @@
         "href": "/guides/[...guide]"
       },
       {
+        "text": "Serverless Functions",
+        "icon": "serverless_functions",
+        "as": "/guides/serverless_functions",
+        "href": "/guides/[...guide]"
+      },
+      {
         "text": "Spartacus",
         "icon": "spartacus",
         "as": "/guides/spartacus",
@@ -279,15 +285,15 @@
         "href": "/guides/[...guide]"
       },
       {
-        "text": "Vue.js",
-        "icon": "vue",
-        "as": "/guides/vue",
-        "href": "/guides/[...guide]"
-      },
-      {
         "text": "Vue Storefront",
         "icon": "vsf",
         "as": "/guides/vsf",
+        "href": "/guides/[...guide]"
+      },
+      {
+        "text": "Vue.js",
+        "icon": "vue",
+        "as": "/guides/vue",
         "href": "/guides/[...guide]"
       }
     ]
@@ -296,8 +302,8 @@
     "text": "Reference",
     "items": [
       {
-        "text": "layer0.config.js",
-        "as": "/guides/layer0_config",
+        "text": "Changelog",
+        "as": "/guides/changelog",
         "href": "/guides/[...guide]"
       },
       {
@@ -306,8 +312,13 @@
         "href": "/guides/[...guide]"
       },
       {
-        "text": "Limits",
-        "as": "/guides/limits",
+        "text": "Cookies",
+        "as": "/guides/cookies",
+        "href": "/guides/[...guide]"
+      },
+      {
+        "text": "Layer0 for Traditional Sites",
+        "as": "/guides/traditional_sites",
         "href": "/guides/[...guide]"
       },
       {
@@ -321,13 +332,23 @@
         "href": "/guides/[...guide]"
       },
       {
-        "text": "Cookies",
-        "as": "/guides/cookies",
+        "text": "Limits",
+        "as": "/guides/limits",
         "href": "/guides/[...guide]"
       },
       {
         "text": "REST API",
         "as": "/guides/rest_api",
+        "href": "/guides/[...guide]"
+      },
+      {
+        "text": "Request Headers",
+        "as": "/guides/request_headers",
+        "href": "/guides/[...guide]"
+      },
+      {
+        "text": "Response Headers",
+        "as": "/guides/response_headers",
         "href": "/guides/[...guide]"
       },
       {
@@ -351,8 +372,8 @@
         "href": "/guides/[...guide]"
       },
       {
-        "text": "Changelog",
-        "as": "/guides/changelog",
+        "text": "layer0.config.js",
+        "as": "/guides/layer0_config",
         "href": "/guides/[...guide]"
       }
     ]

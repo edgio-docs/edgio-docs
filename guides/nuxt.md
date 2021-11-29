@@ -36,7 +36,6 @@ npm create nuxt-app my-nuxt-app
 
 Nuxt's create module will ask you a series of questions to configure your app. Make sure you answer as follows:
 
-- For `Choose custom server framework` select `None`
 - For `Choose rendering mode` select `Universal (SSR)`
 - Your answers to the other questions should not matter for the purposes of this guide.
 

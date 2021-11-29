@@ -48,7 +48,7 @@ const frameworkItems = [
   {
     guide: '/guides/serverless_functions',
     framework: 'serverless',
-    icon: 'serverless',
+    icon: 'serverless_functions',
     text: 'Serverless functions',
   },
   {

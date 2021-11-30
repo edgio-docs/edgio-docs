@@ -45,18 +45,6 @@ const frameworkItems = [
     text: 'Vue Storefront',
   },
   {
-    guide: '/guides/serverless_functions',
-    framework: 'serverless',
-    icon: 'serverless_functions',
-    text: 'Serverless functions',
-  },
-  {
-    guide: '/guides/shopify_hydrogen',
-    framework: 'shopify_hydrogen',
-    icon: 'shopify_hydrogen',
-    text: 'Get started with Shopify Hydrogen',
-  },
-  {
     guide: '/guides/react',
     framework: 'static-react',
     icon: 'react',
@@ -164,6 +152,18 @@ const frameworkItems = [
     icon: 'jekyll',
     text: 'Jekyll',
   },
+  {
+    guide: '/guides/serverless_functions',
+    framework: 'serverless',
+    icon: 'serverless_functions',
+    text: 'Serverless functions',
+  },
+  {
+    guide: '/guides/shopify_hydrogen',
+    framework: 'shopify_hydrogen',
+    icon: 'shopify_hydrogen',
+    text: 'Get started with Shopify Hydrogen',
+  },
 ]
 
 const Home = ({ navData }) => {
@@ -262,7 +262,9 @@ const Home = ({ navData }) => {
             <Grid item xs={12} md={6} key={framework}>
               <div className={classes.frameworksTableRow}>
                 {icon && (
-                  <Icon type={icon} className={classes.icon}
+                  <Icon
+                    type={icon}
+                    className={classes.icon}
                     style={{ height: 50, width: 50, padding: 0, flex: 'unset' }}
                   />
                 )}

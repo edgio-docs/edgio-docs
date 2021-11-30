@@ -3,7 +3,7 @@
     "text": "Get started",
     "items": [
       {
-        "text": "Enable cdn",
+        "text": "Enable CDN",
         "as": "/guides/enable_cdn",
         "href": "/guides/[...guide]"
       },

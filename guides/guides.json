@@ -354,16 +354,6 @@
         "href": "/guides/[...guide]"
       },
       {
-        "text": "Request Headers",
-        "as": "/guides/request_headers",
-        "href": "/guides/[...guide]"
-      },
-      {
-        "text": "Response Headers",
-        "as": "/guides/response_headers",
-        "href": "/guides/[...guide]"
-      },
-      {
         "text": "Install Node.js",
         "as": "/guides/install-nodejs",
         "href": "/guides/[...guide]"

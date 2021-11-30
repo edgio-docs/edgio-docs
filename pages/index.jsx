@@ -61,7 +61,7 @@ const frameworkItems = [
     guide: '/guides/shopify_hydrogen',
     framework: 'shopify_hydrogen',
     icon: 'shopify_hydrogen',
-    text: 'Get started with Shopify Hydrogen',
+    text: 'Shopify Hydrogen',
   },
   {
     guide: '/guides/react',

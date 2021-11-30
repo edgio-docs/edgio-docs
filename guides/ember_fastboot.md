@@ -69,7 +69,7 @@ if (typeof navigator != 'undefined') {
 
 To reduce serverless cold-start times, limit the packages listed in the `dependencies` section of your `package.json` to only those packages used at runtime. The `{{ CLI_NAME }}/fastboot` package must also be included in `dependencies`. Other packages not used at runtime should be included in `devDependencies`. Only those packages listed in `dependencies` are deployed to {{ PRODUCT_NAME }} along with your application code.
 
-## {{ CONFIG>FILE }}
+## {{ CONFIG_FILE }}
 
 Ember fastboot apps should always have the following in {{ CONFIG_FILE }}:
 

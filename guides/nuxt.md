@@ -10,6 +10,14 @@ This Nuxt.js example app uses server-side rendering and prefetching to provide l
 [View the Code](https://github.com/layer0-docs/layer0-nuxt-example?button)
 [Deploy to Layer0](https://app.layer0.co/deploy?button&deploy&repo=https%3A%2F%2Fgithub.com%2Flayer0-docs%2Flayer0-nuxt-example)
 
+## Example ISG Site
+
+This Nuxt.js example app uses ISG (Incremental Static Generation) to provide lightening-fast transitions between pages.
+
+[Try the Nuxt.js ISG example site](https://layer0-docs-layer0-nuxt-isg-example-default.layer0-limelight.link/?button)
+[View the Code](https://github.com/layer0-docs/layer0-nuxt-isg-example?button)
+[Deploy to Layer0](https://app.layer0.co/deploy?button&deploy&repo=https%3A%2F%2Fgithub.com%2Flayer0-docs%2Flayer0-nuxt-isg-example)
+
 ## Connector
 
 This framework has a connector developed for {{ PRODUCT_NAME }}. See [Connectors](connectors) for more information.
@@ -36,7 +44,6 @@ npm create nuxt-app my-nuxt-app
 
 Nuxt's create module will ask you a series of questions to configure your app. Make sure you answer as follows:
 
-- For `Choose custom server framework` select `None`
 - For `Choose rendering mode` select `Universal (SSR)`
 - Your answers to the other questions should not matter for the purposes of this guide.
 

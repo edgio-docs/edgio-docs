@@ -45,16 +45,28 @@ const frameworkItems = [
     text: 'Vue Storefront',
   },
   {
-    guide: '/guides/vue',
-    framework: 'static-vue',
-    icon: 'vue',
-    text: 'Vue.js',
+    guide: '/guides/serverless_functions',
+    framework: 'serverless',
+    icon: 'serverless_functions',
+    text: 'Serverless functions',
+  },
+  {
+    guide: '/guides/shopify_hydrogen',
+    framework: 'shopify_hydrogen',
+    icon: 'shopify_hydrogen',
+    text: 'Get started with Shopify Hydrogen',
   },
   {
     guide: '/guides/react',
     framework: 'static-react',
     icon: 'react',
     text: 'React',
+  },
+  {
+    guide: '/guides/vue',
+    framework: 'static-vue',
+    icon: 'vue',
+    text: 'Vue.js',
   },
   {
     guide: '/guides/angular',

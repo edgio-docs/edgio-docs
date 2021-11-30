@@ -50,7 +50,7 @@ For example:
 
 ```
 HTTP/1.1 200 OK
-Surrogate-Key: product.123 shoes all-products
+x-0-surrogate-key: product.123 shoes all-products
 Content-Type: text/html
 ```
 

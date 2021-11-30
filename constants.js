@@ -38,11 +38,13 @@ const EXAMPLES_REPOS = {
   razzle: 'https://github.com/layer0-docs/layer0-razzle-example',
   sapper: 'https://github.com/layer0-docs/layer0-sapper-example',
   spartacus: 'https://github.com/layer0-docs/layer0-spartacus-example',
+  svelte: 'https://github.com/layer0-docs/layer0-svelte-example',
   vsf: 'https://github.com/layer0-docs/layer0-vue-storefront-example',
   'static-backbone': 'https://github.com/layer0-docs/static-backbonejs-example',
   'static-react': 'https://github.com/layer0-docs/static-react-example',
   'static-vue': 'https://github.com/layer0-docs/static-vuejs-example',
   cdn: 'https://github.com/layer0-docs/layer0-cdn-example',
+  gatsby: 'https://github.com/layer0-docs/layer0-gatsby-example',
 }
 
 const SYSTEM_REQUIREMENTS = `## System requirements

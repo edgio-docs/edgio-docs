@@ -231,7 +231,7 @@ const Home = ({ navData }) => {
             Network and a modern web development workflow. Start with a new project or easily
             integrate into your existing project.
           </Typography>
-          <Link href="/guides/get_started" as="/guides/getting_started">
+          <Link href="/guides/get_started" as="/guides/build_web_apps">
             <Button variant="contained" color="secondary" className={classes.button} fullWidth>
               Enable CDN &amp; Dx
             </Button>

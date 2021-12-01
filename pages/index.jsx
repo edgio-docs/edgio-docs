@@ -208,7 +208,7 @@ const Home = ({ navData }) => {
             Network into your new or existing site / project. Get up and running in under{' '}
             <PriEm addlClasses={classes.fontBold}>seven minutes</PriEm>.
           </Typography>
-          <Link href="/guides/get_started" as="/guides/enable_edge_network">
+          <Link href="/guides/get_started" as="/guides/enable_cdn">
             <Button
               variant="contained"
               color="secondary"

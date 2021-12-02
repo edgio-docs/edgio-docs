@@ -8,7 +8,6 @@ If the error is generated in {{ PRODUCT_NAME }} itself, the platform generates a
 
 | CODE | NAME | DESCRIPTION |
 | ---- | --------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 412 | Precondition Failed | This code is returned when query string parameter `{{ COOKIE_PREFIX }}_prefetch` equals `1` and the result is not found in the edge cache. |
 | 530 | Internal {{ PRODUCT_NAME }} Error | Unexpected error in {{ PRODUCT_NAME }}. Please contact [support]({{ HELP_URL }}) immediately. |
 | 531 | Project Upstream Timeout | Your project timed out while waiting for an upstream response. |
 | 532 | Project Response Too Large | Your project returned a response size greater than the allowed 6MB. |
@@ -36,5 +35,5 @@ Obviously, your project can set status codes of their own, which may sometimes m
 | ---- | ------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | 400 | Bad Request | The URL is too long or the request headers are too large. See [limits](limits) |
 | 404 | Not Found | The server cannot find the requested resource. This usually occurs when the browser requests a page that your app does not have. It will also occur when a request does not match any of the routes in your {{ PRODUCT_NAME }} router. See [routing](routing) for more information. |
-| 412 | Precondition Failed | The query string parameter `{{ COOKIE_PREFIX }}_prefetch` equals `1` and the result is not found in the edge cache. |
+| 412 | Precondition Failed | This code is returned when query string parameter `{{ COOKIE_PREFIX }}_prefetch` equals `1` and the content was not found in the edge cache. |
 | 503 | Service Unavailable | Your project's upstream was unavailable. See [routing](routing) |

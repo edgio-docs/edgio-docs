@@ -243,7 +243,7 @@ const Home = ({ navData }) => {
         variant="h2"
         style={{ marginTop: theme.spacing(4), fontSize: '30px', marginBottom: theme.spacing(2) }}
       >
-        Build a JAMstack site on one of many popular platforms
+        Build a Jamstack site on one of many popular platforms
       </Typography>
       <Typography style={{ marginBottom: theme.spacing(2) }}>
         Leverage the capabilities of a modern web framework and get all the benefits of the Layer0

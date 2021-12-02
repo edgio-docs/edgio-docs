@@ -6,9 +6,9 @@ This guide shows you how to deploy a Svelte application on {{ PRODUCT_NAME }}.
 
 This Next.js example app uses server-side rendering and prefetching to provide lightning-fast transitions between pages.
 
-[Try the Svelte example site](https://layer0-docs-svelte-default.layer0.link/?button)
+[Try the Svelte example site](https://layer0-docs-layer0-svelte-example-default.layer0-limelight.link/?button)
 [View the code](https://github.com/layer0-docs/layer0-svelte-example?button)
-[Deploy to Layer0](https://app.layer0.co/deploy?button&deploy&repo=https%253A%252F%252Fgithub.com%252Flayer0-docs%252Flayer0-svelte-example)
+[Deploy to Layer0](https://app.layer0.co/deploy?button&deploy&repo=https://github.com/layer0-docs/layer0-svelte-example)
 
 {{ SIGN_UP_LAYER0 }}
 

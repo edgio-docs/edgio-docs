@@ -165,6 +165,12 @@ const frameworkItems = [
     icon: 'jekyll',
     text: 'Jekyll',
   },
+  {
+    guide: '/guides/docusaurus',
+    framework: 'docusaurus',
+    icon: 'docusaurus',
+    text: 'Docusaurus',
+  },
 ]
 
 const Home = ({ navData }) => {

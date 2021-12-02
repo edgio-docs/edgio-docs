@@ -26,7 +26,6 @@ const frameworkItems = [
     icon: 'nextjs',
     text: 'Next.js',
   },
-
   {
     guide: '/guides/nuxt',
     framework: 'nuxt',
@@ -46,22 +45,10 @@ const frameworkItems = [
     text: 'Vue Storefront',
   },
   {
-    guide: '/guides/serverless_functions',
-    framework: 'serverless',
-    icon: 'serverless_functions',
-    text: 'Serverless functions',
-  },
-  {
     guide: '/guides/gatsby',
     framework: 'gatsby',
     icon: 'gatsby',
     text: 'Gatsby',
-  },
-  {
-    guide: '/guides/shopify_hydrogen',
-    framework: 'shopify_hydrogen',
-    icon: 'shopify_hydrogen',
-    text: 'Shopify Hydrogen',
   },
   {
     guide: '/guides/react',
@@ -86,18 +73,6 @@ const frameworkItems = [
     framework: 'angular',
     icon: 'angular',
     text: 'Angular',
-  },
-  {
-    guide: '/guides/swell',
-    framework: 'swell',
-    icon: 'swell',
-    text: 'Swell',
-  },
-  {
-    guide: '/guides/react-storefront',
-    framework: 'react-storefront',
-    icon: 'react-storefront',
-    text: 'React Storefront',
   },
   {
     guide: '/guides/astro',
@@ -130,22 +105,52 @@ const frameworkItems = [
     text: 'Frontity',
   },
   {
-    guide: '/guides/static_sites',
-    framework: '',
-    icon: 'html',
-    text: 'Static HTML/JavaScript',
-  },
-  {
     guide: '/guides/ember_fastboot',
     framework: 'fastboot',
     icon: 'fastboot',
     text: 'Ember Fastboot',
   },
   {
+    guide: '/guides/enable_cdn',
+    framework: 'cdn',
+    icon: '',
+    text: 'Get started with the CDN template',
+  },
+  {
     guide: '/guides/razzle',
     framework: 'razzle',
     icon: 'razzleP',
     text: 'Razzle',
+  },
+  {
+    guide: '/guides/serverless_functions',
+    framework: 'serverless',
+    icon: 'serverless_functions',
+    text: 'Serverless functions',
+  },
+  {
+    guide: '/guides/shopify_hydrogen',
+    framework: 'shopify_hydrogen',
+    icon: 'shopify_hydrogen',
+    text: 'Shopify Hydrogen',
+  },
+  {
+    guide: '/guides/swell',
+    framework: 'swell',
+    icon: 'swell',
+    text: 'Swell',
+  },
+  {
+    guide: '/guides/react-storefront',
+    framework: 'react-storefront',
+    icon: 'react-storefront',
+    text: 'React Storefront',
+  },
+  {
+    guide: '/guides/static_sites',
+    framework: '',
+    icon: 'html',
+    text: 'Static HTML/JavaScript',
   },
   {
     guide: '/guides/mkdocs',

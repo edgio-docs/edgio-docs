@@ -1,6 +1,6 @@
 [
   {
-    "text": "Get started",
+    "text": "Get Started",
     "items": [
       {
         "text": "Enable CDN",
@@ -8,18 +8,18 @@
         "href": "/guides/[...guide]"
       },
       {
-        "text": "Build web apps",
+        "text": "Build Web Apps",
         "as": "/guides/build_web_apps",
         "href": "/guides/[...guide]"
       },
 
       {
-        "text": "Deploy apps",
+        "text": "Deploy Apps",
         "as": "/guides/deploy_apps",
         "href": "/guides/[...guide]"
       },
       {
-        "text": "System overview",
+        "text": "System Overview",
         "as": "/guides/overview",
         "href": "/guides/[...guide]"
       }
@@ -29,7 +29,7 @@
     "text": "CDN",
     "items": [
       {
-        "text": "EdgeJS routing",
+        "text": "EdgeJS Routing",
         "as": "/guides/routing",
         "href": "/guides/[...guide]"
       },
@@ -39,12 +39,12 @@
         "href": "/guides/[...guide]"
       },
       {
-        "text": "Core web vitals",
+        "text": "Core Web Vitals",
         "as": "/guides/core_web_vitals",
         "href": "/guides/[...guide]"
       },
       {
-        "text": "Image optimization",
+        "text": "Image Optimization",
         "as": "/guides/image_optimization",
         "href": "/guides/[...guide]"
       },
@@ -54,7 +54,7 @@
         "href": "/guides/[...guide]"
       },
       {
-        "text": "Traditional sites",
+        "text": "Traditional Sites",
         "as": "/guides/traditional_sites",
         "href": "/guides/[...guide]"
       },
@@ -64,22 +64,22 @@
         "href": "/guides/[...guide]"
       },
       {
-        "text": "Purging cache",
+        "text": "Purging",
         "as": "/guides/purging",
         "href": "/guides/[...guide]"
       },
       {
-        "text": "Static prerendering",
+        "text": "Static Prerendering",
         "as": "/guides/static_prerendering",
         "href": "/guides/[...guide]"
       },
       {
-        "text": "Incremental static (re)generation",
+        "text": "Incremental Static (Re)generation",
         "as": "/guides/isg",
         "href": "/guides/[...guide]"
       },
       {
-        "text": "Common patterns",
+        "text": "Common Patterns",
         "as": "/guides/cookbook",
         "href": "/guides/[...guide]"
       },
@@ -89,12 +89,12 @@
         "href": "/guides/[...guide]"
       },
       {
-        "text": "Split testing",
+        "text": "Split Testing",
         "as": "/guides/split_testing",
         "href": "/guides/[...guide]"
       },
       {
-        "text": "Custom domains & SSL",
+        "text": "Custom Domains & SSL",
         "as": "/guides/production",
         "href": "/guides/[...guide]"
       },
@@ -104,12 +104,12 @@
         "href": "/guides/[...guide]"
       },
       {
-        "text": "Edge network",
+        "text": "Edge Network",
         "as": "/guides/regions",
         "href": "/guides/[...guide]"
       },
       {
-        "text": "Third party CDNs",
+        "text": "Third Party CDNs",
         "as": "/guides/third_party_cdns",
         "href": "/guides/[...guide]"
       },
@@ -127,7 +127,7 @@
     ]
   },
   {
-    "text": "Developer tools",
+    "text": "Developer Tools",
     "items": [
       {
         "text": "CLI",
@@ -147,7 +147,7 @@
     ]
   },
   {
-    "text": "Accounts & teams",
+    "text": "Accounts & Teams",
     "items": [
       {
         "text": "Teams",
@@ -319,7 +319,7 @@
         "href": "/guides/[...guide]"
       },
       {
-        "text": "Status codes",
+        "text": "Status Codes",
         "as": "/guides/status_codes",
         "href": "/guides/[...guide]"
       },
@@ -334,12 +334,12 @@
         "href": "/guides/[...guide]"
       },
       {
-        "text": "Request headers",
+        "text": "Request Headers",
         "as": "/guides/request_headers",
         "href": "/guides/[...guide]"
       },
       {
-        "text": "Response headers",
+        "text": "Response Headers",
         "as": "/guides/response_headers",
         "href": "/guides/[...guide]"
       },
@@ -359,7 +359,7 @@
         "href": "/guides/[...guide]"
       },
       {
-        "text": "Deploy to Layer0 button",
+        "text": "Deploy to Layer0 Button",
         "as": "/guides/deploy-to-layer0",
         "href": "/guides/[...guide]"
       },
@@ -369,7 +369,7 @@
         "href": "/guides/[...guide]"
       },
       {
-        "text": "v3 migration guide",
+        "text": "v3 Migration Guide",
         "as": "/guides/layer0_migration",
         "href": "/guides/[...guide]"
       },
@@ -384,13 +384,13 @@
     "text": "Videos",
     "items": [
       {
-        "text": "Product updates",
+        "text": "Product Updates",
         "as": "https://www.youtube.com/playlist?list=PLv3_GoCvQgUn8pKufafW2Ufy0DXTL3BCp",
         "href": "https://www.youtube.com/playlist?list=PLv3_GoCvQgUn8pKufafW2Ufy0DXTL3BCp",
         "external": true
       },
       {
-        "text": "Layer0 tutorials",
+        "text": "Layer0 Tutorials",
         "as": "https://www.youtube.com/playlist?list=PLv3_GoCvQgUnbIlR-OFhS9dQW4oSHv4ji",
         "href": "https://www.youtube.com/playlist?list=PLv3_GoCvQgUnbIlR-OFhS9dQW4oSHv4ji",
         "external": true

@@ -2,6 +2,12 @@
 
 This guide shows you how to deploy a Remix application on {{ PRODUCT_NAME }}.
 
+## Example
+
+[Try the Remix Express Example Site](https://layer0-docs-layer0-remix-express-example-default.layer0-limelight.link?button)
+[View the Code](https://github.com/layer0-docs/layer0-remix-express-example?button)
+[Deploy to Layer0](https://app.layer0.co/deploy?button&deploy&repo=https://github.com/layer0-docs/layer0-remix-express-example)
+
 {{ SYSTEM_REQUIREMENTS }}
 
 ## Sign up for {{ PRODUCT_NAME }}

@@ -52,6 +52,12 @@ const frameworkItems = [
     text: 'Serverless functions',
   },
   {
+    guide: '/guides/remix',
+    framework: 'remix',
+    icon: 'remix',
+    text: 'Remix',
+  },
+  {
     guide: '/guides/gatsby',
     framework: 'gatsby',
     icon: 'gatsby',

@@ -1,8 +1,8 @@
 # Build web apps
 
-The easiest way to get started is using one of our "Deploy to Layer0" buttons.
+The easiest way to get started is by using one of our "Deploy to Layer0" buttons.
 
-Layer0 supports many frameworks out of the box. Choose from two of our the most popular frameworks below, or expand the menu item for Frameworks and choose your preferred framework to view the specific guide.
+Layer0 supports many frameworks out of the box. Choose from two of the most popular frameworks below, or expand the menu item for Frameworks and choose your preferred framework to view the specific guide.
 
 **{{ PRODUCT_NAME }} only supports Node.js version 14**
 

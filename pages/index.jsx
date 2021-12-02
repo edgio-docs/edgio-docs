@@ -26,7 +26,6 @@ const frameworkItems = [
     icon: 'nextjs',
     text: 'Next.js',
   },
-
   {
     guide: '/guides/nuxt',
     framework: 'nuxt',
@@ -64,12 +63,6 @@ const frameworkItems = [
     text: 'Gatsby',
   },
   {
-    guide: '/guides/shopify_hydrogen',
-    framework: 'shopify_hydrogen',
-    icon: 'shopify_hydrogen',
-    text: 'Shopify Hydrogen',
-  },
-  {
     guide: '/guides/react',
     framework: 'static-react',
     icon: 'react',
@@ -92,18 +85,6 @@ const frameworkItems = [
     framework: 'angular',
     icon: 'angular',
     text: 'Angular',
-  },
-  {
-    guide: '/guides/swell',
-    framework: 'swell',
-    icon: 'swell',
-    text: 'Swell',
-  },
-  {
-    guide: '/guides/react-storefront',
-    framework: 'react-storefront',
-    icon: 'react-storefront',
-    text: 'React Storefront',
   },
   {
     guide: '/guides/astro',
@@ -136,22 +117,52 @@ const frameworkItems = [
     text: 'Frontity',
   },
   {
-    guide: '/guides/static_sites',
-    framework: '',
-    icon: 'html',
-    text: 'Static HTML/JavaScript',
-  },
-  {
     guide: '/guides/ember_fastboot',
     framework: 'fastboot',
     icon: 'fastboot',
     text: 'Ember Fastboot',
   },
   {
+    guide: '/guides/enable_cdn',
+    framework: 'cdn',
+    icon: '',
+    text: 'Get started with the CDN template',
+  },
+  {
     guide: '/guides/razzle',
     framework: 'razzle',
     icon: 'razzleP',
     text: 'Razzle',
+  },
+  {
+    guide: '/guides/serverless_functions',
+    framework: 'serverless',
+    icon: 'serverless_functions',
+    text: 'Serverless functions',
+  },
+  {
+    guide: '/guides/shopify_hydrogen',
+    framework: 'shopify_hydrogen',
+    icon: 'shopify_hydrogen',
+    text: 'Shopify Hydrogen',
+  },
+  {
+    guide: '/guides/swell',
+    framework: 'swell',
+    icon: 'swell',
+    text: 'Swell',
+  },
+  {
+    guide: '/guides/react-storefront',
+    framework: 'react-storefront',
+    icon: 'react-storefront',
+    text: 'React Storefront',
+  },
+  {
+    guide: '/guides/static_sites',
+    framework: '',
+    icon: 'html',
+    text: 'Static HTML/JavaScript',
   },
   {
     guide: '/guides/mkdocs',
@@ -255,7 +266,7 @@ const Home = ({ navData }) => {
         variant="h2"
         style={{ marginTop: theme.spacing(4), fontSize: '30px', marginBottom: theme.spacing(2) }}
       >
-        Build a JAMstack site on one of many popular platforms
+        Build a Jamstack site on one of many popular platforms
       </Typography>
       <Typography style={{ marginBottom: theme.spacing(2) }}>
         Leverage the capabilities of a modern web framework and get all the benefits of the Layer0
@@ -266,7 +277,7 @@ const Home = ({ navData }) => {
           const url = EXAMPLES_REPOS[framework]
 
           return (
-            <Grid item xs={12} md={6}>
+            <Grid item xs={12} md={6} key={framework}>
               <div className={classes.frameworksTableRow}>
                 <Icon
                   type={icon}

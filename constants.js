@@ -29,8 +29,10 @@ const EDGEJS_LABEL = 'EdgeJS'
 const EXAMPLES_REPOS = {
   angular: 'https://github.com/layer0-docs/layer0-angular-example',
   astro: 'https://github.com/layer0-docs/layer0-astro-example',
+  cdn: 'https://github.com/layer0-docs/layer0-cdn-example',
   fastboot: 'https://github.com/layer0-docs/layer0-ember-fastboot-example',
   frontity: 'https://github.com/layer0-docs/layer0-frontity-example',
+  gatsby: 'https://github.com/layer0-docs/layer0-gatsby-example',
   next: 'https://github.com/layer0-docs/layer0-nextjs-example',
   nextcommerce: 'https://github.com/layer0-docs/layer0-nextjs-commerce-example',
   nuxt: 'https://github.com/layer0-docs/layer0-nuxt-example',
@@ -43,7 +45,6 @@ const EXAMPLES_REPOS = {
   'static-backbone': 'https://github.com/layer0-docs/static-backbonejs-example',
   'static-react': 'https://github.com/layer0-docs/layer0-static-react-example',
   'static-vue': 'https://github.com/layer0-docs/layer0-static-vuejs-example',
-  gatsby: 'https://github.com/layer0-docs/layer0-gatsby-example',
 }
 
 const SYSTEM_REQUIREMENTS = `## System requirements

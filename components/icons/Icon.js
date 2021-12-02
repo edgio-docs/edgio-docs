@@ -25,6 +25,7 @@ import AstroIcon from './astro.svg'
 import JekyllIcon from './jekyll.svg'
 import ServerlessIcon from './serverless-functions.svg'
 import Docusaurus from './docusaurus.svg'
+import Remix from './remix.svg'
 import ShopifyHydrogen from './shopify-hydrogen.svg'
 
 import clsx from 'clsx'
@@ -56,7 +57,8 @@ export const icons = {
   jekyll: JekyllIcon,
   serverless_functions: ServerlessIcon,
   docusaurus: Docusaurus,
-  shopify_hydrogen: ShopifyHydrogen
+  shopify_hydrogen: ShopifyHydrogen,
+  remix: Remix
 }
 
 export const styles = theme => ({

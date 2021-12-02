@@ -255,6 +255,12 @@
         "href": "/guides/[...guide]"
       },
       {
+        "text": "Remix",
+        "icon": "remix",
+        "as": "/guides/remix",
+        "href": "/guides/[...guide]"
+      },
+      {
         "text": "Sapper",
         "icon": "sapper",
         "as": "/guides/sapper",

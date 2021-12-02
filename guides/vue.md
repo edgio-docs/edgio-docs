@@ -10,9 +10,7 @@ Here's an example Vue app running on Layer0:
 [View the Code](https://github.com/layer0-docs/layer0-static-vuejs-example?button)
 [Deploy to Layer0](https://app.layer0.co/deploy?button&deploy&repo=https://github.com/layer0-docs/layer0-static-vuejs-example)
 
-## Sign up for {{ PRODUCT_NAME }}
-
-Deploying requires an account on {{ PRODUCT_NAME }}. [Sign up here for free.]({{ APP_URL }}/signup).
+{{ SIGN_UP_LAYER0 }}
 
 ## Install the {{ PRODUCT_NAME }} CLI
 

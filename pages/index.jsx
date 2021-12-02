@@ -45,6 +45,18 @@ const frameworkItems = [
     text: 'Vue Storefront',
   },
   {
+    guide: '/guides/serverless_functions',
+    framework: 'serverless',
+    icon: 'serverless_functions',
+    text: 'Serverless functions',
+  },
+  {
+    guide: '/guides/remix',
+    framework: 'remix',
+    icon: 'remix',
+    text: 'Remix',
+  },
+  {
     guide: '/guides/gatsby',
     framework: 'gatsby',
     icon: 'gatsby',
@@ -163,6 +175,12 @@ const frameworkItems = [
     framework: 'jekyll',
     icon: 'jekyll',
     text: 'Jekyll',
+  },
+  {
+    guide: '/guides/docusaurus',
+    framework: 'docusaurus',
+    icon: 'docusaurus',
+    text: 'Docusaurus',
   },
 ]
 

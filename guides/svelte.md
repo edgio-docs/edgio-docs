@@ -10,11 +10,7 @@ This Next.js example app uses server-side rendering and prefetching to provide l
 [View the code](https://github.com/layer0-docs/layer0-svelte-example?button)
 [Deploy to Layer0](https://app.layer0.co/deploy?button&deploy&repo=https%253A%252F%252Fgithub.com%252Flayer0-docs%252Flayer0-svelte-example)
 
-## Install Node.js and npm
-
-## Sign up for {{ PRODUCT_NAME }}
-
-Deploying requires an account on {{ PRODUCT_NAME }}. [Sign up here for free.]({{ APP_URL }}/signup).
+{{ SIGN_UP_LAYER0 }}
 
 ## Install the {{ PRODUCT_NAME }} CLI
 
@@ -24,7 +20,7 @@ If you have not already done so, install the [{{ PRODUCT_NAME }} CLI](cli)
 npm i -g {{ PACKAGE_NAME }}/cli
 ```
 
-{{ SYSTEM_REQUIREMENTS }}
+{{SYSTEM_REQUIREMENTS}}
 
 ## Create a new Svelte app
 

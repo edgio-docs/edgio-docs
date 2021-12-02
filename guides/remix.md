@@ -1,10 +1,12 @@
-# Shopify Hydrogen
+# Remix
 
-This guide shows you how to deploy a Shopify Hydrogen application on {{ PRODUCT_NAME }}.
+This guide shows you how to deploy a Remix application on {{ PRODUCT_NAME }}.
 
 {{ SYSTEM_REQUIREMENTS }}
 
-{{ SIGN_UP_LAYER0 }}
+## Sign up for {{ PRODUCT_NAME }}
+
+Deploying requires an account on {{ PRODUCT_NAME }}. [Sign up here for free.]({{ APP_URL }}/signup).
 
 ## Install the {{ PRODUCT_NAME }} CLI
 
@@ -14,14 +16,14 @@ If you have not already done so, install the [{{ PRODUCT_NAME }} CLI](cli)
 npm i -g {{ PACKAGE_NAME }}/cli
 ```
 
-## Create a new Shopify Hydrogen app
+## Create a new Remix app
 
-If you don't already have a Shopify Hydrogen app, create one by running the following:
+If you don't already have a Remix app, create one by running the following:
 
 ```bash
-npx create-hydrogen-app
+npx create-remix@latest
+# Choose express server
 cd project-name
-npm install --legacy-peer-deps
 ```
 
 You can verify your app works by running it locally with:
@@ -30,7 +32,7 @@ You can verify your app works by running it locally with:
 npm run dev
 ```
 
-## Configuring your Shopify Hydrogen app for {{ PRODUCT_NAME }}
+## Configuring your Remix app for {{ PRODUCT_NAME }}
 
 ### Initialize your project
 
@@ -45,7 +47,7 @@ This will automatically update your `package.json` and add all of the required {
 - The `{{ PACKAGE_NAME }}/core` package - Allows you to declare routes and deploy your application on {{ PRODUCT_NAME }}
 - The `{{ PACKAGE_NAME }}/prefetch` package - Allows you to configure a service worker to prefetch and cache pages to improve browsing speed
 - `{{ CONFIG_FILE }}` - A configuration file for {{ PRODUCT_NAME }}
-- `routes.js` - A default routes file that sends all requests to Shopify Hydrogen.
+- `routes.js` - A default routes file that sends all requests to Remix.
 
 ### Install {{ PACKAGE_NAME }}/express
 
@@ -63,13 +65,12 @@ Update `{{ CONFIG_FILE }}` at the root of your project to the following:
 // This file was automatically added by layer0 deploy.
 // You should commit this file to source control.
 module.exports = {
-  connector: '@layer0/express',
+  connector: '@{{ CLI_NAME }}/express',
   express: {
-    appPath: './server.js',
+    appPath: './server/index.js',
   },
   includeFiles: {
     public: true,
-    dist: true,
   },
 }
 ```
@@ -84,21 +85,9 @@ Update `routes.js` at the root of your project to the following:
 const ONE_HOUR = 60 * 60
 const ONE_DAY = 24 * ONE_HOUR
 
-const { Router } = require('@layer0/core/router')
+const { Router } = require('@{{ CLI_NAME }}/core/router')
 
 module.exports = new Router()
-  .match('/assets/:path*', ({ cache }) => {
-    cache({
-      edge: {
-        maxAgeSeconds: ONE_DAY,
-        forcePrivateCaching: true,
-      },
-      browser: {
-        maxAgeSeconds: 0,
-        serviceWorkerSeconds: ONE_DAY,
-      },
-    })
-  })
   .match('/', ({ cache }) => {
     cache({
       edge: {
@@ -107,7 +96,8 @@ module.exports = new Router()
       browser: false,
     })
   })
-  .match('/collections/:path*', ({ cache }) => {
+  .match('/exmaple-path', ({ cache }) => {
+    // other paths
     cache({
       edge: {
         maxAgeSeconds: ONE_DAY,
@@ -115,7 +105,8 @@ module.exports = new Router()
       browser: false,
     })
   })
-  .match('/products/:path*', ({ cache }) => {
+  .match('/build/:path*', ({ cache }) => {
+    // route build output files through Layer0
     cache({
       edge: {
         maxAgeSeconds: ONE_DAY,
@@ -132,7 +123,7 @@ module.exports = new Router()
 
 Refer to the [Routing](routing) guide for the full syntax of the `routes.js` file and how to configure it for your use case.
 
-### Run the Shopify Hydrogen app locally on {{ PRODUCT_NAME }}
+### Run the Remix app locally on {{ PRODUCT_NAME }}
 
 Create a production build of your app by running the following in your project's root directory:
 
@@ -143,7 +134,7 @@ npm run build
 Run {{ PRODUCT_NAME }} on your local machine:
 
 ```bash
-npm run {{ CLI_NAME }}:dev
+{{ CLI_NAME }} run --production
 ```
 
 Load the site http://127.0.0.1:3000

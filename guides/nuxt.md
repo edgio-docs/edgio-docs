@@ -86,7 +86,7 @@ This command will also update your `package.json` with the following changes:
 
 - Moves all packages in `dependencies` to `devDependencies` except those listed in the `modules` property of `nuxt.config.js`.
 - Adds `@nuxt/core` to `dependencies`
-- Adds several `scripts` to run the available `{{{ CLI_NAME }}` commands
+- Adds several `scripts` to run the available `{{ CLI_NAME }}` commands
 
 As an example, here's the original `package.json` from Nuxt's create step:
 

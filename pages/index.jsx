@@ -131,7 +131,7 @@ const frameworkItems = [
   {
     guide: '/guides/razzle',
     framework: 'razzle',
-    icon: 'razzleP',
+    icon: 'razzle',
     text: 'Razzle',
   },
   {

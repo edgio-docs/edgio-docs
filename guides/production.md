@@ -288,7 +288,7 @@ You will want to add all the additional domains into the `alt_names` section. Th
 
 ### Uploading your certificate
 
-To upload your SSL certificate, navigate to the **Settings** tab on your site and
+To upload your SSL certificate, navigate to the **Settings** tab on your site:
 
 ![ssl](/images/production/ssl.png)
 

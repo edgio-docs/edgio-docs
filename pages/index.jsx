@@ -32,11 +32,12 @@ const frameworkItems = [
     icon: 'nuxt',
     text: 'Nuxt.js',
   },
+
   {
-    guide: '/guides/next_commerce',
-    framework: 'nextcommerce',
-    icon: 'next-commerce',
-    text: 'Next.js Commerce',
+    guide: '/guides/enable_cdn',
+    framework: 'cdn',
+    icon: 'layer0',
+    text: 'Enable CDN',
   },
   {
     guide: '/guides/vsf',
@@ -50,6 +51,7 @@ const frameworkItems = [
     icon: 'serverless_functions',
     text: 'Serverless functions',
   },
+
   {
     guide: '/guides/remix',
     framework: 'remix',
@@ -123,10 +125,10 @@ const frameworkItems = [
     text: 'Ember Fastboot',
   },
   {
-    guide: '/guides/enable_cdn',
-    framework: 'cdn',
-    icon: '',
-    text: 'Get started with the CDN template',
+    guide: '/guides/next_commerce',
+    framework: 'nextcommerce',
+    icon: 'next-commerce',
+    text: 'Next.js Commerce',
   },
   {
     guide: '/guides/razzle',
@@ -277,20 +279,21 @@ const Home = ({ navData }) => {
           const url = EXAMPLES_REPOS[framework]
 
           return (
-            <Grid item xs={12} md={6} key={framework}>
-              <div className={classes.frameworksTableRow}>
-                <Icon
-                  type={icon}
-                  className={classes.icon}
-                  style={{ height: 50, width: 50, padding: 0, flex: 'unset' }}
-                />
-                <Typography
-                  className={classes.frameworkText}
-                  style={{ marginLeft: theme.spacing(2), marginRight: 'auto' }}
-                >
-                  {text}
-                </Typography>
-                <div>
+            <Grid item xs={12} sm={6} md={4} lg={3} key={framework}>
+              <Link href="/guides/[...guide]" as={guide}>
+                <div className={classes.frameworksTableRow}>
+                  <Icon
+                    type={icon}
+                    className={classes.icon}
+                    style={{ height: 50, width: 50, padding: 0, flex: 'unset' }}
+                  />
+                  <Typography
+                    className={classes.frameworkText}
+                    style={{ marginLeft: theme.spacing(2), marginRight: 'auto' }}
+                  >
+                    {text}
+                  </Typography>
+                  {/* <div>
                   {url && (
                     <a
                       style={{ marginRight: theme.spacing(1) }}
@@ -318,8 +321,9 @@ const Home = ({ navData }) => {
                       </Button>
                     </a>
                   </Link>
+                </div> */}
                 </div>
-              </div>
+              </Link>
             </Grid>
           )
         })}
@@ -490,6 +494,9 @@ const useStyles = makeStyles(theme => ({
     paddingLeft: theme.spacing(2),
     paddingRight: theme.spacing(2),
     height: '100%',
+    '&:hover': {
+      cursor: 'pointer',
+    },
   },
 
   frameworks: {

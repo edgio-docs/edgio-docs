@@ -182,6 +182,12 @@ const frameworkItems = [
     icon: 'docusaurus',
     text: 'Docusaurus',
   },
+  {
+    guide: '/guides/vuepress',
+    framework: 'vuepress',
+    icon: 'vue',
+    text: 'VuePress',
+  },
 ]
 
 const Home = ({ navData }) => {

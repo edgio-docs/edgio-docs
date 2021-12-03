@@ -58,7 +58,8 @@ export const icons = {
   serverless_functions: ServerlessIcon,
   docusaurus: Docusaurus,
   shopify_hydrogen: ShopifyHydrogen,
-  remix: Remix
+  remix: Remix,
+  vuepress: VueIcon
 }
 
 export const styles = theme => ({

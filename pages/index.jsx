@@ -37,7 +37,7 @@ const frameworkItems = [
     guide: '/guides/enable_cdn',
     framework: 'cdn',
     icon: 'layer0',
-    text: 'Enable CDN',
+    text: 'Edge Network',
   },
   {
     guide: '/guides/vsf',

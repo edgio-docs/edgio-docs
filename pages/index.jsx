@@ -32,11 +32,12 @@ const frameworkItems = [
     icon: 'nuxt',
     text: 'Nuxt.js',
   },
+
   {
-    guide: '/guides/next_commerce',
-    framework: 'nextcommerce',
-    icon: 'next-commerce',
-    text: 'Next.js Commerce',
+    guide: '/guides/enable_cdn',
+    framework: 'cdn',
+    icon: 'layer0',
+    text: 'Edge Network',
   },
   {
     guide: '/guides/vsf',
@@ -50,6 +51,7 @@ const frameworkItems = [
     icon: 'serverless_functions',
     text: 'Serverless functions',
   },
+
   {
     guide: '/guides/remix',
     framework: 'remix',
@@ -123,10 +125,10 @@ const frameworkItems = [
     text: 'Ember Fastboot',
   },
   {
-    guide: '/guides/enable_cdn',
-    framework: 'cdn',
-    icon: '',
-    text: 'Get started with the CDN template',
+    guide: '/guides/next_commerce',
+    framework: 'nextcommerce',
+    icon: 'next-commerce',
+    text: 'Next.js Commerce',
   },
   {
     guide: '/guides/razzle',
@@ -206,7 +208,7 @@ const Home = ({ navData }) => {
       <div className={classes.hero}>
         <Typography variant="h2" style={{ maxWidth: 800, marginTop: 0, fontSize: '30px' }}>
           <div>
-            Leverage the capabilities of Layer0's <PriEm>CDN network</PriEm> and deployment
+            Leverage the capabilities of Layer0's <PriEm>Edge Network</PriEm> and deployment
             platform.
           </div>
 
@@ -231,7 +233,7 @@ const Home = ({ navData }) => {
           sm={6}
           className={cs(classes.placeCenter, classes.grid, classes.alignItemsBaseline)}
         >
-          <h3 className={cs(classes.headerChoice)}>Enable the Layer0 CDN Edge Network</h3>
+          <h3 className={cs(classes.headerChoice)}>Enable the Layer0 Edge Network</h3>
           <Typography>
             The quickest way to start accelerating your site is integrating Layer0's Global Edge
             Network into your new or existing site / project. Get up and running in under{' '}
@@ -244,7 +246,7 @@ const Home = ({ navData }) => {
               className={cs(classes.button, classes.alignSelfEnd)}
               fullWidth
             >
-              Enable CDN
+              Enable Edge Network
             </Button>
           </Link>
         </Grid>
@@ -262,7 +264,7 @@ const Home = ({ navData }) => {
           </Typography>
           <Link href="/guides/get_started" as="/guides/build_web_apps">
             <Button variant="contained" color="secondary" className={classes.button} fullWidth>
-              Enable CDN &amp; Dx
+              Enable Edge Network &amp; Dx
             </Button>
           </Link>
         </Grid>
@@ -276,56 +278,32 @@ const Home = ({ navData }) => {
       </Typography>
       <Typography style={{ marginBottom: theme.spacing(2) }}>
         Leverage the capabilities of a modern web framework and get all the benefits of the Layer0
-        CDN at the same time. Speed up not just your site, but also your development cycles.
+        Edge Network at the same time. Speed up not just your site, but also your development
+        cycles.
       </Typography>
       <Grid container spacing={2} alignItems="stretch">
         {frameworkItems.map(({ guide, framework, icon, text }) => {
           const url = EXAMPLES_REPOS[framework]
 
           return (
-            <Grid item xs={12} md={6} key={framework}>
-              <div className={classes.frameworksTableRow}>
-                <Icon
-                  type={icon}
-                  className={classes.icon}
-                  style={{ height: 50, width: 50, padding: 0, flex: 'unset' }}
-                />
-                <Typography
-                  className={classes.frameworkText}
-                  style={{ marginLeft: theme.spacing(2), marginRight: 'auto' }}
-                >
-                  {text}
-                </Typography>
-                <div>
-                  {url && (
-                    <a
-                      style={{ marginRight: theme.spacing(1) }}
-                      className={classes.buttonLink}
-                      href={`https://app.layer0.co/deploy?repo=${encodeURIComponent(
-                        EXAMPLES_REPOS[framework],
-                      )}`}
-                      target="_blank"
-                      rel="noreferrer"
+            <Grid item xs={12} sm={6} md={4} lg={3} key={framework}>
+              <Link href="/guides/[...guide]" as={guide}>
+                <a href={guide} style={{ color: 'inherit' }}>
+                  <div className={classes.frameworksTableRow}>
+                    <Icon
+                      type={icon}
+                      className={classes.icon}
+                      style={{ height: 50, width: 50, padding: 0, flex: 'unset' }}
+                    />
+                    <Typography
+                      className={classes.frameworkText}
+                      style={{ marginLeft: theme.spacing(2), marginRight: 'auto' }}
                     >
-                      <Button
-                        variant="outlined"
-                        color="secondary"
-                        className={classes.buttonRow}
-                        endIcon={<Launch style={{ fontSize: '1rem' }} />}
-                      >
-                        Deploy
-                      </Button>
-                    </a>
-                  )}
-                  <Link href="/guides/[...guide]" as={guide}>
-                    <a href={guide}>
-                      <Button variant="outlined" color="secondary" className={classes.buttonRow}>
-                        Guide
-                      </Button>
-                    </a>
-                  </Link>
-                </div>
-              </div>
+                      {text}
+                    </Typography>
+                  </div>
+                </a>
+              </Link>
             </Grid>
           )
         })}
@@ -496,6 +474,9 @@ const useStyles = makeStyles(theme => ({
     paddingLeft: theme.spacing(2),
     paddingRight: theme.spacing(2),
     height: '100%',
+    '&:hover': {
+      cursor: 'pointer',
+    },
   },
 
   frameworks: {

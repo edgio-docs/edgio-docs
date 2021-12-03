@@ -182,6 +182,12 @@ const frameworkItems = [
     icon: 'docusaurus',
     text: 'Docusaurus',
   },
+  {
+    guide: '/guides/hexo',
+    framework: 'hexo',
+    icon: 'hexo',
+    text: 'Hexo',
+  },
 ]
 
 const Home = ({ navData }) => {

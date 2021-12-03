@@ -137,12 +137,6 @@ const frameworkItems = [
     text: 'Razzle',
   },
   {
-    guide: '/guides/serverless_functions',
-    framework: 'serverless',
-    icon: 'serverless_functions',
-    text: 'Serverless functions',
-  },
-  {
     guide: '/guides/shopify_hydrogen',
     framework: 'shopify_hydrogen',
     icon: 'shopify_hydrogen',
@@ -190,6 +184,12 @@ const frameworkItems = [
     icon: 'hexo',
     text: 'Hexo',
   },
+  {
+    guide: '/guides/vuepress',
+    framework: 'vuepress',
+    icon: 'vue',
+    text: 'VuePress',
+  }
 ]
 
 const Home = ({ navData }) => {

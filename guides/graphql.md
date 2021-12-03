@@ -2,9 +2,15 @@
 
 {{ PRODUCT_NAME }} provides full support for caching GraphQL APIs. Putting Layer0 in front of you GraphQL API can significantly improve its performance while reducing the amount of traffic that reaches your origin by serving cached queries from the network edge.
 
-## Example App
+## Example
 
-You can view a [demo](https://layer0-docs-graphql-caching-example-default.layer0-limelight.link/) of this feature working and it's [source code](https://github.com/layer0-docs/graphql-caching-example).
+[GraphQL over Proxy](https://layer0-docs-graphql-caching-example-default.layer0-limelight.link?button)
+[View the Code](https://github.com/layer0-docs/graphql-caching-example?button)
+[Deploy to Layer0](https://app.layer0.co/deploy?button&deploy&repo=https%3A%2F%2Fgithub.com%2Flayer0-docs%2Fgraphql-caching-example)
+
+[GraphQL with Apollo Server Micro](https://layer0-docs-layer0-next-graphql-example-default.layer0-limelight.link?button)
+[View the Code](https://github.com/layer0-docs/layer0-nextjs-graphql-example?button)
+[Deploy to Layer0](https://app.layer0.co/deploy?button&deploy&repo=https%3A%2F%2Fgithub.com%2Flayer0-docs%2Flayer0-nextjs-graphql-example)
 
 This sections below walk you through configuring your {{ PRODUCT_NAME }} project and creating the necessary routing rules to cache GraphQL responses.
 

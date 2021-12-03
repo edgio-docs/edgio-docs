@@ -26,39 +26,43 @@ import JekyllIcon from './jekyll.svg'
 import ServerlessIcon from './serverless-functions.svg'
 import Docusaurus from './docusaurus.svg'
 import Remix from './remix.svg'
+import Hexo from './hexo.svg'
 import ShopifyHydrogen from './shopify-hydrogen.svg'
+import Layer0Icon from './layer0-logo.svg'
 
 import clsx from 'clsx'
 
 export const icons = {
-  react: ReactIcon,
-  vue: VueIcon,
-  angular: AngularIcon,
-  spartacus: SpartacusIcon,
-  nextjs: NextIcon,
   'next-commerce': NextCommerceIcon,
-  nuxt: NuxtIcon,
-  prev: ChevronLeft,
-  next: ChevronRight,
   'react-storefront': ReactStorefrontIcon,
-  sapper: SapperIcon,
-  gatsby: GatsbyIcon,
-  vsf: VSFIcon,
-  nx: NXIcon,
-  frontity: FrontityIcon,
-  html: HTMLIcon,
+  angular: AngularIcon,
+  astro: AstroIcon,
+  docusaurus: Docusaurus,
   fastboot: Fastboot,
-  razzleP: RazzlePng,
+  frontity: FrontityIcon,
+  gatsby: GatsbyIcon,
+  hexo: Hexo,
+  html: HTMLIcon,
+  jekyll: JekyllIcon,
+  layer0: Layer0Icon,
+  mkdocs: MkDocsIcon,
+  next: ChevronRight,
+  nextjs: NextIcon,
+  nuxt: NuxtIcon,
+  nx: NXIcon,
+  prev: ChevronLeft,
   razzle: Razzle,
+  razzleP: RazzlePng,
+  react: ReactIcon,
+  remix: Remix,
+  sapper: SapperIcon,
+  serverless_functions: ServerlessIcon,
+  shopify_hydrogen: ShopifyHydrogen,
+  spartacus: SpartacusIcon,
   svelte: SvelteIcon,
   swell: SwellIcon,
-  mkdocs: MkDocsIcon,
-  astro: AstroIcon,
-  jekyll: JekyllIcon,
-  serverless_functions: ServerlessIcon,
-  docusaurus: Docusaurus,
-  shopify_hydrogen: ShopifyHydrogen,
-  remix: Remix,
+  vsf: VSFIcon,
+  vue: VueIcon,
   vuepress: VueIcon
 }
 

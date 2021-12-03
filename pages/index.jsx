@@ -137,12 +137,6 @@ const frameworkItems = [
     text: 'Razzle',
   },
   {
-    guide: '/guides/serverless_functions',
-    framework: 'serverless',
-    icon: 'serverless_functions',
-    text: 'Serverless functions',
-  },
-  {
     guide: '/guides/shopify_hydrogen',
     framework: 'shopify_hydrogen',
     icon: 'shopify_hydrogen',

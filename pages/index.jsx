@@ -316,7 +316,7 @@ const Home = ({ navData }) => {
                       <Button variant="outlined" color="secondary" className={classes.buttonRow}>
                         Guide
                       </Button>
-                    <a>
+                    </a>
                   </Link>
                 </div>
               </div>

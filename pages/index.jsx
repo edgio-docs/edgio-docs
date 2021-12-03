@@ -312,9 +312,11 @@ const Home = ({ navData }) => {
                     </a>
                   )}
                   <Link href="/guides/[...guide]" as={guide}>
-                    <Button variant="outlined" color="secondary" className={classes.buttonRow}>
-                      Guide
-                    </Button>
+                    <a href={guide}>
+                      <Button variant="outlined" color="secondary" className={classes.buttonRow}>
+                        Guide
+                      </Button>
+                    <a>
                   </Link>
                 </div>
               </div>

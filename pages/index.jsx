@@ -281,48 +281,21 @@ const Home = ({ navData }) => {
           return (
             <Grid item xs={12} sm={6} md={4} lg={3} key={framework}>
               <Link href="/guides/[...guide]" as={guide}>
-                <div className={classes.frameworksTableRow}>
-                  <Icon
-                    type={icon}
-                    className={classes.icon}
-                    style={{ height: 50, width: 50, padding: 0, flex: 'unset' }}
-                  />
-                  <Typography
-                    className={classes.frameworkText}
-                    style={{ marginLeft: theme.spacing(2), marginRight: 'auto' }}
-                  >
-                    {text}
-                  </Typography>
-                  {/* <div>
-                  {url && (
-                    <a
-                      style={{ marginRight: theme.spacing(1) }}
-                      className={classes.buttonLink}
-                      href={`https://app.layer0.co/deploy?repo=${encodeURIComponent(
-                        EXAMPLES_REPOS[framework],
-                      )}`}
-                      target="_blank"
-                      rel="noreferrer"
+                <a href={guide} style={{ color: 'inherit' }}>
+                  <div className={classes.frameworksTableRow}>
+                    <Icon
+                      type={icon}
+                      className={classes.icon}
+                      style={{ height: 50, width: 50, padding: 0, flex: 'unset' }}
+                    />
+                    <Typography
+                      className={classes.frameworkText}
+                      style={{ marginLeft: theme.spacing(2), marginRight: 'auto' }}
                     >
-                      <Button
-                        variant="outlined"
-                        color="secondary"
-                        className={classes.buttonRow}
-                        endIcon={<Launch style={{ fontSize: '1rem' }} />}
-                      >
-                        Deploy
-                      </Button>
-                    </a>
-                  )}
-                  <Link href="/guides/[...guide]" as={guide}>
-                    <a href={guide}>
-                      <Button variant="outlined" color="secondary" className={classes.buttonRow}>
-                        Guide
-                      </Button>
-                    </a>
-                  </Link>
-                </div> */}
-                </div>
+                      {text}
+                    </Typography>
+                  </div>
+                </a>
               </Link>
             </Grid>
           )

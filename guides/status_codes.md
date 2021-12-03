@@ -25,7 +25,7 @@ If the error is generated in {{ PRODUCT_NAME }} itself, the platform generates a
 | 544 | Reserved | Not used by {{ PRODUCT_NAME }} at this time. |
 | 545 | {{ PRODUCT_NAME }} Component Not Ready | An unprepared {{ PRODUCT_NAME }} component received traffic. Please contact [support]({{ HELP_URL }}) immediately. |
 
-Obviously, your project can set status codes of their own, which may sometimes match codes above. We encourage you to avoid setting your own status code so as to lower  troubleshooting overhead and other issues.
+Obviously, your project can set status codes of their own, which may sometimes match codes above. We encourage you to avoid setting your own status code so as to lower troubleshooting overhead and other issues.
 
 ## Standard status codes used by {{ PRODUCT_NAME }} itself
 

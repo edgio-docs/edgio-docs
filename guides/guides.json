@@ -201,6 +201,12 @@
         "href": "/guides/[...guide]"
       },
       {
+        "text": "Hexo",
+        "icon": "hexo",
+        "as": "/guides/hexo",
+        "href": "/guides/[...guide]"
+      },
+      {
         "text": "Jekyll",
         "icon": "jekyll",
         "as": "/guides/jekyll",

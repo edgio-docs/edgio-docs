@@ -26,6 +26,7 @@ import JekyllIcon from './jekyll.svg'
 import ServerlessIcon from './serverless-functions.svg'
 import Docusaurus from './docusaurus.svg'
 import Remix from './remix.svg'
+import Hexo from './hexo.svg'
 import ShopifyHydrogen from './shopify-hydrogen.svg'
 import Layer0Icon from './layer0-logo.svg'
 
@@ -40,6 +41,7 @@ export const icons = {
   fastboot: Fastboot,
   frontity: FrontityIcon,
   gatsby: GatsbyIcon,
+  hexo: Hexo,
   html: HTMLIcon,
   jekyll: JekyllIcon,
   layer0: Layer0Icon,

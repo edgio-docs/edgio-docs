@@ -319,6 +319,12 @@
         "icon": "vue",
         "as": "/guides/vue",
         "href": "/guides/[...guide]"
+      },
+      {
+        "text": "VuePress",
+        "icon": "vue",
+        "as": "/guides/vuepress",
+        "href": "/guides/[...guide]"
       }
     ]
   },

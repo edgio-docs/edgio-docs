@@ -190,6 +190,12 @@ const frameworkItems = [
     icon: 'hexo',
     text: 'Hexo',
   },
+  {
+    guide: '/guides/vuepress',
+    framework: 'vuepress',
+    icon: 'vue',
+    text: 'VuePress',
+  }
 ]
 
 const Home = ({ navData }) => {

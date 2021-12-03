@@ -63,6 +63,7 @@ export const icons = {
   swell: SwellIcon,
   vsf: VSFIcon,
   vue: VueIcon,
+  vuepress: VueIcon
 }
 
 export const styles = theme => ({

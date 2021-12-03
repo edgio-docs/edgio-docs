@@ -202,7 +202,7 @@ const Home = ({ navData }) => {
       <div className={classes.hero}>
         <Typography variant="h2" style={{ maxWidth: 800, marginTop: 0, fontSize: '30px' }}>
           <div>
-            Leverage the capabilities of Layer0's <PriEm>CDN network</PriEm> and deployment
+            Leverage the capabilities of Layer0's <PriEm>Edge Network</PriEm> and deployment
             platform.
           </div>
 
@@ -227,7 +227,7 @@ const Home = ({ navData }) => {
           sm={6}
           className={cs(classes.placeCenter, classes.grid, classes.alignItemsBaseline)}
         >
-          <h3 className={cs(classes.headerChoice)}>Enable the Layer0 CDN Edge Network</h3>
+          <h3 className={cs(classes.headerChoice)}>Enable the Layer0 Edge Network</h3>
           <Typography>
             The quickest way to start accelerating your site is integrating Layer0's Global Edge
             Network into your new or existing site / project. Get up and running in under{' '}
@@ -240,7 +240,7 @@ const Home = ({ navData }) => {
               className={cs(classes.button, classes.alignSelfEnd)}
               fullWidth
             >
-              Enable CDN
+              Enable Edge Network
             </Button>
           </Link>
         </Grid>
@@ -258,7 +258,7 @@ const Home = ({ navData }) => {
           </Typography>
           <Link href="/guides/get_started" as="/guides/build_web_apps">
             <Button variant="contained" color="secondary" className={classes.button} fullWidth>
-              Enable CDN &amp; Dx
+              Enable Edge Network &amp; Dx
             </Button>
           </Link>
         </Grid>
@@ -272,7 +272,8 @@ const Home = ({ navData }) => {
       </Typography>
       <Typography style={{ marginBottom: theme.spacing(2) }}>
         Leverage the capabilities of a modern web framework and get all the benefits of the Layer0
-        CDN at the same time. Speed up not just your site, but also your development cycles.
+        Edge Network at the same time. Speed up not just your site, but also your development
+        cycles.
       </Typography>
       <Grid container spacing={2} alignItems="stretch">
         {frameworkItems.map(({ guide, framework, icon, text }) => {

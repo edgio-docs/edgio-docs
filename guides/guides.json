@@ -255,6 +255,12 @@
         "href": "/guides/[...guide]"
       },
       {
+        "text": "React Static",
+        "icon": "react_static",
+        "as": "/guides/react_static",
+        "href": "/guides/[...guide]"
+      },
+      {
         "text": "React Storefront",
         "icon": "react-storefront",
         "as": "/guides/react-storefront",

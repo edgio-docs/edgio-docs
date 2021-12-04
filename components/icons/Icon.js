@@ -28,6 +28,7 @@ import Docusaurus from './docusaurus.svg'
 import Remix from './remix.svg'
 import Hexo from './hexo.svg'
 import ShopifyHydrogen from './shopify-hydrogen.svg'
+import ReactStatic from './react-static.svg'
 import Layer0Icon from './layer0-logo.svg'
 
 import clsx from 'clsx'
@@ -63,7 +64,8 @@ export const icons = {
   swell: SwellIcon,
   vsf: VSFIcon,
   vue: VueIcon,
-  vuepress: VueIcon
+  vuepress: VueIcon,
+  react_static: ReactStatic
 }
 
 export const styles = theme => ({

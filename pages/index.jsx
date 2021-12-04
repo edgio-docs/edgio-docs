@@ -189,6 +189,12 @@ const frameworkItems = [
     framework: 'vuepress',
     icon: 'vue',
     text: 'VuePress',
+  },
+  {
+    guide: '/guides/react_static',
+    framework: 'react_static',
+    icon: 'react_static',
+    text: 'React Static',
   }
 ]
 

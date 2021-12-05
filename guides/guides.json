@@ -201,6 +201,12 @@
         "href": "/guides/[...guide]"
       },
       {
+        "text": "Gridsome",
+        "icon": "gridsome",
+        "as": "/guides/gridsome",
+        "href": "/guides/[...guide]"
+      },
+      {
         "text": "Hexo",
         "icon": "hexo",
         "as": "/guides/hexo",

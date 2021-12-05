@@ -89,6 +89,12 @@ const frameworkItems = [
     text: 'Angular',
   },
   {
+    guide: '/guides/ember',
+    framework: 'ember',
+    icon: 'ember',
+    text: 'Ember.js',
+  },
+  {
     guide: '/guides/astro',
     framework: 'astro',
     icon: 'astro',

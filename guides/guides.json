@@ -183,6 +183,12 @@
         "href": "/guides/[...guide]"
       },
       {
+        "text": "Ember.js",
+        "icon": "ember",
+        "as": "/guides/ember",
+        "href": "/guides/[...guide]"
+      },
+      {
         "text": "Ember Fastboot",
         "icon": "fastboot",
         "as": "/guides/ember_fastboot",

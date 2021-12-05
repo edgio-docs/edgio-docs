@@ -207,6 +207,12 @@
         "href": "/guides/[...guide]"
       },
       {
+        "text": "Hugo",
+        "icon": "hugo",
+        "as": "/guides/hugo",
+        "href": "/guides/[...guide]"
+      },
+      {
         "text": "Jekyll",
         "icon": "jekyll",
         "as": "/guides/jekyll",

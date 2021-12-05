@@ -16,6 +16,7 @@ import NXIcon from './nx.svg'
 import FrontityIcon from './frontity.svg'
 import HTMLIcon from './html.svg'
 import Fastboot from './fastboot.svg'
+import Preact from './preact.svg'
 import Razzle from './razzle.svg'
 import SvelteIcon from './svelte.svg'
 import SwellIcon from './swell.svg'
@@ -53,6 +54,7 @@ export const icons = {
   prev: ChevronLeft,
   razzle: Razzle,
   razzleP: RazzlePng,
+  preact: Preact,
   react: ReactIcon,
   remix: Remix,
   sapper: SapperIcon,

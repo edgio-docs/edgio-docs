@@ -89,6 +89,12 @@ const frameworkItems = [
     text: 'Angular',
   },
   {
+    guide: '/guides/preact',
+    framework: 'preact',
+    icon: 'preact',
+    text: 'Preact',
+  },
+  {
     guide: '/guides/astro',
     framework: 'astro',
     icon: 'astro',

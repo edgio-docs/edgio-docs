@@ -243,6 +243,12 @@
         "href": "/guides/[...guide]"
       },
       {
+        "text": "Preact",
+        "icon": "preact",
+        "as": "/guides/preact",
+        "href": "/guides/[...guide]"
+      },
+      {
         "text": "Razzle",
         "icon": "razzle",
         "as": "/guides/razzle",

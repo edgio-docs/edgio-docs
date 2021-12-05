@@ -89,6 +89,12 @@ const frameworkItems = [
     text: 'Angular',
   },
   {
+    guide: '/guides/ionic_react',
+    framework: 'ionic_react',
+    icon: 'ionic_react',
+    text: 'Ionic React',
+  },
+  {
     guide: '/guides/astro',
     framework: 'astro',
     icon: 'astro',

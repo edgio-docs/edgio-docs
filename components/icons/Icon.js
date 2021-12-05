@@ -23,6 +23,7 @@ import RazzlePng from './razzle.png'
 import MkDocsIcon from '@material-ui/icons/Book'
 import AstroIcon from './astro.svg'
 import JekyllIcon from './jekyll.svg'
+import IonicReact from './ionic-react.svg'
 import ServerlessIcon from './serverless-functions.svg'
 import Docusaurus from './docusaurus.svg'
 import Remix from './remix.svg'
@@ -43,6 +44,7 @@ export const icons = {
   gatsby: GatsbyIcon,
   hexo: Hexo,
   html: HTMLIcon,
+  ionic_react: IonicReact,
   jekyll: JekyllIcon,
   layer0: Layer0Icon,
   mkdocs: MkDocsIcon,

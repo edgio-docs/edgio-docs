@@ -89,6 +89,12 @@ const frameworkItems = [
     text: 'Angular',
   },
   {
+    guide: '/guides/gridsome',
+    framework: 'gridsome',
+    icon: 'gridsome',
+    text: 'Gridsome',
+  },
+  {
     guide: '/guides/ember',
     framework: 'ember',
     icon: 'ember',

@@ -23,6 +23,7 @@ import RazzlePng from './razzle.png'
 import MkDocsIcon from '@material-ui/icons/Book'
 import AstroIcon from './astro.svg'
 import JekyllIcon from './jekyll.svg'
+import Stencil from './stencil.svg'
 import ServerlessIcon from './serverless-functions.svg'
 import Docusaurus from './docusaurus.svg'
 import Remix from './remix.svg'
@@ -58,6 +59,7 @@ export const icons = {
   sapper: SapperIcon,
   serverless_functions: ServerlessIcon,
   shopify_hydrogen: ShopifyHydrogen,
+  stencil: Stencil,
   spartacus: SpartacusIcon,
   svelte: SvelteIcon,
   swell: SwellIcon,

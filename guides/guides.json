@@ -297,6 +297,12 @@
         "href": "/guides/[...guide]"
       },
       {
+        "text": "Stencil",
+        "icon": "stencil",
+        "as": "/guides/stencil",
+        "href": "/guides/[...guide]"
+      },
+      {
         "text": "Svelte",
         "icon": "svelte",
         "as": "/guides/svelte",

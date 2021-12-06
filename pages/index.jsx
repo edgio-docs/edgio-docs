@@ -89,6 +89,12 @@ const frameworkItems = [
     text: 'Angular',
   },
   {
+    guide: '/guides/ember',
+    framework: 'ember',
+    icon: 'ember',
+    text: 'Ember.js',
+  },
+  {
     guide: '/guides/astro',
     framework: 'astro',
     icon: 'astro',
@@ -185,10 +191,22 @@ const frameworkItems = [
     text: 'Hexo',
   },
   {
+    guide: '/guides/hugo',
+    framework: 'hugo',
+    icon: 'hugo',
+    text: 'Hugo',
+  },
+  {
     guide: '/guides/vuepress',
     framework: 'vuepress',
     icon: 'vue',
     text: 'VuePress',
+  },
+  {
+    guide: '/guides/react_static',
+    framework: 'react_static',
+    icon: 'react_static',
+    text: 'React Static',
   },
 ]
 

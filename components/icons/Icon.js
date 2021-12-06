@@ -15,6 +15,7 @@ import VSFIcon from './vsf.svg'
 import NXIcon from './nx.svg'
 import FrontityIcon from './frontity.svg'
 import HTMLIcon from './html.svg'
+import Hugo from './hugo.svg'
 import Fastboot from './fastboot.svg'
 import Razzle from './razzle.svg'
 import SvelteIcon from './svelte.svg'
@@ -28,7 +29,9 @@ import Docusaurus from './docusaurus.svg'
 import Remix from './remix.svg'
 import Hexo from './hexo.svg'
 import ShopifyHydrogen from './shopify-hydrogen.svg'
+import ReactStatic from './react-static.svg'
 import Layer0Icon from './layer0-logo.svg'
+import Ember from './ember.svg'
 
 import clsx from 'clsx'
 
@@ -38,10 +41,12 @@ export const icons = {
   angular: AngularIcon,
   astro: AstroIcon,
   docusaurus: Docusaurus,
+  ember: Ember,
   fastboot: Fastboot,
   frontity: FrontityIcon,
   gatsby: GatsbyIcon,
   hexo: Hexo,
+  hugo: Hugo,
   html: HTMLIcon,
   jekyll: JekyllIcon,
   layer0: Layer0Icon,
@@ -63,7 +68,8 @@ export const icons = {
   swell: SwellIcon,
   vsf: VSFIcon,
   vue: VueIcon,
-  vuepress: VueIcon
+  vuepress: VueIcon,
+  react_static: ReactStatic
 }
 
 export const styles = theme => ({

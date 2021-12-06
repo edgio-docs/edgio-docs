@@ -2,6 +2,14 @@
 
 This guide shows you how to deploy a Shopify Hydrogen application on {{ PRODUCT_NAME }}.
 
+## Example
+
+Here's an example Shopify Hydrogen app running on Layer0:
+
+[Try the Shopify Hydrogen Example Site](https://layer0-docs-layer0-shopify-hydrogen-example-default.layer0-limelight.link?button)
+[View the Code](https://github.com/layer0-docs/layer0-shopify-hydrogen-example?button)
+[Deploy to Layer0](https://app.layer0.co/deploy?button&deploy&repo=https://github.com/layer0-docs/layer0-shopify-hydrogen-example)
+
 {{ SYSTEM_REQUIREMENTS }}
 
 {{ SIGN_UP_LAYER0 }}

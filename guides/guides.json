@@ -183,6 +183,12 @@
         "href": "/guides/[...guide]"
       },
       {
+        "text": "Ember.js",
+        "icon": "ember",
+        "as": "/guides/ember",
+        "href": "/guides/[...guide]"
+      },
+      {
         "text": "Ember Fastboot",
         "icon": "fastboot",
         "as": "/guides/ember_fastboot",
@@ -204,6 +210,12 @@
         "text": "Hexo",
         "icon": "hexo",
         "as": "/guides/hexo",
+        "href": "/guides/[...guide]"
+      },
+      {
+        "text": "Hugo",
+        "icon": "hugo",
+        "as": "/guides/hugo",
         "href": "/guides/[...guide]"
       },
       {
@@ -252,6 +264,12 @@
         "text": "React",
         "icon": "react",
         "as": "/guides/react",
+        "href": "/guides/[...guide]"
+      },
+      {
+        "text": "React Static",
+        "icon": "react_static",
+        "as": "/guides/react_static",
         "href": "/guides/[...guide]"
       },
       {

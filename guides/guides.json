@@ -219,6 +219,12 @@
         "href": "/guides/[...guide]"
       },
       {
+        "text": "Ionic React",
+        "icon": "ionic_react",
+        "as": "/guides/ionic_react",
+        "href": "/guides/[...guide]"
+      },
+      {
         "text": "Jekyll",
         "icon": "jekyll",
         "as": "/guides/jekyll",

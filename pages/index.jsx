@@ -189,6 +189,12 @@ const frameworkItems = [
     framework: 'vuepress',
     icon: 'vue',
     text: 'VuePress',
+  },
+  {
+    guide: '/guides/saber',
+    framework: 'saber',
+    icon: 'saber',
+    text: 'Saber',
   }
 ]
 

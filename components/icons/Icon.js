@@ -27,6 +27,7 @@ import ServerlessIcon from './serverless-functions.svg'
 import Docusaurus from './docusaurus.svg'
 import Remix from './remix.svg'
 import Hexo from './hexo.svg'
+import Saber from './saber.svg'
 import ShopifyHydrogen from './shopify-hydrogen.svg'
 import Layer0Icon from './layer0-logo.svg'
 
@@ -56,6 +57,7 @@ export const icons = {
   react: ReactIcon,
   remix: Remix,
   sapper: SapperIcon,
+  saber: Saber,
   serverless_functions: ServerlessIcon,
   shopify_hydrogen: ShopifyHydrogen,
   spartacus: SpartacusIcon,

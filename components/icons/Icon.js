@@ -6,6 +6,7 @@ import VueIcon from './vue.svg'
 import AngularIcon from './angular.svg'
 import SpartacusIcon from './spartacus.svg'
 import NextIcon from './next.svg'
+import Stencil from './stencil.svg'
 import NextCommerceIcon from './next-commerce.svg'
 import NuxtIcon from './nuxt.svg'
 import ReactStorefrontIcon from './react-storefront.svg'
@@ -33,6 +34,7 @@ import ReactStatic from './react-static.svg'
 import Layer0Icon from './layer0-logo.svg'
 import Ember from './ember.svg'
 import Saber from './saber.svg'
+import Preact from './preact.svg'
 
 import clsx from 'clsx'
 
@@ -62,6 +64,7 @@ export const icons = {
   react: ReactIcon,
   remix: Remix,
   sapper: SapperIcon,
+  stencil: Stencil,
   serverless_functions: ServerlessIcon,
   shopify_hydrogen: ShopifyHydrogen,
   spartacus: SpartacusIcon,
@@ -71,7 +74,8 @@ export const icons = {
   vue: VueIcon,
   vuepress: VueIcon,
   react_static: ReactStatic,
-  saber: Saber
+  saber: Saber,
+  preact: Preact
 }
 
 export const styles = theme => ({

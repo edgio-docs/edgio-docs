@@ -6,7 +6,7 @@ This guide shows you how to deploy a Next.js application on {{ PRODUCT_NAME }}.
 
 This Next.js example app uses server-side rendering and prefetching to provide lightning-fast transitions between pages.
 
-[Try the Next.js SSR Example Site](https://layer0-docs-layer0-next-example-default.layer0.link/category/hats?button)
+[Try the Next.js SSR Example Site](https://layer0-docs-layer0-nextjs-example-default.layer0-limelight.link?button)
 [View the Code](https://github.com/layer0-docs/layer0-nextjs-example?button)
 [Deploy to Layer0](https://app.layer0.co/deploy?button&deploy&repo=https%253A%252F%252Fgithub.com%252Flayer0-docs%252Flayer0-nextjs-example)
 
@@ -32,6 +32,7 @@ This framework has a connector developed for {{ PRODUCT_NAME }}. See [Connectors
 - `getInitialProps`
 
 {{ SYSTEM_REQUIREMENTS }}
+
 ## Getting Started
 
 ### Create a Next.js Application

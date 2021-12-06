@@ -191,6 +191,12 @@ const frameworkItems = [
     text: 'Hexo',
   },
   {
+    guide: '/guides/hugo',
+    framework: 'hugo',
+    icon: 'hugo',
+    text: 'Hugo',
+  },
+  {
     guide: '/guides/vuepress',
     framework: 'vuepress',
     icon: 'vue',

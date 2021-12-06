@@ -15,6 +15,7 @@ import VSFIcon from './vsf.svg'
 import NXIcon from './nx.svg'
 import FrontityIcon from './frontity.svg'
 import HTMLIcon from './html.svg'
+import Hugo from './hugo.svg'
 import Fastboot from './fastboot.svg'
 import Razzle from './razzle.svg'
 import SvelteIcon from './svelte.svg'
@@ -45,6 +46,7 @@ export const icons = {
   frontity: FrontityIcon,
   gatsby: GatsbyIcon,
   hexo: Hexo,
+  hugo: Hugo,
   html: HTMLIcon,
   jekyll: JekyllIcon,
   layer0: Layer0Icon,

@@ -167,6 +167,12 @@ const frameworkItems = [
     text: 'Static HTML/JavaScript',
   },
   {
+    "text": "Stencil",
+    "icon": "stencil",
+    "as": "/guides/stencil",
+    "href": "/guides/[...guide]"
+  },
+  {
     guide: '/guides/mkdocs',
     framework: 'mkdocs',
     icon: 'mkdocs',

@@ -226,6 +226,12 @@ const frameworkItems = [
     icon: 'react_static',
     text: 'React Static',
   },
+  {
+    guide: '/guides/saber',
+    framework: 'saber',
+    icon: 'saber',
+    text: 'Saber',
+  }
 ]
 
 const Home = ({ navData }) => {

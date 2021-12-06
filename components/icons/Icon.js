@@ -6,6 +6,7 @@ import VueIcon from './vue.svg'
 import AngularIcon from './angular.svg'
 import SpartacusIcon from './spartacus.svg'
 import NextIcon from './next.svg'
+import Stencil from './stencil.svg'
 import NextCommerceIcon from './next-commerce.svg'
 import NuxtIcon from './nuxt.svg'
 import ReactStorefrontIcon from './react-storefront.svg'
@@ -61,6 +62,7 @@ export const icons = {
   react: ReactIcon,
   remix: Remix,
   sapper: SapperIcon,
+  stencil: Stencil,
   serverless_functions: ServerlessIcon,
   shopify_hydrogen: ShopifyHydrogen,
   spartacus: SpartacusIcon,

@@ -207,6 +207,12 @@ const frameworkItems = [
     framework: 'react_static',
     icon: 'react_static',
     text: 'React Static',
+  },
+  {
+    guide: '/guides/saber',
+    framework: 'saber',
+    icon: 'saber',
+    text: 'Saber',
   }
 ]
 

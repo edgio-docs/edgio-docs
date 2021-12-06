@@ -291,6 +291,12 @@
         "href": "/guides/[...guide]"
       },
       {
+        "text": "Saber",
+        "icon": "saber",
+        "as": "/guides/saber",
+        "href": "/guides/[...guide]"
+      },
+      {
         "text": "Sapper",
         "icon": "sapper",
         "as": "/guides/sapper",

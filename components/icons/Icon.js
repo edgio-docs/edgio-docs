@@ -33,6 +33,7 @@ import ShopifyHydrogen from './shopify-hydrogen.svg'
 import ReactStatic from './react-static.svg'
 import Layer0Icon from './layer0-logo.svg'
 import Ember from './ember.svg'
+import Saber from './saber.svg'
 import Preact from './preact.svg'
 
 import clsx from 'clsx'
@@ -73,6 +74,7 @@ export const icons = {
   vue: VueIcon,
   vuepress: VueIcon,
   react_static: ReactStatic,
+  saber: Saber,
   preact: Preact
 }
 

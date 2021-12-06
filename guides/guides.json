@@ -479,5 +479,15 @@
         "external": true
       }
     ]
+  },
+  {
+    "text": "Learning Resources",
+    "items": [
+      {
+        "text": "What is GraphQL",
+        "as": "/guides/what_is_graphql",
+        "href": "/guides/[...guide]"
+      }
+    ]
   }
 ]

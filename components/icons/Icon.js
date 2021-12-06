@@ -30,6 +30,7 @@ import Hexo from './hexo.svg'
 import ShopifyHydrogen from './shopify-hydrogen.svg'
 import ReactStatic from './react-static.svg'
 import Layer0Icon from './layer0-logo.svg'
+import Ember from './ember.svg'
 
 import clsx from 'clsx'
 
@@ -39,6 +40,7 @@ export const icons = {
   angular: AngularIcon,
   astro: AstroIcon,
   docusaurus: Docusaurus,
+  ember: Ember,
   fastboot: Fastboot,
   frontity: FrontityIcon,
   gatsby: GatsbyIcon,

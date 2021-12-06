@@ -51,7 +51,6 @@ const frameworkItems = [
     icon: 'serverless_functions',
     text: 'Serverless functions',
   },
-
   {
     guide: '/guides/remix',
     framework: 'remix',
@@ -87,6 +86,12 @@ const frameworkItems = [
     framework: 'angular',
     icon: 'angular',
     text: 'Angular',
+  },
+  {
+    guide: '/guides/gridsome',
+    framework: 'gridsome',
+    icon: 'gridsome',
+    text: 'Gridsome',
   },
   {
     guide: '/guides/preact',

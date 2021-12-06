@@ -95,6 +95,12 @@ const frameworkItems = [
     text: 'Ember.js',
   },
   {
+    guide: '/guides/stencil',
+    framework: 'stencil',
+    icon: 'stencil',
+    text: 'Stencil',
+  },
+  {
     guide: '/guides/astro',
     framework: 'astro',
     icon: 'astro',

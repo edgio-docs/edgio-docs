@@ -51,7 +51,6 @@ const frameworkItems = [
     icon: 'serverless_functions',
     text: 'Serverless functions',
   },
-
   {
     guide: '/guides/remix',
     framework: 'remix',
@@ -93,6 +92,12 @@ const frameworkItems = [
     framework: 'gridsome',
     icon: 'gridsome',
     text: 'Gridsome',
+  },
+  {
+    guide: '/guides/preact',
+    framework: 'preact',
+    icon: 'preact',
+    text: 'Preact',
   },
   {
     guide: '/guides/ember',
@@ -173,6 +178,12 @@ const frameworkItems = [
     text: 'Static HTML/JavaScript',
   },
   {
+    "text": "Stencil",
+    "icon": "stencil",
+    "as": "/guides/stencil",
+    "href": "/guides/[...guide]"
+  },
+  {
     guide: '/guides/mkdocs',
     framework: 'mkdocs',
     icon: 'mkdocs',
@@ -213,6 +224,12 @@ const frameworkItems = [
     framework: 'react_static',
     icon: 'react_static',
     text: 'React Static',
+  },
+  {
+    guide: '/guides/saber',
+    framework: 'saber',
+    icon: 'saber',
+    text: 'Saber',
   }
 ]
 
@@ -319,10 +336,7 @@ const Home = ({ navData }) => {
                       className={classes.icon}
                       style={{ height: 50, width: 50, padding: 0, flex: 'unset' }}
                     />
-                    <Typography
-                      className={classes.frameworkText}
-                      style={{ marginLeft: theme.spacing(2), marginRight: 'auto' }}
-                    >
+                    <Typography style={{ marginLeft: theme.spacing(2), marginRight: 'auto' }}>
                       {text}
                     </Typography>
                   </div>
@@ -492,7 +506,7 @@ const useStyles = makeStyles(theme => ({
     display: 'flex',
     alignItems: 'center',
     border: `1px solid ${theme.palette.divider}`,
-    flexWrap: 'wrap',
+    flexWrap: 'nowrap',
     paddingTop: theme.spacing(1),
     paddingBottom: theme.spacing(1),
     paddingLeft: theme.spacing(2),
@@ -533,7 +547,7 @@ const useStyles = makeStyles(theme => ({
   frameworkText: {
     display: 'flex',
     justifyContent: 'center',
-    textAlign: 'center',
+    textAlign: 'left',
   },
 
   icon: {

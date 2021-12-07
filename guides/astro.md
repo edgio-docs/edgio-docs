@@ -6,7 +6,7 @@
 
 For a preconfigured example site based on the Astro documentation template running on Layer0:
 
-[Try the Astro Example Site](https://layer0-docs-layer0-astro-example-default.layer0.link/?button)
+[Try the Astro Example Site](https://layer0-docs-layer0-astro-example-default.layer0-limelight.link/?button)
 [View the Code](https://github.com/layer0-docs/layer0-astro-example?button)
 [Deploy to Layer0](https://app.layer0.co/deploy?button&deploy&repo=https%253A%252F%252Fgithub.com%252Flayer0-docs%252Flayer0-astro-example)
 

@@ -4,10 +4,6 @@
 
 {{ PRODUCT_NAME }} provides full support for caching GraphQL APIs. Putting Layer0 in front of you GraphQL API can significantly improve its performance while reducing the amount of traffic that reaches your origin by serving cached queries from the network edge.
 
-## Audience
-
-We understand that not all our customers know GraphQL; this topic explains the basics of GraphQL and is designed to get you up and running quickly.
-
 ## GraphQL History
 
 GraphQL was built in 2012 to support Facebook mobile apps. Facebook open sourced the project in 2015, and in 2018, it was moved to the GraphQL Foundation.

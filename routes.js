@@ -31,7 +31,7 @@ const apiCacheConfig = {
 const staticCacheConfig = {
   key,
   browser: {
-    maxAgeSeconds: 60 * 60,
+    maxAgeSeconds: 0,
     serviceWorkerSeconds: 60 * 60,
   },
   edge: {

@@ -158,6 +158,9 @@ export default function Header() {
               </Button>
             </Hidden>
             <Hidden smDown implementation="css">
+              <Button href={FIDDLE_URL} target="_blank" className={classes.button}>
+                FIDDLE
+              </Button>
               <Button href={FORUM_URL} target="_blank" className={classes.button}>
                 FORUMS
               </Button>

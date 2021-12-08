@@ -17,6 +17,7 @@ const EXAMPLES_REPO = 'layer0-docs/layer0-examples'
 const WWW_URL = `https://www.${DOMAIN}`
 const APP_URL = `https://${APP_DOMAIN}`
 const FORUM_URL = `https://forum.${DOMAIN}`
+const FIDDLE_URL = `https://fiddle.${DOMAIN}`
 const STATUS_URL = `https://status.${DOMAIN}`
 const HELP_URL = `https://help.${DOMAIN}`
 const DOCS_URL = `https://${DOCS_DOMAIN}`
@@ -88,4 +89,5 @@ module.exports = {
   SYSTEM_REQUIREMENTS,
   SYSTEM_REQUIREMENTS_H3,
   SIGN_UP_LAYER0,
+  FIDDLE_URL,
 }

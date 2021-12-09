@@ -242,6 +242,12 @@ const frameworkItems = [
     framework: 'saber',
     icon: 'saber',
     text: 'Saber',
+  },
+  {
+    guide: '/guides/eleventy',
+    framework: 'eleventy',
+    icon: 'eleventy',
+    text: 'Eleventy',
   }
 ]
 

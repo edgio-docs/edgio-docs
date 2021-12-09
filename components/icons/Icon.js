@@ -37,6 +37,7 @@ import IonicReact from './ionic_react.svg'
 import Gridsome from './gridsome.svg'
 import Saber from './saber.svg'
 import Preact from './preact.svg'
+import Eleventy from './eleventy.svg'
 
 import clsx from 'clsx'
 
@@ -80,7 +81,8 @@ export const icons = {
   ionic_vue: IonicReact,
   gridsome: Gridsome,
   saber: Saber,
-  preact: Preact
+  preact: Preact,
+  eleventy: Eleventy
 }
 
 export const styles = theme => ({

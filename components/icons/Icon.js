@@ -77,6 +77,7 @@ export const icons = {
   vuepress: VueIcon,
   react_static: ReactStatic,
   ionic_react: IonicReact,
+  ionic_vue: IonicReact,
   gridsome: Gridsome,
   saber: Saber,
   preact: Preact

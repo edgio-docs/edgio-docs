@@ -231,6 +231,12 @@
         "href": "/guides/[...guide]"
       },
       {
+        "text": "Ionic Vue",
+        "icon": "ionic_vue",
+        "as": "/guides/ionic_vue",
+        "href": "/guides/[...guide]"
+      },
+      {
         "text": "Jekyll",
         "icon": "jekyll",
         "as": "/guides/jekyll",

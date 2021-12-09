@@ -94,6 +94,12 @@ const frameworkItems = [
     text: 'Ionic React',
   },
   {
+    guide: '/guides/ionic_vue',
+    framework: 'ionic_vue',
+    icon: 'ionic_vue',
+    text: 'Ionic Vue',
+  },
+  {
     guide: '/guides/gridsome',
     framework: 'gridsome',
     icon: 'gridsome',

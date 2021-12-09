@@ -183,6 +183,12 @@
         "href": "/guides/[...guide]"
       },
       {
+        "text": "Eleventy",
+        "icon": "eleventy",
+        "as": "/guides/eleventy",
+        "href": "/guides/[...guide]"
+      },
+      {
         "text": "Ember.js",
         "icon": "ember",
         "as": "/guides/ember",

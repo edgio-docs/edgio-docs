@@ -452,6 +452,11 @@
         "href": "/guides/[...guide]"
       },
       {
+        "text": "v4 Migration Guide",
+        "as": "/guides/layer0_migration_v4",
+        "href": "/guides/[...guide]"
+      },
+      {
         "text": "layer0.config.js",
         "as": "/guides/layer0_config",
         "href": "/guides/[...guide]"

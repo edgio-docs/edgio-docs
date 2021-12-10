@@ -1,6 +1,6 @@
 # Layer0 Version 2.x.x to 3.x.x Migration Guide
 
-This guide describes what you need to know when migrating from version 2.x.x to version 3.x.x. Note that you can continue to use version 2.x.x but we highly recommend upgrading to version 3.x.x. The biggest key change is that in keeping with industry best practices, v3 of the platform now requires Node 14 whereas v2 was on Node 12. 
+This guide describes what you need to know when migrating from version 2.x.x to version 3.x.x. Note that you can continue to use version 2.x.x but we highly recommend upgrading to version 3.x.x. The biggest key change is that in keeping with industry best practices, v3 of the platform now requires Node 14 whereas v2 was on Node 12.
 
 ### Node Version
 
@@ -30,13 +30,13 @@ Build your project and verify everything is functioning as expected. You should 
 
 ## Edge and Permalinks will change automatically
 
-Once you deploy the new version of Layer0, you Edge links will change to have the format `*.layer0.link`. Your current edge links will switch to the new format on the next deployment for that environment. Old edge links will continue to work even after the first deployment.
+Once you deploy the new version of Layer0, your Edge links will change to have the format `*.layer0.link`. Your current edge links will switch to the new format on the next deployment for that environment. Old edge links will continue to work even after the first deployment.
 
 Permalinks will become `*.free.layer0-perma.link`. These links will all automatically switch to the new links in the Developer Console and, unlike edge links, will be available without needing a deployment of your site. However, we will continue to support old and new permalinks.
 
 During this transition, your live site is unaffected and custom domains URLs are not affected.
 
-## What else will changed?
+## What else will change?
 
 ### Access Logs
 
@@ -57,6 +57,7 @@ If you are using the REST API, it is recommended to update to the new endpoint, 
 #### Cache Manifest
 
 The file `/__xdn__/cache-manifest.js` has changed to `/__layer0__/cache-manifest.js`. A quick way of implementing this change is to add redirect in your existing routes config:
+
 ```js
 router.match('/__xdn__/cache-manifest.js', ({ redirect }) => {
   redirect('/__layer0__/cache-manifest.js')

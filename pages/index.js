@@ -119,7 +119,7 @@ const Home = ({ navData }) => {
                 </Box>
                 <CardContent className={classes.cardContent}>
                   <Typography>
-                    Scale and secure your GraphQL API using the Layer0 global CDN.
+                    Scale and secure your GraphQL API using the Layer0 global CDN and Edge JS.
                   </Typography>
                 </CardContent>
               </Paper>

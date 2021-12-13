@@ -429,4 +429,10 @@ const frameworkItems = [
     icon: 'eleventy',
     text: 'Eleventy',
   },
+  {
+    guide: '/guides/brunch',
+    framework: 'brunch',
+    icon: 'brunch',
+    text: 'Brunch',
+  },
 ]

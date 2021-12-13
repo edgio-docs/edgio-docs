@@ -29,6 +29,7 @@ import ServerlessIcon from './serverless-functions.svg'
 import Docusaurus from './docusaurus.svg'
 import Remix from './remix.svg'
 import Hexo from './hexo.svg'
+import Brunch from './brunch.svg'
 import ShopifyHydrogen from './shopify-hydrogen.svg'
 import ReactStatic from './react-static.svg'
 import Layer0Icon from './layer0-logo.svg'
@@ -82,7 +83,8 @@ export const icons = {
   gridsome: Gridsome,
   saber: Saber,
   preact: Preact,
-  eleventy: Eleventy
+  eleventy: Eleventy,
+  brunch: Brunch
 }
 
 export const styles = theme => ({

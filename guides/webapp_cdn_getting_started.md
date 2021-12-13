@@ -1,8 +1,8 @@
-# Website CDN
+# WebApp CDN
 
 _Approximate time to completion: 7 mins_
 
-Deploying your site on Layer0 is the fastest and easiest way to start seeing the performance benefits made possible by the Layer0 edge network. In this guide we'll show you how to:
+Deploying your web appplication behind Layer0 is the fastest and easiest way to start seeing the performance benefits made possible by the Layer0 edge network. In this guide we'll show you how to:
 
 - Create a new Layer0 project
 - Configure edge caching using EdgeJS

@@ -33,10 +33,3 @@ The following table list the user agents that  {{ PRODUCT_NAME }}  examines and 
 |whatsapp|Whatsapp platform chat bot.|
 |xing-contenttabreceiver|Xing social network crawler bot that indexes content for the Xing social network.|
 |yahoo|Another Yahoo Search robot for crawling and indexing web page information.|
-
-## Additional Resources
-
-* For information about request headers, see [Request Headers](/guides/request_headers.md).
-* For information about blocking search engine crawlers,  see [Blocking Search Engine Crawlers](./cookbook.md).
-* For information about bot references in logs, see  [Logs](./logs.md).
-

@@ -1,8 +1,12 @@
-# Enable CDN Edge Network on an existing site
+# Website CDN
 
 _Approximate time to completion: 7 mins_
 
-Enabling Layer0 on an existing site is the fastest and easiest way to start seeing performance benefits made possible by the Layer0 Edge Network. In the guide below, we will generate a node project, configure it to cache some static assets, deploy it, and visit the live site. By enabling the Edge Network, we will get both edge caching and predictive prefetching.
+Deploying your site on Layer0 is the fastest and easiest way to start seeing the performance benefits made possible by the Layer0 edge network. In this guide we'll show you how to:
+
+- Create a new Layer0 project
+- Configure edge caching using EdgeJS
+- Deploy your site so that you can start seeing the performance benefits made possible by Layer0's global edge network.
 
 If any point, you want a more [detailed guide](/guides/traditional_sites), we've got that too.
 
@@ -22,28 +26,17 @@ If you do not have an account yet, visit [{{ PRODUCT_NAME }}]({{ APP_URL }}/sign
 
 {{ SYSTEM_REQUIREMENTS }}
 
-## Setup a project
-
-Install the [{{ PRODUCT_NAME }} CLI](cli)
+## Create a new Layer0 project
 
 ```bash
 npm i -g {{ PACKAGE_NAME }}/cli
 ```
 
-Create your project using {{ PRODUCT_NAME }}'s create module:
+Create your project by running:
 
 ```bash
-npm create {{ STARTER_NAME }}@latest
+npx @layer0/cli@latest init
 ```
-
-The {{ PRODUCT_NAME }} create module will prompt you for the following information:
-
-- `Name`: Give your project name.
-- `Template`: Select the `Default template` option.
-- `Hostname`: Enter the domain of the origin server that {{ PRODUCT_NAME }} will be accelerating.
-- `Package manager`: Pick `npm` unless you have strong preference and experience with `yarn`. This guide will assume `npm`.
-
-Refer to the [{{ CONFIG_FILE }}](layer0_config) guide for more details
 
 ### Project Structure
 

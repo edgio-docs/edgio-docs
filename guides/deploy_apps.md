@@ -1,6 +1,6 @@
 # Deploying
 
-This guide walks you through deploying you app to {{ PRODUCT_NAME }}.
+This guide walks you through deploying your app to {{ PRODUCT_NAME }}.
 
 ## From the CLI
 

@@ -405,6 +405,11 @@
         "text": "Cookies",
         "as": "/guides/cookies",
         "href": "/guides/[...guide]"
+      },      
+      {
+        "text": "Bots",
+        "as": "/guides/bots",
+        "href": "/guides/[...guide]"
       },
       {
         "text": "Layer0 for Traditional Sites",

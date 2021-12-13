@@ -1,23 +1,16 @@
 # Bots
 
-This guide describes provides high-level information about bots in general and describes the bots that  {{ PRODUCT_NAME }}  detects. 
+This guide describes provides general bot information and describes the bots that  {{ PRODUCT_NAME }}  detects. 
 
 ## General Information
 
-  {{ PRODUCT_NAME }}  examines the User-Agent header in an incoming request to determine if it is a bot, and if so, injects the user agent in the `x-0-device-is-bot` request header that will be visible to your server code. 
+  {{ PRODUCT_NAME }}  examines the User-Agent header in an incoming request to determine if it includes a string that indicates if it is a bot, and if so, injects the user agent in the `x-0-device-is-bot` request header, which will be visible to your server code. 
 
-As a rule, bots fall into any of four categories:
+## User Agents and Bots
 
-* Search engine
-* Commercial crawlers
-* Feed fetchers
-* Monitoring
+The following table list the user agents that  {{ PRODUCT_NAME }}  examines and describes the corresponding bots.
 
-## Bots Detected
-
-The following table describes the bots that   {{ PRODUCT_NAME }}  detects.
-
-|User Agent|Description|
+|User Agent|Bot Description|
 |----------|-----------|
 |embedly|Embed.ly web crawler bot that performs HTTP requests most often in automatic mode.|
 |facebookexternalhit|Facebook bot that crawls the HTML of social plugins, apps, and websites shared on Facebook. The bot gathers and caches data (title, description, thumbnail image) about the shared content and presents the data as a preview.|

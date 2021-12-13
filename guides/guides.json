@@ -177,6 +177,12 @@
         "href": "/guides/[...guide]"
       },
       {
+        "text": "Brunch",
+        "icon": "brunch",
+        "as": "/guides/brunch",
+        "href": "/guides/[...guide]"
+      },
+      {
         "text": "Docusaurus",
         "icon": "docusaurus",
         "as": "/guides/docusaurus",

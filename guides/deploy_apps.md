@@ -1,36 +1,10 @@
-# Deploying apps
+# Deploying
 
-This guide walks you through deploying your first site to {{ PRODUCT_NAME }}.
+This guide walks you through deploying your app to {{ PRODUCT_NAME }}.
 
-## Create your Account
+## From the CLI
 
-To deploy your site to {{ PRODUCT_NAME }}, you must first sign up for an account. [Sign up here for free.]({{ APP_URL }}/signup)
-
-## Install the {{ PRODUCT_NAME }} CLI
-
-Next, globally install the {{ PRODUCT_NAME }} cli using npm:
-
-```bash
-npm i -g {{ PACKAGE_NAME }}/cli
-```
-
-Or using yarn:
-
-```bash
-yarn global add {{ PACKAGE_NAME }}/cli
-```
-
-### {{ CLI_NAME }} login
-
-Run the following to authenticate with your {{ PRODUCT_NAME }} account on {{ PRODUCT_NAME }}:
-
-```bash
-{{ CLI_NAME }} login
-```
-
-### {{ CLI_NAME }} deploy
-
-Then, run the following to deploy your site to your private space on {{ PRODUCT_NAME }}:
+Once you've created your {{ PRODUCT_NAME }} project, run the following to deploy your site to your private space on {{ PRODUCT_NAME }} using the CLI:
 
 ```bash
 {{ CLI_NAME }} deploy

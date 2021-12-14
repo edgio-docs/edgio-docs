@@ -4,7 +4,7 @@ This guide describes provides general bot information and describes the bots tha
 
 ## General Information
 
-  {{ PRODUCT_NAME }}  examines the User-Agent header in an incoming request to determine if it includes a string that indicates if it is a bot, and if so, injects the user agent in the `x-0-device-is-bot` request header, which will be visible to your server code. 
+  {{ PRODUCT_NAME }}  examines the `user-agent` header in an incoming request to determine if it includes a string that indicates if it is a bot, and if so, injects `1` in the `x-0-device-is-bot` request header, which will be visible to your server code. If the `user-agent` header does not include any of the strings indicating a bot, a `0` value is injected.
 
 ## User Agents and Bots
 
@@ -33,3 +33,19 @@ The following table list the user agents that  {{ PRODUCT_NAME }}  examines and 
 |whatsapp|Whatsapp platform chat bot.|
 |xing-contenttabreceiver|Xing social network crawler bot that indexes content for the Xing social network.|
 |yahoo|Another Yahoo Search robot for crawling and indexing web page information.|
+
+If the included list is not accurate enough for you, you can easily add your own bot detection through [EdgeJS](... unsure what would be the link here... maybe https://docs.layer0.co/guides/routing ...) and its [`match`](/docs/api/core/classes/_router_router_.router.html#match) and [`setRequestHeader`](/docs/api/core/classes/_router_responsewriter_.responsewriter.html#setrequestheader) APIs:
+
+<start code block>
+router.match(
+  {
+    headers: {
+      'user-agent': /^regex-for-your-bot-detection$/i
+    },
+  },
+  ({ setRequestHeader }) => {
+    setRequestHeader('my-bot-detection-is-bot', '1')
+  }
+)
+<end code block>
+

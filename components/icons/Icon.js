@@ -39,6 +39,7 @@ import Gridsome from './gridsome.svg'
 import Saber from './saber.svg'
 import Preact from './preact.svg'
 import Eleventy from './eleventy.svg'
+import Zola from './zola.svg'
 
 import clsx from 'clsx'
 
@@ -84,7 +85,8 @@ export const icons = {
   saber: Saber,
   preact: Preact,
   eleventy: Eleventy,
-  brunch: Brunch
+  brunch: Brunch,
+  zola: Zola
 }
 
 export const styles = theme => ({

@@ -79,7 +79,7 @@ For reference, by the **end** of this overview, our `myblog` directory will have
 └── themes/
 ```
 
-### Step 5: Start the Zola server
+### Step 3: Start the Zola server
 
 Let's start the Zola development server with:
 

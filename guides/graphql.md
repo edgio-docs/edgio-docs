@@ -2,6 +2,8 @@
 
 {{ PRODUCT_NAME }} provides full support for caching GraphQL APIs. Putting Layer0 in front of you GraphQL API can significantly improve its performance while reducing the amount of traffic that reaches your origin by serving cached queries from the network edge.
 
+![video](https://youtu.be/GuezGiCj8ec)
+
 ## Example
 
 [GraphQL over Proxy](https://layer0-docs-graphql-caching-example-default.layer0-limelight.link?button)

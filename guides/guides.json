@@ -395,6 +395,12 @@
         "icon": "vue",
         "as": "/guides/vuepress",
         "href": "/guides/[...guide]"
+      },
+      {
+        "text": "Zola",
+        "icon": "zola",
+        "as": "/guides/zola",
+        "href": "/guides/[...guide]"
       }
     ]
   },

@@ -435,4 +435,10 @@ const frameworkItems = [
     icon: 'brunch',
     text: 'Brunch',
   },
+  {
+    guide: '/guides/zola',
+    framework: 'zola',
+    icon: 'zola',
+    text: 'Zola',
+  }
 ]

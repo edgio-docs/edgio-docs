@@ -3,18 +3,22 @@
     "text": "Get Started",
     "items": [
       {
-        "text": "Enable CDN",
-        "as": "/guides/enable_cdn",
+        "text": "WebApp CDN",
+        "as": "/guides/webapp_cdn_getting_started",
         "href": "/guides/[...guide]"
       },
       {
-        "text": "Build Web Apps",
-        "as": "/guides/build_web_apps",
+        "text": "Jamstack",
+        "as": "/guides/jamstack_getting_started",
         "href": "/guides/[...guide]"
       },
-
       {
-        "text": "Deploy Apps",
+        "text": "GraphQL CDN",
+        "as": "/guides/graphql",
+        "href": "/guides/[...guide]"
+      },
+      {
+        "text": "Deploying",
         "as": "/guides/deploy_apps",
         "href": "/guides/[...guide]"
       },
@@ -174,6 +178,12 @@
         "text": "Astro",
         "icon": "astro",
         "as": "/guides/astro",
+        "href": "/guides/[...guide]"
+      },
+      {
+        "text": "Brunch",
+        "icon": "brunch",
+        "as": "/guides/brunch",
         "href": "/guides/[...guide]"
       },
       {

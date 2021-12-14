@@ -11,7 +11,7 @@ You can perform two kinds of split tests with {{ PRODUCT_NAME }}:
 
 ## A/B testing multiple implementations of the same site
 
-To A/B test mutliple implementations of the same site, simply deploy each implementation to a separate [environment](environments), then [configure the rules for splitting traffic between using the {{ PRODUCT_NAME }} Developer Console](#section_configuring_the_split_test).
+To A/B test mutliple implementations of the same site, simply deploy each implementation to a separate [environment](environments), then [configure the rules for splitting traffic using the {{ PRODUCT_NAME }} Developer Console](#section_configuring_the_split_test).
 
 To use CI to deploy A/B tests we recommend that you:
 
@@ -100,7 +100,7 @@ If {{ PRODUCT_NAME }} is behind a third-party CDN, it is critical that you updat
 
 When a split test is active, all users are assigned to a random number between 1 and 100 via a cookie called `{{ COOKIE_PREFIX }}_bucket`. This cookie assignment is done at the edge before the user's first request hits the cache, so there is no performance penalty for new users.
 
-The experience the user sees is determined by the traffic split percentage you set in the environment configuration in the {{ PRODUCT_NAME }} Developer Console and on which side of the split the user's `{{ COOKIE_PREFIX }}_bucket` value falls. 
+The experience the user sees is determined by the traffic split percentage you set in the environment configuration in the {{ PRODUCT_NAME }} Developer Console and on which side of the split the user's `{{ COOKIE_PREFIX }}_bucket` value falls.
 
 ## Identifying the experience on the client
 

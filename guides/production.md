@@ -21,7 +21,7 @@ To configure your custom domains:
 
 If you're migrating to {{ PRODUCT_NAME }} from [Fastly](https://www.fastly.com/), you will need to do the following before adding your domains to your {{ PRODUCT_NAME }} environment:
 
-- [Contact Fastly support](https://support.fastly.com/hc/en-us/requests/new?ticket_form_id=360000269711) and request that control of your domains be transferred to {{ PRODUCT_NAME }}. Be sure to explicitly list each domain that needs to be transferred and ask Fastly to contact support(at){{ DOMAIN }} if they need {{ PRODUCT_NAME }} to confirm the transfer.
+- [Contact Fastly support](https://support.fastly.com/hc/en-us/requests/new?ticket_form_id=360000269711) and request that control of your domains be transferred to {{ PRODUCT_NAME }}. Be sure to explicitly list each domain that needs to transferred and ask Fastly to contact support(at){{ DOMAIN }} if they need {{ PRODUCT_NAME }} to confirm the transfer.
 - Before going live with {{ PRODUCT_NAME }}, you will need to ensure that you've removed your domains from all active Fastly services. To remove domains from a service, clone the service, remove the domains, then activate the new version of the service. Once the new service version is activated you can add the domains to your {{ PRODUCT_NAME }} environment and activate it.
 
 ## Network configuration
@@ -89,7 +89,7 @@ mywebsite.xyz.        599    IN    A        151.101.193.79
 
 ### Whitelisting {{ PRODUCT_NAME }} IP Addresses
 
-Before going live, ensure that all {{ PRODUCT_NAME }} IP addresses are whitelisted in the security layer in front of your origin and/or API servers. The IP addresses you need to whitelist can be found on the "IP Whitelist" section of the "Networking" tab. Note that your IP addresses may differ from the ones shown above.
+Before going live, ensure that all {{ PRODUCT_NAME }} IP addresses are whitelisted in the security layer in front of your origin and/or API servers. The IP addresses you need to whitelist can be found on the "IP Whitelist" section of the "Networking" tab. Note that your IP addresses may differ from the ones show above.
 
 ## TLS/SSL
 
@@ -107,7 +107,7 @@ _Note: If you already have an existing certificate, you can use it by skipping a
 
 2. Using your DNS provider, verify and possibly add a `CAA` record to allow _Let's Encrypt_ to generate certificates for your domains.
 
-   The CAA DNS entries of a domain behave like a whitelist to indicate whether **any** or only **certain** Certificate Authorities are allowed to generate certificates for that domain.
+   The CAA DNS entries of a domain behave like a whitelist to indicate wheither **any** or only **certain** Certificate Autorities are allowed to generate certificates for that domain.
 
    If there are no CAA records, it means that **any** Certificate Authority is allowed to generate certificates for that domain.
 
@@ -136,7 +136,7 @@ _Note: If you already have an existing certificate, you can use it by skipping a
 
    If the result of the CAA DNS query is empty, it means that **any** Certificate Authority is allowed to generate certificates on that domain. If so, you can directly go to the next step.
 
-   If there are already some CAA DNS entries defined on your domain, and if _Let's Encrypt_'s CAA entry is not among those, you will have to add an additional CCA entry for _Let's Encrypt_.
+   If there are already some CAA DNS entries defined on your domain, and if _Let's Encrypt_'s CAA entry is not among those, you will have to add an additionnal CCA entry for _Let's Encrypt_.
 
    To do so, log into your DNS provider, and add a `CAA` type DNS record with the following values:
 
@@ -174,7 +174,7 @@ _Note: If you already have an existing certificate, you can use it by skipping a
 
 3. Add an `_acme-challenge.` CNAME DNS entry to allow {{ PRODUCT_NAME }} to issue a certificate request on your behalf.
 
-   Log into your DNS provider and add one `CNAME` type DNS entry with the value `_acme-challenge.<your-domain-here>` for each domain you use on your Layer0 website. For example, if your domain is `mywebsite.xyz`, the DNS entry should have a value of `_acme-challenge.mywebsite.xyz`. This record should point to `_acme-challenge.xdn-validation.com`. Repeat the operation of each domain associated with your Layer0 website.
+   Log into your DNS provider and add one `CNAME` type DNS entry with the value `_acme-challenge.<your-domain-here>` for each domains you use on your Layer0 website. For example, if your domain is `mywebsite.xyz`, the DNS entry should have a value of `_acme-challenge.mywebsite.xyz`. This record should point to `_acme-challenge.xdn-validation.com`. Repeat the operation of each domain associated with your Layer0 website.
 
    Example with Godaddy:
 
@@ -238,7 +238,7 @@ _Note: If you already have an existing certificate, you can use it by skipping a
 
 TLS certificates are issued by Certificate Authorities (CA) based on Certificate Signing Request (CSR) that they receive from you. Alongside the CSR the same process creates certificate's private key. You only need to share your CSR with CA, not the private key which you should store securely.
 
-The following steps describe the creation of the CSR and private key with OpenSSL. OpenSSL is an open-source toolkit for the TLS protocol. We recommend using OpenSSL because it ensures that your private key will only be stored locally on your infrastructure. Your CA may have more customized guides or entirely customized certification process.
+The following steps describe the creation of the CSR and private key with OpenSSL. OpenSSL is an open-source toolkit for the TLS protocol. We recommend using OpenSSL because it ensures that your private key will only be stored locally on your infrastructure. Your CA may to have more customized guides or entirely customized certification process.
 
 To create CSR and private key do the following:
 
@@ -288,26 +288,43 @@ You will want to add all the additional domains into the `alt_names` section. Th
 
 ### Uploading your certificate
 
-To upload your SSL certificate, navigate to the **Settings** tab on your site:
+#### Prerequisites
+
+ To upload a certificate, you must have the **Admin** role on your team, and your team must be upgraded to {{ PRODUCT_NAME }} Enterprise.
+
+{{ PRODUCT_NAME }} needs the following to correctly host your certificate:
+
+- Certificate issued by CA
+- Intermediate certificates (IC) used by CA, including CA's signing certificate
+- Private key that was generated at the time of the CSR.
+
+#### Uploading the certificate
+
+To upload your SSL certificate, do the following:
+
+1. Navigate to the **Settings** tab on your site:
 
 ![ssl](/images/production/ssl.png)
 
-Then, scroll down to **SSL Certificate**. _Note that you need to be in the **Admin** role on your team and your team needs to be upgraded to {{ PRODUCT_NAME }} Enterprise to see this section:_
+2. Scroll to **TLS Certificate**. 
+
 
 ![empty-certificate](/images/production/empty-certificate.png)
 
-{{ PRODUCT_NAME }} needs three things to correctly host your certificate:
+3. Toggle **Automatically create an TLS certificate for my custom domains** to the "on" position.
 
-- Certificate issued by CA
-- Intermediate certificates (IC) used by CA including CA's signing certificate
-- Private key that was generated at the same time with CSR
+4. Copy the certificate, intermediate certificates, and the private key into the corresponding edit boxes.
 
-The private key part is non-public data and must not be shared with parties other than {{ PRODUCT_NAME }}. {{ PRODUCT_NAME }} stores your private key securely at rest. It is never shown in the developer console and only used to provision parts of the infrastructure that are used to terminate TLS connections.
+_Note: The private key is non-public data and must not be shared with parties other than {{ PRODUCT_NAME }}. {{ PRODUCT_NAME }} stores your private key securely at rest. It is never shown in the developer console and only used to provision parts of the infrastructure that are used to terminate TLS connections._
 
-You need to copy the certificate, intermediate certificates and the private key into the corresponding edit boxes and, once done, click on "Save Changes" button. This will change the status of your certificate to "Activation in Progress".
+5. Click **CHANGES SAVED**. 
+
+The certificate's status becomes **Activating**:
 
 ![in-progress-certificate](/images/production/in-progress-certificate.png)
 
-Note that the certificate activation should take a few minutes. If you don't see the following within the hour, please contact [support]({{ APP_URL }}/help). Once activated, you should see the following:
+After the certificate is activated, its status becomes **Active**:
 
 ![activated-certificate](/images/production/activated-certificate.png)
+
+_Note: Certificate activation should take just a few minutes. If the status does not become **Active** within an hour, please contact [support]({{ APP_URL }}/help). _

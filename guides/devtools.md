@@ -14,7 +14,7 @@
 
 ## Installation
 
-It's likely that the Devtools was added to your app when you ran `{{ CLI_NAME }} init`. If that's not the case, or your app predates {{ PRODUCT_NAME }} v2.22.0, follow these steps to add the Devtools to your app:
+It's likely that Devtools was added to your app when you ran `{{ CLI_NAME }} init`. If that's not the case, or your app predates {{ PRODUCT_NAME }} v2.22.0, follow these steps to add the Devtools to your app:
 
 ### Packages
 
@@ -24,13 +24,13 @@ In order to enable {{ PRODUCT_NAME }} Devtools, first ensure that the `{{ PACKAG
 npm i -D {{ PACKAGE_NAME }}/devtools {{ PACKAGE_NAME }}/prefetch
 ```
 
-Or with Yarn:
+Or with Yarn
 
 ```
 yarn add --dev {{ PACKAGE_NAME }}/devtools {{ PACKAGE_NAME }}/prefetch
 ```
 
-### Client widget
+### Client Widget
 
 **Note**: you can skip this step if you are using `{{ PACKAGE_NAME }}/next` or `{{ PACKAGE_NAME }}/nuxt`
 

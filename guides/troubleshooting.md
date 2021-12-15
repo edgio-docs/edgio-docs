@@ -2,16 +2,16 @@
 
 This guide shows you how to troubleshoot applications running on {{ PRODUCT_NAME }}. Below are some steps to follow when working locally or attempting to address site performance.
 
-## Server timings
+## Server Timings
 
-When measuring the performance of your server, we provide numerous headers to deciper timings of requests. Visit our section on [response headers](/guides/response_headers#section_server_timing) for an in-depth explanation on the values available and how to leverage them.
+When measuring the performance of your server, we provide numerous headers to decipher timings of requests. Visit our section on [response headers](/guides/response_headers#section_server_timing) for an in-depth explanation on the values available and how to leverage them.
 
 ## Visual Studio Code
 
 To debug a {{ PRODUCT_NAME }} application in Visual Studio Code:
 
-- open `.vscode/launch.json`
-- Click "Add Configuration..." and select "Node.js: Launch Program"
+- Open `.vscode/launch.json`.
+- Click _Add Configuration..._ and select _Node.js: Launch Program_.
 
 Edit the resulting configuration to look like this:
 
@@ -33,9 +33,9 @@ Note that this configuration will allow you to set breakpoints in both your {{ P
 
 ## Logs
 
-{{ PRODUCT_NAME }} provides two types of logs to you debug issues with your application.
+{{ PRODUCT_NAME }} provides two types of logs to help you debug issues with your application.
 
-### [Server logs](/guides/logs#section_server_logs)
+### [Server Logs](/guides/logs#section_server_logs)
 
 By viewing the server logs in the {{ PRODUCT_NAME }} Developer Console, you can see all of the messages logged by your application using `console.log`, `console.warn`, etc...
 
@@ -65,25 +65,25 @@ Note that whenever possible, we strongly recommend to always proxy the traffic f
 
 [Learn more](/guides/logs#section_server_logs?button)
 
-### Access logs
+### Access Logs
 
 Access logs contain information about all requests, even those that never reach your application code (e.g. cache hits, static assets, requests routed to custom backends, edge redirects, and so on).
 
 [Learn more](/guides/logs#section_access_logs)
 
-## Confirming behavior with CURL
+## Confirming Behavior with CURL
 
 Removing the browser as a variable in your equation is a good way to confirm what the origin server is doing. Below are a few of the common CURL commands we leverage to verify behavior.
 
 The option `-k` will not validate a SSL certificate if that is not yet configured.
 
-**View headers only**
+**View Headers Only**
 
 ```bash
 curl -o/dev/null -vv https://www.yoursite.com
 ```
 
-**Bypass DNS resolution**
+**Bypass DNS Resolution**
 
 Connect directly to the address listed after. This is good for sending a request straight to origin and bypassing Layer0, or testing a connection to Layer0 before DNS cutover. Setting up a localhost DNS configuration is usually better for this if possible.
 
@@ -92,7 +92,7 @@ curl -o/dev/null -vv
     https://www.yoursite.com --connect-to ::35.241.39.58
 ```
 
-**Specify a cookie**
+**Specify a Cookie**
 
 Typically used for split test validation.
 
@@ -101,14 +101,14 @@ curl -o/dev/null -vv
     -H "Cookie: cache_enabled=true" https://www.yoursite.com/main.js
 ```
 
-**Send a specific user agent**
+**Send a Specific User agent**
 
 ```bash
 curl -o/dev/null -vv
     -H "User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 13_6_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 [FBAN/FBIOS;FBDV/iPhone10,2;FBMD/iPhone;FBSN/iOS;FBSV/13.6.1;FBSS/3;FBID/phone;FBLC/en_GB;FBOP/5];FBNV/1"
 ```
 
-**Skip the cache**
+**Skip the Cache**
 
 Adding a `layer0_debug=true` to the query parameter will skip the cache and make it easy to check for dynamic data (i.e. personalized content). Append grep to search for specific values within the response output.
 
@@ -126,7 +126,7 @@ The edge link will route through the edge.
 
 You can find both links on the detail page of a deployment.
 
-## Cache reasons
+## Cache Reasons
 
 We provide a header, `x-0-caching-status` to best understand why something is being cached. There is a [detailed guide](guides/caching#section_why_is_my_response_not_being_cached_) available on deciphering those reasons.
 
@@ -166,4 +166,4 @@ module.exports = {
 }
 ```
 
-Note: The reason that application level source maps are not enabled by default is that they can be quite large and cause the serverless bundle to be larger than the 50MB limit.
+**Note:** The reason that application level source maps are not enabled by default is that they can be quite large and cause the serverless bundle to be larger than the 50MB limit.

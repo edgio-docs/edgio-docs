@@ -13,7 +13,7 @@ Websites with good Core Web Vitals may be placed higher in search results, while
 Unlike Lighthouse performance scores which are based on synthetic tests, Core Web Vitals scores are based on measurements from real users of Chrome as reported in the [Chrome User Experience Report](https://developers.google.com/web/tools/chrome-user-experience-report). Core Web Vitals can
 be tracked via [Google Search Console](https://search.google.com/search-console/welcome) and [PageSpeed Insights](https://developers.google.com/speed/pagespeed/insights/). Optimizing Core Web Vitals using the official tools presents a number of challenges:
 
-- It can take days to weeks to see the affect that changes to your site have on Core Web Vitals.
+- It can take days to weeks to see the effect of changes to your site on Core Web Vitals.
 - It's hard to diagnose Core Web Vitals by page type or URL.
 - It's impossible to A/B test the impact of site optimizations on Core Web Vitals. Note that to effectively A/B test performance optimizations you need both a RUM measurement tool and split testing at the edge, both of which {{ PRODUCT_NAME }} provides.
 
@@ -25,11 +25,11 @@ Instead of relying solely on Google Search Console, we recommend tracking Core W
 - Correlate web vitals to your application's routes
 - Analyze score across a number of dimensions such as country, device, and connection type
 - Identify which pages are most negatively impacting your search ranking.
-- Use {{ PRODUCT_NAME }}'s [Edge based split testing](split_testing) to A/B test the impact of performance optimizations on Core Web Vitals.
+- Use {{ PRODUCT_NAME }}'s [Edge-based split testing](split_testing) to A/B test the impact of performance optimizations on Core Web Vitals.
 
 ## Installation
 
-In order to start tracking Core Web Vitals on {{ PRODUCT_NAME }}, you need add the `{{ PACKAGE_NAME }}/rum` client library to your application. There are a number of ways to do this:
+In order to start tracking Core Web Vitals on {{ PRODUCT_NAME }}, you need to add the `{{ PACKAGE_NAME }}/rum` client library to your application. There are a number of ways to do this:
 
 ### Script Tag
 
@@ -88,9 +88,9 @@ new Metrics({
 }).collect()
 ```
 
-## Tying URLs to Page Templates
+## Tie URLs to Page Templates
 
-You can tie URLs to pages templates by providing an optional `router` parameter to `Metrics`.
+You can tie URLs to page templates by providing an optional `router` parameter to `Metrics`.
 
 When installing {{ PACKAGE_NAME }}/rum using a script tag, use:
 
@@ -125,7 +125,7 @@ new Metrics({
 }).collect()
 ```
 
-The router supports the same pattern syntax as Express. [More information on routing syntax.](/guides/routing#section_route_pattern_syntax)
+The router supports the same pattern syntax as Express. Here's more information on [routing syntax](/guides/routing#section_route_pattern_syntax).
 
 For non single page applications (e.g. traditional "multi-page apps"), you can also explicitly set the page label by passing a `pageLabel` property during initialization. An example is shown below where the `pageLabel` is pulled from `document.title`:
 
@@ -146,9 +146,9 @@ For non single page applications (e.g. traditional "multi-page apps"), you can a
 </script>
 ```
 
-## Tracking Additional Data
+## Track Additional Data
 
-Additionally, you can tie the following data to Core Web Vitals:
+You can tie the following data to Core Web Vitals:
 
 ```js
 new {{ PRODUCT_NAME }}.Metrics({

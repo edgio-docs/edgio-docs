@@ -4,29 +4,29 @@ This guide covers the steps you need to take your site live on {{ PRODUCT_NAME }
 
 ## Region
 
-{{ PRODUCT_NAME }} enterprise customers can choose the [region](regions) in which their serverless functions will run, as well as backup region to which traffic will be diverted in the event of an outage. Choose the regions which are closest to the datacenter which hosts your origin site or APIs.
+{{ PRODUCT_NAME }} enterprise customers can choose the [region](regions) in which their serverless functions will run, as well as the backup region to which traffic will be diverted in the event of an outage. Choose the regions that are closest to the datacenter which hosts your origin site or APIs.
 
 ## Domains
 
-Before going live, you must create a production environment and configure your domains. For more information on environments, see [Environments](./environments)
+Before going live, you must create a production environment and configure your domains. For more information on environments, see [Environments](./environments).
 
 To configure your custom domains:
 
-1. Create an environment by navigating to your site and selecting _Environments_ => _New Environment_
+1. Create an environment by navigating to your site and selecting _Environments_ > _New Environment_.
 2. Click _Edit_ to create a draft. Enter your domains here, save the changes, and activate:
 
 ![domains](/images/production/domains.png)
 
-### Migrating from Fastly
+### Migrate from Fastly
 
 If you're migrating to {{ PRODUCT_NAME }} from [Fastly](https://www.fastly.com/), you will need to do the following before adding your domains to your {{ PRODUCT_NAME }} environment:
 
-- [Contact Fastly support](https://support.fastly.com/hc/en-us/requests/new?ticket_form_id=360000269711) and request that control of your domains be transferred to {{ PRODUCT_NAME }}. Be sure to explicitly list each domain that needs to transferred and ask Fastly to contact support(at){{ DOMAIN }} if they need {{ PRODUCT_NAME }} to confirm the transfer.
+- Contact [Fastly support](https://support.fastly.com/hc/en-us/requests/new?ticket_form_id=360000269711) and request that control of your domains be transferred to {{ PRODUCT_NAME }}. Be sure to explicitly list each domain that needs to be transferred and ask Fastly to contact support(at){{ DOMAIN }} if they need {{ PRODUCT_NAME }} to confirm the transfer.
 - Before going live with {{ PRODUCT_NAME }}, you will need to ensure that you've removed your domains from all active Fastly services. To remove domains from a service, clone the service, remove the domains, then activate the new version of the service. Once the new service version is activated you can add the domains to your {{ PRODUCT_NAME }} environment and activate it.
 
-## Network configuration
+## Network Configuration
 
-You can find the DNS and whitelisting IP configurations in the "Networking" tab for your environment.
+You can find the DNS and allowed IP configurations in the _Networking_ tab for your environment.
 
 ![networking](/images/production/networking.png)
 
@@ -34,7 +34,7 @@ You can find the DNS and whitelisting IP configurations in the "Networking" tab 
 
 In order to configure your DNS provider to direct traffic for a particular set of domains to {{ PRODUCT_NAME }}, you must create DNS records with values depending on the type of domain you are using for your website. If you are launching a new site then you can set this up whenever you feel ready. For sites that are already live, the DNS update is the last step. Once you have updated your DNS you are committed to launching.
 
-#### Using a sub-domain (i.e. www.mywebsite.xyz):
+#### Use a Sub-domain (e.g. www.mywebsite.xyz)
 
 To host your site on a subdomain, add a `CNAME` record with the value shown under _DNS Configuration_ (see above).
 
@@ -49,9 +49,9 @@ dig www.mywebsite.xyz
 www.mywebsite.xyz.   599    IN    CNAME    d12ea738-71b3-25e8-c771-6fdd3f6bd8ba.layer0.link.
 ```
 
-#### Using an apex domain (i.e. mywebsite.xyz):
+#### Use an Apex Domain (e.g. mywebsite.xyz)
 
-To host your site on the apex domain, create multiple `A` records on your apex domain, with the following Anycast IP Addresses values: 151.101.1.79, 151.101.65.79, 151.101.129.79, 151.101.193.79.
+To host your site on the apex domain, create multiple `A` records on your apex domain, with the following Anycast IP address values: 151.101.1.79, 151.101.65.79, 151.101.129.79, 151.101.193.79.
 
 ```
 # To verify your DNS entry, run the following command
@@ -67,7 +67,7 @@ mywebsite.xyz.        599    IN    A        151.101.129.79
 mywebsite.xyz.        599    IN    A        151.101.193.79
 ```
 
-#### Using both an apex domain and a sub-domain (i.e. mywebsite.xyz and www.mywebsite.xyz):
+#### Use Both an Apex Domain and a Sub-domain (e.g. mywebsite.xyz and www.mywebsite.xyz)
 
 - Create the multiple `A` records with the IPs, on your apex domain (see above).
 - Create a `CNAME` record for your sub-domain, with the value of your apex domain.
@@ -87,9 +87,9 @@ mywebsite.xyz.        599    IN    A        151.101.193.79
   mywebsite.xyz.        599    IN    A        151.101.193.79
   ```
 
-### Whitelisting {{ PRODUCT_NAME }} IP Addresses
+### Allow {{ PRODUCT_NAME }} IP Addresses
 
-Before going live, ensure that all {{ PRODUCT_NAME }} IP addresses are whitelisted in the security layer in front of your origin and/or API servers. The IP addresses you need to whitelist can be found on the "IP Whitelist" section of the "Networking" tab. Note that your IP addresses may differ from the ones shown above.
+Before going live, ensure that all {{ PRODUCT_NAME }} IP addresses are allowed in the security layer in front of your origin and/or API servers. The IP addresses you need to allow can be found on the _IP Allow List_ section of the _Networking_ tab. Note that your IP addresses may differ from the ones shown above.
 
 ## TLS/SSL
 
@@ -97,17 +97,17 @@ All data transmitted to and from your {{ PRODUCT_NAME }} site must be secured wi
 
 {{ PRODUCT_NAME }} provides a wildcard TLS certificate that covers the auto-generated domains that it assigns to your site (e.g {team}-{site}-{branch}-{version}.layer0.link). You need to provide your own certificate for your site's custom domains.
 
-_Note: If you already have an existing certificate, you can use it by skipping ahead to [Uploading your certificate](#section_uploading_your_certificate). Many customers who have existing certificates still choose to obtain a new one when adopting {{ PRODUCT_NAME }} so as not to reuse the same private key with more than one vendor/system._
+__Note:__ If you already have an existing certificate, you can use it by skipping ahead to [Uploading your Certificate](#section_uploading_your_certificate). Many customers who have existing certificates still choose to obtain a new one when adopting {{ PRODUCT_NAME }} so as not to reuse the same private key with more than one vendor/system._
 
-### Obtaining a certificate automatically
+### Obtain a Certificate Automatically
 
-{{ PRODUCT_NAME }} can generate SSL Certificates on your behalf using [**Let's Encrypt**](https://letsencrypt.org/). Certificates are free, valid for 3 months, and automatically renewed as long as the technical requirements, shown below, remain met:
+{{ PRODUCT_NAME }} can generate SSL Certificates on your behalf using [_Let's Encrypt_](https://letsencrypt.org/). Certificates are free, valid for 3 months, and automatically renewed as long as the technical requirements, shown below, remain met:
 
 1. Make sure each environment is configured with the custom domains on which it will receive traffic. For more information on configuring custom domains, see [Domains](#section_domains) above.
 
 2. Using your DNS provider, verify and possibly add a `CAA` record to allow _Let's Encrypt_ to generate certificates for your domains.
 
-   The CAA DNS entries of a domain behave like a whitelist to indicate whether **any** or only **certain** Certificate Autorities are allowed to generate certificates for that domain.
+   The CAA DNS entries of a domain behave like an allow list to indicate whether **any** or only **certain** Certificate Authorities are allowed to generate certificates for that domain.
 
    If there are no CAA records, it means that **any** Certificate Authority is allowed to generate certificates for that domain.
 
@@ -166,11 +166,11 @@ _Note: If you already have an existing certificate, you can use it by skipping a
    - [CAA Test](https://caatest.co.uk/)
    - [Entrust CAA Lookup](https://www.entrust.com/resources/certificate-solutions/tools/caa-lookup)
 
-   Notes:
+   __Notes:__
 
    - Many DNS providers have already added this `CAA` DNS record by default
    - Some DNS providers does not allow the creation of `CAA` DNS records and therefore allow any Certificate Authority to generate certificates
-   - You can learn more about CAA DNS records on [Let's Encrypt website](https://letsencrypt.org/docs/caa/), on [Wikipedia](https://en.wikipedia.org/wiki/DNS_Certification_Authority_Authorization), on [Gandi](https://docs.gandi.net/en/domain_names/faq/record_types/caa_record.html) and on [eff.org](https://www.eff.org/deeplinks/2018/02/technical-deep-dive-securing-automation-acme-dns-challenge-validation)
+   - You can learn more about CAA DNS records on [_Let's Encrypt_ website](https://letsencrypt.org/docs/caa/), on [Wikipedia](https://en.wikipedia.org/wiki/DNS_Certification_Authority_Authorization), on [Gandi](https://docs.gandi.net/en/domain_names/faq/record_types/caa_record.html) and on [eff.org](https://www.eff.org/deeplinks/2018/02/technical-deep-dive-securing-automation-acme-dns-challenge-validation)
 
 3. Add an `_acme-challenge.` CNAME DNS entry to allow {{ PRODUCT_NAME }} to issue a certificate request on your behalf.
 
@@ -212,15 +212,13 @@ _Note: If you already have an existing certificate, you can use it by skipping a
    _acme-challenge.www.mywebsite.xyz -> _acme-challenge.xdn-validation.com.
    ```
 
-   If you have been previously using Let's Encrypt to generate certificates for this domain, please verify that there are no remaining TXT records named `_acme-challenge.mywebsite.xyz`.
+   If you have been previously using _Let's Encrypt_ to generate certificates for this domain, please verify that there are no remaining TXT records named `_acme-challenge.mywebsite.xyz`.
 
-   Notes:
-
-   - You can read more about the `_acme-challenge.` process by visiting [Let's Encrypt Website](https://letsencrypt.org/docs/challenge-types/#dns-01-challenge)
+   __Note:__ You can read more about the `_acme-challenge.` process by visiting [_Let's Encrypt_ Website](https://letsencrypt.org/docs/challenge-types/#dns-01-challenge)
 
 4. Once the requirements above are met, you can generate the certificate using the [{{ PRODUCT_NAME }} Developer Console]({{ APP_URL }}):
 
-   1. Select your site and navigate to _Settings_ => _SSL Certificate_
+   1. Select your site and navigate to _Settings_ > _SSL Certificate_
 
    2. Verify the state of your certificate (you should see that there's no certificate provided yet for your website):
 
@@ -234,11 +232,11 @@ _Note: If you already have an existing certificate, you can use it by skipping a
 
    ![ssl-generation-03](/images/production/ssl-generation-03.png)
 
-### Creating a certificate manually
+### Create a Certificate Manually
 
-TLS certificates are issued by Certificate Authorities (CA) based on Certificate Signing Request (CSR) that they receive from you. Alongside the CSR the same process creates certificate's private key. You only need to share your CSR with CA, not the private key which you should store securely.
+TLS certificates are issued by Certificate Authorities (CA) based on Certificate Signing Request (CSR) that they receive from you. Alongside the CSR the same process creates the certificate's private key. You only need to share your CSR with CA, not the private key which you should store securely.
 
-The following steps describe the creation of the CSR and private key with OpenSSL. OpenSSL is an open-source toolkit for the TLS protocol. We recommend using OpenSSL because it ensures that your private key will only be stored locally on your infrastructure. Your CA may have more customized guides or entirely customized certification process.
+The following steps describe the creation of the CSR and private key with OpenSSL. OpenSSL is an open-source toolkit for the TLS protocol. We recommend using OpenSSL because it ensures that your private key will only be stored locally on your infrastructure. Your CA may have more customized guides or an entirely customized certification process.
 
 To create CSR and private key do the following:
 
@@ -282,11 +280,11 @@ Replace the country, state/province, locality, organization name and, most impor
 
 You will want to add all the additional domains into the `alt_names` section. There you should add your development, staging and other domains although {{ PRODUCT_NAME }} strongly encourages the use of wildcard certs.
 
-3. Run `openssl req -out {{ PRODUCT_NAME_LOWER }}.csr -newkey rsa:2048 -nodes -keyout {{ PRODUCT_NAME_LOWER }}.key -config {{ PRODUCT_NAME_LOWER }}.conf -batch`. This should generate your CSR in `{{ PRODUCT_NAME_LOWER }}.csr` and private key in `{{ PRODUCT_NAME_LOWER }}.key`. If you want OpenSSL to ask you for each different input, remove `-batch` option and re-run the command.
+3. Run `openssl req -out {{ PRODUCT_NAME_LOWER }}.csr -newkey rsa:2048 -nodes -keyout {{ PRODUCT_NAME_LOWER }}.key -config {{ PRODUCT_NAME_LOWER }}.conf -batch`. This should generate your CSR in `{{ PRODUCT_NAME_LOWER }}.csr` and private key in `{{ PRODUCT_NAME_LOWER }}.key`. If you want OpenSSL to ask you for each different input, remove the `-batch` option and re-run the command.
 4. Verify your CSR contains the expected domains by running `openssl req -in {{ PRODUCT_NAME_LOWER }}.csr -noout -text | grep DNS`
 5. Read the CSR (e.g. `cat {{ PRODUCT_NAME_LOWER }}.csr`) or copy to your clipboard (on OSX `cat {{ PRODUCT_NAME_LOWER }}.csr | pbcopy`) and send it to your CA for certification.
 
-### Uploading your certificate
+### Upload a Certificate
 
 #### Prerequisites
 
@@ -302,29 +300,28 @@ You will want to add all the additional domains into the `alt_names` section. Th
 
 To upload your SSL certificate, do the following:
 
-1. Navigate to the **Settings** tab on your site:
+1. Navigate to the _Settings_ tab on your site:
 
 ![ssl](/images/production/ssl.png)
 
-2. Scroll to **TLS Certificate**. 
-
+2. Scroll to *TLS Certificate*. 
 
 ![empty-certificate](/images/production/empty-certificate.png)
 
-3. Toggle **Automatically create an TLS certificate for my custom domains** to the "on" position.
+3. Toggle *Automatically create an TLS certificate for my custom domains* to the _on_ position.
 
 4. Copy the certificate, intermediate certificates, and the private key into the corresponding edit boxes.
 
 _Note: The private key is non-public data and must not be shared with parties other than {{ PRODUCT_NAME }}. {{ PRODUCT_NAME }} stores your private key securely at rest. It is never shown in the developer console and only used to provision parts of the infrastructure that are used to terminate TLS connections._
 
-5. Click **CHANGES SAVED**. 
+5. Click *CHANGES SAVED*. 
 
-The certificate's status becomes **Activating**:
+The certificate's status becomes *Activating*:
 
 ![in-progress-certificate](/images/production/in-progress-certificate.png)
 
-After the certificate is activated, its status becomes **Active**:
+After the certificate is activated, its status becomes *Active*:
 
 ![activated-certificate](/images/production/activated-certificate.png)
 
-_Note: Certificate activation should take just a few minutes. If the status does not become **Active** within an hour, please contact [support]({{ APP_URL }}/help). _
+_Note: Certificate activation should take just a few minutes. If the status does not become *Active* within an hour, please contact [support]({{ APP_URL }}/help). _

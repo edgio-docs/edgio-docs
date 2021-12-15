@@ -12,7 +12,7 @@ Layer0 offers three ways to purge responses from the cache:
 
 ## Developer Console
 
-You can purge the cache via the [Layer0 Developer Console](https://app.layer0.co) by navigating to an environment, selecting the _Caching_ tab, and clicking _Purge the Cache_ under _Cache History_:
+You can purge the cache via the [Layer0 Developer Console](https://app.layer0.co) by navigating to an environment, selecting the _Caching_ tab, and clicking _Purge the Cache_ under _Cache Purge History_:
 
 ![purge_the_cache_button](/images/purging/purge_the_cache_button.png)
 
@@ -34,11 +34,11 @@ By default, all response are purged from the cache when you deploy a new version
 
 ![preserve_cache](/images/purging/preserve.png)
 
-_Caution: While preserving the cache between deployments can greatly reduce the load on your origin following a deployment, it can also lead to inconsistent behavior if the new version of your browser code receives an old, incompatible API response from the cache. Before enabling this feature, we recommend adding an API version number to your URL scheme to ensure that breaking changes to your API don't affect your website's functionality when old responses are served from the cache._
+__Caution:__ While preserving the cache between deployments can greatly reduce the load on your origin following a deployment, it can also lead to inconsistent behavior if the new version of your browser code receives an old, incompatible API response from the cache. Before enabling this feature, we recommend adding an API version number to your URL scheme to ensure that breaking changes to your API don't affect your website's functionality when old responses are served from the cache.
 
 ## Static prerendering after clearing the cache
 
-If you have [static prerendering] enabled, the cache will automatically be repopulated when you clear all entries from the cache (such as when you select "Purge all entries" in the {{ PRODUCT_NAME }} Developer Console or run `{{ CLI_NAME }} cache-clear` without providing `--path` or `--surrogate-key`). You can view the prerendering progress by clicking on the active deployment for the environment that was cleared.
+If you have [static prerendering] enabled, the cache will automatically be repopulated when you clear all entries from the cache (such as when you select _Purge all entries_ in the {{ PRODUCT_NAME }} Developer Console or run `{{ CLI_NAME }} cache-clear` without providing `--path` or `--surrogate-key`). You can view the prerendering progress by clicking on the active deployment for the environment that was cleared.
 
 ## Surrogate Keys
 
@@ -60,7 +60,7 @@ In the example above you could purge this response from the cache using any of t
 layer0 cache-clear --team=my-team --site=my-site --environment=production --surrogate-key=product.123
 ```
 
-... or ...
+or 
 
 ```
 layer0 cache-clear --team=my-team --site=my-site --environment=production --surrogate-key=shoes

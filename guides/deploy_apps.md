@@ -2,7 +2,7 @@
 
 This guide walks you through deploying your app to {{ PRODUCT_NAME }}.
 
-## From the CLI
+## Deploy From the CLI
 
 Once you've created your {{ PRODUCT_NAME }} project, run the following to deploy your site to your private space on {{ PRODUCT_NAME }} using the CLI:
 
@@ -12,7 +12,7 @@ Once you've created your {{ PRODUCT_NAME }} project, run the following to deploy
 
 The CLI will automatically detect the framework you're using, create an optimized production build, and upload it to {{ PRODUCT_NAME }}. This takes about a minute for most applications.
 
-Once the deployment is complete, the CLI will output the URL for your site. The site name is automatically derived from the `name` field in `package.json`. This can be overriden by using `--site` option when running `{{ CLI_NAME }} deploy`.
+Once the deployment is complete, the CLI will output the URL for your site. The site name is automatically derived from the `name` field in `package.json`. This can be overridden by using `--site` option when running `{{ CLI_NAME }} deploy`.
 
 ## Branches and Deployments
 
@@ -22,7 +22,7 @@ Each time you deploy your site to {{ PRODUCT_NAME }} a "deployment" is created a
 
 Having each deployment be simultaneously and permanently accessible makes it easy to preview other developers' work before merging a pull request and enables you to "go back in time" to find where a bug or change in behavior originated. We recommend configuring your CI environment to deploy every push to {{ PRODUCT_NAME }}.
 
-## Deploying from CI
+## Deploy from CI
 
 To deploy from your CI environment, create a deploy token using the site settings tab in the {{ PRODUCT_NAME }} console.
 
@@ -135,7 +135,7 @@ jobs:
           deploy_token: ${{secrets.LAYER0_DEPLOY_TOKEN}}
 ```
 
-### Screencast tutorial
+### Screencast Tutorial
 
 ![video](https://www.youtube.com/watch?v=Ms1TmY0oDYc)
 

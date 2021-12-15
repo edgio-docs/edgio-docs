@@ -1,10 +1,10 @@
-# Third Party CDNs
+# Third-Party CDNs
 
-{{ PRODUCT_NAME }} is designed and built to be the component of your site to which your users will directly connect to from their devices. Such components are colloquially known as "edge components". But sometimes you may prefer to run {{ PRODUCT_NAME }} behind a third-party CDN due to a preexisting contract. {{ PRODUCT_NAME }} fully supports this use case but it's important to call out some common pitfalls with this kind of network topology.
+{{ PRODUCT_NAME }} is designed and built to be the component of your site to which your users will directly connect to from their devices. Such components are colloquially known as "edge components". But sometimes you may prefer to run {{ PRODUCT_NAME }} behind a third-party CDN due to a pre-existing contract. {{ PRODUCT_NAME }} fully supports this use case but it's important to call out some common pitfalls with this kind of network topology.
 
 ## HTTP traffic
 
-{{ PRODUCT_NAME }} does not support HTTP traffic and has a built-in redirect to HTTPS. That redirect relies on the value of `host` request header in order to form the value of `location` response header (e.g. a `host` value of `{{ DOCS_DOMAIN }}` will result in a `location` value of `{{ DOCS_URL }}`). When a third-party CDN is in front of {{ PRODUCT_NAME }}, the `host` header is not the public facing domain but rather the domain to which the downstream CDN is routing traffic. If the downstream CDN allows HTTP traffic to reach {{ PRODUCT_NAME }} then {{ PRODUCT_NAME }} will respond with an incorrect value in `location` response header.
+{{ PRODUCT_NAME }} does not support HTTP traffic and has a built-in redirect to HTTPS. That redirect relies on the value of `host` request header in order to form the value of `location` response header (e.g. a `host` value of `{{ DOCS_DOMAIN }}` will result in a `location` value of `{{ DOCS_URL }}`). When a third-party CDN is in front of {{ PRODUCT_NAME }}, the `host` header is not the public facing domain but rather the domain to which the downstream CDN is routing traffic. If the downstream CDN allows HTTP traffic to reach {{ PRODUCT_NAME }} then {{ PRODUCT_NAME }} will respond with an incorrect value in the `location` response header.
 
 Options to solve these all rely on different ways of configuring the third-party CDN:
 
@@ -35,6 +35,6 @@ When behind a third-party CDN, {{ PRODUCT_NAME }} will analyze `x-forwarded-for`
 
 {{ PRODUCT_NAME }} access logs continue to function normally but since they are not on the edge they may not include all of the traffic that comes to your site.
 
-## Whitelisting
+## Allowing IPs
 
-{{ PRODUCT_NAME }} does not block any validly formed HTTP traffic coming from any IP so there is no need to specifically whitelist the backend IPs of your third party CDN.
+{{ PRODUCT_NAME }} does not block any validly formed HTTP traffic coming from any IP so there is no need to specifically allow the backend IPs of your third-party CDN.

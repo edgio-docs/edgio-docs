@@ -89,7 +89,7 @@ mywebsite.xyz.        599    IN    A        151.101.193.79
 
 ### Whitelisting {{ PRODUCT_NAME }} IP Addresses
 
-Before going live, ensure that all {{ PRODUCT_NAME }} IP addresses are whitelisted in the security layer in front of your origin and/or API servers. The IP addresses you need to whitelist can be found on the "IP Whitelist" section of the "Networking" tab. Note that your IP addresses may differ from the ones show above.
+Before going live, ensure that all {{ PRODUCT_NAME }} IP addresses are whitelisted in the security layer in front of your origin and/or API servers. The IP addresses you need to whitelist can be found on the "IP Whitelist" section of the "Networking" tab. Note that your IP addresses may differ from the ones shown above.
 
 ## TLS/SSL
 
@@ -107,7 +107,7 @@ _Note: If you already have an existing certificate, you can use it by skipping a
 
 2. Using your DNS provider, verify and possibly add a `CAA` record to allow _Let's Encrypt_ to generate certificates for your domains.
 
-   The CAA DNS entries of a domain behave like a whitelist to indicate wheither **any** or only **certain** Certificate Autorities are allowed to generate certificates for that domain.
+   The CAA DNS entries of a domain behave like a whitelist to indicate whether **any** or only **certain** Certificate Autorities are allowed to generate certificates for that domain.
 
    If there are no CAA records, it means that **any** Certificate Authority is allowed to generate certificates for that domain.
 
@@ -136,7 +136,7 @@ _Note: If you already have an existing certificate, you can use it by skipping a
 
    If the result of the CAA DNS query is empty, it means that **any** Certificate Authority is allowed to generate certificates on that domain. If so, you can directly go to the next step.
 
-   If there are already some CAA DNS entries defined on your domain, and if _Let's Encrypt_'s CAA entry is not among those, you will have to add an additionnal CCA entry for _Let's Encrypt_.
+   If there are already some CAA DNS entries defined on your domain, and if _Let's Encrypt_'s CAA entry is not among those, you will have to add an additional CCA entry for _Let's Encrypt_.
 
    To do so, log into your DNS provider, and add a `CAA` type DNS record with the following values:
 
@@ -238,7 +238,7 @@ _Note: If you already have an existing certificate, you can use it by skipping a
 
 TLS certificates are issued by Certificate Authorities (CA) based on Certificate Signing Request (CSR) that they receive from you. Alongside the CSR the same process creates certificate's private key. You only need to share your CSR with CA, not the private key which you should store securely.
 
-The following steps describe the creation of the CSR and private key with OpenSSL. OpenSSL is an open-source toolkit for the TLS protocol. We recommend using OpenSSL because it ensures that your private key will only be stored locally on your infrastructure. Your CA may to have more customized guides or entirely customized certification process.
+The following steps describe the creation of the CSR and private key with OpenSSL. OpenSSL is an open-source toolkit for the TLS protocol. We recommend using OpenSSL because it ensures that your private key will only be stored locally on your infrastructure. Your CA may have more customized guides or entirely customized certification process.
 
 To create CSR and private key do the following:
 

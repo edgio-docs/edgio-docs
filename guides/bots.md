@@ -50,4 +50,4 @@ router.match(
 // ... all your other routes go here and they can match on `my-bot-detection-is-bot: 1`
 ```
 
-The above code will match all the routes that even have a `user-agent` header and then set the `my-bot-detection-is-bot` when the value of the user agent header matches the regex.
+The above code will match all the routes that even have a `user-agent` header and then inject the `my-bot-detection-is-bot` when the value of the user agent header matches the given regex. Once the header has been injected, the later routes can test for it and implement bot handling. Or you could just let it be sent upstream for your backend to handle it.

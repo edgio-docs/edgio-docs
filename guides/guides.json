@@ -193,6 +193,12 @@
         "href": "/guides/[...guide]"
       },
       {
+        "text": "Dojo",
+        "icon": "dojo",
+        "as": "/guides/dojo",
+        "href": "/guides/[...guide]"
+      },
+      {
         "text": "Eleventy",
         "icon": "eleventy",
         "as": "/guides/eleventy",

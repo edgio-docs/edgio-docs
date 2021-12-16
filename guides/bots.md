@@ -34,9 +34,9 @@ The following table list the user agents that  {{ PRODUCT_NAME }}  examines and 
 |xing-contenttabreceiver|Xing social network crawler bot that indexes content for the Xing social network.|
 |yahoo|Another Yahoo Search robot for crawling and indexing web page information.|
 
-If the included list is not accurate enough for you, you can easily add your own bot detection through [EdgeJS](... unsure what would be the link here... maybe https://docs.layer0.co/guides/routing ...) and its [`match`](/docs/api/core/classes/_router_router_.router.html#match) and [`setRequestHeader`](/docs/api/core/classes/_router_responsewriter_.responsewriter.html#setrequestheader) APIs:
+If the set of bots detected by  {{ PRODUCT_NAME }}  is not sufficient for your needs, you can easily add your own bot detection through [EdgeJS](/guides/routing) and its [`match`](/docs/api/core/classes/_router_router_.router.html#match) and [`setRequestHeader`](/docs/api/core/classes/_router_responsewriter_.responsewriter.html#setrequestheader) APIs:
 
-<start code block>
+```
 router.match(
   {
     headers: {
@@ -47,5 +47,7 @@ router.match(
     setRequestHeader('my-bot-detection-is-bot', '1')
   }
 )
-<end code block>
+// ... all your other routes go here and they can match on `my-bot-detection-is-bot: 1`
+```
 
+The above code will match all the routes that even have a `user-agent` header and then inject the `my-bot-detection-is-bot` when the value of the user agent header matches the given regex. Once the header has been injected, the later routes can test for it and implement bot handling. Or, you could just let the header be sent upstream for your backend to handle it.

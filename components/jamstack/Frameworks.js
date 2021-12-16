@@ -440,5 +440,11 @@ const frameworkItems = [
     framework: 'zola',
     icon: 'zola',
     text: 'Zola',
+  },
+  {
+    guide: '/guides/dojo',
+    framework: 'dojo',
+    icon: 'dojo',
+    text: 'Dojo',
   }
 ]

@@ -2,7 +2,7 @@
 
 This guide describes the headers that {{ PRODUCT_NAME }} injects into responses, making them visible to your client code.
 
-## General headers
+## General Headers
 
 - `{{ HEADER_PREFIX }}-version`: version fingerprint that includes {{ PRODUCT_NAME }} version number, site build number and UTC timestamp of the build
 - `{{ HEADER_PREFIX }}-t`: telemetry measurements for all the components in {{ PRODUCT_NAME }} critical path that served your request
@@ -67,7 +67,7 @@ A response that traversed from the edge, to global, to serverless might look lik
 - country: desc=`country_code` - where country_code is the two letter code of the country from which the request was sent.
 - xrj: desc=`route` - where route is the matched route serialized as JSON.
 
-## Troubleshooting headers
+## Troubleshooting Headers
 
 The following headers are used internally by {{ PRODUCT_NAME }} staff to troubleshoot issues with requests.
 

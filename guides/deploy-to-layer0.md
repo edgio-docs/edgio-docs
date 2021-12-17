@@ -2,7 +2,7 @@
 
 The Deploy to {{ PRODUCT_NAME }} button lets users deploy a project to the {{ PRODUCT_NAME }} platform with just a few clicks, no command-line needed! It's a quick and easy way for users to get a working instance of your framework or project template.
 
-This guide walks you through some deploy button examples and how you can setup a GitHub repository for your users to deploy to {{PRODUCT_NAME}} with a simple click.
+This guide walks you through some deploy button examples and how you can set up a GitHub repository for your users to deploy to {{PRODUCT_NAME}} with a simple click.
 
 ## What is the Deploy to {{ PRODUCT_NAME }} Button?
 
@@ -42,7 +42,7 @@ Below are a list of example site you can deploy right now using our deploy butto
 
 [Vue.js Static Example](https://layer0-docs-layer0-static-vuejs-example-default.layer0.link/?button) &#8594; [Deploy to Layer0](https://app.layer0.co/deploy?repo=https%3A%2F%2Fgithub.com%2Flayer0-docs%2Fstatic-vuejs-example&button)
 
-## Creating your own deploy button
+## Creating Your Own Deploy Button
 
 To configure your own project to be deploy button ready, there's a few steps to take.
 
@@ -50,7 +50,7 @@ To configure your own project to be deploy button ready, there's a few steps to 
 2. Next, create a basic `deploy` script as described below. Typically, this can simply be `layer0 deploy`, but if your site requires additional processing outside of the standard {{PRODUCT_NAME}} build/deploy process, you will need to modify this script to include the necessary steps to make your site production-ready.
 3. Create a GitHub workflow as described below. This makes sure GitHub Actions is properly configured to build the project.
 
-#### Add `deploy` script to `package.json`
+#### Add `deploy` Script to `package.json`
 
 ```json
 // additional scripts may need to be called based on your app build process
@@ -59,7 +59,7 @@ To configure your own project to be deploy button ready, there's a few steps to 
 
 Lastly, create a GitHub workflow file called `layer0.yml`. This will be triggered automatically by {{PRODUCT_NAME}} during the deploy process.
 
-#### Create `.github/workflows/layer0.yml` workflow
+#### Create `.github/workflows/layer0.yml` Workflow
 
 ```yml
 name: Deploy to Layer0

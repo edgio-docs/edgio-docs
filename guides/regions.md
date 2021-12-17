@@ -1,4 +1,4 @@
-# {{ PRODUCT_NAME }} regions
+# {{ PRODUCT_NAME }} Regions
 
 ## Serverless Compute
 

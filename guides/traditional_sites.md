@@ -57,7 +57,7 @@ See common things you need to look for on an eCommmerce site:
 | Complex pricing (e.g. employee discounts, affiliate discounts, pricing based on item combinations or dollar amount in the cart) | Late load                   | PLP, PDP |
 | Inventory                                                                                                                       | Lower cache TTL             | PLP      |
 | Product recommendations                                                                                                         | Late load                   | PDP      |
-| Inventory                                                                                                                       | Targetted cache clearing    | PDP      |
+| Inventory                                                                                                                       | Targeted cache clearing    | PDP      |
 
 Use this worksheet when auditing your site for personalized content to inventory and track the changes you will be making:
 
@@ -300,4 +300,4 @@ For the most part maintenance for traditional sites running on {{ PRODUCT_NAME }
 
 - If you add personalized or user-specific content to the page you will need to make sure it is late loaded as described in the [_Make sure your pages are cacheable_](#section_make_sure_your_pages_are_cachable) section.
 - If you introduce a new segmentation of content (e.g. support a new language or currency), you may need to update your [custom cache key](/guides/caching#section_customizing_the_cache_key).
-- If you change the layout of the page (especially above the "fold"), it may alter the assets you need to prefetch or [deepfetch](#section_deep_fetching) to achieve the best performance.
+- If you change the layout of the page (especially above the _fold_), it may alter the assets you need to prefetch or [deepfetch](#section_deep_fetching) to achieve the best performance.

@@ -20,7 +20,7 @@ Build your project and verify everything is functioning as expected. You should 
 
 ## Edge links will change automatically
 
-Once you deploy the new version of Layer0, your Edge links will change to have the format `*.layer0-limelight.link`. Your current edge links will switch to the new format on the next deployment for that environment. Old edge links will continue to work even after the first deployment. Permalinks will remain `*.free.layer0-perma.link`.
+Once you deploy the new version of Layer0, your Edge links will change to have the format `*.layer0-limelight.link`. Your current edge links will switch to the new format on the next deployment for that environment. Old edge links may continue to work correctly for a while but they are considered deprecated and will be turned off without further notice. Permalinks will remain `*.free.layer0-perma.link`.
 
 ## DNS will need updating for custom domains
 

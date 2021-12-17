@@ -48,7 +48,7 @@ const EXAMPLES_REPOS = {
   'static-vue': 'https://github.com/layer0-docs/layer0-static-vuejs-example',
 }
 
-const SYSTEM_REQUIREMENTS = `## System requirements
+const SYSTEM_REQUIREMENTS = `## System Requirements
 
 - [Install Node.js 14.0](/guides/install-nodejs)`
 

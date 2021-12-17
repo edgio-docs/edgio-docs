@@ -174,7 +174,7 @@ __Note:__ If you already have an existing certificate, you can use it by skippin
 
 3. Add an `_acme-challenge.` CNAME DNS entry to allow {{ PRODUCT_NAME }} to issue a certificate request on your behalf.
 
-   Log into your DNS provider and add one `CNAME` type DNS entry with the value `_acme-challenge.<your-domain-here>` for each domains you use on your Layer0 website. For example, if your domain is `mywebsite.xyz`, the DNS entry should have a value of `_acme-challenge.mywebsite.xyz`. This record should point to `_acme-challenge.xdn-validation.com`. Repeat the operation of each domain associated with your Layer0 website.
+   Log into your DNS provider and add one `CNAME` type DNS entry with the value `_acme-challenge.<your-domain-here>` for each domain you use on your Layer0 website. For example, if your domain is `mywebsite.xyz`, the DNS entry should have a value of `_acme-challenge.mywebsite.xyz`. This record should point to `_acme-challenge.xdn-validation.com`. Repeat the operation of each domain associated with your Layer0 website.
 
    Example with Godaddy:
 

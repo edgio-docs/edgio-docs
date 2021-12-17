@@ -28,7 +28,7 @@ Lastly, your site code will need to be updated to reference the new `@layer0` mo
 
 Build your project and verify everything is functioning as expected. You should then deploy your site to your testing environment and re-verify functionality.
 
-## Edge and Permalinks will change automatically
+## Edge and Permalinks will Change Automatically
 
 Once you deploy the new version of Layer0, you Edge links will change to have the format `*.layer0.link`. Your current edge links will switch to the new format on the next deployment for that environment. Old edge links will continue to work even after the first deployment.
 
@@ -36,7 +36,7 @@ Permalinks will become `*.free.layer0-perma.link`. These links will all automati
 
 During this transition, your live site is unaffected and custom domains URLs are not affected.
 
-## What else will changed?
+## What Else Will Change?
 
 ### Access Logs
 

@@ -8,7 +8,7 @@ This guide describes limits of {{ PRODUCT_NAME }} platform as applied to all pro
 - `Mb` stands for megabytes and means 1,024 kilobytes (2^20 bytes)
 - `Gb` stands for gigabytes and means 1,024 megabytes (2^30 bytes)
 
-## Request and response limits
+## Request and Response Limits
 
 | Value                                                 | Limit                 | Description                                                                                                                                                                           |
 | ----------------------------------------------------- | --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -24,7 +24,7 @@ This guide describes limits of {{ PRODUCT_NAME }} platform as applied to all pro
 | Prerender concurrency                                 | 200                   |
 | Total number of prerendered requests                  | 25,000 per deployment |
 
-## Access logs
+## Access Logs
 
 | Value | Limit     | Description                                                                                         |
 | ----- | --------- | --------------------------------------------------------------------------------------------------- |

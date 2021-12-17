@@ -107,7 +107,7 @@ __Note:__ If you already have an existing certificate, you can use it by skippin
 
 2. Using your DNS provider, verify and possibly add a `CAA` record to allow _Let's Encrypt_ to generate certificates for your domains.
 
-   The CAA DNS entries of a domain behave like a allow list to indicate whether **any** or only **certain** Certificate Authorities are allowed to generate certificates for that domain.
+   The CAA DNS entries of a domain behave like an allow list to indicate whether **any** or only **certain** Certificate Authorities are allowed to generate certificates for that domain.
 
    If there are no CAA records, it means that **any** Certificate Authority is allowed to generate certificates for that domain.
 
@@ -286,26 +286,42 @@ You will want to add all the additional domains into the `alt_names` section. Th
 
 ### Uploading Your Certificate
 
-To upload your SSL certificate, navigate to the _Settings_ tab on your site:
+#### Prerequisites
+
+ To upload a certificate, you must have the **Admin** role on your team, and your team must be upgraded to {{ PRODUCT_NAME }} Enterprise.
+
+{{ PRODUCT_NAME }} needs the following to correctly host your certificate:
+
+- Certificate issued by CA
+- Intermediate certificates (IC) used by CA, including CA's signing certificate
+- Private key that was generated at the time of the CSR.
+
+#### Uploading the certificate
+
+To upload your SSL certificate, do the following:
+
+1. Navigate to the _Settings_ tab on your site:
 
 ![ssl](/images/production/ssl.png)
 
-Then scroll down to _SSL Certificate_. Note that you need to be in the *Admin* role on your team and your team needs to be upgraded to {{ PRODUCT_NAME }} Enterprise to see this section:
+2. Scroll to *TLS Certificate*. 
 
 ![empty-certificate](/images/production/empty-certificate.png)
 
-{{ PRODUCT_NAME }} needs three things to correctly host your certificate:
+3. Toggle *Automatically create an TLS certificate for my custom domains* to the _on_ position.
 
-- Certificate issued by CA
-- Intermediate certificates (IC) used by CA including CA's signing certificate
-- Private key that was generated at the same time with CSR
+4. Copy the certificate, intermediate certificates, and the private key into the corresponding edit boxes.
 
-The private key part is non-public data and must not be shared with parties other than {{ PRODUCT_NAME }}. {{ PRODUCT_NAME }} stores your private key securely at rest. It is never shown in the developer console and only used to provision parts of the infrastructure that are used to terminate TLS connections.
+_Note: The private key is non-public data and must not be shared with parties other than {{ PRODUCT_NAME }}. {{ PRODUCT_NAME }} stores your private key securely at rest. It is never shown in the developer console and only used to provision parts of the infrastructure that are used to terminate TLS connections._
 
-You need to copy the certificate, intermediate certificates and the private key into the corresponding edit boxes and, once done, click the _Save Changes_ button. This will change the status of your certificate to _Activation in Progress_.
+5. Click *CHANGES SAVED*. 
+
+The certificate's status becomes *Activating*:
 
 ![in-progress-certificate](/images/production/in-progress-certificate.png)
 
-Note that the certificate activation should take a few minutes. If you don't see the following within the hour, please contact [support]({{ APP_URL }}/help). Once activated, you should see the following:
+After the certificate is activated, its status becomes *Active*:
 
 ![activated-certificate](/images/production/activated-certificate.png)
+
+_Note: Certificate activation should take just a few minutes. If the status does not become *Active* within an hour, please contact [support]({{ APP_URL }}/help). _

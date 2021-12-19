@@ -41,6 +41,7 @@ import Saber from './saber.svg'
 import Preact from './preact.svg'
 import Eleventy from './eleventy.svg'
 import Zola from './zola.svg'
+import SolidJS from './solid.svg'
 
 import clsx from 'clsx'
 
@@ -88,7 +89,8 @@ export const icons = {
   eleventy: Eleventy,
   brunch: Brunch,
   zola: Zola,
-  dojo: Dojo
+  dojo: Dojo,
+  solid: SolidJS
 }
 
 export const styles = theme => ({

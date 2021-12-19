@@ -268,6 +268,12 @@ const frameworkItems = [
     text: 'Angular',
   },
   {
+    guide: '/guides/solid',
+    framework: 'solid',
+    icon: 'solid',
+    text: 'SolidJS',
+  },
+  {
     guide: '/guides/ionic_react',
     framework: 'ionic_react',
     icon: 'ionic_react',

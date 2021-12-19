@@ -355,6 +355,12 @@
         "href": "/guides/[...guide]"
       },
       {
+        "text": "SolidJS",
+        "icon": "solid",
+        "as": "/guides/solid",
+        "href": "/guides/[...guide]"
+      },
+      {
         "text": "Spartacus",
         "icon": "spartacus",
         "as": "/guides/spartacus",

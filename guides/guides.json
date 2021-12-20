@@ -391,6 +391,12 @@
         "href": "/guides/[...guide]"
       },
       {
+        "text": "UmiJS",
+        "icon": "umijs",
+        "as": "/guides/umijs",
+        "href": "/guides/[...guide]"
+      },
+      {
         "text": "Vue Storefront",
         "icon": "vsf",
         "as": "/guides/vsf",

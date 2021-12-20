@@ -36,7 +36,7 @@ The following table list the user agents that  {{ PRODUCT_NAME }}  examines and 
 
 If the set of bots detected by  {{ PRODUCT_NAME }}  is not sufficient for your needs, you can easily add your own bot detection through [EdgeJS](/guides/routing) and its [`match`](/docs/api/core/classes/_router_router_.router.html#match) and [`setRequestHeader`](/docs/api/core/classes/_router_responsewriter_.responsewriter.html#setrequestheader) APIs:
 
-```
+```js
 router.match(
   {
     headers: {

@@ -28,7 +28,7 @@ Lastly, your site code will need to be updated to reference the new `@layer0` mo
 
 Build your project and verify everything is functioning as expected. You should then deploy your site to your testing environment and re-verify functionality.
 
-## Edge links will change automatically
+## Edge and Permalinks will Change Automatically
 
 Once you deploy the new version of Layer0, your Edge links will change to have the format `*.layer0-limelight.link`. Your current edge links will switch to the new format on the next deployment for that environment. Old edge links may continue to work correctly for a while but they are considered deprecated and will be turned off without further notice. Permalinks will remain `*.free.layer0-perma.link`.
 

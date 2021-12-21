@@ -17,7 +17,7 @@ const { nextRoutes } = require('{{ PACKAGE_NAME }}/next')
 module.exports = new Router().use(nextRoutes)
 ```
 
-## Adding ISG to an app built with any framework
+## Adding ISG to an App Built with any Framework
 
 To enable ISG on any framework, statically render a subset of your app's pages at build time as well as a static loading page. You can have a single loading page for your app or a separate one for each route. Then, configure your {{ PRODUCT_NAME }} router to serve the statically rendered pages using `serveStatic`. Use the `onNotFound` and `loadingPage` options to fall back to SSR while displaying the loading page when a request is received for a page that has not been statically rendered.
 

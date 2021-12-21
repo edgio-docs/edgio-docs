@@ -3,18 +3,22 @@
     "text": "Get Started",
     "items": [
       {
-        "text": "Enable CDN",
-        "as": "/guides/enable_cdn",
+        "text": "WebApp CDN",
+        "as": "/guides/webapp_cdn_getting_started",
         "href": "/guides/[...guide]"
       },
       {
-        "text": "Build Web Apps",
-        "as": "/guides/build_web_apps",
+        "text": "Jamstack",
+        "as": "/guides/jamstack_getting_started",
         "href": "/guides/[...guide]"
       },
-
       {
-        "text": "Deploy Apps",
+        "text": "GraphQL CDN",
+        "as": "/guides/graphql",
+        "href": "/guides/[...guide]"
+      },
+      {
+        "text": "Deploying",
         "as": "/guides/deploy_apps",
         "href": "/guides/[...guide]"
       },
@@ -177,9 +181,21 @@
         "href": "/guides/[...guide]"
       },
       {
+        "text": "Brunch",
+        "icon": "brunch",
+        "as": "/guides/brunch",
+        "href": "/guides/[...guide]"
+      },
+      {
         "text": "Docusaurus",
         "icon": "docusaurus",
         "as": "/guides/docusaurus",
+        "href": "/guides/[...guide]"
+      },
+      {
+        "text": "Dojo",
+        "icon": "dojo",
+        "as": "/guides/dojo",
         "href": "/guides/[...guide]"
       },
       {
@@ -339,6 +355,12 @@
         "href": "/guides/[...guide]"
       },
       {
+        "text": "SolidJS",
+        "icon": "solid",
+        "as": "/guides/solid",
+        "href": "/guides/[...guide]"
+      },
+      {
         "text": "Spartacus",
         "icon": "spartacus",
         "as": "/guides/spartacus",
@@ -385,6 +407,12 @@
         "icon": "vue",
         "as": "/guides/vuepress",
         "href": "/guides/[...guide]"
+      },
+      {
+        "text": "Zola",
+        "icon": "zola",
+        "as": "/guides/zola",
+        "href": "/guides/[...guide]"
       }
     ]
   },
@@ -404,6 +432,11 @@
       {
         "text": "Cookies",
         "as": "/guides/cookies",
+        "href": "/guides/[...guide]"
+      },      
+      {
+        "text": "Bots",
+        "as": "/guides/bots",
         "href": "/guides/[...guide]"
       },
       {

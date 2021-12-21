@@ -14,6 +14,10 @@ import Toc from './Toc'
 import idForHeading from './utils/idForHeading'
 import getYTVideoDetails from './utils/getYTVideoDetails'
 
+const components = {
+  'jamstack/Frameworks': require('./jamstack/Frameworks').default,
+}
+
 const useStyles = makeStyles(theme => ({
   heading: {
     display: 'block',
@@ -155,6 +159,13 @@ function Link({ href, children }) {
   const uri = new URL(href, 'http://dummy.org')
   const isGitHubLink = href.match(/github/)
   const isLayer0DeployLink = uri.searchParams.has('deploy')
+  const isReactComponent = href.startsWith('/react/')
+
+  if (isReactComponent) {
+    const modulePath = href.replace(/^\/react\//, '')
+    const Component = components[modulePath]
+    return <Component />
+  }
 
   if (isGitHubLink) {
     Icon = (

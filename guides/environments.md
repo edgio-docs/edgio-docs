@@ -29,7 +29,7 @@ To deploy to an environment, you can `{{ CLI_NAME }} deploy` with the `--environ
 {{ CLI_NAME }} deploy <team name> --environment=<environment name>
 ```
 
-You can also promote any existing deployment to an environment using the _Promote to Environment_ button at the top of the deployment view:
+You can also promote any existing deployment to an environment using the _PROMOTE TO ENVIRONMENT_ button at the top of the deployment view:
 
 ![promote](/images/environments/promote.png)
 
@@ -40,7 +40,7 @@ When configuring CI, we recommend:
 
 ## Production Environment
 
-To ensure that your production environment gets priority over all other environments during periods of high traffic, mark it as "production" by selecting this option during creation:
+To ensure that your production environment gets priority over all other environments during periods of high traffic, mark it as _production_ by selecting this option during creation:
 
 ![promote](/images/environments/production.png)
 
@@ -91,7 +91,7 @@ shown in the example above.
 {{ PRODUCT_NAME }} automatically injects the following environment variables:
 
 - `NODE_ENV`: Set to `production` by default, but you can override this through the console.
-- `{{ PRODUCT_NAME_UPPER }}_ENVIRONMENT_NAME`: The name of the environment (e.g. `default`, `production` and so on). This cannot be overriden by you.
+- `{{ PRODUCT_NAME_UPPER }}_ENVIRONMENT_NAME`: The name of the environment (e.g. `default`, `production` and so on). This cannot be overridden by you.
 
 ### Accessing Environment Variables at Build Time
 

@@ -1,7 +1,7 @@
 const PRODUCT_NAME = 'Layer0'
 const PRODUCT_NAME_LOWER = PRODUCT_NAME.toLowerCase()
 const PRODUCT_NAME_UPPER = PRODUCT_NAME.toUpperCase()
-const CLI_NAME = 'layer0'
+const CLI_NAME = '0'
 const PACKAGE_NAME = '@layer0'
 const CONFIG_FILE = 'layer0.config.js'
 const HEADER_PREFIX = 'x-0'
@@ -48,7 +48,7 @@ const EXAMPLES_REPOS = {
   'static-vue': 'https://github.com/layer0-docs/layer0-static-vuejs-example',
 }
 
-const SYSTEM_REQUIREMENTS = `## System requirements
+const SYSTEM_REQUIREMENTS = `## System Requirements
 
 - [Install Node.js 14.0](/guides/install-nodejs)`
 

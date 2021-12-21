@@ -57,19 +57,19 @@ app.layer0.co
 
 The `xdn` field in the access logs has been renamed to `layer0`: https://docs.layer0.co/guides/logs#section_access_logs
 
-#### Response Headers
+### Response Headers
 
 The prefixes of the response headers have changed from `x-xdn-*` to `x-0-*`. For example, `x-xdn-t` is now `x-0-t`.
 
-#### Cookies
+### Cookies
 
 The prefixes of the cookies have changed from `xdn` to `layer0`. For example, `xdn_destination` is now `layer0_destination`.
 
-#### REST API
+### REST API
 
 If you are using the REST API, it is recommended to update to the new endpoint, https://app.layer0.co/api/v1/.
 
-#### Cache Manifest
+### Cache Manifest
 
 The file `/__xdn__/cache-manifest.js` has changed to `/__layer0__/cache-manifest.js`. A quick way of implementing this change is to add redirect in your existing routes config:
 

@@ -84,7 +84,7 @@
         "href": "/guides/[...guide]"
       },
       {
-        "text": "Common Patterns",
+        "text": "Common Routing Patterns",
         "as": "/guides/cookbook",
         "href": "/guides/[...guide]"
       },

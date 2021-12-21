@@ -32,7 +32,7 @@ Build your project and verify everything is functioning as expected. You should 
 
 Once you deploy the new version of Layer0, your Edge links will change to have the format `*.layer0-limelight.link`. Your current edge links will switch to the new format on the next deployment for that environment. Old edge links may continue to work correctly for a while but they are considered deprecated and will be turned off without further notice. Permalinks will remain `*.free.layer0-perma.link`.
 
-## DNS will need updating for custom domains
+## DNS will Need Updating for Custom Domains
 
 If you have a custom domain pointing to Layer0, you will need to update your A/CNAME record. To obtain the new network details, navigate to https://app.layer0.co and go to your site. Click the _Environments_ tab and choose the environment that has the custom domain. From there, click on the _Networking_ tab.
 
@@ -49,4 +49,32 @@ During deployment, the Layer0 CLI connects to the following domains. Please whit
 ```
 upload.build.layer0.co
 app.layer0.co
+```
+
+## Changes from 1.x/2.x to 4.x
+
+### Access Logs
+
+The `xdn` field in the access logs has been renamed to `layer0`: https://docs.layer0.co/guides/logs#section_access_logs
+
+#### Response Headers
+
+The prefixes of the response headers have changed from `x-xdn-*` to `x-0-*`. For example, `x-xdn-t` is now `x-0-t`.
+
+#### Cookies
+
+The prefixes of the cookies have changed from `xdn` to `layer0`. For example, `xdn_destination` is now `layer0_destination`.
+
+#### REST API
+
+If you are using the REST API, it is recommended to update to the new endpoint, https://app.layer0.co/api/v1/.
+
+#### Cache Manifest
+
+The file `/__xdn__/cache-manifest.js` has changed to `/__layer0__/cache-manifest.js`. A quick way of implementing this change is to add redirect in your existing routes config:
+
+```js
+router.match('/__xdn__/cache-manifest.js', ({ redirect }) => {
+  redirect('/__layer0__/cache-manifest.js')
+})
 ```

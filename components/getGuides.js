@@ -9,7 +9,7 @@ export async function getGuides(version) {
     : require('../guides/guides.json')
 
   each(guides, guide => {
-    if (guide.items) {
+    if (!guide.ordered && guide.items) {
       guide.items = sortBy(guide.items, item => item.text.toLowerCase())
     }
   })

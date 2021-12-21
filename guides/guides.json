@@ -1,6 +1,7 @@
 [
   {
     "text": "Get Started",
+    "ordered": true,
     "items": [
       {
         "text": "WebApp CDN",
@@ -433,7 +434,7 @@
         "text": "Cookies",
         "as": "/guides/cookies",
         "href": "/guides/[...guide]"
-      },      
+      },
       {
         "text": "Bots",
         "as": "/guides/bots",

@@ -447,13 +447,8 @@
         "href": "/guides/[...guide]"
       },
       {
-        "text": "v3 Migration Guide",
-        "as": "/guides/layer0_migration",
-        "href": "/guides/[...guide]"
-      },
-      {
         "text": "v4 Migration Guide",
-        "as": "/guides/layer0_migration_v4",
+        "as": "/guides/layer0_migration",
         "href": "/guides/[...guide]"
       },
       {

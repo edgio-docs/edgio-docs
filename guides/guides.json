@@ -88,11 +88,6 @@
         "href": "/guides/[...guide]"
       },
       {
-        "text": "GraphQL",
-        "as": "/guides/graphql",
-        "href": "/guides/[...guide]"
-      },
-      {
         "text": "Split Testing",
         "as": "/guides/split_testing",
         "href": "/guides/[...guide]"

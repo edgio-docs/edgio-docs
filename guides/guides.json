@@ -1,6 +1,7 @@
 [
   {
     "text": "Get Started",
+    "ordered": true,
     "items": [
       {
         "text": "WebApp CDN",
@@ -83,7 +84,7 @@
         "href": "/guides/[...guide]"
       },
       {
-        "text": "Common Patterns",
+        "text": "Common Routing Patterns",
         "as": "/guides/cookbook",
         "href": "/guides/[...guide]"
       },
@@ -433,7 +434,7 @@
         "text": "Cookies",
         "as": "/guides/cookies",
         "href": "/guides/[...guide]"
-      },      
+      },
       {
         "text": "Bots",
         "as": "/guides/bots",
@@ -480,7 +481,7 @@
         "href": "/guides/[...guide]"
       },
       {
-        "text": "v3 Migration Guide",
+        "text": "v4 Migration Guide",
         "as": "/guides/layer0_migration",
         "href": "/guides/[...guide]"
       },

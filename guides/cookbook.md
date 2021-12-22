@@ -1,4 +1,4 @@
-# Cookbook
+# Common Routing Patterns
 
 This guide gives examples of common routing patterns using {{ PRODUCT_NAME }}.
 

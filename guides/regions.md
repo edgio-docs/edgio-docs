@@ -5,7 +5,7 @@
 {{ PRODUCT_NAME }} has multiple global regions in which it will automatically provision the following:
 
 - compute resources that run your code in two geographically close but entirely separate data centers (see [high availability](overview#section_high_availability))
-- a level 2 cache to maximize the global cache hit rate and reduces traffic to your servers
+- a level 2 cache to maximize the global cache hit rate and reduce traffic to your servers
 
 ## Edge POPs
 
@@ -38,6 +38,6 @@
 
 _\* = Multiple POPs_
 
-Enterprise customers you can choose in which region workloads run. If you have particular needs, other regions can be configured specifically for you.
+Enterprise customers can choose in which region workloads run. If you have particular needs, other regions can be configured specifically for you.
 
-All free tier workloads run in Eastern US region.
+All free tier workloads run in the Eastern US region.

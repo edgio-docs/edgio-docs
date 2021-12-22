@@ -1,6 +1,6 @@
 # GraphQL
 
-{{ PRODUCT_NAME }} provides full support for caching GraphQL APIs. Putting Layer0 in front of you GraphQL API can significantly improve its performance while reducing the amount of traffic that reaches your origin by serving cached queries from the network edge.
+{{ PRODUCT_NAME }} provides full support for caching GraphQL APIs. Putting Layer0 in front of your GraphQL API can significantly improve its performance while reducing the amount of traffic that reaches your origin by serving cached queries from the network edge.
 
 ![video](https://youtu.be/GuezGiCj8ec)
 
@@ -47,7 +47,7 @@ module.exports = {
 
 There are two ways to cache GraphQL responses using Layer0: by adding caching rules to your Layer0 router or by using the `cache-control` header.
 
-### Using the {{ PRODUCT_NAME }} router
+### Using the {{ PRODUCT_NAME }} Router
 
 Imagine you have a query named `GetProduct`:
 
@@ -90,7 +90,7 @@ export default new Router().graphqlOperation(/product/i, ({ cache, proxy }) => {
 })
 ```
 
-#### Alter the default GraphQL API path
+#### Alter the Default GraphQL API Path
 
 Most GraphQL APIs are hosted on the `/graphql` path. The `graphqlOperation` method will only match requests sent to `/graphql` by default. To use a different path, specify the `path` option:
 
@@ -108,7 +108,7 @@ export default new Router().graphqlOperation(
 
 ### Use the Cache-Control Header
 
-{{ PRODUCT_NAME }} supports caching GraphQL responses at the network edge using the standard `cache-control` HTTP response header. For example, to cache the results of a query for one hour, adding the following header to your response:
+{{ PRODUCT_NAME }} supports caching GraphQL responses at the network edge using the standard `cache-control` HTTP response header. For example, to cache the results of a query for one hour, add the following header to your response:
 
 ```
 cache-control: max-age=3600
@@ -125,7 +125,7 @@ cache-control: max-age=3600, stale-while-revalidate=86400
 Regardless of the method you choose to define caching rules, Layer0 incorporates the request body into the cache key for all `POST` requests. This means that if two requests have different request bodies,
 their responses will be cached separately.
 
-## Invalidate stale queries
+## Invalidate Stale Queries
 
 Layer0 gives you the ability to purge individual queries from the edge cache by assigning surrogate keys to each cached response.
 
@@ -152,7 +152,7 @@ export default new Router().graphqlOperation('GetProduct', ({ cache, proxy }) =>
 })
 ```
 
-#### Use the x-0-surrogate-key response header
+#### Use the x-0-surrogate-key Response Header
 
 You can also assign surrogate keys by adding an `x-0-surrogate-key` header to the response from the origin. Separate multiple keys with spaces:
 
@@ -160,7 +160,7 @@ You can also assign surrogate keys by adding an `x-0-surrogate-key` header to th
 x-0-surrogate-key: key1 key2 key3
 ```
 
-#### Handle conflicts
+#### Handle Conflicts
 
 If the origin returns an `x-0-surrogate-key` response header and `deriveSurrogateKeysFromJson` is also used for a given request, you can specify whether the surrogate keys should be merged, or the ones
 from the router should override those in the origin response:

@@ -47,7 +47,7 @@ jobs:
           aws-region: us-east-1
       - name: Sync guides to latest version path
         run: |
-          mkdir s3
+          mkdir -p s3
           aws s3 sync s3://layer0-docs ./s3  --delete
           cd s3
           VERSION=$(tail -n 1 versions.csv)

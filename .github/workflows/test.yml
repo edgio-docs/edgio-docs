@@ -1,10 +1,10 @@
-name: Deploy to production
+name: Test
 on:
-  # push:
-  #   branches:
-  #     - master
+  push:
+    branches:
+      - test-cache
 jobs:
-  deploy-to-layer0:
+  test:
     runs-on: ubuntu-latest
     steps:
       - name: Extract branch name
@@ -34,7 +34,7 @@ jobs:
         env:
           cache-name: cache-s3-guides
         with:
-          path: s3
+          path: ./s3
           key: ${{ runner.os }}-build-${{ env.cache-name }}
           restore-keys: |
             ${{ runner.os }}-build-${{ env.cache-name }}
@@ -56,12 +56,3 @@ jobs:
           cp ../guides/guides.json ${VERSION}/guides.json
           cp ../guides/guides.json current/guides.json
           aws s3 sync . s3://layer0-docs --delete
-      - name: Deploy to Layer0
-        run: npm run deploy -- --branch=$BRANCH_NAME --token=${{secrets.layer0_deploy_token}} --environment=production
-      - name: Crawl Docs
-        run: |
-          docker run \
-          -e APPLICATION_ID=${{ secrets.ALGOLIA_APP_ID }} \
-          -e API_KEY=${{ secrets.ALGOLIA_API_KEY }} \
-          -e CONFIG="$(cat ./docs.config.json | jq -r tostring)" \
-          algolia/docsearch-scraper

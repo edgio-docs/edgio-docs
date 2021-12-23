@@ -1,5 +1,9 @@
 name: Deploy to stage
-on: [push]
+on:
+  push:
+    branches:
+      - '*'
+      - '!master'
 jobs:
   deploy-to-layer0:
     runs-on: ubuntu-latest

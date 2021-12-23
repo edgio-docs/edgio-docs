@@ -34,7 +34,7 @@ jobs:
         env:
           cache-name: cache-s3-guides
         with:
-          path: ~/s3
+          path: s3
           key: ${{ runner.os }}-build-${{ env.cache-name }}
           restore-keys: |
             ${{ runner.os }}-build-${{ env.cache-name }}

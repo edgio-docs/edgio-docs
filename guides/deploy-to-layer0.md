@@ -14,7 +14,7 @@ An example Deploy Button using the following HTML snippet.
 
 Use the snippets below in your Git repositories for users to deploy.
 ```markdown
-[![Deploy with Layer0](https://docs.layer0.co/button.svg)](https://app.layer0.co/deploy?repo=https%3A%2F%2Fgithub.com%2Flayer0-docs%2Flayer0-nextjs-example)
+[![Deploy with Layer0](https://docs.layer0.co/button.svg)](https://app.layer0.co/deploy?repo=https://github.com/layer0-docs/layer0-nextjs-example)
 ```
 
 ## Creating Your Own Deploy Button

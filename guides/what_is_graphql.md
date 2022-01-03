@@ -76,7 +76,7 @@ GraphQL supports the following built-in scalar types:
 
 GraphQL also supports programmer-defined objects, usually data resources.
 
-**_NOTE:_** Query and Mutation operations are types.
+**NOTE:** Query and Mutation operations are types.
 
 ## GraphQL Schemas
 

@@ -22,6 +22,7 @@ import Razzle from './razzle.svg'
 import SvelteIcon from './svelte.svg'
 import SwellIcon from './swell.svg'
 import RazzlePng from './razzle.png'
+import Dojo from './dojo.svg'
 import MkDocsIcon from '@material-ui/icons/Book'
 import AstroIcon from './astro.svg'
 import JekyllIcon from './jekyll.svg'
@@ -40,6 +41,8 @@ import Saber from './saber.svg'
 import Preact from './preact.svg'
 import Eleventy from './eleventy.svg'
 import Zola from './zola.svg'
+import SolidJS from './solid.svg'
+import UmiJS from './umijs.svg'
 
 import clsx from 'clsx'
 
@@ -86,7 +89,10 @@ export const icons = {
   preact: Preact,
   eleventy: Eleventy,
   brunch: Brunch,
-  zola: Zola
+  zola: Zola,
+  dojo: Dojo,
+  solid: SolidJS,
+  umijs: UmiJS
 }
 
 export const styles = theme => ({

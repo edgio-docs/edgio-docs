@@ -1,6 +1,7 @@
 [
   {
     "text": "Get Started",
+    "ordered": true,
     "items": [
       {
         "text": "WebApp CDN",
@@ -83,13 +84,8 @@
         "href": "/guides/[...guide]"
       },
       {
-        "text": "Common Patterns",
+        "text": "Common Routing Patterns",
         "as": "/guides/cookbook",
-        "href": "/guides/[...guide]"
-      },
-      {
-        "text": "GraphQL",
-        "as": "/guides/graphql",
         "href": "/guides/[...guide]"
       },
       {
@@ -190,6 +186,12 @@
         "text": "Docusaurus",
         "icon": "docusaurus",
         "as": "/guides/docusaurus",
+        "href": "/guides/[...guide]"
+      },
+      {
+        "text": "Dojo",
+        "icon": "dojo",
+        "as": "/guides/dojo",
         "href": "/guides/[...guide]"
       },
       {
@@ -349,6 +351,12 @@
         "href": "/guides/[...guide]"
       },
       {
+        "text": "SolidJS",
+        "icon": "solid",
+        "as": "/guides/solid",
+        "href": "/guides/[...guide]"
+      },
+      {
         "text": "Spartacus",
         "icon": "spartacus",
         "as": "/guides/spartacus",
@@ -376,6 +384,18 @@
         "text": "Swell",
         "icon": "swell",
         "as": "/guides/swell",
+        "href": "/guides/[...guide]"
+      },
+      {
+        "text": "UmiJS",
+        "icon": "umijs",
+        "as": "/guides/umijs",
+        "href": "/guides/[...guide]"
+      },
+      {
+        "text": "VitePress",
+        "icon": "vue",
+        "as": "/guides/vitepress",
         "href": "/guides/[...guide]"
       },
       {
@@ -421,7 +441,7 @@
         "text": "Cookies",
         "as": "/guides/cookies",
         "href": "/guides/[...guide]"
-      },      
+      },
       {
         "text": "Bots",
         "as": "/guides/bots",
@@ -468,7 +488,7 @@
         "href": "/guides/[...guide]"
       },
       {
-        "text": "v3 Migration Guide",
+        "text": "v4 Migration Guide",
         "as": "/guides/layer0_migration",
         "href": "/guides/[...guide]"
       },

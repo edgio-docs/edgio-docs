@@ -1,6 +1,6 @@
 # GraphQL
 
-{{ PRODUCT_NAME }} provides full support for caching GraphQL APIs. Putting Layer0 in front of you GraphQL API can significantly improve its performance while reducing the amount of traffic that reaches your origin by serving cached queries from the network edge.
+{{ PRODUCT_NAME }} provides full support for caching GraphQL APIs. Putting Layer0 in front of your GraphQL API can significantly improve its performance while reducing the amount of traffic that reaches your origin by serving cached queries from the network edge.
 
 ![video](https://youtu.be/GuezGiCj8ec)
 
@@ -14,7 +14,7 @@
 [View the Code](https://github.com/layer0-docs/layer0-nextjs-graphql-example?button)
 [Deploy to Layer0](https://app.layer0.co/deploy?button&deploy&repo=https%3A%2F%2Fgithub.com%2Flayer0-docs%2Flayer0-nextjs-graphql-example)
 
-This sections below walk you through configuring your {{ PRODUCT_NAME }} project and creating the necessary routing rules to cache GraphQL responses.
+The sections below walk you through configuring your {{ PRODUCT_NAME }} project and creating the necessary routing rules to cache GraphQL responses.
 
 ## Project Configuration
 
@@ -27,7 +27,7 @@ $ {{ CLI_NAME }} init
 
 For more information on adding {{ PRODUCT_NAME }} to an existing app, see [Getting Started](/guides/getting_started#section_adding_layer0_to_an_existing_app).
 
-### Configuring the Origin
+### Configure the Origin
 
 To configure the origin domain from which your GraphQL API is served, add a backend to `{{ CONFIG_FILE }}`. For example:
 
@@ -43,11 +43,11 @@ module.exports = {
 }
 ```
 
-## Adding Caching Rules
+## Add Caching Rules
 
 There are two ways to cache GraphQL responses using Layer0: by adding caching rules to your Layer0 router or by using the `cache-control` header.
 
-### Using the {{ PRODUCT_NAME }} router
+### Using the {{ PRODUCT_NAME }} Router
 
 Imagine you have a query named `GetProduct`:
 
@@ -80,7 +80,7 @@ export default new Router().graphqlOperation('GetProduct', ({ cache, proxy }) =>
 })
 ```
 
-#### Matching Operations by Regular Expression
+#### Match Operations by Regular Expression
 
 The `graphqlOperation` method also allows you to match operations using a regular expression:
 
@@ -90,7 +90,7 @@ export default new Router().graphqlOperation(/product/i, ({ cache, proxy }) => {
 })
 ```
 
-#### Altering the default GraphQL API path
+#### Alter the Default GraphQL API Path
 
 Most GraphQL APIs are hosted on the `/graphql` path. The `graphqlOperation` method will only match requests sent to `/graphql` by default. To use a different path, specify the `path` option:
 
@@ -106,9 +106,9 @@ export default new Router().graphqlOperation(
 )
 ```
 
-### Using the cache-control header
+### Use the Cache-Control Header
 
-{{ PRODUCT_NAME }} supports caching GraphQL responses at the network edge using the standard `cache-control` HTTP response header. For example, to cache the results of a query for one hour, adding the following header to your response:
+{{ PRODUCT_NAME }} supports caching GraphQL responses at the network edge using the standard `cache-control` HTTP response header. For example, to cache the results of a query for one hour, add the following header to your response:
 
 ```
 cache-control: max-age=3600
@@ -125,15 +125,15 @@ cache-control: max-age=3600, stale-while-revalidate=86400
 Regardless of the method you choose to define caching rules, Layer0 incorporates the request body into the cache key for all `POST` requests. This means that if two requests have different request bodies,
 their responses will be cached separately.
 
-## Invalidating stale queries
+## Invalidate Stale Queries
 
 Layer0 gives you the ability to purge individual queries from the edge cache by assigning surrogate keys to each cached response.
 
-### Assigning Surrogate Keys
+### Assign Surrogate Keys
 
 To invalidate a cached query, you must first assign a surrogate key to the response before it is cached. You can do this using the router:
 
-#### Using deriveSurrogateKeysFromJson
+#### Use deriveSurrogateKeysFromJson
 
 ```js
 // routes.js
@@ -152,7 +152,7 @@ export default new Router().graphqlOperation('GetProduct', ({ cache, proxy }) =>
 })
 ```
 
-#### Using the x-0-surrogate-key response header
+#### Use the x-0-surrogate-key Response Header
 
 You can also assign surrogate keys by adding an `x-0-surrogate-key` header to the response from the origin. Separate multiple keys with spaces:
 
@@ -160,7 +160,7 @@ You can also assign surrogate keys by adding an `x-0-surrogate-key` header to th
 x-0-surrogate-key: key1 key2 key3
 ```
 
-#### Handling conflicts
+#### Handle Conflicts
 
 If the origin returns an `x-0-surrogate-key` response header and `deriveSurrogateKeysFromJson` is also used for a given request, you can specify whether the surrogate keys should be merged, or the ones
 from the router should override those in the origin response:
@@ -177,7 +177,7 @@ To ignore the surrogate keys from the origin:
 deriveSurrogateKeysFromJson(json => [`product.${json.id}`], { onConflict: 'override' })
 ```
 
-### Purging by Surrogate Key
+### Purge by Surrogate Key
 
 To purge all responses with a given surrogate key, use the {{ PRODUCT_NAME }} CLI's [cache-clear](/guides/cli#section_cache_clear) command.
 
@@ -185,6 +185,6 @@ To purge all responses with a given surrogate key, use the {{ PRODUCT_NAME }} CL
 layer0 cache-clear --team=my-team --site=my-site --environment=production --surrogate-key="product.1"
 ```
 
-[More information on clearing the cache from the CLI](/guides/cli#section_cache_clear)
+For more information, see [clearing the cache from the CLI](/guides/cli#section_cache_clear).
 
 You can also purge responses by surrogate key [via the REST API](/guides/rest_api#section_clear_cache) by specifying the `surrogateKeys` option.

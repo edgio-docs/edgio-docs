@@ -71,7 +71,7 @@ Update `{{ CONFIG_FILE }}` at the root of your project to the following:
 // This file was automatically added by layer0 deploy.
 // You should commit this file to source control.
 module.exports = {
-  connector: '@{{ CLI_NAME }}/express',
+  connector: '@{{ PACKAGE_NAME }}/express',
   express: {
     appPath: './server/index.js',
   },
@@ -91,7 +91,7 @@ Update `routes.js` at the root of your project to the following:
 const ONE_HOUR = 60 * 60
 const ONE_DAY = 24 * ONE_HOUR
 
-const { Router } = require('@{{ CLI_NAME }}/core/router')
+const { Router } = require('@{{ PACKAGE_NAME }}/core/router')
 
 module.exports = new Router()
   .match('/', ({ cache }) => {

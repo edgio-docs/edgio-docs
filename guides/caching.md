@@ -140,9 +140,9 @@ This allows you to cache different content, depending on the type of device in t
 
 Customizing caching keys is a very powerful tool to make your site faster. At the same time, it is easy to apply it too broadly causing a loss of performance due to lower cache hit ratio. The key to correctly using cache customization is to apply it judiciously and narrowly for specific routes.
 
-### Caching Responses for POST and other non-GET/HEAD requests
+### Caching Responses for POST and other non-GET/HEAD Requests
 
-{{ PRODUCT_NAME }} only supports caching responses for `GET` and `HEAD` requests. Some APIs, particularly those implemented with GraphQL, use `POST` requests by default, with queries being sent through request body. See [Prefetching - GraphQL](prefetching#section_graphql) for more information on caching GraphQL with {{ PRODUCT_NAME }}.
+{{ PRODUCT_NAME }} only supports caching responses for `GET` and `HEAD` requests. Some APIs, particularly those implemented with GraphQL, use `POST` requests by default, with queries being sent through the request body. See [Prefetching - GraphQL](prefetching#section_graphql) for more information on caching GraphQL with {{ PRODUCT_NAME }}.
 
 ### Caching Private Responses
 
@@ -162,9 +162,9 @@ router.get('/some/path', ({ cache }) => {
 
 Note that this feature cannot be safely used with caching of `POST` and similar requests. If your signal that something must not be cached is through `private` but then you force caching of `private` responses, **all responses will be cached**.
 
-## Achieving 100% cache hit rates
+## Achieving 100% Cache Hit Rates
 
-The key to really successful cache hit rates, is leveraging `staleWhileRevalidate` in conjunction with `maxAge`. There is a very detailed [article](https://web.dev/stale-while-revalidate/) available from web.dev that covers this concept in more detail. The main points to know is this
+The key to really successful cache hit rates is leveraging `staleWhileRevalidate` in conjunction with `maxAge`. There is a very detailed [article](https://web.dev/stale-while-revalidate/) available from web.dev that covers this concept in more detail. The main points to know is this
 
 - `maxAge` defines the hard cache limit. An asset will be cached this amount of time regardless.
 - `staleWhileRevalidate` defines an additional cache buffer limit past `maxAge` where cache content will still be returned to a client, but a network request will be issued to origin to check for new content.
@@ -187,11 +187,11 @@ Cache-Control: max-age=1, stale-while-revalidate=59
 
 ![maxAge staleWhileRevalidate diagram](images/caching/stale-max-age.png)
 
-## Preventing a response from being cached
+## Preventing a Response from being Cached
 
 By default, {{ PRODUCT_NAME }} will cache responses that satisfy all of the following conditions:
 
-1. The response must correspond to a `GET` or `HEAD` request. To override this, see [POST and other non-GET/HEAD](#section_caching_responses_for_post_and_other_non_get_head_requests) section.
+1. The response must correspond to a `GET` or `HEAD` request. To override this, see the [_POST and other non-GET/HEAD_](#section_caching_responses_for_post_and_other_non_get_head_requests) section.
 2. The response status must have a status code of 1xx, 2xx or 3xx. You cannot override this.
 3. The response must not not have any `set-cookie` headers. You cannot override this, but you can use `removeUpstreamResponseHeader('set-cookie')` to remove `set-cookie` headers.
 4. The response must have a valid `cache-control` header that includes a positive `max-age` or `s-maxage` and does not include a `private` clause. You can override this by using [router caching](#section_caching_a_response) and [forcing private responses](#section_caching_private_responses).
@@ -237,7 +237,7 @@ The response was not cached because the edge caching was explicitly [disabled](#
 
 ### no-max-age
 
-The response was not cached because no was no `cache-control` response header with a non-zero `max-age` or `s-maxage` value. To cache the response, call `cache` in your route handler with `edge.maxAgeSeconds` set. For example:
+The response was not cached because there was no `cache-control` response header with a non-zero `max-age` or `s-maxage` value. To cache the response, call `cache` in your route handler with `edge.maxAgeSeconds` set. For example:
 
 ```js
 new Router().get('/', ({ cache }) => {
@@ -308,11 +308,11 @@ The cache will automatically be cleared when you make changes to your router. A 
 - `edge.staleWhileRevalidateSeconds` is not yet implemented. Only `edge.maxAgeSeconds` is used to set the cache time to live.
 - `edge.key` is not supported. Cache keys are always based solely on url, method, the `accept-encoding` and `host` headers, and body.
 
-## Ensuring versioned browser assets are permanently available
+## Ensuring Versioned Browser Assets are Permanently Available
 
 In order to ensure that users who are actively browsing your site do not experience issues during a deployment, developers can
 configure certain client-side assets to be permanently available, even after a new version of the site has been deployed. For example,
-browsers using on an old version of the site may continue to request JavaScript chunks for the old version of the site for some time after a new
+browsers using an old version of the site may continue to request JavaScript chunks for the old version of the site for some time after a new
 version is deployed. {{ PRODUCT_NAME }} automatically makes client-side scripts permanently available if you use Next.js, Nuxt.js, Angular, or Sapper.
 
 If you are using another framework or would like to make sure a particular asset is permanently available, you can do so by setting the `permanent` option in `serveStatic`. For example:

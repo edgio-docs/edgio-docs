@@ -20,7 +20,7 @@ Check out our video [{{ PRODUCT_NAME }} - What & Why](https://www.youtube.com/wa
 
 ### L2 Shield Cache
 
-{{ PRODUCT_NAME }} employs an L2 cache that maximizes global cache hit rates and reduces traffic on your servers by coalescing requests. If more than one request for a given URL arrives at the L2 cache simultaneously, all but one are held up while the result is retreived from a JS worker. All requests are fulfilled with the same response. This reduces the concurrent load on your APIs and allows you to run with lower costs.
+{{ PRODUCT_NAME }} employs an L2 cache that maximizes global cache hit rates and reduces traffic on your servers by coalescing requests. If more than one request for a given URL arrives at the L2 cache simultaneously, all but one are held up while the result is retrieved from a JS worker. All requests are fulfilled with the same response. This reduces the concurrent load on your APIs and allows you to run with lower costs.
 
 ### JS Workers
 
@@ -28,7 +28,7 @@ Check out our video [{{ PRODUCT_NAME }} - What & Why](https://www.youtube.com/wa
 
 ## Speed
 
-{{ PRODUCT_NAME }} makes it possible to deliver subsecond page load-times and instantaneous client-side page transitions through the use of prefetching and caching. It empowers developers to optimize performance by leveraging powerful caching and edge logic capabilities right from their application code using an {{ EDGEJS_LABEL }} JavaScript API. Rather than manually configuring your CDN through a web portal, {{ PRODUCT_NAME }} allows you to put your edge logic in code, so that it's source-controlled, reviewed, and tested using the same software development lifecycle as the rest of your vital application code. You can even A/B test edge logic in production!
+{{ PRODUCT_NAME }} makes it possible to deliver sub-second page load-times and instantaneous client-side page transitions through the use of prefetching and caching. It empowers developers to optimize performance by leveraging powerful caching and edge logic capabilities right from their application code using an {{ EDGEJS_LABEL }} JavaScript API. Rather than manually configuring your CDN through a web portal, {{ PRODUCT_NAME }} allows you to put your edge logic in code, so that it's source-controlled, reviewed, and tested using the same software development lifecycle as the rest of your vital application code. You can even A/B test edge logic in production!
 
 ```js
 // Example {{ PRODUCT_NAME }} routes file for a Next.js app

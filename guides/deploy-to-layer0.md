@@ -12,7 +12,8 @@ An example Deploy Button using the following HTML snippet.
 
 ## Snippets
 
-Use the snippets below in your Git repositories for users to deploy.
+Use the snippets below in your Git repository to enable users to deploy the repository directly to Layer0.
+
 ```markdown
 [![Deploy with Layer0](https://docs.layer0.co/button.svg)](https://app.layer0.co/deploy?repo=https://github.com/layer0-docs/layer0-nextjs-example)
 ```

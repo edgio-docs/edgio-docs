@@ -76,9 +76,10 @@ The handler function passed into a route match will determine the behavior of th
 import { CACHE_PAGES } from './cache'
 import { RouteHandler } from '{{ PACKAGE_NAME }}/core/router/Router'
 
-const handler: RouteHandler = async ({ cache, removeResponseHeader, proxy }) => {
+const handler: RouteHandler = async ({ cache, removeUpstreamResponseHeader, updateResponseHeader, proxy }) => {
   cache(CACHE_PAGES)
   removeUpstreamResponseHeader('set-cookie') // The presence of a set-cookie header would prevent the response from being cached, so ensure set-cookie headers are removed.
+  // updateResponseHeader('location', /https:\/\/origin.site.com\//gi, '/') // Makes 302 redirects relative. Uncomment if existing origin site issues 302s with full domain
   proxy('origin')
 }
 

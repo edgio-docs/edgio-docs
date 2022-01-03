@@ -42,6 +42,7 @@ import Preact from './preact.svg'
 import Eleventy from './eleventy.svg'
 import Zola from './zola.svg'
 import SolidJS from './solid.svg'
+import UmiJS from './umijs.svg'
 
 import clsx from 'clsx'
 
@@ -90,7 +91,8 @@ export const icons = {
   brunch: Brunch,
   zola: Zola,
   dojo: Dojo,
-  solid: SolidJS
+  solid: SolidJS,
+  umijs: UmiJS
 }
 
 export const styles = theme => ({

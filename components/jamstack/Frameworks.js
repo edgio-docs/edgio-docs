@@ -274,6 +274,12 @@ const frameworkItems = [
     text: 'SolidJS',
   },
   {
+    guide: '/guides/umijs',
+    framework: 'umijs',
+    icon: 'umijs',
+    text: 'UmiJS',
+  },
+  {
     guide: '/guides/ionic_react',
     framework: 'ionic_react',
     icon: 'ionic_react',

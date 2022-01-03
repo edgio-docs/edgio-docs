@@ -387,6 +387,12 @@
         "href": "/guides/[...guide]"
       },
       {
+        "text": "UmiJS",
+        "icon": "umijs",
+        "as": "/guides/umijs",
+        "href": "/guides/[...guide]"
+      },
+      {
         "text": "VitePress",
         "icon": "vue",
         "as": "/guides/vitepress",

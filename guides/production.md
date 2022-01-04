@@ -136,7 +136,7 @@ __Note:__ If you already have an existing certificate, you can use it by skippin
 
    If the result of the CAA DNS query is empty, it means that **any** Certificate Authority is allowed to generate certificates on that domain. If so, you can directly go to the next step.
 
-   If there are already some CAA DNS entries defined on your domain, and if _Let's Encrypt_'s CAA entry is not among those, you will have to add an additionnal CCA entry for _Let's Encrypt_.
+   If there are already some CAA DNS entries defined on your domain, and if _Let's Encrypt_'s CAA entry is not among those, you will have to add an additional CCA entry for _Let's Encrypt_.
 
    To do so, log into your DNS provider, and add a `CAA` type DNS record with the following values:
 

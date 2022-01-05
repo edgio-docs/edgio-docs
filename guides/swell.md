@@ -166,7 +166,8 @@ Refer to the [Deploying](deploying) guide for more information on the `deploy` c
 + "consola": "2.15.3",
 + "build-url": "6.0.1",
 + "deepmerge": "4.2.2",
-+ "swell-js": "3.10.0"
++ "swell-js": "3.10.0",
++ "p-map": "5.2.0"
 }
 ```
 

@@ -12,7 +12,7 @@ If any point, you want a more [detailed guide](/guides/traditional_sites), we've
 
 ## Example
 
-[Try the WebApp CDN Example Site](https://github.com/layer0-docs/layer0-cdn-example?button)
+[Try the WebApp CDN Example Site](https://layer0-docs-cdn-starter-template-default.layer0-limelight.link/?button)
 [View the Code](https://github.com/layer0-docs/layer0-cdn-example?button)
 [Deploy to Layer0](https://app.layer0.co/deploy?button&deploy&repo=https://github.com/layer0-docs/layer0-cdn-example)
 

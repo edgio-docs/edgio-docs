@@ -155,7 +155,22 @@ Refer to the [Deploying](deploying) guide for more information on the `deploy` c
 
 ## Generate pages on demand
 
-Update the `routes.js` as following to enable ISG with your Swell app:
+1. To preserve packages that are imported in the `modules` directories required in the generating pages on the server, update `package.json` as follows:
+
+```diff
+"dependencies": {
+  "@nuxtjs/sitemap": "2.4.0",
+  "@nuxt/core": "2.15.7"
++ "lodash": "4.17.21",
++ "mitt": "2.1.0",
++ "consola": "2.15.3",
++ "build-url": "6.0.1",
++ "deepmerge": "4.2.2",
++ "swell-js": "3.10.0"
+}
+```
+
+2. Update the `routes.js` as following to enable ISG with your Swell app:
 
 ```js
 // This file was added by layer0 init.
@@ -181,4 +196,10 @@ module.exports = new Router()
     })
   })
   .use(nuxtRoutes)
+```
+
+3. Deploy!
+
+```bash
+   {{ CLI_NAME }} deploy
 ```

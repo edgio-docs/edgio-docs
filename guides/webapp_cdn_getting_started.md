@@ -43,8 +43,8 @@ npx @layer0/cli@latest init
 In the `src` folder, there are the following files:
 
 - `service-worker.ts`: prefetches content and stores in cache,
-- `shoppingFlowRouteHandler.ts`: implements caching rules,
-- `cache.ts`: contains values applied to caching rules in `shoppingFlowRouteHandler.ts`,
+- `route-handler.ts`: implements caching rules,
+- `cache.ts`: contains values applied to caching rules in `route-handler.ts`,
 - `routes.ts`: routes to be cached and prefetched are defined, as well as what to pass through without modification and what to serve up as static content,
 - `browser.ts`: entry point for the `main.js` javascript bundle which is added to the window.
 
@@ -59,7 +59,7 @@ At this point, the only item that should require changing is a path match. We su
 ```typescript
 // src/routes.ts
 import { Router } from '{{ PACKAGE_NAME }}/core/router'
-import shoppingFlowRouteHandler from './shoppingFlowRouteHandler'
+import shoppingFlowRouteHandler from './route-handler'
 
 export default new Router()
   .get('/', shoppingFlowRouteHandler)
@@ -72,7 +72,7 @@ export default new Router()
 The handler function passed into a route match will determine the behavior of the cache for the request. Abstracting this handler function, allows it to apply to multiple routes.
 
 ```typescript
-// src/shoppingFlowRouteHandler.ts
+// src/route-handler.ts
 import { CACHE_PAGES } from './cache'
 import { RouteHandler } from '{{ PACKAGE_NAME }}/core/router/Router'
 
@@ -97,7 +97,7 @@ const ONE_DAY = 24 * ONE_HOUR
 const ONE_YEAR = 365 * ONE_DAY
 
 /**
- * The default cache setting for pages in the shopping flow
+ * The default cache setting for pages in the route handler flow
  */
 export const CACHE_PAGES = {
   edge: {

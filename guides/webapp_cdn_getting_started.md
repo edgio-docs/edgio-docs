@@ -42,11 +42,11 @@ npx @layer0/cli@latest init
 
 In the `src` folder, there are the following files:
 
-- `service-worker.ts`: prefetches content and stores in cache,
-- `route-handler.ts`: implements caching rules,
-- `cache.ts`: contains values applied to caching rules in `route-handler.ts`,
-- `routes.ts`: routes to be cached and prefetched are defined, as well as what to pass through without modification and what to serve up as static content,
-- `browser.ts`: entry point for the `main.js` javascript bundle which is added to the window.
+- `service-worker.ts`: prefetches content and stores in cache
+- `route-handler.ts`: implements caching rules
+- `cache.ts`: contains values applied to caching rules in `route-handler.ts`
+- `routes.ts`: routes to be cached and prefetched are defined, as well as what to pass through without modification and what to serve up as static content
+- `browser.ts`: entry point for the `main.js` javascript bundle which is added to the window
 
 ## Configure Caching
 

@@ -153,7 +153,7 @@ Deploy the build to {{ PRODUCT_NAME }} by running the `{{ CLI_NAME }} deploy` co
 
 Refer to the [Deploying](deploying) guide for more information on the `deploy` command and its options.
 
-## Generate pages on demand
+## Bonus: Generate pages on demand
 
 1. To preserve packages that are imported in the `modules` directories required in the generating pages on the server, update `package.json` as follows:
 

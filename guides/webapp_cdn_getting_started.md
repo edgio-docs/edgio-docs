@@ -10,6 +10,12 @@ Deploying your web application behind Layer0 is the fastest and easiest way to s
 
 If any point, you want a more [detailed guide](/guides/traditional_sites), we've got that too.
 
+## Example
+
+[Try the WebApp CDN Example Site](https://github.com/layer0-docs/layer0-cdn-example?button)
+[View the Code](https://github.com/layer0-docs/layer0-cdn-example?button)
+[Deploy to Layer0](https://app.layer0.co/deploy?button&deploy&repo=https://github.com/layer0-docs/layer0-cdn-example)
+
 ## Network Diagram
 
 As shown below, {{ PRODUCT_NAME }} becomes the main CDN for your site:

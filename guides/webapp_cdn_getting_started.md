@@ -29,7 +29,7 @@ If you do not have an account yet, visit [{{ PRODUCT_NAME }}]({{ APP_URL }}/sign
 ## Create a New Layer0 Project
 
 ```bash
-npm i -g {{ PACKAGE_NAME }}/cli // yarn global add {{ PACKAGE_NAME }}/cli
+npm i -g {{ PACKAGE_NAME }}/cli # yarn global add {{ PACKAGE_NAME }}/cli
 ```
 
 Create your project by running:

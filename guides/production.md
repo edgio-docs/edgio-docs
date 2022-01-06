@@ -2,20 +2,47 @@
 
 This guide covers the steps you need to take your site live on {{ PRODUCT_NAME }} with a secure, custom domain.
 
-## Region
+Creating custom domains is always done in the context of of creating or updating an environment. 
 
-{{ PRODUCT_NAME }} enterprise customers can choose the [region](regions) in which their serverless functions will run, as well as the backup region to which traffic will be diverted in the event of an outage. Choose the regions that are closest to the datacenter which hosts your origin site or APIs.
+## Configuration Overview
 
-## Domains
+1. If needed, create an environment using instructions in  [Environments](./environments).
 
-Before going live, you must create a production environment and configure your domains. For more information on environments, see [Environments](./environments).
+2. Create the [Custom Domain](#section_domains).
+
+2. Do [Network Configuration](#section_network_configuration) (DNS and the IP allow list) for the domain. 
+
+2. Configure [TLS/SSL](#section_tls_ssl) for the domain.
+
+## Custom Domains
+
+Before going live, you must create a production environment and configure your domains.
 
 To configure your custom domains:
 
-1. Create an environment by navigating to your site and selecting _Environments_ > _New Environment_.
-2. Click _Edit_ to create a draft. Enter your domains here, save the changes, and activate:
+1) Navigate to a site, then open an existing environment or create a new environment. (To create an environment, use instructions in [Environments](./environments).)
 
-![domains](/images/production/domains.png)
+* For an existing environment, select the _ENVIRONMENTS_ tab header, then click an environment name in the list of environments. Continue with the numbered steps below.
+
+* For a new environment, the _DEPLOYMENTS_ tab is displayed. Continue with the following steps.
+
+2) Select the _CONFIGURATION_ tab header.
+
+![domains](/images/production/configurations-tab.png)
+
+3) Create a new draft version of the environment by clicking _EDIT_ at the top of the page.
+
+4) In the _Domains_ section, click _EDIT DOMAINS_.
+
+![domains](/images/production/domains-section.png)
+
+5) Enter a name in the _Edit Domains_ dialog, then click _APPLY_.
+
+![domainsSection](/images/production/domains.png)
+
+6) Click _ACTIVATE_ at the top of the page to enable the updated environment.
+
+![activateEnvironment](/images/production/activate-environment.png)
 
 ### Migrating from Fastly
 
@@ -24,7 +51,7 @@ If you're migrating to {{ PRODUCT_NAME }} from [Fastly](https://www.fastly.com/)
 - Contact [Fastly support](https://support.fastly.com/hc/en-us/requests/new?ticket_form_id=360000269711) and request that control of your domains be transferred to {{ PRODUCT_NAME }}. Be sure to explicitly list each domain that needs to be transferred and ask Fastly to contact support(at){{ DOMAIN }} if they need {{ PRODUCT_NAME }} to confirm the transfer.
 - Before going live with {{ PRODUCT_NAME }}, you will need to ensure that you've removed your domains from all active Fastly services. To remove domains from a service, clone the service, remove the domains, then activate the new version of the service. Once the new service version is activated you can add the domains to your {{ PRODUCT_NAME }} environment and activate it.
 
-## Network Configuration
+## Network Configuration 
 
 You can find the DNS and allowed IP configurations in the _Networking_ tab for your environment.
 
@@ -103,7 +130,7 @@ __Note:__ If you already have an existing certificate, you can use it by skippin
 
 {{ PRODUCT_NAME }} can generate SSL Certificates on your behalf using [_Let's Encrypt_](https://letsencrypt.org/). Certificates are free, valid for 3 months, and automatically renewed as long as the technical requirements, shown below, remain met:
 
-1. Make sure each environment is configured with the custom domains on which it will receive traffic. For more information on configuring custom domains, see [Domains](#section_domains) above.
+1. Make sure each environment is configured with the custom domains on which it will receive traffic. For more information on configuring custom domains, see [Custom Domains](#section_domains) above.
 
 2. Using your DNS provider, verify and possibly add a `CAA` record to allow _Let's Encrypt_ to generate certificates for your domains.
 

@@ -274,6 +274,12 @@ const frameworkItems = [
     text: 'SolidJS',
   },
   {
+    guide: '/guides/umijs',
+    framework: 'umijs',
+    icon: 'umijs',
+    text: 'UmiJS',
+  },
+  {
     guide: '/guides/ionic_react',
     framework: 'ionic_react',
     icon: 'ionic_react',
@@ -416,6 +422,12 @@ const frameworkItems = [
     framework: 'vuepress',
     icon: 'vue',
     text: 'VuePress',
+  },
+  {
+    guide: '/guides/vitepress',
+    framework: 'vitepress',
+    icon: 'vue',
+    text: 'VitePress',
   },
   {
     guide: '/guides/react_static',

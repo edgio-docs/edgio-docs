@@ -89,11 +89,6 @@
         "href": "/guides/[...guide]"
       },
       {
-        "text": "GraphQL",
-        "as": "/guides/graphql",
-        "href": "/guides/[...guide]"
-      },
-      {
         "text": "Split Testing",
         "as": "/guides/split_testing",
         "href": "/guides/[...guide]"
@@ -389,6 +384,18 @@
         "text": "Swell",
         "icon": "swell",
         "as": "/guides/swell",
+        "href": "/guides/[...guide]"
+      },
+      {
+        "text": "UmiJS",
+        "icon": "umijs",
+        "as": "/guides/umijs",
+        "href": "/guides/[...guide]"
+      },
+      {
+        "text": "VitePress",
+        "icon": "vue",
+        "as": "/guides/vitepress",
         "href": "/guides/[...guide]"
       },
       {

@@ -14,17 +14,17 @@
   "stop_urls": ["https://docs.layer0.co/docs/v.*"],
   "selectors": {
     "default": {
-      "lvl0": "h2",
+      "lvl0": "h1",
       "lvl1": {
-        "selector": "h3",
+        "selector": "h2,h3",
         "selectors_exclude": ["section"]
       },
       "lvl2": {
         "selector": "h4,h5",
         "selectors_exclude": [".tsd-returns-title"]
       },
-      "lvl5": "p,pre code",
-      "text": "p,pre code,ul li"
+      "lvl5": "p,pre code,table td span",
+      "text": "p,pre code,ul li,table td span"
     },
     "api_docs": {
       "lvl0": "h2",

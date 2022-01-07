@@ -13,10 +13,10 @@
     "layer0:link": "yalc add @layer0/core @layer0/next @layer0/cli @layer0/prefetch @layer0/react"
   },
   "dependencies": {
-    "@layer0/core": "^4.8.0",
-    "@layer0/next": "^4.8.0",
-    "@layer0/prefetch": "^4.8.0",
-    "@layer0/react": "^4.8.0",
+    "@layer0/core": "^4.8.4",
+    "@layer0/next": "^4.8.4",
+    "@layer0/prefetch": "^4.8.4",
+    "@layer0/react": "^4.8.4",
     "@layer0/rum": "^2.1.0",
     "@material-ui/core": "^4.10.2",
     "@material-ui/icons": "^4.9.1",
@@ -41,7 +41,7 @@
     "url-loader": "^4.1.0"
   },
   "devDependencies": {
-    "@layer0/cli": "^4.8.0",
+    "@layer0/cli": "^4.8.4",
     "babel-loader": "^8.1.0",
     "prettier": "^1.19.1",
     "webpack": "^4.46.0"

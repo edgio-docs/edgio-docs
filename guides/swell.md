@@ -108,35 +108,12 @@ This command will also update your `package.json` with the following changes:
 - Adds `@nuxt/core` to `dependencies`
 - Adds several `scripts` to run the available `{{{ CLI_NAME }}` commands
 
-## includeFiles
-
-To include the `confing` and `modules` directories in the production build, update your `layer0.config.js` as follows:
-
-```diff
-'use strict'
-
-// This file was automatically added by layer0 deploy.
-// You should commit this file to source control.
-
-module.exports = {
-  backends: {},
-  includeNodeModules: true,
-  connector: '@layer0/nuxt',
-+ includeFiles: {
-+   config: true,
-+   modules: true,
-+   'static/lang/**/*': true,
-+ },
-}
-
-```
-
 ## Run Swell app locally on Layer0
 
 Run the Swell app with the command:
 
 ```bash
-layer0 build && layer0 run --production
+{{ CLI_NAME }} build && {{ CLI_NAME }} run --production
 ```
 
 Load the site: http://127.0.0.1:3000
@@ -171,7 +148,28 @@ Refer to the [Deploying](deploying) guide for more information on the `deploy` c
 }
 ```
 
-2. Update the `routes.js` as following to enable ISG with your Swell app:
+2. To include the `confing` and `modules` directories in the production build, update your `layer0.config.js` as follows:
+
+```diff
+'use strict'
+
+// This file was automatically added by layer0 deploy.
+// You should commit this file to source control.
+
+module.exports = {
+  backends: {},
+  includeNodeModules: true,
+  connector: '@layer0/nuxt',
++ includeFiles: {
++   config: true,
++   modules: true,
++   'static/lang/**/*': true,
++ },
+}
+
+```
+
+3. Update the `routes.js` as following to enable ISG with your Swell app:
 
 ```js
 // This file was added by layer0 init.
@@ -199,8 +197,8 @@ module.exports = new Router()
   .use(nuxtRoutes)
 ```
 
-3. Deploy!
+4. Deploy!
 
 ```bash
-   {{ CLI_NAME }} deploy
+{{ CLI_NAME }} deploy
 ```

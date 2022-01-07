@@ -118,11 +118,11 @@ Size of the response in bytes.
 
 ### ds
 
-Destination, determined by split testing rules.
+Destination, determined by split testing rules, if there are any, otherwise left as the `default` router.
 
 ### be
 
-Backend, determined by split testing rules.
+Backend, determined by the routing rules. The names come from the `backends` structure exported from your `layer0.config.js` file.
 
 ### bk
 

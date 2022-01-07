@@ -14,9 +14,9 @@
   "stop_urls": ["https://docs.layer0.co/docs/v.*"],
   "selectors": {
     "default": {
-      "lvl0": "h2",
+      "lvl0": "h1",
       "lvl1": {
-        "selector": "h3",
+        "selector": "h2,h3",
         "selectors_exclude": ["section"]
       },
       "lvl2": {

@@ -13,7 +13,7 @@
     "layer0:link": "yalc add @layer0/core @layer0/next @layer0/cli @layer0/prefetch @layer0/react"
   },
   "dependencies": {
-    "@layer0/core": "^4.8.0",
+    "@layer0/core": "file:.yalc/@layer0/core",
     "@layer0/next": "^4.8.0",
     "@layer0/prefetch": "^4.8.0",
     "@layer0/react": "^4.8.0",

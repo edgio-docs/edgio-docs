@@ -34,7 +34,7 @@ export default function SearchField() {
         indexName,
         inputSelector: '#docsearch',
         algoliaOptions: {
-          hitsPerPage: 5,
+          hitsPerPage: 15,
           // See https://www.algolia.com/doc/api-reference/api-parameters/
         },
       })

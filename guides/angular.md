@@ -36,8 +36,10 @@ You should now have a working starter app. Run `ng serve` to see the application
 To deploy your Angular application on {{ PRODUCT_NAME }} it needs to support server-side rendering (SSR). To add SSR support, run:
 
 ```bash
-ng add @nguniversal/express-engine
+ng add @nguniversal/express-engine --clientProject {{PROJECT_NAME}}
 ```
+
+(Note: the `{{PROJECT_NAME}}` value comes from the `package.json` file and should match the value of the `name` key.
 
 Read more about server-side rendering in Angular [here](https://angular.io/guide/universal).
 

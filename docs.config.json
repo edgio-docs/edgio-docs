@@ -16,14 +16,10 @@
     "default": {
       "lvl0": "h1",
       "lvl1": {
-        "selector": "h2",
+        "selector": "h2,h3",
         "selectors_exclude": ["section"]
       },
       "lvl2": {
-        "selector": "h3",
-        "selectors_exclude": [".tsd-returns-title"]
-      },
-      "lvl3": {
         "selector": "h4,h5",
         "selectors_exclude": [".tsd-returns-title"]
       },

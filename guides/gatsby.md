@@ -1,6 +1,6 @@
 # Gatsby
 
-This guide shows you how to deploy an Gatsby application on {{ PRODUCT_NAME }}:
+This guide shows you how to deploy an [Gatsby](https://www.gatsbyjs.com/) application on {{ PRODUCT_NAME }}.
 
 ![video](https://www.youtube.com/watch?v=ici9j6oF_5E)
 

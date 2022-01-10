@@ -1,6 +1,6 @@
 # Next.js
 
-This guide shows you how to deploy a Next.js application on {{ PRODUCT_NAME }}.
+This guide shows you how to deploy a [Next.js](https://nextjs.org/) application on {{ PRODUCT_NAME }}.
 
 ## Example
 

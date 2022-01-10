@@ -2,9 +2,7 @@
 
 This guide shows you how to deploy [Frontity](https://frontity.org/) apps on {{ PRODUCT_NAME }}
 
-## Example Site
-
-Here is an example of the Frontity starter app running on {{ PRODUCT_NAME }}:
+## Example
 
 [Try the Frontity Example Site](https://layer0-docs-layer0-frontity-example-default.layer0.link/?button)
 [View the Code](https://github.com/layer0-docs/layer0-frontity-example?button)

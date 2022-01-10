@@ -1,6 +1,6 @@
 # Svelte
 
-This guide shows you how to deploy a Svelte application on {{ PRODUCT_NAME }}.
+This guide shows you how to deploy a [Svelte](https://svelte.dev/) application on {{ PRODUCT_NAME }}.
 
 ## Example
 

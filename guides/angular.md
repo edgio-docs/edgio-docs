@@ -2,9 +2,7 @@
 
 This guide shows you how to deploy an Angular application on {{ PRODUCT_NAME }}:
 
-## Example SSR Site
-
-This Angular example app uses server-side rendering and prefetching to provide lightening-fast transitions between pages.
+## Example
 
 [Try the Angular SSR Example Site](https://layer0-docs-layer0-angular-example-default.layer0.link/category/hats?button)
 [View the Code](https://github.com/layer0-docs/layer0-angular-example?button)

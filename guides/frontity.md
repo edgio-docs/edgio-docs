@@ -1,6 +1,6 @@
 # Frontity
 
-This guide shows you how to deploy [Frontity](https://frontity.org/) apps on {{ PRODUCT_NAME }}
+This guide shows you how to deploy [Frontity](https://frontity.org/) apps on {{ PRODUCT_NAME }}.
 
 ## Example
 

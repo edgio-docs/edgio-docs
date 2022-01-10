@@ -1,6 +1,6 @@
 # Angular
 
-This guide shows you how to deploy an Angular application on {{ PRODUCT_NAME }}.
+This guide shows you how to deploy an [Angular](https://angular.io) application on {{ PRODUCT_NAME }}.
 
 ## Example
 

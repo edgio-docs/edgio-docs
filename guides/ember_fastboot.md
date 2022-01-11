@@ -2,9 +2,7 @@
 
 This guide shows you how to deploy [Ember Fastboot](https://ember-fastboot.com/) apps on {{ PRODUCT_NAME }}.
 
-## Example Site
-
-Here is an example of a Fastboot app running on {{ PRODUCT_NAME }}:
+## Example
 
 [Try the Fastboot Example Site](https://layer0-docs-layer0-ember-fastboot-example-default.layer0.link/?button)
 [View the Code](https://github.com/layer0-docs/layer0-ember-fastboot-example?button)

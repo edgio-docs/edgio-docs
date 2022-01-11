@@ -1,6 +1,6 @@
 # Dojo
 
-This guide shows you how to deploy a Dojo application on {{ PRODUCT_NAME }}.
+This guide shows you how to deploy a [Dojo](https://dojo.io/) application on {{ PRODUCT_NAME }}.
 
 ## Example
 

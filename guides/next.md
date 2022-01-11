@@ -1,10 +1,8 @@
 # Next.js
 
-This guide shows you how to deploy a Next.js application on {{ PRODUCT_NAME }}.
+This guide shows you how to deploy a [Next.js](https://nextjs.org/) application on {{ PRODUCT_NAME }}.
 
-## Example SSR Site
-
-This Next.js example app uses server-side rendering and prefetching to provide lightning-fast transitions between pages.
+## Example
 
 [Try the Next.js SSR Example Site](https://layer0-docs-layer0-nextjs-example-default.layer0-limelight.link?button)
 [View the Code](https://github.com/layer0-docs/layer0-nextjs-example?button)

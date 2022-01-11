@@ -32,9 +32,9 @@ You can find the DNS and allowed IP configurations in the _Networking_ tab for y
 
 ### DNS
 
-In order to configure your DNS provider to direct traffic for a particular set of domains to {{ PRODUCT_NAME }}, you must create DNS records for your website. If you are launching a new site then you can set this up whenever you feel ready. For sites that are already live, the DNS update is the last step. Once you have updated your DNS you are committed to launching.
+In order to configure your DNS provider to direct traffic for a particular set of domains to {{ PRODUCT_NAME }}, you must create DNS records for your website. If you are launching a new site, then you can create the records whenever you feel ready. For sites that are already live, the DNS update is the last step. Once you have updated your DNS you are committed to launching.
 
-To host your site, create multiple `A` records on your apex domain, with the following Anycast IP address values: 151.101.1.79, 151.101.65.79, 151.101.129.79, 151.101.193.79.
+To host your site, create multiple `A` records on your apex domain with the following Anycast IP address values: 151.101.1.79, 151.101.65.79, 151.101.129.79, 151.101.193.79.
 
 ```
 # To verify your DNS entry, run the following command

@@ -1,10 +1,8 @@
 # Shopify Hydrogen
 
-This guide shows you how to deploy a Shopify Hydrogen application on {{ PRODUCT_NAME }}.
+This guide shows you how to deploy a [Shopify Hydrogen](https://hydrogen.shopify.dev/) application on {{ PRODUCT_NAME }}.
 
 ## Example
-
-Here's an example Shopify Hydrogen app running on Layer0:
 
 [Try the Shopify Hydrogen Example Site](https://layer0-docs-layer0-shopify-hydrogen-example-default.layer0-limelight.link?button)
 [View the Code](https://github.com/layer0-docs/layer0-shopify-hydrogen-example?button)

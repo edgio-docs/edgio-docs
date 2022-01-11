@@ -1,6 +1,6 @@
 # Zola
 
-This guide shows you how to deploy a Zola application on {{ PRODUCT_NAME }}.
+This guide shows you how to deploy a [Zola](https://www.getzola.org/) application on {{ PRODUCT_NAME }}.
 
 ## Example
 

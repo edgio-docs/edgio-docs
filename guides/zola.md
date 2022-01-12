@@ -1,6 +1,6 @@
 # Zola
 
-This guide shows you how to deploy a Zola application on {{ PRODUCT_NAME }}.
+This guide shows you how to deploy a [Zola](https://www.getzola.org/) application on {{ PRODUCT_NAME }}.
 
 ## Example
 
@@ -93,17 +93,8 @@ Building site...
 
 Create a `package.json` at the root of your project with the following:
 
-```json
-{
-  "name": "zola",
-  "version": "1.0.0",
-  "scripts": {
-    "build": "zola build",
-    "deploy": "{{ CLI_NAME }} deploy"
-  },
-  "dependencies": {},
-  "devDependencies": {}
-}
+```bash
+npm init
 ```
 
 ### Initialize your project

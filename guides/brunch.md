@@ -1,6 +1,6 @@
 # Brunch
 
-This guide shows you how to deploy a Brunch application on {{ PRODUCT_NAME }}.
+This guide shows you how to deploy a [Brunch](https://brunch.io/) application on {{ PRODUCT_NAME }}.
 
 ## Example
 

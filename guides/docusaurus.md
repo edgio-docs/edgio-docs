@@ -1,6 +1,6 @@
 # Docusaurus
 
-This guide shows you how to deploy a Docusaurus application on {{ PRODUCT_NAME }}.
+This guide shows you how to deploy a [Docusaurus](https://docusaurus.io/) application on {{ PRODUCT_NAME }}.
 
 ## Example
 

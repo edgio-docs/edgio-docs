@@ -34,9 +34,9 @@ Once you deploy the new version of Layer0, your Edge links will change to have t
 
 ## DNS will Need Updating for Custom Domains
 
-If you have a custom domain pointing to Layer0, you will need to update your A/CNAME record. To obtain the new network details, navigate to https://app.layer0.co and go to your site. Click the _Environments_ tab and choose the environment that has the custom domain. From there, click on the _Networking_ tab.
+If you have a custom domain pointing to Layer0, you will need to update your A record. To obtain the new network details, navigate to https://app.layer0.co and go to your site. Click the _Environments_ tab and choose the environment that has the custom domain. From there, click on the _Networking_ tab.
 
-You will see two different DNS configurations. If you are using a sub-domain, you will need to update the CNAME record with the value provided. If you are using an apex domain, you will need to update the A records to match the Anycast IP addresses listed.
+You will need to update the A records to match the Anycast IP addresses listed.
 
 These updates must be made with your domain registrar.
 

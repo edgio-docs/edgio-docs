@@ -129,7 +129,6 @@ const Home = ({ navData }) => {
         </Grid>
       </Container>
       <Divider />
-    {/* my changes start here */}
       <div className={classes.tutorials}>
         <Container maxWidth="md">
           <Grid container spacing={4} >
@@ -141,10 +140,7 @@ const Home = ({ navData }) => {
               <div className={classes.aspectRatioLargeVideo}>              
                 <iframe frameBorder={0} src="https://www.youtube.com/embed/GE0K2ecw_xA?rel=0" />                
               </div>              
-            </Grid>
-
-            
-           {/* start buttons */}
+            </Grid>          
            <Grid container spacing={4} maxwidth={"md"} className={classes.tiles} justify={'center'} >
             <Grid item md={4} sm={6} xs={12} className={classes.tutorial}>
               <Button
@@ -157,24 +153,22 @@ const Home = ({ navData }) => {
               Provide Feedback
               </Button>
             </Grid>
-            <Grid item md={4} sm={6} xs={12} className={classes.tutorial}>
-              <Button
-                  href="https://get.layer0.co/request-a-demo/?sgId=470c4986-7644-4416-b4ae-d7cad5814b59"
-                  target="_blank"
-                  variant="outlined"
-                  size="large"                
-                  className={classes.limeButtonOutlined}                  
-                >
-                Schedule Demo
-              </Button>
-            </Grid>
+              <Grid item md={4} sm={6} xs={12} className={classes.tutorial}>
+                <Button
+                    href="https://get.layer0.co/request-a-demo/?sgId=470c4986-7644-4416-b4ae-d7cad5814b59"
+                    target="_blank"
+                    variant="outlined"
+                    size="large"                
+                    className={classes.limeButtonOutlined}                  
+                  >
+                  Schedule Demo
+                </Button>
+              </Grid>
             </Grid>        
-            {/* end buttons */}
           </Grid> 
           
         </Container>
       </div>
-    {/* my changes end here */}
       <Divider />
       <div className={classes.tutorials}>
         <Container maxWidth="md">

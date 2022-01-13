@@ -44,13 +44,6 @@ To configure your custom domains:
 
 ![activateEnvironment](/images/production/activate-environment.png)
 
-### Migrating from Fastly
-
-If you're migrating to {{ PRODUCT_NAME }} from [Fastly](https://www.fastly.com/), you will need to do the following before adding your domains to your {{ PRODUCT_NAME }} environment:
-
-- Contact [Fastly support](https://support.fastly.com/hc/en-us/requests/new?ticket_form_id=360000269711) and request that control of your domains be transferred to {{ PRODUCT_NAME }}. Be sure to explicitly list each domain that needs to be transferred and ask Fastly to contact support(at){{ DOMAIN }} if they need {{ PRODUCT_NAME }} to confirm the transfer.
-- Before going live with {{ PRODUCT_NAME }}, you will need to ensure that you've removed your domains from all active Fastly services. To remove domains from a service, clone the service, remove the domains, then activate the new version of the service. Once the new service version is activated you can add the domains to your {{ PRODUCT_NAME }} environment and activate it.
-
 ## Network Configuration 
 
 You can find the DNS and allowed IP configurations in the _Networking_ tab for your environment.
@@ -59,7 +52,7 @@ You can find the DNS and allowed IP configurations in the _Networking_ tab for y
 
 ### DNS
 
-In order to configure your DNS provider to direct traffic for a particular set of domains to {{ PRODUCT_NAME }}, you must create DNS records with values depending on the type of domain you are using for your website. If you are launching a new site then you can set this up whenever you feel ready. For sites that are already live, the DNS update is the last step. Once you have updated your DNS you are committed to launching.
+In order to configure your DNS provider to direct traffic for a particular set of domains to {{ PRODUCT_NAME }}, you must create DNS records for your website. If you are launching a new site, then you can create the records whenever you feel ready. For sites that are already live, the DNS update is the last step. Once you have updated your DNS you are committed to launching.
 
 #### Using a Sub-domain (e.g. www.mywebsite.xyz)
 
@@ -73,12 +66,12 @@ dig <your-sub-domain>
 dig www.mywebsite.xyz
 
 # Result
-www.mywebsite.xyz.   599    IN    CNAME    d12ea738-71b3-25e8-c771-6fdd3f6bd8ba.layer0.link.
+www.mywebsite.xyz.   599    IN    CNAME    d12ea738-71b3-25e8-c771-6fdd3f6bd8ba.layer0-limelight.link.
 ```
 
 #### Using an Apex Domain (e.g. mywebsite.xyz)
 
-To host your site on the apex domain, create multiple `A` records on your apex domain, with the following Anycast IP address values: 151.101.1.79, 151.101.65.79, 151.101.129.79, 151.101.193.79.
+To host your site on the apex domain, create multiple `A` records on your apex domain, with the following Anycast IP address values: 208.69.180.11, 208.69.180.12, 208.69.180.13, 208.69.180.14
 
 ```
 # To verify your DNS entry, run the following command
@@ -88,10 +81,10 @@ dig <your-apex-domain>
 dig mywebsite.xyz
 
 # Result
-mywebsite.xyz.        599    IN    A        151.101.1.79
-mywebsite.xyz.        599    IN    A        151.101.65.79
-mywebsite.xyz.        599    IN    A        151.101.129.79
-mywebsite.xyz.        599    IN    A        151.101.193.79
+mywebsite.xyz.        599    IN    A        208.69.180.11
+mywebsite.xyz.        599    IN    A        208.69.180.12
+mywebsite.xyz.        599    IN    A        208.69.180.13
+mywebsite.xyz.        599    IN    A        208.69.180.14
 ```
 
 #### Using Both an Apex Domain and a Sub-domain (e.g. mywebsite.xyz and www.mywebsite.xyz)
@@ -108,10 +101,10 @@ mywebsite.xyz.        599    IN    A        151.101.193.79
 
   # Result
   www.mywebsite.xyz.    599    IN    CNAME.   mywebsite.xyz.
-  mywebsite.xyz.        599    IN    A        151.101.1.79
-  mywebsite.xyz.        599    IN    A        151.101.65.79
-  mywebsite.xyz.        599    IN    A        151.101.129.79
-  mywebsite.xyz.        599    IN    A        151.101.193.79
+  mywebsite.xyz.        599    IN    A        208.69.180.11
+  mywebsite.xyz.        599    IN    A        208.69.180.12
+  mywebsite.xyz.        599    IN    A        208.69.180.13
+  mywebsite.xyz.        599    IN    A        208.69.180.14
   ```
 
 ### Allowing {{ PRODUCT_NAME }} IP Addresses

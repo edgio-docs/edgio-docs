@@ -1,10 +1,8 @@
 # Angular
 
-This guide shows you how to deploy an Angular application on {{ PRODUCT_NAME }}:
+This guide shows you how to deploy an [Angular](https://angular.io) application on {{ PRODUCT_NAME }}.
 
-## Example SSR Site
-
-This Angular example app uses server-side rendering and prefetching to provide lightening-fast transitions between pages.
+## Example
 
 [Try the Angular SSR Example Site](https://layer0-docs-layer0-angular-example-default.layer0.link/category/hats?button)
 [View the Code](https://github.com/layer0-docs/layer0-angular-example?button)
@@ -36,8 +34,10 @@ You should now have a working starter app. Run `ng serve` to see the application
 To deploy your Angular application on {{ PRODUCT_NAME }} it needs to support server-side rendering (SSR). To add SSR support, run:
 
 ```bash
-ng add @nguniversal/express-engine
+ng add @nguniversal/express-engine --clientProject {{PROJECT_NAME}}
 ```
+
+(Note: the `{{PROJECT_NAME}}` value comes from the `package.json` file and should match the value of the `name` key.
 
 Read more about server-side rendering in Angular [here](https://angular.io/guide/universal).
 

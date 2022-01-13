@@ -1,12 +1,10 @@
 # Gatsby
 
-This guide shows you how to deploy an Gatsby application on {{ PRODUCT_NAME }}:
+This guide shows you how to deploy an [Gatsby](https://www.gatsbyjs.com/) application on {{ PRODUCT_NAME }}.
 
 ![video](https://www.youtube.com/watch?v=ici9j6oF_5E)
 
-## Example SSG Site
-
-This Gatsby example app uses static site generation and prefetching to provide lightning-fast transitions between pages.
+## Example
 
 [Try the Gatsby SSG Example Site](https://layer0-docs-layer0-gatsby-example-default.layer0-limelight.link?button)
 [View the Code](https://github.com/layer0-docs/layer0-gatsby-example?button)

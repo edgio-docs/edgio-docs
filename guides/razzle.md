@@ -2,9 +2,7 @@
 
 This guide shows you how to deploy [Razzle](https://razzlejs.org/) apps on {{ PRODUCT_NAME }}.
 
-## Example Site
-
-Here is an example of a Razzle app running on {{ PRODUCT_NAME }}:
+## Example
 
 [Try the Razzle Example Site](https://layer0-docs-layer0-razzle-example-default.layer0.link?button)
 [View the Code](https://github.com/layer0-docs/layer0-razzle-example?button)

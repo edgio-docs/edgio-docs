@@ -1,10 +1,8 @@
 # Vue.js
 
-This guide shows you how to deploy a Vue.js application on {{ PRODUCT_NAME }}.
+This guide shows you how to deploy a [Vue.js](https://vuejs.org/) application on {{ PRODUCT_NAME }}.
 
 ## Example
-
-Here's an example Vue app running on Layer0:
 
 [Try the Vue Example Site](https://layer0-docs-layer0-static-vuejs-example-default.layer0-limelight.link/?button)
 [View the Code](https://github.com/layer0-docs/layer0-static-vuejs-example?button)
@@ -46,21 +44,6 @@ You can verify your app works by running it locally:
 ```bash
 cd hello-world
 npm run serve
-```
-
-You should see an output like this in the terminal:
-
-```bash
- DONE  Compiled successfully in 1667ms                                9:54:44 AM
-
-
-  App running at:
-  - Local:   http://localhost:8080/
-  - Network: http://172.20.10.8:8080/
-
-  Note that the development build is not optimized.
-  To create a production build, run npm run build.
-
 ```
 
 ## Configuring your Vue.js app for {{ PRODUCT_NAME }}
@@ -203,7 +186,7 @@ npm run build
 Run {{ PRODUCT_NAME }} on your local machine:
 
 ```bash
-npm run {{ CLI_NAME }}:dev
+{{ CLI_NAME }} dev
 ```
 
 Load the site: http://127.0.0.1:3000 !

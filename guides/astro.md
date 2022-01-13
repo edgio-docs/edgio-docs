@@ -2,9 +2,7 @@
 
 [Astro](https://astro.build/) is a modern static site builder. This guide walks you through deploying Astro sites to Layer0.
 
-## Example Site
-
-For a preconfigured example site based on the Astro documentation template running on Layer0:
+## Example
 
 [Try the Astro Example Site](https://layer0-docs-layer0-astro-example-default.layer0-limelight.link/?button)
 [View the Code](https://github.com/layer0-docs/layer0-astro-example?button)

@@ -1,6 +1,6 @@
 # Saber
 
-This guide shows you how to deploy a Saber application on {{ PRODUCT_NAME }}.
+This guide shows you how to deploy a [Saber](https://saber.land) application on {{ PRODUCT_NAME }}.
 
 ## Example
 

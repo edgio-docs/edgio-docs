@@ -59,7 +59,7 @@ You can find the DNS and allowed IP configurations in the _Networking_ tab for y
 
 ### DNS
 
-In order to configure your DNS provider to direct traffic for a particular set of domains to {{ PRODUCT_NAME }}, you must create DNS records with values depending on the type of domain you are using for your website. If you are launching a new site then you can set this up whenever you feel ready. For sites that are already live, the DNS update is the last step. Once you have updated your DNS you are committed to launching.
+In order to configure your DNS provider to direct traffic for a particular set of domains to {{ PRODUCT_NAME }}, you must create DNS records for your website. If you are launching a new site, then you can create the records whenever you feel ready. For sites that are already live, the DNS update is the last step. Once you have updated your DNS you are committed to launching.
 
 #### Using a Sub-domain (e.g. www.mywebsite.xyz)
 
@@ -73,7 +73,7 @@ dig <your-sub-domain>
 dig www.mywebsite.xyz
 
 # Result
-www.mywebsite.xyz.   599    IN    CNAME    d12ea738-71b3-25e8-c771-6fdd3f6bd8ba.layer0.link.
+www.mywebsite.xyz.   599    IN    CNAME    d12ea738-71b3-25e8-c771-6fdd3f6bd8ba.layer0.limelight.link.
 ```
 
 #### Using an Apex Domain (e.g. mywebsite.xyz)

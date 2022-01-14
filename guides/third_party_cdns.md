@@ -23,13 +23,22 @@ Unless these conditions are met, the users will almost certainly receive a mix o
 
 ## Caching
 
-When {{ PRODUCT_NAME }} is behind a third-party CDN, we strongly recommend that all caching on it be turned off. If you cannot do this for whatever reason, it is then your responsibility to purge the cache on {{ PRODUCT_NAME }} and only afterwards on CDN - in that exact order. Failing to do so will almost certainly lead to a situation where stale responses that you wanted to purge are served from {{ PRODUCT_NAME }} to your CDN and cached there as non-stale responses before {{ PRODUCT_NAME }} itself is purged (so-called cache poisoning).
+When {{ PRODUCT_NAME }} is behind a third-party CDN, we strongly recommend that all caching on it be turned off. If, for whatever reason, you cannot do this, it is then your responsibility to purge the cache on {{ PRODUCT_NAME }} and only afterwards on CDN - in that exact order. Failing to do so will almost certainly lead to a situation where stale responses that you wanted to purge are served from {{ PRODUCT_NAME }} to your CDN and cached there as non-stale responses before {{ PRODUCT_NAME }} itself is purged (so-called cache poisoning).
 
 Caching and traffic metrics are another area that is affected by CDN caching or any kind of traffic shaping where {{ PRODUCT_NAME }} no longer sees all the traffic that your site is serving. If the downstream CDN is caching responses then perceived cache hit ratio on {{ PRODUCT_NAME }} will be lower than it actually is ({{ PRODUCT_NAME }} would only serve cache misses but never cache hits). If the downstream CDN is routing some traffic away from {{ PRODUCT_NAME }}, then the traffic metrics will be affected as the {{ PRODUCT_NAME }} Developer Console will only provide statistics for the traffic that goes through {{ PRODUCT_NAME }}.
 
-## IPs
+## Client IPs
 
-When behind a third-party CDN, {{ PRODUCT_NAME }} will analyze `x-forwarded-for` to correctly extract the client IP from it and inject it into [`{{ HEADER_PREFIX }}-client-ip`](request_headers#section_general_headers). You can continue to use `{{ HEADER_PREFIX }}-client-ip` as you otherwise would.
+When {{ PRODUCT_NAME }} is not running on edge, there is no way for it to securely determine the IP of the user agent that originated the request. It is therefore your responsibility to correctly set another header to the actual client IP and pass it that way to {{ PRODUCT_NAME }} and upstream servers.
+
+If you wish to set the `x-0-client-ip` to the header injected by the CDN, you can do that with the following code, which should be put at the top of your router:
+
+```js
+.match('/:splat*', ({ setRequestHeader, removeRequestHeader }) => {
+    setRequestHeader('x-0-client-ip', 'x-your-cdn-client-ip-header')
+    removeRequestHeader('x-your-cdn-client-ip-header')
+})
+```
 
 ## Access Logs
 
@@ -38,3 +47,7 @@ When behind a third-party CDN, {{ PRODUCT_NAME }} will analyze `x-forwarded-for`
 ## Allowing IPs
 
 {{ PRODUCT_NAME }} does not block any validly formed HTTP traffic coming from any IP so there is no need to specifically allow the backend IPs of your third-party CDN.
+
+## Security
+
+As mentioned before, when not running on edge, it is impossible for {{ PRODUCT_NAME }} to securely determine the client IP and other parameters on which the {{ PRODUCT_NAME }} security features rely. We strongly recommend that in that case all security be performed on the third-party CDN

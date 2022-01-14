@@ -73,7 +73,7 @@ dig <your-sub-domain>
 dig www.mywebsite.xyz
 
 # Result
-www.mywebsite.xyz.   599    IN    CNAME    d12ea738-71b3-25e8-c771-6fdd3f6bd8ba.layer0.limelight.link.
+www.mywebsite.xyz.   599    IN    CNAME    d12ea738-71b3-25e8-c771-6fdd3f6bd8ba.layer0-limelight.link.
 ```
 
 #### Using an Apex Domain (e.g. mywebsite.xyz)

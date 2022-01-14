@@ -8,7 +8,7 @@ In order for {{ PRODUCT_NAME }} to correctly determine the HTTP protocol (HTTP o
 
 ## Redirects
 
-By default, {{ PRODUCT_NAME }} automatically redirects all HTTP traffic to HTTPS by issuing a 301 Moved Permanently redirect response. That redirect relies on the value of `host` request header in order to form the value of `location` response header (e.g. a `host` value of `{{ DOCS_DOMAIN }}` will result in a `location` value of `{{ DOCS_URL }}`). When a third-party CDN is in front of {{ PRODUCT_NAME }}, the `host` header may not be the public facing domain but rather a domain to which the third-party CDN is routing traffic. In that case, the `location` header will have an incorrect value leading to an "escape" of the site from the public facing domain to the private domain hosted on {{ PRODUCT_NAME }}. 
+By default, {{ PRODUCT_NAME }} automatically redirects all HTTP traffic to HTTPS by issuing a 301 Moved Permanently redirect response. That redirect relies on the value of the  `host` request header in order to form the value of the `location` response header (e.g., a `host` header value of `{{ DOCS_DOMAIN }}` will result in a `location` value of `{{ DOCS_URL }}`). When a third-party CDN is in front of {{ PRODUCT_NAME }}, the `host` header may not be the public-facing domain but rather a domain to which the third-party CDN is routing traffic. In that case, the `location` header will have an incorrect value leading to an "escape" of the site from the public-facing domain to the private domain hosted on {{ PRODUCT_NAME }}. 
 
 The same issue may affect all the custom redirects issued from {{ PRODUCT_NAME }} using the `redirect` router function or when leveraging the environment redirects feature.
 
@@ -28,9 +28,9 @@ Unless these conditions are met, the users will almost certainly receive a mix o
 
 ## Caching
 
-When {{ PRODUCT_NAME }} is behind a third-party CDN, we strongly recommend that all caching on it be turned off. If, for whatever reason, you cannot do this, it is then your responsibility to purge the cache on {{ PRODUCT_NAME }} and only afterwards on CDN - in that exact order. Failing to do so will almost certainly lead to a situation where stale responses that you wanted to purge are served from {{ PRODUCT_NAME }} to your CDN and cached there as non-stale responses before {{ PRODUCT_NAME }} itself is purged (so-called cache poisoning).
+When {{ PRODUCT_NAME }} is behind a third-party CDN, we strongly recommend that all caching on it be turned off. If, for whatever reason, you cannot do this, it is then your responsibility to first purge the cache on {{ PRODUCT_NAME }}, and only afterwards on CDN - in that exact order. Failing to do so will almost certainly lead to a situation where stale responses that you wanted to purge are served from {{ PRODUCT_NAME }} to your CDN and cached there as non-stale responses before {{ PRODUCT_NAME }} itself is purged (so-called cache poisoning).
 
-Caching and traffic metrics are another area that is affected by CDN caching or any kind of traffic shaping where {{ PRODUCT_NAME }} no longer sees all the traffic that your site is serving. If the third-party CDN is caching responses then perceived cache hit ratio on {{ PRODUCT_NAME }} will be lower than it actually is ({{ PRODUCT_NAME }} would only serve cache misses but never cache hits). If the third-party CDN is routing some traffic away from {{ PRODUCT_NAME }}, then the traffic metrics will be affected as the {{ PRODUCT_NAME }} Developer Console will only provide statistics for the traffic that goes through {{ PRODUCT_NAME }}.
+Caching and traffic metrics are another area that is affected by CDN caching or any kind of traffic shaping where {{ PRODUCT_NAME }} no longer sees all the traffic that your site is serving. If the third-party CDN is caching responses, then the perceived cache hit ratio on {{ PRODUCT_NAME }} will be lower than it actually is ({{ PRODUCT_NAME }} would only serve cache misses but never cache hits). If the third-party CDN is routing some traffic away from {{ PRODUCT_NAME }}, then the traffic metrics will be affected as the {{ PRODUCT_NAME }} Developer Console will only provide statistics for the traffic that goes through {{ PRODUCT_NAME }}.
 
 ## Client IPs
 
@@ -47,7 +47,7 @@ If you wish to set the `x-0-client-ip` to the header injected by the CDN, you ca
 
 ## Security
 
-As mentioned above, when not running on edge, it is impossible for {{ PRODUCT_NAME }} to securely determine the client IP and other parameters on which the {{ PRODUCT_NAME }} security features rely. We strongly recommend that in that case all security be performed on the third-party CDN
+As mentioned above, when not running on edge, it is impossible for {{ PRODUCT_NAME }} to securely determine the client IP and other parameters on which the {{ PRODUCT_NAME }} security features rely. We strongly recommend that in that case, all security be performed on the third-party CDN.
 
 ## Access Logs
 

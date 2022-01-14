@@ -8,7 +8,7 @@ In order for {{ PRODUCT_NAME }} to correctly determine the HTTP protocol (HTTP o
 
 ## Redirects
 
-By default, {{ PRODUCT_NAME }} automatically redirects all HTTP traffic to HTTPS by issuing a 301 Moved Permanently redirect response. That redirect relies on the value of the  `host` request header in order to form the value of the `location` response header (e.g., a `host` header value of `{{ DOCS_DOMAIN }}` will result in a `location` value of `{{ DOCS_URL }}`). When a third-party CDN is in front of {{ PRODUCT_NAME }}, the `host` header may not be the public-facing domain but rather a domain to which the third-party CDN is routing traffic. In that case, the `location` header will have an incorrect value leading to an "escape" of the site from the public-facing domain to the private domain hosted on {{ PRODUCT_NAME }}. 
+By default, {{ PRODUCT_NAME }} automatically redirects all HTTP traffic to HTTPS by issuing a 301 Moved Permanently redirect response. That redirect relies on the value of the `host` request header in order to form the value of the `location` response header (e.g., a `host` header value of `{{ DOCS_DOMAIN }}` will result in a `location` value of `{{ DOCS_URL }}`). When a third-party CDN is in front of {{ PRODUCT_NAME }}, the `host` header may not be the public-facing domain but rather a domain to which the third-party CDN is routing traffic. In that case, the `location` header will have an incorrect value leading to an "escape" of the site from the public-facing domain to the private domain hosted on {{ PRODUCT_NAME }}. 
 
 The same issue may affect all the custom redirects issued from {{ PRODUCT_NAME }} using the `redirect` router function or when leveraging the environment redirects feature.
 

@@ -78,7 +78,7 @@ www.mywebsite.xyz.   599    IN    CNAME    d12ea738-71b3-25e8-c771-6fdd3f6bd8ba.
 
 #### Using an Apex Domain (e.g. mywebsite.xyz)
 
-To host your site on the apex domain, create multiple `A` records on your apex domain, with the following Anycast IP address values: 151.101.1.79, 151.101.65.79, 151.101.129.79, 151.101.193.79.
+To host your site on the apex domain, create multiple `A` records on your apex domain, with the following Anycast IP address values: 208.69.180.11, 208.69.180.12, 208.69.180.13, 208.69.180.14.
 
 ```
 # To verify your DNS entry, run the following command
@@ -88,10 +88,10 @@ dig <your-apex-domain>
 dig mywebsite.xyz
 
 # Result
-mywebsite.xyz.        599    IN    A        151.101.1.79
-mywebsite.xyz.        599    IN    A        151.101.65.79
-mywebsite.xyz.        599    IN    A        151.101.129.79
-mywebsite.xyz.        599    IN    A        151.101.193.79
+mywebsite.xyz.        599    IN    A        208.69.180.11
+mywebsite.xyz.        599    IN    A        208.69.180.12
+mywebsite.xyz.        599    IN    A        208.69.180.13
+mywebsite.xyz.        599    IN    A        208.69.180.14
 ```
 
 #### Using Both an Apex Domain and a Sub-domain (e.g. mywebsite.xyz and www.mywebsite.xyz)
@@ -108,10 +108,10 @@ mywebsite.xyz.        599    IN    A        151.101.193.79
 
   # Result
   www.mywebsite.xyz.    599    IN    CNAME.   mywebsite.xyz.
-  mywebsite.xyz.        599    IN    A        151.101.1.79
-  mywebsite.xyz.        599    IN    A        151.101.65.79
-  mywebsite.xyz.        599    IN    A        151.101.129.79
-  mywebsite.xyz.        599    IN    A        151.101.193.79
+  mywebsite.xyz.        599    IN    A        208.69.180.11
+  mywebsite.xyz.        599    IN    A        208.69.180.12
+  mywebsite.xyz.        599    IN    A        208.69.180.13
+  mywebsite.xyz.        599    IN    A        208.69.180.14
   ```
 
 ### Allowing {{ PRODUCT_NAME }} IP Addresses

@@ -10,7 +10,6 @@ import {
   Card,
   CardContent,
   Divider,
-  Button,
 } from '@material-ui/core'
 import GraphQLIcon from '../components/icons/graphql.svg'
 import JamstackIcon from '../components/icons/jamstack.svg'
@@ -131,47 +130,6 @@ const Home = ({ navData }) => {
       <Divider />
       <div className={classes.tutorials}>
         <Container maxWidth="md">
-          <Grid container spacing={4} >
-            <Grid item xs={12}>
-              <Typography variant="h2"> About {PRODUCT_NAME} </Typography>
-            </Grid>
-             
-            <Grid item xl={12} md={4} sm={6} className={classes.tutorial} >            
-              <div className={classes.aspectRatioLargeVideo}>              
-                <iframe frameBorder={0} src="https://www.youtube.com/embed/GE0K2ecw_xA?rel=0" />                
-              </div>              
-            </Grid>          
-           <Grid container spacing={4} maxwidth={"md"} className={classes.tiles} justify={'center'} >
-            <Grid item md={4} sm={6} xs={12} className={classes.tutorial}>
-              <Button
-                  href="https://forum.layer0.co/c/product-feedback/2"
-                  target="_blank"
-                  variant="contained"
-                  size="large"                                    
-                  className={classes.limeButtonContained}
-                >
-              Provide Feedback
-              </Button>
-            </Grid>
-              <Grid item md={4} sm={6} xs={12} className={classes.tutorial}>
-                <Button
-                    href="https://get.layer0.co/request-a-demo/"
-                    target="_blank"
-                    variant="outlined"
-                    size="large"                
-                    className={classes.limeButtonOutlined}                  
-                  >
-                  Schedule Demo
-                </Button>
-              </Grid>
-            </Grid>        
-          </Grid> 
-          
-        </Container>
-      </div>
-      <Divider />
-      <div className={classes.tutorials}>
-        <Container maxWidth="md">
           <Grid container spacing={4}>
             <Grid item xs={12}>
               <Typography variant="h2">{PRODUCT_NAME} Tutorials</Typography>
@@ -179,25 +137,25 @@ const Home = ({ navData }) => {
             <Grid item md={4} sm={6} xs={12} className={classes.tutorial}>
               <h3>What &amp; Why</h3>
               <div className={classes.aspectRatio}>
-                <iframe frameBorder={0} src="https://www.youtube.com/embed/sJ6AkTrcZvg?rel=0" />
+                <iframe frameBorder={0} src="https://www.youtube.com/embed/sJ6AkTrcZvg" />
               </div>
             </Grid>
             <Grid item md={4} sm={6} xs={12} className={classes.tutorial}>
               <h3>Deploying a GitHub Project</h3>
               <div className={classes.aspectRatio}>
-                <iframe frameBorder={0} src="https://www.youtube.com/embed/F8uN03ps1As?rel=0" />
+                <iframe frameBorder={0} src="https://www.youtube.com/embed/F8uN03ps1As" />
               </div>
             </Grid>
             <Grid item md={4} sm={6} xs={12} className={classes.tutorial}>
               <h3>How to Prefetch</h3>
               <div className={classes.aspectRatio}>
-                <iframe frameBorder={0} src="https://www.youtube.com/embed/lfhSDCNgzfs?rel=0" />
+                <iframe frameBorder={0} src="https://www.youtube.com/embed/lfhSDCNgzfs" />
               </div>
             </Grid>
             <Grid item md={4} sm={6} xs={12} className={classes.tutorial}>
               <h3>What are the {PRODUCT_NAME} DevTools?</h3>
               <div className={classes.aspectRatio}>
-                <iframe frameBorder={0} src="https://www.youtube.com/embed/4AYQAvkc0UY?rel=0" />
+                <iframe frameBorder={0} src="https://www.youtube.com/embed/4AYQAvkc0UY" />
               </div>
             </Grid>
           </Grid>
@@ -285,24 +243,6 @@ const useStyles = makeStyles(theme => ({
   grid: {
     display: 'grid',
   },
-  limeButtonContained: {
-    backgroundColor:'#80c426',
-    '&:hover': {
-      backgroundColor: darken('#80c426', 0.1),
-    },
-    fontSize: '1.4rem', color: 'white', fontWeight:400, borderRadius: '5px'
-  },
-  limeButtonOutlined: {
-    fontSize: '1.4rem', 
-    backgroundColor: 'white', 
-    color: 'black', 
-    fontWeight:400, 
-    border: '1px solid #81BB00', 
-    borderRadius: '5px',
-    '&:hover': {
-      borderColor: darken('#81BB00', 0.1),
-    },    
-  },
   placeCenter: {
     placeItems: 'center',
   },
@@ -363,20 +303,6 @@ const useStyles = makeStyles(theme => ({
     alignItems: 'stretch',
     position: 'relative',
   },
-  aspectRatioLargeVideo: {
-    height: 0,
-    paddingBottom: '60%',
-    flex: 1,
-    position: 'relative',
-    boxShadow: theme.shadows[6],
-    '& iframe': {
-      top: 0,
-      left: 0,
-      width: '100%',
-      height: '100%',
-      position: 'absolute',
-    },
-  },  
   aspectRatio: {
     height: 0,
     paddingBottom: '75%',

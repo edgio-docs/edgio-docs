@@ -24,6 +24,7 @@ import SwellIcon from './swell.svg'
 import RazzlePng from './razzle.png'
 import Dojo from './dojo.svg'
 import MkDocsIcon from '@material-ui/icons/Book'
+import ExpressIcon from './express.svg'
 import AstroIcon from './astro.svg'
 import JekyllIcon from './jekyll.svg'
 import ServerlessIcon from './serverless-functions.svg'
@@ -43,7 +44,6 @@ import Eleventy from './eleventy.svg'
 import Zola from './zola.svg'
 import SolidJS from './solid.svg'
 import UmiJS from './umijs.svg'
-
 import clsx from 'clsx'
 
 export const icons = {
@@ -78,6 +78,8 @@ export const icons = {
   spartacus: SpartacusIcon,
   svelte: SvelteIcon,
   swell: SwellIcon,
+  mkdocs: MkDocsIcon,
+  express: ExpressIcon,
   vsf: VSFIcon,
   vue: VueIcon,
   vuepress: VueIcon,

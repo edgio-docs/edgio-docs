@@ -1,27 +1,154 @@
 [
   {
-    "text": "Guides",
+    "text": "Get Started",
+    "ordered": true,
     "items": [
       {
-        "text": "Overview",
-        "as": "/guides/overview",
+        "text": "WebApp CDN",
+        "as": "/guides/webapp_cdn_getting_started",
         "href": "/guides/[...guide]"
       },
       {
-        "text": "Getting Started",
-        "as": "/guides/getting_started",
+        "text": "Jamstack",
+        "as": "/guides/jamstack_getting_started",
+        "href": "/guides/[...guide]"
+      },
+      {
+        "text": "GraphQL CDN",
+        "as": "/guides/graphql",
         "href": "/guides/[...guide]"
       },
       {
         "text": "Deploying",
-        "as": "/guides/deploying",
+        "as": "/guides/deploy_apps",
         "href": "/guides/[...guide]"
       },
       {
-        "text": "Deploy to Layer0 button",
-        "as": "/guides/deploy-to-layer0",
+        "text": "System Overview",
+        "as": "/guides/overview",
+        "href": "/guides/[...guide]"
+      }
+    ]
+  },
+  {
+    "text": "CDN",
+    "items": [
+      {
+        "text": "EdgeJS Routing",
+        "as": "/guides/routing",
         "href": "/guides/[...guide]"
       },
+      {
+        "text": "Security",
+        "as": "/guides/security",
+        "href": "/guides/[...guide]"
+      },
+      {
+        "text": "Core Web Vitals",
+        "as": "/guides/core_web_vitals",
+        "href": "/guides/[...guide]"
+      },
+      {
+        "text": "Image Optimization",
+        "as": "/guides/image_optimization",
+        "href": "/guides/[...guide]"
+      },
+      {
+        "text": "Prefetching",
+        "as": "/guides/prefetching",
+        "href": "/guides/[...guide]"
+      },
+      {
+        "text": "Traditional Sites",
+        "as": "/guides/traditional_sites",
+        "href": "/guides/[...guide]"
+      },
+      {
+        "text": "Caching",
+        "as": "/guides/caching",
+        "href": "/guides/[...guide]"
+      },
+      {
+        "text": "Purging",
+        "as": "/guides/purging",
+        "href": "/guides/[...guide]"
+      },
+      {
+        "text": "Static Prerendering",
+        "as": "/guides/static_prerendering",
+        "href": "/guides/[...guide]"
+      },
+      {
+        "text": "Incremental Static (Re)generation",
+        "as": "/guides/isg",
+        "href": "/guides/[...guide]"
+      },
+      {
+        "text": "Common Routing Patterns",
+        "as": "/guides/cookbook",
+        "href": "/guides/[...guide]"
+      },
+      {
+        "text": "Split Testing",
+        "as": "/guides/split_testing",
+        "href": "/guides/[...guide]"
+      },
+      {
+        "text": "Custom Domains & SSL",
+        "as": "/guides/production",
+        "href": "/guides/[...guide]"
+      },
+      {
+        "text": "Performance",
+        "as": "/guides/performance",
+        "href": "/guides/[...guide]"
+      },
+      {
+        "text": "Edge Network",
+        "as": "/guides/regions",
+        "href": "/guides/[...guide]"
+      },
+      {
+        "text": "Third Party CDNs",
+        "as": "/guides/third_party_cdns",
+        "href": "/guides/[...guide]"
+      },
+
+      {
+        "text": "Connectors",
+        "as": "/guides/connectors",
+        "href": "/guides/[...guide]"
+      },
+      {
+        "text": "Troubleshooting",
+        "as": "/guides/troubleshooting",
+        "href": "/guides/[...guide]"
+      }
+    ]
+  },
+  {
+    "text": "Developer Tools",
+    "items": [
+      {
+        "text": "CLI",
+        "as": "/guides/cli",
+        "href": "/guides/[...guide]"
+      },
+      {
+        "text": "Devtools",
+        "as": "/guides/devtools",
+        "href": "/guides/[...guide]"
+      },
+      {
+        "text": "Logs",
+        "as": "/guides/logs",
+        "href": "/guides/[...guide]"
+      }
+    ]
+  },
+  {
+    "text": "Accounts & Teams",
+    "items": [
       {
         "text": "Teams",
         "as": "/guides/teams",
@@ -31,132 +158,52 @@
         "text": "Environments",
         "as": "/guides/environments",
         "href": "/guides/[...guide]"
-      },
-      {
-        "text": "Routing",
-        "as": "/guides/routing",
-        "href": "/guides/[...guide]"
-      },
-      {
-        "text": "Caching",
-        "as": "/guides/caching",
-        "href": "/guides/[...guide]"
-      },
-      {
-        "text": "Cookbook",
-        "as": "/guides/cookbook",
-        "href": "/guides/[...guide]"
-      },
-      {
-        "text": "Prefetching",
-        "as": "/guides/prefetching",
-        "href": "/guides/[...guide]"
-      },
-      {
-        "text": "GraphQL",
-        "as": "/guides/graphql",
-        "href": "/guides/[...guide]"
-      },
-      {
-        "text": "Static Prerendering",
-        "as": "/guides/static_prerendering",
-        "href": "/guides/[...guide]"
-      },
-      {
-        "text": "Incremental Static (Re)Generation",
-        "as": "/guides/isg",
-        "href": "/guides/[...guide]"
-      },
-      {
-        "text": "Image Optimization",
-        "as": "/guides/image_optimization",
-        "href": "/guides/[...guide]"
-      },
-      {
-        "text": "Split Testing",
-        "as": "/guides/split_testing",
-        "href": "/guides/[...guide]"
-      },
-      {
-        "text": "Core Web Vitals",
-        "as": "/guides/core_web_vitals",
-        "href": "/guides/[...guide]"
-      },
-      {
-        "text": "Troubleshooting",
-        "as": "/guides/troubleshooting",
-        "href": "/guides/[...guide]"
-      },
-      {
-        "text": "Devtools",
-        "as": "/guides/devtools",
-        "href": "/guides/[...guide]"
-      },
-      {
-        "text": "CLI",
-        "as": "/guides/cli",
-        "href": "/guides/[...guide]"
-      },
-      {
-        "text": "Custom Domains & SSL",
-        "as": "/guides/production",
-        "href": "/guides/[...guide]"
-      },
-      {
-        "text": "Security",
-        "as": "/guides/security",
-        "href": "/guides/[...guide]"
-      },
-      {
-        "text": "Logs",
-        "as": "/guides/logs",
-        "href": "/guides/[...guide]"
-      },
-      {
-        "text": "Performance",
-        "as": "/guides/performance",
-        "href": "/guides/[...guide]"
-      },
-      {
-        "text": "Regions",
-        "as": "/guides/regions",
-        "href": "/guides/[...guide]"
-      },
-      {
-        "text": "Third party CDNs",
-        "as": "/guides/third_party_cdns",
-        "href": "/guides/[...guide]"
-      },
-      {
-        "text": "Connectors",
-        "as": "/guides/connectors",
-        "href": "/guides/[...guide]"
-      },
-      {
-        "text": "Contributing",
-        "as": "/guides/contributing",
-        "href": "/guides/[...guide]"
-      },
-      {
-        "text": "Layer0 v3 Migration Guide",
-        "as": "/guides/layer0_migration",
-        "href": "/guides/[...guide]"
       }
     ]
   },
   {
-    "text": "Web Frameworks",
+    "text": "Framework guides",
     "items": [
       {
         "text": "Angular",
         "icon": "angular",
         "as": "/guides/angular",
+        "href": "/guides/[]]"
+      },
+      {
+        "text": "Astro",
+        "icon": "astro",
+        "as": "/guides/astro",
         "href": "/guides/[...guide]"
       },
       {
-        "text": "Frontity",
-        "icon": "frontity",
-        "as": "/guides/frontity",
+        "text": "Brunch",
+        "icon": "brunch",
+        "as": "/guides/brunch",
+        "href": "/guides/[...guide]"
+      },
+      {
+        "text": "Docusaurus",
+        "icon": "docusaurus",
+        "as": "/guides/docusaurus",
+        "href": "/guides/[...guide]"
+      },
+      {
+        "text": "Dojo",
+        "icon": "dojo",
+        "as": "/guides/dojo",
+        "href": "/guides/[...guide]"
+      },
+      {
+        "text": "Eleventy",
+        "icon": "eleventy",
+        "as": "/guides/eleventy",
+        "href": "/guides/[...guide]"
+      },
+      {
+        "text": "Ember.js",
+        "icon": "ember",
+        "as": "/guides/ember",
         "href": "/guides/[...guide]"
       },
       {
@@ -172,15 +219,63 @@
         "href": "/guides/[...guide]"
       },
       {
+        "text": "Frontity",
+        "icon": "frontity",
+        "as": "/guides/frontity",
+        "href": "/guides/[...guide]"
+      },
+      {
         "text": "Gatsby",
         "icon": "gatsby",
         "as": "/guides/gatsby",
         "href": "/guides/[...guide]"
       },
       {
+        "text": "Gridsome",
+        "icon": "gridsome",
+        "as": "/guides/gridsome",
+        "href": "/guides/[...guide]"
+      },
+      {
+        "text": "Hexo",
+        "icon": "hexo",
+        "as": "/guides/hexo",
+        "href": "/guides/[...guide]"
+      },
+      {
+        "text": "Hugo",
+        "icon": "hugo",
+        "as": "/guides/hugo",
+        "href": "/guides/[...guide]"
+      },
+      {
+        "text": "Ionic React",
+        "icon": "ionic_react",
+        "as": "/guides/ionic_react",
+        "href": "/guides/[...guide]"
+      },
+      {
+        "text": "Ionic Vue",
+        "icon": "ionic_vue",
+        "as": "/guides/ionic_vue",
+        "href": "/guides/[...guide]"
+      },
+      {
+        "text": "Jekyll",
+        "icon": "jekyll",
+        "as": "/guides/jekyll",
+        "href": "/guides/[...guide]"
+      },
+      {
         "text": "MkDocs",
         "icon": "mkdocs",
         "as": "/guides/mkdocs",
+        "href": "/guides/[...guide]"
+      },
+      {
+        "text": "NX",
+        "icon": "nx",
+        "as": "/guides/nx",
         "href": "/guides/[...guide]"
       },
       {
@@ -202,9 +297,9 @@
         "href": "/guides/[...guide]"
       },
       {
-        "text": "NX",
-        "icon": "nx",
-        "as": "/guides/nx",
+        "text": "Preact",
+        "icon": "preact",
+        "as": "/guides/preact",
         "href": "/guides/[...guide]"
       },
       {
@@ -220,15 +315,51 @@
         "href": "/guides/[...guide]"
       },
       {
+        "text": "React Static",
+        "icon": "react_static",
+        "as": "/guides/react_static",
+        "href": "/guides/[...guide]"
+      },
+      {
         "text": "React Storefront",
         "icon": "react-storefront",
         "as": "/guides/react-storefront",
         "href": "/guides/[...guide]"
       },
       {
+        "text": "Remix",
+        "icon": "remix",
+        "as": "/guides/remix",
+        "href": "/guides/[...guide]"
+      },
+      {
+        "text": "Saber",
+        "icon": "saber",
+        "as": "/guides/saber",
+        "href": "/guides/[...guide]"
+      },
+      {
         "text": "Sapper",
         "icon": "sapper",
         "as": "/guides/sapper",
+        "href": "/guides/[...guide]"
+      },
+      {
+        "text": "Serverless Functions",
+        "icon": "serverless_functions",
+        "as": "/guides/serverless_functions",
+        "href": "/guides/[...guide]"
+      },
+      {
+        "text": "Shopify Hydrogen",
+        "icon": "shopify_hydrogen",
+        "as": "/guides/shopify_hydrogen",
+        "href": "/guides/[...guide]"
+      },
+      {
+        "text": "SolidJS",
+        "icon": "solid",
+        "as": "/guides/solid",
         "href": "/guides/[...guide]"
       },
       {
@@ -244,6 +375,12 @@
         "href": "/guides/[...guide]"
       },
       {
+        "text": "Stencil",
+        "icon": "stencil",
+        "as": "/guides/stencil",
+        "href": "/guides/[...guide]"
+      },
+      {
         "text": "Svelte",
         "icon": "svelte",
         "as": "/guides/svelte",
@@ -256,9 +393,15 @@
         "href": "/guides/[...guide]"
       },
       {
-        "text": "Vue.js",
+        "text": "UmiJS",
+        "icon": "umijs",
+        "as": "/guides/umijs",
+        "href": "/guides/[...guide]"
+      },
+      {
+        "text": "VitePress",
         "icon": "vue",
-        "as": "/guides/vue",
+        "as": "/guides/vitepress",
         "href": "/guides/[...guide]"
       },
       {
@@ -266,23 +409,99 @@
         "icon": "vsf",
         "as": "/guides/vsf",
         "href": "/guides/[...guide]"
+      },
+      {
+        "text": "Vue.js",
+        "icon": "vue",
+        "as": "/guides/vue",
+        "href": "/guides/[...guide]"
+      },
+      {
+        "text": "VuePress",
+        "icon": "vue",
+        "as": "/guides/vuepress",
+        "href": "/guides/[...guide]"
+      },
+      {
+        "text": "Zola",
+        "icon": "zola",
+        "as": "/guides/zola",
+        "href": "/guides/[...guide]"
       }
     ]
   },
   {
-    "text": "API Documentation",
+    "text": "Reference",
     "items": [
       {
-        "text": "@layer0/core",
-        "as": "/docs/api/core/",
-        "href": "/docs/api/core/",
-        "external": true
+        "text": "Changelog",
+        "as": "/guides/changelog",
+        "href": "/guides/[...guide]"
       },
       {
-        "text": "@layer0/prefetch",
-        "as": "/docs/api/prefetch/",
-        "href": "/docs/api/prefetch/",
-        "external": true
+        "text": "Status Codes",
+        "as": "/guides/status_codes",
+        "href": "/guides/[...guide]"
+      },
+      {
+        "text": "Cookies",
+        "as": "/guides/cookies",
+        "href": "/guides/[...guide]"
+      },
+      {
+        "text": "Bots",
+        "as": "/guides/bots",
+        "href": "/guides/[...guide]"
+      },
+      {
+        "text": "Layer0 for Traditional Sites",
+        "as": "/guides/traditional_sites",
+        "href": "/guides/[...guide]"
+      },
+      {
+        "text": "Request Headers",
+        "as": "/guides/request_headers",
+        "href": "/guides/[...guide]"
+      },
+      {
+        "text": "Response Headers",
+        "as": "/guides/response_headers",
+        "href": "/guides/[...guide]"
+      },
+      {
+        "text": "Limits",
+        "as": "/guides/limits",
+        "href": "/guides/[...guide]"
+      },
+      {
+        "text": "REST API",
+        "as": "/guides/rest_api",
+        "href": "/guides/[...guide]"
+      },
+      {
+        "text": "Install Node.js",
+        "as": "/guides/install-nodejs",
+        "href": "/guides/[...guide]"
+      },
+      {
+        "text": "Deploy to Layer0 Button",
+        "as": "/guides/deploy-to-layer0",
+        "href": "/guides/[...guide]"
+      },
+      {
+        "text": "Contributing",
+        "as": "/guides/contributing",
+        "href": "/guides/[...guide]"
+      },
+      {
+        "text": "v4 Migration Guide",
+        "as": "/guides/layer0_migration",
+        "href": "/guides/[...guide]"
+      },
+      {
+        "text": "layer0.config.js",
+        "as": "/guides/layer0_config",
+        "href": "/guides/[...guide]"
       }
     ]
   },
@@ -304,51 +523,28 @@
     ]
   },
   {
-    "text": "Reference",
+    "text": "Package APIs",
     "items": [
       {
-        "text": "layer0.config.js",
-        "as": "/guides/layer0_config",
-        "href": "/guides/[...guide]"
+        "text": "@layer0/core",
+        "as": "/docs/api/core/",
+        "href": "/docs/api/core/",
+        "external": true
       },
       {
-        "text": "Status Codes",
-        "as": "/guides/status_codes",
-        "href": "/guides/[...guide]"
-      },
+        "text": "@layer0/prefetch",
+        "as": "/docs/api/prefetch/",
+        "href": "/docs/api/prefetch/",
+        "external": true
+      }
+    ]
+  },
+  {
+    "text": "Learning Resources",
+    "items": [
       {
-        "text": "Limits",
-        "as": "/guides/limits",
-        "href": "/guides/[...guide]"
-      },
-      {
-        "text": "Request Headers",
-        "as": "/guides/request_headers",
-        "href": "/guides/[...guide]"
-      },
-      {
-        "text": "Response Headers",
-        "as": "/guides/response_headers",
-        "href": "/guides/[...guide]"
-      },
-      {
-        "text": "Cookies",
-        "as": "/guides/cookies",
-        "href": "/guides/[...guide]"
-      },
-      {
-        "text": "REST API",
-        "as": "/guides/rest_api",
-        "href": "/guides/[...guide]"
-      },
-      {
-        "text": "Layer0 for Traditional Sites",
-        "as": "/guides/traditional_sites",
-        "href": "/guides/[...guide]"
-      },
-      {
-        "text": "Changelog",
-        "as": "/guides/changelog",
+        "text": "What is GraphQL",
+        "as": "/guides/what_is_graphql",
         "href": "/guides/[...guide]"
       }
     ]

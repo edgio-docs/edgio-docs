@@ -1,7 +1,7 @@
-import { Divider, Grid, makeStyles, Button } from '@material-ui/core'
+import { makeStyles, Button } from '@material-ui/core'
 import NextIcon from '@material-ui/icons/ArrowForward'
 import PreviousIcon from '@material-ui/icons/ArrowBack'
-import clsx from 'clsx'
+import Launch from '@material-ui/icons/Launch'
 import React from 'react'
 import Link from 'next/link'
 
@@ -15,7 +15,13 @@ const useStyles = makeStyles(theme => ({
   link: {
     textTransform: 'none',
     fontWeight: 'normal',
-    margin: theme.spacing(6, 0, 3, 2),
+    margin: theme.spacing(0, 0, 3, 2),
+  },
+  footer: {
+    display: 'flex',
+    justifyContent: 'flex-end',
+    alignItems: 'center',
+    padding: theme.spacing(6, 0, 0, 0),
   },
 }))
 
@@ -28,16 +34,31 @@ export default function Footer({ guide, navData }) {
   const prevGuide = guideIdx > 0 ? orderedGuides[guideIdx - 1] : null
   const nextGuide =
     guideIdx >= 0 && guideIdx < orderedGuides.length ? orderedGuides[guideIdx + 1] : null
-
-  if (!prevGuide && !nextGuide) {
-    return null
-  }
+  const editGuide = `https://github.com/layer0-docs/layer0-docs/edit/master/guides/${guide}.md`
 
   return (
-    <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
-      {prevGuide && <GuideLink variant="previous" guide={prevGuide} />}
-      {nextGuide && <GuideLink variant="next" guide={nextGuide} />}
-    </div>
+    <>
+      {guide !== 'changelog' && (
+        <Button
+          href={editGuide}
+          target="_blank"
+          variant="text"
+          size="small"
+          startIcon={<Launch style={{ fontSize: '.8rem' }} />}
+          color="secondary"
+          style={{ fontSize: '.7rem' }}
+        >
+          Edit this guide on GitHub
+        </Button>
+      )}
+
+      {(prevGuide || nextGuide) && (
+        <div className={classes.footer}>
+          {prevGuide && <GuideLink variant="previous" guide={prevGuide} />}
+          {nextGuide && <GuideLink variant="next" guide={nextGuide} />}
+        </div>
+      )}
+    </>
   )
 }
 

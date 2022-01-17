@@ -1,36 +1,264 @@
-import React from 'react'
-import Head from 'next/head'
-import Nav from '../components/nav/Nav'
-import PageWrapper from '../components/PageWrapper'
 import {
   Typography,
   makeStyles,
   darken,
   Grid,
   Paper,
-  Divider,
-  Button,
   useTheme,
+  Box,
+  Container,
+  Card,
+  CardContent,
+  Divider,
 } from '@material-ui/core'
+import GraphQLIcon from '../components/icons/graphql.svg'
+import JamstackIcon from '../components/icons/jamstack.svg'
+import WebAppIcon from '@material-ui/icons/Language'
+import ShieldIcon from '../components/icons/security.svg'
 import Link from 'next/link'
+import cs from 'classname'
+import Nav from '../components/nav/Nav'
+import PageWrapper from '../components/PageWrapper'
+import { PRODUCT_NAME } from '../constants'
+import { getGuides } from '../components/getGuides'
+import SEO from '../components/Seo'
 import Layer0Icon from '../components/icons/layer0-black.svg'
-import Icon from '../components/icons/Icon'
-import { PRODUCT_NAME, EXAMPLES_REPOS } from '../constants'
-import { getGuides, getGuideByName } from '../components/getGuides'
+
+const Home = ({ navData }) => {
+  const classes = useStyles()
+  const theme = useTheme()
+
+  const PriEm = ({ children, addlClasses = {} }) => (
+    <span className={cs(classes.colorPrimary, classes.fontNormal, addlClasses)}>{children}</span>
+  )
+  const SecEm = ({ children }) => <span className={cs(classes.fontNormal)}>{children}</span>
+
+  return (
+    <PageWrapper nav={<Nav navData={navData} />}>
+      <SEO />
+
+      <div className={classes.hero}>
+        <Typography variant="h2" style={{ maxWidth: 800, marginTop: 0, fontSize: '30px' }}>
+          <Layer0Icon className={classes.logo} />
+          <Box>
+            The <PriEm>powerful</PriEm> CDN platform that integrates <PriEm>edge logic</PriEm> into
+            your application code &amp; <PriEm>extends the edge</PriEm> to the browser.
+          </Box>
+        </Typography>
+      </div>
+
+      <Container maxWidth="md" className={classes.tiles}>
+        <Grid container spacing={6}>
+          <Grid item md={4} sm={6} xs={12}>
+            <Link href="/guides/webapp_cdn_getting_started">
+              <Card elevation={10} className={classes.card}>
+                <Box className={classes.cardHeader}>
+                  <div style={{ position: 'relative', marginRight: theme.spacing(1) }}>
+                    <WebAppIcon
+                      style={{
+                        height: 40,
+                        width: 40,
+                        margin: theme.spacing(0, 0.5, 0, 0),
+                      }}
+                    />
+                    <ShieldIcon
+                      style={{
+                        height: 24,
+                        width: 24,
+                        position: 'absolute',
+                        right: 0,
+                        bottom: 4,
+                        borderRadius: '50%',
+                      }}
+                    />
+                  </div>
+                  <Typography variant="h2">WebApp CDN</Typography>
+                </Box>
+                <CardContent className={classes.cardContent}>
+                  <Typography>
+                    Accelerate and secure your app using the Layer0 global CDN and EdgeJS.
+                  </Typography>
+                </CardContent>
+              </Card>
+            </Link>
+          </Grid>
+          <Grid item md={4} sm={6} xs={12}>
+            <Link href="/guides/jamstack_getting_started">
+              <Paper elevation={10} className={classes.card}>
+                <Box className={classes.cardHeader}>
+                  <JamstackIcon
+                    style={{
+                      height: 48,
+                      width: 48,
+                      margin: theme.spacing(0, 0.5, 0, 0),
+                    }}
+                  />
+                  <Typography variant="h2">Jamstack</Typography>
+                </Box>
+                <CardContent className={classes.cardContent}>
+                  <Typography>
+                    Deploy static and dynamic Jamstack sites that run on Layer0's serverless
+                    functions.
+                  </Typography>
+                </CardContent>
+              </Paper>
+            </Link>
+          </Grid>
+          <Grid item md={4} sm={6} xs={12}>
+            <Link href="/guides/graphql">
+              <Paper elevation={10} className={classes.card}>
+                <Box className={classes.cardHeader}>
+                  <GraphQLIcon
+                    style={{
+                      height: 40,
+                      width: 40,
+                      margin: theme.spacing(0.5, 1.5, 0.5, 0),
+                    }}
+                  />
+                  <Typography variant="h2">GraphQL CDN</Typography>
+                </Box>
+                <CardContent className={classes.cardContent}>
+                  <Typography>
+                    Scale and secure your GraphQL API using the Layer0 global CDN and Edge JS.
+                  </Typography>
+                </CardContent>
+              </Paper>
+            </Link>
+          </Grid>
+        </Grid>
+      </Container>
+      <Divider />
+      <div className={classes.tutorials}>
+        <Container maxWidth="md">
+          <Grid container spacing={4}>
+            <Grid item xs={12}>
+              <Typography variant="h2">{PRODUCT_NAME} Tutorials</Typography>
+            </Grid>
+            <Grid item md={4} sm={6} xs={12} className={classes.tutorial}>
+              <h3>What &amp; Why</h3>
+              <div className={classes.aspectRatio}>
+                <iframe frameBorder={0} src="https://www.youtube.com/embed/sJ6AkTrcZvg" />
+              </div>
+            </Grid>
+            <Grid item md={4} sm={6} xs={12} className={classes.tutorial}>
+              <h3>Deploying a GitHub Project</h3>
+              <div className={classes.aspectRatio}>
+                <iframe frameBorder={0} src="https://www.youtube.com/embed/F8uN03ps1As" />
+              </div>
+            </Grid>
+            <Grid item md={4} sm={6} xs={12} className={classes.tutorial}>
+              <h3>How to Prefetch</h3>
+              <div className={classes.aspectRatio}>
+                <iframe frameBorder={0} src="https://www.youtube.com/embed/lfhSDCNgzfs" />
+              </div>
+            </Grid>
+            <Grid item md={4} sm={6} xs={12} className={classes.tutorial}>
+              <h3>What are the {PRODUCT_NAME} DevTools?</h3>
+              <div className={classes.aspectRatio}>
+                <iframe frameBorder={0} src="https://www.youtube.com/embed/4AYQAvkc0UY" />
+              </div>
+            </Grid>
+          </Grid>
+        </Container>
+      </div>
+    </PageWrapper>
+  )
+}
+
+export default Home
+
+export async function getStaticProps() {
+  const [navData] = await Promise.all([getGuides()])
+
+  return { props: { navData } }
+}
 
 const useStyles = makeStyles(theme => ({
   hero: {
-    paddingTop: theme.spacing(10),
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
     textAlign: 'center',
+    marginBottom: theme.spacing(12),
+
     '& h1, & h2': {
       color: theme.palette.text.secondary,
       fontWeight: 300,
     },
-  },
 
+    [theme.breakpoints.up('sm')]: {
+      paddingTop: theme.spacing(10),
+    },
+
+    [theme.breakpoints.down('xs')]: {
+      marginBottom: theme.spacing(7),
+    },
+  },
+  cardHeader: {
+    display: 'flex',
+    alignItems: 'center',
+    padding: theme.spacing(2),
+    '& svg': {
+      fill: theme.palette.primary.main,
+    },
+  },
+  cardContent: {
+    paddingTop: 0,
+  },
+  card: {
+    boxShadow: theme.shadows[4],
+    cursor: 'pointer',
+    borderRadius: theme.spacing(1),
+
+    '&:hover': {
+      boxShadow: theme.shadows[8],
+    },
+
+    '& h2': {
+      ...theme.typography.h3,
+      fontWeight: 'bold',
+      margin: 0,
+      opacity: 0.9,
+      marginTop: 0,
+    },
+
+    height: '100%',
+
+    '& p': {
+      opacity: 0.6,
+    },
+  },
+  choiceBox: {
+    marginTop: '1.3rem',
+  },
+  fontNormal: {
+    fontWeight: 'normal',
+  },
+  fontBold: {
+    fontWeight: 'bold',
+  },
+  colorPrimary: {
+    color: theme.palette.primary.main,
+  },
+  grid: {
+    display: 'grid',
+  },
+  placeCenter: {
+    placeItems: 'center',
+  },
+  alignItemsEnd: {
+    alignItems: 'end',
+  },
+  alignItemsBaseline: {
+    alignItems: 'baseline',
+  },
+  alignSelfEnd: {
+    alignSelf: 'end',
+  },
+  headerChoice: {
+    color: theme.palette.primary.main,
+    fontSize: '1.4rem',
+  },
   gettingStarted: {
     marginTop: '1em',
     color: theme.palette.text.primary,
@@ -41,51 +269,11 @@ const useStyles = makeStyles(theme => ({
     border: `1px solid ${theme.palette.divider}`,
     borderRadius: 5,
   },
-
   cardActionArea: {
     flex: 1,
   },
-
-  frameworks: {
-    marginTop: theme.spacing(5),
-    display: 'grid',
-    gridGap: '1.2rem',
-    gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))',
-  },
-
-  frameworkItem: {
-    border: `1px solid ${theme.palette.divider}`,
-    '&:hover': {
-      boxShadow: theme.shadows[8],
-    },
-  },
-
-  framework: {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    padding: theme.spacing(2),
-    height: '100%',
-  },
-
-  frameworkWrapper: {
-    display: 'contents',
-    cursor: 'pointer',
-  },
-
-  frameworkText: {
-    display: 'flex',
-    justifyContent: 'center',
-    textAlign: 'center',
-  },
-
-  icon: {
-    flex: 1,
-    padding: theme.spacing(2, 1),
-  },
-
   logo: {
-    margin: '1em 0',
+    margin: theme.spacing(0, 0, 4, -7),
     width: 300,
     [theme.breakpoints.up('sm')]: {
       width: 500,
@@ -94,12 +282,48 @@ const useStyles = makeStyles(theme => ({
       width: 600,
     },
   },
-
-  changeLog: {
-    marginTop: theme.spacing(8),
+  tiles: {
+    paddingBottom: theme.spacing(10),
+  },
+  tutorials: {
     paddingBottom: theme.spacing(8),
     '& h2': {
-      marginTop: theme.spacing(2),
+      textAlign: 'center',
+      fontWeight: 'bold',
+      paddingBottom: theme.spacing(2),
+    },
+    '& h3': {
+      padding: theme.spacing(0, 0, 1, 0),
+      margin: 0,
+    },
+  },
+  tutorial: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'stretch',
+    position: 'relative',
+  },
+  aspectRatio: {
+    height: 0,
+    paddingBottom: '75%',
+    flex: 1,
+    position: 'relative',
+    boxShadow: theme.shadows[6],
+    '& iframe': {
+      top: 0,
+      left: 0,
+      width: '100%',
+      height: '100%',
+      position: 'absolute',
+    },
+  },
+  buttonRow: {
+    transition: 'color border-color 200ms linear',
+    '&:hover': {
+      borderColor: darken(theme.palette.secondary.light, 0.1),
+    },
+    '& span': {
+      textDecoration: 'none',
     },
   },
   button: {
@@ -120,230 +344,3 @@ const useStyles = makeStyles(theme => ({
     },
   },
 }))
-
-const iconProps = {
-  style: { height: 142, width: 142, objectFit: 'contain' },
-}
-
-const Home = ({ navData }) => {
-  const classes = useStyles()
-  const theme = useTheme()
-
-  return (
-    <PageWrapper nav={<Nav navData={navData} />}>
-      <Head>
-        <title>{PRODUCT_NAME} Documentation</title>
-      </Head>
-      <div className={classes.hero}>
-        <Layer0Icon className={classes.logo} />
-        <Typography variant="h2" style={{ maxWidth: 800, marginTop: 0, fontSize: '30px' }}>
-          <div style={{ position: 'relative' }}>
-            Develop, deploy, preview, split test and monitor your frontend.
-          </div>
-        </Typography>
-      </div>
-      <div className={classes.frameworks}>
-        <FrameworkItem
-          guide="/guides/next"
-          framework="next"
-          icon="nextjs"
-          text="Get started with Next.js"
-        />
-
-        <FrameworkItem
-          guide="/guides/next_commerce"
-          framework="nextcommerce"
-          icon="next-commerce"
-          text="Start with Next.js Commerce"
-        />
-
-        <FrameworkItem guide="/guides/nuxt" framework="nuxt" text="Get started with Nuxt.js" />
-
-        <FrameworkItem guide="/guides/vsf" framework="vsf" text="Get started with Vue Storefront" />
-
-        <FrameworkItem guide="/guides/swell" framework="swell" text="Get started with Swell" />
-
-        <FrameworkItem
-          guide="/guides/react"
-          framework="static-react"
-          icon="react"
-          text="Get started with React"
-        />
-
-        <FrameworkItem
-          guide="/guides/vue"
-          framework="static-vue"
-          icon="vue"
-          text="Get started with Vue.js"
-        />
-
-        <FrameworkItem
-          guide="/guides/express"
-          framework="express"
-          text="Get started with Express"
-        />
-
-        <FrameworkItem
-          guide="/guides/svelte"
-          framework="svelte"
-          icon="svelte"
-          text="Get started with Svelte"
-        />
-
-        <FrameworkItem
-          guide="/guides/angular"
-          framework="angular"
-          text="Get started with Angular"
-        />
-
-        <FrameworkItem
-          guide="/guides/react-storefront"
-          framework="react-storefront"
-          text="Get started with React Storefront"
-        />
-
-        <FrameworkItem guide="/guides/sapper" framework="sapper" text="Get started with Sapper" />
-
-        <FrameworkItem guide="/guides/gatsby" framework="gatsby" text="Get started with Gatsby" />
-
-        <FrameworkItem
-          guide="/guides/spartacus"
-          framework="spartacus"
-          text="Get started with Spartacus"
-        />
-
-        <FrameworkItem guide="/guides/nx" framework="nx" text="Get started with Nx" />
-
-        <FrameworkItem
-          guide="/guides/frontity"
-          framework="frontity"
-          text="Get started with Frontity"
-        />
-
-        <FrameworkItem
-          guide="/guides/static_sites"
-          framework=""
-          icon="html"
-          text=" Get started with Static HTML/JS"
-        />
-
-        <FrameworkItem
-          guide="/guides/ember_fastboot"
-          framework="fastboot"
-          text="Get started with Ember Fastboot"
-        />
-
-        <FrameworkItem
-          guide="/guides/razzle"
-          framework="razzle"
-          text="Get started with Razzle"
-          icon="razzleP"
-        />
-
-        <FrameworkItem
-          guide="/guides/mkdocs"
-          framework="mkdocs"
-          icon="mkdocs"
-          text="Get started with MkDocs"
-        />
-      </div>
-
-      <p style={{ textAlign: 'center', marginTop: theme.spacing(8) }}>
-        Don't see your framework? Check out {PRODUCT_NAME} for &nbsp;
-        <Link href="/guides/[...guide]" as="/guides/traditional_sites">
-          traditional websites
-        </Link>
-        .
-      </p>
-      <div className={classes.changeLog}>
-        <Divider />
-        <h1>{PRODUCT_NAME} Tutorials</h1>
-        <Grid container spacing={5}>
-          <Grid item>
-            <h4>{PRODUCT_NAME} - What & Why</h4>
-            <iframe
-              width="100%"
-              height="90%"
-              src="https://www.youtube.com/embed/sJ6AkTrcZvg"
-            ></iframe>
-          </Grid>
-          <Grid item>
-            <h4>{PRODUCT_NAME} - Deploying GitHub Project</h4>
-            <iframe
-              width="100%"
-              height="90%"
-              src="https://www.youtube.com/embed/F8uN03ps1As"
-            ></iframe>
-          </Grid>
-          <Grid item>
-            <h4>{PRODUCT_NAME} - How to Prefetch</h4>
-            <iframe
-              width="100%"
-              height="90%"
-              src="https://www.youtube.com/embed/lfhSDCNgzfs"
-            ></iframe>
-          </Grid>
-          <Grid item>
-            <h4>
-              {PRODUCT_NAME} - What are the {PRODUCT_NAME} DevTools?
-            </h4>
-            <iframe
-              width="100%"
-              height="90%"
-              src="https://www.youtube.com/embed/4AYQAvkc0UY"
-            ></iframe>
-          </Grid>
-        </Grid>
-      </div>
-    </PageWrapper>
-  )
-}
-
-export default Home
-
-export async function getStaticProps() {
-  const [navData] = await Promise.all([getGuides()])
-
-  return { props: { navData } }
-}
-
-const FrameworkItem = ({ framework, text, guide, icon }) => {
-  const classes = useStyles()
-
-  if (!icon) icon = framework
-  return (
-    <Grid item className={classes.frameworkItem}>
-      <Paper className={classes.framework} elevation={0}>
-        <Link href="/guides/[...guide]" as={guide}>
-          <div className={classes.frameworkWrapper}>
-            <Icon type={icon} className={classes.icon} {...iconProps} />
-            <Typography className={classes.frameworkText}>{text}</Typography>
-          </div>
-        </Link>
-        <DeployLink framework={framework} />
-      </Paper>
-    </Grid>
-  )
-}
-
-const DeployLink = ({ framework }) => {
-  const classes = useStyles()
-  const url = EXAMPLES_REPOS[framework]
-
-  // No url is a valid option
-  if (!url) {
-    return null
-  }
-
-  return (
-    <a
-      className={classes.buttonLink}
-      href={`https://app.layer0.co/deploy?repo=${encodeURIComponent(EXAMPLES_REPOS[framework])}`}
-      target="_blank"
-    >
-      <Button variant="outlined" color="secondary" className={classes.button}>
-        Deploy to Layer0
-      </Button>
-    </a>
-  )
-}

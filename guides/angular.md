@@ -1,10 +1,8 @@
 # Angular
 
-This guide shows you how to deploy an Angular application on {{ PRODUCT_NAME }}:
+This guide shows you how to deploy an [Angular](https://angular.io) application on {{ PRODUCT_NAME }}.
 
-## Example SSR Site
-
-This Angular example app uses server-side rendering and prefetching to provide lightening-fast transitions between pages.
+## Example
 
 [Try the Angular SSR Example Site](https://layer0-docs-layer0-angular-example-default.layer0.link/category/hats?button)
 [View the Code](https://github.com/layer0-docs/layer0-angular-example?button)
@@ -16,13 +14,7 @@ This framework has a connector developed for {{ PRODUCT_NAME }}. See [Connectors
 
 [View the Connector Code](https://github.com/layer0-docs/layer0-connectors/tree/main/layer0-angular-connector?button)
 
-## Install Node.js and npm
-
-**{{ PRODUCT_NAME }} only supports Node.js version {{ NODE_VERSION }}**
-
-If you do not have Node.js installed on your system, download and install it from the official [Node.js v{{ NODE_VERSION }} downloads](https://nodejs.org/dist/latest-v{{ NODE_VERSION }}/) page. Select the download that matches your operating system and run the installer. Note that the installer for Node.js will also install npm.
-
-_Note that while you can use any version of Node.js >= 14 locally, your app will run in Node 14 when deployed to the {{ PRODUCT_NAME }} cloud. Therefore we highly suggest using Node 14 for all development._
+{{ SYSTEM_REQUIREMENTS }}
 
 ## Getting Started
 
@@ -42,8 +34,10 @@ You should now have a working starter app. Run `ng serve` to see the application
 To deploy your Angular application on {{ PRODUCT_NAME }} it needs to support server-side rendering (SSR). To add SSR support, run:
 
 ```bash
-ng add @nguniversal/express-engine
+ng add @nguniversal/express-engine --clientProject {{PROJECT_NAME}}
 ```
+
+(Note: the `{{PROJECT_NAME}}` value comes from the `package.json` file and should match the value of the `name` key.
 
 Read more about server-side rendering in Angular [here](https://angular.io/guide/universal).
 

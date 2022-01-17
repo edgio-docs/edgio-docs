@@ -1,6 +1,6 @@
-# Routing
+# Routing with EdgeJS
 
-The `{{ PACKAGE_NAME }}/core` package provides a JavaScript API for controlling routing and caching from your code base rather than a CDN web portal. Using this "{{ EDGEJS_LABEL }}" approach allows this vital routing logic to be properly tested, reviewed, and version controlled, just like the rest of your application code.
+The `{{ PACKAGE_NAME }}/core` package provides a JavaScript API for controlling routing and caching from your code base rather than a CDN web portal. Using this _{{ EDGEJS_LABEL }}_ approach allows this vital routing logic to be properly tested, reviewed, and version controlled, just like the rest of your application code.
 
 Using the Router, you can:
 
@@ -24,7 +24,7 @@ const { Router } = require('{{ PACKAGE_NAME }}/core/router')
 module.exports = new Router()
 ```
 
-## Declaring Routes
+## Declare Routes
 
 Declare routes using the method corresponding to the HTTP method you want to match.
 
@@ -87,7 +87,7 @@ new Router()
   .use(nextRoutes)
 ```
 
-### Altering requests and responses
+### Alter Requests and Responses
 
 {{ PRODUCT_NAME }} offers APIs to manipulate request and response headers and cookies. The APIs are:
 
@@ -102,9 +102,9 @@ new Router()
 
 `*` Adding, updating, or removing a request cookie can be achieved with `updateRequestHeader` applied to `cookie` header.
 
-You can find detailed descriptions of these APIs in the `{{ PACKAGE_NAME }}/core` [documentation](/docs/api/core/classes/_router_responsewriter_.responsewriter.html)
+You can find detailed descriptions of these APIs in the `{{ PACKAGE_NAME }}/core` [documentation](/docs/api/core/classes/_router_responsewriter_.responsewriter.html).
 
-#### Embedded values
+#### Embedded Values
 
 You can inject values from the request or response into headers or cookies as template literals using the `${value}` format. For example: `setResponseHeader('original-request-path', '${path}')` would add an `original-request-path` response header whose value is the request path.
 
@@ -182,9 +182,9 @@ new Router().get('/:foo/:bar?', res => {
 
 **Tip:** The prefix is also optional, escape the prefix `\/` to make it required.
 
-#### Zero or more
+#### Zero or More
 
-Parameters can be suffixed with an asterisk (`*`) to denote a zero or more parameter matches.
+Parameters can be suffixed with an asterisk (`*`) to denote zero or more parameter matches.
 
 ```js
 new Router().get('/:foo*', res => {
@@ -194,9 +194,9 @@ new Router().get('/:foo*', res => {
 
 The captured parameter value will be provided as an array.
 
-#### One or more
+#### One or More
 
-Parameters can be suffixed with a plus sign (`+`) to denote a one or more parameter matches.
+Parameters can be suffixed with a plus sign (`+`) to denote one or more parameter matches.
 
 ```js
 new Router().get('/:foo+', res => {
@@ -236,7 +236,7 @@ router.match(
 )
 ```
 
-Currently the only body content supported is JSON. Body content is parsed as JSON and is matched against the presence of the fields specified in the `criteria` field. The [POST Body Matching Criteria](#section_post_body_matching_criteria) section below contains examples of using the `criteria` field.
+Currently the only body content supported is JSON. Body content is parsed as JSON and is matched against the presence of the fields specified in the `criteria` field. The [_POST Body Matching Criteria_](#section_post_body_matching_criteria) section below contains examples of using the `criteria` field.
 
 Body matching can be combined with other match parameters such as headers and cookies. For example,
 
@@ -253,7 +253,7 @@ router.match(
 )
 ```
 
-### Caching & POST body matching
+### Caching & POST Body Matching
 
 When body matching is combined with `cache` in a route, **the HTTP request body will automatically be used as the cache key.** For example, the code below will cache GraphQL `GetProducts` queries using the entire request body as the cache key:
 
@@ -292,7 +292,7 @@ router.match(
 )
 ```
 
-### POST body matching criteria
+### POST Body Matching Criteria
 
 The `criteria` property can be a string or regular expression.
 
@@ -316,7 +316,7 @@ would match an HTTP POST request body containing:
 }
 ```
 
-### Regular expression criteria
+### Regular Expression Criteria
 
 Regular expressions can also be used as `criteria`. For example,
 
@@ -339,7 +339,7 @@ would match an HTTP POST body containing:
 }
 ```
 
-### Nested JSON criteria
+### Nested JSON Criteria
 
 You can also use a nested object to match a field at a specific location in the JSON. For example,
 
@@ -390,11 +390,11 @@ router.graphqlOperation({ path: '/api/graphql', name: 'GetProducts' }, res => {
 
 Note that when the `graphqlOperation` function is used, the HTTP request body will automatically be included in the cache key.
 
-The `graphqlOperation` function is provided to simplify matching of common GraphQL scenarios. For complex GraphQL matching (such as authenticated data), you can use the generic [Body Matching for POST requests](#section_body_matching_for_post_requests) feature.
+The `graphqlOperation` function is provided to simplify matching of common GraphQL scenarios. For complex GraphQL matching (such as authenticated data), you can use the generic [_Body Matching for POST requests_](#section_body_matching_for_post_requests) feature.
 
-A guide on implementing GraphQL routing in your project can be found [here](/guides/graphql).
+See the guide on [Implementing GraphQL Routing](/guides/graphql) in your project.
 
-## Handling Requests
+## Request Handling 
 
 The second argument to routes is a function that receives a `ResponseWriter` and uses it to send a response. Using `ResponseWriter` you can:
 
@@ -441,7 +441,7 @@ module.exports = new Router()
   })
 ```
 
-## Handling Errors
+## Errors Handling
 
 You can use the router's `catch` method to return specific content when the request results in an error status (For example, a 500). Using `catch`, you can also alter the `statusCode` and `response` on the edge before issuing a response to the user.
 
@@ -487,4 +487,4 @@ Under _&lt;Your Environment&gt; &#8594; Configuration_, click _Edit_ to draft a 
 Click _Add A Redirect_ to configure the path or host you wish to redirect to:
 ![add redirect](/images/environments/add_redirects.png)
 
-Note: you will need to activate and redeploy your site for this change to take effect.
+**Note:** you will need to activate and redeploy your site for this change to take effect.

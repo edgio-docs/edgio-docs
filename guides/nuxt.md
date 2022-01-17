@@ -10,19 +10,21 @@ This Nuxt.js example app uses server-side rendering and prefetching to provide l
 [View the Code](https://github.com/layer0-docs/layer0-nuxt-example?button)
 [Deploy to Layer0](https://app.layer0.co/deploy?button&deploy&repo=https%3A%2F%2Fgithub.com%2Flayer0-docs%2Flayer0-nuxt-example)
 
+## Example ISG Site
+
+This Nuxt.js example app uses ISG (Incremental Static Generation) to provide lightening-fast transitions between pages.
+
+[Try the Nuxt.js ISG example site](https://layer0-docs-layer0-nuxt-isg-example-default.layer0-limelight.link/?button)
+[View the Code](https://github.com/layer0-docs/layer0-nuxt-isg-example?button)
+[Deploy to Layer0](https://app.layer0.co/deploy?button&deploy&repo=https%3A%2F%2Fgithub.com%2Flayer0-docs%2Flayer0-nuxt-isg-example)
+
 ## Connector
 
 This framework has a connector developed for {{ PRODUCT_NAME }}. See [Connectors](connectors) for more information.
 
 [View the Connector Code](https://github.com/layer0-docs/layer0-connectors/tree/main/layer0-nuxt-connector?button)
 
-## Install Node.js and npm
-
-**{{ PRODUCT_NAME }} only supports Node.js version {{ NODE_VERSION }}**
-
-If you do not have Node.js installed on your system, download and install it from the official [Node.js v{{ NODE_VERSION }} downloads](https://nodejs.org/dist/latest-v{{ NODE_VERSION }}/) page. Select the download that matches your operating system and run the installer. Note that the installer for Node.js will also install npm.
-
-_Note that while you can use any version of Node.js >= 14 locally, your app will run in Node 14 when deployed to the {{ PRODUCT_NAME }} cloud. Therefore we highly suggest using Node 14 for all development._
+{{ SYSTEM_REQUIREMENTS }}
 
 ## Getting Started
 
@@ -42,7 +44,6 @@ npm create nuxt-app my-nuxt-app
 
 Nuxt's create module will ask you a series of questions to configure your app. Make sure you answer as follows:
 
-- For `Choose custom server framework` select `None`
 - For `Choose rendering mode` select `Universal (SSR)`
 - Your answers to the other questions should not matter for the purposes of this guide.
 
@@ -85,7 +86,7 @@ This command will also update your `package.json` with the following changes:
 
 - Moves all packages in `dependencies` to `devDependencies` except those listed in the `modules` property of `nuxt.config.js`.
 - Adds `@nuxt/core` to `dependencies`
-- Adds several `scripts` to run the available `{{{ CLI_NAME }}` commands
+- Adds several `scripts` to run the available `{{ CLI_NAME }}` commands
 
 As an example, here's the original `package.json` from Nuxt's create step:
 
@@ -327,7 +328,7 @@ includeFiles: {
 },
 ```
 
-In addition, if `includeNodeModules` does not copy over the necessary package that may be needed in production, it can be included via this key as well. For instance, 
+In addition, if `includeNodeModules` does not copy over the necessary package that may be needed in production, it can be included via this key as well. For instance,
 
 ```js
 includeFiles: {

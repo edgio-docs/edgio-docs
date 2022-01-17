@@ -61,7 +61,7 @@ includeFiles: {
 
 ## prerenderConcurrency
 
-The maximum number of URLs that will be concurrently prendered during deployment when [static prerendering](/guides/static_prerendering) is enabled. Defaults to 200, which is the maximum allowed value.
+The maximum number of URLs that will be concurrently prerendered during deployment when [static prerendering](/guides/static_prerendering) is enabled. Defaults to 200, which is the maximum allowed value.
 
 ## sources
 

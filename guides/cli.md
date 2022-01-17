@@ -1,6 +1,6 @@
 # CLI
 
-This guide shows you everything you can do with {{ PRODUCT_NAME }} command line interface.
+This guide shows you everything you can do with the {{ PRODUCT_NAME }} command line interface.
 
 ## Installation
 
@@ -10,7 +10,7 @@ To install the {{ PRODUCT_NAME }} CLI run
 npm i -g {{ PACKAGE_NAME }}/cli
 ```
 
-Or with yarn:
+Or with yarn
 
 ```bash
 yarn global add {{ PACKAGE_NAME }}/cli
@@ -20,11 +20,11 @@ yarn global add {{ PACKAGE_NAME }}/cli
 
 ### build
 
-Creates a build of your app optimized for production
+Creates a build of your app optimized for production.
 
 #### Options
 
-| Name                         | Description                                                                                                                                                                                                                                                                                                                              |
+| Name                         | Description                                                                                                                                                                                                                                                                                                                   |
 | ---------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `--skip-framework`           | Alias: "-s". Skips the framework (Next.js, Vue, Angular, etc..) build and simply rebundles your router                                                                                                                                                                                                                                   |
 | `--disable-permanent-assets` | Set this to true to suppress errors like "Immutable file (...) content was changed" during deployment.                                                                                                                                                                                                                                   |
@@ -46,10 +46,10 @@ specified environment will be cleared.
 | Name              | Description                                                   |
 | ----------------- | ------------------------------------------------------------- |
 | `--team`          | (Required) The team name                                      |
-| `--site`          | (Required) The site name.                                     |
-| `--environment`   | (Required) The environment name.                              |
-| `--path`          | A path to clear. Use "\*" as a wildcard.                      |
-| `--surrogate-key` | Clears all responses assigned to the specified surrogate key. |
+| `--site`          | (Required) The site name                                      |
+| `--environment`   | (Required) The environment name                               |
+| `--path`          | A path to clear. Use "\*" as a wildcard                       |
+| `--surrogate-key` | Clears all responses assigned to the specified surrogate key  |
 
 #### Example
 
@@ -102,7 +102,7 @@ Builds and deploys your site on {{ PRODUCT_NAME }}.
 | `--include-sources`          | Includes all non-gitignored source files in the bundle uploaded to {{ PRODUCT_NAME }}. This can be helpful when debugging, especially when working with {{ PRODUCT_NAME }} support. You can limit the files that are uploaded using the [sources](/guides/{{ PRODUCT_NAME_LOWER }}\_config#section_sources) config in {{ CONFIG_FILE }}. |
 | `--disable-permanent-assets` | Set this to true to suppress errors like "Immutable file (...) content was changed" during deployment.                                                                                                                                                                                                                                   |
 
-#### Getting information about the deployment
+#### Getting Information about the Deployment
 
 The `layer0 deploy` command writes a file called `.layer0/deployment-manifest.json`, which contains the following information:
 
@@ -208,7 +208,7 @@ Or to run a deployment bundle downloaded from {{ PRODUCT_NAME }} Developer Conso
 {{ CLI_NAME }} run /path/to/bundle.zip
 ```
 
-Production mode is always used whe running downloaded bundles.
+Production mode is always used when running downloaded bundles.
 
 ### use
 

@@ -1,26 +1,14 @@
 # Vue.js
 
-This guide shows you how to deploy a Vue.js application on {{ PRODUCT_NAME }}.
+This guide shows you how to deploy a [Vue.js](https://vuejs.org/) application on {{ PRODUCT_NAME }}.
 
 ## Example
 
-Here's an example Vue app running on Layer0:
+[Try the Vue Example Site](https://layer0-docs-layer0-static-vuejs-example-default.layer0-limelight.link/?button)
+[View the Code](https://github.com/layer0-docs/layer0-static-vuejs-example?button)
+[Deploy to Layer0](https://app.layer0.co/deploy?button&deploy&repo=https://github.com/layer0-docs/layer0-static-vuejs-example)
 
-[Try the Vue Example Site](https://layer0-docs-layer0-static-vuejs-example-default.layer0.link/?button)
-[View the Code](https://github.com/layer0-docs/static-vuejs-example?button)
-[Deploy to Layer0](https://app.layer0.co/deploy?button&deploy&repo=https://github.com/layer0-docs/static-vuejs-example)
-
-## Install Node.js and npm
-
-**{{ PRODUCT_NAME }} only supports Node.js version {{ NODE_VERSION }}**
-
-If you do not have Node.js installed on your system, download and install it from the official [Node.js v{{ NODE_VERSION }} downloads](https://nodejs.org/dist/latest-v{{ NODE_VERSION }}/) page. Select the download that matches your operating system and run the installer. Note that the installer for Node.js will also install npm.
-
-_Note that while you can use any version of Node.js >= 14 locally, your app will run in Node 14 when deployed to the {{ PRODUCT_NAME }} cloud. Therefore we highly suggest using Node 14 for all development._
-
-## Sign up for {{ PRODUCT_NAME }}
-
-Deploying requires an account on {{ PRODUCT_NAME }}. [Sign up here for free.]({{ APP_URL }}/signup).
+{{ SIGN_UP_LAYER0 }}
 
 ## Install the {{ PRODUCT_NAME }} CLI
 
@@ -29,6 +17,8 @@ If you have not already done so, install the [{{ PRODUCT_NAME }} CLI](cli)
 ```bash
 npm i -g {{ PACKAGE_NAME }}/cli
 ```
+
+{{ SYSTEM_REQUIREMENTS }}
 
 ## Create a new Vue.js app
 
@@ -54,21 +44,6 @@ You can verify your app works by running it locally:
 ```bash
 cd hello-world
 npm run serve
-```
-
-You should see an output like this in the terminal:
-
-```bash
- DONE  Compiled successfully in 1667ms                                9:54:44 AM
-
-
-  App running at:
-  - Local:   http://localhost:8080/
-  - Network: http://172.20.10.8:8080/
-
-  Note that the development build is not optimized.
-  To create a production build, run npm run build.
-
 ```
 
 ## Configuring your Vue.js app for {{ PRODUCT_NAME }}
@@ -211,7 +186,7 @@ npm run build
 Run {{ PRODUCT_NAME }} on your local machine:
 
 ```bash
-npm run {{ CLI_NAME }}:dev
+{{ CLI_NAME }} dev
 ```
 
 Load the site: http://127.0.0.1:3000 !

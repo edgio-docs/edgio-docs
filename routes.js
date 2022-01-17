@@ -31,7 +31,7 @@ const apiCacheConfig = {
 const staticCacheConfig = {
   key,
   browser: {
-    maxAgeSeconds: 60 * 60,
+    maxAgeSeconds: 0,
     serviceWorkerSeconds: 60 * 60,
   },
   edge: {
@@ -76,6 +76,12 @@ module.exports = new Router()
   })
   .get('/guides/debugging', ({ redirect }) => {
     redirect('/guides/troubleshooting', 302)
+  })
+  .get('/guides/deploying', ({ redirect }) => {
+    redirect('/guides/deploy_apps', 302)
+  })
+  .get('/guides/getting_started', ({ redirect }) => {
+    redirect('/guides/build_web_apps', 302)
   })
   .get('/images/:path*', ({ cache }) => {
     cache(staticCacheConfig)

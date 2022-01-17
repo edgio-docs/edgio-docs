@@ -1,48 +1,24 @@
 # Deploy to {{ PRODUCT_NAME }} Button
 
-The Deploy to {{ PRODUCT_NAME }} button lets users deploy a project to the {{ PRODUCT_NAME }} platform with just a few clicks, no command-line needed! It's a quick and easy way for users to get a working instance of your framework or project template.
-
-This guide walks you through some deploy button examples and how you can setup a GitHub repository for your users to deploy to {{PRODUCT_NAME}} with a simple click.
-
-## What is the Deploy to {{ PRODUCT_NAME }} Button?
-
 The Deploy to {{PRODUCT_NAME}} button lets users easily clone and deploy an example project to {{ PRODUCT_NAME}}. Under the hood the platform will clone the example to the user's GitHub account and leverage GitHub Actions to deploy to it to their personal {{PRODUCT_NAME}} account.
 
-To deploy using this method, users need to have an existing GitHub account.
+This guide walks you through some deploy button examples and how you can set up a GitHub repository for your users to deploy to {{PRODUCT_NAME}} with a simple click.
 
-## {{PRODUCT_NAME}} Examples
+## Example
 
-Below are a list of example site you can deploy right now using our deploy buttons:
+[![Deploy with Layer0](/button.svg)](https://app.layer0.co/deploy?repo=https://github.com/layer0-docs/layer0-nextjs-example)
 
-[Angular SSR Example](https://layer0-docs-layer0-angular-example-default.layer0.link/category/hats?button) &#8594; [Deploy to Layer0](https://app.layer0.co/deploy?repo=https%3A%2F%2Fgithub.com%2Flayer0-docs%2Flayer0-angular-example&button)
+An example Deploy Button using the following HTML snippet.
 
-[Ember Fastboot Example](https://layer0-docs-layer0-ember-fastboot-example-default.layer0.link/?button) &#8594; [Deploy to Layer0](https://app.layer0.co/deploy?repo=https%3A%2F%2Fgithub.com%2Flayer0-docs%2Flayer0-ember-fastboot-example&button)
+## Snippets
 
-[Frontity Example](https://layer0-docs-layer0-frontity-example-default.layer0.link/?button) &#8594; [Deploy to Layer0](https://app.layer0.co/deploy?repo=https%3A%2F%2Fgithub.com%2Flayer0-docs%2Flayer0-frontity-example&button)
+Use the snippets below in your Git repository to enable users to deploy the repository directly to Layer0.
 
-[Next.js SSR Example](https://layer0-docs-layer0-next-example-default.layer0.link/category/hats?button) &#8594; [Deploy to Layer0](https://app.layer0.co/deploy?repo=https%3A%2F%2Fgithub.com%2Flayer0-docs%2Flayer0-nextjs-example&button)
+```markdown
+[![Deploy with Layer0](https://docs.layer0.co/button.svg)](https://app.layer0.co/deploy?repo=https://github.com/layer0-docs/layer0-nextjs-example)
+```
 
-[Next.js Commerce Example](https://layer0-docs-layer0-nextjs-commerce-default.layer0.link/?button) &#8594; [Deploy to Layer0](https://app.layer0.co/deploy?repo=https%3A%2F%2Fgithub.com%2Flayer0-docs%2Flayer0-nextjs-commerce-example&button)
-
-[Nuxt.js SSR Example](https://layer0-docs-layer0-nuxt-example-default.layer0.link/category/hats?button) &#8594; [Deploy to Layer0](https://app.layer0.co/deploy?repo=https%3A%2F%2Fgithub.com%2Flayer0-docs%2Flayer0-nuxt-example&button)
-
-[Nx Example](https://layer0-docs-layer0-nx-example-default.layer0.link/?button) &#8594; [Deploy to Layer0](https://app.layer0.co/deploy?repo=https%3A%2F%2Fgithub.com%2Flayer0-docs%2Flayer0-nx-example&button)
-
-[Razzle Example](https://layer0-docs-layer0-razzle-example-default.moovweb-edge.io?button) &#8594; [Deploy to Layer0](https://app.layer0.co/deploy?repo=https%3A%2F%2Fgithub.com%2Flayer0-docs%2Flayer0-razzle-example&button)
-
-[Sapper SSR Example](https://layer0-docs-layer0-sapper-example-default.layer0.link/category/hats?button) &#8594; [Deploy to Layer0](https://app.layer0.co/deploy?repo=https%3A%2F%2Fgithub.com%2Flayer0-docs%2Flayer0-sapper-example&button)
-
-[Spartacus Example](https://layer0-docs-layer0-spartacus-example-default.layer0.link/?button) &#8594; [Deploy to Layer0](https://app.layer0.co/deploy?repo=https%3A%2F%2Fgithub.com%2Flayer0-docs%2Flayer0-spartacus-example&button)
-
-[Vue Storefront Example](https://layer0-docs-layer0-vue-storefront-example-default.layer0.link/?button) &#8594; [Deploy to Layer0](https://app.layer0.co/deploy?repo=https%3A%2F%2Fgithub.com%2Flayer0-docs%2Flayer0-vue-storefront-example&button)
-
-[Backbone.js Static Example](https://layer0-docs-layer0-static-backbonejs-example-default.layer0.link/?button) &#8594; [Deploy to Layer0](https://app.layer0.co/deploy?repo=https%3A%2F%2Fgithub.com%2Flayer0-docs%2Fstatic-backbonejs-example&button)
-
-[React Static Example](https://layer0-docs-layer0-static-react-example-default.layer0.link/?button) &#8594; [Deploy to Layer0](https://app.layer0.co/deploy?repo=https%3A%2F%2Fgithub.com%2Flayer0-docs%2Fstatic-react-example&button)
-
-[Vue.js Static Example](https://layer0-docs-layer0-static-vuejs-example-default.layer0.link/?button) &#8594; [Deploy to Layer0](https://app.layer0.co/deploy?repo=https%3A%2F%2Fgithub.com%2Flayer0-docs%2Fstatic-vuejs-example&button)
-
-## Creating your own deploy button
+## Creating Your Own Deploy Button
 
 To configure your own project to be deploy button ready, there's a few steps to take.
 
@@ -50,7 +26,7 @@ To configure your own project to be deploy button ready, there's a few steps to 
 2. Next, create a basic `deploy` script as described below. Typically, this can simply be `layer0 deploy`, but if your site requires additional processing outside of the standard {{PRODUCT_NAME}} build/deploy process, you will need to modify this script to include the necessary steps to make your site production-ready.
 3. Create a GitHub workflow as described below. This makes sure GitHub Actions is properly configured to build the project.
 
-#### Add `deploy` script to `package.json`
+#### Add `deploy` Script to `package.json`
 
 ```json
 // additional scripts may need to be called based on your app build process
@@ -59,7 +35,7 @@ To configure your own project to be deploy button ready, there's a few steps to 
 
 Lastly, create a GitHub workflow file called `layer0.yml`. This will be triggered automatically by {{PRODUCT_NAME}} during the deploy process.
 
-#### Create `.github/workflows/layer0.yml` workflow
+#### Create `.github/workflows/layer0.yml` Workflow
 
 ```yml
 name: Deploy to Layer0

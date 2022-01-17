@@ -16,6 +16,9 @@ const useStyles = makeStyles(theme => ({
     '& .algolia-autocomplete': {
       flex: 1,
       width: '98%',
+      '& .ds-dropdown-menu > div': {
+        height: 300,
+      },
     },
   },
   notchedOutline: {
@@ -34,6 +37,7 @@ export default function SearchField() {
         indexName,
         inputSelector: '#docsearch',
         algoliaOptions: {
+          hitsPerPage: 60,
           // See https://www.algolia.com/doc/api-reference/api-parameters/
         },
       })
@@ -50,7 +54,7 @@ export default function SearchField() {
   }, [])
 
   return (
-    <div style={{ minWidth: 300 }}>
+    <div style={{ maxWidth: 300, flex: 1 }}>
       <link
         rel="stylesheet"
         href="https://cdn.jsdelivr.net/npm/docsearch.js@latest/dist/cdn/docsearch.min.css"

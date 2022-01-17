@@ -1,8 +1,8 @@
-# Cookbook
+# Common Routing Patterns
 
 This guide gives examples of common routing patterns using {{ PRODUCT_NAME }}.
 
-## Proxying a backend
+## Proxying a Backend
 
 ### Same Path
 
@@ -54,7 +54,7 @@ router.get('/products/:productId', ({ cache, proxy }) => {
 })
 ```
 
-### Altering the request
+### Altering the Request
 
 You can alter request headers when forwarding a request to a backend:
 
@@ -72,7 +72,7 @@ router.get(
 
 The above example makes use of [`setRequestHeader`](/docs/api/core/classes/_router_responsewriter_.responsewriter.html#setrequestheader), [`updateRequestHeader`](/docs/api/core/classes/_router_responsewriter_.responsewriter.html#updaterequestheader), and [`removeRequestHeader`](/docs/api/core/classes/_router_responsewriter_.responsewriter.html#removerequestheader) API calls.
 
-### Altering the response
+### Altering the Response
 
 You can also alter the response before and after the cache:
 
@@ -103,7 +103,7 @@ router.get(
 )
 ```
 
-#### Altering all responses
+#### Altering All Responses
 
 You can also write catch-all routes that will alter all responses. One example where this is useful is injecting [Content Security Policy](security#section_content_security_policy__csp_) headers.
 
@@ -133,7 +133,7 @@ You can manipulate cookies before they are sent to the browser using cookie resp
 
 ```js
 router.get('/some/path', ({
-  setUpstreamResponseCookie,
+  addUpstreamResponseCookie,
   addResponseCookie,
   removeResponseCookie,
   removeUpstreamResponseCookie,
@@ -155,7 +155,23 @@ router.get('/some/path', ({
 })
 ```
 
-### Proxying to different backends based on different host names
+### Adding Options to Cookies
+
+In addition to the name and value of the cookie, you can also add attributes to each cookie. For specific information on possible cookie attributes, please refer to https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Set-Cookie
+
+```js
+router.get('/some/path', ({ addUpstreamResponseCookie, addResponseCookie, proxy }) => {
+  proxy('origin')
+
+  addUpstreamResponseCookie('cookie-to-add', 'cookie-value', {
+    domain: 'test.com',
+  })
+
+  addResponseCookie('cookie-to-add', 'cookie-value', { 'max-age': 50000 })
+})
+```
+
+### Proxying to Different Backends Based on Different Host Names
 
 To proxy to different backends by matching the `host` header (e.g. different backends for different international sites):
 
@@ -193,7 +209,7 @@ router
   )
 ```
 
-## Serving a static file
+## Serving a Static File
 
 To serve a specific file use the [`serveStatic`](/docs/api/core/classes/_router_responsewriter_.responsewriter.html#servestatic) API:
 
@@ -211,23 +227,23 @@ router.get('/favicon.ico', ({ serveStatic, cache }) => {
 })
 ```
 
-To serve all files in a directory tree under a specific path prefix:
+## Serving Static Files From a Directory
+
+Here's an example that serves all requests by sending the corresponding file in the `public` directory
 
 ```js
-router.get('/assets/:path*', ({ serveStatic, cache }) => {
+router.get('/:path*', ({ serveStatic, cache }) => {
   cache({
     edge: {
       maxAgeSeconds: 60 * 60 * 24, // cache at the edge for 24 hours
     },
-    browser: {
-      maxAgeSeconds: 60 * 60 * 24, // cache for 24 hours
-    },
+    browser: false, // prevent caching of stale html in the browser
   })
-  serveStatic('assets/:path*')
+  serveStatic('public/:path*')
 })
 ```
 
-## Routing to serverless
+## Routing to Serverless
 
 If your request needs to be run on the serverless tier, you can use the `renderWithApp` handler to render your result using your application. Use this method to respond with an SSR or API result from your application.
 
@@ -240,7 +256,7 @@ router.get('/some/:path*', ({ renderWithApp, cache }) => {
 })
 ```
 
-### Falling back to server-side rendering
+### Falling Back to Server-side Rendering
 
 If you render some but not all paths for a given route at build time, you can fall back to server side rendering using the `onNotFound` option. Add the `loadingPage`
 option to display a loading page while server-side rendering is in progress.
@@ -262,7 +278,7 @@ router.get('/products/:id', ({ serveStatic, cache, renderWithApp }) => {
 This hybrid of static and dynamic rendering was first introduced in Next.js as [Incremental Static Generation (ISG)](https://nextjs.org/docs/basic-features/data-fetching#the-fallback-key-required). In Next.js apps, developers enable this behavior by returning `fallback: true` from
 `getStaticPaths()`. The `{{ PACKAGE_NAME }}/next` package automatically configures the routes for ISG pages to use `onNotFound` and `loadingPage`.
 
-### Returning a custom 404 page
+### Returning a Custom 404 Page
 
 When a request matches a route with `serveStatic`, but no matching static asset exists, you can serve a custom 404 page using the `onNotFound` option.
 
@@ -284,7 +300,7 @@ router.get('/products/:id', ({ serveStatic, cache }) => {
 })
 ```
 
-## Responding with a string response body
+## Responding with a String Response Body
 
 To respond with a simple, constant string as the response body use the [`send`](/docs/api/core/classes/_router_responsewriter_.responsewriter.html#send) method:
 
@@ -352,7 +368,7 @@ router.get('/p/:productId', ({ redirect, compute, cache }) => {
 })
 ```
 
-### Redirecting all traffic to a different domain
+### Redirecting All Traffic to a Different Domain
 
 This example redirects all traffic on domains other than www.mydomain.com to www.mydomain.com. So for example, mydomain.com => www.mydomain.com
 
@@ -362,7 +378,7 @@ router.match({ headers: { host: /^(?!www\.).*$/ } }, ({ redirect }) => {
 })
 ```
 
-## Blocking unwanted traffic
+## Blocking Unwanted Traffic
 
 ### Blocking traffic from specific countries
 
@@ -383,7 +399,7 @@ router.get(
 
 You can find more about geolocation headers [here](/guides/request_headers).
 
-### Whitelisting Specific IPs
+### Allowing Specific IPs
 
 If you need to block all traffic from a specific country or set of countries, you can do so by matching requests by the [{{ HEADER_PREFIX }}-client-ip](/guides/request_headers#section_general_headers) header:
 

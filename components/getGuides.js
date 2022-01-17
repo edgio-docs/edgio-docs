@@ -1,10 +1,18 @@
 import fetch from 'cross-fetch'
 import { DOCS_PAGES_REPO_URL } from '../constants'
+import each from 'lodash/each'
+import sortBy from 'lodash/sortBy'
 
 export async function getGuides(version) {
   const guides = version
     ? await fetch(`${DOCS_PAGES_REPO_URL}/${version}/guides.json`).then(resp => resp.json())
     : require('../guides/guides.json')
+
+  each(guides, guide => {
+    if (!guide.ordered && guide.items) {
+      guide.items = sortBy(guide.items, item => item.text.toLowerCase())
+    }
+  })
 
   return guides
 }

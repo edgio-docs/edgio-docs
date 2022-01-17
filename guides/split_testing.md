@@ -2,16 +2,16 @@
 
 {{ PRODUCT_NAME }} makes it easy to conduct split testing without performance penalties by executing splits at the edge through an easy-to-use yet powerful interface. It can be used for A/B and multivariate tests, canary deploys, blue-green tests, iterative migration off of a legacy website, personalization, and more. This guide shows you how to configure a split test.
 
-## How split testing works
+## How Split Testing Works
 
 You can perform two kinds of split tests with {{ PRODUCT_NAME }}:
 
 1. A/B test multiple implementations of the same site
 2. Split traffic between multiple sites - This is commonly used to test a new experience against a legacy one.
 
-## A/B testing multiple implementations of the same site
+## A/B Testing Multiple Implementations of the Same Site
 
-To A/B test mutliple implementations of the same site, simply deploy each implementation to a separate [environment](environments), then [configure the rules for splitting traffic between using the {{ PRODUCT_NAME }} Developer Console](#section_configuring_the_split_test).
+To A/B test multiple implementations of the same site, simply deploy each implementation to a separate [environment](environments); then [configure the rules for splitting traffic using the {{ PRODUCT_NAME }} Developer Console](#section_configuring_the_split_test).
 
 To use CI to deploy A/B tests we recommend that you:
 
@@ -19,7 +19,7 @@ To use CI to deploy A/B tests we recommend that you:
 2. Create environments called `production` and `preview` in the {{ PRODUCT_NAME }} Developer Console.
 3. Configure CI to deploy the `master` branch to the `production` environment and the `preview` branch to the `preview` environment. (Using `{{ CLI_NAME }} deploy --environment={environment name}`).
 
-## Splitting traffic between multiple sites
+## Splitting Traffic between Multiple Sites
 
 To split traffic between multiple sites, first add a backend for each site to `{{ CONFIG_FILE }}`. For example, to split traffic between a new experience hosted on `origin.my-site.com` and a legacy experience hosted on `legacy-origin.my-site.com`:
 
@@ -62,21 +62,21 @@ Once you have made these changes, deploy your site using `{{ CLI_NAME }} deploy 
 
 After deploying a router with multiple destinations, all requests will be sent to the first destination until you have configured the split test in the {{ PRODUCT_NAME }} Developer Console.
 
-## Configuring the split test
+## Configuring the Split Test
 
-Navigate to the environment in which you want to configure the split test and click "Edit":
+Navigate to the environment in which you want to configure the split test and click _Edit_:
 
 ![edit](/images/split-testing/edit.png)
 
-Scroll to the Split Testing section and click "Add Rule":
+Scroll to the Split Testing section and click _Add Rule_:
 
 ![edit](/images/split-testing/split-testing.png)
 
-Select the amount of traffic to send to each destination or environment and click "Apply".
+Select the amount of traffic to send to each destination or environment and click _Apply_.
 
 ![edit](/images/split-testing/add-rule.png)
 
-You can add additional rules to the traffic split as well. For example, you can allow testers to access a specific experience all of the time by setting a cookie value. In addition to cookie value, you can split traffic based on header value, path, IP address, URL parameters, device type, browser type, and bot boolean. Here's an example:
+You can add additional rules to the traffic split as well. For example, you can allow testers to access a specific experience all of the time by setting a cookie value. In addition to cookie value, you can split traffic based on header value, path, IP address, URL parameters, device type, browser type, and bot boolean. Here's an example: 
 
 ![edit](/images/split-testing/criteria.png)
 
@@ -84,11 +84,11 @@ The order of rules is critical. Rules are matched from top to bottom. When handl
 
 ![edit](/images/split-testing/order.png)
 
-To begin the split test, click the "Activate" button at the top of the environment:
+To begin the split test, click the _Activate_ button at the top of the environment:
 
 ![edit](/images/split-testing/activate.png)
 
-## Ending the split test
+## Ending the Split Test
 
 To end the split test, you can either deploy a new version of your app with the router destinations removed, or update the environment to send 100% of traffic to a specific destination.
 
@@ -96,16 +96,16 @@ To end the split test, you can either deploy a new version of your app with the 
 
 If {{ PRODUCT_NAME }} is behind a third-party CDN, it is critical that you update the third party CDN to not cache responses from {{ PRODUCT_NAME }} nor to affect any cookies that begin with `{{ COOKIE_PREFIX }}_`. You can find more details [here](third_party_cdns#section_split_testing).
 
-## How requests are routed
+## How Requests are Routed
 
 When a split test is active, all users are assigned to a random number between 1 and 100 via a cookie called `{{ COOKIE_PREFIX }}_bucket`. This cookie assignment is done at the edge before the user's first request hits the cache, so there is no performance penalty for new users.
 
-The experience the user sees is determined by the traffic split percentage you set in the environment configuration in the {{ PRODUCT_NAME }} Developer Console and on which side of the split the user's `{{ COOKIE_PREFIX }}_bucket` value falls. 
+The experience the user sees is determined by the traffic split percentage you set in the environment configuration in the {{ PRODUCT_NAME }} Developer Console and on which side of the split the user's `{{ COOKIE_PREFIX }}_bucket` value falls.
 
-## Identifying the experience on the client
+## Identifying the Experience on the Client
 
-When a split test is active, {{ PRODUCT_NAME }} will automatically set an `{{ COOKIE_PREFIX }}_destination` cookie to the name of the chosen destination. You can access this value in the browser and use it to report the split test experience assignment to your analytics.
+When a split test is active, {{ PRODUCT_NAME }} will automatically set a `{{ COOKIE_PREFIX }}_destination` cookie to the name of the chosen destination. You can access this value in the browser and use it to report the split test experience assignment to your analytics.
 
-## Compatibility with A/B testing tools
+## Compatibility with A/B Testing Tools
 
 {{ PRODUCT_NAME }} split testing routes traffic at the edge based on a variety of criteria. It does not identify user cohorts (although it can split on cohorts identified by another tool) or report business metrics about A/B tests since there are many great tools for that. We recommend you utilize an A/B testing tool that supports server-side integration such as Monetate, Optimizely, Adobe Test, Google Experiments, or Visual Web Optimizer. These tools will set a cookie or header that can be used to split traffic using the appropriate criteria described above.

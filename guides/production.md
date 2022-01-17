@@ -78,7 +78,7 @@ www.mywebsite.xyz.   599    IN    CNAME    d12ea738-71b3-25e8-c771-6fdd3f6bd8ba.
 
 #### Using an Apex Domain (e.g. mywebsite.xyz)
 
-To host your site on the apex domain, create multiple `A` records on your apex domain, with the following Anycast IP address values: 208.69.180.11, 208.69.180.12, 208.69.180.13, 208.69.180.14
+To host your site on the apex domain, create multiple `A` records on your apex domain, with the following Anycast IP address values: 208.69.180.11, 208.69.180.12, 208.69.180.13, 208.69.180.14.
 
 ```
 # To verify your DNS entry, run the following command

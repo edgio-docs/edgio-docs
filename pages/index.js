@@ -135,8 +135,8 @@ const Home = ({ navData }) => {
             <Grid item xs={12}>
               <Typography variant="h2"> About {PRODUCT_NAME} </Typography>
             </Grid>
-             
-            <Grid item xl={12} md={4} sm={6} className={classes.tutorial} >            
+             {/* xl={12} md={4} sm={6} */}
+            <Grid item xs={12} className={classes.tutorial} >            
               <div className={classes.aspectRatioLargeVideo}>              
                 <iframe frameBorder={0} src="https://www.youtube.com/embed/GE0K2ecw_xA?rel=0" />                
               </div>              
@@ -365,7 +365,7 @@ const useStyles = makeStyles(theme => ({
   },
   aspectRatioLargeVideo: {
     height: 0,
-    paddingBottom: '60%',
+    paddingBottom: '60%', 
     flex: 1,
     position: 'relative',
     boxShadow: theme.shadows[6],

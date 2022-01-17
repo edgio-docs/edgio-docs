@@ -334,6 +334,12 @@ const frameworkItems = [
     text: 'React Nx',
   },
   {
+    guide: '/guides/express',
+    framework: 'express',
+    icon: 'express',
+    text: 'Express',
+  },
+  {
     guide: '/guides/frontity',
     framework: 'frontity',
     icon: 'frontity',
@@ -464,5 +470,5 @@ const frameworkItems = [
     framework: 'dojo',
     icon: 'dojo',
     text: 'Dojo',
-  }
+  },
 ]

@@ -37,17 +37,20 @@ When you deploy your Express app to {{ PRODUCT_NAME }}, the {{ PRODUCT_NAME }} C
 - src/app.js
 - src/index.ts
 - src/index.js
+- server.js
 - app.js
 - index.js
 
 If it cannot find one of these files, you can specify the path to the app in `layer0.config.js`:
 
 ```js
+const { join } = require('path')
+
 // layer0.config.js
 module.exports = {
   connector: '@layer0/express',
   express: {
-    appPath: './path/to/app.js',
+    appPath: join(process.cwd(), 'path', 'to', 'app.js'),
   },
 }
 ```

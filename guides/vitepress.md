@@ -1,6 +1,6 @@
 # VitePress
 
-This guide shows you how to deploy a VitePress application on {{ PRODUCT_NAME }}.
+This guide shows you how to deploy a [VitePress](https://vitepress.vuejs.org/) application on {{ PRODUCT_NAME }}.
 
 ## Example
 

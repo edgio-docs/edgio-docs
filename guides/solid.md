@@ -1,6 +1,6 @@
 # SolidJS
 
-This guide shows you how to deploy a SolidJS application on {{ PRODUCT_NAME }}.
+This guide shows you how to deploy a [SolidJS](https://solidjs.com) application on {{ PRODUCT_NAME }}.
 
 ## Example
 

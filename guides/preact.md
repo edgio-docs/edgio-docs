@@ -1,6 +1,6 @@
 # Preact
 
-This guide shows you how to deploy a Preact application on {{ PRODUCT_NAME }}.
+This guide shows you how to deploy a [Preact](https://preactjs.com/) application on {{ PRODUCT_NAME }}.
 
 ## Example
 

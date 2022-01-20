@@ -1,6 +1,6 @@
 # Eleventy
 
-This guide shows you how to deploy a Eleventy application on {{ PRODUCT_NAME }}.
+This guide shows you how to deploy a [Eleventy](https://www.11ty.dev/) application on {{ PRODUCT_NAME }}.
 
 ## Example
 

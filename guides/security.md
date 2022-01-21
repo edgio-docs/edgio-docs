@@ -22,21 +22,59 @@ Utilizing the {{ PRODUCT_NAME }} WAF allows you to monitor, filter, and block HT
 
 The WAF includes [Managed Rule Groups](#managed-rule-group-descriptions), managed by {{ PRODUCT_NAME }}, that can be configured in either a flagging or blocking mode. You can enable all of the rules within these groups or configure each independent rule within the group based on your needs.
 
-### Rule Groups
+### Managed Rule Groups
 
 #### {{ PRODUCT_NAME }} Managed Rules
 
 ​​The {{ PRODUCT_NAME }} Managed rule group contains rules that are generally applicable to web applications. This provides protection against exploitation of a wide range of vulnerabilities, including high risk and commonly occurring vulnerabilities described in OWASP&reg; publications such as [OWASP Top 10](https://owasp.org/www-project-top-ten/).
 
-<span style="color: rgb(255,0,0);">**{{ PRODUCT_NAME }} recommends utilizing this rule group for all WAF use cases.**</span>
+<p>
+<details>
+<summary>Layer0 Managed Rule Descriptions</summary>
 
-For detailed rule information, see {{ PRODUCT_NAME }} [Managed Rule Descriptions](#layer0-managed-rules).
+| Rule Name|Description|Log Name|
+| --- | --- | --- |
+|Cross-site scripting (XSS) Body|Inspects the value of the request body and blocks common cross-site scripting (XSS) patterns using the built-in XSS detection rule in {{ PRODUCT_NAME }} WAF. <br><br>Example patterns include scripts such as `<script>alert("hello")</script>`.<br><br>CAUTION: This rule only inspects the first 8 KB of the request body.|`cssBody`|
+|Cross-site scripting (XSS) Cookie|Inspects the value of cookie headers and blocks common cross-site scripting (XSS) patterns using the built-in XSS detection rule in {{ PRODUCT_NAME }} WAF.<br><br> Example patterns include scripts such as `<script>alert("hello")</script>.`|
+|cssCookie|Cross-site scripting (XSS) Query<br><br>Inspects the value of query arguments and blocks common cross-site scripting (XSS) patterns using the built-in XSS detection rule in {{ PRODUCT_NAME }} WAF.<br><br>Example patterns include scripts such as `<script>alert("hello")</script>`.|`cssArgs`|
+|Cross-site scripting (XSS) URI Path|Inspects the URI path and blocks requests that attempt to exploit RFI (Remote File Inclusion) in web applications by embedding URLs that contain IPv4 addresses.<br><br>Examples include patterns such as `http://, https://, ftp://, ftps://`, and `file://`, with an IPv4 host header in the exploit attempt.|`cssPath`|
+|EC2 Body|Inspects for attempts to exfiltrate Amazon EC2 metadata from the request body.<br><br>CAUTION: This rule only inspects the first 8 KB of the request body.|`metaBody`|
+|EC2 Cookie|Inspects for attempts to exfiltrate Amazon EC2 metadata from the request cookie.|`metaCookie`|
+|EC2 Query|Inspects for attempts to exfiltrate Amazon EC2 metadata from the request query arguments.|`metaArgs`|
+|EC2 URI Path|Inspects for attempts to exfiltrate Amazon EC2 metadata from the request URI path.|`metaPath`|
+|General LFI Body|Inspects for the presence of Local File Inclusion (LFI) exploits in the request body.<br><br>Examples include path traversal attempts using techniques such as ../../.<br><br>CAUTION: This rule only inspects the first 8 KB of the request body|`fileBody`|
+|General LFI Query|Inspects for the presence of Local File Inclusion (LFI) exploits in the query arguments.<br><br>Examples include path traversal attempts using techniques such as ../../.|`fileArgs`|
+|General LFI URI Path|Inspects for the presence of Local File Inclusion (LFI) exploits in the URI path.<br><br>Examples include path traversal attempts using techniques such as ../../.|`filePath`|
+|General RFI BODY|Inspects for the presence of Local File Inclusion (LFI) exploits in the request body.<br><br>Examples include path traversal attempts using techniques such as ../../.<br><br>CAUTION: This rule only inspects the first 8 KB of the request body|`remoteBody`|
+|General RFI Query|Inspects the values of all query parameters and blocks requests that attempt to exploit RFI (Remote File Inclusion) in web applications by embedding URLs that contain IPv4 addresses.<br><br>Examples include patterns such as `http://, https://, ftp://, ftps://,` and `file://`, with an IPv4 host header in the exploit attempt.|`remoteArgs`
+|General RFI URI Path|Inspects the URI path and blocks requests that attempt to exploit RFI (Remote File Inclusion) in web applications by embedding URLs that contain IPv4 addresses.<br><br>Examples include patterns such as http://, https://, ftp://, ftps://, and `file://,` with an IPv4 host header in the exploit attempt.|`remotePath`|
+|Invalid Argument|Inspects requests whose query arguments are system file extensions that the clients shouldn't read or run.<br><br>Example patterns include extensions such as `.log` and `.ini.`|
+|invalidArgs|Invalid URI Path<br><br>Inspects requests whose URI path includes system file extensions that the clients shouldn't read or run.<br><br>Example patterns include extensions such as `.log` and `.ini`.|`invalidPath`|
+|Missing User Agent|Blocks requests with no HTTP User-Agent header.|`missingAgent`|
+|Size - Body|Verifies that the request body size is at most 8 KB (8,192 bytes).|`sizeBody`|
+|Size - Cookie|Verifies that the cookie header length is at most 10,240 bytes.|`sizeCookie`|
+|Size - URI Path|Verifies that the URI path length is at most 1,024 bytes.|`sizePath`|
+|Size - URI Query Size|Verifies that the URI query string length is at most 2,048 bytes.|`sizeArgs`|
+
+</details>
+</p>
+
+<span style="color: rgb(255,0,0);">**{{ PRODUCT_NAME }} recommends utilizing this rule group for all WAF use cases.**</span>
 
 #### Admin Page Protection Rules
 
 The Admin protection rule group contains rules that allow you to block external access to exposed administrative pages. This might be useful if you run third-party software or want to reduce the risk of a malicious actor gaining administrative access to your application.
 
-For detailed rule information, see {{ PRODUCT_NAME }} [Managed Rule Descriptions](#admin-page-protection).
+<p>
+<details>
+<summary>Admin Page Protection Rule Description</summary>
+
+| Rule Name|Description|Log Name|
+| --- | --- | --- |
+|Protected URI Path|Inspects requests for URI paths that are generally reserved for administration of a webserver or application.<br><br>Example patterns include `sqlmanager`.|`protectedPath`|
+
+</details>
+</p>
 
 #### Bad Input Rules
 
@@ -46,19 +84,54 @@ This can help reduce the risk of a known malicious actor discovering a vulnerabl
 
 <span style="color: rgb(255,0,0);">**{{ PRODUCT_NAME }} recommends enabling the “Bad Input - Log4J” rule on all WAF applications.**</span>
 
-For detailed rule information, see {{ PRODUCT_NAME }} [Managed Rule Descriptions](#bad-input).
+<p>
+<details>
+<summary>Bad Input Rule Descriptions</summary>
+
+| Rule Name|Description|Log Name|
+| --- | --- | --- |
+|Bad Input - Bad host| Inspects the host header in the request for patterns indicating localhost.<br><br>Example patterns include localhost|`badHost`|
+|Bad Input - Bad path|Inspects the URI path for attempts to access exploitable web application paths.<br><br>Example patterns include paths such as `web-inf`.|`badPath`|
+|Bad Input - Log4js|Inspects the request for the presence of the Log4j vulnerability CVE-2021-44228 and protects against Remote Code Execution (RCE) attempts.<br><br>Example patterns include ${jndi:ldap://example.com/}.<br><br>CAUTION: This rule only inspects the first 8 KB of the request body.|3|
+|Bad Input - Propfind|Inspects the HTTP method in the request for `PROPFIND`, which is a method similar to `HEAD`, but with the extra intention to exfiltrate XML objects.|`badProperty`|
+
+</details>
+</p>
 
 #### PHP Application Rules
 
 The PHP application rule group contains rules that block request patterns associated with the exploitation of vulnerabilities specific to the use of the PHP programming language. This includes the injection of unsafe PHP functions into requests. 
 
-For detailed rule information, see {{ PRODUCT_NAME }} [Managed Rule Descriptions](#php-application).
+<p>
+<details>
+<summary>PHP Application Rule Descriptions</summary>
+
+| Rule Name|Description|Log Name|
+| --- | --- | --- |
+|PHP - Body|Inspects the values of the request body for PHP script code injection attempts.<br><br>Example patterns include functions such as `fsockopen` and the `$_GET` superglobal variable.|`phpBody`|
+|PHP - Query|Inspects the values of all query parameters for PHP script code injection attempts.<br><br>Example patterns include functions such as `fsockopen` and the `$_GET` superglobal variable.|`phpArgs`|
+
+</details>
+</p>
 
 #### SQL Database Rules
 
 The SQL database rule group contains rules to block request patterns associated with exploitation of SQL databases, like SQL injection attacks. This can help prevent remote injection of unauthorized queries. Evaluate this rule group for use if your application interfaces with an SQL database.
 
-For detailed rule information, see {{ PRODUCT_NAME }} [Managed Rule Descriptions](#sql-database).
+<p>
+<details>
+<summary>SQL Database Rule Descriptions</summary>
+
+| Rule Name|Description|Log Name|
+| --- | --- | --- |
+|SQL - Body|Uses the built-in {{ PRODUCT_NAME }} WAF SQL injection match statement to inspect the request body for patterns that match malicious SQL code.<br><br>CAUTION: This rule only inspects the first 8 KB of the request body|`sqlBody`|
+|SQL - Cookie|Uses the built-in {{ PRODUCT_NAME }} WAF SQL injection match statement to inspect the request cookie header for patterns that match malicious SQL code.|`sqlCookie`|
+|SQL - Query|Uses the built-in {{ PRODUCT_NAME }} WAF SQL injection match statement to inspect the request query parameters for patterns that match malicious SQL code.|`sqlArgs`|
+|SQL - Query Extended|Inspects the values of all query parameters for patterns that match malicious SQL code.<br><br>The patterns this rule inspects for aren't covered by the built-in {{ PRODUCT_NAME }} WAF SQL injection match statement.|`sqlArgsExtra`|
+|SQL - URI path|Uses the built-in {{ PRODUCT_NAME }} WAF injection match statement to inspect the request URI path for patterns that match malicious SQL code.|`sqlPath`|
+
+</details>
+</p>
 
 #### Add Rule Groups to a WAF
 
@@ -95,6 +168,8 @@ For detailed rule information, see {{ PRODUCT_NAME }} [Managed Rule Descriptions
 
 Prerequisite: Configured WAF rules and/or rule groups.
 
+Once you’ve configured the WAF rules you want to use, you need to apply them to the corresponding environments you want to deploy them on. Rules are NOT applied to traffic until you take this step to apply them. <br><br>Follow these steps to add a WAF to an environment:
+
 ![Apply WAF to Environment](/images/security/addrg3.jpg "Apply WAF to Environment")
 
 1. Log in to the [Layer0 console](https://app.layer0.co/) and select your site.
@@ -109,55 +184,9 @@ Prerequisite: Configured WAF rules and/or rule groups.
 1. From the dropdown, select an active WAF to add.
 1. Click the ACTIVATE button from either the top or the bottom of the page.
 
-### Reporting
+## Bot Detection
 
-![Reporting](/images/security/addrg3.jpg "Reporting")
-
-1. Log in to the [Layer0 console](https://app.layer0.co/) and select your site.
-1. Click the ENVIRONMENTS tab.
-1. Choose an environment.
-1. Click the SECURITY tab from the top page navigation.
-
-#### WAF Activity
-
-![WAF Activity](/images/security/wafactivity.jpg "WAF Activity")
-
-| | View Option | Access |
-| --- | --- | --- |
-|a.|Deployment number|Toggle on/off via WAF Activity settings.| 
-|b.|Number of requests by action (passed, flagged, blocked)|Hover over graph data.|
-|c.|Requests by action |(passed, flagged, blocked)|Toggle the checkboxes.|
-|d.|Deployments and/or full cache flushes|Toggle on/off via WAF Activity settings.|
-
-#### Rules Applied
-
-![Rules Applied](/images/security/rulesapplied.jpg "Rules Applied")
-
-| | View Option | Access |
-| --- | --- | --- |
-|a.|Date range|Select 24 hour, 7 days, or 28 days.| 
-|b.|Flagged and/or Blocked requests|Toggle the Flagged and Blocked buttons.|
-|c.|Graph of rules applied|Click inside the graph to list the names of the rules that have been applied to your Bot Control or {{ PRODUCT_NAME }} Managed rules.<br>Click *Back to Rule Sets* to return to the previous view.|
-
-#### Rules Section
-
-![Rules](/images/security/rules.jpg "Rules")
-
-| | View Option | Access |
-| --- | --- | --- |
-|a.|Rules by type|Expand or collapse the list using the arrow to the left of the rule type.| 
-|b.|Route details|Click the rule name to view route information for that rule, including its path and number/percentage of total, flagged, and blocked requests.|
-
-### Logs
-
-Here is an example log file with the WAF rule name, the action applied, the mode, the WAF name, and the version number.
-
-View as JSON
-<p style="font-family:'Courier'">{"date":1641856332.00036,"metadata":{"lvl":"edge","lv":"-","token":"-"},"haproxy":{"acc":"*/*","bip":"100.64.0.21","cc":"","cip":"104.33.80.4","code":"200","done":"1","h2":"1","hh":"test-docs-layer0-docs-default.layer0-limelight.link","http":"HTTP/2.0","met":"GET","pop":"sna","psh":"0","rfr":"-","rid":"82a757a04fa4d30cfb6105d23f64c2e3aefaa130","s_rs":"102028","s_rqb":"0","s_rsb":"16384","ssl":"https","timestamp":"1641856331999","tls":"TLSv1.2","ua":"curl/7.77.0","url":"/?38936","xmc":"eh=0.1.8,c=4.8.0,e=sna,ec=1.4.2,ed=1.2.0,gh=0.1.8,g=hef,gd=1.2.0,p=1.23.0,w=4.8.0,wi=6de00537-513b-4829-83f4-85d07651de39,b=serv","xms":"eh=200,ed=200,gh=200,gd=200,p=200,w=200","xmt":"eh=312,ect=310,ecc=miss,edt=305,edd=0,edf=305,gh=182,gct=180,gcc=miss,gdt=176,gdd=0,gdf=176,pt=170,pc=1,pf=168,wm=277,wt=128,wc="},"varnish":{"external":{"eid":"d63d2947-f052-4829-a3dc-2e2dcf4a67c9","bld":"4","v":"4.8.0","ev":2,"cv":"1.2.0","ip":"104.33.80.4","ic":1,"cc":"US","sc":"CA","cy":"monrovia","pc":"91016","lo":"-117.97","lt":"34.15","asn":"20001","s_rq":0,"ds":"default","be":"__js__","bk":"78","zip":"0","sh":1,"dv":"desktop","vn":"generic","br":"generic","bot":0,"er":0,"clv":0,"stl":0,"prl":0,"prod":1,"cs":"no-ttl","ct":"text/html; charset=utf-8","pre":0,"uv":"","bip":"34.233.202.91","hrid":"","lp":0,<span style="color: rgb(255,0,0);">"waf":"botLib,flagged","wafv":"WAF-1,2"</span>,"bse":""},"internal":{"reg":"","rst":0,"xmr":"1,8,82","xrj":"%7B%22path%22%3A%22%2F%22%7D","ckh":"631ea8d6e3e194e0b698561eb011d59762d6c4022c2a49d50f49cbc4a0c088fb"}}}</p>
-
-### Bot Detection
-
-#### Using {{ PRODUCT_NAME }} WAF Managed Rule Groups
+### Detect Bots with Managed Rules
 
 The {{ PRODUCT_NAME }} Bot protection contains rules to block and manage requests from bots. You are charged additional fees when you use this product.  
  
@@ -168,15 +197,38 @@ In addition to the WAF rule groups, {{ PRODUCT_NAME }} offers an additional Mana
 
 You can monitor the impact of your bots by flagging each bot type of request gaining insights into SEO bots, scraping bots, advertising bots, malicious user agent bots, and several other categories of bots.
 
-See [Bot Rule Group Descriptions](#bot-rule-group-descriptions) for rule details and examples.
+<p>
+<details>
+<summary>Bot Rule Descriptions</summary>
 
-#### Using {{ PRODUCT_NAME }} EdgeJS
+| Rule Name|Description|Log Name|
+| --- | --- | --- |
+|BOT - Advertising|Bots that are used for advertising purposes.|`botAds`|
+|BOT - Archiver|Bots that are used for archiving purposes.|`botArchiver`|
+|BOT - Browser|Indications of an automated web browser.|`botBrowser`|
+|BOT - Content|Bots that are fetching content on behalf of an end user.|`botFetcher`|
+|BOT - Data center|Data centers that are typically used by bots.|`botProvider`|
+|BOT - HTTP Library|HTTP libraries that are often used by bots.|`botLib`|
+|BOT - Link checker|Bots that check for broken links.|`botLinkChecker`|
+|BOT - Miscellaneous|Miscellaneous bots.|`botOther`|
+|BOT - Monitoring|Bots that are used for monitoring purposes.|`botPing`|
+|BOT - Scraping|Web scraping frameworks.|`botScraper`|
+|BOT - Search Engine|Search engine bots. Verified search engines are not blocked.|`botSearch`|
+|BOT - Security|Security-related bots.|`botSecurity`|
+|BOT - SEO|Bots that are used for search engine optimization.|`botSeo`|
+|BOT - Social Media|Bots that are used by social media platforms to provide content summaries. Verified social media bots are not blocked.|`botSocial`|
+|BOT - User agent|User agent strings that don't seem to be from a web browser.|`botUserAgent`|
 
-##### General Information
+</details>
+</p>
+
+### Detect Bots with EdgeJS
+
+#### General Information
 
 {{ PRODUCT_NAME }}  examines the `user-agent` header in an incoming request to determine if it includes a string that indicates if it is a bot, and if so, injects `1` in the `x-0-device-is-bot` request header, which will be visible to your server code. If the `user-agent` header does not include any of the strings indicating a bot, a `0` value is injected.
 
-##### User Agents and Bots
+#### User Agents and Bots
 
 The following table list the user agents that  {{ PRODUCT_NAME }}  examines and describes the corresponding bots.
 
@@ -222,113 +274,55 @@ router.match(
 
 The above code will match all the routes that even have a `user-agent` header and then inject the `my-bot-detection-is-bot` when the value of the user agent header matches the given regex. Once the header has been injected, the later routes can test for it and implement bot handling. Or, you could just let the header be sent upstream for your backend to handle it.
 
-### Managed Rule Group Descriptions
+## Security Reporting
 
-#### Layer0 Managed Rules
+![Reporting](/images/security/addrg3.jpg "Reporting")
 
-| Rule Name|Description|Log Name|
+1. Log in to the [Layer0 console](https://app.layer0.co/) and select your site.
+1. Click the ENVIRONMENTS tab.
+1. Choose an environment.
+1. Click the SECURITY tab from the top page navigation.
+
+### Security Activity
+
+![WAF Activity](/images/security/wafactivity.jpg "WAF Activity")
+
+| | View Option | Access |
 | --- | --- | --- |
-|Cross-site scripting (XSS) Body|Inspects the value of the request body and blocks common cross-site scripting (XSS) patterns using the built-in XSS detection rule in {{ PRODUCT_NAME }} WAF. <br><br>Example patterns include scripts such as `<script>alert("hello")</script>`.<br><br>CAUTION: This rule only inspects the first 8 KB of the request body.|`cssBody`|
-|Cross-site scripting (XSS) Cookie|Inspects the value of cookie headers and blocks common cross-site scripting (XSS) patterns using the built-in XSS detection rule in {{ PRODUCT_NAME }} WAF.<br><br> Example patterns include scripts such as `<script>alert("hello")</script>.`|
-|cssCookie|Cross-site scripting (XSS) Query<br><br>Inspects the value of query arguments and blocks common cross-site scripting (XSS) patterns using the built-in XSS detection rule in {{ PRODUCT_NAME }} WAF.<br><br>Example patterns include scripts such as `<script>alert("hello")</script>`.|`cssArgs`|
-|Cross-site scripting (XSS) URI Path|Inspects the URI path and blocks requests that attempt to exploit RFI (Remote File Inclusion) in web applications by embedding URLs that contain IPv4 addresses.<br><br>Examples include patterns such as `http://, https://, ftp://, ftps://`, and `file://`, with an IPv4 host header in the exploit attempt.|`cssPath`|
-|EC2 Body|Inspects for attempts to exfiltrate Amazon EC2 metadata from the request body.<br><br>CAUTION: This rule only inspects the first 8 KB of the request body.|`metaBody`|
-|EC2 Cookie|Inspects for attempts to exfiltrate Amazon EC2 metadata from the request cookie.|`metaCookie`|
-|EC2 Query|Inspects for attempts to exfiltrate Amazon EC2 metadata from the request query arguments.|`metaArgs`|
-|EC2 URI Path|Inspects for attempts to exfiltrate Amazon EC2 metadata from the request URI path.|`metaPath`|
-|General LFI Body|Inspects for the presence of Local File Inclusion (LFI) exploits in the request body.<br><br>Examples include path traversal attempts using techniques such as ../../.<br><br>CAUTION: This rule only inspects the first 8 KB of the request body|`fileBody`|
-|General LFI Query|Inspects for the presence of Local File Inclusion (LFI) exploits in the query arguments.<br><br>Examples include path traversal attempts using techniques such as ../../.|`fileArgs`|
-|General LFI URI Path|Inspects for the presence of Local File Inclusion (LFI) exploits in the URI path.<br><br>Examples include path traversal attempts using techniques such as ../../.|`filePath`|
-|General RFI BODY|Inspects for the presence of Local File Inclusion (LFI) exploits in the request body.<br><br>Examples include path traversal attempts using techniques such as ../../.<br><br>CAUTION: This rule only inspects the first 8 KB of the request body|`remoteBody`|
-|General RFI Query|Inspects the values of all query parameters and blocks requests that attempt to exploit RFI (Remote File Inclusion) in web applications by embedding URLs that contain IPv4 addresses.<br><br>Examples include patterns such as `http://, https://, ftp://, ftps://,` and `file://`, with an IPv4 host header in the exploit attempt.|`remoteArgs`
-|General RFI URI Path|Inspects the URI path and blocks requests that attempt to exploit RFI (Remote File Inclusion) in web applications by embedding URLs that contain IPv4 addresses.<br><br>Examples include patterns such as http://, https://, ftp://, ftps://, and `file://,` with an IPv4 host header in the exploit attempt.|`remotePath`|
-|Invalid Argument|Inspects requests whose query arguments are system file extensions that the clients shouldn't read or run.<br><br>Example patterns include extensions such as `.log` and `.ini.`|
-|invalidArgs|Invalid URI Path<br><br>Inspects requests whose URI path includes system file extensions that the clients shouldn't read or run.<br><br>Example patterns include extensions such as `.log` and `.ini`.|`invalidPath`|
-|Missing User Agent|Blocks requests with no HTTP User-Agent header.|`missingAgent`|
-|Size - Body|Verifies that the request body size is at most 8 KB (8,192 bytes).|`sizeBody`|
-|Size - Cookie|Verifies that the cookie header length is at most 10,240 bytes.|`sizeCookie`|
-|Size - URI Path|Verifies that the URI path length is at most 1,024 bytes.|`sizePath`|
-|Size - URI Query Size|Verifies that the URI query string length is at most 2,048 bytes.|`sizeArgs`|
+|a.|Deployment number|Toggle on/off via WAF Activity settings.| 
+|b.|Number of requests by action (passed, flagged, blocked)|Hover over graph data.|
+|c.|Requests by action |(passed, flagged, blocked)|Toggle the checkboxes.|
+|d.|Deployments and/or full cache flushes|Toggle on/off via WAF Activity settings.|
 
-#### Admin Page Protection
+### Rules Applied
 
-| Rule Name|Description|Log Name|
+![Rules Applied](/images/security/rulesapplied.jpg "Rules Applied")
+
+| | View Option | Access |
 | --- | --- | --- |
-|Protected URI Path|Inspects requests for URI paths that are generally reserved for administration of a webserver or application.<br><br>Example patterns include `sqlmanager`.|`protectedPath`|
+|a.|Date range|Select 24 hour, 7 days, or 28 days.| 
+|b.|Flagged and/or Blocked requests|Toggle the Flagged and Blocked buttons.|
+|c.|Graph of rules applied|Click inside the graph to list the names of the rules that have been applied to your Bot Control or {{ PRODUCT_NAME }} Managed rules.<br>Click *Back to Rule Sets* to return to the previous view.|
 
-#### Bad Input
+### Rules Section
 
-| Rule Name|Description|Log Name|
+![Rules](/images/security/rules.jpg "Rules")
+
+| | View Option | Access |
 | --- | --- | --- |
-|Bad Input - Bad host| Inspects the host header in the request for patterns indicating localhost.<br><br>Example patterns include localhost|`badHost`|
-|Bad Input - Bad path|Inspects the URI path for attempts to access exploitable web application paths.<br><br>Example patterns include paths such as `web-inf`.|`badPath`|
-|Bad Input - Log4js|Inspects the request for the presence of the Log4j vulnerability CVE-2021-44228 and protects against Remote Code Execution (RCE) attempts.<br><br>Example patterns include ${jndi:ldap://example.com/}.<br><br>CAUTION: This rule only inspects the first 8 KB of the request body.|3|
-|Bad Input - Propfind|Inspects the HTTP method in the request for `PROPFIND`, which is a method similar to `HEAD`, but with the extra intention to exfiltrate XML objects.|`badProperty`|
+|a.|Rules by type|Expand or collapse the list using the arrow to the left of the rule type.| 
+|b.|Route details|Click the rule name to view route information for that rule, including its path and number/percentage of total, flagged, and blocked requests.|
 
-#### PHP Application
+### Logs
 
-| Rule Name|Description|Log Name|
-| --- | --- | --- |
-|PHP - Body|Inspects the values of the request body for PHP script code injection attempts.<br><br>Example patterns include functions such as `fsockopen` and the `$_GET` superglobal variable.|`phpBody`|
-|PHP - Query|Inspects the values of all query parameters for PHP script code injection attempts.<br><br>Example patterns include functions such as `fsockopen` and the `$_GET` superglobal variable.|`phpArgs`|
+Here is an example log file with the WAF rule name, the action applied, the mode, the WAF name, and the version number.
 
-#### SQL Database
+View as JSON
+<p style="font-family:'Courier'">{"date":1641856332.00036,"metadata":{"lvl":"edge","lv":"-","token":"-"},"haproxy":{"acc":"*/*","bip":"100.64.0.21","cc":"","cip":"104.33.80.4","code":"200","done":"1","h2":"1","hh":"test-docs-layer0-docs-default.layer0-limelight.link","http":"HTTP/2.0","met":"GET","pop":"sna","psh":"0","rfr":"-","rid":"82a757a04fa4d30cfb6105d23f64c2e3aefaa130","s_rs":"102028","s_rqb":"0","s_rsb":"16384","ssl":"https","timestamp":"1641856331999","tls":"TLSv1.2","ua":"curl/7.77.0","url":"/?38936","xmc":"eh=0.1.8,c=4.8.0,e=sna,ec=1.4.2,ed=1.2.0,gh=0.1.8,g=hef,gd=1.2.0,p=1.23.0,w=4.8.0,wi=6de00537-513b-4829-83f4-85d07651de39,b=serv","xms":"eh=200,ed=200,gh=200,gd=200,p=200,w=200","xmt":"eh=312,ect=310,ecc=miss,edt=305,edd=0,edf=305,gh=182,gct=180,gcc=miss,gdt=176,gdd=0,gdf=176,pt=170,pc=1,pf=168,wm=277,wt=128,wc="},"varnish":{"external":{"eid":"d63d2947-f052-4829-a3dc-2e2dcf4a67c9","bld":"4","v":"4.8.0","ev":2,"cv":"1.2.0","ip":"104.33.80.4","ic":1,"cc":"US","sc":"CA","cy":"monrovia","pc":"91016","lo":"-117.97","lt":"34.15","asn":"20001","s_rq":0,"ds":"default","be":"__js__","bk":"78","zip":"0","sh":1,"dv":"desktop","vn":"generic","br":"generic","bot":0,"er":0,"clv":0,"stl":0,"prl":0,"prod":1,"cs":"no-ttl","ct":"text/html; charset=utf-8","pre":0,"uv":"","bip":"34.233.202.91","hrid":"","lp":0,<span style="color: rgb(255,0,0);">"waf":"botLib,flagged","wafv":"WAF-1,2"</span>,"bse":""},"internal":{"reg":"","rst":0,"xmr":"1,8,82","xrj":"%7B%22path%22%3A%22%2F%22%7D","ckh":"631ea8d6e3e194e0b698561eb011d59762d6c4022c2a49d50f49cbc4a0c088fb"}}}</p>
 
-| Rule Name|Description|Log Name|
-| --- | --- | --- |
-|SQL - Body|Uses the built-in {{ PRODUCT_NAME }} WAF SQL injection match statement to inspect the request body for patterns that match malicious SQL code.<br><br>CAUTION: This rule only inspects the first 8 KB of the request body|`sqlBody`|
-|SQL - Cookie|Uses the built-in {{ PRODUCT_NAME }} WAF SQL injection match statement to inspect the request cookie header for patterns that match malicious SQL code.|`sqlCookie`|
-|SQL - Query|Uses the built-in {{ PRODUCT_NAME }} WAF SQL injection match statement to inspect the request query parameters for patterns that match malicious SQL code.|`sqlArgs`|
-|SQL - Query Extended|Inspects the values of all query parameters for patterns that match malicious SQL code.<br><br>The patterns this rule inspects for aren't covered by the built-in {{ PRODUCT_NAME }} WAF SQL injection match statement.|`sqlArgsExtra`|
-|SQL - URI path|Uses the built-in {{ PRODUCT_NAME }} WAF injection match statement to inspect the request URI path for patterns that match malicious SQL code.|`sqlPath`|
+## Website Security
 
-### Bot Rule Group Descriptions
-
-| Rule Name|Description|Log Name|
-| --- | --- | --- |
-|BOT - Advertising|Bots that are used for advertising purposes.|`botAds`|
-|BOT - Archiver|Bots that are used for archiving purposes.|`botArchiver`|
-|BOT - Browser|Indications of an automated web browser.|`botBrowser`|
-|BOT - Content|Bots that are fetching content on behalf of an end user.|`botFetcher`|
-|BOT - Data center|Data centers that are typically used by bots.|`botProvider`|
-|BOT - HTTP Library|HTTP libraries that are often used by bots.|`botLib`|
-|BOT - Link checker|Bots that check for broken links.|`botLinkChecker`|
-|BOT - Miscellaneous|Miscellaneous bots.|`botOther`|
-|BOT - Monitoring|Bots that are used for monitoring purposes.|`botPing`|
-|BOT - Scraping|Web scraping frameworks.|`botScraper`|
-|BOT - Search Engine|Search engine bots. Verified search engines are not blocked.|`botSearch`|
-|BOT - Security|Security-related bots.|`botSecurity`|
-|BOT - SEO|Bots that are used for search engine optimization.|`botSeo`|
-|BOT - Social Media|Bots that are used by social media platforms to provide content summaries. Verified social media bots are not blocked.|`botSocial`|
-|BOT - User agent|User agent strings that don't seem to be from a web browser.|`botUserAgent`|
-
-### FAQs
-
-#### **What’s the difference between WAF-1 and WAF-2?**
-
-You can configure 2 different WAF instances, allowing you to apply different sets of security rules to different environments.<br>
-
-#### **How do I know which version to use?**
-
-Like all {{ PRODUCT_NAME }} products, WAF gives you access to all previous and active versions of your configuration so you have historical setups in case you need to roll back the current version.While editing, the version is in a *Draft* state; once activated, the version is *Active*.
-
-#### **What is the difference between flagging and blocking a rule or rule group?**
-
-To flag a rule or rule group means to mark it if the rule would have been activated without actually denying the traffic. In contrast, when you block a rule or rule group, traffic is denied on affected routes. You can view both flagged and blocked data in your [Layer0 console](https://app.layer0.co/).
-
-#### **What are {{ PRODUCT_NAME }} Managed Rules and why should I apply this rule group?**
-
-Managed rules block specific known threats. {{ PRODUCT_NAME }} recommends this rule group for all WAF use cases.<br>Note: {{ PRODUCT_NAME }} recommends that all customers activate the *Bad Input - Log4J* rule group, as well.
-
-#### **Is the Layer0 WAF a PCI-compliant solution?**
-
-Yes.  {{ PRODUCT_NAME }} maintains PCI-DSS Level 1 compliance by undergoing annual audits from approved Visa and MasterCard auditors.<br>
-
-#### **What is the minimum level of encryption for {{ PRODUCT_NAME }}?**
-
-{{ PRODUCT_NAME }} enforces a minimum version of TLS 1.2 or higher.<br>
-
-## Content Security Policy (CSP)
+### Content Security Policy (CSP)
 
 [Content Security Policy](https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP) (CSP) is an added layer of security that helps to detect and mitigate certain types of attacks, including Cross Site Scripting (XSS) and data injection attacks. These attacks are used for everything from data theft to site defacement to distribution of malware.
 
@@ -428,3 +422,29 @@ router.get('/some/path/depending/on/language/cookie', ({ cache }) => {
   })
 })
 ```
+
+## FAQs
+
+### **What’s the difference between WAF-1 and WAF-2?**
+
+You can configure 2 different WAF instances, allowing you to apply different sets of security rules to different environments.<br>
+
+### **How do I know which version to use?**
+
+Like all {{ PRODUCT_NAME }} products, WAF gives you access to all previous and active versions of your configuration so you have historical setups in case you need to roll back the current version.While editing, the version is in a *Draft* state; once activated, the version is *Active*.
+
+### **What is the difference between flagging and blocking a rule or rule group?**
+
+To flag a rule or rule group means to mark it if the rule would have been activated without actually denying the traffic. In contrast, when you block a rule or rule group, traffic is denied on affected routes. You can view both flagged and blocked data in your [Layer0 console](https://app.layer0.co/).
+
+### **What are {{ PRODUCT_NAME }} Managed Rules and why should I apply this rule group?**
+
+Managed rules block specific known threats. {{ PRODUCT_NAME }} recommends this rule group for all WAF use cases.<br>Note: {{ PRODUCT_NAME }} recommends that all customers activate the *Bad Input - Log4J* rule group, as well.
+
+### **Is the Layer0 WAF a PCI-compliant solution?**
+
+Yes.  {{ PRODUCT_NAME }} maintains PCI-DSS Level 1 compliance by undergoing annual audits from approved Visa and MasterCard auditors.<br>
+
+### **What is the minimum level of encryption for {{ PRODUCT_NAME }}?**
+
+{{ PRODUCT_NAME }} enforces a minimum version of TLS 1.2 or higher.<br>

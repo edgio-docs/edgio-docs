@@ -8,26 +8,6 @@
       "path": "",
       "routes": [
         {
-          "title": "React APIs",
-          "path": "/reference",
-          "routes": [
-            {
-              "title": "useState()",
-              "path": "/reference/usestate"
-            }
-          ]
-        },
-        {
-          "title": "ReactDOM APIs",
-          "path": "/reference/reactdom",
-          "routes": [
-            {
-              "title": "render()",
-              "path": "/reference/render"
-            }
-          ]
-        },
-        {
           "title": "Get Started",
           "path": "/reference/overview",
           "routes": [

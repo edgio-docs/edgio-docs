@@ -31,7 +31,6 @@ module.exports = async function (src) {
 
   // 4. Get the layout component from the frontmatter
   const layoutMap = {
-    learn: 'Learn',
     reference: 'API',
   };
   const layout = layoutMap[pageParentDir] || 'Home';

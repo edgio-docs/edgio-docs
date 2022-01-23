@@ -98,25 +98,14 @@ function inferSection(pathname: string): 'learn' | 'reference' | 'home' {
 
 export default function Nav() {
   const {pathname} = useRouter();
-  const {isOpen, toggleOpen} = React.useContext(MenuContext);
+  // const {isOpen, toggleOpen} = React.useContext(MenuContext);
   const section = inferSection(pathname);
 
-  function handleFeedback() {
-    const nodes: any = document.querySelectorAll(
-      '#_hj_feedback_container button'
-    );
-    if (nodes.length > 0) {
-      nodes[nodes.length - 1].click();
-    } else {
-      window.location.href =
-        'https://github.com/reactjs/reactjs.org/issues/3308';
-    }
-  }
 
   return (
     <nav className="sticky top-0 items-center w-full flex lg:block justify-between bg-wash dark:bg-wash-dark pt-0 lg:pt-4 pr-5 lg:px-5 z-50">
       <div className="xl:w-full xl:max-w-xs flex items-center">
-        <button
+        {/* <button
           type="button"
           aria-label="Menu"
           onClick={toggleOpen}
@@ -124,19 +113,13 @@ export default function Nav() {
             'text-link dark:text-link-dark mr-0': isOpen,
           })}>
           {!isOpen ? <IconHamburger /> : <IconClose />}
-        </button>
+        </button> */}
         <NextLink href="/">
           <a className="inline-flex text-l font-normal items-center text-primary dark:text-primary-dark py-1 mr-0 sm:mr-3 whitespace-nowrap">
             <Logo className="text-sm mr-2 w-8 h-8 text-link dark:text-link-dark" />
-            React Docs
           </a>
         </NextLink>
-        <div className="lg:w-full leading-loose hidden sm:flex flex-initial items-center h-auto pr-5 lg:pr-5 pt-0.5">
-          <div className="px-1 mb-px bg-highlight dark:bg-highlight-dark rounded text-link dark:text-link-dark uppercase font-bold tracking-wide text-xs whitespace-nowrap">
-            Beta
-          </div>
-        </div>
-        <div className="block dark:hidden">
+        {/* <div className="block dark:hidden">
           <button
             type="button"
             aria-label="Use Dark Mode"
@@ -157,27 +140,9 @@ export default function Nav() {
             className="hidden lg:flex items-center h-full pr-2">
             {lightIcon}
           </button>
-        </div>
-      </div>
-      <div className="px-0 pt-2 w-full 2xl:max-w-xs hidden lg:flex items-center self-center border-b-0 lg:border-b border-border dark:border-border-dark">
-        <NavLink href="/" isActive={section === 'home'}>
-          Home
-        </NavLink>
-        <NavLink href="/learn" isActive={section === 'learn'}>
-          Learn
-        </NavLink>
-        <NavLink href="/reference" isActive={section === 'reference'}>
-          API
-        </NavLink>
+        </div> */}
       </div>
       <div className="flex my-4 h-10 mx-0 w-full lg:hidden justify-end slg:max-w-sm">
-        <Search />
-        <button
-          type="button"
-          className="inline-flex lg:hidden items-center p-1 ml-4 lg:ml-6 relative top-px"
-          onClick={handleFeedback}>
-          {feedbackIcon}
-        </button>
         <div className="block dark:hidden">
           <button
             type="button"

@@ -2,6 +2,7 @@
  * Copyright (c) Facebook, Inc. and its affiliates.
  */
 
+// REMOVE
 // @ts-ignore
 import {useDocSearchKeyboardEvents} from '@docsearch/react';
 import {IconSearch} from 'components/Icon/IconSearch';

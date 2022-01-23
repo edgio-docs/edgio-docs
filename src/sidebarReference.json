@@ -1,0 +1,389 @@
+{
+  "title": "API Reference",
+  "heading": true,
+  "path": "/reference",
+  "routes": [
+    {
+      "heading": true,
+      "path": "",
+      "routes": [
+        {
+          "title": "React APIs",
+          "path": "/reference",
+          "routes": [
+            {
+              "title": "useState()",
+              "path": "/reference/usestate"
+            }
+          ]
+        },
+        {
+          "title": "ReactDOM APIs",
+          "path": "/reference/reactdom",
+          "routes": [
+            {
+              "title": "render()",
+              "path": "/reference/render"
+            }
+          ]
+        },
+        {
+          "title": "Get Started",
+          "path": "/reference/overview",
+          "routes": [
+            {
+              "title": "WebApp CDN",
+              "path": "/reference/webapp_cdn_getting_started"
+            },
+            {
+              "title": "Jamstack",
+              "path": "/reference/jamstack_getting_started"
+            },
+            {
+              "title": "GraphQL CDN",
+              "path": "/reference/graphql"
+            },
+            {
+              "title": "Deploying",
+              "path": "/reference/deploy_apps"
+            }
+          ]
+        },
+        {
+          "title": "CDN",
+          "path": "/reference/cdn",
+          "routes": [
+            {
+              "title": "Caching",
+              "path": "/reference/caching"
+            },
+            {
+              "title": "Common Routing Patterns",
+              "path": "/reference/cookbook"
+            },
+            {
+              "title": "Connectors",
+              "path": "/reference/connectors"
+            },
+            {
+              "title": "Core Web Vitals",
+              "path": "/reference/core_web_vitals"
+            },
+            {
+              "title": "Custom Domains and SSL",
+              "path": "/reference/production"
+            },
+            {
+              "title": "Edge Network",
+              "path": "/reference/regions"
+            },
+            {
+              "title": "EdgeJS Routing",
+              "path": "/reference/routing"
+            },
+            {
+              "title": "Core Web Vitals",
+              "path": "/reference/core_web_vitals"
+            },
+            {
+              "title": "Image Optimization",
+              "path": "/reference/image_optimization"
+            },
+            {
+              "title": "Incremental Static (Re)generation",
+              "path": "/reference/isg"
+            },
+            {
+              "title": "Performance",
+              "path": "/reference/performance"
+            },
+            {
+              "title": "Prefetching",
+              "path": "/reference/prefetching"
+            },
+            {
+              "title": "Purging",
+              "path": "/reference/purging"
+            },
+            {
+              "title": "Security",
+              "path": "/reference/security"
+            },
+            {
+              "title": "Split Testing",
+              "path": "/reference/split_testing"
+            },
+            {
+              "title": "Static Prerendering",
+              "path": "/reference/static_prerendering"
+            },
+            {
+              "title": "Third Party CDNs",
+              "path": "/reference/third_party_cdns"
+            },
+            {
+              "title": "Traditional Sites",
+              "path": "/reference/traditional_sites"
+            },
+            {
+              "title": "Troubleshooting",
+              "path": "/reference/troubleshooting"
+            }
+          ]
+        },
+        {
+          "title": "Developer Tools",
+          "path": "/reference/developer_tools",
+          "routes": [
+            {
+              "title": "CLI",
+              "path": "/reference/cli"
+            },
+            {
+              "title": "Devtools",
+              "path": "/reference/devtools"
+            },
+            {
+              "title": "Logs",
+              "path": "/reference/logs"
+            }
+          ]
+        },
+        {
+          "title": "Accounts and Teams",
+          "path": "/reference/accounts_and_teams",
+          "routes":[
+            {
+              "title": "Environments",
+              "path": "/reference/environments"
+            },
+            {
+              "title": "Teams",
+              "path": "/reference/teams"
+            }
+          ]
+        },
+        {
+          "title": "Framework Guides",
+          "path": "/reference/framework_guides",
+          "routes":[
+            {
+              "title": "Angular",
+              "path": "/reference/angular"
+            },
+            {
+              "title": "Astro",
+              "path": "/reference/astro"
+            },
+            {
+              "title": "Brunch",
+              "path": "/reference/brunch"
+            },
+            {
+              "title": "Docusaurus",
+              "path": "/reference/docusaurus"
+            },
+            {
+              "title": "Dojo",
+              "path": "/reference/dojo"
+            },
+            {
+              "title": "Eleventy",
+              "path": "/reference/eleventy"
+            },
+            {
+              "title": "Ember Fastboot",
+              "path": "/reference/ember_fastboot"
+            },
+            {
+              "title": "Ember.js",
+              "path": "/reference/ember"
+            },
+            {
+              "title": "Express",
+              "path": "/reference/express"
+            },
+            {
+              "title": "Frontity",
+              "path": "/reference/frontity"
+            },
+            {
+              "title": "Gatsby",
+              "path": "/reference/gatsby"
+            },
+            {
+              "title": "Gridsome",
+              "path": "/reference/gridsome"
+            },
+            {
+              "title": "Hexo",
+              "path": "/reference/hexo"
+            },
+            {
+              "title": "Hugo",
+              "path": "/reference/hugo"
+            },
+            {
+              "title": "Ionic React",
+              "path": "/reference/ionic_react"
+            },
+            {
+              "title": "Ionic Vue",
+              "path": "/reference/ionic_vue"
+            },
+            {
+              "title": "Jekyll",
+              "path": "/reference/jekyll"
+            },
+            {
+              "title": "MKDocs",
+              "path": "/reference/mkdocs"
+            },
+            {
+              "title": "Next.js",
+              "path": "/reference/next"
+            },
+            {
+              "title": "Next.js Commerce",
+              "path": "/reference/next_commerce"
+            },
+            {
+              "title": "Nuxt.js",
+              "path": "/reference/nuxt"
+            },
+            {
+              "title": "NX",
+              "path": "/reference/nx"
+            },
+            {
+              "title": "Preact",
+              "path": "/reference/preact"
+            },
+            {
+              "title": "Razzle",
+              "path": "/reference/razzle"
+            },
+            {
+              "title": "React",
+              "path": "/reference/react"
+            },
+            {
+              "title": "React Static",
+              "path": "/reference/react_static"
+            },
+            {
+              "title": "React Storefront",
+              "path": "/reference/react_storefront"
+            },
+            {
+              "title": "Remix",
+              "path": "/reference/remix"
+            },
+            {
+              "title": "Saber",
+              "path": "/reference/saber"
+            },
+            {
+              "title": "Sapper",
+              "path": "/reference/sapper"
+            },
+            {
+              "title": "Serveless Functions",
+              "path": "/reference/serveless_functions"
+            },
+            {
+              "title": "Shopify Hydrogen",
+              "path": "/reference/shopify_hydrogen"
+            },
+            {
+              "title": "SolidJS",
+              "path": "/reference/solid"
+            },
+            {
+              "title": "Spartacus",
+              "path": "/reference/spartacus"
+            },
+            {
+              "title": "Static HTML/JavaScript",
+              "path": "/reference/static_sites"
+            },
+            {
+              "title": "Stencil",
+              "path": "/reference/stencil"
+            },
+            {
+              "title": "Svelte",
+              "path": "/reference/svelte"
+            },
+            {
+              "title": "Swell",
+              "path": "/reference/swell"
+            },
+            {
+              "title": "UmiJS",
+              "path": "/reference/umijs"
+            },
+            {
+              "title": "VitePress",
+              "path": "/reference/vitepress"
+            },
+            {
+              "title": "Vue Storefront",
+              "path": "/reference/vsf"
+            },
+            {
+              "title": "Vue.js",
+              "path": "/reference/vue"
+            },
+            {
+              "title": "VuePress",
+              "path": "/reference/vuepress"
+            },
+            {
+              "title": "Zola",
+              "path": "/reference/zola"
+            }
+          ]
+        },
+        {
+          "title": "Videos",
+          "path": "/reference/videos",
+           "routes": [
+            {
+              "title": "@layer0 Tutorials",
+              "path": "/reference/deploy_apps"
+            },
+            {
+              "title": "Product Updates",
+              "path": "/reference/deploy_apps"
+            }
+          ]
+        },
+        {
+          "title": "Package APIs",
+          "path": "/reference/package_apis",
+          "routes": [
+            {
+              "title": "@layer0/core",
+              "path": "/reference/deploy_apps"
+            },
+            {
+              "title": "@layer0/prefetch",
+              "path": "/reference/deploy_apps"
+            }
+          ]
+        },
+        {
+          "title": "Learning Resources",
+          "path": "/reference/learning_resources",
+          "routes": [
+            {
+              "title": "What is GraphQL?",
+              "path": "/reference/what_is_graphql"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -64,7 +64,7 @@ The Admin protection rule group contains rules that allow you to block external 
 
 | Rule Name|Description|Log Name|
 | --- | --- | --- |
-|Protected URI Path|Inspects requests for URI paths that are generally reserved for administration of a webserver or application.<br><br>Example patterns include `sqlmanager`.|`protectedPath`|
+|Protected URI Path|Inspects requests for URI paths that are generally reserved for administration of a webserver or application. Example patterns include `sqlmanager`.|`protectedPath`|
 
 #### Bad Input Rules
 

@@ -14,7 +14,7 @@ This guide shows you how to keep your site and platform secure using {{ PRODUCT_
 
 ## WAF (Web Application Firewall)
 
-### Overview
+### WAF Overview
 
 WAF is a web application firewall that helps protect your web applications and APIs against common web exploits an attacker may use to compromise your security, overwhelm resources, and affect the availability of your application. 
 
@@ -34,7 +34,7 @@ The WAF includes [Managed Rule Groups](#managed-rule-group-descriptions), manage
 | --- | --- | --- |
 |Cross-site scripting (XSS) Body|Inspects the value of the request body and blocks common cross-site scripting (XSS) patterns using the built-in XSS detection rule in {{ PRODUCT_NAME }} WAF. Example patterns include scripts such as `<script>alert("hello")</script>`. CAUTION: This rule only inspects the first 8 KB of the request body.|`cssBody`|
 |Cross-site scripting (XSS) Cookie|Inspects the value of cookie headers and blocks common cross-site scripting (XSS) patterns using the built-in XSS detection rule in {{ PRODUCT_NAME }} WAF. Example patterns include scripts such as `<script>alert("hello")</script>.`|
-|cssCookie|Cross-site scripting (XSS) Query | Inspects the value of query arguments and blocks common cross-site scripting (XSS) patterns using the built-in XSS detection rule in {{ PRODUCT_NAME }} WAF. Example patterns include scripts such as `<script>alert("hello")</script>`.|`cssArgs`|
+|cssCookie|Cross-site scripting (XSS) Query. Inspects the value of query arguments and blocks common cross-site scripting (XSS) patterns using the built-in XSS detection rule in {{ PRODUCT_NAME }} WAF. Example patterns include scripts such as `<script>alert("hello")</script>`.|`cssArgs`|
 |Cross-site scripting (XSS) URI Path|Inspects the URI path and blocks requests that attempt to exploit RFI (Remote File Inclusion) in web applications by embedding URLs that contain IPv4 addresses. Examples include patterns such as `http://, https://, ftp://, ftps://`, and `file://`, with an IPv4 host header in the exploit attempt.|`cssPath`|
 |EC2 Body|Inspects for attempts to exfiltrate Amazon EC2 metadata from the request body. CAUTION: This rule only inspects the first 8 KB of the request body.|`metaBody`|
 |EC2 Cookie|Inspects for attempts to exfiltrate Amazon EC2 metadata from the request cookie.|`metaCookie`|
@@ -46,8 +46,8 @@ The WAF includes [Managed Rule Groups](#managed-rule-group-descriptions), manage
 |General RFI BODY|Inspects for the presence of Local File Inclusion (LFI) exploits in the request body. Examples include path traversal attempts using techniques such as ../../. CAUTION: This rule only inspects the first 8 KB of the request body|`remoteBody`|
 |General RFI Query|Inspects the values of all query parameters and blocks requests that attempt to exploit RFI (Remote File Inclusion) in web applications by embedding URLs that contain IPv4 addresses. Examples include patterns such as `http://, https://, ftp://, ftps://,` and `file://`, with an IPv4 host header in the exploit attempt.|`remoteArgs`
 |General RFI URI Path|Inspects the URI path and blocks requests that attempt to exploit RFI (Remote File Inclusion) in web applications by embedding URLs that contain IPv4 addresses. Examples include patterns such as http://, https://, ftp://, ftps://, and `file://,` with an IPv4 host header in the exploit attempt.|`remotePath`|
-|Invalid Argument|Inspects requests whose query arguments are system file extensions that the clients shouldn't read or run. Example patterns include extensions such as `.log` and `.ini.`|
-|invalidArgs|Invalid URI Path. Inspects requests whose URI path includes system file extensions that the clients shouldn't read or run. Example patterns include extensions such as `.log` and `.ini`.|`invalidPath`|
+|Invalid Argument|Inspects requests whose query arguments are system file extensions that the clients shouldn't read or run. Example patterns include extensions such as `.log` and `.ini.`||invalidArgs|
+|Invalid URI Path. Inspects requests whose URI path includes system file extensions that the clients shouldn't read or run. Example patterns include extensions such as `.log` and `.ini`.|`invalidPath`|
 |Missing User Agent|Blocks requests with no HTTP User-Agent header.|`missingAgent`|
 |Size - Body|Verifies that the request body size is at most 8 KB (8,192 bytes).|`sizeBody`|
 |Size - Cookie|Verifies that the cookie header length is at most 10,240 bytes.|`sizeCookie`|
@@ -167,8 +167,7 @@ The {{ PRODUCT_NAME }} Bot protection contains rules to block and manage request
  
 The Bot Control product applies labels to a set of verifiable bots that are commonly allowed. The rule group doesn't block this category of commonly allowed bots.
 
-**Bot Rule Group**
-In addition to the WAF rule groups, {{ PRODUCT_NAME }} offers an additional Managed Rule Group for bots that allows you to take action against common bots that may impact the performance and availability of your web application or APIs. 
+**Bot Rule Group**: In addition to the WAF rule groups, {{ PRODUCT_NAME }} offers an additional Managed Rule Group for bots that allows you to take action against common bots that may impact the performance and availability of your web application or APIs. 
 
 You can monitor the impact of your bots by flagging each bot type of request gaining insights into SEO bots, scraping bots, advertising bots, malicious user agent bots, and several other categories of bots.
 

@@ -9,12 +9,12 @@ If the error is generated in {{ PRODUCT_NAME }} itself, the platform generates a
 | CODE | NAME | DESCRIPTION |
 | --- | --- | --- |
 | 530 | Internal {{ PRODUCT_NAME }} Error | Unexpected error in {{ PRODUCT_NAME }}. Please contact [support]({{ HELP_URL }}) immediately. |
-| 531 | Project Upstream Timeout | Your project timed out while waiting for an upstream response. |
+| 531 | Project Upstream Connection Timeout | Your project timed out while waiting to establish an upstream connection. |
 | 532 | Project Response Too Large | Your project returned a response size greater than the allowed 6MB. |
-| 533 | Reserved | Not used by {{ PRODUCT_NAME }} at this time. |
+| 533 | Project Upstream TLS Error | The was an error negotiating a secure TLS connection with the upstream. Common causes are the host name provided does not match the name in the upstream TLS certificate, or the upstream TLS certificate has expired. |
 | 534 | Project Unexpected Error | Your project's serverless code has failed unexpectedly. Use [server logs](/guides/logs#section_server_logs) to debug. |
 | 535 | Unknown Project | The HTTP header `host` is missing or does not match any {{ PRODUCT_NAME }} deployment. Check your requesting URL and your project config. |
-| 536 | Reserved | Not used by {{ PRODUCT_NAME }} at this time. |
+| 536 | Project No HTTP Response | {{ PRODUCT_NAME }} did not receive an HTTP response from the upstream. Common causes are the upstream dropped the connection prematurely, and the upstream took too long to respond. |
 | 537 | DNS Resolution Error | Failed to resolve the host name through DNS, which might indicate a problem with your DNS provider or incorrectly configured domain name. |
 | 538 | Project Request Loop | The {{ PRODUCT_NAME }} project exceeded the maximum level (4) of nested {{ PRODUCT_NAME }} requests. “Nested” means an {{ PRODUCT_NAME }} site is the upstream of itself or of another {{ PRODUCT_NAME }} site. |
 | 539 | Project Timeout | Your project's serverless code did not respond on time, either due to slow upstreams or to badly handled asynchronous requests in code (e.g. missing `await` or call to `callback`). Use [server logs](/guides/logs#section_server_logs) and [performance profiling](/guides/performance) to debug. |

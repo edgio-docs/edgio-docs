@@ -4,7 +4,7 @@
 
 {{ PRODUCT_NAME }}’s platform is built to ensure your website and applications remain open for business by keeping you protected against a wide range of security risks without sacrificing performance.
 
-A fully [PCI-compliant](#is-the-layer0-WAF-a-PCI-compliant-solution?) solution, {{ PRODUCT_NAME }} Security protects your business against a variety of common exploits like SQL injections, cross-site scripting (XSS), PHP injections, bot attacks, DDoS attacks, and other common vulnerabilities.
+A fully [PCI-compliant](#is-the-layer0-waf-a-pci-compliant-solution) solution, {{ PRODUCT_NAME }} Security protects your business against a variety of common exploits like SQL injections, cross-site scripting (XSS), PHP injections, bot attacks, DDoS attacks, and other common vulnerabilities.
 
 This guide shows you how to keep your site and platform secure using {{ PRODUCT_NAME }}.
 

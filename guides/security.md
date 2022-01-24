@@ -318,16 +318,92 @@ Here is an example log file highlighting the WAF rule name, the action applied, 
 
 View as JSON
 
-```
-{"date":1641856332.00036,"metadata":{"lvl":"edge","lv":"-","token":"-"},"haproxy":{"acc":"*/*","bip":"100.64.0.21","cc":"","cip":"104.33.80.4","code":"200","done":"1","h2":"1","hh":"test-docs-layer0-docs-default.layer0-limelight.link","http":"HTTP/2.0","met":"GET","pop":"sna","psh":"0","rfr":"-","rid":"82a757a04fa4d30cfb6105d23f64c2e3aefaa130","s_rs":"102028","s_rqb":"0","s_rsb":"16384","ssl":"https","timestamp":"1641856331999","tls":"TLSv1.2","ua":"curl/7.77.0","url":"/?38936","xmc":"eh=0.1.8,c=4.8.0,e=sna,ec=1.4.2,ed=1.2.0,gh=0.1.8,g=hef,gd=1.2.0,p=1.23.0,w=4.8.0,wi=6de00537-513b-4829-83f4-85d07651de39,b=serv","xms":"eh=200,ed=200,gh=200,gd=200,p=200,w=200","xmt":"eh=312,ect=310,ecc=miss,edt=305,edd=0,edf=305,gh=182,gct=180,gcc=miss,gdt=176,gdd=0,gdf=176,pt=170,pc=1,pf=168,wm=277,wt=128,wc="},"varnish":{"external":{"eid":"d63d2947-f052-4829-a3dc-2e2dcf4a67c9","bld":"4","v":"4.8.0","ev":2,"cv":"1.2.0","ip":"104.33.80.4","ic":1,"cc":"US","sc":"CA","cy":"monrovia","pc":"91016","lo":"-117.97","lt":"34.15","asn":"20001","s_rq":0,"ds":"default","be":"__js__","bk":"78","zip":"0","sh":1,"dv":"desktop","vn":"generic","br":"generic","bot":0,"er":0,"clv":0,"stl":0,"prl":0,"prod":1,"cs":"no-ttl","ct":"text/html; charset=utf-8","pre":0,"uv":"","bip":"34.233.202.91","hrid":"","lp":0,
-```
- 
- ```diff
- "waf":"botLib,flagged","wafv":"WAF-1,2",
- ```
- 
-```
-"bse":""},"internal":{"reg":"","rst":0,"xmr":"1,8,82","xrj":"%7B%22path%22%3A%22%2F%22%7D","ckh":"631ea8d6e3e194e0b698561eb011d59762d6c4022c2a49d50f49cbc4a0c088fb"}}}
+```diff
+{
+   "date":1641856332.00036,
+   "metadata":{
+      "lvl":"edge",
+      "lv":"-",
+      "token":"-"
+   },
+   "haproxy":{
+      "acc":"*/*",
+      "bip":"100.64.0.21",
+      "cc":"",
+      "cip":"104.33.80.4",
+      "code":"200",
+      "done":"1",
+      "h2":"1",
+      "hh":"test-docs-layer0-docs-default.layer0-limelight.link",
+      "http":"HTTP/2.0",
+      "met":"GET",
+      "pop":"sna",
+      "psh":"0",
+      "rfr":"-",
+      "rid":"82a757a04fa4d30cfb6105d23f64c2e3aefaa130",
+      "s_rs":"102028",
+      "s_rqb":"0",
+      "s_rsb":"16384",
+      "ssl":"https",
+      "timestamp":"1641856331999",
+      "tls":"TLSv1.2",
+      "ua":"curl/7.77.0",
+      "url":"/?38936",
+      "xmc":"eh=0.1.8,c=4.8.0,e=sna,ec=1.4.2,ed=1.2.0,gh=0.1.8,g=hef,gd=1.2.0,p=1.23.0,w=4.8.0,wi=6de00537-513b-4829-83f4-85d07651de39,b=serv",
+      "xms":"eh=200,ed=200,gh=200,gd=200,p=200,w=200",
+      "xmt":"eh=312,ect=310,ecc=miss,edt=305,edd=0,edf=305,gh=182,gct=180,gcc=miss,gdt=176,gdd=0,gdf=176,pt=170,pc=1,pf=168,wm=277,wt=128,wc="
+   },
+   "varnish":{
+      "external":{
+         "eid":"d63d2947-f052-4829-a3dc-2e2dcf4a67c9",
+         "bld":"4",
+         "v":"4.8.0",
+         "ev":2,
+         "cv":"1.2.0",
+         "ip":"104.33.80.4",
+         "ic":1,
+         "cc":"US",
+         "sc":"CA",
+         "cy":"monrovia",
+         "pc":"91016",
+         "lo":"-117.97",
+         "lt":"34.15",
+         "asn":"20001",
+         "s_rq":0,
+         "ds":"default",
+         "be":"__js__",
+         "bk":"78",
+         "zip":"0",
+         "sh":1,
+         "dv":"desktop",
+         "vn":"generic",
+         "br":"generic",
+         "bot":0,
+         "er":0,
+         "clv":0,
+         "stl":0,
+         "prl":0,
+         "prod":1,
+         "cs":"no-ttl",
+         "ct":"text/html; charset=utf-8",
+         "pre":0,
+         "uv":"",
+         "bip":"34.233.202.91",
+         "hrid":"",
+         "lp":0,
++++      "waf":"botLib,flagged",
++++      "wafv":"WAF-1,2",
+         "bse":""
+      },
+      "internal":{
+         "reg":"",
+         "rst":0,
+         "xmr":"1,8,82",
+         "xrj":"%7B%22path%22%3A%22%2F%22%7D",
+         "ckh":"631ea8d6e3e194e0b698561eb011d59762d6c4022c2a49d50f49cbc4a0c088fb"
+      }
+   }
+}
 ```
 
 ## Website Security

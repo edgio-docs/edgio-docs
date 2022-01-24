@@ -41,10 +41,10 @@ const staticCacheConfig = {
 }
 
 module.exports = new Router()
-  .requireBasicAuth({
-    username: process.env.BASIC_AUTH_USERNAME,
-    password: process.env.BASIC_AUTH_PASSWORD,
-  })
+  // .requireBasicAuth({
+  //   username: process.env.BASIC_AUTH_USERNAME,
+  //   password: process.env.BASIC_AUTH_PASSWORD,
+  // })
   .prerender(prerenderRequests)
   .match({}, ({ setResponseHeader }) => {
     if (process.env.NODE_ENV === 'production') {

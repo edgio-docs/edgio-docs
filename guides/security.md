@@ -80,7 +80,7 @@ This can help reduce the risk of a known malicious actor discovering a vulnerabl
 | --- | --- | --- |
 |Bad Input - Bad host| Inspects the host header in the request for patterns indicating localhost. Example patterns include localhost|`badHost`|
 |Bad Input - Bad path|Inspects the URI path for attempts to access exploitable web application paths. Example patterns include paths such as `web-inf`.|`badPath`|
-|Bad Input - Log4js|Inspects the request for the presence of the Log4j vulnerability CVE-2021-44228 and protects against Remote Code Execution (RCE) attempts. Example patterns include ${jndi:ldap://example.com/}. CAUTION: This rule only inspects the first 8 KB of the request body.|3|
+|Bad Input - Log4js|Inspects the request for the presence of the Log4j vulnerability CVE-2021-44228 and protects against Remote Code Execution (RCE) attempts. Example patterns include `${jndi:ldap://example.com/}`. CAUTION: This rule only inspects the first 8 KB of the request body.|3|
 |Bad Input - Propfind|Inspects the HTTP method in the request for `PROPFIND`, which is a method similar to `HEAD`, but with the extra intention to exfiltrate XML objects.|`badProperty`|
 
 #### PHP Application Rules

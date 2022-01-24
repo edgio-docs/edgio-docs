@@ -395,28 +395,28 @@ router.get('/some/path/depending/on/language/cookie', ({ cache }) => {
 
 ## FAQs
 
-### **What’s the difference between WAF-1 and WAF-2?**
+### What’s the difference between WAF-1 and WAF-2?
 
 You can configure 2 different WAF instances, allowing you to apply different sets of security rules to different environments.
 
-### **How do I know which version to use?**
+### How do I know which version to use?
 
 Like all {{ PRODUCT_NAME }} products, WAF gives you access to all previous and active versions of your configuration so you have historical setups in case you need to roll back the current version.While editing, the version is in a *Draft* state; once activated, the version is *Active*.
 
-### **What is the difference between flagging and blocking a rule or rule group?**
+### What is the difference between flagging and blocking a rule or rule group?
 
 To flag a rule or rule group means to mark it if the rule would have been activated without actually denying the traffic. In contrast, when you block a rule or rule group, traffic is denied on affected routes. You can view both flagged and blocked data in your [Layer0 console](https://app.layer0.co/).
 
-### **What are {{ PRODUCT_NAME }} Managed Rules and why should I apply this rule group?**
+### What are {{ PRODUCT_NAME }} Managed Rules and why should I apply this rule group?
 
 Managed rules block specific known threats. Layer0 recommends this rule group for all WAF use cases. 
 
 Note: Layer0 recommends that all customers activate the *Bad Input - Log4J* rule group, as well.
 
-### **Is the Layer0 WAF a PCI-compliant solution?**
+### Is the Layer0 WAF a PCI-compliant solution?
 
 Yes.  {{ PRODUCT_NAME }} maintains PCI-DSS Level 1 compliance by undergoing annual audits from approved Visa and MasterCard auditors.
 
-### **What is the minimum level of encryption for {{ PRODUCT_NAME }}?**
+### What is the minimum level of encryption for {{ PRODUCT_NAME }}?
 
 {{ PRODUCT_NAME }} enforces a minimum version of TLS 1.2 or higher.

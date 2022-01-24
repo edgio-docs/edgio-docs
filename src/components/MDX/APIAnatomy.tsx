@@ -16,29 +16,29 @@ interface AnatomyContent {
   code: React.ReactNode;
 }
 
-const twColors = tailwindConfig.theme.extend.colors;
-const colors = [
-  {
-    hex: twColors['blue-40'],
-    border: 'border-blue-40',
-    background: 'bg-blue-40',
-  },
-  {
-    hex: twColors['yellow-40'],
-    border: 'border-yellow-40',
-    background: 'bg-yellow-40',
-  },
-  {
-    hex: twColors['green-50'],
-    border: 'border-green-50',
-    background: 'bg-green-50',
-  },
-  {
-    hex: twColors['purple-40'],
-    border: 'border-purple-40',
-    background: 'bg-purple-40',
-  },
-];
+// const twColors = tailwindConfig.theme.extend.colors;
+// const colors = [
+  // {
+  //   hex: twColors['blue-40'],
+  //   border: 'border-blue-40',
+  //   background: 'bg-blue-40',
+  // },
+  // {
+  //   hex: twColors['yellow-40'],
+  //   border: 'border-yellow-40',
+  //   background: 'bg-yellow-40',
+  // },
+  // {
+  //   hex: twColors['green-50'],
+  //   border: 'border-green-50',
+  //   background: 'bg-green-50',
+  // },
+  // {
+  //   hex: twColors['purple-40'],
+  //   border: 'border-purple-40',
+  //   background: 'bg-purple-40',
+  // },
+// ];
 
 export function APIAnatomy({children}: APIAnatomyProps) {
   const [activeStep, setActiveStep] = React.useState<number | null>(null);

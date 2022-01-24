@@ -25,6 +25,8 @@ import {Challenges, Hint, Solution} from './Challenges';
 import {IconNavArrow} from '../Icon/IconNavArrow';
 import ButtonLink from 'components/ButtonLink';
 import SupportedFrameworkCard from './SupportedFrameworkCard';
+import HomepageFeatures from './HomepageFeatures';
+
 
 const P = (p: JSX.IntrinsicElements['p']) => (
   <p className="whitespace-pre-wrap my-4" {...p} />
@@ -366,4 +368,5 @@ export const MDXComponents = {
   Hint,
   Solution,
   SupportedFrameworkCard,
+  HomepageFeatures
 };

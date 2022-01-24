@@ -1,35 +1,83 @@
-/*
- * Copyright (c) Facebook, Inc. and its affiliates.
- */
-
-import {MenuProvider} from 'components/useMenu';
+import { MenuProvider } from 'components/useMenu';
 import * as React from 'react';
-import {Nav} from './Nav';
-import {RouteItem, SidebarContext} from './useRouteMeta';
-import {Sidebar} from './Sidebar';
+import styled from "styled-components";
+import Sidebar from './Sidebar/Sidebar';
+import { RouteItem, SidebarContext } from './useRouteMeta';
+
 interface PageProps {
   children: React.ReactNode;
   routeTree: RouteItem;
 }
 
-export function Page({routeTree, children}: PageProps) {
+
+const StyledDocs = styled.div`
+--sidebar-width: 280px;
+--header-height: 64px;
+
+  .docs-header {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+background: white;
+width: 100%;
+height: var(--header-height);
+box-shadow: inset 0 -1px #e3e8ee;
+padding: 17px 17px 17px 32px;
+  }
+
+
+  .docs-content {
+    width: 100%;
+    display: flex;
+
+.docs-side__nav {
+position: sticky;
+left: 0;
+top: var(--header-height);
+height: calc(100vh - var(--header-height));
+width: var(--sidebar-width);
+overflow: auto;
+user-select: none;
+background-color: #f6f6f7;
+padding: 20px 0;
+box-shadow: inset -1px 0px #e3e8ee;
+}
+
+.docs-content__inner {
+  min-height: 100vh;
+/* background: teal; */
+flex: 1;
+
+.LayoutHome {
+  max-width: 1000px;
+  /* background: black; */
+margin: 0 auto;
+padding: 2rem 1rem;
+}
+}
+  }
+`
+
+
+export function Page({ routeTree, children }: PageProps) {
   return (
     <MenuProvider>
       <SidebarContext.Provider value={routeTree}>
-        <div className="h-auto lg:h-screen flex flex-row">
-          <div className="no-bg-scrollbar h-auto lg:h-full lg:overflow-y-scroll fixed flex flex-row lg:flex-col py-0 top-0 left-0 right-0 lg:max-w-xs w-full shadow lg:shadow-none z-50">
-            <Nav />
-            <Sidebar />
-          </div>
-
-          <div className="flex flex-1 w-full h-full self-stretch">
-            <div className="w-full min-w-0">
-              <main className="flex flex-1 self-stretch flex-col items-end justify-around">
-                {children}
-              </main>
+        <StyledDocs className="docs">
+          <header className="docs-header">
+            <h1>Header</h1>
+          </header>
+          <main className="docs-content">
+            {/* app-content */}
+            <div className='docs-side__nav'>
+              <Sidebar />
             </div>
-          </div>
-        </div>
+            <div className="docs-content__inner">
+              {children}
+            </div>
+          </main>
+
+        </StyledDocs>
       </SidebarContext.Provider>
     </MenuProvider>
   );

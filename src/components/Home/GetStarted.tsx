@@ -1,0 +1,132 @@
+import styled from 'styled-components';
+import Link from 'next/link';
+
+const NextLink = Link;
+
+interface IGetStartedCardProps {
+  iconUrl?: string;
+  title: string;
+  subtitle: string;
+  href: string;
+  hrefText: string;
+}
+
+function GetStartedCard({
+  iconUrl,
+  title,
+  subtitle,
+  href,
+  hrefText,
+}: IGetStartedCardProps) {
+  return (
+    <div className="card">
+      <header className="card-header">
+        <div className="card-icon__box" />
+        <h3 className="card-title">{title}</h3>
+      </header>
+      <div className="card-content">
+        <p className="card-subtitle">{subtitle}</p>
+      </div>
+      <footer className="card-footer">
+        <NextLink href={href} passHref>
+          <a className="card-footer__link">
+            <span>{hrefText}</span>
+          </a>
+        </NextLink>
+      </footer>
+    </div>
+  );
+}
+
+const StyledGetStarted = styled.div`
+  font-family: 'Inter';
+  line-height: 1.3;
+  margin-top: 50px;
+
+  display: grid;
+  row-gap: 20px;
+
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 32px;
+  }
+
+  .card {
+    background: #ffffff;
+    box-shadow: 0px 2px 7px rgba(0, 0, 0, 0.15);
+    border-radius: 2px;
+    padding: 17px;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+  }
+
+  .card-header {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: center;
+    column-gap: 10px;
+  }
+
+  .card-icon__box {
+    --size: 32px;
+    width: var(--size);
+    height: var(--size);
+    position: relative;
+    background-color: black;
+  }
+
+  .card-title {
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 27px;
+    color: #1a1a1a;
+  }
+
+  .card-subtitle {
+    color: #707070;
+    margin: 10px 0 12px;
+    font-size: 16px;
+  }
+
+  .card {
+    .card-footer__link {
+      color: #e95495;
+    }
+
+    :nth-child(even) {
+      .card-footer__link {
+        color: #7972fc;
+      }
+    }
+  }
+`;
+
+export default function GetStarted({children}: {children: React.ReactNode}) {
+  return (
+    <StyledGetStarted>
+      {children}
+
+      <div className="cards">
+        <GetStartedCard
+          title="WebApp CDN"
+          subtitle="Deploy your web application and start seeing the performance benefits with the Layer0 Edge Network."
+          href="/"
+          hrefText="Deploy now"
+        />
+        <GetStartedCard
+          title="Jamstack"
+          subtitle="Deploy static and dynamic Jamstack sites that run on Layer0’s severless functions."
+          href="/"
+          hrefText="View Supported Frameworks"
+        />
+        <GetStartedCard
+          title="GraphQL CDN"
+          subtitle="Scale and secure your GraphQL API using the Layer0 global CDN and Edge JS."
+          href="/"
+          hrefText="1-click Deploy"
+        />
+      </div>
+    </StyledGetStarted>
+  );
+}

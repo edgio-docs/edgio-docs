@@ -1,19 +1,15 @@
-/*
- * Copyright (c) Facebook, Inc. and its affiliates.
- */
-
-import * as React from 'react';
-import {AppProps} from 'next/app';
-import '@docsearch/css';
-import '../styles/fonts.css';
-import '../styles/algolia.css';
-import '../styles/index.css';
-import '../styles/sandpack.css';
 import '@codesandbox/sandpack-react/dist/index.css';
-import '../styles/nprogress.css';
-import Router, { useRouter } from 'next/router';
+import '@docsearch/css';
+import { AppProps } from 'next/app';
+import Router from 'next/router';
 import NProgress from 'nprogress';
+import * as React from 'react';
+import '../styles/algolia.css';
+import '../styles/fonts.css';
 import GlobalStyle from '../styles/GlobalStyle';
+import '../styles/index.css';
+import '../styles/nprogress.css';
+import '../styles/sandpack.css';
 
 
 // -> Used for the loader when switching between pages

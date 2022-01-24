@@ -3,7 +3,7 @@
  */
 
 /* Algolia v3 overrides */
-:root {
+/* :root {
   --docsearch-modal-background: #fff;
   --docsearch-highlight-color: #087EA4;
   --docsearch-primary-color: #0074a6;
@@ -168,4 +168,4 @@ html.dark .DocSearch-Hit-title {
   width: 20px;
   stroke-width: 1.6;
   @apply text-gray-60;
-}
+} */

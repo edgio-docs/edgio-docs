@@ -54,7 +54,7 @@ The WAF includes [Managed Rule Groups](#managed-rule-group-descriptions), manage
 |Size - URI Path|Verifies that the URI path length is at most 1,024 bytes.|`sizePath`|
 |Size - URI Query Size|Verifies that the URI query string length is at most 2,048 bytes.|`sizeArgs`|
 
-==Layer0 recommends utilizing this rule group for all WAF use cases.==
+**Layer0 recommends utilizing this rule group for all WAF use cases.**
 
 #### Admin Page Protection Rules
 
@@ -68,11 +68,11 @@ The Admin protection rule group contains rules that allow you to block external 
 
 #### Bad Input Rules
 
-The Bad Input rule group contains rules to block request patterns that are known to be invalid and are associated with exploitation or the discovery of Common Vulnerabilities and Exposures (CVEs) . 
+The Bad Input rule group contains rules to block request patterns that are known to be invalid and are associated with exploitation or the discovery of Common Vulnerabilities and Exposures (CVEs). 
 
 This can help reduce the risk of a known malicious actor discovering a vulnerable application.
 
-==Layer0 recommends enabling the “Bad Input - Log4J” rule on all WAF applications.==
+**Layer0 recommends enabling the “Bad Input - Log4J” rule on all WAF applications.**
 
 ##### Bad Input Rule Descriptions
 

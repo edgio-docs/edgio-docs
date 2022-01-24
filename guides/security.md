@@ -34,7 +34,9 @@ The WAF includes [Managed Rule Groups](#managed-rule-group-descriptions), manage
 
 | Rule Name|Description|Log Name|
 | --- | --- | --- |
-|Cross-site scripting (XSS) Body|Inspects the value of the request body and blocks common cross-site scripting (XSS) patterns using the built-in XSS detection rule in {{ PRODUCT_NAME }} WAF. <br><br>Example patterns include scripts such as `<script>alert("hello")</script>`.<br><br>CAUTION: This rule only inspects the first 8 KB of the request body.|`cssBody`|
+|Cross-site scripting (XSS) Body|Inspects the value of the request body and blocks common cross-site scripting (XSS) patterns using the built-in XSS detection rule in {{ PRODUCT_NAME }} WAF. <br><br>Example patterns include scripts such as `<script>alert("hello")</script>`.
+ 
+CAUTION: This rule only inspects the first 8 KB of the request body.|`cssBody`|
 |Cross-site scripting (XSS) Cookie|Inspects the value of cookie headers and blocks common cross-site scripting (XSS) patterns using the built-in XSS detection rule in {{ PRODUCT_NAME }} WAF.<br><br> Example patterns include scripts such as `<script>alert("hello")</script>.`|
 |cssCookie|Cross-site scripting (XSS) Query<br><br>Inspects the value of query arguments and blocks common cross-site scripting (XSS) patterns using the built-in XSS detection rule in {{ PRODUCT_NAME }} WAF.<br><br>Example patterns include scripts such as `<script>alert("hello")</script>`.|`cssArgs`|
 |Cross-site scripting (XSS) URI Path|Inspects the URI path and blocks requests that attempt to exploit RFI (Remote File Inclusion) in web applications by embedding URLs that contain IPv4 addresses.<br><br>Examples include patterns such as `http://, https://, ftp://, ftps://`, and `file://`, with an IPv4 host header in the exploit attempt.|`cssPath`|
@@ -59,7 +61,9 @@ The WAF includes [Managed Rule Groups](#managed-rule-group-descriptions), manage
 </details>
 </p>
 
-<span style="color: rgb(255,0,0);">**{{ PRODUCT_NAME }} recommends utilizing this rule group for all WAF use cases.**</span>
+```diff
+- **Layer0 recommends utilizing this rule group for all WAF use cases.**
+```
 
 #### Admin Page Protection Rules
 
@@ -82,9 +86,10 @@ The Bad Inputs rule group contains rules to block request patterns that are know
 
 This can help reduce the risk of a known malicious actor discovering a vulnerable application.
 
-<span style="color: rgb(255,0,0);">**{{ PRODUCT_NAME }} recommends enabling the “Bad Input - Log4J” rule on all WAF applications.**</span>
+```diff
+- **Layer0 recommends enabling the “Bad Input - Log4J” rule on all WAF applications.**
+```
 
-<p>
 <details>
 <summary>Bad Input Rule Descriptions</summary>
 
@@ -96,13 +101,11 @@ This can help reduce the risk of a known malicious actor discovering a vulnerabl
 |Bad Input - Propfind|Inspects the HTTP method in the request for `PROPFIND`, which is a method similar to `HEAD`, but with the extra intention to exfiltrate XML objects.|`badProperty`|
 
 </details>
-</p>
 
 #### PHP Application Rules
 
 The PHP application rule group contains rules that block request patterns associated with the exploitation of vulnerabilities specific to the use of the PHP programming language. This includes the injection of unsafe PHP functions into requests. 
 
-<p>
 <details>
 <summary>PHP Application Rule Descriptions</summary>
 
@@ -112,13 +115,11 @@ The PHP application rule group contains rules that block request patterns associ
 |PHP - Query|Inspects the values of all query parameters for PHP script code injection attempts.<br><br>Example patterns include functions such as `fsockopen` and the `$_GET` superglobal variable.|`phpArgs`|
 
 </details>
-</p>
 
 #### SQL Database Rules
 
 The SQL database rule group contains rules to block request patterns associated with exploitation of SQL databases, like SQL injection attacks. This can help prevent remote injection of unauthorized queries. Evaluate this rule group for use if your application interfaces with an SQL database.
 
-<p>
 <details>
 <summary>SQL Database Rule Descriptions</summary>
 
@@ -131,7 +132,6 @@ The SQL database rule group contains rules to block request patterns associated 
 |SQL - URI path|Uses the built-in {{ PRODUCT_NAME }} WAF injection match statement to inspect the request URI path for patterns that match malicious SQL code.|`sqlPath`|
 
 </details>
-</p>
 
 #### Add Rule Groups to a WAF
 
@@ -197,7 +197,6 @@ In addition to the WAF rule groups, {{ PRODUCT_NAME }} offers an additional Mana
 
 You can monitor the impact of your bots by flagging each bot type of request gaining insights into SEO bots, scraping bots, advertising bots, malicious user agent bots, and several other categories of bots.
 
-<p>
 <details>
 <summary>Bot Rule Descriptions</summary>
 
@@ -220,7 +219,6 @@ You can monitor the impact of your bots by flagging each bot type of request gai
 |BOT - User agent|User agent strings that don't seem to be from a web browser.|`botUserAgent`|
 
 </details>
-</p>
 
 ### Detect Bots with EdgeJS
 
@@ -296,7 +294,7 @@ The above code will match all the routes that even have a `user-agent` header an
 
 ### Rules Applied
 
-![Rules Applied](/images/security/rulesapplied.jpg "Rules Applied")
+![Rules Applied](/images/security/rulesapplied.png "Rules Applied")
 
 | | View Option | Access |
 | --- | --- | --- |
@@ -315,10 +313,21 @@ The above code will match all the routes that even have a `user-agent` header an
 
 ### Logs
 
-Here is an example log file with the WAF rule name, the action applied, the mode, the WAF name, and the version number.
+Here is an example log file highlighting the WAF rule name, the action applied, the mode, the WAF name, and the version number.
 
 View as JSON
-<p style="font-family:'Courier'">{"date":1641856332.00036,"metadata":{"lvl":"edge","lv":"-","token":"-"},"haproxy":{"acc":"*/*","bip":"100.64.0.21","cc":"","cip":"104.33.80.4","code":"200","done":"1","h2":"1","hh":"test-docs-layer0-docs-default.layer0-limelight.link","http":"HTTP/2.0","met":"GET","pop":"sna","psh":"0","rfr":"-","rid":"82a757a04fa4d30cfb6105d23f64c2e3aefaa130","s_rs":"102028","s_rqb":"0","s_rsb":"16384","ssl":"https","timestamp":"1641856331999","tls":"TLSv1.2","ua":"curl/7.77.0","url":"/?38936","xmc":"eh=0.1.8,c=4.8.0,e=sna,ec=1.4.2,ed=1.2.0,gh=0.1.8,g=hef,gd=1.2.0,p=1.23.0,w=4.8.0,wi=6de00537-513b-4829-83f4-85d07651de39,b=serv","xms":"eh=200,ed=200,gh=200,gd=200,p=200,w=200","xmt":"eh=312,ect=310,ecc=miss,edt=305,edd=0,edf=305,gh=182,gct=180,gcc=miss,gdt=176,gdd=0,gdf=176,pt=170,pc=1,pf=168,wm=277,wt=128,wc="},"varnish":{"external":{"eid":"d63d2947-f052-4829-a3dc-2e2dcf4a67c9","bld":"4","v":"4.8.0","ev":2,"cv":"1.2.0","ip":"104.33.80.4","ic":1,"cc":"US","sc":"CA","cy":"monrovia","pc":"91016","lo":"-117.97","lt":"34.15","asn":"20001","s_rq":0,"ds":"default","be":"__js__","bk":"78","zip":"0","sh":1,"dv":"desktop","vn":"generic","br":"generic","bot":0,"er":0,"clv":0,"stl":0,"prl":0,"prod":1,"cs":"no-ttl","ct":"text/html; charset=utf-8","pre":0,"uv":"","bip":"34.233.202.91","hrid":"","lp":0,<span style="color: rgb(255,0,0);">"waf":"botLib,flagged","wafv":"WAF-1,2"</span>,"bse":""},"internal":{"reg":"","rst":0,"xmr":"1,8,82","xrj":"%7B%22path%22%3A%22%2F%22%7D","ckh":"631ea8d6e3e194e0b698561eb011d59762d6c4022c2a49d50f49cbc4a0c088fb"}}}</p>
+
+```
+{"date":1641856332.00036,"metadata":{"lvl":"edge","lv":"-","token":"-"},"haproxy":{"acc":"*/*","bip":"100.64.0.21","cc":"","cip":"104.33.80.4","code":"200","done":"1","h2":"1","hh":"test-docs-layer0-docs-default.layer0-limelight.link","http":"HTTP/2.0","met":"GET","pop":"sna","psh":"0","rfr":"-","rid":"82a757a04fa4d30cfb6105d23f64c2e3aefaa130","s_rs":"102028","s_rqb":"0","s_rsb":"16384","ssl":"https","timestamp":"1641856331999","tls":"TLSv1.2","ua":"curl/7.77.0","url":"/?38936","xmc":"eh=0.1.8,c=4.8.0,e=sna,ec=1.4.2,ed=1.2.0,gh=0.1.8,g=hef,gd=1.2.0,p=1.23.0,w=4.8.0,wi=6de00537-513b-4829-83f4-85d07651de39,b=serv","xms":"eh=200,ed=200,gh=200,gd=200,p=200,w=200","xmt":"eh=312,ect=310,ecc=miss,edt=305,edd=0,edf=305,gh=182,gct=180,gcc=miss,gdt=176,gdd=0,gdf=176,pt=170,pc=1,pf=168,wm=277,wt=128,wc="},"varnish":{"external":{"eid":"d63d2947-f052-4829-a3dc-2e2dcf4a67c9","bld":"4","v":"4.8.0","ev":2,"cv":"1.2.0","ip":"104.33.80.4","ic":1,"cc":"US","sc":"CA","cy":"monrovia","pc":"91016","lo":"-117.97","lt":"34.15","asn":"20001","s_rq":0,"ds":"default","be":"__js__","bk":"78","zip":"0","sh":1,"dv":"desktop","vn":"generic","br":"generic","bot":0,"er":0,"clv":0,"stl":0,"prl":0,"prod":1,"cs":"no-ttl","ct":"text/html; charset=utf-8","pre":0,"uv":"","bip":"34.233.202.91","hrid":"","lp":0,
+```
+ 
+ ```diff
+ "waf":"botLib,flagged","wafv":"WAF-1,2",
+ ```
+ 
+```
+"bse":""},"internal":{"reg":"","rst":0,"xmr":"1,8,82","xrj":"%7B%22path%22%3A%22%2F%22%7D","ckh":"631ea8d6e3e194e0b698561eb011d59762d6c4022c2a49d50f49cbc4a0c088fb"}}}
+```
 
 ## Website Security
 
@@ -427,7 +436,7 @@ router.get('/some/path/depending/on/language/cookie', ({ cache }) => {
 
 ### **What’s the difference between WAF-1 and WAF-2?**
 
-You can configure 2 different WAF instances, allowing you to apply different sets of security rules to different environments.<br>
+You can configure 2 different WAF instances, allowing you to apply different sets of security rules to different environments.
 
 ### **How do I know which version to use?**
 
@@ -439,7 +448,9 @@ To flag a rule or rule group means to mark it if the rule would have been activa
 
 ### **What are {{ PRODUCT_NAME }} Managed Rules and why should I apply this rule group?**
 
-Managed rules block specific known threats. {{ PRODUCT_NAME }} recommends this rule group for all WAF use cases.<br>Note: {{ PRODUCT_NAME }} recommends that all customers activate the *Bad Input - Log4J* rule group, as well.
+Managed rules block specific known threats. Layer0 recommends this rule group for all WAF use cases. 
+
+Note: Layer0 recommends that all customers activate the *Bad Input - Log4J* rule group, as well.
 
 ### **Is the Layer0 WAF a PCI-compliant solution?**
 
@@ -447,4 +458,4 @@ Yes.  {{ PRODUCT_NAME }} maintains PCI-DSS Level 1 compliance by undergoing annu
 
 ### **What is the minimum level of encryption for {{ PRODUCT_NAME }}?**
 
-{{ PRODUCT_NAME }} enforces a minimum version of TLS 1.2 or higher.<br>
+{{ PRODUCT_NAME }} enforces a minimum version of TLS 1.2 or higher.

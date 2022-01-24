@@ -47,7 +47,7 @@ The WAF includes [Managed Rule Groups](#managed-rule-group-descriptions), manage
 |General RFI Query|Inspects the values of all query parameters and blocks requests that attempt to exploit RFI (Remote File Inclusion) in web applications by embedding URLs that contain IPv4 addresses. Examples include patterns such as `http://, https://, ftp://, ftps://,` and `file://`, with an IPv4 host header in the exploit attempt.|`remoteArgs`
 |General RFI URI Path|Inspects the URI path and blocks requests that attempt to exploit RFI (Remote File Inclusion) in web applications by embedding URLs that contain IPv4 addresses. Examples include patterns such as http://, https://, ftp://, ftps://, and `file://,` with an IPv4 host header in the exploit attempt.|`remotePath`|
 |Invalid Argument|Inspects requests whose query arguments are system file extensions that the clients shouldn't read or run. Example patterns include extensions such as `.log` and `.ini.`|invalidArgs|
-|Invalid URI Path. Inspects requests whose URI path includes system file extensions that the clients shouldn't read or run. Example patterns include extensions such as `.log` and `.ini`.|`invalidPath`|
+|Invalid URI Path. | Inspects requests whose URI path includes system file extensions that the clients shouldn't read or run. Example patterns include extensions such as `.log` and `.ini`.|`invalidPath`|
 |Missing User Agent|Blocks requests with no HTTP User-Agent header.|`missingAgent`|
 |Size - Body|Verifies that the request body size is at most 8 KB (8,192 bytes).|`sizeBody`|
 |Size - Cookie|Verifies that the cookie header length is at most 10,240 bytes.|`sizeCookie`|

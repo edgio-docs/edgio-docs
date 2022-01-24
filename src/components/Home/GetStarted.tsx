@@ -1,10 +1,12 @@
-import styled from 'styled-components';
 import Link from 'next/link';
+import styled from 'styled-components';
+import {IconJamstack} from '../Icon/IconJamstack';
+import {IconWebAppCDN} from '../Icon/IconWebAppCDN';
 
 const NextLink = Link;
 
 interface IGetStartedCardProps {
-  iconUrl?: string;
+  icon: React.NamedExoticComponent<React.SVGProps<SVGSVGElement>>;
   title: string;
   subtitle: string;
   href: string;
@@ -12,7 +14,7 @@ interface IGetStartedCardProps {
 }
 
 function GetStartedCard({
-  iconUrl,
+  icon: Icon,
   title,
   subtitle,
   href,
@@ -21,7 +23,9 @@ function GetStartedCard({
   return (
     <div className="card">
       <header className="card-header">
-        <div className="card-icon__box" />
+        <div className="card-icon__box">
+          <Icon />
+        </div>
         <h3 className="card-title">{title}</h3>
       </header>
       <div className="card-content">
@@ -68,14 +72,6 @@ const StyledGetStarted = styled.div`
     column-gap: 10px;
   }
 
-  .card-icon__box {
-    --size: 32px;
-    width: var(--size);
-    height: var(--size);
-    position: relative;
-    background-color: black;
-  }
-
   .card-title {
     font-weight: 600;
     font-size: 20px;
@@ -109,18 +105,21 @@ export default function GetStarted({children}: {children: React.ReactNode}) {
 
       <div className="cards">
         <GetStartedCard
+          icon={IconWebAppCDN}
           title="WebApp CDN"
           subtitle="Deploy your web application and start seeing the performance benefits with the Layer0 Edge Network."
           href="/"
           hrefText="Deploy now"
         />
         <GetStartedCard
+          icon={IconJamstack}
           title="Jamstack"
           subtitle="Deploy static and dynamic Jamstack sites that run on Layer0’s severless functions."
           href="/"
           hrefText="View Supported Frameworks"
         />
         <GetStartedCard
+          icon={IconWebAppCDN}
           title="GraphQL CDN"
           subtitle="Scale and secure your GraphQL API using the Layer0 global CDN and Edge JS."
           href="/"

@@ -287,7 +287,7 @@ The above code will match all the routes that even have a `user-agent` header an
 
 Here is an example log file highlighting the WAF data ("waf":"botLib,flagged","wafv":"WAF-1,2"): the action applied, the mode, the WAF name, and the version number.
 
-![Rules](/images/security/log.png "WAF Log File Example")
+![Rules](/images/security/log.jpg "WAF Log File Example")
 
 ## Website Security
 

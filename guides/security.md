@@ -129,7 +129,7 @@ The SQL database rule group contains rules to block request patterns associated 
 
 1. Log in to the [Layer0 console](https://app.layer0.co/). 
 1. Click *SECURITY* from the top banner to launch the WAF Security Rules page.
-1. Select [*WAF-1* or *WAF-2*](#what's-the-difference-between-waf-1-and-waf-2?) from the first dropdown and the configuration version from the second. 
+1. Select [*WAF-1* or *WAF-2*](#whats-the-difference-between-waf-1-and-waf-2) from the first dropdown and the configuration version from the second. 
 1. Click *EDIT* to set your security rules.
 
 ![Add Single Rule to WAF2](/images/security/addrg2.jpg "Add Single Rule to WAF")

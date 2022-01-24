@@ -46,7 +46,7 @@ The WAF includes [Managed Rule Groups](#managed-rule-group-descriptions), manage
 |General RFI BODY|Inspects for the presence of Local File Inclusion (LFI) exploits in the request body. Examples include path traversal attempts using techniques such as ../../. CAUTION: This rule only inspects the first 8 KB of the request body|`remoteBody`|
 |General RFI Query|Inspects the values of all query parameters and blocks requests that attempt to exploit RFI (Remote File Inclusion) in web applications by embedding URLs that contain IPv4 addresses. Examples include patterns such as `http://, https://, ftp://, ftps://,` and `file://`, with an IPv4 host header in the exploit attempt.|`remoteArgs`
 |General RFI URI Path|Inspects the URI path and blocks requests that attempt to exploit RFI (Remote File Inclusion) in web applications by embedding URLs that contain IPv4 addresses. Examples include patterns such as http://, https://, ftp://, ftps://, and `file://,` with an IPv4 host header in the exploit attempt.|`remotePath`|
-|Invalid Argument|Inspects requests whose query arguments are system file extensions that the clients shouldn't read or run. Example patterns include extensions such as `.log` and `.ini.`||invalidArgs|
+|Invalid Argument|Inspects requests whose query arguments are system file extensions that the clients shouldn't read or run. Example patterns include extensions such as `.log` and `.ini.`|invalidArgs|
 |Invalid URI Path. Inspects requests whose URI path includes system file extensions that the clients shouldn't read or run. Example patterns include extensions such as `.log` and `.ini`.|`invalidPath`|
 |Missing User Agent|Blocks requests with no HTTP User-Agent header.|`missingAgent`|
 |Size - Body|Verifies that the request body size is at most 8 KB (8,192 bytes).|`sizeBody`|
@@ -260,7 +260,7 @@ The above code will match all the routes that even have a `user-agent` header an
 | --- | --- | --- |
 |a.|Deployment number|Toggle on/off via WAF Activity settings.| 
 |b.|Number of requests by action (passed, flagged, blocked)|Hover over graph data.|
-|c.|Requests by action |(passed, flagged, blocked)|Toggle the checkboxes.|
+|c.|Requests by action (passed, flagged, blocked)|Toggle the checkboxes.|
 |d.|Deployments and/or full cache flushes|Toggle on/off via WAF Activity settings.|
 
 ### Rules Applied

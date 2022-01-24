@@ -272,7 +272,7 @@ The above code will match all the routes that even have a `user-agent` header an
 | --- | --- | --- |
 |a.|Date range|Select 24 hour, 7 days, or 28 days.| 
 |b.|Flagged and/or Blocked requests|Toggle the Flagged and Blocked buttons.|
-|c.|Graph of rules applied|Click inside the graph to list the names of the rules that have been applied to your Bot Control or {{ PRODUCT_NAME }} Managed rules.<br>Click *Back to Rule Sets* to return to the previous view.|
+|c.|Graph of rules applied|Click inside the graph to list the names of the rules that have been applied to your Bot Control or {{ PRODUCT_NAME }} Managed rules. Click *Back to Rule Sets* to return to the previous view.|
 
 ### Rules Section
 
@@ -287,7 +287,7 @@ The above code will match all the routes that even have a `user-agent` header an
 
 Here is an example log file highlighting the WAF data ("waf":"botLib,flagged","wafv":"WAF-1,2"): the action applied, the mode, the WAF name, and the version number.
 
-![Rules](/images/security/log.jpg "WAF Log File Example")
+![WAF Log File Example](/images/security/log.jpg "WAF Log File Example")
 
 ## Website Security
 

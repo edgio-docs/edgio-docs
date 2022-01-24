@@ -34,9 +34,7 @@ The WAF includes [Managed Rule Groups](#managed-rule-group-descriptions), manage
 
 | Rule Name|Description|Log Name|
 | --- | --- | --- |
-|Cross-site scripting (XSS) Body|Inspects the value of the request body and blocks common cross-site scripting (XSS) patterns using the built-in XSS detection rule in {{ PRODUCT_NAME }} WAF. <br><br>Example patterns include scripts such as `<script>alert("hello")</script>`.
- 
-CAUTION: This rule only inspects the first 8 KB of the request body.|`cssBody`|
+|Cross-site scripting (XSS) Body|Inspects the value of the request body and blocks common cross-site scripting (XSS) patterns using the built-in XSS detection rule in {{ PRODUCT_NAME }} WAF. <br><br>Example patterns include scripts such as `<script>alert("hello")</script>`. <br><br>CAUTION: This rule only inspects the first 8 KB of the request body.|`cssBody`|
 |Cross-site scripting (XSS) Cookie|Inspects the value of cookie headers and blocks common cross-site scripting (XSS) patterns using the built-in XSS detection rule in {{ PRODUCT_NAME }} WAF.<br><br> Example patterns include scripts such as `<script>alert("hello")</script>.`|
 |cssCookie|Cross-site scripting (XSS) Query<br><br>Inspects the value of query arguments and blocks common cross-site scripting (XSS) patterns using the built-in XSS detection rule in {{ PRODUCT_NAME }} WAF.<br><br>Example patterns include scripts such as `<script>alert("hello")</script>`.|`cssArgs`|
 |Cross-site scripting (XSS) URI Path|Inspects the URI path and blocks requests that attempt to exploit RFI (Remote File Inclusion) in web applications by embedding URLs that contain IPv4 addresses.<br><br>Examples include patterns such as `http://, https://, ftp://, ftps://`, and `file://`, with an IPv4 host header in the exploit attempt.|`cssPath`|
@@ -62,7 +60,7 @@ CAUTION: This rule only inspects the first 8 KB of the request body.|`cssBody`|
 </p>
 
 ```diff
-- **Layer0 recommends utilizing this rule group for all WAF use cases.**
+- Layer0 recommends utilizing this rule group for all WAF use cases.
 ```
 
 #### Admin Page Protection Rules
@@ -87,7 +85,7 @@ The Bad Inputs rule group contains rules to block request patterns that are know
 This can help reduce the risk of a known malicious actor discovering a vulnerable application.
 
 ```diff
-- **Layer0 recommends enabling the “Bad Input - Log4J” rule on all WAF applications.**
+- Layer0 recommends enabling the “Bad Input - Log4J” rule on all WAF applications.
 ```
 
 <details>

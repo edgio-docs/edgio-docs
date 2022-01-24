@@ -143,7 +143,9 @@ The SQL database rule group contains rules to block request patterns associated 
 
 Prerequisite: Configured WAF rules and/or rule groups.
 
-Once you’ve configured the WAF rules you want to use, you need to apply them to the corresponding environments you want to deploy them on. Rules are NOT applied to traffic until you take this step to apply them. Follow these steps to add a WAF to an environment:
+Once you’ve configured the WAF rules you want to use, you need to apply them to the corresponding environments you want to deploy them on. Rules are NOT applied to traffic until you take this step to apply them. 
+
+Follow these steps to add a WAF to an environment:
 
 ![Apply WAF to Environment](/images/security/addrg3.jpg "Apply WAF to Environment")
 

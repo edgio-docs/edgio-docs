@@ -42,6 +42,10 @@ const staticCacheConfig = {
 
 module.exports = new Router()
   .prerender(prerenderRequests)
+  .requireBasicAuth({
+    username: process.env.BASIC_AUTH_USERNAME,
+    password: process.env.BASIC_AUTH_PASSWORD,
+  })
   .match({}, ({ setResponseHeader }) => {
     if (process.env.NODE_ENV === 'production') {
       setResponseHeader('Strict-Transport-Security', 'max-age=31536000; includeSubDomains; preload')

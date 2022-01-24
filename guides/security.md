@@ -415,7 +415,7 @@ Note: Layer0 recommends that all customers activate the *Bad Input - Log4J* rule
 
 ### Is the Layer0 WAF a PCI-compliant solution?
 
-Yes.  {{ PRODUCT_NAME }} maintains PCI-DSS Level 1 compliance by undergoing annual audits from approved Visa and MasterCard auditors.
+Yes.  Layer0 maintains PCI-DSS Level 1 compliance by undergoing annual audits from approved Visa and MasterCard auditors.
 
 ### What is the minimum level of encryption for {{ PRODUCT_NAME }}?
 

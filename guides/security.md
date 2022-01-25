@@ -137,7 +137,7 @@ The Bot Control product applies labels to a set of verifiable bots that are comm
 
 You can monitor the impact of your bots by flagging each bot type of request gaining insights into SEO bots, scraping bots, advertising bots, malicious user agent bots, and several other categories of bots.
 
-See [Bot Rule Descriptions](managed-rule-groups#section_bot_rules) for rule details.
+[Bot Rule Descriptions](managed-rule-groups#section_bot_rules)
 
 ### Detect Bots with EdgeJS
 

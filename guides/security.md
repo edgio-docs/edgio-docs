@@ -32,11 +32,15 @@ See [Layer0 Managed Rule Group Descriptions](managed-rule-groups#section_layer0_
 
 **Layer0 recommends utilizing this rule group for all WAF use cases.**
 
+---
+
 #### Admin Page Protection Rules
 
 The Admin protection rule group contains rules that allow you to block external access to exposed administrative pages. This might be useful if you run third-party software or want to reduce the risk of a malicious actor gaining administrative access to your application.
 
 See [Admin Page Protection Rule Description](managed-rule-groups#section_admin_page_protection_rules) for rule details.
+
+---
 
 #### Bad Input Rules
 
@@ -48,17 +52,21 @@ This can help reduce the risk of a known malicious actor discovering a vulnerabl
 
 See [Bad Input Rule Descriptions](managed-rule-groups#section_bad_input_rules) for rule details.
 
+---
+
 #### PHP Application Rules
 
 The PHP application rule group contains rules that block request patterns associated with the exploitation of vulnerabilities specific to the use of the PHP programming language. This includes the injection of unsafe PHP functions into requests. 
 
 See [PHP Application Rule Descriptions](managed-rule-groups#section_php_application_rules) for rule details.
 
+---
+
 #### SQL Database Rules
 
 The SQL database rule group contains rules to block request patterns associated with exploitation of SQL databases, like SQL injection attacks. This can help prevent remote injection of unauthorized queries. Evaluate this rule group for use if your application interfaces with an SQL database.
 
-See [SQL Database Rule Descriptions](managed-rule-groups#section_sql_database_rules)
+See [SQL Database Rule Descriptions](managed-rule-groups#section_sql_database_rules) for rule details.
 
 #### Add Rule Groups to a WAF
 

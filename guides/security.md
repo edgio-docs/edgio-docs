@@ -49,7 +49,7 @@ The Admin protection rule group contains rules that allow you to block external 
 The Bad Input rule group contains rules to block request patterns that are known to be invalid and are associated with exploitation or the discovery of Common Vulnerabilities and Exposures (CVEs). This can help reduce the risk of a known malicious actor discovering a vulnerable application.
 
 ```diff
-- Layer0 recommends enabling the *Bad Input - Log4J* rule on all WAF applications.
+- Layer0 recommends enabling the 'Bad Input - Log4J' rule on all WAF applications.
 ```
 
 [Bad Input Rule Descriptions](managed_rule_groups#section_bad_input_rules)

@@ -318,7 +318,7 @@ navigate to your environment, click _EDIT_, then under Environment Variables, cl
 
 As of {{ PRODUCT_NAME }} CLI version 2.19.0, when you deploy to an environment using a deploy token, for example by running `{{ CLI_NAME }} deploy my-team --environment=production --token=(my token)` option, all environment variables are pulled down from the {{ PRODUCT_NAME }} Developer Console and applied to `process.env` so they can be accessed at build time. This allows you to store all of your build and runtime secrets in a single place, {{ PRODUCT_NAME }} Developer Console, rather than storing some in your CI system's secret manager.
 
-### Cache poisoning
+### Cache Poisoning
 
 [Cache poisoning attack](https://owasp.org/www-community/attacks/Cache_Poisoning) is described by OWASP&reg; as:
 

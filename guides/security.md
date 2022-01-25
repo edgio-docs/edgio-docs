@@ -123,7 +123,7 @@ Follow these steps to add a WAF to an environment:
 
 ![Security Configuration](/images/security/security.jpg "Security Configuration")
 
-5. Select *CONFIGURATION* from the top navigation.
+4. Select *CONFIGURATION* from the top navigation.
 1. Click *EDIT*.
 1. Scroll down to the Security section.
 1. From the dropdown, select an active WAF to add.

@@ -4,9 +4,6 @@
   "index_name": "docs_test",
   "start_urls": [
     {
-      "url": "https://docs.layer0.co"
-    },
-    {
       "url": "https://docs.layer0.co/docs/api/core/",
       "selectors_key": "api_docs"
     }

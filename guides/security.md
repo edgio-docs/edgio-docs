@@ -28,7 +28,7 @@ The WAF includes [Managed Rule Groups](#managed-rule-group-descriptions), manage
 
 ​​The {{ PRODUCT_NAME }} Managed rule group contains rules that are generally applicable to web applications. This provides protection against exploitation of a wide range of vulnerabilities, including high risk and commonly occurring vulnerabilities described in OWASP&reg; publications such as [OWASP Top 10](https://owasp.org/www-project-top-ten/).
 
-See [Layer0 Managed Rule Group Descriptions](managed-rule-groups.md) for rule details.
+See [Layer0 Managed Rule Group Descriptions](##section_managed_rule_groups) for rule details.
 
 **Layer0 recommends utilizing this rule group for all WAF use cases.**
 

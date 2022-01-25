@@ -20,7 +20,7 @@ WAF is a web application firewall that helps protect your web applications and A
 
 Utilizing the {{ PRODUCT_NAME }} WAF allows you to monitor, filter, and block HTTP traffic against common vulnerabilities such as cross-site scripting (XSS) or SQL injection before they reach your origin.
 
-The WAF includes [Managed Rule Groups](#managed-rule-group-descriptions), managed by {{ PRODUCT_NAME }}, that can be configured in either a flagging or blocking mode. You can enable all of the rules within these groups or configure each independent rule within the group based on your needs.
+The WAF includes Managed Rule Groups, managed by {{ PRODUCT_NAME }}, that can be configured in either a flagging or blocking mode. You can enable all of the rules within these groups or configure each independent rule within the group based on your needs.
 
 ### Managed Rule Groups
 

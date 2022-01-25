@@ -66,6 +66,8 @@ The SQL database rule group contains rules to block request patterns associated 
 
 See [SQL Database Rule Descriptions](managed-rule-groups#section_sql_database_rules) for rule details.
 
+---
+
 #### Add Rule Groups to a WAF
 
 ![Add Rule Groups to WAF](/images/security/addrg1.jpg "Add Rule Groups to WAF")
@@ -80,6 +82,8 @@ See [SQL Database Rule Descriptions](managed-rule-groups#section_sql_database_ru
 5. Select the *Set all rules to …* dropdown.
 6. Choose the action for the group: *Off*, [*Flag*, or *Block*](#section_what_is_the_difference_between_flagging_and_blocking_a_rule_or_rule_group_). 
 7. When you’ve made all your changes, select *ACTIVATE*.
+
+---
 
 #### Add Single Rules to a WAF
 
@@ -96,6 +100,8 @@ See [SQL Database Rule Descriptions](managed-rule-groups#section_sql_database_ru
 6. Click the *Flag/Block* dropdown.
 1. Select the action for the rules you want to change: *Off*, [*Flag*, or *Block*](#section_what_is_the_difference_between_flagging_and_blocking_a_rule_or_rule_group_). 
 1. When you’ve made all your changes, select *ACTIVATE*.
+
+---
 
 #### Apply a WAF to Your Environment
 

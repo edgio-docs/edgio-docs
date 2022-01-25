@@ -38,7 +38,7 @@ The WAF includes Managed Rule Groups, managed by {{ PRODUCT_NAME }}, that can be
 
 The Admin protection rule group contains rules that allow you to block external access to exposed administrative pages. This might be useful if you run third-party software or want to reduce the risk of a malicious actor gaining administrative access to your application.
 
-[Admin Page Protection Rule Description](managed-rule-groups#section_admin_page_protection_rule)
+[Admin Page Protection Rule Description](managed_rule_groups#section_admin_page_protection_rule)
 
 ---
 
@@ -48,7 +48,7 @@ The Bad Input rule group contains rules to block request patterns that are known
 
 **Layer0 recommends enabling the *Bad Input - Log4J* rule on all WAF applications.**
 
-[Bad Input Rule Descriptions](managed-rule-groups#section_bad_input_rules)
+[Bad Input Rule Descriptions](managed_rule_groups#section_bad_input_rules)
 
 ---
 
@@ -56,7 +56,7 @@ The Bad Input rule group contains rules to block request patterns that are known
 
 The PHP application rule group contains rules that block request patterns associated with the exploitation of vulnerabilities specific to the use of the PHP programming language. This includes the injection of unsafe PHP functions into requests. 
 
-[PHP Application Rule Descriptions](managed-rule-groups#section_php_application_rules)
+[PHP Application Rule Descriptions](managed_rule_groups#section_php_application_rules)
 
 ---
 
@@ -64,7 +64,7 @@ The PHP application rule group contains rules that block request patterns associ
 
 The SQL database rule group contains rules to block request patterns associated with exploitation of SQL databases, like SQL injection attacks. This can help prevent remote injection of unauthorized queries. Evaluate this rule group for use if your application interfaces with an SQL database.
 
-[SQL Database Rule Descriptions](managed-rule-groups#section_sql_database_rules)
+[SQL Database Rule Descriptions](managed_rule_groups#section_sql_database_rules)
 
 ---
 
@@ -137,7 +137,7 @@ The Bot Control product applies labels to a set of verifiable bots that are comm
 
 You can monitor the impact of your bots by flagging each bot type of request gaining insights into SEO bots, scraping bots, advertising bots, malicious user agent bots, and several other categories of bots.
 
-[Bot Rule Descriptions](managed-rule-groups#section_bot_rules)
+[Bot Rule Descriptions](managed_rule_groups#section_bot_rules)
 
 ### Detect Bots with EdgeJS
 

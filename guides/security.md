@@ -28,7 +28,7 @@ The WAF includes [Managed Rule Groups](#managed-rule-group-descriptions), manage
 
 ​​The {{ PRODUCT_NAME }} Managed rule group contains rules that are generally applicable to web applications. This provides protection against exploitation of a wide range of vulnerabilities, including high risk and commonly occurring vulnerabilities described in OWASP&reg; publications such as [OWASP Top 10](https://owasp.org/www-project-top-ten/).
 
-See [Layer0 Managed Rule Group Descriptions](managed-rule-groups#section_layer0_managed_rule_descriptions) for rule details.
+See [Layer0 Managed Rule Group Descriptions](managed-rule-groups#section_layer0_managed_rules) for rule details.
 
 **Layer0 recommends utilizing this rule group for all WAF use cases.**
 
@@ -38,15 +38,13 @@ See [Layer0 Managed Rule Group Descriptions](managed-rule-groups#section_layer0_
 
 The Admin protection rule group contains rules that allow you to block external access to exposed administrative pages. This might be useful if you run third-party software or want to reduce the risk of a malicious actor gaining administrative access to your application.
 
-See [Admin Page Protection Rule Description](managed-rule-groups#section_admin_page_protection_rules) for rule details.
+See [Admin Page Protection Rule Description](managed-rule-groups#section_admin_page_protection_rule) for rule details.
 
 ---
 
 #### Bad Input Rules
 
-The Bad Input rule group contains rules to block request patterns that are known to be invalid and are associated with exploitation or the discovery of Common Vulnerabilities and Exposures (CVEs). 
-
-This can help reduce the risk of a known malicious actor discovering a vulnerable application.
+The Bad Input rule group contains rules to block request patterns that are known to be invalid and are associated with exploitation or the discovery of Common Vulnerabilities and Exposures (CVEs). This can help reduce the risk of a known malicious actor discovering a vulnerable application.
 
 **Layer0 recommends enabling the *Bad Input - Log4J* rule on all WAF applications.**
 
@@ -133,7 +131,7 @@ The Bot Control product applies labels to a set of verifiable bots that are comm
 
 You can monitor the impact of your bots by flagging each bot type of request gaining insights into SEO bots, scraping bots, advertising bots, malicious user agent bots, and several other categories of bots.
 
-##### Bot Rule Descriptions
+See [Bot Rule Descriptions](managed-rule-groups#section_bot_rules)
 
 | Rule Name|Description|Log Name|
 | --- | --- | --- |

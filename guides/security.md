@@ -44,7 +44,7 @@ The WAF includes [Managed Rule Groups](#managed-rule-group-descriptions), manage
 |General LFI Query|Inspects for the presence of Local File Inclusion (LFI) exploits in the query arguments. Examples include path traversal attempts using techniques such as ../../.|`fileArgs`|
 |General LFI URI Path|Inspects for the presence of Local File Inclusion (LFI) exploits in the URI path. Examples include path traversal attempts using techniques such as ../../.|`filePath`|
 |General RFI BODY|Inspects for the presence of Local File Inclusion (LFI) exploits in the request body. Examples include path traversal attempts using techniques such as ../../. CAUTION: This rule only inspects the first 8 KB of the request body|`remoteBody`|
-|General RFI Query|Inspects the values of all query parameters and blocks requests that attempt to exploit RFI (Remote File Inclusion) in web applications by embedding URLs that contain IPv4 addresses. Examples include patterns such as `http://`, `https://`, `ftp://`, `ftps://`,` and `file://`, with an IPv4 host header in the exploit attempt.|`remoteArgs`|
+|General RFI Query|Inspects the values of all query parameters and blocks requests that attempt to exploit RFI (Remote File Inclusion) in web applications by embedding URLs that contain IPv4 addresses. Examples include patterns such as `http://`, `https://`, `ftp://`, `ftps://`, and `file://`, with an IPv4 host header in the exploit attempt.|`remoteArgs`|
 |General RFI URI Path|Inspects the URI path and blocks requests that attempt to exploit RFI (Remote File Inclusion) in web applications by embedding URLs that contain IPv4 addresses. Examples include patterns such as `http://`, `https://`, `ftp://`, `ftps://`, and `file://,` with an IPv4 host header in the exploit attempt.|`remotePath`|
 |Invalid Argument|Inspects requests whose query arguments are system file extensions that the clients shouldn't read or run. Example patterns include extensions such as `.log` and `.ini.`|`invalidArgs`|
 |Invalid URI Path. | Inspects requests whose URI path includes system file extensions that the clients shouldn't read or run. Example patterns include extensions such as `.log` and `.ini`.|`invalidPath`|
@@ -72,7 +72,7 @@ The Bad Input rule group contains rules to block request patterns that are known
 
 This can help reduce the risk of a known malicious actor discovering a vulnerable application.
 
-**Layer0 recommends enabling the “Bad Input - Log4J” rule on all WAF applications.**
+**Layer0 recommends enabling the *Bad Input - Log4J* rule on all WAF applications.**
 
 ##### Bad Input Rule Descriptions
 
@@ -120,7 +120,7 @@ The SQL database rule group contains rules to block request patterns associated 
 ![Add Rule Groups to WAF2](/images/security/addrg1a.jpg "Add Rule Groups to WAF2")
 
 5. Select the *Set all rules to …* dropdown.
-6. Choose the action for the group: *Off*, [*Flag*, or *Block*](#what-is-the-difference-between-flagging-and-blocking-a-rule-or-rule-group?). 
+6. Choose the action for the group: *Off*, [*Flag*, or *Block*](#section_what_is_the_difference_between_flagging_and_blocking_a_rule_or_rule_group_). 
 7. When you’ve made all your changes, select *ACTIVATE*.
 
 #### Add Single Rules to a WAF
@@ -136,7 +136,7 @@ The SQL database rule group contains rules to block request patterns associated 
 
 5. If collapsed, expand the Rule Group dropdown using the arrow to its left. You can hover over the rule name to view its description.
 6. Click the *Flag/Block* dropdown.
-1. Select the action for the rules you want to change: *Off*, [*Flag*, or *Block*](#what-is-the-difference-between-flagging-and-blocking-a-rule-or-rule-group?). 
+1. Select the action for the rules you want to change: *Off*, [*Flag*, or *Block*](#section_what_is_the_difference_between_flagging_and_blocking_a_rule_or_rule_group_). 
 1. When you’ve made all your changes, select *ACTIVATE*.
 
 #### Apply a WAF to Your Environment
@@ -366,7 +366,7 @@ Additionally:
 
 Rather than putting secret values such as API keys in your code and checking them into source control, you can securely
 store them in environment variables, then access them in your code from `process.env`. To configure environment variables,
-navigate to your environment, click _EDIT_, then under _Environment Variables_, click _ADD VARIABLE_.
+navigate to your environment, click _EDIT_, then under Environment Variables, click _ADD VARIABLE_.
 
 ![networking](/images/security/environment-variables.png)
 

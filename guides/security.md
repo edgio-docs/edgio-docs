@@ -8,7 +8,7 @@ A fully [PCI-compliant](#section_is_the_layer0_waf_a_pci_compliant_solution_) so
 
 This guide shows you how to keep your site and platform secure using {{ PRODUCT_NAME }}.
 
-## DDOS (Distributed Denial of Service)
+## DDoS (Distributed Denial of Service)
 
 {{ PRODUCT_NAME }} Enterprise customers enjoy always-on DDoS protection inside of our high-bandwidth, globally distributed network. Our solution offers basic protection against common layer 3 and 4 attacks in real-time so you never have to sacrifice performance for protection.
 

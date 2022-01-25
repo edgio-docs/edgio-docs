@@ -214,7 +214,7 @@ const frameworkItems = [
   },
 
   {
-    guide: '/guides/enable_cdn',
+    guide: '/guides/webapp_cdn_getting_started',
     framework: 'cdn',
     icon: 'layer0',
     text: 'Edge Network',

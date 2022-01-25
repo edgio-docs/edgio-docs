@@ -28,7 +28,7 @@ The WAF includes Managed Rule Groups, managed by {{ PRODUCT_NAME }}, that can be
 
 ​​The {{ PRODUCT_NAME }} Managed rule group contains rules that are generally applicable to web applications. This provides protection against exploitation of a wide range of vulnerabilities, including high risk and commonly occurring vulnerabilities described in OWASP&reg; publications such as [OWASP Top 10](https://owasp.org/www-project-top-ten/).
 
-See [Layer0 Managed Rule Group Descriptions](##section_managed_rule_groups) for rule details.
+[Layer0 Managed Rule Group Descriptions](##section_managed_rule_groups)
 
 **Layer0 recommends utilizing this rule group for all WAF use cases.**
 
@@ -38,7 +38,7 @@ See [Layer0 Managed Rule Group Descriptions](##section_managed_rule_groups) for 
 
 The Admin protection rule group contains rules that allow you to block external access to exposed administrative pages. This might be useful if you run third-party software or want to reduce the risk of a malicious actor gaining administrative access to your application.
 
-See [Admin Page Protection Rule Description](managed-rule-groups#section_admin_page_protection_rule) for rule details.
+[Admin Page Protection Rule Description](managed-rule-groups#section_admin_page_protection_rule)
 
 ---
 
@@ -48,7 +48,7 @@ The Bad Input rule group contains rules to block request patterns that are known
 
 **Layer0 recommends enabling the *Bad Input - Log4J* rule on all WAF applications.**
 
-See [Bad Input Rule Descriptions](managed-rule-groups#section_bad_input_rules) for rule details.
+[Bad Input Rule Descriptions](managed-rule-groups#section_bad_input_rules)
 
 ---
 
@@ -56,7 +56,7 @@ See [Bad Input Rule Descriptions](managed-rule-groups#section_bad_input_rules) f
 
 The PHP application rule group contains rules that block request patterns associated with the exploitation of vulnerabilities specific to the use of the PHP programming language. This includes the injection of unsafe PHP functions into requests. 
 
-See [PHP Application Rule Descriptions](managed-rule-groups#section_php_application_rules) for rule details.
+[PHP Application Rule Descriptions](managed-rule-groups#section_php_application_rules)
 
 ---
 
@@ -64,7 +64,7 @@ See [PHP Application Rule Descriptions](managed-rule-groups#section_php_applicat
 
 The SQL database rule group contains rules to block request patterns associated with exploitation of SQL databases, like SQL injection attacks. This can help prevent remote injection of unauthorized queries. Evaluate this rule group for use if your application interfaces with an SQL database.
 
-See [SQL Database Rule Descriptions](managed-rule-groups#section_sql_database_rules) for rule details.
+[SQL Database Rule Descriptions](managed-rule-groups#section_sql_database_rules)
 
 ---
 

@@ -2,6 +2,8 @@
 
 ## Layer0 Managed Rules
 
+**Layer0 recommends utilizing this rule group for all WAF use cases.**
+
 | Rule Name|Description|Log Name|
 | --- | --- | --- |
 |Cross-site scripting (XSS) Body|Inspects the value of the request body and blocks common cross-site scripting (XSS) patterns using the built-in XSS detection rule in {{ PRODUCT_NAME }} WAF. Example patterns include scripts such as `<script>alert("hello")</script>`. CAUTION: This rule only inspects the first 8 KB of the request body.|`cssBody`|
@@ -26,8 +28,6 @@
 |Size - URI Path|Verifies that the URI path length is at most 1,024 bytes.|`sizePath`|
 |Size - URI Query Size|Verifies that the URI query string length is at most 2,048 bytes.|`sizeArgs`|
 
-**Layer0 recommends utilizing this rule group for all WAF use cases.**
-
 ## Admin Page Protection Rule 
 
 | Rule Name|Description|Log Name|
@@ -35,6 +35,8 @@
 |Protected URI Path|Inspects requests for URI paths that are generally reserved for administration of a webserver or application. Example patterns include `sqlmanager`.|`protectedPath`|
 
 ## Bad Input Rules 
+
+**Layer0 recommends enabling the *Bad Input - Log4J* rule on all WAF applications.**
 
 | Rule Name|Description|Log Name|
 | --- | --- | --- |

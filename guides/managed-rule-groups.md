@@ -1,10 +1,6 @@
 # Managed Rule Group Descriptions
 
-## {{ PRODUCT_NAME }} Managed Rules
-
-​​The {{ PRODUCT_NAME }} Managed rule group contains rules that are generally applicable to web applications. This provides protection against exploitation of a wide range of vulnerabilities, including high risk and commonly occurring vulnerabilities described in OWASP&reg; publications such as [OWASP Top 10](https://owasp.org/www-project-top-ten/).
-
-### Layer0 Managed Rule Descriptions
+## Layer0 Managed Rules
 
 | Rule Name|Description|Log Name|
 | --- | --- | --- |
@@ -32,25 +28,13 @@
 
 **Layer0 recommends utilizing this rule group for all WAF use cases.**
 
-## Admin Page Protection Rules
-
-The Admin protection rule group contains rules that allow you to block external access to exposed administrative pages. This might be useful if you run third-party software or want to reduce the risk of a malicious actor gaining administrative access to your application.
-
-### Admin Page Protection Rule Description
+## Admin Page Protection Rule 
 
 | Rule Name|Description|Log Name|
 | --- | --- | --- |
 |Protected URI Path|Inspects requests for URI paths that are generally reserved for administration of a webserver or application. Example patterns include `sqlmanager`.|`protectedPath`|
 
-## Bad Input Rules
-
-The Bad Input rule group contains rules to block request patterns that are known to be invalid and are associated with exploitation or the discovery of Common Vulnerabilities and Exposures (CVEs). 
-
-This can help reduce the risk of a known malicious actor discovering a vulnerable application.
-
-**Layer0 recommends enabling the *Bad Input - Log4J* rule on all WAF applications.**
-
-### Bad Input Rule Descriptions
+## Bad Input Rules 
 
 | Rule Name|Description|Log Name|
 | --- | --- | --- |
@@ -61,20 +45,12 @@ This can help reduce the risk of a known malicious actor discovering a vulnerabl
 
 ## PHP Application Rules
 
-The PHP application rule group contains rules that block request patterns associated with the exploitation of vulnerabilities specific to the use of the PHP programming language. This includes the injection of unsafe PHP functions into requests. 
-
-### PHP Application Rule Descriptions
-
 | Rule Name|Description|Log Name|
 | --- | --- | --- |
 |PHP - Body|Inspects the values of the request body for PHP script code injection attempts. Example patterns include functions such as `fsockopen` and the `$_GET` superglobal variable.|`phpBody`|
 |PHP - Query|Inspects the values of all query parameters for PHP script code injection attempts. Example patterns include functions such as `fsockopen` and the `$_GET` superglobal variable.|`phpArgs`|
 
 ## SQL Database Rules
-
-The SQL database rule group contains rules to block request patterns associated with exploitation of SQL databases, like SQL injection attacks. This can help prevent remote injection of unauthorized queries. Evaluate this rule group for use if your application interfaces with an SQL database.
-
-### SQL Database Rule Descriptions
 
 | Rule Name|Description|Log Name|
 | --- | --- | --- |
@@ -83,3 +59,23 @@ The SQL database rule group contains rules to block request patterns associated 
 |SQL - Query|Uses the built-in {{ PRODUCT_NAME }} WAF SQL injection match statement to inspect the request query parameters for patterns that match malicious SQL code.|`sqlArgs`|
 |SQL - Query Extended|Inspects the values of all query parameters for patterns that match malicious SQL code. The patterns this rule inspects for aren't covered by the built-in {{ PRODUCT_NAME }} WAF SQL injection match statement.|`sqlArgsExtra`|
 |SQL - URI path|Uses the built-in {{ PRODUCT_NAME }} WAF injection match statement to inspect the request URI path for patterns that match malicious SQL code.|`sqlPath`|
+
+## Bot Rules
+
+| Rule Name|Description|Log Name|
+| --- | --- | --- |
+|BOT - Advertising|Bots that are used for advertising purposes.|`botAds`|
+|BOT - Archiver|Bots that are used for archiving purposes.|`botArchiver`|
+|BOT - Browser|Indications of an automated web browser.|`botBrowser`|
+|BOT - Content|Bots that are fetching content on behalf of an end user.|`botFetcher`|
+|BOT - Data center|Data centers that are typically used by bots.|`botProvider`|
+|BOT - HTTP Library|HTTP libraries that are often used by bots.|`botLib`|
+|BOT - Link checker|Bots that check for broken links.|`botLinkChecker`|
+|BOT - Miscellaneous|Miscellaneous bots.|`botOther`|
+|BOT - Monitoring|Bots that are used for monitoring purposes.|`botPing`|
+|BOT - Scraping|Web scraping frameworks.|`botScraper`|
+|BOT - Search Engine|Search engine bots. Verified search engines are not blocked.|`botSearch`|
+|BOT - Security|Security-related bots.|`botSecurity`|
+|BOT - SEO|Bots that are used for search engine optimization.|`botSeo`|
+|BOT - Social Media|Bots that are used by social media platforms to provide content summaries. Verified social media bots are not blocked.|`botSocial`|
+|BOT - User agent|User agent strings that don't seem to be from a web browser.|`botUserAgent`|

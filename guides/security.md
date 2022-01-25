@@ -28,7 +28,7 @@ The WAF includes [Managed Rule Groups](#managed-rule-group-descriptions), manage
 
 ​​The {{ PRODUCT_NAME }} Managed rule group contains rules that are generally applicable to web applications. This provides protection against exploitation of a wide range of vulnerabilities, including high risk and commonly occurring vulnerabilities described in OWASP&reg; publications such as [OWASP Top 10](https://owasp.org/www-project-top-ten/).
 
-See [Layer0 Managed Rule Group Descriptions](managed-rule-groups#section_layer0_managed_rules) for rule details.
+See [Layer0 Managed Rule Group Descriptions](managed-rule-groups.md) for rule details.
 
 **Layer0 recommends utilizing this rule group for all WAF use cases.**
 
@@ -131,25 +131,7 @@ The Bot Control product applies labels to a set of verifiable bots that are comm
 
 You can monitor the impact of your bots by flagging each bot type of request gaining insights into SEO bots, scraping bots, advertising bots, malicious user agent bots, and several other categories of bots.
 
-See [Bot Rule Descriptions](managed-rule-groups#section_bot_rules)
-
-| Rule Name|Description|Log Name|
-| --- | --- | --- |
-|BOT - Advertising|Bots that are used for advertising purposes.|`botAds`|
-|BOT - Archiver|Bots that are used for archiving purposes.|`botArchiver`|
-|BOT - Browser|Indications of an automated web browser.|`botBrowser`|
-|BOT - Content|Bots that are fetching content on behalf of an end user.|`botFetcher`|
-|BOT - Data center|Data centers that are typically used by bots.|`botProvider`|
-|BOT - HTTP Library|HTTP libraries that are often used by bots.|`botLib`|
-|BOT - Link checker|Bots that check for broken links.|`botLinkChecker`|
-|BOT - Miscellaneous|Miscellaneous bots.|`botOther`|
-|BOT - Monitoring|Bots that are used for monitoring purposes.|`botPing`|
-|BOT - Scraping|Web scraping frameworks.|`botScraper`|
-|BOT - Search Engine|Search engine bots. Verified search engines are not blocked.|`botSearch`|
-|BOT - Security|Security-related bots.|`botSecurity`|
-|BOT - SEO|Bots that are used for search engine optimization.|`botSeo`|
-|BOT - Social Media|Bots that are used by social media platforms to provide content summaries. Verified social media bots are not blocked.|`botSocial`|
-|BOT - User agent|User agent strings that don't seem to be from a web browser.|`botUserAgent`|
+See [Bot Rule Descriptions](managed-rule-groups#section_bot_rules) for rule details.
 
 ### Detect Bots with EdgeJS
 

@@ -357,7 +357,7 @@ To flag a rule or rule group means to mark it if the rule would have been activa
 
 Managed rules block specific known threats. Layer0 recommends this rule group for all WAF use cases. 
 
-Note: Layer0 recommends that all customers activate the *Bad Input - Log4J* rule group, as well.
+Note: Layer0 recommends that all customers activate the *Bad Input - Log4J* rule group.
 
 ### Is the Layer0 WAF a PCI-compliant solution?
 

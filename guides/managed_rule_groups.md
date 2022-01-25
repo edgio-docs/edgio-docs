@@ -2,7 +2,9 @@
 
 ## Layer0 Managed Rules
 
-**Layer0 recommends utilizing this rule group for all WAF use cases.**
+```diff
+- Layer0 recommends utilizing this rule group for all WAF use cases.
+```
 
 | Rule Name|Description|Log Name|
 | --- | --- | --- |
@@ -36,7 +38,9 @@
 
 ## Bad Input Rules 
 
-**Layer0 recommends enabling the *Bad Input - Log4J* rule on all WAF applications.**
+```diff
+- Layer0 recommends enabling the 'Bad Input - Log4J' rule on all WAF applications.
+```
 
 | Rule Name|Description|Log Name|
 | --- | --- | --- |

@@ -28,9 +28,11 @@ The WAF includes Managed Rule Groups, managed by {{ PRODUCT_NAME }}, that can be
 
 ​​The {{ PRODUCT_NAME }} Managed rule group contains rules that are generally applicable to web applications. This provides protection against exploitation of a wide range of vulnerabilities, including high risk and commonly occurring vulnerabilities described in OWASP&reg; publications such as [OWASP Top 10](https://owasp.org/www-project-top-ten/).
 
-[Layer0 Managed Rule Group Descriptions](##section_managed_rule_groups)
+[Layer0 Managed Rule Group Descriptions](#section_managed_rule_groups)
 
-**Layer0 recommends utilizing this rule group for all WAF use cases.**
+```diff
+- Layer0 recommends utilizing this rule group for all WAF use cases.
+```
 
 ---
 
@@ -46,7 +48,9 @@ The Admin protection rule group contains rules that allow you to block external 
 
 The Bad Input rule group contains rules to block request patterns that are known to be invalid and are associated with exploitation or the discovery of Common Vulnerabilities and Exposures (CVEs). This can help reduce the risk of a known malicious actor discovering a vulnerable application.
 
-**Layer0 recommends enabling the *Bad Input - Log4J* rule on all WAF applications.**
+```diff
+- Layer0 recommends enabling the *Bad Input - Log4J* rule on all WAF applications.
+```
 
 [Bad Input Rule Descriptions](managed_rule_groups#section_bad_input_rules)
 
@@ -236,7 +240,7 @@ Here is a sample log file highlighting the WAF data ("waf":"botLib,flagged","waf
 
 ![WAF Log File Example](/images/security/log.jpg "WAF Log File Example")
 
-## Website Security
+## Website Security with EdgeJS
 
 ### Content Security Policy (CSP)
 

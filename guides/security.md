@@ -4,7 +4,7 @@
 
 {{ PRODUCT_NAME }}’s platform is built to ensure your website and applications remain open for business by keeping you protected against a wide range of security risks without sacrificing performance.
 
-A fully [PCI-compliant](#is-the-layer0-waf-a-pci-compliant-solution) solution, {{ PRODUCT_NAME }} Security protects your business against a variety of common exploits like SQL injections, cross-site scripting (XSS), PHP injections, bot attacks, DDoS attacks, and other common vulnerabilities.
+A fully [PCI-compliant](#section_is_the_layer0_waf_a_pci_compliant_solution_) solution, {{ PRODUCT_NAME }} Security protects your business against a variety of common exploits like SQL injections, cross-site scripting (XSS), PHP injections, bot attacks, DDoS attacks, and other common vulnerabilities.
 
 This guide shows you how to keep your site and platform secure using {{ PRODUCT_NAME }}.
 
@@ -44,8 +44,8 @@ The WAF includes [Managed Rule Groups](#managed-rule-group-descriptions), manage
 |General LFI Query|Inspects for the presence of Local File Inclusion (LFI) exploits in the query arguments. Examples include path traversal attempts using techniques such as ../../.|`fileArgs`|
 |General LFI URI Path|Inspects for the presence of Local File Inclusion (LFI) exploits in the URI path. Examples include path traversal attempts using techniques such as ../../.|`filePath`|
 |General RFI BODY|Inspects for the presence of Local File Inclusion (LFI) exploits in the request body. Examples include path traversal attempts using techniques such as ../../. CAUTION: This rule only inspects the first 8 KB of the request body|`remoteBody`|
-|General RFI Query|Inspects the values of all query parameters and blocks requests that attempt to exploit RFI (Remote File Inclusion) in web applications by embedding URLs that contain IPv4 addresses. Examples include patterns such as `http://`, `https://`, `ftp://`, `ftps://`,` and `file://`, with an IPv4 host header in the exploit attempt.|`remoteArgs`
-|General RFI URI Path|Inspects the URI path and blocks requests that attempt to exploit RFI (Remote File Inclusion) in web applications by embedding URLs that contain IPv4 addresses. Examples include patterns such as http://`, https://`, `ftp://`, `ftps://`, and `file://,` with an IPv4 host header in the exploit attempt.|`remotePath`|
+|General RFI Query|Inspects the values of all query parameters and blocks requests that attempt to exploit RFI (Remote File Inclusion) in web applications by embedding URLs that contain IPv4 addresses. Examples include patterns such as `http://`, `https://`, `ftp://`, `ftps://`,` and `file://`, with an IPv4 host header in the exploit attempt.|`remoteArgs`|
+|General RFI URI Path|Inspects the URI path and blocks requests that attempt to exploit RFI (Remote File Inclusion) in web applications by embedding URLs that contain IPv4 addresses. Examples include patterns such as `http://`, `https://`, `ftp://`, `ftps://`, and `file://,` with an IPv4 host header in the exploit attempt.|`remotePath`|
 |Invalid Argument|Inspects requests whose query arguments are system file extensions that the clients shouldn't read or run. Example patterns include extensions such as `.log` and `.ini.`|`invalidArgs`|
 |Invalid URI Path. | Inspects requests whose URI path includes system file extensions that the clients shouldn't read or run. Example patterns include extensions such as `.log` and `.ini`.|`invalidPath`|
 |Missing User Agent|Blocks requests with no HTTP User-Agent header.|`missingAgent`|
@@ -114,7 +114,7 @@ The SQL database rule group contains rules to block request patterns associated 
 
 1. Log in to the [Layer0 console](https://app.layer0.co/). 
 1. Click *SECURITY* from the top banner to launch the WAF Security Rules page.
-1. Select [*WAF-1* or *WAF-2*](#what's-the-difference-between-waf-1-and-waf-2?) from the first dropdown and the [configuration version](#how-do-i-know-which-version-to-use?) from the second. 
+1. Select [*WAF-1* or *WAF-2*](#section_what_s_the_difference_between_waf_1_and_waf_2_) from the first dropdown and the [configuration version](#section_how_do_i_know_which_version_to_use_) from the second. 
 1. Click *EDIT* to set your security rules.
 
 ![Add Rule Groups to WAF2](/images/security/addrg1a.jpg "Add Rule Groups to WAF2")
@@ -129,7 +129,7 @@ The SQL database rule group contains rules to block request patterns associated 
 
 1. Log in to the [Layer0 console](https://app.layer0.co/). 
 1. Click *SECURITY* from the top banner to launch the WAF Security Rules page.
-1. Select [*WAF-1* or *WAF-2*](#whats-the-difference-between-waf-1-and-waf-2) from the first dropdown and the configuration version from the second. 
+1. Select [*WAF-1* or *WAF-2*](#section_what_s_the_difference_between_waf_1_and_waf_2_) from the first dropdown and the [configuration version](#section_how_do_i_know_which_version_to_use_) from the second. 
 1. Click *EDIT* to set your security rules.
 
 ![Add Single Rule to WAF2](/images/security/addrg2.jpg "Add Single Rule to WAF")

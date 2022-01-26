@@ -62,7 +62,7 @@
 | SQL - Query Extended | Inspects the values of all query parameters for patterns that match malicious SQL code. The patterns this rule inspects for aren't covered by the built-in {{ PRODUCT_NAME }} WAF SQL injection match statement.   | `sqlArgsExtra` |
 | SQL - URI path       | Uses the built-in {{ PRODUCT_NAME }} WAF injection match statement to inspect the request URI path for patterns that match malicious SQL code.                                                                     | `sqlPath`      |
 
-## Bot Rules
+## Bot Control Rules
 
 | Rule Name           | Inspects for                                                                                                        | Log Name         |
 | ------------------- | ---------------------------------------------------------------------------------------------------------------------- | ---------------- |

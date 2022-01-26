@@ -70,16 +70,16 @@ The SQL database rule group contains rules to block request patterns associated 
 
 #### Add Rule Groups to a WAF
 
-![Add Rule Groups to WAF](/images/security/addrg1.jpg 'Add Rule Groups to WAF')
+![Add Rule Groups to WAF](/images/security/addrulegroup1.jpg 'Add Rule Groups to WAF')
 
 1. Log in to the [Layer0 console](https://app.layer0.co/).
 1. Click _SECURITY_ from the top banner to launch the WAF Security Rules page.
 1. Select [_WAF-1_ or _WAF-2_](#section_what_s_the_difference_between_waf_1_and_waf_2_) from the first dropdown and the [configuration version](#section_how_do_i_know_which_version_to_use_) from the second.
 1. Click _EDIT_ to set your security rules.
 
-![Add Rule Groups to WAF2](/images/security/addrg1a.jpg 'Add Rule Groups to WAF2')
+![Add Rule Groups to WAF2](/images/security/addrulegroup2.jpg 'Add Rule Groups to WAF2')
 
-5. Select the _Set all rules to …_ dropdown.
+5. Select the _Set all rules to …_ dropdown. Hover over the dropdown for the rule group's description.
 6. Choose the action for the group: _Off_, [_Flag_, or _Block_](#section_what_is_the_difference_between_flagging_and_blocking_a_rule_or_rule_group_).
 7. When you’ve made all your changes, select _ACTIVATE_.
 
@@ -87,16 +87,16 @@ The SQL database rule group contains rules to block request patterns associated 
 
 #### Add Single Rules to a WAF
 
-![Add Single Rule to WAF](/images/security/addrg1.jpg 'Add Single Rule to WAF')
+![Add Single Rule to WAF](/images/security/addrulegroup1.jpg 'Add Single Rule to WAF')
 
 1. Log in to the [Layer0 console](https://app.layer0.co/).
 1. Click _SECURITY_ from the top banner to launch the WAF Security Rules page.
 1. Select [_WAF-1_ or _WAF-2_](#section_what_s_the_difference_between_waf_1_and_waf_2_) from the first dropdown and the [configuration version](#section_how_do_i_know_which_version_to_use_) from the second.
 1. Click _EDIT_ to set your security rules.
 
-![Add Single Rule to WAF2](/images/security/addrg2.jpg 'Add Single Rule to WAF')
+![Add Single Rule to WAF2](/images/security/addsinglerule.jpg 'Add Single Rule to WAF')
 
-5. If collapsed, expand the Rule Group dropdown using the arrow to its left. You can hover over the rule name to view its description.
+5. If collapsed, expand the Rule Group dropdown using the arrow to its left. You can hover over the rule name or the Flag/Block dropdown to view the rule's description.
 6. Click the _Flag/Block_ dropdown.
 7. Select the action for the rules you want to change: _Off_, [_Flag_, or _Block_](#section_what_is_the_difference_between_flagging_and_blocking_a_rule_or_rule_group_).
 8. When you’ve made all your changes, select _ACTIVATE_.

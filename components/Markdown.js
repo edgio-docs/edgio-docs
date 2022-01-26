@@ -225,7 +225,7 @@ function Link({ href, children }) {
         className={clsx({ [classes.link]: !button, [classes.buttonLink]: button })}
         href={href}
         target={href.startsWith('https:') ? '_blank' : '_self'}
-        rel="noopener noreferrer"
+        rel="noopener"
       >
         {el}
       </a>

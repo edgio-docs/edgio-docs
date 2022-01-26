@@ -213,6 +213,12 @@
         "href": "/guides/[...guide]"
       },
       {
+        "text": "Express",
+        "icon": "express",
+        "as": "/guides/express",
+        "href": "/guides/[...guide]"
+      },
+      {
         "text": "Frontity",
         "icon": "frontity",
         "as": "/guides/frontity",

@@ -1,6 +1,6 @@
 # Ember.js
 
-This guide shows you how to deploy a Ember.js application on {{ PRODUCT_NAME }}.
+This guide shows you how to deploy a [Ember.js](https://emberjs.com/) application on {{ PRODUCT_NAME }}.
 
 ## Example
 

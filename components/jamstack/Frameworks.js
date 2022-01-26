@@ -214,7 +214,7 @@ const frameworkItems = [
   },
 
   {
-    guide: '/guides/enable_cdn',
+    guide: '/guides/webapp_cdn_getting_started',
     framework: 'cdn',
     icon: 'layer0',
     text: 'Edge Network',
@@ -332,6 +332,12 @@ const frameworkItems = [
     framework: 'nx',
     icon: 'nx',
     text: 'React Nx',
+  },
+  {
+    guide: '/guides/express',
+    framework: 'express',
+    icon: 'express',
+    text: 'Express',
   },
   {
     guide: '/guides/frontity',
@@ -464,5 +470,5 @@ const frameworkItems = [
     framework: 'dojo',
     icon: 'dojo',
     text: 'Dojo',
-  }
+  },
 ]

@@ -64,7 +64,7 @@
 
 ## Bot Rules
 
-| Rule Name           | Description                                                                                                            | Log Name         |
+| Rule Name           | Inspects for                                                                                                        | Log Name         |
 | ------------------- | ---------------------------------------------------------------------------------------------------------------------- | ---------------- |
 | BOT - Advertising   | Bots that are used for advertising purposes.                                                                           | `botAds`         |
 | BOT - Archiver      | Bots that are used for archiving purposes.                                                                             | `botArchiver`    |

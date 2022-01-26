@@ -133,11 +133,11 @@ The {{ PRODUCT_NAME }} Bot protection contains rules to block and manage request
 
 The Bot Control product applies labels to a set of verifiable bots that are commonly allowed. The rule group doesn't block this category of commonly allowed bots.
 
-**Bot Rule Group**: In addition to the WAF rule groups, {{ PRODUCT_NAME }} offers an additional Managed Rule Group for bots that allows you to take action against common bots that may impact the performance and availability of your web application or APIs.
+**Bot Control Rule Group**: In addition to the WAF rule groups, {{ PRODUCT_NAME }} offers an additional Managed Rule Group for bots that allows you to take action against common bots that may impact the performance and availability of your web application or APIs.
 
 You can monitor the impact of your bots by flagging each bot type of request gaining insights into SEO bots, scraping bots, advertising bots, malicious user agent bots, and several other categories of bots.
 
-[Bot Rule Descriptions](managed_rule_groups#section_bot_rules)
+[Bot Control Rule Descriptions](managed_rule_groups#section_bot_rules)
 
 ### Detect Bots with EdgeJS
 

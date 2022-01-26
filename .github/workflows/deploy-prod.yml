@@ -8,7 +8,8 @@ jobs:
     if: "!contains(github.event.repo.name, 'layer0-docs-internal')"
     runs-on: ubuntu-latest
     steps:
-      - run: echo ${{ toJson(github.event) }}
+      - name: Echo github obj
+        run: echo ${{ toJson(github) }}
       - name: Extract branch name
         shell: bash
         run: echo "BRANCH_NAME=$(echo ${GITHUB_REF#refs/heads/} | sed 's/\//_/g')" >> $GITHUB_ENV

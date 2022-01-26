@@ -123,9 +123,9 @@ function Text({ value, highlight }) {
   return <span dangerouslySetInnerHTML={{ __html: html }} />
 }
 
-function StyledText({ children, config }) {
+function StyledText({ children, style }) {
   return (
-    <span style={config}>
+    <span style={style}>
       <Text value={children}></Text>
     </span>
   )
@@ -259,8 +259,8 @@ function Heading({ children, level }) {
 function Image({ src, ...others }) {
   // styled text (no image)
   try {
-    const colorConfig = JSON.parse(others.alt)
-    return <StyledText config={colorConfig}>{others.title}</StyledText>
+    const styleConfig = JSON.parse(others.alt)
+    return <StyledText style={colorConfig}>{others.title}</StyledText>
   } catch (e) {}
 
   // serve a video based on `alt` value of markdown image syntax

@@ -81,7 +81,7 @@ The SQL database rule group contains rules to block request patterns associated 
 
 5. Select the _Set all rules to …_ dropdown. Hover over the dropdown for the rule group's description.
 6. Choose the action for the group: _Off_, [_Flag_, or _Block_](#section_what_is_the_difference_between_flagging_and_blocking_a_rule_or_rule_group_).
-7. When you’ve made all your changes, select _ACTIVATE_.
+7. When you’ve made all your changes, select _ACTIVATE_. You will see a popup confirming the rule changes. When your changes have deployed, the version will update with the next number.
 
 ---
 
@@ -99,7 +99,7 @@ The SQL database rule group contains rules to block request patterns associated 
 5. If collapsed, expand the Rule Group dropdown using the arrow to its left. You can hover over the rule name or the Flag/Block dropdown to view the rule's description.
 6. Click the _Flag/Block_ dropdown.
 7. Select the action for the rules you want to change: _Off_, [_Flag_, or _Block_](#section_what_is_the_difference_between_flagging_and_blocking_a_rule_or_rule_group_).
-8. When you’ve made all your changes, select _ACTIVATE_.
+8. When you’ve made all your changes, select _ACTIVATE_. You will see a popup confirming the rule changes. When your changes have deployed, the version will update with the next number.
 
 ---
 

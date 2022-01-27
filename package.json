@@ -1,5 +1,5 @@
 {
-  "name": "react-website",
+  "name": "layer0-docs",
   "version": "1.0.0",
   "private": true,
   "license": "CC",
@@ -93,11 +93,6 @@
     "webpack-bundle-analyzer": "^4.5.0"
   },
   "engines": {
-    "node": ">=12.x"
-  },
-  "nextBundleAnalysis": {
-    "budget": null,
-    "budgetPercentIncreaseRed": 10,
-    "showDetails": true
+    "node": "14"
   }
 }

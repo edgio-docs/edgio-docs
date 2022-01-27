@@ -6,15 +6,15 @@ export default function DeveloperTools() {
   const routesCol1: Array<{title: string; path: string}> = [
     {
       title: 'CLI',
-      path: '/cdn/caching',
+      path: 'caching',
     },
     {
       title: 'Devtools',
-      path: '/cdn/edgejs-routing',
+      path: 'edgejs-routing',
     },
     {
       title: 'Logs',
-      path: '/cdn/edgejs-routing',
+      path: 'edgejs-routing',
     },
   ];
 

@@ -1,12 +1,6 @@
-/*
- * Copyright (c) Facebook, Inc. and its affiliates.
- */
-
 import * as React from 'react';
-import sidebarHome from 'sidebarHome.json';
 import {MarkdownPage, MarkdownProps} from './MarkdownPage';
 import {Page} from './Page';
-import {RouteItem} from './useRouteMeta';
 
 interface PageFrontmatter {
   title: string;
@@ -22,5 +16,5 @@ export default function withDocs(p: PageFrontmatter) {
 }
 
 function AppShell(props: {children: React.ReactNode}) {
-  return <Page routeTree={sidebarHome as RouteItem} {...props} />;
+  return <Page {...props} />;
 }

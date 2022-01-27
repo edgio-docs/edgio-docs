@@ -6,11 +6,11 @@ export default function Reference() {
   const routesCol1: Array<{title: string; path: string}> = [
     {
       title: 'Bots',
-      path: '/cdn/caching',
+      path: 'caching',
     },
     {
       title: 'Changelog',
-      path: '/cdn/edgejs-routing',
+      path: 'edgejs-routing',
     },
     {
       title: 'Contributing',
@@ -33,11 +33,11 @@ export default function Reference() {
   const routesCol2 = [
     {
       title: 'Layer0 for Traditional Sites',
-      path: '/cdn/edgejs-routing',
+      path: 'edgejs-routing',
     },
     {
       title: 'layer0.config.js',
-      path: '/cdn/edgejs-routing',
+      path: 'edgejs-routing',
     },
     {
       title: 'Limits',
@@ -60,11 +60,11 @@ export default function Reference() {
   const routesCol3 = [
     {
       title: 'Status Codes',
-      path: '/cdn/edgejs-routing',
+      path: 'edgejs-routing',
     },
     {
       title: 'v4 Migration Guide',
-      path: '/cdn/edgejs-routing',
+      path: 'edgejs-routing',
     },
   ];
 

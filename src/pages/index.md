@@ -1,6 +1,6 @@
 ---
 id: home
-title: React Docs Beta
+title: Layer0 Docs
 permalink: index.html
 ---
 

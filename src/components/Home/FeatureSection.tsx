@@ -57,7 +57,7 @@ export default function FeatureSection({
           <div className={`route-items__col${index + 1}`} key={index}>
             <ul className="route-list__items">
               {route.map(({path, title}) => (
-                <li className="route-list__item" key={path}>
+                <li className="route-list__item" key={title}>
                   <Link href={path}>{title}</Link>
                 </li>
               ))}

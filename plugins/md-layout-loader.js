@@ -29,16 +29,17 @@ module.exports = async function (src) {
   .split(path.sep)
     .shift();
 
-  // 4. Get the layout component from the frontmatter
-  const layoutMap = {
-    reference: 'API',
-  };
-  const layout = layoutMap[pageParentDir] || 'Home';
+    // 4. Get the layout component from the frontmatter
+    const layoutMap = {
+      ".": 'Home',
+    };
+    const layout = layoutMap[pageParentDir] || 'Docs';
 
 
-  console.log("-".repeat(80));
-  console.log(`Using Layout${layout} for ${this.resourcePath}`);
-  console.log("-".repeat(80));
+  //   console.log(pageParentDir)
+  // console.log("-".repeat(40));
+  // console.log(`Using Layout${layout} for ${this.resourcePath}`);
+  // console.log("-".repeat(40));
 
   const code =
     `import withLayout from 'components/Layout/Layout${layout}';

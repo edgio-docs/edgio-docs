@@ -6,11 +6,11 @@ export default function Cdn() {
   const routesCol1: Array<{title: string; path: string}> = [
     {
       title: 'Caching',
-      path: '/cdn/caching',
+      path: 'caching',
     },
     {
       title: 'Common Routing Patterns',
-      path: '/cdn/edgejs-routing',
+      path: 'edgejs-routing',
     },
     {
       title: 'Connectors',
@@ -33,11 +33,11 @@ export default function Cdn() {
   const routesCol2 = [
     {
       title: 'EdgeJS Routing',
-      path: '/cdn/edgejs-routing',
+      path: 'edgejs-routing',
     },
     {
       title: 'Image Optimization',
-      path: '/cdn/edgejs-routing',
+      path: 'edgejs-routing',
     },
     {
       title: 'Incremental Static (Re)generation',
@@ -60,11 +60,11 @@ export default function Cdn() {
   const routesCol3 = [
     {
       title: 'Security',
-      path: '/cdn/edgejs-routing',
+      path: 'edgejs-routing',
     },
     {
       title: 'Split Testing',
-      path: '/cdn/edgejs-routing',
+      path: 'edgejs-routing',
     },
     {
       title: 'Static Prerendering',

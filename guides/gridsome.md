@@ -1,6 +1,6 @@
 # Gridsome
 
-This guide shows you how to deploy a Gridsome application on {{ PRODUCT_NAME }}.
+This guide shows you how to deploy a [Gridsome](https://gridsome.org/) application on {{ PRODUCT_NAME }}.
 
 ## Example
 

@@ -5,6 +5,7 @@ on:
       - master
 jobs:
   deploy-to-layer0:
+    if: "!contains(github.event.repo.name, 'layer0-docs-internal')"
     runs-on: ubuntu-latest
     steps:
       - name: Extract branch name

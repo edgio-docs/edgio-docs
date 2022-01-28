@@ -3,14 +3,11 @@ import cn from 'classnames';
 
 export const IconUmiJS = React.memo<JSX.IntrinsicElements['svg']>(
   ({ className }) => (
-    <svg className={cn('inline', className)} viewBox="0 0 261.76 226.69">
+    <svg className={cn('inline', className)} viewBox="0 0 48 48" fill="none">
+      <circle cx="24" cy="24" r="24" fill="#1CA1FA" />
       <path
-        d="M161.096.001l-30.224 52.35L100.647.002H-.005L130.872 226.69 261.749 0z"
-        fill="#41b883"
-      />
-      <path
-        d="M161.096.001l-30.224 52.35L100.647.002H52.346l78.526 136.01L209.398.001z"
-        fill="#34495e"
+        d="M19.77 16.09h-2.625v11.086c0 3.656 2.613 6.234 6.843 6.234 4.254 0 6.856-2.578 6.856-6.234V16.09h-2.625v10.875c0 2.414-1.535 4.113-4.23 4.113-2.684 0-4.22-1.7-4.22-4.113V16.09z"
+        fill="#fff"
       />
     </svg>
   )

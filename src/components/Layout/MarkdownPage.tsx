@@ -36,6 +36,7 @@ export function MarkdownPage<
           <Docs title={title}>{children}</Docs>
         </div>
       )}
+      <div style={{ height: '64px' }} />
     </MDXProvider>
   );
 }

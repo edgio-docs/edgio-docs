@@ -11,6 +11,8 @@ import Recap from './Recap';
 import SupportedFrameworkCard from './SupportedFrameworkCard';
 import TerminalBlock from './TerminalBlock';
 import Frameworks from './Frameworks';
+import CodeBlock from './CodeBlock';
+import CustomPre from './CustomPre';
 
 const P = (p: JSX.IntrinsicElements['p']) => (
   <p className="article-text" {...p} />
@@ -47,9 +49,8 @@ export const MDXComponents = {
   inlineCode: InlineCode,
   hr: Divider,
   a: Link,
-  // The code block renders <pre> so we just want a div here.
-  pre: (p: JSX.IntrinsicElements['div']) => <div {...p} />,
-  // Scary: dynamic(() => import('./Scary')),
+  code: CodeBlock,
+  pre: CustomPre,
   ConsoleBlock,
   Convention,
   HomepageHero,

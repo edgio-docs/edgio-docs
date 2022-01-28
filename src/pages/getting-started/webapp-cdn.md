@@ -36,7 +36,7 @@ Create your project by running:
 
 ```bash
 npx @layer0/cli@latest init
-```
+<!-- ```
 
 ## Project Structure {/*project-structure*/}
 
@@ -125,5 +125,3 @@ Deploy your site with the following command:
 ```
 
 Once your project code is up and running, you can view its performance from within the app.layer0.co cockpit. Using the tools available here, you can understand the caching behavior of the routes you have added. Continue adding routes and dialing in your config until you are ready to launch the site and code.
-
-Issues.

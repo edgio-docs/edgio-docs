@@ -22,7 +22,7 @@ If the error is generated in {{ PRODUCT_NAME }} itself, the platform generates a
 | 541 | {{ PRODUCT_NAME }} Out of Workers | The traffic was so high that the request could not be scheduled for processing within the scheduling timeout. Please contact [support](/guides/support) to upgrade your account. |
 | 542 | Project Header Overflow | The {{ PRODUCT_NAME }} project's request or response had too many HTTP headers. See [limits](/guides/limits) |
 | 543 | Global Upstream Timeout | The request failed to propagate between {{ PRODUCT_NAME }} edge and the global POP. Please contact [support]({{ HELP_URL }}). |
-| 544 | Reserved | Not used by {{ PRODUCT_NAME }} at this time. |
+| 544 | Invalid Host Header | The {{ PRODUCT_NAME }} received a value in `host` header that is not a valid domain name. |
 | 545 | {{ PRODUCT_NAME }} Component Not Ready | An unprepared {{ PRODUCT_NAME }} component received traffic. Please contact [support]({{ HELP_URL }}) immediately. |
 
 Obviously, your project can set status codes of their own, which may sometimes match codes above. We encourage you to avoid setting your own status code so as to lower troubleshooting overhead and other issues.

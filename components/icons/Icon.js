@@ -45,6 +45,7 @@ import Zola from './zola.svg'
 import SolidJS from './solid.svg'
 import UmiJS from './umijs.svg'
 import clsx from 'clsx'
+import RedwoodJSIcon from './redwood.svg'
 
 export const icons = {
   'next-commerce': NextCommerceIcon,
@@ -70,6 +71,7 @@ export const icons = {
   razzle: Razzle,
   razzleP: RazzlePng,
   react: ReactIcon,
+  redwood: RedwoodJSIcon,
   remix: Remix,
   sapper: SapperIcon,
   stencil: Stencil,
@@ -94,7 +96,7 @@ export const icons = {
   zola: Zola,
   dojo: Dojo,
   solid: SolidJS,
-  umijs: UmiJS
+  umijs: UmiJS,
 }
 
 export const styles = theme => ({

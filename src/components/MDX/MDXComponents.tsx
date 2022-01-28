@@ -1,7 +1,7 @@
 import * as React from 'react';
 import ConsoleBlock from './ConsoleBlock';
 import Convention from './Convention';
-import {H1, H2, H3, H4} from './Heading';
+import { H1, H2, H3, H4 } from './Heading';
 import HomepageFeatures from './HomepageFeatures';
 import HomepageHero from './HomepageHero';
 import InlineCode from './InlineCode';
@@ -10,9 +10,10 @@ import Link from './Link';
 import Recap from './Recap';
 import SupportedFrameworkCard from './SupportedFrameworkCard';
 import TerminalBlock from './TerminalBlock';
+import Frameworks from './Frameworks';
 
 const P = (p: JSX.IntrinsicElements['p']) => (
-  <p className="whitespace-pre-wrap my-4" {...p} />
+  <p className="article-text" {...p} />
 );
 
 const Strong = (strong: JSX.IntrinsicElements['strong']) => (
@@ -26,7 +27,7 @@ const LI = (p: JSX.IntrinsicElements['li']) => (
   <li className="leading-relaxed mb-1" {...p} />
 );
 const UL = (p: JSX.IntrinsicElements['ul']) => (
-  <ul className="ml-6 my-3 list-disc" {...p} />
+  <ul className="article-ul__list" {...p} />
 );
 
 const Divider = () => (
@@ -57,4 +58,5 @@ export const MDXComponents = {
   TerminalBlock,
   SupportedFrameworkCard,
   HomepageFeatures,
+  Frameworks,
 };

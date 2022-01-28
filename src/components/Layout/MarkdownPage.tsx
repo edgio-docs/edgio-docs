@@ -1,17 +1,21 @@
-import {MDXProvider} from '@mdx-js/react';
-import {useRouter} from 'next/router';
+import { MDXProvider } from '@mdx-js/react';
+import { useRouter } from 'next/router';
 import * as React from 'react';
-import {MDXComponents} from '../MDX/MDXComponents';
+import { MDXComponents } from '../MDX/MDXComponents';
+import Docs from '../Docs';
 
 export interface MarkdownProps<Frontmatter> {
-  meta: Frontmatter & {description?: string};
+  meta: Frontmatter & { description?: string };
   children?: React.ReactNode;
 }
 
 export function MarkdownPage<
-  T extends {title: string; status?: string} = {title: string; status?: string}
->({children, meta}: MarkdownProps<T>) {
-  const {route} = useRouter();
+  T extends { title: string; status?: string } = {
+    title: string;
+    status?: string;
+  }
+>({ children, meta }: MarkdownProps<T>) {
+  const { route } = useRouter();
 
   // const {route, nextRoute, prevRoute} = useRouteMeta();
   const title = meta.title || route || '';
@@ -25,8 +29,13 @@ export function MarkdownPage<
 
   return (
     <MDXProvider components={MDXComponents}>
-      {!isHomePage && title}
-      {children}
+      {isHomePage ? (
+        children
+      ) : (
+        <div className="docs">
+          <Docs title={title}>{children}</Docs>
+        </div>
+      )}
     </MDXProvider>
   );
 }

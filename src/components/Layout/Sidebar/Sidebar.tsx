@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import styled from 'styled-components';
 import SidebarMenuItems from '../../../data/SidebarMenuItems';
-import {IconChevron} from '../../Icon/IconChevron';
+import { IconChevron } from '../../Icon/IconChevron';
 
 const StlyedSidebar = styled.div`
   color: black;
@@ -21,6 +21,8 @@ const StlyedSidebar = styled.div`
     text-decoration: none;
     padding: 5px 20px;
     transition: 0.2s ease-in-out;
+    color: inherit;
+    text-decoration: none;
 
     :hover {
       background-color: #e5e5e5;
@@ -65,6 +67,8 @@ const StlyedSidebar = styled.div`
       flex: 1;
       padding-left: 12px;
       padding: 4px 0 4px 12px;
+      color: black;
+      text-decoration: none;
 
       transition: 0.2s ease-in-out;
 
@@ -75,16 +79,6 @@ const StlyedSidebar = styled.div`
     }
   }
 `;
-
-function NavItemsTriggerButton() {
-  return (
-    <button type="button" className="trigger-button__box trigger-button">
-      <div className="trigger-button__icon hide">
-        <IconChevron displayDirection="right" />
-      </div>
-    </button>
-  );
-}
 
 function NavItems() {
   return (
@@ -100,7 +94,11 @@ function NavItems() {
                 <a className="trigger-link">
                   <div className="icon-box">{menuItems.icon}</div>
                   <span className="menu-item__title">{menuItems.title}</span>
-                  {menuItems.routes && <NavItemsTriggerButton />}
+                  {menuItems.routes && (
+                    <div className="icon-box">
+                      <IconChevron displayDirection="right" />
+                    </div>
+                  )}
                 </a>
               </Link>
             </div>

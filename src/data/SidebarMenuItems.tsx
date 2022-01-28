@@ -1,19 +1,64 @@
-import {IconBookPlain} from '../components/Icon/IconBookPlain';
-import {IconBulb} from '../components/Icon/IconBulb';
-import {IconCodePlain} from '../components/Icon/IconCodePlain';
-import {IconFolder} from '../components/Icon/IconFolder';
-import {IconLogo} from '../components/Icon/IconLogo';
-import {IconServerSmall} from '../components/Icon/IconServerSmall';
-import {IconSparkPlain} from '../components/Icon/IconSparkPlain';
-import {IconStacksPlain} from '../components/Icon/IconStacksPlain';
-import {IconUserPlain} from '../components/Icon/IconUserPlain';
-import {IconVideos} from '../components/Icon/IconVideos';
+import { IconAngular } from '../components/Icon/IconAngular';
+import { IconAstro } from '../components/Icon/IconAstro';
+import { IconBookPlain } from '../components/Icon/IconBookPlain';
+import { IconBrunch } from '../components/Icon/IconBrunch';
+import { IconBulb } from '../components/Icon/IconBulb';
+import { IconCodePlain } from '../components/Icon/IconCodePlain';
+import { IconDocusaurus } from '../components/Icon/IconDocusaurus';
+import { IconDojo } from '../components/Icon/IconDojo';
+import { IconEleventy } from '../components/Icon/IconEleventy';
+import { IconEmberFastboot } from '../components/Icon/IconEmberFastboot';
+import { IconEmberJS } from '../components/Icon/IconEmberJS';
+import { IconExpress } from '../components/Icon/IconExpress';
+import { IconFolder } from '../components/Icon/IconFolder';
+import { IconFrontity } from '../components/Icon/IconFrontity';
+import { IconGatsby } from '../components/Icon/IconGatsby';
+import { IconGridsome } from '../components/Icon/IconGridsome';
+import { IconHexo } from '../components/Icon/IconHexo';
+import { IconHugo } from '../components/Icon/IconHugo';
+import { IconIonicX } from '../components/Icon/IconIonicX';
+import { IconJekyll } from '../components/Icon/IconJekyll';
+import { IconLogo } from '../components/Icon/IconLogo';
+import { IconMKDocs } from '../components/Icon/IconMKDocs';
+import { IconNextJS } from '../components/Icon/IconNextJS';
+import { IconNextJSCommerce } from '../components/Icon/IconNextJSCommerce';
+import { IconNX } from '../components/Icon/IconNX';
+import { IconPreact } from '../components/Icon/IconPreact';
+import { IconRazzle } from '../components/Icon/IconRazzle';
+import { IconReact } from '../components/Icon/IconReact';
+import { IconReactStatic } from '../components/Icon/IconReactStatic';
+import { IconReactStorefront } from '../components/Icon/IconReactStorefront';
+import { IconRemix } from '../components/Icon/IconRemix';
+import { IconSaber } from '../components/Icon/IconSaber';
+import { IconSapper } from '../components/Icon/IconSapper';
+import { IconServerlessFunctions } from '../components/Icon/IconServerlessFunctions';
+import { IconServerSmall } from '../components/Icon/IconServerSmall';
+import { IconShopifyHydrogen } from '../components/Icon/IconShopifyHydrogen';
+import { IconSolidJS } from '../components/Icon/IconSolidJS';
+import { IconSparkPlain } from '../components/Icon/IconSparkPlain';
+import { IconSpartarcus } from '../components/Icon/IconSpartarcus';
+import { IconStacksPlain } from '../components/Icon/IconStacksPlain';
+import { IconStaticHTMLJS } from '../components/Icon/IconStaticHTMLJS';
+import { IconStencil } from '../components/Icon/IconStencil';
+import { IconSvelte } from '../components/Icon/IconSvelte';
+import { IconSwell } from '../components/Icon/IconSwell';
+import { IconUmiJS } from '../components/Icon/IconUmiJS';
+import { IconUserPlain } from '../components/Icon/IconUserPlain';
+import { IconVideos } from '../components/Icon/IconVideos';
+import { IconVitePress } from '../components/Icon/IconVitePress';
+import { IconVue } from '../components/Icon/IconVue';
+import { IconZola } from '../components/Icon/IconZola';
+import { IconVueStorefront } from '../components/Icon/VueStorefront';
 
 interface ISidebarMenuItems {
   title: string;
   icon: JSX.IntrinsicElements['svg'];
   path: string;
-  routes?: Array<{title: string; path: string}>;
+  routes?: Array<{
+    title: string;
+    path: string;
+    icon?: JSX.IntrinsicElements['svg'];
+  }>;
 }
 
 const SidebarMenuItems: Array<ISidebarMenuItems> = [
@@ -170,178 +215,222 @@ const SidebarMenuItems: Array<ISidebarMenuItems> = [
       {
         title: 'Angular',
         path: 'angular',
+        icon: <IconAngular />,
       },
       {
         title: 'Astro',
         path: 'astro',
+        icon: <IconAstro />,
       },
       {
         title: 'Brunch',
         path: 'brunch',
+        icon: <IconBrunch />,
       },
       {
         title: 'Docusaurus',
         path: 'docusaurus',
+        icon: <IconDocusaurus />,
       },
       {
         title: 'Dojo',
         path: 'dojo',
+        icon: <IconDojo />,
       },
       {
         title: 'Eleventy',
         path: 'eleventy',
+        icon: <IconEleventy />,
       },
       {
         title: 'Ember Fastboot',
         path: 'ember-fastboot',
+        icon: <IconEmberFastboot />,
       },
       {
         title: 'Ember.js',
         path: 'ember',
+        icon: <IconEmberJS />,
       },
       {
         title: 'Express',
         path: 'express',
+        icon: <IconExpress />,
       },
       {
         title: 'Frontity',
         path: 'frontity',
+        icon: <IconFrontity />,
       },
       {
         title: 'Gatsby',
         path: 'gatsby',
+        icon: <IconGatsby />,
       },
       {
         title: 'Gridsome',
         path: 'gridsome',
+        icon: <IconGridsome />,
       },
       {
         title: 'Hexo',
         path: 'hexo',
+        icon: <IconHexo />,
       },
       {
         title: 'Hugo',
         path: 'hugo',
+        icon: <IconHugo />,
       },
       {
         title: 'Ionic React',
         path: 'ionic-react',
+        icon: <IconIonicX />,
       },
       {
         title: 'Ionic Vue',
         path: 'ionic-vue',
+        icon: <IconIonicX />,
       },
       {
         title: 'Jekyll',
         path: 'jekyll',
+        icon: <IconJekyll />,
       },
       {
         title: 'MKDocs',
         path: 'mkdocs',
+        icon: <IconMKDocs />,
       },
       {
         title: 'Next.js',
         path: 'nextjs',
+        icon: <IconNextJS />,
       },
       {
         title: 'Next.js Commerce',
         path: 'nextjs-commerce',
+        icon: <IconNextJSCommerce />,
       },
       {
         title: 'Nuxt.js',
         path: 'nuxtjs',
+        icon: <IconAstro />,
       },
       {
-        title: 'NX',
+        title: 'React NX',
         path: 'nx',
+        icon: <IconNX />,
       },
       {
         title: 'Preact',
         path: 'preact',
+        icon: <IconPreact />,
       },
       {
         title: 'Razzle',
         path: 'razzle',
+        icon: <IconRazzle />,
       },
       {
         title: 'React',
         path: 'react',
+        icon: <IconReact />,
       },
       {
         title: 'React Static',
         path: 'react-static',
+        icon: <IconReactStatic />,
       },
       {
         title: 'React Storefront',
         path: 'react-storefront',
+        icon: <IconReactStorefront />,
       },
       {
         title: 'Remix',
         path: 'remix',
+        icon: <IconRemix />,
       },
       {
         title: 'Saber',
         path: 'saber',
+        icon: <IconSaber />,
       },
       {
         title: 'Sapper',
         path: 'sapper',
+        icon: <IconSapper />,
       },
       {
         title: 'Serverless Functions',
         path: 'serverless-functions',
+        icon: <IconServerlessFunctions />,
       },
       {
         title: 'Shopify Hydrogen',
         path: 'shopify-hydrogen',
+        icon: <IconShopifyHydrogen />,
       },
       {
         title: 'SolidJS',
         path: 'solidjs',
+        icon: <IconSolidJS />,
       },
       {
         title: 'Spartacus',
         path: 'spartacus',
+        icon: <IconSpartarcus />,
       },
       {
         title: 'Static HTML/JavaScript',
         path: 'static-html-javascript',
+        icon: <IconStaticHTMLJS />,
       },
       {
         title: 'Stencil',
         path: 'stencil',
+        icon: <IconStencil />,
       },
       {
         title: 'Svelte',
         path: 'svelte',
+        icon: <IconSvelte />,
       },
       {
         title: 'Swell',
         path: 'swell',
+        icon: <IconSwell />,
       },
       {
         title: 'UmiJS',
         path: 'umijs',
+        icon: <IconUmiJS />,
       },
       {
         title: 'VitePress',
         path: 'vitepress',
+        icon: <IconVitePress />,
       },
       {
         title: 'Vue Storefront',
         path: 'vue-storefront',
+        icon: <IconVueStorefront />,
       },
       {
         title: 'Vue.js',
         path: 'vuejs',
+        icon: <IconVue />,
       },
       {
         title: 'VuePress',
         path: 'vuepress',
+        icon: <IconVitePress />,
       },
       {
         title: 'Zola',
         path: 'zola',
+        icon: <IconZola />,
       },
     ],
   },

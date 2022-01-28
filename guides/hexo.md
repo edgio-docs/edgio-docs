@@ -1,6 +1,6 @@
 # Hexo
 
-This guide shows you how to deploy a [Hexo](https://hexo.io/) application on {{ PRODUCT_NAME }}.
+This guide shows you how to deploy a Hexo application on {{ PRODUCT_NAME }}.
 
 ## Example
 

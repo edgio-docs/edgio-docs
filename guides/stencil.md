@@ -1,6 +1,6 @@
 # Stencil
 
-This guide shows you how to deploy a [Stencil](https://stenciljs.com/) application on {{ PRODUCT_NAME }}.
+This guide shows you how to deploy a Stencil application on {{ PRODUCT_NAME }}.
 
 ## Example
 

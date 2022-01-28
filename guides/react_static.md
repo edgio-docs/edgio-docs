@@ -1,6 +1,6 @@
 # React Static
 
-This guide shows you how to deploy a [React Static](https://github.com/react-static/react-static) application on {{ PRODUCT_NAME }}.
+This guide shows you how to deploy a React Static application on {{ PRODUCT_NAME }}.
 
 ## Example
 

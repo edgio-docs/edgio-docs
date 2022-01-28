@@ -2,7 +2,7 @@
 
 This guide gives examples of common routing patterns using {{ PRODUCT_NAME }}.
 
-## Proxying an Origin
+## Proxying a Backend
 
 ### Same Path
 

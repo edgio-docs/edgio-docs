@@ -1,6 +1,6 @@
 # Remix
 
-This guide shows you how to deploy a [Remix](https://remix.run/) application on {{ PRODUCT_NAME }}.
+This guide shows you how to deploy a Remix application on {{ PRODUCT_NAME }}.
 
 ## Example
 

@@ -1,6 +1,6 @@
 # VuePress
 
-This guide shows you how to deploy a [VuePress](https://vuepress.vuejs.org/) application on {{ PRODUCT_NAME }}.
+This guide shows you how to deploy a VuePress application on {{ PRODUCT_NAME }}.
 
 ## Example
 

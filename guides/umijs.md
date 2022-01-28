@@ -1,6 +1,6 @@
 # UmiJS
 
-This guide shows you how to deploy a [UmiJS])(https://umijs.org/) application on {{ PRODUCT_NAME }}.
+This guide shows you how to deploy a UmiJS application on {{ PRODUCT_NAME }}.
 
 ## Example
 

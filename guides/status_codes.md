@@ -9,7 +9,7 @@ If the error is generated in {{ PRODUCT_NAME }} itself, the platform generates a
 | CODE | NAME | DESCRIPTION |
 | --- | --- | --- |
 | 530 | Internal {{ PRODUCT_NAME }} Error | Unexpected error in {{ PRODUCT_NAME }}. Please contact [support]({{ HELP_URL }}) immediately. |
-| 531 | Project Upstream Connection Timeout | Your project timed out while waiting to establish an upstream connection. |
+| 531 | Project Upstream Timeout | Your project timed out while waiting for an upstream response. |
 | 532 | Project Response Too Large | Your project returned a response size greater than the allowed 6MB. |
 | 533 | Reserved | Not used by {{ PRODUCT_NAME }} at this time. |
 | 534 | Project Error | Your project's serverless code has failed unexpectedly or has returned a malformed response. Use [server logs](/guides/logs#section_server_logs) to debug. |

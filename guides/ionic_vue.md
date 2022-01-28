@@ -1,6 +1,6 @@
 # Ionic Vue
 
-This guide shows you how to deploy a [Ionic Vue](https://ionicframework.com/docs/vue/overview) application on {{ PRODUCT_NAME }}.
+This guide shows you how to deploy a Ionic Vue application on {{ PRODUCT_NAME }}.
 
 ## Example
 

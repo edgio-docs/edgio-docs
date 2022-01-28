@@ -1,6 +1,6 @@
 # Hugo
 
-This guide shows you how to deploy a [Hugo](https://gohugo.io) application on {{ PRODUCT_NAME }}.
+This guide shows you how to deploy a Hugo application on {{ PRODUCT_NAME }}.
 
 ## Example
 

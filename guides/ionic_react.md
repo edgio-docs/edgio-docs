@@ -1,6 +1,6 @@
 # Ionic React
 
-This guide shows you how to deploy a [Ionic React](https://ionicframework.com/docs/react/overview) application on {{ PRODUCT_NAME }}.
+This guide shows you how to deploy a Ionic React application on {{ PRODUCT_NAME }}.
 
 ## Example
 

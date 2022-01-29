@@ -1,9 +1,8 @@
-import Link from 'next/link';
 import styled from 'styled-components';
 
-const StyledFeatureSection = styled.div`
+export const StyledFeatureSection = styled.div`
   display: grid;
-  row-gap: 16px;
+  row-gap: 28px;
 
   .route-items {
     display: flex;
@@ -14,27 +13,34 @@ const StyledFeatureSection = styled.div`
   .route-list__items {
     display: grid;
     row-gap: 12px;
+    list-style: none;
+    padding: 0;
   }
 
   .route-list__item {
+    display: flex;
+    align-items: center;
+    column-gap: 10px;
+
+    .dot {
+      --size: 8px;
+      width: var(--size);
+      height: var(--size);
+      background-color: #e95495;
+      border-radius: 1px;
+    }
+
     a {
       font-weight: 600;
       font-size: 18px;
+      line-height: 24px;
       color: #606060;
       position: relative;
-      padding-left: 15px;
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
 
-      ::before {
-        background-color: #e95495;
-        content: '';
-        position: absolute;
-        left: 0px;
-        top: 50%;
-        transform: translateY(-50%);
-        border-radius: 1px;
-        --size: 8px;
-        width: var(--size);
-        height: var(--size);
+      :hover {
+        border-bottom-color: #e95495;
       }
     }
   }
@@ -42,29 +48,8 @@ const StyledFeatureSection = styled.div`
 
 interface IFeatureSectionProps {
   children: React.ReactNode;
-  routes: Array<Array<{title: string; path: string}>>;
 }
 
-export default function FeatureSection({
-  children,
-  routes,
-}: IFeatureSectionProps) {
-  return (
-    <StyledFeatureSection>
-      {children}
-      <div className="route-items">
-        {routes.map((route, index) => (
-          <div className={`route-items__col${index + 1}`} key={index}>
-            <ul className="route-list__items">
-              {route.map(({path, title}) => (
-                <li className="route-list__item" key={title}>
-                  <Link href={path}>{title}</Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-        ))}
-      </div>
-    </StyledFeatureSection>
-  );
+export default function FeatureSection({ children }: IFeatureSectionProps) {
+  return <StyledFeatureSection>{children}</StyledFeatureSection>;
 }

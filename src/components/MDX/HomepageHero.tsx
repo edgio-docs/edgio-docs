@@ -1,7 +1,7 @@
-import Link from 'next/link';
+import Image from 'next/image';
 import * as React from 'react';
 import styled from 'styled-components';
-import Image from 'next/image';
+import Container from '../Layout/Container';
 import HeaderGraphics from '../../../public/images/HeaderGraphics.svg';
 
 const StyledHomepageHero = styled.div`
@@ -16,13 +16,11 @@ const StyledHomepageHero = styled.div`
     #fafdff 99.85%
   );
 
-  .hero-inner__content {
-    max-width: 1175px;
-    margin: 0 auto;
+  .section-container {
     display: grid;
     grid-template-columns: 1fr 1fr;
     position: relative;
-    padding: 40px 20px 0;
+    padding: 40px 0 20px 0;
     background-image: url('/images/HomepageHeroLightWaves.svg');
     background-repeat: no-repeat;
     background-size: contain;
@@ -42,16 +40,21 @@ const StyledHomepageHero = styled.div`
     gap: 18px;
   }
 
+  .header-graphics {
+    display: flex;
+    justify-content: flex-end;
+  }
+
   .headline {
-    font-weight: 600;
-    font-size: 28px;
+    font-size: 32px;
     color: #1a1a1a;
+    letter-spacing: -0.663px;
+    font-weight: bold;
   }
 
   .subheadline {
     font-size: 18px;
     color: #707070;
-    padding-right: 160px;
   }
 
   .figure {
@@ -59,12 +62,17 @@ const StyledHomepageHero = styled.div`
       max-width: 100%;
     }
   }
+
+  .container {
+    max-width: 1228px;
+    margin: 0 auto;
+  }
 `;
 
 function HomepageHero() {
   return (
     <StyledHomepageHero>
-      <div className="hero-inner__content">
+      <Container>
         <div className="copy">
           <h1 className="headline">Layer0 Documentation</h1>
           <p className="subheadline">
@@ -75,7 +83,7 @@ function HomepageHero() {
         <figure className="header-graphics">
           <Image src={HeaderGraphics as 'svg'} alt="Layer0 Documentation" />
         </figure>
-      </div>
+      </Container>
     </StyledHomepageHero>
   );
 }

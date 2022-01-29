@@ -5,5 +5,4 @@ permalink: index.html
 ---
 
 <HomepageHero />
-
 <HomepageFeatures />

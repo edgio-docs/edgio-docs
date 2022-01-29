@@ -14,17 +14,16 @@ function IconBox({
   );
 }
 
-function SectionHeaderTitle({title}: {title: string}) {
+function SectionHeaderTitle({ title }: { title: string }) {
   return <h2 className="section-header__title">{title}</h2>;
 }
 
-function SectionHeaderSubtitle({subtitle}: {subtitle: string}) {
+function SectionHeaderSubtitle({ subtitle }: { subtitle: string }) {
   return <p className="section-header__subtitle">{subtitle}</p>;
 }
 
 const StyledSectionheader = styled.header`
   font-family: 'Inter';
-  line-height: 1.3;
 
   display: flex;
   align-items: flex-start;
@@ -42,16 +41,18 @@ const StyledSectionheader = styled.header`
   .section-header__content {
     display: grid;
     row-gap: 6px;
-    max-width: 34%;
+    max-width: 42%;
   }
 
   .section-header__title {
     font-weight: 600;
-    font-size: 28px;
+    font-size: 24px;
+    line-height: 28px;
   }
 
   .section-header__subtitle {
-    font-size: 18px;
+    font-size: 20px;
+    line-height: 28px;
     color: #707070;
   }
 `;
@@ -69,10 +70,10 @@ export default function SectionHeader({
 }: ISectionHeaderProps) {
   return (
     <StyledSectionheader>
-      {Icon && <IconBox {...{Icon}} />}
+      {Icon && <IconBox {...{ Icon }} />}
       <div className="section-header__content">
-        <SectionHeaderTitle {...{title}} />
-        {subtitle && <SectionHeaderSubtitle {...{subtitle}} />}
+        <SectionHeaderTitle {...{ title }} />
+        {subtitle && <SectionHeaderSubtitle {...{ subtitle }} />}
       </div>
     </StyledSectionheader>
   );

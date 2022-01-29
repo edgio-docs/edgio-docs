@@ -1,6 +1,6 @@
 import * as React from 'react';
 import styled from 'styled-components';
-import {Sidebar} from './Sidebar/Sidebar';
+import { Sidebar } from './Sidebar/Sidebar';
 
 interface PageProps {
   children: React.ReactNode;
@@ -40,7 +40,9 @@ const StyledDocs = styled.div`
 
     .docs-content__inner {
       min-height: 100vh;
-      flex: 1;
+      display: flex;
+      flex-direction: column;
+      flex: 1 1;
 
       .LayoutHome {
         max-width: 1000px;
@@ -51,7 +53,7 @@ const StyledDocs = styled.div`
   }
 `;
 
-export function Page({children}: PageProps) {
+export function Page({ children }: PageProps) {
   return (
     <StyledDocs className="docs">
       <header className="docs-header">

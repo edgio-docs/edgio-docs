@@ -10,7 +10,7 @@ const StyledDocs = styled.div`
 
   .docs-article,
   .docs-article__toc {
-    padding: 0 20px;
+    padding: 0 20px 20px 20px;
   }
 
   .docs-article {

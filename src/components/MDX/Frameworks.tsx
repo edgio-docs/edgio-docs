@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import styled from 'styled-components';
-import SidebarMenuItems from '../../data/SidebarMenuItems';
+import { getChildrenRoutesFromSidebarMenuItems } from '../../utils/getChildrenRoutesFromSidebarMenuItems';
 
 const StyledFrameworks = styled.div`
   .framework-lists {
@@ -33,22 +33,15 @@ const StyledFrameworks = styled.div`
 `;
 
 export default function Frameworks() {
-  const frameworks = SidebarMenuItems.filter(
-    (menuItem) => menuItem.path === 'framework-guides'
-  )[0];
-
-  const routes = frameworks.routes as Array<{
-    title: string;
-    path: string;
-    icon: JSX.IntrinsicElements['svg'];
-  }>;
+  const parentPath = 'framework-guides';
+  const allRoutes = getChildrenRoutesFromSidebarMenuItems(parentPath);
 
   return (
     <StyledFrameworks>
       <ul className="framework-lists">
-        {routes.map((route) => (
+        {allRoutes.map((route) => (
           <li key={route.path} className="framework-list__item">
-            <Link href={`/${frameworks.path}/${route.path}`} passHref>
+            <Link href={`/${parentPath}/${route.path}`} passHref>
               <a className="framework-link">
                 <div className="icon">{route.icon ? route.icon : null}</div>
                 <span className="link-text">{route.title}</span>

@@ -1,19 +1,39 @@
+import { AnimatePresence, motion } from 'framer-motion';
 import Link from 'next/link';
 import styled from 'styled-components';
+import { useState } from 'react';
 import SidebarMenuItems, {
   ISidebarMenuItem,
 } from '../../../data/SidebarMenuItems';
 import { IconChevron } from '../../Icon/IconChevron';
+import { IconOutsideLink } from '../../Icon/IconOutsideLink';
 
 const StlyedSidebar = styled.div`
   color: black;
   font-size: 14px;
   font-weight: 500;
+  height: 100%;
+
+  .nav-container {
+    display: grid;
+    row-gap: 32px;
+  }
+
+  .hr-separator {
+    height: 1px;
+    width: calc(100% - 40px);
+    background: #e3e8ee;
+    transform: translateX(20px);
+  }
 
   .nav-item__box-inner {
     display: grid;
     grid-template-columns: 1fr auto;
     align-items: center;
+    background: transparent;
+    border: none;
+    width: 100%;
+    text-align: left;
   }
 
   .trigger-link {
@@ -48,6 +68,7 @@ const StlyedSidebar = styled.div`
   .routes {
     margin-left: calc(20px + 16px + 10px);
     position: relative;
+    overflow: hidden;
 
     ::before {
       content: '';
@@ -82,31 +103,75 @@ const StlyedSidebar = styled.div`
   }
 `;
 
-// function ChildrenRoutes({
-//   parentRoutePath,
-//   routes,
-// }: {
-//   parentRoutePath: string;
-//   routes: Array<{
-//     title: string;
-//     path: string;
-//     icon?: JSX.IntrinsicElements['svg'];
-//   }>;
-// }) {
-//   return (
-//     <div className="routes">
-//       {routes.map((route, i) => (
-//         <div className="route" key={i}>
-//           <Link href={`/${parentRoutePath}/${route.path}`}>{route.title}</Link>
-//         </div>
-//       ))}
-//     </div>
-//   );
-// }
-
-function ParentRoute({ menuItem }: { menuItem: ISidebarMenuItem }) {
+function ChildrenRoutes({
+  parentRoutePath,
+  routes,
+}: {
+  parentRoutePath: string;
+  routes: Array<{
+    title: string;
+    path: string;
+    icon?: JSX.IntrinsicElements['svg'];
+  }>;
+}) {
   return (
-    <div className="nav-item__box-inner">
+    <motion.div
+      className="routes"
+      initial="collapsed"
+      animate="open"
+      exit="collapsed"
+      variants={{
+        open: { height: 'auto' },
+        collapsed: { height: 0 },
+      }}
+      transition={{ duration: 0.1 }}
+    >
+      {routes.map((route, i) => (
+        <div className="route" key={i}>
+          <Link href={`/${parentRoutePath}/${route.path}`}>{route.title}</Link>
+        </div>
+      ))}
+    </motion.div>
+  );
+}
+
+function ParentRoute({
+  menuItem,
+  isExternalRoute = false,
+  accordion,
+  setAccordion,
+  parentIndex,
+}: {
+  menuItem: ISidebarMenuItem;
+  isExternalRoute?: boolean;
+  accordion?: {
+    isOpen: boolean;
+    currentIndex: number;
+  };
+  setAccordion?: React.Dispatch<
+    React.SetStateAction<{
+      isOpen: boolean;
+      currentIndex: number;
+    }>
+  >;
+  parentIndex?: number;
+}) {
+  function updateAccordion() {
+    if (accordion && setAccordion && parentIndex) {
+      setAccordion({
+        ...accordion,
+        isOpen: accordion.currentIndex !== parentIndex,
+        currentIndex: accordion.currentIndex === parentIndex ? -1 : parentIndex,
+      });
+    }
+  }
+
+  return (
+    <button
+      type="button"
+      className="nav-item__box-inner"
+      onClick={updateAccordion}
+    >
       <Link href={`/${menuItem.path}`}>
         <a className="trigger-link">
           <div className="icon-box">{menuItem.icon}</div>
@@ -116,34 +181,73 @@ function ParentRoute({ menuItem }: { menuItem: ISidebarMenuItem }) {
               <IconChevron displayDirection="right" />
             </div>
           )}
+          {isExternalRoute && (
+            <div className="icon-box">
+              <IconOutsideLink />
+            </div>
+          )}
         </a>
       </Link>
+    </button>
+  );
+}
+
+function PrimaryNavItems() {
+  const navItemsIndex = 0;
+  const navItems = SidebarMenuItems[navItemsIndex];
+
+  const [accordion, setAccordion] = useState({
+    isOpen: false,
+    currentIndex: -1,
+  });
+
+  return (
+    <div className="nav-items">
+      {Object.keys(navItems).map((items, index) => {
+        const itemsAsNumber = Number(items);
+        const menuItem = SidebarMenuItems[navItemsIndex][itemsAsNumber];
+
+        return (
+          <div className="nav-item__box" key={itemsAsNumber}>
+            <ParentRoute
+              {...{ menuItem, accordion, setAccordion, parentIndex: index }}
+            />
+            <AnimatePresence>
+              {menuItem.routes &&
+                accordion.isOpen &&
+                accordion.currentIndex === index && (
+                  <ChildrenRoutes
+                    {...{
+                      parentRoutePath: menuItem.path,
+                      routes: menuItem.routes,
+                    }}
+                  />
+                )}
+            </AnimatePresence>
+          </div>
+        );
+      })}
     </div>
   );
 }
 
-function NavItems() {
+function SecondaryNavitems() {
+  const navItemsIndex = 1;
+  const navItems = SidebarMenuItems[navItemsIndex];
+
   return (
-    <>
-      {Object.keys(SidebarMenuItems).map((items) => {
+    <div className="nav-items">
+      {Object.keys(navItems).map((items) => {
         const itemsAsNumber = Number(items);
-        const menuItem = SidebarMenuItems[itemsAsNumber];
+        const menuItem = SidebarMenuItems[navItemsIndex][itemsAsNumber];
 
         return (
           <div className="nav-item__box" key={itemsAsNumber}>
-            <ParentRoute {...{ menuItem }} />
-            {/* {menuItem.routes && (
-              <ChildrenRoutes
-                {...{
-                  parentRoutePath: menuItem.path,
-                  routes: menuItem.routes,
-                }}
-              />
-            )} */}
+            <ParentRoute {...{ menuItem, isExternalRoute: true }} />
           </div>
         );
       })}
-    </>
+    </div>
   );
 }
 
@@ -151,9 +255,9 @@ export function Sidebar() {
   return (
     <StlyedSidebar>
       <div className="nav-container">
-        <div className="nav-items">
-          <NavItems />
-        </div>
+        <PrimaryNavItems />
+        <div className="hr-separator" />
+        <SecondaryNavitems />
       </div>
     </StlyedSidebar>
   );

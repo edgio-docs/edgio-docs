@@ -2,7 +2,13 @@ import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyle = createGlobalStyle`
 :root {
+  /* Colors */
   --white: #fff;
+
+  /* Sizes */
+  --sidebar-width: 280px;
+  --container-max-width: 1228px;
+  --container-padding: 0 20px;
 }
 
 html, body {

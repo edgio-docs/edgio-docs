@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 
 const StyledContainer = styled.div`
-  max-width: 1076px;
+  max-width: var(--container-max-width);
+  padding: var(--container-padding);
   margin: 0 auto;
-  padding: 0 20px;
 `;
 
 interface IContainerProps {

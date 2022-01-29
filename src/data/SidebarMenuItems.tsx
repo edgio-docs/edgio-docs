@@ -50,18 +50,20 @@ import { IconVue } from '../components/Icon/IconVue';
 import { IconZola } from '../components/Icon/IconZola';
 import { IconVueStorefront } from '../components/Icon/VueStorefront';
 
-interface ISidebarMenuItems {
+export interface IChildrenRoutes {
+  title: string;
+  path: string;
+  icon?: JSX.IntrinsicElements['svg'];
+}
+
+export interface ISidebarMenuItem {
   title: string;
   icon: JSX.IntrinsicElements['svg'];
   path: string;
-  routes?: Array<{
-    title: string;
-    path: string;
-    icon?: JSX.IntrinsicElements['svg'];
-  }>;
+  routes?: Array<IChildrenRoutes>;
 }
 
-const SidebarMenuItems: Array<ISidebarMenuItems> = [
+const SidebarMenuItems: Array<ISidebarMenuItem> = [
   {
     title: 'Platform Overview',
     icon: <IconLogo />,

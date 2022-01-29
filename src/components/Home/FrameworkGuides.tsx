@@ -18,6 +18,7 @@ import { IconSvelte } from '../Icon/IconSvelte';
 import { IconVue } from '../Icon/IconVue';
 import { StyledFeatureSection } from './FeatureSection';
 import SectionHeader from './SectionHeader';
+import { getChildrenRoutesFromSidebarMenuItems } from '../../utils/getChildrenRoutesFromSidebarMenuItems';
 
 const StyledComp = styled(StyledFeatureSection)`
   .icon {
@@ -37,94 +38,96 @@ export default function DeveloperTools() {
   const routesCol1: Array<IRoutesProps> = [
     {
       title: 'Next.js',
-      path: 'caching',
+      path: 'nextjs',
       icon: <IconNextJS />,
     },
     {
       title: 'React',
-      path: 'edgejs-routing',
+      path: 'react',
       icon: <IconReact />,
     },
     {
       title: 'Vue Storefront',
-      path: 'edgejs-routing',
+      path: 'vue-storefront',
       icon: <IconVue />,
     },
     {
       title: 'Gatsby',
-      path: 'caching',
+      path: 'gatsby',
       icon: <IconGatsby />,
     },
     {
       title: 'Vue.js',
-      path: 'caching',
+      path: 'vuejs',
       icon: <IconVue />,
     },
     {
       title: 'Angular',
-      path: 'caching',
+      path: 'angular',
       icon: <IconAngular />,
     },
   ];
   const routesCol2: Array<IRoutesProps> = [
     {
       title: 'Serverless functions',
-      path: 'caching',
+      path: 'serverless-functions',
       icon: <IconServerlessFunctions />,
     },
     {
       title: 'Remix',
-      path: 'edgejs-routing',
+      path: 'remix',
       icon: <IconRemix />,
     },
     {
       title: 'Next.js Commerce',
-      path: 'edgejs-routing',
+      path: 'nextjs-commerce',
       icon: <IconNextJSCommerce />,
     },
     {
       title: 'Svelte',
-      path: 'caching',
+      path: 'svelte',
       icon: <IconSvelte />,
     },
     {
       title: 'SolidJS',
-      path: 'caching',
+      path: 'solidjs',
       icon: <IconSolidJS />,
     },
     {
       title: 'React Static',
-      path: 'caching',
+      path: 'react-static',
       icon: <IconReactStatic />,
     },
   ];
   const routesCol3: Array<IRoutesProps> = [
     {
       title: 'Ionic Vue',
-      path: 'caching',
+      path: 'ionic-vue',
       icon: <IconVue />,
     },
     {
       title: 'Gridsome',
-      path: 'edgejs-routing',
+      path: 'gridsome',
       icon: <IconGridsome />,
     },
     {
       title: 'Preact',
-      path: 'edgejs-routing',
+      path: 'preact',
       icon: <IconPreact />,
     },
     {
       title: 'Ember.js',
-      path: 'caching',
+      path: 'emberjs',
       icon: <IconEmberJS />,
     },
     {
       title: 'Astro',
-      path: 'caching',
+      path: 'astro',
       icon: <IconAstro />,
     },
   ];
+
+  const parentPath = 'framework-guides';
 
   const routes = [routesCol1, routesCol2, routesCol3];
 
@@ -147,7 +150,7 @@ export default function DeveloperTools() {
                   ) : (
                     <div className="dot" />
                   )}
-                  <Link href={path}>{title}</Link>
+                  <Link href={`/${parentPath}/${path}`}>{title}</Link>
                 </li>
               ))}
               {index === 2 && (

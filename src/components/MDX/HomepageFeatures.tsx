@@ -1,14 +1,14 @@
 import styled from 'styled-components';
-import Container from '../Layout/Container';
-import GetStarted from '../Home/GetStarted';
-import SectionHeader from '../Home/SectionHeader';
-import { IconSpark } from '../Icon/IconSpark';
-import Cdn from '../Home/Cdn';
-import Reference from '../Home/Reference';
-import DeveloperTools from '../Home/DeveloperTools';
 import AccountsandTeams from '../Home/AccountsandTeams';
+import Cdn from '../Home/Cdn';
+import DeveloperTools from '../Home/DeveloperTools';
 import FrameworkGuides from '../Home/FrameworkGuides';
+import GetStarted from '../Home/GetStarted';
+import Reference from '../Home/Reference';
+import SectionHeader from '../Home/SectionHeader';
 import VideosandTutorials from '../Home/VideosandTutorials';
+import { IconSpark } from '../Icon/IconSpark';
+import Container from '../Layout/Container';
 
 const StyledHomepageFeatures = styled.div`
   .section-container {

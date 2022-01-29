@@ -1,6 +1,8 @@
 import Link from 'next/link';
 import styled from 'styled-components';
-import SidebarMenuItems from '../../../data/SidebarMenuItems';
+import SidebarMenuItems, {
+  ISidebarMenuItem,
+} from '../../../data/SidebarMenuItems';
 import { IconChevron } from '../../Icon/IconChevron';
 
 const StlyedSidebar = styled.div`
@@ -80,39 +82,64 @@ const StlyedSidebar = styled.div`
   }
 `;
 
+// function ChildrenRoutes({
+//   parentRoutePath,
+//   routes,
+// }: {
+//   parentRoutePath: string;
+//   routes: Array<{
+//     title: string;
+//     path: string;
+//     icon?: JSX.IntrinsicElements['svg'];
+//   }>;
+// }) {
+//   return (
+//     <div className="routes">
+//       {routes.map((route, i) => (
+//         <div className="route" key={i}>
+//           <Link href={`/${parentRoutePath}/${route.path}`}>{route.title}</Link>
+//         </div>
+//       ))}
+//     </div>
+//   );
+// }
+
+function ParentRoute({ menuItem }: { menuItem: ISidebarMenuItem }) {
+  return (
+    <div className="nav-item__box-inner">
+      <Link href={`/${menuItem.path}`}>
+        <a className="trigger-link">
+          <div className="icon-box">{menuItem.icon}</div>
+          <span className="menu-item__title">{menuItem.title}</span>
+          {menuItem.routes && (
+            <div className="icon-box">
+              <IconChevron displayDirection="right" />
+            </div>
+          )}
+        </a>
+      </Link>
+    </div>
+  );
+}
+
 function NavItems() {
   return (
     <>
       {Object.keys(SidebarMenuItems).map((items) => {
         const itemsAsNumber = Number(items);
-        const menuItems = SidebarMenuItems[itemsAsNumber];
+        const menuItem = SidebarMenuItems[itemsAsNumber];
 
         return (
           <div className="nav-item__box" key={itemsAsNumber}>
-            <div className="nav-item__box-inner">
-              <Link href={`/${menuItems.path}`}>
-                <a className="trigger-link">
-                  <div className="icon-box">{menuItems.icon}</div>
-                  <span className="menu-item__title">{menuItems.title}</span>
-                  {menuItems.routes && (
-                    <div className="icon-box">
-                      <IconChevron displayDirection="right" />
-                    </div>
-                  )}
-                </a>
-              </Link>
-            </div>
-            {menuItems.routes && (
-              <div className="routes">
-                {menuItems.routes.map((route, i) => (
-                  <div className="route" key={i}>
-                    <Link href={`/${menuItems.path}/${route.path}`}>
-                      {route.title}
-                    </Link>
-                  </div>
-                ))}
-              </div>
-            )}
+            <ParentRoute {...{ menuItem }} />
+            {/* {menuItem.routes && (
+              <ChildrenRoutes
+                {...{
+                  parentRoutePath: menuItem.path,
+                  routes: menuItem.routes,
+                }}
+              />
+            )} */}
           </div>
         );
       })}

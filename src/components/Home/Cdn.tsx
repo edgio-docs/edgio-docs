@@ -1,99 +1,20 @@
 import Link from 'next/link';
 import styled from 'styled-components';
+import { getChildrenRoutesFromSidebarMenuItems } from '../../utils/getChildrenRoutesFromSidebarMenuItems';
 import { IconServer } from '../Icon/IconServer';
 import { StyledFeatureSection } from './FeatureSection';
 import SectionHeader from './SectionHeader';
 
 const StyledComp = styled(StyledFeatureSection)``;
-interface IRoutesProps {
-  title: string;
-  path: string;
-  icon?: JSX.IntrinsicElements['svg'];
-}
-
 export default function Cdn() {
-  const routesCol1: Array<IRoutesProps> = [
-    {
-      title: 'Caching',
-      path: 'caching',
-    },
-    {
-      title: 'Common Routing Patterns',
-      path: 'edgejs-routing',
-    },
-    {
-      title: 'Connectors',
-      path: '',
-    },
-    {
-      title: 'Core Web Vitals',
-      path: '',
-    },
-    {
-      title: 'Custom Domains & SSL',
-      path: '',
-    },
-    {
-      title: 'Edge Network',
-      path: '',
-    },
-  ];
+  const parentPath = 'cdn';
+  const allRoutes = getChildrenRoutesFromSidebarMenuItems(parentPath);
 
-  const routesCol2: Array<IRoutesProps> = [
-    {
-      title: 'EdgeJS Routing',
-      path: 'edgejs-routing',
-    },
-    {
-      title: 'Image Optimization',
-      path: 'edgejs-routing',
-    },
-    {
-      title: 'Incremental Static (Re)generation',
-      path: '',
-    },
-    {
-      title: 'Performance',
-      path: '',
-    },
-    {
-      title: 'Prefetching',
-      path: '',
-    },
-    {
-      title: 'Purging',
-      path: '',
-    },
+  const routesByColumns = [
+    allRoutes?.slice(0, 6),
+    allRoutes?.slice(6, 12),
+    allRoutes?.slice(12),
   ];
-
-  const routesCol3: Array<IRoutesProps> = [
-    {
-      title: 'Security',
-      path: 'edgejs-routing',
-    },
-    {
-      title: 'Split Testing',
-      path: 'edgejs-routing',
-    },
-    {
-      title: 'Static Prerendering',
-      path: '',
-    },
-    {
-      title: 'Third Party CDNs',
-      path: '',
-    },
-    {
-      title: 'Traditional Sites',
-      path: '',
-    },
-    {
-      title: 'Troubleshooting',
-      path: '',
-    },
-  ];
-
-  const routes = [routesCol1, routesCol2, routesCol3];
 
   return (
     <StyledComp>
@@ -104,13 +25,13 @@ export default function Cdn() {
       />
 
       <div className="route-items">
-        {routes.map((route, index) => (
+        {routesByColumns.map((route, index) => (
           <div className={`route-items__col${index + 1}`} key={index}>
             <ul className="route-list__items">
               {route.map(({ path, title }) => (
                 <li className="route-list__item" key={title}>
                   <div className="dot" />
-                  <Link href={path}>{title}</Link>
+                  <Link href={`/${parentPath}/${path}`}>{title}</Link>
                 </li>
               ))}
             </ul>

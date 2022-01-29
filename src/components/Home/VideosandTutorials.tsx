@@ -42,8 +42,8 @@ export default function DeveloperTools() {
       <SectionHeader title="Layer0 Videos and Tutorials" />
 
       <div className="videos">
-        {videos.map((video) => (
-          <div className="video">
+        {videos.map((video, index) => (
+          <div className="video" key={index}>
             <h1 className="title">{video.title}</h1>
             <div className="video-embed__box">
               <figure>

@@ -4,6 +4,8 @@ const GlobalStyle = createGlobalStyle`
 :root {
   /* Colors */
   --white: #fff;
+  --black1: #1a1a1a;
+  --pink: #E95495;
 
   /* Sizes */
   --sidebar-width: 280px;

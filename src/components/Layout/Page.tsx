@@ -1,5 +1,6 @@
 import * as React from 'react';
 import styled from 'styled-components';
+import Header from './Header/Header';
 import { Sidebar } from './Sidebar/Sidebar';
 
 interface PageProps {
@@ -9,17 +10,6 @@ interface PageProps {
 const StyledDocs = styled.div`
   --sidebar-width: 280px;
   --header-height: 64px;
-
-  .docs-header {
-    position: sticky;
-    top: 0;
-    z-index: 1;
-    background: white;
-    width: 100%;
-    height: var(--header-height);
-    box-shadow: inset 0 -1px #e3e8ee;
-    padding: 17px 17px 17px 32px;
-  }
 
   .docs-content {
     width: 100%;
@@ -56,9 +46,7 @@ const StyledDocs = styled.div`
 export function Page({ children }: PageProps) {
   return (
     <StyledDocs className="docs">
-      <header className="docs-header">
-        <h1>Header</h1>
-      </header>
+      <Header />
       <main className="docs-content">
         {/* app-content */}
         <div className="docs-side__nav">

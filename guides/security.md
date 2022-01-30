@@ -31,8 +31,7 @@ new Router().match('/:path*', ({ setResponseHeader }) => {
 
 ## Enabling Basic Authentication
 
-You can add basic authentication to your site using the `requireBasicAuth` router method. For example, add the following to the
-top of your router:
+You can add basic authentication to your site using the `requireBasicAuth` router method. For example, add the following to the top of your router:
 
 ```js
 router.requireBasicAuth({
@@ -41,8 +40,10 @@ router.requireBasicAuth({
 })
 ```
 
-Then, add `BASIC_AUTH_USERNAME` and `BASIC_AUTH_PASSWORD` environment variables to each environment that should enforce basic authentication. Any environment without those
-environment variables will not enforce basic authentication.
+Then, add `BASIC_AUTH_USERNAME` and `BASIC_AUTH_PASSWORD` environment variables to each environment that should enforce 
+basic authentication. Any environment without those environment variables will not enforce basic authentication.
+
+Once deployed, the router will return 403 Forbidden for requests that have the incorrect basic authentication token and 401 Unauthorized for requests that have no basic authentication token.
 
 ## SSL
 

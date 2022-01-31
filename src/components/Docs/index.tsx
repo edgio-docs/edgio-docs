@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Toc } from '../Layout/Toc';
 
 const StyledDocs = styled.div`
   max-width: 1228px;
@@ -17,23 +18,21 @@ const StyledDocs = styled.div`
     box-shadow: inset 1px 0px #e3e8ee;
   }
 
-  .docs-article__toc {
-    box-shadow: inset 1px 0px #e3e8ee;
-  }
-
   .docs-article__header {
     padding-top: 32px;
   }
 
   .docs-article__body {
     display: grid;
-    gap: 24px 0;
+    gap: 16px 0;
 
     .article-heading {
       color: #1a1a1a;
       display: flex;
       align-items: center;
       gap: 10px;
+      scroll-margin-top: calc(var(--header-height) + 16px);
+      padding-top: 16px;
 
       .anchor svg {
         visibility: hidden;
@@ -107,9 +106,11 @@ const StyledDocs = styled.div`
 export default function Docs({
   title,
   children,
+  tocHeadings,
 }: {
   title: string;
   children: React.ReactNode;
+  tocHeadings: { url: string; depth: number; text: string }[];
 }) {
   return (
     <StyledDocs className="docs-body">
@@ -119,7 +120,7 @@ export default function Docs({
         </header>
         <div className="docs-article__body">{children}</div>
       </article>
-      <div className="docs-article__toc">.</div>
+      <Toc headings={tocHeadings} />
     </StyledDocs>
   );
 }

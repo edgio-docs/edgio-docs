@@ -16,7 +16,7 @@ $ 0 init
 
 > For more information on adding Layer0 to an existing app, see [Getting Started](/getting_started#section_adding_layer0_to_an_existing_app)
 
-## Configure the Origin {/* origin-configuration */}
+### Configure the Origin {/* origin-configuration */}
 To configure the origin domain from which your GraphQL API is served, add a backend to `layer0.config.js`. For example:
 
 ```js
@@ -35,7 +35,7 @@ module.exports = {
 
 There are two ways to cache GraphQL responses using Layer0: by adding caching rules to your Layer0 router or by using the `cache-control` header
 
-## Using the Layer0 Router {/* using-layer0-router */}
+### Using the Layer0 Router {/* using-layer0-router */}
 
 Imagine you have a query named `GetProduct`:
 
@@ -68,7 +68,7 @@ export default new Router().graphqlOperation('GetProduct', ({ cache, proxy }) =>
 })
 ```
 
-## Match Operations by Regular Expression {/* match-operations-by-regex */}
+### Match Operations by Regular Expression {/* match-operations-by-regex */}
 
 The `graphqlOperation` method also allows you to match operations using a regular expression:
 
@@ -78,7 +78,7 @@ export default new Router().graphqlOperation(/product/i, ({ cache, proxy }) => {
 })
 ```
 
-## Alter the Default GraphQL API Path {/* alter-default-graphql-api-path */}
+### Alter the Default GraphQL API Path {/* alter-default-graphql-api-path */}
 
 Most GraphQL APIs are hosted on the `/graphql` path. The `graphqlOperation` method will only match requests
 sent to `/graphql` by default. To use a different `path`, specify the path option:
@@ -95,7 +95,7 @@ export default new Router().graphqlOperation(
 )
 ```
 
-## Use the Cache-Control Header {/* use-cache-control-header */}
+### Use the Cache-Control Header {/* use-cache-control-header */}
 
 Layer0 supports caching GraphQL responses at the network edge using the standard `cache-control` HTTP response header.
 For example, to cache the results of a query for one hour, add the following header to your response:
@@ -111,17 +111,17 @@ For example, to allow stale responses to be served for up to 24 hours, use:
 cache-control: max-age=3600, stale-while-revalidate=86400
 ```
 
-## Cache Key {/* cache-key */}
+### Cache Key {/* cache-key */}
 
 Regardless of the method you choose to define caching rules, Layer0 incorporates the request body into the cache key for
 all POST requests. This means that if two requests have different request bodies, their responses will be cached separately.
 
-## Invalidate Stale Queries {/* invalidate-stale-queries */}
+### Invalidate Stale Queries {/* invalidate-stale-queries */}
 
 Layer0 gives you the ability to purge individual queries from the edge cache by assigning surrogate keys to each cached
 response.
 
-## Assign Surrogate Keys {/* assign-surrogate-keys */}
+### Assign Surrogate Keys {/* assign-surrogate-keys */}
 
 To invalidate a cached query, you must first assign a surrogate key to the response before it is cached. You can do this
 using the router:

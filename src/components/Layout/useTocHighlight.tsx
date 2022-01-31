@@ -3,20 +3,17 @@
  */
 
 import React from 'react';
-import {siteConfig} from 'siteConfig';
+import { siteConfig } from 'siteConfig';
 
 const TOP_OFFSET = 75;
 
 export function getHeaderAnchors(): HTMLAnchorElement[] {
   return Array.prototype.filter.call(
     document.getElementsByClassName(siteConfig.headerIdConfig.className),
-    function (testElement) {
-      return (
-        testElement.parentNode.nodeName === 'H1' ||
-        testElement.parentNode.nodeName === 'H2' ||
-        testElement.parentNode.nodeName === 'H3'
-      );
-    }
+    (testElement) =>
+      testElement.parentNode.nodeName === 'H1' ||
+      testElement.parentNode.nodeName === 'H2' ||
+      testElement.parentNode.nodeName === 'H3'
   );
 }
 
@@ -42,7 +39,7 @@ export function useTocHighlight() {
       let index = -1;
       while (index < headersAnchors.length - 1) {
         const headerAnchor = headersAnchors[index + 1];
-        const {top} = headerAnchor.getBoundingClientRect();
+        const { top } = headerAnchor.getBoundingClientRect();
 
         if (top >= TOP_OFFSET) {
           break;

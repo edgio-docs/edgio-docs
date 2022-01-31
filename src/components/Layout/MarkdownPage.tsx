@@ -27,13 +27,31 @@ export function MarkdownPage<
 
   const isHomePage = route === '/';
 
+  const tocHeadings = React.Children.toArray(children)
+    .filter((child) => {
+      if (child.props?.mdxType) {
+        return ['h1', 'h2', 'h3'].includes(child.props.mdxType);
+      }
+      return false;
+    })
+    .map((child: any) => ({
+      url: `#${child.props.id}`,
+      depth:
+        (child.props?.mdxType &&
+          parseInt(child.props.mdxType.replace('h', ''), 0)) ??
+        0,
+      text: child.props.children,
+    }));
+
   return (
     <MDXProvider components={MDXComponents}>
       {isHomePage ? (
         children
       ) : (
         <div className="docs">
-          <Docs title={title}>{children}</Docs>
+          <Docs title={title} tocHeadings={tocHeadings}>
+            {children}
+          </Docs>
         </div>
       )}
       <div style={{ height: '64px', boxShadow: 'inset 0px 1px #e3e8ee' }} />

@@ -43,13 +43,13 @@ router.requireBasicAuth({
 Then, add `BASIC_AUTH_USERNAME` and `BASIC_AUTH_PASSWORD` environment variables to each environment that should enforce 
 basic authentication. Any environment without those environment variables will not enforce basic authentication.
 
-Once deployed, the router will return 403 Forbidden for requests that have the incorrect basic authentication token and 401 Unauthorized for requests that have no basic authentication token.
+Once deployed, the router will return 403 Forbidden for requests that have the incorrect basic authentication token, and 401 Unauthorized for requests that have no basic authentication token.
 
 ## SSL
 
 By default {{ PRODUCT_NAME }} only serves traffic over the `https` protocol. It automatically redirects `http` requests to the same URL, including any query strings, on `https`.
 
-We strongly discourage the use of `http` protocol but if you _must_ enable it then you can do so by adding `protocol: 'http'` to your route criteria. For example:
+We strongly discourage the use of `http` protocol, but if you _must_ enable it, then you can do so by adding `protocol: 'http'` to your route criteria. For example:
 
 ```js
 // routes.js

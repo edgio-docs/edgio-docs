@@ -455,8 +455,8 @@
         "href": "/guides/[...guide]"
       },
       {
-        "text": "Bots",
-        "as": "/guides/bots",
+        "text": "Managed Rule Groups",
+        "as": "/guides/managed_rule_groups",
         "href": "/guides/[...guide]"
       },
       {

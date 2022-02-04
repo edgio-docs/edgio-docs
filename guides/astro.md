@@ -41,10 +41,9 @@ $ 0 init
 
 ## Update your Layer0 Router
 
-Paste the following into routes.ts:
+Paste the following into `routes.js` or `routes.ts`, depending on the results of the `init astro` command:
 
 ```js
-// routes.ts
 import { Router } from '@layer0/core'
 
 export default new Router()

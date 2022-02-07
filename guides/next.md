@@ -403,7 +403,7 @@ module.exports = with{{ PRODUCT_NAME }}(
   withServiceWorker({
     // Output source maps so that stack traces have original source filenames and line numbers when tailing
     // the logs in the {{ PRODUCT_NAME }} developer console.
-    {{ CLI_NAME }}SourceMaps: true,
+    SourceMaps: true,
     i18n,
   }),
 )

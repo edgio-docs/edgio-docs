@@ -1,13 +1,16 @@
 {
-  "name": "layer0-docs",
-  "version": "1.0.0",
-  "private": true,
-  "license": "CC",
   "scripts": {
+    "layer0:dev": "layer0 dev",
+    "layer0:build": "layer0 build",
+    "layer0:deploy": "layer0 deploy",
     "dev": "next",
     "build": "next build",
     "start": "next start"
   },
+  "name": "layer0-docs",
+  "version": "1.0.0",
+  "private": true,
+  "license": "CC",
   "dependencies": {
     "@codesandbox/sandpack-react": "^0.1.20",
     "@docsearch/css": "3.0.0-alpha.41",
@@ -35,6 +38,12 @@
     "@babel/core": "^7.16.0",
     "@babel/eslint-parser": "^7.16.3",
     "@babel/preset-react": "^7.16.0",
+    "@layer0/cli": "^4.10.1",
+    "@layer0/core": "^4.10.1",
+    "@layer0/devtools": "^4.10.1",
+    "@layer0/next": "^4.10.1",
+    "@layer0/prefetch": "^4.10.1",
+    "@layer0/react": "^4.10.1",
     "@mdx-js/loader": "^1.6.16",
     "@types/body-scroll-lock": "^2.6.1",
     "@types/classnames": "^2.2.10",

@@ -58,14 +58,14 @@ To prepare your Nuxt.js application for {{ PRODUCT_NAME }}:
 
 module.exports = {
   ...
-  buildModules: [['{{ PACKAGE_NAME }}/nuxt/module', { layer0SourceMaps: true }]],
+  buildModules: [['{{ PACKAGE_NAME }}/nuxt/module', { {{ FULL_CLI_NAME }}SourceMaps: true }]],
   ...
 }
 ```
 
 Options:
 
-- `layer0SourceMaps: true|false`: when true, the serverless build includes sourcemap files which make debugging easier when tailing the server logs in the Layer0 Developer Console. It also increases the serverless bundle size, which may push your deployments over the 50MB (compressed) limit.
+- `{{ FULL_CLI_NAME }}SourceMaps: true|false`: when true, the serverless build includes sourcemap files which make debugging easier when tailing the server logs in the Layer0 Developer Console. It also increases the serverless bundle size, which may push your deployments over the 50MB (compressed) limit.
 
 2. Run `{{ CLI_NAME }} init` to configure your project for {{ PRODUCT_NAME }}.
 

@@ -22,6 +22,12 @@ const StyledHeader = styled.header`
     align-items: center;
   }
 
+  .col-1 {
+    .logo-box {
+      cursor: pointer;
+    }
+  }
+
   .col-2 {
     justify-content: center;
 
@@ -117,9 +123,11 @@ export default function Header() {
   return (
     <StyledHeader className="docs-header">
       <div className="col-1">
-        <div className="logo-box">
-          <IconLogoWithText />
-        </div>
+        <Link href="/">
+          <div className="logo-box">
+            <IconLogoWithText className="logo" />
+          </div>
+        </Link>
       </div>
       <div className="col-2">
         <div className="search-form__box">

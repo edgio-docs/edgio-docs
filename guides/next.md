@@ -86,7 +86,7 @@ module.exports = with{{ PRODUCT_NAME }}(
   withServiceWorker({
     // Output source maps so that stack traces have original source filenames and line numbers when tailing
     // the logs in the {{ PRODUCT_NAME }} developer console.
-    {{ CLI_NAME }}SourceMaps: true,
+    {{ FULL_CLI_NAME }}SourceMaps: true,
   })
 )
 ```
@@ -95,7 +95,7 @@ module.exports = with{{ PRODUCT_NAME }}(
 
 The `with{{ PRODUCT_NAME }}` plugin optimizes the Next.js build for running on {{ PRODUCT_NAME }}. It is required to deploy your application on {{ PRODUCT_NAME }} and accepts the following parameters:
 
-- `{{ CLI_NAME }}SourceMaps`: Defaults to `false`. Set to `true` to add server-side source maps so that stack traces have original source filenames and line numbers when tailing the logs in the {{ PRODUCT_NAME }} developer console. This will increase the serverless bundle size but will not affect performance. If you find that your app exceeds the maximum serverless bundle size allowed by {{ PRODUCT_NAME }}, you can disable this option to conserve space.
+- `{{ FULL_CLI_NAME }}SourceMaps`: Defaults to `false`. Set to `true` to add server-side source maps so that stack traces have original source filenames and line numbers when tailing the logs in the {{ PRODUCT_NAME }} developer console. This will increase the serverless bundle size but will not affect performance. If you find that your app exceeds the maximum serverless bundle size allowed by {{ PRODUCT_NAME }}, you can disable this option to conserve space.
 
 ### withServiceWorker
 
@@ -403,7 +403,7 @@ module.exports = with{{ PRODUCT_NAME }}(
   withServiceWorker({
     // Output source maps so that stack traces have original source filenames and line numbers when tailing
     // the logs in the {{ PRODUCT_NAME }} developer console.
-    SourceMaps: true,
+    {{ FULL_CLI_NAME }}SourceMaps: true,
     i18n,
   }),
 )

@@ -2,6 +2,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 import Link from 'next/link';
 import styled from 'styled-components';
 import { useState } from 'react';
+import { useRouter } from 'next/router';
 import SidebarMenuItems, {
   ISidebarMenuItem,
 } from '../../../data/SidebarMenuItems';
@@ -9,7 +10,7 @@ import { IconChevron } from '../../Icon/IconChevron';
 import { IconOutsideLink } from '../../Icon/IconOutsideLink';
 
 const StlyedSidebar = styled.div`
-  color: black;
+  color: var(--black1);
   font-size: 14px;
   font-weight: 500;
   height: 100%;
@@ -42,7 +43,7 @@ const StlyedSidebar = styled.div`
     column-gap: 10px;
     text-decoration: none;
     padding: 5px 20px;
-    transition: 0.2s ease-in-out;
+    /* transition: 0.2s ease-in-out; */
     color: inherit;
     text-decoration: none;
 
@@ -90,10 +91,9 @@ const StlyedSidebar = styled.div`
       flex: 1;
       padding-left: 12px;
       padding: 4px 0 4px 12px;
-      color: black;
+      color: var(--black1);
       text-decoration: none;
-
-      transition: 0.2s ease-in-out;
+      /* transition: 0.2s ease-in-out; */
 
       :hover {
         background-color: #e5e5e5;
@@ -195,10 +195,26 @@ function ParentRoute({
 function PrimaryNavItems() {
   const navItemsIndex = 0;
   const navItems = SidebarMenuItems[navItemsIndex];
+  const router = useRouter();
+
+  const currentRoutePath = router.pathname.split('/')[1];
+  const currentRoute = navItems.find(
+    (navItem) => currentRoutePath === navItem.path
+  );
+  const currentRouteIndex = navItems.findIndex(
+    (navItem) => currentRoutePath === navItem.path
+  );
+
+  // console.log(currentRoutePath);
+  // console.log(currentRoute);
+  // console.log(currentRouteIndex);
+
+  const routeHasChildren = !!currentRoute?.routes;
+  // console.log(routeHasChildren);
 
   const [accordion, setAccordion] = useState({
-    isOpen: false,
-    currentIndex: -1,
+    isOpen: routeHasChildren,
+    currentIndex: currentRouteIndex,
   });
 
   return (

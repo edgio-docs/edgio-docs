@@ -2,7 +2,6 @@ import { AnimatePresence, motion } from 'framer-motion';
 import Link from 'next/link';
 import styled from 'styled-components';
 import { useState } from 'react';
-import { useRouter } from 'next/router';
 import SidebarMenuItems, {
   ISidebarMenuItem,
 } from '../../../data/SidebarMenuItems';
@@ -240,7 +239,6 @@ function PrimaryNavItems() {
                 accordion.currentIndex === index && (
                   <ChildrenRoutes
                     {...{
-                      parentRoutePath: menuItem.path,
                       routes: menuItem.routes,
                     }}
                   />

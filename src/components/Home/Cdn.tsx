@@ -31,7 +31,7 @@ export default function Cdn() {
               {route.map(({ path, title }) => (
                 <li className="route-list__item" key={title}>
                   <div className="dot" />
-                  <Link href={`/${parentPath}/${path}`}>{title}</Link>
+                  <Link href={path}>{title}</Link>
                 </li>
               ))}
             </ul>

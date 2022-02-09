@@ -150,7 +150,7 @@ export default function DeveloperTools() {
                   ) : (
                     <div className="dot" />
                   )}
-                  <Link href={`/${parentPath}/${path}`}>{title}</Link>
+                  <Link href={path}>{title}</Link>
                 </li>
               ))}
               {index === 2 && (

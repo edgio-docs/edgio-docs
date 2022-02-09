@@ -50,6 +50,12 @@ prefetch('/some/url')
 
 Prefetch requests are given the lowest priority. This ensures that they do not block more critical requests like API calls, images, scripts, and navigation.
 
+## The cache-manifest.js File
+
+This file is generated at runtime and is used by the `Prefetcher` class  from `@xdn/prefetch` to add routes to the [service worker](#section_service_worker). The routes ensure that custom cache keys and the `serviceWorkerSeconds` properties from the `cache()` settings in your router are propagated to the service worker.
+
+For more information on `Prefetcher`, `serviceWorkderSeconds`, and `cache()`, see [Class Prefetcher](https://docs.layer0.co/docs/api/prefetch/classes/_sw_prefetcher_.prefetcher.html).
+
 ## React
 
 The `{{ PACKAGE_NAME }}/react` package provides a `Prefetch` component that you can wrap around any link to prefetch the link when it becomes visible in the viewport:

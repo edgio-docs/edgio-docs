@@ -38,6 +38,7 @@ const StlyedSidebar = styled.div`
   }
 
   .trigger-link {
+    cursor: pointer;
     display: flex;
     align-items: center;
     column-gap: 10px;
@@ -88,6 +89,10 @@ const StlyedSidebar = styled.div`
     padding: 0 20px 0 4px;
 
     a {
+      display: grid;
+      gap: 6px;
+      align-items: center;
+      grid-template-columns: auto 1fr;
       flex: 1;
       padding-left: 12px;
       padding: 4px 0 4px 12px;
@@ -104,14 +109,13 @@ const StlyedSidebar = styled.div`
 `;
 
 function ChildrenRoutes({
-  parentRoutePath,
   routes,
 }: {
-  parentRoutePath: string;
   routes: Array<{
     title: string;
     path: string;
     icon?: JSX.IntrinsicElements['svg'];
+    external?: boolean;
   }>;
 }) {
   return (
@@ -128,7 +132,17 @@ function ChildrenRoutes({
     >
       {routes.map((route, i) => (
         <div className="route" key={i}>
-          <Link href={`/${parentRoutePath}/${route.path}`}>{route.title}</Link>
+          {route.external ? (
+            <a href={route.path} target="_blank" rel="noopener noreferrer">
+              {route.title}
+
+              <div className="icon-box">
+                <IconOutsideLink />
+              </div>
+            </a>
+          ) : (
+            <Link href={route.path}>{route.title}</Link>
+          )}
         </div>
       ))}
     </motion.div>
@@ -172,22 +186,20 @@ function ParentRoute({
       className="nav-item__box-inner"
       onClick={updateAccordion}
     >
-      <Link href={`/${menuItem.path}`}>
-        <a className="trigger-link">
-          <div className="icon-box">{menuItem.icon}</div>
-          <span className="menu-item__title">{menuItem.title}</span>
-          {menuItem.routes && (
-            <div className="icon-box">
-              <IconChevron displayDirection="right" />
-            </div>
-          )}
-          {isExternalRoute && (
-            <div className="icon-box">
-              <IconOutsideLink />
-            </div>
-          )}
-        </a>
-      </Link>
+      <div className="trigger-link">
+        <div className="icon-box">{menuItem.icon}</div>
+        <span className="menu-item__title">{menuItem.title}</span>
+        {menuItem.routes && (
+          <div className="icon-box">
+            <IconChevron displayDirection="right" />
+          </div>
+        )}
+        {isExternalRoute && (
+          <div className="icon-box">
+            <IconOutsideLink />
+          </div>
+        )}
+      </div>
     </button>
   );
 }
@@ -195,26 +207,20 @@ function ParentRoute({
 function PrimaryNavItems() {
   const navItemsIndex = 0;
   const navItems = SidebarMenuItems[navItemsIndex];
-  const router = useRouter();
+  // const router = useRouter();
 
-  const currentRoutePath = router.pathname.split('/')[1];
-  const currentRoute = navItems.find(
-    (navItem) => currentRoutePath === navItem.path
-  );
-  const currentRouteIndex = navItems.findIndex(
-    (navItem) => currentRoutePath === navItem.path
-  );
-
-  // console.log(currentRoutePath);
-  // console.log(currentRoute);
-  // console.log(currentRouteIndex);
-
-  const routeHasChildren = !!currentRoute?.routes;
-  // console.log(routeHasChildren);
+  // const currentRoutePath = router.pathname.split('/')[1];
+  // const currentRoute = navItems.find(
+  //   (navItem) => currentRoutePath === navItem.path
+  // );
+  // const currentRouteIndex = navItems.findIndex(
+  //   (navItem) => currentRoutePath === navItem.path
+  // );
+  // const routeHasChildren = !!currentRoute?.routes;
 
   const [accordion, setAccordion] = useState({
-    isOpen: routeHasChildren,
-    currentIndex: currentRouteIndex,
+    isOpen: true,
+    currentIndex: 0,
   });
 
   return (

@@ -41,7 +41,7 @@ export default function Frameworks() {
       <ul className="framework-lists">
         {allRoutes.map((route) => (
           <li key={route.path} className="framework-list__item">
-            <Link href={`/${parentPath}/${route.path}`} passHref>
+            <Link href={route.path} passHref>
               <a className="framework-link">
                 <div className="icon">{route.icon ? route.icon : null}</div>
                 <span className="link-text">{route.title}</span>

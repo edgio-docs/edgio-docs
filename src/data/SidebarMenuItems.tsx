@@ -31,6 +31,7 @@ import { IconReact } from '../components/Icon/IconReact';
 import { IconReactStatic } from '../components/Icon/IconReactStatic';
 import { IconReactStorefront } from '../components/Icon/IconReactStorefront';
 import { IconRemix } from '../components/Icon/IconRemix';
+import { IconRedwood } from '../components/Icon/IconRedwood';
 import { IconSaber } from '../components/Icon/IconSaber';
 import { IconSapper } from '../components/Icon/IconSapper';
 import { IconServerlessFunctions } from '../components/Icon/IconServerlessFunctions';
@@ -353,6 +354,11 @@ const SidebarMenuItems: Array<Array<ISidebarMenuItem>> = [
           title: 'React Storefront',
           path: 'react-storefront',
           icon: <IconReactStorefront />,
+        },
+        {
+          title: 'Redwood',
+          path: 'redwoodjs',
+          icon: <IconRedwood />,
         },
         {
           title: 'Remix',

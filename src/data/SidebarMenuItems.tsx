@@ -20,7 +20,7 @@ import { IconHexo } from '../components/Icon/IconHexo';
 import { IconHugo } from '../components/Icon/IconHugo';
 import { IconIonicX } from '../components/Icon/IconIonicX';
 import { IconJekyll } from '../components/Icon/IconJekyll';
-import { IconLogo } from '../components/Icon/IconLogo';
+// import { IconLogo } from '../components/Icon/IconLogo';
 import { IconMKDocs } from '../components/Icon/IconMKDocs';
 import { IconNextJS } from '../components/Icon/IconNextJS';
 import { IconNextJSCommerce } from '../components/Icon/IconNextJSCommerce';
@@ -59,6 +59,7 @@ export interface IChildrenRoutes {
   title: string;
   path: string;
   icon?: JSX.IntrinsicElements['svg'];
+  external?: boolean;
 }
 
 export interface ISidebarMenuItem {
@@ -71,34 +72,29 @@ export interface ISidebarMenuItem {
 const SidebarMenuItems: Array<Array<ISidebarMenuItem>> = [
   [
     {
-      title: 'Platform Overview',
-      icon: <IconLogo />,
-      path: '',
-    },
-    {
       title: 'Getting Started',
       icon: <IconSparkPlain />,
       path: 'getting-started',
       routes: [
         {
           title: 'WebApp CDN',
-          path: 'webapp-cdn',
+          path: '/guides/webapp_cdn_getting_started',
         },
         {
           title: 'Jamstack',
-          path: 'jamstack',
+          path: '/guides/jamstack_getting_started',
         },
         {
           title: 'GraphQL CDN',
-          path: 'graphql-cdn',
+          path: '/guides/graphql',
         },
         {
           title: 'Deploying',
-          path: 'deploying',
+          path: '/guides/deploy_apps',
         },
         {
           title: 'System Overview',
-          path: 'system-overview',
+          path: '/guides/overview',
         },
       ],
     },
@@ -108,76 +104,77 @@ const SidebarMenuItems: Array<Array<ISidebarMenuItem>> = [
       path: 'cdn',
       routes: [
         {
-          title: 'Caching',
-          path: 'caching',
-        },
-        {
-          title: 'Common Routing Patterns',
-          path: 'common-routing-patterns',
-        },
-        {
-          title: 'Connectors',
-          path: 'connectors',
-        },
-        {
-          title: 'Core Web Vitals',
-          path: 'core-web-vitals',
-        },
-        {
-          title: 'Custom Domans & SSL',
-          path: 'custom-domains-ssl',
-        },
-        {
-          title: 'Edge Network',
-          path: 'edge-network',
-        },
-        {
           title: 'EdgeJS Routing',
-          path: 'edgejs-routing',
-        },
-        {
-          title: 'Image Optimization',
-          path: 'image-optimization',
-        },
-        {
-          title: 'Incremental Static (Re)generation',
-          path: 'isg',
-        },
-        {
-          title: 'Performance',
-          path: 'performance',
-        },
-        {
-          title: 'Prefetching',
-          path: 'prefetching',
-        },
-        {
-          title: 'Purging',
-          path: 'purging',
+          path: '/guides/routing',
         },
         {
           title: 'Security',
-          path: 'security',
+          path: '/guides/security',
         },
         {
-          title: 'Split Testing',
-          path: 'split-testing',
+          title: 'Core Web Vitals',
+          path: '/guides/core_web_vitals',
         },
         {
-          title: 'Static Prerendering',
-          path: 'static-prerendering',
+          title: 'Image Optimization',
+          path: '/guides/image_optimization',
         },
         {
-          title: 'Third Party CDNs',
-          path: 'third-party-cdns',
+          title: 'Prefetching',
+          path: '/guides/prefetching',
         },
         {
           title: 'Traditional Sites',
-          path: 'traditional-sites',
+          path: '/guides/traditional_sites',
+        },
+        {
+          title: 'Caching',
+          path: '/guides/caching',
+        },
+        {
+          title: 'Purging',
+          path: '/guides/purging',
+        },
+        {
+          title: 'Static Prerendering',
+          path: '/guides/static_prerendering',
+        },
+        {
+          title: 'Incremental Static (Re)generation',
+          path: '/guides/isg',
+        },
+        {
+          title: 'Common Routing Patterns',
+          path: '/guides/cookbook',
+        },
+        {
+          title: 'Split Testing',
+          path: '/guides/split_testing',
+        },
+        {
+          title: 'Custom Domains & SSL',
+          path: '/guides/production',
+        },
+        {
+          title: 'Performance',
+          path: '/guides/performance',
+        },
+        {
+          title: 'Edge Network',
+          path: '/guides/regions',
+        },
+        {
+          title: 'Third Party CDNs',
+          path: '/guides/third_party_cdns',
+        },
+
+        {
+          title: 'Connectors',
+          path: '/guides/connectors',
         },
         {
           title: 'Troubleshooting',
-          path: 'troubleshooting',
+          path: '/guides/troubleshooting',
         },
       ],
     },
@@ -188,15 +185,15 @@ const SidebarMenuItems: Array<Array<ISidebarMenuItem>> = [
       routes: [
         {
           title: 'CLI',
-          path: 'cli',
+          path: '/guides/cli',
         },
         {
           title: 'Devtools',
-          path: 'devtools',
+          path: '/guides/devtools',
         },
         {
           title: 'Logs',
-          path: 'logs',
+          path: '/guides/logs',
         },
       ],
     },
@@ -206,12 +203,12 @@ const SidebarMenuItems: Array<Array<ISidebarMenuItem>> = [
       path: 'accounts-teams',
       routes: [
         {
-          title: 'Environments',
-          path: 'environments',
+          title: 'Teams',
+          path: '/guides/teams',
         },
         {
-          title: 'Teams',
-          path: 'teams',
+          title: 'Environments',
+          path: '/guides/environments',
         },
       ],
     },
@@ -222,227 +219,227 @@ const SidebarMenuItems: Array<Array<ISidebarMenuItem>> = [
       routes: [
         {
           title: 'Angular',
-          path: 'angular',
+          path: '/guides/angular',
           icon: <IconAngular />,
         },
         {
           title: 'Astro',
-          path: 'astro',
+          path: '/guides/astro',
           icon: <IconAstro />,
         },
         {
           title: 'Brunch',
-          path: 'brunch',
+          path: '/guides/brunch',
           icon: <IconBrunch />,
         },
         {
           title: 'Docusaurus',
-          path: 'docusaurus',
+          path: '/guides/docusaurus',
           icon: <IconDocusaurus />,
         },
         {
           title: 'Dojo',
-          path: 'dojo',
+          path: '/guides/dojo',
           icon: <IconDojo />,
         },
         {
           title: 'Eleventy',
-          path: 'eleventy',
+          path: '/guides/eleventy',
           icon: <IconEleventy />,
         },
         {
-          title: 'Ember Fastboot',
-          path: 'ember-fastboot',
+          title: 'Ember.js',
+          path: '/guides/ember',
           icon: <IconEmberFastboot />,
         },
         {
-          title: 'Ember.js',
-          path: 'ember',
+          title: 'Ember Fastboot',
+          path: '/guides/ember_fastboot',
           icon: <IconEmberJS />,
         },
         {
           title: 'Express',
-          path: 'express',
+          path: '/guides/express',
           icon: <IconExpress />,
         },
         {
           title: 'Frontity',
-          path: 'frontity',
+          path: '/guides/frontity',
           icon: <IconFrontity />,
         },
         {
           title: 'Gatsby',
-          path: 'gatsby',
+          path: '/guides/gatsby',
           icon: <IconGatsby />,
         },
         {
           title: 'Gridsome',
-          path: 'gridsome',
+          path: '/guides/gridsome',
           icon: <IconGridsome />,
         },
         {
           title: 'Hexo',
-          path: 'hexo',
+          path: '/guides/hexo',
           icon: <IconHexo />,
         },
         {
           title: 'Hugo',
-          path: 'hugo',
+          path: '/guides/hugo',
           icon: <IconHugo />,
         },
         {
           title: 'Ionic React',
-          path: 'ionic-react',
+          path: '/guides/ionic_react',
           icon: <IconIonicX />,
         },
         {
           title: 'Ionic Vue',
-          path: 'ionic-vue',
+          path: '/guides/ionic_vue',
           icon: <IconIonicX />,
         },
         {
           title: 'Jekyll',
-          path: 'jekyll',
+          path: '/guides/jekyll',
           icon: <IconJekyll />,
         },
         {
-          title: 'MKDocs',
-          path: 'mkdocs',
+          title: 'MkDocs',
+          path: '/guides/mkdocs',
           icon: <IconMKDocs />,
         },
         {
-          title: 'Next.js',
-          path: 'nextjs',
+          title: 'NX',
+          path: '/guides/nx',
           icon: <IconNextJS />,
         },
         {
-          title: 'Next.js Commerce',
-          path: 'nextjs-commerce',
+          title: 'Next.js',
+          path: '/guides/next',
           icon: <IconNextJSCommerce />,
         },
         {
-          title: 'Nuxt.js',
-          path: 'nuxtjs',
+          title: 'Next.js Commerce',
+          path: '/guides/next_commerce',
           icon: <IconAstro />,
         },
         {
-          title: 'React NX',
-          path: 'nx',
+          title: 'Nuxt.js',
+          path: '/guides/nuxt',
           icon: <IconNX />,
         },
         {
           title: 'Preact',
-          path: 'preact',
+          path: '/guides/preact',
           icon: <IconPreact />,
         },
         {
           title: 'Razzle',
-          path: 'razzle',
+          path: '/guides/razzle',
           icon: <IconRazzle />,
         },
         {
           title: 'React',
-          path: 'react',
+          path: '/guides/react',
           icon: <IconReact />,
         },
         {
           title: 'React Static',
-          path: 'react-static',
+          path: '/guides/react_static',
           icon: <IconReactStatic />,
         },
         {
           title: 'React Storefront',
-          path: 'react-storefront',
+          path: '/guides/react-storefront',
           icon: <IconReactStorefront />,
         },
         {
-          title: 'Redwood',
-          path: 'redwoodjs',
+          title: 'RedwoodJS',
+          path: '/guides/redwoodjs',
           icon: <IconRedwood />,
         },
         {
           title: 'Remix',
-          path: 'remix',
+          path: '/guides/remix',
           icon: <IconRemix />,
         },
         {
           title: 'Saber',
-          path: 'saber',
+          path: '/guides/saber',
           icon: <IconSaber />,
         },
         {
           title: 'Sapper',
-          path: 'sapper',
+          path: '/guides/sapper',
           icon: <IconSapper />,
         },
         {
           title: 'Serverless Functions',
-          path: 'serverless-functions',
+          path: '/guides/serverless_functions',
           icon: <IconServerlessFunctions />,
         },
         {
           title: 'Shopify Hydrogen',
-          path: 'shopify-hydrogen',
+          path: '/guides/shopify_hydrogen',
           icon: <IconShopifyHydrogen />,
         },
         {
           title: 'SolidJS',
-          path: 'solidjs',
+          path: '/guides/solid',
           icon: <IconSolidJS />,
         },
         {
           title: 'Spartacus',
-          path: 'spartacus',
+          path: '/guides/spartacus',
           icon: <IconSpartarcus />,
         },
         {
-          title: 'Static HTML/JavaScript',
-          path: 'static-html-javascript',
+          title: 'Static HTML/JS',
+          path: '/guides/static_sites',
           icon: <IconStaticHTMLJS />,
         },
         {
           title: 'Stencil',
-          path: 'stencil',
+          path: '/guides/stencil',
           icon: <IconStencil />,
         },
         {
           title: 'Svelte',
-          path: 'svelte',
+          path: '/guides/svelte',
           icon: <IconSvelte />,
         },
         {
           title: 'Swell',
-          path: 'swell',
+          path: '/guides/swell',
           icon: <IconSwell />,
         },
         {
           title: 'UmiJS',
-          path: 'umijs',
+          path: '/guides/umijs',
           icon: <IconUmiJS />,
         },
         {
           title: 'VitePress',
-          path: 'vitepress',
+          path: '/guides/vitepress',
           icon: <IconVitePress />,
         },
         {
           title: 'Vue Storefront',
-          path: 'vue-storefront',
+          path: '/guides/vsf',
           icon: <IconVueStorefront />,
         },
         {
           title: 'Vue.js',
-          path: 'vuejs',
+          path: '/guides/vue',
           icon: <IconVue />,
         },
         {
           title: 'VuePress',
-          path: 'vuepress',
+          path: '/guides/vuepress',
           icon: <IconVitePress />,
         },
         {
           title: 'Zola',
-          path: 'zola',
+          path: '/guides/zola',
           icon: <IconZola />,
         },
       ],
@@ -453,60 +450,60 @@ const SidebarMenuItems: Array<Array<ISidebarMenuItem>> = [
       path: 'reference',
       routes: [
         {
-          title: 'Bots',
-          path: 'bots',
-        },
-        {
           title: 'Changelog',
-          path: 'changelog',
-        },
-        {
-          title: 'Contributing',
-          path: 'contributing',
-        },
-        {
-          title: 'Cookies',
-          path: 'cookies',
-        },
-        {
-          title: 'Deploy to Layer0 Button',
-          path: 'deploy-to-layer0-button',
-        },
-        {
-          title: 'Install Node.js',
-          path: 'install-nodejs',
-        },
-        {
-          title: 'Layer0 for Traditional Sites',
-          path: 'layer0-for-traditional-sites',
-        },
-        {
-          title: 'layer0.config.js',
-          path: 'layer0-config-js',
-        },
-        {
-          title: 'Limits',
-          path: 'limits',
-        },
-        {
-          title: 'Request Headers',
-          path: 'request-headers',
-        },
-        {
-          title: 'Response Headers',
-          path: 'response-headers',
-        },
-        {
-          title: 'REST API',
-          path: 'rest-api',
+          path: '/guides/changelog',
         },
         {
           title: 'Status Codes',
-          path: 'status-codes',
+          path: '/guides/status_codes',
+        },
+        {
+          title: 'Cookies',
+          path: '/guides/cookies',
+        },
+        {
+          title: 'Managed Rule Groups',
+          path: '/guides/managed_rule_groups',
+        },
+        {
+          title: 'Layer0 for Traditional Sites',
+          path: '/guides/traditional_sites',
+        },
+        {
+          title: 'Request Headers',
+          path: '/guides/request_headers',
+        },
+        {
+          title: 'Response Headers',
+          path: '/guides/response_headers',
+        },
+        {
+          title: 'Limits',
+          path: '/guides/limits',
+        },
+        {
+          title: 'REST API',
+          path: '/guides/rest_api',
+        },
+        {
+          title: 'Install Node.js',
+          path: '/guides/install-nodejs',
+        },
+        {
+          title: 'Deploy to Layer0 Button',
+          path: '/guides/deploy-to-layer0',
+        },
+        {
+          title: 'Contributing',
+          path: '/guides/contributing',
         },
         {
           title: 'v4 Migration Guide',
-          path: 'v4-migration-guide',
+          path: '/guides/layer0_migration',
+        },
+        {
+          title: 'layer0.config.js',
+          path: '/guides/layer0_config',
         },
       ],
     },
@@ -514,11 +511,35 @@ const SidebarMenuItems: Array<Array<ISidebarMenuItem>> = [
       title: 'Videos',
       icon: <IconVideos />,
       path: 'videos',
+      routes: [
+        {
+          title: 'Product Updates',
+          path: 'https://www.youtube.com/playlist?list=PLv3_GoCvQgUn8pKufafW2Ufy0DXTL3BCp',
+          external: true,
+        },
+        {
+          title: 'Layer0 Tutorials',
+          path: 'https://www.youtube.com/playlist?list=PLv3_GoCvQgUnbIlR-OFhS9dQW4oSHv4ji',
+          external: true,
+        },
+      ],
     },
     {
       title: 'Package APIs',
       icon: <IconFolder />,
       path: 'package-apis',
+      routes: [
+        {
+          title: '@layer0/core',
+          path: 'https://docs.layer0.co/docs/api/core',
+          external: true,
+        },
+        {
+          title: '@layer0/prefetch',
+          path: 'https://docs.layer0.co/docs/api/prefetch',
+          external: true,
+        },
+      ],
     },
     {
       title: 'Learning Resources',
@@ -527,7 +548,7 @@ const SidebarMenuItems: Array<Array<ISidebarMenuItem>> = [
       routes: [
         {
           title: 'What is GraphQL?',
-          path: 'what-is-graphql',
+          path: '/guides/what_is_graphql',
         },
       ],
     },

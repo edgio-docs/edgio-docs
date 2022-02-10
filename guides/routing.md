@@ -14,7 +14,7 @@ Using the Router, you can:
 ## Configuration
 You define routes for {{ PRODUCT_NAME }} using the `routes.js` file.
 
-- For an existing project where you have already run `@layer0/cli@latest init`, the file already exists at the route of your project; modify the it as needed.
+- For an existing project where you have already run `0 init`, the file already exists at the root of your project; modify the file as needed.
 - If you have not already run `@layer0/cli@latest init` (see [WebApp CDN](/guides/webapp_cdn_getting_started) ), the file does not exist; create and edit it as follows.
 
 To define routes for {{ PRODUCT_NAME }}, create a `routes.js` file in the root of your project. You can override the default path to the router by setting the `routes` key in `{{ CONFIG_FILE }}`.

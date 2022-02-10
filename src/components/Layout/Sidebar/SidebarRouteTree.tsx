@@ -4,10 +4,9 @@
 
 import * as React from 'react';
 import cn from 'classnames';
-import {RouteItem} from 'components/Layout/useRouteMeta';
 import {useRouter} from 'next/router';
 import {removeFromLast} from 'utils/removeFromLast';
-import {useRouteMeta} from '../useRouteMeta';
+import {RouteItem, useRouteMeta} from '../useRouteMeta';
 import {SidebarLink} from './SidebarLink';
 import useCollapse from 'react-collapsed';
 import {useLayoutEffect} from 'react';
@@ -83,7 +82,7 @@ export function SidebarRouteTree({
   const expandedPath = currentRoutes.reduce(
     (acc: string | undefined, curr: RouteItem) => {
       if (acc) return acc;
-      const breadcrumb = breadcrumbs.find((b) => b.path === curr.path);
+      const breadcrumb = breadcrumbs.find((b: any) => b.path === curr.path);
       if (breadcrumb) {
         return curr.path;
       }

@@ -21,6 +21,7 @@
     "ci-check": "npm-run-all prettier:diff --parallel lint tsc lint-heading-ids",
     "tsc": "tsc --noEmit",
     "start": "next start",
+    "postinstall": "is-ci || (husky install .husky)",
     "check-all": "npm-run-all prettier lint:fix tsc"
   },
   "dependencies": {
@@ -46,9 +47,6 @@
     "styled-components": "^5.3.3"
   },
   "devDependencies": {
-    "@babel/core": "^7.16.0",
-    "@babel/eslint-parser": "^7.16.3",
-    "@babel/preset-react": "^7.16.0",
     "@layer0/cli": "^4.10.1",
     "@layer0/core": "^4.10.1",
     "@layer0/devtools": "^4.10.1",
@@ -66,8 +64,8 @@
     "@types/react": "^16.9.46",
     "@types/react-dom": "^16.9.8",
     "@types/styled-components": "^5.1.21",
-    "@typescript-eslint/eslint-plugin": "^5.6.0",
-    "@typescript-eslint/parser": "^5.6.0",
+    "@typescript-eslint/eslint-plugin": "2.x",
+    "@typescript-eslint/parser": "2.x",
     "asyncro": "^3.0.0",
     "autoprefixer": "^10.3.1",
     "babel-eslint": "10.x",

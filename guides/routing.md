@@ -12,7 +12,7 @@ Using the Router, you can:
 - Configure multiple destinations for split testing
 
 ## Configuration
-You define routes for {{ PACKAGE_NAME }} using the `routes.js` file.
+You define routes for {{ PRODUCT_NAME }} using the `routes.js` file.
 
 - For an existing project where you have already run `@layer0/cli@latest init`, the file already exists at the route of your project; modify the it as needed.
 - If you have not already run `@layer0/cli@latest init` (see [WebApp CDN](/guides/webapp_cdn_getting_started) ), the file does not exist; create and edit it as follows.

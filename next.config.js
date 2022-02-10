@@ -31,24 +31,6 @@ const _preLayer0Export = {
       );
     }
 
-    // Replace template strings (eg. {{ PRODUCT_NAME }} ) in .md files
-    config.module.rules.push({
-      test: /.mdx?$/,
-      use: [
-        {
-          loader: 'string-replace-loader',
-          options: {
-            search: '{{\\s*(\\w+)\\s*}}',
-            flags: 'gi',
-            replace(match, p1, offset, string) {
-              // return the matching constants value or the original match if not found
-              return mdConstants[p1] || match;
-            },
-          },
-        },
-      ],
-    });
-
     // Add our custom markdown loader in order to support frontmatter
     // and layout
     config.module.rules.push({
@@ -67,6 +49,19 @@ const _preLayer0Export = {
         // 1. Are all .mdx files as oppose .ts or .tsx — it essentially reads
         // from the file-system without having to getStaticProps and co
         path.join(__dirname, './plugins/md-layout-loader'),
+
+        // Replace template strings (eg. {{ PRODUCT_NAME }} ) in .md files
+        {
+          loader: 'string-replace-loader',
+          options: {
+            search: '{{\\s*(\\w+)\\s*}}',
+            flags: 'gi',
+            replace(match, p1, offset, string) {
+              // return the matching constants value or the original match if not found
+              return mdConstants[p1] || match;
+            },
+          },
+        },
       ],
     });
 

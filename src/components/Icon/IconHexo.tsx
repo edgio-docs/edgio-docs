@@ -2,7 +2,7 @@ import * as React from 'react';
 import cn from 'classnames';
 
 export const IconHexo = React.memo<JSX.IntrinsicElements['svg']>(
-  ({ className }) => (
+  ({className}) => (
     <svg className={cn('inline', className)} viewBox="0 0 512 512">
       <path
         fill="#0E83CD"

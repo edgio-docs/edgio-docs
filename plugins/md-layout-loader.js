@@ -20,21 +20,19 @@ module.exports = async function (src) {
 
   // 2. Reads the md file and gives the frontmatter and the content
   // cc. https://github.com/jonschlinkert/gray-matter
-  const { content, data } = fm(src);
-
+  const {content, data} = fm(src);
 
   // 3. Get the parent directory for the resourcePath (the current markdown file)
   const pageParentDir = path
-  .dirname(path.relative('./src/pages', this.resourcePath))
-  .split(path.sep)
+    .dirname(path.relative('./src/pages', this.resourcePath))
+    .split(path.sep)
     .shift();
 
-    // 4. Get the layout component from the frontmatter
-    const layoutMap = {
-      ".": 'Home',
-    };
-    const layout = layoutMap[pageParentDir] || 'Docs';
-
+  // 4. Get the layout component from the frontmatter
+  const layoutMap = {
+    '.': 'Home',
+  };
+  const layout = layoutMap[pageParentDir] || 'Docs';
 
   //   console.log(pageParentDir)
   // console.log("-".repeat(40));
@@ -48,7 +46,6 @@ export default withLayout(${JSON.stringify(data)})
 
 
 ` + content;
-
 
   // console.log("-".repeat(80));
   // console.log(code);

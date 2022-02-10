@@ -2,7 +2,7 @@ import * as React from 'react';
 import cn from 'classnames';
 
 export const IconLogo = React.memo<JSX.IntrinsicElements['svg']>(
-  ({ className }) => (
+  ({className}) => (
     <svg
       className={cn('inline', className)}
       width="16"
@@ -10,16 +10,14 @@ export const IconLogo = React.memo<JSX.IntrinsicElements['svg']>(
       viewBox="0 0 16 13"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      xmlnsXlink="http://www.w3.org/1999/xlink"
-    >
+      xmlnsXlink="http://www.w3.org/1999/xlink">
       <rect y="0.5" width="16" height="12" fill="url(#pattern1)" />
       <defs>
         <pattern
           id="pattern1"
           patternContentUnits="objectBoundingBox"
           width="1"
-          height="1"
-        >
+          height="1">
           <use
             xlinkHref="#image0_65_538"
             transform="translate(-0.025) scale(0.0138889 0.0185185)"

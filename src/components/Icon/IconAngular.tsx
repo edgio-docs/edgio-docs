@@ -2,7 +2,7 @@ import * as React from 'react';
 import cn from 'classnames';
 
 export const IconAngular = React.memo<JSX.IntrinsicElements['svg']>(
-  ({ className }) => (
+  ({className}) => (
     <svg className={cn('inline', className)} viewBox="0 0 256 270">
       <path
         d="M127.606.341L.849 44.95 20.88 211.022l106.86 58.732 107.412-59.528L255.175 44.16 127.606.341z"

@@ -2,7 +2,7 @@ import * as React from 'react';
 import cn from 'classnames';
 
 export const IconServerlessFunctions = React.memo<JSX.IntrinsicElements['svg']>(
-  ({ className }) => (
+  ({className}) => (
     <svg viewBox="0 0 546 546" fill="none" className={cn('inline', className)}>
       <circle
         cx="272.729"

@@ -2,12 +2,11 @@ import * as React from 'react';
 import cn from 'classnames';
 
 export const IconReactStatic = React.memo<JSX.IntrinsicElements['svg']>(
-  ({ className }) => (
+  ({className}) => (
     <svg
       className={cn('inline', className)}
       baseProfile="tiny-ps"
-      viewBox="0 0 326 326"
-    >
+      viewBox="0 0 326 326">
       <defs>
         <image
           width="1332"

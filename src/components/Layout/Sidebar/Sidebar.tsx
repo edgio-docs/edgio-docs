@@ -1,12 +1,12 @@
-import { AnimatePresence, motion } from 'framer-motion';
+import {AnimatePresence, motion} from 'framer-motion';
 import Link from 'next/link';
 import styled from 'styled-components';
-import { useState } from 'react';
+import {useState} from 'react';
 import SidebarMenuItems, {
   ISidebarMenuItem,
 } from '../../../data/SidebarMenuItems';
-import { IconChevron } from '../../Icon/IconChevron';
-import { IconOutsideLink } from '../../Icon/IconOutsideLink';
+import {IconChevron} from '../../Icon/IconChevron';
+import {IconOutsideLink} from '../../Icon/IconOutsideLink';
 
 const StlyedSidebar = styled.div`
   color: var(--black1);
@@ -124,11 +124,10 @@ function ChildrenRoutes({
       animate="open"
       exit="collapsed"
       variants={{
-        open: { height: 'auto' },
-        collapsed: { height: 0 },
+        open: {height: 'auto'},
+        collapsed: {height: 0},
       }}
-      transition={{ duration: 0.1 }}
-    >
+      transition={{duration: 0.1}}>
       {routes.map((route, i) => (
         <div className="route" key={i}>
           {route.external ? (
@@ -183,8 +182,7 @@ function ParentRoute({
     <button
       type="button"
       className="nav-item__box-inner"
-      onClick={updateAccordion}
-    >
+      onClick={updateAccordion}>
       <div className="trigger-link">
         <div className="icon-box">{menuItem.icon}</div>
         <span className="menu-item__title">{menuItem.title}</span>
@@ -231,7 +229,7 @@ function PrimaryNavItems() {
         return (
           <div className="nav-item__box" key={itemsAsNumber}>
             <ParentRoute
-              {...{ menuItem, accordion, setAccordion, parentIndex: index }}
+              {...{menuItem, accordion, setAccordion, parentIndex: index}}
             />
             <AnimatePresence>
               {menuItem.routes &&
@@ -263,7 +261,7 @@ function SecondaryNavitems() {
 
         return (
           <div className="nav-item__box" key={itemsAsNumber}>
-            <ParentRoute {...{ menuItem, isExternalRoute: true }} />
+            <ParentRoute {...{menuItem, isExternalRoute: true}} />
           </div>
         );
       })}

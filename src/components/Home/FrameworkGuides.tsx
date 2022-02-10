@@ -1,24 +1,24 @@
 import Link from 'next/link';
 import styled from 'styled-components';
-import { IconAngular } from '../Icon/IconAngular';
-import { IconAstro } from '../Icon/IconAstro';
-import { IconBook } from '../Icon/IconBook';
-import { IconEmberJS } from '../Icon/IconEmberJS';
-import { IconGatsby } from '../Icon/IconGatsby';
-import { IconGridsome } from '../Icon/IconGridsome';
-import { IconNextJS } from '../Icon/IconNextJS';
-import { IconNextJSCommerce } from '../Icon/IconNextJSCommerce';
-import { IconPreact } from '../Icon/IconPreact';
-import { IconReact } from '../Icon/IconReact';
-import { IconReactStatic } from '../Icon/IconReactStatic';
-import { IconRemix } from '../Icon/IconRemix';
-import { IconServerlessFunctions } from '../Icon/IconServerlessFunctions';
-import { IconSolidJS } from '../Icon/IconSolidJS';
-import { IconSvelte } from '../Icon/IconSvelte';
-import { IconVue } from '../Icon/IconVue';
-import { StyledFeatureSection } from './FeatureSection';
+import {IconAngular} from '../Icon/IconAngular';
+import {IconAstro} from '../Icon/IconAstro';
+import {IconBook} from '../Icon/IconBook';
+import {IconEmberJS} from '../Icon/IconEmberJS';
+import {IconGatsby} from '../Icon/IconGatsby';
+import {IconGridsome} from '../Icon/IconGridsome';
+import {IconNextJS} from '../Icon/IconNextJS';
+import {IconNextJSCommerce} from '../Icon/IconNextJSCommerce';
+import {IconPreact} from '../Icon/IconPreact';
+import {IconReact} from '../Icon/IconReact';
+import {IconReactStatic} from '../Icon/IconReactStatic';
+import {IconRemix} from '../Icon/IconRemix';
+import {IconServerlessFunctions} from '../Icon/IconServerlessFunctions';
+import {IconSolidJS} from '../Icon/IconSolidJS';
+import {IconSvelte} from '../Icon/IconSvelte';
+import {IconVue} from '../Icon/IconVue';
+import {StyledFeatureSection} from './FeatureSection';
 import SectionHeader from './SectionHeader';
-import { getChildrenRoutesFromSidebarMenuItems } from '../../utils/getChildrenRoutesFromSidebarMenuItems';
+import {getChildrenRoutesFromSidebarMenuItems} from '../../utils/getChildrenRoutesFromSidebarMenuItems';
 
 const StyledComp = styled(StyledFeatureSection)`
   .icon {
@@ -143,7 +143,7 @@ export default function DeveloperTools() {
         {routes.map((route, index) => (
           <div className={`route-items__col${index + 1}`} key={index}>
             <ul className="route-list__items">
-              {route.map(({ path, title, icon }) => (
+              {route.map(({path, title, icon}) => (
                 <li className="route-list__item" key={title}>
                   {icon ? (
                     <div className="icon">{icon}</div>

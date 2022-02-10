@@ -2,7 +2,7 @@ import * as React from 'react';
 import cn from 'classnames';
 
 export const IconJekyll = React.memo<JSX.IntrinsicElements['svg']>(
-  ({ className }) => (
+  ({className}) => (
     <svg className={cn('inline', className)} viewBox="0 0 512 512">
       <path fill="#333" d="M0 0h512v512H0z" />
       <path
@@ -16,8 +16,7 @@ export const IconJekyll = React.memo<JSX.IntrinsicElements['svg']>(
         y1="215.263"
         x2="283.13"
         y2="291.934"
-        gradientTransform="rotate(-23.964 255.81 252.823)"
-      >
+        gradientTransform="rotate(-23.964 255.81 252.823)">
         <stop offset="0" stopColor="#919191" />
         <stop offset="1" stopColor="#fff" />
       </linearGradient>
@@ -32,8 +31,7 @@ export const IconJekyll = React.memo<JSX.IntrinsicElements['svg']>(
         y1="273.752"
         x2="224.046"
         y2="320.169"
-        gradientTransform="rotate(-23.964 255.81 252.823)"
-      >
+        gradientTransform="rotate(-23.964 255.81 252.823)">
         <stop offset="0" stopColor="#900" />
         <stop offset="1" stopColor="#e80000" />
       </linearGradient>

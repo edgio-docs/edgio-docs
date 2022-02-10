@@ -1,7 +1,7 @@
 import * as React from 'react';
 import styled from 'styled-components';
 import Header from './Header/Header';
-import { Sidebar } from './Sidebar/Sidebar';
+import {Sidebar} from './Sidebar/Sidebar';
 
 interface PageProps {
   children: React.ReactNode;
@@ -43,7 +43,7 @@ const StyledDocs = styled.div`
   }
 `;
 
-export function Page({ children }: PageProps) {
+export function Page({children}: PageProps) {
   return (
     <StyledDocs className="docs">
       <Header />

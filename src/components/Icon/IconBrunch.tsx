@@ -2,12 +2,11 @@ import * as React from 'react';
 import cn from 'classnames';
 
 export const IconBrunch = React.memo<JSX.IntrinsicElements['svg']>(
-  ({ className }) => (
+  ({className}) => (
     <svg
       className={cn('inline', className)}
       baseProfile="tiny-ps"
-      viewBox="0 0 75 75"
-    >
+      viewBox="0 0 75 75">
       <style />
       <path
         id="brunch_svg__Layer"

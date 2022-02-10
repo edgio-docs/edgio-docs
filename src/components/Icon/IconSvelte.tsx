@@ -2,14 +2,13 @@ import * as React from 'react';
 import cn from 'classnames';
 
 export const IconSvelte = React.memo<JSX.IntrinsicElements['svg']>(
-  ({ className }) => (
+  ({className}) => (
     <svg
       className={cn('inline', className)}
       width="93"
       height="110"
       viewBox="0 0 93 120"
-      fill="none"
-    >
+      fill="none">
       <path
         d="M87.23 14.39C76.83-.49 56.29-4.9 41.44 4.56L15.36 21.18a29.899 29.899 0 00-13.52 20 31.53 31.53 0 003.1 20.24A29.94 29.94 0 00.47 72.6a31.86 31.86 0 005.45 24.12c10.4 14.88 30.94 19.29 45.79 9.83L77.79 90a29.999 29.999 0 0013.52-20 31.52 31.52 0 00-3.11-20.23 30.13 30.13 0 004.48-11.18 31.9 31.9 0 00-5.45-24.12"
         fill="#FF3E00"

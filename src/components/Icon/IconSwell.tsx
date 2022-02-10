@@ -2,7 +2,7 @@ import * as React from 'react';
 import cn from 'classnames';
 
 export const IconSwell = React.memo<JSX.IntrinsicElements['svg']>(
-  ({ className }) => (
+  ({className}) => (
     <svg className={cn('inline', className)} viewBox="0 0 438.7 512">
       <linearGradient
         id="swell_svg__a"
@@ -11,8 +11,7 @@ export const IconSwell = React.memo<JSX.IntrinsicElements['svg']>(
         y1="514"
         x2="219.356"
         y2="2"
-        gradientTransform="matrix(1 0 0 -1 0 514)"
-      >
+        gradientTransform="matrix(1 0 0 -1 0 514)">
         <stop offset="0" stopColor="#508" />
         <stop offset="1" stopColor="#ff7782" />
       </linearGradient>

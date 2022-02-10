@@ -2,7 +2,7 @@ import * as React from 'react';
 import cn from 'classnames';
 
 export const IconVueStorefront = React.memo<JSX.IntrinsicElements['svg']>(
-  ({ className }) => (
+  ({className}) => (
     <svg className={cn('inline', className)} viewBox="0 0 90 80" fill="none">
       <path
         d="M65.67 15.196a.98.98 0 00-.974-.901H24.629a.98.98 0 00-.973.9l-3.36 40.655a.965.965 0 00.974 1.047h46.955c.56 0 1.023-.487.974-1.047l-3.53-40.654zM43.736 52.32c-7.01 0-12.706-6.865-12.706-15.264a.81.81 0 01.803-.803.81.81 0 01.804.803c0 7.547 4.99 13.681 11.124 13.681s11.124-6.134 11.124-13.68a.81.81 0 01.803-.804.81.81 0 01.803.803c-.048 8.399-5.744 15.264-12.755 15.264zm16.577-15.75a.78.78 0 01-1.12 0l-3.505-3.506-3.554 3.554a.839.839 0 01-.56.244.74.74 0 01-.56-.244.78.78 0 010-1.12l4.114-4.114a.792.792 0 01.56-.243c.22 0 .414.073.56.243l4.065 4.066a.78.78 0 010 1.12z"
@@ -19,8 +19,7 @@ export const IconVueStorefront = React.memo<JSX.IntrinsicElements['svg']>(
           y1="69.333"
           x2="18.935"
           y2="19"
-          gradientUnits="userSpaceOnUse"
-        >
+          gradientUnits="userSpaceOnUse">
           <stop stopColor="#5DCB79" />
           <stop offset="1" stopColor="#61D67F" />
         </linearGradient>

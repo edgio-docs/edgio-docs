@@ -1,4 +1,5 @@
 // @ts-nocheck
+
 import {MDXProvider} from '@mdx-js/react';
 import {useRouter} from 'next/router';
 import * as React from 'react';

@@ -11,8 +11,7 @@ export const IconSearch = React.memo<JSX.IntrinsicElements['svg']>((props) => (
     height="18"
     viewBox="0 0 18 18"
     fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-  >
+    xmlns="http://www.w3.org/2000/svg">
     <path d="M10.8091 10.8091L15 15" stroke="#606060" strokeLinecap="round" />
     <path
       fillRule="evenodd"

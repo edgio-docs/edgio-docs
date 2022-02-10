@@ -1,7 +1,7 @@
 import * as React from 'react';
 import ConsoleBlock from './ConsoleBlock';
 import Convention from './Convention';
-import { H1, H2, H3, H4 } from './Heading';
+import {H1, H2, H3, H4} from './Heading';
 import HomepageFeatures from './HomepageFeatures';
 import HomepageHero from './HomepageHero';
 import InlineCode from './InlineCode';

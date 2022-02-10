@@ -2,7 +2,7 @@ import * as React from 'react';
 import cn from 'classnames';
 
 export const IconRedwood = React.memo<JSX.IntrinsicElements['svg']>(
-  ({ className }) => (
+  ({className}) => (
     <svg viewBox="0 0 39 42" fill="none" className={cn('inline', className)}>
       <path
         fillRule="evenodd"

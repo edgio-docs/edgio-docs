@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import styled from 'styled-components';
-import { getChildrenRoutesFromSidebarMenuItems } from '../../utils/getChildrenRoutesFromSidebarMenuItems';
+import {getChildrenRoutesFromSidebarMenuItems} from '../../utils/getChildrenRoutesFromSidebarMenuItems';
 
 const StyledFrameworks = styled.div`
   .framework-lists {

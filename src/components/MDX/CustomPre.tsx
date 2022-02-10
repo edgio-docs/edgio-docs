@@ -42,7 +42,7 @@ const StyledCustomPre = styled.div`
   }
 `;
 
-export default function CustomPre({ children }: { children: React.ReactNode }) {
+export default function CustomPre({children}: {children: React.ReactNode}) {
   return (
     <StyledCustomPre>
       <div className="code-block">

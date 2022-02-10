@@ -31,10 +31,10 @@ const StyledComp = styled.div`
 
 export default function DeveloperTools() {
   const videos = [
-    { title: 'What & Why' },
-    { title: 'Deploying a GitHub Project' },
-    { title: 'How to Prefetch' },
-    { title: 'What are the Layer0 DevTools' },
+    {title: 'What & Why'},
+    {title: 'Deploying a GitHub Project'},
+    {title: 'How to Prefetch'},
+    {title: 'What are the Layer0 DevTools'},
   ];
 
   return (

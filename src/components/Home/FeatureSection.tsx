@@ -50,6 +50,6 @@ interface IFeatureSectionProps {
   children: React.ReactNode;
 }
 
-export default function FeatureSection({ children }: IFeatureSectionProps) {
+export default function FeatureSection({children}: IFeatureSectionProps) {
   return <StyledFeatureSection>{children}</StyledFeatureSection>;
 }

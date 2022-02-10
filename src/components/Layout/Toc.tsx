@@ -1,7 +1,7 @@
 import cx from 'classnames';
 import * as React from 'react';
 import styled from 'styled-components';
-import { useTocHighlight } from './useTocHighlight';
+import {useTocHighlight} from './useTocHighlight';
 
 const StyledToc = styled.div`
   padding-top: 32px;
@@ -46,9 +46,9 @@ const StyledToc = styled.div`
 export function Toc({
   headings,
 }: {
-  headings: Array<{ url: string; text: React.ReactNode; depth: number }>;
+  headings: Array<{url: string; text: React.ReactNode; depth: number}>;
 }) {
-  const { currentIndex } = useTocHighlight();
+  const {currentIndex} = useTocHighlight();
   const selectedIndex = Math.min(currentIndex, headings.length - 1);
 
   return (
@@ -76,8 +76,7 @@ export function Toc({
                         'pl-4': h?.depth === 3,
                         hidden: h.depth && h.depth > 3,
                       }
-                    )}
-                  >
+                    )}>
                     <a
                       className={cx(
                         selectedIndex === i
@@ -85,8 +84,7 @@ export function Toc({
                           : 'text-secondary dark:text-secondary-dark',
                         'block hover:text-link dark:hover:text-link-dark'
                       )}
-                      href={h.url}
-                    >
+                      href={h.url}>
                       {h.text}
                     </a>
                   </li>

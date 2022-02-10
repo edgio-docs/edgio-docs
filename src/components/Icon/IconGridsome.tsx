@@ -2,7 +2,7 @@ import * as React from 'react';
 import cn from 'classnames';
 
 export const IconGridsome = React.memo<JSX.IntrinsicElements['svg']>(
-  ({ className }) => (
+  ({className}) => (
     <svg className={cn('inline', className)} viewBox="0 0 48 48" fill="none">
       <path
         d="M43.395 19.862c2.308-.11 4.35 1.68 4.55 3.99.863 11.174-9.364 23.692-23.775 24.092C12.025 48.244.013 38.521.013 23.82c0-2.317 1.915-4.195 4.225-4.195a4.19 4.19 0 014.184 4.195c0 9.67 7.776 15.928 15.542 15.737 9.56-.266 15.776-8.544 15.453-15.303a4.19 4.19 0 013.978-4.392z"
@@ -25,8 +25,7 @@ export const IconGridsome = React.memo<JSX.IntrinsicElements['svg']>(
           y1="19.625"
           x2="24.005"
           y2="47.951"
-          gradientUnits="userSpaceOnUse"
-        >
+          gradientUnits="userSpaceOnUse">
           <stop stopColor="#00583E" />
           <stop offset="1" stopColor="#00835C" />
         </linearGradient>

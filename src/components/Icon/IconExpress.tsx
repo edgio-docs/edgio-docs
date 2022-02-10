@@ -2,7 +2,7 @@ import * as React from 'react';
 import cn from 'classnames';
 
 export const IconExpress = React.memo<JSX.IntrinsicElements['svg']>(
-  ({ className }) => (
+  ({className}) => (
     <svg
       className={cn('inline', className)}
       viewBox="0 0 67 40"
@@ -10,8 +10,7 @@ export const IconExpress = React.memo<JSX.IntrinsicElements['svg']>(
       fillRule="evenodd"
       stroke="#000"
       strokeLinecap="round"
-      strokeLinejoin="round"
-    >
+      strokeLinejoin="round">
       <use xlinkHref="#express_svg__a" x="1" y="1" />
       <symbol id="express_svg__a" overflow="visible">
         <path

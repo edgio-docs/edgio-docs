@@ -7,7 +7,7 @@ import GetStarted from '../Home/GetStarted';
 import Reference from '../Home/Reference';
 import SectionHeader from '../Home/SectionHeader';
 import VideosandTutorials from '../Home/VideosandTutorials';
-import { IconSpark } from '../Icon/IconSpark';
+import {IconSpark} from '../Icon/IconSpark';
 import Container from '../Layout/Container';
 
 const StyledHomepageFeatures = styled.div`

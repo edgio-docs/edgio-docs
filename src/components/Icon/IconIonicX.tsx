@@ -2,7 +2,7 @@ import * as React from 'react';
 import cn from 'classnames';
 
 export const IconIonicX = React.memo<JSX.IntrinsicElements['svg']>(
-  ({ className }) => (
+  ({className}) => (
     <svg className={cn('inline', className)} fill="none" viewBox="0 0 48 48">
       <rect width="48" height="48" fill="#4180FC" rx="24" />
       <path

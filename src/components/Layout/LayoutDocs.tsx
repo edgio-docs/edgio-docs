@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { MarkdownPage, MarkdownProps } from './MarkdownPage';
-import { Page } from './Page';
+import {MarkdownPage, MarkdownProps} from './MarkdownPage';
+import {Page} from './Page';
 
 interface PageFrontmatter {
   title: string;
@@ -15,6 +15,6 @@ export default function withDocs(p: PageFrontmatter) {
   return LayoutDocs;
 }
 
-function AppShell(props: { children: React.ReactNode }) {
+function AppShell(props: {children: React.ReactNode}) {
   return <Page {...props} />;
 }

@@ -14,11 +14,11 @@ function IconBox({
   );
 }
 
-function SectionHeaderTitle({ title }: { title: string }) {
+function SectionHeaderTitle({title}: {title: string}) {
   return <h2 className="section-header__title">{title}</h2>;
 }
 
-function SectionHeaderSubtitle({ subtitle }: { subtitle: string }) {
+function SectionHeaderSubtitle({subtitle}: {subtitle: string}) {
   return <p className="section-header__subtitle">{subtitle}</p>;
 }
 
@@ -70,10 +70,10 @@ export default function SectionHeader({
 }: ISectionHeaderProps) {
   return (
     <StyledSectionheader>
-      {Icon && <IconBox {...{ Icon }} />}
+      {Icon && <IconBox {...{Icon}} />}
       <div className="section-header__content">
-        <SectionHeaderTitle {...{ title }} />
-        {subtitle && <SectionHeaderSubtitle {...{ subtitle }} />}
+        <SectionHeaderTitle {...{title}} />
+        {subtitle && <SectionHeaderSubtitle {...{subtitle}} />}
       </div>
     </StyledSectionheader>
   );

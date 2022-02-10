@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Toc } from '../Layout/Toc';
+import {Toc} from '../Layout/Toc';
 
 const StyledDocs = styled.div`
   max-width: 1228px;
@@ -110,7 +110,7 @@ export default function Docs({
 }: {
   title: string;
   children: React.ReactNode;
-  tocHeadings: { url: string; depth: number; text: string }[];
+  tocHeadings: {url: string; depth: number; text: string}[];
 }) {
   return (
     <StyledDocs className="docs-body">

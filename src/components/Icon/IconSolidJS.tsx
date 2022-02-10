@@ -2,7 +2,7 @@ import * as React from 'react';
 import cn from 'classnames';
 
 export const IconSolidJS = React.memo<JSX.IntrinsicElements['svg']>(
-  ({ className }) => (
+  ({className}) => (
     <svg className={cn('inline', className)} viewBox="0 0 166 155.3">
       <defs>
         <linearGradient
@@ -11,8 +11,7 @@ export const IconSolidJS = React.memo<JSX.IntrinsicElements['svg']>(
           x1="27.5"
           y1="3"
           x2="152"
-          y2="63.5"
-        >
+          y2="63.5">
           <stop offset="0.1" stopColor="#76b3e1" />
           <stop offset="0.3" stopColor="#dcf2fd" />
           <stop offset="1" stopColor="#76b3e1" />
@@ -23,8 +22,7 @@ export const IconSolidJS = React.memo<JSX.IntrinsicElements['svg']>(
           x1="95.8"
           y1="32.6"
           x2="74"
-          y2="105.2"
-        >
+          y2="105.2">
           <stop offset="0" stopColor="#76b3e1" />
           <stop offset="0.5" stopColor="#4377bb" />
           <stop offset="1" stopColor="#1f3b77" />
@@ -35,8 +33,7 @@ export const IconSolidJS = React.memo<JSX.IntrinsicElements['svg']>(
           x1="18.4"
           y1="64.2"
           x2="144.3"
-          y2="149.8"
-        >
+          y2="149.8">
           <stop offset="0" stopColor="#315aa9" />
           <stop offset="0.5" stopColor="#518ac8" />
           <stop offset="1" stopColor="#315aa9" />
@@ -47,8 +44,7 @@ export const IconSolidJS = React.memo<JSX.IntrinsicElements['svg']>(
           x1="75.2"
           y1="74.5"
           x2="24.4"
-          y2="260.8"
-        >
+          y2="260.8">
           <stop offset="0" stopColor="#4377bb" />
           <stop offset="0.5" stopColor="#1a336b" />
           <stop offset="1" stopColor="#1a336b" />

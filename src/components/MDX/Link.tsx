@@ -6,7 +6,7 @@ import * as React from 'react';
 import NextLink from 'next/link';
 import cn from 'classnames';
 
-import { ExternalLink } from 'components/ExternalLink';
+import {ExternalLink} from 'components/ExternalLink';
 
 function Link({
   href,

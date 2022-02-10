@@ -2,7 +2,7 @@ import * as React from 'react';
 import cn from 'classnames';
 
 export const IconRemix = React.memo<JSX.IntrinsicElements['svg']>(
-  ({ className }) => (
+  ({className}) => (
     <svg className={cn('inline', className)} viewBox="0 0 800 800" fill="none">
       <path
         d="M700 0H100C44.772 0 0 44.772 0 100v600c0 55.228 44.772 100 100 100h600c55.228 0 100-44.772 100-100V100C800 44.772 755.228 0 700 0z"

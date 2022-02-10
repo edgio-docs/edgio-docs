@@ -1,8 +1,8 @@
 import Link from 'next/link';
 import styled from 'styled-components';
-import { getChildrenRoutesFromSidebarMenuItems } from '../../utils/getChildrenRoutesFromSidebarMenuItems';
-import { IconCode } from '../Icon/IconCode';
-import { StyledFeatureSection } from './FeatureSection';
+import {getChildrenRoutesFromSidebarMenuItems} from '../../utils/getChildrenRoutesFromSidebarMenuItems';
+import {IconCode} from '../Icon/IconCode';
+import {StyledFeatureSection} from './FeatureSection';
 import SectionHeader from './SectionHeader';
 
 const StyledComp = styled(StyledFeatureSection)``;
@@ -25,7 +25,7 @@ export default function DeveloperTools() {
         {routesByColumns.map((route, index) => (
           <div className={`route-items__col${index + 1}`} key={index}>
             <ul className="route-list__items">
-              {route.map(({ path, title }) => (
+              {route.map(({path, title}) => (
                 <li className="route-list__item" key={title}>
                   <div className="dot" />
                   <Link href={path}>{title}</Link>

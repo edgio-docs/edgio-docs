@@ -1,8 +1,8 @@
 import Link from 'next/link';
 import styled from 'styled-components';
-import { IconSearch } from '../../Icon/IconSearch';
-import { IconDarkMode } from '../../Icon/IconDarkMode';
-import { IconLogoWithText } from '../../Icon/IconLogoWithText';
+import {IconSearch} from '../../Icon/IconSearch';
+import {IconDarkMode} from '../../Icon/IconDarkMode';
+import {IconLogoWithText} from '../../Icon/IconLogoWithText';
 
 const StyledHeader = styled.header`
   position: sticky;

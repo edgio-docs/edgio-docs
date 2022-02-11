@@ -12,8 +12,9 @@ Using the Router, you can:
 - Configure multiple destinations for split testing
 
 ## Configuration
+You define routes for {{ PRODUCT_NAME }} using the `routes.js` file.
 
-To define routes for {{ PRODUCT_NAME }}, create a `routes.js` file in the root of your project. You can override the default path to the router by setting the `routes` key in `{{ CONFIG_FILE }}`.
+Before continuing, if you have not already initialized your project with {{ PRODUCT_NAME }}, do so using the instructions in [WebApp CDN](/guides/webapp_cdn_getting_started).
 
 The `routes.js` file should export an instance of `{{ PACKAGE_NAME }}/core/router/Router`:
 

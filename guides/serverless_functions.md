@@ -15,7 +15,7 @@ npx @layer0/cli@latest init
 Use the [compute](/docs/api/core/classes/_router_responsewriter_.responsewriter.html#compute) function to generate a synthetic response:
 
 ```js
-// routes.ts
+// routes.js
 import { Router } from '@layer0/core'
 
 export default new Router().get('/some-route/:someParam', ({ compute }) => {
@@ -90,7 +90,7 @@ See [backends](/guides/layer0_config#section_backends) for more configuration op
 To forward a request to the origin and modify the response using a serverless function:
 
 ```js
-// routes.ts
+// routes.js
 import { Router } from '@layer0/core'
 
 export default new Router().get('/some-route/:someParam', ({ proxy }) => {
@@ -154,7 +154,7 @@ You can also access any of the request fields documented in [Responding to reque
 To improve performance and minimize cost, cache the responses returned by your serverless functions whenever possible:
 
 ```js
-// routes.ts
+// routes.js
 import { Router } from '@layer0/core'
 
 export default new Router().get('/', ({ cache, compute }) => {

@@ -34,91 +34,77 @@ If you do not have an account yet, visit [{{ PRODUCT_NAME }}]({{ APP_URL }}/sign
 
 ## Create a New Layer0 Project
 
+1. Install the {{ PRODUCT_NAME }} CLI.
+You can use either `npm` or `yarn`.
+
 ```bash
-npm i -g {{ PACKAGE_NAME }}/cli # yarn global add {{ PACKAGE_NAME }}/cli
+npm i -g {{ PACKAGE_NAME }}/cli
 ```
 
-Create your project by running:
+```bash
+yarn global add {{ PACKAGE_NAME }}/cli
+```
+
+2. Create your project with the following command:
 
 ```bash
-npx @layer0/cli@latest init
+`{{ CLI_NAME }} init`
 ```
 
 ### Project Structure
 
-In the `src` folder, there are the following files:
+After you run `{{ CLI_NAME }} init`, {{ PRODUCT_NAME }} creates the following files:
 
-- `service-worker.ts`: prefetches content and stores in cache
-- `route-handler.ts`: implements caching rules
-- `cache.ts`: contains values applied to caching rules in `route-handler.ts`
-- `routes.ts`: routes to be cached and prefetched are defined, as well as what to pass through without modification and what to serve up as static content
-- `browser.ts`: entry point for the `main.js` javascript bundle which is added to the window
-
+- `routes.js`: defines routes to be cached and prefetched, as well as what to pass through without modification and what to serve up as static content
+- `layer0.config.js`: various configuration options to tune your project
 ## Configure Caching
 
-We need to configure caching in our newly created project. The project contains some generic starter routes already, but these should be customized to fit your site. These routes should be added in the `routes.ts` file.
+We need to configure caching in our newly created project. The project contains some generic starter routes already, but these should be customized to fit your site. These routes should be added in the `routes.js` file.
 
-At this point, the only item that should require changing is a path match. We suggest starting with a few basic routes to get the feel for how it works.
-
+At this point, the only item that should require changing is a path match. We provide a basic sample to get you started.
 ### Routes File
 
-```typescript
-// src/routes.ts
-import { Router } from '{{ PACKAGE_NAME }}/core/router'
-import shoppingFlowRouteHandler from './route-handler'
+```js
+// routes.js
+import { Router } from '@layer0/core/router'
+
+// const ONE_HOUR = 60 * 60
+// const ONE_DAY = 24 * ONE_HOUR
 
 export default new Router()
-  .get('/', shoppingFlowRouteHandler)
-  .get('/collections/*path', shoppingFlowRouteHandler)
-  .get('/products/*path', shoppingFlowRouteHandler)
+  // Here is an example where we cache api/* at the edge but prevent caching in the browser
+  // .match('/api/:path*', ({ proxy, cache }) => {
+  //   cache({
+  //     edge: {
+  //       maxAgeSeconds: ONE_DAY,
+  //       staleWhileRevalidateSeconds: ONE_HOUR,
+  //     },
+  //     browser: {
+  //       maxAgeSeconds: 0,
+  //       serviceWorkerSeconds: ONE_DAY,
+  //     },
+  //   })
+  //   proxy('origin')
+  // })
+
+  // send any unmatched request to origin
+  .fallback(({ proxy }) => proxy('origin'))
 ```
-
-### Route Handler
-
-The handler function passed into a route match will determine the behavior of the cache for the request. Abstracting this handler function, allows it to apply to multiple routes.
-
-```typescript
-// src/route-handler.ts
-import { CACHE_PAGES } from './cache'
-import { RouteHandler } from '{{ PACKAGE_NAME }}/core/router/Router'
-
-const handler: RouteHandler = async ({ cache, removeUpstreamResponseHeader, updateResponseHeader, proxy }) => {
-  cache(CACHE_PAGES)
-  removeUpstreamResponseHeader('set-cookie') // The presence of a set-cookie header would prevent the response from being cached, so ensure set-cookie headers are removed.
-  // updateResponseHeader('location', /https:\/\/origin.site.com\//gi, '/') // Makes 302 redirects relative. Uncomment if existing origin site issues 302s with full domain
-  proxy('origin')
-}
-
-export default handler
-```
-
 #### Cache Constants
+Cache constants in the `routes.js` have been abstracted out to enable reuse across different routes. You can also add additional constants such as year.
+```js
+// routes.js
+import { Router } from '@layer0/core/router'
 
-Abstracting out the constants of the cache allows them to be reused across different routes.
-
-```typescript
-// src/cache.ts
 const ONE_HOUR = 60 * 60
 const ONE_DAY = 24 * ONE_HOUR
 const ONE_YEAR = 365 * ONE_DAY
-
-/**
- * The default cache setting for pages in the route handler flow
- */
-export const CACHE_PAGES = {
-  edge: {
-    maxAgeSeconds: ONE_HOUR,
-  },
-  browser: {
-    maxAgeSeconds: 0,
-    serviceWorkerSeconds: ONE_HOUR,
-  },
-}
+// ...
 ```
 
-Refer to the guides on [Routing](routing) and [Caching](caching) for the full syntax to use in your `routes.ts` file.
+Refer to the guides on [Routing](routing) and [Caching](caching) for the full syntax to use in your `routes.js` file.
 
-Learn [advanced prefetching techniques](#section_advanced_prefetching_techniques) to achieve the best possible performance.
+Learn [advanced prefetching techniques](prefetching) to achieve the best possible performance.
 
 ## Deploy to {{ PRODUCT_NAME }}
 

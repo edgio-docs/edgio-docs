@@ -5,7 +5,7 @@ on:
       - '**'
       - '!master'
 jobs:
-  deploy-to-layer0:
+  deploy-to-stage:
     runs-on: ubuntu-latest
     steps:
       - name: Extract branch name

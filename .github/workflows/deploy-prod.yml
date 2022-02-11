@@ -4,7 +4,7 @@ on:
     branches:
       - master
 jobs:
-  deploy-to-layer0:
+  deploy-to-prod:
     if: "!contains(github.event.repository.name, 'layer0-docs-internal')"
     runs-on: ubuntu-latest
     steps:

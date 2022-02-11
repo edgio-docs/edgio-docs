@@ -34,21 +34,24 @@ If you do not have an account yet, visit [{{ PRODUCT_NAME }}]({{ APP_URL }}/sign
 
 ## Create a New Layer0 Project
 
+1. Install the {{ PRODUCT_NAME }} cli.
+You can use either `npm` or `yarn`.
+
 ```bash
-npm i -g {{ PACKAGE_NAME }}/cli # yarn global add {{ PACKAGE_NAME }}/cli
+npm i -g {{ PACKAGE_NAME }}/cli # For yarn, use yarn global add {{ PACKAGE_NAME }}/cli
 ```
 
-Create your project by running:
+2. Create your project by running:
 
 ```bash
-npx @layer0/cli@latest init
+`{{ CLI_NAME }} init`
 ```
 
 ### Project Structure
 
-After you run npx `@layer0/cli@latest init`, {{ PRODUCT_NAME }} creates the following files:
+After you run `{{ CLI_NAME }} init`, {{ PRODUCT_NAME }} creates the following files:
 
-- `routes.js`: routes to be cached and prefetched are defined, as well as what to pass through without modification and what to serve up as static content
+- `routes.js`: defines routes to be cached and prefetched, as well as what to pass through without modification and what to serve up as static content
 - `layer0.config.js`: various configuration options to tune your project
 ## Configure Caching
 

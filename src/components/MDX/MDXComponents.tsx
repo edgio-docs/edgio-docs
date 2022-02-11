@@ -32,6 +32,7 @@ const UL = (p: JSX.IntrinsicElements['ul']) => (
   <ul className="article-ul__list" {...p} />
 );
 
+// IMPORTANT
 const Divider = () => (
   <hr className="my-6 block border-b border-border dark:border-border-dark" />
 );

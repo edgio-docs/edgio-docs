@@ -1,6 +1,6 @@
 # Security
 
-## Overview test
+## Overview
 
 {{ PRODUCT_NAME }}’s platform is built to ensure your website and applications remain open for business by keeping you protected against a wide range of security risks without sacrificing performance.
 

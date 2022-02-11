@@ -1,6 +1,6 @@
 # Security
 
-## Overview
+## Overview test
 
 {{ PRODUCT_NAME }}’s platform is built to ensure your website and applications remain open for business by keeping you protected against a wide range of security risks without sacrificing performance.
 
@@ -70,14 +70,14 @@ The SQL database rule group contains rules to block request patterns associated 
 
 #### Add Rule Groups to a WAF
 
-![Add Rule Groups to WAF](/images/security/addrulegroup1.jpg 'Add Rule Groups to WAF')
+![Add Rule Groups to WAF](/images/security/addrulegroup1.jpg?width=700 'Add Rule Groups to WAF')
 
 1. Log in to the [Layer0 console](https://app.layer0.co/).
 1. Click _SECURITY_ from the top banner to launch the WAF Security Rules page.
 1. Select [_WAF-1_ or _WAF-2_](#section_what_s_the_difference_between_waf_1_and_waf_2_) from the first dropdown and the [configuration version](#section_how_do_i_know_which_version_to_use_) from the second.
 1. Click _EDIT_ to set your security rules.
 
-![Add Rule Groups to WAF2](/images/security/addrulegroup2.jpg 'Add Rule Groups to WAF2')
+![Add Rule Groups to WAF2](/images/security/addrulegroup2.jpg?width=700 'Add Rule Groups to WAF2')
 
 5. Select the _Set all rules to …_ dropdown. Hover over the dropdown for the rule group's description.
 6. Choose the action for the group: _Off_, [_Flag_, or _Block_](#section_what_is_the_difference_between_flagging_and_blocking_a_rule_or_rule_group_).
@@ -88,14 +88,14 @@ The SQL database rule group contains rules to block request patterns associated 
 
 #### Add Single Rules to a WAF
 
-![Add Single Rule to WAF](/images/security/addrulegroup1.jpg 'Add Single Rule to WAF')
+![Add Single Rule to WAF](/images/security/addrulegroup1.jpg?width=700 'Add Single Rule to WAF')
 
 1. Log in to the [Layer0 console](https://app.layer0.co/).
 1. Click _SECURITY_ from the top banner to launch the WAF Security Rules page.
 1. Select [_WAF-1_ or _WAF-2_](#section_what_s_the_difference_between_waf_1_and_waf_2_) from the first dropdown and the [configuration version](#section_how_do_i_know_which_version_to_use_) from the second.
 1. Click _EDIT_ to set your security rules.
 
-![Add Single Rule to WAF2](/images/security/addsinglerule.jpg 'Add Single Rule to WAF')
+![Add Single Rule to WAF2](/images/security/addsinglerule.jpg?width=700 'Add Single Rule to WAF')
 
 5. If collapsed, expand the Rule Group dropdown using the arrow to its left. You can hover over the rule name or the Flag/Block dropdown to view the rule's description.
 6. Click the _Flag/Block_ dropdown.
@@ -113,13 +113,13 @@ Once you’ve configured the WAF rules you want to use, you need to apply them t
 
 Follow these steps to add a WAF to an environment:
 
-![Apply WAF to Environment](/images/security/addrg3.jpg 'Apply WAF to Environment')
+![Apply WAF to Environment](/images/security/addrg3.jpg?width=700 'Apply WAF to Environment')
 
 1. Log in to the [Layer0 console](https://app.layer0.co/) and select your site.
 1. Click the ENVIRONMENTS tab.
 1. Choose an environment from the list.
 
-![Security Configuration](/images/security/security.jpg 'Security Configuration')
+![Security Configuration](/images/security/security.jpg?width=700 'Security Configuration')
 
 4. Select _CONFIGURATION_ from the top navigation.
 1. Click _EDIT_.
@@ -195,7 +195,7 @@ The above code will match all the routes that even have a `user-agent` header an
 
 ## Security Reporting
 
-![Reporting](/images/security/addrg3.jpg 'Reporting')
+![Reporting](/images/security/addrg3.jpg?width=700 'Reporting')
 
 1. Log in to the [Layer0 console](https://app.layer0.co/) and select your site.
 1. Click the ENVIRONMENTS tab.
@@ -204,7 +204,7 @@ The above code will match all the routes that even have a `user-agent` header an
 
 ### Security Activity
 
-![WAF Activity](/images/security/wafactivity.jpg 'WAF Activity')
+![WAF Activity](/images/security/wafactivity.jpg?width=700 'WAF Activity')
 
 |     | View Option                                             | Access                                   |
 | --- | ------------------------------------------------------- | ---------------------------------------- |
@@ -215,7 +215,7 @@ The above code will match all the routes that even have a `user-agent` header an
 
 ### Rules Applied
 
-![Rules Applied](/images/security/rulesapplied.png 'Rules Applied')
+![Rules Applied](/images/security/rulesapplied.png?width=700 'Rules Applied')
 
 |     | View Option                     | Access                                                                                                                                                                                          |
 | --- | ------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -225,7 +225,7 @@ The above code will match all the routes that even have a `user-agent` header an
 
 ### Rules Section
 
-![Rules](/images/security/rules.jpg 'Rules')
+![Rules](/images/security/rules.jpg?width=700 'Rules')
 
 |     | View Option   | Access                                                                                                                                         |
 | --- | ------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -236,7 +236,7 @@ The above code will match all the routes that even have a `user-agent` header an
 
 Here is a sample log file highlighting the WAF data ("waf":"botLib,flagged","wafv":"WAF-1,2"): the action applied, the mode, the WAF name, and the version number, respectively.
 
-![WAF Log File Example](/images/security/log.jpg 'WAF Log File Example')
+![WAF Log File Example](/images/security/log.jpg?width=700 'WAF Log File Example')
 
 ## Website Security with EdgeJS
 
@@ -317,7 +317,7 @@ Rather than putting secret values such as API keys in your code and checking the
 store them in environment variables, then access them in your code from `process.env`. To configure environment variables,
 navigate to your environment, click _EDIT_, then under Environment Variables, click _ADD VARIABLE_.
 
-![networking](/images/security/environment-variables.png)
+![networking](/images/security/environment-variables.png?width=700)
 
 As of {{ PRODUCT_NAME }} CLI version 2.19.0, when you deploy to an environment using a deploy token, for example by running `{{ CLI_NAME }} deploy my-team --environment=production --token=(my token)` option, all environment variables are pulled down from the {{ PRODUCT_NAME }} Developer Console and applied to `process.env` so they can be accessed at build time. This allows you to store all of your build and runtime secrets in a single place, {{ PRODUCT_NAME }} Developer Console, rather than storing some in your CI system's secret manager.
 

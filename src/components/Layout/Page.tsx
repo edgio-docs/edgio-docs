@@ -24,7 +24,7 @@ const StyledDocs = styled.div`
       overflow: auto;
       user-select: none;
       background-color: #f6f6f7;
-      padding: 20px 0;
+      padding: calc(var(--header-height) / 2) 0;
       box-shadow: inset -1px 0px #e3e8ee;
     }
 

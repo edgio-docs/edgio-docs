@@ -45,6 +45,14 @@ export function MarkdownPage<
       text: child.props.children,
     }));
 
+  if (tocHeadings.length > 0) {
+    tocHeadings.unshift({
+      depth: 1,
+      text: 'Overview',
+      url: '#',
+    });
+  }
+
   return (
     <MDXProvider components={MDXComponents}>
       {isHomePage ? (

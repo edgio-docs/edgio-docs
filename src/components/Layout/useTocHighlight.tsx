@@ -1,19 +1,18 @@
-/*
- * Copyright (c) Facebook, Inc. and its affiliates.
- */
-
 import React from 'react';
 import {siteConfig} from 'siteConfig';
 
-const TOP_OFFSET = 75;
+const TOP_OFFSET = 96;
 
 export function getHeaderAnchors(): HTMLAnchorElement[] {
   return Array.prototype.filter.call(
     document.getElementsByClassName(siteConfig.headerIdConfig.className),
-    (testElement) =>
-      testElement.parentNode.nodeName === 'H1' ||
-      testElement.parentNode.nodeName === 'H2' ||
-      testElement.parentNode.nodeName === 'H3'
+    function (testElement) {
+      return (
+        testElement.parentNode.nodeName === 'H1' ||
+        testElement.parentNode.nodeName === 'H2' ||
+        testElement.parentNode.nodeName === 'H3'
+      );
+    }
   );
 }
 

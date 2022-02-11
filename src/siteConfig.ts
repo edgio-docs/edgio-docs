@@ -1,7 +1,4 @@
-/*
- * Copyright (c) Facebook, Inc. and its affiliates.
- */
-
+// IMPORTANT
 export const siteConfig = {
   editUrl: 'https://github.com/layer0-docs/layer0-docs/edit/src/pages',
   copyright: `Copyright © ${new Date().getFullYear()} Layer0. All Rights Reserved.`,

@@ -6,7 +6,7 @@ This guide describes how to get up and running with {{ PRODUCT_NAME }} for tradi
 
 Note that the speed benefit for traditional sites from {{ PRODUCT_NAME }} is dependent on the site’s JavaScript usage during the page load. If a page has JavaScript heavy processing during load it may reduce the benefit from {{ PRODUCT_NAME }}. Please contact our team via the chat button in the bottom right of this page if you're interested in a site analysis prior to beginning installation — turnaround time is typically 1-2 business days.
 
-## How {{ PRODUCT_NAME }} for Traditional Sites Works
+## How {{ PRODUCT_NAME }} for Traditional Sites Works {/*section_how_layer0_for_traditional_sites_works*/}
 
 As shown below, {{ PRODUCT_NAME }} becomes the main CDN for your site:
 
@@ -19,7 +19,7 @@ Requests for your site will now pass through {{ PRODUCT_NAME }}'s globally distr
 - Globally distributed caching: Pages and content that are in {{ PRODUCT_NAME }} cache will be returned to the user faster than being fetched from your server.
 - Predictive prefetching: {{ PRODUCT_NAME }} predictively prefetch and serve data to the device _before_ the user even requests it. By effectively streaming page data to the device a few seconds ahead of the shopper, the page load becomes instantaneous because there is no network to wait for. Normally the increased traffic from this kind of data streaming would overload your server, but {{ PRODUCT_NAME }}'s caching layer acts as a "shield" to protect your origin for this load.
 
-## Implementation Process
+## Implementation Process {/*section_implementation_process*/}
 
 The high level implementation process for {{ PRODUCT_NAME }} is:
 
@@ -31,7 +31,7 @@ The high level implementation process for {{ PRODUCT_NAME }} is:
 
 We highly recommend performing this process on a staging server before attempting to try it on your production website.
 
-## Make Sure Your Pages are Cachable
+## Make Sure Your Pages are Cachable {/*section_make_sure_your_pages_are_cachable*/}
 
 {{ PRODUCT_NAME }} will only prefetch and accelerate pages that are cacheable, i.e. do not have user specific content. The good news is that most pages can be made cacheable with only a few adjustments. Let's walk through an example.
 
@@ -65,15 +65,17 @@ Use this worksheet when auditing your site for personalized content to inventory
 
 [{{ PRODUCT_NAME }} Origin Content Changes Worksheet](https://docs.google.com/spreadsheets/d/1WDc5tB0tbrDT3To6bNQ0jYpXRFmgUuA_4gb3lVgzmjE/edit?usp=sharing)
 
-## Connector
+## Connector {/*section_connector*/}
+
+{{ PRODUCT_NAME }} is a connector that allows you to use {{ PRODUCT_NAME }} as a CDN for your site. You can use {{ PRODUCT_NAME }} as a CDN for your site by following the steps below.
 
 This framework has a connector developed for {{ PRODUCT_NAME }}. See [Connectors](connectors) for more information.
 
 [View the Connector Code](https://github.com/layer0-docs/layer0-connectors/tree/main/layer0-starter-connector?button)
 
-{{ SYSTEM_REQUIREMENTS }}
+{{ SYSTEM_REQUIREMENTS }} {/*section_system_requirements*/}
 
-## Setup a Project
+## Setup a Project {/*section_setup_a_project*/}
 
 Next, install the [{{ PRODUCT_NAME }} CLI](cli)
 
@@ -120,7 +122,7 @@ npm run deploy
 $
 ```
 
-### Project Structure
+### Project Structure {/*section_project_structure*/}
 
 Before we get started, you should familiarize yourself with some of the key files in the {{ PRODUCT_NAME }} project:
 
@@ -131,7 +133,7 @@ Before we get started, you should familiarize yourself with some of the key file
 - `routes.ts`: This is where the routes to be cached and prefetched are defined, as well as what to pass through without modification and what to serve up as static content.
 - `browser.ts`: This is the entry point for the `main.js` javascript bundle which is added to the window.
 
-## Configure Caching and Prefetching
+## Configure Caching and Prefetching {/*section_configure_caching_and_prefetching*/}
 
 Next we need to configure the caching in our newly created project. To do so, add a route for each URL you want to cache to the `routes.ts` file. For example, consider a site where the homepage (`/`), category pages (`/category/xxxx`), and product pages (`/product/yyyy`) are to be cached. Then your `routes.ts` file would look like:
 
@@ -184,13 +186,13 @@ Refer to the guides on [Routing](routing) and [Caching](caching) for the full sy
 
 In addition to configuring your caching in `routes.ts` as shown above, you may need to employ [advanced prefetching techniques](#section_advanced_prefetching_techniques) to achieve the best possible performance
 
-### Understanding Caching and Prefetching
+### Understanding Caching and Prefetching {/*#section_understanding_caching_and_prefetching*/}
 
 By injecting `main.js` into your app's front-end code, your app will automatically prefetch all visible HTML links with URLs that match a route configured with `edge.maxAgeSeconds` and `browser.serviceWorkerSeconds` (in essence, when you configure a route to be cached, you are also declaring it to be a candidate for prefetching as well). Links that are visible when the page first loads are fetched immediately. Additional links will be fetched when the user scrolls down the page and more links become visible.
 
 Prefetching can generate substantial additional network traffic. {{ PRODUCT_NAME }} automatically shields your origin from this additional traffic by only serving prefetch requests from the edge cache. If a prefetch request cannot be served from the cache, {{ PRODUCT_NAME }} will return an HTTP 412 status and the request will not be proxied to the origin. When this happens, the only effect for the user is that they will not see the speed benefit of prefetching. Therefore, the effectiveness of prefetching ramps up over time as users visit pages throughout your site. When the edge cache is cleared, either through the {{ PRODUCT_NAME }} Console or automatically following a deployment, the speed benefit of prefetching is decreased until the cache fills up based on organic traffic.
 
-## Test Your Code Locally and on {{ PRODUCT_NAME }}
+## Test Your Code Locally and on {{ PRODUCT_NAME }} {/*section_test_your_code_locally_and_on_{{ PRODUCT_NAME }}*/}
 
 Now that you've configured your caching in `routes.ts`, you should test it in your local development environment and on {{ PRODUCT_NAME }}.
 
@@ -202,7 +204,7 @@ To test the caching behavior locally, run your project with the [local cache opt
 {{ CLI_NAME }} dev --cache
 ```
 
-### Running on {{ PRODUCT_NAME }}
+### Running on {{ PRODUCT_NAME }} {/*section_running_on_layer0*/}
 
 Now that you're satisfied with your site in local development, it's time to deploy it to {{ PRODUCT_NAME }} Cloud. Once your code is deployed to {{ PRODUCT_NAME }} Cloud, you can formally evaluate site performance and QA functionality.
 
@@ -214,7 +216,7 @@ To deploy your site to {{ PRODUCT_NAME }}, you must first [sign up for a free ac
 
 Consult the [Deploying guide](deploying) for more information on the options for deploying your site.
 
-## Go Live by Changing the DNS
+## Go Live by Changing the DNS {/*section_go_live_by_changing_the_dns*/}
 
 After you've configured and tested your site on {{ PRODUCT_NAME }}, it's time to take it live. At a high level, the process is:
 
@@ -226,15 +228,17 @@ Each of these steps is described in more detail in the [Production guide](produc
 
 Before going live, you should use the [{{ PRODUCT_NAME }} Onboarding Discovery Worksheet](https://docs.google.com/spreadsheets/d/1PGdcV_HoMKSAQsBi3th6gV6XhBn0gpWYm7Ix2sTcDbs/edit?usp=sharing) to help you think through common use cases and concerns and ensure a smooth launch.
 
-## Advanced Prefetching Techniques
+## Advanced Prefetching Techniques {/*section_advanced_prefetching_techniques*/}
 
 An introduction to prefetching is available in the [Prefetching guide](prefetching). In addition, here are some techniques to take full advantage of the power of prefetching.
 
-### Deep Fetching
+### Deep Fetching {/*section_deep_fetching*/}
 
 Deep fetching is an important technique for {{ PRODUCT_NAME }} projects. By default, only HTML content is prefetched. In order to achieve truly instant page transitions, all of the assets needed to render the content that appears above the fold needs to be deep fetched. Refer to the [Deep Fetching](prefetching#section_deep_fetching) section of the [Prefetching guide](prefetching) for more details on how to configure deep fetching in your project.
 
-### Prefetching POSTs
+### Prefetching POSTs {/*section_prefetching_posts*/}
+
+When you're using a REST API, you may need to prefetch POST requests to your API in order to ensure that the POST request is available when the user navigates to the page. Refer to the [Prefetching POSTs](prefetching#section_prefetching_posts) section of the [Prefetching guide](prefetching) for more details on how to configure prefetching of POSTs in your project.
 
 Most assets that need to be prefetched are HTTP GET requests. It is also possible to prefetch POST requests with some additional configuration.
 
@@ -269,7 +273,7 @@ export default new Router()
   })
 ```
 
-### Prefetching based on Element Visibility
+### Prefetching based on Element Visibility {/*section_prefetching_based_on_element_visibility*/}
 
 By default, `<a>` tags are watched by the Prefetcher so that the value of their `href` attributes are prefetched once the links become visible in the viewport. However, sometimes you might need to trigger a prefetch based on the visibility of other types of elements.
 
@@ -296,10 +300,13 @@ document.addEventListener('DOMContentLoaded', function() {
 })
 ```
 
-### Maintenance
+### Maintenance {/*section_maintenance*/}
 
 For the most part maintenance for traditional sites running on {{ PRODUCT_NAME }} is minimal. However, the typical scenarios that require changes are:
 
 - If you add personalized or user-specific content to the page you will need to make sure it is late loaded as described in the [_Make sure your pages are cacheable_](#section_make_sure_your_pages_are_cachable) section.
 - If you introduce a new segmentation of content (e.g. support a new language or currency), you may need to update your [custom cache key](/guides/caching#section_customizing_the_cache_key).
 - If you change the layout of the page (especially above the _fold_), it may alter the assets you need to prefetch or [deepfetch](#section_deep_fetching) to achieve the best performance.
+
+
+#### test heading

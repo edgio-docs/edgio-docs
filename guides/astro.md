@@ -41,7 +41,7 @@ $ 0 init
 
 ## Update your Layer0 Router
 
-Paste the following into `routes.js` or `routes.ts`, depending on the results of the `init astro` command:
+Paste the following into `routes.js` or `routes.ts`, depending on the results of the `0 init` command:
 
 ```js
 import { Router } from '@layer0/core'

@@ -2,6 +2,7 @@ const PRODUCT_NAME = 'Layer0'
 const PRODUCT_NAME_LOWER = PRODUCT_NAME.toLowerCase()
 const PRODUCT_NAME_UPPER = PRODUCT_NAME.toUpperCase()
 const CLI_NAME = '0'
+const FULL_CLI_NAME = 'layer0'
 const PACKAGE_NAME = '@layer0'
 const CONFIG_FILE = 'layer0.config.js'
 const HEADER_PREFIX = 'x-0'
@@ -65,6 +66,7 @@ module.exports = {
   PRODUCT_NAME_LOWER,
   PRODUCT_NAME_UPPER,
   CLI_NAME,
+  FULL_CLI_NAME,
   PACKAGE_NAME,
   CONFIG_FILE,
   HEADER_PREFIX,

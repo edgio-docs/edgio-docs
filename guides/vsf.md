@@ -10,21 +10,16 @@ Here's an example Vue Storefront 2 app running on Layer0:
 
 [Try the Vue Storefront Example](https://layer0-docs-layer0-vue-storefront-commercetools-example-default.layer0.link?button)
 [View the Code](https://github.com/layer0-docs/layer0-vue-storefront-commercetools-example?button)
+[Deploy to Layer0](https://app.layer0.co/deploy?button&deploy&repo=https://github.com/layer0-docs/layer0-vue-storefront-commercetools-example)
 
-## Connector
-
-This framework has a connector developed for {{ PRODUCT_NAME }}. See [Connectors](connectors) for more information.
-
-[View the Connector Code](https://github.com/layer0-docs/layer0-connectors/tree/main/layer0-vue-storefront-connector?button)
-
-{{ SYSTEM_REQUIREMENTS }}
+{{ SIGN_UP_LAYER0 }}
 
 ## Install the {{ PRODUCT_NAME }} CLI
 
-To prepare your Vue Storefront app for deployment on {{ PRODUCT_NAME }}, install the {{ PRODUCT_NAME }} CLI:
+If you have not already done so, install the [{{ PRODUCT_NAME }} CLI](cli)
 
-```
-npm install -g {{ PACKAGE_NAME }}/cli
+```bash
+npm i -g {{ PACKAGE_NAME }}/cli
 ```
 
 ## Install the VSF CLI
@@ -36,10 +31,17 @@ npm i -g @vue-storefront/cli@next
 vsf init <project-name>
 cd <project-name>
 npm install
-{{ CLI_NAME }} init
 ```
 
-### nuxt.config.js
+## Configuring your Vue Storefront app for {{ PRODUCT_NAME }}
+
+### Initialize your project
+
+In the root directory of your project run `{{ CLI_NAME }} init`:
+
+```bash
+{{ CLI_NAME }} init
+```
 
 The {{ PRODUCT_NAME }} init command should have automatically moved all your `modules` to `buildModules` in order to deploy the smallest possible build to {{ PRODUCT_NAME }}.
 

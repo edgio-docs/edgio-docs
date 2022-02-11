@@ -23,15 +23,16 @@ const Strong = (strong: JSX.IntrinsicElements['strong']) => (
 );
 
 const OL = (p: JSX.IntrinsicElements['ol']) => (
-  <ol className="ml-6 my-3 list-decimal" {...p} />
+  <ol className="article-ol__list" {...p} />
 );
 const LI = (p: JSX.IntrinsicElements['li']) => (
-  <li className="leading-relaxed mb-1" {...p} />
+  <li className="list-item" {...p} />
 );
 const UL = (p: JSX.IntrinsicElements['ul']) => (
   <ul className="article-ul__list" {...p} />
 );
 
+// IMPORTANT
 const Divider = () => (
   <hr className="my-6 block border-b border-border dark:border-border-dark" />
 );

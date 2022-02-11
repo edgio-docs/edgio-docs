@@ -9,17 +9,19 @@ const StyledDocs = styled.div`
   display: grid;
   grid-template-columns: 75% 1fr;
   min-height: calc(100vh - 64px);
+  color: rgb(92, 95, 98);
 
   .docs-article {
     padding: 0 20px 20px 20px;
   }
 
-  .docs-article {
-    box-shadow: inset 1px 0px #e3e8ee;
-  }
+  /* .docs-article { */
+  /* box-shadow: inset 1px 0px #e3e8ee; */
+  /* } */
 
   .docs-article__header {
     padding-top: 32px;
+    color: rgb(32, 34, 35);
   }
 
   .docs-article__body {
@@ -27,12 +29,22 @@ const StyledDocs = styled.div`
     gap: 16px 0;
 
     .article-heading {
-      color: #1a1a1a;
+      color: rgb(32, 34, 35);
       display: flex;
       align-items: center;
       gap: 10px;
       scroll-margin-top: calc(var(--header-height) + 8px);
       padding-top: 16px;
+      position: relative;
+
+      .anchor {
+        position: absolute;
+        left: 0;
+        transform: translateX(-1em);
+        width: 18px;
+        height: 18px;
+        top: 50%;
+      }
 
       .anchor svg {
         visibility: hidden;
@@ -43,14 +55,19 @@ const StyledDocs = styled.div`
       }
     }
 
-    .article-ul__list {
+    .article-ul__list,
+    .article-ol__list {
       padding-left: 35px;
       display: grid;
       row-gap: 8px;
+      list-style: square;
+    }
+
+    .article-ol__list {
+      list-style: decimal;
     }
 
     .text-code {
-      color: black;
       padding: 0 4px;
       border-radius: 4px;
       background: #f6f6f7;
@@ -118,7 +135,26 @@ const StyledDocs = styled.div`
     font-size: 16px;
     line-height: 1.5;
     font-weight: 400;
-    color: #353535;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+    display: block;
+    overflow-x: auto;
+
+    thead th {
+      font-weight: 600;
+    }
+
+    th,
+    td {
+      padding: 16px;
+      border: 1px solid #e3e8ee;
+      text-align: left;
+      vertical-align: top;
+    }
   }
 `;
 

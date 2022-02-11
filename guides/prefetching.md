@@ -52,9 +52,9 @@ Prefetch requests are given the lowest priority. This ensures that they do not b
 
 ## The cache-manifest.js File
 
-This file is generated at runtime and is used by the `Prefetcher` class  from `@xdn/prefetch` to add routes to the [service worker](#section_service_worker). The routes ensure that custom cache keys and the `serviceWorkerSeconds` properties from the `cache()` settings in your router are propagated to the service worker.
+This file is generated at runtime and is used by the `Prefetcher` class  from `{{ PACKAGE_NAME }}/prefetch` to add routes to the [service worker](#section_service_worker). The routes ensure that custom cache keys and the `serviceWorkerSeconds` properties from the `cache()` settings in your router are propagated to the service worker.
 
-For more information on `Prefetcher`, `serviceWorkderSeconds`, and `cache()`, see [Class Prefetcher](https://docs.layer0.co/docs/api/prefetch/classes/_sw_prefetcher_.prefetcher.html).
+For more information on `Prefetcher`, `serviceWorkderSeconds`, and `cache()`, see [Class Prefetcher](/docs/api/prefetch/classes/_sw_prefetcher_.prefetcher.html).
 
 ## React
 

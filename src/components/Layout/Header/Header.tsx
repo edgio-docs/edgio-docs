@@ -123,7 +123,7 @@ export default function Header() {
   return (
     <StyledHeader className="docs-header">
       <div className="col-1">
-        <Link href="/">
+        <Link href="/" passHref>
           <div className="logo-box">
             <IconLogoWithText className="logo" />
           </div>

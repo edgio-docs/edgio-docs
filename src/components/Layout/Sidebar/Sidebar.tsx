@@ -7,6 +7,7 @@ import SidebarMenuItems, {
 } from '../../../data/SidebarMenuItems';
 import {IconChevron} from '../../Icon/IconChevron';
 import {IconOutsideLink} from '../../Icon/IconOutsideLink';
+import {sortBy} from 'underscore';
 
 const StlyedSidebar = styled.div`
   color: var(--black1);
@@ -128,7 +129,7 @@ function ChildrenRoutes({
         collapsed: {height: 0},
       }}
       transition={{duration: 0.1}}>
-      {routes.map((route, i) => (
+      {sortBy(routes, (item) => item.title.toLowerCase()).map((route, i) => (
         <div className="route" key={i}>
           {route.external ? (
             <a href={route.path} target="_blank" rel="noopener noreferrer">
@@ -204,6 +205,7 @@ function ParentRoute({
 function PrimaryNavItems() {
   const navItemsIndex = 0;
   const navItems = SidebarMenuItems[navItemsIndex];
+
   // const router = useRouter();
 
   // const currentRoutePath = router.pathname.split('/')[1];

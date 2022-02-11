@@ -66,6 +66,7 @@ export interface ISidebarMenuItem {
   title: string;
   icon: JSX.IntrinsicElements['svg'];
   path: string;
+  sortRoutes?: boolean;
   routes?: Array<IChildrenRoutes>;
 }
 
@@ -75,6 +76,7 @@ const SidebarMenuItems: Array<Array<ISidebarMenuItem>> = [
       title: 'Getting Started',
       icon: <IconSparkPlain />,
       path: 'getting-started',
+      sortRoutes: false,
       routes: [
         {
           title: 'WebApp CDN',
@@ -102,6 +104,7 @@ const SidebarMenuItems: Array<Array<ISidebarMenuItem>> = [
       title: 'CDN',
       icon: <IconServerSmall />,
       path: 'cdn',
+      sortRoutes: true,
       routes: [
         {
           title: 'EdgeJS Routing',
@@ -182,6 +185,7 @@ const SidebarMenuItems: Array<Array<ISidebarMenuItem>> = [
       title: 'Developer Tools',
       icon: <IconCodePlain />,
       path: 'dev-tools',
+      sortRoutes: true,
       routes: [
         {
           title: 'CLI',
@@ -201,6 +205,7 @@ const SidebarMenuItems: Array<Array<ISidebarMenuItem>> = [
       title: 'Accounts & Teams',
       icon: <IconUserPlain />,
       path: 'accounts-teams',
+      sortRoutes: true,
       routes: [
         {
           title: 'Teams',
@@ -216,6 +221,7 @@ const SidebarMenuItems: Array<Array<ISidebarMenuItem>> = [
       title: 'Framework Guides',
       icon: <IconBookPlain />,
       path: 'framework-guides',
+      sortRoutes: true,
       routes: [
         {
           title: 'Angular',
@@ -448,6 +454,7 @@ const SidebarMenuItems: Array<Array<ISidebarMenuItem>> = [
       title: 'Reference',
       icon: <IconStacksPlain />,
       path: 'reference',
+      sortRoutes: true,
       routes: [
         {
           title: 'Changelog',
@@ -511,6 +518,7 @@ const SidebarMenuItems: Array<Array<ISidebarMenuItem>> = [
       title: 'Videos',
       icon: <IconVideos />,
       path: 'videos',
+      sortRoutes: true,
       routes: [
         {
           title: 'Product Updates',
@@ -528,6 +536,7 @@ const SidebarMenuItems: Array<Array<ISidebarMenuItem>> = [
       title: 'Package APIs',
       icon: <IconFolder />,
       path: 'package-apis',
+      sortRoutes: true,
       routes: [
         {
           title: '@layer0/core',
@@ -545,6 +554,7 @@ const SidebarMenuItems: Array<Array<ISidebarMenuItem>> = [
       title: 'Learning Resources',
       icon: <IconBulb />,
       path: 'learning-resources',
+      sortRoutes: true,
       routes: [
         {
           title: 'What is GraphQL?',

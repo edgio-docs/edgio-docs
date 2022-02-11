@@ -1,3 +1,4 @@
+import {siteConfig} from 'siteConfig';
 import styled from 'styled-components';
 import {Toc} from '../Layout/Toc';
 
@@ -9,8 +10,7 @@ const StyledDocs = styled.div`
   grid-template-columns: 75% 1fr;
   min-height: calc(100vh - 64px);
 
-  .docs-article,
-  .docs-article__toc {
+  .docs-article {
     padding: 0 20px 20px 20px;
   }
 
@@ -31,7 +31,7 @@ const StyledDocs = styled.div`
       display: flex;
       align-items: center;
       gap: 10px;
-      scroll-margin-top: calc(var(--header-height) + 16px);
+      scroll-margin-top: calc(var(--header-height) + 8px);
       padding-top: 16px;
 
       .anchor svg {
@@ -93,6 +93,25 @@ const StyledDocs = styled.div`
     font-size: 32px;
     line-height: 40px;
     letter-spacing: -0.663px;
+    font-weight: bold;
+  }
+
+  h2.article-heading {
+    font-size: 24px;
+    line-height: 28px;
+    font-weight: 600;
+  }
+
+  h3.article-heading {
+    font-size: 20px;
+    line-height: 24px;
+    font-weight: 600;
+  }
+
+  h4.article-heading {
+    font-size: 18px;
+    line-height: 20px;
+    font-weight: 600;
   }
 
   .article-text {
@@ -102,6 +121,8 @@ const StyledDocs = styled.div`
     color: #353535;
   }
 `;
+
+const anchorClassName = siteConfig.headerIdConfig.className;
 
 export default function Docs({
   title,
@@ -116,7 +137,14 @@ export default function Docs({
     <StyledDocs className="docs-body">
       <article className="docs-article">
         <header className="docs-article__header">
-          <h1 className="article-header">{title}</h1>
+          <h1 className="article-header">
+            {title}
+            <a
+              className={anchorClassName}
+              href="#"
+              style={{display: 'none'}}
+              aria-hidden="true"></a>
+          </h1>
         </header>
         <div className="docs-article__body">{children}</div>
       </article>

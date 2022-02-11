@@ -34,14 +34,18 @@ If you do not have an account yet, visit [{{ PRODUCT_NAME }}]({{ APP_URL }}/sign
 
 ## Create a New Layer0 Project
 
-1. Install the {{ PRODUCT_NAME }} cli.
+1. Install the {{ PRODUCT_NAME }} CLI.
 You can use either `npm` or `yarn`.
 
 ```bash
-npm i -g {{ PACKAGE_NAME }}/cli # For yarn, use yarn global add {{ PACKAGE_NAME }}/cli
+npm i -g {{ PACKAGE_NAME }}/cli
 ```
 
-2. Create your project by running:
+```bash
+yarn global add {{ PACKAGE_NAME }}/cli
+```
+
+2. Create your project with the following command:
 
 ```bash
 `{{ CLI_NAME }} init`

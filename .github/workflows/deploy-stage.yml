@@ -2,7 +2,7 @@ name: Deploy to stage
 on:
   push:
     branches:
-      - '*'
+      - '**'
       - '!master'
 jobs:
   deploy-to-layer0:

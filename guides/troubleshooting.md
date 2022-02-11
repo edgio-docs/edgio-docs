@@ -136,7 +136,7 @@ Layer0 automatically produces a source map for your router file so that all runt
 
 ### Next.js
 
-Set `layer0SourceMaps: true` in your `next.config.js`:
+Set `{{ FULL_CLI_NAME }}SourceMaps: true` in your `next.config.js`:
 
 ```js
 // next.config.js
@@ -147,21 +147,21 @@ module.exports = withLayer0(
   withServiceWorker({
     // Output sourcemaps so that stacktraces have original source filenames and line numbers when tailing
     // the logs in the Layer0 developer console.
-    layer0SourceMaps: true,
+    {{ FULL_CLI_NAME }}SourceMaps: true,
   }),
 )
 ```
 
 ### Nuxt.js
 
-Set `layer0SourceMaps: true` in the config for `@layer0/nuxt/module` in `buildModules` in `nuxt.config.js`:
+Set `{{ FULL_CLI_NAME }}SourceMaps: true` in the config for `@layer0/nuxt/module` in `buildModules` in `nuxt.config.js`:
 
 ```js
 // nuxt.config.js
 
 module.exports = {
   // ...
-  buildModules: [['@layer0/nuxt/module', { layer0SourceMaps: true }]],
+  buildModules: [['@layer0/nuxt/module', { {{ FULL_CLI_NAME }}SourceMaps: true }]],
   // ...
 }
 ```

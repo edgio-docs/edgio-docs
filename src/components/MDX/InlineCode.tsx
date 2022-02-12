@@ -1,8 +1,13 @@
 import * as React from 'react';
-import cn from 'classnames';
 import styled from 'styled-components';
 
-const StyledCode = styled.code`
+interface InlineCodeProps {
+  isLink: boolean;
+}
+
+const StyledCode = styled.code.attrs<InlineCodeProps>((props) => ({
+  isLink: props.isLink || false,
+}))<InlineCodeProps>`
   font-size: 14px;
   line-height: 1.5;
   font-weight: 400;
@@ -23,14 +28,12 @@ const StyledCode = styled.code`
   }
 `;
 
-interface InlineCodeProps {
-  isLink: boolean;
-}
 function InlineCode({
   isLink,
-  ...props
-}: JSX.IntrinsicElements['code'] & InlineCodeProps) {
-  return <StyledCode {...props} />;
+}: // ...props
+JSX.IntrinsicElements['code'] & InlineCodeProps) {
+  // IMPORTANT: <StyledCode isLink={isLink} {...props} />;
+  return <StyledCode isLink={isLink} />;
 }
 
 InlineCode.displayName = 'InlineCode';

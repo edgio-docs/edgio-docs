@@ -118,7 +118,6 @@ function ChildrenRoutes({
     external?: boolean;
   }>;
 }) {
-  console.log(routes);
   return (
     <motion.div
       className="routes"
@@ -228,7 +227,6 @@ function PrimaryNavItems() {
       {Object.keys(navItems).map((items, index) => {
         const itemsAsNumber = Number(items);
         const menuItem = SidebarMenuItems[navItemsIndex][itemsAsNumber];
-        console.log(menuItem);
 
         return (
           <div className="nav-item__box" key={itemsAsNumber}>

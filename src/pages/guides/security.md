@@ -2,8 +2,6 @@
 title: Security
 ---
 
-## Overview {/*overview*/}
-
 {{ PRODUCT_NAME }}’s platform is built to ensure your website and applications remain open for business by keeping you protected against a wide range of security risks without sacrificing performance.
 
 A fully [PCI-compliant](#section_is_the_layer0_waf_a_pci_compliant_solution_) solution, {{ PRODUCT_NAME }} Security protects your business against a variety of common exploits like SQL injections, cross-site scripting (XSS), PHP injections, bot attacks, DDoS attacks, and other common vulnerabilities.

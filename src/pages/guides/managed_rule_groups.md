@@ -2,9 +2,11 @@
 title: Managed Rule Group Descriptions
 ---
 
-## Layer0 Managed Rules
+## Layer0 Managed Rules {/*layer0-managed-rules*/}
 
-**![{"color": "red"}](/ 'Layer0 recommends utilizing this rule group for all WAF use cases.')**
+<Callout type="danger">
+	Layer0 recommends utilizing this rule group for all WAF use cases.
+</Callout>
 
 | Rule Name                           | Description                                                                                                                                                                                                                                                                                                                          | Log Name       |
 | ----------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------------- |
@@ -30,15 +32,17 @@ title: Managed Rule Group Descriptions
 | Size - URI Path                     | Verifies that the URI path length is at most 1,024 bytes.                                                                                                                                                                                                                                                                            | `sizePath`     |
 | Size - URI Query Size               | Verifies that the URI query string length is at most 2,048 bytes.                                                                                                                                                                                                                                                                    | `sizeArgs`     |
 
-## Admin Page Protection Rule
+## Admin Page Protection Rule {/*admin-page-protection-rule*/}
 
 | Rule Name          | Description                                                                                                                                          | Log Name        |
 | ------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------- | --------------- |
 | Protected URI Path | Inspects requests for URI paths that are generally reserved for administration of a webserver or application. Example patterns include `sqlmanager`. | `protectedPath` |
 
-## Bad Input Rules
+## Bad Input Rules {/*bad-input-rules*/}
 
-**![{"color": "red"}](/ 'Layer0 recommends enabling the 'Bad Input - Log4J' rule on all WAF applications.')**
+<Callout type="danger">
+	Layer0 recommends enabling the 'Bad Input - Log4J' rule on all WAF applications.
+</Callout>
 
 | Rule Name            | Description                                                                                                                                                                                                                                                             | Log Name      |
 | -------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------- |
@@ -47,14 +51,14 @@ title: Managed Rule Group Descriptions
 | Bad Input - Log4js   | Inspects the request for the presence of the Log4j vulnerability CVE-2021-44228 and protects against Remote Code Execution (RCE) attempts. Example patterns include `${jndi:ldap://example.com/}`. CAUTION: This rule only inspects the first 8 KB of the request body. | 3             |
 | Bad Input - Propfind | Inspects the HTTP method in the request for `PROPFIND`, which is a method similar to `HEAD`, but with the extra intention to exfiltrate XML objects.                                                                                                                    | `badProperty` |
 
-## PHP Application Rules
+## PHP Application Rules {/*php-application-rules*/}
 
 | Rule Name   | Description                                                                                                                                                                      | Log Name  |
 | ----------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------- |
 | PHP - Body  | Inspects the values of the request body for PHP script code injection attempts. Example patterns include functions such as `fsockopen` and the `$_GET` superglobal variable.     | `phpBody` |
 | PHP - Query | Inspects the values of all query parameters for PHP script code injection attempts. Example patterns include functions such as `fsockopen` and the `$_GET` superglobal variable. | `phpArgs` |
 
-## SQL Database Rules
+## SQL Database Rules {/*sql-database-rules*/}
 
 | Rule Name            | Description                                                                                                                                                                                                        | Log Name       |
 | -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------------- |
@@ -64,7 +68,7 @@ title: Managed Rule Group Descriptions
 | SQL - Query Extended | Inspects the values of all query parameters for patterns that match malicious SQL code. The patterns this rule inspects for aren't covered by the built-in {{ PRODUCT_NAME }} WAF SQL injection match statement.   | `sqlArgsExtra` |
 | SQL - URI path       | Uses the built-in {{ PRODUCT_NAME }} WAF injection match statement to inspect the request URI path for patterns that match malicious SQL code.                                                                     | `sqlPath`      |
 
-## Bot Control Rules
+## Bot Control Rules {/*bot-control-rules*/}
 
 | Rule Name           | Inspects for                                                                                                        | Log Name         |
 | ------------------- | ---------------------------------------------------------------------------------------------------------------------- | ---------------- |

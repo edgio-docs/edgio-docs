@@ -13,6 +13,7 @@ import TerminalBlock from './TerminalBlock';
 import Frameworks from './Frameworks';
 import CodeBlock from './CodeBlock';
 import CustomPre from './CustomPre';
+import Callout from './Callout';
 
 const P = (p: JSX.IntrinsicElements['p']) => (
   <p className="article-text" {...p} />
@@ -34,7 +35,7 @@ const UL = (p: JSX.IntrinsicElements['ul']) => (
 
 // IMPORTANT
 const Divider = () => (
-  <hr className="my-6 block border-b border-border dark:border-border-dark" />
+  <hr style={{height: '1px', backgroundColor: '#e3e8ee', border: 'none'}} />
 );
 
 export const MDXComponents = {
@@ -61,4 +62,5 @@ export const MDXComponents = {
   SupportedFrameworkCard,
   HomepageFeatures,
   Frameworks,
+  Callout,
 };

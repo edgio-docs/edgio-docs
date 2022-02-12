@@ -4,7 +4,7 @@ title: Response Headers
 
 This guide describes the headers that {{ PRODUCT_NAME }} injects into responses, making them visible to your client code.
 
-## General Headers
+## General Headers {/*general-headers*/}
 
 - `{{ HEADER_PREFIX }}-version`: version fingerprint that includes {{ PRODUCT_NAME }} version number, site build number and UTC timestamp of the build
 - `{{ HEADER_PREFIX }}-t`: telemetry measurements for all the components in {{ PRODUCT_NAME }} critical path that served your request
@@ -13,7 +13,7 @@ This guide describes the headers that {{ PRODUCT_NAME }} injects into responses,
 - `{{ HEADER_PREFIX }}-caching-status`: indicates why a response was or was not cached. See [Caching](/guides/caching#section_why_is_my_response_not_being_cached_).
 - `{{ HEADER_PREFIX }}-surrogate-key`: a space separated list of secondary cache keys used for [cache clearing](/guides/purging#surrogate_keys)
 
-### Structure of `{{ HEADER_PREFIX }}-t`
+### Structure of `{{ HEADER_PREFIX }}-t` {/*structure-of--header_prefix--t*/}
 
 The format is `{{ HEADER_PREFIX }}-t: <id>=<time>[,<id2>=<time2>...]`
 
@@ -21,12 +21,11 @@ The format is `{{ HEADER_PREFIX }}-t: <id>=<time>[,<id2>=<time2>...]`
 
 All times are in milliseconds.
 
-***
-**Note**: When a request is reentrant, telemetry information is not duplicated; instead, each request logs its own telemetry but does not return it to the downstream Layer0 request. As a result, duplicate entries are not possible.
-***
+<Callout type="info">
+  When a request is reentrant, telemetry information is not duplicated; instead, each request logs its own telemetry but does not return it to the downstream Layer0 request. As a result, duplicate entries are not possible.
+</Callout>
 
-
-#### Component Names and Prefixes
+#### Component Names and Prefixes {/*component-names-and-prefixes*/}
 
 Component names within the header are abbreviated:
 
@@ -42,23 +41,23 @@ Component names within the header are abbreviated:
 | w  | Lambda workers                   |
 
 
-#### Telemetry Types
+#### Telemetry Types {/*telemetry-types*/}
 | Type | Description |
 | ------------ | -------------- |
 | t | Total time (example: `eht`) total time as measured by edge HAProxy) |
 | f | Fetch time (example: `gdf`) total fetch time time as measured by global DPS) |
 | c | Cache status (example: `ecc=miss,...,gcc=hit`) miss on the edge pop, hit on the global pop |
 
-#### Example
+#### Example {/*example*/}
 A response that traversed from the edge, to global, to serverless might look like this:
 
-
-`< x-0-components: eh=0.1.6,e=atl,ec=1.1.0,ed=1.0.1,gh=0.1.6,g=hef,gd=1.0.1,p=1.21.10,w=3.11.0,wi=e8ce8753-163d-4be9-a39e-40454ace5146,b=serverless`
+<!-- this is breaking the layout -->
+<!-- `< x-0-components: eh=0.1.6,e=atl,ec=1.1.0,ed=1.0.1,gh=0.1.6,g=hef,gd=1.0.1,p=1.21.10,w=3.11.0,wi=e8ce8753-163d-4be9-a39e-40454ace5146,b=serverless`
 `< x-0-t: eh=1020,ect=1019,ecc=miss,edt=1015,edd=0,edf=1015,gh=952,gct=950,gcc=miss,gdt=945,gdd=24,gdf=921,pt=912,pc=1,pf=912,wm=79,wt=299,wc=1,wa=402,wl=299,wr=21,wp=233,wz=0`
-`< x-0-status: eh=200,ed=200,gh=200,gd=200,p=200,w=200`
+`< x-0-status: eh=200,ed=200,gh=200,gd=200,p=200,w=200` -->
 
 
-## server-timing
+## server-timing {/*server-timing*/}
 
 {{ PRODUCT_NAME }} adds the following values to the standard [server-timing](https://www.w3.org/TR/server-timing/) response header:
 
@@ -69,7 +68,7 @@ A response that traversed from the edge, to global, to serverless might look lik
 - country: desc=`country_code` - where country_code is the two letter code of the country from which the request was sent.
 - xrj: desc=`route` - where route is the matched route serialized as JSON.
 
-## Troubleshooting Headers
+## Troubleshooting Headers {/*troubleshooting-headers*/}
 
 The following headers are used internally by {{ PRODUCT_NAME }} staff to troubleshoot issues with requests.
 

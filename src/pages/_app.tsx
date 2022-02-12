@@ -7,7 +7,6 @@ import * as React from 'react';
 import '../styles/algolia.css';
 import '../styles/fonts.css';
 import GlobalStyle from '../styles/GlobalStyle';
-import '../styles/index.css';
 import '../styles/nprogress.css';
 import '../styles/sandpack.css';
 

@@ -74,7 +74,6 @@ const StyledDocs = styled.div`
       border: 1px solid #d2d5d8;
       overflow-wrap: break-word;
       font-variant-ligatures: none;
-      white-space: pre-wrap;
       margin: 0;
       overflow-x: auto;
       text-align: left;

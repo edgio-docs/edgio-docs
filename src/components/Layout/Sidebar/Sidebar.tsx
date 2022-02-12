@@ -118,6 +118,7 @@ function ChildrenRoutes({
     external?: boolean;
   }>;
 }) {
+  console.log(routes);
   return (
     <motion.div
       className="routes"
@@ -129,7 +130,7 @@ function ChildrenRoutes({
         collapsed: {height: 0},
       }}
       transition={{duration: 0.1}}>
-      {sortBy(routes, (item) => item.title.toLowerCase()).map((route, i) => (
+      {routes.map((route, i) => (
         <div className="route" key={i}>
           {route.external ? (
             <a href={route.path} target="_blank" rel="noopener noreferrer">
@@ -227,6 +228,7 @@ function PrimaryNavItems() {
       {Object.keys(navItems).map((items, index) => {
         const itemsAsNumber = Number(items);
         const menuItem = SidebarMenuItems[navItemsIndex][itemsAsNumber];
+        console.log(menuItem);
 
         return (
           <div className="nav-item__box" key={itemsAsNumber}>
@@ -239,7 +241,11 @@ function PrimaryNavItems() {
                 accordion.currentIndex === index && (
                   <ChildrenRoutes
                     {...{
-                      routes: menuItem.routes,
+                      routes: menuItem.sortRoutes
+                        ? sortBy(menuItem.routes, (item) =>
+                            item.title.toLowerCase()
+                          )
+                        : menuItem.routes,
                     }}
                   />
                 )}

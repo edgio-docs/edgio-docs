@@ -14,6 +14,7 @@ import Frameworks from './Frameworks';
 import CodeBlock from './CodeBlock';
 import CustomPre from './CustomPre';
 import Callout from './Callout';
+import ButtonLink from './ButtonLink';
 
 const P = (p: JSX.IntrinsicElements['p']) => (
   <p className="article-text" {...p} />
@@ -63,4 +64,5 @@ export const MDXComponents = {
   HomepageFeatures,
   Frameworks,
   Callout,
+  ButtonLink,
 };

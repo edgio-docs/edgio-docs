@@ -12,13 +12,23 @@ Deploying your web application behind Layer0 is the fastest and easiest way to s
 
 If any point, you want a more [detailed guide](/guides/traditional_sites), we've got that too.
 
-## Example
+## Example {/*example*/}
+
+<ButtonLink href="https://layer0-docs-cdn-starter-template-default.layer0-limelight.link/?button" variant="fill">
+  Try the WebApp CDN Example Site
+</ButtonLink>
+<ButtonLink href="https://github.com/layer0-docs/layer0-cdn-example?button" variant="stroke">
+  View the Code
+</ButtonLink>
+<ButtonLink href="https://app.layer0.co/deploy?button&deploy&repo=https://github.com/layer0-docs/layer0-cdn-example" variant="stroke">
+  Deploy to Layer0
+</ButtonLink>
 
 [Try the WebApp CDN Example Site](https://layer0-docs-cdn-starter-template-default.layer0-limelight.link/?button)
 [View the Code](https://github.com/layer0-docs/layer0-cdn-example?button)
 [Deploy to Layer0](https://app.layer0.co/deploy?button&deploy&repo=https://github.com/layer0-docs/layer0-cdn-example)
 
-## Network Diagram
+## Network Diagram {/*network-diagram*/}
 
 As shown below, {{ PRODUCT_NAME }} becomes the main CDN for your site:
 
@@ -28,13 +38,13 @@ Requests for your site will now pass through {{ PRODUCT_NAME }}'s globally distr
 
 A full production deployment requires changing your site's DNS to allow requests to come to Layer0 first. View our [production guide](/guides/production) for that process.
 
-## Create an Account
+## Create an Account {/*create-an-account*/}
 
 If you do not have an account yet, visit [{{ PRODUCT_NAME }}]({{ APP_URL }}/signup) to create one.
 
 {{ SYSTEM_REQUIREMENTS }}
 
-## Create a New Layer0 Project
+## Create a New Layer0 Project {/*create-a-new-layer0-project*/}
 
 ```bash
 npm i -g {{ PACKAGE_NAME }}/cli # yarn global add {{ PACKAGE_NAME }}/cli
@@ -46,7 +56,7 @@ Create your project by running:
 npx @layer0/cli@latest init
 ```
 
-### Project Structure
+### Project Structure {/*project-structure*/}
 
 In the `src` folder, there are the following files:
 
@@ -56,13 +66,13 @@ In the `src` folder, there are the following files:
 - `routes.ts`: routes to be cached and prefetched are defined, as well as what to pass through without modification and what to serve up as static content
 - `browser.ts`: entry point for the `main.js` javascript bundle which is added to the window
 
-## Configure Caching
+## Configure Caching {/*configure-caching*/}
 
 We need to configure caching in our newly created project. The project contains some generic starter routes already, but these should be customized to fit your site. These routes should be added in the `routes.ts` file.
 
 At this point, the only item that should require changing is a path match. We suggest starting with a few basic routes to get the feel for how it works.
 
-### Routes File
+### Routes File {/*routes-file*/}
 
 ```typescript
 // src/routes.ts
@@ -75,7 +85,7 @@ export default new Router()
   .get('/products/*path', shoppingFlowRouteHandler)
 ```
 
-### Route Handler
+### Route Handler {/*route-handler*/}
 
 The handler function passed into a route match will determine the behavior of the cache for the request. Abstracting this handler function, allows it to apply to multiple routes.
 
@@ -94,7 +104,7 @@ const handler: RouteHandler = async ({ cache, removeUpstreamResponseHeader, upda
 export default handler
 ```
 
-#### Cache Constants
+#### Cache Constants {/*cache-constants*/}
 
 Abstracting out the constants of the cache allows them to be reused across different routes.
 
@@ -122,7 +132,7 @@ Refer to the guides on [Routing](routing) and [Caching](caching) for the full sy
 
 Learn [advanced prefetching techniques](#section_advanced_prefetching_techniques) to achieve the best possible performance.
 
-## Deploy to {{ PRODUCT_NAME }}
+## Deploy to {{ PRODUCT_NAME }} {/*deploy-to--product_name-*/}
 
 Now that you're satisfied with your site in local development, it's time to deploy it to the {{ PRODUCT_NAME }} Cloud. Once deployed, you can formally evaluate site performance and QA functionality.
 
@@ -134,6 +144,6 @@ Deploy your site with the following command:
 
 Once your project code is up and running, you can view its performance from within the [app.layer0.co]({{ APP_URL }}) cockpit. Using the tools available here, you can understand the caching behavior of the routes you have added. Continue adding routes and dialing in your config until you are ready to launch the site and code.
 
-## Issues?
+## Issues? {/*issues*/}
 
 If you have any issues during this process, check our [forums](FORUM_URL) for assistance.

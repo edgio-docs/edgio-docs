@@ -129,7 +129,7 @@ function ChildrenRoutes({
         collapsed: {height: 0},
       }}
       transition={{duration: 0.1}}>
-      {sortBy(routes, (item) => item.title.toLowerCase()).map((route, i) => (
+      {routes.map((route, i) => (
         <div className="route" key={i}>
           {route.external ? (
             <a href={route.path} target="_blank" rel="noopener noreferrer">
@@ -239,7 +239,11 @@ function PrimaryNavItems() {
                 accordion.currentIndex === index && (
                   <ChildrenRoutes
                     {...{
-                      routes: menuItem.routes,
+                      routes: menuItem.sortRoutes
+                        ? sortBy(menuItem.routes, (item) =>
+                            item.title.toLowerCase()
+                          )
+                        : menuItem.routes,
                     }}
                   />
                 )}

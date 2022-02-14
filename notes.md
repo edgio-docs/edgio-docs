@@ -46,3 +46,8 @@ React is supported right OOTB. You can optionally install and configure
 3. Look into useRouteMeta
 
 1. Headings with {{ }} are not showing on TOC
+2. "this is breaking the layout" in /response_headers
+
+## Content Styling
+
+1. Code highlights.

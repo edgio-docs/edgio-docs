@@ -2,21 +2,19 @@
 title: Security
 ---
 
-## Overview
-
 {{ PRODUCT_NAME }}’s platform is built to ensure your website and applications remain open for business by keeping you protected against a wide range of security risks without sacrificing performance.
 
 A fully [PCI-compliant](#section_is_the_layer0_waf_a_pci_compliant_solution_) solution, {{ PRODUCT_NAME }} Security protects your business against a variety of common exploits like SQL injections, cross-site scripting (XSS), PHP injections, bot attacks, DDoS attacks, and other common vulnerabilities.
 
 This guide shows you how to keep your site and platform secure using {{ PRODUCT_NAME }}.
 
-## DDoS (Distributed Denial of Service)
+## DDoS (Distributed Denial of Service) {/*ddos-distributed-denial-of-service*/}
 
 {{ PRODUCT_NAME }} Enterprise customers enjoy always-on DDoS protection inside of our high-bandwidth, globally distributed network. Our solution offers basic protection against common layer 3 and 4 attacks in real-time so you never have to sacrifice performance for protection.
 
-## WAF (Web Application Firewall)
+## WAF (Web Application Firewall) {/*waf-web-application-firewall*/}
 
-### WAF Overview
+### WAF Overview {/*waf-overview*/}
 
 WAF is a web application firewall that helps protect your web applications and APIs against common web exploits an attacker may use to compromise your security, overwhelm resources, and affect the availability of your application.
 
@@ -24,19 +22,21 @@ Utilizing the {{ PRODUCT_NAME }} WAF allows you to monitor, filter, and block HT
 
 The WAF includes Managed Rule Groups, managed by {{ PRODUCT_NAME }}, that can be configured in either a flagging or blocking mode. You can enable all of the rules within these groups or configure each independent rule within the group based on your needs.
 
-### Managed Rule Groups
+### Managed Rule Groups {/*managed-rule-groups*/}
 
-#### {{ PRODUCT_NAME }} Managed Rules
+#### {{ PRODUCT_NAME }} Managed Rules {/*-product_name--managed-rules*/}
 
 ​​The {{ PRODUCT_NAME }} Managed rule group contains rules that are generally applicable to web applications. This provides protection against exploitation of a wide range of vulnerabilities, including high risk and commonly occurring vulnerabilities described in OWASP&reg; publications such as [OWASP Top 10](https://owasp.org/www-project-top-ten/).
 
-**![{"color": "red"}](/ 'Layer0 recommends utilizing this rule group for all WAF use cases.')**
+<Callout type="danger">
+  Layer0 recommends utilizing this rule group for all WAF use cases.
+</Callout>
 
 [Layer0 Managed Rule Group Descriptions](#section_managed_rule_groups)
 
 ---
 
-#### Admin Page Protection Rule
+#### Admin Page Protection Rule {/*admin-page-protection-rule*/}
 
 The Admin protection rule group contains rules that allow you to block external access to exposed administrative pages. This might be useful if you run third-party software or want to reduce the risk of a malicious actor gaining administrative access to your application.
 
@@ -44,17 +44,19 @@ The Admin protection rule group contains rules that allow you to block external 
 
 ---
 
-#### Bad Input Rules
+#### Bad Input Rules {/*bad-input-rules*/}
 
 The Bad Input rule group contains rules to block request patterns that are known to be invalid and are associated with exploitation or the discovery of Common Vulnerabilities and Exposures (CVEs). This can help reduce the risk of a known malicious actor discovering a vulnerable application.
 
-**![{"color": "red"}](/ 'Layer0 recommends enabling the 'Bad Input - Log4J' rule on all WAF applications.')**
+<Callout type="danger">
+  Layer0 recommends enabling the 'Bad Input - Log4J' rule on all WAF applications.
+</Callout>
 
 [Bad Input Rule Descriptions](managed_rule_groups#section_bad_input_rules)
 
 ---
 
-#### PHP Application Rules
+#### PHP Application Rules {/*php-application-rules*/}
 
 The PHP application rule group contains rules that block request patterns associated with the exploitation of vulnerabilities specific to the use of the PHP programming language. This includes the injection of unsafe PHP functions into requests.
 
@@ -62,7 +64,7 @@ The PHP application rule group contains rules that block request patterns associ
 
 ---
 
-#### SQL Database Rules
+#### SQL Database Rules {/*sql-database-rules*/}
 
 The SQL database rule group contains rules to block request patterns associated with exploitation of SQL databases, like SQL injection attacks. This can help prevent remote injection of unauthorized queries. Evaluate this rule group for use if your application interfaces with an SQL database.
 
@@ -70,7 +72,7 @@ The SQL database rule group contains rules to block request patterns associated 
 
 ---
 
-#### Add Rule Groups to a WAF
+#### Add Rule Groups to a WAF {/*add-rule-groups-to-a-waf*/}
 
 ![Add Rule Groups to WAF](/images/security/addrulegroup1.jpg 'Add Rule Groups to WAF')
 
@@ -88,7 +90,7 @@ The SQL database rule group contains rules to block request patterns associated 
 
 ---
 
-#### Add Single Rules to a WAF
+#### Add Single Rules to a WAF {/*add-single-rules-to-a-waf*/}
 
 ![Add Single Rule to WAF](/images/security/addrulegroup1.jpg 'Add Single Rule to WAF')
 
@@ -107,7 +109,7 @@ The SQL database rule group contains rules to block request patterns associated 
 
 ---
 
-#### Apply a WAF to Your Environment
+#### Apply a WAF to Your Environment {/*apply-a-waf-to-your-environment*/}
 
 Prerequisite: Configured WAF rules and/or rule groups.
 
@@ -129,9 +131,9 @@ Follow these steps to add a WAF to an environment:
 1. From the dropdown, select an active WAF to add.
 1. Click the ACTIVATE button from either the top or the bottom of the page.
 
-## Bot Detection
+## Bot Detection {/*bot-detection*/}
 
-### Detect Bots with Managed Rules
+### Detect Bots with Managed Rules {/*detect-bots-with-managed-rules*/}
 
 The {{ PRODUCT_NAME }} Bot protection contains rules to block and manage requests from bots. You are charged additional fees when you use this product.
 
@@ -143,13 +145,13 @@ You can monitor the impact of your bots by flagging each bot type of request gai
 
 [Bot Control Rule Descriptions](managed_rule_groups#section_bot_rules)
 
-### Detect Bots with EdgeJS
+### Detect Bots with EdgeJS {/*detect-bots-with-edgejs*/}
 
-#### General Information
+#### General Information {/*general-information*/}
 
 {{ PRODUCT_NAME }} examines the `user-agent` header in an incoming request to determine if it includes a string that indicates if it is a bot, and if so, injects `1` in the `x-0-device-is-bot` request header, which will be visible to your server code. If the `user-agent` header does not include any of the strings indicating a bot, a `0` value is injected.
 
-#### User Agents and Bots
+#### User Agents and Bots {/*user-agents-and-bots*/}
 
 The following table list the user agents that {{ PRODUCT_NAME }} examines and describes the corresponding bots.
 
@@ -195,7 +197,7 @@ router.match(
 
 The above code will match all the routes that even have a `user-agent` header and then inject the `my-bot-detection-is-bot` when the value of the user agent header matches the given regex. Once the header has been injected, the later routes can test for it and implement bot handling. Or, you could just let the header be sent upstream for your backend to handle it.
 
-## Security Reporting
+## Security Reporting {/*security-reporting*/}
 
 ![Reporting](/images/security/addrg3.jpg 'Reporting')
 
@@ -204,7 +206,7 @@ The above code will match all the routes that even have a `user-agent` header an
 1. Choose an environment.
 1. Click the SECURITY tab from the top page navigation.
 
-### Security Activity
+### Security Activity {/*security-activity*/}
 
 ![WAF Activity](/images/security/wafactivity.jpg 'WAF Activity')
 
@@ -215,7 +217,7 @@ The above code will match all the routes that even have a `user-agent` header an
 | c.  | Requests by action (passed, flagged, blocked)           | Toggle the checkboxes.                   |
 | d.  | Deployments and/or full cache flushes                   | Toggle on/off via WAF Activity settings. |
 
-### Rules Applied
+### Rules Applied {/*rules-applied*/}
 
 ![Rules Applied](/images/security/rulesapplied.png 'Rules Applied')
 
@@ -225,7 +227,7 @@ The above code will match all the routes that even have a `user-agent` header an
 | b.  | Flagged and/or Blocked requests | Toggle the Flagged and Blocked buttons.                                                                                                                                                         |
 | c.  | Graph of rules applied          | Click inside the graph to list the names of the rules that have been applied to your Bot Control or {{ PRODUCT_NAME }} Managed rules. Click _Back to Rule Sets_ to return to the previous view. |
 
-### Rules Section
+### Rules Section {/*rules-section*/}
 
 ![Rules](/images/security/rules.jpg 'Rules')
 
@@ -234,15 +236,15 @@ The above code will match all the routes that even have a `user-agent` header an
 | a.  | Rules by type | Expand or collapse the list using the arrow to the left of the rule type.                                                                      |
 | b.  | Route details | Click the rule name to view route information for that rule, including its path and number/percentage of total, flagged, and blocked requests. |
 
-### Logs
+### Logs {/*logs*/}
 
 Here is a sample log file highlighting the WAF data ("waf":"botLib,flagged","wafv":"WAF-1,2"): the action applied, the mode, the WAF name, and the version number, respectively.
 
 ![WAF Log File Example](/images/security/log.jpg 'WAF Log File Example')
 
-## Website Security with EdgeJS
+## Website Security with EdgeJS {/*website-security-with-edgejs*/}
 
-### Content Security Policy (CSP)
+### Content Security Policy (CSP) {/*content-security-policy-csp*/}
 
 [Content Security Policy](https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP) (CSP) is an added layer of security that helps to detect and mitigate certain types of attacks, including Cross Site Scripting (XSS) and data injection attacks. These attacks are used for everything from data theft to site defacement to distribution of malware.
 
@@ -269,7 +271,7 @@ new Router().match('/:path*', ({ setResponseHeader }) => {
 // The rest of your router...
 ```
 
-### Enabling Basic Authentication
+### Enabling Basic Authentication {/*enabling-basic-authentication*/}
 
 You can add basic authentication to your site using the `requireBasicAuth` router method. For example, add the following to the top of your router:
 
@@ -285,7 +287,7 @@ basic authentication. Any environment without those environment variables will n
 
 Once deployed, the router will return 403 Forbidden for requests that have the incorrect basic authentication token, and 401 Unauthorized for requests that have no basic authentication token.
 
-### SSL
+### SSL {/*ssl*/}
 
 By default {{ PRODUCT_NAME }} only serves traffic over the `https` protocol. It automatically redirects `http` requests to the same URL, including any query strings, on `https`.
 
@@ -313,7 +315,7 @@ Additionally:
 - A request's protocol can be determined by reading the [`{{ HEADER_PREFIX }}-protocol`](request_headers#section_general_headers) request header or the [`request.secure`](/docs/api/core/interfaces/_router_request_.request.html#secure) property.
 - During local development all requests will appear secure by default. To test your router for `http` protocol matching you must either set the `{{ COOKIE_PREFIX }}_emulate_local_http` cookie to `true` (if using a browser) or send an `{{ HEADER_PREFIX }}-protocol` request header set to `http`.
 
-### Secrets
+### Secrets {/*secrets*/}
 
 Rather than putting secret values such as API keys in your code and checking them into source control, you can securely
 store them in environment variables, then access them in your code from `process.env`. To configure environment variables,
@@ -323,7 +325,7 @@ navigate to your environment, click _EDIT_, then under Environment Variables, cl
 
 As of {{ PRODUCT_NAME }} CLI version 2.19.0, when you deploy to an environment using a deploy token, for example by running `{{ CLI_NAME }} deploy my-team --environment=production --token=(my token)` option, all environment variables are pulled down from the {{ PRODUCT_NAME }} Developer Console and applied to `process.env` so they can be accessed at build time. This allows you to store all of your build and runtime secrets in a single place, {{ PRODUCT_NAME }} Developer Console, rather than storing some in your CI system's secret manager.
 
-### Cache Poisoning
+### Cache Poisoning {/*cache-poisoning*/}
 
 [Cache poisoning attack](https://owasp.org/www-community/attacks/Cache_Poisoning) is described by OWASP&reg; as:
 
@@ -344,30 +346,30 @@ router.get('/some/path/depending/on/language/cookie', ({ cache }) => {
 })
 ```
 
-## FAQs
+## FAQs {/*faqs*/}
 
-### What’s the difference between WAF-1 and WAF-2?
+### What’s the difference between WAF-1 and WAF-2? {/*whats-the-difference-between-waf-1-and-waf-2*/}
 
 You can configure 2 different WAF instances, allowing you to apply different sets of security rules to different environments.
 
-### How do I know which version to use?
+### How do I know which version to use? {/*how-do-i-know-which-version-to-use*/}
 
 Like all {{ PRODUCT_NAME }} products, WAF gives you access to all previous and active versions of your configuration so you have historical setups in case you need to roll back the current version.While editing, the version is in a _Draft_ state; once activated, the version is _Active_.
 
-### What is the difference between flagging and blocking a rule or rule group?
+### What is the difference between flagging and blocking a rule or rule group? {/*what-is-the-difference-between-flagging-and-blocking-a-rule-or-rule-group*/}
 
 To flag a rule or rule group means to mark it if the rule would have been activated without actually denying the traffic. In contrast, when you block a rule or rule group, traffic is denied on affected routes. You can view both flagged and blocked data in your [Layer0 console](https://app.layer0.co/).
 
-### What are {{ PRODUCT_NAME }} Managed Rules and why should I apply this rule group?
+### What are {{ PRODUCT_NAME }} Managed Rules and why should I apply this rule group? {/*what-are--product_name--managed-rules-and-why-should-i-apply-this-rule-group*/}
 
 Managed rules block specific known threats. Layer0 recommends this rule group for all WAF use cases.
 
 Note: Layer0 recommends that all customers activate the _Bad Input - Log4J_ rule group.
 
-### Is the Layer0 WAF a PCI-compliant solution?
+### Is the Layer0 WAF a PCI-compliant solution? {/*is-the-layer0-waf-a-pci-compliant-solution*/}
 
 Yes. Layer0 maintains PCI-DSS Level 1 compliance by undergoing annual audits from approved Visa and MasterCard auditors.
 
-### What is the minimum level of encryption for {{ PRODUCT_NAME }}?
+### What is the minimum level of encryption for {{ PRODUCT_NAME }}? {/*what-is-the-minimum-level-of-encryption-for--product_name-*/}
 
 {{ PRODUCT_NAME }} enforces a minimum version of TLS 1.2 or higher.

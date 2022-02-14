@@ -8,7 +8,7 @@ title: Status Codes
 
 If the error is generated in {{ PRODUCT_NAME }} itself, the platform generates a 53x or 54x HTTP status code:
 
-| CODE | NAME | DESCRIPTION |
+| Code | Name | Description |
 | --- | --- | --- |
 | **530** | Internal {{ PRODUCT_NAME }} Error | Unexpected error in {{ PRODUCT_NAME }}. Please contact [support]({{ HELP_URL }}) immediately. |
 | **531** | Project Upstream Connection Timeout | Your project timed out while waiting to establish an upstream connection. |
@@ -33,7 +33,7 @@ Obviously, your project can set status codes of their own, which may sometimes m
 
 {{ PRODUCT_NAME }} also issues these standard response codes:
 
-| CODE | NAME | DESCRIPTION |
+| Code | Name | Description |
 | --- | --- | --- |
 | **400** | Bad Request | The URL is too long or the request headers are too large. See [limits](limits) |
 | **404** | Not Found | The server cannot find the requested resource. This usually occurs when the browser requests a page that your app does not have. A 404 will also occur when a request does not match any of the routes in your {{ PRODUCT_NAME }} router. See [routing](routing) for more information. |

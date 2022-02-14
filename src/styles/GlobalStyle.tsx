@@ -70,6 +70,15 @@ p, h1, h2, h3, h4, h5, h6 {
 #root, #__next {
   isolation: isolate;
 }
+
+/* code and stuff */
+code, pre {
+  font-family: 'IBM Plex Mono', monospace;
+}
+
+code {
+  white-space: nowrap;
+}
 `;
 
 export default GlobalStyle;

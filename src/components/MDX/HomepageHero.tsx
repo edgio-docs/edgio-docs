@@ -2,7 +2,7 @@ import Image from 'next/image';
 import * as React from 'react';
 import styled from 'styled-components';
 import Container from '../Layout/Container';
-import HeaderGraphics from '../../../public/images/HeaderGraphics.svg';
+import HeaderGraphics from '../../../public/images/home/HeaderGraphics.svg';
 
 const StyledHomepageHero = styled.div`
   min-height: 446px;
@@ -21,7 +21,7 @@ const StyledHomepageHero = styled.div`
     grid-template-columns: 1fr 1fr;
     position: relative;
     padding: 40px 0 20px 0;
-    background-image: url('/images/HomepageHeroLightWaves.svg');
+    background-image: url('/images/home/HomepageHeroLightWaves.svg');
     background-repeat: no-repeat;
     background-size: contain;
     background-position: right;

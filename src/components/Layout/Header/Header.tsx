@@ -5,6 +5,7 @@ import {IconDarkMode} from '../../Icon/IconDarkMode';
 import {IconLogoWithText} from '../../Icon/IconLogoWithText';
 import {siteConfig} from 'siteConfig';
 import {DocSearch} from '@docsearch/react';
+import NoSSRWrapper from '../NoSSRWrapper';
 
 const StyledHeader = styled.header`
   position: sticky;
@@ -139,11 +140,13 @@ export default function Header() {
       </div>
       <div className="col-2">
         <div className="search-form__box">
-          <DocSearch
-            appId={algoliaAppId}
-            indexName={indexName}
-            apiKey={algoliaApiKey}
-          />
+          <NoSSRWrapper>
+            <DocSearch
+              appId={algoliaAppId}
+              indexName={indexName}
+              apiKey={algoliaApiKey}
+            />
+          </NoSSRWrapper>
         </div>
       </div>
       <div className="col-3">

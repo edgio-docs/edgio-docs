@@ -78,6 +78,7 @@ code, pre {
 
 code {
   white-space: nowrap;
+  font-weight: 600;
 }
 `;
 

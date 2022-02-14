@@ -5,9 +5,7 @@ interface InlineCodeProps {
   isLink: boolean;
 }
 
-const StyledCode = styled.code.attrs<InlineCodeProps>((props) => ({
-  isLink: props.isLink || false,
-}))<InlineCodeProps>`
+const StyledCodeWrap = styled.span`
   font-size: 14px;
   line-height: 1.5;
   font-weight: 400;
@@ -23,17 +21,20 @@ const StyledCode = styled.code.attrs<InlineCodeProps>((props) => ({
   text-align: left;
   display: inline;
 
-  .isLink {
-    /*  */
+  .link {
+    color: var(--pink);
   }
 `;
 
 function InlineCode({
   isLink,
-}: // ...props
-JSX.IntrinsicElements['code'] & InlineCodeProps) {
-  // IMPORTANT: <StyledCode isLink={isLink} {...props} />;
-  return <StyledCode isLink={isLink} />;
+  ...props
+}: JSX.IntrinsicElements['span'] & InlineCodeProps) {
+  return (
+    <StyledCodeWrap>
+      {isLink ? <code className="link" {...props} /> : <code {...props} />}
+    </StyledCodeWrap>
+  );
 }
 
 InlineCode.displayName = 'InlineCode';

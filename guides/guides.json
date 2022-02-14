@@ -143,6 +143,11 @@
         "text": "Logs",
         "as": "/guides/logs",
         "href": "/guides/[...guide]"
+      },
+      {
+        "text": "EdgeJS Unit Testing",
+        "as": "/guides/edgejs_testing",
+        "href": "/guides/[...guide]"
       }
     ]
   },

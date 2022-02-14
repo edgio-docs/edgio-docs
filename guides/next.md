@@ -18,10 +18,18 @@ This framework has a connector developed for {{ PRODUCT_NAME }}. See [Connectors
 
 [View the Connector Code](https://github.com/layer0-docs/layer0-connectors/tree/main/layer0-next-connector?button)
 
+## Supported Versions
+
+Layer0 supports Next version 9 through 12.
+
 ## Supported Features
 
-{{ PRODUCT_NAME }} supports all of the most powerful features of Next.js 10, including:
+{{ PRODUCT_NAME }} supports all of the most powerful features of Next.js, including:
 
+- SSG
+- SSR
+- ISG
+- ISR
 - Localization
 - Image Optimization
 - `getStaticPaths` (including `fallback: (true|false|'blocking')`)

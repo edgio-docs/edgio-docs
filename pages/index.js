@@ -138,7 +138,7 @@ const Home = ({ navData }) => {
              {/* xl={12} md={4} sm={6} */}
             <Grid item xs={12} className={classes.tutorial} >            
               <div className={classes.aspectRatioLargeVideo}>              
-                <iframe frameBorder={0} src="https://www.youtube.com/embed/GE0K2ecw_xA?rel=0" />                
+                <iframe frameBorder={0} src="https://player.vimeo.com/video/663408950" />                
               </div>              
             </Grid>          
            <Grid container spacing={4} maxwidth={"md"} className={classes.tiles} justify={'center'} >

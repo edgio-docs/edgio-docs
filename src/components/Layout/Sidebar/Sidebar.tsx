@@ -7,7 +7,7 @@ import SidebarMenuItems, {
 } from '../../../data/SidebarMenuItems';
 import {IconChevron} from '../../Icon/IconChevron';
 import {IconOutsideLink} from '../../Icon/IconOutsideLink';
-import {sortBy} from 'underscore';
+import sortBy from 'lodash/sortBy';
 
 const StlyedSidebar = styled.div`
   color: var(--black1);

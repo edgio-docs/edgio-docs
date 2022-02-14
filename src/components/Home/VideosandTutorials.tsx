@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import SectionHeader from './SectionHeader';
+import Video from 'components/MDX/Video';
 
 const StyledComp = styled.div`
   display: grid;
@@ -23,18 +24,30 @@ const StyledComp = styled.div`
     }
   }
 
-  .video-embed__box {
-    height: 259px;
-    background-color: black;
-  }
+  // .video-embed__box {
+  //   height: 259px;
+  //   background-color: black;
+  // }
 `;
 
 export default function DeveloperTools() {
   const videos = [
-    {title: 'What & Why'},
-    {title: 'Deploying a GitHub Project'},
-    {title: 'How to Prefetch'},
-    {title: 'What are the Layer0 DevTools'},
+    {
+      title: 'What & Why',
+      url: 'https://www.youtube.com/embed/sJ6AkTrcZvg?rel=0',
+    },
+    {
+      title: 'Deploying a GitHub Project',
+      url: 'https://www.youtube.com/embed/F8uN03ps1As?rel=0',
+    },
+    {
+      title: 'How to Prefetch',
+      url: 'https://www.youtube.com/embed/lfhSDCNgzfs?rel=0',
+    },
+    {
+      title: 'What are the Layer0 DevTools',
+      url: 'https://www.youtube.com/embed/4AYQAvkc0UY?rel=0',
+    },
   ];
 
   return (
@@ -46,9 +59,7 @@ export default function DeveloperTools() {
           <div className="video" key={index}>
             <h1 className="title">{video.title}</h1>
             <div className="video-embed__box">
-              <figure>
-                <div className="replace-this-with-iframe" />
-              </figure>
+              <Video>{video.url}</Video>
             </div>
           </div>
         ))}

@@ -205,4 +205,4 @@ it('should cache the static asset at the edge for 1 hour', async () => {
 
 ## Example Tests
 
-For a full example of EdgeJS unit testing, check out our [Layer0 Templates](https://github.com/layer0-docs/layer0-templates) for a full implementation.
+For a more detailed example of EdgeJS unit testing, check out our [Layer0 Templates](https://github.com/layer0-docs/layer0-templates) for a full implementation.

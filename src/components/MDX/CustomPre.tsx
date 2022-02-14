@@ -1,6 +1,118 @@
+import React from 'react';
 import styled from 'styled-components';
+import CodeBlock from './CodeBlock';
 
 const StyledCustomPre = styled.div`
+  border: 2px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+
+  .code-wrap {
+    border: 2px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  pre {
+    margin: 0;
+  }
+
+  code[class*='language-'],
+  pre[class*='language-'],
+  pre code {
+    direction: ltr;
+    text-align: left;
+    white-space: pre;
+    word-break: break-all;
+    hyphens: none;
+    color: #ffffff;
+    line-height: 1.9;
+    tab-size: 4;
+    font-size: 14px;
+    font-weight: 600;
+    font-family: 'IBM Plex Mono';
+  }
+
+  .hljs-comment,
+  .hljs-quote {
+    color: #7e7887;
+  }
+
+  .hljs-variable,
+  .hljs-template-variable,
+  .hljs-attribute,
+  .hljs-regexp,
+  .hljs-link,
+  .hljs-tag,
+  .hljs-name,
+  .hljs-selector-id,
+  .hljs-selector-class {
+    color: #be4678;
+  }
+
+  .hljs-number,
+  .hljs-meta,
+  .hljs-built_in,
+  .hljs-builtin-name,
+  .hljs-literal,
+  .hljs-type,
+  .hljs-params {
+    color: #aa573c;
+  }
+
+  .hljs-string,
+  .hljs-symbol,
+  .hljs-bullet {
+    color: #2a9292;
+  }
+
+  .hljs-title,
+  .hljs-section {
+    color: var(--pink);
+  }
+
+  .hljs-keyword,
+  .hljs-selector-tag {
+    color: var(--yellow);
+  }
+
+  .hljs-deletion,
+  .hljs-addition {
+    color: #19171c;
+    display: inline-block;
+    width: 100%;
+  }
+
+  .hljs-deletion {
+    background-color: #be4678;
+  }
+
+  .hljs-addition {
+    background-color: #2a9292;
+  }
+
+  .hljs {
+    display: block;
+    overflow-x: auto;
+    color: white;
+    padding: 0.5em;
+  }
+
+  .hljs-emphasis {
+    font-style: italic;
+  }
+
+  .hljs-strong {
+    font-weight: bold;
+  }
+
+  .code-language {
+    padding: 0 0.5em;
+    display: flex;
+    justify-content: flex-end;
+    font-weight: var(--fw700);
+  }
+
   .code-block__inner {
     display: flex;
     flex-direction: column;
@@ -37,21 +149,21 @@ const StyledCustomPre = styled.div`
     margin: 0;
     overflow-x: auto;
     text-align: left;
-    /* REMOVE */
-    color: white;
   }
 `;
 
 export default function CustomPre({children}: {children: React.ReactNode}) {
+  const language = React.Children.toArray(children)[0].props.className;
+
   return (
     <StyledCustomPre>
       <div className="code-block">
         <div className="code-block__inner">
           <header className="code-block__header">
-            typescript/copy/paste/src/routes.ts
+            <span className="code-block__header-text">{language}</span>
           </header>
           <main className="code-block__content">
-            <pre className="code-block__pre">{children}</pre>
+            <CodeBlock>{children}</CodeBlock>
           </main>
         </div>
       </div>

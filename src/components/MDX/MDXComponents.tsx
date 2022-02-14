@@ -1,6 +1,10 @@
 import * as React from 'react';
+import ButtonLink from './ButtonLink';
+import Callout from './Callout';
 import ConsoleBlock from './ConsoleBlock';
 import Convention from './Convention';
+import CustomPre from './CustomPre';
+import Frameworks from './Frameworks';
 import {H1, H2, H3, H4} from './Heading';
 import HomepageFeatures from './HomepageFeatures';
 import HomepageHero from './HomepageHero';
@@ -10,11 +14,6 @@ import Link from './Link';
 import Recap from './Recap';
 import SupportedFrameworkCard from './SupportedFrameworkCard';
 import TerminalBlock from './TerminalBlock';
-import Frameworks from './Frameworks';
-import CodeBlock from './CodeBlock';
-import CustomPre from './CustomPre';
-import Callout from './Callout';
-import ButtonLink from './ButtonLink';
 
 const P = (p: JSX.IntrinsicElements['p']) => (
   <p className="article-text" {...p} />
@@ -52,7 +51,7 @@ export const MDXComponents = {
   inlineCode: InlineCode,
   hr: Divider,
   a: Link,
-  code: CodeBlock,
+  // code: CodeBlock,
   pre: CustomPre,
   ConsoleBlock,
   Convention,

@@ -52,7 +52,7 @@ export default function ButtonLink({
   return (
     <StyledButtonLink {...{type, variant}}>
       <Link href={href} passHref>
-        <a>
+        <a target="_blank">
           {withIcon && (
             <div className="icon-wrap">
               {type === 'default' ? 'ℹ️' : type === 'code' ? '⚠️' : '⛔️'}

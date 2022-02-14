@@ -3,6 +3,9 @@ import styled from 'styled-components';
 import {IconSearch} from '../../Icon/IconSearch';
 import {IconDarkMode} from '../../Icon/IconDarkMode';
 import {IconLogoWithText} from '../../Icon/IconLogoWithText';
+import {siteConfig} from 'siteConfig';
+import {DocSearch} from '@docsearch/react';
+import NoSSRWrapper from '../NoSSRWrapper';
 
 const StyledHeader = styled.header`
   position: sticky;
@@ -119,6 +122,12 @@ const StyledHeader = styled.header`
   }
 `;
 
+const {
+  appId: algoliaAppId,
+  apiKey: algoliaApiKey,
+  indexName,
+} = siteConfig.algolia;
+
 export default function Header() {
   return (
     <StyledHeader className="docs-header">
@@ -131,17 +140,13 @@ export default function Header() {
       </div>
       <div className="col-2">
         <div className="search-form__box">
-          <form className="search-form">
-            <label htmlFor="search">
-              <IconSearch />
-            </label>
-            <input
-              type="search"
-              name="search"
-              id="search"
-              placeholder="Search documentation"
+          <NoSSRWrapper>
+            <DocSearch
+              appId={algoliaAppId}
+              indexName={indexName}
+              apiKey={algoliaApiKey}
             />
-          </form>
+          </NoSSRWrapper>
         </div>
       </div>
       <div className="col-3">

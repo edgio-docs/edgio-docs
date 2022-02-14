@@ -1,5 +1,6 @@
 import * as React from 'react';
 import ButtonLink from './ButtonLink';
+import ButtonLinksGroup from './ButtonLinksGroup';
 import Callout from './Callout';
 import ConsoleBlock from './ConsoleBlock';
 import Convention from './Convention';
@@ -14,6 +15,7 @@ import Link from './Link';
 import Recap from './Recap';
 import SupportedFrameworkCard from './SupportedFrameworkCard';
 import TerminalBlock from './TerminalBlock';
+import Video from './Video';
 
 const P = (p: JSX.IntrinsicElements['p']) => (
   <p className="article-text" {...p} />
@@ -63,5 +65,7 @@ export const MDXComponents = {
   HomepageFeatures,
   Frameworks,
   Callout,
+  ButtonLinksGroup,
   ButtonLink,
+  Video,
 };

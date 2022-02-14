@@ -153,7 +153,18 @@ const StyledCustomPre = styled.div`
 `;
 
 export default function CustomPre({children}: {children: React.ReactNode}) {
-  const language = React.Children.toArray(children)[0].props.className;
+  let message: string | undefined;
+  let language: string | undefined;
+
+  if (typeof children === 'string') {
+    message = children;
+  } else if (
+    React.isValidElement(children) &&
+    typeof children.props.children === 'string'
+  ) {
+    message = children.props.children;
+    language = children.props.className;
+  }
 
   return (
     <StyledCustomPre>
@@ -163,7 +174,7 @@ export default function CustomPre({children}: {children: React.ReactNode}) {
             <span className="code-block__header-text">{language}</span>
           </header>
           <main className="code-block__content">
-            <CodeBlock>{children}</CodeBlock>
+            <CodeBlock language={language || 'js'}>{message}</CodeBlock>
           </main>
         </div>
       </div>

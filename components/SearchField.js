@@ -16,6 +16,9 @@ const useStyles = makeStyles(theme => ({
     '& .algolia-autocomplete': {
       flex: 1,
       width: '98%',
+      '& .ds-dropdown-menu > div': {
+        height: 300,
+      },
     },
   },
   notchedOutline: {
@@ -34,6 +37,7 @@ export default function SearchField() {
         indexName,
         inputSelector: '#docsearch',
         algoliaOptions: {
+          hitsPerPage: 60,
           // See https://www.algolia.com/doc/api-reference/api-parameters/
         },
       })

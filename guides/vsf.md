@@ -10,20 +10,17 @@ Here's an example Vue Storefront 2 app running on Layer0:
 
 [Try the Vue Storefront Example](https://layer0-docs-layer0-vue-storefront-commercetools-example-default.layer0.link?button)
 [View the Code](https://github.com/layer0-docs/layer0-vue-storefront-commercetools-example?button)
+[Deploy to Layer0](https://app.layer0.co/deploy?button&deploy&repo=https://github.com/layer0-docs/layer0-vue-storefront-commercetools-example)
 
-## Connector
+{{ SIGN_UP_LAYER0 }}
 
-This framework has a connector developed for {{ PRODUCT_NAME }}. See [Connectors](connectors) for more information.
+## Install the {{ PRODUCT_NAME }} CLI
 
-[View the Connector Code](https://github.com/layer0-docs/layer0-connectors/tree/main/layer0-vue-storefront-connector?button)
+If you have not already done so, install the [{{ PRODUCT_NAME }} CLI](cli)
 
-## Install Node.js and npm
-
-**{{ PRODUCT_NAME }} only supports Node.js version {{ NODE_VERSION }}**
-
-If you do not have Node.js installed on your system, download and install it from the official [Node.js v{{ NODE_VERSION }} downloads](https://nodejs.org/dist/latest-v{{ NODE_VERSION }}/) page. Select the download that matches your operating system and run the installer. Note that the installer for Node.js will also install npm.
-
-_Note that while you can use any version of Node.js >= 14 locally, your app will run in Node 14 when deployed to the {{ PRODUCT_NAME }} cloud. Therefore we highly suggest using Node 14 for all development._
+```bash
+npm i -g {{ PACKAGE_NAME }}/cli
+```
 
 ## Install the VSF CLI
 
@@ -36,16 +33,15 @@ cd <project-name>
 npm install
 ```
 
-## Install the {{ PRODUCT_NAME }} CLI
+## Configuring your Vue Storefront app for {{ PRODUCT_NAME }}
 
-To prepare your Vue Storefront app for deployment on {{ PRODUCT_NAME }}, run the following commands in the root folder of your project:
+### Initialize your project
 
-```
-npm install -g {{ PACKAGE_NAME }}/cli
+In the root directory of your project run `{{ CLI_NAME }} init`:
+
+```bash
 {{ CLI_NAME }} init
 ```
-
-### nuxt.config.js
 
 The {{ PRODUCT_NAME }} init command should have automatically moved all your `modules` to `buildModules` in order to deploy the smallest possible build to {{ PRODUCT_NAME }}.
 

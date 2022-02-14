@@ -1,16 +1,26 @@
-name: Deploy to Layer0
-on: [push]
+name: Deploy to production
+on:
+  push:
+    branches:
+      - master
 jobs:
-  deploy-to-layer0:
+  deploy-to-prod:
+    if: "!contains(github.event.repository.name, 'layer0-docs-internal')"
     runs-on: ubuntu-latest
     steps:
       - name: Extract branch name
         shell: bash
         run: echo "BRANCH_NAME=$(echo ${GITHUB_REF#refs/heads/} | sed 's/\//_/g')" >> $GITHUB_ENV
+      - name: Cancel Previous Runs
+        uses: styfle/cancel-workflow-action@0.9.1
+        with:
+          access_token: ${{ github.token }}
       - uses: actions/checkout@v1
       - uses: actions/setup-node@v1
         with:
           node-version: 14
+      - name: Get docs versions
+        run: curl https://layer0-docs.s3.amazonaws.com/versions.csv --output ./versions.csv
       - name: Cache node modules
         uses: actions/cache@v1
         env:
@@ -22,6 +32,15 @@ jobs:
             ${{ runner.os }}-build-${{ env.cache-name }}-
             ${{ runner.os }}-build-
             ${{ runner.os }}-
+      - name: Cache S3 guides
+        uses: actions/cache@v1
+        env:
+          cache-name: cache-s3-guides
+        with:
+          path: ./s3
+          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('./versions.csv') }}
+          restore-keys: |
+            ${{ runner.os }}-build-${{ env.cache-name }}-
       - run: npm ci
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v1
@@ -30,9 +49,8 @@ jobs:
           aws-secret-access-key: ${{ secrets.PROD_AWS_SECRET_ACCESS_KEY }}
           aws-region: us-east-1
       - name: Sync guides to latest version path
-        if: github.ref == 'refs/heads/master'
         run: |
-          mkdir s3
+          mkdir -p s3
           aws s3 sync s3://layer0-docs ./s3  --delete
           cd s3
           VERSION=$(tail -n 1 versions.csv)
@@ -42,9 +60,8 @@ jobs:
           cp ../guides/guides.json current/guides.json
           aws s3 sync . s3://layer0-docs --delete
       - name: Deploy to Layer0
-        run: npm run deploy -- --branch=$BRANCH_NAME --token=${{secrets.layer0_deploy_token}} ${{env.BRANCH_NAME == 'master' && '--environment=production' || '--environment=default'}}
+        run: npm run deploy -- --branch=$BRANCH_NAME --token=${{secrets.layer0_deploy_token}} --environment=production
       - name: Crawl Docs
-        if: github.ref == 'refs/heads/master'
         run: |
           docker run \
           -e APPLICATION_ID=${{ secrets.ALGOLIA_APP_ID }} \

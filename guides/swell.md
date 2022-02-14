@@ -6,17 +6,15 @@ This guide shows you how to deploy a Swell application on {{ PRODUCT_NAME }}. Cl
 
 [Swell](https://www.swell.is/) is a customizable headless ecommerce platform that supports unique business models and customer experiences for global B2C and B2B merchants. Swell's API-first backend and modern development tools provide a future-proof platform for innovative businesses from small coffee roasters to international enterprises.
 
-## Install Node.js and npm
+## Example
 
-**{{ PRODUCT_NAME }} only supports Node.js version {{ NODE_VERSION }}**
+A Swell powered ecommerce backend and a Nuxt.js app for the framework.
 
-If you do not have Node.js installed on your system, download and install it from the official [Node.js v{{ NODE_VERSION }} downloads](https://nodejs.org/dist/latest-v{{ NODE_VERSION }}/) page. Select the download that matches your operating system and run the installer. Note that the installer for Node.js will also install npm.
+[Try the Swell with Nuxt.js Example Site](https://layer0-docs-swell-origin-theme-default.layer0-limelight.link/?button)
+[View the Code](https://github.com/layer0-docs/layer0-swell-example?button)
+[Deploy to Layer0](https://app.layer0.co/deploy?button&deploy&repo=https://github.com/layer0-docs/layer0-swell-example)
 
-_Note that while you can use any version of Node.js >= 14 locally, your app will run in Node 14 when deployed to the {{ PRODUCT_NAME }} cloud. Therefore we highly suggest using Node 14 for all development._
-
-## Sign up for {{ PRODUCT_NAME }}
-
-Deploying requires an account on {{ PRODUCT_NAME }}. [Sign up here for free]({{ APP_URL }}/signup).
+{{ SIGN_UP_LAYER0 }}
 
 ## Install the {{ PRODUCT_NAME }} CLI
 
@@ -25,6 +23,8 @@ If you have not already done so, install the [{{ PRODUCT_NAME }} CLI](cli)
 ```bash
 npm i -g {{ PACKAGE_NAME }}/cli # yarn global add {{ PACKAGE_NAME }}/cli
 ```
+
+{{ SYSTEM_REQUIREMENTS }}
 
 ## Create a new Swell app
 
@@ -77,14 +77,14 @@ In the existing `nuxt.config.js` configuration, add "{{ PACKAGE_NAME }}/nuxt/mod
 
 module.exports = {
   ...
-  buildModules: [['{{ PACKAGE_NAME }}/nuxt/module', { layer0SourceMaps: true }]],
+  buildModules: [['{{ PACKAGE_NAME }}/nuxt/module', { {{ FULL_CLI_NAME }}SourceMaps: true }]],
   ...
 }
 ```
 
 Options:
 
-- `layer0SourceMaps: true|false`: when true, the serverless build includes sourcemap files which make debugging easier when tailing the server logs in the Layer0 Developer Console. It also increases the serverless bundle size, which may push your deployments over the 50MB (compressed) limit.
+- `{{ FULL_CLI_NAME }}SourceMaps: true|false`: when true, the serverless build includes sourcemap files which make debugging easier when tailing the server logs in the Layer0 Developer Console. It also increases the serverless bundle size, which may push your deployments over the 50MB (compressed) limit.
 
 ### Initialize your project
 
@@ -109,9 +109,47 @@ This command will also update your `package.json` with the following changes:
 - Adds `@nuxt/core` to `dependencies`
 - Adds several `scripts` to run the available `{{{ CLI_NAME }}` commands
 
-## includeFiles
+## Run Swell app locally on Layer0
 
-To include the `confing` and `modules` directories in the production build, update your `layer0.config.js` as follows:
+Run the Swell app with the command:
+
+```bash
+{{ CLI_NAME }} build && {{ CLI_NAME }} run --production
+```
+
+Load the site: http://127.0.0.1:3000
+
+Setting --production runs your app exactly as it will be uploaded to the Layer0 cloud using serverless-offline.
+
+## Deploying
+
+Deploy the build to {{ PRODUCT_NAME }} by running the `{{ CLI_NAME }} deploy` command:
+
+```bash
+{{ CLI_NAME }} deploy
+```
+
+Refer to the [Deploying](deploying) guide for more information on the `deploy` command and its options.
+
+## Bonus: Generate pages on demand
+
+1. To preserve packages that are imported in the `modules` directories required in the generating pages on the server, update `package.json` as follows:
+
+```diff
+"dependencies": {
+  "@nuxtjs/sitemap": "2.4.0",
+  "@nuxt/core": "2.15.7"
++ "lodash": "4.17.21",
++ "mitt": "2.1.0",
++ "consola": "2.15.3",
++ "build-url": "6.0.1",
++ "deepmerge": "4.2.2",
++ "swell-js": "3.10.0",
++ "p-map": "5.2.0"
+}
+```
+
+2. To include the `confing` and `modules` directories in the production build, update your `layer0.config.js` as follows:
 
 ```diff
 'use strict'
@@ -126,61 +164,42 @@ module.exports = {
 + includeFiles: {
 +   config: true,
 +   modules: true,
++   'static/lang/**/*': true,
 + },
 }
 
 ```
 
-## Include dependencies
+3. Update the `routes.js` as following to enable ISG with your Swell app:
 
-To preserve packages that are imported in `config` and `modules` directories and are required in the production build, update `package.json` as follows:
+```js
+// This file was added by layer0 init.
+// You should commit this file to source control.
 
-```diff
-"dependencies": {
-  "@nuxtjs/sitemap": "2.4.0",
-  "@nuxt/core": "2.15.7"
-+ "lodash": "4.17.21",
-+ "mitt": "2.1.0",
-+ "object-scan": "16.0.2",
-+ "consola": "2.15.3",
-+ "build-url": "6.0.1",
-+ "deepmerge": "4.2.2",
-+ "swell-js": "3.10.0"
-}
+const { Router } = require('@layer0/core/router')
+const { nuxtRoutes } = require('@layer0/nuxt')
+
+module.exports = new Router()
+  .match('/service-worker.js', ({ serviceWorker }) => {
+    serviceWorker('.nuxt/dist/client/service-worker.js')
+  })
+  .get('/products/:product', ({ serveStatic, cache, renderWithApp }) => {
+    cache({
+      edge: {
+        maxAgeSeconds: 60,
+        staleWhileRevalidateSeconds: 1,
+      },
+      browser: false,
+    })
+    serveStatic('dist/products/:product/index.html', {
+      onNotFound: () => renderWithApp(),
+    })
+  })
+  .use(nuxtRoutes)
 ```
 
-## Run Swell app locally on Layer0
-
-Run the Swell app with the command:
-
-```bash
-npm run layer0:dev
-```
-
-Load the site: http://127.0.0.1:3000
-
-## Test Locally
-
-To test your app locally, run:
-
-```bash
-layer0 build && layer0 run
-```
-
-You can do a production build of your app and test it locally using:
-
-```bash
-layer0 build && layer0 run --production
-```
-
-Setting --production runs your app exactly as it will be uploaded to the Layer0 cloud using serverless-offline.
-
-## Deploying
-
-Deploy the build to {{ PRODUCT_NAME }} by running the `{{ CLI_NAME }} deploy` command:
+4. Deploy!
 
 ```bash
 {{ CLI_NAME }} deploy
 ```
-
-Refer to the [Deploying](deploying) guide for more information on the `deploy` command and its options.

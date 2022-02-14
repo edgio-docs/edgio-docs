@@ -2,9 +2,7 @@
 
 This guide shows you how to deploy [Ember Fastboot](https://ember-fastboot.com/) apps on {{ PRODUCT_NAME }}.
 
-## Example Site
-
-Here is an example of a Fastboot app running on {{ PRODUCT_NAME }}:
+## Example
 
 [Try the Fastboot Example Site](https://layer0-docs-layer0-ember-fastboot-example-default.layer0.link/?button)
 [View the Code](https://github.com/layer0-docs/layer0-ember-fastboot-example?button)
@@ -16,13 +14,7 @@ This framework has a connector developed for {{ PRODUCT_NAME }}. See [Connectors
 
 [View the Connector Code](https://github.com/layer0-docs/layer0-connectors/tree/main/layer0-fastboot-connector?button)
 
-## Install Node.js and npm
-
-**{{ PRODUCT_NAME }} only supports Node.js version {{ NODE_VERSION }}**
-
-If you do not have Node.js installed on your system, download and install it from the official [Node.js v{{ NODE_VERSION }} downloads](https://nodejs.org/dist/latest-v{{ NODE_VERSION }}/) page. Select the download that matches your operating system and run the installer. Note that the installer for Node.js will also install npm.
-
-_Note that while you can use any version of Node.js >= 14 locally, your app will run in Node 14 when deployed to {{ PRODUCT_NAME }} cloud. Therefore we highly suggest using Node 14 for all development._
+{{ SYSTEM_REQUIREMENTS }}
 
 ## Getting Started
 
@@ -75,7 +67,7 @@ if (typeof navigator != 'undefined') {
 
 To reduce serverless cold-start times, limit the packages listed in the `dependencies` section of your `package.json` to only those packages used at runtime. The `{{ CLI_NAME }}/fastboot` package must also be included in `dependencies`. Other packages not used at runtime should be included in `devDependencies`. Only those packages listed in `dependencies` are deployed to {{ PRODUCT_NAME }} along with your application code.
 
-## {{ CONFIG>FILE }}
+## {{ CONFIG_FILE }}
 
 Ember fastboot apps should always have the following in {{ CONFIG_FILE }}:
 

@@ -22,7 +22,7 @@ import Logo from './Logo'
 import Router from 'next/router'
 import clsx from 'clsx'
 import HeaderCollapseMenu from './HeaderCollapseMenu'
-import { APP_URL, FORUM_URL, STATUS_URL } from '../constants'
+import { APP_URL, FIDDLE_URL, FORUM_URL, STATUS_URL } from '../constants'
 import { grey } from '@material-ui/core/colors'
 
 const useStyles = makeStyles(theme => ({
@@ -158,6 +158,9 @@ export default function Header() {
               </Button>
             </Hidden>
             <Hidden smDown implementation="css">
+              <Button href={FIDDLE_URL} target="_blank" className={classes.button}>
+                FIDDLE
+              </Button>
               <Button href={FORUM_URL} target="_blank" className={classes.button}>
                 FORUMS
               </Button>

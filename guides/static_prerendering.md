@@ -10,7 +10,7 @@ In this way, you simply build your app to implement server-side rendering and ge
 
 ## Specifying the URLs to Prerender
 
-To specify which URLs should prerendered, use the Router's [prerender]({{ DOCS_URL }}/docs/api/core/classes/_router_router_.router.html#prerender) function. The `prerender` function accepts an array of [PrerenderRequest] objects or an async function that returns the same:
+To specify which URLs should be prerendered, use the Router's [prerender]({{ DOCS_URL }}/docs/api/core/classes/_router_router_.router.html#prerender) function. The `prerender` function accepts an array of [PrerenderRequest] objects or an async function that returns the same:
 
 ### Example: Hardcoded Paths
 
@@ -60,7 +60,7 @@ module.exports = new Router().prerender(async () => {
 })
 ```
 
-## Prerendering with traffic data
+## Prerendering with Traffic Data
 
 {{ PRODUCT_NAME }} can choose which pages to prerender based on site traffic, ensuring the most popular pages are always available in the edge cache.
 
@@ -77,7 +77,7 @@ router = new Router().prerender([
 ])
 ```
 
-### Example: With cache splitting
+### Example: With Cache Splitting
 
 ```js
 router = new Router().prerender([
@@ -178,7 +178,7 @@ module.exports = new Router()
 
 By default, {{ PRODUCT_NAME }} prerenders a maximum of 200 URLs at a time. This can create significant additional load on your APIs at the time of deployment. You can lower this limit by setting the [prerenderConcurrency](/guides/layer0_config#section_prerenderconcurrency) property in `{{ CONFIG_FILE }}`. {{ PRODUCT_NAME }} imposes the following limits on prerendering:
 
-| Tier       | Concurrency | Total number of requests |
+| Tier       | Concurrency | Total Number of Requests |
 | ---------- | ----------- | ------------------------ |
 | ENTERPRISE | 200         | 25,000 per deployment    |
 | FREE       | 10          | 100 per deployment       |

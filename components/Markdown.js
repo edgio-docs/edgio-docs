@@ -14,6 +14,10 @@ import Toc from './Toc'
 import idForHeading from './utils/idForHeading'
 import getYTVideoDetails from './utils/getYTVideoDetails'
 
+const components = {
+  'jamstack/Frameworks': require('./jamstack/Frameworks').default,
+}
+
 const useStyles = makeStyles(theme => ({
   heading: {
     display: 'block',
@@ -109,18 +113,26 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
+function Text({ value, highlight }) {
+  let html = value
+
+  if (highlight) {
+    html = doHighlight(html, highlight)
+  }
+
+  return <span dangerouslySetInnerHTML={{ __html: html }} />
+}
+
+function StyledText({ children, config }) {
+  return (
+    <span style={config}>
+      <Text value={children}></Text>
+    </span>
+  )
+}
+
 export default function Markdown({ source, highlight, toc }) {
   const classes = useStyles()
-
-  function Text({ value }) {
-    let html = value
-
-    if (highlight) {
-      html = doHighlight(html, highlight)
-    }
-
-    return <span dangerouslySetInnerHTML={{ __html: html }} />
-  }
 
   return (
     <div className={classes.root}>
@@ -131,7 +143,7 @@ export default function Markdown({ source, highlight, toc }) {
             code: Code,
             heading: Heading,
             link: Link,
-            text: Text,
+            text: ({ value }) => Text({ value, highlight }),
             image: Image,
             thematicBreak: Divider,
           }}
@@ -155,6 +167,13 @@ function Link({ href, children }) {
   const uri = new URL(href, 'http://dummy.org')
   const isGitHubLink = href.match(/github/)
   const isLayer0DeployLink = uri.searchParams.has('deploy')
+  const isReactComponent = href.startsWith('/react/')
+
+  if (isReactComponent) {
+    const modulePath = href.replace(/^\/react\//, '')
+    const Component = components[modulePath]
+    return <Component />
+  }
 
   if (isGitHubLink) {
     Icon = (
@@ -206,7 +225,7 @@ function Link({ href, children }) {
         className={clsx({ [classes.link]: !button, [classes.buttonLink]: button })}
         href={href}
         target={href.startsWith('https:') ? '_blank' : '_self'}
-        rel="noopener noreferrer"
+        rel="noopener"
       >
         {el}
       </a>
@@ -230,7 +249,20 @@ function Heading({ children, level }) {
   )
 }
 
+/**
+ *  We use MD image syntax for:
+ * - images => ![alt](/url/to/image.jpg 'Title')
+ * - video => ![video](/url/to/video)
+ * - styled text with JSON config => ![{"color": "red"}](/ 'Text to color') // url is required but not used
+ */
+
 function Image({ src, ...others }) {
+  // styled text (no image)
+  try {
+    const colorConfig = JSON.parse(others.alt)
+    return <StyledText config={colorConfig}>{others.title}</StyledText>
+  } catch (e) {}
+
   // serve a video based on `alt` value of markdown image syntax
   if (
     String(others.alt)

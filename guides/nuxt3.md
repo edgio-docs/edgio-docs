@@ -21,7 +21,7 @@ This framework has a connector developed for {{ PRODUCT_NAME }}. See [Connectors
 ## Prerequisites
 
 1. Install the [{{ PRODUCT_NAME }} CLI](cli).
-2. Sign up for a [Layer0 account](https://layer0.io/signup).
+2. Sign up for a [Layer0 account](https://app.layer0.co/signup).
 
 ## Getting Started
 

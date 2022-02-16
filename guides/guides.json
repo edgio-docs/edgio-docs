@@ -297,6 +297,12 @@
         "href": "/guides/[...guide]"
       },
       {
+        "text": "Nuxt3",
+        "icon": "nuxt",
+        "as": "/guides/nuxt3",
+        "href": "/guides/[...guide]"
+      },
+      {
         "text": "Preact",
         "icon": "preact",
         "as": "/guides/preact",

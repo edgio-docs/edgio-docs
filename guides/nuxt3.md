@@ -4,6 +4,12 @@ This guide shows you how to deploy a [Nuxt3](https://v3.nuxtjs.org) application 
 
 Note: Nuxt3 is still in beta and is not recommended for production.
 
+## Example
+
+[Try the Nuxt3 Example Site](https://layer0-docs-layer0-nuxt3-example-2-default.layer0-limelight.link?button)
+[View the Code](https://github.com/layer0-docs/layer0-nuxt3-example?button)
+[Deploy to Layer0](https://app.layer0.co/deploy?button&deploy&repo=https://github.com/layer0-docs/layer0-nuxt3-example)
+
 ## Connector
 
 This framework has a connector developed for {{ PRODUCT_NAME }}. See [Connectors](connectors) for more information.

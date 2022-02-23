@@ -113,7 +113,6 @@
         "as": "/guides/third_party_cdns",
         "href": "/guides/[...guide]"
       },
-
       {
         "text": "Connectors",
         "as": "/guides/connectors",
@@ -162,6 +161,11 @@
       {
         "text": "Environments",
         "as": "/guides/environments",
+        "href": "/guides/[...guide]"
+      },
+      {
+        "text": "SAML Single Sign On",
+        "as": "/guides/saml",
         "href": "/guides/[...guide]"
       }
     ]

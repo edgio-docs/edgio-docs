@@ -44,11 +44,6 @@
         "href": "/guides/[...guide]"
       },
       {
-        "text": "Core Web Vitals",
-        "as": "/guides/core_web_vitals",
-        "href": "/guides/[...guide]"
-      },
-      {
         "text": "Image Optimization",
         "as": "/guides/image_optimization",
         "href": "/guides/[...guide]"
@@ -303,6 +298,12 @@
         "text": "Nuxt.js",
         "icon": "nuxt",
         "as": "/guides/nuxt",
+        "href": "/guides/[...guide]"
+      },
+      {
+        "text": "Nuxt3",
+        "icon": "nuxt",
+        "as": "/guides/nuxt3",
         "href": "/guides/[...guide]"
       },
       {

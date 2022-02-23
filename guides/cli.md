@@ -4,17 +4,27 @@ This guide shows you everything you can do with the {{ PRODUCT_NAME }} command l
 
 ## Installation
 
-To install the {{ PRODUCT_NAME }} CLI run
+To install, or upgrade to the latest, {{ PRODUCT_NAME }} CLI run
 
 ```bash
-npm i -g {{ PACKAGE_NAME }}/cli
+npm i -g {{ PACKAGE_NAME }}/cli@latest
 ```
 
 Or with yarn
 
 ```bash
-yarn global add {{ PACKAGE_NAME }}/cli
+yarn global add {{ PACKAGE_NAME }}/cli@latest
 ```
+
+## Upgrade Project to Latest Version
+
+If you already have a project running on {{ PRODUCT_NAME }} and you want to update to the most recent release of {{ PACKAGE_NAME }}, simply run:
+
+```bash
+{{ CLI_NAME }} use latest
+```
+
+Before deploying your site, verify that all functionality, including request/response data, is as expected.
 
 ## Commands
 
@@ -24,7 +34,7 @@ Creates a build of your app optimized for production.
 
 #### Options
 
-| Name                         | Description                                                                                                                                                                                                                                                                                                                   |
+| Name                         | Description                                                                                                                                                                                                                                                                                                                              |
 | ---------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `--skip-framework`           | Alias: "-s". Skips the framework (Next.js, Vue, Angular, etc..) build and simply rebundles your router                                                                                                                                                                                                                                   |
 | `--disable-permanent-assets` | Set this to true to suppress errors like "Immutable file (...) content was changed" during deployment.                                                                                                                                                                                                                                   |
@@ -43,13 +53,13 @@ specified environment will be cleared.
 
 #### Options
 
-| Name              | Description                                                   |
-| ----------------- | ------------------------------------------------------------- |
-| `--team`          | (Required) The team name                                      |
-| `--site`          | (Required) The site name                                      |
-| `--environment`   | (Required) The environment name                               |
-| `--path`          | A path to clear. Use "\*" as a wildcard                       |
-| `--surrogate-key` | Clears all responses assigned to the specified surrogate key  |
+| Name              | Description                                                  |
+| ----------------- | ------------------------------------------------------------ |
+| `--team`          | (Required) The team name                                     |
+| `--site`          | (Required) The site name                                     |
+| `--environment`   | (Required) The environment name                              |
+| `--path`          | A path to clear. Use "\*" as a wildcard                      |
+| `--surrogate-key` | Clears all responses assigned to the specified surrogate key |
 
 #### Example
 
@@ -219,7 +229,7 @@ Switches the version of all {{ PACKAGE_NAME }}/\* packages in your project.
 To install a particular version:
 
 ```bash
-{{ CLI_NAME }} use 1.45.0
+{{ CLI_NAME }} use 4.10.1
 ```
 
 To install the latest stable:

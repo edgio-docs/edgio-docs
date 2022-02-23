@@ -11,12 +11,14 @@ import {IconSpark} from '../Icon/IconSpark';
 import Container from '../Layout/Container';
 
 const StyledHomepageFeatures = styled.div`
+  background-color: var(--docs-content-bg);
+
   .section-container {
     > * {
       padding: 50px 0;
 
       :not(:last-child) {
-        box-shadow: inset 0px -1px #e3e8ee;
+        box-shadow: inset 0px -1px var(--hr-grey1);
       }
     }
   }

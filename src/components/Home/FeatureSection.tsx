@@ -26,7 +26,7 @@ export const StyledFeatureSection = styled.div`
       --size: 8px;
       width: var(--size);
       height: var(--size);
-      background-color: #e95495;
+      background-color: var(--pink);
       border-radius: 1px;
     }
 
@@ -34,13 +34,13 @@ export const StyledFeatureSection = styled.div`
       font-weight: 600;
       font-size: 18px;
       line-height: 24px;
-      color: #606060;
+      color: var(--link-grey1);
       position: relative;
       text-decoration: none;
       border-bottom: 1px solid transparent;
 
       :hover {
-        border-bottom-color: #e95495;
+        border-bottom-color: var(--pink);
       }
     }
   }

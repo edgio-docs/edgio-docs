@@ -64,10 +64,10 @@ export function MarkdownPage<
         <div className="docs">
           <Docs title={title} tocHeadings={tocHeadings}>
             {children}
+            <div style={{height: '64px', boxShadow: 'inset 0px 1px #e3e8ee'}} />
           </Docs>
         </div>
       )}
-      <div style={{height: '64px', boxShadow: 'inset 0px 1px #e3e8ee'}} />
     </MDXProvider>
   );
 }

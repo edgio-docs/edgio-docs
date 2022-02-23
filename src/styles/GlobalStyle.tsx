@@ -6,11 +6,36 @@ const GlobalStyle = createGlobalStyle`
   --white: #fff;
   --black1: #1a1a1a;
   --pink: #E95495;
+  --grey1: #e3e8ee;
+  --grey2: #e5e5e5;
+  --grey3: #f6f6f7;
 
+  --docs-content-bg: #fff;
+  --get-started-card-bg: #ffffff;
+  --get-started-card-sub-bg: #707070;
+  --link-grey1: #606060;
+  --hr-grey1: #e3e8ee;
+  --grey4: #EEEEEE;
   /* Sizes */
   --sidebar-width: 280px;
   --container-max-width: 1228px;
   --container-padding: 0 20px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --black1: #fff;
+    --white: var(--grey3);
+    --grey1: rgba(0, 0, 0, 0.15);
+    --grey2: #4e4e4e;
+    --grey3: #353535;
+
+    --docs-content-bg: #1a1a1a;
+    --get-started-card-bg: #000000;
+    --get-started-card-sub-bg: #fff;
+    --link-grey1: #fff;
+    --hr-grey1: #2a2b2c;
+  }
 }
 
 html, body {

@@ -43,7 +43,6 @@ function GetStartedCard({
 }
 
 const StyledGetStarted = styled.div`
-  font-family: 'Inter';
   line-height: 1.3;
   margin-top: 50px;
 
@@ -57,7 +56,7 @@ const StyledGetStarted = styled.div`
   }
 
   .card {
-    background: #ffffff;
+    background: var(--get-started-card-bg);
     box-shadow: 0px 2px 7px rgba(0, 0, 0, 0.15);
     border-radius: 2px;
     padding: 17px;
@@ -76,18 +75,18 @@ const StyledGetStarted = styled.div`
     font-weight: 600;
     font-size: 20px;
     line-height: 27px;
-    color: #1a1a1a;
+    color: var(--black1);
   }
 
   .card-subtitle {
-    color: #707070;
+    color: var(--get-started-card-sub-bg);
     margin: 10px 0 12px;
     font-size: 16px;
   }
 
   .card {
     .card-footer__link {
-      color: #e95495;
+      color: var(--pink);
     }
 
     :nth-child(even) {

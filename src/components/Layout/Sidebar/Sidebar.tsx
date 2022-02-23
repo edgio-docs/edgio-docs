@@ -10,7 +10,6 @@ import {IconOutsideLink} from '../../Icon/IconOutsideLink';
 import sortBy from 'lodash/sortBy';
 
 const StlyedSidebar = styled.div`
-  color: var(--black1);
   font-size: 14px;
   font-weight: 500;
   height: 100%;
@@ -23,7 +22,7 @@ const StlyedSidebar = styled.div`
   .hr-separator {
     height: 1px;
     width: calc(100% - 40px);
-    background: #e3e8ee;
+    background: var(--grey1);
     transform: translateX(20px);
   }
 
@@ -44,12 +43,11 @@ const StlyedSidebar = styled.div`
     column-gap: 10px;
     text-decoration: none;
     padding: 5px 20px;
-    /* transition: 0.2s ease-in-out; */
-    color: inherit;
+    color: var(--black1);
     text-decoration: none;
 
     :hover {
-      background-color: #e5e5e5;
+      background-color: var(--grey2);
       font-weight: 600;
     }
   }
@@ -80,7 +78,7 @@ const StlyedSidebar = styled.div`
       height: calc(100% - 20px);
       top: 0;
       transform: translateY(10px);
-      border: 0.75px solid #e95495;
+      border: 0.75px solid var(--pink);
     }
   }
 
@@ -98,10 +96,9 @@ const StlyedSidebar = styled.div`
       padding: 4px 0 4px 12px;
       color: var(--black1);
       text-decoration: none;
-      /* transition: 0.2s ease-in-out; */
 
       :hover {
-        background-color: #e5e5e5;
+        background-color: var(--grey2);
         font-weight: 600;
       }
     }

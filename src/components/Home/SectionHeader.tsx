@@ -35,6 +35,7 @@ const StyledSectionheader = styled.header`
       width: var(--size);
       height: var(--size);
       position: relative;
+      background: var(--grey4);
     }
   }
 
@@ -48,12 +49,13 @@ const StyledSectionheader = styled.header`
     font-weight: 600;
     font-size: 24px;
     line-height: 28px;
+    color: var(--get-started-card-sub-bg);
   }
 
   .section-header__subtitle {
     font-size: 20px;
     line-height: 28px;
-    color: #707070;
+    color: var(--get-started-card-sub-bg);
   }
 `;
 

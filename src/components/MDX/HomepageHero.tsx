@@ -16,6 +16,10 @@ const StyledHomepageHero = styled.div`
     #fafdff 99.85%
   );
 
+  @media (prefers-color-scheme: dark) {
+    /* background: linear-gradient(180.17deg, #1A1A1A 0.15%, rgba(121, 114, 252, 0.1) 100.96%, #7972FC 100.97%); */
+  }
+
   .section-container {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -25,6 +29,10 @@ const StyledHomepageHero = styled.div`
     background-repeat: no-repeat;
     background-size: contain;
     background-position: right;
+
+    @media (prefers-color-scheme: dark) {
+      background-image: url('/images/home/HomepageHeroDarkWaves.svg');
+    }
   }
 
   .hero-inner__content,
@@ -34,7 +42,6 @@ const StyledHomepageHero = styled.div`
 
   .copy {
     display: flex;
-    color: white;
     flex-direction: column;
     justify-content: center;
     gap: 18px;
@@ -47,14 +54,14 @@ const StyledHomepageHero = styled.div`
 
   .headline {
     font-size: 32px;
-    color: #1a1a1a;
+    color: var(--black1);
     letter-spacing: -0.663px;
     font-weight: bold;
   }
 
   .subheadline {
     font-size: 18px;
-    color: #707070;
+    color: var(--get-started-card-sub-bg);
   }
 
   .figure {

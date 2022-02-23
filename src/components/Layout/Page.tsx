@@ -23,9 +23,9 @@ const StyledDocs = styled.div`
       width: var(--sidebar-width);
       overflow: auto;
       user-select: none;
-      background-color: #f6f6f7;
+      background-color: var(--grey3);
       padding: calc(var(--header-height) / 2) 0;
-      box-shadow: inset -1px 0px #e3e8ee;
+      box-shadow: inset -1px 0px var(--grey1);
     }
 
     .docs-content__inner {
@@ -48,7 +48,6 @@ export function Page({children}: PageProps) {
     <StyledDocs className="docs">
       <Header />
       <main className="docs-content">
-        {/* app-content */}
         <div className="docs-side__nav">
           <Sidebar />
         </div>

@@ -14,7 +14,7 @@ const StyledHeader = styled.header`
   background: var(--white);
   width: 100%;
   height: var(--header-height);
-  box-shadow: inset 0 -1px #e3e8ee;
+  box-shadow: inset 0 -1px var(--grey1);
   padding: 17px 20px;
   display: grid;
   grid-template-columns: auto 1fr auto;

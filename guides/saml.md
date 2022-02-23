@@ -33,8 +33,6 @@ SAML SSO can be configured from your team settings by providing the SAML metadat
 
 ### Using Salesforce
 
-Some examples how to set up the Okta
-
 1. Go to **Setup > Apps > App Manager** and select **New Connected App**
 2. Fill in the Application Name, API name and all other fields that are required
 3. Select checkbox **Enable SAML**

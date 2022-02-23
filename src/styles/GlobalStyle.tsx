@@ -16,6 +16,11 @@ const GlobalStyle = createGlobalStyle`
   --link-grey1: #606060;
   --hr-grey1: #e3e8ee;
   --grey4: #EEEEEE;
+  --docs-color: #353535;
+  --text-code-bg: #f6f6f7;
+  --inline-code-bg: #f6f6f7;
+
+
   /* Sizes */
   --sidebar-width: 280px;
   --container-max-width: 1228px;
@@ -35,6 +40,9 @@ const GlobalStyle = createGlobalStyle`
     --get-started-card-sub-bg: #fff;
     --link-grey1: #fff;
     --hr-grey1: #2a2b2c;
+    --docs-color: #fff;
+    --text-code-bg: #2a2b2c;
+    --inline-code-bg: transparent;
   }
 }
 

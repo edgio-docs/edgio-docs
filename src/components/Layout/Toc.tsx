@@ -7,7 +7,7 @@ import {useTocHighlight} from './useTocHighlight';
 const StyledToc = styled.div`
   .docs-toc__nav {
     position: sticky;
-    box-shadow: inset 1px 0px #e3e8ee;
+    box-shadow: inset 1px 0px var(--hr-grey1);
     padding-left: 20px;
     top: calc(var(--header-height) + 8px);
     max-height: calc(100vh - var(--header-height));
@@ -20,7 +20,7 @@ const StyledToc = styled.div`
     font-size: 12px;
     font-weight: 500;
     text-transform: uppercase;
-    color: #606060;
+    color: var(--link-grey1);
   }
 
   .docs-toc__listItems {
@@ -28,7 +28,7 @@ const StyledToc = styled.div`
     list-style: none;
 
     a {
-      color: rgb(92, 95, 98);
+      color: var(--link-grey1);
       text-decoration: none;
       border-radius: 4px;
       font-size: 14px;

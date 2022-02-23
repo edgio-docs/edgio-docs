@@ -9,19 +9,15 @@ const StyledDocs = styled.div`
   display: grid;
   grid-template-columns: 75% 1fr;
   min-height: calc(100vh - 64px);
-  color: rgb(92, 95, 98);
+  color: var(--docs-color);
 
   .docs-article {
     padding: 0 20px 20px 20px;
   }
 
-  /* .docs-article { */
-  /* box-shadow: inset 1px 0px #e3e8ee; */
-  /* } */
-
   .docs-article__header {
     padding-top: 32px;
-    color: rgb(32, 34, 35);
+    color: var(--docs-color);
   }
 
   .docs-article__body {
@@ -29,7 +25,7 @@ const StyledDocs = styled.div`
     gap: 16px 0;
 
     .article-heading {
-      color: rgb(32, 34, 35);
+      color: var(--docs-color);
       display: flex;
       align-items: center;
       gap: 10px;
@@ -70,7 +66,7 @@ const StyledDocs = styled.div`
     .text-code {
       padding: 0 4px;
       border-radius: 4px;
-      background: #f6f6f7;
+      background: var(--text-code-bg);
       border: 1px solid #d2d5d8;
       overflow-wrap: break-word;
       font-variant-ligatures: none;

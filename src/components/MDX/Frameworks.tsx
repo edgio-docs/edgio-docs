@@ -23,11 +23,11 @@ const StyledFrameworks = styled.div`
       display: flex;
       align-items: center;
       gap: 10px;
-      border: 1px solid rgba(0, 0, 0, 0.12);
+      border: 1px solid var(--hr-grey1);
       padding: 8px;
       border-radius: 4px;
       text-decoration: none;
-      color: black;
+      color: inherit;
     }
   }
 `;

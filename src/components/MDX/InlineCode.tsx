@@ -12,7 +12,7 @@ const StyledCodeWrap = styled.span`
   text-decoration: none;
   padding: 0 4px;
   border-radius: 4px;
-  background: #f6f6f7;
+  background: var(--inline-code-bg);
   border: 1px solid #d2d5d8;
   overflow-wrap: break-word;
   font-variant-ligatures: none;

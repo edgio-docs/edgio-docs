@@ -7,7 +7,7 @@ interface PageProps {
   children: React.ReactNode;
 }
 
-const StyledDocs = styled.div`
+const StyledMainPage = styled.div`
   --sidebar-width: 280px;
   --header-height: 64px;
 
@@ -33,6 +33,7 @@ const StyledDocs = styled.div`
       display: flex;
       flex-direction: column;
       flex: 1 1;
+      background-color: var(--docs-content-bg);
 
       .LayoutHome {
         max-width: 1000px;
@@ -45,7 +46,7 @@ const StyledDocs = styled.div`
 
 export function Page({children}: PageProps) {
   return (
-    <StyledDocs className="docs">
+    <StyledMainPage>
       <Header />
       <main className="docs-content">
         <div className="docs-side__nav">
@@ -53,6 +54,6 @@ export function Page({children}: PageProps) {
         </div>
         <div className="docs-content__inner">{children}</div>
       </main>
-    </StyledDocs>
+    </StyledMainPage>
   );
 }

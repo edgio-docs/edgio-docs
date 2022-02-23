@@ -6,7 +6,7 @@ This guide covers the steps you need to take your site live on {{ PRODUCT_NAME }
 
 Creating custom domains is always done in the context of of creating or updating an environment.
 
-## Configuration Overview
+## Configuration Overview {/*configuration-overview*/}
 
 1. If needed, create an environment using instructions in  [Environments](./environments).
 
@@ -16,54 +16,54 @@ Creating custom domains is always done in the context of of creating or updating
 
 2. Configure [TLS/SSL](#section_tls_ssl) for the domain.
 
-## Custom Domains
+## Custom Domains {/*custom-domains*/}
 
 Before going live, you must create a production environment and configure your domains.
 
 To configure your custom domains:
 
-1) Navigate to a site, then open an existing environment or create a new environment. (To create an environment, use instructions in [Environments](./environments).)
+1. Navigate to a site, then open an existing environment or create a new environment. (To create an environment, use instructions in [Environments](./environments).)
 
-* For an existing environment, select the _ENVIRONMENTS_ tab header, then click an environment name in the list of environments. Continue with the numbered steps below.
+   * For an existing environment, select the _ENVIRONMENTS_ tab header, then click an environment name in the list of environments. Continue with the numbered steps below.
 
-* For a new environment, the _DEPLOYMENTS_ tab is displayed. Continue with the following steps.
+   * For a new environment, the _DEPLOYMENTS_ tab is displayed. Continue with the following steps.
 
-2) Select the _CONFIGURATION_ tab header.
+2. Select the _CONFIGURATION_ tab header.
 
 ![domains](/images/production/configurations-tab.png)
 
-3) Create a new draft version of the environment by clicking _EDIT_ at the top of the page.
+3. Create a new draft version of the environment by clicking _EDIT_ at the top of the page.
 
-4) In the _Domains_ section, click _EDIT DOMAINS_.
+4. In the _Domains_ section, click _EDIT DOMAINS_.
 
 ![domains](/images/production/domains-section.png)
 
-5) Enter a name in the _Edit Domains_ dialog, then click _APPLY_.
+5. Enter a name in the _Edit Domains_ dialog, then click _APPLY_.
 
 ![domainsSection](/images/production/domains.png)
 
-6) Click _ACTIVATE_ at the top of the page to enable the updated environment.
+6. Click _ACTIVATE_ at the top of the page to enable the updated environment.
 
 ![activateEnvironment](/images/production/activate-environment.png)
 
-### Migrating from Fastly
+### Migrating from Fastly {/*migrating-from-fastly*/}
 
 If you're migrating to {{ PRODUCT_NAME }} from [Fastly](https://www.fastly.com/), you will need to do the following before adding your domains to your {{ PRODUCT_NAME }} environment:
 
 - Contact [Fastly support](https://support.fastly.com/hc/en-us/requests/new?ticket_form_id=360000269711) and request that control of your domains be transferred to {{ PRODUCT_NAME }}. Be sure to explicitly list each domain that needs to be transferred and ask Fastly to contact support(at){{ DOMAIN }} if they need {{ PRODUCT_NAME }} to confirm the transfer.
 - Before going live with {{ PRODUCT_NAME }}, you will need to ensure that you've removed your domains from all active Fastly services. To remove domains from a service, clone the service, remove the domains, then activate the new version of the service. Once the new service version is activated you can add the domains to your {{ PRODUCT_NAME }} environment and activate it.
 
-## Network Configuration
+## Network Configuration {/*network-configuration*/}
 
 You can find the DNS and allowed IP configurations in the _Networking_ tab for your environment.
 
 ![networking](/images/production/networking.png)
 
-### DNS
+### DNS {/*dns*/}
 
 In order to configure your DNS provider to direct traffic for a particular set of domains to {{ PRODUCT_NAME }}, you must create DNS records for your website. If you are launching a new site, then you can create the records whenever you feel ready. For sites that are already live, the DNS update is the last step. Once you have updated your DNS you are committed to launching.
 
-#### Using a Sub-domain (e.g. www.mywebsite.xyz)
+#### Using a Sub-domain (e.g. www.mywebsite.xyz) {/*using-a-sub-domain-eg-wwwmywebsitexyz*/}
 
 To host your site on a subdomain, add a `CNAME` record with the value shown under _DNS Configuration_ (see above).
 
@@ -78,7 +78,7 @@ dig www.mywebsite.xyz
 www.mywebsite.xyz.   599    IN    CNAME    d12ea738-71b3-25e8-c771-6fdd3f6bd8ba.layer0-limelight.link.
 ```
 
-#### Using an Apex Domain (e.g. mywebsite.xyz)
+#### Using an Apex Domain (e.g. mywebsite.xyz) {/*using-an-apex-domain-eg-mywebsitexyz*/}
 
 To host your site on the apex domain, create multiple `A` records on your apex domain, with the following Anycast IP address values: 208.69.180.11, 208.69.180.12, 208.69.180.13, 208.69.180.14
 
@@ -96,7 +96,7 @@ mywebsite.xyz.        599    IN    A        208.69.180.13
 mywebsite.xyz.        599    IN    A        208.69.180.14
 ```
 
-#### Using Both an Apex Domain and a Sub-domain (e.g. mywebsite.xyz and www.mywebsite.xyz)
+#### Using Both an Apex Domain and a Sub-domain (e.g. mywebsite.xyz and www.mywebsite.xyz) {/*using-both-an-apex-domain-and-a-sub-domain-eg-mywebsitexyz-and-wwwmywebsitexyz*/}
 
 - Create the multiple `A` records with the IPs, on your apex domain (see above).
 - Create a `CNAME` record for your sub-domain, with the value of your apex domain.
@@ -116,11 +116,11 @@ mywebsite.xyz.        599    IN    A        208.69.180.14
   mywebsite.xyz.        599    IN    A        208.69.180.14
   ```
 
-### Allowing {{ PRODUCT_NAME }} IP Addresses
+### Allowing {{ PRODUCT_NAME }} IP Addresses {/*allowing--product_name--ip-addresses*/}
 
 Before going live, ensure that all {{ PRODUCT_NAME }} IP addresses are allowed in the security layer in front of your origin and/or API servers. The IP addresses you need to allow can be found on the _IP Whitelist_ section of the _Networking_ tab. Note that your IP addresses may differ from the ones shown above.
 
-## TLS/SSL
+## TLS/SSL {/*tlsssl*/}
 
 All data transmitted to and from your {{ PRODUCT_NAME }} site must be secured with TLS (Transport Layer Security). TLS, also known as SSL (Secure Sockets Layer), is a cryptographic protocol to communicate securely over the Internet. TLS provides end-to-end data encryption and data integrity for all web requests.
 
@@ -128,7 +128,7 @@ All data transmitted to and from your {{ PRODUCT_NAME }} site must be secured wi
 
 __Note:__ If you already have an existing certificate, you can use it by skipping ahead to [Uploading your Certificate](#section_uploading_your_certificate). Many customers who have existing certificates still choose to obtain a new one when adopting {{ PRODUCT_NAME }} so as not to reuse the same private key with more than one vendor/system._
 
-### Obtaining a Certificate Automatically
+### Obtaining a Certificate Automatically {/*obtaining-a-certificate-automatically*/}
 
 {{ PRODUCT_NAME }} can generate SSL Certificates on your behalf using [_Let's Encrypt_](https://letsencrypt.org/). Certificates are free, valid for 3 months, and automatically renewed as long as the technical requirements, shown below, remain met:
 
@@ -261,7 +261,7 @@ __Note:__ If you already have an existing certificate, you can use it by skippin
 
    ![ssl-generation-03](/images/production/ssl-generation-03.png)
 
-### Creating a Certificate Manually
+### Creating a Certificate Manually {/*creating-a-certificate-manually*/}
 
 TLS certificates are issued by Certificate Authorities (CA) based on Certificate Signing Request (CSR) that they receive from you. Alongside the CSR the same process creates the certificate's private key. You only need to share your CSR with CA, not the private key which you should store securely.
 
@@ -313,9 +313,9 @@ You will want to add all the additional domains into the `alt_names` section. Th
 4. Verify your CSR contains the expected domains by running `openssl req -in {{ PRODUCT_NAME_LOWER }}.csr -noout -text | grep DNS`
 5. Read the CSR (e.g. `cat {{ PRODUCT_NAME_LOWER }}.csr`) or copy to your clipboard (on OSX `cat {{ PRODUCT_NAME_LOWER }}.csr | pbcopy`) and send it to your CA for certification.
 
-### Uploading Your Certificate
+### Uploading Your Certificate {/*uploading-your-certificate*/}
 
-#### Prerequisites
+#### Prerequisites {/*prerequisites*/}
 
  To upload a certificate, you must have the **Admin** role on your team, and your team must be upgraded to {{ PRODUCT_NAME }} Enterprise.
 
@@ -325,7 +325,7 @@ You will want to add all the additional domains into the `alt_names` section. Th
 - Intermediate certificates (IC) used by CA, including CA's signing certificate
 - Private key that was generated at the time of the CSR.
 
-#### Uploading the certificate
+#### Uploading the certificate {/*uploading-the-certificate*/}
 
 To upload your SSL certificate, do the following:
 
@@ -341,7 +341,9 @@ To upload your SSL certificate, do the following:
 
 4. Copy the certificate, intermediate certificates, and the private key into the corresponding edit boxes.
 
-_Note: The private key is non-public data and must not be shared with parties other than {{ PRODUCT_NAME }}. {{ PRODUCT_NAME }} stores your private key securely at rest. It is never shown in the developer console and only used to provision parts of the infrastructure that are used to terminate TLS connections._
+<Callout type="info">
+The private key is non-public data and must not be shared with parties other than {{ PRODUCT_NAME }}. {{ PRODUCT_NAME }} stores your private key securely at rest. It is never shown in the developer console and only used to provision parts of the infrastructure that are used to terminate TLS connections.
+</Callout>
 
 5. Click *CHANGES SAVED*.
 
@@ -353,4 +355,6 @@ After the certificate is activated, its status becomes *Active*:
 
 ![activated-certificate](/images/production/activated-certificate.png)
 
-_Note: Certificate activation should take just a few minutes. If the status does not become *Active* within an hour, please contact [support]({{ APP_URL }}/help). _
+<Callout type="info">
+Certificate activation should take just a few minutes. If the status does not become *Active* within an hour, please contact <a href="{{ APP_URL }}/help">support</a>.
+</Callout>

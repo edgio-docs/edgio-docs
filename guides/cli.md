@@ -18,7 +18,7 @@ yarn global add {{ PACKAGE_NAME }}/cli@latest
 
 ## Upgrade Project to Latest Version
 
-If you already have a project running on {{ PRODUCT_NAME }} and you want to update packages to the most recent release of {{ PACKAGE_NAME }}, simply run:
+If you already have a project running on {{ PRODUCT_NAME }} and you want to update packages to the most recent release of `{{ PACKAGE_NAME }}`, simply run:
 
 ```bash
 {{ CLI_NAME }} use latest

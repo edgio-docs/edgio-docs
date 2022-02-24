@@ -16,28 +16,28 @@ Layer0 currently supports SAML SSO setup via a SAML metadata discovery URL. This
 2. Navigate to team settings.
 3. Find the SAML section and click **ENABLE SAML SSO**
 
-![](/public/images/saml/saml1.jpg)
+![](/images/saml/saml1.jpg)
 
 4. Get SAML metadata url from your Identity Provider (IDP). (See instructions below)
 5. Enter SAML metadata url and click **Save**
 
-![](/public/images/saml/saml3.jpg)
+![](/images/saml/saml3.jpg)
 
 6. After you've successfully saved the metadata configuration, click **Verify** button to link your current account and test the configuration
 
-![](/public/images/saml/saml4.jpg)
+![](/images/saml/saml4.jpg)
 
 ### Disable other sign-in methods
 
 Once you have verified the configuration and it appears to be working, then you can disable all other sign-in methods for SSO users.
 
-![](/public/images/saml/saml5.jpg)
+![](/images/saml/saml5.jpg)
 
 #### Linking existing team members
 
 When you already have team members in your team, they can still login to existing account with any sign-in method. They need to link their account to the SAML provider. Accounts can be linked from their user settings [My Account](https://app.layer0.co/account) page.
 
-![](/public/images/saml/saml6.jpg)
+![](/images/saml/saml6.jpg)
 
 ## Identity Providers
 

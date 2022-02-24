@@ -9,7 +9,7 @@
 
 ## Available Regions
 
-The  {{ PRODUCT_NAME }} XDN is available in the following global regions:
+{{ PRODUCT_NAME }} is available in the following global regions:
 
 * **Americas**: Eastern US and Western US
 * **Europe**: Ireland, UK, Western Europe, Northern Europe, Central Europe

@@ -99,7 +99,7 @@
         "href": "/guides/[...guide]"
       },
       {
-        "text": "Edge Network",
+        "text": "Regions",
         "as": "/guides/regions",
         "href": "/guides/[...guide]"
       },

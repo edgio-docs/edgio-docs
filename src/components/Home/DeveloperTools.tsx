@@ -4,14 +4,16 @@ import {getChildrenRoutesFromSidebarMenuItems} from '../../utils/getChildrenRout
 import {IconCode} from '../Icon/IconCode';
 import {StyledFeatureSection} from './FeatureSection';
 import SectionHeader from './SectionHeader';
+import _ from 'lodash';
 
 const StyledComp = styled(StyledFeatureSection)``;
 
 export default function DeveloperTools() {
   const parentPath = 'dev-tools';
   const allRoutes = getChildrenRoutesFromSidebarMenuItems(parentPath);
+  const allRoutesSorted = _.sortBy(allRoutes, 'title');
 
-  const routesByColumns = [allRoutes];
+  const routesByColumns = [allRoutesSorted];
 
   return (
     <StyledComp>

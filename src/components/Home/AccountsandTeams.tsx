@@ -4,14 +4,16 @@ import {IconUser} from '../Icon/IconUser';
 import {StyledFeatureSection} from './FeatureSection';
 import SectionHeader from './SectionHeader';
 import {getChildrenRoutesFromSidebarMenuItems} from '../../utils/getChildrenRoutesFromSidebarMenuItems';
+import _ from 'lodash';
 
 const StyledComp = styled(StyledFeatureSection)``;
 
 export default function AccountsandTeams() {
   const parentPath = 'accounts-teams';
   const allRoutes = getChildrenRoutesFromSidebarMenuItems(parentPath);
+  const allRoutesSorted = _.sortBy(allRoutes, 'title');
 
-  const routesByColumns = [allRoutes];
+  const routesByColumns = [allRoutesSorted];
 
   return (
     <StyledComp>

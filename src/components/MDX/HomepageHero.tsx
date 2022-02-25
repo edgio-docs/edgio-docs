@@ -7,7 +7,6 @@ import HeaderGraphics from '../../../public/images/home/HeaderGraphics.svg';
 const StyledHomepageHero = styled.div`
   min-height: 446px;
   line-height: 1.3;
-  font-family: Inter;
 
   background: linear-gradient(
     180.17deg,

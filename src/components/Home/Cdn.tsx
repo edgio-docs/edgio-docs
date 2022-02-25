@@ -4,16 +4,18 @@ import {getChildrenRoutesFromSidebarMenuItems} from '../../utils/getChildrenRout
 import {IconServer} from '../Icon/IconServer';
 import {StyledFeatureSection} from './FeatureSection';
 import SectionHeader from './SectionHeader';
+import _ from 'lodash';
 
 const StyledComp = styled(StyledFeatureSection)``;
 export default function Cdn() {
   const parentPath = 'cdn';
   const allRoutes = getChildrenRoutesFromSidebarMenuItems(parentPath);
+  const allRoutesSorted = _.sortBy(allRoutes, 'title');
 
   const routesByColumns = [
-    allRoutes?.slice(0, 6),
-    allRoutes?.slice(6, 12),
-    allRoutes?.slice(12),
+    allRoutesSorted?.slice(0, 6),
+    allRoutesSorted?.slice(6, 12),
+    allRoutesSorted?.slice(12),
   ];
 
   return (

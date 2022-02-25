@@ -4,17 +4,19 @@ import SectionHeader from './SectionHeader';
 import {IconStacks} from '../Icon/IconStacks';
 import {StyledFeatureSection} from './FeatureSection';
 import {getChildrenRoutesFromSidebarMenuItems} from '../../utils/getChildrenRoutesFromSidebarMenuItems';
+import _ from 'lodash';
 
 const StyledComp = styled(StyledFeatureSection)``;
 
 export default function Reference() {
   const parentPath = 'reference';
   const allRoutes = getChildrenRoutesFromSidebarMenuItems(parentPath);
+  const allRoutesSorted = _.sortBy(allRoutes, 'title');
 
   const routesByColumns = [
-    allRoutes?.slice(0, 6),
-    allRoutes?.slice(6, 12),
-    allRoutes?.slice(12),
+    allRoutesSorted?.slice(0, 6),
+    allRoutesSorted?.slice(6, 12),
+    allRoutesSorted?.slice(12),
   ];
 
   return (

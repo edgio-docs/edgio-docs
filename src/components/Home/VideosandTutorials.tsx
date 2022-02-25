@@ -20,17 +20,12 @@ const StyledComp = styled.div`
       font-weight: 500;
       font-size: 24px;
       line-height: 29px;
-      color: #1a1a1a;
+      color: var(--black1);
     }
   }
-
-  // .video-embed__box {
-  //   height: 259px;
-  //   background-color: black;
-  // }
 `;
 
-export default function DeveloperTools() {
+export default function VideosandTutorials() {
   const videos = [
     {
       title: 'What & Why',
@@ -58,9 +53,7 @@ export default function DeveloperTools() {
         {videos.map((video, index) => (
           <div className="video" key={index}>
             <h1 className="title">{video.title}</h1>
-            <div className="video-embed__box">
-              <Video>{video.url}</Video>
-            </div>
+            <Video url={video.url} />
           </div>
         ))}
       </div>

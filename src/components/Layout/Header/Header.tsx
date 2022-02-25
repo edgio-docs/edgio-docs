@@ -8,6 +8,10 @@ import {DocSearch} from '@docsearch/react';
 import NoSSRWrapper from '../NoSSRWrapper';
 
 const StyledHeader = styled.header`
+  @media (max-width: 1086px) {
+    display: none;
+  }
+
   position: sticky;
   top: 0;
   z-index: 1;

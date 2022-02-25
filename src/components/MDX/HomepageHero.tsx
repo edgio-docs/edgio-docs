@@ -33,6 +33,11 @@ const StyledHomepageHero = styled.div`
     @media (prefers-color-scheme: dark) {
       background-image: url('/images/home/HomepageHeroDarkWaves.svg');
     }
+
+    @media (max-width: 1086px) {
+      grid-template-columns: 1fr;
+      row-gap: 50px;
+    }
   }
 
   .hero-inner__content,

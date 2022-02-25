@@ -8,6 +8,8 @@ export const StyledFeatureSection = styled.div`
     display: flex;
     justify-content: space-between;
     padding-left: calc(19px + 32px);
+    flex-wrap: wrap;
+    gap: 12px;
   }
 
   .route-list__items {

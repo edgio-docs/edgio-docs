@@ -32,6 +32,16 @@ const StyledHomepageFeatures = styled.div`
     .section-header__content {
       max-width: 100%;
     }
+
+    @media (max-width: 1086px) {
+      grid-template-columns: 1fr;
+      padding: 0;
+
+      > div {
+        box-shadow: inset 0px -1px var(--hr-grey1);
+        padding: 50px 0;
+      }
+    }
   }
 `;
 

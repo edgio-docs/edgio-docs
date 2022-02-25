@@ -26,6 +26,10 @@ const StyledMainPage = styled.div`
       background-color: var(--grey3);
       padding: calc(var(--header-height) / 2) 0;
       box-shadow: inset -1px 0px var(--grey1);
+
+      @media (max-width: 1086px) {
+        display: none;
+      }
     }
 
     .docs-content__inner {

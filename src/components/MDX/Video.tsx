@@ -5,6 +5,8 @@ interface VideoProps {
   url: string;
 }
 
+// https://css-tricks.com/responsive-iframes
+// https://codepen.io/chriscoyier/pen/RXPjWp
 const StyledVideo = styled.div`
   &[style*='--aspect-ratio'] > :first-child {
     width: 100%;

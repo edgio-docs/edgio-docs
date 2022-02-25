@@ -23,8 +23,6 @@ function SectionHeaderSubtitle({subtitle}: {subtitle: string}) {
 }
 
 const StyledSectionheader = styled.header`
-  font-family: 'Inter';
-
   display: flex;
   align-items: flex-start;
   column-gap: 19px;
@@ -43,6 +41,10 @@ const StyledSectionheader = styled.header`
     display: grid;
     row-gap: 6px;
     max-width: 42%;
+
+    @media (max-width: 1086px) {
+      max-width: initial;
+    }
   }
 
   .section-header__title {

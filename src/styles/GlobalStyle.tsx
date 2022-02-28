@@ -20,7 +20,6 @@ const GlobalStyle = createGlobalStyle`
   --text-code-bg: #f6f6f7;
   --inline-code-bg: #f6f6f7;
 
-
   /* Sizes */
   --sidebar-width: 280px;
   --container-max-width: 1228px;

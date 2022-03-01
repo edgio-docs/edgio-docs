@@ -233,7 +233,7 @@ The response was cached or served from the cache (see `{{ HEADER_PREFIX }}-t`).
 
 ### disabled
 
-The response was not cached because the edge caching was explicitly [disabled](#section_not_caching_a_response).
+The response was not cached because the edge caching was explicitly (see [Preventing a Response from being Cached](#section_preventing_a_response_from_being_cached)).
 
 ### no-max-age
 

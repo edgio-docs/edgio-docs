@@ -6,13 +6,13 @@ The Deploy to {{PRODUCT_NAME}} button lets users easily clone and deploy an exam
 
 This guide walks you through some deploy button examples and how you can set up a GitHub repository for your users to deploy to {{PRODUCT_NAME}} with a simple click.
 
-## Example
+## Example {/*example*/}
 
 [![Deploy with Layer0](/button.svg)](https://app.layer0.co/deploy?repo=https://github.com/layer0-docs/layer0-nextjs-example)
 
 An example Deploy Button using the following HTML snippet.
 
-## Snippets
+## Snippets {/*snippets*/}
 
 Use the snippets below in your Git repository to enable users to deploy the repository directly to Layer0.
 
@@ -20,7 +20,7 @@ Use the snippets below in your Git repository to enable users to deploy the repo
 [![Deploy with Layer0](https://docs.layer0.co/button.svg)](https://app.layer0.co/deploy?repo=https://github.com/layer0-docs/layer0-nextjs-example)
 ```
 
-## Creating Your Own Deploy Button
+## Creating Your Own Deploy Button {/*creating-your-own-deploy-button*/}
 
 To configure your own project to be deploy button ready, there's a few steps to take.
 
@@ -28,18 +28,18 @@ To configure your own project to be deploy button ready, there's a few steps to 
 2. Next, create a basic `deploy` script as described below. Typically, this can simply be `layer0 deploy`, but if your site requires additional processing outside of the standard {{PRODUCT_NAME}} build/deploy process, you will need to modify this script to include the necessary steps to make your site production-ready.
 3. Create a GitHub workflow as described below. This makes sure GitHub Actions is properly configured to build the project.
 
-#### Add `deploy` Script to `package.json`
+#### Add `deploy` Script to `package.json` {/*add-deploy-script-to-packagejson*/}
 
-```json
+```js|/package.json
 // additional scripts may need to be called based on your app build process
 "deploy": "layer0 deploy",
 ```
 
 Lastly, create a GitHub workflow file called `layer0.yml`. This will be triggered automatically by {{PRODUCT_NAME}} during the deploy process.
 
-#### Create `.github/workflows/layer0.yml` Workflow
+#### Create `.github/workflows/layer0.yml` Workflow {/*create-githubworkflowslayer0yml-workflow*/}
 
-```yml
+```yml|/.github/workflows/layer0.yml
 name: Deploy to Layer0
 
 on:

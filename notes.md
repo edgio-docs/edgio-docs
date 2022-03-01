@@ -51,3 +51,5 @@ React is supported right OOTB. You can optionally install and configure
 ## Content Styling
 
 1. Code highlights.
+2. images
+3. videos

@@ -192,11 +192,11 @@ By injecting `main.js` into your app's front-end code, your app will automatical
 
 Prefetching can generate substantial additional network traffic. {{ PRODUCT_NAME }} automatically shields your origin from this additional traffic by only serving prefetch requests from the edge cache. If a prefetch request cannot be served from the cache, {{ PRODUCT_NAME }} will return an HTTP 412 status and the request will not be proxied to the origin. When this happens, the only effect for the user is that they will not see the speed benefit of prefetching. Therefore, the effectiveness of prefetching ramps up over time as users visit pages throughout your site. When the edge cache is cleared, either through the {{ PRODUCT_NAME }} Console or automatically following a deployment, the speed benefit of prefetching is decreased until the cache fills up based on organic traffic.
 
-## Test Your Code Locally and on {{ PRODUCT_NAME }} {/*section_test_your_code_locally_and_on_{{ PRODUCT_NAME }}*/}
+## Test Your Code Locally and on {{ PRODUCT_NAME }} {/*section_test_your_code_locally_and_on_{{ PRODUCT_NAME }}*/} {/*test-your-code-locally-and-on--productname--section_test_your_code_locally_and_on-product_name-*/}
 
 Now that you've configured your caching in `routes.ts`, you should test it in your local development environment and on {{ PRODUCT_NAME }}.
 
-### Running Locally
+### Running Locally {/*running-locally*/}
 
 To test the caching behavior locally, run your project with the [local cache option](caching#section_caching_during_development) as shown below:
 
@@ -307,6 +307,3 @@ For the most part maintenance for traditional sites running on {{ PRODUCT_NAME }
 - If you add personalized or user-specific content to the page you will need to make sure it is late loaded as described in the [_Make sure your pages are cacheable_](#section_make_sure_your_pages_are_cachable) section.
 - If you introduce a new segmentation of content (e.g. support a new language or currency), you may need to update your [custom cache key](/guides/caching#section_customizing_the_cache_key).
 - If you change the layout of the page (especially above the _fold_), it may alter the assets you need to prefetch or [deepfetch](#section_deep_fetching) to achieve the best performance.
-
-
-#### test heading

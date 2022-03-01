@@ -1,9 +1,11 @@
+import CodeLanguage from 'components/getLanguage';
 import React from 'react';
 import styled from 'styled-components';
 import CodeBlock from './CodeBlock';
+import getLanguage from '../getLanguage';
 
 const StyledCustomPre = styled.div`
-  border: 2px solid var(--border);
+  border: 2px solid #363636;
   border-radius: 8px;
   overflow: hidden;
 
@@ -118,15 +120,15 @@ const StyledCustomPre = styled.div`
     flex-direction: column;
     gap: 4px;
     padding: 3px;
-    border: 1px solid currentColor;
     border-color: #356369;
     background: #242424;
-    border: 2px solid #363636;
   }
 
   .code-block__header {
     height: 32px;
-    background-color: #4a4a4a;
+    border-bottom: 2px solid #363636;
+    border-top-right-radius: 4px;
+    border-top-left-radius: 4px;
     padding: 6px 6px 6px 8px;
     font-size: 14px;
     color: white;
@@ -150,6 +152,11 @@ const StyledCustomPre = styled.div`
     overflow-x: auto;
     text-align: left;
   }
+
+  .code-block__header-text {
+    font-weight: 700;
+    font-family: 'IBM Plex Mono', monospace;
+  }
 `;
 
 export default function CustomPre({children}: {children: React.ReactNode}) {
@@ -166,12 +173,16 @@ export default function CustomPre({children}: {children: React.ReactNode}) {
     language = children.props.className;
   }
 
+  console.log(language);
+
   return (
     <StyledCustomPre>
       <div className="code-block">
         <div className="code-block__inner">
           <header className="code-block__header">
-            <span className="code-block__header-text">{language}</span>
+            <span className="code-block__header-text">
+              {language && getLanguage(language)}
+            </span>
           </header>
           <main className="code-block__content">
             <CodeBlock language={language || 'js'}>{message}</CodeBlock>

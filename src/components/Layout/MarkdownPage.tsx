@@ -6,6 +6,7 @@ import * as React from 'react';
 import {MDXComponents} from '../MDX/MDXComponents';
 import Docs from '../Docs';
 import Seo from '../Seo';
+import DocsFooter from '../Docs/DocsFooter';
 
 export interface MarkdownProps<Frontmatter> {
   meta: Frontmatter & {description?: string};
@@ -64,10 +65,10 @@ export function MarkdownPage<
         <div className="docs">
           <Docs title={title} tocHeadings={tocHeadings}>
             {children}
-            <div style={{height: '64px', boxShadow: 'inset 0px 1px #e3e8ee'}} />
           </Docs>
         </div>
       )}
+      <DocsFooter />
     </MDXProvider>
   );
 }

@@ -8,11 +8,11 @@ title: What is GraphQL?
 
 ![video](https://youtu.be/GuezGiCj8ec)
 
-## GraphQL History
+## GraphQL History {/*graphql-history*/}
 
 GraphQL was built in 2012 to support Facebook mobile apps. Facebook open sourced the project in 2015, and in 2018, it was moved to the GraphQL Foundation.
 
-## What is GraphQL?
+## What is GraphQL? {/*what-is-graphql*/}
 
 GraphQL is a specification that describes the behavior of a GraphQL server. It is a set of guidelines on how requests and responses should be handled like supported protocols, format of the data that can be accepted by the server, format of the response returned by the server, and so on.
 
@@ -26,7 +26,7 @@ GraphQL is unopinionated about:
 
 There are many open-source GraphQL servers that you can incorporate into your web application. We encourage you to investigate and choose your own.
 
-### Data Organization
+### Data Organization {/*data-organization*/}
 
 Somewhat similar to graphs in mathematics and computer science, GraphQL’s resources are nodes, and relations between resources are edges. GraphQL is organized as types and fields rather than endpoints.
 
@@ -34,7 +34,7 @@ All nodes extend from a root node. For example in an ordering system, a customer
 
 ![traffic](/images/graphql/node-edges-example.png)
 
-### Benefits
+### Benefits {/*benefits*/}
 
 GraphQL is strongly and statically typed, providing the following advantages:
 
@@ -46,7 +46,7 @@ GraphQL is efficient and yields the following benefits:
 - It is designed to overcome the “not enough data returned (multiple round trips to the server)” and “too much data returned (n+1)” problems that often accompany REST APIs. If you use a REST API, you often have to make multiple requests to get the data you want. Also REST APIs often return more data than you need, increasing bandwidth, response time, and forcing you to parse large datasets for the desired content.
 - GraphQL reduces the need for client-side error-handling and retry logic.
 
-### Architecture
+### Architecture {/*architecture*/}
 
 A GraphQL client device makes HTTP POST requests to the GraphQL server.
 
@@ -56,7 +56,7 @@ The preceding figure shows a simplistic architecture. In reality other designs a
 
 When a GraphQL server receives a query, the server parses the requested payload and returns needed data.
 
-## GraphQL Operations
+## GraphQL Operations {/*graphql-operations*/}
 
 GraphQL supports the following operations:
 
@@ -66,7 +66,7 @@ GraphQL supports the following operations:
 
 Query and mutation operations also extend from a root node.
 
-## GraphQL Types
+## GraphQL Types {/*graphql-types*/}
 
 GraphQL supports the following built-in scalar types:
 
@@ -80,21 +80,21 @@ GraphQL also supports programmer-defined objects, usually data resources.
 
 **NOTE:** Query and Mutation operations are types.
 
-## GraphQL Schemas
+## GraphQL Schemas {/*graphql-schemas*/}
 
 Schemas define your application’s resources, the relationships between resources, and the operations that are allowed on the resources. Resources and operations are types. Schemas are also used to validate queries and mutations on your data. If the query or mutation structure matches the schema, the operation is executed.
 
 For example, in an app where you maintain customers, you would have a `Customer` type and query operation types such as `getAllCustomers`and `getCustomerById`. You would also have mutation types like `createCustomer` and `deleteCustomer`. Operation types are somewhat like function prototypes; they simply define input and output. The function implementations are defined in [Resolvers](##Resolvers).
 
-## Resolvers
+## Resolvers {/*resolvers*/}
 
 Resolvers are the actual functions that perform the operations defined in the schema and contain procedural code. There is a one-to-one relationship between operations and resolvers.
 
-## Schema and Resolver Examples
+## Schema and Resolver Examples {/*schema-and-resolver-examples*/}
 
 The examples in this section are modeled using Express (a Node.js web framework) and JavaScript.
 
-### Schemas
+### Schemas {/*schemas*/}
 
 Going back to our Customer example, let’s say that each customer has a name, address, city, country, and id. You could model the `Customer` resource and related operations as follows.
 
@@ -124,7 +124,7 @@ Notice the following about this example:
 - Square brackets `[]` are array notation and indicate a list. In the example, `getAllCustomers` returns a list of `Customer` resources.
 - The Customer resource and its operations are both defined with the type keyword, signifying that they are types.
 
-### Resolvers
+### Resolvers {/*resolvers*/}
 
 Using the Customer example, the resolvers might look like this:
 
@@ -150,13 +150,13 @@ Notice the following about this example:
 - The variable `custs` is an array of Customer resources. We’re using it instead of say, database query results for simplicity.
 - The `obj` parameter is for a more advanced discussion of GraphQL.
 
-## Query Structure
+## Query Structure {/*query-structure*/}
 
 Queries can be quite complex with multiple nested queries and variables, but we will keep our example simple.
 
 Queries begin with the query keyword followed by a resource name, followed by a list of fields you want to see.
 
-### Query with No Parameters
+### Query with No Parameters {/*query-with-no-parameters*/}
 
 Assume that you want to get the name and address of all customers. Your query would look like this:
 
@@ -173,7 +173,7 @@ Notice the following about this example:
 - Parentheses are not required after `getAllCustomers`.
 - The list of fields is customizable; you include just the fields you want.
 
-### Query with a Parameter
+### Query with a Parameter {/*query-with-a-parameter*/}
 
 Now assume that you want to get the name and address of the customer with id `01224950`. Your query would look like this:
 
@@ -189,7 +189,7 @@ Notice the following about this example:
 - The parameter name `id` matches the parameter name on the `Customer` type.
 - Again, the list of fields is customizable; you include just the fields you want.
 
-## Additional GraphQL Capabilities
+## Additional GraphQL Capabilities {/*additional-graphql-capabilities*/}
 
 This topic has presented a high-level view of GraphQL. GraphQL contains many more capabilities among which are the use of the following:
 
@@ -201,4 +201,6 @@ This topic has presented a high-level view of GraphQL. GraphQL contains many mor
 - unions
 - input fields
 
-See the [GraphQL Learning Web Site](https://graphql.org/learn/) website for more information.
+<Callout type="info">
+  See the <a href="https://graphql.org/learn">GraphQL Learning Web Site</a> website for more information.
+</Callout>

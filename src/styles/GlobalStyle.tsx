@@ -24,6 +24,9 @@ const GlobalStyle = createGlobalStyle`
   --sidebar-width: 280px;
   --container-max-width: 1228px;
   --container-padding: 0 20px;
+
+  --docs-footer-bg: #F6F6F6;;
+  --docs-footer-color: #000000;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -42,6 +45,9 @@ const GlobalStyle = createGlobalStyle`
     --docs-color: #fff;
     --text-code-bg: #2a2b2c;
     --inline-code-bg: transparent;
+
+    --docs-footer-bg: #000000;
+    --docs-footer-color: #ffffff;
   }
 }
 

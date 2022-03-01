@@ -128,7 +128,7 @@ const StyledDocs = styled.div`
 
   .article-text {
     font-size: 16px;
-    line-height: 1.5;
+    line-height: 26px;
     font-weight: 400;
   }
 

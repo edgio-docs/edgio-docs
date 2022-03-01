@@ -173,8 +173,6 @@ export default function CustomPre({children}: {children: React.ReactNode}) {
     language = children.props.className;
   }
 
-  console.log(language);
-
   return (
     <StyledCustomPre>
       <div className="code-block">

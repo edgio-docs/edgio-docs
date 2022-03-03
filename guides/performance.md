@@ -32,7 +32,7 @@ try {
 
 ### Turn off Caching When not Needed
 
-For `GET` routes that you know you will or must not cache not cache, always explicitly disable caching. This indicates to {{ PRODUCT_NAME }} that it should not try to coalesce requests which leads to improved performance especially on slower upstreams.
+For `GET` routes that you know you will not or must not cache, always explicitly disable caching. This indicates to {{ PRODUCT_NAME }} that it should not try to coalesce requests which leads to improved performance especially on slower upstreams.
 
 For example, if you know that nothing from your legacy upstream will or can ever be cached, do this:
 

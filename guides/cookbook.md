@@ -374,7 +374,7 @@ This example redirects all traffic on domains other than www.mydomain.com to www
 
 ```js
 router.match({ headers: { host: /^(?!www\.).*$/ } }, ({ redirect }) => {
-  redirect('https://www.example.com${url}')
+  redirect('https://www.mydomain.com${url}')
 })
 ```
 

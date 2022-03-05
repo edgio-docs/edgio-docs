@@ -8,6 +8,7 @@ import SidebarMenuItems, {
 import {IconChevron} from '../../Icon/IconChevron';
 import {IconOutsideLink} from '../../Icon/IconOutsideLink';
 import sortBy from 'lodash/sortBy';
+import {useRouter} from 'next/router';
 
 const StlyedSidebar = styled.div`
   font-size: 14px;
@@ -103,10 +104,15 @@ const StlyedSidebar = styled.div`
       }
     }
   }
+
+  [aria-current='true'] {
+    background-color: #1a1a1a;
+  }
 `;
 
 function ChildrenRoutes({
   routes,
+  currentRoutePath,
 }: {
   routes: Array<{
     title: string;
@@ -114,6 +120,7 @@ function ChildrenRoutes({
     icon?: JSX.IntrinsicElements['svg'];
     external?: boolean;
   }>;
+  currentRoutePath: string;
 }) {
   return (
     <motion.div
@@ -137,7 +144,11 @@ function ChildrenRoutes({
               </div>
             </a>
           ) : (
-            <Link href={route.path}>{route.title}</Link>
+            <Link href={route.path}>
+              <a aria-current={currentRoutePath === route.path}>
+                {route.title}
+              </a>
+            </Link>
           )}
         </div>
       ))}
@@ -181,7 +192,11 @@ function ParentRoute({
       type="button"
       className="nav-item__box-inner"
       onClick={updateAccordion}>
-      <div className="trigger-link">
+      <div
+        className="trigger-link"
+        aria-current={
+          !isExternalRoute && accordion?.currentIndex === parentIndex
+        }>
         <div className="icon-box">{menuItem.icon}</div>
         <span className="menu-item__title">{menuItem.title}</span>
         {menuItem.routes && (
@@ -205,7 +220,6 @@ function PrimaryNavItems() {
 
   // const router = useRouter();
 
-  // const currentRoutePath = router.pathname.split('/')[1];
   // const currentRoute = navItems.find(
   //   (navItem) => currentRoutePath === navItem.path
   // );
@@ -213,6 +227,14 @@ function PrimaryNavItems() {
   //   (navItem) => currentRoutePath === navItem.path
   // );
   // const routeHasChildren = !!currentRoute?.routes;
+
+  // 1. currentIndex should be calc. from the current route
+  // 2. if current route has children, currentIndex should be the parentIndex
+  // 3. if current route has no children, currentIndex should be -1
+
+  const router = useRouter();
+  const currentRoutePath = router.pathname;
+  console.log(currentRoutePath);
 
   const [accordion, setAccordion] = useState({
     isOpen: true,
@@ -241,6 +263,7 @@ function PrimaryNavItems() {
                             item.title.toLowerCase()
                           )
                         : menuItem.routes,
+                      currentRoutePath,
                     }}
                   />
                 )}

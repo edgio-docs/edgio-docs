@@ -150,6 +150,15 @@ const StyledDocs = styled.div`
       vertical-align: top;
     }
   }
+
+  @media (max-width: 850px) {
+    grid-template-columns: 1fr;
+
+    .docs-article {
+      padding-left: 40px;
+      padding-right: 40px;
+    }
+  }
 `;
 
 const anchorClassName = siteConfig.headerIdConfig.className;

@@ -2,9 +2,8 @@ import styled from 'styled-components';
 
 const StyledDocsFooter = styled.footer`
   @media (max-width: 1086px) {
-    /* display: none; */
-    padding-left: 20px;
-    padding-right: 20px;
+    padding-left: 40px;
+    padding-right: 40px;
   }
 
   margin-top: 50px;

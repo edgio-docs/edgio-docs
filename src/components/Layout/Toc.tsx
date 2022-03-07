@@ -5,6 +5,10 @@ import styled from 'styled-components';
 import {useTocHighlight} from './useTocHighlight';
 
 const StyledToc = styled.div`
+  @media (max-width: 850px) {
+    display: none;
+  }
+
   .docs-toc__nav {
     position: sticky;
     box-shadow: inset 1px 0px var(--hr-grey1);

@@ -60,6 +60,8 @@ export interface IChildrenRoutes {
   path: string;
   icon?: JSX.IntrinsicElements['svg'];
   external?: boolean;
+  parentIndex?: number;
+  childIndex?: number;
 }
 
 export interface ISidebarMenuItem {

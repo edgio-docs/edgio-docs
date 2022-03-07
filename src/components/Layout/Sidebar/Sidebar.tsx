@@ -1,14 +1,14 @@
 import {AnimatePresence, motion} from 'framer-motion';
+import sortBy from 'lodash/sortBy';
 import Link from 'next/link';
-import styled from 'styled-components';
+import {useRouter} from 'next/router';
 import {useState} from 'react';
+import styled from 'styled-components';
 import SidebarMenuItems, {
   ISidebarMenuItem,
 } from '../../../data/SidebarMenuItems';
 import {IconChevron} from '../../Icon/IconChevron';
 import {IconOutsideLink} from '../../Icon/IconOutsideLink';
-import sortBy from 'lodash/sortBy';
-import {useRouter} from 'next/router';
 
 const StlyedSidebar = styled.div`
   font-size: 14px;
@@ -162,7 +162,8 @@ function ParentRoute({
   accordion,
   setAccordion,
   parentIndex,
-}: {
+}: // currentChildIndex,
+{
   menuItem: ISidebarMenuItem;
   isExternalRoute?: boolean;
   accordion?: {
@@ -173,12 +174,14 @@ function ParentRoute({
     React.SetStateAction<{
       isOpen: boolean;
       currentIndex: number;
+      // currentChildIndex: number;
     }>
   >;
   parentIndex?: number;
 }) {
   function updateAccordion() {
-    if (accordion && setAccordion && parentIndex) {
+    if (accordion && setAccordion && parentIndex !== undefined) {
+      console.log('setting accordion');
       setAccordion({
         ...accordion,
         isOpen: accordion.currentIndex !== parentIndex,
@@ -217,33 +220,44 @@ function ParentRoute({
 function PrimaryNavItems() {
   const navItemsIndex = 0;
   const navItems = SidebarMenuItems[navItemsIndex];
-
-  // const router = useRouter();
-
-  // const currentRoute = navItems.find(
-  //   (navItem) => currentRoutePath === navItem.path
-  // );
-  // const currentRouteIndex = navItems.findIndex(
-  //   (navItem) => currentRoutePath === navItem.path
-  // );
-  // const routeHasChildren = !!currentRoute?.routes;
-
-  // 1. currentIndex should be calc. from the current route
-  // 2. if current route has children, currentIndex should be the parentIndex
-  // 3. if current route has no children, currentIndex should be -1
+  const navItemsArray = Object.keys(navItems);
 
   const router = useRouter();
   const currentRoutePath = router.pathname;
-  console.log(currentRoutePath);
+
+  function getCurrentRouteParentIndex() {
+    return navItemsArray
+      .map((items, index) => {
+        const itemsAsNumber = Number(items);
+        const menuItem = SidebarMenuItems[navItemsIndex][itemsAsNumber];
+        const menuItemRoutes = menuItem.routes;
+
+        if (!menuItemRoutes) {
+          return undefined;
+        }
+
+        return menuItemRoutes.find((route, innerIndex) => {
+          if (route.path === currentRoutePath) {
+            route.parentIndex = index;
+            route.childIndex = innerIndex;
+            return route;
+          }
+
+          return undefined;
+        });
+      })
+      .find((item) => !!item);
+  }
 
   const [accordion, setAccordion] = useState({
     isOpen: true,
-    currentIndex: 0,
+    currentIndex: getCurrentRouteParentIndex()?.parentIndex ?? -1,
+    // currentChildIndex: getCurrentRouteParentIndex()?.childIndex ?? -1,
   });
 
   return (
     <div className="nav-items">
-      {Object.keys(navItems).map((items, index) => {
+      {navItemsArray.map((items, index) => {
         const itemsAsNumber = Number(items);
         const menuItem = SidebarMenuItems[navItemsIndex][itemsAsNumber];
 

@@ -27,6 +27,8 @@ const GlobalStyle = createGlobalStyle`
 
   --docs-footer-bg: #F6F6F6;;
   --docs-footer-color: #000000;
+
+  --docs-area-width: 1228px;
 }
 
 @media (prefers-color-scheme: dark) {

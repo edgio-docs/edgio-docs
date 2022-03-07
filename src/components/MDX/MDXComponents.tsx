@@ -16,6 +16,7 @@ import Recap from './Recap';
 import SupportedFrameworkCard from './SupportedFrameworkCard';
 import TerminalBlock from './TerminalBlock';
 import Video from './Video';
+import Image from './Image';
 
 const P = (p: JSX.IntrinsicElements['p']) => (
   <p className="article-text" {...p} />
@@ -68,4 +69,5 @@ export const MDXComponents = {
   ButtonLinksGroup,
   ButtonLink,
   Video,
+  Image,
 };

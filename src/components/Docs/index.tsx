@@ -3,8 +3,7 @@ import styled from 'styled-components';
 import {Toc} from '../Layout/Toc';
 
 const StyledDocs = styled.div`
-  max-width: 1228px;
-  max-width: 1228px;
+  max-width: var(--docs-area-width);
   margin: 0 auto;
   display: grid;
   grid-template-columns: 75% 1fr;

@@ -42,7 +42,7 @@ You need to configure the following items in order to get a GitHub action set up
 
 1. Create a deploy token (see [Deploying from CI](#section_deploying_from_ci)). Copy the value of that token for use in the next step.
 2. Save the deploy token inside GitHub ([more info](https://docs.github.com/en/actions/security-guides/encrypted-secrets#using-encrypted-secrets-in-a-workflow)). Go to your `GitHub project > Settings > Secrets > New repository secret`. Save the item as `LAYER0_DEPLOY_TOKEN`.
-3. Inside your development project, create a top level folder titled `.github`. Inside that create a `workflow` folder. From there create a `layer0.yml` file and use the example below for its content.
+3. Inside your development project, create a top level folder titled `.github`. Inside that create a `workflows` folder. From there create a `layer0.yml` file and use the example below for its content.
 
 This is an example GitHub action that will deploy your site to {{ PRODUCT_NAME }}.
 
@@ -78,7 +78,8 @@ Read the comments at the top to understand how this action is configured.
 #     you must create it using https://app.layer0.co.
 #
 # ** In order for this action to deploy your site, you must create a deploy token from the site settings page
-# ** in https://app.layer0.co and configure it as a secret called "LAYER0_DEPLOY_TOKEN" in your repo on GitHub.
+# ** In order for this action to deploy your site, you must create a `deploy` command in your package.json scripts (an example is at https://github.com/layer0-docs/layer0-docs/blob/master/package.json#L11).
+# ** Additionally, you will need to generate a deploy token from your site settings in https://app.layer0.co and configure it as a secret called "LAYER0_DEPLOY_TOKEN" in your repo on GitHub.
 #
 # ** Depending on your use of NPM or YARN, adjust the "Install packages" step
 
@@ -127,7 +128,7 @@ jobs:
         #  run: rm -rf node_modules && yarn install --frozen-lockfile # if using yarn for your project
       - name: Deploy to Layer0
         run: |
-          npm run layer0:deploy -- ${{'--branch=$BRANCH_NAME' || ''}} --token=$deploy_token  \
+          npm run deploy -- ${{'--branch=$BRANCH_NAME' || ''}} --token=$deploy_token  \
           ${{github.event_name == 'push' && '--environment=default' || ''}} \
           ${{github.event_name == 'pull_request' && '--environment=staging' || ''}} \
           ${{github.event_name == 'release' && '--environment=production' || ''}}

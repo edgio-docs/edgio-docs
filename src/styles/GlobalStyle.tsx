@@ -29,9 +29,36 @@ const GlobalStyle = createGlobalStyle`
   --docs-footer-color: #000000;
 
   --docs-area-width: 1228px;
+  --dark-theme-switcher-display: flex;
+  --light-theme-switcher-display: none;
 }
 
-@media (prefers-color-scheme: dark) {
+
+:root.dark {
+  color: red;
+  --black1: #fff;
+    --white: var(--grey3);
+    --grey1: rgba(0, 0, 0, 0.15);
+    --grey2: #4e4e4e;
+    --grey3: #353535;
+
+    --docs-content-bg: #1a1a1a;
+    --get-started-card-bg: #000000;
+    --get-started-card-sub-bg: #fff;
+    --link-grey1: #fff;
+    --hr-grey1: #2a2b2c;
+    --docs-color: #fff;
+    --text-code-bg: #2a2b2c;
+    --inline-code-bg: transparent;
+
+    --docs-footer-bg: #000000;
+    --docs-footer-color: #ffffff;
+
+  --dark-theme-switcher-display: none;
+  --light-theme-switcher-display: flex;
+}
+
+/* @media (prefers-color-scheme: dark) {
   :root {
     --black1: #fff;
     --white: var(--grey3);
@@ -51,7 +78,7 @@ const GlobalStyle = createGlobalStyle`
     --docs-footer-bg: #000000;
     --docs-footer-color: #ffffff;
   }
-}
+} */
 
 html, body {
   font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',

@@ -176,8 +176,6 @@ export default function CustomPre({children}: {children: React.ReactNode}) {
     filename = children.props.filename;
   }
 
-  console.log(filename);
-
   return (
     <StyledCustomPre>
       <div className="code-block">

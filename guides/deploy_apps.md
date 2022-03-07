@@ -78,8 +78,8 @@ Read the comments at the top to understand how this action is configured.
 #     you must create it using https://app.layer0.co.
 #
 # ** In order for this action to deploy your site, you must create a deploy token from the site settings page
-# ** In order for this action to deploy your site, you must create a deploy command in your package.json scripts (an example is at https://github.com/layer0-docs/layer0-docs/blob/master/package.json#L11)
-# ** in https://app.layer0.co and configure it as a secret called "LAYER0_DEPLOY_TOKEN" in your repo on GitHub.
+# ** In order for this action to deploy your site, you must create a `deploy` command in your package.json scripts (an example is at https://github.com/layer0-docs/layer0-docs/blob/master/package.json#L11).
+# ** Additionally, you will need to generate a deploy token from your site settings in https://app.layer0.co and configure it as a secret called "LAYER0_DEPLOY_TOKEN" in your repo on GitHub.
 #
 # ** Depending on your use of NPM or YARN, adjust the "Install packages" step
 

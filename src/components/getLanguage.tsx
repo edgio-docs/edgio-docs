@@ -12,6 +12,9 @@ export default function getLanguage(language: string) {
       return 'Terminal';
     case 'json':
       return 'JSON';
+    case 'md':
+    case 'markdown':
+      return 'Markdown';
     default:
       return normalizedLanguageString;
   }

@@ -5,6 +5,7 @@ import CodeBlock from './CodeBlock';
 import getLanguage from '../getLanguage';
 
 const StyledCustomPre = styled.div`
+  font-family: 'IBM Plex Mono', monospace;
   border: 2px solid #363636;
   border-radius: 8px;
   overflow: hidden;
@@ -119,7 +120,6 @@ const StyledCustomPre = styled.div`
     display: flex;
     flex-direction: column;
     gap: 4px;
-    padding: 3px;
     border-color: #356369;
     background: #242424;
   }
@@ -132,6 +132,8 @@ const StyledCustomPre = styled.div`
     padding: 6px 6px 6px 8px;
     font-size: 14px;
     color: white;
+    display: flex;
+    justify-content: space-between;
   }
 
   .code-block__pre {
@@ -155,13 +157,13 @@ const StyledCustomPre = styled.div`
 
   .code-block__header-text {
     font-weight: 700;
-    font-family: 'IBM Plex Mono', monospace;
   }
 `;
 
 export default function CustomPre({children}: {children: React.ReactNode}) {
   let message: string | undefined;
   let language: string | undefined;
+  let filename: string | undefined;
 
   if (typeof children === 'string') {
     message = children;
@@ -171,7 +173,10 @@ export default function CustomPre({children}: {children: React.ReactNode}) {
   ) {
     message = children.props.children;
     language = children.props.className;
+    filename = children.props.filename;
   }
+
+  console.log(filename);
 
   return (
     <StyledCustomPre>
@@ -181,6 +186,11 @@ export default function CustomPre({children}: {children: React.ReactNode}) {
             <span className="code-block__header-text">
               {language && getLanguage(language)}
             </span>
+            {filename && (
+              <span className="code-block__filename">
+                {filename.replaceAll('"', '')}
+              </span>
+            )}
           </header>
           <main className="code-block__content">
             <CodeBlock language={language || 'js'}>{message}</CodeBlock>

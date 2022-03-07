@@ -45,16 +45,16 @@ React is supported right OOTB. You can optionally install and configure
 2. correct markdown links
 3. Look into useRouteMeta
 
+## Bugs?
 1. Headings with {{ }} are not showing on TOC
 2. "this is breaking the layout" in /response_headers
 
-## Content Styling
-
-1. Code highlights.
-2. images ... next image
-3. videos
-
-## Layout
-1. Dark mode
-2. Component docs
-3.
+1. Syntax highlights
+2. Media — images, videos,
+3. Dark mode (do it like FB did it.)
+4. Responsiveness
+5. Components documentation
+6. Cleanups from the old docs — favicon, SEO, comments...
+7. Search
+8. Edit on GitHub
+9. Feedback form

@@ -10,7 +10,7 @@ const StyledDocsFooter = styled.footer`
   display: flex;
   justify-content: space-between;
   background-color: var(--docs-footer-bg, #000000);
-  padding: 16px 64px;
+  padding: 16px 20px;
   color: var(--docs-footer-color, #ffffff);
   align-items: center;
 

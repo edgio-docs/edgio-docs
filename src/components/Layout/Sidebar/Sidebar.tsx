@@ -106,7 +106,7 @@ const StlyedSidebar = styled.div`
   }
 
   [aria-current='true'] {
-    background-color: #1a1a1a;
+    color: var(--pink) !important;
   }
 `;
 

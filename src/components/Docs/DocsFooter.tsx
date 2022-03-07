@@ -1,6 +1,12 @@
 import styled from 'styled-components';
 
 const StyledDocsFooter = styled.footer`
+  @media (max-width: 1086px) {
+    /* display: none; */
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
   margin-top: 50px;
   display: flex;
   justify-content: space-between;
@@ -27,9 +33,9 @@ const StyledDocsFooter = styled.footer`
 export default function DocsFooter() {
   return (
     <StyledDocsFooter>
-      <div className="copy">
+      <p className="copy">
         Copyright &copy; {new Date().getFullYear()} Layer0. All rights reserved.
-      </div>
+      </p>
       <div className="uptime-status">
         <div className="status-halo"></div>
         <p>All systems operational</p>

@@ -185,9 +185,7 @@ export default function CustomPre({children}: {children: React.ReactNode}) {
               {language && getLanguage(language)}
             </span>
             {filename && (
-              <span className="code-block__filename">
-                {filename.replaceAll('"', '')}
-              </span>
+              <span className="code-block__filename">{filename}</span>
             )}
           </header>
           <main className="code-block__content">

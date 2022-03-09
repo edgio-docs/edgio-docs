@@ -157,7 +157,8 @@ router.get('/some/path', ({
 
 ### Adding Options to Cookies
 
-In addition to the name and value of the cookie, you can also add attributes to each cookie. For specific information on possible cookie attributes, please refer to https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Set-Cookie
+In addition to the name and value of the cookie, you can also add attributes to each cookie. For 
+information on possible cookie attributes, please refer to https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Set-Cookie
 
 ```js
 router.get('/some/path', ({ addUpstreamResponseCookie, addResponseCookie, proxy }) => {
@@ -401,7 +402,7 @@ You can find more about geolocation headers [here](/guides/request_headers).
 
 ### Allowing Specific IPs
 
-If you need to block all traffic from a specific country or set of countries, you can do so by matching requests by the [{{ HEADER_PREFIX }}-client-ip](/guides/request_headers#section_general_headers) header:
+If you need to block all traffic except requests that originate from specific IP addresses, you can do so by matching requests by the [{{ HEADER_PREFIX }}-client-ip](/guides/request_headers#section_general_headers) header:
 
 ```js
 router.get(

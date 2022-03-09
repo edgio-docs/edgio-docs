@@ -40,7 +40,14 @@ const staticCacheConfig = {
   },
 }
 
-module.exports = new Router()
+const redirects = [
+  ['/guides/starter', '/guides/traditional_sites'],
+  ['/guides/debugging', '/guides/troubleshooting'],
+  ['/guides/deploying', '/guides/deploy_apps'],
+  ['/guides/getting_started', '/guides/build_web_apps'],
+]
+
+const router = (module.exports = new Router()
   // .requireBasicAuth({
   //   username: process.env.BASIC_AUTH_USERNAME,
   //   password: process.env.BASIC_AUTH_PASSWORD,
@@ -77,15 +84,6 @@ module.exports = new Router()
       },
     })
     serveStatic('.next/static/service-worker.js')
-  })
-  .get('/guides/debugging', ({ redirect }) => {
-    redirect('/guides/troubleshooting', 302)
-  })
-  .get('/guides/deploying', ({ redirect }) => {
-    redirect('/guides/deploy_apps', 302)
-  })
-  .get('/guides/getting_started', ({ redirect }) => {
-    redirect('/guides/build_web_apps', 302)
   })
   .get('/images/:path*', ({ cache }) => {
     cache(staticCacheConfig)
@@ -133,8 +131,12 @@ module.exports = new Router()
   })
   .get('/googleb2732cddf1383cf4.html', ({ send }) =>
     send('google-site-verification: googleb2732cddf1383cf4.html', 200, 'OK'),
-  )
-  .use(nextRoutes)
-  .fallback(({ redirect }) => {
-    return redirect('/', 302)
-  })
+  ))
+
+redirects.forEach(([from, to, statusCode]) => {
+  router.match(from, ({ redirect }) => redirect(to, statusCode || 302))
+})
+
+router.use(nextRoutes).fallback(({ redirect }) => {
+  return redirect('/', 302)
+})

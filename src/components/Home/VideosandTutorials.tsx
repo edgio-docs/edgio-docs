@@ -10,6 +10,11 @@ const StyledComp = styled.div`
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
     gap: 54px;
+
+    /* Can't use CSS Variables in media queries — not yet. */
+    @media (max-width: ${(props) => props.theme.breakpoints.small}) {
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    }
   }
 
   .video {

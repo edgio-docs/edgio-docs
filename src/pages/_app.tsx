@@ -6,11 +6,19 @@ import * as React from 'react';
 import '../styles/algolia.css';
 import GlobalStyle from '../styles/GlobalStyle';
 import '../styles/nprogress.css';
+import {ThemeProvider} from 'styled-components';
 
 // -> Used for the loader when switching between pages
 Router.events.on('routeChangeStart', () => NProgress.start());
 Router.events.on('routeChangeComplete', () => NProgress.done());
 Router.events.on('routeChangeError', () => NProgress.done());
+
+// Breakpoints for media queries
+const theme = {
+  breakpoints: {
+    small: '400px',
+  },
+};
 
 const EmptyAppShell: React.FC = ({children}) => <>{children}</>;
 
@@ -25,7 +33,9 @@ export default function MyApp({Component, pageProps}: AppProps) {
   return (
     <AppShell>
       <GlobalStyle />
-      <Component {...pageProps} />
+      <ThemeProvider theme={theme}>
+        <Component {...pageProps} />
+      </ThemeProvider>
     </AppShell>
   );
 }

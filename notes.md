@@ -64,3 +64,4 @@ React is supported right OOTB. You can optionally install and configure
 [] Responsiveness
 [] Headings...
 [] File path
+[] themecomponent for media queries.

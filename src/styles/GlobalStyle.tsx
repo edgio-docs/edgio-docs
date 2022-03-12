@@ -32,6 +32,8 @@ const GlobalStyle = createGlobalStyle`
   --dark-theme-switcher-display: flex;
   --light-theme-switcher-display: none;
   --homepage-hero-gradient-bg: linear-gradient(180.17deg, rgba(255, 255, 255, 0) 0.15%, rgba(121, 114, 252, 0.1) 99.84%, #FAFDFF 99.85%);
+
+  --small-breakpoint: 400px;
 }
 
 

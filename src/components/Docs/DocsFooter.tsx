@@ -1,14 +1,19 @@
 import styled from 'styled-components';
 
 const StyledDocsFooter = styled.footer`
-  @media (max-width: 1086px) {
-    padding-left: 40px;
-    padding-right: 40px;
+  @media (max-width: 600px) {
+    justify-content: center;
+  }
+
+  @media (max-width: 460px) {
+    font-size: 12px;
   }
 
   margin-top: 50px;
   display: flex;
+  gap: 8px;
   justify-content: space-between;
+  flex-wrap: wrap;
   background-color: var(--docs-footer-bg, #000000);
   padding: 16px 20px;
   color: var(--docs-footer-color, #ffffff);

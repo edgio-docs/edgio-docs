@@ -80,6 +80,9 @@ const GlobalStyle = createGlobalStyle`
   --sidenav-link-color: #ffffff;
   --homepage-hero-title-color: #ffffff;
   --homepage-hero-subtitle-color: #ffffff;
+  --homepage-section-title-color: #fff;
+  --homepage-section-subtitle-color: #fff;
+  --homepage-link-color: #fff;
   --header-bgColor: #353535;
 }
 

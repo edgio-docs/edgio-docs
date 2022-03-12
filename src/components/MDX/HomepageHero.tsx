@@ -2,7 +2,8 @@ import Image from 'next/image';
 import * as React from 'react';
 import styled from 'styled-components';
 import Container from '../Layout/Container';
-import HeaderGraphics from '../../../public/images/home/HeaderGraphics.svg';
+import LightHeaderGraphics from '../../../public/images/home/LightHeaderGraphics.svg';
+import DarkHeaderGraphics from '../../../public/images/home/DarkHeaderGraphics.svg';
 
 const StyledHomepageHero = styled.div`
   min-height: 446px;
@@ -92,7 +93,12 @@ function HomepageHero() {
           </p>
         </div>
         <figure className="header-graphics">
-          <Image src={HeaderGraphics as 'svg'} alt="Layer0 Documentation" />
+          <div id="dark-theme-switcher">
+            <Image src={LightHeaderGraphics} alt="Layer0 Documentation" />
+          </div>
+          <div id="light-theme-switcher">
+            <Image src={DarkHeaderGraphics} alt="Layer0 Documentation" />
+          </div>
         </figure>
       </Container>
     </StyledHomepageHero>

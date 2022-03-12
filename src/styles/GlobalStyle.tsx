@@ -147,6 +147,14 @@ code {
   white-space: nowrap;
   font-weight: 600;
 }
+
+#dark-theme-switcher {
+  display: var(--dark-theme-switcher-display) !important;
+}
+
+#light-theme-switcher {
+  display: var(--light-theme-switcher-display) !important;
+}
 `;
 
 export default GlobalStyle;

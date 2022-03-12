@@ -100,14 +100,6 @@ const StyledHeader = styled.header`
       padding: 0;
       height: 32px;
 
-      &.dark-theme-switcher {
-        display: var(--dark-theme-switcher-display);
-      }
-
-      &.light-theme-switcher {
-        display: var(--light-theme-switcher-display);
-      }
-
       :hover {
         background-color: #e5e5e5;
         cursor: pointer;
@@ -208,18 +200,18 @@ export default function Header() {
       <div className="col-3">
         <button
           type="button"
-          className="theme-switcher dark-theme-switcher"
+          className="theme-switcher"
+          id="dark-theme-switcher"
           onClick={() => {
-            console.log('clicked');
             window.__setPreferredTheme('dark');
           }}>
           {darkSwitchIcon}
         </button>
         <button
           type="button"
-          className="theme-switcher light-theme-switcher"
+          className="theme-switcher"
+          id="light-theme-switcher"
           onClick={() => {
-            console.log('clicked');
             window.__setPreferredTheme('light');
           }}>
           {lightSwitchIcon}

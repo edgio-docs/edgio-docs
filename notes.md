@@ -59,3 +59,8 @@ React is supported right OOTB. You can optionally install and configure
 8. Edit on GitHub
 9. Feedback form
 10. 404 page
+
+
+[] Responsiveness
+[] Headings...
+[] File path

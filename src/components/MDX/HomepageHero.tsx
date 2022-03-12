@@ -20,9 +20,9 @@ const StyledHomepageHero = styled.div`
     background-size: contain;
     background-position: right;
 
-    @media (max-width: 1086px) {
+    @media (max-width: 600px) {
       grid-template-columns: 1fr;
-      row-gap: 50px;
+      row-gap: 100px;
     }
   }
 

@@ -9,7 +9,18 @@
   --docsearch-text-color: black;
 }
 
-@media (prefers-color-scheme: dark) {
+:root.dark {
+  --docsearch-searchbox--bg: #1a1a1a;
+  --docsearch-text-color: white;
+  --docsearch-searchbox-focus-background: #1a1a1a;
+  --docsearch-searchbox-shadow: rgb(116, 116, 116) 0px 0px 0px 0px,
+    rgb(112, 112, 112) 0px 0px 0px 0px, rgb(255, 255, 255) 0px 0px 0px,
+    rgb(80, 80, 80) 0px 0px 0px 2px, rgb(75, 75, 75) 0px 0px 0px 0px,
+    rgb(114, 114, 114) 0px 0px 0px 0px, rgb(136, 136, 136) 0px 0px 0px 0px;
+  --docsearch-searchbox-focus-background: #000;
+}
+
+/* @media (prefers-color-scheme: light) {
   :root {
     --docsearch-searchbox--bg: #1a1a1a;
     --docsearch-text-color: white;
@@ -20,7 +31,7 @@
       rgb(114, 114, 114) 0px 0px 0px 0px, rgb(136, 136, 136) 0px 0px 0px 0px;
     --docsearch-searchbox-focus-background: #000;
   }
-}
+} */
 
 .DocSearch-Button:active,
 .DocSearch-Button:focus,
@@ -51,8 +62,9 @@
 }
 
 .DocSearch-Button-Keys {
-  display: flex;
-  min-width: calc(40px + 0.8em);
+  /* display: flex;
+  min-width: calc(40px + 0.8em); */
+  display: none;
 }
 
 .DocSearch-Container {

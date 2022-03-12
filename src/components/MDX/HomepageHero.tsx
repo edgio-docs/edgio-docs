@@ -8,22 +8,7 @@ import DarkHeaderGraphics from '../../../public/images/home/DarkHeaderGraphics.s
 const StyledHomepageHero = styled.div`
   min-height: 446px;
   line-height: 1.3;
-
-  background: linear-gradient(
-    180.17deg,
-    #1a1a1a 0.15%,
-    rgba(121, 114, 252, 0.1) 100.96%,
-    #7972fc 100.97%
-  );
-
-  @media (prefers-color-scheme: dark) {
-    background: linear-gradient(
-      180.17deg,
-      rgba(255, 255, 255, 0) 0.15%,
-      rgba(121, 114, 252, 0.1) 99.84%,
-      #fafdff 99.85%
-    );
-  }
+  background: var(--homepage-hero-gradient-bg);
 
   .section-container {
     display: grid;

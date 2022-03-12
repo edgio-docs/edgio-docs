@@ -31,12 +31,12 @@ const GlobalStyle = createGlobalStyle`
   --docs-area-width: 1228px;
   --dark-theme-switcher-display: flex;
   --light-theme-switcher-display: none;
+  --homepage-hero-gradient-bg: linear-gradient(180.17deg, rgba(255, 255, 255, 0) 0.15%, rgba(121, 114, 252, 0.1) 99.84%, #FAFDFF 99.85%);
 }
 
 
 :root.dark {
-  color: red;
-  --black1: #fff;
+    --black1: #fff;
     --white: var(--grey3);
     --grey1: rgba(0, 0, 0, 0.15);
     --grey2: #4e4e4e;
@@ -56,28 +56,24 @@ const GlobalStyle = createGlobalStyle`
 
   --dark-theme-switcher-display: none;
   --light-theme-switcher-display: flex;
+
+  --homepage-hero-gradient-bg: linear-gradient(
+      180.17deg,
+      rgba(255, 255, 255, 0) 0.15%,
+      rgba(121, 114, 252, 0.1) 99.84%,
+      #fafdff 99.85%
+    );
 }
 
-/* @media (prefers-color-scheme: dark) {
+/* @media (prefers-color-scheme: light) {
   :root {
-    --black1: #fff;
-    --white: var(--grey3);
-    --grey1: rgba(0, 0, 0, 0.15);
-    --grey2: #4e4e4e;
-    --grey3: #353535;
-
-    --docs-content-bg: #1a1a1a;
-    --get-started-card-bg: #000000;
-    --get-started-card-sub-bg: #fff;
-    --link-grey1: #fff;
-    --hr-grey1: #2a2b2c;
-    --docs-color: #fff;
-    --text-code-bg: #2a2b2c;
-    --inline-code-bg: transparent;
-
-    --docs-footer-bg: #000000;
-    --docs-footer-color: #ffffff;
-  }
+   --homepage-hero-gradient-bg: linear-gradient(
+      180.17deg,
+      rgba(255, 255, 255, 0) 0.15%,
+      rgba(121, 114, 252, 0.1) 99.84%,
+      #fafdff 99.85%
+    );
+   }
 } */
 
 html, body {

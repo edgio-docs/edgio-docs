@@ -7,7 +7,7 @@ const StyledFrameworks = styled.div`
     padding: 0;
     list-style: none;
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(174px, 1fr));
     gap: 20px;
   }
 

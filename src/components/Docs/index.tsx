@@ -75,7 +75,7 @@ const StyledDocs = styled.div`
     }
 
     .text-link {
-      color: #d81b60;
+      color: #2993e0;
       text-decoration: none;
       position: relative;
       font-weight: 600;
@@ -86,7 +86,7 @@ const StyledDocs = styled.div`
         bottom: 0;
         height: 1px;
         left: 0;
-        background: #d81b60;
+        background: #2993e0;
         width: 0;
         transform: translateY(2px);
         transition: width 0.2s ease-in-out;

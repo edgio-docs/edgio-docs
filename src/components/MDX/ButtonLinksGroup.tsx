@@ -2,7 +2,8 @@ import styled from 'styled-components';
 
 const StyledButtonLinksGroup = styled.div`
   display: flex;
-  gap: 11px;
+  column-gap: 11px;
+  row-gap: 22px;
   flex-wrap: wrap;
 `;
 

@@ -48,6 +48,7 @@ React is supported right OOTB. You can optionally install and configure
 ## Bugs?
 1. Headings with {{ }} are not showing on TOC
 2. "this is breaking the layout" in /response_headers
+3. Tables are not fully responsive.
 
 1. Syntax highlights
 2. Media — images, videos,
@@ -65,3 +66,10 @@ React is supported right OOTB. You can optionally install and configure
 [] Headings...
 [] File path
 [] themecomponent for media queries.
+
+
+## Errors.
+
+1. /deploy-to-layer0 — responsiveness error
+	2. guides/production
+2. /guides/core_web_vitals - video rendering.

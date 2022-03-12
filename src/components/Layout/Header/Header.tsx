@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import styled from 'styled-components';
 import {IconDarkMode} from '../../Icon/IconDarkMode';
-import {IconLogoWithText} from '../../Icon/IconLogoWithText';
+import {LightDesktopLogo, DarkDesktopLogo} from '../../Icon/IconLogo';
 import {siteConfig} from 'siteConfig';
 import {DocSearch} from '@docsearch/react';
 import NoSSRWrapper from '../NoSSRWrapper';
@@ -181,9 +181,14 @@ export default function Header() {
     <StyledHeader className="docs-header">
       <div className="col-1">
         <Link href="/" passHref>
-          <div className="logo-box">
-            <IconLogoWithText className="logo" />
-          </div>
+          <a>
+            <div className="logo-box" id="light-theme-switcher">
+              <DarkDesktopLogo className="logo" />
+            </div>
+            <div className="logo-box" id="dark-theme-switcher">
+              <LightDesktopLogo className="logo" />
+            </div>
+          </a>
         </Link>
       </div>
       <div className="col-2">

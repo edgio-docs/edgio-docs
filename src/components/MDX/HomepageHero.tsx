@@ -11,13 +11,18 @@ const StyledHomepageHero = styled.div`
 
   background: linear-gradient(
     180.17deg,
-    rgba(255, 255, 255, 0) 0.15%,
-    rgba(121, 114, 252, 0.1) 99.84%,
-    #fafdff 99.85%
+    #1a1a1a 0.15%,
+    rgba(121, 114, 252, 0.1) 100.96%,
+    #7972fc 100.97%
   );
 
   @media (prefers-color-scheme: dark) {
-    /* background: linear-gradient(180.17deg, #1A1A1A 0.15%, rgba(121, 114, 252, 0.1) 100.96%, #7972FC 100.97%); */
+    background: linear-gradient(
+      180.17deg,
+      rgba(255, 255, 255, 0) 0.15%,
+      rgba(121, 114, 252, 0.1) 99.84%,
+      #fafdff 99.85%
+    );
   }
 
   .section-container {
@@ -25,14 +30,10 @@ const StyledHomepageHero = styled.div`
     grid-template-columns: 1fr 1fr;
     position: relative;
     padding: 40px 0 20px 0;
-    background-image: url('/images/home/HomepageHeroLightWaves.svg');
+    background-image: url('/images/home/HomepageHeroWaves.svg');
     background-repeat: no-repeat;
     background-size: contain;
     background-position: right;
-
-    @media (prefers-color-scheme: dark) {
-      background-image: url('/images/home/HomepageHeroDarkWaves.svg');
-    }
 
     @media (max-width: 1086px) {
       grid-template-columns: 1fr;

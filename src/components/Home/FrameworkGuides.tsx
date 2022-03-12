@@ -19,12 +19,27 @@ import {IconVue} from '../Icon/IconVue';
 import {StyledFeatureSection} from './FeatureSection';
 import SectionHeader from './SectionHeader';
 import {getChildrenRoutesFromSidebarMenuItems} from '../../utils/getChildrenRoutesFromSidebarMenuItems';
+import {IconArrow} from 'components/Icon/IconArrow';
 
 const StyledComp = styled(StyledFeatureSection)`
   .icon {
     --size: 24px;
     width: var(--size);
     height: var(--size);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .route-items__col3 {
+    .route-list__item:last-child {
+      a {
+        color: var(--pink);
+        font-weight: initial;
+        display: flex;
+        column-gap: 7px;
+      }
+    }
   }
 `;
 
@@ -127,7 +142,7 @@ export default function DeveloperTools() {
     },
   ];
 
-  const parentPath = 'framework-guides';
+  // const parentPath = 'framework-guides';
 
   const routes = [routesCol1, routesCol2, routesCol3];
 
@@ -154,8 +169,13 @@ export default function DeveloperTools() {
                 </li>
               ))}
               {index === 2 && (
-                <li>
-                  <Link href="/framework-guides">View all supported</Link>
+                <li className="route-list__item">
+                  <Link href="/framework-guides" passHref>
+                    <a>
+                      <span>View all supported</span>
+                      <IconArrow displayDirection="right" />
+                    </a>
+                  </Link>
                 </li>
               )}
             </ul>

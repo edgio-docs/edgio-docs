@@ -14,7 +14,7 @@ const StyledHeader = styled.header`
   position: sticky;
   top: 0;
   z-index: 1;
-  background: var(--white);
+  background: var(--header-bgColor);
   width: 100%;
   height: var(--header-height);
   box-shadow: inset 0 -1px var(--grey1);
@@ -101,7 +101,6 @@ const StyledHeader = styled.header`
       height: 32px;
 
       :hover {
-        background-color: #e5e5e5;
         cursor: pointer;
       }
     }

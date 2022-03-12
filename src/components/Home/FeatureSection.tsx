@@ -36,7 +36,7 @@ export const StyledFeatureSection = styled.div`
       font-weight: 600;
       font-size: 18px;
       line-height: 24px;
-      color: var(--link-grey1);
+      color: var(--homepage-link-color);
       position: relative;
       text-decoration: none;
       border-bottom: 1px solid transparent;

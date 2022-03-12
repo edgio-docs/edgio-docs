@@ -33,7 +33,11 @@ const StyledSectionheader = styled.header`
       width: var(--size);
       height: var(--size);
       position: relative;
-      background: var(--grey4);
+      background-color: var(--homepage-section-header-bgColor);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 3px;
     }
   }
 
@@ -51,13 +55,13 @@ const StyledSectionheader = styled.header`
     font-weight: 600;
     font-size: 24px;
     line-height: 28px;
-    color: var(--get-started-card-sub-bg);
+    color: var(--homepage-section-title-color);
   }
 
   .section-header__subtitle {
     font-size: 20px;
     line-height: 28px;
-    color: var(--get-started-card-sub-bg);
+    color: var(--homepage-section-subtitle-color);
   }
 `;
 

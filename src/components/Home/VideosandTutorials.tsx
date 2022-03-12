@@ -25,7 +25,7 @@ const StyledComp = styled.div`
       font-weight: 500;
       font-size: 24px;
       line-height: 29px;
-      color: var(--black1);
+      color: var(--homepage-section-title-color);
     }
   }
 `;

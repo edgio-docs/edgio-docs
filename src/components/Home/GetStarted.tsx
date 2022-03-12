@@ -1,3 +1,4 @@
+import {IconArrow} from 'components/Icon/IconArrow';
 import Link from 'next/link';
 import styled from 'styled-components';
 import {IconJamstack} from '../Icon/IconJamstack';
@@ -35,6 +36,7 @@ function GetStartedCard({
         <NextLink href={href} passHref>
           <a className="card-footer__link">
             <span>{hrefText}</span>
+            <IconArrow displayDirection="right" />
           </a>
         </NextLink>
       </footer>
@@ -87,6 +89,9 @@ const StyledGetStarted = styled.div`
   .card {
     .card-footer__link {
       color: var(--pink);
+      text-decoration: none;
+      display: flex;
+      column-gap: 7px;
     }
 
     :nth-child(even) {

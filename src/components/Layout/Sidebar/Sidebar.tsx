@@ -23,7 +23,7 @@ const StlyedSidebar = styled.div`
   .hr-separator {
     height: 1px;
     width: calc(100% - 40px);
-    background: var(--grey1);
+    background: var(--sidenav-hr-color);
     transform: translateX(20px);
   }
 
@@ -44,7 +44,7 @@ const StlyedSidebar = styled.div`
     column-gap: 10px;
     text-decoration: none;
     padding: 5px 20px;
-    color: var(--black1);
+    color: var(--sidenav-link-color);
     text-decoration: none;
 
     :hover {
@@ -95,7 +95,7 @@ const StlyedSidebar = styled.div`
       flex: 1;
       padding-left: 12px;
       padding: 4px 0 4px 12px;
-      color: var(--black1);
+      color: var(--sidenav-link-color);
       text-decoration: none;
 
       :hover {

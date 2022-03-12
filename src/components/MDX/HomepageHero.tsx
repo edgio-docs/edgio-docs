@@ -45,14 +45,14 @@ const StyledHomepageHero = styled.div`
 
   .headline {
     font-size: 32px;
-    color: var(--black1);
+    color: var(--homepage-hero-title-color);
     letter-spacing: -0.663px;
     font-weight: bold;
   }
 
   .subheadline {
     font-size: 18px;
-    color: var(--get-started-card-sub-bg);
+    color: var(--homepage-hero-subtitle-color);
   }
 
   .figure {

@@ -1,18 +1,24 @@
 import {IconAngular} from '../components/Icon/IconAngular';
 import {IconAstro} from '../components/Icon/IconAstro';
-import {IconBookPlain} from '../components/Icon/IconBookPlain';
+import {
+  IconBookPlain,
+  IconBookPlainDark,
+} from '../components/Icon/IconBookPlain';
 import {IconBrunch} from '../components/Icon/IconBrunch';
-import {IconBulb} from '../components/Icon/IconBulb';
-import {IconCodePlain} from '../components/Icon/IconCodePlain';
+import {IconBulb, IconBulbDark} from '../components/Icon/IconBulb';
+import {
+  IconCodePlain,
+  IconCodePlainDark,
+} from '../components/Icon/IconCodePlain';
 import {IconDocusaurus} from '../components/Icon/IconDocusaurus';
 import {IconDojo} from '../components/Icon/IconDojo';
 import {IconEleventy} from '../components/Icon/IconEleventy';
 import {IconEmberFastboot} from '../components/Icon/IconEmberFastboot';
 import {IconEmberJS} from '../components/Icon/IconEmberJS';
 import {IconExpress} from '../components/Icon/IconExpress';
-import {IconFiddle} from '../components/Icon/IconFiddle';
-import {IconFolder} from '../components/Icon/IconFolder';
-import {IconForum} from '../components/Icon/IconForum';
+import {IconFiddle, IconFiddleDark} from '../components/Icon/IconFiddle';
+import {IconFolder, IconFolderDark} from '../components/Icon/IconFolder';
+import {IconForum, IconForumDark} from '../components/Icon/IconForum';
 import {IconFrontity} from '../components/Icon/IconFrontity';
 import {IconGatsby} from '../components/Icon/IconGatsby';
 import {IconGridsome} from '../components/Icon/IconGridsome';
@@ -35,21 +41,33 @@ import {IconRedwood} from '../components/Icon/IconRedwood';
 import {IconSaber} from '../components/Icon/IconSaber';
 import {IconSapper} from '../components/Icon/IconSapper';
 import {IconServerlessFunctions} from '../components/Icon/IconServerlessFunctions';
-import {IconServerSmall} from '../components/Icon/IconServerSmall';
+import {
+  IconServerSmall,
+  IconServerSmallDark,
+} from '../components/Icon/IconServerSmall';
 import {IconShopifyHydrogen} from '../components/Icon/IconShopifyHydrogen';
 import {IconSolidJS} from '../components/Icon/IconSolidJS';
-import {IconSparkPlain} from '../components/Icon/IconSparkPlain';
+import {
+  IconSparkPlain,
+  IconSparkPlainDark,
+} from '../components/Icon/IconSparkPlain';
 import {IconSpartarcus} from '../components/Icon/IconSpartarcus';
-import {IconStacksPlain} from '../components/Icon/IconStacksPlain';
+import {
+  IconStacksPlain,
+  IconStacksPlainDark,
+} from '../components/Icon/IconStacksPlain';
 import {IconStaticHTMLJS} from '../components/Icon/IconStaticHTMLJS';
-import {IconStatus} from '../components/Icon/IconStatus';
+import {IconStatus, IconStatusDark} from '../components/Icon/IconStatus';
 import {IconStencil} from '../components/Icon/IconStencil';
-import {IconSupport} from '../components/Icon/IconSupport';
+import {IconSupport, IconSupportDark} from '../components/Icon/IconSupport';
 import {IconSvelte} from '../components/Icon/IconSvelte';
 import {IconSwell} from '../components/Icon/IconSwell';
 import {IconUmiJS} from '../components/Icon/IconUmiJS';
-import {IconUserPlain} from '../components/Icon/IconUserPlain';
-import {IconVideos} from '../components/Icon/IconVideos';
+import {
+  IconUserPlain,
+  IconUserPlainDark,
+} from '../components/Icon/IconUserPlain';
+import {IconVideos, IconVideosDark} from '../components/Icon/IconVideos';
 import {IconVitePress} from '../components/Icon/IconVitePress';
 import {IconVue} from '../components/Icon/IconVue';
 import {IconZola} from '../components/Icon/IconZola';
@@ -67,6 +85,7 @@ export interface IChildrenRoutes {
 export interface ISidebarMenuItem {
   title: string;
   icon: JSX.IntrinsicElements['svg'];
+  iconDark?: JSX.IntrinsicElements['svg'];
   path: string;
   sortRoutes?: boolean;
   routes?: Array<IChildrenRoutes>;
@@ -77,6 +96,7 @@ const SidebarMenuItems: Array<Array<ISidebarMenuItem>> = [
     {
       title: 'Getting Started',
       icon: <IconSparkPlain />,
+      iconDark: <IconSparkPlainDark />,
       path: 'getting-started',
       sortRoutes: false,
       routes: [
@@ -105,6 +125,7 @@ const SidebarMenuItems: Array<Array<ISidebarMenuItem>> = [
     {
       title: 'CDN',
       icon: <IconServerSmall />,
+      iconDark: <IconServerSmallDark />,
       path: 'cdn',
       sortRoutes: true,
       routes: [
@@ -186,6 +207,7 @@ const SidebarMenuItems: Array<Array<ISidebarMenuItem>> = [
     {
       title: 'Developer Tools',
       icon: <IconCodePlain />,
+      iconDark: <IconCodePlainDark />,
       path: 'dev-tools',
       sortRoutes: true,
       routes: [
@@ -206,6 +228,7 @@ const SidebarMenuItems: Array<Array<ISidebarMenuItem>> = [
     {
       title: 'Accounts & Teams',
       icon: <IconUserPlain />,
+      iconDark: <IconUserPlainDark />,
       path: 'accounts-teams',
       sortRoutes: true,
       routes: [
@@ -222,6 +245,7 @@ const SidebarMenuItems: Array<Array<ISidebarMenuItem>> = [
     {
       title: 'Framework Guides',
       icon: <IconBookPlain />,
+      iconDark: <IconBookPlainDark />,
       path: 'framework-guides',
       sortRoutes: true,
       routes: [
@@ -455,6 +479,7 @@ const SidebarMenuItems: Array<Array<ISidebarMenuItem>> = [
     {
       title: 'Reference',
       icon: <IconStacksPlain />,
+      iconDark: <IconStacksPlainDark />,
       path: 'reference',
       sortRoutes: true,
       routes: [
@@ -519,6 +544,7 @@ const SidebarMenuItems: Array<Array<ISidebarMenuItem>> = [
     {
       title: 'Videos',
       icon: <IconVideos />,
+      iconDark: <IconVideosDark />,
       path: 'videos',
       sortRoutes: true,
       routes: [
@@ -537,6 +563,7 @@ const SidebarMenuItems: Array<Array<ISidebarMenuItem>> = [
     {
       title: 'Package APIs',
       icon: <IconFolder />,
+      iconDark: <IconFolderDark />,
       path: 'package-apis',
       sortRoutes: true,
       routes: [
@@ -555,6 +582,7 @@ const SidebarMenuItems: Array<Array<ISidebarMenuItem>> = [
     {
       title: 'Learning Resources',
       icon: <IconBulb />,
+      iconDark: <IconBulbDark />,
       path: 'learning-resources',
       sortRoutes: true,
       routes: [
@@ -569,22 +597,26 @@ const SidebarMenuItems: Array<Array<ISidebarMenuItem>> = [
     {
       title: 'Fiddle',
       icon: <IconFiddle />,
-      path: '',
+      iconDark: <IconFiddleDark />,
+      path: 'https://fiddle.layer0.co/?sgId=7bc47c45-c1d6-4189-b416-552581d86006',
     },
     {
       title: 'Forum',
       icon: <IconForum />,
-      path: '',
+      iconDark: <IconForumDark />,
+      path: 'https://forum.layer0.co/?sgId=7bc47c45-c1d6-4189-b416-552581d86006',
     },
     {
       title: 'Status',
       icon: <IconStatus />,
-      path: '',
+      iconDark: <IconStatusDark />,
+      path: 'https://status.layer0.co/?sgId=7bc47c45-c1d6-4189-b416-552581d86006',
     },
     {
       title: 'Support',
       icon: <IconSupport />,
-      path: '',
+      iconDark: <IconSupportDark />,
+      path: 'https://app.layer0.co/help?sgId=7bc47c45-c1d6-4189-b416-552581d86006',
     },
   ],
 ];

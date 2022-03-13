@@ -8,7 +8,7 @@ import SidebarMenuItems, {
   ISidebarMenuItem,
 } from '../../../data/SidebarMenuItems';
 import {IconChevron} from '../../Icon/IconChevron';
-import {IconOutsideLink} from '../../Icon/IconOutsideLink';
+import {IconOutsideLink, IconOutsideLinkDark} from '../../Icon/IconOutsideLink';
 
 const StlyedSidebar = styled.div`
   font-size: 14px;
@@ -34,6 +34,7 @@ const StlyedSidebar = styled.div`
     background: transparent;
     border: none;
     width: 100%;
+    text-decoration: none;
     text-align: left;
   }
 
@@ -91,7 +92,7 @@ const StlyedSidebar = styled.div`
       display: grid;
       gap: 6px;
       align-items: center;
-      grid-template-columns: auto 1fr;
+      grid-template-columns: 1fr auto;
       flex: 1;
       padding-left: 12px;
       padding: 4px 0 4px 12px;
@@ -139,9 +140,14 @@ function ChildrenRoutes({
             <a href={route.path} target="_blank" rel="noopener noreferrer">
               {route.title}
 
-              <div className="icon-box">
-                <IconOutsideLink />
-              </div>
+              <>
+                <div className="icon-box" id="light-theme-switcher">
+                  <IconOutsideLinkDark />
+                </div>
+                <div className="icon-box" id="dark-theme-switcher">
+                  <IconOutsideLink />
+                </div>
+              </>
             </a>
           ) : (
             <Link href={route.path}>
@@ -181,13 +187,40 @@ function ParentRoute({
 }) {
   function updateAccordion() {
     if (accordion && setAccordion && parentIndex !== undefined) {
-      console.log('setting accordion');
       setAccordion({
         ...accordion,
         isOpen: accordion.currentIndex !== parentIndex,
         currentIndex: accordion.currentIndex === parentIndex ? -1 : parentIndex,
       });
     }
+  }
+
+  if (isExternalRoute) {
+    return (
+      <Link href={menuItem.path} passHref>
+        <a className="nav-item__box-inner" target="_blank">
+          <div className="trigger-link">
+            <div className="icon-box" id="dark-theme-switcher">
+              {menuItem.icon}
+            </div>
+            <div className="icon-box" id="light-theme-switcher">
+              {menuItem.iconDark}
+            </div>
+            <span className="menu-item__title">{menuItem.title}</span>
+            {isExternalRoute && (
+              <>
+                <div className="icon-box" id="light-theme-switcher">
+                  <IconOutsideLinkDark />
+                </div>
+                <div className="icon-box" id="dark-theme-switcher">
+                  <IconOutsideLink />
+                </div>
+              </>
+            )}
+          </div>
+        </a>
+      </Link>
+    );
   }
 
   return (
@@ -200,16 +233,16 @@ function ParentRoute({
         aria-current={
           !isExternalRoute && accordion?.currentIndex === parentIndex
         }>
-        <div className="icon-box">{menuItem.icon}</div>
+        <div className="icon-box" id="dark-theme-switcher">
+          {menuItem.icon}
+        </div>
+        <div className="icon-box" id="light-theme-switcher">
+          {menuItem.iconDark}
+        </div>
         <span className="menu-item__title">{menuItem.title}</span>
         {menuItem.routes && (
           <div className="icon-box">
             <IconChevron displayDirection="right" />
-          </div>
-        )}
-        {isExternalRoute && (
-          <div className="icon-box">
-            <IconOutsideLink />
           </div>
         )}
       </div>

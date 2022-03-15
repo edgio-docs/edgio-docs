@@ -72,8 +72,7 @@ const GlobalStyle = createGlobalStyle`
   --homepage-hero-gradient-bg: linear-gradient(
       180.17deg,
       rgba(255, 255, 255, 0) 0.15%,
-      rgba(121, 114, 252, 0.1) 99.84%,
-      #fafdff 99.85%
+      rgba(121, 114, 252, 0.1) 99.84%
     );
 
     /* Colors */

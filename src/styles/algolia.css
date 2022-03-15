@@ -50,7 +50,7 @@
   font-weight: 500;
   height: 36px;
   justify-content: space-between;
-  margin: 0 0 0 16px;
+  margin: 0;
   padding: 0 8px;
   user-select: none;
   width: inherit;
@@ -211,4 +211,26 @@
   flex-direction: row;
   height: var(--docsearch-hit-height);
   padding: 0 var(--docsearch-spacing) 0 0;
+}
+
+@media screen and (max-width: 750px) {
+  .DocSearch-Button {
+    height: 31px;
+  }
+
+  .DocSearch-Button-Container {
+    --size: 32px;
+    width: var(--size);
+    height: var(--size);
+  }
+
+  .DocSearch-Button-Placeholder {
+    display: initial;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .DocSearch-Button-Container {
+    --size: 16px;
+  }
 }

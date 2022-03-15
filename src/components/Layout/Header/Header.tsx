@@ -1,16 +1,17 @@
 import Link from 'next/link';
 import styled from 'styled-components';
-import {IconDarkMode} from '../../Icon/IconDarkMode';
-import {LightDesktopLogo, DarkDesktopLogo} from '../../Icon/IconLogo';
+import {
+  LightDesktopLogo,
+  DarkDesktopLogo,
+  DarkMobileLogo,
+  LightMobileLogo,
+} from '../../Icon/IconLogo';
 import {siteConfig} from 'siteConfig';
 import {DocSearch} from '@docsearch/react';
 import NoSSRWrapper from '../NoSSRWrapper';
+import {IconHamburger} from 'components/Icon/IconHamburger';
 
 const StyledHeader = styled.header`
-  @media (max-width: 1086px) {
-    display: none;
-  }
-
   position: sticky;
   top: 0;
   z-index: 1;
@@ -38,8 +39,21 @@ const StyledHeader = styled.header`
     justify-content: center;
 
     .search-form__box {
-      max-width: 623px;
-      width: 623px;
+      --width: 623px;
+      max-width: var(--width);
+      width: var(--width);
+
+      @media (max-width: 1000px) {
+        --width: 500px;
+      }
+
+      @media (max-width: 900px) {
+        --width: 400px;
+      }
+
+      @media (max-width: 760px) {
+        --width: 300px;
+      }
     }
 
     .search-form {
@@ -86,10 +100,12 @@ const StyledHeader = styled.header`
   }
 
   .col-3 {
-    display: grid;
-    grid-template-columns: repeat(3, auto);
-    column-gap: 15px;
-    align-items: center;
+    .desktop {
+      display: grid;
+      grid-template-columns: repeat(3, auto);
+      column-gap: 15px;
+      align-items: center;
+    }
 
     .theme-switcher {
       width: 32px;
@@ -119,6 +135,38 @@ const StyledHeader = styled.header`
       padding: 8px 12px;
       font-weight: 600;
       border-radius: 4px;
+    }
+  }
+
+  button[class*='mobile-menu'] {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    color: var(--homepage-hero-title-color);
+  }
+
+  #mobile {
+    display: none;
+  }
+
+  @media (max-width: 750px) {
+    #desktop {
+      display: none;
+    }
+
+    #mobile {
+      display: block;
+    }
+
+    .col-2 {
+      .search-form__box {
+        width: 100%;
+        max-width: 100%;
+      }
+    }
+
+    .col-3 {
+      display: flex;
     }
   }
 `;
@@ -179,16 +227,30 @@ export default function Header() {
   return (
     <StyledHeader className="docs-header">
       <div className="col-1">
-        <Link href="/" passHref>
-          <a>
-            <div className="logo-box" id="light-theme-switcher">
-              <DarkDesktopLogo className="logo" />
-            </div>
-            <div className="logo-box" id="dark-theme-switcher">
-              <LightDesktopLogo className="logo" />
-            </div>
-          </a>
-        </Link>
+        <div id="desktop">
+          <Link href="/" passHref>
+            <a>
+              <div className="logo-box" id="light-theme-switcher">
+                <DarkDesktopLogo className="logo" />
+              </div>
+              <div className="logo-box" id="dark-theme-switcher">
+                <LightDesktopLogo className="logo" />
+              </div>
+            </a>
+          </Link>
+        </div>
+        <div id="mobile">
+          <Link href="/" passHref>
+            <a>
+              <div className="logo-box" id="light-theme-switcher">
+                <DarkMobileLogo className="logo" />
+              </div>
+              <div className="logo-box" id="dark-theme-switcher">
+                <LightMobileLogo className="logo" />
+              </div>
+            </a>
+          </Link>
+        </div>
       </div>
       <div className="col-2">
         <div className="search-form__box">
@@ -202,30 +264,46 @@ export default function Header() {
         </div>
       </div>
       <div className="col-3">
-        <button
-          type="button"
-          className="theme-switcher"
-          id="dark-theme-switcher"
-          onClick={() => {
-            window.__setPreferredTheme('dark');
-          }}>
-          {darkSwitchIcon}
-        </button>
-        <button
-          type="button"
-          className="theme-switcher"
-          id="light-theme-switcher"
-          onClick={() => {
-            window.__setPreferredTheme('light');
-          }}>
-          {lightSwitchIcon}
-        </button>
-        <Link href="https://app.layer0.co/?sgId=ef4d5169-93f2-4f55-aabb-dc3be4286e1f">
-          Login
-        </Link>
-        <Link href="https://app.layer0.co/signup?redirectTo=%2F&sgId=ef4d5169-93f2-4f55-aabb-dc3be4286e1f">
-          Sign up
-        </Link>
+        <div id="desktop" className="desktop">
+          <button
+            type="button"
+            className="theme-switcher"
+            id="dark-theme-switcher"
+            onClick={() => {
+              window.__setPreferredTheme('dark');
+            }}>
+            {darkSwitchIcon}
+          </button>
+          <button
+            type="button"
+            className="theme-switcher"
+            id="light-theme-switcher"
+            onClick={() => {
+              window.__setPreferredTheme('light');
+            }}>
+            {lightSwitchIcon}
+          </button>
+          <Link href="https://app.layer0.co/?sgId=ef4d5169-93f2-4f55-aabb-dc3be4286e1f">
+            Login
+          </Link>
+          <Link href="https://app.layer0.co/signup?redirectTo=%2F&sgId=ef4d5169-93f2-4f55-aabb-dc3be4286e1f">
+            Sign up
+          </Link>
+        </div>
+        <div id="mobile">
+          <button
+            type="button"
+            className="mobile-menu"
+            id="dark-theme-switcher">
+            <IconHamburger />
+          </button>
+          <button
+            type="button"
+            className="mobile-menu"
+            id="light-theme-switcher">
+            <IconHamburger />
+          </button>
+        </div>
       </div>
     </StyledHeader>
   );

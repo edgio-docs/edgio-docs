@@ -73,3 +73,4 @@ React is supported right OOTB. You can optionally install and configure
 1. /deploy-to-layer0 — responsiveness error
 	2. guides/production
 2. /guides/core_web_vitals - video rendering.
+3. Responsiveness issues when width < 500px

@@ -151,7 +151,7 @@ const StyledDocs = styled.div`
     }
   }
 
-  @media (max-width: 850px) {
+  @media (max-width: 1000px) {
     grid-template-columns: 1fr;
 
     .docs-article {

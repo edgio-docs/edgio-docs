@@ -223,7 +223,13 @@ const {
   indexName,
 } = siteConfig.algolia;
 
-export default function Header() {
+export default function Header({
+  showSidebar,
+  setShowSidebar,
+}: {
+  showSidebar: boolean;
+  setShowSidebar: (showSidebar: boolean) => void;
+}) {
   return (
     <StyledHeader className="docs-header">
       <div className="col-1">
@@ -300,7 +306,8 @@ export default function Header() {
           <button
             type="button"
             className="mobile-menu"
-            id="light-theme-switcher">
+            id="light-theme-switcher"
+            onClick={() => setShowSidebar(!showSidebar)}>
             <IconHamburger />
           </button>
         </div>

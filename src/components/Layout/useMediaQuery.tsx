@@ -30,8 +30,8 @@ const useMediaQuery = (width: number) => {
   return targetReached;
 };
 
-const useIsMobile = () => {
-  return useMediaQuery(640);
+const useIsMobile = (width: number) => {
+  return useMediaQuery(width);
 };
 
 export {useMediaQuery, useIsMobile};

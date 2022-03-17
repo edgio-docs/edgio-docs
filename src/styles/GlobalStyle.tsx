@@ -99,6 +99,7 @@ const GlobalStyle = createGlobalStyle`
 html, body {
   font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
       'Helvetica Neue', 'Ubuntu';
+  background-color: var(--docs-content-bg);
 }
 
 /*

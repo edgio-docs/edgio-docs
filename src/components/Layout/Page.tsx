@@ -1,7 +1,9 @@
+import {useRouter} from 'next/router';
 import * as React from 'react';
 import styled from 'styled-components';
 import Header from './Header/Header';
 import {Sidebar} from './Sidebar/Sidebar';
+import {useIsMobile} from './useMediaQuery';
 
 interface PageProps {
   children: React.ReactNode;
@@ -26,9 +28,17 @@ const StyledMainPage = styled.div`
       background-color: var(--grey3);
       padding: calc(var(--header-height) / 2) 0;
       box-shadow: inset -1px 0px var(--grey1);
+      z-index: 2;
+      transition: 0.2s;
 
-      @media (max-width: 1086px) {
-        display: none;
+      &[data-open='true'] {
+        position: fixed;
+        transform: translateX(0);
+      }
+
+      @media (max-width: 750px) {
+        position: fixed;
+        transform: translateX(calc(-1 * var(--sidebar-width)));
       }
     }
 
@@ -49,11 +59,19 @@ const StyledMainPage = styled.div`
 `;
 
 export function Page({children}: PageProps) {
+  const isMobile = useIsMobile(750);
+  const [showSidebar, setShowSidebar] = React.useState(isMobile);
+  const router = useRouter();
+
+  React.useEffect(() => {
+    router.events.on('routeChangeComplete', () => setShowSidebar(false));
+  }, [router]);
+
   return (
     <StyledMainPage>
-      <Header />
+      <Header {...{showSidebar, setShowSidebar}} />
       <main className="docs-content">
-        <div className="docs-side__nav">
+        <div className="docs-side__nav" data-open={isMobile && showSidebar}>
           <Sidebar />
         </div>
         <div className="docs-content__inner">{children}</div>

@@ -417,7 +417,7 @@ module.exports = with{{ PRODUCT_NAME }}(
 )
 ```
 
-Finally, you will need to update your `layer0.config.js` to (includeFiles)[/guides/layer0_config#section_includefiles] where the locale files are stored. Example using the default of `/public`:
+Finally, you will need to update your `layer0.config.js` to [includeFiles](/guides/layer0_config#section_includefiles) where the locale files are stored. Example using the default of `/public`:
 
 ```js
 module.exports = {

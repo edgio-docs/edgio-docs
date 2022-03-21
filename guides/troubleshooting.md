@@ -167,3 +167,60 @@ module.exports = {
 ```
 
 **Note:** The reason that application level source maps are not enabled by default is that they can be quite large and cause the serverless bundle to be larger than the 50MB limit.
+
+## 539 Status Codes
+
+### Overview 
+
+539 status codes (see [Status Codes](/guides/status_codes) ) are timeout errors, which can be:
+* An error in your SSR code
+* A backend error (server overloaded or offline)
+* A whitelisting issue
+
+This sections provides assumptions about your deployment, shows typical request flows, then describes how to determine the source of the 539 errors.
+
+#### Assumptions
+
+You have deployed your site to Layer0. All your website code resides with Layer0 as SSR (server-side rendering) code. Your backend (server) simply contains data that is needed by your website code to construct a page and return it to a requesting client or browser.
+See [Architecture](/guides/overview#section_architecture) for more information.
+
+#### Typical Request Flows
+
+Following are two request flows that are helpful as background to troubleshooting information.
+
+##### Cached Assets Served
+
+1. A requesting client sends a request to Layer0 for an asset. 
+2. The Layer0 edge finds the asset in cache and returns it to the client.
+
+##### Assets Served via Customer SSR Code and Customer Backend
+
+This flow is where 539 errors might occur.
+
+1. A requesting client sends a request to Layer0 for an asset. 
+2.  {{ PRODUCT_NAME }}  does not find it in its cache and examines routing rules.
+2.  {{ PRODUCT_NAME }}  sends requests to SSR code.
+2. The SSR code makes calls to the customer backend to get data needed for the page.
+2. The SSR assembles the page and sends it to the {{ PRODUCT_NAME }} edge.
+2. The {{ PRODUCT_NAME }} edge caches the page and returns it to the client.
+
+_Note:_ a variant on caching is ISR where Layer0 caches just for a few hours or days.
+
+#### Whitelisting Overview
+
+If you were to deploy your site not on  {{ PRODUCT_NAME }} , you would have end-user requests from many different IP addresses. This is fine because your server would simply serve the requests.
+
+However, because you are running your site on  {{ PRODUCT_NAME }} , all requests come in through four IP addresses, and servers are programmed to interpret this as some kind of DDoS attack. At this point, the server either blocks or rate-limits the requests. In either case, timeouts occur and 539 errors are returned. 
+
+Usually the pattern is that your site works fine for a few days after deploying to  {{ PRODUCT_NAME }} , then your server starts interpreting the requests as a DDoS attack.
+
+To prevent this scenario, you must configure your server with whitelisted  {{ PRODUCT_NAME }}  IP addresses. See “IP Whitelist” in [Network Configuration](/guides/production).
+
+### Troubleshooting a 539 Error
+
+#### Error in SSR Code
+
+#### Backend Server Error
+
+#### Distinguishing a Whitelisting Error from a Timeout Error
+

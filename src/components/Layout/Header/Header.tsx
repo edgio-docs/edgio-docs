@@ -149,7 +149,7 @@ const StyledHeader = styled.header`
     display: none;
   }
 
-  @media (max-width: 750px) {
+  @media (max-width: 810px) {
     #desktop {
       display: none;
     }

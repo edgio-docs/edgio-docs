@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import {useTocHighlight} from './useTocHighlight';
 
 const StyledToc = styled.div`
-  @media (max-width: 850px) {
+  @media (max-width: 1000px) {
     display: none;
   }
 

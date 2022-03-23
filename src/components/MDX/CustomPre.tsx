@@ -31,7 +31,7 @@ const StyledCustomPre = styled.div`
     color: #ffffff;
     line-height: 1.9;
     tab-size: 4;
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 600;
     font-family: 'IBM Plex Mono';
   }

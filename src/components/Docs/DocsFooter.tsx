@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 const StyledDocsFooter = styled.footer`
-  @media (max-width: 865px) {
+  @media (max-width: 585px) {
     justify-content: center;
   }
 

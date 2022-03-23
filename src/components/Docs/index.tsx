@@ -39,6 +39,10 @@ const StyledDocs = styled.div`
         width: 18px;
         height: 18px;
         top: 50%;
+
+        @media (max-width: 400px) {
+          transform: translateX(-18px);
+        }
       }
 
       .anchor svg {
@@ -153,11 +157,6 @@ const StyledDocs = styled.div`
 
   @media (max-width: 1000px) {
     grid-template-columns: 1fr;
-
-    .docs-article {
-      padding-left: 40px;
-      padding-right: 40px;
-    }
   }
 `;
 

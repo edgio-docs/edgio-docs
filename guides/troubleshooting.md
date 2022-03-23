@@ -175,7 +175,7 @@ module.exports = {
 539 status codes (see [Status Codes](/guides/status_codes)) are timeout errors, which can be:
 * An error in your SSR code
 * A backend error (server overloaded or offline)
-* A whitelisting issue
+* An allowlist (whitelist) issue
 
 #### Assumptions
 
@@ -204,24 +204,24 @@ This flow is where 539 errors might occur.
 
 _Note:_ a variant on caching is ISR where Layer0 caches just for a few hours or days.
 
-#### Whitelisting Overview
+#### Allowlist Overview
 
 When you run your site on {{ PRODUCT_NAME }}, all requests come in through four IP addresses, and servers are programmed to interpret this as a DDoS attack. At this point, the server either blocks or rate-limits the requests. In either case, timeouts occur and 539 errors are returned. 
 
 A typical pattern is that your site works fine for a few days after deploying to {{ PRODUCT_NAME }}, then your server starts interpreting the requests as a DDoS attack.
 
-To prevent this scenario, you must configure your server with whitelisted  {{ PRODUCT_NAME }}  IP addresses. See “IP Whitelist” in [Network Configuration](/guides/production).
+To prevent this scenario, you must configure your server with allowlisted  {{ PRODUCT_NAME }}  IP addresses. See “IP Whitelist” in [Network Configuration](/guides/production).
 
 ### Procedure
 
 When you are testing a web page, you might encounter 539 status code errors. You might also see the errors in logs if you signed up for Log Shipping.
 
-1. Open your project in {{ PRODUCT_NAME }}, then drill down to the deployment ![{"color": "black", "background-color":"red", "border-radius": "15px"}](/ '&nbsp;1&nbsp;') that is experiencing the 539 errors.
+1. Open your project in {{ PRODUCT_NAME }}, then drill down to the deployment ![{"color": "black", "backgroundColor":"red", "borderRadius": "15px"}](/ '&nbsp;1&nbsp;') that is experiencing the 539 errors.
 
 ![](/images/539-errors/deployments-tab.png?width=1000)
 
 
-2. Click the _SERVER_ tab header ![{"color": "black", "background-color":"red", "border-radius": "15px"}](/ '&nbsp;1&nbsp;') at the bottom of the page, then click the _Resume logs_ arrow ![{"color": "black", "background-color":"red", "border-radius": "15px"}](/ '&nbsp;2&nbsp;') or the _Logging is paused_ link ![{"color": "black", "background-color":"red", "border-radius": "15px"}](/ '&nbsp;3&nbsp;') to resume logging.
+2. Click the _SERVER_ tab header ![{"color": "black", "backgroundColor":"red", "borderRadius": "15px"}](/ '&nbsp;1&nbsp;') at the bottom of the page, then click the _Resume logs_ arrow ![{"color": "black", "backgroundColor":"red", "borderRadius": "15px"}](/ '&nbsp;2&nbsp;') or the _Logging is paused_ link ![{"color": "black", "backgroundColor":"red", "borderRadius": "15px"}](/ '&nbsp;3&nbsp;') to resume logging.
 
 ![](/images/539-errors/resume-logging.png?width=1000)
 
@@ -229,7 +229,7 @@ When you are testing a web page, you might encounter 539 status code errors. You
 If you see 539 errors, the issue could be any of the following:
 * An error in your SSR code
 * A problem with the backend server
-* A white listing error
+* An allowlist error
 
 #### Good Request Example
 
@@ -262,7 +262,7 @@ _Note:_ There is no response from the SSR code to the browser as shown in line 4
 
 #### Backend Server Error
 
-If a request looks like the following, your backend server is either down, overloaded or has a whitelisting error.
+If a request looks like the following, your backend server is either down, overloaded or has an allowlist error.
 
 ![](/images/539-errors/backend-server-error.png?width=1000)
 
@@ -274,19 +274,19 @@ If a request looks like the following, your backend server is either down, overl
 
 _Note:_ If line 3:
 * Ends in a status code other than `200`, then the SSR code received a non-`200` code from the backend server.
-* Does not end in a status code at all, then the SSR did not receive a response from the backend and the problem can be either a whitelisting error or a timeout error. See "Distinguishing a Whitelisting Error from a Timeout Error." See [Distinguishing a Whitelisting Error from a Timeout Error](#section_distinguishing_a_whitelisting_error_from_a_timeout_error).
+* Does not end in a status code at all, then the SSR did not receive a response from the backend and the problem can be either an allowlist error or a timeout error. See "Distinguishing an Allow List Error from a Timeout Error." See [Distinguishing an Allowlist Error from a Timeout Error](#section_distinguishing_an_allowlist_error_from_a_timeout_error).
 
-##### Distinguishing a Whitelisting Error from a Timeout Error
+##### Distinguishing an Allowlist Error from a Timeout Error
 
-To determine if there is a whitelisting error, do the following:
+To determine if there is an allowlist error, do the following:
 
-1. Expand line 3 (request from your SSR code to your backend server) and select `COPY AS CURL` ![{"color": "black", "background-color":"red", "border-radius": "15px"}](/ '&nbsp;1&nbsp;').
+1. Expand line 3 (request from your SSR code to your backend server) and select `COPY AS CURL` ![{"color": "black", "backgroundColor":"red", "borderRadius": "15px"}](/ '&nbsp;1&nbsp;').
 
 ![](/images/539-errors/copy-as-curl.png?width=1000)
 
 2. Run the `curl` command. (The command runs the same request that the SSR code made to the backend server, but from your local machine.)
 
-The outcome will be either [SSR code error](#section_SSR_Code_Error) or a [whitelisting error](#section_Whitelisting_Error).
+The outcome will be either [SSR code error](#section_SSR_Code_Error) or an [allowlist error](#section_allowlist_Error).
 
 
 ###### SSR Code Error
@@ -295,7 +295,7 @@ If the command fails or does not respond, there is an error in your code, most l
 
 Troubleshoot your code to find and fix the error.
 
-###### Whitelisting Error
+###### Allowlist Error
 
-If the command succeeds and finishes quickly, it is probably a whitelisting error.
-Contact your operations team and ask them to whitelist the IP addresses in that are listed in “IP Whitelist” in [Network Configuration](/guides/production#section_network_configuration)
+If the command succeeds and finishes quickly, it is probably an allowlist error.
+Contact your operations team and ask them to add the IP addresses in “IP Whitelist” in [Network Configuration](/guides/production#section_network_configuration) to your server's IP allowlist.

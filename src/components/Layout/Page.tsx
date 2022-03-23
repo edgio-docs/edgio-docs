@@ -36,11 +36,7 @@ const StyledMainPage = styled.div`
         transform: translateX(0);
       }
 
-      @media (max-width: 1000px) {
-        --sidebar-width: 240px;
-      }
-
-      @media (max-width: 810px) {
+      @media (max-width: 850px) {
         position: fixed;
         transform: translateX(calc(-1 * var(--sidebar-width)));
       }
@@ -63,7 +59,7 @@ const StyledMainPage = styled.div`
 `;
 
 export function Page({children}: PageProps) {
-  const isMobile = useIsMobile(810);
+  const isMobile = useIsMobile(850);
   const [showSidebar, setShowSidebar] = React.useState(isMobile);
   const router = useRouter();
 

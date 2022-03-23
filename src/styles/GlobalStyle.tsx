@@ -163,6 +163,7 @@ code, pre {
 code {
   white-space: normal;
   font-weight: 600;
+  display: inline-block;
 }
 
 #dark-theme-switcher {

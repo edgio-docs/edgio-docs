@@ -220,8 +220,9 @@ __Note:__ If you already have an existing certificate, you can use it by skippin
 
    You can also verify the CNAME records using the command line:
 
-   ```
-   # Run the following 'dig' command to verify the presence of the '_acme-challenge.' CNAME :
+   ```bash
+   # Run the following 'dig' command to verify the presence
+   # of the '_acme-challenge.' CNAME :
    dig +short cname _acme-challenge.<your-domain>
 
    # For example:
@@ -230,7 +231,7 @@ __Note:__ If you already have an existing certificate, you can use it by skippin
 
    Expected result for the DNS query:
 
-   ```
+   ```bash
    _acme-challenge.xdn-validation.com.
    ```
 
@@ -244,6 +245,7 @@ __Note:__ If you already have an existing certificate, you can use it by skippin
    If you have been previously using _Let's Encrypt_ to generate certificates for this domain, please verify that there are no remaining TXT records named `_acme-challenge.mywebsite.xyz`.
 
    __Note:__ You can read more about the `_acme-challenge.` process by visiting [_Let's Encrypt_ Website](https://letsencrypt.org/docs/challenge-types/#dns-01-challenge)
+
 
 4. Once the requirements above are met, you can generate the certificate using the [{{ PRODUCT_NAME }} Developer Console]({{ APP_URL }}):
 

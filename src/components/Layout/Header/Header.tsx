@@ -149,7 +149,7 @@ const StyledHeader = styled.header`
     display: none;
   }
 
-  @media (max-width: 810px) {
+  @media (max-width: 850px) {
     #desktop {
       display: none;
     }
@@ -300,7 +300,8 @@ export default function Header({
           <button
             type="button"
             className="mobile-menu"
-            id="dark-theme-switcher">
+            id="dark-theme-switcher"
+            onClick={() => setShowSidebar(!showSidebar)}>
             <IconHamburger />
           </button>
           <button

@@ -161,7 +161,7 @@ code, pre {
 }
 
 code {
-  white-space: nowrap;
+  white-space: normal;
   font-weight: 600;
 }
 

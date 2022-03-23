@@ -286,7 +286,7 @@ To determine if there is a whitelisting error, do the following:
 
 2. Run the `curl` command. (The command runs the same request that the SSR code made to the backend server, but from your local machine.)
 
-The outcome will be either [SSR code error](#section_SSR_Code_Error) or a [whitelisting error](#section_SSR_Whitelisting_Error).
+The outcome will be either [SSR code error](#section_SSR_Code_Error) or a [whitelisting error](#section_Whitelisting_Error).
 
 
 ###### SSR Code Error
@@ -295,7 +295,7 @@ If the command fails or does not respond, there is an error in your code, most l
 
 Troubleshoot your code to find and fix the error.
 
-###### SSR Whitelisting Error
+###### Whitelisting Error
 
 If the command succeeds and finishes quickly, it is probably a whitelisting error.
 Contact your operations team and ask them to whitelist the IP addresses in that are listed in “IP Whitelist” in [Network Configuration](/guides/production#section_network_configuration)

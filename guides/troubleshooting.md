@@ -206,11 +206,9 @@ _Note:_ a variant on caching is ISR where Layer0 caches just for a few hours or 
 
 #### Whitelisting Overview
 
-If you were to deploy your site not on {{ PRODUCT_NAME }}, you would have end-user requests from many different IP addresses. This is fine because your server would simply serve the requests.
+When you run your site on {{ PRODUCT_NAME }}, all requests come in through four IP addresses, and servers are programmed to interpret this as a DDoS attack. At this point, the server either blocks or rate-limits the requests. In either case, timeouts occur and 539 errors are returned. 
 
-However, because you are running your site on {{ PRODUCT_NAME }}, all requests come in through four IP addresses, and servers are programmed to interpret this as some kind of DDoS attack. At this point, the server either blocks or rate-limits the requests. In either case, timeouts occur and 539 errors are returned. 
-
-Usually the pattern is that your site works fine for a few days after deploying to {{ PRODUCT_NAME }}, then your server starts interpreting the requests as a DDoS attack.
+A typical pattern is that your site works fine for a few days after deploying to {{ PRODUCT_NAME }}, then your server starts interpreting the requests as a DDoS attack.
 
 To prevent this scenario, you must configure your server with whitelisted  {{ PRODUCT_NAME }}  IP addresses. See “IP Whitelist” in [Network Configuration](/guides/production).
 
@@ -218,17 +216,17 @@ To prevent this scenario, you must configure your server with whitelisted  {{ P
 
 When you are testing a web page, you might encounter 539 status code errors. You might also see the errors in logs if you signed up for Log Shipping.
 
-1. Open your project in {{ PRODUCT_NAME }}, then drill down to the deployment ![{"color": "red"}](/ '(1)') that is experiencing the 539 errors.
+1. Open your project in {{ PRODUCT_NAME }}, then drill down to the deployment ![{"color": "black", "background-color":"red", "border-radius": "15px"}](/ '&nbsp;1&nbsp;') that is experiencing the 539 errors.
 
 ![](/images/539-errors/deployments-tab.png?width=1000)
 
 
-2. Click the _SERVER_ tab header ![{"color": "red"}](/ '(1)') at the bottom of the page, then click the _Resume logs_ arrow ![{"color": "red"}](/ '(2)') or the _Logging is paused_ link ![{"color": "red"}](/ '(3)') to resume logging.
+2. Click the _SERVER_ tab header ![{"color": "black", "background-color":"red", "border-radius": "15px"}](/ '&nbsp;1&nbsp;') at the bottom of the page, then click the _Resume logs_ arrow ![{"color": "black", "background-color":"red", "border-radius": "15px"}](/ '&nbsp;2&nbsp;') or the _Logging is paused_ link ![{"color": "black", "background-color":"red", "border-radius": "15px"}](/ '&nbsp;3&nbsp;') to resume logging.
 
 ![](/images/539-errors/resume-logging.png?width=1000)
 
 
-If you see 539 errors, the issue might be any of the following:
+If you see 539 errors, the issue could be any of the following:
 * An error in your SSR code
 * A problem with the backend server
 * A white listing error
@@ -239,52 +237,50 @@ Before continuing, it is helpful to see what a good request and response flow lo
 
 ![](/images/539-errors/good-request.png?width=1000)
 
-| Item | Description |
+| Line | Description |
 | -------------- | -------------- |
-| 1 | Summary line |
-| 2 | Request from Layer0 to your SSR code. It ends with a `200`, indicating success. |
-| 3 | The request from your SSR code to your backend server. If it ends with a `<status code> in XXms`, then the SSR received a response from your backend server. In this example the HTTP status code was `200`,  indicating success. If the request does not end with a `<status code> in XXms`, there was a problem with the request to your backend server. |
-| 4 | This line shows the response from the SSR to the browser, and ends with the status code for the response. If this line is present, the SSR code ran to completion. If this line is missing there was a problem (see [Error in SSR Code](#section_error_in_ssr_code).) |
+| 1 | Summary line. |
+| 2 | The request from Layer0 to your SSR code. The line ends with a `200`, indicating success. |
+| 3 | The request from your SSR code to your backend server. If this line ends with a `<status code> in XXms`, then the SSR received a response from your backend server. In this example the HTTP status code was `200`,  indicating success. If the line does not end with a `<status code> in XXms`, there was a problem with the request to your backend server (see [Backend Server Error](#section_backend_server_error)). |
+| 4 | The response from the SSR to the browser, and ends with the status code for the response. If this line is present, the SSR code ran to completion. If this line is missing there was a problem (see [Error in SSR Code](#section_error_in_ssr_code)). |
 
 #### Error in SSR Code
 
-If a request looks like the following, your SSR code contains some kind of error.
+If a request looks like the following, your SSR code contains an error.
 
 ![](/images/539-errors/SSR-code-error.png?width=1000)
 
-| Item | Description |
+| Line | Description |
 | -------------- | -------------- |
-| 1 | Summary line |
-| 2 | Request from the Layer0 edge to your SSR code. It ends with a `200`. |
-| 3 | The request from your SSR code to your backend server. It ends with a `200`. |
+| 1 | Summary line. |
+| 2 | The request from the Layer0 edge to your SSR code. The line ends with a `200`. |
+| 3 | The request from your SSR code to your backend server. The line ends with a `200`. |
 
-_Note:_ There is no response from the SSR code to the browser as shown in [Good Request Example](#section_good_request_example). Troubleshoot your code to find and fix the error. Common causes are that your SSR code:
+_Note:_ There is no response from the SSR code to the browser as shown in line 4 in [Good Request Example](#section_good_request_example). Troubleshoot your code and fix the error. Common errors are that your SSR code:
 * Took too long to return a response
 * Threw an exception and never returned a response
 
 #### Backend Server Error
 
-If a request looks like the following, your backend server is probably either overloaded or is down.
+If a request looks like the following, your backend server is either down, overloaded or has a whitelisting error.
 
 ![](/images/539-errors/backend-server-error.png?width=1000)
 
-| Item | Description |
+| Line | Description |
 | -------------- | -------------- |
 |1| Summary line. |
-|2| Request from the Layer0 edge to your SSR code. |
+|2| The request from the Layer0 edge to your SSR code. |
 |3| The request from your SSR code to your backend server. |
 
-_Note:_ 
-
-If line 3:
+_Note:_ If line 3:
 * Ends in a status code other than `200`, then the SSR code received a non-`200` code from the backend server.
-* Does not end in a status code at all, then the SSR did not receive a response from the backend and the problem can be either a white list error or a timeout error. See "Distinguishing a Whitelisting Error from a Timeout Error."
+* Does not end in a status code at all, then the SSR did not receive a response from the backend and the problem can be either a whitelisting error or a timeout error. See "Distinguishing a Whitelisting Error from a Timeout Error." See [Distinguishing a Whitelisting Error from a Timeout Error](#section_distinguishing_a_whitelisting_error_from_a_timeout_error).
 
 ##### Distinguishing a Whitelisting Error from a Timeout Error
 
 To determine if there is a whitelisting error, do the following:
 
-1. Expand line ![{"color": "red"}](/ '(3)') (request from your SSR code to your backend server) and select `COPY AS CURL` ![{"color": "red"}](/ '(1)').
+1. Expand line 3 (request from your SSR code to your backend server) and select `COPY AS CURL` ![{"color": "black", "background-color":"red", "border-radius": "15px"}](/ '&nbsp;1&nbsp;').
 
 ![](/images/539-errors/copy-as-curl.png?width=1000)
 
@@ -295,7 +291,7 @@ The outcome will be either [SSR code error](#section_SSR_Code_Error) or a [white
 
 ###### SSR Code Error
 
-If the command fails or does not respond, there is an error with your code, most likely a badly formed request.
+If the command fails or does not respond, there is an error in your code, most likely a badly formed request.
 
 Troubleshoot your code to find and fix the error.
 

@@ -18,7 +18,6 @@ const StyledCodeWrap = styled.span`
     overflow-wrap: break-word;
     font-variant-ligatures: none;
     margin: 0;
-    overflow-x: auto;
     text-align: left;
   }
 

@@ -1,6 +1,6 @@
 import CodeLanguage from 'components/getLanguage';
-import React from 'react';
-import styled from 'styled-components';
+import React, {useEffect, useState} from 'react';
+import styled, {StyledComponent} from 'styled-components';
 import CodeBlock from './CodeBlock';
 import getLanguage from '../getLanguage';
 
@@ -28,14 +28,12 @@ const StyledCustomPre = styled.div`
     white-space: pre;
     word-break: break-all;
     hyphens: none;
-    color: #ffffff;
-    line-height: 1.9;
     tab-size: 4;
-    font-size: 13px;
-    font-weight: 600;
+    font-size: 14px;
     font-family: 'IBM Plex Mono';
   }
 
+  /*
   .hljs-comment,
   .hljs-quote {
     color: #7e7887;
@@ -107,7 +105,7 @@ const StyledCustomPre = styled.div`
 
   .hljs-strong {
     font-weight: bold;
-  }
+  } */
 
   .code-language {
     padding: 0 0.5em;

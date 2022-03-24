@@ -1,15 +1,11 @@
 // This file was automatically added by layer0 init.
 // You should commit this file to source control.
-const { withLayer0, withServiceWorker } = require('@layer0/next/config');
+const {withLayer0, withServiceWorker} = require('@layer0/next/config');
 
 const mdConstants = require('./constants');
 
-/*
- * Copyright (c) Facebook, Inc. and its affiliates.
- */
-
 const path = require('path');
-const { remarkPlugins } = require('./plugins/markdownToHtml');
+const {remarkPlugins} = require('./plugins/markdownToHtml');
 
 const _preLayer0Export = {
   pageExtensions: ['jsx', 'js', 'ts', 'tsx', 'mdx', 'md'],
@@ -17,10 +13,10 @@ const _preLayer0Export = {
     plugins: true,
     scrollRestoration: true,
   },
-  webpack: (config, { dev, isServer, ...options }) => {
+  webpack: (config, {dev, isServer, ...options}) => {
     // IMPORTANT: https://www.npmjs.com/package/webpack-bundle-analyzer
     if (process.env.ANALYZE) {
-      const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
+      const {BundleAnalyzerPlugin} = require('webpack-bundle-analyzer');
       config.plugins.push(
         new BundleAnalyzerPlugin({
           analyzerMode: 'static',

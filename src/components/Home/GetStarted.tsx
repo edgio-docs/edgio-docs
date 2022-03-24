@@ -112,21 +112,21 @@ export default function GetStarted({children}: {children: React.ReactNode}) {
           icon={IconWebAppCDN}
           title="WebApp CDN"
           subtitle="Deploy your web application and start seeing the performance benefits with the Layer0 Edge Network."
-          href="/"
+          href="/guides/webapp_cdn_getting_started"
           hrefText="Deploy now"
         />
         <GetStartedCard
           icon={IconJamstack}
           title="Jamstack"
           subtitle="Deploy static and dynamic Jamstack sites that run on Layer0’s severless functions."
-          href="/"
+          href="/guides/jamstack_getting_started"
           hrefText="View Supported Frameworks"
         />
         <GetStartedCard
           icon={IconWebAppCDN}
           title="GraphQL CDN"
           subtitle="Scale and secure your GraphQL API using the Layer0 global CDN and Edge JS."
-          href="/"
+          href="/guides/graphql"
           hrefText="1-click Deploy"
         />
       </div>

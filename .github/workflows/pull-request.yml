@@ -1,0 +1,23 @@
+name: Comment preview deployment
+
+on:
+  pull_request:
+    types: [opened]
+
+jobs:
+  comment_preview:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Get branch name
+        id: branch-name
+        uses: tj-actions/branch-names@v5.1
+      - name: Comment preview deployment URL
+        uses: actions/github-script@0.3.0
+        env:
+          BRANCH_NAME: ${{ steps.branch-name.outputs.current_branch }}
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const { issue: { number: issue_number }, repo: { owner, repo }  } = context;
+            github.issues.createComment({ issue_number, owner, repo, body: `Preview: https://layer0-docs-xdn-docs-${process.env.BRANCH_NAME}.layer0-docs.layer0-perma.link/` });

@@ -178,7 +178,7 @@ npm run build
 Run {{ PRODUCT_NAME }} on your local machine:
 
 ```bash
-npm run {{ CLI_NAME }}:dev
+npm run dev
 ```
 
 Load the site http://127.0.0.1:3000

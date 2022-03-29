@@ -12,6 +12,7 @@ Using the Router, you can:
 - Configure multiple destinations for split testing
 
 ## Configuration
+
 You define routes for {{ PRODUCT_NAME }} using the `routes.js` file.
 
 Before continuing, if you have not already initialized your project with {{ PRODUCT_NAME }}, do so using the instructions in [WebApp CDN](/guides/webapp_cdn_getting_started).
@@ -105,19 +106,20 @@ new Router()
 
 You can find detailed descriptions of these APIs in the `{{ PACKAGE_NAME }}/core` [documentation](/docs/api/core/classes/_router_responsewriter_.responsewriter.html).
 
-#### Embedded Values
+### Embedded Values
 
 You can inject values from the request or response into headers or cookies as template literals using the `${value}` format. For example: `setResponseHeader('original-request-path', '${path}')` would add an `original-request-path` response header whose value is the request path.
 
-| Value           | Embedded value         | Description                                                                                                                   |
-| --------------- | ---------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
-| HTTP method     | `${method}`            | The value of the HTTP method used for the request (e.g. `GET`)                                                                |
-| URL             | `${url}`               | The complete URL path including any query strings (e.g. `/search?query=docs`). Protocol, hostname, and port are not included. |
-| Path            | `${path}`              | The URL path excluding any query strings (e.g. `/search`)                                                                     |
-| Query string    | `${query:<name>}`      | The value of the `<name>` query string or empty if not available.                                                             |
-| Request header  | `${req:<name>}`        | The value of the `<name>` request header or empty if not available.                                                           |
-| Request cookie  | `${req:cookie:<name>}` | The value of the `<name>` cookie in `cookie` request header or empty if not available.                                        |
-| Response header | `${res:<name>}`        | The value of the `<name>` response header or empty if not available.                                                          |
+| Value                   | Embedded value         | Description                                                                                                                   |
+| ----------------------- | ---------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
+| HTTP method             | `${method}`            | The value of the HTTP method used for the request (e.g. `GET`)                                                                |
+| URL                     | `${url}`               | The complete URL path including any query strings (e.g. `/search?query=docs`). Protocol, hostname, and port are not included. |
+| Path                    | `${path}`              | The URL path excluding any query strings (e.g. `/search`)                                                                     |
+| Query string            | `${query:<name>}`      | The value of the `<name>` query string or empty if not available.                                                             |
+| Request header          | `${req:<name>}`        | The value of the `<name>` request header or empty if not available.                                                           |
+| Request cookie          | `${req:cookie:<name>}` | The value of the `<name>` cookie in `cookie` request header or empty if not available.                                        |
+| Request named parameter | `${req:param:<name>}`  | The value of the `<name>` param defined in the route or empty if not available.                                               |
+| Response header         | `${res:<name>}`        | The value of the `<name>` response header or empty if not available.                                                          |
 
 ## Route Pattern Syntax
 
@@ -395,7 +397,7 @@ The `graphqlOperation` function is provided to simplify matching of common Graph
 
 See the guide on [Implementing GraphQL Routing](/guides/graphql) in your project.
 
-## Request Handling 
+## Request Handling
 
 The second argument to routes is a function that receives a `ResponseWriter` and uses it to send a response. Using `ResponseWriter` you can:
 

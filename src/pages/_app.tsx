@@ -7,7 +7,7 @@ import '../styles/algolia.css';
 import GlobalStyle from '../styles/GlobalStyle';
 import '../styles/nprogress.css';
 import {ThemeProvider} from 'styled-components';
-import '../styles/code-syntax/codepen-embed.css';
+import '../styles/code-syntax.css';
 
 // -> Used for the loader when switching between pages
 Router.events.on('routeChangeStart', () => NProgress.start());

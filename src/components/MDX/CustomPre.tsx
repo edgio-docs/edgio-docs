@@ -120,6 +120,7 @@ const StyledCustomPre = styled.div`
     gap: 4px;
     border-color: #356369;
     background: #242424;
+    /* background: rgb(30, 29, 30) none repeat scroll 0% 0%; */
   }
 
   .code-block__header {

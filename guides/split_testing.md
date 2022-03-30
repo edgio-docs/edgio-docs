@@ -9,7 +9,7 @@ You can perform two kinds of split tests with {{ PRODUCT_NAME }}:
 1. A/B test multiple implementations of the same site
 2. Split traffic between multiple sites - This is commonly used to test a new experience against a legacy one.
 
-## A/B Testing Multiple Implementations of the Same Site
+## A/B Testing Multiple Implementations
 
 To A/B test multiple implementations of the same site, simply deploy each implementation to a separate [environment](environments); then [configure the rules for splitting traffic using the {{ PRODUCT_NAME }} Developer Console](#section_configuring_the_split_test).
 
@@ -21,46 +21,38 @@ To use CI to deploy A/B tests we recommend that you:
 
 ## Splitting Traffic between Multiple Sites
 
-To split traffic between multiple sites, first add a backend for each site to `{{ CONFIG_FILE }}`. For example, to split traffic between a new experience hosted on `origin.my-site.com` and a legacy experience hosted on `legacy-origin.my-site.com`:
+To split traffic between multiple sites, create an environment for each site with the backend set to that site, deploy the code to each environment; then [configure the rules for splitting traffic using the {{ PRODUCT_NAME }} Developer Console](#section_configuring_the_split_test).
+
+For example, to use CI to deploy a split between a `new` site and a `legacy` site we recommend that you:
+
+1. Set up separate source control for the new experience and the legacy experience, for example `new` and `legacy`.
+2. Create environments called `production` and `legeacy` in the {{ PRODUCT_NAME }} Developer Console.
+3. Set the backends in the  `{{ CONFIG_FILE }}` for each code base to point to their specific backend (see below.)
+4. Configure CI to deploy the `new` code to the `production` environment and the `legacy` code to the `legacy` environment. (Using `{{ CLI_NAME }} deploy --environment={environment name}`).
 
 ```js
 // {{ CONFIG_FILE }}
+// New site backend
 module.exports = {
   backends: {
-    legacy: {
-      domainOrIp: 'legacy-origin.my-site.com',
-    },
-    new: {
+    default: {
       domainOrIp: 'origin.my-site.com',
     },
   },
 }
 ```
 
-Then, add a `destination` for each site to your router. For example,
-
 ```js
-// routes.js
-const { Router } = require('{{ PACKAGE_NAME }}/core/router')
-
-module.exports = new Router()
-  .destination(
-    'legacy_experience', // displayed in the destination dropdown in the traffic splitting section of your environment configuration in the {{ PRODUCT_NAME }} Developer Console
-    new Router()
-      // additional routing rules for the legacy experience go here
-      .fallback(({ proxy }) => proxy('legacy')),
-  )
-  .destination(
-    'new_experience', // displayed in the destination dropdown in the traffic splitting section of your environment configuration in the {{ PRODUCT_NAME }} Developer Console
-    new Router()
-      // additional routing rules for the new experience go here
-      .fallback(({ proxy }) => proxy('new')),
-  )
+// {{ CONFIG_FILE }}
+// Legacy site backend
+module.exports = {
+  backends: {
+    default: {
+      domainOrIp: 'legacy-origin.my-site.com',
+    },
+  },
+}
 ```
-
-Once you have made these changes, deploy your site using `{{ CLI_NAME }} deploy --environment={my production environment name}`, then [configure the rules for splitting traffic using the {{ PRODUCT_NAME }} Developer Console](#section_configuring_the_split_test).
-
-After deploying a router with multiple destinations, all requests will be sent to the first destination until you have configured the split test in the {{ PRODUCT_NAME }} Developer Console.
 
 ## Configuring the Split Test
 
@@ -105,6 +97,16 @@ The experience the user sees is determined by the traffic split percentage you s
 ## Identifying the Experience on the Client
 
 When a split test is active, {{ PRODUCT_NAME }} will automatically set a `{{ COOKIE_PREFIX }}_destination` cookie to the name of the chosen destination. You can access this value in the browser and use it to report the split test experience assignment to your analytics.
+
+## Security, Redirects and Split Tests
+
+Each environment defines security rules, redirect rules, and split test rules. When traffic is processed by the {{ PRODUCT_NAME }} servers, the `host` header is used to determine which environment rules are executed. Normally when you have multiple environments you access each of them using different `host` headers. E.g. `www.mysite.com` to access a `production` environment and `new.mysite.com` to access the `new` environment. In this scenario each environment can have its own security rules and redirect rules. Requests arriving at `www.mysite.com` execute the rules in the `production` environment. Requests arriving at `new.mysite.com` execute the rules in the `new` environment.
+
+But when split testing is enabled, all the traffic arrives using the same `host` header. In this case, only the rules for that environment are executed. Using the above example, when a split test is setup on the `production` environment that splits traffic to `production` or `new` all traffic arriving at `www.mysite.com` executes the `production` security, redirect, and split testing rules. Even if the result of the split test is to use the `new` environment, the security, redirect, and split testing rules of the `new` environment are *not* executed. Traffic arriving at `new.mysite.com` bypasses the split test rules on the `production` environment, so it executes the `new` environment's rules normally.
+
+## Metrics and Cache Purging with Split Tests
+
+When split tests are enabled, all metrics and caching are recorded under the environment that is the result of the split test. Using the above example, all traffic arrives on `www.mysite.com` but to see the traffic and caching metrics for requests split test to the `new` environment, you need to view those graphs in `new` environment in {{ PRODUCT_NAME }} Developer Console. This is also true for cache purging. To purge traffic that was split to the `new` environment you use the cache purge button in the `new` environment in {{ PRODUCT_NAME }} Developer Console. If want to purge the entire cache during a split you need to purge both the `production` cache and the `new` cache.
 
 ## Compatibility with A/B Testing Tools
 

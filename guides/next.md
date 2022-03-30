@@ -435,3 +435,18 @@ A working example app can be found [here](https://github.com/layer0-docs/layer0-
 As of **v3.16.6**, Next.js apps built with layer0 will use the `experimental-serverless-trace` target by default. The serverless target does not support most modern Next.js features like preview mode, revalidate, fallback. For backwards compatibility reasons, the serverless target will still be supported.
 
 At build time, layer0 will run a trace on your application code and find only the required modules needed to run your production application, then add those to the deployment bundle.
+
+## Next.js version 12 and Next.js Middleware (BETA)
+
+As of Next.js version 12 the `serverless` and `experimental-serverless-trace` targets have been deprecated and no new features will be supported for these targets. This includes Next.js Middleware (beta) and React component streaming (alpha). The `@layer0/next` connector has historically utilized the `serverless` and `experimental-serverless-trace` targets to create a suitable build output for a serverless runtime.
+
+As of **vTODO** layer0 packages, Next.js apps using Next.js versions 12 or higher can opt into using the default `server` target by explicitly setting `target: 'server'` in the `next.config.js` file. The `@layer0/next` connector will then create a minimal server bundle with requests delegated to a Next.js server instance instead of rendering via serverless page functions. When opting into the `server` target you can use Next.js Middleware.
+
+Future versions of layer0 when using Next.js 12 or higher will utilize the `server` target by default.
+
+### Next.js 12 with server target deprecations
+
+`renderNextPage` with specifying a page to render is deprecated when using Next.js 12+ and the `server` target. Requests are delegated to a Next.js server instance which will handle determining which page to render based on the request. Prior use cases of `renderNextPage` should now be achieved via using Next.js redirects and rewrites.
+### Middleware caveats
+
+When using Next.js Middleware it should be noted that the middleware functions are only executed at the serverless layer, ie after edge cache. Middleware that you want to execute on each request needs to have caching disabled explicitly for the route that the middleware is configured to run for. Some Middleware use cases such as rewriting the request to another route would be fine to cache. These use cases need to be evaluated on a per route basis with caching enabled/disabled based on the desired result.

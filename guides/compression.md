@@ -11,9 +11,9 @@ When requesting data via HTTP from the {{ PRODUCT_NAME }} servers, browsers incl
 * `gzip` for all versions
 * `br` (Brotli) for versions >= `4.11.0`
 
-## Enabling Brotli (`br`) compression
+## Enabling Brotli compression
 
-To enable Brotli compression you need to ensure your project uses a version of `@{{ PACKAGE_NAME }}` >= `4.11.0`. To upgrade `@{{ PACKAGE_NAME }}` to the latest version in your project use `{{ CLI }} use latest` and redeploy your project.
+To enable Brotli (`br`) compression you need to ensure your project uses a version of `{{ PACKAGE_NAME }}` >= `4.11.0`. To upgrade `{{ PACKAGE_NAME }}` to the latest version in your project use `{{ CLI_NAME }} use latest` and redeploy your project.
 
 
 ## What is Compressed?
@@ -21,7 +21,7 @@ To enable Brotli compression you need to ensure your project uses a version of `
 When {{ PRODUCT_NAME }} servers receive a request they inspect the `accept-encoding` header. The following logic is used to determine response compression:
 
 * If the response is not a [compressible type](#compressible-types), return uncompressed.
-* Else if `br` is found and the `@{{ PACKAGE_NAME }}` version is >= `4.11.0` then compress the response using Brotli.
+* Else if `br` is found and the `{{ PACKAGE_NAME }}` version is >= `4.11.0` then compress the response using Brotli.
 * Else if `gzip` is found, then compress the response using gzip.
 * Else no compression is used.
 

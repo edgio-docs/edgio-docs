@@ -167,3 +167,135 @@ module.exports = {
 ```
 
 **Note:** The reason that application level source maps are not enabled by default is that they can be quite large and cause the serverless bundle to be larger than the 50MB limit.
+
+## Troubleshooting 539 Status Codes
+
+### Overview 
+
+539 status codes (see [Status Codes](/guides/status_codes)) are timeout errors, which can be:
+* An error in your SSR code
+* A backend error (server overloaded or offline)
+* An allowlist (whitelist) issue
+
+#### Assumptions
+
+You have deployed your site to Layer0. All your website code resides with Layer0 as SSR (server-side rendering) code. Your backend (server) simply contains data that is needed by your website code to construct a page and return it to a requesting client or browser.
+See [Architecture](/guides/overview#section_architecture) for more information.
+
+#### Typical Request Flows
+
+Following are two request flows that are helpful as background to troubleshooting information.
+
+##### Cached Assets Served
+
+1. A requesting client sends a request to Layer0 for an asset. 
+2. The Layer0 edge finds the asset in cache and returns it to the client.
+
+##### Assets Served via Customer SSR Code and Customer Backend
+
+This flow is where 539 errors might occur.
+
+1. A requesting client sends a request to Layer0 for an asset. 
+2. {{ PRODUCT_NAME }} does not find it in its cache and examines routing rules.
+2. {{ PRODUCT_NAME }} sends requests to SSR code.
+2. The SSR code makes calls to the customer backend to get data needed for the page.
+2. The SSR assembles the page and sends it to the {{ PRODUCT_NAME }} edge.
+2. The {{ PRODUCT_NAME }} edge caches the page and returns it to the client.
+
+_Note:_ a variant on caching is ISR where Layer0 caches just for a few hours or days.
+
+#### Allowlist Overview
+
+When you run your site on {{ PRODUCT_NAME }}, all requests come in through four IP addresses, and servers are programmed to interpret this as a DDoS attack. At this point, the server either blocks or rate-limits the requests. In either case, timeouts occur and 539 errors are returned. 
+
+A typical pattern is that your site works fine for a few days after deploying to {{ PRODUCT_NAME }}, then your server starts interpreting the requests as a DDoS attack.
+
+To prevent this scenario, you must configure your server with allowlisted  {{ PRODUCT_NAME }}  IP addresses. See “IP Whitelist” in [Network Configuration](/guides/production).
+
+### Procedure
+
+When you are testing a web page, you might encounter 539 status code errors. You might also see the errors in logs if you signed up for Log Shipping.
+
+1. Open your project in {{ PRODUCT_NAME }}, then drill down to the deployment ![{"color": "black", "backgroundColor":"red", "borderRadius": "15px"}](/ '&nbsp;1&nbsp;') that is experiencing the 539 errors.
+
+![](/images/539-errors/deployments-tab.png?width=1000)
+
+
+2. Click the _SERVER_ tab header ![{"color": "black", "backgroundColor":"red", "borderRadius": "15px"}](/ '&nbsp;1&nbsp;') at the bottom of the page, then click the _Resume logs_ arrow ![{"color": "black", "backgroundColor":"red", "borderRadius": "15px"}](/ '&nbsp;2&nbsp;') or the _Logging is paused_ link ![{"color": "black", "backgroundColor":"red", "borderRadius": "15px"}](/ '&nbsp;3&nbsp;') to resume logging.
+
+![](/images/539-errors/resume-logging.png?width=1000)
+
+
+If you see 539 errors, the issue could be any of the following:
+* An error in your SSR code
+* A problem with the backend server
+* An allowlist error
+
+#### Good Request Example
+
+Before continuing, it is helpful to see what a good request and response flow looks like. A request with no errors has four lines:
+
+![](/images/539-errors/good-request.png?width=1000)
+
+| Line | Description |
+| -------------- | -------------- |
+| 1 | Summary line. |
+| 2 | The request from Layer0 to your SSR code. The line ends with a `200`, indicating success. |
+| 3 | The request from your SSR code to your backend server. If this line ends with a `<status code> in XXms`, then the SSR received a response from your backend server. In this example the HTTP status code was `200`,  indicating success. If the line does not end with a `<status code> in XXms`, there was a problem with the request to your backend server (see [Backend Server Error](#section_backend_server_error)). |
+| 4 | The response from the SSR to the browser, and ends with the status code for the response. If this line is present, the SSR code ran to completion. If this line is missing there was a problem (see [Error in SSR Code](#section_error_in_ssr_code)). |
+
+#### Error in SSR Code
+
+If a request looks like the following, your SSR code contains an error.
+
+![](/images/539-errors/SSR-code-error.png?width=1000)
+
+| Line | Description |
+| -------------- | -------------- |
+| 1 | Summary line. |
+| 2 | The request from the Layer0 edge to your SSR code. The line ends with a `200`. |
+| 3 | The request from your SSR code to your backend server. The line ends with a `200`. |
+
+_Note:_ There is no response from the SSR code to the browser as shown in line 4 in [Good Request Example](#section_good_request_example). Troubleshoot your code and fix the error. Common errors are that your SSR code:
+* Took too long to return a response
+* Threw an exception and never returned a response
+
+#### Backend Server Error
+
+If a request looks like the following, your backend server is either down, overloaded or has an allowlist error.
+
+![](/images/539-errors/backend-server-error.png?width=1000)
+
+| Line | Description |
+| -------------- | -------------- |
+|1| Summary line. |
+|2| The request from the Layer0 edge to your SSR code. |
+|3| The request from your SSR code to your backend server. |
+
+_Note:_ If line 3:
+* Ends in a status code other than `200`, then the SSR code received a non-`200` code from the backend server.
+* Does not end in a status code at all, then the SSR did not receive a response from the backend and the problem can be either an allowlist error or a timeout error. See "Distinguishing an Allow List Error from a Timeout Error." See [Distinguishing an Allowlist Error from a Timeout Error](#section_distinguishing_an_allowlist_error_from_a_timeout_error).
+
+##### Distinguishing an Allowlist Error from a Timeout Error
+
+To determine if there is an allowlist error, do the following:
+
+1. Expand line 3 (request from your SSR code to your backend server) and select `COPY AS CURL` ![{"color": "black", "backgroundColor":"red", "borderRadius": "15px"}](/ '&nbsp;1&nbsp;').
+
+![](/images/539-errors/copy-as-curl.png?width=1000)
+
+2. Run the `curl` command. (The command runs the same request that the SSR code made to the backend server, but from your local machine.)
+
+The outcome will be either [SSR code error](#section_SSR_Code_Error) or an [allowlist error](#section_allowlist_Error).
+
+
+###### SSR Code Error
+
+If the command fails or does not respond, there is an error in your code, most likely a badly formed request.
+
+Troubleshoot your code to find and fix the error.
+
+###### Allowlist Error
+
+If the command succeeds and finishes quickly, it is probably an allowlist error.
+Contact your operations team and ask them to add the IP addresses in “IP Whitelist” in [Network Configuration](/guides/production#section_network_configuration) to your server's IP allowlist.

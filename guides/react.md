@@ -20,6 +20,23 @@ To prepare your React app for deployment on {{ PRODUCT_NAME }}, install the {{ P
 npm install -g {{ PACKAGE_NAME }}/cli
 ```
 
+### New project
+
+This guide will use [Create React App](https://create-react-app.dev/) to generate a project. You can also reference the [example app](https://github.com/layer0-docs/static-react-example) for a complete version of the code.
+
+```
+$ npx create-react-app layer0-cra
+$ cd layer0-cra
+$ {{ CLI_NAME }} init
+# Pick the following options for questions
+# > Add Layer0 to the current app
+# Hostname of origin site > layer0-docs-layer0-examples-api-default.layer0.link
+```
+
+Follow the additional sections below regarding the Create React App setup to finish the project setup.
+
+### Existing project
+
 Then, in the root folder of your project, run:
 
 ```bash
@@ -30,10 +47,173 @@ This will automatically add all of the required dependencies and files to your p
 
 - The `{{ PACKAGE_NAME }}/core` package - Allows you to declare routes and deploy your application on {{ PRODUCT_NAME }}.
 - The `{{ PACKAGE_NAME }}/prefetch` package - Allows you to configure a service worker to prefetch and cache pages to improve browsing speed.
-- The `{{ PACKAGE_NAME }}/react` package - Provides a `Prefetch` component for prefetching pages.
 - `{{ CONFIG_FILE }}` - The main configuration file for {{ PRODUCT_NAME }}.
 - `routes.js` - A default routes file that sends all requests to React. This file can be updated add caching or proxy URLs to a different origin.
-- `sw/service-worker.js` - A service worker implemented using Workbox.
+
+## Configure your project
+
+### {{ PRODUCT_NAME }} Router
+
+Using the `Router` class from `{{ PACKAGE_NAME }}/core`, you'll configure caching for each of your routes, and forward requests to the server module you configured in the previous section using the `proxy` function.
+
+Note: Change `dist` to match whatever your configured output file is.
+
+#### General routes file for React app
+
+```js
+// routes.js
+
+import { Router } from '{{ PACKAGE_NAME }}/core/router'
+import { BACKENDS } from '{{ PACKAGE_NAME }}/core'
+
+new Router()
+  .get('/service-worker.js', ({ serviceWorker }) => {
+    serviceWorker('dist/service-worker.js')
+  })
+  .get('/p/:id', ({ cache }) => {
+    // cache product pages at the edge for 1 day
+    cache({
+      edge: {
+        maxAgeSeconds: 60 * 60 * 24, // 1 day
+      },
+    })
+  })
+  .fallback(({ renderWithApp }) => {
+    // send all requests to the server module configured in {{ CONFIG_FILE }}
+    renderWithApp()
+  })
+```
+
+#### Create React App Example
+
+After following the instructions from above, update your `routes.js` file to match this.
+
+```js
+// routes.js
+
+const { Router } = require('{{ PACKAGE_NAME }}/core/router')
+
+const ONE_HOUR = 60 * 60
+const ONE_DAY = 24 * ONE_HOUR
+const ONE_YEAR = 365 * ONE_DAY
+
+const edgeOnly = {
+  browser: false,
+  edge: { maxAgeSeconds: ONE_YEAR },
+}
+
+const edgeAndBrowser = {
+  browser: { maxAgeSeconds: ONE_YEAR },
+  edge: { maxAgeSeconds: ONE_YEAR },
+}
+
+export default new Router()
+  .prerender([{ path: '/' }])
+  .match('/api/:path*', ({ cache, proxy }) => {
+    cache(edgeAndBrowser)
+    proxy('origin')
+  })
+  .match('/images/:path*', ({ cache, proxy }) => {
+    cache(edgeAndBrowser)
+    proxy('origin')
+  })
+  .match('/service-worker.js', ({ serviceWorker }) => serviceWorker('build/service-worker.js'))
+  // match routes for js/css resources and serve the static files
+  .match('/static/:path*', ({ serveStatic, cache }) => {
+    cache(edgeAndBrowser)
+    serveStatic('build/static/:path*')
+  })
+  // match client-side routes that aren't a static asset
+  // and serve the app shell. client-side router will
+  // handle the route once it is rendered
+  .match('/:path*/:file([^\\.]+|)', ({ appShell, cache }) => {
+    cache(edgeOnly)
+    appShell('build/index.html')
+  })
+  // match other assets such as favicon, manifest.json, etc
+  .match('/:path*', ({ serveStatic, cache }) => {
+    cache(edgeOnly)
+    serveStatic('build/:path*')
+  })
+  // send any unmatched request to origin
+  .fallback(({ serveStatic }) => serveStatic('build/index.html'))
+```
+
+## Prefetching
+
+Install the `{{ PACKAGE_NAME }}/react` to enable this feature.
+
+```
+npm i -D {{ PACKAGE_NAME }}/react
+```
+
+Add the `Prefetch` component from `{{ PACKAGE_NAME }}/react` to your links to cache pages before the user clicks on them. Here's an example:
+
+```js
+import { Link } from 'react-router'
+import { Prefetch } from '{{ PACKAGE_NAME }}/react'
+
+export default function ProductListing() {
+  return (
+    <div>
+      {/* ... */}
+      {/* The URL you need to prefetch is the API call that the page component will make when it mounts. It will vary based on how you've implemented your site. */}
+      <Prefetch url="/api/products/1.json">
+        <Link to="/p/1">Product 1</Link>
+      </Prefetch>
+      {/* ... */}
+    </div>
+  )
+}
+```
+
+By default, `Prefetch` waits until the link appears in the viewport before prefetching. You can prefetch immediately by setting the `immediately` prop:
+
+```js
+<Prefetch url="/api/products/1.json" immediately>
+  <Link to="/p/1">Product 1</Link>
+</Prefetch>
+```
+
+## Service Worker
+
+In order for prefetching to work, you need to configure a service worker that uses the `Prefetcher` class from `{{ PACKAGE_NAME }}/prefetch`.
+
+Following the Create React App example from above? Make sure to create a file in `src/service-worker.js`. Paste the code example below into that file.
+
+Here is an example service worker:
+
+```js
+import { skipWaiting, clientsClaim } from 'workbox-core'
+import { precacheAndRoute } from 'workbox-precaching'
+import DeepFetchPlugin from '@layer0/prefetch/sw/DeepFetchPlugin'
+
+skipWaiting()
+clientsClaim()
+precacheAndRoute(self.__WB_MANIFEST || [])
+
+new Prefetcher({
+  plugins: [
+    // Enable this as part of the example in this guide
+    // new DeepFetchPlugin([
+    //   {
+    //     jsonQuery: 'picture',
+    //     as: 'image',
+    //   },
+    // ]),
+  ],
+}).route()
+```
+
+In order to install the service worker in the browser when your site loads, call the `install` function from `{{ PACKAGE_NAME }}/prefetch`.
+
+```js
+import { install } from '{{ PACKAGE_NAME }}/prefetch/window'
+
+install()
+```
+
+If following the Create React App example, this can be done in the same location as App initialization in `index.js` after the `ReactDOM.render` call.
 
 ## Server Side Rendering
 
@@ -105,136 +285,19 @@ module.exports = {
 }
 ```
 
-## Configuring the {{ PRODUCT_NAME }} Router
-
-Using the `Router` class from `{{ PACKAGE_NAME }}/core`, you'll configure caching for each of your routes, and forward requests to the server module you configured in the previous section using the `proxy` function.
-
-```js
-// routes.js
-
-import { Router } from '{{ PACKAGE_NAME }}/core/router'
-import { BACKENDS } from '{{ PACKAGE_NAME }}/core'
-
-new Router()
-  .get('/service-worker.js', ({ serviceWorker }) => {
-    serviceWorker('dist/service-worker.js')
-  })
-  .get('/p/:id', ({ cache }) => {
-    // cache product pages at the edge for 1 day
-    cache({
-      edge: {
-        maxAgeSeconds: 60 * 60 * 24, // 1 day
-      },
-    })
-  })
-  .fallback(({ renderWithApp }) => {
-    // send all requests to the server module configured in {{ CONFIG_FILE }}
-    renderWithApp()
-  })
-```
-
-## Prefetching
-
-Add the `Prefetch` component from `{{ PACKAGE_NAME }}/react` to your links to cache pages before the user clicks on them. Here's an example:
-
-```js
-import { Link } from 'react-router'
-import { Prefetch } from '{{ PACKAGE_NAME }}/react'
-
-export default function ProductListing() {
-  return (
-    <div>
-      {/* ... */}
-      {/* The URL you need to prefetch is the API call that the page component will make when it mounts. It will vary based on how you've implemented your site. */}
-      <Prefetch url="/api/products/1.json">
-        <Link to="/p/1">Product 1</Link>
-      </Prefetch>
-      {/* ... */}
-    </div>
-  )
-}
-```
-
-By default, `Prefetch` waits until the link appears in the viewport before prefetching. You can prefetch immediately by setting the `immediately` prop:
-
-```js
-<Prefetch url="/api/products/1.json" immediately>
-  <Link to="/p/1">Product 1</Link>
-</Prefetch>
-```
-
-## Service Worker
-
-In order for prefetching to work, you need to configure a service worker that uses the `Prefetcher` class from `{{ PACKAGE_NAME }}/prefetch`. Here is an example service worker built using workbox:
-
-```js
-// sw/service-worker.js
-
-import { skipWaiting, clientsClaim } from 'workbox-core'
-import { Prefetcher } from '{{ PACKAGE_NAME }}/prefetch/sw'
-
-skipWaiting()
-clientsClaim()
-
-new Prefetcher().route()
-```
-
-In order to install the service worker in the browser when your site loads, call the `install` function from `{{ PACKAGE_NAME }}/prefetch`:
-
-```js
-import { install } from '{{ PACKAGE_NAME }}/prefetch/window'
-
-install()
-```
-
-### Create React App Example
-
-If you're building an app with [create-react-app](https://github.com/facebook/create-react-app), you can use this router to get started:
-
-```js
-// routes.js
-
-const { Router } = require('{{ PACKAGE_NAME }}/core/router')
-
-const ONE_HOUR = 60 * 60
-const ONE_DAY = 24 * ONE_HOUR
-const ONE_YEAR = 365 * ONE_DAY
-
-const edgeOnly = {
-  browser: false,
-  edge: { maxAgeSeconds: ONE_YEAR },
-}
-
-const edgeAndBrowser = {
-  browser: { maxAgeSeconds: ONE_YEAR },
-  edge: { maxAgeSeconds: ONE_YEAR },
-}
-
-module.exports = new Router()
-  .prerender([{ path: '/' }])
-  // js and css assets are hashed and can be far-future cached in the browser
-  .get('/static/:path*', ({ cache, serveStatic }) => {
-    cache(edgeAndBrowser)
-    serveStatic('build/static/:path*')
-  })
-  // all paths that do not have a "." as well as "/"" should serve the app shell (index.html)
-  .get('/:path*/:file([^\\.]+|)', ({ cache, appShell }) => {
-    cache(edgeOnly)
-    appShell('build/index.html')
-  })
-  // all other paths should be served from the build directory
-  .get('/:path*', ({ cache, serveStatic }) => {
-    cache(edgeOnly)
-    serveStatic('build/:path*')
-  })
-```
-
 ## Deploying
 
 Deploying requires an account on {{ PRODUCT_NAME }}. [Sign up here for free.]({{ APP_URL }}/signup) Once you have an account, you can deploy to {{ PRODUCT_NAME }} by running the following in the root folder of your project:
 
 ```
 {{ CLI_NAME }} deploy
+```
+
+If you have a static app or are following the above example then you need to build the app first
+
+```
+$ npm run build
+$ {{ CLI_NAME }} deploy
 ```
 
 For more on deploying, see [Deploying](/guides/deploying).

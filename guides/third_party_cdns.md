@@ -34,7 +34,7 @@ Caching and traffic metrics are another area that is affected by CDN caching or 
 
 ## Client IPs
 
-When {{ PRODUCT_NAME }} is behind a third-party CDN, there is no way for it to securely determine the IP of the user agent that originated the request and hence `{{ HEADER_PREFIX }}-client-ip` header contains the IP of the third-party CDN rather than of the actual user agent. Since {{ PRODUCT_NAME }} uses the client IP to determine the [geolocation headers](/guides/request_headers#section_geolocation_headers), this means that those headers also have incorrect values.
+When behind a third-party CDN, there is no way for {{ PRODUCT_NAME }} to reliably determine the IP of the user agent that originated the request, hence the `{{ HEADER_PREFIX }}-client-ip` header will contain the IP of the third-party CDN rather than of the actual user agent. Since {{ PRODUCT_NAME }} uses the client IP to determine the [geolocation headers](/guides/request_headers#section_geolocation_headers), this means that geolocation headers will also have incorrect values.
 
 In this situation, it is your responsibility to correctly set the client IP header and the dependent geolocation headers and pass it that way to {{ PRODUCT_NAME }} and upstream servers.
 

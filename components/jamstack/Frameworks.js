@@ -250,6 +250,12 @@ const frameworkItems = [
     text: 'React',
   },
   {
+    guide: '/guides/redwoodjs',
+    framework: 'redwood',
+    icon: 'redwood',
+    text: 'RedwoodJS',
+  },
+  {
     guide: '/guides/vue',
     framework: 'static-vue',
     icon: 'vue',

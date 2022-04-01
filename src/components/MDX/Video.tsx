@@ -35,12 +35,12 @@ const StyledVideo = styled.div`
   }
 `;
 
-function Video({ url }: VideoProps) {
-  var style = { '--aspect-ratio': '16/9' } as React.CSSProperties;
+function Video({url}: VideoProps) {
+  var style = {'--aspect-ratio': '16/9'} as React.CSSProperties;
 
   return (
     <StyledVideo style={style}>
-      <ReactPlayer {...{ url, controls: true, width: '100%', height: '100%' }} />
+      <ReactPlayer {...{url, controls: true, width: '100%', height: '100%'}} />
     </StyledVideo>
   );
 }

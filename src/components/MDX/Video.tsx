@@ -9,6 +9,8 @@ interface VideoProps {
 // https://css-tricks.com/responsive-iframes
 // https://codepen.io/chriscoyier/pen/RXPjWp
 const StyledVideo = styled.div`
+  backgound-color: #353535;
+
   &[style*='--aspect-ratio'] > :first-child {
     width: 100%;
   }
@@ -33,12 +35,12 @@ const StyledVideo = styled.div`
   }
 `;
 
-function Video({url}: VideoProps) {
-  var style = {'--aspect-ratio': '16/9'} as React.CSSProperties;
+function Video({ url }: VideoProps) {
+  var style = { '--aspect-ratio': '16/9' } as React.CSSProperties;
 
   return (
     <StyledVideo style={style}>
-      <ReactPlayer {...{url, controls: true, width: '100%', height: '100%'}} />
+      <ReactPlayer {...{ url, controls: true, width: '100%', height: '100%' }} />
     </StyledVideo>
   );
 }

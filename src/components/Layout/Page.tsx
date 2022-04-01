@@ -29,7 +29,6 @@ const StyledMainPage = styled.div`
       padding: calc(var(--header-height) / 2) 0;
       box-shadow: inset -1px 0px var(--grey1);
       z-index: 2;
-      transition: 0.2s;
 
       &[data-open='true'] {
         position: fixed;

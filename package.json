@@ -45,6 +45,7 @@
     "react-collapsed": "3.1.0",
     "react-dom": "experimental",
     "react-highlight": "^0.14.0",
+    "react-player": "^2.10.0",
     "scroll-into-view-if-needed": "^2.2.25",
     "styled-components": "^5.3.3"
   },

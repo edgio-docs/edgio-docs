@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import SectionHeader from './SectionHeader';
 import Video from 'components/MDX/Video';
+import ReactPlayer from 'react-player';
 
 const StyledComp = styled.div`
   display: grid;
@@ -39,20 +40,12 @@ const StyledComp = styled.div`
 export default function VideosandTutorials() {
   const videos = [
     {
-      title: 'What & Why',
-      url: 'https://www.youtube.com/embed/sJ6AkTrcZvg?rel=0',
-    },
-    {
       title: 'Deploying a GitHub Project',
-      url: 'https://www.youtube.com/embed/F8uN03ps1As?rel=0',
-    },
-    {
-      title: 'How to Prefetch',
-      url: 'https://www.youtube.com/embed/lfhSDCNgzfs?rel=0',
+      url: 'https://vimeo.com/691593915',
     },
     {
       title: 'What are the Layer0 DevTools',
-      url: 'https://www.youtube.com/embed/4AYQAvkc0UY?rel=0',
+      url: 'https://vimeo.com/691580899',
     },
   ];
 

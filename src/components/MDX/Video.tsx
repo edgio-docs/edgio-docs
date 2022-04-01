@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import ReactPlayer from 'react-player';
 
 interface VideoProps {
   url: string;
@@ -37,13 +38,7 @@ function Video({url}: VideoProps) {
 
   return (
     <StyledVideo style={style}>
-      <iframe
-        src={url}
-        width={516}
-        height={315}
-        frameBorder={0}
-        allow="picture-in-picture"
-        allowFullScreen></iframe>
+      <ReactPlayer {...{url, controls: true, width: '100%', height: '100%'}} />
     </StyledVideo>
   );
 }

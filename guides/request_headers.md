@@ -33,7 +33,7 @@ Geolocation headers contain the geographical information about the provenance of
 - `{{ HEADER_PREFIX }}-geo-longitude`: the geographical longitude from which the request originated
 - `{{ HEADER_PREFIX }}-geo-asn`: the autonomous system number of the network operator from which the request originated
 
-These values are provided as best effort as {{ PRODUCT_NAME }} cannot guarantee that client IP to geographical location is always accurate. See also [geolocation](/guides/third_party_cdns#section_client_ips) behind [third-party CDNs](/guides/third_party_cdns).
+These values are provided as a best effort. {{ PRODUCT_NAME }} cannot guarantee the accuracy of geolocation based on the client's IP address. See also [geolocation](/guides/third_party_cdns#section_client_ips) behind [third-party CDNs](/guides/third_party_cdns).
 
 ## Static prerendering headers
 

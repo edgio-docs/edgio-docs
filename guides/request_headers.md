@@ -26,12 +26,14 @@ These values are provided as best effort as user agent, especially adversarial o
 Geolocation headers contain the geographical information about the provenance of the request. They are based on the IP of the actual request or, if overriding need is presented, on the content of `{{ HEADER_PREFIX }}-client-ip` request header.
 
 - `{{ HEADER_PREFIX }}-geo-country-code`: the ISO 3166 two letter code for the country from which the request originated. See the Alpha-2 code column in the [list of ISO 3166 country codes](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes) for reference.
+- `{{ HEADER_PREFIX }}-geo-state-code`: the two letter state code from which the request originated
 - `{{ HEADER_PREFIX }}-geo-city`: the name of the city from which the request originated
 - `{{ HEADER_PREFIX }}-geo-postal-code`: the ZIP or postal code from which the request originated
 - `{{ HEADER_PREFIX }}-geo-latitude`: the geographical latitude from which the request originated
 - `{{ HEADER_PREFIX }}-geo-longitude`: the geographical longitude from which the request originated
+- `{{ HEADER_PREFIX }}-geo-asn`: the autonomous system number of the network operator from which the request originated
 
-These values are provided as best effort as {{ PRODUCT_NAME }} cannot guarantee that client IP to geographical location is always accurate.
+These values are provided as best effort as {{ PRODUCT_NAME }} cannot guarantee that client IP to geographical location is always accurate. See also [geolocation](/guides/third_party_cdns#section_client_ips) behind [third-party CDNs](/guides/third_party_cdns).
 
 ## Static prerendering headers
 

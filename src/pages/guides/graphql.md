@@ -4,7 +4,7 @@ title: GraphQL
 
 {{ PRODUCT_NAME }} provides full support for caching GraphQL APIs. Putting Layer0 in front of your GraphQL API can significantly improve its performance while reducing the amount of traffic that reaches your origin by serving cached queries from the network edge.
 
-![video](https://youtu.be/GuezGiCj8ec)
+<Video url="https://vimeo.com/691615246"/>
 
 ## Example {/*section_example*/}
 
@@ -49,7 +49,7 @@ module.exports = {
 
 There are two ways to cache GraphQL responses using Layer0: by adding caching rules to your Layer0 router or by using the `cache-control` header.
 
-### Using the {{ PRODUCT_NAME }} Router {/*section_using_the_{{ PRODUCT_NAME }}_router*/}
+### Using the {{ PRODUCT_NAME }} Router {/*section_using_the_{{ PRODUCT_NAME }}_router*/} {/*using-the--productname--router-section_using_the-product_name-_router*/}
 
 Imagine you have a query named `GetProduct`:
 

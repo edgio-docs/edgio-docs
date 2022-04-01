@@ -9,7 +9,7 @@ interface VideoProps {
 // https://css-tricks.com/responsive-iframes
 // https://codepen.io/chriscoyier/pen/RXPjWp
 const StyledVideo = styled.div`
-  backgound-color: #353535;
+  background: #353535;
 
   &[style*='--aspect-ratio'] > :first-child {
     width: 100%;

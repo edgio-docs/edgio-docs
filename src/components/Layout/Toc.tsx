@@ -5,6 +5,8 @@ import styled from 'styled-components';
 import {useTocHighlight} from './useTocHighlight';
 
 const StyledToc = styled.div`
+  padding: 0 20px;
+
   @media (max-width: 1000px) {
     display: none;
   }
@@ -17,6 +19,7 @@ const StyledToc = styled.div`
     max-height: calc(100vh - var(--header-height));
     overflow: scroll;
     padding-top: calc(var(--header-height) / 2);
+    --scrollbar-bg: #606060;
   }
 
   .docs-toc__heading {
@@ -87,7 +90,7 @@ export function Toc({
 
   return (
     <StyledToc className="docs-article__toc">
-      <nav role="navigation" className="docs-toc__nav">
+      <nav role="navigation" className="docs-toc__nav custom-scrollbar">
         <h2 className="docs-toc__heading">On this page</h2>
         <div className="toc">
           <ul className="docs-toc__listItems">

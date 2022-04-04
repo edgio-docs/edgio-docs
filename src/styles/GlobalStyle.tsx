@@ -21,6 +21,8 @@ const GlobalStyle = createGlobalStyle`
   --inline-code-bg: #f6f6f7;
 
   /* Sizes */
+  --scrollbar-size: 8px;
+  --scrollbar-bg: #353535;
   --sidebar-width: 280px;
   --container-max-width: 1228px;
   --container-padding: 0 20px;
@@ -127,7 +129,7 @@ html, body {
 */
 body {
   line-height: 1.5;
-  -webkit-font-smoothing: antialiased;
+  /* -webkit-font-smoothing: antialiased; */
 }
 /*
   6. Improve media defaults

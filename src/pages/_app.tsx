@@ -3,11 +3,12 @@ import {AppProps} from 'next/app';
 import Router from 'next/router';
 import NProgress from 'nprogress';
 import * as React from 'react';
+import {ThemeProvider} from 'styled-components';
 import '../styles/algolia.css';
+import '../styles/code-syntax.css';
 import GlobalStyle from '../styles/GlobalStyle';
 import '../styles/nprogress.css';
-import {ThemeProvider} from 'styled-components';
-import '../styles/code-syntax.css';
+import '../styles/scrollbar.css';
 
 // -> Used for the loader when switching between pages
 Router.events.on('routeChangeStart', () => NProgress.start());

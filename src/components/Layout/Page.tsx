@@ -25,9 +25,9 @@ const StyledMainPage = styled.div`
       width: var(--sidebar-width);
       overflow: auto;
       user-select: none;
-      background-color: var(--grey3);
+      background-color: var(--docs-content-bg);
       padding: calc(var(--header-height) / 2) 0;
-      box-shadow: inset -1px 0px var(--grey1);
+      box-shadow: inset -1px 0px var(--hr-grey1);
       z-index: 2;
 
       &[data-open='true'] {
@@ -70,7 +70,9 @@ export function Page({children}: PageProps) {
     <StyledMainPage>
       <Header {...{showSidebar, setShowSidebar}} />
       <main className="docs-content">
-        <div className="docs-side__nav" data-open={isMobile && showSidebar}>
+        <div
+          className="docs-side__nav custom-scrollbar"
+          data-open={isMobile && showSidebar}>
           <Sidebar />
         </div>
         <div className="docs-content__inner">{children}</div>

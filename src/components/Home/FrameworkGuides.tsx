@@ -29,6 +29,11 @@ const StyledComp = styled(StyledFeatureSection)`
     display: flex;
     justify-content: center;
     align-items: center;
+
+    svg {
+      width: 100%;
+      height: 100%;
+    }
   }
 
   .route-items__col3 {

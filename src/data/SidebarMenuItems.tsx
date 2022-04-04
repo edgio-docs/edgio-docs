@@ -1,5 +1,5 @@
 import {IconAngular} from '../components/Icon/IconAngular';
-import {IconAstro} from '../components/Icon/IconAstro';
+import {IconAstro, IconAstroDark} from '../components/Icon/IconAstro';
 import {
   IconBookPlain,
   IconBookPlainDark,
@@ -12,31 +12,37 @@ import {
 } from '../components/Icon/IconCodePlain';
 import {IconDocusaurus} from '../components/Icon/IconDocusaurus';
 import {IconDojo} from '../components/Icon/IconDojo';
-import {IconEleventy} from '../components/Icon/IconEleventy';
-import {IconEmberFastboot} from '../components/Icon/IconEmberFastboot';
+import {IconEleventy, IconEleventyDark} from '../components/Icon/IconEleventy';
+import {
+  IconEmberFastboot,
+  IconEmberFastbootDark,
+} from '../components/Icon/IconEmberFastboot';
 import {IconEmberJS} from '../components/Icon/IconEmberJS';
-import {IconExpress} from '../components/Icon/IconExpress';
+import {IconExpress, IconExpressDark} from '../components/Icon/IconExpress';
 import {IconFiddle, IconFiddleDark} from '../components/Icon/IconFiddle';
 import {IconFolder, IconFolderDark} from '../components/Icon/IconFolder';
 import {IconForum, IconForumDark} from '../components/Icon/IconForum';
 import {IconFrontity} from '../components/Icon/IconFrontity';
 import {IconGatsby} from '../components/Icon/IconGatsby';
-import {IconGridsome} from '../components/Icon/IconGridsome';
+import {IconGridsome, IconGridsomeDark} from '../components/Icon/IconGridsome';
 import {IconHexo} from '../components/Icon/IconHexo';
 import {IconHugo} from '../components/Icon/IconHugo';
 import {IconIonicX} from '../components/Icon/IconIonicX';
 import {IconJekyll} from '../components/Icon/IconJekyll';
 // import { IconLogo } from '../components/Icon/IconLogo';
-import {IconMKDocs} from '../components/Icon/IconMKDocs';
-import {IconNextJS} from '../components/Icon/IconNextJS';
-import {IconNextJSCommerce} from '../components/Icon/IconNextJSCommerce';
-import {IconNX} from '../components/Icon/IconNX';
+import {IconMKDocs, IconMKDocsDark} from '../components/Icon/IconMKDocs';
+import {IconNextJS, IconNextJSDark} from '../components/Icon/IconNextJS';
+import {
+  IconNextJSCommerce,
+  IconNextJSCommerceDark,
+} from '../components/Icon/IconNextJSCommerce';
+import {IconNX, IconNXDark} from '../components/Icon/IconNX';
 import {IconPreact} from '../components/Icon/IconPreact';
 import {IconRazzle} from '../components/Icon/IconRazzle';
 import {IconReact} from '../components/Icon/IconReact';
 import {IconReactStatic} from '../components/Icon/IconReactStatic';
 import {IconReactStorefront} from '../components/Icon/IconReactStorefront';
-import {IconRemix} from '../components/Icon/IconRemix';
+import {IconRemix, IconRemixDark} from '../components/Icon/IconRemix';
 import {IconRedwood} from '../components/Icon/IconRedwood';
 import {IconSaber} from '../components/Icon/IconSaber';
 import {IconSapper} from '../components/Icon/IconSapper';
@@ -58,10 +64,10 @@ import {
 } from '../components/Icon/IconStacksPlain';
 import {IconStaticHTMLJS} from '../components/Icon/IconStaticHTMLJS';
 import {IconStatus, IconStatusDark} from '../components/Icon/IconStatus';
-import {IconStencil} from '../components/Icon/IconStencil';
+import {IconStencil, IconStencilDark} from '../components/Icon/IconStencil';
 import {IconSupport, IconSupportDark} from '../components/Icon/IconSupport';
 import {IconSvelte} from '../components/Icon/IconSvelte';
-import {IconSwell} from '../components/Icon/IconSwell';
+import {IconSwell, IconSwellDark} from '../components/Icon/IconSwell';
 import {IconUmiJS} from '../components/Icon/IconUmiJS';
 import {
   IconUserPlain,
@@ -70,13 +76,15 @@ import {
 import {IconVideos, IconVideosDark} from '../components/Icon/IconVideos';
 import {IconVitePress} from '../components/Icon/IconVitePress';
 import {IconVue} from '../components/Icon/IconVue';
-import {IconZola} from '../components/Icon/IconZola';
+import {IconZola, IconZolaDark} from '../components/Icon/IconZola';
 import {IconVueStorefront} from '../components/Icon/VueStorefront';
+import {IconNuxt} from 'components/Icon/IconNuxt';
 
 export interface IChildrenRoutes {
   title: string;
   path: string;
   icon?: JSX.IntrinsicElements['svg'];
+  iconDark?: JSX.IntrinsicElements['svg'];
   external?: boolean;
   parentIndex?: number;
   childIndex?: number;
@@ -253,226 +261,271 @@ const SidebarMenuItems: Array<Array<ISidebarMenuItem>> = [
           title: 'Angular',
           path: '/guides/angular',
           icon: <IconAngular />,
+          iconDark: <IconAngular />,
         },
         {
           title: 'Astro',
           path: '/guides/astro',
           icon: <IconAstro />,
+          iconDark: <IconAstroDark />,
         },
         {
           title: 'Brunch',
           path: '/guides/brunch',
           icon: <IconBrunch />,
+          iconDark: <IconBrunch />,
         },
         {
           title: 'Docusaurus',
           path: '/guides/docusaurus',
           icon: <IconDocusaurus />,
+          iconDark: <IconDocusaurus />,
         },
         {
           title: 'Dojo',
           path: '/guides/dojo',
           icon: <IconDojo />,
+          iconDark: <IconDojo />,
         },
         {
           title: 'Eleventy',
           path: '/guides/eleventy',
           icon: <IconEleventy />,
+          iconDark: <IconEleventyDark />,
         },
         {
           title: 'Ember.js',
           path: '/guides/ember',
-          icon: <IconEmberFastboot />,
+          icon: <IconEmberJS />,
+          iconDark: <IconEmberJS />,
         },
         {
           title: 'Ember Fastboot',
           path: '/guides/ember_fastboot',
-          icon: <IconEmberJS />,
+          icon: <IconEmberFastboot />,
+          iconDark: <IconEmberFastbootDark />,
         },
         {
           title: 'Express',
           path: '/guides/express',
           icon: <IconExpress />,
+          iconDark: <IconExpressDark />,
         },
         {
           title: 'Frontity',
           path: '/guides/frontity',
           icon: <IconFrontity />,
+          iconDark: <IconFrontity />,
         },
         {
           title: 'Gatsby',
           path: '/guides/gatsby',
           icon: <IconGatsby />,
+          iconDark: <IconGatsby />,
         },
         {
           title: 'Gridsome',
           path: '/guides/gridsome',
           icon: <IconGridsome />,
+          iconDark: <IconGridsomeDark />,
         },
         {
           title: 'Hexo',
           path: '/guides/hexo',
           icon: <IconHexo />,
+          iconDark: <IconHexo />,
         },
         {
           title: 'Hugo',
           path: '/guides/hugo',
           icon: <IconHugo />,
+          iconDark: <IconHugo />,
         },
         {
           title: 'Ionic React',
           path: '/guides/ionic_react',
           icon: <IconIonicX />,
+          iconDark: <IconIonicX />,
         },
         {
           title: 'Ionic Vue',
           path: '/guides/ionic_vue',
           icon: <IconIonicX />,
+          iconDark: <IconIonicX />,
         },
         {
           title: 'Jekyll',
           path: '/guides/jekyll',
           icon: <IconJekyll />,
+          iconDark: <IconJekyll />,
         },
         {
           title: 'MkDocs',
           path: '/guides/mkdocs',
           icon: <IconMKDocs />,
+          iconDark: <IconMKDocsDark />,
         },
         {
           title: 'NX',
           path: '/guides/nx',
-          icon: <IconNextJS />,
+          icon: <IconNX />,
+          iconDark: <IconNXDark />,
         },
         {
           title: 'Next.js',
           path: '/guides/next',
-          icon: <IconNextJSCommerce />,
+          icon: <IconNextJS />,
+          iconDark: <IconNextJSDark />,
         },
         {
           title: 'Next.js Commerce',
           path: '/guides/next_commerce',
-          icon: <IconAstro />,
+          icon: <IconNextJSCommerce />,
+          iconDark: <IconNextJSCommerceDark />,
         },
         {
           title: 'Nuxt.js',
           path: '/guides/nuxt',
-          icon: <IconNX />,
+          icon: <IconNuxt />,
+          iconDark: <IconNuxt />,
         },
         {
           title: 'Preact',
           path: '/guides/preact',
           icon: <IconPreact />,
+          iconDark: <IconPreact />,
         },
         {
           title: 'Razzle',
           path: '/guides/razzle',
           icon: <IconRazzle />,
+          iconDark: <IconRazzle />,
         },
         {
           title: 'React',
           path: '/guides/react',
           icon: <IconReact />,
+          iconDark: <IconReact />,
         },
         {
           title: 'React Static',
           path: '/guides/react_static',
           icon: <IconReactStatic />,
+          iconDark: <IconReactStatic />,
         },
         {
           title: 'React Storefront',
           path: '/guides/react-storefront',
           icon: <IconReactStorefront />,
+          iconDark: <IconReactStorefront />,
         },
         {
           title: 'RedwoodJS',
           path: '/guides/redwoodjs',
           icon: <IconRedwood />,
+          iconDark: <IconRedwood />,
         },
         {
           title: 'Remix',
           path: '/guides/remix',
           icon: <IconRemix />,
+          iconDark: <IconRemixDark />,
         },
         {
           title: 'Saber',
           path: '/guides/saber',
           icon: <IconSaber />,
+          iconDark: <IconSaber />,
         },
         {
           title: 'Sapper',
           path: '/guides/sapper',
           icon: <IconSapper />,
+          iconDark: <IconSapper />,
         },
         {
           title: 'Serverless Functions',
           path: '/guides/serverless_functions',
           icon: <IconServerlessFunctions />,
+          iconDark: <IconServerlessFunctions />,
         },
         {
           title: 'Shopify Hydrogen',
           path: '/guides/shopify_hydrogen',
           icon: <IconShopifyHydrogen />,
+          iconDark: <IconShopifyHydrogen />,
         },
         {
           title: 'SolidJS',
           path: '/guides/solid',
           icon: <IconSolidJS />,
+          iconDark: <IconSolidJS />,
         },
         {
           title: 'Spartacus',
           path: '/guides/spartacus',
           icon: <IconSpartarcus />,
+          iconDark: <IconSpartarcus />,
         },
         {
           title: 'Static HTML/JS',
           path: '/guides/static_sites',
           icon: <IconStaticHTMLJS />,
+          iconDark: <IconStaticHTMLJS />,
         },
         {
           title: 'Stencil',
           path: '/guides/stencil',
           icon: <IconStencil />,
+          iconDark: <IconStencilDark />,
         },
         {
           title: 'Svelte',
           path: '/guides/svelte',
           icon: <IconSvelte />,
+          iconDark: <IconSvelte />,
         },
         {
           title: 'Swell',
           path: '/guides/swell',
           icon: <IconSwell />,
+          iconDark: <IconSwellDark />,
         },
         {
           title: 'UmiJS',
           path: '/guides/umijs',
           icon: <IconUmiJS />,
+          iconDark: <IconUmiJS />,
         },
         {
           title: 'VitePress',
           path: '/guides/vitepress',
           icon: <IconVitePress />,
+          iconDark: <IconVitePress />,
         },
         {
           title: 'Vue Storefront',
           path: '/guides/vsf',
           icon: <IconVueStorefront />,
+          iconDark: <IconVueStorefront />,
         },
         {
           title: 'Vue.js',
           path: '/guides/vue',
           icon: <IconVue />,
+          iconDark: <IconVue />,
         },
         {
           title: 'VuePress',
           path: '/guides/vuepress',
           icon: <IconVitePress />,
+          iconDark: <IconVitePress />,
         },
         {
           title: 'Zola',
           path: '/guides/zola',
           icon: <IconZola />,
+          iconDark: <IconZolaDark />,
         },
       ],
     },

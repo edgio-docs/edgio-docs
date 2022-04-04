@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import {useEffect} from 'react';
 import styled from 'styled-components';
 import {getChildrenRoutesFromSidebarMenuItems} from '../../utils/getChildrenRoutesFromSidebarMenuItems';
 
@@ -12,10 +13,15 @@ const StyledFrameworks = styled.div`
   }
 
   .icon {
-    width: 50px;
-    height: 50px;
+    width: 40px;
+    height: 40px;
     display: flex;
     align-items: center;
+
+    svg {
+      width: 100%;
+      height: 100%;
+    }
   }
 
   .framework-list__item {
@@ -43,7 +49,12 @@ export default function Frameworks() {
           <li key={route.path} className="framework-list__item">
             <Link href={route.path} passHref>
               <a className="framework-link">
-                <div className="icon">{route.icon ? route.icon : null}</div>
+                <div className="icon" id="dark-theme-switcher">
+                  {route.icon ? route.icon : null}
+                </div>
+                <div className="icon" id="light-theme-switcher">
+                  {route.iconDark ? route.iconDark : null}
+                </div>
                 <span className="link-text">{route.title}</span>
               </a>
             </Link>

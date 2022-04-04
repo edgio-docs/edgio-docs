@@ -33,80 +33,6 @@ const StyledCustomPre = styled.div`
     font-family: 'IBM Plex Mono';
   }
 
-  /*
-  .hljs-comment,
-  .hljs-quote {
-    color: #7e7887;
-  }
-
-  .hljs-variable,
-  .hljs-template-variable,
-  .hljs-attribute,
-  .hljs-regexp,
-  .hljs-link,
-  .hljs-tag,
-  .hljs-name,
-  .hljs-selector-id,
-  .hljs-selector-class {
-    color: #be4678;
-  }
-
-  .hljs-number,
-  .hljs-meta,
-  .hljs-built_in,
-  .hljs-builtin-name,
-  .hljs-literal,
-  .hljs-type,
-  .hljs-params {
-    color: #aa573c;
-  }
-
-  .hljs-string,
-  .hljs-symbol,
-  .hljs-bullet {
-    color: #2a9292;
-  }
-
-  .hljs-title,
-  .hljs-section {
-    color: var(--pink);
-  }
-
-  .hljs-keyword,
-  .hljs-selector-tag {
-    color: var(--yellow);
-  }
-
-  .hljs-deletion,
-  .hljs-addition {
-    color: #19171c;
-    display: inline-block;
-    width: 100%;
-  }
-
-  .hljs-deletion {
-    background-color: #be4678;
-  }
-
-  .hljs-addition {
-    background-color: #2a9292;
-  }
-
-  .hljs {
-    display: block;
-    overflow-x: auto;
-    color: white;
-    padding: 0.5em;
-  }
-
-  .hljs-emphasis {
-    font-style: italic;
-  }
-
-  .hljs-strong {
-    font-weight: bold;
-  } */
-
   .code-language {
     padding: 0 0.5em;
     display: flex;
@@ -156,6 +82,10 @@ const StyledCustomPre = styled.div`
 
   .code-block__header-text {
     font-weight: 700;
+  }
+
+  code {
+    --scrollbar-bg: #777;
   }
 `;
 

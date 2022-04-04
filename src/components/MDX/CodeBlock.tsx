@@ -8,5 +8,7 @@ export default function CodeBlock({
   language: string;
   children: React.ReactNode;
 }) {
-  return <Highlight className={language}>{children}</Highlight>;
+  return (
+    <Highlight className={`${language} custom-scrollbar`}>{children}</Highlight>
+  );
 }

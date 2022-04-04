@@ -22,7 +22,6 @@ const GlobalStyle = createGlobalStyle`
 
   /* Sizes */
   --scrollbar-size: 8px;
-  --scrollbar-bg: #353535;
   --sidebar-width: 280px;
   --container-max-width: 1228px;
   --container-padding: 0 20px;
@@ -47,15 +46,17 @@ const GlobalStyle = createGlobalStyle`
   --homepage-section-subtitle-color: #707070;
   --homepage-link-color: #606060;
   --header-bgColor: #ffffff;
+  --scrollbar-bg: #C4C4C4;
 }
 
 
 :root.dark {
-    --black1: #fff;
-    --grey1: rgba(0, 0, 0, 0.15);
-    --grey2: #4e4e4e;
-    --grey3: #353535;
+  --black1: #fff;
+  --grey1: rgba(0, 0, 0, 0.15);
+  --grey2: #4e4e4e;
+  --grey3: #353535;
 
+  --scrollbar-bg: #353535;
     --docs-content-bg: #1a1a1a;
     --get-started-card-bg: #000000;
     --get-started-card-sub-bg: #fff;

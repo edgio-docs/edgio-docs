@@ -28,7 +28,7 @@ import {IconGridsome, IconGridsomeDark} from '../components/Icon/IconGridsome';
 import {IconHexo} from '../components/Icon/IconHexo';
 import {IconHugo} from '../components/Icon/IconHugo';
 import {IconIonicX} from '../components/Icon/IconIonicX';
-import {IconJekyll} from '../components/Icon/IconJekyll';
+import {IconJekyll, IconJekyllDark} from '../components/Icon/IconJekyll';
 // import { IconLogo } from '../components/Icon/IconLogo';
 import {IconMKDocs, IconMKDocsDark} from '../components/Icon/IconMKDocs';
 import {IconNextJS, IconNextJSDark} from '../components/Icon/IconNextJS';
@@ -357,7 +357,7 @@ const SidebarMenuItems: Array<Array<ISidebarMenuItem>> = [
           title: 'Jekyll',
           path: '/guides/jekyll',
           icon: <IconJekyll />,
-          iconDark: <IconJekyll />,
+          iconDark: <IconJekyllDark />,
         },
         {
           title: 'MkDocs',

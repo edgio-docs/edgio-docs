@@ -1,17 +1,20 @@
 import Link from 'next/link';
 import styled from 'styled-components';
 import {IconAngular} from '../Icon/IconAngular';
-import {IconAstro} from '../Icon/IconAstro';
+import {IconAstro, IconAstroDark} from '../Icon/IconAstro';
 import {IconBook} from '../Icon/IconBook';
 import {IconEmberJS} from '../Icon/IconEmberJS';
 import {IconGatsby} from '../Icon/IconGatsby';
-import {IconGridsome} from '../Icon/IconGridsome';
-import {IconNextJS} from '../Icon/IconNextJS';
-import {IconNextJSCommerce} from '../Icon/IconNextJSCommerce';
+import {IconGridsome, IconGridsomeDark} from '../Icon/IconGridsome';
+import {IconNextJS, IconNextJSDark} from '../Icon/IconNextJS';
+import {
+  IconNextJSCommerce,
+  IconNextJSCommerceDark,
+} from '../Icon/IconNextJSCommerce';
 import {IconPreact} from '../Icon/IconPreact';
 import {IconReact} from '../Icon/IconReact';
 import {IconReactStatic} from '../Icon/IconReactStatic';
-import {IconRemix} from '../Icon/IconRemix';
+import {IconRemix, IconRemixDark} from '../Icon/IconRemix';
 import {IconServerlessFunctions} from '../Icon/IconServerlessFunctions';
 import {IconSolidJS} from '../Icon/IconSolidJS';
 import {IconSvelte} from '../Icon/IconSvelte';
@@ -51,7 +54,10 @@ const StyledComp = styled(StyledFeatureSection)`
 interface IRoutesProps {
   title: string;
   path: string;
-  icon?: JSX.IntrinsicElements['svg'];
+  icon?: {
+    light: JSX.IntrinsicElements['svg'];
+    dark: JSX.IntrinsicElements['svg'];
+  };
 }
 
 export default function DeveloperTools() {
@@ -59,91 +65,142 @@ export default function DeveloperTools() {
     {
       title: 'Next.js',
       path: 'nextjs',
-      icon: <IconNextJS />,
+      icon: {
+        light: <IconNextJS />,
+        dark: <IconNextJSDark />,
+      },
     },
     {
       title: 'React',
       path: 'react',
-      icon: <IconReact />,
+      icon: {
+        light: <IconReact />,
+        dark: <IconReact />,
+      },
     },
     {
       title: 'Vue Storefront',
       path: 'vue-storefront',
-      icon: <IconVue />,
+      icon: {
+        light: <IconVue />,
+        dark: <IconVue />,
+      },
     },
     {
       title: 'Gatsby',
       path: 'gatsby',
-      icon: <IconGatsby />,
+      icon: {
+        light: <IconGatsby />,
+        dark: <IconGatsby />,
+      },
     },
     {
       title: 'Vue.js',
       path: 'vuejs',
-      icon: <IconVue />,
+      icon: {
+        light: <IconVue />,
+        dark: <IconVue />,
+      },
     },
     {
       title: 'Angular',
       path: 'angular',
-      icon: <IconAngular />,
+      icon: {
+        light: <IconAngular />,
+        dark: <IconAngular />,
+      },
     },
   ];
   const routesCol2: Array<IRoutesProps> = [
     {
       title: 'Serverless functions',
       path: 'serverless-functions',
-      icon: <IconServerlessFunctions />,
+      icon: {
+        light: <IconServerlessFunctions />,
+        dark: <IconServerlessFunctions />,
+      },
     },
     {
       title: 'Remix',
       path: 'remix',
-      icon: <IconRemix />,
+      icon: {
+        light: <IconRemix />,
+        dark: <IconRemixDark />,
+      },
     },
     {
       title: 'Next.js Commerce',
       path: 'nextjs-commerce',
-      icon: <IconNextJSCommerce />,
+      icon: {
+        light: <IconNextJSCommerce />,
+        dark: <IconNextJSCommerceDark />,
+      },
     },
     {
       title: 'Svelte',
       path: 'svelte',
-      icon: <IconSvelte />,
+      icon: {
+        light: <IconSvelte />,
+        dark: <IconSvelte />,
+      },
     },
     {
       title: 'SolidJS',
       path: 'solidjs',
-      icon: <IconSolidJS />,
+      icon: {
+        light: <IconSolidJS />,
+        dark: <IconSolidJS />,
+      },
     },
     {
       title: 'React Static',
       path: 'react-static',
-      icon: <IconReactStatic />,
+      icon: {
+        light: <IconReactStatic />,
+        dark: <IconReactStatic />,
+      },
     },
   ];
   const routesCol3: Array<IRoutesProps> = [
     {
       title: 'Ionic Vue',
       path: 'ionic-vue',
-      icon: <IconVue />,
+      icon: {
+        light: <IconVue />,
+        dark: <IconVue />,
+      },
     },
     {
       title: 'Gridsome',
       path: 'gridsome',
-      icon: <IconGridsome />,
+      icon: {
+        light: <IconGridsome />,
+        dark: <IconGridsomeDark />,
+      },
     },
     {
       title: 'Preact',
       path: 'preact',
-      icon: <IconPreact />,
+      icon: {
+        light: <IconPreact />,
+        dark: <IconPreact />,
+      },
     },
     {
       title: 'Ember.js',
       path: 'emberjs',
-      icon: <IconEmberJS />,
+      icon: {
+        light: <IconEmberJS />,
+        dark: <IconEmberJS />,
+      },
     },
     {
       title: 'Astro',
       path: 'astro',
-      icon: <IconAstro />,
+      icon: {
+        light: <IconAstro />,
+        dark: <IconAstroDark />,
+      },
     },
   ];
 
@@ -166,7 +223,14 @@ export default function DeveloperTools() {
               {route.map(({path, title, icon}) => (
                 <li className="route-list__item" key={title}>
                   {icon ? (
-                    <div className="icon">{icon}</div>
+                    <>
+                      <div id="dark-theme-switcher" className="icon">
+                        {icon.light}
+                      </div>
+                      <div id="light-theme-switcher" className="icon">
+                        {icon.dark}
+                      </div>
+                    </>
                   ) : (
                     <div className="dot" />
                   )}
@@ -175,7 +239,7 @@ export default function DeveloperTools() {
               ))}
               {index === 2 && (
                 <li className="route-list__item">
-                  <Link href="/framework-guides" passHref>
+                  <Link href="/guides/jamstack_getting_started" passHref>
                     <a>
                       <span>View all supported</span>
                       <IconArrow displayDirection="right" />

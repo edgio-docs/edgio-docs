@@ -32,7 +32,7 @@ npm install -g {{ PACKAGE_NAME }}/cli
 
 To prepare your RedwoodJS app for deployment on {{ PRODUCT_NAME }}, you can use both the RedwoodJS or {{ PRODUCT_NAME }} CLI depending on what you prefer.
 
-#### Using ReedwoodJS CLI
+### Using RedwoodJS CLI
 
 You will first need to setup {{ PRODUCT_NAME }} as a deploy provider via:
 
@@ -42,7 +42,7 @@ yarn rw setup deploy {{ FULL_CLI_NAME }}
 
 This will verify that the {{ PRODUCT_NAME }} CLI is setup on your system and initialize the application accordingly.
 
-#### Using {{ PRODUCT_NAME }} CLI
+### Using {{ PRODUCT_NAME }} CLI
 
 For preparing using the {{ PRODUCT_NAME }} CLI, run:
 

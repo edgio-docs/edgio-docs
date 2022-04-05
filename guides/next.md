@@ -446,7 +446,8 @@ Future versions of layer0 when using Next.js 12 or higher will utilize the `serv
 
 ### Next.js 12 with server target deprecations
 
-`renderNextPage` with specifying a page to render is deprecated when using Next.js 12+ and the `server` target. Requests are delegated to a Next.js server instance which will handle determining which page to render based on the request. Prior use cases of `renderNextPage` should now be achieved via using Next.js redirects and rewrites.
+`NextRouter.render404` and `renderNextPage` with specifying a page to render are retired when using Next.js 12+ and the `server` target. Requests are delegated to a Next.js server instance which will handle determining which page to render based on the request. Prior use cases should now be achieved via using Next.js redirects and rewrites.
+
 ### Middleware caveats
 
 When using Next.js Middleware it should be noted that the middleware functions are only executed at the serverless layer, ie after edge cache. Middleware that you want to execute on each request needs to have caching disabled explicitly for the route that the middleware is configured to run for. Some Middleware use cases such as rewriting the request to another route would be fine to cache. These use cases need to be evaluated on a per route basis with caching enabled/disabled based on the desired result.

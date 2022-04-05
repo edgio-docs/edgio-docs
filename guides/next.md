@@ -137,19 +137,29 @@ import { Prefetcher } from '{{ PACKAGE_NAME }}/prefetch/sw'
 new Prefetcher().route()
 ```
 
-The code above allows you to prefetch pages from {{ PRODUCT_NAME }}'s edge cache to greatly improve browsing speed. To prefetch a page, add the `Prefetch` component from `{{ PACKAGE_NAME }}/react` to any Next `Link` element:
+The code above allows you to prefetch pages from {{ PRODUCT_NAME }}'s edge cache to greatly improve browsing speed. To prefetch a page, add the `Prefetch` component from `{{ PACKAGE_NAME }}/react` to any Next `Link` element. The example below shows you how to prefetch JSON data from `getServerSideProps` or `getStaticProps` using the `createNextDataUrl` function from `@layer0/next/client`.
 
 ```js
 import { Prefetch } from '{{ PACKAGE_NAME }}/react'
 import Link from 'next/link'
+import { createNextDataURL } from '@layer0/next/client'
 
 export default function ProductListing({ products }) {
   return (
     <ul>
       {products.map((product, i) => (
         <li key={i}>
-          <Link as={product.url} href="/p/[productId]" passHref>
-            <Prefetch>
+          <Link href={product.url} passHref>
+            <Prefetch
+              url={createNextDataUrl({
+                href: product.url,
+                routeParams: {
+                  // keys must match the param names in your next page routes
+                  // So for example if your product page is /products/[productId].js:
+                  productId: product.id,
+                },
+              })}
+            >
               <a>
                 <img src={product.thumbnail} />
               </a>

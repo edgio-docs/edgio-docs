@@ -1,8 +1,7 @@
-import CodeLanguage from 'components/getLanguage';
 import React, {useEffect, useState} from 'react';
 import styled, {StyledComponent} from 'styled-components';
 import CodeBlock from './CodeBlock';
-import getLanguage from '../getLanguage';
+import getDescriptiveLanguage from '../getLanguage';
 
 const StyledCustomPre = styled.div`
   font-family: 'IBM Plex Mono', monospace;
@@ -111,7 +110,7 @@ export default function CustomPre({children}: {children: React.ReactNode}) {
         <div className="code-block__inner">
           <header className="code-block__header">
             <span className="code-block__header-text">
-              {language && getLanguage(language)}
+              {language && getDescriptiveLanguage(language)}
             </span>
             {filename && (
               <span className="code-block__filename">{filename}</span>

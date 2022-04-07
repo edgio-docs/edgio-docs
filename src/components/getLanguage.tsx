@@ -1,4 +1,4 @@
-export default function getLanguage(language: string) {
+export default function getDescriptiveLanguage(language: string) {
   const normalizedLanguageString = language.replace('language-', '');
 
   switch (normalizedLanguageString) {

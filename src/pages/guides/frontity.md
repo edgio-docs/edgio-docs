@@ -32,13 +32,13 @@ This framework has a connector developed for {{ PRODUCT_NAME }}. See [Connectors
 
 If you don't already have a Frontity app, use the terminal (or command prompt on Windows) to create one using the commands below:
 
-```
+```bash
 npx frontity create my-app
 ```
 
 To prepare your Frontity app for deployment on {{ PRODUCT_NAME }}, run the following in the root folder of your project:
 
-```
+```bash
 npm install -g {{ PACKAGE_NAME }}/cli
 {{ CLI_NAME }} init
 ```
@@ -95,7 +95,7 @@ function MyComponent() {
 
 To simulate your app within {{ PRODUCT_NAME }} locally, run:
 
-```
+```bash
 {{ CLI_NAME }} dev
 ```
 
@@ -103,7 +103,7 @@ To simulate your app within {{ PRODUCT_NAME }} locally, run:
 
 To simulate edge caching locally, run:
 
-```
+```bash
 {{ CLI_NAME }} dev --cache
 ```
 
@@ -111,7 +111,7 @@ To simulate edge caching locally, run:
 
 Deploying requires an account on {{ PRODUCT_NAME }}. [Sign up here for free.]({{ APP_URL }}/signup) Once you have an account, you can deploy to {{ PRODUCT_NAME }} by running the following in the root folder of your project
 
-```
+```bash
 {{ CLI_NAME }} deploy
 ```
 

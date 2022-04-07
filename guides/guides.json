@@ -460,6 +460,11 @@
         "href": "/guides/[...guide]"
       },
       {
+        "text": "Compression",
+        "as": "/guides/compression",
+        "href": "/guides/[...guide]"
+      },
+      {
         "text": "Cookies",
         "as": "/guides/cookies",
         "href": "/guides/[...guide]"

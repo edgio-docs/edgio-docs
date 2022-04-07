@@ -34,14 +34,30 @@ Caching and traffic metrics are another area that is affected by CDN caching or 
 
 ## Client IPs
 
-When {{ PRODUCT_NAME }} is behind a third-party CDN, there is no way for it to securely determine the IP of the user agent that originated the request. It is therefore your responsibility to correctly set another header to the actual client IP and pass it that way to {{ PRODUCT_NAME }} and upstream servers.
+When behind a third-party CDN, there is no way for {{ PRODUCT_NAME }} to securely determine the IP of the user agent that originated the request, hence the `{{ HEADER_PREFIX }}-client-ip` header will contain the IP of the third-party CDN rather than the actual user agent. Relying on headers like `x-forwarded-for` to determine the IP necessarily introduces a security hole where attackers can simply spoof the IP and work around IP allow/block and geolocation blocking features of the plaform. Since {{ PRODUCT_NAME }} uses the client IP to determine the [geolocation headers](/guides/request_headers#section_geolocation_headers), this means that geolocation headers will also have incorrect values.
 
-If you wish to set the `x-0-client-ip` to the header injected by the CDN, you can do that with the following code, which should be put at the top of your router:
+In this situation, it is your responsibility to correctly set the client IP header and the dependent geolocation headers and pass it that way to {{ PRODUCT_NAME }} and upstream servers.
+
+For example, if you wish to set the `{{ HEADER_PREFIX }}-client-ip` and related geolocation header, to the header values injected by the third-party CDN, you can add a shim for this which go at the top of your router:
 
 ```js
 .match('/:splat*', ({ setRequestHeader, removeRequestHeader }) => {
-    setRequestHeader('x-0-client-ip', 'x-your-cdn-client-ip-header')
+    setRequestHeader('{{ HEADER_PREFIX }}-client-ip', '${req:x-your-cdn-client-ip-header}')
     removeRequestHeader('x-your-cdn-client-ip-header')
+    setRequestHeader('{{ HEADER_PREFIX }}-geo-country-code', '${req:x-your-cdn-geo-country-code-header}')
+    removeRequestHeader('x-your-cdn-geo-country-code-header')
+    setRequestHeader('{{ HEADER_PREFIX }}-geo-state-code', '${req:x-your-cdn-geo-state-code-header}')
+    removeRequestHeader('x-your-cdn-geo-state-code-header')
+    setRequestHeader('{{ HEADER_PREFIX }}-geo-city', '${req:x-your-cdn-geo-city-header}')
+    removeRequestHeader('x-your-cdn-geo-city-header')
+    setRequestHeader('{{ HEADER_PREFIX }}-geo-postal-code', '${req:x-your-cdn-geo-postal-code-header}')
+    removeRequestHeader('x-your-cdn-geo-postal-code-header')
+    setRequestHeader('{{ HEADER_PREFIX }}-geo-latitude', '${req:x-your-cdn-geo-latitude-header}')
+    removeRequestHeader('x-your-cdn-geo-latitude-header')
+    setRequestHeader('{{ HEADER_PREFIX }}-geo-longitude', '${req:x-your-cdn-geo-longitude-header}')
+    removeRequestHeader('x-your-cdn-geo-longitude-header')
+    setRequestHeader('{{ HEADER_PREFIX }}-geo-asn', '${req:x-your-cdn-geo-asn-header}')
+    removeRequestHeader('x-your-cdn-geo-asn-header')
 })
 ```
 

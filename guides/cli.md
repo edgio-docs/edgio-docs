@@ -252,7 +252,7 @@ To install the latest preview:
 
 An uncommon issue when running `{{ CLI_NAME }} init` can present a similar error:
 
-> installing @{{ CLI_NAME }}/core, @{{ CLI_NAME }}/cli, @{{ CLI_NAME }}/prefetch, @{{ CLI_NAME }}/devtools, @{{ CLI_NAME }}/angular… done.
-> Error: Cannot find module ‘/Users/myUser/Projects/my-{{ CLI_NAME }}-poc/node_modules/@{{ CLI_NAME }}/angular/bin/init’
+> installing {{ PACKAGE_NAME }}/core, {{ PACKAGE_NAME }}/cli, {{ PACKAGE_NAME }}/prefetch, {{ PACKAGE_NAME }}/devtools, {{ PACKAGE_NAME }}/angular… done.
+> Error: Cannot find module ‘/Users/myUser/Projects/my-{{ PACKAGE_NAME }}-poc/node_modules/{{ PACKAGE_NAME }}/angular/bin/init’
 
-This may be related to an outdated global version of {{ PRODUCT_NAME }} CLI. The telltale sign is reference to `/bin/` in the module path. This is an old convention. Recommended approach would be to `npm i -g @{{ CLI_NAME }}/cli@latest` and then run `{{ CLI_NAME }} init` on the project.
+This may be related to an outdated global version of {{ PRODUCT_NAME }} CLI. The telltale sign is reference to `/bin/` in the module path. This is an old convention. Recommended approach would be to `npm i -g {{ PACKAGE_NAME }}/cli@latest` and then run `{{ CLI_NAME }} init` on the project.

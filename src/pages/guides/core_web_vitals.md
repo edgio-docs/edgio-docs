@@ -4,7 +4,7 @@ title: Core Web Vitals
 
 This guide shows you how to track your website's [Core Web Vitals](https://web.dev/vitals/) on {{ PRODUCT_NAME }} in real time using real user monitoring (RUM).
 
-![video](https://youtu.be/XNsCMaHt3DI)
+<Video src="https://vimeo.com/691615391"/>
 
 ## What are Core Web Vitals? {/*what-are-core-web-vitals*/}
 

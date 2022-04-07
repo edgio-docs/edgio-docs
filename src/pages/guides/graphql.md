@@ -4,7 +4,7 @@ title: GraphQL
 
 {{ PRODUCT_NAME }} provides full support for caching GraphQL APIs. Putting Layer0 in front of your GraphQL API can significantly improve its performance while reducing the amount of traffic that reaches your origin by serving cached queries from the network edge.
 
-![video](https://youtu.be/GuezGiCj8ec)
+<Video src="https://vimeo.com/691615246"/>
 
 ## Example {/*example*/}
 

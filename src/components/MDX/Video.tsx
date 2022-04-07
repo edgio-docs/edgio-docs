@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import ReactPlayer from 'react-player';
 
 interface VideoProps {
-  url: string;
+  src: string;
 }
 
 // https://css-tricks.com/responsive-iframes
@@ -35,12 +35,14 @@ const StyledVideo = styled.div`
   }
 `;
 
-function Video({url}: VideoProps) {
+function Video({src}: VideoProps) {
   var style = {'--aspect-ratio': '16/9'} as React.CSSProperties;
 
   return (
     <StyledVideo style={style}>
-      <ReactPlayer {...{url, controls: true, width: '100%', height: '100%'}} />
+      <ReactPlayer
+        {...{url: src, controls: true, width: '100%', height: '100%'}}
+      />
     </StyledVideo>
   );
 }

@@ -14,9 +14,17 @@ If any point, you want a more [detailed guide](/guides/traditional_sites), we've
 
 ## Example {/*example*/}
 
-[Try the WebApp CDN Example Site](https://layer0-docs-cdn-starter-template-default.layer0-limelight.link/?button)
-[View the Code](https://github.com/layer0-docs/layer0-cdn-example?button)
-[Deploy to Layer0](https://app.layer0.co/deploy?button&deploy&repo=https://github.com/layer0-docs/layer0-cdn-example)
+<ButtonLinksGroup>
+<ButtonLink variant="fill" type="default" href="https://layer0-docs-cdn-starter-template-default.layer0-limelight.link">
+  Try the WebApp CDN Example Site
+</ButtonLink>
+<ButtonLink variant="stroke" type="code" withIcon={true} href="https://github.com/layer0-docs/layer0-cdn-example">
+ View the Code
+</ButtonLink>
+<ButtonLink variant="stroke" type="deploy" withIcon={true} href="https://app.layer0.co/deploy?button&deploy&repo=https://github.com/layer0-docs/layer0-cdn-example">
+  Deploy to Layer0
+</ButtonLink>
+</ButtonLinksGroup>
 
 ## Network Diagram {/*network-diagram*/}
 

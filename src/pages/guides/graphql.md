@@ -8,13 +8,29 @@ title: GraphQL
 
 ## Example {/*example*/}
 
-[GraphQL over Proxy](https://layer0-docs-graphql-caching-example-default.layer0-limelight.link?button)
-[View the Code](https://github.com/layer0-docs/graphql-caching-example?button)
-[Deploy to Layer0](https://app.layer0.co/deploy?button&deploy&repo=https%3A%2F%2Fgithub.com%2Flayer0-docs%2Fgraphql-caching-example)
+<ButtonLinksGroup>
+  <ButtonLink variant="fill" type="default" href="https://layer0-docs-graphql-caching-example-default.layer0-limelight.link">
+   GraphQL over Proxy
+  </ButtonLink>
+  <ButtonLink variant="stroke" type="code" withIcon={true} href="https://github.com/layer0-docs/graphql-caching-example">
+   View the Code
+  </ButtonLink>
+  <ButtonLink variant="stroke" type="deploy" withIcon={true} href="https://app.layer0.co/deploy?button&deploy&repo=https%3A%2F%2Fgithub.com%2Flayer0-docs%2Fgraphql-caching-example">
+    Deploy to Layer0
+  </ButtonLink>
+</ButtonLinksGroup>
 
-[GraphQL with Apollo Server Micro](https://layer0-docs-layer0-next-graphql-example-default.layer0-limelight.link?button)
-[View the Code](https://github.com/layer0-docs/layer0-nextjs-graphql-example?button)
-[Deploy to Layer0](https://app.layer0.co/deploy?button&deploy&repo=https%3A%2F%2Fgithub.com%2Flayer0-docs%2Flayer0-nextjs-graphql-example)
+<ButtonLinksGroup>
+  <ButtonLink variant="fill" type="default" href="https://layer0-docs-layer0-next-graphql-example-default.layer0-limelight.link">
+   GraphQL with Apollo Server Micro
+  </ButtonLink>
+  <ButtonLink variant="stroke" type="code" withIcon={true} href="https://github.com/layer0-docs/layer0-nextjs-graphql-example">
+   View the Code
+  </ButtonLink>
+  <ButtonLink variant="stroke" type="deploy" withIcon={true} href="https://app.layer0.co/deploy?button&deploy&repo=https%3A%2F%2Fgithub.com%2Flayer0-docs%2Flayer0-nextjs-graphql-example">
+    Deploy to Layer0
+  </ButtonLink>
+</ButtonLinksGroup>
 
 The sections below walk you through configuring your {{ PRODUCT_NAME }} project and creating the necessary routing rules to cache GraphQL responses.
 

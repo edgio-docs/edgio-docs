@@ -2,13 +2,21 @@
 title: Vue Storefront 1
 ---
 
-## Example Site
+## Example Site {/*example-site*/}
 
-[Try the VSF1 Example Site](https://layer0-docs-layer0-vue-storefront-example-default.layer0.link/?button)
-[View the Code](https://github.com/layer0-docs/layer0-vue-storefront-example?button)
-[Deploy to Layer0](https://app.layer0.co/deploy?button&deploy&repo=https%3A%2F%2Fgithub.com%2Flayer0-docs%2Flayer0-vue-storefront-example)
+<ButtonLinksGroup>
+  <ButtonLink variant="fill" type="default" href="https://layer0-docs-layer0-vue-storefront-example-default.layer0.link">
+   Try the VSF1 Example Site
+  </ButtonLink>
+  <ButtonLink variant="stroke" type="code" withIcon={true} href="https://github.com/layer0-docs/layer0-vue-storefront-example">
+   View the Code
+  </ButtonLink>
+  <ButtonLink variant="stroke" type="deploy" withIcon={true} href="https://app.layer0.co/deploy?button&deploy&repo=https%3A%2F%2Fgithub.com%2Flayer0-docs%2Flayer0-vue-storefront-example">
+    Deploy to Layer0
+  </ButtonLink>
+</ButtonLinksGroup>
 
-## 1. Install Vue Storefront
+## 1. Install Vue Storefront {/*1-install-vue-storefront*/}
 
 Install the Vue Storefront application using this guide: https://docs.vuestorefront.io/guide/installation/linux-mac.html
 
@@ -18,12 +26,12 @@ Install the Vue Storefront application using this guide: https://docs.vuestorefr
 nvm use 14
 ```
 
-## 2. Prepare VSF files for {{ PRODUCT_NAME }}
+## 2. Prepare VSF files for {{ PRODUCT_NAME }} {/*2-prepare-vsf-files-for--product_name-*/}
 
 - In the new VSF project, go to `src/themes/default` (or any theme you're using) and remove `.git` folder from it to save that in Git VCS.
 - Go to `.gitignore` file and remove `config/local.json` line to keep it tracked.
 
-## 3. Install {{ PRODUCT_NAME }}
+## 3. Install {{ PRODUCT_NAME }} {/*3-install--product_name-*/}
 
 - Install {{ PRODUCT_NAME }} packages: `yarn add -D -W {{ PACKAGE_NAME }}/cli && yarn add -W {{ PACKAGE_NAME }}/core {{ PACKAGE_NAME }}/prefetch {{ PACKAGE_NAME }}/devtools`
 - Create a file called `{{ CONFIG_FILE }}` in the root directory of your project and configure your origin and images hosts as backends. For example:

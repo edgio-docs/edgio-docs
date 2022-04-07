@@ -4,19 +4,27 @@ title: Remix
 
 This guide shows you how to deploy a [Remix](https://remix.run/) application on {{ PRODUCT_NAME }}.
 
-## Example
+## Example {/*example*/}
 
-[Try the Remix Express Example Site](https://layer0-docs-layer0-remix-express-example-default.layer0-limelight.link?button)
-[View the Code](https://github.com/layer0-docs/layer0-remix-express-example?button)
-[Deploy to Layer0](https://app.layer0.co/deploy?button&deploy&repo=https://github.com/layer0-docs/layer0-remix-express-example)
+<ButtonLinksGroup>
+  <ButtonLink variant="fill" type="default" href="https://layer0-docs-layer0-remix-express-example-default.layer0-limelight.link">
+   Try the Remix Express Example Site
+  </ButtonLink>
+  <ButtonLink variant="stroke" type="code" withIcon={true} href="https://github.com/layer0-docs/layer0-remix-express-example?button">
+   View the Code
+  </ButtonLink>
+  <ButtonLink variant="stroke" type="deploy" withIcon={true} href="https://app.layer0.co/deploy?button&deploy&repo=https://github.com/layer0-docs/layer0-remix-express-example">
+    Deploy to Layer0
+  </ButtonLink>
+</ButtonLinksGroup>
 
 {{ SYSTEM_REQUIREMENTS }}
 
-## Sign up for {{ PRODUCT_NAME }}
+## Sign up for {{ PRODUCT_NAME }} {/*sign-up-for--product_name-*/}
 
 Deploying requires an account on {{ PRODUCT_NAME }}. [Sign up here for free.]({{ APP_URL }}/signup).
 
-## Install the {{ PRODUCT_NAME }} CLI
+## Install the {{ PRODUCT_NAME }} CLI {/*install-the--product_name--cli*/}
 
 If you have not already done so, install the [{{ PRODUCT_NAME }} CLI](cli)
 
@@ -24,7 +32,7 @@ If you have not already done so, install the [{{ PRODUCT_NAME }} CLI](cli)
 npm i -g {{ PACKAGE_NAME }}/cli
 ```
 
-## Create a new Remix app
+## Create a new Remix app {/*create-a-new-remix-app*/}
 
 If you don't already have a Remix app, create one by running the following:
 
@@ -40,9 +48,9 @@ You can verify your app works by running it locally with:
 npm run dev
 ```
 
-## Configuring your Remix app for {{ PRODUCT_NAME }}
+## Configuring your Remix app for {{ PRODUCT_NAME }} {/*configuring-your-remix-app-for--product_name-*/}
 
-### Initialize your project
+### Initialize your project {/*initialize-your-project*/}
 
 In the root directory of your project run `{{ CLI_NAME }} init`:
 
@@ -57,7 +65,7 @@ This will automatically update your `package.json` and add all of the required {
 - `{{ CONFIG_FILE }}` - A configuration file for {{ PRODUCT_NAME }}
 - `routes.js` - A default routes file that sends all requests to Remix.
 
-### Install {{ PACKAGE_NAME }}/express
+### Install {{ PACKAGE_NAME }}/express {/*install--package_name-express*/}
 
 Install {{ PACKAGE_NAME }}/express by running the following:
 
@@ -65,7 +73,7 @@ Install {{ PACKAGE_NAME }}/express by running the following:
 npm install {{ PACKAGE_NAME }}/express
 ```
 
-### Update {{ PRODUCT_NAME }} Configuration
+### Update {{ PRODUCT_NAME }} Configuration {/*update--product_name--configuration*/}
 
 Update `{{ CONFIG_FILE }}` at the root of your project to the following:
 
@@ -83,7 +91,7 @@ module.exports = {
 }
 ```
 
-### Configure the routes
+### Configure the routes {/*configure-the-routes*/}
 
 Update `routes.js` at the root of your project to the following:
 
@@ -131,7 +139,7 @@ module.exports = new Router()
 
 Refer to the [Routing](routing) guide for the full syntax of the `routes.js` file and how to configure it for your use case.
 
-### Run the Remix app locally on {{ PRODUCT_NAME }}
+### Run the Remix app locally on {{ PRODUCT_NAME }} {/*run-the-remix-app-locally-on--product_name-*/}
 
 Create a production build of your app by running the following in your project's root directory:
 
@@ -147,7 +155,7 @@ Run {{ PRODUCT_NAME }} on your local machine:
 
 Load the site http://127.0.0.1:3000
 
-## Deploying
+## Deploying {/*deploying*/}
 
 Create a production build of your app by running the following in your project's root directory:
 

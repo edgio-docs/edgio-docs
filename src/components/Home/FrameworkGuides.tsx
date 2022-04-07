@@ -64,7 +64,7 @@ export default function DeveloperTools() {
   const routesCol1: Array<IRoutesProps> = [
     {
       title: 'Next.js',
-      path: 'nextjs',
+      path: 'next',
       icon: {
         light: <IconNextJS />,
         dark: <IconNextJSDark />,
@@ -80,7 +80,7 @@ export default function DeveloperTools() {
     },
     {
       title: 'Vue Storefront',
-      path: 'vue-storefront',
+      path: 'vsf',
       icon: {
         light: <IconVue />,
         dark: <IconVue />,
@@ -96,7 +96,7 @@ export default function DeveloperTools() {
     },
     {
       title: 'Vue.js',
-      path: 'vuejs',
+      path: 'vue',
       icon: {
         light: <IconVue />,
         dark: <IconVue />,
@@ -114,7 +114,7 @@ export default function DeveloperTools() {
   const routesCol2: Array<IRoutesProps> = [
     {
       title: 'Serverless functions',
-      path: 'serverless-functions',
+      path: 'serverless_functions',
       icon: {
         light: <IconServerlessFunctions />,
         dark: <IconServerlessFunctions />,
@@ -130,7 +130,7 @@ export default function DeveloperTools() {
     },
     {
       title: 'Next.js Commerce',
-      path: 'nextjs-commerce',
+      path: 'next_commerce',
       icon: {
         light: <IconNextJSCommerce />,
         dark: <IconNextJSCommerceDark />,
@@ -146,7 +146,7 @@ export default function DeveloperTools() {
     },
     {
       title: 'SolidJS',
-      path: 'solidjs',
+      path: 'solid',
       icon: {
         light: <IconSolidJS />,
         dark: <IconSolidJS />,
@@ -154,7 +154,7 @@ export default function DeveloperTools() {
     },
     {
       title: 'React Static',
-      path: 'react-static',
+      path: 'react_static',
       icon: {
         light: <IconReactStatic />,
         dark: <IconReactStatic />,
@@ -164,7 +164,7 @@ export default function DeveloperTools() {
   const routesCol3: Array<IRoutesProps> = [
     {
       title: 'Ionic Vue',
-      path: 'ionic-vue',
+      path: 'ionic_vue',
       icon: {
         light: <IconVue />,
         dark: <IconVue />,
@@ -188,7 +188,7 @@ export default function DeveloperTools() {
     },
     {
       title: 'Ember.js',
-      path: 'emberjs',
+      path: 'ember',
       icon: {
         light: <IconEmberJS />,
         dark: <IconEmberJS />,
@@ -234,7 +234,7 @@ export default function DeveloperTools() {
                   ) : (
                     <div className="dot" />
                   )}
-                  <Link href={path}>{title}</Link>
+                  <Link href={`/guides/${path}`}>{title}</Link>
                 </li>
               ))}
               {index === 2 && (

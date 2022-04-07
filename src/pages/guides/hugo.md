@@ -4,15 +4,17 @@ title: Hugo
 
 This guide shows you how to deploy a [Hugo](https://gohugo.io) application on {{ PRODUCT_NAME }}.
 
-## Example
+## Example {/*example*/}
 
-[View the Code](https://github.com/layer0-docs/layer0-hugo-example?button)
+<ButtonLink variant="stroke" type="code" withIcon={true} href="https://github.com/layer0-docs/layer0-hugo-example">
+  View the Code
+</ButtonLink>
 
 {{ SYSTEM_REQUIREMENTS }}
 
 {{ SIGN_UP_LAYER0 }}
 
-## Install the {{ PRODUCT_NAME }} CLI
+## Install the {{ PRODUCT_NAME }} CLI {/*install-the--product_name--cli*/}
 
 If you have not already done so, install the [{{ PRODUCT_NAME }} CLI](cli)
 
@@ -20,9 +22,9 @@ If you have not already done so, install the [{{ PRODUCT_NAME }} CLI](cli)
 npm i -g {{ PACKAGE_NAME }}/cli
 ```
 
-## Create a new Hugo app
+## Create a new Hugo app {/*create-a-new-hugo-app*/}
 
-### Step 1: Install Hugo
+### Step 1: Install Hugo {/*step-1-install-hugo*/}
 
 ```bash
 brew install hugo
@@ -36,13 +38,13 @@ To verify your new install:
 hugo version
 ```
 
-### Step 2: Create a New Site
+### Step 2: Create a New Site {/*step-2-create-a-new-site*/}
 
 ```bash
 hugo new site quickstart
 ```
 
-### Step 3: Add a Theme
+### Step 3: Add a Theme {/*step-3-add-a-theme*/}
 
 See [themes.gohugo.io](https://themes.gohugo.io/) for a list of themes to consider. This quickstart uses the beautiful [Ananke theme](https://themes.gohugo.io/gohugo-theme-ananke/).
 
@@ -68,7 +70,7 @@ Then, add the theme to the site configuration:
 echo theme = \"ananke\" >> config.toml
 ```
 
-### Step 4: Add Some Content
+### Step 4: Add Some Content {/*step-4-add-some-content*/}
 
 You can manually create content files (for example as `content/<CATEGORY>/<FILE>.<FORMAT>`) and provide metadata in them, however you can use the `new` command to do a few things for you (like add title and date):
 
@@ -76,13 +78,13 @@ You can manually create content files (for example as `content/<CATEGORY>/<FILE>
 hugo new posts/my-first-post.md
 ```
 
-### Step 5: Start the Hugo server
+### Step 5: Start the Hugo server {/*step-5-start-the-hugo-server*/}
 
 ```bash
 hugo server -D
 ```
 
-## Configuring your Hugo app for {{ PRODUCT_NAME }}
+## Configuring your Hugo app for {{ PRODUCT_NAME }} {/*configuring-your-hugo-app-for--product_name-*/}
 
 Create a `package.json` at the root of your project with the following:
 
@@ -99,7 +101,7 @@ Create a `package.json` at the root of your project with the following:
 }
 ```
 
-### Initialize your project
+### Initialize your project {/*initialize-your-project*/}
 
 In the root directory of your project run `{{ CLI_NAME }} init`:
 
@@ -114,7 +116,7 @@ This will automatically update your `package.json` and add all of the required {
 - `{{ CONFIG_FILE }}` - A configuration file for {{ PRODUCT_NAME }}
 - `routes.js` - A default routes file that sends all requests to Hugo.
 
-### Configure the routes
+### Configure the routes {/*configure-the-routes*/}
 
 Update `routes.js` at the root of your project to the following:
 
@@ -140,7 +142,7 @@ export default new Router().static('public', ({ cache }) => {
 
 Refer to the [Routing](routing) guide for the full syntax of the `routes.js` file and how to configure it for your use case.
 
-### Run the Hugo app locally on {{ PRODUCT_NAME }}
+### Run the Hugo app locally on {{ PRODUCT_NAME }} {/*run-the-hugo-app-locally-on--product_name-*/}
 
 Create a production build of your app by running the following in your project's root directory:
 
@@ -156,7 +158,7 @@ Run {{ PRODUCT_NAME }} on your local machine:
 
 Load the site http://127.0.0.1:3000
 
-## Deploying
+## Deploying {/*deploying*/}
 
 Create a production build of your app by running the following in your project's root directory:
 

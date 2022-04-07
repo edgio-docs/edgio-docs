@@ -4,23 +4,33 @@ title: Spartacus for SAP Commerce Cloud (formerly SAP Hybris)
 
 This guide shows you how to deploy [Spartacus](https://sap.github.io/spartacus-docs) apps on {{ PRODUCT_NAME }}.
 
-[Try the Spartacus Example Site](https://layer0-docs-layer0-spartacus-example-default.layer0.link/?button)
-[View the Code](https://github.com/layer0-docs/layer0-spartacus-example?button)
-[Deploy to Layer0](https://app.layer0.co/deploy?button&deploy&repo=https%3A%2F%2Fgithub.com%2Flayer0-docs%2Flayer0-spartacus-example)
+<ButtonLinksGroup>
+  <ButtonLink variant="fill" type="default" href="https://layer0-docs-layer0-spartacus-example-default.layer0.link/">
+    Try the Spartacus Example Site
+    </ButtonLink>
+  <ButtonLink variant="stroke" type="code" withIcon={true} href="https://github.com/layer0-docs/layer0-spartacus-example">
+   View the Code
+  </ButtonLink>
+  <ButtonLink variant="stroke" type="deploy" withIcon={true} href="https://app.layer0.co/deploy?button&deploy&repo=https%3A%2F%2Fgithub.com%2Flayer0-docs%2Flayer0-spartacus-example">
+    Deploy to Layer0
+  </ButtonLink>
+</ButtonLinksGroup>
 
-## Connector
+## Connector {/*connector*/}
 
 This framework has a connector developed for {{ PRODUCT_NAME }}. See [Connectors](connectors) for more information.
 
-[View the Connector Code](https://github.com/layer0-docs/layer0-connectors/tree/main/layer0-spartacus-connector?button)
+<ButtonLink variant="stroke" type="code" withIcon={true} href="https://github.com/layer0-docs/layer0-connectors/tree/main/layer0-spartacus-connector">
+ View the Connector Code
+</ButtonLink>
 
 {{ SYSTEM_REQUIREMENTS }}
 
-## Getting Started
+## Getting Started {/*getting-started*/}
 
 If you don't already have a Spartacus application, you can create one using:
 
-#### 1. Create a new Angular App
+#### 1. Create a new Angular App {/*1-create-a-new-angular-app*/}
 
 **Spartacus 2.x only supports Angular version 9.x**
 **Spartacus 3.x only supports Angular version 10.x**
@@ -32,7 +42,7 @@ ng new my-layer0-spartacus-app
 
 You should now have a working starter app. Run `ng serve` to see the application running on `localhost:4200`.
 
-#### 2. Add Spartacus with SSR
+#### 2. Add Spartacus with SSR {/*2-add-spartacus-with-ssr*/}
 
 To deploy your Spartacus application on {{ PRODUCT_NAME }} it needs to support server-side rendering (SSR). To add SSR support, run:
 
@@ -53,7 +63,7 @@ You can now run `npm run build:ssr && npm run serve:ssr` to access your server-s
 
 To prepare your Spartacus application for deployment on {{ PRODUCT_NAME }}:
 
-#### 1. Install the {{ PRODUCT_NAME }} CLI globally:
+#### 1. Install the {{ PRODUCT_NAME }} CLI globally: {/*1-install-the--product_name--cli-globally*/}
 
 ```bash
 npm install -g {{ PACKAGE_NAME }}/cli
@@ -76,7 +86,7 @@ This will automatically add all of the required dependencies and files to your p
 - `routes.js` - A default routes file that sends all requests to the Angular Universal server. Update this file to add caching or proxy some URLs to a different origin.
 - The `sw` folder - Contains the files needed to build the service worker that that provides static asset and API prefetching.
 
-#### 3. Update `{{ CONFIG_FILE }}`
+#### 3. Update `{{ CONFIG_FILE }}` {/*3-update--config_file-*/}
 
 For an app called `my-layer0-spartacus-app` the {{ PRODUCT_NAME }} config file created by `{{ CLI_NAME }} init` will look like so:
 
@@ -96,7 +106,7 @@ module.exports = {
 
 If you have several projects and the `defaultProject` as specified in `angular.json` is not the project with the SSR build, specify the correct project with the `ANGULAR_PROJECT` environment variable. For example: `ANGULAR_PROJECT=my-ssr-project {{ CLI_NAME }} build`.
 
-#### 4. Update OCC `baseUrl` endpoint
+#### 4. Update OCC `baseUrl` endpoint {/*4-update-occ-baseurl-endpoint*/}
 
 The `baseUrl` should be updated to use the remote URL when `window` is not defined (i.e., for SSR), and the current host when `window` is defined. For example:
 
@@ -108,9 +118,9 @@ baseUrl: typeof window !== 'undefined'
 
 This value is defined in the `backend` property of the options parameter to `B2cStorefrontModule.withConfig({})` in the `app.module.ts` file, but is best set using environment variables in the `environment.ts` and `environment.prod.ts` files.
 
-## Adding prefetching
+## Adding prefetching {/*adding-prefetching*/}
 
-### Upstream request tracking
+### Upstream request tracking {/*upstream-request-tracking*/}
 
 Prefetching for a Spartacus app can be enabled by listening to upstream requests made when server-side rendering a specific page. `{{ PACKAGE_NAME }}/prefetch` library will pick up on the upstream requests made by reading the `{{ HEADER_PREFIX }}-upstream-requests` response header. An example scenario:
 
@@ -182,7 +192,7 @@ server.get('*', (req, res) => {
 export default server
 ```
 
-### Fixing response header overflows
+### Fixing response header overflows {/*fixing-response-header-overflows*/}
 
 Some CDNs, such as Akamai, impose low limits on the size of response headers. Prefetching works by listing all of the upstream API URLs fetched during SSR in
 a `x-0-upstream-requests` response header. If your application makes many upstream requests for each page during SSR, this header can
@@ -192,7 +202,7 @@ be quite long and exceed the maximum length allowed by your CDN. To mitigate thi
 createRenderCallback(res, { maxHeaderLength: 500 })
 ```
 
-### Service worker
+### Service worker {/*service-worker*/}
 
 The build command places the built `service-worker.js` under `dist` so `{{ PACKAGE_NAME }}/angular` will know to static serve the file.
 
@@ -252,7 +262,7 @@ ServiceWorkerModule.register(
 
 Add `"skipLibCheck": true,` to `tsconfig.json` to avoid type errors from `workbox` library during build.
 
-## Routing and Cache Configuration
+## Routing and Cache Configuration {/*routing-and-cache-configuration*/}
 
 The default `routes.js` file created by `{{ CLI_NAME }} init` sends all requests to Angular server via a fallback route.
 
@@ -323,7 +333,7 @@ return new Router()
 }
 ```
 
-## Running Locally
+## Running Locally {/*running-locally*/}
 
 To test your app locally, run:
 
@@ -339,7 +349,7 @@ You can do a production build of your app and test it locally using:
 
 Setting `--production` runs your app exactly as it will be uploaded to the {{ PRODUCT_NAME }} cloud using serverless-offline.
 
-## Deploying
+## Deploying {/*deploying*/}
 
 Deploying requires an account on {{ PRODUCT_NAME }}. [Sign up here for free.]({{ APP_URL }}/signup) Once you have an account, you can deploy to {{ PRODUCT_NAME }} by running the following in the root folder of your project:
 

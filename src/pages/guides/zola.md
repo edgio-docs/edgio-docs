@@ -4,15 +4,17 @@ title: Zola
 
 This guide shows you how to deploy a [Zola](https://www.getzola.org/) application on {{ PRODUCT_NAME }}.
 
-## Example
+## Example {/*example*/}
 
-[View the Code](https://github.com/layer0-docs/layer0-zola-example?button)
+<ButtonLink variant="stroke" type="code" withIcon={true} href="https://github.com/layer0-docs/layer0-zola-example?button">
+ View the Code
+</ButtonLink>
 
 {{ SYSTEM_REQUIREMENTS }}
 
 {{ SIGN_UP_LAYER0 }}
 
-## Install the {{ PRODUCT_NAME }} CLI
+## Install the {{ PRODUCT_NAME }} CLI {/*install-the--product_name--cli*/}
 
 If you have not already done so, install the [{{ PRODUCT_NAME }} CLI](cli)
 
@@ -20,9 +22,9 @@ If you have not already done so, install the [{{ PRODUCT_NAME }} CLI](cli)
 npm i -g {{ PACKAGE_NAME }}/cli
 ```
 
-## Create a new Zola app
+## Create a new Zola app {/*create-a-new-zola-app*/}
 
-### Step 1: Install Zola
+### Step 1: Install Zola {/*step-1-install-zola*/}
 
 ```bash
 brew install zola
@@ -36,7 +38,7 @@ To verify your new install:
 zola --version
 ```
 
-### Step 2: Create a New Site
+### Step 2: Create a New Site {/*step-2-create-a-new-site*/}
 
 ```bash
 zola init myblog
@@ -81,7 +83,7 @@ For reference, by the **end** of this overview, our `myblog` directory will have
 └── themes/
 ```
 
-### Step 3: Start the Zola server
+### Step 3: Start the Zola server {/*step-3-start-the-zola-server*/}
 
 Let's start the Zola development server with:
 
@@ -91,7 +93,7 @@ Building site...
 -> Creating 0 pages (0 orphan), 0 sections, and processing 0 images
 ```
 
-## Configuring your Zola app for {{ PRODUCT_NAME }}
+## Configuring your Zola app for {{ PRODUCT_NAME }} {/*configuring-your-zola-app-for--product_name-*/}
 
 Create a `package.json` at the root of your project with the following:
 
@@ -99,7 +101,7 @@ Create a `package.json` at the root of your project with the following:
 npm init
 ```
 
-### Initialize your project
+### Initialize your project {/*initialize-your-project*/}
 
 In the root directory of your project run `{{ CLI_NAME }} init`:
 
@@ -114,7 +116,7 @@ This will automatically update your `package.json` and add all of the required {
 - `{{ CONFIG_FILE }}` - A configuration file for {{ PRODUCT_NAME }}
 - `routes.js` - A default routes file that sends all requests to Zola.
 
-### Configure the routes
+### Configure the routes {/*configure-the-routes*/}
 
 Update `routes.js` at the root of your project to the following:
 
@@ -140,7 +142,7 @@ export default new Router().static('public', ({ cache }) => {
 
 Refer to the [Routing](routing) guide for the full syntax of the `routes.js` file and how to configure it for your use case.
 
-### Run the Zola app locally on {{ PRODUCT_NAME }}
+### Run the Zola app locally on {{ PRODUCT_NAME }} {/*run-the-zola-app-locally-on--product_name-*/}
 
 Create a production build of your app by running the following in your project's root directory:
 
@@ -156,7 +158,7 @@ Run {{ PRODUCT_NAME }} on your local machine:
 
 Load the site http://127.0.0.1:3000
 
-## Deploying
+## Deploying {/*deploying*/}
 
 Create a production build of your app by running the following in your project's root directory:
 

@@ -5,6 +5,7 @@ const StyledButtonLinksGroup = styled.div`
   column-gap: 11px;
   row-gap: 22px;
   flex-wrap: wrap;
+  align-items: center;
 `;
 
 export default function ButtonLinksGroup({

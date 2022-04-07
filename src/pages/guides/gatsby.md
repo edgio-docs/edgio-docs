@@ -8,15 +8,28 @@ This guide shows you how to deploy an [Gatsby](https://www.gatsbyjs.com/) applic
 
 ## Example {/*example*/}
 
-[Try the Gatsby SSG Example Site](https://layer0-docs-layer0-gatsby-example-default.layer0-limelight.link?button)
-[View the Code](https://github.com/layer0-docs/layer0-gatsby-example?button)
-[Deploy to Layer0](https://app.layer0.co/deploy?button&deploy&repo=https://github.com/layer0-docs/layer0-gatsby-example)
+[Try the Gatsby SSG Example Site]()
+[View the Code]()
+[Deploy to Layer0]()
+<ButtonLinksGroup>
+  <ButtonLink variant="fill" type="default" href="https://layer0-docs-layer0-gatsby-example-default.layer0-limelight.link">
+   Try the Gatsby SSG Example Site
+  </ButtonLink>
+  <ButtonLink variant="stroke" type="code" withIcon={true} href="https://github.com/layer0-docs/layer0-gatsby-example">
+   View the Code
+  </ButtonLink>
+  <ButtonLink variant="stroke" type="deploy" withIcon={true} href="https://app.layer0.co/deploy?button&deploy&repo=https://github.com/layer0-docs/layer0-gatsby-example">
+    Deploy to Layer0
+  </ButtonLink>
+</ButtonLinksGroup>
 
 ## Connector {/*connector*/}
 
 This framework has a connector developed for {{ PRODUCT_NAME }}. See [Connectors](connectors) for more information.
 
-[View the Connector Code](https://github.com/layer0-docs/layer0-connectors/tree/main/layer0-gatsby-connector?button)
+<ButtonLink variant="stroke" type="code" withIcon={true} href="https://github.com/layer0-docs/layer0-connectors/tree/main/layer0-gatsby-connector">
+  View the Connector Code
+</ButtonLink>
 
 {{ SYSTEM_REQUIREMENTS }}
 

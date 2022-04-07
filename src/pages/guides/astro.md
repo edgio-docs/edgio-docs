@@ -6,9 +6,17 @@ title: Astro
 
 ## Example {/*example*/}
 
-[Try the Astro Example Site](https://layer0-docs-layer0-astro-example-default.layer0-limelight.link/?button)
-[View the Code](https://github.com/layer0-docs/layer0-astro-example?button)
-[Deploy to Layer0](https://app.layer0.co/deploy?button&deploy&repo=https%253A%252F%252Fgithub.com%252Flayer0-docs%252Flayer0-astro-example)
+<ButtonLinksGroup>
+  <ButtonLink variant="fill" type="default" href="https://layer0-docs-layer0-astro-example-default.layer0-limelight.link">
+    Try the Astro Example Site
+  </ButtonLink>
+  <ButtonLink variant="stroke" type="code" withIcon={true} href="https://github.com/layer0-docs/layer0-astro-example">
+   View the Code
+  </ButtonLink>
+  <ButtonLink variant="stroke" type="deploy" withIcon={true} href="https://app.layer0.co/deploy?button&deploy&repo=https%253A%252F%252Fgithub.com%252Flayer0-docs%252Flayer0-astro-example">
+    Deploy to Layer0
+  </ButtonLink>
+</ButtonLinksGroup>
 
 ## Create your Astro site {/*create-your-astro-site*/}
 

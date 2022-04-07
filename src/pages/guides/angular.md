@@ -6,15 +6,25 @@ This guide shows you how to deploy an [Angular](https://angular.io) application 
 
 ## Example {/*example*/}
 
-[Try the Angular SSR Example Site](https://layer0-docs-layer0-angular-example-default.layer0.link/category/hats?button)
-[View the Code](https://github.com/layer0-docs/layer0-angular-example?button)
-[Deploy to Layer0](https://app.layer0.co/deploy?button&deploy&repo=https%3A%2F%2Fgithub.com%2Flayer0-docs%2Flayer0-angular-example)
+<ButtonLinksGroup>
+  <ButtonLink variant="fill" type="default" href="https://layer0-docs-layer0-angular-example-default.layer0.link/category/hats">
+    Try the Angular SSR Example Site
+  </ButtonLink>
+  <ButtonLink variant="stroke" type="code" withIcon={true} href="https://github.com/layer0-docs/layer0-angular-example">
+   View the Code
+  </ButtonLink>
+  <ButtonLink variant="stroke" type="deploy" withIcon={true} href="https://app.layer0.co/deploy?button&deploy&repo=https%3A%2F%2Fgithub.com%2Flayer0-docs%2Flayer0-angular-example">
+    Deploy to Layer0
+  </ButtonLink>
+</ButtonLinksGroup>
 
 ## Connector {/*connector*/}
 
 This framework has a connector developed for {{ PRODUCT_NAME }}. See [Connectors](connectors) for more information.
 
-[View the Connector Code](https://github.com/layer0-docs/layer0-connectors/tree/main/layer0-angular-connector?button)
+<ButtonLink variant="stroke" type="code" withIcon={true} href="https://github.com/layer0-docs/layer0-connectors/tree/main/layer0-angular-connector">
+ View the Connector Code
+</ButtonLink>
 
 {{ SYSTEM_REQUIREMENTS }}
 

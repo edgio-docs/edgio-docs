@@ -69,7 +69,9 @@ Use this worksheet when auditing your site for personalized content to inventory
 
 This framework has a connector developed for {{ PRODUCT_NAME }}. See [Connectors](connectors) for more information.
 
-[View the Connector Code](https://github.com/layer0-docs/layer0-connectors/tree/main/layer0-starter-connector?button)
+<ButtonLink variant="stroke" type="code" withIcon={true} href="https://github.com/layer0-docs/layer0-connectors/tree/main/layer0-starter-connector">
+  View the Connector Code
+</ButtonLink>
 
 {{ SYSTEM_REQUIREMENTS }}
 

@@ -4,21 +4,31 @@ title: Frontity
 
 This guide shows you how to deploy [Frontity](https://frontity.org/) apps on {{ PRODUCT_NAME }}.
 
-## Example
+## Example {/*example*/}
 
-[Try the Frontity Example Site](https://layer0-docs-layer0-frontity-example-default.layer0.link/?button)
-[View the Code](https://github.com/layer0-docs/layer0-frontity-example?button)
-[Deploy to Layer0](https://app.layer0.co/deploy?button&deploy&repo=https%3A%2F%2Fgithub.com%2Flayer0-docs%2Flayer0-frontity-example)
+<ButtonLinksGroup>
+  <ButtonLink variant="fill" type="default" href="https://layer0-docs-layer0-frontity-example-default.layer0.link">
+   Try the the Ember.js Example Site
+  </ButtonLink>
+  <ButtonLink variant="stroke" type="code" withIcon={true} href="https://github.com/layer0-docs/layer0-frontity-example">
+   View the Code
+  </ButtonLink>
+  <ButtonLink variant="stroke" type="deploy" withIcon={true} href="https://app.layer0.co/deploy?button&deploy&repo=https%3A%2F%2Fgithub.com%2Flayer0-docs%2Flayer0-frontity-example">
+    Deploy to Layer0
+  </ButtonLink>
+</ButtonLinksGroup>
 
-## Connector
+## Connector {/*connector*/}
 
 This framework has a connector developed for {{ PRODUCT_NAME }}. See [Connectors](connectors) for more information.
 
-[View the Connector Code](https://github.com/layer0-docs/layer0-connectors/tree/main/layer0-frontity-connector?button)
+<ButtonLink variant="stroke" type="code" withIcon={true} href="https://github.com/layer0-docs/layer0-connectors/tree/main/layer0-frontity-connector">
+ View the Connector Code
+</ButtonLink>
 
 {{ SYSTEM_REQUIREMENTS }}
 
-## Getting Started
+## Getting Started {/*getting-started*/}
 
 If you don't already have a Frontity app, use the terminal (or command prompt on Windows) to create one using the commands below:
 
@@ -43,7 +53,7 @@ This will automatically add all of the required dependencies and files to your p
 - `sw/service-worker.js` - The source code for your service worker, which enables prefetching when running on {{ PRODUCT_NAME }}.
 - `{{ CONFIG_FILE }}` - Contains configuration options for deploying on {{ PRODUCT_NAME }}.
 
-## Adding the {{ PRODUCT_NAME }} Service Worker
+## Adding the {{ PRODUCT_NAME }} Service Worker {/*adding-the--product_name--service-worker*/}
 
 To add the {{ PRODUCT_NAME }} service worker to your app, call the `install` function from `{{ PACKAGE_NAME }}/prefetch/window` in a `useEffect` hook when the app first loads. For example, you can alter
 the Header component in your theme as follows:
@@ -64,7 +74,7 @@ const Header = ({ state }) => {
 }
 ```
 
-## Prefetching Content
+## Prefetching Content {/*prefetching-content*/}
 
 To prefetch data into the browser cache using the service worker, use the `Prefetch` component from `{{ PACKAGE_NAME }}/react`. This component prefetches a specific url from the {{ PRODUCT_NAME }} edge when it becomes visible in the viewport. You typically wrap it around links. For example:
 
@@ -81,7 +91,7 @@ function MyComponent() {
 }
 ```
 
-## Running Locally
+## Running Locally {/*running-locally*/}
 
 To simulate your app within {{ PRODUCT_NAME }} locally, run:
 
@@ -89,7 +99,7 @@ To simulate your app within {{ PRODUCT_NAME }} locally, run:
 {{ CLI_NAME }} dev
 ```
 
-### Simulate edge caching locally
+### Simulate edge caching locally {/*simulate-edge-caching-locally*/}
 
 To simulate edge caching locally, run:
 
@@ -97,7 +107,7 @@ To simulate edge caching locally, run:
 {{ CLI_NAME }} dev --cache
 ```
 
-## Deploying
+## Deploying {/*deploying*/}
 
 Deploying requires an account on {{ PRODUCT_NAME }}. [Sign up here for free.]({{ APP_URL }}/signup) Once you have an account, you can deploy to {{ PRODUCT_NAME }} by running the following in the root folder of your project
 

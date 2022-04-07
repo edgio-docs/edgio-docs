@@ -9,6 +9,8 @@ export default function getLanguage(language: string) {
     case 'typescript':
       return 'TypeScript';
     case 'bash':
+    case 'cli':
+    case 'terminal':
       return 'Terminal';
     case 'json':
       return 'JSON';

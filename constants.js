@@ -2,6 +2,7 @@ const PRODUCT_NAME = 'Layer0';
 const PRODUCT_NAME_LOWER = PRODUCT_NAME.toLowerCase();
 const PRODUCT_NAME_UPPER = PRODUCT_NAME.toUpperCase();
 const CLI_NAME = '0';
+const FULL_CLI_NAME = 'layer0';
 const PACKAGE_NAME = '@layer0';
 const CONFIG_FILE = 'layer0.config.js';
 const HEADER_PREFIX = 'x-0';
@@ -20,6 +21,7 @@ const FORUM_URL = `https://forum.${DOMAIN}`;
 const FIDDLE_URL = `https://fiddle.${DOMAIN}`;
 const STATUS_URL = `https://status.${DOMAIN}`;
 const HELP_URL = `https://help.${DOMAIN}`;
+const SUPPORT_URL = `${APP_URL}/help`;
 const DOCS_URL = `https://${DOCS_DOMAIN}`;
 const DOCS_PAGES_REPO_URL = `https://${DOCS_PAGES_DOMAIN}`;
 
@@ -56,38 +58,40 @@ const SYSTEM_REQUIREMENTS_H3 = `### System Requirements
 
 - [Install Node.js 14.0](/guides/install-nodejs)`;
 
-const SIGN_UP_LAYER0 = `## Sign up for ${PRODUCT_NAME}
+const SIGN_UP_LAYER0 = `## Sign up for {{ PRODUCT_NAME }}
 
-Deploying requires an account on ${PRODUCT_NAME}. [Sign up here for free.](${APP_URL}/signup)`;
+Deploying requires an account on {{ PRODUCT_NAME }}. [Sign up here for free.]({{ APP_URL }}/signup)`;
 
 module.exports = {
-  PRODUCT_NAME,
-  PRODUCT_NAME_LOWER,
-  PRODUCT_NAME_UPPER,
-  CLI_NAME,
-  PACKAGE_NAME,
-  CONFIG_FILE,
-  HEADER_PREFIX,
-  COOKIE_PREFIX,
-  DOMAIN,
   APP_DOMAIN,
+  APP_URL,
+  CLI_NAME,
+  CONFIG_FILE,
+  COOKIE_PREFIX,
   DOCS_DOMAIN,
   DOCS_PAGES_DOMAIN,
-  WWW_URL,
-  APP_URL,
-  FORUM_URL,
-  STATUS_URL,
-  HELP_URL,
-  DOCS_URL,
   DOCS_PAGES_REPO_URL,
-  NODE_VERSION,
-  STARTER_NAME,
   DOCS_REPO,
-  EXAMPLES_REPO,
+  DOCS_URL,
+  DOMAIN,
   EDGEJS_LABEL,
+  EXAMPLES_REPO,
   EXAMPLES_REPOS,
-  SYSTEM_REQUIREMENTS,
-  SYSTEM_REQUIREMENTS_H3,
-  SIGN_UP_LAYER0,
   FIDDLE_URL,
+  FORUM_URL,
+  FULL_CLI_NAME,
+  HEADER_PREFIX,
+  HELP_URL,
+  NODE_VERSION,
+  PACKAGE_NAME,
+  PRODUCT_NAME_LOWER,
+  PRODUCT_NAME_UPPER,
+  PRODUCT_NAME,
+  SIGN_UP_LAYER0,
+  STARTER_NAME,
+  STATUS_URL,
+  SUPPORT_URL,
+  SYSTEM_REQUIREMENTS_H3,
+  SYSTEM_REQUIREMENTS,
+  WWW_URL,
 };

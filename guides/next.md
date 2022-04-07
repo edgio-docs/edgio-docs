@@ -440,7 +440,7 @@ At build time, layer0 will run a trace on your application code and find only th
 
 As of Next.js version 12 the `serverless` and `experimental-serverless-trace` targets have been deprecated and no new features will be supported for these targets. This includes Next.js Middleware (beta) and React component streaming (alpha). The `@layer0/next` connector has historically utilized the `serverless` and `experimental-serverless-trace` targets to create a suitable build output for a serverless runtime.
 
-As of **vTODO** layer0 packages, Next.js apps using Next.js versions 12 or higher can opt into using the default `server` target by explicitly setting `target: 'server'` in the `next.config.js` file. The `@layer0/next` connector will then create a minimal server bundle with requests delegated to a Next.js server instance instead of rendering via serverless page functions. When opting into the `server` target you can use Next.js Middleware.
+As of **v4.13.0** layer0 packages, Next.js apps using Next.js versions 12 or higher can opt into using the default `server` target by explicitly setting `target: 'server'` in the `next.config.js` file. The `@layer0/next` connector will then create a minimal server bundle with requests delegated to a Next.js server instance instead of rendering via serverless page functions. When opting into the `server` target you can use Next.js Middleware.
 
 Future versions of layer0 when using Next.js 12 or higher will utilize the `server` target by default.
 

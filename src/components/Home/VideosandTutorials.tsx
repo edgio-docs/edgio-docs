@@ -57,7 +57,7 @@ export default function VideosandTutorials() {
         {videos.map((video, index) => (
           <div className="video" key={index}>
             <h1 className="title">{video.title}</h1>
-            <Video url={video.url} />
+            <Video src={video.url} />
           </div>
         ))}
       </div>

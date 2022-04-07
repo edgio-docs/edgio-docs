@@ -4,15 +4,15 @@ title: Gatsby
 
 This guide shows you how to deploy an [Gatsby](https://www.gatsbyjs.com/) application on {{ PRODUCT_NAME }}.
 
-![video](https://www.youtube.com/watch?v=ici9j6oF_5E)
+<Video src="https://www.youtube.com/watch?v=ici9j6oF_5E" />
 
-## Example
+## Example {/*example*/}
 
 [Try the Gatsby SSG Example Site](https://layer0-docs-layer0-gatsby-example-default.layer0-limelight.link?button)
 [View the Code](https://github.com/layer0-docs/layer0-gatsby-example?button)
 [Deploy to Layer0](https://app.layer0.co/deploy?button&deploy&repo=https://github.com/layer0-docs/layer0-gatsby-example)
 
-## Connector
+## Connector {/*connector*/}
 
 This framework has a connector developed for {{ PRODUCT_NAME }}. See [Connectors](connectors) for more information.
 
@@ -20,7 +20,7 @@ This framework has a connector developed for {{ PRODUCT_NAME }}. See [Connectors
 
 {{ SYSTEM_REQUIREMENTS }}
 
-## Getting Started
+## Getting Started {/*getting-started*/}
 
 If you don't already have a Gatsby application, you can create one using:
 
@@ -53,7 +53,7 @@ This will automatically add all of the required dependencies and files to your p
 - `{{ CONFIG_FILE }}`
 - `routes.js` - A default routes file that sends all requests to your Gatsby static site. Update this file to add caching or proxy some URLs to a different origin.
 
-## Running Locally
+## Running Locally {/*running-locally*/}
 
 You can test the integration of the {{ PRODUCT_NAME }} router with your gatsby site locally using:
 
@@ -61,7 +61,7 @@ You can test the integration of the {{ PRODUCT_NAME }} router with your gatsby s
 {{ CLI_NAME }} dev
 ```
 
-## Deploying
+## Deploying {/*deploying*/}
 
 Deploying requires an account on {{ PRODUCT_NAME }}. [Sign up here for free.]({{ APP_URL }}/signup) Once you have an account, you can deploy to {{ PRODUCT_NAME }} by running the following in the root folder of your project:
 
@@ -71,7 +71,7 @@ Deploying requires an account on {{ PRODUCT_NAME }}. [Sign up here for free.]({{
 
 See [Deploying](deploying) guide for more information.
 
-## Routing
+## Routing {/*routing*/}
 
 The default `routes.js` file created by `{{ CLI_NAME }} init` sends all requests to the Gatsby static site.
 
@@ -85,7 +85,7 @@ const { gatsbyRoutes } = require('{{ PACKAGE_NAME }}/gatsby')
 module.exports = new Router().use(gatsbyRoutes)
 ```
 
-### Adding routes to a different origin
+### Adding routes to a different origin {/*adding-routes-to-a-different-origin*/}
 
 To proxy some URLs to a different origin, you need first to configure that origin in your `{{ CONFIG_FILE }}` file.
 

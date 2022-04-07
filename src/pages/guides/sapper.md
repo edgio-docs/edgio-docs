@@ -4,9 +4,9 @@ title: Sapper
 
 This guide shows you how to deploy [Sapper](https://sapper.svelte.dev/) apps on {{ PRODUCT_NAME }}
 
-![video](https://www.youtube.com/watch?v=Xt_UlQiXDgQ)
+<Video src="https://www.youtube.com/watch?v=Xt_UlQiXDgQ"/>
 
-## Example SSR Site
+## Example SSR Site {/*example-ssr-site*/}
 
 This Sapper example app uses server-side rendering and prefetching to provide lightening-fast transitions between pages.
 
@@ -14,7 +14,7 @@ This Sapper example app uses server-side rendering and prefetching to provide li
 [View the Code](https://github.com/layer0-docs/layer0-sapper-example?button)
 [Deploy to Layer0](https://app.layer0.co/deploy?button&deploy&repo=https%3A%2F%2Fgithub.com%2Flayer0-docs%2Flayer0-sapper-example)
 
-## Connector
+## Connector {/*connector*/}
 
 This framework has a connector developed for {{ PRODUCT_NAME }}. See [Connectors](connectors) for more information.
 
@@ -22,7 +22,7 @@ This framework has a connector developed for {{ PRODUCT_NAME }}. See [Connectors
 
 {{ SYSTEM_REQUIREMENTS }}
 
-## Getting Started
+## Getting Started {/*getting-started*/}
 
 If you don't already have a Sapper app, use the terminal (or command prompt on Windows) to create one using the commands below:
 
@@ -54,7 +54,7 @@ This will automatically add all of the required dependencies and files to your p
 - `{{ CONFIG_FILE }}`
 - `routes.js` - A default routes file that sends all requests to Sapper. Update this file to add caching or proxy some URLs to a different origin.
 
-## Webpack
+## Webpack {/*webpack*/}
 
 If you're using webpack to build your app, update `webpack.config.js` to bundle all dependencies in the server build:
 
@@ -69,7 +69,7 @@ If you're using webpack to build your app, update `webpack.config.js` to bundle 
                                 {
 ```
 
-## Rollup
+## Rollup {/*rollup*/}
 
 If you're using Rollup to build your app, install `@rollup/plugin-json`:
 
@@ -109,7 +109,7 @@ and
 +		            external: require('module').builtinModules,
 ```
 
-## Running Locally
+## Running Locally {/*running-locally*/}
 
 To simulate your app within {{ PRODUCT_NAME }} locally, run:
 
@@ -119,7 +119,7 @@ To simulate your app within {{ PRODUCT_NAME }} locally, run:
 
 ```
 
-### Simulate edge caching locally
+### Simulate edge caching locally {/*simulate-edge-caching-locally*/}
 
 To simulate edge caching locally, run:
 
@@ -129,7 +129,7 @@ To simulate edge caching locally, run:
 
 ```
 
-## Deploying
+## Deploying {/*deploying*/}
 
 Deploying requires an account on {{ PRODUCT_NAME }}. [Sign up here for free.]({{ APP_URL }}/signup) Once you have an account, you can deploy to {{ PRODUCT_NAME }} by running the following in the root folder of your project
 
@@ -141,11 +141,11 @@ Deploying requires an account on {{ PRODUCT_NAME }}. [Sign up here for free.]({{
 
 See [deploying](deploying) for more information.
 
-## Prefetching
+## Prefetching {/*prefetching*/}
 
 Follow these steps to add prefetching to your app:
 
-### Service Worker
+### Service Worker {/*service-worker*/}
 
 Add the following to `src/service-worker.js`:
 
@@ -161,7 +161,7 @@ new Prefetcher().route()
 /* end: add this to src/service-worker.js */
 ```
 
-### Prefetch Component
+### Prefetch Component {/*prefetch-component*/}
 
 To prefetch data when links become visible in the viewport, wrap the link in the `Prefetch` component from `{{ PACKAGE_NAME }}/svelte`
 

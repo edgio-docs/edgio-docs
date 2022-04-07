@@ -6,7 +6,7 @@ The Next.js framework first introduced the pattern of Incremental Static (Re)Gen
 
 {{ PRODUCT_NAME }} provides full support for Incremental Static (Re)Generation, not just on apps built with Next.js (where the `{{ PACKAGE_NAME }}/next` package makes this automatic), but on apps built with any framework.
 
-## Adding ISG to Next.js apps
+## Adding ISG to Next.js apps {/*section_adding_isg_to_next_js_apps*/}
 
 Developers using Next.js don't need to do anything special to support ISG on {{ PRODUCT_NAME }}. Simply use the `NextRoutes` router plugin:
 
@@ -19,7 +19,7 @@ const { nextRoutes } = require('{{ PACKAGE_NAME }}/next')
 module.exports = new Router().use(nextRoutes)
 ```
 
-## Adding ISG to an App Built with any Framework
+## Adding ISG to an App Built with any Framework {/*section_adding_isg_to_an_app_built_with_any_framework*/}
 
 To enable ISG on any framework, statically render a subset of your app's pages at build time as well as a static loading page. You can have a single loading page for your app or a separate one for each route. Then, configure your {{ PRODUCT_NAME }} router to serve the statically rendered pages using `serveStatic`. Use the `onNotFound` and `loadingPage` options to fall back to SSR while displaying the loading page when a request is received for a page that has not been statically rendered.
 

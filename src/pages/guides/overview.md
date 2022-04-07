@@ -4,7 +4,7 @@ title: Overview
 
 This guide introduces the high-level concepts behind {{ PRODUCT_NAME }}.
 
-![video](https://www.youtube.com/watch?v=u7ed4HFzR8A)
+<Video src="https://www.youtube.com/watch?v=u7ed4HFzR8A"/>
 
 ## What is {{ PRODUCT_NAME }}? {/*what-is--product_name-*/}
 

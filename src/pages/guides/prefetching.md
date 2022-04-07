@@ -4,7 +4,7 @@ title: Prefetching
 
 {{ PRODUCT_NAME }} allows you to speed up the user's browsing experience by prefetching pages and API calls that they are likely to need.
 
-![video](https://www.youtube.com/watch?v=lfhSDCNgzfs)
+<Video src="https://www.youtube.com/watch?v=lfhSDCNgzfs"/>
 
 ## Traffic Shielding {/*traffic-shielding*/}
 

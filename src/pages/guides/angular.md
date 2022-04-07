@@ -12,11 +12,7 @@ This guide shows you how to deploy an [Angular](https://angular.io) application 
 
 ## Connector {/*connector*/}
 
-This framework has a connector developed for {{ PRODUCT_NAME }}.
-
-<Callout type="info">
-  See <a href="/guides/connectors">Connectors</a> for more information.
-</Callout>
+This framework has a connector developed for {{ PRODUCT_NAME }}. See [Connectors](connectors) for more information.
 
 [View the Connector Code](https://github.com/layer0-docs/layer0-connectors/tree/main/layer0-angular-connector?button)
 
@@ -40,12 +36,10 @@ You should now have a working starter app. Run `ng serve` to see the application
 To deploy your Angular application on {{ PRODUCT_NAME }} it needs to support server-side rendering (SSR). To add SSR support, run:
 
 ```bash
-ng add @nguniversal/express-engine --clientProject <PROJECT_NAME>
+ng add @nguniversal/express-engine --clientProject {{PROJECT_NAME}}
 ```
 
-<Callout type="info">
-  The <strong>PROJECT_NAME</strong> value comes from the <strong>package.json</strong> file and should match the value of the <strong>name</strong> key.
-</Callout>
+(Note: the `{{PROJECT_NAME}}` value comes from the `package.json` file and should match the value of the `name` key.
 
 Read more about server-side rendering in Angular [here](https://angular.io/guide/universal).
 

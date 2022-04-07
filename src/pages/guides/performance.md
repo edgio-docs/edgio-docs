@@ -4,11 +4,11 @@ title: Performance
 
 This guide shows you how to monitor and improve the performance of your application running on {{ PRODUCT_NAME }}.
 
-## Built-in Timings
+## Built-in Timings {/*built-in-timings*/}
 
 All responses contain an [{{ HEADER_PREFIX }}-t](/guides/response_headers#section_structure_of_) header that contains the time the request spent at each layer of the {{ PRODUCT_NAME }} stack.
 
-## Tracking your Own Timings
+## Tracking your Own Timings {/*tracking-your-own-timings*/}
 
 You can use the `{{ PACKAGE_NAME }}/core/timing` module to track how long it takes parts of your code to execute. A common case is
 tracking how long it takes to fetch a result from an upstream API. For example:
@@ -30,11 +30,11 @@ try {
 - The value of this header will be logged into `xut` field in [access logs](/guides/logs#section_access_logs). The logged data is limited to 50 bytes after which it will be truncated.
 - Any timings that are not ended before the response is sent will have a value of `na`
 
-## Performance Optimizations
+## Performance Optimizations {/*performance-optimizations*/}
 
-### Turn off Caching When not Needed
+### Turn off Caching When not Needed {/*turn-off-caching-when-not-needed*/}
 
-For `GET` routes that you know you will or must not cache not cache, always explicitly disable caching. This indicates to {{ PRODUCT_NAME }} that it should not try to coalesce requests which leads to improved performance especially on slower upstreams.
+For `GET` routes that you know you will not or must not cache, always explicitly disable caching. This indicates to {{ PRODUCT_NAME }} that it should not try to coalesce requests which leads to improved performance especially on slower upstreams.
 
 For example, if you know that nothing from your legacy upstream will or can ever be cached, do this:
 

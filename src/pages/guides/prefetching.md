@@ -6,11 +6,11 @@ title: Prefetching
 
 ![video](https://www.youtube.com/watch?v=lfhSDCNgzfs)
 
-## Traffic Shielding
+## Traffic Shielding {/*traffic-shielding*/}
 
 You might think that prefetching will put significant additional load on the infrastructure hosting your APIs. That's actually not the case! {{ PRODUCT_NAME }} only serves prefetch requests from the edge cache. It will never make a request to the origin if a prefetch request cannot be served from the edge cache, so your servers will never see an increased load.
 
-## Service Worker
+## Service Worker {/*service-worker*/}
 
 To enable prefetching, your site's service worker needs to use the `{{ PACKAGE_NAME }}/prefetch` library's `Prefetcher` class. If your site doesn't currently have a service worker, one can easily be created using Google's [Workbox](https://developers.google.com/web/tools/workbox).
 
@@ -28,7 +28,7 @@ precacheAndRoute(self.__WB_MANIFEST || [])
 new Prefetcher().route()
 ```
 
-## Window
+## Window {/*window*/}
 
 Once you've created a service worker, code running in the browser window needs to register the service worker before prefetching can begin. How you do this depends on the front-end framework that you use.
 
@@ -40,7 +40,7 @@ import install from '{{ PACKAGE_NAME }}/prefetch/window/install'
 install()
 ```
 
-## Prefetching a URL
+## Prefetching a URL {/*prefetching-a-url*/}
 
 To prefetch a URL, call the `prefetch` function from `{{ PACKAGE_NAME }}/prefetch/window`:
 
@@ -52,7 +52,13 @@ prefetch('/some/url')
 
 Prefetch requests are given the lowest priority. This ensures that they do not block more critical requests like API calls, images, scripts, and navigation.
 
-## React
+## The cache-manifest.js File {/*the-cache-manifestjs-file*/}
+
+This file is generated at runtime and is used by the `Prefetcher` class  from `{{ PACKAGE_NAME }}/prefetch` to add routes to the [service worker](#section_service_worker). The routes ensure that custom cache keys and the `serviceWorkerSeconds` properties from the `cache()` settings in your router are propagated to the service worker.
+
+For more information on `Prefetcher`, `serviceWorkderSeconds`, and `cache()`, see [Class Prefetcher](/docs/api/prefetch/classes/_sw_prefetcher_.prefetcher.html).
+
+## React {/*react*/}
 
 The `{{ PACKAGE_NAME }}/react` package provides a `Prefetch` component that you can wrap around any link to prefetch the link when it becomes visible in the viewport:
 
@@ -103,7 +109,7 @@ If you need to prefetch a different url, you can do so using the `url` prop:
 </Link>
 ```
 
-## Vue
+## Vue {/*vue*/}
 
 The `{{ PACKAGE_NAME }}/vue` package provides a `Prefetch` component that you can wrap around any link to prefetch the link when it becomes visible in the viewport:
 
@@ -126,7 +132,7 @@ The `{{ PACKAGE_NAME }}/vue` package provides a `Prefetch` component that you ca
 
 By default `Prefetch` will fetch and cache the URL in the link's `to` attribute (for both `router-link` and `nuxt-link`). If you have a single page app, you most likely want to prefetch an API call for the page rather than the page's HTML. The example above shows you how to set the `url` property to control which URL is prefetched.
 
-## Deep Fetching
+## Deep Fetching {/*deep-fetching*/}
 
 By default, prefetching only fetches the JSON API data or HTML document for a prefetched page. In order to achieve truly instant page transitions, all of the page's assets above the fold need to be prefetched as well. These typically include images, CSS, and JavaScript. This is where "deep fetching" comes in. Deep fetching parses the prefetched page and then fetches the important assets of the prefetched page that you specify.
 
@@ -149,7 +155,7 @@ new Prefetcher({
 
 The `DeepFetchPlugin` can parse both HTML and JSON documents to extract the page assets that must be deep fetched. For {{ PRODUCT_NAME }} projects that are headless (i.e. the front end communicates with the backend through an API), you'll typically use the JSON option. However if the backend and front-end endpoints are communicating using HTML responses then you'll want to use the HTML option. Note that you can mix both HTML and JSON configuration objects in the an array passed to the `DeepFetchPlugin`.
 
-### Deep fetching URLs in JSON responses
+### Deep fetching URLs in JSON responses {/*deep-fetching-urls-in-json-responses*/}
 
 For JSON responses, you'll pass the `DeepFetchPlugin` an array of [DeepFetchJsonConfig interface]({{ DOCS_URL }}/docs/api/prefetch/interfaces/_sw_deepfetchplugin_.deepfetchjsonconfig.html) objects. These `DeepFetchJsonConfig` objects describe the asset URLs in the JSON response that should be prefetched. For example, the snippet below finds product images to deep fetch for a category page response:
 
@@ -172,7 +178,7 @@ new DeepFetchPlugin([
 
 The `jsonQuery` syntax is provided by the [json-query](https://github.com/auditassistant/json-query) library. You can test your JSON queries using their [JSON-query Tester Sandbox](https://maxleiko.github.io/json-query-tester/).
 
-### Deep Fetching for HTML documents
+### Deep Fetching for HTML documents {/*deep-fetching-for-html-documents*/}
 
 To deep fetch HTML documents, pass the plugin objects that match the [DeepFetchHtmlConfig interface]({{ DOCS_URL }}/docs/api/prefetch/interfaces/_sw_deepfetchplugin_.deepfetchhtmlconfig.html) and describe which HTML elements need to be prefetched via CSS selectors.
 
@@ -196,7 +202,7 @@ new Prefetcher({
 })
 ```
 
-#### Computing the URL to be prefetched
+#### Computing the URL to be prefetched {/*computing-the-url-to-be-prefetched*/}
 
 In the example above the `img` element's `src` attribute contains URL that needs to be prefetched. Sometimes finding the URL to prefetch is not so straightforward. For example, apps sometimes use JavaScript to compute the URL for responsive images based on the user's device size. In such cases you can provide a `callback` function which will be passed all matching elements and decide what URLs to prefetch. Here is an example:
 
@@ -234,7 +240,7 @@ function deepFetchResponsiveImages({ $el, el, $ }: DeepFetchCallbackParam) {
 }
 ```
 
-## Using {{ PRODUCT_NAME }} for Prefetching Only
+## Using {{ PRODUCT_NAME }} for Prefetching Only {/*using--product_name--for-prefetching-only*/}
 
 If you have an existing site already in production, it is possible to prefetch from {{ PRODUCT_NAME }} while still serving the site from the existing CDN.
 
@@ -291,7 +297,7 @@ document.addEventListener('DOMContentLoaded', function() {
 })
 ```
 
-## GraphQL
+## GraphQL {/*graphql*/}
 
 {{ PRODUCT_NAME }} also enables caching and prefetching of GraphQL requests via a middleware for [Apollo](https://www.apollographql.com/apollo-client). To enable prefetching of GraphQL queries in both the edge and the service worker:
 
@@ -400,7 +406,7 @@ You can test that everything is running locally by running your project with:
 {{ CLI_NAME }} dev --cache
 ```
 
-### Advantages over Apollo's prefetch functionality
+### Advantages over Apollo's prefetch functionality {/*advantages-over-apollos-prefetch-functionality*/}
 
 [Apollo provides it's own ability to prefetch data.](https://www.apollographql.com/docs/react/performance/performance/) Prefetching using the method described above has a number of advantages:
 
@@ -408,7 +414,7 @@ You can test that everything is running locally by running your project with:
 - Prefetched data is held in the service worker cache so it can be used in the event that the user navigates away from your website and returns later.
 - Data is prefetched with low priority so that prefetch requests will not block other more important requests like navigation and images.
 
-## Reducing 412s
+## Reducing 412s {/*reducing-412s*/}
 
 By default, {{ PRODUCT_NAME }} will only serve prefetch requests from the edge cache. If a request cannot be served from the cache, a 412 status is returned. This protects your origin servers from additional traffic associated with prefetching. If you're seeing a surprisingly high number of 412s in your logs:
 

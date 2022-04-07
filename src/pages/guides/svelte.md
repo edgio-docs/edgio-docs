@@ -4,7 +4,7 @@ title: Svelte
 
 This guide shows you how to deploy a [Svelte](https://svelte.dev/) application on {{ PRODUCT_NAME }}.
 
-## Example
+## Example {/*example*/}
 
 [Try the Svelte example site](https://layer0-docs-layer0-svelte-example-default.layer0-limelight.link/?button)
 [View the code](https://github.com/layer0-docs/layer0-svelte-example?button)
@@ -12,7 +12,7 @@ This guide shows you how to deploy a [Svelte](https://svelte.dev/) application o
 
 {{ SIGN_UP_LAYER0 }}
 
-## Install the {{ PRODUCT_NAME }} CLI
+## Install the {{ PRODUCT_NAME }} CLI {/*install-the--product_name--cli*/}
 
 If you have not already done so, install the [{{ PRODUCT_NAME }} CLI](cli)
 
@@ -22,7 +22,7 @@ npm i -g {{ PACKAGE_NAME }}/cli
 
 {{SYSTEM_REQUIREMENTS}}
 
-## Create a new Svelte app
+## Create a new Svelte app {/*create-a-new-svelte-app*/}
 
 If you don't already have a Svelte app, create one by running the following:
 
@@ -38,9 +38,9 @@ You can verify your app works by running it locally with:
 npm run dev
 ```
 
-## Configuring your Svelte app for {{ PRODUCT_NAME }}
+## Configuring your Svelte app for {{ PRODUCT_NAME }} {/*configuring-your-svelte-app-for--product_name-*/}
 
-### Initialize your project
+### Initialize your project {/*initialize-your-project*/}
 
 In the root directory of your project run `{{ CLI_NAME }} init`:
 
@@ -55,7 +55,7 @@ This will automatically update your `package.json` and add all of the required {
 - `{{ CONFIG_FILE }}` - A configuration file for {{ PRODUCT_NAME }}
 - `routes.js` - A default routes file that sends all requests to Svelte.
 
-### Adding Layer0 Service Worker
+### Adding Layer0 Service Worker {/*adding-layer0-service-worker*/}
 
 To add service worker to your Svelte app, run the following in the root folder of your project:
 
@@ -147,7 +147,7 @@ Now, in `webpack.config.js` make the following additions:
   ]
 ```
 
-### Configure the routes
+### Configure the routes {/*configure-the-routes*/}
 
 Next you'll need to configure {{ PRODUCT_NAME }} routing in the `routes.js` file.
 Replace the `routes.js` file that was created during `{{ CLI_NAME }} init` with the following:
@@ -169,7 +169,7 @@ The example above assumes you're using Svelte as a single page app. It routes th
 
 Refer to the [Routing](routing) guide for the full syntax of the `routes.js` file and how to configure it for your use case.
 
-### Run the Svelte app locally on {{ PRODUCT_NAME }}
+### Run the Svelte app locally on {{ PRODUCT_NAME }} {/*run-the-svelte-app-locally-on--product_name-*/}
 
 Create a production build of your app by running the following in your project's root directory:
 
@@ -180,12 +180,12 @@ npm run build
 Run {{ PRODUCT_NAME }} on your local machine:
 
 ```bash
-npm run {{ CLI_NAME }}:dev
+npm run dev
 ```
 
 Load the site http://127.0.0.1:3000
 
-## Deploying
+## Deploying {/*deploying*/}
 
 Create a production build of your app by running the following in your project's root directory:
 

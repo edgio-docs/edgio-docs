@@ -30,7 +30,7 @@ To configure your own project to be deploy button ready, there's a few steps to 
 
 #### Add `deploy` Script to `package.json` {/*add-deploy-script-to-packagejson*/}
 
-```js filename="/package.json"
+```json
 // additional scripts may need to be called based on your app build process
 "deploy": "layer0 deploy",
 ```
@@ -39,7 +39,7 @@ Lastly, create a GitHub workflow file called `layer0.yml`. This will be triggere
 
 #### Create `.github/workflows/layer0.yml` Workflow {/*create-githubworkflowslayer0yml-workflow*/}
 
-```yml filename=".github/workflows/layer0.yml"
+```yml
 name: Deploy to Layer0
 
 on:

@@ -4,7 +4,7 @@ title: Serverless Functions
 
 Layer0 makes it easy to develop, test, and deploy serverless functions without a JavaScript framework. Simply declare your routes and use the `compute` function or `proxy` with the `transformResponse` option to compute responses based on your own custom logic.
 
-## Getting Started
+## Getting Started {/*getting-started*/}
 
 To create a new Layer0 project using serverless functions, run:
 
@@ -12,12 +12,12 @@ To create a new Layer0 project using serverless functions, run:
 npx @layer0/cli@latest init
 ```
 
-## Responding to requests
+## Responding to requests {/*responding-to-requests*/}
 
 Use the [compute](/docs/api/core/classes/_router_responsewriter_.responsewriter.html#compute) function to generate a synthetic response:
 
 ```js
-// routes.ts
+// routes.js
 import { Router } from '@layer0/core'
 
 export default new Router().get('/some-route/:someParam', ({ compute }) => {
@@ -67,7 +67,7 @@ export default new Router().get('/some-route/:someParam', ({ compute }) => {
 
 See [ResponseWriter](/docs/api/core/classes/_router_responsewriter_.responsewriter.html) for all of the functions that you can call when responding to a request.
 
-## Modifying a response from the origin
+## Modifying a response from the origin {/*modifying-a-response-from-the-origin*/}
 
 Serverless functions can be used to modify responses from the origin by using the `proxy` function with the `transformResponse` option. First, configure an origin by adding a `backend` to `layer0.config.js` in the root of your project:
 
@@ -92,7 +92,7 @@ See [backends](/guides/layer0_config#section_backends) for more configuration op
 To forward a request to the origin and modify the response using a serverless function:
 
 ```js
-// routes.ts
+// routes.js
 import { Router } from '@layer0/core'
 
 export default new Router().get('/some-route/:someParam', ({ proxy }) => {
@@ -151,12 +151,12 @@ export default new Router().get('/some-route/:someParam', ({ proxy }) => {
 
 You can also access any of the request fields documented in [Responding to requests](#section_responding_to_requests).
 
-## Caching Responses
+## Caching Responses {/*caching-responses*/}
 
 To improve performance and minimize cost, cache the responses returned by your serverless functions whenever possible:
 
 ```js
-// routes.ts
+// routes.js
 import { Router } from '@layer0/core'
 
 export default new Router().get('/', ({ cache, compute }) => {
@@ -175,7 +175,7 @@ export default new Router().get('/', ({ cache, compute }) => {
 
 See the [cache](/docs/api/core/classes/_router_responsewriter_.responsewriter.html#cache) function for more options.
 
-## Running your project locally
+## Running your project locally {/*running-your-project-locally*/}
 
 To test your project locally, run:
 
@@ -185,7 +185,7 @@ To test your project locally, run:
 
 This will start your project in watch mode. Any changes your make to your source code will instantly take effect without restarting.
 
-## Deploying your project to Layer0
+## Deploying your project to Layer0 {/*deploying-your-project-to-layer0*/}
 
 To deploy your project, run:
 
@@ -193,7 +193,7 @@ To deploy your project, run:
 0 deploy
 ```
 
-## Limits
+## Limits {/*limits*/}
 
 Layer0 serverless functions have a maximum runtime of 20 seconds per request. If a function exceeds this limit, Layer0 will respond with a 539 status.
 

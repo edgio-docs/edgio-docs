@@ -4,7 +4,7 @@ title: Deploying
 
 This guide walks you through deploying your app to {{ PRODUCT_NAME }}.
 
-## Deploy From the CLI
+## Deploy From the CLI {/*deploy-from-the-cli*/}
 
 Once you've created your {{ PRODUCT_NAME }} project, run the following to deploy your site to your private space on {{ PRODUCT_NAME }} using the CLI:
 
@@ -16,7 +16,7 @@ The CLI will automatically detect the framework you're using, create an optimize
 
 Once the deployment is complete, the CLI will output the URL for your site. The site name is automatically derived from the `name` field in `package.json`. This can be overridden by using `--site` option when running `{{ CLI_NAME }} deploy`.
 
-## Branches and Deployments
+## Branches and Deployments {/*branches-and-deployments*/}
 
 Each time you deploy your site to {{ PRODUCT_NAME }} a "deployment" is created and given a unique and permanent URL based on the team name, site name, branch name in source control, and an incrementing deployment number. If you use Git, the branch name is set by the default. If not, you can specify the `--branch` option when running `{{ CLI_NAME }} deploy`.
 
@@ -24,7 +24,7 @@ Each time you deploy your site to {{ PRODUCT_NAME }} a "deployment" is created a
 
 Having each deployment be simultaneously and permanently accessible makes it easy to preview other developers' work before merging a pull request and enables you to "go back in time" to find where a bug or change in behavior originated. We recommend configuring your CI environment to deploy every push to {{ PRODUCT_NAME }}.
 
-## Deploy from CI
+## Deploy from CI {/*deploy-from-ci*/}
 
 To deploy from your CI environment, create a deploy token using the site settings tab in the {{ PRODUCT_NAME }} console.
 
@@ -38,13 +38,13 @@ Then use the `--token` option when deploying from your CI script:
 
 You should always store your deploy token using your CI environment's secrets manager. Never commit your deploy token to source control.
 
-## GitHub Actions
+## GitHub Actions {/*github-actions*/}
 
 You need to configure the following items in order to get a GitHub action set up.
 
 1. Create a deploy token (see [Deploying from CI](#section_deploying_from_ci)). Copy the value of that token for use in the next step.
 2. Save the deploy token inside GitHub ([more info](https://docs.github.com/en/actions/security-guides/encrypted-secrets#using-encrypted-secrets-in-a-workflow)). Go to your `GitHub project > Settings > Secrets > New repository secret`. Save the item as `LAYER0_DEPLOY_TOKEN`.
-3. Inside your development project, create a top level folder titled `.github`. Inside that create a `workflow` folder. From there create a `layer0.yml` file and use the example below for its content.
+3. Inside your development project, create a top level folder titled `.github`. Inside that create a `workflows` folder. From there create a `layer0.yml` file and use the example below for its content.
 
 This is an example GitHub action that will deploy your site to {{ PRODUCT_NAME }}.
 
@@ -57,7 +57,7 @@ For this action to work
 
 Read the comments at the top to understand how this action is configured.
 
-### Template
+### Template {/*template*/}
 
 ```yml
 # Add this file to your project at .github/workflows/layer0.yml
@@ -80,7 +80,8 @@ Read the comments at the top to understand how this action is configured.
 #     you must create it using https://app.layer0.co.
 #
 # ** In order for this action to deploy your site, you must create a deploy token from the site settings page
-# ** in https://app.layer0.co and configure it as a secret called "LAYER0_DEPLOY_TOKEN" in your repo on GitHub.
+# ** In order for this action to deploy your site, you must create a `deploy` command in your package.json scripts (an example is at https://github.com/layer0-docs/layer0-docs/blob/master/package.json#L11).
+# ** Additionally, you will need to generate a deploy token from your site settings in https://app.layer0.co and configure it as a secret called "LAYER0_DEPLOY_TOKEN" in your repo on GitHub.
 #
 # ** Depending on your use of NPM or YARN, adjust the "Install packages" step
 
@@ -129,7 +130,7 @@ jobs:
         #  run: rm -rf node_modules && yarn install --frozen-lockfile # if using yarn for your project
       - name: Deploy to Layer0
         run: |
-          npm run layer0:deploy -- ${{'--branch=$BRANCH_NAME' || ''}} --token=$deploy_token  \
+          npm run deploy -- ${{'--branch=$BRANCH_NAME' || ''}} --token=$deploy_token  \
           ${{github.event_name == 'push' && '--environment=default' || ''}} \
           ${{github.event_name == 'pull_request' && '--environment=staging' || ''}} \
           ${{github.event_name == 'release' && '--environment=production' || ''}}
@@ -137,11 +138,11 @@ jobs:
           deploy_token: ${{secrets.LAYER0_DEPLOY_TOKEN}}
 ```
 
-### Screencast Tutorial
+### Screencast Tutorial {/*screencast-tutorial*/}
 
 ![video](https://www.youtube.com/watch?v=Ms1TmY0oDYc)
 
-## Jenkins Pipeline
+## Jenkins Pipeline {/*jenkins-pipeline*/}
 
 Here is an example Jenkins pipeline that deploys your site to {{ PRODUCT_NAME }}:
 
@@ -215,7 +216,7 @@ pipeline {
 }
 ```
 
-## GitLab CI/CD
+## GitLab CI/CD {/*gitlab-cicd*/}
 
 Here is an example GitLab CI/CD configuration that deploys your site to {{ PRODUCT_NAME }}:
 

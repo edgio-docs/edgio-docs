@@ -4,11 +4,11 @@ title: Swell
 
 This guide shows you how to deploy a Swell application on {{ PRODUCT_NAME }}. Clone the repo [layer0-swell](https://github.com/layer0-docs/layer0-swell) to get the entire setup.
 
-## What is Swell?
+## What is Swell? {/*what-is-swell*/}
 
 [Swell](https://www.swell.is/) is a customizable headless ecommerce platform that supports unique business models and customer experiences for global B2C and B2B merchants. Swell's API-first backend and modern development tools provide a future-proof platform for innovative businesses from small coffee roasters to international enterprises.
 
-## Example
+## Example {/*example*/}
 
 A Swell powered ecommerce backend and a Nuxt.js app for the framework.
 
@@ -18,7 +18,7 @@ A Swell powered ecommerce backend and a Nuxt.js app for the framework.
 
 {{ SIGN_UP_LAYER0 }}
 
-## Install the {{ PRODUCT_NAME }} CLI
+## Install the {{ PRODUCT_NAME }} CLI {/*install-the--product_name--cli*/}
 
 If you have not already done so, install the [{{ PRODUCT_NAME }} CLI](cli)
 
@@ -28,7 +28,7 @@ npm i -g {{ PACKAGE_NAME }}/cli # yarn global add {{ PACKAGE_NAME }}/cli
 
 {{ SYSTEM_REQUIREMENTS }}
 
-## Create a new Swell app
+## Create a new Swell app {/*create-a-new-swell-app*/}
 
 If you don't already have a Swell app, create one by running the following:
 
@@ -39,9 +39,9 @@ git clone https://github.com/swellstores/origin-theme
 yarn install
 ```
 
-## Connecting to Swell
+## Connecting to Swell {/*connecting-to-swell*/}
 
-### Authentication with Swell
+### Authentication with Swell {/*authentication-with-swell*/}
 
 This account enables access to your store ID and API key which are necessary for API access. To access API keys, follow these steps, beginning on the left sidebar of the admin dashboard.
 
@@ -52,7 +52,7 @@ This account enables access to your store ID and API key which are necessary for
 - Under one of the secret keys, click on the eye icon to make the key visible.
 - Copy the secret key.
 
-### Add variables to .env
+### Add variables to .env {/*add-variables-to-env*/}
 
 Add your Swell store ID, public key and url to `.env`:
 
@@ -68,9 +68,9 @@ You can now verify that your app works by running it locally with:
 yarn run dev
 ```
 
-## Configuring your Swell app for {{ PRODUCT_NAME }}
+## Configuring your Swell app for {{ PRODUCT_NAME }} {/*configuring-your-swell-app-for--product_name-*/}
 
-### Modify nuxt.config.js
+### Modify nuxt.config.js {/*modify-nuxtconfigjs*/}
 
 In the existing `nuxt.config.js` configuration, add "{{ PACKAGE_NAME }}/nuxt/module" to `buildModules`:
 
@@ -79,16 +79,16 @@ In the existing `nuxt.config.js` configuration, add "{{ PACKAGE_NAME }}/nuxt/mod
 
 module.exports = {
   ...
-  buildModules: [['{{ PACKAGE_NAME }}/nuxt/module', { layer0SourceMaps: true }]],
+  buildModules: [['{{ PACKAGE_NAME }}/nuxt/module', { {{ FULL_CLI_NAME }}SourceMaps: true }]],
   ...
 }
 ```
 
 Options:
 
-- `layer0SourceMaps: true|false`: when true, the serverless build includes sourcemap files which make debugging easier when tailing the server logs in the Layer0 Developer Console. It also increases the serverless bundle size, which may push your deployments over the 50MB (compressed) limit.
+- `{{ FULL_CLI_NAME }}SourceMaps: true|false`: when true, the serverless build includes sourcemap files which make debugging easier when tailing the server logs in the Layer0 Developer Console. It also increases the serverless bundle size, which may push your deployments over the 50MB (compressed) limit.
 
-### Initialize your project
+### Initialize your project {/*initialize-your-project*/}
 
 In the root directory of your project run `{{ CLI_NAME }} init`:
 
@@ -111,7 +111,7 @@ This command will also update your `package.json` with the following changes:
 - Adds `@nuxt/core` to `dependencies`
 - Adds several `scripts` to run the available `{{{ CLI_NAME }}` commands
 
-## Run Swell app locally on Layer0
+## Run Swell app locally on Layer0 {/*run-swell-app-locally-on-layer0*/}
 
 Run the Swell app with the command:
 
@@ -123,7 +123,7 @@ Load the site: http://127.0.0.1:3000
 
 Setting --production runs your app exactly as it will be uploaded to the Layer0 cloud using serverless-offline.
 
-## Deploying
+## Deploying {/*deploying*/}
 
 Deploy the build to {{ PRODUCT_NAME }} by running the `{{ CLI_NAME }} deploy` command:
 
@@ -133,7 +133,7 @@ Deploy the build to {{ PRODUCT_NAME }} by running the `{{ CLI_NAME }} deploy` co
 
 Refer to the [Deploying](deploying) guide for more information on the `deploy` command and its options.
 
-## Bonus: Generate pages on demand
+## Bonus: Generate pages on demand {/*bonus-generate-pages-on-demand*/}
 
 1. To preserve packages that are imported in the `modules` directories required in the generating pages on the server, update `package.json` as follows:
 

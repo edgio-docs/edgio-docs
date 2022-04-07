@@ -4,9 +4,9 @@ title: Core Web Vitals
 
 This guide shows you how to track your website's [Core Web Vitals](https://web.dev/vitals/) on {{ PRODUCT_NAME }} in real time using real user monitoring (RUM).
 
-<Video>https://youtu.be/XNsCMaHt3DI</Video>
+![video](https://youtu.be/XNsCMaHt3DI)
 
-## What are Core Web Vitals?
+## What are Core Web Vitals? {/*what-are-core-web-vitals*/}
 
 In [May of 2021](https://developers.google.com/search/blog/2020/11/timing-for-page-experience), Google began ranking websites based on a
 set of performance metrics called [Core Web Vitals](https://web.dev/vitals/). This change effectively made site performance an SEO ranking factor.
@@ -19,7 +19,7 @@ be tracked via [Google Search Console](https://search.google.com/search-console/
 - It's hard to diagnose Core Web Vitals by page type or URL.
 - It's impossible to A/B test the impact of site optimizations on Core Web Vitals. Note that to effectively A/B test performance optimizations you need both a RUM measurement tool and split testing at the edge, both of which {{ PRODUCT_NAME }} provides.
 
-## Why use {{ PRODUCT_NAME }} to track Core Web Vitals?
+## Why use {{ PRODUCT_NAME }} to track Core Web Vitals? {/*why-use--product_name--to-track-core-web-vitals*/}
 
 Instead of relying solely on Google Search Console, we recommend tracking Core Web Vitals using {{ PRODUCT_NAME }} so that you can:
 
@@ -29,11 +29,11 @@ Instead of relying solely on Google Search Console, we recommend tracking Core W
 - Identify which pages are most negatively impacting your search ranking.
 - Use {{ PRODUCT_NAME }}'s [Edge-based split testing](split_testing) to A/B test the impact of performance optimizations on Core Web Vitals.
 
-## Installation
+## Installation {/*installation*/}
 
 In order to start tracking Core Web Vitals on {{ PRODUCT_NAME }}, you need to add the `{{ PACKAGE_NAME }}/rum` client library to your application. There are a number of ways to do this:
 
-### Script Tag
+### Script Tag {/*script-tag*/}
 
 To add Core Web Vitals tracking via a script tag, add the following to each page in your application:
 
@@ -45,13 +45,10 @@ To add Core Web Vitals tracking via a script tag, add the following to each page
     }).collect()
   }
 </script>
-<script
-  src="https://rum.{{ DOMAIN }}/latest.js"
-  defer
-  onload="initRum()"></script>
+<script src="https://rum.{{ DOMAIN }}/latest.js" defer onload="initRum()"></script>
 ```
 
-### Google Tag Manager
+### Google Tag Manager {/*google-tag-manager*/}
 
 ```html
 <script>
@@ -69,7 +66,7 @@ To add Core Web Vitals tracking via a script tag, add the following to each page
 </script>
 ```
 
-### NPM or Yarn
+### NPM or Yarn {/*npm-or-yarn*/}
 
 To install the Core Web Vitals library using npm, run:
 
@@ -86,14 +83,14 @@ yarn add {{ PACKAGE_NAME }}/rum
 Then, add the following to your application's browser bundle:
 
 ```js
-import {Metrics} from '{{ PACKAGE_NAME }}/rum';
+import { Metrics } from '{{ PACKAGE_NAME }}/rum'
 
 new Metrics({
   token: 'your-token-here', // get this from {{ APP_URL }}
-}).collect();
+}).collect()
 ```
 
-## Tie URLs to Page Templates
+## Tie URLs to Page Templates {/*tie-urls-to-page-templates*/}
 
 You can tie URLs to page templates by providing an optional `router` parameter to `Metrics`.
 
@@ -115,8 +112,8 @@ new {{ PRODUCT_NAME }}.Metrics({
 When installing {{ PACKAGE_NAME }}/rum via NPM or Yarn use:
 
 ```js
-import {Router} from '{{ PACKAGE_NAME }}/rum/Router';
-import {Metrics} from '{{ PACKAGE_NAME }}/rum';
+import { Router } from '{{ PACKAGE_NAME }}/rum/Router'
+import { Metrics } from '{{ PACKAGE_NAME }}/rum'
 
 new Metrics({
   // get this from {{ APP_URL }}
@@ -124,10 +121,10 @@ new Metrics({
 
   // assign a page label for each route:
   router: new Router()
-    .match('/', ({setPageLabel}) => setPageLabel('home'))
-    .match('/p/:id', ({setPageLabel}) => setPageLabel('product'))
-    .match('/c/:id', ({setPageLabel}) => setPageLabel('category')),
-}).collect();
+    .match('/', ({ setPageLabel }) => setPageLabel('home'))
+    .match('/p/:id', ({ setPageLabel }) => setPageLabel('product'))
+    .match('/c/:id', ({ setPageLabel }) => setPageLabel('category')),
+}).collect()
 ```
 
 The router supports the same pattern syntax as Express. Here's more information on [routing syntax](/guides/routing#section_route_pattern_syntax).
@@ -151,7 +148,7 @@ For non single page applications (e.g. traditional "multi-page apps"), you can a
 </script>
 ```
 
-## Track Additional Data
+## Track Additional Data {/*track-additional-data*/}
 
 You can tie the following data to Core Web Vitals:
 

@@ -17,11 +17,11 @@ In order to serve your site on a specific domain, you need to configure an envir
 
 To create an environment, navigate to your site and select the _Environments_ tab, and click _New Environment_:
 
-<Image src="/images/environments/environments.png" alt="creating an environment"/>
+![environments](/images/environments/environments.png)
 
 When creating an environment, you can choose whether or not to limit deployment capabilities to admins and deploy tokens, or to make it available to all members of the team:
 
-<Image src="/images/teams/environment-permissions.png" alt="Environment Permissions"/>
+![limit environment](/images/teams/environment-permissions.png?width=550)
 
 ## Deploying to an Environment {/*deploying-to-an-environment*/}
 

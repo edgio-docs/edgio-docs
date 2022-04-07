@@ -2,6 +2,8 @@
 title: Security
 ---
 
+## Overview {/*overview*/}
+
 {{ PRODUCT_NAME }}’s platform is built to ensure your website and applications remain open for business by keeping you protected against a wide range of security risks without sacrificing performance.
 
 A fully [PCI-compliant](#section_is_the_layer0_waf_a_pci_compliant_solution_) solution, {{ PRODUCT_NAME }} Security protects your business against a variety of common exploits like SQL injections, cross-site scripting (XSS), PHP injections, bot attacks, DDoS attacks, and other common vulnerabilities.
@@ -28,9 +30,7 @@ The WAF includes Managed Rule Groups, managed by {{ PRODUCT_NAME }}, that can be
 
 ​​The {{ PRODUCT_NAME }} Managed rule group contains rules that are generally applicable to web applications. This provides protection against exploitation of a wide range of vulnerabilities, including high risk and commonly occurring vulnerabilities described in OWASP&reg; publications such as [OWASP Top 10](https://owasp.org/www-project-top-ten/).
 
-<Callout type="danger">
-  Layer0 recommends utilizing this rule group for all WAF use cases.
-</Callout>
+**![{"color": "red"}](/ 'Layer0 recommends utilizing this rule group for all WAF use cases.')**
 
 [Layer0 Managed Rule Group Descriptions](#section_managed_rule_groups)
 
@@ -48,9 +48,7 @@ The Admin protection rule group contains rules that allow you to block external 
 
 The Bad Input rule group contains rules to block request patterns that are known to be invalid and are associated with exploitation or the discovery of Common Vulnerabilities and Exposures (CVEs). This can help reduce the risk of a known malicious actor discovering a vulnerable application.
 
-<Callout type="danger">
-  Layer0 recommends enabling the 'Bad Input - Log4J' rule on all WAF applications.
-</Callout>
+**![{"color": "red"}](/ 'Layer0 recommends enabling the 'Bad Input - Log4J' rule on all WAF applications.')**
 
 [Bad Input Rule Descriptions](managed_rule_groups#section_bad_input_rules)
 
@@ -74,14 +72,14 @@ The SQL database rule group contains rules to block request patterns associated 
 
 #### Add Rule Groups to a WAF {/*add-rule-groups-to-a-waf*/}
 
-![Add Rule Groups to WAF](/images/security/addrulegroup1.jpg 'Add Rule Groups to WAF')
+![Add Rule Groups to WAF](/images/security/addrulegroup1.jpg?width=700 'Add Rule Groups to WAF')
 
 1. Log in to the [Layer0 console](https://app.layer0.co/).
 1. Click _SECURITY_ from the top banner to launch the WAF Security Rules page.
 1. Select [_WAF-1_ or _WAF-2_](#section_what_s_the_difference_between_waf_1_and_waf_2_) from the first dropdown and the [configuration version](#section_how_do_i_know_which_version_to_use_) from the second.
 1. Click _EDIT_ to set your security rules.
 
-![Add Rule Groups to WAF2](/images/security/addrulegroup2.jpg 'Add Rule Groups to WAF2')
+![Add Rule Groups to WAF2](/images/security/addrulegroup2.jpg?width=700 'Add Rule Groups to WAF2')
 
 5. Select the _Set all rules to …_ dropdown. Hover over the dropdown for the rule group's description.
 6. Choose the action for the group: _Off_, [_Flag_, or _Block_](#section_what_is_the_difference_between_flagging_and_blocking_a_rule_or_rule_group_).
@@ -92,14 +90,14 @@ The SQL database rule group contains rules to block request patterns associated 
 
 #### Add Single Rules to a WAF {/*add-single-rules-to-a-waf*/}
 
-![Add Single Rule to WAF](/images/security/addrulegroup1.jpg 'Add Single Rule to WAF')
+![Add Single Rule to WAF](/images/security/addrulegroup1.jpg?width=700 'Add Single Rule to WAF')
 
 1. Log in to the [Layer0 console](https://app.layer0.co/).
 1. Click _SECURITY_ from the top banner to launch the WAF Security Rules page.
 1. Select [_WAF-1_ or _WAF-2_](#section_what_s_the_difference_between_waf_1_and_waf_2_) from the first dropdown and the [configuration version](#section_how_do_i_know_which_version_to_use_) from the second.
 1. Click _EDIT_ to set your security rules.
 
-![Add Single Rule to WAF2](/images/security/addsinglerule.jpg 'Add Single Rule to WAF')
+![Add Single Rule to WAF2](/images/security/addsinglerule.jpg?width=700 'Add Single Rule to WAF')
 
 5. If collapsed, expand the Rule Group dropdown using the arrow to its left. You can hover over the rule name or the Flag/Block dropdown to view the rule's description.
 6. Click the _Flag/Block_ dropdown.
@@ -117,13 +115,13 @@ Once you’ve configured the WAF rules you want to use, you need to apply them t
 
 Follow these steps to add a WAF to an environment:
 
-![Apply WAF to Environment](/images/security/addrg3.jpg 'Apply WAF to Environment')
+![Apply WAF to Environment](/images/security/addrg3.jpg?width=700 'Apply WAF to Environment')
 
 1. Log in to the [Layer0 console](https://app.layer0.co/) and select your site.
 1. Click the ENVIRONMENTS tab.
 1. Choose an environment from the list.
 
-![Security Configuration](/images/security/security.jpg 'Security Configuration')
+![Security Configuration](/images/security/security.jpg?width=700 'Security Configuration')
 
 4. Select _CONFIGURATION_ from the top navigation.
 1. Click _EDIT_.
@@ -199,7 +197,7 @@ The above code will match all the routes that even have a `user-agent` header an
 
 ## Security Reporting {/*security-reporting*/}
 
-![Reporting](/images/security/addrg3.jpg 'Reporting')
+![Reporting](/images/security/addrg3.jpg?width=700 'Reporting')
 
 1. Log in to the [Layer0 console](https://app.layer0.co/) and select your site.
 1. Click the ENVIRONMENTS tab.
@@ -208,7 +206,7 @@ The above code will match all the routes that even have a `user-agent` header an
 
 ### Security Activity {/*security-activity*/}
 
-![WAF Activity](/images/security/wafactivity.jpg 'WAF Activity')
+![WAF Activity](/images/security/wafactivity.jpg?width=700 'WAF Activity')
 
 |     | View Option                                             | Access                                   |
 | --- | ------------------------------------------------------- | ---------------------------------------- |
@@ -219,7 +217,7 @@ The above code will match all the routes that even have a `user-agent` header an
 
 ### Rules Applied {/*rules-applied*/}
 
-![Rules Applied](/images/security/rulesapplied.png 'Rules Applied')
+![Rules Applied](/images/security/rulesapplied.png?width=700 'Rules Applied')
 
 |     | View Option                     | Access                                                                                                                                                                                          |
 | --- | ------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -229,7 +227,7 @@ The above code will match all the routes that even have a `user-agent` header an
 
 ### Rules Section {/*rules-section*/}
 
-![Rules](/images/security/rules.jpg 'Rules')
+![Rules](/images/security/rules.jpg?width=700 'Rules')
 
 |     | View Option   | Access                                                                                                                                         |
 | --- | ------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -240,7 +238,7 @@ The above code will match all the routes that even have a `user-agent` header an
 
 Here is a sample log file highlighting the WAF data ("waf":"botLib,flagged","wafv":"WAF-1,2"): the action applied, the mode, the WAF name, and the version number, respectively.
 
-![WAF Log File Example](/images/security/log.jpg 'WAF Log File Example')
+![WAF Log File Example](/images/security/log.jpg?width=700 'WAF Log File Example')
 
 ## Website Security with EdgeJS {/*website-security-with-edgejs*/}
 
@@ -313,7 +311,7 @@ If you want the route to match both `http` and `https` protocols you can match o
 Additionally:
 
 - A request's protocol can be determined by reading the [`{{ HEADER_PREFIX }}-protocol`](request_headers#section_general_headers) request header or the [`request.secure`](/docs/api/core/interfaces/_router_request_.request.html#secure) property.
-- During local development all requests will appear secure by default. To test your router for `http` protocol matching you must either set the `{{ COOKIE_PREFIX }}_emulate_local_http` cookie to `true` (if using a browser) or send an `{{ HEADER_PREFIX }}-protocol` request header set to `http`.
+- During local development all requests will appear secure by default. To test your router for `http` protocol matching you must either set the `local_{{ COOKIE_PREFIX }}_emulate_http_protocol` cookie to `true` (if using a browser) or send an `{{ HEADER_PREFIX }}-protocol` request header set to `http`.
 
 ### Secrets {/*secrets*/}
 
@@ -321,7 +319,7 @@ Rather than putting secret values such as API keys in your code and checking the
 store them in environment variables, then access them in your code from `process.env`. To configure environment variables,
 navigate to your environment, click _EDIT_, then under Environment Variables, click _ADD VARIABLE_.
 
-![networking](/images/security/environment-variables.png)
+![networking](/images/security/environment-variables.png?width=700)
 
 As of {{ PRODUCT_NAME }} CLI version 2.19.0, when you deploy to an environment using a deploy token, for example by running `{{ CLI_NAME }} deploy my-team --environment=production --token=(my token)` option, all environment variables are pulled down from the {{ PRODUCT_NAME }} Developer Console and applied to `process.env` so they can be accessed at build time. This allows you to store all of your build and runtime secrets in a single place, {{ PRODUCT_NAME }} Developer Console, rather than storing some in your CI system's secret manager.
 

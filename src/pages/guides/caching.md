@@ -22,15 +22,12 @@ import { CustomCacheKey } from '{{ PACKAGE_NAME }}/core/router'
 router.get('/some/path', ({ cache }) => {
   cache({
     browser: {
-      // Sets the cache-control: maxage=n header sent to the browser.
-      // To prevent the browser from caching this route
+      // Sets the cache-control: maxage=n header sent to the browser.  To prevent the browser from caching this route
       // set maxAgeSeconds: 0
       maxAgeSeconds: 0,
 
-      // Sends a non-standard header `x-sw-cache-control: n`
-      // that you can use to control caching your service worker.
-      // Note that service workers do not understand this header
-      //  by default, so you would need to add code to your service
+      // Sends a non-standard header `x-sw-cache-control: n` that you can use to control caching your service worker.
+      // Note that service workers do not understand this header by default, so you would need to add code to your service
       // worker to support it
       serviceWorkerSeconds: 60 * 60,
     },
@@ -38,12 +35,10 @@ router.get('/some/path', ({ cache }) => {
       // Sets the TTL for a response in {{ PRODUCT_NAME }}'s edge cache
       maxAgeSeconds: 60 * 60 * 24,
 
-      // Sets the amount of time a stale response will be served from
-      // the cache. When a stale response is sent, {{ PRODUCT_NAME }}
+      // Sets the amount of time a stale response will be served from the cache.  When a stale response is sent, {{ PRODUCT_NAME }}
       // will simultaneously fetch a new response to serve subsequent requests.
       // Using stale-while-revalidate helps raise your effective cache hit rate to near 100%.
-      // serve stale responses for up to 1 hour while fetching a new response
-      staleWhileRevalidateSeconds: 60 * 60,
+      staleWhileRevalidateSeconds: 60 * 60, // serve stale responses for up to 1 hour while fetching a new response
 
       // And many other options
     },
@@ -240,7 +235,7 @@ The response was cached or served from the cache (see `{{ HEADER_PREFIX }}-t`).
 
 ### disabled {/*disabled*/}
 
-The response was not cached because the edge caching was explicitly [disabled](#section_not_caching_a_response).
+The response was not cached because the edge caching was explicitly disabled (see [Preventing a Response from being Cached](#section_preventing_a_response_from_being_cached)).
 
 ### no-max-age {/*no-max-age*/}
 

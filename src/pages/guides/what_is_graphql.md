@@ -201,6 +201,4 @@ This topic has presented a high-level view of GraphQL. GraphQL contains many mor
 - unions
 - input fields
 
-<Callout type="info">
-  See the <a href="https://graphql.org/learn">GraphQL Learning Web Site</a> website for more information.
-</Callout>
+See the [GraphQL Learning Web Site](https://graphql.org/learn/) website for more information.

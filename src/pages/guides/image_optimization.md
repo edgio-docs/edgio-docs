@@ -22,7 +22,7 @@ Optional (specify one of the following):
 
 The image optimizer will only return an optimized image for mobile browsers. Desktop browsers are served the original image.
 
-## Examples:
+## Examples: {/*examples*/}
 
 Quality:
 

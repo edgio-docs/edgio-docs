@@ -13,9 +13,11 @@ Using the Router, you can:
 - Send synthetic responses
 - Configure multiple destinations for split testing
 
-## Configuration
+## Configuration {/*configuration*/}
 
-To define routes for {{ PRODUCT_NAME }}, create a `routes.js` file in the root of your project. You can override the default path to the router by setting the `routes` key in `{{ CONFIG_FILE }}`.
+You define routes for {{ PRODUCT_NAME }} using the `routes.js` file.
+
+Before continuing, if you have not already initialized your project with {{ PRODUCT_NAME }}, do so using the instructions in [WebApp CDN](/guides/webapp_cdn_getting_started).
 
 The `routes.js` file should export an instance of `{{ PACKAGE_NAME }}/core/router/Router`:
 
@@ -26,7 +28,7 @@ const { Router } = require('{{ PACKAGE_NAME }}/core/router')
 module.exports = new Router()
 ```
 
-## Declare Routes
+## Declare Routes {/*declare-routes*/}
 
 Declare routes using the method corresponding to the HTTP method you want to match.
 
@@ -59,7 +61,7 @@ module.exports = new Router().match('/some-path', ({ cache, proxy }) => {
 })
 ```
 
-## Route Execution
+## Route Execution {/*route-execution*/}
 
 When {{ PRODUCT_NAME }} receives a request, it executes **each route that matches the request** in the order in which they are declared until one sends a response. The following methods return a response:
 
@@ -89,7 +91,7 @@ new Router()
   .use(nextRoutes)
 ```
 
-### Alter Requests and Responses
+### Alter Requests and Responses {/*alter-requests-and-responses*/}
 
 {{ PRODUCT_NAME }} offers APIs to manipulate request and response headers and cookies. The APIs are:
 
@@ -106,25 +108,26 @@ new Router()
 
 You can find detailed descriptions of these APIs in the `{{ PACKAGE_NAME }}/core` [documentation](/docs/api/core/classes/_router_responsewriter_.responsewriter.html).
 
-#### Embedded Values
+### Embedded Values {/*embedded-values*/}
 
 You can inject values from the request or response into headers or cookies as template literals using the `${value}` format. For example: `setResponseHeader('original-request-path', '${path}')` would add an `original-request-path` response header whose value is the request path.
 
-| Value           | Embedded value         | Description                                                                                                                   |
-| --------------- | ---------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
-| HTTP method     | `${method}`            | The value of the HTTP method used for the request (e.g. `GET`)                                                                |
-| URL             | `${url}`               | The complete URL path including any query strings (e.g. `/search?query=docs`). Protocol, hostname, and port are not included. |
-| Path            | `${path}`              | The URL path excluding any query strings (e.g. `/search`)                                                                     |
-| Query string    | `${query:<name>}`      | The value of the `<name>` query string or empty if not available.                                                             |
-| Request header  | `${req:<name>}`        | The value of the `<name>` request header or empty if not available.                                                           |
-| Request cookie  | `${req:cookie:<name>}` | The value of the `<name>` cookie in `cookie` request header or empty if not available.                                        |
-| Response header | `${res:<name>}`        | The value of the `<name>` response header or empty if not available.                                                          |
+| Value                   | Embedded value         | Description                                                                                                                   |
+| ----------------------- | ---------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
+| HTTP method             | `${method}`            | The value of the HTTP method used for the request (e.g. `GET`)                                                                |
+| URL                     | `${url}`               | The complete URL path including any query strings (e.g. `/search?query=docs`). Protocol, hostname, and port are not included. |
+| Path                    | `${path}`              | The URL path excluding any query strings (e.g. `/search`)                                                                     |
+| Query string            | `${query:<name>}`      | The value of the `<name>` query string or empty if not available.                                                             |
+| Request header          | `${req:<name>}`        | The value of the `<name>` request header or empty if not available.                                                           |
+| Request cookie          | `${req:cookie:<name>}` | The value of the `<name>` cookie in `cookie` request header or empty if not available.                                        |
+| Request named parameter | `${req:param:<name>}`  | The value of the `<name>` param defined in the route or empty if not available.                                               |
+| Response header         | `${res:<name>}`        | The value of the `<name>` response header or empty if not available.                                                          |
 
-## Route Pattern Syntax
+## Route Pattern Syntax {/*route-pattern-syntax*/}
 
 The syntax for route paths is provided by [path-to-regexp](https://github.com/pillarjs/path-to-regexp#path-to-regexp), which is the same library used by [Express](https://expressjs.com/).
 
-### Named Parameters
+### Named Parameters {/*named-parameters*/}
 
 Named parameters are defined by prefixing a colon to the parameter name (`:foo`).
 
@@ -136,7 +139,7 @@ new Router().get('/:foo/:bar', res => {
 
 **Please note:** Parameter names must use "word characters" (`[A-Za-z0-9_]`).
 
-#### Custom Matching Parameters
+#### Custom Matching Parameters {/*custom-matching-parameters*/}
 
 Parameters can have a custom regexp, which overrides the default match (`[^/]+`). For example, you can match digits or names in a path:
 
@@ -148,7 +151,7 @@ new Router().get('/icon-:foo(\\d+).png', res => {
 
 **Tip:** Backslashes need to be escaped with another backslash in JavaScript strings.
 
-#### Custom Prefix and Suffix
+#### Custom Prefix and Suffix {/*custom-prefix-and-suffix*/}
 
 Parameters can be wrapped in `{}` to create custom prefixes or suffixes for your segment:
 
@@ -158,7 +161,7 @@ new Router().get('/:attr1?{-:attr2}?{-:attr3}?', res => {
 })
 ```
 
-### Unnamed Parameters
+### Unnamed Parameters {/*unnamed-parameters*/}
 
 It is possible to write an unnamed parameter that only consists of a regexp. It works the same the named parameter, except it will be numerically indexed:
 
@@ -168,11 +171,11 @@ new Router().get('/:foo/(.*)', res => {
 })
 ```
 
-### Modifiers
+### Modifiers {/*modifiers*/}
 
 Modifiers must be placed after the parameter (e.g. `/:foo?`, `/(test)?`, `/:foo(test)?`, or `{-:foo(test)}?`).
 
-#### Optional
+#### Optional {/*optional*/}
 
 Parameters can be suffixed with a question mark (`?`) to make the parameter optional.
 
@@ -184,7 +187,7 @@ new Router().get('/:foo/:bar?', res => {
 
 **Tip:** The prefix is also optional, escape the prefix `\/` to make it required.
 
-#### Zero or More
+#### Zero or More {/*zero-or-more*/}
 
 Parameters can be suffixed with an asterisk (`*`) to denote zero or more parameter matches.
 
@@ -196,7 +199,7 @@ new Router().get('/:foo*', res => {
 
 The captured parameter value will be provided as an array.
 
-#### One or More
+#### One or More {/*one-or-more*/}
 
 Parameters can be suffixed with a plus sign (`+`) to denote one or more parameter matches.
 
@@ -208,7 +211,7 @@ new Router().get('/:foo+', res => {
 
 The captured parameter value will be provided as an array.
 
-## Matching Method, Query Parameters, Cookies, and Headers
+## Matching Method, Query Parameters, Cookies, and Headers {/*matching-method-query-parameters-cookies-and-headers*/}
 
 Match can either take a URL path, or an object which allows you to match based on method, query parameters, cookies, or request headers:
 
@@ -225,7 +228,7 @@ router.match(
 )
 ```
 
-## Body Matching for POST requests
+## Body Matching for POST requests {/*body-matching-for-post-requests*/}
 
 You can also match HTTP `POST` requests based on their request body content as in the following example:
 
@@ -255,7 +258,7 @@ router.match(
 )
 ```
 
-### Caching & POST Body Matching
+### Caching & POST Body Matching {/*caching--post-body-matching*/}
 
 When body matching is combined with `cache` in a route, **the HTTP request body will automatically be used as the cache key.** For example, the code below will cache GraphQL `GetProducts` queries using the entire request body as the cache key:
 
@@ -294,7 +297,7 @@ router.match(
 )
 ```
 
-### POST Body Matching Criteria
+### POST Body Matching Criteria {/*post-body-matching-criteria*/}
 
 The `criteria` property can be a string or regular expression.
 
@@ -318,7 +321,7 @@ would match an HTTP POST request body containing:
 }
 ```
 
-### Regular Expression Criteria
+### Regular Expression Criteria {/*regular-expression-criteria*/}
 
 Regular expressions can also be used as `criteria`. For example,
 
@@ -341,7 +344,7 @@ would match an HTTP POST body containing:
 }
 ```
 
-### Nested JSON Criteria
+### Nested JSON Criteria {/*nested-json-criteria*/}
 
 You can also use a nested object to match a field at a specific location in the JSON. For example,
 
@@ -372,7 +375,7 @@ would match an HTTP POST body containing:
 }
 ```
 
-## GraphQL Queries
+## GraphQL Queries {/*graphql-queries*/}
 
 The {{ EDGEJS_LABEL }} router provides a `graphqlOperation` method for matching GraphQL.
 
@@ -396,7 +399,7 @@ The `graphqlOperation` function is provided to simplify matching of common Graph
 
 See the guide on [Implementing GraphQL Routing](/guides/graphql) in your project.
 
-## Request Handling
+## Request Handling {/*request-handling*/}
 
 The second argument to routes is a function that receives a `ResponseWriter` and uses it to send a response. Using `ResponseWriter` you can:
 
@@ -409,7 +412,7 @@ The second argument to routes is a function that receives a `ResponseWriter` and
 
 [See the API Docs for Response Writer](/docs/__version__/api/core/classes/_router_responsewriter_.responsewriter.html)
 
-## Full Example
+## Full Example {/*full-example*/}
 
 This example shows typical usage of `{{ PACKAGE_NAME }}/core`, including serving a service worker, next.js routes (vanity and conventional routes), and falling back to a legacy backend.
 
@@ -443,7 +446,7 @@ module.exports = new Router()
   })
 ```
 
-## Errors Handling
+## Errors Handling {/*errors-handling*/}
 
 You can use the router's `catch` method to return specific content when the request results in an error status (For example, a 500). Using `catch`, you can also alter the `statusCode` and `response` on the edge before issuing a response to the user.
 
@@ -451,7 +454,7 @@ You can use the router's `catch` method to return specific content when the requ
 router.catch(number | Regexp, (routeHandler: Function))
 ```
 
-### Examples
+### Examples {/*examples*/}
 
 To issue a custom error page when the origin returns a 500:
 
@@ -479,7 +482,7 @@ The `.catch` method allows the edge router to render a response based on the res
 - Your catch callback is provided a [ResponseWriter](/docs/api/core/classes/_router_responsewriter_.responsewriter.html) instance. You can use any ResponseWriter method except `proxy` inside `.catch`.
 - We highly recommend keeping `catch` routes simple. Serve responses using `serveStatic` instead of `send` to minimize the size of the edge bundle.
 
-## Environment Edge Redirects
+## Environment Edge Redirects {/*environment-edge-redirects*/}
 
 In addition to sending redirects at the edge within the router configuration, this can also be configured at the environment level within the Layer0 Developer Console.
 

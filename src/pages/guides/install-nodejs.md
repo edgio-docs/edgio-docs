@@ -2,9 +2,9 @@
 title: Install Node.js and npm
 ---
 
-<Callout type="info">
-The recommended Node.js version is <strong>v14</strong> because {{ PRODUCT_NAME }} only supports Node.js version 14
-</Callout>
+**{{ PRODUCT_NAME }} only supports Node.js version 14**
+
+**Current recommended development version is Node.js v14**
 
 ## Node version managers {/*node-version-managers*/}
 
@@ -21,9 +21,9 @@ n install 14
 
 ## Package managers {/*package-managers*/}
 
-- [npm](https://www.npmjs.com/) is a package manager integrated into Node.
+[npm](https://www.npmjs.com/) is a package manager integrated into Node.
 
-- [yarn](https://classic.yarnpkg.com/en/docs/cli/) is another very popular package manager.
+[yarn](https://classic.yarnpkg.com/en/docs/cli/) is another very popular package manager.
 
 ## Node.js installation {/*nodejs-installation*/}
 

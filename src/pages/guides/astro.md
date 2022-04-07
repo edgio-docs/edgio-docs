@@ -4,13 +4,13 @@ title: Astro
 
 [Astro](https://astro.build/) is a modern static site builder. This guide walks you through deploying Astro sites to Layer0.
 
-## Example
+## Example {/*example*/}
 
 [Try the Astro Example Site](https://layer0-docs-layer0-astro-example-default.layer0-limelight.link/?button)
 [View the Code](https://github.com/layer0-docs/layer0-astro-example?button)
 [Deploy to Layer0](https://app.layer0.co/deploy?button&deploy&repo=https%253A%252F%252Fgithub.com%252Flayer0-docs%252Flayer0-astro-example)
 
-## Create your Astro site
+## Create your Astro site {/*create-your-astro-site*/}
 
 If you don't have an existing Astro site, you can create one by running:
 
@@ -31,7 +31,7 @@ $ npm run dev
 $ npm run build
 ```
 
-## Add Layer0
+## Add Layer0 {/*add-layer0*/}
 
 ```bash
 # First, globally install the Layer0 CLI:
@@ -41,12 +41,11 @@ $ npm i -g @layer0/cli
 $ 0 init
 ```
 
-## Update your Layer0 Router
+## Update your Layer0 Router {/*update-your-layer0-router*/}
 
-Paste the following into routes.ts:
+Paste the following into `routes.js` or `routes.ts`, depending on the results of the `0 init` command:
 
 ```js
-// routes.ts
 import { Router } from '@layer0/core'
 
 export default new Router()
@@ -83,7 +82,7 @@ You can remove the origin backend from `layer0.config.js`:
 module.exports = {}
 ```
 
-## Deploy to Layer0
+## Deploy to Layer0 {/*deploy-to-layer0*/}
 
 To deploy your site to Layer0, run:
 

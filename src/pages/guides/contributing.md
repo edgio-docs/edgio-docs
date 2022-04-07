@@ -25,10 +25,7 @@ Next, start the Next.js dev server locally,
 npm start
 ```
 
-<Callout type="info">
-	Finally, visit the site in your browser at <a target="blank" href="http://127.0.0.1:3000">http://127.0.0.1:3000</a>
-</Callout>
-
+Finally, visit the site in your browser at http://127.0.0.1:3000.
 
 ## Architecture {/*architecture*/}
 
@@ -46,6 +43,4 @@ We recommend the following process for submitting a change:
 4. Commit and push your change back to your fork on GitHub.
 5. Submit a [pull request](https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/about-pull-requests) back to the {{ PRODUCT_NAME }} Docs repository via GitHub web interface.
 
-<Callout type="info">
-	For more details, the Pro Git book has a <a href="https://git-scm.com/book/en/v2/GitHub-Contributing-to-a-Project">helpful contributing guide</a> that walks you through the process of submitting a pull request to an open source repository on GitHub.
-</Callout>
+For more details, the Pro Git book has a [helpful contributing guide](https://git-scm.com/book/en/v2/GitHub-Contributing-to-a-Project) that walks you through the process of submitting a pull request to an open source repository on GitHub.

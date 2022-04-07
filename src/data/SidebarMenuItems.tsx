@@ -228,6 +228,10 @@ const SidebarMenuItems: Array<Array<ISidebarMenuItem>> = [
           path: '/guides/devtools',
         },
         {
+          title: 'EdgeJS Unit Testing',
+          path: '/guides/edgejs_testing',
+        },
+        {
           title: 'Logs',
           path: '/guides/logs',
         },
@@ -247,6 +251,10 @@ const SidebarMenuItems: Array<Array<ISidebarMenuItem>> = [
         {
           title: 'Environments',
           path: '/guides/environments',
+        },
+        {
+          title: 'SAML Single Sign On',
+          path: '/guides/saml',
         },
       ],
     },
@@ -386,6 +394,12 @@ const SidebarMenuItems: Array<Array<ISidebarMenuItem>> = [
         {
           title: 'Nuxt.js',
           path: '/guides/nuxt',
+          icon: <IconNuxt />,
+          iconDark: <IconNuxt />,
+        },
+        {
+          title: 'Nuxt3',
+          path: '/guides/nuxt3',
           icon: <IconNuxt />,
           iconDark: <IconNuxt />,
         },
@@ -539,6 +553,10 @@ const SidebarMenuItems: Array<Array<ISidebarMenuItem>> = [
         {
           title: 'Changelog',
           path: '/guides/changelog',
+        },
+        {
+          title: 'Compression',
+          path: '/guides/compression',
         },
         {
           title: 'Status Codes',

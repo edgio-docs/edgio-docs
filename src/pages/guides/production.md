@@ -22,27 +22,27 @@ Before going live, you must create a production environment and configure your d
 
 To configure your custom domains:
 
-1. Navigate to a site, then open an existing environment or create a new environment. (To create an environment, use instructions in [Environments](./environments).)
+1) Navigate to a site, then open an existing environment or create a new environment. (To create an environment, use instructions in [Environments](./environments).)
 
-   * For an existing environment, select the _ENVIRONMENTS_ tab header, then click an environment name in the list of environments. Continue with the numbered steps below.
+* For an existing environment, select the _ENVIRONMENTS_ tab header, then click an environment name in the list of environments. Continue with the numbered steps below.
 
-   * For a new environment, the _DEPLOYMENTS_ tab is displayed. Continue with the following steps.
+* For a new environment, the _DEPLOYMENTS_ tab is displayed. Continue with the following steps.
 
-2. Select the _CONFIGURATION_ tab header.
+2) Select the _CONFIGURATION_ tab header.
 
 ![domains](/images/production/configurations-tab.png)
 
-3. Create a new draft version of the environment by clicking _EDIT_ at the top of the page.
+3) Create a new draft version of the environment by clicking _EDIT_ at the top of the page.
 
-4. In the _Domains_ section, click _EDIT DOMAINS_.
+4) In the _Domains_ section, click _EDIT DOMAINS_.
 
 ![domains](/images/production/domains-section.png)
 
-5. Enter a name in the _Edit Domains_ dialog, then click _APPLY_.
+5) Enter a name in the _Edit Domains_ dialog, then click _APPLY_.
 
 ![domainsSection](/images/production/domains.png)
 
-6. Click _ACTIVATE_ at the top of the page to enable the updated environment.
+6) Click _ACTIVATE_ at the top of the page to enable the updated environment.
 
 ![activateEnvironment](/images/production/activate-environment.png)
 
@@ -220,9 +220,8 @@ __Note:__ If you already have an existing certificate, you can use it by skippin
 
    You can also verify the CNAME records using the command line:
 
-   ```bash
-   # Run the following 'dig' command to verify the presence
-   # of the '_acme-challenge.' CNAME :
+   ```
+   # Run the following 'dig' command to verify the presence of the '_acme-challenge.' CNAME :
    dig +short cname _acme-challenge.<your-domain>
 
    # For example:
@@ -231,7 +230,7 @@ __Note:__ If you already have an existing certificate, you can use it by skippin
 
    Expected result for the DNS query:
 
-   ```bash
+   ```
    _acme-challenge.xdn-validation.com.
    ```
 
@@ -245,7 +244,6 @@ __Note:__ If you already have an existing certificate, you can use it by skippin
    If you have been previously using _Let's Encrypt_ to generate certificates for this domain, please verify that there are no remaining TXT records named `_acme-challenge.mywebsite.xyz`.
 
    __Note:__ You can read more about the `_acme-challenge.` process by visiting [_Let's Encrypt_ Website](https://letsencrypt.org/docs/challenge-types/#dns-01-challenge)
-
 
 4. Once the requirements above are met, you can generate the certificate using the [{{ PRODUCT_NAME }} Developer Console]({{ APP_URL }}):
 
@@ -343,9 +341,7 @@ To upload your SSL certificate, do the following:
 
 4. Copy the certificate, intermediate certificates, and the private key into the corresponding edit boxes.
 
-<Callout type="info">
-The private key is non-public data and must not be shared with parties other than {{ PRODUCT_NAME }}. {{ PRODUCT_NAME }} stores your private key securely at rest. It is never shown in the developer console and only used to provision parts of the infrastructure that are used to terminate TLS connections.
-</Callout>
+_Note: The private key is non-public data and must not be shared with parties other than {{ PRODUCT_NAME }}. {{ PRODUCT_NAME }} stores your private key securely at rest. It is never shown in the developer console and only used to provision parts of the infrastructure that are used to terminate TLS connections._
 
 5. Click *CHANGES SAVED*.
 
@@ -357,6 +353,4 @@ After the certificate is activated, its status becomes *Active*:
 
 ![activated-certificate](/images/production/activated-certificate.png)
 
-<Callout type="info">
-Certificate activation should take just a few minutes. If the status does not become *Active* within an hour, please contact <a href="{{ APP_URL }}/help">support</a>.
-</Callout>
+_Note: Certificate activation should take just a few minutes. If the status does not become *Active* within an hour, please contact [support]({{ APP_URL }}/help). _

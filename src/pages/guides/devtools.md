@@ -34,9 +34,7 @@ yarn add --dev {{ PACKAGE_NAME }}/devtools {{ PACKAGE_NAME }}/prefetch
 
 ### Client Widget {/*client-widget*/}
 
-<Callout type="info">
-	You can skip this step if you are using `{{ PACKAGE_NAME }}/next` or `{{ PACKAGE_NAME }}/nuxt`
-</Callout>
+**Note**: you can skip this step if you are using `{{ PACKAGE_NAME }}/next` or `{{ PACKAGE_NAME }}/nuxt`
 
 Add the following to your client JavaScript bundle:
 

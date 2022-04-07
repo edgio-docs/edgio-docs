@@ -4,9 +4,7 @@ title: Managed Rule Group Descriptions
 
 ## Layer0 Managed Rules {/*layer0-managed-rules*/}
 
-<Callout type="danger">
-	Layer0 recommends utilizing this rule group for all WAF use cases.
-</Callout>
+**![{"color": "red"}](/ 'Layer0 recommends utilizing this rule group for all WAF use cases.')**
 
 | Rule Name                           | Description                                                                                                                                                                                                                                                                                                                          | Log Name       |
 | ----------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------------- |
@@ -40,9 +38,7 @@ title: Managed Rule Group Descriptions
 
 ## Bad Input Rules {/*bad-input-rules*/}
 
-<Callout type="danger">
-	Layer0 recommends enabling the 'Bad Input - Log4J' rule on all WAF applications.
-</Callout>
+**![{"color": "red"}](/ 'Layer0 recommends enabling the 'Bad Input - Log4J' rule on all WAF applications.')**
 
 | Rule Name            | Description                                                                                                                                                                                                                                                             | Log Name      |
 | -------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------- |

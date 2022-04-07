@@ -24,8 +24,6 @@ const StyledCustomPre = styled.div`
   pre code {
     direction: ltr;
     text-align: left;
-    white-space: pre;
-    word-break: break-all;
     hyphens: none;
     tab-size: 4;
     font-size: 14px;
@@ -73,7 +71,6 @@ const StyledCustomPre = styled.div`
   pre,
   code,
   kbd {
-    white-space: pre-wrap;
     margin: 0;
     overflow-x: auto;
     text-align: left;

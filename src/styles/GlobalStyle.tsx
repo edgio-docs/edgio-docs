@@ -159,14 +159,10 @@ p, h1, h2, h3, h4, h5, h6 {
 }
 
 /* code and stuff */
-code, pre {
+code, pre, kbd {
   font-family: 'IBM Plex Mono', monospace;
-}
-
-code {
-  white-space: normal;
+  white-space: pre-wrap;
   font-weight: 600;
-  display: inline-block;
 }
 
 #dark-theme-switcher {

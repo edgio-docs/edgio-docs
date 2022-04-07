@@ -28,9 +28,9 @@ All POPs have the same components:
 * L1 is Edge w/ HAProxy -> Varnish -> DPS -> Global POP
 * L2 is Global w/ HAProxy -> Varnish -> DPS  -> backend (user defined backend from [layer0.config](https://docs.layer0.co/guides/layer0_config#section_backends) | [static page](https://docs.layer0.co/guides/static_sites#section_router_configuration) | XBP->[Serverless](https://docs.layer0.co/guides/serverless_functions#section_serverless_functions))
 
-***
-**Note**: When a request is reentrant, telemetry information is not duplicated; instead, each request logs its own telemetry but does not return it to the downstream {{ PRODUCT_NAME }} request. As a result, duplicate entries are not possible.
-***
+<Callout type="info">
+  When a request is reentrant, telemetry information is not duplicated; instead, each request logs its own telemetry but does not return it to the downstream {{ PRODUCT_NAME }} request. As a result, duplicate entries are not possible.
+</Callout>
 
 
 #### Component Names and Prefixes {/*component-names-and-prefixes*/}
@@ -59,7 +59,8 @@ Component names within the header are abbreviated:
 ### Examples {/*examples*/}
 The examples below use a response that traversed from the edge, to global and to serverless:
 ##### _{{ HEADER_PREFIX }}-t_ {/*-header_prefix--t*/}
-`< {{ HEADER_PREFIX }}-t: eh=1160,ect=1158,ecc=miss,edt=1152,edd=0,edf=1152,gh=869,gct=866,gcc=miss,gdt=853,gdd=0,gdf=853,pt=811,pc=1,pf=809,wm=317,wt=722,wc=19,wg=746940,wl=30896,wr=1,wp=705,wa=1,wz=1`
+<!-- `< {{ HEADER_PREFIX }}-t: eh=1160,ect=1158,ecc=miss,edt=1152,edd=0,edf=1152,gh=869,gct=866,gcc=miss,gdt=853,gdd=0,gdf=853,pt=811,pc=1,pf=809,wm=317,wt=722,wc=19,wg=746940,wl=30896,wr=1,wp=705,wa=1,wz=1` -->
+`eh=1160,ect=1158,ecc=miss,edt=1152,edd=0,edf=1152,gh=869,gct=866,gcc=miss,gdt=853,gdd=0,gdf=853,pt=811,pc=1,pf=809,wm=317,wt=722,wc=19,wg=746940,wl=30896,wr=1,wp=705,wa=1,wz=1`
 
 Below is a translation of each value in this example:
 
@@ -92,11 +93,10 @@ Below is a translation of each value in this example:
 
 ##### _{{ HEADER_PREFIX }}-status_ {/*-header_prefix--status*/}
 The `{{ HEADER_PREFIX }}-status` header will show the response codes received from the preceding service at each step in the process
-
 `< {{ HEADER_PREFIX }}-status: eh=200,ed=200,gh=200,gd=200,p=200,w=200`
 
 ##### _{{ HEADER_PREFIX }}-components_ {/*-header_prefix--components*/}
- `{{ HEADER_PREFIX }}components`. This is most useful for {{ PRODUCT_NAME }} in identifying the versions of each service, the id of the environment, and which backend serviced the request
+`{{ HEADER_PREFIX }}components`. This is most useful for {{ PRODUCT_NAME }} in identifying the versions of each service, the id of the environment, and which backend serviced the request
 
 `< {{ HEADER_PREFIX }}-components: eh=0.1.6,e=atl,ec=1.1.0,ed=1.0.1,gh=0.1.6,g=hef,gd=1.0.1,p=1.21.10,w=3.11.0,wi=e8ce8753-163d-4be9-a39e-40454ace5146,b=serverless`
 

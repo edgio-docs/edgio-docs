@@ -133,6 +133,7 @@ const StyledDocs = styled.div`
     font-size: 16px;
     line-height: 26px;
     font-weight: 400;
+    overflow: auto;
   }
 
   table {

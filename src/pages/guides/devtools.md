@@ -12,7 +12,7 @@ title: Devtools
 
 [Live demo of {{ PRODUCT_NAME }} Devtools running on a React Storefront site](https://demo.reactstorefront.io/__layer0__/devtools/enable)
 
-<Video src="https://www.youtube.com/watch?v=xXWSGIfe9sI" />
+<Video src="https://vimeo.com/691580899" />
 
 ## Installation {/*installation*/}
 

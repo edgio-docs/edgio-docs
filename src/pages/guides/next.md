@@ -1,22 +1,13 @@
 ---
 title: Next.js
 ---
-
 This guide shows you how to deploy a [Next.js](https://nextjs.org/) application on {{ PRODUCT_NAME }}.
 
 ## Example {/*example*/}
 
-<ButtonLinksGroup>
-  <ButtonLink variant="fill" type="default" href="(https://layer0-docs-layer0-nextjs-example-default.layer0-limelight.link">
-   Try the Next.js SSR Example Site
-  </ButtonLink>
-  <ButtonLink variant="stroke" type="code" withIcon={true} href="(https://github.com/layer0-docs/layer0-nextjs-example">
-   View the Code
-  </ButtonLink>
-  <ButtonLink variant="stroke" type="deploy" withIcon={true} href="(https://app.layer0.co/deploy?button&deploy&repo=https%253A%252F%252Fgithub.com%252Flayer0-docs%252Flayer0-nextjs-example">
-    Deploy to Layer0
-  </ButtonLink>
-</ButtonLinksGroup>
+[Try the Next.js SSR Example Site](https://layer0-docs-layer0-nextjs-example-default.layer0-limelight.link?button)
+[View the Code](https://github.com/layer0-docs/layer0-nextjs-example?button)
+[Deploy to Layer0](https://app.layer0.co/deploy?button&deploy&repo=https%253A%252F%252Fgithub.com%252Flayer0-docs%252Flayer0-nextjs-example)
 
 ## Next.js Commerce {/*nextjs-commerce*/}
 
@@ -26,13 +17,11 @@ For details on using the Next.js Commerce template with {{ PRODUCT_NAME }}, refe
 
 This framework has a connector developed for {{ PRODUCT_NAME }}. See [Connectors](connectors) for more information.
 
-<ButtonLink variant="stroke" type="code" withIcon={true} href="https://github.com/layer0-docs/layer0-connectors/tree/main/layer0-next-connector">
-  View the Connector Code
-</ButtonLink>
+[View the Connector Code](https://github.com/layer0-docs/layer0-connectors/tree/main/layer0-next-connector?button)
 
 ## Supported Versions {/*supported-versions*/}
 
-Layer0 supports Next version 9 through 12.
+{{ PRODUCT_NAME }} supports Next version 9 through 12.
 
 ## Supported Features {/*supported-features*/}
 
@@ -149,12 +138,12 @@ import { Prefetcher } from '{{ PACKAGE_NAME }}/prefetch/sw'
 new Prefetcher().route()
 ```
 
-The code above allows you to prefetch pages from {{ PRODUCT_NAME }}'s edge cache to greatly improve browsing speed. To prefetch a page, add the `Prefetch` component from `{{ PACKAGE_NAME }}/react` to any Next `Link` element. The example below shows you how to prefetch JSON data from `getServerSideProps` or `getStaticProps` using the `createNextDataUrl` function from `@layer0/next/client`.
+The code above allows you to prefetch pages from {{ PRODUCT_NAME }}'s edge cache to greatly improve browsing speed. To prefetch a page, add the `Prefetch` component from `{{ PACKAGE_NAME }}/react` to any Next `Link` element. The example below shows you how to prefetch JSON data from `getServerSideProps` or `getStaticProps` using the `createNextDataUrl` function from `{{ PACKAGE_NAME }}/next/client`.
 
 ```js
 import { Prefetch } from '{{ PACKAGE_NAME }}/react'
 import Link from 'next/link'
-import { createNextDataURL } from '@layer0/next/client'
+import { createNextDataURL } from '{{ PACKAGE_NAME }}/next/client'
 
 export default function ProductListing({ products }) {
   return (
@@ -439,11 +428,11 @@ module.exports = with{{ PRODUCT_NAME }}(
 )
 ```
 
-Finally, you will need to update your `layer0.config.js` to [includeFiles](/guides/layer0_config#section_includefiles) where the locale files are stored. Example using the default of `/public`:
+Finally, you will need to update your `{{ CONFIG_FILE }}` to [includeFiles](/guides/layer0_config#section_includefiles) where the locale files are stored. Example using the default of `/public`:
 
 ```js
 module.exports = {
-  connector: '@layer0/next',
+  connector: '{{ PACKAGE_NAME }}/next',
   includeFiles: {
     public: true,
   },
@@ -454,6 +443,22 @@ A working example app can be found [here](https://github.com/layer0-docs/layer0-
 
 ## Using experimental-serverless-trace {/*using-experimental-serverless-trace*/}
 
-As of **v3.16.6**, Next.js apps built with layer0 will use the `experimental-serverless-trace` target by default. The serverless target does not support most modern Next.js features like preview mode, revalidate, fallback. For backwards compatibility reasons, the serverless target will still be supported.
+As of **v3.16.6**, Next.js apps built with {{ PRODUCT_NAME }} will use the `experimental-serverless-trace` target by default. The serverless target does not support most modern Next.js features like preview mode, revalidate, fallback. For backwards compatibility reasons, the serverless target will still be supported.
 
-At build time, layer0 will run a trace on your application code and find only the required modules needed to run your production application, then add those to the deployment bundle.
+At build time, {{ PRODUCT_NAME }} will run a trace on your application code and find only the required modules needed to run your production application, then add those to the deployment bundle.
+
+## Next.js version 12 and Next.js Middleware (BETA) {/*section_next_js_version_12_and_next_js_middleware__beta_*/}
+
+As of Next.js version 12 the `serverless` and `experimental-serverless-trace` targets have been deprecated and no new features will be supported for these targets. This includes Next.js Middleware (beta) and React component streaming (alpha). The `{{ PACKAGE_NAME }}/next` connector has historically utilized the `serverless` and `experimental-serverless-trace` targets to create a suitable build output for a serverless runtime.
+
+As of **v4.13.0** {{ PRODUCT_NAME }} packages, Next.js apps using Next.js versions 12 or higher can opt into using the default `server` target by explicitly setting `target: 'server'` in the `next.config.js` file. The `{{ PACKAGE_NAME }}/next` connector will then create a minimal server bundle with requests delegated to a Next.js server instance instead of rendering via serverless page functions. When opting into the `server` target you can use Next.js Middleware.
+
+Future versions of {{ PRODUCT_NAME }} when using Next.js 12 or higher will utilize the `server` target by default.
+
+### Next.js 12 with server target deprecations {/*nextjs-12-with-server-target-deprecations*/}
+
+`NextRouter.render404` and `renderNextPage` with specifying a page to render are retired when using Next.js 12+ and the `server` target. Requests are delegated to a Next.js server instance which will handle determining which page to render based on the request. Prior use cases should now be achieved via using Next.js redirects and rewrites.
+
+### Middleware caveats {/*middleware-caveats*/}
+
+When using Next.js Middleware it should be noted that the middleware functions are only executed at the serverless layer, ie after edge cache. Middleware that you want to execute on each request needs to have caching disabled explicitly for the route that the middleware is configured to run for. Some Middleware use cases such as rewriting the request to another route would be fine to cache. These use cases need to be evaluated on a per route basis with caching enabled/disabled based on the desired result.

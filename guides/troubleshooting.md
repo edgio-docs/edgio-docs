@@ -134,6 +134,9 @@ We provide a header, `x-0-caching-status` to best understand why something is be
 
 Layer0 automatically produces a source map for your router file so that all runtime errors that occur during routing will have a stacktrace that references the original source file. If your application build produces source maps for the server bundle, these will also be used when reporting errors. Layer0 provides a convenient way to enable source maps when using Next and Nuxt:
 
+**Warning**: we noticed some performance issues related to sourcemaps being loaded in our Serverless infrastructure, which may result in 539 project timeout errors. In case you encounter such errors, please try again with sourcemaps disable. This document will be updated once the problem is fully resolved.
+
+
 ### Next.js
 
 Set `{{ FULL_CLI_NAME }}SourceMaps: true` in your `next.config.js`:
@@ -176,6 +179,8 @@ module.exports = {
 * An error in your SSR code
 * A backend error (server overloaded or offline)
 * An allowlist (whitelist) issue
+
+**Warning**: we noticed some performance issues related to sourcemaps being loaded in our Serverless infrastructure, which may result in 539 project timeout errors. In case you encounter such errors, please try again with sourcemaps disable. This document will be updated once the problem is fully resolved.
 
 #### Assumptions
 

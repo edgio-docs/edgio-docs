@@ -170,37 +170,140 @@ const Home = ({ navData }) => {
         </Container>
       </div>
       <Divider />
+
       <div className={classes.tutorials}>
         <Container maxWidth="md">
           <Grid container spacing={4}>
             <Grid item xs={12}>
               <Typography variant="h2">{PRODUCT_NAME} Tutorials</Typography>
+            </Grid>            
+            
+            <Grid item xs={12}>
+              <Typography variant="h3">CDN</Typography>
             </Grid>
-            <Grid item md={4} sm={6} xs={12} className={classes.tutorial}>
-              <h3>What &amp; Why</h3>
+
+            <Grid item md={4} sm={6} xs={12} className={classes.tutorial}>            
+              <h3>Serving Static Sites</h3>
               <div className={classes.aspectRatio}>
-                <iframe frameBorder={0} src="https://www.youtube.com/embed/sJ6AkTrcZvg?rel=0" />
+              <iframe src="https://player.vimeo.com/video/691615425?h=afae4ea9fe" frameBorder="0" allow="autoplay; fullscreen; picture-in-picture" allowFullScreen></iframe>            
               </div>
             </Grid>
+
             <Grid item md={4} sm={6} xs={12} className={classes.tutorial}>
-              <h3>Deploying a GitHub Project</h3>
+              <h3>JavaScript-Configurable CDN</h3>
               <div className={classes.aspectRatio}>
-                <iframe frameBorder={0} src="https://www.youtube.com/embed/F8uN03ps1As?rel=0" />
+              <iframe src="https://player.vimeo.com/video/691580288?h=75c3be1062" frameBorder="0" allow="autoplay; fullscreen; picture-in-picture" allowFullScreen></iframe>
               </div>
             </Grid>
+            
+            <Grid item xs={12}>
+              <Typography variant="h3">Developer Tools</Typography>
+            </Grid>
+            
             <Grid item md={4} sm={6} xs={12} className={classes.tutorial}>
-              <h3>How to Prefetch</h3>
+              <h3>Developer Intro</h3>
               <div className={classes.aspectRatio}>
-                <iframe frameBorder={0} src="https://www.youtube.com/embed/lfhSDCNgzfs?rel=0" />
+              <iframe src="https://player.vimeo.com/video/691580230?h=d895984d78" width="640" height="360" frameBorder="0" allow="autoplay; fullscreen; picture-in-picture" allowFullScreen></iframe>
               </div>
             </Grid>
+
             <Grid item md={4} sm={6} xs={12} className={classes.tutorial}>
-              <h3>What are the {PRODUCT_NAME} DevTools?</h3>
+              <h3>What are Layer0 Devtools?</h3>
               <div className={classes.aspectRatio}>
-                <iframe frameBorder={0} src="https://www.youtube.com/embed/4AYQAvkc0UY?rel=0" />
+              <iframe src="https://player.vimeo.com/video/691580899?h=8905d31a36" width="640" height="360" frameBorder="0" allow="autoplay; fullscreen; picture-in-picture" allowFullScreen></iframe>
               </div>
             </Grid>
-          </Grid>
+
+            <Grid item md={4} sm={6} xs={12} className={classes.tutorial}>
+              <h3>Deep Request Inspection</h3>
+              <div className={classes.aspectRatio}>
+              <iframe src="https://player.vimeo.com/video/691615206?h=7c939ea661" width="640" height="360" frameBorder="0" allow="autoplay; fullscreen; picture-in-picture" allowFullScreen></iframe>
+              </div>
+            </Grid>
+
+            <Grid item xs={12}>
+              <Typography variant="h3">Performance and Caching</Typography>
+            </Grid>
+            
+            <Grid item md={4} sm={6} xs={12} className={classes.tutorial}>
+              <h3>Measuring Core Web Vitals</h3>
+              <div className={classes.aspectRatio}>
+              <iframe src="https://player.vimeo.com/video/691615391?h=abe5b3c505" width="640" height="360" frameBorder="0" allow="autoplay; fullscreen; picture-in-picture" allowFullScreen></iframe>
+              </div>
+            </Grid>
+
+            <Grid item md={4} sm={6} xs={12} className={classes.tutorial}>
+              <h3>Performance &amp; Core Web Vitals</h3>
+              <div className={classes.aspectRatio}>
+              <iframe src="https://player.vimeo.com/video/691580370?h=73d8a65b9a" width="640" height="360" frameBorder="0" allow="autoplay; fullscreen; picture-in-picture" allowFullScreen></iframe>
+              </div>
+            </Grid>            
+
+            <Grid item md={4} sm={6} xs={12} className={classes.tutorial}>
+              <h3>Getting Started with GraphQL</h3>
+              <div className={classes.aspectRatio}>
+              <iframe src="https://player.vimeo.com/video/691615246?h=f0a9b2a5e7" width="640" height="360" frameBorder="0" allow="autoplay; fullscreen; picture-in-picture" allowFullScreen></iframe>
+              </div>
+            </Grid>
+
+            <Grid item md={4} sm={6} xs={12} className={classes.tutorial}>
+              <h3>Sub-Second Performance</h3>
+              <div className={classes.aspectRatio}>
+              <iframe src="https://player.vimeo.com/video/691580446?h=b9ca883f12" width="640" height="360" frameBorder="0" allow="autoplay; fullscreen; picture-in-picture" allowFullScreen></iframe>
+              </div>
+            </Grid>
+
+            <Grid item md={4} sm={6} xs={12} className={classes.tutorial}>
+              <h3>Caching Cockpit</h3>
+              <div className={classes.aspectRatio}>
+              <iframe src="https://player.vimeo.com/video/691580407?h=eefaaabf12" width="640" height="360" frameBorder="0" allow="autoplay; fullscreen; picture-in-picture" allowFullScreen></iframe>
+              </div>
+            </Grid>
+
+            <Grid item xs={12}>
+              <Typography variant="h3">Security</Typography>
+            </Grid>
+            
+            <Grid item md={4} sm={6} xs={12} className={classes.tutorial}>
+              <h3>Security Suite</h3>
+              <div className={classes.aspectRatio}>
+              <iframe src="https://player.vimeo.com/video/691580518?h=ec5e0f1370" width="640" height="360" frameBorder="0" allow="autoplay; fullscreen; picture-in-picture" allowFullScreen></iframe>
+              </div>
+            </Grid>
+
+            <Grid item xs={12}>
+              <Typography variant="h3">Deploying</Typography>
+            </Grid>
+            
+            <Grid item md={4} sm={6} xs={12} className={classes.tutorial}>
+              <h3>Deploy GitHub Project to Layer0</h3>
+              <div className={classes.aspectRatio}>
+              <iframe src="https://player.vimeo.com/video/691593915?h=06e673dc82" width="640" height="360" frameBorder="0" allow="autoplay; fullscreen; picture-in-picture" allowFullScreen></iframe>
+              </div>
+            </Grid>
+
+            <Grid item md={4} sm={6} xs={12} className={classes.tutorial}>
+              <h3>Deploy Fearlessly</h3>
+              <div className={classes.aspectRatio}>
+              <iframe src="https://player.vimeo.com/video/691580568?h=b2f1b825c1" width="640" height="360" frameBorder="0" allow="autoplay; fullscreen; picture-in-picture" allowFullScreen></iframe>
+              </div>
+            </Grid>
+
+            <Grid item md={4} sm={6} xs={12} className={classes.tutorial}>
+              <h3>Deploy and Debug</h3>
+              <div className={classes.aspectRatio}>
+              <iframe src="https://player.vimeo.com/video/691580336?h=93f2c0511a" width="640" height="360" frameBorder="0" allow="autoplay; fullscreen; picture-in-picture" allowFullScreen></iframe>
+              </div>
+            </Grid>
+
+            <Grid item md={4} sm={6} xs={12} className={classes.tutorial}>
+              <h3>Deploying via the CLI</h3>
+              <div className={classes.aspectRatio}>
+              <iframe src="https://player.vimeo.com/video/691580254?h=8eb4753b30" width="640" height="360" frameBorder="0" allow="autoplay; fullscreen; picture-in-picture" allowFullScreen></iframe>
+              </div>
+            </Grid>
+          {/* New videos go above  */}
+          </Grid>          
         </Container>
       </div>
     </PageWrapper>
@@ -346,6 +449,9 @@ const useStyles = makeStyles(theme => ({
     paddingBottom: theme.spacing(10),
   },
   tutorials: {
+    '& h3': {      
+      borderBottom: '1px solid gray',
+    },
     paddingBottom: theme.spacing(8),
     '& h2': {
       textAlign: 'center',
@@ -354,7 +460,7 @@ const useStyles = makeStyles(theme => ({
     },
     '& h3': {
       padding: theme.spacing(0, 0, 1, 0),
-      margin: 0,
+      margin: 0,          
     },
   },
   tutorial: {
@@ -417,4 +523,5 @@ const useStyles = makeStyles(theme => ({
       textDecoration: 'none',
     },
   },
+  
 }))

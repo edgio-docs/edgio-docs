@@ -23,23 +23,46 @@ The easiest way to try Next.js Commerce on {{ PRODUCT_NAME }} is to clone and de
 
 1. Register for a free account on the [{{ PRODUCT_NAME }} sign up page]({{ APP_URL }}/signup).
 
-2. Clone the {{ PRODUCT_NAME }} examples repository:
+2. Clone the {{ PRODUCT_NAME }} nextjs-commerce example repository:
 
 ```bash
-git clone git@github.com:{{ EXAMPLES_REPO }}.git
+
+git clone git@github.com:layer0-docs/layer0-nextjs-commerce-example.git
+
 ```
 
-3. Navigate to the `nextjs-commerce` example directory and install the required modules via `yarn`:
+3. Navigate to the `layer0-nextjs-commerce-example` example directory and ensure you are using the latest {{ PRODUCT_NAME }} version:
 
 ```bash
-cd layer0-examples/nextjs-commerce/
-yarn install
+cd layer0-nextjs-commerce-example/
+0 use latest
+
 ```
 
-4. Deploy to {{ PRODUCT_NAME }}:
+4. Install the required modules via `npm`:
 
 ```bash
-npm run {{ CLI_NAME }}:deploy
+npm install
+```
+
+5. Deploy to {{ PRODUCT_NAME }}:
+
+```bash
+{{ CLI_NAME }} deploy
+```
+
+{{ PRODUCT_NAME }} builds and deploys your site and displays status messages in your console. When deployment is finished, your console displays links to the deployment and website:
+
+```bash
+***** Deployment Complete *********************************************************
+*                                                                                 *
+*  Layer0 Developer Console:                                                      *
+*  https://app.layer0.co/user/layer0-nextjs-commerce/env/default/builds/1         *
+*                                                                                 *
+*  Website:                                                                       *
+*  https://user-layer0-nextjs-commerce-default.layer0-limelight.link              *
+*                                                                                 *
+***********************************************************************************
 ```
 
 ## Learn more

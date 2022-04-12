@@ -86,6 +86,8 @@ Options:
 
 - `{{ FULL_CLI_NAME }}SourceMaps: true|false`: when true, the serverless build includes sourcemap files which make debugging easier when tailing the server logs in the Layer0 Developer Console. It also increases the serverless bundle size, which may push your deployments over the 50MB (compressed) limit.
 
+**Warning**: We noticed some performance issues related to __sourcemaps__ being loaded in our Serverless infrastructure, which may result in 539 project timeout errors. In case you encounter such errors, please try again with sourcemaps disabled. This document will be updated once the problem is fully resolved.
+
 ### Initialize your project
 
 In the root directory of your project run `{{ CLI_NAME }} init`:

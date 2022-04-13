@@ -45,6 +45,7 @@
     "react-dom": "experimental",
     "react-highlight": "^0.14.0",
     "react-player": "^2.10.0",
+    "remark": "^12.0.1",
     "scroll-into-view-if-needed": "^2.2.25",
     "styled-components": "^5.3.3"
   },
@@ -97,7 +98,6 @@
     "postcss-preset-env": "^6.7.0",
     "prettier": "^2.5.1",
     "reading-time": "^1.2.0",
-    "remark": "^12.0.1",
     "remark-external-links": "^7.0.0",
     "remark-html": "^12.0.0",
     "remark-images": "^2.0.0",

@@ -8,6 +8,7 @@ interface PageFrontmatter {
 }
 
 export default function withDocs(p: PageFrontmatter) {
+  console.log(p);
   function LayoutDocs(props: MarkdownProps<PageFrontmatter>) {
     return <MarkdownPage {...props} meta={p} />;
   }
@@ -15,6 +16,6 @@ export default function withDocs(p: PageFrontmatter) {
   return LayoutDocs;
 }
 
-function AppShell(props: {children: React.ReactNode}) {
+export function AppShell(props: {children: React.ReactNode}) {
   return <Page {...props} />;
 }

@@ -1,136 +1,87 @@
 # Next.js Commerce
 
-This guide shows you how to deploy the [Next.js Commerce](https://github.com/vercel/commerce) starter kit on {{ PRODUCT_NAME }}. Note that Next.js Commerce is currently under development and requires an account on the [BigCommerce](https://www.bigcommerce.com/) platform.
+This guide shows you how to deploy the [Next.js Commerce](https://github.com/vercel/commerce) starter kit on {{ PRODUCT_NAME }}. Note that Next.js Commerce repo is actively under development. This repo requires an account on the [BigCommerce](https://www.bigcommerce.com/) platform. BigCommerce has a generous free trial which can be used.
 
 ## Next.js Commerce Example
 
-Here is an example of the [Next.js Commerce](https://nextjs.org/commerce) template running on {{ PRODUCT_NAME }}. It uses all of the latest Next.js 10 features
-including image optimization, localization, and incremental static regeneration with stale-while-revalidate.
+Here is an example of the [Next.js Commerce](https://nextjs.org/commerce) template running on {{ PRODUCT_NAME }}. It uses all of the latest Next.js 10 features including image optimization, localization, and incremental static regeneration with stale-while-revalidate.
 
 [Try the Next.js Commerce Example Site](https://layer0-docs-layer0-nextjs-commerce-default.layer0.link/?button)
 [View the Code](https://github.com/layer0-docs/layer0-nextjs-commerce-example?button)
 [Deploy to Layer0](https://app.layer0.co/deploy?button&deploy&repo=https%3A%2F%2Fgithub.com%2Flayer0-docs%2Flayer0-nextjs-commerce-example)
 
-## Connector
+{{ SIGN_UP_LAYER0 }}
 
-This framework has a connector developed for {{ PRODUCT_NAME }}. See [Connectors](connectors) for more information.
+## Install the {{ PRODUCT_NAME }} CLI
 
-[View the Connector Code](https://github.com/layer0-docs/layer0-connectors/tree/main/layer0-next-connector?button)
-
-## Getting Started
-
-The easiest way to try Next.js Commerce on {{ PRODUCT_NAME }} is to clone and deploy the version from the {{ PRODUCT_NAME }} examples:
-
-1. Register for a free account on the [{{ PRODUCT_NAME }} sign up page]({{ APP_URL }}/signup).
-
-2. Clone the {{ PRODUCT_NAME }} examples repository:
+If you have not already done so, install the [{{ PRODUCT_NAME }} CLI](cli)
 
 ```bash
-git clone git@github.com:{{ EXAMPLES_REPO }}.git
+npm i -g {{ PACKAGE_NAME }}/cli # yarn global add {{ PACKAGE_NAME }}/cli
 ```
 
-3. Navigate to the `nextjs-commerce` example directory and install the required modules via `yarn`:
+{{ SYSTEM_REQUIREMENTS }}
+
+## Deploy the Example
+
+Quickly launch an example with no code by clicking the "Deploy to Layer0" button.
+
+[Deploy to Layer0](https://app.layer0.co/deploy?button&deploy&repo=https%3A%2F%2Fgithub.com%2Flayer0-docs%2Flayer0-nextjs-commerce-example)
+
+## Deploying the official Next.js Commerce repository
+
+If you wish to deploy to {{ PRODUCT_NAME }} from the official Next.js Commerce repository, follow these steps:
+
+1. Clone the official Next.js Commerce repository and install the dependencies.
 
 ```bash
-cd layer0-examples/nextjs-commerce/
-yarn install
+git clone git@github.com:vercel/commerce.git
+cd commerce
+yarn
+cd site
 ```
 
-4. Deploy to {{ PRODUCT_NAME }}:
+2. Run {{ PRODUCT_NAME }} `init` in the project directory:
+
+```
+{{ CLI_NAME }} init
+```
+
+3. Duplicate `.env.template` and name it `.env.local` in the project directory. Add your BigCommerce API keys to it.
+
+```
+COMMERCE_PROVIDER=@vercel/commerce-bigcommerce
+BIGCOMMERCE_STOREFRONT_API_URL=https://store-${STORE_HASH}-${CHANNEL_ID}.mybigcommerce.com/graphql
+BIGCOMMERCE_STOREFRONT_API_TOKEN=${STOREFRONT_API_TOKEN}
+BIGCOMMERCE_STORE_API_URL=https://api.bigcommerce.com/stores/${STORE_HASH}
+BIGCOMMERCE_STORE_API_TOKEN=${STORE_TOKEN}
+BIGCOMMERCE_STORE_API_CLIENT_ID=${STORE_CLIENT}
+BIGCOMMERCE_CHANNEL_ID=${CHANNEL_ID}
+BIGCOMMERCE_STORE_URL=https://store-${STORE_HASH}.mybigcommerce.com
+BIGCOMMERCE_STORE_API_STORE_HASH=${STORE_HASH}
+```
+
+- `STORE_HASH`: You can retrieve it from your BigCommerce store control panel URL in the format of `https://store-${STORE_HASH}.mybigcommerce.com/manage/dashboard`
+- `STORE_TOKEN|STORE_CLIENT`: For instructions on generating Store API credentials, visit [Obtaining Store API Credentials](https://developer.bigcommerce.com/api-docs/getting-started/authentication/rest-api-authentication#obtaining-store-api-credentials)
+- `STOREFRONT_API_TOKEN`: For instructions on generating the Storefront API token, visit [Create a Token](https://developer.bigcommerce.com/api-reference/store-management/tokens/api-token/createtoken).
+- `CHANNEL_ID`: Visit [Building Channels](https://developer.bigcommerce.com/docs/ZG9jOjE5NjMyODU-building-channels-quick-start) to learn how to create a channel for use in your application.
+
+For more details on how to set up your BigCommerce store, view the [BigCommerce guide](/guides/bigcommerce).
+
+4. Deploy to {{ PRODUCT_NAME }}.
+
+From inside the `commerce/site` directory.
 
 ```bash
-npm run {{ CLI_NAME }}:deploy
+{{ CLI_NAME }} deploy
 ```
 
 ## Learn more
 
 For more details on using Next.js on {{ PRODUCT_NAME }} refer to the [Next.js Guide](next).
 
-## Deploying the official Next.js Commerce repository
+## Connector
 
-If you wish to deploy to {{ PRODUCT_NAME }} from the official Next.js Commerce repository, follow these steps:
+This framework has a connector developed for {{ PRODUCT_NAME }}. See [Connectors](connectors) for more information.
 
-1. Register for a free account on the [{{ PRODUCT_NAME }} sign up page]({{ APP_URL }}/signup).
-
-2. Install the {{ PRODUCT_NAME }} [CLI](cli) globally
-
-```bash
-npm i -g {{ PACKAGE_NAME }}/cli
-```
-
-3. Clone the official Next.js Commerce repository and install the dependencies via `yarn`:
-
-```bash
-git clone git@github.com:vercel/commerce.git
-cd commerce
-yarn install
-```
-
-4. Run {{ PRODUCT_NAME }} `init` in the project directory:
-
-```
-{{ CLI_NAME }} init
-```
-
-5. Update the top of your `next.config.js` file to wrap the module export with `withLayer0` and `withServiceWorker` like so:
-
-```js
-const { withLayer0, withServiceWorker } = require('{{ PACKAGE_NAME }}/next/config')
-
-module.exports = withLayer0(
-  withServiceWorker(
-    bundleAnalyzer({
-      // ...rest of the next.config.js content
-      // !! Don't forget to add two additional closing parenthesis in the line below !!
-    }),
-  ),
-)
-```
-
-6. Remove this section from `package.json` which uses Webpack 5:
-
-```json
-  "resolutions": {
-    "webpack": "5.11.1"
-  },
-```
-
-7. Add the `encoding` package:
-
-```bash
-yarn add encoding
-```
-
-8. Create a file called `.env.local` in the project directory and add your BigCommerce API keys to it:
-
-```
-# Created by Vercel CLI
-BIGCOMMERCE_STORE_API_CLIENT_ID="XXXXX"
-BIGCOMMERCE_STORE_API_TOKEN="XXXX"
-BIGCOMMERCE_STOREFRONT_API_TOKEN="XXX"
-BIGCOMMERCE_CHANNEL_ID="XXX"
-BIGCOMMERCE_STOREFRONT_API_URL="https://store-XXXX-XXXX.mybigcommerce.com/graphql"
-BIGCOMMERCE_STORE_API_URL="https://api.bigcommerce.com/stores/XXXX"
-```
-
-An [example `.env.local` file](https://github.com/layer0-docs/layer0-nextjs-commerce-example/blob/master/.env.local) is in the the {{ PRODUCT_NAME }} examples repo.
-
-1. Deploy to {{ PRODUCT_NAME }}:
-
-```bash
-{{ CLI_NAME }} deploy
-```
-
-This should result in output like the following which confirms the deployment:
-
-```
-***** Deployment Complete ***************************************************************
-*                                                                                       *
-*  🖥  {{ PRODUCT_NAME }} Developer Console:                                                            *
-*  {{ APP_URL }}/ishan-scratch/nextjs-commerce/env/default/builds/1               *
-*                                                                                       *
-*  🌎 Website:                                                                          *
-*  https://ishan-scratch-nextjs-commerce-default.moovweb-edge.io                        *
-*                                                                                       *
-*****************************************************************************************
-```
+[View the Connector Code](https://github.com/layer0-docs/layer0-connectors/tree/main/layer0-next-connector?button)

@@ -72,6 +72,8 @@ module.exports = (phase, config) =>
       // the logs in the Layer0 developer console.
       layer0SourceMaps: true,
 
+      target: 'server',
+
       ..._preLayer0Export,
     })
   );

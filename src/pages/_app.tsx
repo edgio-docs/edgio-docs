@@ -26,6 +26,7 @@ const EmptyAppShell: React.FC = ({children}) => <>{children}</>;
 
 export default function MyApp({Component, pageProps}: AppProps) {
   let AppShell = (Component as any).appShell || EmptyAppShell;
+  console.log(AppShell);
   // In order to make sidebar scrolling between pages work as expected
   // we need to access the underlying MDX component.
   if ((Component as any).isMDXComponent) {

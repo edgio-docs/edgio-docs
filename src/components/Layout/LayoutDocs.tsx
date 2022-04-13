@@ -8,7 +8,6 @@ interface PageFrontmatter {
 }
 
 export default function withDocs(p: PageFrontmatter) {
-  console.log(p);
   function LayoutDocs(props: MarkdownProps<PageFrontmatter>) {
     return <MarkdownPage {...props} meta={p} />;
   }

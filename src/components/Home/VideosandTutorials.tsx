@@ -18,6 +18,7 @@ const StyledComp = styled.div`
 
     .video-category__title {
       margin-bottom: 20px;
+      color: var(--homepage-section-title-color);
     }
   }
 

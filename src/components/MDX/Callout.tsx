@@ -27,9 +27,9 @@ const StyledCallout = styled.div.attrs<IStyledCallout>((props) => ({
 	${(props) =>
     props.type === 'warning' &&
     css`
-      background: rgb(239, 245, 242) none repeat scroll 0% 0%;
-      color: rgb(78, 83, 39);
-      border-color: rgb(181, 216, 195);
+      background: #fff1bf none repeat scroll 0% 0%;
+      color: #000000;
+      border-color: #f8de82;
     `}
 
 	/* type=danger */

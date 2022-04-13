@@ -24,6 +24,11 @@
         "href": "/guides/[...guide]"
       },
       {
+        "text": "Security",
+        "as": "/guides/security",
+        "href": "/guides/[...guide]"
+      },
+      {
         "text": "System Overview",
         "as": "/guides/overview",
         "href": "/guides/[...guide]"
@@ -36,11 +41,6 @@
       {
         "text": "EdgeJS Routing",
         "as": "/guides/routing",
-        "href": "/guides/[...guide]"
-      },
-      {
-        "text": "Security",
-        "as": "/guides/security",
         "href": "/guides/[...guide]"
       },
       {
@@ -528,7 +528,7 @@
   },
   {
     "text": "Videos",
-    "items": [    
+    "items": [
       {
         "text": "Layer0 Tutorials",
         "as": "https://vimeo.com/user/776463/folder/9270726",

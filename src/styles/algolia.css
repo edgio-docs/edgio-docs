@@ -227,7 +227,7 @@
   font-size: 16px;
 }
 
-#docsearch-label > svg:nth-child(1) {
+#docsearch-label > svg {
   width: 16px;
   height: 16px;
 }

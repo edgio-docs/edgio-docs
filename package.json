@@ -1,6 +1,6 @@
 {
   "name": "layer0-docs",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "private": true,
   "license": "CC",
   "scripts": {
@@ -10,7 +10,6 @@
     "analyze": "ANALYZE=true next build",
     "dev": "next",
     "build": "next build",
-    "_build": "next build && node ./scripts/generateRSS.js && node ./scripts/generateRedirects.js",
     "lint": "next lint",
     "lint:fix": "next lint --fix",
     "format:source": "prettier --config .prettierrc --write \"{plugins,src}/**/*.{js,ts,jsx,tsx,css}\"",
@@ -50,12 +49,12 @@
     "styled-components": "^5.3.3"
   },
   "devDependencies": {
-    "@layer0/cli": "^4.11.0",
-    "@layer0/core": "^4.11.0",
-    "@layer0/devtools": "^4.11.0",
-    "@layer0/next": "^4.11.0",
-    "@layer0/prefetch": "^4.11.0",
-    "@layer0/react": "^4.11.0",
+    "@layer0/cli": "^4.13.4",
+    "@layer0/core": "^4.13.4",
+    "@layer0/devtools": "^4.13.4",
+    "@layer0/next": "^4.13.4",
+    "@layer0/prefetch": "^4.13.4",
+    "@layer0/react": "^4.13.4",
     "@mdx-js/loader": "^1.6.16",
     "@types/body-scroll-lock": "^2.6.1",
     "@types/classnames": "^2.2.10",

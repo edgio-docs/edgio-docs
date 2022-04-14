@@ -4,14 +4,16 @@
   "index_name": "docs_test",
   "start_urls": [
     {
-      "url": "layer0-docs-xdn-docs-default.layer0-limelight.link"
+      "url": "https://layer0-docs-xdn-docs-default.layer0-limelight.link"
     },
     {
-      "url": "layer0-docs-xdn-docs-default.layer0-limelight.link/docs",
+      "url": "https://layer0-docs-xdn-docs-default.layer0-limelight.link/docs",
       "selectors_key": "api_docs"
     }
   ],
-  "stop_urls": ["layer0-docs-xdn-docs-default.layer0-limelight.link/docs/v.*"],
+  "stop_urls": [
+    "https://layer0-docs-xdn-docs-default.layer0-limelight.link/docs/v.*"
+  ],
   "selectors": {
     "default": {
       "lvl0": "h1",

@@ -10,9 +10,9 @@ BigCommerce is an API driven ecommerce platform. Used by some of the biggest bra
 
 This example is a Next.js app powered by a BigCommerce backend.
 
-[Try the Example Site](https://layer0-docs-layer0-nextjs-commerce-default.layer0-limelight.link/)
-[view the code](https://github.com/layer0-docs/layer0-nextjs-commerce-example/?button)
-[Deploy to Layer0](https://app.layer0.co/deploy?repo=https://github.com/layer0-docs/layer0-nextjs-example)
+[Try the Example Site](https://layer0-docs-layer0-nextjs-commerce-default.layer0-limelight.link/?button)
+[View the Code](https://github.com/layer0-docs/layer0-nextjs-commerce-example/?button)
+[Deploy to Layer0](https://app.layer0.co/deploy?button&deploy&repo=https://github.com/layer0-docs/layer0-nextjs-example)
 
 {{ SIGN_UP_LAYER0 }}
 

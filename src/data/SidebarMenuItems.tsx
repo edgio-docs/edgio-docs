@@ -79,6 +79,10 @@ import {IconVue} from '../components/Icon/IconVue';
 import {IconZola, IconZolaDark} from '../components/Icon/IconZola';
 import {IconVueStorefront} from '../components/Icon/VueStorefront';
 import {IconNuxt} from 'components/Icon/IconNuxt';
+import {
+  IconBigCommerce,
+  IconBigCommerceDark,
+} from 'components/Icon/BigCommerce';
 
 export interface IChildrenRoutes {
   title: string;
@@ -276,6 +280,12 @@ const SidebarMenuItems: Array<Array<ISidebarMenuItem>> = [
           path: '/guides/astro',
           icon: <IconAstro />,
           iconDark: <IconAstroDark />,
+        },
+        {
+          title: 'BigCommerce',
+          path: '/guides/bigcommerce',
+          icon: <IconBigCommerce />,
+          iconDark: <IconBigCommerceDark />,
         },
         {
           title: 'Brunch',

@@ -1,6 +1,7 @@
 import {useRouter} from 'next/router';
 import * as React from 'react';
 import styled from 'styled-components';
+
 import Header from './Header/Header';
 import {Sidebar} from './Sidebar/Sidebar';
 import {useIsMobile} from './useMediaQuery';

@@ -2,8 +2,8 @@
  * Copyright (c) Facebook, Inc. and its affiliates.
  */
 
-import * as React from 'react';
 import {useRouter} from 'next/router';
+import * as React from 'react';
 
 /**
  * While Next.js provides file-based routing, we still need to construct

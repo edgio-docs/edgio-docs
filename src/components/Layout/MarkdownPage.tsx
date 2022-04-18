@@ -3,10 +3,11 @@
 import {MDXProvider} from '@mdx-js/react';
 import {useRouter} from 'next/router';
 import * as React from 'react';
-import {MDXComponents} from '../MDX/MDXComponents';
+
 import Docs from '../Docs';
-import Seo from '../Seo';
 import DocsFooter from '../Docs/DocsFooter';
+import {MDXComponents} from '../MDX/MDXComponents';
+import Seo from '../Seo';
 
 export interface MarkdownProps<Frontmatter> {
   meta: Frontmatter & {description?: string};

@@ -1,10 +1,12 @@
+import _ from 'lodash';
 import Link from 'next/link';
 import styled from 'styled-components';
+
 import {getChildrenRoutesFromSidebarMenuItems} from '../../utils/getChildrenRoutesFromSidebarMenuItems';
 import {IconCode} from '../Icon/IconCode';
+
 import {StyledFeatureSection} from './FeatureSection';
 import SectionHeader from './SectionHeader';
-import _ from 'lodash';
 
 const StyledComp = styled(StyledFeatureSection)``;
 

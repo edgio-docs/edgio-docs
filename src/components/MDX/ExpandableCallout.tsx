@@ -2,10 +2,11 @@
  * Copyright (c) Facebook, Inc. and its affiliates.
  */
 
-import * as React from 'react';
 import cn from 'classnames';
-import {IconNote} from '../Icon/IconNote';
+import * as React from 'react';
+
 import {IconGotcha} from '../Icon/IconGotcha';
+import {IconNote} from '../Icon/IconNote';
 
 type CalloutVariants = 'gotcha' | 'note';
 

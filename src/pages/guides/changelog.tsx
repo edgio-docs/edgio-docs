@@ -1,8 +1,10 @@
-import {MarkdownPage} from 'components/Layout/MarkdownPage';
-import {Page} from 'components/Layout/Page';
+import styled from 'styled-components';
+
 import {DOCS_PAGES_REPO_URL} from '../../../constants';
 import {markdownToHtml} from '../../../plugins/markdownToHtml';
-import styled from 'styled-components';
+
+import {MarkdownPage} from 'components/Layout/MarkdownPage';
+import {Page} from 'components/Layout/Page';
 
 const StyledChangelogContent = styled.div`
   display: contents;

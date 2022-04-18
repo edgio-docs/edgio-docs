@@ -1,6 +1,6 @@
-import React from 'react';
 import Head from 'next/head';
 import {withRouter, Router} from 'next/router';
+import React from 'react';
 
 export interface SeoProps {
   isHomePage: boolean;

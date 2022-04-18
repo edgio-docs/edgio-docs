@@ -1,7 +1,9 @@
 import React, {useEffect, useState} from 'react';
 import styled, {StyledComponent} from 'styled-components';
-import CodeBlock from './CodeBlock';
+
 import getDescriptiveLanguage from '../getLanguage';
+
+import CodeBlock from './CodeBlock';
 
 const StyledCustomPre = styled.div`
   font-family: 'IBM Plex Mono', monospace;

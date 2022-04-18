@@ -3,6 +3,7 @@
  */
 
 import * as React from 'react';
+
 import {IconTerminal} from '../Icon/IconTerminal';
 
 type LogLevel = 'info' | 'warning' | 'error';

@@ -1,8 +1,10 @@
-import {IconArrow} from 'components/Icon/IconArrow';
 import Link from 'next/link';
 import styled from 'styled-components';
+
 import {IconJamstack} from '../Icon/IconJamstack';
 import {IconWebAppCDN} from '../Icon/IconWebAppCDN';
+
+import {IconArrow} from 'components/Icon/IconArrow';
 
 const NextLink = Link;
 

@@ -1,6 +1,8 @@
-import {siteConfig} from 'siteConfig';
 import styled from 'styled-components';
+
 import {Toc} from '../Layout/Toc';
+
+import {siteConfig} from 'siteConfig';
 
 const StyledDocs = styled.div`
   max-width: var(--docs-area-width);

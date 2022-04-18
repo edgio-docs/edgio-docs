@@ -1,5 +1,5 @@
-import * as React from 'react';
 import cn from 'classnames';
+import * as React from 'react';
 
 export const IconBookPlain = React.memo<JSX.IntrinsicElements['svg']>(
   function IconBookPlain({className}) {

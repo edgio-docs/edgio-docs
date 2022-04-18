@@ -126,7 +126,10 @@
     "showDetails": true
   },
   "lint-staged": {
-    "*.{js,ts,jsx,tsx,css}": "yarn lint && yarn prettier",
+    "*.{js,ts,jsx,tsx,css}": [
+      "eslint --fix --cache --cache-location .next/cache/eslint/",
+      "yarn prettier"
+    ],
     "src/**/*.md": "yarn fix-headings"
   }
 }

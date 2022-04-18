@@ -1,14 +1,25 @@
+import fetch from 'cross-fetch';
 import {useRouter} from 'next/router';
 import {createContext, useContext, useState} from 'react';
 import semverRSort from 'semver/functions/rsort';
 
 import {DOCS_PAGES_REPO_URL} from '../../constants';
 
-export const VersionContext = createContext();
+type VersionContent = {
+  currentVersion: string;
+  setCurrentVersion: (v: string) => void;
+  versions: string[];
+};
+
+export const VersionContext = createContext<VersionContent>({
+  currentVersion: 'current',
+  setCurrentVersion: () => {},
+  versions: [],
+});
 
 export const VERSION_REGEX = /(v\d+.\d+.\d+\/?)/;
 
-export const VersionProvider = ({children, selectedVersion, versions}) => {
+export const VersionProvider = ({children, selectedVersion, versions}: any) => {
   const [currentVersion, setCurrentVersion] = useState(selectedVersion);
   return (
     <VersionContext.Provider

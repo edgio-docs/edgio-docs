@@ -2,10 +2,11 @@ import {GetServerSideProps, GetServerSidePropsContext} from 'next';
 import {useState, useRef, MutableRefObject} from 'react';
 import styled from 'styled-components';
 
-import {DOCS_PAGES_DOMAIN} from '../../../constants';
-import {markdownToHtml} from '../../../plugins/markdownToHtml';
+import {DOCS_PAGES_DOMAIN} from '../../../../constants';
+import {markdownToHtml} from '../../../../plugins/markdownToHtml';
 
 import {Page} from 'components/Layout/Page';
+import useVersioning from '../../../components/versioning';
 
 interface DocsIFrame extends MutableRefObject<any> {
   current: null | HTMLIFrameElement;
@@ -15,6 +16,8 @@ function ApiPage({content}: {content: string}) {
   const [frameHeight, setFrameHeight] = useState('100%');
   const frameRef = useRef(null) as DocsIFrame;
 
+  const {currentVersion} = useVersioning();
+
   function onFrameLoad() {
     setFrameHeight(
       frameRef.current?.contentWindow?.document.body.scrollHeight + 'px'
@@ -22,7 +25,7 @@ function ApiPage({content}: {content: string}) {
   }
 
   const frameProps = {
-    src: `/api-docs/current/api/core/index.html`,
+    src: `/api-docs/${currentVersion}/api/core/index.html`,
     style: {
       width: '100%',
       height: frameHeight,

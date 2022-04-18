@@ -35,10 +35,15 @@ const LI = (p: JSX.IntrinsicElements['li']) => (
 const UL = (p: JSX.IntrinsicElements['ul']) => (
   <ul className="article-ul__list" {...p} />
 );
+const BR = (p: JSX.IntrinsicElements['br']) => (
+  <br className="article-ul__list" {...p} />
+);
 
 // IMPORTANT
 const Divider = () => (
-  <hr style={{height: '1px', backgroundColor: '#e3e8ee', border: 'none'}} />
+  <hr
+    style={{height: '1px', backgroundColor: 'var(--hr-grey1)', border: 'none'}}
+  />
 );
 
 export const MDXComponents = {
@@ -53,6 +58,7 @@ export const MDXComponents = {
   h4: H4,
   inlineCode: InlineCode,
   hr: Divider,
+  br: BR,
   a: Link,
   // code: CodeBlock,
   pre: CustomPre,

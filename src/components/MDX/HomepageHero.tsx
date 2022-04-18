@@ -1,9 +1,10 @@
 import Image from 'next/image';
 import * as React from 'react';
 import styled from 'styled-components';
-import Container from '../Layout/Container';
-import LightHeaderGraphics from '../../../public/images/home/LightHeaderGraphics.svg';
+
 import DarkHeaderGraphics from '../../../public/images/home/DarkHeaderGraphics.svg';
+import LightHeaderGraphics from '../../../public/images/home/LightHeaderGraphics.svg';
+import Container from '../Layout/Container';
 
 const StyledHomepageHero = styled.div`
   min-height: 446px;

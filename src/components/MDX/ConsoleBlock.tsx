@@ -2,10 +2,11 @@
  * Copyright (c) Facebook, Inc. and its affiliates.
  */
 
-import * as React from 'react';
 import cn from 'classnames';
-import {IconWarning} from '../Icon/IconWarning';
+import * as React from 'react';
+
 import {IconError} from '../Icon/IconError';
+import {IconWarning} from '../Icon/IconWarning';
 
 type LogLevel = 'info' | 'warning' | 'error';
 

@@ -1,15 +1,19 @@
+import {DocSearch} from '@docsearch/react';
 import Link from 'next/link';
 import styled from 'styled-components';
+
 import {
   LightDesktopLogo,
   DarkDesktopLogo,
   DarkMobileLogo,
   LightMobileLogo,
 } from '../../Icon/IconLogo';
-import {siteConfig} from 'siteConfig';
-import {DocSearch} from '@docsearch/react';
 import NoSSRWrapper from '../NoSSRWrapper';
+
+import VersionChooser from './VersionChooser';
+
 import {IconHamburger} from 'components/Icon/IconHamburger';
+import {siteConfig} from 'siteConfig';
 
 const StyledHeader = styled.header`
   position: sticky;
@@ -256,6 +260,11 @@ export default function Header({
               </div>
             </a>
           </Link>
+        </div>
+        <div className="version-form__box">
+          <NoSSRWrapper>
+            <VersionChooser />
+          </NoSSRWrapper>
         </div>
       </div>
       <div className="col-2">

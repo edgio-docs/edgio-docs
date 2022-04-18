@@ -1,7 +1,9 @@
-import styled from 'styled-components';
-import SectionHeader from './SectionHeader';
-import Video from 'components/MDX/Video';
 import ReactPlayer from 'react-player';
+import styled from 'styled-components';
+
+import SectionHeader from './SectionHeader';
+
+import Video from 'components/MDX/Video';
 
 const StyledComp = styled.div`
   display: grid;

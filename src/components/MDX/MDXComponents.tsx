@@ -1,4 +1,5 @@
 import * as React from 'react';
+
 import ButtonLink from './ButtonLink';
 import ButtonLinksGroup from './ButtonLinksGroup';
 import Callout from './Callout';
@@ -9,6 +10,7 @@ import Frameworks from './Frameworks';
 import {H1, H2, H3, H4} from './Heading';
 import HomepageFeatures from './HomepageFeatures';
 import HomepageHero from './HomepageHero';
+import Image from './Image';
 import InlineCode from './InlineCode';
 import Intro from './Intro';
 import Link from './Link';
@@ -16,7 +18,6 @@ import Recap from './Recap';
 import SupportedFrameworkCard from './SupportedFrameworkCard';
 import TerminalBlock from './TerminalBlock';
 import Video from './Video';
-import Image from './Image';
 
 const P = (p: JSX.IntrinsicElements['p']) => (
   <p className="article-text" {...p} />

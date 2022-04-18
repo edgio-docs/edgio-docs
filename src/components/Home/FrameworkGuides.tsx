@@ -1,5 +1,7 @@
 import Link from 'next/link';
 import styled from 'styled-components';
+
+import {getChildrenRoutesFromSidebarMenuItems} from '../../utils/getChildrenRoutesFromSidebarMenuItems';
 import {IconAngular} from '../Icon/IconAngular';
 import {IconAstro, IconAstroDark} from '../Icon/IconAstro';
 import {IconBook} from '../Icon/IconBook';
@@ -19,9 +21,10 @@ import {IconServerlessFunctions} from '../Icon/IconServerlessFunctions';
 import {IconSolidJS} from '../Icon/IconSolidJS';
 import {IconSvelte} from '../Icon/IconSvelte';
 import {IconVue} from '../Icon/IconVue';
+
 import {StyledFeatureSection} from './FeatureSection';
 import SectionHeader from './SectionHeader';
-import {getChildrenRoutesFromSidebarMenuItems} from '../../utils/getChildrenRoutesFromSidebarMenuItems';
+
 import {IconArrow} from 'components/Icon/IconArrow';
 
 const StyledComp = styled(StyledFeatureSection)`

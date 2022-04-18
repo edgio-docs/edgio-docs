@@ -1,6 +1,6 @@
-import * as React from 'react';
-import NextLink from 'next/link';
 import cn from 'classnames';
+import NextLink from 'next/link';
+import * as React from 'react';
 
 import {ExternalLink} from 'components/ExternalLink';
 

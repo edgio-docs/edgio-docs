@@ -1,6 +1,6 @@
 import React from 'react';
-import styled from 'styled-components';
 import ReactPlayer from 'react-player';
+import styled from 'styled-components';
 
 interface VideoProps {
   src: string;

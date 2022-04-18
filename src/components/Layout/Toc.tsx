@@ -2,6 +2,7 @@ import cx from 'classnames';
 import Link from 'next/link';
 import * as React from 'react';
 import styled from 'styled-components';
+
 import {useTocHighlight} from './useTocHighlight';
 
 const StyledToc = styled.div`

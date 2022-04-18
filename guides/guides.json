@@ -187,6 +187,12 @@
         "href": "/guides/[...guide]"
       },
       {
+        "text": "BigCommerce",
+        "icon": "bigcommerce",
+        "as": "/guides/bigcommerce",
+        "href": "/guides/[...guide]"
+      },
+      {
         "text": "Docusaurus",
         "icon": "docusaurus",
         "as": "/guides/docusaurus",

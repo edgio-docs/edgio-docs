@@ -4,9 +4,9 @@ import styled from 'styled-components';
 
 import {DOCS_PAGES_DOMAIN} from '../../../../constants';
 import {markdownToHtml} from '../../../../plugins/markdownToHtml';
+import useVersioning from '../../../components/versioning';
 
 import {Page} from 'components/Layout/Page';
-import useVersioning from '../../../components/versioning';
 
 interface DocsIFrame extends MutableRefObject<any> {
   current: null | HTMLIFrameElement;

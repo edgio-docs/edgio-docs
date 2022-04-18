@@ -126,7 +126,7 @@
     "showDetails": true
   },
   "lint-staged": {
-    "*.{js,ts,jsx,tsx,css}": "yarn prettier",
+    "*.{js,ts,jsx,tsx,css}": "yarn lint && yarn prettier",
     "src/**/*.md": "yarn fix-headings"
   }
 }

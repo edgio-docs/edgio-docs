@@ -124,7 +124,7 @@ if (process.env.NODE_ENV === 'production') {
 
 and to include the service worker in the app, edit `main.js` (in the `src` folder) as follows:
 
-```diff
+```js
 import './global.css'
 import App from './App.svelte'
 + import './registerServiceWorker'

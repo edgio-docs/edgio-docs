@@ -34,7 +34,7 @@ npm install -g {{ PACKAGE_NAME }}/cli
 
 This guide will use [Create React App](https://create-react-app.dev/) to generate a project. You can also reference the [example app](https://github.com/layer0-docs/static-react-example) for a complete version of the code.
 
-```
+```bash
 $ npx create-react-app layer0-cra
 $ cd layer0-cra
 $ {{ CLI_NAME }} init
@@ -153,7 +153,7 @@ export default new Router()
 
 Install the `{{ PACKAGE_NAME }}/react` to enable this feature.
 
-```
+```bash
 npm i -D {{ PACKAGE_NAME }}/react
 ```
 
@@ -299,13 +299,13 @@ module.exports = {
 
 Deploying requires an account on {{ PRODUCT_NAME }}. [Sign up here for free.]({{ APP_URL }}/signup) Once you have an account, you can deploy to {{ PRODUCT_NAME }} by running the following in the root folder of your project:
 
-```
+```bash
 {{ CLI_NAME }} deploy
 ```
 
 If you have a static app or are following the above example then you need to build the app first
 
-```
+```bash
 $ npm run build
 $ {{ CLI_NAME }} deploy
 ```

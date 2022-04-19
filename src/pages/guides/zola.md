@@ -46,7 +46,7 @@ zola init myblog
 
 You will be asked a few questions.
 
-```
+```bash
 > What is the URL of your site? (https://example.com):
 > Do you want to enable Sass compilation? [Y/n]:
 > Do you want to enable syntax highlighting? [y/N]:
@@ -55,7 +55,7 @@ You will be asked a few questions.
 
  For our blog, let's accept the default values (i.e., press Enter for each question). We now have a `myblog` directory with the following structure:
 
-```bash
+```dir
 ├── config.toml
 ├── content
 ├── sass
@@ -66,7 +66,7 @@ You will be asked a few questions.
 
 For reference, by the **end** of this overview, our `myblog` directory will have the following structure:
 
-```
+```dir
 ├── config.toml
 ├── content/
 │   └── blog/

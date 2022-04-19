@@ -70,13 +70,13 @@ To add Core Web Vitals tracking via a script tag, add the following to each page
 
 To install the Core Web Vitals library using npm, run:
 
-```
+```bash
 npm install --save {{ PACKAGE_NAME }}/rum
 ```
 
 Or, using yarn:
 
-```
+```bash
 yarn add {{ PACKAGE_NAME }}/rum
 ```
 

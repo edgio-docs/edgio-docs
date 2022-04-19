@@ -60,7 +60,7 @@ If you go with option 1, continue to the Storefront setup section.
 2. Run {{ PRODUCT_NAME }} `init` in the project directory:
 	 <br/>
 
-   ```
+   ```bash
    {{ CLI_NAME }} init
    ```
 
@@ -71,7 +71,7 @@ Skip to the [Storefront Setup][#storefront_setup] section for a detailed explana
 1. Duplicate `.env.template` and name it `.env.local` in the project directory. Add your BigCommerce API keys to it. See Storefront setup for how to set these items up.
 	 <br/>
 
-   ```
+   ```.env
    COMMERCE_PROVIDER=@vercel/commerce-bigcommerce
    BIGCOMMERCE_STOREFRONT_API_URL=https://store-${STORE_HASH}-${CHANNEL_ID}.mybigcommerce.com/graphql
    BIGCOMMERCE_STOREFRONT_API_TOKEN=${STOREFRONT_API_TOKEN}

@@ -158,7 +158,7 @@ module.exports = new Router()
 
 Deploying requires an account on {{ PRODUCT_NAME }}. [Sign up here for free.]({{ APP_URL }}/signup) Once you have an account, you can deploy to {{ PRODUCT_NAME }} by running the following in the root folder of your project:
 
-```
+```bash
 {{ CLI_NAME }} deploy
 ```
 

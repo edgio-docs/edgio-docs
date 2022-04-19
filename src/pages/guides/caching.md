@@ -174,10 +174,12 @@ The key to really successful cache hit rates is leveraging `staleWhileRevalidate
 
 Set keys using the `edge` key in your cache key
 
-```
+```js
 edge: {
-  maxAgeSeconds: 60 * 60 * 24, // 24 hours
-  staleWhileRevalidateSeconds: 60 * 60, // serve stale responses for up to 1 hour while fetching a new response
+  // 24 hours
+  maxAgeSeconds: 60 * 60 * 24,
+  // serve stale responses for up to 1 hour while fetching a new response
+  staleWhileRevalidateSeconds: 60 * 60,
 },
 ```
 
@@ -187,7 +189,7 @@ With the following header set, the diagram below shows the age of the previously
 Cache-Control: max-age=1, stale-while-revalidate=59
 ```
 
-![maxAge staleWhileRevalidate diagram](images/caching/stale-max-age.png)
+![maxAge staleWhileRevalidate diagram](/images/caching/stale-max-age.png)
 
 ## Preventing a Response from being Cached {/*preventing-a-response-from-being-cached*/}
 

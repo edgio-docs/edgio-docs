@@ -42,8 +42,8 @@ import {IconRazzle} from '../components/Icon/IconRazzle';
 import {IconReact} from '../components/Icon/IconReact';
 import {IconReactStatic} from '../components/Icon/IconReactStatic';
 import {IconReactStorefront} from '../components/Icon/IconReactStorefront';
-import {IconRemix, IconRemixDark} from '../components/Icon/IconRemix';
 import {IconRedwood} from '../components/Icon/IconRedwood';
+import {IconRemix, IconRemixDark} from '../components/Icon/IconRemix';
 import {IconSaber} from '../components/Icon/IconSaber';
 import {IconSapper} from '../components/Icon/IconSapper';
 import {IconServerlessFunctions} from '../components/Icon/IconServerlessFunctions';
@@ -78,11 +78,12 @@ import {IconVitePress} from '../components/Icon/IconVitePress';
 import {IconVue} from '../components/Icon/IconVue';
 import {IconZola, IconZolaDark} from '../components/Icon/IconZola';
 import {IconVueStorefront} from '../components/Icon/VueStorefront';
-import {IconNuxt} from 'components/Icon/IconNuxt';
+
 import {
   IconBigCommerce,
   IconBigCommerceDark,
 } from 'components/Icon/BigCommerce';
+import {IconNuxt} from 'components/Icon/IconNuxt';
 
 export interface IChildrenRoutes {
   title: string;
@@ -602,11 +603,11 @@ const SidebarMenuItems: Array<Array<ISidebarMenuItem>> = [
         },
         {
           title: 'Install Node.js',
-          path: '/guides/install-nodejs',
+          path: '/guides/install_nodejs',
         },
         {
           title: 'Deploy to Layer0 Button',
-          path: '/guides/deploy-to-layer0',
+          path: '/guides/deploy_to_layer0',
         },
         {
           title: 'Contributing',

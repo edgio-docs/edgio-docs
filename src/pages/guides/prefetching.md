@@ -308,7 +308,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 2. Add `{{ PACKAGE_NAME }}/apollo` to your project:
 
-```
+```bash
 npm i --save {{ PACKAGE_NAME }}/apollo
 ```
 
@@ -402,7 +402,7 @@ function MyProductLink({ product }) {
 
 You can test that everything is running locally by running your project with:
 
-```
+```bash
 {{ CLI_NAME }} dev --cache
 ```
 

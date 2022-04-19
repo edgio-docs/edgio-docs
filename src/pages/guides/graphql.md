@@ -199,7 +199,7 @@ deriveSurrogateKeysFromJson(json => [`product.${json.id}`], { onConflict: 'overr
 
 To purge all responses with a given surrogate key, use the {{ PRODUCT_NAME }} CLI's [cache-clear](/guides/cli#section_cache_clear) command.
 
-```
+```bash
 layer0 cache-clear --team=my-team --site=my-site --environment=production --surrogate-key="product.1"
 ```
 

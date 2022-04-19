@@ -1,9 +1,9 @@
 import {FormControl, MenuItem, Select} from '@material-ui/core';
 import {makeStyles} from '@material-ui/core/styles';
 import Router, {useRouter} from 'next/router';
-import React from 'react';
+import React, {useEffect} from 'react';
 
-import useVersioning from '../../versioning';
+import useVersioning, {getVersions} from '../../versioning';
 
 const useStyles = makeStyles((theme) => ({
   control: {
@@ -39,19 +39,38 @@ const useStyles = makeStyles((theme) => ({
 export default function VersionChooser() {
   const classes = useStyles();
   const {route} = useRouter();
-  const {currentVersion, setCurrentVersion, versions, createUrl} =
+  const {currentVersion, setCurrentVersion, createUrl, versions, setVersions} =
     useVersioning();
 
+  useEffect(() => {
+    const doGetVersions = async () => {
+      const versions = await getVersions();
+
+      setVersions(versions);
+    };
+
+    doGetVersions();
+  });
+
   const onChange = (event: any) => {
-    let version = event.target?.value || 'current';
+    let version = event.target?.value;
+
+    Router.push(route, createUrl({version, forceVersion: true}));
     setCurrentVersion(version);
-    // Router.push(route, createUrl({version}));
   };
+
+  // don't render unless we are on the api docs route
+  if (!route.startsWith('/docs/') || !versions.length) {
+    return <></>;
+  }
+
+  const selectedVersion =
+    currentVersion === 'current' ? versions[0] : currentVersion;
 
   return (
     <FormControl variant="filled" className={classes.control} size="small">
       <Select
-        value={currentVersion}
+        value={selectedVersion}
         onChange={onChange}
         disableUnderline
         autoWidth

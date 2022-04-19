@@ -1,3 +1,4 @@
+// @ts-nocheck
 import fetch from 'cross-fetch';
 import {useRouter} from 'next/router';
 import {createContext, useContext, useState} from 'react';
@@ -5,39 +6,43 @@ import semverRSort from 'semver/functions/rsort';
 
 import {DOCS_PAGES_REPO_URL} from '../../constants';
 
-type VersionContent = {
-  currentVersion: string;
-  setCurrentVersion: (v: string) => void;
-  versions: string[];
-};
+export const VersionContext = createContext({currentVersion: 'current'});
 
-export const VersionContext = createContext<VersionContent>({
-  currentVersion: 'current',
-  setCurrentVersion: () => {},
-  versions: [],
-});
-
-export const VERSION_REGEX = /(v\d+.\d+.\d+\/?)/;
-
-export const VersionProvider = ({children, selectedVersion, versions}: any) => {
-  const [currentVersion, setCurrentVersion] = useState(selectedVersion);
+export const VersionProvider = ({children}) => {
+  const router = useRouter();
+  const [currentVersion, setCurrentVersion] = useState(
+    getVersionFromPath(router.asPath)
+  );
   return (
-    <VersionContext.Provider
-      value={{currentVersion, setCurrentVersion, versions}}>
+    <VersionContext.Provider value={{currentVersion, setCurrentVersion}}>
       {children}
     </VersionContext.Provider>
   );
 };
 
+export const VERSION_REGEX = /(v\d+.\d+.\d+\/?)/;
+
 export default function useVersioning() {
-  const {currentVersion, setCurrentVersion, versions} =
-    useContext(VersionContext);
+  let {currentVersion, setCurrentVersion} = useContext(VersionContext);
+  const [versions, setVersions] = useState<string[]>([]);
+
   const {asPath} = useRouter();
 
   const isLatestVersion = (version = currentVersion) => version === versions[0];
 
+  const matchVersionInRoute = asPath.match(VERSION_REGEX);
+
+  if (matchVersionInRoute) {
+    const version = matchVersionInRoute[0].slice(0, -1);
+
+    if (currentVersion !== version) {
+      currentVersion = version;
+    }
+  }
+
   return {
     versions,
+    setVersions,
     currentVersion,
     setCurrentVersion,
     isLatestVersion,
@@ -51,24 +56,45 @@ export default function useVersioning() {
       } else if (as.startsWith('http')) {
         return as;
       } else if (isLatestVersion(version) && !forceVersion) {
-        return as.replace(VERSION_REGEX, '');
+        return as.replaceAll(VERSION_REGEX, '');
       } else {
-        const [_, prefix, ...parts] = as.split('/');
+        let [path, hash] = as.split('#');
+        const [_, prefix, ...parts] = path.split('/');
         const partsNoVersion = parts.filter(
           (part) => !part.match(VERSION_REGEX)
         );
-        return '/' + [prefix, version, ...partsNoVersion].join('/');
+
+        path = '/' + [prefix, version, ...partsNoVersion].join('/');
+
+        if (hash.length) {
+          path += `#${hash.replace(currentVersion, version)}`;
+        }
+        return path;
       }
     },
   };
 }
 
 export async function getVersions() {
-  // Here we add a cache buster to ensure that when the cache is cleared we get the latest versions file from
-  // GitHub
-  const verRes = await fetch(
-    `${DOCS_PAGES_REPO_URL}/versions.csv?nc=${new Date().getTime()}`
-  );
+  let url;
+
+  if (typeof window !== 'undefined') {
+    url = '/api-docs/versions.csv';
+  } else {
+    url = `${DOCS_PAGES_REPO_URL}/versions.csv`;
+  }
+
+  const verRes = await fetch(url);
 
   return semverRSort((await verRes.text()).split(',').map((ver) => ver.trim()));
+}
+
+export function getVersionFromPath(path: string) {
+  const matchVersionInRoute = path.match(VERSION_REGEX);
+
+  if (matchVersionInRoute) {
+    return matchVersionInRoute[0].slice(0, -1);
+  }
+
+  return 'current';
 }

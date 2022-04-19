@@ -7,19 +7,11 @@ import {ThemeProvider} from 'styled-components';
 
 import '../styles/algolia.css';
 import '../styles/code-syntax.css';
-import {
-  VERSION_REGEX,
-  VersionProvider,
-  getVersions,
-} from '../components/versioning';
 import GlobalStyle from '../styles/GlobalStyle';
 import '../styles/nprogress.css';
 import '../styles/scrollbar.css';
 
-interface IAppProps extends AppProps {
-  currentVersion: string;
-  versions: string[];
-}
+import {VersionProvider} from 'components/versioning';
 
 // -> Used for the loader when switching between pages
 Router.events.on('routeChangeStart', () => NProgress.start());
@@ -35,12 +27,7 @@ const theme = {
 
 const EmptyAppShell: React.FC = ({children}) => <>{children}</>;
 
-export default function MyApp({
-  Component,
-  pageProps,
-  currentVersion,
-  versions,
-}: IAppProps) {
+export default function MyApp({Component, pageProps}: AppProps) {
   let AppShell = (Component as any).appShell || EmptyAppShell;
 
   // In order to make sidebar scrolling between pages work as expected
@@ -50,34 +37,13 @@ export default function MyApp({
   }
 
   return (
-    <VersionProvider selectedVersion={currentVersion} versions={versions}>
-      <AppShell>
-        <GlobalStyle />
-
+    <AppShell>
+      <GlobalStyle />
+      <VersionProvider>
         <ThemeProvider theme={theme}>
           <Component {...pageProps} />
         </ThemeProvider>
-      </AppShell>
-    </VersionProvider>
+      </VersionProvider>
+    </AppShell>
   );
 }
-
-MyApp.getInitialProps = async function ({Component, ctx}: any) {
-  let pageProps = {};
-
-  const versions = await getVersions();
-  const splitPath = ctx.asPath.split('/');
-  const currentVersion = (splitPath[2] || '').match(VERSION_REGEX)
-    ? splitPath[2]
-    : versions[0];
-
-  if (Component.getInitialProps) {
-    pageProps = await Component.getInitialProps({
-      ...ctx,
-      version: currentVersion,
-      versions,
-    });
-  }
-
-  return {pageProps, currentVersion, versions};
-};

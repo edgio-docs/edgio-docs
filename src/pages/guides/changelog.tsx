@@ -1,3 +1,4 @@
+import fetch from 'cross-fetch';
 import styled from 'styled-components';
 
 import {DOCS_PAGES_REPO_URL} from '../../../constants';

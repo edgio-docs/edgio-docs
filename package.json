@@ -8,7 +8,7 @@
     "layer0:build": "layer0 build",
     "layer0:deploy": "layer0 deploy",
     "analyze": "ANALYZE=true next build",
-    "dev": "next",
+    "dev": "layer0 dev",
     "build": "next build",
     "lint": "next lint",
     "lint:fix": "next lint --fix",

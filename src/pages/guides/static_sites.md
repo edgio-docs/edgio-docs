@@ -4,7 +4,7 @@ title: Serving Static Sites
 
 This guide shows you how to serve generic static sites on {{ PRODUCT_NAME }}.
 
-<Video src="https://vimeo.com/691615425"/>
+<Video src="https://player.vimeo.com/video/691615425"/>
 
 ## Example Static Sites {/*example-static-sites*/}
 

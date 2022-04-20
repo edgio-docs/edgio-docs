@@ -140,7 +140,7 @@ jobs:
 
 ### Screencast Tutorial {/*screencast-tutorial*/}
 
-<Video src="https://vimeo.com/691593915"/>
+<Video src="https://player.vimeo.com/video/691593915"/>
 
 ## Jenkins Pipeline {/*jenkins-pipeline*/}
 

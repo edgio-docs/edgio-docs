@@ -80,7 +80,7 @@ export default function VideosandTutorials() {
         },
         {
           title: 'What are the Layer0 DevTools',
-          url: 'https://vimeo.com/691580899',
+          url: 'https://player.vimeo.com/video/691580899',
         },
         {
           title: 'Deep Request Inspection',
@@ -130,7 +130,7 @@ export default function VideosandTutorials() {
       videos: [
         {
           title: 'Deploy GitHub Project to Layer0',
-          url: 'https://vimeo.com/691593915',
+          url: 'https://player.vimeo.com/video/691593915',
         },
         {
           title: 'Deploy Fearlessly',

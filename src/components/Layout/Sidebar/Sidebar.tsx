@@ -294,10 +294,7 @@ function PrimaryNavItems() {
   });
 
   // Hack. See https://github.com/framer/motion/issues/578
-  if (!isLoaded) {
-    return <></>;
-  }
-  // End hack.
+  const ComputedAnimatePresence = isLoaded ? AnimatePresence : 'div';
 
   return (
     <div className="nav-items">
@@ -310,7 +307,7 @@ function PrimaryNavItems() {
             <ParentRoute
               {...{menuItem, accordion, setAccordion, parentIndex: index}}
             />
-            <AnimatePresence>
+            <ComputedAnimatePresence>
               {menuItem.routes &&
                 accordion.isOpen &&
                 accordion.currentIndex === index && (
@@ -325,7 +322,7 @@ function PrimaryNavItems() {
                     }}
                   />
                 )}
-            </AnimatePresence>
+            </ComputedAnimatePresence>
           </div>
         );
       })}

@@ -56,8 +56,6 @@ function Wait() {
 function Video({src}: VideoProps) {
   const isLoaded = useHydrationIsLoaded();
 
-  console.log(src);
-
   if (!isLoaded) {
     return <></>;
   }

@@ -652,10 +652,12 @@ const SidebarMenuItems: Array<Array<ISidebarMenuItem>> = [
         {
           title: '@layer0/core',
           path: '/docs/api/core',
+          external: true,
         },
         {
           title: '@layer0/prefetch',
           path: '/docs/api/prefetch',
+          external: true,
         },
       ],
     },

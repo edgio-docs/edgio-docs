@@ -1,6 +1,8 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import ReactPlayer from 'react-player';
 import styled from 'styled-components';
+
+import useHydrationIsLoaded from 'utils/hooks/useHydrationIsLoaded';
 
 interface VideoProps {
   src: string;
@@ -36,8 +38,13 @@ const StyledVideo = styled.div`
 `;
 
 function Video({src}: VideoProps) {
-  var style = {'--aspect-ratio': '16/9'} as React.CSSProperties;
+  const isLoaded = useHydrationIsLoaded();
 
+  if (!isLoaded) {
+    return <></>;
+  }
+
+  const style = {'--aspect-ratio': '16/9'} as React.CSSProperties;
   return (
     <StyledVideo style={style}>
       <ReactPlayer

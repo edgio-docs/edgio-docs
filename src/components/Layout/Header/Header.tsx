@@ -25,7 +25,7 @@ const StyledHeader = styled.header`
   box-shadow: inset 0 -1px var(--grey1);
   padding: 17px 20px;
   display: grid;
-  grid-template-columns: auto 1fr auto;
+  grid-template-columns: auto auto 1fr auto;
   column-gap: 20px;
 
   > [class*='col'] {
@@ -51,12 +51,16 @@ const StyledHeader = styled.header`
       max-width: var(--width);
       width: var(--width);
 
-      @media (max-width: 1000px) {
+      @media (max-width: 1146px) {
         --width: 500px;
       }
 
-      @media (max-width: 900px) {
+      @media (max-width: 1000px) {
         --width: 400px;
+      }
+
+      @media (max-width: 900px) {
+        --width: 300px;
       }
 
       @media (max-width: 760px) {

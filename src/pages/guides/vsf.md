@@ -36,7 +36,7 @@ npm i -g {{ PACKAGE_NAME }}/cli
 
 The Vue Storefront CLI tool will generate a preconfigured boilerplate project for you. Use these commands to create a new project and update to the latest dependencies.
 
-```
+```bash
 npm i -g @vue-storefront/cli@next
 vsf init <project-name>
 cd <project-name>
@@ -61,7 +61,7 @@ Ensure `@nuxtjs/pwa` is not present in the `buildModules`. It is not needed beca
 
 To run locally in development mode, use this command:
 
-```
+```bash
 {{ CLI_NAME }} dev --cache
 ```
 
@@ -69,6 +69,6 @@ To run locally in development mode, use this command:
 
 To build and deploy your app to {{ PRODUCT_NAME }}, run the following from the root directory of your app:
 
-```
+```bash
 {{ CLI_NAME }} deploy
 ```

@@ -73,7 +73,7 @@ This will automatically add all of the required dependencies and files to your p
 
 To simulate your app within {{ PRODUCT_NAME }} locally, run:
 
-```
+```bash
 {{ CLI_NAME }} dev
 ```
 
@@ -81,7 +81,7 @@ To simulate your app within {{ PRODUCT_NAME }} locally, run:
 
 To simulate edge caching locally, run:
 
-```
+```bash
 {{ CLI_NAME }} dev --cache
 ```
 

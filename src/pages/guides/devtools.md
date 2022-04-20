@@ -22,13 +22,13 @@ It's likely that Devtools was added to your app when you ran `{{ CLI_NAME }} ini
 
 In order to enable {{ PRODUCT_NAME }} Devtools, first ensure that the `{{ PACKAGE_NAME }}/devtools` and `{{ PACKAGE_NAME }}/prefetch` packages have been added to your project. To install them using NPM, run:
 
-```
+```bash
 npm i -D {{ PACKAGE_NAME }}/devtools {{ PACKAGE_NAME }}/prefetch
 ```
 
 Or with Yarn
 
-```
+```bash
 yarn add --dev {{ PACKAGE_NAME }}/devtools {{ PACKAGE_NAME }}/prefetch
 ```
 

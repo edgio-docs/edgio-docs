@@ -4,7 +4,7 @@ title: Connectors
 
 Connector packages help build and run your app within {{ PRODUCT_NAME }}. When you run `{{ CLI_NAME }} init`, {{ PRODUCT_NAME }} CLI detects the framework used by your app and installs the corresponding connector package. For example, if you use Next.js, `{{ PACKAGE_NAME }}/next` will be installed. If no connector package exists for the framework that you use, you can still deploy to {{ PRODUCT_NAME }} by implementing the connector interface directly in your app.
 
-## Writing a connector
+## Writing a connector {/*writing-a-connector*/}
 
 A {{ PRODUCT_NAME }} connector consists of four entry points:
 
@@ -15,7 +15,7 @@ A {{ PRODUCT_NAME }} connector consists of four entry points:
 
 These files should be placed in the root directory of your connector package.
 
-## init.js
+## init.js {/*initjs*/}
 
 Called when the user runs `{{ CLI_NAME }} init`. This entry point adds resources to the project necessary for deploying on {{ PRODUCT_NAME }}. It may also modify existing files within the project.
 
@@ -44,7 +44,7 @@ export default async function init() {
 
 The default-app directory typically contains the following files:
 
-```
+```dir
 /(connector-root)
   /default-app
     /all              # resources to be added to both JavaScript and TypeScript projects
@@ -57,7 +57,7 @@ The default-app directory typically contains the following files:
 
 Additional files can be added beyond the ones listed above. They will be copied into the root directory of the user's application.
 
-## dev.js
+## dev.js {/*devjs*/}
 
 Called when the user runs `{{ CLI_NAME }} dev`. This entry point is responsible for starting the user's application in development mode. The `{{ PACKAGE_NAME }}/core` library provides a `createDevServer` function to help with this.
 
@@ -87,7 +87,7 @@ module.exports = function() {
 }
 ```
 
-## build.js
+## build.js {/*buildjs*/}
 
 Exports a function that is called when you run `{{ CLI_NAME }} build`. It is responsible for constructing the bundle that is deployed to the {{ PRODUCT_NAME }} cloud. This function typically uses `{{ PACKAGE_NAME }}/core/deploy/DeploymentBuilder` to stage the exploded bundle in the `.{{ PRODUCT_NAME_LOWER }}` directory.
 
@@ -122,7 +122,7 @@ export default async function build({ skipFramework }) {
 }
 ```
 
-## prod.js
+## prod.js {/*prodjs*/}
 
 {{ PRODUCT_NAME }} runs your application in its serverless cloud by proxying requests to your framework's application server, which it expects to be running on a specific port. The prod.js entry point exports a function that is called when a new serverless function is provisioned. It is responsible for starting your app on the provided port so that it can receive requests from {{ PRODUCT_NAME }}.
 
@@ -164,7 +164,7 @@ module.exports = {
 }
 ```
 
-## Testing your connector locally before publishing it to NPM
+## Testing your connector locally before publishing it to NPM {/*testing-your-connector-locally-before-publishing-it-to-npm*/}
 
 To test your connector locally without publishing it to NPM:
 
@@ -174,7 +174,7 @@ To test your connector locally without publishing it to NPM:
 
 Now `{{ CLI_NAME }} init`, `{{ CLI_NAME }} dev`, `{{ CLI_NAME }} build`, and `{{ CLI_NAME }} deploy` commands will use the entry points in the connector, and your `prod.js` entrypoint will be used to serve requests in the {{ PRODUCT_NAME }} cloud.
 
-## Implementing a connector directly within your project
+## Implementing a connector directly within your project {/*implementing-a-connector-directly-within-your-project*/}
 
 If your project uses a framework that isn't supported by one of the official connector packages, you can still deploy to {{ PRODUCT_NAME }} by implementing your own connector directly within your project. To do so:
 
@@ -185,14 +185,14 @@ If your project uses a framework that isn't supported by one of the official con
 
 Example project structure:
 
-```
-/my-project
-  /layer0              # reference this directory in the connector property in {{ CONFIG_FILE }}
-    dev.js
-    prod.js
-    build.js
-  {{ CONFIG_FILE }}
-  ... other source files and directories ...
+```dir
+|—— my-project
+    | layer0 # reference this directory in the connector property in {{ CONFIG_FILE }}
+    | dev.js
+    | prod.js
+    | build.js
+    | {{ CONFIG_FILE }}
+    ... other source files and directories ...
 ```
 
 Example {{ CONFIG_FILE }}:

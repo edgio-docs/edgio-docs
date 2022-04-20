@@ -179,7 +179,7 @@ See the [cache](/docs/api/core/classes/_router_responsewriter_.responsewriter.ht
 
 To test your project locally, run:
 
-```
+```bash
 0 dev
 ```
 
@@ -189,7 +189,7 @@ This will start your project in watch mode. Any changes your make to your source
 
 To deploy your project, run:
 
-```
+```bash
 0 deploy
 ```
 

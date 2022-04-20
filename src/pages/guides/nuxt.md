@@ -174,7 +174,7 @@ And here is the `package.json` after modifications by `{{ CLI_NAME }} init`:
 
 Run the Nuxt.js app with the command:
 
-```
+```bash
 npm run {{ CLI_NAME }}:dev
 ```
 
@@ -284,7 +284,7 @@ new Prefetcher().route()
 
 The above allows you to prefetch pages from {{ PRODUCT_NAME }}'s edge cache to greatly improve browsing speed. To prefetch a page, add the `Prefetch` component from `{{ PACKAGE_NAME }}/vue` to any `router-link` or `nuxt-link` element:
 
-```jsx
+```js
 <template>
   <ul v-for="product in products">
     <li>
@@ -370,7 +370,7 @@ To add Nitro to your app, make the following changes:
 
 1. Install nitro and the connector as dev dependencies:
 
-```
+```bash
 npm install -D @nuxt/nitro @layer0/nuxt-nitro`
 ```
 

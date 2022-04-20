@@ -4,32 +4,32 @@ title: Express
 
 [Express](https://expressjs.com) is a fast, unopinionated, minimalist web framework for Node.js. The Layer0 serverless environment makes it easy to run apps without managing Node.js servers.
 
-## Getting Started
+## Getting Started {/*getting-started*/}
 
 To add {{ PRODUCT_NAME }} to your Express app, run the following in the root directory of your express app:
 
-```
+```bash
 npm i -g @layer0/cli
 0 init
 ```
 
-## Running your app locally
+## Running your app locally {/*running-your-app-locally*/}
 
 To run your app behind Layer0 locally, run:
 
-```
+```bash
 0 dev
 ```
 
-## Deploying your app to {{ PRODUCT_NAME }}
+## Deploying your app to {{ PRODUCT_NAME }} {/*deploying-your-app-to--product_name-*/}
 
 To deploy your app to {{ PRODUCT_NAME }}, run:
 
-```
+```bash
 0 deploy
 ```
 
-## Overriding the default app location
+## Overriding the default app location {/*overriding-the-default-app-location*/}
 
 When you deploy your Express app to {{ PRODUCT_NAME }}, the {{ PRODUCT_NAME }} CLI bundles your app as a single javascript file so that it can be run as a serverless function. By default Layer0 looks for your app in a few common locations:
 
@@ -59,7 +59,7 @@ module.exports = {
 
 The file you specify in `appPath` should export an instance of an express app using `export default` or `module.exports`.
 
-## Serving Static Assets
+## Serving Static Assets {/*serving-static-assets*/}
 
 If your express app serves any static assets, you'll need to add routes to your Layer0 router to serve them from the edge. For example, to serve all paths under `/assets` from `dist/client/assets`:
 
@@ -82,7 +82,7 @@ export default new Router()
   .fallback(({ renderWithApp }) => renderWithApp()) // serve all unmatched URLs from express
 ```
 
-## Adding Additional Files Needed during SSR
+## Adding Additional Files Needed during SSR {/*adding-additional-files-needed-during-ssr*/}
 
 If your express app expects to be able to read files from the filesystem at runtime, for example an index.html template, you can ensure they are included in the app bundle that is deployed to Layer0's serverless workers by adding the following to layer0.config.js
 
@@ -97,7 +97,7 @@ module.exports = {
 }
 ```
 
-## Transpiling and TypeScript support
+## Transpiling and TypeScript support {/*transpiling-and-typescript-support*/}
 
 Layer0 will automatically transpile JavaScript and TypeScript source code for running on Node.js version 14. If you want to control how
 source files are compiled, you can transpile your app on your own and point your `appPath` config to the transpiled version of your app's main entry point.

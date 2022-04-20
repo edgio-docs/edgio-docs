@@ -57,7 +57,7 @@ cd <app-name> // Change to the directory of your new application
 
 Then install dependencies with the command:
 
-``` bash
+```bash
 npm install
 # or
 yarn install

@@ -36,7 +36,7 @@ This framework has a connector developed for {{ PRODUCT_NAME }}. See [Connectors
 
 If you don't already have a Sapper app, use the terminal (or command prompt on Windows) to create one using the commands below:
 
-```
+```bash
 # for Rollup
 npx degit "sveltejs/sapper-template#rollup" my-app
 
@@ -50,7 +50,7 @@ npm run dev & open http://localhost:3000
 
 To prepare your Sapper app for deployment on {{ PRODUCT_NAME }}, run the following in the root folder of your project:
 
-```
+```bash
 npm install -g {{ PACKAGE_NAME }}/cli
 {{ CLI_NAME }} init
 ```
@@ -68,28 +68,28 @@ This will automatically add all of the required dependencies and files to your p
 
 If you're using webpack to build your app, update `webpack.config.js` to bundle all dependencies in the server build:
 
-```diff
-                output: config.server.output(),
-                target: 'node',
-                resolve: { alias, extensions, mainFields },
--               externals: Object.keys(pkg.dependencies).concat('encoding'),
-+               externals: ['encoding'],
-                module: {
-                        rules: [
-                                {
+```js
+ output: config.server.output(),
+ target: 'node',
+ resolve: { alias, extensions, mainFields },
+-externals: Object.keys(pkg.dependencies).concat('encoding'),
++externals: ['encoding'],
+ module: {
+         rules: [
+                 {
 ```
 
 ## Rollup {/*rollup*/}
 
 If you're using Rollup to build your app, install `@rollup/plugin-json`:
 
-```
+```bash
 npm i -D @rollup/plugin-json
 ```
 
 Then make the following changes to `rollup.config.js`:
 
-```diff
+```js
  import babel from '@rollup/plugin-babel';
  import { terser } from 'rollup-plugin-terser';
  import config from 'sapper/config/rollup.js';
@@ -102,51 +102,45 @@ Then make the following changes to `rollup.config.js`:
 
 ... and make the following changes to the `server` config ...
 
-```diff
-                input: config.server.input(),
-                output: config.server.output(),
-                plugins: [
-+                       json(),
-                        replace({
-                                'process.browser': false,
-                                'process.env.NODE_ENV': JSON.stringify(mode)
+```js
+ input: config.server.input(),
+ output: config.server.output(),
+ plugins: [
++        json(),
+         replace({
+                 'process.browser': false,
+                 'process.env.NODE_ENV': JSON.stringify(mode)
 ```
 
 and
 
-```diff
--		            external: Object.keys(pkg.dependencies).concat(require('module').builtinModules),
-+		            external: require('module').builtinModules,
+```js
+-external: Object.keys(pkg.dependencies).concat(require('module').builtinModules),
++external: require('module').builtinModules,
 ```
 
 ## Running Locally {/*running-locally*/}
 
 To simulate your app within {{ PRODUCT_NAME }} locally, run:
 
-```
-
+```bash
 {{ CLI_NAME }} dev
-
 ```
 
 ### Simulate edge caching locally {/*simulate-edge-caching-locally*/}
 
 To simulate edge caching locally, run:
 
-```
-
+```bash
 {{ CLI_NAME }} dev --cache
-
 ```
 
 ## Deploying {/*deploying*/}
 
 Deploying requires an account on {{ PRODUCT_NAME }}. [Sign up here for free.]({{ APP_URL }}/signup) Once you have an account, you can deploy to {{ PRODUCT_NAME }} by running the following in the root folder of your project
 
-```
-
+```bash
 {{ CLI_NAME }} deploy
-
 ```
 
 See [deploying](deploying) for more information.

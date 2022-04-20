@@ -134,7 +134,7 @@ Prefetching for a Spartacus app can be enabled by listening to upstream requests
 
 Example implementation of upstream request tracking changes required in your `server.ts` file:
 
-```diff
+```js
 import 'zone.js/dist/zone-node'
 import * as express from 'express'
 import { join } from 'path'
@@ -210,7 +210,7 @@ Installing the service worker and any further prefetching will be handled by `{{
 
 Example implementation in `app.component.ts`:
 
-```diff
+```js
 import { Component, OnInit, Inject } from '@angular/core'
 import { isPlatformBrowser } from '@angular/common'
 import { PLATFORM_ID } from '@angular/core'

@@ -2,6 +2,10 @@ export default function getDescriptiveLanguage(language: string) {
   const normalizedLanguageString = language.replace('language-', '');
 
   switch (normalizedLanguageString) {
+    case 'diff':
+      return 'Diff';
+    case 'jsx':
+      return 'JSX';
     case 'js':
       return 'JavaScript';
     case 'ts':
@@ -17,6 +21,17 @@ export default function getDescriptiveLanguage(language: string) {
     case 'md':
     case 'markdown':
       return 'Markdown';
+    case 'dir':
+    case 'directory':
+      return 'Directory';
+    case 'html':
+    case 'htm':
+      return 'HTML';
+    case 'yml':
+    case 'yaml':
+      return 'YAML';
+    case 'groovy':
+      return 'Groovy';
     default:
       return normalizedLanguageString;
   }

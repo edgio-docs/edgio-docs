@@ -107,14 +107,16 @@ export default function CustomPre({children}: {children: React.ReactNode}) {
     <StyledCustomPre>
       <div className="code-block">
         <div className="code-block__inner">
-          <header className="code-block__header">
-            <span className="code-block__header-text">
-              {language && getDescriptiveLanguage(language)}
-            </span>
-            {filename && (
-              <span className="code-block__filename">{filename}</span>
-            )}
-          </header>
+          {language && (
+            <header className="code-block__header">
+              <span className="code-block__header-text">
+                {language && getDescriptiveLanguage(language)}
+              </span>
+              {filename && (
+                <span className="code-block__filename">{filename}</span>
+              )}
+            </header>
+          )}
           <main className="code-block__content">
             <CodeBlock language={language || 'js'}>{message}</CodeBlock>
           </main>

@@ -144,7 +144,7 @@ If you have several projects and the `defaultProject` in `angular.json` is not t
 
 For example:
 
-```
+```json
 ANGULAR_PROJECT=my-project {{ CLI_NAME }} run
 ```
 
@@ -160,7 +160,7 @@ If you have several projects and the `defaultProject` in `angular.json` is not t
 
 For example:
 
-```
+```json
 ANGULAR_PROJECT=my-project {{ CLI_NAME }} deploy
 ```
 

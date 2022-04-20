@@ -100,6 +100,7 @@ mywebsite.xyz.        599    IN    A        208.69.180.14
 
 - Create the multiple `A` records with the IPs, on your apex domain (see above).
 - Create a `CNAME` record for your sub-domain, with the value of your apex domain.
+   <br/>
 
   ```
   # To verify your DNS entries, run the following command
@@ -145,8 +146,9 @@ __Note:__ If you already have an existing certificate, you can use it by skippin
    So in order for _Let's Encrypt_ to be able to generate a certificate for your domains, you must either not have defined any CAA records, or _Let's Encrypt_'s CAA entry must be among those defined in the list of CAA records.
 
    You can verify the value of the CAA records for your domain from the command line using the command below.
+   <br/>
 
-   ```
+   ```bash
    # Run the following command
    dig caa +short <your-apex-domain>
 
@@ -154,14 +156,19 @@ __Note:__ If you already have an existing certificate, you can use it by skippin
    dig caa +short mywebsite.xyz
    ```
 
-   Example of a CAA query showing that only **certain** Certificate Authorities are allowed to generate certificates for that domain:
+   <br/>
 
-   ```
+   Example of a CAA query showing that only **certain** Certificate Authorities are allowed to generate certificates for that domain:
+   <br/>
+
+   ```bash
    0 issue "amazon.com"
    0 issue "digicert.com"
    0 issue "globalsign.com"
    0 issue "letsencrypt.org"
    ```
+
+   <br/>
 
    If the result of the CAA DNS query is empty, it means that **any** Certificate Authority is allowed to generate certificates on that domain. If so, you can directly go to the next step.
 
@@ -209,32 +216,41 @@ __Note:__ If you already have an existing certificate, you can use it by skippin
 
    ![ACME Challenge Record on GoDady](/images/production/godaddy-acme-challenge.jpg)
 
+   <br/>
    Example with Gandi:
 
    ![ACME Challenge Record on Gandi](/images/production/gandi-acme-challenge.jpg)
 
+   <br/>
    Once the DNS entries have been added, you can use one of the following to verify that they are correctly configured:
 
    - [MX ToolBox DNS Lookup](https://mxtoolbox.com/DNSLookup.aspx)
    - [Ultra Tools DNS Lookup](https://www.ultratools.com/tools/dnsLookup)
 
+   <br/>
+
    You can also verify the CNAME records using the command line:
 
-   ```
+   <br/>
+
+   ```bash
    # Run the following 'dig' command to verify the presence of the '_acme-challenge.' CNAME :
    dig +short cname _acme-challenge.<your-domain>
 
    # For example:
    dig +short cname _acme-challenge.mywebsite.xyz
    ```
+   <br/>
 
    Expected result for the DNS query:
+   <br/>
 
    ```
    _acme-challenge.xdn-validation.com.
    ```
 
    If you use multiple domains for your website, like `mywebsite.xyz` and `www.mywebsite.xyz`, you will have to make sure that the `_acme-challenge` DNS record has been added for both domains:
+   <br/>
 
    ```
    _acme-challenge.mywebsite.xyz -> _acme-challenge.xdn-validation.com.
@@ -242,14 +258,18 @@ __Note:__ If you already have an existing certificate, you can use it by skippin
    ```
 
    If you have been previously using _Let's Encrypt_ to generate certificates for this domain, please verify that there are no remaining TXT records named `_acme-challenge.mywebsite.xyz`.
+   <br/>
 
-   __Note:__ You can read more about the `_acme-challenge.` process by visiting [_Let's Encrypt_ Website](https://letsencrypt.org/docs/challenge-types/#dns-01-challenge)
+   <Callout type="info">
+   You can read more about the `acme-challenge.` process by visiting <a href="https://letsencrypt.org/docs/challenge-types/#dns-01-challenge">Let's Encrypt Website</a>
+   </Callout>
 
 4. Once the requirements above are met, you can generate the certificate using the [{{ PRODUCT_NAME }} Developer Console]({{ APP_URL }}):
 
    1. Select your site and navigate to _Settings_ > _SSL Certificate_
 
    2. Verify the state of your certificate (you should see that there's no certificate provided yet for your website):
+   <br/>
 
    ![ssl-generation-01](/images/production/ssl-generation-01.png)
 
@@ -258,6 +278,8 @@ __Note:__ If you already have an existing certificate, you can use it by skippin
    ![ssl-generation-02](/images/production/ssl-generation-02.png)
 
    4. After a couple of minutes, you should see that your website has received a valid certificate:
+
+   <br/>
 
    ![ssl-generation-03](/images/production/ssl-generation-03.png)
 
@@ -277,7 +299,7 @@ To create CSR and private key do the following:
 
 2. Go to the directory of your choice and create a configuration file `layer0.conf` based on this template:
 
-```properties
+```
 [req]
 default_bits=2048
 distinguished_name = req_distinguished_name
@@ -341,7 +363,9 @@ To upload your SSL certificate, do the following:
 
 4. Copy the certificate, intermediate certificates, and the private key into the corresponding edit boxes.
 
-_Note: The private key is non-public data and must not be shared with parties other than {{ PRODUCT_NAME }}. {{ PRODUCT_NAME }} stores your private key securely at rest. It is never shown in the developer console and only used to provision parts of the infrastructure that are used to terminate TLS connections._
+<Callout type="info">
+   The private key is non-public data and must not be shared with parties other than {{ PRODUCT_NAME }}. {{ PRODUCT_NAME }} stores your private key securely at rest. It is never shown in the developer console and only used to provision parts of the infrastructure that are used to terminate TLS connections.
+</Callout>
 
 5. Click *CHANGES SAVED*.
 

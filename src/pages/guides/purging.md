@@ -4,7 +4,7 @@ title: Purging
 
 This guide covers how you can purge data from the Layer0 edge cache.
 
-## Overview
+## Overview {/*overview*/}
 
 Layer0 offers three ways to purge responses from the cache:
 
@@ -12,7 +12,7 @@ Layer0 offers three ways to purge responses from the cache:
 - CLI
 - REST API
 
-## Developer Console
+## Developer Console {/*developer-console*/}
 
 You can purge the cache via the [Layer0 Developer Console](https://app.layer0.co) by navigating to an environment, selecting the _Caching_ tab, and clicking _Purge the Cache_ under _Cache Purge History_:
 
@@ -22,15 +22,15 @@ You can choose to purge all entries, purge by path, or by surrogate keys. You ca
 
 ![purge_dialog](/images/purging/dialog.png)
 
-## CLI
+## CLI {/*cli*/}
 
 To purge responses via the CLI, see the [CLI reference](/guides/cli#section_cache_clear).
 
-## REST API
+## REST API {/*rest-api*/}
 
 To purge responses via the REST API, see the [REST API reference](/guides/rest_api#section_clear_cache).
 
-## Deployments
+## Deployments {/*deployments*/}
 
 By default, all response are purged from the cache when you deploy a new version of your site. You can override this behavior using the _Preserve cache between deployments_ setting in your environment configuration:
 
@@ -38,11 +38,11 @@ By default, all response are purged from the cache when you deploy a new version
 
 __Caution:__ While preserving the cache between deployments can greatly reduce the load on your origin following a deployment, it can also lead to inconsistent behavior if the new version of your browser code receives an old, incompatible API response from the cache. Before enabling this feature, we recommend adding an API version number to your URL scheme to ensure that breaking changes to your API don't affect your website's functionality when old responses are served from the cache.
 
-## Static prerendering after clearing the cache
+## Static prerendering after clearing the cache {/*static-prerendering-after-clearing-the-cache*/}
 
 If you have [static prerendering] enabled, the cache will automatically be repopulated when you clear all entries from the cache (such as when you select _Purge all entries_ in the {{ PRODUCT_NAME }} Developer Console or run `{{ CLI_NAME }} cache-clear` without providing `--path` or `--surrogate-key`). You can view the prerendering progress by clicking on the active deployment for the environment that was cleared.
 
-## Surrogate Keys
+## Surrogate Keys {/*surrogate-keys*/}
 
 Efficient cache purging is an essential part of keeping your website fast and reducing the load on your origin servers. Purging all entries from the cache all may increase your website's load time while the cache repopulates. If you purge all entries from the cache more than once a week, consider using surrogate keys for more targeted purging.
 
@@ -58,21 +58,21 @@ Content-Type: text/html
 
 In the example above you could purge this response from the cache using any of the surrogate keys. For example, to purge via the CLI:
 
-```
+```bash
 layer0 cache-clear --team=my-team --site=my-site --environment=production --surrogate-key=product.123
 ```
 
 or
 
-```
+```bash
 layer0 cache-clear --team=my-team --site=my-site --environment=production --surrogate-key=shoes
 ```
 
-## Automated Purging
+## Automated Purging {/*automated-purging*/}
 
 Here are some ways that you can automate cache purging:
 
-### NPM Scripts
+### NPM Scripts {/*npm-scripts*/}
 
 Here is an example script you can add to your `package.json` to handle cache clearing for each environment. You can also configure scripts to clear by surrogate key, path, or group (As defined in {{ PRODUCT_NAME }} Console)
 
@@ -90,7 +90,7 @@ These scripts assume that you have created environments called "production", "st
   },
 ```
 
-### GitHub Actions
+### GitHub Actions {/*github-actions*/}
 
 Here is an example GitHub action that clears the cache at a scheduled time using the jobs defined in your `package.json`
 

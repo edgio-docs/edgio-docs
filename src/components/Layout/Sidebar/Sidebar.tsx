@@ -2,7 +2,7 @@ import {AnimatePresence, motion} from 'framer-motion';
 import sortBy from 'lodash/sortBy';
 import Link from 'next/link';
 import {useRouter} from 'next/router';
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
 import styled from 'styled-components';
 
 import SidebarMenuItems, {
@@ -252,6 +252,13 @@ function ParentRoute({
 }
 
 function PrimaryNavItems() {
+  // Hack. See https://github.com/framer/motion/issues/578
+  const [isLoaded, setLoaded] = useState(false);
+  useEffect(() => {
+    setLoaded(true);
+  }, []);
+  // End hack.
+
   const navItemsIndex = 0;
   const navItems = SidebarMenuItems[navItemsIndex];
   const navItemsArray = Object.keys(navItems);
@@ -286,8 +293,13 @@ function PrimaryNavItems() {
   const [accordion, setAccordion] = useState({
     isOpen: true,
     currentIndex: getCurrentRouteParentIndex()?.parentIndex ?? -1,
-    // currentChildIndex: getCurrentRouteParentIndex()?.childIndex ?? -1,
   });
+
+  // Hack. See https://github.com/framer/motion/issues/578
+  if (!isLoaded) {
+    return <></>;
+  }
+  // End hack.
 
   return (
     <div className="nav-items">

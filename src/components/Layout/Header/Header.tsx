@@ -25,8 +25,7 @@ const StyledHeader = styled.header`
   box-shadow: inset 0 -1px var(--grey1);
   padding: 17px 20px;
   display: grid;
-  grid-template-columns: auto auto 1fr auto;
-  column-gap: 20px;
+  grid-template-columns: auto auto 1fr;
 
   > [class*='col'] {
     display: flex;
@@ -43,7 +42,7 @@ const StyledHeader = styled.header`
     justify-content: center;
   }
 
-  .col-3 {
+  /* .col-3 {
     justify-content: center;
 
     .search-form__box {
@@ -109,12 +108,15 @@ const StyledHeader = styled.header`
         outline: 0;
       }
     }
-  }
+  } */
 
   .col-4 {
+    display: flex;
+    justify-content: flex-end;
+
     .desktop {
       display: grid;
-      grid-template-columns: repeat(3, auto);
+      grid-template-columns: repeat(4, auto);
       column-gap: 15px;
       align-items: center;
     }
@@ -161,25 +163,35 @@ const StyledHeader = styled.header`
     display: none;
   }
 
+  .DocSearch-Button {
+    background-color: transparent;
+  }
+
+  .DocSearch-Button-Placeholder {
+    display: none;
+  }
+
   @media (max-width: 850px) {
     #desktop {
       display: none;
     }
 
     #mobile {
-      display: block;
+      display: grid;
+      grid-template-columns: repeat(2, auto);
+      align-items: center;
     }
 
     .col-2 {
       display: flex;
     }
 
-    .col-3 {
+    /* .col-3 {
       .search-form__box {
         width: 100%;
         max-width: 100%;
       }
-    }
+    } */
 
     .col-4 {
       display: flex;
@@ -281,19 +293,19 @@ export default function Header({
           </NoSSRWrapper>
         </div>
       </div>
-      <div className="col-3">
-        <div className="search-form__box">
-          <NoSSRWrapper>
-            <DocSearch
-              appId={algoliaAppId}
-              indexName={indexName}
-              apiKey={algoliaApiKey}
-            />
-          </NoSSRWrapper>
-        </div>
-      </div>
+      {/* <div className="col-3">
+      </div> */}
       <div className="col-4">
         <div id="desktop" className="desktop">
+          <div className="search-form__box">
+            <NoSSRWrapper>
+              <DocSearch
+                appId={algoliaAppId}
+                indexName={indexName}
+                apiKey={algoliaApiKey}
+              />
+            </NoSSRWrapper>
+          </div>
           <button
             type="button"
             className="theme-switcher"
@@ -320,6 +332,15 @@ export default function Header({
           </Link>
         </div>
         <div id="mobile">
+          <div className="search-form__box">
+            <NoSSRWrapper>
+              <DocSearch
+                appId={algoliaAppId}
+                indexName={indexName}
+                apiKey={algoliaApiKey}
+              />
+            </NoSSRWrapper>
+          </div>
           <button
             type="button"
             className="mobile-menu"

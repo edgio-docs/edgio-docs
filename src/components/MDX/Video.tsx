@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import ReactPlayer from 'react-player';
 import styled from 'styled-components';
 
@@ -36,7 +36,18 @@ const StyledVideo = styled.div`
 `;
 
 function Video({src}: VideoProps) {
-  var style = {'--aspect-ratio': '16/9'} as React.CSSProperties;
+  const style = {'--aspect-ratio': '16/9'} as React.CSSProperties;
+
+  // Hydration issues: client v. Server.
+  const [isLoaded, setLoaded] = useState(false);
+  useEffect(() => {
+    setLoaded(true);
+  }, []);
+
+  if (!isLoaded) {
+    return <></>;
+  }
+  // End
 
   return (
     <StyledVideo style={style}>

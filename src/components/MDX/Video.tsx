@@ -37,21 +37,21 @@ const StyledVideo = styled.div`
   }
 `;
 
-const StyledWait = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-  width: 100%;
-`;
+// const StyledWait = styled.div`
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   height: 100%;
+//   width: 100%;
+// `;
 
-function Wait() {
-  return (
-    <StyledWait className="wait.">
-      <h1>Loading...</h1>
-    </StyledWait>
-  );
-}
+// function Wait() {
+//   return (
+//     <StyledWait className="wait.">
+//       <h1>Loading...</h1>
+//     </StyledWait>
+//   );
+// }
 
 function Video({src}: VideoProps) {
   const isLoaded = useHydrationIsLoaded();
@@ -65,7 +65,6 @@ function Video({src}: VideoProps) {
     <StyledVideo style={style}>
       <ReactPlayer
         {...{
-          fallback: <Wait />,
           url: src,
           controls: true,
           width: '100%',

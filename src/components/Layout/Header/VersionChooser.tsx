@@ -50,7 +50,7 @@ export default function VersionChooser() {
     };
 
     doGetVersions();
-  });
+  }, []);
 
   const onChange = (event: any) => {
     let version = event.target?.value;
@@ -60,7 +60,7 @@ export default function VersionChooser() {
   };
 
   // don't render unless we are on the api docs route
-  if (!route.startsWith('/docs/') || !versions.length) {
+  if (/*!route.startsWith('/docs/') ||*/ !versions.length) {
     return <></>;
   }
 

@@ -84,6 +84,10 @@ const router = new Router()
   .match('/:path*', ({cache}) => {
     cache(htmlCacheConfig);
   })
+  .match('/docs/versions', ({cache, proxy}) => {
+    cache(htmlCacheConfig);
+    proxy('api', {path: '/versions.csv'});
+  })
   // match api docs with a file extension
   .match(
     '/docs/api/:path*:file(\\.[css|js|html|json|png]+)',

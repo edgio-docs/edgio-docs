@@ -41,6 +41,10 @@ const StyledHeader = styled.header`
 
   .col-2 {
     justify-content: center;
+  }
+
+  .col-3 {
+    justify-content: center;
 
     .search-form__box {
       --width: 623px;
@@ -103,7 +107,7 @@ const StyledHeader = styled.header`
     }
   }
 
-  .col-3 {
+  .col-4 {
     .desktop {
       display: grid;
       grid-template-columns: repeat(3, auto);
@@ -163,13 +167,17 @@ const StyledHeader = styled.header`
     }
 
     .col-2 {
+      display: flex;
+    }
+
+    .col-3 {
       .search-form__box {
         width: 100%;
         max-width: 100%;
       }
     }
 
-    .col-3 {
+    .col-4 {
       display: flex;
     }
   }
@@ -261,13 +269,15 @@ export default function Header({
             </a>
           </Link>
         </div>
-        {/* <div className="version-form__box">
+      </div>
+      <div className="col-2">
+        <div className="version-form__box">
           <NoSSRWrapper>
             <VersionChooser />
           </NoSSRWrapper>
-        </div> */}
+        </div>
       </div>
-      <div className="col-2">
+      <div className="col-3">
         <div className="search-form__box">
           <NoSSRWrapper>
             <DocSearch
@@ -278,7 +288,7 @@ export default function Header({
           </NoSSRWrapper>
         </div>
       </div>
-      <div className="col-3">
+      <div className="col-4">
         <div id="desktop" className="desktop">
           <button
             type="button"

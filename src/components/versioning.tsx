@@ -79,7 +79,7 @@ export async function getVersions() {
   let url;
 
   if (typeof window !== 'undefined') {
-    url = '/api-docs/versions.csv';
+    url = '/docs/versions';
   } else {
     url = `${DOCS_PAGES_REPO_URL}/versions.csv`;
   }

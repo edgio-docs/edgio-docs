@@ -261,11 +261,11 @@ export default function Header({
             </a>
           </Link>
         </div>
-        <div className="version-form__box">
+        {/* <div className="version-form__box">
           <NoSSRWrapper>
             <VersionChooser />
           </NoSSRWrapper>
-        </div>
+        </div> */}
       </div>
       <div className="col-2">
         <div className="search-form__box">

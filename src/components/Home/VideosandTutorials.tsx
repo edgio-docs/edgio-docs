@@ -158,8 +158,8 @@ export default function VideosandTutorials() {
             <div className="video-category" key={video.slug}>
               <h1 className="video-category__title">{video.title}</h1>
               <div className="videos">
-                {video.videos.map((item) => (
-                  <div className="video" key={index}>
+                {video.videos.map((item, vidIndex) => (
+                  <div className="video" key={`${index}-${vidIndex}`}>
                     <Video src={item.url} />
                     <h1 className="title">{item.title}</h1>
                   </div>

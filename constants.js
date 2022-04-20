@@ -58,9 +58,9 @@ const SYSTEM_REQUIREMENTS_H3 = `### System Requirements
 
 - [Install Node.js 14.0](/guides/install-nodejs)`;
 
-const SIGN_UP_LAYER0 = `## Sign up for {{ PRODUCT_NAME }}
+const SIGN_UP_LAYER0 = `## Sign up for ${PRODUCT_NAME}
 
-Deploying requires an account on {{ PRODUCT_NAME }}. [Sign up here for free.]({{ APP_URL }}/signup)`;
+Deploying requires an account on ${PRODUCT_NAME}. <a href="${APP_URL}/signup">Sign up here for free.</a>`;
 
 module.exports = {
   APP_DOMAIN,

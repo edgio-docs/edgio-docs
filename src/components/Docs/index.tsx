@@ -37,7 +37,7 @@ const StyledDocs = styled.div`
       .anchor {
         position: absolute;
         left: 0;
-        transform: translateX(-1em);
+        transform: translateX(-19px);
         width: 18px;
         height: 18px;
         top: 50%;

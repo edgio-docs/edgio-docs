@@ -297,7 +297,38 @@ function PrimaryNavItems() {
 
   // Hack. See https://github.com/framer/motion/issues/578
   if (!isLoaded) {
-    return <></>;
+    return (
+      <div className="nav-items">
+        {navItemsArray.map((items, index) => {
+          const itemsAsNumber = Number(items);
+          const menuItem = SidebarMenuItems[navItemsIndex][itemsAsNumber];
+
+          return (
+            <div className="nav-item__box" key={itemsAsNumber}>
+              <ParentRoute
+                {...{menuItem, accordion, setAccordion, parentIndex: index}}
+              />
+              {/* <AnimatePresence> */}
+              {menuItem.routes &&
+                accordion.isOpen &&
+                accordion.currentIndex === index && (
+                  <ChildrenRoutes
+                    {...{
+                      routes: menuItem.sortRoutes
+                        ? sortBy(menuItem.routes, (item) =>
+                            item.title.toLowerCase()
+                          )
+                        : menuItem.routes,
+                      currentRoutePath,
+                    }}
+                  />
+                )}
+              {/* </AnimatePresence> */}
+            </div>
+          );
+        })}
+      </div>
+    );
   }
   // End hack.
 

@@ -141,7 +141,7 @@ const Home = ({ navData }) => {
                 </Box>
                 <CardContent className={classes.cardContent}>
                   <Typography>
-                    Security Content Tagline
+                    Managed security keeps your apps protected without sacrificing performance
                   </Typography>
                 </CardContent>
               </Paper>

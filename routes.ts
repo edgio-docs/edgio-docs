@@ -50,6 +50,42 @@ const redirects = [
   ['/guides/getting_started', '/guides/build_web_apps'],
 ];
 
+const scriptSrcDomains = [
+  'player.vimeo.com',
+  'cdn.jsdelivr.net',
+  'www.googletagmanager.com',
+  'cdn.segment.com',
+  'cdn4.mxpnl.com',
+  'www.google-analytics.com',
+  'widget.intercom.io',
+  'sc.lfeeder.com',
+  'snap.licdn.com',
+  'connect.facebook.net',
+  'www.youtube.com',
+  'js.intercomcdn.com',
+  'static.hotjar.com',
+  's.adroll.com',
+  'px4.ads.linkedin.com',
+].sort();
+
+const connectSrcDomains = [
+  '*.layer0.co',
+  '*.layer0.link',
+  '*.layer0-perma.link',
+  '*.layer0-limelight.link',
+  '*.segment.io',
+  '*.segment.com',
+  'analytics.google.com',
+  '*.intercom.io',
+  '*.intercomcdn.com',
+  '*.intercomassets.com',
+  '*.github.io',
+  '*.algolianet.com',
+  '*.algolia.net',
+  '*.vimeo.com',
+  'vimeo.com',
+].sort();
+
 const router = new Router()
   .match({}, ({setResponseHeader}) => {
     if (process.env.NODE_ENV === 'production') {
@@ -65,11 +101,13 @@ const router = new Router()
           `font-src fonts.gstatic.com`,
           `img-src 'self' www.google-analytics.com analytics.twitter.com www.facebook.com px.ads.linkedin.com *.intercomcdn.com tr.lfeeder.com data:`,
           `frame-src www.youtube.com youtu.be player.vimeo.com/*`,
-          `script-src 'unsafe-inline' 'self' 'unsafe-eval' player.vimeo.com cdn.jsdelivr.net www.googletagmanager.com cdn.segment.com cdn4.mxpnl.com www.google-analytics.com widget.intercom.io sc.lfeeder.com snap.licdn.com connect.facebook.net www.youtube.com js.intercomcdn.com static.hotjar.com s.adroll.com px4.ads.linkedin.com`,
+          `script-src 'unsafe-inline' 'self' 'unsafe-eval' ${scriptSrcDomains.join(
+            ' '
+          )}`,
           `base-uri 'self'`,
           `frame-ancestors 'self'`,
           `media-src www.youtube.com`,
-          `connect-src *.layer0.co *.layer0.link *.layer0-perma.link *.segment.io *.segment.com analytics.google.com *.intercom.io *.intercomcdn.com *.intercomassets.com *.github.io *.algolianet.com *.algolia.net *.vimeo.com`,
+          `connect-src ${connectSrcDomains.join(' ')}`,
         ].join('; ')
       );
       setResponseHeader('X-XSS-Protection', '1; mode=block');

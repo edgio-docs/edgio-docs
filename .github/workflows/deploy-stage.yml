@@ -5,7 +5,7 @@ on:
       - '**'
       - '!master'
 jobs:
-  deploy-to-layer0:
+  deploy-to-stage:
     runs-on: ubuntu-latest
     steps:
       - name: Extract branch name
@@ -31,7 +31,7 @@ jobs:
             ${{ runner.os }}-build-
             ${{ runner.os }}-
       - run: yarn
-      - name: Deploy to Layer0
+      - name: Deploy to Layer0 (stage)
         run: yarn layer0:deploy -- --branch=$BRANCH_NAME --token=${{secrets.layer0_deploy_token}} --environment=default
       - name: Crawl Stage Docs
         run: |

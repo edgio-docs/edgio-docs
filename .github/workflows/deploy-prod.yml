@@ -2,9 +2,9 @@ name: Deploy to production
 on:
   push:
     branches:
-      - master
+      - main-v2
 jobs:
-  deploy-to-layer0:
+  deploy-to-prod:
     if: "!contains(github.event.repository.name, 'layer0-docs-internal')"
     runs-on: ubuntu-latest
     steps:

@@ -653,22 +653,22 @@ const SidebarMenuItems: Array<Array<ISidebarMenuItem>> = [
       routes: [
         {
           title: '@layer0/core',
-          path: '/docs/api/core',
+          path: '/docs/api/core/',
           external: true,
         },
         {
           title: '@layer0/prefetch',
-          path: '/docs/api/prefetch',
+          path: '/docs/api/prefetch/',
           external: true,
         },
         {
           title: '@layer0/core (v3.x)',
-          path: '/docs/v3.17.8/api/core',
+          path: '/docs/v3.17.8/api/core/',
           external: true,
         },
         {
           title: '@layer0/prefetch (v3.x)',
-          path: '/docs/v3.17.8/api/prefetch',
+          path: '/docs/v3.17.8/api/prefetch/',
           external: true,
         },
       ],

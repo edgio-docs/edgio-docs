@@ -81,10 +81,18 @@ function HomepageHero() {
         </div>
         <figure className="header-graphics">
           <div id="dark-theme-switcher">
-            <Image src={LightHeaderGraphics} alt="Layer0 Documentation" />
+            <Image
+              src={LightHeaderGraphics}
+              alt="Layer0 Documentation"
+              unoptimized
+            />
           </div>
           <div id="light-theme-switcher">
-            <Image src={DarkHeaderGraphics} alt="Layer0 Documentation" />
+            <Image
+              src={DarkHeaderGraphics}
+              alt="Layer0 Documentation"
+              unoptimized
+            />
           </div>
         </figure>
       </Container>

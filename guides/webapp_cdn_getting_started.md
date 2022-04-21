@@ -48,7 +48,7 @@ yarn global add {{ PACKAGE_NAME }}/cli
 2. Create your project with the following command:
 
 ```bash
-`{{ CLI_NAME }} init`
+{{ CLI_NAME }} init
 ```
 
 ### Project Structure

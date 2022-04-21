@@ -1,11 +1,12 @@
 import {Router, CustomCacheKey} from '@layer0/core/router';
 import {nextRoutes} from '@layer0/next';
 
+import prerenderRequests from './prerender';
+
 const key = new CustomCacheKey().excludeAllQueryParametersExcept(
   'query',
   'version'
 );
-// const prerenderRequests = require('./layer0/prerenderRequests')
 
 const htmlCacheConfig = {
   key,
@@ -88,6 +89,7 @@ const connectSrcDomains = [
 ].sort();
 
 const router = new Router()
+  .prerender(prerenderRequests)
   .match({}, ({setResponseHeader}) => {
     if (process.env.NODE_ENV === 'production') {
       setResponseHeader(
@@ -154,7 +156,7 @@ const router = new Router()
     }
   )
   // match versioned api docs with a terminating /
-  .match('/docs/:version/api/:path*/', ({proxy, cache, request}) => {
+  .match('/docs/:version/api/:path*/', ({proxy, cache}) => {
     cache(htmlCacheConfig);
     proxy('api', {path: '/:version/api/:path*/index.html'});
   })

@@ -1,3 +1,5 @@
+import * as React from 'react';
+
 import {IconAngular} from '../components/Icon/IconAngular';
 import {IconAstro, IconAstroDark} from '../components/Icon/IconAstro';
 import {
@@ -647,7 +649,7 @@ const SidebarMenuItems: Array<Array<ISidebarMenuItem>> = [
       icon: <IconFolder />,
       iconDark: <IconFolderDark />,
       path: 'package-apis',
-      sortRoutes: true,
+      sortRoutes: false,
       routes: [
         {
           title: '@layer0/core',
@@ -657,6 +659,16 @@ const SidebarMenuItems: Array<Array<ISidebarMenuItem>> = [
         {
           title: '@layer0/prefetch',
           path: '/docs/api/prefetch',
+          external: true,
+        },
+        {
+          title: '@layer0/core (v3.x)',
+          path: '/docs/v3.17.8/api/core',
+          external: true,
+        },
+        {
+          title: '@layer0/prefetch (v3.x)',
+          path: '/docs/v3.17.8/api/prefetch',
           external: true,
         },
       ],

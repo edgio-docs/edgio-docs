@@ -16,6 +16,7 @@ const htmlCacheConfig = {
   edge: {
     maxAgeSeconds: 60 * 60 * 24 * 365,
     staleWhileRevalidateSeconds: 60 * 60 * 24 * 365,
+    forcePrivateCaching: true,
   },
 };
 

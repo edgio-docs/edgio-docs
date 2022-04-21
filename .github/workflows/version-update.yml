@@ -1,0 +1,18 @@
+name: Update Layer0 Version
+on:
+  schedule:
+    - cron: '0 0 * * 1'
+
+jobs:
+  auto-update:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout the head commit of the branch
+        uses: actions/checkout@v2
+
+      - name: Run auto dependency update
+        uses: romoh/dependencies-autoupdate@v1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          update-command: "'npx @layer0/cli use latest'"

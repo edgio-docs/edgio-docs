@@ -288,9 +288,9 @@ export default function Header({
       </div>
       <div className="col-2">
         <div className="version-form__box">
-          <NoSSRWrapper>
+          {/* <NoSSRWrapper>
             <VersionChooser />
-          </NoSSRWrapper>
+          </NoSSRWrapper> */}
         </div>
       </div>
       {/* <div className="col-3">

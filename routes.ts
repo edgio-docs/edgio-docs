@@ -100,7 +100,7 @@ const router = new Router()
           `style-src 'unsafe-inline' 'self' fonts.googleapis.com cdn.jsdelivr.net`,
           `font-src fonts.gstatic.com`,
           `img-src 'self' www.google-analytics.com analytics.twitter.com www.facebook.com px.ads.linkedin.com *.intercomcdn.com tr.lfeeder.com data:`,
-          `frame-src www.youtube.com youtu.be player.vimeo.com/*`,
+          `frame-src www.youtube.com youtu.be player.vimeo.com`,
           `script-src 'unsafe-inline' 'self' 'unsafe-eval' ${scriptSrcDomains.join(
             ' '
           )}`,

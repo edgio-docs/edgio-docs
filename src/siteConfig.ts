@@ -12,6 +12,7 @@ export const siteConfig = {
   headerIdConfig: {
     className: `anchor`,
   },
-  tagline: 'Explore the Layer0 guides and examples',
+  tagline:
+    'Explore the Layer0 guides and examples on how to integrate edge logic into your application code & extends the edge to the browser.',
   twitterHandle: 'Layer0Deploy',
 };

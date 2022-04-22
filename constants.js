@@ -50,15 +50,15 @@ const EXAMPLES_REPOS = {
   'static-vue': 'https://github.com/layer0-docs/layer0-static-vuejs-example',
 };
 
-const SYSTEM_REQUIREMENTS = `## System Requirements
+const SYSTEM_REQUIREMENTS = `## System Requirements {/*system-requirements*/}
 
 - [Install Node.js 14.0](/guides/install-nodejs)`;
 
-const SYSTEM_REQUIREMENTS_H3 = `### System Requirements
+const SYSTEM_REQUIREMENTS_H3 = `### System Requirements {/*system-requirements*/}
 
 - [Install Node.js 14.0](/guides/install-nodejs)`;
 
-const SIGN_UP_LAYER0 = `## Sign up for ${PRODUCT_NAME}
+const SIGN_UP_LAYER0 = `## Sign up for ${PRODUCT_NAME} {/*sign-up-for-${PRODUCT_NAME}*/}
 
 Deploying requires an account on ${PRODUCT_NAME}. <a href="${APP_URL}/signup">Sign up here for free.</a>`;
 

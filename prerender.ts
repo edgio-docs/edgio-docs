@@ -29,7 +29,7 @@ export default async function prerenderRequests() {
     const buildId = readFileSync(buildIdPath, 'utf8');
     const routesJson = readJsonSync(nextRoutesManifestPath);
     requests.push(
-      ...routesJson.dynamicRoutes?.map(({page}) => ({
+      ...routesJson.dataRoutes?.map(({page}) => ({
         path: `/_next/data/${buildId}${page}.json`,
       }))
     );

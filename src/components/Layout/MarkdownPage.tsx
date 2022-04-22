@@ -4,6 +4,7 @@ import {MDXProvider} from '@mdx-js/react';
 import {useRouter} from 'next/router';
 import * as React from 'react';
 
+import {siteConfig} from '../../siteConfig';
 import Docs from '../Docs';
 import DocsFooter from '../Docs/DocsFooter';
 import {MDXComponents} from '../MDX/MDXComponents';
@@ -58,7 +59,7 @@ export function MarkdownPage<
 
   return (
     <MDXProvider components={MDXComponents}>
-      <Seo {...{isHomePage, title}} />
+      <Seo {...{isHomePage, title, description: siteConfig.tagline}} />
 
       {isHomePage ? (
         children

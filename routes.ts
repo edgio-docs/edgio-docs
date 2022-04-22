@@ -3,10 +3,7 @@ import {nextRoutes} from '@layer0/next';
 
 import prerenderRequests from './prerender';
 
-const key = new CustomCacheKey().excludeAllQueryParametersExcept(
-  'query',
-  'version'
-);
+const key = new CustomCacheKey().excludeAllQueryParametersExcept('query');
 
 const htmlCacheConfig = {
   key,
@@ -18,18 +15,6 @@ const htmlCacheConfig = {
     maxAgeSeconds: 60 * 60 * 24 * 365,
     staleWhileRevalidateSeconds: 60 * 60 * 24 * 365,
     forcePrivateCaching: true,
-  },
-};
-
-const apiCacheConfig = {
-  key,
-  browser: {
-    maxAgeSeconds: 0,
-    serviceWorkerSeconds: 60 * 60,
-  },
-  edge: {
-    maxAgeSeconds: 60 * 60 * 24 * 365,
-    staleWhileRevalidateSeconds: 60 * 60 * 24 * 365,
   },
 };
 
@@ -121,6 +106,9 @@ const router = new Router()
   })
   .get('/images/:path*', ({cache}) => {
     cache(staticCacheConfig);
+  })
+  .match('/_next/:path*', ({cache}) => {
+    cache(htmlCacheConfig);
   })
   .match('/:path*', ({cache}) => {
     cache(htmlCacheConfig);

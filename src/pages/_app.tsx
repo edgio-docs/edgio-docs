@@ -11,7 +11,7 @@ import GlobalStyle from '../styles/GlobalStyle';
 import '../styles/nprogress.css';
 import '../styles/scrollbar.css';
 
-import {VersionProvider} from 'components/versioning';
+// import {VersionProvider} from 'components/versioning';
 
 // -> Used for the loader when switching between pages
 Router.events.on('routeChangeStart', () => NProgress.start());
@@ -39,11 +39,11 @@ export default function MyApp({Component, pageProps}: AppProps) {
   return (
     <AppShell>
       <GlobalStyle />
-      <VersionProvider>
-        <ThemeProvider theme={theme}>
-          <Component {...pageProps} />
-        </ThemeProvider>
-      </VersionProvider>
+      {/* <VersionProvider> */}
+      <ThemeProvider theme={theme}>
+        <Component {...pageProps} />
+      </ThemeProvider>
+      {/* </VersionProvider> */}
     </AppShell>
   );
 }

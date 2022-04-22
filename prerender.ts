@@ -18,7 +18,7 @@ export default async function prerenderRequests() {
         }
       }
     ),
-  ];
+  ].filter(Boolean);
 
   if (existsSync(buildIdPath)) {
     const buildId = readFileSync(buildIdPath, 'utf8');
@@ -33,5 +33,5 @@ export default async function prerenderRequests() {
     requests.push(...apiPaths);
   }
 
-  return requests.filter(Boolean);
+  return requests;
 }

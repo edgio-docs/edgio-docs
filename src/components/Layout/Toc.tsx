@@ -89,6 +89,7 @@ export function Toc({
   const {currentIndex} = useTocHighlight();
   const selectedIndex = Math.min(currentIndex, headings.length - 1);
 
+  console.clear();
   return (
     <StyledToc className="docs-article__toc">
       <nav role="navigation" className="docs-toc__nav custom-scrollbar">
@@ -100,6 +101,7 @@ export function Toc({
             {headings &&
               headings.length > 0 &&
               headings.map((h, i) => {
+                console.log({index: i, url: h.url});
                 return (
                   <li
                     key={`heading-${h.url}-${i}`}

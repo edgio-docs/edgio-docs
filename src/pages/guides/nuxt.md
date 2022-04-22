@@ -67,7 +67,7 @@ Nuxt's create module will ask you a series of questions to configure your app. M
 - For `Choose rendering mode` select `Universal (SSR)`
 - Your answers to the other questions should not matter for the purposes of this guide.
 
-## Adding {{ PRODUCT_NAME }} to an existing Nuxt app {/*adding--product_name--to-an-existing-nuxt-app*/}
+## Adding {{ PRODUCT_NAME }} to an existing Nuxt app {/*adding-{{PRODUCT_NAME_LOWER}}-to-an-existing-nuxt-app*/} {/*adding--product_name--to-an-existing-nuxt-app-adding-product_name_lower-to-an-existing-nuxt-app*/}
 
 To prepare your Nuxt.js application for {{ PRODUCT_NAME }}:
 
@@ -455,7 +455,7 @@ npm i -g {{ PACKAGE_NAME }}/cli
 
 ---
 
-### Make sure your version of {{ PRODUCT_NAME }} CLI is current {/*make-sure-your-version-of--product_name--cli-is-current*/}
+### Make sure your version of {{ PRODUCT_NAME }} CLI is current {/*make-sure-your-version-of-{{PRODUCT_NAME_LOWER}}-cli-is-current*/} {/*make-sure-your-version-of--product_name--cli-is-current-make-sure-your-version-of-product_name_lower-cli-is-current*/}
 
 If you previously installed the {{ PRODUCT_NAME }} CLI, make sure your version is current.
 

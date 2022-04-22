@@ -52,7 +52,7 @@ npm create next-app my-next-app
 
 To prepare your Next.js application for deployment on {{ PRODUCT_NAME }}:
 
-### Install the {{ PRODUCT_NAME }} CLI globally {/*install-the--product_name--cli-globally*/}
+### Install the {{ PRODUCT_NAME }} CLI globally {/*install-the-{{PRODUCT_NAME_LOWER}}-cli-globally*/} {/*install-the--product_name--cli-globally-install-the-product_name_lower-cli-globally*/}
 
 ```bash
 npm install -g {{ PACKAGE_NAME }}/cli

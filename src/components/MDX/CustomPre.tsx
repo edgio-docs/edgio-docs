@@ -10,7 +10,6 @@ const StyledCustomPre = styled.div`
   border: 2px solid #363636;
   border-radius: 8px;
   overflow: hidden;
-  color: red;
 
   .code-wrap {
     border: 2px solid var(--border);

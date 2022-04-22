@@ -106,7 +106,7 @@ new Router()
 
 `*` Adding, updating, or removing a request cookie can be achieved with `updateRequestHeader` applied to `cookie` header.
 
-You can find detailed descriptions of these APIs in the `{{ PACKAGE_NAME }}/core` [documentation](/docs/api/core/classes/_router_responsewriter_.responsewriter.html).
+You can find detailed descriptions of these APIs in the `{{ PACKAGE_NAME }}/core` [documentation](https://docs.layer0.co/docs/api/core/classes/_router_responsewriter_.responsewriter.html).
 
 ### Embedded Values {/*embedded-values*/}
 

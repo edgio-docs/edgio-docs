@@ -13,8 +13,7 @@ const htmlCacheConfig = {
   },
   edge: {
     maxAgeSeconds: 60 * 60 * 24 * 365,
-    staleWhileRevalidateSeconds: 60 * 60 * 24 * 365,
-    forcePrivateCaching: true,
+    staleWhileRevalidateSeconds: 60 * 60,
   },
 };
 
@@ -107,15 +106,6 @@ const router = new Router()
   .get('/images/:path*', ({cache}) => {
     cache(staticCacheConfig);
   })
-  .match('/_next/:path*', ({cache}) => {
-    cache(htmlCacheConfig);
-  })
-  .match('/guides/:path*', ({cache}) => {
-    cache(htmlCacheConfig);
-  })
-  .match('/:path*', ({cache}) => {
-    cache(htmlCacheConfig);
-  })
   .match('/docs/versions', ({cache, proxy}) => {
     cache(htmlCacheConfig);
     proxy('api', {path: '/versions.csv'});
@@ -174,6 +164,9 @@ redirects.forEach(([from, to, statusCode]) => {
   );
 });
 
+router.match('/:path*', ({cache}) => {
+  cache(htmlCacheConfig);
+});
 router.use(nextRoutes).fallback(({redirect}) => {
   return redirect('/', 302);
 });

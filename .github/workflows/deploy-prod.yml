@@ -19,8 +19,6 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: 14
-      - name: Get docs versions
-        run: curl https://layer0-docs.s3.amazonaws.com/versions.csv --output ./versions.csv
       - name: Cache node modules
         uses: actions/cache@v1
         env:
@@ -32,36 +30,10 @@ jobs:
             ${{ runner.os }}-build-${{ env.cache-name }}-
             ${{ runner.os }}-build-
             ${{ runner.os }}-
-      - name: Cache S3 guides
-        uses: actions/cache@v1
-        env:
-          cache-name: cache-s3-guides
-        with:
-          path: ./s3
-          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('./versions.csv') }}
-          restore-keys: |
-            ${{ runner.os }}-build-${{ env.cache-name }}-
-      - run: npm ci
-      - name: Configure AWS Credentials
-        uses: aws-actions/configure-aws-credentials@v1
-        with:
-          aws-access-key-id: ${{ secrets.PROD_AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.PROD_AWS_SECRET_ACCESS_KEY }}
-          aws-region: us-east-1
-      - name: Sync guides to latest version path
-        run: |
-          mkdir -p s3
-          aws s3 sync s3://layer0-docs ./s3  --delete
-          cd s3
-          VERSION=$(tail -n 1 versions.csv)
-          cp -r ../guides ${VERSION}
-          cp -r ../guides current
-          cp ../guides/guides.json ${VERSION}/guides.json
-          cp ../guides/guides.json current/guides.json
-          aws s3 sync . s3://layer0-docs --delete
-      - name: Deploy to Layer0
-        run: npm run deploy -- --branch=$BRANCH_NAME --token=${{secrets.layer0_deploy_token}} --environment=production
-      - name: Crawl Docs
+      - run: yarn
+      - name: Deploy to Layer0 (prod)
+        run: yarn layer0:deploy -- --branch=$BRANCH_NAME --token=${{secrets.layer0_deploy_token}} --environment=production
+      - name: Crawl prod docs
         run: |
           docker run \
           -e APPLICATION_ID=${{ secrets.ALGOLIA_APP_ID }} \

@@ -7,7 +7,7 @@ export const siteConfig = {
   algolia: {
     appId: 'BI9GRS0IQ3',
     apiKey: '8eff94cfa770d8f34be108fa108a59f9',
-    indexName: 'docs_test',
+    indexName: 'docs',
   },
   headerIdConfig: {
     className: `anchor`,

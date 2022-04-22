@@ -2,7 +2,7 @@
 title: Contributing to {{ DOCS_URL }}
 ---
 
-{{ PRODUCT_NAME }} is all about putting power in the hands of developers and our documentation is no different. The source code for the {{ PRODUCT_NAME }} developer docs (i.e. this site you're reading now) is in an open [repository on GitHub](https://github.com/{{ DOCS_REPO }}) and we welcome feedback and pull requests. If you've found a typo or a better way to explain something, please submit a [pull request]((https://github.com/layer0-docs/layer0-docs/pulls) or [file an issue](https://github.com/layer0-docs/layer0-docs/issues)! Others will likely stumble over the same problem and benefit from your insight.
+{{ PRODUCT_NAME }} is all about putting power in the hands of developers and our documentation is no different. The source code for the {{ PRODUCT_NAME }} developer docs (i.e. this site you're reading now) is in an open [repository on GitHub](https://github.com/{{ DOCS_REPO }}) and we welcome feedback and pull requests. If you've found a typo or a better way to explain something, please submit a [pull request](https://github.com/layer0-docs/layer0-docs/pulls) or [file an issue](https://github.com/layer0-docs/layer0-docs/issues)! Others will likely stumble over the same problem and benefit from your insight.
 
 ## Running Locally {/*running-locally*/}
 

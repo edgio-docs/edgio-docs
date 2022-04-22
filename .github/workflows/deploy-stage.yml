@@ -3,7 +3,7 @@ on:
   push:
     branches:
       - '**'
-      - '!master'
+      - '!main'
 jobs:
   deploy-to-stage:
     runs-on: ubuntu-latest
@@ -33,7 +33,7 @@ jobs:
       - run: yarn
       - name: Deploy to Layer0 (stage)
         run: yarn layer0:deploy -- --branch=$BRANCH_NAME --token=${{secrets.layer0_deploy_token}} --environment=default
-      - name: Crawl Stage Docs
+      - name: Crawl stage docs
         run: |
           docker run \
           -e APPLICATION_ID=${{ secrets.ALGOLIA_APP_ID }} \

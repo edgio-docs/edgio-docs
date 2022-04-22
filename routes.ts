@@ -110,6 +110,9 @@ const router = new Router()
   .match('/_next/:path*', ({cache}) => {
     cache(htmlCacheConfig);
   })
+  .match('/guides/:path*', ({cache}) => {
+    cache(htmlCacheConfig);
+  })
   .match('/:path*', ({cache}) => {
     cache(htmlCacheConfig);
   })

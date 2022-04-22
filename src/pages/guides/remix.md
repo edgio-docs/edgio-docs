@@ -24,7 +24,7 @@ This guide shows you how to deploy a [Remix](https://remix.run/) application on 
 
 Deploying requires an account on {{ PRODUCT_NAME }}. [Sign up here for free.]({{ APP_URL }}/signup).
 
-## Install the {{ PRODUCT_NAME }} CLI {/*install-the--product_name--cli*/}
+## Install the {{ PRODUCT_NAME }} CLI {/*install-the-{{PRODUCT_NAME_LOWER}}-cli*/} {/*install-the--product_name--cli-install-the-product_name_lower-cli*/}
 
 If you have not already done so, install the [{{ PRODUCT_NAME }} CLI](cli)
 
@@ -73,7 +73,7 @@ Install {{ PACKAGE_NAME }}/express by running the following:
 npm install {{ PACKAGE_NAME }}/express
 ```
 
-### Update {{ PRODUCT_NAME }} Configuration {/*update--product_name--configuration*/}
+### Update {{ PRODUCT_NAME }} Configuration {/*update-{{PRODUCT_NAME_LOWER}}-configuration*/} {/*update--product_name--configuration-update-product_name_lower-configuration*/}
 
 Update `{{ CONFIG_FILE }}` at the root of your project to the following:
 

@@ -2,7 +2,7 @@
 title: Contributing to {{ DOCS_URL }}
 ---
 
-{{ PRODUCT_NAME }} is all about putting power in the hands of developers and our documentation is no different. The source code for the {{ PRODUCT_NAME }} developer docs (i.e. this site you're reading now) is in an open [repository on GitHub](https://github.com/{{ DOCS_REPO }}) and we welcome feedback and pull requests. If you've found a typo or a better way to explain something, please submit a [pull request]((https://github.com/layer0-docs/layer0-docs/pulls) or [file an issue](https://github.com/layer0-docs/layer0-docs/issues)! Others will likely stumble over the same problem and benefit from your insight.
+{{ PRODUCT_NAME }} is all about putting power in the hands of developers and our documentation is no different. The source code for the {{ PRODUCT_NAME }} developer docs (i.e. this site you're reading now) is in an open [repository on GitHub](https://github.com/{{ DOCS_REPO }}) and we welcome feedback and pull requests. If you've found a typo or a better way to explain something, please submit a [pull request](https://github.com/layer0-docs/layer0-docs/pulls) or [file an issue](https://github.com/layer0-docs/layer0-docs/issues)! Others will likely stumble over the same problem and benefit from your insight.
 
 ## Running Locally {/*running-locally*/}
 
@@ -44,3 +44,147 @@ We recommend the following process for submitting a change:
 5. Submit a [pull request](https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/about-pull-requests) back to the {{ PRODUCT_NAME }} Docs repository via GitHub web interface.
 
 For more details, the Pro Git book has a [helpful contributing guide](https://git-scm.com/book/en/v2/GitHub-Contributing-to-a-Project) that walks you through the process of submitting a pull request to an open source repository on GitHub.
+
+
+---
+
+## Custom Components {/*custom-components*/}
+
+Use the custom components below to enhance the look and feel of your guides.
+
+### Callout {/*callout*/}
+
+Call attention to specific part of the guide with callouts.
+
+```ts
+// use this in a markdown file... with type: 'info' | 'warning' | 'danger';
+
+<Callout type="info">
+	This is an info...
+</Callout>
+
+<Callout type="warning">
+	This is an info...
+</Callout>
+
+<Callout type="danger">
+	This is an info...
+</Callout>
+```
+The code-snippet aboves renders:
+
+<Callout type="info">
+	This is an info...
+</Callout>
+<Callout type="warning">
+	This is a warning...
+</Callout>
+<Callout type="danger">
+	This is dangerous...
+</Callout>
+
+---
+### Codeblock {/*codeblock*/}
+
+Provide a language-module for syntax highlighting or non if you still need to use a codeblock.
+
+```js
+// This codeblock has the 'js' language module (with JS comment)
+console.log(new Date())
+```
+
+```html
+<!-- This codeblock has the 'html' language module (with HTML comment) -->
+<button type="button" class="btn btn-primary">Primary</button>
+```
+
+```bash
+# This codeblock has the 'bash' language module (with Bash comment)
+echo "Hello World"
+```
+
+```
+// This codeblock has no language module
+upload.build.layer0.co
+app.layer0.co
+```
+
+### Image {/*image*/}
+
+```ts
+<Image src="image src" alt="alt text"/>
+```
+
+### Video {/*video*/}
+
+```ts
+<Video src="video src url"/>
+```
+
+---
+### Button Link {/*button-link*/}
+
+```ts
+/*
+interface IButtonLinkProps {
+ variant: 'fill' | 'stroke';
+ type: 'default' | 'code' | 'deploy';
+ children: React.ReactNode;
+ href: string | UrlObject;
+ withIcon: boolean;
+}
+*/
+
+<ButtonLink variant="fill" type="default" href="...">
+ Try the Next.js SSR Example Site
+</ButtonLink>
+<ButtonLink variant="stroke" type="code" withIcon={true} href="...">
+ View the Code
+</ButtonLink>
+<ButtonLink variant="stroke" type="deploy" withIcon={true} href="...">
+  Deploy to Layer0
+</ButtonLink>
+```
+Renders:
+
+<ButtonLink variant="fill" type="default" href="https://layer0-docs-layer0-nextjs-example-default.layer0-limelight.link">
+ Try the Next.js SSR Example Site
+</ButtonLink>
+<ButtonLink variant="stroke" type="code" withIcon={true} href="https://github.com/layer0-docs/layer0-nextjs-example">
+ View the Code
+</ButtonLink>
+<ButtonLink variant="stroke" type="deploy" withIcon={true} href="https://app.layer0.co/deploy?button&deploy&repo=https%253A%252F%252Fgithub.com%252Flayer0-docs%252Flayer0-nextjs-example">
+  Deploy to Layer0
+</ButtonLink>
+
+---
+
+### Button Links Group {/*button-links-group*/}
+
+```ts
+<ButtonLinksGroup>
+ <ButtonLink variant="fill" type="default" href="...">
+  Try the Next.js SSR Example Site
+ </ButtonLink>
+ <ButtonLink variant="stroke" type="code" withIcon={true} href="...">
+  View the Code
+ </ButtonLink>
+ <ButtonLink variant="stroke" type="deploy" withIcon={true} href="...">
+   Deploy to Layer0
+ </ButtonLink>
+</ButtonLinksGroup>
+```
+
+Renders:
+
+<ButtonLinksGroup>
+	<ButtonLink variant="fill" type="default" href="https://layer0-docs-layer0-nextjs-example-default.layer0-limelight.link">
+	 Try the Next.js SSR Example Site
+	</ButtonLink>
+	<ButtonLink variant="stroke" type="code" withIcon={true} href="https://github.com/layer0-docs/layer0-nextjs-example">
+	 View the Code
+	</ButtonLink>
+	<ButtonLink variant="stroke" type="deploy" withIcon={true} href="https://app.layer0.co/deploy?button&deploy&repo=https%253A%252F%252Fgithub.com%252Flayer0-docs%252Flayer0-nextjs-example">
+	  Deploy to Layer0
+	</ButtonLink>
+</ButtonLinksGroup>

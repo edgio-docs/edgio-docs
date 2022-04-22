@@ -4,7 +4,7 @@ title: Teams
 
 This guide shows you how to share your project with other collaborators using teams.
 
-## Private Space
+## Private Space {/*private-space*/}
 
 When you first log into {{ PRODUCT_NAME }} console, you'll see your private space:
 
@@ -12,7 +12,7 @@ When you first log into {{ PRODUCT_NAME }} console, you'll see your private spac
 
 When you run `{{ CLI_NAME }} deploy` your site will be created here. Sites in your private space can only be seen by you. To collaborate with other developers, create a team.
 
-## Creating a Team
+## Creating a Team {/*creating-a-team*/}
 
 To create a team, use the *Create A Team* button located to the right of your name in the upper left of your window.
 
@@ -20,21 +20,21 @@ The name you choose also determines the default URL from which your site will be
 
 ![create dialog](/images/teams/create_dialog.png)
 
-## Adding Team Members
+## Adding Team Members {/*adding-team-members*/}
 
 To add team members, click the _Team Members_ tab:
 
 ![team members](/images/teams/members.png)
 
-## Roles
+## Roles {/*roles*/}
 
 {{ PRODUCT_NAME }} provides two roles:
 
-### Admin
+### Admin {/*admin*/}
 
 Users in the _Admin_ role have full control over all team and site settings.
 
-### Member
+### Member {/*member*/}
 
 Users in the _Member_ role can see all of the team's sites and settings, and deploy updates to existing sites via `{{ CLI_NAME }} deploy`, but cannot change site or team settings.
 

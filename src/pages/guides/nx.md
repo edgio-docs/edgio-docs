@@ -20,7 +20,7 @@ This guide shows you how to create a [connector](/guides/connectors) for your NX
   </ButtonLink>
 </ButtonLinksGroup>
 
-## 1. Install the {{ PRODUCT_NAME }} CLI and run {{ CLI_NAME }} init {/*1-install-the--product_name--cli-and-run--cli_name--init*/}
+## 1. Install the {{ PRODUCT_NAME }} CLI and run {{ CLI_NAME }} init {/*1-install-the-{{PRODUCT_NAME_LOWER}}-cli-and-run--cli_name--init*/} {/*1-install-the--product_name--cli-and-run--cli_name--init-1-install-the-product_name_lower-cli-and-run--cli_name--init*/}
 
 In the root of your nx monorepo, run:
 
@@ -29,7 +29,7 @@ npm i -g {{ PACKAGE_NAME }}/cli
 {{ CLI_NAME }} init
 ```
 
-## 2. Create a custom {{ PRODUCT_NAME }} connector {/*2-create-a-custom--product_name--connector*/}
+## 2. Create a custom {{ PRODUCT_NAME }} connector {/*2-create-a-custom-{{PRODUCT_NAME_LOWER}}-connector*/} {/*2-create-a-custom--product_name--connector-2-create-a-custom-product_name_lower-connector*/}
 
 Since our Next.js app isn't located in the root of the project as the `{{ PACKAGE_NAME }}/next` connector expects, we'll need to define our own custom connector. To do so:
 

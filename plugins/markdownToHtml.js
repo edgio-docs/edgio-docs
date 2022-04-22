@@ -6,6 +6,10 @@ const images = require('remark-images'); // Improved image syntax
 const unrwapImages = require('remark-unwrap-images'); // Removes <p> wrapper around images
 const smartyPants = require('./remark-smartypants'); // Cleans up typography
 const html = require('remark-html');
+// const {
+//   remarkExtendedTable,
+//   extendedTableHandlers,
+// } = require('remark-extended-table');
 // const embed = require('mdx-embed');
 
 module.exports = {

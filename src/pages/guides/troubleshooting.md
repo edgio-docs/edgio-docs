@@ -226,12 +226,11 @@ To prevent this scenario, you must configure your server with allowlisted  {{ P
 
 When you are testing a web page, you might encounter 539 status code errors. You might also see the errors in logs if you signed up for Log Shipping.
 
-1. Open your project in {{ PRODUCT_NAME }}, then drill down to the deployment ![{"color": "black", "backgroundColor":"red", "borderRadius": "15px"}](/ '&nbsp;1&nbsp;') that is experiencing the 539 errors.
+1. Open your project in {{ PRODUCT_NAME }}, then drill down to the deployment that is experiencing the 539 errors.
 
 ![](/images/539-errors/deployments-tab.png?width=1000)
 
-
-2. Click the _SERVER_ tab header ![{"color": "black", "backgroundColor":"red", "borderRadius": "15px"}](/ '&nbsp;1&nbsp;') at the bottom of the page, then click the _Resume logs_ arrow ![{"color": "black", "backgroundColor":"red", "borderRadius": "15px"}](/ '&nbsp;2&nbsp;') or the _Logging is paused_ link ![{"color": "black", "backgroundColor":"red", "borderRadius": "15px"}](/ '&nbsp;3&nbsp;') to resume logging.
+1. Click the _SERVER_ tab header at the bottom of the page, then click the _Resume logs_ arrow or the _Logging is paused_ link to resume logging.
 
 ![](/images/539-errors/resume-logging.png?width=1000)
 
@@ -290,7 +289,7 @@ _Note:_ If line 3:
 
 To determine if there is an allowlist error, do the following:
 
-1. Expand line 3 (request from your SSR code to your backend server) and select `COPY AS CURL` ![{"color": "black", "backgroundColor":"red", "borderRadius": "15px"}](/ '&nbsp;1&nbsp;').
+1. Expand line 3 (request from your SSR code to your backend server) and select `COPY AS CURL`
 
 ![](/images/539-errors/copy-as-curl.png?width=1000)
 

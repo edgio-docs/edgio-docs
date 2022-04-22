@@ -40,10 +40,10 @@ export default function DocsFooter() {
       <p className="copy">
         Copyright &copy; {new Date().getFullYear()} Layer0. All rights reserved.
       </p>
-      <div className="uptime-status">
+      {/* <div className="uptime-status">
         <div className="status-halo"></div>
         <p>All systems operational</p>
-      </div>
+      </div> */}
     </StyledDocsFooter>
   );
 }

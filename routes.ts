@@ -1,11 +1,9 @@
 import {Router, CustomCacheKey} from '@layer0/core/router';
 import {nextRoutes} from '@layer0/next';
 
-const key = new CustomCacheKey().excludeAllQueryParametersExcept(
-  'query',
-  'version'
-);
-// const prerenderRequests = require('./layer0/prerenderRequests')
+import prerenderRequests from './prerender';
+
+const key = new CustomCacheKey().excludeAllQueryParametersExcept('query');
 
 const htmlCacheConfig = {
   key,
@@ -15,19 +13,7 @@ const htmlCacheConfig = {
   },
   edge: {
     maxAgeSeconds: 60 * 60 * 24 * 365,
-    staleWhileRevalidateSeconds: 60 * 60 * 24 * 365,
-  },
-};
-
-const apiCacheConfig = {
-  key,
-  browser: {
-    maxAgeSeconds: 0,
-    serviceWorkerSeconds: 60 * 60,
-  },
-  edge: {
-    maxAgeSeconds: 60 * 60 * 24 * 365,
-    staleWhileRevalidateSeconds: 60 * 60 * 24 * 365,
+    staleWhileRevalidateSeconds: 60 * 60,
   },
 };
 
@@ -63,7 +49,7 @@ const scriptSrcDomains = [
   'connect.facebook.net',
   'www.youtube.com',
   'js.intercomcdn.com',
-  'static.hotjar.com',
+  '*.hotjar.com',
   's.adroll.com',
   'px4.ads.linkedin.com',
 ].sort();
@@ -87,6 +73,7 @@ const connectSrcDomains = [
 ].sort();
 
 const router = new Router()
+  .prerender(prerenderRequests)
   .match({}, ({setResponseHeader}) => {
     if (process.env.NODE_ENV === 'production') {
       setResponseHeader(
@@ -99,7 +86,7 @@ const router = new Router()
           `default-src 'self'`,
           `style-src 'unsafe-inline' 'self' fonts.googleapis.com cdn.jsdelivr.net`,
           `font-src fonts.gstatic.com`,
-          `img-src 'self' www.google-analytics.com analytics.twitter.com www.facebook.com px.ads.linkedin.com *.intercomcdn.com tr.lfeeder.com data:`,
+          `img-src 'self' www.google-analytics.com analytics.twitter.com www.facebook.com px.ads.linkedin.com *.intercomcdn.com tr.lfeeder.com data: *.moovweb.net`,
           `frame-src www.youtube.com youtu.be player.vimeo.com`,
           `script-src 'unsafe-inline' 'self' 'unsafe-eval' ${scriptSrcDomains.join(
             ' '
@@ -118,9 +105,6 @@ const router = new Router()
   })
   .get('/images/:path*', ({cache}) => {
     cache(staticCacheConfig);
-  })
-  .match('/:path*', ({cache}) => {
-    cache(htmlCacheConfig);
   })
   .match('/docs/versions', ({cache, proxy}) => {
     cache(htmlCacheConfig);
@@ -153,7 +137,7 @@ const router = new Router()
     }
   )
   // match versioned api docs with a terminating /
-  .match('/docs/:version/api/:path*/', ({proxy, cache, request}) => {
+  .match('/docs/:version/api/:path*/', ({proxy, cache}) => {
     cache(htmlCacheConfig);
     proxy('api', {path: '/:version/api/:path*/index.html'});
   })
@@ -180,6 +164,9 @@ redirects.forEach(([from, to, statusCode]) => {
   );
 });
 
+router.match('/:path*', ({cache}) => {
+  cache(htmlCacheConfig);
+});
 router.use(nextRoutes).fallback(({redirect}) => {
   return redirect('/', 302);
 });

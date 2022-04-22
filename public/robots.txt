@@ -1,5 +1,9 @@
 User-agent: *
-Disallow: /
+Allow: /
 
-User-agent: Algolia Crawler
-Disallow:
+User-agent: *
+Disallow: /docs/v*
+
+User-agent: *
+Allow: /guides/vsf*
+Disallow: /guides/v*

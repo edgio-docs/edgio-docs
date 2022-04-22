@@ -25,8 +25,8 @@
         "selector": "h4,h5",
         "selectors_exclude": [".tsd-returns-title"]
       },
-      "lvl5": "p,pre code,table td span",
-      "text": "p,pre code,ul li,table td span"
+      "lvl5": "p,pre code,table td",
+      "text": "p,pre code,ul li,table td"
     },
     "api_docs": {
       "lvl0": "h2",

@@ -1,7 +1,7 @@
 import cn from 'classnames';
 import * as React from 'react';
 
-export const IconSpartarcus = React.memo<JSX.IntrinsicElements['svg']>(
+export const IconSpartacus = React.memo<JSX.IntrinsicElements['svg']>(
   ({className}) => (
     <svg className={cn('inline', className)} viewBox="0 0 400 400">
       <path
@@ -12,4 +12,4 @@ export const IconSpartarcus = React.memo<JSX.IntrinsicElements['svg']>(
   )
 );
 
-IconSpartarcus.displayName = 'IconSpartarcus';
+IconSpartacus.displayName = 'IconSpartacus';

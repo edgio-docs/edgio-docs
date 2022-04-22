@@ -1,91 +1,94 @@
 import * as React from 'react';
 
-import {IconAngular} from '../components/Icon/IconAngular';
-import {IconAstro, IconAstroDark} from '../components/Icon/IconAstro';
 import {
-  IconBookPlain,
-  IconBookPlainDark,
-} from '../components/Icon/IconBookPlain';
-import {IconBrunch} from '../components/Icon/IconBrunch';
-import {IconBulb, IconBulbDark} from '../components/Icon/IconBulb';
-import {
-  IconCodePlain,
-  IconCodePlainDark,
-} from '../components/Icon/IconCodePlain';
-import {IconDocusaurus} from '../components/Icon/IconDocusaurus';
-import {IconDojo} from '../components/Icon/IconDojo';
-import {IconEleventy, IconEleventyDark} from '../components/Icon/IconEleventy';
-import {
-  IconEmberFastboot,
-  IconEmberFastbootDark,
-} from '../components/Icon/IconEmberFastboot';
-import {IconEmberJS} from '../components/Icon/IconEmberJS';
-import {IconExpress, IconExpressDark} from '../components/Icon/IconExpress';
-import {IconFiddle, IconFiddleDark} from '../components/Icon/IconFiddle';
-import {IconFolder, IconFolderDark} from '../components/Icon/IconFolder';
-import {IconForum, IconForumDark} from '../components/Icon/IconForum';
-import {IconFrontity} from '../components/Icon/IconFrontity';
-import {IconGatsby} from '../components/Icon/IconGatsby';
-import {IconGridsome, IconGridsomeDark} from '../components/Icon/IconGridsome';
-import {IconHexo} from '../components/Icon/IconHexo';
-import {IconHugo} from '../components/Icon/IconHugo';
-import {IconIonicX} from '../components/Icon/IconIonicX';
-import {IconJekyll, IconJekyllDark} from '../components/Icon/IconJekyll';
-// import { IconLogo } from '../components/Icon/IconLogo';
-import {IconMKDocs, IconMKDocsDark} from '../components/Icon/IconMKDocs';
-import {IconNextJS, IconNextJSDark} from '../components/Icon/IconNextJS';
-import {
-  IconNextJSCommerce,
-  IconNextJSCommerceDark,
-} from '../components/Icon/IconNextJSCommerce';
-import {IconNX, IconNXDark} from '../components/Icon/IconNX';
-import {IconPreact} from '../components/Icon/IconPreact';
-import {IconRazzle} from '../components/Icon/IconRazzle';
-import {IconReact} from '../components/Icon/IconReact';
-import {IconReactStatic} from '../components/Icon/IconReactStatic';
-import {IconReactStorefront} from '../components/Icon/IconReactStorefront';
-import {IconRedwood} from '../components/Icon/IconRedwood';
-import {IconRemix, IconRemixDark} from '../components/Icon/IconRemix';
-import {IconSaber} from '../components/Icon/IconSaber';
-import {IconSapper} from '../components/Icon/IconSapper';
-import {IconServerlessFunctions} from '../components/Icon/IconServerlessFunctions';
-import {
-  IconServerSmall,
-  IconServerSmallDark,
-} from '../components/Icon/IconServerSmall';
-import {IconShopifyHydrogen} from '../components/Icon/IconShopifyHydrogen';
-import {IconSolidJS} from '../components/Icon/IconSolidJS';
-import {
-  IconSparkPlain,
-  IconSparkPlainDark,
-} from '../components/Icon/IconSparkPlain';
-import {IconSpartarcus} from '../components/Icon/IconSpartarcus';
-import {
-  IconStacksPlain,
-  IconStacksPlainDark,
-} from '../components/Icon/IconStacksPlain';
-import {IconStaticHTMLJS} from '../components/Icon/IconStaticHTMLJS';
-import {IconStatus, IconStatusDark} from '../components/Icon/IconStatus';
-import {IconStencil, IconStencilDark} from '../components/Icon/IconStencil';
-import {IconSupport, IconSupportDark} from '../components/Icon/IconSupport';
-import {IconSvelte} from '../components/Icon/IconSvelte';
-import {IconSwell, IconSwellDark} from '../components/Icon/IconSwell';
-import {IconUmiJS} from '../components/Icon/IconUmiJS';
-import {
-  IconUserPlain,
-  IconUserPlainDark,
-} from '../components/Icon/IconUserPlain';
-import {IconVideos, IconVideosDark} from '../components/Icon/IconVideos';
-import {IconVitePress} from '../components/Icon/IconVitePress';
-import {IconVue} from '../components/Icon/IconVue';
-import {IconZola, IconZolaDark} from '../components/Icon/IconZola';
-import {IconVueStorefront} from '../components/Icon/VueStorefront';
-
-import {
+  IconAngular,
+  IconAstro,
+  IconAstroDark,
   IconBigCommerce,
   IconBigCommerceDark,
-} from 'components/Icon/BigCommerce';
-import {IconNuxt} from 'components/Icon/IconNuxt';
+  IconBloomreach,
+  IconBloomreachDark,
+  IconBookPlain,
+  IconBookPlainDark,
+  IconBrunch,
+  IconBulb,
+  IconBulbDark,
+  IconCodePlain,
+  IconCodePlainDark,
+  IconDocusaurus,
+  IconDojo,
+  IconEleventy,
+  IconEleventyDark,
+  IconEmberFastboot,
+  IconEmberFastbootDark,
+  IconEmberJS,
+  IconExpress,
+  IconExpressDark,
+  IconFiddle,
+  IconFiddleDark,
+  IconFolder,
+  IconFolderDark,
+  IconForum,
+  IconForumDark,
+  IconFrontity,
+  IconGatsby,
+  IconGridsome,
+  IconGridsomeDark,
+  IconHexo,
+  IconHugo,
+  IconIonicX,
+  IconJekyll,
+  IconJekyllDark,
+  IconMKDocs,
+  IconMKDocsDark,
+  IconNextJS,
+  IconNextJSCommerce,
+  IconNextJSCommerceDark,
+  IconNextJSDark,
+  IconNuxt,
+  IconNX,
+  IconNXDark,
+  IconPreact,
+  IconRazzle,
+  IconReact,
+  IconReactStatic,
+  IconReactStorefront,
+  IconRedwood,
+  IconRemix,
+  IconRemixDark,
+  IconSaber,
+  IconSapper,
+  IconServerlessFunctions,
+  IconServerSmall,
+  IconServerSmallDark,
+  IconShopifyHydrogen,
+  IconSolidJS,
+  IconSparkPlain,
+  IconSparkPlainDark,
+  IconSpartacus,
+  IconStacksPlain,
+  IconStacksPlainDark,
+  IconStaticHTMLJS,
+  IconStatus,
+  IconStatusDark,
+  IconStencil,
+  IconStencilDark,
+  IconSupport,
+  IconSupportDark,
+  IconSvelte,
+  IconSwell,
+  IconSwellDark,
+  IconUmiJS,
+  IconUserPlain,
+  IconUserPlainDark,
+  IconVideos,
+  IconVideosDark,
+  IconVitePress,
+  IconVue,
+  IconVueStorefront,
+  IconZola,
+  IconZolaDark,
+} from '../components/Icon';
 
 export interface IChildrenRoutes {
   title: string;
@@ -291,6 +294,12 @@ const SidebarMenuItems: Array<Array<ISidebarMenuItem>> = [
           iconDark: <IconBigCommerceDark />,
         },
         {
+          title: 'Bloomreach',
+          path: '/guides/bloomreach',
+          icon: <IconBloomreach />,
+          iconDark: <IconBloomreachDark />,
+        },
+        {
           title: 'Brunch',
           path: '/guides/brunch',
           icon: <IconBrunch />,
@@ -491,8 +500,8 @@ const SidebarMenuItems: Array<Array<ISidebarMenuItem>> = [
         {
           title: 'Spartacus',
           path: '/guides/spartacus',
-          icon: <IconSpartarcus />,
-          iconDark: <IconSpartarcus />,
+          icon: <IconSpartacus />,
+          iconDark: <IconSpartacus />,
         },
         {
           title: 'Static HTML/JS',

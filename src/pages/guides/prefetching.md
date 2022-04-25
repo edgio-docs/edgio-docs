@@ -240,7 +240,7 @@ function deepFetchResponsiveImages({ $el, el, $ }: DeepFetchCallbackParam) {
 }
 ```
 
-## Using {{ PRODUCT_NAME }} for Prefetching Only {/*using--product_name--for-prefetching-only*/}
+## Using {{ PRODUCT_NAME }} for Prefetching Only {/*using-{{PRODUCT_NAME_LOWER}}-for-prefetching-only*/} {/*using--product_name--for-prefetching-only-using-product_name_lower-for-prefetching-only*/}
 
 If you have an existing site already in production, it is possible to prefetch from {{ PRODUCT_NAME }} while still serving the site from the existing CDN.
 

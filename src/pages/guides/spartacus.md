@@ -63,7 +63,7 @@ You can now run `npm run build:ssr && npm run serve:ssr` to access your server-s
 
 To prepare your Spartacus application for deployment on {{ PRODUCT_NAME }}:
 
-#### 1. Install the {{ PRODUCT_NAME }} CLI globally: {/*1-install-the--product_name--cli-globally*/}
+#### 1. Install the {{ PRODUCT_NAME }} CLI globally: {/*1-install-the-{{PRODUCT_NAME_LOWER}}-cli-globally*/} {/*1-install-the--product_name--cli-globally-1-install-the-product_name_lower-cli-globally*/}
 
 ```bash
 npm install -g {{ PACKAGE_NAME }}/cli

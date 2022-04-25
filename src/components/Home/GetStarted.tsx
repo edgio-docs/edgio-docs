@@ -2,6 +2,7 @@ import Link from 'next/link';
 import styled from 'styled-components';
 
 import {IconJamstack} from '../Icon/IconJamstack';
+import {IconSecurity} from '../Icon/IconSecurity';
 import {IconWebAppCDN} from '../Icon/IconWebAppCDN';
 
 import {IconArrow} from 'components/Icon/IconArrow';
@@ -57,6 +58,12 @@ const StyledGetStarted = styled.div`
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 32px;
+  }
+
+  @media screen and (min-width: 1200px) {
+    .cards {
+      grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    }
   }
 
   .card {
@@ -130,6 +137,13 @@ export default function GetStarted({children}: {children: React.ReactNode}) {
           subtitle="Scale and secure your GraphQL API using the Layer0 global CDN and Edge JS."
           href="/guides/graphql"
           hrefText="1-click Deploy"
+        />
+        <GetStartedCard
+          icon={IconSecurity}
+          title="Security"
+          subtitle="Managed security keeps your apps protected without sacrificing performance."
+          href="/guides/security"
+          hrefText="Learn More"
         />
       </div>
     </StyledGetStarted>

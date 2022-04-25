@@ -56,7 +56,7 @@ Access logs contain the following fields:
 
 Millisecond resolution of the request start time in UNIX epoch.
 
-### {{ PRODUCT_NAME_LOWER }} {/*-product_name_lower-*/}
+### {{ PRODUCT_NAME_LOWER }} {/*{{PRODUCT_NAME_LOWER}}*/} {/*-product_name_lower--product_name_lower*/}
 
 The application's {{ PRODUCT_NAME }} version processing this request.
 

@@ -25,7 +25,7 @@ const StyledHeader = styled.header`
   box-shadow: inset 0 -1px var(--grey1);
   padding: 17px 20px;
   display: grid;
-  grid-template-columns: auto auto 1fr;
+  grid-template-columns: auto auto;
 
   > [class*='col'] {
     display: flex;
@@ -39,78 +39,6 @@ const StyledHeader = styled.header`
   }
 
   .col-2 {
-    justify-content: center;
-  }
-
-  /* .col-3 {
-    justify-content: center;
-
-    .search-form__box {
-      --width: 623px;
-      max-width: var(--width);
-      width: var(--width);
-
-      @media (max-width: 1146px) {
-        --width: 500px;
-      }
-
-      @media (max-width: 1000px) {
-        --width: 400px;
-      }
-
-      @media (max-width: 900px) {
-        --width: 300px;
-      }
-
-      @media (max-width: 760px) {
-        --width: 300px;
-      }
-    }
-
-    .search-form {
-      display: flex;
-      column-gap: 5px;
-      padding: 6px 10px;
-      width: 100%;
-      height: 36px;
-      transition-duration: 0.2s;
-      transition-timing-function: ease-in-out;
-      transition-delay: initial;
-      transition-property: all;
-      border-radius: 4px;
-      background: #f6f6f6;
-
-      :focus-within,
-      :hover {
-        box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 0px,
-          rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px,
-          rgba(60, 66, 87, 0.16) 0px 0px 0px 2px,
-          rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px,
-          rgba(0, 0, 0, 0) 0px 0px 0px 0px;
-      }
-
-      label {
-        display: flex;
-        align-items: center;
-        height: 100%;
-        curson: text;
-      }
-
-      [type='search'] {
-        flex: 1;
-        background: transparent;
-        border: none;
-        font-weight: normal;
-        font-size: 14px;
-        line-height: 19px;
-        color: #606060;
-        appearance: none;
-        outline: 0;
-      }
-    }
-  } */
-
-  .col-4 {
     display: flex;
     justify-content: flex-end;
 
@@ -193,7 +121,7 @@ const StyledHeader = styled.header`
       }
     } */
 
-    .col-4 {
+    .col-3 {
       display: flex;
     }
   }
@@ -287,15 +215,6 @@ export default function Header({
         </div>
       </div>
       <div className="col-2">
-        <div className="version-form__box">
-          {/* <NoSSRWrapper>
-            <VersionChooser />
-          </NoSSRWrapper> */}
-        </div>
-      </div>
-      {/* <div className="col-3">
-      </div> */}
-      <div className="col-4">
         <div id="desktop" className="desktop">
           <div className="search-form__box">
             <NoSSRWrapper>

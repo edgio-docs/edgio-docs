@@ -50,6 +50,7 @@ export default function VersionChooser() {
     };
 
     doGetVersions();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const onChange = (event: any) => {

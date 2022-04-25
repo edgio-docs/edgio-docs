@@ -363,7 +363,7 @@ Like all {{ PRODUCT_NAME }} products, WAF gives you access to all previous and a
 
 To flag a rule or rule group means to mark it if the rule would have been activated without actually denying the traffic. In contrast, when you block a rule or rule group, traffic is denied on affected routes. You can view both flagged and blocked data in your [Layer0 console](https://app.layer0.co/).
 
-### What are {{ PRODUCT_NAME }} Managed Rules and why should I apply this rule group? {/*what-are--product_name--managed-rules-and-why-should-i-apply-this-rule-group*/}
+### What are {{ PRODUCT_NAME }} Managed Rules and why should I apply this rule group? {/*what-are-{{PRODUCT_NAME_LOWER}}-managed-rules-and-why-should-i-apply-this-rule-group*/} {/*what-are--product_name--managed-rules-and-why-should-i-apply-this-rule-group-what-are-product_name_lower-managed-rules-and-why-should-i-apply-this-rule-group*/}
 
 Managed rules block specific known threats. Layer0 recommends this rule group for all WAF use cases.
 

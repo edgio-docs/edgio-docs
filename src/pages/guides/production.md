@@ -117,7 +117,7 @@ mywebsite.xyz.        599    IN    A        208.69.180.14
   mywebsite.xyz.        599    IN    A        208.69.180.14
   ```
 
-### Allowing {{ PRODUCT_NAME }} IP Addresses {/*allowing--product_name--ip-addresses*/}
+### Allowing {{ PRODUCT_NAME }} IP Addresses {/*allowing-{{PRODUCT_NAME_LOWER}}-ip-addresses*/} {/*allowing--product_name--ip-addresses-allowing-product_name_lower-ip-addresses*/}
 
 Before going live, ensure that all {{ PRODUCT_NAME }} IP addresses are allowed in the security layer in front of your origin and/or API servers. The IP addresses you need to allow can be found on the _IP Whitelist_ section of the _Networking_ tab. Note that your IP addresses may differ from the ones shown above.
 

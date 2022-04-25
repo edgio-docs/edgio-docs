@@ -1631,10 +1631,10 @@
     workbox-routing "^5.1.2"
     workbox-strategies "^5.1.2"
 
-"@layer0/react@^4.13.6":
-  version "4.13.6"
-  resolved "https://registry.yarnpkg.com/@layer0/react/-/react-4.13.6.tgz#ae56835175888d2537c012e16aea2f77af4d27c3"
-  integrity sha512-TQ/ghLYpqeXixMGlem0ljZIZkzDhx+w5m0z4KH+Y0OefFeSWD4tbH1U+tXKnFR2wRjmq+Tfbe117HuEAv4Ad4g==
+"@layer0/react@^4.13.8":
+  version "4.13.8"
+  resolved "https://registry.yarnpkg.com/@layer0/react/-/react-4.13.8.tgz#83ff9d5bade7a472a686b88dbe1429066dc84bad"
+  integrity sha512-Fb7zlcBApjostlBjCSydknG/oo30W7YOxp6a/ejRIVyM5VwRgxt7HLbBkD2Xip5m4U2JhcWViISXD8Q4IKExmA==
   dependencies:
     prop-types "^15.8.1"
     react-merge-refs "^1.1.0"

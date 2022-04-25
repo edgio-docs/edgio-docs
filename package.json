@@ -59,7 +59,7 @@
     "@layer0/core": "^4.13.6",
     "@layer0/devtools": "^4.13.6",
     "@layer0/next": "^4.13.6",
-    "@layer0/prefetch": "^4.13.6",
+    "@layer0/prefetch": "^4.13.8",
     "@layer0/react": "^4.13.6",
     "@mdx-js/loader": "^1.6.16",
     "@types/body-scroll-lock": "^2.6.1",

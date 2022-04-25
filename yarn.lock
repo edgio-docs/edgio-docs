@@ -1547,10 +1547,10 @@
     yauzl "^2.10.0"
     yazl "^2.5.1"
 
-"@layer0/core@^4.13.6":
-  version "4.13.6"
-  resolved "https://registry.yarnpkg.com/@layer0/core/-/core-4.13.6.tgz#0e11967038dfff2662f9f495975be0387b205161"
-  integrity sha512-YiQSR+Q4ad9BfzD7e8vYDwldKkisWBBOpJ8OO+IH9IjemKObq41qec4ugivQKWbEFz2xdoi5UpuErsYMg0Ipcw==
+"@layer0/core@^4.13.6", "@layer0/core@^4.13.8":
+  version "4.13.8"
+  resolved "https://registry.yarnpkg.com/@layer0/core/-/core-4.13.8.tgz#2308433d83e557ac6b559996d25fe704e8a7508d"
+  integrity sha512-BFjDSBGMHF5FJ4HWDatJfT7gMeL1jctukujrl3SepSLAiG+b+bxaIQfNgnJZ/5CO/BxFYxM7dSC5KvQpW7tfQw==
   dependencies:
     "@babel/parser" "^7.16.2"
     "@babel/traverse" "^7.16.0"
@@ -1616,12 +1616,12 @@
     webpack "^4.0.0"
     webpack-sources "^2.2.0"
 
-"@layer0/prefetch@^4.13.6":
-  version "4.13.6"
-  resolved "https://registry.yarnpkg.com/@layer0/prefetch/-/prefetch-4.13.6.tgz#2a340315612eb821896838478a0873502d9cbe55"
-  integrity sha512-JbYWABYfHErBYULXP4qeAqvD1ip3Atxwmwrhvl09ZnX+PjsaV40DOAX+mgWU62SHP361Ftx1NRSnMyW/fVXyTg==
+"@layer0/prefetch@^4.13.8":
+  version "4.13.8"
+  resolved "https://registry.yarnpkg.com/@layer0/prefetch/-/prefetch-4.13.8.tgz#7223d6320589f12aefe43a4f5cd8782ff444b51f"
+  integrity sha512-lVYATCbXXS+BqGHqiAYZJR9nUxMthNAU7jqXLBYl1PU4UV5oTTks87W7OsjED6CQtZ0CqrPWNtAuBVxUOXNpPw==
   dependencies:
-    "@layer0/core" "^4.13.6"
+    "@layer0/core" "^4.13.8"
     cheerio "^1.0.0-rc.3"
     json-query "^2.2.2"
     workbox-cacheable-response "^5.1.2"

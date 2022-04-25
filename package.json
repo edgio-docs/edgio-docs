@@ -55,7 +55,7 @@
     "styled-components": "^5.3.3"
   },
   "devDependencies": {
-    "@layer0/cli": "^4.13.6",
+    "@layer0/cli": "^4.13.8",
     "@layer0/core": "^4.13.6",
     "@layer0/devtools": "^4.13.6",
     "@layer0/next": "^4.13.6",

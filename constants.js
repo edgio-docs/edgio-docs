@@ -62,6 +62,18 @@ const SIGN_UP_LAYER0 = `## Sign up for ${PRODUCT_NAME} {/*sign-up-for-${PRODUCT_
 
 Deploying requires an account on ${PRODUCT_NAME}. <a href="${APP_URL}/signup">Sign up here for free.</a>`;
 
+const INSTALL_LAYER0_CLI = `## Install the ${PRODUCT_NAME} CLI {/* install-the--product_name--cli */}
+
+If you have not already done so, install the [${PRODUCT_NAME} CLI](cli).
+
+
+\`\`\`bash
+npm i -g {{ PACKAGE_NAME }}/cli # yarn global add {{ PACKAGE_NAME }}/cli
+\`\`\`
+`;
+
+const PARTNERS_CONTACT = `partner@llnw.com`;
+
 module.exports = {
   APP_DOMAIN,
   APP_URL,
@@ -82,8 +94,10 @@ module.exports = {
   FULL_CLI_NAME,
   HEADER_PREFIX,
   HELP_URL,
+  INSTALL_LAYER0_CLI,
   NODE_VERSION,
   PACKAGE_NAME,
+  PARTNERS_CONTACT,
   PRODUCT_NAME_LOWER,
   PRODUCT_NAME_UPPER,
   PRODUCT_NAME,

@@ -83,8 +83,6 @@ Skip to the [Storefront Setup][#storefront_setup] section for a detailed explana
 
 1. Duplicate `.env.template` and name it `.env.local` in the project directory. Add your BigCommerce API keys to it. See Storefront setup for how to set these items up.
 
-   <br />
-
    ```.env
    COMMERCE_PROVIDER=@vercel/commerce-bigcommerce
    BIGCOMMERCE_STOREFRONT_API_URL=https://store-${STORE_HASH}-${CHANNEL_ID}.mybigcommerce.com/graphql
@@ -98,14 +96,12 @@ Skip to the [Storefront Setup][#storefront_setup] section for a detailed explana
    BIGCOMMERCE_STORE_API_CLIENT_SECRET=${CLIENT_SECRET}
    ```
 
-   <br />
-
-   - STORE_HASH - Available in the URL bar of your BigCommerce site.
-   - CHANNEL_ID - Available in the `Channel Manager > Channel / Advanced Settings > Channel Details`
-   - STOREFRONT_API_TOKEN - The token result from the API call to create a token. This should be a long token.
-   - STORE_TOKEN - The API token generated via the BigCommerce API KEY UI. This should be a short token.
-   - STORE_CLIENT - The Client ID generated via the BigCommerce API KEY UI.
-   - STORE_SECRET - The Client Secret generated via the BigCommerce API KEY UI.
+   - `STORE_HASH` - Available in the URL bar of your BigCommerce site.
+   - `CHANNEL_ID` - Available in the `Channel Manager > Channel / Advanced Settings > Channel Details`
+   - `STOREFRONT_API_TOKEN` - The token result from the API call to create a token. This should be a long token.
+   - `STORE_TOKEN` - The API token generated via the BigCommerce API KEY UI. This should be a short token.
+   - `STORE_CLIENT` - The Client ID generated via the BigCommerce API KEY UI.
+   - `STORE_SECRET` - The Client Secret generated via the BigCommerce API KEY UI.
 
    <br />
 

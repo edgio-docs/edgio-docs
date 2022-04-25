@@ -14,9 +14,9 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: 14
-      - run: yarn install
+      - run: npm i -g @layer0/cli
       - name: Run auto dependency update
         uses: romoh/dependencies-autoupdate@v1
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          update-command: "'yarn layer0 use latest'"
+          update-command: "'layer0 use latest'"

@@ -633,13 +633,8 @@ const SidebarMenuItems: Array<Array<ISidebarMenuItem>> = [
       sortRoutes: true,
       routes: [
         {
-          title: 'Product Updates',
-          path: 'https://www.youtube.com/playlist?list=PLv3_GoCvQgUn8pKufafW2Ufy0DXTL3BCp',
-          external: true,
-        },
-        {
           title: 'Layer0 Tutorials',
-          path: 'https://www.youtube.com/playlist?list=PLv3_GoCvQgUnbIlR-OFhS9dQW4oSHv4ji',
+          path: 'https://vimeo.com/user/776463/folder/9270726',
           external: true,
         },
       ],

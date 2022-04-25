@@ -6,3 +6,4 @@ updates:
       interval: 'daily'
     allow:
       - dependency-name: '@layer0/*'
+    open-pull-requests-limit: 10

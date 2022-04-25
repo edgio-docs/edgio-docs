@@ -4,7 +4,7 @@ title: Status Codes
 
 [HTTP status codes](https://en.wikipedia.org/wiki/List_of_HTTP_status_codes) are how the web signals errors and other states from the server to the web browser. If there is an error from your backend website, the error is simply forwarded by {{ PRODUCT_NAME }} to the browser.
 
-## {{ PRODUCT_NAME }} exclusive status codes {/*-product_name--exclusive-status-codes*/}
+## {{ PRODUCT_NAME }} exclusive status codes {/*-{{PRODUCT_NAME_LOWER}}-exclusive-status-codes*/} {/*-product_name--exclusive-status-codes--product_name_lower-exclusive-status-codes*/}
 
 If the error is generated in {{ PRODUCT_NAME }} itself, the platform generates a 53x or 54x HTTP status code:
 
@@ -29,7 +29,7 @@ If the error is generated in {{ PRODUCT_NAME }} itself, the platform generates a
 
 Obviously, your project can set status codes of their own, which may sometimes match codes above. We encourage you to avoid setting your own status code so as to lower troubleshooting overhead and other issues.
 
-## Standard status codes used by {{ PRODUCT_NAME }} itself {/*standard-status-codes-used-by--product_name--itself*/}
+## Standard status codes used by {{ PRODUCT_NAME }} itself {/*standard-status-codes-used-by-{{PRODUCT_NAME_LOWER}}-itself*/} {/*standard-status-codes-used-by--product_name--itself-standard-status-codes-used-by-product_name_lower-itself*/}
 
 {{ PRODUCT_NAME }} also issues these standard response codes:
 

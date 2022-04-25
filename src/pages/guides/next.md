@@ -5,6 +5,18 @@ This guide shows you how to deploy a [Next.js](https://nextjs.org/) application 
 
 ## Example {/*example*/}
 
+<ButtonLinksGroup>
+  <ButtonLink variant="fill" type="default" href="https://layer0-docs-layer0-nextjs-example-default.layer0-limelight.link">
+   Try the Next.js SSR Example Site
+  </ButtonLink>
+  <ButtonLink variant="stroke" type="code" withIcon={true} href="https://github.com/layer0-docs/layer0-nextjs-example">
+   View the Code
+  </ButtonLink>
+  <ButtonLink variant="stroke" type="deploy" withIcon={true} href="https://app.layer0.co/deploy?button&deploy&repo=https%253A%252F%252Fgithub.com%252Flayer0-docs%252Flayer0-nextjs-example">
+    Deploy to Layer0
+  </ButtonLink>
+</ButtonLinksGroup>
+
 [Try the Next.js SSR Example Site](https://layer0-docs-layer0-nextjs-example-default.layer0-limelight.link?button)
 [View the Code](https://github.com/layer0-docs/layer0-nextjs-example?button)
 [Deploy to Layer0](https://app.layer0.co/deploy?button&deploy&repo=https%253A%252F%252Fgithub.com%252Flayer0-docs%252Flayer0-nextjs-example)
@@ -17,7 +29,9 @@ For details on using the Next.js Commerce template with {{ PRODUCT_NAME }}, refe
 
 This framework has a connector developed for {{ PRODUCT_NAME }}. See [Connectors](connectors) for more information.
 
-[View the Connector Code](https://github.com/layer0-docs/layer0-connectors/tree/main/layer0-next-connector?button)
+<ButtonLink variant="stroke" type="code" withIcon={true} href="https://github.com/layer0-docs/layer0-connectors/tree/main/layer0-next-connector">
+ View the Connector Code
+</ButtonLink>
 
 ## Supported Versions {/*supported-versions*/}
 
@@ -52,7 +66,7 @@ npm create next-app my-next-app
 
 To prepare your Next.js application for deployment on {{ PRODUCT_NAME }}:
 
-### Install the {{ PRODUCT_NAME }} CLI globally {/*install-the--product_name--cli-globally*/}
+### Install the {{ PRODUCT_NAME }} CLI globally {/*install-the-{{PRODUCT_NAME_LOWER}}-cli-globally*/} {/*install-the--product_name--cli-globally-install-the-product_name_lower-cli-globally*/}
 
 ```bash
 npm install -g {{ PACKAGE_NAME }}/cli

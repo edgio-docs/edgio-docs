@@ -4,13 +4,13 @@ title: Limits
 
 This guide describes limits of {{ PRODUCT_NAME }} platform as applied to all projects running on it.
 
-## Legend
+## Legend {/*legend*/}
 
 - `Kb` stands for kilobytes and means 1,024 bytes (2^10 bytes)
 - `Mb` stands for megabytes and means 1,024 kilobytes (2^20 bytes)
 - `Gb` stands for gigabytes and means 1,024 megabytes (2^30 bytes)
 
-## Request and Response Limits
+## Request and Response Limits {/*request-and-response-limits*/}
 
 | Value                                                 | Limit                 | Description                                                                                                                                                                           |
 | ----------------------------------------------------- | --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -26,7 +26,7 @@ This guide describes limits of {{ PRODUCT_NAME }} platform as applied to all pro
 | Prerender concurrency                                 | 200                   |
 | Total number of prerendered requests                  | 25,000 per deployment |
 
-## Access Logs
+## Access Logs {/*access-logs*/}
 
 | Value | Limit     | Description                                                                                         |
 | ----- | --------- | --------------------------------------------------------------------------------------------------- |

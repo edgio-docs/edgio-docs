@@ -65,7 +65,7 @@ module.exports = {
 
 There are two ways to cache GraphQL responses using Layer0: by adding caching rules to your Layer0 router or by using the `cache-control` header.
 
-### Using the {{ PRODUCT_NAME }} Router {/*using-the--product_name--router*/}
+### Using the {{ PRODUCT_NAME }} Router {/*using-the-{{PRODUCT_NAME_LOWER}}-router*/} {/*using-the--product_name--router-using-the-product_name_lower-router*/}
 
 Imagine you have a query named `GetProduct`:
 

@@ -138,6 +138,17 @@ const StyledDocs = styled.div`
     overflow: auto;
   }
 
+  .list-item .article-text,
+  img {
+    margin-bottom: 0.8rem;
+  }
+
+  img {
+    border-radius: 4px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px,
+      rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+  }
+
   table {
     width: 100%;
     border-collapse: collapse;

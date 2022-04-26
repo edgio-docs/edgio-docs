@@ -28,7 +28,7 @@ This example is a React app powered by Bloomreach Content. The following is base
     type="deploy"
     withIcon={true}
     href="https://app.layer0.co/deploy?button&deploy&repo=https://github.com/layer0-docs/layer0-nextjs-example">
-    Deploy to Layer0
+    Deploy to {{PRODUCT_NAME}}
   </ButtonLink>
 </ButtonLinksGroup>
 
@@ -38,15 +38,15 @@ This example is a React app powered by Bloomreach Content. The following is base
 
 {{ SYSTEM_REQUIREMENTS }}
 
-## Launch the Layer0 example application {/* launch-the-layer0-example-application */}
+## Launch the {{ PRODUCT_NAME }} example application {/* launch-the-layer0-example-application */}
 
-If you are not yet a Bloomreach customer, but would like to demo their service, the quickest way to get access to an instance is by reaching out to our [Partner]({{ PARTNERS_CONTACT }}) team. Alternatively, Layer0 has setup a sample application that can be used to get started with viewing the service, seeing optimal configurations, and more.
+If you are not yet a Bloomreach customer, but would like to demo their service, the quickest way to get access to an instance is by reaching out to our [Partner]({{ PARTNERS_CONTACT }}) team. Alternatively, {{ PRODUCT_NAME }} has setup a sample application that can be used to get started with viewing the service, seeing optimal configurations, and more.
 
-The Layer0 sample is a deploy of the Bloomreach [Reference SPA](https://github.com/bloomreach/bloomreach-reference-spa) with configurations and optimizations ready to run on Layer0.
+The {{ PRODUCT_NAME }} sample is a deploy of the Bloomreach [Reference SPA](https://github.com/bloomreach/bloomreach-reference-spa) with configurations and optimizations ready to run on {{ PRODUCT_NAME }}.
 
 The sample application does the following things:
 
-- All API requests are routed to the same _domain_. The requests are then routed to the appropriate Bloomreach API via Layer0's routing framework to either the BRXM API or the GraphQL endpoint. This is done via a combination of the `layer0.config.js` file and the `routes.ts` file.
+- All API requests are routed to the same _domain_. The requests are then routed to the appropriate Bloomreach API via {{ PRODUCT_NAME }}'s routing framework to either the BRXM API or the GraphQL endpoint. This is done via a combination of the `layer0.config.js` file and the `routes.ts` file.
 - [Caching](/guides/prefetching) configuration for GraphQL operations, API operations, and static operations have been added in the `routes.ts` file.
 - To view [Prefetching](/guides/prefetching) in operation, view the `<Link />` component. This wraps menu items and category items to prefetch the content of those links to allow content to be served from instantly from the browser's cache.
 
@@ -54,7 +54,7 @@ The sample application does the following things:
 
 There are a couple options to continue:
 
-1. Use the "Deploy to Layer0" button above to copy the example repo to your own Github account and deploy to the Layer0 system.
+1. Use the "Deploy to {{ PRODUCT_NAME }}" button above to copy the example repo to your own Github account and deploy to the {{ PRODUCT_NAME }} system.
 2. Create a copy of the [code](https://github.com/layer0-docs/layer0-docs-bloomreach-reference-spa-example) above via a fork of the repo.
 
 Whichever method is picked from above, clone the repo locally and open the project in your preferred text editor.
@@ -72,8 +72,9 @@ From within the project, let's configure and review a couple of items. This is a
 Duplicate `.env.dist` and name it `.env`. From within the file we need to configure these top 4 variabless.
 
 <Callout type="info">
-  The values below can be used to access the Layer0 sandbox. If you change these
-  to your own, they may not match the Bloomreach application configuration.
+  The values below can be used to access the {{PRODUCT_NAME}} sandbox. If you
+  change these to your own, they may not match the Bloomreach application
+  configuration.
 </Callout>
 
 ```.env
@@ -95,13 +96,13 @@ REACT_APP_SM_CUSTOM_VARIANT_PURCHASE_PRICE_FIELD=
 ```
 
 <Callout type="info">
-  If you have not yet deployed the project to Layer0, you will not have a
-  deployed URL. Route requests to localhost during local development.
+  If you have not yet deployed the project to {{PRODUCT_NAME}}, you will not
+  have a deployed URL. Route requests to localhost during local development.
 </Callout>
 
-- `REACT_APP_BRXM_ENDPOINT` - the deployed URL for your Layer0 project.
+- `REACT_APP_BRXM_ENDPOINT` - the deployed URL for your {{ PRODUCT_NAME }} project.
 - `BRXM_ENDPOINT` - the Bloomreach API endpoint
-- `REACT_APP_GRAPHQL_SERVICE_URL` - the deployed URL for your Layer0 project + `/graphql` as a path to match and route requests.
+- `REACT_APP_GRAPHQL_SERVICE_URL` - the deployed URL for your {{ PRODUCT_NAME }} project + `/graphql` as a path to match and route requests.
 - `GRAPHQL_SERVICE_URL` - the Bloomreach GraphQL endpoint
 
 Ensure the variables are loaded by running this in the root of your project.
@@ -120,7 +121,7 @@ npm run start
 
 ### Deploy the Project
 
-If you created your project via the "Deploy to Layer0" above then you do not need to do anything further to actively deploy the project.
+If you created your project via the "Deploy to {{ PRODUCT_NAME }}" above then you do not need to do anything further to actively deploy the project.
 
 To deploy the project, run the following set of commands
 
@@ -189,12 +190,12 @@ Bloomreach [documentation](https://documentation.bloomreach.com/) can help provi
 
 ### Generate Frontend Project
 
-To accompany the Bloomreach content project above, we will generate a new app from scratch and configure it to work with Layer0.
+To accompany the Bloomreach content project above, we will generate a new app from scratch and configure it to work with {{ PRODUCT_NAME }}.
 
 1. Create a new React app
 
    ```
-   npx create-react-app my-react-content-app
+   npx create-react-app my-br-layer0-content-app
    ```
 
 2. Install dependencies
@@ -202,7 +203,7 @@ To accompany the Bloomreach content project above, we will generate a new app fr
    To simplify integration with Javascript-based frontend applications, Bloomreach provides a Bloomreach SPA SDK that interacts transparently with the Delivery API and exposes a simplified and framework-agnostic interface to the API's data model. You'll be using the SDK to build up your frontend app.
 
    ```
-   cd my-react-content-app
+   cd my-br-layer0-content-app
    npm install @bloomreach/spa-sdk @bloomreach/react-sdk axios
    ```
 
@@ -279,8 +280,42 @@ To accompany the Bloomreach content project above, we will generate a new app fr
 
    ![](/images/bloomreach/local_frontent_react_app.png)
 
-Awesome, the app should be working locally. Time to get it deployed to Layer0 now.
+Awesome, the app should be working locally. Time to get it deployed to {{ PRODUCT_NAME }} now.
 
-6. Configure to run with Layer0
+6. Configure to run with {{ PRODUCT_NAME }}
 
-7. Deploy to Layer0
+Because this example is based off [create-react-app](https://create-react-app.dev/), you can also reference the static [react app docs](https://docs.layer0.co/guides/react) for this.
+
+To add the necessary components to {{ PRODUCT_NAME }} in order to deploy, run the following:
+
+```bash
+0 init
+```
+
+From the resulting changes, set your {{ PRODUCT_NAME }} `routes.js` file to the following:
+
+```javascript
+import {Router} from '@layer0/core/router';
+
+export default new Router()
+  .match('/static/:path*', ({serveStatic}) => {
+    serveStatic('build/static/:path*');
+  })
+  .match('/:path*', ({serveStatic}) => {
+    serveStatic('build/:path*');
+  })
+  .fallback(({serveStatic}) => serveStatic('build/index.html'));
+```
+
+7. Deploy to {{ PRODUCT_NAME }}
+
+Since this is a static app, we need to make sure we run a couple steps to get things ready.
+
+1. Build the static app
+2. Build the {{ PRODUCT_NAME }} configurations
+3. Deploy those.
+
+```
+npm run build
+0 deploy
+```

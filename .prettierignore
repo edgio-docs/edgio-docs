@@ -1,2 +1,3 @@
 src/pages/docs/**/*.md
 src/pages/blog/**/*.md
+src/pages/guides/**/*.md

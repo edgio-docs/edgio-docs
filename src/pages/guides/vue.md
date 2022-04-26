@@ -56,7 +56,7 @@ cd hello-world
 npm run serve
 ```
 
-## Configuring your Vue.js app for {{ PRODUCT_NAME }} {/*configuring-your-vuejs-app-for--product_name-*/}
+## Configuring your Vue.js app for {{ PRODUCT_NAME }} {/*configuring-your-vuejs-app-for-{{PRODUCT_NAME_LOWER}}*/} {/*configuring-your-vuejs-app-for--product_name--configuring-your-vuejs-app-for-product_name_lower*/}
 
 ### Initialize your project {/*initialize-your-project*/}
 
@@ -185,7 +185,7 @@ The example above assumes you're using Vue as a single page app. It routes the s
 
 Refer to the [Routing](routing) guide for the full syntax of the `routes.js` file and how to configure it for your use case.
 
-### Run the Vue.js app locally on {{ PRODUCT_NAME }} {/*run-the-vuejs-app-locally-on--product_name-*/}
+### Run the Vue.js app locally on {{ PRODUCT_NAME }} {/*run-the-vuejs-app-locally-on-{{PRODUCT_NAME_LOWER}}*/} {/*run-the-vuejs-app-locally-on--product_name--run-the-vuejs-app-locally-on-product_name_lower*/}
 
 Create a production build of your app by running the following in your project's root directory:
 

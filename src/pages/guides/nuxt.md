@@ -170,7 +170,7 @@ And here is the `package.json` after modifications by `{{ CLI_NAME }} init`:
 }
 ```
 
-## Run the Nuxt.js app locally on {{ PRODUCT_NAME }} {/*run-the-nuxtjs-app-locally-on--product_name-*/}
+## Run the Nuxt.js app locally on {{ PRODUCT_NAME }} {/*run-the-nuxtjs-app-locally-on-{{PRODUCT_NAME_LOWER}}*/} {/*run-the-nuxtjs-app-locally-on--product_name--run-the-nuxtjs-app-locally-on-product_name_lower*/}
 
 Run the Nuxt.js app with the command:
 
@@ -481,7 +481,7 @@ npm update -g {{ PACKAGE_NAME }}/cli
 
 ---
 
-### Error on deploy: `{{ PRODUCT_NAME_LOWER }}-deploy-lambda: Unzipped size must be smaller than...` {/*error-on-deploy--product_name_lower--deploy-lambda-unzipped-size-must-be-smaller-than*/}
+### Error on deploy: `{{ PRODUCT_NAME_LOWER }}-deploy-lambda: Unzipped size must be smaller than...` {/*error-on-deploy-{{PRODUCT_NAME_LOWER}}-deploy-lambda-unzipped-size-must-be-smaller-than*/} {/*error-on-deploy--product_name_lower--deploy-lambda-unzipped-size-must-be-smaller-than-error-on-deploy-product_name_lower-deploy-lambda-unzipped-size-must-be-smaller-than*/}
 
 As the error states, there is an upper limit on how big a package can be when deployed to our serverless infrastructure. Some common strategies for solving:
 

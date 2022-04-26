@@ -84,7 +84,7 @@ hugo new posts/my-first-post.md
 hugo server -D
 ```
 
-## Configuring your Hugo app for {{ PRODUCT_NAME }} {/*configuring-your-hugo-app-for--product_name-*/}
+## Configuring your Hugo app for {{ PRODUCT_NAME }} {/*configuring-your-hugo-app-for-{{PRODUCT_NAME_LOWER}}*/} {/*configuring-your-hugo-app-for--product_name--configuring-your-hugo-app-for-product_name_lower*/}
 
 Create a `package.json` at the root of your project with the following:
 
@@ -142,7 +142,7 @@ export default new Router().static('public', ({ cache }) => {
 
 Refer to the [Routing](routing) guide for the full syntax of the `routes.js` file and how to configure it for your use case.
 
-### Run the Hugo app locally on {{ PRODUCT_NAME }} {/*run-the-hugo-app-locally-on--product_name-*/}
+### Run the Hugo app locally on {{ PRODUCT_NAME }} {/*run-the-hugo-app-locally-on-{{PRODUCT_NAME_LOWER}}*/} {/*run-the-hugo-app-locally-on--product_name--run-the-hugo-app-locally-on-product_name_lower*/}
 
 Create a production build of your app by running the following in your project's root directory:
 

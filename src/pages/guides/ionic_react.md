@@ -46,7 +46,7 @@ You can verify your app works by running it locally with:
 npm run start
 ```
 
-## Configuring your Ionic React app for {{ PRODUCT_NAME }} {/*configuring-your-ionic-react-app-for--product_name-*/}
+## Configuring your Ionic React app for {{ PRODUCT_NAME }} {/*configuring-your-ionic-react-app-for-{{PRODUCT_NAME_LOWER}}*/} {/*configuring-your-ionic-react-app-for--product_name--configuring-your-ionic-react-app-for-product_name_lower*/}
 
 ### Initialize your project {/*initialize-your-project*/}
 
@@ -93,7 +93,7 @@ export default new Router()
 
 Refer to the [Routing](routing) guide for the full syntax of the `routes.js` file and how to configure it for your use case.
 
-### Run the Ionic React app locally on {{ PRODUCT_NAME }} {/*run-the-ionic-react-app-locally-on--product_name-*/}
+### Run the Ionic React app locally on {{ PRODUCT_NAME }} {/*run-the-ionic-react-app-locally-on-{{PRODUCT_NAME_LOWER}}*/} {/*run-the-ionic-react-app-locally-on--product_name--run-the-ionic-react-app-locally-on-product_name_lower*/}
 
 Create a production build of your app by running the following in your project's root directory:
 

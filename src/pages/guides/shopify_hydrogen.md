@@ -46,7 +46,7 @@ You can verify your app works by running it locally with:
 npm run dev
 ```
 
-## Configuring your Shopify Hydrogen app for {{ PRODUCT_NAME }} {/*configuring-your-shopify-hydrogen-app-for--product_name-*/}
+## Configuring your Shopify Hydrogen app for {{ PRODUCT_NAME }} {/*configuring-your-shopify-hydrogen-app-for-{{PRODUCT_NAME_LOWER}}*/} {/*configuring-your-shopify-hydrogen-app-for--product_name--configuring-your-shopify-hydrogen-app-for-product_name_lower*/}
 
 ### Initialize your project {/*initialize-your-project*/}
 
@@ -148,7 +148,7 @@ module.exports = new Router()
 
 Refer to the [Routing](routing) guide for the full syntax of the `routes.js` file and how to configure it for your use case.
 
-### Run the Shopify Hydrogen app locally on {{ PRODUCT_NAME }} {/*run-the-shopify-hydrogen-app-locally-on--product_name-*/}
+### Run the Shopify Hydrogen app locally on {{ PRODUCT_NAME }} {/*run-the-shopify-hydrogen-app-locally-on-{{PRODUCT_NAME_LOWER}}*/} {/*run-the-shopify-hydrogen-app-locally-on--product_name--run-the-shopify-hydrogen-app-locally-on-product_name_lower*/}
 
 Create a production build of your app by running the following in your project's root directory:
 

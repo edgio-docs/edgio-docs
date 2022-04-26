@@ -49,18 +49,18 @@ module.exports = new Router()
   .use(new NextRoutes('apps/next-app')) // provide the path to your Next.js app relative to the root of the monorepo here
 ```
 
-## Development: Run your nx app behind {{ PRODUCT_NAME }} {/*development-run-your-nx-app-behind--product_name-*/}
+## Development: Run your nx app behind {{ PRODUCT_NAME }} {/*development-run-your-nx-app-behind-{{PRODUCT_NAME}}-*/} {/*development-run-your-nx-app-behind--product_name--development-run-your-nx-app-behind-product_name-*/}
 
 To run your Next.js app in development mode behind {{ PRODUCT_NAME }}, run:
 
-```sh
+```bash
 {{ CLI_NAME }} dev
 ```
 
-## Deploy to {{ PRODUCT_NAME }} {/*deploy-to--product_name-*/}
+## Deploy to {{ PRODUCT_NAME }} {/*deploy-to-{{PRODUCT_NAME}}-*/} {/*deploy-to--product_name--deploy-to-product_name-*/}
 
 To deploy your app to {{ PRODUCT_NAME }}, run:
 
-```sh
+```bash
 {{ CLI_NAME }} deploy
 ```

@@ -70,7 +70,8 @@ To prepare your Angular application for deployment on {{ PRODUCT_NAME }}:
 npm install -g {{ PACKAGE_NAME }}/cli
 ```
 
-#### 2. Run the following in the root folder of your project. This will configure your project for {{ PRODUCT_NAME }}. {/*2-run-the-following-in-the-root-folder-of-your-project-this-will-configure-your-project-for--product_name-*/}
+#### 2. Run the following in the root folder of your project. {/*2-run-the-following-in-the-root-folder-of-your-project*/}
+This will configure your project for {{ PRODUCT_NAME }}
 
 ```bash
 {{ CLI_NAME }} init

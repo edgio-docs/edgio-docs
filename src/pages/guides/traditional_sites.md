@@ -192,7 +192,7 @@ By injecting `main.js` into your app's front-end code, your app will automatical
 
 Prefetching can generate substantial additional network traffic. {{ PRODUCT_NAME }} automatically shields your origin from this additional traffic by only serving prefetch requests from the edge cache. If a prefetch request cannot be served from the cache, {{ PRODUCT_NAME }} will return an HTTP 412 status and the request will not be proxied to the origin. When this happens, the only effect for the user is that they will not see the speed benefit of prefetching. Therefore, the effectiveness of prefetching ramps up over time as users visit pages throughout your site. When the edge cache is cleared, either through the {{ PRODUCT_NAME }} Console or automatically following a deployment, the speed benefit of prefetching is decreased until the cache fills up based on organic traffic.
 
-## Test Your Code Locally and on {{ PRODUCT_NAME }} {/*test-your-code-locally-and-on--product_name-*/}
+## Test Your Code Locally and on {{ PRODUCT_NAME }} {/*test-your-code-locally-and-on-{{PRODUCT_NAME_LOWER}}*/} {/*test-your-code-locally-and-on--product_name--test-your-code-locally-and-on-product_name_lower*/}
 
 Now that you've configured your caching in `routes.ts`, you should test it in your local development environment and on {{ PRODUCT_NAME }}.
 
@@ -204,7 +204,7 @@ To test the caching behavior locally, run your project with the [local cache opt
 {{ CLI_NAME }} dev --cache
 ```
 
-### Running on {{ PRODUCT_NAME }} {/*running-on--product_name-*/}
+### Running on {{ PRODUCT_NAME }} {/*running-on-{{PRODUCT_NAME_LOWER}}*/} {/*running-on--product_name--running-on-product_name_lower*/}
 
 Now that you're satisfied with your site in local development, it's time to deploy it to {{ PRODUCT_NAME }} Cloud. Once your code is deployed to {{ PRODUCT_NAME }} Cloud, you can formally evaluate site performance and QA functionality.
 

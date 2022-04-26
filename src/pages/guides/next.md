@@ -114,7 +114,7 @@ module.exports = with{{ PRODUCT_NAME }}(
 )
 ```
 
-### with{{ PRODUCT_NAME }} {/*with-product_name-*/}
+### with{{ PRODUCT_NAME }} {/*with{{PRODUCT_NAME_LOWER}}*/} {/*with-product_name--withproduct_name_lower*/}
 
 The `with{{ PRODUCT_NAME }}` plugin optimizes the Next.js build for running on {{ PRODUCT_NAME }}. It is required to deploy your application on {{ PRODUCT_NAME }} and accepts the following parameters:
 

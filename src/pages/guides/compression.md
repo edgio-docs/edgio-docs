@@ -8,7 +8,7 @@ This guide covers the {{ PRODUCT_NAME }} response compression support.
 
 When requesting data via HTTP from the {{ PRODUCT_NAME }} servers, browsers include the `accept-encoding` header to indicate which data compression formats the browser supports. Modern browsers accept multiple compression formats, [Accept-Encoding Header Details are here.](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Accept-Encoding) This header is required by {{ PRODUCT_NAME }} to trigger compression of responses.
 
-### {{ PRODUCT_NAME }} supports {/*-{{PRODUCT_NAME_LOWER}}-supports*/} {/*-product_name--supports--product_name_lower-supports*/}
+### {{ PRODUCT_NAME }} supports {/*{{PRODUCT_NAME_LOWER}}-supports*/} {/*-product_name--supports-product_name_lower-supports*/}
 
 * `gzip` for all versions
 * `br` (Brotli) for versions >= `4.11.0`

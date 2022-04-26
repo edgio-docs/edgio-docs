@@ -6,7 +6,7 @@ This guide describes how to get up and running with {{ PRODUCT_NAME }} for tradi
 
 Note that the speed benefit for traditional sites from {{ PRODUCT_NAME }} is dependent on the site’s JavaScript usage during the page load. If a page has JavaScript heavy processing during load it may reduce the benefit from {{ PRODUCT_NAME }}. Please contact our team via the chat button in the bottom right of this page if you're interested in a site analysis prior to beginning installation — turnaround time is typically 1-2 business days.
 
-## How {{ PRODUCT_NAME }} for Traditional Sites Works {/*how-{{PRODUCT_NAME_LOWER}}-for-traditional-sites-works*/} {/*how--product_name--for-traditional-sites-works-how-product_name_lower-for-traditional-sites-works*/}
+## How {{ PRODUCT_NAME }} for Traditional Sites Works 
 
 As shown below, {{ PRODUCT_NAME }} becomes the main CDN for your site:
 

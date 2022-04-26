@@ -18,7 +18,7 @@ const Seo = withRouter(
     isHomePage,
     title,
     description = '',
-    image = '/images/seo/docs.ogimage.png',
+    image = 'https://docs.layer0.co/images/seo/docs.ogimage.png',
     router,
     children,
   }: SeoProps & {router: Router}) => (

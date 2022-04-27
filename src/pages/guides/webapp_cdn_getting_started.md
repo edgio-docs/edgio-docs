@@ -116,7 +116,7 @@ Refer to the guides on [Routing](routing) and [Caching](caching) for the full sy
 
 Learn [advanced prefetching techniques](prefetching) to achieve the best possible performance.
 
-## Deploy to {{ PRODUCT_NAME }} {/*deploy-to--product_name-*/}
+## Deploy to {{ PRODUCT_NAME }} {/*deploy-to-{{PRODUCT_NAME_LOWER}}*/} {/*deploy-to--product_name--deploy-to-product_name_lower*/}
 
 Now that you're satisfied with your site in local development, it's time to deploy it to the {{ PRODUCT_NAME }} Cloud. Once deployed, you can formally evaluate site performance and QA functionality.
 

@@ -46,7 +46,7 @@ You can verify your app works by running it locally with:
 npm run dev
 ```
 
-## Configuring your Svelte app for {{ PRODUCT_NAME }} {/*configuring-your-svelte-app-for--product_name-*/}
+## Configuring your Svelte app for {{ PRODUCT_NAME }} {/*configuring-your-svelte-app-for-{{PRODUCT_NAME_LOWER}}*/} {/*configuring-your-svelte-app-for--product_name--configuring-your-svelte-app-for-product_name_lower*/}
 
 ### Initialize your project {/*initialize-your-project*/}
 
@@ -177,7 +177,7 @@ The example above assumes you're using Svelte as a single page app. It routes th
 
 Refer to the [Routing](routing) guide for the full syntax of the `routes.js` file and how to configure it for your use case.
 
-### Run the Svelte app locally on {{ PRODUCT_NAME }} {/*run-the-svelte-app-locally-on--product_name-*/}
+### Run the Svelte app locally on {{ PRODUCT_NAME }} {/*run-the-svelte-app-locally-on-{{PRODUCT_NAME_LOWER}}*/} {/*run-the-svelte-app-locally-on--product_name--run-the-svelte-app-locally-on-product_name_lower*/}
 
 Create a production build of your app by running the following in your project's root directory:
 

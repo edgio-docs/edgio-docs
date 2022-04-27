@@ -76,7 +76,7 @@ You can now verify that your app works by running it locally with:
 yarn run dev
 ```
 
-## Configuring your Swell app for {{ PRODUCT_NAME }} {/*configuring-your-swell-app-for--product_name-*/}
+## Configuring your Swell app for {{ PRODUCT_NAME }} {/*configuring-your-swell-app-for-{{PRODUCT_NAME_LOWER}}*/} {/*configuring-your-swell-app-for--product_name--configuring-your-swell-app-for-product_name_lower*/}
 
 ### Modify nuxt.config.js {/*modify-nuxtconfigjs*/}
 

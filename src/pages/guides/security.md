@@ -26,7 +26,7 @@ The WAF includes Managed Rule Groups, managed by {{ PRODUCT_NAME }}, that can be
 
 ### Managed Rule Groups {/*managed-rule-groups*/}
 
-#### {{ PRODUCT_NAME }} Managed Rules {/*-product_name--managed-rules*/}
+#### {{ PRODUCT_NAME }} Managed Rules {/*{{PRODUCT_NAME_LOWER}}-managed-rules*/} {/*-product_name--managed-rules-product_name_lower-managed-rules*/}
 
 ​​The {{ PRODUCT_NAME }} Managed rule group contains rules that are generally applicable to web applications. This provides protection against exploitation of a wide range of vulnerabilities, including high risk and commonly occurring vulnerabilities described in OWASP&reg; publications such as [OWASP Top 10](https://owasp.org/www-project-top-ten/).
 
@@ -373,6 +373,6 @@ Note: Layer0 recommends that all customers activate the _Bad Input - Log4J_ rule
 
 Yes. Layer0 maintains PCI-DSS Level 1 compliance by undergoing annual audits from approved Visa and MasterCard auditors.
 
-### What is the minimum level of encryption for {{ PRODUCT_NAME }}? {/*what-is-the-minimum-level-of-encryption-for--product_name-*/}
+### What is the minimum level of encryption for {{ PRODUCT_NAME }}? {/*what-is-the-minimum-level-of-encryption-for-{{PRODUCT_NAME_LOWER}}*/} {/*what-is-the-minimum-level-of-encryption-for--product_name--what-is-the-minimum-level-of-encryption-for-product_name_lower*/}
 
 {{ PRODUCT_NAME }} enforces a minimum version of TLS 1.2 or higher.

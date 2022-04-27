@@ -20,7 +20,7 @@ This guide shows you how to deploy a [Remix](https://remix.run/) application on 
 
 {{ SYSTEM_REQUIREMENTS }}
 
-## Sign up for {{ PRODUCT_NAME }} {/*sign-up-for--product_name-*/}
+## Sign up for {{ PRODUCT_NAME }} {/*sign-up-for-{{PRODUCT_NAME_LOWER}}*/} {/*sign-up-for--product_name--sign-up-for-product_name_lower*/}
 
 Deploying requires an account on {{ PRODUCT_NAME }}. [Sign up here for free.]({{ APP_URL }}/signup).
 
@@ -48,7 +48,7 @@ You can verify your app works by running it locally with:
 npm run dev
 ```
 
-## Configuring your Remix app for {{ PRODUCT_NAME }} {/*configuring-your-remix-app-for--product_name-*/}
+## Configuring your Remix app for {{ PRODUCT_NAME }} {/*configuring-your-remix-app-for-{{PRODUCT_NAME_LOWER}}*/} {/*configuring-your-remix-app-for--product_name--configuring-your-remix-app-for-product_name_lower*/}
 
 ### Initialize your project {/*initialize-your-project*/}
 
@@ -139,7 +139,7 @@ module.exports = new Router()
 
 Refer to the [Routing](routing) guide for the full syntax of the `routes.js` file and how to configure it for your use case.
 
-### Run the Remix app locally on {{ PRODUCT_NAME }} {/*run-the-remix-app-locally-on--product_name-*/}
+### Run the Remix app locally on {{ PRODUCT_NAME }} {/*run-the-remix-app-locally-on-{{PRODUCT_NAME_LOWER}}*/} {/*run-the-remix-app-locally-on--product_name--run-the-remix-app-locally-on-product_name_lower*/}
 
 Create a production build of your app by running the following in your project's root directory:
 

@@ -7,13 +7,24 @@ This guide shows you how to deploy a [Eleventy](https://www.11ty.dev/) applicati
 ## Example {/*example*/}
 
 <ButtonLinksGroup>
-  <ButtonLink variant="fill" type="default" href="https://layer0-docs-layer0-eleventy-example-default.layer0-limelight.link">
-   Try the Eleventy Example Site
+  <ButtonLink
+    variant="fill"
+    type="default"
+    href="https://layer0-docs-layer0-eleventy-example-default.layer0-limelight.link">
+    Try the Eleventy Example Site
   </ButtonLink>
-  <ButtonLink variant="stroke" type="code" withIcon={true} href="https://github.com/layer0-docs/layer0-eleventy-example">
-   View the Code
+  <ButtonLink
+    variant="stroke"
+    type="code"
+    withIcon={true}
+    href="https://github.com/layer0-docs/layer0-eleventy-example">
+    View the Code
   </ButtonLink>
-  <ButtonLink variant="stroke" type="deploy" withIcon={true} href="https://app.layer0.co/deploy?button&deploy&repo=https://github.com/layer0-docs/layer0-eleventy-example">
+  <ButtonLink
+    variant="stroke"
+    type="deploy"
+    withIcon={true}
+    href="https://app.layer0.co/deploy?button&deploy&repo=https://github.com/layer0-docs/layer0-eleventy-example">
     Deploy to Layer0
   </ButtonLink>
 </ButtonLinksGroup>
@@ -49,9 +60,10 @@ You can verify your app works by running it locally with:
 eleventy --serve
 ```
 
-## Configuring your Eleventy app for {{ PRODUCT_NAME }} {/*configuring-your-eleventy-app-for--product_name-*/}
+## Configuring your Eleventy app for {{ PRODUCT_NAME }} {/*configuring-your-eleventy-app-for-{{PRODUCT_NAME_LOWER}}*/} {/*configuring-your-eleventy-app-for--product_name--configuring-your-eleventy-app-for-product_name_lower*/}
 
 Create a package.json at the root of your project with the following:
+
 ```js
 {
   "name": "eleventy",
@@ -88,9 +100,9 @@ Update `routes.js` at the root of your project to the following:
 // This file was added by layer0 init.
 // You should commit this file to source control.
 
-import { Router } from '@layer0/core/router'
+import {Router} from '@layer0/core/router';
 
-export default new Router().static('_site', ({ cache }) => {
+export default new Router().static('_site', ({cache}) => {
   cache({
     edge: {
       maxAgeSeconds: 60 * 60 * 60 * 365,
@@ -100,13 +112,13 @@ export default new Router().static('_site', ({ cache }) => {
       maxAgeSeconds: 0,
       serviceWorkerSeconds: 60 * 60 * 24,
     },
-  })
-})
+  });
+});
 ```
 
 Refer to the [Routing](routing) guide for the full syntax of the `routes.js` file and how to configure it for your use case.
 
-### Run the Eleventy app locally on {{ PRODUCT_NAME }} {/*run-the-eleventy-app-locally-on--product_name-*/}
+### Run the Eleventy app locally on {{ PRODUCT_NAME }} {/*run-the-eleventy-app-locally-on-{{PRODUCT_NAME_LOWER}}*/} {/*run-the-eleventy-app-locally-on--product_name--run-the-eleventy-app-locally-on-product_name_lower*/}
 
 Create a production build of your app by running the following in your project's root directory:
 

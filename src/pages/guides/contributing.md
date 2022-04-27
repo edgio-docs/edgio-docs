@@ -1,5 +1,5 @@
 ---
-title: Contributing to {{ DOCS_URL }}
+title: Contributing to the {{ PRODUCT_NAME }} Documentation
 ---
 
 {{ PRODUCT_NAME }} is all about putting power in the hands of developers and our documentation is no different. The source code for the {{ PRODUCT_NAME }} developer docs (i.e. this site you're reading now) is in an open [repository on GitHub](https://github.com/{{ DOCS_REPO }}) and we welcome feedback and pull requests. If you've found a typo or a better way to explain something, please submit a [pull request](https://github.com/layer0-docs/layer0-docs/pulls) or [file an issue](https://github.com/layer0-docs/layer0-docs/issues)! Others will likely stumble over the same problem and benefit from your insight.
@@ -16,24 +16,24 @@ Then install the dependencies:
 
 ```bash
 cd layer0-docs
-npm install
+yarn install
 ```
 
 Next, start the Next.js dev server locally,
 
 ```bash
-npm start
+yarn dev
 ```
 
 Finally, visit the site in your browser at http://127.0.0.1:3000.
 
 ## Architecture {/*architecture*/}
 
-{{ PRODUCT_NAME }} docs is a simple Next.js application running on {{ PRODUCT_NAME }} (yes we [dogfood](https://en.wikipedia.org/wiki/Eating_your_own_dog_food)). The content is stored as pages called "guides". Each guide is a Markdown file located in the [guides folder](https://github.com/{{ DOCS_REPO }}/tree/master/guides) and [guides.json](https://github.com/{{ DOCS_REPO }}/blob/master/guides/guides.json) controls the navigation menu for reaching the guides.
+{{ PRODUCT_NAME }} docs is a simple Next.js application running on {{ PRODUCT_NAME }} (yes we [dogfood](https://en.wikipedia.org/wiki/Eating_your_own_dog_food)). The content is stored as pages called "guides". Each guide is a Markdown file located in the [guides folder](https://github.com/{{ DOCS_REPO }}/tree/main/src/pages/guides)
 
 ## How to Contribute {/*how-to-contribute*/}
 
-If you need to modify an existing guide, you can use the `guides.json` file to locate the corresponding Markdown file to edit. If your contribution needs its own guide, you'll need to create a new Markdown file in the `guides` folder and add a reference to it in `guides.json`.
+If you need to modify an existing guide, you can use the [SidebarMenuItems](src/data/SidebarMenuItems.tsx) file to locate the corresponding Markdown file to edit. If your contribution needs its own guide, you'll need to create a new Markdown file in the `guides` folder and add a reference to it in [SidebarMenuItems](src/data/SidebarMenuItems.tsx).
 
 We recommend the following process for submitting a change:
 
@@ -41,9 +41,11 @@ We recommend the following process for submitting a change:
 2. Clone the repo and make sure you can run the docs locally.
 3. Make your amazing edit — even a typo fix is an amazing edit!
 4. Commit and push your change back to your fork on GitHub.
-5. Submit a [pull request](https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/about-pull-requests) back to the {{ PRODUCT_NAME }} Docs repository via GitHub web interface.
+5. Submit a [pull request](https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/about-pull-requests) back to the {{ PRODUCT_NAME }} Docs repository (to the `main` branch) via GitHub web interface.
 
-For more details, the Pro Git book has a [helpful contributing guide](https://git-scm.com/book/en/v2/GitHub-Contributing-to-a-Project) that walks you through the process of submitting a pull request to an open source repository on GitHub.
+<Callout type="info">
+For more details, the Pro Git book has a <a href="https://git-scm.com/book/en/v2/GitHub-Contributing-to-a-Project">helpful contributing guide</a> that walks you through the process of submitting a pull request to an open source repository on GitHub.
+</Callout>
 
 
 ---

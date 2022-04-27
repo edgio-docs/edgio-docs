@@ -43,7 +43,7 @@ cd <project-name>
 npm install
 ```
 
-## Configuring your Vue Storefront app for {{ PRODUCT_NAME }} {/*configuring-your-vue-storefront-app-for--product_name-*/}
+## Configuring your Vue Storefront app for {{ PRODUCT_NAME }} {/*configuring-your-vue-storefront-app-for-{{PRODUCT_NAME_LOWER}}*/} {/*configuring-your-vue-storefront-app-for--product_name--configuring-your-vue-storefront-app-for-product_name_lower*/}
 
 ### Initialize your project {/*initialize-your-project*/}
 

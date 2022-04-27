@@ -90,6 +90,8 @@ import {
   IconZolaDark,
 } from '../components/Icon';
 
+import {IconGear, IconGearDark} from 'components/Icon/IconGear';
+
 export interface IChildrenRoutes {
   title: string;
   path: string;
@@ -288,18 +290,6 @@ const SidebarMenuItems: Array<Array<ISidebarMenuItem>> = [
           iconDark: <IconAstroDark />,
         },
         {
-          title: 'BigCommerce',
-          path: '/guides/bigcommerce',
-          icon: <IconBigCommerce />,
-          iconDark: <IconBigCommerceDark />,
-        },
-        {
-          title: 'Bloomreach',
-          path: '/guides/bloomreach',
-          icon: <IconBloomreach />,
-          iconDark: <IconBloomreachDark />,
-        },
-        {
           title: 'Brunch',
           path: '/guides/brunch',
           icon: <IconBrunch />,
@@ -486,12 +476,6 @@ const SidebarMenuItems: Array<Array<ISidebarMenuItem>> = [
           iconDark: <IconServerlessFunctions />,
         },
         {
-          title: 'Shopify Hydrogen',
-          path: '/guides/shopify_hydrogen',
-          icon: <IconShopifyHydrogen />,
-          iconDark: <IconShopifyHydrogen />,
-        },
-        {
           title: 'SolidJS',
           path: '/guides/solid',
           icon: <IconSolidJS />,
@@ -520,12 +504,6 @@ const SidebarMenuItems: Array<Array<ISidebarMenuItem>> = [
           path: '/guides/svelte',
           icon: <IconSvelte />,
           iconDark: <IconSvelte />,
-        },
-        {
-          title: 'Swell',
-          path: '/guides/swell',
-          icon: <IconSwell />,
-          iconDark: <IconSwellDark />,
         },
         {
           title: 'UmiJS',
@@ -562,6 +540,39 @@ const SidebarMenuItems: Array<Array<ISidebarMenuItem>> = [
           path: '/guides/zola',
           icon: <IconZola />,
           iconDark: <IconZolaDark />,
+        },
+      ],
+    },
+    {
+      title: 'Integrations',
+      icon: <IconGear />,
+      iconDark: <IconGearDark />,
+      path: 'integration-guides',
+      sortRoutes: true,
+      routes: [
+        {
+          title: 'BigCommerce',
+          path: '/guides/bigcommerce',
+          icon: <IconBigCommerce />,
+          iconDark: <IconBigCommerceDark />,
+        },
+        {
+          title: 'Bloomreach',
+          path: '/guides/bloomreach',
+          icon: <IconBloomreach />,
+          iconDark: <IconBloomreachDark />,
+        },
+        {
+          title: 'Shopify Hydrogen',
+          path: '/guides/shopify_hydrogen',
+          icon: <IconShopifyHydrogen />,
+          iconDark: <IconShopifyHydrogen />,
+        },
+        {
+          title: 'Swell',
+          path: '/guides/swell',
+          icon: <IconSwell />,
+          iconDark: <IconSwellDark />,
         },
       ],
     },

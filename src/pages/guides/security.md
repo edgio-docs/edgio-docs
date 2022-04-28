@@ -34,7 +34,7 @@ The WAF includes Managed Rule Groups, managed by {{ PRODUCT_NAME }}, that can be
   Layer0 recommends utilizing this rule group for all WAF use cases.
 </Callout>
 
-[Layer0 Managed Rule Group Descriptions](#section_managed_rule_groups)
+[Layer0 Managed Rule Group Descriptions](managed_rule_groups#section_managed_rule_groups)
 
 ---
 

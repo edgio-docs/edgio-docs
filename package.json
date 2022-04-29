@@ -121,7 +121,9 @@
     "webpack-bundle-analyzer": "^4.5.0"
   },
   "engines": {
-    "node": "14.x"
+    "node": "14.x",
+    "npm": "please-use-yarn",
+    "yarn": ">= 1.19.1"
   },
   "nextBundleAnalysis": {
     "budget": null,

@@ -386,7 +386,7 @@ const SidebarMenuItems: Array<Array<ISidebarMenuItem>> = [
           iconDark: <IconMKDocsDark />,
         },
         {
-          title: 'NX',
+          title: 'Nx',
           path: '/guides/nx',
           icon: <IconNX />,
           iconDark: <IconNXDark />,

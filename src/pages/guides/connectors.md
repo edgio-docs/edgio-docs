@@ -44,7 +44,7 @@ export default async function init() {
 
 The default-app directory typically contains the following files:
 
-```dir
+```
 /(connector-root)
   /default-app
     /all              # resources to be added to both JavaScript and TypeScript projects

@@ -103,7 +103,7 @@ const StyledCustomPre = styled.div`
 export default function CustomPre({children}: {children: React.ReactNode}) {
   let message: string = '';
   let language: string | undefined;
-  let filename: string | undefined;
+  // let filename: string | undefined;
 
   if (typeof children === 'string') {
     message = children;
@@ -113,7 +113,7 @@ export default function CustomPre({children}: {children: React.ReactNode}) {
   ) {
     message = children.props.children;
     language = children.props.className;
-    filename = children.props.filename;
+    // filename = children.props.filename;
   }
 
   return (
@@ -127,11 +127,11 @@ export default function CustomPre({children}: {children: React.ReactNode}) {
                   {language && getDescriptiveLanguage(language)}
                 </span>
               )}
-              {filename && (
-                <span className="code-block__filename">
-                  {filename.replaceAll('"', '')}
+              {/* {
+                filename && <span className="code-block__filename">
+                  {filename}
                 </span>
-              )}
+              } */}
             </div>
             <div className="header-end">
               <CopyCode {...{message}} />

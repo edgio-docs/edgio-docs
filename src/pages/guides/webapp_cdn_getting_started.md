@@ -74,7 +74,7 @@ We need to configure caching in our newly created project. The project contains 
 At this point, the only item that should require changing is a path match. We provide a basic sample to get you started.
 ### Routes File {/*routes-file*/}
 
-```js
+```js filename="/routes.js"
 // routes.js
 import { Router } from '@layer0/core/router'
 

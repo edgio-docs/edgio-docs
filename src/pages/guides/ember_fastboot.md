@@ -83,7 +83,7 @@ To reduce serverless cold-start times, limit the packages listed in the `depende
 
 Ember fastboot apps should always have the following in {{ CONFIG_FILE }}:
 
-```js
+```js filename="/layer0.config.js"
 module.exports = {
   connector: '{{ CLI_NAME }}/fastboot',
   includeNodeModules: true, // this ensures that package.json dependencies are uploaded to the cloud
@@ -94,7 +94,7 @@ module.exports = {
 
 To simulate your app within {{ PRODUCT_NAME }} locally, run:
 
-```
+```bash
 {{ CLI_NAME }} dev
 ```
 
@@ -102,7 +102,7 @@ To simulate your app within {{ PRODUCT_NAME }} locally, run:
 
 To simulate edge caching locally, run:
 
-```
+```bash
 {{ CLI_NAME }} dev --cache
 ```
 
@@ -110,7 +110,7 @@ To simulate edge caching locally, run:
 
 Deploying requires an account on {{ PRODUCT_NAME }}. [Sign up here for free.](https://moovweb.app/signup) Once you have an account, you can deploy to {{ PRODUCT_NAME }} by running the following in the root folder of your project
 
-```
+```bash
 {{ CLI_NAME }} deploy
 ```
 

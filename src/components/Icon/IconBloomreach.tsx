@@ -10,7 +10,6 @@ export const IconBloomreach = React.memo<JSX.IntrinsicElements['svg']>(
       viewBox="0 0 41 41"
       fill="none"
       xmlns="http://www.w3.org/2000/svg">
-      <rect width="41" height="41" fill="white" />
       <path
         d="M20.179 39.25C30.7713 39.25 39.358 30.6874 39.358 20.125C39.358 9.56255 30.7713 1 20.179 1C9.58673 1 1 9.56255 1 20.125C1 30.6874 9.58673 39.25 20.179 39.25Z"
         fill="#FFD500"
@@ -36,7 +35,6 @@ export const IconBloomreachDark = React.memo<JSX.IntrinsicElements['svg']>(
       viewBox="0 0 41 41"
       fill="none"
       xmlns="http://www.w3.org/2000/svg">
-      <rect width="41" height="41" fill="white" />
       <path
         d="M20.179 39.25C30.7713 39.25 39.358 30.6874 39.358 20.125C39.358 9.56255 30.7713 1 20.179 1C9.58673 1 1 9.56255 1 20.125C1 30.6874 9.58673 39.25 20.179 39.25Z"
         fill="#FFD500"

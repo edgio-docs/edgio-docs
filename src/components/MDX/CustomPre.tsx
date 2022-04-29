@@ -63,6 +63,13 @@ const StyledCustomPre = styled.div`
     [class*='header-'] {
       display: flex;
       align-items: center;
+      gap: 10px;
+    }
+
+    .code-block__filename {
+      background-color: #363636;
+      border-radius: 4px;
+      border: 1px solid #1a1a1a;
     }
   }
 
@@ -121,7 +128,9 @@ export default function CustomPre({children}: {children: React.ReactNode}) {
                 </span>
               )}
               {filename && (
-                <span className="code-block__filename">{filename}</span>
+                <span className="code-block__filename">
+                  {filename.replaceAll('"', '')}
+                </span>
               )}
             </div>
             <div className="header-end">

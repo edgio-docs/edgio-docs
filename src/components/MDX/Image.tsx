@@ -2,7 +2,6 @@ import styled from 'styled-components';
 
 const StyledComp = styled.figure`
   position: relative;
-  background-color: #1a1a1a;
 
   /* min is 75% of the --docs-area-width  */
   max-width: calc(min(calc(0.75 * var(--docs-area-width))));
@@ -10,6 +9,7 @@ const StyledComp = styled.figure`
   img {
     margin: 0;
     display: flex;
+    background-color: #1a1a1a;
   }
 `;
 

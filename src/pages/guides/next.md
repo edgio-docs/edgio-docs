@@ -57,10 +57,8 @@ This framework has a connector developed for {{ PRODUCT_NAME }}. See [Connectors
 If you don't already have a Next.js application, you can create one using:
 
 ```bash
-npm create next-app my-next-app
+npx create-next-app@latest
 ```
-
-To prepare your Next.js application for deployment on {{ PRODUCT_NAME }}:
 
 ### Install the {{ PRODUCT_NAME }} CLI globally {/*install-the-layer0-cli-globally*/}
 

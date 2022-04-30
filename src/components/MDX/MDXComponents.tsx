@@ -62,5 +62,5 @@ export const MDXComponents = {
   ButtonLinksGroup,
   ButtonLink,
   Video,
-  Image,
+  img: Image,
 };

@@ -1,4 +1,3 @@
-import NextImage from 'next/image';
 import styled from 'styled-components';
 
 const StyledComp = styled.figure`
@@ -7,13 +6,19 @@ const StyledComp = styled.figure`
 
   /* min is 75% of the --docs-area-width  */
   max-width: calc(min(calc(0.75 * var(--docs-area-width))));
+
+  img {
+    margin: 0;
+    display: flex;
+  }
 `;
 
 export default function Image({src, alt}: {src: string; alt: string}) {
+  console.log('works');
   return (
     <StyledComp>
       {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img {...{src, alt}} />
+      <img {...{src, alt}} id="image..." />
     </StyledComp>
   );
 }

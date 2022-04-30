@@ -22,7 +22,7 @@ This guide shows you how to deploy a [Brunch](https://brunch.io/) application on
 
 {{ SIGN_UP_LAYER0 }}
 
-## Install the {{ PRODUCT_NAME }} {{ CLI }} {/*install-the-layer0-undefined*/}
+## Install the {{ PRODUCT_NAME }} CLI {/*install-the-layer0-cli*/}
 
 If you have not already done so, install the [{{ PRODUCT_NAME }} CLI](cli)
 

@@ -18,8 +18,20 @@ let modules;
 function replaceConstantInHeader(header) {
   const replacedHeader = header.replace(/{{\s*(\w+)\s*}}/g, (match) => {
     const constantStringInMatch = match.replace(/{{|}}/g, '').trim();
-    return mdConstants[constantStringInMatch];
+    const replacedConstant = mdConstants[constantStringInMatch];
+
+    if (!replacedConstant) {
+      console.log(
+        'Note: Hey, it looks like the constant `%s` in heading `%s` is undefined. Replaced it with an empty string',
+        match,
+        header
+      );
+
+      return '';
+    }
+    return replacedConstant;
   });
+
   return replacedHeader;
 }
 

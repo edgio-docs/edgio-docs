@@ -22,7 +22,7 @@ This guide shows you how to deploy a [Brunch](https://brunch.io/) application on
 
 {{ SIGN_UP_LAYER0 }}
 
-## Install the {{ PRODUCT_NAME }} CLI {/*install-the-{{PRODUCT_NAME_LOWER}}-cli*/} {/*install-the--product_name--cli-install-the-product_name_lower-cli*/}
+## Install the {{ PRODUCT_NAME }} CLI {/*install-the-layer0-cli*/}
 
 If you have not already done so, install the [{{ PRODUCT_NAME }} CLI](cli)
 
@@ -45,7 +45,7 @@ You can verify your app works by running it locally with:
 npm run start
 ```
 
-## Configuring your Brunch app for {{ PRODUCT_NAME }} {/*configuring-your-brunch-app-for-{{PRODUCT_NAME_LOWER}}*/} {/*configuring-your-brunch-app-for--product_name--configuring-your-brunch-app-for-product_name_lower*/}
+## Configuring your Brunch app for {{ PRODUCT_NAME }} {/*configuring-your-brunch-app-for-layer0*/}
 
 ### Initialize your project {/*initialize-your-project*/}
 
@@ -92,7 +92,7 @@ export default new Router()
 
 Refer to the [Routing](routing) guide for the full syntax of the `routes.js` file and how to configure it for your use case.
 
-### Run the Brunch app locally on {{ PRODUCT_NAME }} {/*run-the-brunch-app-locally-on-{{PRODUCT_NAME_LOWER}}*/} {/*run-the-brunch-app-locally-on--product_name--run-the-brunch-app-locally-on-product_name_lower*/}
+### Run the Brunch app locally on {{ PRODUCT_NAME }} {/*run-the-brunch-app-locally-on-layer0*/}
 
 Create a production build of your app by running the following in your project's root directory:
 

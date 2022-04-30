@@ -47,7 +47,7 @@ This will automatically add all of the required dependencies and files to your p
 - `sw/service-worker.js` - The source code for your service worker, which enables prefetching when running on {{ PRODUCT_NAME }}.
 - `{{ CONFIG_FILE }}` - Contains configuration options for deploying on {{ PRODUCT_NAME }}.
 
-## Adding {{ PRODUCT_NAME }} Service Worker {/*adding-{{PRODUCT_NAME_LOWER}}-service-worker*/} {/*adding--product_name--service-worker-adding-product_name_lower-service-worker*/}
+## Adding {{ PRODUCT_NAME }} Service Worker {/*adding-layer0-service-worker*/}
 
 To add {{ PRODUCT_NAME }} service worker to your app, call the `install` function from `{{ CLI_NAME }}/prefetch/window` hook when the app first loads. For example, you can alter
 `app/app.js` as follows:
@@ -83,7 +83,7 @@ To reduce serverless cold-start times, limit the packages listed in the `depende
 
 Ember fastboot apps should always have the following in {{ CONFIG_FILE }}:
 
-```js
+```js filename="/layer0.config.js"
 module.exports = {
   connector: '{{ CLI_NAME }}/fastboot',
   includeNodeModules: true, // this ensures that package.json dependencies are uploaded to the cloud
@@ -94,7 +94,7 @@ module.exports = {
 
 To simulate your app within {{ PRODUCT_NAME }} locally, run:
 
-```
+```bash
 {{ CLI_NAME }} dev
 ```
 
@@ -102,7 +102,7 @@ To simulate your app within {{ PRODUCT_NAME }} locally, run:
 
 To simulate edge caching locally, run:
 
-```
+```bash
 {{ CLI_NAME }} dev --cache
 ```
 
@@ -110,7 +110,7 @@ To simulate edge caching locally, run:
 
 Deploying requires an account on {{ PRODUCT_NAME }}. [Sign up here for free.](https://moovweb.app/signup) Once you have an account, you can deploy to {{ PRODUCT_NAME }} by running the following in the root folder of your project
 
-```
+```bash
 {{ CLI_NAME }} deploy
 ```
 

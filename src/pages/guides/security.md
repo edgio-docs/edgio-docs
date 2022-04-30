@@ -26,7 +26,7 @@ The WAF includes Managed Rule Groups, managed by {{ PRODUCT_NAME }}, that can be
 
 ### Managed Rule Groups {/*managed-rule-groups*/}
 
-#### {{ PRODUCT_NAME }} Managed Rules {/*{{PRODUCT_NAME_LOWER}}-managed-rules*/} {/*-product_name--managed-rules-product_name_lower-managed-rules*/}
+#### {{ PRODUCT_NAME }} Managed Rules {/*layer0-managed-rules*/}
 
 ​​The {{ PRODUCT_NAME }} Managed rule group contains rules that are generally applicable to web applications. This provides protection against exploitation of a wide range of vulnerabilities, including high risk and commonly occurring vulnerabilities described in OWASP&reg; publications such as [OWASP Top 10](https://owasp.org/www-project-top-ten/).
 
@@ -34,7 +34,7 @@ The WAF includes Managed Rule Groups, managed by {{ PRODUCT_NAME }}, that can be
   Layer0 recommends utilizing this rule group for all WAF use cases.
 </Callout>
 
-[Layer0 Managed Rule Group Descriptions](#section_managed_rule_groups)
+[Layer0 Managed Rule Group Descriptions](managed_rule_groups#section_managed_rule_groups)
 
 ---
 
@@ -363,7 +363,7 @@ Like all {{ PRODUCT_NAME }} products, WAF gives you access to all previous and a
 
 To flag a rule or rule group means to mark it if the rule would have been activated without actually denying the traffic. In contrast, when you block a rule or rule group, traffic is denied on affected routes. You can view both flagged and blocked data in your [Layer0 console](https://app.layer0.co/).
 
-### What are {{ PRODUCT_NAME }} Managed Rules and why should I apply this rule group? {/*what-are-{{PRODUCT_NAME_LOWER}}-managed-rules-and-why-should-i-apply-this-rule-group*/} {/*what-are--product_name--managed-rules-and-why-should-i-apply-this-rule-group-what-are-product_name_lower-managed-rules-and-why-should-i-apply-this-rule-group*/}
+### What are {{ PRODUCT_NAME }} Managed Rules and why should I apply this rule group? {/*what-are-layer0-managed-rules-and-why-should-i-apply-this-rule-group*/}
 
 Managed rules block specific known threats. Layer0 recommends this rule group for all WAF use cases.
 
@@ -373,6 +373,6 @@ Note: Layer0 recommends that all customers activate the _Bad Input - Log4J_ rule
 
 Yes. Layer0 maintains PCI-DSS Level 1 compliance by undergoing annual audits from approved Visa and MasterCard auditors.
 
-### What is the minimum level of encryption for {{ PRODUCT_NAME }}? {/*what-is-the-minimum-level-of-encryption-for-{{PRODUCT_NAME_LOWER}}*/} {/*what-is-the-minimum-level-of-encryption-for--product_name--what-is-the-minimum-level-of-encryption-for-product_name_lower*/}
+### What is the minimum level of encryption for {{ PRODUCT_NAME }}? {/*what-is-the-minimum-level-of-encryption-for-layer0*/}
 
 {{ PRODUCT_NAME }} enforces a minimum version of TLS 1.2 or higher.

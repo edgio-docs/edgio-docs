@@ -1,5 +1,6 @@
-import React, {useEffect, useState} from 'react';
-import styled, {StyledComponent} from 'styled-components';
+import React, {useEffect} from 'react';
+import {CopyToClipboard} from 'react-copy-to-clipboard';
+import styled from 'styled-components';
 
 import getDescriptiveLanguage from '../getLanguage';
 
@@ -50,7 +51,6 @@ const StyledCustomPre = styled.div`
   }
 
   .code-block__header {
-    height: 32px;
     border-bottom: 2px solid #363636;
     border-top-right-radius: 4px;
     border-top-left-radius: 4px;
@@ -59,6 +59,18 @@ const StyledCustomPre = styled.div`
     color: white;
     display: flex;
     justify-content: space-between;
+
+    [class*='header-'] {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .code-block__filename {
+      background-color: #363636;
+      border-radius: 4px;
+      border: 1px solid #1a1a1a;
+    }
   }
 
   .code-block__pre {
@@ -89,9 +101,9 @@ const StyledCustomPre = styled.div`
 `;
 
 export default function CustomPre({children}: {children: React.ReactNode}) {
-  let message: string | undefined;
+  let message: string = '';
   let language: string | undefined;
-  let filename: string | undefined;
+  // let filename: string | undefined;
 
   if (typeof children === 'string') {
     message = children;
@@ -101,28 +113,72 @@ export default function CustomPre({children}: {children: React.ReactNode}) {
   ) {
     message = children.props.children;
     language = children.props.className;
-    filename = children.props.filename;
+    // filename = children.props.filename;
   }
 
   return (
     <StyledCustomPre>
       <div className="code-block">
         <div className="code-block__inner">
-          {language && (
-            <header className="code-block__header">
-              <span className="code-block__header-text">
-                {language && getDescriptiveLanguage(language)}
-              </span>
-              {filename && (
-                <span className="code-block__filename">{filename}</span>
+          <header className="code-block__header">
+            <div className="header-start">
+              {language && (
+                <span className="code-block__header-text">
+                  {language && getDescriptiveLanguage(language)}
+                </span>
               )}
-            </header>
-          )}
+              {/* {
+                filename && <span className="code-block__filename">
+                  {filename}
+                </span>
+              } */}
+            </div>
+            <div className="header-end">
+              <CopyCode {...{message}} />
+            </div>
+          </header>
           <main className="code-block__content">
             <CodeBlock language={language || 'js'}>{message}</CodeBlock>
           </main>
         </div>
       </div>
     </StyledCustomPre>
+  );
+}
+
+const StyledCopyCodeButton = styled.button`
+  color: var(--white);
+  background-color: #363636;
+  font-weight: 600;
+  border-radius: 4px;
+  font-size: 14px;
+  line-height: 19px;
+  border: 1px solid #1a1a1a;
+  cursor: pointer;
+  padding: 4px 8px;
+  transition: scale 0.2s ease-in-out;
+
+  :hover {
+    transform: scale(1.05);
+  }
+`;
+
+function CopyCode({message}: {message: string}) {
+  const [copied, setCopied] = React.useState(false);
+
+  useEffect(() => {
+    if (copied) {
+      setTimeout(() => {
+        setCopied(false);
+      }, 1000);
+    }
+  });
+
+  return (
+    <CopyToClipboard text={message} onCopy={() => setCopied(true)}>
+      <StyledCopyCodeButton className="code-block__copy">
+        {copied ? 'Copied' : 'Copy'}
+      </StyledCopyCodeButton>
+    </CopyToClipboard>
   );
 }

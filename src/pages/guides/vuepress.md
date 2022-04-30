@@ -22,7 +22,7 @@ This guide shows you how to deploy a [VuePress](https://vuepress.vuejs.org/) app
 
 {{ SIGN_UP_LAYER0 }}
 
-## Install the {{ PRODUCT_NAME }} CLI {/*install-the-{{PRODUCT_NAME_LOWER}}-cli*/} {/*install-the--product_name--cli-install-the-product_name_lower-cli*/}
+## Install the {{ PRODUCT_NAME }} CLI {/*install-the-layer0-cli*/}
 
 If you have not already done so, install the [{{ PRODUCT_NAME }} CLI](cli)
 
@@ -46,7 +46,7 @@ You can verify your app works by running it locally with:
 yarn dev
 ```
 
-## Configuring your VuePress app for {{ PRODUCT_NAME }} {/*configuring-your-vuepress-app-for-{{PRODUCT_NAME_LOWER}}*/} {/*configuring-your-vuepress-app-for--product_name--configuring-your-vuepress-app-for-product_name_lower*/}
+## Configuring your VuePress app for {{ PRODUCT_NAME }} {/*configuring-your-vuepress-app-for-layer0*/}
 
 ### Update package.json {/*update-packagejson*/}
 ```diff
@@ -95,7 +95,7 @@ export default new Router().static('public', ({ cache }) => {
 
 Refer to the [Routing](routing) guide for the full syntax of the `routes.js` file and how to configure it for your use case.
 
-### Run the VuePress app locally on {{ PRODUCT_NAME }} {/*run-the-vuepress-app-locally-on-{{PRODUCT_NAME_LOWER}}*/} {/*run-the-vuepress-app-locally-on--product_name--run-the-vuepress-app-locally-on-product_name_lower*/}
+### Run the VuePress app locally on {{ PRODUCT_NAME }} {/*run-the-vuepress-app-locally-on-layer0*/}
 
 Create a production build of your app by running the following in your project's root directory:
 

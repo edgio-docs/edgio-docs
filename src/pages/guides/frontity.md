@@ -53,7 +53,7 @@ This will automatically add all of the required dependencies and files to your p
 - `sw/service-worker.js` - The source code for your service worker, which enables prefetching when running on {{ PRODUCT_NAME }}.
 - `{{ CONFIG_FILE }}` - Contains configuration options for deploying on {{ PRODUCT_NAME }}.
 
-## Adding the {{ PRODUCT_NAME }} Service Worker {/*adding-the-{{PRODUCT_NAME_LOWER}}-service-worker*/} {/*adding-the--product_name--service-worker-adding-the-product_name_lower-service-worker*/}
+## Adding the {{ PRODUCT_NAME }} Service Worker {/*adding-the-layer0-service-worker*/}
 
 To add the {{ PRODUCT_NAME }} service worker to your app, call the `install` function from `{{ PACKAGE_NAME }}/prefetch/window` in a `useEffect` hook when the app first loads. For example, you can alter
 the Header component in your theme as follows:

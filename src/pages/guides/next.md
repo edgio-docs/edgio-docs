@@ -66,7 +66,7 @@ npm create next-app my-next-app
 
 To prepare your Next.js application for deployment on {{ PRODUCT_NAME }}:
 
-### Install the {{ PRODUCT_NAME }} CLI globally {/*install-the-{{PRODUCT_NAME_LOWER}}-cli-globally*/} {/*install-the--product_name--cli-globally-install-the-product_name_lower-cli-globally*/}
+### Install the {{ PRODUCT_NAME }} CLI globally {/*install-the-layer0-cli-globally*/}
 
 ```bash
 npm install -g {{ PACKAGE_NAME }}/cli
@@ -114,7 +114,7 @@ module.exports = with{{ PRODUCT_NAME }}(
 )
 ```
 
-### with{{ PRODUCT_NAME }} {/*with{{PRODUCT_NAME_LOWER}}*/} {/*with-product_name--withproduct_name_lower*/}
+### with{{ PRODUCT_NAME }} {/*withlayer0*/}
 
 The `with{{ PRODUCT_NAME }}` plugin optimizes the Next.js build for running on {{ PRODUCT_NAME }}. It is required to deploy your application on {{ PRODUCT_NAME }} and accepts the following parameters:
 

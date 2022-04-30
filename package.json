@@ -45,6 +45,7 @@
     "parse-numeric-range": "^1.2.0",
     "react": "experimental",
     "react-collapsed": "3.1.0",
+    "react-copy-to-clipboard": "^5.1.0",
     "react-dom": "experimental",
     "react-highlight": "^0.14.0",
     "react-player": "^2.10.0",
@@ -55,12 +56,12 @@
     "styled-components": "^5.3.3"
   },
   "devDependencies": {
-    "@layer0/cli": "^4.13.6",
-    "@layer0/core": "^4.13.6",
-    "@layer0/devtools": "^4.13.6",
-    "@layer0/next": "^4.13.6",
-    "@layer0/prefetch": "^4.13.6",
-    "@layer0/react": "^4.13.6",
+    "@layer0/cli": "^4.13.9",
+    "@layer0/core": "^4.13.9",
+    "@layer0/devtools": "^4.13.9",
+    "@layer0/next": "^4.13.9",
+    "@layer0/prefetch": "^4.13.9",
+    "@layer0/react": "^4.13.9",
     "@mdx-js/loader": "^1.6.16",
     "@types/body-scroll-lock": "^2.6.1",
     "@types/classnames": "^2.3.1",
@@ -71,6 +72,7 @@
     "@types/nprogress": "^0.2.0",
     "@types/parse-numeric-range": "^0.0.1",
     "@types/react": "^16.9.46",
+    "@types/react-copy-to-clipboard": "^5.0.2",
     "@types/react-dom": "^16.9.8",
     "@types/react-highlight": "^0.12.5",
     "@types/semver": "^7.3.9",
@@ -119,7 +121,9 @@
     "webpack-bundle-analyzer": "^4.5.0"
   },
   "engines": {
-    "node": "14.x"
+    "node": "14.x",
+    "npm": "please-use-yarn",
+    "yarn": ">= 1.19.1"
   },
   "nextBundleAnalysis": {
     "budget": null,

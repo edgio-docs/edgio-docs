@@ -14,7 +14,7 @@ This guide shows you how to deploy a [Zola](https://www.getzola.org/) applicatio
 
 {{ SIGN_UP_LAYER0 }}
 
-## Install the {{ PRODUCT_NAME }} CLI {/*install-the-{{PRODUCT_NAME_LOWER}}-cli*/} {/*install-the--product_name--cli-install-the-product_name_lower-cli*/}
+## Install the {{ PRODUCT_NAME }} CLI {/*install-the-layer0-cli*/}
 
 If you have not already done so, install the [{{ PRODUCT_NAME }} CLI](cli)
 
@@ -93,7 +93,7 @@ Building site...
 -> Creating 0 pages (0 orphan), 0 sections, and processing 0 images
 ```
 
-## Configuring your Zola app for {{ PRODUCT_NAME }} {/*configuring-your-zola-app-for-{{PRODUCT_NAME_LOWER}}*/} {/*configuring-your-zola-app-for--product_name--configuring-your-zola-app-for-product_name_lower*/}
+## Configuring your Zola app for {{ PRODUCT_NAME }} {/*configuring-your-zola-app-for-layer0*/}
 
 Create a `package.json` at the root of your project with the following:
 
@@ -142,7 +142,7 @@ export default new Router().static('public', ({ cache }) => {
 
 Refer to the [Routing](routing) guide for the full syntax of the `routes.js` file and how to configure it for your use case.
 
-### Run the Zola app locally on {{ PRODUCT_NAME }} {/*run-the-zola-app-locally-on-{{PRODUCT_NAME_LOWER}}*/} {/*run-the-zola-app-locally-on--product_name--run-the-zola-app-locally-on-product_name_lower*/}
+### Run the Zola app locally on {{ PRODUCT_NAME }} {/*run-the-zola-app-locally-on-layer0*/}
 
 Create a production build of your app by running the following in your project's root directory:
 

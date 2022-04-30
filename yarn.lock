@@ -1505,10 +1505,10 @@
     "@jridgewell/resolve-uri" "^3.0.3"
     "@jridgewell/sourcemap-codec" "^1.4.10"
 
-"@layer0/cli@^4.13.6":
-  version "4.13.6"
-  resolved "https://registry.yarnpkg.com/@layer0/cli/-/cli-4.13.6.tgz#06e55111583f1809618c5e14decd214e2757afd8"
-  integrity sha512-zM1RmpjxKHv4/nsvRnzZaIAfkouFbRcyJjvDRnPnFGW2rbfqh7KTBSoEvT2BHqrlGguQkdsRsjDQLPkhFhFnrg==
+"@layer0/cli@^4.13.9":
+  version "4.13.9"
+  resolved "https://registry.yarnpkg.com/@layer0/cli/-/cli-4.13.9.tgz#bf9a594d972b108f783248021f47f85e41544dfa"
+  integrity sha512-E7H09vuHi0KHprFaDklQ1A68SJKJDzd4pFUI8wueqgQKA03ZNs3eJg6Pe/ipqCC9YbBMO4r1yQnoDWRV3aeB/g==
   dependencies:
     axios "^0.21.2"
     chalk "^4.1.2"
@@ -1547,10 +1547,10 @@
     yauzl "^2.10.0"
     yazl "^2.5.1"
 
-"@layer0/core@^4.13.6":
-  version "4.13.6"
-  resolved "https://registry.yarnpkg.com/@layer0/core/-/core-4.13.6.tgz#0e11967038dfff2662f9f495975be0387b205161"
-  integrity sha512-YiQSR+Q4ad9BfzD7e8vYDwldKkisWBBOpJ8OO+IH9IjemKObq41qec4ugivQKWbEFz2xdoi5UpuErsYMg0Ipcw==
+"@layer0/core@^4.13.9":
+  version "4.13.9"
+  resolved "https://registry.yarnpkg.com/@layer0/core/-/core-4.13.9.tgz#7707634b725c00cc783b8edab07bc17512d22b44"
+  integrity sha512-DQMybLOnstxtX6XDGgR2QaEFuGDEZpX/nDtk4QeiqjA8XS23+51dfhK2tIUFJx1rfKedYB1Hk7xnIVACQ7Jmpw==
   dependencies:
     "@babel/parser" "^7.16.2"
     "@babel/traverse" "^7.16.0"
@@ -1587,19 +1587,19 @@
     unixify "^1.0.0"
     uuid "^8.3.2"
 
-"@layer0/devtools@^4.13.6":
-  version "4.13.6"
-  resolved "https://registry.yarnpkg.com/@layer0/devtools/-/devtools-4.13.6.tgz#550c33f4e5ca815b08215b1e8f5186063258ed96"
-  integrity sha512-9eNCzrTOg+3a5x1UzQ117xBLJ/3BRARuQgktbsyNIR9dS3h2I//gWO9o1TapW/1IVT2pADKVjH/7n5CvxnIprg==
+"@layer0/devtools@^4.13.9":
+  version "4.13.9"
+  resolved "https://registry.yarnpkg.com/@layer0/devtools/-/devtools-4.13.9.tgz#89bd670999a918c24eb0e166dda8f7b9214fd3c4"
+  integrity sha512-RU6KdrVhBcwzuU66TskH3u6MH9sZa1h/9c9SXv0R1lt6WdMDxyP+kM9Wp2zk43SoOe36CnmtWUrqNJVnoTvqwQ==
   dependencies:
     clsx "^1.1.1"
     lodash "^4.17.20"
     sirv-cli "^1.0.0"
 
-"@layer0/next@^4.13.6":
-  version "4.13.6"
-  resolved "https://registry.yarnpkg.com/@layer0/next/-/next-4.13.6.tgz#5623c8aa37a8c7169044e613df89b5c8132d7a1f"
-  integrity sha512-hzuPCQy6JTmY/hW3My5St5w6aCKzqzvb+8wCKDFgDJaHiZTkFjtV8f8dLBXBfXT6hRJM11etwawQ+anRQv3P4w==
+"@layer0/next@^4.13.9":
+  version "4.13.9"
+  resolved "https://registry.yarnpkg.com/@layer0/next/-/next-4.13.9.tgz#014f4e5e257d9eaefd0d0a9b5aed0eb0f12c1633"
+  integrity sha512-2y9XOSf0gennKB5wFTxsEP+WJ0TGW9fqj8ucKO7i2iJoZVLsDjv5w+E6beBQmGpJ8QaXs5KDy4jKxog5TjKJ6Q==
   dependencies:
     "@vercel/nft" "^0.13.1"
     chalk "^4.1.2"
@@ -1616,12 +1616,12 @@
     webpack "^4.0.0"
     webpack-sources "^2.2.0"
 
-"@layer0/prefetch@^4.13.6":
-  version "4.13.6"
-  resolved "https://registry.yarnpkg.com/@layer0/prefetch/-/prefetch-4.13.6.tgz#2a340315612eb821896838478a0873502d9cbe55"
-  integrity sha512-JbYWABYfHErBYULXP4qeAqvD1ip3Atxwmwrhvl09ZnX+PjsaV40DOAX+mgWU62SHP361Ftx1NRSnMyW/fVXyTg==
+"@layer0/prefetch@^4.13.9":
+  version "4.13.9"
+  resolved "https://registry.yarnpkg.com/@layer0/prefetch/-/prefetch-4.13.9.tgz#d1d75506a9da192340532d5c348d19d1a021d9a2"
+  integrity sha512-X1CibW4zz+7KUYhD8JZKDMMegZN+GISG1uH+hIMoe0nmfYZxuS6EiDFw2TlFRFiDHElJ0757yXwee2olw26OpA==
   dependencies:
-    "@layer0/core" "^4.13.6"
+    "@layer0/core" "^4.13.9"
     cheerio "^1.0.0-rc.3"
     json-query "^2.2.2"
     workbox-cacheable-response "^5.1.2"
@@ -1631,10 +1631,10 @@
     workbox-routing "^5.1.2"
     workbox-strategies "^5.1.2"
 
-"@layer0/react@^4.13.6":
-  version "4.13.6"
-  resolved "https://registry.yarnpkg.com/@layer0/react/-/react-4.13.6.tgz#ae56835175888d2537c012e16aea2f77af4d27c3"
-  integrity sha512-TQ/ghLYpqeXixMGlem0ljZIZkzDhx+w5m0z4KH+Y0OefFeSWD4tbH1U+tXKnFR2wRjmq+Tfbe117HuEAv4Ad4g==
+"@layer0/react@^4.13.9":
+  version "4.13.9"
+  resolved "https://registry.yarnpkg.com/@layer0/react/-/react-4.13.9.tgz#32ff5d3f8cf448a4a62b019693188accda8b0d0a"
+  integrity sha512-ixREaAHDBNf9rkcwHTXtHdfEqHshHxU2OIYnecZB76N33TRZvODPx4VAtmvwyX3viRD++Zqt+x7qOjQt9IiqDw==
   dependencies:
     prop-types "^15.8.1"
     react-merge-refs "^1.1.0"
@@ -1947,7 +1947,7 @@
   resolved "https://registry.yarnpkg.com/@types/body-scroll-lock/-/body-scroll-lock-2.6.2.tgz#ce56d17e1bf8383c08a074733c4e9e536a59ae61"
   integrity sha512-PhoQPbwPYspXqf7lkwtF7aJzAwL88t+9E/e0b2X84tlHpU8ZuS9UNnLtkT0XhyZJYHpET5qRfIdZ0HBIxuc7HQ==
 
-"@types/classnames@^2.2.10":
+"@types/classnames@^2.3.1":
   version "2.3.1"
   resolved "https://registry.yarnpkg.com/@types/classnames/-/classnames-2.3.1.tgz#3c2467aa0f1a93f1f021e3b9bcf938bd5dfdc0dd"
   integrity sha512-zeOWb0JGBoVmlQoznvqXbE0tEC/HONsnoUNH19Hc96NFsTAwTXbTqb8FMYkru1F/iqp7a18Ws3nWJvtA1sHD1A==
@@ -2089,6 +2089,13 @@
   version "15.7.4"
   resolved "https://registry.yarnpkg.com/@types/prop-types/-/prop-types-15.7.4.tgz#fcf7205c25dff795ee79af1e30da2c9790808f11"
   integrity sha512-rZ5drC/jWjrArrS8BR6SIr4cWpW09RNTYt9AMZo3Jwwif+iacXAqgVjm0B0Bv/S1jhDXKHqRVNCbACkJ89RAnQ==
+
+"@types/react-copy-to-clipboard@^5.0.2":
+  version "5.0.2"
+  resolved "https://registry.yarnpkg.com/@types/react-copy-to-clipboard/-/react-copy-to-clipboard-5.0.2.tgz#c29690b472a54edff35916f0d1c6c797ad0fd34b"
+  integrity sha512-O29AThfxrkUFRsZXjfSWR2yaWo0ppB1yLEnHA+Oh24oNetjBAwTDu1PmolIqdJKzsZiO4J1jn6R6TmO96uBvGg==
+  dependencies:
+    "@types/react" "*"
 
 "@types/react-dom@^16.9.8":
   version "16.9.14"
@@ -3838,6 +3845,13 @@ copy-descriptor@^0.1.0:
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/copy-descriptor/-/copy-descriptor-0.1.1.tgz#676f6eb3c39997c2ee1ac3a924fd6124748f578d"
   integrity sha1-Z29us8OZl8LuGsOpJP1hJHSPV40=
+
+copy-to-clipboard@^3.3.1:
+  version "3.3.1"
+  resolved "https://registry.yarnpkg.com/copy-to-clipboard/-/copy-to-clipboard-3.3.1.tgz#115aa1a9998ffab6196f93076ad6da3b913662ae"
+  integrity sha512-i13qo6kIHTTpCm8/Wup+0b1mVWETvu2kIMzKoK8FpkLkFxlt0znUAHcMzox+T8sPlqtZXq3CulEjQHsYiGFJUw==
+  dependencies:
+    toggle-selection "^1.0.6"
 
 copy-webpack-plugin@~5.1.2:
   version "5.1.2"
@@ -9259,6 +9273,14 @@ react-collapsed@3.1.0:
     raf "^3.4.1"
     tiny-warning "^1.0.3"
 
+react-copy-to-clipboard@^5.1.0:
+  version "5.1.0"
+  resolved "https://registry.yarnpkg.com/react-copy-to-clipboard/-/react-copy-to-clipboard-5.1.0.tgz#09aae5ec4c62750ccb2e6421a58725eabc41255c"
+  integrity sha512-k61RsNgAayIJNoy9yDsYzDe/yAZAzEbEgcz3DZMhF686LEyukcE1hzurxe85JandPUG+yTfGVFzuEw3xt8WP/A==
+  dependencies:
+    copy-to-clipboard "^3.3.1"
+    prop-types "^15.8.1"
+
 react-devtools-inline@4.22.1:
   version "4.22.1"
   resolved "https://registry.yarnpkg.com/react-devtools-inline/-/react-devtools-inline-4.22.1.tgz#339ef44279317de10ebafcf12e3e48b9f0c24481"
@@ -10930,6 +10952,11 @@ to-regex@^3.0.1, to-regex@^3.0.2:
     extend-shallow "^3.0.2"
     regex-not "^1.0.2"
     safe-regex "^1.1.0"
+
+toggle-selection@^1.0.6:
+  version "1.0.6"
+  resolved "https://registry.yarnpkg.com/toggle-selection/-/toggle-selection-1.0.6.tgz#6e45b1263f2017fa0acc7d89d78b15b8bf77da32"
+  integrity sha1-bkWxJj8gF/oKzH2J14sVuL932jI=
 
 toidentifier@1.0.1:
   version "1.0.1"

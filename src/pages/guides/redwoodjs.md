@@ -36,7 +36,7 @@ If you don't already have a RedwoodJS app, use the terminal (or command prompt o
 yarn create redwood-app ./my-redwood-app
 ```
 
-### Install the {{ PRODUCT_NAME }} CLI globally {/*install-the-{{PRODUCT_NAME_LOWER}}-cli-globally*/} {/*install-the--product_name--cli-globally-install-the-product_name_lower-cli-globally*/}
+### Install the {{ PRODUCT_NAME }} CLI globally {/*install-the-layer0-cli-globally*/}
 
 ```bash
 npm install -g {{ PACKAGE_NAME }}/cli
@@ -54,7 +54,7 @@ yarn rw setup deploy {{ FULL_CLI_NAME }}
 
 This will verify that the {{ PRODUCT_NAME }} CLI is setup on your system and initialize the application accordingly.
 
-### Using {{ PRODUCT_NAME }} CLI {/*using-{{PRODUCT_NAME_LOWER}}-cli*/} {/*using--product_name--cli-using-product_name_lower-cli*/}
+### Using {{ PRODUCT_NAME }} CLI {/*using-layer0-cli*/}
 
 For preparing using the {{ PRODUCT_NAME }} CLI, run:
 

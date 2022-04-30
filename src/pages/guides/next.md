@@ -17,10 +17,6 @@ This guide shows you how to deploy a [Next.js](https://nextjs.org/) application 
   </ButtonLink>
 </ButtonLinksGroup>
 
-[Try the Next.js SSR Example Site](https://layer0-docs-layer0-nextjs-example-default.layer0-limelight.link?button)
-[View the Code](https://github.com/layer0-docs/layer0-nextjs-example?button)
-[Deploy to Layer0](https://app.layer0.co/deploy?button&deploy&repo=https%253A%252F%252Fgithub.com%252Flayer0-docs%252Flayer0-nextjs-example)
-
 ## Next.js Commerce {/*nextjs-commerce*/}
 
 For details on using the Next.js Commerce template with {{ PRODUCT_NAME }}, refer to our [Next.js Commerce Guide](next_commerce).

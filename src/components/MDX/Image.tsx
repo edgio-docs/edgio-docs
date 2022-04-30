@@ -14,7 +14,6 @@ const StyledComp = styled.figure`
 `;
 
 export default function Image({src, alt}: {src: string; alt: string}) {
-  console.log('works');
   return (
     <StyledComp>
       {/* eslint-disable-next-line @next/next/no-img-element */}

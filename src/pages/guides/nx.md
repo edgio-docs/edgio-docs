@@ -1,66 +1,183 @@
 ---
-title: NX
+title: Nx
 ---
 
-[NX](https://nx.dev/) is a tool for managing monorepos.
+[Nx](https://nx.dev/) is a smart, fast and extensible build system with first class monorepo support and powerful integrations. It has a powerful core and a rich plugin ecosystem.
 
-This guide shows you how to create a [connector](/guides/connectors) for your NX application on {{ PRODUCT_NAME }}. Here we use [Next.js](https://nextjs.org/) for the default NX project.
+## Nx and {{ PRODUCT_NAME }}
 
-## Example App {/*example-app*/}
+Because every Nx project can be different, there are a couple ways to implement it.
+
+1. Implement the connector at the root level of the Nx repo and specify in the connector which projects to configure.
+2. Implement within the specific project folder inside your Nx repo. Specify commands at the root level Nx repo for interacting.
+
+To learn more about what goes into making a connector, view this [connector guide](/guides/connectors).
+
+## Example App {/* example-app */}
+
+Here we use [Next.js](https://nextjs.org/) for the example Nx project.
 
 <ButtonLinksGroup>
-  <ButtonLink variant="fill" type="default" href="https://layer0-docs-layer0-nx-example-default.layer0.link">
-   Try the Nx Example Site
+  <ButtonLink
+    variant="fill"
+    type="default"
+    href="https://layer0-docs-layer0-nx-example-default.layer0.link">
+    Try the Nx Example Site
   </ButtonLink>
-  <ButtonLink variant="stroke" type="code" withIcon={true} href="https://github.com/layer0-docs/layer0-nx-example">
-   View the Code
+  <ButtonLink
+    variant="stroke"
+    type="code"
+    withIcon={true}
+    href="https://github.com/layer0-docs/layer0-nx-example">
+    View the Code
   </ButtonLink>
-  <ButtonLink variant="stroke" type="deploy" withIcon={true} href="https://app.layer0.co/deploy?button&deploy&repo=https%3A%2F%2Fgithub.com%2Flayer0-docs%2Flayer0-nx-example">
-    Deploy to Layer0
+  <ButtonLink
+    variant="stroke"
+    type="deploy"
+    withIcon={true}
+    href="https://app.layer0.co/deploy?button&deploy&repo=https%3A%2F%2Fgithub.com%2Flayer0-docs%2Flayer0-nx-example">
+    Deploy to {{ PRODUCT_NAME }}
   </ButtonLink>
 </ButtonLinksGroup>
 
-## 1. Install the {{ PRODUCT_NAME }} CLI and run {{ CLI_NAME }} init {/*1-install-the-layer0-cli-and-run-0-init*/}
+{{ SIGN_UP_LAYER0 }}
 
-In the root of your nx monorepo, run:
+{{ INSTALL_LAYER0_CLI }}
 
-```sh
-npm i -g {{ PACKAGE_NAME }}/cli
-{{ CLI_NAME }} init
+{{ SYSTEM_REQUIREMENTS }}
+
+## Start a Nx project from scratch
+
+The following steps take you through set-up of a new Nx workspace. The same process can be used to add Layer0 to your existing Nx repo. 
+
+### Generate the Nx workspace
+
+To create the starter workspace, we will us Nx to generate the workspace. For this example, we will use the Next.js preset, but you can easily adapt this to any framework. Visit the Nx [docs](https://nx.dev/getting-started/intro) for more information on the available [presets](https://nx.dev/cli/create-nx-workspace#preset).
+
+Optionally, install nx globally.
+
+```bash
+npm i -g nx # optional but makes running nx commands easier
 ```
 
-## 2. Create a custom {{ PRODUCT_NAME }} connector {/*2-create-a-custom-layer0-connector*/}
+To create the workspace, run
 
-Since our Next.js app isn't located in the root of the project as the `{{ PACKAGE_NAME }}/next` connector expects, we'll need to define our own custom connector. To do so:
+```bash
+npx create-nx-workspace --preset=next
+```
 
-1. Set `connector: './{{ PRODUCT_NAME_LOWER }}'` in `{{ CONFIG_FILE }}`
-2. Copy the [layer0 directory from the example](https://github.com/layer0-docs/layer0-nx-example/tree/master/layer0) into the root of your monorepo.
+There will be a series of questions. When the one to choose the `Application name` comes, enter __`layer0-nx-next-app`__. The other answers can be of your choosing. 
 
-## 3. Update routes.js {/*3-update-routesjs*/}
+### Add {{ PRODUCT_NAME }} to the application 
+
+Because Nx wants dependencies installed at root level, we will `init` the project at root level to install the necesssary packages, but setup configurations to read into the next app we generated. The {{ PRODUCT_NAME }} next connector expects to be in the project repo, so we will create our own custom connector with the necesssary configurations. 
+
+```bash
+0 init # installs necessary packages
+```
+
+Reorganize project
+
+```bash
+mv routes.js apps/layer0-nx-next-app/routes.ts
+mv next.config.js apps/layer0-nx-next-app
+```
+
+Open `package.json` and change the `scripts > build` to the following:
+
+```json
+"build": "nx build layer0-nx-next-app",
+```
+
+Open `layer0.config.js` and change the contents to the following: 
 
 ```js
-const { Router } = require('{{ PACKAGE_NAME }}/core/router')
-const { default: NextRoutes } = require('{{ PACKAGE_NAME }}/next/router/NextRoutes')
+module.exports = {
+  connector: './layer0',
+  routes: './apps/layer0-nx-next-app/routes.ts',
+};
+```
 
-module.exports = new Router()
+Open `routes.ts` and change to the following: 
+
+```js
+import { Router } from '@layer0/core/router';
+import { nextRoutes } from '@layer0/next';
+
+export default new Router()
   .match('/service-worker.js', ({ serviceWorker }) => {
-    return serviceWorker('.next/static/service-worker.js')
+    return serviceWorker('.next/static/service-worker.js');
   })
-  .use(new NextRoutes('apps/next-app')) // provide the path to your Next.js app relative to the root of the monorepo here
+  .use(nextRoutes); // automatically adds routes for all files under /pages
 ```
 
-## Development: Run your nx app behind {{ PRODUCT_NAME }} {/*development-run-your-nx-app-behind-layer0*/}
+We need to add a custom connector now. You can either copy the whole folder from the example, or create each file below as instructed. 
 
-To run your Next.js app in development mode behind {{ PRODUCT_NAME }}, run:
-
-```bash
-{{ CLI_NAME }} dev
+```
+mkdir layer0
+touch layer0/build.js
+touch layer0/dev.js
+touch layer0/nextSrcDir.js
+touch layer0/prod.js
 ```
 
-## Deploy to {{ PRODUCT_NAME }} {/*deploy-to-layer0*/}
+__build.js__
+```js
+const createBuilder =
+  require('@layer0/next/build/createBuildEntryPoint').default;
+const { join } = require('path');
+const srcDir = require('./nextSrcDir');
 
-To deploy your app to {{ PRODUCT_NAME }}, run:
+module.exports = createBuilder({
+  srcDir,
+  distDir: join('dist', 'apps', 'layer0-nx-next-app', '.next'),
+  buildCommand: 'npm run build',
+});
+```
+
+__dev.js__
+```js
+const next = require('next');
+const createDevServer = require('@layer0/core/dev/createDevServer').default;
+const srcDir = require('./nextSrcDir');
+const cwd = process.cwd();
+
+module.exports = async function dev() {
+  process.chdir(srcDir);
+  global.LAYER0_NEXT_APP = next({ dev: true });
+  process.chdir(cwd);
+
+  return createDevServer({
+    label: 'Next',
+    command: (port) => `npx nx run layer0-nx-next-app:serve -- --port=${port}`,
+    ready: [/on http:\/\/localhost:3001/i],
+  });
+};
+```
+
+__prod.js__
+```js
+module.exports = require('@layer0/next/prod').default;
+```
+
+__nextSrcDir.js__
+```js
+const { join } = require('path');
+module.exports = join('apps', 'layer0-nx-next-app');
+```
+
+### Development
+
+To start the app locally running with {{ PRODUCT_NAME }}, run 
 
 ```bash
-{{ CLI_NAME }} deploy
+0 dev
+```
+
+### Deploy
+
+To deploy the app to {{ PRODUCT_NAME }}, run 
+
+```bash
+0 deploy 
 ```

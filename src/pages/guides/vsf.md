@@ -24,7 +24,7 @@ Here's an example Vue Storefront 2 app running on Layer0:
 
 {{ SIGN_UP_LAYER0 }}
 
-## Install the {{ PRODUCT_NAME }} CLI {/*install-the-{{PRODUCT_NAME_LOWER}}-cli*/} {/*install-the--product_name--cli-install-the-product_name_lower-cli*/}
+## Install the {{ PRODUCT_NAME }} CLI {/*install-the-layer0-cli*/}
 
 If you have not already done so, install the [{{ PRODUCT_NAME }} CLI](cli)
 
@@ -43,7 +43,7 @@ cd <project-name>
 npm install
 ```
 
-## Configuring your Vue Storefront app for {{ PRODUCT_NAME }} {/*configuring-your-vue-storefront-app-for-{{PRODUCT_NAME_LOWER}}*/} {/*configuring-your-vue-storefront-app-for--product_name--configuring-your-vue-storefront-app-for-product_name_lower*/}
+## Configuring your Vue Storefront app for {{ PRODUCT_NAME }} {/*configuring-your-vue-storefront-app-for-layer0*/}
 
 ### Initialize your project {/*initialize-your-project*/}
 

@@ -22,7 +22,7 @@ This guide shows you how to deploy a [VitePress](https://vitepress.vuejs.org/) a
 
 {{ SIGN_UP_LAYER0 }}
 
-## Install the {{ PRODUCT_NAME }} CLI {/*install-the-{{PRODUCT_NAME_LOWER}}-cli*/} {/*install-the--product_name--cli-install-the-product_name_lower-cli*/}
+## Install the {{ PRODUCT_NAME }} CLI {/*install-the-layer0-cli*/}
 
 If you have not already done so, install the [{{ PRODUCT_NAME }} CLI](cli)
 
@@ -34,7 +34,7 @@ npm i -g {{ PACKAGE_NAME }}/cli
 
 If you don't already have a VitePress app, create one by following the [official guide](https://vitepress.vuejs.org/guide/getting-started.html#getting-started).
 
-## Configuring your VitePress app for {{ PRODUCT_NAME }} {/*configuring-your-vitepress-app-for-{{PRODUCT_NAME_LOWER}}*/} {/*configuring-your-vitepress-app-for--product_name--configuring-your-vitepress-app-for-product_name_lower*/}
+## Configuring your VitePress app for {{ PRODUCT_NAME }} {/*configuring-your-vitepress-app-for-layer0*/}
 
 ### Initialize your project {/*initialize-your-project*/}
 
@@ -77,7 +77,7 @@ export default new Router().static('docs/.vitepress/dist', ({ cache }) => {
 
 Refer to the [Routing](routing) guide for the full syntax of the `routes.js` file and how to configure it for your use case.
 
-### Run the VitePress app locally on {{ PRODUCT_NAME }} {/*run-the-vitepress-app-locally-on-{{PRODUCT_NAME_LOWER}}*/} {/*run-the-vitepress-app-locally-on--product_name--run-the-vitepress-app-locally-on-product_name_lower*/}
+### Run the VitePress app locally on {{ PRODUCT_NAME }} {/*run-the-vitepress-app-locally-on-layer0*/}
 
 Create a production build of your app by running the following in your project's root directory:
 

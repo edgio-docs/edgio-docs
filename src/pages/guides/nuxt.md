@@ -67,7 +67,7 @@ Nuxt's create module will ask you a series of questions to configure your app. M
 - For `Choose rendering mode` select `Universal (SSR)`
 - Your answers to the other questions should not matter for the purposes of this guide.
 
-## Adding {{ PRODUCT_NAME }} to an existing Nuxt app {/*adding-{{PRODUCT_NAME_LOWER}}-to-an-existing-nuxt-app*/} {/*adding--product_name--to-an-existing-nuxt-app-adding-product_name_lower-to-an-existing-nuxt-app*/}
+## Adding {{ PRODUCT_NAME }} to an existing Nuxt app {/*adding-layer0-to-an-existing-nuxt-app*/}
 
 To prepare your Nuxt.js application for {{ PRODUCT_NAME }}:
 
@@ -170,7 +170,7 @@ And here is the `package.json` after modifications by `{{ CLI_NAME }} init`:
 }
 ```
 
-## Run the Nuxt.js app locally on {{ PRODUCT_NAME }} {/*run-the-nuxtjs-app-locally-on-{{PRODUCT_NAME_LOWER}}*/} {/*run-the-nuxtjs-app-locally-on--product_name--run-the-nuxtjs-app-locally-on-product_name_lower*/}
+## Run the Nuxt.js app locally on {{ PRODUCT_NAME }} {/*run-the-nuxtjs-app-locally-on-layer0*/}
 
 Run the Nuxt.js app with the command:
 
@@ -455,7 +455,7 @@ npm i -g {{ PACKAGE_NAME }}/cli
 
 ---
 
-### Make sure your version of {{ PRODUCT_NAME }} CLI is current {/*make-sure-your-version-of-{{PRODUCT_NAME_LOWER}}-cli-is-current*/} {/*make-sure-your-version-of--product_name--cli-is-current-make-sure-your-version-of-product_name_lower-cli-is-current*/}
+### Make sure your version of {{ PRODUCT_NAME }} CLI is current {/*make-sure-your-version-of-layer0-cli-is-current*/}
 
 If you previously installed the {{ PRODUCT_NAME }} CLI, make sure your version is current.
 
@@ -481,7 +481,7 @@ npm update -g {{ PACKAGE_NAME }}/cli
 
 ---
 
-### Error on deploy: `{{ PRODUCT_NAME_LOWER }}-deploy-lambda: Unzipped size must be smaller than...` {/*error-on-deploy-{{PRODUCT_NAME_LOWER}}-deploy-lambda-unzipped-size-must-be-smaller-than*/} {/*error-on-deploy--product_name_lower--deploy-lambda-unzipped-size-must-be-smaller-than-error-on-deploy-product_name_lower-deploy-lambda-unzipped-size-must-be-smaller-than*/}
+### Error on deploy: `{{ PRODUCT_NAME_LOWER }}-deploy-lambda: Unzipped size must be smaller than...` {/*error-on-deploy-layer0-deploy-lambda-unzipped-size-must-be-smaller-than*/}
 
 As the error states, there is an upper limit on how big a package can be when deployed to our serverless infrastructure. Some common strategies for solving:
 

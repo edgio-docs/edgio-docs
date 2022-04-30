@@ -22,7 +22,7 @@ This guide shows you how to deploy a [Shopify Hydrogen](https://hydrogen.shopify
 
 {{ SIGN_UP_LAYER0 }}
 
-## Install the {{ PRODUCT_NAME }} CLI {/*install-the-{{PRODUCT_NAME_LOWER}}-cli*/} {/*install-the--product_name--cli-install-the-product_name_lower-cli*/}
+## Install the {{ PRODUCT_NAME }} CLI {/*install-the-layer0-cli*/}
 
 If you have not already done so, install the [{{ PRODUCT_NAME }} CLI](cli)
 
@@ -46,7 +46,7 @@ You can verify your app works by running it locally with:
 npm run dev
 ```
 
-## Configuring your Shopify Hydrogen app for {{ PRODUCT_NAME }} {/*configuring-your-shopify-hydrogen-app-for-{{PRODUCT_NAME_LOWER}}*/} {/*configuring-your-shopify-hydrogen-app-for--product_name--configuring-your-shopify-hydrogen-app-for-product_name_lower*/}
+## Configuring your Shopify Hydrogen app for {{ PRODUCT_NAME }} {/*configuring-your-shopify-hydrogen-app-for-layer0*/}
 
 ### Initialize your project {/*initialize-your-project*/}
 
@@ -71,7 +71,7 @@ Install {{ PACKAGE_NAME }}/express by running the following:
 npm install {{ PACKAGE_NAME }}/express
 ```
 
-### Update {{ PRODUCT_NAME }} Configuration {/*update-{{PRODUCT_NAME_LOWER}}-configuration*/} {/*update--product_name--configuration-update-product_name_lower-configuration*/}
+### Update {{ PRODUCT_NAME }} Configuration {/*update-layer0-configuration*/}
 
 Update `{{ CONFIG_FILE }}` at the root of your project to the following:
 
@@ -148,7 +148,7 @@ module.exports = new Router()
 
 Refer to the [Routing](routing) guide for the full syntax of the `routes.js` file and how to configure it for your use case.
 
-### Run the Shopify Hydrogen app locally on {{ PRODUCT_NAME }} {/*run-the-shopify-hydrogen-app-locally-on-{{PRODUCT_NAME_LOWER}}*/} {/*run-the-shopify-hydrogen-app-locally-on--product_name--run-the-shopify-hydrogen-app-locally-on-product_name_lower*/}
+### Run the Shopify Hydrogen app locally on {{ PRODUCT_NAME }} {/*run-the-shopify-hydrogen-app-locally-on-layer0*/}
 
 Create a production build of your app by running the following in your project's root directory:
 

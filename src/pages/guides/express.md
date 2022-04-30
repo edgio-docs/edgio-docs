@@ -21,7 +21,7 @@ To run your app behind Layer0 locally, run:
 0 dev
 ```
 
-## Deploying your app to {{ PRODUCT_NAME }} {/*deploying-your-app-to-{{PRODUCT_NAME_LOWER}}*/} {/*deploying-your-app-to--product_name--deploying-your-app-to-product_name_lower*/}
+## Deploying your app to {{ PRODUCT_NAME }} {/*deploying-your-app-to-layer0*/}
 
 To deploy your app to {{ PRODUCT_NAME }}, run:
 

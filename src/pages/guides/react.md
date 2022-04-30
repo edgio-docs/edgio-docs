@@ -62,7 +62,7 @@ This will automatically add all of the required dependencies and files to your p
 
 ## Configure your project {/*configure-your-project*/}
 
-### {{ PRODUCT_NAME }} Router {/*{{PRODUCT_NAME_LOWER}}-router*/} {/*-product_name--router-product_name_lower-router*/}
+### {{ PRODUCT_NAME }} Router {/*layer0-router*/}
 
 Using the `Router` class from `{{ PACKAGE_NAME }}/core`, you'll configure caching for each of your routes, and forward requests to the server module you configured in the previous section using the `proxy` function.
 

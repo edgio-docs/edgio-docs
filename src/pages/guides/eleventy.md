@@ -33,7 +33,7 @@ This guide shows you how to deploy a [Eleventy](https://www.11ty.dev/) applicati
 
 {{ SIGN_UP_LAYER0 }}
 
-## Install the {{ PRODUCT_NAME }} CLI {/*install-the-{{PRODUCT_NAME_LOWER}}-cli*/} {/*install-the--product_name--cli-install-the-product_name_lower-cli*/}
+## Install the {{ PRODUCT_NAME }} CLI {/*install-the-layer0-cli*/}
 
 If you have not already done so, install the [{{ PRODUCT_NAME }} CLI](cli)
 
@@ -60,7 +60,7 @@ You can verify your app works by running it locally with:
 eleventy --serve
 ```
 
-## Configuring your Eleventy app for {{ PRODUCT_NAME }} {/*configuring-your-eleventy-app-for-{{PRODUCT_NAME_LOWER}}*/} {/*configuring-your-eleventy-app-for--product_name--configuring-your-eleventy-app-for-product_name_lower*/}
+## Configuring your Eleventy app for {{ PRODUCT_NAME }} {/*configuring-your-eleventy-app-for-layer0*/}
 
 Create a package.json at the root of your project with the following:
 
@@ -118,7 +118,7 @@ export default new Router().static('_site', ({cache}) => {
 
 Refer to the [Routing](routing) guide for the full syntax of the `routes.js` file and how to configure it for your use case.
 
-### Run the Eleventy app locally on {{ PRODUCT_NAME }} {/*run-the-eleventy-app-locally-on-{{PRODUCT_NAME_LOWER}}*/} {/*run-the-eleventy-app-locally-on--product_name--run-the-eleventy-app-locally-on-product_name_lower*/}
+### Run the Eleventy app locally on {{ PRODUCT_NAME }} {/*run-the-eleventy-app-locally-on-layer0*/}
 
 Create a production build of your app by running the following in your project's root directory:
 

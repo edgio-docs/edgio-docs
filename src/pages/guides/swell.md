@@ -26,7 +26,7 @@ A Swell powered ecommerce backend and a Nuxt.js app for the framework.
 
 {{ SIGN_UP_LAYER0 }}
 
-## Install the {{ PRODUCT_NAME }} CLI {/*install-the-{{PRODUCT_NAME_LOWER}}-cli*/} {/*install-the--product_name--cli-install-the-product_name_lower-cli*/}
+## Install the {{ PRODUCT_NAME }} CLI {/*install-the-layer0-cli*/}
 
 If you have not already done so, install the [{{ PRODUCT_NAME }} CLI](cli)
 
@@ -76,7 +76,7 @@ You can now verify that your app works by running it locally with:
 yarn run dev
 ```
 
-## Configuring your Swell app for {{ PRODUCT_NAME }} {/*configuring-your-swell-app-for-{{PRODUCT_NAME_LOWER}}*/} {/*configuring-your-swell-app-for--product_name--configuring-your-swell-app-for-product_name_lower*/}
+## Configuring your Swell app for {{ PRODUCT_NAME }} {/*configuring-your-swell-app-for-layer0*/}
 
 ### Modify nuxt.config.js {/*modify-nuxtconfigjs*/}
 

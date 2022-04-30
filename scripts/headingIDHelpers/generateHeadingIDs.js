@@ -10,11 +10,29 @@ const assert = require('assert');
 const fs = require('fs');
 const GithubSlugger = require('github-slugger');
 const walk = require('./walk');
+const mdConstants = require('../../constants');
 
 let modules;
 
-function stripLinks(line) {
-  return line.replace(/\[([^\]]+)\]\([^)]+\)/, (match, p1) => p1);
+// Looks for constants in headings and replaces the constants.
+function replaceConstantInHeader(header) {
+  const replacedHeader = header.replace(/{{\s*(\w+)\s*}}/g, (match) => {
+    const constantStringInMatch = match.replace(/{{|}}/g, '').trim();
+    const replacedConstant = mdConstants[constantStringInMatch];
+
+    if (!replacedConstant) {
+      console.log(
+        'Note: Hey, it looks like the constant `%s` in heading `%s` is undefined. Replaced it with an empty string',
+        match,
+        header
+      );
+
+      return '';
+    }
+    return replacedConstant;
+  });
+
+  return replacedHeader;
 }
 
 function addHeaderID(line, slugger) {
@@ -25,7 +43,10 @@ function addHeaderID(line, slugger) {
 
   const match =
     /^(#+\s+)(.+?)(\s*\{(?:\/\*|#)([^\}\*\/]+)(?:\*\/)?\}\s*)?$/.exec(line);
-  const before = match[1] + match[2];
+  const isHeaderWithConstant = line.includes('{{') || line.includes('}}');
+  const before = isHeaderWithConstant
+    ? replaceConstantInHeader(match[1] + match[2])
+    : match[1] + match[2];
   const proc = modules
     .unified()
     .use(modules.remarkParse)
@@ -38,9 +59,11 @@ function addHeaderID(line, slugger) {
       before +
       '` to be a heading, is it using a normal space after `#`?'
   );
+
   const autoId = head.data.id;
   const existingId = match[4];
   const id = existingId || autoId;
+
   // Ignore numbers:
   const cleanExisting = existingId
     ? existingId.replace(/-\d+$/, '')
@@ -71,6 +94,7 @@ function addHeaderIDs(lines) {
       results.push(line);
       return;
     }
+
     if (inCode) {
       results.push(line);
       return;

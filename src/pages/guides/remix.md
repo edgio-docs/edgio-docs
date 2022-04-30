@@ -20,11 +20,11 @@ This guide shows you how to deploy a [Remix](https://remix.run/) application on 
 
 {{ SYSTEM_REQUIREMENTS }}
 
-## Sign up for {{ PRODUCT_NAME }} {/*sign-up-for-{{PRODUCT_NAME_LOWER}}*/} {/*sign-up-for--product_name--sign-up-for-product_name_lower*/}
+## Sign up for {{ PRODUCT_NAME }} {/*sign-up-for-layer0*/}
 
 Deploying requires an account on {{ PRODUCT_NAME }}. [Sign up here for free.]({{ APP_URL }}/signup).
 
-## Install the {{ PRODUCT_NAME }} CLI {/*install-the-{{PRODUCT_NAME_LOWER}}-cli*/} {/*install-the--product_name--cli-install-the-product_name_lower-cli*/}
+## Install the {{ PRODUCT_NAME }} CLI {/*install-the-layer0-cli*/}
 
 If you have not already done so, install the [{{ PRODUCT_NAME }} CLI](cli)
 
@@ -48,7 +48,7 @@ You can verify your app works by running it locally with:
 npm run dev
 ```
 
-## Configuring your Remix app for {{ PRODUCT_NAME }} {/*configuring-your-remix-app-for-{{PRODUCT_NAME_LOWER}}*/} {/*configuring-your-remix-app-for--product_name--configuring-your-remix-app-for-product_name_lower*/}
+## Configuring your Remix app for {{ PRODUCT_NAME }} {/*configuring-your-remix-app-for-layer0*/}
 
 ### Initialize your project {/*initialize-your-project*/}
 
@@ -73,7 +73,7 @@ Install {{ PACKAGE_NAME }}/express by running the following:
 npm install {{ PACKAGE_NAME }}/express
 ```
 
-### Update {{ PRODUCT_NAME }} Configuration {/*update-{{PRODUCT_NAME_LOWER}}-configuration*/} {/*update--product_name--configuration-update-product_name_lower-configuration*/}
+### Update {{ PRODUCT_NAME }} Configuration {/*update-layer0-configuration*/}
 
 Update `{{ CONFIG_FILE }}` at the root of your project to the following:
 
@@ -139,7 +139,7 @@ module.exports = new Router()
 
 Refer to the [Routing](routing) guide for the full syntax of the `routes.js` file and how to configure it for your use case.
 
-### Run the Remix app locally on {{ PRODUCT_NAME }} {/*run-the-remix-app-locally-on-{{PRODUCT_NAME_LOWER}}*/} {/*run-the-remix-app-locally-on--product_name--run-the-remix-app-locally-on-product_name_lower*/}
+### Run the Remix app locally on {{ PRODUCT_NAME }} {/*run-the-remix-app-locally-on-layer0*/}
 
 Create a production build of your app by running the following in your project's root directory:
 

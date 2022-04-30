@@ -26,7 +26,6 @@ const StyledDocs = styled.div`
     gap: 16px 0;
 
     .article-heading {
-      color: var(--docs-color);
       display: flex;
       align-items: center;
       gap: 10px;
@@ -35,23 +34,16 @@ const StyledDocs = styled.div`
       position: relative;
 
       .anchor {
-        position: absolute;
-        left: 0;
-        transform: translateX(-19px);
-        width: 18px;
-        height: 18px;
-        top: 50%;
+        color: var(--docs-color);
+        text-decoration: none;
 
-        @media (max-width: 400px) {
-          transform: translateX(-18px);
+        span {
+          margin-left: 8px;
+          visibility: hidden;
         }
       }
 
-      .anchor svg {
-        visibility: hidden;
-      }
-
-      &:hover svg {
+      &:hover .anchor span {
         visibility: visible;
       }
     }

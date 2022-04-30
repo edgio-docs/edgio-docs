@@ -26,12 +26,12 @@ Install the Vue Storefront application using this guide: https://docs.vuestorefr
 nvm use 14
 ```
 
-## 2. Prepare VSF files for {{ PRODUCT_NAME }} {/*2-prepare-vsf-files-for-{{PRODUCT_NAME_LOWER}}*/} {/*2-prepare-vsf-files-for--product_name--2-prepare-vsf-files-for-product_name_lower*/}
+## 2. Prepare VSF files for {{ PRODUCT_NAME }} {/*2-prepare-vsf-files-for-layer0*/}
 
 - In the new VSF project, go to `src/themes/default` (or any theme you're using) and remove `.git` folder from it to save that in Git VCS.
 - Go to `.gitignore` file and remove `config/local.json` line to keep it tracked.
 
-## 3. Install {{ PRODUCT_NAME }} {/*3-install-{{PRODUCT_NAME_LOWER}}*/} {/*3-install--product_name--3-install-product_name_lower*/}
+## 3. Install {{ PRODUCT_NAME }} {/*3-install-layer0*/}
 
 - Install {{ PRODUCT_NAME }} packages: `yarn add -D -W {{ PACKAGE_NAME }}/cli && yarn add -W {{ PACKAGE_NAME }}/core {{ PACKAGE_NAME }}/prefetch {{ PACKAGE_NAME }}/devtools`
 - Create a file called `{{ CONFIG_FILE }}` in the root directory of your project and configure your origin and images hosts as backends. For example:

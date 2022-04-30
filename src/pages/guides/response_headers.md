@@ -2,7 +2,7 @@
 title: Response Headers
 ---
 
-This guide describes the headers that {{ PRODUCT_NAME }} injects into responses, making them visible to your client code.
+This guide describes the headers that {{ PRODUCT_NAME }} injects into responses, making them visible to your client code. Note that the `x-0-*` headers namespace is reserved for {{ PRODUCT_NAME }} internal use and setting them yourself, except where so noted, is unsupported.
 
 ## General Headers {/*general-headers*/}
 
@@ -11,7 +11,7 @@ This guide describes the headers that {{ PRODUCT_NAME }} injects into responses,
 - `{{ HEADER_PREFIX }}-request-id`: the unique ID of the request on {{ PRODUCT_NAME }} infrastructure
 - `{{ HEADER_PREFIX }}-hit-request-id`: the unique ID of the request whose cached response is being returned (not present if cache miss)
 - `{{ HEADER_PREFIX }}-caching-status`: indicates why a response was or was not cached. See [Caching](/guides/caching#section_why_is_my_response_not_being_cached_).
-- `{{ HEADER_PREFIX }}-surrogate-key`: a space separated list of secondary cache keys used for [cache clearing](/guides/purging#surrogate_keys)
+- `{{ HEADER_PREFIX }}-surrogate-key`: a space separated list of secondary cache keys used for [cache clearing](/guides/purging#surrogate_keys) that can be injected when needed into your backend responses.
 
 ### Structure of `{{ HEADER_PREFIX }}-t` {/*structure-of--header_prefix--t*/}
 

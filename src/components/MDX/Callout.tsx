@@ -13,6 +13,7 @@ const StyledCallout = styled.div.attrs<IStyledCallout>((props) => ({
   display: grid;
   grid-template-columns: auto 1fr;
   column-gap: 15px;
+  align-items: flex-start;
 
   /* type=info */
   ${(props) =>

@@ -119,7 +119,7 @@ mywebsite.xyz.        599    IN    A        208.69.180.14
 
 ### Allowing {{ PRODUCT_NAME }} IP Addresses {/*allowing-layer0-ip-addresses*/}
 
-Before going live, ensure that all {{ PRODUCT_NAME }} IP addresses are allowed in the security layer in front of your origin and/or API servers. The IP addresses you need to allow can be found on the _IP Whitelist_ section of the _Networking_ tab. Note that your IP addresses may differ from the ones shown above.
+Before going live, ensure that all {{ PRODUCT_NAME }} IP addresses are allowed in the security layer in front of your origin and/or API servers. The IP addresses you need to allow can be found on the _Allowlisting_ section of the _Networking_ tab. Note that your IP addresses may differ from the ones shown above.
 
 ## TLS/SSL {/*tlsssl*/}
 

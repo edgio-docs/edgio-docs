@@ -66,46 +66,56 @@ Doing so will redeploy the environment's active deployment, but updated with the
 
 ## Environment Variables {/*environment-variables*/}
 
-You can create and access environment variables on a {{PRODUCT_NAME}} environment basis. Environment variables allow you to control certain facets of your application outside of its code. Environment variable types are:
+You can create environment variables on a {{PRODUCT_NAME}} environment basis. Environment variables allow you to control certain facets of your application outside of its code.  {{PRODUCT_NAME}} environment variable types are:
 
-* User-defined - see [Creating Environment Variables](#creating-environment-variables)
+* User-defined - see [Creating and Editing Environment Variables](#creating-environment-variables)
 * Built-in - see [Built-in Environment Variables](#built-in-environment-variables)
 
-### Creating Environment Variables {/*creating-environment-variables*/}
+### Creating and Editing Environment Variables {/*creating-environment-variables*/}
 
 1. Navigate to your site and select the _ENVIRONMENTS_ tab:
 
-![environments](/images/environments/environments.png)
+  ![environments](/images/environments/environments.png)
 
 2. In the resulting list of deployments, click the desired version under the *ENVIRONMENT* list header.
 
-![deployments](/images/environments/deployments.png)
+  ![deployments](/images/environments/deployments.png)
 
-The environment's current settings are listed and environment variables are displayed in the resulting *CONFIGURATION* tab:
+  The environment's current settings are listed and environment variables are displayed in the resulting *CONFIGURATION* tab:
 
-![env-var-list](/images/environments/env-var-list.png)
+  ![env-var-list](/images/environments/env-var-list.png)
 
-To add environment variables, you must create a new environment version (see [Environment Versions](#environment-versions)).
+To add or edit environment variables, you must create a new environment version (see [Environment Versions](#environment-versions)).
 
-3. Click the *EDIT* button at the top right of the screen.
+3. Click the *EDIT* button at the top right of the screen and scroll to the *Environment Variables* section.
 
-4. Scroll to the *Environment Variables* section and click the *ADD VARIABLE* button.
+    * **Create a Variable**
 
-![add](/images/environments/add-env-var.png)
+      1. Click the the *ADD VARIABLE* button. 
 
-5. Enter the variable name (key) and value in the *Add Variable* dialog. If you wish to hide the value after creation, click the *Keep this value a secret* field. 
+        ![add](/images/environments/add-env-var.png)
+      
+      2. Enter the variable name (key) and value in the *Add Variable* dialog. If you wish to hide the value after creation, click the *Keep this value a secret* field. 
 
-6. Click the *ADD VARIABLE* button in the dialog.
+      3. Click the *ADD VARIABLE* button in the dialog.
 
-Each variable you add is listed in a table and can be deleted by clicking the delete icon. 
+    * **Edit a Variable**
 
-![config](/images/environments/config-env-vars.png)
+      1. Click the variable's row.
+
+      2. The resulting dialog is similar to the *Add Variable* dialog. Modify the variable name and value and  click the *Keep this value a secret* field if needed.
+
+      3. Click the *ADD VARIABLE* button in the dialog. 
+
+  Each variable you add or edit is listed in a table and can be deleted by clicking the delete icon. 
+
+  ![config](/images/environments/config-env-vars.png)
 
 7. Click the *ACTIVATE* button at the top right of the screen to save the new [version](#environment-versions). 
 
-You are returned to the environment's *CONFIGURATION* tab and all variables are listed in the *Environment Variables* section. Secret values are masked with asterisks.
+  You are returned to the new version's *CONFIGURATION* tab and all variables are listed in the *Environment Variables* section. Secret values are masked with asterisks.
 
-![env-var-list](/images/environments/env-var-list.png)
+  ![env-var-list](/images/environments/env-var-list.png)
 
 ### Built-in Environment Variables {/*built-in-environment-variables*/}
 

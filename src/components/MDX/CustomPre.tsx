@@ -175,7 +175,7 @@ function CopyCode({message}: {message: string}) {
   });
 
   return (
-    <CopyToClipboard text={message} onCopy={() => setCopied(true)}>
+    <CopyToClipboard text={message.trim()} onCopy={() => setCopied(true)}>
       <StyledCopyCodeButton className="code-block__copy">
         {copied ? 'Copied' : 'Copy'}
       </StyledCopyCodeButton>

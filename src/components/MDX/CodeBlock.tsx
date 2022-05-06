@@ -1,5 +1,7 @@
-import React from 'react';
-import Highlight from 'react-highlight';
+import hljs from 'highlight.js';
+import React, {useEffect} from 'react';
+
+import useHydrationIsLoaded from 'utils/hooks/useHydrationIsLoaded';
 
 export default function CodeBlock({
   language,
@@ -8,7 +10,16 @@ export default function CodeBlock({
   language: string;
   children: React.ReactNode;
 }) {
+  const isLoaded = useHydrationIsLoaded();
+  useEffect(() => {
+    if (isLoaded) {
+      hljs.initHighlightingOnLoad();
+    }
+  }, [isLoaded]);
+
   return (
-    <Highlight className={`${language} custom-scrollbar`}>{children}</Highlight>
+    <pre className="custom-scrollbar">
+      <code className={`${language} hljs`}>{children}</code>
+    </pre>
   );
 }

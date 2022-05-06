@@ -181,7 +181,7 @@ module.exports = {
 539 status codes (see [Status Codes](/guides/status_codes)) are timeout errors, which can be:
 * An error in your SSR code
 * A backend error (server overloaded or offline)
-* An allowlist (whitelist) issue
+* An allowlist issue
 
 <Callout type="warning">
   We noticed some performance issues related to sourcemaps being loaded in our Serverless infrastructure, which may result in 539 project timeout errors. In case you encounter such errors, please try again with sourcemaps disabled. This document will be updated once the problem is fully resolved.
@@ -220,7 +220,7 @@ When you run your site on {{ PRODUCT_NAME }}, all requests come in through four 
 
 A typical pattern is that your site works fine for a few days after deploying to {{ PRODUCT_NAME }}, then your server starts interpreting the requests as a DDoS attack.
 
-To prevent this scenario, you must configure your server with allowlisted  {{ PRODUCT_NAME }}  IP addresses. See “IP Whitelist” in [Network Configuration](/guides/production).
+To prevent this scenario, you must configure your server with allowlisted  {{ PRODUCT_NAME }}  IP addresses. See "” in [Network Configuration](/guides/production).
 
 ### Procedure {/*procedure*/}
 
@@ -307,4 +307,4 @@ Troubleshoot your code to find and fix the error.
 ###### Allowlist Error {/*allowlist-error*/}
 
 If the command succeeds and finishes quickly, it is probably an allowlist error.
-Contact your operations team and ask them to add the IP addresses in “IP Whitelist” in [Network Configuration](/guides/production#section_network_configuration) to your server's IP allowlist.
+Contact your operations team and ask them to add the IP addresses in _Allowlisting_ in [Network Configuration](/guides/production#section_network_configuration) to your server's IP allowlist.

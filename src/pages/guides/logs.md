@@ -140,7 +140,7 @@ Unique request ID.
 
 ### waf {/*waf*/}
 
-WAF security state: geo for geo blocking, bl for block list, dl-<list name> for dynamic lists
+WAF security state: geo for geo blocking, bl for block list, dl-{list name} for dynamic lists
 if the request was blocked; wl for allow list, by for bypass if the request was passed.
 
 ### sh {/*sh*/}

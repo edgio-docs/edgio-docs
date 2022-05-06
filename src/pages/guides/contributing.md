@@ -111,12 +111,6 @@ upload.build.layer0.co
 app.layer0.co
 ```
 
-### Image {/*image*/}
-
-```ts
-<Image src="image src" alt="alt text"/>
-```
-
 ### Video {/*video*/}
 
 ```ts

@@ -20,7 +20,7 @@ After launching your site, your  private space will look similar to this example
 
 ![new site](/images/teams/new-site.png)
 
-When you run `{{ CLI_NAME }} deploy` your site will be created here. Sites in your private space can only be seen by you. To collaborate with other developers, create a team. Enter a name in the 
+When you run `{{ CLI_NAME }} deploy` your site will be created here. Sites in your private space can only be seen by you. To collaborate with other developers, create a team.
 
 To create a team, click the diamond icon to the right of your name in the upper left of your window, then choose *Create a team* from the popup. 
 

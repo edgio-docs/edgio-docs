@@ -6,6 +6,7 @@ const images = require('remark-images'); // Improved image syntax
 const unrwapImages = require('remark-unwrap-images'); // Removes <p> wrapper around images
 const smartyPants = require('./remark-smartypants'); // Cleans up typography
 const html = require('remark-html');
+const remarkMdxCodeMeta = require('remark-mdx-code-meta');
 // const {
 //   remarkExtendedTable,
 //   extendedTableHandlers,
@@ -19,6 +20,7 @@ module.exports = {
     images,
     unrwapImages,
     smartyPants,
+    remarkMdxCodeMeta,
     // embed
   ],
   markdownToHtml,
@@ -31,6 +33,7 @@ async function markdownToHtml(markdown) {
     .use(images)
     .use(unrwapImages)
     .use(smartyPants)
+    .use(remarkMdxCodeMeta)
     .use(html)
     // .use(embed)
     .process(markdown);

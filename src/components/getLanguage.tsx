@@ -32,6 +32,8 @@ export default function getDescriptiveLanguage(language: string) {
       return 'YAML';
     case 'groovy':
       return 'Groovy';
+    case 'graphql':
+      return 'GraphQL';
     default:
       return normalizedLanguageString;
   }

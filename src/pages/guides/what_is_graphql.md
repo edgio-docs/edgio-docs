@@ -177,10 +177,10 @@ Notice the following about this example:
 
 Now assume that you want to get the name and address of the customer with id `01224950`. Your query would look like this:
 
-```js
+```graphql
 getCustomerById(id: “2210194”) {
-    name
-    address
+  name
+  address
 }
 ```
 

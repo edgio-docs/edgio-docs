@@ -8,6 +8,24 @@
 			{
 				"ssr": true
 			}
+		],
+		[
+			"prismjs",
+			{
+				"languages": [
+					"javascript",
+					"typescript",
+					"css",
+					"markup",
+					"bash"
+				],
+				"plugins": [
+					"line-numbers"
+				],
+				// "theme": "okaidia",
+				// "theme": "gruvbox",
+				"css": true
+			}
 		]
 	]
 }

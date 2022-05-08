@@ -1,4 +1,5 @@
-import hljs from 'highlight.js';
+import cn from 'classnames';
+import Prism from 'prismjs';
 import React, {useEffect} from 'react';
 
 import useHydrationIsLoaded from 'utils/hooks/useHydrationIsLoaded';
@@ -12,14 +13,12 @@ export default function CodeBlock({
 }) {
   const isLoaded = useHydrationIsLoaded();
   useEffect(() => {
-    if (isLoaded) {
-      hljs.initHighlightingOnLoad();
-    }
+    Prism.highlightAll();
   }, [isLoaded]);
 
   return (
-    <pre className="custom-scrollbar">
-      <code className={`${language} hljs`}>{children}</code>
+    <pre className={cn('custom-scrollbar', language)}>
+      <code className={`${language}`}>{children}</code>
     </pre>
   );
 }

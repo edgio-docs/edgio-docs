@@ -6,6 +6,7 @@ import {markdownToHtml} from '../../../plugins/markdownToHtml';
 
 import {MarkdownPage} from 'components/Layout/MarkdownPage';
 import {Page} from 'components/Layout/Page';
+import JSONRoutes from 'utils/jsonRoutes';
 
 const StyledChangelogContent = styled.div`
   display: contents;
@@ -49,7 +50,7 @@ const StyledChangelogContent = styled.div`
 
 function ChangelogPage({content}: {content: string}) {
   return (
-    <Page>
+    <Page routeTree={JSONRoutes}>
       <MarkdownPage meta={{title: 'Changelog'}}>
         <StyledChangelogContent dangerouslySetInnerHTML={{__html: content}} />
       </MarkdownPage>

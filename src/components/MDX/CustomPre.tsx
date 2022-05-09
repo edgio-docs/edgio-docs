@@ -14,7 +14,6 @@ const StyledCustomPre = styled.div`
   .code-block__inner {
     display: flex;
     flex-direction: column;
-    gap: 4px;
     border-color: #356369;
     background: #242424;
   }
@@ -53,7 +52,7 @@ const StyledCustomPre = styled.div`
 
 export default function CustomPre({children}: {children: React.ReactNode}) {
   let message: string = '';
-  let language: string | undefined;
+  let language: string = 'language-unknown';
   let filename: string | undefined;
 
   if (typeof children === 'string') {
@@ -63,7 +62,7 @@ export default function CustomPre({children}: {children: React.ReactNode}) {
     typeof children.props.children === 'string'
   ) {
     message = children.props.children;
-    language = children.props.className;
+    language = children.props.className || 'language-unknown';
     filename = children.props.filename;
   }
 
@@ -76,11 +75,11 @@ export default function CustomPre({children}: {children: React.ReactNode}) {
         <div className="code-block__inner">
           <header className="code-block__header">
             <div className="header-start">
-              {language && (
-                <span className="code-block__header-text">
-                  {language && getDescriptiveLanguage(language)}
-                </span>
-              )}
+              {/* {language && ( */}
+              <span className="code-block__header-text">
+                {getDescriptiveLanguage(language)}
+              </span>
+              {/* )} */}
               {replacedFilename && (
                 <span className="code-block__filename">{replacedFilename}</span>
               )}
@@ -90,7 +89,7 @@ export default function CustomPre({children}: {children: React.ReactNode}) {
             </div>
           </header>
           <main className="code-block__content">
-            <CodeBlock language={language || 'js'}>{message}</CodeBlock>
+            <CodeBlock language={language}>{message}</CodeBlock>
           </main>
         </div>
       </div>

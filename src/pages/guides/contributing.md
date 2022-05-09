@@ -58,7 +58,7 @@ Use the custom components below to enhance the look and feel of your guides.
 
 Call attention to specific part of the guide with callouts.
 
-```ts
+```tsx
 // use this in a markdown file... with type: 'info' | 'warning' | 'danger';
 
 <Callout type="info">
@@ -90,7 +90,7 @@ The code-snippet aboves renders:
 
 Provide a language-module for syntax highlighting or non if you still need to use a codeblock.
 
-```js
+```ts
 // This codeblock has the 'js' language module (with JS comment)
 console.log(new Date())
 ```
@@ -106,21 +106,21 @@ echo "Hello World"
 ```
 
 ```
-// This codeblock has no language module
+// This codeblock has no language module, hence "unknown"
 upload.build.layer0.co
 app.layer0.co
 ```
 
 ### Video {/*video*/}
 
-```ts
+```tsx
 <Video src="video src url"/>
 ```
 
 ---
 ### Button Link {/*button-link*/}
 
-```ts
+```tsx
 /*
 interface IButtonLinkProps {
  variant: 'fill' | 'stroke';
@@ -130,6 +130,7 @@ interface IButtonLinkProps {
  withIcon: boolean;
 }
 */
+
 
 <ButtonLink variant="fill" type="default" href="...">
  Try the Next.js SSR Example Site
@@ -157,7 +158,7 @@ Renders:
 
 ### Button Links Group {/*button-links-group*/}
 
-```ts
+```tsx
 <ButtonLinksGroup>
  <ButtonLink variant="fill" type="default" href="...">
   Try the Next.js SSR Example Site

@@ -98,18 +98,20 @@ The examples in this section are modeled using Express (a Node.js web framework)
 
 Going back to our Customer example, let’s say that each customer has a name, address, city, country, and id. You could model the `Customer` resource and related operations as follows.
 
-```js
+```graphql
 type Customer {
-	name: String!
+  name: String!
 	address: String!
 	city: String!
 	country: String!
 	id: ID!
 }
+
 #Get all customers
 type Query {
 	getAllCustomers: [Customer!]!
 }
+
 #Get one customer
 type Query {
 	getCustomerById(id: ID!): Customer!
@@ -160,7 +162,7 @@ Queries begin with the query keyword followed by a resource name, followed by a 
 
 Assume that you want to get the name and address of all customers. Your query would look like this:
 
-```js
+```graphql
 getAllCustomers {
     name
     address

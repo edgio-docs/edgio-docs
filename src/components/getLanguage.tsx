@@ -34,6 +34,8 @@ export default function getDescriptiveLanguage(language: string) {
       return 'Groovy';
     case 'graphql':
       return 'GraphQL';
+    case 'unknown':
+      return '';
     default:
       return normalizedLanguageString;
   }

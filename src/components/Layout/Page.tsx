@@ -5,8 +5,10 @@ import styled from 'styled-components';
 import Header from './Header/Header';
 import {Sidebar} from './Sidebar/Sidebar';
 import {useIsMobile} from './useMediaQuery';
+import {RouteItem, SidebarContext} from './useRouteMeta';
 
 interface PageProps {
+  routeTree: RouteItem;
   children: React.ReactNode;
 }
 
@@ -58,7 +60,7 @@ const StyledMainPage = styled.div`
   }
 `;
 
-export function Page({children}: PageProps) {
+export function Page({routeTree, children}: PageProps) {
   const isMobile = useIsMobile(850);
   const [showSidebar, setShowSidebar] = React.useState(isMobile);
   const router = useRouter();
@@ -70,14 +72,16 @@ export function Page({children}: PageProps) {
   return (
     <StyledMainPage>
       <Header {...{showSidebar, setShowSidebar}} />
-      <main className="docs-content">
-        <div
-          className="docs-side__nav custom-scrollbar"
-          data-open={isMobile && showSidebar}>
-          <Sidebar />
-        </div>
-        <div className="docs-content__inner">{children}</div>
-      </main>
+      <SidebarContext.Provider value={routeTree}>
+        <main className="docs-content">
+          <div
+            className="docs-side__nav custom-scrollbar"
+            data-open={isMobile && showSidebar}>
+            <Sidebar />
+          </div>
+          <div className="docs-content__inner">{children}</div>
+        </main>
+      </SidebarContext.Provider>
     </StyledMainPage>
   );
 }

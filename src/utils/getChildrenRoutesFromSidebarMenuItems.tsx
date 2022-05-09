@@ -1,8 +1,8 @@
-import SidebarMenuItems, {IChildrenRoutes} from '../data/SidebarMenuItems';
+import SidebarMenuItems, {IRoute} from '../data/SidebarMenuItems';
 
 export function getChildrenRoutesFromSidebarMenuItems(
   identifier: string
-): IChildrenRoutes[] | [] {
+): IRoute[] | [] {
   const {routes} = SidebarMenuItems[0].filter(
     ({path}) => path.toLowerCase() === identifier.toLowerCase()
   )[0];

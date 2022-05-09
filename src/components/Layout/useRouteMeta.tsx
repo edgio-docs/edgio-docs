@@ -22,16 +22,11 @@ export type RouteTag =
 export interface RouteItem {
   /** Page title (for the sidebar) */
   title: string;
-  /** Optional page description for heading */
-  description?: string;
-  /* Additional meta info for page tagging */
-  tags?: RouteTag[];
-  /** Path to page */
-  path?: string;
-  /** Whether the entry is a heading */
-  heading?: boolean;
   /** List of sub-routes */
   routes?: RouteItem[];
+
+  /** Path to page */
+  path?: string;
 }
 
 export interface Routes {

@@ -10,6 +10,8 @@ import DocsFooter from '../Docs/DocsFooter';
 import {MDXComponents} from '../MDX/MDXComponents';
 import Seo from '../Seo';
 
+import DocsPagination from 'components/Docs/DocsPagination';
+
 export interface MarkdownProps<Frontmatter> {
   meta: Frontmatter & {description?: string};
   children?: React.ReactNode;
@@ -67,6 +69,7 @@ export function MarkdownPage<
         <div className="docs">
           <Docs title={title} tocHeadings={tocHeadings}>
             {children}
+            <DocsPagination />
           </Docs>
         </div>
       )}

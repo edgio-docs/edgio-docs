@@ -144,9 +144,7 @@ Layer0 automatically produces a source map for your router file so that all runt
 
 Set `{{ FULL_CLI_NAME }}SourceMaps: true` in your `next.config.js`:
 
-```js
-// next.config.js
-
+```js filename="./next.config.js"
 const { withLayer0, withServiceWorker } = require('@layer0/next/config')
 
 module.exports = withLayer0(
@@ -162,9 +160,7 @@ module.exports = withLayer0(
 
 Set `{{ FULL_CLI_NAME }}SourceMaps: true` in the config for `@layer0/nuxt/module` in `buildModules` in `nuxt.config.js`:
 
-```js
-// nuxt.config.js
-
+```js filename="./nuxt.config.js"
 module.exports = {
   // ...
   buildModules: [['@layer0/nuxt/module', { {{ FULL_CLI_NAME }}SourceMaps: true }]],
@@ -285,7 +281,7 @@ _Note:_ If line 3:
 * Ends in a status code other than `200`, then the SSR code received a non-`200` code from the backend server.
 * Does not end in a status code at all, then the SSR did not receive a response from the backend and the problem can be either an allowlist error or a timeout error. See "Distinguishing an Allow List Error from a Timeout Error." See [Distinguishing an Allowlist Error from a Timeout Error](#section_distinguishing_an_allowlist_error_from_a_timeout_error).
 
-##### Distinguishing an Allowlist Error from a Timeout Error {/*distinguishing-an-allowlist-error-from-a-timeout-error*/}
+#### Distinguishing an Allowlist Error from a Timeout Error {/*distinguishing-an-allowlist-error-from-a-timeout-error*/}
 
 To determine if there is an allowlist error, do the following:
 
@@ -298,13 +294,13 @@ To determine if there is an allowlist error, do the following:
 The outcome will be either [SSR code error](#section_SSR_Code_Error) or an [allowlist error](#section_allowlist_Error).
 
 
-###### SSR Code Error {/*ssr-code-error*/}
+#### SSR Code Error {/*ssr-code-error*/}
 
 If the command fails or does not respond, there is an error in your code, most likely a badly formed request.
 
 Troubleshoot your code to find and fix the error.
 
-###### Allowlist Error {/*allowlist-error*/}
+#### Allowlist Error {/*allowlist-error*/}
 
 If the command succeeds and finishes quickly, it is probably an allowlist error.
 Contact your operations team and ask them to add the IP addresses in “IP Whitelist” in [Network Configuration](/guides/production#section_network_configuration) to your server's IP allowlist.

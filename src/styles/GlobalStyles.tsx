@@ -260,24 +260,19 @@ pre[class*="language-"] {
   word-break: normal;
   word-wrap: normal;
   line-height: 1.5;
-
   tab-size: 4;
-
   hyphens: none;
-
 }
 
 /* Code blocks */
 pre[class*="language-"] {
-  margin: .5em 0;
   overflow: auto;
-	padding-bottom: 15px;
-	padding-top: 15px;
+  /* padding: 15px 15px 15px 0px; */
+  padding: 15px;
 }
 
 :not(pre)>code[class*="language-"],
 pre[class*="language-"] {
-  background: #2d2d2d;
   background: transparent;
 }
 
@@ -361,6 +356,10 @@ pre[class*="language-"] {
 
 .token.inserted {
   color: green;
+}
+
+pre[class*="language-"].line-numbers {
+  padding-left: 3.5em;
 }
 `;
 

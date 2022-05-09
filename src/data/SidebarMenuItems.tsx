@@ -92,7 +92,7 @@ import {
 
 import {IconGear, IconGearDark} from 'components/Icon/IconGear';
 
-export interface IChildrenRoutes {
+export interface IRoute {
   title: string;
   path: string;
   icon?: JSX.IntrinsicElements['svg'];
@@ -108,10 +108,12 @@ export interface ISidebarMenuItem {
   iconDark?: JSX.IntrinsicElements['svg'];
   path: string;
   sortRoutes?: boolean;
-  routes?: Array<IChildrenRoutes>;
+  routes?: Array<IRoute>;
 }
 
-const SidebarMenuItems: Array<Array<ISidebarMenuItem>> = [
+export type ISidebarMenuItems = Array<Array<ISidebarMenuItem>>;
+
+const SidebarMenuItems: ISidebarMenuItems = [
   [
     {
       title: 'Getting Started',

@@ -9283,10 +9283,10 @@ rc@^1.2.7:
     minimist "^1.2.0"
     strip-json-comments "~2.0.1"
 
-react-collapsed@3.1.0:
-  version "3.1.0"
-  resolved "https://registry.yarnpkg.com/react-collapsed/-/react-collapsed-3.1.0.tgz#5fee8db3743d2b1139bddc43bf8cc36df1872d49"
-  integrity sha512-Pr4JqeQVPfkPPJk07Est1QxH5h4TxvHc/Q9AHt87ubxUVMu34hj08a+wx+JWTW7Al0CLwP4YTjZQ5KILprAKGQ==
+react-collapsed@^3.3.0:
+  version "3.3.0"
+  resolved "https://registry.yarnpkg.com/react-collapsed/-/react-collapsed-3.3.0.tgz#d20c727ed1769b213edb96420ffe12b8195b2f41"
+  integrity sha512-2oXo9xsleo3ZwmNP7GymWbkZp2SwDZImLduy1LKgQMsqZTDldyzP2GnfvYb9vyGFDYHRYFhnWlwDmG2yWkt8eQ==
   dependencies:
     raf "^3.4.1"
     tiny-warning "^1.0.3"

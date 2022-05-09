@@ -12,18 +12,10 @@
 		[
 			"prismjs",
 			{
-				"languages": [
-					"javascript",
-					"typescript",
-					"css",
-					"markup",
-					"bash"
-				],
+				"languages": "all",
 				"plugins": [
 					"line-numbers"
 				],
-				// "theme": "okaidia",
-				// "theme": "gruvbox",
 				"css": true
 			}
 		]

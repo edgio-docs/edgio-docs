@@ -144,8 +144,6 @@ const StyledDocs = styled.div`
   table {
     width: 100%;
     border-collapse: collapse;
-    font-size: 14px;
-    display: block;
     overflow-x: auto;
 
     thead th {
@@ -155,7 +153,7 @@ const StyledDocs = styled.div`
     th,
     td {
       padding: 16px;
-      border: 1px solid #e3e8ee;
+      border: 2px solid #363636;
       text-align: left;
       vertical-align: top;
     }

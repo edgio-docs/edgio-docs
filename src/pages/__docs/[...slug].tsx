@@ -4,6 +4,7 @@ import {useState, useRef, MutableRefObject} from 'react';
 import useVersioning, {VERSION_REGEX} from '../../components/versioning';
 
 import {Page} from 'components/Layout/Page';
+import JSONRoutes from 'utils/jsonRoutes';
 
 interface DocsIFrame extends MutableRefObject<any> {
   current: null | HTMLIFrameElement;
@@ -59,7 +60,7 @@ export default function ApiDocsPage() {
   }
 
   return (
-    <Page>
+    <Page routeTree={JSONRoutes}>
       <iframe
         src={frameSrc}
         onLoad={onFrameLoad}

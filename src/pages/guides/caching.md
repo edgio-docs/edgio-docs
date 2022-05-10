@@ -72,7 +72,7 @@ To ensure that your site is resilient to [cache poisoning attacks](security#sect
 
 It is often useful to customize the cache key, either to improve the cache hit ratio or to account for complexities of your site. As seen above, {{ PRODUCT_NAME }} provides an easy way to customize the keys by using the `CustomCacheKey` class. Here we will focus on three common examples:
 
-- Increasing the cache hit ratio by excluding query parameters that are not used in the rendering of the content:
+- Increasing the cache hit ratio by excluding all query parameters except those provided from the cache key. This lets only those specified parameters to fragment the cache (so you would add things like page, number per page, filters, variants of a product etc.)
 
 ```js
 import { CustomCacheKey } from '{{ PACKAGE_NAME }}/core/router'
@@ -80,15 +80,12 @@ import { CustomCacheKey } from '{{ PACKAGE_NAME }}/core/router'
 router.get('/some/path', ({ cache }) => {
   cache({
     // Other options...
-    key: new CustomCacheKey().excludeAllQueryParametersExcept(
-      'whitelisted-param-1',
-      'whitelisted-param-2',
-    ),
+    key: new CustomCacheKey().excludeAllQueryParametersExcept('whitelisted-param-1', 'whitelisted-param-2'),
   })
 })
 ```
 
-We recommend using this method over `excludeQueryParameters` as it's difficult to know all of the query parameters your application might receive and unexpected query parameters can lead to significantly lower cache hit rates.
+We recommend using this method over `excludeQueryParameters` as it's difficult to know all of the query parameters your application might receive and unexpected query parameters can lead to significantly lower cache hit rates. With excludeQueryParameters, it stops the listed query parameters from fragmenting the cache (so you would add things like utm_medium, gclid, or other marketing params you know that don't alter the content on the page)
 
 ```js
 import { CustomCacheKey } from '{{ PACKAGE_NAME }}/core/router'

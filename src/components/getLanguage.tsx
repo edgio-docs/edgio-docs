@@ -7,6 +7,7 @@ export default function getDescriptiveLanguage(language: string) {
     case 'jsx':
       return 'JSX';
     case 'js':
+    case 'javascript':
       return 'JavaScript';
     case 'ts':
     case 'tsx':

@@ -149,47 +149,58 @@ Bloomreach [documentation](https://documentation.bloomreach.com/) can help provi
 
 1. **Login** to the Bloomreach Content Portal.
 
-   You should have received an email from Bloomreach containing the URL of your Bloomreach Content developer trial account along with your log-in details. The URL should look like this, where [account_name] is the name of your trial account: `https://[account_name].bloomreach.io/cms`
+You should have received an email from Bloomreach containing the URL of your Bloomreach Content developer trial account along with your log-in details. The URL should look like this, where [account_name] is the name of your trial account: `https://[account_name].bloomreach.io/cms`
 
-   The login page should look like this.
+The login page should look like this.
 
-   ![](/images/bloomreach/login_landing.png?width=300)
+![](/images/bloomreach/login_landing.png?width=300)
 
 2. **Create a Channel**
 
-   Open the _Experience manager_ application. In the _Channels_ overview, click on the _+ Channel_ button in the top right. In the Select blueprint dialog that pops up, select _Website_ and click _Next_.
+Open the _Experience manager_ application. In the _Channels_ overview, click on the _+ Channel_ button in the top right. In the Select blueprint dialog that pops up, select _Website_ and click _Next_.
 
-   ![](/images/bloomreach/channel_select_blueprint.png)
 
-   Next, enter a name for your channel (for example, "getting started") and click on _Create channel_:
+![](/images/bloomreach/channel_select_blueprint.png)
 
-   ![](/images/bloomreach/channel_name.png)
 
-   The new channel will now be listed in the Channels overview:
+Next, enter a name for your channel (for example, "getting started") and click on _Create channel_:
 
-   ![](/images/bloomreach/channel_added.png)
 
-   Click on the new channel to open its preview. You are now on the homepage. A standard skeleton frontend app is currently used to render the preview.
+![](/images/bloomreach/channel_name.png)
 
-   ![](/images/bloomreach/channel_preview.png)
+
+The new channel will now be listed in the Channels overview:
+
+
+![](/images/bloomreach/channel_added.png)
+
+
+Click on the new channel to open its preview. You are now on the homepage. A standard skeleton frontend app is currently used to render the preview.
+
+
+![](/images/bloomreach/channel_preview.png)
 
 3. **Add a Component**
 
-   Note the black-bordered area on the page. This is what we call a container. Open the left-side drawer using the button in the top left and open the Components tab. The component library for this channel contains only one component at the moment: Content.
+Note the black-bordered area on the page. This is what we call a container. Open the left-side drawer using the button in the top left and open the Components tab. The component library for this channel contains only one component at the moment: Content.
 
-   ![](/images/bloomreach/component_library.png)
+![](/images/bloomreach/component_library.png)
 
-   Click on the Content component in the left side drawer to select it, then click inside the container on the page to add the component. It will show standard "Hello World" content that is stored in the page object. If you'd like to edit the text, open the Page menu and select _Metadata_.
 
-   ![](/images/bloomreach/component_edit.png)
+Click on the Content component in the left side drawer to select it, then click inside the container on the page to add the component. It will show standard "Hello World" content that is stored in the page object. If you'd like to edit the text, open the Page menu and select _Metadata_.
 
-   The right side drawer will slide open and show an editor where you can edit the different fields. The page preview will update automatically while you edit the field values.
+![](/images/bloomreach/component_edit.png)
 
-   ![](/images/bloomreach/component_added.png)
 
-   Click on Save to persist your changes.
+The right side drawer will slide open and show an editor where you can edit the different fields. The page preview will update automatically while you edit the field values.
 
-   At this point your changes are still unpublished and only visible in the preview. To publish the page and make it available through the [Delivery API](https://documentation.bloomreach.com/content/reference/delivery-api), open the Page menu again and choose Publish​​​​​.
+![](/images/bloomreach/component_added.png)
+
+
+Click on Save to persist your changes.
+
+At this point your changes are still unpublished and only visible in the preview. To publish the page and make it available through the [Delivery API](https://documentation.bloomreach.com/content/reference/delivery-api), open the Page menu again and choose Publish​​​​​.
+
 
 ### Generate Frontend Project
 
@@ -197,91 +208,89 @@ To accompany the Bloomreach content project above, we will generate a new app fr
 
 1. Create a new React app
 
-   ```
-   npx create-react-app my-br-layer0-content-app
-   ```
+```bash
+npx create-react-app my-br-layer0-content-app
+```
 
 2. Install dependencies
 
-   To simplify integration with Javascript-based frontend applications, Bloomreach provides a Bloomreach SPA SDK that interacts transparently with the Delivery API and exposes a simplified and framework-agnostic interface to the API's data model. You'll be using the SDK to build up your frontend app.
+To simplify integration with Javascript-based frontend applications, Bloomreach provides a Bloomreach SPA SDK that interacts transparently with the Delivery API and exposes a simplified and framework-agnostic interface to the API's data model. You'll be using the SDK to build up your frontend app.
 
-   ```
-   cd my-br-layer0-content-app
-   npm install @bloomreach/spa-sdk @bloomreach/react-sdk axios
-   ```
+```bash
+cd my-br-layer0-content-app
+npm install @bloomreach/spa-sdk @bloomreach/react-sdk axios
+```
 
 3. Set `src/App.js` to the following
 
-   ```javascript
-   import logo from './logo.svg';
-   import './App.css';
-   import axios from 'axios';
-   import {BrPage} from '@bloomreach/react-sdk';
-   import {Content} from './components/Content';
+```javascript
+import logo from './logo.svg';
+import './App.css';
+import axios from 'axios';
+import {BrPage} from '@bloomreach/react-sdk';
+import {Content} from './components/Content';
 
-   function App() {
-     return (
-       <div className="App">
-         <header className="App-header">
-           <img src={logo} className="App-logo" alt="logo" />
-           <p>
-             Edit <code>src/App.js</code> and save to reload.
-           </p>
-           <BrPage
-             configuration={{
-               endpoint:
-                 'https://trial-1234abcd.bloomreach.io/delivery/site/v1/channels/getting-started/pages',
-               httpClient: axios,
-             }}
-             mapping={{Content}}></BrPage>
-         </header>
-       </div>
-     );
-   }
+function App() {
+  return (
+    <div className="App">
+      <header className="App-header">
+        <img src={logo} className="App-logo" alt="logo" />
+        <p>
+          Edit <code>src/App.js</code> and save to reload.
+        </p>
+        <BrPage
+          configuration={{
+            endpoint:
+              'https://trial-1234abcd.bloomreach.io/delivery/site/v1/channels/getting-started/pages',
+            httpClient: axios,
+          }}
+          mapping={{Content}}></BrPage>
+      </header>
+    </div>
+  );
+}
 
-   export default App;
-   ```
+export default App;
+```
 
-   Note the following:
+Note the following:
 
-   - The BrPage element (imported from the SDK) is a placeholder in your frontend application which will render components in the page's JSON representation as returned by the Delivery API.
-   - The endpoint property specifies the URL of the Delivery API's Pages endpoint (make sure to update the URL to reflect your Bloomreach Content account!).
-   - The mapping property maps your React components their counterparts in the JSON representation.
-   - A Content component (which you will implement in a moment) is imported and mapped.
+- The BrPage element (imported from the SDK) is a placeholder in your frontend application which will render components in the page's JSON representation as returned by the Delivery API.
+- The endpoint property specifies the URL of the Delivery API's Pages endpoint (make sure to update the URL to reflect your Bloomreach Content account!).
+- The mapping property maps your React components their counterparts in the JSON representation.
+- A Content component (which you will implement in a moment) is imported and mapped.
 
-   <Callout type="info">
-     Change the `endpoint` url to your own instance.
-   </Callout>
+<Callout type="info">
+  Change the `endpoint` url to your own instance.
+</Callout>
 
 4. Add a content component
 
-   In the src folder, create a subfolder called components and inside it, create a file Content.jsx with the contents below. This is will be the frontend implementation of the Content component you added to the page in the previous milestone.
+In the src folder, create a subfolder called components and inside it, create a file Content.jsx with the contents below. This is will be the frontend implementation of the Content component you added to the page in the previous milestone.
 
-   ```javascript
-   export function Content({component, page}) {
-     const document = page.getDocument();
-
-     const {title, content, introduction} = document.getData();
-
-     return (
-       <div>
-         <h1>{title}</h1>
-         <p>{introduction}</p>
-         <div dangerouslySetInnerHTML={{__html: content.value}} />
-       </div>
-     );
-   }
-   ```
+```javascript
+export function Content({component, page}) {
+  const document = page.getDocument();
+  const {title, content, introduction} = document.getData();
+  return (
+    <div>
+      <h1>{title}</h1>
+      <p>{introduction}</p>
+      <div dangerouslySetInnerHTML={{__html: content.value}} />
+    </div>
+  );
+}
+```
 
 5. Start the app
 
-   ```
-   npm run start
-   ```
+```bash
+npm run start
+```
 
-   which should now look like this
+which should now look like this
 
-   ![](/images/bloomreach/local_frontend_app_react.png)
+![](/images/bloomreach/local_frontend_app_react.png)
 
 Awesome, the app should be working locally. Time to get it deployed to {{ PRODUCT_NAME }} now.
 
@@ -318,7 +327,7 @@ Since this is a static app, we need to make sure we run a couple steps to get th
 2. Build the {{ PRODUCT_NAME }} configurations
 3. Deploy those.
 
-```
+```bash
 npm run build
 0 deploy
 ```

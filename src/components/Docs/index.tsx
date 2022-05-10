@@ -58,6 +58,10 @@ const StyledDocs = styled.div`
 
     .article-ol__list {
       list-style: decimal;
+
+      .article-ol__list {
+        row-gap: 24px;
+      }
     }
 
     .text-code {

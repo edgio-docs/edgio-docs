@@ -20,8 +20,10 @@ const StlyedSidebar = styled.div`
   height: 100%;
 
   .nav-container {
-    display: grid;
-    row-gap: 32px;
+    display: flex;
+    row-gap: 2rem;
+    flex-direction: column;
+    height: 100%;
   }
 
   .hr-separator {
@@ -29,6 +31,11 @@ const StlyedSidebar = styled.div`
     width: calc(100% - 40px);
     background: var(--sidenav-hr-color);
     transform: translateX(20px);
+  }
+
+  .nav-items-primary {
+    flex: 1;
+    overflow-y: auto;
   }
 
   .nav-item__box-inner {
@@ -305,7 +312,7 @@ function PrimaryNavItems() {
   const ComputedAnimatePresence = isLoaded ? AnimatePresence : 'div';
 
   return (
-    <div className="nav-items">
+    <div className="nav-items nav-items-primary">
       {navItemsArray.map((items, index) => {
         const itemsAsNumber = Number(items);
         const menuItem = SidebarMenuItems[navItemsIndex][itemsAsNumber];

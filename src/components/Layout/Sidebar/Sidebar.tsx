@@ -1,3 +1,4 @@
+import cs from 'classnames';
 import {AnimatePresence, motion} from 'framer-motion';
 import sortBy from 'lodash/sortBy';
 import Link from 'next/link';
@@ -64,6 +65,12 @@ const StlyedSidebar = styled.div`
     height: 16px;
     align-items: center;
     justify-content: center;
+  }
+  .icon-chevron {
+    transition: 100ms ease-in-out;
+  }
+  .is-open .icon-chevron {
+    transform: rotate(180deg);
   }
 
   .menu-item__title {
@@ -226,16 +233,17 @@ function ParentRoute({
     );
   }
 
+  const isCurrent = !isExternalRoute && accordion?.currentIndex === parentIndex;
   return (
     <button
       type="button"
       className="nav-item__box-inner"
       onClick={updateAccordion}>
       <div
-        className="trigger-link"
-        aria-current={
-          !isExternalRoute && accordion?.currentIndex === parentIndex
-        }>
+        className={cs('trigger-link', {
+          'is-open': isCurrent,
+        })}
+        aria-current={isCurrent}>
         <div className="icon-box" id="dark-theme-switcher">
           {menuItem.icon}
         </div>
@@ -244,7 +252,7 @@ function ParentRoute({
         </div>
         <span className="menu-item__title">{menuItem.title}</span>
         {menuItem.routes && (
-          <div className="icon-box">
+          <div className="icon-box icon-chevron">
             <IconChevron displayDirection="right" />
           </div>
         )}

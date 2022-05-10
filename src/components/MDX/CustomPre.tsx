@@ -7,47 +7,15 @@ import getDescriptiveLanguage from '../getLanguage';
 import CodeBlock from './CodeBlock';
 
 const StyledCustomPre = styled.div`
-  font-family: 'IBM Plex Mono', monospace;
   border: 2px solid #363636;
   border-radius: 8px;
   overflow: hidden;
-  margin-bottom: 0.8rem;
-
-  .code-wrap {
-    border: 2px solid var(--border);
-    border-radius: 8px;
-    overflow: hidden;
-  }
-
-  pre {
-    margin: 0;
-  }
-
-  code[class*='language-'],
-  pre[class*='language-'],
-  pre code {
-    direction: ltr;
-    text-align: left;
-    hyphens: none;
-    tab-size: 4;
-    font-size: 14px;
-    font-family: 'IBM Plex Mono';
-  }
-
-  .code-language {
-    padding: 0 0.5em;
-    display: flex;
-    justify-content: flex-end;
-    font-weight: var(--fw700);
-  }
 
   .code-block__inner {
     display: flex;
     flex-direction: column;
-    gap: 4px;
     border-color: #356369;
     background: #242424;
-    /* background: rgb(30, 29, 30) none repeat scroll 0% 0%; */
   }
 
   .code-block__header {
@@ -73,24 +41,6 @@ const StyledCustomPre = styled.div`
     }
   }
 
-  .code-block__pre {
-    text-align: left;
-    margin: 0;
-    padding: 10px;
-    width: 100%;
-    overflow-y: auto;
-    scrollbar-width: thin;
-  }
-
-  /* reset */
-  pre,
-  code,
-  kbd {
-    margin: 0;
-    overflow-x: auto;
-    text-align: left;
-  }
-
   .code-block__header-text {
     font-weight: 700;
   }
@@ -102,8 +52,8 @@ const StyledCustomPre = styled.div`
 
 export default function CustomPre({children}: {children: React.ReactNode}) {
   let message: string = '';
-  let language: string | undefined;
-  // let filename: string | undefined;
+  let language: string = 'language-unknown';
+  let filename: string | undefined;
 
   if (typeof children === 'string') {
     message = children;
@@ -112,9 +62,12 @@ export default function CustomPre({children}: {children: React.ReactNode}) {
     typeof children.props.children === 'string'
   ) {
     message = children.props.children;
-    language = children.props.className;
-    // filename = children.props.filename;
+    language = children.props.className || 'language-unknown';
+    filename = children.props.filename;
   }
+
+  // MDX Metadata...https://mdxjs.com/guides/syntax-highlighting/#syntax-highlighting-with-the-meta-field
+  const replacedFilename = filename ? filename.replace(/"/g, '') : '';
 
   return (
     <StyledCustomPre>
@@ -122,23 +75,21 @@ export default function CustomPre({children}: {children: React.ReactNode}) {
         <div className="code-block__inner">
           <header className="code-block__header">
             <div className="header-start">
-              {language && (
-                <span className="code-block__header-text">
-                  {language && getDescriptiveLanguage(language)}
-                </span>
+              {/* {language && ( */}
+              <span className="code-block__header-text">
+                {getDescriptiveLanguage(language)}
+              </span>
+              {/* )} */}
+              {replacedFilename && (
+                <span className="code-block__filename">{replacedFilename}</span>
               )}
-              {/* {
-                filename && <span className="code-block__filename">
-                  {filename}
-                </span>
-              } */}
             </div>
             <div className="header-end">
               <CopyCode {...{message}} />
             </div>
           </header>
           <main className="code-block__content">
-            <CodeBlock language={language || 'js'}>{message}</CodeBlock>
+            <CodeBlock language={language}>{message}</CodeBlock>
           </main>
         </div>
       </div>
@@ -175,7 +126,7 @@ function CopyCode({message}: {message: string}) {
   });
 
   return (
-    <CopyToClipboard text={message} onCopy={() => setCopied(true)}>
+    <CopyToClipboard text={message.trim()} onCopy={() => setCopied(true)}>
       <StyledCopyCodeButton className="code-block__copy">
         {copied ? 'Copied' : 'Copy'}
       </StyledCopyCodeButton>

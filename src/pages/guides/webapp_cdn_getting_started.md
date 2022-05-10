@@ -2,8 +2,6 @@
 title: WebApp CDN
 ---
 
-_Approximate time to completion: 7 mins_
-
 Deploying your web application behind Layer0 is the fastest and easiest way to start seeing the performance benefits made possible by the Layer0 edge network. In this guide we'll show you how to:
 
 - Create a new Layer0 project
@@ -74,8 +72,7 @@ We need to configure caching in our newly created project. The project contains 
 At this point, the only item that should require changing is a path match. We provide a basic sample to get you started.
 ### Routes File {/*routes-file*/}
 
-```js filename="/routes.js"
-// routes.js
+```js filename="./routes.js"
 import { Router } from '@layer0/core/router'
 
 // const ONE_HOUR = 60 * 60
@@ -100,10 +97,11 @@ export default new Router()
   // send any unmatched request to origin
   .fallback(({ proxy }) => proxy('origin'))
 ```
+
 #### Cache Constants {/*cache-constants*/}
 Cache constants in the `routes.js` have been abstracted out to enable reuse across different routes. You can also add additional constants such as year.
-```js
-// routes.js
+
+```js filename="./routes.js"
 import { Router } from '@layer0/core/router'
 
 const ONE_HOUR = 60 * 60

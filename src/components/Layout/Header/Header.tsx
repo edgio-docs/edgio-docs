@@ -3,14 +3,12 @@ import Link from 'next/link';
 import styled from 'styled-components';
 
 import {
-  LightDesktopLogo,
   DarkDesktopLogo,
   DarkMobileLogo,
+  LightDesktopLogo,
   LightMobileLogo,
 } from '../../Icon/IconLogo';
 import NoSSRWrapper from '../NoSSRWrapper';
-
-import VersionChooser from './VersionChooser';
 
 import {IconHamburger} from 'components/Icon/IconHamburger';
 import {siteConfig} from 'siteConfig';

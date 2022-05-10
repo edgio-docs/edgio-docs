@@ -2,7 +2,7 @@ import {AnimatePresence, motion} from 'framer-motion';
 import sortBy from 'lodash/sortBy';
 import Link from 'next/link';
 import {useRouter} from 'next/router';
-import {useEffect, useState} from 'react';
+import {useState} from 'react';
 import styled from 'styled-components';
 
 import SidebarMenuItems, {

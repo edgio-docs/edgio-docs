@@ -60,68 +60,56 @@ If you go with option 1, continue to the Storefront setup section.
 
 1. Clone the official Next.js Commerce [repository](https://github.com/vercel/commerce) and install the dependencies.
 
-   <br />
-
-   ```bash
-   git clone git@github.com:vercel/commerce.git
-   cd commerce
-   yarn
-   cd site
-   ```
+```bash
+git clone git@github.com:vercel/commerce.git
+cd commerce
+yarn
+cd site
+```
 
 2. Run {{ PRODUCT_NAME }} `init` in the project directory:
 
-   <br />
-
-   ```bash
-   {{ CLI_NAME }} init
-   ```
+```bash
+{{ CLI_NAME }} init
+```
 
 ### Update the Example or Generated Project for use with BigCommerce {/* update-the-example-or-generated-project-for-use-with-bigcommerce */}
 
-Skip to the [Storefront Setup][#storefront_setup] section for a detailed explanation on how to setup a BigCommerce site. After that, return to this section to enter values as needed.
+Skip to the [Storefront Setup](#storefront_setup) section for a detailed explanation on how to setup a BigCommerce site. After that, return to this section to enter values as needed.
 
 1. Duplicate `.env.template` and name it `.env.local` in the project directory. Add your BigCommerce API keys to it. See Storefront setup for how to set these items up.
 
-   ```.env
-   COMMERCE_PROVIDER=@vercel/commerce-bigcommerce
-   BIGCOMMERCE_STOREFRONT_API_URL=https://store-${STORE_HASH}-${CHANNEL_ID}.mybigcommerce.com/graphql
-   BIGCOMMERCE_STOREFRONT_API_TOKEN=${STOREFRONT_API_TOKEN}
-   BIGCOMMERCE_STORE_API_URL=https://api.bigcommerce.com/stores/${STORE_HASH}
-   BIGCOMMERCE_STORE_API_TOKEN=${STORE_TOKEN}
-   BIGCOMMERCE_STORE_API_CLIENT_ID=${STORE_CLIENT}
-   BIGCOMMERCE_CHANNEL_ID=${CHANNEL_ID}
-   BIGCOMMERCE_STORE_URL=https://store-${STORE_HASH}.mybigcommerce.com
-   BIGCOMMERCE_STORE_API_STORE_HASH=${STORE_HASH}
-   BIGCOMMERCE_STORE_API_CLIENT_SECRET=${CLIENT_SECRET}
-   ```
+```.env
+COMMERCE_PROVIDER=@vercel/commerce-bigcommerce
+BIGCOMMERCE_STOREFRONT_API_URL=https://store-${STORE_HASH}-${CHANNEL_ID}.mybigcommerce.com/graphql
+BIGCOMMERCE_STOREFRONT_API_TOKEN=${STOREFRONT_API_TOKEN}
+BIGCOMMERCE_STORE_API_URL=https://api.bigcommerce.com/stores/${STORE_HASH}
+BIGCOMMERCE_STORE_API_TOKEN=${STORE_TOKEN}
+BIGCOMMERCE_STORE_API_CLIENT_ID=${STORE_CLIENT}
+BIGCOMMERCE_CHANNEL_ID=${CHANNEL_ID}
+BIGCOMMERCE_STORE_URL=https://store-${STORE_HASH}.mybigcommerce.com
+BIGCOMMERCE_STORE_API_STORE_HASH=${STORE_HASH}
+BIGCOMMERCE_STORE_API_CLIENT_SECRET=${CLIENT_SECRET}
+```
 
-   - `STORE_HASH` - Available in the URL bar of your BigCommerce site.
-   - `CHANNEL_ID` - Available in the `Channel Manager > Channel / Advanced Settings > Channel Details`
-   - `STOREFRONT_API_TOKEN` - The token result from the API call to create a token. This should be a long token.
-   - `STORE_TOKEN` - The API token generated via the BigCommerce API KEY UI. This should be a short token.
-   - `STORE_CLIENT` - The Client ID generated via the BigCommerce API KEY UI.
-   - `STORE_SECRET` - The Client Secret generated via the BigCommerce API KEY UI.
+- `STORE_HASH` - Available in the URL bar of your BigCommerce site.
+- `CHANNEL_ID` - Available in the `Channel Manager > Channel / Advanced Settings > Channel Details`
+- `STOREFRONT_API_TOKEN` - The token result from the API call to create a token. This should be a long token.
+- `STORE_TOKEN` - The API token generated via the BigCommerce API KEY UI. This should be a short token.
+- `STORE_CLIENT` - The Client ID generated via the BigCommerce API KEY UI.
+- `STORE_SECRET` - The Client Secret generated via the BigCommerce API KEY UI.
 
-   <br />
+<Callout type="info">
+  The `BIGCOMMERCE_STORE_API_URL` should not have the version at the end. The
+  API KEY UI will show it this way, but do not include it in your environment
+  variable.
+</Callout>
 
-   <Callout type="info">
-     The `BIGCOMMERCE_STORE_API_URL` should not have the version at the end. The
-     API KEY UI will show it this way, but do not include it in your environment
-     variable.
-   </Callout>
+2. From root of the project, run the command to start the project:
 
-2. Run the project.
-
-   <br />
-
-   From root of the project
-
-   <br />
-
-   ```bash
-    npm run dev
-   ```
+```bash
+ npm run dev
+```
 
 ### Deploy the project {/* deploy-the-project */}
 
@@ -135,107 +123,73 @@ From within the `site` directory, run
 
 1. [Login](https://login.bigcommerce.com/login) or [Signup](https://www.bigcommerce.com/start-your-trial) for an account with BigCommerce.
 
-   <br />
+**Login**
 
-   **Login**
-   ![](/images/bigcommerce/login.png?width=300)
+![](/images/bigcommerce/login.png?width=300)
 
-   <br />
+**Signup**
 
-   **Signup**
-   ![](/images/bigcommerce/sign-up.png?width=1000)
+![](/images/bigcommerce/sign-up.png?width=1000)
 
 2. After you have logged in or signed up, we need to generate an API key in order to continue creating the necessary elements to work with BigCommerce.
-
-   <br />
-
    1. Visit `Advanced Settings > API Accounts` and click "Create API Account > Create V2/V3 API Token".
 
-      <br />
-
       ![](/images/bigcommerce/create-api-menu.png?width=1000)
-
-   1. Give the token a name and enable all scopes for now.
-
-      <br />
+   2. Give the token a name and enable all scopes for now.
 
       ![](/images/bigcommerce/create-api-key.png?width=400)
 
-   1. Make note of the "API path" and save this somewhere, as we will need this later. It has a pattern of `https://api.bigcommerce.com/stores/{STORE_HASH}/v3/`.
-   1. Click "Save".
-   1. A dialog will appear with the generated API keys. Copy each item for later use. The credentials also get downloaded as a text file.
-
-      <br />
+   3. Make note of the "API path" and save this somewhere, as we will need this later. It has a pattern of `https://api.bigcommerce.com/stores/{STORE_HASH}/v3/`.
+   4. Click "Save".
+   5. A dialog will appear with the generated API keys. Copy each item for later use. The credentials also get downloaded as a text file.
 
       ![](/images/bigcommerce/api-creds.png?width=400)
 
 3. Now that we have API credentials, we will be able to interact with the BigCommerce API in order to finish setting up necessary elements.
 
-   <br />
-   <Callout type="info">
-     As of the time of writing this guide, they only support setup via API.
-   </Callout>
-   <br />
-   For this next step you will need the store hash (available in the URL bar) and
-   the API token you just created.
-   <br />
-   <br />
+<Callout type="info">
+  As of the time of writing this guide, they only support setup via API.
+</Callout>
 
-   1. To create a channel we need to issue a `curl` request to the BigCommerce API. Open the API [doc](https://developer.bigcommerce.com/api-reference/b3A6MzU5MDQ0NDc-create-a-channel) for additional information. Use the `curl` below, substituting values where needed.
+For this next step you will need the store hash (available in the URL bar) and the API token you just created.
 
-      <br />
+1. To create a channel we need to issue a `curl` request to the BigCommerce API. Open the API [doc](https://developer.bigcommerce.com/api-reference/b3A6MzU5MDQ0NDc-create-a-channel) for additional information. Use the `curl` below, substituting values where needed.
 
-      ```bash
-      curl --request POST \
-          --url https://api.bigcommerce.com/stores/{STORE_HASH}/v3/channels \
-          --header 'Content-Type: application/json' \
-          --header 'X-Auth-Token: {API_ACCESS_TOKEN}' \
-          --data '{
-            "name": "Layer0",
-            "platform": "custom",
-            "type": "storefront",
-            "status": "connected",
-            "config_meta": {}
-          }'
-      ```
+```bash
+ curl --request POST \
+     --url https://api.bigcommerce.com/stores/{STORE_HASH}/v3/channels \
+     --header 'Content-Type: application/json' \
+     --header 'X-Auth-Token: {API_ACCESS_TOKEN}' \
+     --data '{
+       "name": "Layer0",
+       "platform": "custom",
+       "type": "storefront",
+       "status": "connected",
+       "config_meta": {}
+     }'
+```
 
-   <br />
+2. Visit the "Channel Manager" to view your newly created Channel. Click the triple dot menu and select "Advanced settings". Make note of the Channel ID for later use in generating a GraphQL API token.
 
-   2. Visit the "Channel Manager" to view your newly created Channel. Click the triple
-      dot menu and select "Advanced settings". Make note of the Channel ID for later
-      use in generating a GraphQL API token.
+![](/images/bigcommerce/advanced-settings-menu.png?width=1000)
 
-   <br />
+3. Click "Create Route" and create routes to match the below routes.
 
-   ![](/images/bigcommerce/advanced-settings-menu.png?width=1000)
-
-   <br />
-
-   3. Click "Create Route" and create routes to match the below routes.
-
-   <br />
-
-   ![](/images/bigcommerce/routes.png?width=600)
-
-   <br />
+![](/images/bigcommerce/routes.png?width=600)
 
 4. With a channel and routes created, the last item to use the BigCommerce API for is generating an Auth token for use with the GraphQL API. You will have to revisit this once you have deployed your application for the first time to add the allowed domain. Open the API [doc](https://developer.bigcommerce.com/api-reference/b3A6MzU5MDUxNTI-create-a-token#requestrunner) for additional information.
 
-   <br />
+```bash
+curl --request POST \
+   --url https://api.bigcommerce.com/stores/{STORE_HASH}/v3/storefront/api-token \
+   --header 'Content-Type: application/json' \
+   --header 'X-Auth-Token: {API_ACCESS_TOKEN}' \
+   --data '{
+   "channel_id": {CHANNEL_ID},
+   "expires_at": 1620766652, // change this to a time in the future. To generate in Javascript: new Date("2022-12-31").getTime()
+   "allowed_cors_origins":
+     ["https://www.yourstorefront.com"]
+ }'
+```
 
-   ```bash
-   curl --request POST \
-      --url https://api.bigcommerce.com/stores/{STORE_HASH}/v3/storefront/api-token \
-      --header 'Content-Type: application/json' \
-      --header 'X-Auth-Token: {API_ACCESS_TOKEN}' \
-      --data '{
-      "channel_id": {CHANNEL_ID},
-      "expires_at": 1620766652, // change this to a time in the future. To generate in Javascript: new Date("2022-12-31").getTime()
-      "allowed_cors_origins":
-        ["https://www.yourstorefront.com"]
-    }'
-   ```
-
-   <br />
-
-   Save the token response for use in your environment variables.
+Save the token response for use in your environment variables.

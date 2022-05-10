@@ -23,14 +23,19 @@ The name of the connector package corresponding to the framework your app uses, 
 
 To use a connector package:
 
-```
-connector: '{{ PACKAGE_NAME }}/next'
+```js
+module.exports = {
+  connector: '{{ PACKAGE_NAME }}/next',
+};
 ```
 
 To implement a connector directly within your project:
 
-```
-connector: './path/to/connector/dir' ## this directory should have build.js, prod.js, and dev.js
+```js
+// this directory should have build.js, prod.js, and dev.js
+module.exports = {
+  connector: './path/to/connector/dir'
+};
 ```
 
 ## routes {/*routes*/}

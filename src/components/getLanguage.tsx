@@ -7,6 +7,7 @@ export default function getDescriptiveLanguage(language: string) {
     case 'jsx':
       return 'JSX';
     case 'js':
+    case 'javascript':
       return 'JavaScript';
     case 'ts':
     case 'tsx':
@@ -32,6 +33,10 @@ export default function getDescriptiveLanguage(language: string) {
       return 'YAML';
     case 'groovy':
       return 'Groovy';
+    case 'graphql':
+      return 'GraphQL';
+    case 'unknown':
+      return '';
     default:
       return normalizedLanguageString;
   }

@@ -5,11 +5,7 @@ import NProgress from 'nprogress';
 import * as React from 'react';
 import {ThemeProvider} from 'styled-components';
 
-import '../styles/algolia.css';
-import '../styles/code-syntax.css';
-import GlobalStyle from '../styles/GlobalStyle';
-import '../styles/nprogress.css';
-import '../styles/scrollbar.css';
+import GlobalStyles from '../styles/GlobalStyles';
 
 // import {VersionProvider} from 'components/versioning';
 
@@ -38,7 +34,7 @@ export default function MyApp({Component, pageProps}: AppProps) {
 
   return (
     <AppShell>
-      <GlobalStyle />
+      <GlobalStyles />
       {/* <VersionProvider> */}
       <ThemeProvider theme={theme}>
         <Component {...pageProps} />

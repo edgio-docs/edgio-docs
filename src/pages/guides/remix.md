@@ -81,7 +81,7 @@ Update `{{ CONFIG_FILE }}` at the root of your project to the following:
 // This file was automatically added by layer0 deploy.
 // You should commit this file to source control.
 module.exports = {
-  connector: '@{{ PACKAGE_NAME }}/express',
+  connector: '{{ PACKAGE_NAME }}/express',
   express: {
     appPath: './server/index.js',
   },
@@ -112,7 +112,7 @@ module.exports = new Router()
       browser: false,
     })
   })
-  .match('/exmaple-path', ({ cache }) => {
+  .match('/example-path', ({ cache }) => {
     // other paths
     cache({
       edge: {

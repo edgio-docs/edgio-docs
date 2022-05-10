@@ -8,6 +8,16 @@
 			{
 				"ssr": true
 			}
+		],
+		[
+			"prismjs",
+			{
+				"languages": "all",
+				"plugins": [
+					"line-numbers"
+				],
+				"css": true
+			}
 		]
 	]
 }

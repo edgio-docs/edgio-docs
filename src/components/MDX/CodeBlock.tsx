@@ -1,5 +1,8 @@
-import React from 'react';
-import Highlight from 'react-highlight';
+import cn from 'classnames';
+import Prism from 'prismjs';
+import React, {useEffect} from 'react';
+
+import useHydrationIsLoaded from 'utils/hooks/useHydrationIsLoaded';
 
 export default function CodeBlock({
   language,
@@ -8,7 +11,14 @@ export default function CodeBlock({
   language: string;
   children: React.ReactNode;
 }) {
+  const isLoaded = useHydrationIsLoaded();
+  useEffect(() => {
+    Prism.highlightAll();
+  }, [isLoaded]);
+
   return (
-    <Highlight className={`${language} custom-scrollbar`}>{children}</Highlight>
+    <pre className={cn('custom-scrollbar', language)}>
+      <code className={`${language}`}>{children}</code>
+    </pre>
   );
 }

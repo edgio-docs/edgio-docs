@@ -49,7 +49,7 @@ For more information on adding {{ PRODUCT_NAME }} to an existing app, see [Getti
 
 To configure the origin domain from which your GraphQL API is served, add a backend to `{{ CONFIG_FILE }}`. For example:
 
-```js
+```js filename="./{{ CONFIG_FILE }}"
 // {{ CONFIG_FILE }}
 module.exports = {
   backends: {
@@ -83,8 +83,7 @@ export const GET_PRODUCT_QUERY = gql`
 
 You can add a caching rule for this query by using the `graphqlOperation` method:
 
-```js
-// routes.js
+```js filename="./routes.js"
 import { Router } from '@layer0/core'
 
 export default new Router().graphqlOperation('GetProduct', ({ cache, proxy }) => {
@@ -153,8 +152,7 @@ To invalidate a cached query, you must first assign a surrogate key to the respo
 
 #### Use deriveSurrogateKeysFromJson {/*use-derivesurrogatekeysfromjson*/}
 
-```js
-// routes.js
+```js filename="./routes.js"
 import { Router, deriveSurrogateKeysFromJson } from '@layer0/core'
 
 export default new Router().graphqlOperation('GetProduct', ({ cache, proxy }) => {
@@ -165,7 +163,8 @@ export default new Router().graphqlOperation('GetProduct', ({ cache, proxy }) =>
     },
   })
   proxy('graphql', {
-    transformResponse: deriveSurrogateKeysFromJson(json => [`product.${json.id}`]), // <~ Assigns a surrogate key to each response
+    // Assigns a surrogate key to each response
+    transformResponse: deriveSurrogateKeysFromJson(json => [`product.${json.id}`]),
   })
 })
 ```

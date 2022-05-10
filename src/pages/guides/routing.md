@@ -21,8 +21,7 @@ Before continuing, if you have not already initialized your project with {{ PROD
 
 The `routes.js` file should export an instance of `{{ PACKAGE_NAME }}/core/router/Router`:
 
-```js
-// routes.js
+```js filename="./routes.js"
 const { Router } = require('{{ PACKAGE_NAME }}/core/router')
 
 module.exports = new Router()
@@ -32,8 +31,7 @@ module.exports = new Router()
 
 Declare routes using the method corresponding to the HTTP method you want to match.
 
-```js
-// routes.js
+```js filename="./routes.js"
 const { Router } = require('{{ PACKAGE_NAME }}/core/router')
 
 module.exports = new Router().get('/some-path', ({ cache, proxy }) => {
@@ -52,8 +50,7 @@ All HTTP methods are available:
 
 To match all methods, use `match`:
 
-```js
-// routes.js
+```js filename="./routes.js"
 const { Router } = require('{{ PACKAGE_NAME }}/core/router')
 
 module.exports = new Router().match('/some-path', ({ cache, proxy }) => {
@@ -416,8 +413,7 @@ The second argument to routes is a function that receives a `ResponseWriter` and
 
 This example shows typical usage of `{{ PACKAGE_NAME }}/core`, including serving a service worker, next.js routes (vanity and conventional routes), and falling back to a legacy backend.
 
-```js
-// routes.js
+```js filename="./routes.js"
 
 const { Router } = require('{{ PACKAGE_NAME }}/core/router')
 
@@ -458,8 +454,7 @@ router.catch(number | Regexp, (routeHandler: Function))
 
 To issue a custom error page when the origin returns a 500:
 
-```js
-// routes.js
+```js filename="./routes.js"
 
 const { Router } = require('{{ PACKAGE_NAME }}/core/router')
 

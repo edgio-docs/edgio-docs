@@ -58,6 +58,10 @@ const StyledDocs = styled.div`
 
     .article-ol__list {
       list-style: decimal;
+
+      .article-ol__list {
+        row-gap: 24px;
+      }
     }
 
     .text-code {
@@ -144,8 +148,6 @@ const StyledDocs = styled.div`
   table {
     width: 100%;
     border-collapse: collapse;
-    font-size: 14px;
-    display: block;
     overflow-x: auto;
 
     thead th {
@@ -155,7 +157,7 @@ const StyledDocs = styled.div`
     th,
     td {
       padding: 16px;
-      border: 1px solid #e3e8ee;
+      border: 2px solid #363636;
       text-align: left;
       vertical-align: top;
     }

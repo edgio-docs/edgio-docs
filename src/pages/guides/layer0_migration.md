@@ -42,11 +42,11 @@ You will see two different DNS configurations. If you are using a sub-domain, yo
 
 These updates must be made with your domain registrar.
 
-### Whitelisting {/*whitelisting*/}
+### Allowlisting {/*allowlisting*/}
 
-When users access your site, Layer0 will send traffic to your origin servers from specific IP addresses. The list of IP addresses are on the _Networking_ tab as mentioned above. Please whitelist these to ensure that requests are not blocked.
+When users access your site, Layer0 will send traffic to your origin servers from specific IP addresses. The list of IP addresses are on the _Networking_ tab as mentioned above. You must add all these IPs to your firewall's allowlist to ensure that requests are not blocked by it.
 
-During deployment, the Layer0 CLI connects to the following domains. Please whitelist these domains in all environments that deploy to Layer0:
+During deployment, the Layer0 CLI connects to the following domains. Please add these domains to the allowlist of any firewall in all development or CI/CD environments that deploy to Layer0:
 
 ```
 upload.build.layer0.co

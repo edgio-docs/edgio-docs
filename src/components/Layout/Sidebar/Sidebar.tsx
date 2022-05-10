@@ -94,9 +94,8 @@ const StlyedSidebar = styled.div`
       position: absolute;
       left: 0;
       bottom: 0;
-      height: calc(100% - 20px);
+      height: calc(100%);
       top: 0;
-      transform: translateY(10px);
       border: 0.75px solid var(--pink);
     }
   }
@@ -112,7 +111,7 @@ const StlyedSidebar = styled.div`
       grid-template-columns: 1fr auto;
       flex: 1;
       padding-left: 12px;
-      padding: 4px 0 4px 12px;
+      padding: 4px 5px 4px 12px;
       color: var(--sidenav-link-color);
       text-decoration: none;
 

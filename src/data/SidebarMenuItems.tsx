@@ -57,6 +57,7 @@ import {
   IconRemix,
   IconRemixDark,
   IconSaber,
+  IconSanity,
   IconSapper,
   IconServerlessFunctions,
   IconServerSmall,
@@ -464,6 +465,12 @@ const SidebarMenuItems: ISidebarMenuItems = [
           path: '/guides/saber',
           icon: <IconSaber />,
           iconDark: <IconSaber />,
+        },
+        {
+          title: 'Sanity',
+          path: '/guides/sanity',
+          icon: <IconSanity />,
+          iconDark: <IconSanity />,
         },
         {
           title: 'Sapper',

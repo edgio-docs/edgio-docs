@@ -4,7 +4,7 @@ title: Custom Domains & SSL
 
 This guide covers the steps you need to take your site live on {{ PRODUCT_NAME }} with a secure, custom domain.
 
-Creating custom domains is always done in the context of of creating or updating an environment.
+Creating custom domains is always done in the context of creating or updating an environment.
 
 ## Configuration Overview {/*configuration-overview*/}
 

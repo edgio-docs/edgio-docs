@@ -100,6 +100,16 @@ const router = new Router()
       setResponseHeader('X-XSS-Protection', '1; mode=block');
     }
   })
+  .match(
+    {
+      headers: {
+        host: /layer0.link|layer0-perma.link|layer0-limelight.link/,
+      },
+    },
+    ({setResponseHeader}) => {
+      setResponseHeader('x-robots-tag', 'noindex');
+    }
+  )
   .match('/service-worker.js', ({serviceWorker}) => {
     return serviceWorker('.next/static/service-worker.js');
   })
@@ -149,14 +159,6 @@ const router = new Router()
   .get('/googleb2732cddf1383cf4.html', ({send}) =>
     send('google-site-verification: googleb2732cddf1383cf4.html', 200, 'OK')
   );
-
-// TODO docs in iframe
-// .match('/api-docs/:path*', ({cache, proxy}) => {
-//   cache(htmlCacheConfig);
-//   proxy('api', {
-//     path: '/:path*',
-//   });
-// })
 
 redirects.forEach(([from, to, statusCode]) => {
   router.match(from, ({redirect}) =>

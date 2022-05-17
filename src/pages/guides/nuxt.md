@@ -336,6 +336,45 @@ export default new Router()
   .use(nuxtRoutes)
 ```
 
+### Serving Sitemap with SSR {/*serving-sitemap-with-ssr*/}
+
+You can configure Nuxt to generate a sitemap in SSR mode with the following configuration:
+
+```js
+export default {
+  ... 
+
+  // Modules: https://go.nuxtjs.dev/config-modules
+  modules: [
+    '@nuxtjs/sitemap',
+  ],
+
+  sitemap: {
+    hostname: 'yourhost.com',
+    path: '/sitemap.xml',
+    defaults: {
+      lastmod: new Date(),
+      changefreq: 'weekly',
+      priority: 0.8,
+    },
+  },
+}
+```
+
+Within the {{ PRODUCT_NAME }} router, add the following:
+
+```js
+new Router()
+...
+
+.match('/sitemap.xml', ({ renderWithApp }) => {
+  renderWithApp()
+})
+.use(nuxtMiddleware)
+```
+
+This will send all traffic for `/sitemap.xml` to Nuxt middleware for server-side rendering.
+
 ### Rendering a 404 Page {/*rendering-a-404-page*/}
 
 If you set the `fallback` property in the [generate](https://nuxtjs.org/docs/2.x/configuration-glossary/configuration-generate/#fallback) config to `true`, Nuxt.js will generate a 404.html page that will be served whenever the URL does not match a static page. {{ PRODUCT_NAME }} will send a 404 http status for these URLs. Note that if you set the fallback property to a string, Nuxt will generate a fallback page with that name, and {{ PRODUCT_NAME }} will serve it with a 200 http status when the URL does not match a statically generated page.

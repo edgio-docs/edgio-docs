@@ -308,6 +308,45 @@ The above allows you to prefetch pages from {{ PRODUCT_NAME }}'s edge cache to g
 
 The `Prefetch` component fetches data for the linked page from {{ PRODUCT_NAME }}'s edge cache based on the `url` property and adds it to the service worker's cache when the link becomes visible in the viewport. When the user taps on the link, the page transition will be instantaneous because the browser won't need to fetch data from the network.
 
+## Serving Sitemap with SSR {/*serving-sitemap-with-ssr*/}
+
+You can configure Nuxt to generate a sitemap in SSR mode with the following configuration:
+
+```js
+export default {
+  ... 
+
+  // Modules: https://go.nuxtjs.dev/config-modules
+  modules: [
+    '@nuxtjs/sitemap',
+  ],
+
+  sitemap: {
+    hostname: 'yourhost.com',
+    path: '/sitemap.xml',
+    defaults: {
+      lastmod: new Date(),
+      changefreq: 'weekly',
+      priority: 0.8,
+    },
+  },
+}
+```
+
+Within the {{ PRODUCT_NAME }} router, add the following:
+
+```js
+new Router()
+...
+
+.match('/sitemap.xml', ({ renderWithApp }) => {
+  renderWithApp()
+})
+.use(nuxtMiddleware)
+```
+
+This will send all traffic for `/sitemap.xml` to Nuxt middleware for server-side rendering.
+
 ## Static Sites {/*static-sites*/}
 
 {{ PRODUCT_NAME }} supports fully and partially static sites using Nuxt [generate](https://nuxtjs.org/docs/2.x/configuration-glossary/configuration-generate). To deploy a static Nuxt site on {{ PRODUCT_NAME }}, simply set `target: 'static'` in `nuxt.config.js` and run `{{ CLI_NAME }} deploy`. This will run `nuxt build` and `nuxt generate` to generate a static version of your site.

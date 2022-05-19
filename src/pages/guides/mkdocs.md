@@ -11,9 +11,9 @@ If you don't have an existing MkDocs site, you can create one by running:
 ```bash
 # https://www.mkdocs.org/getting-started
 
-$ pip install mkdocs
-$ mkdocs new my-project
-$ cd my-project
+pip install mkdocs
+mkdocs new my-project
+cd my-project
 ```
 
 ## Add Layer0
@@ -38,10 +38,10 @@ Create a `package.json` at the root of your project with the following:
 
 ```bash
 # First, globally install the Layer0 CLI:
-$ npm i -g @layer0/cli
+npm i -g @layer0/cli
 
 # Then, add Layer0 to your MkDocs site:
-$ 0 init
+0 init
 ```
 
 ## Update your Layer0 Router
@@ -92,8 +92,8 @@ To deploy your site to Layer0, run:
 
 ```bash
 # Create a production build of your mkdocs site
-$ npm run build
+npm run build
 
 # Deploy it to Layer0
-$ 0 deploy
+0 deploy
 ```

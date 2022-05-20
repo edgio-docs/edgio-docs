@@ -11,7 +11,7 @@ This guide shows you how to serve generic static sites on {{ PRODUCT_NAME }}.
 Here are a few examples of common static sites served by {{ PRODUCT_NAME }}.
 
 <ButtonLinksGroup>
-  <ButtonLink variant="fill" type="default" href="https://layer0-docs-layer0-static-backbonejs-example-default.layer0.link/">
+  <ButtonLink variant="fill" type="default" href="https://layer0-docs-layer0-static-backbonejs-example-default.layer0-limelight.link/">
    Backbone.js Static Example
   </ButtonLink>
   <ButtonLink variant="stroke" type="code" withIcon={true} href="https://github.com/layer0-docs/static-backbonejs-example?button">
@@ -23,7 +23,7 @@ Here are a few examples of common static sites served by {{ PRODUCT_NAME }}.
 </ButtonLinksGroup>
 
 <ButtonLinksGroup>
-  <ButtonLink variant="fill" type="default" href="https://layer0-docs-layer0-static-react-example-default.layer0.link/">
+  <ButtonLink variant="fill" type="default" href="https://layer0-docs-layer0-static-react-example-default.layer0-limelight.link/">
    React Static Example
   </ButtonLink>
   <ButtonLink variant="stroke" type="code" withIcon={true} href="https://github.com/layer0-docs/static-react-example">
@@ -35,7 +35,7 @@ Here are a few examples of common static sites served by {{ PRODUCT_NAME }}.
 </ButtonLinksGroup>
 
 <ButtonLinksGroup>
-  <ButtonLink variant="fill" type="default" href="https://layer0-docs-layer0-static-vuejs-example-default.layer0.link/">
+  <ButtonLink variant="fill" type="default" href="https://layer0-docs-layer0-static-vuejs-example-default.layer0-limelight.link/">
    Vue.js Static Example
   </ButtonLink>
   <ButtonLink variant="stroke" type="code" withIcon={true} href="https://github.com/layer0-docs/static-vuejs-example">

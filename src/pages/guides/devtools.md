@@ -56,7 +56,7 @@ Then, if you haven't already, enable `{{ PACKAGE_NAME }}/prefetch` in your servi
 
 ## Enabling or Disabling the Devtools {/*enabling-or-disabling-the-devtools*/}
 
-By default, {{ PRODUCT_NAME }} Devtools is enabled when your app is served from `localhost`, `127.0.0.1` or any `*.layer0.link` domain.
+By default, {{ PRODUCT_NAME }} Devtools is enabled when your app is served from `localhost`, `127.0.0.1` or any `*.layer0-limelight.link` domain.
 
 To customize when {{ PRODUCT_NAME }} Devtools appear:
 

@@ -9,7 +9,7 @@ This guide shows you how to deploy a Nuxt.js application on {{ PRODUCT_NAME }}. 
 This Nuxt.js example app uses server-side rendering and prefetching to provide lightening-fast transitions between pages.
 
 <ButtonLinksGroup>
-  <ButtonLink variant="fill" type="default" href="https://layer0-docs-layer0-nuxt-example-default.layer0.link/category/hats">
+  <ButtonLink variant="fill" type="default" href="https://layer0-docs-layer0-nuxt-example-default.layer0-limelight.link/category/hats">
    Try the Nuxt.js SSR Example Site
   </ButtonLink>
   <ButtonLink variant="stroke" type="code" withIcon={true} href="https://github.com/layer0-docs/layer0-nuxt-example">
@@ -314,7 +314,7 @@ You can configure Nuxt to generate a sitemap in SSR mode with the following conf
 
 ```js
 export default {
-  ... 
+  ...
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
@@ -482,7 +482,7 @@ This may be because you have a custom server framework (such as Express). Please
 If you get a command not found error such as:
 
 ```bash
-$ {{ CLI_NAME }} init
+{{ CLI_NAME }} init
 - bash: {{ CLI_NAME }}: command not found
 ```
 
@@ -501,14 +501,14 @@ If you previously installed the {{ PRODUCT_NAME }} CLI, make sure your version i
 Check npm for the latest released version of the CLI:
 
 ```bash
-$ npm show {{ PACKAGE_NAME }}/cli version
+npm show {{ PACKAGE_NAME }}/cli version
 1.16.2
 ```
 
 Compare the latest release against the version currently installed on your system:
 
 ```bash
-$ {{ CLI_NAME }} --version
+{{ CLI_NAME }} --version
 1.16.2
 ```
 

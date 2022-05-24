@@ -482,7 +482,7 @@ This may be because you have a custom server framework (such as Express). Please
 If you get a command not found error such as:
 
 ```bash
-$ {{ CLI_NAME }} init
+{{ CLI_NAME }} init
 - bash: {{ CLI_NAME }}: command not found
 ```
 
@@ -501,14 +501,14 @@ If you previously installed the {{ PRODUCT_NAME }} CLI, make sure your version i
 Check npm for the latest released version of the CLI:
 
 ```bash
-$ npm show {{ PACKAGE_NAME }}/cli version
+npm show {{ PACKAGE_NAME }}/cli version
 1.16.2
 ```
 
 Compare the latest release against the version currently installed on your system:
 
 ```bash
-$ {{ CLI_NAME }} --version
+{{ CLI_NAME }} --version
 1.16.2
 ```
 

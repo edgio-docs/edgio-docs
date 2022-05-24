@@ -111,7 +111,7 @@ const StlyedSidebar = styled.div`
       grid-template-columns: 1fr auto;
       flex: 1;
       padding-left: 12px;
-      padding: 4px 5px 4px 12px;
+      padding: 4px 4px 4px 12px;
       color: var(--sidenav-link-color);
       text-decoration: none;
 

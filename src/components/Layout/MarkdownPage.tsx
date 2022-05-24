@@ -1,5 +1,6 @@
 // @ts-nocheck
 
+import {ExpansionPanelDetails} from '@material-ui/core';
 import {MDXProvider} from '@mdx-js/react';
 import {useRouter} from 'next/router';
 import * as React from 'react';
@@ -9,8 +10,6 @@ import Docs from '../Docs';
 import DocsFooter from '../Docs/DocsFooter';
 import {MDXComponents} from '../MDX/MDXComponents';
 import Seo from '../Seo';
-
-import DocsPagination from 'components/Docs/DocsPagination';
 
 export interface MarkdownProps<Frontmatter> {
   meta: Frontmatter & {description?: string};
@@ -69,7 +68,6 @@ export function MarkdownPage<
         <div className="docs">
           <Docs title={title} tocHeadings={tocHeadings}>
             {children}
-            <DocsPagination />
           </Docs>
         </div>
       )}

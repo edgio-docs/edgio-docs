@@ -164,7 +164,7 @@ export default function ProductListing({ products }) {
         <li key={i}>
           <Link href={product.url} passHref>
             <Prefetch
-              url={createNextDataUrl({
+              url={createNextDataURL({
                 href: product.url,
                 routeParams: {
                   // keys must match the param names in your next page routes

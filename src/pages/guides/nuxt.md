@@ -9,7 +9,7 @@ This guide shows you how to deploy a Nuxt.js application on {{ PRODUCT_NAME }}. 
 This Nuxt.js example app uses server-side rendering and prefetching to provide lightening-fast transitions between pages.
 
 <ButtonLinksGroup>
-  <ButtonLink variant="fill" type="default" href="https://layer0-docs-layer0-nuxt-example-default.layer0.link/category/hats">
+  <ButtonLink variant="fill" type="default" href="https://layer0-docs-layer0-nuxt-example-default.layer0-limelight.link/category/hats">
    Try the Nuxt.js SSR Example Site
   </ButtonLink>
   <ButtonLink variant="stroke" type="code" withIcon={true} href="https://github.com/layer0-docs/layer0-nuxt-example">
@@ -307,6 +307,45 @@ The above allows you to prefetch pages from {{ PRODUCT_NAME }}'s edge cache to g
 ```
 
 The `Prefetch` component fetches data for the linked page from {{ PRODUCT_NAME }}'s edge cache based on the `url` property and adds it to the service worker's cache when the link becomes visible in the viewport. When the user taps on the link, the page transition will be instantaneous because the browser won't need to fetch data from the network.
+
+## Serving Sitemap with SSR {/*serving-sitemap-with-ssr*/}
+
+You can configure Nuxt to generate a sitemap in SSR mode with the following configuration:
+
+```js
+export default {
+  ...
+
+  // Modules: https://go.nuxtjs.dev/config-modules
+  modules: [
+    '@nuxtjs/sitemap',
+  ],
+
+  sitemap: {
+    hostname: 'yourhost.com',
+    path: '/sitemap.xml',
+    defaults: {
+      lastmod: new Date(),
+      changefreq: 'weekly',
+      priority: 0.8,
+    },
+  },
+}
+```
+
+Within the {{ PRODUCT_NAME }} router, add the following:
+
+```js
+new Router()
+...
+
+.match('/sitemap.xml', ({ renderWithApp }) => {
+  renderWithApp()
+})
+.use(nuxtMiddleware)
+```
+
+This will send all traffic for `/sitemap.xml` to Nuxt middleware for server-side rendering.
 
 ## Static Sites {/*static-sites*/}
 

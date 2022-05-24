@@ -63,7 +63,7 @@ See common things you need to look for on an eCommmerce site:
 
 Use this worksheet when auditing your site for personalized content to inventory and track the changes you will be making:
 
-[{{ PRODUCT_NAME }} Origin Content Changes Worksheet](https://docs.google.com/spreadsheets/d/1WDc5tB0tbrDT3To6bNQ0jYpXRFmgUuA_4gb3lVgzmjE/edit?usp=sharing)
+[{{ PRODUCT_NAME }} Origin Content Changes Worksheet](https://docs.google.com/spreadsheets/d/1vFQl6Eh8vF9CbDpuu9cRYYzPyqBfLcNrRRU_0QwqAMM/edit?usp=sharing)
 
 ## Connector {/*connector*/}
 

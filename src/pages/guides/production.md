@@ -4,7 +4,7 @@ title: Custom Domains & SSL
 
 This guide covers the steps you need to take your site live on {{ PRODUCT_NAME }} with a secure, custom domain.
 
-Creating custom domains is always done in the context of of creating or updating an environment.
+Creating custom domains is always done in the context of creating or updating an environment.
 
 ## Configuration Overview {/*configuration-overview*/}
 
@@ -125,7 +125,7 @@ Before going live, ensure that all {{ PRODUCT_NAME }} IP addresses are allowed i
 
 All data transmitted to and from your {{ PRODUCT_NAME }} site must be secured with TLS (Transport Layer Security). TLS, also known as SSL (Secure Sockets Layer), is a cryptographic protocol to communicate securely over the Internet. TLS provides end-to-end data encryption and data integrity for all web requests.
 
-{{ PRODUCT_NAME }} provides a wildcard TLS certificate that covers the auto-generated domains that it assigns to your site (e.g {team}-{site}-{branch}-{version}.layer0.link). You need to provide your own certificate for your site's custom domains.
+{{ PRODUCT_NAME }} provides a wildcard TLS certificate that covers the auto-generated domains that it assigns to your site (e.g {team}-{site}-{branch}-{version}.layer0-limelight.link). You need to provide your own certificate for your site's custom domains.
 
 __Note:__ If you already have an existing certificate, you can use it by skipping ahead to [Uploading your Certificate](#section_uploading_your_certificate). Many customers who have existing certificates still choose to obtain a new one when adopting {{ PRODUCT_NAME }} so as not to reuse the same private key with more than one vendor/system._
 

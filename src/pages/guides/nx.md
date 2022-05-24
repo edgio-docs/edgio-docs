@@ -21,7 +21,7 @@ Here we use [Next.js](https://nextjs.org/) for the example Nx project.
   <ButtonLink
     variant="fill"
     type="default"
-    href="https://layer0-docs-layer0-nx-example-default.layer0.link">
+    href="https://layer0-docs-layer0-nx-example-default.layer0-limelight.link">
     Try the Nx Example Site
   </ButtonLink>
   <ButtonLink
@@ -48,7 +48,7 @@ Here we use [Next.js](https://nextjs.org/) for the example Nx project.
 
 ## Start a Nx project from scratch
 
-The following steps take you through set-up of a new Nx workspace. The same process can be used to add Layer0 to your existing Nx repo. 
+The following steps take you through set-up of a new Nx workspace. The same process can be used to add Layer0 to your existing Nx repo.
 
 ### Generate the Nx workspace
 
@@ -66,11 +66,11 @@ To create the workspace, run
 npx create-nx-workspace --preset=next
 ```
 
-There will be a series of questions. When the one to choose the `Application name` comes, enter __`layer0-nx-next-app`__. The other answers can be of your choosing. 
+There will be a series of questions. When the one to choose the `Application name` comes, enter __`layer0-nx-next-app`__. The other answers can be of your choosing.
 
-### Add {{ PRODUCT_NAME }} to the application 
+### Add {{ PRODUCT_NAME }} to the application
 
-Because Nx wants dependencies installed at root level, we will `init` the project at root level to install the necesssary packages, but setup configurations to read into the next app we generated. The {{ PRODUCT_NAME }} next connector expects to be in the project repo, so we will create our own custom connector with the necesssary configurations. 
+Because Nx wants dependencies installed at root level, we will `init` the project at root level to install the necesssary packages, but setup configurations to read into the next app we generated. The {{ PRODUCT_NAME }} next connector expects to be in the project repo, so we will create our own custom connector with the necesssary configurations.
 
 ```bash
 0 init # installs necessary packages
@@ -89,7 +89,7 @@ Open `package.json` and change the `scripts > build` to the following:
 "build": "nx build layer0-nx-next-app",
 ```
 
-Open `layer0.config.js` and change the contents to the following: 
+Open `layer0.config.js` and change the contents to the following:
 
 ```js
 module.exports = {
@@ -98,7 +98,7 @@ module.exports = {
 };
 ```
 
-Open `routes.ts` and change to the following: 
+Open `routes.ts` and change to the following:
 
 ```js
 import { Router } from '@layer0/core/router';
@@ -111,7 +111,7 @@ export default new Router()
   .use(nextRoutes); // automatically adds routes for all files under /pages
 ```
 
-We need to add a custom connector now. You can either copy the whole folder from the example, or create each file below as instructed. 
+We need to add a custom connector now. You can either copy the whole folder from the example, or create each file below as instructed.
 
 ```
 mkdir layer0
@@ -168,7 +168,7 @@ module.exports = join('apps', 'layer0-nx-next-app');
 
 ### Development
 
-To start the app locally running with {{ PRODUCT_NAME }}, run 
+To start the app locally running with {{ PRODUCT_NAME }}, run
 
 ```bash
 0 dev
@@ -176,8 +176,8 @@ To start the app locally running with {{ PRODUCT_NAME }}, run
 
 ### Deploy
 
-To deploy the app to {{ PRODUCT_NAME }}, run 
+To deploy the app to {{ PRODUCT_NAME }}, run
 
 ```bash
-0 deploy 
+0 deploy
 ```

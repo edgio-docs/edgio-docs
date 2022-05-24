@@ -48,7 +48,10 @@ export default function EditPage() {
 
   return (
     <StyledEditPage>
-      <a href={`${baseURL}${router.asPath}.md`}>
+      <a
+        target="_blank"
+        href={`${baseURL}${router.asPath}.md`}
+        rel="noreferrer">
         <IconExternalLink />
         edit this guide on github
       </a>

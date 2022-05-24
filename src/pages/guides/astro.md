@@ -24,29 +24,29 @@ If you don't have an existing Astro site, you can create one by running:
 
 ```bash
 # Make a new project directory, and navigate directly into it
-$ mkdir my-astro-project && cd $_
+mkdir my-astro-project && cd $_
 
 # prepare for liftoff...
-$ npm init astro
+npm init astro
 
 # install dependencies
-$ npm install
+npm install
 
 # start developing!
-$ npm run dev
+npm run dev
 
 # when you're ready: build your static site to `dist/`
-$ npm run build
+npm run build
 ```
 
 ## Add Layer0 {/*add-layer0*/}
 
 ```bash
 # First, globally install the Layer0 CLI:
-$ npm i -g @layer0/cli
+npm i -g @layer0/cli
 
 # Then, add Layer0 to your Astro site:
-$ 0 init
+0 init
 ```
 
 ## Update your Layer0 Router {/*update-your-layer0-router*/}
@@ -96,8 +96,8 @@ To deploy your site to Layer0, run:
 
 ```bash
 # Create a production build of your astro site
-$ npm run build
+npm run build
 
 # Deploy it to Layer0
-$ 0 deploy
+0 deploy
 ```

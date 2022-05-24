@@ -11,7 +11,7 @@ This guide shows you how to deploy [Sapper](https://sapper.svelte.dev/) apps on 
 This Sapper example app uses server-side rendering and prefetching to provide lightening-fast transitions between pages.
 
 <ButtonLinksGroup>
-  <ButtonLink variant="fill" type="default" href="https://layer0-docs-layer0-sapper-example-default.layer0.link/category/hats">
+  <ButtonLink variant="fill" type="default" href="https://layer0-docs-layer0-sapper-example-default.layer0-limelight.link/category/hats">
    Try the Sapper SSR Example Site
   </ButtonLink>
   <ButtonLink variant="stroke" type="code" withIcon={true} href="https://github.com/layer0-docs/layer0-sapper-example">

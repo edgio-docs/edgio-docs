@@ -5,7 +5,7 @@ title: Vue Storefront 1
 ## Example Site {/*example-site*/}
 
 <ButtonLinksGroup>
-  <ButtonLink variant="fill" type="default" href="https://layer0-docs-layer0-vue-storefront-example-default.layer0.link">
+  <ButtonLink variant="fill" type="default" href="https://layer0-docs-layer0-vue-storefront-example-default.layer0-limelight.link">
    Try the VSF1 Example Site
   </ButtonLink>
   <ButtonLink variant="stroke" type="code" withIcon={true} href="https://github.com/layer0-docs/layer0-vue-storefront-example">

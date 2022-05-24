@@ -11,7 +11,7 @@ For adding {{ PRODUCT_NAME }} to Vue Storefront 1 app follow this [guide](/guide
 Here's an example Vue Storefront 2 app running on Layer0:
 
 <ButtonLinksGroup>
-  <ButtonLink variant="fill" type="default" href="https://layer0-docs-layer0-vue-storefront-commercetools-example-default.layer0.link">
+  <ButtonLink variant="fill" type="default" href="https://layer0-docs-layer0-vue-storefront-commercetools-example-default.layer0-limelight.link">
    Try the Vue Storefront Example
   </ButtonLink>
   <ButtonLink variant="stroke" type="code" withIcon={true} href="https://github.com/layer0-docs/layer0-vue-storefront-commercetools-example?button">

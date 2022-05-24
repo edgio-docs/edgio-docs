@@ -7,7 +7,7 @@ This guide shows you how to deploy [Ember Fastboot](https://ember-fastboot.com/)
 ## Example {/*example*/}
 
 <ButtonLinksGroup>
-  <ButtonLink variant="fill" type="default" href="https://layer0-docs-layer0-ember-fastboot-example-default.layer0.link">
+  <ButtonLink variant="fill" type="default" href="https://layer0-docs-layer0-ember-fastboot-example-default.layer0-limelight.link">
    Try the Fastboot Example Site
   </ButtonLink>
   <ButtonLink variant="stroke" type="code" withIcon={true} href="https://github.com/layer0-docs/layer0-ember-fastboot-example">

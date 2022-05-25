@@ -26,7 +26,7 @@ The following structure is important to note when reading the telemtry data:
 All POPs have the same components:
 * HAProxy -> Varnish -> DPS
 * L1 is Edge w/ HAProxy -> Varnish -> DPS -> Global POP
-* L2 is Global w/ HAProxy -> Varnish -> DPS  -> backend (user defined backend from [layer0.config](https://docs.layer0.co/guides/layer0_config#section_backends) | [static page](https://docs.layer0.co/guides/static_sites#section_router_configuration) | XBP->[Serverless](https://docs.layer0.co/guides/serverless_functions#section_serverless_functions))
+* L2 is Global w/ HAProxy -> Varnish -> DPS  -> backend (user defined backend from [layer0.config](https://docs.layer0.co/guides/layer0_config#section_backends) | [static page](https://docs.layer0.co/guides/static_sites#section_router_configuration) | Serverless Load Balancer->[Serverless](https://docs.layer0.co/guides/serverless_functions#section_serverless_functions))
 
 <Callout type="info">
   When a request is reentrant, telemetry information is not duplicated; instead, each request logs its own telemetry but does not return it to the downstream {{ PRODUCT_NAME }} request. As a result, duplicate entries are not possible.
@@ -37,16 +37,16 @@ All POPs have the same components:
 
 Component names within the header are abbreviated:
 
-| Abbreviation | Component Name |
-| ------------ | -------------- |
+| Abbreviation | Component Name          |
+| ------------ | ----------------------- |
 | eh  | HAProxy on edge POP              |
 | ec  | Varnish cache on edge POP        |
 | ed  | DPS on edge POP                  |
-| gh | HAProxy on global POP            |
-| gc | Varnish cache on global POP      |
-| gd | DPS on global POP                |
-| p  | XDN Buffer Proxy                 |
-| w  | Lambda workers                   |
+| gh  | HAProxy on global POP            |
+| gc  | Varnish cache on global POP      |
+| gd  | DPS on global POP                |
+| p   | Serverless Load Balancer         |
+| w   | Lambda workers                   |
 
 
 #### Telemetry Types {/*telemetry-types*/}
@@ -78,9 +78,9 @@ Below is a translation of each value in this example:
 | `gdt=853`  | Global POP DPS total time of 853ms |
 | `gdd=0`    | Global POP DNS Lookup time of 0ms (implying cached DNS lookup) |
 | `gdf=853`  | Global POP DPS fetch time to backend of 853ms |
-| `pt=811`   | XBP Total time of 811ms |
-| `pc=1`     | XBP total request count. if > 1 it implies scaling where we had to queue and retry this request |
-| `pf=809`   | XBP Total Fetch time to serverless of 809ms |
+| `pt=811`   | Serverless Load Balancer Total time of 811ms |
+| `pc=1`     | Serverless Load Balancer total request count. if > 1 it implies scaling where we had to queue and retry this request |
+| `pf=809`   | Serverless Load Balancer Total Fetch time to serverless of 809ms |
 | `wm=317`   | Serverless worker memory used 317mb |
 | `wt=722`   | Serverless total time of 722ms |
 | `wc=19`    | Number of times this specific serverless instance has been invoked (19) |
@@ -99,7 +99,6 @@ The `{{ HEADER_PREFIX }}-status` header will show the response codes received fr
 `{{ HEADER_PREFIX }}components`. This is most useful for {{ PRODUCT_NAME }} in identifying the versions of each service, the id of the environment, and which backend serviced the request
 
 `< {{ HEADER_PREFIX }}-components: eh=0.1.6,e=atl,ec=1.1.0,ed=1.0.1,gh=0.1.6,g=hef,gd=1.0.1,p=1.21.10,w=3.11.0,wi=e8ce8753-163d-4be9-a39e-40454ace5146,b=serverless`
-
 
 ## server-timing {/*server-timing*/}
 

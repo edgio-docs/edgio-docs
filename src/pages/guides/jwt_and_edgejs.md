@@ -36,7 +36,7 @@ JWT contains three parts separated by a "." character: a header, payload, and si
 <Callout type="info">
 The three types of claims are:
 
-  * Registered: Defined by the JWT specification. See [RFC-7519](https://datatracker.ietf.org/doc/html/rfc7519) for a complete list.
+  * Registered: Defined by the JWT specification. See [rfc7519](https://datatracker.ietf.org/doc/html/rfc7519) for a complete list.
 
   * Public: Custom claims that anyone can define.
 
@@ -120,16 +120,16 @@ new Router()
     proxy('origin')
   })
 ```
-Properties in the above example are described in this table:
+Properties in the preceding example are described in this table:
 
 | Property | Required/Optional | Description |
 | -------- | ----------------- | ----------- | 
-| `algo` | Required | Algorithm used to sign the token.  {{PRODUCT_NAME}} supports these algorithms:<ul><li>HS256</li><li>HS256</li> <li>HS384</li><li>HS512</li><li>RS256</li><li>RS384</li><li>RS512</li><li>ES256</li><li>ES384</li><li>ES512</li></ul> To prevent  hacking of the token, {{PRODUCT_NAME}} does not accept `none` as a value for `alg`.| 
-| `secret` | Required | The secret used to sign the token.  (`HS*` algorithms require a single secret.) | 
-| `header` | Optional | Name of the response header that contains the token. Mutually exclusive with the `cookie` option. If the value of the header is prefixed with the string `.*Bearer\ `, the string will be ignored and only the bytes following it will be decoded as the JWT. | 
-| `cookie` | Optional | The cookie containing the token. Mutually exclusive with the `header` option. If the token is not sent in a cookie, omit this option and Layer0 will look in the `Bearer` token in the `Authorization` header. | 
-| `redirectExpiredAbsent` | Optional | The redirect URL to use when the JWT is expired, or absent. JWT expiry complies with [rfc7519](https://datatracker.ietf.org/doc/html/rfc7519) `exp` claim behaviour. **Note**: JWTs rejected due to `nbf` ("not before") claim invalidity are also subject to this redirect, because such tokens are understood to be "expired" in that they not valid yet. | 
-| `redirectInvalid` | Optional |  The URL users are redirected to if the token is non-expired but invalid for any reason other than being absent. Example: bad signatures. If this field is not present, {{PRODUCT_NAME}} returns an empty `401 Unauthorized` response. | 
+| `algo` | Required | Algorithm used to sign the token. Both symmetric and asymmetric are supported. {{PRODUCT_NAME}} supports these algorithms:<ul><li>ES256</li><li>ES384</li><li>ES512</li><li>HS512</li><li>HS256</li> <li>HS384</li><li>RS256</li><li>RS384</li><li>RS512</li></ul> To prevent  hacking of the token, {{PRODUCT_NAME}} does not accept `none` as a value for `alg`.| 
+| `secret` | Required | Should either be an armoued (PEM-encoded including header and fooder) public key for the asymmetric algorithms, or a simple secret string for the symmetric algorithms. | 
+| `header` | Optional | Header to extract the token from. If the value of the header is prefixed with the string `.*Bearer\ `, the string will be ignored and only the bytes following it will be decoded as the JWT. | 
+| `cookie` | Optional | The cookie key to extract the token from. Used in conjunction with the `header` option. For example given a request header `Cookie: a=eyJh...;b=session;c=etc`, setting the value `a` in this option will extract the `a` cookie. | 
+| `redirectExpiredAbsent` | Optional | The redirect URL to use when the JWT is expired or absent. JWT expiry complies with [rfc7519](https://datatracker.ietf.org/doc/html/rfc7519) `exp` claim behaviour. **Note**: JWTs rejected due to `nbf` ("not before") claim invalidity are also subject to this redirect, because such tokens are understood to be "expired" in that they not valid yet. | 
+| `redirectInvalid` | Optional | The URL users are redirected to if the token is non-expired but invalid for any reason other than being absent; for example, a bad signature. | 
 | `returnUrlParamName` | Optional | When redirecting to the `redirectExpiredAbsent` or `redirectInvalid` URLs, the value of this option is added as a query/search parameter to the redirect URL as the original URL, for example to return the user to the page that triggered the redirect to login. |
 
 ## Authorization and Request Flow {/*authorization-flow*/}

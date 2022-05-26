@@ -7,7 +7,7 @@ This guide shows you how to deploy an [Angular](https://angular.io) application 
 ## Example {/*example*/}
 
 <ButtonLinksGroup>
-  <ButtonLink variant="fill" type="default" href="https://layer0-docs-layer0-angular-example-default.layer0.link/category/hats">
+  <ButtonLink variant="fill" type="default" href="https://layer0-docs-layer0-angular-example-default.layer0-limelight.link/category/hats">
     Try the Angular SSR Example Site
   </ButtonLink>
   <ButtonLink variant="stroke" type="code" withIcon={true} href="https://github.com/layer0-docs/layer0-angular-example">

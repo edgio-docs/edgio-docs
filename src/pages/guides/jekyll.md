@@ -9,20 +9,20 @@ title: Jekyll
 If you don't have an existing Jekyll site, you can create one by running:
 
 ```bash
-$ gem install bundler jekyll
-$ jekyll new my-jekyll-site
-$ cd my-jekyll-site
+gem install bundler jekyll
+jekyll new my-jekyll-site
+cd my-jekyll-site
 ```
 
 ## Add Layer0
 
 ```bash
 # First, globally install the Layer0 CLI:
-$ npm i -g @layer0/cli
+npm i -g @layer0/cli
 # Next, create a stub package.json:
-$ npm init
+npm init
 # Then, add Layer0 to your Jekyll site:
-$ 0 init
+0 init
 ```
 
 ## Update your Layer0 Router
@@ -66,7 +66,8 @@ To deploy your site to Layer0, run:
 
 ```bash
 # Create a production build of your Jekyll site
-$ bundle exec jekyll build
+bundle exec jekyll build
+
 # Deploy it to Layer0
-$ 0 deploy
+0 deploy
 ```

@@ -2,6 +2,9 @@ import styled from 'styled-components';
 
 import {Toc} from '../Layout/Toc';
 
+import DocsPagination from './DocsPagination';
+import EditPage from './EditPage';
+
 import {siteConfig} from 'siteConfig';
 
 const StyledDocs = styled.div`
@@ -12,7 +15,7 @@ const StyledDocs = styled.div`
   min-height: calc(100vh - 64px);
   color: var(--docs-color);
 
-  .docs-article {
+  .docs-article__section {
     padding: 0 20px 20px 20px;
   }
 
@@ -181,19 +184,23 @@ export default function Docs({
 }) {
   return (
     <StyledDocs className="docs-body">
-      <article className="docs-article">
-        <header className="docs-article__header">
-          <h1 className="article-header">
-            {title}
-            <a
-              className={anchorClassName}
-              href="#"
-              style={{display: 'none'}}
-              aria-hidden="true"></a>
-          </h1>
-        </header>
-        <div className="docs-article__body">{children}</div>
-      </article>
+      <div className="docs-article__section">
+        <article className="docs-article">
+          <header className="docs-article__header">
+            <h1 className="article-header">
+              {title}
+              <a
+                className={anchorClassName}
+                href="#"
+                style={{display: 'none'}}
+                aria-hidden="true"></a>
+            </h1>
+          </header>
+          <div className="docs-article__body">{children}</div>
+        </article>
+        <EditPage />
+        <DocsPagination />
+      </div>
       <Toc headings={tocHeadings} />
     </StyledDocs>
   );

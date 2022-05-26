@@ -157,6 +157,10 @@ const SidebarMenuItems: ISidebarMenuItems = [
           path: '/guides/routing',
         },
         {
+          title: 'JWT and EdgeJS',
+          path: '/guides/jwt_and_edgejs',
+        },
+        {
           title: 'Security',
           path: '/guides/security',
         },

@@ -220,13 +220,13 @@ Consult the [Deploying guide](deploying) for more information on the options for
 
 After you've configured and tested your site on {{ PRODUCT_NAME }}, it's time to take it live. At a high level, the process is:
 
-1. Specify the domain name of the site in the {{ PRODUCT_NAME }} Console.
-2. Configure your SSL certificate in the {{ PRODUCT_NAME }} Console.
-3. Create a CNAME record with your DNS provider with the value shown under DNS Configuration section of the {{ PRODUCT_NAME }} Console.
+1. Specify the domain name of the site under the Configuration tab for the environment in the {{ PRODUCT_NAME }} Console.
+2. Configure your SSL certificate under the Configuration tab for the environment in the {{ PRODUCT_NAME }} Console.
+3. Create a CNAME record with your DNS provider with the value shown under the Networking tab for the environment in the {{ PRODUCT_NAME }} Console.
 
 Each of these steps is described in more detail in the [Production guide](production). Note that third step (configuring your DNS) will be the crucial step that effectively transitions your domain to {{ PRODUCT_NAME }} and should be done last.
 
-Before going live, you should use the [{{ PRODUCT_NAME }} Onboarding Discovery Worksheet](https://docs.google.com/spreadsheets/d/1PGdcV_HoMKSAQsBi3th6gV6XhBn0gpWYm7Ix2sTcDbs/edit?usp=sharing) to help you think through common use cases and concerns and ensure a smooth launch.
+Before going live, you should use the [{{ PRODUCT_NAME }} Onboarding Discovery Worksheet](https://docs.google.com/spreadsheets/d/11T-Dqcv5a_bS6mVj-t9-qrTn5o-Qdn9CjXO3yEHS4zY/) to help you think through common use cases and concerns and ensure a smooth launch.
 
 ## Advanced Prefetching Techniques {/*advanced-prefetching-techniques*/}
 

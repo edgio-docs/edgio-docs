@@ -28,7 +28,7 @@ export const StyledFeatureSection = styled.div`
       --size: 8px;
       width: var(--size);
       height: var(--size);
-      background-color: var(--pink);
+      background-color: var(--colors-green0);
       border-radius: 1px;
     }
 

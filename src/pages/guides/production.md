@@ -102,20 +102,18 @@ mywebsite.xyz.        599    IN    A        208.69.180.14
 - Create a `CNAME` record for your sub-domain, with the value of your apex domain.
    <br/>
 
-  ```
-  # To verify your DNS entries, run the following command
-  dig <your-sub-domain>
-
-  # Example
-  dig www.mywebsite.xyz
-
-  # Result
-  www.mywebsite.xyz.    599    IN    CNAME.   mywebsite.xyz.
-  mywebsite.xyz.        599    IN    A        208.69.180.11
-  mywebsite.xyz.        599    IN    A        208.69.180.12
-  mywebsite.xyz.        599    IN    A        208.69.180.13
-  mywebsite.xyz.        599    IN    A        208.69.180.14
-  ```
+```
+# To verify your DNS entries, run the following command
+dig <your-sub-domain>
+# Example
+dig www.mywebsite.xyz
+# Result
+www.mywebsite.xyz.    599    IN    CNAME.   mywebsite.xyz.
+mywebsite.xyz.        599    IN    A        208.69.180.11
+mywebsite.xyz.        599    IN    A        208.69.180.12
+mywebsite.xyz.        599    IN    A        208.69.180.13
+mywebsite.xyz.        599    IN    A        208.69.180.14
+```
 
 ### Allowing {{ PRODUCT_NAME }} IP Addresses {/*allowing-layer0-ip-addresses*/}
 
@@ -148,25 +146,21 @@ __Note:__ If you already have an existing certificate, you can use it by skippin
    You can verify the value of the CAA records for your domain from the command line using the command below.
    <br/>
 
-   ```bash
-   # Run the following command
-   dig caa +short <your-apex-domain>
+```bash
+# Run the following command
+dig caa +short <your-apex-domain>
+# Example
+dig caa +short mywebsite.xyz
+```
 
-   # Example
-   dig caa +short mywebsite.xyz
-   ```
+Example of a CAA query showing that only **certain** Certificate Authorities are allowed to generate certificates for that domain:
 
-   <br/>
-
-   Example of a CAA query showing that only **certain** Certificate Authorities are allowed to generate certificates for that domain:
-   <br/>
-
-   ```bash
-   0 issue "amazon.com"
-   0 issue "digicert.com"
-   0 issue "globalsign.com"
-   0 issue "letsencrypt.org"
-   ```
+```bash
+0 issue "amazon.com"
+0 issue "digicert.com"
+0 issue "globalsign.com"
+0 issue "letsencrypt.org"
+```
 
    <br/>
 

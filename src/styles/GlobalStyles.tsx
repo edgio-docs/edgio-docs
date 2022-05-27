@@ -2,7 +2,30 @@ import {createGlobalStyle} from 'styled-components';
 
 const GlobalStyle = createGlobalStyle`
 :root {
+  /* New */
+  --colors-black0: #000000;
+  --colors-black1: #353535;
+  --colors-gray0: #1A1A1A;
+  --colors-gray1: #EEEEEE;;
+  --colors-green0: #01B18D;
+  --colors-pink0: #E95495;
+  --colors-purple0: #812991;
+  --colors-white0: #FFFFFF;
+  --colors-pink0: #E95495;
+  --colors-blue0: #00A2E2;
+  --linear-gradient-green-to-blue:  linear-gradient(89.92deg, #00BDA6 0%, #00A2E2 132.46%);
+
+  // named
+  --homepagehero-bg-color: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, #FAFDFF 97.42%);
+  --homepagehero-color: #353535;
+  --homepagehero-bg-image: url('/images/home/LightHeroImg.svg');
+  --sidebar-bg-color: #ffffff;
+  --sidebar-href-color: #353535;
+  --header-bg-color: #ffffff;
+  /* End new */
+
   /* Colors */
+  // #region
   --white: #fff;
   --black1: #1a1a1a;
   --pink: #E95495;
@@ -47,6 +70,20 @@ const GlobalStyle = createGlobalStyle`
   --homepage-link-color: #606060;
   --header-bgColor: #ffffff;
   --scrollbar-bg: #C4C4C4;
+  // #endregion
+}
+
+:root.dark {
+  /* New */
+  /* named */
+  --homepagehero-bg-color: #000000;
+  --homepagehero-color: #ffffff;
+  --homepagehero-bg-image: url('/images/home/DarkHeroImg.svg');
+  --sidebar-bg-color: #353535;
+  --sidebar-href-color: #ffffff;
+  --header-bg-color: #353535;
+
+  /* End new */
 }
 
 
@@ -88,16 +125,6 @@ const GlobalStyle = createGlobalStyle`
   --header-bgColor: #353535;
 }
 
-/* @media (prefers-color-scheme: light) {
-  :root {
-   --homepage-hero-gradient-bg: linear-gradient(
-      180.17deg,
-      rgba(255, 255, 255, 0) 0.15%,
-      rgba(121, 114, 252, 0.1) 99.84%,
-      #fafdff 99.85%
-    );
-   }
-} */
 
 html, body {
   font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
@@ -157,7 +184,7 @@ const NProgress = createGlobalStyle`
 }
 
 #nprogress .bar {
-  background: #e91e63;
+  background: var(--colors-green0);
   position: fixed;
   z-index: 1031;
   top: 0;
@@ -174,7 +201,7 @@ const NProgress = createGlobalStyle`
   right: 0px;
   width: 100px;
   height: 100%;
-  box-shadow: 0 0 10px #e91e63, 0 0 5px #e91e63;
+  box-shadow: 0 0 10px var(--colors-green0), 0 0 5px var(--colors-green0);
   opacity: 1;
   -webkit-transform: rotate(3deg) translate(0px, -4px);
   -ms-transform: rotate(3deg) translate(0px, -4px);
@@ -196,8 +223,8 @@ const NProgress = createGlobalStyle`
   height: 18px;
   box-sizing: border-box;
   border: solid 2px transparent;
-  border-top-color: #e91e63;
-  border-left-color: #e91e63;
+  border-top-color: var(--colors-green0);
+  border-left-color: var(--colors-green0);
   border-radius: 50%;
   -webkit-animation: nprogress-spinner 400ms linear infinite;
   animation: nprogress-spinner 400ms linear infinite;
@@ -392,20 +419,6 @@ const Algolia = createGlobalStyle`
   --docsearch-hit-color: #cbcbcb;
 }
 
-/* Useful... */
-/* @media (prefers-color-scheme: light) {
-  :root {
-    --docsearch-searchbox--bg: #1a1a1a;
-    --docsearch-text-color: white;
-    --docsearch-searchbox-focus-background: #1a1a1a;
-    --docsearch-searchbox-shadow: rgb(116, 116, 116) 0px 0px 0px 0px,
-      rgb(112, 112, 112) 0px 0px 0px 0px, rgb(255, 255, 255) 0px 0px 0px,
-      rgb(80, 80, 80) 0px 0px 0px 2px, rgb(75, 75, 75) 0px 0px 0px 0px,
-      rgb(114, 114, 114) 0px 0px 0px 0px, rgb(136, 136, 136) 0px 0px 0px 0px;
-    --docsearch-searchbox-focus-background: #000;
-  }
-} */
-
 .DocSearch-Container,
 .DocSearch-Container * {
   box-sizing: border-box;
@@ -415,23 +428,26 @@ const Algolia = createGlobalStyle`
 .DocSearch-Button:focus,
 .DocSearch-Button:hover {
   color: var(--docsearch-text-color);
+  transform: scale(1.1);
+  box-shadow: none;
 }
 
 .DocSearch-Button {
   align-items: center;
   background: var(--docsearch-searchbox--bg);
-  border: 0;
-  border-radius: 6px;
   color: var(--docsearch-muted-color);
-  cursor: pointer;
-  display: flex;
-  font-weight: 500;
-  height: 36px;
-  justify-content: space-between;
   margin: 0;
-  padding: 0 8px;
+  border: 0;
+  padding: 0;
   user-select: none;
-  width: inherit;
+  cursor: pointer;
+  font-weight: 500;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  --size: 32px;
+  height: var(--size);
+  width: var(--size);
 }
 
 .DocSearch-Button-Container {

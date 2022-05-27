@@ -17,7 +17,7 @@ const StyledHeader = styled.header`
   position: sticky;
   top: 0;
   z-index: 1;
-  background: var(--header-bgColor);
+  background-color: var(--header-bg-color);
   width: 100%;
   height: var(--header-height);
   box-shadow: inset 0 -1px var(--grey1);
@@ -48,16 +48,17 @@ const StyledHeader = styled.header`
     }
 
     .theme-switcher {
+      height: 32px;
       width: 32px;
       background-color: transparent;
       border: none;
       justify-content: center;
       align-items: center;
       padding: 0;
-      height: 32px;
 
       :hover {
         cursor: pointer;
+        transform: scale(1.1);
       }
     }
 
@@ -71,7 +72,7 @@ const StyledHeader = styled.header`
 
     a:last-of-type {
       color: var(--white);
-      background-color: var(--pink);
+      background: var(--linear-gradient-green-to-blue);
       padding: 8px 12px;
       font-weight: 600;
       border-radius: 4px;
@@ -111,13 +112,6 @@ const StyledHeader = styled.header`
     .col-2 {
       display: flex;
     }
-
-    /* .col-3 {
-      .search-form__box {
-        width: 100%;
-        max-width: 100%;
-      }
-    } */
 
     .col-3 {
       display: flex;

@@ -96,11 +96,11 @@ The `{{ HEADER_PREFIX }}-status` header will show the response codes received fr
 `< {{ HEADER_PREFIX }}-status: eh=200,ed=200,gh=200,gd=200,p=200,w=200`
 
 ##### _{{ HEADER_PREFIX }}-components_ {/*-header_prefix--components*/}
-`{{ HEADER_PREFIX }}components`. This is most useful for {{ PRODUCT_NAME }} in identifying the versions of each service, the id of the environment, and which backend serviced the request
+`{{ HEADER_PREFIX }}-components`. This is most useful for {{ PRODUCT_NAME }} in identifying the versions of each service, the id of the environment, and which backend serviced the request
 
 `< {{ HEADER_PREFIX }}-components: eh=0.1.6,e=atl,ec=1.1.0,ed=1.0.1,gh=0.1.6,g=hef,gd=1.0.1,p=1.21.10,w=3.11.0,wi=e8ce8753-163d-4be9-a39e-40454ace5146,b=serverless`
 
-## server-timing {/*server-timing*/}
+## Server Timing {/*server-timing*/}
 
 {{ PRODUCT_NAME }} adds the following values to the standard [server-timing](https://www.w3.org/TR/server-timing/) response header:
 
@@ -110,6 +110,14 @@ The `{{ HEADER_PREFIX }}-status` header will show the response codes received fr
   - `MISS` - The page could not be served from the cache
 - country: desc=`country_code` - where country_code is the two letter code of the country from which the request was sent.
 - xrj: desc=`route` - where route is the matched route serialized as JSON.
+
+## Serverless Timing {/*serverless-timing*/}
+
+### Cold start timing {/*serverless-cold-start-timing*/}
+
+To calculate the Serverless cold start timing you must take the difference between `pf` and `wt` in the `x-0-t` header. `wt` is time taken for the lambda to execute after it has started, this is can be read as the time is takes the project code to execute. If that seems large, evaluate the code within your project to see why this might be. 
+
+Based on the example above, that would be `809 (pf) - 722 (wt) = 87ms`. 
 
 ## Troubleshooting Headers {/*troubleshooting-headers*/}
 

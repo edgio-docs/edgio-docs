@@ -115,7 +115,7 @@ The `{{ HEADER_PREFIX }}-status` header will show the response codes received fr
 
 ### Cold start timing {/*serverless-cold-start-timing*/}
 
-To calculate the Serverless cold start timing you must take the difference between `pf` and `wt` in the `x-0-t` header. `wt` is time taken for the lambda to execute after it has started, this is can be read as the time is takes the project code to execute. If that seems large, evaluate the code within your project to see why this might be. 
+To calculate the Serverless cold start timing you must take the difference between `pf` and `wt` in the `x-0-t` header. `wt` is time taken for the lambda to execute after it has started, this is can be read as the time is takes the project code to execute. If that seems large, evaluate the code within your project to see why this might be. To [track timings](/guides/performance#tracking-your-own-timings) for a function, it is possible to add specific code to do that. 
 
 Based on the example above, that would be `809 (pf) - 722 (wt) = 87ms`. 
 

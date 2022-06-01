@@ -1,7 +1,10 @@
 import {DocSearch} from '@docsearch/react';
+import Image from 'next/image';
 import Link from 'next/link';
 import styled from 'styled-components';
 
+import DarkEdgioLogo from '../../../../public/images/home/DarkEdgioLogo.svg';
+import LightEdgioLogo from '../../../../public/images/home/LightEdgioLogo.svg';
 import {
   DarkDesktopLogo,
   DarkMobileLogo,
@@ -33,6 +36,19 @@ const StyledHeader = styled.header`
   .col-1 {
     .logo-box {
       cursor: pointer;
+      align-items: center;
+      gap: 8px;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    .is-becoming {
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 17px;
+      color: var(--black1);
     }
   }
 
@@ -186,9 +202,21 @@ export default function Header({
             <a>
               <div className="logo-box" id="light-theme-switcher">
                 <DarkDesktopLogo className="logo" />
+                <span className="is-becoming">is becoming</span>
+                <Image
+                  src={DarkEdgioLogo}
+                  alt="Layer0 Documentation"
+                  unoptimized
+                />
               </div>
               <div className="logo-box" id="dark-theme-switcher">
                 <LightDesktopLogo className="logo" />
+                <span className="is-becoming">is becoming</span>
+                <Image
+                  src={LightEdgioLogo}
+                  alt="Layer0 Documentation"
+                  unoptimized
+                />
               </div>
             </a>
           </Link>

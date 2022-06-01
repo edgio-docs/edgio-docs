@@ -16,9 +16,8 @@ const GlobalStyle = createGlobalStyle`
   --linear-gradient-green-to-blue:  linear-gradient(89.92deg, #00BDA6 0%, #00A2E2 132.46%);
 
   // named
-  --homepagehero-bg-color: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, #FAFDFF 97.42%);
   --homepagehero-color: #353535;
-  --homepagehero-bg-image: url('/images/home/LightHeroImg.svg');
+  --homepagehero-bg-image: url('/images/home/LightHeroImg.svg'),  linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, #FAFDFF 97.42%);
   --sidebar-bg-color: #ffffff;
   --sidebar-href-color: #353535;
   --header-bg-color: #ffffff;
@@ -76,9 +75,8 @@ const GlobalStyle = createGlobalStyle`
 :root.dark {
   /* New */
   /* named */
-  --homepagehero-bg-color: #000000;
+  --homepagehero-bg-image: url('/images/home/DarkHeroImg.svg'), #000000;
   --homepagehero-color: #ffffff;
-  --homepagehero-bg-image: url('/images/home/DarkHeroImg.svg');
   --sidebar-bg-color: #353535;
   --sidebar-href-color: #ffffff;
   --header-bg-color: #353535;

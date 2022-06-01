@@ -8,8 +8,7 @@ import LightLayer0Edgio from '../../../public/images/home/LightLayer0Edgio.svg';
 import Container, {StyledContainer} from '../Layout/Container';
 
 const StyledHomepageHero = styled.div`
-  background-color: var(--homepagehero-bg-color);
-  background-image: var(--homepagehero-bg-image);
+  background: var(--homepagehero-bg-image);
   min-height: 501px;
   line-height: 1.3;
   background-repeat: no-repeat;

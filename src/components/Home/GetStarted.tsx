@@ -6,6 +6,7 @@ import {IconSecurity} from '../Icon/IconSecurity';
 import {IconWebAppCDN} from '../Icon/IconWebAppCDN';
 
 import {IconArrow} from 'components/Icon/IconArrow';
+import {IconGraphQLCDN} from 'components/Icon/IconGraphQLCDN';
 
 const NextLink = Link;
 
@@ -97,13 +98,23 @@ const StyledGetStarted = styled.div`
 
   .card {
     .card-footer__link {
-      color: var(--pink);
+      color: var(--colors-purple0);
       text-decoration: none;
       display: flex;
       column-gap: 7px;
     }
 
-    :nth-child(even) {
+    :nth-child(2) {
+      .card-footer__link {
+        color: var(--colors-blue0);
+      }
+    }
+    :nth-child(3) {
+      .card-footer__link {
+        color: var(--colors-green0);
+      }
+    }
+    :last-child {
       .card-footer__link {
         color: #7972fc;
       }
@@ -132,7 +143,7 @@ export default function GetStarted({children}: {children: React.ReactNode}) {
           hrefText="View Supported Frameworks"
         />
         <GetStartedCard
-          icon={IconWebAppCDN}
+          icon={IconGraphQLCDN}
           title="GraphQL CDN"
           subtitle="Scale and secure your GraphQL API using the Layer0 global CDN and Edge JS."
           href="/guides/graphql"

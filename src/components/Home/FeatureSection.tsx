@@ -42,7 +42,7 @@ export const StyledFeatureSection = styled.div`
       border-bottom: 1px solid transparent;
 
       :hover {
-        border-bottom-color: var(--pink);
+        border-bottom-color: var(--colors-green0);
       }
     }
   }

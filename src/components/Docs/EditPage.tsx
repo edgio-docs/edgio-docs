@@ -10,7 +10,7 @@ const StyledEditPage = styled.div`
     text-transform: uppercase;
     display: inline-flex;
     align-items: center;
-    color: var(--pink);
+    color: var(--colors-green0);
     font-weight: 500;
     font-size: 13px;
     line-height: 16px;

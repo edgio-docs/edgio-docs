@@ -476,7 +476,7 @@ const Algolia = createGlobalStyle`
   max-width: 350px;
   border-radius: 0;
   background: var(--docsearch-modal-background);
-  box-shadow: var(--docsearch-modal-shadow);
+  box-shadow: none;
   flex-direction: column;
   position: relative;
 }
@@ -563,7 +563,7 @@ const Algolia = createGlobalStyle`
 }
 
 .DocSearch-Hit[aria-selected='true'] a {
-  background-color: var(--docsearch-highlight-color);
+  background: var(--linear-gradient-green-to-blue);
 }
 
 .DocSearch-Hit a {
@@ -576,6 +576,10 @@ const Algolia = createGlobalStyle`
   width: 100%;
   border-radius: 0;
   box-shadow: none;
+}
+
+.DocSearch-Hits mark {
+  color: var(--colors-green0);
 }
 
 @media screen and (max-width: 750px) {
@@ -612,6 +616,7 @@ const Algolia = createGlobalStyle`
 #docsearch-label > svg {
   width: 16px;
   height: 16px;
+  color: var(--colors-green0);
 }
 
 .DocSearch-NoResults {
@@ -624,6 +629,10 @@ const Algolia = createGlobalStyle`
   align-items: center;
   color: var(--docsearch-text-color);
   gap: 12px;
+}
+
+.DocSearch-Prefill, .DocSearch-Help a, .DocSearch-Label {
+  color: var(--colors-green0)
 }
 `;
 

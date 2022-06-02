@@ -27,7 +27,7 @@ Here's an example React app running on Layer0:
 To prepare your React app for deployment on {{ PRODUCT_NAME }}, install the {{ PRODUCT_NAME }} CLI globally:
 
 ```bash
-npm install -g {{ PACKAGE_NAME }}/cli
+npm i -g {{ PACKAGE_NAME }}/cli # yarn global add {{ PACKAGE_NAME }}/cli
 ```
 
 ### New project {/*new-project*/}

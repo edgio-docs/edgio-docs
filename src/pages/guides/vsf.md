@@ -29,7 +29,7 @@ Here's an example Vue Storefront 2 app running on Layer0:
 If you have not already done so, install the [{{ PRODUCT_NAME }} CLI](cli)
 
 ```bash
-npm i -g {{ PACKAGE_NAME }}/cli
+npm i -g {{ PACKAGE_NAME }}/cli # yarn global add {{ PACKAGE_NAME }}/cli
 ```
 
 ## Install the VSF CLI {/*install-the-vsf-cli*/}

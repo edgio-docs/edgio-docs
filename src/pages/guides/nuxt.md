@@ -51,7 +51,7 @@ This framework has a connector developed for {{ PRODUCT_NAME }}. See [Connectors
 If you have not already done so, install the [{{ PRODUCT_NAME }} CLI](cli)
 
 ```bash
-npm i -g {{ PACKAGE_NAME }}/cli
+npm i -g {{ PACKAGE_NAME }}/cli # yarn global add {{ PACKAGE_NAME }}/cli
 ```
 
 ## Creating a new Nuxt app {/*creating-a-new-nuxt-app*/}

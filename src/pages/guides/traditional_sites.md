@@ -101,7 +101,7 @@ Refer to the [{{ CONFIG_FILE }}](layer0_config) guide for more details
 Here's an example output from running {{ PRODUCT_NAME }} create:
 
 ```bash
-$ npm create {{ STARTER_NAME }}@latest
+npm create {{ STARTER_NAME }}@latest
 npx: installed 170 in 10.375s
 ✔ Enter a name for your app … my-app
 ✔ Select an app template › Default traditional site template

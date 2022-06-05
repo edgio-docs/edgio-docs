@@ -134,7 +134,7 @@ module.exports = with{{ PRODUCT_NAME }}(
     // Output source maps so that stack traces have original source filenames and line numbers when tailing
     // the logs in the {{ PRODUCT_NAME }} developer console.
     {{ FULL_CLI_NAME }}SourceMaps: true,
-    // Don't include Layer0 Devtools in production
+    // Don't include {{ PRODUCT_NAME }} Devtools in production
     // More on Layer0 Devtools at https://docs.layer0.co/guides/devtools
     disableLayer0DevTools: true,
   })

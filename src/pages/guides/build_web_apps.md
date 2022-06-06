@@ -40,14 +40,14 @@ To create a new {{ PRODUCT_NAME }} compatible app, run:
 
 ```bash
 # npm
-$ npm create {{ STARTER_NAME }}@latest
-$ {{ CLI_NAME }} deploy
+npm create {{ STARTER_NAME }}@latest
+{{ CLI_NAME }} deploy
 ```
 
 or
 
 ```bash
 # yarn
-$ yarn create {{ STARTER_NAME }}@latest
-$ {{ CLI_NAME }} deploy
+yarn create {{ STARTER_NAME }}@latest
+{{ CLI_NAME }} deploy
 ```

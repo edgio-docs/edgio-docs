@@ -88,7 +88,7 @@ For reference, by the **end** of this overview, our `myblog` directory will have
 Let's start the Zola development server with:
 
 ```bash
-$ zola serve
+zola serve
 Building site...
 -> Creating 0 pages (0 orphan), 0 sections, and processing 0 images
 ```

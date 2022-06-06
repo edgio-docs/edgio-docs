@@ -9,7 +9,7 @@ title: Express
 To add {{ PRODUCT_NAME }} to your Express app, run the following in the root directory of your express app:
 
 ```bash
-npm i -g @layer0/cli
+npm i -g {{ PACKAGE_NAME }}/cli # yarn global add {{ PACKAGE_NAME }}/cli
 0 init
 ```
 

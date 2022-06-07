@@ -39,8 +39,8 @@ The sections below walk you through configuring your {{ PRODUCT_NAME }} project 
 To deploy Layer0 in front of your GraphQL API, install the {{ PRODUCT_NAME }} CLI and create a new {{ PRODUCT_NAME }} configuration:
 
 ```bash
-npm i -g {{ PACKAGE_NAME }}/cli
-{{ CLI_NAME }} init
+$ npm i -g {{ PACKAGE_NAME }}/cli # yarn global add {{ PACKAGE_NAME }}/cli
+$ {{ CLI_NAME }} init
 ```
 
 For more information on adding {{ PRODUCT_NAME }} to an existing app, see [Getting Started](/guides/getting_started#section_adding_layer0_to_an_existing_app).

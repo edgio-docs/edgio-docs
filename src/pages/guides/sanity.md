@@ -29,7 +29,7 @@ Sanity Studio is a single page app (SPA) written in React, where you can configu
 If you have not already done so, install the [{{ PRODUCT_NAME }} CLI](cli)
 
 ```bash
-npm i -g {{ PACKAGE_NAME }}/cli
+npm i -g {{ PACKAGE_NAME }}/cli # yarn global add {{ PACKAGE_NAME }}/cli
 ```
 
 ## Create a new Sanity Studio app {/*create-a-new-sanity-studio-app*/}

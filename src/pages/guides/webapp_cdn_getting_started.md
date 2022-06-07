@@ -46,7 +46,7 @@ If you do not have an account yet, visit [{{ PRODUCT_NAME }}]({{ APP_URL }}/sign
 You can use either `npm` or `yarn`.
 
 ```bash
-npm i -g {{ PACKAGE_NAME }}/cli
+npm i -g {{ PACKAGE_NAME }}/cli # yarn global add {{ PACKAGE_NAME }}/cli
 ```
 
 ```bash

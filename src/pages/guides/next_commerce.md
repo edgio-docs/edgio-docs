@@ -27,9 +27,7 @@ Here is an example of the [Next.js Commerce](https://nextjs.org/commerce) templa
 If you have not already done so, install the [{{ PRODUCT_NAME }} CLI](cli)
 
 ```bash
-npm i -g {{ PACKAGE_NAME }}/cli
-# or
-yarn global add {{ PACKAGE_NAME }}/cli
+npm i -g {{ PACKAGE_NAME }}/cli # yarn global add {{ PACKAGE_NAME }}/cli
 ```
 
 {{ SYSTEM_REQUIREMENTS }}

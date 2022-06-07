@@ -26,25 +26,27 @@ function GetStartedCard({
   hrefText,
 }: IGetStartedCardProps) {
   return (
-    <div className="card">
-      <header className="card-header">
-        <div className="card-icon__box">
-          <Icon />
+    <NextLink href={href}>
+      <a className="card">
+        <header className="card-header">
+          <div className="card-icon__box">
+            <Icon />
+          </div>
+          <h3 className="card-title">{title}</h3>
+        </header>
+        <div className="card-content">
+          <p className="card-subtitle">{subtitle}</p>
         </div>
-        <h3 className="card-title">{title}</h3>
-      </header>
-      <div className="card-content">
-        <p className="card-subtitle">{subtitle}</p>
-      </div>
-      <footer className="card-footer">
-        <NextLink href={href} passHref>
-          <a className="card-footer__link">
-            <span>{hrefText}</span>
-            <IconArrow displayDirection="right" />
-          </a>
-        </NextLink>
-      </footer>
-    </div>
+        <footer className="card-footer">
+          <NextLink href={href} passHref>
+            <a className="card-footer__link">
+              <span>{hrefText}</span>
+              <IconArrow displayDirection="right" />
+            </a>
+          </NextLink>
+        </footer>
+      </a>
+    </NextLink>
   );
 }
 
@@ -74,6 +76,12 @@ const StyledGetStarted = styled.div`
     padding: 17px;
     display: grid;
     grid-template-rows: auto 1fr auto;
+    transition: 0.2s;
+    text-decoration: none;
+
+    :hover {
+      transform: scale(1.01);
+    }
   }
 
   .card-header {

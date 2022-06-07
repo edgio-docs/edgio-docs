@@ -83,8 +83,8 @@ function HomepageHero() {
             Learn more about the exciting changes <Link href="/">here.</Link>
           </p>
           <p className="subheadline">
-            The powerful CDN platform that integrates edge logic into your
-            application code & extends the edge to the browser.
+            Edgio is a powerful CDN platform that integrates edge logic into
+            your application code & extends the edge to the browser.
           </p>
         </div>
       </Container>

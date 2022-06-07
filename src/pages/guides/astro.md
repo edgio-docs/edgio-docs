@@ -43,7 +43,7 @@ npm run build
 
 ```bash
 # First, globally install the Layer0 CLI:
-npm i -g @layer0/cli
+npm i -g {{ PACKAGE_NAME }}/cli # yarn global add {{ PACKAGE_NAME }}/cli
 
 # Then, add Layer0 to your Astro site:
 0 init

@@ -27,7 +27,7 @@ This guide shows you how to deploy a [Docusaurus](https://docusaurus.io/) applic
 If you have not already done so, install the [{{ PRODUCT_NAME }} CLI](cli)
 
 ```bash
-npm i -g {{ PACKAGE_NAME }}/cli
+npm i -g {{ PACKAGE_NAME }}/cli # yarn global add {{ PACKAGE_NAME }}/cli
 ```
 
 ## Create a new Docusaurus app {/*create-a-new-docusaurus-app*/}

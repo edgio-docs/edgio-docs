@@ -27,7 +27,7 @@ This guide shows you how to deploy a [Shopify Hydrogen](https://hydrogen.shopify
 If you have not already done so, install the [{{ PRODUCT_NAME }} CLI](cli)
 
 ```bash
-npm i -g {{ PACKAGE_NAME }}/cli
+npm i -g {{ PACKAGE_NAME }}/cli # yarn global add {{ PACKAGE_NAME }}/cli
 ```
 
 ## Create a new Shopify Hydrogen app {/*create-a-new-shopify-hydrogen-app*/}

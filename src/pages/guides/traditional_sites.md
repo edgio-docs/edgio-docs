@@ -80,7 +80,7 @@ This framework has a connector developed for {{ PRODUCT_NAME }}. See [Connectors
 Next, install the [{{ PRODUCT_NAME }} CLI](cli)
 
 ```bash
-npm i -g {{ PACKAGE_NAME }}/cli
+npm i -g {{ PACKAGE_NAME }}/cli # yarn global add {{ PACKAGE_NAME }}/cli
 ```
 
 Create your project using {{ PRODUCT_NAME }}'s create module:

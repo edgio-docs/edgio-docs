@@ -122,6 +122,25 @@ The `with{{ PRODUCT_NAME }}` plugin optimizes the Next.js build for running on {
 
 The `withServiceWorker` plugin builds a service worker from `sw/service-worker.js` that prefetches and caches all static JS assets and enables {{ PRODUCT_NAME }}'s [prefetching](/guides/next#section_prefetching) functionality.
 
+## {{ PRODUCT_NAME }} Devtools
+
+By default, [Devtools](/guides/devtools) are enabled on production builds of Next.js with {{ PRODUCT_NAME }}. To disable devtools in production, add the `disableLayer0DevTools` flag:
+
+```js
+const { with{{ PRODUCT_NAME }}, withServiceWorker } = require('{{ PACKAGE_NAME }}/next/config')
+
+module.exports = with{{ PRODUCT_NAME }}(
+  withServiceWorker({
+    // Output source maps so that stack traces have original source filenames and line numbers when tailing
+    // the logs in the {{ PRODUCT_NAME }} developer console.
+    {{ FULL_CLI_NAME }}SourceMaps: true,
+    // Don't include {{ PRODUCT_NAME }} Devtools in production
+    // More on {{ PRODUCT_NAME }} Devtools at https://docs.layer0.co/guides/devtools
+    disableLayer0DevTools: true,
+  })
+)
+```
+
 ## Running Locally {/*running-locally*/}
 
 To simulate your app within {{ PRODUCT_NAME }} locally, run:

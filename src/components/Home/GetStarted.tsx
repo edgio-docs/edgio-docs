@@ -114,11 +114,6 @@ const StyledGetStarted = styled.div`
         color: var(--colors-green0);
       }
     }
-    :last-child {
-      .card-footer__link {
-        color: #7972fc;
-      }
-    }
   }
 `;
 

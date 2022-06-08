@@ -80,11 +80,14 @@ function HomepageHero() {
             />
           </div>
           <p>
-            Learn more about the exciting changes <Link href="/">here.</Link>
+            Learn more about the exciting changes{' '}
+            <a href="https://investors.limelight.com/news/press-releases/news-details/2022/Limelight-to-Acquire-Yahoos-Edgecast-Creating-Global-Leader-in-Edge-Enabled-Software-Solutions/default.aspx">
+              here.
+            </a>
           </p>
           <p className="subheadline">
-            Edgio is a powerful CDN platform that integrates edge logic into
-            your application code & extends the edge to the browser.
+            Layer0 is a powerful web CDN platform that integrates edge logic
+            into your application code & extends the edge to the browser.
           </p>
         </div>
       </Container>

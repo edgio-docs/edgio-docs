@@ -28,7 +28,7 @@ To split traffic between multiple sites, create an environment for each site wit
 For example, to use CI to deploy a split between a `new` site and a `legacy` site we recommend that you:
 
 1. Set up separate source control for the new experience and the legacy experience, for example `new` and `legacy`.
-2. Create environments called `production` and `legeacy` in the {{ PRODUCT_NAME }} Developer Console.
+2. Create environments called `production` and `legacy` in the {{ PRODUCT_NAME }} Developer Console.
 3. Set the backends in the  `{{ CONFIG_FILE }}` for each code base to point to their specific backend (see below.)
 4. Configure CI to deploy the `new` code to the `production` environment and the `legacy` code to the `legacy` environment. (Using `{{ CLI_NAME }} deploy --environment={environment name}`).
 

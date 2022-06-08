@@ -29,7 +29,7 @@ Generate a new app or deploy an existing one to {{ PRODUCT_NAME }}. You will nee
 To add {{ PRODUCT_NAME }} to an existing app, run the following:
 
 ```bash
-$ npm i -g {{ PACKAGE_NAME }}/cli
+$ npm i -g {{ PACKAGE_NAME }}/cli # yarn global add {{ PACKAGE_NAME }}/cli
 $ {{ CLI_NAME }} init
 $ {{ CLI_NAME }} deploy
 ```
@@ -40,14 +40,14 @@ To create a new {{ PRODUCT_NAME }} compatible app, run:
 
 ```bash
 # npm
-$ npm create {{ STARTER_NAME }}@latest
-$ {{ CLI_NAME }} deploy
+npm create {{ STARTER_NAME }}@latest
+{{ CLI_NAME }} deploy
 ```
 
 or
 
 ```bash
 # yarn
-$ yarn create {{ STARTER_NAME }}@latest
-$ {{ CLI_NAME }} deploy
+yarn create {{ STARTER_NAME }}@latest
+{{ CLI_NAME }} deploy
 ```

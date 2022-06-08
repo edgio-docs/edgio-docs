@@ -27,7 +27,7 @@ Here's an example React app running on Layer0:
 To prepare your React app for deployment on {{ PRODUCT_NAME }}, install the {{ PRODUCT_NAME }} CLI globally:
 
 ```bash
-npm install -g {{ PACKAGE_NAME }}/cli
+npm i -g {{ PACKAGE_NAME }}/cli # yarn global add {{ PACKAGE_NAME }}/cli
 ```
 
 ### New project {/*new-project*/}
@@ -35,9 +35,9 @@ npm install -g {{ PACKAGE_NAME }}/cli
 This guide will use [Create React App](https://create-react-app.dev/) to generate a project. You can also reference the [example app](https://github.com/layer0-docs/static-react-example) for a complete version of the code.
 
 ```bash
-$ npx create-react-app layer0-cra
-$ cd layer0-cra
-$ {{ CLI_NAME }} init
+npx create-react-app layer0-cra
+cd layer0-cra
+{{ CLI_NAME }} init
 # Pick the following options for questions
 # > Add Layer0 to the current app
 # Hostname of origin site > layer0-docs-layer0-examples-api-default.layer0-limelight.link
@@ -306,8 +306,8 @@ Deploying requires an account on {{ PRODUCT_NAME }}. [Sign up here for free.]({{
 If you have a static app or are following the above example then you need to build the app first
 
 ```bash
-$ npm run build
-$ {{ CLI_NAME }} deploy
+npm run build
+{{ CLI_NAME }} deploy
 ```
 
 For more on deploying, see [Deploying](/guides/deploying).

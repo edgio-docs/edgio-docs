@@ -25,7 +25,7 @@ This guide shows you how to deploy a [Vue.js](https://vuejs.org/) application on
 If you have not already done so, install the [{{ PRODUCT_NAME }} CLI](cli)
 
 ```bash
-npm i -g {{ PACKAGE_NAME }}/cli
+npm i -g {{ PACKAGE_NAME }}/cli # yarn global add {{ PACKAGE_NAME }}/cli
 ```
 
 {{ SYSTEM_REQUIREMENTS }}

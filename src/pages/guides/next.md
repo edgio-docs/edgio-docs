@@ -12,7 +12,7 @@ This guide shows you how to deploy a [Next.js](https://nextjs.org/) application 
   <ButtonLink variant="stroke" type="code" withIcon={true} href="https://github.com/layer0-docs/layer0-nextjs-example">
    View the Code
   </ButtonLink>
-  <ButtonLink variant="stroke" type="deploy" withIcon={true} href="https://app.layer0.co/deploy?button&deploy&repo=https%253A%252F%252Fgithub.com%252Flayer0-docs%252Flayer0-nextjs-example">
+  <ButtonLink variant="stroke" type="deploy" withIcon={true} href="https://app.layer0.co/deploy?button&deploy&repo=https%3A%2F%2Fgithub.com%2Flayer0-docs%2Flayer0-nextjs-example">
     Deploy to Layer0
   </ButtonLink>
 </ButtonLinksGroup>
@@ -63,7 +63,7 @@ npx create-next-app@latest
 ### Install the {{ PRODUCT_NAME }} CLI globally {/*install-the-layer0-cli-globally*/}
 
 ```bash
-npm install -g {{ PACKAGE_NAME }}/cli
+npm i -g {{ PACKAGE_NAME }}/cli # yarn global add {{ PACKAGE_NAME }}/cli
 ```
 
 When installing the {{ PRODUCT_NAME }} CLI globally in a virtual environment that has Node and NPM installed globally, you [may run into permission issues]({{ FORUM_URL }}/t/xdn-cli-npm-install-error/83). In that case, you can install the {{ PRODUCT_NAME }} CLI locally within your app using `npm i -D {{ PACKAGE_NAME }}/cli` and running commands using `./node_modules/{{ PACKAGE_NAME }}/cli` instead of `{{ CLI_NAME }}`.
@@ -121,6 +121,25 @@ The `with{{ PRODUCT_NAME }}` plugin optimizes the Next.js build for running on {
 ### withServiceWorker {/*withserviceworker*/}
 
 The `withServiceWorker` plugin builds a service worker from `sw/service-worker.js` that prefetches and caches all static JS assets and enables {{ PRODUCT_NAME }}'s [prefetching](/guides/next#section_prefetching) functionality.
+
+## {{ PRODUCT_NAME }} Devtools
+
+By default, [Devtools](/guides/devtools) are enabled on production builds of Next.js with {{ PRODUCT_NAME }}. To disable devtools in production, add the `disableLayer0DevTools` flag:
+
+```js
+const { with{{ PRODUCT_NAME }}, withServiceWorker } = require('{{ PACKAGE_NAME }}/next/config')
+
+module.exports = with{{ PRODUCT_NAME }}(
+  withServiceWorker({
+    // Output source maps so that stack traces have original source filenames and line numbers when tailing
+    // the logs in the {{ PRODUCT_NAME }} developer console.
+    {{ FULL_CLI_NAME }}SourceMaps: true,
+    // Don't include {{ PRODUCT_NAME }} Devtools in production
+    // More on {{ PRODUCT_NAME }} Devtools at https://docs.layer0.co/guides/devtools
+    disableLayer0DevTools: true,
+  })
+)
+```
 
 ## Running Locally {/*running-locally*/}
 

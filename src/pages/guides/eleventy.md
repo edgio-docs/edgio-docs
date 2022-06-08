@@ -38,7 +38,7 @@ This guide shows you how to deploy a [Eleventy](https://www.11ty.dev/) applicati
 If you have not already done so, install the [{{ PRODUCT_NAME }} CLI](cli)
 
 ```bash
-npm i -g {{ PACKAGE_NAME }}/cli
+npm i -g {{ PACKAGE_NAME }}/cli # yarn global add {{ PACKAGE_NAME }}/cli
 ```
 
 ## Create a new Eleventy app {/*create-a-new-eleventy-app*/}

@@ -1,5 +1,4 @@
 import Image from 'next/image';
-import Link from 'next/link';
 import * as React from 'react';
 import styled from 'styled-components';
 
@@ -12,7 +11,7 @@ const StyledHomepageHero = styled.div`
   min-height: 501px;
   line-height: 1.3;
   background-repeat: no-repeat;
-  background-position: right;
+  background-position: bottom right;
   background-size: contain;
   color: var(--homepagehero-color);
 

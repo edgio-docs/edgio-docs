@@ -32,7 +32,7 @@ jobs:
             ${{ runner.os }}-
       - run: yarn
       - name: Deploy to Layer0 (prod)
-        run: yarn layer0:deploy --branch=$BRANCH_NAME --token=${{secrets.layer0_deploy_token}} --environment=production
+        run: yarn layer0:deploy --branch=$BRANCH_NAME --token=${{secrets.layer0_prod_deploy_token}} --environment=production
       # - name: Crawl prod docs
       #   run: |
       #     docker run \

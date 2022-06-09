@@ -80,7 +80,7 @@ This framework has a connector developed for {{ PRODUCT_NAME }}. See [Connectors
 Next, install the [{{ PRODUCT_NAME }} CLI](cli)
 
 ```bash
-npm i -g {{ PACKAGE_NAME }}/cli
+npm i -g {{ PACKAGE_NAME }}/cli # yarn global add {{ PACKAGE_NAME }}/cli
 ```
 
 Create your project using {{ PRODUCT_NAME }}'s create module:
@@ -101,7 +101,7 @@ Refer to the [{{ CONFIG_FILE }}](layer0_config) guide for more details
 Here's an example output from running {{ PRODUCT_NAME }} create:
 
 ```bash
-$ npm create {{ STARTER_NAME }}@latest
+npm create {{ STARTER_NAME }}@latest
 npx: installed 170 in 10.375s
 ✔ Enter a name for your app … my-app
 ✔ Select an app template › Default traditional site template

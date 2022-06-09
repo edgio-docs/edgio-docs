@@ -39,7 +39,7 @@ npx frontity create my-app
 To prepare your Frontity app for deployment on {{ PRODUCT_NAME }}, run the following in the root folder of your project:
 
 ```bash
-npm install -g {{ PACKAGE_NAME }}/cli
+npm i -g {{ PACKAGE_NAME }}/cli # yarn global add {{ PACKAGE_NAME }}/cli
 {{ CLI_NAME }} init
 ```
 

@@ -43,6 +43,8 @@ When you deploy your Express app to {{ PRODUCT_NAME }}, the {{ PRODUCT_NAME }} C
 
 If it cannot find one of these files, you can specify the path to the app in `layer0.config.js`:
 
+Note that your main server file should not
+
 ```js
 const { join } = require('path')
 

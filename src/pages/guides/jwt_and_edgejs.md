@@ -57,7 +57,7 @@ If you were to decode a token's parts, you would see something like the followin
 
 The header contains the signing algorithm and the token type:
 ```json
-{"alg":"H256", "typ":"JWT"}
+{"alg":"HS256", "typ":"JWT"}
 ```
 
 #### Payload  {/*payload*/}
@@ -99,15 +99,11 @@ Two `match` methods are included:
 
 * The second  `match` matches all routes under `/secret` and represents all content requests. At this point, the requestor has been authenticated, so the second argument is the `proxy` method that proxies the request to to the origin defined in `layer0.config.js`. See [Routing with EdgeJS](/guides/routing) for additional information about routers and matches.
 
-<Callout type="info">
-  This example requires that all routes to be subordinate to the `/secret` route.
-</Callout>
-
 ```js
 new Router()
-  .match('/secret/:path*', ({ verifyJWT }) => {
+  .match('/protected', ({ verifyJWT }) => {
     verifyJWT({
-      algo: 'HS512',                
+      algo: 'HS256',                
       secret: process.env['JWT_SECRET'], 
       header: 'Authorization',
       cookie: 'next-auth.session-token',       
@@ -116,21 +112,40 @@ new Router()
       returnUrlParamName: 'origUrl'
     })
   })
-  .match('/secret/content-that-only-signed-in-users-should-see', ({ proxy }) => {
+  .match('/protected/content-that-only-signed-in-users-should-see', ({ proxy }) => {
     proxy('origin')
   })
 ```
+
+On requests to `/protected` this configuration checks for the presense of a symetrically signed (`HM256`, shared secret) `HWT` in the `Cookie: next-auth.session-token=eyJh...;` part of the cookie, redirecting expired JWTs to `/expired?origUrl=/protected` and invalid JWTs to `/expired?origUrl=/invalid` (See `redirectExpiredAbsent` and `redirectInvalid` below for an explanation of the difference.)
+
+If neither `redirectExpiredAbsent` nor `redirectInvalid` are specified, then the value of `returnUrlParamName` is ignored, and all requests are answered with a `403 Forbidden`.
+
 Properties in the preceding example are described in this table:
 
 | Property | Required/Optional | Description |
 | -------- | ----------------- | ----------- | 
-| `algo` | Required | Algorithm used to sign the token. Both symmetric and asymmetric are supported. {{PRODUCT_NAME}} supports these algorithms:<ul><li>ES256</li><li>ES384</li><li>ES512</li><li>HS512</li><li>HS256</li> <li>HS384</li><li>RS256</li><li>RS384</li><li>RS512</li></ul> To prevent  hacking of the token, {{PRODUCT_NAME}} does not accept `none` as a value for `alg`.| 
-| `secret` | Required | Should either be an armoued (PEM-encoded including header and fooder) public key for the asymmetric algorithms, or a simple secret string for the symmetric algorithms. | 
-| `header` | Optional | Header to extract the token from. If the value of the header is prefixed with the string `.*Bearer\ `, the string will be ignored and only the bytes following it will be decoded as the JWT. | 
-| `cookie` | Optional | The cookie key to extract the token from. Used in conjunction with the `header` option. For example given a request header `Cookie: a=eyJh...;b=session;c=etc`, setting the value `a` in this option will extract the `a` cookie. | 
-| `redirectExpiredAbsent` | Optional | The redirect URL to use when the JWT is expired or absent. JWT expiry complies with [rfc7519](https://datatracker.ietf.org/doc/html/rfc7519) `exp` claim behaviour. **Note**: JWTs rejected due to `nbf` ("not before") claim invalidity are also subject to this redirect, because such tokens are understood to be "expired" in that they not valid yet. | 
-| `redirectInvalid` | Optional | The URL users are redirected to if the token is non-expired but invalid for any reason other than being absent; for example, a bad signature. | 
+| `algo` | Required | Algorithm used to sign the token. Both symmetric and asymmetric are supported. {{PRODUCT_NAME}} supports these algorithms:<ul><li>ES256</li><li>ES384</li><li>ES512</li><li>HS512</li><li>HS256</li> <li>HS384</li><li>RS256</li><li>RS384</li><li>RS512</li></ul><p style={{border: "1px solid rgb(181,216,195)", padding:"3px", borderRadius:"6px", backgroundColor: "rgb(239,245,242)"}}> ℹ️ To prevent  hacking of the token, {{PRODUCT_NAME}} explicitly does not allow `{"algo":"none"}`. See [here](https://auth0.com/blog/critical-vulnerabilities-in-json-web-token-libraries/) for more information. </p> | 
+| `secret` | Required | The secret. Should either be an armoued (PEM encoded including header and fooder) public key for the asymmetric algorithms, or a simple secret string for the symmetric algorithms. Symmetric algorithms (`HM..`) use the same secret for signing and verification which is insecure if the client code (e.g a single-page-app) has the secret embedded in the bundle. <p> </p> <p> </p> Use a symmetric algorightm (see `algo` for more information) to use a public and private key to independently verify (public key) and sign (private key) the tokens. The `ES...` family produces the smallest asymmetric signatures if overhead introduced by using JWTs is a concern.  <p> </p> <p> </p> If using an asymmetric algorithm the value provided must be the public key provided in [rfc7468](https://datatracker.ietf.org/doc/html/rfc7468) PEM format. See this [example](#public-key-example). |
+| `header`[^*] | Optional | Header to extract the token from. If the value of the header is prefixed with the string `.*Bearer\ `, the string will be ignored and only the bytes following it will be decoded as the JWT. Example: `Authorization: Bearer eyJh...`. | 
+| `cookie`[^*] | Optional | The cookie key to extract the token from. For example given a request header `Cookie: a=eyJh...;b=session;c=etc`, setting the value `a` in this option will extract the `a` cookie. | 
+| `redirectExpiredAbsent` | Optional | The redirect URL to use when the JWT is expired or absent. JWT expiry complies with [rfc7519](https://datatracker.ietf.org/doc/html/rfc7519) `exp` claim behaviour. **Note**: JWTs rejected due to `nbf` ("not before") claim invalidity are also subject to this redirect, because such tokens may understood to be "expired" in that they not valid yet. Invalid tokens are handled separately in `redirectInvalid`.<p> </p> For either case of redirect, you may specify `returnUrlParamName` to indicate how the URL redirecting the client should be forwarded; this can be used to send a client to the login page and allow a seamless return. | 
+| `redirectInvalid` | Optional | The redirect URL to use when the JWT is invalid. Invalidity is defined as having a bad signature or not meeting any specific claim matching criteria that may be specified. Expired/absent tokens are handled separately in `redirectExpiredAbsent`.<p> </p> For either case of redirect, you may specify `returnUrlParamName` to indicate how the URL redirecting the client should be forwarded; this can be used to send a client to the login page and allow a seamless return.| 
 | `returnUrlParamName` | Optional | When redirecting to the `redirectExpiredAbsent` or `redirectInvalid` URLs, the value of this option is added as a query/search parameter to the redirect URL as the original URL, for example to return the user to the page that triggered the redirect to login. |
+
+
+<Callout type="warning">
+  * `header` and `cookie` are mutually exclusive. Do not attempt to specify both, one will take precedence non-deterministically.
+</Callout>
+
+#### Public Key Example  {/*public-key-example*/}
+```
+-----BEGIN PUBLIC KEY-----
+MHYwEAYHKoZIzj0CAQYFK4EEACIDYgAEn1LlwLN/KBYQRVH6HfIMTzfEqJOVztLe
+kLchp2hi78cCaMY81FBlYs8J9l7krc+M4aBeCGYFjba+hiXttJWPL7ydlE+5UG4U
+Nkn3Eos8EiZByi9DVsyfy9eejh+8AXgp
+-----END PUBLIC KEY-----
+```
 
 ## Authorization and Request Flow {/*authorization-flow*/}
 

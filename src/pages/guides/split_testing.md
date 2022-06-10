@@ -8,8 +8,10 @@ title: Split Testing (aka Edge Experiments)
 
 You can perform two kinds of split tests with {{ PRODUCT_NAME }}:
 
-1. A/B test multiple implementations of the same site
-2. Split traffic between multiple sites - This is commonly used to test a new experience against a legacy one.
+1. A/B test multiple implementations of the same site (environment).
+2. Split traffic between multiple sites (environments) - This is commonly used to test a new experience against a legacy one.
+
+The first option is configured in Edge.js within the project, the second option is configured in the console application.
 
 ## A/B Testing Multiple Implementations {/*ab-testing-multiple-implementations*/}
 
@@ -20,6 +22,10 @@ To use CI to deploy A/B tests we recommend that you:
 1. Set up separate branches in source control for the main experience and the new experience, for example `master` and `preview`.
 2. Create environments called `production` and `preview` in the {{ PRODUCT_NAME }} Developer Console.
 3. Configure CI to deploy the `master` branch to the `production` environment and the `preview` branch to the `preview` environment. (Using `{{ CLI_NAME }} deploy --environment={environment name}`).
+
+## Limitations {/*limitations*/}
+
+- Note that nested split testing is not supported. So for example, if you create a split test on environment A that sends a portion of traffic to environment B, any split testing configured on environment B will be ignored.
 
 ## Splitting Traffic between Multiple Sites {/*splitting-traffic-between-multiple-sites*/}
 
@@ -34,7 +40,7 @@ For example, to use CI to deploy a split between a `new` site and a `legacy` sit
 
 ```js
 // {{ CONFIG_FILE }}
-// New site backend
+// New branch site backend
 module.exports = {
   backends: {
     default: {
@@ -46,7 +52,7 @@ module.exports = {
 
 ```js
 // {{ CONFIG_FILE }}
-// Legacy site backend
+// Legacy branch site backend
 module.exports = {
   backends: {
     default: {
@@ -82,6 +88,16 @@ To begin the split test, click the _Activate_ button at the top of the environme
 
 ![edit](/images/split-testing/activate.png)
 
+### Limitations {/*limitations*/}
+
+#### Nesting {/*nesting*/}
+
+Split testing cannot be nested behind other split testing. Requests are processed through two phases, edge security, redirects and split testing, and then the Edge.js configuration. When using split testing, the first phase is executed once in the site (environment) which receives the request, and then control is delegated to the second phase of the correct cohort configuration.
+
+#### Versioning {/*versioning*/}
+
+Split testing across vastly different versions of {{ PRODUCT_NAME }} may lead to unexpected results, and it is strongly recommended to keep similar versions. Split testing from v4 to v3, or even between v4.5 and v4.0 may introduce subtle bugs due to evolving features across versions. Within one major version things should work reliably.
+
 ## Ending the Split Test {/*ending-the-split-test*/}
 
 To end the split test, you can either deploy a new version of your app with the router destinations removed, or update the environment to send 100% of traffic to a specific destination.
@@ -98,13 +114,13 @@ The experience the user sees is determined by the traffic split percentage you s
 
 ## Identifying the Experience on the Client {/*identifying-the-experience-on-the-client*/}
 
-When a split test is active, {{ PRODUCT_NAME }} will automatically set a `{{ COOKIE_PREFIX }}_destination` cookie to the name of the chosen destination. You can access this value in the browser and use it to report the split test experience assignment to your analytics.
+When a split test is active, {{ PRODUCT_NAME }} will automatically set a `{{ COOKIE_PREFIX }}_destination` cookie to the name of the chosen destination. You can access this value in the browser and use it to report the split test experience assignment to your analytics. This cookie is present in both the inter- and intra-site (environment) configurations.
 
 ## Security, Redirects and Split Tests {/*security-redirects-and-split-tests*/}
 
 Each environment defines security rules, redirect rules, and split test rules. When traffic is processed by the {{ PRODUCT_NAME }} servers, the `host` header is used to determine which environment rules are executed. Normally when you have multiple environments you access each of them using different `host` headers. E.g. `www.mysite.com` to access a `production` environment and `new.mysite.com` to access the `new` environment. In this scenario each environment can have its own security rules and redirect rules. Requests arriving at `www.mysite.com` execute the rules in the `production` environment. Requests arriving at `new.mysite.com` execute the rules in the `new` environment.
 
-But when split testing is enabled, all the traffic arrives using the same `host` header. In this case, only the rules for that environment are executed. Using the above example, when a split test is setup on the `production` environment that splits traffic to `production` or `new` all traffic arriving at `www.mysite.com` executes the `production` security, redirect, and split testing rules. Even if the result of the split test is to use the `new` environment, the security, redirect, and split testing rules of the `new` environment are *not* executed. Traffic arriving at `new.mysite.com` bypasses the split test rules on the `production` environment, so it executes the `new` environment's rules normally.
+But when split testing is enabled, all the traffic arrives using the same `host` header. In this case, only the rules for that environment are executed. Using the above example, when a split test is setup on the `production` environment that splits traffic to `production` or `new` all traffic arriving at `www.mysite.com` executes the `production` security, redirect, and split testing rules. Even if the result of the split test is to use the `new` environment, the security, redirect, and split testing rules of the `new` environment are _not_ executed. Traffic arriving at `new.mysite.com` bypasses the split test rules on the `production` environment, so it executes the `new` environment's rules normally.
 
 ## Metrics and Cache Purging with Split Tests {/*metrics-and-cache-purging-with-split-tests*/}
 

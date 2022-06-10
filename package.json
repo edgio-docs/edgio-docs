@@ -54,12 +54,12 @@
     "styled-components": "^5.3.3"
   },
   "devDependencies": {
-    "@layer0/cli": "^4.13.12",
-    "@layer0/core": "^4.13.12",
-    "@layer0/devtools": "^4.13.12",
-    "@layer0/next": "^4.13.12",
-    "@layer0/prefetch": "^4.13.12",
-    "@layer0/react": "^4.13.12",
+    "@layer0/cli": "^4.13.14",
+    "@layer0/core": "^4.13.14",
+    "@layer0/devtools": "^4.13.14",
+    "@layer0/next": "^4.13.14",
+    "@layer0/prefetch": "^4.13.14",
+    "@layer0/react": "^4.13.14",
     "@mdx-js/loader": "^1.6.16",
     "@types/body-scroll-lock": "^2.6.1",
     "@types/classnames": "^2.3.1",

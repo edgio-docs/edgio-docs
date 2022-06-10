@@ -1,4 +1,5 @@
 import '@docsearch/css';
+import {Metrics} from '@layer0/rum';
 import {MDXEmbedProvider} from 'mdx-embed';
 import type {AppProps} from 'next/app';
 import Router from 'next/router';
@@ -9,6 +10,8 @@ import {ThemeProvider} from 'styled-components';
 import GlobalStyles from '../styles/GlobalStyles';
 
 // import {VersionProvider} from 'components/versioning';
+
+new Metrics({token: 'cdc8d6df-476b-4e2d-ae1a-f8c6893a39a8'}).collect();
 
 // -> Used for the loader when switching between pages
 Router.events.on('routeChangeStart', () => NProgress.start());

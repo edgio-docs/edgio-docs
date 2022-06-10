@@ -22,29 +22,31 @@ Before going live, you must create a production environment and configure your d
 
 To configure your custom domains:
 
-1) Navigate to a site, then open an existing environment or create a new environment. (To create an environment, use instructions in [Environments](./environments).)
+1. Navigate to a site, then open an existing environment or create a new environment. (To create an environment, use instructions in [Environments](./environments).)
+   * For an existing environment, select the _ENVIRONMENTS_ tab header, then click an environment name in the list of environments. Continue with the numbered steps below.
+   * For a new environment, the _DEPLOYMENTS_ tab is displayed. Continue with the following steps.
 
-* For an existing environment, select the _ENVIRONMENTS_ tab header, then click an environment name in the list of environments. Continue with the numbered steps below.
+2. Select the _CONFIGURATION_ tab header.
+   <p></p>
 
-* For a new environment, the _DEPLOYMENTS_ tab is displayed. Continue with the following steps.
+   ![domains](/images/production/configurations-tab.png)
 
-2) Select the _CONFIGURATION_ tab header.
+3. Create a new draft version of the environment by clicking _EDIT_ at the top of the page.
 
-![domains](/images/production/configurations-tab.png)
+4. In the _Domains_ section, click _EDIT DOMAINS_.
+   <p></p>
 
-3) Create a new draft version of the environment by clicking _EDIT_ at the top of the page.
+   ![domains](/images/production/domains-section.png)
 
-4) In the _Domains_ section, click _EDIT DOMAINS_.
+5. Enter a name in the _Edit Domains_ dialog, then click _APPLY_.
+   <p></p>
 
-![domains](/images/production/domains-section.png)
+   ![domainsSection](/images/production/domains.png)
 
-5) Enter a name in the _Edit Domains_ dialog, then click _APPLY_.
+6. Click _ACTIVATE_ at the top of the page to enable the updated environment.
+   <p></p>
 
-![domainsSection](/images/production/domains.png)
-
-6) Click _ACTIVATE_ at the top of the page to enable the updated environment.
-
-![activateEnvironment](/images/production/activate-environment.png)
+   ![activateEnvironment](/images/production/activate-environment.png)
 
 ### Migrating from Fastly {/*migrating-from-fastly*/}
 
@@ -100,22 +102,20 @@ mywebsite.xyz.        599    IN    A        208.69.180.14
 
 - Create the multiple `A` records with the IPs, on your apex domain (see above).
 - Create a `CNAME` record for your sub-domain, with the value of your apex domain.
-   <br/>
+   <p></p>
 
-  ```
-  # To verify your DNS entries, run the following command
-  dig <your-sub-domain>
-
-  # Example
-  dig www.mywebsite.xyz
-
-  # Result
-  www.mywebsite.xyz.    599    IN    CNAME.   mywebsite.xyz.
-  mywebsite.xyz.        599    IN    A        208.69.180.11
-  mywebsite.xyz.        599    IN    A        208.69.180.12
-  mywebsite.xyz.        599    IN    A        208.69.180.13
-  mywebsite.xyz.        599    IN    A        208.69.180.14
-  ```
+   ```
+   # To verify your DNS entries, run the following command
+   dig <your-sub-domain>
+   # Example
+   dig www.mywebsite.xyz
+   # Result
+   www.mywebsite.xyz.    599    IN    CNAME.   mywebsite.xyz.
+   mywebsite.xyz.        599    IN    A        208.69.180.11
+   mywebsite.xyz.        599    IN    A        208.69.180.12
+   mywebsite.xyz.        599    IN    A        208.69.180.13
+   mywebsite.xyz.        599    IN    A        208.69.180.14
+   ```
 
 ### Allowing {{ PRODUCT_NAME }} IP Addresses {/*allowing-layer0-ip-addresses*/}
 
@@ -127,26 +127,27 @@ All data transmitted to and from your {{ PRODUCT_NAME }} site must be secured wi
 
 {{ PRODUCT_NAME }} provides a wildcard TLS certificate that covers the auto-generated domains that it assigns to your site (e.g {team}-{site}-{branch}-{version}.layer0-limelight.link). You need to provide your own certificate for your site's custom domains.
 
-__Note:__ If you already have an existing certificate, you can use it by skipping ahead to [Uploading your Certificate](#section_uploading_your_certificate). Many customers who have existing certificates still choose to obtain a new one when adopting {{ PRODUCT_NAME }} so as not to reuse the same private key with more than one vendor/system._
+<Callout type="info">
+   If you already have an existing certificate, you can use it by skipping ahead to <a href="#section_uploading_your_certificate">Uploading your Certificate</a>. Many customers who have existing certificates still choose to obtain a new one when adopting {{ PRODUCT_NAME }} so as not to reuse the same private key with more than one vendor/system.
+</Callout>
 
 ### Obtaining a Certificate Automatically {/*obtaining-a-certificate-automatically*/}
 
 {{ PRODUCT_NAME }} can generate SSL Certificates on your behalf using [_Let's Encrypt_](https://letsencrypt.org/). Certificates are free, valid for 3 months, and automatically renewed as long as the technical requirements, shown below, remain met:
 
 1. Make sure each environment is configured with the custom domains on which it will receive traffic. For more information on configuring custom domains, see [Custom Domains](#section_domains) above.
-
 2. Using your DNS provider, verify and possibly add a `CAA` record to allow _Let's Encrypt_ to generate certificates for your domains.
 
-   The CAA DNS entries of a domain behave like an allow list to indicate whether **any** or only **certain** Certificate Authorities are allowed to generate certificates for that domain.
+   - The CAA DNS entries of a domain behave like an allow list to indicate whether **any** or only **certain** Certificate Authorities are allowed to generate certificates for that domain.
 
-   If there are no CAA records, it means that **any** Certificate Authority is allowed to generate certificates for that domain.
+   - If there are no CAA records, it means that **any** Certificate Authority is allowed to generate certificates for that domain.
 
-   If there are CAA records, it means that only **certain** Certificate Authorities are allowed to generate certificates for that domain.
+   - If there are CAA records, it means that only **certain** Certificate Authorities are allowed to generate certificates for that domain.
 
-   So in order for _Let's Encrypt_ to be able to generate a certificate for your domains, you must either not have defined any CAA records, or _Let's Encrypt_'s CAA entry must be among those defined in the list of CAA records.
+   - So in order for _Let's Encrypt_ to be able to generate a certificate for your domains, you must either not have defined any CAA records, or _Let's Encrypt_'s CAA entry must be among those defined in the list of CAA records.
 
    You can verify the value of the CAA records for your domain from the command line using the command below.
-   <br/>
+   <p></p>
 
    ```bash
    # Run the following command
@@ -155,11 +156,11 @@ __Note:__ If you already have an existing certificate, you can use it by skippin
    # Example
    dig caa +short mywebsite.xyz
    ```
-
-   <br/>
+   <p></p>
+   <p></p>
 
    Example of a CAA query showing that only **certain** Certificate Authorities are allowed to generate certificates for that domain:
-   <br/>
+   <p></p>
 
    ```bash
    0 issue "amazon.com"
@@ -167,8 +168,8 @@ __Note:__ If you already have an existing certificate, you can use it by skippin
    0 issue "globalsign.com"
    0 issue "letsencrypt.org"
    ```
-
-   <br/>
+   <p></p>
+   <p></p>
 
    If the result of the CAA DNS query is empty, it means that **any** Certificate Authority is allowed to generate certificates on that domain. If so, you can directly go to the next step.
 
@@ -183,12 +184,22 @@ __Note:__ If you already have an existing certificate, you can use it by skippin
    - Value: `letsencrypt.org` (or `"letsencrypt.org"`)
 
    Example with GoDaddy:
+   <p></p>
+   <p></p>
 
    ![CAA Record on GoDaddy](/images/production/godaddy-caa.jpg)
 
+   <p></p>
+   <p></p>
+
    Example with Gandi:
+   <p></p>
+   <p></p>
 
    ![CAA Record on Gandi](/images/production/gandi-caa.jpg)
+
+   <p></p>
+   <p></p>
 
    You can use the following links to see how to configure the CAA record on commonly used DNS providers:
 
@@ -197,41 +208,53 @@ __Note:__ If you already have an existing certificate, you can use it by skippin
    - [How to add a CAA record on AWS](https://docs.aws.amazon.com/acm/latest/userguide/setup-caa.html)
    - [How to add a CAA record on NameCheap](https://www.namecheap.com/support/knowledgebase/article.aspx/9991/38/caa-record-and-why-it-is-needed-ssl-related/)
 
+   <p></p>
+   <p></p>
+
    Once the DNS entry has been added, you can verify the CAA record using one of the following:
 
    - [CAA Test](https://caatest.co.uk/)
    - [Entrust CAA Lookup](https://www.entrust.com/resources/certificate-solutions/tools/caa-lookup)
+   <p></p>
+   <p></p>
 
-   __Notes:__
-
-   - Many DNS providers have already added this `CAA` DNS record by default
-   - Some DNS providers does not allow the creation of `CAA` DNS records and therefore allow any Certificate Authority to generate certificates
-   - You can learn more about CAA DNS records on [_Let's Encrypt_ website](https://letsencrypt.org/docs/caa/), on [Wikipedia](https://en.wikipedia.org/wiki/DNS_Certification_Authority_Authorization), on [Gandi](https://docs.gandi.net/en/domain_names/faq/record_types/caa_record.html) and on [eff.org](https://www.eff.org/deeplinks/2018/02/technical-deep-dive-securing-automation-acme-dns-challenge-validation)
+   <Callout type="info">
+      Many DNS providers have already added this `CAA` DNS record by default
+   </Callout>
+   <p></p>
+   <p></p>
+   <Callout type="info">
+      Some DNS providers does not allow the creation of `CAA` DNS records and therefore allow any Certificate Authority to generate certificates
+   </Callout>
+   <p></p>
+   <p></p>
+   <Callout type="info">
+      You can learn more about CAA DNS records on <a href="https://letsencrypt.org/docs/caa">Let's Encrypt website</a>, on <a href="https://en.wikipedia.org/wiki/DNS_Certification_Authority_Authorization">Wikipedia</a>
+      , on <a href="https://docs.gandi.net/en/domain_names/faq/record_types/caa_record.html">Gandi</a> and on <a href="https://www.eff.org/deeplinks/2018/02/technical-deep-dive-securing-automation-acme-dns-challenge-validation">eff.org</a>
+   </Callout>
 
 3. Add an `_acme-challenge.` CNAME DNS entry to allow {{ PRODUCT_NAME }} to issue a certificate request on your behalf.
 
    Log into your DNS provider and add one `CNAME` type DNS entry with the value `_acme-challenge.<your-domain-here>` for each domain you use on your Layer0 website. For example, if your domain is `mywebsite.xyz`, the DNS entry should have a value of `_acme-challenge.mywebsite.xyz`. This record should point to `_acme-challenge.xdn-validation.com`. Repeat the operation of each domain associated with your Layer0 website.
 
-   Example with Godaddy:
+   <p>Example with Godaddy:</p>
+   <p></p>
 
    ![ACME Challenge Record on GoDady](/images/production/godaddy-acme-challenge.jpg)
 
-   <br/>
-   Example with Gandi:
+   <p>Example with Gandi:</p>
 
    ![ACME Challenge Record on Gandi](/images/production/gandi-acme-challenge.jpg)
 
-   <br/>
+   <p></p>
+   <p></p>
+
    Once the DNS entries have been added, you can use one of the following to verify that they are correctly configured:
 
    - [MX ToolBox DNS Lookup](https://mxtoolbox.com/DNSLookup.aspx)
    - [NsLookup DNS Lookup](https://www.nslookup.io/dns-checker/)
 
-   <br/>
-
    You can also verify the CNAME records using the command line:
-
-   <br/>
 
    ```bash
    # Run the following 'dig' command to verify the presence of the '_acme-challenge.' CNAME :
@@ -240,25 +263,29 @@ __Note:__ If you already have an existing certificate, you can use it by skippin
    # For example:
    dig +short cname _acme-challenge.mywebsite.xyz
    ```
-   <br/>
+
+   <p></p>
 
    Expected result for the DNS query:
-   <br/>
-
    ```
    _acme-challenge.xdn-validation.com.
    ```
 
-   If you use multiple domains for your website, like `mywebsite.xyz` and `www.mywebsite.xyz`, you will have to make sure that the `_acme-challenge` DNS record has been added for both domains:
-   <br/>
+   <p></p>
+   <p></p>
 
+   If you use multiple domains for your website, like `mywebsite.xyz` and `www.mywebsite.xyz`, you will have to make sure that the `_acme-challenge` DNS record has been added for both domains:
    ```
    _acme-challenge.mywebsite.xyz -> _acme-challenge.xdn-validation.com.
    _acme-challenge.www.mywebsite.xyz -> _acme-challenge.xdn-validation.com.
    ```
+   <p></p>
+   <p></p>
 
    If you have been previously using _Let's Encrypt_ to generate certificates for this domain, please verify that there are no remaining TXT records named `_acme-challenge.mywebsite.xyz`.
-   <br/>
+
+   <p></p>
+   <p></p>
 
    <Callout type="info">
    You can read more about the `acme-challenge.` process by visiting <a href="https://letsencrypt.org/docs/challenge-types/#dns-01-challenge">Let's Encrypt Website</a>
@@ -269,17 +296,17 @@ __Note:__ If you already have an existing certificate, you can use it by skippin
    1. Select your site and navigate to _Settings_ > _SSL Certificate_
 
    2. Verify the state of your certificate (you should see that there's no certificate provided yet for your website):
-   <br/>
+   <p></p>
 
    ![ssl-generation-01](/images/production/ssl-generation-01.png)
 
    3. Click on the _Generate SSL Certificate_ button:
+   <p></p>
 
    ![ssl-generation-02](/images/production/ssl-generation-02.png)
 
    4. After a couple of minutes, you should see that your website has received a valid certificate:
-
-   <br/>
+   <p></p>
 
    ![ssl-generation-03](/images/production/ssl-generation-03.png)
 
@@ -293,39 +320,39 @@ To create CSR and private key do the following:
 
 1. Open your terminal window and make sure that you have OpenSSL installed:
 
-- On MacOS you can install it by using [`brew`](https://brew.sh/) package manager (e.g. `brew install openssl`)
-- On Windows you can install it by using [`Chocolatey`](https://chocolatey.org/) package manager (e.g. `choco install openssl`)
-- On Linux/Unix you can install it by running the built-in OS package manager (e.g. `apt-get install openssl`, `apk add openssl` and so on)
+   - On MacOS you can install it by using [`brew`](https://brew.sh/) package manager (e.g. `brew install openssl`)
+   - On Windows you can install it by using [`Chocolatey`](https://chocolatey.org/) package manager (e.g. `choco install openssl`)
+   - On Linux/Unix you can install it by running the built-in OS package manager (e.g. `apt-get install openssl`, `apk add openssl` and so on)
 
 2. Go to the directory of your choice and create a configuration file `layer0.conf` based on this template:
 
-```
-[req]
-default_bits=2048
-distinguished_name = req_distinguished_name
-req_extensions = v3_req
+   ```
+   [req]
+   default_bits=2048
+   distinguished_name = req_distinguished_name
+   req_extensions = v3_req
 
-[req_distinguished_name]
-countryName=Country Name (2 letter code)
-countryName_default=US
-stateOrProvinceName=State or Province Name (full name)
-stateOrProvinceName_default=California
-localityName=Locality Name (e.g. city)
-localityName_default=San Francisco
-organizationName=Organization Name (e.g. company)
-organizationName_default=YourCompanyName
-commonName=Fully Qualified Domain Name (FQDN) e.g. www.your-company-name.com
-commonName_default=www.your-company-domain.com
+   [req_distinguished_name]
+   countryName=Country Name (2 letter code)
+   countryName_default=US
+   stateOrProvinceName=State or Province Name (full name)
+   stateOrProvinceName_default=California
+   localityName=Locality Name (e.g. city)
+   localityName_default=San Francisco
+   organizationName=Organization Name (e.g. company)
+   organizationName_default=YourCompanyName
+   commonName=Fully Qualified Domain Name (FQDN) e.g. www.your-company-name.com
+   commonName_default=www.your-company-domain.com
 
-[ v3_req ]
-subjectAltName=@alt_names
+   [ v3_req ]
+   subjectAltName=@alt_names
 
-[alt_names] # Other domains: apex domain, wildcard domain for staging and dev, and so on
-DNS.1=*.your-main-domain.com
-DNS.2=*.your-dev-domain.com
-DNS.3=your-apex-domain.com
-# And so on
-```
+   [alt_names] # Other domains: apex domain, wildcard domain for staging and dev, and so on
+   DNS.1=*.your-main-domain.com
+   DNS.2=*.your-dev-domain.com
+   DNS.3=your-apex-domain.com
+   # And so on
+   ```
 
 Replace the country, state/province, locality, organization name and, most importantly Common Name (CN), for the cert which must be the fully qualified domain name for your domain (e.g. for {{ PRODUCT_NAME }} that is `www.{{ DOMAIN }}`)
 
@@ -339,7 +366,7 @@ You will want to add all the additional domains into the `alt_names` section. Th
 
 #### Prerequisites {/*prerequisites*/}
 
- To upload a certificate, you must have the **Admin** role on your team, and your team must be upgraded to {{ PRODUCT_NAME }} Enterprise.
+To upload a certificate, you must have the **Admin** role on your team, and your team must be upgraded to {{ PRODUCT_NAME }} Enterprise.
 
 {{ PRODUCT_NAME }} needs the following to correctly host your certificate:
 
@@ -353,28 +380,28 @@ To upload your SSL certificate, do the following:
 
 1. Navigate to the _Settings_ tab on your site:
 
-![ssl](/images/production/ssl.png)
+   ![ssl](/images/production/ssl.png)
 
 2. Scroll to *TLS Certificate*.
 
-![empty-certificate](/images/production/empty-certificate.png)
+   ![empty-certificate](/images/production/empty-certificate.png)
 
 3. Toggle *Automatically create an TLS certificate for my custom domains* to the _on_ position.
 
 4. Copy the certificate, intermediate certificates, and the private key into the corresponding edit boxes.
 
-<Callout type="info">
-   The private key is non-public data and must not be shared with parties other than {{ PRODUCT_NAME }}. {{ PRODUCT_NAME }} stores your private key securely at rest. It is never shown in the developer console and only used to provision parts of the infrastructure that are used to terminate TLS connections.
-</Callout>
+   <Callout type="info">
+      The private key is non-public data and must not be shared with parties other than {{ PRODUCT_NAME }}. {{ PRODUCT_NAME }} stores your private key securely at rest. It is never shown in the developer console and only used to provision parts of the infrastructure that are used to terminate TLS connections.
+   </Callout>
 
 5. Click *CHANGES SAVED*.
 
-The certificate's status becomes *Activating*:
+   The certificate's status becomes *Activating*:
 
-![in-progress-certificate](/images/production/in-progress-certificate.png)
+   ![in-progress-certificate](/images/production/in-progress-certificate.png)
 
-After the certificate is activated, its status becomes *Active*:
+   After the certificate is activated, its status becomes *Active*:
 
-![activated-certificate](/images/production/activated-certificate.png)
+   ![activated-certificate](/images/production/activated-certificate.png)
 
-_Note: Certificate activation should take just a few minutes. If the status does not become *Active* within an hour, please contact [support]({{ APP_URL }}/help). _
+   _Note: Certificate activation should take just a few minutes. If the status does not become *Active* within an hour, please contact [support]({{ APP_URL }}/help). _

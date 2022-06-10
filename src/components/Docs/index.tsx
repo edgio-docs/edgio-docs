@@ -156,6 +156,7 @@ const StyledDocs = styled.div`
     width: 100%;
     border-collapse: collapse;
     overflow-x: auto;
+    display: block;
 
     thead th {
       font-weight: 600;

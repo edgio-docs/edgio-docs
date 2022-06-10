@@ -225,7 +225,7 @@ __Note:__ If you already have an existing certificate, you can use it by skippin
    Once the DNS entries have been added, you can use one of the following to verify that they are correctly configured:
 
    - [MX ToolBox DNS Lookup](https://mxtoolbox.com/DNSLookup.aspx)
-   - [Ultra Tools DNS Lookup](https://www.ultratools.com/tools/dnsLookup)
+   - [NsLookup DNS Lookup](https://www.nslookup.io/dns-checker/)
 
    <br/>
 

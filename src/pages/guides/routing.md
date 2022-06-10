@@ -64,6 +64,7 @@ When {{ PRODUCT_NAME }} receives a request, it executes **each route that matche
 
 - [appShell](/docs/api/core/classes/_router_responsewriter_.responsewriter.html#appshell)
 - [compute](/docs/api/core/classes/_router_responsewriter_.responsewriter.html#compute)
+- [jwtVerification](/docs/api/core/interfaces/_router_responsewriter_.verifyjwtoptions.html)
 - [proxy](/docs/api/core/classes/_router_responsewriter_.responsewriter.html#proxy)
 - [redirect](/docs/api/core/classes/_router_responsewriter_.responsewriter.html#redirect)
 - [send](/docs/api/core/classes/_router_responsewriter_.responsewriter.html#send)
@@ -488,3 +489,9 @@ Click _Add A Redirect_ to configure the path or host you wish to redirect to:
 ![add redirect](/images/environments/add_redirects.png)
 
 **Note:** you will need to activate and redeploy your site for this change to take effect.
+
+## Verifying JWTs on the Edge {/*verifying-jwts-on-the-edge*/}
+
+JWTs can be verified on the edge either in cookies or in a header (`Authorization: Bearer ...`), with either symmetric or asymmetric encryption with signature lenghts 256, 384 or 512 bits. Redirects or `403 Forbidden` responses can be given individually on expired (`iat` claim, or premature `nfb` claim) or invalid (invalid signature, wrong algorithm, inadequate claims.) JWTs; the `403 Forbidden` can be intercepted and clients can be redirected to another page, which can optionally pass the original URL which intercepted the invalid/expired JWT.
+
+Please see the [API documentation](/docs/api/core/interfaces/_router_responsewriter_.verifyjwtoptions.html) for this feature for more detailed examples.

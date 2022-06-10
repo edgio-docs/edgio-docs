@@ -9,13 +9,13 @@ This guide shows you everything you can do with the {{ PRODUCT_NAME }} command l
 To install, or upgrade to the latest, {{ PRODUCT_NAME }} CLI run
 
 ```bash
-npm i -g {{ PACKAGE_NAME }}/cli@latest
+npm i -g {{ PACKAGE_NAME }}/cli
 ```
 
 Or with yarn
 
 ```bash
-yarn global add {{ PACKAGE_NAME }}/cli@latest
+yarn global add {{ PACKAGE_NAME }}/cli
 ```
 
 ## Upgrade Project to Latest Version {/*upgrade-project-to-latest-version*/}

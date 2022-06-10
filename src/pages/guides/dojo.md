@@ -27,7 +27,7 @@ This guide shows you how to deploy a [Dojo](https://dojo.io/) application on {{ 
 If you have not already done so, install the [{{ PRODUCT_NAME }} CLI](cli)
 
 ```bash
-npm i -g {{ PACKAGE_NAME }}/cli
+npm i -g {{ PACKAGE_NAME }}/cli # yarn global add {{ PACKAGE_NAME }}/cli
 ```
 
 ## Create a new Dojo app {/*create-a-new-dojo-app*/}

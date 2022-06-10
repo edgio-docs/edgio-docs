@@ -39,7 +39,7 @@ yarn create redwood-app ./my-redwood-app
 ### Install the {{ PRODUCT_NAME }} CLI globally {/*install-the-layer0-cli-globally*/}
 
 ```bash
-npm install -g {{ PACKAGE_NAME }}/cli
+npm i -g {{ PACKAGE_NAME }}/cli # yarn global add {{ PACKAGE_NAME }}/cli
 ```
 
 To prepare your RedwoodJS app for deployment on {{ PRODUCT_NAME }}, you can use both the RedwoodJS or {{ PRODUCT_NAME }} CLI depending on what you prefer.

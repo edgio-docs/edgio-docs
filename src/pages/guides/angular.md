@@ -67,7 +67,7 @@ To prepare your Angular application for deployment on {{ PRODUCT_NAME }}:
 #### 1. Install {{ PRODUCT_NAME }} CLI globally: {/*1-install-layer0-cli-globally*/}
 
 ```bash
-npm install -g {{ PACKAGE_NAME }}/cli
+npm i -g {{ PACKAGE_NAME }}/cli # yarn global add {{ PACKAGE_NAME }}/cli
 ```
 
 #### 2. Run the following in the root folder of your project. {/*2-run-the-following-in-the-root-folder-of-your-project*/}

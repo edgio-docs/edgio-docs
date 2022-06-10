@@ -19,7 +19,7 @@ This guide shows you how to deploy a [Zola](https://www.getzola.org/) applicatio
 If you have not already done so, install the [{{ PRODUCT_NAME }} CLI](cli)
 
 ```bash
-npm i -g {{ PACKAGE_NAME }}/cli
+npm i -g {{ PACKAGE_NAME }}/cli # yarn global add {{ PACKAGE_NAME }}/cli
 ```
 
 ## Create a new Zola app {/*create-a-new-zola-app*/}

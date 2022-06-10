@@ -27,7 +27,7 @@ This guide shows you how to deploy a [Ember.js](https://emberjs.com/) applicatio
 If you have not already done so, install the [{{ PRODUCT_NAME }} CLI](cli)
 
 ```bash
-npm i -g {{ PACKAGE_NAME }}/cli
+npm i -g {{ PACKAGE_NAME }}/cli # yarn global add {{ PACKAGE_NAME }}/cli
 ```
 
 ## Create a new Ember.js app {/*create-a-new-emberjs-app*/}

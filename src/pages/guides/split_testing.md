@@ -23,6 +23,10 @@ To use CI to deploy A/B tests we recommend that you:
 2. Create environments called `production` and `preview` in the {{ PRODUCT_NAME }} Developer Console.
 3. Configure CI to deploy the `master` branch to the `production` environment and the `preview` branch to the `preview` environment. (Using `{{ CLI_NAME }} deploy --environment={environment name}`).
 
+## Limitations {/*limitations*/}
+
+- Note that nested split testing is not supported. So for example, if you create a split test on environment A that sends a portion of traffic to environment B, any split testing configured on environment B will be ignored.
+
 ## Splitting Traffic between Multiple Sites {/*splitting-traffic-between-multiple-sites*/}
 
 To split traffic between multiple sites, create an environment for each site with the backend set to that site, deploy the code to each environment; then [configure the rules for splitting traffic using the {{ PRODUCT_NAME }} Developer Console](#section_configuring_the_split_test).
@@ -116,7 +120,7 @@ When a split test is active, {{ PRODUCT_NAME }} will automatically set a `{{ COO
 
 Each environment defines security rules, redirect rules, and split test rules. When traffic is processed by the {{ PRODUCT_NAME }} servers, the `host` header is used to determine which environment rules are executed. Normally when you have multiple environments you access each of them using different `host` headers. E.g. `www.mysite.com` to access a `production` environment and `new.mysite.com` to access the `new` environment. In this scenario each environment can have its own security rules and redirect rules. Requests arriving at `www.mysite.com` execute the rules in the `production` environment. Requests arriving at `new.mysite.com` execute the rules in the `new` environment.
 
-But when split testing is enabled, all the traffic arrives using the same `host` header. In this case, only the rules for that environment are executed. Using the above example, when a split test is setup on the `production` environment that splits traffic to `production` or `new` all traffic arriving at `www.mysite.com` executes the `production` security, redirect, and split testing rules. Even if the result of the split test is to use the `new` environment, the security, redirect, and split testing rules of the `new` environment are *not* executed. Traffic arriving at `new.mysite.com` bypasses the split test rules on the `production` environment, so it executes the `new` environment's rules normally.
+But when split testing is enabled, all the traffic arrives using the same `host` header. In this case, only the rules for that environment are executed. Using the above example, when a split test is setup on the `production` environment that splits traffic to `production` or `new` all traffic arriving at `www.mysite.com` executes the `production` security, redirect, and split testing rules. Even if the result of the split test is to use the `new` environment, the security, redirect, and split testing rules of the `new` environment are _not_ executed. Traffic arriving at `new.mysite.com` bypasses the split test rules on the `production` environment, so it executes the `new` environment's rules normally.
 
 ## Metrics and Cache Purging with Split Tests {/*metrics-and-cache-purging-with-split-tests*/}
 

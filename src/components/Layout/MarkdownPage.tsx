@@ -65,11 +65,9 @@ export function MarkdownPage<
       {isHomePage ? (
         children
       ) : (
-        <div className="docs">
-          <Docs title={title} tocHeadings={tocHeadings}>
-            {children}
-          </Docs>
-        </div>
+        <Docs title={title} tocHeadings={tocHeadings}>
+          {children}
+        </Docs>
       )}
       <DocsFooter />
     </MDXProvider>

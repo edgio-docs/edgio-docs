@@ -5,6 +5,7 @@ import {Toc} from '../Layout/Toc';
 import DocsPagination from './DocsPagination';
 import EditPage from './EditPage';
 
+import {StyledCustomPre} from 'components/MDX/CustomPre';
 import {siteConfig} from 'siteConfig';
 
 const StyledDocs = styled.div`
@@ -55,6 +56,7 @@ const StyledDocs = styled.div`
     .article-ol__list {
       padding-left: 24px;
       list-style: square;
+      margin-bottom: 0.8rem;
     }
 
     .article-ol__list {

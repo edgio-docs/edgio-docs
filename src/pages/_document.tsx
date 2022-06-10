@@ -49,7 +49,7 @@ class MyDocument extends Document {
             rel="stylesheet"
           />
         </Head>
-        <body className="line-numbers">
+        <body>
           <script
             dangerouslySetInnerHTML={{
               __html: `

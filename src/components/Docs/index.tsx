@@ -5,7 +5,6 @@ import {Toc} from '../Layout/Toc';
 import DocsPagination from './DocsPagination';
 import EditPage from './EditPage';
 
-import {StyledCustomPre} from 'components/MDX/CustomPre';
 import {siteConfig} from 'siteConfig';
 
 const StyledDocs = styled.div`

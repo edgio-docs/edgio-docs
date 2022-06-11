@@ -53,17 +53,20 @@ const StyledDocs = styled.div`
 
     .article-ul__list,
     .article-ol__list {
-      padding-left: 35px;
-      display: grid;
-      row-gap: 8px;
+      padding-left: 24px;
       list-style: square;
+      margin-bottom: 0.8rem;
     }
 
     .article-ol__list {
       list-style: decimal;
+    }
 
-      .article-ol__list {
-        row-gap: 24px;
+    .list-item {
+      margin-bottom: 7px;
+
+      > * {
+        margin-bottom: inherit;
       }
     }
 
@@ -139,7 +142,7 @@ const StyledDocs = styled.div`
 
   .list-item .article-text,
   img {
-    margin-bottom: 0.8rem;
+    margin-bottom: 7px;
   }
 
   img {
@@ -152,6 +155,7 @@ const StyledDocs = styled.div`
     width: 100%;
     border-collapse: collapse;
     overflow-x: auto;
+    display: block;
 
     thead th {
       font-weight: 600;

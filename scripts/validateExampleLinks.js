@@ -19,7 +19,6 @@ const EXAMPLES_RE = /(?:(siteUrl|repoUrl)=\"([^"]*)\")/g;
     const contents = await fse.readFile(path);
     let match;
 
-    console.log(`- ${path} ->`);
     while ((match = EXAMPLES_RE.exec(contents))) {
       let status, message;
       try {
@@ -28,17 +27,12 @@ const EXAMPLES_RE = /(?:(siteUrl|repoUrl)=\"([^"]*)\")/g;
         message = e.message;
         status = '000';
       }
-      const success = status === 200;
 
-      console.log(
-        chalk[success ? 'green' : 'red'](
-          '\t',
-          logSymbols[success ? 'success' : 'error'],
-          `${match[1]}: ${match[2]} `
-        )
-      );
-
-      if (!success) {
+      if (status !== 200) {
+        console.info(`- ${path} ->`);
+        console.error(
+          chalk.red('\t', logSymbols.error, `${match[1]}: ${match[2]} `)
+        );
         failures++;
       }
     }

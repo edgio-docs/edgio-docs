@@ -5,6 +5,12 @@ on:
       - '**'
       - '!main'
 jobs:
+  validate-examples-links:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Validate Guide Example Links
+        shell: bash
+        run: node ./scripts/validateExampleLinks.js
   deploy-to-stage:
     runs-on: ubuntu-latest
     steps:
@@ -33,5 +39,3 @@ jobs:
       - run: yarn
       - name: Deploy to Layer0 (stage)
         run: yarn layer0:deploy --branch=$BRANCH_NAME --token=${{secrets.layer0_prod_deploy_token}} --environment=default
-      - name: Validate Guide Example Links
-        run: node ./scripts/validateExampleLinks.js

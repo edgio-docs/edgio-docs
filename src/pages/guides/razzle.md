@@ -9,7 +9,7 @@ This guide shows you how to deploy [Razzle](https://razzlejs.org/) apps on {{ PR
 <ExampleButtons
   title="Razzle"
   siteUrl="https://layer0-docs-layer0-razzle-example-default.layer0-limelight.link"
-  repoUrl=https://github.com/layer0-docs/layer0-razzle-example"" 
+  repoUrl="https://github.com/layer0-docs/layer0-razzle-example"
   deployFromRepo />
 
 ## Connector {/*connector*/}

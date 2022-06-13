@@ -4,7 +4,7 @@ title: Nx
 
 [Nx](https://nx.dev/) is a smart, fast and extensible build system with first class monorepo support and powerful integrations. It has a powerful core and a rich plugin ecosystem.
 
-## Nx and {{ PRODUCT_NAME }}
+## Nx and {{ PRODUCT_NAME }} {/*nx-and-layer0*/}
 
 Because every Nx project can be different, there are a couple ways to implement it.
 
@@ -17,28 +17,11 @@ To learn more about what goes into making a connector, view this [connector guid
 
 Here we use [Next.js](https://nextjs.org/) for the example Nx project.
 
-<ButtonLinksGroup>
-  <ButtonLink
-    variant="fill"
-    type="default"
-    href="https://layer0-docs-layer0-nx-example-default.layer0-limelight.link">
-    Try the Nx Example Site
-  </ButtonLink>
-  <ButtonLink
-    variant="stroke"
-    type="code"
-    withIcon={true}
-    href="https://github.com/layer0-docs/layer0-nx-example">
-    View the Code
-  </ButtonLink>
-  <ButtonLink
-    variant="stroke"
-    type="deploy"
-    withIcon={true}
-    href="https://app.layer0.co/deploy?button&deploy&repo=https%3A%2F%2Fgithub.com%2Flayer0-docs%2Flayer0-nx-example">
-    Deploy to {{ PRODUCT_NAME }}
-  </ButtonLink>
-</ButtonLinksGroup>
+<ExampleButtons
+  title="Nx"
+  siteUrl="https://layer0-docs-layer0-nx-example-default.layer0-limelight.link"
+  repoUrl="https://github.com/layer0-docs/layer0-nx-example" 
+  deployFromRepo />
 
 {{ SIGN_UP_LAYER0 }}
 
@@ -46,11 +29,11 @@ Here we use [Next.js](https://nextjs.org/) for the example Nx project.
 
 {{ SYSTEM_REQUIREMENTS }}
 
-## Start a Nx project from scratch
+## Start a Nx project from scratch {/*start-a-nx-project-from-scratch*/}
 
 The following steps take you through set-up of a new Nx workspace. The same process can be used to add Layer0 to your existing Nx repo.
 
-### Generate the Nx workspace
+### Generate the Nx workspace {/*generate-the-nx-workspace*/}
 
 To create the starter workspace, we will us Nx to generate the workspace. For this example, we will use the Next.js preset, but you can easily adapt this to any framework. Visit the Nx [docs](https://nx.dev/getting-started/intro) for more information on the available [presets](https://nx.dev/cli/create-nx-workspace#preset).
 
@@ -68,7 +51,7 @@ npx create-nx-workspace --preset=next
 
 There will be a series of questions. When the one to choose the `Application name` comes, enter __`layer0-nx-next-app`__. The other answers can be of your choosing.
 
-### Add {{ PRODUCT_NAME }} to the application
+### Add {{ PRODUCT_NAME }} to the application {/*add-layer0-to-the-application*/}
 
 Because Nx wants dependencies installed at root level, we will `init` the project at root level to install the necesssary packages, but setup configurations to read into the next app we generated. The {{ PRODUCT_NAME }} next connector expects to be in the project repo, so we will create our own custom connector with the necesssary configurations.
 
@@ -166,7 +149,7 @@ const { join } = require('path');
 module.exports = join('apps', 'layer0-nx-next-app');
 ```
 
-### Development
+### Development {/*development*/}
 
 To start the app locally running with {{ PRODUCT_NAME }}, run
 
@@ -174,7 +157,7 @@ To start the app locally running with {{ PRODUCT_NAME }}, run
 0 dev
 ```
 
-### Deploy
+### Deploy {/*deploy*/}
 
 To deploy the app to {{ PRODUCT_NAME }}, run
 

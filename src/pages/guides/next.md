@@ -5,17 +5,11 @@ This guide shows you how to deploy a [Next.js](https://nextjs.org/) application 
 
 ## Example {/*example*/}
 
-<ButtonLinksGroup>
-  <ButtonLink variant="fill" type="default" href="https://layer0-docs-layer0-nextjs-example-default.layer0-limelight.link">
-   Try the Next.js SSR Example Site
-  </ButtonLink>
-  <ButtonLink variant="stroke" type="code" withIcon={true} href="https://github.com/layer0-docs/layer0-nextjs-example">
-   View the Code
-  </ButtonLink>
-  <ButtonLink variant="stroke" type="deploy" withIcon={true} href="https://app.layer0.co/deploy?button&deploy&repo=https%3A%2F%2Fgithub.com%2Flayer0-docs%2Flayer0-nextjs-example">
-    Deploy to Layer0
-  </ButtonLink>
-</ButtonLinksGroup>
+<ExampleButtons
+  title="Next.js SSR"
+  siteUrl="https://layer0-docs-layer0-nextjs-example-default.layer0-limelight.link"
+  repoUrl="https://github.com/layer0-docs/layer0-nextjs-example" 
+  deployFromRepo />
 
 ## Next.js Commerce {/*nextjs-commerce*/}
 
@@ -122,7 +116,7 @@ The `with{{ PRODUCT_NAME }}` plugin optimizes the Next.js build for running on {
 
 The `withServiceWorker` plugin builds a service worker from `sw/service-worker.js` that prefetches and caches all static JS assets and enables {{ PRODUCT_NAME }}'s [prefetching](/guides/next#section_prefetching) functionality.
 
-## {{ PRODUCT_NAME }} Devtools
+## {{ PRODUCT_NAME }} Devtools {/*layer0-devtools*/}
 
 By default, [Devtools](/guides/devtools) are enabled on production builds of Next.js with {{ PRODUCT_NAME }}. To disable devtools in production, add the `disableLayer0DevTools` flag:
 

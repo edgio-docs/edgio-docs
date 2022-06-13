@@ -1,6 +1,6 @@
 ---
 id: home
-title: Layer0 Docs
+title: {{ PRODUCT_NAME }} Docs
 permalink: index.html
 ---
 

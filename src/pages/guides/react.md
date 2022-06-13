@@ -8,17 +8,11 @@ This guide shows you how to serve a [React](https://reactjs.org/) application on
 
 Here's an example React app running on Layer0:
 
-<ButtonLinksGroup>
-  <ButtonLink variant="fill" type="default" href="https://layer0-docs-layer0-static-react-example-default.layer0-limelight.link/">
-   Try React Example Site
-  </ButtonLink>
-  <ButtonLink variant="stroke" type="code" withIcon={true} href="https://github.com/layer0-docs/static-react-example">
-   View the Code
-  </ButtonLink>
-  <ButtonLink variant="stroke" type="deploy" withIcon={true} href="https://app.layer0.co/deploy?button&deploy&repo=https://github.com/layer0-docs/static-react-example">
-    Deploy to Layer0
-  </ButtonLink>
-</ButtonLinksGroup>
+<ExampleButtons
+  title="React"
+  siteUrl="https://layer0-docs-layer0-static-react-example-default.layer0-limelight.link/"
+  repoUrl="https://github.com/layer0-docs/static-react-example" 
+  deployFromRepo />
 
 {{ SYSTEM_REQUIREMENTS }}
 

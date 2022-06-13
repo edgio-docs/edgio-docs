@@ -10,41 +10,23 @@ This guide shows you how to serve generic static sites on {{ PRODUCT_NAME }}.
 
 Here are a few examples of common static sites served by {{ PRODUCT_NAME }}.
 
-<ButtonLinksGroup>
-  <ButtonLink variant="fill" type="default" href="https://layer0-docs-layer0-static-backbonejs-example-default.layer0-limelight.link/">
-   Backbone.js Static Example
-  </ButtonLink>
-  <ButtonLink variant="stroke" type="code" withIcon={true} href="https://github.com/layer0-docs/static-backbonejs-example?button">
-   View the Code
-  </ButtonLink>
-  <ButtonLink variant="stroke" type="deploy" withIcon={true} href="https://app.layer0.co/deploy?button&deploy&repo=https%3A%2F%2Fgithub.com%2Flayer0-docs%2Fstatic-backbonejs-example">
-    Deploy to Layer0
-  </ButtonLink>
-</ButtonLinksGroup>
+<ExampleButtons
+  title="Backbone.js Static"
+  siteUrl="https://layer0-docs-layer0-static-backbonejs-example-default.layer0-limelight.link"
+  repoUrl="https://github.com/layer0-docs/static-backbonejs-example" 
+  deployFromRepo />
 
-<ButtonLinksGroup>
-  <ButtonLink variant="fill" type="default" href="https://layer0-docs-layer0-static-react-example-default.layer0-limelight.link/">
-   React Static Example
-  </ButtonLink>
-  <ButtonLink variant="stroke" type="code" withIcon={true} href="https://github.com/layer0-docs/static-react-example">
-   View the Code
-  </ButtonLink>
-  <ButtonLink variant="stroke" type="deploy" withIcon={true} href="https://app.layer0.co/deploy?button&deploy&repo=https%3A%2F%2Fgithub.com%2Flayer0-docs%2Fstatic-react-example">
-    Deploy to Layer0
-  </ButtonLink>
-</ButtonLinksGroup>
+<ExampleButtons
+  title="React Static"
+  siteUrl="https://layer0-docs-layer0-static-react-example-default.layer0-limelight.link/"
+  repoUrl="https://github.com/layer0-docs/static-react-example" 
+  deployFromRepo />
 
-<ButtonLinksGroup>
-  <ButtonLink variant="fill" type="default" href="https://layer0-docs-layer0-static-vuejs-example-default.layer0-limelight.link/">
-   Vue.js Static Example
-  </ButtonLink>
-  <ButtonLink variant="stroke" type="code" withIcon={true} href="https://github.com/layer0-docs/static-vuejs-example">
-   View the Code
-  </ButtonLink>
-  <ButtonLink variant="stroke" type="deploy" withIcon={true} href="https://app.layer0.co/deploy?button&deploy&repo=https%3A%2F%2Fgithub.com%2Flayer0-docs%2Fstatic-vuejs-example">
-    Deploy to Layer0
-  </ButtonLink>
-</ButtonLinksGroup>
+<ExampleButtons
+  title="Vue.js Static"
+  siteUrl="https://layer0-docs-layer0-static-vuejs-example-default.layer0-limelight.link"
+  repoUrl="https://github.com/layer0-docs/static-vuejs-example" 
+  deployFromRepo />
 
 {{ SYSTEM_REQUIREMENTS }}
 

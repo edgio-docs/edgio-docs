@@ -8,7 +8,7 @@ This guide walks you through some deploy button examples and how you can set up 
 
 ## Example {/*example*/}
 
-[![Deploy with Layer0](/button.svg)](https://app.layer0.co/deploy?repo=https://github.com/layer0-docs/layer0-nextjs-example)
+[![Deploy with {{ PRODUCT_NAME }}](/button.svg)](https://app.layer0.co/deploy?repo=https://github.com/layer0-docs/layer0-nextjs-example)
 
 An example Deploy Button using the following HTML snippet.
 

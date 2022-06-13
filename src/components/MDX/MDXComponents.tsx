@@ -4,6 +4,7 @@ import ButtonLink from './ButtonLink';
 import ButtonLinksGroup from './ButtonLinksGroup';
 import Callout from './Callout';
 import CustomPre from './CustomPre';
+import ExampleButtons from './ExampleButtons';
 import Frameworks from './Frameworks';
 import {H1, H2, H3, H4} from './Heading';
 import HomepageFeatures from './HomepageFeatures';
@@ -63,4 +64,5 @@ export const MDXComponents = {
   ButtonLink,
   Video,
   img: Image,
+  ExampleButtons,
 };

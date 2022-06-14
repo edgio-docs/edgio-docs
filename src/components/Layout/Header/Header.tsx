@@ -10,7 +10,10 @@ import {
   IconLightEdgioLogo,
 } from 'components/Icon/IconEdgioLogo';
 import {IconHamburger} from 'components/Icon/IconHamburger';
-import {DarkMobileLogo, LightMobileLogo} from 'components/Icon/MobileLogo';
+import {
+  IconDarkMobileLogo,
+  IconLightMobileLogo,
+} from 'components/Icon/IconMobileLogo';
 import {siteConfig} from 'siteConfig';
 
 const StyledHeader = styled.header`
@@ -215,10 +218,10 @@ export default function Header({
           <Link href="/" passHref>
             <a>
               <div className="logo-box" id="light-theme-switcher">
-                <DarkMobileLogo className="logo" />
+                <IconDarkMobileLogo className="logo" />
               </div>
               <div className="logo-box" id="dark-theme-switcher">
-                <LightMobileLogo className="logo" />
+                <IconLightMobileLogo className="logo" />
               </div>
             </a>
           </Link>

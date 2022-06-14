@@ -1,42 +1,39 @@
 import * as React from 'react';
 
-export const IconEdgioSquareLogo = React.memo<JSX.IntrinsicElements['svg']>(
+export const IconDarkMobileLogo = React.memo<JSX.IntrinsicElements['svg']>(
   () => (
     <svg
-      width="16"
-      height="16"
-      viewBox="0 0 16 16"
+      width="27"
+      height="26"
+      viewBox="0 0 27 26"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       xmlnsXlink="http://www.w3.org/1999/xlink">
-      <rect width="16" height="16" fill="url(#patternedgiosq16by16)" />
+      <rect width="27" height="26" fill="url(#fillDarkMobileLogo)" />
       <rect
-        x="5.03705"
-        y="4"
-        width="5.92593"
-        height="8"
-        fill="url(#patternedgioglyph)"
+        x="8.5"
+        y="6.5"
+        width="10"
+        height="13"
+        fill="url(#patternDarkMobileLogo)"
       />
       <defs>
         <pattern
-          id="patternedgiosq16by16"
+          id="fillDarkMobileLogo"
           patternContentUnits="objectBoundingBox"
           width="1"
           height="1">
           <use
             xlinkHref="#image0_709_5"
-            transform="translate(-0.0192308) scale(0.0192308)"
+            transform="scale(0.0185185 0.0192308)"
           />
         </pattern>
         <pattern
-          id="patternedgioglyph"
+          id="patternDarkMobileLogo"
           patternContentUnits="objectBoundingBox"
           width="1"
           height="1">
-          <use
-            xlinkHref="#image1_709_5"
-            transform="translate(-0.0192308) scale(0.0519231 0.0384615)"
-          />
+          <use xlinkHref="#image1_709_5" transform="scale(0.05 0.0384615)" />
         </pattern>
         <image
           id="image0_709_5"
@@ -55,43 +52,40 @@ export const IconEdgioSquareLogo = React.memo<JSX.IntrinsicElements['svg']>(
   )
 );
 
-export const IconEdgioSquareLogoDark = React.memo<JSX.IntrinsicElements['svg']>(
+export const IconLightMobileLogo = React.memo<JSX.IntrinsicElements['svg']>(
   () => (
     <svg
-      width="16"
-      height="16"
-      viewBox="0 0 16 16"
+      width="27"
+      height="26"
+      viewBox="0 0 27 26"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       xmlnsXlink="http://www.w3.org/1999/xlink">
-      <rect width="16" height="16" fill="url(#pattern2edgiosq16by16)" />
+      <rect width="27" height="26" fill="url(#fillLightMobileLogo)" />
       <rect
-        x="5.03705"
-        y="4"
-        width="5.92593"
-        height="8"
-        fill="url(#pattern2edgioglyph)"
+        x="8.5"
+        y="6.5"
+        width="10"
+        height="13"
+        fill="url(#patternLightMobileLogo)"
       />
       <defs>
         <pattern
-          id="pattern2edgiosq16by16"
+          id="fillLightMobileLogo"
           patternContentUnits="objectBoundingBox"
           width="1"
           height="1">
           <use
             xlinkHref="#image0_709_5"
-            transform="translate(-0.0192308) scale(0.0192308)"
+            transform="scale(0.0185185 0.0192308)"
           />
         </pattern>
         <pattern
-          id="pattern2edgioglyph"
+          id="patternLightMobileLogo"
           patternContentUnits="objectBoundingBox"
           width="1"
           height="1">
-          <use
-            xlinkHref="#image1_709_5"
-            transform="translate(-0.0192308) scale(0.0519231 0.0384615)"
-          />
+          <use xlinkHref="#image1_709_5" transform="scale(0.05 0.0384615)" />
         </pattern>
         <image
           id="image0_709_5"
@@ -110,5 +104,5 @@ export const IconEdgioSquareLogoDark = React.memo<JSX.IntrinsicElements['svg']>(
   )
 );
 
-IconEdgioSquareLogo.displayName = 'IconEdgioSquareLogo';
-IconEdgioSquareLogoDark.displayName = 'IconEdgioSquareLogoDark';
+IconDarkMobileLogo.displayName = 'IconDarkMobileLogo';
+IconLightMobileLogo.displayName = 'IconLightMobileLogo';

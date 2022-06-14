@@ -278,7 +278,7 @@ pre[class*="language-"] {
   background: none;
   font-family: 'IBM Plex Mono', monospace;
   font-size: 1rem;
-	font-weight: 600;
+	font-weight: 500;
   text-align: left;
   white-space: pre-wrap;
   word-spacing: normal;

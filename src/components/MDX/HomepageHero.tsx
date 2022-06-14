@@ -5,7 +5,7 @@ import Container, {StyledContainer} from '../Layout/Container';
 import {
   IconDarkStackedEdgioLogo,
   IconLightStackedEdgioLogo,
-} from 'components/Icon';
+} from 'components/Icon/IconStackedEdgioLogo';
 
 const StyledHomepageHero = styled.div`
   background: var(--homepagehero-bg-image);

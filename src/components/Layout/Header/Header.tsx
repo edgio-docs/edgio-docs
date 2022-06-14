@@ -2,17 +2,15 @@ import {DocSearch} from '@docsearch/react';
 import Link from 'next/link';
 import styled from 'styled-components';
 
-import {
-  DarkDesktopLogo,
-  DarkMobileLogo,
-  LightDesktopLogo,
-  LightMobileLogo,
-  IconDarkEdgioLogo,
-  IconLightEdgioLogo,
-} from '../../Icon/IconLogo';
+import {DarkDesktopLogo, LightDesktopLogo} from '../../Icon/IconLogo';
 import NoSSRWrapper from '../NoSSRWrapper';
 
+import {
+  IconDarkEdgioLogo,
+  IconLightEdgioLogo,
+} from 'components/Icon/IconEdgioLogo';
 import {IconHamburger} from 'components/Icon/IconHamburger';
+import {DarkMobileLogo, LightMobileLogo} from 'components/Icon/MobileLogo';
 import {siteConfig} from 'siteConfig';
 
 const StyledHeader = styled.header`

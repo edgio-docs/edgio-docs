@@ -76,7 +76,6 @@ const StyledGetStarted = styled.div`
     padding: 17px;
     display: grid;
     grid-template-rows: auto 1fr auto;
-    transition: 0.2s;
     text-decoration: none;
 
     :hover {

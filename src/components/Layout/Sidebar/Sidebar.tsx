@@ -18,7 +18,6 @@ const StlyedSidebar = styled.div`
   font-size: 14px;
   font-weight: 500;
   height: 100%;
-  /* background-color: var(--sidebar-bg-color); */
   color: var(--sidebar-href-color);
 
   .nav-container {
@@ -63,7 +62,6 @@ const StlyedSidebar = styled.div`
 
     :hover {
       background-color: var(--grey2);
-      font-weight: 600;
     }
   }
 
@@ -87,7 +85,7 @@ const StlyedSidebar = styled.div`
   }
 
   .routes {
-    margin-left: calc(20px + 16px + 10px);
+    margin-left: calc(20px + 16px + 18px);
     position: relative;
     overflow: hidden;
 
@@ -98,7 +96,8 @@ const StlyedSidebar = styled.div`
       bottom: 0;
       height: calc(100%);
       top: 0;
-      border: 0.75px solid var(--colors-green0);
+      width: 0.75px;
+      background-color: var(--colors-green0);
     }
   }
 
@@ -119,7 +118,6 @@ const StlyedSidebar = styled.div`
 
       :hover {
         background-color: var(--grey2);
-        font-weight: 600;
       }
     }
   }
@@ -186,8 +184,7 @@ function ParentRoute({
   accordion,
   setAccordion,
   parentIndex,
-}: // currentChildIndex,
-{
+}: {
   menuItem: ISidebarMenuItem;
   isExternalRoute?: boolean;
   accordion?: {
@@ -198,7 +195,6 @@ function ParentRoute({
     React.SetStateAction<{
       isOpen: boolean;
       currentIndex: number;
-      // currentChildIndex: number;
     }>
   >;
   parentIndex?: number;

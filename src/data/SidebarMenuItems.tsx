@@ -89,6 +89,8 @@ import {
   IconVueStorefront,
   IconZola,
   IconZolaDark,
+  IconEdgioSquareLogo,
+  IconEdgioSquareLogoDark,
 } from '../components/Icon';
 
 import {IconGear, IconGearDark} from 'components/Icon/IconGear';
@@ -735,6 +737,12 @@ const SidebarMenuItems: ISidebarMenuItems = [
       icon: <IconSupport />,
       iconDark: <IconSupportDark />,
       path: 'https://app.layer0.co/help?sgId=7bc47c45-c1d6-4189-b416-552581d86006',
+    },
+    {
+      title: 'Edg.io',
+      icon: <IconEdgioSquareLogo />,
+      iconDark: <IconEdgioSquareLogoDark />,
+      path: 'https://edg.io',
     },
   ],
 ];

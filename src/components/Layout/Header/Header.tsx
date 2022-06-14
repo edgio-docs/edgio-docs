@@ -122,8 +122,9 @@ const StyledHeader = styled.header`
 
     #mobile {
       display: grid;
-      grid-template-columns: repeat(2, auto);
+      grid-template-columns: repeat(3, auto);
       align-items: center;
+      column-gap: 15px;
     }
 
     .col-2 {
@@ -273,6 +274,24 @@ export default function Header({
               />
             </NoSSRWrapper>
           </div>
+          <button
+            type="button"
+            className="theme-switcher"
+            id="dark-theme-switcher"
+            onClick={() => {
+              window.__setPreferredTheme('dark');
+            }}>
+            {darkSwitchIcon}
+          </button>
+          <button
+            type="button"
+            className="theme-switcher"
+            id="light-theme-switcher"
+            onClick={() => {
+              window.__setPreferredTheme('light');
+            }}>
+            {lightSwitchIcon}
+          </button>
           <button
             type="button"
             className="mobile-menu"

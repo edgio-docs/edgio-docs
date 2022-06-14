@@ -3,13 +3,13 @@ import Image from 'next/image';
 import Link from 'next/link';
 import styled from 'styled-components';
 
-import DarkEdgioLogo from '../../../../public/images/home/DarkEdgioLogo.svg';
-import LightEdgioLogo from '../../../../public/images/home/LightEdgioLogo.svg';
 import {
   DarkDesktopLogo,
   DarkMobileLogo,
   LightDesktopLogo,
   LightMobileLogo,
+  IconDarkEdgioLogo,
+  IconLightEdgioLogo,
 } from '../../Icon/IconLogo';
 import NoSSRWrapper from '../NoSSRWrapper';
 
@@ -27,6 +27,7 @@ const StyledHeader = styled.header`
   padding: 17px 20px;
   display: grid;
   grid-template-columns: auto auto;
+  align-content: center;
 
   > [class*='col'] {
     display: flex;
@@ -37,7 +38,6 @@ const StyledHeader = styled.header`
     .logo-box {
       cursor: pointer;
       align-items: center;
-      gap: 8px;
     }
 
     a {
@@ -49,6 +49,7 @@ const StyledHeader = styled.header`
       font-size: 14px;
       line-height: 17px;
       color: var(--black1);
+      transform: translateX(-6px);
     }
   }
 
@@ -203,20 +204,12 @@ export default function Header({
               <div className="logo-box" id="light-theme-switcher">
                 <DarkDesktopLogo className="logo" />
                 <span className="is-becoming">is becoming</span>
-                <Image
-                  src={DarkEdgioLogo}
-                  alt="Layer0 Documentation"
-                  unoptimized
-                />
+                <IconDarkEdgioLogo className="logo" />
               </div>
               <div className="logo-box" id="dark-theme-switcher">
                 <LightDesktopLogo className="logo" />
                 <span className="is-becoming">is becoming</span>
-                <Image
-                  src={LightEdgioLogo}
-                  alt="Layer0 Documentation"
-                  unoptimized
-                />
+                <IconLightEdgioLogo className="logo" />
               </div>
             </a>
           </Link>

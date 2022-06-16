@@ -206,7 +206,7 @@ export default function Header({
                   src="/images/home/edgio-dark.png"
                   width="86"
                   height="36"
-                  alt=""
+                  alt="Edgio"
                 />
               </div>
               <div className="logo-box" id="light-theme-switcher">
@@ -216,7 +216,7 @@ export default function Header({
                   src="/images/home/edgio-light.png"
                   width="86"
                   height="36"
-                  alt=""
+                  alt="Edgio"
                 />
               </div>
             </a>

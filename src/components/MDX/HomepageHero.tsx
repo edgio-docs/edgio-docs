@@ -66,7 +66,7 @@ function HomepageHero() {
               src="/images/home/l0-to-edgio-dark.png"
               width="285.38"
               height="129.74"
-              alt=""
+              alt="Layer0 is becoming Edgio"
             />
           </div>
           <div id="light-theme-switcher">
@@ -74,7 +74,7 @@ function HomepageHero() {
               src="/images/home/l0-to-edgio-light.png"
               width="285.38"
               height="129.74"
-              alt=""
+              alt="Layer0 is becoming Edgio"
             />
           </div>
           <p>

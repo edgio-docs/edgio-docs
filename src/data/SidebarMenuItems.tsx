@@ -103,6 +103,7 @@ export interface IRoute {
   external?: boolean;
   parentIndex?: number;
   childIndex?: number;
+  separator?: boolean;
 }
 
 export interface ISidebarMenuItem {
@@ -559,8 +560,13 @@ const SidebarMenuItems: ISidebarMenuItems = [
       icon: <IconGear />,
       iconDark: <IconGearDark />,
       path: 'integration-guides',
-      sortRoutes: true,
+      sortRoutes: false,
       routes: [
+        {
+          title: 'Overview',
+          path: '/guides/integrations',
+          separator: true,
+        },
         {
           title: 'BigCommerce',
           path: '/guides/bigcommerce',

@@ -1,7 +1,6 @@
 import Link from 'next/link';
 import styled from 'styled-components';
 
-import {getChildrenRoutesFromSidebarMenuItems} from '../../utils/getChildrenRoutesFromSidebarMenuItems';
 import {IconAngular} from '../Icon/IconAngular';
 import {IconAstro, IconAstroDark} from '../Icon/IconAstro';
 import {IconBook} from '../Icon/IconBook';
@@ -63,7 +62,7 @@ interface IRoutesProps {
   };
 }
 
-export default function DeveloperTools() {
+export default function FrameworkGuides() {
   const routesCol1: Array<IRoutesProps> = [
     {
       title: 'Next.js',

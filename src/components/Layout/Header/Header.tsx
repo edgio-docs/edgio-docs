@@ -3,6 +3,8 @@ import Image from 'next/image';
 import Link from 'next/link';
 import styled from 'styled-components';
 
+import EdgioDark from '../../../../public/images/home/edgio-dark.png';
+import EdgioLight from '../../../../public/images/home/edgio-light.png';
 import {DarkDesktopLogo, LightDesktopLogo} from '../../Icon/IconLogo';
 import NoSSRWrapper from '../NoSSRWrapper';
 
@@ -203,20 +205,22 @@ export default function Header({
                 <LightDesktopLogo className="logo" />
                 <span className="is-becoming">is becoming</span>
                 <Image
-                  src="/images/home/edgio-dark.png"
+                  src={EdgioDark}
                   width="86"
                   height="36"
                   alt="Edgio"
+                  unoptimized
                 />
               </div>
               <div className="logo-box" id="light-theme-switcher">
                 <DarkDesktopLogo className="logo" />
                 <span className="is-becoming">is becoming</span>
                 <Image
-                  src="/images/home/edgio-light.png"
+                  src={EdgioLight}
                   width="86"
                   height="36"
                   alt="Edgio"
+                  unoptimized
                 />
               </div>
             </a>

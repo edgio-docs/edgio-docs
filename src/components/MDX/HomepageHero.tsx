@@ -69,6 +69,7 @@ function HomepageHero() {
               width="285.38"
               height="129.74"
               alt="Layer0 is becoming Edgio"
+              unoptimized
             />
           </div>
           <div id="light-theme-switcher">
@@ -77,6 +78,7 @@ function HomepageHero() {
               width="285.38"
               height="129.74"
               alt="Layer0 is becoming Edgio"
+              unoptimized
             />
           </div>
           <p>

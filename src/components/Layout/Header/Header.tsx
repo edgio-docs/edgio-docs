@@ -210,6 +210,7 @@ export default function Header({
                   height="36"
                   alt="Edgio"
                   unoptimized
+                  priority
                 />
               </div>
               <div className="logo-box" id="light-theme-switcher">
@@ -221,6 +222,7 @@ export default function Header({
                   height="36"
                   alt="Edgio"
                   unoptimized
+                  priority
                 />
               </div>
             </a>

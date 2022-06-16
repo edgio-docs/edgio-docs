@@ -559,7 +559,7 @@ const SidebarMenuItems: ISidebarMenuItems = [
       title: 'Integrations',
       icon: <IconGear />,
       iconDark: <IconGearDark />,
-      path: 'integration-guides',
+      path: 'integrations',
       sortRoutes: false,
       routes: [
         {

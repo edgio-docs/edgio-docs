@@ -8,6 +8,7 @@ import styled from 'styled-components';
 
 import SidebarMenuItems, {
   ISidebarMenuItem,
+  IRoute,
 } from '../../../data/SidebarMenuItems';
 import {IconChevron} from '../../Icon/IconChevron';
 import {IconOutsideLink, IconOutsideLinkDark} from '../../Icon/IconOutsideLink';
@@ -102,6 +103,7 @@ const StlyedSidebar = styled.div`
 
   .route {
     display: flex;
+    flex-direction: column;
     padding: 0 20px 0 4px;
 
     a {
@@ -120,6 +122,16 @@ const StlyedSidebar = styled.div`
         font-weight: 600;
       }
     }
+
+    .route-separator {
+      min-height: 1px;
+      /*width: calc(100% - 40px);*/
+      background: var(--sidenav-hr-color);
+      display: flex;
+      flex: 1;
+      /*margin-left: 12px;*/
+      margin-bottom: 4px;
+    }
   }
 
   [aria-current='true'] {
@@ -131,12 +143,7 @@ function ChildrenRoutes({
   routes,
   currentRoutePath,
 }: {
-  routes: Array<{
-    title: string;
-    path: string;
-    icon?: JSX.IntrinsicElements['svg'];
-    external?: boolean;
-  }>;
+  routes: Array<IRoute>;
   currentRoutePath: string;
 }) {
   return (
@@ -172,6 +179,7 @@ function ChildrenRoutes({
               </a>
             </Link>
           )}
+          {route.separator && <div className="route-separator" />}
         </div>
       ))}
     </motion.div>

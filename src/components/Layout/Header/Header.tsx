@@ -1,14 +1,11 @@
 import {DocSearch} from '@docsearch/react';
+import Image from 'next/image';
 import Link from 'next/link';
 import styled from 'styled-components';
 
 import {DarkDesktopLogo, LightDesktopLogo} from '../../Icon/IconLogo';
 import NoSSRWrapper from '../NoSSRWrapper';
 
-import {
-  IconDarkEdgioLogo,
-  IconLightEdgioLogo,
-} from 'components/Icon/IconEdgioLogo';
 import {IconHamburger} from 'components/Icon/IconHamburger';
 import {
   IconDarkMobileLogo,
@@ -202,15 +199,25 @@ export default function Header({
         <div id="desktop">
           <Link href="/" passHref>
             <a>
-              <div className="logo-box" id="light-theme-switcher">
-                <DarkDesktopLogo className="logo" />
-                <span className="is-becoming">is becoming</span>
-                <IconDarkEdgioLogo className="logo" />
-              </div>
               <div className="logo-box" id="dark-theme-switcher">
                 <LightDesktopLogo className="logo" />
                 <span className="is-becoming">is becoming</span>
-                <IconLightEdgioLogo className="logo" />
+                <Image
+                  src="/images/home/edgio-dark.png"
+                  width="86"
+                  height="36"
+                  alt=""
+                />
+              </div>
+              <div className="logo-box" id="light-theme-switcher">
+                <DarkDesktopLogo className="logo" />
+                <span className="is-becoming">is becoming</span>
+                <Image
+                  src="/images/home/edgio-light.png"
+                  width="86"
+                  height="36"
+                  alt=""
+                />
               </div>
             </a>
           </Link>

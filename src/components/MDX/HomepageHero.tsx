@@ -1,11 +1,7 @@
+import Image from 'next/image';
 import styled from 'styled-components';
 
 import Container, {StyledContainer} from '../Layout/Container';
-
-import {
-  IconDarkStackedEdgioLogo,
-  IconLightStackedEdgioLogo,
-} from 'components/Icon/IconStackedEdgioLogo';
 
 const StyledHomepageHero = styled.div`
   background: var(--homepagehero-bg-image);
@@ -66,10 +62,20 @@ function HomepageHero() {
       <Container>
         <div className="copy">
           <div id="dark-theme-switcher">
-            <IconLightStackedEdgioLogo />
+            <Image
+              src="/images/home/l0-to-edgio-dark.png"
+              width="285.38"
+              height="129.74"
+              alt=""
+            />
           </div>
           <div id="light-theme-switcher">
-            <IconDarkStackedEdgioLogo />
+            <Image
+              src="/images/home/l0-to-edgio-light.png"
+              width="285.38"
+              height="129.74"
+              alt=""
+            />
           </div>
           <p>
             Learn more about the exciting changes{' '}

@@ -15,9 +15,9 @@ The first option is configured in Edge.js within the project, the second option 
 
 ## A/B Testing Multiple Implementations {/*ab-testing-multiple-implementations*/}
 
-To A/B test multiple implementations of the same site, simply deploy each implementation to a separate [environment](environments); then [configure the rules for splitting traffic using the {{ PRODUCT_NAME }} Developer Console](#section_configuring_the_split_test).
+To A/B test multiple implementations of the same site, simply deploy each implementation to a separate [environment](environments); then [configure the rules for splitting traffic using the {{ PRODUCT_NAME }} Developer Console](#configuring-the-split-test).
 
-To use CI to deploy A/B tests we recommend that you:
+To use Continuous Integration (CI) to deploy A/B tests we recommend that you:
 
 1. Set up separate branches in source control for the main experience and the new experience, for example `master` and `preview`.
 2. Create environments called `production` and `preview` in the {{ PRODUCT_NAME }} Developer Console.
@@ -29,38 +29,46 @@ To use CI to deploy A/B tests we recommend that you:
 
 ## Splitting Traffic between Multiple Sites {/*splitting-traffic-between-multiple-sites*/}
 
-To split traffic between multiple sites, create an environment for each site with the backend set to that site, deploy the code to each environment; then [configure the rules for splitting traffic using the {{ PRODUCT_NAME }} Developer Console](#section_configuring_the_split_test).
-
-For example, to use CI to deploy a split between a `new` site and a `legacy` site we recommend that you:
-
-1. Set up separate source control for the new experience and the legacy experience, for example `new` and `legacy`.
-2. Create environments called `production` and `legacy` in the {{ PRODUCT_NAME }} Developer Console.
-3. Set the backends in the  `{{ CONFIG_FILE }}` for each code base to point to their specific backend (see below.)
-4. Configure CI to deploy the `new` code to the `production` environment and the `legacy` code to the `legacy` environment. (Using `{{ CLI_NAME }} deploy --environment={environment name}`).
+To split traffic between multiple sites, first add a backend for each site to {{ CONFIG_FILE }}. For example, to split traffic between a new experience hosted on `origin.my-site.com` and a legacy experience hosted on `legacy-origin.my-site.com`:
 
 ```js
 // {{ CONFIG_FILE }}
 // New branch site backend
 module.exports = {
   backends: {
-    default: {
+    legacy: {
+      domainOrIp: 'legacy-origin.my-site.com',
+    },
+    new: {
       domainOrIp: 'origin.my-site.com',
     },
   },
 }
 ```
 
+Then, add a `destination` for each site to your router. For example,
+
 ```js
-// {{ CONFIG_FILE }}
-// Legacy branch site backend
-module.exports = {
-  backends: {
-    default: {
-      domainOrIp: 'legacy-origin.my-site.com',
-    },
-  },
-}
+// routes.js
+const { Router } = require('{{ PACKAGE_NAME }}/core/router')
+module.exports = new Router()
+  .destination(
+    'legacy_experience', // displayed in the destination dropdown in the traffic splitting section of your environment configuration in the {{ PRODUCT_NAME }} Developer Console
+    new Router()
+      // additional routing rules for the legacy experience go here
+      .fallback(({ proxy }) => proxy('legacy')),
+  )
+  .destination(
+    'new_experience', // displayed in the destination dropdown in the traffic splitting section of your environment configuration in the {{ PRODUCT_NAME }} Developer Console
+    new Router()
+      // additional routing rules for the new experience go here
+      .fallback(({ proxy }) => proxy('new')),
+  )
 ```
+
+Once you have made these changes, deploy your site using `{{ CLI_NAME }} deploy --environment={my production environment name}`, then [configure the rules for splitting traffic using the {{ PRODUCT_NAME }} Developer Console](#configuring-the-split-test).
+
+After deploying a router with multiple destinations, all requests will be sent to the first destination until you have configured the split test in the {{ PRODUCT_NAME }} Developer Console.
 
 ## Configuring the Split Test {/*configuring-the-split-test*/}
 

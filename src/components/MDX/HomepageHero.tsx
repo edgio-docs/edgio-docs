@@ -1,6 +1,8 @@
 import Image from 'next/image';
 import styled from 'styled-components';
 
+import LayerEdgioDark from '../../../public/images/home/l0-to-edgio-dark.png';
+import LayerEdgioLight from '../../../public/images/home/l0-to-edgio-light.png';
 import Container, {StyledContainer} from '../Layout/Container';
 
 const StyledHomepageHero = styled.div`
@@ -63,7 +65,7 @@ function HomepageHero() {
         <div className="copy">
           <div id="dark-theme-switcher">
             <Image
-              src="/images/home/l0-to-edgio-dark.png"
+              src={LayerEdgioDark}
               width="285.38"
               height="129.74"
               alt="Layer0 is becoming Edgio"
@@ -71,7 +73,7 @@ function HomepageHero() {
           </div>
           <div id="light-theme-switcher">
             <Image
-              src="/images/home/l0-to-edgio-light.png"
+              src={LayerEdgioLight}
               width="285.38"
               height="129.74"
               alt="Layer0 is becoming Edgio"

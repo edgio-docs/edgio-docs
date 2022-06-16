@@ -1,9 +1,7 @@
-import ReactPlayer from 'react-player';
+import {Vimeo} from 'mdx-embed';
 import styled from 'styled-components';
 
 import SectionHeader from './SectionHeader';
-
-import Video from 'components/MDX/Video';
 
 const StyledComp = styled.div`
   display: grid;
@@ -45,6 +43,10 @@ const StyledComp = styled.div`
     display: inherit;
     row-gap: 14px;
 
+    > .mdx-embed {
+      background-color: var(--sidebar-bg-color);
+    }
+
     .title {
       font-weight: 500;
       font-size: 16px;
@@ -63,10 +65,12 @@ export default function VideosandTutorials() {
         {
           title: 'Serving Static Sites',
           url: 'https://player.vimeo.com/video/691615425?h=afae4ea9fe',
+          id: '691615425',
         },
         {
           title: 'JavaScript-Configurable CDN',
           url: 'https://player.vimeo.com/video/691580288?h=75c3be1062',
+          id: '691580288',
         },
       ],
     },
@@ -77,14 +81,17 @@ export default function VideosandTutorials() {
         {
           title: 'Developer Intro',
           url: 'https://player.vimeo.com/video/691580230?h=d895984d78',
+          id: '691580230',
         },
         {
           title: 'What are the Layer0 DevTools',
           url: 'https://player.vimeo.com/video/691580899',
+          id: '691580899',
         },
         {
           title: 'Deep Request Inspection',
           url: 'https://player.vimeo.com/video/691615206?h=7c939ea661',
+          id: '691615206',
         },
       ],
     },
@@ -95,22 +102,27 @@ export default function VideosandTutorials() {
         {
           title: 'Measuring Core Web Vitals',
           url: 'https://player.vimeo.com/video/691615391?h=abe5b3c505',
+          id: '691615391',
         },
         {
           title: 'Performance & Core Web Vitals',
           url: 'https://player.vimeo.com/video/691580370?h=73d8a65b9a',
+          id: '691580370',
         },
         {
           title: 'Getting Started with GraphQL',
           url: 'https://player.vimeo.com/video/691615246?h=f0a9b2a5e7',
+          id: '691615246',
         },
         {
           title: 'Sub-Second Performance',
           url: 'https://player.vimeo.com/video/691580446?h=b9ca883f12',
+          id: '691580446',
         },
         {
           title: 'Caching Cockpit',
           url: 'https://player.vimeo.com/video/691580407?h=eefaaabf12',
+          id: '691580407',
         },
       ],
     },
@@ -121,6 +133,7 @@ export default function VideosandTutorials() {
         {
           title: 'Security Suite',
           url: 'https://player.vimeo.com/video/691580518?h=ec5e0f1370',
+          id: '691580518',
         },
       ],
     },
@@ -131,18 +144,22 @@ export default function VideosandTutorials() {
         {
           title: 'Deploy GitHub Project to Layer0',
           url: 'https://player.vimeo.com/video/691593915',
+          id: '691593915',
         },
         {
           title: 'Deploy Fearlessly',
           url: 'https://player.vimeo.com/video/691580568?h=b2f1b825c1',
+          id: '691580568',
         },
         {
           title: 'Deploy and Debug',
           url: 'https://player.vimeo.com/video/691580336?h=93f2c0511a',
+          id: '691580336',
         },
         {
           title: 'Deploying via the CLI',
           url: 'https://player.vimeo.com/video/691580254?h=8eb4753b30',
+          id: '691580254',
         },
       ],
     },
@@ -160,7 +177,7 @@ export default function VideosandTutorials() {
               <div className="videos">
                 {video.videos.map((item, vidIndex) => (
                   <div className="video" key={`${index}-${vidIndex}`}>
-                    <Video src={item.url} />
+                    <Vimeo vimeoId={item.id} />
                     <h1 className="title">{item.title}</h1>
                   </div>
                 ))}

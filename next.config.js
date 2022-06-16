@@ -68,12 +68,7 @@ const _preLayer0Export = {
 module.exports = (phase, config) =>
   withLayer0(
     withServiceWorker({
-      // Output sourcemaps so that stack traces have original source filenames and line numbers when tailing
-      // the logs in the Layer0 developer console.
-      layer0SourceMaps: true,
-
       target: 'server',
-
       ..._preLayer0Export,
     })
   );

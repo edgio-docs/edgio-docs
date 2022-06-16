@@ -1,25 +1,24 @@
 import Image from 'next/image';
-import * as React from 'react';
 import styled from 'styled-components';
 
-import DarkHeaderGraphics from '../../../public/images/home/DarkHeaderGraphics.svg';
-import LightHeaderGraphics from '../../../public/images/home/LightHeaderGraphics.svg';
-import Container from '../Layout/Container';
+import LayerEdgioDark from '../../../public/images/home/l0-to-edgio-dark.png';
+import LayerEdgioLight from '../../../public/images/home/l0-to-edgio-light.png';
+import Container, {StyledContainer} from '../Layout/Container';
 
 const StyledHomepageHero = styled.div`
-  min-height: 446px;
+  background: var(--homepagehero-bg-image);
+  min-height: 501px;
   line-height: 1.3;
-  background: var(--homepage-hero-gradient-bg);
+  background-repeat: no-repeat;
+  background-position: bottom right;
+  background-size: contain;
+  color: var(--homepagehero-color);
 
   .section-container {
     display: grid;
     grid-template-columns: 1fr 1fr;
     position: relative;
     padding: 40px 0 20px 0;
-    background-image: url('/images/home/HomepageHeroWaves.svg');
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-position: right;
 
     @media (max-width: 600px) {
       grid-template-columns: 1fr;
@@ -37,34 +36,25 @@ const StyledHomepageHero = styled.div`
     flex-direction: column;
     justify-content: center;
     gap: 18px;
-  }
 
-  .header-graphics {
-    display: flex;
-    justify-content: flex-end;
-  }
-
-  .headline {
-    font-size: 32px;
-    color: var(--homepage-hero-title-color);
-    letter-spacing: -0.663px;
-    font-weight: bold;
+    a {
+      color: var(--colors-blue0);
+      text-decoration: none;
+    }
   }
 
   .subheadline {
     font-size: 18px;
-    color: var(--homepage-hero-subtitle-color);
   }
 
-  .figure {
-    img {
-      max-width: 100%;
-    }
-  }
-
-  .container {
+  ${StyledContainer} {
     max-width: 1228px;
     margin: 0 auto;
+    height: 100%;
+
+    .section-container {
+      height: 100%;
+    }
   }
 `;
 
@@ -73,28 +63,37 @@ function HomepageHero() {
     <StyledHomepageHero>
       <Container>
         <div className="copy">
-          <h1 className="headline">Layer0 Documentation</h1>
-          <p className="subheadline">
-            The powerful CDN platform that integrates edge logic into your
-            application code & extends the edge to the browser.
-          </p>
-        </div>
-        <figure className="header-graphics">
           <div id="dark-theme-switcher">
             <Image
-              src={LightHeaderGraphics}
-              alt="Layer0 Documentation"
+              src={LayerEdgioDark}
+              width="285.38"
+              height="129.74"
+              alt="Layer0 is becoming Edgio"
               unoptimized
+              priority
             />
           </div>
           <div id="light-theme-switcher">
             <Image
-              src={DarkHeaderGraphics}
-              alt="Layer0 Documentation"
+              src={LayerEdgioLight}
+              width="285.38"
+              height="129.74"
+              alt="Layer0 is becoming Edgio"
               unoptimized
+              priority
             />
           </div>
-        </figure>
+          <p>
+            Learn more about the exciting changes{' '}
+            <a href="https://investors.limelight.com/news/press-releases/news-details/2022/Limelight-to-Acquire-Yahoos-Edgecast-Creating-Global-Leader-in-Edge-Enabled-Software-Solutions/default.aspx">
+              here.
+            </a>
+          </p>
+          <p className="subheadline">
+            Layer0 is a powerful web CDN platform that integrates edge logic
+            into your application code & extends the edge to the browser.
+          </p>
+        </div>
       </Container>
     </StyledHomepageHero>
   );

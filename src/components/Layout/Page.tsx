@@ -28,10 +28,10 @@ const StyledMainPage = styled.div`
       width: var(--sidebar-width);
       overflow: auto;
       user-select: none;
-      background-color: var(--docs-content-bg);
       padding: calc(var(--header-height) / 2) 0;
       box-shadow: inset -1px 0px var(--hr-grey1);
       z-index: 2;
+      background-color: var(--sidebar-bg-color);
 
       &[data-open='true'] {
         position: fixed;

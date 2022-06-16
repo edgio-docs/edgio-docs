@@ -23,7 +23,7 @@ Install the dependencies:
 yarn install
 ```
 
-### 3. Local development
+### 3. Develop locally
 
 Start the development server on http://localhost:3000:
 

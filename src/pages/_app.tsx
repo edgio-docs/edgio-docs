@@ -1,5 +1,6 @@
 import '@docsearch/css';
 import {Metrics} from '@layer0/rum';
+import {MDXEmbedProvider} from 'mdx-embed';
 import type {AppProps} from 'next/app';
 import Router from 'next/router';
 import NProgress from 'nprogress';
@@ -40,7 +41,9 @@ export default function MyApp({Component, pageProps}: AppProps) {
       <GlobalStyles />
       {/* <VersionProvider> */}
       <ThemeProvider theme={theme}>
-        <Component {...pageProps} />
+        <MDXEmbedProvider>
+          <Component {...pageProps} />
+        </MDXEmbedProvider>
       </ThemeProvider>
       {/* </VersionProvider> */}
     </AppShell>

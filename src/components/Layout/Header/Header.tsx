@@ -1,29 +1,32 @@
 import {DocSearch} from '@docsearch/react';
+import Image from 'next/image';
 import Link from 'next/link';
 import styled from 'styled-components';
 
-import {
-  DarkDesktopLogo,
-  DarkMobileLogo,
-  LightDesktopLogo,
-  LightMobileLogo,
-} from '../../Icon/IconLogo';
+import EdgioDark from '../../../../public/images/home/edgio-dark.png';
+import EdgioLight from '../../../../public/images/home/edgio-light.png';
+import {DarkDesktopLogo, LightDesktopLogo} from '../../Icon/IconLogo';
 import NoSSRWrapper from '../NoSSRWrapper';
 
 import {IconHamburger} from 'components/Icon/IconHamburger';
+import {
+  IconDarkMobileLogo,
+  IconLightMobileLogo,
+} from 'components/Icon/IconMobileLogo';
 import {siteConfig} from 'siteConfig';
 
 const StyledHeader = styled.header`
   position: sticky;
   top: 0;
   z-index: 1;
-  background: var(--header-bgColor);
+  background-color: var(--header-bg-color);
   width: 100%;
   height: var(--header-height);
   box-shadow: inset 0 -1px var(--grey1);
   padding: 17px 20px;
   display: grid;
   grid-template-columns: auto auto;
+  align-content: center;
 
   > [class*='col'] {
     display: flex;
@@ -33,6 +36,19 @@ const StyledHeader = styled.header`
   .col-1 {
     .logo-box {
       cursor: pointer;
+      align-items: center;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    .is-becoming {
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 17px;
+      color: var(--black1);
+      transform: translateX(-6px);
     }
   }
 
@@ -48,16 +64,17 @@ const StyledHeader = styled.header`
     }
 
     .theme-switcher {
+      height: 32px;
       width: 32px;
       background-color: transparent;
       border: none;
       justify-content: center;
       align-items: center;
       padding: 0;
-      height: 32px;
 
       :hover {
         cursor: pointer;
+        transform: scale(1.1);
       }
     }
 
@@ -71,7 +88,7 @@ const StyledHeader = styled.header`
 
     a:last-of-type {
       color: var(--white);
-      background-color: var(--pink);
+      background: var(--linear-gradient-green-to-blue);
       padding: 8px 12px;
       font-weight: 600;
       border-radius: 4px;
@@ -104,20 +121,14 @@ const StyledHeader = styled.header`
 
     #mobile {
       display: grid;
-      grid-template-columns: repeat(2, auto);
+      grid-template-columns: repeat(3, auto);
       align-items: center;
+      column-gap: 15px;
     }
 
     .col-2 {
       display: flex;
     }
-
-    /* .col-3 {
-      .search-form__box {
-        width: 100%;
-        max-width: 100%;
-      }
-    } */
 
     .col-3 {
       display: flex;
@@ -190,11 +201,29 @@ export default function Header({
         <div id="desktop">
           <Link href="/" passHref>
             <a>
-              <div className="logo-box" id="light-theme-switcher">
-                <DarkDesktopLogo className="logo" />
-              </div>
               <div className="logo-box" id="dark-theme-switcher">
                 <LightDesktopLogo className="logo" />
+                <span className="is-becoming">is becoming</span>
+                <Image
+                  src={EdgioDark}
+                  width="86"
+                  height="36"
+                  alt="Edgio"
+                  unoptimized
+                  priority
+                />
+              </div>
+              <div className="logo-box" id="light-theme-switcher">
+                <DarkDesktopLogo className="logo" />
+                <span className="is-becoming">is becoming</span>
+                <Image
+                  src={EdgioLight}
+                  width="86"
+                  height="36"
+                  alt="Edgio"
+                  unoptimized
+                  priority
+                />
               </div>
             </a>
           </Link>
@@ -203,10 +232,10 @@ export default function Header({
           <Link href="/" passHref>
             <a>
               <div className="logo-box" id="light-theme-switcher">
-                <DarkMobileLogo className="logo" />
+                <IconDarkMobileLogo className="logo" />
               </div>
               <div className="logo-box" id="dark-theme-switcher">
-                <LightMobileLogo className="logo" />
+                <IconLightMobileLogo className="logo" />
               </div>
             </a>
           </Link>
@@ -258,6 +287,24 @@ export default function Header({
               />
             </NoSSRWrapper>
           </div>
+          <button
+            type="button"
+            className="theme-switcher"
+            id="dark-theme-switcher"
+            onClick={() => {
+              window.__setPreferredTheme('dark');
+            }}>
+            {darkSwitchIcon}
+          </button>
+          <button
+            type="button"
+            className="theme-switcher"
+            id="light-theme-switcher"
+            onClick={() => {
+              window.__setPreferredTheme('light');
+            }}>
+            {lightSwitchIcon}
+          </button>
           <button
             type="button"
             className="mobile-menu"

@@ -1,4 +1,5 @@
-import React, {useEffect, useState} from 'react';
+import {Vimeo} from 'mdx-embed';
+import React from 'react';
 import ReactPlayer from 'react-player/lazy';
 import styled from 'styled-components';
 
@@ -53,14 +54,15 @@ function Wait() {
   );
 }
 
-function Video({src}: VideoProps) {
+const style = {'--aspect-ratio': '16/9'} as React.CSSProperties;
+
+export default function Video({src}: VideoProps) {
   const isLoaded = useHydrationIsLoaded();
 
   if (!isLoaded) {
     return <></>;
   }
 
-  const style = {'--aspect-ratio': '16/9'} as React.CSSProperties;
   return (
     <StyledVideo style={style}>
       <ReactPlayer
@@ -76,6 +78,10 @@ function Video({src}: VideoProps) {
   );
 }
 
-Video.displayName = 'Video';
-
-export default Video;
+export function VimeoMDXEmbed({id}: {id: string}) {
+  return (
+    <StyledVideo style={style}>
+      <Vimeo vimeoId={id} />
+    </StyledVideo>
+  );
+}

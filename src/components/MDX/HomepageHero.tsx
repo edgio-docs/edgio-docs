@@ -5,6 +5,8 @@ import LayerEdgioDark from '../../../public/images/home/l0-to-edgio-dark.png';
 import LayerEdgioLight from '../../../public/images/home/l0-to-edgio-light.png';
 import Container, {StyledContainer} from '../Layout/Container';
 
+import Link from './Link';
+
 const StyledHomepageHero = styled.div`
   background: var(--homepagehero-bg-image);
   min-height: 501px;
@@ -85,9 +87,9 @@ function HomepageHero() {
           </div>
           <p>
             Learn more about the exciting changes{' '}
-            <a href="https://investors.limelight.com/news/press-releases/news-details/2022/Limelight-to-Acquire-Yahoos-Edgecast-Creating-Global-Leader-in-Edge-Enabled-Software-Solutions/default.aspx">
+            <Link href="https://investors.edg.io/news/press-releases/news-details/2022/Limelight-Completes-Acquisition-of-Yahoos-Edgecast-Combined-Company-Rebrands-as-Edgio-Creating-a-Global-Leader-in-Edge-Enabled-Solutions/default.aspx">
               here.
-            </a>
+            </Link>
           </p>
           <p className="subheadline">
             Layer0 is a powerful web CDN platform that integrates edge logic

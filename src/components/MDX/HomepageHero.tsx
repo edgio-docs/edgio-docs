@@ -68,9 +68,9 @@ function HomepageHero() {
           <div id="dark-theme-switcher">
             <Image
               src={LayerEdgioDark}
-              width="285.38"
-              height="129.74"
-              alt="Layer0 is becoming Edgio"
+              width="292"
+              height="168"
+              alt="Edgio"
               unoptimized
               priority
             />
@@ -78,9 +78,9 @@ function HomepageHero() {
           <div id="light-theme-switcher">
             <Image
               src={LayerEdgioLight}
-              width="285.38"
-              height="129.74"
-              alt="Layer0 is becoming Edgio"
+              width="292"
+              height="168"
+              alt="Edgio"
               unoptimized
               priority
             />

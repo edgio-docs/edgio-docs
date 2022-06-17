@@ -42,10 +42,12 @@ const StyledIntegrations = styled.div`
       border-radius: 4px;
       text-decoration: none;
       color: inherit;
-      transition: transform 0.2s;
+      transition: transform 0.1s;
+      height: 100%;
+      will-change: transform;
 
       :hover {
-        transform: scale(1.02);
+        transform: scale(1.01);
       }
     }
 

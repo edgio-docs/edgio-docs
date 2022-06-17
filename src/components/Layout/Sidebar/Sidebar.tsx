@@ -98,7 +98,7 @@ const StlyedSidebar = styled.div`
       height: calc(100%);
       top: 0;
       width: 0.75px;
-      background-color: var(--colors-green0);
+      background-color: var(--colors-blue0);
     }
   }
 
@@ -125,17 +125,15 @@ const StlyedSidebar = styled.div`
 
     .route-separator {
       min-height: 1px;
-      /*width: calc(100% - 40px);*/
       background: var(--sidenav-hr-color);
       display: flex;
       flex: 1;
-      /*margin-left: 12px;*/
       margin-bottom: 4px;
     }
   }
 
   [aria-current='true'] {
-    color: var(--colors-green0) !important;
+    color: var(--colors-blue0) !important;
   }
 `;
 

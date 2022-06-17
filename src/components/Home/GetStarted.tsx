@@ -77,6 +77,7 @@ const StyledGetStarted = styled.div`
     display: grid;
     grid-template-rows: auto 1fr auto;
     text-decoration: none;
+    transition: transform 0.1s;
 
     :hover {
       transform: scale(1.01);
@@ -105,21 +106,10 @@ const StyledGetStarted = styled.div`
 
   .card {
     .card-footer__link {
-      color: var(--colors-purple0);
+      color: var(--black1);
       text-decoration: none;
       display: flex;
       column-gap: 7px;
-    }
-
-    :nth-child(2) {
-      .card-footer__link {
-        color: var(--colors-blue0);
-      }
-    }
-    :nth-child(3) {
-      .card-footer__link {
-        color: var(--colors-green0);
-      }
     }
   }
 `;

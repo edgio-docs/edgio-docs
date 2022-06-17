@@ -92,8 +92,8 @@ function HomepageHero() {
             </Link>
           </p>
           <p className="subheadline">
-            Layer0 is a powerful web CDN platform that integrates edge logic
-            into your application code & extends the edge to the browser.
+            We are a powerful web CDN platform that integrates edge logic into
+            your application code & extends the edge to the browser.
           </p>
         </div>
       </Container>

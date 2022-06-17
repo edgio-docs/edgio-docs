@@ -1,7 +1,10 @@
 import Link from 'next/link';
 import styled from 'styled-components';
 
-import {getChildrenRoutesFromSidebarMenuItems} from 'utils/getChildrenRoutesFromSidebarMenuItems';
+import {PRODUCT_NAME} from '../../../constants';
+import {IconGitHub} from '../Icon/IconGitHub';
+
+import {findChildByGuideName} from 'utils/getChildrenRoutesFromSidebarMenuItems';
 
 const StyledIntegrations = styled.div`
   .integrations {
@@ -63,29 +66,38 @@ const StyledIntegrations = styled.div`
   }
 `;
 
-function getIntegrationsDescription(integration: string) {
-  switch (integration) {
-    case 'bigcommerce':
-      return 'Layer0 supports a number of integrations of popular products and platforms as listed below.';
-    case 'bloomreach':
-      return 'Layer0 supports a number of integrations of popular products and platforms as listed below.';
-    case 'shopify_hydrogen':
-      return 'Layer0 supports a number of integrations of popular products and platforms as listed below.';
-    case 'swell':
-      return 'Layer0 supports a number of integrations of popular products and platforms as listed below.';
-    default:
-      return ":( I don't know what integration this is";
-  }
-}
+const integrations: Object[] = [
+  {
+    ...findChildByGuideName('bigcommerce'),
+    description: `${PRODUCT_NAME} provides integration with BigCommerce, an API-driven ecommerce platform with solutions for B2B, wholesale, social media platforms and more.`,
+  },
+  {
+    ...findChildByGuideName('bloomreach'),
+    description: `Bloomreach is an API-driven platform offering that focuses on powerful content, customer engagement, and product discovery offerings to achieve true personalization and drive unparalleled business growth.`,
+  },
+  {
+    ...findChildByGuideName('shopify_hydrogen'),
+    description: `${PRODUCT_NAME}'s integration with Hydrogen's React-based framework for building custom storefronts on Shopify gives you everything you need to start fast, build fast, and deliver the best personalized shopping experiences.`,
+  },
+  {
+    ...findChildByGuideName('swell'),
+    description: `Swell is a customizable headless ecommerce platform that supports global B2C and B2B merchants. ${PRODUCT_NAME}'s integration with Swell and Nuxt.js let's you get up and running quickly.`,
+  },
+  {
+    ...findChildByGuideName('deploy_apps'),
+    title: 'CI/CD Integration',
+    path: '/guides/deploy_apps#deploy-from-ci',
+    description: `${PRODUCT_NAME} has deploy integrations with your favorite CI/CD platform including GitHub, Jenkins, and GitLab.`,
+    icon: <IconGitHub />,
+    iconDark: <IconGitHub />,
+  },
+];
 
 export default function Integrations() {
-  const parentPath = 'integrations';
-  const allRoutes = getChildrenRoutesFromSidebarMenuItems(parentPath).slice(1);
-
   return (
     <StyledIntegrations>
       <ul className="integrations">
-        {allRoutes.map((route) => (
+        {integrations.map((route: any) => (
           <li key={route.path} className="integration-list__item">
             <Link href={route.path} passHref>
               <a className="integration-link">
@@ -97,9 +109,7 @@ export default function Integrations() {
                 </div>
                 <div>
                   <h3 className="title">{route.title}</h3>
-                  <p className="description">
-                    {getIntegrationsDescription(route.path.split('/')[2])}
-                  </p>
+                  <p className="description">{route.description}</p>
                 </div>
               </a>
             </Link>

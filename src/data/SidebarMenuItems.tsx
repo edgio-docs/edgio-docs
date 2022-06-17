@@ -103,7 +103,7 @@ export interface IRoute {
   external?: boolean;
   parentIndex?: number;
   childIndex?: number;
-  separator?: boolean;
+  separator?: boolean | 'top' | 'bottom';
 }
 
 export interface ISidebarMenuItem {

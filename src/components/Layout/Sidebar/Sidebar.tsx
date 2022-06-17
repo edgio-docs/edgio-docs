@@ -128,7 +128,7 @@ const StlyedSidebar = styled.div`
       background: var(--sidenav-hr-color);
       display: flex;
       flex: 1;
-      margin-bottom: 4px;
+      margin: 2px 0 2px 0;
     }
   }
 
@@ -155,31 +155,41 @@ function ChildrenRoutes({
         collapsed: {height: 0},
       }}
       transition={{duration: 0.1}}>
-      {routes.map((route, i) => (
-        <div className="route" key={i}>
-          {route.external ? (
-            <a href={route.path} target="_blank" rel="noopener noreferrer">
-              {route.title}
+      {routes.map((route, i) => {
+        const separatorTop =
+          route.separator === 'top' ||
+          (route.separator === true && routes.length - 1 === i);
+        const separatorBottom =
+          route.separator === 'bottom' ||
+          (route.separator === true && routes.length - 1 > i);
 
-              <>
-                <div className="icon-box" id="light-theme-switcher">
-                  <IconOutsideLinkDark />
-                </div>
-                <div className="icon-box" id="dark-theme-switcher">
-                  <IconOutsideLink />
-                </div>
-              </>
-            </a>
-          ) : (
-            <Link href={route.path}>
-              <a aria-current={currentRoutePath === route.path}>
+        return (
+          <div className="route" key={i}>
+            {route}
+            {route.external ? (
+              <a href={route.path} target="_blank" rel="noopener noreferrer">
                 {route.title}
+
+                <>
+                  <div className="icon-box" id="light-theme-switcher">
+                    <IconOutsideLinkDark />
+                  </div>
+                  <div className="icon-box" id="dark-theme-switcher">
+                    <IconOutsideLink />
+                  </div>
+                </>
               </a>
-            </Link>
-          )}
-          {route.separator && <div className="route-separator" />}
-        </div>
-      ))}
+            ) : (
+              <Link href={route.path}>
+                <a aria-current={currentRoutePath === route.path}>
+                  {route.title}
+                </a>
+              </Link>
+            )}
+            {route.separator && <div className="route-separator" />}
+          </div>
+        );
+      })}
     </motion.div>
   );
 }

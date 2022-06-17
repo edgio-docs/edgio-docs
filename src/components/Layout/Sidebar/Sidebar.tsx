@@ -158,14 +158,14 @@ function ChildrenRoutes({
       {routes.map((route, i) => {
         const separatorTop =
           route.separator === 'top' ||
-          (route.separator === true && routes.length - 1 === i);
+          (route.separator === true && routes.length === i + 1);
         const separatorBottom =
           route.separator === 'bottom' ||
-          (route.separator === true && routes.length - 1 > i);
+          (route.separator === true && i + 1 < routes.length);
 
         return (
           <div className="route" key={i}>
-            {route}
+            {separatorTop && <div className="route-separator" />}
             {route.external ? (
               <a href={route.path} target="_blank" rel="noopener noreferrer">
                 {route.title}
@@ -186,7 +186,7 @@ function ChildrenRoutes({
                 </a>
               </Link>
             )}
-            {route.separator && <div className="route-separator" />}
+            {separatorBottom && <div className="route-separator" />}
           </div>
         );
       })}

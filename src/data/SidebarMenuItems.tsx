@@ -103,6 +103,9 @@ export interface IRoute {
   external?: boolean;
   parentIndex?: number;
   childIndex?: number;
+  /**
+   * `true` to automatically determine the separator position based on the item hierarchy
+   */
   separator?: boolean | 'top' | 'bottom';
 }
 

@@ -376,8 +376,14 @@ router.get('/p/:productId', ({ redirect, compute, cache }) => {
 This example redirects all traffic on domains other than www.mydomain.com to www.mydomain.com. So for example, mydomain.com => www.mydomain.com
 
 ```js
+// Redirect all traffic except those with host header starting with www. to www.mydomain.com
 router.match({ headers: { host: /^(?!www\.).*$/ } }, ({ redirect }) => {
   redirect('https://www.mydomain.com${path}')
+})
+
+// Redirect all traffic from www.domain.com to domain.com
+router.match({ headers: { host: /^(www\.).*$/ } }, ({ redirect }) => {
+  redirect('https://domain.com${path}')
 })
 ```
 

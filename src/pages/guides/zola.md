@@ -6,9 +6,7 @@ This guide shows you how to deploy a [Zola](https://www.getzola.org/) applicatio
 
 ## Example {/*example*/}
 
-<ButtonLink variant="stroke" type="code" withIcon={true} href="https://github.com/layer0-docs/layer0-zola-example?button">
- View the Code
-</ButtonLink>
+<ExampleButtons repoUrl="https://github.com/layer0-docs/layer0-zola-example" />
 
 {{ SYSTEM_REQUIREMENTS }}
 

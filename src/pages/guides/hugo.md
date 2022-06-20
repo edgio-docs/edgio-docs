@@ -6,9 +6,9 @@ This guide shows you how to deploy a [Hugo](https://gohugo.io) application on {{
 
 ## Example {/*example*/}
 
-<ButtonLink variant="stroke" type="code" withIcon={true} href="https://github.com/layer0-docs/layer0-hugo-example">
-  View the Code
-</ButtonLink>
+<ExampleButtons
+  repoUrl="https://github.com/layer0-docs/layer0-hugo-example" 
+   />
 
 {{ SYSTEM_REQUIREMENTS }}
 

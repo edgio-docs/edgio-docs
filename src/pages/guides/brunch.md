@@ -6,17 +6,11 @@ This guide shows you how to deploy a [Brunch](https://brunch.io/) application on
 
 ## Example {/*example*/}
 
-<ButtonLinksGroup>
-  <ButtonLink variant="fill" type="default" href="https://layer0-docs-layer0-brunch-example-default.layer0-limelight.link">
-   Try the Brunch Example Site
-  </ButtonLink>
-  <ButtonLink variant="stroke" type="code" withIcon={true} href="https://github.com/layer0-docs/layer0-brunch-example">
-   View the Code
-  </ButtonLink>
-  <ButtonLink variant="stroke" type="deploy" withIcon={true} href="https://app.layer0.co/deploy?button&deploy&repo=https://github.com/layer0-docs/layer0-brunch-example">
-    Deploy to Layer0
-  </ButtonLink>
-</ButtonLinksGroup>
+<ExampleButtons
+  title="Brunch"
+  siteUrl="https://layer0-docs-layer0-brunch-example-default.layer0-limelight.link"
+  repoUrl="https://github.com/layer0-docs/layer0-brunch-example" 
+  deployFromRepo />
 
 {{ SYSTEM_REQUIREMENTS }}
 

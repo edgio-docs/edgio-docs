@@ -109,10 +109,10 @@ module.exports = {
     },
   },
 
-  // The name of the site in Layer0 to which which this app should be deployed.
+  // The name of the site in Layer0 to which this app should be deployed.
   name: "example.com",
 
-  // The name of the team in Layer0 to which which this app should be deployed.
+  // The name of the team in Layer0 to which this app should be deployed.
   team: 'my-team-name',
 
   // Overrides the default path to the routes file. The path should be relative 
@@ -140,6 +140,6 @@ module.exports = {
   // needed as Layer0 automatically includes all modules imported by your 
   // code in the bundle that is uploaded during deployment
   //
-   includeNodeModules: true,
+  includeNodeModules: true,
 };
 ```

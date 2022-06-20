@@ -45,9 +45,9 @@ const StyledComp = styled(StyledFeatureSection)`
   .route-items__col3 {
     .route-list__item:last-child {
       a {
-        color: var(--pink);
         font-weight: initial;
         display: flex;
+        align-items: center;
         column-gap: 7px;
       }
     }
@@ -244,6 +244,7 @@ export default function DeveloperTools() {
                 <li className="route-list__item">
                   <Link href="/guides/jamstack_getting_started" passHref>
                     <a>
+                      <div className="dot" />
                       <span>View all supported</span>
                       <IconArrow displayDirection="right" />
                     </a>

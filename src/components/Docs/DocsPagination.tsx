@@ -18,7 +18,7 @@ const StyledDocsPagination = styled.footer`
     border: 2px solid var(--hr-grey1);
     padding: 20px;
     border-radius: 4px;
-    color: #2993e0;
+    color: var(--colors-green0);
     text-decoration: none;
     font-weight: 600;
     transition: transform 0.2s;

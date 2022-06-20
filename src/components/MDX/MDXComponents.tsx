@@ -12,7 +12,7 @@ import HomepageHero from './HomepageHero';
 import Image from './Image';
 import InlineCode from './InlineCode';
 import Link from './Link';
-import Video from './Video';
+import Video, {VimeoMDXEmbed} from './Video';
 
 const P = (p: JSX.IntrinsicElements['p']) => (
   <p className="article-text" {...p} />
@@ -63,6 +63,7 @@ export const MDXComponents = {
   ButtonLinksGroup,
   ButtonLink,
   Video,
+  VimeoMDXEmbed,
   img: Image,
   ExampleButtons,
 };

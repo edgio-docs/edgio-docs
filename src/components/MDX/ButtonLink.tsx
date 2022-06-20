@@ -80,14 +80,14 @@ const StyledButtonLink = styled.div.attrs<IStyledButtonLinkProps>((props) => ({
       props.variant === 'fill' &&
       css`
         color: #fff;
-        background-color: #e91e63;
+        background-color: var(--colors-green0);
       `}
 
     ${(props) =>
       props.variant === 'stroke' &&
       css`
         color: inherit;
-        border: 1px solid #e91e63;
+        border: 1px solid var(--colors-green0);
       `}
   }
 `;

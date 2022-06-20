@@ -87,3 +87,4 @@ export * from './IconVueStorefront';
 export * from './IconWebAppCDN';
 export * from './IconZola';
 export * from './IconSanity';
+export * from './IconEdgioSquareLogo';

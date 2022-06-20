@@ -45,7 +45,7 @@ const StyledToc = styled.div`
       display: block;
 
       :hover {
-        color: var(--pink);
+        color: var(--colors-green0);
       }
     }
   }
@@ -63,11 +63,11 @@ const StyledToc = styled.div`
       top: 50%;
       transform: translateY(-50%) translateX(-20px);
       width: 3px;
-      background: var(--pink);
+      background: var(--colors-green0);
     }
 
     > a {
-      color: var(--pink);
+      color: var(--colors-green0);
       font-weight: 700;
     }
   }

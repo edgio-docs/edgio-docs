@@ -4,17 +4,11 @@ title: Vue Storefront 1
 
 ## Example Site {/*example-site*/}
 
-<ButtonLinksGroup>
-  <ButtonLink variant="fill" type="default" href="https://layer0-docs-layer0-vue-storefront-example-default.layer0-limelight.link">
-   Try the VSF1 Example Site
-  </ButtonLink>
-  <ButtonLink variant="stroke" type="code" withIcon={true} href="https://github.com/layer0-docs/layer0-vue-storefront-example">
-   View the Code
-  </ButtonLink>
-  <ButtonLink variant="stroke" type="deploy" withIcon={true} href="https://app.layer0.co/deploy?button&deploy&repo=https%3A%2F%2Fgithub.com%2Flayer0-docs%2Flayer0-vue-storefront-example">
-    Deploy to Layer0
-  </ButtonLink>
-</ButtonLinksGroup>
+<ExampleButtons
+  title="VSF1"
+  siteUrl="https://layer0-docs-layer0-vue-storefront-example-default.layer0-limelight.link"
+  repoUrl="https://github.com/layer0-docs/layer0-vue-storefront-example" 
+  deployFromRepo />
 
 ## 1. Install Vue Storefront {/*1-install-vue-storefront*/}
 

@@ -8,20 +8,11 @@ This guide shows you how to deploy an [Gatsby](https://www.gatsbyjs.com/) applic
 
 ## Example {/*example*/}
 
-[Try the Gatsby SSG Example Site]()
-[View the Code]()
-[Deploy to Layer0]()
-<ButtonLinksGroup>
-  <ButtonLink variant="fill" type="default" href="https://layer0-docs-layer0-gatsby-example-default.layer0-limelight.link">
-   Try the Gatsby SSG Example Site
-  </ButtonLink>
-  <ButtonLink variant="stroke" type="code" withIcon={true} href="https://github.com/layer0-docs/layer0-gatsby-example">
-   View the Code
-  </ButtonLink>
-  <ButtonLink variant="stroke" type="deploy" withIcon={true} href="https://app.layer0.co/deploy?button&deploy&repo=https://github.com/layer0-docs/layer0-gatsby-example">
-    Deploy to Layer0
-  </ButtonLink>
-</ButtonLinksGroup>
+<ExampleButtons
+  title="Gatsby SSG"
+  siteUrl="https://layer0-docs-layer0-gatsby-example-default.layer0-limelight.link"
+  repoUrl="https://github.com/layer0-docs/layer0-gatsby-example" 
+  deployFromRepo />
 
 ## Connector {/*connector*/}
 

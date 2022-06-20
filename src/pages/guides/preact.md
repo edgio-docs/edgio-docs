@@ -6,17 +6,11 @@ This guide shows you how to deploy a [Preact](https://preactjs.com/) application
 
 ## Example {/*example*/}
 
-<ButtonLinksGroup>
-  <ButtonLink variant="fill" type="default" href="https://layer0-docs-layer0-preact-example-default.layer0-limelight.link">
-   Try the Preact Example Site
-  </ButtonLink>
-  <ButtonLink variant="stroke" type="code" withIcon={true} href="https://github.com/layer0-docs/layer0-preact-example">
-   View the Code
-  </ButtonLink>
-  <ButtonLink variant="stroke" type="deploy" withIcon={true} href="https://app.layer0.co/deploy?button&deploy&repo=https://github.com/layer0-docs/layer0-preact-example">
-    Deploy to Layer0
-  </ButtonLink>
-</ButtonLinksGroup>
+<ExampleButtons
+  title="Preact"
+  siteUrl="https://layer0-docs-layer0-preact-example-default.layer0-limelight.link"
+  repoUrl="https://github.com/layer0-docs/layer0-preact-example" 
+  deployFromRepo />
 
 {{ SYSTEM_REQUIREMENTS }}
 

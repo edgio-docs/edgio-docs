@@ -6,17 +6,11 @@ This guide shows you how to deploy [Frontity](https://frontity.org/) apps on {{ 
 
 ## Example {/*example*/}
 
-<ButtonLinksGroup>
-  <ButtonLink variant="fill" type="default" href="https://layer0-docs-layer0-frontity-example-default.layer0-limelight.link">
-   Try the the Ember.js Example Site
-  </ButtonLink>
-  <ButtonLink variant="stroke" type="code" withIcon={true} href="https://github.com/layer0-docs/layer0-frontity-example">
-   View the Code
-  </ButtonLink>
-  <ButtonLink variant="stroke" type="deploy" withIcon={true} href="https://app.layer0.co/deploy?button&deploy&repo=https%3A%2F%2Fgithub.com%2Flayer0-docs%2Flayer0-frontity-example">
-    Deploy to Layer0
-  </ButtonLink>
-</ButtonLinksGroup>
+<ExampleButtons
+  title="Frontity"
+  siteUrl="https://layer0-docs-layer0-frontity-example-default.layer0-limelight.link"
+  repoUrl="https://github.com/layer0-docs/layer0-frontity-example" 
+  deployFromRepo />
 
 ## Connector {/*connector*/}
 

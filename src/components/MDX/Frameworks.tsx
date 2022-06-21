@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import {useEffect} from 'react';
 import styled from 'styled-components';
 
 import {getChildrenRoutesFromSidebarMenuItems} from '../../utils/getChildrenRoutesFromSidebarMenuItems';

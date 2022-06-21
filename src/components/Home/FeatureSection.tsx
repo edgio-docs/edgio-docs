@@ -28,7 +28,7 @@ export const StyledFeatureSection = styled.div`
       --size: 8px;
       width: var(--size);
       height: var(--size);
-      background-color: var(--colors-green0);
+      background-color: var(--colors-blue0);
       border-radius: 1px;
     }
 
@@ -42,7 +42,7 @@ export const StyledFeatureSection = styled.div`
       border-bottom: 1px solid transparent;
 
       :hover {
-        border-bottom-color: var(--colors-green0);
+        border-bottom-color: var(--colors-blue0);
       }
     }
   }

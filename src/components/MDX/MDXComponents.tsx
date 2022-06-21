@@ -11,6 +11,7 @@ import HomepageFeatures from './HomepageFeatures';
 import HomepageHero from './HomepageHero';
 import Image from './Image';
 import InlineCode from './InlineCode';
+import Integrations from './Integrations';
 import Link from './Link';
 import Video, {VimeoMDXEmbed} from './Video';
 
@@ -65,5 +66,6 @@ export const MDXComponents = {
   Video,
   VimeoMDXEmbed,
   img: Image,
+  Integrations,
   ExampleButtons,
 };

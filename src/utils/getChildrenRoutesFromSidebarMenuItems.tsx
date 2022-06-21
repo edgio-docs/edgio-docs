@@ -1,4 +1,11 @@
+import {flatMap, flatten} from 'lodash';
+
 import SidebarMenuItems, {IRoute} from '../data/SidebarMenuItems';
+
+const flatItems: IRoute[] = flatMap(
+  flatten(SidebarMenuItems),
+  (item) => item.routes || []
+);
 
 export function getChildrenRoutesFromSidebarMenuItems(
   identifier: string
@@ -8,4 +15,10 @@ export function getChildrenRoutesFromSidebarMenuItems(
   )[0];
 
   return routes || [];
+}
+
+export function findChildByGuideName(identifier: string): IRoute | undefined {
+  return flatItems.find(
+    (item) => item.path?.toLowerCase() === `/guides/${identifier}`.toLowerCase()
+  );
 }

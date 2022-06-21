@@ -21,6 +21,8 @@ const GlobalStyle = createGlobalStyle`
   --sidebar-bg-color: #ffffff;
   --sidebar-href-color: #353535;
   --header-bg-color: #ffffff;
+  --table-hdr-bg-color: var(--colors-green0);
+  --table-striped-row-bg-color: var(--colors-gray1);
   /* End new */
 
   /* Colors */
@@ -80,6 +82,8 @@ const GlobalStyle = createGlobalStyle`
   --sidebar-bg-color: #353535;
   --sidebar-href-color: #ffffff;
   --header-bg-color: #353535;
+  --table-hdr-bg-color: #606060;
+  --table-striped-row-bg-color: #303030; 
 
   /* End new */
 }

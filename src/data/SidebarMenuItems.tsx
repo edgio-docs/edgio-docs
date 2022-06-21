@@ -103,6 +103,10 @@ export interface IRoute {
   external?: boolean;
   parentIndex?: number;
   childIndex?: number;
+  /**
+   * `true` to automatically determine the separator position based on the item hierarchy
+   */
+  separator?: boolean | 'top' | 'bottom';
 }
 
 export interface ISidebarMenuItem {
@@ -558,9 +562,14 @@ const SidebarMenuItems: ISidebarMenuItems = [
       title: 'Integrations',
       icon: <IconGear />,
       iconDark: <IconGearDark />,
-      path: 'integration-guides',
-      sortRoutes: true,
+      path: 'integrations',
+      sortRoutes: false,
       routes: [
+        {
+          title: 'Overview',
+          path: '/guides/integrations',
+          separator: true,
+        },
         {
           title: 'BigCommerce',
           path: '/guides/bigcommerce',

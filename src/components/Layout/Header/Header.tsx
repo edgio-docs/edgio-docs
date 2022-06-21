@@ -5,7 +5,6 @@ import styled from 'styled-components';
 
 import EdgioDark from '../../../../public/images/home/edgio-dark.png';
 import EdgioLight from '../../../../public/images/home/edgio-light.png';
-import {DarkDesktopLogo, LightDesktopLogo} from '../../Icon/IconLogo';
 import NoSSRWrapper from '../NoSSRWrapper';
 
 import {IconHamburger} from 'components/Icon/IconHamburger';
@@ -41,14 +40,6 @@ const StyledHeader = styled.header`
 
     a {
       text-decoration: none;
-    }
-
-    .is-becoming {
-      font-weight: 400;
-      font-size: 14px;
-      line-height: 17px;
-      color: var(--black1);
-      transform: translateX(-6px);
     }
   }
 
@@ -202,8 +193,6 @@ export default function Header({
           <Link href="/" passHref>
             <a>
               <div className="logo-box" id="dark-theme-switcher">
-                <LightDesktopLogo className="logo" />
-                <span className="is-becoming">is becoming</span>
                 <Image
                   src={EdgioDark}
                   width="86"
@@ -214,8 +203,6 @@ export default function Header({
                 />
               </div>
               <div className="logo-box" id="light-theme-switcher">
-                <DarkDesktopLogo className="logo" />
-                <span className="is-becoming">is becoming</span>
                 <Image
                   src={EdgioLight}
                   width="86"

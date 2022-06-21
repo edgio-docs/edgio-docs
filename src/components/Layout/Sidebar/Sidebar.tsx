@@ -8,6 +8,7 @@ import styled from 'styled-components';
 
 import SidebarMenuItems, {
   ISidebarMenuItem,
+  IRoute,
 } from '../../../data/SidebarMenuItems';
 import {IconChevron} from '../../Icon/IconChevron';
 import {IconOutsideLink, IconOutsideLinkDark} from '../../Icon/IconOutsideLink';
@@ -97,12 +98,13 @@ const StlyedSidebar = styled.div`
       height: calc(100%);
       top: 0;
       width: 0.75px;
-      background-color: var(--colors-green0);
+      background-color: var(--colors-blue0);
     }
   }
 
   .route {
     display: flex;
+    flex-direction: column;
     padding: 0 20px 0 4px;
 
     a {
@@ -120,10 +122,18 @@ const StlyedSidebar = styled.div`
         background-color: var(--grey2);
       }
     }
+
+    .route-separator {
+      min-height: 1px;
+      background: var(--sidenav-hr-color);
+      display: flex;
+      flex: 1;
+      margin: 2px 0 2px 0;
+    }
   }
 
   [aria-current='true'] {
-    color: var(--colors-green0) !important;
+    color: var(--colors-blue0) !important;
   }
 `;
 
@@ -131,12 +141,7 @@ function ChildrenRoutes({
   routes,
   currentRoutePath,
 }: {
-  routes: Array<{
-    title: string;
-    path: string;
-    icon?: JSX.IntrinsicElements['svg'];
-    external?: boolean;
-  }>;
+  routes: Array<IRoute>;
   currentRoutePath: string;
 }) {
   return (
@@ -150,30 +155,41 @@ function ChildrenRoutes({
         collapsed: {height: 0},
       }}
       transition={{duration: 0.1}}>
-      {routes.map((route, i) => (
-        <div className="route" key={i}>
-          {route.external ? (
-            <a href={route.path} target="_blank" rel="noopener noreferrer">
-              {route.title}
+      {routes.map((route, i) => {
+        const separatorTop =
+          route.separator === 'top' ||
+          (route.separator === true && routes.length === i + 1);
+        const separatorBottom =
+          route.separator === 'bottom' ||
+          (route.separator === true && i + 1 < routes.length);
 
-              <>
-                <div className="icon-box" id="light-theme-switcher">
-                  <IconOutsideLinkDark />
-                </div>
-                <div className="icon-box" id="dark-theme-switcher">
-                  <IconOutsideLink />
-                </div>
-              </>
-            </a>
-          ) : (
-            <Link href={route.path}>
-              <a aria-current={currentRoutePath === route.path}>
+        return (
+          <div className="route" key={i}>
+            {separatorTop && <div className="route-separator" />}
+            {route.external ? (
+              <a href={route.path} target="_blank" rel="noopener noreferrer">
                 {route.title}
+
+                <>
+                  <div className="icon-box" id="light-theme-switcher">
+                    <IconOutsideLinkDark />
+                  </div>
+                  <div className="icon-box" id="dark-theme-switcher">
+                    <IconOutsideLink />
+                  </div>
+                </>
               </a>
-            </Link>
-          )}
-        </div>
-      ))}
+            ) : (
+              <Link href={route.path}>
+                <a aria-current={currentRoutePath === route.path}>
+                  {route.title}
+                </a>
+              </Link>
+            )}
+            {separatorBottom && <div className="route-separator" />}
+          </div>
+        );
+      })}
     </motion.div>
   );
 }

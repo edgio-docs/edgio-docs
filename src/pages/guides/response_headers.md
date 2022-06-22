@@ -81,7 +81,7 @@ Below is a translation of each value in this example:
 | `pt=811`   | Serverless Load Balancer Total time of 811ms |
 | `pc=1`     | Serverless Load Balancer total request count. if > 1 it implies scaling where we had to queue and retry this request |
 | `pf=809`   | Serverless Load Balancer Total Fetch time to serverless of 809ms |
-| `wbt=723`  | Serverless billed time of 723ms |
+| `wbt=723`  | Serverless billed time of 723ms. This includes serverless workload time plus time spent capturing serverless logs. |
 | `wm=317`   | Serverless worker memory used 317mb |
 | `wt=722`   | Serverless workload time of 722ms |
 | `wc=19`    | Number of times this specific serverless instance has been invoked (19) |

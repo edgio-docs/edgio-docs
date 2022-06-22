@@ -6,17 +6,11 @@ This guide shows you how to deploy a [Svelte](https://svelte.dev/) application o
 
 ## Example {/*example*/}
 
-<ButtonLinksGroup>
-  <ButtonLink variant="fill" type="default" href="https://layer0-docs-layer0-svelte-example-default.layer0-limelight.link">
-   Try the Svelte example site
-  </ButtonLink>
-  <ButtonLink variant="stroke" type="code" withIcon={true} href="https://github.com/layer0-docs/layer0-svelte-example?button">
-   View the Code
-  </ButtonLink>
-  <ButtonLink variant="stroke" type="deploy" withIcon={true} href="https://app.layer0.co/deploy?button&deploy&repo=https://github.com/layer0-docs/layer0-svelte-example">
-    Deploy to Layer0
-  </ButtonLink>
-</ButtonLinksGroup>
+<ExampleButtons
+  title="Svelte"
+  siteUrl="https://layer0-docs-layer0-svelte-example-default.layer0-limelight.link"
+  repoUrl="https://github.com/layer0-docs/layer0-svelte-example" 
+  deployFromRepo />
 
 {{ SIGN_UP_LAYER0 }}
 

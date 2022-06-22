@@ -103,7 +103,10 @@ export interface IRoute {
   external?: boolean;
   parentIndex?: number;
   childIndex?: number;
-  separator?: boolean;
+  /**
+   * `true` to automatically determine the separator position based on the item hierarchy
+   */
+  separator?: boolean | 'top' | 'bottom';
 }
 
 export interface ISidebarMenuItem {

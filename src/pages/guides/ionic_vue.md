@@ -6,17 +6,11 @@ This guide shows you how to deploy a [Ionic Vue](https://ionicframework.com/docs
 
 ## Example {/*example*/}
 
-<ButtonLinksGroup>
-  <ButtonLink variant="fill" type="default" href="https://layer0-docs-layer0-ionic-vue-example-default.layer0-limelight.link">
-   Try the Ionic Vue Example Site
-  </ButtonLink>
-  <ButtonLink variant="stroke" type="code" withIcon={true} href="https://github.com/layer0-docs/layer0-ionic-vue-example">
-   View the Code
-  </ButtonLink>
-  <ButtonLink variant="stroke" type="deploy" withIcon={true} href="https://app.layer0.co/deploy?button&deploy&repo=https://github.com/layer0-docs/layer0-ionic-vue-example">
-    Deploy to Layer0
-  </ButtonLink>
-</ButtonLinksGroup>
+<ExampleButtons
+  title="Ionic Vue"
+  siteUrl="https://layer0-docs-layer0-ionic-vue-example-default.layer0-limelight.link"
+  repoUrl="https://github.com/layer0-docs/layer0-ionic-vue-example" 
+  deployFromRepo />
 
 {{ SYSTEM_REQUIREMENTS }}
 

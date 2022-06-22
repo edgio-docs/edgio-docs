@@ -6,17 +6,11 @@ This guide shows you how to deploy an [Angular](https://angular.io) application 
 
 ## Example {/*example*/}
 
-<ButtonLinksGroup>
-  <ButtonLink variant="fill" type="default" href="https://layer0-docs-layer0-angular-example-default.layer0-limelight.link/category/hats">
-    Try the Angular SSR Example Site
-  </ButtonLink>
-  <ButtonLink variant="stroke" type="code" withIcon={true} href="https://github.com/layer0-docs/layer0-angular-example">
-   View the Code
-  </ButtonLink>
-  <ButtonLink variant="stroke" type="deploy" withIcon={true} href="https://app.layer0.co/deploy?button&deploy&repo=https%3A%2F%2Fgithub.com%2Flayer0-docs%2Flayer0-angular-example">
-    Deploy to Layer0
-  </ButtonLink>
-</ButtonLinksGroup>
+<ExampleButtons
+  title="Angular SSR"
+  siteUrl="https://layer0-docs-layer0-angular-example-default.layer0-limelight.link/category/hats"
+  repoUrl="https://github.com/layer0-docs/layer0-angular-example" 
+  deployFromRepo />
 
 ## Connector {/*connector*/}
 

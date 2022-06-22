@@ -159,12 +159,18 @@ const StyledDocs = styled.div`
 
     thead th {
       font-weight: 600;
+      color:#fff;      
+      background-color: var(--table-hdr-bg-color);
+    }
+
+    tr {
+      &:nth-of-type(even) {
+        background: var(--table-striped-row-bg-color); 
     }
 
     th,
     td {
       padding: 16px;
-      border: 2px solid #363636;
       text-align: left;
       vertical-align: top;
     }

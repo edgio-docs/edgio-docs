@@ -48,19 +48,19 @@ Component names within the header are abbreviated:
 | p   | Serverless Load Balancer         |
 | w   | Lambda workers                   |
 
-
 #### Telemetry Types {/*telemetry-types*/}
 | Type | Description |
 | ------------ | -------------- |
 | t | Total time (example: `eht`) total time as measured by edge HAProxy) |
 | f | Fetch time (example: `gdf`) total fetch time time as measured by global DPS) |
 | c | Cache status (example: `ecc=miss,...,gcc=hit`) miss on the edge pop, hit on the global pop |
+| bt | Billed time (example: `wbt`) serverless billed time as measured by serverless load balancer) |
 
 ### Examples {/*examples*/}
 The examples below use a response that traversed from the edge, to global and to serverless:
 ##### _{{ HEADER_PREFIX }}-t_ {/*-header_prefix--t*/}
-<!-- `{{ HEADER_PREFIX }}-t: eh=1160,ect=1158,ecc=miss,edt=1152,edd=0,edf=1152,gh=869,gct=866,gcc=miss,gdt=853,gdd=0,gdf=853,pt=811,pc=1,pf=809,wm=317,wt=722,wc=19,wg=746940,wl=30896,wr=1,wp=705,wa=1,wz=1` -->
-`eh=1160,ect=1158,ecc=miss,edt=1152,edd=0,edf=1152,gh=869,gct=866,gcc=miss,gdt=853,gdd=0,gdf=853,pt=811,pc=1,pf=809,wm=317,wt=722,wc=19,wg=746940,wl=30896,wr=1,wp=705,wa=1,wz=1`
+<!-- `{{ HEADER_PREFIX }}-t: eh=1160,ect=1158,ecc=miss,edt=1152,edd=0,edf=1152,gh=869,gct=866,gcc=miss,gdt=853,gdd=0,gdf=853,pt=811,pc=1,pf=809,wbt=723,wm=317,wt=722,wc=19,wg=746940,wl=30896,wr=1,wp=705,wa=1,wz=1` -->
+`eh=1160,ect=1158,ecc=miss,edt=1152,edd=0,edf=1152,gh=869,gct=866,gcc=miss,gdt=853,gdd=0,gdf=853,pt=811,pc=1,pf=809,wbt=723,wm=317,wt=722,wc=19,wg=746940,wl=30896,wr=1,wp=705,wa=1,wz=1`
 
 Below is a translation of each value in this example:
 
@@ -81,8 +81,9 @@ Below is a translation of each value in this example:
 | `pt=811`   | Serverless Load Balancer Total time of 811ms |
 | `pc=1`     | Serverless Load Balancer total request count. if > 1 it implies scaling where we had to queue and retry this request |
 | `pf=809`   | Serverless Load Balancer Total Fetch time to serverless of 809ms |
+| `wbt=723`  | Serverless billed time of 723ms |
 | `wm=317`   | Serverless worker memory used 317mb |
-| `wt=722`   | Serverless total time of 722ms |
+| `wt=722`   | Serverless workload time of 722ms |
 | `wc=19`    | Number of times this specific serverless instance has been invoked (19) |
 | `wg=746940`| Age of this serverless instance of 749s |
 | `wl=30896` | Sum of worker times across all requests of 30.8s |

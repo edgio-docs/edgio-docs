@@ -5,8 +5,12 @@ const GlobalStyle = createGlobalStyle`
   /* New */
   --colors-black0: #000000;
   --colors-black1: #353535;
+  --colors-black2: #2c2c30;
+  --colors-black3: #58585f;
   --colors-gray0: #1A1A1A;
   --colors-gray1: #EEEEEE;;
+  --colors-gray2: #f6f9fc;
+  --colors-gray3: #dce6e9;
   --colors-green0: #01B18D;
   --colors-pink0: #E95495;
   --colors-purple0: #812991;
@@ -21,6 +25,8 @@ const GlobalStyle = createGlobalStyle`
   --sidebar-bg-color: #ffffff;
   --sidebar-href-color: #353535;
   --header-bg-color: #ffffff;
+  --table-hdr-bg-color: var(--colors-green0);
+  --table-striped-row-bg-color: var(--colors-gray1);
   /* End new */
 
   /* Colors */
@@ -69,6 +75,8 @@ const GlobalStyle = createGlobalStyle`
   --homepage-link-color: #606060;
   --header-bgColor: #ffffff;
   --scrollbar-bg: #C4C4C4;
+  --code-bgColor: var(--colors-gray2);
+  --code-borderColor:var(--colors-gray3);
   // #endregion
 }
 
@@ -80,7 +88,10 @@ const GlobalStyle = createGlobalStyle`
   --sidebar-bg-color: #353535;
   --sidebar-href-color: #ffffff;
   --header-bg-color: #353535;
-
+  --table-hdr-bg-color: #606060;
+  --table-striped-row-bg-color: #303030;
+  --code-bgColor: var(--colors-black2);
+  --code-borderColor:var(--colors-black3);
   /* End new */
 }
 

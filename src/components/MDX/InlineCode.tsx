@@ -6,18 +6,18 @@ interface InlineCodeProps {
 }
 
 const StyledCodeWrap = styled.code`
-  font-size: 14px;
-  line-height: 1.5;
-  font-weight: 400;
+  font-size: 15px;
+  line-height: 25px;
+  font-weight: 500;
   text-decoration: none;
   padding: 0 4px;
   border-radius: 4px;
-  background: var(--inline-code-bg);
-  border: 1px solid #d2d5d8;
+  background: var(--code-bgColor);
+  border: 1px solid var(--code-borderColor);
   font-variant-ligatures: none;
   margin: 0;
   text-align: left;
-  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
 
   &.link {
     color: #2993e0;

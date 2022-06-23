@@ -9,6 +9,8 @@ import {ThemeProvider} from 'styled-components';
 
 import GlobalStyles from '../styles/GlobalStyles';
 
+import useHydrationIsLoaded from 'utils/hooks/useHydrationIsLoaded';
+
 // import {VersionProvider} from 'components/versioning';
 
 new Metrics({token: 'cdc8d6df-476b-4e2d-ae1a-f8c6893a39a8'}).collect();
@@ -28,6 +30,12 @@ const theme = {
 const EmptyAppShell: React.FC = ({children}) => <>{children}</>;
 
 export default function MyApp({Component, pageProps}: AppProps) {
+  const isLoaded = useHydrationIsLoaded();
+
+  if (!isLoaded) {
+    return null;
+  }
+
   let AppShell = (Component as any).appShell || EmptyAppShell;
 
   // In order to make sidebar scrolling between pages work as expected

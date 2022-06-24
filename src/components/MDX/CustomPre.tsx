@@ -73,7 +73,7 @@ export default function CustomPre({children}: {children: React.ReactNode}) {
 
   return (
     <StyledCustomPre>
-      <div className="code-block line-numbers">
+      <div className="code-block">
         <div className="code-block__inner">
           {language !== unknownLanguageString ? (
             <header className="code-block__header">

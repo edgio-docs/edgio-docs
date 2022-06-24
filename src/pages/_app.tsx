@@ -32,9 +32,9 @@ const EmptyAppShell: React.FC = ({children}) => <>{children}</>;
 export default function MyApp({Component, pageProps}: AppProps) {
   const isLoaded = useHydrationIsLoaded();
 
-  if (!isLoaded) {
-    return null;
-  }
+  // if (!isLoaded) {
+  //   return null;
+  // }
 
   let AppShell = (Component as any).appShell || EmptyAppShell;
 

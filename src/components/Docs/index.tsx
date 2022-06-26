@@ -14,7 +14,6 @@ const StyledDocs = styled.div`
   display: grid;
   grid-template-columns: 75% 1fr;
   min-height: calc(100vh - 64px);
-  color: var(--docs-color);
 
   .docs-article__section {
     padding: 0 20px 20px 20px;
@@ -22,7 +21,6 @@ const StyledDocs = styled.div`
 
   .docs-article__header {
     padding-top: 32px;
-    color: var(--docs-color);
   }
 
   .docs-article__body {
@@ -38,7 +36,7 @@ const StyledDocs = styled.div`
       position: relative;
 
       .anchor {
-        color: var(--docs-color);
+        color: var(--text-primary);
         text-decoration: none;
 
         span {
@@ -71,7 +69,8 @@ const StyledDocs = styled.div`
       }
     }
 
-    .text-code {
+    /* Important: remove */
+    /* .text-code {
       padding: 0 4px;
       border-radius: 4px;
       background: var(--text-code-bg);
@@ -81,7 +80,7 @@ const StyledDocs = styled.div`
       margin: 0;
       overflow-x: auto;
       text-align: left;
-    }
+    } */
 
     .text-link {
       color: #2993e0;
@@ -157,16 +156,22 @@ const StyledDocs = styled.div`
     border-collapse: collapse;
     overflow-x: auto;
     display: block;
+    border: 2px solid #363636;
+    border-radius: 8px;
+    background: #242424;
+
+    thead {
+      box-shadow: rgb(71, 71, 71) 0px -2px inset;
+    }
 
     thead th {
       font-weight: 600;
       color: #fff;
-      background-color: var(--table-hdr-bg-color);
     }
 
     tr {
-      &:nth-of-type(even) {
-        background: var(--table-striped-row-bg-color);
+      :not(:last-child) {
+        box-shadow: rgb(71, 71, 71) 0px -2px inset;
       }
 
       th,

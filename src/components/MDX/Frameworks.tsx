@@ -29,7 +29,7 @@ const StyledFrameworks = styled.div`
       display: flex;
       align-items: center;
       gap: 10px;
-      border: 1px solid var(--hr-grey1);
+      border: 1px solid var(--hr-secondary);
       padding: 8px;
       border-radius: 4px;
       text-decoration: none;
@@ -49,10 +49,10 @@ export default function Frameworks() {
           <li key={route.path} className="framework-list__item">
             <Link href={route.path} passHref>
               <a className="framework-link">
-                <div className="icon" id="dark-theme-switcher">
+                <div className="icon" id="dark-theme">
                   {route.icon ? route.icon : null}
                 </div>
-                <div className="icon" id="light-theme-switcher">
+                <div className="icon" id="light-theme">
                   {route.iconDark ? route.iconDark : null}
                 </div>
                 <span className="link-text">{route.title}</span>

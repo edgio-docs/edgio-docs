@@ -33,7 +33,7 @@ const StyledSectionheader = styled.header`
       width: var(--size);
       height: var(--size);
       position: relative;
-      background-color: var(--homepage-section-header-bgColor);
+      background-color: var(--colors-gray1);
       display: flex;
       justify-content: center;
       align-items: center;
@@ -55,13 +55,13 @@ const StyledSectionheader = styled.header`
     font-weight: 600;
     font-size: 24px;
     line-height: 28px;
-    color: var(--homepage-section-title-color);
+    color: var(--title-primary);
   }
 
   .section-header__subtitle {
     font-size: 20px;
     line-height: 28px;
-    color: var(--homepage-section-subtitle-color);
+    color: var(--subtitle-primary);
   }
 `;
 

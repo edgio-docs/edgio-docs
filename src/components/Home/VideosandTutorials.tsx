@@ -13,7 +13,7 @@ const StyledComp = styled.div`
   }
 
   .video-category {
-    box-shadow: inset 0px -1px var(--hr-grey1);
+    box-shadow: inset 0px -1px var(--hr-secondary);
     padding-bottom: 54px;
 
     .video-category__title {
@@ -44,7 +44,7 @@ const StyledComp = styled.div`
     row-gap: 14px;
 
     > .mdx-embed {
-      background-color: var(--sidebar-bg-color);
+      background-color: var(--bg-secondary);
     }
 
     .title {

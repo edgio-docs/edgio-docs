@@ -205,9 +205,6 @@ export default function FrameworkGuides() {
       },
     },
   ];
-
-  // const parentPath = 'framework-guides';
-
   const routes = [routesCol1, routesCol2, routesCol3];
 
   return (
@@ -226,11 +223,11 @@ export default function FrameworkGuides() {
                 <li className="route-list__item" key={title}>
                   {icon ? (
                     <>
-                      <div id="dark-theme-switcher" className="icon">
-                        {icon.light}
-                      </div>
-                      <div id="light-theme-switcher" className="icon">
+                      <div id="dark-theme" className="icon">
                         {icon.dark}
+                      </div>
+                      <div id="light-theme" className="icon">
+                        {icon.light}
                       </div>
                     </>
                   ) : (

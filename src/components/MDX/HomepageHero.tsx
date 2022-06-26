@@ -65,9 +65,9 @@ function HomepageHero() {
     <StyledHomepageHero>
       <Container>
         <div className="copy">
-          <div id="dark-theme-switcher">
+          <div id="dark-theme">
             <Image
-              src={LayerEdgioDark}
+              src={LayerEdgioLight}
               width="292"
               height="168"
               alt="Edgio"
@@ -75,9 +75,9 @@ function HomepageHero() {
               priority
             />
           </div>
-          <div id="light-theme-switcher">
+          <div id="light-theme">
             <Image
-              src={LayerEdgioLight}
+              src={LayerEdgioDark}
               width="292"
               height="168"
               alt="Edgio"

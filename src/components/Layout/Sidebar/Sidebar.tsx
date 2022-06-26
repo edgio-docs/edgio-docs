@@ -17,7 +17,7 @@ const StlyedSidebar = styled.div`
   font-size: 14px;
   font-weight: 500;
   height: 100%;
-  color: var(--sidebar-href-color);
+  color: var(--text-primary);
 
   .nav-container {
     display: flex;
@@ -29,7 +29,7 @@ const StlyedSidebar = styled.div`
   .hr-separator {
     height: 1px;
     width: calc(100% - 40px);
-    background: var(--sidenav-hr-color);
+    background: var(--hr-primary);
     transform: translateX(20px);
   }
 
@@ -56,11 +56,11 @@ const StlyedSidebar = styled.div`
     column-gap: 10px;
     text-decoration: none;
     padding: 5px 20px;
-    color: var(--sidebar-href-color);
+    color: var(--text-primary);
     text-decoration: none;
 
     :hover {
-      background-color: var(--grey2);
+      background-color: var(--href-hover-primary);
     }
   }
 
@@ -117,13 +117,13 @@ const StlyedSidebar = styled.div`
       text-decoration: none;
 
       :hover {
-        background-color: var(--grey2);
+        background-color: var(--href-hover-primary);
       }
     }
 
     .route-separator {
       min-height: 1px;
-      background: var(--sidenav-hr-color);
+      background: var(--hr-primary);
       display: flex;
       flex: 1;
       margin: 2px 0 2px 0;
@@ -160,10 +160,10 @@ function ChildrenRoutes({
                 {route.title}
 
                 <>
-                  <div className="icon-box" id="light-theme-switcher">
+                  <div className="icon-box" id="light-theme">
                     <IconOutsideLinkDark />
                   </div>
-                  <div className="icon-box" id="dark-theme-switcher">
+                  <div className="icon-box" id="dark-theme">
                     <IconOutsideLink />
                   </div>
                 </>
@@ -192,11 +192,11 @@ function MenuItemIcon({
 }) {
   return (
     <>
-      <div className="icon-box" id="dark-theme-switcher">
-        {icon}
-      </div>
-      <div className="icon-box" id="light-theme-switcher">
+      <div className="icon-box" id="dark-theme">
         {iconDark}
+      </div>
+      <div className="icon-box" id="light-theme">
+        {icon}
       </div>
     </>
   );
@@ -221,11 +221,11 @@ function MenuChevron({hasChildren}: {hasChildren: boolean}) {
 function MenuExternalHrefIcon() {
   return (
     <>
-      <div className="icon-box" id="light-theme-switcher">
-        <IconOutsideLinkDark />
-      </div>
-      <div className="icon-box" id="dark-theme-switcher">
+      <div className="icon-box" id="light-theme">
         <IconOutsideLink />
+      </div>
+      <div className="icon-box" id="dark-theme">
+        <IconOutsideLinkDark />
       </div>
     </>
   );

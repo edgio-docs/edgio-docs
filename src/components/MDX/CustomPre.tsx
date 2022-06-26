@@ -10,12 +10,10 @@ export const StyledCustomPre = styled.div`
   border: 2px solid #363636;
   border-radius: 8px;
   overflow: hidden;
-  margin-bottom: 7px;
 
   .code-block__inner {
     display: flex;
     flex-direction: column;
-    border-color: #356369;
     background: #242424;
   }
 
@@ -25,7 +23,7 @@ export const StyledCustomPre = styled.div`
     border-top-left-radius: 4px;
     padding: 6px 6px 6px 8px;
     font-size: 14px;
-    color: white;
+    color: var(--text-primary);
     display: flex;
     justify-content: space-between;
 
@@ -103,13 +101,13 @@ export default function CustomPre({children}: {children: React.ReactNode}) {
 }
 
 const StyledCopyCodeButton = styled.button`
-  color: var(--white);
+  color: var(--button-primary);
   background-color: #363636;
   font-weight: 600;
   border-radius: 4px;
   font-size: 14px;
   line-height: 19px;
-  border: 1px solid #1a1a1a;
+  border: 1px solid var(--bg-primary);
   cursor: pointer;
   padding: 4px 8px;
   transition: scale 0.2s ease-in-out;

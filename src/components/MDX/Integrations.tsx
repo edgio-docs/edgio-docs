@@ -22,7 +22,7 @@ const StyledIntegrations = styled.div`
     align-items: center;
     padding: 8px;
 
-    border: 1px solid var(--hr-grey1);
+    border: 1px solid var(--hr-secondary);
     border-radius: 8px;
 
     svg {
@@ -37,7 +37,7 @@ const StyledIntegrations = styled.div`
       grid-template-columns: auto 1fr;
       align-items: flex-start;
       gap: 10px;
-      border: 2px solid var(--hr-grey1);
+      border: 2px solid var(--hr-secondary);
       padding: 8px;
       border-radius: 4px;
       text-decoration: none;
@@ -103,10 +103,10 @@ export default function Integrations() {
           <li key={route.path} className="integration-list__item">
             <Link href={route.path} passHref>
               <a className="integration-link">
-                <div className="icon" id="dark-theme-switcher">
+                <div className="icon" id="dark-theme">
                   {route.icon ? route.icon : null}
                 </div>
-                <div className="icon" id="light-theme-switcher">
+                <div className="icon" id="light-theme">
                   {route.iconDark ? route.iconDark : null}
                 </div>
                 <div>

@@ -38,7 +38,11 @@ const BR = (p: JSX.IntrinsicElements['br']) => (
 
 const Divider = () => (
   <hr
-    style={{height: '1px', backgroundColor: 'var(--hr-grey1)', border: 'none'}}
+    style={{
+      height: '1px',
+      backgroundColor: 'var(--hr-secondary)',
+      border: 'none',
+    }}
   />
 );
 

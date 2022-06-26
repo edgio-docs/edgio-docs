@@ -29,9 +29,9 @@ const StyledMainPage = styled.div`
       overflow: auto;
       user-select: none;
       padding: calc(var(--header-height) / 2) 0;
-      box-shadow: inset -1px 0px var(--hr-grey1);
+      box-shadow: inset -1px 0px var(--hr-secondary);
       z-index: 2;
-      background-color: var(--sidebar-bg-color);
+      background-color: var(--bg-secondary);
 
       &[data-open='true'] {
         position: fixed;
@@ -49,7 +49,6 @@ const StyledMainPage = styled.div`
       display: flex;
       flex-direction: column;
       flex: 1 1;
-      background-color: var(--docs-content-bg);
 
       .LayoutHome {
         max-width: 1000px;

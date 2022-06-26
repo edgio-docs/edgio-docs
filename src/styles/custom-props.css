@@ -1,0 +1,92 @@
+:root {
+	--colors-black0: #000000;
+	--colors-black1: #353535;
+	--colors-black2: #2c2c30;
+	--colors-black3: #58585f;
+	--colors-black4: #1A1A1A;
+	--colors-gray0: #1A1A1A;
+	--colors-gray1: #EEEEEE;
+	--colors-gray2: #f6f9fc;
+	--colors-gray3: #dce6e9;
+	--colors-green0: #01B18D;
+	--colors-pink0: #E95495;
+	--colors-purple0: #812991;
+	--colors-white0: #FFFFFF;
+	--colors-blue0: #00A2E2;
+	--scrollbar-size: 8px;
+	--sidebar-width: 280px;
+	--container-max-width: 1228px;
+	--container-padding: 0 20px;
+	--docs-area-width: 1228px;
+	--lg-primary: linear-gradient(89.92deg, #00BDA6 0%, #00A2E2 132.46%);
+	--text-link: var(--colors-blue0);
+}
+
+:root.light {
+	/* Light's on... */
+	--dark-theme-display: none;
+	--light-theme-display: flex;
+
+
+	/* Algolia */
+	--docsearch-searchbox--bg: #f6f6f6;
+	--docsearch-text-color: black;
+	--docsearch-searchbox-focus-background: #fff;
+	--docsearch-searchbox-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 0px,
+		rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px,
+		rgba(60, 66, 87, 0.16) 0px 0px 0px 2px, rgba(0, 0, 0, 0) 0px 0px 0px 0px,
+		rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px;
+	--docsearch-text-color: black;
+	--docsearch-modal-background: var(--docs-content-bg);
+	--docsearch-hit-background: #e7e7e7;
+	--docsearch-hit-color: #000000;
+}
+
+:root.dark {
+	--text-primary: var(--colors-white0);
+	--text-secondary: #cbcbcb;
+	--title-primary: var(--colors-white0);
+	--subtitle-primary: var(--colors-white0);
+	--toc-text-primary: var(--colors-white0);
+	--toc-text-link: var(--colors-white0);
+	--text-link-primary: var(--toc-text-link);
+	--hr-primary: #d8d8d8;
+	--hr-secondary: #2a2b2c;
+	--shadow-primary: #00000026;
+	--bg-primary: var(--colors-black4);
+	--bg-secondary: var(--colors-black1);
+	--href-hover-primary: #4e4e4e;
+	--button-primary: var(--colors-white0);
+	--code-bgColor: var(--colors-black2);
+	--code-borderColor: var(--colors-black3);
+	--docs-footer-bg: var(--colors-black0);
+	--docs-footer-color: var(--colors-white0);
+	--homepagehero-bg-image: url('/images/home/DarkHeroImg.svg'), #000000;
+	--scrollbar-bg: #353535;
+	--docs-content-bg: #1a1a1a;
+	--get-started-card-bg: #000000;
+	--get-started-card-sub-bg: #fff;
+
+	/* Light's off... */
+	--dark-theme-display: flex;
+	--light-theme-display: none;
+
+
+	/* Algolia */
+	--docsearch-searchbox--bg: #1a1a1a;
+	--docsearch-text-color: white;
+	--docsearch-searchbox-focus-background: #1a1a1a;
+	--docsearch-searchbox-shadow: rgb(116, 116, 116) 0px 0px 0px 0px,
+		rgb(112, 112, 112) 0px 0px 0px 0px, rgb(255, 255, 255) 0px 0px 0px,
+		rgb(80, 80, 80) 0px 0px 0px 2px, rgb(75, 75, 75) 0px 0px 0px 0px,
+		rgb(114, 114, 114) 0px 0px 0px 0px, rgb(136, 136, 136) 0px 0px 0px 0px;
+	--docsearch-searchbox-focus-background: #000;
+	--docsearch-modal-background: var(--docs-content-bg);
+	--docsearch-hit-background: #262626;
+	--docsearch-hit-color: #cbcbcb;
+}
+
+body {
+	color: var(--text-primary);
+	background-color: var(--bg-primary);
+}

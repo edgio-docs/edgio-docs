@@ -1,3 +1,4 @@
+import {useEffect} from 'react';
 import styled from 'styled-components';
 
 import {Toc} from '../Layout/Toc';
@@ -159,20 +160,21 @@ const StyledDocs = styled.div`
 
     thead th {
       font-weight: 600;
-      color:#fff;      
+      color: #fff;
       background-color: var(--table-hdr-bg-color);
     }
 
     tr {
       &:nth-of-type(even) {
-        background: var(--table-striped-row-bg-color); 
-    }
+        background: var(--table-striped-row-bg-color);
+      }
 
-    th,
-    td {
-      padding: 16px;
-      text-align: left;
-      vertical-align: top;
+      th,
+      td {
+        padding: 16px;
+        text-align: left;
+        vertical-align: top;
+      }
     }
   }
 

@@ -1,26 +1,26 @@
 html,
 body {
-	font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
-		'Helvetica Neue', 'Ubuntu';
+  font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
+    'Helvetica Neue', 'Ubuntu';
 }
 
 *,
 *::before,
 *::after {
-	box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 * {
-	margin: 0;
+  margin: 0;
 }
 
 html,
 body {
-	height: 100%;
+  height: 100%;
 }
 
 body {
-	line-height: 1.5;
+  line-height: 1.5;
 }
 
 img,
@@ -28,15 +28,15 @@ picture,
 video,
 canvas,
 svg {
-	display: block;
-	max-width: 100%;
+  display: block;
+  max-width: 100%;
 }
 
 input,
 button,
 textarea,
 select {
-	font: inherit;
+  font: inherit;
 }
 
 p,
@@ -46,22 +46,22 @@ h3,
 h4,
 h5,
 h6 {
-	overflow-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 #root,
 #__next {
-	isolation: isolate;
+  isolation: isolate;
 }
 
 #dark-theme {
-	display: var(--dark-theme-display) !important;
+  display: var(--dark-theme-display) !important;
 }
 
 #light-theme {
-	display: var(--light-theme-display) !important;
+  display: var(--light-theme-display) !important;
 }
 
 .transform-rotate-180 {
-	transform: rotate(180deg);
+  transform: rotate(180deg);
 }

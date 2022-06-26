@@ -128,7 +128,7 @@
     "showDetails": true
   },
   "lint-staged": {
-    "*.{js,ts,jsx,tsx,css}": [
+    "*.{js,ts,jsx,tsx}": [
       "eslint --fix --cache --cache-location .next/cache/eslint/",
       "yarn prettier"
     ],

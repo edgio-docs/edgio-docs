@@ -1,10 +1,9 @@
+import cn from 'classnames';
 import React, {useEffect} from 'react';
 import {CopyToClipboard} from 'react-copy-to-clipboard';
 import styled from 'styled-components';
 
 import getDescriptiveLanguage from '../getLanguage';
-
-import CodeBlock from './CodeBlock';
 
 export const StyledCustomPre = styled.div`
   border: 2px solid #363636;
@@ -49,50 +48,37 @@ export const StyledCustomPre = styled.div`
   }
 `;
 
-export default function CustomPre({children}: {children: React.ReactNode}) {
-  let message: string = '';
-  const unknownLanguageString = 'language-unknown';
-  let language: string = unknownLanguageString;
-  let filename: string | undefined;
-
-  if (typeof children === 'string') {
-    message = children;
-  } else if (
-    React.isValidElement(children) &&
-    typeof children.props.children === 'string'
-  ) {
-    message = children.props.children;
-    language = children.props.className || unknownLanguageString;
-    filename = children.props.filename;
-  }
-
-  // MDX Metadata...https://mdxjs.com/guides/syntax-highlighting/#syntax-highlighting-with-the-meta-field
-  const replacedFilename = filename ? filename.replace(/"/g, '') : '';
+export default function CustomPre({className, ...props}: {className: string}) {
+  const languageString = className;
 
   return (
     <StyledCustomPre>
       <div className="code-block">
         <div className="code-block__inner">
-          {language !== unknownLanguageString ? (
+          {languageString !== 'language-unknown' ? (
             <header className="code-block__header">
               <div className="header-start">
                 <span className="code-block__header-text">
-                  {getDescriptiveLanguage(language)}
+                  {getDescriptiveLanguage(languageString)}
                 </span>
-                {replacedFilename && (
+                {/* {replacedFilename && (
                   <span className="code-block__filename">
                     {replacedFilename}
                   </span>
-                )}
+                )} */}
               </div>
-              <div className="header-end">
-                <CopyCode {...{message}} />
-              </div>
+              {/* <div className="header-end">
+                <CopyCode {...{ message  }} />
+              </div> */}
             </header>
           ) : null}
 
           <main className="code-block__content">
-            <CodeBlock language={language}>{message}</CodeBlock>
+            <pre
+              {...{
+                className: cn('custom-scrollbar', languageString),
+                ...props,
+              }}></pre>
           </main>
         </div>
       </div>

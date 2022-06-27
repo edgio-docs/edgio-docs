@@ -7,6 +7,7 @@ const unrwapImages = require('remark-unwrap-images'); // Removes <p> wrapper aro
 const smartyPants = require('./remark-smartypants'); // Cleans up typography
 const html = require('remark-html');
 const remarkMdxCodeMeta = require('remark-mdx-code-meta');
+const remarkPrism = require('remark-prism');
 // const {
 //   remarkExtendedTable,
 //   extendedTableHandlers,
@@ -21,6 +22,7 @@ module.exports = {
     unrwapImages,
     smartyPants,
     remarkMdxCodeMeta,
+    remarkPrism,
     // embed
   ],
   markdownToHtml,
@@ -34,6 +36,7 @@ async function markdownToHtml(markdown) {
     .use(unrwapImages)
     .use(smartyPants)
     .use(remarkMdxCodeMeta)
+    .use(remarkPrism, {plugins: ['line-numbers']})
     .use(html)
     // .use(embed)
     .process(markdown);

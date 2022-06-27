@@ -1,0 +1,23 @@
+{
+	"presets": [
+		"next/babel"
+	],
+	"plugins": [
+		[
+			"styled-components",
+			{
+				"ssr": true
+			}
+		],
+		[
+			"prismjs",
+			{
+				"languages": "all",
+				"plugins": [
+					"line-numbers"
+				],
+				"css": true
+			}
+		]
+	]
+}

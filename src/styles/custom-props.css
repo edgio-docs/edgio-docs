@@ -110,6 +110,10 @@
   --docsearch-hit-color: #cbcbcb;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   color: var(--text-primary);
   background-color: var(--bg-primary);

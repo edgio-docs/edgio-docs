@@ -9,9 +9,6 @@ const {remarkPlugins} = require('./plugins/markdownToHtml');
 
 const _preLayer0Export = {
   pageExtensions: ['jsx', 'js', 'ts', 'tsx', 'mdx', 'md'],
-  compiler: {
-    styledComponents: true,
-  },
   experimental: {
     plugins: true,
     scrollRestoration: true,

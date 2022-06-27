@@ -49,10 +49,10 @@ export default function Frameworks() {
           <li key={route.path} className="framework-list__item">
             <Link href={route.path} passHref>
               <a className="framework-link">
-                <div className="icon" id="dark-theme">
+                <div className="icon" id="light-theme">
                   {route.icon ? route.icon : null}
                 </div>
-                <div className="icon" id="light-theme">
+                <div className="icon" id="dark-theme">
                   {route.iconDark ? route.iconDark : null}
                 </div>
                 <span className="link-text">{route.title}</span>

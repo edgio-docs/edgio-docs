@@ -19,6 +19,10 @@ const StyledDocs = styled.div`
     padding: 0 20px 20px 20px;
   }
 
+  .docs-article {
+    color: var(--docs-text-primary);
+  }
+
   .docs-article__header {
     padding-top: 32px;
   }
@@ -36,7 +40,7 @@ const StyledDocs = styled.div`
       position: relative;
 
       .anchor {
-        color: var(--text-primary);
+        color: var(--docs-text-primary);
         text-decoration: none;
 
         span {
@@ -69,19 +73,6 @@ const StyledDocs = styled.div`
       }
     }
 
-    /* Important: remove */
-    /* .text-code {
-      padding: 0 4px;
-      border-radius: 4px;
-      background: var(--text-code-bg);
-      border: 1px solid #d2d5d8;
-      overflow-wrap: break-word;
-      font-variant-ligatures: none;
-      margin: 0;
-      overflow-x: auto;
-      text-align: left;
-    } */
-
     .text-link {
       color: #2993e0;
       text-decoration: none;
@@ -100,7 +91,7 @@ const StyledDocs = styled.div`
         transition: width 0.2s ease-in-out;
       }
 
-      &:hover ::after {
+      &:hover::after {
         width: 100%;
       }
     }

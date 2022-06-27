@@ -103,10 +103,10 @@ export default function Integrations() {
           <li key={route.path} className="integration-list__item">
             <Link href={route.path} passHref>
               <a className="integration-link">
-                <div className="icon" id="dark-theme">
+                <div className="icon" id="light-theme">
                   {route.icon ? route.icon : null}
                 </div>
-                <div className="icon" id="light-theme">
+                <div className="icon" id="dark-theme">
                   {route.iconDark ? route.iconDark : null}
                 </div>
                 <div>

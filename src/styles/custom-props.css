@@ -20,30 +20,58 @@
   --docs-area-width: 1228px;
   --lg-primary: linear-gradient(89.92deg, #00bda6 0%, #00a2e2 132.46%);
   --text-link: var(--colors-blue0);
+  --shadow-primary: #00000026;
+  --docsearch-searchbox-height: 36px;
+  --docsearch-spacing: 6px;
 }
 
 :root.light {
+  --text-primary: var(--colors-black0);
+  --text-secondary: #707070;
+  --docs-text-primary: #353535;
+  --title-primary: #1a1a1a;
+  --subtitle-primary: #707070;
+  --toc-text-primary: #606060;
+  --toc-text-link: #606060;
+  --text-link-primary: var(--toc-text-link);
+  --hr-primary: #d8d8d8;
+  --hr-secondary: #e3e8ee;
+  --bg-primary: var(--colors-white0);
+  --bg-secondary: var(--colors-white0);
+  --href-hover-primary: #e5e5e5;
+  --copy-code-primary: var(--colors-white0);
+  --code-bgColor: #f6f9fc;
+  --code-borderColor: #dce6e9;
+  --docs-footer-bg: #f6f6f6;
+  --docs-footer-color: var(--colors-black0);
+  --homepagehero-bg-image: url('/images/home/LightHeroImg.svg'),
+    linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, #fafdff 97.42%);
+  --scrollbar-bg: #353535;
+  --get-started-card-bg: #fff;
+  --sidebar-link-primary: #353535;
+
   /* Light's on... */
   --dark-theme-display: none;
   --light-theme-display: flex;
 
   /* Algolia */
   --docsearch-searchbox--bg: #f6f6f6;
-  --docsearch-text-color: black;
-  --docsearch-searchbox-focus-background: #fff;
+  --docsearch-text-color: var(--colors-black0);
+  --docsearch-searchbox-focus-background: var(--colors-white0);
   --docsearch-searchbox-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 0px,
     rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px,
     rgba(60, 66, 87, 0.16) 0px 0px 0px 2px, rgba(0, 0, 0, 0) 0px 0px 0px 0px,
     rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px;
-  --docsearch-text-color: black;
-  --docsearch-modal-background: var(--docs-content-bg);
+  --docsearch-text-color: var(--colors-black0);
+  --docsearch-modal-background: var(--bg-primary);
   --docsearch-hit-background: #e7e7e7;
-  --docsearch-hit-color: #000000;
+  --docsearch-hit-color: var(--colors-black0);
 }
 
 :root.dark {
   --text-primary: var(--colors-white0);
   --text-secondary: #cbcbcb;
+  --docs-text-primary: var(--colors-white0);
   --title-primary: var(--colors-white0);
   --subtitle-primary: var(--colors-white0);
   --toc-text-primary: var(--colors-white0);
@@ -51,20 +79,18 @@
   --text-link-primary: var(--toc-text-link);
   --hr-primary: #d8d8d8;
   --hr-secondary: #2a2b2c;
-  --shadow-primary: #00000026;
   --bg-primary: var(--colors-black4);
   --bg-secondary: var(--colors-black1);
   --href-hover-primary: #4e4e4e;
-  --button-primary: var(--colors-white0);
+  --copy-code-primary: var(--colors-white0);
   --code-bgColor: var(--colors-black2);
   --code-borderColor: var(--colors-black3);
   --docs-footer-bg: var(--colors-black0);
   --docs-footer-color: var(--colors-white0);
   --homepagehero-bg-image: url('/images/home/DarkHeroImg.svg'), #000000;
   --scrollbar-bg: #353535;
-  --docs-content-bg: #1a1a1a;
   --get-started-card-bg: #000000;
-  --get-started-card-sub-bg: #fff;
+  --sidebar-link-primary: var(--colors-white0);
 
   /* Light's off... */
   --dark-theme-display: flex;
@@ -79,7 +105,7 @@
     rgb(80, 80, 80) 0px 0px 0px 2px, rgb(75, 75, 75) 0px 0px 0px 0px,
     rgb(114, 114, 114) 0px 0px 0px 0px, rgb(136, 136, 136) 0px 0px 0px 0px;
   --docsearch-searchbox-focus-background: #000;
-  --docsearch-modal-background: var(--docs-content-bg);
+  --docsearch-modal-background: var(--bg-primary);
   --docsearch-hit-background: #262626;
   --docsearch-hit-color: #cbcbcb;
 }

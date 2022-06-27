@@ -93,7 +93,7 @@
   width: 100%;
   z-index: 300;
   gap: 12px;
-  box-shadow: inset 0px 1px var(--hr-grey1);
+  box-shadow: inset 0px 1px var(--hr-secondary);
   padding: var(--docsearch-spacing);
 }
 
@@ -142,7 +142,7 @@
 }
 
 .DocSearch-Hit[aria-selected='true'] a {
-  background: var(--linear-gradient-green-to-blue);
+  background: var(--lg-primary);
 }
 
 .DocSearch-Hit a {
@@ -184,7 +184,7 @@
 }
 
 .DocSearch-Form {
-  height: 100%;
+  height: var(--docsearch-searchbox-height);
   padding: 6px;
 }
 

@@ -56,7 +56,7 @@ const StlyedSidebar = styled.div`
     column-gap: 10px;
     text-decoration: none;
     padding: 5px 20px;
-    color: var(--text-primary);
+    color: var(--sidebar-link-primary);
     text-decoration: none;
 
     :hover {

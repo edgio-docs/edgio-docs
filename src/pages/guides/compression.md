@@ -17,16 +17,39 @@ When requesting data via HTTP from the {{ PRODUCT_NAME }} servers, browsers incl
 
 To enable Brotli (`br`) compression you need to ensure your project uses a version of `{{ PACKAGE_NAME }}` >= `4.11.0`. To upgrade `{{ PACKAGE_NAME }}` to the latest version in your project use `{{ CLI_NAME }} use latest` and redeploy your project.
 
+### Gzip compression support
+
+Gzip is supported in the following ways:
+
+* Pass-through of upstream Gzip responses if the browser accepts Gzip.
+* Encoding of upstream non-encoded responses if the browsers accepts Gzip or Gzip and Brotli.
+
+### Brotli compression support
+
+Brotli is supported in the following ways:
+
+* Pass-through of upstream Brotli responses if the browser accepts Brotli.
+* Encoding of upstream non-encoded responses if the browsers *only* accepts Brotli.
 
 ## What is Compressed? {/*what-is-compressed*/}
 
 When {{ PRODUCT_NAME }} servers receive a request they inspect the `accept-encoding` header. The following logic is used to determine response compression:
 
 * If the response is not a [compressible type](#compressible-types), return uncompressed.
-* Else if `br` is found and the `{{ PACKAGE_NAME }}` version is >= `4.11.0` then compress the response using Brotli.
-* Else if `gzip` is found, then compress the response using gzip.
-* Else no compression is used.
-
+* Else if no compression is accepted, then request no accepted encoding upstream and pass-through uncompressed upstream response.
+* Else if Brotli is supported (`{{ PACKAGE_NAME }}` >= `4.11.0`) then:
+    * If `br` and `gzip` are both accepted, then request `br, gzip` upstream and then:
+        * If upstream returned uncompressed response, compress with `gzip`.
+        * Pass-through the upstream response in all other cases.
+    * Else if only `br` is accepted, then request `br` upstream and then:
+        * If upstream returned uncompressed response, compress with `br`.
+        * Pass-through the upstream `br` upstream response.
+    * Else (only `gzip` is accepted), then request `gzip` upstream and then:
+        * If upstream returned uncompressed response, compress with `gzip`.
+        * Pass-through the upstream `gzip` upstream response.
+* Else (only `gzip` is accepted, no Brotli support), then:
+    * If upstream returned uncompressed response, compress with `gzip`.
+    * Pass-through the upstream `gzip` upstream response.
 
 ## Compressible Types {/*compressible-types*/}
 

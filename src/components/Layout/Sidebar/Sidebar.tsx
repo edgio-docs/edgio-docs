@@ -160,10 +160,10 @@ function ChildrenRoutes({
                 {route.title}
 
                 <>
-                  <div className="icon-box" id="light-theme">
+                  <div className="icon-box" id="dark-theme">
                     <IconOutsideLinkDark />
                   </div>
-                  <div className="icon-box" id="dark-theme">
+                  <div className="icon-box" id="light-theme">
                     <IconOutsideLink />
                   </div>
                 </>

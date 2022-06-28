@@ -139,7 +139,7 @@ function getPrerenderRequests() {
   if (existsSync(buildIdPath)) {
     // Derive the API requests from the HTML page URLs
     const buildId = readFileSync(buildIdPath, 'utf8')
-    const apiPaths = prerenderRequests.map(path => ({ path: `/data/${buildId}${path}.json` }))
+    const apiPaths = prerenderRequests.map(path => ({ path: `/_next/data/${buildId}${path}.json` }))
     prerenderRequests.push(...apiPaths)
   }
 

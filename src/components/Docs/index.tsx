@@ -147,6 +147,7 @@ const StyledDocs = styled.div`
     border-collapse: collapse;
     overflow-x: auto;
     border: 2px solid var(--hr-secondary);
+    display: block;
 
     thead {
       box-shadow: rgb(71, 71, 71) 0px -2px inset;

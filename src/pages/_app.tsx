@@ -7,9 +7,12 @@ import NProgress from 'nprogress';
 import * as React from 'react';
 import {ThemeProvider} from 'styled-components';
 
-import GlobalStyles from '../styles/GlobalStyles';
-
-import useHydrationIsLoaded from 'utils/hooks/useHydrationIsLoaded';
+import '../styles/reset.css';
+import '../styles/custom-props.css';
+import '../styles/nprogress.css';
+import '../styles/scrollbar.css';
+import '../styles/prism.css';
+import '../styles/algolia.css';
 
 // import {VersionProvider} from 'components/versioning';
 
@@ -30,12 +33,6 @@ const theme = {
 const EmptyAppShell: React.FC = ({children}) => <>{children}</>;
 
 export default function MyApp({Component, pageProps}: AppProps) {
-  const isLoaded = useHydrationIsLoaded();
-
-  if (!isLoaded) {
-    return null;
-  }
-
   let AppShell = (Component as any).appShell || EmptyAppShell;
 
   // In order to make sidebar scrolling between pages work as expected
@@ -46,7 +43,6 @@ export default function MyApp({Component, pageProps}: AppProps) {
 
   return (
     <AppShell>
-      <GlobalStyles />
       {/* <VersionProvider> */}
       <ThemeProvider theme={theme}>
         <MDXEmbedProvider>

@@ -1,25 +1,23 @@
 import cs from 'classnames';
-import {AnimatePresence, motion} from 'framer-motion';
 import sortBy from 'lodash/sortBy';
 import Link from 'next/link';
 import {useRouter} from 'next/router';
-import {useState} from 'react';
+import React, {useEffect, useState} from 'react';
+import useCollapse from 'react-collapsed';
 import styled from 'styled-components';
 
 import SidebarMenuItems, {
-  ISidebarMenuItem,
   IRoute,
+  ISidebarMenuItem,
 } from '../../../data/SidebarMenuItems';
 import {IconChevron} from '../../Icon/IconChevron';
 import {IconOutsideLink, IconOutsideLinkDark} from '../../Icon/IconOutsideLink';
-
-import useHydrationIsLoaded from 'utils/hooks/useHydrationIsLoaded';
 
 const StlyedSidebar = styled.div`
   font-size: 14px;
   font-weight: 500;
   height: 100%;
-  color: var(--sidebar-href-color);
+  color: var(--text-primary);
 
   .nav-container {
     display: flex;
@@ -31,7 +29,7 @@ const StlyedSidebar = styled.div`
   .hr-separator {
     height: 1px;
     width: calc(100% - 40px);
-    background: var(--sidenav-hr-color);
+    background: var(--hr-primary);
     transform: translateX(20px);
   }
 
@@ -58,11 +56,11 @@ const StlyedSidebar = styled.div`
     column-gap: 10px;
     text-decoration: none;
     padding: 5px 20px;
-    color: var(--sidebar-href-color);
+    color: var(--sidebar-link-primary);
     text-decoration: none;
 
     :hover {
-      background-color: var(--grey2);
+      background-color: var(--href-hover-primary);
     }
   }
 
@@ -119,13 +117,13 @@ const StlyedSidebar = styled.div`
       text-decoration: none;
 
       :hover {
-        background-color: var(--grey2);
+        background-color: var(--href-hover-primary);
       }
     }
 
     .route-separator {
       min-height: 1px;
-      background: var(--sidenav-hr-color);
+      background: var(--hr-primary);
       display: flex;
       flex: 1;
       margin: 2px 0 2px 0;
@@ -145,16 +143,7 @@ function ChildrenRoutes({
   currentRoutePath: string;
 }) {
   return (
-    <motion.div
-      className="routes"
-      initial="collapsed"
-      animate="open"
-      exit="collapsed"
-      variants={{
-        open: {height: 'auto'},
-        collapsed: {height: 0},
-      }}
-      transition={{duration: 0.1}}>
+    <div className="routes">
       {routes.map((route, i) => {
         const separatorTop =
           route.separator === 'top' ||
@@ -171,10 +160,10 @@ function ChildrenRoutes({
                 {route.title}
 
                 <>
-                  <div className="icon-box" id="light-theme-switcher">
+                  <div className="icon-box" id="light-theme">
                     <IconOutsideLinkDark />
                   </div>
-                  <div className="icon-box" id="dark-theme-switcher">
+                  <div className="icon-box" id="dark-theme">
                     <IconOutsideLink />
                   </div>
                 </>
@@ -190,187 +179,216 @@ function ChildrenRoutes({
           </div>
         );
       })}
-    </motion.div>
+    </div>
   );
 }
 
-function ParentRoute({
-  menuItem,
-  isExternalRoute = false,
-  accordion,
-  setAccordion,
-  parentIndex,
+function MenuItemIcon({
+  icon,
+  iconDark,
 }: {
-  menuItem: ISidebarMenuItem;
-  isExternalRoute?: boolean;
-  accordion?: {
-    isOpen: boolean;
-    currentIndex: number;
-  };
-  setAccordion?: React.Dispatch<
-    React.SetStateAction<{
-      isOpen: boolean;
-      currentIndex: number;
-    }>
-  >;
-  parentIndex?: number;
+  icon: JSX.IntrinsicElements['svg'];
+  iconDark: JSX.IntrinsicElements['svg'] | undefined;
 }) {
-  function updateAccordion() {
-    if (accordion && setAccordion && parentIndex !== undefined) {
-      setAccordion({
-        ...accordion,
-        isOpen: accordion.currentIndex !== parentIndex,
-        currentIndex: accordion.currentIndex === parentIndex ? -1 : parentIndex,
-      });
-    }
+  return (
+    <>
+      <div className="icon-box" id="dark-theme">
+        {iconDark}
+      </div>
+      <div className="icon-box" id="light-theme">
+        {icon}
+      </div>
+    </>
+  );
+}
+
+function MenuTitle({title}: {title: string}) {
+  return <span className="menu-item__title">{title}</span>;
+}
+
+function MenuChevron({hasChildren}: {hasChildren: boolean}) {
+  if (hasChildren) {
+    return (
+      <div className="icon-box icon-chevron">
+        <IconChevron displayDirection="right" />
+      </div>
+    );
   }
 
+  return null;
+}
+
+function MenuExternalHrefIcon() {
+  return (
+    <>
+      <div className="icon-box" id="light-theme">
+        <IconOutsideLink />
+      </div>
+      <div className="icon-box" id="dark-theme">
+        <IconOutsideLinkDark />
+      </div>
+    </>
+  );
+}
+
+function MenuToggle({
+  menuItem,
+  isActive,
+  onSelect,
+  isExternalRoute,
+}: {
+  menuItem: ISidebarMenuItem;
+  isActive?: boolean;
+  onSelect?: () => void;
+  isExternalRoute?: boolean;
+}) {
   if (isExternalRoute) {
     return (
       <Link href={menuItem.path} passHref>
         <a className="nav-item__box-inner" target="_blank">
           <div className="trigger-link">
-            <div className="icon-box" id="dark-theme-switcher">
-              {menuItem.icon}
-            </div>
-            <div className="icon-box" id="light-theme-switcher">
-              {menuItem.iconDark}
-            </div>
-            <span className="menu-item__title">{menuItem.title}</span>
-            {isExternalRoute && (
-              <>
-                <div className="icon-box" id="light-theme-switcher">
-                  <IconOutsideLinkDark />
-                </div>
-                <div className="icon-box" id="dark-theme-switcher">
-                  <IconOutsideLink />
-                </div>
-              </>
-            )}
+            <MenuItemIcon
+              {...{icon: menuItem.icon, iconDark: menuItem.iconDark}}
+            />
+            <MenuTitle {...{title: menuItem.title}} />
+            {isExternalRoute && <MenuExternalHrefIcon />}
           </div>
         </a>
       </Link>
     );
   }
 
-  const isCurrent = !isExternalRoute && accordion?.currentIndex === parentIndex;
   return (
-    <button
-      type="button"
-      className="nav-item__box-inner"
-      onClick={updateAccordion}>
+    <button onClick={onSelect} type="button" className="nav-item__box-inner">
       <div
         className={cs('trigger-link', {
-          'is-open': isCurrent,
-        })}
-        aria-current={isCurrent}>
-        <div className="icon-box" id="dark-theme-switcher">
-          {menuItem.icon}
-        </div>
-        <div className="icon-box" id="light-theme-switcher">
-          {menuItem.iconDark}
-        </div>
-        <span className="menu-item__title">{menuItem.title}</span>
-        {menuItem.routes && (
-          <div className="icon-box icon-chevron">
-            <IconChevron displayDirection="right" />
-          </div>
-        )}
+          'is-open': isActive,
+        })}>
+        <MenuItemIcon {...{icon: menuItem.icon, iconDark: menuItem.iconDark}} />
+        <MenuTitle {...{title: menuItem.title}} />
+        <MenuChevron {...{hasChildren: !!menuItem.routes}} />
       </div>
     </button>
   );
 }
 
-function PrimaryNavItems() {
-  // Hack. See https://github.com/framer/motion/issues/578
-  const isLoaded = useHydrationIsLoaded();
-
-  const navItemsIndex = 0;
-  const navItems = SidebarMenuItems[navItemsIndex];
-  const navItemsArray = Object.keys(navItems);
-
-  const router = useRouter();
-  const currentRoutePath = router.pathname;
-
-  function getCurrentRouteParentIndex() {
-    return navItemsArray
-      .map((items, index) => {
-        const itemsAsNumber = Number(items);
-        const menuItem = SidebarMenuItems[navItemsIndex][itemsAsNumber];
-        const menuItemRoutes = menuItem.routes;
-
-        if (!menuItemRoutes) {
-          return undefined;
-        }
-
-        return menuItemRoutes.find((route, innerIndex) => {
-          if (route.path === currentRoutePath) {
-            route.parentIndex = index;
-            route.childIndex = innerIndex;
-            return route;
-          }
-
-          return undefined;
-        });
-      })
-      .find((item) => !!item);
-  }
-
-  const [accordion, setAccordion] = useState({
-    isOpen: true,
-    currentIndex: getCurrentRouteParentIndex()?.parentIndex ?? -1,
+function getCurrentRouteParentIndex(
+  routes: ISidebarMenuItem[],
+  currentRoutePath: string
+) {
+  const index = routes.findIndex((route) => {
+    return (
+      route?.routes?.find((route) => route.path === currentRoutePath) ?? null
+    );
   });
 
-  // Hack. See https://github.com/framer/motion/issues/578
-  const ComputedAnimatePresence = isLoaded ? AnimatePresence : 'div';
+  return index === -1 ? null : index;
+}
+
+function PrimaryNavItems({
+  pryNavItemsIndex,
+  pryNavItems,
+}: {
+  pryNavItemsIndex: number;
+  pryNavItems: ISidebarMenuItem[];
+}) {
+  const router = useRouter();
+  const currentRoutePath = router.pathname;
+  const [activeIndex, setActiveIndex] = useState<number | null>(() =>
+    getCurrentRouteParentIndex(pryNavItems, currentRoutePath)
+  );
+
+  useEffect(() => {
+    setActiveIndex(getCurrentRouteParentIndex(pryNavItems, currentRoutePath));
+  }, [currentRoutePath, pryNavItems]);
 
   return (
-    <div className="nav-items nav-items-primary">
-      {navItemsArray.map((items, index) => {
+    <AccordionParent>
+      {Object.keys(pryNavItems).map((items, index) => {
         const itemsAsNumber = Number(items);
-        const menuItem = SidebarMenuItems[navItemsIndex][itemsAsNumber];
+        const menuItem = SidebarMenuItems[pryNavItemsIndex][itemsAsNumber];
+        const childrenRoutes = menuItem.sortRoutes
+          ? sortBy(menuItem.routes, (item) => item.title.toLowerCase())
+          : menuItem.routes;
 
         return (
-          <div className="nav-item__box" key={itemsAsNumber}>
-            <ParentRoute
-              {...{menuItem, accordion, setAccordion, parentIndex: index}}
-            />
-            <ComputedAnimatePresence>
-              {menuItem.routes &&
-                accordion.isOpen &&
-                accordion.currentIndex === index && (
-                  <ChildrenRoutes
-                    {...{
-                      routes: menuItem.sortRoutes
-                        ? sortBy(menuItem.routes, (item) =>
-                            item.title.toLowerCase()
-                          )
-                        : menuItem.routes,
-                      currentRoutePath,
-                    }}
-                  />
-                )}
-            </ComputedAnimatePresence>
-          </div>
+          <Accordion
+            key={itemsAsNumber}
+            {...{
+              isActive: activeIndex === index,
+              onSelect: () =>
+                setActiveIndex(activeIndex === index ? null : index),
+              menuItem,
+              childrenRoutes,
+              currentRoutePath,
+            }}
+          />
         );
       })}
+    </AccordionParent>
+  );
+}
+
+function Accordion({
+  isActive,
+  onSelect,
+  menuItem,
+  childrenRoutes,
+  currentRoutePath,
+}: {
+  isActive: boolean;
+  onSelect?: () => void;
+  menuItem: ISidebarMenuItem;
+  childrenRoutes: IRoute[] | undefined;
+  currentRoutePath: string;
+}) {
+  const {getCollapseProps, getToggleProps} = useCollapse({
+    isExpanded: isActive,
+  });
+
+  return (
+    <div className="nav-item__box">
+      <MenuToggle
+        isActive={isActive}
+        menuItem={menuItem}
+        {...getToggleProps({
+          onSelect,
+        })}
+      />
+      {childrenRoutes && (
+        <div {...getCollapseProps()}>
+          <ChildrenRoutes
+            {...{
+              routes: childrenRoutes,
+              currentRoutePath,
+            }}
+          />
+        </div>
+      )}
     </div>
   );
 }
 
-function SecondaryNavitems() {
-  const navItemsIndex = 1;
-  const navItems = SidebarMenuItems[navItemsIndex];
+function AccordionParent({children}: {children: React.ReactNode}) {
+  return <div className="nav-items nav-items-primary">{children}</div>;
+}
 
+function SecondaryNavitems({
+  secNavItemsIndex,
+  secNavItems,
+}: {
+  secNavItemsIndex: number;
+  secNavItems: ISidebarMenuItem[];
+}) {
   return (
     <div className="nav-items">
-      {Object.keys(navItems).map((items) => {
+      {Object.keys(secNavItems).map((items) => {
         const itemsAsNumber = Number(items);
-        const menuItem = SidebarMenuItems[navItemsIndex][itemsAsNumber];
+        const menuItem = SidebarMenuItems[secNavItemsIndex][itemsAsNumber];
 
         return (
           <div className="nav-item__box" key={itemsAsNumber}>
-            <ParentRoute {...{menuItem, isExternalRoute: true}} />
+            <MenuToggle {...{menuItem, isExternalRoute: true}} />
           </div>
         );
       })}
@@ -379,12 +397,18 @@ function SecondaryNavitems() {
 }
 
 export function Sidebar() {
+  const pryNavItemsIndex = 0;
+  const pryNavItems = SidebarMenuItems[pryNavItemsIndex];
+
+  const secNavItemsIndex = 1;
+  const secNavItems = SidebarMenuItems[secNavItemsIndex];
+
   return (
     <StlyedSidebar>
       <div className="nav-container">
-        <PrimaryNavItems />
+        <PrimaryNavItems {...{pryNavItemsIndex, pryNavItems}} />
         <div className="hr-separator" />
-        <SecondaryNavitems />
+        <SecondaryNavitems {...{secNavItemsIndex, secNavItems}} />
       </div>
     </StlyedSidebar>
   );

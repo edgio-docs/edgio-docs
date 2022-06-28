@@ -14,7 +14,7 @@ const StyledToc = styled.div`
 
   .docs-toc__nav {
     position: sticky;
-    box-shadow: inset 1px 0px var(--hr-grey1);
+    box-shadow: inset 1px 0px var(--hr-secondary);
     padding-left: 20px;
     top: calc(var(--header-height) + 8px);
     max-height: calc(100vh - var(--header-height));
@@ -28,7 +28,7 @@ const StyledToc = styled.div`
     font-size: 12px;
     font-weight: 500;
     text-transform: uppercase;
-    color: var(--link-grey1);
+    color: var(--toc-text-primary);
   }
 
   .docs-toc__listItems {
@@ -36,7 +36,7 @@ const StyledToc = styled.div`
     list-style: none;
 
     a {
-      color: var(--link-grey1);
+      color: var(--toc-text-link);
       text-decoration: none;
       border-radius: 4px;
       font-size: 14px;
@@ -45,7 +45,7 @@ const StyledToc = styled.div`
       display: block;
 
       :hover {
-        color: var(--colors-blue0);
+        color: var(--text-link);
       }
     }
   }

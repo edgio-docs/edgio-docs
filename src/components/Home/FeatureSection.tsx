@@ -28,7 +28,7 @@ export const StyledFeatureSection = styled.div`
       --size: 8px;
       width: var(--size);
       height: var(--size);
-      background-color: var(--colors-blue0);
+      background-color: var(--text-link);
       border-radius: 1px;
     }
 
@@ -36,7 +36,7 @@ export const StyledFeatureSection = styled.div`
       font-weight: 600;
       font-size: 18px;
       line-height: 24px;
-      color: var(--homepage-link-color);
+      color: var(--text-link-primary);
       position: relative;
       text-decoration: none;
       border-bottom: 1px solid transparent;

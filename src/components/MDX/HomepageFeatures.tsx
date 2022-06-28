@@ -12,14 +12,12 @@ import {IconSpark} from '../Icon/IconSpark';
 import Container from '../Layout/Container';
 
 const StyledHomepageFeatures = styled.div`
-  background-color: var(--docs-content-bg);
-
   .section-container {
     > * {
       padding: 50px 0;
 
       :not(:last-child) {
-        box-shadow: inset 0px -1px var(--hr-grey1);
+        box-shadow: inset 0px -1px var(--hr-secondary);
       }
     }
   }
@@ -39,7 +37,7 @@ const StyledHomepageFeatures = styled.div`
       padding: 0;
 
       > div {
-        box-shadow: inset 0px -1px var(--hr-grey1);
+        box-shadow: inset 0px -1px var(--hr-secondary);
         padding: 50px 0;
       }
     }

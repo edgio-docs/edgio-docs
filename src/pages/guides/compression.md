@@ -88,7 +88,7 @@ or the url ends in one of these file extensions:
 
 ## Applying Brotli compression in serverless {/*applying-brotli-compression-in-serverless*/}
 
-{{ PRODUCT_NAME }} serverless supports Brotli encoding starting with version `4.14.0` but, as described above, giving by the preference to `Gzip` compression and conditioning it a list of recognized content types.
+{{ PRODUCT_NAME }} serverless supports Brotli encoding starting with version `4.14.0` but, as described above, only for the [content types](#compressible-types) recognized as compressible by the platform and if the browsers *only* accepts Brotli.
 
 If you wish to implement a custom criteria to apply the Brotli compression yourself, you can do this by leveraging the built-in `brotliCompressSync`.
 

@@ -15,7 +15,7 @@ const StyledDocsPagination = styled.footer`
     grid-template-columns: auto 1fr;
     align-items: center;
     gap: 10px;
-    border: 2px solid var(--hr-grey1);
+    border: 2px solid var(--hr-secondary);
     padding: 20px;
     border-radius: 4px;
     color: var(--colors-blue0);
@@ -28,7 +28,7 @@ const StyledDocsPagination = styled.footer`
     }
 
     .label {
-      color: var(--docs-color);
+      color: var(--text-primary);
       display: flex;
       gap: 10px;
     }

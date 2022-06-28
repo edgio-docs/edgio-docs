@@ -13,15 +13,16 @@ import {
   IconLightMobileLogo,
 } from 'components/Icon/IconMobileLogo';
 import {siteConfig} from 'siteConfig';
+import useTheme from 'utils/hooks/useTheme';
 
 const StyledHeader = styled.header`
   position: sticky;
   top: 0;
   z-index: 1;
-  background-color: var(--header-bg-color);
+  background-color: var(--bg-secondary);
   width: 100%;
   height: var(--header-height);
-  box-shadow: inset 0 -1px var(--grey1);
+  box-shadow: inset 0 -1px var(--shadow-primary);
   padding: 17px 20px;
   display: grid;
   grid-template-columns: auto auto;
@@ -72,14 +73,14 @@ const StyledHeader = styled.header`
     a {
       font-size: 14px;
       line-height: 19px;
-      color: var(--black1);
+      color: var(--text-primary);
       text-decoration: none;
       padding: 4px 12px;
     }
 
     a:last-of-type {
-      color: var(--white);
-      background: var(--linear-gradient-green-to-blue);
+      color: var(--colors-white0);
+      background: var(--lg-primary);
       padding: 8px 12px;
       font-weight: 600;
       border-radius: 4px;
@@ -90,7 +91,7 @@ const StyledHeader = styled.header`
     background-color: transparent;
     border: none;
     cursor: pointer;
-    color: var(--homepage-hero-title-color);
+    color: var(--text-primary);
   }
 
   #mobile {
@@ -192,7 +193,7 @@ export default function Header({
         <div id="desktop">
           <Link href="/" passHref>
             <a>
-              <div className="logo-box" id="dark-theme-switcher">
+              <div className="logo-box" id="light-theme">
                 <Image
                   src={EdgioDark}
                   width="86"
@@ -202,7 +203,7 @@ export default function Header({
                   priority
                 />
               </div>
-              <div className="logo-box" id="light-theme-switcher">
+              <div className="logo-box" id="dark-theme">
                 <Image
                   src={EdgioLight}
                   width="86"
@@ -218,10 +219,7 @@ export default function Header({
         <div id="mobile">
           <Link href="/" passHref>
             <a>
-              <div className="logo-box" id="light-theme-switcher">
-                <IconDarkMobileLogo className="logo" />
-              </div>
-              <div className="logo-box" id="dark-theme-switcher">
+              <div className="logo-box">
                 <IconLightMobileLogo className="logo" />
               </div>
             </a>
@@ -239,24 +237,7 @@ export default function Header({
               />
             </NoSSRWrapper>
           </div>
-          <button
-            type="button"
-            className="theme-switcher"
-            id="dark-theme-switcher"
-            onClick={() => {
-              window.__setPreferredTheme('dark');
-            }}>
-            {darkSwitchIcon}
-          </button>
-          <button
-            type="button"
-            className="theme-switcher"
-            id="light-theme-switcher"
-            onClick={() => {
-              window.__setPreferredTheme('light');
-            }}>
-            {lightSwitchIcon}
-          </button>
+          <ToggleTheme />
           <Link href="https://app.layer0.co/?sgId=ef4d5169-93f2-4f55-aabb-dc3be4286e1f">
             Login
           </Link>
@@ -274,40 +255,41 @@ export default function Header({
               />
             </NoSSRWrapper>
           </div>
-          <button
-            type="button"
-            className="theme-switcher"
-            id="dark-theme-switcher"
-            onClick={() => {
-              window.__setPreferredTheme('dark');
-            }}>
-            {darkSwitchIcon}
-          </button>
-          <button
-            type="button"
-            className="theme-switcher"
-            id="light-theme-switcher"
-            onClick={() => {
-              window.__setPreferredTheme('light');
-            }}>
-            {lightSwitchIcon}
-          </button>
+          <ToggleTheme />
           <button
             type="button"
             className="mobile-menu"
-            id="dark-theme-switcher"
-            onClick={() => setShowSidebar(!showSidebar)}>
-            <IconHamburger />
-          </button>
-          <button
-            type="button"
-            className="mobile-menu"
-            id="light-theme-switcher"
             onClick={() => setShowSidebar(!showSidebar)}>
             <IconHamburger />
           </button>
         </div>
       </div>
     </StyledHeader>
+  );
+}
+
+function ToggleTheme() {
+  const {setTheme} = useTheme();
+  return (
+    <>
+      <button
+        type="button"
+        className="theme-switcher"
+        id="light-theme"
+        onClick={() => {
+          setTheme('dark');
+        }}>
+        {darkSwitchIcon}
+      </button>
+      <button
+        type="button"
+        className="theme-switcher"
+        id="dark-theme"
+        onClick={() => {
+          setTheme('light');
+        }}>
+        {lightSwitchIcon}
+      </button>
+    </>
   );
 }

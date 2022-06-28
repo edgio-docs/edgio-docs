@@ -14,9 +14,9 @@ const StyledDocsFooter = styled.footer`
   gap: 8px;
   justify-content: space-between;
   flex-wrap: wrap;
-  background-color: var(--docs-footer-bg, #000000);
+  background-color: var(--docs-footer-bg);
   padding: 16px 20px;
-  color: var(--docs-footer-color, #ffffff);
+  color: var(--docs-footer-color);
   align-items: center;
 
   .uptime-status {

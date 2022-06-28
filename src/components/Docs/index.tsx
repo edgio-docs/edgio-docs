@@ -1,3 +1,4 @@
+import {useEffect} from 'react';
 import styled from 'styled-components';
 
 import {Toc} from '../Layout/Toc';
@@ -13,15 +14,17 @@ const StyledDocs = styled.div`
   display: grid;
   grid-template-columns: 75% 1fr;
   min-height: calc(100vh - 64px);
-  color: var(--docs-color);
 
   .docs-article__section {
     padding: 0 20px 20px 20px;
   }
 
+  .docs-article {
+    color: var(--docs-text-primary);
+  }
+
   .docs-article__header {
     padding-top: 32px;
-    color: var(--docs-color);
   }
 
   .docs-article__body {
@@ -37,7 +40,7 @@ const StyledDocs = styled.div`
       position: relative;
 
       .anchor {
-        color: var(--docs-color);
+        color: var(--docs-text-primary);
         text-decoration: none;
 
         span {
@@ -70,18 +73,6 @@ const StyledDocs = styled.div`
       }
     }
 
-    .text-code {
-      padding: 0 4px;
-      border-radius: 4px;
-      background: var(--text-code-bg);
-      border: 1px solid #d2d5d8;
-      overflow-wrap: break-word;
-      font-variant-ligatures: none;
-      margin: 0;
-      overflow-x: auto;
-      text-align: left;
-    }
-
     .text-link {
       color: #2993e0;
       text-decoration: none;
@@ -100,7 +91,7 @@ const StyledDocs = styled.div`
         transition: width 0.2s ease-in-out;
       }
 
-      &:hover ::after {
+      &:hover::after {
         width: 100%;
       }
     }
@@ -155,24 +146,29 @@ const StyledDocs = styled.div`
     width: 100%;
     border-collapse: collapse;
     overflow-x: auto;
-    display: block;
+    border: 2px solid var(--hr-secondary);
+
+    thead {
+      box-shadow: rgb(71, 71, 71) 0px -2px inset;
+    }
 
     thead th {
       font-weight: 600;
-      color:#fff;      
+      color: #fff;
       background-color: var(--table-hdr-bg-color);
     }
 
     tr {
       &:nth-of-type(even) {
-        background: var(--table-striped-row-bg-color); 
-    }
+        background: var(--table-striped-row-bg-color);
+      }
 
-    th,
-    td {
-      padding: 16px;
-      text-align: left;
-      vertical-align: top;
+      th,
+      td {
+        padding: 16px;
+        text-align: left;
+        vertical-align: top;
+      }
     }
   }
 

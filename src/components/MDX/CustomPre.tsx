@@ -7,16 +7,14 @@ import getDescriptiveLanguage from '../getLanguage';
 import CodeBlock from './CodeBlock';
 
 export const StyledCustomPre = styled.div`
-  border: 2px solid #363636;
-  border-radius: 8px;
   overflow: hidden;
-  margin-bottom: 7px;
 
   .code-block__inner {
     display: flex;
     flex-direction: column;
-    border-color: #356369;
     background: #242424;
+    border: 2px solid #363636;
+    border-radius: 8px;
   }
 
   .code-block__header {
@@ -25,7 +23,7 @@ export const StyledCustomPre = styled.div`
     border-top-left-radius: 4px;
     padding: 6px 6px 6px 8px;
     font-size: 14px;
-    color: white;
+    color: var(--colors-white0);
     display: flex;
     justify-content: space-between;
 
@@ -73,7 +71,7 @@ export default function CustomPre({children}: {children: React.ReactNode}) {
 
   return (
     <StyledCustomPre>
-      <div className="code-block line-numbers">
+      <div className="code-block">
         <div className="code-block__inner">
           {language !== unknownLanguageString ? (
             <header className="code-block__header">
@@ -103,13 +101,13 @@ export default function CustomPre({children}: {children: React.ReactNode}) {
 }
 
 const StyledCopyCodeButton = styled.button`
-  color: var(--white);
+  color: var(--copy-code-primary);
   background-color: #363636;
   font-weight: 600;
   border-radius: 4px;
   font-size: 14px;
   line-height: 19px;
-  border: 1px solid #1a1a1a;
+  border: 1px solid var(--colors-black4);
   cursor: pointer;
   padding: 4px 8px;
   transition: scale 0.2s ease-in-out;

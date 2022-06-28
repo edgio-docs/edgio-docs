@@ -38,12 +38,8 @@ function GetStartedCard({
           <p className="card-subtitle">{subtitle}</p>
         </div>
         <footer className="card-footer">
-          <NextLink href={href} passHref>
-            <a className="card-footer__link">
-              <span>{hrefText}</span>
-              <IconArrow displayDirection="right" />
-            </a>
-          </NextLink>
+          <span>{hrefText}</span>
+          <IconArrow displayDirection="right" />
         </footer>
       </a>
     </NextLink>
@@ -78,6 +74,7 @@ const StyledGetStarted = styled.div`
     grid-template-rows: auto 1fr auto;
     text-decoration: none;
     transition: transform 0.1s;
+    color: var(--text-primary);
 
     :hover {
       transform: scale(1.01);
@@ -95,22 +92,17 @@ const StyledGetStarted = styled.div`
     font-weight: 600;
     font-size: 20px;
     line-height: 27px;
-    color: var(--black1);
   }
 
   .card-subtitle {
-    color: var(--get-started-card-sub-bg);
+    color: var(--text-secondary);
     margin: 10px 0 12px;
     font-size: 16px;
   }
 
-  .card {
-    .card-footer__link {
-      color: var(--black1);
-      text-decoration: none;
-      display: flex;
-      column-gap: 7px;
-    }
+  .card-footer {
+    display: flex;
+    column-gap: 7px;
   }
 `;
 

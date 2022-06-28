@@ -49,6 +49,8 @@
   --scrollbar-bg: #353535;
   --get-started-card-bg: #fff;
   --sidebar-link-primary: #353535;
+  --table-hdr-bg-color: var(--colors-green0);
+  --table-striped-row-bg-color: var(--colors-gray1);
 
   /* Light's on... */
   --dark-theme-display: none;
@@ -91,6 +93,8 @@
   --scrollbar-bg: #353535;
   --get-started-card-bg: #000000;
   --sidebar-link-primary: var(--colors-white0);
+  --table-hdr-bg-color: #606060;
+  --table-striped-row-bg-color: #303030;
 
   /* Light's off... */
   --dark-theme-display: flex;

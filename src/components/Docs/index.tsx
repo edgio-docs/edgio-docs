@@ -146,10 +146,7 @@ const StyledDocs = styled.div`
     width: 100%;
     border-collapse: collapse;
     overflow-x: auto;
-    display: block;
-    border: 2px solid #363636;
-    border-radius: 8px;
-    background: #242424;
+    border: 2px solid var(--hr-secondary);
 
     thead {
       box-shadow: rgb(71, 71, 71) 0px -2px inset;
@@ -158,11 +155,12 @@ const StyledDocs = styled.div`
     thead th {
       font-weight: 600;
       color: #fff;
+      background-color: var(--table-hdr-bg-color);
     }
 
     tr {
-      :not(:last-child) {
-        box-shadow: rgb(71, 71, 71) 0px -2px inset;
+      &:nth-of-type(even) {
+        background: var(--table-striped-row-bg-color);
       }
 
       th,

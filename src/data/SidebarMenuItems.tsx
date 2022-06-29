@@ -698,12 +698,12 @@ const SidebarMenuItems: ISidebarMenuItems = [
         },
         {
           title: '@layer0/core (v3.x)',
-          path: '/docs/v3.17.8/api/core/',
+          path: '/docs/v3.x/api/core/',
           external: true,
         },
         {
           title: '@layer0/prefetch (v3.x)',
-          path: '/docs/v3.17.8/api/prefetch/',
+          path: '/docs/v3.x/api/prefetch/',
           external: true,
         },
       ],

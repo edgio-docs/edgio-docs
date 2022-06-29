@@ -156,7 +156,6 @@ const router = new Router()
         versions.replace(/\n/g, '').split(','),
         'v3.x'
       );
-
       redirect(`/docs/${targetVersion}/:path*`);
     });
   })
@@ -165,7 +164,6 @@ const router = new Router()
     '/docs/:version/api/:path*:file(\\.[css|js|html|json|png]+)',
     ({proxy, cache}) => {
       cache(htmlCacheConfig);
-
       proxy('api', {path: '/:version/api/:path*:file'});
     }
   )

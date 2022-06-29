@@ -12,7 +12,13 @@ This guide shows you how to deploy a [Shopify Hydrogen](https://hydrogen.shopify
   repoUrl="https://github.com/layer0-docs/layer0-shopify-hydrogen-example" 
   deployFromRepo />
 
-{{ SYSTEM_REQUIREMENTS }}
+## Shopify Hydrogen Requirements
+
+You’ve installed the following dependencies:
+
+[Yarn](https://classic.yarnpkg.com/) version 1.x or [npm](https://www.npmjs.com/)
+
+[Node.js](https://nodejs.org/en/) version 16.5.0 or higher
 
 {{ SIGN_UP_LAYER0 }}
 
@@ -28,10 +34,24 @@ npm i -g {{ PACKAGE_NAME }}/cli # yarn global add {{ PACKAGE_NAME }}/cli
 
 If you don't already have a Shopify Hydrogen app, create one by running the following:
 
-```bash
-npx create-hydrogen-app
-cd project-name
-npm install --legacy-peer-deps
+```bash filename="npm"
+# JavaScript template
+npm init @shopify/hydrogen -- --template demo-store-js
+
+OR
+
+# TypeScript template
+npm init @shopify/hydrogen -- --template demo-store-ts
+```
+
+```bash filename="yarn"
+# JavaScript template
+yarn create @shopify/hydrogen --template demo-store-js
+
+OR
+
+# TypeScript template
+yarn create @shopify/hydrogen --template demo-store-ts
 ```
 
 You can verify your app works by running it locally with:
@@ -39,6 +59,32 @@ You can verify your app works by running it locally with:
 ```bash
 npm run dev
 ```
+
+## Enable Server Side Rendering
+
+1. To enable server side rendering with your Shopify Hydrogen app, build it with target set to `node` with command as:
+
+  ```bash
+  yarn build --target node
+  ```
+  
+  The production version of your app will be running at http://localhost:3000. You can inspect and deploy the compiled version of your Node.js Hydrogen storefront from dist/node.
+
+  NOTE: This step will be auto configured when building with Layer0 as you follow the next steps.
+
+2. Apply middleware
+
+  Create a `server.js` at the root of your project consisting of the following:
+
+  ```js filename="server.js"
+  const {createServer} = require('./dist/node');
+
+  createServer().then(({app}) => {
+    app.listen(process.env.PORT || 3000, () => {
+      console.log(`Server ready`);
+    });
+  });
+  ```
 
 ## Configuring your Shopify Hydrogen app for {{ PRODUCT_NAME }} {/*configuring-your-shopify-hydrogen-app-for-layer0*/}
 
@@ -57,14 +103,6 @@ This will automatically update your `package.json` and add all of the required {
 - `{{ CONFIG_FILE }}` - A configuration file for {{ PRODUCT_NAME }}
 - `routes.js` - A default routes file that sends all requests to Shopify Hydrogen.
 
-### Install {{ PACKAGE_NAME }}/express {/*install--package_name-express*/}
-
-Install {{ PACKAGE_NAME }}/express by running the following:
-
-```bash
-npm install {{ PACKAGE_NAME }}/express
-```
-
 ### Update {{ PRODUCT_NAME }} Configuration {/*update-layer0-configuration*/}
 
 Update `{{ CONFIG_FILE }}` at the root of your project to the following:
@@ -73,16 +111,84 @@ Update `{{ CONFIG_FILE }}` at the root of your project to the following:
 // This file was automatically added by layer0 deploy.
 // You should commit this file to source control.
 module.exports = {
-  connector: '@layer0/express',
-  express: {
-    appPath: './server.js',
-  },
-  includeFiles: {
-    public: true,
-    dist: true,
-  },
+  connector: './layer0'
 }
 ```
+
+### Creating Layer0 connector files
+
+- Install `@vercel/nft` for Node.js File Tracing, by the following command:
+  ```bash
+  npm install @vercel/nft
+
+  OR
+
+  yarn add @vercel/nft
+  ```
+
+- Create a folder named `layer0` at the root of your project.
+  - Create a file inside the `layer0` folder, named `build.js` consistng of the following:
+  ```js filename="layer0/build.js"
+    const {join} = require('path');
+    const {exit} = require('process');
+    const {nodeFileTrace} = require('@vercel/nft');
+    const {DeploymentBuilder} = require('@layer0/core/deploy');
+
+    const appDir = process.cwd();
+    const builder = new DeploymentBuilder(appDir);
+
+    module.exports = async function build(options) {
+      try {
+        builder.clearPreviousBuildOutput();
+        let command = 'yarn build --target node';
+        await builder.exec(command);
+        builder.addJSAsset(join(appDir, 'dist'));
+        builder.addJSAsset(join(appDir, 'server.js'));
+        // Determine the node_modules to include
+        let dictNodeModules = await getNodeModules();
+        Object.keys(dictNodeModules).forEach(async (i) => {
+          await builder.addJSAsset(`${appDir}/${i}`);
+        });
+        await builder.build();
+      } catch (e) {
+        console.log(e);
+        exit();
+      }
+    };
+
+    async function getNodeModules() {
+      // The whole app inside index.js
+      const files = ['./dist/node/index.js'];
+      // Compute file trace
+      const {fileList} = await nodeFileTrace(files);
+      // Store set of packages
+      let packages = {};
+      fileList.forEach((i) => {
+        if (i.includes('node_modules/')) {
+          let temp = i.replace('node_modules/', '');
+          temp = temp.substring(0, temp.indexOf('/'));
+          packages[`node_modules/${temp}`] = true;
+        } else {
+          packages[i] = true;
+        }
+      });
+      // Sort the set of packages
+      return Object.keys(packages)
+        .sort()
+        .reduce((obj, key) => {
+          obj[key] = packages[key];
+          return obj;
+        }, {});
+    }
+  ```
+
+  - Create a file named `prod.js` consistng of the following:
+  ```js filename="layer0/prod.js"
+    module.exports = async function prod(port) {
+      process.env.PORT = port;
+      await import('../server.js');
+    };
+  ```
 
 ### Configure the routes {/*configure-the-routes*/}
 
@@ -147,13 +253,13 @@ Refer to the [Routing](routing) guide for the full syntax of the `routes.js` fil
 Create a production build of your app by running the following in your project's root directory:
 
 ```bash
-npm run build
+{{ CLI_NAME }} build
 ```
 
 Run {{ PRODUCT_NAME }} on your local machine:
 
 ```bash
-npm run {{ CLI_NAME }}:dev
+{{ CLI_NAME }} run --production
 ```
 
 Load the site http://127.0.0.1:3000
@@ -163,7 +269,7 @@ Load the site http://127.0.0.1:3000
 Create a production build of your app by running the following in your project's root directory:
 
 ```bash
-npm run build
+{{ CLI_NAME }} build
 ```
 
 Next, deploy the build to {{ PRODUCT_NAME }} by running the `{{ CLI_NAME }} deploy` command:

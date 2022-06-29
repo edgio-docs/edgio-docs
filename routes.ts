@@ -157,7 +157,7 @@ const router = new Router()
         'v3.x'
       );
 
-      redirect(`/${targetVersion}/api/:path*`);
+      redirect(`/${targetVersion}/:path*`);
     });
   })
   // match versioned api docs with a file extension

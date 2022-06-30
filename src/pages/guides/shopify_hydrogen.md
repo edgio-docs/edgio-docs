@@ -20,6 +20,8 @@ You’ve installed the following dependencies:
 
 [Node.js](https://nodejs.org/en/) version 16.5.0 or higher
 
+_Note_: {{ PRODUCT_NAME }} production runtime targets Node {{ NODE_VERSION }}. There may be some unexpected behavior building your project with a later version. See the [Node.js](install_nodejs#production-version] for more information.
+
 {{ SIGN_UP_LAYER0 }}
 
 ## Install the {{ PRODUCT_NAME }} CLI {/*install-the-layer0-cli*/}
@@ -65,6 +67,10 @@ npm run dev
 1. To enable server side rendering with your Shopify Hydrogen app, build it with target set to `node` with command as:
 
   ```bash
+  npm run build -- --target node
+  
+  OR
+  
   yarn build --target node
   ```
   

@@ -12,7 +12,7 @@ This guide shows you how to deploy a [Shopify Hydrogen](https://hydrogen.shopify
   repoUrl="https://github.com/layer0-docs/layer0-shopify-hydrogen-example" 
   deployFromRepo />
 
-## Shopify Hydrogen Requirements
+## Shopify Hydrogen Requirements {/*shopify-hydrogen-requirements*/}
 
 You’ve installed the following dependencies:
 
@@ -21,7 +21,7 @@ You’ve installed the following dependencies:
 [Node.js](https://nodejs.org/en/) version 16.5.0 or higher
 
 <Callout type="info">
-{{ PRODUCT_NAME }} production runtime targets Node {{ NODE_VERSION }}. There may be some unexpected behavior building your project with a later version. See the [Node.js](install_nodejs#production-version) guide for more information.
+{{ PRODUCT_NAME }} production runtime targets Node {{ NODE_VERSION }}. There may be some unexpected behavior building your project with a later version. See the <a href="/guides/install_nodejs#production-version">Node.js</a> guide for more information.
 </Callout>
 
 {{ SIGN_UP_LAYER0 }}
@@ -64,7 +64,7 @@ You can verify your app works by running it locally with:
 npm run dev
 ```
 
-## Enable Server Side Rendering
+## Enable Server Side Rendering {/*enable-server-side-rendering*/}
 
 1. To enable server side rendering with your Shopify Hydrogen app, build it with target set to `node` with command as:
 
@@ -123,7 +123,7 @@ module.exports = {
 }
 ```
 
-### Creating Layer0 connector files
+### Creating Layer0 connector files {/*creating-layer0-connector-files*/}
 
 - Install `@vercel/nft` for Node.js File Tracing, by the following command:
   ```bash

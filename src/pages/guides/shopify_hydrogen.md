@@ -20,7 +20,9 @@ You’ve installed the following dependencies:
 
 [Node.js](https://nodejs.org/en/) version 16.5.0 or higher
 
-_Note_: {{ PRODUCT_NAME }} production runtime targets Node {{ NODE_VERSION }}. There may be some unexpected behavior building your project with a later version. See the [Node.js](install_nodejs#production-version) guide for more information.
+<Callout type="info">
+{{ PRODUCT_NAME }} production runtime targets Node {{ NODE_VERSION }}. There may be some unexpected behavior building your project with a later version. See the [Node.js](install_nodejs#production-version) guide for more information.
+</Callout>
 
 {{ SIGN_UP_LAYER0 }}
 

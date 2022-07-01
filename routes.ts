@@ -1,5 +1,6 @@
 import {Router, CustomCacheKey} from '@layer0/core/router';
 import {nextRoutes} from '@layer0/next';
+import semverMaxSatisfying from 'semver/ranges/max-satisfying';
 
 import prerenderRequests from './prerender';
 
@@ -116,11 +117,15 @@ const router = new Router()
   .get('/images/:path*', ({cache}) => {
     cache(staticCacheConfig);
   })
+
+  // API docs
+
+  // list of versions
   .match('/docs/versions', ({cache, proxy}) => {
     cache(htmlCacheConfig);
     proxy('api', {path: '/versions.csv'});
   })
-  // match api docs with a file extension
+  // match current api docs with a file extension
   .match(
     '/docs/api/:path*:file(\\.[css|js|html|json|png]+)',
     ({proxy, cache, request}) => {
@@ -128,20 +133,36 @@ const router = new Router()
       proxy('api', {path: '/current/api/:path*:file'});
     }
   )
-  // match api docs with a terminating /
+  // match current api docs with a terminating /
   .match('/docs/api/:path*/', ({proxy, cache, request}) => {
     cache(htmlCacheConfig);
     proxy('api', {path: '/current/api/:path*/index.html'});
   })
-  // match api docs without terminating /,
+  // match current api docs without terminating /,
   // gets redirected to :path*/ to satisfy relative asset paths
   .match('/docs/api/:path*', ({redirect}) => {
     redirect('/docs/api/:path*/');
   })
+  // match latest v3 api docs and redirect
+  .match('/docs/v3.x/:path*', ({cache, compute, redirect}) => {
+    cache(htmlCacheConfig);
+    compute(async () => {
+      // fetch the list of current published versions
+      const versions = await (
+        await fetch('https://docs.layer0.co/docs/versions')
+      ).text();
+
+      const targetVersion = semverMaxSatisfying(
+        versions.replace(/\n/g, '').split(','),
+        'v3.x'
+      );
+      redirect(`/docs/${targetVersion}/:path*`);
+    });
+  })
   // match versioned api docs with a file extension
   .match(
     '/docs/:version/api/:path*:file(\\.[css|js|html|json|png]+)',
-    ({proxy, cache, request}) => {
+    ({proxy, cache}) => {
       cache(htmlCacheConfig);
       proxy('api', {path: '/:version/api/:path*:file'});
     }
@@ -156,6 +177,7 @@ const router = new Router()
   .match('/docs/:version/api/:path*', ({redirect}) => {
     redirect('/docs/:version/api/:path*/');
   })
+
   .get('/googleb2732cddf1383cf4.html', ({send}) =>
     send('google-site-verification: googleb2732cddf1383cf4.html', 200, 'OK')
   );

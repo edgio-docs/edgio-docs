@@ -140,8 +140,10 @@ If you are already a Bloomreach customer with an existing configuration, you can
 Bloomreach [documentation](https://documentation.bloomreach.com/) can help provide more specific answers to questions regarding that service. This guide focuses on the Bloomreach [Content](https://documentation.bloomreach.com/content/docs/get-started-with-bloomreach-content) product.
 
 <Callout type="info">
-  Bloomreach also provides a set of [sample
-  credentials](https://documentation.bloomreach.com/content/docs/log-in-to-the-developer-environment)
+  Bloomreach also provides a set of{' '}
+  <a href="https://documentation.bloomreach.com/content/docs/log-in-to-the-developer-environment">
+    sample credentials
+  </a>{' '}
   that can be used until you have access to your own instance.
 </Callout>
 
@@ -159,24 +161,17 @@ The login page should look like this.
 
 Open the _Experience manager_ application. In the _Channels_ overview, click on the _+ Channel_ button in the top right. In the Select blueprint dialog that pops up, select _Website_ and click _Next_.
 
-
 ![](/images/bloomreach/channel_select_blueprint.png)
-
 
 Next, enter a name for your channel (for example, "getting started") and click on _Create channel_:
 
-
 ![](/images/bloomreach/channel_name.png)
-
 
 The new channel will now be listed in the Channels overview:
 
-
 ![](/images/bloomreach/channel_added.png)
 
-
 Click on the new channel to open its preview. You are now on the homepage. A standard skeleton frontend app is currently used to render the preview.
-
 
 ![](/images/bloomreach/channel_preview.png)
 
@@ -186,21 +181,17 @@ Note the black-bordered area on the page. This is what we call a container. Open
 
 ![](/images/bloomreach/component_library.png)
 
-
 Click on the Content component in the left side drawer to select it, then click inside the container on the page to add the component. It will show standard "Hello World" content that is stored in the page object. If you'd like to edit the text, open the Page menu and select _Metadata_.
 
 ![](/images/bloomreach/component_edit.png)
-
 
 The right side drawer will slide open and show an editor where you can edit the different fields. The page preview will update automatically while you edit the field values.
 
 ![](/images/bloomreach/component_added.png)
 
-
 Click on Save to persist your changes.
 
 At this point your changes are still unpublished and only visible in the preview. To publish the page and make it available through the [Delivery API](https://documentation.bloomreach.com/content/reference/delivery-api), open the Page menu again and choose Publish​​​​​.
-
 
 ### Generate Frontend Project
 
@@ -260,9 +251,7 @@ Note the following:
 - The mapping property maps your React components their counterparts in the JSON representation.
 - A Content component (which you will implement in a moment) is imported and mapped.
 
-<Callout type="info">
-  Change the `endpoint` url to your own instance.
-</Callout>
+<Callout type="info">Change the `endpoint` url to your own instance.</Callout>
 
 4. Add a content component
 

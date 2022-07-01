@@ -146,24 +146,24 @@ const StyledDocs = styled.div`
     width: 100%;
     border-collapse: collapse;
     overflow-x: auto;
-    border: 2px solid var(--hr-secondary);
     display: block;
 
     thead {
-      box-shadow: rgb(71, 71, 71) 0px -2px inset;
+      /* box-shadow: rgb(71, 71, 71) 0px -2px inset; */
+    }
+
+    th,
+    td {
+      border: 1px solid var(--hr-secondary);
     }
 
     thead th {
       font-weight: 600;
-      color: #fff;
-      background-color: var(--table-hdr-bg-color);
+      color: var(--docs-text-primary);
+      font-size: 14px;
     }
 
     tr {
-      &:nth-of-type(even) {
-        background: var(--table-striped-row-bg-color);
-      }
-
       th,
       td {
         padding: 16px;

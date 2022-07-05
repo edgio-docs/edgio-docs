@@ -141,6 +141,7 @@ module.exports = {
     const {exit} = require('process');
     const {nodeFileTrace} = require('@vercel/nft');
     const {DeploymentBuilder} = require('@layer0/core/deploy');
+    const {isYarn} = require('@layer0/cli/utils/packageManager');
 
     const appDir = process.cwd();
     const builder = new DeploymentBuilder(appDir);
@@ -148,7 +149,10 @@ module.exports = {
     module.exports = async function build(options) {
       try {
         builder.clearPreviousBuildOutput();
-        let command = 'yarn build --target node';
+        let command = 'npm run build -- --target node';
+        if (isYarn()) {
+          command = 'yarn build --target node';
+        }
         await builder.exec(command);
         builder.addJSAsset(join(appDir, 'dist'));
         builder.addJSAsset(join(appDir, 'server.js'));

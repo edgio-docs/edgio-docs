@@ -74,21 +74,33 @@ Update `routes.js` at the root of your project to the following:
 import { Router } from '@layer0/core/router'
 
 export default new Router()
-    .static('dist', ({ cache }) => {
-        cache({
-            edge: {
-                maxAgeSeconds: 60 * 60 * 60 * 365,
-                forcePrivateCaching: true,
-            },
-            browser: {
-                maxAgeSeconds: 0,
-                serviceWorkerSeconds: 60 * 60 * 24,
-            },
-        })
-    })
-    .fallback(({ appShell }) => {
-        appShell('dist/index.html')
-    })
+  // Prevent search engine bot(s) from indexing
+  // Read more on: https://docs.layer0.co/guides/cookbook#blocking-search-engine-crawlers
+  .get(
+    {
+      headers: {
+        host: /layer0.link|layer0-perma.link/,
+      },
+    },
+    ({ setResponseHeader }) => {
+      setResponseHeader('x-robots-tag', 'noindex')
+    }
+  )
+  .static('dist', ({ cache }) => {
+      cache({
+          edge: {
+              maxAgeSeconds: 60 * 60 * 60 * 365,
+              forcePrivateCaching: true,
+          },
+          browser: {
+              maxAgeSeconds: 0,
+              serviceWorkerSeconds: 60 * 60 * 24,
+          },
+      })
+  })
+  .fallback(({ appShell }) => {
+      appShell('dist/index.html')
+  })
 ```
 
 Refer to the [Routing](routing) guide for the full syntax of the `routes.js` file and how to configure it for your use case.

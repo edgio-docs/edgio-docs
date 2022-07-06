@@ -166,6 +166,18 @@ For the Vue `hello-world` template, replace the `routes.js` file that was create
 const { Router } = require('{{ PACKAGE_NAME }}/core/router')
 
 module.exports = new Router()
+  // Prevent search engine bot(s) from indexing
+  // Read more on: https://docs.layer0.co/guides/cookbook#blocking-search-engine-crawlers
+  .get(
+    {
+      headers: {
+        host: /layer0.link|layer0-perma.link/,
+      },
+    },
+    ({ setResponseHeader }) => {
+      setResponseHeader('x-robots-tag', 'noindex')
+    }
+  )
   // Send requests to static assets in the build output folder `dist`
   .static('dist')
 

@@ -51,6 +51,18 @@ Paste the following into `routes.js` or `routes.ts`, depending on the results of
 import { Router } from '@layer0/core'
 
 export default new Router()
+  // Prevent search engine bot(s) from indexing
+  // Read more on: https://docs.layer0.co/guides/cookbook#blocking-search-engine-crawlers
+  .get(
+    {
+      headers: {
+        host: /layer0.link|layer0-perma.link/,
+      },
+    },
+    ({ setResponseHeader }) => {
+      setResponseHeader('x-robots-tag', 'noindex')
+    }
+  )
   .get('/:path*/:file.:ext(js|css|png|ico|jpg|gif|svg)', ({ cache, serveStatic }) => {
     cache({
       browser: {

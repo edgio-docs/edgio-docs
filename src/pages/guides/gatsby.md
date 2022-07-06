@@ -86,7 +86,20 @@ The default `routes.js` file created by `{{ CLI_NAME }} init` sends all requests
 const { Router } = require('{{ PACKAGE_NAME }}/core/router')
 const { gatsbyRoutes } = require('{{ PACKAGE_NAME }}/gatsby')
 
-module.exports = new Router().use(gatsbyRoutes)
+module.exports = new Router()
+  // Prevent search engine bot(s) from indexing
+  // Read more on: https://docs.layer0.co/guides/cookbook#blocking-search-engine-crawlers
+  .get(
+    {
+      headers: {
+        host: /layer0.link|layer0-perma.link/,
+      },
+    },
+    ({ setResponseHeader }) => {
+      setResponseHeader('x-robots-tag', 'noindex')
+    }
+  )
+  .use(gatsbyRoutes)
 ```
 
 ### Adding routes to a different origin {/*adding-routes-to-a-different-origin*/}
@@ -121,6 +134,18 @@ const { Router } = require('{{ PACKAGE_NAME }}/core/router')
 const { gatsbyRoutes } = require('{{ PACKAGE_NAME }}/gatsby')
 
 module.exports = new Router()
+  // Prevent search engine bot(s) from indexing
+  // Read more on: https://docs.layer0.co/guides/cookbook#blocking-search-engine-crawlers
+  .get(
+    {
+      headers: {
+        host: /layer0.link|layer0-perma.link/,
+      },
+    },
+    ({ setResponseHeader }) => {
+      setResponseHeader('x-robots-tag', 'noindex')
+    }
+  )
   .get('/some/legacy/url/:p', ({ proxy }) => {
     proxy('legacy')
   })

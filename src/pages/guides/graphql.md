@@ -69,7 +69,10 @@ export const GET_PRODUCT_QUERY = gql`
 `
 ```
 
-You can add a caching rule for this query by using the `graphqlOperation` method:
+You can add a caching rule for this query by using the `graphqlOperation`
+method, which is designed to comply with the [`operationName`
+convention](https://www.apollographql.com/docs/apollo-server/requests/#post-requests)
+of the Apollo client ecosystem.
 
 ```js filename="./routes.js"
 import { Router } from '@layer0/core'

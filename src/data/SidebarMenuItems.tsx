@@ -601,7 +601,7 @@ const SidebarMenuItems: ISidebarMenuItems = [
       icon: <IconStacksPlain />,
       iconDark: <IconStacksPlainDark />,
       path: 'reference',
-      sortRoutes: true,
+      sortRoutes: false,
       routes: [
         {
           title: 'Changelog',
@@ -610,6 +610,10 @@ const SidebarMenuItems: ISidebarMenuItems = [
         {
           title: 'Compression',
           path: '/guides/compression',
+        },
+        {
+          title: 'App Platform Caveats',
+          path: '/guides/app-platform-caveats',
         },
         {
           title: 'Status Codes',

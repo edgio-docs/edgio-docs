@@ -163,7 +163,7 @@ const SidebarMenuItems: ISidebarMenuItems = [
           path: '/guides/webapp_cdn_getting_started',
         },
         {
-          title: 'Layer0 for Traditional Sites',
+          title: 'Edgio for Traditional Sites',
           path: '/guides/traditional_sites',
         },
       ],

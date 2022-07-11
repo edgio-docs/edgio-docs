@@ -15,10 +15,17 @@ title: Lit
 
 ## Create your Lit site {/*create-your-lit-site*/}
 
-Clone this starter with batteries included:
+### Install the {{ PRODUCT_NAME }} CLI globally {/*install-the-layer0-cli-globally*/}
+
+```bash
+npm i -g {{ PACKAGE_NAME }}/cli # yarn global add {{ PACKAGE_NAME }}/cli
+```
+
+Clone this starter example and install dependencies:
 
 ```bash
 git clone https://github.com/layer0-docs/layer0-lit-example
+npm i
 ```
 
 ### Run the Lit app locally on {{ PRODUCT_NAME }} {/*run-the-lit-app-locally-on-layer0*/}
@@ -35,7 +42,7 @@ This will listen to any changes inside the folder src, with live reloads!
 
 ### Run the Lit app in local production on {{ PRODUCT_NAME }} {/*run-the-lit-app-in-production-locally-on-layer0*/}
 
-Create a production using:
+Create a production build using:
 ```bash
 {{ CLI_NAME }} build
 ```

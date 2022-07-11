@@ -40,7 +40,6 @@ import {
   IconJekyll,
   IconJekyllDark,
   IconLit,
-  IconLitDark,
   IconMKDocs,
   IconMKDocsDark,
   IconNextJS,
@@ -394,7 +393,7 @@ const SidebarMenuItems: ISidebarMenuItems = [
           title: 'Lit',
           path: '/guides/lit',
           icon: <IconLit />,
-          iconDark: <IconLitDark />,
+          iconDark: <IconLit />,
         },
         {
           title: 'MkDocs',

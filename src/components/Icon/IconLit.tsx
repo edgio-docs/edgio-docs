@@ -13,10 +13,6 @@ export const IconLit = React.memo<JSX.IntrinsicElements['svg']>(
         fill="#283198"
       />
       <path
-        d="M15.073 54.466l17.165 148.525 95.07 52.731V14.462L15.074 54.465z"
-        fill="#DD1B16"
-      />
-      <path
         d="M40 120v-80l40-40v80M120 200v-80l40-40v80M0 160v-80l40 40"
         fill="#324fff"
       />

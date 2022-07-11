@@ -2,9 +2,9 @@
 title: WebApp CDN
 ---
 
-Deploying your web application behind Layer0 is the fastest and easiest way to start seeing the performance benefits made possible by the Layer0 edge network. In this guide we'll show you how to:
+Deploying your web application behind {{ PRODUCT_NAME }} is the fastest and easiest way to start seeing the performance benefits made possible by the {{ PRODUCT_NAME }} edge network. In this guide we'll show you how to:
 
-- Create a new Layer0 project
+- Create a new {{ PRODUCT_NAME }} project
 - Configure edge caching using EdgeJS
 - Deploy your site
 
@@ -26,7 +26,7 @@ As shown below, {{ PRODUCT_NAME }} becomes the main CDN for your site:
 
 Requests for your site will now pass through {{ PRODUCT_NAME }}'s globally distributed edge network and then to your origin server.
 
-A full production deployment requires changing your site's DNS to allow requests to come to Layer0 first. View our [production guide](/guides/production) for that process.
+A full production deployment requires changing your site's DNS to allow requests to come to {{ PRODUCT_NAME }} first. View our [production guide](/guides/production) for that process.
 
 ## Create an Account {/*create-an-account*/}
 
@@ -34,7 +34,7 @@ If you do not have an account yet, visit [{{ PRODUCT_NAME }}]({{ APP_URL }}/sign
 
 {{ SYSTEM_REQUIREMENTS }}
 
-## Create a New Layer0 Project {/*create-a-new-layer0-project*/}
+## Create a New {{ PRODUCT_NAME }} Project {/*create-a-new-layer0-project*/}
 
 1. Install the {{ PRODUCT_NAME }} CLI.
 You can use either `npm` or `yarn`.

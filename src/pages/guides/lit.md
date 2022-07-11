@@ -15,7 +15,7 @@ title: Lit
 
 ## Create your Lit site {/*create-your-lit-site*/}
 
-If you don't have an existing Lit site, you can clone this starter with batteries included by:
+Clone this starter with batteries included:
 
 ```bash
 git clone https://github.com/layer0-docs/layer0-lit-example

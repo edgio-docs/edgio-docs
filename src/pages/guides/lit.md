@@ -25,7 +25,7 @@ Clone this starter example and install dependencies:
 
 ```bash
 git clone https://github.com/layer0-docs/layer0-lit-example
-npm i
+yarn install
 ```
 
 ### Run the Lit app locally on {{ PRODUCT_NAME }} {/*run-the-lit-app-locally-on-layer0*/}

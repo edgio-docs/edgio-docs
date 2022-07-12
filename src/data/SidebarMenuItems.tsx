@@ -59,6 +59,7 @@ import {
   IconSaber,
   IconSanity,
   IconSapper,
+  IconScully,
   IconServerlessFunctions,
   IconServerSmall,
   IconServerSmallDark,

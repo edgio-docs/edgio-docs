@@ -39,6 +39,7 @@ import {
   IconIonicX,
   IconJekyll,
   IconJekyllDark,
+  IconLit,
   IconMKDocs,
   IconMKDocsDark,
   IconNextJS,
@@ -59,6 +60,7 @@ import {
   IconSaber,
   IconSanity,
   IconSapper,
+  IconScully,
   IconServerlessFunctions,
   IconServerSmall,
   IconServerSmallDark,
@@ -283,6 +285,12 @@ const SidebarMenuItems: ISidebarMenuItems = [
           iconDark: <IconJekyllDark />,
         },
         {
+          title: 'Lit',
+          path: '/guides/lit',
+          icon: <IconLit />,
+          iconDark: <IconLit />,
+        },
+        {
           title: 'MkDocs',
           path: '/guides/mkdocs',
           icon: <IconMKDocs />,
@@ -377,6 +385,12 @@ const SidebarMenuItems: ISidebarMenuItems = [
           path: '/guides/sapper',
           icon: <IconSapper />,
           iconDark: <IconSapper />,
+        },
+        {
+          title: 'Scully',
+          path: '/guides/scully',
+          icon: <IconScully />,
+          iconDark: <IconScully />,
         },
         {
           title: 'Serverless Functions',

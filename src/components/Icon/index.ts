@@ -37,6 +37,7 @@ export * from './IconInstagram';
 export * from './IconIonicX';
 export * from './IconJamstack';
 export * from './IconJekyll';
+export * from './IconLit';
 export * from './IconMKDocs';
 export * from './IconNavArrow';
 export * from './IconNewPage';

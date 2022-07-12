@@ -460,6 +460,10 @@ const SidebarMenuItems: ISidebarMenuItems = [
       sortRoutes: false,
       routes: [
         {
+          title: 'EdgeJS Routing',
+          path: '/guides/routing',
+        },
+        {
           title: 'Common Routing Patterns',
           path: '/guides/cookbook',
         },
@@ -511,6 +515,10 @@ const SidebarMenuItems: ISidebarMenuItems = [
         {
           title: 'Incremental Static (Re)generation',
           path: '/guides/isg',
+        },
+        {
+          title: 'Image Optimization',
+          path: '/guides/image_optimization',
         },
         {
           title: 'Performance',
@@ -594,6 +602,19 @@ const SidebarMenuItems: ISidebarMenuItems = [
       ],
     },
     {
+      title: 'Observability',
+      icon: <IconSparkPlain />,
+      iconDark: <IconSparkPlainDark />,
+      path: 'observability',
+      sortRoutes: false,
+      routes: [
+        {
+          title: 'Core Web Vitals',
+          path: '/guides/core_web_vitals',
+        },
+      ],
+    },
+    {
       title: 'Accounts & Teams',
       icon: <IconUserPlain />,
       iconDark: <IconUserPlainDark />,
@@ -617,6 +638,10 @@ const SidebarMenuItems: ISidebarMenuItems = [
       path: 'reference',
       sortRoutes: true,
       routes: [
+        {
+          title: 'Edgio Security Suite',
+          path: '/guides/security',
+        },
         {
           title: 'Managed Rule Groups',
           path: '/guides/managed_rule_groups',

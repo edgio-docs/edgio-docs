@@ -59,6 +59,7 @@ export * from './IconRss';
 export * from './IconSaber';
 export * from './IconSapper';
 export * from './IconSearch';
+export * from './IconScully';
 export * from './IconServer';
 export * from './IconServerlessFunctions';
 export * from './IconServerSmall';

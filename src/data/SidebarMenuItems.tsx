@@ -486,6 +486,12 @@ const SidebarMenuItems: ISidebarMenuItems = [
           iconDark: <IconSapper />,
         },
         {
+          title: 'Scully',
+          path: '/guides/scully',
+          icon: <IconScully />,
+          iconDark: <IconScully />,
+        },
+        {
           title: 'Serverless Functions',
           path: '/guides/serverless_functions',
           icon: <IconServerlessFunctions />,

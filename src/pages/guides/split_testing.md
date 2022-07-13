@@ -124,6 +124,10 @@ The experience the user sees is determined by the traffic split percentage you s
 
 When a split test is active, {{ PRODUCT_NAME }} will automatically set a `{{ COOKIE_PREFIX }}_destination` cookie to the name of the chosen destination. You can access this value in the browser and use it to report the split test experience assignment to your analytics. This cookie is present in both the inter- and intra-site (environment) configurations.
 
+## Cache Key
+
+The default cache key includes the `{{ COOKIE_PREFIX }}_destination` cookie. As such, you do not need to define additional headers to further the cache key. Each destination is cached independently and as long as someone doesn’t manually change their cookies, they will be served cached content from the correct bucket.
+
 ## Security, Redirects and Split Tests {/*security-redirects-and-split-tests*/}
 
 Each environment defines security rules, redirect rules, and split test rules. When traffic is processed by the {{ PRODUCT_NAME }} servers, the `host` header is used to determine which environment rules are executed. Normally when you have multiple environments you access each of them using different `host` headers. E.g. `www.mysite.com` to access a `production` environment and `new.mysite.com` to access the `new` environment. In this scenario each environment can have its own security rules and redirect rules. Requests arriving at `www.mysite.com` execute the rules in the `production` environment. Requests arriving at `new.mysite.com` execute the rules in the `new` environment.

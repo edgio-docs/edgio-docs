@@ -650,7 +650,7 @@ const SidebarMenuItems: ISidebarMenuItems = [
           path: '/guides/response_headers',
         },
         {
-          title: 'Limits',
+          title: 'Limits and Caveats',
           path: '/guides/limits',
         },
         {

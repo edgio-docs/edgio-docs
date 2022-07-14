@@ -63,6 +63,7 @@ const connectSrcDomains = [
   '*.segment.io',
   '*.segment.com',
   'analytics.google.com',
+  '*.google-analytics.com',
   '*.intercom.io',
   '*.intercomcdn.com',
   '*.intercomassets.com',

@@ -28,7 +28,6 @@ function GAnalytics() {
   return (
     <div>
       <Script
-        id="google-analytics"
         src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_TRACKING_ID}`}
         strategy="afterInteractive"></Script>
       <Script id="google-analytics" strategy="afterInteractive">

@@ -5131,11 +5131,6 @@ functional-red-black-tree@^1.0.1:
   resolved "https://registry.yarnpkg.com/functional-red-black-tree/-/functional-red-black-tree-1.0.1.tgz#1b0ab3bd553b2a0d6399d29c0e3ea0b252078327"
   integrity sha1-GwqzvVU7Kg1jmdKcDj6gslIHgyc=
 
-ga-lite@^2.1.6:
-  version "2.1.6"
-  resolved "https://registry.yarnpkg.com/ga-lite/-/ga-lite-2.1.6.tgz#829fcc6bf0637675fec1c52313ccdee49cc06642"
-  integrity sha512-zhRorLrhoXl2wIAq13rIdPEQN6uu1SpQG/sGgsRPMDKWXmj7ZpMzP/6k/OtCtGJiJlsZZl/sqoalybkZ9r7cYQ==
-
 gauge@^3.0.0:
   version "3.0.2"
   resolved "https://registry.yarnpkg.com/gauge/-/gauge-3.0.2.tgz#03bf4441c044383908bcfa0656ad91803259b395"

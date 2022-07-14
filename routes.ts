@@ -53,6 +53,9 @@ const scriptSrcDomains = [
   '*.hotjar.com',
   's.adroll.com',
   'px4.ads.linkedin.com',
+  '*.google-analytics.com',
+  '*.googletagmanager.com',
+  'googletagmanager.com',
 ].sort();
 
 const connectSrcDomains = [

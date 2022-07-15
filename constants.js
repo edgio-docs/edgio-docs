@@ -1,4 +1,4 @@
-const PRODUCT_NAME = 'AppOps';
+const PRODUCT_NAME = 'Edgio';
 const PRODUCT_NAME_LOWER = PRODUCT_NAME.toLowerCase();
 const PRODUCT_NAME_UPPER = PRODUCT_NAME.toUpperCase();
 const CLI_NAME = '0';

@@ -53,7 +53,8 @@ Component names within the header are abbreviated:
 | Type | Description |
 | ------------ | -------------- |
 | t | Total time (example: `eht`) total time as measured by edge HAProxy) |
-| f | Fetch time (example: `gdf`) total fetch time time as measured by global DPS) |
+| f | Fetch time (example: `gdf`) total fetch time as measured by global DPS) |
+| u | Upstream fetch time (example: `pu` total upstream fetch time as measured by serverless load balancer, requested through WAF)
 | c | Cache status (example: `ecc=miss,...,gcc=hit`) miss on the edge pop, hit on the global pop |
 | bt | Billed time (example: `wbt`) serverless billed time as measured by serverless load balancer) |
 

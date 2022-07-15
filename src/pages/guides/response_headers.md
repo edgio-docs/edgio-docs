@@ -47,6 +47,7 @@ Component names within the header are abbreviated:
 | gd  | DPS on global POP                |
 | p   | Serverless Load Balancer         |
 | w   | Lambda workers                   |
+| pu  | Proxy upstream or customer origin|
 
 #### Telemetry Types {/*telemetry-types*/}
 | Type | Description |

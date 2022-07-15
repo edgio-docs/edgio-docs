@@ -55,7 +55,7 @@ the Header component in your theme as follows:
 ```js
 // mars-theme/src/components/header.js
 import { useEffect } from 'react'
-import { install } from '{{ CLI_NAME }}/prefetch/window'
+import { install } from '{{ PACKAGE_NAME }}/prefetch/window'
 
 const Header = ({ state }) => {
   useEffect(() => {
@@ -63,8 +63,6 @@ const Header = ({ state }) => {
       install()
     }
   }, [])
-
-  /* ... */
 }
 ```
 
@@ -78,7 +76,9 @@ import { Prefetch } from '{{ PACKAGE_NAME }}/react'
 function MyComponent() {
   return (
     <Prefetch url="/some/data/url.json">
-      {/* When this link is scrolled into view, /some/data/url.json in JSON will be fetched in the background and put in the browser cache */}
+      {/* When this link is scrolled into view, */}
+      {/* /some/data/url.json in JSON will be fetched in */}
+      {/* the background and put in the browser cache */}
       <a href="/link/to/page">My Page</a>
     </Prefetch>
   )

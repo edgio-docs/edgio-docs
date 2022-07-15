@@ -17,7 +17,7 @@ Using the Router, you can:
 
 You define routes for {{ PRODUCT_NAME }} using the `routes.js` file.
 
-Before continuing, if you have not already initialized your project with {{ PRODUCT_NAME }}, do so using the instructions in [WebApp CDN](/guides/webapp_cdn_getting_started).
+Before continuing, if you have not already initialized your project with {{ PRODUCT_NAME }}, do so using the instructions in [Web CDN](/guides/webapp_cdn_getting_started).
 
 The `routes.js` file should export an instance of `{{ PACKAGE_NAME }}/core/router/Router`:
 

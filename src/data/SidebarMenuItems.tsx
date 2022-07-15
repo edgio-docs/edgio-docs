@@ -133,11 +133,11 @@ const SidebarMenuItems: ISidebarMenuItems = [
       sortRoutes: false,
       routes: [
         {
-          title: 'WebApp CDN',
+          title: 'Web CDN',
           path: '/guides/webapp_cdn_getting_started',
         },
         {
-          title: 'Jamstack',
+          title: 'Web Application Frameworks',
           path: '/guides/jamstack_getting_started',
         },
         {
@@ -155,7 +155,7 @@ const SidebarMenuItems: ISidebarMenuItems = [
       ],
     },
     {
-      title: 'CDN',
+      title: 'Web CDN',
       icon: <IconServerSmall />,
       iconDark: <IconServerSmallDark />,
       path: 'cdn',

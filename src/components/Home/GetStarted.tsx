@@ -135,7 +135,7 @@ export default function GetStarted({children}: {children: React.ReactNode}) {
         />
         <GetStartedCard
           icon={IconSecurity}
-          title="Security"
+          title="App Security"
           subtitle="Edgio's App Security keeps your apps protected without sacrificing performance."
           href="/guides/security"
           hrefText="Learn More"

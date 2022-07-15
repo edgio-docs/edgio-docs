@@ -1,5 +1,5 @@
 ---
-title: WebApp CDN
+title: Web CDN
 ---
 
 Deploying your web application behind {{ PRODUCT_NAME }} is the fastest and easiest way to start seeing the performance benefits made possible by the {{ PRODUCT_NAME }} edge network. In this guide we'll show you how to:
@@ -13,7 +13,7 @@ If any point, you want a more [detailed guide](/guides/traditional_sites), we've
 ## Example {/*example*/}
 
 <ExampleButtons
-  title="WebApp CDN"
+  title="Web CDN"
   siteUrl="https://layer0-docs-cdn-starter-template-default.layer0-limelight.link"
   repoUrl="https://github.com/layer0-docs/layer0-cdn-example" 
   deployFromRepo />

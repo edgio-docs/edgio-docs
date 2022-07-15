@@ -77,7 +77,7 @@ To reduce serverless cold-start times, limit the packages listed in the `depende
 
 Ember fastboot apps should always have the following in {{ CONFIG_FILE }}:
 
-```js filename="/layer0.config.js"
+```js filename="/{{ CONFIG_FILE }}"
 module.exports = {
   connector: '{{ CLI_NAME }}/fastboot',
   includeNodeModules: true, // this ensures that package.json dependencies are uploaded to the cloud

@@ -369,7 +369,7 @@ If you set the `fallback` property in the [generate](https://nuxtjs.org/docs/2.x
 
 ## includeFiles {/*includefiles*/}
 
-Nuxt requires that certain resources are included in a build and deploy to have access to them. As such, at times this will require additional configuration. To include additional resources for server side rendering, API calls, etc., use the `includeFiles` option in your `layer0.config.js` file. [Read more](/guides/layer0_config#section_includefiles)
+Nuxt requires that certain resources are included in a build and deploy to have access to them. As such, at times this will require additional configuration. To include additional resources for server side rendering, API calls, etc., use the `includeFiles` option in your `{{ CONFIG_FILE }}` file. [Read more](/guides/layer0_config#section_includefiles)
 
 In this example, we would have an `api` folder that we want to include all items from.
 

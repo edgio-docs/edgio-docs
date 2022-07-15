@@ -69,10 +69,10 @@ See [ResponseWriter](/docs/api/core/classes/_router_responsewriter_.responsewrit
 
 ## Modifying a response from the origin {/*modifying-a-response-from-the-origin*/}
 
-Serverless functions can be used to modify responses from the origin by using the `proxy` function with the `transformResponse` option. First, configure an origin by adding a `backend` to `layer0.config.js` in the root of your project:
+Serverless functions can be used to modify responses from the origin by using the `proxy` function with the `transformResponse` option. First, configure an origin by adding a `backend` to `{{ CONFIG_FILE }}` in the root of your project:
 
 ```js
-// layer0.config.js
+// {{ CONFIG_FILE }}
 module.exports = {
   backends: {
     origin: {

@@ -1,5 +1,6 @@
 import * as React from 'react';
 
+import {CONFIG_FILE} from '../../constants';
 import {
   IconAngular,
   IconAstro,
@@ -660,7 +661,7 @@ const SidebarMenuItems: ISidebarMenuItems = [
           path: '/guides/layer0_migration',
         },
         {
-          title: 'layer0.config.js',
+          title: CONFIG_FILE,
           path: '/guides/layer0_config',
         },
       ],

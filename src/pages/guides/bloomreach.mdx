@@ -49,7 +49,7 @@ The {{ PRODUCT_NAME }} sample is a deploy of the Bloomreach [Reference SPA](http
 
 The sample application does the following things:
 
-- All API requests are routed to the same _domain_. The requests are then routed to the appropriate Bloomreach API via {{ PRODUCT_NAME }}'s routing framework to either the BRXM API or the GraphQL endpoint. This is done via a combination of the `layer0.config.js` file and the `routes.ts` file.
+- All API requests are routed to the same _domain_. The requests are then routed to the appropriate Bloomreach API via {{ PRODUCT_NAME }}'s routing framework to either the BRXM API or the GraphQL endpoint. This is done via a combination of the `{{ CONFIG_FILE }}` file and the `routes.ts` file.
 - [Caching](/guides/prefetching) configuration for GraphQL operations, API operations, and static operations have been added in the `routes.ts` file.
 - To view [Prefetching](/guides/prefetching) in operation, view the `<Link />` component. This wraps menu items and category items to prefetch the content of those links to allow content to be served from instantly from the browser's cache.
 

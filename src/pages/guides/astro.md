@@ -78,7 +78,7 @@ export default new Router()
   })
 ```
 
-You can remove the origin backend from `layer0.config.js`:
+You can remove the origin backend from `{{ CONFIG_FILE }}`:
 
 ```js
 module.exports = {}

@@ -40,7 +40,7 @@ If you do not have an account yet, visit [{{ PRODUCT_NAME }}]({{ APP_URL }}/sign
 You can use either `npm` or `yarn`.
 
 ```bash
-npm i -g {{ PACKAGE_NAME }}/cli # yarn global add {{ PACKAGE_NAME }}/cli
+npm i -g {{ PACKAGE_NAME }}/cli
 ```
 
 ```bash
@@ -58,10 +58,33 @@ yarn global add {{ PACKAGE_NAME }}/cli
 After you run `{{ CLI_NAME }} init`, {{ PRODUCT_NAME }} creates the following files:
 
 - `routes.js`: defines routes to be cached and prefetched, as well as what to pass through without modification and what to serve up as static content
-- `layer0.config.js`: various configuration options to tune your project
+- `{{ CONFIG_FILE }}`: various configuration options to tune your project
+
+## Configure Backend to Proxy {/*configure-backend-to-proxy*/}
+
+To proxy your existing site with {{ PRODUCT_NAME }}, we'll need to define that backend in the [`{{ CONFIG_FILE }}`](layer0_config) file that was just created.
+
+```js filename="./{{ CONFIG_FILE}}"
+// This file was automatically added by layer0 deploy.
+// You should commit this file to source control.
+module.exports = {
+  backends: {
+    origin: {
+      // The domain name or IP address of the origin server
+      domainOrIp: "example.com",
+
+      // When provided, the following value will be sent as the host header 
+      // when connecting to the origin. If omitted, the host header from 
+      // the browser will be forwarded to the origin.
+      hostHeader: "example.com"
+    },
+  },
+}
+```
+
 ## Configure Caching {/*configure-caching*/}
 
-We need to configure caching in our newly created project. The project contains some generic starter routes already, but these should be customized to fit your site. These routes should be added in the `routes.js` file.
+We need to configure caching in our newly-created project. The project contains some generic starter routes already, but these should be customized to fit your site. These routes should be added in the `routes.js` file.
 
 At this point, the only item that should require changing is a path match. We provide a basic sample to get you started.
 ### Routes File {/*routes-file*/}
@@ -91,6 +114,8 @@ export default new Router()
   // send any unmatched request to origin
   .fallback(({ proxy }) => proxy('origin'))
 ```
+
+This example will proxy and cache at the edge all requests that match the path pattern defined using `.match(...)`. The `.fallback(...)` handler takes all unmatched requests and also proxies them to `origin`, a backend that we just defined inside the [`{{ CONFIG_FILE }}`](layer0_config) file.
 
 #### Cache Constants {/*cache-constants*/}
 Cache constants in the `routes.js` have been abstracted out to enable reuse across different routes. You can also add additional constants such as year.

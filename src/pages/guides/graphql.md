@@ -81,7 +81,7 @@ export default new Router().graphqlOperation('GetProduct', ({ cache, proxy }) =>
       staleWhileRevalidateSeconds: 60 * 60 * 24, // serve stale responses for up to 24 hours
     },
   })
-  proxy('graphql') // forward requests to the GraphQL API origin we defined in layer0.config.js
+  proxy('graphql') // forward requests to the GraphQL API origin we defined in {{ CONFIG_FILE }}
 })
 ```
 

@@ -83,7 +83,7 @@ sources: [
 ]
 ```
 
-## Example layer0.config.js {/*examplelayer0config*/}
+## Example {{ CONFIG_FILE }} {/*examplelayer0config*/}
 
 ```js
 // This file was automatically added by layer0 deploy.

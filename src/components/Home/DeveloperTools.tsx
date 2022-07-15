@@ -1,4 +1,4 @@
-import _ from 'lodash';
+import sortBy from 'lodash/sortBy';
 import Link from 'next/link';
 import styled from 'styled-components';
 
@@ -13,7 +13,7 @@ const StyledComp = styled(StyledFeatureSection)``;
 export default function DeveloperTools() {
   const parentPath = 'dev-tools';
   const allRoutes = getChildrenRoutesFromSidebarMenuItems(parentPath);
-  const allRoutesSorted = _.sortBy(allRoutes, 'title');
+  const allRoutesSorted = sortBy(allRoutes, 'title');
 
   const routesByColumns = [allRoutesSorted];
 
@@ -22,7 +22,7 @@ export default function DeveloperTools() {
       <SectionHeader
         Icon={IconCode}
         title="Developer Tools"
-        subtitle="Tools that help developer understand how their site interacts with Layer0."
+        subtitle="Tools that help developer understand how their site interacts with AppOps."
       />
 
       <div className="route-items">

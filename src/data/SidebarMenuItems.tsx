@@ -639,7 +639,7 @@ const SidebarMenuItems: ISidebarMenuItems = [
           path: '/guides/managed_rule_groups',
         },
         {
-          title: 'Layer0 for Traditional Sites',
+          title: 'App Edge for Traditional Sites',
           path: '/guides/traditional_sites',
         },
         {
@@ -663,7 +663,7 @@ const SidebarMenuItems: ISidebarMenuItems = [
           path: '/guides/install_nodejs',
         },
         {
-          title: 'Deploy to Layer0 Button',
+          title: 'Deploy to App Edge Button',
           path: '/guides/deploy_to_layer0',
         },
         {
@@ -688,7 +688,7 @@ const SidebarMenuItems: ISidebarMenuItems = [
       sortRoutes: true,
       routes: [
         {
-          title: 'Layer0 Tutorials',
+          title: 'AppOps Tutorials',
           path: 'https://vimeo.com/user/776463/folder/9270726',
           external: true,
         },

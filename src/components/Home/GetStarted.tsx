@@ -114,29 +114,29 @@ export default function GetStarted({children}: {children: React.ReactNode}) {
       <div className="cards">
         <GetStartedCard
           icon={IconWebAppCDN}
-          title="WebApp CDN"
-          subtitle="Deploy your web application and start seeing the performance benefits with the Layer0 Edge Network."
+          title="Web CDN"
+          subtitle="Deploy your web application and start seeing the performance benefits with the Edgio App Edge Network."
           href="/guides/webapp_cdn_getting_started"
           hrefText="Deploy now"
         />
         <GetStartedCard
           icon={IconJamstack}
-          title="Jamstack"
-          subtitle="Deploy static and dynamic Jamstack sites that run on Layer0’s severless functions."
+          title="Web Application Frameworks"
+          subtitle="Deploy static and dynamic Jamstack sites that run on Edgio AppOps' severless functions."
           href="/guides/jamstack_getting_started"
           hrefText="View Supported Frameworks"
         />
         <GetStartedCard
           icon={IconGraphQLCDN}
           title="GraphQL CDN"
-          subtitle="Scale and secure your GraphQL API using the Layer0 global CDN and Edge JS."
+          subtitle="Scale and secure your GraphQL API using the App Edge global CDN and EdgeJS."
           href="/guides/graphql"
           hrefText="1-click Deploy"
         />
         <GetStartedCard
           icon={IconSecurity}
           title="Security"
-          subtitle="Managed security keeps your apps protected without sacrificing performance."
+          subtitle="Edgio's App Security keeps your apps protected without sacrificing performance."
           href="/guides/security"
           hrefText="Learn More"
         />

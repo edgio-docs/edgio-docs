@@ -212,7 +212,7 @@ export default function FrameworkGuides() {
       <SectionHeader
         Icon={IconBook}
         title="Framework Guides"
-        subtitle="Utilize Layer0 CDN on your pre-existing site, or use one of our templates."
+        subtitle="Utilize Web CDN on your pre-existing site, or use one of our templates."
       />
 
       <div className="route-items">

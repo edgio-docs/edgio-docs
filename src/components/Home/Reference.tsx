@@ -1,4 +1,4 @@
-import _ from 'lodash';
+import sortBy from 'lodash/sortBy';
 import Link from 'next/link';
 import styled from 'styled-components';
 
@@ -13,7 +13,7 @@ const StyledComp = styled(StyledFeatureSection)``;
 export default function Reference() {
   const parentPath = 'reference';
   const allRoutes = getChildrenRoutesFromSidebarMenuItems(parentPath);
-  const allRoutesSorted = _.sortBy(allRoutes, 'title');
+  const allRoutesSorted = sortBy(allRoutes, 'title');
 
   const routesByColumns = [
     allRoutesSorted?.slice(0, 6),
@@ -26,7 +26,7 @@ export default function Reference() {
       <SectionHeader
         Icon={IconStacks}
         title="Reference"
-        subtitle="Additional helpful information in regards to getting the most out of Layer0."
+        subtitle="Additional helpful information in regards to getting the most out of AppOps."
       />
 
       <div className="route-items">

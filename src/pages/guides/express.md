@@ -43,12 +43,12 @@ When you deploy your Express app to {{ PRODUCT_NAME }}, the {{ PRODUCT_NAME }} C
 - app.js
 - index.js
 
-If it cannot find one of these files, you can specify the path to the app in `layer0.config.js`:
+If it cannot find one of these files, you can specify the path to the app in `{{ CONFIG_FILE }}`:
 
 ```js
 const { join } = require('path')
 
-// layer0.config.js
+// {{ CONFIG_FILE }}
 module.exports = {
   connector: '@layer0/express',
   express: {
@@ -84,7 +84,7 @@ export default new Router()
 
 ## Adding Additional Files Needed during SSR {/*adding-additional-files-needed-during-ssr*/}
 
-If your express app expects to be able to read files from the filesystem at runtime, for example an index.html template, you can ensure they are included in the app bundle that is deployed to Layer0's serverless workers by adding the following to layer0.config.js
+If your express app expects to be able to read files from the filesystem at runtime, for example an index.html template, you can ensure they are included in the app bundle that is deployed to Layer0's serverless workers by adding the following to {{ CONFIG_FILE }}
 
 ```js
 module.exports = {

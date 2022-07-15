@@ -100,7 +100,7 @@ it('should run the /search route', () => {
 
 If the route being tested has an upstream request or serves a static file, you will want to mock these requests and responses. This decouples your unit tests from your upstream and application logic, focusing just on how the router responds to the given request. For this, we use `nock` along with `appHost`, `backendHost`, and `staticHost` imported from `@layer0/core/testing-utils`.
 
-These functions reference the backend entries defined in your `layer0.config.js` file.
+These functions reference the backend entries defined in your `{{ CONFIG_FILE }}` file.
 
 #### Mocking _appHost_ Example {/*mocking-apphost-example*/}
 
@@ -136,10 +136,10 @@ it('should cache the collections page at the edge for 1 hour', async () => {
 
 #### Mocking _backendHost_ Example {/*mocking-backendhost-example*/}
 
-Routes that use `proxy` to fetch from a backend can be mocked using `backendHost(name)`, where `name` is the key used for the backend defined in `layer0.config.js`.
+Routes that use `proxy` to fetch from a backend can be mocked using `backendHost(name)`, where `name` is the key used for the backend defined in `{{ CONFIG_FILE }}`.
 
 ```js
-// layer0.config.js
+// {{ CONFIG_FILE }}
 module.exports = {
   routes: './src/routes.ts',
   backends: {

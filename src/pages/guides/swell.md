@@ -157,7 +157,7 @@ Refer to the [Deploying](deploying) guide for more information on the `deploy` c
 }
 ```
 
-2. To include the `confing` and `modules` directories in the production build, update your `layer0.config.js` as follows:
+2. To include the `confing` and `modules` directories in the production build, update your `{{ CONFIG_FILE }}` as follows:
 
 ```diff
 'use strict'

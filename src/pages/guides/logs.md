@@ -124,7 +124,7 @@ Destination, determined by split testing rules, if any; if no rules, the value i
 
 ### be {/*be*/}
 
-Backend, determined by the routing rules. The names come from the `backends` structure exported from your `layer0.config.js` file.
+Backend, determined by the routing rules. The names come from the `backends` structure exported from your `{{ CONFIG_FILE }}` file.
 
 ### bk {/*bk*/}
 

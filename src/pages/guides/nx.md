@@ -72,7 +72,7 @@ Open `package.json` and change the `scripts > build` to the following:
 "build": "nx build layer0-nx-next-app",
 ```
 
-Open `layer0.config.js` and change the contents to the following:
+Open `{{ CONFIG_FILE }}` and change the contents to the following:
 
 ```js
 module.exports = {

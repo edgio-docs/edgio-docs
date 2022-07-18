@@ -1,4 +1,9 @@
-const PRODUCT_NAME = 'Edgio';
+const COMPANY_NAME = 'Edgio';
+const PRODUCT_NAME = 'Layer0'; // legacy
+const PRODUCT = 'AppOps';
+const PRODUCT_EDGE = 'App Edge';
+const PRODUCT_PLATFORM = 'App Platform';
+const PRODUCT_SECURITY = 'App Security';
 const PRODUCT_NAME_LOWER = PRODUCT_NAME.toLowerCase();
 const PRODUCT_NAME_UPPER = PRODUCT_NAME.toUpperCase();
 const CLI_NAME = '0';
@@ -75,6 +80,14 @@ npm i -g ${PACKAGE_NAME}/cli # yarn global add {{ PACKAGE_NAME }}/cli
 const PARTNERS_CONTACT = `partner@llnw.com`;
 
 module.exports = {
+  COMPANY_NAME,
+  PRODUCT,
+  PRODUCT_EDGE,
+  PRODUCT_PLATFORM,
+  PRODUCT_SECURITY,
+  PRODUCT_NAME,
+  PRODUCT_NAME_LOWER,
+  PRODUCT_NAME_UPPER,
   APP_DOMAIN,
   APP_URL,
   CLI_NAME,
@@ -98,9 +111,6 @@ module.exports = {
   NODE_VERSION,
   PACKAGE_NAME,
   PARTNERS_CONTACT,
-  PRODUCT_NAME_LOWER,
-  PRODUCT_NAME_UPPER,
-  PRODUCT_NAME,
   SIGN_UP_LAYER0,
   STARTER_NAME,
   STATUS_URL,

@@ -85,15 +85,15 @@ This will automatically add all of the required dependencies and files to your p
 
 If your project does not have a `next.config.js` file, one will automatically be added when you run `{{ CLI_NAME }} init`. Doing so adds two plugins:
 
-- `with{{ PRODUCT_NAME }}` (required)
+- `with{{ PRODUCT_LEGACY }}` (required)
 - `withServiceWorker` (optional)
 
 If your project already has this config file, you need to add these plugins yourself.
 
 ```js
-const { with{{ PRODUCT_NAME }}, withServiceWorker } = require('{{ PACKAGE_NAME }}/next/config')
+const { with{{ PRODUCT_LEGACY }}, withServiceWorker } = require('{{ PACKAGE_NAME }}/next/config')
 
-module.exports = with{{ PRODUCT_NAME }}(
+module.exports = with{{ PRODUCT_LEGACY }}(
   withServiceWorker({
     // Output source maps so that stack traces have original source filenames and line numbers when tailing
     // the logs in the {{ PRODUCT_NAME }} developer console.
@@ -102,9 +102,9 @@ module.exports = with{{ PRODUCT_NAME }}(
 )
 ```
 
-### with{{ PRODUCT_NAME }} {/*withlayer0*/}
+### with{{ PRODUCT_LEGACY }} {/*withlayer0*/}
 
-The `with{{ PRODUCT_NAME }}` plugin optimizes the Next.js build for running on {{ PRODUCT_NAME }}. It is required to deploy your application on {{ PRODUCT_NAME }} and accepts the following parameters:
+The `with{{ PRODUCT_LEGACY }}` plugin optimizes the Next.js build for running on {{ PRODUCT_NAME }}. It is required to deploy your application on {{ PRODUCT_NAME }} and accepts the following parameters:
 
 - `{{ FULL_CLI_NAME }}SourceMaps`: Defaults to `false`. Set to `true` to add server-side source maps so that stack traces have original source filenames and line numbers when tailing the logs in the {{ PRODUCT_NAME }} developer console. This will increase the serverless bundle size but will not affect performance. If you find that your app exceeds the maximum serverless bundle size allowed by {{ PRODUCT_NAME }}, you can disable this option to conserve space.
 
@@ -121,9 +121,9 @@ The `withServiceWorker` plugin builds a service worker from `sw/service-worker.j
 By default, [Devtools](/guides/devtools) are enabled on production builds of Next.js with {{ PRODUCT_NAME }}. To disable devtools in production, add the `disableLayer0DevTools` flag:
 
 ```js
-const { with{{ PRODUCT_NAME }}, withServiceWorker } = require('{{ PACKAGE_NAME }}/next/config')
+const { with{{ PRODUCT_LEGACY }}, withServiceWorker } = require('{{ PACKAGE_NAME }}/next/config')
 
-module.exports = with{{ PRODUCT_NAME }}(
+module.exports = with{{ PRODUCT_LEGACY }}(
   withServiceWorker({
     // Output source maps so that stack traces have original source filenames and line numbers when tailing
     // the logs in the {{ PRODUCT_NAME }} developer console.
@@ -440,10 +440,10 @@ export async function getStaticProps({ locale }) {
 Make sure you also import the config correctly with the new name into your `next.config.js`:
 
 ```js
-const { with{{ PRODUCT_NAME }}, withServiceWorker } = require('{{ PACKAGE_NAME }}/next/config')
+const { with{{ PRODUCT_LEGACY }}, withServiceWorker } = require('{{ PACKAGE_NAME }}/next/config')
 const { i18n } = require('./i18next.config')
 
-module.exports = with{{ PRODUCT_NAME }}(
+module.exports = with{{ PRODUCT_LEGACY }}(
   withServiceWorker({
     // Output source maps so that stack traces have original source filenames and line numbers when tailing
     // the logs in the {{ PRODUCT_NAME }} developer console.

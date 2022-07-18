@@ -145,9 +145,9 @@ We provide a header, `x-0-caching-status` to best understand why something is be
 Set `{{ FULL_CLI_NAME }}SourceMaps: true` in your `next.config.js`:
 
 ```js filename="./next.config.js"
-const { withLayer0, withServiceWorker } = require('@layer0/next/config')
+const { with{{ PRODUCT_LEGACY }}, withServiceWorker } = require('@layer0/next/config')
 
-module.exports = withLayer0(
+module.exports = with{{ PRODUCT_LEGACY }}(
   withServiceWorker({
     // Output sourcemaps so that stacktraces have original source filenames and line numbers when tailing
     // the logs in the {{ PRODUCT }} developer console.

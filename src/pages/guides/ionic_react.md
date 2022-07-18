@@ -14,7 +14,7 @@ This guide shows you how to deploy a [Ionic React](https://ionicframework.com/do
 
 {{ SYSTEM_REQUIREMENTS }}
 
-{{ SIGN_UP_LAYER0 }}
+{{ SIGN_UP }}
 
 ## Install the {{ PRODUCT_NAME }} CLI {/*install-the-layer0-cli*/}
 

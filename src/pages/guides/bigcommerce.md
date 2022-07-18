@@ -18,7 +18,7 @@ This example is a Next.js app powered by a BigCommerce backend.
   repoUrl="https://github.com/layer0-docs/layer0-nextjs-commerce-example" 
   deployFromRepo />
 
-{{ SIGN_UP_LAYER0 }}
+{{ SIGN_UP }}
 
 ## Install the {{ PRODUCT_NAME }} CLI {/* install-the-layer0-cli*/}
 

@@ -2,7 +2,7 @@
 title: Web CDN
 ---
 
-Deploying your web application behind {{ PRODUCT_NAME }} is the fastest and easiest way to start seeing the performance benefits made possible by the {{ PRODUCT_NAME }} edge network. In this guide we'll show you how to:
+Deploying your web application behind {{ PRODUCT_NAME }} is the fastest and easiest way to start seeing the performance benefits made possible by the {{ PRODUCT_EDGE }} network. In this guide we'll show you how to:
 
 - Create a new {{ PRODUCT_NAME }} project
 - Configure edge caching using EdgeJS
@@ -20,34 +20,23 @@ If any point, you want a more [detailed guide](/guides/traditional_sites), we've
 
 ## Network Diagram {/*network-diagram*/}
 
-As shown below, {{ PRODUCT_NAME }} becomes the main CDN for your site:
+As shown below, {{ PRODUCT }} becomes the main CDN for your site:
 
 ![traffic](/images/starter/traffic.svg)
 
-Requests for your site will now pass through {{ PRODUCT_NAME }}'s globally distributed edge network and then to your origin server.
+Requests for your site will now pass through {{ PRODUCT }}'s globally distributed edge network and then to your origin server.
 
-A full production deployment requires changing your site's DNS to allow requests to come to {{ PRODUCT_NAME }} first. View our [production guide](/guides/production) for that process.
+A full production deployment requires changing your site's DNS to allow requests to come to {{ PRODUCT }} first. View our [production guide](/guides/production) for that process.
 
-## Create an Account {/*create-an-account*/}
-
-If you do not have an account yet, visit [{{ PRODUCT_NAME }}]({{ APP_URL }}/signup) to create one.
+{{ SIGN_UP }}
 
 {{ SYSTEM_REQUIREMENTS }}
 
-## Create a New {{ PRODUCT_NAME }} Project {/*create-a-new-layer0-project*/}
+{{ INSTALL_CLI }}
 
-1. Install the {{ PRODUCT_NAME }} CLI.
-You can use either `npm` or `yarn`.
+## Create your project {/*create-your-project*/}
 
-```bash
-npm i -g {{ PACKAGE_NAME }}/cli
-```
-
-```bash
-yarn global add {{ PACKAGE_NAME }}/cli
-```
-
-2. Create your project with the following command:
+Now that the CLI has been installed, create a new project using:
 
 ```bash
 {{ CLI_NAME }} init

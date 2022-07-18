@@ -14,7 +14,7 @@ This guide shows you how to deploy a [React Static](https://github.com/react-sta
 
 {{ SYSTEM_REQUIREMENTS }}
 
-{{ SIGN_UP_LAYER0 }}
+{{ SIGN_UP }}
 
 ## Install the {{ PRODUCT_NAME }} CLI {/*install-the-layer0-cli*/}
 

@@ -12,7 +12,7 @@ This guide shows you how to deploy a [Vue.js](https://vuejs.org/) application on
   repoUrl="https://github.com/layer0-docs/layer0-static-vuejs-example" 
   deployFromRepo />
 
-{{ SIGN_UP_LAYER0 }}
+{{ SIGN_UP }}
 
 ## Install the {{ PRODUCT_NAME }} CLI {/*install-the-layer0-cli*/}
 

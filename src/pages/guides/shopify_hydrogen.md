@@ -24,7 +24,7 @@ You’ve installed the following dependencies:
 {{ PRODUCT_NAME }} production runtime targets Node {{ NODE_VERSION }}. There may be some unexpected behavior building your project with a later version. See the <a href="/guides/install_nodejs#production-version">Node.js</a> guide for more information.
 </Callout>
 
-{{ SIGN_UP_LAYER0 }}
+{{ SIGN_UP }}
 
 ## Install the {{ PRODUCT_NAME }} CLI {/*install-the-layer0-cli*/}
 

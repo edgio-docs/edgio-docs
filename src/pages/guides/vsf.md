@@ -16,7 +16,7 @@ Here's an example Vue Storefront 2 app running on Layer0:
   repoUrl="https://github.com/layer0-docs/layer0-vue-storefront-commercetools-example" 
   deployFromRepo />
 
-{{ SIGN_UP_LAYER0 }}
+{{ SIGN_UP }}
 
 ## Install the {{ PRODUCT_NAME }} CLI {/*install-the-layer0-cli*/}
 

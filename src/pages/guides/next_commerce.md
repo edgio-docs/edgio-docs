@@ -20,7 +20,7 @@ Here is an example of the [Next.js Commerce](https://nextjs.org/commerce) templa
   </ButtonLink>
 </ButtonLinksGroup>
 
-{{ SIGN_UP_LAYER0 }}
+{{ SIGN_UP }}
 
 ## Install the {{ PRODUCT_NAME }} CLI {/*install-the-layer0-cli*/}
 

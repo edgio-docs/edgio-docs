@@ -23,9 +23,9 @@ Here we use [Next.js](https://nextjs.org/) for the example Nx project.
   repoUrl="https://github.com/layer0-docs/layer0-nx-example" 
   deployFromRepo />
 
-{{ SIGN_UP_LAYER0 }}
+{{ SIGN_UP }}
 
-{{ INSTALL_LAYER0_CLI }}
+{{ INSTALL_CLI }}
 
 {{ SYSTEM_REQUIREMENTS }}
 

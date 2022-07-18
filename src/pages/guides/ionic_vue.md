@@ -14,7 +14,7 @@ This guide shows you how to deploy a [Ionic Vue](https://ionicframework.com/docs
 
 {{ SYSTEM_REQUIREMENTS }}
 
-{{ SIGN_UP_LAYER0 }}
+{{ SIGN_UP }}
 
 ## Install the {{ PRODUCT_NAME }} CLI {/*install-the-layer0-cli*/}
 

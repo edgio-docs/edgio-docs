@@ -1,5 +1,5 @@
 const COMPANY_NAME = 'Edgio';
-const PRODUCT_NAME = 'Layer0'; // legacy
+const PRODUCT_NAME = 'Edgio'; // legacy
 const PRODUCT = 'AppOps';
 const PRODUCT_EDGE = 'App Edge';
 const PRODUCT_PLATFORM = 'App Platform';
@@ -63,17 +63,22 @@ const SYSTEM_REQUIREMENTS_H3 = `### System Requirements {/*system-requirements*/
 
 - [Install Node.js 14.19.0](/guides/install_nodejs)`;
 
-const SIGN_UP_LAYER0 = `## Sign up for ${PRODUCT_NAME} {/*sign-up-for-${PRODUCT_NAME_LOWER}*/}
+const SIGN_UP = `## Sign up for ${PRODUCT} {/*sign-up-for-${PRODUCT_NAME_LOWER}*/}
 
-Deploying requires an account on ${PRODUCT_NAME}. <a href="${APP_URL}/signup">Sign up here for free.</a>`;
+Deploying requires an account on ${PRODUCT}. <a href="${APP_URL}/signup">Sign up here for free.</a>`;
 
-const INSTALL_LAYER0_CLI = `## Install the ${PRODUCT_NAME} CLI {/* install-the--product_name--cli */}
+const INSTALL_CLI = `## Install the ${PRODUCT_NAME} CLI {/* install-the-layer0-cli */}
 
 If you have not already done so, install the [${PRODUCT_NAME} CLI](cli).
 
-
+With NPM: 
 \`\`\`bash
-npm i -g ${PACKAGE_NAME}/cli # yarn global add {{ PACKAGE_NAME }}/cli
+npm i -g ${PACKAGE_NAME}/cli
+\`\`\`
+
+With Yarn:
+\`\`\`bash
+yarn global add ${PACKAGE_NAME}/cli
 \`\`\`
 `;
 
@@ -107,11 +112,11 @@ module.exports = {
   FULL_CLI_NAME,
   HEADER_PREFIX,
   HELP_URL,
-  INSTALL_LAYER0_CLI,
+  INSTALL_CLI,
   NODE_VERSION,
   PACKAGE_NAME,
   PARTNERS_CONTACT,
-  SIGN_UP_LAYER0,
+  SIGN_UP,
   STARTER_NAME,
   STATUS_URL,
   SUPPORT_URL,

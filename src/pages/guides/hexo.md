@@ -14,7 +14,7 @@ This guide shows you how to deploy a [Hexo](https://hexo.io/) application on {{ 
 
 {{ SYSTEM_REQUIREMENTS }}
 
-{{ SIGN_UP_LAYER0 }}
+{{ SIGN_UP }}
 
 ## Install the {{ PRODUCT_NAME }} CLI {/*install-the-layer0-cli*/}
 

@@ -2,6 +2,7 @@ import sortBy from 'lodash/sortBy';
 import Link from 'next/link';
 import styled from 'styled-components';
 
+import {PRODUCT} from '../../../constants';
 import {getChildrenRoutesFromSidebarMenuItems} from '../../utils/getChildrenRoutesFromSidebarMenuItems';
 import {IconCode} from '../Icon/IconCode';
 
@@ -22,7 +23,7 @@ export default function DeveloperTools() {
       <SectionHeader
         Icon={IconCode}
         title="Developer Tools"
-        subtitle="Tools that help developer understand how their site interacts with AppOps."
+        subtitle={`Tools that help developer understand how their site interacts with ${PRODUCT}.`}
       />
 
       <div className="route-items">

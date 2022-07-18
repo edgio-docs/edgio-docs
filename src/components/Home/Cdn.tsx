@@ -2,6 +2,7 @@ import sortBy from 'lodash/sortBy';
 import Link from 'next/link';
 import styled from 'styled-components';
 
+import {PRODUCT, PRODUCT_EDGE} from '../../../constants';
 import {getChildrenRoutesFromSidebarMenuItems} from '../../utils/getChildrenRoutesFromSidebarMenuItems';
 import {IconServer} from '../Icon/IconServer';
 
@@ -25,7 +26,7 @@ export default function Cdn() {
       <SectionHeader
         Icon={IconServer}
         title="CDN"
-        subtitle="Accelerate and secure your app using the App Edge global CDN and EdgeJS."
+        subtitle={`Accelerate and secure your app using the ${PRODUCT} ${PRODUCT_EDGE} and EdgeJS.`}
       />
 
       <div className="route-items">

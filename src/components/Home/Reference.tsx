@@ -2,6 +2,7 @@ import sortBy from 'lodash/sortBy';
 import Link from 'next/link';
 import styled from 'styled-components';
 
+import {PRODUCT} from '../../../constants';
 import {getChildrenRoutesFromSidebarMenuItems} from '../../utils/getChildrenRoutesFromSidebarMenuItems';
 import {IconStacks} from '../Icon/IconStacks';
 
@@ -26,7 +27,7 @@ export default function Reference() {
       <SectionHeader
         Icon={IconStacks}
         title="Reference"
-        subtitle="Additional helpful information in regards to getting the most out of AppOps."
+        subtitle={`Additional helpful information in regards to getting the most out of ${PRODUCT}.`}
       />
 
       <div className="route-items">

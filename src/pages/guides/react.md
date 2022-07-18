@@ -6,7 +6,7 @@ This guide shows you how to serve a [React](https://reactjs.org/) application on
 
 ## Example {/*example*/}
 
-Here's an example React app running on Layer0:
+Here's an example React app running on {{ PRODUCT }}:
 
 <ExampleButtons
   title="React"
@@ -33,7 +33,7 @@ npx create-react-app layer0-cra
 cd layer0-cra
 {{ CLI_NAME }} init
 # Pick the following options for questions
-# > Add Layer0 to the current app
+# > Add {{ PRODUCT }} to the current app
 # Hostname of origin site > layer0-docs-layer0-examples-api-default.layer0-limelight.link
 ```
 

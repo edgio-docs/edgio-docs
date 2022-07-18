@@ -88,7 +88,7 @@ module.exports = {
 
 Options:
 
-- `{{ FULL_CLI_NAME }}SourceMaps: true|false`: when true, the serverless build includes sourcemap files which make debugging easier when tailing the server logs in the Layer0 Developer Console. It also increases the serverless bundle size, which may push your deployments over the 50MB (compressed) limit.
+- `{{ FULL_CLI_NAME }}SourceMaps: true|false`: when true, the serverless build includes sourcemap files which make debugging easier when tailing the server logs in the {{ PRODUCT }} Developer Console. It also increases the serverless bundle size, which may push your deployments over the 50MB (compressed) limit.
 
 <Callout type="warning">
   We noticed some performance issues related to sourcemaps being loaded in our Serverless infrastructure, which may result in 539 project timeout errors. In case you encounter such errors, please try again with sourcemaps disabled. This document will be updated once the problem is fully resolved.
@@ -117,7 +117,7 @@ This command will also update your `package.json` with the following changes:
 - Adds `@nuxt/core` to `dependencies`
 - Adds several `scripts` to run the available `{{{ CLI_NAME }}` commands
 
-## Run Swell app locally on Layer0 {/*run-swell-app-locally-on-layer0*/}
+## Run Swell app locally on {{ PRODUCT }} {/*run-swell-app-locally-on-layer0*/}
 
 Run the Swell app with the command:
 
@@ -127,7 +127,7 @@ Run the Swell app with the command:
 
 Load the site: http://127.0.0.1:3000
 
-Setting --production runs your app exactly as it will be uploaded to the Layer0 cloud using serverless-offline.
+Setting --production runs your app exactly as it will be uploaded to the {{ PRODUCT }} cloud using serverless-offline.
 
 ## Deploying {/*deploying*/}
 

@@ -78,7 +78,7 @@ npm run dev
   
   The production version of your app will be running at http://localhost:3000. You can inspect and deploy the compiled version of your Node.js Hydrogen storefront from dist/node.
 
-  NOTE: This step will be auto configured when building with Layer0 as you follow the next steps.
+  NOTE: This step will be auto configured when building with {{ PRODUCT }} as you follow the next steps.
 
 2. Apply middleware
 
@@ -123,7 +123,7 @@ module.exports = {
 }
 ```
 
-### Creating Layer0 connector files {/*creating-layer0-connector-files*/}
+### Creating {{ PRODUCT }} connector files {/*creating-layer0-connector-files*/}
 
 - Install `@vercel/nft` for Node.js File Tracing, by the following command:
   ```bash

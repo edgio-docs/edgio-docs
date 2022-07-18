@@ -2,11 +2,11 @@
 title: Serverless Functions
 ---
 
-Layer0 makes it easy to develop, test, and deploy serverless functions without a JavaScript framework. Simply declare your routes and use the `compute` function or `proxy` with the `transformResponse` option to compute responses based on your own custom logic.
+{{ PRODUCT }} makes it easy to develop, test, and deploy serverless functions without a JavaScript framework. Simply declare your routes and use the `compute` function or `proxy` with the `transformResponse` option to compute responses based on your own custom logic.
 
 ## Getting Started {/*getting-started*/}
 
-To create a new Layer0 project using serverless functions, run:
+To create a new {{ PRODUCT }} project using serverless functions, run:
 
 ```bash
 npx @layer0/cli@latest init
@@ -79,7 +79,7 @@ module.exports = {
       // The domain name or IP address for the origin server
       domainOrIp: 'origin.example.com',
 
-      // Optionally set a host header for Layer0 to send when connecting to the origin.
+      // Optionally set a host header for {{ PRODUCT }} to send when connecting to the origin.
       // If omitted, the host header will be forwarded from the browser.
       hostHeader: 'origin.example.com',
     },
@@ -185,7 +185,7 @@ To test your project locally, run:
 
 This will start your project in watch mode. Any changes your make to your source code will instantly take effect without restarting.
 
-## Deploying your project to Layer0 {/*deploying-your-project-to-layer0*/}
+## Deploying your project to {{ PRODUCT }} {/*deploying-your-project-to-layer0*/}
 
 To deploy your project, run:
 
@@ -195,6 +195,6 @@ To deploy your project, run:
 
 ## Limits {/*limits*/}
 
-Layer0 serverless functions have a maximum runtime of 20 seconds per request. If a function exceeds this limit, Layer0 will respond with a 539 status.
+{{ PRODUCT }} serverless functions have a maximum runtime of 20 seconds per request. If a function exceeds this limit, {{ PRODUCT }} will respond with a 539 status.
 
 See [Limits](/guides/limits#section_request_and_response_limits) for more information.

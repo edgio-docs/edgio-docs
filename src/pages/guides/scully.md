@@ -55,9 +55,9 @@ Run {{ PRODUCT_NAME }} on your local machine:
 
 Load the site http://127.0.0.1:3000
 
-## Deploy to Layer0 {/*deploy-to-layer0*/}
+## Deploy to {{ PRODUCT }} {/*deploy-to-layer0*/}
 
-To deploy your site to Layer0, run:
+To deploy your site to {{ PRODUCT }}, run:
 
 ```bash
 0 deploy

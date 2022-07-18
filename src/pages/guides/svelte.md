@@ -57,7 +57,7 @@ This will automatically update your `package.json` and add all of the required {
 - `{{ CONFIG_FILE }}` - A configuration file for {{ PRODUCT_NAME }}
 - `routes.js` - A default routes file that sends all requests to Svelte.
 
-### Adding Layer0 Service Worker {/*adding-layer0-service-worker*/}
+### Adding {{ PRODUCT }} Service Worker {/*adding-layer0-service-worker*/}
 
 To add service worker to your Svelte app, run the following in the root folder of your project:
 

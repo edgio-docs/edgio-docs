@@ -31,7 +31,7 @@ Here we use [Next.js](https://nextjs.org/) for the example Nx project.
 
 ## Start a Nx project from scratch {/*start-a-nx-project-from-scratch*/}
 
-The following steps take you through set-up of a new Nx workspace. The same process can be used to add Layer0 to your existing Nx repo.
+The following steps take you through set-up of a new Nx workspace. The same process can be used to add {{ PRODUCT }} to your existing Nx repo.
 
 ### Generate the Nx workspace {/*generate-the-nx-workspace*/}
 

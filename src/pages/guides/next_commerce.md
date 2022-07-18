@@ -16,7 +16,7 @@ Here is an example of the [Next.js Commerce](https://nextjs.org/commerce) templa
    View the Code
   </ButtonLink>
   <ButtonLink variant="stroke" type="deploy" withIcon={true} href="https://app.layer0.co/deploy?button&deploy&repo=https%3A%2F%2Fgithub.com%2Flayer0-docs%2Flayer0-nextjs-commerce-example">
-    Deploy to Layer0
+    Deploy to {{ PRODUCT }}
   </ButtonLink>
 </ButtonLinksGroup>
 
@@ -34,10 +34,10 @@ npm i -g {{ PACKAGE_NAME }}/cli # yarn global add {{ PACKAGE_NAME }}/cli
 
 ## Deploy the Example {/*deploy-the-example*/}
 
-Quickly launch an example with no code by clicking the "Deploy to Layer0" button.
+Quickly launch an example with no code by clicking the "Deploy to {{ PRODUCT }}" button.
 
 <ButtonLink variant="stroke" type="deploy" withIcon={true} href="https://app.layer0.co/deploy?button&deploy&repo=https%3A%2F%2Fgithub.com%2Flayer0-docs%2Flayer0-nextjs-commerce-example">
-  Deploy to Layer0
+  Deploy to {{ PRODUCT }}
 </ButtonLink>
 
 ## Deploying the official Next.js Commerce repository {/*deploying-the-official-nextjs-commerce-repository*/}

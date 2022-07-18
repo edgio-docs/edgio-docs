@@ -1,12 +1,12 @@
 const COMPANY_NAME = 'Edgio';
 const PRODUCT_NAME = 'Edgio';
+const PRODUCT = 'Edgio';
 const PRODUCT_LEGACY = 'Layer0';
-const PRODUCT = 'AppOps';
 const PRODUCT_EDGE = 'App Edge';
 const PRODUCT_PLATFORM = 'App Platform';
 const PRODUCT_SECURITY = 'App Security';
-const PRODUCT_NAME_LOWER = PRODUCT_NAME.toLowerCase();
-const PRODUCT_NAME_UPPER = PRODUCT_NAME.toUpperCase();
+const PRODUCT_NAME_LOWER = PRODUCT_LEGACY.toLowerCase();
+const PRODUCT_NAME_UPPER = PRODUCT_LEGACY.toUpperCase();
 const CLI_NAME = '0';
 const FULL_CLI_NAME = 'layer0';
 const PACKAGE_NAME = '@layer0';
@@ -68,7 +68,7 @@ const SIGN_UP = `## Sign up for ${PRODUCT} {/*sign-up-for-${PRODUCT_NAME_LOWER}*
 
 Deploying requires an account on ${PRODUCT}. <a href="${APP_URL}/signup">Sign up here for free.</a>`;
 
-const INSTALL_CLI = `## Install the ${PRODUCT_NAME} CLI {/* install-the-layer0-cli */}
+const INSTALL_CLI_STEP = `Install the ${PRODUCT_NAME} CLI {/* install-the-layer0-cli */}
 
 If you have not already done so, install the [${PRODUCT_NAME} CLI](cli).
 
@@ -82,6 +82,8 @@ With \`yarn\`:
 yarn global add ${PACKAGE_NAME}/cli
 \`\`\`
 `;
+
+const INSTALL_CLI = `## ${INSTALL_CLI_STEP}`;
 
 const PARTNERS_CONTACT = `partner@llnw.com`;
 
@@ -115,6 +117,7 @@ module.exports = {
   HEADER_PREFIX,
   HELP_URL,
   INSTALL_CLI,
+  INSTALL_CLI_STEP,
   NODE_VERSION,
   PACKAGE_NAME,
   PARTNERS_CONTACT,

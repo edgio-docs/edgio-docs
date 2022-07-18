@@ -2,9 +2,9 @@
 title: MkDocs
 ---
 
-[MkDocs](https://www.mkdocs.org/) is a fast, simple and downright gorgeous static site generator that's geared towards building project documentation. Follow the steps below to deploy your MkDocs site to Layer0
+[MkDocs](https://www.mkdocs.org/) is a fast, simple and downright gorgeous static site generator that's geared towards building project documentation. Follow the steps below to deploy your MkDocs site to {{ PRODUCT }}
 
-## Create your MkDocs site
+## Create your MkDocs site {/*create-your-mkdocs-site*/}
 
 If you don't have an existing MkDocs site, you can create one by running:
 
@@ -16,7 +16,7 @@ mkdocs new my-project
 cd my-project
 ```
 
-## Add Layer0
+## Add {{ PRODUCT }} {/*add-edgio*/}
 
 Create a `package.json` at the root of your project with the following:
 ```json
@@ -37,14 +37,14 @@ Create a `package.json` at the root of your project with the following:
 ```
 
 ```bash
-# First, globally install the Layer0 CLI:
+# First, globally install the {{ PRODUCT }} CLI:
 npm i -g {{ PACKAGE_NAME }}/cli # yarn global add {{ PACKAGE_NAME }}/cli
 
-# Then, add Layer0 to your MkDocs site:
+# Then, add {{ PRODUCT }} to your MkDocs site:
 0 init
 ```
 
-## Update your Layer0 Router
+## Update your {{ PRODUCT }} Router {/*update-your-edgio-router*/}
 
 Paste the following into routes.js:
 
@@ -86,14 +86,14 @@ router.match('/:path*', ({ serveStatic, cache }) => {
 export default router
 ```
 
-## Deploy to Layer0
+## Deploy to {{ PRODUCT }} {/*deploy-to-edgio*/}
 
-To deploy your site to Layer0, run:
+To deploy your site to {{ PRODUCT }}, run:
 
 ```bash
 # Create a production build of your mkdocs site
 npm run build
 
-# Deploy it to Layer0
+# Deploy it to {{ PRODUCT }}
 0 deploy
 ```

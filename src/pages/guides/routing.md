@@ -480,7 +480,7 @@ The `.catch` method allows the edge router to render a response based on the res
 
 ## Environment Edge Redirects {/*environment-edge-redirects*/}
 
-In addition to sending redirects at the edge within the router configuration, this can also be configured at the environment level within the Layer0 Developer Console.
+In addition to sending redirects at the edge within the router configuration, this can also be configured at the environment level within the {{ PRODUCT }} Developer Console.
 
 Under _&lt;Your Environment&gt; &#8594; Configuration_, click _Edit_ to draft a new configuration. Scroll down to the _Redirects_ section:
 ![redirects](/images/environments/redirects.png)

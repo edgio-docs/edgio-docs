@@ -73,7 +73,7 @@ module.exports = {
 
 Options:
 
-- `{{ FULL_CLI_NAME }}SourceMaps: true|false`: when true, the serverless build includes sourcemap files which make debugging easier when tailing the server logs in the Layer0 Developer Console. It also increases the serverless bundle size, which may push your deployments over the 50MB (compressed) limit.
+- `{{ FULL_CLI_NAME }}SourceMaps: true|false`: when true, the serverless build includes sourcemap files which make debugging easier when tailing the server logs in the {{ PRODUCT }} Developer Console. It also increases the serverless bundle size, which may push your deployments over the 50MB (compressed) limit.
 
 <Callout type="warning">
   We noticed some performance issues related to sourcemaps being loaded in our Serverless infrastructure, which may result in 539 project timeout errors. In case you encounter such errors, please try again with sourcemaps disabled. This document will be updated once the problem is fully resolved.
@@ -391,7 +391,7 @@ includeFiles: {
 
 The Nuxt team provides a renderer called [Nitro](https://www.npmjs.com/package/@nuxt/nitro) which optimizes your application for serverless deployment and greatly minimizes the size of your server application bundle. If you're running into the size limitation for serverless bundles (50MB), you might try adding Nitro to your app. As of June 2021 Nitro is still not production ready, so use at your own risk.
 
-Layer0 provides a connector specifically for Nuxt apps that use nitro called `@layer0/nuxt-nitro`.
+{{ PRODUCT }} provides a connector specifically for Nuxt apps that use nitro called `@layer0/nuxt-nitro`.
 
 To add Nitro to your app, make the following changes:
 

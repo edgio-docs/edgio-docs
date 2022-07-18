@@ -8,7 +8,7 @@ For adding {{ PRODUCT_NAME }} to Vue Storefront 1 app follow this [guide](/guide
 
 ## Example {/*example*/}
 
-Here's an example Vue Storefront 2 app running on Layer0:
+Here's an example Vue Storefront 2 app running on {{ PRODUCT }}:
 
 <ExampleButtons
   title="Vue Storefront"

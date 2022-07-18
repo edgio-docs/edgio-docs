@@ -116,7 +116,7 @@ module.exports = new Router()
     })
   })
   .match('/build/:path*', ({ cache }) => {
-    // route build output files through Layer0
+    // route build output files through {{ PRODUCT }}
     cache({
       edge: {
         maxAgeSeconds: ONE_DAY,

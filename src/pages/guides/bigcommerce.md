@@ -144,7 +144,7 @@ For this next step you will need the store hash (available in the URL bar) and t
      --header 'Content-Type: application/json' \
      --header 'X-Auth-Token: {API_ACCESS_TOKEN}' \
      --data '{
-       "name": "Layer0",
+       "name": "{{ PRODUCT }}",
        "platform": "custom",
        "type": "storefront",
        "status": "connected",

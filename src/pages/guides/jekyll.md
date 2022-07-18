@@ -4,7 +4,7 @@ title: Jekyll
 
 [Jekyll](https://jekyllrb.com/) is a static site generator. It takes text written in your favorite markup language and uses layouts to create a static website. You can tweak the site's look and feel, URLs, the data displayed on the page, and more.
 
-## Create your Jekyll site
+## Create your Jekyll site {/*create-your-jekyll-site*/}
 
 If you don't have an existing Jekyll site, you can create one by running:
 
@@ -14,18 +14,18 @@ jekyll new my-jekyll-site
 cd my-jekyll-site
 ```
 
-## Add Layer0
+## Add {{ PRODUCT }} {/*add-edgio*/}
 
 ```bash
-# First, globally install the Layer0 CLI:
+# First, globally install the {{ PRODUCT }} CLI:
 npm i -g {{ PACKAGE_NAME }}/cli # yarn global add {{ PACKAGE_NAME }}/cli
 # Next, create a stub package.json:
 npm init
-# Then, add Layer0 to your Jekyll site:
+# Then, add {{ PRODUCT }} to your Jekyll site:
 0 init
 ```
 
-## Update your Layer0 Router
+## Update your {{ PRODUCT }} Router {/*update-your-edgio-router*/}
 
 Paste the following into `routes.js`:
 
@@ -60,14 +60,14 @@ export default new Router()
   })
 ```
 
-## Deploy to Layer0
+## Deploy to {{ PRODUCT }} {/*deploy-to-edgio*/}
 
-To deploy your site to Layer0, run:
+To deploy your site to {{ PRODUCT }}, run:
 
 ```bash
 # Create a production build of your Jekyll site
 bundle exec jekyll build
 
-# Deploy it to Layer0
+# Deploy it to {{ PRODUCT }}
 0 deploy
 ```

@@ -27,11 +27,11 @@ This framework has a connector developed for {{ PRODUCT_NAME }}. See [Connectors
 ## Prerequisites {/*prerequisites*/}
 
 1. Install the [{{ PRODUCT_NAME }} CLI](cli).
-2. Sign up for a [Layer0 account](https://app.layer0.co/signup).
+2. Sign up for a [{{ PRODUCT }} account](https://app.layer0.co/signup).
 
 ## Getting Started {/*getting-started*/}
 
-Follow the instructions to create a new Nuxt3 application, run it in a local dev server, and deploy to Layer0.
+Follow the instructions to create a new Nuxt3 application, run it in a local dev server, and deploy to {{ PRODUCT }}.
 
 #### 1. Create a new Nuxt3 application {/*1-create-a-new-nuxt3-application*/}
 
@@ -57,17 +57,17 @@ npm install
 yarn install
 ```
 
-#### 2. Add Layer0 to the Nuxt3 application {/*2-add-layer0-to-the-nuxt3-application*/}
+#### 2. Add {{ PRODUCT }} to the Nuxt3 application {/*2-add-layer0-to-the-nuxt3-application*/}
 
-To add Layer0 to the Nuxt3 application, run:
+To add {{ PRODUCT }} to the Nuxt3 application, run:
 
 ```bash
 {{ CLI_NAME }} init
 ```
 
-#### 3. Run the Nuxt3 app locally with Layer0 {/*3-run-the-nuxt3-app-locally-with-layer0*/}
+#### 3. Run the Nuxt3 app locally with {{ PRODUCT }} {/*3-run-the-nuxt3-app-locally-with-layer0*/}
 
-To run the Nuxt3 app locally with Layer0, run:
+To run the Nuxt3 app locally with {{ PRODUCT }}, run:
 
 ```bash
 {{ CLI_NAME }} dev
@@ -75,11 +75,11 @@ To run the Nuxt3 app locally with Layer0, run:
 
 Vist [http://localhost:3001](http://localhost:3001) to view the application.
 
-#### 4. Deploy the Nuxt3 app to Layer0 {/*4-deploy-the-nuxt3-app-to-layer0*/}
+#### 4. Deploy the Nuxt3 app to {{ PRODUCT }} {/*4-deploy-the-nuxt3-app-to-layer0*/}
 
 Note: Add or update the `name` field in the `package.json` file.
 
-To deploy the Nuxt3 app to Layer0, run:
+To deploy the Nuxt3 app to {{ PRODUCT }}, run:
 
 ```bash
 {{ CLI_NAME }} deploy

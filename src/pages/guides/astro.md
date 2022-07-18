@@ -33,17 +33,17 @@ npm run dev
 npm run build
 ```
 
-## Add Layer0 {/*add-layer0*/}
+## Add {{ PRODUCT }} {/*add-layer0*/}
 
 ```bash
-# First, globally install the Layer0 CLI:
+# First, globally install the {{ PRODUCT }} CLI:
 npm i -g {{ PACKAGE_NAME }}/cli # yarn global add {{ PACKAGE_NAME }}/cli
 
-# Then, add Layer0 to your Astro site:
+# Then, add {{ PRODUCT }} to your Astro site:
 0 init
 ```
 
-## Update your Layer0 Router {/*update-your-layer0-router*/}
+## Update your {{ PRODUCT }} Router {/*update-your-layer0-router*/}
 
 Paste the following into `routes.js` or `routes.ts`, depending on the results of the `0 init` command:
 
@@ -84,14 +84,14 @@ You can remove the origin backend from `{{ CONFIG_FILE }}`:
 module.exports = {}
 ```
 
-## Deploy to Layer0 {/*deploy-to-layer0*/}
+## Deploy to {{ PRODUCT }} {/*deploy-to-layer0*/}
 
-To deploy your site to Layer0, run:
+To deploy your site to {{ PRODUCT }}, run:
 
 ```bash
 # Create a production build of your astro site
 npm run build
 
-# Deploy it to Layer0
+# Deploy it to {{ PRODUCT }}
 0 deploy
 ```

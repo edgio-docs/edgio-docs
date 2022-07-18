@@ -2,7 +2,7 @@
 title: Express
 ---
 
-[Express](https://expressjs.com) is a fast, unopinionated, minimalist web framework for Node.js. The Layer0 serverless environment makes it easy to run apps without managing Node.js servers.
+[Express](https://expressjs.com) is a fast, unopinionated, minimalist web framework for Node.js. The {{ PRODUCT }} serverless environment makes it easy to run apps without managing Node.js servers.
 
 ## Getting Started {/*getting-started*/}
 
@@ -15,7 +15,7 @@ npm i -g {{ PACKAGE_NAME }}/cli # yarn global add {{ PACKAGE_NAME }}/cli
 
 ## Running your app locally {/*running-your-app-locally*/}
 
-To run your app behind Layer0 locally, run:
+To run your app behind {{ PRODUCT }} locally, run:
 
 ```bash
 0 dev
@@ -31,7 +31,7 @@ To deploy your app to {{ PRODUCT_NAME }}, run:
 
 ## Overriding the default app location {/*overriding-the-default-app-location*/}
 
-When you deploy your Express app to {{ PRODUCT_NAME }}, the {{ PRODUCT_NAME }} CLI bundles your app as a single javascript file so that it can be run as a serverless function. By default Layer0 looks for your app in a few common locations:
+When you deploy your Express app to {{ PRODUCT_NAME }}, the {{ PRODUCT_NAME }} CLI bundles your app as a single javascript file so that it can be run as a serverless function. By default {{ PRODUCT }} looks for your app in a few common locations:
 
 - src/server.ts
 - src/server.js
@@ -61,7 +61,7 @@ The file you specify in `appPath` should export an instance of an express app us
 
 ## Serving Static Assets {/*serving-static-assets*/}
 
-If your express app serves any static assets, you'll need to add routes to your Layer0 router to serve them from the edge. For example, to serve all paths under `/assets` from `dist/client/assets`:
+If your express app serves any static assets, you'll need to add routes to your {{ PRODUCT }} router to serve them from the edge. For example, to serve all paths under `/assets` from `dist/client/assets`:
 
 ```js
 // routes.js
@@ -84,7 +84,7 @@ export default new Router()
 
 ## Adding Additional Files Needed during SSR {/*adding-additional-files-needed-during-ssr*/}
 
-If your express app expects to be able to read files from the filesystem at runtime, for example an index.html template, you can ensure they are included in the app bundle that is deployed to Layer0's serverless workers by adding the following to {{ CONFIG_FILE }}
+If your express app expects to be able to read files from the filesystem at runtime, for example an index.html template, you can ensure they are included in the app bundle that is deployed to {{ PRODUCT }}'s serverless workers by adding the following to {{ CONFIG_FILE }}
 
 ```js
 module.exports = {
@@ -99,5 +99,5 @@ module.exports = {
 
 ## Transpiling and TypeScript support {/*transpiling-and-typescript-support*/}
 
-Layer0 will automatically transpile JavaScript and TypeScript source code for running on Node.js version 14. If you want to control how
+{{ PRODUCT }} will automatically transpile JavaScript and TypeScript source code for running on Node.js version 14. If you want to control how
 source files are compiled, you can transpile your app on your own and point your `appPath` config to the transpiled version of your app's main entry point.

@@ -1,7 +1,12 @@
 import Link from 'next/link';
 import styled from 'styled-components';
 
-import {PRODUCT, PRODUCT_EDGE, PRODUCT_SECURITY} from '../../../constants';
+import {
+  PRODUCT,
+  PRODUCT_EDGE,
+  PRODUCT_PLATFORM,
+  PRODUCT_SECURITY,
+} from '../../../constants';
 import {IconJamstack} from '../Icon/IconJamstack';
 import {IconSecurity} from '../Icon/IconSecurity';
 import {IconWebAppCDN} from '../Icon/IconWebAppCDN';
@@ -122,7 +127,7 @@ export default function GetStarted({children}: {children: React.ReactNode}) {
         />
         <GetStartedCard
           icon={IconJamstack}
-          title="Web Application Frameworks"
+          title={PRODUCT_PLATFORM}
           subtitle={`Deploy static and dynamic Jamstack sites that run on ${PRODUCT}'s severless functions.`}
           href="/guides/jamstack_getting_started"
           hrefText="View Supported Frameworks"

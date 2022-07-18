@@ -1,5 +1,6 @@
 const COMPANY_NAME = 'Edgio';
-const PRODUCT_NAME = 'Edgio'; // legacy
+const PRODUCT_NAME = 'Edgio';
+const PRODUCT_LEGACY = 'Layer0';
 const PRODUCT = 'AppOps';
 const PRODUCT_EDGE = 'App Edge';
 const PRODUCT_PLATFORM = 'App Platform';
@@ -71,12 +72,12 @@ const INSTALL_CLI = `## Install the ${PRODUCT_NAME} CLI {/* install-the-layer0-c
 
 If you have not already done so, install the [${PRODUCT_NAME} CLI](cli).
 
-With NPM: 
+With \`npm\`: 
 \`\`\`bash
 npm i -g ${PACKAGE_NAME}/cli
 \`\`\`
 
-With Yarn:
+With \`yarn\`:
 \`\`\`bash
 yarn global add ${PACKAGE_NAME}/cli
 \`\`\`
@@ -87,6 +88,7 @@ const PARTNERS_CONTACT = `partner@llnw.com`;
 module.exports = {
   COMPANY_NAME,
   PRODUCT,
+  PRODUCT_LEGACY,
   PRODUCT_EDGE,
   PRODUCT_PLATFORM,
   PRODUCT_SECURITY,

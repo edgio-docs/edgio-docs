@@ -40,7 +40,10 @@ jobs:
         with:
           number: ${{ steps.finder.outputs.pr }}
           header: preview
-          message: https://layer0-docs-xdn-docs-${{env.BRANCH_NAME}}.alt.layer0-docs.layer0-perma.link
+          message: |
+            🏛  Permalink:
+
+            https://layer0-docs-xdn-docs-${{env.BRANCH_NAME}}.alt.layer0-docs.layer0-perma.link
       - name: Validate Guide Example Links
         shell: bash
         run: node ./scripts/validateExampleLinks.js

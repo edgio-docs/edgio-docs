@@ -20,11 +20,7 @@ Here is an example of the [Next.js Commerce](https://nextjs.org/commerce) templa
   </ButtonLink>
 </ButtonLinksGroup>
 
-{{ SYSTEM_REQUIREMENTS }}
-
-{{ SIGN_UP }}
-
-{{ INSTALL_CLI }}
+{{ PREREQ }}
 
 ## Deploy the Example {/*deploy-the-example*/}
 

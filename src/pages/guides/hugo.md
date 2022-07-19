@@ -2,7 +2,7 @@
 title: Hugo
 ---
 
-This guide shows you how to deploy a [Hugo](https://gohugo.io) application on the {{ PRODUCT }} platform.
+This guide shows you how to deploy a [Hugo](https://gohugo.io) application to {{ PRODUCT }}.
 
 ## Example {/*example*/}
 
@@ -10,11 +10,7 @@ This guide shows you how to deploy a [Hugo](https://gohugo.io) application on th
   repoUrl="https://github.com/layer0-docs/layer0-hugo-example" 
    />
 
-{{ SYSTEM_REQUIREMENTS }}
-
-{{ SIGN_UP }}
-
-{{ INSTALL_CLI }}
+{{ PREREQ }}
 
 ## Create a new Hugo app {/*create-a-new-hugo-app*/}
 
@@ -78,7 +74,7 @@ hugo new posts/my-first-post.md
 hugo server -D
 ```
 
-## Configuring your Hugo app for {{ PRODUCT }} {/*configuring-your-hugo-app-for-appops*/}
+## Configuring your Hugo app for {{ PRODUCT }} {/*configuring-your-hugo-app-for-edgio*/}
 
 Create a `package.json` at the root of your project with the following:
 
@@ -136,7 +132,7 @@ export default new Router().static('public', ({ cache }) => {
 
 Refer to the [Routing](routing) guide for the full syntax of the `routes.js` file and how to configure it for your use case.
 
-### Run the Hugo app locally on {{ PRODUCT }} {/*run-the-hugo-app-locally-on-appops*/}
+### Run the Hugo app locally on {{ PRODUCT }} {/*run-the-hugo-app-locally-on-edgio*/}
 
 Create a production build of your app by running the following in your project's root directory:
 

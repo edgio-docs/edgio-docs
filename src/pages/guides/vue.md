@@ -2,7 +2,7 @@
 title: Vue.js
 ---
 
-This guide shows you how to deploy a [Vue.js](https://vuejs.org/) application on the {{ PRODUCT }} platform.
+This guide shows you how to deploy a [Vue.js](https://vuejs.org/) application to {{ PRODUCT }}.
 
 ## Example {/*example*/}
 
@@ -12,11 +12,7 @@ This guide shows you how to deploy a [Vue.js](https://vuejs.org/) application on
   repoUrl="https://github.com/layer0-docs/layer0-static-vuejs-example" 
   deployFromRepo />
 
-{{ SYSTEM_REQUIREMENTS }}
-
-{{ SIGN_UP }}
-
-{{ INSTALL_CLI }}
+{{ PREREQ }}
 
 ## Create a new Vue.js app {/*create-a-new-vuejs-app*/}
 
@@ -44,7 +40,7 @@ cd hello-world
 npm run serve
 ```
 
-## Configuring your Vue.js app for {{ PRODUCT }} {/*configuring-your-vuejs-app-for-appops*/}
+## Configuring your Vue.js app for {{ PRODUCT }} {/*configuring-your-vuejs-app-for-edgio*/}
 
 ### Initialize your project {/*initialize-your-project*/}
 
@@ -56,12 +52,12 @@ In the root directory of your project run `{{ CLI_NAME }} init`:
 
 This will automatically update your `package.json` and add all of the required {{ PRODUCT }} dependencies and files to your project. These include:
 
-- The `{{ PACKAGE_NAME }}/core` package - Allows you to declare routes and deploy your application on the {{ PRODUCT }} platform.
+- The `{{ PACKAGE_NAME }}/core` package - Allows you to declare routes and deploy your application to {{ PRODUCT }}.
 - The `{{ PACKAGE_NAME }}/prefetch` package - Allows you to configure a service worker to prefetch and cache pages to improve browsing speed
 - `{{ CONFIG_FILE }}` - A configuration file for {{ PRODUCT }}
 - `routes.js` - A default routes file that sends all requests to Vue.js.
 
-### Adding {{ PRODUCT }} Service Worker {/*adding-appops-service-worker*/}
+### Adding {{ PRODUCT }} Service Worker {/*adding-edgio-service-worker*/}
 
 To add service worker to your Vue app, run the following in the root folder of your project:
 
@@ -173,7 +169,7 @@ The example above assumes you're using Vue as a single page app. It routes the s
 
 Refer to the [Routing](routing) guide for the full syntax of the `routes.js` file and how to configure it for your use case.
 
-### Run the Vue.js app locally on {{ PRODUCT }} {/*run-the-vuejs-app-locally-on-appops*/}
+### Run the Vue.js app locally on {{ PRODUCT }} {/*run-the-vuejs-app-locally-on-edgio*/}
 
 Create a production build of your app by running the following in your project's root directory:
 

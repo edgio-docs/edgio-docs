@@ -2,7 +2,7 @@
 title: Hexo
 ---
 
-This guide shows you how to deploy a [Hexo](https://hexo.io/) application on the {{ PRODUCT }} platform.
+This guide shows you how to deploy a [Hexo](https://hexo.io/) application to {{ PRODUCT }}.
 
 ## Example {/*example*/}
 
@@ -12,11 +12,7 @@ This guide shows you how to deploy a [Hexo](https://hexo.io/) application on the
   repoUrl="https://github.com/layer0-docs/layer0-hexo-example" 
   deployFromRepo />
 
-{{ SYSTEM_REQUIREMENTS }}
-
-{{ SIGN_UP }}
-
-{{ INSTALL_CLI }}
+{{ PREREQ }}
 
 ## Create a new Hexo app {/*create-a-new-hexo-app*/}
 
@@ -35,7 +31,7 @@ You can verify your app works by running it locally with:
 hexo server
 ```
 
-## Configuring your Hexo app for {{ PRODUCT }} {/*configuring-your-hexo-app-for-appops*/}
+## Configuring your Hexo app for {{ PRODUCT }} {/*configuring-your-hexo-app-for-edgio*/}
 
 ### Initialize your project {/*initialize-your-project*/}
 
@@ -78,7 +74,7 @@ export default new Router().static('public', ({ cache }) => {
 
 Refer to the [Routing](routing) guide for the full syntax of the `routes.js` file and how to configure it for your use case.
 
-### Run the Hexo app locally on {{ PRODUCT }} {/*run-the-hexo-app-locally-on-appops*/}
+### Run the Hexo app locally on {{ PRODUCT }} {/*run-the-hexo-app-locally-on-edgio*/}
 
 Create a production build of your app by running the following in your project's root directory:
 

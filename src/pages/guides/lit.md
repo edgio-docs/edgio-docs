@@ -24,7 +24,7 @@ git clone https://github.com/layer0-docs/layer0-lit-example
 yarn install
 ```
 
-### Run the Lit app locally on {{ PRODUCT }} {/*run-the-lit-app-locally-on-appops*/}
+### Run the Lit app locally on {{ PRODUCT }} {/*run-the-lit-app-locally-on-edgio*/}
 
 Test your app with the {{ PRODUCT_PLATFORM }} in development mode on your local machine by running the following command in your project's root directory:
 

@@ -2,7 +2,7 @@
 title: Serving Static Sites
 ---
 
-This guide shows you how to serve generic static sites on the {{ PRODUCT }} platform.
+This guide shows you how to serve generic static sites to {{ PRODUCT }}.
 
 <Video src="https://player.vimeo.com/video/691615425"/>
 
@@ -28,19 +28,11 @@ Here are a few examples of common static sites served by {{ PRODUCT }}.
   repoUrl="https://github.com/layer0-docs/static-vuejs-example" 
   deployFromRepo />
 
-{{ SYSTEM_REQUIREMENTS }}
-
-{{ SIGN_UP }}
+{{ PREREQ }}
 
 ## Getting Started {/*getting-started*/}
 
-To prepare your static app for deployment on {{ PRODUCT }}, install the {{ PRODUCT }} CLI globally:
-
-```bash
-npm i -g {{ PACKAGE_NAME }}/cli # yarn global add {{ PACKAGE_NAME }}/cli
-```
-
-Then, in the root folder of your project, run:
+To prepare your static app for deployment on {{ PRODUCT }}, run the following command in your project's root directory:
 
 ```bash
 {{ CLI_NAME }} init

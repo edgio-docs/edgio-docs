@@ -4,7 +4,7 @@ title: Nx
 
 [Nx](https://nx.dev/) is a smart, fast and extensible build system with first class monorepo support and powerful integrations. It has a powerful core and a rich plugin ecosystem.
 
-## Nx and {{ PRODUCT }} {/*nx-and-appops*/}
+## Nx and {{ PRODUCT }} {/*nx-and-edgio*/}
 
 Because every Nx project can be different, there are a couple ways to implement it.
 
@@ -23,11 +23,7 @@ Here we use [Next.js](https://nextjs.org/) for the example Nx project.
   repoUrl="https://github.com/layer0-docs/layer0-nx-example" 
   deployFromRepo />
 
-{{ SYSTEM_REQUIREMENTS }}
-
-{{ SIGN_UP }}
-
-{{ INSTALL_CLI }}
+{{ PREREQ }}
 
 ## Start a Nx project from scratch {/*start-a-nx-project-from-scratch*/}
 
@@ -51,7 +47,7 @@ npx create-nx-workspace --preset=next
 
 There will be a series of questions. When the one to choose the `Application name` comes, enter __`{{ PRODUCT_NAME_LOWER }}-nx-next-app`__. The other answers can be of your choosing.
 
-### Add {{ PRODUCT }} to the application {/*add-appops-to-the-application*/}
+### Add {{ PRODUCT }} to the application {/*add-edgio-to-the-application*/}
 
 Because Nx wants dependencies installed at root level, we will `init` the project at root level to install the necesssary packages, but setup configurations to read into the next app we generated. The {{ PRODUCT }} next connector expects to be in the project repo, so we will create our own custom connector with the necesssary configurations.
 

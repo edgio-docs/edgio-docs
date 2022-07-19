@@ -2,7 +2,7 @@
 title: Remix
 ---
 
-This guide shows you how to deploy a [Remix](https://remix.run/) application on the {{ PRODUCT }} platform.
+This guide shows you how to deploy a [Remix](https://remix.run/) application to {{ PRODUCT }}.
 
 ## Example {/*example*/}
 
@@ -12,11 +12,7 @@ This guide shows you how to deploy a [Remix](https://remix.run/) application on 
   repoUrl="https://github.com/layer0-docs/layer0-remix-express-example" 
   deployFromRepo />
 
-{{ SYSTEM_REQUIREMENTS }}
-
-{{ SIGN_UP }}
-
-{{ INSTALL_CLI }}
+{{ PREREQ }}
 
 ## Create a new Remix app {/*create-a-new-remix-app*/}
 
@@ -34,7 +30,7 @@ You can verify your app works by running it locally with:
 npm run dev
 ```
 
-## Configuring your Remix app for {{ PRODUCT }} {/*configuring-your-remix-app-for-appops*/}
+## Configuring your Remix app for {{ PRODUCT }} {/*configuring-your-remix-app-for-edgio*/}
 
 ### Initialize your project {/*initialize-your-project*/}
 
@@ -59,7 +55,7 @@ Install {{ PACKAGE_NAME }}/express by running the following:
 npm install {{ PACKAGE_NAME }}/express
 ```
 
-### Update {{ PRODUCT }} Configuration {/*update-appops-configuration*/}
+### Update {{ PRODUCT }} Configuration {/*update-edgio-configuration*/}
 
 Update `{{ CONFIG_FILE }}` at the root of your project to the following:
 
@@ -125,7 +121,7 @@ module.exports = new Router()
 
 Refer to the [Routing](routing) guide for the full syntax of the `routes.js` file and how to configure it for your use case.
 
-### Run the Remix app locally on {{ PRODUCT }} {/*run-the-remix-app-locally-on-appops*/}
+### Run the Remix app locally on {{ PRODUCT }} {/*run-the-remix-app-locally-on-edgio*/}
 
 Create a production build of your app by running the following in your project's root directory:
 

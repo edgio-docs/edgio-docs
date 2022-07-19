@@ -2,7 +2,7 @@
 title: Saber
 ---
 
-This guide shows you how to deploy a [Saber](https://saber.land) application on the {{ PRODUCT }} platform.
+This guide shows you how to deploy a [Saber](https://saber.land) application to {{ PRODUCT }}.
 
 ## Example {/*example*/}
 
@@ -12,11 +12,7 @@ This guide shows you how to deploy a [Saber](https://saber.land) application on 
   repoUrl="https://github.com/layer0-docs/layer0-saber-example" 
   deployFromRepo />
 
-{{ SYSTEM_REQUIREMENTS }}
-
-{{ SIGN_UP }}
-
-{{ INSTALL_CLI }}
+{{ PREREQ }}
 
 ## Create a new Saber app {/*create-a-new-saber-app*/}
 
@@ -34,7 +30,7 @@ You can verify your app works by running it locally with:
 npm run dev
 ```
 
-## Configuring your Saber app for {{ PRODUCT }} {/*configuring-your-saber-app-for-appops*/}
+## Configuring your Saber app for {{ PRODUCT }} {/*configuring-your-saber-app-for-edgio*/}
 
 ### Initialize your project {/*initialize-your-project*/}
 
@@ -77,7 +73,7 @@ export default new Router().static('public', ({ cache }) => {
 
 Refer to the [Routing](routing) guide for the full syntax of the `routes.js` file and how to configure it for your use case.
 
-### Run the Saber app locally on {{ PRODUCT }} {/*run-the-saber-app-locally-on-appops*/}
+### Run the Saber app locally on {{ PRODUCT }} {/*run-the-saber-app-locally-on-edgio*/}
 
 Create a production build of your app by running the following in your project's root directory:
 

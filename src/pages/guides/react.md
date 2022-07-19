@@ -2,7 +2,7 @@
 title: React
 ---
 
-This guide shows you how to serve a [React](https://reactjs.org/) application on the {{ PRODUCT }} platform. If you're using Next.js specifically, we suggest using the [Next.js guide](/guides/next).
+This guide shows you how to serve a [React](https://reactjs.org/) application to {{ PRODUCT }}. If you're using Next.js specifically, we suggest using the [Next.js guide](/guides/next).
 
 ## Example {/*example*/}
 
@@ -14,17 +14,7 @@ Here's an example React app running on {{ PRODUCT }}:
   repoUrl="https://github.com/layer0-docs/static-react-example" 
   deployFromRepo />
 
-{{ SYSTEM_REQUIREMENTS }}
-
-{{ SIGN_UP }}
-
-## Getting Started {/*getting-started*/}
-
-To prepare your React app for deployment on {{ PRODUCT }}, install the {{ PRODUCT }} CLI globally:
-
-```bash
-npm i -g {{ PACKAGE_NAME }}/cli # yarn global add {{ PACKAGE_NAME }}/cli
-```
+{{ PREREQ }}
 
 ### New project {/*new-project*/}
 

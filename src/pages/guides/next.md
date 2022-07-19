@@ -1,7 +1,7 @@
 ---
 title: Next.js
 ---
-This guide shows you how to deploy a [Next.js](https://nextjs.org/) application on the {{ PRODUCT }} platform.
+This guide shows you how to deploy a [Next.js](https://nextjs.org/) application to {{ PRODUCT }}.
 
 ## Example {/*example*/}
 
@@ -43,6 +43,8 @@ This framework has a connector developed for {{ PRODUCT }}. See [Connectors](con
 - `getInitialProps`
 
 {{ SYSTEM_REQUIREMENTS }}
+
+{{ SIGN_UP }}
 
 ## Getting Started {/*getting-started*/}
 

@@ -2,7 +2,7 @@
 title: Gridsome
 ---
 
-This guide shows you how to deploy a [Gridsome](https://gridsome.org/) application on the {{ PRODUCT }} platform.
+This guide shows you how to deploy a [Gridsome](https://gridsome.org/) application to {{ PRODUCT }}.
 
 ## Example {/*example*/}
 
@@ -12,11 +12,7 @@ This guide shows you how to deploy a [Gridsome](https://gridsome.org/) applicati
   repoUrl="https://github.com/layer0-docs/layer0-gridsome-example" 
   deployFromRepo />
 
-{{ SYSTEM_REQUIREMENTS }}
-
-{{ SIGN_UP }}
-
-{{ INSTALL_CLI }}
+{{ PREREQ }}
 
 ## Create a new Gridsome app {/*create-a-new-gridsome-app*/}
 
@@ -34,7 +30,7 @@ You can verify your app works by running it locally with:
 gridsome develop
 ```
 
-## Configuring your Gridsome app for {{ PRODUCT_NAME }} {/*configuring-your-gridsome-app-for-appops*/}
+## Configuring your Gridsome app for {{ PRODUCT_NAME }} {/*configuring-your-gridsome-app-for-edgio*/}
 
 ### Initialize your project {/*initialize-your-project*/}
 
@@ -77,7 +73,7 @@ export default new Router().static('dist', ({ cache }) => {
 
 Refer to the [Routing](routing) guide for the full syntax of the `routes.js` file and how to configure it for your use case.
 
-### Run the Gridsome app locally on {{ PRODUCT_NAME }} {/*run-the-gridsome-app-locally-on-appops*/}
+### Run the Gridsome app locally on {{ PRODUCT_NAME }} {/*run-the-gridsome-app-locally-on-edgio*/}
 
 Create a production build of your app by running the following in your project's root directory:
 

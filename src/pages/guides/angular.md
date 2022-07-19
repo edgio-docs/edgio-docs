@@ -2,7 +2,7 @@
 title: Angular
 ---
 
-This guide shows you how to deploy an [Angular](https://angular.io) application on {{ PRODUCT_NAME }}.
+This guide shows you how to deploy an [Angular](https://angular.io) application to {{ PRODUCT }}.
 
 ## Example {/*example*/}
 
@@ -14,13 +14,13 @@ This guide shows you how to deploy an [Angular](https://angular.io) application 
 
 ## Connector {/*connector*/}
 
-This framework has a connector developed for {{ PRODUCT_NAME }}. See [Connectors](connectors) for more information.
+This framework has a connector developed for {{ PRODUCT }}. See [Connectors](connectors) for more information.
 
 <ButtonLink variant="stroke" type="code" withIcon={true} href="https://github.com/layer0-docs/layer0-connectors/tree/main/layer0-angular-connector">
  View the Connector Code
 </ButtonLink>
 
-{{ SYSTEM_REQUIREMENTS }}
+{{ PREREQ }}
 
 ## Getting Started {/*getting-started*/}
 
@@ -37,7 +37,7 @@ You should now have a working starter app. Run `ng serve` to see the application
 
 #### 2. Add SSR {/*2-add-ssr*/}
 
-To deploy your Angular application on {{ PRODUCT_NAME }} it needs to support server-side rendering (SSR). To add SSR support, run:
+To deploy your Angular application on {{ PRODUCT }} it needs to support server-side rendering (SSR). To add SSR support, run:
 
 ```bash
 ng add @nguniversal/express-engine --clientProject {{PROJECT_NAME}}
@@ -56,12 +56,10 @@ The previous command created:
 
 You can now run `npm run build:ssr && npm run serve:ssr` to access your server-side rendered app at `localhost:4000`.
 
-To prepare your Angular application for deployment on {{ PRODUCT_NAME }}:
+To prepare your Angular application for deployment on {{ PRODUCT }}:
 
-#### 1. {{ INSTALL_CLI_STEP }} {/*1-install-the-edgio-cli*/}
-
-#### 2. Run the following in the root folder of your project. {/*2-run-the-following-in-the-root-folder-of-your-project*/}
-This will configure your project for {{ PRODUCT_NAME }}
+#### 3. Run the following in the root folder of your project. {/*2-run-the-following-in-the-root-folder-of-your-project*/}
+This will configure your project for {{ PRODUCT }}.
 
 ```bash
 {{ CLI_NAME }} init
@@ -72,10 +70,10 @@ This will automatically add all of the required dependencies and files to your p
 - The `{{ PACKAGE_NAME }}/core` package
 - The `{{ PACKAGE_NAME }}/angular` package
 - The `{{ PACKAGE_NAME }}/cli` package
-- `{{ CONFIG_FILE }}`- Contains various configuration options for {{ PRODUCT_NAME }}.
+- `{{ CONFIG_FILE }}`- Contains various configuration options for {{ PRODUCT }}.
 - `routes.js` - A default routes file that sends all requests to the Angular Universal server. Update this file to add caching or proxy some URLs to a different origin.
 
-#### 3. Use the right angular project {/*3-use-the-right-angular-project*/}
+#### 4. Use the right angular project {/*3-use-the-right-angular-project*/}
 
 If you have several projects and the `defaultProject` as specified in `angular.json` is not the project with the SSR build, specify the correct project with the `ANGULAR_PROJECT` environment variable. For example: `ANGULAR_PROJECT=my-ssr-project {{ CLI_NAME }} build`.
 
@@ -129,7 +127,7 @@ You can do a production build of your app and test it locally using:
 {{ CLI_NAME }} build && {{ CLI_NAME }} run --production
 ```
 
-Setting `--production` runs your app exactly as it will be when deployed to the {{ PRODUCT_NAME }} cloud.
+Setting `--production` runs your app exactly as it will be when deployed to the {{ PRODUCT }} cloud.
 
 If you have several projects and the `defaultProject` in `angular.json` is not the project you would like to deploy, specify the correct project by setting the `ANGULAR_PROJECT` environment variable when running `{{ CLI_NAME }} run`.
 
@@ -141,7 +139,7 @@ ANGULAR_PROJECT=my-project {{ CLI_NAME }} run
 
 ## Deploying {/*deploying*/}
 
-Deploying requires an account on {{ PRODUCT_NAME }}. [Sign up here for free.]({{ APP_URL }}/signup) Once you have an account, you can deploy to {{ PRODUCT_NAME }} by running the following in the root folder of your project:
+Deploy your app to the {{ PRODUCT_PLATFORM }} by running the following command in your project's root directory:
 
 ```bash
 {{ CLI_NAME }} deploy

@@ -2,7 +2,7 @@
 title: React Static
 ---
 
-This guide shows you how to deploy a [React Static](https://github.com/react-static/react-static) application on the {{ PRODUCT }} platform.
+This guide shows you how to deploy a [React Static](https://github.com/react-static/react-static) application to {{ PRODUCT }}.
 
 ## Example {/*example*/}
 
@@ -12,11 +12,7 @@ This guide shows you how to deploy a [React Static](https://github.com/react-sta
   repoUrl="https://github.com/layer0-docs/layer0-react-static-example" 
   deployFromRepo />
 
-{{ SYSTEM_REQUIREMENTS }}
-
-{{ SIGN_UP }}
-
-{{ INSTALL_CLI }}
+{{ PREREQ }}
 
 ## Create a new React Static app {/*create-a-new-react-static-app*/}
 
@@ -34,7 +30,7 @@ You can verify your app works by running it locally with:
 yarn start
 ```
 
-## Configuring your React Static app for {{ PRODUCT }} {/*configuring-your-react-static-app-for-appops*/}
+## Configuring your React Static app for {{ PRODUCT }} {/*configuring-your-react-static-app-for-edgio*/}
 
 ### Initialize your project {/*initialize-your-project*/}
 
@@ -77,7 +73,7 @@ export default new Router().static('dist', ({ cache }) => {
 
 Refer to the [Routing](routing) guide for the full syntax of the `routes.js` file and how to configure it for your use case.
 
-### Run the React Static app locally on {{ PRODUCT }} {/*run-the-react-static-app-locally-on-appops*/}
+### Run the React Static app locally on {{ PRODUCT }} {/*run-the-react-static-app-locally-on-edgio*/}
 
 Create a production build of your app by running the following in your project's root directory:
 

@@ -2,7 +2,7 @@
 title: SolidJS
 ---
 
-This guide shows you how to deploy a [SolidJS](https://solidjs.com) application on the {{ PRODUCT }} platform.
+This guide shows you how to deploy a [SolidJS](https://solidjs.com) application to {{ PRODUCT }}.
 
 ## Example {/*example*/}
 
@@ -12,11 +12,7 @@ This guide shows you how to deploy a [SolidJS](https://solidjs.com) application 
   repoUrl="https://github.com/layer0-docs/layer0-solidjs-example" 
   deployFromRepo />
 
-{{ SYSTEM_REQUIREMENTS }}
-
-{{ SIGN_UP }}
-
-{{ INSTALL_CLI }}
+{{ PREREQ }}
 
 ## Create a new SolidJS app {/*create-a-new-solidjs-app*/}
 
@@ -34,7 +30,7 @@ You can verify your app works by running it locally with:
 npm run dev
 ```
 
-## Configuring your SolidJS app for {{ PRODUCT }} {/*configuring-your-solidjs-app-for-appops*/}
+## Configuring your SolidJS app for {{ PRODUCT }} {/*configuring-your-solidjs-app-for-edgio*/}
 
 ### Initialize your project {/*initialize-your-project*/}
 
@@ -81,7 +77,7 @@ export default new Router()
 
 Refer to the [Routing](routing) guide for the full syntax of the `routes.js` file and how to configure it for your use case.
 
-### Run the SolidJS app locally on {{ PRODUCT }} {/*run-the-solidjs-app-locally-on-appops*/}
+### Run the SolidJS app locally on {{ PRODUCT }} {/*run-the-solidjs-app-locally-on-edgio*/}
 
 Create a production build of your app by running the following in your project's root directory:
 

@@ -18,17 +18,7 @@ A Swell powered ecommerce backend and a Nuxt.js app for the framework.
   repoUrl="https://github.com/layer0-docs/layer0-swell-example" 
   deployFromRepo />
 
-{{ SIGN_UP }}
-
-## Install the {{ PRODUCT_NAME }} CLI {/*install-the-layer0-cli*/}
-
-If you have not already done so, install the [{{ PRODUCT_NAME }} CLI](cli)
-
-```bash
-npm i -g {{ PACKAGE_NAME }}/cli # yarn global add {{ PACKAGE_NAME }}/cli
-```
-
-{{ SYSTEM_REQUIREMENTS }}
+{{ PREREQ }}
 
 ## Create a new Swell app {/*create-a-new-swell-app*/}
 

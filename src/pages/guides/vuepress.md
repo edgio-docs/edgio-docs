@@ -2,7 +2,7 @@
 title: VuePress
 ---
 
-This guide shows you how to deploy a [VuePress](https://vuepress.vuejs.org/) application on the {{ PRODUCT }} platform.
+This guide shows you how to deploy a [VuePress](https://vuepress.vuejs.org/) application to {{ PRODUCT }}.
 
 ## Example {/*example*/}
 
@@ -12,11 +12,7 @@ This guide shows you how to deploy a [VuePress](https://vuepress.vuejs.org/) app
   repoUrl="https://github.com/layer0-docs/layer0-vuepress-example" 
   deployFromRepo />
 
-{{ SYSTEM_REQUIREMENTS }}
-
-{{ SIGN_UP }}
-
-{{ INSTALL_CLI }}
+{{ PREREQ }}
 
 ## Create a new VuePress app {/*create-a-new-vuepress-app*/}
 
@@ -34,7 +30,7 @@ You can verify your app works by running it locally with:
 yarn dev
 ```
 
-## Configuring your VuePress app for {{ PRODUCT }} {/*configuring-your-vuepress-app-for-appops*/}
+## Configuring your VuePress app for {{ PRODUCT }} {/*configuring-your-vuepress-app-for-edgio*/}
 
 ### Update package.json {/*update-packagejson*/}
 ```diff
@@ -83,7 +79,7 @@ export default new Router().static('public', ({ cache }) => {
 
 Refer to the [Routing](routing) guide for the full syntax of the `routes.js` file and how to configure it for your use case.
 
-### Run the VuePress app locally on {{ PRODUCT }} {/*run-the-vuepress-app-locally-on-appops*/}
+### Run the VuePress app locally on {{ PRODUCT }} {/*run-the-vuepress-app-locally-on-edgio*/}
 
 Create a production build of your app by running the following in your project's root directory:
 

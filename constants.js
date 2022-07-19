@@ -83,6 +83,14 @@ yarn global add ${PACKAGE_NAME}/cli
 \`\`\`
 `;
 
+const PREREQ = `
+${SYSTEM_REQUIREMENTS}
+
+${SIGN_UP}
+
+${INSTALL_CLI}
+`.trim();
+
 const INSTALL_CLI_STEP = `Install the ${PRODUCT_NAME} CLI
 
 If you have not already done so, install the [${PRODUCT_NAME} CLI](cli).

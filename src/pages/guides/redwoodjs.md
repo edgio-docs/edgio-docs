@@ -2,7 +2,7 @@
 title: RedwoodJS
 ---
 
-This guide shows you how to deploy a [RedwoodJS](https://redwoodjs.com/) application on the {{ PRODUCT }} platform.
+This guide shows you how to deploy a [RedwoodJS](https://redwoodjs.com/) application to {{ PRODUCT }}.
 
 ## Example {/*example*/}
 
@@ -14,15 +14,7 @@ This guide shows you how to deploy a [RedwoodJS](https://redwoodjs.com/) applica
 
 ## Connector {/*connector*/}
 
-This framework has a connector developed for {{ PRODUCT }}. See [Connectors](connectors) for more information.
-
-<ButtonLink variant="stroke" type="code" withIcon={true} href="https://github.com/layer0-docs/layer0-connectors/tree/main/layer0-redwood-connector">
- View the Connector Code
-</ButtonLink>
-
-{{ SYSTEM_REQUIREMENTS }}
-
-{{ SIGN_UP }}
+{{ PREREQ }}
 
 ## Getting Started {/*getting-started*/}
 
@@ -31,8 +23,6 @@ If you don't already have a RedwoodJS app, use the terminal (or command prompt o
 ```cli
 yarn create redwood-app ./my-redwood-app
 ```
-
-#{{ INSTALL_CLI }}
 
 To prepare your RedwoodJS app for deployment on {{ PRODUCT }}, you can use both the RedwoodJS or {{ PRODUCT }} CLI depending on what you prefer.
 
@@ -46,7 +36,7 @@ yarn rw setup deploy {{ FULL_CLI_NAME }}
 
 This will verify that the {{ PRODUCT }} CLI is setup on your system and initialize the application accordingly.
 
-### Using the {{ PRODUCT }} CLI {/*using-the-appops-cli*/}
+### Using the {{ PRODUCT }} CLI {/*using-the-edgio-cli*/}
 
 For preparing using the {{ PRODUCT }} CLI, run:
 

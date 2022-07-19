@@ -16,7 +16,7 @@ mkdocs new my-project
 cd my-project
 ```
 
-## Add {{ PRODUCT }} {/*add-appops*/}
+## Add {{ PRODUCT }} {/*add-edgio*/}
 
 Create a `package.json` at the root of your project with the following:
 ```json
@@ -44,7 +44,7 @@ npm i -g {{ PACKAGE_NAME }}/cli # yarn global add {{ PACKAGE_NAME }}/cli
 {{ CLI_NAME }} init
 ```
 
-## Update your {{ PRODUCT }} Router {/*update-your-appops-router*/}
+## Update your {{ PRODUCT }} Router {/*update-your-edgio-router*/}
 
 Paste the following into routes.js:
 

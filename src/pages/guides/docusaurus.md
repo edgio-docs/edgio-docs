@@ -2,7 +2,7 @@
 title: Docusaurus
 ---
 
-This guide shows you how to deploy a [Docusaurus](https://docusaurus.io/) application on the {{ PRODUCT }} platform.
+This guide shows you how to deploy a [Docusaurus](https://docusaurus.io/) application to {{ PRODUCT }}.
 
 ## Example {/*example*/}
 
@@ -12,11 +12,7 @@ This guide shows you how to deploy a [Docusaurus](https://docusaurus.io/) applic
   repoUrl="https://github.com/layer0-docs/layer0-docusaurus-example" 
   deployFromRepo />
 
-{{ SYSTEM_REQUIREMENTS }}
-
-{{ SIGN_UP }}
-
-{{ INSTALL_CLI }}
+{{ PREREQ }}
 
 ## Create a new Docusaurus app {/*create-a-new-docusaurus-app*/}
 
@@ -33,7 +29,7 @@ You can verify your app works by running it locally with:
 npx docusaurus start
 ```
 
-## Configuring your Docusaurus app for {{ PRODUCT }} {/*configuring-your-docusaurus-app-for-appops*/}
+## Configuring your Docusaurus app for {{ PRODUCT }} {/*configuring-your-docusaurus-app-for-edgio*/}
 
 ### Initialize your project {/*initialize-your-project*/}
 
@@ -76,7 +72,7 @@ export default new Router().static('build', ({ cache }) => {
 
 Refer to the [Routing](routing) guide for the full syntax of the `routes.js` file and how to configure it for your use case.
 
-### Run the Docusaurus app locally on {{ PRODUCT }} {/*run-the-docusaurus-app-locally-on-appops*/}
+### Run the Docusaurus app locally on {{ PRODUCT }} {/*run-the-docusaurus-app-locally-on-edgio*/}
 
 Create a production build of your app by running the following in your project's root directory:
 

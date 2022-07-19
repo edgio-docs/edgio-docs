@@ -24,7 +24,7 @@ git clone https://github.com/layer0-docs/layer0-scully-example
 yarn install
 ```
 
-### Run the Scully app locally on {{ PRODUCT }} {/*run-the-scully-app-locally-on-appops*/}
+### Run the Scully app locally on {{ PRODUCT }} {/*run-the-scully-app-locally-on-edgio*/}
 
 Test your app with the {{ PRODUCT_PLATFORM }} on your local machine by running the following command in your project's root directory:
 

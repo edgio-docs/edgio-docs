@@ -2,7 +2,7 @@
 title: Spartacus for SAP Commerce Cloud (formerly SAP Hybris)
 ---
 
-This guide shows you how to deploy a [Spartacus](https://sap.github.io/spartacus-docs) application on the {{ PRODUCT }} platform.
+This guide shows you how to deploy a [Spartacus](https://sap.github.io/spartacus-docs) application to {{ PRODUCT }}.
 
 <ButtonLinksGroup>
   <ButtonLink variant="fill" type="default" href="https://layer0-docs-layer0-spartacus-example-default.layer0-limelight.link/">

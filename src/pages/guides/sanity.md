@@ -2,7 +2,7 @@
 title: Sanity Studio
 ---
 
-This guide shows you how to deploy a [Sanity Studio](https://www.sanity.io/docs/sanity-studio) application on the {{ PRODUCT }} platform.
+This guide shows you how to deploy a [Sanity Studio](https://www.sanity.io/docs/sanity-studio) application to {{ PRODUCT }}.
 
 Sanity Studio is a single page app (SPA) written in React, where you can configure the document types and input fields, with simple JavaScript objects. This guide will walk you through how to deploy Sanity Studio with {{ PRODUCT }} in four simple steps.
 
@@ -14,11 +14,7 @@ Sanity Studio is a single page app (SPA) written in React, where you can configu
   repoUrl="https://github.com/layer0-docs/layer0-sanity-studio-example" 
   deployFromRepo />
 
-{{ SYSTEM_REQUIREMENTS }}
-
-{{ SIGN_UP }}
-
-{{ INSTALL_CLI }}
+{{ PREREQ }}
 
 ## Create a new Sanity Studio app {/*create-a-new-sanity-studio-app*/}
 
@@ -40,7 +36,7 @@ The Sanity CLI will walk you through the necessary steps to set up a project, le
 sanity start
 ```
 
-## Configuring your Sanity Studio app for {{ PRODUCT }} {/*configuring-your-sanity-studio-app-for-appops*/}
+## Configuring your Sanity Studio app for {{ PRODUCT }} {/*configuring-your-sanity-studio-app-for-edgio*/}
 
 ### Initialize your project {/*initialize-your-project*/}
 
@@ -87,7 +83,7 @@ export default new Router()
 
 Refer to the [Routing](routing) guide for the full syntax of the `routes.js` file and how to configure it for your use case.
 
-### Run the Sanity Studio app locally on {{ PRODUCT }} {/*run-the-Sanity Studio-app-locally-on-appops*/}
+### Run the Sanity Studio app locally on {{ PRODUCT }} {/*run-the-Sanity Studio-app-locally-on-edgio*/}
 
 Create a production build of your app by running the following in your project's root directory:
 

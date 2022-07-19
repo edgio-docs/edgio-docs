@@ -14,7 +14,7 @@ jekyll new my-jekyll-site
 cd my-jekyll-site
 ```
 
-## Add {{ PRODUCT }} {/*add-appops*/}
+## Add {{ PRODUCT }} {/*add-edgio*/}
 
 ```bash
 # First, globally install the {{ PRODUCT }} CLI:
@@ -25,7 +25,7 @@ npm init
 {{ CLI_NAME }} init
 ```
 
-## Update your {{ PRODUCT }} Router {/*update-your-appops-router*/}
+## Update your {{ PRODUCT }} Router {/*update-your-edgio-router*/}
 
 Paste the following into `routes.js`:
 

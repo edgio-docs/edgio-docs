@@ -2,7 +2,7 @@
 title: Ember.js
 ---
 
-This guide shows you how to deploy an [Ember.js](https://emberjs.com/) application on the {{ PRODUCT }} platform.
+This guide shows you how to deploy an [Ember.js](https://emberjs.com/) application to {{ PRODUCT }}.
 
 ## Example {/*example*/}
 
@@ -12,11 +12,7 @@ This guide shows you how to deploy an [Ember.js](https://emberjs.com/) applicati
   repoUrl="https://github.com/layer0-docs/layer0-emberjs-example" 
   deployFromRepo />
 
-{{ SYSTEM_REQUIREMENTS }}
-
-{{ SIGN_UP }}
-
-{{ INSTALL_CLI }}
+{{ PREREQ }}
 
 ## Create a new Ember.js app {/*create-a-new-emberjs-app*/}
 
@@ -34,7 +30,7 @@ You can verify your app works by running it locally with:
 ember serve
 ```
 
-## Configuring your Ember.js app for {{ PRODUCT }} {/*configuring-your-emberjs-app-for-appops*/}
+## Configuring your Ember.js app for {{ PRODUCT }} {/*configuring-your-emberjs-app-for-edgio*/}
 
 ### Initialize your project {/*initialize-your-project*/}
 

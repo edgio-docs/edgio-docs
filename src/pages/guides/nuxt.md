@@ -2,7 +2,7 @@
 title: Nuxt.js
 ---
 
-This guide shows you how to deploy a Nuxt.js application on the {{ PRODUCT }} platform. If you run into any issues please consult the [Troubleshooting](#section_troubleshooting) section.
+This guide shows you how to deploy a Nuxt.js application to {{ PRODUCT }}. If you run into any issues please consult the [Troubleshooting](#section_troubleshooting) section.
 
 ## Example SSR Site {/*example-ssr-site*/}
 
@@ -32,17 +32,7 @@ This framework has a connector developed for {{ PRODUCT }}. See [Connectors](con
   View the Connector Code
 </ButtonLink>
 
-{{ SYSTEM_REQUIREMENTS }}
-
-{{ SIGN_UP }}
-
-## Getting Started {/*getting-started*/}
-
-If you have not already done so, install the [{{ PRODUCT }} CLI](cli)
-
-```bash
-npm i -g {{ PACKAGE_NAME }}/cli # yarn global add {{ PACKAGE_NAME }}/cli
-```
+{{ PREREQ }}
 
 ## Creating a new Nuxt app {/*creating-a-new-nuxt-app*/}
 
@@ -57,7 +47,7 @@ Nuxt's create module will ask you a series of questions to configure your app. M
 - For `Choose rendering mode` select `Universal (SSR)`
 - Your answers to the other questions should not matter for the purposes of this guide.
 
-## Adding {{ PRODUCT }} to an existing Nuxt app {/*adding-appops-to-an-existing-nuxt-app*/}
+## Adding {{ PRODUCT }} to an existing Nuxt app {/*adding-edgio-to-an-existing-nuxt-app*/}
 
 To prepare your Nuxt.js application for {{ PRODUCT }}:
 
@@ -160,7 +150,7 @@ And here is the `package.json` after modifications by `{{ CLI_NAME }} init`:
 }
 ```
 
-## Run the Nuxt.js app locally on {{ PRODUCT }} {/*run-the-nuxtjs-app-locally-on-appops*/}
+## Run the Nuxt.js app locally on {{ PRODUCT }} {/*run-the-nuxtjs-app-locally-on-edgio*/}
 
 Run the Nuxt.js app with the command:
 
@@ -484,7 +474,7 @@ npm i -g {{ PACKAGE_NAME }}/cli
 
 ---
 
-### Make sure your version of the {{ PRODUCT }} CLI is current {/*make-sure-your-version-of-appops-cli-is-current*/}
+### Make sure your version of the {{ PRODUCT }} CLI is current {/*make-sure-your-version-of-edgio-cli-is-current*/}
 
 If you previously installed the {{ PRODUCT }} CLI, make sure your version is current.
 

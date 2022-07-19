@@ -2,7 +2,7 @@
 title: Razzle
 ---
 
-This guide shows you how to deploy a [Razzle](https://razzlejs.org/) application on the {{ PRODUCT }} platform.
+This guide shows you how to deploy a [Razzle](https://razzlejs.org/) application to {{ PRODUCT }}.
 
 ## Example {/*example*/}
 

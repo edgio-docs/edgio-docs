@@ -24,9 +24,8 @@ This framework has a connector developed for {{ PRODUCT }}. See [Connectors](con
  View the Connector Code
 </ButtonLink>
 
-{{ SYSTEM_REQUIREMENTS }}
+{{ PREREQ }}
 
-{{ SIGN_UP }}
 
 ## Getting Started {/*getting-started*/}
 
@@ -63,11 +62,9 @@ The previous command created:
 
 You can now run `npm run build:ssr && npm run serve:ssr` to access your server-side rendered app at `localhost:4000`.
 
-To prepare your Spartacus application for deployment on {{ PRODUCT }}:
+#### 3. Initializing your Project {/*3-initializing-your-project*/}
 
-1. {{ INSTALL_CLI_STEP }}
-
-2. Run the following in the root folder of your project. This will configure your project for {{ PRODUCT }}.
+Initialize your project for use with {{ PRODUCT }} by running the following command in your project's root directory:
 
 ```bash
 {{ CLI_NAME }} init
@@ -84,7 +81,7 @@ This will automatically add all of the required dependencies and files to your p
 - `routes.js` - A default routes file that sends all requests to the Angular Universal server. Update this file to add caching or proxy some URLs to a different origin.
 - The `sw` folder - Contains the files needed to build the service worker that that provides static asset and API prefetching.
 
-#### 3. Update `{{ CONFIG_FILE }}` {/*3-update--config_file-*/}
+#### 4. Update `{{ CONFIG_FILE }}` {/*3-update--config_file-*/}
 
 For an app called `my-layer0-spartacus-app` the {{ PRODUCT }} config file created by `{{ CLI_NAME }} init` will look like so:
 
@@ -104,7 +101,7 @@ module.exports = {
 
 If you have several projects and the `defaultProject` as specified in `angular.json` is not the project with the SSR build, specify the correct project with the `ANGULAR_PROJECT` environment variable. For example: `ANGULAR_PROJECT=my-ssr-project {{ CLI_NAME }} build`.
 
-#### 4. Update OCC `baseUrl` endpoint {/*4-update-occ-baseurl-endpoint*/}
+#### 5. Update OCC `baseUrl` endpoint {/*4-update-occ-baseurl-endpoint*/}
 
 The `baseUrl` should be updated to use the remote URL when `window` is not defined (i.e., for SSR), and the current host when `window` is defined. For example:
 

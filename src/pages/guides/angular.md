@@ -58,8 +58,9 @@ You can now run `npm run build:ssr && npm run serve:ssr` to access your server-s
 
 To prepare your Angular application for deployment on {{ PRODUCT }}:
 
-#### 3. Run the following in the root folder of your project. {/*2-run-the-following-in-the-root-folder-of-your-project*/}
-This will configure your project for {{ PRODUCT }}.
+#### 3. Initializing your Project {/*3-initializing-your-project*/}
+
+Initialize your project for use with {{ PRODUCT }} by running the following command in your project's root directory:
 
 ```bash
 {{ CLI_NAME }} init

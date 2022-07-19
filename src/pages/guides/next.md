@@ -42,9 +42,11 @@ This framework has a connector developed for {{ PRODUCT }}. See [Connectors](con
 - `getServerSideProps`
 - `getInitialProps`
 
-{{ SYSTEM_REQUIREMENTS }}
+{{ PREREQ }}
 
-{{ SIGN_UP }}
+When installing the {{ PRODUCT }} CLI globally in a virtual environment that has Node and NPM installed globally, you [may run into permission issues]({{ FORUM_URL }}/t/xdn-cli-npm-install-error/83). In that case, you can install the {{ PRODUCT }} CLI locally within your app using `npm i -D {{ PACKAGE_NAME }}/cli` and running commands using `./node_modules/{{ PACKAGE_NAME }}/cli` instead of `{{ CLI_NAME }}`.
+
+If you run into permission issues while attempting to install the {{ PRODUCT }} CLI globally on your local development machine, these may be fixed by using [nvm](https://github.com/nvm-sh/nvm) to manage Node and NPM.
 
 ## Getting Started {/*getting-started*/}
 
@@ -56,13 +58,9 @@ If you don't already have a Next.js application, you can create one using:
 npx create-next-app@latest
 ```
 
-{{ INSTALL_CLI_STEP }}
+### Initializing your Project {/*initializing-your-project*/}
 
-When installing the {{ PRODUCT }} CLI globally in a virtual environment that has Node and NPM installed globally, you [may run into permission issues]({{ FORUM_URL }}/t/xdn-cli-npm-install-error/83). In that case, you can install the {{ PRODUCT }} CLI locally within your app using `npm i -D {{ PACKAGE_NAME }}/cli` and running commands using `./node_modules/{{ PACKAGE_NAME }}/cli` instead of `{{ CLI_NAME }}`.
-
-If you run into permission issues while attempting to install the {{ PRODUCT }} CLI globally on your local development machine, these may be fixed by using [nvm](https://github.com/nvm-sh/nvm) to manage Node and NPM.
-
-### Initialize your Next.js project {/*initialize-your-nextjs-project*/}
+Initialize your project for use with {{ PRODUCT }} by running the following command in your project's root directory:
 
 ```bash
 cd my-next-app

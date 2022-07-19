@@ -22,9 +22,7 @@ This framework has a connector developed for {{ PRODUCT }}. See [Connectors](con
   View the Connector Code
 </ButtonLink>
 
-{{ SYSTEM_REQUIREMENTS }}
-
-{{ SIGN_UP }}
+{{ PREREQ }}
 
 ## Getting Started {/*getting-started*/}
 
@@ -37,11 +35,7 @@ gatsby new gatsby-site https://github.com/gatsbyjs/gatsby-starter-hello-world
 
 You should now have a working Gatsby site. Run `gatsby develop` to see the application running on `localhost:8000`.
 
-To deploy your Gatsby on {{ PRODUCT }}:
-
-1. {{ INSTALL_CLI_STEP }}
-
-2. Run the following in the root folder of your project. This will configure your project for {{ PRODUCT }}.
+Configure your project for {{ PRODUCT }} by running the following command in your project's root directory:
 
 ```bash
 {{ CLI_NAME }} init

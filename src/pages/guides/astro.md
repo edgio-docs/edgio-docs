@@ -35,9 +35,11 @@ npm run dev
 npm run build
 ```
 
-## Add {{ PRODUCT }} {/*add-edgio*/}
+## Initializing your Project {/*initializing-your-project*/}
 
-# Add {{ PRODUCT }} to your Astro site:
+Initialize your project for use with {{ PRODUCT }} by running the following command in your project's root directory:
+
+```bash
 {{ CLI_NAME }} init
 ```
 

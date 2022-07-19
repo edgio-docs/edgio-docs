@@ -71,7 +71,7 @@ To run the Nuxt3 app locally with Layer0, run:
 {{ CLI_NAME }} dev
 ```
 
-Vist [http://localhost:3001](http://localhost:3001) to view the application.
+Vist [http://localhost:3000](http://localhost:3000) to view the application.
 
 #### 4. Run the Nuxt3 app in local production mode with Layer0 {/*4-run-the-nuxt3-app-locally-with-layer0*/}
 

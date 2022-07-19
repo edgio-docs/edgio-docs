@@ -44,7 +44,7 @@ npm i -g {{ PACKAGE_NAME }}/cli # yarn global add {{ PACKAGE_NAME }}/cli
 {{ CLI_NAME }} init
 ```
 
-## Update your  {{ PRODUCT }} Router {/*update-your-appops-router*/}
+## Update your {{ PRODUCT }} Router {/*update-your-appops-router*/}
 
 Paste the following into routes.js:
 

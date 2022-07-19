@@ -195,6 +195,6 @@ Deploy your app to the {{ PRODUCT_PLATFORM }} by running the following command i
 
 ## Limits {/*limits*/}
 
-{{ PRODUCT }}  serverless functions have a maximum runtime of 20 seconds per request. If a function exceeds this limit, {{ PRODUCT }} will respond with a 539 status.
+{{ PRODUCT }} serverless functions have a maximum runtime of 20 seconds per request. If a function exceeds this limit, {{ PRODUCT }} will respond with a 539 status.
 
 See [Limits](/guides/limits#section_request_and_response_limits) for more information.

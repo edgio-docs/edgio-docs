@@ -6,7 +6,7 @@ This guide shows you how to serve a [React](https://reactjs.org/) application on
 
 ## Example {/*example*/}
 
-Here's an example React app running on Layer0:
+Here's an example React app running on {{ PRODUCT }}:
 
 <ExampleButtons
   title="React"
@@ -31,12 +31,12 @@ npm i -g {{ PACKAGE_NAME }}/cli # yarn global add {{ PACKAGE_NAME }}/cli
 This guide will use [Create React App](https://create-react-app.dev/) to generate a project. You can also reference the [example app](https://github.com/layer0-docs/static-react-example) for a complete version of the code.
 
 ```bash
-npx create-react-app layer0-cra
-cd layer0-cra
+npx create-react-app {{ PRODUCT_NAME_LOWER }}-cra
+cd {{ PRODUCT_NAME_LOWER }}-cra
 {{ CLI_NAME }} init
 # Pick the following options for questions
-# > Add Layer0 to the current app
-# Hostname of origin site > layer0-docs-layer0-examples-api-default.layer0-limelight.link
+# > Add  {{ PRODUCT }} to the current app
+# Hostname of origin site > {{ PRODUCT_NAME_LOWER }}-docs-{{ PRODUCT_NAME_LOWER }}-examples-api-default.{{ PRODUCT_NAME_LOWER }}-limelight.link
 ```
 
 Follow the additional sections below regarding the Create React App setup to finish the project setup.
@@ -58,7 +58,7 @@ This will automatically add all of the required dependencies and files to your p
 
 ## Configure your project {/*configure-your-project*/}
 
-### {{ PRODUCT }} Router {/*layer0-router*/}
+### {{ PRODUCT }} Router {/*{{ PRODUCT_NAME_LOWER }}-router*/}
 
 Using the `Router` class from `{{ PACKAGE_NAME }}/core`, you'll configure caching for each of your routes, and forward requests to the server module you configured in the previous section using the `proxy` function.
 
@@ -192,7 +192,7 @@ Here is an example service worker:
 ```js
 import { skipWaiting, clientsClaim } from 'workbox-core'
 import { precacheAndRoute } from 'workbox-precaching'
-import DeepFetchPlugin from '@layer0/prefetch/sw/DeepFetchPlugin'
+import DeepFetchPlugin from '@{{ PRODUCT_NAME_LOWER }}/prefetch/sw/DeepFetchPlugin'
 
 skipWaiting()
 clientsClaim()

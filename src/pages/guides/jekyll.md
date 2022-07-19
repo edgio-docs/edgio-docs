@@ -4,7 +4,7 @@ title: Jekyll
 
 [Jekyll](https://jekyllrb.com/) is a static site generator. It takes text written in your favorite markup language and uses layouts to create a static website. You can tweak the site's look and feel, URLs, the data displayed on the page, and more.
 
- ## Create your Jekyll site {/*create-your-jekyll-site*/}
+## Create your Jekyll site {/*create-your-jekyll-site*/}
 
 If you don't have an existing Jekyll site, you can create one by running:
 
@@ -14,7 +14,7 @@ jekyll new my-jekyll-site
 cd my-jekyll-site
 ```
 
- ## Add {{ PRODUCT }} {/*add-appops*/}
+## Add {{ PRODUCT }} {/*add-appops*/}
 
 ```bash
 # First, globally install the {{ PRODUCT }} CLI:
@@ -25,7 +25,7 @@ npm init
 {{ CLI_NAME }} init
 ```
 
- ## Update your {{ PRODUCT }} Router {/*update-your-appops-router*/}
+## Update your {{ PRODUCT }} Router {/*update-your-appops-router*/}
 
 Paste the following into `routes.js`:
 

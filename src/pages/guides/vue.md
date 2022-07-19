@@ -16,7 +16,7 @@ This guide shows you how to deploy a [Vue.js](https://vuejs.org/) application on
 
 {{ SIGN_UP }}
 
-## {{ INSTALL_CLI_STEP }} {/*install-the-appops-cli*/}
+{{ INSTALL_CLI }}
 
 ## Create a new Vue.js app {/*create-a-new-vuejs-app*/}
 

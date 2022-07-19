@@ -58,7 +58,7 @@ You can now run `npm run build:ssr && npm run serve:ssr` to access your server-s
 
 To prepare your Angular application for deployment on {{ PRODUCT_NAME }}:
 
-#### 1. {{ INSTALL_CLI_STEP }} {/*1-install-the-edgio-cli--install-the-layer0-cli-*/}
+#### 1. {{ INSTALL_CLI_STEP }} {/*1-install-the-edgio-cli*/}
 
 #### 2. Run the following in the root folder of your project. {/*2-run-the-following-in-the-root-folder-of-your-project*/}
 This will configure your project for {{ PRODUCT_NAME }}

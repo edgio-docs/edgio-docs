@@ -16,7 +16,7 @@ This guide shows you how to deploy a [Docusaurus](https://docusaurus.io/) applic
 
 {{ SIGN_UP }}
 
-## {{ INSTALL_CLI_STEP }} {/*install-the-appops-cli*/}
+{{ INSTALL_CLI }}
 
 ## Create a new Docusaurus app {/*create-a-new-docusaurus-app*/}
 

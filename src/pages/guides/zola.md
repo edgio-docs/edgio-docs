@@ -12,7 +12,7 @@ This guide shows you how to deploy a [Zola](https://www.getzola.org/) applicatio
 
 {{ SIGN_UP }}
 
-## {{ INSTALL_CLI_STEP }} {/*install-the-appops-cli*/}
+{{ INSTALL_CLI }}
 
 ## Create a new Zola app {/*create-a-new-zola-app*/}
 

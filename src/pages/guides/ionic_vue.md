@@ -16,7 +16,7 @@ This guide shows you how to deploy a [Ionic Vue](https://ionicframework.com/docs
 
 {{ SIGN_UP }}
 
-## {{ INSTALL_CLI_STEP }} {/*install-the-appops-cli*/}
+{{ INSTALL_CLI }}
 
 ## Create a new Ionic Vue app {/*create-a-new-ionic-vue-app*/}
 

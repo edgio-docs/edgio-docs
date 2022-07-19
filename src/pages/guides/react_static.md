@@ -16,7 +16,7 @@ This guide shows you how to deploy a [React Static](https://github.com/react-sta
 
 {{ SIGN_UP }}
 
-## {{ INSTALL_CLI_STEP }} {/*install-the-appops-cli*/}
+{{ INSTALL_CLI }}
 
 ## Create a new React Static app {/*create-a-new-react-static-app*/}
 

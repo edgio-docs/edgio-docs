@@ -64,11 +64,11 @@ const SYSTEM_REQUIREMENTS_H3 = `### System Requirements {/*system-requirements*/
 
 - [Install Node.js 14.19.0](/guides/install_nodejs)`;
 
-const SIGN_UP = `## Sign up for ${PRODUCT} {/*sign-up-for-${PRODUCT_NAME_LOWER}*/}
+const SIGN_UP = `## Sign up for ${PRODUCT} {/*sign-up*/}
 
 Deploying requires an account on ${PRODUCT}. <a href="${APP_URL}/signup">Sign up here for free.</a>`;
 
-const INSTALL_CLI_STEP = `Install the ${PRODUCT_NAME} CLI {/* install-the-layer0-cli */}
+const INSTALL_CLI = `## Install the ${PRODUCT_NAME} CLI {/*install-the-cli*/}
 
 If you have not already done so, install the [${PRODUCT_NAME} CLI](cli).
 
@@ -83,7 +83,20 @@ yarn global add ${PACKAGE_NAME}/cli
 \`\`\`
 `;
 
-const INSTALL_CLI = `## ${INSTALL_CLI_STEP}`;
+const INSTALL_CLI_STEP = `Install the ${PRODUCT_NAME} CLI
+
+If you have not already done so, install the [${PRODUCT_NAME} CLI](cli).
+
+With \`npm\`: 
+\`\`\`bash
+npm i -g ${PACKAGE_NAME}/cli
+\`\`\`
+
+With \`yarn\`:
+\`\`\`bash
+yarn global add ${PACKAGE_NAME}/cli
+\`\`\`
+`;
 
 const PARTNERS_CONTACT = `partner@llnw.com`;
 

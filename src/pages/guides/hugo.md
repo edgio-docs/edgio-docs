@@ -14,7 +14,7 @@ This guide shows you how to deploy a [Hugo](https://gohugo.io) application on th
 
 {{ SIGN_UP }}
 
-## {{ INSTALL_CLI_STEP }} {/*install-the-appops-cli*/}
+{{ INSTALL_CLI }}
 
 ## Create a new Hugo app {/*create-a-new-hugo-app*/}
 

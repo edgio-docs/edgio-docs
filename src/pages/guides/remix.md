@@ -16,7 +16,7 @@ This guide shows you how to deploy a [Remix](https://remix.run/) application on 
 
 {{ SIGN_UP }}
 
-## {{ INSTALL_CLI_STEP }} {/*install-the-appops-cli*/}
+{{ INSTALL_CLI }}
 
 ## Create a new Remix app {/*create-a-new-remix-app*/}
 

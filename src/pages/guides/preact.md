@@ -16,7 +16,7 @@ This guide shows you how to deploy a [Preact](https://preactjs.com/) application
 
 {{ SIGN_UP }}
 
-## {{ INSTALL_CLI_STEP }} {/*install-the-edgio-cli*/}
+{{ INSTALL_CLI }}
 
 ## Create a new Preact app {/*create-a-new-preact-app*/}
 

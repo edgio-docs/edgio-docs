@@ -15,7 +15,7 @@ title: Scully
 
 ## Create your Scully site {/*create-your-scully-site*/}
 
-### {{ INSTALL_CLI_STEP }} {/*install-the-appops-cli*/}
+#{{ INSTALL_CLI }}
 
 Clone this starter example and install dependencies:
 

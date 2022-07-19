@@ -16,7 +16,7 @@ This guide shows you how to deploy a [VitePress](https://vitepress.vuejs.org/) a
 
 {{ SIGN_UP }}
 
-## {{ INSTALL_CLI_STEP }} {/*install-the-appops-cli*/}
+{{ INSTALL_CLI }}
 
 ## Create a new VitePress app {/*create-a-new-vitepress-app*/}
 

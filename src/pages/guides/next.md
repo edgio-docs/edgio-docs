@@ -54,7 +54,7 @@ If you don't already have a Next.js application, you can create one using:
 npx create-next-app@latest
 ```
 
-### {{ INSTALL_CLI_STEP }} {/*install-the-appops-cli-globally*/}
+{{ INSTALL_CLI_STEP }}
 
 When installing the {{ PRODUCT }} CLI globally in a virtual environment that has Node and NPM installed globally, you [may run into permission issues]({{ FORUM_URL }}/t/xdn-cli-npm-install-error/83). In that case, you can install the {{ PRODUCT }} CLI locally within your app using `npm i -D {{ PACKAGE_NAME }}/cli` and running commands using `./node_modules/{{ PACKAGE_NAME }}/cli` instead of `{{ CLI_NAME }}`.
 

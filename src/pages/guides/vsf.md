@@ -18,7 +18,7 @@ Here's an example Vue Storefront 2 app running on {{ PRODUCT }}:
 
 {{ SIGN_UP }}
 
-## {{ INSTALL_CLI_STEP }} {/*install-the-appops-cli*/}
+{{ INSTALL_CLI }}
 
 ## Install the VSF CLI {/*install-the-vsf-cli*/}
 

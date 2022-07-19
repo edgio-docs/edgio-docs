@@ -39,7 +39,7 @@ You should now have a working Gatsby site. Run `gatsby develop` to see the appli
 
 To deploy your Gatsby on {{ PRODUCT }}:
 
-1. {{ INSTALL_CLI_STEP }} {/*install-the-appops-cli*/}
+1. {{ INSTALL_CLI_STEP }}
 
 2. Run the following in the root folder of your project. This will configure your project for {{ PRODUCT }}.
 

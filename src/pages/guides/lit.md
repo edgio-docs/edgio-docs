@@ -15,7 +15,7 @@ title: Lit
 
 ## Create your Lit site {/*create-your-lit-site*/}
 
-### {{ INSTALL_CLI_STEP }} {/*install-the-appops-cli-globally*/}
+{{ INSTALL_CLI }}
 
 Clone this starter example and install dependencies:
 

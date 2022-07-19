@@ -16,7 +16,7 @@ This guide shows you how to deploy a [Gridsome](https://gridsome.org/) applicati
 
 {{ SIGN_UP }}
 
-## {{ INSTALL_CLI_STEP }} {/*install-the-appops-cli*/}
+{{ INSTALL_CLI }}
 
 ## Create a new Gridsome app {/*create-a-new-gridsome-app*/}
 

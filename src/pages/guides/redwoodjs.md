@@ -32,7 +32,7 @@ If you don't already have a RedwoodJS app, use the terminal (or command prompt o
 yarn create redwood-app ./my-redwood-app
 ```
 
-### {{ INSTALL_CLI_STEP }} {/*install-the-appops-cli*/}
+#{{ INSTALL_CLI }}
 
 To prepare your RedwoodJS app for deployment on {{ PRODUCT }}, you can use both the RedwoodJS or {{ PRODUCT }} CLI depending on what you prefer.
 

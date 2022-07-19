@@ -16,7 +16,7 @@ This guide shows you how to deploy a [Eleventy](https://www.11ty.dev/) applicati
 
 {{ SIGN_UP }}
 
-## {{ INSTALL_CLI_STEP }} {/*install-the-appops-cli*/}
+{{ INSTALL_CLI }}
 
 ## Create a new Eleventy app {/*create-a-new-eleventy-app*/}
 

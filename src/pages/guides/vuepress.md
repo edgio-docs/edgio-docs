@@ -16,7 +16,7 @@ This guide shows you how to deploy a [VuePress](https://vuepress.vuejs.org/) app
 
 {{ SIGN_UP }}
 
-## {{ INSTALL_CLI_STEP }} {/*install-the-appops-cli*/}
+{{ INSTALL_CLI }}
 
 ## Create a new VuePress app {/*create-a-new-vuepress-app*/}
 

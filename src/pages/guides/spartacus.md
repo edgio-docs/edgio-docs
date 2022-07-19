@@ -65,11 +65,7 @@ You can now run `npm run build:ssr && npm run serve:ssr` to access your server-s
 
 To prepare your Spartacus application for deployment on {{ PRODUCT }}:
 
-#### 1. {{ INSTALL_CLI_STEP }} {/*install-the-appops-cli*/}
-
-```bash
-npm i -g {{ PACKAGE_NAME }}/cli # yarn global add {{ PACKAGE_NAME }}/cli
-```
+1. {{ INSTALL_CLI_STEP }}
 
 2. Run the following in the root folder of your project. This will configure your project for {{ PRODUCT }}.
 

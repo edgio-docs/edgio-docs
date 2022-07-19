@@ -18,7 +18,7 @@ Sanity Studio is a single page app (SPA) written in React, where you can configu
 
 {{ SIGN_UP }}
 
-## {{ INSTALL_CLI_STEP }} {/*install-the-appops-cli*/}
+{{ INSTALL_CLI }}
 
 ## Create a new Sanity Studio app {/*create-a-new-sanity-studio-app*/}
 

@@ -16,7 +16,7 @@ This guide shows you how to deploy a [Saber](https://saber.land) application on 
 
 {{ SIGN_UP }}
 
-## {{ INSTALL_CLI_STEP }} {/*install-the-appops-cli*/}
+{{ INSTALL_CLI }}
 
 ## Create a new Saber app {/*create-a-new-saber-app*/}
 

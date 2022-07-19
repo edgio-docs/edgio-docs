@@ -16,7 +16,7 @@ This guide shows you how to deploy a [SolidJS](https://solidjs.com) application 
 
 {{ SIGN_UP }}
 
-## {{ INSTALL_CLI_STEP }} {/*install-the-appops-cli*/}
+{{ INSTALL_CLI }}
 
 ## Create a new SolidJS app {/*create-a-new-solidjs-app*/}
 

@@ -24,7 +24,7 @@ Here is an example of the [Next.js Commerce](https://nextjs.org/commerce) templa
 
 {{ SIGN_UP }}
 
-## {{ INSTALL_CLI_STEP }} {/*install-the-appops-cli*/}
+{{ INSTALL_CLI }}
 
 ## Deploy the Example {/*deploy-the-example*/}
 

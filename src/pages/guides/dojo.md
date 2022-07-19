@@ -16,7 +16,7 @@ This guide shows you how to deploy a [Dojo](https://dojo.io/) application on the
 
 {{ SIGN_UP }}
 
-## {{ INSTALL_CLI_STEP }} {/*install-the-appops-cli*/}
+{{ INSTALL_CLI }}
 
 ## Create a new Dojo app {/*create-a-new-dojo-app*/}
 

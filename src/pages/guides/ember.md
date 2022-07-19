@@ -16,7 +16,7 @@ This guide shows you how to deploy an [Ember.js](https://emberjs.com/) applicati
 
 {{ SIGN_UP }}
 
-## {{ INSTALL_CLI_STEP }} {/*install-the-appops-cli*/}
+{{ INSTALL_CLI }}
 
 ## Create a new Ember.js app {/*create-a-new-emberjs-app*/}
 

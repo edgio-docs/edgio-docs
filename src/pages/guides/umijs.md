@@ -16,7 +16,7 @@ This guide shows you how to deploy a [UmiJS])(https://umijs.org/) application on
 
 {{ SIGN_UP }}
 
-## {{ INSTALL_CLI_STEP }} {/*install-the-appops-cli*/}
+{{ INSTALL_CLI }}
 
 ## Create a new UmiJS app {/*create-a-new-umijs-app*/}
 

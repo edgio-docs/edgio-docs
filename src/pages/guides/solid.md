@@ -2,7 +2,7 @@
 title: SolidJS
 ---
 
-This guide shows you how to deploy a [SolidJS](https://solidjs.com) application on the {{ COMPANY_NAME }} {{ PRODUCT }} platform.
+This guide shows you how to deploy a [SolidJS](https://solidjs.com) application on the {{ PRODUCT }} platform.
 
 ## Example {/*example*/}
 

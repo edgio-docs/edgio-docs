@@ -2,7 +2,7 @@
 title: Remix
 ---
 
-This guide shows you how to deploy a [Remix](https://remix.run/) application on the {{ COMPANY_NAME }} {{ PRODUCT }} platform.
+This guide shows you how to deploy a [Remix](https://remix.run/) application on the {{ PRODUCT }} platform.
 
 ## Example {/*example*/}
 

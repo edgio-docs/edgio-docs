@@ -2,7 +2,7 @@
 title: Scully
 ---
 
-[Scully](https://scully.io/) is a static site generator for Angular projects. This guide walks you through deploying a Scully site to the {{ COMPANY_NAME }} {{ PRODUCT }} platform.
+[Scully](https://scully.io/) is a static site generator for Angular projects. This guide walks you through deploying a Scully site to the {{ PRODUCT }} platform.
 
 ## Example {/*example*/}
 

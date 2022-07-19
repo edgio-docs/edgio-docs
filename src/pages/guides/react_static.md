@@ -2,7 +2,7 @@
 title: React Static
 ---
 
-This guide shows you how to deploy a [React Static](https://github.com/react-static/react-static) application on the {{ COMPANY_NAME }} {{ PRODUCT }} platform.
+This guide shows you how to deploy a [React Static](https://github.com/react-static/react-static) application on the {{ PRODUCT }} platform.
 
 ## Example {/*example*/}
 

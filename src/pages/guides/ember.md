@@ -2,7 +2,7 @@
 title: Ember.js
 ---
 
-This guide shows you how to deploy an [Ember.js](https://emberjs.com/) application on the {{ COMPANY_NAME }} {{ PRODUCT }} platform.
+This guide shows you how to deploy an [Ember.js](https://emberjs.com/) application on the {{ PRODUCT }} platform.
 
 ## Example {/*example*/}
 

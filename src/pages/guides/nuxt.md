@@ -2,7 +2,7 @@
 title: Nuxt.js
 ---
 
-This guide shows you how to deploy a Nuxt.js application on the {{ COMPANY_NAME }} {{ PRODUCT }} platform. If you run into any issues please consult the [Troubleshooting](#section_troubleshooting) section.
+This guide shows you how to deploy a Nuxt.js application on the {{ PRODUCT }} platform. If you run into any issues please consult the [Troubleshooting](#section_troubleshooting) section.
 
 ## Example SSR Site {/*example-ssr-site*/}
 

@@ -2,7 +2,7 @@
 title: Svelte
 ---
 
-This guide shows you how to deploy a [Svelte](https://svelte.dev/) application on the {{ COMPANY_NAME }} {{ PRODUCT }} platform.
+This guide shows you how to deploy a [Svelte](https://svelte.dev/) application on the {{ PRODUCT }} platform.
 
 ## Example {/*example*/}
 

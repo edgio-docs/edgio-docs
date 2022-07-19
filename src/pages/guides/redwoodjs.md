@@ -2,7 +2,7 @@
 title: RedwoodJS
 ---
 
-This guide shows you how to deploy a [RedwoodJS](https://redwoodjs.com/) application on the {{ COMPANY_NAME }} {{ PRODUCT }} platform.
+This guide shows you how to deploy a [RedwoodJS](https://redwoodjs.com/) application on the {{ PRODUCT }} platform.
 
 ## Example {/*example*/}
 

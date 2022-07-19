@@ -2,7 +2,7 @@
 title: Lit
 ---
 
-[Lit](https://lit.dev/) is a simple library for building fast, lightweight web components. This guide walks you through deploying Lit sites to the {{ COMPANY_NAME }} {{ PRODUCT }} platform.
+[Lit](https://lit.dev/) is a simple library for building fast, lightweight web components. This guide walks you through deploying Lit sites to the {{ PRODUCT }} platform.
 
 ## Example {/*example*/}
 

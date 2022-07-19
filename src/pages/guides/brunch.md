@@ -2,7 +2,7 @@
 title: Brunch
 ---
 
-This guide shows you how to deploy a [Brunch](https://brunch.io/) application on the {{ COMPANY_NAME }} {{ PRODUCT }} platform.
+This guide shows you how to deploy a [Brunch](https://brunch.io/) application on the {{ PRODUCT }} platform.
 
 ## Example {/*example*/}
 

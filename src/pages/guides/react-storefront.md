@@ -2,7 +2,7 @@
 title: React Storefront
 ---
 
-[React Storefront](https://docs.reactstorefront.io) helps developers build sub-second e-commerce progressive web apps in record time. This guide shows you how to deploy a React Storefront application on the {{ COMPANY_NAME }} {{ PRODUCT }} platform.
+[React Storefront](https://docs.reactstorefront.io) helps developers build sub-second e-commerce progressive web apps in record time. This guide shows you how to deploy a React Storefront application on the {{ PRODUCT }} platform.
 
 {{ SIGN_UP }}
 

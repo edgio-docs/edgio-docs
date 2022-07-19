@@ -2,7 +2,7 @@
 title: Nuxt3
 ---
 
-This guide shows you how to deploy a [Nuxt3](https://v3.nuxtjs.org) application on the {{ COMPANY_NAME }} {{ PRODUCT }} platform.
+This guide shows you how to deploy a [Nuxt3](https://v3.nuxtjs.org) application on the {{ PRODUCT }} platform.
 
 Note: Nuxt3 is still in beta and is not recommended for production.
 

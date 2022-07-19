@@ -2,7 +2,7 @@
 title: Eleventy
 ---
 
-This guide shows you how to deploy a [Eleventy](https://www.11ty.dev/) application on the {{ COMPANY_NAME }} {{ PRODUCT }} platform.
+This guide shows you how to deploy a [Eleventy](https://www.11ty.dev/) application on the {{ PRODUCT }} platform.
 
 ## Example {/*example*/}
 

@@ -2,7 +2,7 @@
 title: React
 ---
 
-This guide shows you how to serve a [React](https://reactjs.org/) application on the {{ COMPANY_NAME }} {{ PRODUCT }} platform. If you're using Next.js specifically, we suggest using the [Next.js guide](/guides/next).
+This guide shows you how to serve a [React](https://reactjs.org/) application on the {{ PRODUCT }} platform. If you're using Next.js specifically, we suggest using the [Next.js guide](/guides/next).
 
 ## Example {/*example*/}
 
@@ -51,7 +51,7 @@ Then, in the root folder of your project, run:
 
 This will automatically add all of the required dependencies and files to your project. These include:
 
-- The `{{ PACKAGE_NAME }}/core` package - Allows you to declare routes and deploy your {{ COMPANY_NAME }} {{ PRODUCT }} platform.
+- The `{{ PACKAGE_NAME }}/core` package - Allows you to declare routes and deploy your {{ PRODUCT }} platform.
 - The `{{ PACKAGE_NAME }}/prefetch` package - Allows you to configure a service worker to prefetch and cache pages to improve browsing speed.
 - `{{ CONFIG_FILE }}` - The main configuration file for {{ PRODUCT }}.
 - `routes.js` - A default routes file that sends all requests to React. This file can be updated add caching or proxy URLs to a different origin.

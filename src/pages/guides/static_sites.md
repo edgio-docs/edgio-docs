@@ -2,7 +2,7 @@
 title: Serving Static Sites
 ---
 
-This guide shows you how to serve generic static sites on the {{ COMPANY_NAME }} {{ PRODUCT }} platform.
+This guide shows you how to serve generic static sites on the {{ PRODUCT }} platform.
 
 <Video src="https://player.vimeo.com/video/691615425"/>
 

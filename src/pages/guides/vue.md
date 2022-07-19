@@ -2,7 +2,7 @@
 title: Vue.js
 ---
 
-This guide shows you how to deploy a [Vue.js](https://vuejs.org/) application on the {{ COMPANY_NAME }} {{ PRODUCT }} platform.
+This guide shows you how to deploy a [Vue.js](https://vuejs.org/) application on the {{ PRODUCT }} platform.
 
 ## Example {/*example*/}
 
@@ -56,7 +56,7 @@ In the root directory of your project run `{{ CLI_NAME }} init`:
 
 This will automatically update your `package.json` and add all of the required {{ PRODUCT }} dependencies and files to your project. These include:
 
-- The `{{ PACKAGE_NAME }}/core` package - Allows you to declare routes and deploy your application on the {{ COMPANY_NAME }} {{ PRODUCT }} platform.
+- The `{{ PACKAGE_NAME }}/core` package - Allows you to declare routes and deploy your application on the {{ PRODUCT }} platform.
 - The `{{ PACKAGE_NAME }}/prefetch` package - Allows you to configure a service worker to prefetch and cache pages to improve browsing speed
 - `{{ CONFIG_FILE }}` - A configuration file for {{ PRODUCT }}
 - `routes.js` - A default routes file that sends all requests to Vue.js.

@@ -2,7 +2,7 @@
 title: Fastboot
 ---
 
-This guide shows you how to deploy [Ember Fastboot](https://ember-fastboot.com/) apps on {{ PRODUCT_NAME }}.
+This guide shows you how to deploy an [Ember Fastboot](https://ember-fastboot.com/) application on the {{ COMPANY_NAME }} {{ PRODUCT }} platform.
 
 ## Example {/*example*/}
 
@@ -14,7 +14,7 @@ This guide shows you how to deploy [Ember Fastboot](https://ember-fastboot.com/)
 
 ## Connector {/*connector*/}
 
-This framework has a connector developed for {{ PRODUCT_NAME }}. See [Connectors](connectors) for more information.
+This framework has a connector developed for {{ PRODUCT }}. See [Connectors](connectors) for more information.
 
 <ButtonLink variant="stroke" type="code" withIcon={true} href="https://github.com/layer0-docs/layer0-connectors/tree/main/layer0-fastboot-connector">
   View the Connector Code
@@ -22,9 +22,11 @@ This framework has a connector developed for {{ PRODUCT_NAME }}. See [Connectors
 
 {{ SYSTEM_REQUIREMENTS }}
 
+{{ SIGN_UP }}
+
 ## Getting Started {/*getting-started*/}
 
-To prepare your Fastboot app for deployment on {{ PRODUCT_NAME }}, run the following in the root folder of your project:
+To prepare your Fastboot app for deployment on the {{ PRODUCT }}, run the following command in the root folder of your project:
 
 ```bash
 npm i -g {{ PACKAGE_NAME }}/cli # yarn global add {{ PACKAGE_NAME }}/cli
@@ -33,13 +35,13 @@ npm i -g {{ PACKAGE_NAME }}/cli # yarn global add {{ PACKAGE_NAME }}/cli
 
 This will automatically add all of the required dependencies and files to your project. These include:
 
-- The `{{ CLI_NAME }}/core` package - Allows you to declare routes and deploy your application on {{ PRODUCT_NAME }}
-- The `{{ CLI_NAME }}/fastboot` package - Provides router middleware that automatically adds Fastboot routes to {{ PRODUCT_NAME }} router.
+- The `{{ CLI_NAME }}/core` package - Allows you to declare routes and deploy your application on {{ PRODUCT }}
+- The `{{ CLI_NAME }}/fastboot` package - Provides router middleware that automatically adds Fastboot routes to the {{ PRODUCT }} router.
 - The `{{ CLI_NAME }}/prefetch` package - Allows you to configure a service worker to prefetch and cache pages to improve browsing speed
 - The `{{ CLI_NAME }}/react` package - Provides a `Prefetch` component for prefetching pages
 - `routes.js` - A default routes file that sends all requests to Fastboot. Update this file to add caching or proxy some URLs to a different origin.
-- `sw/service-worker.js` - The source code for your service worker, which enables prefetching when running on {{ PRODUCT_NAME }}.
-- `{{ CONFIG_FILE }}` - Contains configuration options for deploying on {{ PRODUCT_NAME }}.
+- `sw/service-worker.js` - The source code for your service worker, which enables prefetching when running on {{ PRODUCT }}.
+- `{{ CONFIG_FILE }}` - Contains configuration options for deploying on {{ PRODUCT }}.
 
 ## Adding {{ PRODUCT_NAME }} Service Worker {/*adding-layer0-service-worker*/}
 
@@ -86,7 +88,7 @@ module.exports = {
 
 ## Running Locally {/*running-locally*/}
 
-To simulate your app within {{ PRODUCT_NAME }} locally, run:
+Test your app with the {{ PRODUCT_PLATFORM }} on your local machine by running the following command in your project's root directory:
 
 ```bash
 {{ CLI_NAME }} dev
@@ -102,7 +104,7 @@ To simulate edge caching locally, run:
 
 ## Deploying {/*deploying*/}
 
-Deploying requires an account on {{ PRODUCT_NAME }}. [Sign up here for free.](https://moovweb.app/signup) Once you have an account, you can deploy to {{ PRODUCT_NAME }} by running the following in the root folder of your project
+Deploy your app to the {{ PRODUCT_PLATFORM }} by running the following command in your project's root directory:
 
 ```bash
 {{ CLI_NAME }} deploy

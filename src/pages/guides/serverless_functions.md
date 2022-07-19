@@ -9,7 +9,7 @@ title: Serverless Functions
 To create a new {{ PRODUCT }} project using serverless functions, run:
 
 ```bash
-npx @layer0/cli@latest init
+npx @{{ PRODUCT_NAME_LOWER }} /cli@latest init
 ```
 
 ## Responding to requests {/*responding-to-requests*/}
@@ -18,7 +18,7 @@ Use the [compute](/docs/api/core/classes/_router_responsewriter_.responsewriter.
 
 ```js
 // routes.js
-import { Router } from '@layer0/core'
+import { Router } from '@{{ PRODUCT_NAME_LOWER }}/core'
 
 export default new Router().get('/some-route/:someParam', ({ compute }) => {
   compute((req, res) => {
@@ -93,7 +93,7 @@ To forward a request to the origin and modify the response using a serverless fu
 
 ```js
 // routes.js
-import { Router } from '@layer0/core'
+import { Router } from '@{{ PRODUCT_NAME_LOWER }}/core'
 
 export default new Router().get('/some-route/:someParam', ({ proxy }) => {
   proxy('origin', {
@@ -157,7 +157,7 @@ To improve performance and minimize cost, cache the responses returned by your s
 
 ```js
 // routes.js
-import { Router } from '@layer0/core'
+import { Router } from '@{{ PRODUCT_NAME_LOWER }}/core'
 
 export default new Router().get('/', ({ cache, compute }) => {
   cache({
@@ -177,24 +177,24 @@ See the [cache](/docs/api/core/classes/_router_responsewriter_.responsewriter.ht
 
 ## Running your project locally {/*running-your-project-locally*/}
 
-To test your project locally, run:
+Test your app with the {{ PRODUCT_PLATFORM }} on your local machine by running the following command in your project's root directory:
 
 ```bash
-0 dev
+{{ CLI_NAME }} dev
 ```
 
 This will start your project in watch mode. Any changes your make to your source code will instantly take effect without restarting.
 
-## Deploying your project to {{ PRODUCT }} {/*deploying-your-project-to-layer0*/}
+## Deploying your project to {{ PRODUCT }} {/*deploying-your-project-to-appops*/}
 
-To deploy your project, run:
+Deploy your app to the {{ PRODUCT_PLATFORM }} by running the following command in your project's root directory:
 
 ```bash
-0 deploy
+{{ CLI_NAME }} deploy
 ```
 
 ## Limits {/*limits*/}
 
-{{ PRODUCT }} serverless functions have a maximum runtime of 20 seconds per request. If a function exceeds this limit, {{ PRODUCT }} will respond with a 539 status.
+{{ PRODUCT }}  serverless functions have a maximum runtime of 20 seconds per request. If a function exceeds this limit, {{ PRODUCT }} will respond with a 539 status.
 
 See [Limits](/guides/limits#section_request_and_response_limits) for more information.

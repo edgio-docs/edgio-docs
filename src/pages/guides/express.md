@@ -2,36 +2,36 @@
 title: Express
 ---
 
-[Express](https://expressjs.com) is a fast, unopinionated, minimalist web framework for Node.js. The {{ PRODUCT }} serverless environment makes it easy to run apps without managing Node.js servers.
+[Express](https://expressjs.com) is a fast, unopinionated, minimalist web framework for Node.js. The {{ PRODUCT_PLATFORM }}'s serverless environment makes it easy to run apps without managing Node.js servers.
 
 ## Getting Started {/*getting-started*/}
 
-To add {{ PRODUCT_NAME }} to your Express app, run the following in the root directory of your express app:
+Add your Express app to {{ PRODUCT }} by running the following command in your project's root directory:
 
 ```bash
 npm i -g {{ PACKAGE_NAME }}/cli # yarn global add {{ PACKAGE_NAME }}/cli
-0 init
+{{ CLI_NAME }} init
 ```
 
 ## Running your app locally {/*running-your-app-locally*/}
 
-To run your app behind {{ PRODUCT }} locally, run:
+Test your app with the {{ PRODUCT_PLATFORM }} on your local machine by running the following command in your project's root directory:
 
 ```bash
-0 dev
+{{ CLI_NAME }} dev
 ```
 
-## Deploying your app to {{ PRODUCT_NAME }} {/*deploying-your-app-to-layer0*/}
+## Deploying {/*deploying*/}
 
-To deploy your app to {{ PRODUCT_NAME }}, run:
+Deploy your app to the {{ PRODUCT_PLATFORM }} by running the following command in your project's root directory:
 
 ```bash
-0 deploy
+{{ CLI_NAME }} deploy
 ```
 
 ## Overriding the default app location {/*overriding-the-default-app-location*/}
 
-When you deploy your Express app to {{ PRODUCT_NAME }}, the {{ PRODUCT_NAME }} CLI bundles your app as a single javascript file so that it can be run as a serverless function. By default {{ PRODUCT }} looks for your app in a few common locations:
+When you deploy your Express app to the {{ PRODUCT_PLATFORM }}, the {{ PRODUCT }} CLI bundles your app as a single javascript file so that it can be run as a serverless function. By default, {{ COMPANY_NAME }} looks for your app in the following common locations:
 
 - src/server.ts
 - src/server.js
@@ -61,7 +61,7 @@ The file you specify in `appPath` should export an instance of an express app us
 
 ## Serving Static Assets {/*serving-static-assets*/}
 
-If your express app serves any static assets, you'll need to add routes to your {{ PRODUCT }} router to serve them from the edge. For example, to serve all paths under `/assets` from `dist/client/assets`:
+If your express app serves any static assets, you'll need to add routes to your {{ PRODUCT }} router configuration to serve them from the edge. For example, to serve all paths under `/assets` from `dist/client/assets`:
 
 ```js
 // routes.js
@@ -84,7 +84,7 @@ export default new Router()
 
 ## Adding Additional Files Needed during SSR {/*adding-additional-files-needed-during-ssr*/}
 
-If your express app expects to be able to read files from the filesystem at runtime, for example an index.html template, you can ensure they are included in the app bundle that is deployed to {{ PRODUCT }}'s serverless workers by adding the following to {{ CONFIG_FILE }}
+If your express app expects to be able to read files from the filesystem at runtime, for example an index.html template, you can ensure they are included in the app bundle that is deployed to  {{ PRODUCT_PLATFORM }}'s serverless workers by adding the following to {{ CONFIG_FILE }}
 
 ```js
 module.exports = {

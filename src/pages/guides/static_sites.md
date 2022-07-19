@@ -2,13 +2,13 @@
 title: Serving Static Sites
 ---
 
-This guide shows you how to serve generic static sites on {{ PRODUCT_NAME }}.
+This guide shows you how to serve generic static sites on the {{ COMPANY_NAME }} {{ PRODUCT }} platform.
 
 <Video src="https://player.vimeo.com/video/691615425"/>
 
 ## Example Static Sites {/*example-static-sites*/}
 
-Here are a few examples of common static sites served by {{ PRODUCT_NAME }}.
+Here are a few examples of common static sites served by {{ PRODUCT }}.
 
 <ExampleButtons
   title="Backbone.js Static"
@@ -30,9 +30,11 @@ Here are a few examples of common static sites served by {{ PRODUCT_NAME }}.
 
 {{ SYSTEM_REQUIREMENTS }}
 
+{{ SIGN_UP }}
+
 ## Getting Started {/*getting-started*/}
 
-To prepare your static app for deployment on {{ PRODUCT_NAME }}, install the {{ PRODUCT_NAME }} CLI globally:
+To prepare your static app for deployment on {{ PRODUCT }}, install the {{ PRODUCT }} CLI globally:
 
 ```bash
 npm i -g {{ PACKAGE_NAME }}/cli # yarn global add {{ PACKAGE_NAME }}/cli
@@ -47,9 +49,9 @@ Then, in the root folder of your project, run:
 This will automatically add all of the required dependencies and files to your
 project. These include:
 
-- The `{{ PACKAGE_NAME }}/core` package - Allows you to declare routes and deploy your application on {{ PRODUCT_NAME }}
+- The `{{ PACKAGE_NAME }}/core` package - Allows you to declare routes and deploy your application on {{ PRODUCT }}
 - The `{{ PACKAGE_NAME }}/prefetch` package - Allows you to configure a service worker to prefetch and cache pages to improve browsing speed
-- `{{ CONFIG_FILE }}` - The main configuration file for {{ PRODUCT_NAME }}.
+- `{{ CONFIG_FILE }}` - The main configuration file for {{ PRODUCT }}.
 - `routes.js` - A default routes file that sends all requests to Next.js. Update this file to add caching or proxy some URLs to a different origin.
 - `sw/service-worker.js` A service worker implemented using Workbox.
 
@@ -61,7 +63,7 @@ The built version of your app will typically reside in a `/build` or `/dist` dir
 
 ## Router Configuration {/*router-configuration*/}
 
-The {{ PRODUCT_NAME }} router is used for configuring where the static resources reside and how to serve them. Using the example above, let's assume your site is bundled under the `/build` directory and has the following structure:
+The {{ PRODUCT }} router is used for configuring where the static resources reside and how to serve them. Using the example above, let's assume your site is bundled under the `/build` directory and has the following structure:
 
 - `/build/index.html`
 - `/build/static/css/main.css`
@@ -107,7 +109,7 @@ module.exports = new Router()
   })
 ```
 
-If your site does not use a bundler for generating a build output, you can still serve the assets using `serveStatic` and reference the relative path to the resources. Any resource referenced using `serveStatic` or `appShell` will automatically be included in the {{ PRODUCT_NAME }} deployment. An example of serving assets from your `src` directory:
+If your site does not use a bundler for generating a build output, you can still serve the assets using `serveStatic` and reference the relative path to the resources. Any resource referenced using `serveStatic` or `appShell` will automatically be included in the {{ PRODUCT }} deployment. An example of serving assets from your `src` directory:
 
 ```js
 // routes.js
@@ -138,7 +140,7 @@ module.exports = new Router()
 
 ## Deploying {/*deploying*/}
 
-Deploying requires an account on {{ PRODUCT_NAME }}. [Sign up here for free.]({{ APP_URL }}/signup) Once you have an account, you can deploy to {{ PRODUCT_NAME }} by running the following in the root folder of your project:
+Deploy your app to the {{ PRODUCT_PLATFORM }} by running the following command in your project's root directory:
 
 ```bash
 {{ CLI_NAME }} deploy

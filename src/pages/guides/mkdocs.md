@@ -2,7 +2,7 @@
 title: MkDocs
 ---
 
-[MkDocs](https://www.mkdocs.org/) is a fast, simple and downright gorgeous static site generator that's geared towards building project documentation. Follow the steps below to deploy your MkDocs site to {{ PRODUCT }}
+[MkDocs](https://www.mkdocs.org/) is a fast, simple and downright gorgeous static site generator that's geared towards building project documentation. Follow the steps below to deploy your MkDocs site to the {{ COMPANY_NAME }} {{ PRODUCT }} platform.
 
 ## Create your MkDocs site {/*create-your-mkdocs-site*/}
 
@@ -16,7 +16,7 @@ mkdocs new my-project
 cd my-project
 ```
 
-## Add {{ PRODUCT }} {/*add-edgio*/}
+## Add {{ PRODUCT }} {/*add-appops*/}
 
 Create a `package.json` at the root of your project with the following:
 ```json
@@ -37,19 +37,19 @@ Create a `package.json` at the root of your project with the following:
 ```
 
 ```bash
-# First, globally install the {{ PRODUCT }} CLI:
+# First, globally install the  {{ PRODUCT }} CLI:
 npm i -g {{ PACKAGE_NAME }}/cli # yarn global add {{ PACKAGE_NAME }}/cli
 
-# Then, add {{ PRODUCT }} to your MkDocs site:
-0 init
+# Then, add  {{ PRODUCT }} to your MkDocs site:
+{{ CLI_NAME }} init
 ```
 
-## Update your {{ PRODUCT }} Router {/*update-your-edgio-router*/}
+## Update your  {{ PRODUCT }} Router {/*update-your-appops-router*/}
 
 Paste the following into routes.js:
 
 ```js
-import { Router } from '@layer0/core'
+import { Router } from '@{{ PRODUCT_NAME_LOWER }}/core'
 
 const ONE_MINUTE = 60
 const FAR_FUTURE = 60 * 60 * 24 * 365 * 10
@@ -86,14 +86,14 @@ router.match('/:path*', ({ serveStatic, cache }) => {
 export default router
 ```
 
-## Deploy to {{ PRODUCT }} {/*deploy-to-edgio*/}
+## Deploying {/*deploying*/}
 
-To deploy your site to {{ PRODUCT }}, run:
+Deploy your app to the {{ PRODUCT_PLATFORM }} by running the following commands in your project's root directory:
 
 ```bash
 # Create a production build of your mkdocs site
 npm run build
 
-# Deploy it to {{ PRODUCT }}
-0 deploy
+# Deploy it to the {{ PRODUCT_PLATFORM }}
+{{ CLI_NAME }} deploy
 ```

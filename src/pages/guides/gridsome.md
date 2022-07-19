@@ -2,7 +2,7 @@
 title: Gridsome
 ---
 
-This guide shows you how to deploy a [Gridsome](https://gridsome.org/) application on {{ PRODUCT_NAME }}.
+This guide shows you how to deploy a [Gridsome](https://gridsome.org/) application on the {{ COMPANY_NAME }} {{ PRODUCT }} platform.
 
 ## Example {/*example*/}
 
@@ -16,13 +16,7 @@ This guide shows you how to deploy a [Gridsome](https://gridsome.org/) applicati
 
 {{ SIGN_UP }}
 
-## Install the {{ PRODUCT_NAME }} CLI {/*install-the-layer0-cli*/}
-
-If you have not already done so, install the [{{ PRODUCT_NAME }} CLI](cli)
-
-```bash
-npm i -g {{ PACKAGE_NAME }}/cli # yarn global add {{ PACKAGE_NAME }}/cli
-```
+## {{ INSTALL_CLI_STEP }} {/*install-the-appops-cli*/}
 
 ## Create a new Gridsome app {/*create-a-new-gridsome-app*/}
 
@@ -40,7 +34,7 @@ You can verify your app works by running it locally with:
 gridsome develop
 ```
 
-## Configuring your Gridsome app for {{ PRODUCT_NAME }} {/*configuring-your-gridsome-app-for-layer0*/}
+## Configuring your Gridsome app for {{ PRODUCT_NAME }} {/*configuring-your-gridsome-app-for-appops*/}
 
 ### Initialize your project {/*initialize-your-project*/}
 
@@ -62,10 +56,10 @@ This will automatically update your `package.json` and add all of the required {
 Update `routes.js` at the root of your project to the following:
 
 ```js
-// This file was added by layer0 init.
+// This file was added by {{ PRODUCT_NAME_LOWER }} init.
 // You should commit this file to source control.
 
-import { Router } from '@layer0/core/router'
+import { Router } from '@{{ PRODUCT_NAME_LOWER }}/core/router'
 
 export default new Router().static('dist', ({ cache }) => {
   cache({
@@ -83,7 +77,7 @@ export default new Router().static('dist', ({ cache }) => {
 
 Refer to the [Routing](routing) guide for the full syntax of the `routes.js` file and how to configure it for your use case.
 
-### Run the Gridsome app locally on {{ PRODUCT_NAME }} {/*run-the-gridsome-app-locally-on-layer0*/}
+### Run the Gridsome app locally on {{ PRODUCT_NAME }} {/*run-the-gridsome-app-locally-on-appops*/}
 
 Create a production build of your app by running the following in your project's root directory:
 
@@ -91,7 +85,7 @@ Create a production build of your app by running the following in your project's
 npm run build
 ```
 
-Run {{ PRODUCT_NAME }} on your local machine:
+Test your app with the {{ PRODUCT_PLATFORM }} on your local machine by running the following command in your project's root directory:
 
 ```bash
 {{ CLI_NAME }} dev
@@ -107,7 +101,7 @@ Create a production build of your app by running the following in your project's
 npm run build
 ```
 
-Next, deploy the build to {{ PRODUCT_NAME }} by running the `{{ CLI_NAME }} deploy` command:
+Deploy your app to the {{ PRODUCT_PLATFORM }} by running the following command in your project's root directory:
 
 ```bash
 {{ CLI_NAME }} deploy

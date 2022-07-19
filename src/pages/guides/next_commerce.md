@@ -2,11 +2,11 @@
 title: Next.js Commerce
 ---
 
-This guide shows you how to deploy the [Next.js Commerce](https://github.com/vercel/commerce) starter kit on {{ PRODUCT_NAME }}. Note that Next.js Commerce repo is actively under development. This repo requires an account on the [BigCommerce](https://www.bigcommerce.com/) platform. BigCommerce has a generous free trial which can be used.
+This guide shows you how to deploy the [Next.js Commerce](https://github.com/vercel/commerce) starter kit on {{ PRODUCT }}. Note that Next.js Commerce repo is actively under development. This repo requires an account on the [BigCommerce](https://www.bigcommerce.com/) platform. BigCommerce has a generous free trial which can be used.
 
 ## Next.js Commerce Example {/*nextjs-commerce-example*/}
 
-Here is an example of the [Next.js Commerce](https://nextjs.org/commerce) template running on {{ PRODUCT_NAME }}. It uses all of the latest Next.js 10 features including image optimization, localization, and incremental static regeneration with stale-while-revalidate.
+Here is an example of the [Next.js Commerce](https://nextjs.org/commerce) template running on {{ PRODUCT }}. It uses all of the latest Next.js 10 features including image optimization, localization, and incremental static regeneration with stale-while-revalidate.
 
 <ButtonLinksGroup>
   <ButtonLink variant="fill" type="default" href="https://layer0-docs-layer0-nextjs-commerce-default.layer0-limelight.link">
@@ -20,17 +20,11 @@ Here is an example of the [Next.js Commerce](https://nextjs.org/commerce) templa
   </ButtonLink>
 </ButtonLinksGroup>
 
+{{ SYSTEM_REQUIREMENTS }}
+
 {{ SIGN_UP }}
 
-## Install the {{ PRODUCT_NAME }} CLI {/*install-the-layer0-cli*/}
-
-If you have not already done so, install the [{{ PRODUCT_NAME }} CLI](cli)
-
-```bash
-npm i -g {{ PACKAGE_NAME }}/cli # yarn global add {{ PACKAGE_NAME }}/cli
-```
-
-{{ SYSTEM_REQUIREMENTS }}
+## {{ INSTALL_CLI_STEP }} {/*install-the-appops-cli*/}
 
 ## Deploy the Example {/*deploy-the-example*/}
 
@@ -42,7 +36,7 @@ Quickly launch an example with no code by clicking the "Deploy to {{ PRODUCT }}"
 
 ## Deploying the official Next.js Commerce repository {/*deploying-the-official-nextjs-commerce-repository*/}
 
-If you wish to deploy to {{ PRODUCT_NAME }} from the official Next.js Commerce repository, follow these steps:
+If you wish to deploy to {{ PRODUCT }} from the official Next.js Commerce repository, follow these steps:
 
 1. Clone the official Next.js Commerce repository and install the dependencies.
 
@@ -52,7 +46,7 @@ cd commerce
 yarn
 ```
 
-2. Run {{ PRODUCT_NAME }} `init` in the project directory:
+2. Run {{ CLI_NAME }} `init` in the project directory:
 
 ```bash
 cd site
@@ -82,7 +76,7 @@ BIGCOMMERCE_STORE_API_STORE_HASH=${STORE_HASH}
 - `STOREFRONT_API_TOKEN`: For instructions on generating the Storefront API token, visit [Create a Token](https://developer.bigcommerce.com/api-reference/store-management/tokens/api-token/createtoken).
 - `CHANNEL_ID`: Visit [Building Channels](https://developer.bigcommerce.com/docs/ZG9jOjE5NjMyODU-building-channels-quick-start) to learn how to create a channel for use in your application.
 
-4. Deploy to {{ PRODUCT_NAME }}.
+4. Deploy to {{ PRODUCT }}.
 
 From project root
 
@@ -101,7 +95,7 @@ Or from within `site` directory
 ## Learn more {/*learn-more*/}
 
 <Callout type="info">
-For more details on using Next.js on {{ PRODUCT_NAME }} refer to the <a href="/guides/next">Next.js guide</a>.
+For more details on using Next.js on {{ PRODUCT }} refer to the <a href="/guides/next">Next.js guide</a>.
 </Callout>
 
 <Callout type="info">
@@ -110,7 +104,7 @@ For more details on how to set up your BigCommerce store, view the <a href="/gui
 
 ## Connector {/*connector*/}
 
-This framework has a connector developed for {{ PRODUCT_NAME }}. See [Connectors](connectors) for more information.
+This framework has a connector developed for {{ PRODUCT }}. See [Connectors](connectors) for more information.
 
 <ButtonLink variant="stroke" type="deploy" withIcon={true} href="https://github.com/layer0-docs/layer0-connectors/tree/main/layer0-next-connector">
   View the Connector Code

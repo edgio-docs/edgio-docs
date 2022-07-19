@@ -2,7 +2,7 @@
 title: Gatsby
 ---
 
-This guide shows you how to deploy an [Gatsby](https://www.gatsbyjs.com/) application on {{ PRODUCT_NAME }}.
+This guide shows you how to deploy an [Gatsby](https://www.gatsbyjs.com/) application on the {{ COMPANY_NAME }} {{ PRODUCT }} platform.
 
 <Video src="https://www.youtube.com/watch?v=ici9j6oF_5E" />
 
@@ -16,13 +16,15 @@ This guide shows you how to deploy an [Gatsby](https://www.gatsbyjs.com/) applic
 
 ## Connector {/*connector*/}
 
-This framework has a connector developed for {{ PRODUCT_NAME }}. See [Connectors](connectors) for more information.
+This framework has a connector developed for {{ PRODUCT }}. See [Connectors](connectors) for more information.
 
 <ButtonLink variant="stroke" type="code" withIcon={true} href="https://github.com/layer0-docs/layer0-connectors/tree/main/layer0-gatsby-connector">
   View the Connector Code
 </ButtonLink>
 
 {{ SYSTEM_REQUIREMENTS }}
+
+{{ SIGN_UP }}
 
 ## Getting Started {/*getting-started*/}
 
@@ -35,15 +37,11 @@ gatsby new gatsby-site https://github.com/gatsbyjs/gatsby-starter-hello-world
 
 You should now have a working Gatsby site. Run `gatsby develop` to see the application running on `localhost:8000`.
 
-To deploy your Gatsby on {{ PRODUCT_NAME }}:
+To deploy your Gatsby on {{ PRODUCT }}:
 
-1. Install the {{ PRODUCT_NAME }} CLI globally:
+1. {{ INSTALL_CLI_STEP }} {/*install-the-appops-cli*/}
 
-```bash
-npm i -g {{ PACKAGE_NAME }}/cli # yarn global add {{ PACKAGE_NAME }}/cli
-```
-
-2. Run the following in the root folder of your project. This will configure your project for {{ PRODUCT_NAME }}.
+2. Run the following in the root folder of your project. This will configure your project for {{ PRODUCT }}.
 
 ```bash
 {{ CLI_NAME }} init
@@ -59,7 +57,7 @@ This will automatically add all of the required dependencies and files to your p
 
 ## Running Locally {/*running-locally*/}
 
-You can test the integration of the {{ PRODUCT_NAME }} router with your gatsby site locally using:
+You can test the integration of the {{ PRODUCT_PLATFORM }} router with your gatsby site locally using:
 
 ```bash
 {{ CLI_NAME }} dev
@@ -67,7 +65,7 @@ You can test the integration of the {{ PRODUCT_NAME }} router with your gatsby s
 
 ## Deploying {/*deploying*/}
 
-Deploying requires an account on {{ PRODUCT_NAME }}. [Sign up here for free.]({{ APP_URL }}/signup) Once you have an account, you can deploy to {{ PRODUCT_NAME }} by running the following in the root folder of your project:
+Deploy your app to the {{ PRODUCT_PLATFORM }} by running the following command in your project's root directory:
 
 ```bash
 {{ CLI_NAME }} deploy
@@ -108,7 +106,7 @@ module.exports = {
 }
 ```
 
-Using environment variables here allows you to configure different legacy domains for each {{ PRODUCT_NAME }} environment.
+Using environment variables here allows you to configure different legacy domains for each {{ PRODUCT }} environment.
 
 Then you can add routing and caching rules to your `routes.js` file. Note that gatsbyRoute must be declared last as it acts as a fallback route.
 

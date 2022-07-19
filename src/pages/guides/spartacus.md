@@ -2,7 +2,7 @@
 title: Spartacus for SAP Commerce Cloud (formerly SAP Hybris)
 ---
 
-This guide shows you how to deploy [Spartacus](https://sap.github.io/spartacus-docs) apps on {{ PRODUCT_NAME }}.
+This guide shows you how to deploy a [Spartacus](https://sap.github.io/spartacus-docs) application on the {{ COMPANY_NAME }} {{ PRODUCT }} platform.
 
 <ButtonLinksGroup>
   <ButtonLink variant="fill" type="default" href="https://layer0-docs-layer0-spartacus-example-default.layer0-limelight.link/">
@@ -12,19 +12,21 @@ This guide shows you how to deploy [Spartacus](https://sap.github.io/spartacus-d
    View the Code
   </ButtonLink>
   <ButtonLink variant="stroke" type="deploy" withIcon={true} href="https://app.layer0.co/deploy?button&deploy&repo=https%3A%2F%2Fgithub.com%2Flayer0-docs%2Flayer0-spartacus-example">
-    Deploy to {{ PRODUCT }}
+    Deploy to Layer0
   </ButtonLink>
 </ButtonLinksGroup>
 
 ## Connector {/*connector*/}
 
-This framework has a connector developed for {{ PRODUCT_NAME }}. See [Connectors](connectors) for more information.
+This framework has a connector developed for {{ PRODUCT }}. See [Connectors](connectors) for more information.
 
 <ButtonLink variant="stroke" type="code" withIcon={true} href="https://github.com/layer0-docs/layer0-connectors/tree/main/layer0-spartacus-connector">
  View the Connector Code
 </ButtonLink>
 
 {{ SYSTEM_REQUIREMENTS }}
+
+{{ SIGN_UP }}
 
 ## Getting Started {/*getting-started*/}
 
@@ -44,7 +46,7 @@ You should now have a working starter app. Run `ng serve` to see the application
 
 #### 2. Add Spartacus with SSR {/*2-add-spartacus-with-ssr*/}
 
-To deploy your Spartacus application on {{ PRODUCT_NAME }} it needs to support server-side rendering (SSR). To add SSR support, run:
+To deploy your Spartacus application on {{ PRODUCT }} it needs to support server-side rendering (SSR). To add SSR support, run:
 
 ```bash
 ng add @spartacus/schematics --ssr
@@ -61,15 +63,15 @@ The previous command created:
 
 You can now run `npm run build:ssr && npm run serve:ssr` to access your server-side rendered app at `localhost:4000`.
 
-To prepare your Spartacus application for deployment on {{ PRODUCT_NAME }}:
+To prepare your Spartacus application for deployment on {{ PRODUCT }}:
 
-#### 1. Install the {{ PRODUCT_NAME }} CLI globally: {/*1-install-the-layer0-cli-globally*/}
+#### 1. {{ INSTALL_CLI_STEP }} {/*install-the-appops-cli*/}
 
 ```bash
 npm i -g {{ PACKAGE_NAME }}/cli # yarn global add {{ PACKAGE_NAME }}/cli
 ```
 
-2. Run the following in the root folder of your project. This will configure your project for {{ PRODUCT_NAME }}.
+2. Run the following in the root folder of your project. This will configure your project for {{ PRODUCT }}.
 
 ```bash
 {{ CLI_NAME }} init
@@ -82,13 +84,13 @@ This will automatically add all of the required dependencies and files to your p
 - The `{{ PACKAGE_NAME }}/cli` package
 - The `{{ PACKAGE_NAME }}/spartacus` package
 - The `{{ PACKAGE_NAME }}/prefetch` package
-- `{{ CONFIG_FILE }}`- Contains various configuration options for {{ PRODUCT_NAME }}.
+- `{{ CONFIG_FILE }}`- Contains various configuration options for {{ PRODUCT }}.
 - `routes.js` - A default routes file that sends all requests to the Angular Universal server. Update this file to add caching or proxy some URLs to a different origin.
 - The `sw` folder - Contains the files needed to build the service worker that that provides static asset and API prefetching.
 
 #### 3. Update `{{ CONFIG_FILE }}` {/*3-update--config_file-*/}
 
-For an app called `my-layer0-spartacus-app` the {{ PRODUCT_NAME }} config file created by `{{ CLI_NAME }} init` will look like so:
+For an app called `my-layer0-spartacus-app` the {{ PRODUCT }} config file created by `{{ CLI_NAME }} init` will look like so:
 
 ```js
 // This file was automatically added by {{ CLI_NAME }} deploy.
@@ -335,7 +337,7 @@ return new Router()
 
 ## Running Locally {/*running-locally*/}
 
-To test your app locally, run:
+Test your app with the {{ PRODUCT_PLATFORM }} on your local machine by running the following command in your project's root directory:
 
 ```bash
 {{ CLI_NAME }} run
@@ -347,11 +349,11 @@ You can do a production build of your app and test it locally using:
 {{ CLI_NAME }} build && {{ CLI_NAME }} run --production
 ```
 
-Setting `--production` runs your app exactly as it will be uploaded to the {{ PRODUCT_NAME }} cloud using serverless-offline.
+Setting `--production` runs your app exactly as it will be uploaded to the {{ PRODUCT }} cloud using serverless-offline.
 
 ## Deploying {/*deploying*/}
 
-Deploying requires an account on {{ PRODUCT_NAME }}. [Sign up here for free.]({{ APP_URL }}/signup) Once you have an account, you can deploy to {{ PRODUCT_NAME }} by running the following in the root folder of your project:
+Deploy your app to the {{ PRODUCT_PLATFORM }} by running the following command in your project's root directory:
 
 ```bash
 {{ CLI_NAME }} deploy

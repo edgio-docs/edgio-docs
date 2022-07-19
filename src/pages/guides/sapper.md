@@ -2,7 +2,7 @@
 title: Sapper
 ---
 
-This guide shows you how to deploy [Sapper](https://sapper.svelte.dev/) apps on {{ PRODUCT_NAME }}
+This guide shows you how to deploy a [Sapper](https://sapper.svelte.dev/) application on the {{ COMPANY_NAME }} {{ PRODUCT }} platform.
 
 <Video src="https://www.youtube.com/watch?v=Xt_UlQiXDgQ"/>
 
@@ -18,13 +18,15 @@ This Sapper example app uses server-side rendering and prefetching to provide li
 
 ## Connector {/*connector*/}
 
-This framework has a connector developed for {{ PRODUCT_NAME }}. See [Connectors](connectors) for more information.
+This framework has a connector developed for {{ PRODUCT }}. See [Connectors](connectors) for more information.
 
 <ButtonLink variant="stroke" type="code" withIcon={true} href="https://github.com/layer0-docs/layer0-connectors/tree/main/layer0-sapper-connector">
   View the Connector Code
 </ButtonLink>
 
 {{ SYSTEM_REQUIREMENTS }}
+
+{{ SIGN_UP }}
 
 ## Getting Started {/*getting-started*/}
 
@@ -42,7 +44,7 @@ npm install
 npm run dev & open http://localhost:3000
 ```
 
-To prepare your Sapper app for deployment on {{ PRODUCT_NAME }}, run the following in the root folder of your project:
+To prepare your Sapper app for deployment on {{ PRODUCT }}, run the following in the root folder of your project:
 
 ```bash
 npm i -g {{ PACKAGE_NAME }}/cli # yarn global add {{ PACKAGE_NAME }}/cli
@@ -51,8 +53,8 @@ npm i -g {{ PACKAGE_NAME }}/cli # yarn global add {{ PACKAGE_NAME }}/cli
 
 This will automatically add all of the required dependencies and files to your project. These include:
 
-- The `{{ PACKAGE_NAME }}/core` package - Allows you to declare routes and deploy your application on {{ PRODUCT_NAME }}
-- The `{{ PACKAGE_NAME }}/sapper` package - Provides router middleware that automatically adds Sapper routes to the {{ PRODUCT_NAME }} router.
+- The `{{ PACKAGE_NAME }}/core` package - Allows you to declare routes and deploy your application on {{ PRODUCT }}
+- The `{{ PACKAGE_NAME }}/sapper` package - Provides router middleware that automatically adds Sapper routes to the {{ PRODUCT }} router.
 - The `{{ PACKAGE_NAME }}/prefetch` package - Allows you to configure a service worker to prefetch and cache pages to improve browsing speed
 - The `{{ PACKAGE_NAME }}/svelte` package - Provides a `Prefetch` component for prefetching pages
 - `{{ CONFIG_FILE }}`
@@ -115,7 +117,7 @@ and
 
 ## Running Locally {/*running-locally*/}
 
-To simulate your app within {{ PRODUCT_NAME }} locally, run:
+Test your app with the {{ PRODUCT_PLATFORM }} on your local machine by running the following command in your project's root directory:
 
 ```bash
 {{ CLI_NAME }} dev
@@ -131,7 +133,7 @@ To simulate edge caching locally, run:
 
 ## Deploying {/*deploying*/}
 
-Deploying requires an account on {{ PRODUCT_NAME }}. [Sign up here for free.]({{ APP_URL }}/signup) Once you have an account, you can deploy to {{ PRODUCT_NAME }} by running the following in the root folder of your project
+Deploy your app to the {{ PRODUCT_PLATFORM }} by running the following command in your project's root directory:
 
 ```bash
 {{ CLI_NAME }} deploy
@@ -176,6 +178,6 @@ To prefetch data when links become visible in the viewport, wrap the link in the
 Note that the behavior of the `Prefetch` component is different from Sapper's built-in support for `<a rel="prefetch">` in two ways:
 
 - `rel="prefetch"` only prefetches data when the user hovers over the link. The `Prefetch` component will prefetch data when the link becomes visible, or, if the `immediately` prop is present, as soon as the page loads.
-- `Prefetch` will only prefetch from the {{ PRODUCT_NAME }} edge cache, which means that additional traffic due to prefetching will never reach your API servers.
+- `Prefetch` will only prefetch from the {{ PRODUCT_EDGE }} cache, which means that additional traffic due to prefetching will never reach your API servers.
 
 See [Prefetching](/guides/prefetching) for more information.

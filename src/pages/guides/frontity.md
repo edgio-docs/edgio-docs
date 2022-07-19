@@ -2,7 +2,7 @@
 title: Frontity
 ---
 
-This guide shows you how to deploy [Frontity](https://frontity.org/) apps on {{ PRODUCT_NAME }}.
+This guide shows you how to deploy a [Frontity](https://frontity.org/) application on the {{ COMPANY_NAME }} {{ PRODUCT }} platform.
 
 ## Example {/*example*/}
 
@@ -14,13 +14,15 @@ This guide shows you how to deploy [Frontity](https://frontity.org/) apps on {{ 
 
 ## Connector {/*connector*/}
 
-This framework has a connector developed for {{ PRODUCT_NAME }}. See [Connectors](connectors) for more information.
+This framework has a connector developed for {{ PRODUCT }}. See [Connectors](connectors) for more information.
 
 <ButtonLink variant="stroke" type="code" withIcon={true} href="https://github.com/layer0-docs/layer0-connectors/tree/main/layer0-frontity-connector">
  View the Connector Code
 </ButtonLink>
 
 {{ SYSTEM_REQUIREMENTS }}
+
+{{ SIGN_UP }}
 
 ## Getting Started {/*getting-started*/}
 
@@ -87,7 +89,7 @@ function MyComponent() {
 
 ## Running Locally {/*running-locally*/}
 
-To simulate your app within {{ PRODUCT_NAME }} locally, run:
+Test your app with the {{ PRODUCT_PLATFORM }} on your local machine by running the following command in your project's root directory:
 
 ```bash
 {{ CLI_NAME }} dev
@@ -103,7 +105,7 @@ To simulate edge caching locally, run:
 
 ## Deploying {/*deploying*/}
 
-Deploying requires an account on {{ PRODUCT_NAME }}. [Sign up here for free.]({{ APP_URL }}/signup) Once you have an account, you can deploy to {{ PRODUCT_NAME }} by running the following in the root folder of your project
+Deploy your app to the {{ PRODUCT_PLATFORM }} by running the following command in your project's root directory:
 
 ```bash
 {{ CLI_NAME }} deploy

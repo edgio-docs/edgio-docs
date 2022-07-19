@@ -2,7 +2,7 @@
 title: Nuxt3
 ---
 
-This guide shows you how to deploy a [Nuxt3](https://v3.nuxtjs.org) application on {{ PRODUCT_NAME }}.
+This guide shows you how to deploy a [Nuxt3](https://v3.nuxtjs.org) application on the {{ COMPANY_NAME }} {{ PRODUCT }} platform.
 
 Note: Nuxt3 is still in beta and is not recommended for production.
 
@@ -16,7 +16,7 @@ Note: Nuxt3 is still in beta and is not recommended for production.
 
 ## Connector {/*connector*/}
 
-This framework has a connector developed for {{ PRODUCT_NAME }}. See [Connectors](connectors) for more information.
+This framework has a connector developed for {{ PRODUCT }}. See [Connectors](connectors) for more information.
 
 <ButtonLink variant="stroke" type="code" withIcon={true} href="https://github.com/layer0-docs/layer0-connectors/tree/main/layer0-nuxt3-connector">
   View the Connector Code
@@ -24,10 +24,12 @@ This framework has a connector developed for {{ PRODUCT_NAME }}. See [Connectors
 
 {{ SYSTEM_REQUIREMENTS }}
 
+{{ SIGN_UP }}
+
 ## Prerequisites {/*prerequisites*/}
 
-1. Install the [{{ PRODUCT_NAME }} CLI](cli).
-2. Sign up for a [{{ PRODUCT }} account](https://app.layer0.co/signup).
+1. Install the [{{ PRODUCT }} CLI](cli).
+2. Sign up for an [{{ PRODUCT }} account](https://app.layer0.co/signup).
 
 ## Getting Started {/*getting-started*/}
 
@@ -57,7 +59,7 @@ npm install
 yarn install
 ```
 
-#### 2. Add {{ PRODUCT }} to the Nuxt3 application {/*2-add-layer0-to-the-nuxt3-application*/}
+#### 2. Add {{ PRODUCT }} to the Nuxt3 application {/*2-add-appops-to-the-nuxt3-application*/}
 
 To add {{ PRODUCT }} to the Nuxt3 application, run:
 
@@ -65,7 +67,7 @@ To add {{ PRODUCT }} to the Nuxt3 application, run:
 {{ CLI_NAME }} init
 ```
 
-#### 3. Run the Nuxt3 app locally with {{ PRODUCT }} {/*3-run-the-nuxt3-app-locally-with-layer0*/}
+#### 3. Run the Nuxt3 app locally with {{ PRODUCT }} {/*3-run-the-nuxt3-app-locally-with-appops*/}
 
 To run the Nuxt3 app locally with {{ PRODUCT }}, run:
 
@@ -75,11 +77,11 @@ To run the Nuxt3 app locally with {{ PRODUCT }}, run:
 
 Vist [http://localhost:3001](http://localhost:3001) to view the application.
 
-#### 4. Deploy the Nuxt3 app to {{ PRODUCT }} {/*4-deploy-the-nuxt3-app-to-layer0*/}
+#### 4. Deploy the Nuxt3 app to {{ PRODUCT }} {/*4-deploy-the-nuxt3-app-to-appops*/}
 
 Note: Add or update the `name` field in the `package.json` file.
 
-To deploy the Nuxt3 app to {{ PRODUCT }}, run:
+Deploy your app to the {{ PRODUCT_PLATFORM }} by running the following command in your project's root directory:
 
 ```bash
 {{ CLI_NAME }} deploy

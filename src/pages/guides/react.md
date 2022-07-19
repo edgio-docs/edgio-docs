@@ -2,11 +2,11 @@
 title: React
 ---
 
-This guide shows you how to serve a [React](https://reactjs.org/) application on {{ PRODUCT_NAME }}. If you're using Next.js specifically, we suggest using the [Next.js guide](/guides/next).
+This guide shows you how to serve a [React](https://reactjs.org/) application on the {{ COMPANY_NAME }} {{ PRODUCT }} platform. If you're using Next.js specifically, we suggest using the [Next.js guide](/guides/next).
 
 ## Example {/*example*/}
 
-Here's an example React app running on {{ PRODUCT }}:
+Here's an example React app running on Layer0:
 
 <ExampleButtons
   title="React"
@@ -16,9 +16,11 @@ Here's an example React app running on {{ PRODUCT }}:
 
 {{ SYSTEM_REQUIREMENTS }}
 
+{{ SIGN_UP }}
+
 ## Getting Started {/*getting-started*/}
 
-To prepare your React app for deployment on {{ PRODUCT_NAME }}, install the {{ PRODUCT_NAME }} CLI globally:
+To prepare your React app for deployment on {{ PRODUCT }}, install the {{ PRODUCT }} CLI globally:
 
 ```bash
 npm i -g {{ PACKAGE_NAME }}/cli # yarn global add {{ PACKAGE_NAME }}/cli
@@ -33,7 +35,7 @@ npx create-react-app layer0-cra
 cd layer0-cra
 {{ CLI_NAME }} init
 # Pick the following options for questions
-# > Add {{ PRODUCT }} to the current app
+# > Add Layer0 to the current app
 # Hostname of origin site > layer0-docs-layer0-examples-api-default.layer0-limelight.link
 ```
 
@@ -49,14 +51,14 @@ Then, in the root folder of your project, run:
 
 This will automatically add all of the required dependencies and files to your project. These include:
 
-- The `{{ PACKAGE_NAME }}/core` package - Allows you to declare routes and deploy your application on {{ PRODUCT_NAME }}.
+- The `{{ PACKAGE_NAME }}/core` package - Allows you to declare routes and deploy your {{ COMPANY_NAME }} {{ PRODUCT }} platform.
 - The `{{ PACKAGE_NAME }}/prefetch` package - Allows you to configure a service worker to prefetch and cache pages to improve browsing speed.
-- `{{ CONFIG_FILE }}` - The main configuration file for {{ PRODUCT_NAME }}.
+- `{{ CONFIG_FILE }}` - The main configuration file for {{ PRODUCT }}.
 - `routes.js` - A default routes file that sends all requests to React. This file can be updated add caching or proxy URLs to a different origin.
 
 ## Configure your project {/*configure-your-project*/}
 
-### {{ PRODUCT_NAME }} Router {/*layer0-router*/}
+### {{ PRODUCT }} Router {/*layer0-router*/}
 
 Using the `Router` class from `{{ PACKAGE_NAME }}/core`, you'll configure caching for each of your routes, and forward requests to the server module you configured in the previous section using the `proxy` function.
 
@@ -291,7 +293,7 @@ module.exports = {
 
 ## Deploying {/*deploying*/}
 
-Deploying requires an account on {{ PRODUCT_NAME }}. [Sign up here for free.]({{ APP_URL }}/signup) Once you have an account, you can deploy to {{ PRODUCT_NAME }} by running the following in the root folder of your project:
+Deploy your app to the {{ PRODUCT_PLATFORM }} by running the following command in your project's root directory:
 
 ```bash
 {{ CLI_NAME }} deploy

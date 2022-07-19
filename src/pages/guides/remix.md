@@ -2,7 +2,7 @@
 title: Remix
 ---
 
-This guide shows you how to deploy a [Remix](https://remix.run/) application on {{ PRODUCT_NAME }}.
+This guide shows you how to deploy a [Remix](https://remix.run/) application on the {{ COMPANY_NAME }} {{ PRODUCT }} platform.
 
 ## Example {/*example*/}
 
@@ -14,17 +14,9 @@ This guide shows you how to deploy a [Remix](https://remix.run/) application on 
 
 {{ SYSTEM_REQUIREMENTS }}
 
-## Sign up for {{ PRODUCT_NAME }} {/*sign-up-for-layer0*/}
+{{ SIGN_UP }}
 
-Deploying requires an account on {{ PRODUCT_NAME }}. [Sign up here for free.]({{ APP_URL }}/signup).
-
-## Install the {{ PRODUCT_NAME }} CLI {/*install-the-layer0-cli*/}
-
-If you have not already done so, install the [{{ PRODUCT_NAME }} CLI](cli)
-
-```bash
-npm i -g {{ PACKAGE_NAME }}/cli # yarn global add {{ PACKAGE_NAME }}/cli
-```
+## {{ INSTALL_CLI_STEP }} {/*install-the-appops-cli*/}
 
 ## Create a new Remix app {/*create-a-new-remix-app*/}
 
@@ -42,7 +34,7 @@ You can verify your app works by running it locally with:
 npm run dev
 ```
 
-## Configuring your Remix app for {{ PRODUCT_NAME }} {/*configuring-your-remix-app-for-layer0*/}
+## Configuring your Remix app for {{ PRODUCT }} {/*configuring-your-remix-app-for-appops*/}
 
 ### Initialize your project {/*initialize-your-project*/}
 
@@ -52,11 +44,11 @@ In the root directory of your project run `{{ CLI_NAME }} init`:
 {{ CLI_NAME }} init
 ```
 
-This will automatically update your `package.json` and add all of the required {{ PRODUCT_NAME }} dependencies and files to your project. These include:
+This will automatically update your `package.json` and add all of the required {{ PRODUCT }} dependencies and files to your project. These include:
 
-- The `{{ PACKAGE_NAME }}/core` package - Allows you to declare routes and deploy your application on {{ PRODUCT_NAME }}
+- The `{{ PACKAGE_NAME }}/core` package - Allows you to declare routes and deploy your application on {{ PRODUCT }}
 - The `{{ PACKAGE_NAME }}/prefetch` package - Allows you to configure a service worker to prefetch and cache pages to improve browsing speed
-- `{{ CONFIG_FILE }}` - A configuration file for {{ PRODUCT_NAME }}
+- `{{ CONFIG_FILE }}` - A configuration file for {{ PRODUCT }}
 - `routes.js` - A default routes file that sends all requests to Remix.
 
 ### Install {{ PACKAGE_NAME }}/express {/*install-layer0express*/}
@@ -67,12 +59,12 @@ Install {{ PACKAGE_NAME }}/express by running the following:
 npm install {{ PACKAGE_NAME }}/express
 ```
 
-### Update {{ PRODUCT_NAME }} Configuration {/*update-layer0-configuration*/}
+### Update {{ PRODUCT }} Configuration {/*update-appops-configuration*/}
 
 Update `{{ CONFIG_FILE }}` at the root of your project to the following:
 
 ```js
-// This file was automatically added by layer0 deploy.
+// This file was automatically added by {{ PRODUCT_NAME_LOWER }} deploy.
 // You should commit this file to source control.
 module.exports = {
   connector: '{{ PACKAGE_NAME }}/express',
@@ -90,7 +82,7 @@ module.exports = {
 Update `routes.js` at the root of your project to the following:
 
 ```js
-// This file was added by layer0 init.
+// This file was added by {{ PRODUCT_NAME_LOWER }} init.
 // You should commit this file to source control.
 const ONE_HOUR = 60 * 60
 const ONE_DAY = 24 * ONE_HOUR
@@ -116,7 +108,7 @@ module.exports = new Router()
     })
   })
   .match('/build/:path*', ({ cache }) => {
-    // route build output files through {{ PRODUCT }}
+    // route build output files through {{ PRODUCT_LEGACY }}
     cache({
       edge: {
         maxAgeSeconds: ONE_DAY,
@@ -133,7 +125,7 @@ module.exports = new Router()
 
 Refer to the [Routing](routing) guide for the full syntax of the `routes.js` file and how to configure it for your use case.
 
-### Run the Remix app locally on {{ PRODUCT_NAME }} {/*run-the-remix-app-locally-on-layer0*/}
+### Run the Remix app locally on {{ PRODUCT }} {/*run-the-remix-app-locally-on-appops*/}
 
 Create a production build of your app by running the following in your project's root directory:
 
@@ -141,7 +133,7 @@ Create a production build of your app by running the following in your project's
 npm run build
 ```
 
-Run {{ PRODUCT_NAME }} on your local machine:
+Run {{ PRODUCT }} on your local machine:
 
 ```bash
 {{ CLI_NAME }} run --production
@@ -157,7 +149,7 @@ Create a production build of your app by running the following in your project's
 npm run build
 ```
 
-Next, deploy the build to {{ PRODUCT_NAME }} by running the `{{ CLI_NAME }} deploy` command:
+Deploy your app to the {{ PRODUCT_PLATFORM }} by running the following command in your project's root directory:
 
 ```bash
 {{ CLI_NAME }} deploy

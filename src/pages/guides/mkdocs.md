@@ -2,7 +2,7 @@
 title: MkDocs
 ---
 
-[MkDocs](https://www.mkdocs.org/) is a fast, simple and downright gorgeous static site generator that's geared towards building project documentation. Follow the steps below to deploy your MkDocs site to the {{ PRODUCT }} platform.
+[MkDocs](https://www.mkdocs.org/) is a fast, simple and downright gorgeous static site generator that's geared towards building project documentation. Follow the steps below to deploy your MkDocs site to {{ PRODUCT }}.
 
 ## Create your MkDocs site {/*create-your-mkdocs-site*/}
 

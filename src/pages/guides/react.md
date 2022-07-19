@@ -41,7 +41,7 @@ Then, in the root folder of your project, run:
 
 This will automatically add all of the required dependencies and files to your project. These include:
 
-- The `{{ PACKAGE_NAME }}/core` package - Allows you to declare routes and deploy your {{ PRODUCT }} platform.
+- The `{{ PACKAGE_NAME }}/core` package - Allows you to declare routes and deploy your application to {{ PRODUCT }}.
 - The `{{ PACKAGE_NAME }}/prefetch` package - Allows you to configure a service worker to prefetch and cache pages to improve browsing speed.
 - `{{ CONFIG_FILE }}` - The main configuration file for {{ PRODUCT }}.
 - `routes.js` - A default routes file that sends all requests to React. This file can be updated add caching or proxy URLs to a different origin.

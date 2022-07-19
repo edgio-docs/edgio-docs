@@ -2,7 +2,7 @@
 title: Lit
 ---
 
-[Lit](https://lit.dev/) is a simple library for building fast, lightweight web components. This guide walks you through deploying Lit sites to the {{ PRODUCT }} platform.
+[Lit](https://lit.dev/) is a simple library for building fast, lightweight web components. This guide walks you through deploying Lit sites to {{ PRODUCT }}.
 
 ## Example {/*example*/}
 
@@ -15,7 +15,7 @@ title: Lit
 
 ## Create your Lit site {/*create-your-lit-site*/}
 
-{{ INSTALL_CLI }}
+{{ PREREQ }}
 
 Clone this starter example and install dependencies:
 

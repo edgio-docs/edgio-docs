@@ -2,7 +2,7 @@
 title: Scully
 ---
 
-[Scully](https://scully.io/) is a static site generator for Angular projects. This guide walks you through deploying a Scully site to the {{ PRODUCT }} platform.
+[Scully](https://scully.io/) is a static site generator for Angular projects. This guide walks you through deploying a Scully site to {{ PRODUCT }}.
 
 ## Example {/*example*/}
 
@@ -13,9 +13,9 @@ title: Scully
   deployFromRepo
 />
 
-## Create your Scully site {/*create-your-scully-site*/}
+{{ PREREQ }}
 
-#{{ INSTALL_CLI }}
+## Create your Scully site {/*create-your-scully-site*/}
 
 Clone this starter example and install dependencies:
 

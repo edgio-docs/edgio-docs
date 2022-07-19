@@ -71,7 +71,7 @@ cd my-next-app
 
 This will automatically add all of the required dependencies and files to your project. These include:
 
-- The `{{ PACKAGE_NAME }}/core` package - Allows you to declare routes and deploy your application to the {{ PRODUCT }} platform.
+- The `{{ PACKAGE_NAME }}/core` package - Allows you to declare routes and deploy your application to {{ PRODUCT }}.
 - The `{{ PACKAGE_NAME }}/next` package - Provides router middleware that automatically adds Next.js pages and api routes to the {{ PRODUCT }} router.
 - The `{{ PACKAGE_NAME }}/prefetch` package - Allows you to configure a service worker to prefetch and cache pages to improve browsing speed.
 - The `{{ PACKAGE_NAME }}/react` package - Provides a `Prefetch` component for prefetching pages.

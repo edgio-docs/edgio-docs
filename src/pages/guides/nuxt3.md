@@ -52,9 +52,7 @@ cd <app-name> // Change to the directory of your new application
 Then install dependencies with the command:
 
 ```bash
-npm install
-# or
-yarn install
+npm install # yarn install
 ```
 
 #### 2. Add Layer0 to the Nuxt3 application {/*2-add-layer0-to-the-nuxt3-application*/}
@@ -75,7 +73,15 @@ To run the Nuxt3 app locally with Layer0, run:
 
 Vist [http://localhost:3001](http://localhost:3001) to view the application.
 
-#### 4. Deploy the Nuxt3 app to Layer0 {/*4-deploy-the-nuxt3-app-to-layer0*/}
+#### 4. Run the Nuxt3 app in local production mode with Layer0 {/*4-run-the-nuxt3-app-locally-with-layer0*/}
+
+To run the Nuxt3 app in local production mode with Layer0, run:
+
+```bash
+{{ CLI_NAME }} build && {{ CLI_NAME }} run --production
+```
+
+#### 5. Deploy the Nuxt3 app to Layer0 {/*5-deploy-the-nuxt3-app-to-layer0*/}
 
 Note: Add or update the `name` field in the `package.json` file.
 
@@ -95,8 +101,10 @@ See [deploying](deploying) for more information.
 
 #### Error: Variable siteSlug of type String! was provided invalid value {/*error-variable-siteslug-of-type-string-was-provided-invalid-value*/}
 
-This error throws on deployment with `0 deploy`. To fix this, add or update the `name` field in the `package.json` file.
+This error throws on deployment with `0 deploy`. To fix this:
+- Add/Update the `name` field in the `package.json` file, OR
+- Deploy with the name flag, via, `0 deploy --name=site-slug`
 
 #### tsconfig.json:3:13: warning: Cannot find base config file "./.nuxt/tsconfig.json" {/*tsconfigjson313-warning-cannot-find-base-config-file-nuxttsconfigjson*/}
 
-This is a Nuxt3 error. See [this GitHub issue](https://github.com/nuxt/framework/issues/1912)
+This is a resolved Nuxt3 error. More on [this GitHub Issue](https://github.com/nuxt/framework/issues/1912).

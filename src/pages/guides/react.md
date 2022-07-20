@@ -191,6 +191,7 @@ Here is an example service worker:
 import { skipWaiting, clientsClaim } from 'workbox-core'
 import { precacheAndRoute } from 'workbox-precaching'
 import DeepFetchPlugin from '@layer0/prefetch/sw/DeepFetchPlugin'
+import { Prefetcher } from '@layer0/prefetch/sw'
 
 skipWaiting()
 clientsClaim()

@@ -31,8 +31,19 @@ jobs:
             ${{ runner.os }}-build-
             ${{ runner.os }}-
       - run: yarn
-      - name: Deploy to Layer0 (stage)
+      - name: Deploy to Edgio (stage)
         run: yarn layer0:deploy --branch=$BRANCH_NAME --token=${{secrets.layer0_prod_deploy_token}} --environment=default
+      - uses: jwalton/gh-find-current-pr@v1
+        id: finder
+      - name: Publish Preview Link
+        uses: marocchino/sticky-pull-request-comment@v2.2.0
+        with:
+          number: ${{ steps.finder.outputs.pr }}
+          header: preview
+          message: |
+            🏛  Permalink:
+
+            https://layer0-docs-xdn-docs-${{env.BRANCH_NAME}}.alt.layer0-docs.layer0-perma.link
       - name: Validate Guide Example Links
         shell: bash
         run: node ./scripts/validateExampleLinks.js

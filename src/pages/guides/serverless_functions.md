@@ -2,14 +2,16 @@
 title: Serverless Functions
 ---
 
-Layer0 makes it easy to develop, test, and deploy serverless functions without a JavaScript framework. Simply declare your routes and use the `compute` function or `proxy` with the `transformResponse` option to compute responses based on your own custom logic.
+{{ PRODUCT }} makes it easy to develop, test, and deploy serverless functions without a JavaScript framework. Simply declare your routes and use the `compute` function or `proxy` with the `transformResponse` option to compute responses based on your own custom logic.
+
+{{ PREREQ }}
 
 ## Getting Started {/*getting-started*/}
 
-To create a new Layer0 project using serverless functions, run:
+To create a new {{ PRODUCT }} project using serverless functions, run:
 
 ```bash
-npx @layer0/cli@latest init
+npx @{{ PRODUCT_NAME_LOWER }} /cli@latest init
 ```
 
 ## Responding to requests {/*responding-to-requests*/}
@@ -18,7 +20,7 @@ Use the [compute](/docs/api/core/classes/_router_responsewriter_.responsewriter.
 
 ```js
 // routes.js
-import { Router } from '@layer0/core'
+import { Router } from '@{{ PRODUCT_NAME_LOWER }}/core'
 
 export default new Router().get('/some-route/:someParam', ({ compute }) => {
   compute((req, res) => {
@@ -69,17 +71,17 @@ See [ResponseWriter](/docs/api/core/classes/_router_responsewriter_.responsewrit
 
 ## Modifying a response from the origin {/*modifying-a-response-from-the-origin*/}
 
-Serverless functions can be used to modify responses from the origin by using the `proxy` function with the `transformResponse` option. First, configure an origin by adding a `backend` to `layer0.config.js` in the root of your project:
+Serverless functions can be used to modify responses from the origin by using the `proxy` function with the `transformResponse` option. First, configure an origin by adding a `backend` to `{{ CONFIG_FILE }}` in the root of your project:
 
 ```js
-// layer0.config.js
+// {{ CONFIG_FILE }}
 module.exports = {
   backends: {
     origin: {
       // The domain name or IP address for the origin server
       domainOrIp: 'origin.example.com',
 
-      // Optionally set a host header for Layer0 to send when connecting to the origin.
+      // Optionally set a host header for {{ PRODUCT }} to send when connecting to the origin.
       // If omitted, the host header will be forwarded from the browser.
       hostHeader: 'origin.example.com',
     },
@@ -93,7 +95,7 @@ To forward a request to the origin and modify the response using a serverless fu
 
 ```js
 // routes.js
-import { Router } from '@layer0/core'
+import { Router } from '@{{ PRODUCT_NAME_LOWER }}/core'
 
 export default new Router().get('/some-route/:someParam', ({ proxy }) => {
   proxy('origin', {
@@ -157,7 +159,7 @@ To improve performance and minimize cost, cache the responses returned by your s
 
 ```js
 // routes.js
-import { Router } from '@layer0/core'
+import { Router } from '@{{ PRODUCT_NAME_LOWER }}/core'
 
 export default new Router().get('/', ({ cache, compute }) => {
   cache({
@@ -177,24 +179,24 @@ See the [cache](/docs/api/core/classes/_router_responsewriter_.responsewriter.ht
 
 ## Running your project locally {/*running-your-project-locally*/}
 
-To test your project locally, run:
+Test your app with the {{ PRODUCT_PLATFORM }} on your local machine by running the following command in your project's root directory:
 
 ```bash
-0 dev
+{{ CLI_NAME }} dev
 ```
 
 This will start your project in watch mode. Any changes your make to your source code will instantly take effect without restarting.
 
-## Deploying your project to Layer0 {/*deploying-your-project-to-layer0*/}
+## Deploying your project to {{ PRODUCT }} {/*deploying-your-project-to-edgio*/}
 
-To deploy your project, run:
+Deploy your app to the {{ PRODUCT_PLATFORM }} by running the following command in your project's root directory:
 
 ```bash
-0 deploy
+{{ CLI_NAME }} deploy
 ```
 
 ## Limits {/*limits*/}
 
-Layer0 serverless functions have a maximum runtime of 20 seconds per request. If a function exceeds this limit, Layer0 will respond with a 539 status.
+{{ PRODUCT }} serverless functions have a maximum runtime of 20 seconds per request. If a function exceeds this limit, {{ PRODUCT }} will respond with a 539 status.
 
 See [Limits](/guides/limits#section_request_and_response_limits) for more information.

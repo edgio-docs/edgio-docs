@@ -1,6 +1,13 @@
 import * as React from 'react';
 
 import {
+  CONFIG_FILE,
+  PRODUCT,
+  PRODUCT_EDGE,
+  PRODUCT_PLATFORM,
+  PRODUCT_SECURITY,
+} from '../../constants';
+import {
   IconAngular,
   IconAstro,
   IconAstroDark,
@@ -132,11 +139,11 @@ const SidebarMenuItems: ISidebarMenuItems = [
       sortRoutes: false,
       routes: [
         {
-          title: 'WebApp CDN',
+          title: PRODUCT_EDGE,
           path: '/guides/webapp_cdn_getting_started',
         },
         {
-          title: 'Jamstack',
+          title: PRODUCT_PLATFORM,
           path: '/guides/jamstack_getting_started',
         },
         {
@@ -737,7 +744,7 @@ const SidebarMenuItems: ISidebarMenuItems = [
           path: '/guides/layer0_migration',
         },
         {
-          title: 'layer0.config.js',
+          title: CONFIG_FILE,
           path: '/guides/layer0_config',
         },
       ],

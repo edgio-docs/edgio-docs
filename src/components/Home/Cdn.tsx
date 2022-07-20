@@ -1,7 +1,8 @@
-import _ from 'lodash';
+import sortBy from 'lodash/sortBy';
 import Link from 'next/link';
 import styled from 'styled-components';
 
+import {PRODUCT, PRODUCT_EDGE} from '../../../constants';
 import {getChildrenRoutesFromSidebarMenuItems} from '../../utils/getChildrenRoutesFromSidebarMenuItems';
 import {IconServer} from '../Icon/IconServer';
 
@@ -12,7 +13,7 @@ const StyledComp = styled(StyledFeatureSection)``;
 export default function Cdn() {
   const parentPath = 'cdn';
   const allRoutes = getChildrenRoutesFromSidebarMenuItems(parentPath);
-  const allRoutesSorted = _.sortBy(allRoutes, 'title');
+  const allRoutesSorted = sortBy(allRoutes, 'title');
 
   const routesByColumns = [
     allRoutesSorted?.slice(0, 6),
@@ -25,7 +26,7 @@ export default function Cdn() {
       <SectionHeader
         Icon={IconServer}
         title="CDN"
-        subtitle="Accelerate and secure your app using the Layer0 global CDN and EdgeJS."
+        subtitle={`Accelerate and secure your app using the ${PRODUCT} ${PRODUCT_EDGE} and EdgeJS.`}
       />
 
       <div className="route-items">

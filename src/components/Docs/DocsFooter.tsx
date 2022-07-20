@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+import {PRODUCT} from '../../../constants';
+
 const StyledDocsFooter = styled.footer`
   @media (max-width: 585px) {
     justify-content: center;
@@ -38,7 +40,8 @@ export default function DocsFooter() {
   return (
     <StyledDocsFooter>
       <p className="copy">
-        Copyright &copy; {new Date().getFullYear()} Layer0. All rights reserved.
+        Copyright &copy; {new Date().getFullYear()} {PRODUCT}. All rights
+        reserved.
       </p>
       {/* <div className="uptime-status">
         <div className="status-halo"></div>

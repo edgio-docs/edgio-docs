@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import styled from 'styled-components';
 
+import {PRODUCT_EDGE} from '../../../constants';
 import {IconAngular} from '../Icon/IconAngular';
 import {IconAstro, IconAstroDark} from '../Icon/IconAstro';
 import {IconBook} from '../Icon/IconBook';
@@ -212,7 +213,7 @@ export default function FrameworkGuides() {
       <SectionHeader
         Icon={IconBook}
         title="Framework Guides"
-        subtitle="Utilize Layer0 CDN on your pre-existing site, or use one of our templates."
+        subtitle={`Utilize ${PRODUCT_EDGE} on your pre-existing site, or use one of our templates.`}
       />
 
       <div className="route-items">

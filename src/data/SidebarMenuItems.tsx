@@ -2,6 +2,7 @@ import * as React from 'react';
 
 import {
   CONFIG_FILE,
+  PACKAGE_NAME,
   PRODUCT,
   PRODUCT_EDGE,
   PRODUCT_PLATFORM,
@@ -161,7 +162,7 @@ const SidebarMenuItems: ISidebarMenuItems = [
       ],
     },
     {
-      title: 'Web CDN',
+      title: PRODUCT_EDGE,
       icon: <IconSparkPlain />,
       iconDark: <IconSparkPlainDark />,
       path: 'cdn',
@@ -172,7 +173,7 @@ const SidebarMenuItems: ISidebarMenuItems = [
           path: '/guides/webapp_cdn_getting_started',
         },
         {
-          title: 'Edgio for Traditional Sites',
+          title: `${PRODUCT} for Traditional Sites`,
           path: '/guides/traditional_sites',
         },
       ],
@@ -653,14 +654,14 @@ const SidebarMenuItems: ISidebarMenuItems = [
       ],
     },
     {
-      title: 'Security',
+      title: PRODUCT_SECURITY,
       icon: <IconStacksPlain />,
       iconDark: <IconStacksPlainDark />,
       path: 'reference',
       sortRoutes: true,
       routes: [
         {
-          title: 'Edgio Security Suite',
+          title: `${PRODUCT} Security Suite`,
           path: '/guides/security',
         },
         {
@@ -693,7 +694,7 @@ const SidebarMenuItems: ISidebarMenuItems = [
           path: '/guides/logs',
         },
         {
-          title: 'Deploy to Layer0 Button',
+          title: `Deploy to ${PRODUCT} Button`,
           path: '/guides/deploy_to_layer0',
         },
       ],
@@ -714,7 +715,7 @@ const SidebarMenuItems: ISidebarMenuItems = [
           path: '/guides/what_is_graphql',
         },
         {
-          title: 'Layer0 Tutorials',
+          title: `${PRODUCT} Tutorials`,
           path: 'https://vimeo.com/user/776463/folder/9270726',
           external: true,
         },
@@ -757,22 +758,22 @@ const SidebarMenuItems: ISidebarMenuItems = [
       sortRoutes: false,
       routes: [
         {
-          title: '@layer0/core',
+          title: `${PACKAGE_NAME}/core`,
           path: '/docs/api/core/',
           external: true,
         },
         {
-          title: '@layer0/prefetch',
+          title: `${PACKAGE_NAME}/prefetch`,
           path: '/docs/api/prefetch/',
           external: true,
         },
         {
-          title: '@layer0/core (v3.x)',
+          title: `${PACKAGE_NAME}/core (v3.x)`,
           path: '/docs/v3.x/api/core/',
           external: true,
         },
         {
-          title: '@layer0/prefetch (v3.x)',
+          title: `${PACKAGE_NAME}/prefetch (v3.x)`,
           path: '/docs/v3.x/api/prefetch/',
           external: true,
         },

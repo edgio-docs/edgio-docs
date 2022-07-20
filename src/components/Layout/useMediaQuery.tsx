@@ -34,4 +34,4 @@ const useIsMobile = (width: number) => {
   return useMediaQuery(width);
 };
 
-export {useMediaQuery, useIsMobile};
+export {useIsMobile, useMediaQuery};

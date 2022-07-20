@@ -48,7 +48,7 @@ This will automatically add all of the required dependencies and files to your p
 
 ## Configure your project {/*configure-your-project*/}
 
-### {{ PRODUCT }} Router {/*{{ PRODUCT_NAME_LOWER }}-router*/}
+### {{ PRODUCT }} Router {/*{{ PRODUCT_NAME_LOWER }}-router*/} {/*edgio-router-layer0-router*/}
 
 Using the `Router` class from `{{ PACKAGE_NAME }}/core`, you'll configure caching for each of your routes, and forward requests to the server module you configured in the previous section using the `proxy` function.
 
@@ -182,7 +182,8 @@ Here is an example service worker:
 ```js
 import { skipWaiting, clientsClaim } from 'workbox-core'
 import { precacheAndRoute } from 'workbox-precaching'
-import DeepFetchPlugin from '@{{ PRODUCT_NAME_LOWER }}/prefetch/sw/DeepFetchPlugin'
+import DeepFetchPlugin from '{{ PACKAGE_NAME }}/prefetch/sw/DeepFetchPlugin'
+import { Prefetcher } from '{{ PACKAGE_NAME }}/prefetch/sw'
 
 skipWaiting()
 clientsClaim()

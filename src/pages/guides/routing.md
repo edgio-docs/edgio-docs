@@ -408,7 +408,7 @@ The second argument to routes is a function that receives a `ResponseWriter` and
 - Cache the response at edge and in the browser
 - Manipulate request and response headers
 
-[See the API Docs for Response Writer](/docs/__version__/api/core/classes/_router_responsewriter_.responsewriter.html)
+[See the API Docs for Response Writer](/docs/api/core/classes/_router_responsewriter_.responsewriter.html)
 
 ## Full Example {/*full-example*/}
 

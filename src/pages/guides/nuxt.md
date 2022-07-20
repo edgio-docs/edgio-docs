@@ -500,7 +500,7 @@ npm update -g {{ PACKAGE_NAME }}/cli
 
 ---
 
-### Error on deploy: `{{ PRODUCT_NAME_LOWER }}-deploy-lambda: Unzipped size must be smaller than...` {/*error-on-deploy-{{ PRODUCT_NAME_LOWER }}-deploy-lambda-unzipped-size-must-be-smaller-than*/}
+### Error on deploy: `{{ PRODUCT_NAME_LOWER }}-deploy-lambda: Unzipped size must be smaller than...` {/*error-on-deploy-{{ PRODUCT_NAME_LOWER }}-deploy-lambda-unzipped-size-must-be-smaller-than*/} {/*error-on-deploy-layer0-deploy-lambda-unzipped-size-must-be-smaller-than-error-on-deploy-layer0-deploy-lambda-unzipped-size-must-be-smaller-than*/}
 
 As the error states, there is an upper limit on how big a package can be when deployed to our serverless infrastructure. Some common strategies for solving:
 

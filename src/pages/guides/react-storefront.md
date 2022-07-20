@@ -6,7 +6,7 @@ title: React Storefront
 
 {{ SIGN_UP }}
 
-## Creating a React Storefront App
+## Creating a React Storefront App {/*creating-a-react-storefront-app*/}
 
 To create a new React Storefront app, run:
 
@@ -20,7 +20,7 @@ Select "Yes" when answering the following question:
 ? Will you be deploying your app on {{ PRODUCT }}? › no / yes
 ```
 
-## Running Locally
+## Running Locally {/*running-locally*/}
 
 To run your app locally:
 
@@ -28,7 +28,7 @@ To run your app locally:
 npm start
 ```
 
-## Deploying
+## Deploying {/*deploying*/}
 
 Deploy your app to the {{ PRODUCT_PLATFORM }} by running the following command in your project's root directory:
 
@@ -36,6 +36,6 @@ Deploy your app to the {{ PRODUCT_PLATFORM }} by running the following command i
 {{ CLI_NAME }} deploy
 ```
 
-## Prefetching
+## Prefetching {/*prefetching*/}
 
 See the [Prefetching Guide](https://docs.reactstorefront.io/guides/prefetching) in the React Storefront documentation.

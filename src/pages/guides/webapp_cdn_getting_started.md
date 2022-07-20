@@ -1,10 +1,10 @@
 ---
-title: WebApp CDN
+title: Web CDN
 ---
 
-Deploying your web application behind {{ PRODUCT_NAME }} is the fastest and easiest way to start seeing the performance benefits made possible by the {{ PRODUCT_NAME }} edge network. In this guide we'll show you how to:
+Deploying your web application behind {{ PRODUCT }} is the fastest and easiest way to start seeing the performance benefits made possible by the {{ PRODUCT_EDGE }} network. In this guide we'll show you how to:
 
-- Create a new {{ PRODUCT_NAME }} project
+- Create a new {{ PRODUCT }} project
 - Configure edge caching using EdgeJS
 - Deploy your site
 
@@ -13,41 +13,26 @@ If any point, you want a more [detailed guide](/guides/traditional_sites), we've
 ## Example {/*example*/}
 
 <ExampleButtons
-  title="WebApp CDN"
+  title="Web CDN"
   siteUrl="https://layer0-docs-cdn-starter-template-default.layer0-limelight.link"
   repoUrl="https://github.com/layer0-docs/layer0-cdn-example" 
   deployFromRepo />
 
 ## Network Diagram {/*network-diagram*/}
 
-As shown below, {{ PRODUCT_NAME }} becomes the main CDN for your site:
+As shown below, {{ PRODUCT }} becomes the main CDN for your site:
 
 ![traffic](/images/starter/traffic.svg)
 
-Requests for your site will now pass through {{ PRODUCT_NAME }}'s globally distributed edge network and then to your origin server.
+Requests for your site will now pass through {{ PRODUCT }}'s globally distributed edge network and then to your origin server.
 
-A full production deployment requires changing your site's DNS to allow requests to come to {{ PRODUCT_NAME }} first. View our [production guide](/guides/production) for that process.
+A full production deployment requires changing your site's DNS to allow requests to come to {{ PRODUCT }} first. View our [production guide](/guides/production) for that process.
 
-## Create an Account {/*create-an-account*/}
+{{ PREREQ }}
 
-If you do not have an account yet, visit [{{ PRODUCT_NAME }}]({{ APP_URL }}/signup) to create one.
+## Create your project {/*create-your-project*/}
 
-{{ SYSTEM_REQUIREMENTS }}
-
-## Create a New {{ PRODUCT_NAME }} Project {/*create-a-new-layer0-project*/}
-
-1. Install the {{ PRODUCT_NAME }} CLI.
-You can use either `npm` or `yarn`.
-
-```bash
-npm i -g {{ PACKAGE_NAME }}/cli
-```
-
-```bash
-yarn global add {{ PACKAGE_NAME }}/cli
-```
-
-2. Create your project with the following command:
+Now that the CLI has been installed, create a new project using:
 
 ```bash
 {{ CLI_NAME }} init
@@ -55,17 +40,17 @@ yarn global add {{ PACKAGE_NAME }}/cli
 
 ### Project Structure {/*project-structure*/}
 
-After you run `{{ CLI_NAME }} init`, {{ PRODUCT_NAME }} creates the following files:
+After you run `{{ CLI_NAME }} init`, {{ PRODUCT }} creates the following files:
 
 - `routes.js`: defines routes to be cached and prefetched, as well as what to pass through without modification and what to serve up as static content
 - `{{ CONFIG_FILE }}`: various configuration options to tune your project
 
 ## Configure Backend to Proxy {/*configure-backend-to-proxy*/}
 
-To proxy your existing site with {{ PRODUCT_NAME }}, we'll need to define that backend in the [`{{ CONFIG_FILE }}`](layer0_config) file that was just created.
+To proxy your existing site with {{ PRODUCT }}, we'll need to define that backend in the [`{{ CONFIG_FILE }}`]({{ PRODUCT_NAME_LOWER }}_config) file that was just created.
 
 ```js filename="./{{ CONFIG_FILE}}"
-// This file was automatically added by layer0 deploy.
+// This file was automatically added by {{ PRODUCT_NAME_LOWER }} deploy.
 // You should commit this file to source control.
 module.exports = {
   backends: {
@@ -90,7 +75,7 @@ At this point, the only item that should require changing is a path match. We pr
 ### Routes File {/*routes-file*/}
 
 ```js filename="./routes.js"
-import { Router } from '@layer0/core/router'
+import { Router } from '@{{ PRODUCT_NAME_LOWER }}/core/router'
 
 // const ONE_HOUR = 60 * 60
 // const ONE_DAY = 24 * ONE_HOUR
@@ -115,13 +100,13 @@ export default new Router()
   .fallback(({ proxy }) => proxy('origin'))
 ```
 
-This example will proxy and cache at the edge all requests that match the path pattern defined using `.match(...)`. The `.fallback(...)` handler takes all unmatched requests and also proxies them to `origin`, a backend that we just defined inside the [`{{ CONFIG_FILE }}`](layer0_config) file.
+This example will proxy and cache at the edge all requests that match the path pattern defined using `.match(...)`. The `.fallback(...)` handler takes all unmatched requests and also proxies them to `origin`, a backend that we just defined inside the [`{{ CONFIG_FILE }}`]({{ PRODUCT_NAME_LOWER }}_config) file.
 
 #### Cache Constants {/*cache-constants*/}
 Cache constants in the `routes.js` have been abstracted out to enable reuse across different routes. You can also add additional constants such as year.
 
 ```js filename="./routes.js"
-import { Router } from '@layer0/core/router'
+import { Router } from '@{{ PRODUCT_NAME_LOWER }}/core/router'
 
 const ONE_HOUR = 60 * 60
 const ONE_DAY = 24 * ONE_HOUR
@@ -133,7 +118,7 @@ Refer to the guides on [Routing](routing) and [Caching](caching) for the full sy
 
 Learn [advanced prefetching techniques](prefetching) to achieve the best possible performance.
 
-## Deploy to {{ PRODUCT_NAME }} {/*deploy-to-layer0*/}
+## Deploy to {{ PRODUCT_NAME }} {/*deploy-to-edgio*/}
 
 Now that you're satisfied with your site in local development, it's time to deploy it to the {{ PRODUCT_NAME }} Cloud. Once deployed, you can formally evaluate site performance and QA functionality.
 

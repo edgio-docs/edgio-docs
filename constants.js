@@ -1,6 +1,12 @@
-const PRODUCT_NAME = 'Layer0';
-const PRODUCT_NAME_LOWER = PRODUCT_NAME.toLowerCase();
-const PRODUCT_NAME_UPPER = PRODUCT_NAME.toUpperCase();
+const COMPANY_NAME = 'Edgio';
+const PRODUCT_NAME = 'Edgio';
+const PRODUCT = 'Edgio';
+const PRODUCT_LEGACY = 'Layer0';
+const PRODUCT_EDGE = 'App Edge';
+const PRODUCT_PLATFORM = 'App Platform';
+const PRODUCT_SECURITY = 'App Security';
+const PRODUCT_NAME_LOWER = PRODUCT_LEGACY.toLowerCase();
+const PRODUCT_NAME_UPPER = PRODUCT_LEGACY.toUpperCase();
 const CLI_NAME = '0';
 const FULL_CLI_NAME = 'layer0';
 const PACKAGE_NAME = '@layer0';
@@ -58,23 +64,60 @@ const SYSTEM_REQUIREMENTS_H3 = `### System Requirements {/*system-requirements*/
 
 - [Install Node.js 14.19.0](/guides/install_nodejs)`;
 
-const SIGN_UP_LAYER0 = `## Sign up for ${PRODUCT_NAME} {/*sign-up-for-${PRODUCT_NAME_LOWER}*/}
+const SIGN_UP = `## Sign up for ${PRODUCT} {/*sign-up*/}
 
-Deploying requires an account on ${PRODUCT_NAME}. <a href="${APP_URL}/signup">Sign up here for free.</a>`;
+Deploying requires an account on ${PRODUCT}. <a href="${APP_URL}/signup">Sign up here for free.</a>`;
 
-const INSTALL_LAYER0_CLI = `## Install the ${PRODUCT_NAME} CLI {/* install-the--product_name--cli */}
+const INSTALL_CLI = `## Install the ${PRODUCT_NAME} CLI {/*install-the-cli*/}
 
 If you have not already done so, install the [${PRODUCT_NAME} CLI](cli).
 
-
+With \`npm\`: 
 \`\`\`bash
-npm i -g ${PACKAGE_NAME}/cli # yarn global add {{ PACKAGE_NAME }}/cli
+npm i -g ${PACKAGE_NAME}/cli
+\`\`\`
+
+With \`yarn\`:
+\`\`\`bash
+yarn global add ${PACKAGE_NAME}/cli
+\`\`\`
+`;
+
+const PREREQ = `
+${SYSTEM_REQUIREMENTS}
+
+${SIGN_UP}
+
+${INSTALL_CLI}
+`.trim();
+
+const INSTALL_CLI_STEP = `Install the ${PRODUCT_NAME} CLI
+
+If you have not already done so, install the [${PRODUCT_NAME} CLI](cli).
+
+With \`npm\`: 
+\`\`\`bash
+npm i -g ${PACKAGE_NAME}/cli
+\`\`\`
+
+With \`yarn\`:
+\`\`\`bash
+yarn global add ${PACKAGE_NAME}/cli
 \`\`\`
 `;
 
 const PARTNERS_CONTACT = `partner@llnw.com`;
 
 module.exports = {
+  COMPANY_NAME,
+  PRODUCT,
+  PRODUCT_LEGACY,
+  PRODUCT_EDGE,
+  PRODUCT_PLATFORM,
+  PRODUCT_SECURITY,
+  PRODUCT_NAME,
+  PRODUCT_NAME_LOWER,
+  PRODUCT_NAME_UPPER,
   APP_DOMAIN,
   APP_URL,
   CLI_NAME,
@@ -94,14 +137,13 @@ module.exports = {
   FULL_CLI_NAME,
   HEADER_PREFIX,
   HELP_URL,
-  INSTALL_LAYER0_CLI,
+  INSTALL_CLI,
+  PREREQ,
+  INSTALL_CLI_STEP,
   NODE_VERSION,
   PACKAGE_NAME,
   PARTNERS_CONTACT,
-  PRODUCT_NAME_LOWER,
-  PRODUCT_NAME_UPPER,
-  PRODUCT_NAME,
-  SIGN_UP_LAYER0,
+  SIGN_UP,
   STARTER_NAME,
   STATUS_URL,
   SUPPORT_URL,

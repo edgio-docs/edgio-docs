@@ -2,11 +2,11 @@
 title: EdgeJS Unit Testing
 ---
 
-Layer0 provides an EdgeJS testing utility to facilitate in unit-testing your Layer0 router logic, helping to mock and run your routes in a test environment just as they would be handled live on your production site.
+{{ PRODUCT }} provides an EdgeJS testing utility to facilitate in unit-testing your {{ PRODUCT }} router logic, helping to mock and run your routes in a test environment just as they would be handled live on your production site.
 
 ## Configuration {/*configuration*/}
 
-If not already configured for your project, we require using `jest` for unit-testing your Layer0 router logic. It is also recommended to use `nock` for mocking HTTP requests your application may make.
+If not already configured for your project, we require using `jest` for unit-testing your {{ PRODUCT }} router logic. It is also recommended to use `nock` for mocking HTTP requests your application may make.
 
 ```bash
 npm i -D jest babel-jest nock @babel/core @babel/preset-env @babel/preset-typescript
@@ -27,7 +27,7 @@ You can find more information around configuring Jest with their [Getting Starte
 At the top of each unit test, import the following:
 
 ```js
-// reference to your Layer0 router
+// reference to your {{ PRODUCT }} router
 import routes from '../routes'
 
 // router helper functions
@@ -207,4 +207,4 @@ it('should cache the static asset at the edge for 1 hour', async () => {
 
 ## Example Tests {/*example-tests*/}
 
-For a more detailed example of EdgeJS unit testing, check out our [Layer0 Templates](https://github.com/layer0-docs/layer0-templates) for a full implementation.
+For a more detailed example of EdgeJS unit testing, check out our [{{ PRODUCT }} Templates](https://github.com/layer0-docs/layer0-templates) for a full implementation.

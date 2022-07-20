@@ -11,7 +11,7 @@ You can perform two kinds of split tests with {{ PRODUCT_NAME }}:
 1. A/B test multiple implementations of the same site (environment).
 2. Split traffic between multiple sites (environments) - This is commonly used to test a new experience against a legacy one.
 
-The first option is configured in Edge.js within the project, the second option is configured in the console application.
+The first option is configured in EdgeJS within the project, the second option is configured in the console application.
 
 ## A/B Testing Multiple Implementations {/*ab-testing-multiple-implementations*/}
 
@@ -100,7 +100,7 @@ To begin the split test, click the _Activate_ button at the top of the environme
 
 #### Nesting {/*nesting*/}
 
-Split testing cannot be nested behind other split testing. Requests are processed through two phases, edge security, redirects and split testing, and then the Edge.js configuration. When using split testing, the first phase is executed once in the site (environment) which receives the request, and then control is delegated to the second phase of the correct cohort configuration.
+Split testing cannot be nested behind other split testing. Requests are processed through two phases, edge security, redirects and split testing, and then the EdgeJS configuration. When using split testing, the first phase is executed once in the site (environment) which receives the request, and then control is delegated to the second phase of the correct cohort configuration.
 
 #### Versioning {/*versioning*/}
 
@@ -124,7 +124,7 @@ The experience the user sees is determined by the traffic split percentage you s
 
 When a split test is active, {{ PRODUCT_NAME }} will automatically set a `{{ COOKIE_PREFIX }}_destination` cookie to the name of the chosen destination. You can access this value in the browser and use it to report the split test experience assignment to your analytics. This cookie is present in both the inter- and intra-site (environment) configurations.
 
-## Cache Key
+## Cache Key {/*cache-key*/}
 
 The default cache key includes the `{{ COOKIE_PREFIX }}_destination` cookie. As such, you do not need to define additional headers to further the cache key. Each destination is cached independently and as long as someone doesn’t manually change their cookies, they will be served cached content from the correct bucket.
 

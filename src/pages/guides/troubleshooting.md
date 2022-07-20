@@ -41,7 +41,7 @@ Note that this configuration will allow you to set breakpoints in both your {{ P
 
 By viewing the server logs in the {{ PRODUCT_NAME }} Developer Console, you can see all of the messages logged by your application using `console.log`, `console.warn`, etc...
 
-By enabling [Deep Request Inspection](/guides/logs#section_http_request_logging) in your environment, you can also see the headers and body of every request and response served by your application via the Layer0 serverless cloud. You can also see each upstream API request made by your application.
+By enabling [Deep Request Inspection](/guides/logs#section_http_request_logging) in your environment, you can also see the headers and body of every request and response served by your application via the {{ PRODUCT }} serverless cloud. You can also see each upstream API request made by your application.
 
 You can also use the server logs to debug **routing issues** going to **custom backends** by temporarily moving the proxy from the edge to serverless:
 
@@ -87,7 +87,7 @@ curl -o/dev/null -vv https://www.yoursite.com
 
 **Bypass DNS Resolution**
 
-Connect directly to the address listed after. This is good for sending a request straight to origin and bypassing Layer0, or testing a connection to Layer0 before DNS cutover. Setting up a localhost DNS configuration is usually better for this if possible.
+Connect directly to the address listed after. This is good for sending a request straight to origin and bypassing {{ PRODUCT }}, or testing a connection to {{ PRODUCT }} before DNS cutover. Setting up a localhost DNS configuration is usually better for this if possible.
 
 ```bash
 curl -o/dev/null -vv
@@ -134,7 +134,7 @@ We provide a header, `x-0-caching-status` to best understand why something is be
 
 ## Source Maps {/*source-maps*/}
 
-Layer0 automatically produces a source map for your router file so that all runtime errors that occur during routing will have a stacktrace that references the original source file. If your application build produces source maps for the server bundle, these will also be used when reporting errors. Layer0 provides a convenient way to enable source maps when using Next and Nuxt:
+{{ PRODUCT }} automatically produces a source map for your router file so that all runtime errors that occur during routing will have a stacktrace that references the original source file. If your application build produces source maps for the server bundle, these will also be used when reporting errors. {{ PRODUCT }} provides a convenient way to enable source maps when using Next and Nuxt:
 
 <Callout type="warning">
   We noticed some performance issues related to sourcemaps being loaded in our Serverless infrastructure, which may result in 539 project timeout errors. In case you encounter such errors, please try again with sourcemaps disabled. This document will be updated once the problem is fully resolved.
@@ -145,12 +145,12 @@ Layer0 automatically produces a source map for your router file so that all runt
 Set `{{ FULL_CLI_NAME }}SourceMaps: true` in your `next.config.js`:
 
 ```js filename="./next.config.js"
-const { withLayer0, withServiceWorker } = require('@layer0/next/config')
+const { with{{ PRODUCT_LEGACY }}, withServiceWorker } = require('@layer0/next/config')
 
-module.exports = withLayer0(
+module.exports = with{{ PRODUCT_LEGACY }}(
   withServiceWorker({
     // Output sourcemaps so that stacktraces have original source filenames and line numbers when tailing
-    // the logs in the Layer0 developer console.
+    // the logs in the {{ PRODUCT }} developer console.
     {{ FULL_CLI_NAME }}SourceMaps: true,
   }),
 )
@@ -185,7 +185,7 @@ module.exports = {
 
 #### Assumptions {/*assumptions*/}
 
-You have deployed your site to Layer0. All your website code resides with Layer0 as SSR (server-side rendering) code. Your backend (server) simply contains data that is needed by your website code to construct a page and return it to a requesting client or browser.
+You have deployed your site to {{ PRODUCT }}. All your website code resides with {{ PRODUCT }} as SSR (server-side rendering) code. Your backend (server) simply contains data that is needed by your website code to construct a page and return it to a requesting client or browser.
 See [Architecture](/guides/overview#section_architecture) for more information.
 
 #### Typical Request Flows {/*typical-request-flows*/}
@@ -194,21 +194,21 @@ Following are two request flows that are helpful as background to troubleshootin
 
 ##### Cached Assets Served {/*cached-assets-served*/}
 
-1. A requesting client sends a request to Layer0 for an asset.
-2. The Layer0 edge finds the asset in cache and returns it to the client.
+1. A requesting client sends a request to {{ PRODUCT }} for an asset.
+2. The {{ PRODUCT }} edge finds the asset in cache and returns it to the client.
 
 ##### Assets Served via Customer SSR Code and Customer Backend {/*assets-served-via-customer-ssr-code-and-customer-backend*/}
 
 This flow is where 539 errors might occur.
 
-1. A requesting client sends a request to Layer0 for an asset.
+1. A requesting client sends a request to {{ PRODUCT }} for an asset.
 2. {{ PRODUCT_NAME }} does not find it in its cache and examines routing rules.
 2. {{ PRODUCT_NAME }} sends requests to SSR code.
 2. The SSR code makes calls to the customer backend to get data needed for the page.
 2. The SSR assembles the page and sends it to the {{ PRODUCT_NAME }} edge.
 2. The {{ PRODUCT_NAME }} edge caches the page and returns it to the client.
 
-_Note:_ a variant on caching is ISR where Layer0 caches just for a few hours or days.
+_Note:_ a variant on caching is ISR where {{ PRODUCT }} caches just for a few hours or days.
 
 #### Allowlist Overview {/*allowlist-overview*/}
 
@@ -245,7 +245,7 @@ Before continuing, it is helpful to see what a good request and response flow lo
 | Line | Description |
 | -------------- | -------------- |
 | 1 | Summary line. |
-| 2 | The request from Layer0 to your SSR code. The line ends with a `200`, indicating success. |
+| 2 | The request from {{ PRODUCT }} to your SSR code. The line ends with a `200`, indicating success. |
 | 3 | The request from your SSR code to your backend server. If this line ends with a `<status code> in XXms`, then the SSR received a response from your backend server. In this example the HTTP status code was `200`,  indicating success. If the line does not end with a `<status code> in XXms`, there was a problem with the request to your backend server (see [Backend Server Error](#section_backend_server_error)). |
 | 4 | The response from the SSR to the browser, and ends with the status code for the response. If this line is present, the SSR code ran to completion. If this line is missing there was a problem (see [Error in SSR Code](#section_error_in_ssr_code)). |
 
@@ -258,7 +258,7 @@ If a request looks like the following, your SSR code contains an error.
 | Line | Description |
 | -------------- | -------------- |
 | 1 | Summary line. |
-| 2 | The request from the Layer0 edge to your SSR code. The line ends with a `200`. |
+| 2 | The request from the {{ PRODUCT }} edge to your SSR code. The line ends with a `200`. |
 | 3 | The request from your SSR code to your backend server. The line ends with a `200`. |
 
 _Note:_ There is no response from the SSR code to the browser as shown in line 4 in [Good Request Example](#section_good_request_example). Troubleshoot your code and fix the error. Common errors are that your SSR code:
@@ -274,7 +274,7 @@ If a request looks like the following, your backend server is either down, overl
 | Line | Description |
 | -------------- | -------------- |
 |1| Summary line. |
-|2| The request from the Layer0 edge to your SSR code. |
+|2| The request from the {{ PRODUCT }} edge to your SSR code. |
 |3| The request from your SSR code to your backend server. |
 
 _Note:_ If line 3:

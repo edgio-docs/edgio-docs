@@ -215,6 +215,10 @@ const SidebarMenuItems: ISidebarMenuItems = [
         {
           title: 'Third-Party CDNs',
           path: '/guides/third_party_cdns',
+        },
+        {
+          title: 'Image Optimization',
+          path: '/guides/image_optimization',
           separator: true,
         },
         {
@@ -653,10 +657,6 @@ const SidebarMenuItems: ISidebarMenuItems = [
           path: '/guides/edgejs_testing',
         },
         {
-          title: 'Image Optimization',
-          path: '/guides/image_optimization',
-        },
-        {
           title: 'Logs',
           path: '/guides/logs',
         },
@@ -711,7 +711,7 @@ const SidebarMenuItems: ISidebarMenuItems = [
           path: '/guides/rest_api',
         },
         {
-          title: 'Limits & Quotas',
+          title: 'Limits & Caveats',
           path: '/guides/limits',
         },
         {

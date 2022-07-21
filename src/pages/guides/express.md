@@ -4,7 +4,7 @@ title: Express
 
 [Express](https://expressjs.com) is a fast, unopinionated, minimalist web framework for Node.js. The {{ PRODUCT_PLATFORM }}'s serverless environment makes it easy to run apps without managing Node.js servers.
 
-## Getting Started {/_getting-started_/} {/*getting-started-getting-started*/}
+## Getting Started {/*getting-started*/}
 
 Add your Express app to {{ PRODUCT }} by running the following command in your project's root directory:
 
@@ -13,7 +13,7 @@ npm i -g {{ PACKAGE_NAME }}/cli # yarn global add {{ PACKAGE_NAME }}/cli
 {{ CLI_NAME }} init
 ```
 
-## Running your app locally {/_running-your-app-locally_/} {/*running-your-app-locally-running-your-app-locally*/}
+## Running your app locally {/*running-your-app-locally*/}
 
 Test your app with the {{ PRODUCT_PLATFORM }} on your local machine by running the following command in your project's root directory:
 
@@ -21,7 +21,7 @@ Test your app with the {{ PRODUCT_PLATFORM }} on your local machine by running t
 {{ CLI_NAME }} dev
 ```
 
-## Deploying {/_deploying_/} {/*deploying-deploying*/}
+## Deploying {/*deploying*/}
 
 Deploy your app to the {{ PRODUCT_PLATFORM }} by running the following command in your project's root directory:
 
@@ -29,7 +29,7 @@ Deploy your app to the {{ PRODUCT_PLATFORM }} by running the following command i
 {{ CLI_NAME }} deploy
 ```
 
-## Overriding the default app location {/_overriding-the-default-app-location_/} {/*overriding-the-default-app-location-overriding-the-default-app-location*/}
+## Overriding the default app location {/*overriding-the-default-app-location*/}
 
 When you deploy your Express app to the {{ PRODUCT_PLATFORM }}, the {{ PRODUCT }} CLI bundles your app as a single javascript file so that it can be run as a serverless function. By default, {{ COMPANY_NAME }} looks for your app in the following common locations:
 
@@ -59,7 +59,7 @@ module.exports = {
 
 The file you specify in `appPath` should export an instance of an express app using `export default` or `module.exports`.
 
-## Serving Static Assets {/_serving-static-assets_/} {/*serving-static-assets-serving-static-assets*/}
+## Serving Static Assets {/*serving-static-assets*/}
 
 If your express app serves any static assets, you'll need to add routes to your {{ PRODUCT }} router configuration to serve them from the edge. For example, to serve all paths under `/assets` from `dist/client/assets`:
 
@@ -82,7 +82,7 @@ export default new Router()
   .fallback(({renderWithApp}) => renderWithApp()); // serve all unmatched URLs from express
 ```
 
-## Adding Additional Files Needed during SSR {/_adding-additional-files-needed-during-ssr_/} {/*adding-additional-files-needed-during-ssr-adding-additional-files-needed-during-ssr*/}
+## Adding Additional Files Needed during SSR {/*adding-additional-files-needed-during-ssr*/}
 
 If your express app expects to be able to read files from the filesystem at runtime, for example an index.html template, you can ensure they are included in the app bundle that is deployed to {{ PRODUCT_PLATFORM }}'s serverless workers by adding the following to {{ CONFIG_FILE }}
 
@@ -97,7 +97,7 @@ module.exports = {
 };
 ```
 
-## Transpiling and TypeScript support {/_transpiling-and-typescript-support_/} {/*transpiling-and-typescript-support-transpiling-and-typescript-support*/}
+## Transpiling and TypeScript support {/*transpiling-and-typescript-support*/}
 
 {{ PRODUCT }} will automatically transpile JavaScript and TypeScript source code for running on Node.js version 14. If you want to control how
 source files are compiled, you can transpile your app on your own and point your `appPath` config to the transpiled version of your app's main entry point.

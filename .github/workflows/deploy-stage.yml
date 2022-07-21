@@ -33,7 +33,7 @@ jobs:
             ${{ runner.os }}-
       - run: yarn
       - name: Deploy to stage (edgio action)
-        uses: layer0-docs/edgio-deploy@bd57d34
+        uses: layer0-docs/edgio-deploy@bd57d34975b4bd434a117e4b7d604f522a3f9442
         with:
           token: ${{secrets.layer0_prod_deploy_token}}
       # - name: Deploy to Edgio (stage)

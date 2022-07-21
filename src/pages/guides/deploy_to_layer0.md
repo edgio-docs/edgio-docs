@@ -14,10 +14,10 @@ An example Deploy Button using the following HTML snippet.
 
 ## Snippets {/*snippets*/}
 
-Use the snippets below in your Git repository to enable users to deploy the repository directly to Layer0.
+Use the snippets below in your Git repository to enable users to deploy the repository directly to {{ PRODUCT }}.
 
 ```markdown
-[![Deploy with Layer0](https://docs.layer0.co/button.svg)](https://app.layer0.co/deploy?repo=https://github.com/layer0-docs/layer0-nextjs-example)
+[![Deploy with {{ PRODUCT }}](https://docs.layer0.co/button.svg)](https://app.layer0.co/deploy?repo=https://github.com/layer0-docs/layer0-nextjs-example)
 ```
 
 ## Creating Your Own Deploy Button {/*creating-your-own-deploy-button*/}
@@ -40,7 +40,7 @@ Lastly, create a GitHub workflow file called `layer0.yml`. This will be triggere
 #### Create `.github/workflows/layer0.yml` Workflow {/*create-githubworkflowslayer0yml-workflow*/}
 
 ```yml
-name: Deploy to Layer0
+name: Deploy to {{ PRODUCT }}
 
 on:
   workflow_dispatch:

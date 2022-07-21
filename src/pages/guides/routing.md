@@ -17,7 +17,7 @@ Using the Router, you can:
 
 You define routes for {{ PRODUCT_NAME }} using the `routes.js` file.
 
-Before continuing, if you have not already initialized your project with {{ PRODUCT_NAME }}, do so using the instructions in [WebApp CDN](/guides/webapp_cdn_getting_started).
+Before continuing, if you have not already initialized your project with {{ PRODUCT_NAME }}, do so using the instructions in [Web CDN](/guides/webapp_cdn_getting_started).
 
 The `routes.js` file should export an instance of `{{ PACKAGE_NAME }}/core/router/Router`:
 
@@ -408,7 +408,7 @@ The second argument to routes is a function that receives a `ResponseWriter` and
 - Cache the response at edge and in the browser
 - Manipulate request and response headers
 
-[See the API Docs for Response Writer](/docs/__version__/api/core/classes/_router_responsewriter_.responsewriter.html)
+[See the API Docs for Response Writer](/docs/api/core/classes/_router_responsewriter_.responsewriter.html)
 
 ## Full Example {/*full-example*/}
 
@@ -480,7 +480,7 @@ The `.catch` method allows the edge router to render a response based on the res
 
 ## Environment Edge Redirects {/*environment-edge-redirects*/}
 
-In addition to sending redirects at the edge within the router configuration, this can also be configured at the environment level within the Layer0 Developer Console.
+In addition to sending redirects at the edge within the router configuration, this can also be configured at the environment level within the {{ PRODUCT }} Developer Console.
 
 Under _&lt;Your Environment&gt; &#8594; Configuration_, click _Edit_ to draft a new configuration. Scroll down to the _Redirects_ section:
 ![redirects](/images/environments/redirects.png)

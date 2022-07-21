@@ -53,6 +53,9 @@ const scriptSrcDomains = [
   '*.hotjar.com',
   's.adroll.com',
   'px4.ads.linkedin.com',
+  '*.google-analytics.com',
+  '*.googletagmanager.com',
+  'googletagmanager.com',
 ].sort();
 
 const connectSrcDomains = [
@@ -63,6 +66,9 @@ const connectSrcDomains = [
   '*.segment.io',
   '*.segment.com',
   'analytics.google.com',
+  '*.google-analytics.com',
+  '*.googletagmanager.com',
+  'googletagmanager.com',
   '*.intercom.io',
   '*.intercomcdn.com',
   '*.intercomassets.com',
@@ -178,8 +184,8 @@ const router = new Router()
     redirect('/docs/:version/api/:path*/');
   })
 
-  .get('/googleb2732cddf1383cf4.html', ({send}) =>
-    send('google-site-verification: googleb2732cddf1383cf4.html', 200, 'OK')
+  .get('/google59b36cb2cb9e8c0a.html', ({send}) =>
+    send('google-site-verification: google59b36cb2cb9e8c0a.html', 200, 'OK')
   );
 
 redirects.forEach(([from, to, statusCode]) => {

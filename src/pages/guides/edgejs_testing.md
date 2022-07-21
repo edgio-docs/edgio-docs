@@ -2,11 +2,11 @@
 title: EdgeJS Unit Testing
 ---
 
-Layer0 provides an EdgeJS testing utility to facilitate in unit-testing your Layer0 router logic, helping to mock and run your routes in a test environment just as they would be handled live on your production site.
+{{ PRODUCT }} provides an EdgeJS testing utility to facilitate in unit-testing your {{ PRODUCT }} router logic, helping to mock and run your routes in a test environment just as they would be handled live on your production site.
 
 ## Configuration {/*configuration*/}
 
-If not already configured for your project, we require using `jest` for unit-testing your Layer0 router logic. It is also recommended to use `nock` for mocking HTTP requests your application may make.
+If not already configured for your project, we require using `jest` for unit-testing your {{ PRODUCT }} router logic. It is also recommended to use `nock` for mocking HTTP requests your application may make.
 
 ```bash
 npm i -D jest babel-jest nock @babel/core @babel/preset-env @babel/preset-typescript
@@ -27,7 +27,7 @@ You can find more information around configuring Jest with their [Getting Starte
 At the top of each unit test, import the following:
 
 ```js
-// reference to your Layer0 router
+// reference to your {{ PRODUCT }} router
 import routes from '../routes'
 
 // router helper functions
@@ -100,7 +100,7 @@ it('should run the /search route', () => {
 
 If the route being tested has an upstream request or serves a static file, you will want to mock these requests and responses. This decouples your unit tests from your upstream and application logic, focusing just on how the router responds to the given request. For this, we use `nock` along with `appHost`, `backendHost`, and `staticHost` imported from `@layer0/core/testing-utils`.
 
-These functions reference the backend entries defined in your `layer0.config.js` file.
+These functions reference the backend entries defined in your `{{ CONFIG_FILE }}` file.
 
 #### Mocking _appHost_ Example {/*mocking-apphost-example*/}
 
@@ -136,10 +136,10 @@ it('should cache the collections page at the edge for 1 hour', async () => {
 
 #### Mocking _backendHost_ Example {/*mocking-backendhost-example*/}
 
-Routes that use `proxy` to fetch from a backend can be mocked using `backendHost(name)`, where `name` is the key used for the backend defined in `layer0.config.js`.
+Routes that use `proxy` to fetch from a backend can be mocked using `backendHost(name)`, where `name` is the key used for the backend defined in `{{ CONFIG_FILE }}`.
 
 ```js
-// layer0.config.js
+// {{ CONFIG_FILE }}
 module.exports = {
   routes: './src/routes.ts',
   backends: {
@@ -207,4 +207,4 @@ it('should cache the static asset at the edge for 1 hour', async () => {
 
 ## Example Tests {/*example-tests*/}
 
-For a more detailed example of EdgeJS unit testing, check out our [Layer0 Templates](https://github.com/layer0-docs/layer0-templates) for a full implementation.
+For a more detailed example of EdgeJS unit testing, check out our [{{ PRODUCT }} Templates](https://github.com/layer0-docs/layer0-templates) for a full implementation.

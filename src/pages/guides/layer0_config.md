@@ -83,7 +83,7 @@ sources: [
 ]
 ```
 
-## Example layer0.config.js {/*examplelayer0config*/}
+## Example {{ CONFIG_FILE }} {/*examplelayer0config*/}
 
 ```js
 // This file was automatically added by layer0 deploy.
@@ -109,10 +109,10 @@ module.exports = {
     },
   },
 
-  // The name of the site in Layer0 to which this app should be deployed.
+  // The name of the site in {{ PRODUCT }} to which this app should be deployed.
   name: "example.com",
 
-  // The name of the team in Layer0 to which this app should be deployed.
+  // The name of the team in {{ PRODUCT }} to which this app should be deployed.
   team: 'my-team-name',
 
   // Overrides the default path to the routes file. The path should be relative 
@@ -126,9 +126,9 @@ module.exports = {
 
   // A list of glob patterns identifying which source files should be uploaded 
   // when running layer0 deploy --includeSources. This option is primarily used 
-  // to share source code with Layer0 support personnel for the purpose of 
+  // to share source code with {{ PRODUCT }} support personnel for the purpose of 
   // debugging. If omitted, layer0 deploy --includeSources will result in all 
-  // files which are not gitignored being uploaded to Layer0.
+  // files which are not gitignored being uploaded to {{ PRODUCT }}.
   //
   sources : [
      '**/*', // include all files
@@ -136,8 +136,8 @@ module.exports = {
   ],
 
   // Set to true to include all packages listed in the dependencies property 
-  // of package.json when deploying to Layer0.  This option generally isn't 
-  // needed as Layer0 automatically includes all modules imported by your 
+  // of package.json when deploying to {{ PRODUCT }}.  This option generally isn't 
+  // needed as {{ PRODUCT }} automatically includes all modules imported by your 
   // code in the bundle that is uploaded during deployment
   //
   includeNodeModules: true,

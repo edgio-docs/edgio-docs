@@ -17,6 +17,10 @@ jobs:
         with:
           access_token: ${{ github.token }}
       - uses: actions/checkout@v1
+      - uses: actions/checkout@v2
+        with:
+          repository: layer0-docs/edgio-deploy
+          path: ./action
       - uses: actions/setup-node@v1
         with:
           node-version: 14
@@ -33,7 +37,7 @@ jobs:
             ${{ runner.os }}-
       - run: yarn
       - name: Deploy to stage (edgio action)
-        uses: layer0-docs/edgio-deploy@d832990eb92788839c20205e616775a86a78037a
+        uses: ./action
         with:
           token: ${{secrets.layer0_prod_deploy_token}}
       # - name: Deploy to Edgio (stage)

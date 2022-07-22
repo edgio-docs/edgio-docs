@@ -35,7 +35,7 @@ export default function ExampleButtons({
           href={`https://app.layer0.co/deploy?button&deploy&repo=${encodeURIComponent(
             repoUrl
           )}`}>
-          <img style={{ marginBottom: "0px", height: "28px" }} src="/button.svg" />
+          <img style={{ marginBottom: "0px", height: "38px" }} src="/button.svg" />
         </a>
       )}
     </ButtonLinksGroup>

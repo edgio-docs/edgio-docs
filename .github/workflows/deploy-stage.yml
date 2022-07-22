@@ -30,14 +30,14 @@ jobs:
           cache-name: cache-node-modules
         with:
           path: ~/.npm # npm cache files are stored in `~/.npm` on Linux/macOS
-          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
+          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
             ${{ runner.os }}-build-${{ env.cache-name }}-
             ${{ runner.os }}-build-
             ${{ runner.os }}-
-      - run: yarn
+      - run: yarn install --frozen-lockfile
       - name: Deploy to stage (edgio action)
-        uses: ./action
+        uses: layer0-docs/edgio-deploy@main
         with:
           token: ${{secrets.layer0_prod_deploy_token}}
       # - name: Deploy to Edgio (stage)

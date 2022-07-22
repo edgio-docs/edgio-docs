@@ -71,7 +71,6 @@ import {
   IconSanity,
   IconSapper,
   IconScully,
-  IconSecurity,
   IconSecurityPlain,
   IconSecurityPlainDark,
   IconServerlessFunctions,

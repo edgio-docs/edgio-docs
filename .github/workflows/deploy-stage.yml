@@ -23,7 +23,7 @@ jobs:
           path: ./action
       - uses: actions/setup-node@v1
         with:
-          node-version: 14
+          node-version: 16
       - name: Cache node modules
         uses: actions/cache@v1
         env:

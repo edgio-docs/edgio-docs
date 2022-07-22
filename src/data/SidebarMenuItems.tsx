@@ -47,6 +47,8 @@ import {
   IconIonicX,
   IconJekyll,
   IconJekyllDark,
+  IconLeaf,
+  IconLeafDark,
   IconLit,
   IconMKDocs,
   IconMKDocsDark,
@@ -69,6 +71,9 @@ import {
   IconSanity,
   IconSapper,
   IconScully,
+  IconSecurity,
+  IconSecurityPlain,
+  IconSecurityPlainDark,
   IconServerlessFunctions,
   IconServerSmall,
   IconServerSmallDark,
@@ -163,8 +168,8 @@ const SidebarMenuItems: ISidebarMenuItems = [
     },
     {
       title: PRODUCT_EDGE,
-      icon: <IconSparkPlain />,
-      iconDark: <IconSparkPlainDark />,
+      icon: <IconServerSmall />,
+      iconDark: <IconServerSmallDark />,
       path: 'cdn',
       sortRoutes: false,
       routes: [
@@ -554,8 +559,8 @@ const SidebarMenuItems: ISidebarMenuItems = [
     },
     {
       title: PRODUCT_SECURITY,
-      icon: <IconStacksPlain />,
-      iconDark: <IconStacksPlainDark />,
+      icon: <IconSecurityPlain />,
+      iconDark: <IconSecurityPlainDark />,
       path: 'reference',
       sortRoutes: true,
       routes: [
@@ -571,8 +576,8 @@ const SidebarMenuItems: ISidebarMenuItems = [
     },
     {
       title: 'Environments',
-      icon: <IconCodePlain />,
-      iconDark: <IconCodePlainDark />,
+      icon: <IconLeaf />,
+      iconDark: <IconLeafDark />,
       path: 'environments',
       sortRoutes: false,
       routes: [
@@ -619,7 +624,7 @@ const SidebarMenuItems: ISidebarMenuItems = [
           iconDark: <IconSwellDark />,
         },
       ],
-    },    
+    },
     {
       title: 'Accounts & Teams',
       icon: <IconUserPlain />,

@@ -26,6 +26,7 @@
 }
 
 :root.light {
+  color-scheme: light;
   --text-primary: var(--colors-black0);
   --text-secondary: #707070;
   --docs-text-primary: #353535;
@@ -69,6 +70,7 @@
 }
 
 :root.dark {
+  color-scheme: dark;
   --text-primary: var(--colors-white0);
   --text-secondary: #cbcbcb;
   --docs-text-primary: var(--colors-white0);

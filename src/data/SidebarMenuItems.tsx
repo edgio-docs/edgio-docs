@@ -734,11 +734,12 @@ const SidebarMenuItems: ISidebarMenuItems = [
       icon: <IconBulb />,
       iconDark: <IconBulbDark />,
       path: 'learning-resources',
-      sortRoutes: true,
+      sortRoutes: false,
       routes: [
         {
-          title: 'What is GraphQL?',
-          path: '/guides/what_is_graphql',
+          title: 'Overview',
+          path: '/guides/learning',
+          separator: true,
         },
       ],
     },

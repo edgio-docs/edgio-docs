@@ -32,6 +32,8 @@ const StyledMainPage = styled.div`
       box-shadow: inset -1px 0px var(--hr-secondary);
       z-index: 2;
       background-color: var(--bg-secondary);
+      will-change: transform;
+      transition: transform 0.2s;
 
       &[data-open='true'] {
         position: fixed;
@@ -45,10 +47,9 @@ const StyledMainPage = styled.div`
     }
 
     .docs-content__inner {
+      margin: 0 auto;
       min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      flex: 1 1;
+      flex: 1 1 0%;
 
       .LayoutHome {
         max-width: 1000px;

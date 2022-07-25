@@ -56,7 +56,6 @@ export function MarkdownPage<
   return (
     <MDXProvider components={MDXComponents}>
       <Seo {...{isHomePage, title, description: siteConfig.tagline}} />
-
       {isHomePage ? (
         children
       ) : (

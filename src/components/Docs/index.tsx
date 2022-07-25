@@ -1,4 +1,3 @@
-import {useEffect} from 'react';
 import styled from 'styled-components';
 
 import {Toc} from '../Layout/Toc';
@@ -173,7 +172,7 @@ const StyledDocs = styled.div`
     }
   }
 
-  @media (max-width: 1000px) {
+  @media (max-width: 1200px) {
     grid-template-columns: 1fr;
   }
 `;

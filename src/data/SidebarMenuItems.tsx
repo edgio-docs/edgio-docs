@@ -1,6 +1,13 @@
 import * as React from 'react';
 
 import {
+  CONFIG_FILE,
+  PRODUCT,
+  PRODUCT_EDGE,
+  PRODUCT_PLATFORM,
+  PRODUCT_SECURITY,
+} from '../../constants';
+import {
   IconAngular,
   IconAstro,
   IconAstroDark,
@@ -132,11 +139,11 @@ const SidebarMenuItems: ISidebarMenuItems = [
       sortRoutes: false,
       routes: [
         {
-          title: 'WebApp CDN',
+          title: PRODUCT_EDGE,
           path: '/guides/webapp_cdn_getting_started',
         },
         {
-          title: 'Jamstack',
+          title: PRODUCT_PLATFORM,
           path: '/guides/jamstack_getting_started',
         },
         {
@@ -154,7 +161,7 @@ const SidebarMenuItems: ISidebarMenuItems = [
       ],
     },
     {
-      title: 'CDN',
+      title: PRODUCT_EDGE,
       icon: <IconServerSmall />,
       iconDark: <IconServerSmallDark />,
       path: 'cdn',
@@ -165,7 +172,7 @@ const SidebarMenuItems: ISidebarMenuItems = [
           path: '/guides/routing',
         },
         {
-          title: 'Security',
+          title: PRODUCT_SECURITY,
           path: '/guides/security',
         },
         {
@@ -638,7 +645,7 @@ const SidebarMenuItems: ISidebarMenuItems = [
           path: '/guides/managed_rule_groups',
         },
         {
-          title: 'Layer0 for Traditional Sites',
+          title: `${PRODUCT} for Traditional Sites`,
           path: '/guides/traditional_sites',
         },
         {
@@ -662,7 +669,7 @@ const SidebarMenuItems: ISidebarMenuItems = [
           path: '/guides/install_nodejs',
         },
         {
-          title: 'Deploy to Layer0 Button',
+          title: `Deploy to ${PRODUCT} Button`,
           path: '/guides/deploy_to_layer0',
         },
         {
@@ -674,7 +681,7 @@ const SidebarMenuItems: ISidebarMenuItems = [
           path: '/guides/layer0_migration',
         },
         {
-          title: 'layer0.config.js',
+          title: CONFIG_FILE,
           path: '/guides/layer0_config',
         },
       ],
@@ -687,7 +694,7 @@ const SidebarMenuItems: ISidebarMenuItems = [
       sortRoutes: true,
       routes: [
         {
-          title: 'Layer0 Tutorials',
+          title: `${PRODUCT} Tutorials`,
           path: 'https://vimeo.com/user/776463/folder/9270726',
           external: true,
         },

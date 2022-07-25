@@ -1,6 +1,12 @@
 import Link from 'next/link';
 import styled from 'styled-components';
 
+import {
+  PRODUCT,
+  PRODUCT_EDGE,
+  PRODUCT_PLATFORM,
+  PRODUCT_SECURITY,
+} from '../../../constants';
 import {IconJamstack} from '../Icon/IconJamstack';
 import {IconSecurity} from '../Icon/IconSecurity';
 import {IconWebAppCDN} from '../Icon/IconWebAppCDN';
@@ -114,29 +120,29 @@ export default function GetStarted({children}: {children: React.ReactNode}) {
       <div className="cards">
         <GetStartedCard
           icon={IconWebAppCDN}
-          title="WebApp CDN"
-          subtitle="Deploy your web application and start seeing the performance benefits with the Layer0 Edge Network."
+          title={PRODUCT_EDGE}
+          subtitle={`Deploy your web application and start seeing the performance benefits with the ${PRODUCT} ${PRODUCT_EDGE} Network.`}
           href="/guides/webapp_cdn_getting_started"
           hrefText="Deploy now"
         />
         <GetStartedCard
           icon={IconJamstack}
-          title="Jamstack"
-          subtitle="Deploy static and dynamic Jamstack sites that run on Layer0’s severless functions."
+          title={PRODUCT_PLATFORM}
+          subtitle={`Deploy static and dynamic Jamstack sites that run on ${PRODUCT}'s severless functions.`}
           href="/guides/jamstack_getting_started"
           hrefText="View Supported Frameworks"
         />
         <GetStartedCard
           icon={IconGraphQLCDN}
           title="GraphQL CDN"
-          subtitle="Scale and secure your GraphQL API using the Layer0 global CDN and Edge JS."
+          subtitle={`Scale and secure your GraphQL API using the ${PRODUCT} global CDN and EdgeJS.`}
           href="/guides/graphql"
           hrefText="1-click Deploy"
         />
         <GetStartedCard
           icon={IconSecurity}
-          title="Security"
-          subtitle="Managed security keeps your apps protected without sacrificing performance."
+          title={PRODUCT_SECURITY}
+          subtitle={`${PRODUCT} ${PRODUCT_SECURITY} keeps your apps protected without sacrificing performance.`}
           href="/guides/security"
           hrefText="Learn More"
         />

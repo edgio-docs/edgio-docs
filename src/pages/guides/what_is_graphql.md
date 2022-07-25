@@ -4,7 +4,7 @@ title: What is GraphQL?
 
 ![traffic](/images/graphql/graphql.svg)
 
-{{ PRODUCT_NAME }} provides full support for caching GraphQL APIs. Putting Layer0 in front of you GraphQL API can significantly improve its performance while reducing the amount of traffic that reaches your origin by serving cached queries from the network edge.
+{{ PRODUCT_NAME }} provides full support for caching GraphQL APIs. Putting {{ PRODUCT }} in front of you GraphQL API can significantly improve its performance while reducing the amount of traffic that reaches your origin by serving cached queries from the network edge.
 
 <VimeoMDXEmbed id="691615246"/>
 

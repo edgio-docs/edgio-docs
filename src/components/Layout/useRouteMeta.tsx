@@ -12,13 +12,6 @@ import * as React from 'react';
  * route object that is infinitely nestable.
  */
 
-export type RouteTag =
-  | 'foundation'
-  | 'intermediate'
-  | 'advanced'
-  | 'experimental'
-  | 'deprecated';
-
 export interface RouteItem {
   /** Page title (for the sidebar) */
   title: string;
@@ -29,12 +22,6 @@ export interface RouteItem {
   path?: string;
 }
 
-export interface Routes {
-  /** List of routes */
-  routes: RouteItem[];
-}
-
-/** Routing metadata about a given route and it's siblings and parent */
 export interface RouteMeta {
   /** The previous route */
   prevRoute?: RouteItem;
@@ -45,6 +32,21 @@ export interface RouteMeta {
   /** Trail of parent routes */
   breadcrumbs?: RouteItem[];
 }
+
+export type RouteTag =
+  | 'foundation'
+  | 'intermediate'
+  | 'advanced'
+  | 'experimental'
+  | 'deprecated';
+
+/** Routing metadata about a given route and it's siblings and parent */
+export interface Routes {
+  /** List of routes */
+  routes: RouteItem[];
+}
+
+export const SidebarContext = React.createContext<RouteItem>({title: 'root'});
 
 export function useRouteMeta(rootRoute?: RouteItem) {
   const sidebarContext = React.useContext(SidebarContext);
@@ -62,8 +64,6 @@ export function useRouteMeta(rootRoute?: RouteItem) {
     breadcrumbs: breadcrumbs.length > 0 ? breadcrumbs : [routeTree],
   };
 }
-
-export const SidebarContext = React.createContext<RouteItem>({title: 'root'});
 
 // Performs a depth-first search to find the current route and its previous/next route
 function getRouteMeta(

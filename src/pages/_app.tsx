@@ -16,7 +16,7 @@ import '../styles/scrollbar.css';
 
 const EmptyAppShell: React.FC = ({children}) => <>{children}</>;
 
-// CWV for Layer0
+// CWV for Edgio
 new Metrics({token: 'cdc8d6df-476b-4e2d-ae1a-f8c6893a39a8'}).collect();
 
 // -> Used for the loader when switching between pages

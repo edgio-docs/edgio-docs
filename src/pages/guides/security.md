@@ -320,7 +320,7 @@ Additionally:
 
 ### HTTP/1/2 Version
 
-The incoming HTTP version will be respected for the entirety of the request lifecycle. We prioritize HTTP/2 to origin servers. If the origin server does not support the incoming HTTP version (say version HTTP/2 came in but origin only supports HTTP/1), we will downgrade to successfully complete the request, but the outgoing response will return to HTTP/2.
+The incoming HTTP version is independent of the upstream HTTP version. We support HTTP/1 or HTTP/2 on ingress requests. We prioritize HTTP/2 to origin servers. If the origin server does not support the incoming HTTP version (say version HTTP/2 came in but origin only supports HTTP/1), we will downgrade to successfully complete the request, but the outgoing response will return to HTTP/2.
 
 ### Secrets {/*secrets*/}
 

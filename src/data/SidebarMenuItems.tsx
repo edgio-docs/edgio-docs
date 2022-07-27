@@ -671,29 +671,33 @@ const SidebarMenuItems: ISidebarMenuItems = [
       ],
     },
     {
-      title: 'Package APIs',
+      title: 'APIs',
       icon: <IconFolder />,
       iconDark: <IconFolderDark />,
-      path: 'package-apis',
+      path: 'apis',
       sortRoutes: false,
       routes: [
         {
-          title: `${PACKAGE_NAME}/core`,
+          title: 'REST API',
+          path: '/guides/rest_api',
+        },
+        {
+          title: `${PACKAGE_NAME}/core Package`,
           path: '/docs/api/core/',
           external: true,
         },
         {
-          title: `${PACKAGE_NAME}/prefetch`,
+          title: `${PACKAGE_NAME}/prefetch Package`,
           path: '/docs/api/prefetch/',
           external: true,
         },
         {
-          title: `${PACKAGE_NAME}/core (v3.x)`,
+          title: `${PACKAGE_NAME}/core (v3.x) Package`,
           path: '/docs/v3.x/api/core/',
           external: true,
         },
         {
-          title: `${PACKAGE_NAME}/prefetch (v3.x)`,
+          title: `${PACKAGE_NAME}/prefetch (v3.x) Package`,
           path: '/docs/v3.x/api/prefetch/',
           external: true,
         },
@@ -709,10 +713,6 @@ const SidebarMenuItems: ISidebarMenuItems = [
         {
           title: 'Changelog',
           path: '/guides/changelog',
-        },
-        {
-          title: 'REST API',
-          path: '/guides/rest_api',
         },
         {
           title: 'Limits & Caveats',

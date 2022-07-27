@@ -39,14 +39,14 @@ This guide describes caveats and limits of {{ PRODUCT_NAME }} platform as applie
 
 The following is a list of headers that cannot be modified by your project code. These values are immutable and can only be set by the {{ PRODUCT }} platform.
 
-* `x-0-platform`
-* `x-0-version` 
-* `x-0-t` 
-* `x-0-components`
-* `x-0-status`
-* `x-0-lambda-name`  
-* `x-0-lambda-schedwule-timeout`
-* `x-0-received-at`
+* `{{ HEADER_PREFIX }}-platform`
+* `{{ HEADER_PREFIX }}-version` 
+* `{{ HEADER_PREFIX }}-t` 
+* `{{ HEADER_PREFIX }}-components`
+* `{{ HEADER_PREFIX }}-status`
+* `{{ HEADER_PREFIX }}-lambda-name`  
+* `{{ HEADER_PREFIX }}-lambda-schedwule-timeout`
+* `{{ HEADER_PREFIX }}-received-at`
 * `host`
 * `x-request-id`
 * `content-length`

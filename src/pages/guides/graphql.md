@@ -160,17 +160,17 @@ export default new Router().graphqlOperation('GetProduct', ({ cache, proxy }) =>
 })
 ```
 
-#### Use the x-0-surrogate-key Response Header {/*use-the-x-0-surrogate-key-response-header*/}
+#### Use the {{ HEADER_PREFIX }}-surrogate-key Response Header {/*use-the-x-0-surrogate-key-response-header*/}
 
-You can also assign surrogate keys by adding an `x-0-surrogate-key` header to the response from the origin. Separate multiple keys with spaces:
+You can also assign surrogate keys by adding an `{{ HEADER_PREFIX }}-surrogate-key` header to the response from the origin. Separate multiple keys with spaces:
 
 ```
-x-0-surrogate-key: key1 key2 key3
+{{ HEADER_PREFIX }}-surrogate-key: key1 key2 key3
 ```
 
 #### Handle Conflicts {/*handle-conflicts*/}
 
-If the origin returns an `x-0-surrogate-key` response header and `deriveSurrogateKeysFromJson` is also used for a given request, you can specify whether the surrogate keys should be merged, or the ones
+If the origin returns an `{{ HEADER_PREFIX }}-surrogate-key` response header and `deriveSurrogateKeysFromJson` is also used for a given request, you can specify whether the surrogate keys should be merged, or the ones
 from the router should override those in the origin response:
 
 To merge surrogate keys:

@@ -46,13 +46,13 @@ If you have [static prerendering] enabled, the cache will automatically be repop
 
 Efficient cache purging is an essential part of keeping your website fast and reducing the load on your origin servers. Purging all entries from the cache all may increase your website's load time while the cache repopulates. If you purge all entries from the cache more than once a week, consider using surrogate keys for more targeted purging.
 
-Surrogate keys are unique identifiers that you assign to groups of responses. They allow you to selectively purge related content. You can assign one or more surrogate keys to a response by sending an `x-0-surrogate-key` header in the response. Multiple keys should be separated by spaces.
+Surrogate keys are unique identifiers that you assign to groups of responses. They allow you to selectively purge related content. You can assign one or more surrogate keys to a response by sending an `{{ HEADER_PREFIX }}-surrogate-key` header in the response. Multiple keys should be separated by spaces.
 
 For example:
 
 ```
 HTTP/1.1 200 OK
-x-0-surrogate-key: product.123 shoes all-products
+{{ HEADER_PREFIX }}-surrogate-key: product.123 shoes all-products
 Content-Type: text/html
 ```
 

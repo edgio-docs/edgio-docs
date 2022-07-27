@@ -4,9 +4,9 @@ title: Logs
 
 The {{ PRODUCT_NAME }} platform exposes three types of logs to users:
 
-- [Build logs](#build_logs) capture all the build output from your {{ PRODUCT_NAME }} deploys.
-- [Server logs](#server_logs) capture your {{ PRODUCT_NAME }} serverless console output at real time.
-- [Access logs](#access_logs) capture information about all the requests served by {{ PRODUCT_NAME }}.
+- [Build logs](#build-logs) capture all the build output from your {{ PRODUCT_NAME }} deploys.
+- [Server logs](#server-logs) capture your {{ PRODUCT_NAME }} serverless console output at real time.
+- [Access logs](#access-logs) capture information about all the requests served by {{ PRODUCT_NAME }}.
 
 ## Build Logs {/*build-logs*/}
 

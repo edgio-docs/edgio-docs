@@ -152,10 +152,6 @@ const SidebarMenuItems: ISidebarMenuItems = [
           path: '/guides/jamstack_getting_started',
         },
         {
-          title: 'GraphQL Caching',
-          path: '/guides/graphql',
-        },
-        {
           title: 'Deploying',
           path: '/guides/deploy_apps',
         },

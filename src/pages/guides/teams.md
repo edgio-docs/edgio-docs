@@ -32,7 +32,7 @@ Enter a name in the *Add a Team* dialog and click *CREATE A TEAM*.
 
 The name you choose also determines the default URL from which your site will be accessible. To configure custom domains, see [Environments](./environments).
 
-## Adding Your Website to the Team
+## Adding Your Website to the Team {/*adding-your-website-to-the-team*/}
 
 After you create the team, the *Get Started* dialog is displayed (see [Launching Your Site](#launching-your-site).) Enter the URL and click *LAUNCH MY SITE*.
 

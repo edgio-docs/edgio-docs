@@ -46,7 +46,7 @@ When you deploy your Express app to the {{ PRODUCT_PLATFORM }}, the {{ PRODUCT }
 If it cannot find one of these files, you can specify the path to the app in `{{ CONFIG_FILE }}`:
 
 ```js
-const { join } = require('path')
+const {join} = require('path');
 
 // {{ CONFIG_FILE }}
 module.exports = {
@@ -54,7 +54,7 @@ module.exports = {
   express: {
     appPath: join(process.cwd(), 'path', 'to', 'app.js'),
   },
-}
+};
 ```
 
 The file you specify in `appPath` should export an instance of an express app using `export default` or `module.exports`.
@@ -65,10 +65,10 @@ If your express app serves any static assets, you'll need to add routes to your 
 
 ```js
 // routes.js
-import { Router } from '@layer0/core'
+import {Router} from '@layer0/core';
 
 export default new Router()
-  .match('/assets/:path*', ({ cache, serveStatic }) => {
+  .match('/assets/:path*', ({cache, serveStatic}) => {
     cache({
       edge: {
         maxAgeSeconds: 60 * 60 * 365, // cache at the edge for one year
@@ -76,10 +76,10 @@ export default new Router()
       browser: {
         maxAgeSeconds: 60 * 60 * 365, // cache in the browser for one year - only do this if you include hashes in your client asset filenames
       },
-    })
-    serveStatic('dist/client/assets/:path*')
+    });
+    serveStatic('dist/client/assets/:path*');
   })
-  .fallback(({ renderWithApp }) => renderWithApp()) // serve all unmatched URLs from express
+  .fallback(({renderWithApp}) => renderWithApp()); // serve all unmatched URLs from express
 ```
 
 ## Adding Additional Files Needed during SSR {/*adding-additional-files-needed-during-ssr*/}
@@ -94,10 +94,58 @@ module.exports = {
     // Include index.html in the serverless bundle
     'dist/client/index.html': true,
   },
-}
+};
 ```
 
 ## Transpiling and TypeScript support {/*transpiling-and-typescript-support*/}
 
 {{ PRODUCT }} will automatically transpile JavaScript and TypeScript source code for running on Node.js version 14. If you want to control how
 source files are compiled, you can transpile your app on your own and point your `appPath` config to the transpiled version of your app's main entry point.
+
+## Bundling Options {/*bundling-options*/}
+
+By default Layer0 uses ESBuild to transpile and bundle your application code. If you're having difficulty fitting your app within the limit for serverless bundles, you can try bundling with [ncc](https://github.com/vercel/ncc), which should produce smaller bundles, by adding the following to layer0.config.js:
+
+```js
+module.exports = {
+  express: {
+    bundler: '@vercel/ncc',
+  },
+};
+```
+
+Then add ncc to your app's build dependencies:
+
+```
+npm i -D @vercel/ncc@^0.34.0
+```
+
+Or, using yarn:
+
+```
+yarn add --dev @vercel/ncc@^0.34.0
+```
+
+NCC produces a tree-shaken, bundle which includes your application code and all of its dependencies in a single file (written to .layer0/lambda/backends/index.js). [NFT](https://github.com/vercel/nft) is also supported:
+
+```js
+module.exports = {
+  express: {
+    bundler: '@vercel/nft',
+  },
+};
+```
+
+Then add nft to your app's build dependencies:
+
+```
+npm i -D @vercel/nft@^0.21.0
+```
+
+Or, using yarn:
+
+```
+yarn add --dev @vercel/nft@^0.21.0
+```
+
+NFT is similar to NCC, but it produces an exploded directory tree instead of including all of your code in a single file. We recommend trying ncc first.

@@ -665,10 +665,6 @@ const SidebarMenuItems: ISidebarMenuItems = [
           path: '/guides/rest_api',
         },
         {
-          title: 'Install Node.js',
-          path: '/guides/install_nodejs',
-        },
-        {
           title: `Deploy to ${PRODUCT} Button`,
           path: '/guides/deploy_to_layer0',
         },

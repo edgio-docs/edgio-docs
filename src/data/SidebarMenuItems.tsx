@@ -625,10 +625,6 @@ const SidebarMenuItems: ISidebarMenuItems = [
       sortRoutes: true,
       routes: [
         {
-          title: 'Changelog',
-          path: '/guides/changelog',
-        },
-        {
           title: 'Compression',
           path: '/guides/compression',
         },

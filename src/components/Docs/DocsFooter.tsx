@@ -169,6 +169,10 @@ const pryFooterLinks = {
       title: 'How-to guides',
       href: '/guides/how-to',
     },
+    {
+      title: 'Changelog',
+      href: '/guides/changelog',
+    },
   ],
   community: [
     {

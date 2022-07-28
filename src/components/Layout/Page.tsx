@@ -48,8 +48,9 @@ const StyledMainPage = styled.div`
 
     .docs-content__inner {
       margin: 0 auto;
-      min-height: 100vh;
       flex: 1 1 0%;
+      min-height: calc(100vh - var(--header-height));
+      position: relative;
 
       .LayoutHome {
         max-width: 1000px;

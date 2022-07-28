@@ -9,10 +9,9 @@ import {siteConfig} from 'siteConfig';
 
 const StyledDocs = styled.div`
   max-width: var(--docs-area-width);
-  margin: 0 auto;
+  margin: 0 auto 500px auto;
   display: grid;
   grid-template-columns: 75% 1fr;
-  min-height: calc(100vh - 64px);
 
   .docs-article__section {
     padding: 0 20px 20px 20px;

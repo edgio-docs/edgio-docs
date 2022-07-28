@@ -34,8 +34,11 @@ const StyledDocsFooter = styled.footer`
     }
   }
 
-  margin-top: 50px;
+  /* margin-top: 50px; */
   color: var(--docs-footer-color);
+  bottom: 0;
+  position: absolute;
+  width: 100%;
 
   .footer-start {
     background-color: var(--bg-primary);
@@ -162,6 +165,10 @@ const pryFooterLinks = {
       title: 'Support',
       href: 'https://app.layer0.co/help?sgId=7bc47c45-c1d6-4189-b416-552581d86006',
     },
+    {
+      title: 'How-to guides',
+      href: '/guides/how-to',
+    },
   ],
   community: [
     {
@@ -179,6 +186,10 @@ const pryFooterLinks = {
     {
       title: 'Learning resources',
       href: '/guides/learning',
+    },
+    {
+      title: 'Glossary',
+      href: '/guides/glossary',
     },
   ],
   social: [

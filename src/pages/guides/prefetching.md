@@ -1,5 +1,5 @@
 ---
-title: Prefetching
+title: Predictive Prefetch
 ---
 
 {{ PRODUCT_NAME }} allows you to speed up the user's browsing experience by prefetching pages and API calls that they are likely to need.

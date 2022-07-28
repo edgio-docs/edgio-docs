@@ -2,6 +2,7 @@ import * as React from 'react';
 
 import {
   CONFIG_FILE,
+  PACKAGE_NAME,
   PRODUCT,
   PRODUCT_EDGE,
   PRODUCT_PLATFORM,
@@ -46,6 +47,8 @@ import {
   IconIonicX,
   IconJekyll,
   IconJekyllDark,
+  IconLeaf,
+  IconLeafDark,
   IconLit,
   IconMKDocs,
   IconMKDocsDark,
@@ -68,6 +71,8 @@ import {
   IconSanity,
   IconSapper,
   IconScully,
+  IconSecurityPlain,
+  IconSecurityPlainDark,
   IconServerlessFunctions,
   IconServerSmall,
   IconServerSmallDark,
@@ -147,7 +152,7 @@ const SidebarMenuItems: ISidebarMenuItems = [
           path: '/guides/jamstack_getting_started',
         },
         {
-          title: 'GraphQL CDN',
+          title: 'GraphQL Caching',
           path: '/guides/graphql',
         },
         {
@@ -165,31 +170,19 @@ const SidebarMenuItems: ISidebarMenuItems = [
       icon: <IconServerSmall />,
       iconDark: <IconServerSmallDark />,
       path: 'cdn',
-      sortRoutes: true,
+      sortRoutes: false,
       routes: [
         {
-          title: 'EdgeJS Routing',
+          title: 'Routing with EdgeJS',
           path: '/guides/routing',
         },
         {
-          title: PRODUCT_SECURITY,
-          path: '/guides/security',
+          title: 'Common Routing Patterns',
+          path: '/guides/cookbook',
         },
         {
-          title: 'Core Web Vitals',
-          path: '/guides/core_web_vitals',
-        },
-        {
-          title: 'Image Optimization',
-          path: '/guides/image_optimization',
-        },
-        {
-          title: 'Prefetching',
-          path: '/guides/prefetching',
-        },
-        {
-          title: 'Traditional Sites',
-          path: '/guides/traditional_sites',
+          title: 'Custom Domains & SSL',
+          path: '/guides/production',
         },
         {
           title: 'Caching',
@@ -204,37 +197,64 @@ const SidebarMenuItems: ISidebarMenuItems = [
           path: '/guides/static_prerendering',
         },
         {
-          title: 'Incremental Static (Re)generation',
-          path: '/guides/isg',
+          title: 'Predictive Prefetch',
+          path: '/guides/prefetching',
         },
         {
-          title: 'Common Routing Patterns',
-          path: '/guides/cookbook',
+          title: 'Traditional Sites',
+          path: '/guides/traditional_sites',
         },
         {
-          title: 'Split Testing',
+          title: 'Traffic Splitting',
           path: '/guides/split_testing',
         },
         {
-          title: 'Custom Domains & SSL',
-          path: '/guides/production',
+          title: 'Observability',
+          path: '/guides/core_web_vitals',
         },
         {
           title: 'Performance',
           path: '/guides/performance',
         },
         {
-          title: 'Edge Network',
-          path: '/guides/regions',
+          title: 'Serverless Compute',
+          path: '/guides/serverless_functions',
+          icon: <IconServerlessFunctions />,
+          iconDark: <IconServerlessFunctions />,
         },
         {
-          title: 'Third Party CDNs',
+          title: 'Third-Party CDNs',
           path: '/guides/third_party_cdns',
         },
-
         {
-          title: 'Connectors',
-          path: '/guides/connectors',
+          title: 'Image Optimization',
+          path: '/guides/image_optimization',
+          separator: true,
+        },
+        {
+          title: 'Compression',
+          path: '/guides/compression',
+        },
+        {
+          title: 'Request Headers',
+          path: '/guides/request_headers',
+        },
+        {
+          title: 'Response Headers',
+          path: '/guides/response_headers',
+        },
+        {
+          title: 'Status Codes',
+          path: '/guides/status_codes',
+        },
+        {
+          title: 'Cookies',
+          path: '/guides/cookies',
+        },
+        {
+          title: 'Regions',
+          path: '/guides/regions',
+          separator: true,
         },
         {
           title: 'Troubleshooting',
@@ -243,58 +263,21 @@ const SidebarMenuItems: ISidebarMenuItems = [
       ],
     },
     {
-      title: 'Developer Tools',
-      icon: <IconCodePlain />,
-      iconDark: <IconCodePlainDark />,
-      path: 'dev-tools',
-      sortRoutes: true,
-      routes: [
-        {
-          title: 'CLI',
-          path: '/guides/cli',
-        },
-        {
-          title: 'Devtools',
-          path: '/guides/devtools',
-        },
-        {
-          title: 'EdgeJS Unit Testing',
-          path: '/guides/edgejs_testing',
-        },
-        {
-          title: 'Logs',
-          path: '/guides/logs',
-        },
-      ],
-    },
-    {
-      title: 'Accounts & Teams',
-      icon: <IconUserPlain />,
-      iconDark: <IconUserPlainDark />,
-      path: 'accounts-teams',
-      sortRoutes: true,
-      routes: [
-        {
-          title: 'Teams',
-          path: '/guides/teams',
-        },
-        {
-          title: 'Environments',
-          path: '/guides/environments',
-        },
-        {
-          title: 'SAML Single Sign On',
-          path: '/guides/saml',
-        },
-      ],
-    },
-    {
-      title: 'Framework Guides',
+      title: PRODUCT_PLATFORM,
       icon: <IconBookPlain />,
       iconDark: <IconBookPlainDark />,
       path: 'framework-guides',
-      sortRoutes: true,
+      sortRoutes: false,
       routes: [
+        {
+          title: 'Connectors',
+          path: '/guides/connectors',
+        },
+        {
+          title: 'Incremental Static (Re)generation',
+          path: '/guides/isg',
+          separator: true,
+        },
         {
           title: 'Angular',
           path: '/guides/angular',
@@ -506,12 +489,6 @@ const SidebarMenuItems: ISidebarMenuItems = [
           iconDark: <IconScully />,
         },
         {
-          title: 'Serverless Functions',
-          path: '/guides/serverless_functions',
-          icon: <IconServerlessFunctions />,
-          iconDark: <IconServerlessFunctions />,
-        },
-        {
           title: 'SolidJS',
           path: '/guides/solid',
           icon: <IconSolidJS />,
@@ -580,6 +557,36 @@ const SidebarMenuItems: ISidebarMenuItems = [
       ],
     },
     {
+      title: PRODUCT_SECURITY,
+      icon: <IconSecurityPlain />,
+      iconDark: <IconSecurityPlainDark />,
+      path: 'reference',
+      sortRoutes: true,
+      routes: [
+        {
+          title: 'Security Suite',
+          path: '/guides/security',
+        },
+        {
+          title: 'Managed Rule Groups',
+          path: '/guides/managed_rule_groups',
+        },
+      ],
+    },
+    {
+      title: 'Environments',
+      icon: <IconLeaf />,
+      iconDark: <IconLeafDark />,
+      path: 'environments',
+      sortRoutes: false,
+      routes: [
+        {
+          title: 'Environments',
+          path: '/guides/environments',
+        },
+      ],
+    },
+    {
       title: 'Integrations',
       icon: <IconGear />,
       iconDark: <IconGearDark />,
@@ -618,6 +625,85 @@ const SidebarMenuItems: ISidebarMenuItems = [
       ],
     },
     {
+      title: 'Accounts & Teams',
+      icon: <IconUserPlain />,
+      iconDark: <IconUserPlainDark />,
+      path: 'accounts-teams',
+      sortRoutes: true,
+      routes: [
+        {
+          title: 'Teams',
+          path: '/guides/teams',
+        },
+        {
+          title: 'SAML Single Sign On',
+          path: '/guides/saml',
+        },
+      ],
+    },
+    {
+      title: 'Developer Tools',
+      icon: <IconCodePlain />,
+      iconDark: <IconCodePlainDark />,
+      path: 'dev-tools',
+      sortRoutes: true,
+      routes: [
+        {
+          title: 'CLI',
+          path: '/guides/cli',
+        },
+        {
+          title: 'Devtools',
+          path: '/guides/devtools',
+        },
+        {
+          title: 'EdgeJS Unit Testing',
+          path: '/guides/edgejs_testing',
+        },
+        {
+          title: 'Logs',
+          path: '/guides/logs',
+        },
+        {
+          title: `Deploy to ${PRODUCT} Button`,
+          path: '/guides/deploy_to_layer0',
+        },
+      ],
+    },
+    {
+      title: 'APIs',
+      icon: <IconFolder />,
+      iconDark: <IconFolderDark />,
+      path: 'apis',
+      sortRoutes: false,
+      routes: [
+        {
+          title: 'REST API',
+          path: '/guides/rest_api',
+        },
+        {
+          title: `${PACKAGE_NAME}/core Package`,
+          path: '/docs/api/core/',
+          external: true,
+        },
+        {
+          title: `${PACKAGE_NAME}/prefetch Package`,
+          path: '/docs/api/prefetch/',
+          external: true,
+        },
+        {
+          title: `${PACKAGE_NAME}/core (v3.x) Package`,
+          path: '/docs/v3.x/api/core/',
+          external: true,
+        },
+        {
+          title: `${PACKAGE_NAME}/prefetch (v3.x) Package`,
+          path: '/docs/v3.x/api/prefetch/',
+          external: true,
+        },
+      ],
+    },
+    {
       title: 'Reference',
       icon: <IconStacksPlain />,
       iconDark: <IconStacksPlainDark />,
@@ -629,52 +715,8 @@ const SidebarMenuItems: ISidebarMenuItems = [
           path: '/guides/changelog',
         },
         {
-          title: 'Compression',
-          path: '/guides/compression',
-        },
-        {
-          title: 'Status Codes',
-          path: '/guides/status_codes',
-        },
-        {
-          title: 'Cookies',
-          path: '/guides/cookies',
-        },
-        {
-          title: 'Managed Rule Groups',
-          path: '/guides/managed_rule_groups',
-        },
-        {
-          title: `${PRODUCT} for Traditional Sites`,
-          path: '/guides/traditional_sites',
-        },
-        {
-          title: 'Request Headers',
-          path: '/guides/request_headers',
-        },
-        {
-          title: 'Response Headers',
-          path: '/guides/response_headers',
-        },
-        {
-          title: 'Limits and Caveats',
+          title: 'Limits & Caveats',
           path: '/guides/limits',
-        },
-        {
-          title: 'REST API',
-          path: '/guides/rest_api',
-        },
-        {
-          title: 'Install Node.js',
-          path: '/guides/install_nodejs',
-        },
-        {
-          title: `Deploy to ${PRODUCT} Button`,
-          path: '/guides/deploy_to_layer0',
-        },
-        {
-          title: 'Contributing',
-          path: '/guides/contributing',
         },
         {
           title: 'v4 Migration Guide',
@@ -684,48 +726,9 @@ const SidebarMenuItems: ISidebarMenuItems = [
           title: CONFIG_FILE,
           path: '/guides/layer0_config',
         },
-      ],
-    },
-    {
-      title: 'Videos',
-      icon: <IconVideos />,
-      iconDark: <IconVideosDark />,
-      path: 'videos',
-      sortRoutes: true,
-      routes: [
         {
-          title: `${PRODUCT} Tutorials`,
-          path: 'https://vimeo.com/user/776463/folder/9270726',
-          external: true,
-        },
-      ],
-    },
-    {
-      title: 'Package APIs',
-      icon: <IconFolder />,
-      iconDark: <IconFolderDark />,
-      path: 'package-apis',
-      sortRoutes: false,
-      routes: [
-        {
-          title: '@layer0/core',
-          path: '/docs/api/core/',
-          external: true,
-        },
-        {
-          title: '@layer0/prefetch',
-          path: '/docs/api/prefetch/',
-          external: true,
-        },
-        {
-          title: '@layer0/core (v3.x)',
-          path: '/docs/v3.x/api/core/',
-          external: true,
-        },
-        {
-          title: '@layer0/prefetch (v3.x)',
-          path: '/docs/v3.x/api/prefetch/',
-          external: true,
+          title: 'Contributing',
+          path: '/guides/contributing',
         },
       ],
     },
@@ -734,11 +737,20 @@ const SidebarMenuItems: ISidebarMenuItems = [
       icon: <IconBulb />,
       iconDark: <IconBulbDark />,
       path: 'learning-resources',
-      sortRoutes: true,
+      sortRoutes: false,
       routes: [
+        {
+          title: 'Install Node.js',
+          path: '/guides/install_nodejs',
+        },
         {
           title: 'What is GraphQL?',
           path: '/guides/what_is_graphql',
+        },
+        {
+          title: `Tutorials`,
+          path: 'https://vimeo.com/user/776463/folder/9270726',
+          external: true,
         },
       ],
     },

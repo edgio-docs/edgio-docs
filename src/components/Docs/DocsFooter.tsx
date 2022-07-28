@@ -2,6 +2,9 @@ import styled from 'styled-components';
 
 import {PRODUCT} from '../../../constants';
 
+import {IconEdgioSquareLogo} from 'components/Icon/IconEdgioSquareLogo';
+import Link from 'components/MDX/Link';
+
 const StyledDocsFooter = styled.footer`
   @media (max-width: 585px) {
     justify-content: center;
@@ -9,19 +12,76 @@ const StyledDocsFooter = styled.footer`
 
   @media (max-width: 460px) {
     font-size: 12px;
+
+    .links {
+      /* grid-template-columns: 1fr; */
+    }
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  a {
+    color: var(--docs-footer-color);
+    text-decoration: none;
   }
 
   margin-top: 50px;
-  background-color: var(--docs-footer-bg);
-  padding: 16px 0;
   color: var(--docs-footer-color);
 
-  .footer-nav {
-    max-width: var(--docs-area-width);
-    margin: 0 auto;
+  .footer-start {
+    background-color: var(--bg-primary);
+  }
+
+  .footer-end {
+    background-color: var(--docs-footer-bg);
+  }
+
+  .footer-start,
+  .footer-end {
+    box-shadow: inset 0px 2px var(--hr-secondary);
+  }
+
+  .footer-start__nav {
+    padding: 60px 20px;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: flex-start;
+
+    .navList {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    .logo-wrap {
+      --size: 64px;
+      width: var(--size);
+      height: var(--size);
+
+      svg {
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+
+  .footer-end__nav {
+    padding: 16px 20px;
     display: flex;
     justify-content: space-between;
-    padding: 0 20px;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+
+  .footer-start__nav,
+  .footer-end__nav {
+    max-width: var(--docs-area-width);
+    margin: 0 auto;
   }
 
   .links {
@@ -32,14 +92,30 @@ const StyledDocsFooter = styled.footer`
     gap: 20px;
 
     a {
-      color: var(--docs-footer-color);
-      text-decoration: none;
       font-weight: 500;
+    }
+  }
+
+  @media (max-width: 1140px) {
+    .footer-end__nav {
+      flex-direction: column;
+    }
+
+    .links {
+      flex: 1;
+      display: flex;
+      justify-content: space-between;
+      /* flex-wrap: wrap; */
+      flex-direction: column;
+    }
+
+    .copy {
+      text-align: center;
     }
   }
 `;
 
-const links = [
+const secFooterLinks = [
   {
     name: 'About Edgio',
     href: 'https://edg.io/company/about-us',
@@ -62,22 +138,136 @@ const links = [
   },
 ];
 
+const pryFooterLinks = {
+  resources: [
+    {
+      title: 'Video Tutorials',
+      href: 'https://vimeo.com/user/776463/folder/9270726',
+    },
+    {
+      title: 'Fiddle',
+      href: 'https://fiddle.layer0.co',
+    },
+    {
+      title: 'Status',
+      href: 'https://status.layer0.co',
+    },
+    {
+      title: 'Support',
+      href: 'https://edg.io/contact-support',
+    },
+  ],
+  community: [
+    {
+      title: 'Forum',
+      href: 'https://forum.layer0.co',
+    },
+    {
+      title: 'Blog',
+      href: 'https://edg.io/resources/blog',
+    },
+    {
+      title: 'JavaScript Jam',
+      href: 'https://javascriptjam.com',
+    },
+    {
+      title: 'Learning resources',
+      href: '/guides/learning',
+    },
+  ],
+  social: [
+    {
+      title: 'Twitter',
+      href: 'https://twitter.com/edgioinc',
+    },
+    {
+      title: 'YouTube',
+      href: 'https://www.youtube.com/channel/UCGZ-3KnrSQVUs8ijRtDLQZw',
+    },
+    {
+      title: 'LinkedIn',
+      href: 'https://www.linkedin.com/company/edgio',
+    },
+    {
+      title: 'Instagram',
+      href: 'https://www.instagram.com/edgioinc',
+    },
+  ],
+  products: [
+    {
+      title: 'Delivery',
+      href: 'https://edg.io/delivery',
+    },
+    {
+      title: 'Streaming',
+      href: 'https://edg.io/streaming',
+    },
+    {
+      title: 'App Edge',
+      href: 'https://edg.io/appops/app-edge',
+    },
+    {
+      title: 'App Security',
+      href: 'https://edg.io/appops/app-security',
+    },
+    {
+      title: 'App Platform',
+      href: 'https://edg.io/appops/app-platform',
+    },
+  ],
+};
+
 export default function DocsFooter() {
   return (
     <StyledDocsFooter>
-      <nav className="footer-nav">
-        <ul className="links">
-          {links.map(({name, href}) => (
-            <li key={href}>
-              <a href={href}>{name}</a>
-            </li>
-          ))}
-        </ul>
-        <p className="copy">
-          Copyright &copy; {new Date().getFullYear()} {PRODUCT}. All rights
-          reserved.
-        </p>
-      </nav>
+      <div className="footer-start">
+        <nav className="footer-start__nav">
+          <div className="logo-wrap">
+            <div className="logo"></div>
+            <IconEdgioSquareLogo />
+          </div>
+          <FooterNavItem title="Products" items={pryFooterLinks.products} />
+          <FooterNavItem title="Resources" items={pryFooterLinks.resources} />
+          <FooterNavItem title="Community" items={pryFooterLinks.community} />
+          <FooterNavItem title="Social" items={pryFooterLinks.social} />
+        </nav>
+      </div>
+      <div className="footer-end">
+        <nav className="footer-end__nav">
+          <p className="copy">
+            Copyright &copy; {new Date().getFullYear()} {PRODUCT} Inc. All
+            rights reserved.
+          </p>
+          <ul className="links">
+            {secFooterLinks.map(({name, href}) => (
+              <li key={href}>
+                <Link href={href}>{name}</Link>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      </div>
     </StyledDocsFooter>
+  );
+}
+
+function FooterNavItem({
+  title,
+  items,
+}: {
+  title: string;
+  items: Array<{title: string; href: string}>;
+}) {
+  return (
+    <nav className="footerNavItem">
+      <h4 className="navItemTitle">{title}</h4>
+      <ul className="navList">
+        {items.map(({href, title}) => (
+          <li className="navListItem" key={href}>
+            <Link href={href}>{title}</Link>
+          </li>
+        ))}
+      </ul>
+    </nav>
   );
 }

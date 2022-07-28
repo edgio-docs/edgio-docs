@@ -24,8 +24,14 @@ const StyledDocsFooter = styled.footer`
   }
 
   a {
-    color: var(--docs-footer-color);
+    transition: color 0.3s;
+    color: var(--toc-text-link);
     text-decoration: none;
+    display: flex;
+
+    :hover {
+      color: var(--text-link);
+    }
   }
 
   margin-top: 50px;

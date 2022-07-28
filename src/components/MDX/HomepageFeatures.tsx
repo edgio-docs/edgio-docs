@@ -12,6 +12,8 @@ import {IconSpark} from '../Icon/IconSpark';
 import Container from '../Layout/Container';
 
 const StyledHomepageFeatures = styled.div`
+  padding-bottom: 500px;
+
   .section-container {
     > * {
       padding: 50px 0;

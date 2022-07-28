@@ -217,6 +217,12 @@ const SidebarMenuItems: ISidebarMenuItems = [
           path: '/guides/performance',
         },
         {
+          title: 'Serverless Compute',
+          path: '/guides/serverless_functions',
+          icon: <IconServerlessFunctions />,
+          iconDark: <IconServerlessFunctions />,
+        },
+        {
           title: 'Third-Party CDNs',
           path: '/guides/third_party_cdns',
         },
@@ -483,12 +489,6 @@ const SidebarMenuItems: ISidebarMenuItems = [
           iconDark: <IconScully />,
         },
         {
-          title: 'Serverless Functions',
-          path: '/guides/serverless_functions',
-          icon: <IconServerlessFunctions />,
-          iconDark: <IconServerlessFunctions />,
-        },
-        {
           title: 'SolidJS',
           path: '/guides/solid',
           icon: <IconSolidJS />,
@@ -564,7 +564,7 @@ const SidebarMenuItems: ISidebarMenuItems = [
       sortRoutes: true,
       routes: [
         {
-          title: `${PRODUCT} Security Suite`,
+          title: 'Security Suite',
           path: '/guides/security',
         },
         {
@@ -748,7 +748,7 @@ const SidebarMenuItems: ISidebarMenuItems = [
           path: '/guides/what_is_graphql',
         },
         {
-          title: `${PRODUCT} Tutorials`,
+          title: `Tutorials`,
           path: 'https://vimeo.com/user/776463/folder/9270726',
           external: true,
         },

@@ -146,21 +146,21 @@ const pryFooterLinks = {
     },
     {
       title: 'Fiddle',
-      href: 'https://fiddle.layer0.co',
+      href: 'https://fiddle.layer0.co/?sgId=7bc47c45-c1d6-4189-b416-552581d86006',
     },
     {
       title: 'Status',
-      href: 'https://status.layer0.co',
+      href: 'https://status.layer0.co/?sgId=7bc47c45-c1d6-4189-b416-552581d86006',
     },
     {
       title: 'Support',
-      href: 'https://edg.io/contact-support',
+      href: 'https://app.layer0.co/help?sgId=7bc47c45-c1d6-4189-b416-552581d86006',
     },
   ],
   community: [
     {
       title: 'Forum',
-      href: 'https://forum.layer0.co',
+      href: 'https://forum.layer0.co/?sgId=7bc47c45-c1d6-4189-b416-552581d86006',
     },
     {
       title: 'Blog',

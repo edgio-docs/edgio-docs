@@ -715,20 +715,6 @@ const SidebarMenuItems: ISidebarMenuItems = [
         },
       ],
     },
-    {
-      title: 'Learning Resources',
-      icon: <IconBulb />,
-      iconDark: <IconBulbDark />,
-      path: 'learning-resources',
-      sortRoutes: false,
-      routes: [
-        {
-          title: 'Overview',
-          path: '/guides/learning',
-          separator: true,
-        },
-      ],
-    },
   ],
 ];
 

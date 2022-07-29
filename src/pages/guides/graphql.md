@@ -1,5 +1,5 @@
 ---
-title: GraphQL
+title: GraphQL Caching
 ---
 
 {{ PRODUCT_NAME }} provides full support for caching GraphQL APIs. Putting {{ PRODUCT }} in front of your GraphQL API can significantly improve its performance while reducing the amount of traffic that reaches your origin by serving cached queries from the network edge.

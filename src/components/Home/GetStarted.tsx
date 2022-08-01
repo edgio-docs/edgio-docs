@@ -12,7 +12,6 @@ import {IconSecurity} from '../Icon/IconSecurity';
 import {IconWebAppCDN} from '../Icon/IconWebAppCDN';
 
 import {IconArrow} from 'components/Icon/IconArrow';
-import {IconGraphQLCDN} from 'components/Icon/IconGraphQLCDN';
 
 const NextLink = Link;
 
@@ -121,23 +120,16 @@ export default function GetStarted({children}: {children: React.ReactNode}) {
         <GetStartedCard
           icon={IconWebAppCDN}
           title={PRODUCT_EDGE}
-          subtitle={`Deploy your web application and start seeing the performance benefits with the ${PRODUCT} ${PRODUCT_EDGE} Network.`}
+          subtitle={`Deploy your web application and start seeing the performance benefits with the ${PRODUCT} ${PRODUCT_EDGE} network.`}
           href="/guides/webapp_cdn_getting_started"
           hrefText="Deploy now"
         />
         <GetStartedCard
           icon={IconJamstack}
           title={PRODUCT_PLATFORM}
-          subtitle={`Deploy static and dynamic Jamstack sites that run on ${PRODUCT}'s severless functions.`}
+          subtitle={`Deploy static and dynamic Jamstack sites that run on ${PRODUCT}'s serverless functions.`}
           href="/guides/jamstack_getting_started"
           hrefText="View Supported Frameworks"
-        />
-        <GetStartedCard
-          icon={IconGraphQLCDN}
-          title="GraphQL CDN"
-          subtitle={`Scale and secure your GraphQL API using the ${PRODUCT} global CDN and EdgeJS.`}
-          href="/guides/graphql"
-          hrefText="1-click Deploy"
         />
         <GetStartedCard
           icon={IconSecurity}

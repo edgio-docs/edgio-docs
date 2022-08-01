@@ -204,10 +204,10 @@ const pryFooterLinks = {
       title: 'Learning resources',
       href: '/guides/learning',
     },
-    {
-      title: 'Glossary',
-      href: '/guides/glossary',
-    },
+    // {
+    //   title: 'Glossary',
+    //   href: '/guides/glossary',
+    // },
     {
       title: 'Contributing',
       href: '/guides/contributing',

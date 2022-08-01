@@ -47,6 +47,7 @@ const StlyedSidebar = styled.div`
     width: 100%;
     text-decoration: none;
     text-align: left;
+    padding: 0;
   }
 
   .trigger-link {

@@ -174,6 +174,10 @@ const StyledDocs = styled.div`
   @media (max-width: 1200px) {
     grid-template-columns: 1fr;
   }
+
+  @media (max-width: 630px) {
+    margin-bottom: 900px;
+  }
 `;
 
 const anchorClassName = siteConfig.headerIdConfig.className;

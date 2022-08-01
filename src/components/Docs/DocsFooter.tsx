@@ -114,12 +114,25 @@ const StyledDocsFooter = styled.footer`
       flex: 1;
       display: flex;
       justify-content: space-between;
-      /* flex-wrap: wrap; */
-      flex-direction: column;
+      flex-wrap: wrap;
+      justify-content: center;
     }
 
     .copy {
       text-align: center;
+      order: 99;
+    }
+  }
+
+  @media (max-width: 630px) {
+    .footer-start__nav {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+
+      .logo-wrap {
+        display: none;
+      }
     }
   }
 `;

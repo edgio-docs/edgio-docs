@@ -1,5 +1,5 @@
 ---
-title: Managed Rule Group Descriptions
+title: Managed Rule Groups 
 ---
 
 ## {{ PRODUCT }} Managed Rules {/*layer0-managed-rules*/}

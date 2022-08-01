@@ -4,6 +4,7 @@ on:
     branches:
       - '**'
       - '!main'
+  pull_request:
 jobs:
   deploy-to-stage:
     runs-on: ubuntu-latest
@@ -16,34 +17,42 @@ jobs:
         with:
           access_token: ${{ github.token }}
       - uses: actions/checkout@v1
+      - uses: actions/checkout@v2
+        with:
+          repository: layer0-docs/edgio-deploy
+          path: ./action
       - uses: actions/setup-node@v1
         with:
-          node-version: 14
+          node-version: 16
       - name: Cache node modules
         uses: actions/cache@v1
         env:
           cache-name: cache-node-modules
         with:
           path: ~/.npm # npm cache files are stored in `~/.npm` on Linux/macOS
-          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
+          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
             ${{ runner.os }}-build-${{ env.cache-name }}-
             ${{ runner.os }}-build-
             ${{ runner.os }}-
-      - run: yarn
-      - name: Deploy to Edgio (stage)
-        run: yarn layer0:deploy --branch=$BRANCH_NAME --token=${{secrets.layer0_prod_deploy_token}} --environment=default
-      - uses: jwalton/gh-find-current-pr@v1
-        id: finder
-      - name: Publish Preview Link
-        uses: marocchino/sticky-pull-request-comment@v2.2.0
+      - run: yarn install --frozen-lockfile
+      - name: Deploy to stage (edgio action)
+        uses: layer0-docs/edgio-deploy@main
         with:
-          number: ${{ steps.finder.outputs.pr }}
-          header: preview
-          message: |
-            🏛  Permalink:
+          token: ${{secrets.layer0_prod_deploy_token}}
+      # - name: Deploy to Edgio (stage)
+      #   run: yarn layer0:deploy --branch=$BRANCH_NAME --token=${{secrets.layer0_prod_deploy_token}} --environment=default
+      # - uses: jwalton/gh-find-current-pr@v1
+      #   id: finder
+      # - name: Publish Preview Link
+      #   uses: marocchino/sticky-pull-request-comment@v2.2.0
+      #   with:
+      #     number: ${{ steps.finder.outputs.pr }}
+      #     header: preview
+      #     message: |
+      #       🏛  Permalink:
 
-            https://layer0-docs-xdn-docs-${{env.BRANCH_NAME}}.alt.layer0-docs.layer0-perma.link
-      - name: Validate Guide Example Links
-        shell: bash
-        run: node ./scripts/validateExampleLinks.js
+      #       https://layer0-docs-xdn-docs-${{env.BRANCH_NAME}}.alt.layer0-docs.layer0-perma.link
+      # - name: Validate Guide Example Links
+      #   shell: bash
+      #   run: node ./scripts/validateExampleLinks.js

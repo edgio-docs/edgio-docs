@@ -195,6 +195,10 @@ const pryFooterLinks = {
       title: 'Glossary',
       href: '/guides/glossary',
     },
+    {
+      title: 'Contributing',
+      href: '/guides/contributing',
+    },
   ],
   social: [
     {

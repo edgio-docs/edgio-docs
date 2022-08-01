@@ -707,10 +707,6 @@ const SidebarMenuItems: ISidebarMenuItems = [
       sortRoutes: true,
       routes: [
         {
-          title: 'Changelog',
-          path: '/guides/changelog',
-        },
-        {
           title: 'Limits & Caveats',
           path: '/guides/limits',
         },
@@ -721,32 +717,6 @@ const SidebarMenuItems: ISidebarMenuItems = [
         {
           title: CONFIG_FILE,
           path: '/guides/layer0_config',
-        },
-        {
-          title: 'Contributing',
-          path: '/guides/contributing',
-        },
-      ],
-    },
-    {
-      title: 'Learning Resources',
-      icon: <IconBulb />,
-      iconDark: <IconBulbDark />,
-      path: 'learning-resources',
-      sortRoutes: false,
-      routes: [
-        {
-          title: 'Install Node.js',
-          path: '/guides/install_nodejs',
-        },
-        {
-          title: 'What is GraphQL?',
-          path: '/guides/what_is_graphql',
-        },
-        {
-          title: `Tutorials`,
-          path: 'https://vimeo.com/user/776463/folder/9270726',
-          external: true,
         },
       ],
     },

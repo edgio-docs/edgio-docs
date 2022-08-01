@@ -8,6 +8,7 @@ body {
 *::before,
 *::after {
   box-sizing: border-box;
+  transition: background-color 200ms linear, color 200ms linear;
 }
 
 * {

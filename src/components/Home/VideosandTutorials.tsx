@@ -15,8 +15,11 @@ const StyledComp = styled.div`
   }
 
   .video-category {
-    box-shadow: inset 0px -1px var(--hr-secondary);
     padding-bottom: 54px;
+
+    :not(:last-child) {
+      box-shadow: inset 0px -1px var(--hr-secondary);
+    }
 
     .video-category__title {
       margin-bottom: 20px;

@@ -1,5 +1,5 @@
 ---
-title: Traffic Splitting 
+title: Split Testing
 ---
 
 {{ PRODUCT_NAME }} makes it easy to conduct split testing without performance penalties by executing splits at the edge through an easy-to-use yet powerful interface. It can be used for A/B and multivariate tests, canary deploys, blue-green tests, iterative migration off of a legacy website, personalization, and more. This guide shows you how to configure a split test.

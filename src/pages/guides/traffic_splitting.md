@@ -1,7 +1,9 @@
-# Traffic Splitting for Site Migrations {/*traffic-splitting-for-site-migrations*/}
+---
+title: Traffic Splitting 
+---
 
 <Callout type="info">
-  You can also use traffic splitting for Split Testing. Please see Traffic Splitting.
+  You can also use traffic splitting for <Link href="/guides/split_testing">Split Testing</Link>.
 </Callout>
 
 
@@ -13,50 +15,42 @@ This guide provides an overview of site migrations and explains how to configure
 
 
 <Callout type="info">
-  This guide uses the terms new and legacy to refer to your current and new sites as well as the related {{ PRODUCT }} environments
+  This guide uses the terms <strong>new</strong> and <strong>legacy</strong> to refer to your current and new sites as well as the related {{ PRODUCT }} environments
 </Callout>
 
 # Configurations Entities {/*configurations-entities*/}
 
 Traffic splitting requires that you make configurations in your project folder and create traffic splitting rules in the {{ PRODUCT }} Developer Console (the Console). The entities in the Console and files in your project folder where various configurations reside are called out. To provide a bigger picture, additional Console entities are included.
 
-```
-[image]
-```
-
-# Request Flow {/*request-flow*/}
-
-In this sample, web browsers make a request for `/path/asset.png`. According to traffic splitting rules, 30% of the requests return the legacy version and 70% return the new version.
-
-```
-[image]
-```
+![Configuration Entities](/images/traffic-splitting/configuration_entities.png)
 
 # Types of Site Migrations {/*types-of-site-migrations*/}
 
 The two general types of iterative site migrations are _gradual migrations_ and _gradual site build-outs_.
 
 * Gradual migrations: You have an original site and a new site with some kind of changes and improvements. You want to gradually move traffic from the original site to the new site. This allows you to verify items such as load on the new site, core web vitals, and so on. For example, if you want to begin migration on a Monday and finish on Friday, you could do something like this hypothetical situation:
-1. On Monday configure 20% of traffic to the new site and 80% to the original.  old.
-2. On Wednesday configure a 50%/50% split.
-3. On Friday configure 100% of the traffic to the new site and bring down the original.
 
-* Gradual site build-outs: You are replacing your original with a new site that you are building/testing/deploying one piece at a time based on domains or routes, and so on. For example, you might have updated a single page or even an image and you want to publish the new item. \
- \
- You are ready to roll out the first piece.
-1. You shift all traffic for that piece from the original site to the new by configuring 0% for the original and 100% for the new.
-2. As new pieces are ready, you do the same for them.
-3. When all pieces have been deployed you bring down the original site. 
+  1. On Monday configure 20% of traffic to the new site and 80% to the original.  old.
+  2. On Wednesday configure a 50%/50% split.
+  3. On Friday configure 100% of the traffic to the new site and bring down the original.
+
+* Gradual site build-outs: You are replacing your original with a new site that you are building/testing/deploying one piece at a time based on domains or routes, and so on. For example, you might have updated a single page or even an image and you want to publish the new item. 
+  
+  You are ready to roll out the first piece.
+
+  1. You shift all traffic for that piece from the original site to the new by configuring 0% for the original and 100% for the new.
+  2. As new pieces are ready, you do the same for them.
+  3. When all pieces have been deployed you bring down the original site. 
 
 # Migrating Sites - General Steps {/*migrating-sites---general-steps*/}
 
 ## Separate Sites {/*separate-sites*/}
 
-Although there are several ways you might organize your sites for migration, we will focus on a common, simple scenario where the two sites are defined by two distinct environments. One environment is a proxy to the `legacy `site and the other is the `new` site.
+Although there are several ways you might organize your sites for migration, we will focus on a common, simple scenario where the two sites are defined by two distinct environments. One environment is a proxy to the `legacy` site and the other is the `new` site.
 
-1. [Configure the backends](#heading=h.bbyh8uq2zpnv) in the `{{ CONFIG_FILE }}` file.
-2. [Configure destinations](#heading=h.6psn8apbmuyx) in the `routes.js` file.
-3. [Configure traffic splitting rules](#heading=h.2amthn83ub1n) in the {{ PRODUCT }} Developer Console.
+1. [Configure the backends](#step-1-configuring-backends) in the `{{ CONFIG_FILE }}` file.
+2. [Configure destinations](#step-2-configuring-destination-environments) in the `routes.js` file.
+3. [Configure traffic splitting rules](#step-3-configure-traffic-splitting-rules-in-the-developer-console) in the {{ PRODUCT }} Developer Console.
 
 ## Separate Code Versions {/*separate-code-versions*/}
 
@@ -67,8 +61,8 @@ If you are using two code versions you can use Continuous Integration/Continuous
 `0 deploy –environment=new` 
 `0 deploy –environment=legacy`
 
-3. [Configure the destinations](#heading=h.6psn8apbmuyx) in the `routes.js` file, 
-4. [Configure traffic splitting rules](#heading=h.2amthn83ub1n) in the {{ PRODUCT }} Developer Console.
+1. [Configure the destinations](#step-2-configuring-destination-environments) in the `routes.js` file, 
+2. [Configure traffic splitting rules](#step-3-configure-traffic-splitting-rules-in-the-developer-console) in the {{ PRODUCT }} Developer Console.
 
 ## Step 1. Configuring Backends {/*step-1-configuring-backends*/}
 
@@ -80,48 +74,74 @@ If your sites are defined by different code versions, this step is not necessary
 
 Configure  the backends in the {{ CONFIG_FILE }} file. (See [{{ CONFIG_FILE }}](layer0_config) for more information.). For example, to split traffic between a new experience hosted on `origin.my-site.com` and a legacy experience hosted on `legacy-origin.my-site.com`:
 
-![alt_text](images/image1.png "image_tooltip")
+```js filename="{{ CONFIG_FILE }}"
+module.exports = {
+  backends: {
+    legacy: {
+      domainOrIp: 'legacy-origin.my-site.com',
+    },
+    new: {
+      domainOrIp: 'origin.my-site.com',
+    },
+  },
+}
+```
 
 ## Step 2. Configuring Destination Environments {/*step-2-configuring-destination-environments*/}
 
 Add a destination for each site or application version to your `routes.js` file. The destinations will appear in the {{ PRODUCT }} Developer Console and you will use them later on when configuring traffic splitting rules.
 
-![alt_text](images/image2.png "image_tooltip")
+```js filename="routes.js"
+const { Router } = require('@layer0/core/router')
+module.exports = new Router()
+  .destination(
+    'legacy_experience', // displayed in the destination dropdown in the traffic splitting section of your environment configuration in the Edgio Developer Console
+    new Router()
+      // additional routing rules for the legacy experience go here
+      .fallback(({ proxy }) => proxy('legacy')),
+  )
+  .destination(
+    'new_experience', // displayed in the destination dropdown in the traffic splitting section of your environment configuration in the Edgio Developer Console
+    new Router()
+      // additional routing rules for the new experience go here
+      .fallback(({ proxy }) => proxy('new')),
+  )
+```
 
 ## Step 3. Configure Traffic Splitting Rules in the {{ PRODUCT }} Developer Console {/*step-3-configure-traffic-splitting-rules-in-the-developer-console*/}
 
 1. [Log into your account](https://app.layer0.co/login/), then navigate to the environment in which you want to configure the iterative migration and click Edit:
 
-![alt_text](images/image3.png "image_tooltip")
+![Edit Environment](/images/traffic-splitting/edit_env.png)
 
 2. Scroll to the **Split Testing** section and click *Add Rule*:
 
-![alt_text](images/image4.png "image_tooltip")
+![Add Split Test Rule](/images/traffic-splitting/add_rule.png)
 
 3. Select the amount of traffic to send to each destination or environment:
 
     a. Click **ADD DESTINATION**
     b. Choose a destination from the drop-down menu and enter a percentage for each destination.
 
-![alt_text](images/image5.png "image_tooltip")
+![Add Split Test Rule Destination](/images/traffic-splitting/rule_config.png)
 
 ### Adding Additional Rules {/*adding-additional-rules*/}
 
 You can add additional rules to the traffic split as well. For example, you can allow testers to access a specific experience all of the time by setting a cookie value. In addition to cookie value, you can split traffic based on header value, path, IP address, URL parameters, device type, browser type, and bot boolean. Here’s an example:
 
-![alt_text](images/image6.png "image_tooltip")
+![Add Split Test Additional Rules](/images/traffic-splitting/additional_rules.png)
 
 ### Rule Ordering {/*rule-ordering*/}
 
 The order of rules is critical. Rules are matched from top to bottom. When handling a request, the first matching rule will be used for the request. Given the rules setup in the examples above, you would need to move the force-new cookie rule to the top so that it takes precedence over the other rule that splits all traffic without any criteria. Use the “grip” icon to reorder rules by dragging and dropping:
 
-![alt_text](images/image7.png "image_tooltip")
+![Split Test Rule Ordering](/images/traffic-splitting/rule_ordering.png)
 
 ## Step 4. Complete the Configuration {/*step-4-complete-the-configuration*/}
 
 Click the Activate button at the top of the environment:
 
-![alt_text](images/image8.png "image_tooltip")
+![Activate Environment](/images/traffic-splitting/activate_env.png)
 
 # Common Pitfalls for Site Migrations {/*common-pitfalls-for-site-migrations*/}
 

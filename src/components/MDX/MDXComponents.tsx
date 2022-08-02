@@ -60,6 +60,7 @@ export const MDXComponents = {
   hr: Divider,
   br: BR,
   a: Link,
+  Link,
   pre: CustomPre,
   HomepageHero,
   HomepageFeatures,

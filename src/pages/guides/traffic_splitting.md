@@ -15,7 +15,7 @@ This guide provides an overview of site migrations and explains how to configure
 
 
 <Callout type="info">
-  This guide uses the terms <strong>new</strong> and <strong>legacy</strong> to refer to your current and new sites as well as the related {{ PRODUCT }} environments
+  This guide uses the terms <strong>legacy</strong> and <strong>new</strong> to refer to your current and new sites as well as the related {{ PRODUCT }} environments.
 </Callout>
 
 # Configurations Entities {/*configurations-entities*/}
@@ -28,19 +28,19 @@ Traffic splitting requires that you make configurations in your project folder a
 
 The two general types of iterative site migrations are _gradual migrations_ and _gradual site build-outs_.
 
-* Gradual migrations: You have an original site and a new site with some kind of changes and improvements. You want to gradually move traffic from the original site to the new site. This allows you to verify items such as load on the new site, core web vitals, and so on. For example, if you want to begin migration on a Monday and finish on Friday, you could do something like this hypothetical situation:
+* Gradual migrations: You have a legacy site and a new site with some kind of changes and improvements. You want to gradually move traffic from the legacy site to the new site. This allows you to verify items such as load on the new site, core web vitals, and so on. For example, if you want to begin migration on a Monday and finish on Friday, you could do something like this hypothetical situation:
 
-  1. On Monday configure 20% of traffic to the new site and 80% to the original.  old.
+  1. On Monday configure 20% of traffic to the new site and 80% to the legacy (old).
   2. On Wednesday configure a 50%/50% split.
-  3. On Friday configure 100% of the traffic to the new site and bring down the original.
+  3. On Friday configure 100% of the traffic to the new site and remove all traffic from the legacy site.
 
-* Gradual site build-outs: You are replacing your original with a new site that you are building/testing/deploying one piece at a time based on domains or routes, and so on. For example, you might have updated a single page or even an image and you want to publish the new item. 
+* Gradual site build-outs: You are replacing your legacy site with a new site that you are building/testing/deploying one piece at a time based on domains or routes, and so on. For example, you might have updated a single page or even an image and you want to publish the new item. 
   
   You are ready to roll out the first piece.
 
-  1. You shift all traffic for that piece from the original site to the new by configuring 0% for the original and 100% for the new.
+  1. You shift all traffic for that piece from the legacy site to the new by configuring 0% for the legacy and 100% for the new.
   2. As new pieces are ready, you do the same for them.
-  3. When all pieces have been deployed you bring down the original site. 
+  3. When all pieces have been deployed you remove traffic from the legacy site. 
 
 # Migrating Sites - General Steps {/*migrating-sites---general-steps*/}
 

@@ -7,31 +7,27 @@ const StyledEditPage = styled.div`
   margin-top: 50px;
 
   a {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    border: 2px solid var(--hr-secondary);
+    padding: 20px;
+    border-radius: 4px;
+    text-align: center;
     text-transform: uppercase;
     display: inline-flex;
     align-items: center;
     color: var(--colors-blue0);
     font-weight: 500;
-    font-size: 13px;
+    font-size: 14px;
     line-height: 16px;
     text-decoration: none;
     gap: 8px;
     position: relative;
+    transition: transform 0.1s;
 
-    ::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      height: 1px;
-      left: 0;
-      background: currentColor;
-      width: 0;
-      transform: translateY(2px);
-      transition: width 0.2s ease-in-out;
-    }
-
-    &:hover ::after {
-      width: 100%;
+    &:hover {
+      transform: scale(1.01);
     }
   }
 `;

@@ -318,7 +318,7 @@ Additionally:
 - A request's protocol can be determined by reading the [`{{ HEADER_PREFIX }}-protocol`](request_headers#section_general_headers) request header or the [`request.secure`](/docs/api/core/interfaces/_router_request_.request.html#secure) property.
 - During local development all requests will appear secure by default. To test your router for `http` protocol matching you must either set the `local_{{ COOKIE_PREFIX }}_emulate_http_protocol` cookie to `true` (if using a browser) or send an `{{ HEADER_PREFIX }}-protocol` request header set to `http`.
 
-### HTTP/1/2 Version
+### HTTP/1/2 Version {/*http12-version*/}
 
 The incoming HTTP version is independent of the upstream HTTP version. We support HTTP/1 or HTTP/2 on ingress requests. We prioritize HTTP/2 to origin servers. If the origin server does not support the incoming HTTP version (say version HTTP/2 came in but origin only supports HTTP/1), we will downgrade to successfully complete the request, but the outgoing response will return to HTTP/2.
 

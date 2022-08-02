@@ -2,7 +2,7 @@
 title: UmiJS
 ---
 
-This guide shows you how to deploy a [UmiJS])(https://umijs.org/) application to {{ PRODUCT }}.
+This guide shows you how to deploy a [UmiJS](https://umijs.org/) application to {{ PRODUCT }}.
 
 ## Example {/*example*/}
 

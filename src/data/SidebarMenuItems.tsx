@@ -201,8 +201,12 @@ const SidebarMenuItems: ISidebarMenuItems = [
           path: '/guides/traditional_sites',
         },
         {
-          title: 'Traffic Splitting',
+          title: 'Split Testing',
           path: '/guides/split_testing',
+        },
+        {
+          title: 'Traffic Splitting',
+          path: '/guides/traffic_splitting',
         },
         {
           title: 'Observability',

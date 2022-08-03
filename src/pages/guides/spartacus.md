@@ -276,16 +276,7 @@ import { angularRoutes } from '{{ PACKAGE_NAME }}/angular'
 export default new Router()
   // Prevent search engine bot(s) from indexing
   // Read more on: https://docs.layer0.co/guides/cookbook#blocking-search-engine-crawlers
-  .get(
-    {
-      headers: {
-        host: /layer0.link|layer0-perma.link/,
-      },
-    },
-    ({ setResponseHeader }) => {
-      setResponseHeader('x-robots-tag', 'noindex')
-    }
-  )
+  . noIndexPermalink()
   .use(angularRoutes)
 ```
 
@@ -295,16 +286,7 @@ The default router also includes common cache configurations for most Spartacus 
   return new Router()
     // Prevent search engine bot(s) from indexing
     // Read more on: https://docs.layer0.co/guides/cookbook#blocking-search-engine-crawlers
-    .get(
-      {
-        headers: {
-          host: /layer0.link|layer0-perma.link/,
-        },
-      },
-      ({ setResponseHeader }) => {
-        setResponseHeader('x-robots-tag', 'noindex')
-      }
-    )
+    .noIndexPermalink()
     .match('/rest/v2/:path*', ({ cache, proxy }) => {
       cache({
         browser: {

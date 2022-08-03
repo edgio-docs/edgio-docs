@@ -81,7 +81,7 @@ const { gatsbyRoutes } = require('{{ PACKAGE_NAME }}/gatsby')
 module.exports = new Router()
   // Prevent search engine bot(s) from indexing
   // Read more on: https://docs.layer0.co/guides/cookbook#blocking-search-engine-crawlers
-  . noIndexPermalink()
+  .noIndexPermalink()
   .use(gatsbyRoutes)
 ```
 
@@ -119,7 +119,7 @@ const { gatsbyRoutes } = require('{{ PACKAGE_NAME }}/gatsby')
 module.exports = new Router()
   // Prevent search engine bot(s) from indexing
   // Read more on: https://docs.layer0.co/guides/cookbook#blocking-search-engine-crawlers
-  . noIndexPermalink()
+  .noIndexPermalink()
   .get('/some/legacy/url/:p', ({ proxy }) => {
     proxy('legacy')
   })

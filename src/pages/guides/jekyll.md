@@ -38,7 +38,7 @@ const FAR_FUTURE = ONE_DAY * 365 * 10
 export default new Router()
   // Prevent search engine bot(s) from indexing
   // Read more on: https://docs.layer0.co/guides/cookbook#blocking-search-engine-crawlers
-  . noIndexPermalink()
+  .noIndexPermalink()
   .match('/assets/:path*', ({ serveStatic, cache }) => {
     cache({
       browser: {

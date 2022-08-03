@@ -241,7 +241,7 @@ const { nextRoutes } = require('{{ PACKAGE_NAME }}/next')
 module.exports = new Router()
   // Prevent search engine bot(s) from indexing
   // Read more on: https://docs.layer0.co/guides/cookbook#blocking-search-engine-crawlers
-  . noIndexPermalink()
+  .noIndexPermalink()
   .get('/service-worker.js', ({ cache, serveStatic }) => {
     cache({
       edge: {
@@ -343,7 +343,7 @@ imagine you have `/pages/p/[productId].js`. Here's how you can SSR responses as 
 new Router()
   // Prevent search engine bot(s) from indexing
   // Read more on: https://docs.layer0.co/guides/cookbook#blocking-search-engine-crawlers
-  . noIndexPermalink()
+  .noIndexPermalink()
   // Products - SSR
   .get('/p/:productId', ({ cache }) => {
     cache({

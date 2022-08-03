@@ -14,7 +14,6 @@ interface PageProps {
 
 const StyledMainPage = styled.div`
   --sidebar-width: 280px;
-  --header-height: 64px;
 
   .docs-content {
     width: 100%;

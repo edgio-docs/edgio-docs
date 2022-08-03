@@ -23,6 +23,7 @@
   --shadow-primary: #00000026;
   --docsearch-searchbox-height: 36px;
   --docsearch-spacing: 6px;
+  --header-height: 64px;
 }
 
 :root.light {

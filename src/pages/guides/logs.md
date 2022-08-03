@@ -4,9 +4,9 @@ title: Logs
 
 The {{ PRODUCT_NAME }} platform exposes three types of logs to users:
 
-- [Build logs](#section_build_logs) capture all the build output from your {{ PRODUCT_NAME }} deploys.
-- [Server logs](#section_server_logs) capture your {{ PRODUCT_NAME }} serverless console output at real time.
-- [Access logs](#section_access_logs) capture information about all the requests served by {{ PRODUCT_NAME }}.
+- [Build logs](#build-logs) capture all the build output from your {{ PRODUCT_NAME }} deploys.
+- [Server logs](#server-logs) capture your {{ PRODUCT_NAME }} serverless console output at real time.
+- [Access logs](#access-logs) capture information about all the requests served by {{ PRODUCT_NAME }}.
 
 ## Build Logs {/*build-logs*/}
 
@@ -26,7 +26,7 @@ Here you can limit the output to only those statements coming from your IP addre
 
 <Video src="https://www.youtube.com/watch?v=M0KPpX89nO4"/>
 
-By enabling Deep Request Inspection in your environment, you can also see the headers and body of every request and response served by your application via the Layer0 serverless cloud. You can also see each upstream API request made by your application. To enable Deep Request Inspection, navigate to the environment in the Layer0 Developer Console, select the configuration tab, click "Edit" and enable "Deep Request Inspection" in the Debugging section.
+By enabling Deep Request Inspection in your environment, you can also see the headers and body of every request and response served by your application via the {{ PRODUCT }} serverless cloud. You can also see each upstream API request made by your application. To enable Deep Request Inspection, navigate to the environment in the {{ PRODUCT }} Developer Console, select the configuration tab, click "Edit" and enable "Deep Request Inspection" in the Debugging section.
 
 ![Deep Request Inspection](/images/logs/http-request-logging.png)
 
@@ -124,7 +124,7 @@ Destination, determined by split testing rules, if any; if no rules, the value i
 
 ### be {/*be*/}
 
-Backend, determined by the routing rules. The names come from the `backends` structure exported from your `layer0.config.js` file.
+Backend, determined by the routing rules. The names come from the `backends` structure exported from your `{{ CONFIG_FILE }}` file.
 
 ### bk {/*bk*/}
 

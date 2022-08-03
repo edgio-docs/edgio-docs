@@ -294,7 +294,15 @@ The response was not cached because the request was issued with `{{ HEADER_PREFI
 
 ### pass {/*pass*/}
 
-The response was not cached due to unknown reasons. If you happen to receive this status then please contact [support]({{ APP_URL }}/help)
+The response was not cached due to unknown reasons. If you happen to receive this status then please contact [support]({{ APP_URL }}/help).
+
+If the "pass" is intermittent on an otherwise cacheable resource, you may want to explore if "hit-for-pass" may have been triggered.
+
+"Hit-for-pass" can happen when system remembers for a brief time that a typically cacheable resource was not cacheable as anticipated (such as a `Set-Cookie` header, or an HTTP error response code). The system will cache, typically for a couple of minutes that the resource was not cacheable, and will not coalesce requests.
+
+Hit-for-pass disables the usual request coalescing behavior temporarily, when the resource is known not to be cacheable, clients can avoid being put in a waiting queue. Usually request coalescing (see [L2 Shield Cache](/guides/overview#l2-shield-cache)) speeds up client requests by enqueueing all but the first request, anticipating that the first request will populate the cache and allow instant delivery of the already-cached object to the waiting clients.
+
+Disabling this, such as when the upstream resource is serving errors can help alleviate pressure at all stages of the request lifecycle.
 
 ## Caching During Development {/*caching-during-development*/}
 

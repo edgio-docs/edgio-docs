@@ -1,5 +1,5 @@
 ---
-title: Security
+title: Security Suite
 ---
 
 ## Overview {/*overview*/}
@@ -34,7 +34,7 @@ The WAF includes Managed Rule Groups, managed by {{ PRODUCT_NAME }}, that can be
   {{ PRODUCT_NAME }} recommends utilizing this rule group for all WAF use cases.
 </Callout>
 
-[Layer0 Managed Rule Group Descriptions](managed_rule_groups#section_managed_rule_groups)
+[{{ PRODUCT }} Managed Rule Group Descriptions](managed_rule_groups#section_managed_rule_groups)
 
 ---
 
@@ -79,7 +79,7 @@ The SQL database rule group contains rules to block request patterns associated 
 
 ![Add Rule Groups to WAF](/images/security/addrulegroup1.jpg?width=700 'Add Rule Groups to WAF')
 
-1. Log in to the [Layer0 console](https://app.layer0.co/).
+1. Log in to the [{{ PRODUCT }} console](https://app.layer0.co/).
 1. Click _SECURITY_ from the top banner to launch the WAF Security Rules page.
 1. Select [_WAF-1_ or _WAF-2_](#section_what_s_the_difference_between_waf_1_and_waf_2_) from the first dropdown and the [configuration version](#section_how_do_i_know_which_version_to_use_) from the second.
 1. Click _EDIT_ to set your security rules.
@@ -97,7 +97,7 @@ The SQL database rule group contains rules to block request patterns associated 
 
 ![Add Single Rule to WAF](/images/security/addrulegroup1.jpg?width=700 'Add Single Rule to WAF')
 
-1. Log in to the [Layer0 console](https://app.layer0.co/).
+1. Log in to the [{{ PRODUCT }} console](https://app.layer0.co/).
 1. Click _SECURITY_ from the top banner to launch the WAF Security Rules page.
 1. Select [_WAF-1_ or _WAF-2_](#section_what_s_the_difference_between_waf_1_and_waf_2_) from the first dropdown and the [configuration version](#section_how_do_i_know_which_version_to_use_) from the second.
 1. Click _EDIT_ to set your security rules.
@@ -122,7 +122,7 @@ Follow these steps to add a WAF to an environment:
 
 ![Apply WAF to Environment](/images/security/addrg3.jpg?width=700 'Apply WAF to Environment')
 
-1. Log in to the [Layer0 console](https://app.layer0.co/) and select your site.
+1. Log in to the [{{ PRODUCT }} console](https://app.layer0.co/) and select your site.
 1. Click the ENVIRONMENTS tab.
 1. Choose an environment from the list.
 
@@ -204,7 +204,7 @@ The above code will match all the routes that even have a `user-agent` header an
 
 ![Reporting](/images/security/addrg3.jpg?width=700 'Reporting')
 
-1. Log in to the [Layer0 console](https://app.layer0.co/) and select your site.
+1. Log in to the [{{ PRODUCT }} console](https://app.layer0.co/) and select your site.
 1. Click the ENVIRONMENTS tab.
 1. Choose an environment.
 1. Click the SECURITY tab from the top page navigation.
@@ -318,6 +318,10 @@ Additionally:
 - A request's protocol can be determined by reading the [`{{ HEADER_PREFIX }}-protocol`](request_headers#section_general_headers) request header or the [`request.secure`](/docs/api/core/interfaces/_router_request_.request.html#secure) property.
 - During local development all requests will appear secure by default. To test your router for `http` protocol matching you must either set the `local_{{ COOKIE_PREFIX }}_emulate_http_protocol` cookie to `true` (if using a browser) or send an `{{ HEADER_PREFIX }}-protocol` request header set to `http`.
 
+### HTTP/1/2 Version {/*http12-version*/}
+
+The incoming HTTP version is independent of the upstream HTTP version. We support HTTP/1 or HTTP/2 on ingress requests. We prioritize HTTP/2 to origin servers. If the origin server does not support the incoming HTTP version (say version HTTP/2 came in but origin only supports HTTP/1), we will downgrade to successfully complete the request, but the outgoing response will return to HTTP/2.
+
 ### Secrets {/*secrets*/}
 
 Rather than putting secret values such as API keys in your code and checking them into source control, you can securely
@@ -361,17 +365,17 @@ Like all {{ PRODUCT_NAME }} products, WAF gives you access to all previous and a
 
 ### What is the difference between flagging and blocking a rule or rule group? {/*what-is-the-difference-between-flagging-and-blocking-a-rule-or-rule-group*/}
 
-To flag a rule or rule group means to mark it if the rule would have been activated without actually denying the traffic. In contrast, when you block a rule or rule group, traffic is denied on affected routes. You can view both flagged and blocked data in your [Layer0 console](https://app.layer0.co/).
+To flag a rule or rule group means to mark it if the rule would have been activated without actually denying the traffic. In contrast, when you block a rule or rule group, traffic is denied on affected routes. You can view both flagged and blocked data in your [{{ PRODUCT }} console](https://app.layer0.co/).
 
 ### What are {{ PRODUCT_NAME }} Managed Rules and why should I apply this rule group? {/*what-are-layer0-managed-rules-and-why-should-i-apply-this-rule-group*/}
 
-Managed rules block specific known threats. Layer0 recommends this rule group for all WAF use cases.
+Managed rules block specific known threats. {{ PRODUCT }} recommends this rule group for all WAF use cases.
 
-Note: Layer0 recommends that all customers activate the _Bad Input - Log4J_ rule group.
+Note: {{ PRODUCT }} recommends that all customers activate the _Bad Input - Log4J_ rule group.
 
-### Is the Layer0 WAF a PCI-compliant solution? {/*is-the-layer0-waf-a-pci-compliant-solution*/}
+### Is the {{ PRODUCT }} WAF a PCI-compliant solution? {/*is-the-layer0-waf-a-pci-compliant-solution*/}
 
-Yes. Layer0 maintains PCI-DSS Level 1 compliance by undergoing annual audits from approved Visa and MasterCard auditors.
+Yes. {{ PRODUCT }} maintains PCI-DSS Level 1 compliance by undergoing annual audits from approved Visa and MasterCard auditors.
 
 ### What is the minimum level of encryption for {{ PRODUCT_NAME }}? {/*what-is-the-minimum-level-of-encryption-for-layer0*/}
 

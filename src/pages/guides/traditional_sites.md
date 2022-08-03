@@ -1,5 +1,5 @@
 ---
-title: {{ PRODUCT_NAME }} for Traditional Sites
+title: Traditional Sites
 ---
 
 This guide describes how to get up and running with {{ PRODUCT_NAME }} for traditional, multi-page applications. {{ PRODUCT_NAME }} can enable traditional websites (e.g. jQuery, PHP, VanillaJS, etc.) to take advantage of the performance benefits of advanced caching and predictive prefetching. If your website is built on a modern framework such as React, Angular, or Vue, we recommend considering our framework specific guides that can be found on the [homepage](/).
@@ -73,15 +73,9 @@ This framework has a connector developed for {{ PRODUCT_NAME }}. See [Connectors
   View the Connector Code
 </ButtonLink>
 
-{{ SYSTEM_REQUIREMENTS }}
+{{ PREREQ }}
 
 ## Setup a Project {/*setup-a-project*/}
-
-Next, install the [{{ PRODUCT_NAME }} CLI](cli)
-
-```bash
-npm i -g {{ PACKAGE_NAME }}/cli # yarn global add {{ PACKAGE_NAME }}/cli
-```
 
 Create your project using {{ PRODUCT_NAME }}'s create module:
 
@@ -208,7 +202,7 @@ To test the caching behavior locally, run your project with the [local cache opt
 
 Now that you're satisfied with your site in local development, it's time to deploy it to {{ PRODUCT_NAME }} Cloud. Once your code is deployed to {{ PRODUCT_NAME }} Cloud, you can formally evaluate site performance and QA functionality.
 
-To deploy your site to {{ PRODUCT_NAME }}, you must first [sign up for a free account]({{ APP_URL }}/signup). Once you have an account, you can deploy your site using the `deploy` command:
+Deploy the build to {{ PRODUCT_NAME }} by running the `{{ CLI_NAME }} deploy` command:
 
 ```bash
 {{ CLI_NAME }} deploy --team=[team-name]

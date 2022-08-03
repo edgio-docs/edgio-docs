@@ -1,8 +1,8 @@
 ---
-title: Managed Rule Group Descriptions
+title: Managed Rule Groups 
 ---
 
-## Layer0 Managed Rules {/*layer0-managed-rules*/}
+## {{ PRODUCT }} Managed Rules {/*layer0-managed-rules*/}
 
 <Callout type="danger">
 	{{ PRODUCT_NAME }} recommends utilizing this rule group for all WAF use cases.

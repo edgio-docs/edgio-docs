@@ -11,11 +11,6 @@ import DocsFooter from '../Docs/DocsFooter';
 import {MDXComponents} from '../MDX/MDXComponents';
 import Seo from '../Seo';
 
-export interface MarkdownProps<Frontmatter> {
-  meta: Frontmatter & {description?: string};
-  children?: React.ReactNode;
-}
-
 export function MarkdownPage<
   T extends {title: string; status?: string} = {
     title: string;
@@ -61,7 +56,6 @@ export function MarkdownPage<
   return (
     <MDXProvider components={MDXComponents}>
       <Seo {...{isHomePage, title, description: siteConfig.tagline}} />
-
       {isHomePage ? (
         children
       ) : (
@@ -72,4 +66,9 @@ export function MarkdownPage<
       <DocsFooter />
     </MDXProvider>
   );
+}
+
+export interface MarkdownProps<Frontmatter> {
+  meta: Frontmatter & {description?: string};
+  children?: React.ReactNode;
 }

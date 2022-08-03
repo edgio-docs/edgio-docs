@@ -15,9 +15,9 @@
   --colors-blue0: #00a2e2;
   --scrollbar-size: 8px;
   --sidebar-width: 280px;
-  --container-max-width: 1228px;
+  --container-max-width: 1268px;
   --container-padding: 0 20px;
-  --docs-area-width: 1228px;
+  --docs-area-width: 1268px;
   --lg-primary: linear-gradient(89.92deg, #00bda6 0%, #00a2e2 132.46%);
   --text-link: var(--colors-blue0);
   --shadow-primary: #00000026;
@@ -26,6 +26,7 @@
 }
 
 :root.light {
+  color-scheme: light;
   --text-primary: var(--colors-black0);
   --text-secondary: #707070;
   --docs-text-primary: #353535;
@@ -69,6 +70,7 @@
 }
 
 :root.dark {
+  color-scheme: dark;
   --text-primary: var(--colors-white0);
   --text-secondary: #cbcbcb;
   --docs-text-primary: var(--colors-white0);

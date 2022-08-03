@@ -2,7 +2,7 @@
 title: Vue.js
 ---
 
-This guide shows you how to deploy a [Vue.js](https://vuejs.org/) application on {{ PRODUCT_NAME }}.
+This guide shows you how to deploy a [Vue.js](https://vuejs.org/) application to {{ PRODUCT }}.
 
 ## Example {/*example*/}
 
@@ -12,17 +12,7 @@ This guide shows you how to deploy a [Vue.js](https://vuejs.org/) application on
   repoUrl="https://github.com/layer0-docs/layer0-static-vuejs-example" 
   deployFromRepo />
 
-{{ SIGN_UP_LAYER0 }}
-
-## Install the {{ PRODUCT_NAME }} CLI {/*install-the-layer0-cli*/}
-
-If you have not already done so, install the [{{ PRODUCT_NAME }} CLI](cli)
-
-```bash
-npm i -g {{ PACKAGE_NAME }}/cli # yarn global add {{ PACKAGE_NAME }}/cli
-```
-
-{{ SYSTEM_REQUIREMENTS }}
+{{ PREREQ }}
 
 ## Create a new Vue.js app {/*create-a-new-vuejs-app*/}
 
@@ -50,7 +40,7 @@ cd hello-world
 npm run serve
 ```
 
-## Configuring your Vue.js app for {{ PRODUCT_NAME }} {/*configuring-your-vuejs-app-for-layer0*/}
+## Configuring your Vue.js app for {{ PRODUCT }} {/*configuring-your-vuejs-app-for-edgio*/}
 
 ### Initialize your project {/*initialize-your-project*/}
 
@@ -60,14 +50,14 @@ In the root directory of your project run `{{ CLI_NAME }} init`:
 {{ CLI_NAME }} init
 ```
 
-This will automatically update your `package.json` and add all of the required {{ PRODUCT_NAME }} dependencies and files to your project. These include:
+This will automatically update your `package.json` and add all of the required {{ PRODUCT }} dependencies and files to your project. These include:
 
-- The `{{ PACKAGE_NAME }}/core` package - Allows you to declare routes and deploy your application on {{ PRODUCT_NAME }}
+- The `{{ PACKAGE_NAME }}/core` package - Allows you to declare routes and deploy your application to {{ PRODUCT }}.
 - The `{{ PACKAGE_NAME }}/prefetch` package - Allows you to configure a service worker to prefetch and cache pages to improve browsing speed
-- `{{ CONFIG_FILE }}` - A configuration file for {{ PRODUCT_NAME }}
+- `{{ CONFIG_FILE }}` - A configuration file for {{ PRODUCT }}
 - `routes.js` - A default routes file that sends all requests to Vue.js.
 
-### Adding Layer0 Service Worker {/*adding-layer0-service-worker*/}
+### Adding {{ PRODUCT }} Service Worker {/*adding-edgio-service-worker*/}
 
 To add service worker to your Vue app, run the following in the root folder of your project:
 
@@ -80,7 +70,7 @@ Create `service-worker.js` at the root of your project with the following:
 ```js
 import { skipWaiting, clientsClaim } from 'workbox-core'
 import { precacheAndRoute } from 'workbox-precaching'
-import { Prefetcher } from '@layer0/prefetch/sw'
+import { Prefetcher } from '@{{ PRODUCT_NAME_LOWER }}/prefetch/sw'
 
 skipWaiting()
 clientsClaim()
@@ -158,7 +148,7 @@ module.exports = config
 
 ### Configure the routes {/*configure-the-routes*/}
 
-Next you'll need to configure {{ PRODUCT_NAME }} routing in the `routes.js` file.
+Next you'll need to configure {{ PRODUCT }} routing in the `routes.js` file.
 
 For the Vue `hello-world` template, replace the `routes.js` file that was created during `{{ CLI_NAME }} init` with the following:
 
@@ -182,7 +172,7 @@ The example above assumes you're using Vue as a single page app. It routes the s
 
 Refer to the [Routing](routing) guide for the full syntax of the `routes.js` file and how to configure it for your use case.
 
-### Run the Vue.js app locally on {{ PRODUCT_NAME }} {/*run-the-vuejs-app-locally-on-layer0*/}
+### Run the Vue.js app locally on {{ PRODUCT }} {/*run-the-vuejs-app-locally-on-edgio*/}
 
 Create a production build of your app by running the following in your project's root directory:
 
@@ -190,7 +180,7 @@ Create a production build of your app by running the following in your project's
 npm run build
 ```
 
-Run {{ PRODUCT_NAME }} on your local machine:
+Test your app with the {{ PRODUCT_PLATFORM }} on your local machine by running the following command in your project's root directory:
 
 ```bash
 {{ CLI_NAME }} dev
@@ -206,7 +196,7 @@ Create a production build of your app by running the following in your project's
 npm run build
 ```
 
-Next, deploy the build to {{ PRODUCT_NAME }} by running the `{{ CLI_NAME }} deploy` command:
+Deploy your app to the {{ PRODUCT_PLATFORM }} by running the following command in your project's root directory:
 
 ```bash
 {{ CLI_NAME }} deploy
@@ -216,4 +206,4 @@ Refer to the [Deploying](deploying) guide for more information on the `deploy` c
 
 ## Server Side Rendering {/*server-side-rendering*/}
 
-For server side rendered Vue.js apps we recommend using the Nuxt.js framework which is supported on {{ PRODUCT_NAME }}. Refer to the [Nuxt](nuxt) guide for more information.
+For server side rendered Vue.js apps we recommend using the Nuxt.js framework which is supported on {{ PRODUCT }}. Refer to the [Nuxt](nuxt) guide for more information.

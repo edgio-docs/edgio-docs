@@ -4,7 +4,7 @@ title: Nx
 
 [Nx](https://nx.dev/) is a smart, fast and extensible build system with first class monorepo support and powerful integrations. It has a powerful core and a rich plugin ecosystem.
 
-## Nx and {{ PRODUCT_NAME }} {/*nx-and-layer0*/}
+## Nx and {{ PRODUCT }} {/*nx-and-edgio*/}
 
 Because every Nx project can be different, there are a couple ways to implement it.
 
@@ -23,15 +23,11 @@ Here we use [Next.js](https://nextjs.org/) for the example Nx project.
   repoUrl="https://github.com/layer0-docs/layer0-nx-example" 
   deployFromRepo />
 
-{{ SIGN_UP_LAYER0 }}
-
-{{ INSTALL_LAYER0_CLI }}
-
-{{ SYSTEM_REQUIREMENTS }}
+{{ PREREQ }}
 
 ## Start a Nx project from scratch {/*start-a-nx-project-from-scratch*/}
 
-The following steps take you through set-up of a new Nx workspace. The same process can be used to add Layer0 to your existing Nx repo.
+The following steps take you through set-up of a new Nx workspace. The same process can be used to add {{ PRODUCT }} to your existing Nx repo.
 
 ### Generate the Nx workspace {/*generate-the-nx-workspace*/}
 
@@ -49,43 +45,43 @@ To create the workspace, run
 npx create-nx-workspace --preset=next
 ```
 
-There will be a series of questions. When the one to choose the `Application name` comes, enter __`layer0-nx-next-app`__. The other answers can be of your choosing.
+There will be a series of questions. When the one to choose the `Application name` comes, enter __`{{ PRODUCT_NAME_LOWER }}-nx-next-app`__. The other answers can be of your choosing.
 
-### Add {{ PRODUCT_NAME }} to the application {/*add-layer0-to-the-application*/}
+### Add {{ PRODUCT }} to the application {/*add-edgio-to-the-application*/}
 
-Because Nx wants dependencies installed at root level, we will `init` the project at root level to install the necesssary packages, but setup configurations to read into the next app we generated. The {{ PRODUCT_NAME }} next connector expects to be in the project repo, so we will create our own custom connector with the necesssary configurations.
+Because Nx wants dependencies installed at root level, we will `init` the project at root level to install the necesssary packages, but setup configurations to read into the next app we generated. The {{ PRODUCT }} next connector expects to be in the project repo, so we will create our own custom connector with the necesssary configurations.
 
 ```bash
-0 init # installs necessary packages
+{{ CLI_NAME }} init # installs necessary packages
 ```
 
 Reorganize project
 
 ```bash
-mv routes.js apps/layer0-nx-next-app/routes.ts
-mv next.config.js apps/layer0-nx-next-app
+mv routes.js apps/{{ PRODUCT_NAME_LOWER }}-nx-next-app/routes.ts
+mv next.config.js apps/{{ PRODUCT_NAME_LOWER }}-nx-next-app
 ```
 
 Open `package.json` and change the `scripts > build` to the following:
 
 ```json
-"build": "nx build layer0-nx-next-app",
+"build": "nx build {{ PRODUCT_NAME_LOWER }}-nx-next-app",
 ```
 
-Open `layer0.config.js` and change the contents to the following:
+Open `{{ CONFIG_FILE }}` and change the contents to the following:
 
 ```js
 module.exports = {
-  connector: './layer0',
-  routes: './apps/layer0-nx-next-app/routes.ts',
+  connector: './{{ PRODUCT_NAME_LOWER }}',
+  routes: './apps/{{ PRODUCT_NAME_LOWER }}-nx-next-app/routes.ts',
 };
 ```
 
 Open `routes.ts` and change to the following:
 
 ```js
-import { Router } from '@layer0/core/router';
-import { nextRoutes } from '@layer0/next';
+import { Router } from '@{{ PRODUCT_NAME_LOWER }}/core/router';
+import { nextRoutes } from '@{{ PRODUCT_NAME_LOWER }}/next';
 
 export default new Router()
   // Prevent search engine bot(s) from indexing
@@ -100,23 +96,23 @@ export default new Router()
 We need to add a custom connector now. You can either copy the whole folder from the example, or create each file below as instructed.
 
 ```
-mkdir layer0
-touch layer0/build.js
-touch layer0/dev.js
-touch layer0/nextSrcDir.js
-touch layer0/prod.js
+mkdir {{ PRODUCT_NAME_LOWER }}
+touch {{ PRODUCT_NAME_LOWER }}/build.js
+touch {{ PRODUCT_NAME_LOWER }}/dev.js
+touch {{ PRODUCT_NAME_LOWER }}/nextSrcDir.js
+touch {{ PRODUCT_NAME_LOWER }}/prod.js
 ```
 
 __build.js__
 ```js
 const createBuilder =
-  require('@layer0/next/build/createBuildEntryPoint').default;
+  require('@{{ PRODUCT_NAME_LOWER }}/next/build/createBuildEntryPoint').default;
 const { join } = require('path');
 const srcDir = require('./nextSrcDir');
 
 module.exports = createBuilder({
   srcDir,
-  distDir: join('dist', 'apps', 'layer0-nx-next-app', '.next'),
+  distDir: join('dist', 'apps', '{{ PRODUCT_NAME_LOWER }}-nx-next-app', '.next'),
   buildCommand: 'npm run build',
 });
 ```
@@ -124,7 +120,7 @@ module.exports = createBuilder({
 __dev.js__
 ```js
 const next = require('next');
-const createDevServer = require('@layer0/core/dev/createDevServer').default;
+const createDevServer = require('@{{ PRODUCT_NAME_LOWER }}/core/dev/createDevServer').default;
 const srcDir = require('./nextSrcDir');
 const cwd = process.cwd();
 
@@ -135,7 +131,7 @@ module.exports = async function dev() {
 
   return createDevServer({
     label: 'Next',
-    command: (port) => `npx nx run layer0-nx-next-app:serve -- --port=${port}`,
+    command: (port) => `npx nx run {{ PRODUCT_NAME_LOWER }}-nx-next-app:serve -- --port=${port}`,
     ready: [/on http:\/\/localhost:3001/i],
   });
 };
@@ -143,27 +139,27 @@ module.exports = async function dev() {
 
 __prod.js__
 ```js
-module.exports = require('@layer0/next/prod').default;
+module.exports = require('@{{ PRODUCT_NAME_LOWER }}/next/prod').default;
 ```
 
 __nextSrcDir.js__
 ```js
 const { join } = require('path');
-module.exports = join('apps', 'layer0-nx-next-app');
+module.exports = join('apps', '{{ PRODUCT_NAME_LOWER }}-nx-next-app');
 ```
 
 ### Development {/*development*/}
 
-To start the app locally running with {{ PRODUCT_NAME }}, run
+Test your app with the {{ PRODUCT_PLATFORM }} on your local machine by running the following command in your project's root directory:
 
 ```bash
-0 dev
+{{ CLI_NAME }} dev
 ```
 
 ### Deploy {/*deploy*/}
 
-To deploy the app to {{ PRODUCT_NAME }}, run
+Deploy your app to the {{ PRODUCT_PLATFORM }} by running the following command in your project's root directory:
 
 ```bash
-0 deploy
+{{ CLI_NAME }} deploy
 ```

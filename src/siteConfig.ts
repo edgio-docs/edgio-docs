@@ -1,7 +1,8 @@
+import {PRODUCT} from '../constants';
 // IMPORTANT
 export const siteConfig = {
   editUrl: 'https://github.com/layer0-docs/layer0-docs/edit/src/pages',
-  copyright: `Copyright © ${new Date().getFullYear()} Layer0. All Rights Reserved.`,
+  copyright: `Copyright © ${new Date().getFullYear()} ${PRODUCT}. All Rights Reserved.`,
   repoUrl: 'https://github.com/layer0-docs/layer0-docs',
   twitterUrl: 'https://twitter.com/layer0deploy',
   algolia: {
@@ -12,7 +13,6 @@ export const siteConfig = {
   headerIdConfig: {
     className: `anchor`,
   },
-  tagline:
-    'Explore the Layer0 guides and examples on how to integrate edge logic into your application code & extend the edge to the browser.',
+  tagline: `Explore the ${PRODUCT} guides and examples on how to integrate edge logic into your application code & extend the edge to the browser.`,
   twitterHandle: 'Layer0Deploy',
 };

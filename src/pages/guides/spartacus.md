@@ -190,7 +190,7 @@ export default server
 ### Fixing response header overflows {/*fixing-response-header-overflows*/}
 
 Some CDNs, such as Akamai, impose low limits on the size of response headers. Prefetching works by listing all of the upstream API URLs fetched during SSR in
-a `x-0-upstream-requests` response header. If your application makes many upstream requests for each page during SSR, this header can
+a `{{ HEADER_PREFIX }}-upstream-requests` response header. If your application makes many upstream requests for each page during SSR, this header can
 be quite long and exceed the maximum length allowed by your CDN. To mitigate this, using the `maxHeaderLength` option when calling `createRenderCallback`:
 
 ```js
@@ -269,7 +269,9 @@ import { Router } from '{{ PACKAGE_NAME }}/core/router'
 import { angularRoutes } from '{{ PACKAGE_NAME }}/angular'
 
 export default new Router()
-  // other routes removed
+  // Prevent search engine bot(s) from indexing
+  // Read more on: https://docs.layer0.co/guides/cookbook#blocking-search-engine-crawlers
+  .noIndexPermalink()
   .use(angularRoutes)
 ```
 
@@ -277,6 +279,9 @@ The default router also includes common cache configurations for most Spartacus 
 
 ```js
   return new Router()
+    // Prevent search engine bot(s) from indexing
+    // Read more on: https://docs.layer0.co/guides/cookbook#blocking-search-engine-crawlers
+    .noIndexPermalink()
     .match('/rest/v2/:path*', ({ cache, proxy }) => {
       cache({
         browser: {

@@ -2,23 +2,13 @@
 title: Zola
 ---
 
-This guide shows you how to deploy a [Zola](https://www.getzola.org/) application on {{ PRODUCT_NAME }}.
+This guide shows you how to deploy a [Zola](https://www.getzola.org/) application to {{ PRODUCT }}.
 
 ## Example {/*example*/}
 
 <ExampleButtons repoUrl="https://github.com/layer0-docs/layer0-zola-example" />
 
-{{ SYSTEM_REQUIREMENTS }}
-
-{{ SIGN_UP_LAYER0 }}
-
-## Install the {{ PRODUCT_NAME }} CLI {/*install-the-layer0-cli*/}
-
-If you have not already done so, install the [{{ PRODUCT_NAME }} CLI](cli)
-
-```bash
-npm i -g {{ PACKAGE_NAME }}/cli # yarn global add {{ PACKAGE_NAME }}/cli
-```
+{{ PREREQ }}
 
 ## Create a new Zola app {/*create-a-new-zola-app*/}
 
@@ -91,7 +81,7 @@ Building site...
 -> Creating 0 pages (0 orphan), 0 sections, and processing 0 images
 ```
 
-## Configuring your Zola app for {{ PRODUCT_NAME }} {/*configuring-your-zola-app-for-layer0*/}
+## Configuring your Zola app for {{ PRODUCT }} {/*configuring-your-zola-app-for-edgio*/}
 
 Create a `package.json` at the root of your project with the following:
 
@@ -107,11 +97,11 @@ In the root directory of your project run `{{ CLI_NAME }} init`:
 {{ CLI_NAME }} init
 ```
 
-This will automatically update your `package.json` and add all of the required {{ PRODUCT_NAME }} dependencies and files to your project. These include:
+This will automatically update your `package.json` and add all of the required {{ PRODUCT }} dependencies and files to your project. These include:
 
-- The `{{ PACKAGE_NAME }}/core` package - Allows you to declare routes and deploy your application on {{ PRODUCT_NAME }}
+- The `{{ PACKAGE_NAME }}/core` package - Allows you to declare routes and deploy your application on {{ PRODUCT }}
 - The `{{ PACKAGE_NAME }}/prefetch` package - Allows you to configure a service worker to prefetch and cache pages to improve browsing speed
-- `{{ CONFIG_FILE }}` - A configuration file for {{ PRODUCT_NAME }}
+- `{{ CONFIG_FILE }}` - A configuration file for {{ PRODUCT }}
 - `routes.js` - A default routes file that sends all requests to Zola.
 
 ### Configure the routes {/*configure-the-routes*/}
@@ -119,28 +109,32 @@ This will automatically update your `package.json` and add all of the required {
 Update `routes.js` at the root of your project to the following:
 
 ```js
-// This file was added by layer0 init.
+// This file was added by {{ PRODUCT_NAME_LOWER }} init.
 // You should commit this file to source control.
 
-import { Router } from '@layer0/core/router'
+import { Router } from '@{{ PRODUCT_NAME_LOWER }}/core/router'
 
-export default new Router().static('public', ({ cache }) => {
-  cache({
-    edge: {
-      maxAgeSeconds: 60 * 60 * 60 * 365,
-      forcePrivateCaching: true,
-    },
-    browser: {
-      maxAgeSeconds: 0,
-      serviceWorkerSeconds: 60 * 60 * 24,
-    },
-  })
-})
+export default new Router()
+  // Prevent search engine bot(s) from indexing
+  // Read more on: https://docs.layer0.co/guides/cookbook#blocking-search-engine-crawlers
+  .noIndexPermalink()
+ .static('public', ({ cache }) => {
+   cache({
+     edge: {
+       maxAgeSeconds: 60 * 60 * 60 * 365,
+       forcePrivateCaching: true,
+     },
+     browser: {
+       maxAgeSeconds: 0,
+       serviceWorkerSeconds: 60 * 60 * 24,
+     },
+   })
+ })
 ```
 
 Refer to the [Routing](routing) guide for the full syntax of the `routes.js` file and how to configure it for your use case.
 
-### Run the Zola app locally on {{ PRODUCT_NAME }} {/*run-the-zola-app-locally-on-layer0*/}
+### Run the Zola app locally on {{ PRODUCT }} {/*run-the-zola-app-locally-on-edgio*/}
 
 Create a production build of your app by running the following in your project's root directory:
 
@@ -148,7 +142,7 @@ Create a production build of your app by running the following in your project's
 npm run build
 ```
 
-Run {{ PRODUCT_NAME }} on your local machine:
+Test your app with the {{ PRODUCT_PLATFORM }} on your local machine by running the following command in your project's root directory:
 
 ```bash
 {{ CLI_NAME }} dev
@@ -164,7 +158,7 @@ Create a production build of your app by running the following in your project's
 npm run build
 ```
 
-Next, deploy the build to {{ PRODUCT_NAME }} by running the `{{ CLI_NAME }} deploy` command:
+Deploy your app to the {{ PRODUCT_PLATFORM }} by running the following command in your project's root directory:
 
 ```bash
 {{ CLI_NAME }} deploy

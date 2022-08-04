@@ -2,7 +2,7 @@
 title: BigCommerce
 ---
 
-This guide shows you how to deploy a [BigCommerce](https://www.bigcommerce.com/) backed application on {{ PRODUCT_NAME }}.
+This guide shows you how to deploy a [BigCommerce](https://www.bigcommerce.com/) backed application on {{ PRODUCT }}.
 
 ## What is BigCommerce? {/* what-is-bigcommerce */}
 
@@ -18,17 +18,7 @@ This example is a Next.js app powered by a BigCommerce backend.
   repoUrl="https://github.com/layer0-docs/layer0-nextjs-commerce-example" 
   deployFromRepo />
 
-{{ SIGN_UP_LAYER0 }}
-
-## Install the {{ PRODUCT_NAME }} CLI {/* install-the-layer0-cli*/}
-
-If you have not already done so, install the [{{ PRODUCT_NAME }} CLI](cli)
-
-```bash
-npm i -g {{ PACKAGE_NAME }}/cli # yarn global add {{ PACKAGE_NAME }}/cli
-```
-
-{{ SYSTEM_REQUIREMENTS }}
+{{ PREREQ }}
 
 ## Setting up a BigCommerce Headless Example {/* setting-up-a-bigcommerce-headless-example */}
 
@@ -50,7 +40,7 @@ yarn
 cd site
 ```
 
-2. Run {{ PRODUCT_NAME }} `init` in the project directory:
+2. Run {{ PRODUCT }} `init` in the project directory:
 
 ```bash
 {{ CLI_NAME }} init
@@ -99,7 +89,7 @@ BIGCOMMERCE_STORE_API_CLIENT_SECRET=${CLIENT_SECRET}
 From within the `site` directory, run
 
 ```bash
-0 deploy
+{{ CLI_NAME }} deploy
 ```
 
 ## BigCommerce Storefront Setup {/* bigcommerce-storefront-setup */}
@@ -144,7 +134,7 @@ For this next step you will need the store hash (available in the URL bar) and t
      --header 'Content-Type: application/json' \
      --header 'X-Auth-Token: {API_ACCESS_TOKEN}' \
      --data '{
-       "name": "Layer0",
+       "name": "{{ PRODUCT }}",
        "platform": "custom",
        "type": "storefront",
        "status": "connected",

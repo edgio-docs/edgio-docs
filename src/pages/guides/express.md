@@ -2,36 +2,36 @@
 title: Express
 ---
 
-[Express](https://expressjs.com) is a fast, unopinionated, minimalist web framework for Node.js. The Layer0 serverless environment makes it easy to run apps without managing Node.js servers.
+[Express](https://expressjs.com) is a fast, unopinionated, minimalist web framework for Node.js. The {{ PRODUCT_PLATFORM }}'s serverless environment makes it easy to run apps without managing Node.js servers.
 
 ## Getting Started {/*getting-started*/}
 
-To add {{ PRODUCT_NAME }} to your Express app, run the following in the root directory of your express app:
+Add your Express app to {{ PRODUCT }} by running the following command in your project's root directory:
 
 ```bash
 npm i -g {{ PACKAGE_NAME }}/cli # yarn global add {{ PACKAGE_NAME }}/cli
-0 init
+{{ CLI_NAME }} init
 ```
 
 ## Running your app locally {/*running-your-app-locally*/}
 
-To run your app behind Layer0 locally, run:
+Test your app with the {{ PRODUCT_PLATFORM }} on your local machine by running the following command in your project's root directory:
 
 ```bash
-0 dev
+{{ CLI_NAME }} dev
 ```
 
-## Deploying your app to {{ PRODUCT_NAME }} {/*deploying-your-app-to-layer0*/}
+## Deploying {/*deploying*/}
 
-To deploy your app to {{ PRODUCT_NAME }}, run:
+Deploy your app to the {{ PRODUCT_PLATFORM }} by running the following command in your project's root directory:
 
 ```bash
-0 deploy
+{{ CLI_NAME }} deploy
 ```
 
 ## Overriding the default app location {/*overriding-the-default-app-location*/}
 
-When you deploy your Express app to {{ PRODUCT_NAME }}, the {{ PRODUCT_NAME }} CLI bundles your app as a single javascript file so that it can be run as a serverless function. By default Layer0 looks for your app in a few common locations:
+When you deploy your Express app to the {{ PRODUCT_PLATFORM }}, the {{ PRODUCT }} CLI bundles your app as a single javascript file so that it can be run as a serverless function. By default, {{ COMPANY_NAME }} looks for your app in the following common locations:
 
 - src/server.ts
 - src/server.js
@@ -43,32 +43,35 @@ When you deploy your Express app to {{ PRODUCT_NAME }}, the {{ PRODUCT_NAME }} C
 - app.js
 - index.js
 
-If it cannot find one of these files, you can specify the path to the app in `layer0.config.js`:
+If it cannot find one of these files, you can specify the path to the app in `{{ CONFIG_FILE }}`:
 
 ```js
-const { join } = require('path')
+const {join} = require('path');
 
-// layer0.config.js
+// {{ CONFIG_FILE }}
 module.exports = {
   connector: '@layer0/express',
   express: {
     appPath: join(process.cwd(), 'path', 'to', 'app.js'),
   },
-}
+};
 ```
 
 The file you specify in `appPath` should export an instance of an express app using `export default` or `module.exports`.
 
 ## Serving Static Assets {/*serving-static-assets*/}
 
-If your express app serves any static assets, you'll need to add routes to your Layer0 router to serve them from the edge. For example, to serve all paths under `/assets` from `dist/client/assets`:
+If your express app serves any static assets, you'll need to add routes to your {{ PRODUCT }} router configuration to serve them from the edge. For example, to serve all paths under `/assets` from `dist/client/assets`:
 
 ```js
 // routes.js
-import { Router } from '@layer0/core'
+import {Router} from '@layer0/core';
 
 export default new Router()
-  .match('/assets/:path*', ({ cache, serveStatic }) => {
+  // Prevent search engine bot(s) from indexing
+  // Read more on: https://docs.layer0.co/guides/cookbook#blocking-search-engine-crawlers
+  .noIndexPermalink()
+  .match('/assets/:path*', ({cache, serveStatic}) => {
     cache({
       edge: {
         maxAgeSeconds: 60 * 60 * 365, // cache at the edge for one year
@@ -76,15 +79,15 @@ export default new Router()
       browser: {
         maxAgeSeconds: 60 * 60 * 365, // cache in the browser for one year - only do this if you include hashes in your client asset filenames
       },
-    })
-    serveStatic('dist/client/assets/:path*')
+    });
+    serveStatic('dist/client/assets/:path*');
   })
-  .fallback(({ renderWithApp }) => renderWithApp()) // serve all unmatched URLs from express
+  .fallback(({renderWithApp}) => renderWithApp()); // serve all unmatched URLs from express
 ```
 
 ## Adding Additional Files Needed during SSR {/*adding-additional-files-needed-during-ssr*/}
 
-If your express app expects to be able to read files from the filesystem at runtime, for example an index.html template, you can ensure they are included in the app bundle that is deployed to Layer0's serverless workers by adding the following to layer0.config.js
+If your express app expects to be able to read files from the filesystem at runtime, for example an index.html template, you can ensure they are included in the app bundle that is deployed to {{ PRODUCT_PLATFORM }}'s serverless workers by adding the following to {{ CONFIG_FILE }}
 
 ```js
 module.exports = {
@@ -94,10 +97,58 @@ module.exports = {
     // Include index.html in the serverless bundle
     'dist/client/index.html': true,
   },
-}
+};
 ```
 
 ## Transpiling and TypeScript support {/*transpiling-and-typescript-support*/}
 
-Layer0 will automatically transpile JavaScript and TypeScript source code for running on Node.js version 14. If you want to control how
+{{ PRODUCT }} will automatically transpile JavaScript and TypeScript source code for running on Node.js version 14. If you want to control how
 source files are compiled, you can transpile your app on your own and point your `appPath` config to the transpiled version of your app's main entry point.
+
+## Bundling Options {/*bundling-options*/}
+
+By default Layer0 uses ESBuild to transpile and bundle your application code. If you're having difficulty fitting your app within the limit for serverless bundles, you can try bundling with [ncc](https://github.com/vercel/ncc), which should produce smaller bundles, by adding the following to layer0.config.js:
+
+```js
+module.exports = {
+  express: {
+    bundler: '@vercel/ncc',
+  },
+};
+```
+
+Then add ncc to your app's build dependencies:
+
+```
+npm i -D @vercel/ncc@^0.34.0
+```
+
+Or, using yarn:
+
+```
+yarn add --dev @vercel/ncc@^0.34.0
+```
+
+NCC produces a tree-shaken, bundle which includes your application code and all of its dependencies in a single file (written to .layer0/lambda/backends/index.js). [NFT](https://github.com/vercel/nft) is also supported:
+
+```js
+module.exports = {
+  express: {
+    bundler: '@vercel/nft',
+  },
+};
+```
+
+Then add nft to your app's build dependencies:
+
+```
+npm i -D @vercel/nft@^0.21.0
+```
+
+Or, using yarn:
+
+```
+yarn add --dev @vercel/nft@^0.21.0
+```
+
+NFT is similar to NCC, but it produces an exploded directory tree instead of including all of your code in a single file. We recommend trying ncc first.

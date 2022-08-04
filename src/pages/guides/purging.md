@@ -2,11 +2,11 @@
 title: Purging
 ---
 
-This guide covers how you can purge data from the Layer0 edge cache.
+This guide covers how you can purge data from the {{ PRODUCT }} edge cache.
 
 ## Overview {/*overview*/}
 
-Layer0 offers three ways to purge responses from the cache:
+{{ PRODUCT }} offers three ways to purge responses from the cache:
 
 - Developer Console
 - CLI
@@ -14,7 +14,7 @@ Layer0 offers three ways to purge responses from the cache:
 
 ## Developer Console {/*developer-console*/}
 
-You can purge the cache via the [Layer0 Developer Console](https://app.layer0.co) by navigating to an environment, selecting the _Caching_ tab, and clicking _Purge the Cache_ under _Cache Purge History_:
+You can purge the cache via the [{{ PRODUCT }} Developer Console](https://app.layer0.co) by navigating to an environment, selecting the _Caching_ tab, and clicking _Purge the Cache_ under _Cache Purge History_:
 
 ![purge_the_cache_button](/images/purging/purge_the_cache_button.png)
 

@@ -1,8 +1,8 @@
 ---
-title: GraphQL
+title: GraphQL Caching
 ---
 
-{{ PRODUCT_NAME }} provides full support for caching GraphQL APIs. Putting Layer0 in front of your GraphQL API can significantly improve its performance while reducing the amount of traffic that reaches your origin by serving cached queries from the network edge.
+{{ PRODUCT_NAME }} provides full support for caching GraphQL APIs. Putting {{ PRODUCT }} in front of your GraphQL API can significantly improve its performance while reducing the amount of traffic that reaches your origin by serving cached queries from the network edge.
 
 <Video src="https://player.vimeo.com/video/691615246"/>
 
@@ -24,7 +24,7 @@ The sections below walk you through configuring your {{ PRODUCT_NAME }} project 
 
 ## Project Configuration {/*project-configuration*/}
 
-To deploy Layer0 in front of your GraphQL API, install the {{ PRODUCT_NAME }} CLI and create a new {{ PRODUCT_NAME }} configuration:
+To deploy {{ PRODUCT }} in front of your GraphQL API, install the {{ PRODUCT_NAME }} CLI and create a new {{ PRODUCT_NAME }} configuration:
 
 ```bash
 $ npm i -g {{ PACKAGE_NAME }}/cli # yarn global add {{ PACKAGE_NAME }}/cli
@@ -51,7 +51,7 @@ module.exports = {
 
 ## Add Caching Rules {/*add-caching-rules*/}
 
-There are two ways to cache GraphQL responses using Layer0: by adding caching rules to your Layer0 router or by using the `cache-control` header.
+There are two ways to cache GraphQL responses using {{ PRODUCT }}: by adding caching rules to your {{ PRODUCT }} router or by using the `cache-control` header.
 
 ### Using the {{ PRODUCT_NAME }} Router {/*using-the-layer0-router*/}
 
@@ -84,7 +84,7 @@ export default new Router().graphqlOperation('GetProduct', ({ cache, proxy }) =>
       staleWhileRevalidateSeconds: 60 * 60 * 24, // serve stale responses for up to 24 hours
     },
   })
-  proxy('graphql') // forward requests to the GraphQL API origin we defined in layer0.config.js
+  proxy('graphql') // forward requests to the GraphQL API origin we defined in {{ CONFIG_FILE }}
 })
 ```
 
@@ -130,12 +130,12 @@ cache-control: max-age=3600, stale-while-revalidate=86400
 
 ### Cache Key {/*cache-key*/}
 
-Regardless of the method you choose to define caching rules, Layer0 incorporates the request body into the cache key for all `POST` requests. This means that if two requests have different request bodies,
+Regardless of the method you choose to define caching rules, {{ PRODUCT }} incorporates the request body into the cache key for all `POST` requests. This means that if two requests have different request bodies,
 their responses will be cached separately.
 
 ## Invalidate Stale Queries {/*invalidate-stale-queries*/}
 
-Layer0 gives you the ability to purge individual queries from the edge cache by assigning surrogate keys to each cached response.
+{{ PRODUCT }} gives you the ability to purge individual queries from the edge cache by assigning surrogate keys to each cached response.
 
 ### Assign Surrogate Keys {/*assign-surrogate-keys*/}
 

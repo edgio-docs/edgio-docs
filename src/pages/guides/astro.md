@@ -2,7 +2,7 @@
 title: Astro
 ---
 
-[Astro](https://astro.build/) is a modern static site builder. This guide walks you through deploying Astro sites to {{ PRODUCT_NAME }}.
+[Astro](https://astro.build/) is a modern static site builder. This guide walks you through deploying Astro sites to {{ PRODUCT }}.
 
 ## Example {/*example*/}
 
@@ -11,6 +11,8 @@ title: Astro
   siteUrl="https://layer0-docs-layer0-astro-example-default.layer0-limelight.link"
   repoUrl="https://github.com/layer0-docs/layer0-astro-example" 
   deployFromRepo />
+
+{{ PREREQ }}
 
 ## Create your Astro site {/*create-your-astro-site*/}
 
@@ -33,24 +35,25 @@ npm run dev
 npm run build
 ```
 
-## Add Layer0 {/*add-layer0*/}
+## Initializing your Project {/*initializing-your-project*/}
+
+Initialize your project for use with {{ PRODUCT }} by running the following command in your project's root directory:
 
 ```bash
-# First, globally install the Layer0 CLI:
-npm i -g {{ PACKAGE_NAME }}/cli # yarn global add {{ PACKAGE_NAME }}/cli
-
-# Then, add Layer0 to your Astro site:
-0 init
+{{ CLI_NAME }} init
 ```
 
-## Update your Layer0 Router {/*update-your-layer0-router*/}
+## Update your {{ PRODUCT }} Router {/*update-your-edgio-router*/}
 
-Paste the following into `routes.js` or `routes.ts`, depending on the results of the `0 init` command:
+Paste the following into `routes.js` or `routes.ts`, depending on the results of the `{{ CLI_NAME }} init` command:
 
 ```js
-import { Router } from '@layer0/core'
+import { Router } from '@{{ PRODUCT_NAME_LOWER }}/core'
 
 export default new Router()
+  // Prevent search engine bot(s) from indexing
+  // Read more on: https://docs.layer0.co/guides/cookbook#blocking-search-engine-crawlers
+  .noIndexPermalink()
   .get('/:path*/:file.:ext(js|css|png|ico|jpg|gif|svg)', ({ cache, serveStatic }) => {
     cache({
       browser: {
@@ -78,20 +81,20 @@ export default new Router()
   })
 ```
 
-You can remove the origin backend from `layer0.config.js`:
+You can remove the origin backend from `{{ CONFIG_FILE }}`:
 
 ```js
 module.exports = {}
 ```
 
-## Deploy to Layer0 {/*deploy-to-layer0*/}
+## Deploy to {{ PRODUCT }} {/*deploy-to-edgio*/}
 
-To deploy your site to Layer0, run:
+Deploy your app to the {{ PRODUCT_PLATFORM }} by running the following commands in your project's root directory:
 
 ```bash
 # Create a production build of your astro site
 npm run build
 
-# Deploy it to Layer0
-0 deploy
+# Deploy it to {{ PRODUCT }}
+{{ CLI_NAME }} deploy
 ```

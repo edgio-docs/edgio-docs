@@ -2,7 +2,7 @@
 title: Ember.js
 ---
 
-This guide shows you how to deploy a [Ember.js](https://emberjs.com/) application on {{ PRODUCT_NAME }}.
+This guide shows you how to deploy an [Ember.js](https://emberjs.com/) application to {{ PRODUCT }}.
 
 ## Example {/*example*/}
 
@@ -12,21 +12,11 @@ This guide shows you how to deploy a [Ember.js](https://emberjs.com/) applicatio
   repoUrl="https://github.com/layer0-docs/layer0-emberjs-example" 
   deployFromRepo />
 
-{{ SYSTEM_REQUIREMENTS }}
-
-{{ SIGN_UP_LAYER0 }}
-
-## Install the {{ PRODUCT_NAME }} CLI {/*install-the-layer0-cli*/}
-
-If you have not already done so, install the [{{ PRODUCT_NAME }} CLI](cli)
-
-```bash
-npm i -g {{ PACKAGE_NAME }}/cli # yarn global add {{ PACKAGE_NAME }}/cli
-```
+{{ PREREQ }}
 
 ## Create a new Ember.js app {/*create-a-new-emberjs-app*/}
 
-If you don't already have a Ember.js app, create one by running the following:
+If you don't already have an Ember.js app, create one by running the following:
 
 ```bash
 npm install -g ember-cli
@@ -40,7 +30,7 @@ You can verify your app works by running it locally with:
 ember serve
 ```
 
-## Configuring your Ember.js app for {{ PRODUCT_NAME }} {/*configuring-your-emberjs-app-for-layer0*/}
+## Configuring your Ember.js app for {{ PRODUCT }} {/*configuring-your-emberjs-app-for-edgio*/}
 
 ### Initialize your project {/*initialize-your-project*/}
 
@@ -50,11 +40,11 @@ In the root directory of your project run `{{ CLI_NAME }} init`:
 {{ CLI_NAME }} init
 ```
 
-This will automatically update your `package.json` and add all of the required {{ PRODUCT_NAME }} dependencies and files to your project. These include:
+This will automatically update your `package.json` and add all of the required {{ PRODUCT }} dependencies and files to your project. These include:
 
-- The `{{ PACKAGE_NAME }}/core` package - Allows you to declare routes and deploy your application on {{ PRODUCT_NAME }}
+- The `{{ PACKAGE_NAME }}/core` package - Allows you to declare routes and deploy your application on {{ PRODUCT }}
 - The `{{ PACKAGE_NAME }}/prefetch` package - Allows you to configure a service worker to prefetch and cache pages to improve browsing speed
-- `{{ CONFIG_FILE }}` - A configuration file for {{ PRODUCT_NAME }}
+- `{{ CONFIG_FILE }}` - A configuration file for {{ PRODUCT }}
 - `routes.js` - A default routes file that sends all requests to Ember.js.
 
 ### Configure the routes {/*configure-the-routes*/}
@@ -62,12 +52,15 @@ This will automatically update your `package.json` and add all of the required {
 Update `routes.js` at the root of your project to the following:
 
 ```js
-// This file was added by layer0 init.
+// This file was added by {{ PRODUCT_NAME_LOWER }} init.
 // You should commit this file to source control.
 
-import { Router } from '@layer0/core/router'
+import { Router } from '@{{ PRODUCT_NAME_LOWER }}/core/router'
 
 export default new Router()
+  // Prevent search engine bot(s) from indexing
+  // Read more on: https://docs.layer0.co/guides/cookbook#blocking-search-engine-crawlers
+  .noIndexPermalink()
   .match('/robots.txt', ({ serveStatic }) => {
     serveStatic('dist/robots.txt')
   })
@@ -91,7 +84,7 @@ export default new Router()
 
 Refer to the [Routing](routing) guide for the full syntax of the `routes.js` file and how to configure it for your use case.
 
-### Run the Ember.js app locally on {{ PRODUCT_NAME }} {/*run-the-emberjs-app-locally-on-layer0*/}
+### Run the Ember.js app locally on the {{ PRODUCT_PLATFORM }} {/*run-the-emberjs-app-locally-on-the-app-platform*/}
 
 Create a production build of your app by running the following in your project's root directory:
 
@@ -99,7 +92,7 @@ Create a production build of your app by running the following in your project's
 npm run build
 ```
 
-Run {{ PRODUCT_NAME }} on your local machine:
+Test your app with the {{ PRODUCT_PLATFORM }} on your local machine by running the following command in your project's root directory:
 
 ```bash
 {{ CLI_NAME }} dev
@@ -115,7 +108,7 @@ Create a production build of your app by running the following in your project's
 npm run build
 ```
 
-Next, deploy the build to {{ PRODUCT_NAME }} by running the `{{ CLI_NAME }} deploy` command:
+Deploy your app to the {{ PRODUCT_PLATFORM }} by running the following command in your project's root directory:
 
 ```bash
 {{ CLI_NAME }} deploy

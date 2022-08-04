@@ -1,5 +1,5 @@
 ---
-title: {{ PRODUCT_NAME }} Regions
+title: Regions
 ---
 
 ## Serverless Compute {/*serverless-compute*/}

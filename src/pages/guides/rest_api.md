@@ -1,5 +1,5 @@
 ---
-title: API
+title: REST API
 ---
 
 This guide covers the REST API provided by {{ PRODUCT_NAME }}.

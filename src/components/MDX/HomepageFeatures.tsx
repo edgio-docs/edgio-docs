@@ -12,6 +12,8 @@ import {IconSpark} from '../Icon/IconSpark';
 import Container from '../Layout/Container';
 
 const StyledHomepageFeatures = styled.div`
+  padding-bottom: 500px;
+
   .section-container {
     > * {
       padding: 50px 0;
@@ -41,6 +43,10 @@ const StyledHomepageFeatures = styled.div`
         padding: 50px 0;
       }
     }
+  }
+
+  @media (max-width: 630px) {
+    padding-bottom: 850px;
   }
 `;
 

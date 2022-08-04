@@ -90,13 +90,13 @@ const StyledButtonLink = styled.div.attrs<IStyledButtonLinkProps>((props) => ({
 export default function ButtonLink({
   variant,
   type = 'default',
-  children,
+  children = false,
   href,
   withIcon,
 }: {
   variant: 'fill' | 'stroke';
   type: 'default' | 'code' | 'deploy';
-  children: React.ReactNode;
+  children?: React.ReactNode;
   href: string | UrlObject;
   withIcon: boolean;
 }) {

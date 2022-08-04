@@ -159,6 +159,24 @@ import { Prefetcher } from '{{ PACKAGE_NAME }}/prefetch/sw'
 new Prefetcher().route()
 ```
 
+## Adding the {{ PRODUCT_NAME }} Service Worker {/*adding-the-layer0-service-worker*/}
+
+To add the {{ PRODUCT_NAME }} service worker to your app, call the `install` function from `{{ PACKAGE_NAME }}/prefetch/window` in a `useEffect` hook when the app first loads. For example, you can alter the `pages/_app.js` in your Next.js app as follows:
+
+```js
+// pages/_app.js
+import { useEffect } from 'react'
+import { install } from '{{ PACKAGE_NAME }}/prefetch/window'
+
+const MyApp = ({ Component, pageProps }) => {
+  useEffect(() => {
+    if (process.env.NODE_ENV === 'production') {
+      install()
+    }
+  }, [])
+}
+```
+
 The code above allows you to prefetch pages from {{ PRODUCT }}'s edge cache to greatly improve browsing speed. To prefetch a page, add the `Prefetch` component from `{{ PACKAGE_NAME }}/react` to any Next `Link` element. The example below shows you how to prefetch JSON data from `getServerSideProps` or `getStaticProps` using the `createNextDataUrl` function from `{{ PACKAGE_NAME }}/next/client`.
 
 ```js
@@ -221,6 +239,9 @@ const { Router } = require('{{ PACKAGE_NAME }}/core/router')
 const { nextRoutes } = require('{{ PACKAGE_NAME }}/next')
 
 module.exports = new Router()
+  // Prevent search engine bot(s) from indexing
+  // Read more on: https://docs.layer0.co/guides/cookbook#blocking-search-engine-crawlers
+  .noIndexPermalink()
   .get('/service-worker.js', ({ cache, serveStatic }) => {
     cache({
       edge: {
@@ -320,6 +341,9 @@ imagine you have `/pages/p/[productId].js`. Here's how you can SSR responses as 
 
 ```js
 new Router()
+  // Prevent search engine bot(s) from indexing
+  // Read more on: https://docs.layer0.co/guides/cookbook#blocking-search-engine-crawlers
+  .noIndexPermalink()
   // Products - SSR
   .get('/p/:productId', ({ cache }) => {
     cache({

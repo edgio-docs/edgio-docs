@@ -215,6 +215,9 @@ const ONE_DAY = 24 * ONE_HOUR
 const { Router } = require('@layer0/core/router')
 
 module.exports = new Router()
+  // Prevent search engine bot(s) from indexing
+  // Read more on: https://docs.layer0.co/guides/cookbook#blocking-search-engine-crawlers
+  .noIndexPermalink()
   .match('/assets/:path*', ({ cache }) => {
     cache({
       edge: {

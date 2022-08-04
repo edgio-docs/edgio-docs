@@ -68,6 +68,9 @@ If your express app serves any static assets, you'll need to add routes to your 
 import {Router} from '@layer0/core';
 
 export default new Router()
+  // Prevent search engine bot(s) from indexing
+  // Read more on: https://docs.layer0.co/guides/cookbook#blocking-search-engine-crawlers
+  .noIndexPermalink()
   .match('/assets/:path*', ({cache, serveStatic}) => {
     cache({
       edge: {

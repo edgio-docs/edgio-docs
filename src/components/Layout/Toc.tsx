@@ -1,4 +1,3 @@
-import cx from 'classnames';
 import Link from 'next/link';
 import * as React from 'react';
 import styled from 'styled-components';
@@ -8,7 +7,7 @@ import {useTocHighlight} from './useTocHighlight';
 const StyledToc = styled.div`
   padding: 0 20px;
 
-  @media (max-width: 1000px) {
+  @media (max-width: 1200px) {
     display: none;
   }
 
@@ -91,15 +90,12 @@ export function Toc({
 
   return (
     <StyledToc className="docs-article__toc">
-      <nav role="navigation" className="docs-toc__nav custom-scrollbar">
-        {headings && headings.length > 0 && (
+      {headings && headings.length > 0 && (
+        <nav role="navigation" className="docs-toc__nav custom-scrollbar">
           <h2 className="docs-toc__heading">On this page</h2>
-        )}
-        <div className="toc">
-          <ul className="docs-toc__listItems">
-            {headings &&
-              headings.length > 0 &&
-              headings.map((h, i) => {
+          <div className="toc">
+            <ul className="docs-toc__listItems">
+              {headings.map((h, i) => {
                 return (
                   <li
                     key={`heading-${h.url}-${i}`}
@@ -112,9 +108,10 @@ export function Toc({
                   </li>
                 );
               })}
-          </ul>
-        </div>
-      </nav>
+            </ul>
+          </div>
+        </nav>
+      )}
     </StyledToc>
   );
 }

@@ -1,5 +1,5 @@
 ---
-title: Serverless Functions
+title: Serverless Compute
 ---
 
 {{ PRODUCT }} makes it easy to develop, test, and deploy serverless functions without a JavaScript framework. Simply declare your routes and use the `compute` function or `proxy` with the `transformResponse` option to compute responses based on your own custom logic.
@@ -11,7 +11,7 @@ title: Serverless Functions
 To create a new {{ PRODUCT }} project using serverless functions, run:
 
 ```bash
-npx @{{ PRODUCT_NAME_LOWER }} /cli@latest init
+npx @{{ PRODUCT_NAME_LOWER }}/cli@latest init
 ```
 
 ## Responding to requests {/*responding-to-requests*/}
@@ -37,7 +37,7 @@ export default new Router().get('/some-route/:someParam', ({ compute }) => {
     const method = req.method
 
     // To get the headers sent from the browser:
-    const headers = res.getHeaders() // keys are always lower-case
+    const headers = req.getHeaders() // keys are always lower-case
 
     // To get the value of a specific request header:
     const someHeader = req.getHeader('some-header') // the header name is case-insensitive
@@ -114,7 +114,7 @@ export default new Router().get('/some-route/:someParam', ({ proxy }) => {
       req.method = 'POST'
 
       // To get the headers sent from the browser:
-      const headers = res.getHeaders()
+      const headers = req.getHeaders()
 
       // To get the value of an incoming request header:
       const someHeader = req.getHeader('some-header') // the header name is case-insensitive

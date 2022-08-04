@@ -1,4 +1,3 @@
-import {useEffect} from 'react';
 import styled from 'styled-components';
 
 import {Toc} from '../Layout/Toc';
@@ -10,10 +9,9 @@ import {siteConfig} from 'siteConfig';
 
 const StyledDocs = styled.div`
   max-width: var(--docs-area-width);
-  margin: 0 auto;
+  margin: 0 auto 500px auto;
   display: grid;
   grid-template-columns: 75% 1fr;
-  min-height: calc(100vh - 64px);
 
   .docs-article__section {
     padding: 0 20px 20px 20px;
@@ -173,8 +171,12 @@ const StyledDocs = styled.div`
     }
   }
 
-  @media (max-width: 1000px) {
+  @media (max-width: 1200px) {
     grid-template-columns: 1fr;
+  }
+
+  @media (max-width: 630px) {
+    margin-bottom: 900px;
   }
 `;
 

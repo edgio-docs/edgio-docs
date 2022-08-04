@@ -73,6 +73,10 @@ dynamicPaths.forEach((i) => {
   })
 })
 
+// Prevent search engine bot(s) from indexing
+// Read more on: https://docs.layer0.co/guides/cookbook#blocking-search-engine-crawlers
+router.noIndexPermalink()
+
 router.match('/:path*', ({ serveStatic, cache }) => {
   cache({
     browser: false,

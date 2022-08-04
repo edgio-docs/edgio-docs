@@ -35,6 +35,20 @@ This guide describes caveats and limits of {{ PRODUCT_NAME }} platform as applie
 | Size  | Unlimited | All access logs will always be [logged](/guides/logs#section_access_logs).                          |
 | Time  | 2 hours   | The minimum time that {{ PRODUCT_NAME }} guarantees that access logs will be available for reading. |
 
+### Prohibited Headers {/*prohibited-headers*/}
+
+The following is a list of headers that cannot be modified by your project code. These values are immutable and can only be set by the {{ PRODUCT }} platform.
+
+* `{{ HEADER_PREFIX }}-platform`
+* `{{ HEADER_PREFIX }}-version` 
+* `{{ HEADER_PREFIX }}-t` 
+* `{{ HEADER_PREFIX }}-components`
+* `{{ HEADER_PREFIX }}-status`
+* `host`
+* `x-request-id`
+* `content-length`
+* `via`
+
 ## {{ PRODUCT_NAME }} Platform Caveats {/*layer0-platform-caveats*/}
 ### NodeJS native extensions {/*nodejs-native-extensions*/}
 

@@ -2,7 +2,7 @@
 title: Response Headers
 ---
 
-This guide describes the headers that {{ PRODUCT_NAME }} injects into responses, making them visible to your client code. Note that the `x-0-*` headers namespace is reserved for {{ PRODUCT_NAME }} internal use and setting them yourself, except where so noted, is unsupported.
+This guide describes the headers that {{ PRODUCT_NAME }} injects into responses, making them visible to your client code. Note that the `{{ HEADER_PREFIX }}-*` headers namespace is reserved for {{ PRODUCT_NAME }} internal use and setting them yourself, except where so noted, is unsupported. See [Prohibited Headers](limits#prohibited-headers) for more information.
 
 ## General Headers {/*general-headers*/}
 
@@ -118,7 +118,7 @@ The `{{ HEADER_PREFIX }}-status` header will show the response codes received fr
 
 ### Cold start timing {/*serverless-cold-start-timing*/}
 
-To calculate the Serverless cold start timing you must take the difference between `pf` and `wt` in the `x-0-t` header. `wt` is time taken for the lambda to execute after it has started, this is can be read as the time is takes the project code to execute. If that seems large, evaluate the code within your project to see why this might be. To [track timings](/guides/performance#tracking-your-own-timings) for a function, it is possible to add specific code to do that. 
+To calculate the Serverless cold start timing you must take the difference between `pf` and `wt` in the `{{ HEADER_PREFIX }}-t` header. `wt` is time taken for the lambda to execute after it has started, this is can be read as the time is takes the project code to execute. If that seems large, evaluate the code within your project to see why this might be. To [track timings](/guides/performance#tracking-your-own-timings) for a function, it is possible to add specific code to do that. 
 
 Based on the example above, that would be `809 (pf) - 722 (wt) = 87ms`. 
 

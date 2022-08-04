@@ -2,7 +2,7 @@
 title: Request Headers
 ---
 
-This guide covers the headers that {{ PRODUCT_NAME }} injects into requests making them visible to your server code. Note that the `x-0-*` headers namespace is reserved for {{ PRODUCT_NAME }} internal use and setting them yourself, except where so noted, is unsupported.
+This guide covers the headers that {{ PRODUCT_NAME }} injects into requests making them visible to your server code. Note that the `{{ HEADER_PREFIX }}-*` headers namespace is reserved for {{ PRODUCT_NAME }} internal use and setting them yourself, except where so noted, is unsupported. See [Prohibited Headers](limits#prohibited-headers) for more information.
 
 ## General headers {/*general-headers*/}
 

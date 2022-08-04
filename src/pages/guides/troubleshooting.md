@@ -130,7 +130,7 @@ You can find both links on the detail page of a deployment.
 
 ## Cache Reasons {/*cache-reasons*/}
 
-We provide a header, `x-0-caching-status` to best understand why something is being cached. There is a [detailed guide](caching#section_why_is_my_response_not_being_cached_) available on deciphering those reasons.
+We provide a header, `{{ HEADER_PREFIX }}-caching-status` to best understand why something is being cached. There is a [detailed guide](caching#section_why_is_my_response_not_being_cached_) available on deciphering those reasons.
 
 ## Source Maps {/*source-maps*/}
 

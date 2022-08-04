@@ -45,7 +45,7 @@ The following is a list of headers that cannot be modified by your project code.
 * `{{ HEADER_PREFIX }}-components`
 * `{{ HEADER_PREFIX }}-status`
 * `{{ HEADER_PREFIX }}-lambda-name`  
-* `{{ HEADER_PREFIX }}-lambda-schedwule-timeout`
+* `{{ HEADER_PREFIX }}-lambda-schedule-timeout`
 * `{{ HEADER_PREFIX }}-received-at`
 * `host`
 * `x-request-id`

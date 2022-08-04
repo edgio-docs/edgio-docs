@@ -25,15 +25,14 @@ npm init stencil
 ```bash
 ? Pick a starter › - Use arrow-keys. Return to submit.
 
-❯  ionic-pwa     Everything you need to build fast, production ready PWAs
-   app           Minimal starter for building a Stencil app or website
    component     Collection of web components that can be used anywhere
+ ❯ app           Minimal starter for building a Stencil app or website
 ```
 
 You can verify your app works by running it locally with:
 
 ```bash
-npm run start
+npm install && npm run start
 ```
 
 ## Configuring your Stencil app for {{ PRODUCT }} {/*configuring-your-stencil-app-for-edgio*/}

@@ -5,8 +5,8 @@ export const IconDeploy = React.memo<JSX.IntrinsicElements['svg']>(
   ({className}) => (
     <svg
       className={cn('inline', className)}
-      width="171"
-      height="38"
+      width="162"
+      height="36"
       viewBox="0 0 126 28"
       fill="none"
       xmlns="http://www.w3.org/2000/svg">

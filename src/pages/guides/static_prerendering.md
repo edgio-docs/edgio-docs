@@ -7,7 +7,6 @@ title: Static Prerendering
   View the Code
  </ButtonLink>
  <ButtonLink variant="stroke" type="deploy" withIcon={true} href="https://app.layer0.co/deploy?button&deploy&repo=https://github.com/layer0-docs/layer0-prerender-example">
-   Deploy to {{ PRODUCT }}
  </ButtonLink>
 </ButtonLinksGroup>
 

@@ -31,12 +31,13 @@ export default function ExampleButtons({
         </ButtonLink>
       )}
       {deployFromRepo && repoUrl && (
-        <a
+        <ButtonLink
+          variant="stroke"
+          type="deploy"
+          withIcon={true}
           href={`https://app.layer0.co/deploy?button&deploy&repo=${encodeURIComponent(
             repoUrl
-          )}`}>
-          <IconDeploy />
-        </a>
+          )}`}></ButtonLink>
       )}
     </ButtonLinksGroup>
   );

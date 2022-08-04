@@ -139,7 +139,6 @@ interface IButtonLinkProps {
  View the Code
 </ButtonLink>
 <ButtonLink variant="stroke" type="deploy" withIcon={true} href="...">
-  Deploy to Layer0
 </ButtonLink>
 ```
 Renders:
@@ -151,7 +150,6 @@ Renders:
  View the Code
 </ButtonLink>
 <ButtonLink variant="stroke" type="deploy" withIcon={true} href="https://app.layer0.co/deploy?button&deploy&repo=https%253A%252F%252Fgithub.com%252Flayer0-docs%252Flayer0-nextjs-example">
-  Deploy to Layer0
 </ButtonLink>
 
 ---
@@ -167,7 +165,6 @@ Renders:
   View the Code
  </ButtonLink>
  <ButtonLink variant="stroke" type="deploy" withIcon={true} href="...">
-   Deploy to Layer0
  </ButtonLink>
 </ButtonLinksGroup>
 ```
@@ -182,6 +179,5 @@ Renders:
 	 View the Code
 	</ButtonLink>
 	<ButtonLink variant="stroke" type="deploy" withIcon={true} href="https://app.layer0.co/deploy?button&deploy&repo=https%253A%252F%252Fgithub.com%252Flayer0-docs%252Flayer0-nextjs-example">
-	  Deploy to Layer0
 	</ButtonLink>
 </ButtonLinksGroup>

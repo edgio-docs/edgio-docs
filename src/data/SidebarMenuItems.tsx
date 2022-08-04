@@ -201,8 +201,12 @@ const SidebarMenuItems: ISidebarMenuItems = [
           path: '/guides/traditional_sites',
         },
         {
-          title: 'Traffic Splitting',
+          title: 'Split Testing',
           path: '/guides/split_testing',
+        },
+        {
+          title: 'Traffic Splitting',
+          path: '/guides/traffic_splitting',
         },
         {
           title: 'Observability',
@@ -707,10 +711,6 @@ const SidebarMenuItems: ISidebarMenuItems = [
       sortRoutes: true,
       routes: [
         {
-          title: 'Changelog',
-          path: '/guides/changelog',
-        },
-        {
           title: 'Limits & Caveats',
           path: '/guides/limits',
         },
@@ -722,65 +722,7 @@ const SidebarMenuItems: ISidebarMenuItems = [
           title: CONFIG_FILE,
           path: '/guides/layer0_config',
         },
-        {
-          title: 'Contributing',
-          path: '/guides/contributing',
-        },
       ],
-    },
-    {
-      title: 'Learning Resources',
-      icon: <IconBulb />,
-      iconDark: <IconBulbDark />,
-      path: 'learning-resources',
-      sortRoutes: false,
-      routes: [
-        {
-          title: 'Install Node.js',
-          path: '/guides/install_nodejs',
-        },
-        {
-          title: 'What is GraphQL?',
-          path: '/guides/what_is_graphql',
-        },
-        {
-          title: `Tutorials`,
-          path: 'https://vimeo.com/user/776463/folder/9270726',
-          external: true,
-        },
-      ],
-    },
-  ],
-  [
-    {
-      title: 'Fiddle',
-      icon: <IconFiddle />,
-      iconDark: <IconFiddleDark />,
-      path: 'https://fiddle.layer0.co/?sgId=7bc47c45-c1d6-4189-b416-552581d86006',
-    },
-    {
-      title: 'Forum',
-      icon: <IconForum />,
-      iconDark: <IconForumDark />,
-      path: 'https://forum.layer0.co/?sgId=7bc47c45-c1d6-4189-b416-552581d86006',
-    },
-    {
-      title: 'Status',
-      icon: <IconStatus />,
-      iconDark: <IconStatusDark />,
-      path: 'https://status.layer0.co/?sgId=7bc47c45-c1d6-4189-b416-552581d86006',
-    },
-    {
-      title: 'Support',
-      icon: <IconSupport />,
-      iconDark: <IconSupportDark />,
-      path: 'https://app.layer0.co/help?sgId=7bc47c45-c1d6-4189-b416-552581d86006',
-    },
-    {
-      title: 'Edg.io',
-      icon: <IconEdgioSquareLogo />,
-      iconDark: <IconEdgioSquareLogoDark />,
-      path: 'https://edg.io',
     },
   ],
 ];

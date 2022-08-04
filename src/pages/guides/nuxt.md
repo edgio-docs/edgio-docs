@@ -183,7 +183,11 @@ The next few sections of this guide explain how {{ PRODUCT_NAME }} interacts wit
 const { Router } = require('{{ PACKAGE_NAME }}/core/router')
 const { nuxtRoutes, renderNuxtPage } = require('{{ PACKAGE_NAME }}/nuxt')
 
-module.exports = new Router().use(nuxtRoutes)
+module.exports = new Router()
+  // Prevent search engine bot(s) from indexing
+  // Read more on: https://docs.layer0.co/guides/cookbook#blocking-search-engine-crawlers
+  .noIndexPermalink()
+  .use(nuxtRoutes)
 ```
 
 ### nuxtRoutes Middleware {/*nuxtroutes-middleware*/}

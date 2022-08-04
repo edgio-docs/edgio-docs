@@ -51,6 +51,9 @@ Paste the following into `routes.js` or `routes.ts`, depending on the results of
 import { Router } from '@{{ PRODUCT_NAME_LOWER }}/core'
 
 export default new Router()
+  // Prevent search engine bot(s) from indexing
+  // Read more on: https://docs.layer0.co/guides/cookbook#blocking-search-engine-crawlers
+  .noIndexPermalink()
   .get('/:path*/:file.:ext(js|css|png|ico|jpg|gif|svg)', ({ cache, serveStatic }) => {
     cache({
       browser: {

@@ -8,10 +8,12 @@ body {
 *::before,
 *::after {
   box-sizing: border-box;
+  transition: background-color 200ms linear, color 200ms linear;
 }
 
 * {
   margin: 0;
+  scroll-margin-top: calc(var(--header-height) + 8px);
 }
 
 html,

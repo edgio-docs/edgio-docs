@@ -40,7 +40,7 @@ When behind a third-party CDN, there is no way for {{ PRODUCT_NAME }} to securel
 
 In this situation, it is your responsibility to correctly set the client IP header and the dependent geolocation headers and pass it that way to {{ PRODUCT_NAME }} and upstream servers.
 
-For example, if you wish to set the `{{ HEADER_PREFIX }}-client-ip` and related geolocation header, to the header values injected by the third-party CDN, you can add a shim for this which go at the top of your router:
+For example, if you wish to set the `{{ HEADER_PREFIX }}-client-ip` and related geolocation header, to the header values injected by the third-party CDN, you can add a shim for this which go at the top of your router. Note that the `{{ HEADER_PREFIX }}-*` headers namespace is reserved for {{ PRODUCT_NAME }} internal use and setting them yourself, except where so noted, is unsupported. See [Prohibited Headers](limits#prohibited-headers) for more information.
 
 ```js
 .match('/:splat*', ({ setRequestHeader, removeRequestHeader }) => {

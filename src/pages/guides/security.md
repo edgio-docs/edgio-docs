@@ -152,7 +152,7 @@ You can monitor the impact of your bots by flagging each bot type of request gai
 
 #### General Information {/*general-information*/}
 
-{{ PRODUCT_NAME }} examines the `user-agent` header in an incoming request to determine if it includes a string that indicates if it is a bot, and if so, injects `1` in the `x-0-device-is-bot` request header, which will be visible to your server code. If the `user-agent` header does not include any of the strings indicating a bot, a `0` value is injected.
+{{ PRODUCT_NAME }} examines the `user-agent` header in an incoming request to determine if it includes a string that indicates if it is a bot, and if so, injects `1` in the `{{ HEADER_PREFIX }}-device-is-bot` request header, which will be visible to your server code. If the `user-agent` header does not include any of the strings indicating a bot, a `0` value is injected.
 
 #### User Agents and Bots {/*user-agents-and-bots*/}
 

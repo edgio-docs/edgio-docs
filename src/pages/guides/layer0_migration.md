@@ -61,7 +61,7 @@ The `xdn` field in the access logs has been renamed to `layer0`: https://docs.la
 
 ### Response Headers {/*response-headers*/}
 
-The prefixes of the response headers have changed from `x-xdn-*` to `x-0-*`. For example, `x-xdn-t` is now `x-0-t`.
+The prefixes of the response headers have changed from `x-xdn-*` to `{{ HEADER_PREFIX }}-*`. For example, `x-xdn-t` is now `{{ HEADER_PREFIX }}-t`.
 
 ### Cookies {/*cookies*/}
 

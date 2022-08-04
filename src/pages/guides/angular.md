@@ -99,6 +99,9 @@ imagine you have a route `/pages/c/:categoryId`:
 
 ```js
 new Router()
+  // Prevent search engine bot(s) from indexing
+  // Read more on: https://docs.layer0.co/guides/cookbook#blocking-search-engine-crawlers
+  .noIndexPermalink()
   .get('/pages/c/:categoryId', ({ cache }) => {
     cache({
       browser: {

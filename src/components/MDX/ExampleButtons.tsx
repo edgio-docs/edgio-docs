@@ -37,7 +37,8 @@ export default function ExampleButtons({
           withIcon={true}
           href={`https://app.layer0.co/deploy?button&deploy&repo=${encodeURIComponent(
             repoUrl
-          )}`}></ButtonLink>
+          )}`}
+        />
       )}
     </ButtonLinksGroup>
   );

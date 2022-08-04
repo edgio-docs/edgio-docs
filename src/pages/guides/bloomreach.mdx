@@ -8,7 +8,7 @@ This guide shows you how to deploy a [Bloomreach](https://www.bloomreach.com/) b
 
 Bloomreach is an API driven platform offering that focuses on powerful [content](https://www.bloomreach.com/en/products/content), customer [engagement](https://www.bloomreach.com/en/products/engagement), and product [discovery](https://www.bloomreach.com/en/products/discovery) offerings to achieve true personalization and drive unparalleled business growth. Their offerings and deep partner network create the ability to develop a performant and capable site offering.
 
-## Example {/*example*/}
+## Example {/* example */}
 
 This example is a React app powered by Bloomreach Content. The following is based on the Bloomreach [Reference SPA](https://github.com/bloomreach/bloomreach-reference-spa).
 
@@ -30,8 +30,8 @@ This example is a React app powered by Bloomreach Content. The following is base
     variant="stroke"
     type="deploy"
     withIcon={true}
-    href="https://app.layer0.co/deploy?button&deploy&repo=https://github.com/layer0-docs/layer0-docs-bloomreach-reference-spa-static-example">
-  </ButtonLink>
+    href="https://app.layer0.co/deploy?button&deploy&repo=https://github.com/layer0-docs/layer0-docs-bloomreach-reference-spa-static-example"
+  />
 </ButtonLinksGroup>
 
 {{ PREREQ }}
@@ -48,7 +48,7 @@ The sample application does the following things:
 - [Caching](/guides/prefetching) configuration for GraphQL operations, API operations, and static operations have been added in the `routes.ts` file.
 - To view [Prefetching](/guides/prefetching) in operation, view the `<Link />` component. This wraps menu items and category items to prefetch the content of those links to allow content to be served from instantly from the browser's cache.
 
-### Get the code {/*get-the-code*/}
+### Get the code {/* get-the-code */}
 
 There are a couple options to continue:
 
@@ -63,15 +63,15 @@ If you were to clone the repo directly,
 git clone git@github.com:layer0-docs/layer0-docs-bloomreach-reference-spa-example.git
 ```
 
-### Configure the project {/*configure-the-project*/}
+### Configure the project {/* configure-the-project */}
 
 From within the project, let's configure and review a couple of items. This is a sample project static React application.
 
 Duplicate `.env.dist` and name it `.env`. From within the file we need to configure these top 4 variabless.
 
 <Callout type="info">
-  The values below can be used to access the {{PRODUCT}} sandbox. If you
-  change these to your own, they may not match the Bloomreach application
+  The values below can be used to access the {{PRODUCT}} sandbox. If you change
+  these to your own, they may not match the Bloomreach application
   configuration.
 </Callout>
 
@@ -94,8 +94,8 @@ REACT_APP_SM_CUSTOM_VARIANT_PURCHASE_PRICE_FIELD=
 ```
 
 <Callout type="info">
-  If you have not yet deployed the project to {{PRODUCT}}, you will not
-  have a deployed URL. Route requests to localhost during local development.
+  If you have not yet deployed the project to {{PRODUCT}}, you will not have a
+  deployed URL. Route requests to localhost during local development.
 </Callout>
 
 - `REACT_APP_BRXM_ENDPOINT` - the deployed URL for your {{ PRODUCT }} project.
@@ -109,7 +109,7 @@ Ensure the variables are loaded by running this in the root of your project.
 source .env
 ```
 
-### Run the Project {/*run-the-project*/}
+### Run the Project {/* run-the-project */}
 
 Now that your environment variables are configured, we can start the project with
 
@@ -117,7 +117,7 @@ Now that your environment variables are configured, we can start the project wit
 npm run start
 ```
 
-### Deploy the Project {/*deploy-the-project*/}
+### Deploy the Project {/* deploy-the-project */}
 
 If you created your project via the "Deploy to {{ PRODUCT }}" above then you do not need to do anything further to actively deploy the project.
 
@@ -128,7 +128,7 @@ npm run build
 {{ CLI_NAME }} deploy
 ```
 
-## Setting up a Bloomreach Example Site from Scratch {/*setting-up-a-bloomreach-example-site-from-scratch*/}
+## Setting up a Bloomreach Example Site from Scratch {/* setting-up-a-bloomreach-example-site-from-scratch */}
 
 If you are already a Bloomreach customer with an existing configuration, you can skip this section.
 
@@ -142,7 +142,7 @@ Bloomreach [documentation](https://documentation.bloomreach.com/) can help provi
   that can be used until you have access to your own instance.
 </Callout>
 
-### Create Bloomreach Content Project {/*create-bloomreach-content-project*/}
+### Create Bloomreach Content Project {/* create-bloomreach-content-project */}
 
 1. **Login** to the Bloomreach Content Portal.
 
@@ -188,7 +188,7 @@ Click on Save to persist your changes.
 
 At this point your changes are still unpublished and only visible in the preview. To publish the page and make it available through the [Delivery API](https://documentation.bloomreach.com/content/reference/delivery-api), open the Page menu again and choose Publish​​​​​.
 
-### Generate Frontend Project {/*generate-frontend-project*/}
+### Generate Frontend Project {/* generate-frontend-project */}
 
 To accompany the Bloomreach content project above, we will generate a new app from scratch and configure it to work with {{ PRODUCT }}.
 

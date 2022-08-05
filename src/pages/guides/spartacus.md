@@ -12,7 +12,7 @@ This guide shows you how to deploy a [Spartacus](https://sap.github.io/spartacus
    View the Code
   </ButtonLink>
   <ButtonLink variant="stroke" type="deploy" withIcon={true} href="https://app.layer0.co/deploy?button&deploy&repo=https%3A%2F%2Fgithub.com%2Flayer0-docs%2Flayer0-spartacus-example">
-    Deploy to Layer0
+    Deploy to {{ PRODUCT }}
   </ButtonLink>
 </ButtonLinksGroup>
 

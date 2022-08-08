@@ -107,6 +107,7 @@ module.exports = new Router()
       .fallback(({ proxy }) => proxy('new')),
   )
 ```
+After deploying a router with multiple destinations, all requests will be sent to the first destination until you have defined traffic splitting rules within the {{ PRODUCT }} Developer Console.
 
 ## Step 3. Configure Traffic Splitting Rules in the {{ PRODUCT }} Developer Console {/*step-3-configure-traffic-splitting-rules-in-the-developer-console*/}
 

@@ -88,7 +88,7 @@ The code-snippet aboves renders:
 ---
 ### Codeblock {/*codeblock*/}
 
-Provide a language-module for syntax highlighting or non if you still need to use a codeblock.
+Provide a language-module for syntax highlighting or none if you still need to use a codeblock.
 
 ```ts
 // This codeblock has the 'js' language module (with JS comment)

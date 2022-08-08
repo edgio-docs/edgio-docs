@@ -14,7 +14,7 @@ Check out our video [{{ PRODUCT_NAME }} - What & Why](https://www.youtube.com/wa
 
 ## Architecture {/*architecture*/}
 
-![architecture](/images/overview/architecture.svg)
+![architecture](/images/overview/architecture.png)
 
 ### L1 Edge Cache {/*l1-edge-cache*/}
 

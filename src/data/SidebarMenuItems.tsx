@@ -560,9 +560,66 @@ const SidebarMenuItems: ISidebarMenuItems = [
       title: PRODUCT_SECURITY,
       icon: <IconSecurityPlain />,
       iconDark: <IconSecurityPlainDark />,
-      path: 'reference',
-      sortRoutes: true,
+      path: 'security',
+      sortRoutes: false,
       routes: [
+        {
+          title: 'Introduction',
+          path: '/guides/app_security/introduction',
+        },
+        {
+          title: 'Basic Setup',
+          path: '/guides/app_security/configuration',
+        },
+        {
+          title: 'Access Rules',
+          path: '/guides/app_security/access_rules',
+        },
+        {
+          title: 'Rate Rules',
+          path: '/guides/app_security/rate_rules',
+        },
+        {
+          title: 'Bot Rules',
+          path: '/guides/app_security/bot_rules',
+        },
+        {
+          title: 'Custom Rules',
+          path: '/guides/app_security/custom_rules',
+        },
+        {
+          title: 'Managed Rules',
+          path: '/guides/app_security/managed_rules',
+        },
+        {
+          title: 'Security Applications',
+          path: '/guides/app_security/security_applications',
+        },
+        {
+          title: 'Threats Dashboard',
+          path: '/guides/app_security/threats_dashboard',
+        },
+        {
+          title: 'Browser Challenges Dashboard',
+          path: '/guides/app_security/browser_challenges_dashboard',
+        },
+        {
+          title: 'Rates Dashboard',
+          path: '/guides/app_security/rates_dashboard',
+        },
+        {
+          title: 'Rate Enforcement Dashboard',
+          path: '/guides/app_security/rate_enforcement_dashboard',
+        },
+        {
+          title: 'Matched On Variables',
+          path: '/guides/app_security/matched_on_variables',
+        },
+        {
+          title: 'Response to Client',
+          path: '/guides/app_security/response_to_client',
+          separator: true,
+        },
         {
           title: 'Security Suite',
           path: '/guides/security',

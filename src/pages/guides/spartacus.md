@@ -11,9 +11,7 @@ This guide shows you how to deploy a [Spartacus](https://sap.github.io/spartacus
   <ButtonLink variant="stroke" type="code" withIcon={true} href="https://github.com/layer0-docs/layer0-spartacus-example">
    View the Code
   </ButtonLink>
-  <ButtonLink variant="stroke" type="deploy" withIcon={true} href="https://app.layer0.co/deploy?button&deploy&repo=https%3A%2F%2Fgithub.com%2Flayer0-docs%2Flayer0-spartacus-example">
-    Deploy to {{ PRODUCT }}
-  </ButtonLink>
+  <ButtonLink variant="stroke" type="deploy" withIcon={true} href="https://app.layer0.co/deploy?button&deploy&repo=https%3A%2F%2Fgithub.com%2Flayer0-docs%2Flayer0-spartacus-example" />
 </ButtonLinksGroup>
 
 ## Connector {/*connector*/}

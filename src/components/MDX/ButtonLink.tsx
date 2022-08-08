@@ -3,6 +3,8 @@ import {UrlObject} from 'url';
 import Link from 'next/link';
 import styled, {css} from 'styled-components';
 
+import {IconDeploy} from 'components/Icon';
+
 const IconCode = () => {
   return (
     <>
@@ -57,14 +59,15 @@ const StyledButtonLink = styled.div.attrs<IStyledButtonLinkProps>((props) => ({
   max-width: fit-content;
 
   > a {
-    padding: 6px 16px;
+    padding: ${(props) => (props.type === 'deploy' ? '0' : '6px 16px')};
     border-radius: 4px;
     text-decoration: none;
     font-size: 16px;
     line-height: 1.5;
     font-weight: 400;
     display: grid;
-    grid-template-columns: auto 1fr;
+    grid-template-columns: ${(props) =>
+      props.type === 'deploy' ? 'auto' : 'auto 1fr'};
     column-gap: ${(props) => (props.type === 'default' ? '0' : '8px')};
 
     /* type=default */
@@ -87,13 +90,13 @@ const StyledButtonLink = styled.div.attrs<IStyledButtonLinkProps>((props) => ({
 export default function ButtonLink({
   variant,
   type = 'default',
-  children,
+  children = false,
   href,
   withIcon,
 }: {
   variant: 'fill' | 'stroke';
   type: 'default' | 'code' | 'deploy';
-  children: React.ReactNode;
+  children?: React.ReactNode;
   href: string | UrlObject;
   withIcon: boolean;
 }) {
@@ -107,6 +110,8 @@ export default function ButtonLink({
                 'ℹ️'
               ) : type === 'code' ? (
                 <IconCode />
+              ) : type === 'deploy' ? (
+                <IconDeploy />
               ) : (
                 <IconLayer0 />
               )}

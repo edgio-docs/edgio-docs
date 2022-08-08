@@ -111,6 +111,7 @@ that will work on your local machine as well as {{ PRODUCT_NAME }} serverless ru
 
 ```js
 import { tmpdir } from 'os';
+import * as path from 'path';
 const tmpFilePath = path.join(tmpdir(), 'temp-upload.jpg');
 ```
 

@@ -97,8 +97,8 @@ npm run build
 Set default port number for the app to run on 3333:
 
 ```bash
-set PORT= 3333 # windows
-export PORT= 3333 # linux
+set PORT=3333 # windows
+export PORT=3333 # linux
 ```
 
 Test your app with the {{ PRODUCT_PLATFORM }} on your local machine by running the following command in your project's root directory:

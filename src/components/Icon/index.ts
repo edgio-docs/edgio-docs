@@ -14,6 +14,7 @@ export * from './IconCode';
 export * from './IconCodePlain';
 export * from './IconDarkMode';
 export * from './IconDeepDive';
+export * from './IconDeploy';
 export * from './IconDocusaurus';
 export * from './IconDojo';
 export * from './IconEdgioSquareLogo';

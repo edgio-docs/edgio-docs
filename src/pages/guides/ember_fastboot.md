@@ -55,7 +55,7 @@ import loadInitializers from 'ember-load-initializers'
 import config from './config/environment'
 
 // add this to import {{ PRODUCT_NAME }} service worker prefetching functionality
-import { install } from '{{ CLI_NAME }}/prefetch/window'
+import { install } from '{{ PACKAGE_NAME }}/prefetch/window'
 
 export default class App extends Application {
   modulePrefix = config.modulePrefix
@@ -81,7 +81,7 @@ Ember fastboot apps should always have the following in {{ CONFIG_FILE }}:
 
 ```js filename="/{{ CONFIG_FILE }}"
 module.exports = {
-  connector: '{{ CLI_NAME }}/fastboot',
+  connector: '{{ PACKAGE_NAME }}/fastboot',
   includeNodeModules: true, // this ensures that package.json dependencies are uploaded to the cloud
 }
 ```

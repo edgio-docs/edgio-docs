@@ -1,4 +1,6 @@
-# Web Application Firewall (WAF) {/*web-application-firewall-waf*/}
+---
+title: Introduction to Appliation Security
+---
 
 Many web sites, web applications, and web servers receive and process
 requests from outside a company's protected internal network. As a

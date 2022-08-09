@@ -1,10 +1,10 @@
-## Layer0 Documentation
+## Edgio Documentation
 
 <div align="center">
-  <img src=".github/docs.ogimage.png" alt="Layer0 Documentation" />
+  <img src=".github/docs.ogimage.png" alt="Edgio Documentation" />
 </div>
 
-Explore the Layer0 guides and examples on how to integrate edge
+Explore the Edgio guides and examples on how to integrate edge
 logic into your application code and extend the edge to the browser.
 
 ---
@@ -31,4 +31,4 @@ Start the development server on http://localhost:3000:
 yarn dev
 ```
 
-See the [Contributing Guide](https://docs.layer0.co/guides/contributing#how-to-contribute) on how to contribute to the Layer0 Documentation.
+See the [Contributing Guide](https://docs.layer0.co/guides/contributing#how-to-contribute) on how to contribute to the Edgio documentation.

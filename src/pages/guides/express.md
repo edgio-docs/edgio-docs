@@ -107,7 +107,7 @@ source files are compiled, you can transpile your app on your own and point your
 
 ## Bundling Options {/*bundling-options*/}
 
-By default Layer0 uses ESBuild to transpile and bundle your application code. If you're having difficulty fitting your app within the limit for serverless bundles, you can try bundling with [ncc](https://github.com/vercel/ncc), which should produce smaller bundles, by adding the following to layer0.config.js:
+By default, {{ PRODUCT }} uses ESBuild to transpile and bundle your application code. If you're having difficulty fitting your app within the limit for serverless bundles, you can try bundling with [ncc](https://github.com/vercel/ncc), which should produce smaller bundles, by adding the following to layer0.config.js:
 
 ```js
 module.exports = {

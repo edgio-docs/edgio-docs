@@ -32,9 +32,31 @@ A full production deployment requires changing your site's DNS to allow requests
 
 ## Create your project {/*create-your-project*/}
 
-For creating a new site on {{ PRODUCT }}, you can start 
+For creating a new site on {{ PRODUCT }}, you can choose between:
+- [{{ PRODUCT }} Developer Console](#create-via-edgio-developer-console) - interactive UI for creating your site and deploy using generated command
+- [{{ PRODUCT }} CLI](#create-via-cli) - interactively initialize your project directly from the command line
+
 ### Create via {{ PRODUCT }} Developer Console {/*create-via-edgio-developer-console*/}
 
+1. First, [login to the Developer Console]({{ LOGIN_URL }}) and locate the **New Site** button.
+  ![New Site button](/images/app-edge/new-site-button.png)
+
+2. Next, enter your site's domain name. This will eventually become the origin backend that you can [proxy to](cookbook#proxying-an-origin) once your site is setup.
+  ![Add New Site dialog](/images/app-edge/add-new-site-dialog.png)
+
+3. Once your site is created, copy the generated command into your terminal (💻) and run it at the root of your project. This will initialize your project source code with {{ PRODUCT }} and automatically deploy your site.
+  ![Quick Start Deploy Command](/images/app-edge/quickstart-deploy-command.png)
+
+  An example command for **www.yourdomain.com**:
+  ```bash
+    npx @layer0/cli@latest init \
+      --name yourdomain.com \
+      --environment production \
+      --origin www.yourdomain.com \
+      --deploy
+  ```
+
+4. Finally, you can start to update your {{ PRODUCT }} router (`routes.js`) and configuration file (`{{ CONFIG_FILE }}`) to [proxy your origin](#configure-backend-to-proxy) and [setup caching rules](#configure-caching).
 ### Create via CLI {/*create-via-cli*/}
 Now that the CLI has been installed, create a new project using:
 

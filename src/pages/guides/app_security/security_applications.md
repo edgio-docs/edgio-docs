@@ -1,6 +1,8 @@
-# Security Application Manager {/*security-application-manager*/}
+---
+title: Security Applications
+---
 
-A Security Application Manager configuration:
+A Security Application configuration:
 
 -   [Identifies the set of traffic](#TrafficIdentification) to which it
     applies by hostname, a URL path, or both.
@@ -47,21 +49,21 @@ A Security Application Manager configuration:
     audit of new access rules, custom rules, and managed rules.
 
     The ability to secure and audit your production traffic using
-    separate configurations requires WAF Premier, WAF Standard, or
+    separate configurations requires {{ PRODUCT_SECURITY }} Premier, {{ PRODUCT_SECURITY }} Standard, or
     WAF Essentials. If you currently have WAF Insights and would like to
     use this capability, please contact your CDN account manager to
     upgrade to the full version.
 
 ## Traffic Identification {/*traffic-identification*/}
 
-Identify the set of traffic to which a Security Application Manager
+Identify the set of traffic to which a Security Application
 configuration's rules will be applied by host, URL path, or both.
 
 ### Host {/*host*/}
 
-By default, a Security Application Manager configuration applies to all
-hosts. However, you may limit a Security Application Manager
-configuration to one or more hosts. WAF compares the entire
+By default, a Security Application configuration applies to all
+hosts. However, you may limit a Security Application
+configuration to one or more hosts. {{ PRODUCT_SECURITY }} compares the entire
 `Host` header value against the specified value.
 
 Key information:
@@ -87,16 +89,16 @@ Key information:
 -   For the purpose of this comparison, a customer origin's **HTTP Host
     Header** option is irrelevant.
 
--   WAF supports various comparison modes (i.e., exact match, wildcard,
+-   {{ PRODUCT_SECURITY }} supports various comparison modes (i.e., exact match, wildcard,
     and regular expression).
 
     [Learn more.](#MatchComparisonModes)
 
 ### URL Path {/*url-path*/}
 
-By default, a Security Application Manager configuration applies to all
-URL paths. However, you may limit a Security Application Manager
-configuration to one or more URL paths. WAF compares the entire URL path
+By default, a Security Application configuration applies to all
+URL paths. However, you may limit a Security Application
+configuration to one or more URL paths. {{ PRODUCT_SECURITY }} compares the entire URL path
 against the specified value.
 
 Key information:
@@ -124,19 +126,19 @@ Key information:
 http://cdn.example.com/marketing/brochures/widget.html
 ```
 
--   WAF supports various comparison modes (i.e., exact match, wildcard,
+-   {{ PRODUCT_SECURITY }} supports various comparison modes (i.e., exact match, wildcard,
     and regular expression).
 
     [Learn more.](#MatchComparisonModes)
 
 ### Match Comparison Modes {/*match-comparison-modes*/}
 
-Your Security Application Manager configuration determines how WAF
+Your Security Application configuration determines how WAF
 compares a request's host or URL path against the specified value. The
 available modes are listed below.
 
--   **Default:** WAF will not perform a comparison. It will apply
-    the current Security Application Manager configuration to all hosts
+-   **Default:** {{ PRODUCT_SECURITY }} will not perform a comparison. It will apply
+    the current Security Application configuration to all hosts
     or URL paths.
 
 -   [Exact match (multiple entries):](#EM) Use this mode to specify each
@@ -149,14 +151,14 @@ available modes are listed below.
     expression.
 
 Wildcard and regular expression match comparison modes require WAF
-Premier, WAF Standard, or WAF Essentials. If you currently have
+Premier, {{ PRODUCT_SECURITY }} Standard, or WAF Essentials. If you currently have
 WAF Insights and would like to use this capability, please contact your
 CDN account manager to upgrade to the full version.
 
 #### Exact Match (Multiple Entries) {/*exact-match-multiple-entries*/}
 
-WAF compares the specified value(s) against the entire host or URL path.
-It will only apply this Security Application Manager configuration to a
+{{ PRODUCT_SECURITY }} compares the specified value(s) against the entire host or URL path.
+It will only apply this Security Application configuration to a
 request when one of the specified value(s) is an exact match. This
 comparison is case-sensitive.
 
@@ -192,7 +194,7 @@ Batch
 
 #### Wildcard Match {/*wildcard-match*/}
 
-WAF checks whether the entire host or URL path is a case-sensitive match
+{{ PRODUCT_SECURITY }} checks whether the entire host or URL path is a case-sensitive match
 for the wildcard pattern. The supported set of wildcards are listed
 below.
 
@@ -207,7 +209,7 @@ below.
 <br /><br /> **Example:** 
 
 Setting the `URL path(s)` option to the following value allows
-WAF to apply this Security Application Manager configuration to any
+{{ PRODUCT_SECURITY }} to apply this Security Application configuration to any
 request whose URL path starts with */marketing/*:
 
 ```
@@ -222,7 +224,7 @@ https://cdn.example.com/marketing/mycampaign/image.png
 
 #### Regex Match {/*regex-match*/}
 
-WAF checks whether the entire host or URL path is a match for the
+{{ PRODUCT_SECURITY }} checks whether the entire host or URL path is a match for the
 pattern defined in a regular expression.
 
 Regular expressions are case-sensitive.
@@ -328,7 +330,7 @@ The available enforcement actions are described below.
 
 | Mode                | Description                                   |
 | ----------- | ----------- |
-| Alert Only          | Rate limited requests or detected threats will only generate an alert.  Our recommendation for testing new configurations is to use [audit mode](#enforcementmode) instead of applying the `Alert Only` enforcement action to a rule running in production mode.  WAF applies a single enforcement action per mode (i.e., [production or audit](#enforcementmode)). Once enforcement is triggered for that mode, WAF does not perform further [evaluation of that request](Configuration.htm#Threat). If you are setting up a rule in production mode, we recommend that you limit your use of the `Alert Only` enforcement to the shortest amount of time necessary to validate changes to your configuration.  Use this mode to track detected threats through the dashboard without impacting production traffic.                           |
+| Alert Only          | Rate limited requests or detected threats will only generate an alert.  Our recommendation for testing new configurations is to use [audit mode](#enforcementmode) instead of applying the `Alert Only` enforcement action to a rule running in production mode.  WAF applies a single enforcement action per mode (i.e., [production or audit](#enforcementmode)). Once enforcement is triggered for that mode, {{ PRODUCT_SECURITY }} does not perform further [evaluation of that request](Configuration.htm#Threat). If you are setting up a rule in production mode, we recommend that you limit your use of the `Alert Only` enforcement to the shortest amount of time necessary to validate changes to your configuration.  Use this mode to track detected threats through the dashboard without impacting production traffic.                           |
 | Block Request       | Access Rules, Custom Rules, and Managed Rules  Detected threats will be dropped and the client will receive a `403 Forbidden` response.             |
 | Custom Response     | Rate limited requests or detected threats will receive a custom response.  -   **Response Body:** Define the payload that will be delivered to the client in response to a detected threat.  This option supports the use of [event variables](#Event) to customize the response according to the detected threat.  Sample payload for a CSS file:  `body {  background-color: #ffffff;  }`  Configure whether the response body will consist of a default error page or the value defined in the **Response body** option.  -   **Display Default Error Page:** Mark this option to respond to detected threats with a web page that describes the detected threat. Specifically, it will indicate the client's IP address, the requested URL, and the date/time at which the request was screened.  This option does not control the status code or the headers included in the response. Configure those settings through the **HTTP status code** and the **Custom response headers** options, respectively.  -   **Response Body:**  Setting a value in the **Response body** option will cause it to take precedence over the **Display Default Error Page** option.  -   **HTTP Status Code:** Defines the HTTP status code that will be sent to the client.  View a list of valid HTTP status codes.  -   100 -   101 -   102 -   200 -   201 -   202 -   203 -   204 -   205 -   206 -   207 -   208 -   226 -   300 -   301 -   302 -   303 -   304 -   305 -   306 -   307 -   308 -   400 -   401 -   402 -   403 -   404 -   405 -   406 -   407 -   408 -   409 -   410 -   411 -   412 -   413 -   414 -   415 -   416 -   417 -   421 -   422 -   423 -   424 -   426 -   428 -   429 -   431 -   451 -   500 -   501 -   502 -   503 -   504 -   505 -   507 -   508 -   509 -   510 -   511  -   **Custom Response Headers:** Defines one or more response headers that will be sent to the client. Define each custom response header on a separate line.  <br /><br /> **Syntax:**   <br /><br />`Name<br /><br />`:<br /><br />`Value`<br /><br /> <br /><br /> **Example:**   <br /><br />`MyCustomHeader: True`<br /><br /> This option supports the use of [event variables](#Event) to customize the response according to the detected threat.  All characters, including spaces, defined before or after the colon will be treated as a part of the specified header name or value, respectively.                      |
 | Drop Connection     | The connection for rate limited requests will be silently dropped. No response will be provided to the client.  This action is only recommended for known malicious traffic. This action prevents the malicious client from knowing whether the attack reached its intended target. However, if this approach is applied to legitimate traffic, then those clients will be unable to reach your site.                              |
@@ -358,28 +360,28 @@ response body by enclosing it with double curly braces.
 
 ## Order of Precedence {/*order-of-precedence*/}
 
-The recommended practice is to create a Security Application Manager
+The recommended practice is to create a Security Application
 configuration that is tuned for each of your applications. This allows
 you to apply a restrictive security policy with minimal false positives.
-Each Security Application Manager configuration's host and URL path
+Each Security Application configuration's host and URL path
 conditions determine the set of traffic to which it may be applied. If a
 request is eligible to be screened by multiple Security Application
-Manager configurations, then WAF will screen it using the first eligible
+Manager configurations, then {{ PRODUCT_SECURITY }} will screen it using the first eligible
 configuration in the list.
 
-Reorder Security Application Manager configurations by dragging the
+Reorder Security Application configurations by dragging the
 desired configuration's ![](/images/icons/drag.png)
 icon to the desired position.
 
-## Security Application Manager Administration {/*security-application-manager-administration*/}
+## Security Application Administration {/*security-application-manager-administration*/}
 
-You may create, modify, and delete Security Application Manager
+You may create, modify, and delete Security Application
 configurations.
 
 Key information:
 
--   Administer Security Application Manager configurations from the
-    [[Security Application Manager
+-   Administer Security Application configurations from the
+    [[Security Application
     page](https://%5B%=Domains.Portal%%5D/Defend/ApplicationManager#/defend/waf/config-manager){target="_blank"
     madcap:conditions="General.EdgeCast,General.TransactOnly"
     madcap:excludeaction="unbind"}]{.portal}.
@@ -396,12 +398,12 @@ Key information:
 -   Apply [access rules](Access-Rules.htm), [rate
     rules](Rate-Rules.htm), [bot rules](Bot-Rules.htm), [custom
     rules](Custom-Rules.htm), and [managed rules](Managed-Rules.htm) to
-    production traffic by adding it to a Security Application Manager
+    production traffic by adding it to a Security Application
     configuration and then determining how it will be enforced.
 
     Rules are administered independently from Security Application
     Manager configurations. This allows you to use the same rule within
-    multiple Security Application Manager configurations. Leverage this
+    multiple Security Application configurations. Leverage this
     capability to tailor security screening by application or traffic
     profile.
 
@@ -412,14 +414,14 @@ Key information:
 -   It may take up to 2 minutes for an updated Security Application
     Manager configuration to be applied across our entire network.
 
-To create a Security Application Manager configuration
+To create a Security Application configuration
 
 1.  
 
 2.  Click **Add New**.
 
 3.  In the **Name** option, type the unique name by which this
-    Security Application Manager configuration will be identified.
+    Security Application configuration will be identified.
 
 4.  Optional. Identify the set of traffic to which this security policy
     will be applied by defining a hostname and/or URL path through the
@@ -432,7 +434,7 @@ To create a Security Application Manager configuration
         host or URL path.
 
     -   **Exact match (multiple entries):** Use this mode to apply
-        this Security Application Manager configuration to the specified
+        this Security Application configuration to the specified
         hostname(s) or URL path(s).
 
         [Learn more.](#EM)
@@ -458,9 +460,9 @@ To create a Security Application Manager configuration
     handled.
 
     If you have not already created the desired access rule, you can
-    save your Security Application Manager configuration, [create an
+    save your Security Application configuration, [create an
     access rule](Access-Rules.htm#AccessRuleAdministration), edit your
-    Security Application Manager configuration, and then resume this
+    Security Application configuration, and then resume this
     procedure.
 
     i.  From the **Rules** section, click **Access Rule**.
@@ -495,7 +497,7 @@ To create a Security Application Manager configuration
     be rate limited.
 
     If you have not already created the desired rate rule, you can save
-    your Security Application Manager configuration, [create a rate
+    your Security Application configuration, [create a rate
     rule](Rate-Rules.htm#RateRuleAdministration), edit your Security
     Application Manager configuration, and then resume this procedure.
 
@@ -505,7 +507,7 @@ To create a Security Application Manager configuration
         rate rule.
 
         If the selected rate rule contains a condition group, then a
-        request must satisfy the Security Application Manager
+        request must satisfy the Security Application
         configuration's host and URL path match conditions and all of
         the conditions within at least one condition group in order to
         be eligible for rate limiting.
@@ -520,7 +522,7 @@ To create a Security Application Manager configuration
 
         [Learn more.](#Enforcement)
 
-        WAF does not perform further [evaluation of a
+        {{ PRODUCT_SECURITY }} does not perform further [evaluation of a
         request](Configuration.htm#Threat) once enforcement is
         triggered. For this reason, we recommend that you limit your use
         of the `Alert Only` enforcement to the shortest amount
@@ -545,9 +547,9 @@ To create a Security Application Manager configuration
 
         Use multiple rate rules to apply different rate limits to
         various traffic profiles. Set up this type of configuration
-        using either a single or multiple Security Application Manager
+        using either a single or multiple Security Application
         configurations. If you assign multiple rate rules to a single
-        Security Application Manager configuration, then each rate rule
+        Security Application configuration, then each rate rule
         should contain one or more [condition
         group(s)](Rate-Rules.htm#ConditionGroup).
 
@@ -556,7 +558,7 @@ To create a Security Application Manager configuration
     applied.
 
     If you have not already created the desired bot rule, you can save
-    your Security Application Manager configuration, [create a bot
+    your Security Application configuration, [create a bot
     rule](Bot-Rules.htm#BotRuleAdministration), edit your Security
     Application Manager configuration, and then resume this procedure.
 
@@ -582,9 +584,9 @@ To create a Security Application Manager configuration
     be screened and determine how threats identified by it are handled.
 
     If you have not already created the desired custom rule, you can
-    save your Security Application Manager configuration, [create a
+    save your Security Application configuration, [create a
     custom rule](Custom-Rules.htm#CustomRuleAdministration), edit your
-    Security Application Manager configuration, and then resume this
+    Security Application configuration, and then resume this
     procedure.
 
     i.  From the **Rules** section, click **Custom Rule**.
@@ -620,9 +622,9 @@ To create a Security Application Manager configuration
     handled.
 
     If you have not already created the desired manged rule, you can
-    save your Security Application Manager configuration, [create a
+    save your Security Application configuration, [create a
     managed rule](Managed-Rules.htm#ManagedRuleAdministration), edit
-    your Security Application Manager configuration, and then resume
+    your Security Application configuration, and then resume
     this procedure.
 
     i.  From the **Rules** section, click **Managed
@@ -661,36 +663,36 @@ To create a Security Application Manager configuration
 
 15. Click **Save Changes**.
 
-To reorder Security Application Manager configurations
+To reorder Security Application configurations
 
-1.  From the **Security Application Manager**
+1.  From the **Security Application**
     page, drag the desired
     configuration's ![](/images/icons/drag.png) icon
     to the desired position.
 2.  Click **Apply All Changes**.
 3.  Click **Save Changes**.
 
-If multiple Security Application Manager configurations are applicable
+If multiple Security Application configurations are applicable
 to the same request, then consider updating their host or URL path
 conditions to a more restrictive pattern.
 
 Traffic is always screened using the first eligible Security Application
 Manager configuration.
 
-To modify a Security Application Manager configuration
+To modify a Security Application configuration
 
 1.  
-2.  Click on the desired Security Application Manager configuration.
+2.  Click on the desired Security Application configuration.
 3.  Make the desired changes.
 4.  Click **Save**.
 5.  Click **Apply All Changes**.
 6.  Click **Save Changes**.
 
-To delete a Security Application Manager configuration
+To delete a Security Application configuration
 
 1.  
-2.  Click on the desired Security Application Manager configuration.
-3.  Click **Delete Security Application Manager**.
+2.  Click on the desired Security Application configuration.
+3.  Click **Delete Security Application**.
 4.  Type *DELETE*.
 5.  Click **Delete**.
 6.  Click **Apply All Changes**.

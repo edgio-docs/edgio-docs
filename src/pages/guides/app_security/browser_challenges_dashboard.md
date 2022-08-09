@@ -1,9 +1,11 @@
-# Browser Challenges Dashboard {/*browser-challenges-dashboard*/}
+---
+title: Browser Challenges Dashboard
+---
 
 Use the Browser Challenges dashboard to find out recent trends in
 browser challenges.
 
-Log data is retained for 30 days for most WAF solutions. The exception
+Log data is retained for 30 days for most {{ PRODUCT_SECURITY }} solutions. The exception
 is WAF Insights which only retains data for 7 days.
 
 This article describes:
@@ -26,7 +28,7 @@ To view the Browser Challenges dashboard
 1.  Navigate to the Browser Challenges dashboard (Browser Challenges
     tab of the Overview
     page) How? From the main
-    menu, navigate to `More` \| `Security` \| `WAF Tier`` \| `Dashboard`. Click **Browser
+    menu, navigate to **More** \| **Security** \| ***WAF*** **Tier** \| **Dashboard**. Click **Browser
     Challenges**.
 
     The Browser Challenges dashboard will display a chart showing recent
@@ -157,7 +159,7 @@ challenges is provided below.
 | Request Method            | Indicates the request's HTTP method.  Format:  `HTTP_METHOD_*NAME* <br /><br /> **Example:**   `HTTP_METHOD_GET`                                     |
 | Rule ID                   | Indicates the ID of the rule that triggered the browser challenge.        |
 | Rule Message              | Indicates the message of the rule that triggered the browser challenge.        |
-| Security Application Name | Indicates the name of the Security Application Manager configuration that was assigned the bot rule set that was triggered.                              |
+| Security Application Name | Indicates the name of the Security Application configuration that was assigned the bot rule set that was triggered.                              |
 | Timestamp                 | Indicates the date and time (UTC) at which the browser challenge was issued.  This field is only available from within the Event Log view. Requests may not be filtered by this field. Filter by time through the **Time Range** option that appears on the left-hand side of the dashboard.  Local time is displayed on the right-hand side of the event log entry header that appears directly above this field.                                  |
 | Token Validity Duration   | Indicates the number of minutes for which our CDN will serve content to a client that solves a browser challenge without requiring an additional browser challenge.                              |
 | URL                       | Indicates the URL for which a browser challenge was issued.                   |

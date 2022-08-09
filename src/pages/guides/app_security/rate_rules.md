@@ -1,4 +1,6 @@
-# Rate Rules {/*rate-rules*/}
+---
+title: Rate Rules
+---
 
 A rate rule restricts the flow of site traffic with the intention of:
 
@@ -7,7 +9,7 @@ A rate rule restricts the flow of site traffic with the intention of:
 
 Requests that exceed the rate limit may be dropped, redirected to
 another URL, or sent a custom response. The type of enforcement action
-that will take place is determined by the Security Application Manager
+that will take place is determined by the Security Application
 configuration that leverages it.
 
 ## How Does It Work? {/*how-does-it-work*/}
@@ -26,7 +28,7 @@ Key information:
 
     ![](/images/app_security/rate_rules_source_scope.png)
 
--   A [Security Application Manager](SAM.htm) configuration determines
+-   A [Security Application](SAM.htm) configuration determines
     the set of requests to which this rate rule will be applied. Use
     condition groups to define one or more additional prerequisites
     (e.g., URL or user agent) that a request must meet before it will
@@ -50,7 +52,7 @@ Key information:
     Requests from a single client may be load balanced to different edge
     servers based on the requested URL.
 
--   WAF does not perform further [evaluation of a
+-   {{ PRODUCT_SECURITY }} does not perform further [evaluation of a
     request](Configuration.htm#Threat) once enforcement is triggered.
 
     We recommend that you limit your use of the `Alert Only`
@@ -179,7 +181,7 @@ This scenario assumes:
     Large).
 -   A single edge server is handling all traffic.
 
-A Security Application Manager configuration may contain multiple rate
+A Security Application configuration may contain multiple rate
 rules that define a custom rate limit for different types of requests.
 These rate rules are processed in the order in which they are listed.
 Once a rule is satisfied, it will be applied to the request and no
@@ -191,7 +193,7 @@ conditions should be placed closer to the top of the list, while
 catch-all rules should be placed closer to the bottom. This ensures that
 your rate limits are applied to requests as intended.
 
-In this scenario, your Security Application Manager configuration
+In this scenario, your Security Application configuration
 determines that the following rate rules will be applied to all
 requests.
 
@@ -207,8 +209,8 @@ set of requests to which this rate rule will be applied.
 | ----------- | ----------- |
 | [Source](#Source)                | Apply a rate limit:  <ul><li>Indiscriminately across all requests. </li><li>To each unique client that exceeds the defined rate limit. <br /><br /> A unique client may be identified by its user agent and/or IP address.</li></ul>           |
 | [Rate Limit](#RateLimit)         | Define a maximum request rate before a predefined action is triggered.                       |
-| [Condition Group](#ConditionGroup)                      | A request counts towards a rate limit when it satisfies all of the following criteria: <ul><li>A [Security Application Manager configuration's](SAM.htm) hostname and URL path match conditions. </li><li>If one or more condition group(s) have been defined, then the request must also satisfy all of the conditions defined within at least one condition group.  Each condition identifies the type of requests that are eligible for rate limiting by URL path, request headers, IP address, file extension, and/or request method.</li></ul>              |
-| Action                           | A [Security Application Manager configuration](SAM.htm) determines the type of action that will be applied to requests that exceed the above rate limit.                           |
+| [Condition Group](#ConditionGroup)                      | A request counts towards a rate limit when it satisfies all of the following criteria: <ul><li>A [Security Application configuration's](SAM.htm) hostname and URL path match conditions. </li><li>If one or more condition group(s) have been defined, then the request must also satisfy all of the conditions defined within at least one condition group.  Each condition identifies the type of requests that are eligible for rate limiting by URL path, request headers, IP address, file extension, and/or request method.</li></ul>              |
+| Action                           | A [Security Application configuration](SAM.htm) determines the type of action that will be applied to requests that exceed the above rate limit.                           |
 
 ### Source {/*source*/}
 
@@ -305,7 +307,7 @@ Key information:
 -   <a id="matchconditions"></a>A request will count towards the rate limit when
     it satisfies both of the following conditions:
 
-    -   A Security Application Manager configuration's hostname and URL
+    -   A Security Application configuration's hostname and URL
         path conditions.
     -   **Condition Groups:** If one or more condition group(s)
         have been defined, then the request must also satisfy all of the
@@ -353,7 +355,7 @@ rules are applied to requests as intended.
 Key information:
 
 -   Rules are processed in the order in which they are listed (i.e., top
-    to bottom) within a Security Application Manager configuration.
+    to bottom) within a Security Application configuration.
 
 -   Only the first rate rule that a [request
     satisfies](#matchconditions) will be applied to it.
@@ -377,12 +379,12 @@ Key information:
 
 -   Apply a rate rule to production traffic by adding it to a [Security
     Application Manager configuration](SAM.htm) and then determining how
-    it will be enforced. Multiple Security Application Manager
+    it will be enforced. Multiple Security Application
     configurations may use the same rate rule. Leverage this capability
     to tailor security screening by application or traffic profile.
 
-    Before adding a rate rule to a Security Application Manager
-    configuration, verify that the Security Application Manager
+    Before adding a rate rule to a Security Application
+    configuration, verify that the Security Application
     configuration's hostname and URL path conditions do not conflict
     with your rate rule's conditions.
 
@@ -397,7 +399,7 @@ Key information:
 
     -   Identify unique clients by IP address.
     -   A rate limit of 8 requests per second.
-    -   A Security Application Manager configuration that matches all
+    -   A Security Application configuration that matches all
         hostnames and URL paths.
     -   No condition groups.
 
@@ -509,9 +511,9 @@ To delete a rate rule
 You cannot delete a rate rule that is associated with a Security
 Application Manager configuration. Please either modify the Security
 Application Manager configuration to point to a different rate rule or
-delete that Security Application Manager configuration.
+delete that Security Application configuration.
 
-1.  Check your Security Application Manager configurations to verify
+1.  Check your Security Application configurations to verify
     that the desired rate rule is not in use.
 2.  
 3.  Click **Delete rate rule**.

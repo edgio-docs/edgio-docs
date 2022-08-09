@@ -1,4 +1,6 @@
-# Threat Analysis (Threats Dashboard) {/*threat-analysis-threats-dashboard*/}
+---
+title: Threats Dashboard (Threat Analysis)
+---
 
 The Threats dashboard provides an avenue through which a historical
 analysis of recent threats to site traffic may be performed. This type
@@ -13,7 +15,7 @@ of an analysis provides the means through which you may:
 -   Learn detailed information on the types of attack being mounted
     against your site.
 
-Log data is retained for 30 days for most WAF solutions. The exception
+Log data is retained for 30 days for most {{ PRODUCT_SECURITY }} solutions. The exception
 is WAF Insights which only retains data for 7 days.
 
 This article describes how to use:
@@ -35,7 +37,7 @@ To view the Threats dashboard
 1.  Navigate to the Threats dashboard (Threats tab of the Overview
     page) How? From the [main
     menu](../Getting_to_Know_the_Media_Control_Center/Navigating_within_the_MCC.htm),
-    navigate to **More** \| **Security** \| **WAF Tier** \| **Dashboard**.
+    navigate to **More** \| **Security** \| ***WAF*** **Tier** \| **Dashboard**.
 
     The dashboard will display a chart showing recent violations of your
     security policy.
@@ -121,7 +123,7 @@ detailed information about it. Each event field is described below.
 | Rule ID                   | Indicates the ID for the rule that the request violated.  This field indicates that the rule met or exceeded the maximum anomaly score. Please refer to the **Sub Event(s)** section, which contains a sub event for each rule violated by a request, to find out why the request was flagged or blocked. Each sub event indicates the rule that was violated and the data used to identify the violation.\ [Learn more.](#Anomaly)                 |
 | Rule Message              | Provides a description of the rule that the request violated. The syntax for this field varies according to the type of rule that was violated.  -   Syntax (Managed Rule Set - Anomaly Score) :  `Inbound Anomaly Score Exceeded (Total Score: 3): Last Matched Message: Rule MessageThis term represents the message for the last rule that the request violated.`  This field indicates the request's anomaly score and the last rule that it violated. Please refer to the **Sub Event(s)** section, which contains a sub event for each rule violated by a request, to find out why the request was flagged or blocked. Each sub event indicates the rule that was violated and the data used to identify the violation.\ [Learn more.](#Anomaly)  -   Syntax (All Other Rule Sets):  `Rule Message This term represents the message for the rule that the request violated.`                                 |
 | Event ID                  | Indicates the system-defined ID assigned to this event (i.e., rule violation).                             |
-| Security Application Name | Indicates the name of the Security Application Manager configuration that was assigned the rule set that was triggered.                              |
+| Security Application Name | Indicates the name of the Security Application configuration that was assigned the rule set that was triggered.                              |
 | Profile Type              | Indicates whether the request was screened as a result of a production or audit rule.                             |
 | Country Name              | Identifies the country from which the request originated by its name.  Identifies the country from which the request originated by its [country code](../Reference/Country_Codes.htm).  |
 | Action Type               | Indicates the type of action that was taken in response to the rule violation. Valid values are:  -   **BLOCK_REQUEST:** Indicates that the request that violated a rule was blocked. -   **ALERT:** Indicates that an alert was generated in response to the rule violation. -   **REDIRECT_302:** Indicates that the request that violated a rule was redirected to the URL associated with the instance defined by the **Instance Name** field. -   **CUSTOM_RESPONSE:** Indicates that a custom response was returned to the client that submitted a request that violated a rule.       |

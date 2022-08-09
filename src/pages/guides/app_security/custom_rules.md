@@ -1,6 +1,8 @@
-# Custom Rules {/*custom-rules*/}
+---
+title: Custom Rules
+---
 
-Use custom rules to tailor how WAF identifies malicious traffic. This
+Use custom rules to tailor how {{ PRODUCT_SECURITY }} identifies malicious traffic. This
 provides added flexibility for threat identification that allows you to
 target malicious traffic with minimal impact to legitimate traffic.
 Custom threat identification combined with rapid testing and deployment
@@ -41,7 +43,7 @@ two rules:
 | 1    | This rule contains a single condition with a single variable. |
 | 2    | This rule contains the following conditions:  1.  The first condition contains a single variable. 2.  The second condition contains two variables.              |
 
-Assuming the above configuration, WAF identifies a threat under either
+Assuming the above configuration, {{ PRODUCT_SECURITY }} identifies a threat under either
 of the following circumstances:
 
 -   A match is found for the variable defined in the first rule's
@@ -73,7 +75,7 @@ Key information:
     madcap:conditions="General.EdgeCast,General.TransactOnly"
     madcap:excludeaction="unbind"}]{.portal}.
 -   Apply a custom rule set to production traffic by adding it to a
-    [Security Application Manager configuration](SAM.htm) and then
+    [Security Application configuration](SAM.htm) and then
     determining how it will be enforced. Multiple Security Application
     Manager configurations may use the same custom rule set. Leverage
     this capability to tailor security screening by application or
@@ -104,7 +106,7 @@ To create a custom rule set
     this rule.
 
 7.  The default rule contains a default condition. Modify this condition
-    to determine how WAF will identify threats.
+    to determine how {{ PRODUCT_SECURITY }} will identify threats.
 
     i.  From the condition's **Variable** option, select the
         request element through which WAF will identify threats.

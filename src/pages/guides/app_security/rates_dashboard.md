@@ -1,4 +1,6 @@
-# Rates Dashboard {/*rates-dashboard*/}
+---
+title: Rates Dashboard
+---
 
 Use the Rates dashboard to analyze recently rate limited requests to:
 
@@ -11,7 +13,7 @@ Logging for rate limited requests is downsampled to 10% due to the
 volume of requests that may occur during a single incident (e.g.,
 volumetric Distributed Denial-of-Service attack).
 
-Log data is retained for 30 days for most WAF solutions. The exception
+Log data is retained for 30 days for most {{ PRODUCT_SECURITY }} solutions. The exception
 is WAF Insights which only retains data for 7 days.
 
 This article describes:
@@ -36,7 +38,7 @@ To view the Rates dashboard
     madcap:conditions="General.EdgeCast,General.TransactOnly"
     madcap:excludeaction="unbind"}]{.portal}. How?From the [main
     menu](../Getting_to_Know_the_Media_Control_Center/Navigating_within_the_MCC.htm),
-    navigate to **More** \| **Security** \| ***WAF Tier*** \| **Dashboard**. Click
+    navigate to **More** \| **Security** \| ***WAF*** **Tier** \| **Dashboard**. Click
     **Rates**.
 
     The Rates dashboard will display a chart showing recent violations

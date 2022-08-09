@@ -1,8 +1,10 @@
-# Access Rules {/*access-rules*/}
+---
+title: Access Rules
+---
 
 An access rule identifies legitimate traffic and threats by:
 
--   ASN
+-   [ASN](#ASN)
 -   Cookie
 -   Country
 -   IP address
@@ -37,8 +39,8 @@ The purpose of a whitelist is to identify legitimate traffic.
 
 -   Traffic is whitelisted if it satisfies at least one whitelist
     criterion.
--   WAF automatically approves the delivery of whitelisted requests
-    without inspecting them. As a result, all other WAF requirements are
+-   {{ PRODUCT_SECURITY }} automatically approves the delivery of whitelisted requests
+    without inspecting them. As a result, all other {{ PRODUCT_SECURITY }} requirements are
     not applicable to whitelisted traffic.
 
 ### Accesslists {/*accesslists*/}
@@ -59,7 +61,7 @@ The purpose of a blacklist is to describe unwanted traffic.
     -   The request satisfies at least one blacklist criterion.
     -   The request does not qualify for whitelisting or accesslisting.
 
--   WAF automatically flags blacklisted requests as threats without
+-   {{ PRODUCT_SECURITY }} automatically flags blacklisted requests as threats without
     inspecting them.
 
 Key information:
@@ -75,7 +77,7 @@ Key information:
 Whitelist \> Accesslist \> Blacklist
 ```
 
-    For example, WAF will inspect a request that satisfies both an
+    For example, {{ PRODUCT_SECURITY }} will inspect a request that satisfies both an
     accesslist and a blacklist. However, it will automatically allow the
     delivery of a request that satisfies a whitelist, an accesslist, and
     a blacklist.
@@ -111,7 +113,7 @@ Whitelist \> Accesslist \> Blacklist
     Whitelist, accesslist, and blacklist entries count towards this
     limit.
 
--   Unlike WAF rule sets, access controls are enforced regardless of
+-   Unlike {{ PRODUCT_SECURITY }} rule sets, access controls are enforced regardless of
     whether the requested content will be served from cache or your web
     server.
 
@@ -131,9 +133,9 @@ controls are limited to identifying malicious traffic:
 Define the set of valid and invalid HTTP request methods via the
 **Allowed HTTP Methods** option.
 
--   **Valid:** WAF performs a threat assessment on requests whose
+-   **Valid:** {{ PRODUCT_SECURITY }} performs a threat assessment on requests whose
     HTTP method matches a marked option.
--   **Invalid:** WAF automatically sends an alert or blocks a
+-   **Invalid:** {{ PRODUCT_SECURITY }} automatically sends an alert or blocks a
     request when its HTTP method does not match a marked option.
 
 View a sample list of HTTP methods.
@@ -157,7 +159,7 @@ via the **Allowed Request Content Types** option.
 
 Key information:
 
--   WAF restricts requests by media type when the **Allowed Request
+-   {{ PRODUCT_SECURITY }} restricts requests by media type when the **Allowed Request
     Content Types** option contains one or more value(s). Skip
     this requirement by setting this option to a blank value.
 
@@ -218,7 +220,7 @@ Blacklist** option.
 
 Key information:
 
--   WAF flags a request as a threat when its file extension matches one
+-   {{ PRODUCT_SECURITY }} flags a request as a threat when its file extension matches one
     defined by this option.
 
 -   **Syntax:** 
@@ -353,7 +355,7 @@ Blacklist** option.
 
 Key information:
 
--   WAF flags a request as a threat when it contains a header whose name
+-   {{ PRODUCT_SECURITY }} flags a request as a threat when it contains a header whose name
     matches one defined by this option.
 
 -   Header names are case-insensitive.
@@ -369,7 +371,7 @@ Key information:
 -   Administer access rules from the **Access Rules**
     page.
 -   Apply an access rule to production traffic by adding it to a
-    [Security Application Manager configuration](SAM.htm) and then
+    [Security Application configuration](SAM.htm) and then
     determining how it will be enforced. Multiple Security Application
     Manager configurations may use the same access rule. Leverage this
     capability to tailor security screening by application or traffic
@@ -451,9 +453,9 @@ To delete an access rule
 You cannot delete an access rule that is associated with a Security
 Application Manager configuration. Please either modify the Security
 Application Manager configuration to point to a different access rule or
-delete that Security Application Manager configuration.
+delete that Security Application configuration.
 
-1.  Check your Security Application Manager configurations to verify
+1.  Check your Security Application configurations to verify
     that the desired access rule is not in use.
 2.  
 3.  Click **Delete Access Rule**.

@@ -88,7 +88,7 @@ The code-snippet aboves renders:
 ---
 ### Codeblock {/*codeblock*/}
 
-Provide a language-module for syntax highlighting or none if you still need to use a codeblock.
+Provide a language-module for syntax highlighting or non if you still need to use a codeblock.
 
 ```ts
 // This codeblock has the 'js' language module (with JS comment)
@@ -139,7 +139,7 @@ interface IButtonLinkProps {
  View the Code
 </ButtonLink>
 <ButtonLink variant="stroke" type="deploy" withIcon={true} href="...">
-  Deploy to {{ PRODUCT }}
+  Deploy to Layer0
 </ButtonLink>
 ```
 Renders:
@@ -151,7 +151,7 @@ Renders:
  View the Code
 </ButtonLink>
 <ButtonLink variant="stroke" type="deploy" withIcon={true} href="https://app.layer0.co/deploy?button&deploy&repo=https%253A%252F%252Fgithub.com%252Flayer0-docs%252Flayer0-nextjs-example">
-  Deploy to {{ PRODUCT }}
+  Deploy to Layer0
 </ButtonLink>
 
 ---
@@ -167,7 +167,7 @@ Renders:
   View the Code
  </ButtonLink>
  <ButtonLink variant="stroke" type="deploy" withIcon={true} href="...">
-   Deploy to {{ PRODUCT }}
+   Deploy to Layer0
  </ButtonLink>
 </ButtonLinksGroup>
 ```
@@ -182,6 +182,6 @@ Renders:
 	 View the Code
 	</ButtonLink>
 	<ButtonLink variant="stroke" type="deploy" withIcon={true} href="https://app.layer0.co/deploy?button&deploy&repo=https%253A%252F%252Fgithub.com%252Flayer0-docs%252Flayer0-nextjs-example">
-	  Deploy to {{ PRODUCT }}
+	  Deploy to Layer0
 	</ButtonLink>
 </ButtonLinksGroup>

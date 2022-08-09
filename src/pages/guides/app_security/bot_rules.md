@@ -1,7 +1,9 @@
-# Bot Rules {/*bot-rules*/}
+---
+title: Bot Rules
+---
 
 Use bot rules to require a client (e.g., a web browser) to solve a
-challenge before resolving the request. WAF blocks traffic when the
+challenge before resolving the request. {{ PRODUCT_SECURITY }} blocks traffic when the
 client cannot solve this challenge within a few seconds. Basic bots
 typically cannot solve this type of challenge and therefore their
 traffic is blocked. This prevents them from scraping your siteRefers to
@@ -42,7 +44,7 @@ Content protected by bot rules undergoes the following workflow:
 
         Define the duration for this cookie through the **Valid for (in
         minutes)** option when setting up the enforcement of bot
-        rules within your Security Application Manager configuration.
+        rules within your Security Application configuration.
 
     -   **Unsolved:** If the client is unable to solve the
         challenge, then our CDN responds with a new browser challenge.
@@ -100,7 +102,7 @@ rules:
 | 1    | Custom matches | This rule contains a single condition. |
 | 2    | Custom matches | This rule contains two conditions.     |
 
-Assuming the above configuration, WAF applies bot rules protection under
+Assuming the above configuration, {{ PRODUCT_SECURITY }} applies bot rules protection under
 either of the following circumstances:
 
 -   A match is found for the variable defined in the first rule's
@@ -120,7 +122,7 @@ rules:
 | 1    | Custom matches         | This rule contains two conditions.                                                                         |
 | 2    | Edgecast Reputation DB | This rule is satisfied when the client's IP address matches an IP address within our reputation database. |
 
-Assuming the above configuration, WAF applies bot rules protection under
+Assuming the above configuration, {{ PRODUCT_SECURITY }} applies bot rules protection under
 either of the following circumstances:
 
 -   A match is found for the variables defined in both of the first
@@ -137,7 +139,7 @@ Key information:
 -   Administer bot rule sets from the [[Bot Rules
     page](https://%5B%=Domains.Portal%%5D/Defend/RulesManager#/defend/waf/rules/bots).
 -   Apply a bot rule set to production traffic by adding it to a
-    [Security Application Manager configuration](SAM.htm) and then
+    [Security Application configuration](SAM.htm) and then
     determining how it will be enforced. Multiple Security Application
     Manager configurations may use the same bot rule set. Leverage this
     capability to tailor security screening by application or traffic

@@ -1,4 +1,6 @@
-# Managed Rules {/*managed-rules*/}
+---
+title: Managed Rules
+---
 
 Use managed rules to:
 
@@ -20,7 +22,7 @@ The characteristics of certain cookies, headers, and query string
 arguments may resemble malicious traffic. This may result in WAF
 incorrectly identifying a request as a threat. Avoid this situation by
 identifying the cookies, headers, and query string arguments that should
-be ignored when WAF performs threat assessment.
+be ignored when {{ PRODUCT_SECURITY }} performs threat assessment.
 
 Key information:
 
@@ -117,11 +119,11 @@ Key information:
 
 -   The purpose of a rule set is to protect your origin servers. As a
     result, managed rules are only applied to requests that will be
-    served from your web servers. WAF does not use them to screen
+    served from your web servers. {{ PRODUCT_SECURITY }} does not use them to screen
     requests for cached content served directly from the edge of our
     network.
 
--   A Security Application Manager configuration determines the
+-   A Security Application configuration determines the
     enforcement action that will take place when a request is identified
     as a threat as a result of a managed rule.
 
@@ -152,7 +154,7 @@ ECRS **2019-02-11**
 
 1.  Create a managed rule that points to the updated rule set.
 
-2.  Modify the desired Security Application Manager configuration's
+2.  Modify the desired Security Application configuration's
     **Audit Managed Rule** option to the above managed rule.
 
 3.  Wait a reasonable amount of time (e.g., 24 to 48 hours) to screen
@@ -259,7 +261,7 @@ Key information:
     madcap:conditions="General.EdgeCast,General.TransactOnly"
     madcap:excludeaction="unbind"}]{.portal}.
 -   Apply a managed rule to production traffic by adding it to a
-    [Security Application Manager configuration](SAM.htm) and then
+    [Security Application configuration](SAM.htm) and then
     determining how it will be enforced. Multiple Security Application
     Manager configurations may use the same managed rule. Leverage this
     capability to tailor security screening by application or traffic
@@ -282,7 +284,7 @@ To create a managed rule
     the response header that will be included with blocked requests.
     This name only consist of alphanumeric characters and dashes.
 
-5.  Determine whether WAF will [ignore specific cookies, request
+5.  Determine whether {{ PRODUCT_SECURITY }} will [ignore specific cookies, request
     headers, or query string arguments](#IgnoreList) when assessing
     whether a request is a threat.
 
@@ -311,7 +313,7 @@ To create a managed rule
         with our latest threat detection policies by enabling the
         **Automatically opt-in to the latest ECRS ruleset**
         option. This mode is only recommended for auditing new rule
-        sets. You should set your Security Application Manager
+        sets. You should set your Security Application
         configuration's **Audit Managed Rule** option to a
         managed rule that has opted-in to automatic updates to the
         latest rule set. This type of setup provides you with the

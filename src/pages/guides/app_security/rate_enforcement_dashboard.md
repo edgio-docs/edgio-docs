@@ -1,4 +1,6 @@
-# Rate Enforcement Dashboard {/*rate-enforcement-dashboard*/}
+---
+title: Rate Enforcement Dashboard
+---
 
 Use the Rate Enforcement dashboard to identify when a rate limit
 enforcement event took place. For the purposes of this dashboard, an
@@ -31,7 +33,7 @@ The Rate Enforcement dashboard allows you to:
     resulted in the enforcement of a rate rule.
 -   Understand the frequency of rate limited requests.
 
-Log data is retained for 30 days for most WAF solutions. The exception
+Log data is retained for 30 days for most {{ PRODUCT_SECURITY }} solutions. The exception
 is WAF Insights which only retains data for 7 days.\
 
 This article describes:
@@ -51,7 +53,7 @@ To view the Rate Enforcement dashboard
 
 1.  Navigate to the **Rate Enforcement** dashboard (**Rate Enforcement** tab
     of the **Overview** page. How? From the main menu,
-    navigate to **More** \| **Security** \| ***WAF Tier*** \| **Dashboard**. Click **Rate
+    navigate to **More** \| **Security** \| ***WAF*** **Tier** \| **Dashboard**. Click **Rate
     Enforcement**.
 
     The dashboard will display a chart showing recent enforcements of

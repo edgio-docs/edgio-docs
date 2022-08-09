@@ -138,9 +138,9 @@ Flag indicating whether the response is compressed or not.
 
 Unique request ID.
 
-### waf {/*waf*/}
+### {{ PRODUCT_SECURITY }} {/*waf*/}
 
-WAF security state: geo for geo blocking, bl for block list, dl-{list name} for dynamic lists
+{{ PRODUCT_SECURITY }} security state: geo for geo blocking, bl for block list, dl-{list name} for dynamic lists
 if the request was blocked; wl for allow list, by for bypass if the request was passed.
 
 ### sh {/*sh*/}

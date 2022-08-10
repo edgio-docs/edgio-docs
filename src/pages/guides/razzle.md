@@ -27,7 +27,6 @@ This framework has a connector developed for {{ PRODUCT }}. See [Connectors](con
 To prepare your Razzle app for deployment on {{ PRODUCT }}, run the following in the root folder of your project:
 
 ```bash
-npm i -g {{ PACKAGE_NAME }}/cli # yarn global add {{ PACKAGE_NAME }}/cli
 {{ CLI_NAME }} init
 ```
 

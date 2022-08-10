@@ -3,10 +3,9 @@ pre[class*='language-'] {
   color: #ccc;
   background: none;
   font-family: 'IBM Plex Mono', monospace;
-  font-size: 1rem;
+  font-size: 14px;
   font-weight: 500;
   text-align: left;
-  white-space: pre-wrap;
   word-spacing: normal;
   word-break: normal;
   word-wrap: normal;
@@ -18,8 +17,7 @@ pre[class*='language-'] {
 /* Code blocks */
 pre[class*='language-'] {
   overflow: auto;
-  /* padding: 15px 15px 15px 0px; */
-  padding: 15px;
+  padding: 15px 15px 15px 0;
 }
 
 :not(pre) > code[class*='language-'],

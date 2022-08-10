@@ -85,3 +85,37 @@ includeFiles: {
 ```
 Or you could choose to bundle everything in the packages listed in the `dependencies` property of `package.json` by using
 [`includeNodeModules` property](/guides/layer0_config#includenodemodules).
+
+### Readonly filesystem in serverless runtime {/*readonly-filesystem-in-serverless-runtime*/}
+
+Web developers often use the filesystem as a temporary data source for their applications. That includes creating and/or
+manipulating files based on user requests. For example, storing user uploaded files locally and stripping metadata
+before proceeding. But this can open up security vulnerabilities where a bug in the application can be used to modify
+the application itself.
+
+So, as a best practice {{ PRODUCT_NAME }} App Platform does not allow you to change the content of application files on
+the filesystem during runtime. If you need to modify an application file, you must make those changes locally and make
+a new deployment. This limits the attack surface of your potential application vulnerabilities. It also allows us to
+make your application more distributed and resilient to outages. {{ PRODUCT_NAME }} takes your application code and
+deploys it to multiple regions with a read-only filesystem. This way, if the primary availability zone or region is
+unavailable, your application will still be accessible from another region.
+
+{{ PRODUCT_NAME }} App Platform runs your application in `/var/task` directory. If you attempt to write a file in that
+directory, you may come across an error like the following:
+```
+EROFS: read-only file system, open '/var/task/temp-upload.jpg'
+```
+To resolve issues like this you can use "tmp" directory to store any temporary files. But this directory might be
+different on you local environment vs  {{ PRODUCT_NAME }} serverless runtime. So, following is a good way to write code
+that will work on your local machine as well as {{ PRODUCT_NAME }} serverless runtime.
+
+```js
+import { tmpdir } from 'os';
+import * as path from 'path';
+const tmpFilePath = path.join(tmpdir(), 'temp-upload.jpg');
+```
+
+
+Another thing to keep in mind is that "tmp" directory is ephemeral, meaning that it gets reset/recycled. If you store a
+file in "tmp", it most likely won’t be available in the next request. That’s why you’ll need to use external services
+to store permanent file storage. These external services can be Amazon S3, Google Cloud Storage, or any other storage.

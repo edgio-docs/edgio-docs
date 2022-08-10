@@ -20,9 +20,7 @@ This framework has a connector developed for {{ PRODUCT }}. See [Connectors](con
   View the Connector Code
 </ButtonLink>
 
-{{ SYSTEM_REQUIREMENTS }}
-
-{{ SIGN_UP }}
+{{ PREREQ }}
 
 ## Getting Started {/*getting-started*/}
 
@@ -35,10 +33,10 @@ npm i -g {{ PACKAGE_NAME }}/cli # yarn global add {{ PACKAGE_NAME }}/cli
 
 This will automatically add all of the required dependencies and files to your project. These include:
 
-- The `{{ CLI_NAME }}/core` package - Allows you to declare routes and deploy your application on {{ PRODUCT }}
-- The `{{ CLI_NAME }}/razzle` package - Provides router middleware that automatically adds Razzle routes to {{ PRODUCT }} router.
-- The `{{ CLI_NAME }}/prefetch` package - Allows you to configure a service worker to prefetch and cache pages to improve browsing speed
-- The `{{ CLI_NAME }}/react` package - Provides a `Prefetch` component for prefetching pages
+- The `{{ PACKAGE_NAME }}/core` package - Allows you to declare routes and deploy your application on {{ PRODUCT }}
+- The `{{ PACKAGE_NAME }}/razzle` package - Provides router middleware that automatically adds Razzle routes to {{ PRODUCT }} router.
+- The `{{ PACKAGE_NAME }}/prefetch` package - Allows you to configure a service worker to prefetch and cache pages to improve browsing speed
+- The `{{ PACKAGE_NAME }}/react` package - Provides a `Prefetch` component for prefetching pages
 - `routes.js` - A default routes file that sends all requests to Razzle. Update this file to add caching or proxy some URLs to a different origin.
 - `sw/service-worker.js` - The source code for your service worker, which enables prefetching when running on {{ PRODUCT }}.
 - `{{ CONFIG_FILE }}` - Contains configuration options for deploying on {{ PRODUCT }}.

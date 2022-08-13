@@ -140,11 +140,11 @@ of factors, such as those listed below.
     - Public vs. private content that requires authentication
     - Type of application (e.g., CMS vs. non-CMS traffic)  
 
-  Additionally, there may be multiple traffic delivery profiles that are specific to an application, role, or the action being performed.  
+    Additionally, there may be multiple traffic delivery profiles that are specific to an application, role, or the action being performed.  
 
-  **Sample scenario:** 
+    **Sample scenario:** 
  
-  Both country and referrer access controls may potentially be applied to a site that requires authentication and only caters to customers in the United States. However, this configuration would be too restrictive for a site that has worldwide users from various traffic sources.
+    Both country and referrer access controls may potentially be applied to a site that requires authentication and only caters to customers in the United States. However, this configuration would be too restrictive for a site that has worldwide users from various traffic sources.
 -   **Acceptable Risk:** {{ PRODUCT_SECURITY }} allows the flexibility to determine the degree to which a site will be protected. A balance must be found between security and allowing the flow of legitimate traffic. A major factor in this balancing act is the degree to which an organization is able to cope with risk.
 
 As a result of the above factors, it may make sense to tailor {{ PRODUCT_SECURITY }} by

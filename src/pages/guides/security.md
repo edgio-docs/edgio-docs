@@ -14,15 +14,15 @@ This guide shows you how to keep your site and platform secure using {{ PRODUCT_
 
 {{ PRODUCT_NAME }} Enterprise customers enjoy always-on DDoS protection inside of our high-bandwidth, globally distributed network. Our solution offers basic protection against common layer 3 and 4 attacks in real-time so you never have to sacrifice performance for protection.
 
-## {{ PRODUCT_SECURITY }} (Web Application Firewall) {/*waf-web-application-firewall*/}
+## WAF (Web Application Firewall) {/*waf-web-application-firewall*/}
 
-### {{ PRODUCT_SECURITY }} Overview {/*waf-overview*/}
+### WAF Overview {/*waf-overview*/}
 
-{{ PRODUCT_SECURITY }} is a web application firewall that helps protect your web applications and APIs against common web exploits an attacker may use to compromise your security, overwhelm resources, and affect the availability of your application.
+WAF is a web application firewall that helps protect your web applications and APIs against common web exploits an attacker may use to compromise your security, overwhelm resources, and affect the availability of your application.
 
-Utilizing the {{ PRODUCT_NAME }} {{ PRODUCT_SECURITY }} allows you to monitor, filter, and block HTTP traffic against common vulnerabilities such as cross-site scripting (XSS) or SQL injection before they reach your origin.
+Utilizing the {{ PRODUCT_NAME }} WAF allows you to monitor, filter, and block HTTP traffic against common vulnerabilities such as cross-site scripting (XSS) or SQL injection before they reach your origin.
 
-The {{ PRODUCT_SECURITY }} includes Managed Rule Groups, managed by {{ PRODUCT_NAME }}, that can be configured in either a flagging or blocking mode. You can enable all of the rules within these groups or configure each independent rule within the group based on your needs.
+The WAF includes Managed Rule Groups, managed by {{ PRODUCT_NAME }}, that can be configured in either a flagging or blocking mode. You can enable all of the rules within these groups or configure each independent rule within the group based on your needs.
 
 ### Managed Rule Groups {/*managed-rule-groups*/}
 
@@ -31,7 +31,7 @@ The {{ PRODUCT_SECURITY }} includes Managed Rule Groups, managed by {{ PRODUCT_N
 ​​The {{ PRODUCT_NAME }} Managed rule group contains rules that are generally applicable to web applications. This provides protection against exploitation of a wide range of vulnerabilities, including high risk and commonly occurring vulnerabilities described in OWASP&reg; publications such as [OWASP Top 10](https://owasp.org/www-project-top-ten/).
 
 <Callout type="danger">
-  {{ PRODUCT_NAME }} recommends utilizing this rule group for all {{ PRODUCT_SECURITY }} use cases.
+  {{ PRODUCT_NAME }} recommends utilizing this rule group for all WAF use cases.
 </Callout>
 
 [{{ PRODUCT }} Managed Rule Group Descriptions](managed_rule_groups#section_managed_rule_groups)
@@ -75,12 +75,12 @@ The SQL database rule group contains rules to block request patterns associated 
 
 ---
 
-#### Add Rule Groups to a {{ PRODUCT_SECURITY }} {/*add-rule-groups-to-a-waf*/}
+#### Add Rule Groups to a WAF {/*add-rule-groups-to-a-waf*/}
 
 ![Add Rule Groups to WAF](/images/security/addrulegroup1.jpg?width=700 'Add Rule Groups to WAF')
 
 1. Log in to the [{{ PRODUCT }} console](https://app.layer0.co/).
-1. Click _SECURITY_ from the top banner to launch the {{ PRODUCT_SECURITY }} Security Rules page.
+1. Click _SECURITY_ from the top banner to launch the WAF Security Rules page.
 1. Select [_WAF-1_ or _WAF-2_](#section_what_s_the_difference_between_waf_1_and_waf_2_) from the first dropdown and the [configuration version](#section_how_do_i_know_which_version_to_use_) from the second.
 1. Click _EDIT_ to set your security rules.
 
@@ -93,12 +93,12 @@ The SQL database rule group contains rules to block request patterns associated 
 
 ---
 
-#### Add Single Rules to a {{ PRODUCT_SECURITY }} {/*add-single-rules-to-a-waf*/}
+#### Add Single Rules to a WAF {/*add-single-rules-to-a-waf*/}
 
 ![Add Single Rule to WAF](/images/security/addrulegroup1.jpg?width=700 'Add Single Rule to WAF')
 
 1. Log in to the [{{ PRODUCT }} console](https://app.layer0.co/).
-1. Click _SECURITY_ from the top banner to launch the {{ PRODUCT_SECURITY }} Security Rules page.
+1. Click _SECURITY_ from the top banner to launch the WAF Security Rules page.
 1. Select [_WAF-1_ or _WAF-2_](#section_what_s_the_difference_between_waf_1_and_waf_2_) from the first dropdown and the [configuration version](#section_how_do_i_know_which_version_to_use_) from the second.
 1. Click _EDIT_ to set your security rules.
 
@@ -112,15 +112,15 @@ The SQL database rule group contains rules to block request patterns associated 
 
 ---
 
-#### Apply a {{ PRODUCT_SECURITY }} to Your Environment {/*apply-a-waf-to-your-environment*/}
+#### Apply a WAF to Your Environment {/*apply-a-waf-to-your-environment*/}
 
-Prerequisite: Configured {{ PRODUCT_SECURITY }} rules and/or rule groups.
+Prerequisite: Configured WAF rules and/or rule groups.
 
-Once you’ve configured the {{ PRODUCT_SECURITY }} rules you want to use, you need to apply them to the corresponding environments you want to deploy them on. Rules are NOT applied to traffic until you take this step to apply them.
+Once you’ve configured the WAF rules you want to use, you need to apply them to the corresponding environments you want to deploy them on. Rules are NOT applied to traffic until you take this step to apply them.
 
-Follow these steps to add a {{ PRODUCT_SECURITY }} to an environment:
+Follow these steps to add a WAF to an environment:
 
-![Apply {{ PRODUCT_SECURITY }} to Environment](/images/security/addrg3.jpg?width=700 'Apply {{ PRODUCT_SECURITY }} to Environment')
+![Apply WAF to Environment](/images/security/addrg3.jpg?width=700 'Apply WAF to Environment')
 
 1. Log in to the [{{ PRODUCT }} console](https://app.layer0.co/) and select your site.
 1. Click the ENVIRONMENTS tab.
@@ -131,7 +131,7 @@ Follow these steps to add a {{ PRODUCT_SECURITY }} to an environment:
 4. Select _CONFIGURATION_ from the top navigation.
 1. Click _EDIT_.
 1. Scroll down to the Security section.
-1. From the dropdown, select an active {{ PRODUCT_SECURITY }} to add.
+1. From the dropdown, select an active WAF to add.
 1. Click the ACTIVATE button from either the top or the bottom of the page.
 
 ## Bot Detection {/*bot-detection*/}
@@ -142,7 +142,7 @@ The {{ PRODUCT_NAME }} Bot protection contains rules to block and manage request
 
 The Bot Control product applies labels to a set of verifiable bots that are commonly allowed. The rule group doesn't block this category of commonly allowed bots.
 
-**Bot Control Rule Group**: In addition to the {{ PRODUCT_SECURITY }} rule groups, {{ PRODUCT_NAME }} offers an additional Managed Rule Group for bots that allows you to take action against common bots that may impact the performance and availability of your web application or APIs.
+**Bot Control Rule Group**: In addition to the WAF rule groups, {{ PRODUCT_NAME }} offers an additional Managed Rule Group for bots that allows you to take action against common bots that may impact the performance and availability of your web application or APIs.
 
 You can monitor the impact of your bots by flagging each bot type of request gaining insights into SEO bots, scraping bots, advertising bots, malicious user agent bots, and several other categories of bots.
 
@@ -211,14 +211,14 @@ The above code will match all the routes that even have a `user-agent` header an
 
 ### Security Activity {/*security-activity*/}
 
-![{{ PRODUCT_SECURITY }} Activity](/images/security/wafactivity.jpg?width=700 '{{ PRODUCT_SECURITY }} Activity')
+![WAF Activity](/images/security/wafactivity.jpg?width=700 'WAF Activity')
 
 |     | View Option                                             | Access                                   |
 | --- | ------------------------------------------------------- | ---------------------------------------- |
-| a.  | Deployment number                                       | Toggle on/off via {{ PRODUCT_SECURITY }} Activity settings. |
+| a.  | Deployment number                                       | Toggle on/off via WAF Activity settings. |
 | b.  | Number of requests by action (passed, flagged, blocked) | Hover over graph data.                   |
 | c.  | Requests by action (passed, flagged, blocked)           | Toggle the checkboxes.                   |
-| d.  | Deployments and/or full cache flushes                   | Toggle on/off via {{ PRODUCT_SECURITY }} Activity settings. |
+| d.  | Deployments and/or full cache flushes                   | Toggle on/off via WAF Activity settings. |
 
 ### Rules Applied {/*rules-applied*/}
 
@@ -241,9 +241,9 @@ The above code will match all the routes that even have a `user-agent` header an
 
 ### Logs {/*logs*/}
 
-Here is a sample log file highlighting the {{ PRODUCT_SECURITY }} data ("waf":"botLib,flagged","wafv":"WAF-1,2"): the action applied, the mode, the {{ PRODUCT_SECURITY }} name, and the version number, respectively.
+Here is a sample log file highlighting the WAF data ("waf":"botLib,flagged","wafv":"WAF-1,2"): the action applied, the mode, the WAF name, and the version number, respectively.
 
-![{{ PRODUCT_SECURITY }} Log File Example](/images/security/log.jpg?width=700 '{{ PRODUCT_SECURITY }} Log File Example')
+![WAF Log File Example](/images/security/log.jpg?width=700 'WAF Log File Example')
 
 ## Website Security with EdgeJS {/*website-security-with-edgejs*/}
 
@@ -357,11 +357,11 @@ router.get('/some/path/depending/on/language/cookie', ({ cache }) => {
 
 ### What’s the difference between WAF-1 and WAF-2? {/*whats-the-difference-between-waf-1-and-waf-2*/}
 
-You can configure 2 different {{ PRODUCT_SECURITY }} instances, allowing you to apply different sets of security rules to different environments.
+You can configure 2 different WAF instances, allowing you to apply different sets of security rules to different environments.
 
 ### How do I know which version to use? {/*how-do-i-know-which-version-to-use*/}
 
-Like all {{ PRODUCT_NAME }} products, {{ PRODUCT_SECURITY }} gives you access to all previous and active versions of your configuration so you have historical setups in case you need to roll back the current version.While editing, the version is in a _Draft_ state; once activated, the version is _Active_.
+Like all {{ PRODUCT_NAME }} products, WAF gives you access to all previous and active versions of your configuration so you have historical setups in case you need to roll back the current version.While editing, the version is in a _Draft_ state; once activated, the version is _Active_.
 
 ### What is the difference between flagging and blocking a rule or rule group? {/*what-is-the-difference-between-flagging-and-blocking-a-rule-or-rule-group*/}
 
@@ -369,11 +369,11 @@ To flag a rule or rule group means to mark it if the rule would have been activa
 
 ### What are {{ PRODUCT_NAME }} Managed Rules and why should I apply this rule group? {/*what-are-layer0-managed-rules-and-why-should-i-apply-this-rule-group*/}
 
-Managed rules block specific known threats. {{ PRODUCT }} recommends this rule group for all {{ PRODUCT_SECURITY }} use cases.
+Managed rules block specific known threats. {{ PRODUCT }} recommends this rule group for all WAF use cases.
 
 Note: {{ PRODUCT }} recommends that all customers activate the _Bad Input - Log4J_ rule group.
 
-### Is the {{ PRODUCT }} {{ PRODUCT_SECURITY }} a PCI-compliant solution? {/*is-the-layer0-waf-a-pci-compliant-solution*/}
+### Is the {{ PRODUCT }} WAF a PCI-compliant solution? {/*is-the-layer0-waf-a-pci-compliant-solution*/}
 
 Yes. {{ PRODUCT }} maintains PCI-DSS Level 1 compliance by undergoing annual audits from approved Visa and MasterCard auditors.
 

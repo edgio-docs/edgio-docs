@@ -88,7 +88,7 @@ The code-snippet aboves renders:
 ---
 ### Codeblock {/*codeblock*/}
 
-Provide a language-module for syntax highlighting or non if you still need to use a codeblock.
+Provide a language-module for syntax highlighting or none if you still need to use a codeblock.
 
 ```ts
 // This codeblock has the 'js' language module (with JS comment)
@@ -138,13 +138,9 @@ interface IButtonLinkProps {
 <ButtonLink variant="stroke" type="code" withIcon={true} href="...">
  View the Code
 </ButtonLink>
-<<<<<<< HEAD
 <ButtonLink variant="stroke" type="deploy" withIcon={true} href="...">
-  Deploy to Layer0
+  Deploy to {{ PRODUCT }}
 </ButtonLink>
-=======
-<ButtonLink variant="stroke" type="deploy" withIcon={true} href="..." />
->>>>>>> origin/main
 ```
 Renders:
 
@@ -154,13 +150,9 @@ Renders:
 <ButtonLink variant="stroke" type="code" withIcon={true} href="https://github.com/layer0-docs/layer0-nextjs-example">
  View the Code
 </ButtonLink>
-<<<<<<< HEAD
 <ButtonLink variant="stroke" type="deploy" withIcon={true} href="https://app.layer0.co/deploy?button&deploy&repo=https%253A%252F%252Fgithub.com%252Flayer0-docs%252Flayer0-nextjs-example">
-  Deploy to Layer0
+  Deploy to {{ PRODUCT }}
 </ButtonLink>
-=======
-<ButtonLink variant="stroke" type="deploy" withIcon={true} href="https://app.layer0.co/deploy?button&deploy&repo=https%253A%252F%252Fgithub.com%252Flayer0-docs%252Flayer0-nextjs-example" />
->>>>>>> origin/main
 
 ---
 
@@ -174,13 +166,9 @@ Renders:
  <ButtonLink variant="stroke" type="code" withIcon={true} href="...">
   View the Code
  </ButtonLink>
-<<<<<<< HEAD
  <ButtonLink variant="stroke" type="deploy" withIcon={true} href="...">
-   Deploy to Layer0
+   Deploy to {{ PRODUCT }}
  </ButtonLink>
-=======
- <ButtonLink variant="stroke" type="deploy" withIcon={true} href="..." />
->>>>>>> origin/main
 </ButtonLinksGroup>
 ```
 
@@ -193,12 +181,7 @@ Renders:
 	<ButtonLink variant="stroke" type="code" withIcon={true} href="https://github.com/layer0-docs/layer0-nextjs-example">
 	 View the Code
 	</ButtonLink>
-<<<<<<< HEAD
 	<ButtonLink variant="stroke" type="deploy" withIcon={true} href="https://app.layer0.co/deploy?button&deploy&repo=https%253A%252F%252Fgithub.com%252Flayer0-docs%252Flayer0-nextjs-example">
-	  Deploy to Layer0
+	  Deploy to {{ PRODUCT }}
 	</ButtonLink>
 </ButtonLinksGroup>
-=======
-	<ButtonLink variant="stroke" type="deploy" withIcon={true} href="https://app.layer0.co/deploy?button&deploy&repo=https%253A%252F%252Fgithub.com%252Flayer0-docs%252Flayer0-nextjs-example" />
-</ButtonLinksGroup>
->>>>>>> origin/main

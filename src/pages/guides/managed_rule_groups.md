@@ -5,14 +5,14 @@ title: Managed Rule Groups
 ## {{ PRODUCT }} Managed Rules {/*layer0-managed-rules*/}
 
 <Callout type="danger">
-	{{ PRODUCT_NAME }} recommends utilizing this rule group for all {{ PRODUCT_SECURITY }} use cases.
+	{{ PRODUCT_NAME }} recommends utilizing this rule group for all WAF use cases.
 </Callout>
 
 | Rule Name                           | Description                                                                                                                                                                                                                                                                                                                          | Log Name       |
 | ----------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------------- |
-| Cross-site scripting (XSS) Body     | Inspects the value of the request body and blocks common cross-site scripting (XSS) patterns using the built-in XSS detection rule in {{ PRODUCT_SECURITY }}. Example patterns include scripts such as `<script>alert("hello")</script>`. CAUTION: This rule only inspects the first 8 KB of the request body.                       | `cssBody`      |
-| Cross-site scripting (XSS) Cookie   | Inspects the value of cookie headers and blocks common cross-site scripting (XSS) patterns using the built-in XSS detection rule in {{ PRODUCT_SECURITY }}. Example patterns include scripts such as `<script>alert("hello")</script>.`                                                                                              | `cssCookie`    |
-| cssCookie                           | Cross-site scripting (XSS) Query. Inspects the value of query arguments and blocks common cross-site scripting (XSS) patterns using the built-in XSS detection rule in {{ PRODUCT_SECURITY }}. Example patterns include scripts such as `<script>alert("hello")</script>`.                                                           | `cssArgs`      |
+| Cross-site scripting (XSS) Body     | Inspects the value of the request body and blocks common cross-site scripting (XSS) patterns using the built-in XSS detection rule in {{ PRODUCT_NAME }} WAF. Example patterns include scripts such as `<script>alert("hello")</script>`. CAUTION: This rule only inspects the first 8 KB of the request body.                       | `cssBody`      |
+| Cross-site scripting (XSS) Cookie   | Inspects the value of cookie headers and blocks common cross-site scripting (XSS) patterns using the built-in XSS detection rule in {{ PRODUCT_NAME }} WAF. Example patterns include scripts such as `<script>alert("hello")</script>.`                                                                                              | `cssCookie`    |
+| cssCookie                           | Cross-site scripting (XSS) Query. Inspects the value of query arguments and blocks common cross-site scripting (XSS) patterns using the built-in XSS detection rule in {{ PRODUCT_NAME }} WAF. Example patterns include scripts such as `<script>alert("hello")</script>`.                                                           | `cssArgs`      |
 | Cross-site scripting (XSS) URI Path | Inspects the URI path and blocks requests that attempt to exploit RFI (Remote File Inclusion) in web applications by embedding URLs that contain IPv4 addresses. Examples include patterns such as `http://`, `https://`, `ftp://`, `ftps://`, and `file://`, with an IPv4 host header in the exploit attempt.                       | `cssPath`      |
 | EC2 Body                            | Inspects for attempts to exfiltrate Amazon EC2 metadata from the request body. CAUTION: This rule only inspects the first 8 KB of the request body.                                                                                                                                                                                  | `metaBody`     |
 | EC2 Cookie                          | Inspects for attempts to exfiltrate Amazon EC2 metadata from the request cookie.                                                                                                                                                                                                                                                     | `metaCookie`   |
@@ -41,7 +41,7 @@ title: Managed Rule Groups
 ## Bad Input Rules {/*bad-input-rules*/}
 
 <Callout type="danger">
-	{{ PRODUCT_NAME }} recommends enabling the 'Bad Input - Log4J' rule on all {{ PRODUCT_SECURITY }} applications.
+	{{ PRODUCT_NAME }} recommends enabling the 'Bad Input - Log4J' rule on all WAF applications.
 </Callout>
 
 | Rule Name            | Description                                                                                                                                                                                                                                                             | Log Name      |
@@ -62,11 +62,11 @@ title: Managed Rule Groups
 
 | Rule Name            | Description                                                                                                                                                                                                        | Log Name       |
 | -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------------- |
-| SQL - Body           | Uses the built-in {{ PRODUCT_NAME }} {{ PRODUCT_SECURITY }} SQL injection match statement to inspect the request body for patterns that match malicious SQL code. CAUTION: This rule only inspects the first 8 KB of the request body | `sqlBody`      |
-| SQL - Cookie         | Uses the built-in {{ PRODUCT_NAME }} {{ PRODUCT_SECURITY }} SQL injection match statement to inspect the request cookie header for patterns that match malicious SQL code.                                                            | `sqlCookie`    |
-| SQL - Query          | Uses the built-in {{ PRODUCT_NAME }} {{ PRODUCT_SECURITY }} SQL injection match statement to inspect the request query parameters for patterns that match malicious SQL code.                                                         | `sqlArgs`      |
-| SQL - Query Extended | Inspects the values of all query parameters for patterns that match malicious SQL code. The patterns this rule inspects for aren't covered by the built-in {{ PRODUCT_NAME }} {{ PRODUCT_SECURITY }} SQL injection match statement.   | `sqlArgsExtra` |
-| SQL - URI path       | Uses the built-in {{ PRODUCT_NAME }} {{ PRODUCT_SECURITY }} injection match statement to inspect the request URI path for patterns that match malicious SQL code.                                                                     | `sqlPath`      |
+| SQL - Body           | Uses the built-in {{ PRODUCT_NAME }} WAF SQL injection match statement to inspect the request body for patterns that match malicious SQL code. CAUTION: This rule only inspects the first 8 KB of the request body | `sqlBody`      |
+| SQL - Cookie         | Uses the built-in {{ PRODUCT_NAME }} WAF SQL injection match statement to inspect the request cookie header for patterns that match malicious SQL code.                                                            | `sqlCookie`    |
+| SQL - Query          | Uses the built-in {{ PRODUCT_NAME }} WAF SQL injection match statement to inspect the request query parameters for patterns that match malicious SQL code.                                                         | `sqlArgs`      |
+| SQL - Query Extended | Inspects the values of all query parameters for patterns that match malicious SQL code. The patterns this rule inspects for aren't covered by the built-in {{ PRODUCT_NAME }} WAF SQL injection match statement.   | `sqlArgsExtra` |
+| SQL - URI path       | Uses the built-in {{ PRODUCT_NAME }} WAF injection match statement to inspect the request URI path for patterns that match malicious SQL code.                                                                     | `sqlPath`      |
 
 ## Bot Control Rules {/*bot-control-rules*/}
 

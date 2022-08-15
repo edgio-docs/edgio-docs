@@ -16,7 +16,7 @@ export default function getDescriptiveLanguage(language: string) {
     case 'bash':
     case 'cli':
     case 'terminal':
-      return 'Terminal';
+      return 'Bash';
     case 'json':
       return 'JSON';
     case 'md':

@@ -15,9 +15,7 @@ Here is an example of the [Next.js Commerce](https://nextjs.org/commerce) templa
   <ButtonLink variant="stroke" type="code" withIcon={true} href="https://github.com/layer0-docs/layer0-nextjs-commerce-example">
    View the Code
   </ButtonLink>
-  <ButtonLink variant="stroke" type="deploy" withIcon={true} href="https://app.layer0.co/deploy?button&deploy&repo=https%3A%2F%2Fgithub.com%2Flayer0-docs%2Flayer0-nextjs-commerce-example">
-    Deploy to {{ PRODUCT }}
-  </ButtonLink>
+  <ButtonLink variant="stroke" type="deploy" withIcon={true} href="https://app.layer0.co/deploy?button&deploy&repo=https%3A%2F%2Fgithub.com%2Flayer0-docs%2Flayer0-nextjs-commerce-example" />
 </ButtonLinksGroup>
 
 {{ PREREQ }}
@@ -26,9 +24,7 @@ Here is an example of the [Next.js Commerce](https://nextjs.org/commerce) templa
 
 Quickly launch an example with no code by clicking the "Deploy to {{ PRODUCT }}" button.
 
-<ButtonLink variant="stroke" type="deploy" withIcon={true} href="https://app.layer0.co/deploy?button&deploy&repo=https%3A%2F%2Fgithub.com%2Flayer0-docs%2Flayer0-nextjs-commerce-example">
-  Deploy to {{ PRODUCT }}
-</ButtonLink>
+<ButtonLink variant="stroke" type="deploy" withIcon={true} href="https://app.layer0.co/deploy?button&deploy&repo=https%3A%2F%2Fgithub.com%2Flayer0-docs%2Flayer0-nextjs-commerce-example" />
 
 ## Deploying the official Next.js Commerce repository {/*deploying-the-official-nextjs-commerce-repository*/}
 
@@ -102,6 +98,6 @@ For more details on how to set up your BigCommerce store, view the <a href="/gui
 
 This framework has a connector developed for {{ PRODUCT }}. See [Connectors](connectors) for more information.
 
-<ButtonLink variant="stroke" type="deploy" withIcon={true} href="https://github.com/layer0-docs/layer0-connectors/tree/main/layer0-next-connector">
+<ButtonLink variant="stroke" type="code" withIcon={true} href="https://github.com/layer0-docs/layer0-connectors/tree/main/layer0-next-connector">
   View the Connector Code
 </ButtonLink>

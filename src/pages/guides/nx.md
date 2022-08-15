@@ -13,7 +13,7 @@ Because every Nx project can be different, there are a couple ways to implement 
 
 To learn more about what goes into making a connector, view this [connector guide](/guides/connectors).
 
-## Example App {/* example-app */}
+## Example App {/*example-app*/}
 
 Here we use [Next.js](https://nextjs.org/) for the example Nx project.
 

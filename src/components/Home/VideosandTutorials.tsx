@@ -33,8 +33,6 @@ const StyledComp = styled.div`
     grid-template-columns: repeat(auto-fill, var(--minmax-width));
     gap: 54px;
 
-    /* Can't use CSS Variables in media queries — not yet. */
-    /* @media (max-width: ${(props) => props.theme.breakpoints.small}) { */
     @media (max-width: 420px) {
       --minmax-width: minmax(300px, 1fr);
     }

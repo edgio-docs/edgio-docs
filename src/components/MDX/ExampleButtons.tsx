@@ -1,7 +1,7 @@
-import {PRODUCT_NAME} from '../../../constants';
-
 import ButtonLink from './ButtonLink';
 import ButtonLinksGroup from './ButtonLinksGroup';
+
+import {IconDeploy} from 'components/Icon';
 
 export default function ExampleButtons({
   title,
@@ -37,9 +37,8 @@ export default function ExampleButtons({
           withIcon={true}
           href={`https://app.layer0.co/deploy?button&deploy&repo=${encodeURIComponent(
             repoUrl
-          )}`}>
-          Deploy to {PRODUCT_NAME}
-        </ButtonLink>
+          )}`}
+        />
       )}
     </ButtonLinksGroup>
   );

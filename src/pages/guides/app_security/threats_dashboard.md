@@ -63,7 +63,7 @@ at your applications and web servers. This view consists of a chart and statisti
     The following information is displayed for each category:
     -   **<Value\>:** Groups threats by the request's value for the current category.  The following illustration shows a partial listing of values for the "Rule Message" category.  
 
-    ![](../Resources/Images/app_security/dashboard_category.png)  
+    ![](/images/app_security/dashboard_category.png)  
 
     -   **%:** Indicates the percentage of detected threats over a given time period that belong to the group identified by the **Value** field.  
     -   **Events:** Indicates the number of detected threats that belong to the group identified by the **Value** field.  
@@ -105,9 +105,9 @@ the type of attacks being mounted on an origin server.
 
 The event log contains a list of recent rule violations. The header bar
 for each violation contains the following information:
--   **<Rule Message\>:** Identifies the rule that was violated.
--   **<Elapsed Time\>:** Indicates the amount of time that has passed since the request was screened.
--   **<Time\>:** Indicates the time (UTC) at which the request was screened.
+-   **&lt;Rule Message>:** Identifies the rule that was violated.
+-   **&lt;Elapsed Time>:** Indicates the amount of time that has passed since the request was screened.
+-   **&lt;Time>:** Indicates the time (UTC) at which the request was screened.
 
 **Syntax:** 
 

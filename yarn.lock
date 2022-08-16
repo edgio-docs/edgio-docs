@@ -8947,10 +8947,10 @@ react-transition-group@^4.4.0:
     loose-envify "^1.4.0"
     prop-types "^15.6.2"
 
-react@^18.2.0:
-  version "18.2.0"
-  resolved "https://registry.yarnpkg.com/react/-/react-18.2.0.tgz#555bd98592883255fa00de14f1151a917b5d77d5"
-  integrity sha512-/3IjMdb2L9QbBdWiW5e3P2/npwMBaU9mHCSCUzNln0ZCYbcfTsGbTJrU/kGemdH2IWmB2ioZ+zkxtmq6g09fGQ==
+react@experimental:
+  version "0.0.0-experimental-a4bed4696-20220627"
+  resolved "https://registry.yarnpkg.com/react/-/react-0.0.0-experimental-a4bed4696-20220627.tgz#f560b37587a19825396dc48764db733ad877b1c7"
+  integrity sha512-7IHNoSW7iGl0SSkBVkS4fr+aE57iRC+JQOwf0RmknHnHhuSJaE3gvzLek+7g49tquM3AS2QIGWRr/D6A1/tGVw==
   dependencies:
     loose-envify "^1.1.0"
 

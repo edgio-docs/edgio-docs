@@ -92,7 +92,7 @@ module.exports = {
 Add a destination for each site or application version to your `routes.js` file. The destinations will appear in the {{ PRODUCT }} Developer Console and you will use them later on when configuring traffic splitting rules.
 
 ```js filename="routes.js"
-const { Router } = require('@layer0/core/router')
+const { Router } = require('{{ PACKAGE_NAME }}/core/router')
 module.exports = new Router()
   .destination(
     'legacy_experience', // displayed in the destination dropdown in the traffic splitting section of your environment configuration in the Edgio Developer Console

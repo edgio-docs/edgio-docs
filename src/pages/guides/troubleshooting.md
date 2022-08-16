@@ -145,7 +145,7 @@ We provide a header, `{{ HEADER_PREFIX }}-caching-status` to best understand why
 Set `{{ FULL_CLI_NAME }}SourceMaps: true` in your `next.config.js`:
 
 ```js filename="./next.config.js"
-const { with{{ PRODUCT_LEGACY }}, withServiceWorker } = require('@layer0/next/config')
+const { with{{ PRODUCT_LEGACY }}, withServiceWorker } = require('{{ PACKAGE_NAME }}/next/config')
 
 module.exports = with{{ PRODUCT_LEGACY }}(
   withServiceWorker({
@@ -158,12 +158,12 @@ module.exports = with{{ PRODUCT_LEGACY }}(
 
 ### Nuxt.js {/*nuxtjs*/}
 
-Set `{{ FULL_CLI_NAME }}SourceMaps: true` in the config for `@layer0/nuxt/module` in `buildModules` in `nuxt.config.js`:
+Set `{{ FULL_CLI_NAME }}SourceMaps: true` in the config for `{{ PACKAGE_NAME }}/nuxt/module` in `buildModules` in `nuxt.config.js`:
 
 ```js filename="./nuxt.config.js"
 module.exports = {
   // ...
-  buildModules: [['@layer0/nuxt/module', { {{ FULL_CLI_NAME }}SourceMaps: true }]],
+  buildModules: [['{{ PACKAGE_NAME }}/nuxt/module', { {{ FULL_CLI_NAME }}SourceMaps: true }]],
   // ...
 }
 ```

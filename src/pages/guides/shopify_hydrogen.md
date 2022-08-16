@@ -140,8 +140,8 @@ module.exports = {
     const {join} = require('path');
     const {exit} = require('process');
     const {nodeFileTrace} = require('@vercel/nft');
-    const {DeploymentBuilder} = require('@layer0/core/deploy');
-    const {isYarn} = require('@layer0/cli/utils/packageManager');
+    const {DeploymentBuilder} = require('{{ PACKAGE_NAME }}/core/deploy');
+    const {isYarn} = require('{{ PACKAGE_NAME }}/cli/utils/packageManager');
 
     const appDir = process.cwd();
     const builder = new DeploymentBuilder(appDir);
@@ -212,7 +212,7 @@ Update `routes.js` at the root of your project to the following:
 const ONE_HOUR = 60 * 60
 const ONE_DAY = 24 * ONE_HOUR
 
-const { Router } = require('@layer0/core/router')
+const { Router } = require('{{ PACKAGE_NAME }}/core/router')
 
 module.exports = new Router()
   // Prevent search engine bot(s) from indexing

@@ -75,7 +75,7 @@ convention](https://www.apollographql.com/docs/apollo-server/requests/#post-requ
 of the Apollo client ecosystem.
 
 ```js filename="./routes.js"
-import { Router } from '@layer0/core'
+import { Router } from '{{ PACKAGE_NAME }}/core'
 
 export default new Router().graphqlOperation('GetProduct', ({ cache, proxy }) => {
   cache({
@@ -144,7 +144,7 @@ To invalidate a cached query, you must first assign a surrogate key to the respo
 #### Use deriveSurrogateKeysFromJson {/*use-derivesurrogatekeysfromjson*/}
 
 ```js filename="./routes.js"
-import { Router, deriveSurrogateKeysFromJson } from '@layer0/core'
+import { Router, deriveSurrogateKeysFromJson } from '{{ PACKAGE_NAME }}/core'
 
 export default new Router().graphqlOperation('GetProduct', ({ cache, proxy }) => {
   cache({

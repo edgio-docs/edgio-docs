@@ -14,7 +14,7 @@ If you are currently on a version of Node < v{{ NODE_VERSION }}, we recommend us
 
 ## Upgrading Packages {/*upgrading-packages*/}
 
-You will need to upgrade to the latest {{ PRODUCT }} packages available on NPM. To upgrade your packages, you will need to install the latest version of the {{ PRODUCT }} CLI. You should install this globally using: `npm i -g @layer0/cli`.
+You will need to upgrade to the latest {{ PRODUCT }} packages available on NPM. To upgrade your packages, you will need to install the latest version of the {{ PRODUCT }} CLI. You should install this globally using: `npm i -g {{ PACKAGE_NAME }}/cli`.
 
 Once installed, change into your project’s directory. To install the latest {{ PRODUCT }} dependencies, run `layer0 use latest`. This will update `package.json` with the new {{ PRODUCT }} 4.x dependencies and scripts for building and deploying your site.
 

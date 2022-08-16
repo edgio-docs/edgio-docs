@@ -50,7 +50,7 @@ const {join} = require('path');
 
 // {{ CONFIG_FILE }}
 module.exports = {
-  connector: '@layer0/express',
+  connector: '{{ PACKAGE_NAME }}/express',
   express: {
     appPath: join(process.cwd(), 'path', 'to', 'app.js'),
   },
@@ -65,7 +65,7 @@ If your express app serves any static assets, you'll need to add routes to your 
 
 ```js
 // routes.js
-import {Router} from '@layer0/core';
+import {Router} from '{{ PACKAGE_NAME }}/core';
 
 export default new Router()
   // Prevent search engine bot(s) from indexing

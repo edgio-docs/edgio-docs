@@ -251,11 +251,9 @@ support the following request elements:
 
     **Sample values:**
 
-    ```
-    /marketing?id=123456
+    `/marketing?id=123456`
 
-    /resources/images
-    ```
+    `/resources/images`
 
     <a id="request-url-path"></a>
 
@@ -271,11 +269,9 @@ support the following request elements:
 
     **Sample values:**
 
-    ```
-    /marketing
+    `/marketing`
 
-    /resources/images
-    ```
+    `/resources/images`
 
 <a id="count"></a>
 
@@ -339,11 +335,9 @@ request element identified by a variable.
 
 This example assumes the following configuration:
 
-```
-Variable: Request header = Authentication
+`Variable: Request header = Authentication`
 
-Match value: 1
-```
+`Match value: 1`
 
 We will now examine how the **Count** option affects comparisons
 for this configuration.
@@ -376,7 +370,9 @@ You may create, modify, and delete bot rule sets.
     applied across our entire network.
 
 **To create a bot rule set**
-1.  FINDME - NAV
+1.  Navigate to the **Bot Rules** page.
+    1.  From the {{ PORTAL }}, click on the **Security** tab.
+    2.  From the navigation pane, click **Bot Rules**.
 2.  Click **Add Bot Rule**.
 3.  In the **Name** option, type the unique name by which this
     bot rule set will be identified. This name should be sufficiently
@@ -392,6 +388,7 @@ You may create, modify, and delete bot rule sets.
         4.  A custom matches rule automatically includes a default condition. Modify this condition to determine how {{ PRODUCT_SECURITY }} will identify requests. From the condition's **Variable** option, select the request element through which {{ PRODUCT_SECURITY }} will identify requests.
 
         [Learn more about variables.](#Variables)
+
         5.  Certain variables (e.g., request cookies and request header) match on name and value. If you have selected this type of variable, then perform the following steps:
             1.  Click **+ Add Match**.
             2.  From the **Name** option, type the desired name.
@@ -403,9 +400,11 @@ You may create, modify, and delete bot rule sets.
         6.  Optional. Mark the **Count** option to match by the number of instances that a match is found instead of by inspecting that request element.
 
         [Learn more.](#count)
+
         7.  From the **Operator** option, select an operator that determines how {{ PRODUCT_SECURITY }} will compare the match value to the request element identified by the above variable.
 
         [Learn more.](#Operators)
+
         8.  In the **Match value** option, type the value that will be compared against the request element identified by the above variable.
         9.  Optional. Mark the **Negative Match** option to match for requests that do not contain a matching value for the value defined in step 4.6.
         10. Optional. Click **+ Add Condition** to add another condition that must be met prior to request identification. Repeat steps 4.1 - 4.9 for this new condition.
@@ -417,7 +416,9 @@ You may create, modify, and delete bot rule sets.
 6.  Click **Save**.
 
 **To modify a bot rule set**
-1.  FINDME - NAV
+1.  Navigate to the **Bot Rules** page.
+    1.  From the {{ PORTAL }}, click on the **Security** tab.
+    2.  From the navigation pane, click **Bot Rules**.
 2.  Click on the desired bot rule set.
 3.  Make the desired changes.
 
@@ -441,7 +442,19 @@ You may create, modify, and delete bot rule sets.
 4.  Click **Save**.
 
 **To delete a bot rule set**
-1.  FINDME - NAV
+
+<Callout type="important">
+  You cannot delete a bot rule that is associated with a Security
+  Application configuration. Please either modify the Security
+  Application configuration to point to a different bot rule or
+  delete that Security Application configuration.
+</Callout>
+
+1.  Check your Security Application configurations to verify
+    that the desired bot rule is not in use.
+2.  Navigate to the **Bot Rules** page.
+    1.  From the {{ PORTAL }}, click on the **Security** tab.
+    2.  From the navigation pane, click **Bot Rules**.
 2.  Click on the desired bot rule set.
 3.  Click **Delete Bot Rule Profile**.
 4.  Type *DELETE*.

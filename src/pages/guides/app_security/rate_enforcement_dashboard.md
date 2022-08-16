@@ -49,15 +49,17 @@ analysis may be performed, which are:
 -   [Event log](#Event)
 
 **To view the Rate Enforcement dashboard**
-1.  Navigate to the Rate Enforcement dashboard (**Rate Enforcement** tab
-    of the **Overview** page.) How? From the main menu,
-    navigate to **More** | **Security** | **{{ PRODUCT_SECURITY }}** `Tier` | **Dashboard**. Click **Rate
-    Enforcement**.
+
+1.  Navigate to the **Rate Enforcement** dashboard (**Rate Enforcement** tab of the **Overview**
+    page).
+    1.  From the {{ PORTAL }}, click on the **Security** tab.
+    2.  From the navigation pane, click **Overview**.
+    3.  Click **Rate Enforcement**.
 
     The dashboard will display a chart showing recent enforcements of
     your security policy.
 2.  Optional. View event log data by clicking **Event Logs** from
-    the side navigation bar. Verify that the **Rate Enforcement**
+    the navigation pane. Verify that the **Rate Enforcement**
     tab is selected.
 
 ### Overview {/*overview*/}
@@ -117,11 +119,9 @@ The following information is displayed for each category:
 This view provides the means to delve into the details of rate limit
 enforcement. Each enforcement event is described as follows:
 
-```
-Enforced Rule: <Rule>  <Elapsed Time> <Time> 
+`Enforced Rule: <Rule>  <Elapsed Time> <Time>`
 
-Action Type: <Action Type> 
-```
+`Action Type: <Action Type>`
 
 The above terms are defined as follows:
 -   **&lt;Rule>:** Identifies the rate rule that was violated by its
@@ -136,11 +136,9 @@ that it violated.
 
 A sample rule violation is provided below.
 
-```
-Enforced Rule: Drop Traffic [10s ago 12:00:00.00 UTC]
+`Enforced Rule: Drop Traffic [10s ago 12:00:00.00 UTC]`
 
-Action Type: drop-request
-```
+`Action Type: drop-request`
 
 Clicking on an event will expand that entry and display detailed
 information about it.

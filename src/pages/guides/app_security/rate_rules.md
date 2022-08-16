@@ -135,9 +135,8 @@ limit** option.
         will be handled by a single edge server in a Los Angeles POP
         (e.g., OXR):
 
-        ```
-        https://cdn.example.com/marketing/logo.png
-        ```
+        `https://cdn.example.com/marketing/logo.png`
+
     -   If rate limiting is being applied to unique clients, then it is
         important to note that requests from a single client may be load
         balanced to different edge servers based on the requested URL.
@@ -171,9 +170,7 @@ The types of prerequisites that may be defined are described below.
 
     **Example:**
 
-    ```
-    15133
-    ```
+    `15133`
 
     <a id="country"></a>
 
@@ -185,15 +182,11 @@ The types of prerequisites that may be defined are described below.
 
     **Syntax:**
 
-    ```
-    .<File Extension>
-    ```
+    `.<File Extension>`
 
     **Example:**
 
-    ```
-    .htm
-    ```
+    `.htm`
 
     <a id="ip-address"></a>
 
@@ -217,10 +210,9 @@ The types of prerequisites that may be defined are described below.
 
         **Syntax:**
 
-        ```
-        <Host>
-        <Host>:<Port>
-        ```
+        `<Host>`
+
+        `<Host>:<Port>`
 
         **Key information:**
         -   The entire `Host` header value will be compared against the specified value. 
@@ -252,9 +244,7 @@ The types of prerequisites that may be defined are described below.
 
 -   **Request method:** A request will count towards the rate limit when the request's HTTP method matches a value defined in the **Value(s)** option. Valid values are: 
 
-    ```
-    GET | POST | PUT | HEAD | DELETE | OPTIONS
-    ```
+    `GET | POST | PUT | HEAD | DELETE | OPTIONS`
 
     <a id="request-url-path"></a>
 
@@ -275,15 +265,11 @@ The types of prerequisites that may be defined are described below.
 
     **Syntax:**
 
-    ```
-    /<Path>/<Asset>
-    ```
+    `/<Path>/<Asset>`
 
     **Example:**
 
-    ```
-    /marketing/brochures/widget.htm
-    ```
+    `/marketing/brochures/widget.htm`
 
     <Callout type="info">
       A partial match does not count towards the rate limit. For example, given the above sample configuration, the following request would not count towards the rate limit: http://cdn.example.com/ marketing/brochures/widget.html.
@@ -401,7 +387,9 @@ You may create, modify, and delete rate rules.
 
 **To create a rate rule**
 
-1.  FINDME - Nav
+1.  Navigate to the **Rate Rules** page.
+    1.  From the {{ PORTAL }}, click on the **Security** tab.
+    2.  From the navigation pane, click **Rate Rules**.
 2.  Click **Add Rate Rule**.
 3.  In the **Rule name** option, type the unique name by which
     this rate rule will be identified. This name should be sufficiently
@@ -470,7 +458,9 @@ You may create, modify, and delete rate rules.
 
 **To modify a rate rule**
 
-1.  FINDME - nav
+1.  Navigate to the **Rate Rules** page.
+    1.  From the {{ PORTAL }}, click on the **Security** tab.
+    2.  From the navigation pane, click **Rate Rules**.
 2.  Click on the desired rate rule.
 3.  Make the desired changes.
 4.  Click **Save**.
@@ -486,11 +476,12 @@ delete that Security Application configuration.
 
 1.  Check your Security Application configurations to verify
     that the desired rate rule is not in use.
-2.  FINDME - nav
+2.  Navigate to the **Rate Rules** page.
+    1.  From the {{ PORTAL }}, click on the **Security** tab.
+    2.  From the navigation pane, click **Rate Rules**.
 3.  Click **Delete rate rule**.
 4.  Type *DELETE*.
 5.  Click **Delete**.
-
 
 ## Sample Scenario 1: Rate Limiting All Requests {/*scenario-1-rate-limiting-all-requests*/}
 

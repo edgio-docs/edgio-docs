@@ -32,13 +32,15 @@ may be performed, which are:
 
 **To view the Threats dashboard**
 1.  Navigate to the **Threats** dashboard (**Threats** tab of the **Overview**
-    page) How? From the main menu,
-    navigate to **More** | **Security** | **{{ PRODUCT_SECURITY }}** `<Tier>` | **Dashboard**.
+    page).
+    1.  From the {{ PORTAL }}, click on the **Security** tab.
+    2.  From the navigation pane, click **Overview**.
+    3.  Verify that the **Threats** tab is active.
 
     The dashboard will display a chart showing recent violations of your
     security policy.
 2.  Optional. View event log data by clicking **Event Logs** from
-    the side navigation bar.
+    the navigation pane. Verify that the **Threats** tab is active.
 
 ### Overview {/*overview*/}
 
@@ -61,7 +63,7 @@ at your applications and web servers. This view consists of a chart and statisti
     </Callout>
 
     The following information is displayed for each category:
-    -   **<Value\>:** Groups threats by the request's value for the current category.  The following illustration shows a partial listing of values for the "Rule Message" category.  
+    -   **&lt;Value>:** Groups threats by the request's value for the current category.  The following illustration shows a partial listing of values for the "Rule Message" category.  
 
     ![](/images/app_security/dashboard_category.png)  
 
@@ -111,15 +113,11 @@ for each violation contains the following information:
 
 **Syntax:** 
 
-```
-<Rule Message> <Elapsed Time>  <Time> 
-```
+`<Rule Message> <Elapsed Time>  <Time>`
 
 **Example:** 
 
-```
-Access rule for Marketing site [10s ago 15:01:23.45 UTC]
-```
+`Access rule for Marketing site [10s ago 15:01:23.45 UTC]`
 
 #### Field Definitions {/*field-definitions*/}
 
@@ -129,28 +127,22 @@ detailed information about it. Each event field is described below.
 
     **Format:** 
 
-    ```
-    <YYYY>-<MM>-<DD> <hh>:<mm>:<ss>.<milliseconds>
-    ```
+    `<YYYY>-<MM>-<DD> <hh>:<mm>:<ss>.<milliseconds>`
 
     **Example:** 
 
-    ```
-    2022-07-08 15:00:22.123
-    ```
+    `2022-07-08 15:00:22.123`
+
 -   **Managed Rules Name:** Indicates the name of the managed rule set that was violated. If a managed rule was not violated, then this field will be empty.
 -   **Rule Message:** Provides a description of the rule that the request violated. The syntax for this field varies according to the type of rule that was violated.  
     -   **Managed Rule Set - Anomaly Score:** This field indicates the request's anomaly score and the last rule that it violated. Please refer to the **Sub Event(s)** section, which contains a [sub event](#sub-events) for each rule violated by a request, to find out why the request was flagged or blocked. Each sub event indicates the rule that was violated and the data used to identify the violation. 
 
-    ```
-    Inbound Anomaly Score Exceeded (Total Score: <#>): Last Matched Message: <Rule Message>
-    ```
+    `Inbound Anomaly Score Exceeded (Total Score: <#>): Last Matched Message: <Rule Message>`
 
     -   **Syntax (All Other Rule Sets):**
 
-    ```
-    <Rule Message>
-    ```
+    `<Rule Message>`
+
 -   **Event ID:** Indicates the system-defined ID assigned to this event (i.e., rule violation).
 -   **Security Application Name:** Indicates the name of the Security Application Manager configuration that was assigned the rule set that was triggered.
 -   **Profile Type:** Indicates whether the request was screened as a result of a production or audit rule.
@@ -172,11 +164,9 @@ In addition to the core set of fields described above, a sub event for
 each rule that was violated by the request will be reported. The syntax
 for the header bar associated with each sub event is described below.
 
-```
-Rule ID: <Rule ID>
+`Rule ID: <Rule ID>`
 
-Rule Message: <Rule Message>
-```
+`Rule Message: <Rule Message>`
 
 Each sub event contains the following fields:
 
@@ -207,9 +197,7 @@ Each sub event contains the following fields:
 
     **Naming convention:**
 
-    ```
-    <Rule Set>/<Category>/<Subcategory>
-    ```
+    `<Rule Set>/<Category>/<Subcategory>`
 
     <Callout type="info">
       `&lt;Category>` identifies whether the request violated a rule, an access control, or the delivery profile.
@@ -219,23 +207,20 @@ Each sub event contains the following fields:
 
     -   **Policy:** The following sample values identify a policy:
 
-    ```
-      OWASP_CRS/PROTOCOL_VIOLATION/INVALID_HREQ
-      OWASP_CRS/WEB_ATTACK/SQL_INJECTION
-    ```
+        `OWASP_CRS/PROTOCOL_VIOLATION/INVALID_HREQ`
+        `OWASP_CRS/WEB_ATTACK/SQL_INJECTION`
+
     -   **Blacklist:** The following sample values identify a blacklist criterion:
 
-    ```
-      BLACKLIST/IP
-      BLACKLIST/COUNTRY
-      BLACKLIST/REFERRER
-      BLACKLIST/URL
-    ```
+        `BLACKLIST/IP`
+        `BLACKLIST/COUNTRY`
+        `BLACKLIST/REFERRER`
+        `BLACKLIST/URL`
+
     -   **Setting:** The following sample values identify a setting:
 
-    ```
-      OWASP_CRS/POLICY/SIZE_LIMIT
-    ```
+        `OWASP_CRS/POLICY/SIZE_LIMIT`
+
 -   **Total Anomaly Score:** Indicates the anomaly score assigned to the request. This score is determined by the number of rules that were violated and their severity.
 
 ## Filters {/*filters*/}

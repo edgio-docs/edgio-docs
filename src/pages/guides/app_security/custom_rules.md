@@ -251,11 +251,9 @@ support the following request elements:
 
     **Sample values:**
 
-    ```
-    /marketing?id=123456
+    `/marketing?id=123456`
 
-    /resources/images
-    ```
+    `/resources/images`
 
     <a id="request-url-path"></a>
 
@@ -271,11 +269,9 @@ support the following request elements:
 
     **Sample values:**
 
-    ```
-    /marketing
+    `/marketing`
 
-    /resources/images
-    ```
+    `/resources/images`
 
 <a id="count"></a>
 
@@ -339,11 +335,9 @@ request element identified by a variable.
 
 This example assumes the following configuration:
 
-```
-Variable: Request header = Authentication
+`Variable: Request header = Authentication`
 
-Match value: 1
-```
+`Match value: 1`
 
 We will now examine how the **Count** option affects comparisons
 for this configuration.
@@ -390,7 +384,9 @@ You may create, modify, and delete custom rule sets.
     applied across our entire network.
 
 **To create a custom rule set**
-1.  FINDME - nav
+1.  Navigate to the **Custom Rules** page.
+    1.  From the {{ PORTAL }}, click on the **Security** tab.
+    2.  From the navigation pane, click **Custom Rules**.
 2.  Click **Add Custom Rule Profile**.
 3.  In the **Name** option, type the unique name by which this
     custom rule set will be identified. This name should be sufficiently
@@ -468,7 +464,9 @@ You may create, modify, and delete custom rule sets.
 10. Click **Save**.
 
 **To modify a custom rule set**
-1.  FINDME - nav
+1.  Navigate to the **Custom Rules** page.
+    1.  From the {{ PORTAL }}, click on the **Security** tab.
+    2.  From the navigation pane, click **Custom Rules**.
 2.  Click on the desired custom rule set.
 3.  Make the desired changes.
 
@@ -486,7 +484,19 @@ You may create, modify, and delete custom rule sets.
 4.  Click **Save**.
 
 **To delete a custom rule set**
-1.  FINDME - nav
+
+<Callout type="important">
+  You cannot delete a custom rule that is associated with a Security
+  Application configuration. Please either modify the Security
+  Application configuration to point to a different custom rule or
+  delete that Security Application configuration.
+</Callout>
+
+1.  Check your Security Application configurations to verify
+    that the desired custom rule is not in use.
+2.  Navigate to the **Custom Rules** page.
+    1.  From the {{ PORTAL }}, click on the **Security** tab.
+    2.  From the navigation pane, click **Custom Rules**.
 2.  Click on the desired custom rule set.
 3.  Click **Delete Custom Rule Profile**.
 4.  Type *DELETE*.

@@ -25,15 +25,16 @@ which analysis may be performed, which are:
 
 **To view the Browser Challenges dashboard**
 1.  Navigate to the **Browser Challenges** dashboard (**Browser Challenges** tab of the **Overview**
-    page) How? From the main menu,
-    navigate to **More** | **Security** | **{{ PRODUCT_SECURITY }}** `<Tier>` | **Dashboard**. Click **Browser
-    Challenges**.
+    page).
+    1.  From the {{ PORTAL }}, click on the **Security** tab.
+    2.  From the navigation pane, click **Overview**.
+    3.  Click **Browser Challenges**.
 
     The Browser Challenges dashboard will display a chart showing recent
     browser challenges.
 2.  Optional. View event log data by clicking **Event Logs** from
-    the side navigation bar. Verify that the **Browser
-    Challenges** tab is selected.
+    the navigation pane. Verify that the **Browser
+    Challenges** tab is active.
 
 ### Overview {/*overview*/}
 
@@ -100,9 +101,7 @@ The event log, which contains a list of recent browser challenges,
 provides the means to delve into the details of a browser challenge.
 Each request is described as follows:
 
-```
-Enforced Rule: <Rule>  <Elapsed Time>  <Time>
-```
+`Enforced Rule: <Rule>  <Elapsed Time>  <Time>`
 
 -   **&lt;Rule>:** Identifies the rate rule that was violated by its
     name.
@@ -113,9 +112,7 @@ Enforced Rule: <Rule>  <Elapsed Time>  <Time>
 
 A sample rule violation is provided below.
 
-```
-Enforced Rule: Marketing [10s ago 12:00:00.00 UTC]
-```
+`Enforced Rule: Marketing [10s ago 12:00:00.00 UTC]`
 
 Clicking on an event expands that entry to show detailed information
 about it.
@@ -180,15 +177,12 @@ challenges is provided below.
 
     **Format:**
 
-    ```
-    HTTP_METHOD_<NAME>
-    ```
+    `HTTP_METHOD_<NAME>`
 
     **Example:**
 
-    ```
-    HTTP_METHOD_GET
-    ```
+    `HTTP_METHOD_GET`
+
 -   **Rule ID:** Indicates the ID of the rule that triggered the browser challenge.
 -   **Rule Message:** Indicates the message of the rule that triggered the browser challenge.
 -   **Security Application Name:** Indicates the name of the Security Application configuration that was assigned the bot rule set that was triggered.

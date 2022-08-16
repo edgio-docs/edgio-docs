@@ -21,9 +21,8 @@ experience for each possible configuration is described below.
 
     **Default {{ PRODUCT_SECURITY }} response header name/value:**
 
-    ```
-    X-EC-Security-Audit: 403
-    ```
+    `X-EC-Security-Audit: 403`
+
 -   **Custom Response:** Our service provides a custom response to identified threats. This custom response is defined within a Security Application configuration when setting up access rules and managed rules. It defines the response headers, body, and status code that will be sent to the user.                                             |
 
 ## Rate Limiting {/*rate-limiting*/}

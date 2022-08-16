@@ -1,5 +1,5 @@
 ---
-title: Configuration
+title: Basic Setup
 ---
 
 Set up {{ PRODUCT_SECURITY }} by defining security rules and then creating a Security Application

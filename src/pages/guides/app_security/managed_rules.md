@@ -152,15 +152,11 @@ Identify a rule set's version by the date on which it was released.
 
 **Syntax:** 
 
-```
-<Rule Set Name> <Date>
-```  
+`<Rule Set Name> <Date>`
 
 **Example:** 
 
-```
-ECRS **2019-02-11**
-```
+`ECRS **2019-02-11**`
 
 <a id="rule-set-updates"></a>
 
@@ -281,7 +277,9 @@ You may create, modify, and delete managed rules.
     applied across our entire network.
 
 **To create a managed rule**
-1.  FINDME - nav
+1.  Navigate to the **Managed Rules** page.
+    1.  From the {{ PORTAL }}, click on the **Security** tab.
+    2.  From the navigation pane, click **Managed Rules**.
 2.  Click **Add Managed Rule**.
 3.  In the **Name** option, type the unique name by which this
     managed rule will be identified. This name should be sufficiently
@@ -381,14 +379,27 @@ You may create, modify, and delete managed rules.
   Threats Dashboard.
 </Callout>
 
-1.  FINDME - nav
+1.  Navigate to the **Managed Rules** page.
+    1.  From the {{ PORTAL }}, click on the **Security** tab.
+    2.  From the navigation pane, click **Managed Rules**.
 2.  Click on the desired managed rule.
 3.  Make the desired changes.
 4.  Click **Save**.
 
 **To delete a managed rule**
 
-1.  FINDME - nav
+<Callout type="important">
+  You cannot delete a managed rule that is associated with a Security
+  Application configuration. Please either modify the Security
+  Application configuration to point to a different managed rule or
+  delete that Security Application configuration.
+</Callout>
+
+1.  Check your Security Application configurations to verify
+    that the desired managed rule is not in use.
+2.  Navigate to the **Managed Rules** page.
+    1.  From the {{ PORTAL }}, click on the **Security** tab.
+    2.  From the navigation pane, click **Managed Rules**.
 2.  Click on the desired managed rule.
 3.  Click **Delete Managed Rule**.
 4.  Type *DELETE*.

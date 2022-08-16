@@ -102,11 +102,11 @@ blacklists for the following categories:
 
     All of the entries in the following sample access control list will match a request for `http://www.mydomain.com/marketing/images/ad001.png`:  
 
-    ```
-    /marketing/.\*
-    .\*images.\*
-    .\*/ad\[0-9\]\*\\.png
-    ```
+    `/marketing/.\*`
+
+    `.\*images.\*`
+
+    `.\*/ad\[0-9\]\*\\.png`
 
     <a id="user-agent"></a>
 
@@ -147,9 +147,7 @@ The purpose of a blacklist is to describe unwanted traffic.
 -   A blank whitelist, accesslist, or blacklist is ignored.
 -   The order of precedence is:
 
-    ```
-    Whitelist > Accesslist > Blacklist
-    ```
+    `Whitelist > Accesslist > Blacklist`
 
     For example, {{ PRODUCT_SECURITY }} will inspect a request that satisfies both an
     accesslist and a blacklist. However, it will automatically allow the
@@ -218,9 +216,7 @@ Define the set of valid and invalid HTTP request methods through the
 
     **Sample HTTP methods:**
 
-    ```
-    GET | POST | OPTIONS | HEAD | PUT | DELETE
-    ```
+    `GET | POST | OPTIONS | HEAD | PUT | DELETE`
 
 ### Media Types (aka Content Types) {/*media-types--aka-content-types-*/}
 
@@ -271,14 +267,17 @@ via the **Allowed Request Content Types** option.
 
 -   **Sample media types:**
 
-    ```
-    application/x-www-form-urlencoded
-    multipart/form-data
-    text/xml
-    application/xml
-    application/x-amf
-    application/json
-    ```
+    `application/x-www-form-urlencoded`
+
+    `multipart/form-data`
+
+    `text/xml`
+
+    `application/xml`
+
+    `application/x-amf`
+
+    `application/json`
 
 ### File Extensions {/*file-extensions*/}
 
@@ -293,17 +292,15 @@ Blacklist** option.
 -   List each desired file extension on a separate line.
 -   **Syntax:** 
 
-    ```
-    .*ext*
-    ```
+    `.<File Extension>`
 
     **Sample list:**
 
-    ```
-    .bat
-    .cfg
-    .dll
-    ```
+    `.bat`
+
+    `.cfg`
+
+    `.dll`
 
 ### File Size {/*file-size*/}
 
@@ -353,7 +350,9 @@ You may create, modify, and delete access rules.
 
 To create an access rule
 
-1.  FINDME - Nav instructions
+1.  Navigate to the **Access Rules** page.
+    1.  From the {{ PORTAL }}, click on the **Security** tab.
+    2.  From the navigation pane, click **Access Rules**.
 2.  Click **Add Access Rule**.
 3.  In the **Name** option, type the unique name by which this
     access rule will be identified. This name should be sufficiently
@@ -423,7 +422,9 @@ To create an access rule
 
 To modify an access rule
 
-1.  FINDME - Nav instructions
+1.  Navigate to the **Access Rules** page.
+    1.  From the {{ PORTAL }}, click on the **Security** tab.
+    2.  From the navigation pane, click **Access Rules**.
 2.  Click on the desired access rule.
 3.  Make the desired changes.
 4.  Click **Save**.
@@ -439,7 +440,9 @@ To delete an access rule
 
 1.  Check your Security Application configurations to verify
     that the desired access rule is not in use.
-2.  FINDME - Nav instructions
+2.  Navigate to the **Access Rules** page.
+    1.  From the {{ PORTAL }}, click on the **Security** tab.
+    2.  From the navigation pane, click **Access Rules**.
 3.  Click **Delete Access Rule**.
 4.  Type **DELETE**.
 5.  Click **Delete**.

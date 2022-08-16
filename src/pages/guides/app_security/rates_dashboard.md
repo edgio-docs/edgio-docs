@@ -34,15 +34,16 @@ limit analysis may be performed, which are:
 
 **To view the Rates dashboard**
 
-1.  Navigate to the Rates dashboard (**Rates** tab of the **Overview**
-    page. How? From the main menu,
-    navigate to **More** | **Security** | **{{ PRODUCT_SECURITY }}** `<Tier>` | **Dashboard**. Click
-    **Rates**.
+1.  Navigate to the **Rates** dashboard (**Rates** tab of the **Overview**
+    page).
+    1.  From the {{ PORTAL }}, click on the **Security** tab.
+    2.  From the navigation pane, click **Overview**.
+    3.  Click **Rates**.
 
     The Rates dashboard will display a chart showing recent violations
     of your security policy.
 2.  Optional. View event log data by clicking **Event Logs** from
-    the side navigation bar. Verify that the **Rates** tab is
+    the navigation pane. Verify that the **Rates** tab is
     selected.
 
 ### Overview {/*overview*/}
@@ -110,11 +111,9 @@ understanding as to why rate limiting was applied to the request.
 The event log contains a list of recent rate limited requests. Each
 request is described as follows:
 
-```
-Enforced Rule: <Rule>  <Elapsed Time> <Time> 
+`Enforced Rule: <Rule>  <Elapsed Time> <Time>`
 
-Action Type: <Action Type> 
-```
+`Action Type: <Action Type>`
 
 The above terms are defined as follows:
 -   **&lt;Rule>:** Identifies the rate rule that was violated by its
@@ -129,11 +128,9 @@ that it violated.
 
 A sample rule violation is provided below.
 
-```
-Enforced Rule: Marketing [10s ago 12:00:00.00 UTC]
+`Enforced Rule: Marketing [10s ago 12:00:00.00 UTC]`
 
-Action Type: CUSTOM-RESPONSE
-```
+`Action Type: CUSTOM-RESPONSE`
 
 Clicking on an event will expand that entry and display detailed
 information about it.
@@ -179,15 +176,12 @@ limited requests is provided below.
 
     **Format:**
 
-    ```
-    HTTP_METHOD_<NAME>
-    ```
+    `HTTP_METHOD_<NAME>`
 
     **Example:**
 
-    ```
-    HTTP_METHOD_GET
-    ```
+    `HTTP_METHOD_GET`
+
 -   **Rule Name:** Indicates the name of the rule that was applied to the rate limited request.   
 -   **Timestamp:** Indicates the date and time (UTC) at which the request was rate limited.
 

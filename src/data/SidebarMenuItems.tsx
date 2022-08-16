@@ -569,7 +569,7 @@ const SidebarMenuItems: ISidebarMenuItems = [
         },
         {
           title: 'Basic Setup',
-          path: '/guides/app_security/configuration',
+          path: '/guides/app_security/basic_setup',
         },
         {
           title: 'Access Rules',

@@ -67,11 +67,10 @@ configuration to one or more hosts. {{ PRODUCT_SECURITY }} compares the entire
 -   The `Host` header identifies either a hostname or IP
     address using the following syntax: 
 
-    ```
-    <Host>
+    `<Host>`
 
-    <Host>:<Port>
-    ```
+    `<Host>:<Port>`
+
 -   The CDN only accepts HTTP/HTTPS requests on standard ports (i.e., 80
     and 443). Typically, a `Host` request header does not
     include port information for standard ports. However, the requesting
@@ -96,15 +95,12 @@ against the specified value.
 **Key information:**
 -   URL path comparisons start directly after the hostname.
 
-    ```
-    /`path`/`asset`
-    ```
+    `/<Path>/<Asset>`
 
     **Example:** 
 
-    ```
-    /marketing/brochures/widget.htm
-    ```
+    `/marketing/brochures/widget.htm`
+
 -   A partial match does not count towards the rate limit.
 
     **Example:** 
@@ -112,9 +108,8 @@ against the specified value.
     Given the above sample configuration, the following request would
     not count towards the rate limit:
 
-    ```
-    http://cdn.example.com/marketing/brochures/widget.html
-    ```
+    `http://cdn.example.com/marketing/brochures/widget.html`
+
 -   {{ PRODUCT_SECURITY }} supports various comparison modes (i.e., exact match, wildcard,
     and regular expression).
 
@@ -151,33 +146,27 @@ comparison is case-sensitive.
 
 **Sample Configuration:**
 
-```
-cat
+`cat`
 
-bat
-```
+`bat`
 
 **Matches:**
 
-```
-cat
+`cat`
 
-bat
-```
+`bat`
 
 **Does Not Match:**
 
-```
-Cat
+`Cat`
 
-Bat
+`Bat`
 
-Category
+`Category`
 
-Moscato
+`Moscato`
 
-Batch
-```
+`Batch`
 
 #### Wildcard Match {/*wildcard-match*/}
 
@@ -215,15 +204,11 @@ Setting the `URL path(s)` option to the following value allows
 {{ PRODUCT_SECURITY }} to apply this Security Application configuration to any
 request whose URL path starts with */marketing/*:
 
-```
-/marketing/*
-```
+`/marketing/*`
 
 The following sample request will match the above pattern:
 
-```
-https://cdn.example.com/marketing/mycampaign/image.png
-```
+`https://cdn.example.com/marketing/mycampaign/image.png`
 
 #### Regex Match {/*regex-match*/}
 
@@ -236,27 +221,21 @@ pattern defined in a regular expression.
 
 **Sample Configuration:**
 
-```
-\^\[a-zA-Z0-9\]\*\$
-```
+`\^\[a-zA-Z0-9\]\*\$`
 
 **Matches:**
 
-```
-cat
+`cat`
 
-CAT7
+`CAT7`
 
-Category
-```
+`Category`
 
 **Does Not Match:**
 
-```
-Category 7
+`Category 7`
 
-Cat#7
-```
+`Cat#7`
 
 ## Threat Detection {/*threat-detection*/}
 
@@ -368,15 +347,11 @@ The available enforcement actions are described below.
 
     **Syntax:** 
 
-    ```
-    <Name>:<Value>
-    ```
+    `<Name>:<Value>`
 
     **Example:** 
 
-    ```
-    MyCustomHeader: True
-    ```
+    `MyCustomHeader: True`
 
     <Callback type="tip">
       This option supports the use of [event variables](#event) to customize the response according to the detected threat. 
@@ -418,9 +393,7 @@ response body by enclosing it with double curly braces.
 
 **Example:** 
 
-```
-{{EVENT_ID}}
-```
+`{{EVENT_ID}}`
 
 ## Order of Precedence {/*order-of-precedence*/}
 
@@ -477,7 +450,9 @@ configurations.
     configuration to be applied across our entire network.
 
 **To create a Security Application configuration**
-1.  FINDME - nav
+1.  Navigate to the **Security Applications** page.
+    1.  From the {{ PORTAL }}, click on the **Security** tab.
+    2.  From the navigation pane, click **Security Applications**.
 2.  Click **Add New**.
 3.  In the **Name** option, type the unique name by which this
     Security Application configuration will be identified.
@@ -715,12 +690,14 @@ configurations.
 15. Click **Save Changes**.
 
 **To reorder Security Application configurations**
-1.  From the **Security Application**
-    page, drag the desired
+1.  Navigate to the **Security Applications** page.
+    1.  From the {{ PORTAL }}, click on the **Security** tab.
+    2.  From the navigation pane, click **Security Applications**.
+2.  Drag the desired
     configuration's ![](/images/icons/drag.png) icon
     to the desired position.
-2.  Click **Apply All Changes**.
-3.  Click **Save Changes**.
+3.  Click **Apply All Changes**.
+4.  Click **Save Changes**.
 
 <Callout type="tip">
   If multiple Security Application configurations are applicable
@@ -734,7 +711,9 @@ configurations.
 </Callout>
 
 **To modify a Security Application configuration**
-1.  FINDME - nav
+1.  Navigate to the **Security Applications** page.
+    1.  From the {{ PORTAL }}, click on the **Security** tab.
+    2.  From the navigation pane, click **Security Applications**.
 2.  Click on the desired Security Application configuration.
 3.  Make the desired changes.
 4.  Click **Save**.
@@ -742,7 +721,9 @@ configurations.
 6.  Click **Save Changes**.
 
 **To delete a Security Application configuration**
-1.  FINDME - NAV
+1.  Navigate to the **Security Applications** page.
+    1.  From the {{ PORTAL }}, click on the **Security** tab.
+    2.  From the navigation pane, click **Security Applications**.
 2.  Click on the desired Security Application configuration.
 3.  Click **Delete Security Application**.
 4.  Type *DELETE*.

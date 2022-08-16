@@ -21,6 +21,8 @@ const DOCS_PAGES_DOMAIN = 'layer0-docs.s3.amazonaws.com';
 const DOCS_REPO = 'layer0-docs/layer0-docs';
 const EXAMPLES_REPO = 'layer0-docs/layer0-examples';
 
+const PORTAL = '[Edgio console](https://app.layer0.co)';
+
 const WWW_URL = `https://www.${DOMAIN}`;
 const APP_URL = `https://${APP_DOMAIN}`;
 const FORUM_URL = `https://forum.${DOMAIN}`;
@@ -132,6 +134,7 @@ module.exports = {
   EDGEJS_LABEL,
   EXAMPLES_REPO,
   EXAMPLES_REPOS,
+  PORTAL,
   FIDDLE_URL,
   FORUM_URL,
   FULL_CLI_NAME,

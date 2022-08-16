@@ -49,6 +49,57 @@ The following is a list of headers that cannot be modified by your project code.
 * `content-length`
 * `via`
 
+### Serverless Bundle Size {/*serverless-bundle-size*/}
+
+{{ PRODUCT }} has a serverless bundle limit for your project of 50 MB (250 MB uncompressed). If your deployment to {{ PRODUCT }} fails due to exceeding the bundle limit, you will see the following error message:
+
+```
+2022-08-08T13:47:13Z - internal error - Error in xdn-deploy-lambda: Your production build exceeds the maximum allowed size of 50 MB (compressed) / 250 MB (uncompressed).
+The current size is 51.19 MB (compressed).
+Please ensure that list of dependencies in package.json contains only those packages that are needed at runtime.
+Move all build-time dependencies such as webpack, babel, etc... to devDependencies, rerun npm | yarn install, and try to deploy again.
+```
+
+Typically, this is due to Node modules marked as `dependencies` when they are more appropriate in `devDependencies` within the `package.json` file. Modules marked as dependencies will be included in the serverless bundle. Dev-only modules such as `babel`, `jest`, `webpack`, etc. should be moved to `devDependencies` as shown:
+
+```diff
+"dependencies": {
+  "@nuxtjs/sitemap": "2.4.0",
+  "@nuxt/core": "2.15.7"
+-   "babel": "7.12.7",
+-   "jest": "28.1.3"
++ },
++ "devDependencies": {
++   "babel": "7.12.7",
++   "jest": "28.1.3"
+}
+```
+
+Additionally, this can be related to assets (such as fonts or images) that are imported into your project code. These resources are typically better referenced as static assets which are stored outside of the serverless bundle.
+
+You can remedy this by creating a `public` directory in the root of your project. Move all of your font and image assets to this path. Then, create a route in `routes.js` to serve those requests as static assets using the following as an example:
+
+```javascript
+router.get('/assets/:path*', ({ serveStatic, cache }) => {
+  cache({
+    edge: {
+      maxAgeSeconds: 60 * 60 * 24, // cache at the edge for 24 hours
+    },
+    browser: false, // prevent caching of stale html in the browser
+  })
+  serveStatic('public/:path*')
+})
+```
+
+Now, you can update your code references from importing the assets to referencing the static path, such as:
+
+```diff
+- import myImage from 'public/images/Image1.png'
+...
+- <div><img src={myImage}/></div>
++ <div><img src="/assets/images/Image1.png"/></div>
+```
+
 ## {{ PRODUCT_NAME }} Platform Caveats {/*layer0-platform-caveats*/}
 ### NodeJS native extensions {/*nodejs-native-extensions*/}
 

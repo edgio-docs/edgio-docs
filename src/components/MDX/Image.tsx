@@ -31,13 +31,13 @@ export default function Image({src, alt}: {src: string; alt: string}) {
 
   const edgeSrc = `https://opt.moovweb.net?img=${srcUrl}`;
 
-  if (width && height) {
-    return (
-      <div className="image">
-        <NextImage {...{src: edgeSrc, alt, width, height}} />
-      </div>
-    );
-  }
+  // if (width && height) {
+  //   return (
+  //     <div className="image">
+  //       <NextImage {...{src: edgeSrc, alt, width, height}} />
+  //     </div>
+  //   );
+  // }
 
   return (
     <StyledComp>

@@ -22,7 +22,7 @@ If any point, you want a more [detailed guide](/guides/traditional_sites), we've
 
 As shown below, {{ PRODUCT }} becomes the main CDN for your site:
 
-![traffic](/images/starter/traffic.svg)
+![traffic](/images/starter/traffic.png)
 
 Requests for your site will now pass through {{ PRODUCT }}'s globally distributed edge network and then to your origin server.
 

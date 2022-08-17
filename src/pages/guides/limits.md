@@ -57,7 +57,7 @@ The following is a list of headers that cannot be modified by your project code.
 2022-08-08T13:47:13Z - internal error - Error in xdn-deploy-lambda: Your production build exceeds the maximum allowed size of 50 MB (compressed) / 250 MB (uncompressed).
 The current size is 51.19 MB (compressed).
 Please ensure that list of dependencies in package.json contains only those packages that are needed at runtime.
-Move all build-time dependencies such as webpack, babel, etc... to devDependencies, rerun `npm install` or `yarn install`, and try to re-deploy.
+Move all build-time dependencies such as webpack, babel, etc... to devDependencies, rerun npm | yarn install, and try to deploy again.
 ```
 
 Following are the possible fixes that would help you reduce serverless bundle size by better engineering. If none of these does it, feel free to raise an issue on [Edgio Forums](https://forum.layer0.co).

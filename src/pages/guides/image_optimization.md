@@ -25,7 +25,9 @@ The image optimizer will only return an optimized image for mobile browsers. Des
 ## Examples {/*examples*/}
 
 Quality:
-![Grass with quality option set](https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Grass_dsc08672-nevit.jpg/2560px-Grass_dsc08672-nevit.jpg?quality=30)
+
+https://opt.moovweb.net?quality=30&img=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F6%2F68%2FGrass_dsc08672-nevit.jpg%2F2560px-Grass_dsc08672-nevit.jpg
 
 Height:
-![Grass with height option set](https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Grass_dsc08672-nevit.jpg/2560px-Grass_dsc08672-nevit.jpg?height=300)
+
+https://opt.moovweb.net?height=300&img=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F6%2F68%2FGrass_dsc08672-nevit.jpg%2F2560px-Grass_dsc08672-nevit.jpg

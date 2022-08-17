@@ -9,7 +9,6 @@ const StyledComp = styled.figure`
   img {
     margin: 0;
     display: flex;
-    background-color: #1a1a1a;
   }
 `;
 

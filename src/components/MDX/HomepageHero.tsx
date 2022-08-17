@@ -71,6 +71,7 @@ function HomepageHero() {
               width={286}
               height={230}
               alt="Layer0 is now Edgio AppOps"
+              unoptimized
               priority
             />
           </div>
@@ -80,6 +81,7 @@ function HomepageHero() {
               width={286}
               height={230}
               alt="Layer0 is now Edgio AppOps"
+              unoptimized
               priority
             />
           </div>

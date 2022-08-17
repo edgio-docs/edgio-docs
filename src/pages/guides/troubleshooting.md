@@ -137,7 +137,9 @@ We provide a header, `{{ HEADER_PREFIX }}-caching-status` to best understand why
 {{ PRODUCT }} automatically produces a source map for your router file so that all runtime errors that occur during routing will have a stacktrace that references the original source file. If your application build produces source maps for the server bundle, these will also be used when reporting errors. {{ PRODUCT }} provides a convenient way to enable source maps when using Next and Nuxt:
 
 <Callout type="warning">
+
   We noticed some performance issues related to sourcemaps being loaded in our Serverless infrastructure, which may result in 539 project timeout errors. In case you encounter such errors, please try again with sourcemaps disabled. This document will be updated once the problem is fully resolved.
+
 </Callout>
 
 ### Next.js {/*nextjs*/}
@@ -180,7 +182,9 @@ module.exports = {
 * An allowlist issue
 
 <Callout type="warning">
+
   We noticed some performance issues related to sourcemaps being loaded in our Serverless infrastructure, which may result in 539 project timeout errors. In case you encounter such errors, please try again with sourcemaps disabled. This document will be updated once the problem is fully resolved.
+
 </Callout>
 
 #### Assumptions {/*assumptions*/}

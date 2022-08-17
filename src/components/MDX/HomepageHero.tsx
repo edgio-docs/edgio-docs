@@ -68,9 +68,9 @@ function HomepageHero() {
           <div id="dark-theme">
             <Image
               src={LayerEdgioLight}
-              width="286"
-              height="230"
-              alt="Edgio"
+              width={286}
+              height={230}
+              alt="Layer0 is now Edgio AppOps"
               unoptimized
               priority
             />
@@ -78,15 +78,14 @@ function HomepageHero() {
           <div id="light-theme">
             <Image
               src={LayerEdgioDark}
-              width="286"
-              height="230"
-              alt="Edgio"
+              width={286}
+              height={230}
+              alt="Layer0 is now Edgio AppOps"
               unoptimized
               priority
             />
           </div>
           <p>
-            {' '}
             <Link href="https://investors.edg.io/news/press-releases/news-details/2022/Limelight-Completes-Acquisition-of-Yahoos-Edgecast-Combined-Company-Rebrands-as-Edgio-Creating-a-Global-Leader-in-Edge-Enabled-Solutions/default.aspx">
               Learn more.
             </Link>

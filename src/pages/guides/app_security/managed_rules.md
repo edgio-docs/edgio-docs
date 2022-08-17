@@ -4,7 +4,7 @@ title: Managed Rules
 
 Use managed rules to:
 -   Identify malicious traffic via predefined rules. A collection of
-    policies and rules is known as a [rule set](#rule-set).
+    policies and rules is known as a [managed rule set](#managed-rule-set).
 -   Prevent false positives by:
     -   Defining cookies, request headers, and query string arguments
         that should be ignored when performing a threat assessment. This
@@ -31,8 +31,10 @@ be ignored when {{ PRODUCT_SECURITY }} performs threat assessment.
 -   Each line defines a regular expression.
 
     <Callout type="info">
+
       By default, a regular expression defines a case-sensitive match. Use
-      syntax (e.g., \[a-zA-Z\]) to make it case-insensitive.
+      syntax (e.g., `[a-zA-Z]`) to make it case-insensitive.
+
     </Callout>
 -   A maximum of 100 entries may be defined within a single ignore list.
 
@@ -42,24 +44,33 @@ You may define query string argument and file size limitations that
 cannot be exceeded by valid requests.
 
 <Callout type="important">
+
   The modification of these advanced settings is strongly discouraged.
+
 </Callout>
 
 -   **File size:** The **Multiple File Upload Limit** option defines the total file size, in bytes, for a `POST` request that is a multipart message.
 
     <Callout type="tip">
+
       The recommended maximum value is 6,291,456 bytes.
+
     </Callout>
 
     <Callout type="info">
+
       For the purpose of this setting, file size is calculated from the body (i.e., message or payload) of `POST` requests with a `Content-Type` header that is set to *multipart/form-data*.
+
     </Callout>
 
     <Callout type="info">
+
       Define the maximum file size for all other requests through an access rule. 
 
       [Learn more](Access-Rules.htm#FileSize).
+
     </Callout>
+
 -   **Query string value / parameters:** A variety of restrictions may be placed on either a request's query string value or parameters.
     -   The **Total Argument Length** option defines the maximum number of characters for the query string value in the request URL.
     -   The **Max # of Arguments /Request** option defines the maximum number of parameters that a query string may contain.  
@@ -67,7 +78,7 @@ cannot be exceeded by valid requests.
     -   The **Argument Name Length** option defines the maximum number of characters for any single query string parameter name in the request URL.
 -   **JSON Inspection:** Determines whether JSON payloads will be inspected.
 
-## Rule Set {/*rule-set*/}
+## Managed Rule Set {/*managed-rule-set*/}
 
 The ECRS rule set, which is primarily based off of OWASP CRS 3.x rules,
 identifies malicious traffic and provides generic protection against a
@@ -75,7 +86,7 @@ variety of unknown vulnerabilities. This rule set does not solely rely
 on signatures to check for known vulnerabilities. Rather, it analyzes
 all HTTP data for malicious payloads.
 
-In addition to defining a [threshold](Configuration.htm#threshold), this
+In addition to defining a [threshold](basic_setup#threshold), this
 rule set allows you to balance protection against false positives via
 the **Paranoia Level** option. Paranoia levels are explained
 below.
@@ -90,14 +101,17 @@ below.
     positives.
 
 <Callout type="important">
+
   Before leveraging a new rule set to secure production traffic, it is
   strongly recommended to fine-tune its configuration to account for your
-  traffic profile.\
+  traffic profile.
 
   [Learn more.](#rsupdates)
+
 </Callout>
 
 <Callout type="tip">
+
   Automatically verify that your web applications are compatible with our
   latest threat detection policies by enabling the **Automatically opt-in
   to the latest ECRS ruleset** option. This mode is only
@@ -107,6 +121,7 @@ below.
   latest rule set. This type of setup provides you with the opportunity to
   minimize false positives before enforcing our latest threat detection
   policies on your production traffic.
+
 </Callout>
 
 The ECRS rule set consists of a set of threat detection policies. Each
@@ -118,15 +133,18 @@ to site traffic will be detected.
 **Key information:**
 -   Only a single rule set may be associated with a managed rule.
 -   A threat detection policy or its rules may be disabled.
-    -   View a policy's rules by clicking its "*N* Rules Disabled\"
+    -   View a policy's rules by clicking its "*N* Rules Disabled"
         link.
 
         ![](/images/app_security/managed_rules_0_rules_disabled.png)
 
         <Callout type="info">
+
           The link's label (e.g., 0 Rules Disabled) indicates the number
           of rules that have been disabled for that policy.
+
         </Callout>
+
     -   Take care when disabling a policy or an individual rule since it
         increases the vulnerability of site traffic.
 -   Changing the rule set associated with a managed rule will overwrite
@@ -181,30 +199,38 @@ A brief description for each available threat detection policy is
 provided below.
 
 <Callout type="info">
+
   The set of available policies varies according to the selected rule set.
+
 </Callout>
 
 <Callout type="info">
+
   Balance security with optimal data delivery performance by disabling
   policies that do not apply to your site's traffic. For example, the
   Typo3 attacks policy should be disabled if your site does not use that
   CMS.
+
 </Callout>
 
 <Callout type="info">
+
   The ability to monitor outbound traffic is currently unsupported.
   Therefore, none of the following policies are applicable to outbound
   traffic.
+
 </Callout>
 
 #### ECRS Policies {/*ecrs-policies*/}
 
 <Callout type="info">
+
 The EC Custom Rule policy and polices that start with "Adv"
 run in signature mode, while all other policies run in anomaly mode.
 Signature mode means that a single violation will result in a request
 being categorized as a threat. Anomaly mode means that a threshold must
 be met before a request will be considered a threat.
+
 </Callout>
 
 -   **Adv CPanel:** Detects attacks that target sites that leverage cPanel.
@@ -242,8 +268,10 @@ following criteria:
     name matches the specified value.
 
 <Callout type="tip">
+
   Another strategy for reducing false positives is to reduce the **Paranoia
   Level** option. The recommended level is 1.
+
 </Callout>
 
 Tips for setting up rule exceptions:
@@ -310,6 +338,7 @@ You may create, modify, and delete managed rules.
         section will be refreshed to reflect the selected rule set.
 
         <Callout type="tip">
+
           Automatically verify that your web applications are compatible
           with our latest threat detection policies by enabling the
           **Automatically opt-in to the latest ECRS ruleset**
@@ -320,28 +349,35 @@ You may create, modify, and delete managed rules.
           latest rule set. This type of setup provides you with the
           opportunity to minimize false positives before enforcing our
           latest threat detection policies on your production traffic.
+
         </Callout>
+
     2.  Set the **Threshold** option to a level (e.g., 5) that
         balances security with risk tolerance. Requests that are scored
         at or higher than the specified value will be identified as
         malicious traffic.
 
-        [Learn more.](Configuration.htm#threshold)
+        [Learn more.](basic_setup#threshold)
 
         <Callout type="info">
+
           This option only applies to policies other than Custom EC Rules
           and policies that start with **Adv**.
+
         </Callout>
+
     3.  Set the **Paranoia Level** option to a level (e.g., 1)
         that balances security with risk tolerance.
 
         <Callout type="tip">
+
           This is an advanced setting. The recommended paranoia level
           is 1. Setting this option to a higher value will increase the
           number of false positives.
+
         </Callout>
 
-         [Learn more.](Configuration.htm#threshold)
+         [Learn more.](basic_setup#threshold)
     4.  Review all enabled policies and rules to ensure that the
         legitimate traffic is not targeted by mistake.
 
@@ -372,11 +408,13 @@ You may create, modify, and delete managed rules.
 **To modify a managed rule**
 
 <Callout type="tip">
+
   A common reason for updating a managed rule is to reduce false positives
   by [adding a rule exception](#create-rule-exception). A rule exception identifies one
   or more rules that should be ignored for a specific set of requests.
   Typically, the criteria for a rule exception are identified through analysis within the
   Threats Dashboard.
+
 </Callout>
 
 1.  Navigate to the **Managed Rules** page.
@@ -389,10 +427,12 @@ You may create, modify, and delete managed rules.
 **To delete a managed rule**
 
 <Callout type="important">
+
   You cannot delete a managed rule that is associated with a Security
   Application configuration. Please either modify the Security
   Application configuration to point to a different managed rule or
   delete that Security Application configuration.
+
 </Callout>
 
 1.  Check your Security Application configurations to verify

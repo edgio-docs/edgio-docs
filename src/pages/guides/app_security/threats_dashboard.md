@@ -51,19 +51,24 @@ at your applications and web servers. This view consists of a chart and statisti
     By default, a single line on the graph represents all threats. Alternatively, categorize threats by selecting the desired categorization criteria from the option that appears directly above the graph. A line will be drawn on the chart for each unique value. For example, if you select **Profile Type** and requests were screened by production and audit rules, then the graph will contain a line for audit and another one for production.  
 
     <Callout type="info">
+
       By default, graphing threats by type will include up to the 10 most popular entries. Customize this limit through the **Max Top Number** option. This option also affects the maximum number of unique entries that may be listed for each type of statistic listed under the graph.
+
     </Callout>
+
 -   **Statistics:** Statistics on the threats detected over a given time period are displayed directly below the chart. 
     Statistics are broken down by category.  
 
     [View category definitions.](#field-definitions)  
 
     <Callout type="info">
+
       By default, statistics for up to the 10 most popular entries may be displayed for each category. Customize this limit through the **Max Top Number** option. This option also affects the maximum number of lines that may be graphed.  
+
     </Callout>
 
     The following information is displayed for each category:
-    -   **&lt;Value>:** Groups threats by the request's value for the current category.  The following illustration shows a partial listing of values for the "Rule Message" category.  
+    -   `<Value>`**:** Groups threats by the request's value for the current category.  The following illustration shows a partial listing of values for the "Rule Message" category.  
 
     ![](/images/app_security/dashboard_category.png)  
 
@@ -71,7 +76,9 @@ at your applications and web servers. This view consists of a chart and statisti
     -   **Events:** Indicates the number of detected threats that belong to the group identified by the **Value** field.  
 
     <Callout type="info">
+
     Percentages are calculated from the total threats detected during the given time period. The **Max Top Number** option determines the limit of entries per category. If the number of entries exceeds this limit, then the sum of the percentages for that category will not add up to 100%.
+
     </Callout>
 
 **Key information:**
@@ -107,9 +114,9 @@ the type of attacks being mounted on an origin server.
 
 The event log contains a list of recent rule violations. The header bar
 for each violation contains the following information:
--   **&lt;Rule Message>:** Identifies the rule that was violated.
--   **&lt;Elapsed Time>:** Indicates the amount of time that has passed since the request was screened.
--   **&lt;Time>:** Indicates the time (UTC) at which the request was screened.
+-   `<Rule Message>`**:** Identifies the rule that was violated.
+-   `<Elapsed Time>`**:** Indicates the amount of time that has passed since the request was screened.
+-   `<Time>`**:** Indicates the time (UTC) at which the request was screened.
 
 **Syntax:** 
 
@@ -174,7 +181,9 @@ Each sub event contains the following fields:
 -   **Matched Value:** Indicates the value of the variable defined by the **Matched On** field.  
 
 <Callout type="info">
+
   Standard security practices dictate that measures should be taken to prevent sensitive data (e.g., credit card information or passwords) from being passed as clear text from the client to your origin server. Another incentive for encrypting sensitive data is that it will be logged by our system when an alert is triggered as a result of this data. If sensitive data cannot be encrypted or obfuscated, then it is strongly recommended to contact our technical customer support to disable logging for the **Matched Value** field.
+
 </Callout>
 
 -   **Rule ID:** Indicates the ID for the rule that the request violated.
@@ -200,7 +209,9 @@ Each sub event contains the following fields:
     `<Rule Set>/<Category>/<Subcategory>`
 
     <Callout type="info">
-      `&lt;Category>` identifies whether the request violated a rule, an access control, or the delivery profile.
+
+      `<Category>` identifies whether the request violated a rule, an access control, or the delivery profile.
+
     </Callout>
 
     **Example values:**
@@ -229,11 +240,13 @@ Filters are applied to both the Overview and the Event Log views. Most
 fields support filtering.
 
 <Callout type="info">
+
   The Overview and the Event Log views cannot be filtered by the
   **Timestamp** field. Use the **Time Range** option instead.
   This option filters the dashboard for events that occurred during a
   relative time period from the present (e.g., Last 24 hours or Last 7
   days).
+
 </Callout>
 
 **Key information:**
@@ -251,15 +264,20 @@ fields support filtering.
         the desired field value.
 
     <Callout type="important">
+
       Filtering by rule message or ID will filter for the selected rule
       and all other rules that contributed to the violation of the anomaly
       score threshold.
+
     </Callout>
 
     <Callout type="tip">
+
       Blue font indicates a field value that may be applied as a filter to
       the dashboard.
+
     </Callout>
+
 -   The **Time Range** option is different from other filters in
     that it is mandatory. Specify the time period by which the Overview
     and the Event Log will be filtered.

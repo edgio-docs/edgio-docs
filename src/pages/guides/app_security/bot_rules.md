@@ -11,15 +11,19 @@ harvesting data from your site., carding, spamming your forms,
 launching DDoS attacks, and committing ad fraud.
 
 <Callout type="important">
+
   Solving a challenge requires a JavaScript-enabled client. Users that
   have disabled JavaScript on their browsing session will be unable to
   access content protected by bot rules.
+
 </Callout>
 
 <Callout type="important">
+
   We strongly recommend that you avoid applying bot rules to
   machine-to-machine interactions. For example, applying bot rules to API
   traffic will disrupt your API workflow.
+
 </Callout>
 
 ## How Does It Work? {/*how-does-it-work*/}
@@ -44,10 +48,13 @@ Content protected by bot rules undergoes the following workflow:
         client to solve a challenge.
 
         <Callout type="info">
+
           Define the duration for this cookie through the **Valid for (in
           minutes)** option when setting up the enforcement of bot
           rules within your Security Application configuration.
+
         </Callout>
+
     -   **Unsolved:** If the client is unable to solve the
         challenge, then our CDN responds with a new browser challenge.
 
@@ -61,16 +68,22 @@ rules. Each rule contains:
     identified by this rule.
 
     <Callout type="tip">
+
       Assigning a unique ID and message to each rule makes it easy to
       identify requests detected as a result of a specific rule.
+
     </Callout>
 
     <Callout type="info">
+
       A rule ID must be a number between 77,000,000 and 77,999,999.
+
     </Callout>
 
 <Callout type="info">
+
   A bot rule set may contain up to 10 rules.
+
 </Callout>
 
 ### Request Identification {/*request-identification*/}
@@ -84,6 +97,7 @@ rule set. The manner in which a rule is satisfied varies by type.
     how it will be matched (i.e., operator), and a match value.
 
     <Callout type="info">
+
       Certain variables match on key-value pairs. If you match on multiple
       keys within a single variable, {{ PRODUCT_SECURITY }} will only need to find one of
       those matches to satisfy that variable.
@@ -92,7 +106,9 @@ rule set. The manner in which a rule is satisfied varies by type.
       `Authorization` and `Content-Type`, then requests
       that contain either or both of those headers will satisfy that
       variable.
+
     </Callout>
+
 -   **Edgecast Reputation DB:** This type of rule is satisfied when
     the client's IP address matches an IP address defined within our
     reputation database. Our reputation database contains a list of
@@ -151,27 +167,31 @@ support the following request elements:
     Number (ASN) associated with the client's IP address.
 
     <Callout type="tip">
+
       Specify a regular expression to match for multiple ASNs.
 
       **Example:**
 
       Use the following pattern to match for requests from 15133 and
       14153: `15133|14153`
+
     </Callout>
 
     <a id="country"></a>
 
 -   **Country:** Identifies requests by the country
     from which the request originated. Specify the desired country using
-    a [country code](../../Reference/Country_Codes.htm).
+    a [country code](/reference/country_codes).
 
     <Callout type="tip">
+
       Specify a regular expression to match for multiple country codes.
 
       **Example:**
 
       Use the following pattern to match for requests from the United
       States, Canada, and Mexico: `US|CA|MX`
+
     </Callout>
 
     <a id="ipaddress"></a>
@@ -198,11 +218,13 @@ support the following request elements:
         pattern within the **Match value** option.
 
         <Callout type="info">
+
           Setting up a cookie variable also allows you to define whether
           {{ PRODUCT_SECURITY }} uses a regular expression, a negative match, or both when
           comparing the value assigned to the variable against cookies.
           Use a negative match to find requests whose payload does not
           contain the specified cookie.
+
         </Callout>
 
     <a id="request-header"></a>
@@ -219,11 +241,13 @@ support the following request elements:
         value** option.
 
         <Callout type="info">
+
           Setting up a request header variable also allows you to define
           whether {{ PRODUCT_SECURITY }} uses a regular expression, a negative match, or both
           when comparing the value assigned to the variable against
           request headers. Use a negative match to find requests whose
           payload does not contain the specified request header.
+
         </Callout>
 
     <a id="request-method"></a>
@@ -244,9 +268,11 @@ support the following request elements:
     after the hostname. Exclude the protocol and hostname when defining
     this property.
 
-    <Callout type="note">
+    <Callout type="info">
+
       {{ PRODUCT_SECURITY }} does not transform edge CNAME URLs to CDN URLs prior to
       performing this comparison.
+
     </Callout>
 
     **Sample values:**
@@ -263,8 +289,10 @@ support the following request elements:
     defining this property.
 
     <Callout type="info">
+
       Our service does not transform edge CNAME URLs to CDN URLs prior to
       performing this comparison.
+
     </Callout>
 
     **Sample values:**
@@ -273,23 +301,27 @@ support the following request elements:
 
     `/resources/images`
 
-<a id="count"></a>
+    <a id="count"></a>
 
 <Callout type="info">
+
   All variables support the ability to match on the number of
   times that a request element is found within the request. Set up a
   variable to match on the number of instances instead of inspecting the
   element for a specific value or regular expression pattern by marking
   the **Count** option.
+
 </Callout>
 
 <Callout type="info">
+
   You may define zero or more keys when setting up variables that match on
   key-value pairs. {{ PRODUCT_SECURITY }} must find at least one of the specified keys in the
   request before that variable will be satisfied. For example, if you set
   up a request header variable to match for `Authorization` and
   `Content-Type`, then requests that contain either or both of
   those headers will satisfy that variable.
+
 </Callout>
 
 ##### Operators {/*operators*/}
@@ -306,18 +338,23 @@ request element identified by a variable.
     an exact match to the specified match value.
 
     <Callout type="info">
+
       Avoid enabling the **Negative match** option with the `Exact
       match` operator. This configuration will not yield the
       expected set of matches.
+
     </Callout>
+
 -   **Regex:** A match is found when the request element satisfies
     the regular expression defined in the match value.
 -   **Value match:** A match is found when the request element
     occurs the exact number of times defined in the match value.
 
     <Callout type="info">
+
       The `Value match` operator should only be used when the
       [Count option](#count) has been enabled.
+
     </Callout>
 
 ##### Match Value {/*match-value*/}
@@ -350,8 +387,10 @@ for this configuration.
     *1*.
 
 <Callout type="info">
+
   The type of comparison that will be performed is determined by the
   **Operator** option.
+
 </Callout>
 
 ## Bot Rule Administration {/*bot-rule-administration*/}
@@ -387,23 +426,24 @@ You may create, modify, and delete bot rule sets.
         3.  In the **Rule message** option, type a brief description for this rule.
         4.  A custom matches rule automatically includes a default condition. Modify this condition to determine how {{ PRODUCT_SECURITY }} will identify requests. From the condition's **Variable** option, select the request element through which {{ PRODUCT_SECURITY }} will identify requests.
 
-        [Learn more about variables.](#Variables)
+            [Learn more about variables.](#Variables)
 
         5.  Certain variables (e.g., request cookies and request header) match on name and value. If you have selected this type of variable, then perform the following steps:
             1.  Click **+ Add Match**.
             2.  From the **Name** option, type the desired name.
 
             For example, match for requests that contain an `Authorization` header by setting this option to ***Authorization***.
+
             3.  Optional. Mark the **Negative Match** option to match for requests that do not contain a matching value for the name defined in the previous step.
             4.  If you specified a regular expression in the **Name** option, then you should mark the **Regex Match** option.
             5.  Optional. Add another match through which this variable can be satisfied by repeating steps 4.5.1 - 4.5.4.
         6.  Optional. Mark the **Count** option to match by the number of instances that a match is found instead of by inspecting that request element.
 
-        [Learn more.](#count)
+            [Learn more.](#count)
 
         7.  From the **Operator** option, select an operator that determines how {{ PRODUCT_SECURITY }} will compare the match value to the request element identified by the above variable.
 
-        [Learn more.](#Operators)
+            [Learn more.](#Operators)
 
         8.  In the **Match value** option, type the value that will be compared against the request element identified by the above variable.
         9.  Optional. Mark the **Negative Match** option to match for requests that do not contain a matching value for the value defined in step 4.6.
@@ -434,9 +474,12 @@ You may create, modify, and delete bot rule sets.
         Delete a condition by clicking **Delete Condition**.
 
         <Callout type="info">
+
           A rule must have at least one condition. Therefore, you cannot
           delete the root condition.
+
         </Callout>
+
     -   Delete a rule by clicking **Delete Rule** and then
         clicking **Confirm**.
 4.  Click **Save**.
@@ -444,10 +487,12 @@ You may create, modify, and delete bot rule sets.
 **To delete a bot rule set**
 
 <Callout type="important">
+
   You cannot delete a bot rule that is associated with a Security
   Application configuration. Please either modify the Security
   Application configuration to point to a different bot rule or
   delete that Security Application configuration.
+
 </Callout>
 
 1.  Check your Security Application configurations to verify

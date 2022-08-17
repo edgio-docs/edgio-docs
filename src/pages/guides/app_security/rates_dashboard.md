@@ -9,14 +9,18 @@ Use the Rates dashboard to analyze recently rate limited requests to:
 -   View detailed information that describes a rate limited request.
 
 <Callout type="info">
+
 Logging for rate limited requests is downsampled to 10% due to the
 volume of requests that may occur during a single incident (e.g.,
 volumetric Distributed Denial-of-Service attack).
+
 </Callout>
 
 <Callout type="info">
+
 Log data is retained for 30 days for most {{ PRODUCT_SECURITY }} solutions. The exception
 is {{ PRODUCT_SECURITY }} Insights which only retains data for 7 days.
+
 </Callout>
 
 This article describes:
@@ -87,18 +91,21 @@ category.
 [View a brief description for each category.](#fields)
 
 The following information is displayed for each category:
--   ***&lt;Value>:*** Groups rate limited traffic by a
+-   `<Value>`**:** Groups rate limited traffic by a
     specific value.
 -   **Percentage (%):** Indicates the percentage of rate limited
     traffic over a given time period for the current group.
 
     <Callout type="important">
+
       Percentages are calculated from the total rate limited requests
       during the given time period. The **Max Top Number** option
       determines the limit of entries per category. If the number of
       entries exceeds this limit, then the sum of the percentages for that
       category will not add up to 100%.
+
     </Callout>
+
 -   **Events:** Indicates the number of rate limited requests over
     a given time period for the current group.
 
@@ -116,13 +123,13 @@ request is described as follows:
 `Action Type: <Action Type>`
 
 The above terms are defined as follows:
--   **&lt;Rule>:** Identifies the rate rule that was violated by its
+-   `<Rule>`**:** Identifies the rate rule that was violated by its
 name.
--   **&lt;Elapsed Time>:** Indicates the amount of time that has passed since
+-   `<Elapsed Time>`**:** Indicates the amount of time that has passed since
 the request was screened. 
--   **&lt;Time>:** Indicates the time (UTC) at which the
+-   `<Time>`**:** Indicates the time (UTC) at which the
 request was screened.
--   **&lt;Action Type>:** Represents the type of action that was applied
+-   `<Action Type>`**:** Represents the type of action that was applied
 to the rate limited request. This action is determined by the rate rule
 that it violated.
 
@@ -149,11 +156,13 @@ Filters are applied to both the Overview and the Event Log views. Most
 fields support filtering.
 
 <Callout type="info">
+
 The Overview and the Event Log views cannot be filtered by the
 **Timestamp** field. Use the **Time Range** option instead.
 This option filters the dashboard for events that occurred during a
 relative time period from the present (e.g., Last 24 hours or Last 7
 days).
+
 </Callout>
 
 **Key information:**
@@ -186,11 +195,15 @@ limited requests is provided below.
 -   **Timestamp:** Indicates the date and time (UTC) at which the request was rate limited.
 
     <Callout type="info">
+
       This field is only available from within the Event Log view. Requests may not be filtered by this field. Filter by time through the **Time Range** option that appears on the left-hand side of the dashboard.
+
     </Callout>
 
     <Callout type="info">
+
       Local time is displayed on the right-hand side of the event log entry header that appears directly above this field.
+
     </Callout>
 -   **URL:** Indicates the URL of the request that was rate limited.   
 -   **User Agent:** Indicates the user agent that submitted the request that was rate limited. A request's user agent is defined in the `User-Agent` request header.             

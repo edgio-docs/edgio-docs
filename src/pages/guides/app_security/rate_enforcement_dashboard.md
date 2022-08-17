@@ -33,8 +33,10 @@ The Rate Enforcement dashboard allows you to:
 -   Understand the frequency of rate limited requests.
 
 <Callout type="info">
+
   Log data is retained for 30 days for most {{ PRODUCT_SECURITY }} solutions. The exception
   is {{ PRODUCT_SECURITY }} Insights which only retains data for 7 days.
+
 </Callout>
 
 This article describes:
@@ -98,16 +100,18 @@ period are displayed directly below the chart. Statistics are broken
 down by category.
 
 <Callout type="info">
+
   By default, statistics for up to the 10 most popular entries may be
   displayed for each category. Customize this limit through the **Max Top
   Number** option. This option also affects the maximum number of
   lines that may be graphed.
+
 </Callout>
 
 [View a brief description for each category.](#fields)
 
 The following information is displayed for each category:
--   ***&lt;Value>:*** Groups rate limited traffic by a
+-   `<Value>`**:** Groups rate limited traffic by a
     specific value (e.g., rule name or enforcement type).
 -   **Percentage (%):** Indicates the percentage of triggered
     enforcements over a given time period for the current group.
@@ -124,13 +128,13 @@ enforcement. Each enforcement event is described as follows:
 `Action Type: <Action Type>`
 
 The above terms are defined as follows:
--   **&lt;Rule>:** Identifies the rate rule that was violated by its
+-   `<Rule>`**:** Identifies the rate rule that was violated by its
 name.
--   **&lt;Elapsed Time>:** Indicates the amount of time that has passed since
+-   `<Elapsed Time>`**:** Indicates the amount of time that has passed since
 the request was screened. 
--   **&lt;Time>:** Indicates the time (UTC) at which the
+-   `<Time>`**:** Indicates the time (UTC) at which the
 request was screened.
--   **&lt;Action Type>:** Represents the type of action that was applied
+-   `<Action Type>`**:** Represents the type of action that was applied
 to the rate limited request. This action is determined by the rate rule
 that it violated.
 
@@ -157,11 +161,13 @@ Filters are applied to both the Overview and the Event Log views. Most
 fields support filtering.
 
 <Callout type="info">
+
   The Overview and the Event Log views cannot be filtered by the
   **Timestamp** field. Use the **Time Range** option instead.
   This option filters the dashboard for events that occurred during a
   relative time period from the present (e.g., Last 24 hours or Last 7
   days).
+
 </Callout>
 
 **Key information:**
@@ -182,12 +188,17 @@ limited requests is provided below.
 -   **Action Name:** Indicates the name of the action that was applied to rate limited requests as a result of this enforcement event. 
 
     <Callout type="tip">
+
       Assign names to actions by defining your rate rule via our REST API.
+
     </Callout>
+
 -   **Action Type:** Indicates the type of action (e.g., `custom-response`) that was applied to rate limited requests as a result of this enforcement event.
 -   **Rule Name:** Indicates the name of the rule whose threshold was exceeded.
 -   **Timestamp:** Indicates the date and time (UTC) at which rate limiting enforcement was initiated.
 
     <Callout type="info">
+
       This field is only available from within the Event Log view. Requests may not be filtered by this field. Filter by time through the **Time Range** option that appears on the left-hand side of the dashboard.         
+
     </Callout>

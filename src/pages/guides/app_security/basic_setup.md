@@ -22,10 +22,12 @@ Additional information on each of the above steps is provided below.
     - Analyze threats and ensure that legitimate traffic is not impacted.
 
 <Callout type="tip">
+
   Different applications and types of requests may require varying levels
   of protection. Create security rules and Security Application
   configurations for each use case that requires a unique level of
   protection.
+
 </Callout>
 
 
@@ -41,9 +43,11 @@ below.
     considered legitimate and no further checks will be performed.
     
     <Callout type="info">
+
       A whitelist identifies traffic that should always be considered safe. Traffic may be
       whitelisted by ASN, country, IP address, referrer, URL, user agent,
       HTTP method, media type, and/or file extension.
+
     </Callout>
 
 2.  Proceed to the next step if the access rule does not contain at
@@ -55,20 +59,24 @@ below.
     performed.
 
     <Callout type="info">
+
       An accesslist identifies traffic that may access your
       content upon passing a threat assessment. Traffic may be
       accesslisted by ASN, country, IP address, referrer, URL, user agent,
       HTTP method, media type, and/or file extension.
+
     </Callout>
 
 3.  Does the request meet a blacklist criterion? If so, it is
     identified as a threat and no further checks will be performed.
 
     <Callout type="info">
+
       A blacklist identifies
       traffic that should always be considered malicious. Traffic may be
       blacklisted by ASN, country, IP address, referrer, URL, user agent,
       HTTP method, media type, and/or file extension.
+
     </Callout>
 
 4.  Has the rate limit been exceeded? If so, then the request is
@@ -223,11 +231,13 @@ The recommended approach to setting up a profile's rule set is to:
     profile.
 
     <Callout type="tip">
+
       The detection threshold fine tunes threat detection to balance
       security requirements with risk tolerance. For example, this
       detection threshold may need to be increased if a significant number
       of false positives are detected upon activating an instance
       associated with this profile.
+
     </Callout>
 
 -   Enable as many relevant policies and rules as possible.
@@ -236,9 +246,11 @@ The recommended approach to setting up a profile's rule set is to:
     crucial for performance.
 
     <Callout type="tip">
+
       One way to deal with false positive alerts is to check to see whether
       the corresponding web application or the site's source code may be
       modified to bring it into compliance with the offending rule.
+
     </Callout>
 
 ### Access Controls {/*access-controls*/}
@@ -249,11 +261,14 @@ Use an access rule to define access controls for URLs, countries, IP addresses, 
 source.
 
   <Callout type="tip">
+
     Whitelisting traffic should only be performed after careful
     consideration and with extreme caution. Whitelisted traffic will not be
     screened and therefore creates a launching point for a potential attack
     on your applications and web servers.
+
   </Callout>
+
 -   **Accesslist:** The recommended approach for traffic from trusted sources is 
     to identify it through an accesslist. This approach allows that trafic after 
     it passes a threat assessment.

@@ -33,9 +33,11 @@ honored.
     count towards the rate limit.
 
     <Callout type="info">
+
       If one or more condition group(s) have been defined, then the
       request must also satisfy all of the conditions defined within at
       least one condition group.
+
     </Callout>
 -   A rate rule does not take into account whether content needs to be
     requested from an origin server or if a cached version may be served
@@ -47,16 +49,21 @@ honored.
     time interval (e.g., 1 second, 10 seconds, or 1 minute).
 
     <Callout type="important">
+
       Requests from a single client may be load balanced to different edge
       servers based on the requested URL.
+
     </Callout>
+
 -   {{ PRODUCT_SECURITY }} does not perform further [evaluation of a
-    request](configuration#threat) once enforcement is triggered.
+    request](basic_setup#threat) once enforcement is triggered.
 
     <Callout type="tip">
+
       We recommend that you limit your use of the `Alert Only`
       enforcement to the shortest amount of time necessary to validate
       changes to your configuration.
+
     </Callout>
 
 [View sample scenarios.](#scenario-1-rate-limiting-all-requests*/)
@@ -72,7 +79,9 @@ set of requests to which this rate rule will be applied.
     -   To each unique client that exceeds the defined rate limit.
 
         <Callout type="info">
+
           A unique client may be identified by its user agent and/or IP address.
+
         </Callout>
 -   **[Rate Limit:](#rate-limit)** Define a maximum request rate before a predefined action is triggered.
 -   **[Condition Group:](#condition-group)** A request counts towards a rate limit when it satisfies all of the following criteria:
@@ -91,13 +100,18 @@ to** option. The available modes are described below.
 -   **Any request:** Indicates that all requests will count towards the rate limit. Once the specified rate limit is exceeded, it will be enforced without taking into consideration which client submitted the request.  
 
     <Callout type="tip">
+
       This mode is not recommended when there are malicious clients that are spoofing legitimate traffic. This type of configuration may potentially lead to a situation where spoofed traffic is honored while legitimate traffic is rate limited.
+
     </Callout>
+
 -   **IP address:** Indicates that the requests from each unique client, as determined by its IP address, will be tracked. The specified rate limit will only be enforced on the clients that exceed it.
--   **Ip address and user agent:** Indicates that the requests from each unique client, as determined by each unique combination of IP address and user agent (e.g., web browser), will be tracked. The specified rate limit will only be enforced on the clients that exceed it.
+-   **IP address and user agent:** Indicates that the requests from each unique client, as determined by each unique combination of IP address and user agent (e.g., web browser), will be tracked. The specified rate limit will only be enforced on the clients that exceed it.
 
     <Callout type="info">
+
       All requests from a specific IP address that contain a blank or missing `User-Agent` header will be treated as a single client.
+
     </Callout>
 
 ### Rate Limit {/*rate-limit*/}
@@ -114,19 +128,24 @@ limit** option.
     when defining a rate limit.
 
     <Callout type="tip">
+
       A rate limit that applies across all requests should be
       significantly larger than a rate limit that applies to unique
       clients.
+
     </Callout>
+
 -   The specified rate limit is enforced on each edge server based on
     the number of requests that it receives.
     -   Typically, a single edge server will handle all requests
         directed to a POP for a specific URL.
 
         <Callout type="info">
+
           If the volume of requests to the above edge server exceeds
           capacity, then requests will be load balanced to an additional
           edge server.
+
         </Callout>
 
         **Example:**
@@ -155,11 +174,13 @@ A condition group defines one or more prerequisites that must be met
 before a request will count towards the rate limit.
 
 <Callout type="info">
+
 A request will only count towards the rate limit when it satisfies the
 host and URL path match conditions defined within a Security Application
 configuration. Additionally, if one or more condition group(s)
 have been defined, then the request must also satisfy all of the
 conditions defined within at least one condition group.
+
 </Callout>
 
 The types of prerequisites that may be defined are described below.
@@ -174,7 +195,7 @@ The types of prerequisites that may be defined are described below.
 
     <a id="country"></a>
 
--   **Country:** A request will count towards the rate limit when it originates from a country whose [code] (../Reference/Country_Codes.htm) matches a value defined in the **Value(s)** option.
+-   **Country:** A request will count towards the rate limit when it originates from a country whose [code](/reference/country_codes) matches a value defined in the **Value(s)** option.
 
     <a id="file-extension"></a>
 
@@ -193,11 +214,15 @@ The types of prerequisites that may be defined are described below.
 -   **IP address:** A request will count towards the rate limit when its IP address matches a value defined in the **Value(s)** option.  
 
     <Callout type="info">
+
       Make sure to use standard IPv4 and CIDR notation.  
+
     </Callout>
 
     <Callout type="info">
+
       Specify a subnet by appending a slash (/) and the desired bit-length of the prefix (e.g., 11.22.33.0/22).
+
     </Callout>
 
     <a id="request-header"></a>
@@ -225,11 +250,15 @@ The types of prerequisites that may be defined are described below.
     -   **User-Agent:** A request will count towards the rate limit when its `User-Agent` header matches the specified user agent.
 
         <Callout type="info">
+
           The request's user agent must be an exact match to the specified value. User agent strings typically vary by type and version.
+
         </Callout>
 
         <Callout type="info">
+
           Specify a blank value to match with requests that have a blank or missing `User-Agent` header.
+
         </Callout>
 
     <a id="referer"></a>
@@ -237,7 +266,9 @@ The types of prerequisites that may be defined are described below.
     -   **Referer:** A request will count towards the rate limit when its `Referer` header matches the specified referrer.
 
         <Callout type="info">
+
           The request's referrer must be an exact match to the specified value. 
+
         </Callout>
 
     <a id="request-method"></a>
@@ -251,16 +282,20 @@ The types of prerequisites that may be defined are described below.
 -   **Request URL path:** A request will count towards the rate limit when its request URL contains a relative path that matches a value defined in the **Value(s)** option.
 
     <Callout type="important">
+
       For the purposes of this option, specify a URL path pattern that starts directly after the hostname. Do not include a protocol or a hostname.
 
       **Sample values:**
 
       /marketing 
       /800001/mycustomerorigin  
+
     </Callout>
 
     <Callout type="important">
+
       This type of match condition requires a [Host condition](#Host) within the same condition group.
+
     </Callout>
 
     **Syntax:**
@@ -272,8 +307,10 @@ The types of prerequisites that may be defined are described below.
     `/marketing/brochures/widget.htm`
 
     <Callout type="info">
-      A partial match does not count towards the rate limit. For example, given the above sample configuration, the following request would not count towards the rate limit: http://cdn.example.com/ marketing/brochures/widget.html.
-    </Callout>    
+
+      A partial match does not count towards the rate limit. For example, given the above sample configuration, the following request would not count towards the rate limit: `http://cdn.example.com/ marketing/brochures/widget.html`.
+
+    </Callout>
 
 **Key information:**
 
@@ -304,7 +341,9 @@ The types of prerequisites that may be defined are described below.
         -   **All Other Conditions:** 100 
 
         <Callout type="info">
-          This limit only applies when the **Type** option for a condition is set to \"Multiple Match.\"
+
+          This limit only applies when the **Type** option for a condition is set to "Multiple Match."
+
         </Callout>
 
 ## Multiple Rate Rules {/*multiple-rate-rules*/}
@@ -325,11 +364,13 @@ The order in which rules are listed is critical, since it determines
 which rule will be applied to a request.
 
 <Callout type="tip">
+
   It is recommended to order rules according to how they identify
   requests. Stricter rules that identify requests using multiple
   conditions should be placed closer to the top of the list, while
   catch-all rules should be placed closer to the bottom. This ensures that
   rules are applied to requests as intended.
+
 </Callout>
 
 **Key information:**
@@ -340,9 +381,12 @@ which rule will be applied to a request.
     satisfies](#match-conditions) will be applied to it.
 
     <Callout type="info">
+
       Once a request satisfies a rate rule, all subsequent rate rules will
       be skipped.
+
     </Callout>
+
 -   Reorder rules by dragging the rate rule's
     ![](/images/icons/drag.png) icon.
 
@@ -360,11 +404,14 @@ You may create, modify, and delete rate rules.
     to tailor security screening by application or traffic profile.
 
     <Callout type="info">
+
       Before adding a rate rule to a Security Application
       configuration, verify that the Security Application
       configuration's hostname and URL path conditions do not conflict
       with your rate rule's conditions.
+
     </Callout>
+
 -   This service inspects all traffic, regardless of platform, to
     determine whether it should be rate limited.
 -   Requests to each delivery platform are counted separately.
@@ -427,9 +474,12 @@ You may create, modify, and delete rate rules.
             as needed. Place each desired value on a separate line.
 
             <Callout type="tip">
+
               Use the **Case sensitive** option to determine
               whether a case-sensitive comparison will be performed.
+
             </Callout>
+
         -   **Regex:** In the **Value(s)** option, type the
             desired regular expression pattern.
     7.  Choose whether this condition will be satisfied when a request
@@ -444,16 +494,22 @@ You may create, modify, and delete rate rules.
           6.4 - 6.7.
 
         <Callout type="info">
+
           If a condition group has been defined, then a request must
           satisfy all of the conditions within at least one condition
           group in order to be eligible for rate limiting.
+
         </Callout>
+
     9.  Optional. Create another condition group by following steps 6.1 - 6.8.
 
         <Callout type="tip">
+
           Multiple condition groups provide the means for identifying
           different types of requests for the purpose of rate limiting.
+
         </Callout>
+
 7.  Click **Save**.
 
 **To modify a rate rule**
@@ -468,10 +524,12 @@ You may create, modify, and delete rate rules.
 **To delete a rate rule**
 
 <Callout type="important">
+
 You cannot delete a rate rule that is associated with a Security
 Application configuration. Please either modify the Security
 Application configuration to point to a different rate rule or
 delete that Security Application configuration.
+
 </Callout>
 
 1.  Check your Security Application configurations to verify
@@ -489,10 +547,12 @@ This scenario assumes that a different edge server is handling each
 unique request URL. 
 
 <Callout type="info">
+
   A single edge server could potentially
   handle multiple unique request URLs that are eligible for rate rules. In
   which case, the rate limit would be applied to the aggregate traffic for
   that content.
+
 </Callout>
 
 Requests will be rate limited according to this configuration:
@@ -547,10 +607,12 @@ This scenario assumes that a different edge server is handling each
 unique request URL. 
 
 <Callout type="info">
+
   A single edge server could potentially
   handle multiple unique request URLs that are eligible for rate rules. In
   which case, the rate limit would be applied to the aggregate traffic for
   that content.
+
 </Callout>
 
 Requests will be rate limited according to this configuration:
@@ -574,11 +636,13 @@ honored all other requests, since they do not exceed the defined rate
 limit (i.e., 50 requests per minute).
 
 <Callout type="info">
+
   Aggregate traffic is not taken into account when rate limiting unique
   clients. For example, this rate rule would not be enforced on 2,000
   clients if they only issued 5 requests per minute. Although aggregate
   traffic exceeded the rate rule, no single client exceeded 50 requests
   per minute.
+
 </Callout>
 
 ### Sample Scenario 3: Multiple Rate Rules {/*scenario-3-multiple-rate-rules*/}
@@ -593,11 +657,13 @@ Once a rule is satisfied, it will be applied to the request and no
 additional rules will be processed.
 
 <Callout type="tip">
+
   It is recommended to order rate rules according to how they identify
   requests. Stricter rules that identify requests using multiple
   conditions should be placed closer to the top of the list, while
   catch-all rules should be placed closer to the bottom. This ensures that
   your rate limits are applied to requests as intended.
+
 </Callout>
 
 In this scenario, your Security Application configuration
@@ -634,11 +700,13 @@ applies the following rate rules to all requests.
 This sample scenario examines how four clients will be affected by rate rules.
 
 <Callout type="info">
+
   Although the majority of the traffic described below satisfies multiple rules, only the first rule that a request violates will be applied to it. 
+
 </Callout>
 
 -   **Client #1:**    
-    -   **Request URL:** http://cdn.example.com/sales/index.htm
+    -   **Request URL:** `http://cdn.example.com/sales/index.htm`
         -   **Request rate:** 350 requests per minute
     -   **Action:** Approximately 200 requests will be honored, while approximately 150 requests will be redirected.
 
@@ -646,7 +714,7 @@ This sample scenario examines how four clients will be affected by rate rules.
 
         All of these requests satisfy the first rule. As a result, the subsequent rules (i.e., second and third rules) are skipped.
 -   **Client #2:**
-    -   **Request URL:** http://cdn.example.com/marketing/index.htm
+    -   **Request URL:** `http://cdn.example.com/marketing/index.htm`
         -   **Request rate:** 300 requests per minute
     -   **Action:** Approximately 200 requests will be honored, while approximately 100 requests will be dropped.
 
@@ -654,14 +722,14 @@ This sample scenario examines how four clients will be affected by rate rules.
 
         These requests do not meet the conditions defined for the first rule. However, they do satisfy the second rule. As a result, the subsequent rule (i.e., third rule) is skipped.
 -   **Client #3:**
-    -   **Request URL #1:** http://cdn.example.com/sales/index.htm
+    -   **Request URL #1:** `http://cdn.example.com/sales/index.htm`
         -   **Request rate:** 250 requests per minute
     -   **Action:** Approximately 200 requests will be honored, while approximately 50 requests will be redirected.
 
         **Why?**
 
         All of these requests satisfy the first rule. As a result, the subsequent rules (i.e., second and third rules) are skipped.
-    -   **Request URL #2:** http://cdn2.example.com/sales/index.htm
+    -   **Request URL #2:** `http://cdn2.example.com/sales/index.htm`
         -   **Request rate:** 450 requests per minute
     -   **Action:** All 450 requests will be honored.
 
@@ -672,5 +740,7 @@ This sample scenario examines how four clients will be affected by rate rules.
         Although the total number of requests from all clients exceeds 500 requests per minute, only the 450 requests submitted by this client are eligible for rate limiting by the third rule. Therefore, the rate limit defined in the third rule is not being exceeded.
 
         <Callout type="info">
+
           Notice that a different rate rule is applied to these requests, even though they originate from the same client.
+
         </Callout>

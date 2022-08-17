@@ -1,15 +1,22 @@
 import styled, {css} from 'styled-components';
 
 interface IStyledCallout {
-  type: 'info' | 'warning' | 'danger';
+  type: 'info' | 'tip' | 'important' | 'warning' | 'danger';
 }
 
 const StyledCallout = styled.div.attrs<IStyledCallout>((props) => ({
   type: props.type || 'info',
 }))<IStyledCallout>`
-  padding: 15px 20px;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  border-radius: 6px;
+  padding: 14px 20px 20px 60px;
+  border: 1px solid #dedede;
+  border-radius: 3px;
+  margin: 0 0 7px 0;
+  background-color: #fafafa;
+  background-repeat: no-repeat;
+  background-position: 15px 15px;
+  min-height: 30px;
+  color: #4b4b4b;
+  border-left-width: 5px;
   display: grid;
   grid-template-columns: auto 1fr;
   column-gap: 15px;
@@ -19,27 +26,40 @@ const StyledCallout = styled.div.attrs<IStyledCallout>((props) => ({
   ${(props) =>
     props.type === 'info' &&
     css`
-      background: rgb(239, 245, 242) none repeat scroll 0% 0%;
-      color: rgb(39, 83, 69);
-      border-color: rgb(181, 216, 195);
+      background-image: url('/images/callouts/note.png');
+      border-left-color: #1c8ec2;
+    `}
+
+  /* type=tip */
+  ${(props) =>
+    props.type === 'tip' &&
+    css`
+      background-image: url('/images/callouts/tip.png');
+      border-left-color: #fee8a6;
+    `}
+
+  /* type=important */
+  ${(props) =>
+    props.type === 'important' &&
+    css`
+      background-image: url('/images/callouts/important.png');
+      border-left-color: #a2238d;
     `}
 
   /* type=warning */
 	${(props) =>
     props.type === 'warning' &&
     css`
-      background: #fff1bf none repeat scroll 0% 0%;
-      color: #000000;
-      border-color: #f8de82;
+      background-image: url('/images/callouts/warning.png');
+      border-left-color: #ec1c24;
     `}
 
 	/* type=danger */
 	${(props) =>
     props.type === 'danger' &&
     css`
-      background: rgb(245, 239, 239) none repeat scroll 0% 0%;
-      color: rgb(83, 39, 41);
-      border-color: rgb(216, 181, 181);
+      background-image: url('/images/callouts/danger.png');
+      border-left-color: #a2238d;
     `}
 
 	.callout-image__wrap {
@@ -54,14 +74,12 @@ export default function Callout({
   type,
   children,
 }: {
-  type: 'info' | 'warning' | 'danger';
+  type: 'info' | 'tip' | 'important' | 'warning' | 'danger';
   children: React.ReactNode;
 }) {
   return (
     <StyledCallout className="callout" type={type}>
-      <div className="callout-image__wrap">
-        {type === 'info' ? 'ℹ️' : type === 'warning' ? '⚠️' : '⛔️'}
-      </div>
+      <div className="callout-image__wrap"></div>
       <div className="callout-body">{children}</div>
     </StyledCallout>
   );

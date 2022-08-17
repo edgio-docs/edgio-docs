@@ -9,7 +9,9 @@ Custom threat identification combined with rapid testing and deployment
 enables you to quickly address long-term and zero-day vulnerabilities.
 
 <Callout type="info">
+
   The Custom rules capability requires {{ PRODUCT_SECURITY }} Premier or Standard. If you currently have {{ PRODUCT_SECURITY }} Essentials or Insights and would like to use custom rules, please contact your CDN account manager to upgrade to the full version.
+
 </Callout>
 
 ## Custom Rule Sets {/*custom-rule-sets*/}
@@ -21,16 +23,22 @@ Each rule contains:
     identified by this rule.
 
     <Callout type="tip">
+
       Assigning a unique ID and message to each rule makes it easy to
       identify threats detected as a result of a specific rule.
+
     </Callout>
 
     <Callout type="info">
+
       A rule ID must be a number between 66,000,000 and 66,999,999.
+
     </Callout>
 
 <Callout type="info">
+
   A custom rule set may contain up to 10 rules.
+
 </Callout>
 
 ### Threat Identification {/*threat-identification*/}
@@ -40,8 +48,10 @@ custom rule set. A rule is satisfied when a match is found for one or
 more variable(s) in each condition. 
 
 <Callout type="info">
+
   A variable identifies the request element (e.g., request
   header, query string, or request body) that {{ PRODUCT_SECURITY }} will analyze. 
+
 </Callout>
 
 **Example #1:**
@@ -68,12 +78,14 @@ of the following circumstances:
     rule's second condition.
 
 <Callout type="info">
+
   Certain variables match on key-value pairs. If you match on multiple
   keys within a single variable, {{ PRODUCT_SECURITY }} will only need to find one of those
   matches to satisfy that variable. For example, if you set up a request
   header variable to match for `Authorization` and
   `Content-Type`, then requests that contain either or both of
   those headers will satisfy that variable.
+
 </Callout>
 
 #### Conditions {/*conditions*/}
@@ -93,27 +105,31 @@ support the following request elements:
     Number (ASN) associated with the client's IP address.
 
     <Callout type="tip">
+
       Specify a regular expression to match for multiple ASNs.
 
       **Example:**
 
       Use the following pattern to match for requests from 15133 and
       14153: `15133|14153`
+
     </Callout>
 
     <a id="country"></a>
 
 -   **Country:** Identifies requests by the country
     from which the request originated. Specify the desired country using
-    a [country code](../../Reference/Country_Codes.htm).
+    a [country code](/reference/country_codes).
 
     <Callout type="tip">
+
       Specify a regular expression to match for multiple country codes.
 
       **Example:**
 
       Use the following pattern to match for requests from the United
       States, Canada, and Mexico: `US|CA|MX`
+
     </Callout>
 
     <a id="ip-address"></a>
@@ -128,7 +144,9 @@ support the following request elements:
     -   Do not specify more than 1,000 IP addresses or IP blocks.
 
     <Callout type="info">
+
       Identifying requests by IP address is only supported when a condition contains a single variable. 
+
     </Callout>
 
     <a id="request-body-parsed"></a>
@@ -144,22 +162,28 @@ support the following request elements:
         pattern within the **Match value** option.
 
         <Callout type="info">
+
           Setting up a request body parsed variable also allows you to
           define whether {{ PRODUCT_SECURITY }} uses a regular expression, a negative match,
           or both when comparing the value assigned to the variable
           against key names. Use a negative match to find requests whose
           payload does not contain the specified key.
+
         </Callout>
 
     <Callout type="tip">
+
       Use the `Request body raw` variable to match against the
       URL-encoded request body for any type of request (e.g., XML).
+
     </Callout>
 
-    <Callout type="note">
+    <Callout type="info">
+
       {{ PRODUCT_SECURITY }} only inspects the first 8 KB of the request body. You may
       [restrict the request body](../../Web-Security/Managed-Rules.htm#FileSizeandQueryStringLimits)
       for valid requests to 8 KB (8,192 bytes) through a managed rule.
+
     </Callout>
 
     **Example:**
@@ -182,9 +206,11 @@ support the following request elements:
     URL-encoded request body for any type of request (e.g., XML).
 
     <Callout type="info">
+
       {{ PRODUCT_SECURITY }} only inspects the first 8 KB of the request body. You may
       [restrict the request body](managed_rules#file-size-and-query-string-limits)
       for valid requests to 8 KB (8,192 bytes) through a managed rule.
+
     </Callout>
 
     <a id="request-cookies"></a>
@@ -199,11 +225,13 @@ support the following request elements:
         pattern within the **Match value** option.
 
         <Callout type="info">
+
           Setting up a cookie variable also allows you to define whether
           {{ PRODUCT_SECURITY }} uses a regular expression, a negative match, or both when
           comparing the value assigned to the variable against cookies.
           Use a negative match to find requests whose payload does not
           contain the specified cookie.
+
         </Callout>
 
     <a id="request-header"></a>
@@ -219,11 +247,13 @@ support the following request elements:
         value** option.
 
         <Callout type="info">
+
           Setting up a request header variable also allows you to define
           whether {{ PRODUCT_SECURITY }} uses a regular expression, a negative match, or both
           when comparing the value assigned to the variable against
           request headers. Use a negative match to find requests whose
           payload does not contain the specified request header.
+
         </Callout>
 
     <a id="request-method"></a>
@@ -244,9 +274,11 @@ support the following request elements:
     after the hostname. Exclude the protocol and hostname when defining
     this property.
 
-    <Callout type="note">
+    <Callout type="info">
+
       {{ PRODUCT_SECURITY }} does not transform edge CNAME URLs to CDN URLs prior to
       performing this comparison.
+
     </Callout>
 
     **Sample values:**
@@ -263,8 +295,10 @@ support the following request elements:
     defining this property.
 
     <Callout type="info">
+
       Our service does not transform edge CNAME URLs to CDN URLs prior to
       performing this comparison.
+
     </Callout>
 
     **Sample values:**
@@ -273,23 +307,27 @@ support the following request elements:
 
     `/resources/images`
 
-<a id="count"></a>
+    <a id="count"></a>
 
 <Callout type="info">
+
   All variables support the ability to match on the number of
   times that a request element is found within the request. Set up a
   variable to match on the number of instances instead of inspecting the
   element for a specific value or regular expression pattern by marking
   the **Count** option.
+
 </Callout>
 
 <Callout type="info">
+
   You may define zero or more keys when setting up variables that match on
   key-value pairs. {{ PRODUCT_SECURITY }} must find at least one of the specified keys in the
   request before that variable will be satisfied. For example, if you set
   up a request header variable to match for `Authorization` and
   `Content-Type`, then requests that contain either or both of
   those headers will satisfy that variable.
+
 </Callout>
 
 ##### Operators {/*operators*/}
@@ -306,18 +344,23 @@ request element identified by a variable.
     an exact match to the specified match value.
 
     <Callout type="info">
+
       Avoid enabling the **Negative match** option with the `Exact
       match` operator. This configuration will not yield the
       expected set of matches.
+
     </Callout>
+
 -   **Regex:** A match is found when the request element satisfies
     the regular expression defined in the match value.
 -   **Value match:** A match is found when the request element
     occurs the exact number of times defined in the match value.
 
     <Callout type="info">
+
       The `Value match` operator should only be used when the
       [Count option](#count) has been enabled.
+
     </Callout>
 
 ##### Match Value {/*match-value*/}
@@ -350,8 +393,10 @@ for this configuration.
     *1*.
 
 <Callout type="info">
+
   The type of comparison that will be performed is determined by the
   **Operator** option.
+
 </Callout>
 
 ##### Match Transformations {/*match-transformations*/}
@@ -413,10 +458,13 @@ You may create, modify, and delete custom rule sets.
         2.  From the **Name** option, type the desired name.
 
             <Callout type="info">
+
               For example, match for requests that contain an
               `Authorization` header by setting this option to
               *Authorization*.
+
             </Callout>
+
         3.  Optional. Mark the **Negative Match** option to match
             for requests that do not contain a matching value for the
             name defined in the previous step.
@@ -435,12 +483,15 @@ You may create, modify, and delete custom rule sets.
         steps 7.1 - 7.3.
 
         <Callout type="info">
+
           If you would like to a use a different match value for this
           variable, then you should create a new rule. Alternatively, if
           you would like to require both variables prior to threat
           identification, then you should add it as a new condition to
           this rule.
+
         </Callout>
+
     5.  From the **Operator** option, select an operator that
         determines how {{ PRODUCT_SECURITY }} will compare the match value to the request
         element identified by the above variable.
@@ -476,9 +527,12 @@ You may create, modify, and delete custom rule sets.
     -   Delete a condition by clicking **Delete Condition**.
 
         <Callout type="info">
+
           A rule must have at least one condition. Therefore, you cannot
           delete the root condition.
+
         </Callout>
+
     -   Delete a rule by clicking **Delete Rule** and then
         clicking **Confirm**.
 4.  Click **Save**.
@@ -486,10 +540,12 @@ You may create, modify, and delete custom rule sets.
 **To delete a custom rule set**
 
 <Callout type="important">
+
   You cannot delete a custom rule that is associated with a Security
   Application configuration. Please either modify the Security
   Application configuration to point to a different custom rule or
   delete that Security Application configuration.
+
 </Callout>
 
 1.  Check your Security Application configurations to verify

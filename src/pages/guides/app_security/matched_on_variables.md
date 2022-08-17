@@ -29,7 +29,7 @@ A short description of the information contained for each variable referenced in
 -   **GEO:** Contains a geographical description of the request. This variable may contain any of the following fields:
     -   **AREA_CODE:** Identifies the area code from which the request originated. This information is only gathered for requests that originate from the United States.
     -   **CITY:** Identifies the name of the city from which the request originated.
-    -   **COUNTRY_CODE:** Identifies the country from which the request originated through its two character [country code](country_codes).
+    -   **COUNTRY_CODE:** Identifies the country from which the request originated through its two character [country code](/reference/country_codes).
     -   **COUNTRY_CODE3:** Identifies the country from which the request originated through its country code. This code may consist of up to three characters.
     -   **COUNTRY_CONTINENT:** Identifies the continent from which the request originated by its two character continent code (e.g., EU).
     -   **COUNTRY_NAME:** Identifies the country from which the request originated by its name.

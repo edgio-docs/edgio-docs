@@ -6,8 +6,10 @@ Use the Browser Challenges dashboard to find out recent trends in
 browser challenges.
 
 <Callout type="info">
+
   Log data is retained for 30 days for most {{ PRODUCT_SECURITY }} solutions. The exception
   is {{ PRODUCT_SECURITY }} Insights which only retains data for 7 days.
+
 </Callout>
 
 This article describes:
@@ -77,7 +79,7 @@ directly below the chart. Statistics are broken down by category.
 [View a brief description for each category.](#fields)
 
 The following information is displayed for each category:
--   **&lt;Value>:** Groups browser challenges by a specific
+-   `<Value>`**:** Groups browser challenges by a specific
     value. For example, the `URL` category groups browser
     challenges by the most popular request URLs (e.g.,
     `https://cdn.example.com/bunny.png`).
@@ -86,12 +88,15 @@ The following information is displayed for each category:
     challenges over a given time period for the current group.
 
     <Callout type="important">
+
       Percentages are calculated from the total browser challenges during
       the given time period. The **Max Top Number** option
       determines the limit of entries per category. If the number of
       entries exceeds this limit, then the sum of the percentages for that
       category will not add up to 100%.
+
     </Callout>
+
 -   **Events:** Indicates the number of browser challenges over a
     given time period for the current group.
 
@@ -103,11 +108,11 @@ Each request is described as follows:
 
 `Enforced Rule: <Rule>  <Elapsed Time>  <Time>`
 
--   **&lt;Rule>:** Identifies the rate rule that was violated by its
+-   `<Rule>`**:** Identifies the rate rule that was violated by its
     name.
--   **&lt;Elapsed Time>:** Indicates the amount of time that has passed since
+-   `<Elapsed Time>`**:** Indicates the amount of time that has passed since
     the request was screened.
--   **&lt;Time>:** Indicates the time (UTC) at which the
+-   `<Time>`**:** Indicates the time (UTC) at which the
     request was screened.
 
 A sample rule violation is provided below.
@@ -131,11 +136,13 @@ Filters are applied to both the Overview and the Event Log views. Most
 fields support filtering.
 
 <Callout type="info">
+
   The Overview and the Event Log views cannot be filtered by the
   **Timestamp** field. Use the **Time Range** option instead.
   This option filters the dashboard for events that occurred during a
   relative time period from the present (e.g., Last 24 hours or Last 7
   days).
+
 </Callout>
 
 **Key information:**
@@ -158,9 +165,11 @@ challenges is provided below.
     - **CHAL_STATUS_TOKEN_CORRUPTED:** Indicates that a browser challenge was served due to an invalid token. This status is typically reported when a user agent submits a request that includes a token that our service cannot decrypt.  
     -   **CHAL_STATUS_TOKEN_EXPIRED:** Indicates that a browser challenge was served due to an expired token. This status is typically reported when a user agent (e.g., web browser) submits a request after the expiration of the previously solved browser challenge. 
 
-    <Callout type="tip">
-      You may configure the duration for which our CDN will serve content to a client that solves a browser challenge without requiring an additional browser challenge through the [Security Application](security_applications#bot-rule-configuration)'s **Valid for (in minutes)** option.  
-    </Callout>
+        <Callout type="tip">
+
+          You may configure the duration for which our CDN will serve content to a client that solves a browser challenge without requiring an additional browser challenge through the [Security Application](security_applications#bot-rule-configuration)'s **Valid for (in minutes)** option.  
+
+        </Callout>
 
     -   **CHAL_STATUS_UA_MISMATCH:** Indicates that a browser challenge was served due to an invalid token. This status is typically reported when a token is shared with another user agent (e.g., web browser) within the same machine.  
     -   **CHAL_STATUS_WRONG_ANSWER:** Indicates that a browser challenge was served because the user was unable to solve the previous browser challenge. This status may also be reported when the user agent (e.g., web browser) submits a tampered token.
@@ -170,8 +179,11 @@ challenges is provided below.
 -   **Matched Value:** Indicates the value of the variable defined by the **Matched On** field.  
 
     <Callout type="info">
+
       Standard security practices dictate that measures should be taken to prevent sensitive data (e.g., credit card information or passwords) from being passed as clear text from the client to your origin server. Another incentive for encrypting sensitive data is that it will be logged by our system when an alert is triggered as a result of this data. If sensitive data cannot be encrypted or obfuscated, then it is strongly recommended to contact our technical customer support to disable logging for the **Matched Value** field.
+
     </Callout>
+
 -   **Referer:** Indicates the request's referrer as defined by the `Referer` request header. A referrer identifies the address of the resource that linked to the requested content.
 -   **Request Method:** Indicates the request's HTTP method.  
 
@@ -189,12 +201,17 @@ challenges is provided below.
 -   **Timestamp:** Indicates the date and time (UTC) at which the browser challenge was issued.
 
     <Callout type="info">
+
       This field is only available from within the Event Log view. Requests may not be filtered by this field. Filter by time through the **Time Range** option that appears on the left-hand side of the dashboard.
+
     </Callout>
 
     <Callout type="info">
+
       Local time is displayed on the right-hand side of the event log entry header that appears directly above this field.
+
     </Callout>
+
 -   **Token Validity Duration:** Indicates the number of minutes for which our CDN will serve content to a client that solves a browser challenge without requiring an additional browser challenge.
 -   **URL:** Indicates the URL for which a browser challenge was issued.
 -   **User Agent:** Indicates the user agent (e.g., web browser) that submitted the request that resulted in a browser challenge. A request's user agent is defined in the `User-Agent` request header.

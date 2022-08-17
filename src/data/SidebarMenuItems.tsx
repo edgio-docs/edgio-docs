@@ -612,21 +612,13 @@ const SidebarMenuItems: ISidebarMenuItems = [
           path: '/guides/app_security/rate_enforcement_dashboard',
         },
         {
-          title: 'Matched On Variables',
-          path: '/guides/app_security/matched_on_variables',
-        },
-        {
           title: 'Response to Client',
           path: '/guides/app_security/response_to_client',
           separator: true,
         },
         {
-          title: 'Security Suite',
-          path: '/guides/security',
-        },
-        {
-          title: 'Managed Rule Groups',
-          path: '/guides/managed_rule_groups',
+          title: 'Matched On Variables',
+          path: '/guides/app_security/matched_on_variables',
         },
       ],
     },
@@ -770,6 +762,10 @@ const SidebarMenuItems: ISidebarMenuItems = [
         {
           title: 'Limits & Caveats',
           path: '/guides/limits',
+        },
+        {
+          title: 'Country Codes',
+          path: '/reference/country_codes',
         },
         {
           title: 'v4 Migration Guide',

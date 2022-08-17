@@ -33,12 +33,14 @@ blacklists for the following categories:
 
     <a id="country"></a>
 
--   **Country:** Identifies requests by the country from which the request originated. Specify each desired country using a [country code]( ../Reference/Country_Codes.htm).  
+-   **Country:** Identifies requests by the country from which the request originated. Specify each desired country using a [country code](/reference/country_codes).  
 
     <Callout type="info">
+
       Country access controls take precedence over [country subdivision](#country-subdivision--ISO3166-2-) access controls.
 
       For example, if you define `US` within a whitelist, then state-specific access controls will be ignored for requests that originate within the United States. 
+
     </Callout>
 
     **Example:**
@@ -49,9 +51,11 @@ blacklists for the following categories:
 -   **Country Subdivision (ISO3166-2):** Identifies requests by a country's subdivision (e.g., state or province). Specify each desired subdivision using an [ISO-3166-2 code](https://www.iso.org/obp/ui/#search/code/).
 
     <Callout type="info">
+
       [Country](#country) access controls take precedence over country subdivision access controls.
 
       For example, if you define `US` within a whitelist, then state-specific access controls will be ignored for requests that originate within the United States. 
+
     </Callout>
  
     **Syntax:** 
@@ -67,7 +71,9 @@ blacklists for the following categories:
 -   **IP Address:** Identifies requests by the requester's IPv4 and/or IPv6 address. Specify each desired IP address using standard IPv4/IPv6 and CIDR notation.  
 
     <Callout type="info">
+
       Specify a subnet by appending a slash (/) and the desired bit-length of the prefix (e.g., 11.22.33.0/22).
+
     </Callout>
 
     **Limit:**
@@ -75,7 +81,9 @@ blacklists for the following categories:
     You may specify up to 1,000 IP addresses or IP blocks per access rule. Whitelist, accesslist, and blacklist entries count towards this limit.
 
     <Callout type="tip">
+
       {{ PRODUCT_SECURITY }} Premier and Standard customers are allowed to create up to 2 access rules that may contain up to 10,000 IP addresses or IP blocks. Once this limit is reached, all other access rules are limited to a maximum of 1,000 IP addresses or IP blocks. If you would like to create another access rule with more than 1,000 IP addresses or IP blocks, then you will first need to either delete a high-capacity access rule or reduce the number of IP addresses or IP blocks defined within it to less than 1,000.
+
     </Callout>  
 
     <a id="referrer"></a>
@@ -83,7 +91,9 @@ blacklists for the following categories:
 -   **Referrer:** Identifies requests by referrer. A successful match is found when the specified regular expression matches any portion of the `Referer` request header value.  
 
     <Callout type="info">
+
       The `Referer` request header identifies the URL of the resource (e.g., web page) from which the request was initiated. The specified regular expression may match any portion of the entire URL including the protocol and hostname.
+
     </Callout>
 
     <a id="url"></a>
@@ -91,11 +101,15 @@ blacklists for the following categories:
 -   **URL:** Identifies requests by searching for a value that matches the specified regular expression within the request URI.
 
     <Callout type="important">
-      Do not include a protocol or a hostname (e.g., http://cdn.mydomain.com) when defining a regular expression for this access control.  
+
+      Do not include a protocol or a hostname (e.g., `http://cdn.mydomain.com`) when defining a regular expression for this access control.  
+
     </Callout>
 
-    <Callout type="reminder">
+    <Callout type="info">
+
       Certain common characters (e.g., ?.+) have special meaning in a regular expression. Use a backslash to escape a special character (e.g., main\\.html\\?user=Joe).
+
     </Callout>
 
     **Example:**
@@ -158,9 +172,12 @@ The purpose of a blacklist is to describe unwanted traffic.
     accesslist, and blacklist are regular expressions.
 
     <Callout type="info">
+
       By default, a regular expression defines a case-sensitive match. Use
-      syntax (e.g., \[a-zA-Z\]) to make it case-insensitive.
+      syntax (e.g., `[a-zA-Z]`) to make it case-insensitive.
+
     </Callout>
+
 -   Unlike whitelists and blacklists, a request must satisfy at least
     one criterion in each defined [accesslist](#Accesslists).
 
@@ -179,16 +196,21 @@ The purpose of a blacklist is to describe unwanted traffic.
     | User Agent | 200                                                   |
 
     <Callout type="info">
+
       {{ PRODUCT_SECURITY }} Insights supports up to 25 entries for each of the above
       categories. If you currently have {{ PRODUCT_SECURITY }} Insights and would like to add
       additional entries, please contact your CDN account manager to
       upgrade to the full version.
+
     </Callout>
 
     <Callout type="info">
+
       Whitelist, accesslist, and blacklist entries count towards this
       limit.
+
     </Callout>
+
 -   Unlike {{ PRODUCT_SECURITY }} rule sets, access controls are enforced regardless of
     whether the requested content will be served from cache or your web
     server.
@@ -230,10 +252,13 @@ via the **Allowed Request Content Types** option.
     this requirement by setting this option to a blank value.
 
     <Callout type="info">
+
       If you would like to skip this check, make sure to remove all
       characters, including whitespace (e.g., a space character), from
       this option.
+
     </Callout>
+
 -   If the **Allowed Request Content Types** option contains one
     or more value(s), then {{ PRODUCT_SECURITY }} will check whether the request contains a
     `Content-Type` header.
@@ -243,11 +268,14 @@ via the **Allowed Request Content Types** option.
         next security check within this threat assessment.
 
         <Callout type="info">
+
           A client should only include a `Content-Type` header
           when the request includes a payload (e.g., HTTP
           `PUT` and `POST` requests). HTTP
           `GET` requests should not include this header.
+
         </Callout>
+
     -   **Present:** If a request includes the
         `Content-Type` header, then {{ PRODUCT_SECURITY }} will compare its value
         against the list of allowed values.
@@ -308,14 +336,18 @@ Define the maximum file size, in bytes, for a `POST`
 request via the **Single File Upload Limit** option
 
 <Callout type="tip">
+
 The recommended maximum value is 6,291,456 bytes.
+
 </Callout>
 
 <Callout type="info">
+
 Define the maximum file size for a request that is part of a multipart
 message through a managed rule.
 
 [Learn more](managed_rules#file-size-and-query=string=limits).
+
 </Callout>
 
 
@@ -348,7 +380,7 @@ You may create, modify, and delete access rules.
 -   It may take up to 2 minutes for an updated access rule to be applied
     across our entire network.
 
-To create an access rule
+**To create an access rule**
 
 1.  Navigate to the **Access Rules** page.
     1.  From the {{ PORTAL }}, click on the **Security** tab.
@@ -368,9 +400,12 @@ To create an access rule
     3.  Specify each unique value on a separate line.
 
         <Callout type="info">
+
            All entries within a URL, referrer, cookie, or user agent
            whitelist, accesslist, and blacklist are regular expressions.
+
         </Callout>
+
     4.  Repeat steps 4.2 and 4.3 if you need to add another type of
         access control for this category.
     5.  Repeat steps 4.1 - 4.4 to add whitelists, accesslists, and
@@ -386,41 +421,53 @@ To create an access rule
         Methods** option.
 
         <Callout type="info">
+
           Requests that use a disallowed HTTP method are deemed a
           threat.
+
         </Callout>
+
     3.  From the **Allowed Request Content Types** option,
          verify that the list only contains the [media
          types](#media-types--aka-content-types-) that should be allowed. If the desired
          media type is not listed, then type it on a separate line.
 
         <Callout type="info">
+
           Requests that use a disallowed media type are deemed a
           threat.
+
         </Callout>
+
     4.  From the **Extension Blacklist** option, verify that all
         of the listed [file extensions](#FileExtensions) should be
         blocked. If the desired file extension is
         not listed, then type it on a separate line.
 
         <Callout type="info">
+
           A request is blocked when its file extension matches a
           value defined in this option.
+
         </Callout>
+
     5.  From the **Header Blacklist** option, verify that all of
         the listed [request headers](#RequestHeaders) should be blocked. If the desired request header
         is not listed, then type it on a separate line.
 
         <Callout type="info">
+
           A request is blocked when it contains a header whose name matches
           a value defined in this option.
+
         </Callout>
+
     6.  In the **Response Header Name** option, set the name of
         the response header that will be included with blocked requests.
         This name may only consist of alphanumeric characters and dashes.
 6.  Click **Save**.
 
-To modify an access rule
+**To modify an access rule**
 
 1.  Navigate to the **Access Rules** page.
     1.  From the {{ PORTAL }}, click on the **Security** tab.
@@ -429,13 +476,15 @@ To modify an access rule
 3.  Make the desired changes.
 4.  Click **Save**.
 
-To delete an access rule
+**To delete an access rule**
 
 <Callout type="important">
+
   You cannot delete an access rule that is associated with a Security
   Application configuration. Please either modify the Security
   Application configuration to point to a different access rule or
   delete that Security Application configuration.
+
 </Callout>
 
 1.  Check your Security Application configurations to verify

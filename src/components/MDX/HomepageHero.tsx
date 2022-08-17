@@ -1,10 +1,9 @@
-import Image from 'next/image';
+// import Image from 'next/image';
 import styled from 'styled-components';
 
-import LayerEdgioDark from '../../../public/images/home/l0-to-edgio-dark.png';
-import LayerEdgioLight from '../../../public/images/home/l0-to-edgio-light.png';
 import Container, {StyledContainer} from '../Layout/Container';
 
+import Image from './Image';
 import Link from './Link';
 
 const StyledHomepageHero = styled.div`
@@ -67,26 +66,17 @@ function HomepageHero() {
         <div className="copy">
           <div id="dark-theme">
             <Image
-              src={LayerEdgioLight}
-              width="286"
-              height="230"
-              alt="Edgio"
-              unoptimized
-              priority
+              src="/images/home/l0-to-edgio-light.png?width=286&height=230"
+              alt="Layer0 is now Edgio AppOps"
             />
           </div>
           <div id="light-theme">
             <Image
-              src={LayerEdgioDark}
-              width="286"
-              height="230"
-              alt="Edgio"
-              unoptimized
-              priority
+              src="/images/home/l0-to-edgio-dark.png?width=286&height=230"
+              alt="Layer0 is now Edgio AppOps"
             />
           </div>
           <p>
-            {' '}
             <Link href="https://investors.edg.io/news/press-releases/news-details/2022/Limelight-Completes-Acquisition-of-Yahoos-Edgecast-Combined-Company-Rebrands-as-Edgio-Creating-a-Global-Leader-in-Edge-Enabled-Solutions/default.aspx">
               Learn more.
             </Link>

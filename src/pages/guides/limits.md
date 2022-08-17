@@ -62,7 +62,7 @@ Move all build-time dependencies such as webpack, babel, etc... to devDependenci
 
 Following are the possible fixes that would help you reduce serverless bundle size by better engineering. If none of these does it, feel free to raise an issue on [Edgio Forums](https://forum.layer0.co).
 
-##### Possible Fix [1]: Segregating devDependencies from dependencies {/*segregate-devdependencies-from-dependencies*/}
+#### Possible Fix [1]: Segregating devDependencies from dependencies {/*segregate-devdependencies-from-dependencies*/}
 
 Typically, this is due to node_modules marked as `dependencies` when they are more appropriate in `devDependencies` within the `package.json` file. Modules marked as dependencies will be included in the serverless bundle. Dev-only modules such as `babel`, `jest`, `webpack`, etc. should be moved to `devDependencies` as shown:
 
@@ -79,7 +79,7 @@ Typically, this is due to node_modules marked as `dependencies` when they are mo
 }
 ```
 
-##### Possible Fix [2]: Segregating assets from serverless bundle {/*segregate-assets-from-serverless*/}
+#### Possible Fix [2]: Segregating assets from serverless bundle {/*segregate-assets-from-serverless*/}
 
 Additionally, this can be related to assets (such as fonts or images) that are imported into your project code. These resources are typically better referenced as static assets which are stored outside of the serverless bundle.
 
@@ -100,7 +100,7 @@ Now, you can update your code references from importing the assets to referencin
 + <div><img src="/assets/images/Image1.png"/></div>
 ```
 
-##### Possible Fix [3]: Computing which node_modules be included in the serverless bundle {/*compute-which-node-modules-to-be-included-in-serverless-bundle*/}
+#### Possible Fix [3]: Computing which node_modules be included in the serverless bundle {/*compute-which-node-modules-to-be-included-in-serverless-bundle*/}
 
 It might be possible, that [Possible Fix [1]](#segregate-devdependencies-from-dependencies) reduces your serverless bundle size, but not reduce it to less than 50 MB (250 MB Uncompresssed). Another way to identify which dependencies would be required in the runtime is to use `@vercel/nft` package (a "Node.js dependency tracing utility").
 
@@ -161,10 +161,10 @@ Step 3. Change your existing `package.json` to have `node setNodeModules.js` bef
 + "layer0:deploy": "node setNodeModules.js && layer0 deploy"
 ```
 
-Step 4. Change your layer0.config.js to have:
+Step 4. Change your `layer0.config.js` to have:
 
 ```js
-https://docs.layer0.co/guides/layer0_config
+// https://docs.layer0.co/guides/layer0_config
 module.exports = {
   includeFiles: require('./getNodeModules'),
 }

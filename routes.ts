@@ -56,6 +56,7 @@ const scriptSrcDomains = [
   '*.google-analytics.com',
   '*.googletagmanager.com',
   'googletagmanager.com',
+  '*.clarity.ms',
 ].sort();
 
 const connectSrcDomains = [

@@ -70,6 +70,7 @@ function HomepageHero() {
               width={286}
               height={230}
               priority={true}
+              unoptimized
             />
           </div>
           <div id="light-theme">
@@ -79,6 +80,7 @@ function HomepageHero() {
               width={286}
               height={230}
               priority={true}
+              unoptimized
             />
           </div>
           <p>

@@ -128,7 +128,9 @@ All data transmitted to and from your {{ PRODUCT_NAME }} site must be secured wi
 {{ PRODUCT_NAME }} provides a wildcard TLS certificate that covers the auto-generated domains that it assigns to your site (e.g {team}-{site}-{branch}-{version}.layer0-limelight.link). You need to provide your own certificate for your site's custom domains.
 
 <Callout type="info">
+
    If you already have an existing certificate, you can use it by skipping ahead to <a href="#section_uploading_your_certificate">Uploading your Certificate</a>. Many customers who have existing certificates still choose to obtain a new one when adopting {{ PRODUCT_NAME }} so as not to reuse the same private key with more than one vendor/system.
+
 </Callout>
 
 ### Obtaining a Certificate Automatically {/*obtaining-a-certificate-automatically*/}
@@ -219,18 +221,27 @@ All data transmitted to and from your {{ PRODUCT_NAME }} site must be secured wi
    <p></p>
 
    <Callout type="info">
+
       Many DNS providers have already added this `CAA` DNS record by default
+
    </Callout>
+
    <p></p>
    <p></p>
+
    <Callout type="info">
+
       Some DNS providers does not allow the creation of `CAA` DNS records and therefore allow any Certificate Authority to generate certificates
+
    </Callout>
+
    <p></p>
    <p></p>
+
    <Callout type="info">
-      You can learn more about CAA DNS records on <a href="https://letsencrypt.org/docs/caa">Let's Encrypt website</a>, on <a href="https://en.wikipedia.org/wiki/DNS_Certification_Authority_Authorization">Wikipedia</a>
-      , on <a href="https://docs.gandi.net/en/domain_names/faq/record_types/caa_record.html">Gandi</a> and on <a href="https://www.eff.org/deeplinks/2018/02/technical-deep-dive-securing-automation-acme-dns-challenge-validation">eff.org</a>
+
+      You can learn more about CAA DNS records on <a href="https://letsencrypt.org/docs/caa">Let's Encrypt website</a>, on <a href="https://en.wikipedia.org/wiki/DNS_Certification_Authority_Authorization">Wikipedia</a>, on <a href="https://docs.gandi.net/en/domain_names/faq/record_types/caa_record.html">Gandi</a> and on <a href="https://www.eff.org/deeplinks/2018/02/technical-deep-dive-securing-automation-acme-dns-challenge-validation">eff.org</a>
+
    </Callout>
 
 3. Add an `_acme-challenge.` CNAME DNS entry to allow {{ PRODUCT_NAME }} to issue a certificate request on your behalf.
@@ -288,7 +299,9 @@ All data transmitted to and from your {{ PRODUCT_NAME }} site must be secured wi
    <p></p>
 
    <Callout type="info">
-   You can read more about the `acme-challenge.` process by visiting <a href="https://letsencrypt.org/docs/challenge-types/#dns-01-challenge">Let's Encrypt Website</a>
+
+     You can read more about the `acme-challenge.` process by visiting <a href="https://letsencrypt.org/docs/challenge-types/#dns-01-challenge">Let's Encrypt Website</a>
+
    </Callout>
 
 4. Once the requirements above are met, you can generate the certificate using the [{{ PRODUCT_NAME }} Developer Console]({{ APP_URL }}):
@@ -391,7 +404,9 @@ To upload your SSL certificate, do the following:
 4. Copy the certificate, intermediate certificates, and the private key into the corresponding edit boxes.
 
    <Callout type="info">
+
       The private key is non-public data and must not be shared with parties other than {{ PRODUCT_NAME }}. {{ PRODUCT_NAME }} stores your private key securely at rest. It is never shown in the developer console and only used to provision parts of the infrastructure that are used to terminate TLS connections.
+
    </Callout>
 
 5. Click *CHANGES SAVED*.

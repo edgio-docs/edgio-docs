@@ -78,6 +78,7 @@ const connectSrcDomains = [
   '*.algolia.net',
   '*.vimeo.com',
   'vimeo.com',
+  '*.clarity.ms',
 ].sort();
 
 const router = new Router()

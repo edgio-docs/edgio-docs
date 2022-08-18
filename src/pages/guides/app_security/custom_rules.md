@@ -181,7 +181,7 @@ support the following request elements:
     <Callout type="info">
 
       {{ PRODUCT_SECURITY }} only inspects the first 8 KB of the request body. You may
-      [restrict the request body](../../Web-Security/Managed-Rules.htm#FileSizeandQueryStringLimits)
+      [restrict the request body](managed_rules#file-size-and-query-string-limits-advanced)
       for valid requests to 8 KB (8,192 bytes) through a managed rule.
 
     </Callout>
@@ -450,7 +450,7 @@ You may create, modify, and delete custom rule sets.
     1.  From the condition's **Variable** option, select the
         request element through which {{ PRODUCT_SECURITY }} will identify threats.
 
-        [Learn more about variables.](#Variables)
+        [Learn more about variables.](#variables)
     2.  Certain variables (e.g., request cookies and request header)
         match on name and value. If you have selected this type of
         variable, then perform the following steps:
@@ -496,14 +496,14 @@ You may create, modify, and delete custom rule sets.
         determines how {{ PRODUCT_SECURITY }} will compare the match value to the request
         element identified by the above variable.
 
-        [Learn more.](#Operators)
+        [Learn more.](#operators)
     6.  In the **Match value** option, type the value that will
         be compared against the request element identified by the above
         variable.
     7.  From the **Match transformations** option, select each
         transformation that will be applied to the source value.
 
-        [Learn more.](#MatchTransformations)
+        [Learn more.](#match-transformations)
     8.  Optional. Mark the **Negative Match** option to match
         for requests that do not contain a matching value for the
         value defined in step 7.6.

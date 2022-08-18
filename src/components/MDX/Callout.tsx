@@ -11,11 +11,11 @@ const StyledCallout = styled.div.attrs<IStyledCallout>((props) => ({
   border: 1px solid #dedede;
   border-radius: 3px;
   margin: 0 0 7px 0;
-  background-color: #fafafa;
+  background-color: var(--callout-bg);
   background-repeat: no-repeat;
   background-position: 15px 15px;
   min-height: 30px;
-  color: #4b4b4b;
+  color: var(--text-primary);
   border-left-width: 5px;
   display: grid;
   grid-template-columns: auto 1fr;

@@ -8,7 +8,7 @@ Use managed rules to:
 -   Prevent false positives by:
     -   Defining cookies, request headers, and query string arguments
         that should be ignored when performing a threat assessment. This
-        type of configuration is known as an [ignore list](#ignore-list).
+        type of configuration is known as an [ignore list](#preventing-false-positives-ignore-list).
     -   Identifying requests for which specific predefined rules will
         not be applied. This type of configuration is known as a [rule
         exception](#rule-exceptions).
@@ -67,7 +67,7 @@ cannot be exceeded by valid requests.
 
       Define the maximum file size for all other requests through an access rule. 
 
-      [Learn more](Access-Rules.htm#FileSize).
+      [Learn more](access_rules#file-size).
 
     </Callout>
 
@@ -86,8 +86,8 @@ variety of unknown vulnerabilities. This rule set does not solely rely
 on signatures to check for known vulnerabilities. Rather, it analyzes
 all HTTP data for malicious payloads.
 
-In addition to defining a [threshold](basic_setup#threshold), this
-rule set allows you to balance protection against false positives via
+In addition to defining a [threshold](basic_setup#managed-rule-violations), this
+rule set allows you to balance protection against false positives through
 the **Paranoia Level** option. Paranoia levels are explained
 below.
 -   **1:** Recommended. Choose this level to keep the number of
@@ -106,7 +106,7 @@ below.
   strongly recommended to fine-tune its configuration to account for your
   traffic profile.
 
-  [Learn more.](#rsupdates)
+  [Learn more.](#rule-set-updates)
 
 </Callout>
 
@@ -317,7 +317,7 @@ You may create, modify, and delete managed rules.
     the response header that will be included with blocked requests.
     This name may only consist of alphanumeric characters and dashes.
 5.  Determine whether {{ PRODUCT_SECURITY }} will [ignore specific cookies, request
-    headers, or query string arguments](#IgnoreList) when assessing
+    headers, or query string arguments](#preventing-false-positives-ignore-list) when assessing
     whether a request is a threat.
     1.  From the **Ignore List** option, choose to ignore
         specific cookies, request headers, or query string arguments.
@@ -357,7 +357,7 @@ You may create, modify, and delete managed rules.
         at or higher than the specified value will be identified as
         malicious traffic.
 
-        [Learn more.](basic_setup#threshold)
+        [Learn more.](basic_setup#managed-rule-violations)
 
         <Callout type="info">
 
@@ -377,7 +377,7 @@ You may create, modify, and delete managed rules.
 
         </Callout>
 
-         [Learn more.](basic_setup#threshold)
+         [Learn more.](basic_setup#managed-rule-violations)
     4.  Review all enabled policies and rules to ensure that the
         legitimate traffic is not targeted by mistake.
 

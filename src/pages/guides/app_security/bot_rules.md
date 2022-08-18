@@ -426,7 +426,7 @@ You may create, modify, and delete bot rule sets.
         3.  In the **Rule message** option, type a brief description for this rule.
         4.  A custom matches rule automatically includes a default condition. Modify this condition to determine how {{ PRODUCT_SECURITY }} will identify requests. From the condition's **Variable** option, select the request element through which {{ PRODUCT_SECURITY }} will identify requests.
 
-            [Learn more about variables.](#Variables)
+            [Learn more about variables.](#variables)
 
         5.  Certain variables (e.g., request cookies and request header) match on name and value. If you have selected this type of variable, then perform the following steps:
             1.  Click **+ Add Match**.
@@ -443,7 +443,7 @@ You may create, modify, and delete bot rule sets.
 
         7.  From the **Operator** option, select an operator that determines how {{ PRODUCT_SECURITY }} will compare the match value to the request element identified by the above variable.
 
-            [Learn more.](#Operators)
+            [Learn more.](#operators)
 
         8.  In the **Match value** option, type the value that will be compared against the request element identified by the above variable.
         9.  Optional. Mark the **Negative Match** option to match for requests that do not contain a matching value for the value defined in step 4.6.
@@ -463,7 +463,7 @@ You may create, modify, and delete bot rule sets.
 3.  Make the desired changes.
 
     **Key tasks:**
-    -   Change the [type of rule](#RequestIdentification) from the **Rule
+    -   Change the [type of rule](#request-identification) from the **Rule
         type** option.
     -   **Custom matches only:**
 

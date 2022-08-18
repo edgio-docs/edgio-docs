@@ -118,7 +118,7 @@ against the specified value.
 -   {{ PRODUCT_SECURITY }} supports various comparison modes (i.e., exact match, wildcard,
     and regular expression).
 
-    [Learn more.](#matchcomparisonmodes)
+    [Learn more.](#match-comparison-modes)
 
 ### Match Comparison Modes {/*match-comparison-modes*/}
 
@@ -287,7 +287,7 @@ Application configuration:
 -   **Managed Rules:** A [managed rule](managed_rules)
     identifies threats through threat detection policies.
 
-<a id="enforcementmode"></a>
+<a id="enforcement-mode"></a>
 
 You may apply an access, custom, or managed rule in
 one of the following modes:
@@ -318,7 +318,7 @@ one of the following modes:
 ## Enforcement {/*enforcement*/}
 
 You may customize how rules that run in [production
-mode](#enforcementmode) will be enforced. Enforcement is triggered when:
+mode](#enforcement-mode) will be enforced. Enforcement is triggered when:
 -   A threat is detected when the security policy defined within an
     access rule, custom rule, or managed rule is violated.
 -   A rate limit defined within a rate rule is exceeded.
@@ -348,16 +348,16 @@ The available enforcement actions are described below.
 
     <Callout type="info">
 
-      {{ PRODUCT_SECURITY }} applies a single enforcement action per mode (i.e., [production or audit](#enforcement-mode)). Once enforcement is triggered for that mode, {{ PRODUCT_SECURITY }} does not perform further [evaluation of that request](basic_setup#threat). If you are setting up a rule in production mode, we recommend that you limit your use of the `Alert Only` enforcement to the shortest amount of time necessary to validate changes to your configuration.  
+      {{ PRODUCT_SECURITY }} applies a single enforcement action per mode (i.e., [production or audit](#enforcement-mode)). Once enforcement is triggered for that mode, {{ PRODUCT_SECURITY }} does not perform further [evaluation of that request](basic_setup#threat-detection). If you are setting up a rule in production mode, we recommend that you limit your use of the `Alert Only` enforcement to the shortest amount of time necessary to validate changes to your configuration.  
 
     </Callout>
--   **Block Request:** Detected threats will be dropped and the client will receive a `403 Forbidden` response.             |
+-   **Block Request:** Detected threats will be dropped and the client will receive a `403 Forbidden` response.
 -   **Custom Response:** Rate limited requests or detected threats will receive a custom response.  
     -   **Response Body:** Define the payload that will be delivered to the client in response to a detected threat.
 
     <Callout type="info">
 
-      This option supports the use of [event variables](#event) to customize the response according to the detected threat.
+      This option supports the use of [event variables](#event-variables) to customize the response according to the detected threat.
 
     </Callout>
 
@@ -401,7 +401,7 @@ The available enforcement actions are described below.
     -   The HTTP status code for this response will be a `302 Found`.
     -   Set the **URL** option to the full URL to which rate limited requests or detected threats will be redirected.
 
-        **Example:** `http://cdn.mydomain.com/marketing/busy.html`                                       |
+        **Example:** `http://cdn.mydomain.com/marketing/busy.html`
 
 ### Event Variables {/*event-variables*/}
 
@@ -529,7 +529,7 @@ configurations.
 
       If you have not already created the desired access rule, you can
       save your Security Application configuration, [create an
-      access rule](access_rules#accessruleadministration), edit your
+      access rule](access_rules#access-rule-administration), edit your
       Security Application configuration, and then resume this
       procedure.
 
@@ -605,7 +605,7 @@ configurations.
         <Callout type="important">
 
           {{ PRODUCT_SECURITY }} does not perform further [evaluation of a
-          request](basic_setup#threat) once enforcement is
+          request](basic_setup#threat-detection) once enforcement is
           triggered. For this reason, we recommend that you limit your use
           of the `Alert Only` enforcement to the shortest amount
           of time necessary to validate changes to your configuration.
@@ -641,7 +641,7 @@ configurations.
           configurations. If you assign multiple rate rules to a single
           Security Application configuration, then each rate rule
           should contain one or more [condition
-          group(s)](rate_rules#conditiongroup).
+          group(s)](rate_rules#condition-group).
 
         </Callout>
 
@@ -681,7 +681,7 @@ configurations.
 
       If you have not already created the desired custom rule, you can
       save your Security Application configuration, [create a
-      custom rule](custom_rules#customruleadministration), edit your
+      custom rule](custom_rules#custom-rule-administration), edit your
       Security Application configuration, and then resume this
       procedure.
 
@@ -699,7 +699,7 @@ configurations.
 
         [Learn more.](#enforcement)
 
-10. Optional. [Audit production traffic](#threatdetection) using a new
+10. Optional. [Audit production traffic](#threat-detection) using a new
     custom rule.
     i.  From the **Rules** section, click **Custom Rule**.
     ii. From the **Audit Custom Rule** option, select the desired

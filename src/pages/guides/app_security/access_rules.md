@@ -37,7 +37,7 @@ blacklists for the following categories:
 
     <Callout type="info">
 
-      Country access controls take precedence over [country subdivision](#country-subdivision--ISO3166-2-) access controls.
+      Country access controls take precedence over [country subdivision](#country-subdivision--iso3166-2-) access controls.
 
       For example, if you define `US` within a whitelist, then state-specific access controls will be ignored for requests that originate within the United States. 
 
@@ -116,11 +116,11 @@ blacklists for the following categories:
 
     All of the entries in the following sample access control list will match a request for `http://www.mydomain.com/marketing/images/ad001.png`:  
 
-    `/marketing/.\*`
+    `/marketing/.*`
 
-    `.\*images.\*`
+    `.*images.*`
 
-    `.\*/ad\[0-9\]\*\\.png`
+    `.*/ad[0-9]*\.png`
 
     <a id="user-agent"></a>
 
@@ -346,7 +346,7 @@ The recommended maximum value is 6,291,456 bytes.
 Define the maximum file size for a request that is part of a multipart
 message through a managed rule.
 
-[Learn more](managed_rules#file-size-and-query=string=limits).
+[Learn more](managed_rules#file-size-and-query-string-limits-advanced).
 
 </Callout>
 
@@ -415,7 +415,7 @@ You may create, modify, and delete access rules.
 
     1.  Click **Advanced Settings** to expand that section.
     2.  From the **Allowed HTTP Methods** section, verify that
-        only the [HTTP methods](#HTTPMethod) that should be
+        only the [HTTP methods](#http-methods) that should be
         allowed are marked. If the desired HTTP method is not listed,
         then you may manually define it in the **Other HTTP
         Methods** option.
@@ -440,7 +440,7 @@ You may create, modify, and delete access rules.
         </Callout>
 
     4.  From the **Extension Blacklist** option, verify that all
-        of the listed [file extensions](#FileExtensions) should be
+        of the listed [file extensions](#file-extensions) should be
         blocked. If the desired file extension is
         not listed, then type it on a separate line.
 
@@ -452,7 +452,7 @@ You may create, modify, and delete access rules.
         </Callout>
 
     5.  From the **Header Blacklist** option, verify that all of
-        the listed [request headers](#RequestHeaders) should be blocked. If the desired request header
+        the listed [request headers](#request-headers) should be blocked. If the desired request header
         is not listed, then type it on a separate line.
 
         <Callout type="info">

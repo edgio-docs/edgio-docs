@@ -43,7 +43,7 @@ honored.
     requested from an origin server or if a cached version may be served
     directly from our network.
 -   A rate rule always runs in [production
-    mode](security_applications#enforcementmode).
+    mode](security_applications#enforcement-mode).
 -   A rate rule is enforced by each edge server according to the
     approximate number of requests that it receives over the specified
     time interval (e.g., 1 second, 10 seconds, or 1 minute).
@@ -56,7 +56,7 @@ honored.
     </Callout>
 
 -   {{ PRODUCT_SECURITY }} does not perform further [evaluation of a
-    request](basic_setup#threat) once enforcement is triggered.
+    request](basic_setup#threat-detection) once enforcement is triggered.
 
     <Callout type="tip">
 
@@ -66,7 +66,7 @@ honored.
 
     </Callout>
 
-[View sample scenarios.](#scenario-1-rate-limiting-all-requests*/)
+[View sample scenarios.](#scenario-1-rate-limiting-all-requests)
 
 ## Configuration {/*configuration*/}
 
@@ -85,11 +85,11 @@ set of requests to which this rate rule will be applied.
         </Callout>
 -   **[Rate Limit:](#rate-limit)** Define a maximum request rate before a predefined action is triggered.
 -   **[Condition Group:](#condition-group)** A request counts towards a rate limit when it satisfies all of the following criteria:
-    -   A [Security Application configuration's](security_applications) hostname and URL path match conditions. 
+    -   A [Security Application configuration's](security_applications#traffic-identification) hostname and URL path match conditions. 
     -   If one or more condition group(s) have been defined, then the request must also satisfy all of the conditions defined within at least one condition group.  
 
     Each condition identifies the type of requests that are eligible for rate limiting by URL path, request headers, IP address, file extension, and/or request method.
--   **Action:** A [Security Application configuration](security_applications) determines the type of action that will be applied to requests that exceed the above rate limit.
+-   **Action:** A [Security Application configuration](security_applications#enforcement) determines the type of action that will be applied to requests that exceed the above rate limit.
 
 ### Source {/*source*/}
 
@@ -294,7 +294,7 @@ The types of prerequisites that may be defined are described below.
 
     <Callout type="important">
 
-      This type of match condition requires a [Host condition](#Host) within the same condition group.
+      This type of match condition requires a [Host condition](#host) within the same condition group.
 
     </Callout>
 

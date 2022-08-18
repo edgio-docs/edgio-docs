@@ -1,9 +1,8 @@
-// import Image from 'next/image';
+import Image from 'next/image';
 import styled from 'styled-components';
 
 import Container, {StyledContainer} from '../Layout/Container';
 
-import Image from './Image';
 import Link from './Link';
 
 const StyledHomepageHero = styled.div`
@@ -68,12 +67,18 @@ function HomepageHero() {
             <Image
               src="/images/home/l0-to-edgio-light.png?width=286&height=230"
               alt="Layer0 is now Edgio AppOps"
+              width={286}
+              height={230}
+              priority={true}
             />
           </div>
           <div id="light-theme">
             <Image
               src="/images/home/l0-to-edgio-dark.png?width=286&height=230"
               alt="Layer0 is now Edgio AppOps"
+              width={286}
+              height={230}
+              priority={true}
             />
           </div>
           <p>

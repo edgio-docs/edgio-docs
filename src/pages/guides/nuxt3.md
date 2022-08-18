@@ -10,7 +10,7 @@ Note: Nuxt3 is still in beta and is not recommended for production.
 
 <ExampleButtons
   title="Nuxt3"
-  siteUrl="https://layer0-docs-layer0-nuxt3-example-2-default.layer0-limelight.link"
+  siteUrl="https://layer0-docs-layer0-nuxt3-example-default.layer0-limelight.link"
   repoUrl="https://github.com/layer0-docs/layer0-nuxt3-example" 
   deployFromRepo />
 

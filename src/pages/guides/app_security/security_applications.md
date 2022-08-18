@@ -355,20 +355,21 @@ The available enforcement actions are described below.
 -   **Custom Response:** Rate limited requests or detected threats will receive a custom response.  
     -   **Response Body:** Define the payload that will be delivered to the client in response to a detected threat.
 
-    <Callout type="info">
+        <Callout type="info">
 
-      This option supports the use of [event variables](#event-variables) to customize the response according to the detected threat.
+          This option supports the use of [event variables](#event-variables) to customize the response according to the detected threat.
 
-    </Callout>
+        </Callout>
 
-    **Sample payload for a CSS file:**
+        **Sample payload for a CSS file:**
 
-    ```
-    body {
+        ```
+        body {
 
-        background-color: #ffffff;
-    }
-    ```
+            background-color: #ffffff;
+        }
+        ```
+
     -   **HTTP Status Code:** Defines the HTTP status code that will be sent to the client.  
     -   **Custom Response Headers:** Defines one or more response headers that will be sent to the client. Define each custom response header on a separate line.
 
@@ -381,7 +382,7 @@ The available enforcement actions are described below.
     `MyCustomHeader: True`
 
     <Callback type="tip">
-      This option supports the use of [event variables](#event) to customize the response according to the detected threat. 
+      This option supports the use of [event variables](#event-variables) to customize the response according to the detected threat. 
     </Callback>
 
     <Callback type="tip">
@@ -645,7 +646,7 @@ configurations.
 
         </Callout>
 
-    <a id="botruleconfiguration"></a>
+    <a id="bot-rule-configuration"></a>
 
 8.  Optional. Select a bot rule that identifies
     the set of production traffic to which a browser challenge will be

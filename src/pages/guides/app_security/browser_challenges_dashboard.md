@@ -12,18 +12,12 @@ browser challenges.
 
 </Callout>
 
-This article describes:
--   [Overview](#overview)
--   [Event log view](#event)
--   [Filters](#filters)
--   [Fields](#fields)
-
 ## Usage {/*usage*/}
 
 The Browser Challenges dashboard contains two different views through
 which analysis may be performed, which are:
 -   [Overview](#overview)
--   [Event log](#event)
+-   [Event log](#event-log-view)
 
 **To view the Browser Challenges dashboard**
 1.  Navigate to the **Browser Challenges** dashboard (**Browser Challenges** tab of the **Overview**
@@ -37,6 +31,12 @@ which analysis may be performed, which are:
 2.  Optional. View event log data by clicking **Event Logs** from
     the navigation pane. Verify that the **Browser
     Challenges** tab is active.
+
+<Callout type="tip">
+
+  Focus on relevant or critical data by applying a [filter](#filters) to the dashboard. 
+
+</Callout>
 
 ### Overview {/*overview*/}
 

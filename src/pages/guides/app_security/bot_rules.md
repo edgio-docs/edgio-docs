@@ -194,7 +194,7 @@ support the following request elements:
 
     </Callout>
 
-    <a id="ipaddress"></a>
+    <a id="ip-address"></a>
 
 -   **IP address:** Identify requests by the
     requester's IPv4 and/or IPv6 address. 

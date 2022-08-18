@@ -15,20 +15,19 @@ of an analysis provides the means through which you may:
 -   Learn detailed information on the types of attack being mounted
     against your site.
 
-Log data is retained for 30 days for most {{ PRODUCT_SECURITY }} solutions. The exception
-is {{ PRODUCT_SECURITY }} Insights which only retains data for 7 days.
+<Callout type="info">
 
-This article describes how to use:
--   [Overview.](#Overview)
--   [Event log view.](#Event)
--   [Filters.](#Filters)
+  Log data is retained for 30 days for most {{ PRODUCT_SECURITY }} solutions. The exception
+  is {{ PRODUCT_SECURITY }} Insights which only retains data for 7 days.
+
+</Callout>
 
 ## Usage {/*usage*/}
 
 The dashboard contains two different views through which threat analysis
 may be performed, which are:
--   [Overview](#Overview)
--   [Event Log](#Event)
+-   [Overview](#overview)
+-   [Event Log](#event-log-view)
 
 **To view the Threats dashboard**
 1.  Navigate to the **Threats** dashboard (**Threats** tab of the **Overview**
@@ -41,6 +40,12 @@ may be performed, which are:
     security policy.
 2.  Optional. View event log data by clicking **Event Logs** from
     the navigation pane. Verify that the **Threats** tab is active.
+
+<Callout type="tip">
+
+  Focus on relevant or critical events by applying a [filter](#filters) to the dashboard. 
+
+</Callout>
 
 ### Overview {/*overview*/}
 
@@ -68,18 +73,19 @@ at your applications and web servers. This view consists of a chart and statisti
     </Callout>
 
     The following information is displayed for each category:
-    -   `<Value>`**:** Groups threats by the request's value for the current category.  The following illustration shows a partial listing of values for the "Rule Message" category.  
+    -   `<Value>`**:** Groups threats by the request's value for the current category.  The following illustration shows a partial listing of values for the `Rule Message` category.  
 
-    ![](/images/app_security/dashboard_category.png)  
+        ![](/images/app_security/dashboard_category.png)  
 
     -   **%:** Indicates the percentage of detected threats over a given time period that belong to the group identified by the **Value** field.  
+
+        <Callout type="info">
+
+          Percentages are calculated from the total threats detected during the given time period. The **Max Top Number** option determines the limit of entries per category. If the number of entries exceeds this limit, then the sum of the percentages for that category will not add up to 100%.
+
+        </Callout>
+
     -   **Events:** Indicates the number of detected threats that belong to the group identified by the **Value** field.  
-
-    <Callout type="info">
-
-    Percentages are calculated from the total threats detected during the given time period. The **Max Top Number** option determines the limit of entries per category. If the number of entries exceeds this limit, then the sum of the percentages for that category will not add up to 100%.
-
-    </Callout>
 
 **Key information:**
 -   By default, a chart includes all rule violations within the last
@@ -120,7 +126,7 @@ for each violation contains the following information:
 
 **Syntax:** 
 
-`<Rule Message> <Elapsed Time>  <Time>`
+`<Rule Message>    [<Elapsed Time>  <Time>]`
 
 **Example:** 
 
@@ -144,11 +150,11 @@ detailed information about it. Each event field is described below.
 -   **Rule Message:** Provides a description of the rule that the request violated. The syntax for this field varies according to the type of rule that was violated.  
     -   **Managed Rule Set - Anomaly Score:** This field indicates the request's anomaly score and the last rule that it violated. Please refer to the **Sub Event(s)** section, which contains a [sub event](#sub-events) for each rule violated by a request, to find out why the request was flagged or blocked. Each sub event indicates the rule that was violated and the data used to identify the violation. 
 
-    `Inbound Anomaly Score Exceeded (Total Score: <#>): Last Matched Message: <Rule Message>`
+        `Inbound Anomaly Score Exceeded (Total Score: <#>): Last Matched Message: <Rule Message>`
 
     -   **Syntax (All Other Rule Sets):**
 
-    `<Rule Message>`
+        `<Rule Message>`
 
 -   **Event ID:** Indicates the system-defined ID assigned to this event (i.e., rule violation).
 -   **Security Application Name:** Indicates the name of the Security Application Manager configuration that was assigned the rule set that was triggered.
@@ -263,20 +269,20 @@ fields support filtering.
     -   **Event Log:** Expand a rule violation and then click on
         the desired field value.
 
-    <Callout type="important">
+        <Callout type="important">
 
-      Filtering by rule message or ID will filter for the selected rule
-      and all other rules that contributed to the violation of the anomaly
-      score threshold.
+          Filtering by rule message or ID filters for the selected rule
+          and all other rules that contributed to the violation of the anomaly
+          score threshold.
 
-    </Callout>
+        </Callout>
 
-    <Callout type="tip">
+        <Callout type="tip">
 
-      Blue font indicates a field value that may be applied as a filter to
-      the dashboard.
+          Blue font indicates a field value that may be applied as a filter to
+          the dashboard.
 
-    </Callout>
+        </Callout>
 
 -   The **Time Range** option is different from other filters in
     that it is mandatory. Specify the time period by which the Overview

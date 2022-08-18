@@ -18,6 +18,12 @@ An access rule identifies legitimate traffic and threats by:
 -   [File size](#file-size)
 -   [Request headers](#request-headers)
 
+<Callout type="tip">
+
+  The recommended approach for setting up geoblocking is to create a blacklist for Country, Country Subdivision, or both.
+
+</Callout>
+
 ## Basic Access Controls {/*basic-access-controls*/}
 
 Control access to your content by creating whitelists, accesslists, and

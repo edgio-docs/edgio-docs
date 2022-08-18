@@ -23,18 +23,12 @@ is {{ PRODUCT_SECURITY }} Insights which only retains data for 7 days.
 
 </Callout>
 
-This article describes:
--   [Overview](#Overview)
--   [Event log view](#Event)
--   [Filters](#filters)
--   [Fields](#fields)
-
 ## Usage {/*usage*/}
 
 The Rates dashboard contains two different views through which rate
 limit analysis may be performed, which are:
--   [Overview](#Overview)
--   [Event log](#Event)
+-   [Overview](#overview)
+-   [Event log](#event-log-view)
 
 **To view the Rates dashboard**
 
@@ -49,6 +43,12 @@ limit analysis may be performed, which are:
 2.  Optional. View event log data by clicking **Event Logs** from
     the navigation pane. Verify that the **Rates** tab is
     selected.
+
+<Callout type="tip">
+
+  Focus on relevant or critical events by applying a [filter](#filters) to the dashboard. 
+
+</Callout>
 
 ### Overview {/*overview*/}
 

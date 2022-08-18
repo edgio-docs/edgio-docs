@@ -208,7 +208,7 @@ support the following request elements:
     <Callout type="info">
 
       {{ PRODUCT_SECURITY }} only inspects the first 8 KB of the request body. You may
-      [restrict the request body](managed_rules#file-size-and-query-string-limits)
+      [restrict the request body](managed_rules#file-size-and-query-string-limits-advanced)
       for valid requests to 8 KB (8,192 bytes) through a managed rule.
 
     </Callout>

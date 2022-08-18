@@ -56,6 +56,7 @@ const scriptSrcDomains = [
   '*.google-analytics.com',
   '*.googletagmanager.com',
   'googletagmanager.com',
+  '*.clarity.ms',
 ].sort();
 
 const connectSrcDomains = [
@@ -77,6 +78,7 @@ const connectSrcDomains = [
   '*.algolia.net',
   '*.vimeo.com',
   'vimeo.com',
+  '*.clarity.ms',
 ].sort();
 
 const router = new Router()

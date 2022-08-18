@@ -8,10 +8,7 @@ import EdgioLight from '../../../../public/images/home/edgio-light.png';
 import NoSSRWrapper from '../NoSSRWrapper';
 
 import {IconHamburger} from 'components/Icon/IconHamburger';
-import {
-  IconDarkMobileLogo,
-  IconLightMobileLogo,
-} from 'components/Icon/IconMobileLogo';
+import {IconLightMobileLogo} from 'components/Icon/IconMobileLogo';
 import {siteConfig} from 'siteConfig';
 import useTheme from 'utils/hooks/useTheme';
 

@@ -12,6 +12,16 @@ title: Astro
   repoUrl="https://github.com/layer0-docs/layer0-astro-example" 
   deployFromRepo />
 
+## Example SSR Site {/*example-ssr-site*/}
+
+This Astro example app uses server-side rendering.
+
+<ExampleButtons
+  title="Astro SSR"
+  siteUrl="https://layer0-docs-layer0-astro-ssr-example-default.layer0-limelight.link"
+  repoUrl="https://github.com/layer0-docs/layer0-astro-ssr-example" 
+  deployFromRepo />
+
 {{ PREREQ }}
 
 ## Create your Astro site {/*create-your-astro-site*/}

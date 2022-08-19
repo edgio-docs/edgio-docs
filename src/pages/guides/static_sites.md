@@ -66,7 +66,7 @@ You can use the router's `static` method to serve everything in the `build` dire
 ```js
 // routes.js
 
-const { Router } = require('@layer0/core/router')
+const { Router } = require('{{ PACKAGE_NAME }}/core/router')
 
 const router = new Router()
 

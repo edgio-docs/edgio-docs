@@ -61,7 +61,7 @@ The {{ PRODUCT }} router is used for configuring where the static resources resi
 - `/build/static/css/main.css`
 - `/build/static/js/main.js`
 
-You can use the router's `static` method to automatically define routes for files need to define route handlers to serve `index.html` and the CSS/JS resources. This example router will serve and cache requests to `/index.html` and its resources referenced within:
+You can use the router's `static` method to serve everything in the `build` directory:
 
 ```js
 // routes.js

@@ -255,19 +255,15 @@ The recommended approach to setting up a profile's rule set is to:
 
 ### Access Controls {/*access-controls*/}
 
-Use an access rule to define access controls for URLs, countries, IP addresses, etc. 
+Use an access rule to define access controls for URLs, countries, IP addresses, etc.
 
--   **Whitelist:** Use a whitelist sparingly to always allow traffic from a trusted
-source.  
+-   **Whitelist:** Use a whitelist sparingly to always allow traffic from a trusted source.
 
-<Callout type="tip">
+    <Callout type="tip">
 
-  Whitelisting traffic should only be performed after careful
-  consideration and with extreme caution. Whitelisted traffic will not be
-  screened and therefore creates a launching point for a potential attack
-  on your applications and web servers.
+      Whitelisting traffic should only be performed after careful consideration and with extreme caution. Whitelisted traffic will not be screened and therefore creates a launching point for a potential attack on your applications and web servers.
 
-</Callout>
+    </Callout>
 
 -   **Accesslist:** The recommended approach for traffic from trusted sources is 
     to identify it through an accesslist. This approach allows that trafic after 

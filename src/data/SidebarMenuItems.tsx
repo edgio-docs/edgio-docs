@@ -152,6 +152,10 @@ const SidebarMenuItems: ISidebarMenuItems = [
           path: '/guides/jamstack_getting_started',
         },
         {
+          title: PRODUCT_SECURITY,
+          path: '/guides/app_security/getting_started',
+        },
+        {
           title: 'Deploying',
           path: '/guides/deploy_apps',
         },

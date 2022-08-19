@@ -135,7 +135,7 @@ export default function GetStarted({children}: {children: React.ReactNode}) {
           icon={IconSecurity}
           title={PRODUCT_SECURITY}
           subtitle={`${PRODUCT} ${PRODUCT_SECURITY} keeps your apps protected without sacrificing performance.`}
-          href="/guides/security"
+          href="/guides/app_security/getting_started"
           hrefText="Learn More"
         />
       </div>

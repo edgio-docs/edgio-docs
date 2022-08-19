@@ -38,7 +38,7 @@ For creating a new site on {{ PRODUCT }}, you can choose between:
 
 ### Create via {{ PRODUCT }} Developer Console {/*create-via-edgio-developer-console*/}
 
-1. First, [login to the Developer Console]({{ LOGIN_URL }}) and locate the **New Site** button.
+1. Log in to the {{ PORTAL }} and locate the **New Site** button.
   ![New Site button](/images/app-edge/new-site-button.png)
 
 2. Next, enter your site's domain name. This will eventually become the origin backend that you can [proxy to](cookbook#proxying-an-origin) once your site is setup.

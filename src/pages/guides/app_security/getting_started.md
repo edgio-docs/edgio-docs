@@ -21,7 +21,7 @@ Before you can secure your traffic, you will need an {{ COMPANY_NAME }} site con
 1.  If you do not already have an {{ COMPANY_NAME }} account, then you should <a href="{{ APP_URL }}/signup">sign up for a free account</a>.
 2.  Once you have confirmed your email and accepted our terms of service, you will be prompted for your site's URL. Once you have provided it, click **Launch my site**.
 
-## Basic Security Setup  {/*basic-security-setup*/}
+## Basic Security Setup {/*basic-security-setup*/}
 
 Setting up {{ PRODUCT_SECURITY }} requires creating rules that determine how your traffic will be secured, identifying the set of traffic that will be secured, and then monitoring flagged traffic to verify or fine-tune your security configuration.
 
@@ -82,9 +82,9 @@ application layer attacks.
 2.  Click **Add Managed Rule**.
 3.  In the **Name** option, type *My Managed Rule*.
 4.  Click the **Policies** tab. In the **Ruleset** option,
-select **ECRS 2020-11-02**.
+select **ECRS 2022-08-10**.
 5.  Set the **Threshold** option to **5**.
-6.  Set the **Paranoia Level** option to *1*.
+6.  Set the **Paranoia Level** option to **1**.
 7.  From the **Policies** section, disable policies that do not apply
 to your application. For example, you may safely disable **Adv
 Drupal**, **Adv SharePoint**, and **Adv
@@ -104,16 +104,16 @@ applied to your application are provided below.
 2.  Click **Add New**.
 3.  In the **Name** option, type *My Application*.
 4.  From the **Rules **section, click **Access Rule**.
-5.  From the **Production Access Rule** option, select *My Access
-Rule*.
+5.  From the **Production Access Rule** option, select **My Access
+Rule**.
 6.  From the **Action type** option, select **Alert only**.
 7.  From the **Rules **section, click **Managed Rule**.
-8.  From the **Production Managed Rule** option, select *My Rate
-Limit*.
+8.  From the **Production Managed Rule** option, select **My Rate
+Limit**.
 9.  From the **Action type** option, select **Alert only**.
 10. From the **Rules** section, click **Rate Rules**.
-11. From the **Add Rate Rule** option, select *My Managed
-Rule*.
+11. From the **Add Rate Rule** option, select **My Managed
+Rule**.
 12. From the **Action type** option, select **Drop request (429 Too
 Many Requests)**.
 13. Click **Save**.

@@ -61,51 +61,26 @@ The {{ PRODUCT }} router is used for configuring where the static resources resi
 - `/build/static/css/main.css`
 - `/build/static/js/main.js`
 
-You will need to define route handlers to serve `index.html` and the CSS/JS resources. This example router will serve and cache requests to `/index.html` and its resources referenced within:
+You can use the router's `static` method to automatically define routes for files need to define route handlers to serve `index.html` and the CSS/JS resources. This example router will serve and cache requests to `/index.html` and its resources referenced within:
 
 ```js
 // routes.js
 
-const { Router } = require('{{ PACKAGE_NAME }}/core/router')
+const { Router } = require('@layer0/core/router')
 
-const ONE_HOUR = 60 * 60
-const ONE_DAY = 24 * ONE_HOUR
-const ONE_YEAR = 365 * ONE_DAY
+const router = new Router()
 
-const edgeOnly = {
-  browser: false,
-  edge: { maxAgeSeconds: ONE_YEAR },
-}
+router.static('build')
 
-const edgeAndBrowser = {
-  browser: { maxAgeSeconds: ONE_YEAR },
-  edge: { maxAgeSeconds: ONE_YEAR },
-}
-
-module.exports = new Router()
-  .prerender([{ path: '/' }])
-  // js and css assets are hashed and can be far-future cached in the browser
-  .get('/static/:path*', ({ cache, serveStatic }) => {
-    cache(edgeAndBrowser)
-    serveStatic('build/static/:path*')
-  })
-  // all paths that do not have a "." as well as "/"" should serve the app shell (index.html)
-  .get('/:path*/:file([^\\.]+|)', ({ cache, appShell }) => {
-    cache(edgeOnly)
-    appShell('build/index.html')
-  })
-  // all other paths should be served from the build directory
-  .get('/:path*', ({ cache, serveStatic }) => {
-    cache(edgeOnly)
-    serveStatic('build/:path*')
-  })
+export default router
 ```
 
 If your site does not use a bundler for generating a build output, you can still serve the assets using `serveStatic` and reference the relative path to the resources. Any resource referenced using `serveStatic` or `appShell` will automatically be included in the {{ PRODUCT }} deployment. An example of serving assets from your `src` directory:
 
 ```js
 // routes.js
-...
+
+const { Router } = require('@layer0/core/router')
 
 module.exports = new Router()
   .prerender([{ path: '/' }])

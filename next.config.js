@@ -8,6 +8,9 @@ const path = require('path');
 const {remarkPlugins} = require('./plugins/markdownToHtml');
 
 const _preLayer0Export = {
+  images: {
+    domains: ['opt.moovweb.net'],
+  },
   compiler: {
     // ssr and displayName are configured by default
     styledComponents: true,

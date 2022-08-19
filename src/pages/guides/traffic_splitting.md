@@ -3,9 +3,10 @@ title: Traffic Splitting
 ---
 
 <Callout type="info">
-  You can also use traffic splitting for <Link href="/guides/split_testing">Split Testing</Link>.
-</Callout>
 
+  You can also use traffic splitting for <Link href="/guides/split_testing">Split Testing</Link>.
+
+</Callout>
 
 {{ PRODUCT }} makes it easy to split traffic without performance penalties by executing splits at the edge through an easy-to-use yet powerful interface. Traffic splitting can be used for canary deployments, Blue/Green deployments, iterative migration off of a legacy website, personalization, and more.
 
@@ -15,7 +16,9 @@ This guide provides an overview of site migrations and explains how to configure
 
 
 <Callout type="info">
+
   This guide uses the terms <strong>legacy</strong> and <strong>new</strong> to refer to your current and new sites as well as the related {{ PRODUCT }} environments.
+
 </Callout>
 
 # Configurations Entities {/*configurations-entities*/}
@@ -69,10 +72,12 @@ If you are using two code versions you can use Continuous Integration/Continuous
 If your sites consist of two separate servers use these steps to configure the domain names. Servers are commonly your own origin servers, but can also be third-party servers for which you can use {{ PRODUCT }} to proxy to the domain name, and use the {{ PRODUCT }} router to configure caching and other header manipulation.
 
 <Callout type="info">
-If your sites are defined by different code versions, this step is not necessary.
+
+  If your sites are defined by different code versions, this step is not necessary.
+
 </Callout>
 
-Configure  the backends in the {{ CONFIG_FILE }} file. (See [{{ CONFIG_FILE }}](layer0_config) for more information.). For example, to split traffic between a new experience hosted on `origin.my-site.com` and a legacy experience hosted on `legacy-origin.my-site.com`:
+Configure the backends in the {{ CONFIG_FILE }} file. (See [{{ CONFIG_FILE }}](layer0_config) for more information.). For example, to split traffic between a new experience hosted on `origin.my-site.com` and a legacy experience hosted on `legacy-origin.my-site.com`:
 
 ```js filename="{{ CONFIG_FILE }}"
 module.exports = {

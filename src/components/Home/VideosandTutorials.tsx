@@ -176,12 +176,12 @@ export default function VideosandTutorials() {
         {categorisedVidoes.map((video, index) => {
           return (
             <div className="video-category" key={video.slug}>
-              <h1 className="video-category__title">{video.title}</h1>
+              <h3 className="video-category__title">{video.title}</h3>
               <div className="videos">
                 {video.videos.map((item, vidIndex) => (
                   <div className="video" key={`${index}-${vidIndex}`}>
                     <Vimeo vimeoId={item.id} />
-                    <h1 className="title">{item.title}</h1>
+                    <h4 className="title">{item.title}</h4>
                   </div>
                 ))}
               </div>

@@ -10,7 +10,7 @@ Bloomreach is an API driven platform offering that focuses on powerful [content]
 
 ## Example {/*example*/}
 
-This example is a React app powered by Bloomreach Content. The following is based on the Bloomreach [Reference SPA](https://github.com/bloomreach/bloomreach-reference-spa).
+This example is a React app powered by Bloomreach Content. The following is based on the Bloomreach [Reference SPA](https://github.com/bloomreach/bloomreach-reference-spa)
 
 <ButtonLinksGroup>
   <ButtonLink
@@ -70,9 +70,11 @@ From within the project, let's configure and review a couple of items. This is a
 Duplicate `.env.dist` and name it `.env`. From within the file we need to configure these top 4 variabless.
 
 <Callout type="info">
+
   The values below can be used to access the {{PRODUCT}} sandbox. If you change
   these to your own, they may not match the Bloomreach application
   configuration.
+
 </Callout>
 
 ```.env
@@ -94,8 +96,10 @@ REACT_APP_SM_CUSTOM_VARIANT_PURCHASE_PRICE_FIELD=
 ```
 
 <Callout type="info">
+
   If you have not yet deployed the project to {{PRODUCT}}, you will not have a
   deployed URL. Route requests to localhost during local development.
+
 </Callout>
 
 - `REACT_APP_BRXM_ENDPOINT` - the deployed URL for your {{ PRODUCT }} project.
@@ -135,11 +139,9 @@ If you are already a Bloomreach customer with an existing configuration, you can
 Bloomreach [documentation](https://documentation.bloomreach.com/) can help provide more specific answers to questions regarding that service. This guide focuses on the Bloomreach [Content](https://documentation.bloomreach.com/content/docs/get-started-with-bloomreach-content) product.
 
 <Callout type="info">
-  Bloomreach also provides a set of{' '}
-  <a href="https://documentation.bloomreach.com/content/docs/log-in-to-the-developer-environment">
-    sample credentials
-  </a>{' '}
-  that can be used until you have access to your own instance.
+
+  Bloomreach also provides a set of <a href="https://documentation.bloomreach.com/content/docs/log-in-to-the-developer-environment">sample credentials</a> that can be used until you have access to your own instance.
+
 </Callout>
 
 ### Create Bloomreach Content Project {/*create-bloomreach-content-project*/}
@@ -150,39 +152,39 @@ You should have received an email from Bloomreach containing the URL of your Blo
 
 The login page should look like this.
 
-![](/images/bloomreach/login_landing.png?width=300)
+![Bloomreach login page](/images/bloomreach/login_landing.png?width=1279&height=719)
 
 2. **Create a Channel**
 
 Open the _Experience manager_ application. In the _Channels_ overview, click on the _+ Channel_ button in the top right. In the Select blueprint dialog that pops up, select _Website_ and click _Next_.
 
-![](/images/bloomreach/channel_select_blueprint.png)
+![](/images/bloomreach/channel_select_blueprint.png?width=1280&height=720)
 
 Next, enter a name for your channel (for example, "getting started") and click on _Create channel_:
 
-![](/images/bloomreach/channel_name.png)
+![](/images/bloomreach/channel_name.png?width=1280&height=720)
 
 The new channel will now be listed in the Channels overview:
 
-![](/images/bloomreach/channel_added.png)
+![](/images/bloomreach/channel_added.png?width=1279&height=720)
 
 Click on the new channel to open its preview. You are now on the homepage. A standard skeleton frontend app is currently used to render the preview.
 
-![](/images/bloomreach/channel_preview.png)
+![](/images/bloomreach/channel_preview.png?width=1280&height=720)
 
 3. **Add a Component**
 
 Note the black-bordered area on the page. This is what we call a container. Open the left-side drawer using the button in the top left and open the Components tab. The component library for this channel contains only one component at the moment: Content.
 
-![](/images/bloomreach/component_library.png)
+![](/images/bloomreach/component_library.png?width=1280&height=720)
 
 Click on the Content component in the left side drawer to select it, then click inside the container on the page to add the component. It will show standard "Hello World" content that is stored in the page object. If you'd like to edit the text, open the Page menu and select _Metadata_.
 
-![](/images/bloomreach/component_edit.png)
+![](/images/bloomreach/component_edit.png?width=1279&height=721)
 
 The right side drawer will slide open and show an editor where you can edit the different fields. The page preview will update automatically while you edit the field values.
 
-![](/images/bloomreach/component_added.png)
+![](/images/bloomreach/component_added.png?width=1280&height=721)
 
 Click on Save to persist your changes.
 
@@ -246,7 +248,11 @@ Note the following:
 - The mapping property maps your React components their counterparts in the JSON representation.
 - A Content component (which you will implement in a moment) is imported and mapped.
 
-<Callout type="info">Change the `endpoint` url to your own instance.</Callout>
+<Callout type="info">
+
+  Change the `endpoint` url to your own instance.
+
+</Callout>
 
 4. Add a content component
 
@@ -274,7 +280,7 @@ npm run start
 
 which should now look like this
 
-![](/images/bloomreach/local_frontend_app_react.png)
+![](/images/bloomreach/local_frontend_app_react.png?width=1277&height=719)
 
 Awesome, the app should be working locally. Time to get it deployed to {{ PRODUCT }} now.
 

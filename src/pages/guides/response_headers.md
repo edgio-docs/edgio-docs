@@ -29,9 +29,10 @@ All POPs have the same components:
 * L2 is Global w/ HAProxy -> Varnish -> DPS  -> backend (user defined backend from [layer0.config](https://docs.layer0.co/guides/layer0_config#section_backends) | [static page](https://docs.layer0.co/guides/static_sites#section_router_configuration) | Serverless Load Balancer->[Serverless](https://docs.layer0.co/guides/serverless_functions#section_serverless_functions))
 
 <Callout type="info">
-  When a request is reentrant, telemetry information is not duplicated; instead, each request logs its own telemetry but does not return it to the downstream {{ PRODUCT_NAME }} request. As a result, duplicate entries are not possible.
-</Callout>
 
+  When a request is reentrant, telemetry information is not duplicated; instead, each request logs its own telemetry but does not return it to the downstream {{ PRODUCT_NAME }} request. As a result, duplicate entries are not possible.
+
+</Callout>
 
 #### Component Names and Prefixes {/*component-names-and-prefixes*/}
 

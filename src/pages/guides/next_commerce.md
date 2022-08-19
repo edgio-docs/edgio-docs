@@ -48,7 +48,9 @@ cd site
 3. Duplicate `.env.template` and name it `.env.local` in the project directory. Add your BigCommerce API keys to it.
 
 <Callout type="info">
-For more details on how to set up your BigCommerce store, view the <a href="/guides/bigcommerce">BigCommerce guide</a>
+
+  For more details on how to set up your BigCommerce store, view the <a href="/guides/bigcommerce">BigCommerce guide</a>
+
 </Callout>
 
 ```bash
@@ -87,11 +89,15 @@ Or from within `site` directory
 ## Learn more {/*learn-more*/}
 
 <Callout type="info">
-For more details on using Next.js on {{ PRODUCT }} refer to the <a href="/guides/next">Next.js guide</a>.
+
+  For more details on using Next.js on {{ PRODUCT }} refer to the <a href="/guides/next">Next.js guide</a>.
+
 </Callout>
 
 <Callout type="info">
-For more details on how to set up your BigCommerce store, view the <a href="/guides/bigcommerce">BigCommerce guide</a>.
+
+  For more details on how to set up your BigCommerce store, view the <a href="/guides/bigcommerce">BigCommerce guide</a>.
+
 </Callout>
 
 ## Connector {/*connector*/}

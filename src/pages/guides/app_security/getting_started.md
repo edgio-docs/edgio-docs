@@ -14,13 +14,20 @@ The core methods through which it secures site traffic are listed below.
     screening rules.
 -   Restricts the rate at which requests may flow to your application.
 
-## Setup Overview {/*setup-overview*/}
+## Prerequisites {/*prerequisites*/}
+
+Before you can secure your traffic, you will need an {{ COMPANY_NAME }} site configuration for the desired website. Perform the following steps to create a site configuration:
+
+1.  If you do not already have an {{ COMPANY_NAME }} account, then you should <a href="{{ APP_URL }}/signup">sign up for a free account</a>.
+2.  Once you have confirmed your email and accepted our terms of service, you will be prompted for your site's URL. Once you have provided it, click **Launch my site**.
+
+## Basic Security Setup  {/*basic-security-setup*/}
 
 Setting up {{ PRODUCT_SECURITY }} requires creating rules that determine how your traffic will be secured, identifying the set of traffic that will be secured, and then monitoring flagged traffic to verify or fine-tune your security configuration.
 
 ![](/images/app_security/setup_overview.png)
 
-## Step 1: Create Rules  {/*step-1-create-rules*/}
+## Step 1: Create Rules {/*step-1-create-rules*/}
 
 Step-by-step instructions on how to create an access rule, rate rule,
 and managed rule are provided below.
@@ -85,7 +92,7 @@ WordPress** if your application does not leverage those
 platforms.
 8.  Click **Save**.
 
-## Step 2: Create a Security Application Configuration  {/*step-2-create-a-security-application-configuration*/}
+## Step 2: Create a Security Application Configuration {/*step-2-create-a-security-application-configuration*/}
 
 Step-by-step instructions on how to create a Security Application
 configuration that identifies the security policy that will be

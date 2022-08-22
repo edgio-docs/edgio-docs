@@ -65,8 +65,8 @@ By default, a single line on the graph represents all downsampled rate
 limited traffic. Alternatively, categorize rate limited traffic by
 selecting the desired categorization criteria from the option that
 appears directly above the graph. A line will be drawn on the chart for
-each unique value. For example, if you select [Top Action
-Types]{.listitem} and rate limited requests were either dropped or
+each unique value. For example, if you select `Top Action
+Types` and rate limited requests were either dropped or
 redirected, then the graph will contain a line for
 `REDIRECT-302` and another one for `DROP-REQUEST`.
 

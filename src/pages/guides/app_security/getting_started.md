@@ -123,7 +123,7 @@ Many Requests)**.
 The Threats dashboard illustrates threat detection trends and lists
 recent illegitimate requests. This dashboard is a useful tool for:
 
--   Verifying that a newly activated instance/profile will not impact
+-   Verifying that a new or an updated security policy will not impact
     legitimate traffic.
 -   Analyzing threats directed to your site.
 
@@ -132,7 +132,7 @@ last week.
 
 ### Data Gathering {/*data-gathering*/}
 
-After an instance has been activated, time needs to pass to allow {{ PRODUCT_SECURITY }} to
+After your Security Application configuration has been implemented, time needs to pass to allow {{ PRODUCT_SECURITY }} to
 gather sufficient data from which trends may be detected. Wait a reasonable amount of time (e.g., 24 hours) after setting up a
 Security Application configuration before performing data analysis. 
 

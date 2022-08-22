@@ -83,7 +83,7 @@ selecting the desired categorization criteria from the option that
 appears directly above the graph. A line will be drawn on the chart for
 each unique value.
 
-Key information:
+**Key information:**
 
 -   By default, the chart includes all enforcements that occurred within
     the last seven days.

@@ -542,7 +542,7 @@ configurations.
     3.  Optional. From the **Action name** option, type a name
          that describes the enforcement action configuration.
     4.  From the **Action type** option, determine how threats
-        identified by the access rule selected in step ii will be
+        identified by the access rule selected in step 5.2 will be
         handled (i.e., block, alert, redirect, or send a custom
         response).
 
@@ -597,7 +597,7 @@ configurations.
     3.  Optional. From the **Action name** option, type a name
          that describes the enforcement action configuration.
     4.  From the **Action type** option, determine how threats
-        identified by the managed rule selected in step ii will be
+        identified by the managed rule selected in step 7.2 will be
         handled (i.e., drop request, alert, redirect, or send a custom
         response).
 
@@ -616,7 +616,7 @@ configurations.
     5.  From the **Time period** option, select the time period
         for which the action selected in the next step will be applied
         to clients that exceed the rate limit defined in the rate rule
-        selected in step ii.
+        selected in step 7.2.
 
         <Callout type="info">
 
@@ -694,7 +694,7 @@ configurations.
     3.  Optional. From the **Action name** option, type a name
          that describes the enforcement action configuration.
     4.  From the **Action type** option, determine how threats
-        identified by the custom rule selected in step ii will be
+        identified by the custom rule selected in step 9.2 will be
         handled (i.e., block, alert, redirect, or send a custom
         response).
 
@@ -702,8 +702,8 @@ configurations.
 
 10. Optional. [Audit production traffic](#threat-detection) using a new
     custom rule.
-    i.  From the **Rules** section, click **Custom Rule**.
-    ii. From the **Audit Custom Rule** option, select the desired
+    1.  From the **Rules** section, click **Custom Rule**.
+    2.  From the **Audit Custom Rule** option, select the desired
         custom rule.
 
     <Callout type="info">
@@ -741,7 +741,7 @@ configurations.
     3.  Optional. From the **Action name** option, type a name
          that describes the enforcement action configuration.
     4.  From the **Action type** option, determine how threats
-        identified by the managed rule selected in step ii will be
+        identified by the managed rule selected in step 11.2 will be
         handled (i.e., block, alert, redirect, or send a custom
         response).
 
@@ -749,9 +749,9 @@ configurations.
 
 12. Optional. [Audit production traffic](#threat-detection) using a new
     managed rule.
-    i.  From the **Rules** section, click **Managed
+    1.  From the **Rules** section, click **Managed
         Rule**.
-    ii. From the **Audit Managed Rule** option, select the
+    2. From the **Audit Managed Rule** option, select the
         desired managed rule.
 
     <Callout type="info">

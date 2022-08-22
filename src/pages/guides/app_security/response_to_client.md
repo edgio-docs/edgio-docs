@@ -38,4 +38,4 @@ described below.
 
 ## Bot Rules {/*bot-rules*/}
 
-Both your Security Application and bot rule configuration define the set of traffic that will receive a browser challenge. Additionally, your Security Application configuration defines the status code for all browser challenges. If a client is unable to solve a request, then the client will receive another browser challenge.  
+Our service serves a browser challenege whenever a client submits a request that matches the traffic identification critieria defined within your Security Application and bot rule configuration. The status code for this browser challenge is defined within your Security Application configuration. If a client is unable to solve a request, then the client will receive another browser challenge.  

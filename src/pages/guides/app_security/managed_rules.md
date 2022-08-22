@@ -16,7 +16,7 @@ Use managed rules to:
 ## Preventing False Positives (Ignore List) {/*preventing-false-positives-ignore-list*/}
 
 The characteristics of certain cookies, headers, and query string
-arguments may resemble malicious traffic. This may result in WAF
+arguments may resemble malicious traffic. This may result in {{ PRODUCT_SECURITY }}
 incorrectly identifying a request as a threat. Avoid this situation by
 identifying the cookies, headers, and query string arguments that should
 be ignored when {{ PRODUCT_SECURITY }} performs threat assessment.
@@ -190,8 +190,7 @@ Identify a rule set's version by the date on which it was released.
         rules that are causing them and disable them from the managed
         rule created in step 1. After which, repeat step 3.
     -   If few false positives are found, set the Security Application
-        configuration's managed rule to the one created in step
-        1.
+        configuration's managed rule to the one created in step 1.
 
 ### Threat Detection Policies {/*threat-detection-policies*/}
 

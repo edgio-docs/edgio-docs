@@ -645,7 +645,7 @@ limit (i.e., 50 requests per minute).
 
 </Callout>
 
-### Sample Scenario 3: Multiple Rate Rules {/*scenario-3-multiple-rate-rules*/}
+## Sample Scenario 3: Multiple Rate Rules {/*scenario-3-multiple-rate-rules*/}
 
 This scenario assumes that a single edge server is handling all of these
 requests.

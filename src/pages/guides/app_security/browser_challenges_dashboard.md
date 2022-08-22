@@ -53,8 +53,8 @@ By default, a single line on the graph represents all browser
 challenges. Alternatively, categorize browser challenges by selecting
 the desired categorization criteria from the option that appears
 directly above the graph. A line will be drawn on the chart for each
-unique value. For example, if you select [Top Challenge
-Statuses]{.listitem}, then the graph will contain a line for each status
+unique value. For example, if you select `Top Challenge
+Statuses`, then the graph will contain a line for each status
 (e.g., `CHAL_STATUS_NO_TOKEN` and
 `CHAL_STATUS_TOKEN_EXPIRED`) that occurred during the given
 time period.

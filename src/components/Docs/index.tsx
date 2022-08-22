@@ -159,6 +159,7 @@ const StyledDocs = styled.div`
       font-weight: 600;
       color: var(--docs-text-primary);
       font-size: 14px;
+      background-color: #f0f0f0;
     }
 
     tr {

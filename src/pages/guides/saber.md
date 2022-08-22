@@ -2,7 +2,7 @@
 title: Saber
 ---
 
-This guide shows you how to deploy a [Saber](https://saber.land) application to {{ PRODUCT }}.
+This guide shows you how to deploy a [Saber](https://saber.egoist.dev) application to {{ PRODUCT }}.
 
 ## Example {/*example*/}
 

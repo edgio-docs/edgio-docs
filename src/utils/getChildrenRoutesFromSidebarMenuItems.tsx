@@ -7,6 +7,12 @@ const flatItems: IRoute[] = flatMap(
   (item) => item.routes || []
 );
 
+export function findChildByGuideName(identifier: string): IRoute | undefined {
+  return flatItems.find(
+    (item) => item.path?.toLowerCase() === `/guides/${identifier}`.toLowerCase()
+  );
+}
+
 export function getChildrenRoutesFromSidebarMenuItems(
   identifier: string
 ): IRoute[] | [] {
@@ -15,10 +21,4 @@ export function getChildrenRoutesFromSidebarMenuItems(
   )[0];
 
   return routes || [];
-}
-
-export function findChildByGuideName(identifier: string): IRoute | undefined {
-  return flatItems.find(
-    (item) => item.path?.toLowerCase() === `/guides/${identifier}`.toLowerCase()
-  );
 }

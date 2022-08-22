@@ -1,3 +1,4 @@
+import {isProductionBuild} from '@layer0/core/environment';
 import {Router, CustomCacheKey} from '@layer0/core/router';
 import {nextRoutes} from '@layer0/next';
 import semverMaxSatisfying from 'semver/ranges/max-satisfying';
@@ -83,8 +84,10 @@ const connectSrcDomains = [
 
 const router = new Router()
   .prerender(prerenderRequests)
+  .noIndexPermalink()
+  .match('/__xdn__/:path*', ({redirect}) => redirect('/__layer0__/:path*'))
   .match({}, ({setResponseHeader}) => {
-    if (process.env.NODE_ENV === 'production') {
+    if (isProductionBuild()) {
       setResponseHeader(
         'Strict-Transport-Security',
         'max-age=31536000; includeSubDomains; preload'
@@ -109,16 +112,6 @@ const router = new Router()
       setResponseHeader('X-XSS-Protection', '1; mode=block');
     }
   })
-  .match(
-    {
-      headers: {
-        host: /layer0.link|layer0-perma.link|layer0-limelight.link/,
-      },
-    },
-    ({setResponseHeader}) => {
-      setResponseHeader('x-robots-tag', 'noindex');
-    }
-  )
   .match('/service-worker.js', ({serviceWorker}) => {
     return serviceWorker('.next/static/service-worker.js');
   })

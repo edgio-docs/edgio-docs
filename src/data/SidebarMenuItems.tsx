@@ -1,3 +1,4 @@
+import {map, flatMap, flatten} from 'lodash';
 import * as React from 'react';
 
 import {
@@ -728,3 +729,14 @@ const SidebarMenuItems: ISidebarMenuItems = [
 ];
 
 export default SidebarMenuItems;
+
+export const prerenderPaths = map(
+  flatMap(flatten(SidebarMenuItems), (item: any) => item.routes),
+  (item: any) => {
+    if (item && item.path.startsWith('/')) {
+      return {path: item.path};
+    }
+
+    return;
+  }
+);

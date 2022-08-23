@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import Image from 'next/image';
 import styled from 'styled-components';
 
@@ -65,7 +66,7 @@ function HomepageHero() {
         <div className="copy">
           <div id="dark-theme">
             <Image
-              src="/images/home/l0-to-edgio-light.png?width=286&height=230"
+              src="/images/home/l0-to-edgio-light.webp"
               alt="Layer0 is now Edgio AppOps"
               width={286}
               height={230}
@@ -75,7 +76,7 @@ function HomepageHero() {
           </div>
           <div id="light-theme">
             <Image
-              src="/images/home/l0-to-edgio-dark.png?width=286&height=230"
+              src="/images/home/l0-to-edgio-dark.webp"
               alt="Layer0 is now Edgio AppOps"
               width={286}
               height={230}

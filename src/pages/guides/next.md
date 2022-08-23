@@ -243,12 +243,11 @@ The `Prefetch` component fetches data for the linked page from {{ PRODUCT }}'s e
 {{ PRODUCT }} supports Next.js's built-in routing scheme for both page and API routes, including Next.js 9's clean dynamic routes. The default `routes.js` file created by `{{ CLI_NAME }} init` sends all requests to Next.js via a fallback route:
 
 ```js
-// This file was automatically added by {{ CLI_NAME }} deploy.
-// You should commit this file to source control.
-const {Router} = require('{{ PACKAGE_NAME }}/core/router');
-const {nextRoutes} = require('{{ PACKAGE_NAME }}/next');
+// routes.js
+import { Router } from '{{ PACKAGE_NAME }}/core/router';
+import { nextRoutes } from '{{ PACKAGE_NAME }}/next';
 
-module.exports = new Router()
+export default new Router()
   // Prevent search engine bot(s) from indexing
   // Read more on: https://docs.layer0.co/guides/cookbook#blocking-search-engine-crawlers
   .noIndexPermalink()
@@ -266,14 +265,20 @@ module.exports = new Router()
   .use(nextRoutes);
 ```
 
-### nextRoutes middleware {/*nextroutes-middleware*/}
+### nextRoutes {/*nextroutes*/}
 
-In the code above, the `nextRoutes` middleware adds all Next.js routes to the router based on the `/pages` directory. You can add additional routes before and after the middleware. For example, you can choose to send some URLs to an alternate backend. This is useful for gradually replacing an existing site with a new Next.js app.
+In the code above, `nextRoutes` adds all Next.js routes to the router based on the `/pages` directory. You can add additional routes before and after `nextRoutes`. For example, you can choose to send some URLs to an alternate backend. This is useful for gradually replacing an existing site with a new Next.js app.
 
 A popular use case is to fallback to a legacy site for any route that your Next.js app isn't configured to handle:
 
 ```js
-new Router().use(nextRoutes).fallback(({proxy}) => proxy('legacy'));
+// routes.js
+import { Router } from '{{ PACKAGE_NAME }}/core/router';
+import { nextRoutes } from '{{ PACKAGE_NAME }}/next';
+
+export default new Router()
+  .use(nextRoutes)
+  .fallback(({proxy}) => proxy('legacy'));
 ```
 
 To configure the legacy backend, use {{ CONFIG_FILE }}:
@@ -294,60 +299,11 @@ Using environment variables here allows you to configure different legacy domain
 
 ### rewrites and redirects {/*rewrites-and-redirects*/}
 
-The `nextRoutes` middleware automatically adds routes for [rewrites](https://nextjs.org/docs/api-reference/next.config.js/rewrites) and [redirects](https://nextjs.org/docs/api-reference/next.config.js/redirects) specified in `next.config.js`. Redirects are served directly from the network edge to maximize performance.
-
-### Explicit Routes {/*explicit-routes*/}
-
-To render a specific page, use the `renderNextPage` function:
-
-```js
-const {Router} = require('{{ PACKAGE_NAME }}/core/router');
-const {renderNextPage, nextRoutes} = require('{{ PACKAGE_NAME }}/next');
-
-module.exports = new Router()
-  .get('/some/vanity/url/:p', (res) => {
-    renderNextPage('/p/[productId]', res, (params) => ({productId: params.p}));
-  })
-  .use(nextRoutes);
-```
-
-The `renderNextPage` function takes the following parameters:
-
-- nextRoute - `String` The Next.js route path
-- res - `ResponseWriter` The ResponseWriter passed to your route handler
-- params - `Object|Function` An object containing query params to provide to the next page, or a function that takes the route's path params and the request and returns a params object
-
-### Rendering the 404 page {/*rendering-the-404-page*/}
-
-You can explicitly render the Next.js 404 page using `nextRoutes.render404(res)`:
-
-```js
-const {Router} = require('{{ PACKAGE_NAME }}/core/router');
-const {renderNextPage, nextRoutes} = require('{{ PACKAGE_NAME }}/next');
-
-module.exports = new Router()
-  .get('/some/missing/page', (res) => {
-    nextRoutes.render404(res);
-  })
-  .use(nextRoutes);
-```
-
-### Dynamic Fallback Route {/*dynamic-fallback-route*/}
-
-Usually Next.js requires 404.js to be a static page. {{ PRODUCT }} enables you to render a specific page when no other route is matched using `router.fallback`:
-
-```js
-const {Router} = require('{{ PACKAGE_NAME }}/core/router');
-const {renderNextPage, nextRoutes} = require('{{ PACKAGE_NAME }}/next');
-
-module.exports = new Router().use(nextRoutes).fallback((res) => {
-  renderNextPage('/not-found', res); // render pages/not-found.js, which can be dynamic (using getInitialProps or getServerSideProps)
-});
-```
+The `nextRoutes` plugin automatically adds routes for [rewrites](https://nextjs.org/docs/api-reference/next.config.js/rewrites) and [redirects](https://nextjs.org/docs/api-reference/next.config.js/redirects) specified in `next.config.js`. Redirects are served directly from the network edge to maximize performance.
 
 ### Caching {/*caching*/}
 
-The easiest way to add edge caching to your Next.js app is to add caching routes before the middleware. For example,
+The easiest way to add edge caching to your Next.js app is to add caching routes before `nextRoutes`. For example,
 imagine you have `/pages/p/[productId].js`. Here's how you can SSR responses as well as cache calls to `getServerSideProps`:
 
 ```js
@@ -385,7 +341,7 @@ new Router()
 
 ### Preventing Next.js pages from being cached by other CDNs {/*preventing-nextjs-pages-from-being-cached-by-other-cdns*/}
 
-By default, Next.js adds a `cache-control: private, no-cache, no-store, must-revalidate` header to all responses from `getServerSideProps`. The presence of `private` would prevent {{ PRODUCT_NAME }} from caching the response, so `nextRoutes` middleware from `{{ PACKAGE_NAME }}/next` automatically removes the `private` portion of the header to enable caching at the edge. If you want your responses to be private, you need to specify a `cache-control` header using the router:
+By default, Next.js adds a `cache-control: private, no-cache, no-store, must-revalidate` header to all responses from `getServerSideProps`. The presence of `private` would prevent {{ PRODUCT_NAME }} from caching the response, so `nextRoutes` from `{{ PACKAGE_NAME }}/next` automatically removes the `private` portion of the header to enable caching at the edge. If you want your responses to be private, you need to specify a `cache-control` header using the router:
 
 ```js
 new Router().get('/my-private-page', ({setResponseHeader}) => {
@@ -397,52 +353,6 @@ new Router().get('/my-private-page', ({setResponseHeader}) => {
 ```
 
 Doing so will prevent other CDNs running in front of {{ PRODUCT_NAME }} from caching the response.
-
-## Building with Webpack 5 {/*building-with-webpack-5*/}
-
-As of Next.js v10.0.6, Webpack 4 is still used by default. You can upgrade to Webpack 5 by making the following changes to your app:
-
-### package.json {/*packagejson*/}
-
-Add `"webpack": "^5.0.0"` to `resolutions`:
-
-```js
-"resolutions": {
-  "webpack": "^5.0.0"
-}
-```
-
-### next.config.js {/*nextconfigjs*/}
-
-Add the following to `next.config.js`:
-
-```js
-future: {
-  webpack5: true,
-}
-```
-
-Then run `yarn install` followed by `{{ CLI_NAME }} build` to verify that your app builds successfully using Webpack 5.
-
-Some additional notes:
-
-- In order to use Webpack 5 you must use yarn to install dependencies. NPM does not support `resolutions` in package.json.
-- Webpack 5 contains many breaking changes, so it is possible that you'll need to make additional changes to the webpack config via `next.config.js` to get your app to build successfully.
-- You may run into this error: `UnhandledPromiseRejectionWarning: TypeError: dependency.getCondition is not a function`. You can fix this by adding `next-offline` as a dependency using `npm i -D next-offline` or `yarn add --dev next-offline`.
-- You'll also see some deprecation warnings, like these, which are fine, as long as `{{ CLI_NAME }} build` is successful:
-
-```
-(node:95329) [DEP_WEBPACK_SINGLE_ENTRY_PLUGIN] DeprecationWarning: SingleEntryPlugin was renamed to EntryPlugin
-info  - Creating an optimized production build...
-(node:95339) [DEP_WEBPACK_SINGLE_ENTRY_PLUGIN] DeprecationWarning: SingleEntryPlugin was renamed to EntryPlugin
-> Creating service worker...
-(node:95339) [DEP_WEBPACK_COMPILATION_ASSETS] DeprecationWarning: Compilation.assets will be frozen in future, all modifications are deprecated.
-BREAKING CHANGE: No more changes should happen to Compilation.assets after sealing the Compilation.
-        Do changes to assets earlier, e. g. in Compilation.hooks.processAssets.
-        Make sure to select an appropriate stage from Compilation.PROCESS_ASSETS_STAGE_*.
-> Optimizing serverless functions (Webpack 5)
-(node:95339) [DEP_WEBPACK_CHUNK_HAS_ENTRY_MODULE] DeprecationWarning: Chunk.hasEntryModule: Use new ChunkGraph API
-```
 
 ## Using next-i18next {/*using-next-i18next*/}
 
@@ -504,24 +414,23 @@ module.exports = {
 
 A working example app can be found [here](https://github.com/layer0-docs/layer0-next-i18n-example).
 
-## Using experimental-serverless-trace {/*using-experimental-serverless-trace*/}
+## Serverless Bundling {/*serverless-bundling*/}
 
-As of **v3.16.6**, Next.js apps built with {{ PRODUCT_NAME }} will use the `experimental-serverless-trace` target by default. The serverless target does not support most modern Next.js features like preview mode, revalidate, fallback. For backwards compatibility reasons, the serverless target will still be supported.
+Next.js has continued to improve how it bundles production builds for deployment on serverless architectures. {{ PRODUCT_NAME }} takes advantage of these improvementsby applying different configuration options depending on the version of Next.js being used:
 
-At build time, {{ PRODUCT_NAME }} will run a trace on your application code and find only the required modules needed to run your production application, then add those to the deployment bundle.
+|Version|Next.js configs applied|
+|---------------|-----------------|
+| Next.js < 12.2.0 | `target: 'experimental-serverless-trace'` |
+| Next.js >= 12.2.0 | `output: 'standalone'` |
 
-## Next.js version 12 and Next.js Middleware (BETA) {/*section_next_js_version_12_and_next_js_middleware__beta_*/}
+For backwards compatibility, {{ PRODUCT_NAME }} will also respect `target: 'serverless'` in your next.config.js for Next.js versions prior to 12.0.0.
 
-As of Next.js version 12 the `serverless` and `experimental-serverless-trace` targets have been deprecated and no new features will be supported for these targets. This includes Next.js Middleware (beta) and React component streaming (alpha). The `{{ PACKAGE_NAME }}/next` connector has historically utilized the `serverless` and `experimental-serverless-trace` targets to create a suitable build output for a serverless runtime.
+<Callout type="info">
+Note that NextRouter.render404 and renderNextPage are retired when using Next.js 12.2.0+. Requests are delegated to a Next.js server instance which will handle determining which page to render based on the request. Prior use cases should now be achieved via using Next.js redirects and rewrites.
+</Callout>
 
-As of **v4.13.0** {{ PRODUCT_NAME }} packages, Next.js apps using Next.js versions 12 or higher can opt into using the default `server` target by explicitly setting `target: 'server'` in the `next.config.js` file. The `{{ PACKAGE_NAME }}/next` connector will then create a minimal server bundle with requests delegated to a Next.js server instance instead of rendering via serverless page functions. When opting into the `server` target you can use Next.js Middleware.
+## Support for Next.js Middleware (BETA) {/*support-for-nextjs-middleware-beta*/}
 
-Future versions of {{ PRODUCT_NAME }} when using Next.js 12 or higher will utilize the `server` target by default.
+{{ PRODUCT_NAME }} supports Next.js middleware starting with Next.js 12.2.0.
 
-### Next.js 12 with server target deprecations {/*nextjs-12-with-server-target-deprecations*/}
-
-`NextRouter.render404` and `renderNextPage` with specifying a page to render are retired when using Next.js 12+ and the `server` target. Requests are delegated to a Next.js server instance which will handle determining which page to render based on the request. Prior use cases should now be achieved via using Next.js redirects and rewrites.
-
-### Middleware caveats {/*middleware-caveats*/}
-
-When using Next.js Middleware it should be noted that the middleware functions are only executed at the serverless layer, ie after edge cache. Middleware that you want to execute on each request needs to have caching disabled explicitly for the route that the middleware is configured to run for. Some Middleware use cases such as rewriting the request to another route would be fine to cache. These use cases need to be evaluated on a per route basis with caching enabled/disabled based on the desired result.
+When using Next.js middleware it should be noted that the middleware functions are only executed at the serverless layer, after the edge cache. Middleware that you want to execute on each request needs to have caching disabled explicitly for the route on which the middleware is enabled. Some Middleware use cases such as rewriting the request to another route would be fine to cache. These use cases need to be evaluated on a per route basis with caching enabled/disabled based on the desired result.

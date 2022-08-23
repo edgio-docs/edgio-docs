@@ -133,8 +133,8 @@ export default function GetStarted({children}: {children: React.ReactNode}) {
         />
         <GetStartedCard
           icon={IconSecurity}
-          title={PRODUCT_SECURITY}
-          subtitle={`${PRODUCT} ${PRODUCT_SECURITY} keeps your apps protected without sacrificing performance.`}
+          title="Security"
+          subtitle={`Protect your web applications without sacrificing performance.`}
           href="/guides/app_security/getting_started"
           hrefText="Learn More"
         />

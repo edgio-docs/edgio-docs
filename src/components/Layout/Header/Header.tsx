@@ -3,8 +3,8 @@ import Image from 'next/image';
 import Link from 'next/link';
 import styled from 'styled-components';
 
-import EdgioDark from '../../../../public/images/home/edgio-dark.png';
-import EdgioLight from '../../../../public/images/home/edgio-light.png';
+import EdgioDark from '../../../../public/images/home/edgio-dark.webp';
+import EdgioLight from '../../../../public/images/home/edgio-light.webp';
 import NoSSRWrapper from '../NoSSRWrapper';
 
 import {IconHamburger} from 'components/Icon/IconHamburger';
@@ -82,6 +82,12 @@ const StyledHeader = styled.header`
       font-weight: 600;
       border-radius: 4px;
     }
+  }
+
+  .search-form__box {
+    --dimension: 32px;
+    width: var(--dimension);
+    height: var(--dimension);
   }
 
   button[class*='mobile-menu'] {
@@ -189,7 +195,7 @@ export default function Header({
       <div className="col-1">
         <div id="desktop">
           <Link href="/" passHref>
-            <a>
+            <a aria-label="go to the hompage">
               <div className="logo-box" id="light-theme">
                 <Image
                   src={EdgioDark}
@@ -254,6 +260,7 @@ export default function Header({
           </div>
           <ToggleTheme />
           <button
+            aria-label="expand the side menu"
             type="button"
             className="mobile-menu"
             onClick={() => setShowSidebar(!showSidebar)}>
@@ -270,6 +277,7 @@ function ToggleTheme() {
   return (
     <>
       <button
+        aria-label="switch to dark theme"
         type="button"
         className="theme-switcher"
         id="light-theme"
@@ -279,6 +287,7 @@ function ToggleTheme() {
         {darkSwitchIcon}
       </button>
       <button
+        aria-label="switch to light theme"
         type="button"
         className="theme-switcher"
         id="dark-theme"

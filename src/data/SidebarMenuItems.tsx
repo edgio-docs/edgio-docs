@@ -34,6 +34,8 @@ import {
   IconFolderDark,
   IconFrontity,
   IconGatsby,
+  IconGear,
+  IconGearDark,
   IconGridsome,
   IconGridsomeDark,
   IconHexo,
@@ -92,8 +94,6 @@ import {
   IconZola,
   IconZolaDark,
 } from '../components/Icon';
-
-import {IconGear, IconGearDark} from 'components/Icon/IconGear';
 
 export interface IRoute {
   title: string;

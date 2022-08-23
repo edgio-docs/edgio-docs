@@ -13,7 +13,7 @@ export default function Image({src, alt}: {src: string; alt: string}) {
   return (
     <StyledComp>
       {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img {...{src, alt}} />
+      <img {...{src, alt, loading: 'lazy'}} />
     </StyledComp>
   );
 }

@@ -84,6 +84,12 @@ const StyledHeader = styled.header`
     }
   }
 
+  .search-form__box {
+    --dimension: 32px;
+    width: var(--dimension);
+    height: var(--dimension);
+  }
+
   button[class*='mobile-menu'] {
     background-color: transparent;
     border: none;

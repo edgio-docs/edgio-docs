@@ -340,7 +340,7 @@ mode](#enforcement-mode) will be enforced. Enforcement is triggered when:
 The available enforcement actions are described below.
 -   **Alert Only:** Rate limited requests or detected threats will only generate an alert.
 
-    <Callout type="info">
+    <Callout type="tip">
 
       Our recommendation for testing new configurations is to use [audit mode](#enforcement-mode) instead of applying the `Alert Only` enforcement action to a rule running in production mode.  
 
@@ -355,7 +355,7 @@ The available enforcement actions are described below.
 -   **Custom Response:** Rate limited requests or detected threats will receive a custom response.  
     -   **Response Body:** Define the payload that will be delivered to the client in response to a detected threat.
 
-        <Callout type="info">
+        <Callout type="tip">
 
           This option supports the use of [event variables](#event-variables) to customize the response according to the detected threat.
 
@@ -373,21 +373,25 @@ The available enforcement actions are described below.
     -   **HTTP Status Code:** Defines the HTTP status code that will be sent to the client.  
     -   **Custom Response Headers:** Defines one or more response headers that will be sent to the client. Define each custom response header on a separate line.
 
-    **Syntax:** 
+        **Syntax:** 
 
-    `<Name>:<Value>`
+        `<Name>:<Value>`
 
-    **Example:** 
+        **Example:** 
 
-    `MyCustomHeader: True`
+        `MyCustomHeader: True`
 
-    <Callback type="tip">
-      This option supports the use of [event variables](#event-variables) to customize the response according to the detected threat. 
-    </Callback>
+        <Callout type="tip">
 
-    <Callback type="tip">
-      All characters, including spaces, defined before or after the colon will be treated as a part of the specified header name or value, respectively.           
-    </Callback>
+          This option supports the use of [event variables](#event-variables) to customize the response according to the detected threat.
+
+        </Callout>
+
+        <Callout type="info">
+
+          All characters, including spaces, defined before or after the colon will be treated as a part of the specified header name or value, respectively.
+
+        </Callout>
 
 -   **Drop request:** Rate rules only. Rate limited requests will be dropped and the client will receive the following response:  
     -   **HTTP status code:** `503 Service Unavailable`
@@ -557,14 +561,14 @@ configurations.
     <Callout type="info">
 
       Filter the Threats dashboard by the above access rule or the
-      *audit* profile type to track detected threats.
+      `audit` profile type to track detected threats.
 
     </Callout>
 
     <Callout type="info">
 
       Disable auditing by setting the **Audit Managed Rule** option
-      to *No Audit Rule*.
+      to `No Audit Rule`.
 
     </Callout>
 
@@ -716,7 +720,7 @@ configurations.
     <Callout type="info">
 
       Disable auditing by setting the **Audit Custom Rule** option
-      to *No Audit Rule*.
+      to `No Audit Rule`.
 
     </Callout>
 

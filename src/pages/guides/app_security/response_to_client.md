@@ -17,9 +17,9 @@ experience for each possible configuration is described below.
 -   **Alert:** Our service treats the request as if it had not been screened. The client will be unaware that the request was screened by {{ PRODUCT_SECURITY }}.
 -   **Block:** The user experience for requests blocked by {{ PRODUCT_SECURITY }} is described below.
     -   The user will receive a `403 Forbidden` instead of the requested asset.
-    -   The response for the blocked request will include an additional response header. The name of this response header is defined by the corresponding rule's `Response Header Name` option. This response header will be set to *403*.
+    -   The response for the blocked request will include an additional response header. The name of this response header is defined by the corresponding rule's `Response Header Name` option. This response header will be set to `403`.
 
-    **Default {{ PRODUCT_SECURITY }} response header name/value:**
+    **Default security response header name/value:**
 
     `X-EC-Security-Audit: 403`
 

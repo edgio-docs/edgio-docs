@@ -20,7 +20,7 @@ An access rule identifies legitimate traffic and threats by:
 
 <Callout type="tip">
 
-  The recommended approach for setting up geoblocking is to create a blacklist for Country, Country Subdivision, or both.
+  The recommended approach for setting up geoblocking is to create a blacklist for Country or Country Subdivision.
 
 </Callout>
 
@@ -140,7 +140,7 @@ The purpose of a whitelist is to identify legitimate traffic.
 -   Traffic is whitelisted if it satisfies at least one whitelist
     criterion.
 -   {{ PRODUCT_SECURITY }} automatically approves the delivery of whitelisted requests
-    without inspecting them. As a result, all other {{ PRODUCT_SECURITY }} requirements are
+    without inspecting them. As a result, all other security requirements are
     not applicable to whitelisted traffic.
 
 ### Accesslists {/*accesslists*/}
@@ -219,7 +219,7 @@ The purpose of a blacklist is to describe unwanted traffic.
 
     </Callout>
 
--   Unlike {{ PRODUCT_SECURITY }} rule sets, access controls are enforced regardless of
+-   Unlike managed rules, access controls are enforced regardless of
     whether the requested content will be served from cache or your web
     server.
 

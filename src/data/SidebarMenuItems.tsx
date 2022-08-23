@@ -152,7 +152,7 @@ const SidebarMenuItems: ISidebarMenuItems = [
           path: '/guides/jamstack_getting_started',
         },
         {
-          title: PRODUCT_SECURITY,
+          title: 'Security',
           path: '/guides/app_security/getting_started',
         },
         {
@@ -561,7 +561,7 @@ const SidebarMenuItems: ISidebarMenuItems = [
       ],
     },
     {
-      title: PRODUCT_SECURITY,
+      title: 'Security',
       icon: <IconSecurityPlain />,
       iconDark: <IconSecurityPlainDark />,
       path: 'security',

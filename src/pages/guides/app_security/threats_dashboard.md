@@ -17,7 +17,7 @@ of an analysis provides the means through which you may:
 
 <Callout type="info">
 
-  Log data is retained for 30 days for most {{ PRODUCT_SECURITY }} solutions. The exception
+  Log data is retained for 30 days for most security solutions. The exception
   is {{ PRODUCT_SECURITY }} Insights which only retains data for 7 days.
 
 </Callout>

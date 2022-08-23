@@ -2,7 +2,7 @@
 title: Basic Setup
 ---
 
-Set up {{ PRODUCT_SECURITY }} by defining security rules and then creating a Security Application
+Secure your web applications by defining security rules and then creating a Security Application
 configuration that enforces them. After which, perform
 near-real-time threat monitoring through the dashboard.
 
@@ -140,7 +140,7 @@ without impacting legitimate traffic.
 
 ## Best Practices {/*best-practices*/}
 
-Best practices for setting up {{ PRODUCT_SECURITY }} vary by organization due to a variety
+Best practices for setting up security vary by organization due to a variety
 of factors, such as those listed below.
 
 -   **Web Applications:** The type of web applications running on the origin server may affect the level of protection that may be applied through {{ PRODUCT_SECURITY }}.
@@ -155,13 +155,13 @@ of factors, such as those listed below.
     Both country and referrer access controls may potentially be applied to a site that requires authentication and only caters to customers in the United States. However, this configuration would be too restrictive for a site that has worldwide users from various traffic sources.
 -   **Acceptable Risk:** {{ PRODUCT_SECURITY }} allows the flexibility to determine the degree to which a site will be protected. A balance must be found between security and allowing the flow of legitimate traffic. A major factor in this balancing act is the degree to which an organization is able to cope with risk.
 
-As a result of the above factors, it may make sense to tailor {{ PRODUCT_SECURITY }} by
+As a result of the above factors, it may make sense to tailor security by
 request type. This may require a Security Application
 configuration and security rules for each custom set of security requirements.
 
 ## Recommended Setup {/*recommended-setup*/}
 
-The recommended approach for setting up {{ PRODUCT_SECURITY }} is described below.
+The recommended approach for setting up security is described below.
 
 1.  Create an access rule with a minimal set of whitelisted access
     controls.

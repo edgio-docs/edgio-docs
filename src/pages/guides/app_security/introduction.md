@@ -1,5 +1,5 @@
 ---
-title: Introduction to {{ PRODUCT_SECURITY }}
+title: Introduction to Security 
 ---
 
 Many web sites, web applications, and web servers receive and process

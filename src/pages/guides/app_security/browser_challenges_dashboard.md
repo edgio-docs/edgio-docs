@@ -7,7 +7,7 @@ browser challenges.
 
 <Callout type="info">
 
-  Log data is retained for 30 days for most {{ PRODUCT_SECURITY }} solutions. The exception
+  Log data is retained for 30 days for most our security solutions. The exception
   is {{ PRODUCT_SECURITY }} Insights which only retains data for 7 days.
 
 </Callout>

@@ -59,7 +59,7 @@ cannot be exceeded by valid requests.
 
     <Callout type="info">
 
-      For the purpose of this setting, file size is calculated from the body (i.e., message or payload) of `POST` requests with a `Content-Type` header that is set to *multipart/form-data*.
+      For the purpose of this setting, file size is calculated from the body (i.e., message or payload) of `POST` requests with a `Content-Type` header that is set to `multipart/form-data`.
 
     </Callout>
 

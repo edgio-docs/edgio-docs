@@ -386,7 +386,7 @@ We will now examine how the **Count** option affects comparisons
 for this configuration.
 -   **Disabled:** If the **Count** option has been
     disabled on the variable, then {{ PRODUCT_SECURITY }} will compare the value of the
-    `Authentication` request header to *1*.
+    `Authentication` request header to `1`.
 -   **Enabled:** If the **Count** option has been enabled on
     the variable, then {{ PRODUCT_SECURITY }} will compare the number of times that the
     `Authentication` request header occurred in the request to

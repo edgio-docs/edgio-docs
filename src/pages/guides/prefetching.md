@@ -38,7 +38,7 @@ import install from '{{ PACKAGE_NAME }}/prefetch/window/install';
 install();
 ```
 
-## Configuring Routes for Prefetching {/*configuring-routes-for-prefetching*/}
+## Configuring Routes for Prefetching {/* configuring-routes-for-prefetching */}
 
 To ensure that prefetch traffic isn't passed on to your origin, {{ PRODUCT_NAME }} will only serve prefetch requests when a cached response is available at the edge. In order to allow a URL to be prefetched, configure a route that caches responses at the edge and in the service worker. In this example we define a route that caches product API calls for one hour:
 
@@ -60,6 +60,12 @@ export default new Router()
       },
     });
   });
+```
+
+Note that if you prefetch a URL without setting `browser.serviceWorkerSeconds` as shown above, the response will still be prefetched and cached by the service worker with a short TTL (2 minutes by default). You can change the default TTL by setting `defaultMaxAgeSeconds` when initializing the Prefetcher instance in your service worker:
+
+```js
+const prefetcher = new Prefetcher({defaultMaxAgeSeconds: 60 * 10}); // set the default TTL to 10 minutes
 ```
 
 ## Prefetching a URL {/* prefetching-a-url */}

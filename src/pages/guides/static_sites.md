@@ -18,14 +18,14 @@ Here are a few examples of common static sites served by {{ PRODUCT }}.
 
 <ExampleButtons
   title="(Static) React"
-  siteUrl="https://layer0-docs-layer0-static-react-example-default.layer0-limelight.link/"
-  repoUrl="https://github.com/layer0-docs/static-react-example" 
+  siteUrl="https://layer0-docs-layer0-static-react-example-default.layer0-limelight.link"
+  repoUrl="https://github.com/layer0-docs/layer0-static-react-example" 
   deployFromRepo />
 
 <ExampleButtons
   title="(Static) Vue.js"
-  siteUrl="https://layer0-docs-layer0-static-vuejs-example-default.layer0-limelight.link"
-  repoUrl="https://github.com/layer0-docs/static-vuejs-example" 
+  siteUrl="https://layer0-docs-layer0-vue3-example-default.layer0-limelight.link"
+  repoUrl="https://github.com/layer0-docs/layer0-vue3-example" 
   deployFromRepo />
 
 {{ PREREQ }}

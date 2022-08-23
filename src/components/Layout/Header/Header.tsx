@@ -3,8 +3,8 @@ import Image from 'next/image';
 import Link from 'next/link';
 import styled from 'styled-components';
 
-import EdgioDark from '../../../../public/images/home/edgio-dark.png';
-import EdgioLight from '../../../../public/images/home/edgio-light.png';
+import EdgioDark from '../../../../public/images/home/edgio-dark.webp';
+import EdgioLight from '../../../../public/images/home/edgio-light.webp';
 import NoSSRWrapper from '../NoSSRWrapper';
 
 import {IconHamburger} from 'components/Icon/IconHamburger';

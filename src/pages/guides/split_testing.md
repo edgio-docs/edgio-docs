@@ -141,3 +141,19 @@ When split tests are enabled, all metrics and caching are recorded under the env
 ## Compatibility with A/B Testing Tools {/*compatibility-with-ab-testing-tools*/}
 
 {{ PRODUCT_NAME }} split testing routes traffic at the edge based on a variety of criteria. It does not identify user cohorts (although it can split on cohorts identified by another tool) or report business metrics about A/B tests since there are many great tools for that. We recommend you utilize an A/B testing tool that supports server-side integration such as Monetate, Optimizely, Adobe Test, Google Experiments, or Visual Web Optimizer. These tools will set a cookie or header that can be used to split traffic using the appropriate criteria described above.
+
+## Analytics Integration {/*analytics-integration*/}
+
+In order to analyze the results of your A/B test, you will need to alter your analytics code to report the currently live segment for an action, session, and/or page view that you are interested in tracking. The exact integration steps depend on your analytics package and are beyond the scope of this document. However some key considerations to keep in mind for your implementation:
+
+In some {{ PRODUCT }} implementations where there is a mix between "legacy" and modern PWA pages, these legacy pages may incorrectly overwrite tracking of the entire session as legacy, when it should be recorded as a PWA session. One example of this may be an ecommerce site, the path to product (homepage, category page, and product page) may be a PWA, but the checkout is powered by the legacy site.  Make sure you test flows where the user migrates between "legacy" and PWA pages to make sure that your analytics software is recording these pages correctly.
+
+Note that you will also have to carefully consider when you record which experience the user is in and how you report it to your analytics. For these reasons we highly recommend thorough testing of analytics in an A/B test.
+
+### Caveats {/*caveats*/}
+
+Based on the above example of an ecommerce PWA, if a shopper adds something to the cart and then you change the traffic percentage before they return to checkout, the transaction could get credited to the wrong experience. The correct experience to credit in this scenario depends on your test and the metrics you are measuring. For example, consider a shopper who is on variant A when they add something to the cart, and then return later to checkout and are assigned variant B. If your A/B test involved a change to "path to product" (i.e. home, category, or product pages) then you should credit the transaction to variant A. However if the A/B test involved a change to the checkout you should credit the transaction to variant B.
+
+Be sure you understand the scope and behavior of the variables you are using to track the A or B variant in your analytics package. For example, in Google Analytics, a custom variable can be applied using "hit", "session", or "user level" scope. In the preceding example of the shopper adding something to the cart, you would likely want to use a "session" scoped variable. However, there are scenarios where a "hit" scope variable may be more appropriate. 
+
+While other methods are possible, our recommendation is that implementers should use the `{{ COOKIE_PREFIX }}_destination` cookie when determining which segment the user is in for the purposes of analytics.  

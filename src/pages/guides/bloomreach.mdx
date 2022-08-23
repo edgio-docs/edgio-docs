@@ -70,9 +70,11 @@ From within the project, let's configure and review a couple of items. This is a
 Duplicate `.env.dist` and name it `.env`. From within the file we need to configure these top 4 variabless.
 
 <Callout type="info">
+
   The values below can be used to access the {{PRODUCT}} sandbox. If you change
   these to your own, they may not match the Bloomreach application
   configuration.
+
 </Callout>
 
 ```.env
@@ -94,8 +96,10 @@ REACT_APP_SM_CUSTOM_VARIANT_PURCHASE_PRICE_FIELD=
 ```
 
 <Callout type="info">
+
   If you have not yet deployed the project to {{PRODUCT}}, you will not have a
   deployed URL. Route requests to localhost during local development.
+
 </Callout>
 
 - `REACT_APP_BRXM_ENDPOINT` - the deployed URL for your {{ PRODUCT }} project.
@@ -135,11 +139,9 @@ If you are already a Bloomreach customer with an existing configuration, you can
 Bloomreach [documentation](https://documentation.bloomreach.com/) can help provide more specific answers to questions regarding that service. This guide focuses on the Bloomreach [Content](https://documentation.bloomreach.com/content/docs/get-started-with-bloomreach-content) product.
 
 <Callout type="info">
-  Bloomreach also provides a set of{' '}
-  <a href="https://documentation.bloomreach.com/content/docs/log-in-to-the-developer-environment">
-    sample credentials
-  </a>{' '}
-  that can be used until you have access to your own instance.
+
+  Bloomreach also provides a set of <a href="https://documentation.bloomreach.com/content/docs/log-in-to-the-developer-environment">sample credentials</a> that can be used until you have access to your own instance.
+
 </Callout>
 
 ### Create Bloomreach Content Project {/*create-bloomreach-content-project*/}
@@ -246,7 +248,11 @@ Note the following:
 - The mapping property maps your React components their counterparts in the JSON representation.
 - A Content component (which you will implement in a moment) is imported and mapped.
 
-<Callout type="info">Change the `endpoint` url to your own instance.</Callout>
+<Callout type="info">
+
+  Change the `endpoint` url to your own instance.
+
+</Callout>
 
 4. Add a content component
 

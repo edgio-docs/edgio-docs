@@ -5,7 +5,9 @@ title: Managed Rule Groups
 ## {{ PRODUCT }} Managed Rules {/*layer0-managed-rules*/}
 
 <Callout type="danger">
-	{{ PRODUCT_NAME }} recommends utilizing this rule group for all WAF use cases.
+
+  {{ PRODUCT_NAME }} recommends utilizing this rule group for all WAF use cases.
+
 </Callout>
 
 | Rule Name                           | Description                                                                                                                                                                                                                                                                                                                          | Log Name       |
@@ -41,7 +43,9 @@ title: Managed Rule Groups
 ## Bad Input Rules {/*bad-input-rules*/}
 
 <Callout type="danger">
-	{{ PRODUCT_NAME }} recommends enabling the 'Bad Input - Log4J' rule on all WAF applications.
+
+  {{ PRODUCT_NAME }} recommends enabling the 'Bad Input - Log4J' rule on all WAF applications.
+
 </Callout>
 
 | Rule Name            | Description                                                                                                                                                                                                                                                             | Log Name      |

@@ -32,8 +32,7 @@ may be performed, which are:
 **To view the Threats dashboard**
 1.  Navigate to the **Threats** dashboard (**Threats** tab of the **Overview**
     page).
-    1.  From the {{ PORTAL }}, click on the **Security** tab.
-    2.  From the navigation pane, click **Overview**.
+    {{ SECURITY_NAV }} **Overview**.
     3.  Verify that the **Threats** tab is active.
 
     The dashboard will display a chart showing recent violations of your

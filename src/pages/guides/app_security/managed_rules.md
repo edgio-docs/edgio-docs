@@ -305,8 +305,7 @@ You may create, modify, and delete managed rules.
 
 **To create a managed rule**
 1.  Navigate to the **Managed Rules** page.
-    1.  From the {{ PORTAL }}, click on the **Security** tab.
-    2.  From the navigation pane, click **Managed Rules**.
+    {{ SECURITY_NAV }} **Managed Rules**.
 2.  Click **Add Managed Rule**.
 3.  In the **Name** option, type the unique name by which this
     managed rule will be identified. This name should be sufficiently
@@ -417,8 +416,7 @@ You may create, modify, and delete managed rules.
 </Callout>
 
 1.  Navigate to the **Managed Rules** page.
-    1.  From the {{ PORTAL }}, click on the **Security** tab.
-    2.  From the navigation pane, click **Managed Rules**.
+    {{ SECURITY_NAV }} **Managed Rules**.
 2.  Click on the desired managed rule.
 3.  Make the desired changes.
 4.  Click **Save**.
@@ -437,9 +435,8 @@ You may create, modify, and delete managed rules.
 1.  Check your Security Application configurations to verify
     that the desired managed rule is not in use.
 2.  Navigate to the **Managed Rules** page.
-    1.  From the {{ PORTAL }}, click on the **Security** tab.
-    2.  From the navigation pane, click **Managed Rules**.
-2.  Click on the desired managed rule.
-3.  Click **Delete Managed Rule**.
-4.  Type *DELETE*.
-5.  Click **Delete**.
+    {{ SECURITY_NAV }} **Managed Rules**.
+3.  Click on the desired managed rule.
+4.  Click **Delete Managed Rule**.
+5.  Type *DELETE*.
+6.  Click **Delete**.

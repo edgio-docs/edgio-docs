@@ -435,8 +435,7 @@ You may create, modify, and delete rate rules.
 **To create a rate rule**
 
 1.  Navigate to the **Rate Rules** page.
-    1.  From the {{ PORTAL }}, click on the **Security** tab.
-    2.  From the navigation pane, click **Rate Rules**.
+    {{ SECURITY_NAV }} **Rate Rules**.
 2.  Click **Add Rate Rule**.
 3.  In the **Rule name** option, type the unique name by which
     this rate rule will be identified. This name should be sufficiently
@@ -515,8 +514,7 @@ You may create, modify, and delete rate rules.
 **To modify a rate rule**
 
 1.  Navigate to the **Rate Rules** page.
-    1.  From the {{ PORTAL }}, click on the **Security** tab.
-    2.  From the navigation pane, click **Rate Rules**.
+    {{ SECURITY_NAV }} **Rate Rules**.
 2.  Click on the desired rate rule.
 3.  Make the desired changes.
 4.  Click **Save**.
@@ -535,8 +533,7 @@ delete that Security Application configuration.
 1.  Check your Security Application configurations to verify
     that the desired rate rule is not in use.
 2.  Navigate to the **Rate Rules** page.
-    1.  From the {{ PORTAL }}, click on the **Security** tab.
-    2.  From the navigation pane, click **Rate Rules**.
+    {{ SECURITY_NAV }} **Rate Rules**.
 3.  Click **Delete rate rule**.
 4.  Type *DELETE*.
 5.  Click **Delete**.

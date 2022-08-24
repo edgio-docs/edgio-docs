@@ -391,8 +391,7 @@ You may create, modify, and delete access rules.
 **To create an access rule**
 
 1.  Navigate to the **Access Rules** page.
-    1.  From the {{ PORTAL }}, click on the **Security** tab.
-    2.  From the navigation pane, click **Access Rules**.
+    {{ SECURITY_NAV }} **Access Rules**.
 2.  Click **Add Access Rule**.
 3.  In the **Name** option, type the unique name by which this
     access rule will be identified. This name should be sufficiently
@@ -478,8 +477,7 @@ You may create, modify, and delete access rules.
 **To modify an access rule**
 
 1.  Navigate to the **Access Rules** page.
-    1.  From the {{ PORTAL }}, click on the **Security** tab.
-    2.  From the navigation pane, click **Access Rules**.
+    {{ SECURITY_NAV }} **Access Rules**.
 2.  Click on the desired access rule.
 3.  Make the desired changes.
 4.  Click **Save**.
@@ -498,8 +496,7 @@ You may create, modify, and delete access rules.
 1.  Check your Security Application configurations to verify
     that the desired access rule is not in use.
 2.  Navigate to the **Access Rules** page.
-    1.  From the {{ PORTAL }}, click on the **Security** tab.
-    2.  From the navigation pane, click **Access Rules**.
+    {{ SECURITY_NAV }} **Access Rules**.
 3.  Click **Delete Access Rule**.
 4.  Type **DELETE**.
 5.  Click **Delete**.

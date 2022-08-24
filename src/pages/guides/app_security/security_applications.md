@@ -489,8 +489,7 @@ configurations.
 
 **To create a Security Application configuration**
 1.  Navigate to the **Security Applications** page.
-    1.  From the {{ PORTAL }}, click on the **Security** tab.
-    2.  From the navigation pane, click **Security Applications**.
+    {{ SECURITY_NAV }} **Security Applications**.
 2.  Click **Add New**.
 3.  In the **Name** option, type the unique name by which this
     Security Application configuration will be identified.
@@ -778,8 +777,7 @@ configurations.
 
 **To reorder Security Application configurations**
 1.  Navigate to the **Security Applications** page.
-    1.  From the {{ PORTAL }}, click on the **Security** tab.
-    2.  From the navigation pane, click **Security Applications**.
+    {{ SECURITY_NAV }} **Security Applications**.
 2.  Drag the desired
     configuration's ![](/images/icons/drag.png) icon
     to the desired position.
@@ -803,8 +801,7 @@ configurations.
 
 **To modify a Security Application configuration**
 1.  Navigate to the **Security Applications** page.
-    1.  From the {{ PORTAL }}, click on the **Security** tab.
-    2.  From the navigation pane, click **Security Applications**.
+    {{ SECURITY_NAV }} **Security Applications**.
 2.  Click on the desired Security Application configuration.
 3.  Make the desired changes.
 4.  Click **Save**.
@@ -813,8 +810,7 @@ configurations.
 
 **To delete a Security Application configuration**
 1.  Navigate to the **Security Applications** page.
-    1.  From the {{ PORTAL }}, click on the **Security** tab.
-    2.  From the navigation pane, click **Security Applications**.
+    {{ SECURITY_NAV }} **Security Applications**.
 2.  Click on the desired Security Application configuration.
 3.  Click **Delete Security Application**.
 4.  Type *DELETE*.

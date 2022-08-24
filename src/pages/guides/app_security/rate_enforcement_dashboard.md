@@ -50,8 +50,7 @@ analysis may be performed, which are:
 
 1.  Navigate to the **Rate Enforcement** dashboard (**Rate Enforcement** tab of the **Overview**
     page).
-    1.  From the {{ PORTAL }}, click on the **Security** tab.
-    2.  From the navigation pane, click **Overview**.
+    {{ SECURITY_NAV }} **Overview**.
     3.  Click **Rate Enforcement**.
 
     The dashboard will display a chart showing recent enforcements of

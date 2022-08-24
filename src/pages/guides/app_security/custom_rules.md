@@ -430,8 +430,7 @@ You may create, modify, and delete custom rule sets.
 
 **To create a custom rule set**
 1.  Navigate to the **Custom Rules** page.
-    1.  From the {{ PORTAL }}, click on the **Security** tab.
-    2.  From the navigation pane, click **Custom Rules**.
+    {{ SECURITY_NAV }} **Custom Rules**.
 2.  Click **Add Custom Rule Profile**.
 3.  In the **Name** option, type the unique name by which this
     custom rule set will be identified. This name should be sufficiently
@@ -516,8 +515,7 @@ You may create, modify, and delete custom rule sets.
 
 **To modify a custom rule set**
 1.  Navigate to the **Custom Rules** page.
-    1.  From the {{ PORTAL }}, click on the **Security** tab.
-    2.  From the navigation pane, click **Custom Rules**.
+    {{ SECURITY_NAV }} **Custom Rules**.
 2.  Click on the desired custom rule set.
 3.  Make the desired changes.
 
@@ -551,9 +549,8 @@ You may create, modify, and delete custom rule sets.
 1.  Check your Security Application configurations to verify
     that the desired custom rule is not in use.
 2.  Navigate to the **Custom Rules** page.
-    1.  From the {{ PORTAL }}, click on the **Security** tab.
-    2.  From the navigation pane, click **Custom Rules**.
-2.  Click on the desired custom rule set.
-3.  Click **Delete Custom Rule Profile**.
-4.  Type *DELETE*.
-5.  Click **Delete**.
+    {{ SECURITY_NAV }} **Custom Rules**.
+3.  Click on the desired custom rule set.
+4.  Click **Delete Custom Rule Profile**.
+5.  Type *DELETE*.
+6.  Click **Delete**.

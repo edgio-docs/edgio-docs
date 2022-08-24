@@ -37,9 +37,9 @@ and managed rule are provided below.
 
 <Callout type="tip">
 
-  This tutorial covers how to set up a basic configuration. However, you may use a [custom rule](custom_rules) to identify
+  This tutorial covers how to set up a basic security configuration. However, you may use a [custom rule](custom_rules) to identify
   threats using custom criteria that takes into account your site's
-  traffic profile to avoid false positives.
+  traffic profile to identify specific threats and to avoid false positives.
 
 </Callout>
 
@@ -49,8 +49,7 @@ Create an access rule that identifies traffic that should be allowed,
 denied, or screened through whitelists, accesslists, and blacklists.
 
 1.  Navigate to the **Access Rules** page.
-    1.  From the {{ PORTAL }}, click on the **Security** tab.
-    2.  From the navigation pane, click **Access Rules**.
+    {{ SECURITY_NAV }} **Access Rules**.
 2.  Click **Add Access Rule**.
 3.  In the **Name** option, type *My Access Rule*.
 4.  From the **Add an Access Control** option, select **IP**.
@@ -63,8 +62,7 @@ denied, or screened through whitelists, accesslists, and blacklists.
 Use a rate rule to restrict the flow of traffic to your application.
 
 1.  Navigate to the **Rate Rules** page.
-    1.  From the {{ PORTAL }}, click on the **Security** tab.
-    2.  From the navigation pane, click **Rate Rules**.
+    {{ SECURITY_NAV }} **Rate Rules**.
 2.  Click **Add Rate Rule**.
 3.  In the **Rule name** option, type *My Rate Limit*.
 4.  In the **Apply rate limit to** option, select **IP
@@ -80,8 +78,7 @@ Create a managed rule that leverages predefined rules to detect
 application layer attacks.
 
 1.  Navigate to the **Managed Rules** page.
-    1.  From the {{ PORTAL }}, click on the **Security** tab.
-    2.  From the navigation pane, click **Managed Rules**.
+    {{ SECURITY_NAV }} **Managed Rules**.
 2.  Click **Add Managed Rule**.
 3.  In the **Name** option, type *My Managed Rule*.
 4.  Click the **Policies** tab. In the **Ruleset** option,
@@ -100,8 +97,7 @@ platforms.
 A Security Application configuration defines the set of traffic that will be inspected and identifies the security policy that will be applied to it. Instructions on how to create a Security Application configuration for all of your site's traffic is provided below.
 
 1.  Navigate to the **Security Applications** page.
-    1.  From the {{ PORTAL }}, click on the **Security** tab.
-    2.  From the navigation pane, click **Security Applications**.
+    {{ SECURITY_NAV }} **Security Applications**.
 2.  Click **Add New**.
 3.  In the **Name** option, type *My Application*.
 4.  From the **Rules **section, click **Access Rule**.
@@ -141,8 +137,9 @@ Security Application configuration before performing data analysis.
 
 Identify trends by reviewing the Threats dashboard's graph and detailed alert data.
 
-1.  From the {{ PORTAL }}, click on the **Security** tab.
-2.  From the navigation pane, click **Overview**.
+1.  From the {{ PORTAL }}, click on the **AppOps** tab.
+2.  Click **Open on my.edgecast.com** to load the **Security** page.
+3.  From the **Security** page's navigation pane, click **Overview**.
 3.  Verify that the **Threats** tab is active.
 4.  Review the graph at the top of the dashboard. Check for an abnormally high number of detected threats.
 

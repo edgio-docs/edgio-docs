@@ -34,8 +34,7 @@ limit analysis may be performed, which are:
 
 1.  Navigate to the **Rates** dashboard (**Rates** tab of the **Overview**
     page).
-    1.  From the {{ PORTAL }}, click on the **Security** tab.
-    2.  From the navigation pane, click **Overview**.
+    {{ SECURITY_NAV }} **Overview**.
     3.  Click **Rates**.
 
     The Rates dashboard will display a chart showing recent violations

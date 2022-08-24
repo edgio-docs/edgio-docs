@@ -22,8 +22,7 @@ which analysis may be performed, which are:
 **To view the Browser Challenges dashboard**
 1.  Navigate to the **Browser Challenges** dashboard (**Browser Challenges** tab of the **Overview**
     page).
-    1.  From the {{ PORTAL }}, click on the **Security** tab.
-    2.  From the navigation pane, click **Overview**.
+    {{ SECURITY_NAV }} **Overview**.
     3.  Click **Browser Challenges**.
 
     The Browser Challenges dashboard will display a chart showing recent

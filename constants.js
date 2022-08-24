@@ -109,6 +109,10 @@ yarn global add ${PACKAGE_NAME}/cli
 \`\`\`
 `;
 
+const SECURITY_NAV = `1.  From the ${PORTAL}, click on the **AppOps** tab.
+    2.  Click **Open on my.edgecast.com** to load the **Security** page.
+    3.  From the **Security** page's navigation pane, click `;
+
 const PARTNERS_CONTACT = `partner@llnw.com`;
 
 module.exports = {
@@ -148,6 +152,7 @@ module.exports = {
   NODE_VERSION,
   PACKAGE_NAME,
   PARTNERS_CONTACT,
+  SECURITY_NAV,
   SIGN_UP,
   STARTER_NAME,
   STATUS_URL,

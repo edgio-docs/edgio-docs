@@ -410,8 +410,7 @@ You may create, modify, and delete bot rule sets.
 
 **To create a bot rule set**
 1.  Navigate to the **Bot Rules** page.
-    1.  From the {{ PORTAL }}, click on the **Security** tab.
-    2.  From the navigation pane, click **Bot Rules**.
+    {{ SECURITY_NAV }} **Bot Rules**.
 2.  Click **Add Bot Rule**.
 3.  In the **Name** option, type the unique name by which this
     bot rule set will be identified. This name should be sufficiently
@@ -457,8 +456,7 @@ You may create, modify, and delete bot rule sets.
 
 **To modify a bot rule set**
 1.  Navigate to the **Bot Rules** page.
-    1.  From the {{ PORTAL }}, click on the **Security** tab.
-    2.  From the navigation pane, click **Bot Rules**.
+    {{ SECURITY_NAV }} **Bot Rules**.
 2.  Click on the desired bot rule set.
 3.  Make the desired changes.
 
@@ -498,9 +496,8 @@ You may create, modify, and delete bot rule sets.
 1.  Check your Security Application configurations to verify
     that the desired bot rule is not in use.
 2.  Navigate to the **Bot Rules** page.
-    1.  From the {{ PORTAL }}, click on the **Security** tab.
-    2.  From the navigation pane, click **Bot Rules**.
-2.  Click on the desired bot rule set.
-3.  Click **Delete Bot Rule Profile**.
-4.  Type *DELETE*.
-5.  Click **Delete**.
+    {{ SECURITY_NAV }} **Bot Rules**.
+3.  Click on the desired bot rule set.
+4.  Click **Delete Bot Rule Profile**.
+5.  Type *DELETE*.
+6.  Click **Delete**.

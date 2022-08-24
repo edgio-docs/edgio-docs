@@ -2,7 +2,7 @@
 title: Vue Storefront Next
 ---
 
-Follow these steps to deploy a Vue Storefront Next app on {{ PRODUCT_NAME }}. As of now {{ PRODUCT_NAME }} is only compatible with the [Vue Storefront Next CLI tool](https://docs-next.vuestorefront.io/commercetools/getting-started.html#with-vue-storefront-cli-recommended).
+Follow these steps to deploy a Vue Storefront Next app on {{ PRODUCT_NAME }}. As of now {{ PRODUCT_NAME }} is only compatible with the [Vue Storefront Next CLI tool](https://docs.vuestorefront.io/v2/getting-started/installation.html).
 
 For adding {{ PRODUCT_NAME }} to Vue Storefront 1 app follow this [guide](/guides/vsf1).
 
@@ -26,13 +26,33 @@ If you have not already done so, install the [{{ PRODUCT_NAME }} CLI](cli)
 npm i -g {{ PACKAGE_NAME }}/cli # yarn global add {{ PACKAGE_NAME }}/cli
 ```
 
-## Install the VSF CLI {/*install-the-vsf-cli*/}
+## Run the VSF CLI {/*run-the-vsf-cli*/}
 
 The Vue Storefront CLI tool will generate a preconfigured boilerplate project for you. Use these commands to create a new project and update to the latest dependencies.
 
 ```bash
-npm i -g @vue-storefront/cli@next
-vsf init <project-name>
+npx @vue-storefront/cli generate store
+```
+
+When prompted, enter the name of your project and the integration template:
+
+```
+$ npx @vue-storefront/cli generate store
+? What's your project name? new-vsf-app
+? Choose an integration template: (Use arrow keys)
+❯ Shopify 
+  Magento 2 
+  Vendure 
+  Kibo Commerce (beta) 
+  Odoo 
+  Prestashop 
+  Spree 
+(Move up and down to reveal more choices)
+```
+
+Once the generator has completed, go into the new project directory and install the Node dependencies:
+
+```bash
 cd <project-name>
 npm install
 ```

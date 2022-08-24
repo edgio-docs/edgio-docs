@@ -23,7 +23,7 @@ export default function DeveloperTools() {
       <SectionHeader
         Icon={IconCode}
         title="Developer Tools"
-        subtitle={`Tools that help developer understand how their site interacts with ${PRODUCT}.`}
+        subtitle={`Use these tools to interact with ${PRODUCT} and gain insight into how it is accelerating your site.`}
       />
 
       <div className="route-items">

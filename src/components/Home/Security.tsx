@@ -2,31 +2,32 @@ import sortBy from 'lodash/sortBy';
 import Link from 'next/link';
 import styled from 'styled-components';
 
-import {PRODUCT, PRODUCT_EDGE} from '../../../constants';
+import {PRODUCT} from '../../../constants';
 import {getChildrenRoutesFromSidebarMenuItems} from '../../utils/getChildrenRoutesFromSidebarMenuItems';
-import {IconServer} from '../Icon/IconServer';
+import {IconSecurity} from '../Icon/IconSecurity';
 
 import {StyledFeatureSection} from './FeatureSection';
 import SectionHeader from './SectionHeader';
 
 const StyledComp = styled(StyledFeatureSection)``;
-export default function Cdn() {
-  const parentPath = 'cdn';
+
+export default function Security() {
+  const parentPath = 'security';
   const allRoutes = getChildrenRoutesFromSidebarMenuItems(parentPath);
   const allRoutesSorted = sortBy(allRoutes, 'title');
 
   const routesByColumns = [
-    allRoutesSorted?.slice(0, 8),
-    allRoutesSorted?.slice(8, 16),
-    allRoutesSorted?.slice(16),
+    allRoutes?.slice(0, 8),
+    allRoutes?.slice(8, 16),
+    allRoutes?.slice(16),
   ];
 
   return (
     <StyledComp>
       <SectionHeader
-        Icon={IconServer}
-        title="CDN"
-        subtitle={`Accelerate your web applications using ${PRODUCT_EDGE} and EdgeJS.`}
+        Icon={IconSecurity}
+        title="Security"
+        subtitle={`Protect your web applications without sacrificing performance.`}
       />
 
       <div className="route-items">

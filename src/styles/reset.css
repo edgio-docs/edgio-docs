@@ -12,6 +12,7 @@ body {
 
 * {
   margin: 0;
+  scroll-margin-top: calc(var(--header-height) + 8px);
 }
 
 html,
@@ -64,4 +65,9 @@ h6 {
 
 .transform-rotate-180 {
   transform: rotate(180deg);
+}
+
+img,
+video {
+  height: auto;
 }

@@ -1,3 +1,4 @@
+import {Language} from 'prism-react-renderer';
 import React, {useEffect} from 'react';
 import {CopyToClipboard} from 'react-copy-to-clipboard';
 import styled from 'styled-components';
@@ -44,6 +45,11 @@ export const StyledCustomPre = styled.div`
     font-weight: 700;
   }
 
+  .code-block__content {
+    max-height: 500px;
+    overflow: auto;
+  }
+
   code {
     --scrollbar-bg: #777;
   }
@@ -68,6 +74,7 @@ export default function CustomPre({children}: {children: React.ReactNode}) {
 
   // MDX Metadata...https://mdxjs.com/guides/syntax-highlighting/#syntax-highlighting-with-the-meta-field
   const replacedFilename = filename ? filename.replace(/"/g, '') : '';
+  const descriptiveLanguage = getDescriptiveLanguage(language);
 
   return (
     <StyledCustomPre>
@@ -77,7 +84,7 @@ export default function CustomPre({children}: {children: React.ReactNode}) {
             <header className="code-block__header">
               <div className="header-start">
                 <span className="code-block__header-text">
-                  {getDescriptiveLanguage(language)}
+                  {descriptiveLanguage}
                 </span>
                 {replacedFilename && (
                   <span className="code-block__filename">
@@ -92,7 +99,9 @@ export default function CustomPre({children}: {children: React.ReactNode}) {
           ) : null}
 
           <main className="code-block__content">
-            <CodeBlock language={language}>{message}</CodeBlock>
+            <CodeBlock language={descriptiveLanguage.toLowerCase() as Language}>
+              {message.trim()}
+            </CodeBlock>
           </main>
         </div>
       </div>

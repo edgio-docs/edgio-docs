@@ -2,6 +2,8 @@ import Head from 'next/head';
 import {withRouter, Router} from 'next/router';
 import React from 'react';
 
+import {PRODUCT} from '../../constants';
+
 import {siteConfig} from 'siteConfig';
 
 export interface SeoProps {
@@ -30,8 +32,8 @@ const Seo = withRouter(
       {title != null && (
         <title key="title">
           {isHomePage
-            ? 'Layer0 Documentation'
-            : `${title} | Layer0 Documentation`}
+            ? `${PRODUCT} Documentation`
+            : `${title} | ${PRODUCT} Documentation`}
         </title>
       )}
 

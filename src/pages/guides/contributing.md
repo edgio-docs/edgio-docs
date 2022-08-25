@@ -44,7 +44,9 @@ We recommend the following process for submitting a change:
 5. Submit a [pull request](https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/about-pull-requests) back to the {{ PRODUCT_NAME }} Docs repository (to the `main` branch) via GitHub web interface.
 
 <Callout type="info">
-For more details, the Pro Git book has a <a href="https://git-scm.com/book/en/v2/GitHub-Contributing-to-a-Project">helpful contributing guide</a> that walks you through the process of submitting a pull request to an open source repository on GitHub.
+
+  For more details, the Pro Git book has a <a href="https://git-scm.com/book/en/v2/GitHub-Contributing-to-a-Project">helpful contributing guide</a> that walks you through the process of submitting a pull request to an open source repository on GitHub.
+
 </Callout>
 
 
@@ -62,33 +64,48 @@ Call attention to specific part of the guide with callouts.
 // use this in a markdown file... with type: 'info' | 'warning' | 'danger';
 
 <Callout type="info">
-	This is an info...
+
+  A note provides additional information.
+
 </Callout>
 
 <Callout type="warning">
-	This is an info...
+
+  A warning provides cautionary information about a potential pitfall.
+
 </Callout>
 
 <Callout type="danger">
-	This is an info...
+
+  Identifies a dangerous configuration or action.
+
 </Callout>
+
 ```
-The code-snippet aboves renders:
+The above code renders:
 
 <Callout type="info">
-	This is an info...
+
+A note provides additional information.
+
 </Callout>
+
 <Callout type="warning">
-	This is a warning...
+
+  A warning provides cautionary information about a potential pitfall.
+
 </Callout>
+
 <Callout type="danger">
-	This is dangerous...
+
+  Identifies a dangerous configuration or action.
+
 </Callout>
 
 ---
 ### Codeblock {/*codeblock*/}
 
-Provide a language-module for syntax highlighting or non if you still need to use a codeblock.
+Provide a language-module for syntax highlighting or none if you still need to use a codeblock.
 
 ```ts
 // This codeblock has the 'js' language module (with JS comment)
@@ -138,9 +155,7 @@ interface IButtonLinkProps {
 <ButtonLink variant="stroke" type="code" withIcon={true} href="...">
  View the Code
 </ButtonLink>
-<ButtonLink variant="stroke" type="deploy" withIcon={true} href="...">
-  Deploy to Layer0
-</ButtonLink>
+<ButtonLink variant="stroke" type="deploy" withIcon={true} href="..." />
 ```
 Renders:
 
@@ -150,9 +165,7 @@ Renders:
 <ButtonLink variant="stroke" type="code" withIcon={true} href="https://github.com/layer0-docs/layer0-nextjs-example">
  View the Code
 </ButtonLink>
-<ButtonLink variant="stroke" type="deploy" withIcon={true} href="https://app.layer0.co/deploy?button&deploy&repo=https%253A%252F%252Fgithub.com%252Flayer0-docs%252Flayer0-nextjs-example">
-  Deploy to Layer0
-</ButtonLink>
+<ButtonLink variant="stroke" type="deploy" withIcon={true} href="https://app.layer0.co/deploy?button&deploy&repo=https%253A%252F%252Fgithub.com%252Flayer0-docs%252Flayer0-nextjs-example" />
 
 ---
 
@@ -166,9 +179,7 @@ Renders:
  <ButtonLink variant="stroke" type="code" withIcon={true} href="...">
   View the Code
  </ButtonLink>
- <ButtonLink variant="stroke" type="deploy" withIcon={true} href="...">
-   Deploy to Layer0
- </ButtonLink>
+ <ButtonLink variant="stroke" type="deploy" withIcon={true} href="..." />
 </ButtonLinksGroup>
 ```
 
@@ -181,7 +192,5 @@ Renders:
 	<ButtonLink variant="stroke" type="code" withIcon={true} href="https://github.com/layer0-docs/layer0-nextjs-example">
 	 View the Code
 	</ButtonLink>
-	<ButtonLink variant="stroke" type="deploy" withIcon={true} href="https://app.layer0.co/deploy?button&deploy&repo=https%253A%252F%252Fgithub.com%252Flayer0-docs%252Flayer0-nextjs-example">
-	  Deploy to Layer0
-	</ButtonLink>
+	<ButtonLink variant="stroke" type="deploy" withIcon={true} href="https://app.layer0.co/deploy?button&deploy&repo=https%253A%252F%252Fgithub.com%252Flayer0-docs%252Flayer0-nextjs-example" />
 </ButtonLinksGroup>

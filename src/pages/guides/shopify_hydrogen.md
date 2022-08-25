@@ -21,10 +21,12 @@ You’ve installed the following dependencies:
 [Node.js](https://nodejs.org/en/) version 16.5.0 or higher
 
 <Callout type="info">
-{{ PRODUCT_NAME }} production runtime targets Node {{ NODE_VERSION }}. There may be some unexpected behavior building your project with a later version. See the <a href="/guides/install_nodejs#production-version">Node.js</a> guide for more information.
+
+  {{ PRODUCT_NAME }} production runtime targets Node {{ NODE_VERSION }}. There may be some unexpected behavior building your project with a later version. See the <a href="/guides/install_nodejs#production-version">Node.js</a> guide for more information.
+
 </Callout>
 
-{{ SIGN_UP_LAYER0 }}
+{{ SIGN_UP }}
 
 ## Install the {{ PRODUCT_NAME }} CLI {/*install-the-layer0-cli*/}
 
@@ -78,7 +80,7 @@ npm run dev
   
   The production version of your app will be running at http://localhost:3000. You can inspect and deploy the compiled version of your Node.js Hydrogen storefront from dist/node.
 
-  NOTE: This step will be auto configured when building with Layer0 as you follow the next steps.
+  NOTE: This step will be auto configured when building with {{ PRODUCT }} as you follow the next steps.
 
 2. Apply middleware
 
@@ -123,7 +125,7 @@ module.exports = {
 }
 ```
 
-### Creating Layer0 connector files {/*creating-layer0-connector-files*/}
+### Creating {{ PRODUCT }} connector files {/*creating-layer0-connector-files*/}
 
 - Install `@vercel/nft` for Node.js File Tracing, by the following command:
   ```bash
@@ -215,6 +217,9 @@ const ONE_DAY = 24 * ONE_HOUR
 const { Router } = require('@layer0/core/router')
 
 module.exports = new Router()
+  // Prevent search engine bot(s) from indexing
+  // Read more on: https://docs.layer0.co/guides/cookbook#blocking-search-engine-crawlers
+  .noIndexPermalink()
   .match('/assets/:path*', ({ cache }) => {
     cache({
       edge: {

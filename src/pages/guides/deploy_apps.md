@@ -50,7 +50,7 @@ This is an example GitHub action that will deploy your site to {{ PRODUCT_NAME }
 
 For this action to work
 
-- By default, new Layer0 sites are created with a `default` environment. The action below will create a new build for every push on the default environment.
+- By default, new {{ PRODUCT }} sites are created with a `default` environment. The action below will create a new build for every push on the default environment.
 - To leverage the GitHub release workflow part of the action below, you need to **create an environment** `production`.
 - You need to have created a deploy key for your site (see above) and added it as a secret in your repo called "layer0_deploy_token". Read more on [accessing environment variables](https://docs.layer0.co/guides/environments#section_accessing_environment_variables_at_build_time) which might be essential for your app during the build time and for server-side requests (including SSG/SSR).
 - Depending on your use of NPM or YARN, adjust the "Install packages" step
@@ -62,7 +62,7 @@ Read the comments at the top to understand how this action is configured.
 ```yml
 # Add this file to your project at .github/workflows/layer0.yml
 #
-# This GitHub action deploys your site on Layer0.
+# This GitHub action deploys your site on {{ PRODUCT }}.
 #
 # The site is deployed each time commits are pushed. The environment to which the changes are deployed
 # is based on the following rules:
@@ -85,7 +85,7 @@ Read the comments at the top to understand how this action is configured.
 #
 # ** Depending on your use of NPM or YARN, adjust the "Install packages" step
 
-name: Deploy branch to Layer0
+name: Deploy branch to {{ PRODUCT }}
 
 on:
   push:
@@ -102,7 +102,7 @@ jobs:
     env:
       deploy_token: ${{secrets.LAYER0_DEPLOY_TOKEN}}
     steps:
-      - name: Check for Layer0 deploy token secret
+      - name: Check for {{ PRODUCT }} deploy token secret
         if: env.deploy_token == ''
         run: |
           echo You must define the "LAYER0_DEPLOY_TOKEN" secret in GitHub project settings
@@ -128,7 +128,7 @@ jobs:
       - name: Install packages
         run: npm ci # if using npm for your project
         #  run: rm -rf node_modules && yarn install --frozen-lockfile # if using yarn for your project
-      - name: Deploy to Layer0
+      - name: Deploy to {{ PRODUCT }}
         run: |
           npm run deploy -- ${{'--branch=$BRANCH_NAME' || ''}} --token=$deploy_token  \
           ${{github.event_name == 'push' && '--environment=default' || ''}} \

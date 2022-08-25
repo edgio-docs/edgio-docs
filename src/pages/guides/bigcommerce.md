@@ -2,35 +2,25 @@
 title: BigCommerce
 ---
 
-This guide shows you how to deploy a [BigCommerce](https://www.bigcommerce.com/) backed application on {{ PRODUCT_NAME }}.
+This guide shows you how to deploy a [BigCommerce](https://www.bigcommerce.com/) backed application on {{ PRODUCT }}.
 
-## What is BigCommerce? {/* what-is-bigcommerce */}
+## What is BigCommerce? {/*what-is-bigcommerce*/}
 
 BigCommerce is an API driven ecommerce platform. Used by some of the biggest brands on the planet, BigCommerce provides solutions for B2B, wholesale, omnichannel, offline to online, international and multi-storefront. They provide deep integrations to social media platforms and have a robust partner network of technology and integration partners.
 
-## Example {/* example */}
+## Example {/*example*/}
 
 This example is a Next.js app powered by a BigCommerce backend.
 
 <ExampleButtons
   title="BigCommerce"
   siteUrl="https://layer0-docs-layer0-nextjs-commerce-default.layer0-limelight.link"
-  repoUrl="https://github.com/layer0-docs/layer0-nextjs-commerce-example" 
+  repoUrl="https://github.com/layer0-docs/layer0-nextjs-commerce-example"
   deployFromRepo />
 
-{{ SIGN_UP_LAYER0 }}
+{{ PREREQ }}
 
-## Install the {{ PRODUCT_NAME }} CLI {/* install-the-layer0-cli*/}
-
-If you have not already done so, install the [{{ PRODUCT_NAME }} CLI](cli)
-
-```bash
-npm i -g {{ PACKAGE_NAME }}/cli # yarn global add {{ PACKAGE_NAME }}/cli
-```
-
-{{ SYSTEM_REQUIREMENTS }}
-
-## Setting up a BigCommerce Headless Example {/* setting-up-a-bigcommerce-headless-example */}
+## Setting up a BigCommerce Headless Example {/*setting-up-a-bigcommerce-headless-example*/}
 
 We will go through how to set-up your BigCommerce Storefront and the configuration it requires. There are two paths we can take here to generate a project to start:
 
@@ -39,7 +29,7 @@ We will go through how to set-up your BigCommerce Storefront and the configurati
 
 If you go with option 1, continue to the Storefront setup section.
 
-### Generate a Next.js Commerce Project {/* generate-a-nextjs-commerce-project */}
+### Generate a Next.js Commerce Project {/*generate-a-nextjs-commerce-project*/}
 
 1. Clone the official Next.js Commerce [repository](https://github.com/vercel/commerce) and install the dependencies.
 
@@ -50,13 +40,13 @@ yarn
 cd site
 ```
 
-2. Run {{ PRODUCT_NAME }} `init` in the project directory:
+2. Run {{ PRODUCT }} `init` in the project directory:
 
 ```bash
 {{ CLI_NAME }} init
 ```
 
-### Update the Example or Generated Project for use with BigCommerce {/* update-the-example-or-generated-project-for-use-with-bigcommerce */}
+### Update the Example or Generated Project for use with BigCommerce {/*update-the-example-or-generated-project-for-use-with-bigcommerce*/}
 
 Skip to the [Storefront Setup](#storefront_setup) section for a detailed explanation on how to setup a BigCommerce site. After that, return to this section to enter values as needed.
 
@@ -83,9 +73,11 @@ BIGCOMMERCE_STORE_API_CLIENT_SECRET=${CLIENT_SECRET}
 - `STORE_SECRET` - The Client Secret generated via the BigCommerce API KEY UI.
 
 <Callout type="info">
+
   The `BIGCOMMERCE_STORE_API_URL` should not have the version at the end. The
   API KEY UI will show it this way, but do not include it in your environment
   variable.
+
 </Callout>
 
 2. From root of the project, run the command to start the project:
@@ -94,21 +86,21 @@ BIGCOMMERCE_STORE_API_CLIENT_SECRET=${CLIENT_SECRET}
  npm run dev
 ```
 
-### Deploy the project {/* deploy-the-project */}
+### Deploy the project {/*deploy-the-project*/}
 
 From within the `site` directory, run
 
 ```bash
-0 deploy
+{{ CLI_NAME }} deploy
 ```
 
-## BigCommerce Storefront Setup {/* bigcommerce-storefront-setup */}
+## BigCommerce Storefront Setup {/*bigcommerce-storefront-setup*/}
 
 1. [Login](https://login.bigcommerce.com/login) or [Signup](https://www.bigcommerce.com/start-your-trial) for an account with BigCommerce.
 
 **Login**
 
-![](/images/bigcommerce/login.png?width=300)
+![](/images/bigcommerce/login.png?width=300&height=400)
 
 **Signup**
 
@@ -131,7 +123,9 @@ From within the `site` directory, run
 3. Now that we have API credentials, we will be able to interact with the BigCommerce API in order to finish setting up necessary elements.
 
 <Callout type="info">
+
   As of the time of writing this guide, they only support setup via API.
+
 </Callout>
 
 For this next step you will need the store hash (available in the URL bar) and the API token you just created.
@@ -144,7 +138,7 @@ For this next step you will need the store hash (available in the URL bar) and t
      --header 'Content-Type: application/json' \
      --header 'X-Auth-Token: {API_ACCESS_TOKEN}' \
      --data '{
-       "name": "Layer0",
+       "name": "{{ PRODUCT }}",
        "platform": "custom",
        "type": "storefront",
        "status": "connected",

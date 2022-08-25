@@ -2,7 +2,7 @@
 title: Scully
 ---
 
-[Scully](https://scully.io/) is a static site generator for Angular projects. This guide walks you through deploying Scully sites to {{ PRODUCT_NAME }}.
+[Scully](https://scully.io/) is a static site generator for Angular projects. This guide walks you through deploying a Scully site to {{ PRODUCT }}.
 
 ## Example {/*example*/}
 
@@ -13,13 +13,9 @@ title: Scully
   deployFromRepo
 />
 
+{{ PREREQ }}
+
 ## Create your Scully site {/*create-your-scully-site*/}
-
-### Install the {{ PRODUCT_NAME }} CLI globally {/*install-the-layer0-cli-globally*/}
-
-```bash
-npm i -g {{ PACKAGE_NAME }}/cli # yarn global add {{ PACKAGE_NAME }}/cli
-```
 
 Clone this starter example and install dependencies:
 
@@ -28,9 +24,9 @@ git clone https://github.com/layer0-docs/layer0-scully-example
 yarn install
 ```
 
-### Run the Scully app locally on {{ PRODUCT_NAME }} {/*run-the-scully-app-locally-on-layer0*/}
+### Run the Scully app locally on {{ PRODUCT }} {/*run-the-scully-app-locally-on-edgio*/}
 
-Run {{ PRODUCT_NAME }} with Scully on dev server by:
+Test your app with the {{ PRODUCT_PLATFORM }} on your local machine by running the following command in your project's root directory:
 
 ```bash
 {{ CLI_NAME }} dev
@@ -40,14 +36,14 @@ Load the site http://127.0.0.1:3000
 
 This will listen to any changes inside the folder src, with live reloads!
 
-### Run the Scully app in local production on {{ PRODUCT_NAME }} {/*run-the-scully-app-in-production-locally-on-layer0*/}
+### Run the Scully app in local production on the {{ PRODUCT_PLATFORM }} {/*run-the-scully-app-in-production-locally-on-the-app-platform*/}
 
 Create a production build using:
 ```bash
 {{ CLI_NAME }} build
 ```
 
-Run {{ PRODUCT_NAME }} on your local machine:
+Run {{ PRODUCT_PLATFORM }} on your local machine:
 
 ```bash
 {{ CLI_NAME }} run --production
@@ -55,10 +51,10 @@ Run {{ PRODUCT_NAME }} on your local machine:
 
 Load the site http://127.0.0.1:3000
 
-## Deploy to Layer0 {/*deploy-to-layer0*/}
+## Deploying {/*deploying*/}
 
-To deploy your site to Layer0, run:
+Deploy your app to the {{ PRODUCT_PLATFORM }} by running the following command in your project's root directory:
 
 ```bash
-0 deploy
+{{ CLI_NAME }} deploy
 ```

@@ -1,4 +1,4 @@
-import _ from 'lodash';
+import sortBy from 'lodash/sortBy';
 import Link from 'next/link';
 import styled from 'styled-components';
 
@@ -13,7 +13,7 @@ const StyledComp = styled(StyledFeatureSection)``;
 export default function AccountsandTeams() {
   const parentPath = 'accounts-teams';
   const allRoutes = getChildrenRoutesFromSidebarMenuItems(parentPath);
-  const allRoutesSorted = _.sortBy(allRoutes, 'title');
+  const allRoutesSorted = sortBy(allRoutes, 'title');
 
   const routesByColumns = [allRoutesSorted];
 
@@ -21,7 +21,7 @@ export default function AccountsandTeams() {
     <StyledComp>
       <SectionHeader
         Icon={IconUser}
-        title="Accounts & Teams"
+        title="Accounts &amp; Teams"
         subtitle="Create production, staging, and other environments and share your project."
       />
 

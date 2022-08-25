@@ -1,8 +1,7 @@
+/* eslint-disable @next/next/no-img-element */
 import Image from 'next/image';
 import styled from 'styled-components';
 
-import LayerEdgioDark from '../../../public/images/home/l0-to-edgio-dark.png';
-import LayerEdgioLight from '../../../public/images/home/l0-to-edgio-light.png';
 import Container, {StyledContainer} from '../Layout/Container';
 
 import Link from './Link';
@@ -67,33 +66,33 @@ function HomepageHero() {
         <div className="copy">
           <div id="dark-theme">
             <Image
-              src={LayerEdgioLight}
-              width="292"
-              height="168"
-              alt="Edgio"
+              src="/images/home/l0-to-edgio-light.webp"
+              alt="Layer0 is now Edgio AppOps"
+              width={286}
+              height={230}
+              priority={true}
               unoptimized
-              priority
             />
           </div>
           <div id="light-theme">
             <Image
-              src={LayerEdgioDark}
-              width="292"
-              height="168"
-              alt="Edgio"
+              src="/images/home/l0-to-edgio-dark.webp"
+              alt="Layer0 is now Edgio AppOps"
+              width={286}
+              height={230}
+              priority={true}
               unoptimized
-              priority
             />
           </div>
           <p>
-            Learn more about the exciting changes{' '}
             <Link href="https://investors.edg.io/news/press-releases/news-details/2022/Limelight-Completes-Acquisition-of-Yahoos-Edgecast-Combined-Company-Rebrands-as-Edgio-Creating-a-Global-Leader-in-Edge-Enabled-Solutions/default.aspx">
-              here.
+              Learn more.
             </Link>
           </p>
           <p className="subheadline">
-            We are a powerful web CDN platform that integrates edge logic into
-            your application code & extends the edge to the browser.
+            Edgio AppOps is an Internet-scale platform that makes it easy for
+            teams to build, release, protect, and accelerate their web apps and
+            APIs.
           </p>
         </div>
       </Container>

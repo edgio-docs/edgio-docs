@@ -2,11 +2,11 @@
 title: Purging
 ---
 
-This guide covers how you can purge data from the Layer0 edge cache.
+This guide covers how you can purge data from the {{ PRODUCT }} edge cache.
 
 ## Overview {/*overview*/}
 
-Layer0 offers three ways to purge responses from the cache:
+{{ PRODUCT }} offers three ways to purge responses from the cache:
 
 - Developer Console
 - CLI
@@ -14,7 +14,7 @@ Layer0 offers three ways to purge responses from the cache:
 
 ## Developer Console {/*developer-console*/}
 
-You can purge the cache via the [Layer0 Developer Console](https://app.layer0.co) by navigating to an environment, selecting the _Caching_ tab, and clicking _Purge the Cache_ under _Cache Purge History_:
+You can purge the cache via the [{{ PRODUCT }} Developer Console](https://app.layer0.co) by navigating to an environment, selecting the _Caching_ tab, and clicking _Purge the Cache_ under _Cache Purge History_:
 
 ![purge_the_cache_button](/images/purging/purge_the_cache_button.png)
 
@@ -42,17 +42,17 @@ __Caution:__ While preserving the cache between deployments can greatly reduce t
 
 If you have [static prerendering] enabled, the cache will automatically be repopulated when you clear all entries from the cache (such as when you select _Purge all entries_ in the {{ PRODUCT_NAME }} Developer Console or run `{{ CLI_NAME }} cache-clear` without providing `--path` or `--surrogate-key`). You can view the prerendering progress by clicking on the active deployment for the environment that was cleared.
 
-## Surrogate Keys {/*surrogate-keys*/}
+## Surrogate Keys (Cache Tags) {/*surrogate-keys*/}
 
 Efficient cache purging is an essential part of keeping your website fast and reducing the load on your origin servers. Purging all entries from the cache all may increase your website's load time while the cache repopulates. If you purge all entries from the cache more than once a week, consider using surrogate keys for more targeted purging.
 
-Surrogate keys are unique identifiers that you assign to groups of responses. They allow you to selectively purge related content. You can assign one or more surrogate keys to a response by sending an `x-0-surrogate-key` header in the response. Multiple keys should be separated by spaces.
+Surrogate keys, also known as **cache tags**,  are unique identifiers that you assign to groups of responses. They allow you to selectively purge related content. You can assign one or more surrogate keys to a response by sending an `{{ HEADER_PREFIX }}-surrogate-key` header in the response. Multiple keys should be separated by spaces.
 
 For example:
 
 ```
 HTTP/1.1 200 OK
-x-0-surrogate-key: product.123 shoes all-products
+{{ HEADER_PREFIX }}-surrogate-key: product.123 shoes all-products
 Content-Type: text/html
 ```
 

@@ -6,6 +6,8 @@ import semverRSort from 'semver/functions/rsort';
 
 import {DOCS_PAGES_REPO_URL} from '../../constants';
 
+export const VERSION_REGEX = /(v\d+.\d+.\d+\/?)/;
+
 export const VersionContext = createContext({currentVersion: 'current'});
 
 export const VersionProvider = ({children}) => {
@@ -19,8 +21,6 @@ export const VersionProvider = ({children}) => {
     </VersionContext.Provider>
   );
 };
-
-export const VERSION_REGEX = /(v\d+.\d+.\d+\/?)/;
 
 export default function useVersioning() {
   let {currentVersion, setCurrentVersion} = useContext(VersionContext);
@@ -75,6 +75,16 @@ export default function useVersioning() {
   };
 }
 
+export function getVersionFromPath(path: string) {
+  const matchVersionInRoute = path.match(VERSION_REGEX);
+
+  if (matchVersionInRoute) {
+    return matchVersionInRoute[0].slice(0, -1);
+  }
+
+  return 'current';
+}
+
 export async function getVersions() {
   let url;
 
@@ -87,14 +97,4 @@ export async function getVersions() {
   const verRes = await fetch(url);
 
   return semverRSort((await verRes.text()).split(',').map((ver) => ver.trim()));
-}
-
-export function getVersionFromPath(path: string) {
-  const matchVersionInRoute = path.match(VERSION_REGEX);
-
-  if (matchVersionInRoute) {
-    return matchVersionInRoute[0].slice(0, -1);
-  }
-
-  return 'current';
 }

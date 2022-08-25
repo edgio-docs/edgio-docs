@@ -1,5 +1,3 @@
-import * as React from 'react';
-
 import ButtonLink from './ButtonLink';
 import ButtonLinksGroup from './ButtonLinksGroup';
 import Callout from './Callout';
@@ -9,7 +7,7 @@ import Frameworks from './Frameworks';
 import {H1, H2, H3, H4} from './Heading';
 import HomepageFeatures from './HomepageFeatures';
 import HomepageHero from './HomepageHero';
-import Image from './Image';
+import Image, {CustomImage} from './Image';
 import InlineCode from './InlineCode';
 import Integrations from './Integrations';
 import Link from './Link';
@@ -60,6 +58,7 @@ export const MDXComponents = {
   hr: Divider,
   br: BR,
   a: Link,
+  Link,
   pre: CustomPre,
   HomepageHero,
   HomepageFeatures,
@@ -70,6 +69,7 @@ export const MDXComponents = {
   Video,
   VimeoMDXEmbed,
   img: Image,
+  CustomImage,
   Integrations,
   ExampleButtons,
 };

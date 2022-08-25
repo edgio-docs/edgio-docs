@@ -55,13 +55,13 @@ specified environment will be cleared.
 
 #### Options {/*options*/}
 
-| Name              | Description                                                  |
-| ----------------- | ------------------------------------------------------------ |
-| `--team`          | (Required) The team name                                     |
-| `--site`          | (Required) The site name                                     |
-| `--environment`   | (Required) The environment name                              |
-| `--path`          | A path to clear. Use "\*" as a wildcard                      |
-| `--surrogate-key` | Clears all responses assigned to the specified surrogate key |
+| Name              | Description                                                              |
+|-------------------|--------------------------------------------------------------------------|
+| `--team`          | (Required) The team name                                                 |
+| `--site`          | (Required) The site name                                                 |
+| `--environment`   | (Required) The environment name                                          |
+| `--path`          | A path to clear. Use "\*" as a wildcard                                  |
+| `--surrogate-key` | Clears all responses assigned to the specified surrogate key (cache tag) |
 
 #### Example {/*example*/}
 

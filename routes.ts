@@ -56,6 +56,7 @@ const scriptSrcDomains = [
   '*.google-analytics.com',
   '*.googletagmanager.com',
   'googletagmanager.com',
+  '*.clarity.ms',
 ].sort();
 
 const connectSrcDomains = [
@@ -77,6 +78,7 @@ const connectSrcDomains = [
   '*.algolia.net',
   '*.vimeo.com',
   'vimeo.com',
+  '*.clarity.ms',
 ].sort();
 
 const router = new Router()
@@ -182,11 +184,7 @@ const router = new Router()
   // gets redirected to :path*/ to satisfy relative asset paths
   .match('/docs/:version/api/:path*', ({redirect}) => {
     redirect('/docs/:version/api/:path*/');
-  })
-
-  .get('/google59b36cb2cb9e8c0a.html', ({send}) =>
-    send('google-site-verification: google59b36cb2cb9e8c0a.html', 200, 'OK')
-  );
+  });
 
 redirects.forEach(([from, to, statusCode]) => {
   router.match(from, ({redirect}) =>

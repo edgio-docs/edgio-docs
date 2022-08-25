@@ -1,6 +1,8 @@
 import {Vimeo} from 'mdx-embed';
 import styled from 'styled-components';
 
+import {PRODUCT} from '../../../constants';
+
 import SectionHeader from './SectionHeader';
 
 const StyledComp = styled.div`
@@ -13,8 +15,11 @@ const StyledComp = styled.div`
   }
 
   .video-category {
-    box-shadow: inset 0px -1px var(--hr-secondary);
     padding-bottom: 54px;
+
+    :not(:last-child) {
+      box-shadow: inset 0px -1px var(--hr-secondary);
+    }
 
     .video-category__title {
       margin-bottom: 20px;
@@ -28,8 +33,6 @@ const StyledComp = styled.div`
     grid-template-columns: repeat(auto-fill, var(--minmax-width));
     gap: 54px;
 
-    /* Can't use CSS Variables in media queries — not yet. */
-    /* @media (max-width: ${(props) => props.theme.breakpoints.small}) { */
     @media (max-width: 420px) {
       --minmax-width: minmax(300px, 1fr);
     }
@@ -84,7 +87,7 @@ export default function VideosandTutorials() {
           id: '691580230',
         },
         {
-          title: 'What are the Layer0 DevTools',
+          title: `What are the ${PRODUCT} DevTools`,
           url: 'https://player.vimeo.com/video/691580899',
           id: '691580899',
         },
@@ -142,7 +145,7 @@ export default function VideosandTutorials() {
       slug: 'deploying',
       videos: [
         {
-          title: 'Deploy GitHub Project to Layer0',
+          title: `Deploy GitHub Project to ${PRODUCT}`,
           url: 'https://player.vimeo.com/video/691593915',
           id: '691593915',
         },
@@ -167,18 +170,18 @@ export default function VideosandTutorials() {
 
   return (
     <StyledComp>
-      <SectionHeader title="Layer0 Videos and Tutorials" />
+      <SectionHeader title={`${PRODUCT} Videos and Tutorials`} />
 
       <div className="video-categories">
         {categorisedVidoes.map((video, index) => {
           return (
             <div className="video-category" key={video.slug}>
-              <h1 className="video-category__title">{video.title}</h1>
+              <h3 className="video-category__title">{video.title}</h3>
               <div className="videos">
                 {video.videos.map((item, vidIndex) => (
                   <div className="video" key={`${index}-${vidIndex}`}>
                     <Vimeo vimeoId={item.id} />
-                    <h1 className="title">{item.title}</h1>
+                    <h4 className="title">{item.title}</h4>
                   </div>
                 ))}
               </div>

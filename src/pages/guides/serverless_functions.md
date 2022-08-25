@@ -14,6 +14,12 @@ To create a new {{ PRODUCT }} project using serverless functions, run:
 npx @{{ PRODUCT_NAME_LOWER }}/cli@latest init
 ```
 
+Or you can clone this example repo: [layer0-serverless-example](https://github.com/layer0-docs/layer0-serverless-example), which has some more complex examples of how to use serverless functions.
+
+```bash
+npx degit https://github.com/layer0-docs/layer0-serverless-example my-serverless-functions
+```
+
 ## Responding to requests {/*responding-to-requests*/}
 
 Use the [compute](/docs/api/core/classes/_router_responsewriter_.responsewriter.html#compute) function to generate a synthetic response:

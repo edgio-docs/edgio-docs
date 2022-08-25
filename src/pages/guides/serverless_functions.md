@@ -14,7 +14,7 @@ To create a new {{ PRODUCT }} project using serverless functions, run:
 npx @{{ PRODUCT_NAME_LOWER }}/cli@latest init
 ```
 
-Or you can clone this example repo: [layer0-serverless-example](https://github.com/layer0-docs/layer0-serverless-example), which has some more complex examples of how to use serverless functions.
+Or you can clone this example repo: [layer0-serverless-example](https://github.com/layer0-docs/layer0-serverless-example), which has some more complex examples of how to use serverless functions:
 
 ```bash
 npx degit https://github.com/layer0-docs/layer0-serverless-example my-serverless-functions

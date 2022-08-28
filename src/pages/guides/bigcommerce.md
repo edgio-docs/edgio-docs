@@ -15,7 +15,7 @@ This example is a Next.js app powered by a BigCommerce backend.
 <ExampleButtons
   title="BigCommerce"
   siteUrl="https://layer0-docs-layer0-nextjs-commerce-default.layer0-limelight.link"
-  repoUrl="https://github.com/layer0-docs/layer0-nextjs-commerce-example" 
+  repoUrl="https://github.com/layer0-docs/layer0-nextjs-commerce-example"
   deployFromRepo />
 
 {{ PREREQ }}
@@ -73,9 +73,11 @@ BIGCOMMERCE_STORE_API_CLIENT_SECRET=${CLIENT_SECRET}
 - `STORE_SECRET` - The Client Secret generated via the BigCommerce API KEY UI.
 
 <Callout type="info">
+
   The `BIGCOMMERCE_STORE_API_URL` should not have the version at the end. The
   API KEY UI will show it this way, but do not include it in your environment
   variable.
+
 </Callout>
 
 2. From root of the project, run the command to start the project:
@@ -98,7 +100,7 @@ From within the `site` directory, run
 
 **Login**
 
-![](/images/bigcommerce/login.png?width=300)
+![](/images/bigcommerce/login.png?width=300&height=400)
 
 **Signup**
 
@@ -121,7 +123,9 @@ From within the `site` directory, run
 3. Now that we have API credentials, we will be able to interact with the BigCommerce API in order to finish setting up necessary elements.
 
 <Callout type="info">
+
   As of the time of writing this guide, they only support setup via API.
+
 </Callout>
 
 For this next step you will need the store hash (available in the URL bar) and the API token you just created.

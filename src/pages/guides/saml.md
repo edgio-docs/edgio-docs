@@ -77,7 +77,7 @@ Once you have configured the Service Provider, you can view logs from Salesforce
 
 4. Create Attribute Statement (map fields) for email address.
 
-- Name: Email
+- Name: email
 - Value: user.email
 
 6. **Save** the application after configurations are entered.

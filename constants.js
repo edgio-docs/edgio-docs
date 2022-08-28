@@ -30,6 +30,8 @@ const HELP_URL = `https://help.${DOMAIN}`;
 const SUPPORT_URL = `${APP_URL}/help`;
 const DOCS_URL = `https://${DOCS_DOMAIN}`;
 const DOCS_PAGES_REPO_URL = `https://${DOCS_PAGES_DOMAIN}`;
+const LOGIN_URL =
+  'https://app.layer0.co/?sgId=ef4d5169-93f2-4f55-aabb-dc3be4286e1f';
 
 const NODE_VERSION = '14.x';
 const STARTER_NAME = 'layer0-app';
@@ -138,6 +140,7 @@ module.exports = {
   HEADER_PREFIX,
   HELP_URL,
   INSTALL_CLI,
+  LOGIN_URL,
   PREREQ,
   INSTALL_CLI_STEP,
   NODE_VERSION,

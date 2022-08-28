@@ -42,11 +42,11 @@ __Caution:__ While preserving the cache between deployments can greatly reduce t
 
 If you have [static prerendering] enabled, the cache will automatically be repopulated when you clear all entries from the cache (such as when you select _Purge all entries_ in the {{ PRODUCT_NAME }} Developer Console or run `{{ CLI_NAME }} cache-clear` without providing `--path` or `--surrogate-key`). You can view the prerendering progress by clicking on the active deployment for the environment that was cleared.
 
-## Surrogate Keys {/*surrogate-keys*/}
+## Surrogate Keys (Cache Tags) {/*surrogate-keys*/}
 
 Efficient cache purging is an essential part of keeping your website fast and reducing the load on your origin servers. Purging all entries from the cache all may increase your website's load time while the cache repopulates. If you purge all entries from the cache more than once a week, consider using surrogate keys for more targeted purging.
 
-Surrogate keys are unique identifiers that you assign to groups of responses. They allow you to selectively purge related content. You can assign one or more surrogate keys to a response by sending an `{{ HEADER_PREFIX }}-surrogate-key` header in the response. Multiple keys should be separated by spaces.
+Surrogate keys, also known as **cache tags**,  are unique identifiers that you assign to groups of responses. They allow you to selectively purge related content. You can assign one or more surrogate keys to a response by sending an `{{ HEADER_PREFIX }}-surrogate-key` header in the response. Multiple keys should be separated by spaces.
 
 For example:
 

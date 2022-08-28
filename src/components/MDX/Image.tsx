@@ -1,15 +1,11 @@
+import NextImage from 'next/image';
 import styled from 'styled-components';
 
 const StyledComp = styled.figure`
-  position: relative;
-
-  /* min is 75% of the --docs-area-width  */
-  max-width: calc(min(calc(0.75 * var(--docs-area-width))));
-
   img {
-    margin: 0;
+    margin: 0 auto;
     display: flex;
-    background-color: #1a1a1a;
+    max-width: calc(min(var(--docs-area-width), 100%));
   }
 `;
 
@@ -17,7 +13,30 @@ export default function Image({src, alt}: {src: string; alt: string}) {
   return (
     <StyledComp>
       {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img {...{src, alt}} id="image..." />
+      <img {...{src, alt, loading: 'lazy'}} />
     </StyledComp>
+  );
+}
+
+export function CustomImage({
+  src,
+  alt,
+  width,
+  height,
+}: {
+  src: string;
+  alt: string;
+  width: number;
+  height: number;
+}) {
+  return (
+    <NextImage
+      {...{
+        src,
+        alt,
+        width,
+        height,
+      }}
+    />
   );
 }

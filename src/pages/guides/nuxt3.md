@@ -18,7 +18,7 @@ Note: Nuxt3 is still in beta and is not recommended for production.
 
 This framework has a connector developed for {{ PRODUCT }}. See [Connectors](connectors) for more information.
 
-<ButtonLink variant="stroke" type="code" withIcon={true} href="https://github.com/layer0-docs/layer0-connectors/tree/main/layer0-nuxt3-connector">
+<ButtonLink variant="stroke" type="code" withIcon={true} href="https://github.com/layer0-docs/layer0-connectors/tree/main/layer0-nuxt-nitro-connector">
   View the Connector Code
 </ButtonLink>
 

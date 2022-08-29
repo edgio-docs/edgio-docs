@@ -23,7 +23,7 @@ To use Continuous Integration (CI) to deploy A/B tests we recommend that you:
 2. Create environments called `production` and `preview` in the {{ PRODUCT_NAME }} Developer Console.
 3. Configure CI to deploy the `master` branch to the `production` environment and the `preview` branch to the `preview` environment. (Using `{{ CLI_NAME }} deploy --environment={environment name}`).
 
-## Limitations {/*limitations*/}
+### Limitations {/*limitations*/}
 
 - Note that nested split testing is not supported. So for example, if you create a split test on environment A that sends a portion of traffic to environment B, any split testing configured on environment B will be ignored.
 
@@ -149,6 +149,23 @@ In order to analyze the results of your A/B test, you will need to alter your an
 In some {{ PRODUCT }} implementations where there is a mix between "legacy" and modern PWA pages, these legacy pages may incorrectly overwrite tracking of the entire session as legacy, when it should be recorded as a PWA session. One example of this may be an ecommerce site, the path to product (homepage, category page, and product page) may be a PWA, but the checkout is powered by the legacy site.  Make sure you test flows where the user migrates between "legacy" and PWA pages to make sure that your analytics software is recording these pages correctly.
 
 Note that you will also have to carefully consider when you record which experience the user is in and how you report it to your analytics. For these reasons we highly recommend thorough testing of analytics in an A/B test.
+
+### Example {/*example*/}
+
+This example Next.js application showcases how you can use Google Analytics to track the current segment by referencing the `{{ COOKIE_PREFIX }}_destination` cookie.
+
+<Callout type="info">
+  Open the link using incognito/private browsing session to observe varying cookie values.
+</Callout>
+
+<ExampleButtons 
+  title="Analytics Variant"
+  repoUrl="https://github.com/layer0-docs/layer0-analytics-variant-example"
+  siteUrl="https://layer0-docs-layer0-analytics-example-default.layer0-limelight.link" />
+
+This example site has a configured split test in the Edgio Developer Console to split 50% of desktop traffic between the `default` (production) and the `split_test` environments.
+
+![Analytics Variant Split Test](/images/split-testing/analytics-split-test.png)
 
 ### Caveats {/*caveats*/}
 

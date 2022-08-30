@@ -16,10 +16,6 @@ const _preLayer0Export = {
     styledComponents: true,
   },
   pageExtensions: ['jsx', 'js', 'ts', 'tsx', 'mdx', 'md'],
-  experimental: {
-    plugins: true,
-    scrollRestoration: true,
-  },
   webpack: (config, {dev, isServer, ...options}) => {
     // IMPORTANT: https://www.npmjs.com/package/webpack-bundle-analyzer
     if (process.env.ANALYZE) {
@@ -75,7 +71,6 @@ const _preLayer0Export = {
 module.exports = (phase, config) =>
   withLayer0(
     withServiceWorker({
-      target: 'server',
       ..._preLayer0Export,
     })
   );

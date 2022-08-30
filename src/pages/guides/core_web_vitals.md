@@ -40,7 +40,7 @@ To add Core Web Vitals tracking via a script tag, add the following to each page
 ```html
 <script defer>
   function initRum() {
-    new {{ PRODUCT_NAME }}.Metrics({
+    new {{ RUM_NS }}.Metrics({
       token: 'your-token-here', // get this from {{ APP_URL }}
     }).collect()
   }
@@ -53,7 +53,7 @@ To add Core Web Vitals tracking via a script tag, add the following to each page
 ```html
 <script>
   function initMetrics() {
-    new {{ PRODUCT_NAME }}.Metrics({
+    new {{ RUM_NS }}.Metrics({
       token: 'your-token-here', // get this from {{ APP_URL }}
     }).collect()
   }

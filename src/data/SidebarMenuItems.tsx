@@ -1,3 +1,4 @@
+import {map, flatMap, flatten} from 'lodash';
 import * as React from 'react';
 
 import {
@@ -19,8 +20,6 @@ import {
   IconBookPlain,
   IconBookPlainDark,
   IconBrunch,
-  IconBulb,
-  IconBulbDark,
   IconCodePlain,
   IconCodePlainDark,
   IconDocusaurus,
@@ -32,14 +31,12 @@ import {
   IconEmberJS,
   IconExpress,
   IconExpressDark,
-  IconFiddle,
-  IconFiddleDark,
   IconFolder,
   IconFolderDark,
-  IconForum,
-  IconForumDark,
   IconFrontity,
   IconGatsby,
+  IconGear,
+  IconGearDark,
   IconGridsome,
   IconGridsomeDark,
   IconHexo,
@@ -84,30 +81,20 @@ import {
   IconStacksPlain,
   IconStacksPlainDark,
   IconStaticHTMLJS,
-  IconStatus,
-  IconStatusDark,
   IconStencil,
   IconStencilDark,
-  IconSupport,
-  IconSupportDark,
   IconSvelte,
   IconSwell,
   IconSwellDark,
   IconUmiJS,
   IconUserPlain,
   IconUserPlainDark,
-  IconVideos,
-  IconVideosDark,
   IconVitePress,
   IconVue,
   IconVueStorefront,
   IconZola,
   IconZolaDark,
-  IconEdgioSquareLogo,
-  IconEdgioSquareLogoDark,
 } from '../components/Icon';
-
-import {IconGear, IconGearDark} from 'components/Icon/IconGear';
 
 export interface IRoute {
   title: string;
@@ -785,3 +772,14 @@ const SidebarMenuItems: ISidebarMenuItems = [
 ];
 
 export default SidebarMenuItems;
+
+export const prerenderPaths = map(
+  flatMap(flatten(SidebarMenuItems), (item: any) => item.routes),
+  (item: any) => {
+    if (item && item.path.startsWith('/')) {
+      return {path: item.path};
+    }
+
+    return;
+  }
+);

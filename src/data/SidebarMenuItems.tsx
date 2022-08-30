@@ -603,6 +603,10 @@ const SidebarMenuItems: ISidebarMenuItems = [
           path: '/guides/app_security/rate_enforcement_dashboard',
         },
         {
+          title: 'Reports',
+          path: '/guides/app_security/reports',
+        },
+        {
           title: 'Response to Client',
           path: '/guides/app_security/response_to_client',
           separator: true,

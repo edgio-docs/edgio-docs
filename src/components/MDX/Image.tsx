@@ -7,11 +7,22 @@ const StyledComp = styled.figure`
     display: flex;
     max-width: calc(min(var(--docs-area-width), 100%));
   }
+
+  &[data-inline-img='true'] {
+    display: inline-flex;
+  }
 `;
 
-export default function Image({src, alt}: {src: string; alt: string}) {
+export default function Image({
+  src,
+  alt,
+  ...props
+}: {
+  src: string;
+  alt: string;
+}) {
   return (
-    <StyledComp>
+    <StyledComp {...{...props}}>
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img {...{src, alt, loading: 'lazy'}} />
     </StyledComp>

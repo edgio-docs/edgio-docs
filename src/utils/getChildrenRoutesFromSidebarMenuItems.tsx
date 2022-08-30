@@ -1,10 +1,7 @@
-import {flatMap, flatten} from 'lodash';
-
 import SidebarMenuItems, {IRoute} from '../data/SidebarMenuItems';
 
-const flatItems: IRoute[] = flatMap(
-  flatten(SidebarMenuItems),
-  (item) => item.routes || []
+const flatItems: IRoute[] = SidebarMenuItems.flatMap((item) =>
+  item.flatMap((item) => item.routes?.flat() ?? [])
 );
 
 export function findChildByGuideName(identifier: string): IRoute | undefined {

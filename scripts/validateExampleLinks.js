@@ -38,5 +38,5 @@ const EXAMPLES_RE = /(?:(siteUrl|repoUrl)=\"([^"]*)\")/g;
     }
   }
 
-  process.exit(failures);
+  // process.exit(failures);
 })();

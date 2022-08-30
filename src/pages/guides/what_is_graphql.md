@@ -43,7 +43,7 @@ GraphQL is strongly and statically typed, providing the following advantages:
 
 GraphQL is efficient and yields the following benefits:
 
-- It is designed to overcome the “not enough data returned (multiple round trips to the server)” and “too much data returned (n+1)” problems that often accompany REST APIs. If you use a REST API, you often have to make multiple requests to get the data you want. Also REST APIs often return more data than you need, increasing bandwidth, response time, and forcing you to parse large datasets for the desired content.
+- It is designed to overcome the "not enough data returned (multiple round trips to the server)" and "too much data returned (n+1)" problems that often accompany REST APIs. If you use a REST API, you often have to make multiple requests to get the data you want. Also REST APIs often return more data than you need, increasing bandwidth, response time, and forcing you to parse large datasets for the desired content.
 - GraphQL reduces the need for client-side error-handling and retry logic.
 
 ### Architecture {/*architecture*/}
@@ -120,7 +120,7 @@ type Query {
 
 Notice the following about this example:
 
-- The exclamation point `!` is the “required” or “not null” operator and indicates that an attribute is required when submitting a request, and is guaranteed to be returned by the server.
+- The exclamation point `!` is the "required" or "not null" operator and indicates that an attribute is required when submitting a request, and is guaranteed to be returned by the server.
 - Parameters are enclosed in parentheses; operations with no parameters lack parentheses.
 - The colon following a function name indicates the return type.
 - Square brackets `[]` are array notation and indicate a list. In the example, `getAllCustomers` returns a list of `Customer` resources.
@@ -180,7 +180,7 @@ Notice the following about this example:
 Now assume that you want to get the name and address of the customer with id `01224950`. Your query would look like this:
 
 ```graphql
-getCustomerById(id: “2210194”) {
+getCustomerById(id: "2210194") {
   name
   address
 }

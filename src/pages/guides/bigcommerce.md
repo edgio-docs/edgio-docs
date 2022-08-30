@@ -73,12 +73,10 @@ BIGCOMMERCE_STORE_API_CLIENT_SECRET=${CLIENT_SECRET}
 - `STORE_SECRET` - The Client Secret generated via the BigCommerce API KEY UI.
 
 <Callout type="info">
+
   The `BIGCOMMERCE_STORE_API_URL` should not have the version at the end. The
   API KEY UI will show it this way, but do not include it in your environment
   variable.
-  ```js
-  console.log(2)
-  ```
 </Callout>
 
 2. From root of the project, run the command to start the project:
@@ -126,7 +124,6 @@ From within the `site` directory, run
 <Callout type="info">
 
   As of the time of writing this guide, they only support setup via API.
-
 </Callout>
 
 For this next step you will need the store hash (available in the URL bar) and the API token you just created.

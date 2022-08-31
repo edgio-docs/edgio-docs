@@ -11,21 +11,21 @@ This guide shows you how to serve generic static sites to {{ PRODUCT }}.
 Here are a few examples of common static sites served by {{ PRODUCT }}.
 
 <ExampleButtons
-  title="Backbone.js Static"
+  title="(Static) Backbone.js"
   siteUrl="https://layer0-docs-layer0-static-backbonejs-example-default.layer0-limelight.link"
   repoUrl="https://github.com/layer0-docs/static-backbonejs-example" 
   deployFromRepo />
 
 <ExampleButtons
-  title="React Static"
-  siteUrl="https://layer0-docs-layer0-static-react-example-default.layer0-limelight.link/"
-  repoUrl="https://github.com/layer0-docs/static-react-example" 
+  title="(Static) React"
+  siteUrl="https://layer0-docs-layer0-static-react-example-default.layer0-limelight.link"
+  repoUrl="https://github.com/layer0-docs/layer0-static-react-example" 
   deployFromRepo />
 
 <ExampleButtons
-  title="Vue.js Static"
-  siteUrl="https://layer0-docs-layer0-static-vuejs-example-default.layer0-limelight.link"
-  repoUrl="https://github.com/layer0-docs/static-vuejs-example" 
+  title="(Static) Vue.js"
+  siteUrl="https://layer0-docs-layer0-vue3-example-default.layer0-limelight.link"
+  repoUrl="https://github.com/layer0-docs/layer0-vue3-example" 
   deployFromRepo />
 
 {{ PREREQ }}
@@ -61,16 +61,24 @@ The {{ PRODUCT }} router is used for configuring where the static resources resi
 - `/build/static/css/main.css`
 - `/build/static/js/main.js`
 
-You will need to define route handlers to serve `index.html` and the CSS/JS resources. This example router will serve and cache requests to `/index.html` and its resources referenced within:
+You can use the router's `static` method to serve everything in the `build` directory:
 
 ```js
 // routes.js
 
 const { Router } = require('{{ PACKAGE_NAME }}/core/router')
 
-const ONE_HOUR = 60 * 60
-const ONE_DAY = 24 * ONE_HOUR
-const ONE_YEAR = 365 * ONE_DAY
+module.exports = new Router().static('build')
+```
+
+If your site does not use a bundler for generating a build output, you can still serve the assets using `serveStatic` and reference the relative path to the resources. Any resource referenced using `serveStatic` or `appShell` will automatically be included in the {{ PRODUCT }} deployment. An example of serving assets from your `src` directory:
+
+```js
+// routes.js
+
+const { Router } = require('{{ PACKAGE_NAME }}/core/router')
+
+const ONE_YEAR = 365 * 24 * 60 * 60
 
 const edgeOnly = {
   browser: false,
@@ -82,52 +90,22 @@ const edgeAndBrowser = {
   edge: { maxAgeSeconds: ONE_YEAR },
 }
 
-module.exports = new Router()
-  .prerender([{ path: '/' }])
-  // js and css assets are hashed and can be far-future cached in the browser
-  .get('/static/:path*', ({ cache, serveStatic }) => {
-    cache(edgeAndBrowser)
-    serveStatic('build/static/:path*')
-  })
-  // all paths that do not have a "." as well as "/"" should serve the app shell (index.html)
-  .get('/:path*/:file([^\\.]+|)', ({ cache, appShell }) => {
-    cache(edgeOnly)
-    appShell('build/index.html')
-  })
-  // all other paths should be served from the build directory
-  .get('/:path*', ({ cache, serveStatic }) => {
-    cache(edgeOnly)
-    serveStatic('build/:path*')
-  })
-```
-
-If your site does not use a bundler for generating a build output, you can still serve the assets using `serveStatic` and reference the relative path to the resources. Any resource referenced using `serveStatic` or `appShell` will automatically be included in the {{ PRODUCT }} deployment. An example of serving assets from your `src` directory:
-
-```js
-// routes.js
-...
+const handler = ({ cache, serveStatic }, cacheConfig, path) => {
+  cache(cacheConfig)
+  serveStatic(path)
+}
 
 module.exports = new Router()
-  .prerender([{ path: '/' }])
-  // js and css assets are hashed and can be far-future cached in the browser
-  .get('/css/:path*', ({ cache, serveStatic }) => {
-    cache(edgeAndBrowser)
-    serveStatic('src/css/:path*')
-  })
-  .get('/js/:path*', ({ cache, serveStatic }) => {
-    cache(edgeAndBrowser)
-    serveStatic('src/js/:path*')
-  })
-  // all paths that do not have a "." as well as "/"" should serve the app shell (index.html)
-  .get('/:path*/:file([^\\.]+|)', ({ cache, appShell }) => {
-    cache(edgeOnly)
-    appShell('src/index.html')
-  })
-  // all other paths should be served from the src directory
-  .get('/:path*', ({ cache, serveStatic }) => {
-    cache(edgeOnly)
-    serveStatic('src/:path*')
-  })
+
+  // Assets (Hashed and Cached on Edge and in the Browser)
+  .get('/css/:path*', res => handler(res, edgeAndBrowser, 'src/css/:path*')) 
+  .get('/js/:path*', res => handler(res, edgeAndBrowser, 'src/js/:path*')) 
+  
+  // Path(s) that do not have a "." as well as "/" to serve the fallback page
+  .get('/:path*/:file([^\\.]+|)', res => handler(res, edgeOnly, 'src/index.html')) 
+  
+  // All other paths to be served from the src directory
+  .get('/:path*', res => handler(res, edgeOnly, 'src/:path*'))
 ```
 
 ## Deploying {/*deploying*/}

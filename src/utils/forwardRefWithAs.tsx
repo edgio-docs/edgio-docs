@@ -10,6 +10,8 @@
 
 import * as React from 'react';
 
+export type As<BaseProps = any> = React.ElementType<BaseProps>;
+
 /**
  * React.Ref uses the readonly type `React.RefObject` instead of
  * `React.MutableRefObject`, We pretty much always assume ref objects are
@@ -22,41 +24,6 @@ export type AssignableRef<ValueType> =
     }['bivarianceHack']
   | React.MutableRefObject<ValueType | null>
   | null;
-
-////////////////////////////////////////////////////////////////////////////////
-// The following types help us deal with the `as` prop.
-// I kind of hacked around until I got this to work using some other projects,
-// as a rough guide, but it does seem to work so, err, that's cool? Yay TS! 🙃
-// P = additional props
-// T = type of component to render
-
-export type As<BaseProps = any> = React.ElementType<BaseProps>;
-
-export type PropsWithAs<
-  ComponentType extends As,
-  ComponentProps
-> = ComponentProps &
-  Omit<
-    React.ComponentPropsWithRef<ComponentType>,
-    'as' | keyof ComponentProps
-  > & {
-    as?: ComponentType;
-  };
-
-export type PropsFromAs<
-  ComponentType extends As,
-  ComponentProps
-> = (PropsWithAs<ComponentType, ComponentProps> & {as: ComponentType}) &
-  PropsWithAs<ComponentType, ComponentProps>;
-
-export type ComponentWithForwardedRef<
-  ElementType extends React.ElementType,
-  ComponentProps
-> = React.ForwardRefExoticComponent<
-  ComponentProps &
-    React.HTMLProps<React.ElementType<ElementType>> &
-    React.ComponentPropsWithRef<ElementType>
->;
 
 export interface ComponentWithAs<ComponentType extends As, ComponentProps> {
   // These types are a bit of a hack, but cover us in cases where the `as` prop
@@ -75,6 +42,32 @@ export interface ComponentWithAs<ComponentType extends As, ComponentProps> {
   contextTypes?: React.ValidationMap<any>;
   defaultProps?: Partial<PropsWithAs<ComponentType, ComponentProps>>;
 }
+
+export type ComponentWithForwardedRef<
+  ElementType extends React.ElementType,
+  ComponentProps
+> = React.ForwardRefExoticComponent<
+  ComponentProps &
+    React.HTMLProps<React.ElementType<ElementType>> &
+    React.ComponentPropsWithRef<ElementType>
+>;
+
+export type PropsFromAs<
+  ComponentType extends As,
+  ComponentProps
+> = (PropsWithAs<ComponentType, ComponentProps> & {as: ComponentType}) &
+  PropsWithAs<ComponentType, ComponentProps>;
+
+export type PropsWithAs<
+  ComponentType extends As,
+  ComponentProps
+> = ComponentProps &
+  Omit<
+    React.ComponentPropsWithRef<ComponentType>,
+    'as' | keyof ComponentProps
+  > & {
+    as?: ComponentType;
+  };
 
 /**
  * This is a hack for sure. The thing is, getting a component to intelligently

@@ -13,6 +13,7 @@ const PACKAGE_NAME = '@layer0';
 const CONFIG_FILE = 'layer0.config.js';
 const HEADER_PREFIX = 'x-0';
 const COOKIE_PREFIX = 'layer0';
+const RUM_NS = 'Layer0'; // namespace for the JS package used by RUM
 
 const DOMAIN = 'layer0.co';
 const APP_DOMAIN = `app.${DOMAIN}`;
@@ -153,4 +154,5 @@ module.exports = {
   SYSTEM_REQUIREMENTS_H3,
   SYSTEM_REQUIREMENTS,
   WWW_URL,
+  RUM_NS,
 };

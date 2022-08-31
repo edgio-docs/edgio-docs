@@ -1,12 +1,9 @@
 ---
-title: {{ PRODUCT }} Integrations
+title: Overview 
 ---
 
-{{ PRODUCT }} is the ideal place to deploy Jamstack applications. Use {{ PRODUCT }}'s edge caching, edge logic, and prefetching to make your Jamstack app blazing fast. Use {{ PRODUCT }}'s serverless workers to quickly and scalably render content on the server.
-Supported Frameworks
+## Integrations Overview {/*integrations-overview*/}
 
-## Integrations {/*integrations*/}
+{{ PRODUCT_NAME }} supports a number of integrations of popular products and platforms as listed below.
 
-Get started by choosing the guide for your framework:
-
-<Frameworks/>
+<Integrations/>

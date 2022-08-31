@@ -28,6 +28,7 @@ export * from './IconFolder';
 export * from './IconForum';
 export * from './IconFrontity';
 export * from './IconGatsby';
+export * from './IconGear';
 export * from './IconGitHub';
 export * from './IconGotcha';
 export * from './IconGridsome';

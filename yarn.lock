@@ -1402,7 +1402,7 @@
     "@jridgewell/resolve-uri" "^3.0.3"
     "@jridgewell/sourcemap-codec" "^1.4.10"
 
-"@layer0/cli@^4.18.5":
+"@layer0/cli@^4.18.1":
   version "4.18.5"
   resolved "https://registry.yarnpkg.com/@layer0/cli/-/cli-4.18.5.tgz#faeba765320ec145af8d765696519aa0d0058792"
   integrity sha512-TeTpyfQcWu0kOYCIQ25pJ/eVRLLMn+D4r64wsj2FbODaYovj/FqRlDmagniD/Xq30Yzo1CZQLtIOpW1pBkHQ+g==
@@ -1444,7 +1444,7 @@
     yauzl "^2.10.0"
     yazl "^2.5.1"
 
-"@layer0/core@^4.18.5":
+"@layer0/core@^4.18.1", "@layer0/core@^4.18.5":
   version "4.18.5"
   resolved "https://registry.yarnpkg.com/@layer0/core/-/core-4.18.5.tgz#b625ac147f4d8a560dc07330337f13fe2ec43438"
   integrity sha512-/ox5hJBcUQBlika8TH/1EWxiNLGPZHM5Xrja57hFZdWQ7XkE+io84UsMRoHpo7cE1WTA/jdGlsmapLSNh3sZjg==
@@ -1484,7 +1484,7 @@
     unixify "^1.0.0"
     uuid "^8.3.2"
 
-"@layer0/devtools@^4.18.5":
+"@layer0/devtools@^4.18.1":
   version "4.18.5"
   resolved "https://registry.yarnpkg.com/@layer0/devtools/-/devtools-4.18.5.tgz#9e996e6065742c556811a12828d1996d412db0c7"
   integrity sha512-Hy8zXZPHvZCFP4ZLhL0BiSngWG0X4v5O1gYhW5UiJGf5+0MtqTV5s2lY4G5vxRgD/FGIB+AxPNf+FsZbJF7yHg==
@@ -1493,7 +1493,7 @@
     lodash "^4.17.20"
     sirv-cli "^1.0.0"
 
-"@layer0/next@^4.18.5":
+"@layer0/next@^4.18.1":
   version "4.18.5"
   resolved "https://registry.yarnpkg.com/@layer0/next/-/next-4.18.5.tgz#e03ede30d15fcac457e4400fe391b79b31e6d782"
   integrity sha512-eoMvPANs+cYTLEEhAoCmzqKjiUgw5azciEEKC/K+ya0LJPTkx4V+lnyGx/MeSHoZb16pg/Cp0JSPNowuzzYqEQ==
@@ -1513,7 +1513,7 @@
     webpack "^4.0.0"
     webpack-sources "^2.2.0"
 
-"@layer0/prefetch@^4.18.5":
+"@layer0/prefetch@^4.18.1":
   version "4.18.5"
   resolved "https://registry.yarnpkg.com/@layer0/prefetch/-/prefetch-4.18.5.tgz#e627afcade23b8f5b85f1e52554aafa9763e5cc2"
   integrity sha512-KoEMQvTNuG3Ro52a9jmTsDneDfWHOxiYIPQ8ElwsVfgKYV83wt9PTPk7EgwsIyW/xeIXsPxyute+JzNetzJjAQ==
@@ -1528,7 +1528,7 @@
     workbox-routing "^5.1.2"
     workbox-strategies "^5.1.2"
 
-"@layer0/react@^4.18.5":
+"@layer0/react@^4.18.1":
   version "4.18.5"
   resolved "https://registry.yarnpkg.com/@layer0/react/-/react-4.18.5.tgz#8f27a4f01b6bde1e93a8969782c5d7971c2bd609"
   integrity sha512-+Zc5soHTShKRQRfHA4sAmv9t7wNbRhiTiUnkgZDritWHMeq2tPeNipeWaRQCF1piQXNUKc4XCZ3Rsc3Yl+i3yw==

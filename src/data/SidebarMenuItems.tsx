@@ -607,6 +607,10 @@ const SidebarMenuItems: ISidebarMenuItems = [
           path: '/guides/app_security/reports',
         },
         {
+          title: 'Real-Time Statistics',
+          path: '/guides/app_security/real-time-statistics',
+        },
+        {
           title: 'Response to Client',
           path: '/guides/app_security/response_to_client',
           separator: true,

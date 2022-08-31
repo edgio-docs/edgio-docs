@@ -18,16 +18,19 @@ Report data is typically available within 24 hours of when a request was process
 
 <Callout type="info">
 
-  Under certain circumstances, it may take up to 7 days to gather a
-  comprehensive set of log data for all requests. Viewing a report under such circumstances would provide a
+  Under certain <a href="https://www.google.com">circumstances</a>, it may take up to 7 days to gather a
+  comprehensive set of log data {{ PRODUCT }} for all requests. Viewing a report under such circumstances would provide a
   partial representation of the activity that took place during the last 7
-  days. A typical cause for the backlogging of report data occurs when
+  days. 
+
+
+  A typical [cause](#bandwidth) for the backlogging of report data occurs when
   streams are left open for long periods of time or when a server is taken
   down for maintenance.
 
 </Callout>
 
-## Unit Conversion  {/*unit-conversion*/}
+## Unit Conversion {/*unit-conversion*/}
 
 Although data is stored in bytes, the value displayed in a
 report is a much larger unit (e.g., Gigabytes or Terabytes). This makes
@@ -133,7 +136,7 @@ Set the **Edge Nodes** option to either of the following:
 Modifying the **Edge Nodes** option will automatically refresh
 the report.
 
-#### Filtering by Time  {/*filtering-by-time*/}
+#### Filtering by Time {/*filtering-by-time*/}
 
 The time period for which data will be reported may defined for most
 reports. The available filtering options for defining this time period

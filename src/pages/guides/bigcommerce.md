@@ -131,7 +131,7 @@ From within the `site` directory, run
 For this next step you will need the store hash (available in the URL bar) and the API token you just created.
 
 1. To create a channel we need to issue a `curl` request to the BigCommerce API. Open the API [doc](https://developer.bigcommerce.com/api-reference/b3A6MzU5MDQ0NDc-create-a-channel) for additional information. Use the `curl` below, substituting values where needed.
-say I add this
+
 ```bash
  curl --request POST \
      --url https://api.bigcommerce.com/stores/{STORE_HASH}/v3/channels \

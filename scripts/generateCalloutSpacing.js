@@ -5,20 +5,21 @@ function addCalloutSpace(lines) {
   let callOutIndex;
   const results = [];
   lines.forEach((line, index) => {
-    if (!line.startsWith('<Callout')) {
-      results.push(line);
-      return;
+    if (line.startsWith('<Callout') || line.startsWith('</Callout')) {
+      const isOpeningTag = line.startsWith('<Callout');
+      callOutIndex = index;
+      const indexOfLineToSpace = isOpeningTag
+        ? callOutIndex + 1
+        : callOutIndex - 1;
+      if (lines[indexOfLineToSpace].length === 0) {
+        results.push(line);
+        return;
+      }
+      const updatedLine = isOpeningTag ? `${line}\n` : `\n${line}`;
+      results.push(updatedLine);
+      return updatedLine;
     }
-
-    callOutIndex = index;
-    if (lines[callOutIndex + 1].length === 0) {
-      results.push(line);
-      return;
-    }
-
-    const updatedLine = `${line}\n`;
-    results.push(updatedLine);
-    return updatedLine;
+    return results.push(line);
   });
   return results;
 }

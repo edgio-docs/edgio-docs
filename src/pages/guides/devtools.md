@@ -8,7 +8,7 @@ title: Devtools
 - Prefetching
 - The flow of responses from serverless to the edge and browser caches
 
-![devtools](/images/devtools/devtools.png?width=275)
+![devtools](/images/devtools/devtools.png?width=300)
 
 [Live demo of {{ PRODUCT_NAME }} Devtools running on a React Storefront site](https://demo.reactstorefront.io/__layer0__/devtools/enable)
 

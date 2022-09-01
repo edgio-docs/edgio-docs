@@ -1,11 +1,10 @@
-import * as React from 'react';
 import styled from 'styled-components';
 
 interface InlineCodeProps {
   isLink: boolean;
 }
 
-const StyledCodeWrap = styled.code`
+export const StyledCodeWrap = styled.code`
   font-size: 15px;
   line-height: 25px;
   font-weight: 500;

@@ -1,5 +1,7 @@
 import styled, {css} from 'styled-components';
 
+import {StyledCodeWrap} from './InlineCode';
+
 interface IStyledCallout {
   type: 'info' | 'tip' | 'important' | 'warning' | 'danger';
 }
@@ -62,11 +64,8 @@ const StyledCallout = styled.div.attrs<IStyledCallout>((props) => ({
       border-left-color: #a2238d;
     `}
 
-	.callout-image__wrap {
-    --size: 60px;
-    /* width: var(--size);
-		height: var(--size); */
-    /* background-color: black; */
+  ${StyledCodeWrap} {
+    color: var(--text-primary);
   }
 `;
 

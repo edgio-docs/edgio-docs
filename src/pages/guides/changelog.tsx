@@ -63,7 +63,9 @@ export async function getServerSideProps() {
     `${DOCS_PAGES_REPO_URL}/current/guides/changelog.md`
   ).then((resp) => (resp.ok ? resp.text() : 'Unable to retrieve changelog'));
 
-  const content = await markdownToHtml(resp || '');
+  const content = await markdownToHtml(
+    resp.replace(/\[(.+)\]\(\S+\)/g, '$1') || ''
+  );
 
   return {props: {content}};
 }

@@ -55,7 +55,11 @@ denied, or screened through whitelists, accesslists, and blacklists.
 4.  From the **Add an Access Control** option, select **IP**.
 5.  Click **Add Blacklist**.
 6.  Specify an IP address from which suspicious traffic originates.
+
+    [View sample configuration.](/images/app_security/getting_started_access_rules.png)
+
 7.  Click **Save**.
+
 
 ### Create a Rate Rule {/*create-a-rate-rule*/}
 
@@ -64,12 +68,12 @@ Use a rate rule to restrict the flow of traffic to your application.
 1.  Navigate to the **Rate Rules** page.
     {{ SECURITY_NAV }} **Rate Rules**.
 2.  Click **Add Rate Rule**.
-3.  In the **Rule name** option, type *My Rate Limit*.
-4.  In the **Apply rate limit to** option, select **IP
-address**.
-5.  In the **Rate limit** section, set the **Number of
-requests** option to *100* and the **Time
-period** option to **1 minute**.
+3.  In the **Rule name** option, type *My Rate Rule*.
+4.  In the **Apply rate limit to** option, select **IP address**.
+5.  In the **Rate limit** section, set the **Number of requests** option to *100* and the **Time period** option to **1 minute**.
+
+    [View sample configuration.](/images/app_security/getting_started_rate_rules.png)
+
 6.  Click **Save**.
 
 ### Create a Managed Rule {/*create-a-managed-rule*/}
@@ -81,15 +85,13 @@ application layer attacks.
     {{ SECURITY_NAV }} **Managed Rules**.
 2.  Click **Add Managed Rule**.
 3.  In the **Name** option, type *My Managed Rule*.
-4.  Click the **Policies** tab. In the **Ruleset** option,
-select **ECRS 2022-08-10**.
+4.  Click the **Policies** tab. In the **Ruleset** option, select **ECRS 2022-08-10**.
 5.  Set the **Threshold** option to **5**.
 6.  Set the **Paranoia Level** option to **1**.
-7.  From the **Policies** section, disable policies that do not apply
-to your application. For example, you may safely disable **Adv
-Drupal**, **Adv SharePoint**, and **Adv
-WordPress** if your application does not leverage those
-platforms.
+7.  From the **Policies** section, disable policies that do not apply to your application. For example, you may safely disable **Adv Drupal**, **Adv SharePoint**, and **Adv WordPress** if your application does not leverage those platforms.
+
+    [View sample configuration.](/images/app_security/getting_started_managed_rule.png)
+
 8.  Click **Save**.
 
 ## Step 2: Create a Security Application Configuration {/*step-2-create-a-security-application-configuration*/}
@@ -99,20 +101,20 @@ A Security Application configuration defines the set of traffic that will be ins
 1.  Navigate to the **Security Applications** page.
     {{ SECURITY_NAV }} **Security Applications**.
 2.  Click **Add New**.
-3.  In the **Name** option, type *My Application*.
+3.  In the **Name** option, type *My Security Application*.
 4.  From the **Rules **section, click **Access Rule**.
 5.  From the **Production Access Rule** option, select **My Access
 Rule**.
 6.  From the **Action type** option, select **Alert only**.
-7.  From the **Rules **section, click **Managed Rule**.
-8.  From the **Production Managed Rule** option, select **My Rate
-Limit**.
-9.  From the **Action type** option, select **Alert only**.
-10. From the **Rules** section, click **Rate Rules**.
-11. From the **Add Rate Rule** option, select **My Managed
-Rule**.
-12. From the **Action type** option, select **Drop request (429 Too
-Many Requests)**.
+7.  From the **Rules **section, click **Rate Rules**.
+8.  From the **Add Rate Rule** option, select **My Rate Rule**.
+9.  From the **Action type** option, select **Drop request**.
+10. From the **Rules** section, click **Managed Rule**.
+11. From the **Production Managed Rule** option, select **My Managed Rule**.
+12. From the **Action type** option, select **Alert only**.
+
+    [View sample configuration.](/images/app_security/getting_started_security_application.png)
+
 13. Click **Save**.
 
 ## Step 3: Monitor Threats {/*step-3-monitor-threats*/}

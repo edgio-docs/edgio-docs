@@ -256,7 +256,7 @@ fields support filtering.
 
 **Key information:**
 -   Most filters may be applied by  clicking on the desired entry.
-    After which, the ![](/images/icons/filter.png) icon
+    After which, the <img data-inline-img src="/images/icons/filter.png" alt="Filter icon" /> (filter) icon
     will be displayed next to it. This icon indicates that the dashboard
     is being filtered by that entry.
     -   **Overview:** Look for the statistics shown under the graph
@@ -288,6 +288,6 @@ fields support filtering.
     and the Event Log will be filtered.
 -   The **Filters** section, which appears on the left-hand side
     of the dashboard, displays a list of active filters. It also allows
-    a filter to be cleared by clicking on the
-    ![](/images/icons/remove.png) icon displayed next to
+    a filter to be cleared by clicking on the <img data-inline-img src="/images/icons/remove.png" alt="Delete icon" /> (delete)
+    icon displayed next to
     it.

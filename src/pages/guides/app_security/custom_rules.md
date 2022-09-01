@@ -520,8 +520,7 @@ You may create, modify, and delete custom rule sets.
 3.  Make the desired changes.
 
     **Key tasks:**
-    -   Delete variables and matches within a variable by clicking
-        ![](/images/icons/remove.png).
+    -   Delete variables and matches within a variable by clicking the <img data-inline-img src="/images/icons/remove.png" alt="Delete icon" /> (delete) icon.
     -   Delete a condition by clicking **Delete Condition**.
 
         <Callout type="info">

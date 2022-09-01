@@ -147,7 +147,7 @@ Identify trends by reviewing the Threats dashboard's graph and detailed alert da
 
 Ensure that {{ PRODUCT_SECURITY }} is correctly identifying threats by viewing detailed information on detected threats.
 
-1.  Click the ![](/images/icons/event_log.png) icon from the upper-right hand side of the window.
+1.  Click the <img data-inline-img src="/images/icons/event_log.png" alt="Event log icon" /> (event log) icon from the upper-right hand side of the window.
 2.  Click on each alert to view detailed information on it.
 
     -   Pay special attention to the requested URL. Verify that it is an illegitimate request.

@@ -153,7 +153,7 @@ information about it.
 **Key information:**
 -   Blue font indicates a value that may be used to filter the entire
     dashboard. Click on that value to filter events by it.
--   The ![](/images/icons/filter.png) icon appears next
+-   The <img data-inline-img src="/images/icons/filter.png" alt="Filter icon" /> (filter) icon appears next
     to each field that is currently filtering the dashboard.
 
 ## Filters {/*filters*/}
@@ -172,12 +172,12 @@ fields support filtering.
 </Callout>
 
 **Key information:**
--   Quickly apply a filter by clicking on the desired entry. After which, the ![](/images/icons/filter.png) icon will be displayed next to it. This icon indicates that the dashboard is being filtered by that entry.
+-   Quickly apply a filter by clicking on the desired entry. After which, the <img data-inline-img src="/images/icons/filter.png" alt="Filter icon" /> (filter) icon will be displayed next to it. This icon indicates that the dashboard is being filtered by that entry.
     -   **Overview:** Quickly filter log event data by clicking on one of the values listed directly below the chart.
     -   **Event Log:** Quickly filter log event data by expanding a log entry and then clicking on the desired field value.
 -   The **Time Range** option is different from other filters in that it is mandatory. Specify the relative time period from the present by which the Overview and the Event Log will be filtered.
 -   The list of active filters, including time, is displayed on the left-hand side of the dashboard.
--   Clear a filter by clicking on the ![](/images/icons/filter.png) icon displayed next to it.
+-   Clear a filter by clicking on the <img data-inline-img src="/images/icons/filter.png" alt="Filter icon" /> (filter) icon displayed next to it.
 
 ## Fields {/*fields*/}
 

@@ -9,6 +9,10 @@ Real-Time Statistics provides the following real-time data for all traffic scree
 -   [Cache Statuses](#cache-statuses-graph)
 -   [Connections](#connections-graph)
 
+**What is the difference between Real-Time Statistics and our security dashboards?**
+
+Our security dashboards provide information about traffic flagged by Edgio security. Real-Time Statistics, on the other hand, provide real-time data for all requests that were screened by Edgio security.
+
 ## Sliding Window of Data Availability {/*sliding-window-of-data-availability*/}
 
 Real-Time Statistics consists of various graphs that display a sliding window of real-time data for a specific time span (e.g., 5, 15, or 30 minutes). Specifically, real-time data shifts to the left whenever a data point is added to it. Real-time data is continually shifted until the graph's time span has been exceeded. At which point, the oldest data point disappears from view.

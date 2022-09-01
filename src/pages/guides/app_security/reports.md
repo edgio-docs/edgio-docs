@@ -239,8 +239,8 @@ data logged by our servers.
 **To export report data**
 
 1.  Generate the desired report.
-2.  Click the spreadsheet icon
-    (![](/images/icons/icon_spreadsheet.png)). Report data
+2.  Click the 
+    <img data-inline-img src="/images/icons/icon_spreadsheet.png" alt="Spreadsheet icon" /> (spreadsheet) icon. Report data
     will be saved on your computer as a CSV file.
 3.  Import the CSV file using the desired log file analysis or
     spreadsheet application.

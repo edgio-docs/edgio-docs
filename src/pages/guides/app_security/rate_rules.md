@@ -387,8 +387,7 @@ which rule will be applied to a request.
 
     </Callout>
 
--   Reorder rules by dragging the rate rule's
-    ![](/images/icons/drag.png) icon.
+-   Reorder rules by dragging the rate rule's <img data-inline-img src="/images/icons/drag.png" /> icon.
 
 ## Rate Rule Administration {/*rate-rule-administration*/}
 

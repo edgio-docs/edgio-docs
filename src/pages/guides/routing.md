@@ -453,26 +453,26 @@ router.catch(RegExp | string | number, (routeHandler: Function))
 
 ### Examples {/*examples*/}
 
-For example, to issue a custom error page when the origin returns any 53x status code:
+For example, to issue a custom error page when the origin returns any 5xx status code:
 
 ```js filename="routes.js"
 
 const { Router } = require('{{ PACKAGE_NAME }}/core/router')
 
 module.exports = new Router()
-  // Example route that returns with a 53x error status code
+  // Example route that returns with a 5xx error status code
   .get('/failing-route', ({ proxy }) => {
     proxy('broken-origin')
   })
-  // So let's assume that the route above returns 53x, so instead of rendering
+  // So let's assume that the route above returns 5xx, so instead of rendering
   // the broken-origin response we can alter that by specifing .catch
-  .catch(/53[0-9]/, ({ serveStatic }) => {
+  .catch(/5[0-9][0-9]/, ({ serveStatic }) => {
     // The file below is present at the root of the directory
     serveStatic('customized-error-page.html', { statusCode: 502 })
   })
 ```
 
-The `.catch` method allows the edge router to render a response based on the result preceeding routes. So in the example above whenever we receive a 53x, we respond with `customized-error-page.html` from the application's root directory, and change the status code to 502.
+The `.catch` method allows the edge router to render a response based on the result preceeding routes. So in the example above whenever we receive a 5xx, we respond with `customized-error-page.html` from the application's root directory, and change the status code to 502.
 
 - Your catch callback is provided a [ResponseWriter](/docs/api/core/classes/_router_responsewriter_.responsewriter.html) instance. You can use any ResponseWriter method except `proxy` inside `.catch`.
 - We highly recommend keeping `catch` routes simple. Serve responses using `serveStatic` instead of `send` to minimize the size of the edge bundle.

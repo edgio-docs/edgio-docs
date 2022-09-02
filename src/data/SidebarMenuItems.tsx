@@ -557,9 +557,15 @@ const SidebarMenuItems: ISidebarMenuItems = [
         {
           title: 'Introduction',
           path: '/guides/app_security/introduction',
+          separator: true,
         },
         {
-          title: 'Basic Setup',
+          title: 'Security through EdgeJS',
+          path: '/guides/app_security/edgejs_security',
+          separator: true,
+        },
+        {
+          title: 'Web Application Firewall (WAF)',
           path: '/guides/app_security/basic_setup',
         },
         {

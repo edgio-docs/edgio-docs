@@ -498,5 +498,5 @@ You may create, modify, and delete access rules.
 2.  Navigate to the **Access Rules** page.
     {{ SECURITY_NAV }} **Access Rules**.
 3.  Click **Delete Access Rule**.
-4.  Type **DELETE**.
+4.  Type *DELETE*.
 5.  Click **Delete**.

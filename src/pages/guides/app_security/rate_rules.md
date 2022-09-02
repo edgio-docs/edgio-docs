@@ -43,7 +43,7 @@ honored.
     requested from an origin server or if a cached version may be served
     directly from our network.
 -   A rate rule always runs in [production
-    mode](security_applications#enforcement-mode).
+    mode](security_applications#enforcement-mode). Although you may not run it in audit mode, you may configure your security application configuration to only generate alerts when a rate limit is exceeded.
 -   A rate rule is enforced by each edge server according to the
     approximate number of requests that it receives over the specified
     time interval (e.g., 1 second, 10 seconds, or 1 minute).

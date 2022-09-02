@@ -616,6 +616,10 @@ const SidebarMenuItems: ISidebarMenuItems = [
           separator: true,
         },
         {
+          title: 'Country Codes',
+          path: '/reference/country_codes',
+        },
+        {
           title: 'Matched On Variables',
           path: '/guides/app_security/matched_on_variables',
         },
@@ -761,10 +765,6 @@ const SidebarMenuItems: ISidebarMenuItems = [
         {
           title: 'Limits & Caveats',
           path: '/guides/limits',
-        },
-        {
-          title: 'Country Codes',
-          path: '/reference/country_codes',
         },
         {
           title: 'v4 Migration Guide',

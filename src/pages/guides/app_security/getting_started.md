@@ -16,7 +16,7 @@ The core methods through which it secures site traffic are listed below.
 
 ## Prerequisites {/*prerequisites*/}
 
-Our security solution requires an {{ COMPANY_NAME }} enterprise account and a [basic {{ PRODUCT }} configuration]({{ APP_URL }}) that identifies a URL that points to the desired website.
+Our security solution requires an {{ COMPANY_NAME }} enterprise account and a [basic {{ PRODUCT }} site configuration]({{ APP_URL }}) that identifies a URL that points to the desired website.
 
 <Callout type="tip">
 
@@ -55,6 +55,7 @@ denied, or screened through whitelists, accesslists, and blacklists.
 4.  From the **Add an Access Control** option, select **IP**.
 5.  Click **Add Blacklist**.
 6.  Specify an IP address from which suspicious traffic originates.
+7.  Specify an additional IP address on a separate line. Repeat this step as needed.
 
     [View sample configuration.](/images/app_security/getting_started_access_rules.png)
 
@@ -63,7 +64,7 @@ denied, or screened through whitelists, accesslists, and blacklists.
 
 ### Create a Rate Rule {/*create-a-rate-rule*/}
 
-Use a rate rule to restrict the flow of traffic to your application.
+Create a rate rule that restricts the flow of traffic from a client to your application to 100 requests per minute.
 
 1.  Navigate to the **Rate Rules** page.
     {{ SECURITY_NAV }} **Rate Rules**.

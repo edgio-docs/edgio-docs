@@ -2,7 +2,7 @@ import {join} from 'path';
 
 import {existsSync, readFileSync, readJsonSync} from 'fs-extra';
 
-import {prerenderPaths} from './src/data/SidebarMenuItems';
+import JSONRoutes from './src/utils/jsonRoutes';
 
 const buildIdPath = join(process.cwd(), '.next', 'BUILD_ID');
 const nextRoutesManifestPath = join(
@@ -12,7 +12,12 @@ const nextRoutesManifestPath = join(
 );
 
 export default async function prerenderRequests() {
-  const requests = [{path: '/'}, ...prerenderPaths].filter(Boolean);
+  const requests = [
+    {path: '/'},
+    ...JSONRoutes.routes.map(({path}) => ({
+      path,
+    })),
+  ].filter(Boolean);
 
   if (existsSync(buildIdPath)) {
     const buildId = readFileSync(buildIdPath, 'utf8');

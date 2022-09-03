@@ -1,9 +1,8 @@
 import {join} from 'path';
 
 import {existsSync, readFileSync, readJsonSync} from 'fs-extra';
-import {map, flatMap, flatten} from 'lodash';
 
-import navData from './src/data/SidebarMenuItems';
+import JSONRoutes from './src/utils/jsonRoutes';
 
 const buildIdPath = join(process.cwd(), '.next', 'BUILD_ID');
 const nextRoutesManifestPath = join(
@@ -15,14 +14,9 @@ const nextRoutesManifestPath = join(
 export default async function prerenderRequests() {
   const requests = [
     {path: '/'},
-    ...map(
-      flatMap(flatten(navData), (item) => item.routes),
-      (item) => {
-        if (item && item.path.startsWith('/')) {
-          return {path: item.path};
-        }
-      }
-    ),
+    ...JSONRoutes.routes.map(({path}) => ({
+      path,
+    })),
   ].filter(Boolean);
 
   if (existsSync(buildIdPath)) {

@@ -1,42 +1,42 @@
-import NextImage from 'next/image';
 import styled from 'styled-components';
 
 const StyledComp = styled.figure`
   img {
-    margin: 0 auto;
     display: flex;
     max-width: calc(min(var(--docs-area-width), 100%));
   }
+
+  &[data-inline-img='true'] {
+    display: inline-flex;
+  }
 `;
 
-export default function Image({src, alt}: {src: string; alt: string}) {
-  return (
-    <StyledComp>
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img {...{src, alt, loading: 'lazy'}} />
-    </StyledComp>
-  );
-}
-
-export function CustomImage({
+export default function Image({
   src,
   alt,
-  width,
-  height,
+  ...props
 }: {
   src: string;
   alt: string;
-  width: number;
-  height: number;
 }) {
+  const srcArray = src.split('?');
+  const srcSearchParams = srcArray[1] ? srcArray[1] : '';
+  const url = new URLSearchParams(srcSearchParams);
+  const width = url.get('width');
+
   return (
-    <NextImage
-      {...{
-        src,
-        alt,
-        width,
-        height,
-      }}
-    />
+    <StyledComp {...{...props}}>
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        {...{
+          src,
+          alt,
+          loading: 'lazy',
+          ...(width && {
+            width,
+          }),
+        }}
+      />
+    </StyledComp>
   );
 }

@@ -139,7 +139,7 @@ You can add additional rules to the traffic split as well. For example, you can 
 
 ### Rule Ordering {/*rule-ordering*/}
 
-The order of rules is critical. Rules are matched from top to bottom. When handling a request, the first matching rule will be used for the request. Given the rules setup in the examples above, you would need to move the force-new cookie rule to the top so that it takes precedence over the other rule that splits all traffic without any criteria. Use the “grip” icon to reorder rules by dragging and dropping:
+The order of rules is critical. Rules are matched from top to bottom. When handling a request, the first matching rule will be used for the request. Given the rules setup in the examples above, you would need to move the force-new cookie rule to the top so that it takes precedence over the other rule that splits all traffic without any criteria. Use the "grip" icon to reorder rules by dragging and dropping:
 
 ![Split Test Rule Ordering](/images/traffic-splitting/rule_ordering.png)
 

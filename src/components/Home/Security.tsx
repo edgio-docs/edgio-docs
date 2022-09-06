@@ -26,7 +26,7 @@ export default function Security() {
     <StyledComp>
       <SectionHeader
         Icon={IconSecurity}
-        title="Security"
+        title="App Security"
         subtitle={`Protect your web applications without sacrificing performance.`}
       />
 

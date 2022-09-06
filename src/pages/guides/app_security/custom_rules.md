@@ -10,7 +10,7 @@ enables you to quickly address long-term and zero-day vulnerabilities.
 
 <Callout type="info">
 
-  The Custom rules capability requires {{ PRODUCT_SECURITY }} Premier or Standard. If you currently have {{ PRODUCT_SECURITY }} Essentials or Insights and would like to use custom rules, please contact your CDN account manager to upgrade to the full version.
+  The Custom rules capability requires {{ PRODUCT_SECURITY }} Business or Premier. {{ ACCOUNT_UPGRADE }} 
 
 </Callout>
 

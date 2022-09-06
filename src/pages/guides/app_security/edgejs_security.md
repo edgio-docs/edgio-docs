@@ -1,5 +1,5 @@
 ---
-title: Security through EdgeJS
+title: Website Security through EdgeJS
 ---
 
 Use CDN-as-code (EdgeJS) to apply basic security to your website.

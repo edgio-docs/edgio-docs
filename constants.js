@@ -114,9 +114,12 @@ const SECURITY_NAV = `1.  From the ${PORTAL}, click on the **AppOps** tab.
     2.  Click **Open on my.edgecast.com** to load the **Security** page.
     3.  From the **Security** page's navigation pane, click `;
 
+const ACCOUNT_UPGRADE = `Contact your account manager or our [sales department](https://edg.io/contact-us/) at 1 (866) 200 - 5463 to upgrade your account.`;
+
 const PARTNERS_CONTACT = `partner@llnw.com`;
 
 module.exports = {
+  ACCOUNT_UPGRADE,
   COMPANY_NAME,
   PRODUCT,
   PRODUCT_LEGACY,

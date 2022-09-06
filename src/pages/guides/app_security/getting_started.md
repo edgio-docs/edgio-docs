@@ -1,5 +1,5 @@
 ---
-title: Securing Your Web Applications
+title: Securing Your Web Applications (App Security)
 ---
 
 Our security offering is
@@ -16,11 +16,14 @@ The core methods through which it secures site traffic are listed below.
 
 ## Prerequisites {/*prerequisites*/}
 
-Our security solution requires an {{ COMPANY_NAME }} enterprise account and a [basic {{ PRODUCT }} site configuration]({{ APP_URL }}) that identifies a URL that points to the desired website.
+Before you can secure your traffic, you will need an {{ COMPANY_NAME }} site configuration for the desired website. Perform the following steps to create a site configuration:	
+
+1.  If you do not already have an {{ COMPANY_NAME }} account, then you should <a href="{{ APP_URL }}/signup">sign up for a free account</a>.
+2.  Once you have confirmed your email and accepted our terms of service, you will be prompted for your site's URL. Once you have provided it, click **Launch my site**.
 
 <Callout type="tip">
 
-  Contact your account manager or our [sales department](https://edg.io/contact-us/) at 1 (866) 200 - 5463 to upgrade your account.
+  {{ PRODUCT }} provides basic application layer security to all accounts. However, we also offer more comprehensive solutions. {{ ACCOUNT_UPGRADE }}.
 
 </Callout>
 
@@ -37,7 +40,7 @@ and managed rule are provided below.
 
 <Callout type="tip">
 
-  This tutorial covers how to set up a basic security configuration. However, you may use a [custom rule](custom_rules) to identify
+  This tutorial covers how to set up basic application layer protection. However, our Business and Premier customers may use a [custom rule](custom_rules) to identify
   threats using custom criteria that takes into account your site's
   traffic profile to identify specific threats and to avoid false positives.
 
@@ -164,9 +167,11 @@ Ensure that {{ PRODUCT_SECURITY }} is correctly identifying threats by viewing d
             -   A significant number of requests will be impacted by this rule.
 
             <Callout type="info">
+
               You may safely disable a threat detection policy if it secures a
               platform (e.g., Drupal, SharePoint, and WordPress) that is not
               leveraged by your application.
+
             </Callout>
 
             If you must disable a rule, then note the values for the **Rule
@@ -178,6 +183,8 @@ Ensure that {{ PRODUCT_SECURITY }} is correctly identifying threats by viewing d
                 within your managed rule's policy. Disable that rule.
 
                 <Callout type="tip">
+
                   You may filter rules by ID when viewing a managed rule's
                   policy.
+
                 </Callout>

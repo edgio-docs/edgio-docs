@@ -139,7 +139,7 @@ const SidebarMenuItems: ISidebarMenuItems = [
           path: '/guides/jamstack_getting_started',
         },
         {
-          title: 'Security',
+          title: 'App Security',
           path: '/guides/app_security/getting_started',
         },
         {
@@ -548,7 +548,7 @@ const SidebarMenuItems: ISidebarMenuItems = [
       ],
     },
     {
-      title: 'Security',
+      title: 'App Security',
       icon: <IconSecurityPlain />,
       iconDark: <IconSecurityPlainDark />,
       path: 'security',
@@ -560,13 +560,13 @@ const SidebarMenuItems: ISidebarMenuItems = [
           separator: true,
         },
         {
-          title: 'Security through EdgeJS',
+          title: 'Website Security (EdgeJS)',
           path: '/guides/app_security/edgejs_security',
           separator: true,
         },
         {
           title: 'Web Application Firewall (WAF)',
-          path: '/guides/app_security/basic_setup',
+          path: '/guides/app_security/waf',
         },
         {
           title: 'Access Rules',

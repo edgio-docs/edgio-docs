@@ -10,7 +10,7 @@ Core reports provide basic statistical information about requests processed thro
 
 **What is the difference between reports and our security dashboards?**
 
-Our security dashboards provide information about traffic flagged by {{ PRODUCT }} security. This report, on the other hand, provides statistics for all requests that were screened by {{ PRODUCT }} security. 
+Our security dashboards provide information about traffic flagged by {{ PRODUCT }} security. This report, on the other hand, provides statistics for all requests regardless of whether they were screened by {{ PRODUCT }} security. 
 
 ## Data Availability and Retention {/*data-availability-and-retention*/}
 

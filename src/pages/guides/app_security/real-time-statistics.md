@@ -11,7 +11,7 @@ Real-Time Statistics provides the following real-time data for all traffic scree
 
 **What is the difference between Real-Time Statistics and our security dashboards?**
 
-Our security dashboards provide information about traffic flagged by Edgio security. Real-Time Statistics, on the other hand, provide real-time data for all requests that were screened by Edgio security.
+Our security dashboards provide information about traffic flagged by Edgio security. Real-Time Statistics, on the other hand, provide real-time data for all requests regardless of whether they were screened by Edgio security.
 
 ## Sliding Window of Data Availability {/*sliding-window-of-data-availability*/}
 

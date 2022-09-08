@@ -40,10 +40,9 @@ install();
 
 ## Configuring Routes for Prefetching {/* configuring-routes-for-prefetching */}
 
-To ensure that prefetch traffic isn't passed on to your origin, {{ PRODUCT_NAME }} will only serve prefetch requests when a cached response is available at the edge. In order to allow a URL to be prefetched, configure a route that caches responses at the edge and in the service worker. In this example we define a route that caches product API calls for one hour:
+To ensure that excessive prefetch traffic isn't passed on to your origin, {{ PRODUCT_NAME }} will serve prefetch requests when a cached response is available at the edge. By default, all prefetch requests will be cached at the edge for 2 minutes (see [`DEFAULT_MAX_AGE_SECONDS`](/docs/api/prefetch/modules/_sw_prefetcher_.html#default_max_age_seconds)). Additionally, you may configure a route that caches responses at the edge and in the service worker within your router, optionally giving it longer cache time for greater performance. In this example we define a route that caches product API calls for one hour:
 
-```js
-// routes.js
+```js filename="routes.js"
 import {Router} from '{{ PACKAGE_NAME }}/core';
 
 export default new Router()

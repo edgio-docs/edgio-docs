@@ -10,7 +10,7 @@ enables you to quickly address long-term and zero-day vulnerabilities.
 
 <Callout type="info">
 
-  The Custom rules capability requires {{ PRODUCT_SECURITY }} Business or Premier. {{ ACCOUNT_UPGRADE }} 
+  The Custom rules capability requires {{ PRODUCT_SECURITY }} Premier or Business. {{ ACCOUNT_UPGRADE }} 
 
 </Callout>
 

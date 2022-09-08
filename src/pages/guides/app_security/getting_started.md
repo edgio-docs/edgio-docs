@@ -1,5 +1,5 @@
 ---
-title: Securing Your Web Applications (App Security)
+title: Securing Your Web Applications ({{ PRODUCT_SECURITY }})
 ---
 
 Our security offering is

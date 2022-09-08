@@ -26,6 +26,7 @@ A Security Application configuration:
       Each detected threat is logged regardless of enforcement action
       (i.e., block, custom response, redirect, or alert). View logged
       threats from the Threats, Rates, or Rate Enforcement dashboards.
+
     </Callout>
 
     <Callout type="info">
@@ -49,10 +50,8 @@ A Security Application configuration:
     <Callout type="info">
 
       The ability to secure and audit your production traffic using
-      separate configurations requires {{ PRODUCT_SECURITY }} Premier, {{ PRODUCT_SECURITY }} Standard, or
-      {{ PRODUCT_SECURITY }} Essentials. If you currently have {{ PRODUCT_SECURITY }} Insights and would like to
-      use this capability, please contact your CDN account manager to
-      upgrade to the full version.
+      separate configurations requires {{ PRODUCT_SECURITY }} Premier, Business, or
+      Essentials. {{ ACCOUNT_UPGRADE }}
 
     </Callout>
 
@@ -138,9 +137,7 @@ available modes are listed below.
 <Callout type="info">
 
   Wildcard and regular expression match comparison modes require {{ PRODUCT_SECURITY }}
-  Premier, {{ PRODUCT_SECURITY }} Standard, or {{ PRODUCT_SECURITY }} Essentials. If you currently have
-  {{ PRODUCT_SECURITY }} Insights and would like to use this capability, please contact your
-  CDN account manager to upgrade to the full version.
+  Premier, Business, or Essentials. {{ ACCOUNT_UPGRADE }}
 
 </Callout>
 

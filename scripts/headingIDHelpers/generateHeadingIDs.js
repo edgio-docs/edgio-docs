@@ -79,7 +79,7 @@ function addHeaderID(line, slugger) {
     );
   }
 
-  return match[1] + match[2] + ' {/*' + id + '*/}';
+  return match[1] + match[2] + ' {/*' + id.trim() + '*/}';
 }
 
 function addHeaderIDs(lines) {

@@ -427,20 +427,33 @@ router.get(
 
 ### Blocking Search Engine Crawlers {/*blocking-search-engine-crawlers*/}
 
-If you need to block all search engine bot traffic to specific environments (such as your default or staging environment), the easiest way is to include the `x-robots-tag` header with the same directives you would otherwise set in a `meta` tag. This example blocks traffic to {{ PRODUCT_NAME }} edge links, permalinks, and to a staging website based on the `host` header of the request:
+If you need to block all search engine bot traffic to specific environments (such as your default or staging environment), the easiest way is to include the `x-robots-tag` header with the same directives you would otherwise set in a `meta` tag. 
+
+To block search engine traffic for {{ PRODUCT }} edge links and permalinks, you can use the built-in `.noIndexPermalink()` call on the router:
 
 ```js
-router.get(
-  {
-    headers: {
-      // Regex to catch multiple hostnames
-      host: /layer0.link|layer0-perma.link|staging.example.com/,
+  router.noIndexPermalink()
+```
+
+This will match requests with the `host` header matching `/layer0.link|layer0-perma.link/` and set a response header of `x-robots-tag: noindex`.
+
+Additionally, you can customize this to block traffic to development or staging websites based on the `host` header of the request:
+
+```js
+
+router
+  .noIndexPermalink()
+  .get(
+    {
+      headers: {
+        // Regex to catch multiple hostnames
+        host: /dev.example.com|staging.example.com/,
+      },
     },
-  },
-  ({ setResponseHeader }) => {
-    setResponseHeader('x-robots-tag', 'noindex')
-  },
-)
+    ({ setResponseHeader }) => {
+      setResponseHeader('x-robots-tag', 'noindex')
+    },
+  )
 ```
 
 For other available directives, see [Google Developer Central](https://developers.google.com/search/docs/advanced/robots/robots_meta_tag#directives) and [Bing Webmaster Tools](https://www.bing.com/webmasters/help/which-robots-metatags-does-bing-support-5198d240) for lists of supported options.

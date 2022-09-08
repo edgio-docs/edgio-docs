@@ -2,7 +2,7 @@
 title: Real-Time Statistics
 ---
 
-Real-Time Statistics provides the following real-time data for all traffic screened by {{ PRODUCT }} Security:
+Real-Time Statistics provides the following real-time data:
 
 -   [Bandwidth](#bandwidth-graph)
 -   [Status Codes](#status-codes-graph)
@@ -11,7 +11,13 @@ Real-Time Statistics provides the following real-time data for all traffic scree
 
 **What is the difference between Real-Time Statistics and our security dashboards?**
 
-Our security dashboards provide information about traffic flagged by Edgio security. Real-Time Statistics, on the other hand, provide real-time data for all requests regardless of whether they were screened by Edgio security.
+Our security dashboards provide information about traffic flagged by {{ PRODUCT_SECURITY }}. Real-Time Statistics, on the other hand, provide real-time data for all requests regardless of whether they were screened by {{ PRODUCT_SECURITY }}.
+
+<Callout type="info">
+
+  Real-Time Statistics requires {{ PRODUCT_SECURITY }}. Although our service includes a basic offering called {{ PRODUCT_SECURITY }} Insights, it may require activation. We also offer more comprehensive security soutions. {{ ACCOUNT_UPGRADE }}
+
+</Callout>
 
 ## Sliding Window of Data Availability {/*sliding-window-of-data-availability*/}
 

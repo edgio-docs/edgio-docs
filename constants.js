@@ -39,6 +39,8 @@ const NODE_VERSION = '14.x';
 const STARTER_NAME = 'layer0-app';
 const EDGEJS_LABEL = 'EdgeJS';
 
+const YEAR = '2022';
+
 const EXAMPLES_REPOS = {
   angular: 'https://github.com/layer0-docs/layer0-angular-example',
   astro: 'https://github.com/layer0-docs/layer0-astro-example',
@@ -163,6 +165,7 @@ module.exports = {
   SUPPORT_URL,
   SYSTEM_REQUIREMENTS_H3,
   SYSTEM_REQUIREMENTS,
+  YEAR,
   WWW_URL,
   RUM_NS,
 };

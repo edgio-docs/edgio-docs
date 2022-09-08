@@ -143,7 +143,7 @@ detailed information about it. Each event field is described below.
 
     **Example:** 
 
-    `2022-07-08 15:00:22.123`
+    `{{ YEAR }}-07-08 15:00:22.123`
 
 -   **Managed Rules Name:** Indicates the name of the managed rule set that was violated. If a managed rule was not violated, then this field will be empty.
 -   **Rule Message:** Provides a description of the rule that the request violated. The syntax for this field varies according to the type of rule that was violated.  

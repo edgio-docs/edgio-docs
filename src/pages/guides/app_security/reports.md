@@ -2,7 +2,7 @@
 title: Reports
 ---
 
-Core reports provide basic statistical information about requests processed through {{ PRODUCT }} security. 
+Analyze traffic patterns through the following reports: 
 -   [Traffic Summary](#traffic-summary)
 -   [Bandwidth](#bandwidth)
 -   [Data Transferred](#data-transferred)
@@ -10,7 +10,13 @@ Core reports provide basic statistical information about requests processed thro
 
 **What is the difference between reports and our security dashboards?**
 
-Our security dashboards provide information about traffic flagged by {{ PRODUCT }} security. This report, on the other hand, provides statistics for all requests regardless of whether they were screened by {{ PRODUCT }} security. 
+Our security dashboards provide information about traffic flagged by {{ PRODUCT_SECURITY }}. These reports, on the other hand, provide statistics for all requests regardless of whether they were screened by {{ PRODUCT_SECURITY }}. 
+
+<Callout type="info">
+
+  These reports require {{ PRODUCT_SECURITY }}. Although our service includes a basic offering called {{ PRODUCT_SECURITY }} Insights, it may require activation. We also offer more comprehensive security soutions. {{ ACCOUNT_UPGRADE }}
+
+</Callout>
 
 ## Data Availability and Retention {/*data-availability-and-retention*/}
 
@@ -18,14 +24,13 @@ Report data is typically available within 24 hours of when a request was process
 
 <Callout type="info">
 
-  Under certain <a href="https://www.google.com">circumstances</a>, it may take up to 7 days to gather a
-  comprehensive set of log data {{ PRODUCT }} for all requests. Viewing a report under such circumstances would provide a
+  Under certain circumstances, it may take up to 7 days to gather a
+  comprehensive set of log data for all requests. Viewing a report under such circumstances would provide a
   partial representation of the activity that took place during the last 7
-  days. 
+  days.  
 
-
-  A typical [cause](#bandwidth) for the backlogging of report data occurs when
-  streams are left open for long periods of time or when a server is taken
+  <br />Delays in report data gathering are typically caused by 
+  streams that are left open for long periods of time or when a server is taken
   down for maintenance.
 
 </Callout>
@@ -58,8 +63,8 @@ between decimal and binary representation of these values.
 
 ## Traffic Summary Report {/*traffic-summary-report*/}
 
-The **Traffic Summary** report tracks the amount of traffic
-analyzed by {{ PRODUCT }} security over a given month.
+The **Traffic Summary** report tracks traffic
+over a given month.
 
 <Callout type="info">
 
@@ -133,7 +138,7 @@ Set the **Edge Nodes** option to either of the following:
 -   **POP:** Select a POP from the list to filter the report to
     only show data for the requests served through the selected POP.
 
-Modifying the **Edge Nodes** option will automatically refresh
+Modifying the **Edge Nodes** option automatically refreshes
 the report.
 
 #### Filtering by Time {/*filtering-by-time*/}
@@ -144,14 +149,14 @@ are described below.
 
 | Time Period   | Description                                         |
 | ----------- | ----------- |
-| Month Year    | Configures the report to display data for the selected month/year combination (e.g., July 2022). This period starts at midnight on the first day of the month and ends at 23:59 on the last day of the month.                                              |
+| Month Year    | Configures the report to display data for the selected month/year combination (e.g., July {{ YEAR }}). This period starts at midnight on the first day of the month and ends at 23:59 on the last day of the month.                                              |
 | Past 24 Hours | Configures the report to display data for the last 24 hours. Upon selecting this option, the report's start/end date will be updated to a 24 hour period that ends at the top of the hour of the current hour.  Example:  If it is currently 10:30 a.m., then the 24 hour period would start at 10 a.m. on the previous day and end at 10 a.m. on the current day.              |
 | Today         | Configures the report to display data for the current day. Upon selecting this option, the report's start date/time will be updated to read 00:00 (i.e., midnight) of the current day. The report's end date/time will be the current date and time.                                           |
 | This Week     | Configures the report to display data for the current week. Upon selecting this option, the report's start date/time will be updated to read 00:00 (i.e., midnight) for a date 7 days prior to today. The report's end date/time will be the current date and time.                              |
 | This Month    | Configures the report to display data for the current month. Upon selecting this option, the report's start date/time will be updated to read 00:00 (i.e., midnight) for the first day of the current month. The report's end date/time will be the current date and time.                          |
 | Yesterday     | Configures the report to display data for yesterday. Upon selecting this option, the report's start date/time will be updated to read 00:00 (i.e., midnight) of the previous day. The report's end date/time will be 23:59 of the previous day.                                       |
 | Last Week     | Configures the report to display data for the last week. Upon selecting this option, the report's start date/time will be updated to read 00:00 (i.e., midnight) for a date that is 14 days prior to the current date. The report's end date/time will be 23:59 for a date 7 days prior to the current date.                                       |
-| Last Month    | Configures the report to display data for the previous month. Upon selecting this option, the report's start date/time will be updated to read 00:00 (i.e., midnight) for the 1^st^ of the previous month (e.g., 2022-07-01 00:00). The report's end date/time will be 23:59 for the last day in that month (e.g., 2022-07-31 23:59).         |
+| Last Month    | Configures the report to display data for the previous month. Upon selecting this option, the report's start date/time will be updated to read 00:00 (i.e., midnight) for the 1^st^ of the previous month (e.g., {{ YEAR }}-07-01 00:00). The report's end date/time will be 23:59 for the last day in that month (e.g., {{ YEAR }}-07-31 23:59).         |
 | Custom        | Allows a custom start/end date/time to be applied to the report. Define this time period through the **From** and the **To** option, respectively.  Custom time periods should be limited to approximately 1 month. Specifying a longer time frame may cause a long delay or even prevent the report from being generated.                        |
 
 <Callout type="info">
@@ -188,12 +193,12 @@ data:
     uses to report data.
 -   If a start/end time cannot be specified for a report, then the
     report will include data for the specified start/end date. For
-    example, specifying a date range of "2022-08-14 to 2022-08-15"
-    will include data for both 8/14/2022 and 8/15/2022.
+    example, specifying a date range of "{{ YEAR }}-08-14 to {{ YEAR }}-08-15"
+    will include data for both 8/14/{{ YEAR }} and 8/15/{{ YEAR }}.
 -   A start or end date/time cannot be specified for monthly reports
     (e.g., Traffic Summary). A date range is not displayed for this type
     of report, since report data will always be limited to the specified
-    month (e.g., 08-01-2022 00:00:00 -- 08-31-2022 23:59:59 GMT). As a
+    month (e.g., 08-01-{{ YEAR }} 00:00:00 -- 08-31-{{ YEAR }} 23:59:59 GMT). As a
     result, this case is not covered in this section.
 
 It is important to know the following information when generating or
@@ -212,14 +217,14 @@ included in a report can be calculated for each type of time chunk. This
 example assumes that the following date/time range was used to generate
 the report:
 
--   **Start Date/Time:** 2022-08-01 07:02:00
--   **End Date/Time:** 2022-08-02 00:00:00
+-   **Start Date/Time:** {{ YEAR }}-08-01 07:02:00
+-   **End Date/Time:** {{ YEAR }}-08-02 00:00:00
 
 | Time Chunk | Actual Start Date/Time | Actual End Date/Time |
 |------------|------------------------|----------------------|
-| 5 Minutes  | 2022-08-01 07:00:00    | 2022-08-02 00:04:59  |
-| 1 Hour     | 2022-08-01 07:00:00    | 2022-08-02 00:59:59  |
-| 1 Day      | 2022-08-01 00:00:00    | 2022-08-02 23:59:59  |
+| 5 Minutes  | {{ YEAR }}-08-01 07:00:00    | {{ YEAR }}-08-02 00:04:59  |
+| 1 Hour     | {{ YEAR }}-08-01 07:00:00    | {{ YEAR }}-08-02 00:59:59  |
+| 1 Day      | {{ YEAR }}-08-01 00:00:00    | {{ YEAR }}-08-02 23:59:59  |
 
 ### Exporting Report Data {/*exporting-report-data*/}
 
@@ -286,11 +291,11 @@ intervals over the time period covered by the report.
     reported by the corresponding data point in the graph. The time
     interval between data points can be either hourly or daily.
     -   **Hourly:** This time interval, which is used for the "Past 24
-        Hours," "Today," and "Yesterday" time periods, identifies a date and time (UTC/GMT) using a 24 hour format (e.g., 2022-07-08 15:00).
+        Hours," "Today," and "Yesterday" time periods, identifies a date and time (UTC/GMT) using a 24 hour format (e.g., {{ YEAR }}-07-08 15:00).
 
         **Format:** `<YYYY>-<MM>-<DD> <hh>:<mm>`
 
-    -   **Daily:** This time interval, which is used for all other time periods, identifies a date (e.g., 2022-07-08) that is calculated using the UTC/GMT time zone.
+    -   **Daily:** This time interval, which is used for all other time periods, identifies a date (e.g., {{ YEAR }}-07-08) that is calculated using the UTC/GMT time zone.
 
         **Format:** `<YYYY>-<MM>-<DD>`
 
@@ -318,7 +323,7 @@ This type of report tracks the amount of data transferred
 (MB) on your account. 
 
 **Key information:**
--   You may <a href="#data-transferred-generate">generate</a> a generic Data Transferred report or break down traffic by the IP version (i.e., IPv4 or IPv6) through which clients requested your content.
+-   You may [generate](#data-transferred-generate) a generic Data Transferred report or break down traffic by the IP version (i.e., IPv4 or IPv6) through which clients requested your content.
 -   View the amount of data transferred at a specified point in time by
     hovering over the desired bar in the graph. The time interval
     represented by each bar is determined by whether you are viewing an
@@ -357,7 +362,7 @@ report.
     -   **Daily:** This time interval is used for all other time
         periods for the generic Data Transferred report (HTTPS Large).
     -   **Format:** `<YYYY>-<MM>-<DD> <hh>:<mm>`
-        -   Identifies a date and time (UTC/GMT) using a 24 hour format (e.g., 2022-07-08 15:00).
+        -   Identifies a date and time (UTC/GMT) using a 24 hour format (e.g., {{ YEAR }}-07-08 15:00).
 
 <a id="data-transferred-generate"></a>
 

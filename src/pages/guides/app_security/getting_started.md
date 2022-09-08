@@ -23,7 +23,7 @@ Before you can secure your traffic, you will need an {{ COMPANY_NAME }} site con
 
 <Callout type="tip">
 
-  {{ PRODUCT }} provides basic application layer security to all accounts. However, we also offer more comprehensive solutions. {{ ACCOUNT_UPGRADE }}.
+  {{ PRODUCT }} provides basic application layer security to all accounts. However, we also offer more comprehensive solutions. {{ ACCOUNT_UPGRADE }}
 
 </Callout>
 

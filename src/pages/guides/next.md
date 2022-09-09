@@ -54,7 +54,7 @@ When installing the {{ PRODUCT }} CLI globally in a virtual environment that has
 
 If you run into permission issues while attempting to install the {{ PRODUCT }} CLI globally on your local development machine, these may be fixed by using [nvm](https://github.com/nvm-sh/nvm) to manage Node and NPM.
 
-## Getting Started {/* getting-started */}
+## Getting Started {/*getting-started*/}
 
 ### Create a Next.js Application {/*create-a-nextjs-application*/}
 
@@ -240,7 +240,7 @@ export async function getServerSideProps({params: {id}}) {
 
 The `Prefetch` component fetches data for the linked page from {{ PRODUCT }}'s edge cache and adds it to the service worker's cache when the link becomes visible in the viewport. When the user taps on the link, the page transition will be instantaneous because the browser won't need to fetch data from the network.
 
-## Routing {/* routing */}
+## Routing {/*routing*/}
 
 {{ PRODUCT }} supports Next.js's built-in routing scheme for both page and API routes, including Next.js 9's clean dynamic routes. The default `routes.js` file created by `{{ CLI_NAME }} init` sends all requests to Next.js via a fallback route:
 

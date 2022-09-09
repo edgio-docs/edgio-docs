@@ -62,7 +62,7 @@ two rules:
 | Rule | Description                                                   |
 | ----------- | ----------- |
 | 1    | This rule contains a single condition with a single variable. |
-| 2    | This rule contains the following conditions:  1.  The first condition contains a single variable. 2.  The second condition contains two variables.              |
+| 2    | This rule contains the following conditions: <br />1.  The first condition contains a single variable. <br />2.  The second condition contains two variables.              |
 
 Assuming the above configuration, {{ PRODUCT_SECURITY }} identifies a threat under either
 of the following circumstances:

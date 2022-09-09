@@ -390,13 +390,17 @@ The available enforcement actions are described below.
 
         </Callout>
 
--   **Drop request:** Rate rules only. Rate limited requests will be dropped and the client will receive the following response:  
+-   **Drop request:** Rate rules only. Rate limited requests will be dropped and the client will receive the following response: 
+ 
     -   **HTTP status code:** `503 Service Unavailable`
     -   **Response header:** `Retry-After: 10 seconds` 
 
-    <Callback type="info">
+    <Callout type="info">
+
       The `Retry-After` response header provides a hint to the client as to when service may resume.
-    </Callback>
+
+    </Callout>
+
 -   **Redirect (HTTP 302):** Rate limited requests or detected threats will be redirected to the specified URL.
 
     **Key information:**

@@ -21,12 +21,14 @@ title: Country Codes
 | AI   | Anguilla                     |
 | A1   | Anonymous Proxy <br /><br /><Callout type="info">This country code identifies a set of IP addresses used by specific anonymizers or VPN services. These types of services may be used to circumvent IP geolocation restrictions. This country code does not provide complete coverage of all proxied traffic. Rather, it identifies traffic for specific legal anonymous proxies.</Callout> |
 
+| A2   | Satellite Provider <br /><br /><Callout type="info">This country code identifies a set of IP addresses used by Satellite ISPs to provide Internet service to multiple countries (e.g., Nigeria and Ghana).</Callout> |
+
 | AQ   | Antarctica                   |
 | AG   | Antigua and Barbuda          |
 | AR   | Argentina                    |
 | AM   | Armenia                      |
 | AW   | Aruba                        |
-| AP   | Asia/Pacific Region <br /><br /><Callout type="info">This country code identifies a small subset of IP addresses for the Asia/Pacific region. <br /><br />[Learn more.](#regions) </Callout>| 
+| AP   | Asia/Pacific Region <br /><br /><Callout type="info">This country code identifies a small subset of IP addresses for the Asia/Pacific region. <br />[Learn more.](#regions) </Callout>| 
 
   AU   | Australia                    |
 | AT   | Austria                      |
@@ -84,7 +86,7 @@ title: Country Codes
 | ER   | Eritrea                      |
 | EE   | Estonia                      |
 | ET   | Ethiopia                     |
-| EU   | Europe  <br /><br /><Callout type="info">This country code identifies a small subset of European IP addresses. <br /><br />[Learn more.](#regions) </Callout>|
+| EU   | Europe  <br /><br /><Callout type="info">This country code identifies a small subset of European IP addresses. <br />[Learn more.](#regions) </Callout>|
 
 | FK   | Falkland Islands (Malvinas)  |
 | FO   | Faroe Islands                |
@@ -207,9 +209,6 @@ title: Country Codes
 | WS   | Samoa                        |
 | SM   | San Marino                   |
 | ST   | Sao Tome and Principe        |
-| A2   | Satellite Provider <br /><br />This country code identifies 
-a set of IP addresses used by Satellite ISPs to provide Internet 
-service to multiple countries (e.g., Nigeria and Ghana). |
 | SA   | Saudi Arabia                 |
 | SN   | Senegal                      |
 | RS   | Serbia                       |

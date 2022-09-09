@@ -20,17 +20,14 @@ title: Country Codes
 | AO   | Angola                       |
 | AI   | Anguilla                     |
 | A1   | Anonymous Proxy <br /><br /><Callout type="info">This country code identifies a set of IP addresses used by specific anonymizers or VPN services. These types of services may be used to circumvent IP geolocation restrictions. This country code does not provide complete coverage of all proxied traffic. Rather, it identifies traffic for specific legal anonymous proxies.</Callout> |
-
 | A2   | Satellite Provider <br /><br /><Callout type="info">This country code identifies a set of IP addresses used by Satellite ISPs to provide Internet service to multiple countries (e.g., Nigeria and Ghana).</Callout> |
-
 | AQ   | Antarctica                   |
 | AG   | Antigua and Barbuda          |
 | AR   | Argentina                    |
 | AM   | Armenia                      |
 | AW   | Aruba                        |
-| AP   | Asia/Pacific Region <br /><br /><Callout type="info">This country code identifies a small subset of IP addresses for the Asia/Pacific region. <br />[Learn more.](#regions) </Callout>| 
-
-  AU   | Australia                    |
+| AP   | Asia/Pacific Region <br /><br /><Callout type="info">This country code identifies a small subset of IP addresses for the Asia/Pacific region. <br />[Learn more.](#regions) </Callout>  | 
+| AU   | Australia                    |
 | AT   | Austria                      |
 | AZ   | Azerbaijan                   |
 | BS   | Bahamas                      |
@@ -87,7 +84,6 @@ title: Country Codes
 | EE   | Estonia                      |
 | ET   | Ethiopia                     |
 | EU   | Europe  <br /><br /><Callout type="info">This country code identifies a small subset of European IP addresses. <br />[Learn more.](#regions) </Callout>|
-
 | FK   | Falkland Islands (Malvinas)  |
 | FO   | Faroe Islands                |
 | FJ   | Fiji                         |

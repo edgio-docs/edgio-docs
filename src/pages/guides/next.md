@@ -111,10 +111,12 @@ The `with{{ PRODUCT_LEGACY }}` plugin optimizes the Next.js build for running on
 - `{{ FULL_CLI_NAME }}SourceMaps`: Defaults to `false`. Set to `true` to add server-side source maps so that stack traces have original source filenames and line numbers when tailing the logs in the {{ PRODUCT_NAME }} developer console. This will increase the serverless bundle size but will not affect performance. If you find that your app exceeds the maximum serverless bundle size allowed by {{ PRODUCT_NAME }}, you can disable this option to conserve space.
 
 <Callout type="warning">
+
   We noticed some performance issues related to sourcemaps being loaded in our
   Serverless infrastructure, which may result in 539 project timeout errors. In
   case you encounter such errors, please try again with sourcemaps disabled.
   This document will be updated once the problem is fully resolved.
+
 </Callout>
 
 ### withServiceWorker {/*withserviceworker*/}
@@ -426,7 +428,9 @@ Next.js has continued to improve how it bundles production builds for deployment
 For backwards compatibility, {{ PRODUCT_NAME }} will also respect `target: 'serverless'` in your next.config.js for Next.js versions prior to 12.0.0.
 
 <Callout type="info">
+
 Note that NextRouter.render404 and renderNextPage are retired when using Next.js 12.2.0+. Requests are delegated to a Next.js server instance which will handle determining which page to render based on the request. Prior use cases should now be achieved via using Next.js redirects and rewrites.
+
 </Callout>
 
 ## Support for Next.js Middleware (BETA) {/*support-for-nextjs-middleware-beta*/}

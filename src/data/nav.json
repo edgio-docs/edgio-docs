@@ -1,7 +1,7 @@
 [
 	{
 		"title": "Getting Started",
-		"path": "/overview"
+		"path": "overview"
 	},
 	{
 		"title": "Site Setup",
@@ -9,11 +9,11 @@
 		"routes": [
 			{
 				"title": "Environments",
-				"path": "/environments"
+				"path": "environments"
 			},
 			{
 				"title": "Deployments",
-				"path": "/deploy_apps"
+				"path": "deploy_apps"
 			},
 			{
 				"title": "Configuration File",
@@ -345,7 +345,7 @@
 	},
 	{
 		"title": "Reference",
-		"path": "/reference",
+		"path": "reference",
 		"routes": [
 			{
 				"title": "Migration to V4",

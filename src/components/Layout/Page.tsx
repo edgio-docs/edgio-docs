@@ -3,7 +3,7 @@ import * as React from 'react';
 import styled from 'styled-components';
 
 import Header from './Header/Header';
-import {Sidebar} from './Sidebar/Sidebar';
+import {Sidebar} from './Sidebar/Sidebar2';
 import {useIsMobile} from './useMediaQuery';
 import {RouteItem, SidebarContext} from './useRouteMeta';
 

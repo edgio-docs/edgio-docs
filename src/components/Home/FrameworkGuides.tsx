@@ -7,7 +7,6 @@ import {IconAstro, IconAstroDark} from '../Icon/IconAstro';
 import {IconBook} from '../Icon/IconBook';
 import {IconEmberJS} from '../Icon/IconEmberJS';
 import {IconGatsby} from '../Icon/IconGatsby';
-import {IconGridsome, IconGridsomeDark} from '../Icon/IconGridsome';
 import {IconNextJS, IconNextJSDark} from '../Icon/IconNextJS';
 import {
   IconNextJSCommerce,
@@ -16,6 +15,7 @@ import {
 import {IconPreact} from '../Icon/IconPreact';
 import {IconReact} from '../Icon/IconReact';
 import {IconReactStatic} from '../Icon/IconReactStatic';
+import {IconRedwood} from '../Icon/IconRedwood';
 import {IconRemix, IconRemixDark} from '../Icon/IconRemix';
 import {IconServerlessFunctions} from '../Icon/IconServerlessFunctions';
 import {IconSolidJS} from '../Icon/IconSolidJS';
@@ -116,7 +116,7 @@ export default function FrameworkGuides() {
   ];
   const routesCol2: Array<IRoutesProps> = [
     {
-      title: 'Serverless functions',
+      title: 'Serverless Compute',
       path: 'serverless_functions',
       icon: {
         light: <IconServerlessFunctions />,
@@ -174,11 +174,11 @@ export default function FrameworkGuides() {
       },
     },
     {
-      title: 'Gridsome',
-      path: 'gridsome',
+      title: 'RedwoodJS',
+      path: 'redwood',
       icon: {
-        light: <IconGridsome />,
-        dark: <IconGridsomeDark />,
+        light: <IconRedwood />,
+        dark: <IconRedwood />,
       },
     },
     {

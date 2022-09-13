@@ -1,10 +1,14 @@
 import Link from 'next/link';
 import React from 'react';
 import useCollapse from 'react-collapsed';
+import {
+  GetCollapsePropsOutput,
+  GetTogglePropsOutput,
+} from 'react-collapsed/dist/types';
 import styled from 'styled-components';
 
 import NavItems from '../../../data/nav.json';
-import {IconChevron} from '../../Icon/IconChevron';
+import {IconChevron, IconOutsideLink, IconOutsideLinkDark} from '../../Icon';
 
 const StlyedSidebar = styled.div`
   font-size: 14px;
@@ -138,16 +142,6 @@ const StlyedSidebar = styled.div`
   .sidenav-sublist {
     list-style: none;
     padding: 0px;
-
-    &[data-nav-depth='1'] {
-      /* padding-left + icon width + column-gap */
-      margin-left: calc(16px);
-    }
-
-    &[data-nav-depth='2'] {
-      /* padding-left + icon width + column-gap */
-      margin-left: calc(16px);
-    }
   }
 
   .menu-toggle__wrap {
@@ -172,7 +166,7 @@ const StlyedSidebar = styled.div`
 
     + .sidenav-sublist {
       position: relative;
-      overflow: hidden;
+      margin-left: calc(16px);
 
       ::before {
         position: absolute;
@@ -184,6 +178,14 @@ const StlyedSidebar = styled.div`
         background-color: var(--colors-blue0);
         content: '';
         transform: translateY(5px);
+      }
+
+      &[data-nav-depth='1']::before {
+        opacity: 80%;
+      }
+
+      &[data-nav-depth='2']::before {
+        opacity: 60%;
       }
     }
   }
@@ -222,6 +224,54 @@ interface IAccordion {
   depth: number;
 }
 
+interface IExternalRouteTitle {
+  title: string;
+  path: string;
+}
+function ExternalRouteTitle({title, path}: IExternalRouteTitle) {
+  return (
+    <a
+      className="menu-toggle__wrap sidenav-link"
+      href={path}
+      target="_blank"
+      rel="noopener noreferrer">
+      {title}
+      <>
+        <div className="icon-box icon-chevron" id="dark-theme">
+          <IconOutsideLinkDark />
+        </div>
+        <div className="icon-box icon-chevron" id="light-theme">
+          <IconOutsideLink />
+        </div>
+      </>
+    </a>
+  );
+}
+
+interface IDefaultRotueTitle {
+  title: string;
+  path: string;
+  hasChildren: boolean;
+  toggleProps: GetTogglePropsOutput;
+}
+function DefaultRouteTitle({
+  title,
+  path,
+  hasChildren,
+  toggleProps,
+}: IDefaultRotueTitle) {
+  return (
+    <Link
+      href={`${path.length > 0 ? `/guides/${path}` : 'javascript:void(0)'}`}
+      passHref>
+      <a className="menu-toggle__wrap sidenav-link" {...toggleProps}>
+        <span>{title}</span>
+        <MenuChevron {...{hasChildren}} />
+      </a>
+    </Link>
+  );
+}
+
 function Accordion({route, isActive, onSelect, depth}: IAccordion) {
   const [isExpanded, setExpanded] = React.useState(isActive);
   const {getCollapseProps, getToggleProps} = useCollapse({
@@ -238,42 +288,38 @@ function Accordion({route, isActive, onSelect, depth}: IAccordion) {
       data-comp="accordion"
       data-expanded={isExpanded}>
       <div className="sidenav-menu__container">
-        {/* parent toggle */}
-        {route.title && (
-          <Link
-            href={`${
-              route.path.length > 0
-                ? `/guides/${route.path}`
-                : 'javascript:void(0)'
-            }`}
-            passHref>
-            <a
-              className="menu-toggle__wrap sidenav-link"
-              {...getToggleProps({
-                onClick: onSelect,
-              })}>
-              <span>{route.title}</span>
-              <MenuChevron hasChildren={!!route.routes} />
-            </a>
-          </Link>
+        {route.external ? (
+          <ExternalRouteTitle
+            {...{title: route.title as string, path: route.path}}
+          />
+        ) : (
+          route.title && (
+            <DefaultRouteTitle
+              {...{
+                title: route.title as string,
+                path: route.path,
+                hasChildren: !!route.routes,
+                toggleProps: {
+                  ...getToggleProps({
+                    onClick: onSelect,
+                  }),
+                },
+              }}
+            />
+          )
         )}
-        {/* {route.title && (
-						<button className="menu-toggle__wrap sidenav-link" {...getToggleProps({
-							onClick: onSelect
-						})}>
-							{depth === 0 && <MenuItemIcon icon={<IconFolder />} iconDark={<IconFolderDark />} />}
-							<span>{route.title}</span>
-							<MenuChevron hasChildren={!!route.routes} />
-						</button>
-				)} */}
+
         {/* children collapse */}
         {route.routes && (
-          // can this be a single component that returns its children?
-          <ul
-            className="sidenav-sublist"
-            {...{'data-nav-depth': depth + 1, ...getCollapseProps()}}>
+          <SideNavSublist
+            {...{
+              depth: depth + 1,
+              collapseProps: {
+                ...getCollapseProps(),
+              },
+            }}>
             <AccordionParent {...{routes: route.routes, depth: depth + 1}} />
-          </ul>
+          </SideNavSublist>
         )}
       </div>
     </li>
@@ -283,6 +329,7 @@ function Accordion({route, isActive, onSelect, depth}: IAccordion) {
 interface IRoute {
   title: string | null;
   path: string;
+  external?: boolean;
   routes?: Array<IRoute>;
 }
 
@@ -315,12 +362,34 @@ function AccordionParent({routes, depth}: IAccordionParent) {
   );
 }
 
+interface ISideNavSublist {
+  depth: number;
+  collapseProps?: GetCollapsePropsOutput;
+  children: React.ReactNode;
+}
+
+function SideNavSublist({depth, collapseProps, children}: ISideNavSublist) {
+  if (collapseProps) {
+    return (
+      <ul
+        className="sidenav-sublist"
+        {...{'data-nav-depth': depth, ...collapseProps}}>
+        {children}
+      </ul>
+    );
+  }
+
+  return <>{children}</>;
+}
+
 export function Sidebar() {
   return (
     <StlyedSidebar>
       <div className="nav-container">
         <ul className="sidenav-sublist" data-nav-depth="0">
-          <AccordionParent routes={NavItems as Array<IRoute>} depth={0} />
+          <SideNavSublist {...{depth: 0}}>
+            <AccordionParent routes={NavItems as Array<IRoute>} depth={0} />
+          </SideNavSublist>
         </ul>
       </div>
     </StlyedSidebar>

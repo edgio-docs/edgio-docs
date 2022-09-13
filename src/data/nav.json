@@ -29,11 +29,11 @@
 				"routes": [
 					{
 						"title": "SAML Single Sign On",
-						"path": ""
+						"path": "saml"
 					},
 					{
 						"title": "Teams",
-						"path": ""
+						"path": "teams"
 					}
 				]
 			}
@@ -53,15 +53,15 @@
 			},
 			{
 				"title": "Caching",
-				"path": ""
+				"path": "caching"
 			},
 			{
 				"title": "Purging",
-				"path": ""
+				"path": "purging"
 			},
 			{
 				"title": "Predictive Prefetch",
-				"path": ""
+				"path": "prefetching"
 			},
 			{
 				"title": "URL Redirects",
@@ -69,7 +69,7 @@
 			},
 			{
 				"title": "Traffic Splitting",
-				"path": "",
+				"path": "traffic_splitting",
 				"routes": [
 					{
 						"title": "Basic Setup",
@@ -77,7 +77,7 @@
 					},
 					{
 						"title": "Split Testing",
-						"path": ""
+						"path": "split_testing"
 					},
 					{
 						"title": null
@@ -94,11 +94,11 @@
 				"routes": [
 					{
 						"title": "Core Web Vitals",
-						"path": ""
+						"path": "core_web_vitals"
 					},
 					{
 						"title": "DevTools",
-						"path": ""
+						"path": "devtools"
 					},
 					{
 						"title": "Deep Request Inspection",
@@ -141,11 +141,11 @@
 			},
 			{
 				"title": "Image Optimization",
-				"path": ""
+				"path": "image_optimization"
 			},
 			{
 				"title": "Third-Party CDNs",
-				"path": ""
+				"path": "third_party_cdns"
 			},
 			{
 				"title": null
@@ -204,7 +204,7 @@
 					},
 					{
 						"title": "Managed Rules",
-						"path": ""
+						"path": "managed_rule_groups"
 					},
 					{
 						"title": "Security Applications",
@@ -262,15 +262,187 @@
 				"routes": [
 					{
 						"title": "Angular",
-						"path": ""
+						"path": "angular"
+					},
+					{
+						"title": "Astro",
+						"path": "astro"
+					},
+					{
+						"title": "Brunch",
+						"path": "brunch"
+					},
+					{
+						"title": "Docusaurus",
+						"path": "docusaurus"
+					},
+					{
+						"title": "Dojo",
+						"path": "dojo"
+					},
+					{
+						"title": "Eleventy",
+						"path": "eleventy"
+					},
+					{
+						"title": "Ember.js",
+						"path": "ember"
+					},
+					{
+						"title": "Ember Fastboot",
+						"path": "ember_fastboot"
+					},
+					{
+						"title": "Express",
+						"path": "express"
+					},
+					{
+						"title": "Frontity",
+						"path": "frontity"
+					},
+					{
+						"title": "Gatsby",
+						"path": "gatsby"
+					},
+					{
+						"title": "Gridsome",
+						"path": "gridsome"
+					},
+					{
+						"title": "Hexo",
+						"path": "hexo"
+					},
+					{
+						"title": "Hugo",
+						"path": "hugo"
+					},
+					{
+						"title": "Ionic React",
+						"path": "ionic_react"
+					},
+					{
+						"title": "Ionic Vue",
+						"path": "ionic_vue"
+					},
+					{
+						"title": "Jekyll",
+						"path": "jekyll"
+					},
+					{
+						"title": "Lit",
+						"path": "lit"
+					},
+					{
+						"title": "MkDocs",
+						"path": "mkdocs"
+					},
+					{
+						"title": "Nx",
+						"path": "nx"
+					},
+					{
+						"title": "Next.js",
+						"path": "next"
+					},
+					{
+						"title": "Next.js Commerce",
+						"path": "next_commerce"
+					},
+					{
+						"title": "Nuxt.js",
+						"path": "nuxt"
+					},
+					{
+						"title": "Nuxt3",
+						"path": "nuxt3"
+					},
+					{
+						"title": "Preact",
+						"path": "preact"
+					},
+					{
+						"title": "Razzle",
+						"path": "razzle"
 					},
 					{
 						"title": "React",
-						"path": ""
+						"path": "react"
 					},
 					{
-						"title": "Vue",
-						"path": ""
+						"title": "React Static",
+						"path": "react_static"
+					},
+					{
+						"title": "React Storefront",
+						"path": "react-storefront"
+					},
+					{
+						"title": "RedwoodJS",
+						"path": "redwoodjs"
+					},
+					{
+						"title": "Remix",
+						"path": "remix"
+					},
+					{
+						"title": "Saber",
+						"path": "saber"
+					},
+					{
+						"title": "Sanity",
+						"path": "sanity"
+					},
+					{
+						"title": "Sapper",
+						"path": "sapper"
+					},
+					{
+						"title": "Scully",
+						"path": "scully"
+					},
+					{
+						"title": "SolidJS",
+						"path": "solid"
+					},
+					{
+						"title": "Spartacus",
+						"path": "spartacus"
+					},
+					{
+						"title": "Static HTML/JS",
+						"path": "static_sites"
+					},
+					{
+						"title": "Stencil",
+						"path": "stencil"
+					},
+					{
+						"title": "Svelte",
+						"path": "svelte"
+					},
+					{
+						"title": "UmiJS",
+						"path": "umijs"
+					},
+					{
+						"title": "VitePress",
+						"path": "vitepress"
+					},
+					{
+						"title": "Vue Storefront",
+						"path": "vsf"
+					},
+					{
+						"title": "Vue.js",
+						"path": "vue"
+					},
+					{
+						"title": "VuePress",
+						"path": "vuepress"
+					},
+					{
+						"title": "Zola",
+						"path": "zola"
 					}
 				]
 			},
@@ -280,7 +452,7 @@
 			},
 			{
 				"title": "Incremental Static Regeneration",
-				"path": ""
+				"path": "isg"
 			},
 			{
 				"title": null
@@ -293,15 +465,15 @@
 	},
 	{
 		"title": "Third-Party Integrations",
-		"path": "",
+		"path": "integrations",
 		"routes": [
 			{
 				"title": "BigCommerce",
-				"path": ""
+				"path": "bigcommerce"
 			},
 			{
 				"title": "Bloomreach",
-				"path": ""
+				"path": "bloomreach"
 			},
 			{
 				"title": "CI/CD",
@@ -309,11 +481,11 @@
 			},
 			{
 				"title": "Shopify Hydrogen",
-				"path": ""
+				"path": "shopify_hydrogen"
 			},
 			{
 				"title": "Swell",
-				"path": ""
+				"path": "swell"
 			}
 		]
 	},
@@ -323,23 +495,45 @@
 		"routes": [
 			{
 				"title": "CLI",
-				"path": ""
+				"path": "cli"
 			},
 			{
 				"title": "REST API",
-				"path": ""
+				"path": "rest_api"
 			},
 			{
 				"title": "Log Data",
-				"path": ""
+				"path": "logs"
 			},
 			{
 				"title": "Deloy to Edgio Button",
-				"path": ""
+				"path": "deploy_to_layer0"
 			},
 			{
 				"title": "Layer0 Packages",
-				"path": ""
+				"path": "",
+				"routes": [
+					{
+						"title": "@layer0/core",
+						"path": "docs/api/core",
+						"external": true
+					},
+					{
+						"title": "@layer0/prefetch",
+						"path": "docs/api/prefetch",
+						"external": true
+					},
+					{
+						"title": "@layer0/core (v3.x)",
+						"path": "docs/v3.x/api/core",
+						"external": true
+					},
+					{
+						"title": "@layer0/prefetch (v3.x)",
+						"path": "docs/v3.x/api/prefetch",
+						"external": true
+					}
+				]
 			}
 		]
 	},

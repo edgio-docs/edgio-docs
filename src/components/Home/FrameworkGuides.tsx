@@ -175,7 +175,7 @@ export default function FrameworkGuides() {
     },
     {
       title: 'RedwoodJS',
-      path: 'redwood',
+      path: 'redwoodjs',
       icon: {
         light: <IconRedwood />,
         dark: <IconRedwood />,

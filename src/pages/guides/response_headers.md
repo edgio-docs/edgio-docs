@@ -43,6 +43,7 @@ Component names within the header are abbreviated:
 | eh  | HAProxy on edge POP              |
 | ec  | Varnish cache on edge POP        |
 | ed  | DPS on edge POP                  |
+| ek  | Kolben on edge POP               |
 | gh  | HAProxy on global POP            |
 | gc  | Varnish cache on global POP      |
 | gd  | DPS on global POP                |

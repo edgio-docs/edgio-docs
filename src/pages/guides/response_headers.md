@@ -38,20 +38,20 @@ All POPs have the same components:
 
 Component names within the header are abbreviated:
 
-| Abbreviation | Component Name          |
-| ------------ | ----------------------- |
-| e   | Edge POP ID
-| eh  | HAProxy on edge POP              |
-| ec  | Varnish cache on edge POP        |
-| ed  | DPS on edge POP                  |
-| ek  | Kolben on edge POP               |
-| g   | Global POP ID
-| gh  | HAProxy on global POP            |
-| gc  | Varnish cache on global POP      |
-| gd  | DPS on global POP                |
-| p   | Serverless Load Balancer         |
-| w   | Lambda workers                   |
-| pu  | Proxy upstream or customer origin|
+| Abbreviation | Component Name                    |
+|--------------|-----------------------------------|
+| e            | Edge POP ID                       |
+| eh           | HAProxy on edge POP               |
+| ec           | Varnish cache on edge POP         |
+| ed           | DPS on edge POP                   |
+| ek           | Kolben on edge POP                |
+| g            | Global POP ID                     |
+| gh           | HAProxy on global POP             |
+| gc           | Varnish cache on global POP       |
+| gd           | DPS on global POP                 |
+| p            | Serverless Load Balancer          |
+| w            | Lambda workers                    |
+| pu           | Proxy upstream or customer origin |
 
 #### Telemetry Types {/*telemetry-types*/}
 | Type | Description |

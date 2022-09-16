@@ -79,6 +79,15 @@ prefetch('/api/products/1.json');
 
 Prefetch requests are given the lowest priority. This ensures that they do not block more critical requests like API calls, images, scripts, and navigation.
 
+Optionally is possible to override default TTL or the value of `serviceWorkerSeconds` defined in routes.js by providing the `maxAgeSeconds` option to `prefetch` function call. This option is applied only to that function call and doesn't effect any other calls made later.
+```js
+import {prefetch} from '{{ PACKAGE_NAME }}/prefetch/window';
+
+prefetch('/api/products/1.json', "fetch", {
+    maxAgeSeconds: 300 // 5 minutes
+});
+```
+
 ## React {/*react*/}
 
 The `{{ PACKAGE_NAME }}/react` package provides a `Prefetch` component that you can wrap around any link to prefetch the link when it becomes visible in the viewport:

@@ -7,58 +7,131 @@ This guide describes the headers that {{ PRODUCT_NAME }} injects into responses,
 ## General Headers {/*general-headers*/}
 
 - `{{ HEADER_PREFIX }}-version`: version fingerprint that includes {{ PRODUCT_NAME }} version number, site build number and UTC timestamp of the build
-- `{{ HEADER_PREFIX }}-t`: telemetry measurements for all the components in {{ PRODUCT_NAME }} critical path that served your request
+- `{{ HEADER_PREFIX }}-t`: This header contains time measurements for each {{ PRODUCT }} component through which a request was routed. It also provides cache status information for edge and global POPs. 
 - `{{ HEADER_PREFIX }}-request-id`: the unique ID of the request on {{ PRODUCT_NAME }} infrastructure
 - `{{ HEADER_PREFIX }}-hit-request-id`: the unique ID of the request whose cached response is being returned (not present if cache miss)
 - `{{ HEADER_PREFIX }}-caching-status`: indicates why a response was or was not cached. See [Caching](/guides/caching#section_why_is_my_response_not_being_cached_).
 - `{{ HEADER_PREFIX }}-surrogate-key`: a space separated list of secondary cache keys used for [cache clearing](/guides/purging#surrogate_keys) that can be injected when needed into your backend responses.
 
-### Structure of `{{ HEADER_PREFIX }}-t` {/*structure-of-x-0-t*/}
+### {{ HEADER_PREFIX }}-t Response Header {/*structure-of--header_prefix--t*/}
 
-The format is `{{ HEADER_PREFIX }}-t: <id>=<time>[,<id2>=<time2>...]`
+The `{{ HEADER_PREFIX }}-t` response header contains time measurements for each {{ PRODUCT }} POP component through which a request was routed. It also provides cache status information for edge and global POPs. This data is presented sequentially according to the order in which POP components processed the request. 
 
-`{{ HEADER_PREFIX }}-t` is an ordered list of telemetry measurements; values are **prepended** at response time. Thus, from left to right, measurements are ordered from the outermost edge component to the innermost cloud component that handled the request.
+[Learn how {{ PRODUCT }} routes requests.](request_headers#request-routes)
 
-All times are in milliseconds.
-
-The following structure is important to note when reading the telemtry data:
-
-All POPs have the same components:
-* HAProxy -> Varnish -> DPS
-* L1 is Edge w/ HAProxy -> Varnish -> DPS -> Global POP
-* L2 is Global w/ HAProxy -> Varnish -> DPS  -> backend (user defined backend from [layer0.config](https://docs.layer0.co/guides/layer0_config#section_backends) | [static page](https://docs.layer0.co/guides/static_sites#section_router_configuration) | Serverless Load Balancer->[Serverless](https://docs.layer0.co/guides/serverless_functions#section_serverless_functions))
-
+<!--
 <Callout type="info">
 
   When a request is reentrant, telemetry information is not duplicated; instead, each request logs its own telemetry but does not return it to the downstream {{ PRODUCT_NAME }} request. As a result, duplicate entries are not possible.
 
 </Callout>
+-->
 
-#### Component Names and Prefixes {/*component-names-and-prefixes*/}
+**Format:**
 
-Component names within the header are abbreviated:
+`{{ HEADER_PREFIX }}-t: <Metric 1>=<Value 1>[,<Metric 2>=<Value 2>,<Metric n>=<Value n>]`
 
-| Abbreviation | Component Name                    |
-|--------------|-----------------------------------|
-| eh           | HAProxy on edge POP               |
-| ec           | Varnish cache on edge POP         |
-| ed           | DPS on edge POP                   |
-| ek           | Kolben on edge POP                |
-| gh           | HAProxy on global POP             |
-| gc           | Varnish cache on global POP       |
-| gd           | DPS on global POP                 |
-| p            | Serverless Load Balancer          |
-| w            | Lambda workers                    |
-| pu           | Proxy upstream or customer origin |
+Each metric is defined through a set of abbreviations. These abbreviations identify:
 
-#### Telemetry Types {/*telemetry-types*/}
-| Type | Description |
-| ------------ | -------------- |
-| t | Total time (example: `eht`) total time as measured by edge HAProxy) |
-| f | Fetch time (example: `gdf`) total fetch time as measured by global DPS) |
-| u | Upstream fetch time (example: `pu` total upstream fetch time as measured by serverless load balancer, requested through WAF)
-| c | Cache status (example: `ecc=miss,...,gcc=hit`) miss on the edge pop, hit on the global pop |
-| bt | Billed time (example: `wbt`) serverless billed time as measured by serverless load balancer) |
+-   Who handled the request:
+
+    -   **e**: Edge POP
+    -   **g**: Global POP
+    -   **p**: Serverless Compute (load balancer)
+    -   **w**: Serverless Compute (Lambda Worker)
+
+-   The [POP component](request_headers#pop-components) that processed the request:
+
+    -   **h:** HAProxy (load balancer) 
+    -   **c:** Varnish (cache)
+    -   **d:** Dynamic Proxy Service (DPS)
+    -   **b:** Billing
+    -   **k:** Kolben
+    
+-   The type of metric being measured:
+
+    -   **c:** This abbreviation represents either of the following metrics:
+
+        -   Cache status. Valid values are: `hit | miss`. 
+
+            For example, `ecc=miss` identifies a cache miss on an edge POP. An edge POP forwards requests that result in cache misses to a global POP.
+
+        -   Request count. 
+
+            For example, `pc=1` indicates the number of requests generated by the Serverless Compute (load balancer). A value greater than 1 indicates that the load balancer had to scale the request by adding it to a queue and then resubmitting it. Another example is `wc=19` which indicates that a Serverless Compute (Lambda Worker) was invoked 19 times by this request.
+
+    -   **d:** DNS lookup time in milliseconds. 
+
+        <Callout type="info">
+
+          DPS uses DNS caching to accelerate requests. This means that DPS may frequently report a DNS lookup time of 0.
+
+        </Callout>
+
+        For example, `edd` identifies the DNS lookup time as measured by an edge POP's DPS.  
+
+    -   **f:** Fetch time in milliseconds. This metric measures the amount of time between when a server component received a request and and when the next server component in the route received it. 
+
+        For example, `gdf` identifies total fetch time as measured by a global POP's DPS.
+
+    -   **g:** Age in seconds.
+
+        For example, `wg=746940` indicates that the instance of the Serverless Compute (Lambda Worker) that processed the request has been running for approximately 747 seconds.
+
+    -   **l:** Sum of time in milliseconds.
+
+        For example, `wl=30896` indicates the total processing time for all Serverless Compute (Lambda Workers) for all requests is 30.8 seconds.
+
+    -   **m:** Memory usage in Megabytes.
+
+        For example, `wm=317` indicates that Serverless Compute (Lambda Worker) used 317 Megabytes of memory for this request.
+
+    -   **r:** Route evaluation in milliseconds.
+
+        For example, `wr=1` indicates that Serverless Compute (Lambda Worker) spent 1 millisecond evaluating the route through which this request will be processed.
+
+    -   **t:** Total time in milliseconds. This metric measures the amount of time between the moment when the request was received to when a response was sent to the client.
+
+        For example, `wbt` identifies billed time as measured by a Serverless Compute load balancer.
+
+    -   **u:** Upstream fetch time in milliseconds. 
+
+        For example, `pu` identifies the total time between when a Serverless Compute load balancer submitted a request defined within your application's code (e.g., fetch) and when it received a response.
+
+#### Exceptions {/*exceptions*/}
+
+Most metrics follow the above convention. However, there are some metrics that use a different convention. Here are a few common exceptions to the above convention:
+
+-   **dgpop:** Identifies the global POP to which an edge POP forwarded a request.
+-   **eh:** Identifies the total time as measured by an edge POP's HAProxy.
+-   **gh:** Identifies the total time as measured by a global POP's HAProxy.
+-   **wa:** Indicates the `transformRequest` time as measured by a Serverless Compute (Lambda Worker).
+-   **wp:** Indicates the fetch or proxy time as measured by a Serverless Compute (Lambda Worker).
+-   **wz:** Indicates either:
+
+    -   **transformResponse:** If the route uses `transformResponse`, then this metric measures the `transformResponse` time in milliseconds.
+    -   **Image Optimization:** If the route contains an image optimization tag, such as Next [Image](https://nextjs.org/docs/api-reference/next/image) or Nuxt [nuxt-img](https://image.nuxtjs.org/components/nuxt-img/),  instead of `transformResponse`, then this metric measures processing time.
+
+#### Sample {{ HEADER_PREFIX }}-t Response Header {/*sample-x-0-t-response-header*/}
+
+The following sample {{ HEADER_PREFIX }}-t response header is for a request that was routed through an edge POP to a global POP: 
+
+`{{ HEADER_PREFIX }}-t: eh=325,ect=322,ecc=cached,edt=316,edd=0,edf=316,dgpop=hef,gh=7,gct=5,gcc=hit`
+
+We will now examine each metric defined within the above sample response header:
+
+| Value        | Description                                                                                              |
+| -------------| ---------------------------------------------------------------------------------------------------------|
+| `eh=325`     | Indicates the total time from an edge POP's HAProxy was 325 milliseconds.                                |
+| `ect=322`    | Indicates the total time from an edge POP's Varnish (cache) was 322 milliseconds.                        |
+| `ecc=cached` | Indicates that a cached version of the requested content was found on the edge POP's Varnish (cache).    |
+| `edt=316`    | Indicates the total time from an edge POP's DPS was 316 milliseconds.                                    |
+| `edd=0`      | Indicates the DNS lookup time for an edge POP's DPS was 0 milliseconds. This typically means that DPS used DNS caching.   |
+| `edf=316`    | Indicates the fetch time from an edge POP's DPS was 316 milliseconds.                                    |
+| `dgpop=hef`  | Indicates that the edge POP forwarded the request to the HEF global POP.                                 |
+| `gh=7`       | Indicates the total time from a global POP's HAProxy was 7 milliseconds.                                 |
+| `gct=5`      | Indicates the total time from a global POP's Varnish (cache) was 5 milliseconds.                         |
+| `gcc=hit`    | Indicates that a cached version of the requested content was found on the global POP's Varnish (cache).  |
 
 ### Examples {/*examples*/}
 The examples below use a response that traversed from the edge, to global and to serverless:
@@ -86,10 +159,10 @@ Below is a translation of each value in this example:
 | `pc=1`     | Serverless Load Balancer total request count. if > 1 it implies scaling where we had to queue and retry this request |
 | `pf=809`   | Serverless Load Balancer Total Fetch time to serverless of 809ms |
 | `wbt=723`  | Serverless billed time of 723ms. This includes serverless workload time plus time spent capturing serverless logs. |
-| `wm=317`   | Serverless worker memory used 317mb |
+| `wm=317`   | Serverless worker memory used 317 MB |
 | `wt=722`   | Serverless workload time of 722ms |
 | `wc=19`    | Number of times this specific serverless instance has been invoked (19) |
-| `wg=746940`| Age of this serverless instance of 749s |
+| `wg=746940`| Age of this serverless instance of 747s |
 | `wl=30896` | Sum of worker times across all requests of 30.8s |
 | `wr=1`     | Time spent evaluating route of 1ms|
 | `wp=705`   | Worker fetch or proxy time of 705ms |

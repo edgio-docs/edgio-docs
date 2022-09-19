@@ -4,11 +4,10 @@ title: Request
 
 Learn about reserved request headers and how requests are routed through our service.
 
-## Request Routes {/*request-routes*/}
+## Request Flow  {/*request-flow*/}
 
 {{ PRODUCT }} routes requests according to traffic type.
 
--   **Serverless Compute:** Requests are load balanced from a [Serverless Compute](serverless_functions#section_serverless_functions) load balancer to a Serverless Compute Lambda Worker.
 -   **Standard Traffic:** By default, requests are routed to an origin server through an edge POP (L1) and a global POP (L2). This behavior maximizes cache hits and shields your origin servers by funneling all cache misses through a global POP. 
 
     ![](/images/overview/request-flow-edge-global.png)
@@ -18,6 +17,11 @@ Learn about reserved request headers and how requests are routed through our ser
     {{ PRODUCT }} is optimized for performance and therefore always routes requests to the closest POP. If the closest POP to a client is a global POP, then the request will bypass the edge POP and go directly to the global POP as shown below.
 
     ![](/images/overview/request-flow-global.png)
+-   **Serverless Compute:** {{ PRODUCT }} routes Serverless Compute requests similar to standard traffic. However, cache misses within a global POP are forwarded to a [Serverless Compute](serverless_functions#section_serverless_functions) load balancer which distributes requests to a Serverless Compute Lambda worker.
+
+    ![](/images/overview/request-flow-serverless-compute.png)
+
+    [View image.](/images/overview/request-flow-serverless-compute.png)
 
 ### POP Components {/*pop-components*/}
 
@@ -35,7 +39,7 @@ If a request is routed to an orign server through both an edge and global POP, t
 
 ` Client -> Edge POP (HAProxy -> Varnish -> DPS) -> Global POP (HAProxy -> Varnish -> DPS) -> Origin Server`
 
-## Request Headers {/*request-headers*/}
+## Reserved Request Headers {/*request-headers*/}
 {{ PRODUCT }} injects headers into requests making them visible to your server code. 
 
 <Callout type="important">

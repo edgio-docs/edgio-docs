@@ -619,6 +619,10 @@ const SidebarMenuItems: ISidebarMenuItems = [
       sortRoutes: true,
       routes: [
         {
+          title: 'Alerts',
+          path: '/guides/alerts',
+        },
+        {
           title: 'Teams',
           path: '/guides/teams',
         },

@@ -13,7 +13,7 @@ This guide describes the headers that {{ PRODUCT_NAME }} injects into responses,
 - `{{ HEADER_PREFIX }}-caching-status`: indicates why a response was or was not cached. See [Caching](/guides/caching#section_why_is_my_response_not_being_cached_).
 - `{{ HEADER_PREFIX }}-surrogate-key`: a space separated list of secondary cache keys used for [cache clearing](/guides/purging#surrogate_keys) that can be injected when needed into your backend responses.
 
-### Structure of `{{ HEADER_PREFIX }}-t` {/*structure-of--header_prefix--t*/}
+### Structure of `{{ HEADER_PREFIX }}-t` {/*structure-of-x-0-t*/}
 
 The format is `{{ HEADER_PREFIX }}-t: <id>=<time>[,<id2>=<time2>...]`
 
@@ -38,17 +38,18 @@ All POPs have the same components:
 
 Component names within the header are abbreviated:
 
-| Abbreviation | Component Name          |
-| ------------ | ----------------------- |
-| eh  | HAProxy on edge POP              |
-| ec  | Varnish cache on edge POP        |
-| ed  | DPS on edge POP                  |
-| gh  | HAProxy on global POP            |
-| gc  | Varnish cache on global POP      |
-| gd  | DPS on global POP                |
-| p   | Serverless Load Balancer         |
-| w   | Lambda workers                   |
-| pu  | Proxy upstream or customer origin|
+| Abbreviation | Component Name                    |
+|--------------|-----------------------------------|
+| eh           | HAProxy on edge POP               |
+| ec           | Varnish cache on edge POP         |
+| ed           | DPS on edge POP                   |
+| ek           | Kolben on edge POP                |
+| gh           | HAProxy on global POP             |
+| gc           | Varnish cache on global POP       |
+| gd           | DPS on global POP                 |
+| p            | Serverless Load Balancer          |
+| w            | Lambda workers                    |
+| pu           | Proxy upstream or customer origin |
 
 #### Telemetry Types {/*telemetry-types*/}
 | Type | Description |

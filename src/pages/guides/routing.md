@@ -64,7 +64,6 @@ When {{ PRODUCT_NAME }} receives a request, it executes **each route that matche
 
 - [appShell](/docs/api/core/classes/_router_responsewriter_.responsewriter.html#appshell)
 - [compute](/docs/api/core/classes/_router_responsewriter_.responsewriter.html#compute)
-- [jwtVerification](/docs/api/core/interfaces/_router_responsewriter_.verifyjwtoptions.html)
 - [proxy](/docs/api/core/classes/_router_responsewriter_.responsewriter.html#proxy)
 - [redirect](/docs/api/core/classes/_router_responsewriter_.responsewriter.html#redirect)
 - [send](/docs/api/core/classes/_router_responsewriter_.responsewriter.html#send)
@@ -410,6 +409,37 @@ The second argument to routes is a function that receives a `ResponseWriter` and
 
 [See the API Docs for Response Writer](/docs/api/core/classes/_router_responsewriter_.responsewriter.html)
 
+## Blocking Search Engine Crawlers {/*blocking-search-engine-crawlers*/}
+
+If you need to block all search engine bot traffic to specific environments (such as your default or staging environment), the easiest way is to include the `x-robots-tag` header with the same directives you would otherwise set in a `meta` tag. 
+
+To block search engine traffic for {{ PRODUCT }} edge links and permalinks, you can use the built-in `.noIndexPermalink()` call on the router:
+
+```js
+  router.noIndexPermalink()
+```
+
+This will match requests with the `host` header matching `/layer0.link|layer0-perma.link/` and set a response header of `x-robots-tag: noindex`.
+
+Additionally, you can customize this to block traffic to development or staging websites based on the `host` header of the request:
+
+```js
+
+router
+  .noIndexPermalink()
+  .get(
+    {
+      headers: {
+        // Regex to catch multiple hostnames
+        host: /dev.example.com|staging.example.com/,
+      },
+    },
+    ({ setResponseHeader }) => {
+      setResponseHeader('x-robots-tag', 'noindex')
+    },
+  )
+```
+
 ## Full Example {/*full-example*/}
 
 This example shows typical usage of `{{ PACKAGE_NAME }}/core`, including serving a service worker, next.js routes (vanity and conventional routes), and falling back to a legacy backend.
@@ -419,6 +449,9 @@ This example shows typical usage of `{{ PACKAGE_NAME }}/core`, including serving
 const { Router } = require('{{ PACKAGE_NAME }}/core/router')
 
 module.exports = new Router()
+  // adds `x-robots-tag: noindex` response header to {{ PRODUCT }} 
+  // edge links and permalinks to prevent bot indexing
+  .noIndexPermalink()
   .get('/service-worker.js', ({ serviceWorker }) => {
     // serve the service worker built by webpack
     serviceWorker('dist/service-worker.js')
@@ -488,9 +521,3 @@ Click _Add A Redirect_ to configure the path or host you wish to redirect to:
 ![add redirect](/images/environments/add_redirects.png)
 
 **Note:** you will need to activate and redeploy your site for this change to take effect.
-
-## Verifying JWTs on the Edge {/*verifying-jwts-on-the-edge*/}
-
-JWTs can be verified on the edge either in cookies or in a header (`Authorization: Bearer ...`), with either symmetric or asymmetric encryption with signature lenghts 256, 384 or 512 bits. Redirects or `403 Forbidden` responses can be given individually on expired (`iat` claim, or premature `nfb` claim) or invalid (invalid signature, wrong algorithm, inadequate claims.) JWTs; the `403 Forbidden` can be intercepted and clients can be redirected to another page, which can optionally pass the original URL which intercepted the invalid/expired JWT.
-
-Please see the [API documentation](/docs/api/core/interfaces/_router_responsewriter_.verifyjwtoptions.html) for this feature for more detailed examples.

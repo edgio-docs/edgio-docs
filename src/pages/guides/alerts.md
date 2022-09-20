@@ -119,7 +119,7 @@ Alerts can either be:
 To disable or delete alerts:
 
 1. Go to the alerts section of your Project Settings.
-2. Click on the Kebab menu in the Actions column.
+2. Click on the Kebab <GoKebabVertical className="inline-icon"/> menu in the Actions column.
 3. Click on **Disable** or **Delete.**
 
 ![Disable or delete an alert](/images/alerts/disable-delete-alert.png)
@@ -131,7 +131,7 @@ To disable or delete alerts:
 To enable a disabled alert:
 
 1. Go to the alerts section of your Project Settings.
-2. Click on the Kebab menu in the actions column.
+2. Click on the Kebab <GoKebabVertical className="inline-icon"/> menu in the actions column.
 3. Click on **Enable.**
 
 ![Enable a disabled alert](/images/alerts/enable-alert.png)

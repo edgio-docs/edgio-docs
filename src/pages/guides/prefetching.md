@@ -79,7 +79,7 @@ prefetch('/api/products/1.json');
 
 Prefetch requests are given the lowest priority. This ensures that they do not block more critical requests like API calls, images, scripts, and navigation.
 
-Optionally is possible to override default TTL or the value of `serviceWorkerSeconds` defined in routes.js by providing the `maxAgeSeconds` option to `prefetch` function call. This option is applied only to that function call and doesn't effect any other calls made later.
+Optionally is possible to override default TTL or the value of `serviceWorkerSeconds` defined in `routes.js` by providing the `maxAgeSeconds` option to `prefetch` function call. This option is applied only to that function call and doesn't affect any other calls made later.
 ```js
 import {prefetch} from '{{ PACKAGE_NAME }}/prefetch/window';
 

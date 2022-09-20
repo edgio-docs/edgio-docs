@@ -9,69 +9,18 @@ There are certain [alert types](#alert-types) that can be configured with their 
 
 <hr/>
 
-## Alert Types {/*alert-types*/}
+## Alert Types and Fields {/*alert-types-and-fields*/}
 
-There are four types of alert:
+![Types of alerts](/images/alerts/alert-types-fields.png)
 
-1. **Deployments:** Get notified when deployments succeed or fail.
-2. **Core Web Vitals**: Select a list of domains and receive alerts for their Core Web vital Status.
-3. **Cache Hit Rate**: Receive alerts on the general percentage of your project's Cache Hit Rate or optionally when it falls below a certain percentage threshold.
-4. **Cache Purges**: Receive alerts when resources are removed from the cache.
-
-![Types of alerts](/images/alerts/alert-types.png)
-
-<hr/>
-
-## Fields {/*fields*/}
-
-[Alert types](#alert-types) have a number of required and unique fields:
-
-- [Frequency](#frequency)
-- [Recipients](#recipients)
-- [Environments](#environments)
-- [Domains](#domains)
-- [Type of Deployment](#type-of-deployment)
-- [Maximum Threshold](#maximum-threshold)
-
-### Frequency {/*frequency*/}
-A required field for [all alert types](#alert-types) that describes a time interval or how often to notify the selected [recipient(s)](#recipients).
-
-![Frequency field](/images/alerts/frequency-field.png)
-
-<hr/>
-
-### Recipients {/*recipients*/}
-A required field for [all alert types](#alert-types) that describe the recipient(s) of the alert type. At least one recipient needs to be selected.
-
-![Recipients field](/images/alerts/recipients-field.png)
-
-<hr/>
-
-### Environments {/*environments*/}
-A required field for the **Deployments, Cache Hit Rate, and Cache Purges** alert types that describe the environment(s) to receive alerts for. At least one environment needs to be selected.
-
-![Types of alerts](/images/alerts/environments-field.png)
-
-<hr/>
-
-### Domains {/*domains*/}
-A required field for the **Core Web Vitals** alert type that describe the domain(s) to receive alerts for.
-
-![Domain fields](/images/alerts/domains-field.png)
-
-<hr/>
-
-### Type of Deployment {/*type-of-deployment*/}
-A required field for the **Deployments** alert type that describes the type of deployments to receive alerts for.
-
-![Deployments field](/images/alerts/deployment-type-field.png)
-
-<hr/>
-
-### Maximum Threshold {/*maximum-threshold*/}
-An optional field for the **Cache Hit Rate** (CHR) alert type that describes the maximum CHR threshold to receive alerts for.
-
-![Cache Hit Rate Threshould field](/images/alerts/chr-threshold-field.png)
+| Field Name        | Description |
+| ----------------- | ----------- |
+| Alert Type        | **Deployments**: Get notified when deployments succeed or fail. <br/> **Core Web Vitals**: Select a list of domains to receive alerts for their Core Web Vital status. <br/> **Cache Hit Rate**: Receive alerts on the general percentage of your project's Cache Hit Rate or optionally when it falls below a certain percentage threshold. <br/> **Cache Purges**: Be alerted when resources are removed from the cache. |
+| Frequency         | The time interval or how often to notify the selected recipient(s) |
+| Environments      | The environment(s) to receive alerts for. This option only apply to the Deployments, Cache Hit Rate, and Cache Purges alert types. |
+| Recipients        | The recipient(s) of the alert. At least one recipient needs to be selected. |
+| Domains           | Core Web Vitals alert type that describes the domain(s) to receive alerts for. |
+| Maximum Threshold | The Cache Hit Rate alert type that specifies the maximum threshold to receive alerts for.|
 
 <hr/>
 
@@ -79,7 +28,7 @@ An optional field for the **Cache Hit Rate** (CHR) alert type that describes the
 
 To create an alert:
 
-1. Go to the alerts section of your Project Settings.
+1. Go to the alerts section of your site's settings.
 2. Click **Create new Alert.**
 3. Fill the form fields to configure the alert.
 4. Click **Create Alert** to save your configuration.
@@ -100,7 +49,7 @@ Preview alerts from the **Alerts** section of your project **Settings**.
 
 To edit an alert:
 
-1. Go to the alerts section of your Project Settings.
+1. Go to the alerts section of your site's settings.
 2. Find the alert you want to edit then click on it to edit.
 3. Make your desired changes to the alert.
 4. Click **Save Changes.**
@@ -109,20 +58,27 @@ To edit an alert:
 
 <hr/>
 
-## Disable or delete an alert {/*disable-or-delete-an-alert*/}
+## Disable an alert {/*disable-or-delete-an-alert*/}
 
-Alerts can either be:
+To disable an alert:
 
-1. Disabled: This pauses the alert for the recipient(s) but can be re-enabled.
-2. Deleted: The alert will no longer exist and the recipient(s) will stop receiving notifications.
+1. Go to the alerts section of your site's settings.
+2. Click on the <GoKebabVertical className="inline-icon"/> (**ACTIONS**) menu in the Actions column.
+3. Click on **Disable**.
 
-To disable or delete alerts:
+![Disable an alert](/images/alerts/disable-delete-alert.png)
 
-1. Go to the alerts section of your Project Settings.
-2. Click on the Kebab <GoKebabVertical className="inline-icon"/> menu in the Actions column.
-3. Click on **Disable** or **Delete.**
+<hr/>
 
-![Disable or delete an alert](/images/alerts/disable-delete-alert.png)
+## Delete an alert {/*disable-or-delete-an-alert*/}
+
+To delete an alert:
+
+1. Go to the alerts section of your site's settings.
+2. Click on the <GoKebabVertical className="inline-icon"/> (**ACTIONS**) menu in the Actions column.
+3. Click on **Delete.**
+
+![Delete an alert](/images/alerts/disable-delete-alert.png)
 
 <hr/>
 
@@ -130,8 +86,8 @@ To disable or delete alerts:
 
 To enable a disabled alert:
 
-1. Go to the alerts section of your Project Settings.
-2. Click on the Kebab <GoKebabVertical className="inline-icon"/> menu in the actions column.
+1. Go to the alerts section of your site's settings.
+2. Click on the <GoKebabVertical className="inline-icon"/> (**ACTIONS**) menu in the actions column.
 3. Click on **Enable.**
 
 ![Enable a disabled alert](/images/alerts/enable-alert.png)

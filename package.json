@@ -45,6 +45,7 @@
     "react-collapsed": "^3.3.0",
     "react-copy-to-clipboard": "^5.1.0",
     "react-dom": "experimental",
+    "react-icons": "^4.4.0",
     "react-player": "^2.10.0",
     "remark": "^12.0.1",
     "remark-extended-table": "^1.0.0",

@@ -1,3 +1,5 @@
+import {GoKebabVertical} from 'react-icons/go';
+
 import ButtonLink from './ButtonLink';
 import ButtonLinksGroup from './ButtonLinksGroup';
 import Callout from './Callout';
@@ -45,6 +47,7 @@ const Divider = () => (
 );
 
 export const MDXComponents = {
+  GoKebabVertical,
   p: P,
   strong: Strong,
   ol: OL,

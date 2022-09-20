@@ -7,8 +7,6 @@ This gives you the opportunity to act on issues or errors, or keep up to date wi
 
 There are certain [alert types](#alert-types) that can be configured with their corresponding [fields](#fields).
 
-<hr/>
-
 ## Alert Types and Fields {/*alert-types-and-fields*/}
 
 ![Types of alerts](/images/alerts/alert-types-fields.png)
@@ -22,8 +20,6 @@ There are certain [alert types](#alert-types) that can be configured with their 
 | Domains           | Core Web Vitals alert type that describes the domain(s) to receive alerts for. |
 | Maximum Threshold | The Cache Hit Rate alert type that specifies the maximum threshold to receive alerts for.|
 
-<hr/>
-
 ## Creating an alert {/*creating-an-alert*/}
 
 To create an alert:
@@ -34,16 +30,6 @@ To create an alert:
 4. Click **Create Alert** to save your configuration.
 
 ![Create an alert](/images/alerts/create-alert.png)
-
-<hr/>
-
-## Preview an alert {/*preview-an-alert*/}
-
-Preview alerts from the **Alerts** section of your project **Settings**.
-
-![Preview an alert](/images/alerts/preview-alert.png)
-
-<hr/>
 
 ## Edit an alert {/*edit-an-alert*/}
 
@@ -56,31 +42,25 @@ To edit an alert:
 
 ![Edit an alert](/images/alerts/edit-alert.png)
 
-<hr/>
-
 ## Disable an alert {/*disable-or-delete-an-alert*/}
 
 To disable an alert:
 
 1. Go to the alerts section of your site's settings.
-2. Click on the <GoKebabVertical className="inline-icon"/> (**ACTIONS**) menu in the Actions column.
+2. Click on the <GoKebabVertical className="inline-icon"/> (**ACTIONS**) menu in the actions column.
 3. Click on **Disable**.
 
 ![Disable an alert](/images/alerts/disable-delete-alert.png)
-
-<hr/>
 
 ## Delete an alert {/*disable-or-delete-an-alert*/}
 
 To delete an alert:
 
 1. Go to the alerts section of your site's settings.
-2. Click on the <GoKebabVertical className="inline-icon"/> (**ACTIONS**) menu in the Actions column.
+2. Click on the <GoKebabVertical className="inline-icon"/> (**ACTIONS**) menu in the actions column.
 3. Click on **Delete.**
 
 ![Delete an alert](/images/alerts/disable-delete-alert.png)
-
-<hr/>
 
 ## Enable a disabled alert {/*enable-a-disabled-alert*/}
 

@@ -47,7 +47,7 @@ To edit an alert:
 To disable an alert:
 
 1. Go to the alerts section of your site's settings.
-2. Click on the <GoKebabVertical className="inline-icon"/> (**ACTIONS**) menu in the actions column.
+2. Click on the <GoKebabVertical className="inline-icon"/> icon in the ACTIONS column.
 3. Click on **Disable**.
 
 ![Disable an alert](/images/alerts/disable-delete-alert.png)
@@ -57,7 +57,7 @@ To disable an alert:
 To delete an alert:
 
 1. Go to the alerts section of your site's settings.
-2. Click on the <GoKebabVertical className="inline-icon"/> (**ACTIONS**) menu in the actions column.
+2. Click on the <GoKebabVertical className="inline-icon"/> icon in the ACTIONS column.
 3. Click on **Delete.**
 
 ![Delete an alert](/images/alerts/disable-delete-alert.png)
@@ -67,7 +67,7 @@ To delete an alert:
 To enable a disabled alert:
 
 1. Go to the alerts section of your site's settings.
-2. Click on the <GoKebabVertical className="inline-icon"/> (**ACTIONS**) menu in the actions column.
+2. Click on the <GoKebabVertical className="inline-icon"/> icon in the ACTIONS column.
 3. Click on **Enable.**
 
 ![Enable a disabled alert](/images/alerts/enable-alert.png)

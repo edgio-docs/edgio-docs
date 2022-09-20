@@ -92,8 +92,7 @@ export async function getServerSideProps() {
 
   // split the major release versions
   const [v4, v3] = splitByVersion(/^v4/, /^v3/);
-
-  const content = await markdownToHtml(v3);
+  const content = await markdownToHtml(v4);
 
   return {props: {content}};
 }

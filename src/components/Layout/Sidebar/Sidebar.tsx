@@ -401,15 +401,15 @@ export function Sidebar() {
   const pryNavItemsIndex = 0;
   const pryNavItems = SidebarMenuItems[pryNavItemsIndex];
 
-  // const secNavItemsIndex = 1;
-  // const secNavItems = SidebarMenuItems[secNavItemsIndex];
+  const secNavItemsIndex = 1;
+  const secNavItems = SidebarMenuItems[secNavItemsIndex];
 
   return (
     <StlyedSidebar>
       <div className="nav-container">
         <PrimaryNavItems {...{pryNavItemsIndex, pryNavItems}} />
-        {/* <div className="hr-separator" /> */}
-        {/* <SecondaryNavitems {...{secNavItemsIndex, secNavItems}} /> */}
+        <div className="hr-separator" />
+        <SecondaryNavitems {...{secNavItemsIndex, secNavItems}} />
       </div>
     </StlyedSidebar>
   );

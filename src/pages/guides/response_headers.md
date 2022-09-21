@@ -49,7 +49,7 @@ The following sample response header indicates that the following POP components
 
 `{{ HEADER_PREFIX }}-status: eh=200,ed=200,gh=200,gd=200,p=200,w=200` <a id="structure-of--header_prefix--t"></a>
 
-### {{ HEADER_PREFIX }}-t Response Header  {/*x-0-t-response-header*/}
+### {{ HEADER_PREFIX }}-t Response Header {/*x-0-t-response-header*/}
 
 The `{{ HEADER_PREFIX }}-t` response header contains time measurements for each {{ PRODUCT }} POP component through which a request was routed. It also provides cache status information for edge and global POPs. This data is presented sequentially according to the order in which POP components processed the request. 
 
@@ -73,6 +73,15 @@ Each metric is defined through a set of abbreviations. These abbreviations ident
 
     -   **e**: Edge POP
     -   **g**: Global POP
+
+    <Callout type="info">
+
+      If a global POP is the closest POP to the client, then it will act as both an edge and global POP. However, it will be assigned the `e` abbrevation instead of `g`. 
+
+      For example, you may typically measure an origin server's response time through `gdf` (Global POP's DPS Fetch Time). However, if a global POP is the closest POP to the client, then you should use `edf` instead since {{ PRODUCT }} will not return `gdf`.
+
+    </Callout>
+
     -   **p**: Serverless Compute (load balancer)
     -   **w**: Serverless Compute (Lambda worker) <a id="pop-component"></a>
 
@@ -106,7 +115,7 @@ Each metric is defined through a set of abbreviations. These abbreviations ident
 
         For example, `edd` identifies the DNS lookup time as measured by an edge POP's DPS.  
 
-    -   **f:** Fetch time in milliseconds. This metric measures the amount of time between when a server component received a request and and when the next server component in the route received it. 
+    -   **f:** Fetch time in milliseconds. This metric measures the amount of time between when a POP component forwards a request and when it receives a response.
 
         For example, `gdf` identifies total fetch time as measured by a global POP's DPS.
 

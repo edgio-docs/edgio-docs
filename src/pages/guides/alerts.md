@@ -20,7 +20,7 @@ There are certain [alert types](#alert-types) that can be configured with their 
 | Domains           | Core Web Vitals alert type that describes the domain(s) to receive alerts for. |
 | Maximum Threshold | The Cache Hit Rate alert type that specifies the maximum threshold to receive alerts for.|
 
-## Creating an alert {/*creating-an-alert*/}
+## Create an alert {/*creating-an-alert*/}
 
 To create an alert:
 

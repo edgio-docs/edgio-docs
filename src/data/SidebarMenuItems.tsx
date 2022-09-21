@@ -233,7 +233,7 @@ const SidebarMenuItems: ISidebarMenuItems = [
           path: '/guides/compression',
         },
         {
-          title: 'Request Headers',
+          title: 'Request',
           path: '/guides/request_headers',
         },
         {

@@ -118,6 +118,9 @@ const router = new Router()
   .get('/images/:path*', ({cache}) => {
     cache(staticCacheConfig);
   })
+  .match('/guides/changelog', ({removeUpstreamResponseHeader}) => {
+    removeUpstreamResponseHeader('cache-control');
+  })
 
   // API docs
 

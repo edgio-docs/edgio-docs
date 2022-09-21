@@ -4,7 +4,7 @@ title: Request
 
 Learn about reserved request headers and how requests are routed through our service.
 
-## Request Flow  {/*request-flow*/}
+## Request Flow {/*request-flow*/}
 
 {{ PRODUCT }} routes requests according to traffic type.
 
@@ -14,10 +14,10 @@ Learn about reserved request headers and how requests are routed through our ser
 
     [View image.](/images/overview/request-flow-edge-global.png)
 
-    {{ PRODUCT }} is optimized for performance and therefore always routes requests to the closest POP. If the closest POP to a client is a global POP, then the request will bypass the edge POP and go directly to the global POP as shown below.
+    {{ PRODUCT }} is optimized for performance and therefore always routes requests to the closest POP. If a global POP is the closest POP to a client, then {{ PRODUCT }} will treat it as an edge and global POP. This means that cache misses on that POP are sent directly to the origin server as illustrated below.
 
-    ![](/images/overview/request-flow-global.png)
--   **Serverless Compute:** {{ PRODUCT }} routes Serverless Compute requests similar to standard traffic. However, cache misses within a global POP are forwarded to a [Serverless Compute](serverless_functions#section_serverless_functions) load balancer which distributes requests to a Serverless Compute Lambda worker.
+    ![](/images/overview/request-flow-edge.png)
+-   **Serverless Compute:** {{ PRODUCT }} routes Serverless Compute requests similar to standard traffic. However, cache misses are forwarded to a [Serverless Compute](serverless_functions#section_serverless_functions) load balancer which distributes requests to a Serverless Compute Lambda worker.
 
     ![](/images/overview/request-flow-serverless-compute.png)
 

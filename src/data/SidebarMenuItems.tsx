@@ -94,6 +94,16 @@ import {
   IconVueStorefront,
   IconZola,
   IconZolaDark,
+  IconFiddle,
+  IconFiddleDark,
+  IconForum,
+  IconForumDark,
+  IconStatus,
+  IconStatusDark,
+  IconSupport,
+  IconSupportDark,
+  IconEdgioSquareLogo,
+  IconEdgioSquareLogoDark,
 } from '../components/Icon';
 
 export interface IRoute {
@@ -714,6 +724,38 @@ const SidebarMenuItems: ISidebarMenuItems = [
           path: '/guides/layer0_config',
         },
       ],
+    },
+  ],
+  [
+    {
+      title: 'Fiddle',
+      icon: <IconFiddle />,
+      iconDark: <IconFiddleDark />,
+      path: 'https://fiddle.layer0.co/?sgId=7bc47c45-c1d6-4189-b416-552581d86006',
+    },
+    {
+      title: 'Forum',
+      icon: <IconForum />,
+      iconDark: <IconForumDark />,
+      path: 'https://forum.layer0.co/?sgId=7bc47c45-c1d6-4189-b416-552581d86006',
+    },
+    {
+      title: 'Status',
+      icon: <IconStatus />,
+      iconDark: <IconStatusDark />,
+      path: 'https://status.layer0.co/?sgId=7bc47c45-c1d6-4189-b416-552581d86006',
+    },
+    {
+      title: 'Support',
+      icon: <IconSupport />,
+      iconDark: <IconSupportDark />,
+      path: 'https://app.layer0.co/help?sgId=7bc47c45-c1d6-4189-b416-552581d86006',
+    },
+    {
+      title: 'Edg.io',
+      icon: <IconEdgioSquareLogo />,
+      iconDark: <IconEdgioSquareLogoDark />,
+      path: 'https://edg.io',
     },
   ],
 ];

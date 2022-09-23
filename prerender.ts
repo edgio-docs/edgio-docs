@@ -14,6 +14,8 @@ const nextRoutesManifestPath = join(
 export default async function prerenderRequests() {
   const requests = [
     {path: '/'},
+    {path: '/guides/changelog'},
+
     ...JSONRoutes.routes.map(({path}) => ({
       path,
     })),

@@ -716,6 +716,10 @@ const SidebarMenuItems: ISidebarMenuItems = [
           path: '/guides/limits',
         },
         {
+          title: 'v5 Migration Guide',
+          path: '/guides/v5-migration',
+        },
+        {
           title: 'v4 Migration Guide',
           path: '/guides/layer0_migration',
         },

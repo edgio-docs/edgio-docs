@@ -61,11 +61,23 @@ Use the custom components below to enhance the look and feel of your guides.
 Call attention to specific part of the guide with callouts.
 
 ```tsx
-// use this in a markdown file... with type: 'info' | 'warning' | 'danger';
+// use this in a markdown file... with type: 'info' | 'tip' | 'important' | 'warning' | 'danger';
 
 <Callout type="info">
 
-  A note provides additional information.
+  A note providing additional information.
+
+</Callout>
+
+<Callout type="tip">
+
+  A tip providing additional information.
+
+</Callout>
+
+<Callout type="important">
+
+  A note providing important information.
 
 </Callout>
 
@@ -86,7 +98,19 @@ The above code renders:
 
 <Callout type="info">
 
-A note provides additional information.
+  A note providing additional information.
+
+</Callout>
+
+<Callout type="tip">
+
+  A tip providing additional information.
+
+</Callout>
+
+<Callout type="important">
+
+  A note providing important information.
 
 </Callout>
 

@@ -1,3 +1,10 @@
+import {
+  FaInfoCircle,
+  FaLightbulb,
+  FaExclamationTriangle,
+  FaMinusCircle,
+  FaExclamationCircle,
+} from 'react-icons/fa';
 import styled, {css} from 'styled-components';
 
 import {StyledCodeWrap} from './InlineCode';
@@ -6,43 +13,59 @@ interface IStyledCallout {
   type: 'info' | 'warning' | 'danger';
 }
 
+const colorize = (color: string) => css`
+  border-left-color: ${color};
+
+  .icon {
+    color: ${color};
+  }
+`;
+const types = {
+  info: {
+    icon: FaInfoCircle,
+    style: colorize('#1c8ec2'),
+  },
+  tip: {
+    icon: FaLightbulb,
+    style: colorize('#fee8a6'),
+  },
+  important: {
+    icon: FaExclamationCircle,
+    style: colorize('#0df89d'),
+  },
+  warning: {
+    icon: FaExclamationTriangle,
+    style: colorize('#ffc800'),
+  },
+  danger: {
+    icon: FaMinusCircle,
+    style: colorize('#f45263'),
+  },
+};
+
 const StyledCallout = styled.div.attrs<IStyledCallout>((props) => ({
   type: props.type || 'info',
 }))<IStyledCallout>`
-  padding: 15px 20px;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  border-radius: 6px;
+  padding: 14px 20px 20px 14px;
+  border: 1px solid #dedede;
+  border-radius: 3px;
+  margin: 0 0 7px 0;
+  background-color: var(--callout-bg);
+  min-height: 30px;
+  color: var(--text-primary);
+  border-left-width: 5px;
   display: grid;
   grid-template-columns: auto 1fr;
   column-gap: 15px;
   align-items: flex-start;
 
-  /* type=info */
-  ${(props) =>
-    props.type === 'info' &&
-    css`
-      background: rgb(239, 245, 242) none repeat scroll 0% 0%;
-      color: rgb(39, 83, 69);
-      border-color: rgb(181, 216, 195);
-    `}
+  /* defaults for all types */
+  .icon {
+    font-size: 32px;
+  }
 
-  /* type=warning */
-	${(props) =>
-    props.type === 'warning' &&
-    css`
-      background: #fff1bf none repeat scroll 0% 0%;
-      color: #000000;
-      border-color: #f8de82;
-    `}
-
-	/* type=danger */
-	${(props) =>
-    props.type === 'danger' &&
-    css`
-      background: rgb(245, 239, 239) none repeat scroll 0% 0%;
-      color: rgb(83, 39, 41);
-      border-color: rgb(216, 181, 181);
-    `}
+  /* type-specific */
+  ${(props) => types[props.type].style}
 
   ${StyledCodeWrap} {
     color: var(--text-primary);
@@ -56,11 +79,11 @@ export default function Callout({
   type: 'info' | 'warning' | 'danger';
   children: React.ReactNode;
 }) {
+  const Icon = types[type].icon;
+
   return (
     <StyledCallout className="callout" type={type}>
-      <div className="callout-image__wrap">
-        {type === 'info' ? 'ℹ️' : type === 'warning' ? '⚠️' : '⛔️'}
-      </div>
+      <div className="callout-image__wrap icon">{<Icon />}</div>
       <div className="callout-body">{children}</div>
     </StyledCallout>
   );

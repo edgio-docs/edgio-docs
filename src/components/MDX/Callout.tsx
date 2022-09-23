@@ -12,34 +12,21 @@ import {StyledCodeWrap} from './InlineCode';
 interface IStyledCallout {
   type: 'info' | 'warning' | 'danger';
 }
-
-const colorize = (color: string) => css`
-  border-left-color: ${color};
-
-  .icon {
-    color: ${color};
-  }
-`;
 const types = {
   info: {
     icon: FaInfoCircle,
-    style: colorize('#1c8ec2'),
   },
   tip: {
     icon: FaLightbulb,
-    style: colorize('#fee8a6'),
   },
   important: {
     icon: FaExclamationCircle,
-    style: colorize('#0df89d'),
   },
   warning: {
     icon: FaExclamationTriangle,
-    style: colorize('#ffc800'),
   },
   danger: {
     icon: FaMinusCircle,
-    style: colorize('#f45263'),
   },
 };
 
@@ -62,10 +49,19 @@ const StyledCallout = styled.div.attrs<IStyledCallout>((props) => ({
   /* defaults for all types */
   .icon {
     font-size: 32px;
+    & path {
+      stroke: var(--callout-stroke);
+      stroke-width: var(--callout-stroke-width);
+    }
   }
 
   /* type-specific */
-  ${(props) => types[props.type].style}
+  ${(props) => css`
+    border-left-color: var(--callout-${props.type});
+    .icon {
+      color: var(--callout-${props.type});
+    }
+  `}
 
   ${StyledCodeWrap} {
     color: var(--text-primary);

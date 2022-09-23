@@ -4,7 +4,7 @@ title: {{ PRODUCT }} Version 5 Migration Guide
 
 Migrate from {{ PRODUCT }} version 4.x to 5 through the following steps:
 1.  [Upgrade the {{ PRODUCT }} CLI.](#step-1-upgrade-the-edgio-cli)
-2.  [Rename {{ PACKAGE_NAME }} layer0.config.js.](#step-2-rename-layer0configjs)
+2.  [Rename layer0.config.js.](#step-2-rename-layer0configjs)
 3.  [Rename {{ PACKAGE_NAME }} packages.](#step-3-rename-edgio-packages)
 
 ## Step 1: Upgrade the {{ PRODUCT }} CLI {/*step-1-upgrade-the-edgio-cli*/}

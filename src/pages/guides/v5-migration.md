@@ -2,7 +2,7 @@
 title: {{ PRODUCT }} Version 5 Migration Guide 
 ---
 
-Migrate the {{ FULL_CLI_NAME }} CLI from version 4.x to 5.x through the following steps:
+Migrate from {{ PRODUCT }} version 4.x to 5 through the following steps:
 1.  **CLI Upgrade**
  
     Upgrade your existing {{ FULL_CLI_NAME }} CLI through the `--force` flag as shown below:

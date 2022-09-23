@@ -155,7 +155,9 @@ Note that you will also have to carefully consider when you record which experie
 This example Next.js application showcases how you can use Google Analytics to track the current segment by referencing the `{{ COOKIE_PREFIX }}_destination` cookie.
 
 <Callout type="info">
+
   Open the link using incognito/private browsing session to observe varying cookie values.
+
 </Callout>
 
 <ExampleButtons 

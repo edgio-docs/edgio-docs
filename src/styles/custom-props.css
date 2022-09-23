@@ -51,6 +51,15 @@
   --scrollbar-bg: #353535;
   --get-started-card-bg: #fff;
   --sidebar-link-primary: #353535;
+  --callout-bg: #fafafa;
+  --callout-stroke: none;
+  --callout-stroke-width: none;
+  --callout-info: #2f49de;
+  --callout-tip: #f5da5f;
+  --callout-important: #a33ade;
+  --callout-warning: #ffc800;
+  --callout-danger: #f45263;
+  --table-header-bg: #f0f0f0;
 
   /* Light's on... */
   --dark-theme-display: none;
@@ -94,6 +103,15 @@
   --scrollbar-bg: #353535;
   --get-started-card-bg: #000000;
   --sidebar-link-primary: var(--colors-white0);
+  --callout-bg: #353535;
+  --callout-stroke: none;
+  --callout-stroke-width: none;
+  --callout-info: #2f49de;
+  --callout-tip: #f5da5f;
+  --callout-important: #a33ade;
+  --callout-warning: #ffc800;
+  --callout-danger: #f45263;
+  --table-header-bg: var(--colors-black3);
 
   /* Light's off... */
   --dark-theme-display: flex;

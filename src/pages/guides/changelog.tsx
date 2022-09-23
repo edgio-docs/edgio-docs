@@ -1,12 +1,26 @@
-import fetch from 'cross-fetch';
+import {Octokit} from '@octokit/core';
+import _get from 'lodash/get';
 import styled from 'styled-components';
 
-import {DOCS_PAGES_REPO_URL} from '../../../constants';
+import {PRODUCT} from '../../../constants';
 import {markdownToHtml} from '../../../plugins/markdownToHtml';
 
 import {MarkdownPage} from 'components/Layout/MarkdownPage';
 import {Page} from 'components/Layout/Page';
 import JSONRoutes from 'utils/jsonRoutes';
+
+const SKIP_LABEL = 'skip-notes';
+const PR_RE = /\(#(\d+)\)/;
+
+const octokit = new Octokit({
+  auth: process.env.GITHUB_API_TOKEN,
+});
+
+const octokitDefaults = {
+  owner: 'moovweb',
+  repo: 'xdn',
+  per_page: 1000,
+};
 
 const StyledChangelogContent = styled.div`
   display: contents;
@@ -59,13 +73,91 @@ function ChangelogPage({content}: {content: string}) {
 }
 
 export async function getServerSideProps() {
-  const resp = await fetch(
-    `${DOCS_PAGES_REPO_URL}/current/guides/changelog.md`
-  ).then((resp) => (resp.ok ? resp.text() : 'Unable to retrieve changelog'));
+  /**
+   * Checks if the supplied pull request ID contains the skip label
+   * @param {String} pullId
+   * @returns {Promise<boolean>} `true` if this PR should be skipped
+   */
+  function hasSkipLabel(pullId: string) {
+    const labels = _get(pullRequests, [pullId, 'labels'], []);
 
-  const content = await markdownToHtml(
-    resp.replace(/\[(.+)\]\(\S+\)/g, '$1') || ''
-  );
+    return labels.some(
+      (label: {name: string}) =>
+        (label.name || '').trim().toLowerCase() === SKIP_LABEL
+    );
+  }
+
+  function splitByVersion(...args: RegExp[]) {
+    const ret = Array(args.length);
+
+    args.forEach((v, i) => {
+      ret[i] = releases
+        .filter((release: {tag_name: string}) => release.tag_name.match(v))
+        .map((release) => {
+          const title = `**${PRODUCT} Packages** - `;
+          const {tag_name, body, published_at} = release as any;
+
+          return [
+            `#### ${title}${tag_name} (${published_at.split('T')[0]})`,
+            cleanReleaseNotes(body),
+          ].join('\r\n');
+        })
+        .join('\r\n');
+    });
+
+    return ret;
+  }
+
+  function cleanReleaseNotes(notes: string) {
+    notes = notes
+      .split(/\r\n/)
+      .map((v) => {
+        // match a pull request id in this line entry
+        const prMatch = PR_RE.exec(v);
+
+        // Conditions for modifying the line contents
+        v = v.replace(/## What\Ws Changed/, ''); // remove "What's Changed" heading
+        v = v.replace(/\[(.+)\]\(\S+\)/g, '$1'); // remove any markdown links
+        v = v.toLowerCase().indexOf(SKIP_LABEL) > -1 ? '' : v; // exclude if labeled to skip notes
+
+        // check PR labels for skipping notes
+        if (prMatch && hasSkipLabel(prMatch[1])) {
+          return '';
+        }
+
+        // Returning an empty string excludes this line from the release notes
+        return v.trim();
+      })
+      .filter(Boolean)
+      .join('\r\n');
+
+    // add something to the log output so it isn't empty release notes if all valuable
+    // comments have been stripped
+    if (!notes.length) {
+      return '#### _No changelog information available_';
+    }
+
+    return notes;
+  }
+
+  let [releases, pullRequests] = [
+    (
+      await octokit.request(
+        'GET /repos/{owner}/{repo}/releases',
+        octokitDefaults
+      )
+    ).data.filter((v) => !v.draft),
+    (
+      await octokit.request('GET /repos/{owner}/{repo}/pulls', {
+        ...octokitDefaults,
+        state: 'closed',
+      })
+    ).data.reduce((acc, pull) => ({...acc, [pull.number]: pull}), {}),
+  ];
+
+  // split the major release versions
+  const [v4, v3] = splitByVersion(/^v4/, /^v3/);
+  const content = await markdownToHtml(v4);
 
   return {props: {content}};
 }

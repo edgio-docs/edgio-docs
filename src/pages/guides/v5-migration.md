@@ -21,7 +21,7 @@ Migrate from {{ PRODUCT }} version 4.x to 5 through the following steps:
 
 3.  **Rename {{ PACKAGE_NAME }} Packages** 
 
-    For each site, rename all references to {{ PACKAGE_NAME }} packages.
+    For each site, rename all references to {{ PACKAGE_NAME }} packages from `@layer0` to `{{ PACKAGE_NAME }}`.
 
     -   **package.json:** In addition to renaming all {{ PACKAGE_NAME }} packages, you should also set their version to `5.0.0`.
 
@@ -32,7 +32,7 @@ Migrate from {{ PRODUCT }} version 4.x to 5 through the following steps:
           "devDependencies": {
             "@layer0/cli": "4.18.1",
             "@layer0/core": "4.18.1",
-          "@layer0/devtools": "4.18.1",
+            "@layer0/devtools": "4.18.1",
         ...
         ```
         
@@ -47,7 +47,7 @@ Migrate from {{ PRODUCT }} version 4.x to 5 through the following steps:
         ...
         ```
 
-    -   **Import Statements:** Rename {{ PACKAGE_NAME }} packages within each `import` statement. You can find these `import` statements within various files, such as `routes.ts`, `service-worker.js`, and your Next and Nuxt configuration files.
+    -   **Import Statements:** Rename {{ PACKAGE_NAME }} packages within each `import` statement from `@layer0` to `{{ PACKAGE_NAME }}`. You can find these `import` statements within various files, such as `routes.ts`, `service-worker.js`, and your Next and Nuxt configuration files.
 
         For example, the following excerpt from a `routes.ts` file imports various @layer0 packages:
 
@@ -66,7 +66,7 @@ Migrate from {{ PRODUCT }} version 4.x to 5 through the following steps:
         import {nextRoutes} from '{{ PACKAGE_NAME }}/next';
         ...
         ```
-    -   **Next app:** Rename all {{ PACKAGE_NAME }} references within your `next.config.js`:
+    -   **Next app:** Rename all {{ PACKAGE_NAME }} references within your `next.config.js` from `@layer0` to `{{ PACKAGE_NAME }}`.
 
         For example, the following excerpt from a `next.config.js` file contains several @layer0 references:
 

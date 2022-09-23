@@ -26,7 +26,7 @@ Router.events.on('routeChangeError', () => NProgress.done());
 
 function GAnalytics() {
   return (
-    <div>
+    <>
       <Script
         src={`https://googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_TRACKING_ID}`}
         strategy="afterInteractive"></Script>
@@ -39,7 +39,7 @@ function GAnalytics() {
           gtag('config', '${process.env.NEXT_PUBLIC_GA_TRACKING_ID}');
         `}
       </Script>
-    </div>
+    </>
   );
 }
 

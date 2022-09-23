@@ -71,3 +71,7 @@ img,
 video {
   height: auto;
 }
+
+.inline-icon {
+  display: inline;
+}

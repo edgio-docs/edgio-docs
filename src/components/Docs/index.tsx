@@ -66,7 +66,7 @@ const StyledDocs = styled.div`
     .list-item {
       margin-bottom: 7px;
 
-      > * {
+      > *:not(.inline-icon) {
         margin-bottom: inherit;
       }
     }

@@ -49,7 +49,7 @@ The following sample response header indicates that the following POP components
 
 `{{ HEADER_PREFIX }}-status: eh=200,ed=200,gh=200,gd=200,p=200,w=200` <a id="structure-of--header_prefix--t"></a>
 
-### {{ HEADER_PREFIX }}-t Response Header  {/*x-0-t-response-header*/}
+### {{ HEADER_PREFIX }}-t Response Header {/*x-0-t-response-header*/}
 
 The `{{ HEADER_PREFIX }}-t` response header contains time measurements for each {{ PRODUCT }} POP component through which a request was routed. It also provides cache status information for edge and global POPs. This data is presented sequentially according to the order in which POP components processed the request. 
 
@@ -73,6 +73,15 @@ Each metric is defined through a set of abbreviations. These abbreviations ident
 
     -   **e**: Edge POP
     -   **g**: Global POP
+
+    <Callout type="info">
+
+      If a global POP is the closest POP to the client, then it will act as both an edge and global POP. However, it will be assigned the `e` abbrevation instead of `g`. 
+
+      For example, you may typically measure an origin server's response time through `gdf` (Global POP's DPS Fetch Time). However, if a global POP is the closest POP to the client, then you should use `edf` instead since {{ PRODUCT }} will not return `gdf`.
+
+    </Callout>
+
     -   **p**: Serverless Compute (load balancer)
     -   **w**: Serverless Compute (Lambda worker) <a id="pop-component"></a>
 
@@ -88,9 +97,14 @@ Each metric is defined through a set of abbreviations. These abbreviations ident
 
     -   **c:** This abbreviation represents either of the following metrics:
 
-        -   Cache status. Valid values are: `hit | miss`. 
+        -   Cache status. Valid values are: 
 
-            For example, `ecc=miss` identifies a cache miss on an edge POP. An edge POP forwards requests that result in cache misses to a global POP.
+            -   **hit:** The response was served from cache.
+            -   **miss:** The response was forwarded to the next hop in the route because a cached response with a valid time-to-live (TTL) was not found. This value, which may only be returned when `cached` or `pass` is inapplicable, typically indicates that the response contains a `set-cookie` header or its status code is `4xx` or higher.  
+            -   **cached:** The response was cached as a result of this request.
+            -   **pass:** The route corresponding to this request or cache-specific response headers prohibit caching. 
+
+            For example, `gcc=miss` identifies a cache miss on a global POP. A global POP forwards requests that result in cache misses to either an origin server or Serverless Compute.
 
         -   Request count. 
 
@@ -106,9 +120,9 @@ Each metric is defined through a set of abbreviations. These abbreviations ident
 
         For example, `edd` identifies the DNS lookup time as measured by an edge POP's DPS.  
 
-    -   **f:** Fetch time in milliseconds. This metric measures the amount of time between when a server component received a request and and when the next server component in the route received it. 
+    -   **f:** Fetch time in milliseconds. This metric measures the amount of time between when a POP component forwards a request and when it receives a response.
 
-        For example, `gdf` identifies total fetch time as measured by a global POP's DPS.
+        For example, `gdf` indicates the amount of time between when a global POP's DPS forwarded a request to an origin server or Serverless Compute and when it started receiving a response.
 
     -   **g:** Age in seconds.
 
@@ -128,7 +142,7 @@ Each metric is defined through a set of abbreviations. These abbreviations ident
 
     -   **t:** Total time in milliseconds. This metric measures the amount of time between the moment when the request was received to when a response was sent to the client.
 
-        For example, `wbt` identifies billed time as measured by a Serverless Compute load balancer. This measurement includes Serverless Compute workload time and time spent capturing Serverless Compute log data.
+        For example, `wbt` indicates billed time as measured by a Serverless Compute load balancer. This measurement includes Serverless Compute workload time and time spent capturing Serverless Compute log data.
 
     -   **u:** Upstream fetch time in milliseconds. 
 
@@ -165,14 +179,14 @@ We will now examine each metric defined within the above sample response header:
 | -------------| ---------------------------------------------------------------------------------------------------------|
 | `eh=325`     | Indicates the total time from an edge POP's HAProxy was 325 milliseconds.                                |
 | `ect=322`    | Indicates the total time from an edge POP's Varnish (cache) was 322 milliseconds.                        |
-| `ecc=cached` | Indicates that a cached version of the requested content was found on the edge POP's Varnish (cache).    |
+| `ecc=cached` | Indicates that the edge POP's Varnish (cache) cached the response as a result of this request.           |
 | `edt=316`    | Indicates the total time from an edge POP's DPS was 316 milliseconds.                                    |
 | `edd=0`      | Indicates the DNS lookup time for an edge POP's DPS was 0 milliseconds. This typically means that DPS used DNS caching.   |
 | `edf=316`    | Indicates the fetch time from an edge POP's DPS was 316 milliseconds.                                    |
 | `dgpop=hef`  | Indicates that the edge POP forwarded the request to the HEF global POP.                                 |
 | `gh=7`       | Indicates the total time from a global POP's HAProxy was 7 milliseconds.                                 |
 | `gct=5`      | Indicates the total time from a global POP's Varnish (cache) was 5 milliseconds.                         |
-| `gcc=hit`    | Indicates that a cached version of the requested content was found on the global POP's Varnish (cache).  |
+| `gcc=hit`    | Indicates that the global POP's Varnish (cache) served the response from cache.                          |
 
 ##### Serverless Compute {/*serverless-compute*/}
 

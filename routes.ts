@@ -86,7 +86,7 @@ const router = new Router()
   .prerender(prerenderRequests)
   .noIndexPermalink()
   .match('/__xdn__/:path*', ({redirect}) => redirect('/__layer0__/:path*'))
-  .match({}, ({setResponseHeader}) => {
+  .match({}, ({setResponseHeader, removeUpstreamResponseHeader}) => {
     if (isProductionBuild()) {
       setResponseHeader(
         'Strict-Transport-Security',
@@ -110,6 +110,7 @@ const router = new Router()
         ].join('; ')
       );
       setResponseHeader('X-XSS-Protection', '1; mode=block');
+      removeUpstreamResponseHeader('cache-control');
     }
   })
   .match('/service-worker.js', ({serviceWorker}) => {

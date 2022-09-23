@@ -11,6 +11,12 @@ const _preLayer0Export = {
   images: {
     domains: ['opt.moovweb.net'],
   },
+  experimental: {
+    plugins: true,
+    // TODO: this doesn't work because https://github.com/vercel/next.js/issues/30714
+    concurrentFeatures: false,
+    scrollRestoration: true,
+  },
   compiler: {
     // ssr and displayName are configured by default
     styledComponents: true,

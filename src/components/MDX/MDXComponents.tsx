@@ -47,7 +47,7 @@ const Divider = () => (
   />
 );
 
-function CustomNextImage({...props}) {
+function CustomNextImage({src, ...props}: {src: string}) {
   return (
     <div
       style={{
@@ -56,7 +56,7 @@ function CustomNextImage({...props}) {
         overflow: 'hidden',
         borderRadius: '4px',
       }}>
-      <NextImage {...props} />
+      <NextImage src={src} {...props} />
     </div>
   );
 }

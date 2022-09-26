@@ -1,3 +1,4 @@
+import NextImage from 'next/image';
 import {GoKebabVertical} from 'react-icons/go';
 
 import ButtonLink from './ButtonLink';
@@ -46,6 +47,20 @@ const Divider = () => (
   />
 );
 
+function CustomNextImage({...props}) {
+  return (
+    <div
+      style={{
+        background: '#626161',
+        display: 'flex',
+        overflow: 'hidden',
+        borderRadius: '4px',
+      }}>
+      <NextImage {...props} />
+    </div>
+  );
+}
+
 export const MDXComponents = {
   GoKebabVertical,
   p: P,
@@ -74,4 +89,5 @@ export const MDXComponents = {
   img: Image,
   Integrations,
   ExampleButtons,
+  CustomNextImage,
 };

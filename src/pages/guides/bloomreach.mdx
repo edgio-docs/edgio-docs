@@ -297,7 +297,7 @@ To add the necessary components to {{ PRODUCT }} in order to deploy, run the fol
 From the resulting changes, set your {{ PRODUCT }} `routes.js` file to the following:
 
 ```javascript
-import {Router} from '@layer0/core/router';
+import {Router} from '{{ PACKAGE_NAME }}/core/router';
 
 export default new Router()
   .match('/static/:path*', ({serveStatic}) => {

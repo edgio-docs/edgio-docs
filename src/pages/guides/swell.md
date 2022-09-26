@@ -160,7 +160,7 @@ Refer to the [Deploying](deploying) guide for more information on the `deploy` c
 module.exports = {
   backends: {},
   includeNodeModules: true,
-  connector: '@layer0/nuxt',
+  connector: '{{ PACKAGE_NAME }}/nuxt',
 + includeFiles: {
 +   config: true,
 +   modules: true,
@@ -176,8 +176,8 @@ module.exports = {
 // This file was added by layer0 init.
 // You should commit this file to source control.
 
-const { Router } = require('@layer0/core/router')
-const { nuxtRoutes } = require('@layer0/nuxt')
+const { Router } = require('{{ PACKAGE_NAME }}/core/router')
+const { nuxtRoutes } = require('{{ PACKAGE_NAME }}/nuxt')
 
 module.exports = new Router()
   // Prevent search engine bot(s) from indexing

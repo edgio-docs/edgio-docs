@@ -7,7 +7,8 @@ const PRODUCT_PLATFORM = 'App Platform';
 const PRODUCT_SECURITY = 'App Security';
 const PRODUCT_NAME_LOWER = PRODUCT_LEGACY.toLowerCase();
 const PRODUCT_NAME_UPPER = PRODUCT_LEGACY.toUpperCase();
-const CLI_NAME = '0';
+
+const CLI_NAME = 'edg';
 const FULL_CLI_NAME = 'edgio';
 const PACKAGE_NAME = '@edgio';
 const CONFIG_FILE = 'edgio.config.js';

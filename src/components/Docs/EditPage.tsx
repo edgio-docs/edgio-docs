@@ -1,6 +1,8 @@
 import {useRouter} from 'next/router';
 import styled from 'styled-components';
 
+import {DOCS_REPO} from '../../../constants';
+
 import {IconExternalLink} from 'components/Icon/IconExternalLink';
 
 const StyledEditPage = styled.div`
@@ -32,13 +34,14 @@ const StyledEditPage = styled.div`
   }
 `;
 
-const baseURL =
-  'https://github.com/layer0-docs/layer0-docs/edit/main/src/pages';
+const baseURL = `https://github.com/${DOCS_REPO}/edit/main/src/pages`;
+
+const IGNORE_PAGES = ['/guides/changelog'];
 
 export default function EditPage() {
   const router = useRouter();
 
-  if (router.asPath === '/guides/changelog') {
+  if (IGNORE_PAGES.includes(router.route)) {
     return null;
   }
 

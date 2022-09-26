@@ -7,10 +7,11 @@ const PRODUCT_PLATFORM = 'App Platform';
 const PRODUCT_SECURITY = 'App Security';
 const PRODUCT_NAME_LOWER = PRODUCT_LEGACY.toLowerCase();
 const PRODUCT_NAME_UPPER = PRODUCT_LEGACY.toUpperCase();
+
 const CLI_NAME = 'edg';
 const FULL_CLI_NAME = 'edgio';
 const PACKAGE_NAME = '@edgio';
-const CONFIG_FILE = 'layer0.config.js';
+const CONFIG_FILE = 'edgio.config.js';
 const HEADER_PREFIX = 'x-0';
 const COOKIE_PREFIX = 'layer0';
 const RUM_NS = 'Layer0'; // namespace for the JS package used by RUM

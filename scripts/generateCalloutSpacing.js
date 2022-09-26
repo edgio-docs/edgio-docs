@@ -5,8 +5,8 @@ function addCalloutSpace(lines) {
   let callOutIndex;
   const results = [];
   lines.forEach((line, index) => {
-    if (line.includes('<Callout>') || line.includes('</Callout>')) {
-      const isOpeningTag = line.includes('<Callout>');
+    if (line.includes('<Callout') || line.includes('</Callout>')) {
+      const isOpeningTag = line.includes('<Callout');
       callOutIndex = index;
       const indexOfLineToSpace = isOpeningTag
         ? callOutIndex + 1

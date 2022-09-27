@@ -110,4 +110,4 @@ Deploy your app to the {{ PRODUCT_PLATFORM }} by running the following command i
 {{ CLI_NAME }} deploy
 ```
 
-See [deploying](deploying) for more information.
+See [deploying](deploy_apps) for more information.

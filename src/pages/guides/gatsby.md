@@ -65,7 +65,7 @@ Deploy your app to the {{ PRODUCT_PLATFORM }} by running the following command i
 {{ CLI_NAME }} deploy
 ```
 
-See [Deploying](deploying) guide for more information.
+See [Deploying](deploy_apps) guide for more information.
 
 ## Routing {/*routing*/}
 

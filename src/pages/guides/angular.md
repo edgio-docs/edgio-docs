@@ -157,4 +157,4 @@ For example:
 ANGULAR_PROJECT=my-project {{ CLI_NAME }} deploy
 ```
 
-See [deploying](deploying) for more information.
+See [deploying](deploy_apps) for more information.

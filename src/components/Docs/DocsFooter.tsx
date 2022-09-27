@@ -2,7 +2,10 @@ import styled from 'styled-components';
 
 import {PRODUCT} from '../../../constants';
 
-import {IconEdgioSquareLogo} from 'components/Icon/IconEdgioSquareLogo';
+import {
+  IconEdgioSquareLogo,
+  IconEdgioSquareLogoDark,
+} from 'components/Icon/IconEdgioSquareLogo';
 import Link from 'components/MDX/Link';
 
 const StyledDocsFooter = styled.footer`
@@ -261,8 +264,12 @@ export default function DocsFooter() {
       <div className="footer-start">
         <nav className="footer-start__nav">
           <div className="logo-wrap">
-            <div className="logo"></div>
-            <IconEdgioSquareLogo />
+            <div className="logo" id="light-theme">
+              <IconEdgioSquareLogo />
+            </div>
+            <div className="logo" id="dark-theme">
+              <IconEdgioSquareLogoDark />
+            </div>
           </div>
           <FooterNavItem title="Products" items={pryFooterLinks.products} />
           <FooterNavItem title="Resources" items={pryFooterLinks.resources} />

@@ -19,3 +19,9 @@ export function getChildrenRoutesFromSidebarMenuItems(
 
   return routes || [];
 }
+
+export function getItemByRoute(route: string): IRoute | undefined {
+  return flatItems.find(
+    (item) => item.path?.toLowerCase() === route.toLowerCase()
+  );
+}

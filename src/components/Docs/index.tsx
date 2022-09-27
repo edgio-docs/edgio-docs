@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 import {Toc} from '../Layout/Toc';
 
+import DiscourseDiscuss from './Discourse';
 import DocsPagination from './DocsPagination';
 import EditPage from './EditPage';
 
@@ -23,6 +24,10 @@ const StyledDocs = styled.div`
 
   .docs-article__header {
     padding-top: 32px;
+  }
+
+  .docs-article__header-icons {
+    display: flex;
   }
 
   .docs-article__body {
@@ -196,6 +201,11 @@ export default function Docs({
       <div className="docs-article__section">
         <article className="docs-article">
           <header className="docs-article__header">
+            <div className="docs-article__header-icons">
+              <EditPage as="icon" />
+              <DiscourseDiscuss as="icon" />
+            </div>
+
             <h1 className="article-header">
               {title}
               <a

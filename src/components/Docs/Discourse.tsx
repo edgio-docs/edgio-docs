@@ -67,9 +67,7 @@ const StyledIcon = styled.div`
   }
 `;
 
-const baseURL = `https://discourse.example.com/new-topic?title=topic%20title&body=topic%20body&category=category/subcategory&tags=email,planned
-`;
-const title = 'Discuss this guide on Discourse';
+const title = 'Discuss this guide on our forums';
 const IGNORE_PAGES = ['/guides/changelog'];
 
 function createLink({
@@ -81,11 +79,14 @@ function createLink({
   body: string;
   category?: string;
 }) {
-  encodeURIComponent(title);
-  return `${FORUM_URL}/new-topic?title=${encodeURIComponent(
-    title
-  )}&body=${encodeURIComponent(body)}&category=${encodeURIComponent(category)}
-`;
+  return [
+    FORUM_URL,
+    '/new-topic',
+    `?title=${encodeURIComponent(title)}`,
+    `&body=${encodeURIComponent(body)}`,
+    `&category=${encodeURIComponent(category)}
+`,
+  ].join('');
 }
 
 export default function DiscourseDiscuss({
@@ -100,17 +101,15 @@ export default function DiscourseDiscuss({
     return null;
   }
 
+  const href = createLink({
+    title: `Feedback on '${guide.title}' guide`,
+    body: `I have a question/issue with the '[${guide.title}](${DOCS_URL}${router.route})' guide:\n\n`,
+  });
+
   if (as === 'icon') {
     return (
       <StyledIcon>
-        <a
-          target="_blank"
-          href={createLink({
-            title: `Feedback on '${guide.title}' guide`,
-            body: `I have a question/issue with the '[${guide.title}](${DOCS_URL}${router.route})' guide:\n\n`,
-          })}
-          rel="noreferrer"
-          title={title}>
+        <a target="_blank" href={href} rel="noreferrer" title={title}>
           <IconForum />
         </a>
       </StyledIcon>
@@ -119,10 +118,7 @@ export default function DiscourseDiscuss({
 
   return (
     <StyledLink>
-      <a
-        target="_blank"
-        href={`${baseURL}${router.asPath}.md`}
-        rel="noreferrer">
+      <a target="_blank" href={href} rel="noreferrer">
         <IconForum />
         {title}
       </a>

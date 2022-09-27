@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import {FORUM_URL, DOCS_URL} from '../../../constants';
 
 import {IconForum} from 'components/Icon';
-import {getItemByRoute} from 'utils/getChildrenRoutesFromSidebarMenuItems';
+import {findGuideBy} from 'utils/getChildrenRoutesFromSidebarMenuItems';
 
 const StyledLink = styled.div`
   margin-top: 50px;
@@ -94,7 +94,7 @@ export default function DiscourseDiscuss({
   as?: 'icon' | 'link';
 }) {
   const router = useRouter();
-  const guide = getItemByRoute(router.route);
+  const guide = findGuideBy(router.route, 'route');
 
   if (IGNORE_PAGES.includes(router.route) || !guide) {
     return null;

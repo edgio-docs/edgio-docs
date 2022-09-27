@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 import {Toc} from '../Layout/Toc';
 
-import DiscourseDiscuss from './Discourse';
+import DiscourseDiscuss from './DiscourseDiscuss';
 import DocsPagination from './DocsPagination';
 import EditPage from './EditPage';
 

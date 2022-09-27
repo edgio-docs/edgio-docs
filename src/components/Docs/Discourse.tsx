@@ -42,10 +42,9 @@ const StyledIcon = styled.div`
     display: flex;
     justify-content: center;
     border: 2px solid var(--hr-secondary);
-    padding: 2px;
+    padding: 8px;
     border-radius: 4px;
     text-align: center;
-    // text-transform: uppercase;
     display: inline-flex;
     align-items: center;
     color: var(--colors-blue0);

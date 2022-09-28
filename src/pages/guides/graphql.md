@@ -31,7 +31,7 @@ $ npm i -g {{ PACKAGE_NAME }}/cli # yarn global add {{ PACKAGE_NAME }}/cli
 $ {{ CLI_NAME }} init
 ```
 
-For more information on adding {{ PRODUCT_NAME }} to an existing app, see [Getting Started](/guides/getting_started#section_adding_layer0_to_an_existing_app).
+For more information on adding {{ PRODUCT_NAME }} to an existing app, see [Getting Started](build_web_apps#existing-app).
 
 ### Configure the Origin {/*configure-the-origin*/}
 

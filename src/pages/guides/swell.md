@@ -129,7 +129,7 @@ Deploy the build to {{ PRODUCT_NAME }} by running the `{{ CLI_NAME }} deploy` co
 {{ CLI_NAME }} deploy
 ```
 
-Refer to the [Deploying](deploying) guide for more information on the `deploy` command and its options.
+Refer to the [Deploying](deploy_apps) guide for more information on the `deploy` command and its options.
 
 ## Bonus: Generate pages on demand {/*bonus-generate-pages-on-demand*/}
 

@@ -83,4 +83,4 @@ You can also deploy using the {{ PRODUCT }} CLI with:
 
 The deploy command for RedwoodJS takes the same deploy arguments as using {{ PRODUCT }} to deploy. You can see all the available options using `yarn rw deploy {{ FULL_CLI_NAME }} --help`
 
-See [deploying](deploying) for more information.
+See [deploying](deploy_apps) for more information.

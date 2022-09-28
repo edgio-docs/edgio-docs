@@ -22,6 +22,7 @@ export * from './IconEleventy';
 export * from './IconEmberFastboot';
 export * from './IconEmberJS';
 export * from './IconExpress';
+export * from './IconExternalLink';
 export * from './IconFacebookCircle';
 export * from './IconFiddle';
 export * from './IconFolder';

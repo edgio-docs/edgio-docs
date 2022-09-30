@@ -8,7 +8,7 @@ title: {{ PRODUCT }} Version 5 Migration Guide
 
 </Callout>
 
-{{ PRODUCT }} version 5 updates our CLI and packages with {{ PRODUCT }} branding. Perform a seamless migration from version 4.x to 5 through the following steps:
+{{ PRODUCT }} version 5 updates our CLI, packages, and a configuration file with {{ PRODUCT }} branding. Perform a seamless migration from version 4.x to 5 through the following steps:
 1.  [Upgrade the {{ PRODUCT }} CLI.](#step-1-upgrade-the-edgio-cli)
 2.  [Rename layer0.config.js.](#step-2-rename-layer0configjs)
 3.  [Rename {{ PRODUCT }} packages.](#step-3-rename-edgio-packages)
@@ -17,7 +17,7 @@ title: {{ PRODUCT }} Version 5 Migration Guide
 
 ## Step 1: Upgrade the {{ PRODUCT }} CLI {/*step-1-upgrade-the-edgio-cli*/}
  
-The {{ PRODUCT }} CLI has been renamed from `0 | layer0` to `{{ CLI_NAME }} | {{ FULL_CLI_NAME }}`. As a result, upgrading the {{ PRODUCT }} CLI requires passing the `--force` flag as shown below:
+We have renamed the {{ PRODUCT }} CLI from `0 | layer0` to `{{ CLI_NAME }} | {{ FULL_CLI_NAME }}`. As a result, upgrading the {{ PRODUCT }} CLI requires passing the `--force` flag as shown below:
 
 `npm i -g @edgio/cli --force`
 

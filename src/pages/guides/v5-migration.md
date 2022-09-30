@@ -2,14 +2,22 @@
 title: {{ PRODUCT }} Version 5 Migration Guide 
 ---
 
-Migrate from {{ PRODUCT }} version 4.x to 5 through the following steps:
+<Callout type="important">
+
+  If you are using {{ PRODUCT }} version 3.x or earlier, you should review the [v4 Migration Guide](layer0_migration) before migrating to version 5.
+
+</Callout>
+
+{{ PRODUCT }} version 5 updates our CLI and packages with {{ PRODUCT }} branding. Perform a seamless migration from version 4.x to 5 through the following steps:
 1.  [Upgrade the {{ PRODUCT }} CLI.](#step-1-upgrade-the-edgio-cli)
 2.  [Rename layer0.config.js.](#step-2-rename-layer0configjs)
-3.  [Rename {{ PACKAGE_NAME }} packages.](#step-3-rename-edgio-packages)
+3.  [Rename {{ PRODUCT }} packages.](#step-3-rename-edgio-packages)
+4.  [Run {{ FULL_CLI_NAME }} init.](#step-4-run-edgio-init)
+5.  [Update scripts that reference the {{ PRODUCT }} CLI.](#step-5-update-scripts-that-reference-the-edgio-cli)
 
 ## Step 1: Upgrade the {{ PRODUCT }} CLI {/*step-1-upgrade-the-edgio-cli*/}
  
-Upgrade your existing {{ FULL_CLI_NAME }} CLI through the `--force` flag as shown below:
+The {{ PRODUCT }} CLI has been renamed from `0 | layer0` to `{{ CLI_NAME }} | {{ FULL_CLI_NAME }}`. As a result, upgrading the {{ PRODUCT }} CLI requires passing the `--force` flag as shown below:
 
 `npm i -g @edgio/cli --force`
 
@@ -23,11 +31,11 @@ For each site, rename `layer0.config.js` to `edgio.config.js`.
 
 </Callout>
 
-## Step 3: Rename {{ PACKAGE_NAME }} Packages {/*step-3-rename-edgio-packages*/}
+## Step 3: Rename {{ PRODUCT }} Packages {/*step-3-rename-edgio-packages*/}
 
-For each site, rename all references to {{ PACKAGE_NAME }} packages from `@layer0` to `{{ PACKAGE_NAME }}`.
+For each site, rename all references to {{ PRODUCT }} packages from `@layer0` to `{{ PACKAGE_NAME }}`.
 
--   **package.json:** In addition to renaming all {{ PACKAGE_NAME }} packages, you should also set their version to `5.0.0`.
+-   **package.json:** In addition to renaming all {{ PRODUCT }} packages, you should also set their version to `5.0.0`.
 
     For example, the following excerpt from a `package.json` file references several @layer0 packages:
 
@@ -51,7 +59,7 @@ For each site, rename all references to {{ PACKAGE_NAME }} packages from `@layer
     ...
     ```
 
--   **Import Statements:** Rename {{ PACKAGE_NAME }} packages within each `import` statement from `@layer0` to `{{ PACKAGE_NAME }}`. You can find these `import` statements within various files, such as `routes.ts`, `service-worker.js`, and your Next and Nuxt configuration files.
+-   **Import Statements:** Rename {{ PRODUCT }} packages within each `import` statement from `@layer0` to `{{ PACKAGE_NAME }}`. You can find these `import` statements within various files, such as `routes.ts`, `service-worker.js`, and your Next and Nuxt configuration files.
 
     For example, the following excerpt from a `routes.ts` file imports various @layer0 packages:
 
@@ -70,7 +78,7 @@ For each site, rename all references to {{ PACKAGE_NAME }} packages from `@layer
     import {nextRoutes} from '{{ PACKAGE_NAME }}/next';
     ...
     ```
--   **Next app:** Rename all {{ PACKAGE_NAME }} references within your `next.config.js` from `@layer0` to `{{ PACKAGE_NAME }}`.
+-   **Next app:** Rename all {{ PRODUCT }} references within your `next.config.js` from `@layer0` to `{{ PACKAGE_NAME }}`.
 
     For example, the following excerpt from a `next.config.js` file contains several @layer0 references:
 
@@ -88,3 +96,19 @@ For each site, rename all references to {{ PACKAGE_NAME }} packages from `@layer
     module.exports = withEdgio(
     ...
     ```
+
+## Step 4: Run {{ FULL_CLI_NAME }} init {/*step-4-run-edgio-init*/}
+
+For each site, run the following command:
+
+`{{ FULL_CLI_NAME }} init`
+
+Proceed to the next step if this command is successful.
+
+## Step 5: Update Scripts that Reference the {{ PRODUCT }} CLI {/*step-5-update-scripts-that-reference-the-edgio-cli*/}
+
+Update all references to the {{ PRODUCT }} CLI within your scripts from `0 | layer0` to either `{{ CLI_NAME }}` or `{{ FULL_CLI_NAME }}`.
+
+## Migration Complete {/*migration-complete*/}
+
+Congratulations on successfully migrating {{ PRODUCT }} to version 5! 

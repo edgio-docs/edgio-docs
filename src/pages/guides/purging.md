@@ -18,7 +18,7 @@ You can purge the cache via the [{{ PRODUCT }} Developer Console](https://app.la
 
 ![purge_the_cache_button](/images/purging/purge_the_cache_button.png)
 
-You can choose to purge all entries, purge by path, or by surrogate keys. You can also save multiple paths in a group if you purge them together regularly:
+You can choose to purge all entries, purge by path, by surrogate keys or by cache hashes. You can also save multiple paths in a group if you purge them together regularly:
 
 ![purge_dialog](/images/purging/dialog.png)
 

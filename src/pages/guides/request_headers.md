@@ -35,7 +35,7 @@ Requests are routed through the above components in the following order:
 
 `HAProxy -> Varnish -> DPS`
 
-If a request is routed to an orign server through both an edge and global POP, then it will be routed through the above components twice:
+If a request is routed to an origin server through both an edge and global POP, then it will be routed through the above components twice:
 
 ` Client -> Edge POP (HAProxy -> Varnish -> DPS) -> Global POP (HAProxy -> Varnish -> DPS) -> Origin Server`
 
@@ -52,7 +52,7 @@ If a request is routed to an orign server through both an edge and global POP, t
 
 ### General headers {/*general-headers*/}
 
-- `x-request-id`: unique request ID on {{ PRODUCT_NAME }} which may optinally be provided by you when issuing the requests to {{ PRODUCT_NAME }}
+- `x-request-id`: unique request ID on {{ PRODUCT_NAME }} which may optionally be provided by you when issuing the requests to {{ PRODUCT_NAME }}
 - `{{ HEADER_PREFIX }}-client-ip`: the client IP address from which the request to {{ PRODUCT_NAME }} edge components originated; cannot be used for user agent IP identification when [{{ PRODUCT_NAME }} is behind another CDN](third_party_cdns)).
 - `{{ HEADER_PREFIX }}-destination`: the routing destination as determined by traffic splitting rules if any; the name of the destinations are taken from {{ PRODUCT_NAME }} router code and if not specified then default is `default`
 - `{{ HEADER_PREFIX }}-original-qs`: contains the original query string if [custom caching](caching#section_customizing_the_cache_key) rules exclude query strings for the matching route; otherwise not set

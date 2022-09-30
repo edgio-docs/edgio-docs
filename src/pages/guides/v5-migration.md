@@ -8,7 +8,13 @@ title: {{ PRODUCT }} Version 5 Migration Guide
 
 </Callout>
 
-{{ PRODUCT }} version 5 updates our CLI, packages, and a configuration file with {{ PRODUCT }} branding. Perform a seamless migration from version 4.x to 5 through the following steps:
+<Callout type="tip">
+
+   In the near future, we plan to release {{ PRODUCT }} version 6 that introduces support for running your app in the cloud using Node.js version 16. Before you can migrate to {{ PRODUCT }} version 6, you will first need to migrate to version 5. Once you have migrated to {{ PRODUCT }} version 6, you will need to update your application(s) to be compatible with Node.js version 16. Although we are introducing 2 major version changes within a short time period, both migrations should be seamless and may be performed as your schedule allows.
+
+</Callout>
+
+{{ PRODUCT }} version 5 updates our CLI, packages, and a configuration file with {{ PRODUCT }} branding. Migrate from version 4.x to 5 through the following steps:
 1.  [Upgrade the {{ PRODUCT }} CLI.](#step-1-upgrade-the-edgio-cli)
 2.  [Rename layer0.config.js.](#step-2-rename-layer0configjs)
 3.  [Rename {{ PRODUCT }} packages.](#step-3-rename-edgio-packages)

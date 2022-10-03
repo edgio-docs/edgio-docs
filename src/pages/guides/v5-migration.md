@@ -10,7 +10,13 @@ title: {{ PRODUCT }} Version 5 Migration Guide
 
 <Callout type="tip">
 
-   In the near future, we plan to release {{ PRODUCT }} version 6 that introduces support for running your app in the cloud using Node.js version 16. Before you can migrate to {{ PRODUCT }} version 6, you will first need to migrate to version 5. Once you have migrated to {{ PRODUCT }} version 6, you will need to update your application(s) to be compatible with Node.js version 16. Although we are introducing 2 major version changes within a short time period, both migrations should be seamless and may be performed as your schedule allows.
+  In the near future, we will release {{ PRODUCT }} version 6 that introduces support for running your app in the cloud using Node.js version 16. {{ PRODUCT }} version 6 requires:
+  *   {{ PRODUCT }} version 5
+  *   Node.js version 16
+  *   npm version 8
+  *   Updating your application(s) to be compatible with Node.js version 16 and npm version 8. 
+
+In order to simplify this migration, we have split Node.js version 16 support from the branding changes introduced by {{ PRODUCT }} version 5. We recommend that you perform the seamless {{ PRODUCT }} version 5 migration now and prepare for the changes that will be required by {{ PRODUCT }} version 6.
 
 </Callout>
 

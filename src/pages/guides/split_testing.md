@@ -2,14 +2,14 @@
 title: Split Testing
 ---
 
-{{ PRODUCT_NAME }} makes it easy to conduct split testing without performance penalties by executing splits at the edge through an easy-to-use yet powerful interface. It can be used for A/B and multivariate tests, canary deploys, blue-green tests, iterative migration off of a legacy website, personalization, and more. This guide shows you how to configure a split test.
+{{ PRODUCT_NAME }} makes it easy to conduct split testing without performance penalties by executing splits at the edge through an easy-to-use yet powerful interface. It can be used for A/B and multivariate tests, canary deploys, blue-green tests, iterative migration off of a legacy website, personalization, and more. Split testing and A/B testing are fundamentally the same, but the context in which they are used differs by name. Multivariate testing is a subset of A/B testing. This guide shows you how to configure a split test.
 
 ## How Split Testing Works {/*how-split-testing-works*/}
 
 You can perform two kinds of split tests with {{ PRODUCT_NAME }}:
 
 1. A/B test multiple implementations of the same site (environment).
-2. Split traffic between multiple sites (environments) - This is commonly used to test a new experience against a legacy one.
+2. Split traffic between multiple sites (environments) - This is commonly used to test a new experience against a legacy one. Check out the [Traffic Splitting](traffic_splitting) guide for more detail.
 
 The first option is configured in EdgeJS within the project, the second option is configured in the console application.
 
@@ -69,6 +69,8 @@ module.exports = new Router()
 Once you have made these changes, deploy your site using `{{ CLI_NAME }} deploy --environment={my production environment name}`, then [configure the rules for splitting traffic using the {{ PRODUCT_NAME }} Developer Console](#configuring-the-split-test).
 
 After deploying a router with multiple destinations, all requests will be sent to the first destination until you have configured the split test in the {{ PRODUCT_NAME }} Developer Console.
+
+Check out the [Traffic Splitting](traffic_splitting) guide for more detail.
 
 ## Configuring the Split Test {/*configuring-the-split-test*/}
 

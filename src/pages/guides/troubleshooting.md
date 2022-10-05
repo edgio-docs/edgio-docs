@@ -96,7 +96,7 @@ curl -o/dev/null -vv
 
 **Specify a Cookie**
 
-Typically used for split test validation.
+Typically used for A/B test validation.
 
 ```bash
 curl -o/dev/null -vv

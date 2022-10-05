@@ -11,7 +11,7 @@ Using the Router, you can:
 - Render responses on the server using Next.js, Nuxt.js, Angular, or any other framework that supports server side rendering.
 - Alter request and response headers
 - Send synthetic responses
-- Configure multiple destinations for split testing
+- Configure multiple destinations for A/B testing
 
 ## Configuration {/*configuration*/}
 

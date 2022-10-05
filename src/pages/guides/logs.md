@@ -120,7 +120,7 @@ Size of the response in bytes.
 
 ### ds {/*ds*/}
 
-Destination, determined by split testing rules, if any; if no rules, the value is left as the default router.
+Destination, determined by A/B testing rules, if any; if no rules, the value is left as the default router.
 
 ### be {/*be*/}
 
@@ -128,7 +128,7 @@ Backend, determined by the routing rules. The names come from the `backends` str
 
 ### bk {/*bk*/}
 
-Split testing bucket cookie value.
+A/B testing bucket cookie value.
 
 ### zip {/*zip*/}
 

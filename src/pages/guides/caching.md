@@ -59,7 +59,7 @@ The `cache` function can be used in the same route as other functions such as `s
 - Value of `host` request header
 - Complete request URL, including the query parameters (this can be customized)
 - Value of `accept-encoding` request header
-- Name of the destination when [split testing](./split_testing) is in effect
+- Name of the destination when [A/B testing](./split_testing) is in effect
 
 When [POST and other non-GET/HEAD](#section_caching_responses_for_post_and_other_non_get_head_requests) methods caching is enabled, {{ PRODUCT_NAME }} automatically adds the following to the cache key:
 

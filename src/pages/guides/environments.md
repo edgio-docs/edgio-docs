@@ -10,7 +10,7 @@ In order to serve your site on a specific domain, you need to configure an envir
 
 - **Domains** - one or more domains on which the site will be served. Domains cannot be set on the default environment. The domain name for the default environment is derived from your team and site's name.
 - **Environment Variables** - secrets and other values that are specific to the environment and are not appropriate to check into source control. For example, API keys are commonly stored as environment variables.
-- **Split Testing** - Split traffic between multiple router destinations or other environments to conduct A/B testing or implement blue/green deployments.
+- **A/B Testing** - Split traffic between multiple router destinations or other environments to conduct A/B testing or implement blue/green deployments.
 - **Caching** - Each environment has a separate cache space that is automatically cleared each time you deploy. Use the _Caching_ tab to clear the cache by path or surrogate key.
 
 ## Creating an Environment {/*creating-an-environment*/}

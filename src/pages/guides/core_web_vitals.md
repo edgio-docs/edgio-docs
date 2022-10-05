@@ -17,7 +17,7 @@ be tracked via [Google Search Console](https://search.google.com/search-console/
 
 - It can take days to weeks to see the effect of changes to your site on Core Web Vitals.
 - It's hard to diagnose Core Web Vitals by page type or URL.
-- It's impossible to A/B test the impact of site optimizations on Core Web Vitals. Note that to effectively A/B test performance optimizations you need both a RUM measurement tool and split testing at the edge, both of which {{ PRODUCT_NAME }} provides.
+- It's impossible to A/B test the impact of site optimizations on Core Web Vitals. Note that to effectively A/B test performance optimizations you need both a RUM measurement tool and A/B testing at the edge, both of which {{ PRODUCT_NAME }} provides.
 
 ## Why use {{ PRODUCT_NAME }} to track Core Web Vitals? {/*why-use-layer0-to-track-core-web-vitals*/}
 
@@ -27,7 +27,7 @@ Instead of relying solely on Google Search Console, we recommend tracking Core W
 - Correlate web vitals to your application's routes
 - Analyze score across a number of dimensions such as country, device, and connection type
 - Identify which pages are most negatively impacting your search ranking.
-- Use {{ PRODUCT_NAME }}'s [Edge-based split testing](split_testing) to A/B test the impact of performance optimizations on Core Web Vitals.
+- Use {{ PRODUCT_NAME }}'s [Edge-based A/B testing](split_testing) to A/B test the impact of performance optimizations on Core Web Vitals.
 
 ## Installation {/*installation*/}
 

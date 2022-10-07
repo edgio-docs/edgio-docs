@@ -5,8 +5,9 @@ const PRODUCT_LEGACY = 'Layer0';
 const PRODUCT_EDGE = 'App Edge';
 const PRODUCT_PLATFORM = 'App Platform';
 const PRODUCT_SECURITY = 'App Security';
-const PRODUCT_NAME_LOWER = PRODUCT_LEGACY.toLowerCase();
-const PRODUCT_NAME_UPPER = PRODUCT_LEGACY.toUpperCase();
+const PRODUCT_NAME_LOWER = PRODUCT.toLowerCase();
+const PRODUCT_NAME_UPPER = PRODUCT.toUpperCase();
+const PRODUCT_LEGACY_LOWER = PRODUCT_LEGACY.toLowerCase();
 
 const CLI_NAME = 'edg';
 const FULL_CLI_NAME = 'edgio';
@@ -122,6 +123,7 @@ module.exports = {
   PRODUCT_NAME,
   PRODUCT_NAME_LOWER,
   PRODUCT_NAME_UPPER,
+  PRODUCT_LEGACY_LOWER,
   APP_DOMAIN,
   APP_URL,
   CLI_NAME,

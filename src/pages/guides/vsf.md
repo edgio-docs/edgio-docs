@@ -53,10 +53,10 @@ npm install
 
 ### Initialize your project {/*initialize-your-project*/}
 
-In the root directory of your project run `{{ CLI_NAME }} init`:
+In the root directory of your project run `{{ FULL_CLI_NAME }} init`:
 
 ```bash
-{{ CLI_NAME }} init
+{{ FULL_CLI_NAME }} init
 ```
 
 The {{ PRODUCT }} init command should have automatically moved all your `modules` to `buildModules` in order to deploy the smallest possible build to {{ PRODUCT }}.
@@ -68,7 +68,7 @@ Ensure `@nuxtjs/pwa` is not present in the `buildModules`. It is not needed beca
 Test your app with the {{ PRODUCT_PLATFORM }} on your local machine by running the following command in your project's root directory:
 
 ```bash
-{{ CLI_NAME }} dev --cache
+{{ FULL_CLI_NAME }} dev --cache
 ```
 
 ## Building and Deploying {/*building-and-deploying*/}
@@ -76,5 +76,5 @@ Test your app with the {{ PRODUCT_PLATFORM }} on your local machine by running t
 Deploy your app to the {{ PRODUCT_PLATFORM }} by running the following command in your project's root directory:
 
 ```bash
-{{ CLI_NAME }} deploy
+{{ FULL_CLI_NAME }} deploy
 ```

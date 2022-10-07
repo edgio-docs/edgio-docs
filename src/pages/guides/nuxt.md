@@ -2,7 +2,7 @@
 title: Nuxt.js
 ---
 
-This guide shows you how to deploy a Nuxt.js application to {{ PRODUCT }}. If you run into any issues please consult the [Troubleshooting](#section_troubleshooting) section.
+This guide shows you how to deploy a Nuxt.js application to {{ PRODUCT }}. If you run into any issues please consult the [Troubleshooting](#troubleshooting) section.
 
 ## Example SSR Site {/*example-ssr-site*/}
 
@@ -73,13 +73,13 @@ Options:
 
 </Callout>
 
-2. Run `{{ CLI_NAME }} init` to configure your project for {{ PRODUCT }}.
+2. Run `{{ FULL_CLI_NAME }} init` to configure your project for {{ PRODUCT }}.
 
 ```bash
-{{ CLI_NAME }} init
+{{ FULL_CLI_NAME }} init
 ```
 
-The `{{ CLI_NAME }} init` command will automatically add all the required dependencies and files to your project. These include:
+The `{{ FULL_CLI_NAME }} init` command will automatically add all the required dependencies and files to your project. These include:
 
 - The `{{ PACKAGE_NAME }}/core` package
 - The `{{ PACKAGE_NAME }}/nuxt` package
@@ -92,7 +92,7 @@ This command will also update your `package.json` with the following changes:
 
 - Moves all packages in `dependencies` to `devDependencies` except those listed in the `modules` property of `nuxt.config.js`.
 - Adds `@nuxt/core` to `dependencies`
-- Adds several `scripts` to run the available `{{ CLI_NAME }}` commands
+- Adds several `scripts` to run the available `{{ FULL_CLI_NAME }}` commands
 
 As an example, here's the original `package.json` from Nuxt's create step:
 
@@ -119,7 +119,7 @@ As an example, here's the original `package.json` from Nuxt's create step:
 }
 ```
 
-And here is the `package.json` after modifications by `{{ CLI_NAME }} init`:
+And here is the `package.json` after modifications by `{{ FULL_CLI_NAME }} init`:
 
 ```json
 {
@@ -129,10 +129,10 @@ And here is the `package.json` after modifications by `{{ CLI_NAME }} init`:
   "author": "Techy Ted",
   "private": true,
   "scripts": {
-    "dev": "{{ CLI_NAME }} run",
-    "build": "{{ CLI_NAME }} build",
-    "start": "{{ CLI_NAME }} run",
-    "prod": "{{ CLI_NAME }} run --production",
+    "dev": "{{ FULL_CLI_NAME }} run",
+    "build": "{{ FULL_CLI_NAME }} build",
+    "start": "{{ FULL_CLI_NAME }} run",
+    "prod": "{{ FULL_CLI_NAME }} run --production",
     "generate": "nuxt generate"
   },
   "dependencies": {
@@ -157,7 +157,7 @@ And here is the `package.json` after modifications by `{{ CLI_NAME }} init`:
 Run the Nuxt.js app with the command:
 
 ```bash
-npm run {{ CLI_NAME }}:dev
+npm run {{ FULL_CLI_NAME }}:dev
 ```
 
 Load the site: http://127.0.0.1:3000
@@ -176,11 +176,11 @@ Doing so will exclude these modules from your production deployment and keep the
 
 ## Routing {/*routing*/}
 
-The next few sections of this guide explain how {{ PRODUCT_NAME }} interacts with Nuxt's routing, which is important if you are migrating an existing application. If you just created a new nuxt app, you can jump to [Running Locally](#section_running_locally) and come back to these sections later.
-{{ PRODUCT_NAME }} supports Nuxt.js's built-in routing scheme. The default `routes.js` file created by `{{ CLI_NAME }} init` sends all requests to Nuxt.js via a fallback route:
+The next few sections of this guide explain how {{ PRODUCT_NAME }} interacts with Nuxt's routing, which is important if you are migrating an existing application. If you just created a new nuxt app, you can jump to [Running Locally](#running-locally) and come back to these sections later.
+{{ PRODUCT_NAME }} supports Nuxt.js's built-in routing scheme. The default `routes.js` file created by `{{ FULL_CLI_NAME }} init` sends all requests to Nuxt.js via a fallback route:
 
 ```js
-// This file was automatically added by {{ CLI_NAME }} deploy.
+// This file was automatically added by {{ FULL_CLI_NAME }} deploy.
 // You should commit this file to source control.
 const { Router } = require('{{ PACKAGE_NAME }}/core/router')
 const { nuxtRoutes, renderNuxtPage } = require('{{ PACKAGE_NAME }}/nuxt')
@@ -335,7 +335,7 @@ This will send all traffic for `/sitemap.xml` to Nuxt middleware for server-side
 
 ## Static Sites {/*static-sites*/}
 
-{{ PRODUCT }} supports fully and partially static sites using Nuxt [generate](https://nuxtjs.org/docs/2.x/configuration-glossary/configuration-generate). To deploy a static Nuxt site on {{ PRODUCT }}, simply set `target: 'static'` in `nuxt.config.js` and run `{{ CLI_NAME }} deploy`. This will run `nuxt build` and `nuxt generate` to generate a static version of your site.
+{{ PRODUCT }} supports fully and partially static sites using Nuxt [generate](https://nuxtjs.org/docs/2.x/configuration-glossary/configuration-generate). To deploy a static Nuxt site on {{ PRODUCT }}, simply set `target: 'static'` in `nuxt.config.js` and run `{{ FULL_CLI_NAME }} deploy`. This will run `nuxt build` and `nuxt generate` to generate a static version of your site.
 
 ### Incremental Static Rendering (ISG) {/*incremental-static-rendering-isg*/}
 
@@ -367,7 +367,7 @@ If you set the `fallback` property in the [generate](https://nuxtjs.org/docs/2.x
 
 ## includeFiles {/*includefiles*/}
 
-Nuxt requires that certain resources are included in a build and deploy to have access to them. As such, at times this will require additional configuration. To include additional resources for server side rendering, API calls, etc., use the `includeFiles` option in your `{{ CONFIG_FILE }}` file. [Read more](/guides/layer0_config#section_includefiles)
+Nuxt requires that certain resources are included in a build and deploy to have access to them. As such, at times this will require additional configuration. To include additional resources for server side rendering, API calls, etc., use the `includeFiles` option in your `{{ CONFIG_FILE }}` file. [Read more](/guides/edgio_config#includefiles)
 
 In this example, we would have an `api` folder that we want to include all items from.
 
@@ -389,14 +389,14 @@ includeFiles: {
 
 The Nuxt team provides a renderer called [Nitro](https://www.npmjs.com/package/@nuxt/nitro) which optimizes your application for serverless deployment and greatly minimizes the size of your server application bundle. If you're running into the size limitation for serverless bundles (50MB), you might try adding Nitro to your app. As of June 2021 Nitro is still not production ready, so use at your own risk.
 
-{{ Product }} provides a connector specifically for Nuxt apps that use nitro called `@{{ PRODUCT_NAME_LOWER }}/nuxt-nitro`.
+{{ Product }} provides a connector specifically for Nuxt apps that use nitro called `{{ PACKAGE_NAME }}/nuxt-nitro`.
 
 To add Nitro to your app, make the following changes:
 
 1. Install nitro and the connector as dev dependencies:
 
 ```bash
-npm install -D @nuxt/nitro @{{ PRODUCT_NAME_LOWER }}/nuxt-nitro`
+npm install -D @nuxt/nitro {{ PACKAGE_NAME }}/nuxt-nitro`
 ```
 
 2. Ensure `buildModules` in nuxt.config.js contains the following:
@@ -404,7 +404,7 @@ npm install -D @nuxt/nitro @{{ PRODUCT_NAME_LOWER }}/nuxt-nitro`
 ```js
   buildModules: [
     '@nuxt/nitro/compat',
-    '@{{ PRODUCT_NAME_LOWER }}/nuxt-nitro/module', // If you have previously added @{{ PRODUCT_NAME_LOWER }}/nuxt/module you can remove it.
+    '{{ PACKAGE_NAME }}/nuxt-nitro/module', // If you have previously added {{ PACKAGE_NAME }}/nuxt/module you can remove it.
     // ...others...
   ],
 ```
@@ -419,7 +419,7 @@ npm install -D @nuxt/nitro @{{ PRODUCT_NAME_LOWER }}/nuxt-nitro`
 
 4. If your nuxt.config.js has a `target` property, remove it.
 
-5. If you've previously added `@{{ PRODUCT_NAME_LOWER }}/nuxt` as a dependency, you can remove it.
+5. If you've previously added `{{ PACKAGE_NAME }}/nuxt` as a dependency, you can remove it.
 
 ### Additional Nitro Resources {/*additional-nitro-resources*/}
 
@@ -430,13 +430,13 @@ npm install -D @nuxt/nitro @{{ PRODUCT_NAME_LOWER }}/nuxt-nitro`
 Test your app with {{ PRODUCT_PLATFORM }} on your local machine by running the following command in your project's root directory:
 
 ```bash
-{{ CLI_NAME }} build && {{ CLI_NAME }} run
+{{ FULL_CLI_NAME }} build && {{ FULL_CLI_NAME }} run
 ```
 
 You can do a production build of your app and test it locally using:
 
 ```bash
-{{ CLI_NAME }} build && {{ CLI_NAME }} run --production
+{{ FULL_CLI_NAME }} build && {{ FULL_CLI_NAME }} run --production
 ```
 
 Setting `--production` runs your app exactly as it will be uploaded to the {{ PRODUCT_NAME }} cloud using serverless-offline.
@@ -446,10 +446,10 @@ Setting `--production` runs your app exactly as it will be uploaded to the {{ PR
 Deploy your app to the {{ PRODUCT_PLATFORM }} by running the following command in your project's root directory:
 
 ```bash
-{{ CLI_NAME }} deploy
+{{ FULL_CLI_NAME }} deploy
 ```
 
-See [deploying](deploying) for more information.
+See [deploying](deploy_apps) for more information.
 
 ## Troubleshooting {/*troubleshooting*/}
 
@@ -463,13 +463,13 @@ This may be because you have a custom server framework (such as Express). Please
 
 ---
 
-### {{ CLI_NAME }} init doesn't work {/*-cli_name--init-doesnt-work*/}
+### {{ FULL_CLI_NAME }} init doesn't work {/*-cli_name--init-doesnt-work*/}
 
 If you get a command not found error such as:
 
 ```bash
-{{ CLI_NAME }} init
-- bash: {{ CLI_NAME }}: command not found
+{{ FULL_CLI_NAME }} init
+- bash: {{ FULL_CLI_NAME }}: command not found
 ```
 
 Make sure you installed the {{ PRODUCT }} CLI
@@ -494,7 +494,7 @@ npm show {{ PACKAGE_NAME }}/cli version
 Compare the latest release against the version currently installed on your system:
 
 ```bash
-{{ CLI_NAME }} --version
+{{ FULL_CLI_NAME }} --version
 1.16.2
 ```
 
@@ -506,11 +506,13 @@ npm update -g {{ PACKAGE_NAME }}/cli
 
 ---
 
-### Error on deploy: `{{ PRODUCT_NAME_LOWER }}-deploy-lambda: Unzipped size must be smaller than...` {/*error-on-deploy-layer0-deploy-lambda-unzipped-size-must-be-smaller-than-*/}
+<a id="error-on-deploy-layer0-deploy-lambda-unzipped-size-must-be-smaller-than-"></a>
+
+### Error on deploy: `{{ PRODUCT_NAME_LOWER }}-deploy-lambda: Unzipped size must be smaller than...` {/*error-on-deploy-edgio-deploy-lambda-unzipped-size-must-be-smaller-than-*/}
 
 As the error states, there is an upper limit on how big a package can be when deployed to our serverless infrastructure. Some common strategies for solving:
 
-- You may need to move some dependencies as [described here](#section_modules_vs_buildmodules). Only dependencies are copied up to the lambda.
+- You may need to move some dependencies as [described here](#modules-vs-buildmodules). Only dependencies are copied up to the lambda.
 - Make sure you are using imports in a smart way. A common example is changing: `import { get } from lodash` to `import get from lodash/get` to avoid unnecessary bloat in your modules
 
 You can view what is included in your package under `.{{ PRODUCT_NAME_LOWER }}/lambda/` after a build, and running `du -h -d 1` on the directories in a shell will output the size of each directory and help you identify where space savings can be found, ie `du -h -d 1 .{{ PRODUCT_NAME_LOWER }}/lambda/.nuxt`

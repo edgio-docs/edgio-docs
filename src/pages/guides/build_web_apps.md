@@ -30,8 +30,8 @@ To add {{ PRODUCT_NAME }} to an existing app, run the following:
 
 ```bash
 $ npm i -g {{ PACKAGE_NAME }}/cli # yarn global add {{ PACKAGE_NAME }}/cli
-$ {{ CLI_NAME }} init
-$ {{ CLI_NAME }} deploy
+$ {{ FULL_CLI_NAME }} init
+$ {{ FULL_CLI_NAME }} deploy
 ```
 
 ### New app {/*new-app*/}
@@ -41,7 +41,7 @@ To create a new {{ PRODUCT_NAME }} compatible app, run:
 ```bash
 # npm
 npm create {{ STARTER_NAME }}@latest
-{{ CLI_NAME }} deploy
+{{ FULL_CLI_NAME }} deploy
 ```
 
 or
@@ -49,5 +49,5 @@ or
 ```bash
 # yarn
 yarn create {{ STARTER_NAME }}@latest
-{{ CLI_NAME }} deploy
+{{ FULL_CLI_NAME }} deploy
 ```

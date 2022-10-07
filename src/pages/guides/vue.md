@@ -44,10 +44,10 @@ npm run serve
 
 ### Initialize your project {/*initialize-your-project*/}
 
-In the root directory of your project run `{{ CLI_NAME }} init`:
+In the root directory of your project run `{{ FULL_CLI_NAME }} init`:
 
 ```bash
-{{ CLI_NAME }} init
+{{ FULL_CLI_NAME }} init
 ```
 
 This will automatically update your `package.json` and add all of the required {{ PRODUCT }} dependencies and files to your project. These include:
@@ -70,7 +70,7 @@ Create `service-worker.js` at the root of your project with the following:
 ```js
 import { skipWaiting, clientsClaim } from 'workbox-core'
 import { precacheAndRoute } from 'workbox-precaching'
-import { Prefetcher } from '@{{ PRODUCT_NAME_LOWER }}/prefetch/sw'
+import { Prefetcher } from '{{ PACKAGE_NAME }}/prefetch/sw'
 
 skipWaiting()
 clientsClaim()
@@ -150,7 +150,7 @@ module.exports = config
 
 Next you'll need to configure {{ PRODUCT }} routing in the `routes.js` file.
 
-For the Vue `hello-world` template, replace the `routes.js` file that was created during `{{ CLI_NAME }} init` with the following:
+For the Vue `hello-world` template, replace the `routes.js` file that was created during `{{ FULL_CLI_NAME }} init` with the following:
 
 ```js
 const { Router } = require('{{ PACKAGE_NAME }}/core/router')
@@ -183,7 +183,7 @@ npm run build
 Test your app with the {{ PRODUCT_PLATFORM }} on your local machine by running the following command in your project's root directory:
 
 ```bash
-{{ CLI_NAME }} dev
+{{ FULL_CLI_NAME }} dev
 ```
 
 Load the site: http://127.0.0.1:3000 !
@@ -199,10 +199,10 @@ npm run build
 Deploy your app to the {{ PRODUCT_PLATFORM }} by running the following command in your project's root directory:
 
 ```bash
-{{ CLI_NAME }} deploy
+{{ FULL_CLI_NAME }} deploy
 ```
 
-Refer to the [Deploying](deploying) guide for more information on the `deploy` command and its options.
+Refer to the [Deploying](deploy_apps) guide for more information on the `deploy` command and its options.
 
 ## Server Side Rendering {/*server-side-rendering*/}
 

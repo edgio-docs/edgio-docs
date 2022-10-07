@@ -38,7 +38,7 @@ You should now have a working Gatsby site. Run `gatsby develop` to see the appli
 Configure your project for {{ PRODUCT }} by running the following command in your project's root directory:
 
 ```bash
-{{ CLI_NAME }} init
+{{ FULL_CLI_NAME }} init
 ```
 
 This will automatically add all of the required dependencies and files to your project. These include:
@@ -54,7 +54,7 @@ This will automatically add all of the required dependencies and files to your p
 You can test the integration of the {{ PRODUCT_PLATFORM }} router with your gatsby site locally using:
 
 ```bash
-{{ CLI_NAME }} dev
+{{ FULL_CLI_NAME }} dev
 ```
 
 ## Deploying {/*deploying*/}
@@ -62,17 +62,17 @@ You can test the integration of the {{ PRODUCT_PLATFORM }} router with your gats
 Deploy your app to the {{ PRODUCT_PLATFORM }} by running the following command in your project's root directory:
 
 ```bash
-{{ CLI_NAME }} deploy
+{{ FULL_CLI_NAME }} deploy
 ```
 
-See [Deploying](deploying) guide for more information.
+See [Deploying](deploy_apps) guide for more information.
 
 ## Routing {/*routing*/}
 
-The default `routes.js` file created by `{{ CLI_NAME }} init` sends all requests to the Gatsby static site.
+The default `routes.js` file created by `{{ FULL_CLI_NAME }} init` sends all requests to the Gatsby static site.
 
 ```js
-// This file was automatically added by {{ CLI_NAME }} deploy.
+// This file was automatically added by {{ FULL_CLI_NAME }} deploy.
 // You should commit this file to source control.
 
 const { Router } = require('{{ PACKAGE_NAME }}/core/router')

@@ -11,7 +11,7 @@ title: Serverless Compute
 To create a new {{ PRODUCT }} project using serverless functions, run:
 
 ```bash
-npx @{{ PRODUCT_NAME_LOWER }}/cli@latest init
+npx {{ PACKAGE_NAME }}/cli@latest init
 ```
 
 Or you can clone this example repo: [layer0-serverless-example](https://github.com/layer0-docs/layer0-serverless-example), which has some more complex examples of how to use serverless functions:
@@ -26,7 +26,7 @@ Use the [compute](/docs/api/core/classes/_router_responsewriter_.responsewriter.
 
 ```js
 // routes.js
-import { Router } from '@{{ PRODUCT_NAME_LOWER }}/core'
+import { Router } from '{{ PACKAGE_NAME }}/core'
 
 export default new Router().get('/some-route/:someParam', ({ compute }) => {
   compute((req, res) => {
@@ -95,13 +95,13 @@ module.exports = {
 }
 ```
 
-See [backends](/guides/layer0_config#section_backends) for more configuration options.
+See [backends](/guides/edgio_config#backends) for more configuration options.
 
 To forward a request to the origin and modify the response using a serverless function:
 
 ```js
 // routes.js
-import { Router } from '@{{ PRODUCT_NAME_LOWER }}/core'
+import { Router } from '{{ PACKAGE_NAME }}/core'
 
 export default new Router().get('/some-route/:someParam', ({ proxy }) => {
   proxy('origin', {
@@ -157,7 +157,7 @@ export default new Router().get('/some-route/:someParam', ({ proxy }) => {
 })
 ```
 
-You can also access any of the request fields documented in [Responding to requests](#section_responding_to_requests).
+You can also access any of the request fields documented in [Responding to requests](#responding-to-requests).
 
 ## Caching Responses {/*caching-responses*/}
 
@@ -165,7 +165,7 @@ To improve performance and minimize cost, cache the responses returned by your s
 
 ```js
 // routes.js
-import { Router } from '@{{ PRODUCT_NAME_LOWER }}/core'
+import { Router } from '{{ PACKAGE_NAME }}/core'
 
 export default new Router().get('/', ({ cache, compute }) => {
   cache({
@@ -188,7 +188,7 @@ See the [cache](/docs/api/core/classes/_router_responsewriter_.responsewriter.ht
 Test your app with the {{ PRODUCT_PLATFORM }} on your local machine by running the following command in your project's root directory:
 
 ```bash
-{{ CLI_NAME }} dev
+{{ FULL_CLI_NAME }} dev
 ```
 
 This will start your project in watch mode. Any changes your make to your source code will instantly take effect without restarting.
@@ -198,11 +198,11 @@ This will start your project in watch mode. Any changes your make to your source
 Deploy your app to the {{ PRODUCT_PLATFORM }} by running the following command in your project's root directory:
 
 ```bash
-{{ CLI_NAME }} deploy
+{{ FULL_CLI_NAME }} deploy
 ```
 
 ## Limits {/*limits*/}
 
 {{ PRODUCT }} serverless functions have a maximum runtime of 20 seconds per request. If a function exceeds this limit, {{ PRODUCT }} will respond with a 539 status.
 
-See [Limits](/guides/limits#section_request_and_response_limits) for more information.
+See [Limits](/guides/limits#request-and-response-limits) for more information.

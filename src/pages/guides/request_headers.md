@@ -17,7 +17,7 @@ Learn about reserved request headers and how requests are routed through our ser
     {{ PRODUCT }} is optimized for performance and therefore always routes requests to the closest POP. If a global POP is the closest POP to a client, then {{ PRODUCT }} will treat it as an edge and global POP. This means that cache misses on that POP are sent directly to the origin server as illustrated below.
 
     ![](/images/overview/request-flow-edge.png)
--   **Serverless Compute:** {{ PRODUCT }} routes Serverless Compute requests similar to standard traffic. However, cache misses are forwarded to a [Serverless Compute](serverless_functions#section_serverless_functions) load balancer which distributes requests to a Serverless Compute Lambda worker.
+-   **Serverless Compute:** {{ PRODUCT }} routes Serverless Compute requests similar to standard traffic. However, cache misses are forwarded to a [Serverless Compute](serverless_functions) load balancer which distributes requests to a Serverless Compute Lambda worker.
 
     ![](/images/overview/request-flow-serverless-compute.png)
 
@@ -55,8 +55,8 @@ If a request is routed to an orign server through both an edge and global POP, t
 - `x-request-id`: unique request ID on {{ PRODUCT_NAME }} which may optinally be provided by you when issuing the requests to {{ PRODUCT_NAME }}
 - `{{ HEADER_PREFIX }}-client-ip`: the client IP address from which the request to {{ PRODUCT_NAME }} edge components originated; cannot be used for user agent IP identification when [{{ PRODUCT_NAME }} is behind another CDN](third_party_cdns)).
 - `{{ HEADER_PREFIX }}-destination`: the routing destination as determined by traffic splitting rules if any; the name of the destinations are taken from {{ PRODUCT_NAME }} router code and if not specified then default is `default`
-- `{{ HEADER_PREFIX }}-original-qs`: contains the original query string if [custom caching](caching#section_customizing_the_cache_key) rules exclude query strings for the matching route; otherwise not set
-- `{{ HEADER_PREFIX }}-protocol`: the protocol on which the connection to your site has been established; it can either be `https` or `http`; see more details [here](security#section_ssl)
+- `{{ HEADER_PREFIX }}-original-qs`: contains the original query string if [custom caching](caching#customizing-the-cache-key) rules exclude query strings for the matching route; otherwise not set
+- `{{ HEADER_PREFIX }}-protocol`: the protocol on which the connection to your site has been established; it can either be `https` or `http`; see more details [here](security#ssl)
 
 ### User agent headers {/*user-agent-headers*/}
 
@@ -81,7 +81,7 @@ Geolocation headers contain the geographical information about the provenance of
 - `{{ HEADER_PREFIX }}-geo-longitude`: the geographical longitude from which the request originated
 - `{{ HEADER_PREFIX }}-geo-asn`: the autonomous system number of the network operator from which the request originated
 
-These values are provided as a best effort. {{ PRODUCT_NAME }} cannot guarantee the accuracy of geolocation based on the client's IP address. See also [geolocation](/guides/third_party_cdns#section_client_ips) behind [third-party CDNs](/guides/third_party_cdns).
+These values are provided as a best effort. {{ PRODUCT_NAME }} cannot guarantee the accuracy of geolocation based on the client's IP address. See also [geolocation](/guides/third_party_cdns#client-ips) behind [third-party CDNs](/guides/third_party_cdns).
 
 ### Static prerendering headers {/*static-prerendering-headers*/}
 

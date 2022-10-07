@@ -725,7 +725,7 @@ const SidebarMenuItems: ISidebarMenuItems = [
         },
         {
           title: CONFIG_FILE,
-          path: '/guides/layer0_config',
+          path: '/guides/edgio_config',
         },
       ],
     },

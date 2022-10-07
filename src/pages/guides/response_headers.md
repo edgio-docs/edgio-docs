@@ -224,7 +224,7 @@ We will now examine each metric defined within the above sample response header:
 | `wa=1`     | Indicates the `transformRequest` time as measured by a Serverless Compute (Lambda worker) was 1 millisecond. |
 | `wz=1`     | Indicates either a `transformResponse` time or processing time in milliseconds. [Learn more.](#wz)
 
-### {{ HEADER_PREFIX }}-Version Response Header {/*x-0-version-response-header*/}
+### {{ HEADER_PREFIX }}-version Response Header {/*x-0-version-response-header*/}
 
 The `{{ HEADER_PREFIX }}-version` response header describes the latest {{ PRODUCT }} deployment using the following syntax:
 
@@ -248,7 +248,7 @@ Definitions for the above variables are provided below.
 
 {{ PRODUCT }} adds the following values to the standard [server-timing](https://www.w3.org/TR/server-timing/) response header:
 
--   `layer0-cache: <Cache Status>`: Valid cache statuses are: 
+-   `{{ PRODUCT_NAME_LOWER }}-cache: <Cache Status>`: Valid cache statuses are: 
     - `HIT-L1`: Indicates that the request was served from an edge POP's cache.
     - `HIT-L2`: Indicates that the request was served from a global POP's cache.
     - `MISS`: Indicates that the request was not served from cache.

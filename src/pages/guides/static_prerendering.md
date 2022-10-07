@@ -183,14 +183,16 @@ module.exports = new Router()
 
 ## Concurrency and Limits {/*concurrency-and-limits*/}
 
-By default, {{ PRODUCT_NAME }} prerenders a maximum of 200 URLs at a time. This can create significant additional load on your APIs at the time of deployment. You can lower this limit by setting the [prerenderConcurrency](/guides/layer0_config#section_prerenderconcurrency) property in `{{ CONFIG_FILE }}`. {{ PRODUCT_NAME }} imposes the following limits on prerendering:
+By default, {{ PRODUCT_NAME }} prerenders a maximum of 200 URLs at a time. This can create significant additional load on your APIs at the time of deployment. You can lower this limit by setting the [prerenderConcurrency](/guides/edgio_config#prerenderconcurrency) property in `{{ CONFIG_FILE }}`. {{ PRODUCT_NAME }} imposes the following limits on prerendering:
 
 | Tier       | Concurrency | Total Number of Requests |
 | ---------- | ----------- | ------------------------ |
 | ENTERPRISE | 200         | 25,000 per deployment    |
 | FREE       | 10          | 100 per deployment       |
 
-## Viewing Prerendering Results in the {{ PRODUCT_NAME }} Developer Console {/*viewing-prerendering-results-in-the-layer0-developer-console*/}
+<a id="viewing-prerendering-results-in-the-layer0-developer-console"></a>
+
+## Viewing Prerendering Results in the {{ PRODUCT_NAME }} Developer Console {/*viewing-prerendering-results-in-the-edgio-developer-console*/}
 
 When you deploy a new version of your site, you can view the progress and results of prerendering from the deployment
 view in {{ PRODUCT_NAME }} Developer Console:

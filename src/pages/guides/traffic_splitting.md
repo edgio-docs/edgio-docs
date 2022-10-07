@@ -77,7 +77,7 @@ If your sites consist of two separate servers use these steps to configure the d
 
 </Callout>
 
-Configure the backends in the {{ CONFIG_FILE }} file. (See [{{ CONFIG_FILE }}](layer0_config) for more information.). For example, to split traffic between a new experience hosted on `origin.my-site.com` and a legacy experience hosted on `legacy-origin.my-site.com`:
+Configure the backends in the {{ CONFIG_FILE }} file. (See [{{ CONFIG_FILE }}](edgio_config) for more information.). For example, to split traffic between a new experience hosted on `origin.my-site.com` and a legacy experience hosted on `legacy-origin.my-site.com`:
 
 ```js filename="{{ CONFIG_FILE }}"
 module.exports = {

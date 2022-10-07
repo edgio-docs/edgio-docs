@@ -12,7 +12,7 @@ Configuring SAML (Security Assertion Markup Language) for your {{ PRODUCT }} acc
 
 {{ PRODUCT }} currently supports SAML SSO setup via a SAML metadata discovery URL. This setup process will combine configuration in your {{ PRODUCT }} team account as well as your SAML provider.
 
-### Enable SAML Single Sign on in {{ PRODUCT }} {/*enable-saml-single-sign-on-in-layer0*/}
+### Enable SAML Single Sign On {/*enable-saml-single-sign-on*/}
 
 1. Login to your existing [{{ PRODUCT }}]({{ WWW_URL}}) account and change to your team.
 2. Navigate to team settings.

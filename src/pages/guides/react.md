@@ -23,10 +23,10 @@ This guide will use [Create React App](https://create-react-app.dev/) to generat
 ```bash
 npx create-react-app {{ PRODUCT_NAME_LOWER }}-cra
 cd {{ PRODUCT_NAME_LOWER }}-cra
-{{ CLI_NAME }} init
+{{ FULL_CLI_NAME }} init
 # Pick the following options for questions
 # > Add  {{ PRODUCT }} to the current app
-# Hostname of origin site > {{ PRODUCT_NAME_LOWER }}-docs-{{ PRODUCT_NAME_LOWER }}-examples-api-default.{{ PRODUCT_NAME_LOWER }}-limelight.link
+# Hostname of origin site > {{ PRODUCT_LEGACY_LOWER }}-docs-{{ PRODUCT_LEGACY_LOWER }}-examples-api-default.{{ PRODUCT_LEGACY_LOWER }}-limelight.link
 ```
 
 Follow the additional sections below regarding the Create React App setup to finish the project setup.
@@ -36,7 +36,7 @@ Follow the additional sections below regarding the Create React App setup to fin
 Then, in the root folder of your project, run:
 
 ```bash
-{{ CLI_NAME }} init
+{{ FULL_CLI_NAME }} init
 ```
 
 This will automatically add all of the required dependencies and files to your project. These include:
@@ -223,7 +223,7 @@ In order to render on {{ PRODUCT_NAME }}, you need to provide a function that ta
 
 module.exports = {
   server: {
-    path: '{{ CLI_NAME }}/server.js',
+    path: '{{ FULL_CLI_NAME }}/server.js',
   },
 }
 ```
@@ -287,14 +287,14 @@ module.exports = {
 Deploy your app to the {{ PRODUCT_PLATFORM }} by running the following command in your project's root directory:
 
 ```bash
-{{ CLI_NAME }} deploy
+{{ FULL_CLI_NAME }} deploy
 ```
 
 If you have a static app or are following the above example then you need to build the app first
 
 ```bash
 npm run build
-{{ CLI_NAME }} deploy
+{{ FULL_CLI_NAME }} deploy
 ```
 
 For more on deploying, see [Deploying](/guides/deploying).

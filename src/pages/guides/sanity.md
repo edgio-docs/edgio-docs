@@ -40,10 +40,10 @@ sanity start
 
 ### Initialize your project {/*initialize-your-project*/}
 
-In the root directory of your project run `{{ CLI_NAME }} init`:
+In the root directory of your project run `{{ FULL_CLI_NAME }} init`:
 
 ```bash
-{{ CLI_NAME }} init
+{{ FULL_CLI_NAME }} init
 ```
 
 This will automatically update your `package.json` and add all of the required {{ PRODUCT }} dependencies and files to your project. These include:
@@ -58,10 +58,10 @@ This will automatically update your `package.json` and add all of the required {
 Update `routes.js` at the root of your project to the following:
 
 ```js
-// This file was added by {{ PRODUCT_NAME_LOWER }} init.
+// This file was added by {{ FULL_CLI_NAME }} init.
 // You should commit this file to source control.
 
-import { Router } from '@{{ PRODUCT_NAME_LOWER }}/core/router'
+import { Router } from '{{ PACKAGE_NAME }}/core/router'
 
 export default new Router()
   // Prevent search engine bot(s) from indexing
@@ -104,7 +104,7 @@ export PORT=3333 # linux
 Test your app with the {{ PRODUCT_PLATFORM }} on your local machine by running the following command in your project's root directory:
 
 ```bash
-{{ CLI_NAME }} dev
+{{ FULL_CLI_NAME }} dev
 ```
 
 Load the site http://127.0.0.1:3333
@@ -120,17 +120,17 @@ npm run build
 Deploy your app to the {{ PRODUCT_PLATFORM }} by running the following command in your project's root directory:
 
 ```bash
-{{ CLI_NAME }} deploy
+{{ FULL_CLI_NAME }} deploy
 ```
 
-Refer to the [Deploying](deploying) guide for more information on the `deploy` command and its options.
+Refer to the [Deploying](deploy_apps) guide for more information on the `deploy` command and its options.
 
 ## Post Deployment Whitelisting {/*post-deployment*/}
 
 Once Sanity Studio is deployed, you will need to add it's URL to Sanity’s [CORS origins settings](https://www.sanity.io/docs/front-ends/cors). You can do this from the command line:
 
 ```bash
-sanity cors add https://your-url.{{ PRODUCT_NAME_LOWER }}-limelight.link --credentials
+sanity cors add https://your-url.{{ PRODUCT_LEGACY_LOWER }}-limelight.link --credentials
 ```
 
 Alternatively, you can navigate to [manage.sanity.io](https://manage.sanity.io), find your project and under Settings > API, add the Studio URL to the CORS origins list. You should allow credentials as the Studio requires authentication for added security.

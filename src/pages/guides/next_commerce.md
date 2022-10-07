@@ -38,11 +38,11 @@ cd commerce
 yarn
 ```
 
-2. Run {{ CLI_NAME }} `init` in the project directory:
+2. Run `{{ FULL_CLI_NAME }} init` in the project directory:
 
 ```bash
 cd site
-{{ CLI_NAME }} init
+{{ FULL_CLI_NAME }} init
 ```
 
 3. Duplicate `.env.template` and name it `.env.local` in the project directory. Add your BigCommerce API keys to it.
@@ -81,7 +81,7 @@ npm run deploy
 Or from within `site` directory
 
 ```bash
-{{ CLI_NAME }} deploy
+{{ FULL_CLI_NAME }} deploy
 ```
 
 ---

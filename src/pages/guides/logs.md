@@ -10,7 +10,7 @@ The {{ PRODUCT_NAME }} platform exposes three types of logs to users:
 
 ## Build Logs {/*build-logs*/}
 
-Each time you deploy to {{ PRODUCT_NAME }} using the `{{ CLI_NAME }} deploy` command, information about the deployment is logged, including the output of the `{{ CLI_NAME }} deploy` command itself. You can view these logs in real-time by viewing your deployment on [{{ APP_DOMAIN }}]({{ APP_URL }}).
+Each time you deploy to {{ PRODUCT_NAME }} using the `{{ FULL_CLI_NAME }} deploy` command, information about the deployment is logged, including the output of the `{{ FULL_CLI_NAME }} deploy` command itself. You can view these logs in real-time by viewing your deployment on [{{ APP_DOMAIN }}]({{ APP_URL }}).
 
 ![build](/images/logs/build.png)
 
@@ -56,7 +56,7 @@ Access logs contain the following fields:
 
 Millisecond resolution of the request start time in UNIX epoch.
 
-### {{ PRODUCT_NAME_LOWER }} {/*layer0*/}
+### {{ PRODUCT_LEGACY_LOWER }} {/*layer0*/}
 
 The application's {{ PRODUCT_NAME }} version processing this request.
 
@@ -181,7 +181,7 @@ Flag indicating if the response has completed (analogous to 499 in Nginx).
 
 ### cs {/*cs*/}
 
-[Caching status](/guides/caching#section_why_is_my_response_not_being_cached_) (why something was or wasn't cached).
+[Caching status](/guides/caching#why-is-my-response-not-being-cached) (why something was or wasn't cached).
 
 ### ct {/*ct*/}
 
@@ -201,7 +201,7 @@ User agent.
 
 ### xmt {/*xmt*/}
 
-Response [{{ HEADER_PREFIX }}-t](/guides/response_headers#section_structure_of_) header with different critical path timings.
+Response [{{ HEADER_PREFIX }}-t](/guides/response_headers#x-0-t-response-header) header with different critical path timings.
 
 ### xut {/*xut*/}
 
@@ -231,4 +231,4 @@ IP of the backend that responded to the request.
 
 ### hrid {/*hrid*/}
 
-Request ID of the response hit in the cache. Corresponds to [`{{ HEADER_PREFIX }}-hit-request-id`](response_headers#section_general_headers) response header.
+Request ID of the response hit in the cache. Corresponds to [`{{ HEADER_PREFIX }}-hit-request-id`](response_headers#general-headers) response header.

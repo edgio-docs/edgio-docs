@@ -9,16 +9,16 @@ This guide walks you through deploying your app to {{ PRODUCT_NAME }}.
 Once you've created your {{ PRODUCT_NAME }} project, run the following to deploy your site to your private space on {{ PRODUCT_NAME }} using the CLI:
 
 ```bash
-{{ CLI_NAME }} deploy
+{{ FULL_CLI_NAME }} deploy
 ```
 
 The CLI will automatically detect the framework you're using, create an optimized production build, and upload it to {{ PRODUCT_NAME }}. This takes about a minute for most applications.
 
-Once the deployment is complete, the CLI will output the URL for your site. The site name is automatically derived from the `name` field in `package.json`. This can be overridden by using `--site` option when running `{{ CLI_NAME }} deploy`.
+Once the deployment is complete, the CLI will output the URL for your site. The site name is automatically derived from the `name` field in `package.json`. This can be overridden by using `--site` option when running `{{ FULL_CLI_NAME }} deploy`.
 
 ## Branches and Deployments {/*branches-and-deployments*/}
 
-Each time you deploy your site to {{ PRODUCT_NAME }} a "deployment" is created and given a unique and permanent URL based on the team name, site name, branch name in source control, and an incrementing deployment number. If you use Git, the branch name is set by the default. If not, you can specify the `--branch` option when running `{{ CLI_NAME }} deploy`.
+Each time you deploy your site to {{ PRODUCT_NAME }} a "deployment" is created and given a unique and permanent URL based on the team name, site name, branch name in source control, and an incrementing deployment number. If you use Git, the branch name is set by the default. If not, you can specify the `--branch` option when running `{{ FULL_CLI_NAME }} deploy`.
 
 ![deployments](/images/deploying/deployments.png)
 
@@ -33,7 +33,7 @@ To deploy from your CI environment, create a deploy token using the site setting
 Then use the `--token` option when deploying from your CI script:
 
 ```bash
-{{ CLI_NAME }} deploy my-site --token=$LAYER0_DEPLOY_TOKEN
+{{ FULL_CLI_NAME }} deploy my-site --token=$EDGIO_DEPLOY_TOKEN
 ```
 
 You should always store your deploy token using your CI environment's secrets manager. Never commit your deploy token to source control.
@@ -42,9 +42,9 @@ You should always store your deploy token using your CI environment's secrets ma
 
 You need to configure the following items in order to get a GitHub action set up.
 
-1. Create a deploy token (see [Deploying from CI](#section_deploying_from_ci)). Copy the value of that token for use in the next step.
-2. Save the deploy token inside GitHub ([more info](https://docs.github.com/en/actions/security-guides/encrypted-secrets#using-encrypted-secrets-in-a-workflow)). Go to your `GitHub project > Settings > Secrets > New repository secret`. Save the item as `LAYER0_DEPLOY_TOKEN`.
-3. Inside your development project, create a top level folder titled `.github`. Inside that create a `workflows` folder. From there create a `layer0.yml` file and use the example below for its content.
+1. Create a deploy token (see [Deploying from CI](#deploy-from-ci)). Copy the value of that token for use in the next step.
+2. Save the deploy token inside GitHub ([more info](https://docs.github.com/en/actions/security-guides/encrypted-secrets#using-encrypted-secrets-in-a-workflow)). Go to your `GitHub project > Settings > Secrets > New repository secret`. Save the item as `EDGIO_DEPLOY_TOKEN`.
+3. Inside your development project, create a top level folder titled `.github`. Inside that create a `workflows` folder. From there create a `edgio.yml` file and use the example below for its content.
 
 This is an example GitHub action that will deploy your site to {{ PRODUCT_NAME }}.
 
@@ -52,7 +52,7 @@ For this action to work
 
 - By default, new {{ PRODUCT }} sites are created with a `default` environment. The action below will create a new build for every push on the default environment.
 - To leverage the GitHub release workflow part of the action below, you need to **create an environment** `production`.
-- You need to have created a deploy key for your site (see above) and added it as a secret in your repo called "layer0_deploy_token". Read more on [accessing environment variables](https://docs.layer0.co/guides/environments#section_accessing_environment_variables_at_build_time) which might be essential for your app during the build time and for server-side requests (including SSG/SSR).
+- You need to have created a deploy key for your site (see above) and added it as a secret in your repo called "edgio_deploy_token". Read more on [accessing environment variables](environments#accessing-environment-variables) which might be essential for your app during the build time and for server-side requests (including SSG/SSR).
 - Depending on your use of NPM or YARN, adjust the "Install packages" step
 
 Read the comments at the top to understand how this action is configured.
@@ -60,7 +60,7 @@ Read the comments at the top to understand how this action is configured.
 ### Template {/*template*/}
 
 ```yml
-# Add this file to your project at .github/workflows/layer0.yml
+# Add this file to your project at .github/workflows/edgio.yml
 #
 # This GitHub action deploys your site on {{ PRODUCT }}.
 #
@@ -81,7 +81,7 @@ Read the comments at the top to understand how this action is configured.
 #
 # ** In order for this action to deploy your site, you must create a deploy token from the site settings page
 # ** In order for this action to deploy your site, you must create a `deploy` command in your package.json scripts (an example is at https://github.com/layer0-docs/layer0-docs/blob/master/package.json#L11).
-# ** Additionally, you will need to generate a deploy token from your site settings in https://app.layer0.co and configure it as a secret called "LAYER0_DEPLOY_TOKEN" in your repo on GitHub.
+# ** Additionally, you will need to generate a deploy token from your site settings in https://app.layer0.co and configure it as a secret called "edgio_DEPLOY_TOKEN" in your repo on GitHub.
 #
 # ** Depending on your use of NPM or YARN, adjust the "Install packages" step
 
@@ -95,17 +95,17 @@ on:
     types: [published]
 
 jobs:
-  deploy-to-layer0:
+  deploy-to-edgio:
     # cancels the deployment for the automatic merge push created when tagging a release
     if: contains(github.ref, 'refs/tags') == false || github.event_name == 'release'
     runs-on: ubuntu-latest
     env:
-      deploy_token: ${{secrets.LAYER0_DEPLOY_TOKEN}}
+      deploy_token: ${{secrets.EDGIO_DEPLOY_TOKEN}}
     steps:
       - name: Check for {{ PRODUCT }} deploy token secret
         if: env.deploy_token == ''
         run: |
-          echo You must define the "LAYER0_DEPLOY_TOKEN" secret in GitHub project settings
+          echo You must define the "EDGIO_DEPLOY_TOKEN" secret in GitHub project settings
           exit 1
       - name: Extract branch name
         shell: bash
@@ -135,7 +135,7 @@ jobs:
           ${{github.event_name == 'pull_request' && '--environment=staging' || ''}} \
           ${{github.event_name == 'release' && '--environment=production' || ''}}
         env:
-          deploy_token: ${{secrets.LAYER0_DEPLOY_TOKEN}}
+          deploy_token: ${{secrets.EDGIO_DEPLOY_TOKEN}}
 ```
 
 ### Screencast Tutorial {/*screencast-tutorial*/}
@@ -151,7 +151,7 @@ This guide assumes:
 - Your project is hosted on GitHub
 - You have a Jenkins environment configured with Docker and to receive GitHub `push` events
 - You have created environments called "staging" and "production"
-- You have created a deploy key for your site and added it as an environment variable in your Jenkins configuration called "layer0_deploy_token".
+- You have created a deploy key for your site and added it as an environment variable in your Jenkins configuration called "edgio_deploy_token".
 
 ```groovy
 // Add this file to your project at ./Jenkinsfile
@@ -169,7 +169,7 @@ This guide assumes:
 //     exist by default, you must create it using {{ APP_URL }}.
 //
 // In order for this pipeline to deploy your site, you must create a deploy token from the site settings page
-// in {{ APP_URL }} and configure it as an environment variable called "layer0_deploy_token" in your Jenkins configuration.
+// in {{ APP_URL }} and configure it as an environment variable called "edgio_deploy_token" in your Jenkins configuration.
 
 pipeline {
   agent {
@@ -187,11 +187,11 @@ pipeline {
     stage("Checking environment") {
       when {
         expression {
-          env.layer0_deploy_token == null
+          env.edgio_deploy_token == null
         }
       }
       steps {
-        echo "You must define the 'layer0_deploy_token' secret in your environment variables"
+        echo "You must define the 'edgio_deploy_token' secret in your environment variables"
         sh "exit 1"
       }
     }
@@ -209,7 +209,7 @@ pipeline {
           env.BRANCH_NAME = branch.tokenize("/").last()
           env.{{ PRODUCT_NAME_UPPER }}_ENV_ARG = (env.BRANCH_NAME != "master") ? "--branch=$BRANCH_NAME" : "--environment=staging"
         }
-        sh "npm run deploy -- --token=$layer0_deploy_token ${{{ PRODUCT_NAME_UPPER }}_ENV_ARG} --commit-url=${{{ PRODUCT_NAME_UPPER }}_COMMIT_URL}"
+        sh "npm run deploy -- --token=$edgio_deploy_token ${{{ PRODUCT_NAME_UPPER }}_ENV_ARG} --commit-url=${{{ PRODUCT_NAME_UPPER }}_COMMIT_URL}"
       }
     }
   }
@@ -225,7 +225,7 @@ This guide assumes:
 - Your repository is hosted on GitLab
 - Your default git branch is named `master` or `main`
 - You have created environments called "staging" and "production"
-- You have created a deploy key for your site and added it as a variable in your GitLab project's CI/CD settings page, named "LAYER0_DEPLOY_TOKEN"
+- You have created a deploy key for your site and added it as a variable in your GitLab project's CI/CD settings page, named "EDGIO_DEPLOY_TOKEN"
 
 ```yml
 # Add this file to your project at .gitlab-ci.yml
@@ -245,7 +245,7 @@ This guide assumes:
 #     in https://app.layer0.co.
 #
 # In order for this pipeline to deploy your site, you must create a deploy token from the site settings page
-# in https://app.layer0.co and configure it as a variable called "LAYER0_DEPLOY_TOKEN" in your GitLab
+# in https://app.layer0.co and configure it as a variable called "EDGIO_DEPLOY_TOKEN" in your GitLab
 # project's settings page. You should mask this variable to prevent it from appearing in logs.
 
 image: node:14
@@ -258,22 +258,22 @@ cache:
   paths:
     - .npm/
 
-layer0_deploy:
+edgio_deploy:
   stage: deploy
   rules:
     - if: '$CI_PIPELINE_SOURCE != "push"'
       when: never
     - if: '$CI_COMMIT_BRANCH == "master" || $CI_COMMIT_BRANCH == "main"'
       variables:
-        LAYER0_DEPLOY_PARAM: ' --environment=staging'
+        EDGIO_DEPLOY_PARAM: ' --environment=staging'
     - if: '$CI_COMMIT_TAG'
       variables:
-        LAYER0_DEPLOY_PARAM: ' --environment=production'
+        EDGIO_DEPLOY_PARAM: ' --environment=production'
     - if: '$CI_COMMIT_BRANCH'
       variables:
-        LAYER0_DEPLOY_PARAM: ''
+        EDGIO_DEPLOY_PARAM: ''
   before_script:
     - npm ci --cache .npm --prefer-offline
   script:
-    - npm run {{ CLI_NAME }}:deploy -- --token=$LAYER0_DEPLOY_TOKEN --non-interactive --branch=$CI_COMMIT_BRANCH$LAYER0_DEPLOY_PARAM
+    - npm run {{ FULL_CLI_NAME }}:deploy -- --token=$EDGIO_DEPLOY_TOKEN --non-interactive --branch=$CI_COMMIT_BRANCH$EDGIO_DEPLOY_PARAM
 ```

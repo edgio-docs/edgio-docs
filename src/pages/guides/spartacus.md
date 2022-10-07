@@ -36,7 +36,7 @@ If you don't already have a Spartacus application, you can create one using:
 
 ```bash
 npm install -g @angular/cli@9
-ng new my-layer0-spartacus-app
+ng new my-{{ PRODUCT_NAME_LOWER }}-spartacus-app
 ```
 
 You should now have a working starter app. Run `ng serve` to see the application running on `localhost:4200`.
@@ -65,7 +65,7 @@ You can now run `npm run build:ssr && npm run serve:ssr` to access your server-s
 Initialize your project for use with {{ PRODUCT }} by running the following command in your project's root directory:
 
 ```bash
-{{ CLI_NAME }} init
+{{ FULL_CLI_NAME }} init
 ```
 
 This will automatically add all of the required dependencies and files to your project. These include:
@@ -81,10 +81,10 @@ This will automatically add all of the required dependencies and files to your p
 
 #### 4. Update `{{ CONFIG_FILE }}` {/*3-update--config_file-*/}
 
-For an app called `my-layer0-spartacus-app` the {{ PRODUCT }} config file created by `{{ CLI_NAME }} init` will look like so:
+For an app called `my-{{ PRODUCT_NAME_LOWER }}-spartacus-app` the {{ PRODUCT }} config file created by `{{ FULL_CLI_NAME }} init` will look like so:
 
 ```js
-// This file was automatically added by {{ CLI_NAME }} deploy.
+// This file was automatically added by {{ FULL_CLI_NAME }} deploy.
 // You should commit this file to source control.
 
 module.exports = {
@@ -97,7 +97,7 @@ module.exports = {
 }
 ```
 
-If you have several projects and the `defaultProject` as specified in `angular.json` is not the project with the SSR build, specify the correct project with the `ANGULAR_PROJECT` environment variable. For example: `ANGULAR_PROJECT=my-ssr-project {{ CLI_NAME }} build`.
+If you have several projects and the `defaultProject` as specified in `angular.json` is not the project with the SSR build, specify the correct project with the `ANGULAR_PROJECT` environment variable. For example: `ANGULAR_PROJECT=my-ssr-project {{ FULL_CLI_NAME }} build`.
 
 #### 5. Update OCC `baseUrl` endpoint {/*4-update-occ-baseurl-endpoint*/}
 
@@ -132,17 +132,17 @@ import 'zone.js/dist/zone-node'
 import * as express from 'express'
 import { join } from 'path'
 
-+ // layer0
++ // {{ PRODUCT_NAME_LOWER }}
 + import * as http from 'http'
 + import * as https from 'https'
 + import createRenderCallback from '{{ PACKAGE_NAME }}/spartacus/server/createRenderCallback'
-+ import installLayer0Middleware from '{{ PACKAGE_NAME }}/spartacus/server/installLayer0Middleware'
++ import install{{ PRODUCT }}Middleware from '{{ PACKAGE_NAME }}/spartacus/server/install{{ PRODUCT }}Middleware'
 
 
 // Express server
 const server = express()
 
-+ installLayer0Middleware({ server, http, https });
++ install{{ PRODUCT }}Middleware({ server, http, https });
 
 const PORT = process.env.PORT || 4200
 const DIST_FOLDER = join(process.cwd(), 'dist/<your-project-name>')
@@ -257,10 +257,10 @@ Add `"skipLibCheck": true,` to `tsconfig.json` to avoid type errors from `workbo
 
 ## Routing and Cache Configuration {/*routing-and-cache-configuration*/}
 
-The default `routes.js` file created by `{{ CLI_NAME }} init` sends all requests to Angular server via a fallback route.
+The default `routes.js` file created by `{{ FULL_CLI_NAME }} init` sends all requests to Angular server via a fallback route.
 
 ```js
-// This file was automatically added by {{ CLI_NAME }} deploy.
+// This file was automatically added by {{ FULL_CLI_NAME }} deploy.
 // You should commit this file to source control.
 
 import { Router } from '{{ PACKAGE_NAME }}/core/router'
@@ -336,13 +336,13 @@ return new Router()
 Test your app with the {{ PRODUCT_PLATFORM }} on your local machine by running the following command in your project's root directory:
 
 ```bash
-{{ CLI_NAME }} run
+{{ FULL_CLI_NAME }} run
 ```
 
 You can do a production build of your app and test it locally using:
 
 ```bash
-{{ CLI_NAME }} build && {{ CLI_NAME }} run --production
+{{ FULL_CLI_NAME }} build && {{ FULL_CLI_NAME }} run --production
 ```
 
 Setting `--production` runs your app exactly as it will be uploaded to the {{ PRODUCT }} cloud using serverless-offline.
@@ -352,5 +352,5 @@ Setting `--production` runs your app exactly as it will be uploaded to the {{ PR
 Deploy your app to the {{ PRODUCT_PLATFORM }} by running the following command in your project's root directory:
 
 ```bash
-{{ CLI_NAME }} deploy
+{{ FULL_CLI_NAME }} deploy
 ```

@@ -2,7 +2,7 @@
 title: Limits and Caveats
 ---
 
-## {{ PRODUCT_NAME }} Platform Limits {/*layer0-platform-limits*/}
+## {{ PRODUCT_NAME }} Platform Limits {/*edgio-platform-limits*/}
 
 This guide describes caveats and limits of {{ PRODUCT_NAME }} platform as applied to all projects running on it.
 
@@ -17,6 +17,7 @@ This guide describes caveats and limits of {{ PRODUCT_NAME }} platform as applie
 | Type                                                  | Limit                 | Description                                                                                                                                                                           |
 | ----------------------------------------------------- | --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Response time from origin server                      | 60 seconds            | The maximum number of seconds that {{ PRODUCT }} will wait for a response from an origin server (e.g., your web server). The response for a request that exceeds this limit is a `531 Project Upstream Connection Error`. <br /><br /><Callout type="warning">Requests that exceed this limit should return a [536 Project HTTP Response Timeout](status_codes#536). We will update our service to return this status code instead of a `531 Project Upstream Connection Error` response in the near future. </Callout>  |
+
 | Response body size from static                        | 2Gb                   | The maximum size of a response body of {{ PRODUCT_NAME }} static assets.                                                                                                              |
 | Response body size from custom origin                 | 2Gb                   | The maximum size of a response body from a custom origin.                                                                                                                             |
 | Response body size from {{ PRODUCT_NAME }} serverless | 6Mb                   | The maximum size of a response body from {{ PRODUCT_NAME }} serverless.                                                                                                               |
@@ -33,7 +34,7 @@ This guide describes caveats and limits of {{ PRODUCT_NAME }} platform as applie
 
 | Value | Limit     | Description                                                                                         |
 | ----- | --------- | --------------------------------------------------------------------------------------------------- |
-| Size  | Unlimited | All access logs will always be [logged](/guides/logs#section_access_logs).                          |
+| Size  | Unlimited | All access logs will always be [logged](/guides/logs#access-logs).                          |
 | Time  | 2 hours   | The minimum time that {{ PRODUCT_NAME }} guarantees that access logs will be available for reading. |
 
 ### Prohibited Headers {/*prohibited-headers*/}
@@ -61,7 +62,7 @@ Please ensure that list of dependencies in package.json contains only those pack
 Move all build-time dependencies such as webpack, babel, etc... to devDependencies, rerun npm | yarn install, and try to deploy again.
 ```
 
-Following are the possible fixes that would help you reduce serverless bundle size by better engineering. If none of these does it, feel free to raise an issue on [Edgio Forums](https://forum.layer0.co).
+Following are the possible fixes that would help you reduce serverless bundle size by better engineering. If none of these does it, feel free to raise an issue on [{{ PRODUCT }} Forums](https://forum.layer0.co).
 
 #### Possible Fix [1]: Segregating devDependencies from dependencies {/*segregate-devdependencies-from-dependencies*/}
 
@@ -153,16 +154,16 @@ setNodeModules()
 Step 3. Change your existing `package.json` to have `node setNodeModules.js` before each command as follows:
 
 ```diff
-- "layer0:dev": "layer0 dev",
-- "layer0:build": "layer0 build",
-- "layer0:deploy": "layer0 deploy"
+- "{{ PRODUCT_NAME_LOWER }}:dev": "{{ FULL_CLI_NAME }} dev",
+- "{{ PRODUCT_NAME_LOWER }}:build": "{{ FULL_CLI_NAME }} build",
+- "{{ PRODUCT_NAME_LOWER }}:deploy": "{{ FULL_CLI_NAME }} deploy"
 
-+ "layer0:dev": "node setNodeModules.js && layer0 dev",
-+ "layer0:build": "node setNodeModules.js && layer0 build",
-+ "layer0:deploy": "node setNodeModules.js && layer0 deploy"
++ "{{ PRODUCT_NAME_LOWER }}:dev": "node setNodeModules.js && {{ FULL_CLI_NAME }} dev",
++ "{{ PRODUCT_NAME_LOWER }}:build": "node setNodeModules.js && {{ FULL_CLI_NAME }} build",
++ "{{ PRODUCT_NAME_LOWER }}:deploy": "node setNodeModules.js && {{ FULL_CLI_NAME }} deploy"
 ```
 
-Step 4. Change your `layer0.config.js` to have:
+Step 4. Change your `{{ CONFIG_FILE }}` to have:
 
 ```js
 // https://docs.layer0.co/guides/layer0_config
@@ -171,7 +172,9 @@ module.exports = {
 }
 ```
 
-## {{ PRODUCT_NAME }} Platform Caveats {/*layer0-platform-caveats*/}
+<a id="layer0-platform-caveats"></a>
+
+## {{ PRODUCT_NAME }} Platform Caveats {/*edgio-platform-caveats*/}
 ### NodeJS native extensions {/*nodejs-native-extensions*/}
 
 In a lof of scenarios, NodeJS native extensions might be required to perform specific tasks related to your application.
@@ -199,14 +202,14 @@ at Object.<anonymous> (/var/task/node_modules/broadcast-channel/dist/es5node/met
 ```
 
 To fix this issue, you need to instruct {{ PRODUCT_NAME }} to include the binary files that your application requires.
-This can be done by using the [`includeFiles` property  in `{{ CONFIG_FILE }}`](/guides/layer0_config#includefiles) like so:
+This can be done by using the [`includeFiles` property  in `{{ CONFIG_FILE }}`](/guides/edgio_config#includefiles) like so:
 ```js
 includeFiles: {
   'node_modules/microtime/**/*': true,
 },
 ```
 Or you could choose to bundle everything in the packages listed in the `dependencies` property of `package.json` by using
-[`includeNodeModules` property](/guides/layer0_config#includenodemodules).
+[`includeNodeModules` property](/guides/edgio_config#includenodemodules).
 
 ### Readonly filesystem in serverless runtime {/*readonly-filesystem-in-serverless-runtime*/}
 

@@ -10,7 +10,7 @@ Add your Express app to {{ PRODUCT }} by running the following command in your p
 
 ```bash
 npm i -g {{ PACKAGE_NAME }}/cli # yarn global add {{ PACKAGE_NAME }}/cli
-{{ CLI_NAME }} init
+{{ FULL_CLI_NAME }} init
 ```
 
 ## Running your app locally {/*running-your-app-locally*/}
@@ -18,7 +18,7 @@ npm i -g {{ PACKAGE_NAME }}/cli # yarn global add {{ PACKAGE_NAME }}/cli
 Test your app with the {{ PRODUCT_PLATFORM }} on your local machine by running the following command in your project's root directory:
 
 ```bash
-{{ CLI_NAME }} dev
+{{ FULL_CLI_NAME }} dev
 ```
 
 ## Deploying {/*deploying*/}
@@ -26,7 +26,7 @@ Test your app with the {{ PRODUCT_PLATFORM }} on your local machine by running t
 Deploy your app to the {{ PRODUCT_PLATFORM }} by running the following command in your project's root directory:
 
 ```bash
-{{ CLI_NAME }} deploy
+{{ FULL_CLI_NAME }} deploy
 ```
 
 ## Overriding the default app location {/*overriding-the-default-app-location*/}
@@ -107,7 +107,7 @@ source files are compiled, you can transpile your app on your own and point your
 
 ## Bundling Options {/*bundling-options*/}
 
-By default, {{ PRODUCT }} uses ESBuild to transpile and bundle your application code. If you're having difficulty fitting your app within the limit for serverless bundles, you can try bundling with [ncc](https://github.com/vercel/ncc), which should produce smaller bundles, by adding the following to layer0.config.js:
+By default, {{ PRODUCT }} uses ESBuild to transpile and bundle your application code. If you're having difficulty fitting your app within the limit for serverless bundles, you can try bundling with [ncc](https://github.com/vercel/ncc), which should produce smaller bundles, by adding the following to {{ CONFIG_FILE }}:
 
 ```js
 module.exports = {
@@ -129,7 +129,7 @@ Or, using yarn:
 yarn add --dev @vercel/ncc@^0.34.0
 ```
 
-NCC produces a tree-shaken, bundle which includes your application code and all of its dependencies in a single file (written to .layer0/lambda/backends/index.js). [NFT](https://github.com/vercel/nft) is also supported:
+NCC produces a tree-shaken, bundle which includes your application code and all of its dependencies in a single file (written to .edgio/lambda/backends/index.js). [NFT](https://github.com/vercel/nft) is also supported:
 
 ```js
 module.exports = {

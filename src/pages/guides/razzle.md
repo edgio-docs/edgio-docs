@@ -27,7 +27,7 @@ This framework has a connector developed for {{ PRODUCT }}. See [Connectors](con
 To prepare your Razzle app for deployment on {{ PRODUCT }}, run the following in the root folder of your project:
 
 ```bash
-{{ CLI_NAME }} init
+{{ FULL_CLI_NAME }} init
 ```
 
 This will automatically add all of the required dependencies and files to your project. These include:
@@ -45,7 +45,7 @@ This will automatically add all of the required dependencies and files to your p
 Test your app with the {{ PRODUCT_PLATFORM }} on your local machine by running the following command in your project's root directory:
 
 ```bash
-{{ CLI_NAME }} dev
+{{ FULL_CLI_NAME }} dev
 ```
 
 ### Simulate edge caching locally {/*simulate-edge-caching-locally*/}
@@ -53,7 +53,7 @@ Test your app with the {{ PRODUCT_PLATFORM }} on your local machine by running t
 To simulate edge caching locally, run:
 
 ```bash
-{{ CLI_NAME }} dev --cache
+{{ FULL_CLI_NAME }} dev --cache
 ```
 
 ## Deploying {/*deploying*/}
@@ -61,7 +61,7 @@ To simulate edge caching locally, run:
 Deploy your app to the {{ PRODUCT_PLATFORM }} by running the following command in your project's root directory:
 
 ```bash
-{{ CLI_NAME }} deploy
+{{ FULL_CLI_NAME }} deploy
 ```
 
-See [deploying](deploying) for more information.
+See [deploying](deploy_apps) for more information.

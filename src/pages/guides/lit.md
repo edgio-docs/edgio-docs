@@ -29,7 +29,7 @@ yarn install
 Test your app with the {{ PRODUCT_PLATFORM }} in development mode on your local machine by running the following command in your project's root directory:
 
 ```bash
-{{ CLI_NAME }} dev
+{{ FULL_CLI_NAME }} dev
 ```
 
 Load the site http://127.0.0.1:3000
@@ -40,13 +40,13 @@ This will listen to any changes inside the folder src, with live reloads!
 
 Create a production build using:
 ```bash
-{{ CLI_NAME }} build
+{{ FULL_CLI_NAME }} build
 ```
 
 Test your app with the {{ PRODUCT_PLATFORM }} in production mode on your local machine by running the following command in your project's root directory:
 
 ```bash
-{{ CLI_NAME }} run --production
+{{ FULL_CLI_NAME }} run --production
 ```
 
 Load the site http://127.0.0.1:3000
@@ -56,5 +56,5 @@ Load the site http://127.0.0.1:3000
 Deploy your app to the {{ PRODUCT_PLATFORM }} by running the following command in your project's root directory:
 
 ```bash
-{{ CLI_NAME }} deploy
+{{ FULL_CLI_NAME }} deploy
 ```

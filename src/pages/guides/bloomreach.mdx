@@ -34,9 +34,11 @@ This example is a React app powered by Bloomreach Content. The following is base
   />
 </ButtonLinksGroup>
 
-{{ PREREQ }}
+{{ PREREQ }} 
 
-## Launch the {{ PRODUCT }} example application {/*launch-the-layer0-example-application*/}
+<a id="launch-the-layer0-example-application"></a>
+
+## Launch the {{ PRODUCT }} example application {/*launch-the-edgio-example-application*/}
 
 If you are not yet a Bloomreach customer, but would like to demo their service, the quickest way to get access to an instance is by reaching out to our [Partner]({{ PARTNERS_CONTACT }}) team. Alternatively, {{ PRODUCT }} has setup a sample application that can be used to get started with viewing the service, seeing optimal configurations, and more.
 
@@ -129,7 +131,7 @@ To deploy the project, run the following set of commands
 
 ```bash
 npm run build
-{{ CLI_NAME }} deploy
+{{ FULL_CLI_NAME }} deploy
 ```
 
 ## Setting up a Bloomreach Example Site from Scratch {/*setting-up-a-bloomreach-example-site-from-scratch*/}
@@ -197,7 +199,7 @@ To accompany the Bloomreach content project above, we will generate a new app fr
 1. Create a new React app
 
 ```bash
-npx create-react-app my-br-layer0-content-app
+npx create-react-app my-br-edgio-content-app
 ```
 
 2. Install dependencies
@@ -205,7 +207,7 @@ npx create-react-app my-br-layer0-content-app
 To simplify integration with Javascript-based frontend applications, Bloomreach provides a Bloomreach SPA SDK that interacts transparently with the Delivery API and exposes a simplified and framework-agnostic interface to the API's data model. You'll be using the SDK to build up your frontend app.
 
 ```bash
-cd my-br-layer0-content-app
+cd my-br-edgio-content-app
 npm install @bloomreach/spa-sdk @bloomreach/react-sdk axios
 ```
 
@@ -286,12 +288,12 @@ Awesome, the app should be working locally. Time to get it deployed to {{ PRODUC
 
 6. Configure to run with {{ PRODUCT }}
 
-Because this example is based off [create-react-app](https://create-react-app.dev/), you can also reference the static [react app docs](https://docs.layer0.co/guides/react) for this.
+Because this example is based off [create-react-app](https://create-react-app.dev/), you can also reference the static [react app docs](react) for this.
 
 To add the necessary components to {{ PRODUCT }} in order to deploy, run the following:
 
 ```bash
-{{ CLI_NAME }} init
+{{ FULL_CLI_NAME }} init
 ```
 
 From the resulting changes, set your {{ PRODUCT }} `routes.js` file to the following:
@@ -319,5 +321,5 @@ Since this is a static app, we need to make sure we run a couple steps to get th
 
 ```bash
 npm run build
-{{ CLI_NAME }} deploy
+{{ FULL_CLI_NAME }} deploy
 ```

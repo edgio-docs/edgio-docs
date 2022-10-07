@@ -17,9 +17,11 @@ be tracked via [Google Search Console](https://search.google.com/search-console/
 
 - It can take days to weeks to see the effect of changes to your site on Core Web Vitals.
 - It's hard to diagnose Core Web Vitals by page type or URL.
-- It's impossible to A/B test the impact of site optimizations on Core Web Vitals. Note that to effectively A/B test performance optimizations you need both a RUM measurement tool and split testing at the edge, both of which {{ PRODUCT_NAME }} provides.
+- It's impossible to A/B test the impact of site optimizations on Core Web Vitals. Note that to effectively A/B test performance optimizations you need both a RUM measurement tool and split testing at the edge, both of which {{ PRODUCT_NAME }} provides. 
 
-## Why use {{ PRODUCT_NAME }} to track Core Web Vitals? {/*why-use-layer0-to-track-core-web-vitals*/}
+<a id="why-use-layer0-to-track-core-web-vitals"></a>
+
+## Why use {{ PRODUCT_NAME }} to track Core Web Vitals? {/*why-use-edgio-to-track-core-web-vitals*/}
 
 Instead of relying solely on Google Search Console, we recommend tracking Core Web Vitals using {{ PRODUCT_NAME }} so that you can:
 
@@ -127,7 +129,7 @@ new Metrics({
 }).collect()
 ```
 
-The router supports the same pattern syntax as Express. Here's more information on [routing syntax](/guides/routing#section_route_pattern_syntax).
+The router supports the same pattern syntax as Express. Here's more information on [routing syntax](/guides/routing#route-pattern-syntax).
 
 For non single page applications (e.g. traditional "multi-page apps"), you can also explicitly set the page label by passing a `pageLabel` property during initialization. An example is shown below where the `pageLabel` is pulled from `document.title`:
 

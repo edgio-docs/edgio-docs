@@ -6,7 +6,7 @@ This guide shows you how to troubleshoot applications running on {{ PRODUCT_NAME
 
 ## Server Timings {/*server-timings*/}
 
-When measuring the performance of your server, we provide numerous headers to decipher timings of requests. Visit our section on [response headers](/guides/response_headers#section_server_timing) for an in-depth explanation on the values available and how to leverage them.
+When measuring the performance of your server, we provide numerous headers to decipher timings of requests. Visit our section on [response headers](/guides/response_headers#server-timing) for an in-depth explanation on the values available and how to leverage them.
 
 ## Visual Studio Code {/*visual-studio-code*/}
 
@@ -37,11 +37,11 @@ Note that this configuration will allow you to set breakpoints in both your {{ P
 
 {{ PRODUCT_NAME }} provides two types of logs to help you debug issues with your application.
 
-### [Server Logs](/guides/logs#section_server_logs) {/*server-logs*/}
+### [Server Logs](/guides/logs#server-logs) {/*server-logs*/}
 
 By viewing the server logs in the {{ PRODUCT_NAME }} Developer Console, you can see all of the messages logged by your application using `console.log`, `console.warn`, etc...
 
-By enabling [Deep Request Inspection](/guides/logs#section_http_request_logging) in your environment, you can also see the headers and body of every request and response served by your application via the {{ PRODUCT }} serverless cloud. You can also see each upstream API request made by your application.
+By enabling [Deep Request Inspection](/guides/logs#deep-request-inspection) in your environment, you can also see the headers and body of every request and response served by your application via the {{ PRODUCT }} serverless cloud. You can also see each upstream API request made by your application.
 
 You can also use the server logs to debug **routing issues** going to **custom backends** by temporarily moving the proxy from the edge to serverless:
 
@@ -61,17 +61,17 @@ You can also use the server logs to debug **routing issues** going to **custom b
   })
 ```
 
-Once you have this deployed, you can observe the output in your [server logs](/guides/logs#section_server_logs).
+Once you have this deployed, you can observe the output in your [server logs](/guides/logs#server-logs).
 
 Note that whenever possible, we strongly recommend to always proxy the traffic from the edge, as that is more performant and avoids serverless surcharges. The solution above should only be used as a temporary measure while addressing issues.
 
-[Learn more](/guides/logs#section_server_logs?button)
+[Learn more](/guides/logs#server-logs)
 
 ### Access Logs {/*access-logs*/}
 
 Access logs contain information about all requests, even those that never reach your application code (e.g. cache hits, static assets, requests routed to custom backends, edge redirects, and so on).
 
-[Learn more](/guides/logs#section_access_logs)
+[Learn more](/guides/logs#access-logs)
 
 ## Confirming Behavior with CURL {/*confirming-behavior-with-curl*/}
 
@@ -112,10 +112,10 @@ curl -o/dev/null -vv
 
 **Skip the Cache**
 
-Adding a `layer0_debug=true` to the query parameter will skip the cache and make it easy to check for dynamic data (i.e. personalized content). Append grep to search for specific values within the response output.
+Adding a `{{ PRODUCT_NAME_LOWER }}_debug=true` to the query parameter will skip the cache and make it easy to check for dynamic data (i.e. personalized content). Append grep to search for specific values within the response output.
 
 ```bash
-curl -vv --silent https://www.yoursite.com/?layer0_debug=true 2>&1 | grep minicart-quantity
+curl -vv --silent https://www.yoursite.com/?{{ PRODUCT_NAME_LOWER }}_debug=true 2>&1 | grep minicart-quantity
 ```
 
 `2>&1` is only present to make terminal work with `grep`
@@ -130,7 +130,7 @@ You can find both links on the detail page of a deployment.
 
 ## Cache Reasons {/*cache-reasons*/}
 
-We provide a header, `{{ HEADER_PREFIX }}-caching-status` to best understand why something is being cached. There is a [detailed guide](caching#section_why_is_my_response_not_being_cached_) available on deciphering those reasons.
+We provide a header, `{{ HEADER_PREFIX }}-caching-status` to best understand why something is being cached. There is a [detailed guide](caching#why-is-my-response-not-being-cached) available on deciphering those reasons.
 
 ## Source Maps {/*source-maps*/}
 
@@ -190,7 +190,7 @@ module.exports = {
 #### Assumptions {/*assumptions*/}
 
 You have deployed your site to {{ PRODUCT }}. All your website code resides with {{ PRODUCT }} as SSR (server-side rendering) code. Your backend (server) simply contains data that is needed by your website code to construct a page and return it to a requesting client or browser.
-See [Architecture](/guides/overview#section_architecture) for more information.
+See [Architecture](/guides/overview#architecture) for more information.
 
 #### Typical Request Flows {/*typical-request-flows*/}
 
@@ -220,7 +220,7 @@ When you run your site on {{ PRODUCT_NAME }}, all requests come in through four 
 
 A typical pattern is that your site works fine for a few days after deploying to {{ PRODUCT_NAME }}, then your server starts interpreting the requests as a DDoS attack.
 
-To prevent this scenario, you must configure your server with allowlisted {{ PRODUCT_NAME }} IP addresses. See [Allow {{ PRODUCT }} IP Addresses](production#allowing-layer0-ip-addresses).
+To prevent this scenario, you must configure your server with allowlisted {{ PRODUCT_NAME }} IP addresses. See [Allow {{ PRODUCT }} IP Addresses](production#allowing-edgio-ip-addresses).
 
 ### Procedure {/*procedure*/}
 
@@ -250,8 +250,8 @@ Before continuing, it is helpful to see what a good request and response flow lo
 | -------------- | -------------- |
 | 1 | Summary line. |
 | 2 | The request from {{ PRODUCT }} to your SSR code. The line ends with a `200`, indicating success. |
-| 3 | The request from your SSR code to your backend server. If this line ends with a `<status code> in XXms`, then the SSR received a response from your backend server. In this example the HTTP status code was `200`,  indicating success. If the line does not end with a `<status code> in XXms`, there was a problem with the request to your backend server (see [Backend Server Error](#section_backend_server_error)). |
-| 4 | The response from the SSR to the browser, and ends with the status code for the response. If this line is present, the SSR code ran to completion. If this line is missing there was a problem (see [Error in SSR Code](#section_error_in_ssr_code)). |
+| 3 | The request from your SSR code to your backend server. If this line ends with a `<status code> in XXms`, then the SSR received a response from your backend server. In this example the HTTP status code was `200`,  indicating success. If the line does not end with a `<status code> in XXms`, there was a problem with the request to your backend server (see [Backend Server Error](#backend-server-error)). |
+| 4 | The response from the SSR to the browser, and ends with the status code for the response. If this line is present, the SSR code ran to completion. If this line is missing there was a problem (see [Error in SSR Code](#error-in-ssr-code)). |
 
 #### Error in SSR Code {/*error-in-ssr-code*/}
 
@@ -265,7 +265,7 @@ If a request looks like the following, your SSR code contains an error.
 | 2 | The request from the {{ PRODUCT }} edge to your SSR code. The line ends with a `200`. |
 | 3 | The request from your SSR code to your backend server. The line ends with a `200`. |
 
-_Note:_ There is no response from the SSR code to the browser as shown in line 4 in [Good Request Example](#section_good_request_example). Troubleshoot your code and fix the error. Common errors are that your SSR code:
+_Note:_ There is no response from the SSR code to the browser as shown in line 4 in [Good Request Example](#good-request-example). Troubleshoot your code and fix the error. Common errors are that your SSR code:
 * Took too long to return a response
 * Threw an exception and never returned a response
 
@@ -283,7 +283,7 @@ If a request looks like the following, your backend server is either down, overl
 
 _Note:_ If line 3:
 * Ends in a status code other than `200`, then the SSR code received a non-`200` code from the backend server.
-* Does not end in a status code at all, then the SSR did not receive a response from the backend and the problem can be either an allowlist error or a timeout error. See "Distinguishing an Allow List Error from a Timeout Error." See [Distinguishing an Allowlist Error from a Timeout Error](#section_distinguishing_an_allowlist_error_from_a_timeout_error).
+* Does not end in a status code at all, then the SSR did not receive a response from the backend and the problem can be either an allowlist error or a timeout error. See "Distinguishing an Allow List Error from a Timeout Error." See [Distinguishing an Allowlist Error from a Timeout Error](#distinguishing-an-allowlist-error-from-a-timeout-error).
 
 #### Distinguishing an Allowlist Error from a Timeout Error {/*distinguishing-an-allowlist-error-from-a-timeout-error*/}
 
@@ -295,7 +295,7 @@ To determine if there is an allowlist error, do the following:
 
 2. Run the `curl` command. (The command runs the same request that the SSR code made to the backend server, but from your local machine.)
 
-The outcome will be either [SSR code error](#section_SSR_Code_Error) or an [allowlist error](#section_allowlist_Error).
+The outcome will be either [SSR code error](#ssr-code-error) or an [allowlist error](#allowlist-error).
 
 
 #### SSR Code Error {/*ssr-code-error*/}
@@ -307,4 +307,4 @@ Troubleshoot your code to find and fix the error.
 #### Allowlist Error {/*allowlist-error*/}
 
 If the command succeeds and finishes quickly, it is probably an allowlist error.
-Contact your operations team and ask them to add the IP addresses in _Allowlisting_ in [Network Configuration](/guides/production#section_network_configuration) to your server's IP allowlist.
+Contact your operations team and ask them to add the IP addresses in _Allowlisting_ in [Network Configuration](/guides/production#network-configuration) to your server's IP allowlist.

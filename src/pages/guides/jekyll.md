@@ -22,7 +22,7 @@ npm i -g {{ PACKAGE_NAME }}/cli # yarn global add {{ PACKAGE_NAME }}/cli
 # Next, create a stub package.json:
 npm init
 # Then, add {{ PRODUCT }} to your Jekyll site:
-{{ CLI_NAME }} init
+{{ FULL_CLI_NAME }} init
 ```
 
 ## Update your {{ PRODUCT }} Router {/*update-your-edgio-router*/}
@@ -30,7 +30,7 @@ npm init
 Paste the following into `routes.js`:
 
 ```js
-import { Router } from '@{{ PRODUCT_NAME_LOWER }}/core'
+import { Router } from '{{ PACKAGE_NAME }}/core'
 
 const ONE_DAY = 60 * 60 * 24
 const FAR_FUTURE = ONE_DAY * 365 * 10
@@ -72,5 +72,5 @@ Deploy your app to the {{ PRODUCT_PLATFORM }} by running the following commands 
 bundle exec jekyll build
 
 # Deploy it to {{ PRODUCT_PLATFORM }}
-{{ CLI_NAME }} deploy
+{{ FULL_CLI_NAME }} deploy
 ```

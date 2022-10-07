@@ -26,10 +26,10 @@ Create a `package.json` at the root of your project with the following:
   "scripts": {
     "build": "python3 -m mkdocs build",
     "server": "python3 -m mkdocs serve",
-    "layer0:dev": "layer0 dev",
+    "{{ PRODUCT_NAME_LOWER }}:dev": "{{ FULL_CLI_NAME }} dev",
     "postinstall": "pip3 install mkdocs",
-    "layer0:build": "npm run build && layer0 build",
-    "layer0:deploy": "npm run build && layer0 deploy"
+    "{{ PRODUCT_NAME_LOWER }}:build": "npm run build && {{ FULL_CLI_NAME }} build",
+    "{{ PRODUCT_NAME_LOWER }}:deploy": "npm run build && {{ FULL_CLI_NAME }} deploy"
   },
   "dependencies": {},
   "devDependencies": {}
@@ -41,7 +41,7 @@ Create a `package.json` at the root of your project with the following:
 npm i -g {{ PACKAGE_NAME }}/cli # yarn global add {{ PACKAGE_NAME }}/cli
 
 # Then, add  {{ PRODUCT }} to your MkDocs site:
-{{ CLI_NAME }} init
+{{ FULL_CLI_NAME }} init
 ```
 
 ## Update your {{ PRODUCT }} Router {/*update-your-edgio-router*/}
@@ -49,7 +49,7 @@ npm i -g {{ PACKAGE_NAME }}/cli # yarn global add {{ PACKAGE_NAME }}/cli
 Paste the following into routes.js:
 
 ```js
-import { Router } from '@{{ PRODUCT_NAME_LOWER }}/core'
+import { Router } from '{{ PACKAGE_NAME }}/core'
 
 const ONE_MINUTE = 60
 const FAR_FUTURE = 60 * 60 * 24 * 365 * 10
@@ -99,5 +99,5 @@ Deploy your app to the {{ PRODUCT_PLATFORM }} by running the following commands 
 npm run build
 
 # Deploy it to the {{ PRODUCT_PLATFORM }}
-{{ CLI_NAME }} deploy
+{{ FULL_CLI_NAME }} deploy
 ```

@@ -88,6 +88,8 @@ prefetch('/api/products/1.json', "fetch", {
 });
 ```
 
+All prefetch function options can be found in its API Documentation [here](https://docs.layer0.co/docs/api/prefetch/modules/_window_prefetch_.html#prefetchconfiguration).
+
 ## React {/*react*/}
 
 The `{{ PACKAGE_NAME }}/react` package provides a `Prefetch` component that you can wrap around any link to prefetch the link when it becomes visible in the viewport:

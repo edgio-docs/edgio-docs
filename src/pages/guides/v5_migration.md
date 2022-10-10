@@ -124,7 +124,7 @@ Update all references to the {{ PRODUCT }} CLI within your scripts from `0 | lay
 
 ## Optional: Redirect Cache Manifest Requests  {/*optional-redirect-cache-manifest-requests*/}
 
-We have updated the location of the cache manifest file from `/__layer0__/cache-manifest.js` to `/__edgio__/cache-manifest.js`. Predictive prefetching, which requires this file, may not work properly for users that are active on your site during this migration. Although this may degrade performance for those users, your site will still load properly. Ensure optimal performance during this migration by adding a route to `routes.ts` that redirects requests for the cache manifest to the new location:
+We have updated the location of the cache manifest file from `/__layer0__/cache-manifest.js` to `/__edgio__/cache-manifest.js`. This update may interfere with predictive prefetching for users that are active on your site during this migration. Ensure optimal performance during this migration by adding a route to `routes.ts` that redirects requests for the cache manifest to the new location:
 
 
 ```js

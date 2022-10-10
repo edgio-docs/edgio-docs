@@ -1,11 +1,12 @@
 import {useRouter} from 'next/router';
 import styled from 'styled-components';
 
-import {DOCS_REPO} from '../../../constants';
+import {FORUM_URL, DOCS_URL} from '../../../constants';
 
-import {IconExternalLink, IconGitHub} from 'components/Icon';
+import {IconForum} from 'components/Icon';
+import {findGuideBy} from 'utils/getChildrenRoutesFromSidebarMenuItems';
 
-const StyledEditLink = styled.div`
+const StyledLink = styled.div`
   margin-top: 50px;
 
   a {
@@ -34,7 +35,7 @@ const StyledEditLink = styled.div`
   }
 `;
 
-const StyledEditIcon = styled.div`
+const StyledIcon = styled.div`
   text-align: end;
 
   a {
@@ -65,40 +66,61 @@ const StyledEditIcon = styled.div`
   }
 `;
 
-const baseURL = `https://github.com/${DOCS_REPO}/edit/main/src/pages`;
-const title = 'Edit this guide on GitHub';
+const title = 'Discuss this guide on our forums';
 const IGNORE_PAGES = ['/guides/changelog'];
 
-export default function EditPage({as = 'link'}: {as?: 'icon' | 'link'}) {
-  const router = useRouter();
+function createLink({
+  title,
+  body,
+  category = 'product-feedback',
+}: {
+  title: string;
+  body: string;
+  category?: string;
+}) {
+  return [
+    FORUM_URL,
+    '/new-topic',
+    `?title=${encodeURIComponent(title)}`,
+    `&body=${encodeURIComponent(body)}`,
+    `&category=${encodeURIComponent(category)}
+`,
+  ].join('');
+}
 
-  if (IGNORE_PAGES.includes(router.route)) {
+export default function DiscourseDiscuss({
+  as = 'link',
+}: {
+  as?: 'icon' | 'link';
+}) {
+  const router = useRouter();
+  const guide = findGuideBy(router.route, 'route');
+
+  if (IGNORE_PAGES.includes(router.route) || !guide) {
     return null;
   }
 
+  const href = createLink({
+    title: `Feedback on '${guide.title}' guide`,
+    body: `I have a question/issue with the '[${guide.title}](${DOCS_URL}${router.route})' guide:\n\n`,
+  });
+
   if (as === 'icon') {
     return (
-      <StyledEditIcon>
-        <a
-          target="_blank"
-          href={`${baseURL}${router.asPath}.md`}
-          rel="noreferrer"
-          title={title}>
-          <IconGitHub />
+      <StyledIcon>
+        <a target="_blank" href={href} rel="noreferrer" title={title}>
+          <IconForum />
         </a>
-      </StyledEditIcon>
+      </StyledIcon>
     );
   }
 
   return (
-    <StyledEditLink>
-      <a
-        target="_blank"
-        href={`${baseURL}${router.asPath}.md`}
-        rel="noreferrer">
-        <IconExternalLink />
+    <StyledLink>
+      <a target="_blank" href={href} rel="noreferrer">
+        <IconForum />
         {title}
       </a>
-    </StyledEditLink>
+    </StyledLink>
   );
 }

@@ -49,7 +49,7 @@ export function MarkdownPage<
     tocHeadings.unshift({
       depth: 1,
       text: 'Overview',
-      url: '#',
+      url: '',
     });
   }
 

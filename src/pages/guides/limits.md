@@ -29,6 +29,7 @@ This guide describes caveats and limits of {{ PRODUCT_NAME }} platform as applie
 | Worker timeout                                        | 20 seconds            | The number of seconds {{ PRODUCT_NAME }} will wait for project code to process the request before timing out. Exceeding this will result in 539 [status code](/guides/status_codes).  |
 | Prerender concurrency                                 | 200                   |
 | Total number of prerendered requests                  | 25,000 per deployment |
+| Maximum number of nested requests                     | 3                     | "Nested" means an {{ PRODUCT_NAME }} site is the upstream of itself or of another {{ PRODUCT_NAME }} site. Exceeding this will result in 538 [status code](/guides/status_codes).     |
 
 ### Access Logs {/*access-logs*/}
 
@@ -42,8 +43,8 @@ This guide describes caveats and limits of {{ PRODUCT_NAME }} platform as applie
 The following is a list of headers that cannot be modified by your project code. These values are immutable and can only be set by the {{ PRODUCT }} platform.
 
 * `{{ HEADER_PREFIX }}-platform`
-* `{{ HEADER_PREFIX }}-version` 
-* `{{ HEADER_PREFIX }}-t` 
+* `{{ HEADER_PREFIX }}-version`
+* `{{ HEADER_PREFIX }}-t`
 * `{{ HEADER_PREFIX }}-components`
 * `{{ HEADER_PREFIX }}-status`
 * `host`

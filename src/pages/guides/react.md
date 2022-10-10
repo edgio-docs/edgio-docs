@@ -297,4 +297,4 @@ npm run build
 {{ FULL_CLI_NAME }} deploy
 ```
 
-For more on deploying, see [Deploying](/guides/deploying).
+For more on deploying, see [Deploying](/guides/deploy_apps).

@@ -145,6 +145,22 @@ const router = new Router()
   .match('/docs/api/:path*', ({redirect}) => {
     redirect('/docs/api/:path*/');
   })
+  // match latest v4 api docs and redirect
+  .match('/docs/v4.x/:path*', ({cache, compute, redirect}) => {
+    cache(htmlCacheConfig);
+    compute(async () => {
+      // fetch the list of current published versions
+      const versions = await (
+        await fetch('https://docs.layer0.co/docs/versions')
+      ).text();
+
+      const targetVersion = semverMaxSatisfying(
+        versions.replace(/\n/g, '').split(','),
+        'v4.x'
+      );
+      redirect(`/docs/${targetVersion}/:path*`);
+    });
+  })
   // match latest v3 api docs and redirect
   .match('/docs/v3.x/:path*', ({cache, compute, redirect}) => {
     cache(htmlCacheConfig);

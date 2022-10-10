@@ -8,6 +8,7 @@ import {
   PRODUCT_EDGE,
   PRODUCT_PLATFORM,
   PRODUCT_SECURITY,
+  PRODUCT_LEGACY_LOWER,
 } from '../../constants';
 import {
   IconAngular,
@@ -690,6 +691,16 @@ const SidebarMenuItems: ISidebarMenuItems = [
         {
           title: `${PACKAGE_NAME}/prefetch Package`,
           path: '/docs/api/prefetch/',
+          external: true,
+        },
+        {
+          title: `${PRODUCT_LEGACY_LOWER}/core (v4.x) Package`,
+          path: '/docs/v4.x/api/core/',
+          external: true,
+        },
+        {
+          title: `${PRODUCT_LEGACY_LOWER}/prefetch (v4.x) Package`,
+          path: '/docs/v4.x/api/prefetch/',
           external: true,
         },
         {

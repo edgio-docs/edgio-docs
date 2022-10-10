@@ -8,8 +8,7 @@ import {
   PRODUCT_EDGE,
   PRODUCT_LEGACY_LOWER,
   PRODUCT_PLATFORM,
-  PRODUCT_SECURITY,
-  PRODUCT_LEGACY_LOWER,
+  PRODUCT_SECURITY,  
 } from '../../constants';
 import {
   IconAngular,

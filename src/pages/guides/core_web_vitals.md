@@ -33,7 +33,7 @@ Instead of relying solely on Google Search Console, we recommend tracking Core W
 
 ## Installation {/*installation*/}
 
-In order to start tracking Core Web Vitals on {{ PRODUCT_NAME }}, you need to add the `{{ PACKAGE_NAME }}/rum` client library to your application. There are a number of ways to do this:
+In order to start tracking Core Web Vitals on {{ PRODUCT_NAME }}, you need to add the `@{{ PRODUCT_LEGACY_LOWER }}/rum` client library to your application. There are a number of ways to do this:
 
 ### Script Tag {/*script-tag*/}
 
@@ -73,19 +73,19 @@ To add Core Web Vitals tracking via a script tag, add the following to each page
 To install the Core Web Vitals library using npm, run:
 
 ```bash
-npm install --save {{ PACKAGE_NAME }}/rum
+npm install --save @{{ PRODUCT_LEGACY_LOWER }}/rum
 ```
 
 Or, using yarn:
 
 ```bash
-yarn add {{ PACKAGE_NAME }}/rum
+yarn add @{{ PRODUCT_LEGACY_LOWER }}/rum
 ```
 
 Then, add the following to your application's browser bundle:
 
 ```js
-import { Metrics } from '{{ PACKAGE_NAME }}/rum'
+import { Metrics } from '@{{ PRODUCT_LEGACY_LOWER }}/rum'
 
 new Metrics({
   token: 'your-token-here', // get this from {{ APP_URL }}
@@ -96,7 +96,7 @@ new Metrics({
 
 You can tie URLs to page templates by providing an optional `router` parameter to `Metrics`.
 
-When installing {{ PACKAGE_NAME }}/rum using a script tag, use:
+When installing @{{ PRODUCT_LEGACY_LOWER }}/rum using a script tag, use:
 
 ```js
 new {{ PRODUCT_NAME }}.Metrics({
@@ -111,11 +111,11 @@ new {{ PRODUCT_NAME }}.Metrics({
 }).collect()
 ```
 
-When installing {{ PACKAGE_NAME }}/rum via NPM or Yarn use:
+When installing @{{ PRODUCT_LEGACY_LOWER }}/rum via NPM or Yarn use:
 
 ```js
-import { Router } from '{{ PACKAGE_NAME }}/rum/Router'
-import { Metrics } from '{{ PACKAGE_NAME }}/rum'
+import { Router } from '@{{ PRODUCT_LEGACY_LOWER }}/rum/Router'
+import { Metrics } from '@{{ PRODUCT_LEGACY_LOWER }}/rum'
 
 new Metrics({
   // get this from {{ APP_URL }}

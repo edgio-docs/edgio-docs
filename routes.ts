@@ -1,6 +1,6 @@
-import {isProductionBuild} from '@layer0/core/environment';
-import {Router, CustomCacheKey} from '@layer0/core/router';
-import {nextRoutes} from '@layer0/next';
+import {isProductionBuild} from '@edgio/core/environment';
+import {Router, CustomCacheKey} from '@edgio/core/router';
+import {nextRoutes} from '@edgio/next';
 import semverMaxSatisfying from 'semver/ranges/max-satisfying';
 
 import prerenderRequests from './prerender';
@@ -83,9 +83,9 @@ const connectSrcDomains = [
 ].sort();
 
 const router = new Router()
-  .prerender(prerenderRequests)
+  //  .prerender(prerenderRequests)
   .noIndexPermalink()
-  .match('/__xdn__/:path*', ({redirect}) => redirect('/__layer0__/:path*'))
+  .match('/__layer0__/:path*', ({redirect}) => redirect('/__edgio__/:path*'))
   .match({}, ({setResponseHeader, removeUpstreamResponseHeader}) => {
     if (isProductionBuild()) {
       setResponseHeader(

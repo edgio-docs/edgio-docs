@@ -36,3 +36,5 @@ yarn-error.log*
 .vscode/
 
 .env
+# Edgio generated build directory
+.edgio

@@ -6,6 +6,7 @@ import {
   PACKAGE_NAME,
   PRODUCT,
   PRODUCT_EDGE,
+  PRODUCT_LEGACY_LOWER,
   PRODUCT_PLATFORM,
   PRODUCT_SECURITY,
   PRODUCT_LEGACY_LOWER,
@@ -694,22 +695,22 @@ const SidebarMenuItems: ISidebarMenuItems = [
           external: true,
         },
         {
-          title: `${PRODUCT_LEGACY_LOWER}/core (v4.x) Package`,
+          title: `@${PRODUCT_LEGACY_LOWER}/core (v4.x) Package`,
           path: '/docs/v4.x/api/core/',
           external: true,
         },
         {
-          title: `${PRODUCT_LEGACY_LOWER}/prefetch (v4.x) Package`,
+          title: `@${PRODUCT_LEGACY_LOWER}/prefetch (v4.x) Package`,
           path: '/docs/v4.x/api/prefetch/',
           external: true,
         },
         {
-          title: `${PACKAGE_NAME}/core (v3.x) Package`,
+          title: `@${PRODUCT_LEGACY_LOWER}/core (v3.x) Package`,
           path: '/docs/v3.x/api/core/',
           external: true,
         },
         {
-          title: `${PACKAGE_NAME}/prefetch (v3.x) Package`,
+          title: `@${PRODUCT_LEGACY_LOWER}/prefetch (v3.x) Package`,
           path: '/docs/v3.x/api/prefetch/',
           external: true,
         },
@@ -728,7 +729,7 @@ const SidebarMenuItems: ISidebarMenuItems = [
         },
         {
           title: 'v5 Migration Guide',
-          path: '/guides/v5-migration',
+          path: '/guides/v5_migration',
         },
         {
           title: 'v4 Migration Guide',

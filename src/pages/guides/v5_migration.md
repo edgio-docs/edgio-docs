@@ -24,8 +24,9 @@ In order to simplify this migration, we have split Node.js version 16 support fr
 1.  [Upgrade the {{ PRODUCT }} CLI.](#step-1-upgrade-the-edgio-cli)
 2.  [Rename layer0.config.js.](#step-2-rename-layer0configjs)
 3.  [Rename {{ PRODUCT }} packages.](#step-3-rename-edgio-packages)
-4.  [Run {{ FULL_CLI_NAME }} init.](#step-4-run-edgio-init)
-5.  [Update scripts that reference the {{ PRODUCT }} CLI.](#step-5-update-scripts-that-reference-the-edgio-cli)
+4.  [Redirect cache manifest requests.](#step-4-redirect-cache-manifest-requests)
+5.  [Run {{ FULL_CLI_NAME }} init.](#step-5-run-edgio-init)
+6.  [Update scripts that reference the {{ PRODUCT }} CLI.](#step-6-update-scripts-that-reference-the-edgio-cli)
 
 ## Step 1: Upgrade the {{ PRODUCT }} CLI {/*step-1-upgrade-the-edgio-cli*/}
  
@@ -109,7 +110,18 @@ For each site, rename all references to {{ PRODUCT }} packages from `@layer0` to
     ...
     ```
 
-## Step 4: Run {{ FULL_CLI_NAME }} init {/*step-4-run-edgio-init*/}
+## Step 4: Redirect Cache Manifest Requests {/*step-4-redirect-cache-manifest-requests*/}
+
+We have updated the location of the cache manifest file from `/__layer0__/cache-manifest.js` to `/__edgio__/cache-manifest.js`. For each site, add a route to `routes.ts` that redirects requests for the cache manifest to the new location:
+
+
+```js
+router.match('/__layer0__/cache-manifest.js', ({ redirect }) => {
+  redirect('/__edgio__/cache-manifest.js')
+})
+```
+
+## Step 5: Run {{ FULL_CLI_NAME }} init {/*step-5-run-edgio-init*/}
 
 For each site, run the following command:
 
@@ -117,7 +129,7 @@ For each site, run the following command:
 
 Proceed to the next step if this command is successful.
 
-## Step 5: Update Scripts that Reference the {{ PRODUCT }} CLI {/*step-5-update-scripts-that-reference-the-edgio-cli*/}
+## Step 6: Update Scripts that Reference the {{ PRODUCT }} CLI {/*step-6-update-scripts-that-reference-the-edgio-cli*/}
 
 Update all references to the {{ PRODUCT }} CLI within your scripts from `0 | layer0` to either `{{ FULL_CLI_NAME }}` or `{{ FULL_CLI_NAME }}`.
 

@@ -1,8 +1,8 @@
-name: Deploy to production
+name: Deploy to production (docs.layer0.co)
 on:
   push:
     branches:
-      - main
+      - main_v4
 jobs:
   deploy-to-prod:
     if: "!contains(github.event.repository.name, 'layer0-docs-internal')"
@@ -31,12 +31,5 @@ jobs:
             ${{ runner.os }}-build-
             ${{ runner.os }}-
       - run: yarn
-      - name: Deploy to Edgio (prod)
-        run: yarn layer0:deploy --branch=$BRANCH_NAME --token=${{secrets.layer0_prod_deploy_token}} --environment=production
-      # - name: Crawl prod docs
-      #   run: |
-      #     docker run \
-      #     -e APPLICATION_ID=${{ secrets.ALGOLIA_APP_ID }} \
-      #     -e API_KEY=${{ secrets.ALGOLIA_API_KEY }} \
-      #     -e CONFIG="$(cat ./docs.config.json | jq -r tostring)" \
-      #     algolia/docsearch-scraper
+      - name: Deploy to docs.layer0.co
+        run: yarn layer0:deploy --branch=$BRANCH_NAME --token=${{secrets.layer0_prod_deploy_token}} --environment=v4

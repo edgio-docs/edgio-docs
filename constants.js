@@ -14,7 +14,7 @@ const FULL_CLI_NAME = 'edgio';
 const PACKAGE_NAME = '@edgio';
 const CONFIG_FILE = 'edgio.config.js';
 const HEADER_PREFIX = 'x-0';
-const COOKIE_PREFIX = 'layer0';
+const COOKIE_PREFIX = 'edgio';
 const RUM_NS = 'Layer0'; // namespace for the JS package used by RUM
 
 const DOMAIN = 'layer0.co';

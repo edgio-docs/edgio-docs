@@ -167,7 +167,7 @@ Step 3. Change your existing `package.json` to have `node setNodeModules.js` bef
 Step 4. Change your `{{ CONFIG_FILE }}` to have:
 
 ```js
-// https://docs.layer0.co/guides/layer0_config
+// https://docs.layer0.co/guides/edgio_config
 module.exports = {
   includeFiles: require('./getNodeModules'),
 }

@@ -30,7 +30,7 @@ In order to simplify this migration, we have split Node.js version 16 support fr
 
 ## Step 1: Upgrade the {{ PRODUCT }} CLI {/*step-1-upgrade-the-edgio-cli*/}
  
-We have renamed the {{ PRODUCT }} CLI from `0 | layer0` to `{{ FULL_CLI_NAME }} | {{ FULL_CLI_NAME }}`. As a result, upgrading the {{ PRODUCT }} CLI requires passing the `--force` flag as shown below:
+We have renamed the {{ PRODUCT }} CLI from `0 | layer0` to `{{ CLI_NAME }} | {{ FULL_CLI_NAME }}`. As a result, upgrading the {{ PRODUCT }} CLI requires passing the `--force` flag as shown below:
 
 `npm i -g @edgio/cli --force`
 

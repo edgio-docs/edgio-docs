@@ -30,7 +30,7 @@ This example is a React app powered by Bloomreach Content. The following is base
     variant="stroke"
     type="deploy"
     withIcon={true}
-    href="https://app.layer0.co/deploy?button&deploy&repo=https://github.com/layer0-docs/layer0-docs-bloomreach-reference-spa-static-example"
+    href="{{ APP_URL }}/deploy?button&deploy&repo=https://github.com/layer0-docs/layer0-docs-bloomreach-reference-spa-static-example"
   />
 </ButtonLinksGroup>
 

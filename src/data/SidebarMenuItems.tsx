@@ -668,7 +668,7 @@ const SidebarMenuItems: ISidebarMenuItems = [
         },
         {
           title: `Deploy to ${PRODUCT} Button`,
-          path: '/guides/deploy_to_layer0',
+          path: '/guides/deploy_to_edgio',
         },
       ],
     },
@@ -758,7 +758,7 @@ const SidebarMenuItems: ISidebarMenuItems = [
       title: 'Status',
       icon: <IconStatus />,
       iconDark: <IconStatusDark />,
-      path: 'https://status.layer0.co/?sgId=7bc47c45-c1d6-4189-b416-552581d86006',
+      path: 'https://status.edg.io/?sgId=7bc47c45-c1d6-4189-b416-552581d86006',
     },
     {
       title: 'Support',

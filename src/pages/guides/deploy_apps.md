@@ -68,20 +68,20 @@ Read the comments at the top to understand how this action is configured.
 # is based on the following rules:
 #
 # 1.) When pushing to master or main, changes will be deployed to the "default" environment. This environment exists
-#     by default. Additional environments must be created at https://app.layer0.co.
+#     by default. Additional environments must be created at {{ APP_URL }}.
 #
 # 2.) When pushing to any other branch, changes are deployed to a staging environment when a pull request is opened.
 #     A unique URL is created based on the branch and deployment number. This environment does not exist by default,
-#     you must create it using https://app.layer0.co.
+#     you must create it using {{ APP_URL }}.
 #
 # 3.) When you publish a release in GitHub, the associated tag will be deployed to the production
 #     environment. You can push to production by creating a GitHub release, or by using the "Promote to Environment"
-#     menu when viewing a deployment in https://app.layer0.co. This environment does not exist by default,
-#     you must create it using https://app.layer0.co.
+#     menu when viewing a deployment in {{ APP_URL }}. This environment does not exist by default,
+#     you must create it using {{ APP_URL }}.
 #
 # ** In order for this action to deploy your site, you must create a deploy token from the site settings page
 # ** In order for this action to deploy your site, you must create a `deploy` command in your package.json scripts (an example is at https://github.com/layer0-docs/layer0-docs/blob/master/package.json#L11).
-# ** Additionally, you will need to generate a deploy token from your site settings in https://app.layer0.co and configure it as a secret called "edgio_DEPLOY_TOKEN" in your repo on GitHub.
+# ** Additionally, you will need to generate a deploy token from your site settings in {{ APP_URL }} and configure it as a secret called "EDGIO_DEPLOY_TOKEN" in your repo on GitHub.
 #
 # ** Depending on your use of NPM or YARN, adjust the "Install packages" step
 
@@ -236,16 +236,16 @@ This guide assumes:
 # is based on the following rules:
 #
 # 1.) When pushing to master or main, changes deployed to the "staging" environment. This environment does
-#     not exist by default. You must create it using https://app.layer0.co.
+#     not exist by default. You must create it using {{ APP_URL }}.
 # 2.) When pushing to any other branch, changes are deployed to the default environment. A unique URL is
 #     created based on the branch and deployment number.
 # 3.) When you push a tag to GitLab, it will be deployed to the production environment. This environment does
-#     not exist by default, you must create it using https://app.layer0.co. Therefore, you can push to
+#     not exist by default, you must create it using {{ APP_URL }}. Therefore, you can push to
 #     production by creating a tag, or by using the "Promote to Environment" menu when viewing a deployment
-#     in https://app.layer0.co.
+#     in {{ APP_URL }}.
 #
 # In order for this pipeline to deploy your site, you must create a deploy token from the site settings page
-# in https://app.layer0.co and configure it as a variable called "EDGIO_DEPLOY_TOKEN" in your GitLab
+# in {{ APP_URL }} and configure it as a variable called "EDGIO_DEPLOY_TOKEN" in your GitLab
 # project's settings page. You should mask this variable to prevent it from appearing in logs.
 
 image: node:14

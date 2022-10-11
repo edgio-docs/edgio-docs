@@ -116,7 +116,7 @@ After deploying a router with multiple destinations, all requests will be sent t
 
 ## Step 3. Configure Traffic Splitting Rules in the {{ PRODUCT }} Developer Console {/*step-3-configure-traffic-splitting-rules-in-the-developer-console*/}
 
-1. [Log into your account](https://app.layer0.co/login/), then navigate to the environment in which you want to configure the iterative migration and click Edit:
+1. [Log into your account]({{ APP_URL }}/login/), then navigate to the environment in which you want to configure the iterative migration and click Edit:
 
 ![Edit Environment](/images/traffic-splitting/edit_env.png)
 

@@ -8,7 +8,7 @@ This guide walks you through some deploy button examples and how you can set up 
 
 ## Example {/*example*/}
 
-[![Deploy with {{ PRODUCT }}](/button.svg)](https://app.layer0.co/deploy?repo=https://github.com/layer0-docs/layer0-nextjs-example)
+[![Deploy with {{ PRODUCT }}](/button.svg)]({{ APP_URL }}/deploy?repo=https://github.com/layer0-docs/layer0-nextjs-example)
 
 An example Deploy Button using the following HTML snippet.
 
@@ -17,7 +17,7 @@ An example Deploy Button using the following HTML snippet.
 Use the snippets below in your Git repository to enable users to deploy the repository directly to {{ PRODUCT }}.
 
 ```markdown
-[![Deploy with {{ PRODUCT }}](https://docs.layer0.co/button.svg)](https://app.layer0.co/deploy?repo=https://github.com/layer0-docs/layer0-nextjs-example)
+[![Deploy with {{ PRODUCT }}]({{ DOCS_URL }}/button.svg)]({{ APP_URL }}/deploy?repo=https://github.com/layer0-docs/layer0-nextjs-example)
 ```
 
 ## Creating Your Own Deploy Button {/*creating-your-own-deploy-button*/}
@@ -64,8 +64,8 @@ jobs:
 
 `secrets.EDGIO_DEPLOY_TOKEN` is automatically injected into your cloned repository during the deploy process. Do not change the name of this variable or the deploy process will fail.
 
-Once everything is setup, you can test your deploy button by appending your GitHub repository full URL to `https://app.layer0.co/deploy?repo=`.
+Once everything is setup, you can test your deploy button by appending your GitHub repository full URL to `{{ APP_URL }}/deploy?repo=`.
 
-For example, using our Next.js example located at `https://github.com/layer0-docs/layer0-nextjs-example` would become `https://app.layer0.co/deploy?repo=https%3A%2F%2Fgithub.com%2Flayer0-docs%2Flayer0-nextjs-example`
+For example, using our Next.js example located at `https://github.com/layer0-docs/layer0-nextjs-example` would become `{{ APP_URL }}/deploy?repo=https%3A%2F%2Fgithub.com%2Flayer0-docs%2Flayer0-nextjs-example`
 
 Now, you can embed this link to let users instantly clone and deploy the project to {{ PRODUCT }}!

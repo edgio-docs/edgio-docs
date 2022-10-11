@@ -311,7 +311,7 @@ const pages = [
   `/zoltan-${SUFFIX_SPLAT}`,
 ]
 // Prevent search engine bot(s) from indexing
-// Read more on: https://docs.layer0.co/guides/cookbook#blocking-search-engine-crawlers
+// Read more on: {{ DOCS_URL }}/guides/cookbook#blocking-search-engine-crawlers
 router.noIndexPermalink()
 // static prerendering
 router.prerender(pages.filter(page => !page.includes(SPLAT)))

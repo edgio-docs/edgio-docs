@@ -83,7 +83,7 @@ The SQL database rule group contains rules to block request patterns associated 
 
 ![Add Rule Groups to WAF](/images/security/addrulegroup1.jpg?width=700 'Add Rule Groups to WAF')
 
-1. Log in to the [{{ PRODUCT }} console](https://app.layer0.co/).
+1. Log in to the [{{ PRODUCT }} console]({{ APP_URL }}/).
 1. Click _SECURITY_ from the top banner to launch the WAF Security Rules page.
 1. Select [_WAF-1_ or _WAF-2_](#whats-the-difference-between-waf-1-and-waf-2) from the first dropdown and the [configuration version](#how-do-i-know-which-version-to-use) from the second.
 1. Click _EDIT_ to set your security rules.
@@ -101,7 +101,7 @@ The SQL database rule group contains rules to block request patterns associated 
 
 ![Add Single Rule to WAF](/images/security/addrulegroup1.jpg?width=700 'Add Single Rule to WAF')
 
-1. Log in to the [{{ PRODUCT }} console](https://app.layer0.co/).
+1. Log in to the [{{ PRODUCT }} console]({{ APP_URL }}/).
 1. Click _SECURITY_ from the top banner to launch the WAF Security Rules page.
 1. Select [_WAF-1_ or _WAF-2_](#whats-the-difference-between-waf-1-and-waf-2) from the first dropdown and the [configuration version](#how-do-i-know-which-version-to-use) from the second.
 1. Click _EDIT_ to set your security rules.
@@ -126,7 +126,7 @@ Follow these steps to add a WAF to an environment:
 
 ![Apply WAF to Environment](/images/security/addrg3.jpg?width=700 'Apply WAF to Environment')
 
-1. Log in to the [{{ PRODUCT }} console](https://app.layer0.co/) and select your site.
+1. Log in to the [{{ PRODUCT }} console]({{ APP_URL }}/) and select your site.
 1. Click the ENVIRONMENTS tab.
 1. Choose an environment from the list.
 
@@ -208,7 +208,7 @@ The above code will match all the routes that even have a `user-agent` header an
 
 ![Reporting](/images/security/addrg3.jpg?width=700 'Reporting')
 
-1. Log in to the [{{ PRODUCT }} console](https://app.layer0.co/) and select your site.
+1. Log in to the [{{ PRODUCT }} console]({{ APP_URL }}/) and select your site.
 1. Click the ENVIRONMENTS tab.
 1. Choose an environment.
 1. Click the SECURITY tab from the top page navigation.
@@ -369,7 +369,7 @@ Like all {{ PRODUCT_NAME }} products, WAF gives you access to all previous and a
 
 ### What is the difference between flagging and blocking a rule or rule group? {/*what-is-the-difference-between-flagging-and-blocking-a-rule-or-rule-group*/}
 
-To flag a rule or rule group means to mark it if the rule would have been activated without actually denying the traffic. In contrast, when you block a rule or rule group, traffic is denied on affected routes. You can view both flagged and blocked data in your [{{ PRODUCT }} console](https://app.layer0.co/).
+To flag a rule or rule group means to mark it if the rule would have been activated without actually denying the traffic. In contrast, when you block a rule or rule group, traffic is denied on affected routes. You can view both flagged and blocked data in your [{{ PRODUCT }} console]({{ APP_URL }}/).
 
 ### What are {{ PRODUCT_NAME }} Managed Rules and why should I apply this rule group? {/*what-are-edgio-managed-rules-and-why-should-i-apply-this-rule-group*/}
 

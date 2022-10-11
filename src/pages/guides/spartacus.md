@@ -11,7 +11,7 @@ This guide shows you how to deploy a [Spartacus](https://sap.github.io/spartacus
   <ButtonLink variant="stroke" type="code" withIcon={true} href="https://github.com/layer0-docs/layer0-spartacus-example">
    View the Code
   </ButtonLink>
-  <ButtonLink variant="stroke" type="deploy" withIcon={true} href="https://app.layer0.co/deploy?button&deploy&repo=https%3A%2F%2Fgithub.com%2Flayer0-docs%2Flayer0-spartacus-example" />
+  <ButtonLink variant="stroke" type="deploy" withIcon={true} href="{{ APP_URL }}/deploy?button&deploy&repo=https%3A%2F%2Fgithub.com%2Flayer0-docs%2Flayer0-spartacus-example" />
 </ButtonLinksGroup>
 
 ## Connector {/*connector*/}
@@ -268,7 +268,7 @@ import { angularRoutes } from '{{ PACKAGE_NAME }}/angular'
 
 export default new Router()
   // Prevent search engine bot(s) from indexing
-  // Read more on: https://docs.layer0.co/guides/cookbook#blocking-search-engine-crawlers
+  // Read more on: {{ DOCS_URL }}/guides/cookbook#blocking-search-engine-crawlers
   .noIndexPermalink()
   .use(angularRoutes)
 ```
@@ -278,7 +278,7 @@ The default router also includes common cache configurations for most Spartacus 
 ```js
   return new Router()
     // Prevent search engine bot(s) from indexing
-    // Read more on: https://docs.layer0.co/guides/cookbook#blocking-search-engine-crawlers
+    // Read more on: {{ DOCS_URL }}/guides/cookbook#blocking-search-engine-crawlers
     .noIndexPermalink()
     .match('/rest/v2/:path*', ({ cache, proxy }) => {
       cache({

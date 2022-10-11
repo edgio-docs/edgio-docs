@@ -61,6 +61,7 @@ const scriptSrcDomains = [
 ].sort();
 
 const connectSrcDomains = [
+  '*.edg.io',
   '*.layer0.co',
   '*.layer0.link',
   '*.layer0-perma.link',
@@ -151,7 +152,7 @@ const router = new Router()
     compute(async () => {
       // fetch the list of current published versions
       const versions = await (
-        await fetch('https://docs.layer0.co/docs/versions')
+        await fetch('https://docs.edg.io/docs/versions')
       ).text();
 
       const targetVersion = semverMaxSatisfying(
@@ -167,7 +168,7 @@ const router = new Router()
     compute(async () => {
       // fetch the list of current published versions
       const versions = await (
-        await fetch('https://docs.layer0.co/docs/versions')
+        await fetch('https://docs.edg.io/docs/versions')
       ).text();
 
       const targetVersion = semverMaxSatisfying(

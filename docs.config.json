@@ -4,14 +4,14 @@
   "index_name": "docs",
   "start_urls": [
     {
-      "url": "https://docs.layer0.co"
+      "url": "https://docs.edg.io"
     },
     {
-      "url": "https://docs.layer0.co/docs",
+      "url": "https://docs.edg.io/docs",
       "selectors_key": "api_docs"
     }
   ],
-  "stop_urls": ["https://docs.layer0.co/docs/v.*"],
+  "stop_urls": ["https://docs.edg.io/docs/v.*"],
   "selectors": {
     "default": {
       "lvl0": "h1",

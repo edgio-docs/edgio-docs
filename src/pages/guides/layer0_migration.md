@@ -36,7 +36,7 @@ Once you deploy the new version of {{ PRODUCT }}, your Edge links will change to
 
 ## DNS will Need Updating for Custom Domains {/*dns-will-need-updating-for-custom-domains*/}
 
-If you have a custom domain pointing to {{ PRODUCT }}, you will need to update your A/CNAME record. To obtain the new network details, navigate to https://app.layer0.co and go to your site. Click the _Environments_ tab and choose the environment that has the custom domain. From there, click on the _Networking_ tab.
+If you have a custom domain pointing to {{ PRODUCT }}, you will need to update your A/CNAME record. To obtain the new network details, navigate to {{ APP_URL }} and go to your site. Click the _Environments_ tab and choose the environment that has the custom domain. From there, click on the _Networking_ tab.
 
 You will see two different DNS configurations. If you are using a sub-domain, you will need to update the CNAME record with the value provided. If you are using an apex domain, you will need to update the A records to match the Anycast IP addresses listed.
 
@@ -69,7 +69,7 @@ The prefixes of the cookies have changed from `xdn` to `layer0`. For example, `x
 
 ### REST API {/*rest-api*/}
 
-If you are using the REST API, it is recommended to update to the new endpoint, https://app.layer0.co/api/v1/.
+If you are using the REST API, it is recommended to update to the new endpoint, {{ APP_URL }}/api/v1/.
 
 ### Cache Manifest {/*cache-manifest*/}
 

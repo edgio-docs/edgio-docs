@@ -17,8 +17,9 @@ const HEADER_PREFIX = 'x-0';
 const COOKIE_PREFIX = 'edgio';
 const RUM_NS = 'Layer0'; // namespace for the JS package used by RUM
 
-const DOMAIN = 'layer0.co';
-const APP_DOMAIN = `app.${DOMAIN}`;
+const DOMAIN = 'edg.io';
+const DOMAIN_LEGACY = 'layer0.co';
+const APP_DOMAIN = `app.${DOMAIN_LEGACY}`;
 const DOCS_DOMAIN = `docs.${DOMAIN}`;
 const DOCS_PAGES_DOMAIN = 'layer0-docs.s3.amazonaws.com';
 const DOCS_REPO = 'layer0-docs/layer0-docs';
@@ -26,15 +27,14 @@ const EXAMPLES_REPO = 'layer0-docs/layer0-examples';
 
 const WWW_URL = `https://www.${DOMAIN}`;
 const APP_URL = `https://${APP_DOMAIN}`;
-const FORUM_URL = `https://forum.${DOMAIN}`;
-const FIDDLE_URL = `https://fiddle.${DOMAIN}`;
+const FORUM_URL = `https://forum.${DOMAIN_LEGACY}`;
+const FIDDLE_URL = `https://fiddle.${DOMAIN_LEGACY}`;
 const STATUS_URL = `https://status.${DOMAIN}`;
-const HELP_URL = `https://help.${DOMAIN}`;
+const HELP_URL = `https://help.${DOMAIN_LEGACY}`;
 const SUPPORT_URL = `${APP_URL}/help`;
 const DOCS_URL = `https://${DOCS_DOMAIN}`;
 const DOCS_PAGES_REPO_URL = `https://${DOCS_PAGES_DOMAIN}`;
-const LOGIN_URL =
-  'https://app.layer0.co/?sgId=ef4d5169-93f2-4f55-aabb-dc3be4286e1f';
+const LOGIN_URL = `${APP_URL}/?sgId=ef4d5169-93f2-4f55-aabb-dc3be4286e1f`;
 
 const NODE_VERSION = '14.x';
 const STARTER_NAME = 'layer0-app';
@@ -135,6 +135,7 @@ module.exports = {
   DOCS_REPO,
   DOCS_URL,
   DOMAIN,
+  DOMAIN_LEGACY,
   EDGEJS_LABEL,
   EXAMPLES_REPO,
   EXAMPLES_REPOS,

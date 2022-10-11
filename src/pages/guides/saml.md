@@ -37,7 +37,7 @@ Once you have verified the configuration and it appears to be working, then you 
 
 #### Linking existing team members {/*linking-existing-team-members*/}
 
-When you already have team members in your team, they can still login to existing account with any sign-in method. They need to link their account to the SAML provider. Accounts can be linked from their user settings [My Account](https://app.layer0.co/account) page.
+When you already have team members in your team, they can still login to existing account with any sign-in method. They need to link their account to the SAML provider. Accounts can be linked from their user settings [My Account]({{ APP_URL }}/account) page.
 
 ![](/images/saml/saml6.jpg)
 

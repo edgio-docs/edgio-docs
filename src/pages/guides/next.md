@@ -138,7 +138,7 @@ module.exports = with{{ PRODUCT }}(
     // the logs in the {{ PRODUCT_NAME }} developer console.
     {{ FULL_CLI_NAME }}SourceMaps: true,
     // Don't include {{ PRODUCT_NAME }} Devtools in production
-    // More on {{ PRODUCT_NAME }} Devtools at https://docs.layer0.co/guides/devtools
+    // More on {{ PRODUCT_NAME }} Devtools at {{ DOCS_URL }}/guides/devtools
     disableEdgioDevTools: true,
   })
 )
@@ -255,7 +255,7 @@ import { nextRoutes } from '{{ PACKAGE_NAME }}/next';
 
 export default new Router()
   // Prevent search engine bot(s) from indexing
-  // Read more on: https://docs.layer0.co/guides/cookbook#blocking-search-engine-crawlers
+  // Read more on: {{ DOCS_URL }}/guides/cookbook#blocking-search-engine-crawlers
   .noIndexPermalink()
   .get('/service-worker.js', ({cache, serveStatic}) => {
     cache({
@@ -315,7 +315,7 @@ imagine you have `/pages/p/[productId].js`. Here's how you can SSR responses as 
 ```js
 new Router()
   // Prevent search engine bot(s) from indexing
-  // Read more on: https://docs.layer0.co/guides/cookbook#blocking-search-engine-crawlers
+  // Read more on: {{ DOCS_URL }}/guides/cookbook#blocking-search-engine-crawlers
   .noIndexPermalink()
   // Products - SSR
   .get('/p/:productId', ({cache}) => {

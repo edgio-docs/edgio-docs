@@ -6,7 +6,7 @@ title: Static Prerendering
  <ButtonLink variant="stroke" type="code" withIcon={true} href="https://github.com/layer0-docs/layer0-prerender-example">
   View the Code
  </ButtonLink>
- <ButtonLink variant="stroke" type="deploy" withIcon={true} href="https://app.layer0.co/deploy?button&deploy&repo=https://github.com/layer0-docs/layer0-prerender-example" />
+ <ButtonLink variant="stroke" type="deploy" withIcon={true} href="{{ APP_URL }}/deploy?button&deploy&repo=https://github.com/layer0-docs/layer0-prerender-example" />
 </ButtonLinksGroup>
 
 This guide shows you how to configure {{ PRODUCT_NAME }} to prerender pages to the edge cache and improve the performance of your site.

@@ -33,7 +33,7 @@ Finally, visit the site in your browser at http://127.0.0.1:3000.
 
 ## How to Contribute {/*how-to-contribute*/}
 
-If you need to modify an existing guide, you can use the [SidebarMenuItems](src/data/SidebarMenuItems.tsx) file to locate the corresponding Markdown file to edit. If your contribution needs its own guide, you'll need to create a new Markdown file in the `guides` folder and add a reference to it in [SidebarMenuItems](src/data/SidebarMenuItems.tsx).
+If you need to modify an existing guide, you can use the `src/data/SidebarMenuItems.tsx` file to locate the corresponding Markdown file to edit. If your contribution needs its own guide, you'll need to create a new Markdown file in the `guides` folder and add a reference to it in `src/data/SidebarMenuItems.tsx`.
 
 We recommend the following process for submitting a change:
 

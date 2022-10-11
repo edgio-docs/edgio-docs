@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 import {Toc} from '../Layout/Toc';
 
+import DiscourseDiscuss from './DiscourseDiscuss';
 import DocsPagination from './DocsPagination';
 import EditPage from './EditPage';
 
@@ -22,7 +23,15 @@ const StyledDocs = styled.div`
   }
 
   .docs-article__header {
-    padding-top: 32px;
+    padding: 32px 0 16px;
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+  }
+
+  .docs-article__header-icons {
+    display: flex;
+    gap: 8px;
   }
 
   .docs-article__body {
@@ -96,7 +105,6 @@ const StyledDocs = styled.div`
   }
 
   .article-header {
-    margin-bottom: 16px;
     margin-top: 0;
     font-size: 32px;
     line-height: 40px;
@@ -204,6 +212,11 @@ export default function Docs({
                 style={{display: 'none'}}
                 aria-hidden="true"></a>
             </h1>
+
+            <div className="docs-article__header-icons">
+              <EditPage as="icon" />
+              <DiscourseDiscuss as="icon" />
+            </div>
           </header>
           <div className="docs-article__body">{children}</div>
         </article>

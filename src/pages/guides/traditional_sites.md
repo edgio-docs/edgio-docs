@@ -208,7 +208,7 @@ Deploy the build to {{ PRODUCT_NAME }} by running the `{{ CLI_NAME }} deploy` co
 {{ CLI_NAME }} deploy --team=[team-name]
 ```
 
-Consult the [Deploying guide](deploying) for more information on the options for deploying your site.
+Consult the [Deploying guide](deploy_apps) for more information on the options for deploying your site.
 
 ## Go Live by Changing the DNS {/*go-live-by-changing-the-dns*/}
 

@@ -158,4 +158,4 @@ Once your project code is up and running, you can view its performance from with
 
 ## Issues? {/*issues*/}
 
-If you have any issues during this process, check our [forums](FORUM_URL) for assistance.
+If you have any issues during this process, check our [forums]({{ FORUM_URL }}) for assistance.

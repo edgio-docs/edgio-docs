@@ -86,7 +86,7 @@ Deploy your app to {{ PRODUCT }} by running the following command in your projec
 {{ CLI_NAME }} deploy
 ```
 
-See [deploying](deploying) for more information.
+See [deploying](deploy_apps) for more information.
 
 ### Resources {/*resources*/}
 1. [Routing with EdgeJS](https://docs.layer0.co/guides/routing)

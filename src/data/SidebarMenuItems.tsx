@@ -547,12 +547,6 @@ const SidebarMenuItems: ISidebarMenuItems = [
           iconDark: <IconVitePress />,
         },
         {
-          title: 'WordPress',
-          path: '/guides/wordpress',
-          icon: <IconWordPress />,
-          iconDark: <IconWordPress />,
-        },
-        {
           title: 'Zola',
           path: '/guides/zola',
           icon: <IconZola />,
@@ -625,6 +619,13 @@ const SidebarMenuItems: ISidebarMenuItems = [
           path: '/guides/swell',
           icon: <IconSwell />,
           iconDark: <IconSwellDark />,
+        },
+
+        {
+          title: 'WordPress',
+          path: '/guides/wordpress',
+          icon: <IconWordPress />,
+          iconDark: <IconWordPress />,
         },
       ],
     },

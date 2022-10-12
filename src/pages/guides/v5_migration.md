@@ -139,7 +139,7 @@ router.match('/__layer0__/', ({ redirect }) => {
 
 ## Optional: Review Your Code for Duplicate Query String Parameters {/*optional-review-your-code-for-duplicate-query-string-parameters*/}
 
-{{ PRODUCT }} version 5 will no longer modify the request's query string when it detects a duplicate query string parameter.i
+{{ PRODUCT }} version 5 will no longer modify the request's query string when it detects a duplicate query string parameter.
 
 For example, we will examine how both versions of {{ PRODUCT }} handle the following request:
 

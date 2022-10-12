@@ -58,7 +58,7 @@ class ArchiveRoutes extends PluginBase {
           }
 
           result.forEach(({path, data}) => {
-            zip.file(path, data);
+            zip.file(this.cleanPath(path), data);
           });
 
           const data = await zip
@@ -86,6 +86,10 @@ class ArchiveRoutes extends PluginBase {
     this.routes.forEach((route) => {
       group.match(route.route, this.handler(route.callback));
     });
+  }
+
+  private cleanPath(path: string) {
+    return path.replace(/^\/+/, '');
   }
 }
 

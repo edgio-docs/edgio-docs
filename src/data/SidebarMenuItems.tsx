@@ -104,6 +104,7 @@ import {
   IconSupportDark,
   IconEdgioSquareLogo,
   IconEdgioSquareLogoDark,
+  IconWordPress,
 } from '../components/Icon';
 
 export interface IRoute {
@@ -544,6 +545,12 @@ const SidebarMenuItems: ISidebarMenuItems = [
           path: '/guides/vuepress',
           icon: <IconVitePress />,
           iconDark: <IconVitePress />,
+        },
+        {
+          title: 'WordPress',
+          path: '/guides/wordpress',
+          icon: <IconWordPress />,
+          iconDark: <IconWordPress />,
         },
         {
           title: 'Zola',

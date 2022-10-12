@@ -1,8 +1,10 @@
 import {isProductionBuild} from '@layer0/core/environment';
 import {Router, CustomCacheKey} from '@layer0/core/router';
 import {nextRoutes} from '@layer0/next';
+import {Downloader as GithubDownloader} from 'github-download-directory';
 import semverMaxSatisfying from 'semver/ranges/max-satisfying';
 
+import {archiveRoutes} from './layer0/plugins/ArchiveRoutes';
 import prerenderRequests from './prerender';
 
 const key = new CustomCacheKey().excludeAllQueryParametersExcept('query');
@@ -85,7 +87,7 @@ const connectSrcDomains = [
 const router = new Router()
   .prerender(prerenderRequests)
   .noIndexPermalink()
-  .match('/__xdn__/:path*', ({redirect}) => redirect('/__layer0__/:path*'))
+  //.match('/__xdn__/:path*', ({redirect}) => redirect('/__layer0__/:path*'))
   .match({}, ({setResponseHeader, removeUpstreamResponseHeader}) => {
     if (isProductionBuild()) {
       setResponseHeader(
@@ -189,8 +191,30 @@ redirects.forEach(([from, to, statusCode]) => {
 router.match('/:path*', ({cache}) => {
   cache(htmlCacheConfig);
 });
-router.use(nextRoutes).fallback(({redirect}) => {
-  return redirect('/', 302);
-});
+
+router
+  .use(
+    archiveRoutes.addRoute(
+      '/archive/github/:owner/:repo/:path*',
+      async (req) => {
+        const {owner, repo, path} = req.params || {};
+        const downloader = new GithubDownloader({
+          github: {auth: process.env.GITHUB_API_TOKEN},
+        });
+
+        const flatPath = (path as string[]).join('/');
+        const result = await downloader.fetchFiles(owner, repo, flatPath);
+
+        return result.map(({path, contents}) => ({
+          path: path.split(flatPath)[1],
+          data: contents,
+        }));
+      }
+    )
+  )
+  .use(nextRoutes)
+  .fallback(({redirect}) => {
+    return redirect('/', 302);
+  });
 
 export default router;

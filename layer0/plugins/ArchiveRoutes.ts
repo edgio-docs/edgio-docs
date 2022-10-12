@@ -4,16 +4,24 @@ import Request from '@layer0/core/router/Request';
 import RouteGroup from '@layer0/core/router/RouteGroup';
 import JSZip from 'jszip';
 
+/**
+ * Callback function (async) used for gathering content of the files you wish to archive.
+ * For example, you can use this to fetch external data.
+ */
 interface ICallback {
-  (req: Request): Promise<IZipItem[]>;
+  (req: Request): Promise<IZipItem | IZipItem[]>;
 }
 interface IZipRoute {
+  /** Route criteria; see #Router.match for example */
   route: string;
   callback: ICallback;
 }
 
 interface IZipItem {
+  /** Path of the file within the archive, eg. /foo.txt or /foo/bar.txt */
   path: string;
+
+  /** File content to be written */
   data: string | ArrayBuffer | Uint8Array | Buffer;
 }
 class ArchiveRoutes extends PluginBase {
@@ -44,7 +52,11 @@ class ArchiveRoutes extends PluginBase {
         compute(async (req, res) => {
           const zip = new JSZip();
 
-          const result = await callback(req);
+          let result = await callback(req);
+          if (!Array.isArray(result)) {
+            result = [result];
+          }
+
           result.forEach(({path, data}) => {
             zip.file(path, data);
           });
@@ -65,7 +77,7 @@ class ArchiveRoutes extends PluginBase {
     this.router.group(this.groupName, (group) => this.addRoutesToGroup(group));
   }
 
-  addRoute(route, callback: ICallback) {
+  addRoute(route: string, callback: ICallback) {
     this.routes.push({route, callback});
     return this;
   }

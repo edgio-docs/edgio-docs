@@ -33,7 +33,7 @@ A full production deployment requires changing your site's DNS to allow requests
 ## Create your project {/*create-your-project*/}
 
 For creating a new site on {{ PRODUCT }}, you can choose between:
-- [{{ PRODUCT }} Developer Console](#create-via-edgio-developer-console) - interactive UI for creating your site and deploy using generated command
+- [{{ PRODUCT }} Developer Console](#create-via-developer-console) - interactive UI for creating your site and deploy using generated command
 - [{{ PRODUCT }} CLI](#create-via-cli) - interactively initialize your project directly from the command line
 
 ### Create via {{ PRODUCT }} Developer Console {/*create-via-developer-console*/}

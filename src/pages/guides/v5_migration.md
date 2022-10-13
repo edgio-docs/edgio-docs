@@ -124,7 +124,7 @@ Proceed to the next step if this command is successful.
 
 ## Step 5: Update Scripts that Reference the {{ PRODUCT }} CLI {/*step-5-update-scripts-that-reference-the-cli*/}
 
-Update all references to the {{ PRODUCT }} CLI within your scripts from `0 | layer0` to either `{{ FULL_CLI_NAME }}` or `{{ FULL_CLI_NAME }}`.
+Update all references to the {{ PRODUCT }} CLI within your scripts from `0 | layer0` to either `{{ CLI_NAME }}` or `{{ FULL_CLI_NAME }}`.
 
 ## Optional: Redirect Cache Manifest Requests {/*optional-redirect-cache-manifest-requests*/}
 

@@ -59,28 +59,22 @@ module.exports = {
 import { Prefetcher } from '{{ PACKAGE_NAME }}/prefetch/sw'
 import { clientsClaim, skipWaiting } from 'workbox-core'
 import { precacheAndRoute } from 'workbox-precaching'
-import DeepFetchPlugin, {
-  DeepFetchCallbackParam,
-} from '{{ PACKAGE_NAME }}/prefetch/sw/DeepFetchPlugin'
-import { prefetch } from '{{ PACKAGE_NAME }}/prefetch/window/prefetch'
+
 skipWaiting()
 clientsClaim()
 precacheAndRoute(self.__WB_MANIFEST || [])
+
 new Prefetcher().route()
 ```
 
 - Create `{{ PRODUCT_NAME_LOWER }}/browser.js` with the following content:
 
 ```js
-import installDevtools from '{{ PACKAGE_NAME }}/devtools/install'
 import install from '{{ PACKAGE_NAME }}/prefetch/window/install'
+import installDevtools from '{{ PACKAGE_NAME }}/devtools/install'
 
 document.addEventListener('DOMContentLoaded', () => {
-  console.info('[{{ PRODUCT_NAME }} browser] DOMContentLoaded -> running install()')
-  install({
-    forcePrefetchRatio: 0.5, // forcely prefetch 50% of non-cached content for higher hit rate
-  })
-  console.info('[{{ PRODUCT_NAME }} browser] DOMContentLoaded -> running installDevtools()')
+  install()
   installDevtools()
 })
 ```
@@ -88,16 +82,19 @@ document.addEventListener('DOMContentLoaded', () => {
 - Create `{{ PRODUCT_NAME_LOWER }}/routes.js`. Here you will configure caching for each route in your application. Here is an example:
 
 ```js
-import { Router } from '{{ PACKAGE_NAME }}/core/router'
 import { CACHE_ASSETS, CACHE_PAGES } from './cache'
+import { Router } from '{{ PACKAGE_NAME }}/core/router'
 import { BACKENDS } from '{{ PACKAGE_NAME }}/core/constants'
+
 const DIST_APP = 'dist'
 const DIST_{{ PRODUCT_NAME_UPPER }}_CLIENT = 'dist-{{ PRODUCT_NAME_LOWER }}-client'
 const DIST_{{ PRODUCT_NAME_UPPER }}_ASSETS = 'dist-{{ PRODUCT_NAME_LOWER }}-assets'
+
 const SPLAT = ':path*'
 const SUFFIX_SPLAT = `:suffix/${SPLAT}`
-// //////////////////////////////////////////
+
 const router = new Router()
+
 const pages = [
   // home
   `/`,
@@ -310,11 +307,14 @@ const pages = [
   `/zoe-${SUFFIX_SPLAT}`,
   `/zoltan-${SUFFIX_SPLAT}`,
 ]
+
 // Prevent search engine bot(s) from indexing
 // Read more on: {{ DOCS_URL }}/guides/cookbook#blocking-search-engine-crawlers
 router.noIndexPermalink()
+
 // static prerendering
-router.prerender(pages.filter(page => !page.includes(SPLAT)))
+router.prerender(pages.filter(page => !page.includes(SPLAT)).map((i) => ({ path: i })))
+
 // {{ PRODUCT_NAME_LOWER }} static files
 router.get('/service-worker.js', ({ serviceWorker, cache }) => {
   cache(CACHE_ASSETS)
@@ -324,6 +324,7 @@ router.get('/main.js', ({ serveStatic, cache }) => {
   cache(CACHE_ASSETS)
   serveStatic(`${DIST_{{ PRODUCT_NAME_UPPER }}_CLIENT}/browser.js`)
 })
+
 // assets
 router.get(`/dist/${SPLAT}`, ({ serveStatic, cache }) => {
   cache(CACHE_ASSETS)
@@ -337,6 +338,7 @@ router.get(`/img/${SPLAT}`, ({ proxy, cache }) => {
   cache(CACHE_ASSETS)
   proxy('origin')
 })
+
 // api
 router.get(`/api/catalog/${SPLAT}`, ({ proxy, cache }) => {
   cache(CACHE_PAGES)
@@ -346,17 +348,20 @@ router.get(`/api/stock/${SPLAT}`, ({ proxy, cache }) => {
   cache(CACHE_PAGES)
   proxy('origin')
 })
+
 // pages
 pages.forEach(page => {
-  router.get(page, ({ cache, proxy }) => {
+  router.get(page, ({ cache, renderWithApp }) => {
     cache(CACHE_PAGES)
-    proxy(BACKENDS.js)
+    renderWithApp()
   })
 })
+
 // fallback
-router.fallback(({ proxy }) => {
-  proxy(BACKENDS.js)
+router.fallback(({ renderWithApp }) => {
+  renderWithApp()
 })
+
 export default router
 ```
 

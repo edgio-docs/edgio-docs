@@ -36,7 +36,7 @@ The Sanity CLI will walk you through the necessary steps to set up a project, le
 sanity start
 ```
 
-## Configuring your Sanity Studio app for {{ PRODUCT }} {/*configuring-your-sanity-studio-app-for-edgio*/}
+## Configuring your Sanity Studio app for {{ PRODUCT }} {/*configuring-your-sanity-studio-app-for*/}
 
 ### Initialize your project {/*initialize-your-project*/}
 
@@ -86,7 +86,7 @@ export default new Router()
 
 Refer to the [Routing](routing) guide for the full syntax of the `routes.js` file and how to configure it for your use case.
 
-### Run the Sanity Studio app locally on {{ PRODUCT }} {/*run-the-Sanity Studio-app-locally-on-edgio*/}
+### Run the Sanity Studio app locally on {{ PRODUCT }} {/*run-the-sanity-studio-app-locally-on*/}
 
 Create a production build of your app by running the following in your project's root directory:
 
@@ -125,7 +125,7 @@ Deploy your app to the {{ PRODUCT_PLATFORM }} by running the following command i
 
 Refer to the [Deploying](deploy_apps) guide for more information on the `deploy` command and its options.
 
-## Post Deployment Whitelisting {/*post-deployment*/}
+## Post Deployment Whitelisting {/*post-deployment-whitelisting*/}
 
 Once Sanity Studio is deployed, you will need to add it's URL to Sanity’s [CORS origins settings](https://www.sanity.io/docs/front-ends/cors). You can do this from the command line:
 

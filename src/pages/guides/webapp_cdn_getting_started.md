@@ -36,7 +36,7 @@ For creating a new site on {{ PRODUCT }}, you can choose between:
 - [{{ PRODUCT }} Developer Console](#create-via-edgio-developer-console) - interactive UI for creating your site and deploy using generated command
 - [{{ PRODUCT }} CLI](#create-via-cli) - interactively initialize your project directly from the command line
 
-### Create via {{ PRODUCT }} Developer Console {/*create-via-edgio-developer-console*/}
+### Create via {{ PRODUCT }} Developer Console {/*create-via-developer-console*/}
 
 1. First, [login to the Developer Console]({{ LOGIN_URL }}) and locate the **New Site** button.
   ![New Site button](/images/app-edge/new-site-button.png)
@@ -144,7 +144,7 @@ Refer to the guides on [Routing](routing) and [Caching](caching) for the full sy
 
 Learn [advanced prefetching techniques](prefetching) to achieve the best possible performance.
 
-## Deploy to {{ PRODUCT_NAME }} {/*deploy-to-edgio*/}
+## Deploy to {{ PRODUCT_NAME }} {/*deploy-to*/}
 
 Now that you're satisfied with your site in local development, it's time to deploy it to the {{ PRODUCT_NAME }} Cloud. Once deployed, you can formally evaluate site performance and QA functionality.
 

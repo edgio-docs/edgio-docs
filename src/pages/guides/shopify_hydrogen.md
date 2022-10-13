@@ -92,7 +92,7 @@ npm run dev
 
 <a id="configuring-your-shopify-hydrogen-app"></a>
 
-## Configuring your Shopify Hydrogen app for {{ PRODUCT_NAME }} {/*configuring-your-shopify-hydrogen-app*/}
+## Configuring your Shopify Hydrogen app for {{ PRODUCT_NAME }} {/*configuring-your-shopify-hydrogen-app-for*/}
 
 ### Initialize your project {/*initialize-your-project*/}
 
@@ -267,7 +267,7 @@ Refer to the [Routing](routing) guide for the full syntax of the `routes.js` fil
 
 <a id="run-the-shopify-hydrogen-app-locally"></a>
 
-### Run the Shopify Hydrogen app locally on {{ PRODUCT_NAME }} {/*run-the-shopify-hydrogen-app-locally*/}
+### Run the Shopify Hydrogen app locally on {{ PRODUCT_NAME }} {/*run-the-shopify-hydrogen-app-locally-on*/}
 
 Create a production build of your app by running the following in your project's root directory:
 

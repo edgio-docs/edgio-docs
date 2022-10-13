@@ -17,14 +17,14 @@ When requesting data via HTTP from the {{ PRODUCT_NAME }} servers, browsers incl
 * `gzip` for all versions
 * `br` (Brotli) for versions >= `4.11.0`
 
-### Gzip compression support {/*gzip-support*/}
+### Gzip compression support {/*gzip-compression-support*/}
 
 Gzip is supported in the following ways:
 
 * Pass-through of upstream Gzip responses if the browser accepts Gzip.
 * Encoding of upstream non-encoded responses if the browsers accepts Gzip or Gzip and Brotli.
 
-### Brotli compression support {/*brotli-support*/}
+### Brotli compression support {/*brotli-compression-support*/}
 
 Brotli is supported in the following ways:
 

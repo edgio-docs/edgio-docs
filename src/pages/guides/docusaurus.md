@@ -29,7 +29,7 @@ You can verify your app works by running it locally with:
 npx docusaurus start
 ```
 
-## Configuring your Docusaurus app for {{ PRODUCT }} {/*configuring-your-docusaurus-app-for-edgio*/}
+## Configuring your Docusaurus app for {{ PRODUCT }} {/*configuring-your-docusaurus-app-for*/}
 
 ### Initialize your project {/*initialize-your-project*/}
 
@@ -76,7 +76,7 @@ export default new Router()
 
 Refer to the [Routing](routing) guide for the full syntax of the `routes.js` file and how to configure it for your use case.
 
-### Run the Docusaurus app locally on {{ PRODUCT }} {/*run-the-docusaurus-app-locally-on-edgio*/}
+### Run the Docusaurus app locally on {{ PRODUCT }} {/*run-the-docusaurus-app-locally-on*/}
 
 Create a production build of your app by running the following in your project's root directory:
 

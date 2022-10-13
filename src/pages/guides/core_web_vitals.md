@@ -21,7 +21,7 @@ be tracked via [Google Search Console](https://search.google.com/search-console/
 
 <a id="why-use-layer0-to-track-core-web-vitals"></a>
 
-## Why use {{ PRODUCT_NAME }} to track Core Web Vitals? {/*why-use-edgio-to-track-core-web-vitals*/}
+## Why use {{ PRODUCT_NAME }} to track Core Web Vitals? {/*why-use-to-track-core-web-vitals*/}
 
 Instead of relying solely on Google Search Console, we recommend tracking Core Web Vitals using {{ PRODUCT_NAME }} so that you can:
 

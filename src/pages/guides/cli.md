@@ -250,7 +250,7 @@ To install the latest preview:
 
 ---
 
-### Error: Cannot find module ... on `{{ FULL_CLI_NAME }} init` {/*error-cannot-find-module--on-0-init*/}
+### Error: Cannot find module ... on `{{ FULL_CLI_NAME }} init` {/*error-cannot-find-module-on-init*/}
 
 An uncommon issue when running `{{ FULL_CLI_NAME }} init` can present a similar error:
 

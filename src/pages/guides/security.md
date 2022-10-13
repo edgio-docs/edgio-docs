@@ -26,7 +26,7 @@ The WAF includes Managed Rule Groups, managed by {{ PRODUCT_NAME }}, that can be
 
 ### Managed Rule Groups {/*managed-rule-groups*/}
 
-#### {{ PRODUCT_NAME }} Managed Rules {/*edgio-managed-rules*/}
+#### {{ PRODUCT_NAME }} Managed Rules {/*managed-rules*/}
 
 ​​The {{ PRODUCT_NAME }} Managed rule group contains rules that are generally applicable to web applications. This provides protection against exploitation of a wide range of vulnerabilities, including high risk and commonly occurring vulnerabilities described in OWASP&reg; publications such as [OWASP Top 10](https://owasp.org/www-project-top-ten/).
 
@@ -371,7 +371,7 @@ Like all {{ PRODUCT_NAME }} products, WAF gives you access to all previous and a
 
 To flag a rule or rule group means to mark it if the rule would have been activated without actually denying the traffic. In contrast, when you block a rule or rule group, traffic is denied on affected routes. You can view both flagged and blocked data in your [{{ PRODUCT }} console]({{ APP_URL }}/).
 
-### What are {{ PRODUCT_NAME }} Managed Rules and why should I apply this rule group? {/*what-are-edgio-managed-rules-and-why-should-i-apply-this-rule-group*/}
+### What are {{ PRODUCT_NAME }} Managed Rules and why should I apply this rule group? {/*what-are-managed-rules-and-why-should-i-apply-this-rule-group*/}
 
 Managed rules block specific known threats. {{ PRODUCT }} recommends this rule group for all WAF use cases.
 
@@ -381,6 +381,6 @@ Note: {{ PRODUCT }} recommends that all customers activate the _Bad Input - Log4
 
 Yes. {{ PRODUCT }} maintains PCI-DSS Level 1 compliance by undergoing annual audits from approved Visa and MasterCard auditors.
 
-### What is the minimum level of encryption for {{ PRODUCT_NAME }}? {/*what-is-the-minimum-level-of-encryption-for-edgio*/}
+### What is the minimum level of encryption for {{ PRODUCT_NAME }}? {/*what-is-the-minimum-level-of-encryption-for-*/}
 
 {{ PRODUCT_NAME }} enforces a minimum version of TLS 1.2 or higher.

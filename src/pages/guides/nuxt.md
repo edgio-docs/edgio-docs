@@ -47,7 +47,7 @@ Nuxt's create module will ask you a series of questions to configure your app. M
 - For `Choose rendering mode` select `Universal (SSR)`
 - Your answers to the other questions should not matter for the purposes of this guide.
 
-## Adding {{ PRODUCT }} to an existing Nuxt app {/*adding-edgio-to-an-existing-nuxt-app*/}
+## Adding {{ PRODUCT }} to an existing Nuxt app {/*adding-to-an-existing-nuxt-app*/}
 
 To prepare your Nuxt.js application for {{ PRODUCT }}:
 
@@ -152,7 +152,7 @@ And here is the `package.json` after modifications by `{{ FULL_CLI_NAME }} init`
 }
 ```
 
-## Run the Nuxt.js app locally on {{ PRODUCT }} {/*run-the-nuxtjs-app-locally-on-edgio*/}
+## Run the Nuxt.js app locally on {{ PRODUCT }} {/*run-the-nuxtjs-app-locally-on*/}
 
 Run the Nuxt.js app with the command:
 
@@ -463,7 +463,7 @@ This may be because you have a custom server framework (such as Express). Please
 
 ---
 
-### {{ FULL_CLI_NAME }} init doesn't work {/*-cli_name--init-doesnt-work*/}
+### {{ FULL_CLI_NAME }} init doesn't work {/*init-doesnt-work*/}
 
 If you get a command not found error such as:
 
@@ -480,7 +480,7 @@ npm i -g {{ PACKAGE_NAME }}/cli
 
 ---
 
-### Make sure your version of the {{ PRODUCT }} CLI is current {/*make-sure-your-version-of-edgio-cli-is-current*/}
+### Make sure your version of the {{ PRODUCT }} CLI is current {/*make-sure-your-version-of-the-cli-is-current*/}
 
 If you previously installed the {{ PRODUCT }} CLI, make sure your version is current.
 
@@ -508,7 +508,7 @@ npm update -g {{ PACKAGE_NAME }}/cli
 
 <a id="error-on-deploy-layer0-deploy-lambda-unzipped-size-must-be-smaller-than-"></a>
 
-### Error on deploy: `{{ PRODUCT_NAME_LOWER }}-deploy-lambda: Unzipped size must be smaller than...` {/*error-on-deploy-edgio-deploy-lambda-unzipped-size-must-be-smaller-than-*/}
+### Error on deploy: `{{ PRODUCT_NAME_LOWER }}-deploy-lambda: Unzipped size must be smaller than...` {/*error-on-deploy-deploy-lambda-unzipped-size-must-be-smaller-than*/}
 
 As the error states, there is an upper limit on how big a package can be when deployed to our serverless infrastructure. Some common strategies for solving:
 

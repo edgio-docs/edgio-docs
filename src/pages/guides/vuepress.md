@@ -30,7 +30,7 @@ You can verify your app works by running it locally with:
 yarn dev
 ```
 
-## Configuring your VuePress app for {{ PRODUCT }} {/*configuring-your-vuepress-app-for-edgio*/}
+## Configuring your VuePress app for {{ PRODUCT }} {/*configuring-your-vuepress-app-for*/}
 
 ### Update package.json {/*update-packagejson*/}
 ```diff
@@ -83,7 +83,7 @@ export default new Router()
 
 Refer to the [Routing](routing) guide for the full syntax of the `routes.js` file and how to configure it for your use case.
 
-### Run the VuePress app locally on {{ PRODUCT }} {/*run-the-vuepress-app-locally-on-edgio*/}
+### Run the VuePress app locally on {{ PRODUCT }} {/*run-the-vuepress-app-locally-on*/}
 
 Create a production build of your app by running the following in your project's root directory:
 

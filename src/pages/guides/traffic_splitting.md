@@ -45,7 +45,7 @@ The two general types of iterative site migrations are _gradual migrations_ and 
   2. As new pieces are ready, you do the same for them.
   3. When all pieces have been deployed you remove traffic from the legacy site. 
 
-# Migrating Sites - General Steps {/*migrating-sites---general-steps*/}
+# Migrating Sites - General Steps {/*migrating-sites-general-steps*/}
 
 ## Separate Sites {/*separate-sites*/}
 

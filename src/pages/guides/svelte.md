@@ -30,7 +30,7 @@ You can verify your app works by running it locally with:
 npm run dev
 ```
 
-## Configuring your Svelte app for {{ PRODUCT }} {/*configuring-your-svelte-app-for-edgio*/}
+## Configuring your Svelte app for {{ PRODUCT }} {/*configuring-your-svelte-app-for*/}
 
 ### Initialize your project {/*initialize-your-project*/}
 
@@ -47,7 +47,7 @@ This will automatically update your `package.json` and add all of the required {
 - `{{ CONFIG_FILE }}` - A configuration file for {{ PRODUCT }}
 - `routes.js` - A default routes file that sends all requests to Svelte.
 
-### Adding {{ PRODUCT }} Service Worker {/*adding-edgio-service-worker*/}
+### Adding {{ PRODUCT }} Service Worker {/*adding-service-worker*/}
 
 To add service worker to your Svelte app, run the following in the root folder of your project:
 
@@ -165,7 +165,7 @@ The example above assumes you're using Svelte as a single page app. It routes th
 
 Refer to the [Routing](routing) guide for the full syntax of the `routes.js` file and how to configure it for your use case.
 
-### Run the Svelte app locally on {{ PRODUCT }} {/*run-the-svelte-app-locally-on-edgio*/}
+### Run the Svelte app locally on {{ PRODUCT }} {/*run-the-svelte-app-locally-on*/}
 
 Create a production build of your app by running the following in your project's root directory:
 

@@ -6,7 +6,7 @@ This guide introduces the high-level concepts behind {{ PRODUCT_NAME }}.
 
 <Video src="https://www.youtube.com/watch?v=u7ed4HFzR8A"/>
 
-## What is {{ PRODUCT_NAME }}? {/*what-is-edgio*/}
+## What is {{ PRODUCT_NAME }}? {/*what-is-*/}
 
 {{ PRODUCT_NAME }} extends the capabilities of a traditional **CDN** by not only hosting your static content, but also providing **server-side rendering** for progressive web applications as well as caching both your APIs and HTML at the network edge to provide your users with the **fastest browsing experience**.
 

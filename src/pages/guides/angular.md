@@ -74,7 +74,7 @@ This will automatically add all of the required dependencies and files to your p
 - `{{ CONFIG_FILE }}`- Contains various configuration options for {{ PRODUCT }}.
 - `routes.js` - A default routes file that sends all requests to the Angular Universal server. Update this file to add caching or proxy some URLs to a different origin.
 
-#### 4. Use the right angular project {/*3-use-the-right-angular-project*/}
+#### 4. Use the right angular project {/*4-use-the-right-angular-project*/}
 
 If you have several projects and the `defaultProject` as specified in `angular.json` is not the project with the SSR build, specify the correct project with the `ANGULAR_PROJECT` environment variable. For example: `ANGULAR_PROJECT=my-ssr-project {{ FULL_CLI_NAME }} build`.
 

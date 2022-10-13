@@ -53,7 +53,7 @@ Initialize your project for use with {{ PRODUCT }} by running the following comm
 {{ FULL_CLI_NAME }} init
 ```
 
-## Update your {{ PRODUCT }} Router {/*update-your-edgio-router*/}
+## Update your {{ PRODUCT }} Router {/*update-your-router*/}
 
 Paste the following into `routes.js` or `routes.ts`, depending on the results of the `{{ FULL_CLI_NAME }} init` command:
 
@@ -97,7 +97,7 @@ You can remove the origin backend from `{{ CONFIG_FILE }}`:
 module.exports = {}
 ```
 
-## Deploy to {{ PRODUCT }} {/*deploy-to-edgio*/}
+## Deploy to {{ PRODUCT }} {/*deploy-to*/}
 
 Deploy your app to the {{ PRODUCT_PLATFORM }} by running the following commands in your project's root directory:
 

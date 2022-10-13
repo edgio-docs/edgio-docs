@@ -85,7 +85,7 @@ sources: [
 
 <a id="example-config"></a>
 
-## Example {{ CONFIG_FILE }} {/*example-config*/}
+## Example {{ CONFIG_FILE }} {/*example*/}
 
 ```js
 // This file was automatically added by {{ FULL_CLI_NAME }} deploy.

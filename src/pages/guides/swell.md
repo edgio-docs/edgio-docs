@@ -62,7 +62,7 @@ yarn run dev
 
 <a id="configuring-your-swell-app"></a>
 
-## Configuring your Swell app for {{ PRODUCT_NAME }} {/*configuring-your-swell-app*/}
+## Configuring your Swell app for {{ PRODUCT_NAME }} {/*configuring-your-swell-app-for*/}
 
 ### Modify nuxt.config.js {/*modify-nuxtconfigjs*/}
 
@@ -113,7 +113,7 @@ This command will also update your `package.json` with the following changes:
 
 <a id="run-swell-app-locally-on-layer0"></a>
 
-## Run Swell app locally on {{ PRODUCT }} {/*run-swell-app-locally-on-edgio*/}
+## Run Swell app locally on {{ PRODUCT }} {/*run-swell-app-locally-on*/}
 
 Run the Swell app with the command:
 

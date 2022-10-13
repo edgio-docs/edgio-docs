@@ -49,7 +49,7 @@ cd <project-name>
 npm install
 ```
 
-## Configuring your Vue Storefront app for {{ PRODUCT }} {/*configuring-your-vue-storefront-app-for-edgio*/}
+## Configuring your Vue Storefront app for {{ PRODUCT }} {/*configuring-your-vue-storefront-app-for*/}
 
 ### Initialize your project {/*initialize-your-project*/}
 

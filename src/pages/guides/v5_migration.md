@@ -32,7 +32,7 @@ Migrate from version 4.x to 5 through the following steps:
 6.  [Optional: Redirect cache manifest requests.](#optional-redirect-cache-manifest-requests)
 7.  [Optional: Review your code for duplicate query string parameters.](#optional-review-your-code-for-duplicate-query-string-parameters)
 
-## Step 1: Upgrade the {{ PRODUCT }} CLI {/*step-1-upgrade-the-edgio-cli*/}
+## Step 1: Upgrade the {{ PRODUCT }} CLI {/*step-1-upgrade-the-cli*/}
  
 We have renamed the {{ PRODUCT }} CLI from `0 | layer0` to `{{ CLI_NAME }} | {{ FULL_CLI_NAME }}`. Run the following command to install the latest version of our CLI:
 
@@ -48,7 +48,7 @@ For each site, rename `layer0.config.js` to `edgio.config.js`.
 
 </Callout>
 
-## Step 3: Rename {{ PRODUCT }} Packages {/*step-3-rename-edgio-packages*/}
+## Step 3: Rename {{ PRODUCT }} Packages {/*step-3-rename-packages*/}
 
 For each site, rename all references to {{ PRODUCT }} packages from `@layer0` to `{{ PACKAGE_NAME }}`.
 
@@ -114,7 +114,7 @@ For each site, rename all references to {{ PRODUCT }} packages from `@layer0` to
     ...
     ```
 
-## Step 4: Run {{ FULL_CLI_NAME }} init {/*step-4-run-edgio-init*/}
+## Step 4: Run {{ FULL_CLI_NAME }} init {/*step-4-run-init*/}
 
 For each site, run the following command:
 
@@ -122,7 +122,7 @@ For each site, run the following command:
 
 Proceed to the next step if this command is successful.
 
-## Step 5: Update Scripts that Reference the {{ PRODUCT }} CLI {/*step-5-update-scripts-that-reference-the-edgio-cli*/}
+## Step 5: Update Scripts that Reference the {{ PRODUCT }} CLI {/*step-5-update-scripts-that-reference-the-cli*/}
 
 Update all references to the {{ PRODUCT }} CLI within your scripts from `0 | layer0` to either `{{ FULL_CLI_NAME }}` or `{{ FULL_CLI_NAME }}`.
 

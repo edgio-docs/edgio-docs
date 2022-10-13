@@ -36,7 +36,7 @@ yarn rw setup deploy {{ FULL_CLI_NAME }}
 
 This will verify that the {{ PRODUCT }} CLI is setup on your system and initialize the application accordingly.
 
-### Using the {{ PRODUCT }} CLI {/*using-the-edgio-cli*/}
+### Using the {{ PRODUCT }} CLI {/*using-the-cli*/}
 
 For preparing using the {{ PRODUCT }} CLI, run:
 

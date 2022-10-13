@@ -29,7 +29,7 @@ You can verify your app works by running it locally with:
 npm install && npm run start
 ```
 
-## Configuring your UmiJS app for {{ PRODUCT }} {/*configuring-your-umijs-app-for-edgio*/}
+## Configuring your UmiJS app for {{ PRODUCT }} {/*configuring-your-umijs-app-for*/}
 
 ### Initialize your project {/*initialize-your-project*/}
 
@@ -79,7 +79,7 @@ export default new Router()
 
 Refer to the [Routing](routing) guide for the full syntax of the `routes.js` file and how to configure it for your use case.
 
-### Run the UmiJS app locally on {{ PRODUCT }} {/*run-the-umijs-app-locally-on-edgio*/}
+### Run the UmiJS app locally on {{ PRODUCT }} {/*run-the-umijs-app-locally-on*/}
 
 Create a production build of your app by running the following in your project's root directory:
 

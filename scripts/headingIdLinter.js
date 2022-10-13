@@ -10,7 +10,9 @@ const generateHeadingIds = require('./headingIDHelpers/generateHeadingIDs');
 
 const markdownPaths = process.argv.slice(2);
 if (markdownPaths.includes('--fix')) {
-  generateHeadingIds(markdownPaths.filter((path) => path !== '--fix'));
+  generateHeadingIds(
+    markdownPaths.filter((path) => !['--fix', '--force-new'].includes(path))
+  );
 } else {
   validateHeaderIds(markdownPaths);
 }

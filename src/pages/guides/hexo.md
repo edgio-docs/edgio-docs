@@ -31,7 +31,7 @@ You can verify your app works by running it locally with:
 hexo server
 ```
 
-## Configuring your Hexo app for {{ PRODUCT }} {/*configuring-your-hexo-app-for-edgio*/}
+## Configuring your Hexo app for {{ PRODUCT }} {/*configuring-your-hexo-app-for*/}
 
 ### Initialize your project {/*initialize-your-project*/}
 
@@ -78,7 +78,7 @@ export default new Router()
 
 Refer to the [Routing](routing) guide for the full syntax of the `routes.js` file and how to configure it for your use case.
 
-### Run the Hexo app locally on {{ PRODUCT }} {/*run-the-hexo-app-locally-on-edgio*/}
+### Run the Hexo app locally on {{ PRODUCT }} {/*run-the-hexo-app-locally-on*/}
 
 Create a production build of your app by running the following in your project's root directory:
 

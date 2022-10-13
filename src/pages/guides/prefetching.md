@@ -10,7 +10,7 @@ title: Predictive Prefetch
 
 You might think that prefetching will put significant additional load on the infrastructure hosting your APIs. That's actually not the case! {{ PRODUCT_NAME }} only serves prefetch requests from the edge cache. It will never make a request to the origin if a prefetch request cannot be served from the edge cache, so your servers will never see an increased load.
 
-## Configuring the Service Worker {/*service-worker*/}
+## Configuring the Service Worker {/*configuring-the-service-worker*/}
 
 To enable prefetching, your site's service worker needs to use the `{{ PACKAGE_NAME }}/prefetch` library's `Prefetcher` class. If your site doesn't currently have a service worker, one can easily be created using Google's [Workbox](https://developers.google.com/web/tools/workbox).
 

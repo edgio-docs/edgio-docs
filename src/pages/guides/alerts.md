@@ -20,7 +20,7 @@ There are certain [alert types](#alert-types) that can be configured with their 
 | Domains           | Core Web Vitals alert type that describes the domain(s) to receive alerts for. |
 | Maximum Threshold | The Cache Hit Rate alert type that specifies the maximum threshold to receive alerts for.|
 
-## Create an alert {/*creating-an-alert*/}
+## Create an alert {/*create-an-alert*/}
 
 To create an alert:
 
@@ -42,7 +42,7 @@ To edit an alert:
 
 ![Edit an alert](/images/alerts/edit-alert.png)
 
-## Disable an alert {/*disable-or-delete-an-alert*/}
+## Disable an alert {/*disable-an-alert*/}
 
 To disable an alert:
 
@@ -52,7 +52,7 @@ To disable an alert:
 
 ![Disable an alert](/images/alerts/disable-delete-alert.png)
 
-## Delete an alert {/*disable-or-delete-an-alert*/}
+## Delete an alert {/*delete-an-alert*/}
 
 To delete an alert:
 

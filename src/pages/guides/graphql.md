@@ -136,7 +136,7 @@ export default new Router().graphqlOperation('GetProduct', ({ cache, proxy }) =>
 })
 ```
 
-#### Use the {{ HEADER_PREFIX }}-surrogate-key Response Header {/*use-the-x-0-surrogate-key-response-header*/}
+#### Use the {{ HEADER_PREFIX }}-surrogate-key Response Header {/*use-the-surrogate-key-response-header*/}
 
 You can also assign surrogate keys by adding an `{{ HEADER_PREFIX }}-surrogate-key` header to the response from the origin. Separate multiple keys with spaces:
 

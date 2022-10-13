@@ -6,7 +6,7 @@ This guide describes how to get up and running with {{ PRODUCT_NAME }} for tradi
 
 Note that the speed benefit for traditional sites from {{ PRODUCT_NAME }} is dependent on the site’s JavaScript usage during the page load. If a page has JavaScript heavy processing during load it may reduce the benefit from {{ PRODUCT_NAME }}. Please contact our team via the chat button in the bottom right of this page if you're interested in a site analysis prior to beginning installation — turnaround time is typically 1-2 business days.
 
-## How {{ PRODUCT_NAME }} for Traditional Sites Works {/*how-edgio-for-traditional-sites-works*/}
+## How {{ PRODUCT_NAME }} for Traditional Sites Works {/*how-for-traditional-sites-works*/}
 
 As shown below, {{ PRODUCT_NAME }} becomes the main CDN for your site:
 
@@ -188,7 +188,7 @@ Prefetching can generate substantial additional network traffic. {{ PRODUCT_NAME
 
 <a id="test-your-code-locally"></a>
 
-## Test Your Code Locally and on {{ PRODUCT_NAME }} {/*test-your-code-locally*/}
+## Test Your Code Locally and on {{ PRODUCT_NAME }} {/*test-your-code-locally-and-on*/}
 
 Now that you've configured your caching in `routes.ts`, you should test it in your local development environment and on {{ PRODUCT_NAME }}.
 
@@ -202,7 +202,7 @@ To test the caching behavior locally, run your project with the [local cache opt
 
 <a id="running"></a>
 
-### Running on {{ PRODUCT_NAME }} {/*running*/}
+### Running on {{ PRODUCT_NAME }} {/*running-on*/}
 
 Now that you're satisfied with your site in local development, it's time to deploy it to {{ PRODUCT_NAME }} Cloud. Once your code is deployed to {{ PRODUCT_NAME }} Cloud, you can formally evaluate site performance and QA functionality.
 

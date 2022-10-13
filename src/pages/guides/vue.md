@@ -40,7 +40,7 @@ cd hello-world
 npm run serve
 ```
 
-## Configuring your Vue.js app for {{ PRODUCT }} {/*configuring-your-vuejs-app-for-edgio*/}
+## Configuring your Vue.js app for {{ PRODUCT }} {/*configuring-your-vuejs-app-for*/}
 
 ### Initialize your project {/*initialize-your-project*/}
 
@@ -57,7 +57,7 @@ This will automatically update your `package.json` and add all of the required {
 - `{{ CONFIG_FILE }}` - A configuration file for {{ PRODUCT }}
 - `routes.js` - A default routes file that sends all requests to Vue.js.
 
-### Adding {{ PRODUCT }} Service Worker {/*adding-edgio-service-worker*/}
+### Adding {{ PRODUCT }} Service Worker {/*adding-service-worker*/}
 
 To add service worker to your Vue app, run the following in the root folder of your project:
 
@@ -172,7 +172,7 @@ The example above assumes you're using Vue as a single page app. It routes the s
 
 Refer to the [Routing](routing) guide for the full syntax of the `routes.js` file and how to configure it for your use case.
 
-### Run the Vue.js app locally on {{ PRODUCT }} {/*run-the-vuejs-app-locally-on-edgio*/}
+### Run the Vue.js app locally on {{ PRODUCT }} {/*run-the-vuejs-app-locally-on*/}
 
 Create a production build of your app by running the following in your project's root directory:
 

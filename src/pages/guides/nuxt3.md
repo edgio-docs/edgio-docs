@@ -50,7 +50,7 @@ Then install dependencies with the command:
 npm install # yarn install
 ```
 
-#### 2. Add {{ PRODUCT }} to the Nuxt3 application {/*2-add-edgio-to-the-nuxt3-application*/}
+#### 2. Add {{ PRODUCT }} to the Nuxt3 application {/*2-add-to-the-nuxt3-application*/}
 
 To add {{ PRODUCT }} to the Nuxt3 application, run:
 
@@ -58,7 +58,7 @@ To add {{ PRODUCT }} to the Nuxt3 application, run:
 {{ FULL_CLI_NAME }} init
 ```
 
-#### 3. Run the Nuxt3 app locally with {{ PRODUCT }} {/*3-run-the-nuxt3-app-locally-with-edgio*/}
+#### 3. Run the Nuxt3 app locally with {{ PRODUCT }} {/*3-run-the-nuxt3-app-locally-with*/}
 
 To run the Nuxt3 app locally with {{ PRODUCT }}, run:
 
@@ -68,7 +68,7 @@ To run the Nuxt3 app locally with {{ PRODUCT }}, run:
 
 Vist [http://localhost:3000](http://localhost:3000) to view the application.
 
-#### 4. Run the Nuxt3 app in local production mode with {{ PRODUCT }} {/*4-run-the-nuxt3-app-locally*/}
+#### 4. Run the Nuxt3 app in local production mode with {{ PRODUCT }} {/*4-run-the-nuxt3-app-in-local-production-mode-with*/}
 
 To run the Nuxt3 app in local production mode with {{ PRODUCT }}, run:
 
@@ -76,7 +76,7 @@ To run the Nuxt3 app in local production mode with {{ PRODUCT }}, run:
 {{ FULL_CLI_NAME }} build && {{ FULL_CLI_NAME }} run --production
 ```
 
-#### 5. Deploy the Nuxt3 app to {{ PRODUCT }} {/*4-deploy-the-nuxt3-app*/}
+#### 5. Deploy the Nuxt3 app to {{ PRODUCT }} {/*5-deploy-the-nuxt3-app-to*/}
 
 Note: Add or update the `name` field in the `package.json` file.
 

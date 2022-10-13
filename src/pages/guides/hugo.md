@@ -74,7 +74,7 @@ hugo new posts/my-first-post.md
 hugo server -D
 ```
 
-## Configuring your Hugo app for {{ PRODUCT }} {/*configuring-your-hugo-app-for-edgio*/}
+## Configuring your Hugo app for {{ PRODUCT }} {/*configuring-your-hugo-app-for*/}
 
 Create a `package.json` at the root of your project with the following:
 
@@ -136,7 +136,7 @@ export default new Router()
 
 Refer to the [Routing](routing) guide for the full syntax of the `routes.js` file and how to configure it for your use case.
 
-### Run the Hugo app locally on {{ PRODUCT }} {/*run-the-hugo-app-locally-on-edgio*/}
+### Run the Hugo app locally on {{ PRODUCT }} {/*run-the-hugo-app-locally-on*/}
 
 Create a production build of your app by running the following in your project's root directory:
 

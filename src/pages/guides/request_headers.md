@@ -39,7 +39,7 @@ If a request is routed to an origin server through both an edge and global POP, 
 
 ` Client -> Edge POP (HAProxy -> Varnish -> DPS) -> Global POP (HAProxy -> Varnish -> DPS) -> Origin Server`
 
-## Reserved Request Headers {/*request-headers*/}
+## Reserved Request Headers {/*reserved-request-headers*/}
 {{ PRODUCT }} injects headers into requests making them visible to your server code. 
 
 <Callout type="important">

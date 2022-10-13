@@ -30,7 +30,7 @@ You can verify your app works by running it locally with:
 ember serve
 ```
 
-## Configuring your Ember.js app for {{ PRODUCT }} {/*configuring-your-emberjs-app-for-edgio*/}
+## Configuring your Ember.js app for {{ PRODUCT }} {/*configuring-your-emberjs-app-for*/}
 
 ### Initialize your project {/*initialize-your-project*/}
 
@@ -84,7 +84,7 @@ export default new Router()
 
 Refer to the [Routing](routing) guide for the full syntax of the `routes.js` file and how to configure it for your use case.
 
-### Run the Ember.js app locally on the {{ PRODUCT_PLATFORM }} {/*run-the-emberjs-app-locally-on-the-app-platform*/}
+### Run the Ember.js app locally on the {{ PRODUCT_PLATFORM }} {/*run-the-emberjs-app-locally-on-the*/}
 
 Create a production build of your app by running the following in your project's root directory:
 

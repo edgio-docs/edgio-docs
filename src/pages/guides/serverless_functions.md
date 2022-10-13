@@ -193,7 +193,7 @@ Test your app with the {{ PRODUCT_PLATFORM }} on your local machine by running t
 
 This will start your project in watch mode. Any changes your make to your source code will instantly take effect without restarting.
 
-## Deploying your project to {{ PRODUCT }} {/*deploying-your-project-to-edgio*/}
+## Deploying your project to {{ PRODUCT }} {/*deploying-your-project-to*/}
 
 Deploy your app to the {{ PRODUCT_PLATFORM }} by running the following command in your project's root directory:
 

@@ -22,14 +22,14 @@ nvm use 14
 
 <a id="2-prepare-vsf-files-for-layer0"></a>
 
-## 2. Prepare VSF files for {{ PRODUCT_NAME }} {/*2-prepare-vsf-files-for-edgio*/}
+## 2. Prepare VSF files for {{ PRODUCT_NAME }} {/*2-prepare-vsf-files-for*/}
 
 - In the new VSF project, go to `src/themes/default` (or any theme you're using) and remove `.git` folder from it to save that in Git VCS.
 - Go to `.gitignore` file and remove `config/local.json` line to keep it tracked.
 
 <a id="3-install-layer0"></a>
 
-## 3. Install {{ PRODUCT_NAME }} {/*3-install-edgio*/}
+## 3. Install {{ PRODUCT_NAME }} {/*3-install*/}
 
 - Install {{ PRODUCT_NAME }} packages: `yarn add -D -W {{ PACKAGE_NAME }}/cli && yarn add -W {{ PACKAGE_NAME }}/core {{ PACKAGE_NAME }}/prefetch {{ PACKAGE_NAME }}/devtools`
 - Create a file called `{{ CONFIG_FILE }}` in the root directory of your project and configure your origin and images hosts as backends. For example:

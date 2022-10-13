@@ -30,7 +30,7 @@ You can verify your app works by running it locally with:
 npm run dev
 ```
 
-## Configuring your Remix app for {{ PRODUCT }} {/*configuring-your-remix-app-for-edgio*/}
+## Configuring your Remix app for {{ PRODUCT }} {/*configuring-your-remix-app-for*/}
 
 ### Initialize your project {/*initialize-your-project*/}
 
@@ -57,7 +57,7 @@ Install {{ PACKAGE_NAME }}/express by running the following:
 npm install {{ PACKAGE_NAME }}/express
 ```
 
-### Update {{ PRODUCT }} Configuration {/*update-edgio-configuration*/}
+### Update {{ PRODUCT }} Configuration {/*update-configuration*/}
 
 Update `{{ CONFIG_FILE }}` at the root of your project to the following:
 
@@ -126,7 +126,7 @@ module.exports = new Router()
 
 Refer to the [Routing](routing) guide for the full syntax of the `routes.js` file and how to configure it for your use case.
 
-### Run the Remix app locally on {{ PRODUCT }} {/*run-the-remix-app-locally-on-edgio*/}
+### Run the Remix app locally on {{ PRODUCT }} {/*run-the-remix-app-locally-on*/}
 
 Create a production build of your app by running the following in your project's root directory:
 

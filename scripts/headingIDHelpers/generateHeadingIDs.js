@@ -29,7 +29,9 @@ function replaceConstantInHeader(header) {
 
       return '';
     }
-    return replacedConstant;
+    // don't substitute constants in ids
+    // return replacedConstant;
+    return '';
   });
 
   return replacedHeader;
@@ -62,13 +64,17 @@ function addHeaderID(line, slugger) {
 
   const autoId = head.data.id;
   const existingId = match[4];
-  const id = existingId || autoId;
+  const forceNewHeading = process.argv.some((v) => v.includes('--force-new'));
+  const id = (forceNewHeading ? autoId : existingId || autoId).replace(
+    /-{2,}/g,
+    '-'
+  );
 
   // Ignore numbers:
   const cleanExisting = existingId
     ? existingId.replace(/-\d+$/, '')
     : undefined;
-  const cleanAuto = autoId.replace(/-\d+$/, '');
+  const cleanAuto = autoId.replace(/-\d+$/, '').replace(/-{2,}/g, '-');
 
   if (cleanExisting && cleanExisting !== cleanAuto) {
     console.log(

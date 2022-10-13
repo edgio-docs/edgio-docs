@@ -79,7 +79,7 @@ This will automatically add all of the required dependencies and files to your p
 - `routes.js` - A default routes file that sends all requests to the Angular Universal server. Update this file to add caching or proxy some URLs to a different origin.
 - The `sw` folder - Contains the files needed to build the service worker that that provides static asset and API prefetching.
 
-#### 4. Update `{{ CONFIG_FILE }}` {/*3-update--config_file-*/}
+#### 4. Update `{{ CONFIG_FILE }}` {/*4-update-*/}
 
 For an app called `my-{{ PRODUCT_NAME_LOWER }}-spartacus-app` the {{ PRODUCT }} config file created by `{{ FULL_CLI_NAME }} init` will look like so:
 
@@ -99,7 +99,7 @@ module.exports = {
 
 If you have several projects and the `defaultProject` as specified in `angular.json` is not the project with the SSR build, specify the correct project with the `ANGULAR_PROJECT` environment variable. For example: `ANGULAR_PROJECT=my-ssr-project {{ FULL_CLI_NAME }} build`.
 
-#### 5. Update OCC `baseUrl` endpoint {/*4-update-occ-baseurl-endpoint*/}
+#### 5. Update OCC `baseUrl` endpoint {/*5-update-occ-baseurl-endpoint*/}
 
 The `baseUrl` should be updated to use the remote URL when `window` is not defined (i.e., for SSR), and the current host when `window` is defined. For example:
 

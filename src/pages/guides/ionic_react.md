@@ -30,7 +30,7 @@ You can verify your app works by running it locally with:
 npm run start
 ```
 
-## Configuring your Ionic React app for {{ PRODUCT }} {/*configuring-your-ionic-react-app-for-edgio*/}
+## Configuring your Ionic React app for {{ PRODUCT }} {/*configuring-your-ionic-react-app-for*/}
 
 ### Initialize your project {/*initialize-your-project*/}
 
@@ -80,7 +80,7 @@ export default new Router()
 
 Refer to the [Routing](routing) guide for the full syntax of the `routes.js` file and how to configure it for your use case.
 
-### Run the Ionic React app locally on {{ PRODUCT }} {/*run-the-ionic-react-app-locally-on-edgio*/}
+### Run the Ionic React app locally on {{ PRODUCT }} {/*run-the-ionic-react-app-locally-on*/}
 
 Create a production build of your app by running the following in your project's root directory:
 

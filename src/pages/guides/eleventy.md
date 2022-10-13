@@ -33,7 +33,7 @@ You can verify your app works by running it locally with:
 eleventy --serve
 ```
 
-## Configuring your Eleventy app for {{ PRODUCT }} {/*configuring-your-eleventy-app-for-edgio*/}
+## Configuring your Eleventy app for {{ PRODUCT }} {/*configuring-your-eleventy-app-for*/}
 
 Create a package.json at the root of your project with the following:
 
@@ -95,7 +95,7 @@ export default new Router()
 
 Refer to the [Routing](routing) guide for the full syntax of the `routes.js` file and how to configure it for your use case.
 
-### Run the Eleventy app locally on {{ PRODUCT }} {/*run-the-eleventy-app-locally-on-edgio*/}
+### Run the Eleventy app locally on {{ PRODUCT }} {/*run-the-eleventy-app-locally-on*/}
 
 Create a production build of your app by running the following in your project's root directory:
 

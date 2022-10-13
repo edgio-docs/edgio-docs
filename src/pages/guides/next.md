@@ -125,7 +125,7 @@ The `with{{ PRODUCT }}` plugin optimizes the Next.js build for running on {{ PRO
 
 The `withServiceWorker` plugin builds a service worker from `sw/service-worker.js` that prefetches and caches all static JS assets and enables {{ PRODUCT }}'s [prefetching](/guides/next#prefetching) functionality.
 
-## {{ PRODUCT_NAME }} Devtools {/*edgio-devtools*/}
+## {{ PRODUCT_NAME }} Devtools {/*devtools*/}
 
 By default, [Devtools](/guides/devtools) are enabled on production builds of Next.js with {{ PRODUCT }}. To disable devtools in production, add the `disableEdgioDevTools` flag:
 

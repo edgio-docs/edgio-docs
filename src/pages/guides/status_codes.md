@@ -4,7 +4,7 @@ title: Status Codes
 
 [HTTP status codes](https://en.wikipedia.org/wiki/List_of_HTTP_status_codes) are how the web signals errors and other states from the server to the web browser. If there is an error from your backend website, the error is simply forwarded by {{ PRODUCT_NAME }} to the browser.
 
-## {{ PRODUCT_NAME }} exclusive status codes {/*edgio-exclusive-status-codes*/}
+## {{ PRODUCT_NAME }} exclusive status codes {/*exclusive-status-codes*/}
 
 If the error is generated in {{ PRODUCT_NAME }} itself, the platform generates a 53x or 54x HTTP status code:
 
@@ -34,7 +34,7 @@ Obviously, your project can set status codes of their own, which may sometimes m
 
 <a id="standard-status-codes"></a>
 
-## Standard status codes used by {{ PRODUCT_NAME }} itself {/*standard-status-codes*/}
+## Standard status codes used by {{ PRODUCT_NAME }} itself {/*standard-status-codes-used-by-itself*/}
 
 {{ PRODUCT_NAME }} also issues these standard response codes:
 

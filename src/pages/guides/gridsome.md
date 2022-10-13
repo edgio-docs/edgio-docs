@@ -30,7 +30,7 @@ You can verify your app works by running it locally with:
 gridsome develop
 ```
 
-## Configuring your Gridsome app for {{ PRODUCT_NAME }} {/*configuring-your-gridsome-app-for-edgio*/}
+## Configuring your Gridsome app for {{ PRODUCT_NAME }} {/*configuring-your-gridsome-app-for*/}
 
 ### Initialize your project {/*initialize-your-project*/}
 
@@ -77,7 +77,7 @@ export default new Router()
 
 Refer to the [Routing](routing) guide for the full syntax of the `routes.js` file and how to configure it for your use case.
 
-### Run the Gridsome app locally on {{ PRODUCT_NAME }} {/*run-the-gridsome-app-locally-on-edgio*/}
+### Run the Gridsome app locally on {{ PRODUCT_NAME }} {/*run-the-gridsome-app-locally-on*/}
 
 Create a production build of your app by running the following in your project's root directory:
 

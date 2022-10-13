@@ -24,13 +24,12 @@ In order to simplify this migration, we have split Node.js version 16 support fr
 
 Migrate from version 4.x to 5 through the following steps:
 
-1.  [Upgrade the {{ PRODUCT }} CLI.](#step-1-upgrade-the-edgio-cli)
+1.  [Upgrade the {{ PRODUCT }} CLI.](#step-1-upgrade-the-cli)
 2.  [Rename layer0.config.js.](#step-2-rename-layer0configjs)
-3.  [Rename {{ PRODUCT }} packages.](#step-3-rename-edgio-packages)
-4.  [Run {{ FULL_CLI_NAME }} init.](#step-4-run-edgio-init)
-5.  [Update scripts that reference the {{ PRODUCT }} CLI.](#step-5-update-scripts-that-reference-the-edgio-cli)
-6.  [Optional: Redirect cache manifest requests.](#optional-redirect-cache-manifest-requests)
-7.  [Optional: Review your code for duplicate query string parameters.](#optional-review-your-code-for-duplicate-query-string-parameters)
+3.  [Rename {{ PRODUCT }} packages.](#step-3-rename-packages)
+4.  [Run {{ FULL_CLI_NAME }} init.](#step-4-run-init)
+5.  [Update scripts that reference the {{ PRODUCT }} CLI.](#step-5-update-scripts-that-reference-the-cli)
+6.  [Optional: Review your code for duplicate query string parameters.](#optional-review-your-code-for-duplicate-query-string-parameters)
 
 ## Step 1: Upgrade the {{ PRODUCT }} CLI {/*step-1-upgrade-the-cli*/}
  
@@ -76,7 +75,7 @@ For each site, rename all references to {{ PRODUCT }} packages from `@layer0` to
     ...
     ```
 
--   **Import Statements:** Rename {{ PRODUCT }} packages within each `import` statement from `@layer0` to `{{ PACKAGE_NAME }}`. You can find these `import` statements within various files, such as `routes.ts`, `service-worker.js`, and your Next and Nuxt configuration files.
+-   **Import Statements:** Rename {{ PRODUCT }} packages within each `import` statement from `@layer0` to `{{ PACKAGE_NAME }}`. You can find these `import` statements within various files, such as `routes.ts`, `sw/service-worker.js`, and your Next and Nuxt configuration files.
 
     For example, the following excerpt from a `routes.ts` file imports various @layer0 packages:
 
@@ -126,32 +125,21 @@ Proceed to the next step if this command is successful.
 
 Update all references to the {{ PRODUCT }} CLI within your scripts from `0 | layer0` to either `{{ CLI_NAME }}` or `{{ FULL_CLI_NAME }}`.
 
-## Optional: Redirect Cache Manifest Requests {/*optional-redirect-cache-manifest-requests*/}
-
-We have updated the location of the cache manifest file from `/__layer0__/cache-manifest.js` to `/__edgio__/cache-manifest.js`. This update may interfere with predictive prefetching for users that are active on your site during this migration. Ensure optimal performance during this migration by adding a route to `routes.ts` that redirects requests for the cache manifest to the new location:
-
-
-```js
-router.match('/__layer0__/', ({ redirect }) => {
-  redirect('/__edgio__/')
-})
-```
-
 ## Optional: Review Your Code for Duplicate Query String Parameters {/*optional-review-your-code-for-duplicate-query-string-parameters*/}
 
 {{ PRODUCT }} version 5 will no longer modify the request's query string when it detects a duplicate query string parameter.
 
 For example, we will examine how both versions of {{ PRODUCT }} handle the following request:
 
-`https://cdn.example.com/index.html?id=123&type=Sports&type=Basketball`
+`https://sports.example.com/index.html?id=123&type=Sports&type=Basketball`
 
 {{ PRODUCT }} version 4 will modify the duplicate query string parameters as shown below.
 
-`https://cdn.example.com/index.html?id=123&type=Sports%5B0%5D&type%5B1%5D=Basketball`
+`https://sports.example.com/index.html?id=123&type=Sports%5B0%5D&type%5B1%5D=Basketball`
 
 {{ PRODUCT }} version 5, on the other hand, will not modify the query string as shown below.
 
-`https://cdn.example.com/index.html?id=123&type=Sports&type=Basketball`
+`https://sports.example.com/index.html?id=123&type=Sports&type=Basketball`
 
 Review your code to see whether it generates duplicate query string parameters. If it does, update it to handle multiple query string parameters with the same name.
 

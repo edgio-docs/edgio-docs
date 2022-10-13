@@ -8,7 +8,7 @@ This guide covers the {{ PRODUCT_NAME }} response compression support.
 
 When requesting data via HTTP from the {{ PRODUCT_NAME }} servers, browsers include the `accept-encoding` header to indicate which data compression formats the browser supports. Modern browsers accept multiple compression formats, [Accept-Encoding Header Details are here.](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Accept-Encoding) This header is required by {{ PRODUCT_NAME }} to trigger compression of responses. 
 
-<a id="layer0-supports"></a>
+<a id="supports"></a>
 
 ## Compression Support {/*compression-support*/}
 

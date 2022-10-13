@@ -86,6 +86,9 @@ const connectSrcDomains = [
 const router = new Router()
   //  .prerender(prerenderRequests)
   .noIndexPermalink()
+  // having no eid cookie will default to __xdn__
+  .match('/__xdn__/:path*', ({redirect}) => redirect('/__edgio__/:path*'))
+  // having layer0_eid cookie will point to __layer0__
   .match('/__layer0__/:path*', ({redirect}) => redirect('/__edgio__/:path*'))
   .match({}, ({setResponseHeader, removeUpstreamResponseHeader}) => {
     if (isProductionBuild()) {

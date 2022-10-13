@@ -83,9 +83,9 @@ sources: [
 ]
 ```
 
-<a id="examplelayer0config"></a>
+<a id="example-config"></a>
 
-## Example {{ CONFIG_FILE }} {/*exampleedgioconfig*/}
+## Example {{ CONFIG_FILE }} {/*example-config*/}
 
 ```js
 // This file was automatically added by {{ FULL_CLI_NAME }} deploy.

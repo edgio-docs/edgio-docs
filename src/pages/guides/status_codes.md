@@ -32,9 +32,9 @@ If the error is generated in {{ PRODUCT_NAME }} itself, the platform generates a
 
 Obviously, your project can set status codes of their own, which may sometimes match codes above. We encourage you to avoid setting your own status code so as to lower troubleshooting overhead and other issues.
 
-<a id="standard-status-codes-used-by-layer0-itself"></a>
+<a id="standard-status-codes"></a>
 
-## Standard status codes used by {{ PRODUCT_NAME }} itself {/*standard-status-codes-used-by-edgio-itself*/}
+## Standard status codes used by {{ PRODUCT_NAME }} itself {/*standard-status-codes*/}
 
 {{ PRODUCT_NAME }} also issues these standard response codes:
 

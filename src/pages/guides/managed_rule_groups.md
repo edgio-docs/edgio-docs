@@ -2,7 +2,7 @@
 title: Managed Rule Groups 
 ---
 
-## {{ PRODUCT }} Managed Rules {/*edgio-managed-rules*/}
+## {{ PRODUCT }} Managed Rules {/*managed-rules*/}
 
 <Callout type="danger">
 

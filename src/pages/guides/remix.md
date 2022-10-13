@@ -47,9 +47,9 @@ This will automatically update your `package.json` and add all of the required {
 - `{{ CONFIG_FILE }}` - A configuration file for {{ PRODUCT }}
 - `routes.js` - A default routes file that sends all requests to Remix.
 
-<a id="install-layer0express"></a>
+<a id="install-express"></a>
 
-### Install {{ PACKAGE_NAME }}/express {/*install-edgioexpress*/}
+### Install {{ PACKAGE_NAME }}/express {/*install-express*/}
 
 Install {{ PACKAGE_NAME }}/express by running the following:
 

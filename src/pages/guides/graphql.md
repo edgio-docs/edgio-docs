@@ -53,9 +53,9 @@ module.exports = {
 
 There are two ways to cache GraphQL responses using {{ PRODUCT }}: by adding caching rules to your {{ PRODUCT }} router or by using the `cache-control` header. 
 
-<a id="using-the-layer0-router"></a>
+<a id="using-the-router"></a>
 
-### Using the {{ PRODUCT_NAME }} Router {/*using-the-edgio-router*/}
+### Using the {{ PRODUCT_NAME }} Router {/*using-the-router*/}
 
 Imagine you have a query named `GetProduct`:
 

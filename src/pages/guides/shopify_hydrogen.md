@@ -90,9 +90,9 @@ npm run dev
   });
   ```
 
-<a id="configuring-your-shopify-hydrogen-app-for-layer0"></a>
+<a id="configuring-your-shopify-hydrogen-app"></a>
 
-## Configuring your Shopify Hydrogen app for {{ PRODUCT_NAME }} {/*configuring-your-shopify-hydrogen-app-for-edgio*/}
+## Configuring your Shopify Hydrogen app for {{ PRODUCT_NAME }} {/*configuring-your-shopify-hydrogen-app*/}
 
 ### Initialize your project {/*initialize-your-project*/}
 
@@ -109,9 +109,9 @@ This will automatically update your `package.json` and add all of the required {
 - `{{ CONFIG_FILE }}` - A configuration file for {{ PRODUCT_NAME }}
 - `routes.js` - A default routes file that sends all requests to Shopify Hydrogen.
 
-<a id="update-layer0-configuration"></a>
+<a id="update-configuration"></a>
 
-### Update {{ PRODUCT_NAME }} Configuration {/*update-edgio-configuration*/}
+### Update {{ PRODUCT_NAME }} Configuration {/*update-configuration*/}
 
 Update `{{ CONFIG_FILE }}` at the root of your project to the following:
 
@@ -123,9 +123,9 @@ module.exports = {
 }
 ```
 
-<a id="creating-layer0-connector-files"></a>
+<a id="creating-connector-files"></a>
 
-### Creating {{ PRODUCT }} connector files {/*creating-edgio-connector-files*/}
+### Creating {{ PRODUCT }} connector files {/*creating-connector-files*/}
 
 - Install `@vercel/nft` for Node.js File Tracing, by the following command:
   ```bash
@@ -265,9 +265,9 @@ module.exports = new Router()
 
 Refer to the [Routing](routing) guide for the full syntax of the `routes.js` file and how to configure it for your use case.
 
-<a id="run-the-shopify-hydrogen-app-locally-on-layer0"></a>
+<a id="run-the-shopify-hydrogen-app-locally"></a>
 
-### Run the Shopify Hydrogen app locally on {{ PRODUCT_NAME }} {/*run-the-shopify-hydrogen-app-locally-on-edgio*/}
+### Run the Shopify Hydrogen app locally on {{ PRODUCT_NAME }} {/*run-the-shopify-hydrogen-app-locally*/}
 
 Create a production build of your app by running the following in your project's root directory:
 

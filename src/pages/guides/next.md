@@ -104,9 +104,9 @@ module.exports = with{{ PRODUCT }}(
 )
 ```
 
-<a id="withlayer0"></a>
+<a id="with"></a>
 
-### with{{ PRODUCT }} {/*withedgio*/}
+### with{{ PRODUCT }} {/*with*/}
 
 The `with{{ PRODUCT }}` plugin optimizes the Next.js build for running on {{ PRODUCT }}. It is required to deploy your application on {{ PRODUCT }} and accepts the following parameters:
 
@@ -172,9 +172,9 @@ import {Prefetcher} from '{{ PACKAGE_NAME }}/prefetch/sw';
 new Prefetcher().route();
 ```
 
-<a id="adding-the-layer0-service-worker"></a>
+<a id="adding-the-service-worker"></a>
 
-## Adding the {{ PRODUCT_NAME }} Service Worker {/*adding-the-edgio-service-worker*/}
+## Adding the {{ PRODUCT_NAME }} Service Worker {/*adding-the-service-worker*/}
 
 To add the {{ PRODUCT_NAME }} service worker to your app, call the `install` function from `{{ PACKAGE_NAME }}/prefetch/window` in a `useEffect` hook when the app first loads. For example, you can alter the `pages/_app.js` in your Next.js app as follows:
 

@@ -36,9 +36,9 @@ This example is a React app powered by Bloomreach Content. The following is base
 
 {{ PREREQ }} 
 
-<a id="launch-the-layer0-example-application"></a>
+<a id="launch-the-example-application"></a>
 
-## Launch the {{ PRODUCT }} example application {/*launch-the-edgio-example-application*/}
+## Launch the {{ PRODUCT }} example application {/*launch-the-example-application*/}
 
 If you are not yet a Bloomreach customer, but would like to demo their service, the quickest way to get access to an instance is by reaching out to our [Partner]({{ PARTNERS_CONTACT }}) team. Alternatively, {{ PRODUCT }} has setup a sample application that can be used to get started with viewing the service, seeing optimal configurations, and more.
 

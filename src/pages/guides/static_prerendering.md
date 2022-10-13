@@ -190,9 +190,9 @@ By default, {{ PRODUCT_NAME }} prerenders a maximum of 200 URLs at a time. This 
 | ENTERPRISE | 200         | 25,000 per deployment    |
 | FREE       | 10          | 100 per deployment       |
 
-<a id="viewing-prerendering-results-in-the-layer0-developer-console"></a>
+<a id="viewing-prerendering-results-in-the-developer-console"></a>
 
-## Viewing Prerendering Results in the {{ PRODUCT_NAME }} Developer Console {/*viewing-prerendering-results-in-the-edgio-developer-console*/}
+## Viewing Prerendering Results in the {{ PRODUCT_NAME }} Developer Console {/*viewing-prerendering-results-in-the-developer-console*/}
 
 When you deploy a new version of your site, you can view the progress and results of prerendering from the deployment
 view in {{ PRODUCT_NAME }} Developer Console:

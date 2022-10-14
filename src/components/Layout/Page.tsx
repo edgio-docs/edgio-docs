@@ -60,6 +60,26 @@ const StyledMainPage = styled.div`
   }
 `;
 
+const StyledBanner = styled.a`
+  display: block;
+  text-align: center;
+  color: #fff;
+  background: var(--lg-primary);
+  font-size: calc(1rem - 2px);
+  padding: 1em;
+  text-decoration: none;
+  font-weight: 500;
+`;
+
+function Banner() {
+  return (
+    <StyledBanner href="/">
+      You are currently viewing old Edgio documentation. Click here to visit the
+      latest Edgio v5
+    </StyledBanner>
+  );
+}
+
 export function Page({routeTree, children}: PageProps) {
   const isMobile = useIsMobile(850);
   const [showSidebar, setShowSidebar] = React.useState(isMobile);
@@ -71,6 +91,7 @@ export function Page({routeTree, children}: PageProps) {
 
   return (
     <StyledMainPage>
+      <Banner />
       <Header {...{showSidebar, setShowSidebar}} />
       <SidebarContext.Provider value={routeTree}>
         <main className="docs-content">

@@ -17,6 +17,7 @@ This guide describes caveats and limits of {{ PRODUCT_NAME }} platform as applie
 | Type                                                  | Limit                 | Description                                                                                                                                                                           |
 | ----------------------------------------------------- | --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Response time from origin server                      | 60 seconds            | The maximum number of seconds that {{ PRODUCT }} will wait for a response from an origin server (e.g., your web server). The response for a request that exceeds this limit is a `531 Project Upstream Connection Error`. <br /><br /><Callout type="warning">Requests that exceed this limit should return a [536 Project HTTP Response Timeout](status_codes#536). We will update our service to return this status code instead of a `531 Project Upstream Connection Error` response in the near future. </Callout>  |
+
 | Response body size from static                        | 2Gb                   | The maximum size of a response body of {{ PRODUCT_NAME }} static assets.                                                                                                              |
 | Response body size from custom origin                 | 2Gb                   | The maximum size of a response body from a custom origin.                                                                                                                             |
 | Response body size from {{ PRODUCT_NAME }} serverless | 6Mb                   | The maximum size of a response body from {{ PRODUCT_NAME }} serverless.                                                                                                               |
@@ -28,6 +29,7 @@ This guide describes caveats and limits of {{ PRODUCT_NAME }} platform as applie
 | Worker timeout                                        | 20 seconds            | The number of seconds {{ PRODUCT_NAME }} will wait for project code to process the request before timing out. Exceeding this will result in 539 [status code](/guides/status_codes).  |
 | Prerender concurrency                                 | 200                   |
 | Total number of prerendered requests                  | 25,000 per deployment |
+| Maximum number of nested requests                     | 3                     | "Nested" means an {{ PRODUCT_NAME }} site is the upstream of itself or of another {{ PRODUCT_NAME }} site. Exceeding this will result in 538 [status code](/guides/status_codes).     |
 
 ### Access Logs {/*access-logs*/}
 
@@ -41,8 +43,8 @@ This guide describes caveats and limits of {{ PRODUCT_NAME }} platform as applie
 The following is a list of headers that cannot be modified by your project code. These values are immutable and can only be set by the {{ PRODUCT }} platform.
 
 * `{{ HEADER_PREFIX }}-platform`
-* `{{ HEADER_PREFIX }}-version` 
-* `{{ HEADER_PREFIX }}-t` 
+* `{{ HEADER_PREFIX }}-version`
+* `{{ HEADER_PREFIX }}-t`
 * `{{ HEADER_PREFIX }}-components`
 * `{{ HEADER_PREFIX }}-status`
 * `host`

@@ -123,7 +123,7 @@ Deploy your app to the {{ PRODUCT_PLATFORM }} by running the following command i
 {{ CLI_NAME }} deploy
 ```
 
-Refer to the [Deploying](deploying) guide for more information on the `deploy` command and its options.
+Refer to the [Deploying](deploy_apps) guide for more information on the `deploy` command and its options.
 
 ## Post Deployment Whitelisting {/*post-deployment*/}
 

@@ -5,8 +5,18 @@ const flatItems: IRoute[] = SidebarMenuItems.flatMap((item) =>
 );
 
 export function findChildByGuideName(identifier: string): IRoute | undefined {
+  return findGuideBy(identifier, 'name');
+}
+
+export function findChildByRoute(route: string): IRoute | undefined {
+  return findGuideBy(route, 'route');
+}
+
+export function findGuideBy(identifier: string, as?: 'name' | 'route') {
   return flatItems.find(
-    (item) => item.path?.toLowerCase() === `/guides/${identifier}`.toLowerCase()
+    (item) =>
+      item.path?.toLowerCase() ===
+      ((as === 'name' ? '/guides/' : '') + identifier).toLowerCase()
   );
 }
 

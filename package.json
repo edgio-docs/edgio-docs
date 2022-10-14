@@ -52,6 +52,7 @@
     "remark-extended-table": "^1.0.0",
     "remark-mdx-code-meta": "^1.0.0",
     "semver": "^7.3.7",
+    "string-similarity": "^4.0.4",
     "styled-components": "^5.3.3"
   },
   "devDependencies": {

@@ -156,9 +156,9 @@ The above code renders:
 </Callout>
 
 ---
-## Codeblock {/*codeblock*/}
+## Fenced Code Block {/*codeblock*/}
 
-Enclose sample code excerpts within triple backticks. If the code is language-specific, then you should indicate that language immediately after the starting triple backticks.
+Fence code excerpts with triple backticks. If the code is language-specific, then you should indicate that language by appending it to the starting triple backticks (e.g., `` ```html `` or `` ```bash ``).
 
 ```ts
 // This codeblock has the 'js' language module (with JS comment)

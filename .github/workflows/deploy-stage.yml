@@ -13,7 +13,7 @@ jobs:
     steps:
       - name: Extract branch name
         shell: bash
-        run: echo "BRANCH_NAME=$(echo ${GITHUB_REF#refs/heads/} | sed 's/[^[:alpha:].-]/-/g')" >> $GITHUB_ENV
+        run: echo "BRANCH_NAME=$(echo ${GITHUB_REF#refs/heads/} | sed 's/[^[:alnum:].-]/-/g')" >> $GITHUB_ENV
       - name: Cancel Previous Runs
         uses: styfle/cancel-workflow-action@0.9.1
         with:

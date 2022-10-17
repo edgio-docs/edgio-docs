@@ -1,7 +1,7 @@
-import PluginBase from '@layer0/core/plugins/PluginBase';
-import {Router} from '@layer0/core/router';
-import Request from '@layer0/core/router/Request';
-import RouteGroup from '@layer0/core/router/RouteGroup';
+import PluginBase from '@edgio/core/plugins/PluginBase';
+import {Router} from '@edgio/core/router';
+import Request from '@edgio/core/router/Request';
+import RouteGroup from '@edgio/core/router/RouteGroup';
 import JSZip from 'jszip';
 
 /**

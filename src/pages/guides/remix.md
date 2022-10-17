@@ -30,14 +30,14 @@ You can verify your app works by running it locally with:
 npm run dev
 ```
 
-## Configuring your Remix app for {{ PRODUCT }} {/*configuring-your-remix-app-for-edgio*/}
+## Configuring your Remix app for {{ PRODUCT }} {/*configuring-your-remix-app-for*/}
 
 ### Initialize your project {/*initialize-your-project*/}
 
-In the root directory of your project run `{{ CLI_NAME }} init`:
+In the root directory of your project run `{{ FULL_CLI_NAME }} init`:
 
 ```bash
-{{ CLI_NAME }} init
+{{ FULL_CLI_NAME }} init
 ```
 
 This will automatically update your `package.json` and add all of the required {{ PRODUCT }} dependencies and files to your project. These include:
@@ -47,7 +47,9 @@ This will automatically update your `package.json` and add all of the required {
 - `{{ CONFIG_FILE }}` - A configuration file for {{ PRODUCT }}
 - `routes.js` - A default routes file that sends all requests to Remix.
 
-### Install {{ PACKAGE_NAME }}/express {/*install-layer0express*/}
+<a id="install-express"></a>
+
+### Install {{ PACKAGE_NAME }}/express {/*install-express*/}
 
 Install {{ PACKAGE_NAME }}/express by running the following:
 
@@ -55,12 +57,12 @@ Install {{ PACKAGE_NAME }}/express by running the following:
 npm install {{ PACKAGE_NAME }}/express
 ```
 
-### Update {{ PRODUCT }} Configuration {/*update-edgio-configuration*/}
+### Update {{ PRODUCT }} Configuration {/*update-configuration*/}
 
 Update `{{ CONFIG_FILE }}` at the root of your project to the following:
 
 ```js
-// This file was automatically added by {{ PRODUCT_NAME_LOWER }} deploy.
+// This file was automatically added by {{ FULL_CLI_NAME }} deploy.
 // You should commit this file to source control.
 module.exports = {
   connector: '{{ PACKAGE_NAME }}/express',
@@ -78,7 +80,7 @@ module.exports = {
 Update `routes.js` at the root of your project to the following:
 
 ```js
-// This file was added by {{ PRODUCT_NAME_LOWER }} init.
+// This file was added by {{ FULL_CLI_NAME }} init.
 // You should commit this file to source control.
 const ONE_HOUR = 60 * 60
 const ONE_DAY = 24 * ONE_HOUR
@@ -87,7 +89,7 @@ const { Router } = require('@{{ PACKAGE_NAME }}/core/router')
 
 module.exports = new Router()
   // Prevent search engine bot(s) from indexing
-  // Read more on: https://docs.layer0.co/guides/cookbook#blocking-search-engine-crawlers
+  // Read more on: {{ DOCS_URL }}/guides/cookbook#blocking-search-engine-crawlers
   .noIndexPermalink()
   .match('/', ({ cache }) => {
     cache({
@@ -124,7 +126,7 @@ module.exports = new Router()
 
 Refer to the [Routing](routing) guide for the full syntax of the `routes.js` file and how to configure it for your use case.
 
-### Run the Remix app locally on {{ PRODUCT }} {/*run-the-remix-app-locally-on-edgio*/}
+### Run the Remix app locally on {{ PRODUCT }} {/*run-the-remix-app-locally-on*/}
 
 Create a production build of your app by running the following in your project's root directory:
 
@@ -135,7 +137,7 @@ npm run build
 Run {{ PRODUCT }} on your local machine:
 
 ```bash
-{{ CLI_NAME }} run --production
+{{ FULL_CLI_NAME }} run --production
 ```
 
 Load the site http://127.0.0.1:3000
@@ -151,7 +153,7 @@ npm run build
 Deploy your app to the {{ PRODUCT_PLATFORM }} by running the following command in your project's root directory:
 
 ```bash
-{{ CLI_NAME }} deploy
+{{ FULL_CLI_NAME }} deploy
 ```
 
 Refer to the [Deploying](deploy_apps) guide for more information on the `deploy` command and its options.

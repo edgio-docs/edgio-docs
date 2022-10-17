@@ -45,7 +45,7 @@ The two general types of iterative site migrations are _gradual migrations_ and 
   2. As new pieces are ready, you do the same for them.
   3. When all pieces have been deployed you remove traffic from the legacy site. 
 
-# Migrating Sites - General Steps {/*migrating-sites---general-steps*/}
+# Migrating Sites - General Steps {/*migrating-sites-general-steps*/}
 
 ## Separate Sites {/*separate-sites*/}
 
@@ -77,7 +77,7 @@ If your sites consist of two separate servers use these steps to configure the d
 
 </Callout>
 
-Configure the backends in the {{ CONFIG_FILE }} file. (See [{{ CONFIG_FILE }}](layer0_config) for more information.). For example, to split traffic between a new experience hosted on `origin.my-site.com` and a legacy experience hosted on `legacy-origin.my-site.com`:
+Configure the backends in the {{ CONFIG_FILE }} file. (See [{{ CONFIG_FILE }}](edgio_config) for more information.). For example, to split traffic between a new experience hosted on `origin.my-site.com` and a legacy experience hosted on `legacy-origin.my-site.com`:
 
 ```js filename="{{ CONFIG_FILE }}"
 module.exports = {
@@ -97,7 +97,7 @@ module.exports = {
 Add a destination for each site or application version to your `routes.js` file. The destinations will appear in the {{ PRODUCT }} Developer Console and you will use them later on when configuring traffic splitting rules.
 
 ```js filename="routes.js"
-const { Router } = require('@layer0/core/router')
+const { Router } = require('{{ PACKAGE_NAME }}/core/router')
 module.exports = new Router()
   .destination(
     'legacy_experience', // displayed in the destination dropdown in the traffic splitting section of your environment configuration in the Edgio Developer Console
@@ -116,7 +116,7 @@ After deploying a router with multiple destinations, all requests will be sent t
 
 ## Step 3. Configure Traffic Splitting Rules in the {{ PRODUCT }} Developer Console {/*step-3-configure-traffic-splitting-rules-in-the-developer-console*/}
 
-1. [Log into your account](https://app.layer0.co/login/), then navigate to the environment in which you want to configure the iterative migration and click Edit:
+1. [Log into your account]({{ APP_URL }}/login/), then navigate to the environment in which you want to configure the iterative migration and click Edit:
 
 ![Edit Environment](/images/traffic-splitting/edit_env.png)
 

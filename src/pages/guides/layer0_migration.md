@@ -2,15 +2,15 @@
 title: {{ PRODUCT }} Version 4.x Migration Guide
 ---
 
-This guide describes what you need to know when migrating from {{ PRODUCT }} version 1.x/2.x/3.x to version 4.x. Note that while your site continues to function on a version previous to 4.x at this time, versions older than 4.x are deprecated and we urge you to upgrade to 4.x to avoid any interruptions. The biggest key change is that 4.x sites now run on our Limelight network.
+This guide describes what you need to know when migrating from {{ PRODUCT }} version 1.x/2.x/3.x to version 4.x. Note that while your site continues to function on a version previous to 4.x at this time, versions older than 4.x are deprecated and we urge you to upgrade to 4.x to avoid any interruptions. The biggest key change is that 4.x sites now run on our {{ PRODUCT }} network.
 
 ## Node Version {/*node-version*/}
 
-With {{ PRODUCT }} v4, your app will run in Node v{{ NODE_VERSION }} when deployed to the {{ PRODUCT_NAME }} cloud. Therefore we highly suggest using Node v{{ NODE_VERSION }} for all development. All previous versions of Node are not supported and may cause instability in your application.
+With {{ PRODUCT }} v4, your app will run in Node.js version 14.x when deployed to the {{ PRODUCT }} cloud. Therefore we highly suggest using Node.js version 14.x for all development. All previous versions of Node are not supported and may cause instability in your application.
 
-If you do not have Node.js installed on your system, download and install it from the official [Node.js v{{ NODE_VERSION }} downloads](https://nodejs.org/dist/latest-v{{ NODE_VERSION }}/) page. Select the download that matches your operating system and run the installer. Note that the installer for Node.js will also install npm.
+If you do not have Node.js installed on your system, download and install it from the official [Node.js v14.x downloads](https://nodejs.org/dist/latest-v14.x/) page. Select the download that matches your operating system and run the installer. Note that the installer for Node.js will also install npm.
 
-If you are currently on a version of Node < v{{ NODE_VERSION }}, we recommend using `nvm` ([Node Version Manager](https://github.com/nvm-sh/nvm)) to switch between your current version and our supported version. This will help test and resolve any issues you may face during migration before deploying your site live on {{ PRODUCT }}.
+If you are currently on a version of Node < v14.x, we recommend using `nvm` ([Node Version Manager](https://github.com/nvm-sh/nvm)) to switch between your current version and our supported version. This will help test and resolve any issues you may face during migration before deploying your site live on {{ PRODUCT }}.
 
 ## Upgrading Packages {/*upgrading-packages*/}
 
@@ -36,7 +36,7 @@ Once you deploy the new version of {{ PRODUCT }}, your Edge links will change to
 
 ## DNS will Need Updating for Custom Domains {/*dns-will-need-updating-for-custom-domains*/}
 
-If you have a custom domain pointing to {{ PRODUCT }}, you will need to update your A/CNAME record. To obtain the new network details, navigate to https://app.layer0.co and go to your site. Click the _Environments_ tab and choose the environment that has the custom domain. From there, click on the _Networking_ tab.
+If you have a custom domain pointing to {{ PRODUCT }}, you will need to update your A/CNAME record. To obtain the new network details, navigate to {{ APP_URL }} and go to your site. Click the _Environments_ tab and choose the environment that has the custom domain. From there, click on the _Networking_ tab.
 
 You will see two different DNS configurations. If you are using a sub-domain, you will need to update the CNAME record with the value provided. If you are using an apex domain, you will need to update the A records to match the Anycast IP addresses listed.
 
@@ -57,7 +57,7 @@ app.layer0.co
 
 ### Access Logs {/*access-logs*/}
 
-The `xdn` field in the access logs has been renamed to `layer0`: https://docs.layer0.co/guides/logs#section_access_logs
+The `xdn` field in the [access logs](logs#access-logs) has been renamed to `layer0`. 
 
 ### Response Headers {/*response-headers*/}
 
@@ -69,7 +69,7 @@ The prefixes of the cookies have changed from `xdn` to `layer0`. For example, `x
 
 ### REST API {/*rest-api*/}
 
-If you are using the REST API, it is recommended to update to the new endpoint, https://app.layer0.co/api/v1/.
+If you are using the REST API, it is recommended to update to the new endpoint, {{ APP_URL }}/api/v1/.
 
 ### Cache Manifest {/*cache-manifest*/}
 

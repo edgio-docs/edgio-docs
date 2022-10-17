@@ -32,11 +32,4 @@ jobs:
             ${{ runner.os }}-
       - run: yarn
       - name: Deploy to Edgio (prod)
-        run: yarn layer0:deploy --branch=$BRANCH_NAME --token=${{secrets.layer0_prod_deploy_token}} --environment=production
-      # - name: Crawl prod docs
-      #   run: |
-      #     docker run \
-      #     -e APPLICATION_ID=${{ secrets.ALGOLIA_APP_ID }} \
-      #     -e API_KEY=${{ secrets.ALGOLIA_API_KEY }} \
-      #     -e CONFIG="$(cat ./docs.config.json | jq -r tostring)" \
-      #     algolia/docsearch-scraper
+        run: yarn edgio:deploy --branch=$BRANCH_NAME --token=${{secrets.layer0_prod_deploy_token}} --environment=production

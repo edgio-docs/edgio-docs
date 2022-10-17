@@ -35,7 +35,7 @@ Here are a few examples of common static sites served by {{ PRODUCT }}.
 To prepare your static app for deployment on {{ PRODUCT }}, run the following command in your project's root directory:
 
 ```bash
-{{ CLI_NAME }} init
+{{ FULL_CLI_NAME }} init
 ```
 
 This will automatically add all of the required dependencies and files to your
@@ -113,7 +113,7 @@ module.exports = new Router()
 Deploy your app to the {{ PRODUCT_PLATFORM }} by running the following command in your project's root directory:
 
 ```bash
-{{ CLI_NAME }} deploy
+{{ FULL_CLI_NAME }} deploy
 ```
 
 For more on deploying, see [Deploying](/guides/deploy_apps).

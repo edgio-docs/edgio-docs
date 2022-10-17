@@ -1,17 +1,17 @@
 # Deploys main_v4 branch to v4 environment for docs.layer0.co (legacy)
-name: Deploy to production (docs.layer0.co)
+name: Deploy to production v4 (docs.layer0.co)
 on:
   push:
     branches:
       - main_v4
 jobs:
-  deploy-to-prod:
+  deploy:
     if: "!contains(github.event.repository.name, 'layer0-docs-internal')"
     runs-on: ubuntu-latest
     steps:
       - name: Extract branch name
         shell: bash
-        run: echo "BRANCH_NAME=$(echo ${GITHUB_REF#refs/heads/} | sed 's/\//_/g')" >> $GITHUB_ENV
+        run: echo "BRANCH_NAME=$(echo ${GITHUB_REF#refs/heads/} | sed 's/[^[:alnum:].-]/-/g')" >> $GITHUB_ENV
       - name: Cancel Previous Runs
         uses: styfle/cancel-workflow-action@0.9.1
         with:
@@ -32,5 +32,5 @@ jobs:
             ${{ runner.os }}-build-
             ${{ runner.os }}-
       - run: yarn
-      - name: Deploy to docs.layer0.co
+      - name: Deploy to docs.layer0.co (prod)
         run: yarn layer0:deploy --branch=$BRANCH_NAME --token=${{secrets.layer0_prod_deploy_token}} --environment=v4

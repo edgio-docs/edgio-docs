@@ -14,7 +14,7 @@ This guide covers how you can purge data from the {{ PRODUCT }} edge cache.
 
 ## Developer Console {/*developer-console*/}
 
-You can purge the cache via the [{{ PRODUCT }} Developer Console](https://app.layer0.co) by navigating to an environment, selecting the _Caching_ tab, and clicking _Purge the Cache_ under _Cache Purge History_:
+You can purge the cache via the [{{ PRODUCT }} Developer Console]({{ APP_URL }}) by navigating to an environment, selecting the _Caching_ tab, and clicking _Purge the Cache_ under _Cache Purge History_:
 
 ![purge_the_cache_button](/images/purging/purge_the_cache_button.png)
 
@@ -24,11 +24,11 @@ You can choose to purge all entries, purge by path, by surrogate keys or by cach
 
 ## CLI {/*cli*/}
 
-To purge responses via the CLI, see the [CLI reference](/guides/cli#section_cache_clear).
+To purge responses via the CLI, see the [CLI reference](/guides/cli#cache-clear).
 
 ## REST API {/*rest-api*/}
 
-To purge responses via the REST API, see the [REST API reference](/guides/rest_api#section_clear_cache).
+To purge responses via the REST API, see the [REST API reference](/guides/rest_api#clear-cache).
 
 ## Deployments {/*deployments*/}
 
@@ -40,9 +40,9 @@ __Caution:__ While preserving the cache between deployments can greatly reduce t
 
 ## Static prerendering after clearing the cache {/*static-prerendering-after-clearing-the-cache*/}
 
-If you have [static prerendering] enabled, the cache will automatically be repopulated when you clear all entries from the cache (such as when you select _Purge all entries_ in the {{ PRODUCT_NAME }} Developer Console or run `{{ CLI_NAME }} cache-clear` without providing `--path` or `--surrogate-key`). You can view the prerendering progress by clicking on the active deployment for the environment that was cleared.
+If you have [static prerendering] enabled, the cache will automatically be repopulated when you clear all entries from the cache (such as when you select _Purge all entries_ in the {{ PRODUCT_NAME }} Developer Console or run `{{ FULL_CLI_NAME }} cache-clear` without providing `--path` or `--surrogate-key`). You can view the prerendering progress by clicking on the active deployment for the environment that was cleared.
 
-## Surrogate Keys (Cache Tags) {/*surrogate-keys*/}
+## Surrogate Keys (Cache Tags) {/*surrogate-keys-cache-tags*/}
 
 Efficient cache purging is an essential part of keeping your website fast and reducing the load on your origin servers. Purging all entries from the cache all may increase your website's load time while the cache repopulates. If you purge all entries from the cache more than once a week, consider using surrogate keys for more targeted purging.
 
@@ -59,13 +59,13 @@ Content-Type: text/html
 In the example above you could purge this response from the cache using any of the surrogate keys. For example, to purge via the CLI:
 
 ```bash
-layer0 cache-clear --team=my-team --site=my-site --environment=production --surrogate-key=product.123
+{{ FULL_CLI_NAME }} cache-clear --team=my-team --site=my-site --environment=production --surrogate-key=product.123
 ```
 
 or
 
 ```bash
-layer0 cache-clear --team=my-team --site=my-site --environment=production --surrogate-key=shoes
+{{ FULL_CLI_NAME }} cache-clear --team=my-team --site=my-site --environment=production --surrogate-key=shoes
 ```
 
 ## Automated Purging {/*automated-purging*/}
@@ -81,11 +81,11 @@ These scripts assume that you have created environments called "production", "st
 ```js
   "scripts": {
     ...
-    "clearcache:dev": "{{ CLI_NAME }} cache-clear --team=myTeam --site=my{{ PRODUCT_NAME }}App --environment=development --token=${{ PRODUCT_NAME_LOWER }}_deploy_token",
-    "clearcache:stage": "{{ CLI_NAME }} cache-clear --team=myTeam --site=my{{ PRODUCT_NAME }}App --environment=staging --token=${{ PRODUCT_NAME_LOWER }}_deploy_token",
-    "clearcache:prod": "{{ CLI_NAME }} cache-clear --team=myTeam --site=my{{ PRODUCT_NAME }}App --environment=production --token=${{ PRODUCT_NAME_LOWER }}_deploy_token",
-    "clearcache:prod:pdps": "{{ CLI_NAME }} cache-clear --team=myTeam --site=my{{ PRODUCT_NAME }}App --environment=production --surrogate-key=pdp --token=${{ PRODUCT_NAME_LOWER }}_deploy_token",
-    "clearcache:prod:plps": "{{ CLI_NAME }} cache-clear --team=myTeam --site=my{{ PRODUCT_NAME }}App --environment=production --surrogate-key=plp --token=${{ PRODUCT_NAME_LOWER }}_deploy_token",
+    "clearcache:dev": "{{ FULL_CLI_NAME }} cache-clear --team=myTeam --site=my{{ PRODUCT_NAME }}App --environment=development --token=${{ PRODUCT_NAME_LOWER }}_deploy_token",
+    "clearcache:stage": "{{ FULL_CLI_NAME }} cache-clear --team=myTeam --site=my{{ PRODUCT_NAME }}App --environment=staging --token=${{ PRODUCT_NAME_LOWER }}_deploy_token",
+    "clearcache:prod": "{{ FULL_CLI_NAME }} cache-clear --team=myTeam --site=my{{ PRODUCT_NAME }}App --environment=production --token=${{ PRODUCT_NAME_LOWER }}_deploy_token",
+    "clearcache:prod:pdps": "{{ FULL_CLI_NAME }} cache-clear --team=myTeam --site=my{{ PRODUCT_NAME }}App --environment=production --surrogate-key=pdp --token=${{ PRODUCT_NAME_LOWER }}_deploy_token",
+    "clearcache:prod:plps": "{{ FULL_CLI_NAME }} cache-clear --team=myTeam --site=my{{ PRODUCT_NAME }}App --environment=production --surrogate-key=plp --token=${{ PRODUCT_NAME_LOWER }}_deploy_token",
     ...
   },
 ```

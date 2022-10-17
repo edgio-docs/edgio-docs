@@ -1,7 +1,7 @@
 const {DOCS_PAGES_DOMAIN} = require('./constants');
 
 module.exports = {
-  connector: '@layer0/next',
+  connector: '@edgio/next',
   backends: {
     api: {
       domainOrIp: DOCS_PAGES_DOMAIN,

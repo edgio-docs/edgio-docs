@@ -1,6 +1,6 @@
-import {isProductionBuild} from '@layer0/core/environment';
-import {Router, CustomCacheKey} from '@layer0/core/router';
-import {nextRoutes} from '@layer0/next';
+import {isProductionBuild} from '@edgio/core/environment';
+import {Router, CustomCacheKey} from '@edgio/core/router';
+import {nextRoutes} from '@edgio/next';
 import semverMaxSatisfying from 'semver/ranges/max-satisfying';
 
 import prerenderRequests from './prerender';
@@ -61,6 +61,7 @@ const scriptSrcDomains = [
 ].sort();
 
 const connectSrcDomains = [
+  '*.edg.io',
   '*.layer0.co',
   '*.layer0.link',
   '*.layer0-perma.link',
@@ -83,9 +84,12 @@ const connectSrcDomains = [
 ].sort();
 
 const router = new Router()
-  .prerender(prerenderRequests)
+  //  .prerender(prerenderRequests)
   .noIndexPermalink()
-  .match('/__xdn__/:path*', ({redirect}) => redirect('/__layer0__/:path*'))
+  // having no eid cookie will default to __xdn__
+  .match('/__xdn__/:path*', ({redirect}) => redirect('/__edgio__/:path*'))
+  // having layer0_eid cookie will point to __layer0__
+  .match('/__layer0__/:path*', ({redirect}) => redirect('/__edgio__/:path*'))
   .match({}, ({setResponseHeader, removeUpstreamResponseHeader}) => {
     if (isProductionBuild()) {
       setResponseHeader(
@@ -145,13 +149,29 @@ const router = new Router()
   .match('/docs/api/:path*', ({redirect}) => {
     redirect('/docs/api/:path*/');
   })
+  // match latest v4 api docs and redirect
+  .match('/docs/v4.x/:path*', ({cache, compute, redirect}) => {
+    cache(htmlCacheConfig);
+    compute(async () => {
+      // fetch the list of current published versions
+      const versions = await (
+        await fetch('https://docs.edg.io/docs/versions')
+      ).text();
+
+      const targetVersion = semverMaxSatisfying(
+        versions.replace(/\n/g, '').split(','),
+        'v4.x'
+      );
+      redirect(`/docs/${targetVersion}/:path*`);
+    });
+  })
   // match latest v3 api docs and redirect
   .match('/docs/v3.x/:path*', ({cache, compute, redirect}) => {
     cache(htmlCacheConfig);
     compute(async () => {
       // fetch the list of current published versions
       const versions = await (
-        await fetch('https://docs.layer0.co/docs/versions')
+        await fetch('https://docs.edg.io/docs/versions')
       ).text();
 
       const targetVersion = semverMaxSatisfying(

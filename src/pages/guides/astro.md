@@ -50,19 +50,19 @@ npm run build
 Initialize your project for use with {{ PRODUCT }} by running the following command in your project's root directory:
 
 ```bash
-{{ CLI_NAME }} init
+{{ FULL_CLI_NAME }} init
 ```
 
-## Update your {{ PRODUCT }} Router {/*update-your-edgio-router*/}
+## Update your {{ PRODUCT }} Router {/*update-your-router*/}
 
-Paste the following into `routes.js` or `routes.ts`, depending on the results of the `{{ CLI_NAME }} init` command:
+Paste the following into `routes.js` or `routes.ts`, depending on the results of the `{{ FULL_CLI_NAME }} init` command:
 
 ```js
-import { Router } from '@{{ PRODUCT_NAME_LOWER }}/core'
+import { Router } from '{{ PACKAGE_NAME }}/core'
 
 export default new Router()
   // Prevent search engine bot(s) from indexing
-  // Read more on: https://docs.layer0.co/guides/cookbook#blocking-search-engine-crawlers
+  // Read more on: {{ DOCS_URL }}/guides/cookbook#blocking-search-engine-crawlers
   .noIndexPermalink()
   .get('/:path*/:file.:ext(js|css|png|ico|jpg|gif|svg)', ({ cache, serveStatic }) => {
     cache({
@@ -97,7 +97,7 @@ You can remove the origin backend from `{{ CONFIG_FILE }}`:
 module.exports = {}
 ```
 
-## Deploy to {{ PRODUCT }} {/*deploy-to-edgio*/}
+## Deploy to {{ PRODUCT }} {/*deploy-to*/}
 
 Deploy your app to the {{ PRODUCT_PLATFORM }} by running the following commands in your project's root directory:
 
@@ -106,5 +106,5 @@ Deploy your app to the {{ PRODUCT_PLATFORM }} by running the following commands 
 npm run build
 
 # Deploy it to {{ PRODUCT }}
-{{ CLI_NAME }} deploy
+{{ FULL_CLI_NAME }} deploy
 ```

@@ -60,7 +60,9 @@ You can now verify that your app works by running it locally with:
 yarn run dev
 ```
 
-## Configuring your Swell app for {{ PRODUCT_NAME }} {/*configuring-your-swell-app-for-layer0*/}
+<a id="configuring-your-swell-app"></a>
+
+## Configuring your Swell app for {{ PRODUCT_NAME }} {/*configuring-your-swell-app-for*/}
 
 ### Modify nuxt.config.js {/*modify-nuxtconfigjs*/}
 
@@ -88,13 +90,13 @@ Options:
 
 ### Initialize your project {/*initialize-your-project*/}
 
-In the root directory of your project run `{{ CLI_NAME }} init`:
+In the root directory of your project run `{{ FULL_CLI_NAME }} init`:
 
 ```bash
-{{ CLI_NAME }} init
+{{ FULL_CLI_NAME }} init
 ```
 
-The `{{ CLI_NAME }} init` command will automatically add all the required dependencies and files to your project. These include:
+The `{{ FULL_CLI_NAME }} init` command will automatically add all the required dependencies and files to your project. These include:
 
 - The `{{ PACKAGE_NAME }}/core` package
 - The `{{ PACKAGE_NAME }}/nuxt` package
@@ -107,14 +109,16 @@ This command will also update your `package.json` with the following changes:
 
 - Moves all packages in `dependencies` to `devDependencies` except those listed in the `modules` property of `nuxt.config.js`.
 - Adds `@nuxt/core` to `dependencies`
-- Adds several `scripts` to run the available `{{{ CLI_NAME }}` commands
+- Adds several `scripts` to run the available `{{{ FULL_CLI_NAME }}` commands
 
-## Run Swell app locally on {{ PRODUCT }} {/*run-swell-app-locally-on-layer0*/}
+<a id="run-swell-app-locally-on-layer0"></a>
+
+## Run Swell app locally on {{ PRODUCT }} {/*run-swell-app-locally-on*/}
 
 Run the Swell app with the command:
 
 ```bash
-{{ CLI_NAME }} build && {{ CLI_NAME }} run --production
+{{ FULL_CLI_NAME }} build && {{ FULL_CLI_NAME }} run --production
 ```
 
 Load the site: http://127.0.0.1:3000
@@ -123,10 +127,10 @@ Setting --production runs your app exactly as it will be uploaded to the {{ PROD
 
 ## Deploying {/*deploying*/}
 
-Deploy the build to {{ PRODUCT_NAME }} by running the `{{ CLI_NAME }} deploy` command:
+Deploy the build to {{ PRODUCT_NAME }} by running the `{{ FULL_CLI_NAME }} deploy` command:
 
 ```bash
-{{ CLI_NAME }} deploy
+{{ FULL_CLI_NAME }} deploy
 ```
 
 Refer to the [Deploying](deploy_apps) guide for more information on the `deploy` command and its options.
@@ -154,13 +158,13 @@ Refer to the [Deploying](deploy_apps) guide for more information on the `deploy`
 ```diff
 'use strict'
 
-// This file was automatically added by layer0 deploy.
+// This file was automatically added by {{ FULL_CLI_NAME }} deploy.
 // You should commit this file to source control.
 
 module.exports = {
   backends: {},
   includeNodeModules: true,
-  connector: '@layer0/nuxt',
+  connector: '{{ PACKAGE_NAME }}/nuxt',
 + includeFiles: {
 +   config: true,
 +   modules: true,
@@ -173,15 +177,15 @@ module.exports = {
 3. Update the `routes.js` as following to enable ISG with your Swell app:
 
 ```js
-// This file was added by layer0 init.
+// This file was added by {{ FULL_CLI_NAME }} init.
 // You should commit this file to source control.
 
-const { Router } = require('@layer0/core/router')
-const { nuxtRoutes } = require('@layer0/nuxt')
+const { Router } = require('{{ PACKAGE_NAME }}/core/router')
+const { nuxtRoutes } = require('{{ PACKAGE_NAME }}/nuxt')
 
 module.exports = new Router()
   // Prevent search engine bot(s) from indexing
-  // Read more on: https://docs.layer0.co/guides/cookbook#blocking-search-engine-crawlers
+  // Read more on: {{ DOCS_URL }}/guides/cookbook#blocking-search-engine-crawlers
   .noIndexPermalink()
   .match('/service-worker.js', ({ serviceWorker }) => {
     serviceWorker('.nuxt/dist/client/service-worker.js')
@@ -204,5 +208,5 @@ module.exports = new Router()
 4. Deploy!
 
 ```bash
-{{ CLI_NAME }} deploy
+{{ FULL_CLI_NAME }} deploy
 ```

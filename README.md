@@ -31,4 +31,4 @@ Start the development server on http://localhost:3000:
 yarn dev
 ```
 
-See the [Contributing Guide](https://docs.layer0.co/guides/contributing#how-to-contribute) on how to contribute to the Edgio documentation.
+See the [Contributing Guide](https://docs.edg.io/guides/contributing#how-to-contribute) on how to contribute to the Edgio documentation.

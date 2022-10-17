@@ -6,7 +6,7 @@ This guide introduces the caching capabilities of {{ PRODUCT_NAME }}. While most
 
 ## Environments and Caching {/*environments-and-caching*/}
 
-To begin caching responses, you need to create an [environment](environments). Each environment provides a separate edge cache for the most recent deployment. Older deployments will no longer have edge caching, but can always be [redeployed](deploying#section_branches_and_deployments) to re-enable caching.
+To begin caching responses, you need to create an [environment](environments). Each environment provides a separate edge cache for the most recent deployment. Older deployments will no longer have edge caching, but can always be [redeployed](deploy_apps#branches-and-deployments) to re-enable caching.
 
 ## L1 and L2 Caches {/*l1-and-l2-caches*/}
 
@@ -61,12 +61,12 @@ The `cache` function can be used in the same route as other functions such as `s
 - Value of `accept-encoding` request header
 - Name of the destination when [split testing](./split_testing) is in effect
 
-When [POST and other non-GET/HEAD](#section_caching_responses_for_post_and_other_non_get_head_requests) methods caching is enabled, {{ PRODUCT_NAME }} automatically adds the following to the cache key:
+When [POST and other non-GET/HEAD](#caching-responses-for-post-and-other-non-gethead-requests) methods caching is enabled, {{ PRODUCT_NAME }} automatically adds the following to the cache key:
 
 - Request HTTP method
 - Request body
 
-To ensure that your site is resilient to [cache poisoning attacks](security#section_cache_poisoning), every request header that influences the rendering of the content must be included in your custom cache key.
+To ensure that your site is resilient to [cache poisoning attacks](security#cache-poisoning), every request header that influences the rendering of the content must be included in your custom cache key.
 
 #### Customizing the Cache Key {/*customizing-the-cache-key*/}
 
@@ -141,7 +141,7 @@ Customizing caching keys is a very powerful tool to make your site faster. At th
 
 ### Caching Responses for POST and other non-GET/HEAD Requests {/*caching-responses-for-post-and-other-non-gethead-requests*/}
 
-{{ PRODUCT_NAME }} only supports caching responses for `GET` and `HEAD` requests. Some APIs, particularly those implemented with GraphQL, use `POST` requests by default, with queries being sent through the request body. See [Prefetching - GraphQL](prefetching#section_graphql) for more information on caching GraphQL with {{ PRODUCT_NAME }}.
+{{ PRODUCT_NAME }} only supports caching responses for `GET` and `HEAD` requests. Some APIs, particularly those implemented with GraphQL, use `POST` requests by default, with queries being sent through the request body. See [Prefetching - GraphQL](prefetching#graphql) for more information on caching GraphQL with {{ PRODUCT_NAME }}.
 
 ### Caching Private Responses {/*caching-private-responses*/}
 
@@ -192,12 +192,12 @@ Cache-Control: max-age=1, stale-while-revalidate=59
 
 By default, {{ PRODUCT_NAME }} will cache responses that satisfy all of the following conditions:
 
-1. The response must correspond to a `GET` or `HEAD` request. To override this, see the [_POST and other non-GET/HEAD_](#section_caching_responses_for_post_and_other_non_get_head_requests) section.
+1. The response must correspond to a `GET` or `HEAD` request. To override this, see the [_POST and other non-GET/HEAD_](#caching-responses-for-post-and-other-non-gethead-requests) section.
 2. The response status must have a status code of 1xx, 2xx or 3xx. You cannot override this.
 3. The response must not not have any `set-cookie` headers. You cannot override this, but you can use `removeUpstreamResponseHeader('set-cookie')` to remove `set-cookie` headers.
-4. The response must have a valid `cache-control` header that includes a positive `max-age` or `s-maxage` and does not include a `private` clause. You can override this by using [router caching](#section_caching_a_response) and [forcing private responses](#section_caching_private_responses).
+4. The response must have a valid `cache-control` header that includes a positive `max-age` or `s-maxage` and does not include a `private` clause. You can override this by using [router caching](#caching-a-response) and [forcing private responses](#caching-private-responses).
 
-However, sometimes you may not want to cache anything, even if the upstream backend returns a `max-age`. Other times, you might want to [improve the performance](/guides/performance#section_turn_off_caching_when_not_needed) of pages that can never be cached at edge. In those cases, you can turn off caching:
+However, sometimes you may not want to cache anything, even if the upstream backend returns a `max-age`. Other times, you might want to [improve the performance](/guides/performance#turn-off-caching-when-not-needed) of pages that can never be cached at edge. In those cases, you can turn off caching:
 
 ```js
 router.get('/some/uncacheable/path', ({ cache, proxy }) => {
@@ -234,7 +234,7 @@ The response was cached or served from the cache (see `{{ HEADER_PREFIX }}-t`).
 
 ### disabled {/*disabled*/}
 
-The response was not cached because the edge caching was explicitly disabled (see [Preventing a Response from being Cached](#section_preventing_a_response_from_being_cached)).
+The response was not cached because the edge caching was explicitly disabled (see [Preventing a Response from being Cached](#preventing-a-response-from-being-cached)).
 
 ### no-max-age {/*no-max-age*/}
 
@@ -309,7 +309,7 @@ Disabling this, such as when the upstream resource is serving errors can help al
 By default, caching is turned off during development. This is done to ensure that developers don't see stale responses after making changes to their code or other upstream APIs. You can enable caching during development by running your app with:
 
 ```bash
-{{ CLI_NAME }} dev --cache
+{{ FULL_CLI_NAME }} dev --cache
 ```
 
 The cache will automatically be cleared when you make changes to your router. A few aspects of caching are not yet supported during local development:

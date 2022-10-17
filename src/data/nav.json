@@ -506,8 +506,8 @@
 				"path": "logs"
 			},
 			{
-				"title": "Deloy to Edgio Button",
-				"path": "deploy_to_layer0"
+				"title": "Deploy to Edgio Button",
+				"path": "deploy_to_edgio"
 			},
 			{
 				"title": "Layer0 Packages",

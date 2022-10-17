@@ -66,6 +66,12 @@ includeFiles: {
 },
 ```
 
+<Callout type="info">
+
+  Keys (globs) with value as false (`boolean`) will not remove the referenced resources from the build.
+
+</Callout>
+
 ## prerenderConcurrency {/*prerenderconcurrency*/}
 
 The maximum number of URLs that will be concurrently prerendered during deployment when [static prerendering](/guides/static_prerendering) is enabled. Defaults to 200, which is the maximum allowed value.

@@ -7,7 +7,7 @@ on:
       - '!main'
       - '!main_v4'
 jobs:
-  deploy-to-prod:
+  deploy:
     if: "!contains(github.event.repository.name, 'layer0-docs-internal')"
     runs-on: ubuntu-latest
     steps:
@@ -34,5 +34,5 @@ jobs:
             ${{ runner.os }}-build-
             ${{ runner.os }}-
       - run: yarn
-      - name: Deploy to docs.layer0.co
+      - name: Deploy to docs.layer0.co (stage)
         run: yarn layer0:deploy --branch=$BRANCH_NAME --token=${{secrets.layer0_prod_deploy_token}} --environment=stage_v4

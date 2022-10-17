@@ -20,12 +20,16 @@ Install the Vue Storefront application using this guide: https://docs.vuestorefr
 nvm use 14
 ```
 
-## 2. Prepare VSF files for {{ PRODUCT_NAME }} {/*2-prepare-vsf-files-for-layer0*/}
+<a id="2-prepare-vsf-files-for-layer0"></a>
+
+## 2. Prepare VSF files for {{ PRODUCT_NAME }} {/*2-prepare-vsf-files-for*/}
 
 - In the new VSF project, go to `src/themes/default` (or any theme you're using) and remove `.git` folder from it to save that in Git VCS.
 - Go to `.gitignore` file and remove `config/local.json` line to keep it tracked.
 
-## 3. Install {{ PRODUCT_NAME }} {/*3-install-layer0*/}
+<a id="3-install-layer0"></a>
+
+## 3. Install {{ PRODUCT_NAME }} {/*3-install*/}
 
 - Install {{ PRODUCT_NAME }} packages: `yarn add -D -W {{ PACKAGE_NAME }}/cli && yarn add -W {{ PACKAGE_NAME }}/core {{ PACKAGE_NAME }}/prefetch {{ PACKAGE_NAME }}/devtools`
 - Create a file called `{{ CONFIG_FILE }}` in the root directory of your project and configure your origin and images hosts as backends. For example:
@@ -305,7 +309,7 @@ const pages = [
 ]
 
 // Prevent search engine bot(s) from indexing
-// Read more on: https://docs.layer0.co/guides/cookbook#blocking-search-engine-crawlers
+// Read more on: {{ DOCS_URL }}/guides/cookbook#blocking-search-engine-crawlers
 router.noIndexPermalink()
 
 // static prerendering
@@ -640,11 +644,11 @@ export default {
 ...
 "{{ PRODUCT_NAME_LOWER }}:build:server": "cross-env NODE_ENV=production TS_NODE_PROJECT=\"tsconfig-build.json\" webpack --config ./core/build/webpack.{{ PRODUCT_NAME_LOWER }}.config.ts --mode production --hide-modules",
 "{{ PRODUCT_NAME_LOWER }}:build:assets": "ncp ./src/themes/default/assets ./dist-{{ PRODUCT_NAME_LOWER }}-assets",
-"{{ PRODUCT_NAME_LOWER }}:build:client": "cross-env NODE_ENV=production webpack --progress --config {{ PRODUCT_NAME_LOWER }}/webpack.{{ PRODUCT_NAME_LOWER }}.client.config.js && {{ CLI_NAME }} build",
+"{{ PRODUCT_NAME_LOWER }}:build:client": "cross-env NODE_ENV=production webpack --progress --config {{ PRODUCT_NAME_LOWER }}/webpack.{{ PRODUCT_NAME_LOWER }}.client.config.js && {{ FULL_CLI_NAME }} build",
 "{{ PRODUCT_NAME_LOWER }}:build": "yarn {{ PRODUCT_NAME_LOWER }}:build:server && yarn {{ PRODUCT_NAME_LOWER }}:build:assets && yarn {{ PRODUCT_NAME_LOWER }}:build:client",
 "{{ PRODUCT_NAME_LOWER }}:clean": "rimraf dist-{{ PRODUCT_NAME_LOWER }}-assets && rimraf dist-{{ PRODUCT_NAME_LOWER }}-client && rimraf dist-{{ PRODUCT_NAME_LOWER }}-server && rimraf .{{ PRODUCT_NAME_LOWER }}",
-"{{ PRODUCT_NAME_LOWER }}:start:prod": "{{ CLI_NAME }} run --production",
-"{{ PRODUCT_NAME_LOWER }}:deploy": "{{ CLI_NAME }} deploy --team=my-team --skip-build",
+"{{ PRODUCT_NAME_LOWER }}:start:prod": "{{ FULL_CLI_NAME }} run --production",
+"{{ PRODUCT_NAME_LOWER }}:deploy": "{{ FULL_CLI_NAME }} deploy --team=my-team --skip-build",
 ...
 ```
 

@@ -4,7 +4,7 @@ title: Response Headers
 
 This guide describes the headers that {{ PRODUCT_NAME }} injects into responses, making them visible to your client code. Note that the `{{ HEADER_PREFIX }}-*` headers namespace is reserved for {{ PRODUCT_NAME }} internal use and setting them yourself, except where so noted, is unsupported. See [Prohibited Headers](limits#prohibited-headers) for more information.
 
-## Reserved Response Headers {/*general-headers*/}
+## Reserved Response Headers {/*reserved-response-headers*/}
 
 -   `{{ HEADER_PREFIX }}-caching-status`: Indicates cache status information. If the response was not cached or served from cache, then it will report the reason why it was not cached. 
 
@@ -28,7 +28,7 @@ This guide describes the headers that {{ PRODUCT_NAME }} injects into responses,
 -   [{{ HEADER_PREFIX }}-t](#x-0-t-response-header): Contains time measurements for each {{ PRODUCT }} component through which a request was routed. It also provides cache status information for edge and global POPs. 
 -   [{{ HEADER_PREFIX }}-version](#x-0-version-response-header): Describes the {{ PRODUCT }} deployment.
 
-### {{ HEADER_PREFIX }}-status Response Header {/*x-0-status-response-header*/}
+### {{ HEADER_PREFIX }}-status Response Header {/*-status-response-header*/}
 
 The `{{ HEADER_PREFIX }}-status` response header contains an HTTP status code for each POP component that processed the request. This comma-delimited list is presented sequentially according to the order in which POP components processed the request. 
 
@@ -49,7 +49,7 @@ The following sample response header indicates that the following POP components
 
 `{{ HEADER_PREFIX }}-status: eh=200,ed=200,gh=200,gd=200,p=200,w=200` <a id="structure-of--header_prefix--t"></a>
 
-### {{ HEADER_PREFIX }}-t Response Header {/*x-0-t-response-header*/}
+### {{ HEADER_PREFIX }}-t Response Header {/*-t-response-header*/}
 
 The `{{ HEADER_PREFIX }}-t` response header contains time measurements for each {{ PRODUCT }} POP component through which a request was routed. It also provides cache status information for edge and global POPs. This data is presented sequentially according to the order in which POP components processed the request. 
 
@@ -164,7 +164,7 @@ Most metrics follow the above convention. However, there are some metrics that u
     -   **transformResponse:** If the route uses `transformResponse`, then this metric measures the `transformResponse` time in milliseconds.
     -   **Image Optimization:** If the route contains an image optimization tag, such as Next [Image](https://nextjs.org/docs/api-reference/next/image) or Nuxt [nuxt-img](https://image.nuxtjs.org/components/nuxt-img/),  instead of `transformResponse`, then this metric measures processing time in milliseconds.
 
-#### Sample {{ HEADER_PREFIX }}-t Response Headers {/*sample-x-0-t-response-header*/}
+#### Sample {{ HEADER_PREFIX }}-t Response Headers {/*sample-t-response-headers*/}
 
 Sample response headers for both standard traffic and Serverless Compute are explained below.
 
@@ -224,7 +224,7 @@ We will now examine each metric defined within the above sample response header:
 | `wa=1`     | Indicates the `transformRequest` time as measured by a Serverless Compute (Lambda worker) was 1 millisecond. |
 | `wz=1`     | Indicates either a `transformResponse` time or processing time in milliseconds. [Learn more.](#wz)
 
-### {{ HEADER_PREFIX }}-Version Response Header {/*x-0-version-response-header*/}
+### {{ HEADER_PREFIX }}-version Response Header {/*-version-response-header*/}
 
 The `{{ HEADER_PREFIX }}-version` response header describes the latest {{ PRODUCT }} deployment using the following syntax:
 
@@ -244,18 +244,18 @@ Definitions for the above variables are provided below.
 
 `x-0-version: 23 4.17.1 3 2022-09-15T12:54:14.721Z 1.5.0`
 
-## Server Timing Response Header {/*server-timing*/}
+## Server Timing Response Header {/*server-timing-response-header*/}
 
 {{ PRODUCT }} adds the following values to the standard [server-timing](https://www.w3.org/TR/server-timing/) response header:
 
--   `layer0-cache: <Cache Status>`: Valid cache statuses are: 
+-   `{{ PRODUCT_NAME_LOWER }}-cache: <Cache Status>`: Valid cache statuses are: 
     - `HIT-L1`: Indicates that the request was served from an edge POP's cache.
     - `HIT-L2`: Indicates that the request was served from a global POP's cache.
     - `MISS`: Indicates that the request was not served from cache.
 -   `country: <Country Code>`: Indicates the two-letter code for the country from which the request was sent.
 -   `xrj: <Route>`: Indicates the route that {{ PRODUCT }} mapped to the request. This route is serialized into JSON.
 
-## Serverless Compute - Cold Start Timing {/*serverless-timing*/}
+## Serverless Compute - Cold Start Timing {/*serverless-compute-cold-start-timing*/}
 
 To calculate the Serverless cold start timing you must take the difference between `pf` and `wt` in the `{{ HEADER_PREFIX }}-t` header. `wt` is time taken for the lambda to execute after it has started, this is can be read as the time is takes the project code to execute. If that seems large, evaluate the code within your project to see why this might be. To [track timings](/guides/performance#tracking-your-own-timings) for a function, it is possible to add specific code to do that. 
 

@@ -84,7 +84,7 @@ GraphQL also supports programmer-defined objects, usually data resources.
 
 Schemas define your application’s resources, the relationships between resources, and the operations that are allowed on the resources. Resources and operations are types. Schemas are also used to validate queries and mutations on your data. If the query or mutation structure matches the schema, the operation is executed.
 
-For example, in an app where you maintain customers, you would have a `Customer` type and query operation types such as `getAllCustomers`and `getCustomerById`. You would also have mutation types like `createCustomer` and `deleteCustomer`. Operation types are somewhat like function prototypes; they simply define input and output. The function implementations are defined in [Resolvers](##Resolvers).
+For example, in an app where you maintain customers, you would have a `Customer` type and query operation types such as `getAllCustomers`and `getCustomerById`. You would also have mutation types like `createCustomer` and `deleteCustomer`. Operation types are somewhat like function prototypes; they simply define input and output. The function implementations are defined in [Resolvers](#resolvers).
 
 ## Resolvers {/*resolvers*/}
 

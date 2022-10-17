@@ -36,12 +36,12 @@ yarn rw setup deploy {{ FULL_CLI_NAME }}
 
 This will verify that the {{ PRODUCT }} CLI is setup on your system and initialize the application accordingly.
 
-### Using the {{ PRODUCT }} CLI {/*using-the-edgio-cli*/}
+### Using the {{ PRODUCT }} CLI {/*using-the-cli*/}
 
 For preparing using the {{ PRODUCT }} CLI, run:
 
 ```bash
-{{ CLI_NAME }} init
+{{ FULL_CLI_NAME }} init
 ```
 
 This will automatically add all of the required dependencies and files to your project. These include:
@@ -56,7 +56,7 @@ This will automatically add all of the required dependencies and files to your p
 Test your app with the {{ PRODUCT_PLATFORM }} on your local machine by running the following command in your project's root directory:
 
 ```bash
-{{ CLI_NAME }} dev
+{{ FULL_CLI_NAME }} dev
 ```
 
 ### Simulate edge caching locally {/*simulate-edge-caching-locally*/}
@@ -64,7 +64,7 @@ Test your app with the {{ PRODUCT_PLATFORM }} on your local machine by running t
 To simulate edge caching locally, run:
 
 ```bash
-{{ CLI_NAME }} dev --cache
+{{ FULL_CLI_NAME }} dev --cache
 ```
 
 ## Deploying {/*deploying*/}
@@ -78,7 +78,7 @@ yarn rw deploy {{ FULL_CLI_NAME }}
 You can also deploy using the {{ PRODUCT }} CLI with:
 
 ```bash
-{{ CLI_NAME }} deploy
+{{ FULL_CLI_NAME }} deploy
 ```
 
 The deploy command for RedwoodJS takes the same deploy arguments as using {{ PRODUCT }} to deploy. You can see all the available options using `yarn rw deploy {{ FULL_CLI_NAME }} --help`

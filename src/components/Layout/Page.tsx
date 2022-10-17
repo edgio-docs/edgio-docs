@@ -73,9 +73,9 @@ const StyledBanner = styled.a`
 
 function Banner() {
   return (
-    <StyledBanner href="/">
-      You are currently viewing old Edgio documentation. Click here to visit the
-      latest Edgio v5
+    <StyledBanner href="https://docs.edg.io">
+      You are currently viewing Edgio version 4 documentation. Click here to
+      view our latest documentation.
     </StyledBanner>
   );
 }

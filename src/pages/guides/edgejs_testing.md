@@ -31,7 +31,7 @@ At the top of each unit test, import the following:
 import routes from '../routes'
 
 // router helper functions
-import { runRoute, appHost, backendHost, staticHost } from '@layer0/core/test-utils'
+import { runRoute, appHost, backendHost, staticHost } from '{{ PACKAGE_NAME }}/core/test-utils'
 
 // http mocking library
 import nock from 'nock'
@@ -39,7 +39,7 @@ import nock from 'nock'
 
 ### Assertions {/*assertions*/}
 
-By default, importing `@layer0/core/test-utils` will automatically add the following assertions to Jest's `expect` function:
+By default, importing `{{ PACKAGE_NAME }}/core/test-utils` will automatically add the following assertions to Jest's `expect` function:
 
 - `toHaveHeader(name, [value])`
 - `toHaveBody(string|RegExp)`
@@ -54,10 +54,10 @@ By default, importing `@layer0/core/test-utils` will automatically add the follo
 
 ### Route Testing {/*route-testing*/}
 
-To test a specific route handler, import `runRoute` from `@layer0/core/testing-utils`. This function accepts your router instance, and the path of the route to run.
+To test a specific route handler, import `runRoute` from `{{ PACKAGE_NAME }}/core/testing-utils`. This function accepts your router instance, and the path of the route to run.
 
 ```js
-import { runRoute } from '@layer0/core/test-utils'
+import { runRoute } from '{{ PACKAGE_NAME }}/core/test-utils'
 import router from '../src/routes'
 
 ...
@@ -76,7 +76,7 @@ it('should run the /foo route', () => {
 For extended route testing, you can import `createRouteMock` to set the `path`, `method`, `headers`, or `body` of the request:
 
 ```js
-import { runRoute, createRouteMock } from '@layer0/core/test-utils'
+import { runRoute, createRouteMock } from '{{ PACKAGE_NAME }}/core/test-utils'
 import router from '../src/routes'
 
 ...
@@ -98,7 +98,7 @@ it('should run the /search route', () => {
 
 ### Host Mocking {/*host-mocking*/}
 
-If the route being tested has an upstream request or serves a static file, you will want to mock these requests and responses. This decouples your unit tests from your upstream and application logic, focusing just on how the router responds to the given request. For this, we use `nock` along with `appHost`, `backendHost`, and `staticHost` imported from `@layer0/core/testing-utils`.
+If the route being tested has an upstream request or serves a static file, you will want to mock these requests and responses. This decouples your unit tests from your upstream and application logic, focusing just on how the router responds to the given request. For this, we use `nock` along with `appHost`, `backendHost`, and `staticHost` imported from `{{ PACKAGE_NAME }}/core/testing-utils`.
 
 These functions reference the backend entries defined in your `{{ CONFIG_FILE }}` file.
 

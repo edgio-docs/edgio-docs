@@ -36,7 +36,7 @@ To prepare your Frontity app for deployment on {{ PRODUCT_NAME }}, run the follo
 
 ```bash
 npm i -g {{ PACKAGE_NAME }}/cli # yarn global add {{ PACKAGE_NAME }}/cli
-{{ CLI_NAME }} init
+{{ FULL_CLI_NAME }} init
 ```
 
 This will automatically add all of the required dependencies and files to your project. These include:
@@ -49,7 +49,9 @@ This will automatically add all of the required dependencies and files to your p
 - `sw/service-worker.js` - The source code for your service worker, which enables prefetching when running on {{ PRODUCT_NAME }}.
 - `{{ CONFIG_FILE }}` - Contains configuration options for deploying on {{ PRODUCT_NAME }}.
 
-## Adding the {{ PRODUCT_NAME }} Service Worker {/*adding-the-layer0-service-worker*/}
+<a id="adding-the-service-worker"></a>
+
+## Adding the {{ PRODUCT_NAME }} Service Worker {/*adding-the-service-worker*/}
 
 To add the {{ PRODUCT_NAME }} service worker to your app, call the `install` function from `{{ PACKAGE_NAME }}/prefetch/window` in a `useEffect` hook when the app first loads. For example, you can alter
 the Header component in your theme as follows:
@@ -92,7 +94,7 @@ function MyComponent() {
 Test your app with the {{ PRODUCT_PLATFORM }} on your local machine by running the following command in your project's root directory:
 
 ```bash
-{{ CLI_NAME }} dev
+{{ FULL_CLI_NAME }} dev
 ```
 
 ### Simulate edge caching locally {/*simulate-edge-caching-locally*/}
@@ -100,7 +102,7 @@ Test your app with the {{ PRODUCT_PLATFORM }} on your local machine by running t
 To simulate edge caching locally, run:
 
 ```bash
-{{ CLI_NAME }} dev --cache
+{{ FULL_CLI_NAME }} dev --cache
 ```
 
 ## Deploying {/*deploying*/}
@@ -108,7 +110,7 @@ To simulate edge caching locally, run:
 Deploy your app to the {{ PRODUCT_PLATFORM }} by running the following command in your project's root directory:
 
 ```bash
-{{ CLI_NAME }} deploy
+{{ FULL_CLI_NAME }} deploy
 ```
 
 See [deploying](deploy_apps) for more information.

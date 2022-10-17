@@ -10,11 +10,11 @@ Creating custom domains is always done in the context of creating or updating an
 
 1. If needed, create an environment using instructions in  [Environments](./environments).
 
-2. Create the [Custom Domain](#section_domains).
+2. Create the [Custom Domain](#custom-domains).
 
-2. Do [Network Configuration](#section_network_configuration) (DNS and the IP allow list) for the domain.
+2. Do [Network Configuration](#network-configuration) (DNS and the IP allow list) for the domain.
 
-2. Configure [TLS/SSL](#section_tls_ssl) for the domain.
+2. Configure [TLS/SSL](#tlsssl) for the domain.
 
 ## Custom Domains {/*custom-domains*/}
 
@@ -52,7 +52,7 @@ To configure your custom domains:
 
 If you're migrating to {{ PRODUCT_NAME }} from [Fastly](https://www.fastly.com/), you will need to do the following before adding your domains to your {{ PRODUCT_NAME }} environment:
 
-- Contact [Fastly support](https://support.fastly.com/hc/en-us/requests/new?ticket_form_id=360000269711) and request that control of your domains be transferred to {{ PRODUCT_NAME }}. Be sure to explicitly list each domain that needs to be transferred and ask Fastly to contact support(at){{ DOMAIN }} if they need {{ PRODUCT_NAME }} to confirm the transfer.
+- Contact [Fastly support](https://support.fastly.com/hc/en-us/requests/new?ticket_form_id=360000269711) and request that control of your domains be transferred to {{ PRODUCT_NAME }}. Be sure to explicitly list each domain that needs to be transferred and ask Fastly to contact `support@{{ DOMAIN }}` if they need {{ PRODUCT_NAME }} to confirm the transfer.
 - Before going live with {{ PRODUCT_NAME }}, you will need to ensure that you've removed your domains from all active Fastly services. To remove domains from a service, clone the service, remove the domains, then activate the new version of the service. Once the new service version is activated you can add the domains to your {{ PRODUCT_NAME }} environment and activate it.
 
 ## Network Configuration {/*network-configuration*/}
@@ -117,7 +117,7 @@ mywebsite.xyz.        599    IN    A        208.69.180.14
    mywebsite.xyz.        599    IN    A        208.69.180.14
    ```
 
-### Allowing {{ PRODUCT_NAME }} IP Addresses {/*allowing-layer0-ip-addresses*/}
+### Allowing {{ PRODUCT_NAME }} IP Addresses {/*allowing-ip-addresses*/}
 
 Before going live, ensure that all {{ PRODUCT_NAME }} IP addresses are allowed in the security layer in front of your origin and/or API servers. The IP addresses you need to allow can be found on the _Allowlisting_ section of the _Networking_ tab of the _Environment_ page. Note that each team may have their own set of IPs so these values cannot be copied from one team to another.
 
@@ -129,7 +129,7 @@ All data transmitted to and from your {{ PRODUCT_NAME }} site must be secured wi
 
 <Callout type="info">
 
-   If you already have an existing certificate, you can use it by skipping ahead to <a href="#section_uploading_your_certificate">Uploading your Certificate</a>. Many customers who have existing certificates still choose to obtain a new one when adopting {{ PRODUCT_NAME }} so as not to reuse the same private key with more than one vendor/system.
+   If you already have an existing certificate, you can use it by skipping ahead to the [Uploading your Certificate section](#uploading-your-certificate). Many customers who have existing certificates still choose to obtain a new one when adopting {{ PRODUCT_NAME }} so as not to reuse the same private key with more than one vendor/system.
 
 </Callout>
 
@@ -137,7 +137,7 @@ All data transmitted to and from your {{ PRODUCT_NAME }} site must be secured wi
 
 {{ PRODUCT_NAME }} can generate SSL Certificates on your behalf using [_Let's Encrypt_](https://letsencrypt.org/). Certificates are free, valid for 3 months, and automatically renewed as long as the technical requirements, shown below, remain met:
 
-1. Make sure each environment is configured with the custom domains on which it will receive traffic. For more information on configuring custom domains, see [Custom Domains](#section_domains) above.
+1. Make sure each environment is configured with the custom domains on which it will receive traffic. For more information on configuring custom domains, see [Custom Domains](#custom-domains) above.
 2. Using your DNS provider, verify and possibly add a `CAA` record to allow _Let's Encrypt_ to generate certificates for your domains.
 
    - The CAA DNS entries of a domain behave like an allow list to indicate whether **any** or only **certain** Certificate Authorities are allowed to generate certificates for that domain.
@@ -337,7 +337,7 @@ To create CSR and private key do the following:
    - On Windows you can install it by using [`Chocolatey`](https://chocolatey.org/) package manager (e.g. `choco install openssl`)
    - On Linux/Unix you can install it by running the built-in OS package manager (e.g. `apt-get install openssl`, `apk add openssl` and so on)
 
-2. Go to the directory of your choice and create a configuration file `layer0.conf` based on this template:
+2. Go to the directory of your choice and create a configuration file `{{ PRODUCT_NAME_LOWER }}.conf` based on this template:
 
    ```
    [req]

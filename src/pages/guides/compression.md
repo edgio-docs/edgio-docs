@@ -6,21 +6,25 @@ This guide covers the {{ PRODUCT_NAME }} response compression support.
 
 ## Accept-Encoding {/*accept-encoding*/}
 
-When requesting data via HTTP from the {{ PRODUCT_NAME }} servers, browsers include the `accept-encoding` header to indicate which data compression formats the browser supports. Modern browsers accept multiple compression formats, [Accept-Encoding Header Details are here.](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Accept-Encoding) This header is required by {{ PRODUCT_NAME }} to trigger compression of responses.
+When requesting data via HTTP from the {{ PRODUCT_NAME }} servers, browsers include the `accept-encoding` header to indicate which data compression formats the browser supports. Modern browsers accept multiple compression formats, [Accept-Encoding Header Details are here.](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Accept-Encoding) This header is required by {{ PRODUCT_NAME }} to trigger compression of responses. 
 
-## {{ PRODUCT_NAME }} supports {/*layer0-supports*/}
+<a id="supports"></a>
+
+## Compression Support {/*compression-support*/}
+
+{{ PRODUCT }} supports:
 
 * `gzip` for all versions
 * `br` (Brotli) for versions >= `4.11.0`
 
-### Gzip compression support {/*gzip-support*/}
+### Gzip compression support {/*gzip-compression-support*/}
 
 Gzip is supported in the following ways:
 
 * Pass-through of upstream Gzip responses if the browser accepts Gzip.
 * Encoding of upstream non-encoded responses if the browsers accepts Gzip or Gzip and Brotli.
 
-### Brotli compression support {/*brotli-support*/}
+### Brotli compression support {/*brotli-compression-support*/}
 
 Brotli is supported in the following ways:
 
@@ -29,7 +33,7 @@ Brotli is supported in the following ways:
 
 ### Enabling Brotli compression {/*enabling-brotli-compression*/}
 
-To enable Brotli (`br`) compression you need to ensure your project uses a version of `{{ PACKAGE_NAME }}` >= `4.11.0`. To upgrade `{{ PACKAGE_NAME }}` to the latest version in your project use `{{ CLI_NAME }} use latest` and redeploy your project.
+To enable Brotli (`br`) compression you need to ensure your project uses a version of `{{ PACKAGE_NAME }}` >= `4.11.0`. To upgrade `{{ PACKAGE_NAME }}` to the latest version in your project use `{{ FULL_CLI_NAME }} use latest` and redeploy your project.
 
 ## What is Compressed? {/*what-is-compressed*/}
 

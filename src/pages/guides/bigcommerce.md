@@ -43,7 +43,7 @@ cd site
 2. Run {{ PRODUCT }} `init` in the project directory:
 
 ```bash
-{{ CLI_NAME }} init
+{{ FULL_CLI_NAME }} init
 ```
 
 ### Update the Example or Generated Project for use with BigCommerce {/*update-the-example-or-generated-project-for-use-with-bigcommerce*/}
@@ -91,7 +91,7 @@ BIGCOMMERCE_STORE_API_CLIENT_SECRET=${CLIENT_SECRET}
 From within the `site` directory, run
 
 ```bash
-{{ CLI_NAME }} deploy
+{{ FULL_CLI_NAME }} deploy
 ```
 
 ## BigCommerce Storefront Setup {/*bigcommerce-storefront-setup*/}

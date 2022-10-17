@@ -1,16 +1,16 @@
-name: Deploy to production
+name: Deploy to production (docs.edg.io)
 on:
   push:
     branches:
       - main
 jobs:
-  deploy-to-prod:
+  deploy:
     if: "!contains(github.event.repository.name, 'layer0-docs-internal')"
     runs-on: ubuntu-latest
     steps:
       - name: Extract branch name
         shell: bash
-        run: echo "BRANCH_NAME=$(echo ${GITHUB_REF#refs/heads/} | sed 's/\//_/g')" >> $GITHUB_ENV
+        run: echo "BRANCH_NAME=$(echo ${GITHUB_REF#refs/heads/} | sed 's/[^[:alnum:].-]/-/g')" >> $GITHUB_ENV
       - name: Cancel Previous Runs
         uses: styfle/cancel-workflow-action@0.9.1
         with:
@@ -31,12 +31,5 @@ jobs:
             ${{ runner.os }}-build-
             ${{ runner.os }}-
       - run: yarn
-      - name: Deploy to Edgio (prod)
-        run: yarn layer0:deploy --branch=$BRANCH_NAME --token=${{secrets.layer0_prod_deploy_token}} --environment=production
-      # - name: Crawl prod docs
-      #   run: |
-      #     docker run \
-      #     -e APPLICATION_ID=${{ secrets.ALGOLIA_APP_ID }} \
-      #     -e API_KEY=${{ secrets.ALGOLIA_API_KEY }} \
-      #     -e CONFIG="$(cat ./docs.config.json | jq -r tostring)" \
-      #     algolia/docsearch-scraper
+      - name: Deploy to docs.edg.io (prod)
+        run: yarn edgio:deploy --branch=$BRANCH_NAME --token=${{secrets.layer0_prod_deploy_token}} --environment=production

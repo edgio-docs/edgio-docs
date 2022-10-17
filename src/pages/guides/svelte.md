@@ -30,14 +30,14 @@ You can verify your app works by running it locally with:
 npm run dev
 ```
 
-## Configuring your Svelte app for {{ PRODUCT }} {/*configuring-your-svelte-app-for-edgio*/}
+## Configuring your Svelte app for {{ PRODUCT }} {/*configuring-your-svelte-app-for*/}
 
 ### Initialize your project {/*initialize-your-project*/}
 
-In the root directory of your project run `{{ CLI_NAME }} init`:
+In the root directory of your project run `{{ FULL_CLI_NAME }} init`:
 
 ```bash
-{{ CLI_NAME }} init
+{{ FULL_CLI_NAME }} init
 ```
 
 This will automatically update your `package.json` and add all of the required {{ PRODUCT }} dependencies and files to your project. These include:
@@ -47,7 +47,7 @@ This will automatically update your `package.json` and add all of the required {
 - `{{ CONFIG_FILE }}` - A configuration file for {{ PRODUCT }}
 - `routes.js` - A default routes file that sends all requests to Svelte.
 
-### Adding {{ PRODUCT }} Service Worker {/*adding-edgio-service-worker*/}
+### Adding {{ PRODUCT }} Service Worker {/*adding-service-worker*/}
 
 To add service worker to your Svelte app, run the following in the root folder of your project:
 
@@ -60,7 +60,7 @@ Create `service-worker.js` at the root of your project with the following:
 ```js
 import { skipWaiting, clientsClaim } from 'workbox-core'
 import { precacheAndRoute } from 'workbox-precaching'
-import { Prefetcher } from '@{{ PRODUCT_NAME_LOWER }}/prefetch/sw'
+import { Prefetcher } from '{{ PACKAGE_NAME }}/prefetch/sw'
 
 skipWaiting()
 clientsClaim()
@@ -142,14 +142,14 @@ Now, in `webpack.config.js` make the following additions:
 ### Configure the routes {/*configure-the-routes*/}
 
 Next you'll need to configure {{ PRODUCT }} routing in the `routes.js` file.
-Replace the `routes.js` file that was created during `{{ CLI_NAME }} init` with the following:
+Replace the `routes.js` file that was created during `{{ FULL_CLI_NAME }} init` with the following:
 
 ```js
 const { Router } = require('{{ PACKAGE_NAME }}/core/router')
 
 module.exports = new Router()
   // Prevent search engine bot(s) from indexing
-  // Read more on: https://docs.layer0.co/guides/cookbook#blocking-search-engine-crawlers
+  // Read more on: {{ DOCS_URL }}/guides/cookbook#blocking-search-engine-crawlers
   .noIndexPermalink()
   
   // Send requests to static assets in the build output folder `public`
@@ -165,7 +165,7 @@ The example above assumes you're using Svelte as a single page app. It routes th
 
 Refer to the [Routing](routing) guide for the full syntax of the `routes.js` file and how to configure it for your use case.
 
-### Run the Svelte app locally on {{ PRODUCT }} {/*run-the-svelte-app-locally-on-edgio*/}
+### Run the Svelte app locally on {{ PRODUCT }} {/*run-the-svelte-app-locally-on*/}
 
 Create a production build of your app by running the following in your project's root directory:
 
@@ -192,7 +192,7 @@ npm run build
 Deploy your app to the {{ PRODUCT_PLATFORM }} by running the following command in your project's root directory:
 
 ```bash
-{{ CLI_NAME }} deploy
+{{ FULL_CLI_NAME }} deploy
 ```
 
 Refer to the [Deploying](deploy_apps) guide for more information on the `deploy` command and its options.

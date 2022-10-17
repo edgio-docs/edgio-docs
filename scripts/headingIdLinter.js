@@ -8,9 +8,14 @@ const generateHeadingIds = require('./headingIDHelpers/generateHeadingIDs');
  * yarn lint-heading-ids --fix path/to/markdown.md --> Fixes that particular file's markdown IDs (path can denote a directory or particular file)
  */
 
+const availableArgs = ['--fix', '--force-new', '--errors-only'];
 const markdownPaths = process.argv.slice(2);
 if (markdownPaths.includes('--fix')) {
-  generateHeadingIds(markdownPaths.filter((path) => path !== '--fix'));
+  generateHeadingIds(
+    markdownPaths.filter((path) => !availableArgs.includes(path))
+  );
 } else {
-  validateHeaderIds(markdownPaths);
+  validateHeaderIds(
+    markdownPaths.filter((path) => !availableArgs.includes(path))
+  );
 }

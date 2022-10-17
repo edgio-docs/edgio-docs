@@ -150,7 +150,7 @@ const router = new Router()
         'v4.x'
       );
 
-      redirect(`/docs/${targetVersion}/:path*`);
+      redirect(`/docs/${targetVersion}/api/:path*`);
     });
   })
   // match current api docs without terminating /,

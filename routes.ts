@@ -136,9 +136,22 @@ const router = new Router()
     }
   )
   // match current api docs with a terminating /
-  .match('/docs/api/:path*/', ({proxy, cache, request}) => {
+  .match('/docs/api/:path*/', ({redirect, cache, compute}) => {
     cache(htmlCacheConfig);
-    proxy('api', {path: '/current/api/:path*/index.html'});
+
+    compute(async () => {
+      // fetch the list of current published versions
+      const versions = await (
+        await fetch('https://docs.layer0.co/docs/versions')
+      ).text();
+
+      const targetVersion = semverMaxSatisfying(
+        versions.replace(/\n/g, '').split(','),
+        'v4.x'
+      );
+
+      redirect(`/docs/${targetVersion}/api/:path*`);
+    });
   })
   // match current api docs without terminating /,
   // gets redirected to :path*/ to satisfy relative asset paths

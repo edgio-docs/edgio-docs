@@ -174,24 +174,6 @@ new Prefetcher().route();
 
 <a id="adding-the-service-worker"></a>
 
-## Adding the {{ PRODUCT_NAME }} Service Worker {/*adding-the-service-worker*/}
-
-To add the {{ PRODUCT_NAME }} service worker to your app, call the `install` function from `{{ PACKAGE_NAME }}/prefetch/window` in a `useEffect` hook when the app first loads. For example, you can alter the `pages/_app.js` in your Next.js app as follows:
-
-```js
-// pages/_app.js
-import {useEffect} from 'react';
-import {install} from '{{ PACKAGE_NAME }}/prefetch/window';
-
-const MyApp = ({Component, pageProps}) => {
-  useEffect(() => {
-    if (process.env.NODE_ENV === 'production') {
-      install();
-    }
-  }, []);
-};
-```
-
 The code above allows you to prefetch pages from {{ PRODUCT }}'s edge cache to greatly improve browsing speed. To prefetch a page, add the `Prefetch` component from `{{ PACKAGE_NAME }}/react` to any Next `Link` element. The example below shows you how to prefetch JSON data from `getServerSideProps` or `getStaticProps` using the `createNextDataUrl` function from `{{ PACKAGE_NAME }}/next/client`.
 
 ```js

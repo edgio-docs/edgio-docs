@@ -69,7 +69,7 @@ const StyledCallout = styled.div.attrs<IStyledCallout>((props) => ({
 `;
 
 export default function Callout({
-  type,
+  type = 'warning',
   children,
 }: {
   type: 'info' | 'warning' | 'danger';

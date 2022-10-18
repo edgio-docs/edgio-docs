@@ -6,7 +6,7 @@ This guide describes the headers that {{ PRODUCT_NAME }} injects into responses,
 
 ## Reserved Response Headers {/*general-headers*/}
 
--   `{{ HEADER_PREFIX }}-caching-status`: Indicates cache status information. If the response was not cached or served from cache, then it will report the reason why it was not cached. 
+-   `{{ HEADER_PREFIX }}-caching-status`: Indicates cache status information. If the response was not cached or served from cache, then it will report the reason why it was not cached.
 
     **Example:**
 
@@ -15,22 +15,22 @@ This guide describes the headers that {{ PRODUCT_NAME }} injects into responses,
     `{{ HEADER_PREFIX }}-caching-status: disabled`
 
    [Learn more.](/guides/caching#why-is-my-response-not-being-cached)
--   `{{ HEADER_PREFIX }}-components`: Indicates the version for each POP component that processed the request and the environment ID. This response header is primarily meant for internal use when troubleshooting issues. 
+-   `{{ HEADER_PREFIX }}-components`: Indicates the version for each POP component that processed the request and the environment ID. This response header is primarily meant for internal use when troubleshooting issues.
 <!-- `{{ HEADER_PREFIX }}-components: eh=0.1.6,e=atl,ec=1.1.0,ed=1.0.1,gh=0.1.6,g=hef,gd=1.0.1,p=1.21.10,w=3.11.0,wi=e8ce8753-163d-4be9-a39e-40454ace5146,b=serverless`
 -->
--   `{{ HEADER_PREFIX }}-hit-request-id`: Indicates the request's unique ID. This response header is only returned for cached responses. 
+-   `{{ HEADER_PREFIX }}-hit-request-id`: Indicates the request's unique ID. This response header is only returned for cached responses.
 -   `{{ HEADER_PREFIX }}-request-id`: Indicates the request's unique ID.
--   [{{ HEADER_PREFIX }}-status](#x-0-status-response-header): Contains a comma-delimited list of HTTP status codes for each POP component that processed the request. 
+-   [{{ HEADER_PREFIX }}-status](#x-0-status-response-header): Contains a comma-delimited list of HTTP status codes for each POP component that processed the request.
 
 -   `{{ HEADER_PREFIX }}-surrogate-key`: Contains a space-delimited list of surrogate keys (cache tags). <!-- that can be injected when needed into your backend responses -->
 
     [Learn more.](/guides/purging#surrogate-keys)
--   [{{ HEADER_PREFIX }}-t](#x-0-t-response-header): Contains time measurements for each {{ PRODUCT }} component through which a request was routed. It also provides cache status information for edge and global POPs. 
+-   [{{ HEADER_PREFIX }}-t](#x-0-t-response-header): Contains time measurements for each {{ PRODUCT }} component through which a request was routed. It also provides cache status information for edge and global POPs.
 -   [{{ HEADER_PREFIX }}-version](#x-0-version-response-header): Describes the {{ PRODUCT }} deployment.
 
 ### {{ HEADER_PREFIX }}-status Response Header {/*x-0-status-response-header*/}
 
-The `{{ HEADER_PREFIX }}-status` response header contains an HTTP status code for each POP component that processed the request. This comma-delimited list is presented sequentially according to the order in which POP components processed the request. 
+The `{{ HEADER_PREFIX }}-status` response header contains an HTTP status code for each POP component that processed the request. This comma-delimited list is presented sequentially according to the order in which POP components processed the request.
 
 **Syntax:**
 `{{ HEADER_PREFIX }}-status: <POP Component 1>=<Status Code 1>[,<POP Component 2>=<Status Code 2>,<POP Component n>=<Status Code n>]`
@@ -51,7 +51,7 @@ The following sample response header indicates that the following POP components
 
 ### {{ HEADER_PREFIX }}-t Response Header {/*x-0-t-response-header*/}
 
-The `{{ HEADER_PREFIX }}-t` response header contains time measurements for each {{ PRODUCT }} POP component through which a request was routed. It also provides cache status information for edge and global POPs. This data is presented sequentially according to the order in which POP components processed the request. 
+The `{{ HEADER_PREFIX }}-t` response header contains time measurements for each {{ PRODUCT }} POP component through which a request was routed. It also provides cache status information for edge and global POPs. This data is presented sequentially according to the order in which POP components processed the request.
 
 [Learn how {{ PRODUCT }} routes requests.](request_headers#request-flow)
 
@@ -76,7 +76,7 @@ Each metric is defined through a set of abbreviations. These abbreviations ident
 
     <Callout type="info">
 
-      If a global POP is the closest POP to the client, then it will act as both an edge and global POP. However, it will be assigned the `e` abbrevation instead of `g`. 
+      If a global POP is the closest POP to the client, then it will act as both an edge and global POP. However, it will be assigned the `e` abbrevation instead of `g`.
 
       For example, you may typically measure an origin server's response time through `gdf` (Global POP's DPS Fetch Time). However, if a global POP is the closest POP to the client, then you should use `edf` instead since {{ PRODUCT }} will not return `gdf`.
 
@@ -87,30 +87,30 @@ Each metric is defined through a set of abbreviations. These abbreviations ident
 
 -   The [POP component](request_headers#pop-components) that processed the request:
 
-    -   **h:** HAProxy (load balancer) 
+    -   **h:** HAProxy (load balancer)
     -   **c:** Varnish (cache)
     -   **d:** Dynamic Proxy Service (DPS)
     -   **b:** Billing
     -   **k:** Kolben
-    
+
 -   The type of metric being measured:
 
     -   **c:** This abbreviation represents either of the following metrics:
 
-        -   Cache status. Valid values are: 
+        -   Cache status. Valid values are:
 
             -   **hit:** The response was served from cache.
-            -   **miss:** The response was forwarded to the next hop in the route because a cached response with a valid time-to-live (TTL) was not found. This value, which may only be returned when `cached` or `pass` is inapplicable, typically indicates that the response contains a `set-cookie` header or its status code is `4xx` or higher.  
+            -   **miss:** The response was forwarded to the next hop in the route because a cached response with a valid time-to-live (TTL) was not found. This value, which may only be returned when `cached` or `pass` is inapplicable, typically indicates that the response contains a `set-cookie` header or its status code is `4xx` or higher.
             -   **cached:** The response was cached as a result of this request.
-            -   **pass:** The route corresponding to this request or cache-specific response headers prohibit caching. 
+            -   **pass:** The route corresponding to this request or cache-specific response headers prohibit caching.
 
             For example, `gcc=miss` identifies a cache miss on a global POP. A global POP forwards requests that result in cache misses to either an origin server or Serverless Compute.
 
-        -   Request count. 
+        -   Request count.
 
             For example, `pc=1` indicates the number of requests generated by the Serverless Compute (load balancer). A value greater than 1 indicates that the load balancer had to scale the request by adding it to a queue and then resubmitting it. Another example is `wc=19` which indicates that a Serverless Compute (Lambda worker) was invoked 19 times by this request.
 
-    -   **d:** DNS lookup time in milliseconds. 
+    -   **d:** DNS lookup time in milliseconds.
 
         <Callout type="info">
 
@@ -118,7 +118,7 @@ Each metric is defined through a set of abbreviations. These abbreviations ident
 
         </Callout>
 
-        For example, `edd` identifies the DNS lookup time as measured by an edge POP's DPS.  
+        For example, `edd` identifies the DNS lookup time as measured by an edge POP's DPS.
 
     -   **f:** Fetch time in milliseconds. This metric measures the amount of time between when a POP component forwards a request and when it receives a response.
 
@@ -144,7 +144,7 @@ Each metric is defined through a set of abbreviations. These abbreviations ident
 
         For example, `wbt` indicates billed time as measured by a Serverless Compute load balancer. This measurement includes Serverless Compute workload time and time spent capturing Serverless Compute log data.
 
-    -   **u:** Upstream fetch time in milliseconds. 
+    -   **u:** Upstream fetch time in milliseconds.
 
         For example, `pu` identifies the total time between when a Serverless Compute load balancer submitted a request defined within your application's code (e.g., fetch) and when it received a response.
 
@@ -169,7 +169,7 @@ Most metrics follow the above convention. However, there are some metrics that u
 Sample response headers for both standard traffic and Serverless Compute are explained below.
 
 ##### Standard Traffic {/*standard-traffic*/}
-The following sample {{ HEADER_PREFIX }}-t response header is for a request that was routed through an edge POP to a global POP: 
+The following sample {{ HEADER_PREFIX }}-t response header is for a request that was routed through an edge POP to a global POP:
 
 `{{ HEADER_PREFIX }}-t: eh=325,ect=322,ecc=cached,edt=316,edd=0,edf=316,dgpop=hef,gh=7,gct=5,gcc=hit`
 
@@ -231,7 +231,7 @@ The `{{ HEADER_PREFIX }}-version` response header describes the latest {{ PRODUC
 `{{ HEADER_PREFIX }}-version: <Deployment #> <Package Version> <Environment Version> <Deployment Timestamp> <Compiler Version>`
 
 Definitions for the above variables are provided below.
--   **<Deployment #>:** Identifies a deployment by its version number. 
+-   **<Deployment #>:** Identifies a deployment by its version number.
 -   **&lt;Package Version>:** Indicates the {{ PRODUCT }} package version.
 -   **&lt;Environment Version>:** Identifies an environment by its version number.
 -   **&lt;Deployment Timestamp>:** Indicates the date and time (UTC; 24-hour clock) at which your site was deployed.
@@ -248,7 +248,7 @@ Definitions for the above variables are provided below.
 
 {{ PRODUCT }} adds the following values to the standard [server-timing](https://www.w3.org/TR/server-timing/) response header:
 
--   `layer0-cache: <Cache Status>`: Valid cache statuses are: 
+-   `layer0-cache: <Cache Status>`: Valid cache statuses are:
     - `HIT-L1`: Indicates that the request was served from an edge POP's cache.
     - `HIT-L2`: Indicates that the request was served from a global POP's cache.
     - `MISS`: Indicates that the request was not served from cache.
@@ -257,7 +257,7 @@ Definitions for the above variables are provided below.
 
 ## Serverless Compute - Cold Start Timing {/*serverless-timing*/}
 
-To calculate the Serverless cold start timing you must take the difference between `pf` and `wt` in the `{{ HEADER_PREFIX }}-t` header. `wt` is time taken for the lambda to execute after it has started, this is can be read as the time is takes the project code to execute. If that seems large, evaluate the code within your project to see why this might be. To [track timings](/guides/performance#tracking-your-own-timings) for a function, it is possible to add specific code to do that. 
+To calculate the Serverless cold start timing you must take the difference between `pf` and `wt` in the `{{ HEADER_PREFIX }}-t` header. `wt` is time taken for the lambda to execute after it has started, this is can be read as the time is takes the project code to execute. If that seems large, evaluate the code within your project to see why this might be. To [track timings](/guides/performance#tracking-your-own-timings) for a function, it is possible to add specific code to do that.
 
-Based on the example above, that would be `809 (pf) - 722 (wt) = 87ms`. 
+Based on the example above, that would be `809 (pf) - 722 (wt) = 87ms`.
 

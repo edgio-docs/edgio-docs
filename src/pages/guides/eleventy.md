@@ -79,18 +79,7 @@ export default new Router()
   // Prevent search engine bot(s) from indexing
   // Read more on: {{ DOCS_URL }}/guides/cookbook#blocking-search-engine-crawlers
   .noIndexPermalink()
-  .static('_site', ({cache}) => {
-    cache({
-      edge: {
-        maxAgeSeconds: 60 * 60 * 60 * 365,
-        forcePrivateCaching: true,
-      },
-      browser: {
-        maxAgeSeconds: 0,
-        serviceWorkerSeconds: 60 * 60 * 24,
-      },
-    });
-  });
+  .static('_site')
 ```
 
 Refer to the [Routing](routing) guide for the full syntax of the `routes.js` file and how to configure it for your use case.

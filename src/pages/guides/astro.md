@@ -29,23 +29,14 @@ This Astro example app uses server-side rendering.
 If you don't have an existing Astro site, you can create one by running:
 
 ```bash
-# Make a new project directory, and navigate directly into it
-mkdir my-astro-project && cd $_
+npm create astro@latest
 
-# prepare for liftoff...
-npm init astro
-
-# install dependencies
-npm install
-
-# start developing!
 npm run dev
 
-# when you're ready: build your static site to `dist/`
 npm run build
 ```
 
-## Initializing your Project {/*initializing-your-project*/}
+## Initialize {{ PRODUCT }} {/*initializing-your-project*/}
 
 Initialize your project for use with {{ PRODUCT }} by running the following command in your project's root directory:
 
@@ -53,7 +44,7 @@ Initialize your project for use with {{ PRODUCT }} by running the following comm
 {{ FULL_CLI_NAME }} init
 ```
 
-## Update your {{ PRODUCT }} Router {/*update-your-router*/}
+## Update {{ PRODUCT }} Router {/*update-your-router*/}
 
 Paste the following into `routes.js` or `routes.ts`, depending on the results of the `{{ FULL_CLI_NAME }} init` command:
 
@@ -64,34 +55,12 @@ export default new Router()
   // Prevent search engine bot(s) from indexing
   // Read more on: {{ DOCS_URL }}/guides/cookbook#blocking-search-engine-crawlers
   .noIndexPermalink()
-  .get('/:path*/:file.:ext(js|css|png|ico|jpg|gif|svg)', ({ cache, serveStatic }) => {
-    cache({
-      browser: {
-        // cache js, css, and images in the browser for one hour...
-        maxAgeSeconds: 60 * 60,
-      },
-      edge: {
-        // ... and at the edge for one year
-        maxAgeSeconds: 60 * 60 * 24 * 365,
-      },
-    })
-    serveStatic('dist/:path*/:file.:ext')
-  })
-  .match('/:path*', ({ cache, serveStatic, setResponseHeader }) => {
-    cache({
-      // prevent the browser from caching html...
-      browser: false,
-      edge: {
-        // ...cache html at the edge for one year
-        maxAgeSeconds: 60 * 60 * 24 * 365,
-      },
-    })
-    setResponseHeader('content-type', 'text/html; charset=UTF-8')
-    serveStatic('dist/:path*')
-  })
+  .static('dist')
 ```
 
-You can remove the origin backend from `{{ CONFIG_FILE }}`:
+## [Optional] Update {{ PRODUCT }} {{ CONFIG_FILE }} {/*update-your-config-file*/}
+
+Modify `{{ CONFIG_FILE }}` to be as follows:
 
 ```js
 module.exports = {}

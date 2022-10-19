@@ -56,7 +56,7 @@ After you add the team member, select a role:
 |Read Only|Users with a _Read Only_ role can see all of the team's sites and settings, but are barred from  all further actions.|
 |Purger|As a _Purger_ a user can see all of the team's sites and settings _and_ purge the cache on the sites in scope.|
 |Member|Users in the _Member_ role can see all of the team's sites and settings, and deploy updates to existing sites via `{{ FULL_CLI_NAME }} deploy`, but cannot change site or team settings.|
-|Admin|Users in the _Admin_ role have full control over all team and site settings, but cannot add, remove, promote or demote other _Admin_ or _Super Admin_ roles.
+|Admin|Users in the _Admin_ role have full control over all team and site settings, but cannot add, remove, promote or demote other _Admin_ or _Super Admin_ roles.|
 |Super Admin| Users in the _Super Admin_ role have full control over all team and site settings. They are the only ones to add, remove, promote or demote other _Admin_ or _Super Admin_ roles.|
 
 See [Creating an Environment](./environments#creating-an-environment) for more information.

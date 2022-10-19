@@ -117,6 +117,25 @@ const router = new Router()
       removeUpstreamResponseHeader('cache-control');
     }
   })
+  .match('/search/:url/:path*', ({proxyHost, send, compute}) => {
+    compute(async (req) => {
+      const {url, path} = req.params || {};
+
+      const config = {
+        domainOrIp: <string>url,
+        hostHeader: <string>url,
+      };
+
+      await proxyHost(config, {
+        path: (path as string[]).join('/'),
+        transformResponse(res) {
+          res.body = res.body
+            ?.toString()
+            .replace(/docs\.layer0\.co/g, 'docs.edg.io');
+        },
+      });
+    });
+  })
   .match('/service-worker.js', ({serviceWorker}) => {
     return serviceWorker('.next/static/service-worker.js');
   })

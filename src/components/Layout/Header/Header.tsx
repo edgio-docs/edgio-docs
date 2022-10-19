@@ -183,6 +183,18 @@ const {
   indexName,
 } = siteConfig.algolia;
 
+function transformSearchClient(searchClient: any) {
+  const {protocol, host} = window.location;
+  const {hosts} = searchClient.transporter;
+
+  for (const h of hosts) {
+    h.protocol = protocol.slice(0, -1);
+    h.url = `${host}/search/${h.url}`;
+  }
+
+  return searchClient;
+}
+
 export default function Header({
   showSidebar,
   setShowSidebar,
@@ -237,6 +249,7 @@ export default function Header({
                 appId={algoliaAppId}
                 indexName={indexName}
                 apiKey={algoliaApiKey}
+                transformSearchClient={transformSearchClient}
               />
             </NoSSRWrapper>
           </div>

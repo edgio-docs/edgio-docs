@@ -183,6 +183,13 @@ const {
   indexName,
 } = siteConfig.algolia;
 
+function transformItems(items: any) {
+  return items.map((item: any) => ({
+    ...item,
+    url: item.url.replace(/docs\.layer0\.co/g, 'docs.edg.io'),
+  }));
+}
+
 function transformSearchClient(searchClient: any) {
   const {protocol, host} = window.location;
   const {hosts} = searchClient.transporter;
@@ -249,7 +256,7 @@ export default function Header({
                 appId={algoliaAppId}
                 indexName={indexName}
                 apiKey={algoliaApiKey}
-                transformSearchClient={transformSearchClient}
+                transformItems={transformItems}
               />
             </NoSSRWrapper>
           </div>

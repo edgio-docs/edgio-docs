@@ -51,7 +51,8 @@ Click the *ADD MEMBERS* button. For each desired team member, enter an email, an
 Members receive an email indicating that they have been added to a team.
 
 After you add the team member, select a role:
-| Role        | Description                                                                                                                                                                              |
+
+| Role        | Role Description                                                                                                                                                                         |
 |-------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Read Only   | Users with a _Read Only_ role can see all of the team's sites and settings, but are barred from  all further actions.                                                                    |
 | Purger      | As a _Purger_ a user can see all of the team's sites and settings _and_ purge the cache on the sites in scope.                                                                           |

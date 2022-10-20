@@ -1264,10 +1264,10 @@
     "@docsearch/css" "3.0.0-alpha.41"
     algoliasearch "^4.0.0"
 
-"@edgio/cli@^5.0.2":
-  version "5.0.2"
-  resolved "https://registry.yarnpkg.com/@edgio/cli/-/cli-5.0.2.tgz#82c5a483d92cb1666e1e84c1ba737d83484888ff"
-  integrity sha512-wsPtbOuNUrDctniQv65K1QIgh3uLBI+gqnr163nJv9p3sRFHPd8Z/LXDNPcdTU+z65kv86perVe+TJ5vkcmQJA==
+"@edgio/cli@^5.0.3":
+  version "5.0.3"
+  resolved "https://registry.yarnpkg.com/@edgio/cli/-/cli-5.0.3.tgz#2967de9cd95b7327ec350169fd24ac8256932f0b"
+  integrity sha512-mgF0ngGTSUeQtKQJlDYtvsunQr81qHCZzD3SGUBl+Vx0Zf5+SBLVKCofX4lH3YtaUZEYH9327OUz0xqvCgsVPg==
   dependencies:
     axios "^0.21.2"
     chalk "^4.1.2"
@@ -1306,10 +1306,10 @@
     yauzl "^2.10.0"
     yazl "^2.5.1"
 
-"@edgio/core@^5.0.2":
-  version "5.0.2"
-  resolved "https://registry.yarnpkg.com/@edgio/core/-/core-5.0.2.tgz#9c5c9a0759bb077da763e87525d868af53a52524"
-  integrity sha512-3Ktk2rBf0bJtbTVoN6GE2QV/pZ2Rt5JaG0HSIS8k12/5HRGlvsFuhZcV333EN1ms4d5pG0lHTXtKDAlhGz8yGg==
+"@edgio/core@^5.0.3":
+  version "5.0.3"
+  resolved "https://registry.yarnpkg.com/@edgio/core/-/core-5.0.3.tgz#a6e50462dbc847a7d9891791e7d036a957b8723f"
+  integrity sha512-wEutub5KxtOpcFFKjk50dytpssn0bDrIkuGGACPL6daIbNS+ftv/dI/hes1IE8HyTFBl0IdjMn6dcSQ42ZqxFw==
   dependencies:
     "@babel/parser" "^7.18.9"
     "@babel/traverse" "^7.18.9"
@@ -1347,19 +1347,19 @@
     unixify "^1.0.0"
     uuid "^8.3.2"
 
-"@edgio/devtools@^5.0.2":
-  version "5.0.2"
-  resolved "https://registry.yarnpkg.com/@edgio/devtools/-/devtools-5.0.2.tgz#b57ea9d3d353ebacca3cc0c1505f14bb86e43876"
-  integrity sha512-GT6coobqXlUJH4HgjTnaCkQYt6gvZuL5BEhRXAKDYSSaG2X1uZcuuYgtCRbRCYSvlRIGokuPawrwl9mElMGnYg==
+"@edgio/devtools@^5.0.3":
+  version "5.0.3"
+  resolved "https://registry.yarnpkg.com/@edgio/devtools/-/devtools-5.0.3.tgz#dff66969f8de18988988104b99f1630d0213270f"
+  integrity sha512-SY6heWX1hV8wu0ydZMCosCN2TYfpZ9SJphzW865o6zTUDDsyZ8ZfWebN069nKj4lT2enkpqadaLdHgw81SkcTQ==
   dependencies:
     clsx "^1.1.1"
     lodash "^4.17.20"
     sirv-cli "^1.0.0"
 
-"@edgio/next@5.0.2":
-  version "5.0.2"
-  resolved "https://registry.yarnpkg.com/@edgio/next/-/next-5.0.2.tgz#6aa3a0cd2338ae25c1b578723272ac9e527118d5"
-  integrity sha512-Xe5RoOfHl6WB5sVduvRtDc+IxHvwpWYndz1TUVPegsXGDovOD9x/YwpcpmUDVSOh31ecYNtxLsToCsQwzP/Png==
+"@edgio/next@5.0.3":
+  version "5.0.3"
+  resolved "https://registry.yarnpkg.com/@edgio/next/-/next-5.0.3.tgz#437b9cd38171be93e32ca342fa2fccf5c4cb96f1"
+  integrity sha512-DGBs78p+U3ZuIIzGwhXFURoVTgEGeeZfVTJB3znlj6J30EhRNKMoYJWexXRyy0MHpqS90bJaW1cl9kb/HLUE5A==
   dependencies:
     "@vercel/nft" "^0.13.1"
     chalk "^4.1.2"
@@ -1376,12 +1376,12 @@
     webpack "^4.0.0"
     webpack-sources "^2.2.0"
 
-"@edgio/prefetch@^5.0.2":
-  version "5.0.2"
-  resolved "https://registry.yarnpkg.com/@edgio/prefetch/-/prefetch-5.0.2.tgz#6daa7fb3cfe29cc8001492c12d4d0332fb28490c"
-  integrity sha512-zoaxbPt/soV+JP5TF7M1KmnfY8PgyEahFHlATc0wNoKQ9cp2ZS8+N/MG18iPbwg1XvU4JBRQtdpZQjVB1wnAQA==
+"@edgio/prefetch@^5.0.3":
+  version "5.0.3"
+  resolved "https://registry.yarnpkg.com/@edgio/prefetch/-/prefetch-5.0.3.tgz#be17aceb2242c6b81e4fbb244abea6e2f8cd68c6"
+  integrity sha512-4F2MMnMhmUCgydCIqVXyyRwvdeakza/5pcre+zNr8LKpZeG7t5DortDeLqkIbrWma7anvJsfaP3r2b8+3jRxKA==
   dependencies:
-    "@edgio/core" "^5.0.2"
+    "@edgio/core" "^5.0.3"
     cheerio "^1.0.0-rc.3"
     json-query "^2.2.2"
     workbox-cacheable-response "^5.1.2"
@@ -1391,18 +1391,18 @@
     workbox-routing "^5.1.2"
     workbox-strategies "^5.1.2"
 
-"@edgio/react@^5.0.2":
-  version "5.0.2"
-  resolved "https://registry.yarnpkg.com/@edgio/react/-/react-5.0.2.tgz#1253cda58d54ee4c848f0dc0b7fd8c235ce08b9c"
-  integrity sha512-32LzWohViTk61VoyzGUiU1eyjAtcPn63WDsyvPWmsj2flmYCG1TXTJIBGfeBK6Kijem3+dzTeMN3nPnSSdXu8A==
+"@edgio/react@^5.0.3":
+  version "5.0.3"
+  resolved "https://registry.yarnpkg.com/@edgio/react/-/react-5.0.3.tgz#70a37c122659178e428eb1b014454a34f04b6c8f"
+  integrity sha512-bwdBWY1QmtYQasESe2N2ojK8PeBg5ikqCBn52ae4c9Ng4yZuEWlfJxj3l+6bwh2Gi4p7px20fd47z7G3qm9liw==
   dependencies:
     prop-types "^15.8.1"
     react-merge-refs "^1.1.0"
 
-"@edgio/rum@^5.0.3":
-  version "5.0.3"
-  resolved "https://registry.yarnpkg.com/@edgio/rum/-/rum-5.0.3.tgz#49990e574063b62976c92868ad8a355c30e0e768"
-  integrity sha512-R9UpmdP9yxX9yYhfCpPkOFbcWLoINQFK6C8twFvlEujkwZ7m4NgR3iy1gkMoQezza0Q221mRGZ65vdpkx/brVA==
+"@edgio/rum@^5.0.5":
+  version "5.0.5"
+  resolved "https://registry.yarnpkg.com/@edgio/rum/-/rum-5.0.5.tgz#cdbec2897b0bbbbe994d2c58c3d1fc2e09aa54e0"
+  integrity sha512-Mv17T0SN3UVX/2WcSCPV9IBvOviPAvQiKcipwbKXnlmtHbiviUDaT94dQz0YTureWMq+yZ9LAGzCJuIio0cpAg==
   dependencies:
     lodash.debounce "^4.0.8"
     path-to-regexp "^6.2.1"

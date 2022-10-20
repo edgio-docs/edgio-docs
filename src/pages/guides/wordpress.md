@@ -2,14 +2,7 @@
 title: WordPress Integration
 ---
 
-{{ PRODUCT }} prov
-
-Check out the {{ PRODUCT }} WordPress plugin [here](https://github.com/Edgio/EdgioWordPress)
-
-Download  plugin [here](/archive/github/edgio/edgiowordpress/wp-content/plugins/edgio)
-
-
-This guide shows you how to deploy a [WordPress](https://www.wordpress.com/) backed application on {{ PRODUCT }}.
+This guide shows you how to deploy a [WordPress](https://www.wordpress.com/) backed application on {{ PRODUCT }}. Depending on your WordPress hosting provider, these instructions may vary.
 
 ## What is WordPress? {/*what-is-wordpresss*/}
 
@@ -18,3 +11,9 @@ WordPress is a content management system (CMS) that allows you to host and build
 {{ PREREQ }}
 
 ## Getting Started {/*getting-started*/}
+
+### Create a new WordPress site {/*create-a-new-wordpress-site*/}
+
+If you don't already have a VitePress app, create one by following the [official guide](https://vitepress.vuejs.org/guide/getting-started.html#getting-started).
+
+## Configuring your WordPress site for {{ PRODUCT }} {/*configuring-your-wordpress-site-for*/}

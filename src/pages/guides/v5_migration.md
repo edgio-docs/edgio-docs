@@ -87,7 +87,7 @@ The dependency for the {{PRODUCT }} RUM package (`{{ PACKAGE_NAME }}/rum`) was u
 
 For each site, rename remaining references to {{ PRODUCT }} packages from `@layer0` to `{{ PACKAGE_NAME }}`.
 
--   **package.json:** In addition to renaming the remaining {{ PRODUCT }} packages, you should also set their version to `5.0.0`.
+-   **package.json:** In addition to renaming the remaining {{ PRODUCT }} packages, you should also set their version to `^5.0.0`.
 
     For example, the following excerpt from a `package.json` file references several `@layer0` packages:
 
@@ -105,9 +105,9 @@ For each site, rename remaining references to {{ PRODUCT }} packages from `@laye
     ```
     ...  
       "devDependencies": {
-        "{{ PACKAGE_NAME }}/cli": "5.0.0",
-        "{{ PACKAGE_NAME }}/core": "5.0.0",
-        "{{ PACKAGE_NAME }}/devtools": "5.0.0",
+        "{{ PACKAGE_NAME }}/cli": "^5.0.0",
+        "{{ PACKAGE_NAME }}/core": "^5.0.0",
+        "{{ PACKAGE_NAME }}/devtools": "^5.0.0",
     ...
     ```
 

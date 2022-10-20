@@ -182,7 +182,7 @@ new {{ PRODUCT_NAME }}.Metrics({
 
 ## Custom cache TTL
 
-Information about routes is fetched from `/__edgio__/cache-manifest.js` file and then cached in localStorage.
+Information about routes is fetched from `/__edgio__/cache-manifest.js` file and then cached in `localStorage`.
 The default expiration time is set to 1 hour and it's possible to change it by providing `cacheManifestTTL` option.
 
 ```js

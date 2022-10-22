@@ -53,6 +53,7 @@ This will automatically add all of the required dependencies and files to your p
 - The `{{ PACKAGE_NAME }}/core` package
 - The `{{ PACKAGE_NAME }}/angular` package
 - The `{{ PACKAGE_NAME }}/cli` package
+- The `{{ PACKAGE_NAME }}/astro` package
 - `{{ CONFIG_FILE }}`- Contains various configuration options for {{ PRODUCT }}.
 - `routes.js` - A default routes file that sends all requests to the Astro. Update this file to add caching or proxy some URLs to a different origin.
 
@@ -65,7 +66,7 @@ The default `routes.js` file created by `{{ FULL_CLI_NAME }} init` sends all req
 // You should commit this file to source control.
 
 const { Router } = require('{{ PACKAGE_NAME }}/core/router')
-import { astroRoutes } from '{{ PACKAGE_NAME }}/astro'
+const { astroRoutes } = require('{{ PACKAGE_NAME }}/astro')
 
 export default new Router().use(astroRoutes)
 ```
@@ -91,7 +92,6 @@ Setting `--production` runs your app exactly as it will be when deployed to the 
 Deploy your app to the {{ PRODUCT_PLATFORM }} by running the following commands in your project's root directory:
 
 ```bash
-# Deploy it to {{ PRODUCT }}
 {{ FULL_CLI_NAME }} deploy
 ```
 

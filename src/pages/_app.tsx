@@ -1,5 +1,5 @@
 import '@docsearch/css';
-import {Metrics} from '@layer0/rum';
+import {Metrics} from '@edgio/rum';
 import {MDXEmbedProvider} from 'mdx-embed';
 import type {AppProps} from 'next/app';
 import dynamic from 'next/dynamic';

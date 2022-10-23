@@ -40,13 +40,10 @@ Create a package.json at the root of your project with the following:
 ```js
 {
   "name": "eleventy",
-  "version": "1.0.0",
   "scripts": {
     "build": "eleventy",
     "deploy": "{{ FULL_CLI_NAME }} deploy"
-  },
-  "dependencies": {},
-  "devDependencies": {}
+  }
 }
 ```
 
@@ -79,6 +76,7 @@ export default new Router()
   // Prevent search engine bot(s) from indexing
   // Read more on: {{ DOCS_URL }}/guides/cookbook#blocking-search-engine-crawlers
   .noIndexPermalink()
+  // Create serveStatic route for each file in the folder _site with a cache-control header of 's-maxage=315360000'
   .static('_site')
 ```
 

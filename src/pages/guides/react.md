@@ -12,6 +12,14 @@ This guide shows you how to serve a [React](https://reactjs.org/) application to
   repoUrl="https://github.com/layer0-docs/static-react-example" 
   deployFromRepo />
 
+## Connector {/*connector*/}
+
+This framework has a connector developed for {{ PRODUCT }}. See [Connectors](connectors) for more information.
+
+<ButtonLink variant="stroke" type="code" withIcon={true} href="https://github.com/edgio-docs/edgio-connectors/tree/main/edgio-react-cra-connector">
+ View the Connector Code
+</ButtonLink>
+
 {{ PREREQ }}
 
 ## Create React App {/*create-react-app*/}

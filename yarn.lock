@@ -1264,10 +1264,10 @@
     "@docsearch/css" "3.0.0-alpha.41"
     algoliasearch "^4.0.0"
 
-"@edgio/cli@^5.0.0":
-  version "5.0.0"
-  resolved "https://registry.yarnpkg.com/@edgio/cli/-/cli-5.0.0.tgz#a1c14f1506a52e722e8027c75ccf37981b4562e7"
-  integrity sha512-0qCbrr59Am27S7dD4IyJ7gislPKMQjzIx5g0f0kz3sDAua4QddD4UpD9M+XRcT7ya/pDJXbGsDm8fJkB4cD1ww==
+"@edgio/cli@^5.0.3":
+  version "5.0.3"
+  resolved "https://registry.yarnpkg.com/@edgio/cli/-/cli-5.0.3.tgz#2967de9cd95b7327ec350169fd24ac8256932f0b"
+  integrity sha512-mgF0ngGTSUeQtKQJlDYtvsunQr81qHCZzD3SGUBl+Vx0Zf5+SBLVKCofX4lH3YtaUZEYH9327OUz0xqvCgsVPg==
   dependencies:
     axios "^0.21.2"
     chalk "^4.1.2"
@@ -1306,10 +1306,10 @@
     yauzl "^2.10.0"
     yazl "^2.5.1"
 
-"@edgio/core@5.0.0", "@edgio/core@^5.0.0":
-  version "5.0.0"
-  resolved "https://registry.yarnpkg.com/@edgio/core/-/core-5.0.0.tgz#6cc93036df1ad7a6a2c1495e792fcfc6a46dfd27"
-  integrity sha512-VN/+gNkPPOJ2C9BKu+oyW/0UyUadDp5ms4yIMVl/x/9NcdpW5pJ8Lr/CbRx0mdYACTlZ9BfdFWHnINqNhfcjGg==
+"@edgio/core@^5.0.3":
+  version "5.0.3"
+  resolved "https://registry.yarnpkg.com/@edgio/core/-/core-5.0.3.tgz#a6e50462dbc847a7d9891791e7d036a957b8723f"
+  integrity sha512-wEutub5KxtOpcFFKjk50dytpssn0bDrIkuGGACPL6daIbNS+ftv/dI/hes1IE8HyTFBl0IdjMn6dcSQ42ZqxFw==
   dependencies:
     "@babel/parser" "^7.18.9"
     "@babel/traverse" "^7.18.9"
@@ -1327,6 +1327,7 @@
     deepmerge "^4.2.2"
     esbuild "^0.14.49"
     express "^4.17.1"
+    fluentvalidation-ts "^2.2.2"
     fs-extra "^8.1.0"
     globby "^11.0.2"
     http-proxy "^1.18.1"
@@ -1346,19 +1347,19 @@
     unixify "^1.0.0"
     uuid "^8.3.2"
 
-"@edgio/devtools@^5.0.0":
-  version "5.0.0"
-  resolved "https://registry.yarnpkg.com/@edgio/devtools/-/devtools-5.0.0.tgz#54800bbdd41c7528c2637eb212cfa1c8d8ad1119"
-  integrity sha512-ZKOyC7imzsTDQD1kAKLLql53aLUTVTK1qN30od4wiW8Aol5RGDeVf+6gvQlyPMwX0tX+4QWqvi+m0ntJehXTpw==
+"@edgio/devtools@^5.0.3":
+  version "5.0.3"
+  resolved "https://registry.yarnpkg.com/@edgio/devtools/-/devtools-5.0.3.tgz#dff66969f8de18988988104b99f1630d0213270f"
+  integrity sha512-SY6heWX1hV8wu0ydZMCosCN2TYfpZ9SJphzW865o6zTUDDsyZ8ZfWebN069nKj4lT2enkpqadaLdHgw81SkcTQ==
   dependencies:
     clsx "^1.1.1"
     lodash "^4.17.20"
     sirv-cli "^1.0.0"
 
-"@edgio/next@5.0.0":
-  version "5.0.0"
-  resolved "https://registry.yarnpkg.com/@edgio/next/-/next-5.0.0.tgz#d74ed3d664309428d08bd41b70f2cd6560b765f9"
-  integrity sha512-se5qcDhTwqf110ZSErGe4FtS/MNF4/D18AGA7C6phkSGdbbh3iVtBQh8eviU/zvdM2yR22eQBphiEq8Wly/9wA==
+"@edgio/next@5.0.3":
+  version "5.0.3"
+  resolved "https://registry.yarnpkg.com/@edgio/next/-/next-5.0.3.tgz#437b9cd38171be93e32ca342fa2fccf5c4cb96f1"
+  integrity sha512-DGBs78p+U3ZuIIzGwhXFURoVTgEGeeZfVTJB3znlj6J30EhRNKMoYJWexXRyy0MHpqS90bJaW1cl9kb/HLUE5A==
   dependencies:
     "@vercel/nft" "^0.13.1"
     chalk "^4.1.2"
@@ -1375,12 +1376,12 @@
     webpack "^4.0.0"
     webpack-sources "^2.2.0"
 
-"@edgio/prefetch@^5.0.0":
-  version "5.0.0"
-  resolved "https://registry.yarnpkg.com/@edgio/prefetch/-/prefetch-5.0.0.tgz#83ddee53dd1eda0bd734f292e50fd915f1c2d08c"
-  integrity sha512-6WONnq31DVGn5DcL7591ro8Cu42xt9IUHiBl/m93nwxbRgSjwG/+RkEINFTgt4YY8idbFvJDs4c2TR9+aqHlQg==
+"@edgio/prefetch@^5.0.3":
+  version "5.0.3"
+  resolved "https://registry.yarnpkg.com/@edgio/prefetch/-/prefetch-5.0.3.tgz#be17aceb2242c6b81e4fbb244abea6e2f8cd68c6"
+  integrity sha512-4F2MMnMhmUCgydCIqVXyyRwvdeakza/5pcre+zNr8LKpZeG7t5DortDeLqkIbrWma7anvJsfaP3r2b8+3jRxKA==
   dependencies:
-    "@edgio/core" "5.0.0"
+    "@edgio/core" "^5.0.3"
     cheerio "^1.0.0-rc.3"
     json-query "^2.2.2"
     workbox-cacheable-response "^5.1.2"
@@ -1390,13 +1391,23 @@
     workbox-routing "^5.1.2"
     workbox-strategies "^5.1.2"
 
-"@edgio/react@^5.0.0":
-  version "5.0.0"
-  resolved "https://registry.yarnpkg.com/@edgio/react/-/react-5.0.0.tgz#c5a275e55b137a0f707f114061b7e5270702b64f"
-  integrity sha512-3ptrv0xI+dEaoFt86x8gArD7Xcg7L+S4MZ3+CfC6j/gH7AOz0srrM6q3GQiZoC6/QzCQs4pOHaJ8DnN/fzoViw==
+"@edgio/react@^5.0.3":
+  version "5.0.3"
+  resolved "https://registry.yarnpkg.com/@edgio/react/-/react-5.0.3.tgz#70a37c122659178e428eb1b014454a34f04b6c8f"
+  integrity sha512-bwdBWY1QmtYQasESe2N2ojK8PeBg5ikqCBn52ae4c9Ng4yZuEWlfJxj3l+6bwh2Gi4p7px20fd47z7G3qm9liw==
   dependencies:
     prop-types "^15.8.1"
     react-merge-refs "^1.1.0"
+
+"@edgio/rum@^5.0.5":
+  version "5.0.5"
+  resolved "https://registry.yarnpkg.com/@edgio/rum/-/rum-5.0.5.tgz#cdbec2897b0bbbbe994d2c58c3d1fc2e09aa54e0"
+  integrity sha512-Mv17T0SN3UVX/2WcSCPV9IBvOviPAvQiKcipwbKXnlmtHbiviUDaT94dQz0YTureWMq+yZ9LAGzCJuIio0cpAg==
+  dependencies:
+    lodash.debounce "^4.0.8"
+    path-to-regexp "^6.2.1"
+    ua-parser-js "^0.7.31"
+    web-vitals "^3.0.3"
 
 "@emotion/hash@^0.8.0":
   version "0.8.0"
@@ -1545,16 +1556,6 @@
   dependencies:
     "@jridgewell/resolve-uri" "3.1.0"
     "@jridgewell/sourcemap-codec" "1.4.14"
-
-"@layer0/rum@^3.1.0":
-  version "3.1.0"
-  resolved "https://registry.yarnpkg.com/@layer0/rum/-/rum-3.1.0.tgz#546449ff15a48773513eafbb9cbba773e57794a3"
-  integrity sha512-u4UM57LCbswtZMlDGPMEsdW6RhWo+F59qCMqSQ+pJbVob8kYzaIIvqlZ+Qox4eFFSK5ssyF2VZbU7Jd7XO9BIQ==
-  dependencies:
-    lodash.debounce "^4.0.8"
-    path-to-regexp "^6.2.0"
-    ua-parser-js "^0.7.24"
-    web-vitals "^2.1.0"
 
 "@mapbox/node-pre-gyp@^1.0.5":
   version "1.0.8"
@@ -5226,6 +5227,11 @@ flow-parser@0.*:
   resolved "https://registry.yarnpkg.com/flow-parser/-/flow-parser-0.171.0.tgz#5ffae78f050e43513abc86add9f19a97fcbabcdb"
   integrity sha512-cqEsgic6HH81Pz0IQLeyuoh0O8Y7ECAIdZ0idPQ9P1jZ/kHB9KK0hwqnjVtqTGog15JURkIxvyXm+9pAb6uuSQ==
 
+fluentvalidation-ts@^2.2.2:
+  version "2.3.0"
+  resolved "https://registry.yarnpkg.com/fluentvalidation-ts/-/fluentvalidation-ts-2.3.0.tgz#e230b5792e85e5b45e4557bb0f113775e883a687"
+  integrity sha512-qRxmgoEjEMv5JVWIffXSC3e8e2UZIJKzmrDo4lIVWZG2zD2kmOkY+2opfXH3uYi9D1jsnZlUe09pApNEN9NGgQ==
+
 flush-write-stream@^1.0.0:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/flush-write-stream/-/flush-write-stream-1.1.1.tgz#8dd7d873a1babc207d94ead0c2e0e44276ebf2e8"
@@ -8429,6 +8435,11 @@ path-to-regexp@^6.2.0:
   resolved "https://registry.yarnpkg.com/path-to-regexp/-/path-to-regexp-6.2.0.tgz#f7b3803336104c346889adece614669230645f38"
   integrity sha512-f66KywYG6+43afgE/8j/GoiNyygk/bnoCbps++3ErRKsIYkGGupyv07R2Ok5m9i67Iqc+T2g1eAUGUPzWhYTyg==
 
+path-to-regexp@^6.2.1:
+  version "6.2.1"
+  resolved "https://registry.yarnpkg.com/path-to-regexp/-/path-to-regexp-6.2.1.tgz#d54934d6798eb9e5ef14e7af7962c945906918e5"
+  integrity sha512-JLyh7xT1kizaEvcaXOQwOc2/Yhw6KZOvPf1S8401UyLk86CU79LN3vl7ztXGm/pZ+YjoyAJ4rxmHwbkBXJX+yw==
+
 path-type@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/path-type/-/path-type-3.0.0.tgz#cef31dc8e0a1a3bb0d105c0cd97cf3bf47f4e36f"
@@ -10948,10 +10959,10 @@ typescript@^4.0.2:
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.5.5.tgz#d8c953832d28924a9e3d37c73d729c846c5896f3"
   integrity sha512-TCTIul70LyWe6IJWT8QSYeA54WQe8EjQFU4wY52Fasj5UKx88LNYKCgBEHcOMOrFF1rKGbD8v/xcNWVUq9SymA==
 
-ua-parser-js@^0.7.24:
-  version "0.7.31"
-  resolved "https://registry.yarnpkg.com/ua-parser-js/-/ua-parser-js-0.7.31.tgz#649a656b191dffab4f21d5e053e27ca17cbff5c6"
-  integrity sha512-qLK/Xe9E2uzmYI3qLeOmI0tEOt+TBBQyUIAh4aAgU05FVYzeZrKUdkAZfBNVGRaHVgV0TDkdEngJSw/SyQchkQ==
+ua-parser-js@^0.7.31:
+  version "0.7.32"
+  resolved "https://registry.yarnpkg.com/ua-parser-js/-/ua-parser-js-0.7.32.tgz#cd8c639cdca949e30fa68c44b7813ef13e36d211"
+  integrity sha512-f9BESNVhzlhEFf2CHMSj40NWOjYPl1YKYbrvIr/hFTDEmLq7SRbWvm7FcdcpCYT95zrOhC7gZSxjdnnTpBcwVw==
 
 unbox-primitive@^1.0.1:
   version "1.0.1"
@@ -11433,10 +11444,10 @@ web-namespaces@^1.0.0:
   resolved "https://registry.yarnpkg.com/web-namespaces/-/web-namespaces-1.1.4.tgz#bc98a3de60dadd7faefc403d1076d529f5e030ec"
   integrity sha512-wYxSGajtmoP4WxfejAPIr4l0fVh+jeMXZb08wNc0tMg6xsfZXj3cECqIK0G7ZAqUq0PP8WlMDtaOGVBTAWztNw==
 
-web-vitals@^2.1.0:
-  version "2.1.4"
-  resolved "https://registry.yarnpkg.com/web-vitals/-/web-vitals-2.1.4.tgz#76563175a475a5e835264d373704f9dde718290c"
-  integrity sha512-sVWcwhU5mX6crfI5Vd2dC4qchyTqxV8URinzt25XqVh+bHEPGH4C3NPrNionCP7Obx59wrYEbNlw4Z8sjALzZg==
+web-vitals@^3.0.3:
+  version "3.0.4"
+  resolved "https://registry.yarnpkg.com/web-vitals/-/web-vitals-3.0.4.tgz#a78ea93e95f7d7961dd151e0a76ac132c5dee2c9"
+  integrity sha512-Yau8qf1AJ/dm6MY180Bi0qpCIuWmAfKAnOqmxLecGfIHn0+ND3H4JOhXeY73Pyi9zjSF5J4SNUewHLNUzU7mmA==
 
 webidl-conversions@^3.0.0:
   version "3.0.1"

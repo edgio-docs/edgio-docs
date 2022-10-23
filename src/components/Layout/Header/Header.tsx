@@ -183,6 +183,13 @@ const {
   indexName,
 } = siteConfig.algolia;
 
+function transformItems(items: any) {
+  return items.map((item: any) => ({
+    ...item,
+    url: item.url.replace(/docs\.layer0\.co/g, 'docs.edg.io'),
+  }));
+}
+
 export default function Header({
   showSidebar,
   setShowSidebar,
@@ -237,6 +244,7 @@ export default function Header({
                 appId={algoliaAppId}
                 indexName={indexName}
                 apiKey={algoliaApiKey}
+                transformItems={transformItems}
               />
             </NoSSRWrapper>
           </div>

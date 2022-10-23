@@ -33,7 +33,7 @@ Instead of relying solely on Google Search Console, we recommend tracking Core W
 
 ## Installation {/*installation*/}
 
-In order to start tracking Core Web Vitals on {{ PRODUCT_NAME }}, you need to add the `@{{ PRODUCT_LEGACY_LOWER }}/rum` client library to your application. There are a number of ways to do this:
+In order to start tracking Core Web Vitals on {{ PRODUCT_NAME }}, you need to add the `{{ PACKAGE_NAME }}/rum` client library to your application. There are a number of ways to do this:
 
 ### Script Tag {/*script-tag*/}
 
@@ -47,7 +47,7 @@ To add Core Web Vitals tracking via a script tag, add the following to each page
     }).collect()
   }
 </script>
-<script src="https://rum.{{ DOMAIN }}/latest.js" defer onload="initRum()"></script>
+<script src="https://rum.{{ DOMAIN_LEGACY }}/latest.js" defer onload="initRum()"></script>
 ```
 
 ### Google Tag Manager {/*google-tag-manager*/}
@@ -60,7 +60,7 @@ To add Core Web Vitals tracking via a script tag, add the following to each page
     }).collect()
   }
   var rumScriptTag = document.createElement('script')
-  rumScriptTag.src = 'https://rum.{{ DOMAIN }}/latest.js'
+  rumScriptTag.src = 'https://rum.{{ DOMAIN_LEGACY }}/latest.js'
   rumScriptTag.setAttribute('defer', '')
   rumScriptTag.type = 'text/javascript'
   rumScriptTag.onload = initMetrics
@@ -73,19 +73,19 @@ To add Core Web Vitals tracking via a script tag, add the following to each page
 To install the Core Web Vitals library using npm, run:
 
 ```bash
-npm install --save @{{ PRODUCT_LEGACY_LOWER }}/rum
+npm install {{ PACKAGE_NAME }}/rum
 ```
 
 Or, using yarn:
 
 ```bash
-yarn add @{{ PRODUCT_LEGACY_LOWER }}/rum
+yarn add {{ PACKAGE_NAME }}/rum
 ```
 
 Then, add the following to your application's browser bundle:
 
 ```js
-import { Metrics } from '@{{ PRODUCT_LEGACY_LOWER }}/rum'
+import { Metrics } from '{{ PACKAGE_NAME }}/rum'
 
 new Metrics({
   token: 'your-token-here', // get this from {{ APP_URL }}
@@ -96,10 +96,10 @@ new Metrics({
 
 You can tie URLs to page templates by providing an optional `router` parameter to `Metrics`.
 
-When installing @{{ PRODUCT_LEGACY_LOWER }}/rum using a script tag, use:
+When installing `{{ PACKAGE_NAME }}/rum` using a script tag, use:
 
 ```js
-new {{ PRODUCT_NAME }}.Metrics({
+new {{ RUM_NS }}.Metrics({
   // get this from {{ APP_URL }}
   token: 'your-token-here',
 
@@ -111,11 +111,11 @@ new {{ PRODUCT_NAME }}.Metrics({
 }).collect()
 ```
 
-When installing @{{ PRODUCT_LEGACY_LOWER }}/rum via NPM or Yarn use:
+When installing `{{ PACKAGE_NAME }}/rum` via NPM or Yarn use:
 
 ```js
-import { Router } from '@{{ PRODUCT_LEGACY_LOWER }}/rum/Router'
-import { Metrics } from '@{{ PRODUCT_LEGACY_LOWER }}/rum'
+import { Router } from '{{ PACKAGE_NAME }}/rum/Router'
+import { Metrics } from '{{ PACKAGE_NAME }}/rum'
 
 new Metrics({
   // get this from {{ APP_URL }}
@@ -136,13 +136,13 @@ For non single page applications (e.g. traditional "multi-page apps"), you can a
 ```js
 <script>
   function initMetrics() {
-    new {{ PRODUCT_NAME }}.Metrics({
+    new {{ RUM_NS }}.Metrics({
       token: 'your-token-here',
       pageLabel: document.title ? document.title : "(No title)",
     }).collect();
   }
   var rumScriptTag = document.createElement('script');
-  rumScriptTag.src = "https://rum.{{ DOMAIN }}/latest.js";
+  rumScriptTag.src = "https://rum.{{ DOMAIN_LEGACY }}/latest.js";
   rumScriptTag.setAttribute("defer", "");
   rumScriptTag.type = "text/javascript";
   rumScriptTag.onload = initMetrics;
@@ -155,7 +155,7 @@ For non single page applications (e.g. traditional "multi-page apps"), you can a
 You can tie the following data to Core Web Vitals:
 
 ```js
-new {{ PRODUCT_NAME }}.Metrics({
+new {{ RUM_NS }}.Metrics({
   // Rather than providing a router, you can also define the page label for each page explicitly.
   // Use this option if it is more convenient to add the script tag to each page template individually
   // rather than adding it to the main application template.
@@ -177,4 +177,17 @@ new {{ PRODUCT_NAME }}.Metrics({
   // This is automatically set for sites that are deployed on {{ PRODUCT_NAME }}.
   country: 'US',
 })
+```
+
+
+## Custom cache TTL
+
+Information about routes is fetched from `/__edgio__/cache-manifest.js` file and then cached in `localStorage`.
+The default expiration time is set to 1 hour and it's possible to change it by providing `cacheManifestTTL` option.
+
+```js
+new Metrics({
+      token: 'my-edgio-rum-token',
+      cacheManifestTTL: 300 // 5 minutes
+}).collect()
 ```

@@ -71,6 +71,23 @@ const { astroRoutes } = require('{{ PACKAGE_NAME }}/astro')
 export default new Router().use(astroRoutes)
 ```
 
+## Enable Server Side Rendering {/*enable-server-side-rendering*/}
+
+After you've setup [Server Side Rendering with Astro](https://docs.astro.build/en/guides/server-side-rendering/), specify server file path in {{ CONFIG_FILE }} as below:
+
+```diff filename={{ CONFIG_FILE }}
++ import { join } from 'path'
+
+module.exports = {
++  astro: {
++    appPath: join(process.cwd(), 'dist', 'server', 'entry.mjs'),
++  },
+// Rest of the config
+}
+```
+
+If you're using custom server file for enabling server side rendering, make sure your server is listening to port via process.env['PORT'].
+
 ## Running Locally {/*running-locally*/}
 
 To test your app locally, run:

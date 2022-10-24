@@ -2,7 +2,7 @@
 title: WordPress Integration
 ---
 
-This guide shows you how to deploy a [WordPress](https://www.wordpress.com/) backed application on {{ PRODUCT }}. Depending on your WordPress hosting provider, these instructions may vary.
+This guide shows you how to deploy a [WordPress](https://www.wordpress.com/)-backed application on {{ PRODUCT }}. Depending on your WordPress hosting provider, these instructions may vary.
 
 ## What is WordPress? {/*what-is-wordpresss*/}
 
@@ -14,6 +14,64 @@ WordPress is a content management system (CMS) that allows you to host and build
 
 ### Create a new WordPress site {/*create-a-new-wordpress-site*/}
 
-If you don't already have a VitePress app, create one by following the [official guide](https://vitepress.vuejs.org/guide/getting-started.html#getting-started).
+If you don't already have a WordPress site, create one by following the [official WordPress.com guide](https://wordpress.com/support/start/). You may also use other WordPress providers, but setup instructions may differ.
 
-## Configuring your WordPress site for {{ PRODUCT }} {/*configuring-your-wordpress-site-for*/}
+### Create via {{ PRODUCT }} Developer Console {/*create-via-developer-console*/}
+
+1. First, [login to the Developer Console]({{ LOGIN_URL }}) and locate the **New Site** button.
+  ![New Site button](/images/app-edge/new-site-button.png)
+
+2. Next, enter your WordPress site's domain name. This will eventually become the origin backend that you will [proxy to](cookbook#proxying-an-origin) once your site is setup.
+  ![Add New Site dialog](/images/app-edge/add-new-site-dialog.png)
+
+3. Once your site is created, copy the generated command into your terminal (💻) and run it at the root of your project. This will initialize your project source code with {{ PRODUCT }} and automatically deploy your site. If you do not have your WordPress source code locally, choose the **Create a new directory** option from the CLI.
+  ![Quick Start Deploy Command](/images/app-edge/quickstart-deploy-command.png)
+
+  An example command for **www.yourdomain.com**:
+  ```bash
+    npx {{ PACKAGE_NAME }}/cli@latest init \
+      --name yourdomain.com \
+      --environment production \
+      --origin www.yourdomain.com \
+      --deploy
+  ```
+
+4. Finally, you can start to update your {{ PRODUCT }} router (`routes.js`) and configuration file (`{{ CONFIG_FILE }}`) to [proxy your origin](#configure-backend-to-proxy) and [setup caching rules](#configure-caching).
+
+### Run the WordPress app locally on {{ PRODUCT }} {/*run-the-wordpress-app-locally-on*/}
+
+Test your app with the {{ PRODUCT_PLATFORM }} on your local machine by running the following command in your project's root directory:
+
+```bash
+{{ FULL_CLI_NAME }} dev
+```
+
+Load the site http://127.0.0.1:3000
+
+## Deploying {/*deploying*/}
+
+Create a production build of your app by running the following in your project's root directory:
+
+```bash
+{{ FULL_CLI_NAME }} build
+```
+
+Deploy your app to the {{ PRODUCT_PLATFORM }} by running the following command in your project's root directory:
+
+```bash
+{{ FULL_CLI_NAME }} deploy
+```
+
+Refer to the [Deploying](deploy_apps) guide for more information on the `deploy` command and its options.
+
+## Direct Traffic to {{ PRODUCT_PLATFORM }} {/*direct-traffic-to*/}
+
+Once you have confirmed that your deployed {{ PRODUCT }} site is proxying content from your hosted WordPress site, you may go back to your site in the [Developer Console]({{ LOGIN_URL }}) and follow the instructions on configuring your production DNS to point to {{ PRODUCT }}. Refer to the [Custom Domains and SSL guide](production) to additional defails.
+
+## WordPress Plugin {/*wordpress-plugin*/}
+
+{{ PRODUCT }} provides a WordPress plugin you may leverage to automatically clear the {{ PRODUCT }} cache when a change is made to your site.
+
+First, to obtain the latest plugin version, [click here](/archive/github/edgio/edgiowordpress/wp-content/plugins/edgio) to download the ZIP file.
+
+Next, in your WordPress control panel, navigate to the **Plugins** page and click **Upload**. Navigate to your local download directory and select the **edgio.zip** file for upload.

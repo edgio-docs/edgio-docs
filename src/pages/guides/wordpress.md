@@ -75,3 +75,16 @@ Once you have confirmed that your deployed {{ PRODUCT }} site is proxying conten
 First, to obtain the latest plugin version, [click here](/archive/github/edgio/edgiowordpress/wp-content/plugins/edgio) to download the ZIP file.
 
 Next, in your WordPress control panel, navigate to the **Plugins** page and click **Upload**. Navigate to your local download directory and select the **edgio.zip** file for upload.
+
+Once the plugin has been uploaded, click **Manage Plugin**. You will see errors indicating that the {{ PRODUCT }} plugin is missing information. Navigate to **Settings > {{ PRODUCT }}** to pull up the form for the required information.
+
+In order for the plugin to be able to interact with the {{ PRODUCT_PLATFORM }}, you'll need to provide the following:
+
+- Team Name
+- Site name
+- Environment Name
+- API Key
+
+To obtain the API Key, go to your site within the [{{ PRODUCT }} Developer Console](({{ LOGIN_URL }})). Click **Settings > Create new Deploy Token** and enter in a name for the token. Once created, copy the token to the **API Key** field of the WordPress plugin.
+
+![deploytoken]()

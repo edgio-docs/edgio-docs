@@ -24,13 +24,11 @@ const octokitDefaults = {
 
 const StyledChangelogContent = styled.div`
   display: contents;
-
   a {
     color: #2993e0;
     text-decoration: none;
     position: relative;
     font-weight: 600;
-
     ::after {
       content: '';
       position: absolute;
@@ -42,19 +40,16 @@ const StyledChangelogContent = styled.div`
       transform: translateY(2px);
       transition: width 0.2s ease-in-out;
     }
-
     &:hover ::after {
       width: 100%;
     }
   }
-
   ul {
     padding-left: 35px;
     display: grid;
     row-gap: 8px;
     list-style: square;
   }
-
   hr {
     box-shadow: inset 0px -1px var(--hr-grey1);
     border: none;
@@ -117,6 +112,7 @@ export async function getServerSideProps() {
 
         // Conditions for modifying the line contents
         v = v.replace(/## What\Ws Changed/, ''); // remove "What's Changed" heading
+        v = v.replace(/### CHANGELOG/, ''); // remove "CHANGELOG" heading
         v = v.replace(/\[(.+)\]\(\S+\)/g, '$1'); // remove any markdown links
         v = v.toLowerCase().indexOf(SKIP_LABEL) > -1 ? '' : v; // exclude if labeled to skip notes
 
@@ -156,8 +152,8 @@ export async function getServerSideProps() {
   ];
 
   // split the major release versions
-  const [v4, v3] = splitByVersion(/^v4/, /^v3/);
-  const content = await markdownToHtml(v4);
+  const [v5, v4, v3] = splitByVersion(/^v5/, /^v4/, /^v3/);
+  const content = await markdownToHtml(v5);
 
   return {props: {content}};
 }

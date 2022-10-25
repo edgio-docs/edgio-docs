@@ -244,9 +244,6 @@ export default new Router()
       edge: {
         maxAgeSeconds: 60 * 60 * 24 * 365,
       },
-      browser: {
-        maxAgeSeconds: 0,
-      },
     });
     serveStatic('.next/static/service-worker.js');
   })
@@ -302,9 +299,7 @@ new Router()
   // Products - SSR
   .get('/p/:productId', ({cache}) => {
     cache({
-      browser: {
-        maxAgeSeconds: 0,
-      },
+      // Caching it only on the edge
       edge: {
         maxAgeSeconds: 60 * 60 * 24,
         staleWhileRevalidateSeconds: 60 * 60,
@@ -314,6 +309,7 @@ new Router()
   // Products - getServerSideProps
   .get('/_next/data/:version/p/:productId.json', ({cache}) => {
     cache({
+      // Allowing service worker (if present) to serve the cached responses from the browser itself
       browser: {
         maxAgeSeconds: 0,
         serviceWorkerSeconds: 60 * 60 * 24,
@@ -381,9 +377,6 @@ const { i18n } = require('./i18next.config')
 
 module.exports = with{{ PRODUCT }}(
   withServiceWorker({
-    // Output source maps so that stack traces have original source filenames and line numbers when tailing
-    // the logs in the {{ PRODUCT_NAME }} developer console.
-    {{ FULL_CLI_NAME }}SourceMaps: true,
     i18n,
   }),
 )

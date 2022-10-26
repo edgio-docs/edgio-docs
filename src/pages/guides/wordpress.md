@@ -74,9 +74,21 @@ Once you have confirmed that your deployed {{ PRODUCT }} site is proxying conten
 
 First, to obtain the latest plugin version, [click here](/archive/github/edgio/edgiowordpress/wp-content/plugins/edgio) to download the ZIP file.
 
+<ButtonLink href="/archive/github/edgio/edgiowordpress/wp-content/plugins/edgio">
+  Download Plugin
+</ButtonLink>
+
 Next, in your WordPress control panel, navigate to the **Plugins** page and click **Upload**. Navigate to your local download directory and select the **edgio.zip** file for upload.
 
-Once the plugin has been uploaded, click **Manage Plugin**. You will see errors indicating that the {{ PRODUCT }} plugin is missing information. Navigate to **Settings > {{ PRODUCT }}** to pull up the form for the required information.
+![plugins page](/images/wordpress/plugins_page.png)
+
+Once the plugin has been uploaded, click **Manage Plugin**.
+
+![manage plugin](/images/wordpress/manage_plugin.png)
+
+Navigate to **Settings > {{ PRODUCT }}** to pull up the form for the required information. You may see errors indicating that the {{ PRODUCT }} plugin is missing information. 
+
+![plugin settings](/images/wordpress/plugin_settings.png)
 
 In order for the plugin to be able to interact with the {{ PRODUCT_PLATFORM }}, you'll need to provide the following:
 
@@ -85,6 +97,12 @@ In order for the plugin to be able to interact with the {{ PRODUCT_PLATFORM }}, 
 - Environment Name
 - API Key
 
-To obtain the API Key, go to your site within the [{{ PRODUCT }} Developer Console](({{ LOGIN_URL }})). Click **Settings > Create new Deploy Token** and enter in a name for the token. Once created, copy the token to the **API Key** field of the WordPress plugin.
+![plugin fields](/images/wordpress/plugin_settings.png)
 
-![deploytoken]()
+To obtain the API Key, go to your site within the [{{ PRODUCT }} Developer Console]({{ LOGIN_URL }}). Click **Settings > Create new Deploy Token** and enter in a name for the token.
+
+![plugin fields](/images/wordpress/deploy_token.png)
+
+Once created, copy the token to the **API Key** field of the WordPress plugin. After you've completed all the fields, click **Save Changes**. Lastly, test the behavior by clicking **Clear Cache**. You can validate the cache clearing was successful by checking the **Activity** tab of your site:
+
+![purge activity](/images/wordpress/purge_activity.png)

@@ -19,22 +19,25 @@ If you don't already have a WordPress site, create one by following the [officia
 ### Create via {{ PRODUCT }} Developer Console {/*create-via-developer-console*/}
 
 1. First, [login to the Developer Console]({{ LOGIN_URL }}) and locate the **New Site** button.
-  ![New Site button](/images/app-edge/new-site-button.png)
+
+![New Site button](/images/app-edge/new-site-button.png)
 
 2. Next, enter your WordPress site's domain name. This will eventually become the origin backend that you will [proxy to](cookbook#proxying-an-origin) once your site is setup.
-  ![Add New Site dialog](/images/app-edge/add-new-site-dialog.png)
+
+![Add New Site dialog](/images/app-edge/add-new-site-dialog.png)
 
 3. Once your site is created, copy the generated command into your terminal (💻) and run it at the root of your project. This will initialize your project source code with {{ PRODUCT }} and automatically deploy your site. If you do not have your WordPress source code locally, choose the **Create a new directory** option from the CLI.
-  ![Quick Start Deploy Command](/images/app-edge/quickstart-deploy-command.png)
 
-  An example command for **www.yourdomain.com**:
-  ```bash
-    npx {{ PACKAGE_NAME }}/cli@latest init \
-      --name yourdomain.com \
-      --environment production \
-      --origin www.yourdomain.com \
-      --deploy
-  ```
+![Quick Start Deploy Command](/images/app-edge/quickstart-deploy-command.png)
+
+An example command for **www.yourdomain.com**:
+```bash
+  npx {{ PACKAGE_NAME }}/cli@latest init \
+    --name yourdomain.com \
+    --environment production \
+    --origin www.yourdomain.com \
+    --deploy
+```
 
 4. Finally, you can start to update your {{ PRODUCT }} router (`routes.js`) and configuration file (`{{ CONFIG_FILE }}`) to [proxy your origin](#configure-backend-to-proxy) and [setup caching rules](#configure-caching).
 

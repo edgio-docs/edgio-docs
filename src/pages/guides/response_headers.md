@@ -153,6 +153,8 @@ Each metric is defined through a set of abbreviations. These abbreviations ident
 Most metrics follow the above convention. However, there are some metrics that use a different convention. Here are a few common exceptions to the above convention:
 
 -   **dgpop:** Identifies the global POP to which an edge POP forwarded a request.
+-   **ekecf:** Identifies the total time, in milliseconds, to fetch the bot management edge configuration.
+-   **ekbmf:** Identifies the total time, in milliseconds, to fetch information about recommended bot mitigation.
 -   **eh:** Identifies the total time, in milliseconds, as measured by an edge POP's HAProxy.
 -   **gh:** Identifies the total time, in milliseconds, as measured by a global POP's HAProxy.
 -   **wa:** Indicates the `transformRequest` time, in milliseconds, as measured by a Serverless Compute (Lambda worker).

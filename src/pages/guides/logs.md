@@ -132,7 +132,7 @@ Access logs contain the following fields:
 -   **cv:** <a id="cv" /> Reserved for future use.
 -   **cy:** <a id="cy" /> Reserved for future use.
 -   **done:** <a id="done" /> Indicates whether the client was able to complete the request. This field is analogous to Nginx's `499` error code. Returns `1` for completed requests and `0` for uncompleted requests.
--   **ds:** <a id="ds" /> Indicates the destination assigned to this request as determined by your A/B test. Returns `default` if a destination has not been assigned to this request. 
+-   **ds:** <a id="ds" /> Indicates the A/B testing destination assigned to this request. Returns `default` if a destination has not been assigned to this request or when you have not configured A/B testing. 
 -   **dv:** <a id="dv" /> Indicates the type of device (e.g., desktop, smartphone, tablet, and mobile) that submitted the request.
 -   **eid:** <a id="eid" /> Indicates the system-defined ID for the {{ PRODUCT }} environment through which the request was processed.
 -   **er:** <a id="er" /> Indicates whether we sent a custom response as a result of the [send method](routing#route-execution). Returns `1` for custom responses and `0` for all other responses.
@@ -151,7 +151,7 @@ Access logs contain the following fields:
 -   **pre:** <a id="pre" /> Indicates whether the request was prefetched. Returns `1` for requests that have the `{{ COOKIE_PREFIX }}_prefetch=1` query string parameter and `0` for all other requests.
 -   **prl:** <a id="prl" /> Reserved for future use.
 -   **prod:** <a id="prod" /> Reserved for future use.
--   **psh:** <a id="psh" /> Indicates whether this response was sent as a result of a HTTP/2 server push. Returns `1` for a HTTP/2 server push and `0` for all other responses.
+-   **psh:** <a id="psh" /> Indicates whether this response was sent due to HTTP/2 server push. Returns `1` for a HTTP/2 server push and `0` for client-driven requests.
 -   **rfr:** <a id="rfr" /> Indicates the value for the `Referer` request header.
 -   **rid:** <a id="rid" /> Indicates the system-defined ID assigned to the request. 
 -   **s_rq:** <a id="s_rq" /> Indicates the size, in bytes, of the request.
@@ -160,7 +160,7 @@ Access logs contain the following fields:
 -   **sec:** <a id="sec" /> Reserved for future use.
 -   **sh:** <a id="sh" /> Returns `1` for requests that were shielded by a global POP and `0` for all other requests.
 -   **ssl:** <a id="ssl" /> Reserved for future use.
--   **stl:** <a id="stl" /> Returns `1` when the Time-To-Live (TTL) for the cached response has expired. Returns `0` for all other requests. 
+-   **stl:** <a id="stl" /> Indicates whether a cached response was stale. Returns `1` when the Time-To-Live (TTL) for the cached response has expired. Returns `0` for all other requests. 
 -   **t:** <a id="t" /> Reserved for future use.
 -   **timestamp:** <a id="timestamp" /> Indicates the Unix time, in milliseconds, at which our network received the request. 
 -   **ttl:** <a id="ttl" /> Indicates the Time-To-Live (TTL) for a cached response. 
@@ -168,14 +168,14 @@ Access logs contain the following fields:
 -   **url:** <a id="url" /> Indicates the URL path for the content that was requested, posted, or deleted. This URL, which excludes the query string, is reported as a relative path that starts directly after the hostname.
 -   **uv:** <a id="uv" /> Indicates the `Vary` response header value as received from the upstream. Although this value may be different from the one sent to the client, it determines how we split the cache.
 -   **v:** <a id="v" /> Indicates the version of {{ PRODUCT }} that processed this request.
--   **vn:** <a id="vn" /> Indicates the vendor (e.g., apple, microsoft, android, or generic).
+-   **vn:** <a id="vn" /> Indicates the vendor (e.g., apple, microsoft, android, or generic) of the device that submitted the request.
 -   **waf:** <a id="waf" /> Indicates the state of WAF security: `geo` for geo blocking, `bl` for block list, `dl-<LIST NAME>` for dynamic lists, `wl` for allow list, and `by` for bypass.
 -   **wafv:** <a id="wafv" /> Reserved for future use.
 -   **xff:** <a id="xff" /> Reserved for future use.
--   **xmr:** <a id="xmr" /> Indicates the value for the `{{ HEADER_PREFIX }}-matched-routes` request header. This request header identifies all matched routes.
--   **xms:** <a id="xms" /> Indicates the value for the `{{ HEADER_PREFIX }}-status` response header. This request header indicates the status codes for key [POP components](response_headers#-t-response-header). 
--   **xmt:** <a id="xmt" /> Indicates the value for the [{{ HEADER_PREFIX }}-t](response_headers#-t-response-header) response header. The {{ HEADER_PREFIX }}-t response header contains time measurements for each Edgio POP component through which a request was routed.
--   **xut:** <a id="xut" /> Indicates the value for the `{{ HEADER_PREFIX }}-user-t` response header. This response header contains [performance](/guides/performance) metrics.
+-   **xmr:** <a id="xmr" /> Indicates the value for the `{{ HEADER_PREFIX }}-matched-routes` request header. The `{{ HEADER_PREFIX }}-matched-routes` request header identifies all matched routes.
+-   **xms:** <a id="xms" /> Indicates the value for the `{{ HEADER_PREFIX }}-status` response header. The `{{ HEADER_PREFIX }}-status` response header indicates the status codes for key [POP components](response_headers#-t-response-header). 
+-   **xmt:** <a id="xmt" /> Indicates the value for the [{{ HEADER_PREFIX }}-t](response_headers#-t-response-header) response header. The `{{ HEADER_PREFIX }}-t` response header contains time measurements for each Edgio POP component through which a request was routed.
+-   **xut:** <a id="xut" /> Indicates the value for the `{{ HEADER_PREFIX }}-user-t` response header. The `{{ HEADER_PREFIX }}-user-t` response header contains [performance](/guides/performance) metrics.
 -   **zip:** <a id="zip" /> Indicates whether the response was compressed. Returns `1` for compressed responses and `0` for uncompressed responses.
 
 

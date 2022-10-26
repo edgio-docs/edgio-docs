@@ -93,6 +93,10 @@ const integrations: Object[] = [
     icon: <IconGitHub />,
     iconDark: <IconGitHub />,
   },
+  {
+    ...findChildByGuideName('wordpress'),
+    description: `WordPress is a content management system (CMS) that allows you to host and build websites. ${PRODUCT_NAME}'s integration with WordPress extends to plugin support for cache purging from your WordPress control panel.`,
+  },
 ];
 
 export default function Integrations() {

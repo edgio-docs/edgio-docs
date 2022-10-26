@@ -105,6 +105,7 @@ import {
   IconSupportDark,
   IconEdgioSquareLogo,
   IconEdgioSquareLogoDark,
+  IconWordPress,
 } from '../components/Icon';
 
 export interface IRoute {
@@ -619,6 +620,13 @@ const SidebarMenuItems: ISidebarMenuItems = [
           path: '/guides/swell',
           icon: <IconSwell />,
           iconDark: <IconSwellDark />,
+        },
+
+        {
+          title: 'WordPress',
+          path: '/guides/wordpress',
+          icon: <IconWordPress />,
+          iconDark: <IconWordPress />,
         },
       ],
     },

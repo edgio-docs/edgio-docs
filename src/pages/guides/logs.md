@@ -24,6 +24,13 @@ You may view these console messages in real time or as log data.
 
 -   **Real Time:** From within the {{ PORTAL }}, load the desired deployment and then click on the `SERVER` tab. Focus on specific data by limiting the output to your IP address or through a regular expression. 
 -   **Log Data:** Retrieve log data from an AWS S3 bucket.
+
+    <Callout type="info">
+
+      Access to log data requires an Enterprise account. {{ ACCOUNT_UPGRADE }}
+
+    </Callout>
+
     - Availability for this log data is only guaranteed for 2 hours. 
     - Use the following environment-specific data, which is available from the desired environment's **Logs** tab, to access log data:
         - Base AWS S3 bucket URL (Server Logs)
@@ -65,6 +72,12 @@ One use case for DRI is to analyze traffic during a deployment by tailing the se
 5.  From the banner at the top of the page, click **Activate**.
 
 ### Serverless Compute Console and DRI Log Fields {/*serverless-compute-console-and-dri-log-fields*/}
+
+<Callout type="info">
+
+  Access to log data requires an Enterprise account. {{ ACCOUNT_UPGRADE }}
+
+</Callout>
 
 Log data for Serverless Compute console messages and DRI may contain the following fields:
 

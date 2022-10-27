@@ -4,7 +4,7 @@ title: Nx
 
 [Nx](https://nx.dev/) is a smart, fast and extensible build system with first class monorepo support and powerful integrations. It has a powerful core and a rich plugin ecosystem.
 
-## Nx and {{ PRODUCT }} {/*nx-and-edgio*/}
+## Nx and {{ PRODUCT }} {/*nx-and*/}
 
 Because every Nx project can be different, there are a couple ways to implement it.
 
@@ -47,12 +47,12 @@ npx create-nx-workspace --preset=next
 
 There will be a series of questions. When the one to choose the `Application name` comes, enter __`{{ PRODUCT_NAME_LOWER }}-nx-next-app`__. The other answers can be of your choosing.
 
-### Add {{ PRODUCT }} to the application {/*add-edgio-to-the-application*/}
+### Add {{ PRODUCT }} to the application {/*add-to-the-application*/}
 
 Because Nx wants dependencies installed at root level, we will `init` the project at root level to install the necesssary packages, but setup configurations to read into the next app we generated. The {{ PRODUCT }} next connector expects to be in the project repo, so we will create our own custom connector with the necesssary configurations.
 
 ```bash
-{{ CLI_NAME }} init # installs necessary packages
+{{ FULL_CLI_NAME }} init # installs necessary packages
 ```
 
 Reorganize project
@@ -80,12 +80,12 @@ module.exports = {
 Open `routes.ts` and change to the following:
 
 ```js
-import { Router } from '@{{ PRODUCT_NAME_LOWER }}/core/router';
-import { nextRoutes } from '@{{ PRODUCT_NAME_LOWER }}/next';
+import { Router } from '{{ PACKAGE_NAME }}/core/router';
+import { nextRoutes } from '{{ PACKAGE_NAME }}/next';
 
 export default new Router()
   // Prevent search engine bot(s) from indexing
-  // Read more on: https://docs.layer0.co/guides/cookbook#blocking-search-engine-crawlers
+  // Read more on: {{ DOCS_URL }}/guides/cookbook#blocking-search-engine-crawlers
   .noIndexPermalink()
   .match('/service-worker.js', ({ serviceWorker }) => {
     return serviceWorker('.next/static/service-worker.js');
@@ -106,7 +106,7 @@ touch {{ PRODUCT_NAME_LOWER }}/prod.js
 __build.js__
 ```js
 const createBuilder =
-  require('@{{ PRODUCT_NAME_LOWER }}/next/build/createBuildEntryPoint').default;
+  require('{{ PACKAGE_NAME }}/next/build/createBuildEntryPoint').default;
 const { join } = require('path');
 const srcDir = require('./nextSrcDir');
 
@@ -120,7 +120,7 @@ module.exports = createBuilder({
 __dev.js__
 ```js
 const next = require('next');
-const createDevServer = require('@{{ PRODUCT_NAME_LOWER }}/core/dev/createDevServer').default;
+const createDevServer = require('{{ PACKAGE_NAME }}/core/dev/createDevServer').default;
 const srcDir = require('./nextSrcDir');
 const cwd = process.cwd();
 
@@ -139,7 +139,7 @@ module.exports = async function dev() {
 
 __prod.js__
 ```js
-module.exports = require('@{{ PRODUCT_NAME_LOWER }}/next/prod').default;
+module.exports = require('{{ PACKAGE_NAME }}/next/prod').default;
 ```
 
 __nextSrcDir.js__
@@ -153,7 +153,7 @@ module.exports = join('apps', '{{ PRODUCT_NAME_LOWER }}-nx-next-app');
 Test your app with the {{ PRODUCT_PLATFORM }} on your local machine by running the following command in your project's root directory:
 
 ```bash
-{{ CLI_NAME }} dev
+{{ FULL_CLI_NAME }} dev
 ```
 
 ### Deploy {/*deploy*/}
@@ -161,5 +161,5 @@ Test your app with the {{ PRODUCT_PLATFORM }} on your local machine by running t
 Deploy your app to the {{ PRODUCT_PLATFORM }} by running the following command in your project's root directory:
 
 ```bash
-{{ CLI_NAME }} deploy
+{{ FULL_CLI_NAME }} deploy
 ```

@@ -28,7 +28,7 @@ To deploy {{ PRODUCT }} in front of your GraphQL API, install the {{ PRODUCT_NAM
 
 ```bash
 $ npm i -g {{ PACKAGE_NAME }}/cli # yarn global add {{ PACKAGE_NAME }}/cli
-$ {{ CLI_NAME }} init
+$ {{ FULL_CLI_NAME }} init
 ```
 
 For more information on adding {{ PRODUCT_NAME }} to an existing app, see [Getting Started](build_web_apps#existing-app).
@@ -51,9 +51,11 @@ module.exports = {
 
 ## Add Caching Rules {/*add-caching-rules*/}
 
-There are two ways to cache GraphQL responses using {{ PRODUCT }}: by adding caching rules to your {{ PRODUCT }} router or by using the `cache-control` header.
+There are two ways to cache GraphQL responses using {{ PRODUCT }}: by adding caching rules to your {{ PRODUCT }} router or by using the `cache-control` header. 
 
-### Using the {{ PRODUCT_NAME }} Router {/*using-the-layer0-router*/}
+<a id="using-the-router"></a>
+
+### Using the {{ PRODUCT_NAME }} Router {/*using-the-router*/}
 
 Imagine you have a query named `GetProduct`:
 
@@ -75,7 +77,7 @@ convention](https://www.apollographql.com/docs/apollo-server/requests/#post-requ
 of the Apollo client ecosystem.
 
 ```js filename="./routes.js"
-import { Router } from '@layer0/core'
+import { Router } from '{{ PACKAGE_NAME }}/core'
 
 export default new Router().graphqlOperation('GetProduct', ({ cache, proxy }) => {
   cache({
@@ -86,32 +88,6 @@ export default new Router().graphqlOperation('GetProduct', ({ cache, proxy }) =>
   })
   proxy('graphql') // forward requests to the GraphQL API origin we defined in {{ CONFIG_FILE }}
 })
-```
-
-#### Match Operations by Regular Expression {/*match-operations-by-regular-expression*/}
-
-The `graphqlOperation` method also allows you to match operations using a regular expression:
-
-```js
-export default new Router().graphqlOperation(/product/i, ({ cache, proxy }) => {
-  /* ... */
-})
-```
-
-#### Alter the Default GraphQL API Path {/*alter-the-default-graphql-api-path*/}
-
-Most GraphQL APIs are hosted on the `/graphql` path. The `graphqlOperation` method will only match requests sent to `/graphql` by default. To use a different path, specify the `path` option:
-
-```js
-export default new Router().graphqlOperation(
-  {
-    path: '/gql-api' /* override the default /graphql path */,
-    name: 'GetProduct' /* name can also be a regular expression */,
-  },
-  ({ cache, proxy }) => {
-    /* ... */
-  },
-)
 ```
 
 ### Use the Cache-Control Header {/*use-the-cache-control-header*/}
@@ -144,7 +120,7 @@ To invalidate a cached query, you must first assign a surrogate key to the respo
 #### Use deriveSurrogateKeysFromJson {/*use-derivesurrogatekeysfromjson*/}
 
 ```js filename="./routes.js"
-import { Router, deriveSurrogateKeysFromJson } from '@layer0/core'
+import { Router, deriveSurrogateKeysFromJson } from '{{ PACKAGE_NAME }}/core'
 
 export default new Router().graphqlOperation('GetProduct', ({ cache, proxy }) => {
   cache({
@@ -160,7 +136,7 @@ export default new Router().graphqlOperation('GetProduct', ({ cache, proxy }) =>
 })
 ```
 
-#### Use the {{ HEADER_PREFIX }}-surrogate-key Response Header {/*use-the-x-0-surrogate-key-response-header*/}
+#### Use the {{ HEADER_PREFIX }}-surrogate-key Response Header {/*use-the-surrogate-key-response-header*/}
 
 You can also assign surrogate keys by adding an `{{ HEADER_PREFIX }}-surrogate-key` header to the response from the origin. Separate multiple keys with spaces:
 
@@ -187,12 +163,12 @@ deriveSurrogateKeysFromJson(json => [`product.${json.id}`], { onConflict: 'overr
 
 ### Purge by Surrogate Key {/*purge-by-surrogate-key*/}
 
-To purge all responses with a given surrogate key, use the {{ PRODUCT_NAME }} CLI's [cache-clear](/guides/cli#section_cache_clear) command.
+To purge all responses with a given surrogate key, use the {{ PRODUCT_NAME }} CLI's [cache-clear](/guides/cli#cache-clear) command.
 
 ```bash
-layer0 cache-clear --team=my-team --site=my-site --environment=production --surrogate-key="product.1"
+{{ FULL_CLI_NAME }} cache-clear --team=my-team --site=my-site --environment=production --surrogate-key="product.1"
 ```
 
-For more information, see [clearing the cache from the CLI](/guides/cli#section_cache_clear).
+For more information, see [clearing the cache from the CLI](/guides/cli#cache-clear).
 
-You can also purge responses by surrogate key [via the REST API](/guides/rest_api#section_clear_cache) by specifying the `surrogateKeys` option.
+You can also purge responses by surrogate key [via the REST API](/guides/rest_api#clear-cache) by specifying the `surrogateKeys` option.

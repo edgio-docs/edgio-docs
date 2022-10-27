@@ -28,13 +28,7 @@ You’ve installed the following dependencies:
 
 {{ SIGN_UP }}
 
-## Install the {{ PRODUCT_NAME }} CLI {/*install-the-layer0-cli*/}
-
-If you have not already done so, install the [{{ PRODUCT_NAME }} CLI](cli)
-
-```bash
-npm i -g {{ PACKAGE_NAME }}/cli # yarn global add {{ PACKAGE_NAME }}/cli
-```
+{{ INSTALL_CLI }}
 
 ## Create a new Shopify Hydrogen app {/*create-a-new-shopify-hydrogen-app*/}
 
@@ -96,14 +90,16 @@ npm run dev
   });
   ```
 
-## Configuring your Shopify Hydrogen app for {{ PRODUCT_NAME }} {/*configuring-your-shopify-hydrogen-app-for-layer0*/}
+<a id="configuring-your-shopify-hydrogen-app"></a>
+
+## Configuring your Shopify Hydrogen app for {{ PRODUCT_NAME }} {/*configuring-your-shopify-hydrogen-app-for*/}
 
 ### Initialize your project {/*initialize-your-project*/}
 
-In the root directory of your project run `{{ CLI_NAME }} init`:
+In the root directory of your project run `{{ FULL_CLI_NAME }} init`:
 
 ```bash
-{{ CLI_NAME }} init
+{{ FULL_CLI_NAME }} init
 ```
 
 This will automatically update your `package.json` and add all of the required {{ PRODUCT_NAME }} dependencies and files to your project. These include:
@@ -113,19 +109,23 @@ This will automatically update your `package.json` and add all of the required {
 - `{{ CONFIG_FILE }}` - A configuration file for {{ PRODUCT_NAME }}
 - `routes.js` - A default routes file that sends all requests to Shopify Hydrogen.
 
-### Update {{ PRODUCT_NAME }} Configuration {/*update-layer0-configuration*/}
+<a id="update-configuration"></a>
+
+### Update {{ PRODUCT_NAME }} Configuration {/*update-configuration*/}
 
 Update `{{ CONFIG_FILE }}` at the root of your project to the following:
 
 ```js
-// This file was automatically added by layer0 deploy.
+// This file was automatically added by {{ FULL_CLI_NAME }} deploy.
 // You should commit this file to source control.
 module.exports = {
-  connector: './layer0'
+  connector: './myconnector'
 }
 ```
 
-### Creating {{ PRODUCT }} connector files {/*creating-layer0-connector-files*/}
+<a id="creating-connector-files"></a>
+
+### Creating {{ PRODUCT }} connector files {/*creating-connector-files*/}
 
 - Install `@vercel/nft` for Node.js File Tracing, by the following command:
   ```bash
@@ -136,14 +136,14 @@ module.exports = {
   yarn add @vercel/nft
   ```
 
-- Create a folder named `layer0` at the root of your project.
-  - Create a file inside the `layer0` folder, named `build.js` consistng of the following:
-  ```js filename="layer0/build.js"
+- Create a folder named `myconnector` at the root of your project.
+  - Create a file called `build.js` within the `myconnector` folder that contains the following content:
+  ```js filename="myconnector/build.js"
     const {join} = require('path');
     const {exit} = require('process');
     const {nodeFileTrace} = require('@vercel/nft');
-    const {DeploymentBuilder} = require('@layer0/core/deploy');
-    const {isYarn} = require('@layer0/cli/utils/packageManager');
+    const {DeploymentBuilder} = require('{{ PACKAGE_NAME }}/core/deploy');
+    const {isYarn} = require('{{ PACKAGE_NAME }}/cli/utils/packageManager');
 
     const appDir = process.cwd();
     const builder = new DeploymentBuilder(appDir);
@@ -196,8 +196,8 @@ module.exports = {
     }
   ```
 
-  - Create a file named `prod.js` consistng of the following:
-  ```js filename="layer0/prod.js"
+  - Create a file named `prod.js` that contains the following content:
+  ```js filename="myconnector/prod.js"
     module.exports = async function prod(port) {
       process.env.PORT = port;
       await import('../server.js');
@@ -209,16 +209,16 @@ module.exports = {
 Update `routes.js` at the root of your project to the following:
 
 ```js
-// This file was added by layer0 init.
+// This file was added by {{ FULL_CLI_NAME }} init.
 // You should commit this file to source control.
 const ONE_HOUR = 60 * 60
 const ONE_DAY = 24 * ONE_HOUR
 
-const { Router } = require('@layer0/core/router')
+const { Router } = require('{{ PACKAGE_NAME }}/core/router')
 
 module.exports = new Router()
   // Prevent search engine bot(s) from indexing
-  // Read more on: https://docs.layer0.co/guides/cookbook#blocking-search-engine-crawlers
+  // Read more on: {{ DOCS_URL }}/guides/cookbook#blocking-search-engine-crawlers
   .noIndexPermalink()
   .match('/assets/:path*', ({ cache }) => {
     cache({
@@ -265,18 +265,20 @@ module.exports = new Router()
 
 Refer to the [Routing](routing) guide for the full syntax of the `routes.js` file and how to configure it for your use case.
 
-### Run the Shopify Hydrogen app locally on {{ PRODUCT_NAME }} {/*run-the-shopify-hydrogen-app-locally-on-layer0*/}
+<a id="run-the-shopify-hydrogen-app-locally"></a>
+
+### Run the Shopify Hydrogen app locally on {{ PRODUCT_NAME }} {/*run-the-shopify-hydrogen-app-locally-on*/}
 
 Create a production build of your app by running the following in your project's root directory:
 
 ```bash
-{{ CLI_NAME }} build
+{{ FULL_CLI_NAME }} build
 ```
 
 Run {{ PRODUCT_NAME }} on your local machine:
 
 ```bash
-{{ CLI_NAME }} run --production
+{{ FULL_CLI_NAME }} run --production
 ```
 
 Load the site http://127.0.0.1:3000
@@ -286,13 +288,13 @@ Load the site http://127.0.0.1:3000
 Create a production build of your app by running the following in your project's root directory:
 
 ```bash
-{{ CLI_NAME }} build
+{{ FULL_CLI_NAME }} build
 ```
 
-Next, deploy the build to {{ PRODUCT_NAME }} by running the `{{ CLI_NAME }} deploy` command:
+Next, deploy the build to {{ PRODUCT_NAME }} by running the `{{ FULL_CLI_NAME }} deploy` command:
 
 ```bash
-{{ CLI_NAME }} deploy
+{{ FULL_CLI_NAME }} deploy
 ```
 
 Refer to the [Deploying](deploy_apps) guide for more information on the `deploy` command and its options.

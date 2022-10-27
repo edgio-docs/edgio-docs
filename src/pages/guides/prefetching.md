@@ -10,7 +10,7 @@ title: Predictive Prefetch
 
 You might think that prefetching will put significant additional load on the infrastructure hosting your APIs. That's actually not the case! {{ PRODUCT_NAME }} only serves prefetch requests from the edge cache. It will never make a request to the origin if a prefetch request cannot be served from the edge cache, so your servers will never see an increased load.
 
-## Configuring the Service Worker {/*service-worker*/}
+## Configuring the Service Worker {/*configuring-the-service-worker*/}
 
 To enable prefetching, your site's service worker needs to use the `{{ PACKAGE_NAME }}/prefetch` library's `Prefetcher` class. If your site doesn't currently have a service worker, one can easily be created using Google's [Workbox](https://developers.google.com/web/tools/workbox).
 
@@ -87,6 +87,8 @@ prefetch('/api/products/1.json', "fetch", {
     maxAgeSeconds: 300 // 5 minutes
 });
 ```
+
+All prefetch function options can be found in its API Documentation [here](/docs/api/prefetch/modules/_window_prefetch_.html#prefetchconfiguration).
 
 ## React {/*react*/}
 
@@ -396,7 +398,7 @@ function MyProductLink({product}) {
 You can test that everything is running locally by running your project with:
 
 ```bash
-{{ CLI_NAME }} dev --cache
+{{ FULL_CLI_NAME }} dev --cache
 ```
 
 ### Advantages over Apollo's prefetch functionality {/*advantages-over-apollos-prefetch-functionality*/}
@@ -438,6 +440,6 @@ install({includeCacheMisses: true});
 
 ## The cache-manifest.js File {/*the-cache-manifestjs-file*/}
 
-This file is generated at runtime and is used by the `Prefetcher` class from `{{ PACKAGE_NAME }}/prefetch` to add routes to the [service worker](#section_service_worker). The routes ensure that custom cache keys and the `serviceWorkerSeconds` properties from the `cache()` settings in your router are propagated to the service worker.
+This file is generated at runtime and is used by the `Prefetcher` class from `{{ PACKAGE_NAME }}/prefetch` to add routes to the [service worker](#service-worker). The routes ensure that custom cache keys and the `serviceWorkerSeconds` properties from the `cache()` settings in your router are propagated to the service worker.
 
 For more information on `Prefetcher`, `serviceWorkderSeconds`, and `cache()`, see [Class Prefetcher](/docs/api/prefetch/classes/_sw_prefetcher_.prefetcher.html).

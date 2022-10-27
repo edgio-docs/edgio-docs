@@ -175,7 +175,7 @@ const pryFooterLinks = {
     },
     {
       title: 'Status',
-      href: 'https://status.layer0.co/?sgId=7bc47c45-c1d6-4189-b416-552581d86006',
+      href: 'https://status.edg.io/?sgId=7bc47c45-c1d6-4189-b416-552581d86006',
     },
     {
       title: 'Support',

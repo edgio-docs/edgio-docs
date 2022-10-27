@@ -20,12 +20,16 @@ Install the Vue Storefront application using this guide: https://docs.vuestorefr
 nvm use 14
 ```
 
-## 2. Prepare VSF files for {{ PRODUCT_NAME }} {/*2-prepare-vsf-files-for-layer0*/}
+<a id="2-prepare-vsf-files-for-layer0"></a>
+
+## 2. Prepare VSF files for {{ PRODUCT_NAME }} {/*2-prepare-vsf-files-for*/}
 
 - In the new VSF project, go to `src/themes/default` (or any theme you're using) and remove `.git` folder from it to save that in Git VCS.
 - Go to `.gitignore` file and remove `config/local.json` line to keep it tracked.
 
-## 3. Install {{ PRODUCT_NAME }} {/*3-install-layer0*/}
+<a id="3-install-layer0"></a>
+
+## 3. Install {{ PRODUCT_NAME }} {/*3-install*/}
 
 - Install {{ PRODUCT_NAME }} packages: `yarn add -D -W {{ PACKAGE_NAME }}/cli && yarn add -W {{ PACKAGE_NAME }}/core {{ PACKAGE_NAME }}/prefetch {{ PACKAGE_NAME }}/devtools`
 - Create a file called `{{ CONFIG_FILE }}` in the root directory of your project and configure your origin and images hosts as backends. For example:
@@ -55,28 +59,22 @@ module.exports = {
 import { Prefetcher } from '{{ PACKAGE_NAME }}/prefetch/sw'
 import { clientsClaim, skipWaiting } from 'workbox-core'
 import { precacheAndRoute } from 'workbox-precaching'
-import DeepFetchPlugin, {
-  DeepFetchCallbackParam,
-} from '{{ PACKAGE_NAME }}/prefetch/sw/DeepFetchPlugin'
-import { prefetch } from '{{ PACKAGE_NAME }}/prefetch/window/prefetch'
+
 skipWaiting()
 clientsClaim()
 precacheAndRoute(self.__WB_MANIFEST || [])
+
 new Prefetcher().route()
 ```
 
 - Create `{{ PRODUCT_NAME_LOWER }}/browser.js` with the following content:
 
 ```js
-import installDevtools from '{{ PACKAGE_NAME }}/devtools/install'
 import install from '{{ PACKAGE_NAME }}/prefetch/window/install'
+import installDevtools from '{{ PACKAGE_NAME }}/devtools/install'
 
 document.addEventListener('DOMContentLoaded', () => {
-  console.info('[{{ PRODUCT_NAME }} browser] DOMContentLoaded -> running install()')
-  install({
-    forcePrefetchRatio: 0.5, // forcely prefetch 50% of non-cached content for higher hit rate
-  })
-  console.info('[{{ PRODUCT_NAME }} browser] DOMContentLoaded -> running installDevtools()')
+  install()
   installDevtools()
 })
 ```
@@ -84,16 +82,19 @@ document.addEventListener('DOMContentLoaded', () => {
 - Create `{{ PRODUCT_NAME_LOWER }}/routes.js`. Here you will configure caching for each route in your application. Here is an example:
 
 ```js
-import { Router } from '{{ PACKAGE_NAME }}/core/router'
 import { CACHE_ASSETS, CACHE_PAGES } from './cache'
+import { Router } from '{{ PACKAGE_NAME }}/core/router'
 import { BACKENDS } from '{{ PACKAGE_NAME }}/core/constants'
+
 const DIST_APP = 'dist'
 const DIST_{{ PRODUCT_NAME_UPPER }}_CLIENT = 'dist-{{ PRODUCT_NAME_LOWER }}-client'
 const DIST_{{ PRODUCT_NAME_UPPER }}_ASSETS = 'dist-{{ PRODUCT_NAME_LOWER }}-assets'
+
 const SPLAT = ':path*'
 const SUFFIX_SPLAT = `:suffix/${SPLAT}`
-// //////////////////////////////////////////
+
 const router = new Router()
+
 const pages = [
   // home
   `/`,
@@ -306,11 +307,14 @@ const pages = [
   `/zoe-${SUFFIX_SPLAT}`,
   `/zoltan-${SUFFIX_SPLAT}`,
 ]
+
 // Prevent search engine bot(s) from indexing
-// Read more on: https://docs.layer0.co/guides/cookbook#blocking-search-engine-crawlers
+// Read more on: {{ DOCS_URL }}/guides/cookbook#blocking-search-engine-crawlers
 router.noIndexPermalink()
+
 // static prerendering
-router.prerender(pages.filter(page => !page.includes(SPLAT)))
+router.prerender(pages.filter(page => !page.includes(SPLAT)).map((i) => ({ path: i })))
+
 // {{ PRODUCT_NAME_LOWER }} static files
 router.get('/service-worker.js', ({ serviceWorker, cache }) => {
   cache(CACHE_ASSETS)
@@ -320,6 +324,7 @@ router.get('/main.js', ({ serveStatic, cache }) => {
   cache(CACHE_ASSETS)
   serveStatic(`${DIST_{{ PRODUCT_NAME_UPPER }}_CLIENT}/browser.js`)
 })
+
 // assets
 router.get(`/dist/${SPLAT}`, ({ serveStatic, cache }) => {
   cache(CACHE_ASSETS)
@@ -333,6 +338,7 @@ router.get(`/img/${SPLAT}`, ({ proxy, cache }) => {
   cache(CACHE_ASSETS)
   proxy('origin')
 })
+
 // api
 router.get(`/api/catalog/${SPLAT}`, ({ proxy, cache }) => {
   cache(CACHE_PAGES)
@@ -342,17 +348,20 @@ router.get(`/api/stock/${SPLAT}`, ({ proxy, cache }) => {
   cache(CACHE_PAGES)
   proxy('origin')
 })
+
 // pages
 pages.forEach(page => {
-  router.get(page, ({ cache, proxy }) => {
+  router.get(page, ({ cache, renderWithApp }) => {
     cache(CACHE_PAGES)
-    proxy(BACKENDS.js)
+    renderWithApp()
   })
 })
+
 // fallback
-router.fallback(({ proxy }) => {
-  proxy(BACKENDS.js)
+router.fallback(({ renderWithApp }) => {
+  renderWithApp()
 })
+
 export default router
 ```
 
@@ -635,11 +644,11 @@ export default {
 ...
 "{{ PRODUCT_NAME_LOWER }}:build:server": "cross-env NODE_ENV=production TS_NODE_PROJECT=\"tsconfig-build.json\" webpack --config ./core/build/webpack.{{ PRODUCT_NAME_LOWER }}.config.ts --mode production --hide-modules",
 "{{ PRODUCT_NAME_LOWER }}:build:assets": "ncp ./src/themes/default/assets ./dist-{{ PRODUCT_NAME_LOWER }}-assets",
-"{{ PRODUCT_NAME_LOWER }}:build:client": "cross-env NODE_ENV=production webpack --progress --config {{ PRODUCT_NAME_LOWER }}/webpack.{{ PRODUCT_NAME_LOWER }}.client.config.js && {{ CLI_NAME }} build",
+"{{ PRODUCT_NAME_LOWER }}:build:client": "cross-env NODE_ENV=production webpack --progress --config {{ PRODUCT_NAME_LOWER }}/webpack.{{ PRODUCT_NAME_LOWER }}.client.config.js && {{ FULL_CLI_NAME }} build",
 "{{ PRODUCT_NAME_LOWER }}:build": "yarn {{ PRODUCT_NAME_LOWER }}:build:server && yarn {{ PRODUCT_NAME_LOWER }}:build:assets && yarn {{ PRODUCT_NAME_LOWER }}:build:client",
 "{{ PRODUCT_NAME_LOWER }}:clean": "rimraf dist-{{ PRODUCT_NAME_LOWER }}-assets && rimraf dist-{{ PRODUCT_NAME_LOWER }}-client && rimraf dist-{{ PRODUCT_NAME_LOWER }}-server && rimraf .{{ PRODUCT_NAME_LOWER }}",
-"{{ PRODUCT_NAME_LOWER }}:start:prod": "{{ CLI_NAME }} run --production",
-"{{ PRODUCT_NAME_LOWER }}:deploy": "{{ CLI_NAME }} deploy --team=my-team --skip-build",
+"{{ PRODUCT_NAME_LOWER }}:start:prod": "{{ FULL_CLI_NAME }} run --production",
+"{{ PRODUCT_NAME_LOWER }}:deploy": "{{ FULL_CLI_NAME }} deploy --team=my-team --skip-build",
 ...
 ```
 

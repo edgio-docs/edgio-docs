@@ -18,14 +18,14 @@ This guide shows you how to deploy a [VitePress](https://vitepress.vuejs.org/) a
 
 If you don't already have a VitePress app, create one by following the [official guide](https://vitepress.vuejs.org/guide/getting-started.html#getting-started).
 
-## Configuring your VitePress app for {{ PRODUCT }} {/*configuring-your-vitepress-app-for-edgio*/}
+## Configuring your VitePress app for {{ PRODUCT }} {/*configuring-your-vitepress-app-for*/}
 
 ### Initialize your project {/*initialize-your-project*/}
 
-In the root directory of your project run `{{ CLI_NAME }} init`:
+In the root directory of your project run `{{ FULL_CLI_NAME }} init`:
 
 ```bash
-{{ CLI_NAME }} init
+{{ FULL_CLI_NAME }} init
 ```
 
 This will automatically update your `package.json` and add all of the required {{ PRODUCT }} dependencies and files to your project. These include:
@@ -40,14 +40,14 @@ This will automatically update your `package.json` and add all of the required {
 Update `routes.js` at the root of your project to the following:
 
 ```js
-// This file was added by {{ PRODUCT_NAME_LOWER }} init.
+// This file was added by {{ FULL_CLI_NAME }} init.
 // You should commit this file to source control.
 
-import { Router } from '@{{ PRODUCT_NAME_LOWER }}/core/router'
+import { Router } from '{{ PACKAGE_NAME }}/core/router'
 
 export default new Router()
   // Prevent search engine bot(s) from indexing
-  // Read more on: https://docs.layer0.co/guides/cookbook#blocking-search-engine-crawlers
+  // Read more on: {{ DOCS_URL }}/guides/cookbook#blocking-search-engine-crawlers
   .noIndexPermalink()
   .static('docs/.vitepress/dist', ({ cache }) => {
     cache({
@@ -65,7 +65,7 @@ export default new Router()
 
 Refer to the [Routing](routing) guide for the full syntax of the `routes.js` file and how to configure it for your use case.
 
-### Run the VitePress app locally on {{ PRODUCT }} {/*run-the-vitepress-app-locally-on-edgio*/}
+### Run the VitePress app locally on {{ PRODUCT }} {/*run-the-vitepress-app-locally-on*/}
 
 Create a production build of your app by running the following in your project's root directory:
 
@@ -76,7 +76,7 @@ yarn docs:build
 Test your app with the {{ PRODUCT_PLATFORM }} on your local machine by running the following command in your project's root directory:
 
 ```bash
-{{ CLI_NAME }} dev
+{{ FULL_CLI_NAME }} dev
 ```
 
 Load the site http://127.0.0.1:3000
@@ -92,7 +92,7 @@ yarn docs:build
 Deploy your app to the {{ PRODUCT_PLATFORM }} by running the following command in your project's root directory:
 
 ```bash
-{{ CLI_NAME }} deploy
+{{ FULL_CLI_NAME }} deploy
 ```
 
 Refer to the [Deploying](deploy_apps) guide for more information on the `deploy` command and its options.

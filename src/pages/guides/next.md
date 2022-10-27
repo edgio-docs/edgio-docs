@@ -50,7 +50,7 @@ This framework has a connector developed for {{ PRODUCT }}. See [Connectors](con
 
 {{ PREREQ }}
 
-When installing the {{ PRODUCT }} CLI globally in a virtual environment that has Node and NPM installed globally, you [may run into permission issues]({{ FORUM_URL }}/t/xdn-cli-npm-install-error/83). In that case, you can install the {{ PRODUCT }} CLI locally within your app using `npm i -D {{ PACKAGE_NAME }}/cli` and running commands using `./node_modules/{{ PACKAGE_NAME }}/cli` instead of `{{ CLI_NAME }}`.
+When installing the {{ PRODUCT }} CLI globally in a virtual environment that has Node and NPM installed globally, you [may run into permission issues]({{ FORUM_URL }}/t/xdn-cli-npm-install-error/83). In that case, you can install the {{ PRODUCT }} CLI locally within your app using `npm i -D {{ PACKAGE_NAME }}/cli` and running commands using `./node_modules/{{ PACKAGE_NAME }}/cli` instead of `{{ FULL_CLI_NAME }}`.
 
 If you run into permission issues while attempting to install the {{ PRODUCT }} CLI globally on your local development machine, these may be fixed by using [nvm](https://github.com/nvm-sh/nvm) to manage Node and NPM.
 
@@ -70,7 +70,7 @@ Initialize your project for use with {{ PRODUCT }} by running the following comm
 
 ```bash
 cd my-next-app
-{{ CLI_NAME }} init
+{{ FULL_CLI_NAME }} init
 ```
 
 This will automatically add all of the required dependencies and files to your project. These include:
@@ -85,17 +85,17 @@ This will automatically add all of the required dependencies and files to your p
 
 ## Next.js Config Plugins {/*nextjs-config-plugins*/}
 
-If your project does not have a `next.config.js` file, one will automatically be added when you run `{{ CLI_NAME }} init`. Doing so adds two plugins:
+If your project does not have a `next.config.js` file, one will automatically be added when you run `{{ FULL_CLI_NAME }} init`. Doing so adds two plugins:
 
-- `with{{ PRODUCT_LEGACY }}` (required)
+- `with{{ PRODUCT }}` (required)
 - `withServiceWorker` (optional)
 
 If your project already has this config file, you need to add these plugins yourself.
 
 ```js
-const { with{{ PRODUCT_LEGACY }}, withServiceWorker } = require('{{ PACKAGE_NAME }}/next/config')
+const { with{{ PRODUCT }}, withServiceWorker } = require('{{ PACKAGE_NAME }}/next/config')
 
-module.exports = with{{ PRODUCT_LEGACY }}(
+module.exports = with{{ PRODUCT }}(
   withServiceWorker({
     // Output source maps so that stack traces have original source filenames and line numbers when tailing
     // the logs in the {{ PRODUCT_NAME }} developer console.
@@ -104,9 +104,11 @@ module.exports = with{{ PRODUCT_LEGACY }}(
 )
 ```
 
-### with{{ PRODUCT_LEGACY }} {/*withlayer0*/}
+<a id="with"></a>
 
-The `with{{ PRODUCT_LEGACY }}` plugin optimizes the Next.js build for running on {{ PRODUCT }}. It is required to deploy your application on {{ PRODUCT }} and accepts the following parameters:
+### with{{ PRODUCT }} {/*with*/}
+
+The `with{{ PRODUCT }}` plugin optimizes the Next.js build for running on {{ PRODUCT }}. It is required to deploy your application on {{ PRODUCT }} and accepts the following parameters:
 
 - `{{ FULL_CLI_NAME }}SourceMaps`: Defaults to `false`. Set to `true` to add server-side source maps so that stack traces have original source filenames and line numbers when tailing the logs in the {{ PRODUCT_NAME }} developer console. This will increase the serverless bundle size but will not affect performance. If you find that your app exceeds the maximum serverless bundle size allowed by {{ PRODUCT_NAME }}, you can disable this option to conserve space.
 
@@ -121,23 +123,23 @@ The `with{{ PRODUCT_LEGACY }}` plugin optimizes the Next.js build for running on
 
 ### withServiceWorker {/*withserviceworker*/}
 
-The `withServiceWorker` plugin builds a service worker from `sw/service-worker.js` that prefetches and caches all static JS assets and enables {{ PRODUCT }}'s [prefetching](/guides/next#section_prefetching) functionality.
+The `withServiceWorker` plugin builds a service worker from `sw/service-worker.js` that prefetches and caches all static JS assets and enables {{ PRODUCT }}'s [prefetching](/guides/next#prefetching) functionality.
 
-## {{ PRODUCT_NAME }} Devtools {/*edgio-devtools*/}
+## {{ PRODUCT_NAME }} Devtools {/*devtools*/}
 
-By default, [Devtools](/guides/devtools) are enabled on production builds of Next.js with {{ PRODUCT }}. To disable devtools in production, add the `disableLayer0DevTools` flag:
+By default, [Devtools](/guides/devtools) are enabled on production builds of Next.js with {{ PRODUCT }}. To disable devtools in production, add the `disableEdgioDevTools` flag:
 
 ```js
-const { with{{ PRODUCT_LEGACY }}, withServiceWorker } = require('{{ PACKAGE_NAME }}/next/config')
+const { with{{ PRODUCT }}, withServiceWorker } = require('{{ PACKAGE_NAME }}/next/config')
 
-module.exports = with{{ PRODUCT_LEGACY }}(
+module.exports = with{{ PRODUCT }}(
   withServiceWorker({
     // Output source maps so that stack traces have original source filenames and line numbers when tailing
     // the logs in the {{ PRODUCT_NAME }} developer console.
     {{ FULL_CLI_NAME }}SourceMaps: true,
     // Don't include {{ PRODUCT_NAME }} Devtools in production
-    // More on {{ PRODUCT_NAME }} Devtools at https://docs.layer0.co/guides/devtools
-    disableLayer0DevTools: true,
+    // More on {{ PRODUCT_NAME }} Devtools at {{ DOCS_URL }}/guides/devtools
+    disableEdgioDevTools: true,
   })
 )
 ```
@@ -147,7 +149,7 @@ module.exports = with{{ PRODUCT_LEGACY }}(
 Test your app with the {{ PRODUCT_PLATFORM }} on your local machine by running the following command in your project's root directory:
 
 ```bash
-{{ CLI_NAME }} dev
+{{ FULL_CLI_NAME }} dev
 ```
 
 ## Deploying {/*deploying*/}
@@ -155,14 +157,14 @@ Test your app with the {{ PRODUCT_PLATFORM }} on your local machine by running t
 Deploy your app to the {{ PRODUCT_PLATFORM }} by running the following command in your project's root directory:
 
 ```bash
-{{ CLI_NAME }} deploy
+{{ FULL_CLI_NAME }} deploy
 ```
 
 See [deploying](deploy_apps) for more information.
 
 ## Prefetching {/*prefetching*/}
 
-The `{{ CLI_NAME }} init` command adds a service worker based on [Workbox](https://developers.google.com/web/tools/workbox) at `sw/service-worker.js`. If you have an existing service worker that uses workbox, you can copy its contents into `sw/service-worker.js` and simply add the following to your service worker:
+The `{{ FULL_CLI_NAME }} init` command adds a service worker based on [Workbox](https://developers.google.com/web/tools/workbox) at `sw/service-worker.js`. If you have an existing service worker that uses workbox, you can copy its contents into `sw/service-worker.js` and simply add the following to your service worker:
 
 ```js
 import {Prefetcher} from '{{ PACKAGE_NAME }}/prefetch/sw';
@@ -170,7 +172,9 @@ import {Prefetcher} from '{{ PACKAGE_NAME }}/prefetch/sw';
 new Prefetcher().route();
 ```
 
-## Adding the {{ PRODUCT_NAME }} Service Worker {/*adding-the-layer0-service-worker*/}
+<a id="adding-the-service-worker"></a>
+
+## Adding the {{ PRODUCT_NAME }} Service Worker {/*adding-the-service-worker*/}
 
 To add the {{ PRODUCT_NAME }} service worker to your app, call the `install` function from `{{ PACKAGE_NAME }}/prefetch/window` in a `useEffect` hook when the app first loads. For example, you can alter the `pages/_app.js` in your Next.js app as follows:
 
@@ -242,7 +246,7 @@ The `Prefetch` component fetches data for the linked page from {{ PRODUCT }}'s e
 
 ## Routing {/*routing*/}
 
-{{ PRODUCT }} supports Next.js's built-in routing scheme for both page and API routes, including Next.js 9's clean dynamic routes. The default `routes.js` file created by `{{ CLI_NAME }} init` sends all requests to Next.js via a fallback route:
+{{ PRODUCT }} supports Next.js's built-in routing scheme for both page and API routes, including Next.js 9's clean dynamic routes. The default `routes.js` file created by `{{ FULL_CLI_NAME }} init` sends all requests to Next.js via a fallback route:
 
 ```js
 // routes.js
@@ -251,15 +255,12 @@ import { nextRoutes } from '{{ PACKAGE_NAME }}/next';
 
 export default new Router()
   // Prevent search engine bot(s) from indexing
-  // Read more on: https://docs.layer0.co/guides/cookbook#blocking-search-engine-crawlers
+  // Read more on: {{ DOCS_URL }}/guides/cookbook#blocking-search-engine-crawlers
   .noIndexPermalink()
   .get('/service-worker.js', ({cache, serveStatic}) => {
     cache({
       edge: {
         maxAgeSeconds: 60 * 60 * 24 * 365,
-      },
-      browser: {
-        maxAgeSeconds: 0,
       },
     });
     serveStatic('.next/static/service-worker.js');
@@ -311,14 +312,12 @@ imagine you have `/pages/p/[productId].js`. Here's how you can SSR responses as 
 ```js
 new Router()
   // Prevent search engine bot(s) from indexing
-  // Read more on: https://docs.layer0.co/guides/cookbook#blocking-search-engine-crawlers
+  // Read more on: {{ DOCS_URL }}/guides/cookbook#blocking-search-engine-crawlers
   .noIndexPermalink()
   // Products - SSR
   .get('/p/:productId', ({cache}) => {
     cache({
-      browser: {
-        maxAgeSeconds: 0,
-      },
+      // Caching it only on the edge
       edge: {
         maxAgeSeconds: 60 * 60 * 24,
         staleWhileRevalidateSeconds: 60 * 60,
@@ -328,6 +327,7 @@ new Router()
   // Products - getServerSideProps
   .get('/_next/data/:version/p/:productId.json', ({cache}) => {
     cache({
+      // Allowing service worker (if present) to serve the cached responses from the browser itself
       browser: {
         maxAgeSeconds: 0,
         serviceWorkerSeconds: 60 * 60 * 24,
@@ -390,20 +390,17 @@ export async function getStaticProps({locale}) {
 Make sure you also import the config correctly with the new name into your `next.config.js`:
 
 ```js
-const { with{{ PRODUCT_LEGACY }}, withServiceWorker } = require('{{ PACKAGE_NAME }}/next/config')
+const { with{{ PRODUCT }}, withServiceWorker } = require('{{ PACKAGE_NAME }}/next/config')
 const { i18n } = require('./i18next.config')
 
-module.exports = with{{ PRODUCT_LEGACY }}(
+module.exports = with{{ PRODUCT }}(
   withServiceWorker({
-    // Output source maps so that stack traces have original source filenames and line numbers when tailing
-    // the logs in the {{ PRODUCT_NAME }} developer console.
-    {{ FULL_CLI_NAME }}SourceMaps: true,
     i18n,
   }),
 )
 ```
 
-Finally, you will need to update your `{{ CONFIG_FILE }}` to [includeFiles](/guides/layer0_config#section_includefiles) where the locale files are stored. Example using the default of `/public`:
+Finally, you will need to update your `{{ CONFIG_FILE }}` to [includeFiles](/guides/edgio_config#includefiles) where the locale files are stored. Example using the default of `/public`:
 
 ```js
 module.exports = {

@@ -2,24 +2,24 @@
 title: Connectors
 ---
 
-Connector packages help build and run your app within {{ PRODUCT_NAME }}. When you run `{{ CLI_NAME }} init`, {{ PRODUCT_NAME }} CLI detects the framework used by your app and installs the corresponding connector package. For example, if you use Next.js, `{{ PACKAGE_NAME }}/next` will be installed. If no connector package exists for the framework that you use, you can still deploy to {{ PRODUCT_NAME }} by implementing the connector interface directly in your app.
+Connector packages help build and run your app within {{ PRODUCT_NAME }}. When you run `{{ FULL_CLI_NAME }} init`, {{ PRODUCT_NAME }} CLI detects the framework used by your app and installs the corresponding connector package. For example, if you use Next.js, `{{ PACKAGE_NAME }}/next` will be installed. If no connector package exists for the framework that you use, you can still deploy to {{ PRODUCT_NAME }} by implementing the connector interface directly in your app.
 
 ## Writing a connector {/*writing-a-connector*/}
 
 A {{ PRODUCT_NAME }} connector consists of four entry points:
 
-- `init.js` - Called when the user runs `{{ CLI_NAME }} init`, adding resources to the project necessary for deploying on {{ PRODUCT_NAME }}. May also modify existing files with the project.
-- `dev.js` - Called when the user runs `{{ CLI_NAME }} dev` to run their app in development mode.
-- `build.js` - Called when the user runs `{{ CLI_NAME }} build` or `{{ CLI_NAME }} deploy`. Builds the application, copying resources into the `.{{ PRODUCT_NAME_LOWER }}` directory, which is ultimately zipped and uploaded to {{ PRODUCT_NAME }}.
+- `init.js` - Called when the user runs `{{ FULL_CLI_NAME }} init`, adding resources to the project necessary for deploying on {{ PRODUCT_NAME }}. May also modify existing files with the project.
+- `dev.js` - Called when the user runs `{{ FULL_CLI_NAME }} dev` to run their app in development mode.
+- `build.js` - Called when the user runs `{{ FULL_CLI_NAME }} build` or `{{ FULL_CLI_NAME }} deploy`. Builds the application, copying resources into the `.{{ PRODUCT_NAME_LOWER }}` directory, which is ultimately zipped and uploaded to {{ PRODUCT_NAME }}.
 - `prod.js` - Starts the application server in {{ PRODUCT_NAME }} cloud's serverless environment.
 
 These files should be placed in the root directory of your connector package.
 
 ## init.js {/*initjs*/}
 
-Called when the user runs `{{ CLI_NAME }} init`. This entry point adds resources to the project necessary for deploying on {{ PRODUCT_NAME }}. It may also modify existing files within the project.
+Called when the user runs `{{ FULL_CLI_NAME }} init`. This entry point adds resources to the project necessary for deploying on {{ PRODUCT_NAME }}. It may also modify existing files within the project.
 
-_Optional, if not provided, {{ CLI_NAME }} init will add a default router and {{ CONFIG_FILE }} to the user's project._
+_Optional, if not provided, {{ FULL_CLI_NAME }} init will add a default router and {{ CONFIG_FILE }} to the user's project._
 
 Example:
 
@@ -29,7 +29,7 @@ const { join } = require('path')
 const { DeploymentBuilder } = require('{{ PACKAGE_NAME }}/core/deploy')
 
 /**
- * Called when the user runs {{ CLI_NAME }} init.
+ * Called when the user runs {{ FULL_CLI_NAME }} init.
  */
 export default async function init() {
   new DeploymentBuilder(process.cwd())
@@ -37,7 +37,7 @@ export default async function init() {
     // These typically include the routes.js file and {{ CONFIG_FILE }}. Typescript alternatives are often provided.
     .addDefaultAppResources(join(__dirname, 'default-app'))
 
-    // Adds {{ CLI_NAME }}:* scripts to package.json
+    // Adds {{ FULL_CLI_NAME }}:* scripts to package.json
     .addDefault{{ PRODUCT_NAME }}Scripts()
 }
 ```
@@ -59,9 +59,9 @@ Additional files can be added beyond the ones listed above. They will be copied 
 
 ## dev.js {/*devjs*/}
 
-Called when the user runs `{{ CLI_NAME }} dev`. This entry point is responsible for starting the user's application in development mode. The `{{ PACKAGE_NAME }}/core` library provides a `createDevServer` function to help with this.
+Called when the user runs `{{ FULL_CLI_NAME }} dev`. This entry point is responsible for starting the user's application in development mode. The `{{ PACKAGE_NAME }}/core` library provides a `createDevServer` function to help with this.
 
-_Optional, if not provided, {{ CLI_NAME }} dev will simply start {{ PRODUCT_NAME }} in local development mode, but will not start a framework application server._
+_Optional, if not provided, {{ FULL_CLI_NAME }} dev will simply start {{ PRODUCT_NAME }} in local development mode, but will not start a framework application server._
 
 Example:
 
@@ -89,9 +89,9 @@ module.exports = function() {
 
 ## build.js {/*buildjs*/}
 
-Exports a function that is called when you run `{{ CLI_NAME }} build`. It is responsible for constructing the bundle that is deployed to the {{ PRODUCT_NAME }} cloud. This function typically uses `{{ PACKAGE_NAME }}/core/deploy/DeploymentBuilder` to stage the exploded bundle in the `.{{ PRODUCT_NAME_LOWER }}` directory.
+Exports a function that is called when you run `{{ FULL_CLI_NAME }} build`. It is responsible for constructing the bundle that is deployed to the {{ PRODUCT_NAME }} cloud. This function typically uses `{{ PACKAGE_NAME }}/core/deploy/DeploymentBuilder` to stage the exploded bundle in the `.{{ PRODUCT_NAME_LOWER }}` directory.
 
-_Optional, and not needed in most cases. The {{ CLI_NAME }} build command automatically creates a bundle that includes all static assets referenced in your routes file as well as the `prod` entry point mentioned above._
+_Optional, and not needed in most cases. The {{ FULL_CLI_NAME }} build command automatically creates a bundle that includes all static assets referenced in your routes file as well as the `prod` entry point mentioned above._
 
 Example:
 
@@ -172,22 +172,22 @@ To test your connector locally without publishing it to NPM:
 2. Create an `{{ CONFIG_FILE }}` file in the root directory of your project.
 3. Set the `connector` property to name of the connector package.
 
-Now `{{ CLI_NAME }} init`, `{{ CLI_NAME }} dev`, `{{ CLI_NAME }} build`, and `{{ CLI_NAME }} deploy` commands will use the entry points in the connector, and your `prod.js` entrypoint will be used to serve requests in the {{ PRODUCT_NAME }} cloud.
+Now `{{ FULL_CLI_NAME }} init`, `{{ FULL_CLI_NAME }} dev`, `{{ FULL_CLI_NAME }} build`, and `{{ FULL_CLI_NAME }} deploy` commands will use the entry points in the connector, and your `prod.js` entrypoint will be used to serve requests in the {{ PRODUCT_NAME }} cloud.
 
 ## Implementing a connector directly within your project {/*implementing-a-connector-directly-within-your-project*/}
 
 If your project uses a framework that isn't supported by one of the official connector packages, you can still deploy to {{ PRODUCT_NAME }} by implementing your own connector directly within your project. To do so:
 
-1. Create a directory for your connector.
+1. Create a directory for your connector (e.g., myconnector).
 2. Implement the entry points listed above.
 3. Create an `{{ CONFIG_FILE }}` file in the root directory of your project.
-4. Set the `connector` property to the relative path to the directory containing the connector
+4. Set the `connector` property to the relative path to the directory containing the connector.
 
 Example project structure:
 
 ```dir
 |—— my-project
-    | layer0 # reference this directory in the connector property in {{ CONFIG_FILE }}
+    | myconnector # reference this directory in the connector property in {{ CONFIG_FILE }}
     | dev.js
     | prod.js
     | build.js
@@ -199,8 +199,8 @@ Example {{ CONFIG_FILE }}:
 
 ```js
 module.exports = {
-  connector: './{{ PRODUCT_NAME_LOWER }}', // use the local connector located in {{ PRODUCT_NAME_LOWER }} directory
+  connector: './myconnector', // use the local connector located in the myconnector directory
 }
 ```
 
-Once the connector is in place, `{{ CLI_NAME }} dev`, `{{ CLI_NAME }} build`, and `{{ CLI_NAME }} deploy` commands will use the entry points in the connector, and your `prod.js` entrypoint will be used to serve requests in the {{ PRODUCT_NAME }} cloud.
+Once the connector is in place, `{{ FULL_CLI_NAME }} dev`, `{{ FULL_CLI_NAME }} build`, and `{{ FULL_CLI_NAME }} deploy` commands will use the entry points in the connector, and your `prod.js` entrypoint will be used to serve requests in the {{ PRODUCT_NAME }} cloud.

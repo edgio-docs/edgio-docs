@@ -63,7 +63,7 @@ To prepare your Angular application for deployment on {{ PRODUCT }}:
 Initialize your project for use with {{ PRODUCT }} by running the following command in your project's root directory:
 
 ```bash
-{{ CLI_NAME }} init
+{{ FULL_CLI_NAME }} init
 ```
 
 This will automatically add all of the required dependencies and files to your project. These include:
@@ -74,16 +74,16 @@ This will automatically add all of the required dependencies and files to your p
 - `{{ CONFIG_FILE }}`- Contains various configuration options for {{ PRODUCT }}.
 - `routes.js` - A default routes file that sends all requests to the Angular Universal server. Update this file to add caching or proxy some URLs to a different origin.
 
-#### 4. Use the right angular project {/*3-use-the-right-angular-project*/}
+#### 4. Use the right angular project {/*4-use-the-right-angular-project*/}
 
-If you have several projects and the `defaultProject` as specified in `angular.json` is not the project with the SSR build, specify the correct project with the `ANGULAR_PROJECT` environment variable. For example: `ANGULAR_PROJECT=my-ssr-project {{ CLI_NAME }} build`.
+If you have several projects and the `defaultProject` as specified in `angular.json` is not the project with the SSR build, specify the correct project with the `ANGULAR_PROJECT` environment variable. For example: `ANGULAR_PROJECT=my-ssr-project {{ FULL_CLI_NAME }} build`.
 
 ## Routing {/*routing*/}
 
-The default `routes.js` file created by `{{ CLI_NAME }} init` sends all requests to Angular server via a fallback route.
+The default `routes.js` file created by `{{ FULL_CLI_NAME }} init` sends all requests to Angular server via a fallback route.
 
 ```js
-// This file was automatically added by {{ CLI_NAME }} deploy.
+// This file was automatically added by {{ FULL_CLI_NAME }} deploy.
 // You should commit this file to source control.
 
 const { Router } = require('{{ PACKAGE_NAME }}/core/router')
@@ -100,7 +100,7 @@ imagine you have a route `/pages/c/:categoryId`:
 ```js
 new Router()
   // Prevent search engine bot(s) from indexing
-  // Read more on: https://docs.layer0.co/guides/cookbook#blocking-search-engine-crawlers
+  // Read more on: {{ DOCS_URL }}/guides/cookbook#blocking-search-engine-crawlers
   .noIndexPermalink()
   .get('/pages/c/:categoryId', ({ cache }) => {
     cache({
@@ -122,23 +122,23 @@ new Router()
 To test your app locally, run:
 
 ```bash
-{{ CLI_NAME }} run
+{{ FULL_CLI_NAME }} run
 ```
 
 You can do a production build of your app and test it locally using:
 
 ```bash
-{{ CLI_NAME }} build && {{ CLI_NAME }} run --production
+{{ FULL_CLI_NAME }} build && {{ FULL_CLI_NAME }} run --production
 ```
 
 Setting `--production` runs your app exactly as it will be when deployed to the {{ PRODUCT }} cloud.
 
-If you have several projects and the `defaultProject` in `angular.json` is not the project you would like to deploy, specify the correct project by setting the `ANGULAR_PROJECT` environment variable when running `{{ CLI_NAME }} run`.
+If you have several projects and the `defaultProject` in `angular.json` is not the project you would like to deploy, specify the correct project by setting the `ANGULAR_PROJECT` environment variable when running `{{ FULL_CLI_NAME }} run`.
 
 For example:
 
 ```json
-ANGULAR_PROJECT=my-project {{ CLI_NAME }} run
+ANGULAR_PROJECT=my-project {{ FULL_CLI_NAME }} run
 ```
 
 ## Deploying {/*deploying*/}
@@ -146,15 +146,15 @@ ANGULAR_PROJECT=my-project {{ CLI_NAME }} run
 Deploy your app to the {{ PRODUCT_PLATFORM }} by running the following command in your project's root directory:
 
 ```bash
-{{ CLI_NAME }} deploy
+{{ FULL_CLI_NAME }} deploy
 ```
 
-If you have several projects and the `defaultProject` in `angular.json` is not the project you would like to deploy, specify the correct project by setting the `ANGULAR_PROJECT` environment variable when running `{{ CLI_NAME }} deploy`.
+If you have several projects and the `defaultProject` in `angular.json` is not the project you would like to deploy, specify the correct project by setting the `ANGULAR_PROJECT` environment variable when running `{{ FULL_CLI_NAME }} deploy`.
 
 For example:
 
 ```json
-ANGULAR_PROJECT=my-project {{ CLI_NAME }} deploy
+ANGULAR_PROJECT=my-project {{ FULL_CLI_NAME }} deploy
 ```
 
 See [deploying](deploy_apps) for more information.

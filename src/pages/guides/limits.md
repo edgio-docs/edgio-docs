@@ -2,7 +2,7 @@
 title: Limits and Caveats
 ---
 
-## {{ PRODUCT_NAME }} Platform Limits {/*layer0-platform-limits*/}
+## {{ PRODUCT_NAME }} Platform Limits {/*platform-limits*/}
 
 This guide describes caveats and limits of {{ PRODUCT_NAME }} platform as applied to all projects running on it.
 
@@ -34,7 +34,7 @@ This guide describes caveats and limits of {{ PRODUCT_NAME }} platform as applie
 
 | Value | Limit     | Description                                                                                         |
 | ----- | --------- | --------------------------------------------------------------------------------------------------- |
-| Size  | Unlimited | All access logs will always be [logged](/guides/logs#section_access_logs).                          |
+| Size  | Unlimited | All access logs will always be [logged](/guides/logs#access-logs).                          |
 | Time  | 2 hours   | The minimum time that {{ PRODUCT_NAME }} guarantees that access logs will be available for reading. |
 
 ### Prohibited Headers {/*prohibited-headers*/}
@@ -62,9 +62,9 @@ Please ensure that list of dependencies in package.json contains only those pack
 Move all build-time dependencies such as webpack, babel, etc... to devDependencies, rerun npm | yarn install, and try to deploy again.
 ```
 
-Following are the possible fixes that would help you reduce serverless bundle size by better engineering. If none of these does it, feel free to raise an issue on [Edgio Forums](https://forum.layer0.co).
+Following are the possible fixes that would help you reduce serverless bundle size by better engineering. If none of these does it, feel free to raise an issue on [{{ PRODUCT }} Forums](https://forum.layer0.co).
 
-#### Possible Fix [1]: Segregating devDependencies from dependencies {/*segregate-devdependencies-from-dependencies*/}
+#### Possible Fix [1]: Segregating devDependencies from dependencies {/*possible-fix-1-segregating-devdependencies-from-dependencies*/}
 
 Typically, this is due to node_modules marked as `dependencies` when they are more appropriate in `devDependencies` within the `package.json` file. Modules marked as dependencies will be included in the serverless bundle. Dev-only modules such as `babel`, `jest`, `webpack`, etc. should be moved to `devDependencies` as shown:
 
@@ -81,7 +81,7 @@ Typically, this is due to node_modules marked as `dependencies` when they are mo
 }
 ```
 
-#### Possible Fix [2]: Segregating assets from serverless bundle {/*segregate-assets-from-serverless*/}
+#### Possible Fix [2]: Segregating assets from serverless bundle {/*possible-fix-2-segregating-assets-from-serverless-bundle*/}
 
 Additionally, this can be related to assets (such as fonts or images) that are imported into your project code. These resources are typically better referenced as static assets which are stored outside of the serverless bundle.
 
@@ -102,7 +102,7 @@ Now, you can update your code references from importing the assets to referencin
 + <div><img src="/assets/images/Image1.png"/></div>
 ```
 
-#### Possible Fix [3]: Computing which node_modules be included in the serverless bundle {/*compute-which-node-modules-to-be-included-in-serverless-bundle*/}
+#### Possible Fix [3]: Computing which node_modules be included in the serverless bundle {/*possible-fix-3-computing-which-node_modules-be-included-in-the-serverless-bundle*/}
 
 It might be possible, that [Possible Fix [1]](#segregate-devdependencies-from-dependencies) reduces your serverless bundle size, but not reduce it to less than 50 MB (250 MB Uncompresssed). Another way to identify which dependencies would be required in the runtime is to use `@vercel/nft` package (a "Node.js dependency tracing utility").
 
@@ -154,25 +154,27 @@ setNodeModules()
 Step 3. Change your existing `package.json` to have `node setNodeModules.js` before each command as follows:
 
 ```diff
-- "layer0:dev": "layer0 dev",
-- "layer0:build": "layer0 build",
-- "layer0:deploy": "layer0 deploy"
+- "{{ PRODUCT_NAME_LOWER }}:dev": "{{ FULL_CLI_NAME }} dev",
+- "{{ PRODUCT_NAME_LOWER }}:build": "{{ FULL_CLI_NAME }} build",
+- "{{ PRODUCT_NAME_LOWER }}:deploy": "{{ FULL_CLI_NAME }} deploy"
 
-+ "layer0:dev": "node setNodeModules.js && layer0 dev",
-+ "layer0:build": "node setNodeModules.js && layer0 build",
-+ "layer0:deploy": "node setNodeModules.js && layer0 deploy"
++ "{{ PRODUCT_NAME_LOWER }}:dev": "node setNodeModules.js && {{ FULL_CLI_NAME }} dev",
++ "{{ PRODUCT_NAME_LOWER }}:build": "node setNodeModules.js && {{ FULL_CLI_NAME }} build",
++ "{{ PRODUCT_NAME_LOWER }}:deploy": "node setNodeModules.js && {{ FULL_CLI_NAME }} deploy"
 ```
 
-Step 4. Change your `layer0.config.js` to have:
+Step 4. Change your `{{ CONFIG_FILE }}` to have:
 
 ```js
-// https://docs.layer0.co/guides/layer0_config
+// {{ DOCS_URL }}/guides/edgio_config
 module.exports = {
   includeFiles: require('./getNodeModules'),
 }
 ```
 
-## {{ PRODUCT_NAME }} Platform Caveats {/*layer0-platform-caveats*/}
+<a id="layer0-platform-caveats"></a>
+
+## {{ PRODUCT_NAME }} Platform Caveats {/*platform-caveats*/}
 ### NodeJS native extensions {/*nodejs-native-extensions*/}
 
 In a lof of scenarios, NodeJS native extensions might be required to perform specific tasks related to your application.
@@ -200,14 +202,14 @@ at Object.<anonymous> (/var/task/node_modules/broadcast-channel/dist/es5node/met
 ```
 
 To fix this issue, you need to instruct {{ PRODUCT_NAME }} to include the binary files that your application requires.
-This can be done by using the [`includeFiles` property  in `{{ CONFIG_FILE }}`](/guides/layer0_config#includefiles) like so:
+This can be done by using the [`includeFiles` property  in `{{ CONFIG_FILE }}`](/guides/edgio_config#includefiles) like so:
 ```js
 includeFiles: {
   'node_modules/microtime/**/*': true,
 },
 ```
 Or you could choose to bundle everything in the packages listed in the `dependencies` property of `package.json` by using
-[`includeNodeModules` property](/guides/layer0_config#includenodemodules).
+[`includeNodeModules` property](/guides/edgio_config#includenodemodules).
 
 ### Readonly filesystem in serverless runtime {/*readonly-filesystem-in-serverless-runtime*/}
 

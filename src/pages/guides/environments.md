@@ -25,10 +25,10 @@ When creating an environment, you can choose whether or not to limit deployment 
 
 ## Deploying to an Environment {/*deploying-to-an-environment*/}
 
-To deploy to an environment, you can `{{ CLI_NAME }} deploy` with the `--environment` option:
+To deploy to an environment, you can `{{ FULL_CLI_NAME }} deploy` with the `--environment` option:
 
 ```bash
-{{ CLI_NAME }} deploy <team name> --environment=<environment name>
+{{ FULL_CLI_NAME }} deploy <team name> --environment=<environment name>
 ```
 
 You can also promote any existing deployment to an environment using the _PROMOTE TO ENVIRONMENT_ button at the top of the deployment view:
@@ -71,7 +71,7 @@ You can create environment variables on a {{PRODUCT_NAME}} environment basis. En
 * User-defined - see [Creating and Editing Environment Variables](#creating-environment-variables)
 * Built-in - see [Built-in Environment Variables](#built-in-environment-variables)
 
-### Creating and Editing Environment Variables {/*creating-environment-variables*/}
+### Creating and Editing Environment Variables {/*creating-and-editing-environment-variables*/}
 
 1. Navigate to your site and select the _ENVIRONMENTS_ tab:
 
@@ -126,11 +126,11 @@ To add or edit environment variables, you must create a new environment version 
 
 ### Accessing Environment Variables {/*accessing-environment-variables*/}
 
-#### At Build Time {/*accessing-environment-variables-at-build-time*/}
+#### At Build Time {/*at-build-time*/}
 
-When you deploy to an environment using a deploy token, for example by running `{{ CLI_NAME }} deploy my-team --environment=production --token=(my token)` option, all environment variables are pulled down from the {{ PRODUCT_NAME }} Developer Console and applied to `process.env` so they can be accessed at build time. This allows you to store all of your build and runtime secrets in a single place, the {{ PRODUCT_NAME }} Developer Console, rather than storing some in your CI system's secret manager.
+When you deploy to an environment using a deploy token, for example by running `{{ FULL_CLI_NAME }} deploy my-team --environment=production --token=(my token)` option, all environment variables are pulled down from the {{ PRODUCT_NAME }} Developer Console and applied to `process.env` so they can be accessed at build time. This allows you to store all of your build and runtime secrets in a single place, the {{ PRODUCT_NAME }} Developer Console, rather than storing some in your CI system's secret manager.
 
-#### At Run Time {/*accessing-environment-variables-at-run-time*/}
+#### At Run Time {/*at-run-time*/}
 
 The variables you configure on an environment can be accessed in your code using `process.env`. A common use case is to configure
 different backend host names in `{{ CONFIG_FILE }}` based on the environment. Here is an example where the origin backend is determined

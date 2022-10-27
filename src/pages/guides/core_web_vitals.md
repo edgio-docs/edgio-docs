@@ -17,9 +17,11 @@ be tracked via [Google Search Console](https://search.google.com/search-console/
 
 - It can take days to weeks to see the effect of changes to your site on Core Web Vitals.
 - It's hard to diagnose Core Web Vitals by page type or URL.
-- It's impossible to A/B test the impact of site optimizations on Core Web Vitals. Note that to effectively A/B test performance optimizations you need both a RUM measurement tool and A/B testing at the edge, both of which {{ PRODUCT_NAME }} provides.
+- It's impossible to A/B test the impact of site optimizations on Core Web Vitals. Note that to effectively A/B test performance optimizations you need both a RUM measurement tool and split testing at the edge, both of which {{ PRODUCT_NAME }} provides. 
 
-## Why use {{ PRODUCT_NAME }} to track Core Web Vitals? {/*why-use-layer0-to-track-core-web-vitals*/}
+<a id="why-use-layer0-to-track-core-web-vitals"></a>
+
+## Why use {{ PRODUCT_NAME }} to track Core Web Vitals? {/*why-use-to-track-core-web-vitals*/}
 
 Instead of relying solely on Google Search Console, we recommend tracking Core Web Vitals using {{ PRODUCT_NAME }} so that you can:
 
@@ -45,7 +47,7 @@ To add Core Web Vitals tracking via a script tag, add the following to each page
     }).collect()
   }
 </script>
-<script src="https://rum.{{ DOMAIN }}/latest.js" defer onload="initRum()"></script>
+<script src="https://rum.{{ DOMAIN_LEGACY }}/latest.js" defer onload="initRum()"></script>
 ```
 
 ### Google Tag Manager {/*google-tag-manager*/}
@@ -58,7 +60,7 @@ To add Core Web Vitals tracking via a script tag, add the following to each page
     }).collect()
   }
   var rumScriptTag = document.createElement('script')
-  rumScriptTag.src = 'https://rum.{{ DOMAIN }}/latest.js'
+  rumScriptTag.src = 'https://rum.{{ DOMAIN_LEGACY }}/latest.js'
   rumScriptTag.setAttribute('defer', '')
   rumScriptTag.type = 'text/javascript'
   rumScriptTag.onload = initMetrics
@@ -71,7 +73,7 @@ To add Core Web Vitals tracking via a script tag, add the following to each page
 To install the Core Web Vitals library using npm, run:
 
 ```bash
-npm install --save {{ PACKAGE_NAME }}/rum
+npm install {{ PACKAGE_NAME }}/rum
 ```
 
 Or, using yarn:
@@ -94,10 +96,10 @@ new Metrics({
 
 You can tie URLs to page templates by providing an optional `router` parameter to `Metrics`.
 
-When installing {{ PACKAGE_NAME }}/rum using a script tag, use:
+When installing `{{ PACKAGE_NAME }}/rum` using a script tag, use:
 
 ```js
-new {{ PRODUCT_NAME }}.Metrics({
+new {{ RUM_NS }}.Metrics({
   // get this from {{ APP_URL }}
   token: 'your-token-here',
 
@@ -109,7 +111,7 @@ new {{ PRODUCT_NAME }}.Metrics({
 }).collect()
 ```
 
-When installing {{ PACKAGE_NAME }}/rum via NPM or Yarn use:
+When installing `{{ PACKAGE_NAME }}/rum` via NPM or Yarn use:
 
 ```js
 import { Router } from '{{ PACKAGE_NAME }}/rum/Router'
@@ -127,20 +129,20 @@ new Metrics({
 }).collect()
 ```
 
-The router supports the same pattern syntax as Express. Here's more information on [routing syntax](/guides/routing#section_route_pattern_syntax).
+The router supports the same pattern syntax as Express. Here's more information on [routing syntax](/guides/routing#route-pattern-syntax).
 
 For non single page applications (e.g. traditional "multi-page apps"), you can also explicitly set the page label by passing a `pageLabel` property during initialization. An example is shown below where the `pageLabel` is pulled from `document.title`:
 
 ```js
 <script>
   function initMetrics() {
-    new {{ PRODUCT_NAME }}.Metrics({
+    new {{ RUM_NS }}.Metrics({
       token: 'your-token-here',
       pageLabel: document.title ? document.title : "(No title)",
     }).collect();
   }
   var rumScriptTag = document.createElement('script');
-  rumScriptTag.src = "https://rum.{{ DOMAIN }}/latest.js";
+  rumScriptTag.src = "https://rum.{{ DOMAIN_LEGACY }}/latest.js";
   rumScriptTag.setAttribute("defer", "");
   rumScriptTag.type = "text/javascript";
   rumScriptTag.onload = initMetrics;
@@ -153,7 +155,7 @@ For non single page applications (e.g. traditional "multi-page apps"), you can a
 You can tie the following data to Core Web Vitals:
 
 ```js
-new {{ PRODUCT_NAME }}.Metrics({
+new {{ RUM_NS }}.Metrics({
   // Rather than providing a router, you can also define the page label for each page explicitly.
   // Use this option if it is more convenient to add the script tag to each page template individually
   // rather than adding it to the main application template.
@@ -175,4 +177,17 @@ new {{ PRODUCT_NAME }}.Metrics({
   // This is automatically set for sites that are deployed on {{ PRODUCT_NAME }}.
   country: 'US',
 })
+```
+
+
+## Custom cache TTL {/*custom-cache-ttl*/}
+
+Information about routes is fetched from `/__edgio__/cache-manifest.js` file and then cached in `localStorage`.
+The default expiration time is set to 1 hour and it's possible to change it by providing `cacheManifestTTL` option.
+
+```js
+new Metrics({
+      token: 'my-edgio-rum-token',
+      cacheManifestTTL: 300 // 5 minutes
+}).collect()
 ```

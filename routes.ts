@@ -1,8 +1,10 @@
 import {isProductionBuild} from '@edgio/core/environment';
 import {Router, CustomCacheKey} from '@edgio/core/router';
 import {nextRoutes} from '@edgio/next';
+import {Downloader as GithubDownloader} from 'github-download-directory';
 import semverMaxSatisfying from 'semver/ranges/max-satisfying';
 
+import {archiveRoutes} from './layer0/plugins/ArchiveRoutes';
 import prerenderRequests from './prerender';
 
 const key = new CustomCacheKey().excludeAllQueryParametersExcept('query');
@@ -117,6 +119,10 @@ const router = new Router()
       removeUpstreamResponseHeader('cache-control');
     }
   })
+  .match('/google59b36cb2cb9e8c0a.html', ({send, cache}) => {
+    cache(htmlCacheConfig);
+    send('google-site-verification: google59b36cb2cb9e8c0a.html');
+  })
   .match('/service-worker.js', ({serviceWorker}) => {
     return serviceWorker('.next/static/service-worker.js');
   })
@@ -209,8 +215,30 @@ redirects.forEach(([from, to, statusCode]) => {
 router.match('/:path*', ({cache}) => {
   cache(htmlCacheConfig);
 });
-router.use(nextRoutes).fallback(({redirect}) => {
-  return redirect('/', 302);
-});
+
+router
+  .use(
+    archiveRoutes.addRoute(
+      '/archive/github/:owner/:repo/:path*',
+      async (req) => {
+        const {owner, repo, path} = req.params || {};
+        const downloader = new GithubDownloader({
+          github: {auth: process.env.GITHUB_API_TOKEN},
+        });
+
+        const flatPath = (path as string[]).join('/');
+        const result = await downloader.fetchFiles(owner, repo, flatPath);
+
+        return result.map(({path, contents}) => ({
+          path: path.split(flatPath)[1],
+          data: contents,
+        }));
+      }
+    )
+  )
+  .use(nextRoutes)
+  .fallback(({redirect}) => {
+    return redirect('/', 302);
+  });
 
 export default router;

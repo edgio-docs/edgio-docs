@@ -2,7 +2,7 @@
 title: A/B Testing
 ---
 
-{{ PRODUCT_NAME }} makes it easy to conduct A/B testing without performance penalties by executing splits at the edge through an easy-to-use yet powerful interface. A/B Testing, also known as split testing, is a marketing experiment wherein you split your audience to test a number of variations of canary deploys, blue-green tests, iterative migration off of a legacy website, personalization, and more. A/B and split testing are fundamentally the same, but the context in which they are used may differ by name. Multivariate testing is a subset of A/B testing.
+{{ PRODUCT_NAME }} makes it easy to conduct A/B testing without performance penalties by executing splits at the edge through an easy-to-use yet powerful interface. A/B Testing, also known as split testing, is a marketing experiment wherein you split your audience to test a number of variations. This may include canary deploys, blue-green tests, iterative migration off of a legacy website, personalization, and more. A/B and split testing are fundamentally the same, but the context in which they are used may differ by name.
 
 ## How A/B Testing Works {/*how-split-testing-works*/}
 
@@ -19,9 +19,9 @@ To A/B test multiple implementations of the same site, simply deploy each implem
 
 To use Continuous Integration (CI) to deploy A/B tests we recommend that you:
 
-1. Set up separate branches in source control for the main experience and the new experience, for example `master` and `preview`.
+1. Set up separate branches in source control for the main experience and the new experience, for example `main` and `preview`.
 2. Create environments called `production` and `preview` in the {{ PRODUCT_NAME }} Developer Console.
-3. Configure CI to deploy the `master` branch to the `production` environment and the `preview` branch to the `preview` environment. (Using `{{ FULL_CLI_NAME }} deploy --environment={environment name}`).
+3. Configure CI to deploy the `main` branch to the `production` environment and the `preview` branch to the `preview` environment. (Using `{{ FULL_CLI_NAME }} deploy --environment={environment name}`).
 
 ### Limitations {/*limitations*/}
 

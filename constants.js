@@ -5,6 +5,7 @@ const PRODUCT_LEGACY = 'Layer0';
 const PRODUCT_EDGE = 'App Edge';
 const PRODUCT_PLATFORM = 'App Platform';
 const PRODUCT_SECURITY = 'App Security';
+const PRODUCT_SECURITY_ADVANCED_BOT = 'Advanced Bot Management';
 const PRODUCT_NAME_LOWER = PRODUCT.toLowerCase();
 const PRODUCT_NAME_UPPER = PRODUCT.toUpperCase();
 const PRODUCT_LEGACY_LOWER = PRODUCT_LEGACY.toLowerCase();
@@ -124,6 +125,7 @@ module.exports = {
   PRODUCT_NAME_LOWER,
   PRODUCT_NAME_UPPER,
   PRODUCT_LEGACY_LOWER,
+  PRODUCT_SECURITY_ADVANCED_BOT,
   APP_DOMAIN,
   APP_URL,
   CLI_NAME,

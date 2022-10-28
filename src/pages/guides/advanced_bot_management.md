@@ -17,18 +17,24 @@ visitors.
 
 Use our Real-Time dashboard to gain insight into:
 
--   **Visitor Patterns:** Review real-time visitor patterns over the last few minutes, hours, or even days. Visitors are tracked according to whether they were blocked (i.e., mitigated), trusted, or allowed to pass through our network after inspection (i.e., unmitigated). Look for a sudden
+-   **Visitor Patterns:** Review near real-time visitor patterns over the last few minutes, hours, or even days. Visitors are tracked according to whether they were blocked (i.e., mitigated), trusted, or allowed to pass through our network after inspection (i.e., unmitigated). Look for a sudden
 increase in traffic levels, since that can be a precursor to something more concerning.
 -   **Total Traffic Percentage:** Compare aggregate mitigated and unmitigated traffic levels against total traffic.
 -   **Additional Statistics:** View statistics for the top countries, data centers, and user agents as determined by total traffic.
 
-![](/images/advanced-bot-management/real-time-dashboard.png)
-
-<Callout type="info">
+<Callout type="tip">
 
   Cross-reference unexpected spikes or dips in the Real-Time dashboard with the Scrapers dashboard.
 
 </Callout>
+
+<Callout type="info">
+
+  This dashboard is updated every minute with data from 3 minutes ago.
+
+</Callout>
+
+![](/images/advanced-bot-management/real-time-dashboard.png)
 
 By default, this dashboard displays activity for the current day. Perform the following steps to adjust the dashboard's date range:
 
@@ -44,7 +50,7 @@ By default, this dashboard displays activity for the current day. Perform the fo
 Use the Scrapers dashboard to analyze data scraping activity. This activity is broken down by:
 
 -   **Identified Scraper / Total Requests:** Review total data scraping requests and compare that to total traffic requests.
--   **Scraper Activity:** Review real-time scraping activity over the last few minutes, hours, or even days.
+-   **Scraper Activity:** Review scraping activity over the last few minutes, hours, or even days.
 -   **Additional Statistics:** Review scraping activity by data center, country, and user agent.
 
 ![](/images/advanced-bot-management/scrapers.png)

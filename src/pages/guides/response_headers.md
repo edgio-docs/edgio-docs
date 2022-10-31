@@ -18,15 +18,15 @@ This guide describes the headers that {{ PRODUCT_NAME }} injects into responses,
 -   `{{ HEADER_PREFIX }}-components`: Indicates the version for each POP component that processed the request and the environment ID. This response header is primarily meant for internal use when troubleshooting issues. 
 <!-- `{{ HEADER_PREFIX }}-components: eh=0.1.6,e=atl,ec=1.1.0,ed=1.0.1,gh=0.1.6,g=hef,gd=1.0.1,p=1.21.10,w=3.11.0,wi=e8ce8753-163d-4be9-a39e-40454ace5146,b=serverless`
 -->
--   `{{ HEADER_PREFIX }}-hit-request-id`: Indicates the request's unique ID. This response header is only returned for cached responses. 
+-   `{{ HEADER_PREFIX }}-hit-request-id`: If the response is served from cache, this header indicates the unique ID of the request whose response was cached. 
 -   `{{ HEADER_PREFIX }}-request-id`: Indicates the request's unique ID.
--   [{{ HEADER_PREFIX }}-status](#x-0-status-response-header): Contains a comma-delimited list of HTTP status codes for each POP component that processed the request. 
+-   [{{ HEADER_PREFIX }}-status](#-status-response-header): Contains a comma-delimited list of HTTP status codes for each POP component that processed the request. 
 
 -   `{{ HEADER_PREFIX }}-surrogate-key`: Contains a space-delimited list of surrogate keys (cache tags). <!-- that can be injected when needed into your backend responses -->
 
     [Learn more.](/guides/purging#surrogate-keys)
--   [{{ HEADER_PREFIX }}-t](#x-0-t-response-header): Contains time measurements for each {{ PRODUCT }} component through which a request was routed. It also provides cache status information for edge and global POPs. 
--   [{{ HEADER_PREFIX }}-version](#x-0-version-response-header): Describes the {{ PRODUCT }} deployment.
+-   [{{ HEADER_PREFIX }}-t](#-t-response-header): Contains time measurements for each {{ PRODUCT }} component through which a request was routed. It also provides cache status information for edge and global POPs. 
+-   [{{ HEADER_PREFIX }}-version](#-version-response-header): Describes the {{ PRODUCT }} deployment.
 
 ### {{ HEADER_PREFIX }}-status Response Header {/*-status-response-header*/}
 

@@ -4,11 +4,11 @@ title: Traffic Splitting
 
 <Callout type="info">
 
-  You can also use traffic splitting for <Link href="/guides/split_testing">Split Testing</Link>.
+  You can also use traffic splitting for <Link href="/guides/split_testing">A/B Testing</Link>.
 
 </Callout>
 
-{{ PRODUCT }} makes it easy to split traffic without performance penalties by executing splits at the edge through an easy-to-use yet powerful interface. Traffic splitting can be used for canary deployments, Blue/Green deployments, iterative migration off of a legacy website, personalization, and more.
+{{ PRODUCT_NAME }} makes it easy to conduct A/B testing without performance penalties by executing splits at the edge through an easy-to-use yet powerful interface. A/B Testing, also known as split testing, is a marketing experiment wherein you split your audience to test a number of variations of canary deploys, blue-green tests, iterative migration off of a legacy website, personalization, and more.
 
 Iterative site migrations allow you to mitigate risk as you migrate a site. You can recover quickly if there is an error and ensure that you do not experience downtime during the migration.
 

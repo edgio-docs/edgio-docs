@@ -94,3 +94,5 @@ export * from './IconVue';
 export * from './IconVueStorefront';
 export * from './IconWebAppCDN';
 export * from './IconZola';
+
+export {FaWordpress as IconWordPress} from 'react-icons/fa';

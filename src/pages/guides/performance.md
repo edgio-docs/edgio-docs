@@ -6,7 +6,7 @@ This guide shows you how to monitor and improve the performance of your applicat
 
 ## Built-in Timings {/*built-in-timings*/}
 
-All responses contain an [{{ HEADER_PREFIX }}-t](/guides/response_headers#x-0-t-response-header) header that contains the time the request spent at each layer of the {{ PRODUCT_NAME }} stack.
+All responses contain an [{{ HEADER_PREFIX }}-t](/guides/response_headers#-t-response-header) header that contains the time the request spent at each layer of the {{ PRODUCT_NAME }} stack.
 
 ## Tracking your Own Timings {/*tracking-your-own-timings*/}
 

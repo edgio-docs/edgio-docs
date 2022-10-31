@@ -172,8 +172,6 @@ import {Prefetcher} from '{{ PACKAGE_NAME }}/prefetch/sw';
 new Prefetcher().route();
 ```
 
-<a id="adding-the-service-worker"></a>
-
 The code above allows you to prefetch pages from {{ PRODUCT }}'s edge cache to greatly improve browsing speed. To prefetch a page, add the `Prefetch` component from `{{ PACKAGE_NAME }}/react` to any Next `Link` element. The example below shows you how to prefetch JSON data from `getServerSideProps` or `getStaticProps` using the `createNextDataUrl` function from `{{ PACKAGE_NAME }}/next/client`.
 
 ```js

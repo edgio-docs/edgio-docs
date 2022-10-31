@@ -2,233 +2,209 @@
 title: Logs
 ---
 
-The {{ PRODUCT_NAME }} platform exposes three types of logs to users:
+{{ PRODUCT }} provides the following types of log data:
 
-- [Build logs](#build-logs) capture all the build output from your {{ PRODUCT_NAME }} deploys.
-- [Server logs](#server-logs) capture your {{ PRODUCT_NAME }} serverless console output at real time.
-- [Access logs](#access-logs) capture information about all the requests served by {{ PRODUCT_NAME }}.
+- [Build logs](#build-logs) capture the build output from your {{ PRODUCT }} deployments.
+- [Server logs](#server-logs) captures console messages defined within your application and data logged by Deep Request Inspection.
+- [Access logs](#access-logs) describes requests served by {{ PRODUCT }}.
 
 ## Build Logs {/*build-logs*/}
 
-Each time you deploy to {{ PRODUCT_NAME }} using the `{{ FULL_CLI_NAME }} deploy` command, information about the deployment is logged, including the output of the `{{ FULL_CLI_NAME }} deploy` command itself. You can view these logs in real-time by viewing your deployment on [{{ APP_DOMAIN }}]({{ APP_URL }}).
+{{ PRODUCT }} captures deployment information and the build output whenever you run the `{{ FULL_CLI_NAME }} deploy` command. You may view this log data from within the {{ PORTAL }}  either in real time or after the deployment has completed by loading the desired deployment and then scrolling down to the `DEPLOYMENT` tab.
 
 ![build](/images/logs/build.png)
 
-## Server Logs {/*server-logs*/}
+## Serverless Compute Console Logs (Server Logs) {/*server-logs*/}
 
-All messages logged using `console.log`, `console.warn`, `console.error`, etc... within your application can be viewed in real time from the "Server" tab on any deployment:
+Serverless Compute supports the ability to log console messages. Console messages are defined within your application using methods, such as `console.log()`, `console.warn()`, and `console.error()`. 
+
+[Learn more about the console object.](https://developer.mozilla.org/en-US/docs/Web/API/console) 
+
+You may view these console messages in real time or as log data.
+
+-   **Real Time:** From within the {{ PORTAL }}, load the desired deployment and then click on the `SERVER` tab. Focus on specific data by limiting the output to your IP address or through a regular expression. 
+-   **Log Data:** Retrieve log data from an AWS S3 bucket.
+
+    <Callout type="info">
+
+      Access to log data requires an Enterprise account. {{ ACCOUNT_UPGRADE }}
+
+    </Callout>
+
+    - Availability for this log data is only guaranteed for 2 hours. 
+    - Use the following environment-specific data, which is available from the desired environment's **Logs** tab, to access log data:
+        - Base AWS S3 bucket URL (Server Logs)
+        - Key ID
+        - Secret access key
 
 ![server](/images/logs/server.png)
 
-Here you can limit the output to only those statements coming from your IP address, or filter by regex. This can use useful when trying to sift through noisy logs on high-traffic sites.
+[View log field definitions.](#serverless-compute-console-and-dri-log-fields)
 
-### Deep Request Inspection {/*deep-request-inspection*/}
+### Deep Request Inspection (DRI) {/*deep-request-inspection*/}
 
 <Video src="https://www.youtube.com/watch?v=M0KPpX89nO4"/>
 
-By enabling Deep Request Inspection in your environment, you can also see the headers and body of every request and response served by your application via the {{ PRODUCT }} serverless cloud. You can also see each upstream API request made by your application. To enable Deep Request Inspection, navigate to the environment in the {{ PRODUCT }} Developer Console, select the configuration tab, click "Edit" and enable "Deep Request Inspection" in the Debugging section.
+<Callout type="info">
 
-![Deep Request Inspection](/images/logs/http-request-logging.png)
+  Deep Request Inspection (DRI) requires enablement for each desired environment.
 
-Finally, activate the new environment configuration and tail the server logs on any deployment to see detailed information about every request served by that deployment.
+</Callout>
 
-## Setting up Log Aggregation Tools {/*setting-up-log-aggregation-tools*/}
+Use DRI to view the headers and body for:
+-   Every request served through {{ PRODUCT }} Serverless Compute.
+-   Each upstream API request made by your application.
 
-{{ PRODUCT_NAME }} saves its logs to Amazon S3. Most log aggregation tools are able to ingest logs from S3. We attempt to link to the docs that explain how to ingest logs from S3 for each popular log aggregation tool below. Even if your tool is not listed, there's a good chance it can ingest logs from S3.
+<Callout type="warning">
+
+  {{ PRODUCT }} automatically scrubs Social Security Numbers and common credit card formats from our log data. However, it is unaware of other personally identifiable information (PII). Any team member that has been assigned the Admin role will have access to this data.
+
+</Callout>
+
+One use case for DRI is to analyze traffic during a deployment by tailing the server logs for that environment.
+
+**To enable Deep Request Inspection**
+
+1.  From within the {{ PORTAL }}, navigate to the desired environment.
+2.  Click the **Configuration** tab.
+3.  From the banner at the top of the page, click **Edit v#**.
+4.  Mark the **Deep Request Inspection is disabled** option.
+5.  From the banner at the top of the page, click **Activate**.
+
+### Serverless Compute Console <!-- and DRI --> Log Fields {/*serverless-compute-console-and-dri-log-fields*/}
+
+<Callout type="info">
+
+  Access to log data requires an Enterprise account. {{ ACCOUNT_UPGRADE }}
+
+</Callout>
+
+Log data for Serverless Compute console messages <!-- and DRI --> may contain the following fields:
+
+-   **awsTag:** <a id="awsTag" /> Reserved for future use.
+-   **clientIp:** <a id="clientIp" /> Indicates the IP address (IPv4 or IPv6) for the computer that submitted the request.
+-   **requestId:** <a id="requestId" /> Indicates the request's unique ID.
+-   **fn:** <a id="fn" /> Indicates the ID of the AWS Lambda function.
+-   **level:** <a id="level" /> Indicates the severity of the console message or log data type. Valid values are:
+
+    -   **60:** Fatal. This severity, which requires immediate attention, typically indicates that your application will stop or become unusable soon. 
+    -   **50:** Error. This severity typically indicates that the request was unsuccessful. Errors require investigation and remediation to ensure optimal performance for all users.
+    -   **40:** Warn. This severity typically indicates an issue that should be investigated as time allows.
+    -   **30:** Info. This severity indicates information describing normal operation within your application.
+    -   **20:** Debug. This severity contains more detailed information than Info console messages. 
+    -   **10:** Trace. This severity is indicative of detailed application logging or log data generated by an external library used by your application.
+
+-   **rg:** <a id="rg" /> Requires {{ PRODUCT }} version 5.0.3 or higher. Indicates the region where the Lambda instance that ran your serverless code is hosted.
+-   **time:** <a id="time" /> Indicates the Unix time, in milliseconds, at which the request was submitted.
+-   **wi:** Requires {{ PRODUCT }} version 5.0.3 or higher. Indicates the unique ID of the Lambda instance that ran your serverless code.
+
+<!--
+-   **data:** <a id="data" /> Contains additional information about the request logged by [Deep Request Inspection](#deep-request-inspection).
+    -   **headers:** <a id="headers" /> Contains request headers.
+    -   **method:** <a id="method" /> Indicates the request's HTTP method (e.g., `GET`, `HEAD`, and `POST`).
+    -   **path:** <a id="path" /> Indicates the URL path for the content that was requested, posted, or deleted. This URL, which excludes the query string, is reported as a relative path that starts directly after the hostname.
+    -   **protocol:** <a id="protocol" /> Indicates the request's scheme. Valid values are:
+
+        `http: | https:`
+
+
+level:
+    -   **100 - 104:** Indicates log data generated as a result of Deep Request Inspection.
+
+-->
+
+## Access Logs {/*access-logs*/}
+
+<Callout type="info">
+
+  Access to log data requires an Enterprise account. {{ ACCOUNT_UPGRADE }}
+
+</Callout>
+
+Our access log data describes each request served by {{ PRODUCT }}. 
+-   Availability for this log data is only guaranteed for 2 hours. 
+-   Use the following environment-specific data, which is available from the desired environment's **Logs** tab, to access log data:
+    - Base AWS S3 bucket URL
+    - Key ID
+    - Secret access key
+
+![access](/images/logs/access.png)
+
+### Access Log Fields {/*access-log-fields*/}
+
+Access logs contain the following fields:
+
+-   **ac:** <a id="ac" /> Reserved for future use.
+-   **asn:** <a id="asn" /> Reserved for future use.
+-   **be:** <a id="be" /> Identifies the backend associated with the route that corresponds to this request. The name for this backend is defined within your `{{ CONFIG_FILE }}` file's `backends` structure.
+-   **bip:** <a id="bip" /> Indicates the IP address of the backend that responded to the request.
+-   **bk:** <a id="bk" /> Indicates the value associated with the `edgio_bucket` cookie. This cookie reports the random number assigned to a user when A/B Testing has been enabled. 
+-   **bld:** <a id="bld" /> Indicates the application's build number.
+-   **bot:** <a id="bot" /> Indicates whether the request was generated by a bot. 
+-   **br:** <a id="br" /> Indicates the type of browser (e.g., chrome, safari, firefox, and generic).
+-   **bse:** <a id="bse" /> Reserved for future use.
+-   **cc:** <a id="cc" /> Indicates the code for the country from which the request originated.
+-   **ce:** <a id="ce" /> Reserved for future use.
+-   **clv:** <a id="clv" /> Indicates the level at which the request was served from cache. Returns `0` for a cache miss. 
+-   **code:** <a id="code" /> Indicates the HTTP status code for the response.
+-   **cs:** <a id="cs" /> Indicates whether the response was cached or the reason why it was not cached. [Learn more.](/guides/caching#why-is-my-response-not-being-cached)
+-   **ct:** <a id="ct" /> Indicates the response's media type (aka content type).
+-   **cv:** <a id="cv" /> Reserved for future use.
+-   **cy:** <a id="cy" /> Reserved for future use.
+-   **done:** <a id="done" /> Indicates whether the client was able to complete the request. This field is analogous to Nginx's `499` error code. Returns `1` for completed requests and `0` for uncompleted requests.
+-   **ds:** <a id="ds" /> Indicates the A/B testing destination assigned to this request. Returns `default` if a destination has not been assigned to this request or when you have not configured A/B testing. 
+-   **dv:** <a id="dv" /> Indicates the type of device (e.g., desktop, smartphone, tablet, and mobile) that submitted the request.
+-   **eid:** <a id="eid" /> Indicates the system-defined ID for the {{ PRODUCT }} environment through which the request was processed.
+-   **er:** <a id="er" /> Indicates whether we sent a custom response as a result of the [send method](routing#route-execution). Returns `1` for custom responses and `0` for all other responses.
+-   **ev:** <a id="ev" /> Indicates the version for the {{ PRODUCT }} environment through which the request was processed.
+-   **h2:** <a id="h2" /> Indicates whether the connection between the client and our network is HTTP/2. Returns `1` for HTTP/2 and `0` for HTTP/1.1.
+-   **hh:** <a id="hh" /> Indicates the `Host` header value submitted by the client. 
+-   **hrid:** <a id="hrid" /> If the response is served from cache, this field indicates the unique ID of the request whose response was cached. This value matches the ID reported by the [`{{ HEADER_PREFIX }}-hit-request-id` response header](response_headers#reserved-response-headers).
+-   **ic:** <a id="ic" /> Indicates whether this request was eligible to be cached. This field does not indicate whether the response was actually cached.
+-   **ip:** <a id="ip" /> Indicates the client's IP address.
+-   **jwt:** <a id="jwt" /> Reserved for future use.
+-   **lo:** <a id="lo" /> Reserved for future use.
+-   **lp:** <a id="lp" /> Reserved for future use.
+-   **lt:** <a id="lt" /> Reserved for future use.
+-   **met:** <a id="met" /> Indicates the request's HTTP method (e.g., `GET`, `HEAD`, and `POST`).
+-   **pc:** <a id="pc" /> Reserved for future use.
+-   **pre:** <a id="pre" /> Indicates whether the request was prefetched. Returns `1` for requests that have the `{{ COOKIE_PREFIX }}_prefetch=1` query string parameter and `0` for all other requests.
+-   **prl:** <a id="prl" /> Reserved for future use.
+-   **prod:** <a id="prod" /> Reserved for future use.
+-   **psh:** <a id="psh" /> Indicates whether this response was sent due to HTTP/2 server push. Returns `1` for a HTTP/2 server push and `0` for client-driven requests.
+-   **rfr:** <a id="rfr" /> Indicates the value for the `Referer` request header.
+-   **rid:** <a id="rid" /> Indicates the system-defined ID assigned to the request. 
+-   **s_rq:** <a id="s_rq" /> Indicates the size, in bytes, of the request.
+-   **s_rs:** <a id="s_rs" /> Indicates the size, in bytes, of the response.
+-   **sc:** <a id="sc" /> Reserved for future use.
+-   **sec:** <a id="sec" /> Reserved for future use.
+-   **sh:** <a id="sh" /> Returns `1` for requests that were shielded by a global POP and `0` for all other requests.
+-   **ssl:** <a id="ssl" /> Reserved for future use.
+-   **stl:** <a id="stl" /> Indicates whether a cached response was stale. Returns `1` when the Time-To-Live (TTL) for the cached response has expired. Returns `0` for all other requests. 
+-   **t:** <a id="t" /> Reserved for future use.
+-   **timestamp:** <a id="timestamp" /> Indicates the Unix time, in milliseconds, at which our network received the request. 
+-   **ttl:** <a id="ttl" /> Indicates the Time-To-Live (TTL) for a cached response. 
+-   **ua:** <a id="ua" /> Indicates the user agent that submitted the request. 
+-   **url:** <a id="url" /> Indicates the URL path for the content that was requested, posted, or deleted. This URL, which excludes the query string, is reported as a relative path that starts directly after the hostname.
+-   **uv:** <a id="uv" /> Indicates the `Vary` response header value as received from the upstream. Although this value may be different from the one sent to the client, it determines how we split the cache.
+-   **v:** <a id="v" /> Indicates the version of {{ PRODUCT }} that processed this request.
+-   **vn:** <a id="vn" /> Indicates the vendor (e.g., apple, microsoft, android, or generic) of the device that submitted the request.
+-   **waf:** <a id="waf" /> Indicates the state of WAF security: `geo` for geo blocking, `bl` for block list, `dl-<LIST NAME>` for dynamic lists, `wl` for allow list, and `by` for bypass.
+-   **wafv:** <a id="wafv" /> Reserved for future use.
+-   **xff:** <a id="xff" /> Reserved for future use.
+-   **xmr:** <a id="xmr" /> Indicates the value for the `{{ HEADER_PREFIX }}-matched-routes` request header. The `{{ HEADER_PREFIX }}-matched-routes` request header identifies all matched routes.
+-   **xms:** <a id="xms" /> Indicates the value for the `{{ HEADER_PREFIX }}-status` response header. The `{{ HEADER_PREFIX }}-status` response header indicates the status codes for key [POP components](response_headers#-t-response-header). 
+-   **xmt:** <a id="xmt" /> Indicates the value for the [{{ HEADER_PREFIX }}-t](response_headers#-t-response-header) response header. The `{{ HEADER_PREFIX }}-t` response header contains time measurements for each Edgio POP component through which a request was routed.
+-   **xut:** <a id="xut" /> Indicates the value for the `{{ HEADER_PREFIX }}-user-t` response header. The `{{ HEADER_PREFIX }}-user-t` response header contains [performance](/guides/performance) metrics.
+-   **zip:** <a id="zip" /> Indicates whether the response was compressed. Returns `1` for compressed responses and `0` for uncompressed responses.
+
+
+## Log Aggregation Tools {/*setting-up-log-aggregation-tools*/}
+
+{{ PRODUCT }} temporarily stores log data within Amazon S3. Use a log aggregation tool to extract log data from AWS S3. Here are a few popular log aggregation tools:
 
 - Sematext | [[Logagent docs]](https://sematext.com/docs/logagent/)
 - Sumo Logic | [[S3 ingest docs]](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/AWS-S3-Source)
 - AWS Athena | [[docs]](https://aws.amazon.com/blogs/big-data/analyzing-data-in-s3-using-amazon-athena/)
 - Splunk | [[S3 ingest docs]](https://docs.splunk.com/Documentation/AddOns/released/AWS/S3)
 - Loggly | [[S3 ingest docs]](https://documentation.solarwinds.com/en/Success_Center/loggly/Content/admin/s3-ingestion-auto.htm)
-
-## Access Logs {/*access-logs*/}
-
-{{ PRODUCT_NAME }} [Enterprise tier]({{ WWW_URL }}/pricing) customers can receive streaming access logs that capture information about each request served by {{ PRODUCT_NAME }}. To do so refer to the "Access Logs" tab:
-
-![access](/images/logs/access.png)
-
-Note that if you are not an Enterprise tier customer you will see a message to contact support to upgrade your account.
-
-Access logs contain the following fields:
-
-### timestamp {/*timestamp*/}
-
-Millisecond resolution of the request start time in UNIX epoch.
-
-### {{ PRODUCT_LEGACY_LOWER }} {/**/} {/**/} {/*-*/}
-
-The application's {{ PRODUCT_NAME }} version processing this request.
-
-### bld {/*bld*/}
-
-The application's build number processing this request.
-
-### eid {/*eid*/}
-
-The active environment ID in {{ PRODUCT_NAME }}.
-
-_Available since {{ PRODUCT_NAME }} v2.9.0._
-
-### ev {/*ev*/}
-
-The active environment version number.
-
-### ip {/*ip*/}
-
-IP of the most downstream client, determined either through XFF or by reading socket information.
-
-### met {/*met*/}
-
-HTTP method.
-
-### hh {/*hh*/}
-
-Host header as received from the downstream.
-
-### url {/*url*/}
-
-HTTP path.
-
-### h2 {/*h2*/}
-
-Flag indicating whether downstream connection is http/2 or not.
-
-### psh {/*psh*/}
-
-Flag indicating whether this request is an http/2 server-side push or not.
-
-### code {/*code*/}
-
-HTTP response status code.
-
-### ic {/*ic*/}
-
-Flag indicating whether this request was cacheable even in theory.
-
-### cc {/*cc*/}
-
-Country code per geo-location.
-
-### s_rq {/*s_rq*/}
-
-Size of the request in bytes.
-
-### s_rs {/*s_rs*/}
-
-Size of the response in bytes.
-
-### ds {/*ds*/}
-
-Destination, determined by A/B testing rules, if any; if no rules, the value is left as the default router.
-
-### be {/*be*/}
-
-Backend, determined by the routing rules. The names come from the `backends` structure exported from your `{{ CONFIG_FILE }}` file.
-
-### bk {/*bk*/}
-
-A/B testing bucket cookie value.
-
-### zip {/*zip*/}
-
-Flag indicating whether the response is compressed or not.
-
-### rid {/*rid*/}
-
-Unique request ID.
-
-### waf {/*waf*/}
-
-WAF security state: geo for geo blocking, bl for block list, dl-{list name} for dynamic lists
-if the request was blocked; wl for allow list, by for bypass if the request was passed.
-
-### sh {/*sh*/}
-
-Flag indicating whether the request was shielded.
-
-### dv {/*dv*/}
-
-Device type desktop, smartphone, tablet, mobile.
-
-### vn {/*vn*/}
-
-Vendor: apple, microsoft, android.
-
-### br {/*br*/}
-
-Browser: chrome, safari, firefox.
-
-### bot {/*bot*/}
-
-Flag indicating whether the request was made by a bot.
-
-### er {/*er*/}
-
-Flag indicating whether the request was responded from edge (not true for cache hits, just for synthetic requests).
-
-### clv {/*clv*/}
-
-Cache level on which the request was responded or 0 if it was a miss.
-
-### stl {/*stl*/}
-
-Indicates if the response was stale or not (0, 1).
-
-### done {/*done*/}
-
-Flag indicating if the response has completed (analogous to 499 in Nginx).
-
-### cs {/*cs*/}
-
-[Caching status](/guides/caching#why-is-my-response-not-being-cached) (why something was or wasn't cached).
-
-### ct {/*ct*/}
-
-Response content type.
-
-### xmr {/*xmr*/}
-
-Request header {{ HEADER_PREFIX }}-matched-routes, logs all routes matched and is required to order the routes table in caching metrics.
-
-### rfr {/*rfr*/}
-
-Referrer request header (note the misspelling per HTTP standard).
-
-### ua {/*ua*/}
-
-User agent.
-
-### xmt {/*xmt*/}
-
-Response [{{ HEADER_PREFIX }}-t](/guides/response_headers#x-0-t-response-header) header with different critical path timings.
-
-### xut {/*xut*/}
-
-Response {{ HEADER_PREFIX }}-user-t header with different user [performance](/guides/performance) metrics.
-
-### xms {/*xms*/}
-
-Response {{ HEADER_PREFIX }}-status header with different critical path status codes.
-
-### pre {/*pre*/}
-
-If {{ COOKIE_PREFIX }}\_prefetch parameter was specified value of 1, otherwise not present.
-
-### ttl {/*ttl*/}
-
-Time to live in seconds of the response if it was cached.
-
-### uv {/*uv*/}
-
-The response vary header received from upstream; it's sometimes different to what's sent downstream
-as we inject user-agent in moov_deliver, but it's this value what actually splits the cache;
-we don't have access to beresp from moov_log so we preserve it in req.
-
-### bip {/*bip*/}
-
-IP of the backend that responded to the request.
-
-### hrid {/*hrid*/}
-
-Request ID of the response hit in the cache. Corresponds to [`{{ HEADER_PREFIX }}-hit-request-id`](response_headers#general-headers) response header.

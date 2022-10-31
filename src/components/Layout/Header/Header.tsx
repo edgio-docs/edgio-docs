@@ -263,6 +263,7 @@ export default function Header({
                 appId={algoliaAppId}
                 indexName={indexName}
                 apiKey={algoliaApiKey}
+                transformItems={transformItems}
               />
             </NoSSRWrapper>
           </div>

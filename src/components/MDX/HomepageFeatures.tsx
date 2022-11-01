@@ -63,9 +63,6 @@ export default function HomepageFeatures() {
           <DeveloperTools />
           <AccountsandTeams />
         </div>
-        <FrameworkGuides />
-        <Reference />
-        <VideosandTutorials />
       </Container>
     </StyledHomepageFeatures>
   );

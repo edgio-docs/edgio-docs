@@ -2,6 +2,8 @@
 import Image from 'next/image';
 import styled from 'styled-components';
 
+import darkHero from '../../../public/images/home/l0-to-edgio-dark.webp';
+import lightHero from '../../../public/images/home/l0-to-edgio-light.webp';
 import Container, {StyledContainer} from '../Layout/Container';
 
 import Link from './Link';
@@ -60,13 +62,14 @@ const StyledHomepageHero = styled.div`
 `;
 
 function HomepageHero() {
+  console.log('env vars', process.env);
   return (
     <StyledHomepageHero>
       <Container>
         <div className="copy">
           <div id="dark-theme">
             <Image
-              src="/images/home/l0-to-edgio-light.webp"
+              src={lightHero}
               alt="Layer0 is now Edgio AppOps"
               width={292}
               height={230}
@@ -74,7 +77,7 @@ function HomepageHero() {
           </div>
           <div id="light-theme">
             <Image
-              src="/images/home/l0-to-edgio-dark.webp"
+              src={darkHero}
               alt="Layer0 is now Edgio AppOps"
               width={292}
               height={230}

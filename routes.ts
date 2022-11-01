@@ -129,6 +129,10 @@ const router = new Router()
   .get('/images/:path*', ({cache}) => {
     cache(staticCacheConfig);
   })
+  .match('/_next/image', ({renderWithApp, cache, send}) => {
+    cache(staticCacheConfig);
+    renderWithApp();
+  })
 
   // API docs
 

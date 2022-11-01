@@ -70,8 +70,6 @@ function HomepageHero() {
               alt="Layer0 is now Edgio AppOps"
               width={292}
               height={230}
-              priority={true}
-              unoptimized
             />
           </div>
           <div id="light-theme">
@@ -80,8 +78,6 @@ function HomepageHero() {
               alt="Layer0 is now Edgio AppOps"
               width={292}
               height={230}
-              priority={true}
-              unoptimized
             />
           </div>
           <p>

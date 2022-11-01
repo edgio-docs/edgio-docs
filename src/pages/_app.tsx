@@ -42,7 +42,7 @@ function GAnalytics() {
   return (
     <>
       <Script
-        src={`https://googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_TRACKING_ID}`}
+        src={`https://googletagmanager.com/gtag/js?id=G-001EVGR2Y7`}
         strategy="afterInteractive"></Script>
       <Script id="google-analytics" strategy="afterInteractive">
         {`
@@ -50,7 +50,7 @@ function GAnalytics() {
           function gtag(){window.dataLayer.push(arguments);}
           gtag('js', new Date());
 
-          gtag('config', '${process.env.NEXT_PUBLIC_GA_TRACKING_ID}');
+          gtag('config', 'G-001EVGR2Y7');
         `}
       </Script>
     </>

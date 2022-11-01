@@ -68,7 +68,7 @@ function HomepageHero() {
             <Image
               src="/images/home/l0-to-edgio-light.webp"
               alt="Layer0 is now Edgio AppOps"
-              width={286}
+              width={292}
               height={230}
               priority={true}
               unoptimized
@@ -78,7 +78,7 @@ function HomepageHero() {
             <Image
               src="/images/home/l0-to-edgio-dark.webp"
               alt="Layer0 is now Edgio AppOps"
-              width={286}
+              width={292}
               height={230}
               priority={true}
               unoptimized

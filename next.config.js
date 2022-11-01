@@ -9,7 +9,7 @@ const {remarkPlugins} = require('./plugins/markdownToHtml');
 
 const _preEdgioExport = {
   images: {
-    domains: ['opt.moovweb.net'],
+    domains: ['opt.moovweb.net', 'docs.layer0.co', 'docs.edg.io'],
   },
   experimental: {
     plugins: true,

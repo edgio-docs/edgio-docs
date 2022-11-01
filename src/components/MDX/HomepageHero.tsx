@@ -7,7 +7,7 @@ import Container, {StyledContainer} from '../Layout/Container';
 import Link from './Link';
 
 const StyledHomepageHero = styled.div`
-  // background: var(--homepagehero-bg-image);
+  background: var(--homepagehero-bg-image);
   min-height: 501px;
   line-height: 1.3;
   background-repeat: no-repeat;
@@ -65,24 +65,24 @@ function HomepageHero() {
       <Container>
         <div className="copy">
           <div id="dark-theme">
-            {/* <Image
+            <Image
               src="/images/home/l0-to-edgio-light.webp"
               alt="Layer0 is now Edgio AppOps"
               width={286}
               height={230}
               priority={true}
               unoptimized
-            /> */}
+            />
           </div>
           <div id="light-theme">
-            {/* <Image
+            <Image
               src="/images/home/l0-to-edgio-dark.webp"
               alt="Layer0 is now Edgio AppOps"
               width={286}
               height={230}
               priority={true}
               unoptimized
-            /> */}
+            />
           </div>
           <p>
             <Link href="https://investors.edg.io/news/press-releases/news-details/2022/Limelight-Completes-Acquisition-of-Yahoos-Edgecast-Combined-Company-Rebrands-as-Edgio-Creating-a-Global-Leader-in-Edge-Enabled-Solutions/default.aspx">

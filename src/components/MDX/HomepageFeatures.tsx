@@ -57,7 +57,7 @@ export default function HomepageFeatures() {
         <GetStarted>
           <SectionHeader Icon={IconSpark} title="Get Started" />
         </GetStarted>
-        {/* 
+
         <Cdn />
         <div className="grouped-col__2">
           <DeveloperTools />
@@ -65,7 +65,7 @@ export default function HomepageFeatures() {
         </div>
         <FrameworkGuides />
         <Reference />
-        <VideosandTutorials /> */}
+        <VideosandTutorials />
       </Container>
     </StyledHomepageFeatures>
   );

@@ -9,14 +9,14 @@ import NProgress from 'nprogress';
 import * as React from 'react';
 
 // Universal loading page (used in dynamically imported components) which contains the wrapper of each page
-// import LoadingFallBackPage from 'components/Fallbacks/Loading';
+import LoadingFallBackPage from 'components/Fallbacks/Loading';
 
-// import '../styles/algolia.css';
-// import '../styles/custom-props.css';
-// import '../styles/nprogress.css';
-// import '../styles/prism.css';
-// import '../styles/reset.css';
-// import '../styles/scrollbar.css';
+import '../styles/algolia.css';
+import '../styles/custom-props.css';
+import '../styles/nprogress.css';
+import '../styles/prism.css';
+import '../styles/reset.css';
+import '../styles/scrollbar.css';
 
 const EmptyAppShell: React.FC = ({children}) => <>{children}</>;
 
@@ -24,19 +24,19 @@ const EmptyAppShell: React.FC = ({children}) => <>{children}</>;
 new Metrics({token: 'cdc8d6df-476b-4e2d-ae1a-f8c6893a39a8'}).collect();
 
 // List of fallback components
-// const ChangeLogFallBackPage = dynamic(
-//   () => import('../components/Fallbacks/Changelog'),
-//   {
-//     loading: () => <LoadingFallBackPage />,
-//   }
-// );
+const ChangeLogFallBackPage = dynamic(
+  () => import('../components/Fallbacks/Changelog'),
+  {
+    loading: () => <LoadingFallBackPage />,
+  }
+);
 
 // Create a fallback dict
 // Match a route being navigated to
 // and place the fallback/loading versions of those pages
-// const fallbackMap: {[route: string]: React.ReactNode} = {
-//   '/guides/changelog': <ChangeLogFallBackPage />,
-// };
+const fallbackMap: {[route: string]: React.ReactNode} = {
+  '/guides/changelog': <ChangeLogFallBackPage />,
+};
 
 function GAnalytics() {
   return (
@@ -99,7 +99,9 @@ export default function MyApp({Component, pageProps}: AppProps) {
     AppShell = (Component as any)({}).props.originalType.appShell;
   }
 
-  return (
+  return loading && fallbackMap.hasOwnProperty(changingTo) ? (
+    fallbackMap[changingTo]
+  ) : (
     <AppShell>
       <GAnalytics />
       <MDXEmbedProvider>

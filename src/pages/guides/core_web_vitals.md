@@ -29,7 +29,7 @@ Instead of relying solely on Google Search Console, we recommend tracking Core W
 - Correlate web vitals to your application's routes
 - Analyze score across a number of dimensions such as country, device, and connection type
 - Identify which pages are most negatively impacting your search ranking.
-- Use {{ PRODUCT_NAME }}'s [Edge-based split testing](split_testing) to A/B test the impact of performance optimizations on Core Web Vitals.
+- Use {{ PRODUCT_NAME }}'s [Edge-based A/B testing](split_testing) to A/B test the impact of performance optimizations on Core Web Vitals.
 
 ## Installation {/*installation*/}
 
@@ -180,7 +180,7 @@ new {{ RUM_NS }}.Metrics({
 ```
 
 
-## Custom cache TTL
+## Custom cache TTL {/*custom-cache-ttl*/}
 
 Information about routes is fetched from `/__edgio__/cache-manifest.js` file and then cached in `localStorage`.
 The default expiration time is set to 1 hour and it's possible to change it by providing `cacheManifestTTL` option.

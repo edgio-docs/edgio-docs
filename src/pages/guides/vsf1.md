@@ -10,15 +10,11 @@ title: Vue Storefront 1
   repoUrl="https://github.com/layer0-docs/layer0-vue-storefront-example" 
   deployFromRepo />
 
+{{ PREREQ }}
+
 ## 1. Install Vue Storefront {/*1-install-vue-storefront*/}
 
 Install the Vue Storefront application using this guide: https://docs.vuestorefront.io/guide/installation/linux-mac.html
-
-<b>Note</b>: {{ PRODUCT_NAME }} requires Node version >= 14, so before the installation it's recommended to run:
-
-```bash
-nvm use 14
-```
 
 <a id="2-prepare-vsf-files-for-layer0"></a>
 

@@ -8,4 +8,7 @@ module.exports = {
       hostHeader: DOCS_PAGES_DOMAIN,
     },
   },
+  includeFiles: {
+    '.next/static/**/*': true,
+  },
 };

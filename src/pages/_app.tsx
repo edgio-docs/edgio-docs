@@ -9,7 +9,7 @@ import NProgress from 'nprogress';
 import * as React from 'react';
 
 // Universal loading page (used in dynamically imported components) which contains the wrapper of each page
-import config from '../siteConfig';
+import {siteConfig as config} from '../siteConfig';
 
 import LoadingFallBackPage from 'components/Fallbacks/Loading';
 

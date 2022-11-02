@@ -129,8 +129,10 @@ const router = new Router()
   .get('/images/:path*', ({cache}) => {
     cache(staticCacheConfig);
   })
+
+  // override image optiomization within NextRoutes and handle it internally
   .match('/_next/image', ({renderWithApp, cache}) => {
-    cache(staticCacheConfig);
+    cache({...staticCacheConfig, key: new CustomCacheKey()});
     renderWithApp();
   })
 

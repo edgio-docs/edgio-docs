@@ -9,6 +9,8 @@ import NProgress from 'nprogress';
 import * as React from 'react';
 
 // Universal loading page (used in dynamically imported components) which contains the wrapper of each page
+import config from '../siteConfig';
+
 import LoadingFallBackPage from 'components/Fallbacks/Loading';
 
 import '../styles/algolia.css';
@@ -42,7 +44,7 @@ function GAnalytics() {
   return (
     <>
       <Script
-        src={`https://googletagmanager.com/gtag/js?id=G-001EVGR2Y7`}
+        src={`https://googletagmanager.com/gtag/js?id=${config.analytics.id}`}
         strategy="afterInteractive"></Script>
       <Script id="google-analytics" strategy="afterInteractive">
         {`
@@ -50,7 +52,7 @@ function GAnalytics() {
           function gtag(){window.dataLayer.push(arguments);}
           gtag('js', new Date());
 
-          gtag('config', 'G-001EVGR2Y7');
+          gtag('config', '${config.analytics.id}');
         `}
       </Script>
     </>

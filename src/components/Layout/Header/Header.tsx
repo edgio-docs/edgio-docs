@@ -239,14 +239,14 @@ export default function Header({
       <div className="col-2">
         <div id="desktop" className="desktop">
           <div className="search-form__box">
-            {/* <NoSSRWrapper>
+            <NoSSRWrapper>
               <DocSearch
                 appId={algoliaAppId}
                 indexName={indexName}
                 apiKey={algoliaApiKey}
                 transformItems={transformItems}
               />
-            </NoSSRWrapper> */}
+            </NoSSRWrapper>
           </div>
           <ToggleTheme />
           <Link href="https://app.layer0.co/?sgId=ef4d5169-93f2-4f55-aabb-dc3be4286e1f">
@@ -258,14 +258,14 @@ export default function Header({
         </div>
         <div id="mobile">
           <div className="search-form__box">
-            {/* <NoSSRWrapper>
+            <NoSSRWrapper>
               <DocSearch
                 appId={algoliaAppId}
                 indexName={indexName}
                 apiKey={algoliaApiKey}
                 transformItems={transformItems}
               />
-            </NoSSRWrapper> */}
+            </NoSSRWrapper>
           </div>
           <ToggleTheme />
           <button

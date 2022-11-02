@@ -15,4 +15,7 @@ export const siteConfig = {
   },
   tagline: `Explore the ${PRODUCT} guides and examples on how to integrate edge logic into your application code & extend the edge to the browser.`,
   twitterHandle: 'Layer0Deploy',
+  analytics: {
+    id: 'G-001EVGR2Y7',
+  },
 };

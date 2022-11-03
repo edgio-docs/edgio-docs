@@ -1,6 +1,7 @@
 import '@docsearch/css';
 import {Metrics} from '@edgio/rum';
 import {MDXEmbedProvider} from 'mdx-embed';
+import {DefaultSeo} from 'next-seo';
 import type {AppProps} from 'next/app';
 import dynamic from 'next/dynamic';
 import {useRouter} from 'next/router';
@@ -98,11 +99,16 @@ export default function MyApp({Component, pageProps}: AppProps) {
     AppShell = (Component as any)({}).props.originalType.appShell;
   }
 
+  const canonicalUrl = (
+    `https://docs.edg.io` + (router.asPath === '/' ? '' : router.asPath)
+  ).split('?')[0];
+
   return loading && fallbackMap.hasOwnProperty(changingTo) ? (
     fallbackMap[changingTo]
   ) : (
     <AppShell>
       <GAnalytics />
+      <DefaultSeo canonical={canonicalUrl} />
       <MDXEmbedProvider>
         <Component {...pageProps} />
       </MDXEmbedProvider>

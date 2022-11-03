@@ -123,6 +123,7 @@ const router = new Router()
     cache(htmlCacheConfig);
     send('google-site-verification: googlea13e5ef2a6ea3f29.html');
   })
+  .match('/sitemap.xml', ({serveStatic}) => serveStatic('sitemap.xml'))
   .match('/service-worker.js', ({serviceWorker}) => {
     return serviceWorker('.next/static/service-worker.js');
   })

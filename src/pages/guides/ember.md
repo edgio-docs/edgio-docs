@@ -61,7 +61,7 @@ export default new Router()
   // Prevent search engine bot(s) from indexing
   // Read more on: {{ DOCS_URL }}/guides/cookbook#blocking-search-engine-crawlers
   .noIndexPermalink()
-  // Create serveStatic route for each file in the folder _site with a cache-control header of 's-maxage=315360000'
+  // Create serveStatic route for each file in the folder dist with a cache-control header of 's-maxage=315360000'
   .static('dist')
   .fallback(({ appShell }) => {
     appShell('dist/index.html')

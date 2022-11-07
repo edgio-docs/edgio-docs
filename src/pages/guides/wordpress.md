@@ -95,17 +95,19 @@ Navigate to **Settings > {{ PRODUCT }}** to pull up the form for the required in
 
 In order for the plugin to be able to interact with the {{ PRODUCT_PLATFORM }}, you'll need to provide the following:
 
-- Team Name
-- Site name
 - Environment Name
 - API Key
 
-![plugin fields](/images/wordpress/plugin_settings.png)
+![plugin fields](/images/wordpress/plugin_fields.png)
 
-To obtain the API Key, go to your site within the [{{ PRODUCT }} Developer Console]({{ LOGIN_URL }}). Click **Settings > Create new Deploy Token** and enter in a name for the token.
+**Environment Name** refers to the {{ PRODUCT }} environment as defined in the [Developer Console]({{ LOGIN_URL }}) for your site. This value will typically be `default` or `production` depending on how your site is setup, but can be any valid environment that you have created.
+
+To obtain the **API Key**, go to your site within the [{{ PRODUCT }} Developer Console]({{ LOGIN_URL }}). Click **Settings > Create new Deploy Token** and enter in a name for the token.
 
 ![plugin fields](/images/wordpress/deploy_token.png)
 
-Once created, copy the token to the **API Key** field of the WordPress plugin. After you've completed all the fields, click **Save Changes**. Lastly, test the behavior by clicking **Clear Cache**. You can validate the cache clearing was successful by checking the **Activity** tab of your site:
+Once created, copy the token to the **API Key** field of the WordPress plugin. After you've completed all the fields, click **Save Changes**. 
+
+Lastly, test the behavior by clicking **Clear Cache**. You can validate the cache clearing was successful by checking the **Activity** tab of your site:
 
 ![purge activity](/images/wordpress/purge_activity.png)

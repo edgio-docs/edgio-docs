@@ -38,6 +38,10 @@ export const StyledCustomPre = styled.div`
       background-color: #363636;
       border-radius: 4px;
       border: 1px solid #1a1a1a;
+      padding-top: 5px;
+      padding-bottom: 5px;
+      padding-left: 7.5px;
+      padding-right: 7.5px;
     }
   }
 
@@ -73,7 +77,7 @@ export default function CustomPre({children}: {children: React.ReactNode}) {
   }
 
   // MDX Metadata...https://mdxjs.com/guides/syntax-highlighting/#syntax-highlighting-with-the-meta-field
-  const replacedFilename = filename ? filename.replace(/"/g, '') : '';
+  const replacedFilename = filename?.replace(/"/g, '').replace(/'/g, '') ?? '';
   const descriptiveLanguage = getDescriptiveLanguage(language);
 
   return (

@@ -119,10 +119,11 @@ const router = new Router()
       removeUpstreamResponseHeader('cache-control');
     }
   })
-  .match('/google59b36cb2cb9e8c0a.html', ({send, cache}) => {
+  .match('/googlea13e5ef2a6ea3f29.html', ({send, cache}) => {
     cache(htmlCacheConfig);
-    send('google-site-verification: google59b36cb2cb9e8c0a.html');
+    send('google-site-verification: googlea13e5ef2a6ea3f29.html');
   })
+  .match('/sitemap.xml', ({serveStatic}) => serveStatic('sitemap.xml'))
   .match('/service-worker.js', ({serviceWorker}) => {
     return serviceWorker('.next/static/service-worker.js');
   })

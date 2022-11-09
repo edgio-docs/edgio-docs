@@ -36,6 +36,7 @@ const SUPPORT_URL = `${APP_URL}/help`;
 const DOCS_URL = `https://${DOCS_DOMAIN}`;
 const DOCS_PAGES_REPO_URL = `https://${DOCS_PAGES_DOMAIN}`;
 const LOGIN_URL = `${APP_URL}/?sgId=ef4d5169-93f2-4f55-aabb-dc3be4286e1f`;
+const PORTAL = `[${COMPANY_NAME} Developer console](${LOGIN_URL})`;
 
 const NODE_VERSION = '14.x';
 const STARTER_NAME = 'layer0-app';
@@ -112,6 +113,8 @@ yarn global add ${PACKAGE_NAME}/cli
 \`\`\`
 `;
 
+const ACCOUNT_UPGRADE = `Contact your account manager or our [sales department](https://edg.io/contact-us/) at 1 (866) 200 - 5463 to upgrade your account.`;
+
 const PARTNERS_CONTACT = `partner@llnw.com`;
 
 module.exports = {
@@ -125,6 +128,7 @@ module.exports = {
   PRODUCT_NAME_LOWER,
   PRODUCT_NAME_UPPER,
   PRODUCT_LEGACY_LOWER,
+  ACCOUNT_UPGRADE,
   PRODUCT_SECURITY_ADVANCED_BOT,
   APP_DOMAIN,
   APP_URL,
@@ -148,6 +152,7 @@ module.exports = {
   HELP_URL,
   INSTALL_CLI,
   LOGIN_URL,
+  PORTAL,
   PREREQ,
   INSTALL_CLI_STEP,
   NODE_VERSION,

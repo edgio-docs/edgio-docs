@@ -39,9 +39,9 @@ export const StyledCustomPre = styled.div`
       border-radius: 4px;
       border: 1px solid #1a1a1a;
       padding-top: 5px;
+      padding-left: 9px;
+      padding-right: 9px;
       padding-bottom: 5px;
-      padding-left: 7.5px;
-      padding-right: 7.5px;
     }
   }
 

@@ -56,7 +56,7 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 14
-      - run: npm install
+      - run: npm ci
       - run: npm run deploy -- --token=$EDGIO_DEPLOY_TOKEN
         env:
           EDGIO_DEPLOY_TOKEN: ${{secrets.EDGIO_DEPLOY_TOKEN}}

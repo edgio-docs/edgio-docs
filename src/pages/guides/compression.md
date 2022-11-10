@@ -19,7 +19,7 @@ When requesting data via HTTP from the {{ PRODUCT_NAME }} servers, browsers incl
 
 ### Implications on Caching {/*implications-on-caching*/}
 
-`accept-encoding` header is taken into account for splitting the cache by default. Expect different cache(s) for different accept-encoding header(s).
+`accept-encoding` header is taken into account for splitting the cache by default. Expect different cache(s) for different accept-encoding header(s) for otherwise a same request.
 
 ### Gzip compression support {/*gzip-compression-support*/}
 

@@ -45,18 +45,18 @@ Lastly, create a GitHub workflow file called `edgio.yml`. This will be triggered
 name: Deploy to {{ PRODUCT }}
 
 on:
+  push:
   workflow_dispatch:
 
 jobs:
   deploy-to-edgio:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
-      - uses: actions/setup-node@v1
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
         with:
           node-version: 14
-          registry-url: https://npm-proxy.fury.io/moovweb/
-      - run: npm ci
+      - run: npm install
       - run: npm run deploy -- --token=$EDGIO_DEPLOY_TOKEN
         env:
           EDGIO_DEPLOY_TOKEN: ${{secrets.EDGIO_DEPLOY_TOKEN}}

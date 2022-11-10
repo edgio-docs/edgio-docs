@@ -200,7 +200,7 @@ const SidebarMenuItems: ISidebarMenuItems = [
           path: '/guides/traditional_sites',
         },
         {
-          title: 'Split Testing',
+          title: 'A/B Testing',
           path: '/guides/split_testing',
         },
         {

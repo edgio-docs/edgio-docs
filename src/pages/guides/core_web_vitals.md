@@ -29,11 +29,17 @@ Instead of relying solely on Google Search Console, we recommend tracking Core W
 - Correlate web vitals to your application's routes
 - Analyze score across a number of dimensions such as country, device, and connection type
 - Identify which pages are most negatively impacting your search ranking.
-- Use {{ PRODUCT_NAME }}'s [Edge-based split testing](split_testing) to A/B test the impact of performance optimizations on Core Web Vitals.
+- Use {{ PRODUCT_NAME }}'s [Edge-based A/B testing](split_testing) to A/B test the impact of performance optimizations on Core Web Vitals.
 
 ## Installation {/*installation*/}
 
-In order to start tracking Core Web Vitals on {{ PRODUCT_NAME }}, you need to add the `{{ PACKAGE_NAME }}/rum` client library to your application. There are a number of ways to do this:
+In order to start tracking Core Web Vitals on {{ PRODUCT_NAME }}, you need to add the `{{ PACKAGE_NAME }}/rum` client library to your application. Navigate to your site in the [{{ PRODUCT }} Developer Console]({{ LOGIN_URL }}) and click on **More Details** under the **Core Web Vitals** section. 
+
+![Core Web Vitals More Details](/images/cwv/cwv_more_details.png)
+
+Here you will find various ways to implement Core Web Vitals, including the metrics token which is specific to your site:
+
+![Core Web Vitals Token](/images/cwv/cwv_token.png)
 
 ### Script Tag {/*script-tag*/}
 
@@ -41,13 +47,13 @@ To add Core Web Vitals tracking via a script tag, add the following to each page
 
 ```html
 <script defer>
-  function initRum() {
+  function initMetrics() {
     new {{ RUM_NS }}.Metrics({
       token: 'your-token-here', // get this from {{ APP_URL }}
     }).collect()
   }
 </script>
-<script src="https://rum.{{ DOMAIN_LEGACY }}/latest.js" defer onload="initRum()"></script>
+<script src="https://rum.{{ DOMAIN_LEGACY }}/latest.js" defer onload="initMetrics()"></script>
 ```
 
 ### Google Tag Manager {/*google-tag-manager*/}
@@ -180,14 +186,14 @@ new {{ RUM_NS }}.Metrics({
 ```
 
 
-## Custom cache TTL
+## Custom cache TTL {/*custom-cache-ttl*/}
 
 Information about routes is fetched from `/__edgio__/cache-manifest.js` file and then cached in `localStorage`.
 The default expiration time is set to 1 hour and it's possible to change it by providing `cacheManifestTTL` option.
 
 ```js
 new Metrics({
-      token: 'my-edgio-rum-token',
+      token: 'your-token-here',
       cacheManifestTTL: 300 // 5 minutes
 }).collect()
 ```

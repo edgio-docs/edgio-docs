@@ -85,7 +85,7 @@ Log data for Serverless Compute console messages <!-- and DRI --> may contain th
 -   **clientIp:** <a id="clientIp" /> Indicates the IP address (IPv4 or IPv6) for the computer that submitted the request.
 -   **requestId:** <a id="requestId" /> Indicates the request's unique ID.
 -   **fn:** <a id="fn" /> Indicates the ID of the AWS Lambda function.
--   **level:** <a id="level" /> Indicates the severity of the console message or log data type. Valid values are:
+-   **level:** <a id="level" /> Indicates the severity of the console message.<!-- or log data type. --> Valid values are:
 
     -   **60:** Fatal. This severity, which requires immediate attention, typically indicates that your application will stop or become unusable soon. 
     -   **50:** Error. This severity typically indicates that the request was unsuccessful. Errors require investigation and remediation to ensure optimal performance for all users.
@@ -132,9 +132,9 @@ Our access log data describes each request served by {{ PRODUCT }}.
 
 ### Access Log Fields {/*access-log-fields*/}
 
-Access logs contain the following fields:
+An access log file may contain the following fields:
 
--   **ac:** <a id="ac" /> Reserved for future use.
+-   **ac:** <a id="ac" /> Indicates the value for the `Accept-Encoding` request header. 
 -   **asn:** <a id="asn" /> Reserved for future use.
 -   **be:** <a id="be" /> Identifies the backend associated with the route that corresponds to this request. The name for this backend is defined within your `{{ CONFIG_FILE }}` file's `backends` structure.
 -   **bip:** <a id="bip" /> Indicates the IP address of the backend that responded to the request.
@@ -144,7 +144,7 @@ Access logs contain the following fields:
 -   **br:** <a id="br" /> Indicates the type of browser (e.g., chrome, safari, firefox, and generic).
 -   **bse:** <a id="bse" /> Reserved for future use.
 -   **cc:** <a id="cc" /> Indicates the code for the country from which the request originated.
--   **ce:** <a id="ce" /> Reserved for future use.
+-   **ce:** <a id="ce" /> Indicates the value for the `Content-Encoding` response header.
 -   **clv:** <a id="clv" /> Indicates the level at which the request was served from cache. Returns `0` for a cache miss. 
 -   **code:** <a id="code" /> Indicates the HTTP status code for the response.
 -   **cs:** <a id="cs" /> Indicates whether the response was cached or the reason why it was not cached. [Learn more.](/guides/caching#why-is-my-response-not-being-cached)

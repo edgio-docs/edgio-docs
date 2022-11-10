@@ -49,18 +49,8 @@ export default new Router()
   // Prevent search engine bot(s) from indexing
   // Read more on: {{ DOCS_URL }}/guides/cookbook#blocking-search-engine-crawlers
   .noIndexPermalink()
-  .static('docs/.vitepress/dist', ({ cache }) => {
-    cache({
-      edge: {
-        maxAgeSeconds: 60 * 60 * 60 * 365,
-        forcePrivateCaching: true,
-      },
-      browser: {
-        maxAgeSeconds: 0,
-        serviceWorkerSeconds: 60 * 60 * 24,
-      },
-    })
-  })
+  // Create serveStatic route for each file in the folder docs/.vitepress/dist with a cache-control header of 's-maxage=315360000'
+  .static('docs/.vitepress/dist')
 ```
 
 Refer to the [Routing](routing) guide for the full syntax of the `routes.js` file and how to configure it for your use case.

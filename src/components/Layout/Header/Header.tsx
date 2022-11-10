@@ -7,6 +7,7 @@ import EdgioDark from '../../../../public/images/home/edgio-dark.webp';
 import EdgioLight from '../../../../public/images/home/edgio-light.webp';
 import NoSSRWrapper from '../NoSSRWrapper';
 
+import {ExternalLink} from 'components/ExternalLink';
 import {IconHamburger} from 'components/Icon/IconHamburger';
 import {IconLightMobileLogo} from 'components/Icon/IconMobileLogo';
 import {siteConfig} from 'siteConfig';
@@ -249,12 +250,12 @@ export default function Header({
             </NoSSRWrapper>
           </div>
           <ToggleTheme />
-          <Link href="https://app.layer0.co/?sgId=ef4d5169-93f2-4f55-aabb-dc3be4286e1f">
+          <ExternalLink href="https://app.layer0.co/?sgId=ef4d5169-93f2-4f55-aabb-dc3be4286e1f">
             Login
-          </Link>
-          <Link href="https://app.layer0.co/signup?redirectTo=%2F&sgId=ef4d5169-93f2-4f55-aabb-dc3be4286e1f">
+          </ExternalLink>
+          <ExternalLink href="https://app.layer0.co/signup?redirectTo=%2F&sgId=ef4d5169-93f2-4f55-aabb-dc3be4286e1f">
             Sign up
-          </Link>
+          </ExternalLink>
         </div>
         <div id="mobile">
           <div className="search-form__box">

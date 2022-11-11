@@ -30,7 +30,7 @@ This guide will use [Create React App](https://create-react-app.dev/) to generat
 npx create-react-app my-app
 ```
 
-## Initializing your project with {{ PRODUCT }} {/*initialize-your-project*/}
+## Initializing your project with {{ PRODUCT }} {/*initializing-your-project-with*/}
 
 Then, in the root folder of your project, run:
 

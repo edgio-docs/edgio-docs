@@ -252,7 +252,7 @@ To be able to use [Preivew Mode](https://nextjs.org/docs/advanced-features/previ
 
 ```js filename='routes.js'
 import { Router } from '{{ PACKAGE_NAME }}/core/router';
-import { nextRoutes } from '{{ PACKAGE_NAME }}/next';
+import { nextRoutes, renderNextPage } from '{{ PACKAGE_NAME }}/next';
 
 export default new Router()
   // Prevent search engine bot(s) from indexing
@@ -266,8 +266,8 @@ export default new Router()
         __next_preview_data: /.*/g,
       }
     },
-    (res) => {
-      res.cache({
+    ({ cache, renderWithApp }) => {
+      cache({
         edge: false,
         browser: false,
       })

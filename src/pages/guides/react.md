@@ -53,9 +53,14 @@ The default `routes.js` file created by `{{ FULL_CLI_NAME }} init` sends all req
 ```js
 // This file was automatically added by {{ FULL_CLI_NAME }} deploy.
 // You should commit this file to source control.
+
 const { Router } = require('{{ PACKAGE_NAME }}/core/router')
 const { reactCRARoutes } = require('{{ PACKAGE_NAME }}/react-cra')
-export default new Router().use(reactCRARoutes)
+
+module.exports = new Router()
+  // Prevent search engines from indexing permalink URLs
+  .noIndexPermalink()
+  .use(reactCRARoutes)
 ```
 
 ## Running Locally {/*running-locally*/}
@@ -63,7 +68,7 @@ export default new Router().use(reactCRARoutes)
 To test your app locally, run:
 
 ```bash
-{{ FULL_CLI_NAME }} run
+{{ FULL_CLI_NAME }} dev
 ```
 
 You can do a production build of your app and test it locally using:
@@ -141,11 +146,11 @@ In order to install the service worker in the browser when your site loads, call
 ```js filename='index.js'
 import { install } from '{{ PACKAGE_NAME }}/prefetch/window'
 
-// Install {{ PACKAGE }} Service Worker
+// Install {{ PRODUCT }} Service Worker
 install()
 
 // import installDevtools from '{{ PACKAGE_NAME }}/devtools/install'
 
-// Enable {{ PACKAGE }} Devtools
+// Enable {{ PRODUCT }} Devtools
 // installDevtools()
 ```

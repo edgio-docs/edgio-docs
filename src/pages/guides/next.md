@@ -434,7 +434,7 @@ A working example app can be found [here](https://github.com/layer0-docs/layer0-
 
 By default, Next.js image optimizer is replaced by our image optimizer, which is available in all build modes. You can disable it and use the built-in Next image optimizer instead by adding `disableImageOptimizer: true` to the `{{ CONFIG_FILE }}` file. 
 
-```js filename='{{ CONFIG_FILE }}'
+```js filename='{{ CONFIG_FILE }}' ins={3}
 module.exports = {
   /* ... */
   disableImageOptimizer: true

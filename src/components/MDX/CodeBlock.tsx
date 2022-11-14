@@ -113,10 +113,10 @@ export const LineContent = styled.span`
 
 export const LineNo = styled.span`
   left: 0;
-  min-width: 35px;
   position: sticky;
   user-select: none;
   text-align: right;
+  padding-left: 15px;
   display: table-cell;
   background: #1a1a1a;
   letter-spacing: -1px;

@@ -2,9 +2,18 @@
 title: Install Node.js and npm
 ---
 
-**{{ PRODUCT_NAME }} only supports Node.js version 14**
+**{{ PRODUCT_NAME }} supports Node.js version 14 and 16**
 
-**Current recommended development version is Node.js v14**
+**Current recommended development version is Node.js 16.18.0**
+
+## {{ PRODUCT }} Node.js Supported Versions {/*nodejs-supported-versions*/}
+
+{{ PRODUCT }} supports different Node.js runtimes depending on the version of your `{{ PACKAGE_NAME }}` packages.
+
+| {{ PRODUCT }} Version | Node.js Version |
+|------------------------|------------------|
+| 5.x                   | 14.19.0         |
+| 6.x (recommended)     | 16.18.0         |
 
 ## Node version managers {/*node-version-managers*/}
 
@@ -14,9 +23,9 @@ Quick node install with `nvm` or `n`
 
 ```bash
 # nvm
-nvm install 14
+nvm install 16
 # n
-n install 14
+n install 16
 ```
 
 ## Package managers {/*package-managers*/}
@@ -35,6 +44,6 @@ For mac users, `brew install node` is a quick way to get the latest node. You ca
 
 ## Production version {/*production-version*/}
 
-Note that while you can use any version of Node.js >= 14 locally, your app will run in Node 14 when deployed to the {{ PRODUCT_NAME }} cloud.
+Note that while you can use any version of Node.js >= {{ NODE_VERSION }} locally, your app will run in Node {{ NODE_VERSION }} when deployed to the {{ PRODUCT_NAME }} cloud.
 
-Therefore we highly suggest using Node 14 for all development.
+Therefore we highly suggest using Node {{ NODE_VERSION }} for all development.

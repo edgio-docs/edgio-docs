@@ -89,11 +89,11 @@ function HomepageHero() {
               Learn more.
             </Link>
           </p>
-          <p className="subheadline">
+          <h1 className="subheadline">
             Edgio AppOps is an Internet-scale platform that makes it easy for
             teams to build, release, protect, and accelerate their web apps and
             APIs.
-          </p>
+          </h1>
         </div>
       </Container>
     </StyledHomepageHero>

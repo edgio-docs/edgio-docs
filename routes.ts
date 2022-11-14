@@ -147,9 +147,13 @@ const router = new Router()
     }
   )
   // match current api docs with a terminating /
-  .match('/docs/api/:path*/', ({proxy, cache, request}) => {
+  .match('/docs/api/:path*/', ({proxy, cache, setResponseHeader, request}) => {
     cache(htmlCacheConfig);
     proxy('api', {path: '/current/api/:path*/index.html'});
+    setResponseHeader(
+      'Link',
+      `<https://docs.edg.io${request.url}index.html>; rel="canonical"`
+    );
   })
   // match current api docs without terminating /,
   // gets redirected to :path*/ to satisfy relative asset paths
@@ -197,10 +201,17 @@ const router = new Router()
     }
   )
   // match versioned api docs with a terminating /
-  .match('/docs/:version/api/:path*/', ({proxy, cache}) => {
-    cache(htmlCacheConfig);
-    proxy('api', {path: '/:version/api/:path*/index.html'});
-  })
+  .match(
+    '/docs/:version/api/:path*/',
+    ({proxy, cache, setResponseHeader, request}) => {
+      cache(htmlCacheConfig);
+      proxy('api', {path: '/:version/api/:path*/index.html'});
+      setResponseHeader(
+        'Link',
+        `<https://docs.edg.io${request.url}index.html>; rel="canonical"`
+      );
+    }
+  )
   // match versioned api docs without terminating /,
   // gets redirected to :path*/ to satisfy relative asset paths
   .match('/docs/:version/api/:path*', ({redirect}) => {

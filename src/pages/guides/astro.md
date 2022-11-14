@@ -75,14 +75,14 @@ export default new Router().use(astroRoutes)
 
 After you've setup [Server Side Rendering with Astro](https://docs.astro.build/en/guides/server-side-rendering/), specify server file path in {{ CONFIG_FILE }} as below:
 
-```diff filename={{ CONFIG_FILE }}
-+ import { join } from 'path'
+```js filename={{ CONFIG_FILE }} ins={1,4,5,6}
+import { join } from 'path'
 
 module.exports = {
-+  astro: {
-+    appPath: join(process.cwd(), 'dist', 'server', 'entry.mjs'),
-+  },
-// Rest of the config
+  astro: {
+    appPath: join(process.cwd(), 'dist', 'server', 'entry.mjs'),
+  },
+  // Rest of the config
 }
 ```
 

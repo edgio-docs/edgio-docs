@@ -1,0 +1,13 @@
+.insertion-highlight::before {
+  left: 0px;
+  content: '+';
+  padding-left: 5px;
+  position: absolute;
+}
+
+.deletion-highlight::before {
+  left: 0px;
+  content: '-';
+  padding-left: 5px;
+  position: absolute;
+}

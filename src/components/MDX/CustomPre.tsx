@@ -13,7 +13,7 @@ export const StyledCustomPre = styled.div`
   .code-block__inner {
     display: flex;
     flex-direction: column;
-    background: #242424;
+    background: #1a1a1a;
     border: 2px solid #363636;
     border-radius: 8px;
   }
@@ -64,6 +64,9 @@ export default function CustomPre({children}: {children: React.ReactNode}) {
   const unknownLanguageString = 'language-unknown';
   let language: string = unknownLanguageString;
   let filename: string | undefined;
+  let highlightLines: any;
+  let highlightDeletions: any;
+  let highlightInsertions: any;
 
   if (typeof children === 'string') {
     message = children;
@@ -74,6 +77,9 @@ export default function CustomPre({children}: {children: React.ReactNode}) {
     message = children.props.children;
     language = children.props.className || unknownLanguageString;
     filename = children.props.filename;
+    highlightDeletions = children.props.del;
+    highlightInsertions = children.props.ins;
+    highlightLines = children.props.highlight;
   }
 
   // MDX Metadata...https://mdxjs.com/guides/syntax-highlighting/#syntax-highlighting-with-the-meta-field
@@ -103,7 +109,11 @@ export default function CustomPre({children}: {children: React.ReactNode}) {
           ) : null}
 
           <main className="code-block__content">
-            <CodeBlock language={descriptiveLanguage.toLowerCase() as Language}>
+            <CodeBlock
+              highlightLines={highlightLines}
+              highlightDeletions={highlightDeletions}
+              highlightInsertions={highlightInsertions}
+              language={descriptiveLanguage.toLowerCase() as Language}>
               {message.trim()}
             </CodeBlock>
           </main>

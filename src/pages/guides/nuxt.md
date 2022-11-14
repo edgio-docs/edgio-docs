@@ -53,7 +53,7 @@ To prepare your Nuxt.js application for {{ PRODUCT }}:
 
 1. In the existing `nuxt.config.js` configuration, add "{{ PACKAGE_NAME }}/nuxt/module" to `buildModules`:
 
-```js
+```js ins={5}
 // nuxt.config.js
 
 module.exports = {

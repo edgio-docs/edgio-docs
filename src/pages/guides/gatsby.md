@@ -91,7 +91,7 @@ To proxy some URLs to a different origin, you need first to configure that origi
 
 For example:
 
-```js
+```js ins={4,5,6,7,8,9}
 // {{ CONFIG_FILE }}
 
 module.exports = {
@@ -110,7 +110,7 @@ Then you can add routing and caching rules to your `routes.js` file. Note that g
 
 For example:
 
-```js
+```js ins={10,11,12}
 // routes.js
 
 const { Router } = require('{{ PACKAGE_NAME }}/core/router')

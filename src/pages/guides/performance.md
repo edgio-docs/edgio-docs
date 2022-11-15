@@ -2,6 +2,10 @@
 title: Performance
 ---
 
+
+
+
+
 This guide shows you how to monitor and improve the performance of your application running on {{ PRODUCT_NAME }}.
 
 ## Built-in Timings {/*built-in-timings*/}

@@ -4,18 +4,14 @@
 	"routes": [
 		{
 			"title": "Getting Started",
-			"path": "getting_started__NEWARTICLE__",
+			"path": "getting_started",
 			"icon": "spark"
 		},
 		{
 			"title": "Basics",
-			"path": "basics__NEWARTICLE__",
+			"path": "basics",
 			"icon": "spark",
-			"routes": [
-				{
-					"title": "Properties",
-					"path": "properties__NEWARTICLE__"
-				},
+			"routes": [				
 				{
 					"title": "Environments",
 					"path": "environments"
@@ -33,10 +29,6 @@
 					"path": "teams"
 				},
 				{
-					"title": "Activity Log",
-					"path": "activity_log__NEWARTICLE_PHASE2__"
-				},
-				{
 					"title": null
 				},
 				{
@@ -47,7 +39,7 @@
 		},
 		{
 			"title": "Performance",
-			"path": "performance__NEWARTICLE__",
+			"path": "performance",
 			"icon": "spark",
 			"routes": [
 				{
@@ -56,7 +48,7 @@
 				},
 				{
 					"title": "CDN-as-code (EdgeJS)",
-					"path": "cdn_as_code_edgejs__routing__cookbook__"
+					"path": "routing"
 				},
 				{
 					"title": "Caching",
@@ -71,38 +63,19 @@
 					"path": "prefetching"
 				},
 				{
-					"title": "URL Redirects",
-					"path": "url_redirects__NEWARTICLE_PHASE2__"
-				},
-				{
 					"title": "Traffic Splitting",
 					"path": "traffic_splitting",
 					"routes": [
 						{
-							"title": "Getting Started",
-							"path": "getting_started_traffic_splitting__NEWARTICLE_PHASE2__"
-						},
-						{
 							"title": "A/B Testing",
-							"path": "a_b_testing"
-						},
-						{
-							"title": null
-						},
-						{
-							"title": "Troubleshooting",
-							"path": "troubleshooting_traffic_splitting__NEWARTICLE_PHASE2__"
+							"path": "split_testing"
 						}
 					]
 				},
 				{
 					"title": "Observability",
-					"path": "observability__NEWARTICLE__",
+					"path": "observability",
 					"routes": [
-						{
-							"title": "Getting Started",
-							"path": "getting_started_observability__NEWARTICLE_PHASE2__"
-						},
 						{
 							"title": "Core Web Vitals",
 							"path": "core_web_vitals"
@@ -110,45 +83,20 @@
 						{
 							"title": "DevTools",
 							"path": "devtools"
-						},
-						{
-							"title": "Deep Request Inspection",
-							"path": "deep_request_inspection__NEWARTICLE_PHASE2__"
-						},
-						{
-							"title": "Request Timing",
-							"path": "request_timing__NEWARTICLE_PHASE2__"
-						},
-						{
-							"title": "Reports",
-							"path": "reports__NEWARTICLE_PHASE2__"
 						}
 					]
 				},
 				{
 					"title": "Serverless Compute",
-					"path": "serverless_compute__NEWARTICLE__",
-					"routes": [
-						{
-							"title": "Getting Started",
-							"path": "getting_started_serverless_compute__NEWARTICLE_PHASE2__"
-						},
-						{
-							"title": null
-						},
-						{
-							"title": "Troubleshooting",
-							"path": "troubleshooting_serverless_compute__NEWARTICLE_PHASE2__"
-						}
-					]
+					"path": "serverless_functions",
 				},
 				{
 					"title": "Unit Testing (EdgeJS)",
-					"path": "unit_testing_edgejs__edgejs_testing__"
+					"path": "edgejs_testing"
 				},
 				{
 					"title": "GraphQL Caching",
-					"path": "graphql_caching__graphql__"
+					"path": "graphql"
 				},
 				{
 					"title": "Image Optimization",
@@ -167,115 +115,37 @@
 				},
 				{
 					"title": "Request",
-					"path": "request__request_headers__"
+					"path": "request_headers"
 				},
 				{
 					"title": "Response",
-					"path": "response__response__headers__"
-				},
-				{
-					"title": null
-				},
-				{
-					"title": "Troubleshooting",
-					"path": "troubleshooting_performance__NEWARTICLE_PHASE2__"
+					"path": "response_headers"
 				}
 			]
 		},
 		{
 			"title": "Security",
-			"path": "security__NEWARTICLE_PHASE2__",
+			"path": "security",
 			"icon": "spark",
 			"routes": [
 				{
-					"title": "Security through EdgeJS",
-					"path": "security_through_edgejs"
+					"title": "Managed Rule Groups",
+					"path": "managed_rule_groups"
 				},
 				{
-					"title": null
-				},
-				{
-					"title": "Web Application Firewall (WAF)",
-					"path": "security/waf",
-					"routes": [
-						{
-							"title": "Getting Started",
-							"path": "security/getting_started_waf__NEWARTICLE_PHASE2__"
-						},
-						{
-							"title": "Access Rules",
-							"path": "security/access_rules"
-						},
-						{
-							"title": "Rate Rules",
-							"path": "security/rate_rules"
-						},
-						{
-							"title": "Bot Rules",
-							"path": "security/bot_rules"
-						},
-						{
-							"title": "Custom Rules",
-							"path": "security/custom_rules"
-						},
-						{
-							"title": "Managed Rules",
-							"path": "security/managed_rules"
-						},
-						{
-							"title": "Security Applications",
-							"path": "security/security_applications"
-						},
-						{
-							"title": "Threat Dashboard",
-							"path": "security/threat_dashboard"
-						},
-						{
-							"title": "Browser Challenges Dashboard",
-							"path": "security/browser_challenges_dashboard"
-						},
-						{
-							"title": "Rates Dashboard",
-							"path": "security/rates_dashboard"
-						},
-						{
-							"title": "Rate Enforcement Dashboard",
-							"path": "security/rate_enforcement_dashboard"
-						},
-						{
-							"title": "Response to Client",
-							"path": "security/response_to_client"
-						},
-						{
-							"title": null
-						},
-						{
-							"title": "Troubleshooting",
-							"path": "security/troubleshooting_waf__NEWARTICLE_PHASE2__"
-						},
-						{
-							"title": null
-						},
-						{
-							"title": "Country Codes",
-							"path": "security/country_codes"
-						},
-						{
-							"title": "Matched On Variables",
-							"path": "security/matched_on_variables"
-						}
-					]
+					"title": "Security Suite",
+					"path": "security_suite"
 				}
 			]
 		},
 		{
 			"title": "Sites (Frameworks)",
-			"path": "sites_frameworks__NEWARTICLE__",
+			"path": "sites_frameworks",
 			"icon": "spark",
 			"routes": [
 				{
 					"title": "Getting Started",
-					"path": "getting_started_sites__NEWARTICLE__",
+					"path": "getting_started_sites",
 					"routes": [
 						{
 							"title": "Angular",
@@ -464,15 +334,12 @@
 					]
 				},
 				{
+					"title": "Connectors",
+					"path": "connectors"
+				},
+				{
 					"title": "Incremental Static Regeneration",
 					"path": "isg"
-				},
-				{
-					"title": null
-				},
-				{
-					"title": "Troubleshooting",
-					"path": "troubleshooting_sites__NEWARTICLE_PHASE2__"
 				}
 			]
 		},
@@ -490,10 +357,6 @@
 					"path": "bloomreach"
 				},
 				{
-					"title": "CI/CD",
-					"path": "ci_cd__NEWARTICLE_PHASE2__"
-				},
-				{
 					"title": "Shopify Hydrogen",
 					"path": "shopify_hydrogen"
 				},
@@ -509,7 +372,7 @@
 		},
 		{
 			"title": "Develop",
-			"path": "",
+			"path": "develop",
 			"icon": "spark",
 			"routes": [
 				{
@@ -530,7 +393,7 @@
 				},
 				{
 					"title": "Edgio Packages",
-					"path": "",
+					"path": "packages",
 					"routes": [
 						{
 							"title": "@edgio/core",
@@ -553,7 +416,7 @@
 			"routes": [
 				{
 					"title": "Single-Sign On (SSO)",
-					"path": "sso__saml__"
+					"path": "saml"
 				},
 				{
 					"title": "Migration to V4",

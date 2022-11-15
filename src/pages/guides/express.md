@@ -63,7 +63,7 @@ The file you specify in `appPath` should export an instance of an express app us
 
 If your express app serves any static assets, you'll need to add routes to your {{ PRODUCT }} router configuration to serve them from the edge. For example, to serve all paths under `/assets` from `dist/client/assets`:
 
-```js ins={8,9,10,11,12,13,14,15,16,17,18}
+```js ins={8-18}
 // routes.js
 import {Router} from '{{ PACKAGE_NAME }}/core';
 
@@ -89,7 +89,7 @@ export default new Router()
 
 If your express app expects to be able to read files from the filesystem at runtime, for example an index.html template, you can ensure they are included in the app bundle that is deployed to {{ PRODUCT_PLATFORM }}'s serverless workers by adding the following to {{ CONFIG_FILE }}
 
-```js ins={4,6,7}
+```js ins={4,6-7}
 module.exports = {
   connector: '{{ PACKAGE_NAME }}/express',
   // Rest of the config

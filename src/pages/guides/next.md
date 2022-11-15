@@ -173,7 +173,7 @@ new Prefetcher().route();
 
 The code above allows you to prefetch pages from {{ PRODUCT }}'s edge cache to greatly improve browsing speed. To prefetch a page, add the `Prefetch` component from `{{ PACKAGE_NAME }}/react` to any Next `Link` element. The example below shows you how to prefetch JSON data from `getServerSideProps` or `getStaticProps` using the `createNextDataUrl` function from `{{ PACKAGE_NAME }}/next/client`.
 
-```js ins={4,14,15,16,17,18,19,20,21,22,23,27}
+```js ins={4,14-23,27}
 import {Prefetch} from '{{ PACKAGE_NAME }}/react';
 import Link from 'next/link';
 import {useRouter} from 'next/router';
@@ -250,7 +250,7 @@ export default new Router()
 
 To be able to use [Preivew Mode](https://nextjs.org/docs/advanced-features/preview-mode) while being able to cache the respective pages, update your routes to match the requests that contain the two cookies `__prerender_bypass` & `__next_preview_data`, and send those to serverless for rendering.
 
-```js filename='routes.js' ins={8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24}
+```js filename='routes.js' ins={8-24}
 import { Router } from '{{ PACKAGE_NAME }}/core/router';
 import { nextRoutes, renderNextPage } from '{{ PACKAGE_NAME }}/next';
 
@@ -303,7 +303,7 @@ export default new Router()
 
 To configure the legacy backend, use {{ CONFIG_FILE }}:
 
-```js filename='{{ CONFIG_FILE }}' ins={2,3,4,5,6,7,8}
+```js filename='{{ CONFIG_FILE }}' ins={2-8}
 module.exports = {
   backends: {
     legacy: {
@@ -326,7 +326,7 @@ The `nextRoutes` plugin automatically adds routes for [rewrites](https://nextjs.
 The easiest way to add edge caching to your Next.js app is to add caching routes before `nextRoutes`. For example,
 imagine you have `/pages/p/[productId].js`. Here's how you can SSR responses as well as cache calls to `getServerSideProps`:
 
-```js filename='routes.js' ins={6,7,8,9,10,11,12,13,14,16,17,18,19,20,21,22,23,24,25,26,27,28}
+```js filename='routes.js' ins={6-14,16-28}
 new Router()
   // Prevent search engine bot(s) from indexing
   // Read more on: {{ DOCS_URL }}/guides/cookbook#blocking-search-engine-crawlers
@@ -419,7 +419,7 @@ module.exports = with{{ PRODUCT }}(
 
 Finally, you will need to update your `{{ CONFIG_FILE }}` to [includeFiles](/guides/edgio_config#includefiles) where the locale files are stored. Example using the default of `/public`:
 
-```js filename='{{ CONFIG_FILE }}' ins={3,4,5}
+```js filename='{{ CONFIG_FILE }}' ins={3-5}
 module.exports = {
   connector: '{{ PACKAGE_NAME }}/next',
   includeFiles: {

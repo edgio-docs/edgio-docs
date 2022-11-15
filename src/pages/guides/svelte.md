@@ -125,7 +125,7 @@ export default app
 
 Now, in `webpack.config.js` make the following additions:
 
-```js filename='webpack.config.js' ins={1,2,5,6,7,8,9,10}
+```js filename='webpack.config.js' ins={1-2,5-10}
 const { InjectManifest } = require("workbox-webpack-plugin");
 const webpack = require('webpack')
 

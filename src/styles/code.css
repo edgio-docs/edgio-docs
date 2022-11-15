@@ -1,3 +1,15 @@
+.token-line {
+  display: table-row;
+}
+.line-num {
+  z-index: 10;
+}
+.line-highlight {
+  background: #393939;
+}
+.insertion-highlight {
+  background: #00ffcb33;
+}
 .insertion-highlight::before {
   left: 0px;
   content: '+';
@@ -10,4 +22,7 @@
   content: '-';
   padding-left: 5px;
   position: absolute;
+}
+.deletion-highlight {
+  background: #650000;
 }

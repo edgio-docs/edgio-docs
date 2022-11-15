@@ -68,16 +68,16 @@ Following are the possible fixes that would help you reduce serverless bundle si
 
 Typically, this is due to node_modules marked as `dependencies` when they are more appropriate in `devDependencies` within the `package.json` file. Modules marked as dependencies will be included in the serverless bundle. Dev-only modules such as `babel`, `jest`, `webpack`, etc. should be moved to `devDependencies` as shown:
 
-```diff
+```json del={4,5} ins={8,9}
 "dependencies": {
   "@nuxtjs/sitemap": "2.4.0",
-  "@nuxt/core": "2.15.7"
--   "babel": "7.12.7",
--   "jest": "28.1.3"
-+ },
-+ "devDependencies": {
-+   "babel": "7.12.7",
-+   "jest": "28.1.3"
+  "@nuxt/core": "2.15.7",
+  "babel": "7.12.7",
+  "jest": "28.1.3"
+},
+"devDependencies": {
+  "babel": "7.12.7",
+  "jest": "28.1.3"
 }
 ```
 
@@ -95,11 +95,11 @@ router.get('/assets/:path*', ({ serveStatic }) => {
 
 Now, you can update your code references from importing the assets to referencing the static path, such as:
 
-```diff
-- import myImage from 'public/images/Image1.png'
-...
-- <div><img src={myImage}/></div>
-+ <div><img src="/assets/images/Image1.png"/></div>
+```jsx del={1,2} ins={4}
+import myImage from 'public/images/Image1.png'
+<div><img src={myImage}/></div>
+
+<div><img src="/assets/images/Image1.png"/></div>
 ```
 
 #### Possible Fix [3]: Computing which node_modules be included in the serverless bundle {/*possible-fix-3-computing-which-node_modules-be-included-in-the-serverless-bundle*/}
@@ -153,14 +153,14 @@ setNodeModules()
 
 Step 3. Change your existing `package.json` to have `node setNodeModules.js` before each command as follows:
 
-```diff
-- "{{ PRODUCT_NAME_LOWER }}:dev": "{{ FULL_CLI_NAME }} dev",
-- "{{ PRODUCT_NAME_LOWER }}:build": "{{ FULL_CLI_NAME }} build",
-- "{{ PRODUCT_NAME_LOWER }}:deploy": "{{ FULL_CLI_NAME }} deploy"
+```json del={1,2,3} ins={5,6,7}
+"{{ PRODUCT_NAME_LOWER }}:dev": "{{ FULL_CLI_NAME }} dev",
+"{{ PRODUCT_NAME_LOWER }}:build": "{{ FULL_CLI_NAME }} build",
+"{{ PRODUCT_NAME_LOWER }}:deploy": "{{ FULL_CLI_NAME }} deploy"
 
-+ "{{ PRODUCT_NAME_LOWER }}:dev": "node setNodeModules.js && {{ FULL_CLI_NAME }} dev",
-+ "{{ PRODUCT_NAME_LOWER }}:build": "node setNodeModules.js && {{ FULL_CLI_NAME }} build",
-+ "{{ PRODUCT_NAME_LOWER }}:deploy": "node setNodeModules.js && {{ FULL_CLI_NAME }} deploy"
+"{{ PRODUCT_NAME_LOWER }}:dev": "node setNodeModules.js && {{ FULL_CLI_NAME }} dev",
+"{{ PRODUCT_NAME_LOWER }}:build": "node setNodeModules.js && {{ FULL_CLI_NAME }} build",
+"{{ PRODUCT_NAME_LOWER }}:deploy": "node setNodeModules.js && {{ FULL_CLI_NAME }} deploy"
 ```
 
 Step 4. Change your `{{ CONFIG_FILE }}` to have:

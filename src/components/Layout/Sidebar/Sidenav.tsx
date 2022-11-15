@@ -22,7 +22,6 @@ interface IRoutes {
 const IconChevron = memo(function IconChevron({
   className,
   displayDirection,
-  ...rest
 }: {
   className?: string;
   displayDirection: 'down' | 'left' | 'up' | 'right';

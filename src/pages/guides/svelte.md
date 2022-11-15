@@ -108,10 +108,10 @@ if (process.env.NODE_ENV === 'production') {
 
 and to include the service worker in the app, edit `main.js` (in the `src` folder) as follows:
 
-```js
+```js ins={3}
 import './global.css'
 import App from './App.svelte'
-+ import './registerServiceWorker'
+import './registerServiceWorker'
 
 const app = new App({
   target: document.body,
@@ -125,18 +125,18 @@ export default app
 
 Now, in `webpack.config.js` make the following additions:
 
-```js
-+ const { InjectManifest } = require("workbox-webpack-plugin");
-+ const webpack = require('webpack')
+```js filename='webpack.config.js' ins={1,2,5,6,7,8,9,10}
+const { InjectManifest } = require("workbox-webpack-plugin");
+const webpack = require('webpack')
 
-  plugins: [
-    + new webpack.ProvidePlugin({
-    +   process: 'process/browser',
-    + }),
-    + new InjectManifest({
-    +   swSrc: "./service-worker.js",
-    + })
-  ]
+plugins: [
+  new webpack.ProvidePlugin({
+    process: 'process/browser',
+  }),
+  new InjectManifest({
+    swSrc: "./service-worker.js",
+  })
+]
 ```
 
 ### Configure the routes {/*configure-the-routes*/}

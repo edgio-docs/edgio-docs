@@ -1,6 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
 import cn from 'classnames';
-import Image from 'next/image';
 import Link from 'next/link';
 import React, {Fragment, useEffect, useState, memo} from 'react';
 import useCollapse from 'react-collapsed';
@@ -8,10 +7,25 @@ import styled from 'styled-components';
 
 import NavItems from '../../../../src/data/nav.json';
 
+interface IRoute {
+  title: string;
+  path: string;
+  icon: string;
+  routes?: IRoute[];
+}
+interface IRoutes {
+  title: string;
+  path: string;
+  routes: IRoute[];
+}
+
 const IconChevron = memo(function IconChevron({
   className,
   displayDirection,
   ...rest
+}: {
+  className?: string;
+  displayDirection: 'down' | 'left' | 'up' | 'right';
 }) {
   const classes = cn(
     {
@@ -50,7 +64,17 @@ function MenuChevron() {
   );
 }
 
-function Accordion({route, isActive, onSelect, depth}) {
+function Accordion({
+  route,
+  isActive,
+  onSelect,
+  depth,
+}: {
+  route: IRoute;
+  isActive: boolean;
+  onSelect: () => void;
+  depth: number;
+}) {
   const [isExpanded, setExpanded] = useState(isActive);
   const {getCollapseProps, getToggleProps} = useCollapse({
     isExpanded,
@@ -118,8 +142,8 @@ function Accordion({route, isActive, onSelect, depth}) {
   );
 }
 
-function AccordionParent({routes, depth}) {
-  const [activeIndex, setActiveIndex] = useState(null);
+function AccordionParent({routes, depth}: {routes: IRoute[]; depth: number}) {
+  const [activeIndex, setActiveIndex] = useState<number | null>(null);
 
   return (
     <>
@@ -221,7 +245,7 @@ export default function SideNav() {
   return (
     <StyledSideNav>
       <ul className="sidenav-sublist" data-nav-depth="0">
-        <AccordionParent routes={NavItems.routes} depth={0} />
+        <AccordionParent routes={(NavItems as IRoutes).routes} depth={0} />
       </ul>
     </StyledSideNav>
   );

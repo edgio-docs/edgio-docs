@@ -88,7 +88,7 @@
 				},
 				{
 					"title": "Serverless Compute",
-					"path": "serverless_functions",
+					"path": "serverless_functions"
 				},
 				{
 					"title": "Unit Testing (EdgeJS)",

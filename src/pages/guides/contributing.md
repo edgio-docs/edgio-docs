@@ -160,7 +160,7 @@ The above code renders:
 
 Fence code excerpts with triple backticks. If the code is language-specific, then you should indicate that language by appending it to the starting triple backticks (e.g., `` ```html `` or `` ```bash ``).
 
-```ts
+```js
 // This codeblock has the 'js' language module (with JS comment)
 console.log(new Date())
 ```
@@ -179,6 +179,26 @@ echo "Hello World"
 // This codeblock has not been assigned a language module
 upload.build.layer0.co
 app.layer0.co
+```
+
+```js ins={1,2-4} highlight={5,6,7-8} del={9-11,12}
+  new Router()
+  // Prevent search engine bot(s) from indexing
+  // Read more on: {{ DOCS_URL }}/guides/cookbook#blocking-search-engine-crawlers
+  .noIndexPermalink()
+  .get('/pages/c/:categoryId', ({ cache }) => {
+    cache({
+      browser: {
+        maxAgeSeconds: 0,
+        serviceWorkerSeconds: 60 * 60 * 24,
+      },
+      edge: {
+        maxAgeSeconds: 60 * 60 * 24,
+        staleWhileRevalidateSeconds: 60 * 60,
+      },
+    })
+  })
+  .fallback(({ renderWithApp }) => renderWithApp())
 ```
 
 ## Video {/*video*/}
@@ -247,4 +267,3 @@ Renders:
 	</ButtonLink>
 	<ButtonLink variant="stroke" type="deploy" withIcon={true} href="https://app.layer0.co/deploy?button&deploy&repo=https%253A%252F%252Fgithub.com%252Flayer0-docs%252Flayer0-nextjs-example" />
 </ButtonLinksGroup>
-

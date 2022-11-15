@@ -1,4 +1,6 @@
 import cn from 'classnames';
+import _flattenDeep from 'lodash/flattenDeep';
+import _range from 'lodash/range';
 import Highlight, {defaultProps, Language} from 'prism-react-renderer';
 import {useState} from 'react';
 import styled from 'styled-components';
@@ -16,34 +18,38 @@ export default function CodeBlock({
   highlightDeletions?: any;
   highlightInsertions?: any;
 }) {
-  const getLinesToHighlight = (stringIndexes: any) => {
+  const getLinesToHighlight = (lines: string) => {
+    const result = {};
     try {
-      return stringIndexes && stringIndexes.length
-        ? stringIndexes
-            .replace('{', '')
-            .replace('}', '')
-            .split(',')
-            .map((i: string) => i.trim())
-            .map((i: string) => parseInt(i))
-            .reduce((a: any, b: any) => {
-              a[b] = true;
-              return a;
-            }, {})
-        : {};
+      if (!lines || !lines.length) {
+        return result;
+      }
+
+      const values = lines
+        .replace(/[\{\}]/g, '')
+        .split(',')
+
+        .map((i: string) => {
+          const [start, end] = i.split('-').map((n) => parseInt(n.trim()));
+          return _range(start, (end || start) + 1);
+        });
+
+      return _flattenDeep(values).reduce((result: any, value: any) => {
+        result[value] = true;
+        return result;
+      }, result);
     } catch (e) {
-      return {};
+      return result;
     }
   };
 
-  const [linesToHighlight, setLinesToHighlight] = useState(
-    getLinesToHighlight(highlightLines)
-  );
+  const [linesToHighlight] = useState(getLinesToHighlight(highlightLines));
 
-  const [insertionsToHighlight, setInsertionsToHighlight] = useState(
+  const [insertionsToHighlight] = useState(
     getLinesToHighlight(highlightInsertions)
   );
 
-  const [deletionsToHighlight, setDeletionsToHighlight] = useState(
+  const [deletionsToHighlight] = useState(
     getLinesToHighlight(highlightDeletions)
   );
 

@@ -3,7 +3,7 @@ import * as React from 'react';
 import styled from 'styled-components';
 
 import Header from './Header/Header';
-import {Sidebar} from './Sidebar/Sidebar';
+import SideNav from './Sidebar/Sidenav';
 import {useIsMobile} from './useMediaQuery';
 import {RouteItem, SidebarContext} from './useRouteMeta';
 
@@ -77,7 +77,7 @@ export function Page({routeTree, children}: PageProps) {
           <div
             className="docs-side__nav custom-scrollbar"
             data-open={isMobile && showSidebar}>
-            <Sidebar />
+            <SideNav />
           </div>
           <div className="docs-content__inner">{children}</div>
         </main>

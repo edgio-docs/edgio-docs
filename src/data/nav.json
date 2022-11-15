@@ -145,7 +145,7 @@
 			"routes": [
 				{
 					"title": "Getting Started",
-					"path": "getting_started_sites",
+					"path": "jamstack_getting_started",
 					"routes": [
 						{
 							"title": "Angular",

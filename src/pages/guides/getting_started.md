@@ -5,7 +5,7 @@ title: Getting Started
 Learn how to set up {{ PRODUCT }} to improve your website's performance. Perform these steps to get started:
 
 1.  [Create an {{ PRODUCT }} property.](#create-property)
-2.  [Test your property.](#test-property)
+2.  [Test your property.](#testing-locally)
 3.  [Deploy your property to {{ PRODUCT }}.](#deploy-property)
 4.  [Next steps.](#next-steps)
 
@@ -105,7 +105,7 @@ Each website that will run behind {{ PRODUCT }} requires an {{ PRODUCT }} proper
 4.  When prompted, confirm the selection of `Use the current directory` by pressing the `ENTER` key.
 5.  When prompted, select either the `npm` or `yarn` package manager and then press the `ENTER` key.
 
-## Step 2: Test Your Property  {/*test-property*/}
+## Step 2: Testing Locally  {/*testing-locally*/}
 
 You may run {{ PRODUCT }} in local development mode to preview your website on your local machine prior to deployment. Local development mode allows for rapid development by allowing you to quickly test changes prior to deployment.
 
@@ -128,6 +128,9 @@ Once you have successfully deployed your property to {{ PRODUCT }}, our CLI prov
 
 You are now ready to set up:
 
-*   [Performance.](routing) Learn how to optimize website performance through our CDN-as-code approach to [caching](webapp_cdn_getting_started#configure-caching), [routing](routing) your content, and [predictive prefetching](prefetching). Take advantage of our [Observability](core_web_vitals) solution to gain performance insights through which you can fine-tune your configuration. Use our [Traffic Splitting](traffic_splitting) capability to speed up development by quickly iterating through different variations of your site.
-*   [Security.](security) We automatically provide distributed denial-of-service (DDOS) protection to traffic that runs behind {{ PRODUCT }}. Learn how to apply additional protection to your web applications and APIs through our Web Application Firewall and Advanced Bot Management solutions.
-*   [Sites.](jamstack_getting_started) If you are currently using a JavaScript framework, then you can improve your website's performance by using our serverless workers to quickly render server-side content in a scalable manner.
+-   [Performance.](routing) Learn how to:
+    -   Optimize website performance through our CDN-as-code approach to [caching](webapp_cdn_getting_started#configure-caching), [routing](routing) your content, and [predictive prefetching](prefetching). 
+    -   Gain performance insights through which you can fine-tune your configuration through our [Observability](core_web_vitals) solution.
+    -   Speed up development by quickly iterating through different variations of your site through our [Traffic Splitting](traffic_splitting) solution.
+-   [Security.](security) We automatically provide distributed denial-of-service (DDOS) protection to traffic that runs behind {{ PRODUCT }}. Apply additional protection to your web applications and APIs through our Web Application Firewall and Advanced Bot Management solutions. {{ ACCOUNT_UPGRADE }}
+-   [Sites.](jamstack_getting_started) If you are currently using a JavaScript framework, then you can improve your website's performance by using our serverless workers to quickly render server-side content in a scalable manner.

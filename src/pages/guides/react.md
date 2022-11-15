@@ -99,7 +99,7 @@ npm i -D {{ PACKAGE_NAME }}/react
 
 Add the `Prefetch` component from `{{ PACKAGE_NAME }}/react` to your links to cache pages before the user clicks on them. Here's an example:
 
-```js
+```js ins={2,8,10}
 import { Link } from 'react-router'
 import { Prefetch } from '{{ PACKAGE_NAME }}/react'
 

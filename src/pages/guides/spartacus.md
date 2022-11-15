@@ -127,22 +127,21 @@ Prefetching for a Spartacus app can be enabled by listening to upstream requests
 
 Example implementation of upstream request tracking changes required in your `server.ts` file:
 
-```js
+```js ins={5,6,7,8,9,10,12,50}
 import 'zone.js/dist/zone-node'
 import * as express from 'express'
 import { join } from 'path'
 
-+ // {{ PRODUCT_NAME_LOWER }}
-+ import * as http from 'http'
-+ import * as https from 'https'
-+ import createRenderCallback from '{{ PACKAGE_NAME }}/spartacus/server/createRenderCallback'
-+ import install{{ PRODUCT }}Middleware from '{{ PACKAGE_NAME }}/spartacus/server/install{{ PRODUCT }}Middleware'
-
+// {{ PRODUCT_NAME_LOWER }}
+import * as http from 'http'
+import * as https from 'https'
+import createRenderCallback from '{{ PACKAGE_NAME }}/spartacus/server/createRenderCallback'
+import install{{ PRODUCT }}Middleware from '{{ PACKAGE_NAME }}/spartacus/server/install{{ PRODUCT }}Middleware'
 
 // Express server
 const server = express()
 
-+ install{{ PRODUCT }}Middleware({ server, http, https });
+install{{ PRODUCT }}Middleware({ server, http, https });
 
 const PORT = process.env.PORT || 4200
 const DIST_FOLDER = join(process.cwd(), 'dist/<your-project-name>')
@@ -178,7 +177,7 @@ server.get('*', (req, res) => {
   res.render(
     'index',
     { req },
-+   createRenderCallback(res),
+    createRenderCallback(res),
   )
 })
 
@@ -203,11 +202,11 @@ Installing the service worker and any further prefetching will be handled by `{{
 
 Example implementation in `app.component.ts`:
 
-```js
+```js ins={4,20,21,22,23,24}
 import { Component, OnInit, Inject } from '@angular/core'
 import { isPlatformBrowser } from '@angular/common'
 import { PLATFORM_ID } from '@angular/core'
-+ import install from '{{ PACKAGE_NAME }}/prefetch/window/install'
+import install from '{{ PACKAGE_NAME }}/prefetch/window/install'
 
 @Component({
   selector: 'app-root',
@@ -223,32 +222,32 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
-+   setTimeout(() => {
-+     if (this.isBrowser) {
-+       install()
-+     }
-+   })
+    setTimeout(() => {
+      if (this.isBrowser) {
+        install()
+      }
+    })
   }
 }
 ```
 
 To avoid Spartacus installing `ngsw-worker`, set `production: false` in `environment.prod.ts` as a temporary workaround:
 
-```diff
+```js del={2} ins={3}
 pwa: {
-- enabled: environment.production
-+ enabled: false
+  enabled: environment.production
+  enabled: false
 },
 ```
 
 You may also need to disable it in your `app.module.ts` file:
 
-```diff
+```js del={4} ins={5}
 ServiceWorkerModule.register(
   'ngsw-worker.js',
   {
--   enabled: environment.production,
-+   enabled: false
+    enabled: environment.production,
+    enabled: false
   }
 ),
 ```

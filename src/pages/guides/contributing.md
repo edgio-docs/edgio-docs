@@ -181,7 +181,9 @@ upload.build.layer0.co
 app.layer0.co
 ```
 
-```js ins={1,2-4} highlight={5,6,7-8} del={9-11,12}
+You may highlight various lines of code by specifying line number ranges within `ins={}`, `del={}`, or `highlight={}`, where the value inside `{}` can be `{1,2,3,8,9,10}` or `{1-3,8-10}`, for example.
+
+```js ins={1-3,8-10} 
   new Router()
   // Prevent search engine bot(s) from indexing
   // Read more on: {{ DOCS_URL }}/guides/cookbook#blocking-search-engine-crawlers
@@ -196,6 +198,28 @@ app.layer0.co
         maxAgeSeconds: 60 * 60 * 24,
         staleWhileRevalidateSeconds: 60 * 60,
       },
+    })
+  })
+  .fallback(({ renderWithApp }) => renderWithApp())
+```
+
+To highlight lines based on a diff, mark lines with a leading `+`/`-` and specify the `diff` attribute such as: `` ```js diff ``
+
+```js diff
+  new Router()
+  // Prevent search engine bot(s) from indexing
+  // Read more on: {{ DOCS_URL }}/guides/cookbook#blocking-search-engine-crawlers
+  .noIndexPermalink()
+  .get('/pages/c/:categoryId', ({ cache }) => {
+    cache({
++      browser: {
++        maxAgeSeconds: 0,
++        serviceWorkerSeconds: 60 * 60 * 24,
++      },
+-      edge: {
+-        maxAgeSeconds: 60 * 60 * 24,
+-        staleWhileRevalidateSeconds: 60 * 60,
+-      },
     })
   })
   .fallback(({ renderWithApp }) => renderWithApp())

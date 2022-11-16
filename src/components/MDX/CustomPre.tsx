@@ -67,6 +67,7 @@ export default function CustomPre({children}: {children: React.ReactNode}) {
   let highlightLines: any;
   let highlightDeletions: any;
   let highlightInsertions: any;
+  let highlightAsDiff = false;
 
   if (typeof children === 'string') {
     message = children;
@@ -80,6 +81,7 @@ export default function CustomPre({children}: {children: React.ReactNode}) {
     highlightDeletions = children.props.del;
     highlightInsertions = children.props.ins;
     highlightLines = children.props.highlight;
+    highlightAsDiff = children.props.diff;
   }
 
   // MDX Metadata...https://mdxjs.com/guides/syntax-highlighting/#syntax-highlighting-with-the-meta-field
@@ -110,6 +112,7 @@ export default function CustomPre({children}: {children: React.ReactNode}) {
 
           <main className="code-block__content">
             <CodeBlock
+              highlightAsDiff={highlightAsDiff}
               highlightLines={highlightLines}
               highlightDeletions={highlightDeletions}
               highlightInsertions={highlightInsertions}

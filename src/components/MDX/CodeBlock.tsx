@@ -6,6 +6,11 @@ import styled from 'styled-components';
 
 import {StringMap} from 'utils/Types';
 
+const clsByOperator: StringMap = {
+  '+': 'insertion-highlight',
+  '-': 'deletion-highlight',
+};
+
 const getLinesToHighlight = (linesByClass: StringMap) => {
   const result = {};
 
@@ -38,21 +43,39 @@ const getLinesToHighlight = (linesByClass: StringMap) => {
 export default function CodeBlock({
   language,
   children,
+  highlightAsDiff,
   highlightLines,
   highlightDeletions,
   highlightInsertions,
 }: {
   language: Language;
   children: string;
+  highlightAsDiff?: boolean;
   highlightLines?: any;
   highlightDeletions?: any;
   highlightInsertions?: any;
 }) {
   const linesToHighlight: StringMap = getLinesToHighlight({
     'line-highlight': highlightLines,
-    'insertion-highlight': highlightInsertions,
-    'deletion-highlight': highlightDeletions,
+    [clsByOperator['+']]: highlightInsertions,
+    [clsByOperator['-']]: highlightDeletions,
   });
+
+  // if diff attribute is provided, extract the lines to highlight automatically based on +/-
+  if (highlightAsDiff) {
+    const re = /(^\s*(\+|\-))/;
+    const lines = children.split(/\r?\n/);
+
+    lines.forEach((line, idx) => {
+      const match = re.exec(line);
+      if (match) {
+        lines[idx] = line.substring(match.index + match[1].length);
+        linesToHighlight[idx + 1] = clsByOperator[match[2]];
+      }
+    });
+
+    children = lines.join('\n');
+  }
 
   return (
     <Highlight

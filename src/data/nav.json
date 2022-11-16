@@ -10,8 +10,8 @@
 		{
 			"title": "Basics",
 			"path": "basics",
-			"icon": "spark",
-			"routes": [				
+			"icon": "server",
+			"routes": [
 				{
 					"title": "Environments",
 					"path": "environments"
@@ -40,7 +40,7 @@
 		{
 			"title": "Performance",
 			"path": "performance",
-			"icon": "spark",
+			"icon": "trend",
 			"routes": [
 				{
 					"title": "Getting Started",
@@ -126,7 +126,7 @@
 		{
 			"title": "Security",
 			"path": "security",
-			"icon": "spark",
+			"icon": "shield",
 			"routes": [
 				{
 					"title": "Managed Rule Groups",
@@ -141,7 +141,7 @@
 		{
 			"title": "Sites (Frameworks)",
 			"path": "sites_frameworks",
-			"icon": "spark",
+			"icon": "book-plain",
 			"routes": [
 				{
 					"title": "Getting Started",
@@ -346,7 +346,7 @@
 		{
 			"title": "Third-Party Integrations",
 			"path": "integrations",
-			"icon": "spark",
+			"icon": "gear",
 			"routes": [
 				{
 					"title": "BigCommerce",
@@ -373,7 +373,7 @@
 		{
 			"title": "Develop",
 			"path": "develop",
-			"icon": "spark",
+			"icon": "code-plain",
 			"routes": [
 				{
 					"title": "CLI",
@@ -412,7 +412,7 @@
 		{
 			"title": "Reference",
 			"path": "reference",
-			"icon": "spark",
+			"icon": "stacks-plain",
 			"routes": [
 				{
 					"title": "Single-Sign On (SSO)",

@@ -92,8 +92,8 @@ function Accordion({
         {/* Toggle */}
         {route.title && (
           <Link
-            // href={`/guides/${route.path}`}
-            href="/"
+            href={`/guides/${route.path}`}
+            // href="/"
             passHref
             className="sidenav-link"
             data-depth={depth}>

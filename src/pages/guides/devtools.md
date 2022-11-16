@@ -10,7 +10,7 @@ title: Devtools
 
 ![devtools](/images/devtools/devtools.png?width=300)
 
-[Live demo of {{ PRODUCT }} Devtools running on a React Storefront site](https://demo.reactstorefront.io/__layer0__/devtools/enable)
+[Live demo of {{ PRODUCT }} Devtools running on a React Storefront site](https://demo.reactstorefront.io/__edgio__/devtools/enable)
 
 <Video src="https://player.vimeo.com/video/691580899" />
 

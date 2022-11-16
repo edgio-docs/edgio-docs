@@ -3,3 +3,5 @@ Allow: /
 
 User-agent: *
 Disallow: /docs/v*
+
+Sitemap: https://docs.edg.io/sitemap.xml

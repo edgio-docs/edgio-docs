@@ -17,7 +17,7 @@ const StyledHeader = styled.header`
   position: sticky;
   top: 0;
   z-index: 1;
-  background-color: var(--bg-secondary);
+  /* background-color: var(--bg-secondary); */
   width: 100%;
   height: var(--header-height);
   box-shadow: inset 0 -1px var(--shadow-primary);

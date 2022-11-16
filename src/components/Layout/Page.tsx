@@ -21,14 +21,15 @@ const StyledMainPage = styled.div`
 
     .docs-side__nav {
       position: sticky;
-      left: 0;
-      top: var(--header-height);
-      height: calc(100vh - var(--header-height));
+      left: 10px;
+      top: calc(var(--header-height) + 8px);
+      border-radius: 4px;
+      height: calc(100vh - var(--header-height) - 16px);
       width: var(--sidebar-width);
       overflow: auto;
       user-select: none;
       padding: calc(var(--header-height) / 2) 0;
-      box-shadow: inset -1px 0px var(--hr-secondary);
+      /* box-shadow: inset -1px 0px var(--hr-secondary); */
       z-index: 2;
       background-color: var(--bg-secondary);
       will-change: transform;
@@ -47,6 +48,7 @@ const StyledMainPage = styled.div`
 
     .docs-content__inner {
       margin: 0 auto;
+      margin-left: 10px;
       flex: 1 1 0%;
       min-height: calc(100vh - var(--header-height));
       position: relative;

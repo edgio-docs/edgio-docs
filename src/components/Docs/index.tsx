@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import {Toc} from '../Layout/Toc';
 
 import DiscourseDiscuss from './DiscourseDiscuss';
-import DocsPagination from './DocsPagination';
 import EditPage from './EditPage';
 
 import {siteConfig} from 'siteConfig';
@@ -221,7 +220,6 @@ export default function Docs({
           <div className="docs-article__body">{children}</div>
         </article>
         <EditPage />
-        <DocsPagination />
       </div>
       <Toc headings={tocHeadings} />
     </StyledDocs>

@@ -84,6 +84,12 @@ export default function CustomPre({children}: {children: React.ReactNode}) {
     highlightAsDiff = children.props.diff;
   }
 
+  // Clean up the copy code if it's a diff with deletions
+  let copyMessage = message;
+  if (highlightAsDiff) {
+    copyMessage = cleanCopyCode(copyMessage);
+  }
+
   // MDX Metadata...https://mdxjs.com/guides/syntax-highlighting/#syntax-highlighting-with-the-meta-field
   const replacedFilename = filename?.replace(/"/g, '').replace(/'/g, '') ?? '';
   const descriptiveLanguage = getDescriptiveLanguage(language);
@@ -105,7 +111,7 @@ export default function CustomPre({children}: {children: React.ReactNode}) {
                 )}
               </div>
               <div className="header-end">
-                <CopyCode {...{message}} />
+                <CopyCode {...{message: copyMessage}} />
               </div>
             </header>
           ) : null}
@@ -161,4 +167,28 @@ function CopyCode({message}: {message: string}) {
       </StyledCopyCodeButton>
     </CopyToClipboard>
   );
+}
+
+function cleanCopyCode(message: string) {
+  const reDiffLine = /(^\s*(\+|\-))/;
+  const lines = message.split(/\r?\n/);
+
+  return lines
+    .map((line) => {
+      const match = reDiffLine.exec(line);
+      if (match) {
+        // remove entire line if deletion
+        if (match[2] == '-') {
+          return;
+        }
+
+        // remove the + operator, but keep the rest of the line
+        return line.substring(match.index + match[1].length);
+      }
+
+      // line unchanged
+      return line;
+    })
+    .filter(Boolean)
+    .join('\n');
 }

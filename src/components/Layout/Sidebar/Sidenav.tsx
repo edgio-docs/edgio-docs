@@ -198,6 +198,8 @@ const StyledSideNav = styled.div`
     border-radius: 2px;
     color: var(--sidebar-link-primary);
     grid-template-columns: auto 1fr auto;
+    font-size: 14px;
+    font-weight: 400;
   }
 
   .menu-toggle__wrap:hover {

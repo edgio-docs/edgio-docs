@@ -60,6 +60,10 @@
 					"path": "performance/purging"
 				},
 				{
+					"title": "Static Prerendering",
+					"path": "static_prerendering"
+				},
+				{
 					"title": "Predictive Prefetch",
 					"path": "performance/prefetching"
 				},
@@ -102,6 +106,10 @@
 				{
 					"title": "Image Optimization",
 					"path": "performance/image_optimization"
+				},
+				{
+					"title": "Traditional Sites",
+					"path": "traditional_sites"
 				},
 				{
 					"title": "Third-Party CDNs",

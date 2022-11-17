@@ -4,6 +4,20 @@ title: Serverless Compute
 
 {{ PRODUCT }} makes it easy to develop, test, and deploy serverless functions without a JavaScript framework. Simply declare your routes and use the `compute` function or `proxy` with the `transformResponse` option to compute responses based on your own custom logic.
 
+## Availablity {/*availablity*/}
+
+{{ PRODUCT_NAME }} has multiple global regions in which it will automatically provision the following:
+
+-   Compute resources that run your code in two geographically close but entirely separate data centers.
+
+    <Callout type="info">
+
+      {{ PRODUCT_NAME }} provides high availability (HA) in all of its components. You can choose a particular [region](regions) of the world in which your API servers are located. {{ PRODUCT_NAME }} will provision two data centers closest to it, connecting them with automatic DNS failover. HA is also provided within the data centers themselves, with all individual processes being (at least) duplicated and sharing the traffic load among themselves. This in-depth HA architecture minimizes the chances of loss of traffic.
+
+    </Callout>
+
+-   A level 2 cache to maximize the global cache hit rate and reduce traffic to your servers.
+
 {{ PREREQ }}
 
 ## Getting Started {/*getting-started*/}

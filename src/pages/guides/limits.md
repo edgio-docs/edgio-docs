@@ -218,14 +218,14 @@ manipulating files based on user requests. For example, storing user uploaded fi
 before proceeding. But this can open up security vulnerabilities where a bug in the application can be used to modify
 the application itself.
 
-So, as a best practice {{ PRODUCT_NAME }} App Platform does not allow you to change the content of application files on
+So, as a best practice {{ PRODUCT_NAME }} {{ PRODUCT_PLATFORM }} does not allow you to change the content of application files on
 the filesystem during runtime. If you need to modify an application file, you must make those changes locally and make
 a new deployment. This limits the attack surface of your potential application vulnerabilities. It also allows us to
 make your application more distributed and resilient to outages. {{ PRODUCT_NAME }} takes your application code and
 deploys it to multiple regions with a read-only filesystem. This way, if the primary availability zone or region is
 unavailable, your application will still be accessible from another region.
 
-{{ PRODUCT_NAME }} App Platform runs your application in `/var/task` directory. If you attempt to write a file in that
+{{ PRODUCT_NAME }} {{ PRODUCT_PLATFORM }} runs your application in `/var/task` directory. If you attempt to write a file in that
 directory, you may come across an error like the following:
 ```
 EROFS: read-only file system, open '/var/task/temp-upload.jpg'

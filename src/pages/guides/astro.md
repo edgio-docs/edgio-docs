@@ -68,14 +68,17 @@ The default `routes.js` file created by `{{ FULL_CLI_NAME }} init` sends all req
 const { Router } = require('{{ PACKAGE_NAME }}/core/router')
 const { astroRoutes } = require('{{ PACKAGE_NAME }}/astro')
 
-export default new Router().use(astroRoutes)
+export default new Router()
+  // Prevent search engines from indexing permalink URLs
+  .noIndexPermalink()
+  .use(astroRoutes)
 ```
 
 ## Enable Server Side Rendering {/*enable-server-side-rendering*/}
 
 After you've setup [Server Side Rendering with Astro](https://docs.astro.build/en/guides/server-side-rendering/), specify server file path in {{ CONFIG_FILE }} as below:
 
-```js filename={{ CONFIG_FILE }} ins={1,4,5,6}
+```js filename={{ CONFIG_FILE }} ins={1,4-6}
 import { join } from 'path'
 
 module.exports = {

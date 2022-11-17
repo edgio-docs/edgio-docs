@@ -1,68 +1,81 @@
 import cn from 'classnames';
+import _flattenDeep from 'lodash/flattenDeep';
+import _range from 'lodash/range';
 import Highlight, {defaultProps, Language} from 'prism-react-renderer';
-import {useState} from 'react';
 import styled from 'styled-components';
+
+import {StringMap} from 'utils/Types';
+
+const clsByOperator: StringMap = {
+  '+': 'insertion-highlight',
+  '-': 'deletion-highlight',
+};
+
+const getLinesToHighlight = (linesByClass: StringMap) => {
+  const result = {};
+
+  for (const cls in linesByClass) {
+    const lines = linesByClass[cls];
+
+    if (!lines || !lines.length) {
+      continue;
+    }
+    try {
+      const values = lines
+        .replace(/[\{\}]/g, '')
+        .split(',')
+
+        .map((i: string) => {
+          const [start, end] = i.split('-').map((n) => parseInt(n.trim()));
+          return _range(start, (end || start) + 1);
+        });
+
+      _flattenDeep(values).reduce((result: any, value: any) => {
+        result[value] = cls;
+        return result;
+      }, result);
+    } catch (e) {}
+  }
+
+  return result;
+};
 
 export default function CodeBlock({
   language,
   children,
+  highlightAsDiff,
   highlightLines,
   highlightDeletions,
   highlightInsertions,
 }: {
   language: Language;
   children: string;
+  highlightAsDiff?: boolean;
   highlightLines?: any;
   highlightDeletions?: any;
   highlightInsertions?: any;
 }) {
-  const getLinesToHighlight = (stringIndexes: any) => {
-    try {
-      return stringIndexes && stringIndexes.length
-        ? stringIndexes
-            .replace('{', '')
-            .replace('}', '')
-            .split(',')
-            .map((i: string) => i.trim())
-            .map((i: string) => parseInt(i))
-            .reduce((a: any, b: any) => {
-              a[b] = true;
-              return a;
-            }, {})
-        : {};
-    } catch (e) {
-      return {};
-    }
-  };
+  const linesToHighlight: StringMap = getLinesToHighlight({
+    'line-highlight': highlightLines,
+    [clsByOperator['+']]: highlightInsertions,
+    [clsByOperator['-']]: highlightDeletions,
+  });
 
-  const [linesToHighlight, setLinesToHighlight] = useState(
-    getLinesToHighlight(highlightLines)
-  );
+  // if diff attribute is provided, extract the lines to highlight automatically based on +/-
+  if (highlightAsDiff) {
+    const re = /(^\s*(\+|\-))/;
+    const lines = children.split(/\r?\n/);
 
-  const [insertionsToHighlight, setInsertionsToHighlight] = useState(
-    getLinesToHighlight(highlightInsertions)
-  );
-
-  const [deletionsToHighlight, setDeletionsToHighlight] = useState(
-    getLinesToHighlight(highlightDeletions)
-  );
-
-  const getBackgroundColor = (i: any) => {
-    try {
-      if (insertionsToHighlight[i + 1]) {
-        return '#00ffcb33';
+    lines.forEach((line, idx) => {
+      const match = re.exec(line);
+      if (match) {
+        lines[idx] = line.substring(match.index + match[1].length);
+        linesToHighlight[idx + 1] = clsByOperator[match[2]];
       }
-      if (deletionsToHighlight[i + 1]) {
-        return '#650000';
-      }
-      if (linesToHighlight[i + 1]) {
-        return '#393939';
-      }
-      return 'transparent';
-    } catch (e) {
-      return 'transparent';
-    }
-  };
+    });
+
+    children = lines.join('\n');
+  }
 
   return (
     <Highlight
@@ -71,22 +84,15 @@ export default function CodeBlock({
       code={children}
       language={language}>
       {({className, style, tokens, getLineProps, getTokenProps}) => (
-        <pre className={cn('custom-scrollbar', className)} style={style}>
+        <pre
+          className={cn('code-block', 'custom-scrollbar', className)}
+          style={style}>
           {tokens.map((line, i) => {
+            const lineNum = i + 1;
             return (
-              <Line
-                key={i}
-                {...getLineProps({line, key: i})}
-                style={{
-                  background: getBackgroundColor(i),
-                }}>
-                <LineNo>{i + 1}</LineNo>
-                <LineContent
-                  className={cn({
-                    'line-highlight': linesToHighlight?.[i + 1],
-                    'deletion-highlight': deletionsToHighlight?.[i + 1],
-                    'insertion-highlight': insertionsToHighlight?.[i + 1],
-                  })}>
+              <Line key={i} {...getLineProps({line, key: i})}>
+                <LineNo className="line-num">{lineNum}</LineNo>
+                <LineContent className={cn(linesToHighlight[lineNum])}>
                   {line.map((token, key) => (
                     <span key={key} {...getTokenProps({token, key})} />
                   ))}

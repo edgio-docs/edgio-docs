@@ -45,7 +45,7 @@ When you deploy your Express app to the {{ PRODUCT_PLATFORM }}, the {{ PRODUCT }
 
 If it cannot find one of these files, you can specify the path to the app in `{{ CONFIG_FILE }}`:
 
-```js
+```js ins={1,7}
 const {join} = require('path');
 
 // {{ CONFIG_FILE }}
@@ -63,7 +63,7 @@ The file you specify in `appPath` should export an instance of an express app us
 
 If your express app serves any static assets, you'll need to add routes to your {{ PRODUCT }} router configuration to serve them from the edge. For example, to serve all paths under `/assets` from `dist/client/assets`:
 
-```js
+```js ins={8-18}
 // routes.js
 import {Router} from '{{ PACKAGE_NAME }}/core';
 
@@ -89,10 +89,10 @@ export default new Router()
 
 If your express app expects to be able to read files from the filesystem at runtime, for example an index.html template, you can ensure they are included in the app bundle that is deployed to {{ PRODUCT_PLATFORM }}'s serverless workers by adding the following to {{ CONFIG_FILE }}
 
-```js
+```js ins={4,6-7}
 module.exports = {
-  /* ... */
-
+  connector: '{{ PACKAGE_NAME }}/express',
+  // Rest of the config
   includeFiles: {
     // Include index.html in the serverless bundle
     'dist/client/index.html': true,
@@ -109,7 +109,7 @@ source files are compiled, you can transpile your app on your own and point your
 
 By default, {{ PRODUCT }} uses ESBuild to transpile and bundle your application code. If you're having difficulty fitting your app within the limit for serverless bundles, you can try bundling with [ncc](https://github.com/vercel/ncc), which should produce smaller bundles, by adding the following to {{ CONFIG_FILE }}:
 
-```js
+```js highlight={3}
 module.exports = {
   express: {
     bundler: '@vercel/ncc',
@@ -131,7 +131,7 @@ yarn add --dev @vercel/ncc@^0.34.0
 
 NCC produces a tree-shaken, bundle which includes your application code and all of its dependencies in a single file (written to .edgio/lambda/backends/index.js). [NFT](https://github.com/vercel/nft) is also supported:
 
-```js
+```js highlight={3}
 module.exports = {
   express: {
     bundler: '@vercel/nft',

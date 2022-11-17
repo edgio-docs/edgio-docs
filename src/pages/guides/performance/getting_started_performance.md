@@ -7,7 +7,7 @@ Deploying your web application behind {{ PRODUCT }} is the fastest and easiest w
 
 <Callout type="info">
 
-  Serving production traffic over {{ PRODUCT }} requires updating your site's DNS to point to our service. 
+  Serving production traffic over {{ PRODUCT }} requires updating your site's DNS to point to our service.
 
   [Learn more.](/guides/production)
 
@@ -26,6 +26,8 @@ Before proceeding, you will need to create and deploy a property to {{ PRODUCT }
 <Callout type="tip">
 
   Alternatively, you may deploy our [sample site](#example).
+
+</Callout>
 
 ## Project Files {/*project-structure*/}
 
@@ -96,7 +98,7 @@ Evaluate site performance and QA functionality by deploying your property to {{ 
 {{ FULL_CLI_NAME }} deploy
 ```
 
-Assess performance and caching behavior from the {{ PORTAL }}. Fine-tune your configuration by adding routes and then redeploying your property. 
+Assess performance and caching behavior from the {{ PORTAL }}. Fine-tune your configuration by adding routes and then redeploying your property.
 
 ## Example {/*example*/}
 
@@ -105,7 +107,7 @@ We provide links to a sample site and its source code below. You may also start 
 <ExampleButtons
   title="Web CDN"
   siteUrl="https://layer0-docs-cdn-starter-template-default.layer0-limelight.link"
-  repoUrl="https://github.com/layer0-docs/layer0-cdn-example" 
+  repoUrl="https://github.com/layer0-docs/layer0-cdn-example"
   deployFromRepo />
 
 ## Issues? {/*issues*/}

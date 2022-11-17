@@ -17,7 +17,7 @@ Learn how to use CDN-as-code to:
 -   Define routes.
 -   Set up edge caching.
 
-## Prerequisites
+## Prerequisites {/*prerequisites*/}
 
 Before proceeding, you will need to create and deploy a property to {{ PRODUCT }}.
 
@@ -77,7 +77,7 @@ Learn more about:
 -   [Caching](caching)
 -   [Predictive Prefetching](prefetching)
 
-## Deploy Locally
+## Deploy Locally {/*deploy-locally*/}
 
 You may run {{ PRODUCT }} in local development mode to preview your website on your local machine prior to deployment. Local development mode allows for rapid development by allowing you to quickly test changes prior to deployment.
 

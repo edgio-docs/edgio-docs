@@ -14,26 +14,27 @@
 			"routes": [
 				{
 					"title": "Environments",
-					"path": "environments"
+					"path": "basics/environments"
 				},
 				{
 					"title": "Domains",
-					"path": "production"
+					"path": "basics/production"
 				},
 				{
 					"title": "Deployments",
-					"path": "deploy_apps"
+					"path": "basics/deploy_apps"
 				},
 				{
 					"title": "Collaboration",
-					"path": "teams"
+					"path": "basics/teams"
 				},
 				{
-					"title": null
+					"title": "",
+					"path": ""
 				},
 				{
 					"title": "Configuration File",
-					"path": "edgio_config"
+					"path": "basics/edgio_config"
 				}
 			]
 		},
@@ -44,82 +45,83 @@
 			"routes": [
 				{
 					"title": "Getting Started",
-					"path": "getting_started_performance"
+					"path": "performance/getting_started_performance"
 				},
 				{
 					"title": "CDN-as-code (EdgeJS)",
-					"path": "routing"
+					"path": "performance/routing"
 				},
 				{
 					"title": "Caching",
-					"path": "caching"
+					"path": "performance/caching"
 				},
 				{
 					"title": "Purging",
-					"path": "purging"
+					"path": "performance/purging"
 				},
 				{
 					"title": "Predictive Prefetch",
-					"path": "prefetching"
+					"path": "performance/prefetching"
 				},
 				{
 					"title": "Traffic Splitting",
-					"path": "traffic_splitting",
+					"path": "performance/traffic_splitting",
 					"routes": [
 						{
 							"title": "A/B Testing",
-							"path": "split_testing"
+							"path": "performance/traffic_splitting/split_testing"
 						}
 					]
 				},
 				{
 					"title": "Observability",
-					"path": "observability",
+					"path": "performance/observability",
 					"routes": [
 						{
 							"title": "Core Web Vitals",
-							"path": "core_web_vitals"
+							"path": "performance/observability/core_web_vitals"
 						},
 						{
 							"title": "DevTools",
-							"path": "devtools"
+							"path": "performance/observability/devtools"
 						}
 					]
 				},
 				{
 					"title": "Serverless Compute",
-					"path": "serverless_functions"
+					"path": "performance/serverless_functions"
 				},
 				{
 					"title": "Unit Testing (EdgeJS)",
-					"path": "edgejs_testing"
+					"path": "performance/edgejs_testing"
 				},
 				{
 					"title": "GraphQL Caching",
-					"path": "graphql"
+					"path": "performance/graphql"
 				},
 				{
 					"title": "Image Optimization",
-					"path": "image_optimization"
+					"path": "performance/image_optimization"
 				},
 				{
 					"title": "Third-Party CDNs",
-					"path": "third_party_cdns"
+					"path": "performance/third_party_cdns"
 				},
 				{
-					"title": null
+					"title": "",
+					"path": ""
 				},
 				{
 					"title": "Compression",
-					"path": "compression"
+					"path": "performance/compression"
 				},
 				{
 					"title": "Request",
-					"path": "request_headers"
+					"path": "performance/request_headers"
 				},
 				{
 					"title": "Response",
-					"path": "response_headers"
+					"path": "performance/response_headers"
 				}
 			]
 		},
@@ -130,11 +132,11 @@
 			"routes": [
 				{
 					"title": "Managed Rule Groups",
-					"path": "managed_rule_groups"
+					"path": "security/managed_rule_groups"
 				},
 				{
 					"title": "Security Suite",
-					"path": "security_suite"
+					"path": "security/security_suite"
 				}
 			]
 		},
@@ -145,201 +147,201 @@
 			"routes": [
 				{
 					"title": "Getting Started",
-					"path": "jamstack_getting_started",
+					"path": "sites_frameworks/jamstack_getting_started",
 					"routes": [
 						{
 							"title": "Angular",
-							"path": "angular"
+							"path": "sites_frameworks/jamstack_getting_started/angular"
 						},
 						{
 							"title": "Astro",
-							"path": "astro"
+							"path": "sites_frameworks/jamstack_getting_started/astro"
 						},
 						{
 							"title": "Brunch",
-							"path": "brunch"
+							"path": "sites_frameworks/jamstack_getting_started/brunch"
 						},
 						{
 							"title": "Docusaurus",
-							"path": "docusaurus"
+							"path": "sites_frameworks/jamstack_getting_started/docusaurus"
 						},
 						{
 							"title": "Dojo",
-							"path": "dojo"
+							"path": "sites_frameworks/jamstack_getting_started/dojo"
 						},
 						{
 							"title": "Eleventy",
-							"path": "eleventy"
+							"path": "sites_frameworks/jamstack_getting_started/eleventy"
 						},
 						{
 							"title": "Ember.js",
-							"path": "ember"
+							"path": "sites_frameworks/jamstack_getting_started/ember"
 						},
 						{
 							"title": "Ember Fastboot",
-							"path": "ember_fastboot"
+							"path": "sites_frameworks/jamstack_getting_started/ember_fastboot"
 						},
 						{
 							"title": "Express",
-							"path": "express"
+							"path": "sites_frameworks/jamstack_getting_started/express"
 						},
 						{
 							"title": "Frontity",
-							"path": "frontity"
+							"path": "sites_frameworks/jamstack_getting_started/frontity"
 						},
 						{
 							"title": "Gatsby",
-							"path": "gatsby"
+							"path": "sites_frameworks/jamstack_getting_started/gatsby"
 						},
 						{
 							"title": "Gridsome",
-							"path": "gridsome"
+							"path": "sites_frameworks/jamstack_getting_started/gridsome"
 						},
 						{
 							"title": "Hexo",
-							"path": "hexo"
+							"path": "sites_frameworks/jamstack_getting_started/hexo"
 						},
 						{
 							"title": "Hugo",
-							"path": "hugo"
+							"path": "sites_frameworks/jamstack_getting_started/hugo"
 						},
 						{
 							"title": "Ionic React",
-							"path": "ionic_react"
+							"path": "sites_frameworks/jamstack_getting_started/ionic_react"
 						},
 						{
 							"title": "Ionic Vue",
-							"path": "ionic_vue"
+							"path": "sites_frameworks/jamstack_getting_started/ionic_vue"
 						},
 						{
 							"title": "Jekyll",
-							"path": "jekyll"
+							"path": "sites_frameworks/jamstack_getting_started/jekyll"
 						},
 						{
 							"title": "Lit",
-							"path": "lit"
+							"path": "sites_frameworks/jamstack_getting_started/lit"
 						},
 						{
 							"title": "MkDocs",
-							"path": "mkdocs"
+							"path": "sites_frameworks/jamstack_getting_started/mkdocs"
 						},
 						{
 							"title": "Nx",
-							"path": "nx"
+							"path": "sites_frameworks/jamstack_getting_started/nx"
 						},
 						{
 							"title": "Next.js",
-							"path": "next"
+							"path": "sites_frameworks/jamstack_getting_started/next"
 						},
 						{
 							"title": "Next.js Commerce",
-							"path": "next_commerce"
+							"path": "sites_frameworks/jamstack_getting_started/next_commerce"
 						},
 						{
 							"title": "Nuxt.js",
-							"path": "nuxt"
+							"path": "sites_frameworks/jamstack_getting_started/nuxt"
 						},
 						{
 							"title": "Nuxt3",
-							"path": "nuxt3"
+							"path": "sites_frameworks/jamstack_getting_started/nuxt3"
 						},
 						{
 							"title": "Preact",
-							"path": "preact"
+							"path": "sites_frameworks/jamstack_getting_started/preact"
 						},
 						{
 							"title": "Razzle",
-							"path": "razzle"
+							"path": "sites_frameworks/jamstack_getting_started/razzle"
 						},
 						{
 							"title": "React",
-							"path": "react"
+							"path": "sites_frameworks/jamstack_getting_started/react"
 						},
 						{
 							"title": "React Static",
-							"path": "react_static"
+							"path": "sites_frameworks/jamstack_getting_started/react_static"
 						},
 						{
 							"title": "React Storefront",
-							"path": "react-storefront"
+							"path": "sites_frameworks/jamstack_getting_started/react-storefront"
 						},
 						{
 							"title": "RedwoodJS",
-							"path": "redwoodjs"
+							"path": "sites_frameworks/jamstack_getting_started/redwoodjs"
 						},
 						{
 							"title": "Remix",
-							"path": "remix"
+							"path": "sites_frameworks/jamstack_getting_started/remix"
 						},
 						{
 							"title": "Saber",
-							"path": "saber"
+							"path": "sites_frameworks/jamstack_getting_started/saber"
 						},
 						{
 							"title": "Sanity",
-							"path": "sanity"
+							"path": "sites_frameworks/jamstack_getting_started/sanity"
 						},
 						{
 							"title": "Sapper",
-							"path": "sapper"
+							"path": "sites_frameworks/jamstack_getting_started/sapper"
 						},
 						{
 							"title": "Scully",
-							"path": "scully"
+							"path": "sites_frameworks/jamstack_getting_started/scully"
 						},
 						{
 							"title": "SolidJS",
-							"path": "solid"
+							"path": "sites_frameworks/jamstack_getting_started/solid"
 						},
 						{
 							"title": "Spartacus",
-							"path": "spartacus"
+							"path": "sites_frameworks/jamstack_getting_started/spartacus"
 						},
 						{
 							"title": "Static HTML/JS",
-							"path": "static_sites"
+							"path": "sites_frameworks/jamstack_getting_started/static_sites"
 						},
 						{
 							"title": "Stencil",
-							"path": "stencil"
+							"path": "sites_frameworks/jamstack_getting_started/stencil"
 						},
 						{
 							"title": "Svelte",
-							"path": "svelte"
+							"path": "sites_frameworks/jamstack_getting_started/svelte"
 						},
 						{
 							"title": "UmiJS",
-							"path": "umijs"
+							"path": "sites_frameworks/jamstack_getting_started/umijs"
 						},
 						{
 							"title": "VitePress",
-							"path": "vitepress"
+							"path": "sites_frameworks/jamstack_getting_started/vitepress"
 						},
 						{
 							"title": "Vue Storefront",
-							"path": "vsf"
+							"path": "sites_frameworks/jamstack_getting_started/vsf"
 						},
 						{
 							"title": "Vue.js",
-							"path": "vue"
+							"path": "sites_frameworks/jamstack_getting_started/vue"
 						},
 						{
 							"title": "VuePress",
-							"path": "vuepress"
+							"path": "sites_frameworks/jamstack_getting_started/vuepress"
 						},
 						{
 							"title": "Zola",
-							"path": "zola"
+							"path": "sites_frameworks/jamstack_getting_started/zola"
 						}
 					]
 				},
 				{
 					"title": "Connectors",
-					"path": "connectors"
+					"path": "sites_frameworks/connectors"
 				},
 				{
 					"title": "Incremental Static Regeneration",
-					"path": "isg"
+					"path": "sites_frameworks/isg"
 				}
 			]
 		},
@@ -350,23 +352,23 @@
 			"routes": [
 				{
 					"title": "BigCommerce",
-					"path": "bigcommerce"
+					"path": "integrations/bigcommerce"
 				},
 				{
 					"title": "Bloomreach",
-					"path": "bloomreach"
+					"path": "integrations/bloomreach"
 				},
 				{
 					"title": "Shopify Hydrogen",
-					"path": "shopify_hydrogen"
+					"path": "integrations/shopify_hydrogen"
 				},
 				{
 					"title": "Swell",
-					"path": "swell"
+					"path": "integrations/swell"
 				},
 				{
 					"title": "WordPress",
-					"path": "wordpress"
+					"path": "integrations/wordpress"
 				}
 			]
 		},
@@ -377,23 +379,23 @@
 			"routes": [
 				{
 					"title": "CLI",
-					"path": "cli"
+					"path": "develop/cli"
 				},
 				{
 					"title": "REST API",
-					"path": "rest_api"
+					"path": "develop/rest_api"
 				},
 				{
 					"title": "Log Data",
-					"path": "logs"
+					"path": "develop/logs"
 				},
 				{
 					"title": "Deploy to Edgio Button",
-					"path": "deploy_to_edgio"
+					"path": "develop/deploy_to_edgio"
 				},
 				{
 					"title": "Edgio Packages",
-					"path": "packages",
+					"path": "develop/packages",
 					"routes": [
 						{
 							"title": "@edgio/core",
@@ -416,15 +418,15 @@
 			"routes": [
 				{
 					"title": "Single-Sign On (SSO)",
-					"path": "saml"
+					"path": "reference/saml"
 				},
 				{
 					"title": "Migration to V4",
-					"path": "layer0_migration"
+					"path": "reference/layer0_migration"
 				},
 				{
 					"title": "Migration to v5",
-					"path": "v5_migration"
+					"path": "reference/v5_migration"
 				}
 			]
 		}

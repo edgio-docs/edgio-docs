@@ -1,6 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import cn from 'classnames';
 import Link from 'next/link';
+import {useRouter} from 'next/router';
 import React, {Fragment, useEffect, useState, memo} from 'react';
 import useCollapse from 'react-collapsed';
 import styled from 'styled-components';
@@ -8,7 +9,7 @@ import styled from 'styled-components';
 import NavItems from '../../../../src/data/nav.json';
 
 interface IRoute {
-  title: string;
+  title: string | null;
   path: string;
   icon: string;
   routes?: IRoute[];
@@ -68,37 +69,33 @@ function Accordion({
   isActive,
   onSelect,
   depth,
+  currentRoutePath,
 }: {
   route: IRoute;
   isActive: boolean;
   onSelect: () => void;
   depth: number;
+  currentRoutePath: string;
 }) {
-  const [isExpanded, setExpanded] = useState(isActive);
   const {getCollapseProps, getToggleProps} = useCollapse({
-    isExpanded,
+    isExpanded: isActive,
   });
 
-  useEffect(() => {
-    setExpanded(isActive);
-  }, [isActive, setExpanded]);
-
   return (
-    <li
-      className="sidenav-item"
-      data-comp="accordion"
-      data-expanded={isExpanded}>
+    <li className="sidenav-item" data-comp="accordion" data-expanded={isActive}>
       <div className="sidenav-menu__container">
         {/* Toggle */}
         {route.title && (
           <Link
             href={`/guides/${route.path}`}
-            // href="/"
             passHref
             className="sidenav-link"
             data-depth={depth}>
             <a
               className="menu-toggle__wrap"
+              data-is-highlighted={
+                currentRoutePath.replace('/guides/', '') === route.path
+              }
               {...getToggleProps({
                 onClick: onSelect,
               })}>
@@ -141,8 +138,30 @@ function Accordion({
   );
 }
 
+function getCurrentRouteIndex(
+  routes: IRoute[],
+  depth: number,
+  currentRoutePath: string
+) {
+  const indez = routes.findIndex(
+    (route, index) =>
+      currentRoutePath.split('/')[depth] ===
+      route.path.split('/')[route.path.split('/').length - 1]
+  );
+
+  return indez || null;
+}
+
 function AccordionParent({routes, depth}: {routes: IRoute[]; depth: number}) {
-  const [activeIndex, setActiveIndex] = useState<number | null>(null);
+  const router = useRouter();
+  const currentRoutePath = router.pathname;
+  const [activeIndex, setActiveIndex] = useState<number | null>(() =>
+    getCurrentRouteIndex(
+      routes,
+      depth,
+      currentRoutePath.replace('/guides/', '')
+    )
+  );
 
   return (
     <>
@@ -152,6 +171,7 @@ function AccordionParent({routes, depth}: {routes: IRoute[]; depth: number}) {
             <Accordion
               {...{
                 route,
+                currentRoutePath,
                 isActive: activeIndex === index,
                 onSelect: () =>
                   setActiveIndex(activeIndex === index ? null : index),
@@ -169,6 +189,16 @@ const StyledSideNav = styled.div`
   /* ul:not([data-nav-depth="0"]) {
 	border-left: 1px solid var(--hr-primary);
 } */
+
+  [aria-expanded='true'] {
+    font-weight: 700 !important;
+    color: var(--colors-blue0) !important;
+  }
+
+  [aria-expanded='false'][data-is-highlighted='true'] {
+    font-weight: 700 !important;
+    color: var(--colors-blue0) !important;
+  }
 
   .sidenav-sublist {
     list-style: none;

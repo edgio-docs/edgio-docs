@@ -374,7 +374,7 @@ Click _Add A Redirect_ to configure the path or host you wish to redirect to:
 **Note:** you will need to activate and redeploy your site for this change to take effect.
 
 
-## Common Routing Patterns
+## Common Routing Patterns {/*common-routing-patterns*/}
 
 This guide gives examples of common routing patterns using {{ PRODUCT_NAME }}.
 

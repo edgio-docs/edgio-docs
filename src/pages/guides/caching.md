@@ -211,6 +211,24 @@ router.get('/some/uncacheable/path', ({ cache, proxy }) => {
 })
 ```
 
+<!--
+
+### Turn off Caching When not Needed {/*turn-off-caching-when-not-needed*/}
+
+For `GET` routes that you know you will not or must not cache, always explicitly disable caching. This indicates to {{ PRODUCT }} that it should not try to coalesce requests which leads to improved performance especially on slower upstreams.
+
+For example, if you know that nothing from your legacy upstream will or can ever be cached, do this:
+
+```js
+new Router().fallback(({ proxy, cache }) => {
+  cache({
+    edge: false,
+  })
+  proxy('legacy')
+})
+```
+-->
+
 ## How do I know if a response was served from the cache? {/*how-do-i-know-if-a-response-was-served-from-the-cache*/}
 
 To know if a response is being cached, examine the `{{ HEADER_PREFIX }}-t` response header. There are two components that indicate caching status:

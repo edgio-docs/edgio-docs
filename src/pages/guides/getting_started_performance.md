@@ -23,11 +23,15 @@ Before proceeding, you will need to create and deploy a property to {{ PRODUCT }
 
 [Learn more.](getting_started)
 
+<Callout type="tip">
+
+  Alternatively, you may deploy our [sample site](#example).
+
 ## Project Files {/*project-structure*/}
 
 Upon initializing a property (`{{ FULL_CLI_NAME }} init`), {{ PRODUCT }} creates the following files:
 
-- `routes.js`: Defines the set of routes that determine will be cached, prefetched, passed through without modification, or served as static content.
+- `routes.js`: Defines the set of routes that determine whether a request will be cached, prefetched, passed through without modification, or served as static content.
 - `{{ CONFIG_FILE }}`: Defines settings through which you may fine-tune your project.
 
 ## Configure Caching {/*configure-caching*/}
@@ -95,6 +99,8 @@ Evaluate site performance and QA functionality by deploying your property to {{ 
 Assess performance and caching behavior from the {{ PORTAL }}. Fine-tune your configuration by adding routes and then redeploying your property. 
 
 ## Example {/*example*/}
+
+We provide links to a sample site and its source code below. You may also start experimenting with that site by clicking **Deploy to {{ PRODUCT }}`.
 
 <ExampleButtons
   title="Web CDN"

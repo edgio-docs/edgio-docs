@@ -4,7 +4,7 @@ title: Traditional Sites
 
 This guide describes how to get up and running with {{ PRODUCT_NAME }} for traditional, multi-page applications. {{ PRODUCT_NAME }} can enable traditional websites (e.g. jQuery, PHP, VanillaJS, etc.) to take advantage of the performance benefits of advanced caching and predictive prefetching. If your website is built on a modern framework such as React, Angular, or Vue, we recommend considering our framework specific guides that can be found on the [homepage](/).
 
-Note that the speed benefit for traditional sites from {{ PRODUCT_NAME }} is dependent on the site’s JavaScript usage during the page load. If a page has JavaScript heavy processing during load it may reduce the benefit from {{ PRODUCT_NAME }}. Please contact our team via the chat button in the bottom right of this page if you're interested in a site analysis prior to beginning installation — turnaround time is typically 1-2 business days.
+Note that the speed benefit for traditional sites from {{ PRODUCT_NAME }} is dependent on the site’s JavaScript usage during the page load. If a page has JavaScript heavy processing during load it may reduce the benefit from {{ PRODUCT_NAME }}. Contact your account manager or our [sales department](https://edg.io/contact-us/) at 1 (866) 200 - 5463 to request site analysis prior to installation. Our typical turnaround time is 1 to 2 business days.
 
 ## How {{ PRODUCT_NAME }} for Traditional Sites Works {/*how-for-traditional-sites-works*/}
 

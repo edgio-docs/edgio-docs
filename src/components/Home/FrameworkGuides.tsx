@@ -212,8 +212,8 @@ export default function FrameworkGuides() {
     <StyledComp>
       <SectionHeader
         Icon={IconBook}
-        title="Framework Guides"
-        subtitle={`Utilize ${PRODUCT_EDGE} on your pre-existing site, or use one of our templates.`}
+        title="Sites"
+        subtitle={`Accelerate your dynamic and static Jamstack sites through ${PRODUCT_PLATFORM}.`}
       />
 
       <div className="route-items">

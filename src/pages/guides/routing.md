@@ -13,13 +13,15 @@ Using the Router, you can:
 - Send synthetic responses
 - Configure multiple destinations for A/B testing
 
+## Prerequisites
+
+Before proceeding, you will need an {{ PRODUCT }} property. Create one now if you do not already have one. 
+
+[Learn how to create a property.](getting_started)
+
 ## Configuration {/*configuration*/}
 
-You define routes for {{ PRODUCT_NAME }} using the `routes.js` file.
-
-Before continuing, if you have not already initialized your project with {{ PRODUCT_NAME }}, do so using the instructions in [Web CDN](/guides/webapp_cdn_getting_started).
-
-The `routes.js` file should export an instance of `{{ PACKAGE_NAME }}/core/router/Router`:
+Define routes within the `routes.js` file. The `routes.js` file should export an instance of `{{ PACKAGE_NAME }}/core/router/Router`:
 
 ```js filename="./routes.js"
 const { Router } = require('{{ PACKAGE_NAME }}/core/router')

@@ -1,9 +1,7 @@
 ---
-title: Overview 
+title: Third-Party Integrations
 ---
 
-## Integrations Overview {/*integrations-overview*/}
-
-{{ PRODUCT_NAME }} supports a number of integrations of popular products and platforms as listed below.
+Learn how to integrate a web application running on one of the following platforms:
 
 <Integrations/>

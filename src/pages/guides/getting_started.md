@@ -2,7 +2,7 @@
 title: Getting Started
 ---
 
-Learn how to set up {{ PRODUCT }} to improve your website's performance. Perform these steps to get started:
+Get started with {{ PRODUCT }} by satisfying our [prerequisites](#prerequisites) and then performing these steps:
 
 1.  [Create an {{ PRODUCT }} property.](#create-property)
 2.  [Test your property.](#testing-locally)
@@ -11,7 +11,7 @@ Learn how to set up {{ PRODUCT }} to improve your website's performance. Perform
 
 ## Quick Start
 
-If you already have [Node v{{ NODE_VERSION }}](install-nodejs) and an [{{ PRODUCT }} account](#account-creation), then you can use a single command to:
+If you already have [Node v{{ NODE_VERSION }}](/guides/install_nodejs) and an [{{ PRODUCT }} account](#account-creation), then you can use a single command to:
 -   Install the {{ PRODUCT }} CLI.
 -   Create an {{ PRODUCT }} property for your website.
 -   Deploy a property to {{ PRODUCT }}.
@@ -37,7 +37,7 @@ You are now ready to optimize and secure the delivery of your website. [Learn mo
 ## Prerequisites
 
 {{ PRODUCT }} requires:
--   [Node v{{ NODE_VERSION }}](install_nodejs) 
+-   [Node v{{ NODE_VERSION }}](/guides/install_nodejs) 
 -   npm or yarn package manager
 
     <Callout type="info">
@@ -51,7 +51,7 @@ You are now ready to optimize and secure the delivery of your website. [Learn mo
 
 ### {{ PRODUCT }} CLI Installation  {/*cli-installation*/}
 
-Use the [{{ PRODUCT }} CLI](cli) to build, test, and deploy your website to {{ PRODUCT }}. Install it through either npm or yarn. 
+Use the [{{ PRODUCT }} CLI](/guides/develop/cli) to build, test, and deploy your website to {{ PRODUCT }}. Install it through either npm or yarn. 
 
 **npm: **
 ```bash
@@ -123,14 +123,14 @@ Run the following command from your property's root directory to deploy it to {{
 ## Next Steps
 
 Once you have successfully deployed your property to {{ PRODUCT }}, our CLI provides the following edge URLs:
--   The first edge URL corresponds to production traffic. {{ PRODUCT }} will not serve this URL until you set up a TLS certificate and update your DNS configuration to point to our service. [Learn more.](production)
+-   The first edge URL corresponds to production traffic. {{ PRODUCT }} will not serve this URL until you set up a TLS certificate and update your DNS configuration to point to our service. [Learn more.](/guides/basics/domains)
 -   Use the second edge URL to preview your website behind {{ PRODUCT }}.
 
 You are now ready to set up:
 
--   [Performance.](routing) Learn how to:
-    -   Optimize website performance through our CDN-as-code approach to [caching](webapp_cdn_getting_started#configure-caching), [routing](routing) your content, and [predictive prefetching](prefetching). 
-    -   Gain performance insights through which you can fine-tune your configuration through our [Observability](core_web_vitals) solution.
-    -   Speed up development by quickly iterating through different variations of your site through our [Traffic Splitting](traffic_splitting) solution.
--   [Security.](security) We automatically provide distributed denial-of-service (DDOS) protection to traffic that runs behind {{ PRODUCT }}. Apply additional protection to your web applications and APIs through our Web Application Firewall and Advanced Bot Management solutions. {{ ACCOUNT_UPGRADE }}
--   [Sites.](jamstack_getting_started) If you are currently using a JavaScript framework, then you can improve your website's performance by using our serverless workers to quickly render server-side content in a scalable manner.
+-   [Performance.](/guides/performance/getting_started) Learn how to:
+    -   Optimize website performance through our CDN-as-code approach to [caching](/guides/performance/getting_started#configure-caching), [CDN-as-code](/guides/performance/cdn_as_code) your content, and [predictive prefetching](/guides/performance/prefetching). 
+    -   Gain performance insights through which you can fine-tune your configuration through our [Observability](/guides/performance/observability/core_web_vitals) solution.
+    -   Speed up development by quickly iterating through different variations of your site through our [Traffic Splitting](/guides/performance/traffic_splitting) solution.
+-   [Security.](/guides/security) We automatically provide distributed denial-of-service (DDOS) protection to traffic that runs behind {{ PRODUCT }}. Apply additional protection to your web applications and APIs through our Web Application Firewall and Advanced Bot Management solutions. {{ ACCOUNT_UPGRADE }}
+-   [Sites.](/guides/sites_frameworks/getting_started) If you are currently using a JavaScript framework, then you can improve your website's performance by using our serverless workers to quickly render server-side content in a scalable manner.

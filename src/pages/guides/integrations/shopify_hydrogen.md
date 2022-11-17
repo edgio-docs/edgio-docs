@@ -263,7 +263,7 @@ module.exports = new Router()
   .fallback(({ renderWithApp }) => renderWithApp())
 ```
 
-Refer to the [Routing](routing) guide for the full syntax of the `routes.js` file and how to configure it for your use case.
+Refer to the [CDN-as-code](/guides/performance/cdn_as_code) guide for the full syntax of the `routes.js` file and how to configure it for your use case.
 
 <a id="run-the-shopify-hydrogen-app-locally"></a>
 
@@ -297,4 +297,4 @@ Next, deploy the build to {{ PRODUCT_NAME }} by running the `{{ FULL_CLI_NAME }}
 {{ FULL_CLI_NAME }} deploy
 ```
 
-Refer to the [Deploying](deploy_apps) guide for more information on the `deploy` command and its options.
+Refer to the [Deployments](/guides/basics/deployments) guide for more information on the `deploy` command and its options.

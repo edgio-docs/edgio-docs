@@ -22,11 +22,17 @@
 				},
 				{
 					"title": "Deployments",
-					"path": "basics/deploy_apps"
+					"path": "basics/deployments"
 				},
 				{
 					"title": "Collaboration",
-					"path": "basics/teams"
+					"path": "basics/collaboration",
+					"routes": [
+						{
+							"title": "Single-Sign On (SSO)",
+							"path": "basics/collaboration/sso"
+						}
+					]
 				},
 				{
 					"title": "Alerts",
@@ -37,7 +43,7 @@
 					"path": ""
 				},
 				{
-					"title": "Configuration File",
+					"title": "edgio_config Configuration",
 					"path": "basics/edgio_config"
 				}
 			]
@@ -49,11 +55,18 @@
 			"routes": [
 				{
 					"title": "Getting Started",
-					"path": "performance/getting_started_performance"
+					"path": "performance/getting_started"
 				},
+
 				{
-					"title": "CDN-as-code (EdgeJS)",
-					"path": "performance/routing"
+					"title": "CDN-as-Code (EdgeJS)",
+					"path": "performance/cdn_as_code",
+					"routes": [
+						{
+							"title": "Common Routing Patterns",
+							"path": "performance/cdn_as_code/common_routing_patterns"
+						}
+					]
 				},
 				{
 					"title": "Caching",
@@ -65,7 +78,7 @@
 				},
 				{
 					"title": "Static Prerendering",
-					"path": "static_prerendering"
+					"path": "performance/static_prerendering"
 				},
 				{
 					"title": "Predictive Prefetch",
@@ -77,7 +90,7 @@
 					"routes": [
 						{
 							"title": "A/B Testing",
-							"path": "performance/traffic_splitting/split_testing"
+							"path": "performance/traffic_splitting/a_b_testing"
 						}
 					]
 				},
@@ -97,11 +110,11 @@
 				},
 				{
 					"title": "Serverless Compute",
-					"path": "performance/serverless_functions"
+					"path": "performance/serverless_compute"
 				},
 				{
 					"title": "Unit Testing (EdgeJS)",
-					"path": "performance/edgejs_testing"
+					"path": "performance/unit_testing_edgejs"
 				},
 				{
 					"title": "GraphQL Caching",
@@ -113,7 +126,7 @@
 				},
 				{
 					"title": "Traditional Sites",
-					"path": "traditional_sites"
+					"path": "performance/traditional_sites"
 				},
 				{
 					"title": "Third-Party CDNs",
@@ -129,11 +142,11 @@
 				},
 				{
 					"title": "Request",
-					"path": "performance/request_headers"
+					"path": "performance/request"
 				},
 				{
 					"title": "Response",
-					"path": "performance/response_headers"
+					"path": "performance/response"
 				}
 			]
 		},
@@ -159,191 +172,191 @@
 			"routes": [
 				{
 					"title": "Getting Started",
-					"path": "sites_frameworks/jamstack_getting_started",
+					"path": "sites_frameworks/getting_started",
 					"routes": [
 						{
 							"title": "Angular",
-							"path": "sites_frameworks/jamstack_getting_started/angular"
+							"path": "sites_frameworks/getting_started/angular"
 						},
 						{
 							"title": "Astro",
-							"path": "sites_frameworks/jamstack_getting_started/astro"
+							"path": "sites_frameworks/getting_started/astro"
 						},
 						{
 							"title": "Brunch",
-							"path": "sites_frameworks/jamstack_getting_started/brunch"
+							"path": "sites_frameworks/getting_started/brunch"
 						},
 						{
 							"title": "Docusaurus",
-							"path": "sites_frameworks/jamstack_getting_started/docusaurus"
+							"path": "sites_frameworks/getting_started/docusaurus"
 						},
 						{
 							"title": "Dojo",
-							"path": "sites_frameworks/jamstack_getting_started/dojo"
+							"path": "sites_frameworks/getting_started/dojo"
 						},
 						{
 							"title": "Eleventy",
-							"path": "sites_frameworks/jamstack_getting_started/eleventy"
+							"path": "sites_frameworks/getting_started/eleventy"
 						},
 						{
 							"title": "Ember.js",
-							"path": "sites_frameworks/jamstack_getting_started/ember"
+							"path": "sites_frameworks/getting_started/ember"
 						},
 						{
 							"title": "Ember Fastboot",
-							"path": "sites_frameworks/jamstack_getting_started/ember_fastboot"
+							"path": "sites_frameworks/getting_started/ember_fastboot"
 						},
 						{
 							"title": "Express",
-							"path": "sites_frameworks/jamstack_getting_started/express"
+							"path": "sites_frameworks/getting_started/express"
 						},
 						{
 							"title": "Frontity",
-							"path": "sites_frameworks/jamstack_getting_started/frontity"
+							"path": "sites_frameworks/getting_started/frontity"
 						},
 						{
 							"title": "Gatsby",
-							"path": "sites_frameworks/jamstack_getting_started/gatsby"
+							"path": "sites_frameworks/getting_started/gatsby"
 						},
 						{
 							"title": "Gridsome",
-							"path": "sites_frameworks/jamstack_getting_started/gridsome"
+							"path": "sites_frameworks/getting_started/gridsome"
 						},
 						{
 							"title": "Hexo",
-							"path": "sites_frameworks/jamstack_getting_started/hexo"
+							"path": "sites_frameworks/getting_started/hexo"
 						},
 						{
 							"title": "Hugo",
-							"path": "sites_frameworks/jamstack_getting_started/hugo"
+							"path": "sites_frameworks/getting_started/hugo"
 						},
 						{
 							"title": "Ionic React",
-							"path": "sites_frameworks/jamstack_getting_started/ionic_react"
+							"path": "sites_frameworks/getting_started/ionic_react"
 						},
 						{
 							"title": "Ionic Vue",
-							"path": "sites_frameworks/jamstack_getting_started/ionic_vue"
+							"path": "sites_frameworks/getting_started/ionic_vue"
 						},
 						{
 							"title": "Jekyll",
-							"path": "sites_frameworks/jamstack_getting_started/jekyll"
+							"path": "sites_frameworks/getting_started/jekyll"
 						},
 						{
 							"title": "Lit",
-							"path": "sites_frameworks/jamstack_getting_started/lit"
+							"path": "sites_frameworks/getting_started/lit"
 						},
 						{
 							"title": "MkDocs",
-							"path": "sites_frameworks/jamstack_getting_started/mkdocs"
+							"path": "sites_frameworks/getting_started/mkdocs"
 						},
 						{
 							"title": "Nx",
-							"path": "sites_frameworks/jamstack_getting_started/nx"
+							"path": "sites_frameworks/getting_started/nx"
 						},
 						{
 							"title": "Next.js",
-							"path": "sites_frameworks/jamstack_getting_started/next"
+							"path": "sites_frameworks/getting_started/next"
 						},
 						{
 							"title": "Next.js Commerce",
-							"path": "sites_frameworks/jamstack_getting_started/next_commerce"
+							"path": "sites_frameworks/getting_started/next_commerce"
 						},
 						{
 							"title": "Nuxt.js",
-							"path": "sites_frameworks/jamstack_getting_started/nuxt"
+							"path": "sites_frameworks/getting_started/nuxt"
 						},
 						{
 							"title": "Nuxt3",
-							"path": "sites_frameworks/jamstack_getting_started/nuxt3"
+							"path": "sites_frameworks/getting_started/nuxt3"
 						},
 						{
 							"title": "Preact",
-							"path": "sites_frameworks/jamstack_getting_started/preact"
+							"path": "sites_frameworks/getting_started/preact"
 						},
 						{
 							"title": "Razzle",
-							"path": "sites_frameworks/jamstack_getting_started/razzle"
+							"path": "sites_frameworks/getting_started/razzle"
 						},
 						{
 							"title": "React",
-							"path": "sites_frameworks/jamstack_getting_started/react"
+							"path": "sites_frameworks/getting_started/react"
 						},
 						{
 							"title": "React Static",
-							"path": "sites_frameworks/jamstack_getting_started/react_static"
+							"path": "sites_frameworks/getting_started/react_static"
 						},
 						{
 							"title": "React Storefront",
-							"path": "sites_frameworks/jamstack_getting_started/react-storefront"
+							"path": "sites_frameworks/getting_started/react-storefront"
 						},
 						{
 							"title": "RedwoodJS",
-							"path": "sites_frameworks/jamstack_getting_started/redwoodjs"
+							"path": "sites_frameworks/getting_started/redwoodjs"
 						},
 						{
 							"title": "Remix",
-							"path": "sites_frameworks/jamstack_getting_started/remix"
+							"path": "sites_frameworks/getting_started/remix"
 						},
 						{
 							"title": "Saber",
-							"path": "sites_frameworks/jamstack_getting_started/saber"
+							"path": "sites_frameworks/getting_started/saber"
 						},
 						{
 							"title": "Sanity",
-							"path": "sites_frameworks/jamstack_getting_started/sanity"
+							"path": "sites_frameworks/getting_started/sanity"
 						},
 						{
 							"title": "Sapper",
-							"path": "sites_frameworks/jamstack_getting_started/sapper"
+							"path": "sites_frameworks/getting_started/sapper"
 						},
 						{
 							"title": "Scully",
-							"path": "sites_frameworks/jamstack_getting_started/scully"
+							"path": "sites_frameworks/getting_started/scully"
 						},
 						{
 							"title": "SolidJS",
-							"path": "sites_frameworks/jamstack_getting_started/solid"
+							"path": "sites_frameworks/getting_started/solid"
 						},
 						{
 							"title": "Spartacus",
-							"path": "sites_frameworks/jamstack_getting_started/spartacus"
+							"path": "sites_frameworks/getting_started/spartacus"
 						},
 						{
 							"title": "Static HTML/JS",
-							"path": "sites_frameworks/jamstack_getting_started/static_sites"
+							"path": "sites_frameworks/getting_started/static_sites"
 						},
 						{
 							"title": "Stencil",
-							"path": "sites_frameworks/jamstack_getting_started/stencil"
+							"path": "sites_frameworks/getting_started/stencil"
 						},
 						{
 							"title": "Svelte",
-							"path": "sites_frameworks/jamstack_getting_started/svelte"
+							"path": "sites_frameworks/getting_started/svelte"
 						},
 						{
 							"title": "UmiJS",
-							"path": "sites_frameworks/jamstack_getting_started/umijs"
+							"path": "sites_frameworks/getting_started/umijs"
 						},
 						{
 							"title": "VitePress",
-							"path": "sites_frameworks/jamstack_getting_started/vitepress"
+							"path": "sites_frameworks/getting_started/vitepress"
 						},
 						{
 							"title": "Vue Storefront",
-							"path": "sites_frameworks/jamstack_getting_started/vsf"
+							"path": "sites_frameworks/getting_started/vsf"
 						},
 						{
 							"title": "Vue.js",
-							"path": "sites_frameworks/jamstack_getting_started/vue"
+							"path": "sites_frameworks/getting_started/vue"
 						},
 						{
 							"title": "VuePress",
-							"path": "sites_frameworks/jamstack_getting_started/vuepress"
+							"path": "sites_frameworks/getting_started/vuepress"
 						},
 						{
 							"title": "Zola",
-							"path": "sites_frameworks/jamstack_getting_started/zola"
+							"path": "sites_frameworks/getting_started/zola"
 						}
 					]
 				},
@@ -428,10 +441,6 @@
 			"path": "reference",
 			"icon": "stacks-plain",
 			"routes": [
-				{
-					"title": "Single-Sign On (SSO)",
-					"path": "reference/saml"
-				},
 				{
 					"title": "Migration to V4",
 					"path": "reference/layer0_migration"

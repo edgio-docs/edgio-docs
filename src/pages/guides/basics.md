@@ -13,7 +13,7 @@ The {{ PRODUCT }} Applications platform consists of the following products:
     -   An Origin Shield that reduces traffic to your origin servers through an additional caching layer.
     -   A Web Application Firewall through which you can monitor, detect, and prevent application layer attacks.
     -   Basic website security, such as a Content Security Policy (CSP), a TLS certificate, Basic Authentication enforcement, variables for sensitive data (e.g., API keys), and protection against cache poisoning.
--   {{ PRODUCT }} {{ PRODUCT_PLATFORM }} allows you to quickly integrate your headless Jamstack applications with our App Platform through one of our framework integrations. This integration allows {{ PRODUCT }} to further improve your website's performance through the server-side rendering (SSR) of your website's JavaScript. 
+-   {{ PRODUCT }} {{ PRODUCT_PLATFORM }} allows you to quickly integrate your headless Jamstack applications with our {{ PRODUCT_PLATFORM }} through one of our framework integrations. This integration allows {{ PRODUCT }} to further improve your website's performance through the server-side rendering (SSR) of your website's JavaScript. 
 
 All of the above solutions are compatible with each other. Combine all three solutions to ensure the secure delivery of your website while drastically improving performance.
 
@@ -31,12 +31,12 @@ Once you have set up a basic {{ PRODUCT }} configuration, you are ready to take 
 
 -   {{ PRODUCT_EDGE }} Learn how to:
     -   Optimize website performance through our CDN-as-code approach to:
-        -   [Cache](webapp_cdn_getting_started#configure-caching) your content.
-        -   Determine how your content is [routed](routing) through our network. 
-        -   Define when web browsers should use [predictive prefetching](prefetching) and the content that will be delivered before it is requested by your users.
-    -   Gain performance insights through which you can fine-tune your configuration through our [Observability](core_web_vitals) solution.
-    -   Speed up development by quickly iterating through different variations of your site through our [Traffic Splitting](traffic_splitting) solution.
--   [{{ PRODUCT_SECURITY }}.](security) We automatically provide distributed denial-of-service (DDOS) protection to traffic that runs behind {{ PRODUCT }}. Apply additional protection to your web applications and APIs through our Web Application Firewall and Advanced Bot Management solutions. 
--   [{{ PRODUCT_PLATFORM }}.](jamstack_getting_started) If you are currently using a JavaScript framework, then you can improve your website's performance by using our serverless workers to quickly render server-side content in a scalable manner.
+        -   [Cache](/guides/performance/getting_started#configure-caching) your content.
+        -   Determine how your content is [routed](/guides/performance/routing) through our network. 
+        -   Define when web browsers should use [predictive prefetching](/guides/performance/prefetching) and the content that will be delivered before it is requested by your users.
+    -   Gain performance insights through which you can fine-tune your configuration through our [Observability](/guides/performance/observability/core_web_vitals) solution.
+    -   Speed up development by quickly iterating through different variations of your site through our [Traffic Splitting](/guides/performance/traffic_splitting) solution.
+-   [{{ PRODUCT_SECURITY }}.](/guides/security) We automatically provide distributed denial-of-service (DDOS) protection to traffic that runs behind {{ PRODUCT }}. Apply additional protection to your web applications and APIs through our Web Application Firewall and Advanced Bot Management solutions. 
+-   [{{ PRODUCT_PLATFORM }}.](/guides/sites_frameworks/getting_started) If you are currently using a JavaScript framework, then you can improve your website's performance by using our serverless workers to quickly render server-side content in a scalable manner.
 
 

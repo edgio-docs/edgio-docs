@@ -147,7 +147,7 @@ An access log file may contain the following fields:
 -   **ce:** <a id="ce" /> Indicates the value for the `Content-Encoding` response header.
 -   **clv:** <a id="clv" /> Indicates the level at which the request was served from cache. Returns `0` for a cache miss. 
 -   **code:** <a id="code" /> Indicates the HTTP status code for the response.
--   **cs:** <a id="cs" /> Indicates whether the response was cached or the reason why it was not cached. [Learn more.](/guides/caching#why-is-my-response-not-being-cached)
+-   **cs:** <a id="cs" /> Indicates whether the response was cached or the reason why it was not cached. [Learn more.](/guides/performance/caching#why-is-my-response-not-being-cached)
 -   **ct:** <a id="ct" /> Indicates the response's media type (aka content type).
 -   **cv:** <a id="cv" /> Reserved for future use.
 -   **cy:** <a id="cy" /> Reserved for future use.
@@ -155,11 +155,11 @@ An access log file may contain the following fields:
 -   **ds:** <a id="ds" /> Indicates the A/B testing destination assigned to this request. Returns `default` if a destination has not been assigned to this request or when you have not configured A/B testing. 
 -   **dv:** <a id="dv" /> Indicates the type of device (e.g., desktop, smartphone, tablet, and mobile) that submitted the request.
 -   **eid:** <a id="eid" /> Indicates the system-defined ID for the {{ PRODUCT }} environment through which the request was processed.
--   **er:** <a id="er" /> Indicates whether we sent a custom response as a result of the [send method](routing#route-execution). Returns `1` for custom responses and `0` for all other responses.
+-   **er:** <a id="er" /> Indicates whether we sent a custom response as a result of the [send method](/guides/performance/cdn_as_code#route-execution). Returns `1` for custom responses and `0` for all other responses.
 -   **ev:** <a id="ev" /> Indicates the version for the {{ PRODUCT }} environment through which the request was processed.
 -   **h2:** <a id="h2" /> Indicates whether the connection between the client and our network is HTTP/2. Returns `1` for HTTP/2 and `0` for HTTP/1.1.
 -   **hh:** <a id="hh" /> Indicates the `Host` header value submitted by the client. 
--   **hrid:** <a id="hrid" /> If the response is served from cache, this field indicates the unique ID of the request whose response was cached. This value matches the ID reported by the [`{{ HEADER_PREFIX }}-hit-request-id` response header](response_headers#reserved-response-headers).
+-   **hrid:** <a id="hrid" /> If the response is served from cache, this field indicates the unique ID of the request whose response was cached. This value matches the ID reported by the [`{{ HEADER_PREFIX }}-hit-request-id` response header](/guides/performance/response#reserved-response-headers).
 -   **ic:** <a id="ic" /> Indicates whether this request was eligible to be cached. This field does not indicate whether the response was actually cached.
 -   **ip:** <a id="ip" /> Indicates the client's IP address.
 -   **jwt:** <a id="jwt" /> Reserved for future use.
@@ -193,8 +193,8 @@ An access log file may contain the following fields:
 -   **wafv:** <a id="wafv" /> Reserved for future use.
 -   **xff:** <a id="xff" /> Reserved for future use.
 -   **xmr:** <a id="xmr" /> Indicates the value for the `{{ HEADER_PREFIX }}-matched-routes` request header. The `{{ HEADER_PREFIX }}-matched-routes` request header identifies all matched routes.
--   **xms:** <a id="xms" /> Indicates the value for the `{{ HEADER_PREFIX }}-status` response header. The `{{ HEADER_PREFIX }}-status` response header indicates the status codes for key [POP components](response_headers#-t-response-header). 
--   **xmt:** <a id="xmt" /> Indicates the value for the [{{ HEADER_PREFIX }}-t](response_headers#-t-response-header) response header. The `{{ HEADER_PREFIX }}-t` response header contains time measurements for each Edgio POP component through which a request was routed.
+-   **xms:** <a id="xms" /> Indicates the value for the `{{ HEADER_PREFIX }}-status` response header. The `{{ HEADER_PREFIX }}-status` response header indicates the status codes for key [POP components](/guides/performance/response#-t-response-header). 
+-   **xmt:** <a id="xmt" /> Indicates the value for the [{{ HEADER_PREFIX }}-t](/guides/performance/response#-t-response-header) response header. The `{{ HEADER_PREFIX }}-t` response header contains time measurements for each Edgio POP component through which a request was routed.
 -   **xut:** <a id="xut" /> Indicates the value for the `{{ HEADER_PREFIX }}-user-t` response header. The `{{ HEADER_PREFIX }}-user-t` response header contains [performance](/guides/performance) metrics.
 -   **zip:** <a id="zip" /> Indicates whether the response was compressed. Returns `1` for compressed responses and `0` for uncompressed responses.
 

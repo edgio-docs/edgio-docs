@@ -29,7 +29,7 @@ Instead of relying solely on Google Search Console, we recommend tracking Core W
 - Correlate web vitals to your application's routes
 - Analyze score across a number of dimensions such as country, device, and connection type
 - Identify which pages are most negatively impacting your search ranking.
-- Use {{ PRODUCT_NAME }}'s [Edge-based A/B testing](split_testing) to A/B test the impact of performance optimizations on Core Web Vitals.
+- Use {{ PRODUCT_NAME }}'s [Edge-based A/B testing](/guides/performance/traffic_splitting/a_b_testing) to A/B test the impact of performance optimizations on Core Web Vitals.
 
 ## Installation {/*installation*/}
 

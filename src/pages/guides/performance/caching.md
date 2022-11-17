@@ -6,7 +6,7 @@ This guide introduces the caching capabilities of {{ PRODUCT_NAME }}. While most
 
 ## Environments and Caching {/*environments-and-caching*/}
 
-To begin caching responses, you need to create an [environment](environments). Each environment provides a separate edge cache for the most recent deployment. Older deployments will no longer have edge caching, but can always be [redeployed](deploy_apps#branches-and-deployments) to re-enable caching.
+To begin caching responses, you need to create an [environment](/guides/basics/environments). Each environment provides a separate edge cache for the most recent deployment. Older deployments will no longer have edge caching, but can always be [redeployed](/guides/basics/deployments#branches-and-deployments) to re-enable caching.
 
 ## L1 and L2 Caches {/*l1-and-l2-caches*/}
 
@@ -59,14 +59,14 @@ The `cache` function can be used in the same route as other functions such as `s
 - Value of `host` request header
 - Complete request URL, including the query parameters (this can be customized)
 - Value of `accept-encoding` request header
-- Name of the destination when [A/B testing](./split_testing) is in effect
+- Name of the destination when [A/B testing](/guides/performance/traffic_splitting/a_b_testing) is in effect
 
 When [POST and other non-GET/HEAD](#caching-responses-for-post-and-other-non-gethead-requests) methods caching is enabled, {{ PRODUCT_NAME }} automatically adds the following to the cache key:
 
 - Request HTTP method
 - Request body
 
-To ensure that your site is resilient to [cache poisoning attacks](security#cache-poisoning), every request header that influences the rendering of the content must be included in your custom cache key.
+To ensure that your site is resilient to [cache poisoning attacks](/guides/security/security_suite#cache-poisoning), every request header that influences the rendering of the content must be included in your custom cache key.
 
 #### Customizing the Cache Key {/*customizing-the-cache-key*/}
 
@@ -141,7 +141,7 @@ Customizing caching keys is a very powerful tool to make your site faster. At th
 
 ### Caching Responses for POST and other non-GET/HEAD Requests {/*caching-responses-for-post-and-other-non-gethead-requests*/}
 
-{{ PRODUCT_NAME }} only supports caching responses for `GET` and `HEAD` requests. Some APIs, particularly those implemented with GraphQL, use `POST` requests by default, with queries being sent through the request body. See [Prefetching - GraphQL](prefetching#graphql) for more information on caching GraphQL with {{ PRODUCT_NAME }}.
+{{ PRODUCT_NAME }} only supports caching responses for `GET` and `HEAD` requests. Some APIs, particularly those implemented with GraphQL, use `POST` requests by default, with queries being sent through the request body. See [Prefetching - GraphQL](/guides/performance/prefetching#graphql) for more information on caching GraphQL with {{ PRODUCT_NAME }}.
 
 ### Caching Private Responses {/*caching-private-responses*/}
 

@@ -29,6 +29,10 @@
 					"path": "basics/teams"
 				},
 				{
+					"title": "Alerts",
+					"path": "basics/alerts"
+				},
+				{
 					"title": "",
 					"path": ""
 				},

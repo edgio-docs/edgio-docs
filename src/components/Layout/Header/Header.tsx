@@ -17,11 +17,11 @@ const StyledHeader = styled.header`
   position: sticky;
   top: 0;
   z-index: 1;
-  /* background-color: var(--bg-secondary); */
+  background-color: var(--bg-secondary);
   width: 100%;
   height: var(--header-height);
   box-shadow: inset 0 -1px var(--shadow-primary);
-  padding: 17px 20px;
+  padding: 0 24px;
   display: grid;
   grid-template-columns: auto auto;
   align-content: center;
@@ -207,8 +207,8 @@ export default function Header({
               <div className="logo-box" id="light-theme">
                 <Image
                   src={EdgioDark}
-                  width="86"
-                  height="36"
+                  width="66"
+                  height="26"
                   alt="Edgio"
                   unoptimized
                   priority
@@ -217,8 +217,8 @@ export default function Header({
               <div className="logo-box" id="dark-theme">
                 <Image
                   src={EdgioLight}
-                  width="86"
-                  height="36"
+                  width="66"
+                  height="26"
                   alt="Edgio"
                   unoptimized
                   priority

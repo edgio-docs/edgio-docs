@@ -12,15 +12,14 @@ const StyledToc = styled.div`
   }
 
   .docs-toc__nav {
-    /* box-shadow: inset 1px 0px var(--hr-secondary); */
-    background-color: #181717;
+    background-color: var(--bg-secondary);
     border-radius: 4px;
     position: sticky;
-    padding-left: 20px;
-    top: calc(var(--header-height) + 8px);
+    top: calc(var(--header-height) + 16px);
     max-height: calc(100vh - var(--header-height));
     overflow: scroll;
-    padding-top: calc(var(--header-height) / 2);
+    padding: calc(var(--header-height) / 2) 0 calc(var(--header-height) / 2)
+      20px;
     --scrollbar-bg: #606060;
   }
 

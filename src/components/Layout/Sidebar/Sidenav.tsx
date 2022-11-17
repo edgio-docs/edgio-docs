@@ -20,25 +20,9 @@ interface IRoutes {
   routes: IRoute[];
 }
 
-const IconChevron = memo(function IconChevron({
-  className,
-  displayDirection,
-}: {
-  className?: string;
-  displayDirection: 'down' | 'left' | 'up' | 'right';
-}) {
-  const classes = cn(
-    {
-      'transform rotate-0': displayDirection === 'down',
-      'transform rotate-90': displayDirection === 'left',
-      'transform rotate-180': displayDirection === 'up',
-      'transform -rotate-90': displayDirection === 'right',
-    },
-    className
-  );
+const IconChevron = memo(function IconChevron() {
   return (
     <svg
-      className={classes}
       xmlns="http://www.w3.org/2000/svg"
       width="20"
       height="20"
@@ -56,10 +40,14 @@ const IconChevron = memo(function IconChevron({
   );
 });
 
-function MenuChevron() {
+function MenuChevron({
+  displayDirection,
+}: {
+  displayDirection: 'down' | 'left' | 'up' | 'right';
+}) {
   return (
-    <div className="icon-box icon-chevron">
-      <IconChevron displayDirection="right" />
+    <div className="icon-box icon-chevron" data-direction={displayDirection}>
+      <IconChevron />
     </div>
   );
 }
@@ -120,7 +108,7 @@ function Accordion({
                 </div>
               )}
               <span>{route.title}</span>
-              {route.routes && <MenuChevron />}
+              {route.routes && <MenuChevron displayDirection="down" />}
             </a>
           </Link>
         )}
@@ -143,24 +131,18 @@ function getCurrentRouteIndex(
   depth: number,
   currentRoutePath: string
 ) {
-  const indez = routes.findIndex(
-    (route, index) =>
-      currentRoutePath.split('/')[depth] ===
-      route.path.split('/')[route.path.split('/').length - 1]
-  );
-
-  return indez || null;
+  return routes.findIndex((route) => {
+    const _route = route.path.split('/')[route.path.split('/').length - 1];
+    const _crp = currentRoutePath.split('/')[depth];
+    return _route == _crp;
+  });
 }
 
 function AccordionParent({routes, depth}: {routes: IRoute[]; depth: number}) {
   const router = useRouter();
-  const currentRoutePath = router.pathname;
+  const currentRoutePath = router.pathname.replace('/guides/', '');
   const [activeIndex, setActiveIndex] = useState<number | null>(() =>
-    getCurrentRouteIndex(
-      routes,
-      depth,
-      currentRoutePath.replace('/guides/', '')
-    )
+    getCurrentRouteIndex(routes, depth, currentRoutePath)
   );
 
   return (
@@ -186,13 +168,27 @@ function AccordionParent({routes, depth}: {routes: IRoute[]; depth: number}) {
 }
 
 const StyledSideNav = styled.div`
-  /* ul:not([data-nav-depth="0"]) {
-	border-left: 1px solid var(--hr-primary);
-} */
+  ul:not([data-nav-depth='0']) {
+    position: absolute;
+
+    ::before {
+      content: '';
+      position: absolute;
+      height: calc(100% - 10px);
+      top: 5px;
+      width: 1px;
+      background-color: var(--hr-primary);
+      left: 8px;
+    }
+  }
 
   [aria-expanded='true'] {
     font-weight: 700 !important;
     color: var(--colors-blue0) !important;
+
+    .icon-chevron {
+      transform: translateX(-20px) rotate(0deg);
+    }
   }
 
   [aria-expanded='false'][data-is-highlighted='true'] {
@@ -233,7 +229,7 @@ const StyledSideNav = styled.div`
   }
 
   .menu-toggle__wrap:hover {
-    background-color: var(--href-hover-primary);
+    color: var(--colors-blue0);
   }
 
   .menu-toggle__wrap + .sidenav-sublist {
@@ -264,7 +260,7 @@ const StyledSideNav = styled.div`
     transition: 100ms ease-in-out;
     position: absolute;
     right: 0;
-    transform: translateX(-20px);
+    transform: translateX(-20px) rotate(-90deg);
   }
 
   .is-open .icon-chevron {

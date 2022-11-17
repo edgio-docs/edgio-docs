@@ -21,7 +21,7 @@ const StyledMainPage = styled.div`
 
     .docs-side__nav {
       position: sticky;
-      left: 10px;
+      left: 0px;
       top: calc(var(--header-height) + 8px);
       border-radius: 4px;
       height: calc(100vh - var(--header-height) - 16px);
@@ -29,11 +29,11 @@ const StyledMainPage = styled.div`
       overflow: auto;
       user-select: none;
       padding: calc(var(--header-height) / 2) 0;
-      /* box-shadow: inset -1px 0px var(--hr-secondary); */
       z-index: 2;
       background-color: var(--bg-secondary);
       will-change: transform;
       transition: transform 0.2s;
+      margin-left: 8px;
 
       &[data-open='true'] {
         position: fixed;
@@ -47,11 +47,10 @@ const StyledMainPage = styled.div`
     }
 
     .docs-content__inner {
-      margin: 0 auto;
-      margin-left: 10px;
       flex: 1 1 0%;
       min-height: calc(100vh - var(--header-height));
       position: relative;
+      margin: 8px 10px 8px 10px;
 
       .LayoutHome {
         max-width: 1000px;

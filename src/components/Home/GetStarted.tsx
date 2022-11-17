@@ -66,7 +66,7 @@ const StyledGetStarted = styled.div`
 
   @media screen and (min-width: 1200px) {
     .cards {
-      grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
     }
   }
 

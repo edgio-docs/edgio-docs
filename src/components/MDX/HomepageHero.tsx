@@ -13,7 +13,7 @@ const StyledHomepageHero = styled.div`
   background-repeat: no-repeat;
   background-position: bottom right;
   background-size: contain;
-  color: var(--homepagehero-color);
+  border-radius: 4px;
 
   .section-container {
     display: grid;
@@ -89,11 +89,11 @@ function HomepageHero() {
               Learn more.
             </Link>
           </p>
-          <h1 className="subheadline">
+          <p className="subheadline">
             Edgio Applications is an Internet-scale platform that makes it easy
             for teams to build, release, protect, and accelerate their web apps
             and APIs.
-          </h1>
+          </p>
         </div>
       </Container>
     </StyledHomepageHero>

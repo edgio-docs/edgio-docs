@@ -147,7 +147,15 @@
 				{
 					"title": "Response",
 					"path": "performance/response"
-				}
+				},
+                                {
+                                        "title": "",
+                                        "path": ""
+                                },
+                                {
+                                        "title": "Troubleshooting",
+                                        "path": "performance/troubleshooting"
+                                }
 			]
 		},
 		{

@@ -6,7 +6,7 @@ This guide shows you how to troubleshoot applications running on {{ PRODUCT_NAME
 
 ## Server Timings {/*server-timings*/}
 
-When measuring the performance of your server, we provide numerous headers to decipher timings of requests. Visit our section on [response headers](/guides/response_headers#server-timing) for an in-depth explanation on the values available and how to leverage them.
+When measuring the performance of your server, we provide numerous headers to decipher timings of requests. Visit our section on [response headers](/guides/performance/response#server-timing-response-header) for an in-depth explanation on the values available and how to leverage them.
 
 ## Visual Studio Code {/*visual-studio-code*/}
 
@@ -37,11 +37,11 @@ Note that this configuration will allow you to set breakpoints in both your {{ P
 
 {{ PRODUCT_NAME }} provides two types of logs to help you debug issues with your application.
 
-### [Server Logs](/guides/logs#server-logs) {/*server-logs*/}
+### Server Logs {/*server-logs*/}
 
 By viewing the server logs in the {{ PRODUCT_NAME }} Developer Console, you can see all of the messages logged by your application using `console.log`, `console.warn`, etc...
 
-By enabling [Deep Request Inspection](/guides/logs#deep-request-inspection) in your environment, you can also see the headers and body of every request and response served by your application via the {{ PRODUCT }} serverless cloud. You can also see each upstream API request made by your application.
+By enabling [Deep Request Inspection](/guides/develop/logs#deep-request-inspection) in your environment, you can also see the headers and body of every request and response served by your application via the {{ PRODUCT }} serverless cloud. You can also see each upstream API request made by your application.
 
 You can also use the server logs to debug **routing issues** going to **custom backends** by temporarily moving the proxy from the edge to serverless:
 
@@ -61,17 +61,17 @@ You can also use the server logs to debug **routing issues** going to **custom b
   })
 ```
 
-Once you have this deployed, you can observe the output in your [server logs](/guides/logs#server-logs).
+Once you have this deployed, you can observe the output in your [server logs](/guides/develop/logs#server-logs).
 
 Note that whenever possible, we strongly recommend to always proxy the traffic from the edge, as that is more performant and avoids serverless surcharges. The solution above should only be used as a temporary measure while addressing issues.
 
-[Learn more](/guides/logs#server-logs)
+[Learn more.](/guides/develop/logs#server-logs)
 
 ### Access Logs {/*access-logs*/}
 
 Access logs contain information about all requests, even those that never reach your application code (e.g. cache hits, static assets, requests routed to custom backends, edge redirects, and so on).
 
-[Learn more](/guides/logs#access-logs)
+[Learn more](/guides/develop/logs#access-logs)
 
 ## Confirming Behavior with CURL {/*confirming-behavior-with-curl*/}
 
@@ -190,7 +190,7 @@ module.exports = {
 #### Assumptions {/*assumptions*/}
 
 You have deployed your site to {{ PRODUCT }}. All your website code resides with {{ PRODUCT }} as SSR (server-side rendering) code. Your backend (server) simply contains data that is needed by your website code to construct a page and return it to a requesting client or browser.
-See [Architecture](/guides/overview#architecture) for more information.
+See [Architecture](/guides/performance#architecture) for more information.
 
 #### Typical Request Flows {/*typical-request-flows*/}
 
@@ -220,7 +220,7 @@ When you run your site on {{ PRODUCT_NAME }}, all requests come in through four 
 
 A typical pattern is that your site works fine for a few days after deploying to {{ PRODUCT_NAME }}, then your server starts interpreting the requests as a DDoS attack.
 
-To prevent this scenario, you must configure your server with allowlisted {{ PRODUCT_NAME }} IP addresses. See [Allow {{ PRODUCT }} IP Addresses](production#allowing-ip-addresses).
+To prevent this scenario, you must configure your server with allowlisted {{ PRODUCT_NAME }} IP addresses. See [Allow {{ PRODUCT }} IP Addresses](/guides/basics/domains#allowing-ip-addresses).
 
 ### Procedure {/*procedure*/}
 
@@ -307,4 +307,4 @@ Troubleshoot your code to find and fix the error.
 #### Allowlist Error {/*allowlist-error*/}
 
 If the command succeeds and finishes quickly, it is probably an allowlist error.
-Contact your operations team and ask them to add the IP addresses in _Allowlisting_ in [Network Configuration](/guides/production#network-configuration) to your server's IP allowlist.
+Contact your operations team and ask them to add the IP addresses in _Allowlisting_ in [Network Configuration](/guides/basics/domains#network-configuration) to your server's IP allowlist.

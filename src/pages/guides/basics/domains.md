@@ -65,9 +65,9 @@ You can find the DNS and allowed IP configurations in the _Networking_ tab for y
 
 In order to configure your DNS provider to direct traffic for a particular set of domains to {{ PRODUCT_NAME }}, you must create DNS records for your website. If you are launching a new site, then you can create the records whenever you feel ready. For sites that are already live, the DNS update is the last step. Once you have updated your DNS you are committed to launching.
 
-#### Using a Sub-domain (e.g. www.mywebsite.xyz) {/*using-a-sub-domain-eg-wwwmywebsitexyz*/}
+#### Using a Sub-domain {/*using-a-sub-domain-eg-wwwmywebsitexyz*/}
 
-To host your site on a subdomain, add a `CNAME` record with the value shown under _DNS Configuration_ (see above).
+To host your site on a subdomain (e.g. `www.mywebsite.xyz`), add a `CNAME` record with the value shown under _DNS Configuration_ (see above).
 
 ```
 # To verify your DNS entry, run the following command
@@ -80,9 +80,9 @@ dig www.mywebsite.xyz
 www.mywebsite.xyz.   599    IN    CNAME    d12ea738-71b3-25e8-c771-6fdd3f6bd8ba.layer0-limelight.link.
 ```
 
-#### Using an Apex Domain (e.g. mywebsite.xyz) {/*using-an-apex-domain-eg-mywebsitexyz*/}
+#### Using an Apex Domain {/*using-an-apex-domain-eg-mywebsitexyz*/}
 
-To host your site on the apex domain, create multiple `A` records on your apex domain, with the following Anycast IP address values: 208.69.180.11, 208.69.180.12, 208.69.180.13, 208.69.180.14
+To host your site on the apex domain (e.g. `mywebsite.xyz`), create multiple `A` records on your apex domain, with the following Anycast IP address values: 208.69.180.11, 208.69.180.12, 208.69.180.13, 208.69.180.14
 
 ```
 # To verify your DNS entry, run the following command
@@ -98,7 +98,7 @@ mywebsite.xyz.        599    IN    A        208.69.180.13
 mywebsite.xyz.        599    IN    A        208.69.180.14
 ```
 
-#### Using Both an Apex Domain and a Sub-domain (e.g. mywebsite.xyz and www.mywebsite.xyz) {/*using-both-an-apex-domain-and-a-sub-domain-eg-mywebsitexyz-and-wwwmywebsitexyz*/}
+#### Using Both an Apex Domain and a Sub-domain {/*using-both-an-apex-domain-and-a-sub-domain-eg-mywebsitexyz-and-wwwmywebsitexyz*/}
 
 - Create the multiple `A` records with the IPs, on your apex domain (see above).
 - Create a `CNAME` record for your sub-domain, with the value of your apex domain.

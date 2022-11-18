@@ -4,8 +4,6 @@ title: Environments
 
 This guide shows you how to create production, staging, and other environments.
 
-## Overview {/*overview*/}
-
 In order to serve your site on a specific domain, you need to configure an environment. Most sites have at least three environments: default, staging, and production. Free accounts are limited to three environments. Paid accounts allow you to create either five environments (on the Hyper plan) or as many environments as you need (on Enterprise plans). Each environment consists of:
 
 - **Domains** - one or more domains on which the site will be served. Domains cannot be set on the default environment. The domain name for the default environment is derived from your team and site's name.
@@ -68,7 +66,7 @@ Doing so will redeploy the environment's active deployment, but updated with the
 
 You can create environment variables on a {{PRODUCT_NAME}} environment basis. Environment variables allow you to control certain facets of your application outside of its code.  {{PRODUCT_NAME}} environment variable types are:
 
-* User-defined - see [Creating and Editing Environment Variables](#creating-environment-variables)
+* User-defined - see [Creating and Editing Environment Variables](#creating-and-editing-environment-variables)
 * Built-in - see [Built-in Environment Variables](#built-in-environment-variables)
 
 ### Creating and Editing Environment Variables {/*creating-and-editing-environment-variables*/}

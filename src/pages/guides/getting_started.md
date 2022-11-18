@@ -129,7 +129,7 @@ Once you have successfully deployed your property to {{ PRODUCT }}, our CLI prov
 You are now ready to set up:
 
 -   [Performance.](/guides/performance/getting_started) Learn how to:
-    -   Optimize website performance through our CDN-as-code approach to [caching](/guides/performance/getting_started#configure-caching), [CDN-as-code](/guides/performance/cdn_as_code) your content, and [predictive prefetching](/guides/performance/prefetching). 
+    -   Optimize website performance through our CDN-as-code approach to [caching](/guides/performance/getting_started#configure-caching), [routing](/guides/performance/cdn_as_code) your content, and [predictive prefetching](/guides/performance/prefetching). 
     -   Gain performance insights through which you can fine-tune your configuration through our [Observability](/guides/performance/observability/core_web_vitals) solution.
     -   Speed up development by quickly iterating through different variations of your site through our [Traffic Splitting](/guides/performance/traffic_splitting) solution.
 -   [Security.](/guides/security) We automatically provide distributed denial-of-service (DDOS) protection to traffic that runs behind {{ PRODUCT }}. Apply additional protection to your web applications and APIs through our Web Application Firewall and Advanced Bot Management solutions. {{ ACCOUNT_UPGRADE }}

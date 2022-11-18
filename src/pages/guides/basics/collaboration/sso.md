@@ -14,7 +14,7 @@ Configuring SAML (Security Assertion Markup Language) for your {{ PRODUCT }} acc
 
 ### Enable SAML Single Sign On {/*enable-saml-single-sign-on*/}
 
-1. Login to your existing [{{ PRODUCT }}]({{ WWW_URL}}) account and change to your team.
+1. From the {{ PORTAL }}, change to your team.
 2. Navigate to team settings.
 3. Find the SAML section and click **ENABLE SAML SSO**
 

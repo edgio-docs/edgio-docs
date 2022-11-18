@@ -1,5 +1,5 @@
 ---
-title: Observability 
+title: Core Web Vitals 
 ---
 
 This guide shows you how to track your website's [Core Web Vitals](https://web.dev/vitals/) on {{ PRODUCT_NAME }} in real time using real user monitoring (RUM).

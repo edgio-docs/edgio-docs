@@ -5,7 +5,7 @@ title: Alerts
 Alerts are a way to get notified of certain activities in your project.
 This gives you the opportunity to act on issues or errors, or keep up to date with the ongoings in your project.
 
-There are certain [alert types](#alert-types) that can be configured with their corresponding [fields](#fields).
+There are certain [alert types](#alert-types-and-fields) that can be configured with their corresponding fields.
 
 ## Alert Types and Fields {/*alert-types-and-fields*/}
 

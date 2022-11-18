@@ -49,14 +49,14 @@ at Object.<anonymous> (/var/task/node_modules/broadcast-channel/dist/es5node/met
 ```
 
 To fix this issue, you need to instruct {{ PRODUCT_NAME }} to include the binary files that your application requires.
-This can be done by using the [`includeFiles` property  in `{{ CONFIG_FILE }}`](/guides/edgio_config#includefiles) like so:
+This can be done by using the [`includeFiles` property  in `{{ CONFIG_FILE }}`](/guides/basics/edgio_config#includefiles) like so:
 ```js
 includeFiles: {
   'node_modules/microtime/**/*': true,
 },
 ```
 Or you could choose to bundle everything in the packages listed in the `dependencies` property of `package.json` by using
-[`includeNodeModules` property](/guides/edgio_config#includenodemodules).
+[`includeNodeModules` property](/guides/basics/edgio_config#includenodemodules).
 
 ### Readonly filesystem in serverless runtime {/*readonly-filesystem-in-serverless-runtime*/}
 
@@ -145,7 +145,7 @@ Now, you can update your code references from importing the assets to referencin
 
 ### Possible Fix [3]: Computing which node_modules be included in the serverless bundle {/*possible-fix-3-computing-which-node_modules-be-included-in-the-serverless-bundle*/}
 
-It might be possible, that [Possible Fix [1]](#segregate-devdependencies-from-dependencies) reduces your serverless bundle size, but not reduce it to less than 50 MB (250 MB Uncompresssed). Another way to identify which dependencies would be required in the runtime is to use `@vercel/nft` package (a "Node.js dependency tracing utility").
+It might be possible, that [Possible Fix [1]](#possible-fix-1-segregating-devdependencies-from-dependencies) reduces your serverless bundle size, but not reduce it to less than 50 MB (250 MB Uncompresssed). Another way to identify which dependencies would be required in the runtime is to use `@vercel/nft` package (a "Node.js dependency tracing utility").
 
 Step 1. Install `@vercel/nft` as devDependency:
 
@@ -207,7 +207,7 @@ Step 3. Change your existing `package.json` to have `node setNodeModules.js` bef
 Step 4. Change your `{{ CONFIG_FILE }}` to have:
 
 ```js
-// {{ DOCS_URL }}/guides/edgio_config
+// {{ DOCS_URL }}/guides/basics/edgio_config
 module.exports = {
   includeFiles: require('./getNodeModules'),
 }

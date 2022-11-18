@@ -9,7 +9,7 @@ Get started with {{ PRODUCT }} by satisfying our [prerequisites](#prerequisites)
 3.  [Deploy your property to {{ PRODUCT }}.](#deploy-property)
 4.  [Next steps.](#next-steps)
 
-## Quick Start
+## Quick Start {/*quick-start*/}
 
 If you already have [Node v{{ NODE_VERSION }}](/guides/install_nodejs) and an [{{ PRODUCT }} account](#account-creation), then you can use a single command to:
 -   Install the {{ PRODUCT }} CLI.
@@ -34,7 +34,7 @@ Replace `<DOMAIN>` with your website's domain when running the following command
 
 You are now ready to optimize and secure the delivery of your website. [Learn more.](#next-steps)
 
-## Prerequisites
+## Prerequisites {/*prerequisites*/}
 
 {{ PRODUCT }} requires:
 -   [Node v{{ NODE_VERSION }}](/guides/install_nodejs) 
@@ -49,7 +49,7 @@ You are now ready to optimize and secure the delivery of your website. [Learn mo
 -   {{ PRODUCT }} CLI
 -   {{ PRODUCT }} account
 
-### {{ PRODUCT }} CLI Installation  {/*cli-installation*/}
+### {{ PRODUCT }} CLI Installation {/*cli-installation*/}
 
 Use the [{{ PRODUCT }} CLI](/guides/develop/cli) to build, test, and deploy your website to {{ PRODUCT }}. Install it through either npm or yarn. 
 
@@ -63,18 +63,18 @@ npm i -g {{ PACKAGE_NAME }}/cli
 yarn global add {{ PACKAGE_NAME }}/cli
 ```
 
-### {{ PRODUCT }} Account Creation  {/*account-creation*/}
+### {{ PRODUCT }} Account Creation {/*account-creation*/}
 
 Signing up for an {{ PRODUCT }} account is free and quick. 
 
-1.  <a href="${APP_URL}/signup">Sign up now by either:</a> 
+1.  [Sign up now by either:]({{ APP_URL }}/signup) 
 
     -   Providing your name, user name, and a password. After which, check your email for confirmation instructions. Click **CONFIRM MY ACCOUNT** to load the {{ PRODUCT }} Developer console.
     -   Using your existing Github or Google credentials.
 
 2.  Click **Accept** to accept our terms of service and privacy policy.
 
-## Step 1: Create an {{ PRODUCT }} Property  {/*create-property*/}
+## Step 1: Create an {{ PRODUCT }} Property {/*create-property*/}
 
 Each website that will run behind {{ PRODUCT }} requires an {{ PRODUCT }} property. A property determines how {{ PRODUCT }} will process your website's traffic. 
 
@@ -105,14 +105,14 @@ Each website that will run behind {{ PRODUCT }} requires an {{ PRODUCT }} proper
 4.  When prompted, confirm the selection of `Use the current directory` by pressing the `ENTER` key.
 5.  When prompted, select either the `npm` or `yarn` package manager and then press the `ENTER` key.
 
-## Step 2: Testing Locally  {/*testing-locally*/}
+## Step 2: Testing Locally {/*testing-locally*/}
 
 You may run {{ PRODUCT }} in local development mode to preview your website on your local machine prior to deployment. Local development mode allows for rapid development by allowing you to quickly test changes prior to deployment.
 
 1.  From the command line or terminal, type `{{ FULL_CLI_NAME }} dev`.
 2.  Preview your website by loading `https://127.0.0.1:3000` from within your preferred web browser.
 
-## Step 3: Deploy Your Property  {/*deploy-property*/}
+## Step 3: Deploy Your Property {/*deploy-property*/}
 
 Run the following command from your property's root directory to deploy it to {{ PRODUCT }}:
 
@@ -120,7 +120,7 @@ Run the following command from your property's root directory to deploy it to {{
 {{ FULL_CLI_NAME }} deploy 
 ```
 
-## Next Steps
+## Next Steps {/*next-steps*/}
 
 Once you have successfully deployed your property to {{ PRODUCT }}, our CLI provides the following edge URLs:
 -   The first edge URL corresponds to production traffic. {{ PRODUCT }} will not serve this URL until you set up a TLS certificate and update your DNS configuration to point to our service. [Learn more.](/guides/basics/domains)

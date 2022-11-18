@@ -442,7 +442,7 @@
 			"icon": "stacks-plain",
 			"routes": [
 				{
-					"title": "Migration to V4",
+					"title": "Migration to v4",
 					"path": "reference/layer0_migration"
 				},
 				{

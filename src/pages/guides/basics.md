@@ -13,7 +13,7 @@ The {{ PRODUCT }} Applications platform consists of the following products:
     -   An Origin Shield that reduces traffic to your origin servers through an additional caching layer.
     -   A Web Application Firewall through which you can monitor, detect, and prevent application layer attacks.
     -   Basic website security, such as a Content Security Policy (CSP), a TLS certificate, Basic Authentication enforcement, variables for sensitive data (e.g., API keys), and protection against cache poisoning.
--   {{ PRODUCT }} {{ PRODUCT_PLATFORM }} allows you to quickly integrate your headless Jamstack applications with our {{ PRODUCT_PLATFORM }} through one of our framework integrations. This integration allows {{ PRODUCT }} to further improve your website's performance through the server-side rendering (SSR) of your website's JavaScript. 
+-   {{ PRODUCT }} {{ PRODUCT_PLATFORM }} allows you to quickly integrate your headless Jamstack applications with {{ PRODUCT }}. This integration allows {{ PRODUCT }} to further improve your website's performance through the server-side rendering (SSR) of your website's JavaScript. 
 
 All of the above solutions are compatible with each other. Combine all three solutions to ensure the secure delivery of your website while drastically improving performance.
 
@@ -22,7 +22,7 @@ All of the above solutions are compatible with each other. Combine all three sol
 Before you can take advantage of {{ PRODUCT_EDGE }}, {{ PRODUCT_SECURITY }}, and {{ PRODUCT_PLATFORM }}, you should set up the following basic {{ PRODUCT }} configuration:
 
 -   [An {{ PRODUCT }} team space.](/guides/basics/collaboration) By default, your account will only have a private space that may only be accessed through your user account. Create a team space if you plan on collaborating with other teammates. 
--   An {{ PRODUCT }} property. A property instructs {{ PRODUCT }} how to process requests to your website. 
+-   [An {{ PRODUCT }} property.](/guides/getting_started#create-property) A property instructs {{ PRODUCT }} how to process requests to your website. 
 -   [An environment.](/guides/basics/environments) An environment allows you to serve your site on different domains. For example, you can create environments for development, staging, and production to which you can deploy builds as they progress through your release workflow. 
 -   [A domain configuration that supports HTTPS.](/guides/basics/domains) In addition to setting up a domain configuration on the desired environment, {{ PRODUCT }} needs to generate a TLS certificate for it. After which, you may update your DNS configuration to point your website's domain to our service. Once your updated DNS configuration takes effect, {{ PRODUCT }} will serve your production traffic.
 

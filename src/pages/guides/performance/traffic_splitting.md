@@ -116,20 +116,20 @@ After deploying a router with multiple destinations, all requests will be sent t
 
 ### Step 3. Configure Traffic Splitting Rules in the {{ PRODUCT }} Developer Console {/*step-3-configure-traffic-splitting-rules-in-the-developer-console*/}
 
-1. [Log into your account]({{ APP_URL }}/login/), then navigate to the environment in which you want to configure the iterative migration and click Edit:
+1.  [Log into your account]({{ APP_URL }}/login/), then navigate to the environment in which you want to configure the iterative migration and click Edit:
 
-![Edit Environment](/images/traffic-splitting/edit_env.png)
+    ![Edit Environment](/images/traffic-splitting/edit_env.png)
 
-2. Scroll to the **Split Testing** section and click *Add Rule*:
+2.  Scroll to the **Split Testing** section and click *Add Rule*:
 
-![Add Split Test Rule](/images/traffic-splitting/add_rule.png)
+    ![Add Split Test Rule](/images/traffic-splitting/add_rule.png)
 
-3. Select the amount of traffic to send to each destination or environment:
+3.  Select the amount of traffic to send to each destination or environment:
 
-    a. Click **ADD DESTINATION**
-    b. Choose a destination from the drop-down menu and enter a percentage for each destination.
+    1.  Click **ADD DESTINATION**.
+    2.  Choose a destination from the drop-down menu and enter a percentage for each destination.
 
-![Add Split Test Rule Destination](/images/traffic-splitting/rule_config.png)
+        ![Add Split Test Rule Destination](/images/traffic-splitting/rule_config.png)
 
 #### Adding Additional Rules {/*adding-additional-rules*/}
 

@@ -2,7 +2,7 @@
 title: Sites (Frameworks)
 ---
 
-{{ PRODUCT }} {{ PRODUCT_PLATFORM }} allows you to quickly integrate your headless Jamstack applications with our App Platform through one of our framework integrations. This integration allows {{ PRODUCT }} to further improve your website's performance through the server-side rendering (SSR) of your website's JavaScript. 
+{{ PRODUCT }} {{ PRODUCT_PLATFORM }} allows you to quickly integrate your headless Jamstack applications through one of our framework integrations. This integration allows {{ PRODUCT }} to further improve your website's performance through the server-side rendering (SSR) of your website's JavaScript. 
 
 ## Availablity {/*availablity*/}
 

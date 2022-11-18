@@ -21,15 +21,14 @@ All of the above solutions are compatible with each other. Combine all three sol
 
 Before you can take advantage of {{ PRODUCT_EDGE }}, {{ PRODUCT_SECURITY }}, and {{ PRODUCT_PLATFORM }}, you should set up the following basic {{ PRODUCT }} configuration:
 
--   An {{ PRODUCT }} team space. By default, your account will only have a private space that may only be accessed through your user account. Create a team space if you plan on collaborating with other teammates. 
+-   [An {{ PRODUCT }} team space.](/guides/basics/collaboration) By default, your account will only have a private space that may only be accessed through your user account. Create a team space if you plan on collaborating with other teammates. 
 -   An {{ PRODUCT }} property. A property instructs {{ PRODUCT }} how to process requests to your website. 
--   An environment. An environment allows you to serve your site on different domains. For example, you can create environments for development, staging, and production to which you can deploy builds as they progress through your release workflow. 
--   Deploying to an environment 
--   A domain configuration that supports HTTPS. In addition to setting up a domain configuration on the desired environment, {{ PRODUCT }} needs to generate a TLS certificate for it. After which, you may update your DNS configuration to point your website's domain to our service. Once your updated DNS configuration takes effect, {{ PRODUCT }} will serve your production traffic.
+-   [An environment.](/guides/basics/environments) An environment allows you to serve your site on different domains. For example, you can create environments for development, staging, and production to which you can deploy builds as they progress through your release workflow. 
+-   [A domain configuration that supports HTTPS.](/guides/basics/domains) In addition to setting up a domain configuration on the desired environment, {{ PRODUCT }} needs to generate a TLS certificate for it. After which, you may update your DNS configuration to point your website's domain to our service. Once your updated DNS configuration takes effect, {{ PRODUCT }} will serve your production traffic.
 
 Once you have set up a basic {{ PRODUCT }} configuration, you are ready to take full advantage of our {{ PRODUCT_PLATFORM }}:
 
--   {{ PRODUCT_EDGE }} Learn how to:
+-   {{ PRODUCT_EDGE }}. Learn how to:
     -   Optimize website performance through our CDN-as-code approach to:
         -   [Cache](/guides/performance/getting_started#configure-caching) your content.
         -   Determine how your content is [routed](/guides/performance/routing) through our network. 

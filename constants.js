@@ -76,7 +76,7 @@ Deploying requires an account on ${PRODUCT}. <a href="${APP_URL}/signup">Sign up
 
 const INSTALL_CLI = `## Install the ${PRODUCT_NAME} CLI {/*install-the-cli*/}
 
-If you have not already done so, install the [${PRODUCT_NAME} CLI](cli).
+If you have not already done so, install the [${PRODUCT_NAME} CLI](/guides/develop/cli).
 
 With \`npm\`: 
 \`\`\`bash
@@ -99,7 +99,7 @@ ${INSTALL_CLI}
 
 const INSTALL_CLI_STEP = `Install the ${PRODUCT_NAME} CLI
 
-If you have not already done so, install the [${PRODUCT_NAME} CLI](cli).
+If you have not already done so, install the [${PRODUCT_NAME} CLI](/guides/develop/cli).
 
 With \`npm\`: 
 \`\`\`bash

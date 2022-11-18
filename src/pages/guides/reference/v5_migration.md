@@ -4,7 +4,7 @@ title: {{ PRODUCT }} Version 5 Migration Guide
 
 <Callout type="important">
 
-  If you are using {{ PRODUCT }} version 3.x or earlier, you should review the [v4 Migration Guide](/guides/layer0_migration) before migrating to version 5.
+  If you are using {{ PRODUCT }} version 3.x or earlier, you should review the [v4 Migration Guide](/guides/reference/layer0_migration) before migrating to version 5.
 
 </Callout>
 

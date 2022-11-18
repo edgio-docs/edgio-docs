@@ -8,11 +8,11 @@ Each request for your content will generate a response from a server. This respo
 -   [Response headers](#reserved-response-headers)
 -   [Response body](#response-body)
 
-## Protocol and Version
+## Protocol and Version {/*protocol-and-version*/}
 
-Identifies the network protocol and version (e.g., HTTP/1.1) used to transmit the response to the client. <-- This protocol and version typically matches the one defined in the request. -->
+Identifies the network protocol and version (e.g., HTTP/1.1) used to transmit the response to the client. <!-- This protocol and version typically matches the one defined in the request. -->
 
-## Status Codes
+## Status Codes {/*status-codes*/}
 
 [HTTP status codes](https://en.wikipedia.org/wiki/List_of_HTTP_status_codes) are how the web signals errors and other states from the server to the web browser. If there is an error from your backend website, the error is simply forwarded by {{ PRODUCT_NAME }} to the browser.
 
@@ -323,7 +323,7 @@ To calculate the Serverless cold start timing you must take the difference betwe
 
 Based on the example above, that would be `809 (pf) - 722 (wt) = 87ms`.
 
-## Response Body
+## Response Body {/*response-body*/}
 
 Contains the data provided in response to the request.
 

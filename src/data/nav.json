@@ -18,7 +18,7 @@
 				},
 				{
 					"title": "Domains",
-					"path": "basics/production"
+					"path": "basics/domains"
 				},
 				{
 					"title": "Deployments",
@@ -103,7 +103,7 @@
 							"path": "performance/observability/core_web_vitals"
 						},
 						{
-							"title": "DevTools",
+							"title": "Devtools",
 							"path": "performance/observability/devtools"
 						}
 					]

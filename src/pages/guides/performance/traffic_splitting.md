@@ -4,7 +4,7 @@ title: Traffic Splitting
 
 <Callout type="info">
 
-  You can also use traffic splitting for <Link href="/guides/split_testing">A/B Testing</Link>.
+  You can also use traffic splitting for [A/B Testing](/guides/performance/traffic_splitting/a_b_testing).
 
 </Callout>
 

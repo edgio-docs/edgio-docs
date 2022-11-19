@@ -50,7 +50,7 @@ function Accordion({
             className="sidenav-link menu-toggle__wrap"
             target="_blank"
             rel="noopener noreferrer">
-            {route.title}
+            <span> {route.title}</span>
             <div className="icon-chevron">
               <CgExternal />
             </div>
@@ -156,6 +156,11 @@ function AccordionParent({routes, depth}: {routes: IRoute[]; depth: number}) {
 }
 
 const StyledSideNav = styled.div`
+  display: flex;
+  row-gap: 2rem;
+  flex-direction: column;
+  height: 100%;
+
   ul:not([data-nav-depth='0']) {
     position: absolute;
 
@@ -187,6 +192,17 @@ const StyledSideNav = styled.div`
   .sidenav-sublist {
     list-style: none;
     padding: 0px;
+
+    :first-of-type {
+      flex: 1 1 0%;
+      overflow-y: auto;
+
+      + hr {
+        height: 1px;
+        border: none;
+        background: var(--hr-primary);
+      }
+    }
   }
 
   .sidenav-sublist [data-nav-depth='1'] {
@@ -252,11 +268,83 @@ const StyledSideNav = styled.div`
   }
 `;
 
+const links = [
+  {
+    title: 'Edgio v4 Documentation',
+    path: 'https://docs.layer0.co',
+    icon: 'edgio',
+  },
+  {
+    title: 'Fiddle',
+    path: 'https://fiddle.layer0.co/?sgId=7bc47c45-c1d6-4189-b416-552581d86006',
+    icon: 'fiddle',
+  },
+  {
+    title: 'Forum',
+    path: 'https://forum.layer0.co/?sgId=7bc47c45-c1d6-4189-b416-552581d86006',
+    icon: 'forum',
+  },
+  {
+    title: 'Status',
+    path: 'https://status.edg.io/?sgId=7bc47c45-c1d6-4189-b416-552581d86006',
+    icon: 'status',
+  },
+  {
+    title: 'Support',
+    path: 'https://app.layer0.co/help?sgId=7bc47c45-c1d6-4189-b416-552581d86006',
+    icon: 'support',
+  },
+  {
+    title: 'Edg.io',
+    path: 'https://edg.io',
+    icon: 'edgio',
+  },
+];
+
 export default function SideNav() {
   return (
     <StyledSideNav>
       <ul className="sidenav-sublist" data-nav-depth="0">
         <AccordionParent routes={(NavItems as IRoutes).routes} depth={0} />
+      </ul>
+      <hr />
+      <ul className="sidenav-sublist" data-nav-depth="0">
+        {links.map((link) => {
+          return (
+            <li key={link.path} className="sidenav-item">
+              <div className="sidenav-menu__container">
+                <a
+                  href={link.path}
+                  className="sidenav-link menu-toggle__wrap"
+                  target="_blank"
+                  rel="noopener noreferrer">
+                  <div className="icons">
+                    <div id="dark-theme">
+                      <img
+                        src={`/icons/${link.icon}.svg`}
+                        alt={link.icon}
+                        width="16px"
+                        height="16px"
+                      />
+                    </div>
+                    <div id="light-theme">
+                      <img
+                        src={`/icons/${link.icon}-dark.svg`}
+                        alt={link.icon}
+                        width="16px"
+                        height="16px"
+                      />
+                    </div>
+                  </div>
+                  <span>{link.title}</span>
+                  <div className="icon-chevron">
+                    <CgExternal />
+                  </div>
+                </a>
+              </div>
+            </li>
+          );
+        })}
       </ul>
     </StyledSideNav>
   );

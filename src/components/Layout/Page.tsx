@@ -42,7 +42,8 @@ const StyledMainPage = styled.div`
 
       @media (max-width: 850px) {
         position: fixed;
-        transform: translateX(calc(-1 * var(--sidebar-width)));
+        transform: translateX(calc(-1 * 100% - 8px));
+        width: calc(100% - 16px);
       }
     }
 

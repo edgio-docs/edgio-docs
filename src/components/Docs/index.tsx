@@ -22,10 +22,12 @@ const StyledDocs = styled.div`
   }
 
   .docs-article__header {
-    padding: 32px 0 16px;
+    padding: 18px 0 16px;
     display: flex;
     align-items: baseline;
     justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
   }
 
   .docs-article__header-icons {

@@ -4,7 +4,7 @@ title: Traffic Splitting
 
 <Callout type="info">
 
-  You can also use traffic splitting for <Link href="/guides/split_testing">A/B Testing</Link>.
+  You can also use traffic splitting for [A/B Testing](/guides/performance/traffic_splitting/a_b_testing).
 
 </Callout>
 
@@ -77,7 +77,7 @@ If your sites consist of two separate servers use these steps to configure the d
 
 </Callout>
 
-Configure the backends in the {{ CONFIG_FILE }} file. (See [{{ CONFIG_FILE }}](edgio_config) for more information.). For example, to split traffic between a new experience hosted on `origin.my-site.com` and a legacy experience hosted on `legacy-origin.my-site.com`:
+Configure the backends in the {{ CONFIG_FILE }} file. (See [{{ CONFIG_FILE }}](/guides/basics/edgio_config) for more information.). For example, to split traffic between a new experience hosted on `origin.my-site.com` and a legacy experience hosted on `legacy-origin.my-site.com`:
 
 ```js filename="{{ CONFIG_FILE }}"
 module.exports = {
@@ -116,20 +116,20 @@ After deploying a router with multiple destinations, all requests will be sent t
 
 ### Step 3. Configure Traffic Splitting Rules in the {{ PRODUCT }} Developer Console {/*step-3-configure-traffic-splitting-rules-in-the-developer-console*/}
 
-1. [Log into your account]({{ APP_URL }}/login/), then navigate to the environment in which you want to configure the iterative migration and click Edit:
+1.  [Log into your account]({{ APP_URL }}/login/), then navigate to the environment in which you want to configure the iterative migration and click Edit:
 
-![Edit Environment](/images/traffic-splitting/edit_env.png)
+    ![Edit Environment](/images/traffic-splitting/edit_env.png)
 
-2. Scroll to the **Split Testing** section and click *Add Rule*:
+2.  Scroll to the **Split Testing** section and click *Add Rule*:
 
-![Add Split Test Rule](/images/traffic-splitting/add_rule.png)
+    ![Add Split Test Rule](/images/traffic-splitting/add_rule.png)
 
-3. Select the amount of traffic to send to each destination or environment:
+3.  Select the amount of traffic to send to each destination or environment:
 
-    a. Click **ADD DESTINATION**
-    b. Choose a destination from the drop-down menu and enter a percentage for each destination.
+    1.  Click **ADD DESTINATION**.
+    2.  Choose a destination from the drop-down menu and enter a percentage for each destination.
 
-![Add Split Test Rule Destination](/images/traffic-splitting/rule_config.png)
+        ![Add Split Test Rule Destination](/images/traffic-splitting/rule_config.png)
 
 #### Adding Additional Rules {/*adding-additional-rules*/}
 

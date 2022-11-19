@@ -47,8 +47,8 @@ The {{ PRODUCT }} sample is a deploy of the Bloomreach [Reference SPA](https://g
 The sample application does the following things:
 
 - All API requests are routed to the same _domain_. The requests are then routed to the appropriate Bloomreach API via {{ PRODUCT }}'s routing framework to either the BRXM API or the GraphQL endpoint. This is done via a combination of the `{{ CONFIG_FILE }}` file and the `routes.ts` file.
-- [Caching](/guides/prefetching) configuration for GraphQL operations, API operations, and static operations have been added in the `routes.ts` file.
-- To view [Prefetching](/guides/prefetching) in operation, view the `<Link />` component. This wraps menu items and category items to prefetch the content of those links to allow content to be served from instantly from the browser's cache.
+- [Caching](/guides/performance/prefetching) configuration for GraphQL operations, API operations, and static operations have been added in the `routes.ts` file.
+- To view [Prefetching](/guides/performance/prefetching) in operation, view the `<Link />` component. This wraps menu items and category items to prefetch the content of those links to allow content to be served from instantly from the browser's cache.
 
 ### Get the code {/*get-the-code*/}
 
@@ -288,7 +288,7 @@ Awesome, the app should be working locally. Time to get it deployed to {{ PRODUC
 
 6. Configure to run with {{ PRODUCT }}
 
-Because this example is based off [create-react-app](https://create-react-app.dev/), you can also reference the static [react app docs](react) for this.
+Because this example is based off [create-react-app](https://create-react-app.dev/), you can also reference the static [react app docs](/guides/sites_frameworks/getting_started/react) for this.
 
 To add the necessary components to {{ PRODUCT }} in order to deploy, run the following:
 

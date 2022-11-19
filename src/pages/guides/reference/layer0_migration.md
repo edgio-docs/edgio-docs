@@ -57,7 +57,7 @@ app.layer0.co
 
 ### Access Logs {/*access-logs*/}
 
-The `xdn` field in the [access logs](logs#access-logs) has been renamed to `layer0`. 
+The `xdn` field in the [access logs](/guides/develop/logs#access-logs) has been renamed to `layer0`. 
 
 ### Response Headers {/*response-headers*/}
 

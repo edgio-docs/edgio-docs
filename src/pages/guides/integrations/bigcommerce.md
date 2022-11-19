@@ -48,7 +48,7 @@ cd site
 
 ### Update the Example or Generated Project for use with BigCommerce {/*update-the-example-or-generated-project-for-use-with-bigcommerce*/}
 
-Skip to the [Storefront Setup](#storefront_setup) section for a detailed explanation on how to setup a BigCommerce site. After that, return to this section to enter values as needed.
+Skip to the [Storefront Setup](#bigcommerce-storefront-setup) section for a detailed explanation on how to setup a BigCommerce site. After that, return to this section to enter values as needed.
 
 1. Duplicate `.env.template` and name it `.env.local` in the project directory. Add your BigCommerce API keys to it. See Storefront setup for how to set these items up.
 

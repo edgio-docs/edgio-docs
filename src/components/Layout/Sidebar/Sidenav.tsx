@@ -4,6 +4,8 @@ import Link from 'next/link';
 import {useRouter} from 'next/router';
 import React, {Fragment, useEffect, useState, memo} from 'react';
 import useCollapse from 'react-collapsed';
+import {CgExternal} from 'react-icons/cg';
+import {GoChevronRight} from 'react-icons/go';
 import styled from 'styled-components';
 
 import NavItems from '../../../../src/data/nav.json';
@@ -13,43 +15,12 @@ interface IRoute {
   path: string;
   icon: string;
   routes?: IRoute[];
+  external?: boolean;
 }
 interface IRoutes {
   title: string;
   path: string;
   routes: IRoute[];
-}
-
-const IconChevron = memo(function IconChevron() {
-  return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="20"
-      height="20"
-      viewBox="0 0 20 20">
-      <g fill="none" fillRule="evenodd" transform="translate(-446 -398)">
-        <path
-          fill="currentColor"
-          fillRule="nonzero"
-          d="M95.8838835,240.366117 C95.3957281,239.877961 94.6042719,239.877961 94.1161165,240.366117 C93.6279612,240.854272 93.6279612,241.645728 94.1161165,242.133883 L98.6161165,246.633883 C99.1042719,247.122039 99.8957281,247.122039 100.383883,246.633883 L104.883883,242.133883 C105.372039,241.645728 105.372039,240.854272 104.883883,240.366117 C104.395728,239.877961 103.604272,239.877961 103.116117,240.366117 L99.5,243.982233 L95.8838835,240.366117 Z"
-          transform="translate(356.5 164.5)"
-        />
-        <polygon points="446 418 466 418 466 398 446 398" />
-      </g>
-    </svg>
-  );
-});
-
-function MenuChevron({
-  displayDirection,
-}: {
-  displayDirection: 'down' | 'left' | 'up' | 'right';
-}) {
-  return (
-    <div className="icon-box icon-chevron" data-direction={displayDirection}>
-      <IconChevron />
-    </div>
-  );
 }
 
 function Accordion({
@@ -73,44 +44,61 @@ function Accordion({
     <li className="sidenav-item" data-comp="accordion" data-expanded={isActive}>
       <div className="sidenav-menu__container">
         {/* Toggle */}
-        {route.title && (
-          <Link
-            href={`/guides/${route.path}`}
-            passHref
-            className="sidenav-link"
-            data-depth={depth}>
-            <a
-              className="menu-toggle__wrap"
-              data-is-highlighted={
-                currentRoutePath.replace('/guides/', '') === route.path
-              }
-              {...getToggleProps({
-                onClick: onSelect,
-              })}>
-              {depth === 0 && (
-                <div className="icons">
-                  <div id="dark-theme">
-                    <img
-                      src={`/icons/${route.icon}.svg`}
-                      alt={route.icon}
-                      width="16px"
-                      height="16px"
-                    />
+        {route.external ? (
+          <a
+            href={route.path}
+            className="sidenav-link menu-toggle__wrap"
+            target="_blank"
+            rel="noopener noreferrer">
+            {route.title}
+            <div className="icon-chevron">
+              <CgExternal />
+            </div>
+          </a>
+        ) : (
+          route.title && (
+            <Link
+              href={`/guides/${route.path}`}
+              passHref
+              className="sidenav-link"
+              data-depth={depth}>
+              <a
+                className="menu-toggle__wrap"
+                data-is-highlighted={
+                  currentRoutePath.replace('/guides/', '') === route.path
+                }
+                {...getToggleProps({
+                  onClick: onSelect,
+                })}>
+                {depth === 0 && (
+                  <div className="icons">
+                    <div id="dark-theme">
+                      <img
+                        src={`/icons/${route.icon}.svg`}
+                        alt={route.icon}
+                        width="16px"
+                        height="16px"
+                      />
+                    </div>
+                    <div id="light-theme">
+                      <img
+                        src={`/icons/${route.icon}-dark.svg`}
+                        alt={route.icon}
+                        width="16px"
+                        height="16px"
+                      />
+                    </div>
                   </div>
-                  <div id="light-theme">
-                    <img
-                      src={`/icons/${route.icon}-dark.svg`}
-                      alt={route.icon}
-                      width="16px"
-                      height="16px"
-                    />
+                )}
+                <span>{route.title}</span>
+                {route.routes && (
+                  <div className="icon-chevron">
+                    <GoChevronRight />
                   </div>
-                </div>
-              )}
-              <span>{route.title}</span>
-              {route.routes && <MenuChevron displayDirection="down" />}
-            </a>
-          </Link>
+                )}
+              </a>
+            </Link>
+          )
         )}
         {/* Collapse */}
         {route.routes && (
@@ -187,7 +175,7 @@ const StyledSideNav = styled.div`
     color: var(--colors-blue0) !important;
 
     .icon-chevron {
-      transform: translateX(-20px) rotate(0deg);
+      transform: translateX(-20px) rotate(90deg);
     }
   }
 
@@ -260,11 +248,7 @@ const StyledSideNav = styled.div`
     transition: 100ms ease-in-out;
     position: absolute;
     right: 0;
-    transform: translateX(-20px) rotate(-90deg);
-  }
-
-  .is-open .icon-chevron {
-    transform: rotate(180deg);
+    transform: translateX(-20px);
   }
 `;
 

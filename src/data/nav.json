@@ -432,12 +432,12 @@
 					"routes": [
 						{
 							"title": "@edgio/core",
-							"path": "docs/api/core",
+							"path": "https://docs.edg.io/docs/api/core",
 							"external": true
 						},
 						{
 							"title": "@edgio/prefetch",
-							"path": "docs/api/prefetch",
+							"path": "https://docs.edg.io/docs/api/prefetch",
 							"external": true
 						}
 					]

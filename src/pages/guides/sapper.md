@@ -64,15 +64,9 @@ This will automatically add all of the required dependencies and files to your p
 
 If you're using webpack to build your app, update `webpack.config.js` to bundle all dependencies in the server build:
 
-```js
- output: config.server.output(),
- target: 'node',
- resolve: { alias, extensions, mainFields },
--externals: Object.keys(pkg.dependencies).concat('encoding'),
-+externals: ['encoding'],
- module: {
-         rules: [
-                 {
+```js filename='webpack.config.js' del={1} ins={2}
+externals: Object.keys(pkg.dependencies).concat('encoding'),
+externals: ['encoding'],
 ```
 
 ## Rollup {/*rollup*/}
@@ -85,34 +79,25 @@ npm i -D @rollup/plugin-json
 
 Then make the following changes to `rollup.config.js`:
 
-```js
- import babel from '@rollup/plugin-babel';
- import { terser } from 'rollup-plugin-terser';
- import config from 'sapper/config/rollup.js';
--import pkg from './package.json';
-+import json from '@rollup/plugin-json';
-
- const mode = process.env.NODE_ENV;
- const dev = mode === 'development';
+```js filename='rollup.config.js' del={1} ins={2}
+import pkg from './package.json';
+import json from '@rollup/plugin-json';
 ```
 
 ... and make the following changes to the `server` config ...
 
-```js
- input: config.server.input(),
- output: config.server.output(),
- plugins: [
-+        json(),
-         replace({
-                 'process.browser': false,
-                 'process.env.NODE_ENV': JSON.stringify(mode)
+```js filename='rollup.config.js' ins={2}
+plugins: [
+  json(),
+  // Rest of the plugins
+]
 ```
 
 and
 
-```js
--external: Object.keys(pkg.dependencies).concat(require('module').builtinModules),
-+external: require('module').builtinModules,
+```js del={1} ins={2}
+external: Object.keys(pkg.dependencies).concat(require('module').builtinModules),
+external: require('module').builtinModules,
 ```
 
 ## Running Locally {/*running-locally*/}
@@ -165,7 +150,7 @@ new Prefetcher().route()
 
 To prefetch data when links become visible in the viewport, wrap the link in the `Prefetch` component from `{{ PACKAGE_NAME }}/svelte`
 
-```html
+```html ins={2,5,7}
 <script>
   import { Prefetch } from '{{ PACKAGE_NAME }}/svelte'
 </script>

@@ -751,6 +751,12 @@ const SidebarMenuItems: ISidebarMenuItems = [
   ],
   [
     {
+      title: 'Edgio v4 Documentation',
+      icon: <IconEdgioSquareLogo />,
+      iconDark: <IconEdgioSquareLogoDark />,
+      path: 'https://docs.layer0.co',
+    },
+    {
       title: 'Fiddle',
       icon: <IconFiddle />,
       iconDark: <IconFiddleDark />,

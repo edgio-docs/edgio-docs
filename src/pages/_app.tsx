@@ -1,6 +1,7 @@
 import '@docsearch/css';
 import {Metrics} from '@edgio/rum';
 import {MDXEmbedProvider} from 'mdx-embed';
+import {DefaultSeo} from 'next-seo';
 import type {AppProps} from 'next/app';
 import dynamic from 'next/dynamic';
 import {useRouter} from 'next/router';
@@ -8,9 +9,12 @@ import Script from 'next/script';
 import NProgress from 'nprogress';
 import * as React from 'react';
 
-// Universal loading page (used in dynamically imported components) which contains the wrapper of each page
 import LoadingFallBackPage from 'components/Fallbacks/Loading';
+import {siteConfig} from 'siteConfig';
 
+// Universal loading page (used in dynamically imported components) which contains the wrapper of each page
+
+import '../styles/code.css';
 import '../styles/algolia.css';
 import '../styles/custom-props.css';
 import '../styles/nprogress.css';
@@ -41,16 +45,13 @@ const fallbackMap: {[route: string]: React.ReactNode} = {
 function GAnalytics() {
   return (
     <>
-      <Script
-        src={`https://googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_TRACKING_ID}`}
-        strategy="afterInteractive"></Script>
       <Script id="google-analytics" strategy="afterInteractive">
         {`
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){window.dataLayer.push(arguments);}
-          gtag('js', new Date());
-
-          gtag('config', '${process.env.NEXT_PUBLIC_GA_TRACKING_ID}');
+          (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+          new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+          j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+          'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+          })(window,document,'script','dataLayer','${siteConfig.analytics.gtmId}');
         `}
       </Script>
     </>
@@ -99,11 +100,16 @@ export default function MyApp({Component, pageProps}: AppProps) {
     AppShell = (Component as any)({}).props.originalType.appShell;
   }
 
+  const canonicalUrl = (
+    `https://docs.edg.io` + (router.asPath === '/' ? '' : router.asPath)
+  ).split('?')[0];
+
   return loading && fallbackMap.hasOwnProperty(changingTo) ? (
     fallbackMap[changingTo]
   ) : (
     <AppShell>
       <GAnalytics />
+      <DefaultSeo canonical={canonicalUrl} />
       <MDXEmbedProvider>
         <Component {...pageProps} />
       </MDXEmbedProvider>

@@ -200,7 +200,7 @@ const SidebarMenuItems: ISidebarMenuItems = [
           path: '/guides/traditional_sites',
         },
         {
-          title: 'Split Testing',
+          title: 'A/B Testing',
           path: '/guides/split_testing',
         },
         {
@@ -750,6 +750,12 @@ const SidebarMenuItems: ISidebarMenuItems = [
     },
   ],
   [
+    {
+      title: 'Edgio v4 Documentation',
+      icon: <IconEdgioSquareLogo />,
+      iconDark: <IconEdgioSquareLogoDark />,
+      path: 'https://docs.layer0.co',
+    },
     {
       title: 'Fiddle',
       icon: <IconFiddle />,

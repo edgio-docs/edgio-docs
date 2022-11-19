@@ -4,100 +4,91 @@ title: MkDocs
 
 [MkDocs](https://www.mkdocs.org/) is a fast, simple and downright gorgeous static site generator that's geared towards building project documentation. Follow the steps below to deploy your MkDocs site to {{ PRODUCT }}.
 
+## Example {/*example*/}
+
+<ExampleButtons
+  title="MkDocs"
+  siteUrl="https://layer0-docs-layer0-mkdocs-example-default.layer0-limelight.link"
+  repoUrl="https://github.com/edgio-docs/edgio-mkdocs-example"
+  deployFromRepo />
+
+## Connector {/*connector*/}
+
+This framework has a connector developed for {{ PRODUCT }}. See [Connectors](connectors) for more information.
+
+<ButtonLink variant="stroke" type="code" withIcon={true} href="https://github.com/edgio-docs/edgio-connectors/tree/main/edgio-mkdocs-connector">
+ View the Connector Code
+</ButtonLink>
+
+{{ PREREQ }}
+  
 ## Create your MkDocs site {/*create-your-mkdocs-site*/}
 
-If you don't have an existing MkDocs site, you can create one by running:
+If you don't have an existing MkDocs site, you can create one by following:
 
 ```bash
 # https://www.mkdocs.org/getting-started
 
-pip install mkdocs
-mkdocs new my-project
-cd my-project
+pip3 install mkdocs
+mkdocs new my-mkdocs-app
+cd my-mkdocs-app
 ```
 
-## Add {{ PRODUCT }} {/*add*/}
+## Initializing your project with {{ PRODUCT }} {/*initialize-your-project*/}
 
-Create a `package.json` at the root of your project with the following:
-```json
-{
-  "name": "mkdocs",
-  "version": "1.0.0",
-  "scripts": {
-    "build": "python3 -m mkdocs build",
-    "server": "python3 -m mkdocs serve",
-    "{{ PRODUCT_NAME_LOWER }}:dev": "{{ FULL_CLI_NAME }} dev",
-    "postinstall": "pip3 install mkdocs",
-    "{{ PRODUCT_NAME_LOWER }}:build": "npm run build && {{ FULL_CLI_NAME }} build",
-    "{{ PRODUCT_NAME_LOWER }}:deploy": "npm run build && {{ FULL_CLI_NAME }} deploy"
-  },
-  "dependencies": {},
-  "devDependencies": {}
-}
-```
+Then, in the root folder of your project, run:
 
 ```bash
-# First, globally install the  {{ PRODUCT }} CLI:
-npm i -g {{ PACKAGE_NAME }}/cli # yarn global add {{ PACKAGE_NAME }}/cli
-
-# Then, add  {{ PRODUCT }} to your MkDocs site:
-{{ FULL_CLI_NAME }} init
+{{ FULL_CLI_NAME }} init --connector={{ PACKAGE_NAME }}/mkdocs
 ```
 
-## Update your {{ PRODUCT }} Router {/*update-your-router*/}
+This will automatically add all of the required dependencies and files to your project. These include:
 
-Paste the following into routes.js:
+- The `{{ PACKAGE_NAME }}/core` package
+- The `{{ PACKAGE_NAME }}/cli` package
+- The `{{ PACKAGE_NAME }}/mkdocs` package
+- `{{ CONFIG_FILE }}`- Contains various configuration options for {{ PRODUCT }}.
+- `routes.js` - A default routes file that sends all requests to the MkDocs. Update this file to add caching or proxy some URLs to a different origin.
+
+## Routing {/*routing*/}
+
+The default `routes.js` file created by `{{ FULL_CLI_NAME }} init` sends all requests to MkDocs server via a fallback route.
 
 ```js
-import { Router } from '{{ PACKAGE_NAME }}/core'
+// This file was automatically added by {{ FULL_CLI_NAME }} deploy.
+// You should commit this file to source control.
 
-const ONE_MINUTE = 60
-const FAR_FUTURE = 60 * 60 * 24 * 365 * 10
+const { Router } = require('{{ PACKAGE_NAME }}/core/router')
+const { mkdocsRoutes } = require('{{ PACKAGE_NAME }}/mkdocs')
 
-const dynamicPaths = ['css', 'fonts', 'img', 'js', 'search']
-
-const router = new Router()
-
-dynamicPaths.forEach((i) => {
-  router.match(`/${i}/:path*`, ({ serveStatic, cache }) => {
-    cache({
-      browser: {
-        maxAgeSeconds: FAR_FUTURE,
-      },
-      edge: {
-        maxAgeSeconds: ONE_MINUTE,
-        staleWhileRevalidateSeconds: FAR_FUTURE,
-      },
-    })
-    serveStatic(`site/${i}/:path*`)
-  })
-})
-
-// Prevent search engine bot(s) from indexing
-// Read more on: {{ DOCS_URL }}/guides/cookbook#blocking-search-engine-crawlers
-router.noIndexPermalink()
-
-router.match('/:path*', ({ serveStatic, cache }) => {
-  cache({
-    browser: false,
-    edge: {
-      maxAgeSeconds: FAR_FUTURE,
-    },
-  })
-  serveStatic('site/:path*')
-})
-
-export default router
+export default new Router()
+  // Prevent search engines from indexing permalink URLs
+  .noIndexPermalink()
+  .use(mkdocsRoutes)
 ```
 
-## Deploying {/*deploying*/}
+## Running Locally {/*running-locally*/}
+
+To test your app locally, run:
+
+```bash
+{{ FULL_CLI_NAME }} run
+```
+
+You can do a production build of your app and test it locally using:
+
+```bash
+{{ FULL_CLI_NAME }} build && {{ FULL_CLI_NAME }} run --production
+```
+
+Setting `--production` runs your app exactly as it will be when deployed to the {{ PRODUCT }} cloud.
+
+## Deploy to {{ PRODUCT }} {/*deploy-to*/}
 
 Deploy your app to the {{ PRODUCT_PLATFORM }} by running the following commands in your project's root directory:
 
 ```bash
-# Create a production build of your mkdocs site
-npm run build
-
-# Deploy it to the {{ PRODUCT_PLATFORM }}
 {{ FULL_CLI_NAME }} deploy
 ```
+
+See [deploying](deploy_apps) for more information.

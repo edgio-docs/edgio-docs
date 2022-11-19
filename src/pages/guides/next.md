@@ -37,16 +37,15 @@ This framework has a connector developed for {{ PRODUCT }}. See [Connectors](con
 
 {{ PRODUCT_NAME }} supports all of the most powerful features of Next.js, including:
 
-- SSG
-- SSR
-- ISG
-- ISR
+- [Static Site Generation (SSG)](https://nextjs.org/docs/basic-features/pages#static-generation)
+- [Server Side Rendering (SSR)](https://nextjs.org/docs/basic-features/pages#server-side-rendering)
+- [Incremental Static Regeneration (ISR)](https://nextjs.org/docs/basic-features/data-fetching/incremental-static-regeneration)
 - Localization
 - Image Optimization
-- `getStaticPaths` (including `fallback: (true|false|'blocking')`)
-- `getStaticProps` (including `revalidate`)
-- `getServerSideProps`
-- `getInitialProps`
+- [`getStaticPaths`](https://nextjs.org/docs/basic-features/data-fetching/get-static-paths) (including `fallback: (true|false|'blocking')`)
+- [`getStaticProps`](https://nextjs.org/docs/basic-features/data-fetching/get-static-props) (including `revalidate`)
+- [`getServerSideProps`](https://nextjs.org/docs/basic-features/data-fetching/get-server-side-props)
+- [`getInitialProps`](https://nextjs.org/docs/api-reference/data-fetching/get-initial-props)
 
 {{ PREREQ }}
 
@@ -92,7 +91,7 @@ If your project does not have a `next.config.js` file, one will automatically be
 
 If your project already has this config file, you need to add these plugins yourself.
 
-```js
+```js filename='next.config.js'
 const { with{{ PRODUCT }}, withServiceWorker } = require('{{ PACKAGE_NAME }}/next/config')
 
 module.exports = with{{ PRODUCT }}(
@@ -129,7 +128,7 @@ The `withServiceWorker` plugin builds a service worker from `sw/service-worker.j
 
 By default, [Devtools](/guides/devtools) are enabled on production builds of Next.js with {{ PRODUCT }}. To disable devtools in production, add the `disableEdgioDevTools` flag:
 
-```js
+```js filename='next.config.js' highlight={10}
 const { with{{ PRODUCT }}, withServiceWorker } = require('{{ PACKAGE_NAME }}/next/config')
 
 module.exports = with{{ PRODUCT }}(
@@ -166,35 +165,15 @@ See [deploying](deploy_apps) for more information.
 
 The `{{ FULL_CLI_NAME }} init` command adds a service worker based on [Workbox](https://developers.google.com/web/tools/workbox) at `sw/service-worker.js`. If you have an existing service worker that uses workbox, you can copy its contents into `sw/service-worker.js` and simply add the following to your service worker:
 
-```js
+```js filename='sw/service-worker.js'
 import {Prefetcher} from '{{ PACKAGE_NAME }}/prefetch/sw';
 
 new Prefetcher().route();
 ```
 
-<a id="adding-the-service-worker"></a>
-
-## Adding the {{ PRODUCT_NAME }} Service Worker {/*adding-the-service-worker*/}
-
-To add the {{ PRODUCT_NAME }} service worker to your app, call the `install` function from `{{ PACKAGE_NAME }}/prefetch/window` in a `useEffect` hook when the app first loads. For example, you can alter the `pages/_app.js` in your Next.js app as follows:
-
-```js
-// pages/_app.js
-import {useEffect} from 'react';
-import {install} from '{{ PACKAGE_NAME }}/prefetch/window';
-
-const MyApp = ({Component, pageProps}) => {
-  useEffect(() => {
-    if (process.env.NODE_ENV === 'production') {
-      install();
-    }
-  }, []);
-};
-```
-
 The code above allows you to prefetch pages from {{ PRODUCT }}'s edge cache to greatly improve browsing speed. To prefetch a page, add the `Prefetch` component from `{{ PACKAGE_NAME }}/react` to any Next `Link` element. The example below shows you how to prefetch JSON data from `getServerSideProps` or `getStaticProps` using the `createNextDataUrl` function from `{{ PACKAGE_NAME }}/next/client`.
 
-```js
+```js ins={4,14-23,27}
 import {Prefetch} from '{{ PACKAGE_NAME }}/react';
 import Link from 'next/link';
 import {useRouter} from 'next/router';
@@ -248,8 +227,7 @@ The `Prefetch` component fetches data for the linked page from {{ PRODUCT }}'s e
 
 {{ PRODUCT }} supports Next.js's built-in routing scheme for both page and API routes, including Next.js 9's clean dynamic routes. The default `routes.js` file created by `{{ FULL_CLI_NAME }} init` sends all requests to Next.js via a fallback route:
 
-```js
-// routes.js
+```js filename='routes.js'
 import { Router } from '{{ PACKAGE_NAME }}/core/router';
 import { nextRoutes } from '{{ PACKAGE_NAME }}/next';
 
@@ -268,14 +246,53 @@ export default new Router()
   .use(nextRoutes);
 ```
 
+### Preview Mode {/*preview-mode*/}
+
+To be able to use [Preivew Mode](https://nextjs.org/docs/advanced-features/preview-mode) while being able to cache the respective pages, update your routes to match the requests that contain the two cookies `__prerender_bypass` & `__next_preview_data`, and send those to serverless for rendering.
+
+```js filename='routes.js' ins={8-24}
+import { Router } from '{{ PACKAGE_NAME }}/core/router';
+import { nextRoutes, renderNextPage } from '{{ PACKAGE_NAME }}/next';
+
+export default new Router()
+  // Prevent search engine bot(s) from indexing
+  // Read more on: {{ DOCS_URL }}/guides/cookbook#blocking-search-engine-crawlers
+  .noIndexPermalink()
+  .match(
+    {
+      path: '/:path*',
+      cookies: {
+        __prerender_bypass: /.*/g,
+        __next_preview_data: /.*/g,
+      }
+    },
+    ({ cache, renderWithApp }) => {
+      cache({
+        edge: false,
+        browser: false,
+      })
+      renderNextPage('/:path*', res) // In case you're using Next.js < v12
+      // renderWithApp() // In case you're using Next.js >= v12
+    }
+  )
+  .get('/service-worker.js', ({cache, serveStatic}) => {
+    cache({
+      edge: {
+        maxAgeSeconds: 60 * 60 * 24 * 365,
+      },
+    });
+    serveStatic('.next/static/service-worker.js');
+  })
+  .use(nextRoutes);
+```
+
 ### nextRoutes {/*nextroutes*/}
 
 In the code above, `nextRoutes` adds all Next.js routes to the router based on the `/pages` directory. You can add additional routes before and after `nextRoutes`. For example, you can choose to send some URLs to an alternate backend. This is useful for gradually replacing an existing site with a new Next.js app.
 
 A popular use case is to fallback to a legacy site for any route that your Next.js app isn't configured to handle:
 
-```js
-// routes.js
+```js filename='routes.js' ins={6}
 import { Router } from '{{ PACKAGE_NAME }}/core/router';
 import { nextRoutes } from '{{ PACKAGE_NAME }}/next';
 
@@ -286,7 +303,7 @@ export default new Router()
 
 To configure the legacy backend, use {{ CONFIG_FILE }}:
 
-```js
+```js filename='{{ CONFIG_FILE }}' ins={2-8}
 module.exports = {
   backends: {
     legacy: {
@@ -309,7 +326,7 @@ The `nextRoutes` plugin automatically adds routes for [rewrites](https://nextjs.
 The easiest way to add edge caching to your Next.js app is to add caching routes before `nextRoutes`. For example,
 imagine you have `/pages/p/[productId].js`. Here's how you can SSR responses as well as cache calls to `getServerSideProps`:
 
-```js
+```js filename='routes.js' ins={6-14,16-28}
 new Router()
   // Prevent search engine bot(s) from indexing
   // Read more on: {{ DOCS_URL }}/guides/cookbook#blocking-search-engine-crawlers
@@ -345,7 +362,7 @@ new Router()
 
 By default, Next.js adds a `cache-control: private, no-cache, no-store, must-revalidate` header to all responses from `getServerSideProps`. The presence of `private` would prevent {{ PRODUCT_NAME }} from caching the response, so `nextRoutes` from `{{ PACKAGE_NAME }}/next` automatically removes the `private` portion of the header to enable caching at the edge. If you want your responses to be private, you need to specify a `cache-control` header using the router:
 
-```js
+```js filename='routes.js'
 new Router().get('/my-private-page', ({setResponseHeader}) => {
   setResponseHeader(
     'cache-control',
@@ -366,7 +383,7 @@ Then, you need to explicitly provide the config to `appWithTranslation` and `ser
 
 So in your `pages/_app.js`:
 
-```js
+```js filename='pages/_app.js'
 export default appWithTranslation(MyApp, require('../i18next.config')); // <~ need to explicitly pass the config here
 ```
 
@@ -389,7 +406,7 @@ export async function getStaticProps({locale}) {
 
 Make sure you also import the config correctly with the new name into your `next.config.js`:
 
-```js
+```js filename='next.config.js' ins={6}
 const { with{{ PRODUCT }}, withServiceWorker } = require('{{ PACKAGE_NAME }}/next/config')
 const { i18n } = require('./i18next.config')
 
@@ -402,7 +419,7 @@ module.exports = with{{ PRODUCT }}(
 
 Finally, you will need to update your `{{ CONFIG_FILE }}` to [includeFiles](/guides/edgio_config#includefiles) where the locale files are stored. Example using the default of `/public`:
 
-```js
+```js filename='{{ CONFIG_FILE }}' ins={3-5}
 module.exports = {
   connector: '{{ PACKAGE_NAME }}/next',
   includeFiles: {
@@ -412,6 +429,21 @@ module.exports = {
 ```
 
 A working example app can be found [here](https://github.com/layer0-docs/layer0-next-i18n-example).
+
+## Image optimizer {/*image-optimizer*/}
+
+By default, Next.js image optimizer is replaced by our image optimizer, which is available in all build modes. You can disable it and use the built-in Next image optimizer instead by adding `disableImageOptimizer: true` to the `{{ CONFIG_FILE }}` file. 
+
+```js filename='{{ CONFIG_FILE }}' ins={3}
+module.exports = {
+  /* ... */
+  disableImageOptimizer: true
+};
+```
+
+<Callout type="info">
+Note that Next.js apps built in serverless mode don't include a Next.js image optimizer. Disabling our image optimizer without providing an alternative may cause them to fail. 
+</Callout>
 
 ## Serverless Bundling {/*serverless-bundling*/}
 

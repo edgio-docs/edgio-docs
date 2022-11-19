@@ -25,7 +25,8 @@ The following request headers are required:
 
 #### Body {/*body*/}
 
-Provide the following parameters as JSON in the post body:
+Provide the following parameters as JSON in the post body.
+Note that only one of the optional arguments can be passed at a time, for example `paths` and `surrogateKeys` cannot be cleared at once.
 
 ```json
 {
@@ -33,7 +34,8 @@ Provide the following parameters as JSON in the post body:
   "site": "the site name",
   "environment": "the environment name",
   "paths": ["Optional. An array of paths to clear. Use * as a wildcard."],
-  "surrogateKeys": ["Optional. An array of surrogate keys to clear"]
+  "surrogateKeys": ["Optional. An array of surrogate keys to clear"],
+  "cacheHashes": ["Optional. An array of cache hashes to clear"]
 }
 ```
 

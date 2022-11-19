@@ -71,7 +71,12 @@ The default `routes.js` file created by `{{ FULL_CLI_NAME }} init` sends all req
 // You should commit this file to source control.
 const { Router } = require('{{ PACKAGE_NAME }}/core/router')
 const { sanityRoutes } = require('{{ PACKAGE_NAME }}/sanity-studio')
-export default new Router().use(sanityRoutes)
+
+export default new Router()
+  // Prevent search engine bot(s) from indexing
+  // Read more on: {{ DOCS_URL }}/guides/cookbook#blocking-search-engine-crawlers
+  .noIndexPermalink()
+  .use(sanityRoutes)
 ```
 
 ## Running Locally {/*running-locally*/}

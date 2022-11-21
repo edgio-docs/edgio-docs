@@ -17,6 +17,10 @@ When requesting data via HTTP from the {{ PRODUCT_NAME }} servers, browsers incl
 * `gzip` for all versions
 * `br` (Brotli) for versions >= `4.11.0`
 
+### Implications on Caching {/*implications-on-caching*/}
+
+`accept-encoding` header is taken into account for splitting the cache by default. Expect different cache(s) for different accept-encoding header(s) for otherwise an identical request.
+
 ### Gzip compression support {/*gzip-compression-support*/}
 
 Gzip is supported in the following ways:

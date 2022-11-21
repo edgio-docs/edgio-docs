@@ -118,10 +118,10 @@ if (process.env.NODE_ENV === 'production') {
 
 and to include the service worker in the app, edit `main.js` (in the `src` folder) as follows:
 
-```diff
+```js ins={3}
 import { createApp } from 'vue'
 import App from './App.vue'
-+ import './registerServiceWorker'
+import './registerServiceWorker'
 
 createApp(App).mount('#app')
 ```

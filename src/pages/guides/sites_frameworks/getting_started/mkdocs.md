@@ -57,9 +57,14 @@ The default `routes.js` file created by `{{ FULL_CLI_NAME }} init` sends all req
 ```js
 // This file was automatically added by {{ FULL_CLI_NAME }} deploy.
 // You should commit this file to source control.
+
 const { Router } = require('{{ PACKAGE_NAME }}/core/router')
 const { mkdocsRoutes } = require('{{ PACKAGE_NAME }}/mkdocs')
-export default new Router().use(mkdocsRoutes)
+
+export default new Router()
+  // Prevent search engines from indexing permalink URLs
+  .noIndexPermalink()
+  .use(mkdocsRoutes)
 ```
 
 ## Running Locally {/*running-locally*/}

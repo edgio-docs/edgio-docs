@@ -3,6 +3,7 @@ const PRODUCT_NAME = 'Edgio';
 const PRODUCT = 'Edgio';
 const PRODUCT_LEGACY = 'Layer0';
 const PRODUCT_EDGE = 'Performance';
+const PRODUCT_APPLICATIONS = 'App Platform';
 const PRODUCT_PLATFORM = 'Sites';
 const PRODUCT_SECURITY = 'Security';
 const PRODUCT_NAME_LOWER = PRODUCT.toLowerCase();
@@ -120,6 +121,7 @@ module.exports = {
   COMPANY_NAME,
   PRODUCT,
   PRODUCT_LEGACY,
+  PRODUCT_APPLICATIONS,
   PRODUCT_EDGE,
   PRODUCT_PLATFORM,
   PRODUCT_SECURITY,

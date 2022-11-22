@@ -77,6 +77,7 @@ function Accordion({
                         alt={route.icon}
                         width="16px"
                         height="16px"
+                        priority
                       />
                     </div>
                     <div id="light-theme">
@@ -85,6 +86,7 @@ function Accordion({
                         alt={route.icon}
                         width="16px"
                         height="16px"
+                        priority
                       />
                     </div>
                   </div>
@@ -333,6 +335,7 @@ export default function SideNav() {
                         alt={link.icon}
                         width="16px"
                         height="16px"
+                        priority
                       />
                     </div>
                   </div>

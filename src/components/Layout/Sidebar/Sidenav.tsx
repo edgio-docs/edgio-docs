@@ -1,8 +1,7 @@
-/* eslint-disable @next/next/no-img-element */
-import cn from 'classnames';
+import Image from 'next/image';
 import Link from 'next/link';
 import {useRouter} from 'next/router';
-import React, {Fragment, useEffect, useState, memo} from 'react';
+import React, {Fragment, useState} from 'react';
 import useCollapse from 'react-collapsed';
 import {CgExternal} from 'react-icons/cg';
 import {GoChevronRight} from 'react-icons/go';
@@ -73,7 +72,7 @@ function Accordion({
                 {depth === 0 && (
                   <div className="icons">
                     <div id="dark-theme">
-                      <img
+                      <Image
                         src={`/icons/${route.icon}.svg`}
                         alt={route.icon}
                         width="16px"
@@ -81,7 +80,7 @@ function Accordion({
                       />
                     </div>
                     <div id="light-theme">
-                      <img
+                      <Image
                         src={`/icons/${route.icon}-dark.svg`}
                         alt={route.icon}
                         width="16px"
@@ -320,15 +319,16 @@ export default function SideNav() {
                   rel="noopener noreferrer">
                   <div className="icons">
                     <div id="dark-theme">
-                      <img
+                      <Image
                         src={`/icons/${link.icon}.svg`}
                         alt={link.icon}
                         width="16px"
                         height="16px"
+                        priority
                       />
                     </div>
                     <div id="light-theme">
-                      <img
+                      <Image
                         src={`/icons/${link.icon}-dark.svg`}
                         alt={link.icon}
                         width="16px"

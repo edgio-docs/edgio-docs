@@ -3,10 +3,10 @@ export default [
   ['/guides/starter', '/guides/traditional_sites'],
   ['/guides/debugging', '/guides/troubleshooting'],
   ['/guides/deploying', '/guides/deploy_apps'],
-  [
-    '/guides/getting_started',
-    /* outdated? '/guides/build_web_apps'*/ '/guides/webapp_cdn_getting_started',
-  ],
+  // [
+  //   '/guides/getting_started',
+  //   /* outdated? '/guides/build_web_apps'*/ '/guides/webapp_cdn_getting_started',
+  // ],
 
   // sidenav updates
   ['/guides/webapp_cdn_getting_started', '/guides/getting_started_performance'],

@@ -67,6 +67,7 @@ const StyledDocs = styled.div`
       padding-left: 24px;
       list-style: square;
       margin-bottom: 0.8rem;
+      overflow: hidden;
     }
 
     .article-ol__list {

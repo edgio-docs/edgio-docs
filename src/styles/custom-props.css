@@ -38,8 +38,8 @@
   --text-link-primary: var(--toc-text-link);
   --hr-primary: #d8d8d8;
   --hr-secondary: #e3e8ee;
-  --bg-primary: #f6f6f7;
-  --bg-secondary: var(--colors-white0);
+  --bg-primary: var(00colors-white0);
+  --bg-secondary: #FAFBFB;
   --href-hover-primary: #e5e5e5;
   --copy-code-primary: var(--colors-white0);
   --code-bgColor: #f6f9fc;

@@ -26,7 +26,7 @@ Before you can take advantage of {{ PRODUCT_EDGE }}, {{ PRODUCT_SECURITY }}, and
 -   [An environment.](/guides/basics/environments) An environment allows you to serve your site on different domains. For example, you can create environments for development, staging, and production to which you can deploy builds as they progress through your release workflow. 
 -   [A domain configuration that supports HTTPS.](/guides/basics/domains) In addition to setting up a domain configuration on the desired environment, {{ PRODUCT }} needs to generate a TLS certificate for it. After which, you may update your DNS configuration to point your website's domain to our service. Once your updated DNS configuration takes effect, {{ PRODUCT }} will serve your production traffic.
 
-![setup](/images/basics/setup-overview.png?width=450)
+![setup](/images/basics/setup-overview.png)
 
 Once you have set up a basic configuration, you are ready to take full advantage of our {{ PRODUCT_APPLICATIONS }}:
 

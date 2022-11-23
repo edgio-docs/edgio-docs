@@ -66,33 +66,34 @@ function HomepageHero() {
         <div className="copy">
           <div id="dark-theme">
             <Image
-              src="/images/home/l0-to-edgio-light.webp"
+              src="/images/home/edgio-hero-dark.webp"
               alt="Layer0 is now Edgio Applications"
-              width={286}
-              height={230}
+              width={296}
+              height={142}
               priority={true}
               unoptimized
             />
           </div>
           <div id="light-theme">
             <Image
-              src="/images/home/l0-to-edgio-dark.webp"
+              src="/images/home/edgio-hero-light.webp"
               alt="Layer0 is now Edgio Applications"
-              width={286}
-              height={230}
+              width={296}
+              height={142}
               priority={true}
               unoptimized
             />
           </div>
           <p>
+            Learn more about the exciting changes&nbsp;
             <Link href="https://investors.edg.io/news/press-releases/news-details/2022/Limelight-Completes-Acquisition-of-Yahoos-Edgecast-Combined-Company-Rebrands-as-Edgio-Creating-a-Global-Leader-in-Edge-Enabled-Solutions/default.aspx">
-              Learn more.
+              here.
             </Link>
           </p>
           <p className="subheadline">
-            Edgio Applications is an Internet-scale platform that makes it easy
-            for teams to build, release, protect, and accelerate their web apps
-            and APIs.
+            Edgio Docs offers you in-depth information on our technical
+            documentation to begin implementing Edgio within your product
+            workflow.
           </p>
         </div>
       </Container>

@@ -53,7 +53,6 @@ function GetStartedCard({
 
 const StyledGetStarted = styled.div`
   line-height: 1.3;
-  margin-top: 50px;
 
   display: grid;
   row-gap: 20px;

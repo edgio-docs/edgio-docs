@@ -11,9 +11,6 @@ import VideosandTutorials from '../Home/VideosandTutorials';
 import {IconSpark} from '../Icon/IconSpark';
 import Container from '../Layout/Container';
 
-import AddtlDocs from 'components/Home/AdditionalDocs';
-import {IconBook} from 'components/Icon';
-
 const StyledHomepageFeatures = styled.div`
   padding-bottom: 500px;
 
@@ -60,10 +57,6 @@ export default function HomepageFeatures() {
         <GetStarted>
           <SectionHeader Icon={IconSpark} title="Get Started" />
         </GetStarted>
-
-        <AddtlDocs>
-          <SectionHeader Icon={IconBook} title="Additional Documentation" />
-        </AddtlDocs>
 
         <Cdn />
         <div className="grouped-col__2">

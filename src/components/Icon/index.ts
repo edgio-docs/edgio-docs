@@ -95,9 +95,4 @@ export * from './IconVueStorefront';
 export * from './IconWebAppCDN';
 export * from './IconZola';
 
-export {
-  FaArrowsAlt as IconEdgecast,
-  FaGlobe as IconLimelight,
-  FaRegPlayCircle as IconUplynk,
-  FaWordpress as IconWordPress,
-} from 'react-icons/fa';
+export {FaWordpress as IconWordPress} from 'react-icons/fa';

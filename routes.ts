@@ -6,7 +6,7 @@ import semverMaxSatisfying from 'semver/ranges/max-satisfying';
 
 import {archiveRoutes} from './layer0/plugins/ArchiveRoutes';
 import redirects from './layer0/redirects';
-import prerenderRequests from './prerender';
+// import prerenderRequests from './layer0/prerender';
 
 const key = new CustomCacheKey().excludeAllQueryParametersExcept('query');
 
@@ -80,7 +80,7 @@ const connectSrcDomains = [
 ].sort();
 
 const router = new Router()
-  //  .prerender(prerenderRequests)
+  // .prerender(prerenderRequests)
   .noIndexPermalink()
   // having no eid cookie will default to __xdn__
   .match('/__xdn__/:path*', ({redirect}) => redirect('/__edgio__/:path*'))

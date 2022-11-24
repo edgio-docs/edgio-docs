@@ -16,19 +16,19 @@ This guide describes caveats and limits of {{ PRODUCT_NAME }} platform as applie
 
 | Type                                                  | Limit                 | Description                                                                                                                                                                           |
 | ----------------------------------------------------- | --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Response time from origin server                      | 60 seconds            | The maximum number of seconds that {{ PRODUCT }} will wait for a response from an origin server (e.g., your web server). The response for a request that exceeds this limit is a `531 Project Upstream Connection Error`. <br /><br /><Callout type="warning">Requests that exceed this limit should return a [536 Project HTTP Response Timeout](status_codes#536). We will update our service to return this status code instead of a `531 Project Upstream Connection Error` response in the near future. </Callout>  |
+| Response time from origin server                      | 60 seconds            | The maximum number of seconds that {{ PRODUCT }} will wait for a response from an origin server (e.g., your web server). The response for a request that exceeds this limit is a `531 Project Upstream Connection Error`. <br /><br /><Callout type="warning">Requests that exceed this limit should return a [536 Project HTTP Response Timeout](](/guides/performance/response#status-codes#536). We will update our service to return this status code instead of a `531 Project Upstream Connection Error` response in the near future. </Callout>  |
 | Response body size from static                        | 2Gb                   | The maximum size of a response body of {{ PRODUCT_NAME }} static assets.                                                                                                              |
 | Response body size from custom origin                 | 2Gb                   | The maximum size of a response body from a custom origin.                                                                                                                             |
 | Response body size from {{ PRODUCT_NAME }} serverless | 4.5Mb                   | The maximum size of a response body from {{ PRODUCT_NAME }} serverless.                                                                                                               |
 | Path and query string size                            | 8Kb                   | The maximum bytes (not characters) that {{ PRODUCT_NAME }} will accept in path and query string.                                                                                      |
 | Cookie size                                           | 32Kb                  | The maximum bytes that {{ PRODUCT_NAME }} will accept in request or response cookies.                                                                                                 |
 | HTTP header size                                      | 64Kb                  | The maximum bytes that {{ PRODUCT_NAME }} will accept in request or response HTTP headers.                                                                                            |
-| HTTP header count                                     | 70                    | The maximum number of developer-controlled headers {{ PRODUCT_NAME }} will accept in HTTP request or response. Exceeding this will result in 542 [status code](/guides/status_codes). |
-| Scheduling timeout                                    | 60 seconds            | The number of seconds {{ PRODUCT_NAME }} will try to schedule a request processing before timing out. Exceeding this will result in 541 [status code](/guides/status_codes).          |
-| Worker timeout                                        | 20 seconds            | The number of seconds {{ PRODUCT_NAME }} will wait for project code to process the request before timing out. Exceeding this will result in 539 [status code](/guides/status_codes).  |
+| HTTP header count                                     | 70                    | The maximum number of developer-controlled headers {{ PRODUCT_NAME }} will accept in HTTP request or response. Exceeding this will result in 542 [status code](/guides/performance/response#status-codes). |
+| Scheduling timeout                                    | 60 seconds            | The number of seconds {{ PRODUCT_NAME }} will try to schedule a request processing before timing out. Exceeding this will result in 541 [status code](/guides/performance/response#status-codes).          |
+| Worker timeout                                        | 20 seconds            | The number of seconds {{ PRODUCT_NAME }} will wait for project code to process the request before timing out. Exceeding this will result in 539 [status code](/guides/performance/response#status-codes).  |
 | Prerender concurrency                                 | 200                   |
 | Total number of prerendered requests                  | 25,000 per deployment |
-| Maximum number of nested requests                     | 3                     | "Nested" means an {{ PRODUCT_NAME }} site is the upstream of itself or of another {{ PRODUCT_NAME }} site. Exceeding this will result in 538 [status code](/guides/status_codes).     |
+| Maximum number of nested requests                     | 3                     | "Nested" means an {{ PRODUCT_NAME }} site is the upstream of itself or of another {{ PRODUCT_NAME }} site. Exceeding this will result in 538 [status code](/guides/performance/response#status-codes).     |
 
 ### Access Logs {/*access-logs*/}
 
@@ -218,14 +218,14 @@ manipulating files based on user requests. For example, storing user uploaded fi
 before proceeding. But this can open up security vulnerabilities where a bug in the application can be used to modify
 the application itself.
 
-So, as a best practice {{ PRODUCT_NAME }} App Platform does not allow you to change the content of application files on
+So, as a best practice {{ PRODUCT_NAME }} {{ PRODUCT_PLATFORM }} does not allow you to change the content of application files on
 the filesystem during runtime. If you need to modify an application file, you must make those changes locally and make
 a new deployment. This limits the attack surface of your potential application vulnerabilities. It also allows us to
 make your application more distributed and resilient to outages. {{ PRODUCT_NAME }} takes your application code and
 deploys it to multiple regions with a read-only filesystem. This way, if the primary availability zone or region is
 unavailable, your application will still be accessible from another region.
 
-{{ PRODUCT_NAME }} App Platform runs your application in `/var/task` directory. If you attempt to write a file in that
+{{ PRODUCT_NAME }} {{ PRODUCT_PLATFORM }} runs your application in `/var/task` directory. If you attempt to write a file in that
 directory, you may come across an error like the following:
 ```
 EROFS: read-only file system, open '/var/task/temp-upload.jpg'

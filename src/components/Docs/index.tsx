@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import {Toc} from '../Layout/Toc';
 
 import DiscourseDiscuss from './DiscourseDiscuss';
-import DocsPagination from './DocsPagination';
 import EditPage from './EditPage';
 
 import {siteConfig} from 'siteConfig';
@@ -23,10 +22,12 @@ const StyledDocs = styled.div`
   }
 
   .docs-article__header {
-    padding: 32px 0 16px;
+    padding: 18px 0 16px;
     display: flex;
     align-items: baseline;
     justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
   }
 
   .docs-article__header-icons {
@@ -221,7 +222,6 @@ export default function Docs({
           <div className="docs-article__body">{children}</div>
         </article>
         <EditPage />
-        <DocsPagination />
       </div>
       <Toc headings={tocHeadings} />
     </StyledDocs>

@@ -13,13 +13,13 @@ export const StyledCustomPre = styled.div`
   .code-block__inner {
     display: flex;
     flex-direction: column;
-    background: #1a1a1a;
-    border: 2px solid #363636;
+    background: #181717;
+    border: 2px solid #2a2b2c;
     border-radius: 8px;
   }
 
   .code-block__header {
-    border-bottom: 2px solid #363636;
+    border-bottom: 2px solid #2a2b2c;
     border-top-right-radius: 4px;
     border-top-left-radius: 4px;
     padding: 6px 6px 6px 8px;
@@ -35,9 +35,8 @@ export const StyledCustomPre = styled.div`
     }
 
     .code-block__filename {
-      background-color: #363636;
+      background-color: var(--hr-secondary);
       border-radius: 4px;
-      border: 1px solid #1a1a1a;
       padding-top: 5px;
       padding-left: 9px;
       padding-right: 9px;

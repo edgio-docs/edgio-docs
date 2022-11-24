@@ -37,14 +37,15 @@ const StyledDocsFooter = styled.footer`
     }
   }
 
-  /* margin-top: 50px; */
   color: var(--docs-footer-color);
   bottom: 0;
   position: absolute;
   width: 100%;
+  display: grid;
+  row-gap: 10px;
 
   .footer-start {
-    background-color: var(--bg-primary);
+    background-color: var(--bg-secondary);
   }
 
   .footer-end {
@@ -53,7 +54,7 @@ const StyledDocsFooter = styled.footer`
 
   .footer-start,
   .footer-end {
-    box-shadow: inset 0px 2px var(--hr-secondary);
+    border-radius: 4px;
   }
 
   .footer-start__nav {

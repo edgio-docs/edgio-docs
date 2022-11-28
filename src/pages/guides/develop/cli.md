@@ -93,7 +93,7 @@ Creates a script that provides autocompletion for {{ PRODUCT_NAME }} CLI command
 
 ### curl {/*curl*/}
 
-Uses `curl` to make a request to the specified URL, highlighting Edgio-specific telemetry information.
+Uses `curl` to make a request to the specified URL, highlighting Edgio-specific telemetry information. See [Response](/guides/performance/response) for more information around response headers and telemetry values.
 
 #### Options {/*options*/}
 

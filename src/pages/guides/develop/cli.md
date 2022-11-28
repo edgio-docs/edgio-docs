@@ -91,6 +91,28 @@ Creates a script that provides autocompletion for {{ PRODUCT_NAME }} CLI command
 {{ FULL_CLI_NAME }} completion >> ~/.bashrc
 ```
 
+### curl {/*curl*/}
+
+Uses `curl` to make a request to the specified URL, highlighting Edgio-specific telemetry information.
+
+#### Options {/*options*/}
+
+| Name          | Description                                                                                                                                      |
+|---------------|--------------------------------------------------------------------------------------------------------------------------------------------------|
+| `--json`      | Return JSON format only                                                                                                                          |
+| `--debug`     | Run in verbose mode. This has no effect when using with `--json` option.                                                                         |
+| `--save-body` | Whether to save the response body. This will output tmp file path where the body was stored. This has no effect when using with `--json` option. |
+| `--show-body` | Whether to output body in response.                                                                                                              |
+| `--help`      | Shows additional (less common) options.                                                                                                          |
+
+#### Example {/*example*/}
+
+```bash
+{{ FULL_CLI_NAME }} curl https://docs.edg.io
+```
+
+![{{ FULL_CLI_NAME }} curl example](/images/cli/curl.png)
+
 ### deploy {/*deploy*/}
 
 Builds and deploys your site on {{ PRODUCT_NAME }}.

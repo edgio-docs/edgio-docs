@@ -35,7 +35,7 @@ export const StyledCustomPre = styled.div`
     }
 
     .code-block__filename {
-      background-color: var(--hr-secondary);
+      background-color: var(--colors-blue0);
       border-radius: 4px;
       padding-top: 5px;
       padding-left: 9px;

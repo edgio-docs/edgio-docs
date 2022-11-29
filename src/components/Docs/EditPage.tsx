@@ -71,6 +71,7 @@ const IGNORE_PAGES = ['/guides/changelog'];
 
 export default function EditPage({as = 'link'}: {as?: 'icon' | 'link'}) {
   const router = useRouter();
+  const editHref = `${baseURL}${router.pathname}.md`;
 
   if (IGNORE_PAGES.includes(router.route)) {
     return null;
@@ -79,11 +80,7 @@ export default function EditPage({as = 'link'}: {as?: 'icon' | 'link'}) {
   if (as === 'icon') {
     return (
       <StyledEditIcon>
-        <a
-          target="_blank"
-          href={`${baseURL}${router.asPath}.md`}
-          rel="noreferrer"
-          title={title}>
+        <a target="_blank" href={editHref} rel="noreferrer" title={title}>
           <IconGitHub />
         </a>
       </StyledEditIcon>
@@ -92,10 +89,7 @@ export default function EditPage({as = 'link'}: {as?: 'icon' | 'link'}) {
 
   return (
     <StyledEditLink>
-      <a
-        target="_blank"
-        href={`${baseURL}${router.asPath}.md`}
-        rel="noreferrer">
+      <a target="_blank" href={editHref} rel="noreferrer">
         <IconExternalLink />
         {title}
       </a>

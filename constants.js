@@ -79,7 +79,7 @@ const INSTALL_CLI = `## Install the ${PRODUCT_NAME} CLI {/*install-the-cli*/}
 
 If you have not already done so, install the [${PRODUCT_NAME} CLI](/guides/develop/cli).
 
-With \`npm\`: 
+With \`npm\`:
 \`\`\`bash
 npm i -g ${PACKAGE_NAME}/cli
 \`\`\`
@@ -102,7 +102,7 @@ const INSTALL_CLI_STEP = `Install the ${PRODUCT_NAME} CLI
 
 If you have not already done so, install the [${PRODUCT_NAME} CLI](/guides/develop/cli).
 
-With \`npm\`: 
+With \`npm\`:
 \`\`\`bash
 npm i -g ${PACKAGE_NAME}/cli
 \`\`\`

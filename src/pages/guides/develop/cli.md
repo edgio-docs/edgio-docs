@@ -99,7 +99,7 @@ Uses `curl` to make a request to the specified URL, highlighting Edgio-specific 
 
 | Name          | Description                                                                                                                                      |
 |----------------|---------------------------------------------------------------------------------------------------------------------------------------------------|
-| `--json`      | Return JSON format instead of curl output [default: false]                                                                                       |
+| `--json`      | Outputs the response variables in JSON format, including telemetry data, headers, cookies, and the body (if using `--show-body`) [default: false]                                                                                       |
 | `--debug`     | Run in verbose mode. This has no effect when using with `--json` option.                                                                         |
 | `--save-body` | Whether to save the response body. This will output tmp file path where the body was stored. This has no effect when using with `--json` option. |
 | `--show-body` | Whether to output response body in response. [default: false]                                                                                    |
@@ -107,12 +107,9 @@ Uses `curl` to make a request to the specified URL, highlighting Edgio-specific 
 
 #### Example {/*example*/}
 
-```bash
-{{ FULL_CLI_NAME }} curl https://docs.edg.io
-```
+```bash diff highlight={1,11,25-30}
+➜  ~ {{ FULL_CLI_NAME }} curl https://docs.edg.io
 
-```bash diff
-➜  ~ edgio curl https://docs.edg.io
 URL :  https://docs.edg.io/ 🔗
 From:  127.0.0.1:57412 🖥️
 To  :  208.69.180.12:443 🌎
@@ -121,7 +118,7 @@ HTTP/2 200
 Response Headers
   accept-ranges: bytes
   age: 321609
-+  cache-control: private, no-store, no-cache
+  cache-control: private, no-store, no-cache
   content-length: 389815
   content-security-policy: default-src 'self'; style-src 'unsafe-inline' 'self' fonts.googleapis.com cdn.jsdelivr.net; font-src fonts.gstatic.com; img-src 'self' www.google-analytics.com analytics.twitter.com www.facebook.com px.ads.linkedin.com *.intercomcdn.com tr.lfeeder.com data: *.moovweb.net; frame-src www.youtube.com youtu.be player.vimeo.com; script-src 'unsafe-inline' 'self' 'unsafe-eval' *.clarity.ms *.google-analytics.com *.googletagmanager.com *.hotjar.com cdn.jsdelivr.net cdn.segment.com cdn4.mxpnl.com connect.facebook.net googletagmanager.com js.intercomcdn.com player.vimeo.com px4.ads.linkedin.com s.adroll.com sc.lfeeder.com snap.licdn.com widget.intercom.io www.google-analytics.com www.googletagmanager.com www.youtube.com; base-uri 'self'; frame-ancestors 'self'; media-src www.youtube.com; connect-src *.algolia.net *.algolianet.com *.clarity.ms *.edg.io *.github.io *.google-analytics.com *.googletagmanager.com *.intercom.io *.intercomassets.com *.intercomcdn.com *.layer0-limelight.link *.layer0-perma.link *.layer0.co *.layer0.link *.segment.com *.segment.io *.vimeo.com analytics.google.com googletagmanager.com vimeo.com
   content-type: text/html
@@ -135,12 +132,12 @@ Response Headers
   strict-transport-security: max-age=31536000; includeSubDomains; preload
   vary: accept-encoding, user-agent
   via: 1.1 varnish (Varnish/6.6), HTTP/1.1 Layer0
-+  x-0-cache-hash: bbd8d015dfd26d59408cef5c6d927011298f67e6b11ca4d5316d69482104e853
-+  x-0-caching-status: ok
-+  x-0-components: eh=1.0.9,c=5.0.3,e=hef,ec=1.9.8,gd=1.4.5,p=1.31.11,b=static
-+  x-0-status: eh=200,gd=200,p=200
-+  x-0-t: eh=3,ect=2,ecc=hit
-+  x-0-version: 2881 5.0.3 18 2022-11-24T00:58:26.355Z 1.7.3
+  x-0-cache-hash: bbd8d015dfd26d59408cef5c6d927011298f67e6b11ca4d5316d69482104e853
+  x-0-caching-status: ok
+  x-0-components: eh=1.0.9,c=5.0.3,e=hef,ec=1.9.8,gd=1.4.5,p=1.31.11,b=static
+  x-0-status: eh=200,gd=200,p=200
+  x-0-t: eh=3,ect=2,ecc=hit
+  x-0-version: 2881 5.0.3 18 2022-11-24T00:58:26.355Z 1.7.3
   x-request-id: 9f3925df1594aa7872f3620725f123d9d4491327
   x-xss-protection: 1; mode=block
 

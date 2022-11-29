@@ -249,6 +249,66 @@ Here is a sample log file highlighting the WAF data ("waf":"botLib,flagged","waf
 
 ![WAF Log File Example](/images/security/log.jpg?width=700 'WAF Log File Example')
 
+## Access Control by IP Address {/*access-control-by-ip-address*/}
+
+Restrict access to your website on a per environment basis through an IP address access control list. This type of access control list determines the set of traffic that will either be automatically allowed or blocked based off the client's IPv4 address. 
+
+**Key information:**
+
+-   This type of access control list only controls access to your site within the current environment. You must define rules for each environment that you would like to secure by IP address.
+-   Add a rule for each desired IP address or IP block. Specify each desired IP address using standard IPv4 and CIDR notation.
+-   Specify a subnet by appending a slash (/) and the desired bit-length of the prefix (e.g., 11.22.33.0/22).
+-   Adding a rule to the **Allowed IPs** section means that traffic from that IP address or IP block will always be allowed. 
+
+    <Callout type="tip">
+
+      Block all traffic except for the IP addresses and IP blocks defined within the **Allowed IPs** section by adding a rule to the **Blocked IPs** section for `0.0.0.0/0`.
+
+    </Callout>
+
+-   Adding a rule to the **Blocked IPs** means that traffic from that IP address or IP block will always be blocked. 
+
+**To manage an IP address access control list**
+
+1.  From the {{ PORTAL }}, load the desired property.
+2.  From within the **Environments** tab, click on the desired environment.
+3.  From within the **Configuration** tab, find the **Access Control List** section and then click **Edit ACL**.
+4.  Perform one or more of the following actions:
+
+    -   **Add Allowed IP(s):** 
+        1.  From the **Allowed IPs** section, click **Add rule**. 
+        2.  In the **IP/CIDR** option, type the IPv4 address or IP block that will be allowed access within this environment.
+        3.  Optional. In the **Description** option, provide a reason for why this IPv4 address or IP block should always be allowed access.
+    -   **Add Blocked IP(s):**
+        1.  From the **Blocked IPs** section, click **Add rule**. 
+        2.  In the **IP/CIDR** option, type the IPv4 address or IP block that will be always be blocked within this environment.
+        3.  Optional. In the **Description** option, provide a reason for why this IPv4 address or IP block should always be blocked.
+    -   **Delete Rule:** Click <img data-inline-img src="/images/icons/delete.png" alt="Delete icon" /> next to the rule that should be deleted.
+
+5.  Click **Save changes**.
+
+## Geoblocking {/*geoblocking*/}
+
+Restrict access to your website on a per environment basis through a country access control list. This type of access control list restricts traffic to the set of allowed countries. 
+
+<Callout type="info">
+
+  An access control list takes precedence over geoblocking. For example, a request from a blocked country is allowed when the client's IP address satisfies a rule defined within the **Allowed IPs** section.
+
+</Callout>
+
+**To manage geoblocking**
+
+1.  From the {{ PORTAL }}, load the desired property.
+2.  From within the **Environments** tab, click on the desired environment.
+3.  From within the **Configuration** tab, find the **Geoblocking** section and then click **Edit Geoblocking**.
+4.  Perform one or more of the following actions:
+
+    -   **Block:** From the **Allowed countries** list, select one or more countries and then click **Block >**.
+    -   **Allow:** From the **Blocked countries** list, select one or more countries and then click **< Allow**.
+
+5.  Click **Save changes**.
+
 ## Website Security with EdgeJS {/*website-security-with-edgejs*/}
 
 ### Content Security Policy (CSP) {/*content-security-policy-csp*/}

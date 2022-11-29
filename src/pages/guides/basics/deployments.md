@@ -96,6 +96,7 @@ on:
 
 jobs:
   deploy-to-edgio:
+    name: Deploy to Edgio
     # cancels the deployment for the automatic merge push created when tagging a release
     if: contains(github.ref, 'refs/tags') == false || github.event_name == 'release'
     runs-on: ubuntu-latest

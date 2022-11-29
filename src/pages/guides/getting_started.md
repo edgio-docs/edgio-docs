@@ -69,8 +69,10 @@ Signing up for an {{ PRODUCT }} account is free and quick.
 
 1.  [Sign up now by either:]({{ APP_URL }}/signup) 
 
-    -   Providing your name, user name, and a password. After which, check your email for confirmation instructions. Click **CONFIRM MY ACCOUNT** to load the {{ PRODUCT }} Developer console.
-    -   Using your existing Github or Google credentials.
+    -   Manually creating an account.
+        1.   Provide your name, email (user name), and a password. Click **Create Account**.
+        2.   Check your email for confirmation instructions. Click **CONFIRM MY ACCOUNT** to load the {{ PRODUCT }} Developer console.
+    -   Using your existing Github or Google account. You will need to log in to Github or Google and then authorize linking Edgio to your account.
 
 2.  Click **Accept** to accept our terms of service and privacy policy.
 

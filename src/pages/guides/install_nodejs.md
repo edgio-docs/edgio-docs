@@ -2,7 +2,7 @@
 title: Install Node.js and npm
 ---
 
-{{ PRODUCT }} requires Node v{{ NODE_VERSION }}. Although you may use higher version of Node, your app will run in Node v{{ NODE_VERSION }} when deployed to {{ PRODUCT_NAME }}. Therefore, we strongly recommend that you use Node v{{ NODE_VERSION }} when developing your web application.
+{{ PRODUCT }} requires Node v{{ NODE_VERSION }}. Although you may use a higher version of Node, your app will run in Node v{{ NODE_VERSION }} when deployed to {{ PRODUCT_NAME }}. Therefore, we strongly recommend that you use Node v{{ NODE_VERSION }} when developing your web application.
 
 ## Node Installation {/*node-installation*/}
 

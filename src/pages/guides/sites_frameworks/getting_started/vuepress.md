@@ -33,9 +33,9 @@ yarn dev
 ## Configuring your VuePress app for {{ PRODUCT }} {/*configuring-your-vuepress-app-for*/}
 
 ### Update package.json {/*update-packagejson*/}
-```diff
--		            "build": "vuepress build src",
-+		            "build": "vuepress build src -d=public",
+```json del={1} ins={2}
+"build": "vuepress build src",
+"build": "vuepress build src -d=public",
 ```
 
 ### Initialize your project {/*initialize-your-project*/}

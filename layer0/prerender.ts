@@ -2,7 +2,7 @@ import {join} from 'path';
 
 import {existsSync, readFileSync, readJsonSync} from 'fs-extra';
 
-import JSONRoutes from './src/utils/jsonRoutes';
+import routes from '../src/data/nav.json';
 
 const buildIdPath = join(process.cwd(), '.next', 'BUILD_ID');
 const nextRoutesManifestPath = join(
@@ -16,9 +16,9 @@ export default async function prerenderRequests() {
     {path: '/'},
     {path: '/guides/changelog'},
 
-    ...JSONRoutes.routes.map(({path}) => ({
-      path,
-    })),
+    // ...JSONRoutes.routes.map(({path}) => ({
+    //   path,
+    // })),
   ].filter(Boolean);
 
   if (existsSync(buildIdPath)) {
@@ -33,3 +33,18 @@ export default async function prerenderRequests() {
 
   return requests;
 }
+
+// function getPathsFromJson(data) {
+//   const paths = [];
+//   const {path, routes} = data;
+
+//   function getRoutes(path, routes) {
+//     if (path) {
+//       paths.push(path);
+//     }
+//   }
+
+//   getRoutes(path, routes);
+
+//   return paths;
+// }

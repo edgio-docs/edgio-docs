@@ -20,7 +20,7 @@ title: Sites (Frameworks)
 
 <a id="layer0-platform-caveats"></a>
 
-## {{ PRODUCT_NAME }} Platform Caveats {/*platform-caveats*/}
+## Caveats {/*platform-caveats*/}
 
 ### NodeJS native extensions {/*nodejs-native-extensions*/}
 

@@ -77,44 +77,23 @@ This framework has a connector developed for {{ PRODUCT_NAME }}. See [Connectors
 
 ## Setup a Project {/*setup-a-project*/}
 
-Create your project using {{ PRODUCT_NAME }}'s create module:
+Create a project through the following command:
 
 ```bash
-npm create {{ STARTER_NAME }}@latest
+  npx {{ PACKAGE_NAME }}/cli@latest init \
+	--name <DOMAIN> \
+	--environment default \
+	--origin <DOMAIN> \
+	--deploy
 ```
 
-The {{ PRODUCT_NAME }} create module will prompt you for the following information:
+Replace `<DOMAIN>` with your website's domain when running the above command.
 
-- Name: Give your project name.
-- Template: Select the `Default template` option.
-- Hostname: Enter the domain of the origin server that {{ PRODUCT_NAME }} will be accelerating.
-- Package manager: Pick `npm` unless you have strong preference and experience with `yarn`. This guide will assume `npm`.
+<Callout type="tip">
 
-Refer to the [{{ CONFIG_FILE }}](/guides/basics/edgio_config) guide for more details
+  If possible, try to run the above command from your website's root directory.
 
-Here's an example output from running {{ PRODUCT_NAME }} create:
-
-```bash
-npm create {{ STARTER_NAME }}@latest
-npx: installed 170 in 10.375s
-✔ Enter a name for your app … my-app
-✔ Select an app template › Default traditional site template
-✔ Enter the hostname for the origin site (e.g. domain.com) … origin.site.com
-✔ Which package manager would you like to use? › npm
-✔ Downloading Default traditional site {{ PRODUCT_NAME }} template... done.
-✔ Installing dependencies... done.
-
-{{ PRODUCT_NAME }} app created! Run the following to start your app in development mode:
-
-cd my-app
-npm start
-
-To deploy your app on {{ PRODUCT_NAME }}, run:
-
-npm run deploy
-
-$
-```
+</Callout>
 
 ### Project Structure {/*project-structure*/}
 

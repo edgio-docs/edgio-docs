@@ -3,6 +3,7 @@ const PRODUCT_NAME = 'Edgio';
 const PRODUCT = 'Edgio';
 const PRODUCT_LEGACY = 'Layer0';
 const PRODUCT_EDGE = 'Performance';
+const PRODUCT_APPLICATIONS = 'App Platform';
 const PRODUCT_PLATFORM = 'Sites';
 const PRODUCT_SECURITY = 'Security';
 const PRODUCT_NAME_LOWER = PRODUCT.toLowerCase();
@@ -78,7 +79,7 @@ const INSTALL_CLI = `## Install the ${PRODUCT_NAME} CLI {/*install-the-cli*/}
 
 If you have not already done so, install the [${PRODUCT_NAME} CLI](/guides/develop/cli).
 
-With \`npm\`: 
+With \`npm\`:
 \`\`\`bash
 npm i -g ${PACKAGE_NAME}/cli
 \`\`\`
@@ -101,7 +102,7 @@ const INSTALL_CLI_STEP = `Install the ${PRODUCT_NAME} CLI
 
 If you have not already done so, install the [${PRODUCT_NAME} CLI](/guides/develop/cli).
 
-With \`npm\`: 
+With \`npm\`:
 \`\`\`bash
 npm i -g ${PACKAGE_NAME}/cli
 \`\`\`
@@ -120,6 +121,7 @@ module.exports = {
   COMPANY_NAME,
   PRODUCT,
   PRODUCT_LEGACY,
+  PRODUCT_APPLICATIONS,
   PRODUCT_EDGE,
   PRODUCT_PLATFORM,
   PRODUCT_SECURITY,

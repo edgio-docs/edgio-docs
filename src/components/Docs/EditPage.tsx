@@ -65,7 +65,7 @@ const StyledEditIcon = styled.div`
   }
 `;
 
-const baseURL = `https://github.com/${DOCS_REPO}/edit/main/src/pages`;
+const baseURL = `https://github.com/${DOCS_REPO}/edit/main_v4/src/pages`;
 const title = 'Edit this guide on GitHub';
 const IGNORE_PAGES = ['/guides/changelog'];
 

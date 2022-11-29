@@ -98,12 +98,12 @@ Uses `curl` to make a request to the specified URL, highlighting Edgio-specific 
 #### Options {/*options*/}
 
 | Name          | Description                                                                                                                                      |
-|---------------|--------------------------------------------------------------------------------------------------------------------------------------------------|
-| `--json`      | Return JSON format only                                                                                                                          |
+|----------------|---------------------------------------------------------------------------------------------------------------------------------------------------|
+| `--json`      | Return JSON format instead of curl output [default: false]                                                                                       |
 | `--debug`     | Run in verbose mode. This has no effect when using with `--json` option.                                                                         |
 | `--save-body` | Whether to save the response body. This will output tmp file path where the body was stored. This has no effect when using with `--json` option. |
-| `--show-body` | Whether to output body in response.                                                                                                              |
-| `--help`      | Shows additional (less common) options.                                                                                                          |
+| `--show-body` | Whether to output response body in response. [default: false]                                                                                    |
+| `--help`      | View help information for options to the curl command.                                                                                           |
 
 #### Example {/*example*/}
 
@@ -111,7 +111,60 @@ Uses `curl` to make a request to the specified URL, highlighting Edgio-specific 
 {{ FULL_CLI_NAME }} curl https://docs.edg.io
 ```
 
-![{{ FULL_CLI_NAME }} curl example](/images/cli/curl.png)
+```bash diff
+➜  ~ edgio curl https://docs.edg.io
+URL :  https://docs.edg.io/ 🔗
+From:  127.0.0.1:57412 🖥️
+To  :  208.69.180.12:443 🌎
+
+HTTP/2 200
+Response Headers
+  accept-ranges: bytes
+  age: 321609
++  cache-control: private, no-store, no-cache
+  content-length: 389815
+  content-security-policy: default-src 'self'; style-src 'unsafe-inline' 'self' fonts.googleapis.com cdn.jsdelivr.net; font-src fonts.gstatic.com; img-src 'self' www.google-analytics.com analytics.twitter.com www.facebook.com px.ads.linkedin.com *.intercomcdn.com tr.lfeeder.com data: *.moovweb.net; frame-src www.youtube.com youtu.be player.vimeo.com; script-src 'unsafe-inline' 'self' 'unsafe-eval' *.clarity.ms *.google-analytics.com *.googletagmanager.com *.hotjar.com cdn.jsdelivr.net cdn.segment.com cdn4.mxpnl.com connect.facebook.net googletagmanager.com js.intercomcdn.com player.vimeo.com px4.ads.linkedin.com s.adroll.com sc.lfeeder.com snap.licdn.com widget.intercom.io www.google-analytics.com www.googletagmanager.com www.youtube.com; base-uri 'self'; frame-ancestors 'self'; media-src www.youtube.com; connect-src *.algolia.net *.algolianet.com *.clarity.ms *.edg.io *.github.io *.google-analytics.com *.googletagmanager.com *.intercom.io *.intercomassets.com *.intercomcdn.com *.layer0-limelight.link *.layer0-perma.link *.layer0.co *.layer0.link *.segment.com *.segment.io *.vimeo.com analytics.google.com googletagmanager.com vimeo.com
+  content-type: text/html
+  date: Thu, 24 Nov 2022 22:20:15 GMT
+  etag: "efb94304e92947a7e4732c90b8a4d58f"
+  last-modified: Thu, 24 Nov 2022 00:58:08 GMT
+  server-timing: layer0-cache;desc="HIT-L1", edge_pop;desc=hef, country;desc=US, xrj;desc="%7B%22path%22%3A%22%2F%22%7D"
+  set-cookie: layer0_bucket=3; SameSite=Lax; Path=/; Max-Age=2147483647; HttpOnly
+  set-cookie: layer0_destination=default; SameSite=Strict; Path=/
+  set-cookie: layer0_environment_id_info=1162d006-8a69-4f5b-b8a9-545d801291cd; SameSite=Strict; Path=/
+  strict-transport-security: max-age=31536000; includeSubDomains; preload
+  vary: accept-encoding, user-agent
+  via: 1.1 varnish (Varnish/6.6), HTTP/1.1 Layer0
++  x-0-cache-hash: bbd8d015dfd26d59408cef5c6d927011298f67e6b11ca4d5316d69482104e853
++  x-0-caching-status: ok
++  x-0-components: eh=1.0.9,c=5.0.3,e=hef,ec=1.9.8,gd=1.4.5,p=1.31.11,b=static
++  x-0-status: eh=200,gd=200,p=200
++  x-0-t: eh=3,ect=2,ecc=hit
++  x-0-version: 2881 5.0.3 18 2022-11-24T00:58:26.355Z 1.7.3
+  x-request-id: 9f3925df1594aa7872f3620725f123d9d4491327
+  x-xss-protection: 1; mode=block
+
+Edgio Version
+  Build Number        2881
+  Package Version     5.0.3
+
+Edgio Telemetry
+  Edge POP total time of                                 3ms (eh)
+  Edge POP Varnish total time of                         2ms (ect)
+  Edge POP caching status                                hit (ecc)
+
+   DNS Lookup   TCP Connection   TLS Handshake   Server Processing   Content Transfer
+[    327ms    |      27ms      |     43ms      |       52ms        |       95ms       ]
+              |                |               |                   |                  |
+    namelookup:327ms           |               |                   |                  |
+                        connect:353ms          |                   |                  |
+                                    pretransfer:396ms              |                  |
+                                                      starttransfer:449ms             |
+                                                                                  total:543ms
+
+Response Body
+  Disabled. To enable use EDGIO_CURL_SAVE_BODY=true or EDGIO_CURL_SHOW_BODY=true
+```
 
 ### deploy {/*deploy*/}
 

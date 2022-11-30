@@ -232,7 +232,6 @@ import { Router } from '{{ PACKAGE_NAME }}/core/router';
 import { nextRoutes } from '{{ PACKAGE_NAME }}/next';
 
 export default new Router()
-
   .get('/service-worker.js', ({cache, serveStatic}) => {
     cache({
       edge: {
@@ -253,7 +252,6 @@ import { Router } from '{{ PACKAGE_NAME }}/core/router';
 import { nextRoutes, renderNextPage } from '{{ PACKAGE_NAME }}/next';
 
 export default new Router()
-
   .match(
     {
       path: '/:path*',

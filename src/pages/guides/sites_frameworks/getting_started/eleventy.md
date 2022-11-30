@@ -73,7 +73,6 @@ Update `routes.js` at the root of your project to the following:
 import {Router} from '{{ PACKAGE_NAME }}/core/router';
 
 export default new Router()
-
   // Create serveStatic route for each file in the folder _site with a cache-control header of 's-maxage=315360000'
   .static('_site')
 ```

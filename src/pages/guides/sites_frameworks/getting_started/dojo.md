@@ -58,7 +58,6 @@ Update `routes.ts` at the root of your project to the following:
 import { Router } from '{{ PACKAGE_NAME }}/core/router'
 
 export default new Router()
-
   // Create serveStatic route for each file inside the dist folder with a cache-control header of 's-maxage=315360000'
   .static('output/dist')
   .fallback(({ appShell }) => {

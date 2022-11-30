@@ -88,7 +88,6 @@ const ONE_DAY = 24 * ONE_HOUR
 const { Router } = require('@{{ PACKAGE_NAME }}/core/router')
 
 module.exports = new Router()
-
   .match('/', ({ cache }) => {
     cache({
       edge: {

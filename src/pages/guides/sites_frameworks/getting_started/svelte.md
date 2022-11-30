@@ -148,7 +148,6 @@ Replace the `routes.js` file that was created during `{{ FULL_CLI_NAME }} init` 
 const { Router } = require('{{ PACKAGE_NAME }}/core/router')
 
 module.exports = new Router()
-
   
   // Send requests to static assets in the build output folder `public`
   .static('public')

@@ -266,7 +266,6 @@ import { Router } from '{{ PACKAGE_NAME }}/core/router'
 import { angularRoutes } from '{{ PACKAGE_NAME }}/angular'
 
 export default new Router()
-
   .use(angularRoutes)
 ```
 

@@ -79,7 +79,6 @@ const { Router } = require('{{ PACKAGE_NAME }}/core/router')
 const { gatsbyRoutes } = require('{{ PACKAGE_NAME }}/gatsby')
 
 module.exports = new Router()
-
   .use(gatsbyRoutes)
 ```
 

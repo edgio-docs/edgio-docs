@@ -187,7 +187,6 @@ const { Router } = require('{{ PACKAGE_NAME }}/core/router')
 const { nuxtRoutes, renderNuxtPage } = require('{{ PACKAGE_NAME }}/nuxt')
 
 module.exports = new Router()
-
   .use(nuxtRoutes)
 ```
 

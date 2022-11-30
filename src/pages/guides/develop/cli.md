@@ -97,17 +97,17 @@ Uses `curl` to make a request to the specified URL, highlighting Edgio-specific 
 
 #### Options {/*options*/}
 
-| Name          | Description                                                                                                                                      |
-|----------------|---------------------------------------------------------------------------------------------------------------------------------------------------|
-| `--json`      | Outputs the response variables in JSON format, including telemetry data, headers, cookies, and the body (if using `--show-body`) [default: false]                                                                                       |
-| `--debug`     | Run in verbose mode. This has no effect when using with `--json` option.                                                                         |
-| `--save-body` | Whether to save the response body. This will output tmp file path where the body was stored. This has no effect when using with `--json` option. |
-| `--show-body` | Whether to output response body in response. [default: false]                                                                                    |
-| `--help`      | View help information for options to the curl command.                                                                                           |
+| Name          | Description                                                                                                                                       |
+|----------------|----------------------------------------------------------------------------------------------------------------------------------------------------|
+| `--json`      | Outputs the response variables in JSON format, including telemetry data, headers, cookies, and the body (if using `--show-body`) [default: false] |
+| `--debug`     | Run in verbose mode. This has no effect when using with `--json` option.                                                                          |
+| `--save-body` | Writes the response body to a temporary file path which is set in the output. This has no effect when using with `--json` option.                 |
+| `--show-body` | Prints the response body in the output. [default: false]                                                                                          |
+| `--help`      | View help information for options to the curl command.                                                                                            |
 
 #### Example {/*example*/}
 
-```bash diff highlight={1,11,25-30}
+```bash
 ➜  ~ {{ FULL_CLI_NAME }} curl https://docs.edg.io
 
 URL :  https://docs.edg.io/ 🔗

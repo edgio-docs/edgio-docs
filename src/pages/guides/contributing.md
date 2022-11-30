@@ -185,9 +185,7 @@ You may highlight various lines of code by specifying line number ranges within 
 
 ```js ins={1-3,8-10} 
   new Router()
-  // Prevent search engine bot(s) from indexing
-  // Read more on: {{ DOCS_URL }}/guides/cookbook#blocking-search-engine-crawlers
-  .noIndexPermalink()
+
   .get('/pages/c/:categoryId', ({ cache }) => {
     cache({
       browser: {
@@ -207,9 +205,7 @@ To highlight lines based on a diff, mark lines with a leading `+`/`-` and specif
 
 ```js diff
   new Router()
-  // Prevent search engine bot(s) from indexing
-  // Read more on: {{ DOCS_URL }}/guides/cookbook#blocking-search-engine-crawlers
-  .noIndexPermalink()
+
   .get('/pages/c/:categoryId', ({ cache }) => {
     cache({
 +      browser: {

@@ -88,9 +88,7 @@ const ONE_DAY = 24 * ONE_HOUR
 const { Router } = require('@{{ PACKAGE_NAME }}/core/router')
 
 module.exports = new Router()
-  // Prevent search engine bot(s) from indexing
-  // Read more on: {{ DOCS_URL }}/guides/cookbook#blocking-search-engine-crawlers
-  .noIndexPermalink()
+
   .match('/', ({ cache }) => {
     cache({
       edge: {

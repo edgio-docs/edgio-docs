@@ -232,9 +232,7 @@ import { Router } from '{{ PACKAGE_NAME }}/core/router';
 import { nextRoutes } from '{{ PACKAGE_NAME }}/next';
 
 export default new Router()
-  // Prevent search engine bot(s) from indexing
-  // Read more on: {{ DOCS_URL }}/guides/cookbook#blocking-search-engine-crawlers
-  .noIndexPermalink()
+
   .get('/service-worker.js', ({cache, serveStatic}) => {
     cache({
       edge: {
@@ -255,9 +253,7 @@ import { Router } from '{{ PACKAGE_NAME }}/core/router';
 import { nextRoutes, renderNextPage } from '{{ PACKAGE_NAME }}/next';
 
 export default new Router()
-  // Prevent search engine bot(s) from indexing
-  // Read more on: {{ DOCS_URL }}/guides/cookbook#blocking-search-engine-crawlers
-  .noIndexPermalink()
+
   .match(
     {
       path: '/:path*',
@@ -328,9 +324,7 @@ imagine you have `/pages/p/[productId].js`. Here's how you can SSR responses as 
 
 ```js filename='routes.js' ins={6-14,16-28}
 new Router()
-  // Prevent search engine bot(s) from indexing
-  // Read more on: {{ DOCS_URL }}/guides/cookbook#blocking-search-engine-crawlers
-  .noIndexPermalink()
+
   // Products - SSR
   .get('/p/:productId', ({cache}) => {
     cache({

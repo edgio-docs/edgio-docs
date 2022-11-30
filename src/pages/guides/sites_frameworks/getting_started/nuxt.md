@@ -187,9 +187,7 @@ const { Router } = require('{{ PACKAGE_NAME }}/core/router')
 const { nuxtRoutes, renderNuxtPage } = require('{{ PACKAGE_NAME }}/nuxt')
 
 module.exports = new Router()
-  // Prevent search engine bot(s) from indexing
-  // Read more on: {{ DOCS_URL }}/guides/cookbook#blocking-search-engine-crawlers
-  .noIndexPermalink()
+
   .use(nuxtRoutes)
 ```
 

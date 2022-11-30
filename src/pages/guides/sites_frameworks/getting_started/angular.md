@@ -78,9 +78,7 @@ The easiest way to add edge caching to your Angular app is to add caching routes
 
 ```js ins={5-16}
 new Router()
-  // Prevent search engine bot(s) from indexing
-  // Read more on: {{ DOCS_URL }}/guides/cookbook#blocking-search-engine-crawlers
-  .noIndexPermalink()
+
   .get('/pages/c/:categoryId', ({ cache }) => {
     cache({
       browser: {

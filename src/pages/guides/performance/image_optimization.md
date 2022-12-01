@@ -14,6 +14,12 @@ Images that use the following file formats are eligible for processing:
 
 ` jpg | jpeg | png | webp`
 
+<Callout type="info">
+
+  {{ PRODUCT }} delivers the source image when attempting to process an image that uses an unsupported file format.
+
+</Callout>
+
 ## Query String Parameters {/*query-string-parameters*/}
 Use the following query string parameters to identify an image and the set of optimizations that will be applied to it:
 

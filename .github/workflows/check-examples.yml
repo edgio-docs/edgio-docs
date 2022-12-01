@@ -1,0 +1,13 @@
+name: Validate Example Sites
+on:
+  schedule:
+    - cron: '0 0 * * *'
+  workflow_dispatch:
+jobs:
+  issue:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Validate Guide Example Links
+        shell: bash
+        run: node ./scripts/validateExampleLinks.js

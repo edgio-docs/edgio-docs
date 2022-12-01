@@ -21,6 +21,10 @@ Migrate from version 5.x to 6 through the following steps:
 
 TODO: JWT Support has been removed https://app.clickup.com/t/4205457/APPOPS-15740
 
+### .noIndexPermalink() has been deprecated
+
+Router function `.noIndexPermalink()` has been depreacated. Please remove it from your router.js file. We are now automatically excluding any perma links from search engines. If you would like to index some permalinks see [these](/guides/performance/cdn_as_code/common_routing_patterns#blocking-search-engine-crawlers) instructions. 
+
 ## Migration Complete {/*migration-complete*/}
 
 Congratulations on successfully migrating {{ PRODUCT }} to version 6!

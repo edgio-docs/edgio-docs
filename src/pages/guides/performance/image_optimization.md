@@ -37,9 +37,9 @@ Optional:
 
 Quality example: `https://opt.moovweb.net?quality=30&img=<SOURCE IMAGE URL>`
 
-https://opt.moovweb.net?quality=30&img=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F6%2F68%2FGrass_dsc08672-nevit.jpg%2F2560px-Grass_dsc08672-nevit.jpg
+https://opt.moovweb.net?quality=30&img=https://docs.edg.io/images/performance/product-apps-image_optimization.png
 
 Height example: `https://opt.moovweb.net?height=300&img=<SOURCE IMAGE URL>`
 
-https://opt.moovweb.net?height=300&img=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F6%2F68%2FGrass_dsc08672-nevit.jpg%2F2560px-Grass_dsc08672-nevit.jpg
+https://opt.moovweb.net?height=300&img=https://docs.edg.io/images/performance/product-apps-image_optimization.png
 

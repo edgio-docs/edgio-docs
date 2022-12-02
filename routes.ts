@@ -82,14 +82,6 @@ const connectSrcDomains = [
 const router = new Router()
   // .prerender(prerenderRequests)
   .noIndexPermalink()
-  .match('/test-cache', ({send, cache}) => {
-    cache({
-      edge: {
-        maxAgeSeconds: 1000,
-      },
-    });
-    send('cache');
-  })
   // having no eid cookie will default to __xdn__
   .match('/__xdn__/:path*', ({redirect}) => redirect('/__edgio__/:path*'))
   // having layer0_eid cookie will point to __layer0__

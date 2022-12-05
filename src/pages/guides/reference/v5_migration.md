@@ -95,7 +95,7 @@ For each site, rename remaining references to {{ PRODUCT }} packages from `@laye
 
 <Callout type="important">
 
-  There may be additional `@layer0/*` dependencies listed in your site's `package.json` file that are not listed above. They too should be updated to `{{ PACKAGE_NAME }}/*`. There should be no remaining `@layer/*` references in the file.
+  There may be additional `@layer0/*` dependencies listed in your site's `package.json` file that are not listed above. They too should be updated to `{{ PACKAGE_NAME }}/*`. There should be no remaining `@layer0/*` references in the file.
 
 </Callout>
 

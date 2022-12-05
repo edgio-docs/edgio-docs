@@ -6,7 +6,7 @@ Learn about reserved request headers and how requests are routed through our ser
 
 ## Request Flow {/*request-flow*/}
 
-{{ PRODUCT }} routes requests according to traffic type.
+{{ PRODUCT }} routes requests according to traffic type and whether the request is eligible for caching.
 
 -   **Standard Traffic:** By default, requests are routed to an origin server through an edge POP (L1) and a global POP (L2). This behavior maximizes cache hits and shields your origin servers by funneling all cache misses through a global POP. 
 
@@ -17,11 +17,26 @@ Learn about reserved request headers and how requests are routed through our ser
     {{ PRODUCT }} is optimized for performance and therefore always routes requests to the closest POP. If a global POP is the closest POP to a client, then {{ PRODUCT }} will treat it as an edge and global POP. This means that cache misses on that POP are sent directly to the origin server as illustrated below.
 
     ![](/images/overview/request-flow-edge.png)
+
+    [View image.](/images/overview/request-flow-edge.png)
+
+    Another performance optimization occurs for routes on which you have disabled caching. {{ PRODUCT }} bypassses global POPs for those requests and sends them directly to your origin servers. 
+
+    ![](/images/overview/request-flow-edge-disabled-caching.png)
+
+    [View image.](/images/overview/request-flow-edge-disabled-caching.png)
+
 -   **Serverless Compute:** {{ PRODUCT }} routes Serverless Compute requests similar to standard traffic. However, cache misses are forwarded to a [Serverless Compute](/guides/performance/serverless_compute) load balancer which distributes requests to a Serverless Compute Lambda worker.
 
     ![](/images/overview/request-flow-serverless-compute.png)
 
     [View image.](/images/overview/request-flow-serverless-compute.png)
+
+    {{ PRODUCT }} also optimizes Serverless Compute routes on which you have disabled caching. {{ PRODUCT }} bypassses global POPs for those requests and sends them directly to a Serverless Compute load balancer.
+
+    ![](/images/overview/request-flow-serverless-compute-disabled-caching.png)
+
+    [View image.](/images/overview/request-flow-serverless-compute-disabled-caching.png)
 
 ### POP Components {/*pop-components*/}
 
@@ -86,3 +101,4 @@ These values are provided as a best effort. {{ PRODUCT_NAME }} cannot guarantee 
 ### Static prerendering headers {/*static-prerendering-headers*/}
 
 - `{{ HEADER_PREFIX }}-preload`: Will be "1" if the request originated from [Static Prerendering](/guides/static_prerendering). Otherwise this header will not be present.
+

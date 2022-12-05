@@ -24,13 +24,12 @@ In order to simplify this migration, we have split Node.js version 16 support fr
 
 Migrate from version 4.x to 5 through the following steps:
 
-- [Step 1: Upgrade the {{ PRODUCT }} CLI {/*upgrade-the-cli*/}](#step-1-upgrade-the--product--cli-upgrade-the-cli)
-- [Step 2: Rename layer0.config.js {/*rename-layer0configjs*/}](#step-2-rename-layer0configjs-rename-layer0configjs)
-- [Step 3: Rename {{ PRODUCT }} Packages {/*rename-packages*/}](#step-3-rename--product--packages-rename-packages)
-- [Step 4: Install Dependencies {/*install-dependencies*/}](#step-4-install-dependencies-install-dependencies)
-- [Step 5: Update Scripts that Reference the {{ PRODUCT }} CLI {/*update-scripts-that-reference-the-cli*/}](#step-5-update-scripts-that-reference-the--product--cli-update-scripts-that-reference-the-cli)
-- [Optional: Review Your Code for Duplicate Query String Parameters {/*optional-review-your-code-for-duplicate-query-string-parameters*/}](#optional-review-your-code-for-duplicate-query-string-parameters-optional-review-your-code-for-duplicate-query-string-parameters)
-- [Migration Complete {/*migration-complete*/}](#migration-complete-migration-complete)
+1.  [Upgrade the {{ PRODUCT }} CLI.](#upgrade-the-cli)
+2.  [Rename layer0.config.js.](#rename-layer0configjs)
+3.  [Rename {{ PRODUCT }} packages.](#rename-packages)
+4.  [Install dependencies.](#install-dependencies)
+5.  [Update scripts that reference the {{ PRODUCT }} CLI.](#update-scripts-that-reference-the-cli)
+6.  [Optional: Review your code for duplicate query string parameters.](#optional-review-your-code-for-duplicate-query-string-parameters)
 
 ## Step 1: Upgrade the {{ PRODUCT }} CLI {/*upgrade-the-cli*/}
  
@@ -47,7 +46,6 @@ npm install -g @edgio/cli
 ```bash
 yarn global add @edgio/cli
 ```
-
 
 ## Step 2: Rename layer0.config.js {/*rename-layer0configjs*/}
 

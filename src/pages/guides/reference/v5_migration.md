@@ -29,7 +29,8 @@ Migrate from version 4.x to 5 through the following steps:
 3.  [Rename {{ PRODUCT }} packages.](#rename-packages)
 4.  [Install dependencies.](#install-dependencies)
 5.  [Update scripts that reference the {{ PRODUCT }} CLI.](#update-scripts-that-reference-the-cli)
-6.  [Optional: Review your code for duplicate query string parameters.](#optional-review-your-code-for-duplicate-query-string-parameters)
+6.  [Ignore {{ PRODUCT }} Build Artifacts](#ignore-build-artifacts)
+7.  [Optional: Review your code for duplicate query string parameters.](#optional-review-your-code-for-duplicate-query-string-parameters)
 
 ## Step 1: Upgrade the {{ PRODUCT }} CLI {/*upgrade-the-cli*/}
  
@@ -160,6 +161,16 @@ yarn install
 ## Step 5: Update Scripts that Reference the {{ PRODUCT }} CLI {/*update-scripts-that-reference-the-cli*/}
 
 Update all references to the {{ PRODUCT }} CLI within your `package.json` scripts from `0 | layer0` to either `{{ CLI_NAME }}` or `{{ FULL_CLI_NAME }}`.
+
+## Step 6: Ignore {{ PRODUCT }} Build Artifacts {/*ignore-build-artifacts*/}
+
+To exclude build artifacts from being tracked in version control, update your `.gitignore` file with the following:
+
+```bash filename=".gitignore"
+...
+# Edgio generated build directory
+.edgio
+```
 
 ## Optional: Review Your Code for Duplicate Query String Parameters {/*optional-review-your-code-for-duplicate-query-string-parameters*/}
 

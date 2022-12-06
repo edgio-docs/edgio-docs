@@ -20,8 +20,7 @@ title: {{ PRODUCT }} Version 6 Migration Guide
 
     </Callout>
 
-*   npm version 8
-*   Updating your application(s) to be compatible with Node.js version 16 and npm version 8. 
+*   Updating your application(s) to be compatible with Node.js version 16. 
 
 <Callout type="info">
 
@@ -32,7 +31,7 @@ title: {{ PRODUCT }} Version 6 Migration Guide
 Migrate from version 5.x to 6 through the following steps:
 
 1.  [Upgrade the {{ PRODUCT }} CLI.](#upgrade-the-cli)
-2.  [Upgrade Node.js and npm.](#upgrade-node-js-and-npm)
+2.  [Upgrade Node.js.](#upgrade-node-js)
 3.  [Use version 6 of our {{ PRODUCT }} packages.](#use-packages-version-6)
 4.  [Install dependencies.](#install-dependencies)
 5.  [Build your {{ PRODUCT }} properties](#build-your-properties)
@@ -54,19 +53,13 @@ npm install -g @edgio/cli
 yarn global add @edgio/cli
 ```
 
-## Step 2: Upgrade Node.js and npm {/*upgrade-node-js-and-npm*/}
+## Step 2: Upgrade Node.js {/*upgrade-node-js*/}
 
 {{ PRODUCT }} version 6 runs your apps in Node.js v16. Therefore, we strongly recommend that you use Node.js v16.x when developing your web application. 
 
 [Learn how to use nvm to install Node.js v16.x.](/guides/install_nodejs)
 
-<Callout type="info">
-
-  The Node.js v16.x installation includes npm.
-
-</Callout>
-
-Once you are using Node.js v16, update your application code to be compatible with Node.js v16 and npm 8.
+Once you are using Node.js v16, update your application code to be compatible with Node.js v16.
 
 ## Step 3: Use {{ PRODUCT }} Packages Version 6 {/*use-packages-version-6*/}
 
@@ -132,13 +125,13 @@ Build each of your {{ PRODUCT }} properties by running the following command in 
 
 ```
 
-If you encounter a build issue as a result of upgrading Node.js and npm, then you should perform one or more of the following troubleshooting steps:
+If you encounter a build issue as a result of upgrading Node.js, then you should perform one or more of the following troubleshooting steps:
 
 1.  Check whether you have defined a different Node.js or npm version in either a npm config file (`.npmrc`) or within `package.json`. If so, update it to the correct version and then run `{{ FULL_CLI_NAME }} build` to rebuild your {{ PRODUCT }} property. 
 
     <Callout type="tip">
 
-      Run `node --version` and `npm --version` to check the version for Node.js and npm, respectively. These commands should return `16.x.x` (e.g., `16.18.0`) for Node.js and `8.x.x` (e.g., `8.19.2`) for npm. Use this version information when updating `.npmrc` or `package.json`. 
+      Run `node --version` to check the Node.js version that you are currently using. This command should return `16.x.x` (e.g., `16.18.0`). Use this version information when updating `.npmrc` or `package.json`. 
 
     </Callout>
 

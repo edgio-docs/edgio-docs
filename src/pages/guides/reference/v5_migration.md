@@ -60,7 +60,7 @@ For each site, rename `layer0.config.js` to `edgio.config.js`.
 
 ## Step 3: Rename {{ PRODUCT }} Packages {/*rename-packages*/}
 
-For each site, rename remaining references to {{ PRODUCT }} packages from `@layer0` to `{{ PACKAGE_NAME }}`.
+For each site, rename all references to {{ PRODUCT }} packages from `@layer0` to `{{ PACKAGE_NAME }}`.
 
 -   **package.json:** In addition to renaming the remaining {{ PRODUCT }} packages, you should also set their version to `^5.0.0`.
 

@@ -17,9 +17,15 @@ title: Install Node.js and npm
 
 ## Node version managers {/*node-version-managers*/}
 
-If you are using multiple versions of Node.js consider installing a Node version manager like [nvm](https://github.com/nvm-sh/nvm) or [n](https://www.npmjs.com/package/n).
+1.  Install nvm by running the following command:
+    ```bash
+    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.2/install.sh | bash
+    ```
 
-Quick node install with `nvm` or `n`
+2.   Verify that you have successfully installed nvm by running the following command:
+    ```bash
+    command -v nvm
+    ```
 
 ```bash
 # nvm
@@ -28,13 +34,17 @@ nvm install 16
 n install 16
 ```
 
+4.  Instruct nvm to use Node v{{ NODE_VERSION }} by running the following command:
+    ```bash
+    nvm use {{ NODE_VERSION }}
+    ```
+
 ## Package managers {/*package-managers*/}
 
 [npm](https://www.npmjs.com/) is a package manager integrated into Node.
 
 [yarn](https://classic.yarnpkg.com/en/docs/cli/) is another very popular package manager.
 
-## Node.js installation {/*nodejs-installation*/}
 
 Download and install it from the official [Node.js v{{ NODE_VERSION }} downloads](https://nodejs.org/dist/latest-v{{ NODE_VERSION }}/) page. Select the download that matches your operating system and run the installer. Note that the installer for Node.js will also install npm.
 

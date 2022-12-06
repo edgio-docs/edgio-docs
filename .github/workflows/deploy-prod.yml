@@ -15,12 +15,12 @@ jobs:
         uses: styfle/cancel-workflow-action@0.9.1
         with:
           access_token: ${{ github.token }}
-      - uses: actions/checkout@v1
-      - uses: actions/setup-node@v1
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
         with:
           node-version: 14
       - name: Cache node modules
-        uses: actions/cache@v1
+        uses: actions/cache@v3
         env:
           cache-name: cache-node-modules
         with:
@@ -30,6 +30,6 @@ jobs:
             ${{ runner.os }}-build-${{ env.cache-name }}-
             ${{ runner.os }}-build-
             ${{ runner.os }}-
-      - run: yarn
+      - run: yarn --frozen-lockfile
       - name: Deploy to docs.edg.io (prod)
         run: yarn edgio:deploy --branch=$BRANCH_NAME --token=${{secrets.layer0_prod_deploy_token}} --environment=production

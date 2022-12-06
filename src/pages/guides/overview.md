@@ -60,7 +60,7 @@ export default nextJSApp => {
 
 ## High Availability {/*high-availability*/}
 
-{{ PRODUCT_NAME }} provides high availability (HA) in all of its components. You can choose a particular [region](regions) of the world in which your API servers are located. {{ PRODUCT_NAME }} will provision two data centers closest to it, connecting them with automatic DNS failover. HA is also provided within the data centers themselves, with all individual processes being (at least) duplicated and sharing the traffic load among themselves. This in-depth HA architecture minimizes the chances of loss of traffic.
+{{ PRODUCT_NAME }} provides high availability (HA) in all of its components. You can choose a particular [region](/guides/performance#high-availability) of the world in which your API servers are located. {{ PRODUCT_NAME }} will provision two data centers closest to it, connecting them with automatic DNS failover. HA is also provided within the data centers themselves, with all individual processes being (at least) duplicated and sharing the traffic load among themselves. This in-depth HA architecture minimizes the chances of loss of traffic.
 
 ## Productivity {/*productivity*/}
 

@@ -13,7 +13,7 @@ const StyledHomepageHero = styled.div`
   background-repeat: no-repeat;
   background-position: bottom right;
   background-size: contain;
-  color: var(--homepagehero-color);
+  border-radius: 4px;
 
   .section-container {
     display: grid;
@@ -67,7 +67,7 @@ function HomepageHero() {
           <div id="dark-theme">
             <Image
               src="/images/home/l0-to-edgio-light.webp"
-              alt="Layer0 is now Edgio AppOps"
+              alt="Layer0 is now Edgio Applications"
               width={286}
               height={230}
               priority={true}
@@ -77,7 +77,7 @@ function HomepageHero() {
           <div id="light-theme">
             <Image
               src="/images/home/l0-to-edgio-dark.webp"
-              alt="Layer0 is now Edgio AppOps"
+              alt="Layer0 is now Edgio Applications"
               width={286}
               height={230}
               priority={true}
@@ -89,11 +89,11 @@ function HomepageHero() {
               Learn more.
             </Link>
           </p>
-          <h1 className="subheadline">
-            Edgio AppOps is an Internet-scale platform that makes it easy for
-            teams to build, release, protect, and accelerate their web apps and
-            APIs.
-          </h1>
+          <p className="subheadline">
+            Edgio Applications is an Internet-scale platform that makes it easy
+            for teams to build, release, protect, and accelerate their web apps
+            and APIs.
+          </p>
         </div>
       </Container>
     </StyledHomepageHero>

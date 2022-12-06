@@ -14,6 +14,7 @@ import {siteConfig} from 'siteConfig';
 
 // Universal loading page (used in dynamically imported components) which contains the wrapper of each page
 
+import '../styles/code.css';
 import '../styles/algolia.css';
 import '../styles/custom-props.css';
 import '../styles/nprogress.css';

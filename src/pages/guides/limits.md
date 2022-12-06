@@ -16,19 +16,19 @@ This guide describes caveats and limits of {{ PRODUCT_NAME }} platform as applie
 
 | Type                                                  | Limit                 | Description                                                                                                                                                                           |
 | ----------------------------------------------------- | --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Response time from origin server                      | 60 seconds            | The maximum number of seconds that {{ PRODUCT }} will wait for a response from an origin server (e.g., your web server). The response for a request that exceeds this limit is a `531 Project Upstream Connection Error`. <br /><br /><Callout type="warning">Requests that exceed this limit should return a [536 Project HTTP Response Timeout](status_codes#536). We will update our service to return this status code instead of a `531 Project Upstream Connection Error` response in the near future. </Callout>  |
+| Response time from origin server                      | 60 seconds            | The maximum number of seconds that {{ PRODUCT }} will wait for a response from an origin server (e.g., your web server). The response for a request that exceeds this limit is a `531 Project Upstream Connection Error`. <br /><br /><Callout type="warning">Requests that exceed this limit should return a [536 Project HTTP Response Timeout](](/guides/performance/response#status-codes#536). We will update our service to return this status code instead of a `531 Project Upstream Connection Error` response in the near future. </Callout>  |
 | Response body size from static                        | 2Gb                   | The maximum size of a response body of {{ PRODUCT_NAME }} static assets.                                                                                                              |
 | Response body size from custom origin                 | 2Gb                   | The maximum size of a response body from a custom origin.                                                                                                                             |
-| Response body size from {{ PRODUCT_NAME }} serverless | 6Mb                   | The maximum size of a response body from {{ PRODUCT_NAME }} serverless.                                                                                                               |
+| Response body size from {{ PRODUCT_NAME }} serverless | 4.5Mb                   | The maximum size of a response body from {{ PRODUCT_NAME }} serverless.                                                                                                               |
 | Path and query string size                            | 8Kb                   | The maximum bytes (not characters) that {{ PRODUCT_NAME }} will accept in path and query string.                                                                                      |
 | Cookie size                                           | 32Kb                  | The maximum bytes that {{ PRODUCT_NAME }} will accept in request or response cookies.                                                                                                 |
 | HTTP header size                                      | 64Kb                  | The maximum bytes that {{ PRODUCT_NAME }} will accept in request or response HTTP headers.                                                                                            |
-| HTTP header count                                     | 70                    | The maximum number of developer-controlled headers {{ PRODUCT_NAME }} will accept in HTTP request or response. Exceeding this will result in 542 [status code](/guides/status_codes). |
-| Scheduling timeout                                    | 60 seconds            | The number of seconds {{ PRODUCT_NAME }} will try to schedule a request processing before timing out. Exceeding this will result in 541 [status code](/guides/status_codes).          |
-| Worker timeout                                        | 20 seconds            | The number of seconds {{ PRODUCT_NAME }} will wait for project code to process the request before timing out. Exceeding this will result in 539 [status code](/guides/status_codes).  |
+| HTTP header count                                     | 70                    | The maximum number of developer-controlled headers {{ PRODUCT_NAME }} will accept in HTTP request or response. Exceeding this will result in 542 [status code](/guides/performance/response#status-codes). |
+| Scheduling timeout                                    | 60 seconds            | The number of seconds {{ PRODUCT_NAME }} will try to schedule a request processing before timing out. Exceeding this will result in 541 [status code](/guides/performance/response#status-codes).          |
+| Worker timeout                                        | 20 seconds            | The number of seconds {{ PRODUCT_NAME }} will wait for project code to process the request before timing out. Exceeding this will result in 539 [status code](/guides/performance/response#status-codes).  |
 | Prerender concurrency                                 | 200                   |
 | Total number of prerendered requests                  | 25,000 per deployment |
-| Maximum number of nested requests                     | 3                     | "Nested" means an {{ PRODUCT_NAME }} site is the upstream of itself or of another {{ PRODUCT_NAME }} site. Exceeding this will result in 538 [status code](/guides/status_codes).     |
+| Maximum number of nested requests                     | 3                     | "Nested" means an {{ PRODUCT_NAME }} site is the upstream of itself or of another {{ PRODUCT_NAME }} site. Exceeding this will result in 538 [status code](/guides/performance/response#status-codes).     |
 
 ### Access Logs {/*access-logs*/}
 
@@ -68,16 +68,16 @@ Following are the possible fixes that would help you reduce serverless bundle si
 
 Typically, this is due to node_modules marked as `dependencies` when they are more appropriate in `devDependencies` within the `package.json` file. Modules marked as dependencies will be included in the serverless bundle. Dev-only modules such as `babel`, `jest`, `webpack`, etc. should be moved to `devDependencies` as shown:
 
-```diff
+```json del={4-5} ins={8-9}
 "dependencies": {
   "@nuxtjs/sitemap": "2.4.0",
-  "@nuxt/core": "2.15.7"
--   "babel": "7.12.7",
--   "jest": "28.1.3"
-+ },
-+ "devDependencies": {
-+   "babel": "7.12.7",
-+   "jest": "28.1.3"
+  "@nuxt/core": "2.15.7",
+  "babel": "7.12.7",
+  "jest": "28.1.3"
+},
+"devDependencies": {
+  "babel": "7.12.7",
+  "jest": "28.1.3"
 }
 ```
 
@@ -95,11 +95,11 @@ router.get('/assets/:path*', ({ serveStatic }) => {
 
 Now, you can update your code references from importing the assets to referencing the static path, such as:
 
-```diff
-- import myImage from 'public/images/Image1.png'
-...
-- <div><img src={myImage}/></div>
-+ <div><img src="/assets/images/Image1.png"/></div>
+```jsx del={1-2} ins={4}
+import myImage from 'public/images/Image1.png'
+<div><img src={myImage}/></div>
+
+<div><img src="/assets/images/Image1.png"/></div>
 ```
 
 #### Possible Fix [3]: Computing which node_modules be included in the serverless bundle {/*possible-fix-3-computing-which-node_modules-be-included-in-the-serverless-bundle*/}
@@ -153,14 +153,14 @@ setNodeModules()
 
 Step 3. Change your existing `package.json` to have `node setNodeModules.js` before each command as follows:
 
-```diff
-- "{{ PRODUCT_NAME_LOWER }}:dev": "{{ FULL_CLI_NAME }} dev",
-- "{{ PRODUCT_NAME_LOWER }}:build": "{{ FULL_CLI_NAME }} build",
-- "{{ PRODUCT_NAME_LOWER }}:deploy": "{{ FULL_CLI_NAME }} deploy"
+```json del={1-3} ins={5-7}
+"{{ PRODUCT_NAME_LOWER }}:dev": "{{ FULL_CLI_NAME }} dev",
+"{{ PRODUCT_NAME_LOWER }}:build": "{{ FULL_CLI_NAME }} build",
+"{{ PRODUCT_NAME_LOWER }}:deploy": "{{ FULL_CLI_NAME }} deploy"
 
-+ "{{ PRODUCT_NAME_LOWER }}:dev": "node setNodeModules.js && {{ FULL_CLI_NAME }} dev",
-+ "{{ PRODUCT_NAME_LOWER }}:build": "node setNodeModules.js && {{ FULL_CLI_NAME }} build",
-+ "{{ PRODUCT_NAME_LOWER }}:deploy": "node setNodeModules.js && {{ FULL_CLI_NAME }} deploy"
+"{{ PRODUCT_NAME_LOWER }}:dev": "node setNodeModules.js && {{ FULL_CLI_NAME }} dev",
+"{{ PRODUCT_NAME_LOWER }}:build": "node setNodeModules.js && {{ FULL_CLI_NAME }} build",
+"{{ PRODUCT_NAME_LOWER }}:deploy": "node setNodeModules.js && {{ FULL_CLI_NAME }} deploy"
 ```
 
 Step 4. Change your `{{ CONFIG_FILE }}` to have:
@@ -218,14 +218,14 @@ manipulating files based on user requests. For example, storing user uploaded fi
 before proceeding. But this can open up security vulnerabilities where a bug in the application can be used to modify
 the application itself.
 
-So, as a best practice {{ PRODUCT_NAME }} App Platform does not allow you to change the content of application files on
+So, as a best practice {{ PRODUCT_NAME }} {{ PRODUCT_PLATFORM }} does not allow you to change the content of application files on
 the filesystem during runtime. If you need to modify an application file, you must make those changes locally and make
 a new deployment. This limits the attack surface of your potential application vulnerabilities. It also allows us to
 make your application more distributed and resilient to outages. {{ PRODUCT_NAME }} takes your application code and
 deploys it to multiple regions with a read-only filesystem. This way, if the primary availability zone or region is
 unavailable, your application will still be accessible from another region.
 
-{{ PRODUCT_NAME }} App Platform runs your application in `/var/task` directory. If you attempt to write a file in that
+{{ PRODUCT_NAME }} {{ PRODUCT_PLATFORM }} runs your application in `/var/task` directory. If you attempt to write a file in that
 directory, you may come across an error like the following:
 ```
 EROFS: read-only file system, open '/var/task/temp-upload.jpg'

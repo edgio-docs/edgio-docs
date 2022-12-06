@@ -8,7 +8,7 @@ title: {{ PRODUCT }} Version 6 Migration Guide
 
     <Callout type="info">
 
-      If you are using {{ PRODUCT }} version 4.x or earlier, [migrate to version 5](v5_migration) before migrating to version 6.
+      If you are using {{ PRODUCT }} version 4.x or earlier, [migrate to version 5](/guides/reference/v5_migration) before migrating to version 6.
 
     </Callout>
 
@@ -138,7 +138,7 @@ If you encounter a build issue as a result of upgrading Node.js and npm, then yo
 
     <Callout type="tip">
 
-      Run `node --version` and `npm --version` to check the version for Node.js and npm, respectively. These commands should return `16.x.x` (e.g., `16.12.0`) for Node.js and `8.x.x` (e.g., `8.1.0`) for npm. Use this version information when updating `.npmrc` or `package.json`. 
+      Run `node --version` and `npm --version` to check the version for Node.js and npm, respectively. These commands should return `16.x.x` (e.g., `16.18.0`) for Node.js and `8.x.x` (e.g., `8.19.2`) for npm. Use this version information when updating `.npmrc` or `package.json`. 
 
     </Callout>
 

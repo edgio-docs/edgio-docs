@@ -2,11 +2,20 @@
 title: Install Node.js and npm
 ---
 
-{{ PRODUCT }} requires Node v{{ NODE_VERSION }}. Although you may use a higher version of Node, your app will run in Node v{{ NODE_VERSION }} when deployed to {{ PRODUCT_NAME }}. Therefore, we strongly recommend that you use Node v{{ NODE_VERSION }} when developing your web application.
+**{{ PRODUCT_NAME }} supports Node.js version 14 and 16**
 
-## Node Installation {/*node-installation*/}
+**Current recommended development version is Node.js 16.18.0**
 
-The recommended method for installing Node is through a version manager called [nvm](https://github.com/nvm-sh/nvm). 
+## {{ PRODUCT }} Node.js Supported Versions {/*nodejs-supported-versions*/}
+
+{{ PRODUCT }} supports different Node.js runtimes depending on the version of your `{{ PACKAGE_NAME }}` packages.
+
+| {{ PRODUCT }} Version | Node.js Version |
+|------------------------|------------------|
+| 5.x                   | 14.19.0         |
+| 6.x (recommended)     | 16.18.0         |
+
+## Node version managers {/*node-version-managers*/}
 
 1.  Install nvm by running the following command:
     ```bash
@@ -18,10 +27,12 @@ The recommended method for installing Node is through a version manager called [
     command -v nvm
     ```
 
-3.  Once you have successfully installed nvm, install Node v{{ NODE_VERSION }} by running the following command:
-    ```bash
-    nvm install {{ NODE_VERSION }}
-    ```
+```bash
+# nvm
+nvm install 16
+# n
+n install 16
+```
 
 4.  Instruct nvm to use Node v{{ NODE_VERSION }} by running the following command:
     ```bash
@@ -34,3 +45,15 @@ The recommended method for installing Node is through a version manager called [
 
 [yarn](https://classic.yarnpkg.com/en/docs/cli/) is another very popular package manager.
 
+
+Download and install it from the official [Node.js v{{ NODE_VERSION }} downloads](https://nodejs.org/dist/latest-v{{ NODE_VERSION }}/) page. Select the download that matches your operating system and run the installer. Note that the installer for Node.js will also install npm.
+
+### Homebrew {/*homebrew*/}
+
+For mac users, `brew install node` is a quick way to get the latest node. You can then use `nvm` or `n` to manage versions.
+
+## Production version {/*production-version*/}
+
+Note that while you can use any version of Node.js >= {{ NODE_VERSION }} locally, your app will run in Node {{ NODE_VERSION }} when deployed to the {{ PRODUCT_NAME }} cloud.
+
+Therefore we highly suggest using Node {{ NODE_VERSION }} for all development.

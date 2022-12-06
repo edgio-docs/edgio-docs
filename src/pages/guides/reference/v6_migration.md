@@ -25,7 +25,7 @@ title: {{ PRODUCT }} Version 6 Migration Guide
 
 <Callout type="info">
 
-  {{ PRODUCT }} version 6 does not support [access control through JWT](). Additionally, [.noIndexPermalink() is now deprecated](), since we now automatically block search engine traffic for edge links and permalinks. 
+  {{ PRODUCT }} version 6 does not support [access control through JWT](#jwt-access-control-end-of-life). Additionally, [.noIndexPermalink() is now deprecated](#remove-noindexpermalink-references), since we now automatically block search engine traffic for edge links and permalinks. 
 
 </Callout>
 
@@ -40,7 +40,7 @@ Migrate from version 5.x to 6 through the following steps:
  
 ## Step 1: Upgrade the {{ PRODUCT }} CLI {/*upgrade-the-cli*/}
 
-We have renamed the {{ PRODUCT }} CLI from `0 | layer0` to `{{ CLI_NAME }} | {{ FULL_CLI_NAME }}`. Install the latest version of our CLI.
+Install the latest version of our CLI.
 
 **npm:**
 
@@ -128,19 +128,19 @@ Build each of your {{ PRODUCT }} properties by running the following command in 
 
 ```bash
 
-{{ PRODUCT }} build
+{{ FULL_CLI_NAME }} build
 
 ```
 
-If you encounter a build issue as a result of upgrading Node.js and npm, then you should perform the following steps:
+If you encounter a build issue as a result of upgrading Node.js and npm, then you should perform one or more of the following troubleshooting steps:
 
-1.  Check whether you have defined a different Node.js or npm version in either a npm config file (`.npmrc`) or within `package.json`. If so, update it to the correct version and then run `{{ PRODUCT }} build` to rebuild your {{ PRODUCT }} property. 
+1.  Check whether you have defined a different Node.js or npm version in either a npm config file (`.npmrc`) or within `package.json`. If so, update it to the correct version and then run `{{ FULL_CLI_NAME }} build` to rebuild your {{ PRODUCT }} property. 
 
-<Callout type="info">
+    <Callout type="tip">
 
-  Run `node --version` and `npm --version` to check the version for Node.js and npm, respectively. These commands should return `16.x.x` (e.g., `16.12.0`) for Node.js and `8.x.x` (e.g., `8.1.0`) for npm. Use this version information when updating `.npmrc` or `package.json`. 
+      Run `node --version` and `npm --version` to check the version for Node.js and npm, respectively. These commands should return `16.x.x` (e.g., `16.12.0`) for Node.js and `8.x.x` (e.g., `8.1.0`) for npm. Use this version information when updating `.npmrc` or `package.json`. 
 
-</Callout>
+    </Callout>
 
 2.  Clear `node_modules` and rebundle your project by running the following command:
 
@@ -148,7 +148,7 @@ If you encounter a build issue as a result of upgrading Node.js and npm, then yo
     npm ci
     ```
 
-    Run `{{ PRODUCT }} build` to rebuild your {{ PRODUCT }} property.
+    Run `{{ FULL_CLI_NAME }} build` to rebuild your {{ PRODUCT }} property.
 
 3.  Regenerate a new dependency tree by running the following command:
 
@@ -156,7 +156,7 @@ If you encounter a build issue as a result of upgrading Node.js and npm, then yo
     npm i --package-lock-only
     ```
 
-    Run `{{ PRODUCT }} build` to rebuild your {{ PRODUCT }} property.
+    Run `{{ FULL_CLI_NAME }} build` to rebuild your {{ PRODUCT }} property.
 
 ## Optional. Remove .noIndexPermalink() References {/*remove-noindexpermalink-references*/}
 
@@ -168,7 +168,7 @@ Override this behavior and allow search engines to index all permalinks by addin
 new Router({ indexPermalink: true })
 ```
 
-## JWT Access Control End-of-Life
+## JWT Access Control End-of-Life {/*jwt-access-control-end-of-life*/}
 
 {{ PRODUCT }} version 6 does not support JWT access control. Previous versions allowed you to configure on a per route basis whether requests would be allowed or denied according to a JWT token. 
 

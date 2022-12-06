@@ -25,13 +25,12 @@ In order to simplify this migration, we have split Node.js version 16 support fr
 Migrate from version 4.x to 5 through the following steps:
 
 1.  [Upgrade the {{ PRODUCT }} CLI.](#upgrade-the-cli)
-2.  [Upgrade the {{ PRODUCT }} RUM package.](#upgrade-the-rum-package)
-3.  [Rename layer0.config.js.](#rename-layer0configjs)
-4.  [Rename {{ PRODUCT }} packages.](#rename-packages)
-5.  [Install dependencies.](#install-dependencies)
-6.  [Run {{ FULL_CLI_NAME }} init.](#run-init)
-7.  [Update scripts that reference the {{ PRODUCT }} CLI.](#update-scripts-that-reference-the-cli)
-8.  [Optional: Review your code for duplicate query string parameters.](#optional-review-your-code-for-duplicate-query-string-parameters)
+2.  [Rename layer0.config.js.](#rename-layer0configjs)
+3.  [Rename {{ PRODUCT }} packages.](#rename-packages)
+4.  [Install dependencies.](#install-dependencies)
+5.  [Update scripts that reference the {{ PRODUCT }} CLI.](#update-scripts-that-reference-the-cli)
+6.  [Ignore {{ PRODUCT }} Build Artifacts](#ignore-build-artifacts)
+7.  [Optional: Review your code for duplicate query string parameters.](#optional-review-your-code-for-duplicate-query-string-parameters)
 
 ## Step 1: Upgrade the {{ PRODUCT }} CLI {/*upgrade-the-cli*/}
  
@@ -49,25 +48,7 @@ npm install -g @edgio/cli
 yarn global add @edgio/cli
 ```
 
-## Step 2: Upgrade the {{ PRODUCT }} Real User Monitoring (RUM) Package {/*upgrade-the-rum-package*/}
-
-We have renamed the {{ PRODUCT }} RUM package from `@layer0/rum` to `@edgio/rum`. For each site, uninstall the old version and then install the latest version.
-
-**npm:**
-
-```bash
-npm uninstall @layer0/rum
-npm install @edgio/rum
-```
-
-**yarn:**
-
-```bash
-yarn remove @layer0/rum
-yarn add @edgio/rum
-```
-
-## Step 3: Rename layer0.config.js {/*rename-layer0configjs*/}
+## Step 2: Rename layer0.config.js {/*rename-layer0configjs*/}
 
 For each site, rename `layer0.config.js` to `edgio.config.js`. 
 
@@ -77,22 +58,19 @@ For each site, rename `layer0.config.js` to `edgio.config.js`.
 
 </Callout>
 
-## Step 4: Rename {{ PRODUCT }} Packages {/*rename-packages*/}
+## Step 3: Rename {{ PRODUCT }} Packages {/*rename-packages*/}
 
-<Callout type="important">
+For each site, rename all references to {{ PRODUCT }} packages from `@layer0` to `{{ PACKAGE_NAME }}`.
 
-The dependency for the {{PRODUCT }} RUM package (`{{ PACKAGE_NAME }}/rum`) was updated in step 2 and therefore does not require any additional changes.
-
-</Callout>
-
-For each site, rename remaining references to {{ PRODUCT }} packages from `@layer0` to `{{ PACKAGE_NAME }}`.
-
--   **package.json:** In addition to renaming the remaining {{ PRODUCT }} packages, you should also set their version to `^5.0.0`.
+-   **package.json:** In addition to renaming the {{ PRODUCT }} packages, you should also set their version to `^5.0.0`.
 
     For example, the following excerpt from a `package.json` file references several `@layer0` packages:
 
     ```
-    ...          
+    ...
+      "dependencies": {
+        "@layer0/rum": "4.18.1",
+      },          
       "devDependencies": {
         "@layer0/cli": "4.18.1",
         "@layer0/core": "4.18.1",
@@ -104,12 +82,21 @@ For each site, rename remaining references to {{ PRODUCT }} packages from `@laye
 
     ```
     ...  
+      "dependencies": {
+        "{{ PACKAGE_NAME }}/rum": "^5.0.0",
+      },          
       "devDependencies": {
         "{{ PACKAGE_NAME }}/cli": "^5.0.0",
         "{{ PACKAGE_NAME }}/core": "^5.0.0",
         "{{ PACKAGE_NAME }}/devtools": "^5.0.0",
     ...
     ```
+
+<Callout type="important">
+
+  There may be additional `@layer0/*` dependencies listed in your site's `package.json` file that are not listed above. They too should be updated to `{{ PACKAGE_NAME }}/*`. There should be no remaining `@layer0/*` references in the file.
+
+</Callout>
 
 -   **Import Statements:** Rename {{ PRODUCT }} packages within each `import` statement from `@layer0` to `{{ PACKAGE_NAME }}`. You can find these `import` statements within various files, such as `routes.ts`, `sw/service-worker.js`, and your Next and Nuxt configuration files.
 
@@ -149,7 +136,7 @@ For each site, rename remaining references to {{ PRODUCT }} packages from `@laye
     ...
     ```
 
-## Step 5: Install Dependencies {/*install-dependencies*/}
+## Step 4: Install Dependencies {/*install-dependencies*/}
 
 Install the dependencies defined in the previous step. 
 
@@ -165,19 +152,25 @@ npm install
 yarn install
 ```
 
-## Step 6: Run {{ FULL_CLI_NAME }} init {/*run-init*/}
+<Callout type="important">
 
-For each site, run the following command:
+  This should generate an updated dependency tree in your `package-lock.json` or `yarn.lock` file. Be sure to commit these changes.
 
-```bash
-{{ FULL_CLI_NAME }} init
+</Callout>
+
+## Step 5: Update Scripts that Reference the {{ PRODUCT }} CLI {/*update-scripts-that-reference-the-cli*/}
+
+Update all references to the {{ PRODUCT }} CLI within your `package.json` scripts from `0 | layer0` to either `{{ CLI_NAME }}` or `{{ FULL_CLI_NAME }}`.
+
+## Step 6: Ignore {{ PRODUCT }} Build Artifacts {/*ignore-build-artifacts*/}
+
+To exclude build artifacts from being tracked in version control, update your `.gitignore` file with the following:
+
+```bash filename=".gitignore"
+...
+# Edgio generated build directory
+.edgio
 ```
-
-Proceed to the next step if this command is successful.
-
-## Step 7: Update Scripts that Reference the {{ PRODUCT }} CLI {/*update-scripts-that-reference-the-cli*/}
-
-Update all references to the {{ PRODUCT }} CLI within your scripts from `0 | layer0` to either `{{ CLI_NAME }}` or `{{ FULL_CLI_NAME }}`.
 
 ## Optional: Review Your Code for Duplicate Query String Parameters {/*optional-review-your-code-for-duplicate-query-string-parameters*/}
 

@@ -10,13 +10,13 @@ title: {{ PRODUCT }} Version 5 Migration Guide
 
 <Callout type="tip">
 
-  In the near future, we will release {{ PRODUCT }} version 6 that introduces support for running your app in the cloud using Node.js version 16. {{ PRODUCT }} version 6 requires:
+  Consider upgrading to {{ PRODUCT }} version 6. It introduces support for running your app in the cloud using Node.js version 16. {{ PRODUCT }} version 6 requires:
   *   {{ PRODUCT }} version 5
   *   Node.js version 16
   *   npm version 8
   *   Updating your application(s) to be compatible with Node.js version 16 and npm version 8. 
 
-In order to simplify this migration, we have split Node.js version 16 support from the branding changes introduced by {{ PRODUCT }} version 5. We recommend that you perform the seamless {{ PRODUCT }} version 5 migration now and prepare for the changes that will be required by {{ PRODUCT }} version 6.
+We recommend that you perform the seamless {{ PRODUCT }} version 5 migration now, prepare for the changes that will be required by {{ PRODUCT }} version 6, and then migrate to version 6.
 
 </Callout>
 
@@ -199,4 +199,4 @@ Review your code to see whether it generates duplicate query string parameters. 
 
 ## Migration Complete {/*migration-complete*/}
 
-Congratulations on successfully migrating {{ PRODUCT }} to version 5!
+Congratulations on successfully migrating {{ PRODUCT }} to version 5! Once you are ready to upgrade to Node.js version 16, you should migration to [{{ PRODUCT }} version 6](/guides/reference/v6_migration).

@@ -79,9 +79,6 @@ const { Router } = require('{{ PACKAGE_NAME }}/core/router')
 const { gatsbyRoutes } = require('{{ PACKAGE_NAME }}/gatsby')
 
 module.exports = new Router()
-  // Prevent search engine bot(s) from indexing
-  // Read more on: {{ DOCS_URL }}/guides/cookbook#blocking-search-engine-crawlers
-  .noIndexPermalink()
   .use(gatsbyRoutes)
 ```
 
@@ -117,9 +114,7 @@ const { Router } = require('{{ PACKAGE_NAME }}/core/router')
 const { gatsbyRoutes } = require('{{ PACKAGE_NAME }}/gatsby')
 
 module.exports = new Router()
-  // Prevent search engine bot(s) from indexing
-  // Read more on: {{ DOCS_URL }}/guides/cookbook#blocking-search-engine-crawlers
-  .noIndexPermalink()
+
   .get('/some/legacy/url/:p', ({ proxy }) => {
     proxy('legacy')
   })

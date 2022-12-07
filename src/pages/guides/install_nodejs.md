@@ -2,11 +2,16 @@
 title: Install Node.js and npm
 ---
 
-{{ PRODUCT }} requires Node v{{ NODE_VERSION }}. Although you may use a higher version of Node, your app will run in Node v{{ NODE_VERSION }} when deployed to {{ PRODUCT_NAME }}. Therefore, we strongly recommend that you use Node v{{ NODE_VERSION }} when developing your web application.
+{{ PRODUCT }} support for Node.js runtimes varies according to the version of your `{{ PACKAGE_NAME }}` packages.
 
-## Node Installation {/*node-installation*/}
+-   **{{ PRODUCT }} Version 5:** Node.js version 14.19.0
+-   **{{ PRODUCT }} Version 6:** Node.js version 16.18.0
 
-The recommended method for installing Node is through a version manager called [nvm](https://github.com/nvm-sh/nvm). 
+Although you may use a higher version of Node.js, your app will run using the above version when deployed to {{ PRODUCT }}. Therefore, we strongly recommend that you use the Node.js version that corresponds to your {{ PRODUCT }} version when developing your web application.
+
+## Node.js Installation {/*node-installation*/}
+
+The recommended method for installing Node.js is through a version manager like [nvm](https://github.com/nvm-sh/nvm).
 
 1.  Install nvm by running the following command:
     ```bash
@@ -17,16 +22,33 @@ The recommended method for installing Node is through a version manager called [
     ```bash
     command -v nvm
     ```
+3.  Once you have successfully installed nvm, install Node.js by running one of the following commands:
 
-3.  Once you have successfully installed nvm, install Node v{{ NODE_VERSION }} by running the following command:
-    ```bash
-    nvm install {{ NODE_VERSION }}
-    ```
+    -   **{{ PRODUCT }} Version 5:**
 
-4.  Instruct nvm to use Node v{{ NODE_VERSION }} by running the following command:
-    ```bash
-    nvm use {{ NODE_VERSION }}
-    ```
+        ```bash
+        nvm install 14
+        ```
+
+    -   **{{ PRODUCT }} Version 6:**
+
+        ```bash
+        nvm install 16
+        ```
+
+4.  Instruct nvm to use the version of Node.js installed in the previous step by running the following command:
+
+    -   **{{ PRODUCT }} Version 5:**
+
+        ```bash
+        nvm use 14
+        ```
+
+    -   **{{ PRODUCT }} Version 6:**
+
+        ```bash
+        nvm use 16
+        ```
 
 ## Package managers {/*package-managers*/}
 

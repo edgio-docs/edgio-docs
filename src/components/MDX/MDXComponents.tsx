@@ -13,6 +13,7 @@ import Image from './Image';
 import InlineCode from './InlineCode';
 import Integrations from './Integrations';
 import Link from './Link';
+import PopularFrameworks from './PopularFrameworks';
 import Video, {VimeoMDXEmbed} from './Video';
 
 const P = (p: JSX.IntrinsicElements['p']) => (
@@ -66,6 +67,7 @@ export const MDXComponents = {
   HomepageHero,
   HomepageFeatures,
   Frameworks,
+  PopularFrameworks,
   Callout,
   ButtonLinksGroup,
   ButtonLink,

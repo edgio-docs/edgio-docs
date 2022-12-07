@@ -276,7 +276,6 @@ If you need to block all search engine bot traffic to specific environments (suc
   ```
   
   Otherwise, {{ PRODUCT }} match requests with the `host` header matching `/layer0.link|layer0-perma.link/` and set a response header of `x-robots-tag: noindex`.
-    
 
 </Callout>
 

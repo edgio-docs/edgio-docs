@@ -84,9 +84,6 @@ import { Router } from '{{ PACKAGE_NAME }}/core/router';
 import { nextRoutes } from '{{ PACKAGE_NAME }}/next';
 
 export default new Router()
-  // Prevent search engine bot(s) from indexing
-  // Read more on: {{ DOCS_URL }}/guides/cookbook#blocking-search-engine-crawlers
-  .noIndexPermalink()
   .match('/service-worker.js', ({ serviceWorker }) => {
     return serviceWorker('.next/static/service-worker.js');
   })

@@ -48,6 +48,8 @@ Once you are using Node.js v16, update your application code to be compatible wi
 
   If your `package.json` or `.npmrc` explicitly defines v14.x as the Node.js engine, this will also need updated to 16.x.
 
+  Additionally, check your CI/CD environment for Node version settings. Some workflows may target Node.js 14.x. These files/settings also need updated to 16.x.
+
 </Callout>
 
 ## Step 2: Upgrade the {{ PRODUCT }} CLI {/*upgrade-the-cli*/}

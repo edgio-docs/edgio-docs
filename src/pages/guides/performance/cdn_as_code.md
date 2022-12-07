@@ -266,13 +266,19 @@ The second argument to routes is a function that receives a `ResponseWriter` and
 
 If you need to block all search engine bot traffic to specific environments (such as your default or staging environment), the easiest way is to include the `x-robots-tag` header with the same directives you would otherwise set in a `meta` tag. 
 
-Also, the search engines traffic is automatically blocked on {{ PRODUCT }} edge links and permalinks.
-In case you would like to enable indexing on those links, you need to pass `{ indexPermalink: true }` into Router constructor in `routes.js` file:
-```js
-  new Router({ indexPermalink: true })
-```
+<Callout type="info">
 
-Otherwise, will match requests with the `host` header matching `/layer0.link|layer0-perma.link/` and set a response header of `x-robots-tag: noindex`.
+  The search engine traffic is automatically blocked on {{ PRODUCT }} edge links and permalinks as of {{ PRODUCT }} v6.
+
+  If you would like to enable indexing on those links, you need to pass `{ indexPermalink: true }` into the Router constructor in `routes.js` file:
+  ```js
+    new Router({ indexPermalink: true })
+  ```
+  
+  Otherwise, {{ PRODUCT }} match requests with the `host` header matching `/layer0.link|layer0-perma.link/` and set a response header of `x-robots-tag: noindex`.
+    
+
+</Callout>
 
 Additionally, you can customize this to block traffic to development or staging websites based on the `host` header of the request:
 

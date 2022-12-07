@@ -30,14 +30,27 @@ title: {{ PRODUCT }} Version 6 Migration Guide
 
 Migrate from version 5.x to 6 through the following steps:
 
-1.  [Upgrade the {{ PRODUCT }} CLI.](#upgrade-the-cli)
-2.  [Upgrade Node.js.](#upgrade-node-js)
+1.  [Upgrade Node.js.](#upgrade-node-js)
+2.  [Upgrade the {{ PRODUCT }} CLI.](#upgrade-the-cli)
 3.  [Use version 6 of our {{ PRODUCT }} packages.](#use-packages-version-6)
-4.  [Install dependencies.](#install-dependencies)
-5.  [Build your {{ PRODUCT }} properties](#build-your-properties)
-6.  [Optional. Remove references to .noIndexPermalink()](#remove-noindexpermalink-references)
+4.  [Build your {{ PRODUCT }} properties](#build-your-properties)
+5.  [Optional. Remove references to .noIndexPermalink()](#remove-noindexpermalink-references)
  
-## Step 1: Upgrade the {{ PRODUCT }} CLI {/*upgrade-the-cli*/}
+## Step 1: Upgrade Node.js {/*upgrade-node-js*/}
+
+{{ PRODUCT }} version 6 runs your apps in Node.js v16. Therefore, we strongly recommend that you use Node.js v16.x when developing your web application. 
+
+[Learn how to use nvm to install Node.js v16.x.](/guides/install_nodejs)
+
+Once you are using Node.js v16, update your application code to be compatible with Node.js v16.
+
+<Callout type="important">
+
+  If your `package.json` or `.npmrc` explicitly defines v14.x as the Node.js engine, this will also need updated to 16.x.
+
+</Callout>
+
+## Step 2: Upgrade the {{ PRODUCT }} CLI {/*upgrade-the-cli*/}
 
 Install the latest version of our CLI.
 
@@ -53,69 +66,15 @@ npm install -g @edgio/cli
 yarn global add @edgio/cli
 ```
 
-## Step 2: Upgrade Node.js {/*upgrade-node-js*/}
-
-{{ PRODUCT }} version 6 runs your apps in Node.js v16. Therefore, we strongly recommend that you use Node.js v16.x when developing your web application. 
-
-[Learn how to use nvm to install Node.js v16.x.](/guides/install_nodejs)
-
-Once you are using Node.js v16, update your application code to be compatible with Node.js v16.
-
 ## Step 3: Use {{ PRODUCT }} Packages Version 6 {/*use-packages-version-6*/}
 
-For each {{ PRODUCT }} property, set all {{ PRODUCT }} packages within `package.json` to use version `^6.0.0`.
-
-For example, the following excerpt from a `package.json` file shows that this property is using version `^5.0.0` of our {{ PRODUCT }} packages:
-
-```
-...
-  "dependencies": {
-    "{{ PACKAGE_NAME }}/rum": "^5.0.0",
-  },          
-  "devDependencies": {
-    "{{ PACKAGE_NAME }}/cli": "^5.0.0",
-    "{{ PACKAGE_NAME }}/core": "^5.0.0",
-    "{{ PACKAGE_NAME }}/devtools": "^5.0.0",
-...
-```
- 
-You should update all of these references as shown below.
-
-```
-...  
-  "dependencies": {
-    "{{ PACKAGE_NAME }}/rum": "^6.0.0",
-     },
-  "devDependencies": {
-    "{{ PACKAGE_NAME }}/cli": "^6.0.0",
-    "{{ PACKAGE_NAME }}/core": "^6.0.0",
-    "{{ PACKAGE_NAME }}/devtools": "^6.0.0",
-...
-```
-
-<Callout type="important">
-
-  Although the above excerpt only contains a few references to {{ PRODUCT }} packages, you must update all references in `package.json` to use version `^6.0.0`. 
-
-</Callout>
-
-## Step 4: Install Dependencies {/*install-dependencies*/}
-
-Install the dependencies defined in the previous step. 
-
-**npm:**
+Update all {{ PRODUCT }} packages to the latest using the CLI.
 
 ```bash
-npm install
+edgio use 6
 ```
 
-**yarn:**
-
-```bash
-yarn install
-```
-
-## Step 5: Build your {{ PRODUCT }} Properties {/*build-your-properties*/}
+## Step 4: Build your {{ PRODUCT }} Properties {/*build-your-properties*/}
 
 Build each of your {{ PRODUCT }} properties by running the following command in its root directory:
 
@@ -153,9 +112,9 @@ If you encounter a build issue as a result of upgrading Node.js, then you should
 
 ## Optional. Remove .noIndexPermalink() References {/*remove-noindexpermalink-references*/}
 
-By default, {{ PRODUCT }} version 6 automatically blocks search engine traffic for edge links and permalinks. As a result, the `.noIndexPermalink()` router function serves no purpose and it has been deprecated. We recommend that you remove this function from your `router.js` file. 
+By default, {{ PRODUCT }} version 6 automatically blocks search engine traffic for edge links and permalinks. As a result, the `.noIndexPermalink()` router function serves no purpose and it has been deprecated. We recommend that you remove this function from your `routes.js` file. 
 
-Override this behavior and allow search engines to index all permalinks by adding the following route to `router.js`:
+Override this behavior and allow search engines to index all permalinks by adding the following route to `routes.js`:
 
 ```js
 new Router({ indexPermalink: true })

@@ -46,9 +46,9 @@ Once you are using Node.js v16, update your application code to be compatible wi
 
 <Callout type="important">
 
-  If your `package.json` or `.npmrc` explicitly defines v14.x as the Node.js engine, this will also need updated to 16.x.
+  If `package.json` or `.npmrc` explicitly sets the Node.js engine version to `14.x`, then you will need to update it to `16.x`.
 
-  Additionally, check your CI/CD environment for Node version settings. Some workflows may target Node.js 14.x. These files/settings also need updated to 16.x.
+  Additionally, check your CI/CD environment for Node.js version settings. If your workflow targets Node.js 14.x, then you will need to update your files and settings to target Node.js 16.x.
 
 </Callout>
 
@@ -70,10 +70,10 @@ yarn global add @edgio/cli
 
 ## Step 3: Use {{ PRODUCT }} Packages Version 6 {/*use-packages-version-6*/}
 
-Update all {{ PRODUCT }} packages to the latest using the CLI.
+Update all {{ PRODUCT }} packages to version 6 using the CLI.
 
 ```bash
-edgio use 6
+edgio use ^6.0.0 
 ```
 
 ## Step 4: Build your {{ PRODUCT }} Properties {/*build-your-properties*/}

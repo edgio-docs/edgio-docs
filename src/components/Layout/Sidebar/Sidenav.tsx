@@ -282,7 +282,7 @@ const links = [
   },
   {
     title: 'Forum',
-    path: 'https://forum.layer0.co/?sgId=7bc47c45-c1d6-4189-b416-552581d86006',
+    path: 'https://forum.edg.io/?sgId=7bc47c45-c1d6-4189-b416-552581d86006',
     icon: 'forum',
   },
   {

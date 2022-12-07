@@ -232,3 +232,81 @@ IP of the backend that responded to the request.
 ### hrid {/*hrid*/}
 
 Request ID of the response hit in the cache. Corresponds to [`{{ HEADER_PREFIX }}-hit-request-id`](response_headers#section_general_headers) response header.
+
+### ac {/*ac*/}
+
+Accept-Encoding header value
+
+### asn {/*asn*/}
+
+?
+
+### ce {/*ce*/}
+
+The normalized value of content encoding header as used by edge.
+
+### ckh {/*ckh*/}
+
+### cv {/*cv*/}
+
+Edgio edge compiler version
+
+### cy {/*cy*/}
+
+City name per geo-location
+
+### jwt {/*jwt*/}
+
+Value of the recommended action per JWT parsing ("blocked", "permit", "redirect")
+
+### lo {/*lo*/}
+
+Geographical longitude per geo-location
+
+### lt {/*lt*/}
+
+Geographical latitude per geo-location
+
+### lp {/*lp*/}
+
+Flag indicating if loading page was served during incremental static rendering.
+
+### pc {/*pc*/}
+
+Postal code per geo-location.
+
+### prl {/*prl*/}
+
+?
+
+### prod {/*prod*/}
+
+Indicates whether this request belongs to the production environment.
+
+### sc {/*sc*/}
+
+State code as per geo-location
+
+### sec {/*sec*/}
+
+?
+
+### ssl {/*ssl*/}
+
+A flag that indicates whether the request was done on HTTPS protocol. 
+
+### t {/*t*/}
+
+Timing information. More detail needed here about what is contained inside ('eh=4,ect=2,ecc=hit')
+
+### v {/*v*/}
+
+Layer0/Edgio platform version
+
+### wafv {/*wafv*/}
+
+WAF version ?
+
+### xff {/*xff*/}
+
+?

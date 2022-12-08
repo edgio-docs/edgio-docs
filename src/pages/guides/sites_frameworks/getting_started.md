@@ -6,7 +6,7 @@ title: Sites (Web Application Frameworks)
 
 ## Supported Frameworks {/*supported-frameworks*/}
 
-Learn how to get started with these popular web application framework:
+Learn how to get started with these popular web application frameworks:
 
 <PopularFrameworks/>
 

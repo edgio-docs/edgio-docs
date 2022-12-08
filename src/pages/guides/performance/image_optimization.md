@@ -35,11 +35,23 @@ Optional:
 
 ## Examples {/*examples*/}
 
-Quality example: `https://opt.moovweb.net?quality=30&img=<SOURCE IMAGE URL>`
+**Quality example:**
+
+This example sets the image quality to 30.
+
+```
+https://opt.moovweb.net?quality=30&img=https://docs.edg.io/images/performance/product-apps-image_optimization.png
+```
 
 https://opt.moovweb.net?quality=30&img=https://docs.edg.io/images/performance/product-apps-image_optimization.png
 
-Height example: `https://opt.moovweb.net?height=300&img=<SOURCE IMAGE URL>`
+**Height example:**
 
-https://opt.moovweb.net?height=300&img=https://docs.edg.io/images/performance/product-apps-image_optimization.png
+This example sets the maximum height to 200 pixels.
+
+```
+https://opt.moovweb.net?height=200&img=https://docs.edg.io/images/performance/product-apps-image_optimization.png
+```
+
+https://opt.moovweb.net?height=200&img=https://docs.edg.io/images/performance/product-apps-image_optimization.png
 

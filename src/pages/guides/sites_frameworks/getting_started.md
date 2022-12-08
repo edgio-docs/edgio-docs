@@ -10,6 +10,6 @@ Learn how to get started with these popular web application framework:
 
 <PopularFrameworks/>
 
-Or, learn how to get started with any of these web application frameworks: 
+Are you looking for a different web application framework? We have you covered. Learn how to get started with any of our suppported web application frameworks.
 
 <Frameworks/>

@@ -10,6 +10,9 @@ const StyledFrameworks = styled.div`
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(174px, 1fr));
     gap: 20px;
+    padding-bottom: 30px;
+    margin-bottom: 20px;
+    border-bottom: 2px dashed var(--hr-secondary);
   }
 
   .icon {

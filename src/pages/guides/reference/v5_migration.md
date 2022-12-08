@@ -38,13 +38,13 @@ We have renamed the {{ PRODUCT }} CLI from `0 | layer0` to `{{ CLI_NAME }} | {{ 
 **npm:**
 
 ```bash
-npm install -g @edgio/cli
+npm install -g @edgio/cli@^5.0.0
 ```
 
 **yarn:**
 
 ```bash
-yarn global add @edgio/cli
+yarn global add @edgio/cli@^5.0.0
 ```
 
 ## Step 2: Rename layer0.config.js {/*rename-layer0configjs*/}

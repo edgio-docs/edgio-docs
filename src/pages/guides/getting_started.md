@@ -11,7 +11,7 @@ Get started with {{ PRODUCT }} by satisfying our [prerequisites](#prerequisites)
 
 ## Quick Start {/*quick-start*/}
 
-If you already have [Node v{{ NODE_VERSION }}](/guides/install_nodejs) and an [{{ PRODUCT }} account](#account-creation), then you can use a single command to:
+If you already have [Node.js v{{ NODE_VERSION }}](/guides/install_nodejs) and an [{{ PRODUCT }} account](#account-creation), then you can use a single command to:
 -   Install the {{ PRODUCT }} CLI.
 -   Create an {{ PRODUCT }} property for your website.
 -   Deploy a property to {{ PRODUCT }}.
@@ -37,12 +37,12 @@ You are now ready to optimize and secure the delivery of your website. [Learn mo
 ## Prerequisites {/*prerequisites*/}
 
 {{ PRODUCT }} requires:
--   [Node v{{ NODE_VERSION }}](/guides/install_nodejs) 
+-   [Node.js v{{ NODE_VERSION }}](/guides/install_nodejs) 
 -   npm or yarn package manager
 
     <Callout type="info">
 
-      npm is installed with Node, while yarn requires a separate installation.
+      npm is installed with Node.js, while yarn requires a separate installation.
 
     </Callout>
 

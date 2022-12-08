@@ -22,7 +22,7 @@ You’ve installed the following dependencies:
 
 <Callout type="info">
 
-  {{ PRODUCT_NAME }} production runtime targets Node {{ NODE_VERSION }}. There may be some unexpected behavior building your project with a later version. See the <a href="/guides/install_nodejs#production-version">Node.js</a> guide for more information.
+  If you are using {{ PRODUCT }} version 5, then the deployed version of your application will run on Node.js version 14.19.0. Building your application using a higher version of Node.js than the deployed version may cause unexpected behavior. We strongly recommend [upgrading to {{ PRODUCT }} version 6](/guides/reference/v6_migration) which supports Node.js version 16.18.0. 
 
 </Callout>
 
@@ -217,9 +217,6 @@ const ONE_DAY = 24 * ONE_HOUR
 const { Router } = require('{{ PACKAGE_NAME }}/core/router')
 
 module.exports = new Router()
-  // Prevent search engine bot(s) from indexing
-  // Read more on: {{ DOCS_URL }}/guides/cookbook#blocking-search-engine-crawlers
-  .noIndexPermalink()
   .match('/assets/:path*', ({ cache }) => {
     cache({
       edge: {

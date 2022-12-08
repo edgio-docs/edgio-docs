@@ -456,6 +456,10 @@
         {
           "title": "Migration to v5",
           "path": "reference/v5_migration"
+        },
+        {
+          "title": "Migration to v6",
+          "path": "reference/v6_migration"
         }
       ]
     }

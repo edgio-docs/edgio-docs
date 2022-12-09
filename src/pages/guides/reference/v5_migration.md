@@ -19,12 +19,6 @@ We recommend that you perform the seamless {{ PRODUCT }} version 5 migration now
 
 </Callout>
 
-<Callout type="info">
-
-  By default, {{ PRODUCT }} CLI v5.1.0+ collects usage and error reporting information to help improve our products. However, it omits personally identifiable information. [Learn how to opt-out](/guides/develop/cli#disable-analytics).
-
-</Callout>
-
 {{ PRODUCT }} version 5 updates our CLI, packages, and a configuration file with {{ PRODUCT }} branding. Additionally, our service will no longer modify duplicate query string parameters.
 
 Migrate from version 4.x to 5 through the following steps:
@@ -40,6 +34,12 @@ Migrate from version 4.x to 5 through the following steps:
 ## Step 1: Upgrade the {{ PRODUCT }} CLI {/*upgrade-the-cli*/}
  
 We have renamed the {{ PRODUCT }} CLI from `0 | layer0` to `{{ CLI_NAME }} | {{ FULL_CLI_NAME }}`. Install the latest version of our CLI.
+
+<Callout type="info">
+
+  By default, {{ PRODUCT }} CLI v5.1.0+ collects usage and error reporting information to help improve our products. However, it omits personally identifiable information. [Learn how to opt-out](/guides/develop/cli#disable-analytics).
+
+</Callout>
 
 **npm:**
 

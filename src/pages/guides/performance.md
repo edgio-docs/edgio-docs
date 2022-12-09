@@ -6,20 +6,26 @@ title: Performance
 
 -   Full control over when to [cache](/guides/performance/caching) and [prefetch](/guides/performance/prefetching) your content. Prefetching content anticipates your user's needs by instructing the browser to request content before it is neeeded. 
 -   A [CDN-as-code](/guides/performance/cdn_as_code) approach to configuration that empowers developers to define caching and edge logic capabilities from within their application code using an {{ EDGEJS_LABEL }} JavaScript API. 
--   [Performance insights](/guides/performance/observability) that allow you to troubleshoot and fine-tune your configuration. 
+-   [Observability](/guides/performance/observability) that provides performance insights through which you may troubleshoot and fine-tune your configuration. 
 -   [Serverless computing](/guides/performance/serverless_compute) for your JavaScript functions.
 -   Control over [traffic distribution](/guides/performance/traffic_splitting) for the purpose of A/B testing and iterative site migrations. 
 -   On the fly [image optimization](/guides/performance/image_optimization).
 
 ![architecture](/images/overview/architecture.png)
 
-In addition to optimizing the speed at which your site is delivered, {{ PRODUCT_EDGE }} ensures high availability through:
+{{ PRODUCT }} ensures high availability when optimizing site performance through:
 
--   Scaling. {{ PRODUCT_EDGE }} automatically scales resources whenever it detects increased traffic levels. 
+-   Scalability. {{ PRODUCT }} automatically scales resources whenever it detects increased traffic levels. 
 -   Origin Shield. This promotes high availability by funneling requests to a second caching layer instead of your web servers or our Serverless Compute Lambda workers. The first caching layer consists of our edge POPs, while the second caching layer consists of our global POPs.
--   Redundancy. {{ PRODUCT }} computes your code within two data centers. These data centers, which are located close to your API servers, are configured with automatic DNS failover. Additionally, each data center provides redundancy for individual processes and load balances the traffic between them. This architecture minimizes the chances of traffic loss.
+-   Redundancy. {{ PRODUCT }} computes your code within two data centers. These data centers, which are located close to your API servers, are configured with automatic DNS failover. Additionally, each data center provides redundancy for individual processes and load balances the traffic between them. 
 
-## Regions
+{{ PRODUCT }} speeds up your development lifecycle and fosters transparency. In addition to providing a CDN-as-code approach to configuration, Observability to identify and resolve performance issues, and traffic splitting to quickly test different versions of your site, {{ PRODUCT }}:
+
+-   Generates a site preview whenever a developer pushes commits to source control. This site preview allows QA testers, code reviewers, and other stakeholders to immediately try out the developer's changes. 
+-   Allows you to view old versions of your app. Use this capability to discover when a bug was introduced or to quickly compare speed measurements between multiple iterations of your app.
+
+
+## Regions {/*regions*/}
 
 {{ PRODUCT }} is available in the following global regions:
 
@@ -34,15 +40,12 @@ In addition to optimizing the speed at which your site is delivered, {{ PRODUCT_
 
 </Callout>
 
-## Productivity {/*productivity*/}
-
-{{ PRODUCT }} empowers your team to build apps faster and be more transparent. Every time a developer pushes commits to source control, that version of the site is automatically given a permanent preview URL so that QA testers, code reviewers, and other stakeholders can try out the changes immediately. Find a bug in your app? {{ PRODUCT }} makes it easy to go back in time and try out older versions of the app to discover when the bug was introduced. This is especially useful for meeting performance targets as it makes it easy to compare speed measurements between multiple iterations of your app.
 
 ## Limits {/*limitations*/}
 
-{{ PRODUCT_EDGE }} sets limits on requests, responses, and access logs.
+{{ PRODUCT }} sets limits on requests, responses, and access logs.
 
-### Units
+### Units {/*units*/}
 
 Data storage units are defined below.
 

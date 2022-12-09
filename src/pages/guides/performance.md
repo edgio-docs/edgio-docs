@@ -4,10 +4,10 @@ title: Performance
 
 {{ PRODUCT }} {{ PRODUCT_EDGE }} allows you to quickly develop sites with sub-second page load-times and instantaneous client-side page transitions. 
 
-Use the following capabilities to improve your site's performance:
+Improve your site's performance through:
 
--   {{ PRODUCT }} provides full control over when to [cache](/guides/performance/caching) and [prefetch](/guides/performance/prefetching) your content. Caching improves performance by bringing the data closer to your users, while prefetching anticipates your user's needs by instructing the browser to request content before it is neeeded. 
--   [Serverless computing](/guides/performance/serverless_compute) for your JavaScript functions.
+-   Full control over when to [cache](/guides/performance/caching) and [prefetch](/guides/performance/prefetching) your content. Caching improves performance by bringing the data closer to your users, while prefetching anticipates your user's needs by instructing the browser to request content before it is neeeded. 
+-   [Serverless computing](/guides/performance/serverless_compute). Computing your JavaScript functions within our cloud reduces latency and origin server load.
 -   On the fly [image optimization](/guides/performance/image_optimization).
 
 Speed up your development lifecycle through:

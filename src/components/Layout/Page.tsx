@@ -64,7 +64,7 @@ const StyledMainPage = styled.div`
   }
 `;
 
-const StyledBanner = styled.a`
+const StyledBanner = styled.div`
   display: block;
   text-align: center;
   color: #fff;
@@ -73,13 +73,21 @@ const StyledBanner = styled.a`
   padding: 1em;
   text-decoration: none;
   font-weight: 500;
+
+  a {
+    color: #fff;
+    text-decoration: none;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
 `;
 
 function Banner() {
   return (
-    <StyledBanner href="/guides/reference/v6_migration">
-      🎉 {PRODUCT} v6 has recently been released. Checkout the migration guide
-      to upgrade your site! 🎉
+    <StyledBanner>
+      🎉 Introducing {PRODUCT} v6 which supports Node.js v16.{' '}
+      <a href="/guides/reference/v6_migration">Learn how to upgrade.</a> 🎉
     </StyledBanner>
   );
 }

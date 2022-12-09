@@ -76,7 +76,7 @@ export default new Router()
 
 ## Enable Server Side Rendering {/*enable-server-side-rendering*/}
 
-### Use Astro's SSR Node Adapter
+### Use Astro's SSR Node Adapter {/*use-astros-ssr-node-adapter*/}
 Add the Node adapter to enable SSR in your Astro project with the following astro add command. This will install the adapter and make the appropriate changes to your astro.config.mjs file in one step.
 
 ```bash
@@ -88,7 +88,7 @@ yarn astro add node
 pnpm astro add node
 ```
 
-### Specify appPath inside {{ CONFIG_FILE }}
+### Specify appPath inside {{ CONFIG_FILE }} {/*specify-apppath-inside*/}
 
 After you've setup [Server Side Rendering with Astro](https://docs.astro.build/en/guides/server-side-rendering/), specify server file path in {{ CONFIG_FILE }} as below:
 

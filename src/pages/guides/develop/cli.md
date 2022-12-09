@@ -4,6 +4,12 @@ title: CLI
 
 This guide shows you everything you can do with the {{ PRODUCT_NAME }} command line interface.
 
+<Callout type="info">
+
+  By default, {{ PRODUCT }} CLI v5.1.0+ collects usage and error reporting information to help improve our products. However, it omits personally identifiable information. [Learn how to opt-out](#disable-analytics).
+
+</Callout>
+
 ## Installation {/*installation*/}
 
 To install, or upgrade to the latest, {{ PRODUCT_NAME }} CLI run
@@ -89,6 +95,39 @@ Creates a script that provides autocompletion for {{ PRODUCT_NAME }} CLI command
 
 ```bash
 {{ FULL_CLI_NAME }} completion >> ~/.bashrc
+```
+
+### config {/*config*/}
+
+Sets configuration options for this property.
+
+#### set-analytics {/*set-analytics-command*/}
+
+| Command                                        | Description                                                                                                                      |
+|-------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------|
+| <a id="disable-analytics"></a> `set-analytics` | Set this to `false` to prevent sending usage data. Optionally, you may set the environment variable `EDGIO_DISABLE_ANALYTICS=1`. |
+
+#### Example {/*set-analytics-example*/}
+
+```bash
+{{ FULL_CLI_NAME }} config set-analytics false
+```
+
+#### set-backend {/*set-backend-command*/}
+| Command                                          | Description                                                                       |
+|---------------------------------------------------|------------------------------------------------------------------------------------|
+| <a id="set-backend"></a> `set-backend <backend>` | Sets the `--domainOrIp, -d` and/or `--hostHeader, -h` to the existing `<backend>` |
+
+<Callout type="important">
+
+  This command must be called with `<backend>` already existing in the `{{ CONFIG_FILE }}` file. If `<backend>` does not exist, an error will be thrown.
+
+</Callout>
+
+#### Example {/*set-backend-example*/}
+
+```bash
+{{ FULL_CLI_NAME }} config set-backend origin -d docs.edg.io
 ```
 
 ### curl {/*curl*/}

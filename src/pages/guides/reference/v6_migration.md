@@ -56,6 +56,12 @@ Once you are using Node.js v16, update your application code to be compatible wi
 
 Install the latest version of our CLI.
 
+<Callout type="info">
+
+  By default, {{ PRODUCT }} CLI v5.1.0+ collects usage and error reporting information to help improve our products. However, it omits personally identifiable information. [Learn how to opt-out](/guides/develop/cli#disable-analytics).
+
+</Callout>
+
 **npm:**
 
 ```bash

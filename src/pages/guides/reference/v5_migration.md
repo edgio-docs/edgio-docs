@@ -35,6 +35,12 @@ Migrate from version 4.x to 5 through the following steps:
  
 We have renamed the {{ PRODUCT }} CLI from `0 | layer0` to `{{ CLI_NAME }} | {{ FULL_CLI_NAME }}`. Install the latest version of our CLI.
 
+<Callout type="info">
+
+  By default, {{ PRODUCT }} CLI v5.1.0+ collects usage and error reporting information to help improve our products. However, it omits personally identifiable information. [Learn how to opt-out](/guides/develop/cli#disable-analytics).
+
+</Callout>
+
 **npm:**
 
 ```bash

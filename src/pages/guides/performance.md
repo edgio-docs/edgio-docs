@@ -2,14 +2,21 @@
 title: Performance
 ---
 
-{{ PRODUCT }} {{ PRODUCT_EDGE }} allows you to quickly develop sites with sub-second page load-times and instantaneous client-side page transitions. Achieve these results through:
+{{ PRODUCT }} {{ PRODUCT_EDGE }} allows you to quickly develop sites with sub-second page load-times and instantaneous client-side page transitions. 
 
--   Full control over when to [cache](/guides/performance/caching) and [prefetch](/guides/performance/prefetching) your content. Prefetching content anticipates your user's needs by instructing the browser to request content before it is neeeded. 
+Use the following capabilities to improve your site's performance:
+
+-   {{ PRODUCT }} provides full control over when to [cache](/guides/performance/caching) and [prefetch](/guides/performance/prefetching) your content. Caching improves performance by bringing the data closer to your users, while prefetching anticipates your user's needs by instructing the browser to request content before it is neeeded. 
+-   [Serverless computing](/guides/performance/serverless_compute) for your JavaScript functions.
+-   On the fly [image optimization](/guides/performance/image_optimization).
+
+Speed up your development lifecycle through:
+
 -   A [CDN-as-code](/guides/performance/cdn_as_code) approach to configuration that empowers developers to define caching and edge logic capabilities from within their application code using an {{ EDGEJS_LABEL }} JavaScript API. 
 -   [Observability](/guides/performance/observability) that provides performance insights through which you may troubleshoot and fine-tune your configuration. 
--   [Serverless computing](/guides/performance/serverless_compute) for your JavaScript functions.
--   Control over [traffic distribution](/guides/performance/traffic_splitting) for the purpose of A/B testing and iterative site migrations. 
--   On the fly [image optimization](/guides/performance/image_optimization).
+-   Automatic previews of your site whenever a developer pushes commits to source control. These site previews allow QA testers, code reviewers, and other stakeholders to immediately try out newly introduced changes. 
+-   Previews of old versions of your app. Use this capability to discover when a bug was introduced or to quickly compare speed measurements between multiple iterations of your app.
+-   [Traffic Splitting](/guides/performance/traffic_splitting) which controls traffic distribution for the purpose of A/B testing and iterative site migrations. 
 
 ![architecture](/images/overview/architecture.png)
 
@@ -18,12 +25,6 @@ title: Performance
 -   Scalability. {{ PRODUCT }} automatically scales resources whenever it detects increased traffic levels. 
 -   Origin Shield. This promotes high availability by funneling requests to a second caching layer instead of your web servers or our Serverless Compute Lambda workers. The first caching layer consists of our edge POPs, while the second caching layer consists of our global POPs.
 -   Redundancy. {{ PRODUCT }} computes your code within two data centers. These data centers, which are located close to your API servers, are configured with automatic DNS failover. Additionally, each data center provides redundancy for individual processes and load balances the traffic between them. 
-
-{{ PRODUCT }} speeds up your development lifecycle and fosters transparency. In addition to providing a CDN-as-code approach to configuration, Observability to identify and resolve performance issues, and traffic splitting to quickly test different versions of your site, {{ PRODUCT }}:
-
--   Generates a site preview whenever a developer pushes commits to source control. This site preview allows QA testers, code reviewers, and other stakeholders to immediately try out the developer's changes. 
--   Allows you to view old versions of your app. Use this capability to discover when a bug was introduced or to quickly compare speed measurements between multiple iterations of your app.
-
 
 ## Regions {/*regions*/}
 
@@ -93,3 +94,4 @@ The following headers are served for use by {{ PRODUCT }}. You may not modify th
 | ----- | --------- | --------------------------------------------------------------------------------------------------- |
 | Size  | Unlimited | All access logs will always be [logged](/guides/logs#access-logs).                          |
 | Time  | 2 hours   | The minimum time that {{ PRODUCT }} guarantees that access logs will be available for reading. |
+

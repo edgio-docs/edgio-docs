@@ -28,6 +28,12 @@ title: {{ PRODUCT }} Version 6 Migration Guide
 
 </Callout>
 
+<Callout type="info">
+
+  By default, {{ PRODUCT }} CLI v5.1.0+ collects usage and error reporting information to help improve our products. However, it omits personally identifiable information. [Learn how to opt-out](/guides/develop/cli#disable-analytics).
+
+</Callout>
+
 Migrate from version 5.x to 6 through the following steps:
 
 1.  [Upgrade Node.js.](#upgrade-node-js)

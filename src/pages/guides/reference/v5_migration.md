@@ -19,6 +19,12 @@ We recommend that you perform the seamless {{ PRODUCT }} version 5 migration now
 
 </Callout>
 
+<Callout type="info">
+
+  By default, {{ PRODUCT }} CLI v5.1.0+ collects usage and error reporting information to help improve our products. However, it omits personally identifiable information. [Learn how to opt-out](/guides/develop/cli#disable-analytics).
+
+</Callout>
+
 {{ PRODUCT }} version 5 updates our CLI, packages, and a configuration file with {{ PRODUCT }} branding. Additionally, our service will no longer modify duplicate query string parameters.
 
 Migrate from version 4.x to 5 through the following steps:

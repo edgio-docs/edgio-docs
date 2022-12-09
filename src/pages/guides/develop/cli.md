@@ -6,7 +6,7 @@ This guide shows you everything you can do with the {{ PRODUCT_NAME }} command l
 
 <Callout type="info">
 
-  {{ PRODUCT }} CLI v5.1.0+ is optionally collecting usage and error reporting information to help improve our products. All personal data is omitted. See [`set-analytics`](#disable-analytics) to opt-out.
+  By default, {{ PRODUCT }} CLI v5.1.0+ collects usage and error reporting information to help improve our products. However, it omits personally identifiable information. [Learn how to opt-out](#disable-analytics).
 
 </Callout>
 
@@ -96,16 +96,6 @@ Creates a script that provides autocompletion for {{ PRODUCT_NAME }} CLI command
 ```bash
 {{ FULL_CLI_NAME }} completion >> ~/.bashrc
 ```
-### config {/*config*/}
-
-Sets configuration options to the `{{ CONFIG_FILE }}` file.
-
-#### Options {/*config-options*/}
-
-| Name            | Description                                        |
-|------------------|-----------------------------------------------------|
-| <a id="disable-analytics"></a> `set-analytics` | Set this to `false` to prevent sending usage data. |
-
 
 ### config {/*config*/}
 

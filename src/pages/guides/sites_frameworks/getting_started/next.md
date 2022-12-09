@@ -55,19 +55,19 @@ If you run into permission issues while attempting to install the {{ PRODUCT }} 
 
 ## Getting Started {/*getting-started*/}
 
-### Create a Next.js Application {/*create-a-nextjs-application*/}
-
-If you don't already have a Next.js application, you can create one using:
-
-```bash
-npx create-next-app@^12
-```
-
 <Callout type="important">
 
   {{ PRODUCT }} currently supports up to Next.js 12. Next.js 13+ is **not** supported at this time.
 
 </Callout>
+
+### Create a Next.js Application {/*create-a-nextjs-application*/}
+
+If you don't already have a Next.js application, you can create one using:
+
+```bash
+npx create-next-app@^latest
+```
 
 ### Initializing your Project {/*initializing-your-project*/}
 

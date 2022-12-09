@@ -165,7 +165,7 @@ Flag indicating whether the request was responded from edge (not true for cache 
 
 ### clv (number) {/*clv*/}
 
-Cache level on which the request was responded or 0 if it was a miss. ?? What are the other possible numbers ??
+Cache level on which the request was responded or 0 if it was a miss. Possible values are 0 - miss, 1 - Level 1 hit (edge), 2 - level 2 hit (global).
 
 ### stl (number) {/*stl*/}
 
@@ -215,10 +215,7 @@ If {{ COOKIE_PREFIX }}\_prefetch parameter was specified value of 1, otherwise n
 
 ### uv (string) {/*uv*/}
 
-??
-The response vary header received from upstream; it's sometimes different to what's sent downstream
-as we inject user-agent in moov_deliver, but it's this value what actually splits the cache;
-we don't have access to beresp from moov_log so we preserve it in req.
+Upstream response's `vary` header value.
 
 ### bip (string) {/*bip*/}
 
@@ -234,7 +231,7 @@ Accept-Encoding header value. Example: 'gzip'.
 
 ### asn (string) {/*asn*/}
 
-?
+The ASN for the (Autonomous System Number) for this IP.
 Example: '20940'.
 
 ### ce (string) {/*ce*/}
@@ -243,8 +240,7 @@ The normalized value of content encoding header as used by edge. Example: 'gzip'
 
 ### ckh (string) {/*ckh*/}
 
-?
-Example: '90a6336cc6fc9927831ddd5609222057d78d32d3bb2873ffe90eb1f9a8e53ec6'.
+Cache key hash.
 
 ### cv (string) {/*cv*/}
 
@@ -276,8 +272,7 @@ Postal code per geo-location. Example: '10020'
 
 ### prl (number) {/*prl*/}
 
-?
-Can be 0 or 1.
+Flag indicating if this was a preload request. Can be 0 or 1. 
 
 ### prod (number) {/*prod*/}
 
@@ -290,8 +285,7 @@ Example: 'NY'
 
 ### sec (string) {/*sec*/}
 
-?
-Example: '', 'ip_block_list'
+Security - set to "ip_block_list" if blocked by IP or "country_block_list" if blocked by country code on the edge.
 
 ### ssl (number) {/*ssl*/}
 
@@ -299,7 +293,7 @@ A flag that indicates whether the request was done on HTTPS protocol. Can be 0 o
 
 ### t (string) {/*t*/}
 
-? Timing information. More detail needed here about what is contained inside ('eh=4,ect=2,ecc=hit')
+Same as `xmt`. 
 
 ### v (string) {/*v*/}
 
@@ -311,6 +305,4 @@ Version of the WAF. Can be an empty string if WAF was not enabled, otherwise the
 
 ### xff (string) {/*xff*/}
 
-?
-Some kind of IPv6 address.
-Example: '2607:fb90:55ba:18f4:1888:d2cd:a160:37e9'
+The value of the header 'x-forwarded-for'.

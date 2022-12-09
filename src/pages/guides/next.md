@@ -31,7 +31,7 @@ This framework has a connector developed for {{ PRODUCT }}. See [Connectors](con
 
 ## Supported Versions {/*supported-versions*/}
 
-{{ PRODUCT_NAME }} supports Next version 9 through 12.
+{{ PRODUCT_NAME }} supports Next.js version 9 through 12.
 
 ## Supported Features {/*supported-features*/}
 
@@ -61,8 +61,14 @@ If you run into permission issues while attempting to install the {{ PRODUCT }} 
 If you don't already have a Next.js application, you can create one using:
 
 ```bash
-npx create-next-app@latest
+npx create-next-app@^12
 ```
+
+<Callout type="important">
+
+  {{ PRODUCT }} currently supports up to Next.js 12. Next.js 13+ is **not** supported at this time.
+
+</Callout>
 
 ### Initializing your Project {/*initializing-your-project*/}
 
@@ -188,7 +194,7 @@ const MyApp = ({Component, pageProps}) => {
 };
 ```
 
-The code above allows you to prefetch pages from {{ PRODUCT }}'s edge cache to greatly improve browsing speed. To prefetch a page, add the `Prefetch` component from `{{ PACKAGE_NAME }}/react` to any Next `Link` element. The example below shows you how to prefetch JSON data from `getServerSideProps` or `getStaticProps` using the `createNextDataUrl` function from `{{ PACKAGE_NAME }}/next/client`.
+The code above allows you to prefetch pages from {{ PRODUCT }}'s edge cache to greatly improve browsing speed. To prefetch a page, add the `Prefetch` component from `{{ PACKAGE_NAME }}/react` to any Next.js `Link` element. The example below shows you how to prefetch JSON data from `getServerSideProps` or `getStaticProps` using the `createNextDataUrl` function from `{{ PACKAGE_NAME }}/next/client`.
 
 ```js
 import {Prefetch} from '{{ PACKAGE_NAME }}/react';

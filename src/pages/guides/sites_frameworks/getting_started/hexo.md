@@ -12,6 +12,14 @@ This guide shows you how to deploy a [Hexo](https://hexo.io/) application to {{ 
   repoUrl="https://github.com/layer0-docs/layer0-hexo-example" 
   deployFromRepo />
 
+## Connector {/*connector*/}
+
+This framework has a connector developed for {{ PRODUCT }}. See [Connectors](connectors) for more information.
+
+<ButtonLink variant="stroke" type="code" withIcon={true} href="https://github.com/edgio-docs/edgio-connectors/tree/main/edgio-hexo-connector">
+ View the Connector Code
+</ButtonLink>
+
 {{ PREREQ }}
 
 ## Create a new Hexo app {/*create-a-new-hexo-app*/}
@@ -19,7 +27,7 @@ This guide shows you how to deploy a [Hexo](https://hexo.io/) application to {{ 
 If you don't already have a Hexo app, create one by running the following:
 
 ```bash
-npm install hexo-cli -g
+npm install -g hexo-cli
 hexo init blog
 cd blog
 npm install
@@ -41,58 +49,52 @@ In the root directory of your project run `{{ FULL_CLI_NAME }} init`:
 {{ FULL_CLI_NAME }} init
 ```
 
-This will automatically update your `package.json` and add all of the required {{ PRODUCT_NAME }} dependencies and files to your project. These include:
+This will automatically update your `package.json` and add all of the required {{ PRODUCT }} dependencies and files to your project. These include:
 
-- The `{{ PACKAGE_NAME }}/core` package - Allows you to declare routes and deploy your application on {{ PRODUCT }}
-- The `{{ PACKAGE_NAME }}/prefetch` package - Allows you to configure a service worker to prefetch and cache pages to improve browsing speed
-- `{{ CONFIG_FILE }}` - A configuration file for {{ PRODUCT }}
-- `routes.js` - A default routes file that sends all requests to Hexo.
+- The `{{ PACKAGE_NAME }}/core` package
+- The `{{ PACKAGE_NAME }}/cli` package
+- The `{{ PACKAGE_NAME }}/hexo` package
+- `{{ CONFIG_FILE }}`- Contains various configuration options for {{ PRODUCT }}.
+- `routes.js` - A default routes file that sends all requests to Hexo. Update this file to add caching or proxy some URLs to a different origin.
 
-### Configure the routes {/*configure-the-routes*/}
+## Routing {/*routing*/}
 
-Update `routes.js` at the root of your project to the following:
+The default `routes.js` file created by `{{ FULL_CLI_NAME }} init` sends all requests to Hexo server via a fallback route.
 
 ```js
-// This file was added by {{ FULL_CLI_NAME }} init.
+// This file was automatically added by {{ FULL_CLI_NAME }} deploy.
 // You should commit this file to source control.
-
-import { Router } from '{{ PACKAGE_NAME }}/core/router'
-
+const { hexoRoutes } = require('{{ PACKAGE_NAME }}/hexo')
+const { Router } = require('{{ PACKAGE_NAME }}/core/router')
 export default new Router()
-  // Create serveStatic route for each file in the folder public with a cache-control header of 's-maxage=315360000'
-  .static('public')
+  // Prevent search engine bot(s) from indexing
+  // Read more on: {{ DOCS_URL }}/guides/cookbook#blocking-search-engine-crawlers
+  .noIndexPermalink()
+  .use(hexoRoutes)
 ```
 
-Refer to the [CDN-as-code](/guides/performance/cdn_as_code) guide for the full syntax of the `routes.js` file and how to configure it for your use case.
+## Running Locally {/*running-locally*/}
 
-### Run the Hexo app locally on {{ PRODUCT }} {/*run-the-hexo-app-locally-on*/}
-
-Create a production build of your app by running the following in your project's root directory:
+To test your app locally, run:
 
 ```bash
-npm run build
+{{ FULL_CLI_NAME }} run
 ```
 
-Test your app with the {{ PRODUCT_PLATFORM }} on your local machine by running the following command in your project's root directory:
+You can do a production build of your app and test it locally using:
 
 ```bash
-{{ FULL_CLI_NAME }} dev
+{{ FULL_CLI_NAME }} build && {{ FULL_CLI_NAME }} run --production
 ```
 
-Load the site http://127.0.0.1:3000
+Setting `--production` runs your app exactly as it will be when deployed to the {{ PRODUCT }} cloud.
 
-## Deploying {/*deploying*/}
+## Deploy to {{ PRODUCT }} {/*deploy-to*/}
 
-Create a production build of your app by running the following in your project's root directory:
-
-```bash
-npm run build
-```
-
-Deploy your app to the {{ PRODUCT_PLATFORM }} by running the following command in your project's root directory:
+Deploy your app to the {{ PRODUCT_PLATFORM }} by running the following commands in your project's root directory:
 
 ```bash
 {{ FULL_CLI_NAME }} deploy
 ```
 
-Refer to the [Deployments](/guides/basics/deployments) guide for more information on the `deploy` command and its options.
+See [deploying](deploy_apps) for more information.

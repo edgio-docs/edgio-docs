@@ -123,14 +123,14 @@ export default function DocsResources({children}: {children: React.ReactNode}) {
           icon={BiGlobe}
           title="Limelight Delivery"
           subtitle="Content delivery network service, used for delivery of digital media content and software."
-          href=""
+          href="https://support.limelight.com/public/en/Default.htm"
           hrefText="View Docs"
         />
         <ResourceCard
           icon={BsArrowsFullscreen}
           title="Edgecast Delivery"
           subtitle="Developer tools for quickly deploying edge-enabled solutions for web, events and streaming content. "
-          href="https://docs.edgecast.com/cdn/"
+          href="https://docs.edgecast.com/cdn"
           hrefText="View Docs"
         />
       </div>

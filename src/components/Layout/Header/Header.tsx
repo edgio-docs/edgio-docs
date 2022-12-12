@@ -132,6 +132,25 @@ const StyledHeader = styled.header`
   }
 `;
 
+const StyledHeaderLinks = styled.div`
+  display: block;
+  text-align: center;
+  color: #fff;
+  background: var(--lg-primary);
+  font-size: calc(1rem - 2px);
+  padding: 1em;
+  text-decoration: none;
+  font-weight: 500;
+
+  a {
+    color: #fff;
+    text-decoration: none;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+`;
+
 declare global {
   interface Window {
     __theme: string;
@@ -199,86 +218,91 @@ export default function Header({
   setShowSidebar: (showSidebar: boolean) => void;
 }) {
   return (
-    <StyledHeader className="docs-header">
-      <div className="col-1">
-        <div id="desktop">
-          <Link href="/" passHref>
-            <a aria-label="go to the hompage">
-              <div className="logo-box" id="light-theme">
-                <Image
-                  src={EdgioDark}
-                  width="66"
-                  height="26"
-                  alt="Edgio"
-                  unoptimized
-                  priority
-                />
-              </div>
-              <div className="logo-box" id="dark-theme">
-                <Image
-                  src={EdgioLight}
-                  width="66"
-                  height="26"
-                  alt="Edgio"
-                  unoptimized
-                  priority
-                />
-              </div>
-            </a>
-          </Link>
-        </div>
-        <div id="mobile">
-          <Link href="/" passHref>
-            <a>
-              <div className="logo-box">
-                <IconLightMobileLogo className="logo" />
-              </div>
-            </a>
-          </Link>
-        </div>
-      </div>
-      <div className="col-2">
-        <div id="desktop" className="desktop">
-          <div className="search-form__box">
-            <NoSSRWrapper>
-              <DocSearch
-                appId={algoliaAppId}
-                indexName={indexName}
-                apiKey={algoliaApiKey}
-                transformItems={transformItems}
-              />
-            </NoSSRWrapper>
+    <>
+      <StyledHeaderLinks className="docs-header-links">
+        <div>Fiddle | Support | Status </div>
+      </StyledHeaderLinks>
+      <StyledHeader className="docs-header">
+        <div className="col-1">
+          <div id="desktop">
+            <Link href="/" passHref>
+              <a aria-label="go to the hompage">
+                <div className="logo-box" id="light-theme">
+                  <Image
+                    src={EdgioDark}
+                    width="66"
+                    height="26"
+                    alt="Edgio"
+                    unoptimized
+                    priority
+                  />
+                </div>
+                <div className="logo-box" id="dark-theme">
+                  <Image
+                    src={EdgioLight}
+                    width="66"
+                    height="26"
+                    alt="Edgio"
+                    unoptimized
+                    priority
+                  />
+                </div>
+              </a>
+            </Link>
           </div>
-          <ToggleTheme />
-          <ExternalLink href="https://app.layer0.co/?sgId=ef4d5169-93f2-4f55-aabb-dc3be4286e1f">
-            Login
-          </ExternalLink>
-          <ExternalLink href="https://app.layer0.co/signup?redirectTo=%2F&sgId=ef4d5169-93f2-4f55-aabb-dc3be4286e1f">
-            Sign up
-          </ExternalLink>
-        </div>
-        <div id="mobile">
-          <div className="search-form__box">
-            <NoSSRWrapper>
-              <DocSearch
-                appId={algoliaAppId}
-                indexName={indexName}
-                apiKey={algoliaApiKey}
-                transformItems={transformItems}
-              />
-            </NoSSRWrapper>
+          <div id="mobile">
+            <Link href="/" passHref>
+              <a>
+                <div className="logo-box">
+                  <IconLightMobileLogo className="logo" />
+                </div>
+              </a>
+            </Link>
           </div>
-          <ToggleTheme />
-          <button
-            aria-label="expand the side menu"
-            type="button"
-            className="mobile-menu"
-            onClick={() => setShowSidebar(!showSidebar)}>
-            <IconHamburger />
-          </button>
         </div>
-      </div>
-    </StyledHeader>
+        <div className="col-2">
+          <div id="desktop" className="desktop">
+            <div className="search-form__box">
+              <NoSSRWrapper>
+                <DocSearch
+                  appId={algoliaAppId}
+                  indexName={indexName}
+                  apiKey={algoliaApiKey}
+                  transformItems={transformItems}
+                />
+              </NoSSRWrapper>
+            </div>
+            <ToggleTheme />
+            <ExternalLink href="https://app.layer0.co/?sgId=ef4d5169-93f2-4f55-aabb-dc3be4286e1f">
+              Login
+            </ExternalLink>
+            <ExternalLink href="https://app.layer0.co/signup?redirectTo=%2F&sgId=ef4d5169-93f2-4f55-aabb-dc3be4286e1f">
+              Sign up
+            </ExternalLink>
+          </div>
+          <div id="mobile">
+            <div className="search-form__box">
+              <NoSSRWrapper>
+                <DocSearch
+                  appId={algoliaAppId}
+                  indexName={indexName}
+                  apiKey={algoliaApiKey}
+                  transformItems={transformItems}
+                />
+              </NoSSRWrapper>
+            </div>
+            <ToggleTheme />
+            <button
+              aria-label="expand the side menu"
+              type="button"
+              className="mobile-menu"
+              onClick={() => setShowSidebar(!showSidebar)}>
+              <IconHamburger />
+            </button>
+          </div>
+        </div>
+      </StyledHeader>
+    </>
   );
 }
 

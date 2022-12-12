@@ -166,7 +166,7 @@ An access log file may contain the following fields:
 -   **jwt (*String*):** <a id="jwt" /> Reserved for future use.
 -   **lo (*String*):** <a id="lo" /> Indicates the longitude (e.g., `-73.98`) from which the request originated. 
 -   **lp (*Number*):** <a id="lp" /> Indicates whether a static loading page was served as a result of Incremental Static (Re)Generation. Returns `1` when a landing page was served and `0` for all other responses.
--   **lt (*String*):** <a id="lt" /> Indicates the lattitude (e.g., `40.76`) from which the request originated.
+-   **lt (*String*):** <a id="lt" /> Indicates the latitude (e.g., `40.76`) from which the request originated.
 -   **met (*String*):** <a id="met" /> Indicates the request's HTTP method (e.g., `GET`, `HEAD`, and `POST`).
 -   **pc (*String*):** <a id="pc" /> Indicates the postal code from which the request originated (e.g., `90405`).
 -   **pre (*Number*):** <a id="pre" /> Indicates whether the request was prefetched. Returns `1` for requests that have the `{{ COOKIE_PREFIX }}_prefetch=1` query string parameter and `0` for all other requests.
@@ -208,4 +208,3 @@ An access log file may contain the following fields:
 - AWS Athena | [[docs]](https://aws.amazon.com/blogs/big-data/analyzing-data-in-s3-using-amazon-athena/)
 - Splunk | [[S3 ingest docs]](https://docs.splunk.com/Documentation/AddOns/released/AWS/S3)
 - Loggly | [[S3 ingest docs]](https://documentation.solarwinds.com/en/Success_Center/loggly/Content/admin/s3-ingestion-auto.htm)
-

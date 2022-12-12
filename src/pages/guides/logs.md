@@ -52,183 +52,257 @@ Note that if you are not an Enterprise tier customer you will see a message to c
 
 Access logs contain the following fields:
 
-### timestamp {/*timestamp*/}
+### timestamp (number) {/*timestamp*/}
 
 Millisecond resolution of the request start time in UNIX epoch.
 
-### {{ PRODUCT_NAME_LOWER }} {/*layer0*/}
+### bld (string) {/*bld*/}
 
-The application's {{ PRODUCT_NAME }} version processing this request.
+The application's build number processing this request. Example '1021'.
 
-### bld {/*bld*/}
-
-The application's build number processing this request.
-
-### eid {/*eid*/}
+### eid (string) {/*eid*/}
 
 The active environment ID in {{ PRODUCT_NAME }}.
 
 _Available since {{ PRODUCT_NAME }} v2.9.0._
 
-### ev {/*ev*/}
+### ev (number) {/*ev*/}
 
-The active environment version number.
+The active environment version number. Example 95 (number). 
 
-### ip {/*ip*/}
+### ip (string) {/*ip*/}
 
 IP of the most downstream client, determined either through XFF or by reading socket information.
 
-### met {/*met*/}
+### met (string) {/*met*/}
 
 HTTP method.
 
-### hh {/*hh*/}
+### hh (string) {/*hh*/}
 
 Host header as received from the downstream.
 
-### url {/*url*/}
+### url (string) {/*url*/}
 
 HTTP path.
 
-### h2 {/*h2*/}
+### h2 (string) {/*h2*/}
 
-Flag indicating whether downstream connection is http/2 or not.
+Flag indicating whether downstream connection is http/2 or not. Can be '0' or '1'. 
 
-### psh {/*psh*/}
+### psh (number) {/*psh*/}
 
-Flag indicating whether this request is an http/2 server-side push or not.
+Flag indicating whether this request is an http/2 server-side push or not. Can be 0 or 1. 
 
-### code {/*code*/}
+### code (string) {/*code*/}
 
 HTTP response status code.
 
-### ic {/*ic*/}
+### ic (integer) {/*ic*/}
 
-Flag indicating whether this request was cacheable even in theory.
+Flag indicating whether this request was cacheable even in theory. Can be 0 or 1. 
 
-### cc {/*cc*/}
+### cc (string) {/*cc*/}
 
 Country code per geo-location.
 
-### s_rq {/*s_rq*/}
+### s_rq (number) {/*s_rq*/}
 
 Size of the request in bytes.
 
-### s_rs {/*s_rs*/}
+### s_rs (number) {/*s_rs*/}
 
 Size of the response in bytes.
 
-### ds {/*ds*/}
+### ds (string) {/*ds*/}
 
 Destination, determined by split testing rules, if any; if no rules, the value is left as the default router.
 
-### be {/*be*/}
+### be (string) {/*be*/}
 
 Backend, determined by the routing rules. The names come from the `backends` structure exported from your `{{ CONFIG_FILE }}` file.
 
-### bk {/*bk*/}
+### bk (string) {/*bk*/}
 
 Split testing bucket cookie value.
 
-### zip {/*zip*/}
+### zip (string) {/*zip*/}
 
-Flag indicating whether the response is compressed or not.
+Flag indicating whether the response is compressed or not. Can be '0' or '1'. 
 
-### rid {/*rid*/}
+### rid (string) {/*rid*/}
 
 Unique request ID.
 
-### waf {/*waf*/}
+### waf (string) {/*waf*/}
 
 WAF security state: geo for geo blocking, bl for block list, dl-{list name} for dynamic lists
 if the request was blocked; wl for allow list, by for bypass if the request was passed.
 
-### sh {/*sh*/}
+### sh (number) {/*sh*/}
 
-Flag indicating whether the request was shielded.
+Flag indicating whether the request was shielded. Can be 0 or 1. 
 
-### dv {/*dv*/}
+### dv (string) {/*dv*/}
 
 Device type desktop, smartphone, tablet, mobile.
 
-### vn {/*vn*/}
+### vn (string) {/*vn*/}
 
 Vendor: apple, microsoft, android.
 
-### br {/*br*/}
+### br (string) {/*br*/}
 
 Browser: chrome, safari, firefox.
 
-### bot {/*bot*/}
+### bot (number) {/*bot*/}
 
-Flag indicating whether the request was made by a bot.
+Flag indicating whether the request was made by a bot. Can be 0 or 1. 
 
-### er {/*er*/}
+### er (number) {/*er*/}
 
-Flag indicating whether the request was responded from edge (not true for cache hits, just for synthetic requests).
+Flag indicating whether the request was responded from edge (not true for cache hits, just for synthetic requests). Can be 0 or 1. 
 
-### clv {/*clv*/}
+### clv (number) {/*clv*/}
 
-Cache level on which the request was responded or 0 if it was a miss.
+Cache level on which the request was responded or 0 if it was a miss. Possible values are 0 - miss, 1 - Level 1 hit (edge), 2 - level 2 hit (global).
 
-### stl {/*stl*/}
+### stl (number) {/*stl*/}
 
-Indicates if the response was stale or not (0, 1).
+Indicates if the response was stale or not. Can be 0 or 1.
 
-### done {/*done*/}
+### done (string) {/*done*/}
 
-Flag indicating if the response has completed (analogous to 499 in Nginx).
+Flag indicating if the response has completed (analogous to 499 in Nginx). '0' or '1'. 
 
-### cs {/*cs*/}
+### cs (string) {/*cs*/}
 
 [Caching status](/guides/caching#section_why_is_my_response_not_being_cached_) (why something was or wasn't cached).
 
-### ct {/*ct*/}
+### ct (string) {/*ct*/}
 
 Response content type.
 
-### xmr {/*xmr*/}
+### xmr (string) {/*xmr*/}
 
 Request header {{ HEADER_PREFIX }}-matched-routes, logs all routes matched and is required to order the routes table in caching metrics.
 
-### rfr {/*rfr*/}
+### rfr (string) {/*rfr*/}
 
 Referrer request header (note the misspelling per HTTP standard).
 
-### ua {/*ua*/}
+### ua (string) {/*ua*/}
 
 User agent.
 
-### xmt {/*xmt*/}
+### xmt (string) {/*xmt*/}
 
 Response [{{ HEADER_PREFIX }}-t](/guides/response_headers#section_structure_of_) header with different critical path timings.
+Example: 'eh=4,ect=2,ecc=hit'.
 
-### xut {/*xut*/}
+### xut (string) {/*xut*/}
 
 Response {{ HEADER_PREFIX }}-user-t header with different user [performance](/guides/performance) metrics.
+Example: fetch:/path=123
 
-### xms {/*xms*/}
+### xms (string) {/*xms*/}
 
-Response {{ HEADER_PREFIX }}-status header with different critical path status codes.
+Response {{ HEADER_PREFIX }}-status header with different critical path status codes. Example: 'eh=200,ed=200,gh=200,gd=200,p=200,w=200'.
 
-### pre {/*pre*/}
+### pre (number or not present) {/*pre*/}
 
 If {{ COOKIE_PREFIX }}\_prefetch parameter was specified value of 1, otherwise not present.
 
-### ttl {/*ttl*/}
+### uv (string) {/*uv*/}
 
-Time to live in seconds of the response if it was cached.
+Upstream response's `vary` header value.
 
-### uv {/*uv*/}
-
-The response vary header received from upstream; it's sometimes different to what's sent downstream
-as we inject user-agent in moov_deliver, but it's this value what actually splits the cache;
-we don't have access to beresp from moov_log so we preserve it in req.
-
-### bip {/*bip*/}
+### bip (string) {/*bip*/}
 
 IP of the backend that responded to the request.
 
-### hrid {/*hrid*/}
+### hrid (string) {/*hrid*/}
 
 Request ID of the response hit in the cache. Corresponds to [`{{ HEADER_PREFIX }}-hit-request-id`](response_headers#section_general_headers) response header.
+
+### ac (string) {/*ac*/}
+
+Accept-Encoding header value. Example: 'gzip'.
+
+### asn (string) {/*asn*/}
+
+The ASN for the (Autonomous System Number) for this IP.
+Example: '20940'.
+
+### ce (string) {/*ce*/}
+
+The normalized value of content encoding header as used by edge. Example: 'gzip'.
+
+### ckh (string) {/*ckh*/}
+
+Cache key hash.
+
+### cv (string) {/*cv*/}
+
+Edgio edge compiler version. Example '1.7.3'.
+
+### cy (string) {/*cy*/}
+
+City name per geo-location. Example: 'new york'.
+
+### jwt (string) {/*jwt*/}
+
+Value of the recommended action per JWT parsing. Can be one of "", "blocked", "permit", "redirect".
+
+### lo (string) {/*lo*/}
+
+Geographical longitude per geo-location. Example '-73.98'.
+
+### lt (string) {/*lt*/}
+
+Geographical latitude per geo-location. Example '40.76'.
+
+### lp (number) {/*lp*/}
+
+Flag indicating if loading page was served during incremental static rendering. Can be 0 or 1 (number).
+
+### pc (string) {/*pc*/}
+
+Postal code per geo-location. Example: '10020'
+
+### prl (number) {/*prl*/}
+
+Flag indicating if this was a preload request. Can be 0 or 1. 
+
+### prod (number) {/*prod*/}
+
+Indicates whether this request belongs to the production environment. Can be 0 or 1 (number).
+
+### sc (string) {/*sc*/}
+
+State code as per geo-location
+Example: 'NY'
+
+### sec (string) {/*sec*/}
+
+Security - set to "ip_block_list" if blocked by IP or "country_block_list" if blocked by country code on the edge.
+
+### ssl (number) {/*ssl*/}
+
+A flag that indicates whether the request was done on HTTPS protocol. Can be 0 or 1.
+
+### t (string) {/*t*/}
+
+Same as `xmt`. 
+
+### v (string) {/*v*/}
+
+Layer0/Edgio platform version. Example: '4.19.3'
+
+### wafv (string) {/*wafv*/}
+
+Version of the WAF. Can be an empty string if WAF was not enabled, otherwise the version of the WAF (like 'WAF-1,2').
+
+### xff (string) {/*xff*/}
+
+The value of the header 'x-forwarded-for'.

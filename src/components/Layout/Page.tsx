@@ -2,6 +2,8 @@ import {useRouter} from 'next/router';
 import * as React from 'react';
 import styled from 'styled-components';
 
+import {PRODUCT} from '../../../constants';
+
 import Header from './Header/Header';
 import SideNav from './Sidebar/Sidenav';
 import {useIsMobile} from './useMediaQuery';
@@ -62,6 +64,34 @@ const StyledMainPage = styled.div`
   }
 `;
 
+const StyledBanner = styled.div`
+  display: block;
+  text-align: center;
+  color: #fff;
+  background: var(--lg-primary);
+  font-size: calc(1rem - 2px);
+  padding: 1em;
+  text-decoration: none;
+  font-weight: 500;
+
+  a {
+    color: #fff;
+    text-decoration: none;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+`;
+
+function Banner() {
+  return (
+    <StyledBanner>
+      🎉 Introducing {PRODUCT} v6 which supports Node.js v16.{' '}
+      <a href="/guides/reference/v6_migration">Learn how to upgrade.</a> 🎉
+    </StyledBanner>
+  );
+}
+
 export function Page({routeTree, children}: PageProps) {
   const isMobile = useIsMobile(850);
   const [showSidebar, setShowSidebar] = React.useState(isMobile);
@@ -73,6 +103,7 @@ export function Page({routeTree, children}: PageProps) {
 
   return (
     <StyledMainPage>
+      <Banner />
       <Header {...{showSidebar, setShowSidebar}} />
       <SidebarContext.Provider value={routeTree}>
         <main className="docs-content">

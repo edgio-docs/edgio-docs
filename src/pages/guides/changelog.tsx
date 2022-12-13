@@ -152,8 +152,8 @@ export async function getServerSideProps() {
   ];
 
   // split the major release versions
-  const [v5, v4, v3] = splitByVersion(/^v5/, /^v4/, /^v3/);
-  const content = await markdownToHtml(v5);
+  const [v6, v5, v4, v3] = splitByVersion(/^v6/, /^v5/, /^v4/, /^v3/);
+  const content = await markdownToHtml([v6, v5].join('\n'));
 
   return {props: {content}};
 }

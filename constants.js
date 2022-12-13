@@ -38,7 +38,7 @@ const DOCS_PAGES_REPO_URL = `https://${DOCS_PAGES_DOMAIN}`;
 const LOGIN_URL = `${APP_URL}/?sgId=ef4d5169-93f2-4f55-aabb-dc3be4286e1f`;
 const PORTAL = `[${COMPANY_NAME} Developer console](${LOGIN_URL})`;
 
-const NODE_VERSION = '14.x';
+const NODE_VERSION = '16.x';
 const STARTER_NAME = 'layer0-app';
 const EDGEJS_LABEL = 'EdgeJS';
 
@@ -65,11 +65,11 @@ const EXAMPLES_REPOS = {
 
 const SYSTEM_REQUIREMENTS = `## System Requirements {/*system-requirements*/}
 
-- [Install Node.js 14.19.0](/guides/install_nodejs)`;
+- [Install Node.js 16.16.0](/guides/install_nodejs)`;
 
 const SYSTEM_REQUIREMENTS_H3 = `### System Requirements {/*system-requirements*/}
 
-- [Install Node.js 14.19.0](/guides/install_nodejs)`;
+- [Install Node.js 16.16.0](/guides/install_nodejs)`;
 
 const SIGN_UP = `## Sign up for ${PRODUCT} {/*sign-up*/}
 

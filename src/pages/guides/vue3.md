@@ -8,8 +8,8 @@ title: Vue 3
 
 <ExampleButtons
   title="Vue 3"
-  repoUrl="https://github.com/edgio-docs/edgio-vue-3-example"
-  siteUrl="https://layer0-docs-layer0-vue-3-example-default.layer0-limelight.link"
+  repoUrl="https://github.com/edgio-docs/edgio-vue3-example"
+  siteUrl="https://layer0-docs-layer0-vue3-example-default.layer0-limelight.link/"
   deployFromRepo />
 
 ## Connector {/*connector*/}

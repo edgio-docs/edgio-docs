@@ -1,20 +1,12 @@
-name: Deploy to production (docs.edg.io)
+name: Validate Example Sites
 on:
-  push:
-    branches:
-      - main
+  schedule:
+    - cron: '0 0 * * *'
+  workflow_dispatch:
 jobs:
-  deploy:
-    if: "!contains(github.event.repository.name, 'layer0-docs-internal')"
+  issue:
     runs-on: ubuntu-latest
     steps:
-      - name: Extract branch name
-        shell: bash
-        run: echo "BRANCH_NAME=$(echo ${GITHUB_REF#refs/heads/} | sed 's/[^[:alnum:].-]/-/g')" >> $GITHUB_ENV
-      - name: Cancel Previous Runs
-        uses: styfle/cancel-workflow-action@0.9.1
-        with:
-          access_token: ${{ github.token }}
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
         with:
@@ -31,5 +23,6 @@ jobs:
             ${{ runner.os }}-build-
             ${{ runner.os }}-
       - run: yarn --frozen-lockfile
-      - name: Deploy to docs.edg.io (prod)
-        run: yarn edgio:deploy --branch=$BRANCH_NAME --token=${{secrets.layer0_prod_deploy_token}} --environment=production
+      - name: Validate Guide Example Links
+        shell: bash
+        run: node ./scripts/validateExampleLinks.js

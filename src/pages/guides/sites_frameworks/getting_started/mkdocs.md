@@ -62,8 +62,6 @@ const { Router } = require('{{ PACKAGE_NAME }}/core/router')
 const { mkdocsRoutes } = require('{{ PACKAGE_NAME }}/mkdocs')
 
 export default new Router()
-  // Prevent search engines from indexing permalink URLs
-  .noIndexPermalink()
   .use(mkdocsRoutes)
 ```
 

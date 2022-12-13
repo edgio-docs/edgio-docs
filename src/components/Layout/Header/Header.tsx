@@ -13,13 +13,15 @@ import {IconLightMobileLogo} from 'components/Icon/IconMobileLogo';
 import {siteConfig} from 'siteConfig';
 import useTheme from 'utils/hooks/useTheme';
 
-const StyledHeader = styled.header`
+const StyledWrapper = styled.div`
   position: sticky;
   top: 0;
   z-index: 1000;
-  background-color: var(--bg-secondary);
   width: 100%;
-  height: var(--header-height);
+  background-color: var(--bg-secondary);
+`;
+
+const StyledHeader = styled.header`
   box-shadow: inset 0 -1px var(--shadow-primary);
   padding: 0 24px;
   display: grid;
@@ -134,16 +136,19 @@ const StyledHeader = styled.header`
 
 const StyledHeaderLinks = styled.div`
   display: block;
-  text-align: center;
-  color: #fff;
-  background: var(--lg-primary);
+  text-align: right;
   font-size: calc(1rem - 2px);
   padding: 1em;
   text-decoration: none;
   font-weight: 500;
 
+  li {
+    display: inline-block;
+    padding: 0 10px;
+  }
+
   a {
-    color: #fff;
+    color: var(--text-primary);
     text-decoration: none;
     &:hover {
       text-decoration: underline;
@@ -210,18 +215,48 @@ function transformItems(items: any) {
   }));
 }
 
+const headerLinks = [
+  [
+    'Fiddle',
+    'https://fiddle.layer0.co/?sgId=7bc47c45-c1d6-4189-b416-552581d86006',
+  ],
+  ['Forums', 'https://forum.edg.io/?sgId=7bc47c45-c1d6-4189-b416-552581d86006'],
+  [
+    'Status',
+    'https://status.edg.io/?sgId=7bc47c45-c1d6-4189-b416-552581d86006',
+  ],
+  [
+    'Support',
+    'https://app.layer0.co/help?sgId=7bc47c45-c1d6-4189-b416-552581d86006',
+  ],
+];
+
 export default function Header({
   showSidebar,
   setShowSidebar,
+  isMobile,
 }: {
   showSidebar: boolean;
   setShowSidebar: (showSidebar: boolean) => void;
+  isMobile: boolean;
 }) {
   return (
-    <>
-      <StyledHeaderLinks className="docs-header-links">
-        <div>Fiddle | Support | Status </div>
-      </StyledHeaderLinks>
+    <StyledWrapper>
+      {!isMobile && (
+        <StyledHeaderLinks className="docs-header-links">
+          <ul className="header-links">
+            {headerLinks.map(([title, href]) => {
+              return (
+                <li className="header-link" key={href}>
+                  <ExternalLink title={title} href={href}>
+                    {title}
+                  </ExternalLink>
+                </li>
+              );
+            })}
+          </ul>
+        </StyledHeaderLinks>
+      )}
       <StyledHeader className="docs-header">
         <div className="col-1">
           <div id="desktop">
@@ -273,9 +308,6 @@ export default function Header({
               </NoSSRWrapper>
             </div>
             <ToggleTheme />
-            <ExternalLink href="https://app.layer0.co/?sgId=ef4d5169-93f2-4f55-aabb-dc3be4286e1f">
-              Login
-            </ExternalLink>
             <ExternalLink href="https://app.layer0.co/signup?redirectTo=%2F&sgId=ef4d5169-93f2-4f55-aabb-dc3be4286e1f">
               Sign up
             </ExternalLink>
@@ -302,7 +334,7 @@ export default function Header({
           </div>
         </div>
       </StyledHeader>
-    </>
+    </StyledWrapper>
   );
 }
 

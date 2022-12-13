@@ -103,8 +103,8 @@ export function Page({routeTree, children}: PageProps) {
 
   return (
     <StyledMainPage>
-      <Banner />
-      <Header {...{showSidebar, setShowSidebar}} />
+      {!isMobile && <Banner />}
+      <Header {...{showSidebar, setShowSidebar, isMobile}} />
       <SidebarContext.Provider value={routeTree}>
         <main className="docs-content">
           <div

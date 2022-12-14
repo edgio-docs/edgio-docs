@@ -2,7 +2,7 @@
   display: table-row;
 }
 .line-num {
-  z-index: 10;
+  z-index: 1;
 }
 .line-highlight {
   background: #393939;

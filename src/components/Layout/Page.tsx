@@ -14,28 +14,38 @@ interface PageProps {
   children: React.ReactNode;
 }
 
-const StyledMainPage = styled.div`
+interface IStyledMainPageProps {
+  isBannerHidden: boolean;
+}
+
+const StyledMainPage = styled.div.attrs<IStyledMainPageProps>((props) => ({
+  isBannerHidden: props.isBannerHidden || false,
+}))<IStyledMainPageProps>`
   --sidebar-width: 280px;
+  --mult: ${(props) => (props.isBannerHidden ? 1 : 2)};
+  display: grid;
+  grid-template-rows: calc(var(--header-height) * var(--mult)) 1fr;
 
   .docs-content {
     width: 100%;
     display: flex;
+    padding-top: 8px;
 
     .docs-side__nav {
-      position: sticky;
       left: 0px;
-      top: calc(var(--header-height) + 8px);
-      border-radius: 4px;
-      height: calc(100vh - var(--header-height) - 16px);
       width: var(--sidebar-width);
-      overflow: auto;
+      overflow: hidden;
       user-select: none;
-      padding: calc(var(--header-height) / 2) 0;
       z-index: 2;
-      background-color: var(--bg-secondary);
       will-change: transform;
       transition: transform 0.2s;
-      margin-left: 8px;
+      top: 0;
+      display: grid;
+      align-items: center;
+      position: sticky;
+      height: calc(100vh - (var(--header-height) * var(--mult)) - 16px);
+      background-color: var(--bg-primary);
+      top: calc(var(--header-height) * var(--mult));
 
       &[data-open='true'] {
         position: fixed;
@@ -45,15 +55,14 @@ const StyledMainPage = styled.div`
       @media (max-width: 850px) {
         position: fixed;
         transform: translateX(calc(-1 * 100% - 8px));
-        width: calc(100% - 16px);
+        width: 100%;
       }
     }
 
     .docs-content__inner {
       flex: 1 1 0%;
-      min-height: calc(100vh - var(--header-height));
       position: relative;
-      margin: 8px 10px 8px 10px;
+      margin-bottom: 8px;
 
       .LayoutHome {
         max-width: 1000px;
@@ -70,24 +79,26 @@ const StyledBanner = styled.div`
   color: #fff;
   background: var(--lg-primary);
   font-size: calc(1rem - 2px);
-  padding: 1em;
   text-decoration: none;
   font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 24px;
 
   a {
     color: #fff;
-    text-decoration: none;
-    &:hover {
-      text-decoration: underline;
-    }
+    text-decoration: underline;
   }
 `;
 
-function Banner() {
+export function Banner() {
   return (
     <StyledBanner>
-      🎉 Introducing {PRODUCT} v6 which supports Node.js v16.{' '}
-      <a href="/guides/reference/v6_migration">Learn how to upgrade.</a> 🎉
+      <p>
+        🎉 Introducing {PRODUCT} v6 which supports Node.js v16.{' '}
+        <a href="/guides/reference/v6_migration">Learn how to upgrade</a> 🎉
+      </p>
     </StyledBanner>
   );
 }
@@ -96,20 +107,24 @@ export function Page({routeTree, children}: PageProps) {
   const isMobile = useIsMobile(850);
   const [showSidebar, setShowSidebar] = React.useState(isMobile);
   const router = useRouter();
+  const hideBanner = useIsMobile(600);
 
   React.useEffect(() => {
     router.events.on('routeChangeComplete', () => setShowSidebar(false));
   }, [router]);
 
+  React.useEffect(() => {
+    showSidebar
+      ? document.body.setAttribute('style', 'overflow:hidden;position:fixed')
+      : document.body.removeAttribute('style');
+  }, [showSidebar]);
+
   return (
-    <StyledMainPage>
-      <Banner />
-      <Header {...{showSidebar, setShowSidebar}} />
+    <StyledMainPage {...{isBannerHidden: hideBanner}}>
+      <Header {...{showSidebar, setShowSidebar, hideBanner}} />
       <SidebarContext.Provider value={routeTree}>
         <main className="docs-content">
-          <div
-            className="docs-side__nav custom-scrollbar"
-            data-open={isMobile && showSidebar}>
+          <div className="docs-side__nav" data-open={isMobile && showSidebar}>
             <SideNav />
           </div>
           <div className="docs-content__inner">{children}</div>

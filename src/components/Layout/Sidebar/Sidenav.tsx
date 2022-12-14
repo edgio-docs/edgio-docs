@@ -160,7 +160,13 @@ const StyledSideNav = styled.div`
   display: flex;
   row-gap: 2rem;
   flex-direction: column;
-  height: 100%;
+  background: var(--bg-secondary);
+  width: calc(100%);
+  margin: 0px auto;
+  border-radius: 4px;
+  padding: calc(var(--header-height) / 2) 0;
+  height: calc(100% - 8px);
+  overflow: auto;
 
   ul:not([data-nav-depth='0']) {
     position: absolute;
@@ -196,7 +202,7 @@ const StyledSideNav = styled.div`
 
     :first-of-type {
       flex: 1 1 0%;
-      overflow-y: auto;
+      /* overflow-y: auto; */
 
       + hr {
         height: 1px;
@@ -304,7 +310,7 @@ const links = [
 
 export default function SideNav() {
   return (
-    <StyledSideNav>
+    <StyledSideNav className="custom-scrollbar">
       <ul className="sidenav-sublist" data-nav-depth="0">
         <AccordionParent routes={(NavItems as IRoutes).routes} depth={0} />
       </ul>

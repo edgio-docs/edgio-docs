@@ -6,6 +6,7 @@ import styled from 'styled-components';
 import EdgioDark from '../../../../public/images/home/edgio-dark.webp';
 import EdgioLight from '../../../../public/images/home/edgio-light.webp';
 import NoSSRWrapper from '../NoSSRWrapper';
+import {Banner} from '../Page';
 
 import {ExternalLink} from 'components/ExternalLink';
 import {IconHamburger} from 'components/Icon/IconHamburger';
@@ -14,122 +15,125 @@ import {siteConfig} from 'siteConfig';
 import useTheme from 'utils/hooks/useTheme';
 
 const StyledHeader = styled.header`
+  .nav-items {
+    padding: 0 24px;
+    display: grid;
+    align-items: center;
+    grid-template-columns: auto auto;
+
+    > [class*='col'] {
+      display: flex;
+      align-items: center;
+    }
+
+    .col-1 {
+      .logo-box {
+        cursor: pointer;
+        align-items: center;
+      }
+
+      a {
+        text-decoration: none;
+      }
+    }
+
+    .col-2 {
+      display: flex;
+      justify-content: flex-end;
+
+      .desktop {
+        display: grid;
+        grid-template-columns: repeat(4, auto);
+        column-gap: 15px;
+        align-items: center;
+      }
+
+      .theme-switcher {
+        height: 32px;
+        width: 32px;
+        background-color: transparent;
+        border: none;
+        justify-content: center;
+        align-items: center;
+        padding: 0;
+
+        :hover {
+          cursor: pointer;
+          transform: scale(1.1);
+        }
+      }
+
+      a {
+        font-size: 14px;
+        line-height: 19px;
+        color: var(--text-primary);
+        text-decoration: none;
+        padding: 4px 12px;
+      }
+
+      a:last-of-type {
+        color: var(--colors-white0);
+        background: var(--lg-primary);
+        padding: 8px 12px;
+        font-weight: 600;
+        border-radius: 4px;
+      }
+    }
+
+    .search-form__box {
+      --dimension: 32px;
+      width: var(--dimension);
+      height: var(--dimension);
+    }
+
+    button[class*='mobile-menu'] {
+      background-color: transparent;
+      border: none;
+      cursor: pointer;
+      color: var(--text-primary);
+    }
+
+    #mobile {
+      display: none;
+    }
+
+    .DocSearch-Button {
+      background-color: transparent;
+    }
+
+    .DocSearch-Button-Placeholder {
+      display: none;
+    }
+
+    @media (max-width: 850px) {
+      #desktop {
+        display: none;
+      }
+
+      #mobile {
+        display: grid;
+        grid-template-columns: repeat(3, auto);
+        align-items: center;
+        column-gap: 15px;
+      }
+
+      .col-2 {
+        display: flex;
+      }
+
+      .col-3 {
+        display: flex;
+      }
+    }
+  }
+
   position: sticky;
   top: 0;
   z-index: 1000;
   background-color: var(--bg-secondary);
   width: 100%;
-  height: var(--header-height);
   box-shadow: inset 0 -1px var(--shadow-primary);
-  padding: 0 24px;
   display: grid;
-  grid-template-columns: auto auto;
-  align-content: center;
-
-  > [class*='col'] {
-    display: flex;
-    align-items: center;
-  }
-
-  .col-1 {
-    .logo-box {
-      cursor: pointer;
-      align-items: center;
-    }
-
-    a {
-      text-decoration: none;
-    }
-  }
-
-  .col-2 {
-    display: flex;
-    justify-content: flex-end;
-
-    .desktop {
-      display: grid;
-      grid-template-columns: repeat(4, auto);
-      column-gap: 15px;
-      align-items: center;
-    }
-
-    .theme-switcher {
-      height: 32px;
-      width: 32px;
-      background-color: transparent;
-      border: none;
-      justify-content: center;
-      align-items: center;
-      padding: 0;
-
-      :hover {
-        cursor: pointer;
-        transform: scale(1.1);
-      }
-    }
-
-    a {
-      font-size: 14px;
-      line-height: 19px;
-      color: var(--text-primary);
-      text-decoration: none;
-      padding: 4px 12px;
-    }
-
-    a:last-of-type {
-      color: var(--colors-white0);
-      background: var(--lg-primary);
-      padding: 8px 12px;
-      font-weight: 600;
-      border-radius: 4px;
-    }
-  }
-
-  .search-form__box {
-    --dimension: 32px;
-    width: var(--dimension);
-    height: var(--dimension);
-  }
-
-  button[class*='mobile-menu'] {
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
-    color: var(--text-primary);
-  }
-
-  #mobile {
-    display: none;
-  }
-
-  .DocSearch-Button {
-    background-color: transparent;
-  }
-
-  .DocSearch-Button-Placeholder {
-    display: none;
-  }
-
-  @media (max-width: 850px) {
-    #desktop {
-      display: none;
-    }
-
-    #mobile {
-      display: grid;
-      grid-template-columns: repeat(3, auto);
-      align-items: center;
-      column-gap: 15px;
-    }
-
-    .col-2 {
-      display: flex;
-    }
-
-    .col-3 {
-      display: flex;
-    }
-  }
 `;
 
 declare global {
@@ -194,88 +198,93 @@ function transformItems(items: any) {
 export default function Header({
   showSidebar,
   setShowSidebar,
+  hideBanner,
 }: {
   showSidebar: boolean;
   setShowSidebar: (showSidebar: boolean) => void;
+  hideBanner: boolean;
 }) {
   return (
     <StyledHeader className="docs-header">
-      <div className="col-1">
-        <div id="desktop">
-          <Link href="/" passHref>
-            <a aria-label="go to the hompage">
-              <div className="logo-box" id="light-theme">
-                <Image
-                  src={EdgioDark}
-                  width="66"
-                  height="26"
-                  alt="Edgio"
-                  unoptimized
-                  priority
-                />
-              </div>
-              <div className="logo-box" id="dark-theme">
-                <Image
-                  src={EdgioLight}
-                  width="66"
-                  height="26"
-                  alt="Edgio"
-                  unoptimized
-                  priority
-                />
-              </div>
-            </a>
-          </Link>
-        </div>
-        <div id="mobile">
-          <Link href="/" passHref>
-            <a>
-              <div className="logo-box">
-                <IconLightMobileLogo className="logo" />
-              </div>
-            </a>
-          </Link>
-        </div>
-      </div>
-      <div className="col-2">
-        <div id="desktop" className="desktop">
-          <div className="search-form__box">
-            <NoSSRWrapper>
-              <DocSearch
-                appId={algoliaAppId}
-                indexName={indexName}
-                apiKey={algoliaApiKey}
-                transformItems={transformItems}
-              />
-            </NoSSRWrapper>
+      {hideBanner ? <div /> : <Banner />}
+      <div className="nav-items">
+        <div className="col-1">
+          <div id="desktop">
+            <Link href="/" passHref>
+              <a aria-label="go to the hompage">
+                <div className="logo-box" id="light-theme">
+                  <Image
+                    src={EdgioDark}
+                    width="66"
+                    height="26"
+                    alt="Edgio"
+                    unoptimized
+                    priority
+                  />
+                </div>
+                <div className="logo-box" id="dark-theme">
+                  <Image
+                    src={EdgioLight}
+                    width="66"
+                    height="26"
+                    alt="Edgio"
+                    unoptimized
+                    priority
+                  />
+                </div>
+              </a>
+            </Link>
           </div>
-          <ToggleTheme />
-          <ExternalLink href="https://app.layer0.co/?sgId=ef4d5169-93f2-4f55-aabb-dc3be4286e1f">
-            Login
-          </ExternalLink>
-          <ExternalLink href="https://app.layer0.co/signup?redirectTo=%2F&sgId=ef4d5169-93f2-4f55-aabb-dc3be4286e1f">
-            Sign up
-          </ExternalLink>
-        </div>
-        <div id="mobile">
-          <div className="search-form__box">
-            <NoSSRWrapper>
-              <DocSearch
-                appId={algoliaAppId}
-                indexName={indexName}
-                apiKey={algoliaApiKey}
-                transformItems={transformItems}
-              />
-            </NoSSRWrapper>
+          <div id="mobile">
+            <Link href="/" passHref>
+              <a>
+                <div className="logo-box">
+                  <IconLightMobileLogo className="logo" />
+                </div>
+              </a>
+            </Link>
           </div>
-          <ToggleTheme />
-          <button
-            aria-label="expand the side menu"
-            type="button"
-            className="mobile-menu"
-            onClick={() => setShowSidebar(!showSidebar)}>
-            <IconHamburger />
-          </button>
+        </div>
+        <div className="col-2">
+          <div id="desktop" className="desktop">
+            <div className="search-form__box">
+              <NoSSRWrapper>
+                <DocSearch
+                  appId={algoliaAppId}
+                  indexName={indexName}
+                  apiKey={algoliaApiKey}
+                  transformItems={transformItems}
+                />
+              </NoSSRWrapper>
+            </div>
+            <ToggleTheme />
+            <ExternalLink href="https://app.layer0.co/?sgId=ef4d5169-93f2-4f55-aabb-dc3be4286e1f">
+              Login
+            </ExternalLink>
+            <ExternalLink href="https://app.layer0.co/signup?redirectTo=%2F&sgId=ef4d5169-93f2-4f55-aabb-dc3be4286e1f">
+              Sign up
+            </ExternalLink>
+          </div>
+          <div id="mobile">
+            <div className="search-form__box">
+              <NoSSRWrapper>
+                <DocSearch
+                  appId={algoliaAppId}
+                  indexName={indexName}
+                  apiKey={algoliaApiKey}
+                  transformItems={transformItems}
+                />
+              </NoSSRWrapper>
+            </div>
+            <ToggleTheme />
+            <button
+              aria-label="expand the side menu"
+              type="button"
+              className="mobile-menu"
+              onClick={() => setShowSidebar(!showSidebar)}>
+              <IconHamburger />
+            </button>
+          </div>
         </div>
       </div>
     </StyledHeader>

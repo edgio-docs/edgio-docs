@@ -5,7 +5,7 @@ title: Sites (Frameworks)
 {{ PRODUCT }} {{ PRODUCT_PLATFORM }}, which provides optimal performance for your headless Jamstack applications, is powered by [{{ PRODUCT }} {{ PRODUCT_EDGE }}](/guides/performance). This means that you will be able to develop your application at a faster rate and it empowers you to define performance optimizations within your application code. Additionally, you can build upon those performance improvements by setting up static page generation:
 -   At build time through Static Site Generation (SSG).
 -   After your site has been built through [Incremental Static Regeneration (ISR)](/guides/sites_frameworks/isg).
--   When a client requests a page through Server Side Rendering (SSR). SSR generates static pages through our Serverless Compute Lambda workers. This improves performance by processing requests closer to your clients and reduces the load on your web servers.
+-   When a client requests a page through Server-Side Rendering (SSR). SSR generates static pages through our Serverless Compute Lambda workers. This improves performance by processing requests closer to your clients and reduces the load on your web servers.
 
 {{ PRODUCT }} {{ PRODUCT_PLATFORM }} provides over [40 popular frameworks integrations](/guides/sites_frameworks/getting_started) through which you can deploy your headless Jamstack applications to {{ PRODUCT }}. Getting started with {{ PRODUCT }} {{ PRODUCT_PLATFORM }} involves initializing your {{ PRODUCT }} property through our CLI. Our CLI will then automatically detect your framework and configure your app accordingly.
 

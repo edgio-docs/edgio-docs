@@ -384,7 +384,7 @@ includeFiles: {
 
 The Nuxt team provides a renderer called [Nitro](https://www.npmjs.com/package/@nuxt/nitro) which optimizes your application for serverless deployment and greatly minimizes the size of your server application bundle. If you're running into the size limitation for serverless bundles (50MB), you might try adding Nitro to your app. As of June 2021 Nitro is still not production ready, so use at your own risk.
 
-{{ Product }} provides a connector specifically for Nuxt apps that use nitro called `{{ PACKAGE_NAME }}/nuxt-nitro`.
+{{ PRODUCT }} provides a connector specifically for Nuxt apps that use nitro called `{{ PACKAGE_NAME }}/nuxt-nitro`.
 
 To add Nitro to your app, make the following changes:
 

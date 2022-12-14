@@ -11,7 +11,7 @@ title: Sites (Frameworks)
 
 <Callout type="tip">
 
-  If you are still planning or developing your headless Jamstack application, then consider using our [Traffic Splitting](/guides/performance/traffic_splitting) capability to migrate to headless Jamstack in stages. 
+  If you are still planning or developing your headless Jamstack application, then consider using our [Traffic Splitting](/guides/performance/traffic_splitting) capability to migrate to headless Jamstack in stages.
 
 </Callout>
 
@@ -30,7 +30,7 @@ title: Sites (Frameworks)
 
 </Callout>
 
-## Limits  {/*limits*/}
+## Limits {/*limits*/}
 
 <a id="layer0-platform-caveats"></a>
 
@@ -123,8 +123,8 @@ Typically, this is due to node_modules marked as `dependencies` when they are mo
 
 ```diff
 "dependencies": {
-  "&#64;nuxtjs/sitemap": "2.4.0",
-  "&#64;nuxt/core": "2.15.7"
+  "@nuxtjs/sitemap": "2.4.0",
+  "@nuxt/core": "2.15.7"
 -   "babel": "7.12.7",
 -   "jest": "28.1.3"
 + },
@@ -152,28 +152,28 @@ Now, you can update your code references from importing the assets to referencin
 - import myImage from 'public/images/Image1.png'
 ...
 - <div><img src={myImage}/></div>
-+ <div><img src="/assets/images/Image1.png"/>
++ <div><img src="/assets/images/Image1.png"/></div>
 ```
 
 ### Possible Fix [3]: Computing which node_modules be included in the serverless bundle {/*possible-fix-3-computing-which-node_modules-be-included-in-the-serverless-bundle*/}
 
-It might be possible, that [Possible Fix [1]](#possible-fix-1-segregating-devdependencies-from-dependencies) reduces your serverless bundle size, but not reduce it to less than 50 MB (250 MB Uncompresssed). Another way to identify which dependencies would be required in the runtime is to use `&#64;vercel/nft` package (a "Node.js dependency tracing utility").
+It might be possible, that [Possible Fix [1]](#possible-fix-1-segregating-devdependencies-from-dependencies) reduces your serverless bundle size, but not reduce it to less than 50 MB (250 MB Uncompresssed). Another way to identify which dependencies would be required in the runtime is to use `@vercel/nft` package (a "Node.js dependency tracing utility").
 
-Step 1. Install `&#64;vercel/nft` as devDependency:
+Step 1. Install `@vercel/nft` as devDependency:
 
 ```bash
-npm i -D &#64;vercel/nft
+npm i -D @vercel/nft
 ```
 
 Step 2. Create a file named `setNodeModules.js` in the root directory of your project with the following code:
 
 ```javascript
 const fs = require('fs')
-const { nodeFileTrace } = require('&#64;vercel/nft')
+const { nodeFileTrace } = require('@vercel/nft')
 
 const setNodeModules = async () => {
   // Enter an entry point to the app, for example in Nuxt(2), the whole app inside core.js
-  const files = ['./node_modules/&#64;nuxt/core/dist/core.js']
+  const files = ['./node_modules/@nuxt/core/dist/core.js']
   // Compute file trace
   const { fileList } = await nodeFileTrace(files)
   // Store set of packages
@@ -194,4 +194,33 @@ const setNodeModules = async () => {
       Object.keys(packages)
         .sort()
         .reduce((obj, key) => {
-     ...</anonymous></anonymous>
+          obj[key] = packages[key]
+          return obj
+        }, {})
+    )}`
+  )
+}
+
+setNodeModules()
+```
+
+Step 3. Change your existing `package.json` to have `node setNodeModules.js` before each command as follows:
+
+```diff
+- "{{ PRODUCT_NAME_LOWER }}:dev": "{{ FULL_CLI_NAME }} dev",
+- "{{ PRODUCT_NAME_LOWER }}:build": "{{ FULL_CLI_NAME }} build",
+- "{{ PRODUCT_NAME_LOWER }}:deploy": "{{ FULL_CLI_NAME }} deploy"
+
++ "{{ PRODUCT_NAME_LOWER }}:dev": "node setNodeModules.js && {{ FULL_CLI_NAME }} dev",
++ "{{ PRODUCT_NAME_LOWER }}:build": "node setNodeModules.js && {{ FULL_CLI_NAME }} build",
++ "{{ PRODUCT_NAME_LOWER }}:deploy": "node setNodeModules.js && {{ FULL_CLI_NAME }} deploy"
+```
+
+Step 4. Change your `{{ CONFIG_FILE }}` to have:
+
+```js
+// {{ DOCS_URL }}/guides/basics/edgio_config
+module.exports = {
+  includeFiles: require('./getNodeModules'),
+}
+```

@@ -7,8 +7,8 @@ export const siteConfig = {
   twitterUrl: 'https://twitter.com/layer0deploy',
   algolia: {
     appId: 'NUB3ND0MNC',
-    apiKey: '102f7bfdfa7c14ea4e20577bfdd73c5d',
-    indexName: 'layer0',
+    apiKey: '2a583bd49302de242af67646cc26c158',
+    indexName: 'layer0_v4',
   },
   headerIdConfig: {
     className: `anchor`,

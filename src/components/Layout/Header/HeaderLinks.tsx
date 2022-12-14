@@ -26,6 +26,7 @@ const StyledHeaderLinks = styled.div`
   text-decoration: none;
   font-weight: 500;
   align-content: center;
+  line-height: 0;
 
   li {
     display: inline-block;

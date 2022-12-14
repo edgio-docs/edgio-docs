@@ -2,7 +2,7 @@
 title: Web CDN
 ---
 
-Deploying your web application behind {{ PRODUCT }} is the fastest and easiest way to start seeing the performance benefits made possible by the {{ PRODUCT_EDGE }} network. In this guide we'll show you how to:
+Deploying your web application behind {{ PRODUCT }} is the fastest and easiest way to start seeing the performance benefits made possible by the {{ PRODUCT }} network. In this guide we'll show you how to:
 
 - Create a new {{ PRODUCT }} project
 - Configure edge caching using EdgeJS

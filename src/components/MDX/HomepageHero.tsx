@@ -14,6 +14,7 @@ const StyledHomepageHero = styled.div`
   background-position: bottom right;
   background-size: contain;
   border-radius: 4px;
+  margin-right: 8px;
 
   .section-container {
     display: grid;
@@ -50,6 +51,7 @@ const StyledHomepageHero = styled.div`
 
   ${StyledContainer} {
     max-width: 1228px;
+    max-width: var(--container-max-width);
     margin: 0 auto;
     height: 100%;
 

@@ -6,6 +6,9 @@ import styled from 'styled-components';
 import EdgioDark from '../../../../public/images/home/edgio-dark.webp';
 import EdgioLight from '../../../../public/images/home/edgio-light.webp';
 import NoSSRWrapper from '../NoSSRWrapper';
+import {Banner} from '../Page';
+
+import HeaderLinks from './HeaderLinks';
 
 import {ExternalLink} from 'components/ExternalLink';
 import {IconHamburger} from 'components/Icon/IconHamburger';
@@ -13,147 +16,126 @@ import {IconLightMobileLogo} from 'components/Icon/IconMobileLogo';
 import {siteConfig} from 'siteConfig';
 import useTheme from 'utils/hooks/useTheme';
 
-const StyledWrapper = styled.div`
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  width: 100%;
-  background-color: var(--bg-secondary);
-`;
-
 const StyledHeader = styled.header`
-  box-shadow: inset 0 -1px var(--shadow-primary);
-  padding: 0 24px;
-  display: grid;
-  grid-template-columns: auto auto;
-  align-content: center;
-
-  > [class*='col'] {
-    display: flex;
+  .nav-items {
+    padding: 0 24px;
+    display: grid;
     align-items: center;
-  }
+    grid-template-columns: auto auto;
 
-  .col-1 {
-    .logo-box {
-      cursor: pointer;
+    > [class*='col'] {
+      display: flex;
       align-items: center;
     }
 
-    a {
-      text-decoration: none;
-    }
-  }
-
-  .col-2 {
-    display: flex;
-    justify-content: flex-end;
-
-    .desktop {
-      display: grid;
-      grid-template-columns: repeat(4, auto);
-      column-gap: 15px;
-      align-items: center;
-    }
-
-    .theme-switcher {
-      height: 32px;
-      width: 32px;
-      background-color: transparent;
-      border: none;
-      justify-content: center;
-      align-items: center;
-      padding: 0;
-
-      :hover {
+    .col-1 {
+      .logo-box {
         cursor: pointer;
-        transform: scale(1.1);
+        align-items: center;
       }
-    }
 
-    a {
-      font-size: 14px;
-      line-height: 19px;
-      color: var(--text-primary);
-      text-decoration: none;
-      padding: 4px 12px;
-    }
-
-    a:last-of-type {
-      color: var(--colors-white0);
-      background: var(--lg-primary);
-      padding: 8px 12px;
-      font-weight: 600;
-      border-radius: 4px;
-    }
-  }
-
-  .search-form__box {
-    --dimension: 32px;
-    width: var(--dimension);
-    height: var(--dimension);
-  }
-
-  button[class*='mobile-menu'] {
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
-    color: var(--text-primary);
-  }
-
-  #mobile {
-    display: none;
-  }
-
-  .DocSearch-Button {
-    background-color: transparent;
-  }
-
-  .DocSearch-Button-Placeholder {
-    display: none;
-  }
-
-  @media (max-width: 850px) {
-    #desktop {
-      display: none;
-    }
-
-    #mobile {
-      display: grid;
-      grid-template-columns: repeat(3, auto);
-      align-items: center;
-      column-gap: 15px;
+      a {
+        text-decoration: none;
+      }
     }
 
     .col-2 {
       display: flex;
+      justify-content: flex-end;
+
+      .desktop {
+        display: grid;
+        grid-template-columns: repeat(4, auto);
+        column-gap: 15px;
+        align-items: center;
+      }
+
+      .theme-switcher {
+        height: 32px;
+        width: 32px;
+        background-color: transparent;
+        border: none;
+        justify-content: center;
+        align-items: center;
+        padding: 0;
+
+        :hover {
+          cursor: pointer;
+          transform: scale(1.1);
+        }
+      }
+
+      a {
+        font-size: 14px;
+        line-height: 19px;
+        color: var(--text-primary);
+        text-decoration: none;
+        padding: 4px 12px;
+      }
+
+      a:last-of-type {
+        color: var(--colors-white0);
+        background: var(--lg-primary);
+        padding: 8px 12px;
+        font-weight: 600;
+        border-radius: 4px;
+      }
     }
 
-    .col-3 {
-      display: flex;
+    .search-form__box {
+      --dimension: 32px;
+      width: var(--dimension);
+      height: var(--dimension);
+    }
+
+    button[class*='mobile-menu'] {
+      background-color: transparent;
+      border: none;
+      cursor: pointer;
+      color: var(--text-primary);
+    }
+
+    #mobile {
+      display: none;
+    }
+
+    .DocSearch-Button {
+      background-color: transparent;
+    }
+
+    .DocSearch-Button-Placeholder {
+      display: none;
+    }
+
+    @media (max-width: 850px) {
+      #desktop {
+        display: none;
+      }
+
+      #mobile {
+        display: grid;
+        grid-template-columns: repeat(3, auto);
+        align-items: center;
+        column-gap: 15px;
+      }
+
+      .col-2 {
+        display: flex;
+      }
+
+      .col-3 {
+        display: flex;
+      }
     }
   }
-`;
 
-const StyledHeaderLinks = styled.div`
-  display: block;
-  text-align: right;
-  font-size: calc(1rem - 2px);
-  padding: 1em;
-  text-decoration: none;
-  font-weight: 500;
-
-  li {
-    display: inline-block;
-    padding: 0 10px;
-  }
-
-  a {
-    color: var(--text-primary);
-    text-decoration: none;
-    &:hover {
-      text-decoration: underline;
-    }
-  }
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background-color: var(--bg-secondary);
+  width: 100%;
+  box-shadow: inset 0 -1px var(--shadow-primary);
+  display: grid;
 `;
 
 declare global {
@@ -215,49 +197,26 @@ function transformItems(items: any) {
   }));
 }
 
-const headerLinks = [
-  [
-    'Fiddle',
-    'https://fiddle.layer0.co/?sgId=7bc47c45-c1d6-4189-b416-552581d86006',
-  ],
-  ['Forums', 'https://forum.edg.io/?sgId=7bc47c45-c1d6-4189-b416-552581d86006'],
-  [
-    'Status',
-    'https://status.edg.io/?sgId=7bc47c45-c1d6-4189-b416-552581d86006',
-  ],
-  [
-    'Support',
-    'https://app.layer0.co/help?sgId=7bc47c45-c1d6-4189-b416-552581d86006',
-  ],
-];
-
 export default function Header({
   showSidebar,
   setShowSidebar,
-  isMobile,
+  hideBanner,
 }: {
   showSidebar: boolean;
   setShowSidebar: (showSidebar: boolean) => void;
-  isMobile: boolean;
+  hideBanner: boolean;
 }) {
   return (
-    <StyledWrapper>
-      {!isMobile && (
-        <StyledHeaderLinks className="docs-header-links">
-          <ul className="header-links">
-            {headerLinks.map(([title, href]) => {
-              return (
-                <li className="header-link" key={href}>
-                  <ExternalLink title={title} href={href}>
-                    {title}
-                  </ExternalLink>
-                </li>
-              );
-            })}
-          </ul>
-        </StyledHeaderLinks>
+    <StyledHeader className="docs-header">
+      {hideBanner ? (
+        <div />
+      ) : (
+        <>
+          <Banner />
+          <HeaderLinks />
+        </>
       )}
-      <StyledHeader className="docs-header">
+      <div className="nav-items">
         <div className="col-1">
           <div id="desktop">
             <Link href="/" passHref>
@@ -308,6 +267,9 @@ export default function Header({
               </NoSSRWrapper>
             </div>
             <ToggleTheme />
+            <ExternalLink href="https://app.layer0.co/?sgId=ef4d5169-93f2-4f55-aabb-dc3be4286e1f">
+              Login
+            </ExternalLink>
             <ExternalLink href="https://app.layer0.co/signup?redirectTo=%2F&sgId=ef4d5169-93f2-4f55-aabb-dc3be4286e1f">
               Sign up
             </ExternalLink>
@@ -333,8 +295,8 @@ export default function Header({
             </button>
           </div>
         </div>
-      </StyledHeader>
-    </StyledWrapper>
+      </div>
+    </StyledHeader>
   );
 }
 

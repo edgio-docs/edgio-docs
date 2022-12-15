@@ -61,6 +61,10 @@ Review the attacks on your site from the **Attacks** page. Use this information 
 
 ![](/images/advanced-bot-management/attacks.png)
 
+You can dig into a specific attack by clicking **View**. In addition to basic attack information, you can find out when we started mitigating the attack and a breakdown of the IP addresses, data centers, countries, URL paths, and user agents involved in the attack.
+
+![](/images/advanced-bot-management/attack-details.png)
+
 ## Actioned {/*actioned*/}
 
 From the **Actioned** page, view threat and trusted lists for visitors, IP addresses, user agents, and data centers. A threat list identifies a source of questionable traffic that will be automatically mitigated (e.g., blocked or served a CAPTCHA), while a trusted list identifies a source of traffic that will not be screened by {{ PRODUCT_SECURITY_ADVANCED_BOT }} since it is considered legitimate.

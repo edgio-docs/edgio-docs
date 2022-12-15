@@ -2,47 +2,96 @@
 title: Performance
 ---
 
-This guide shows you how to monitor and improve the performance of your application running on {{ PRODUCT_NAME }}.
+{{ PRODUCT }} {{ PRODUCT_EDGE }} allows you to quickly develop sites with sub-second page load-times and instantaneous client-side page transitions. 
 
-## Built-in Timings {/*built-in-timings*/}
+Improve your site's performance through:
 
-All responses contain an [{{ HEADER_PREFIX }}-t](/guides/response_headers#-t-response-header) header that contains the time the request spent at each layer of the {{ PRODUCT_NAME }} stack.
+-   Full control over when to [cache](/guides/performance/caching) and [prefetch](/guides/performance/prefetching) your content. Caching improves performance by bringing the data closer to your users, while prefetching anticipates your user's needs by instructing the browser to request content before it is neeeded. 
+-   [Serverless computing](/guides/performance/serverless_compute). Computing your JavaScript functions within our cloud reduces latency and origin server load.
+-   On the fly [image optimization](/guides/performance/image_optimization).
 
-## Tracking your Own Timings {/*tracking-your-own-timings*/}
+Speed up your development lifecycle through:
 
-You can use the `{{ PACKAGE_NAME }}/core/timing` module to track how long it takes parts of your code to execute. A common case is
-tracking how long it takes to fetch a result from an upstream API. For example:
+-   A [CDN-as-code](/guides/performance/cdn_as_code) approach to configuration that empowers developers to define caching and edge logic capabilities from within their application code using an {{ EDGEJS_LABEL }} JavaScript API. 
+-   [Observability](/guides/performance/observability) that provides performance insights through which you may troubleshoot and fine-tune your configuration. 
+-   Automatic previews of your site whenever a developer pushes commits to source control. These site previews allow QA testers, code reviewers, and other stakeholders to immediately try out newly introduced changes. 
+-   Previews of old versions of your app. Use this capability to discover when a bug was introduced or to quickly compare speed measurements between multiple iterations of your app.
+-   [Traffic Splitting](/guides/performance/traffic_splitting) which controls traffic distribution for the purpose of A/B testing and iterative site migrations. 
 
-```js
-import Timing from '{{ PACKAGE_NAME }}/core/timing'
+![architecture](/images/overview/architecture.png)
 
-const timing = new Timing('api').start()
+{{ PRODUCT }} ensures high availability when optimizing site performance through:
 
-try {
-  const result = await fetch(API_URL)
-} finally {
-  timing.end() // this will result in a `{{ HEADER_PREFIX }}-user-t: api=(millis)` response header
-}
-```
+-   Scalability. {{ PRODUCT }} automatically scales resources whenever it detects increased traffic levels. 
+-   Origin Shield. This promotes high availability by funneling requests to a second caching layer instead of your web servers or our Serverless Compute Lambda workers. The first caching layer consists of our edge POPs, while the second caching layer consists of our global POPs.
+-   Redundancy. {{ PRODUCT }} computes your code within two data centers. These data centers, which are located close to your API servers, are configured with automatic DNS failover. Additionally, each data center provides redundancy for individual processes and load balances the traffic between them. 
 
-- All timings are returned in an `{{ HEADER_PREFIX }}-user-t` response header.
-- The value is a comma-delimited list of pairs of the form `(name)=(duration-in-millis)`.
-- The value of this header will be logged into `xut` field in [access logs](/guides/logs#access-logs). The logged data is limited to 50 bytes after which it will be truncated.
-- Any timings that are not ended before the response is sent will have a value of `na`
+## Regions {/*regions*/}
 
-## Performance Optimizations {/*performance-optimizations*/}
+{{ PRODUCT }} is available in the following global regions:
 
-### Turn off Caching When not Needed {/*turn-off-caching-when-not-needed*/}
+-   **Americas**: Eastern US and Western US
+-   **Europe**: Ireland, UK, Western Europe, Northern Europe, Central Europe
+-   **Asia**: Japan
+-   **Oceania**: Australia
 
-For `GET` routes that you know you will not or must not cache, always explicitly disable caching. This indicates to {{ PRODUCT_NAME }} that it should not try to coalesce requests which leads to improved performance especially on slower upstreams.
+<Callout type="info">
 
-For example, if you know that nothing from your legacy upstream will or can ever be cached, do this:
+  Enterprise customers may choose the region where their workloads will run. Alternatively, if you are using our free tier, then your workloads will run in the Eastern US region.
 
-```js
-new Router().fallback(({ proxy, cache }) => {
-  cache({
-    edge: false,
-  })
-  proxy('legacy')
-})
-```
+</Callout>
+
+
+## Limits {/*limitations*/}
+
+{{ PRODUCT }} sets limits on requests, responses, and access logs.
+
+### Units {/*units*/}
+
+Data storage units are defined below.
+
+- `Kb` stands for kilobytes and means 1,024 bytes (2^10 bytes)
+- `Mb` stands for megabytes and means 1,024 kilobytes (2^20 bytes)
+- `Gb` stands for gigabytes and means 1,024 megabytes (2^30 bytes)
+
+### Request and Response Limits {/*request-and-response-limits*/}
+
+{{ PRODUCT }} requires that all requests and responses meet the following requirements:
+
+| Type                                                  | Limit                 | Description                                                                                                                                                                           |
+| ----------------------------------------------------- | --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Response time from origin server                      | 60 seconds            | The maximum number of seconds that {{ PRODUCT }} will wait for a response from an origin server (e.g., your web server). The response for a request that exceeds this limit is a [536 Project HTTP Response Timeout](/guides/performance/response#status-codes#536). |
+| Response body size from static                        | 2Gb                   | The maximum size of a response body of {{ PRODUCT }} static assets.                                                                                                              |
+| Response body size from custom origin                 | 2Gb                   | The maximum size of a response body from a custom origin.                                                                                                                             |
+| Response body size from {{ PRODUCT }} serverless | 6Mb                   | The maximum size of a response body from {{ PRODUCT }} serverless.                                                                                                               |
+| Path and query string size                            | 8Kb                   | The maximum bytes (not characters) that {{ PRODUCT }} will accept in path and query string.                                                                                      |
+| Cookie size                                           | 32Kb                  | The maximum bytes that {{ PRODUCT }} will accept in request or response cookies.                                                                                                 |
+| HTTP header size                                      | 64Kb                  | The maximum bytes that {{ PRODUCT }} will accept in request or response HTTP headers.                                                                                            |
+| HTTP header count                                     | 70                    | The maximum number of developer-controlled headers {{ PRODUCT }} will accept in HTTP request or response. Exceeding this will result in 542 [status code](/guides/performance/response#status-codes). |
+| Scheduling timeout                                    | 60 seconds            | The number of seconds {{ PRODUCT }} will try to schedule a request processing before timing out. Exceeding this will result in 541 [status code](/guides/performance/response#status-codes).          |
+| Worker timeout                                        | 20 seconds            | The number of seconds {{ PRODUCT }} will wait for project code to process the request before timing out. Exceeding this will result in 539 [status code](/guides/performance/response#status-codes).  |
+| Prerender concurrency                                 | 200                   |
+| Total number of prerendered requests                  | 25,000 per deployment |
+| Maximum number of nested requests                     | 3                     | "Nested" means an {{ PRODUCT }} site is the upstream of itself or of another {{ PRODUCT }} site. Exceeding this will result in 538 [status code](/guides/performance/response#status-codes).     |
+
+#### Reserved Headers {/*prohibited-headers*/}
+
+The following headers are served for use by {{ PRODUCT }}. You may not modify these request headers. 
+
+* `{{ HEADER_PREFIX }}-platform`
+* `{{ HEADER_PREFIX }}-version`
+* `{{ HEADER_PREFIX }}-t`
+* `{{ HEADER_PREFIX }}-components`
+* `{{ HEADER_PREFIX }}-status`
+* `host`
+* `x-request-id`
+* `content-length`
+* `via`
+
+### Access Logs {/*access-logs*/}
+
+| Value | Limit     | Description                                                                                         |
+| ----- | --------- | --------------------------------------------------------------------------------------------------- |
+| Size  | Unlimited | All access logs will always be [logged](/guides/logs#access-logs).                          |
+| Time  | 2 hours   | The minimum time that {{ PRODUCT }} guarantees that access logs will be available for reading. |
+

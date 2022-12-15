@@ -13,13 +13,13 @@ export const StyledCustomPre = styled.div`
   .code-block__inner {
     display: flex;
     flex-direction: column;
-    background: #242424;
-    border: 2px solid #363636;
+    background: #181717;
+    border: 2px solid #2a2b2c;
     border-radius: 8px;
   }
 
   .code-block__header {
-    border-bottom: 2px solid #363636;
+    border-bottom: 2px solid #2a2b2c;
     border-top-right-radius: 4px;
     border-top-left-radius: 4px;
     padding: 6px 6px 6px 8px;
@@ -35,9 +35,12 @@ export const StyledCustomPre = styled.div`
     }
 
     .code-block__filename {
-      background-color: #363636;
+      background-color: var(--colors-blue0);
       border-radius: 4px;
-      border: 1px solid #1a1a1a;
+      padding-top: 5px;
+      padding-left: 9px;
+      padding-right: 9px;
+      padding-bottom: 5px;
     }
   }
 
@@ -60,6 +63,10 @@ export default function CustomPre({children}: {children: React.ReactNode}) {
   const unknownLanguageString = 'language-unknown';
   let language: string = unknownLanguageString;
   let filename: string | undefined;
+  let highlightLines: any;
+  let highlightDeletions: any;
+  let highlightInsertions: any;
+  let highlightAsDiff = false;
 
   if (typeof children === 'string') {
     message = children;
@@ -70,10 +77,20 @@ export default function CustomPre({children}: {children: React.ReactNode}) {
     message = children.props.children;
     language = children.props.className || unknownLanguageString;
     filename = children.props.filename;
+    highlightDeletions = children.props.del;
+    highlightInsertions = children.props.ins;
+    highlightLines = children.props.highlight;
+    highlightAsDiff = children.props.diff;
+  }
+
+  // Clean up the copy code if it's a diff with deletions
+  let copyMessage = message;
+  if (highlightAsDiff) {
+    copyMessage = cleanCopyCode(copyMessage);
   }
 
   // MDX Metadata...https://mdxjs.com/guides/syntax-highlighting/#syntax-highlighting-with-the-meta-field
-  const replacedFilename = filename ? filename.replace(/"/g, '') : '';
+  const replacedFilename = filename?.replace(/"/g, '').replace(/'/g, '') ?? '';
   const descriptiveLanguage = getDescriptiveLanguage(language);
 
   return (
@@ -93,13 +110,18 @@ export default function CustomPre({children}: {children: React.ReactNode}) {
                 )}
               </div>
               <div className="header-end">
-                <CopyCode {...{message}} />
+                <CopyCode {...{message: copyMessage}} />
               </div>
             </header>
           ) : null}
 
           <main className="code-block__content">
-            <CodeBlock language={descriptiveLanguage.toLowerCase() as Language}>
+            <CodeBlock
+              highlightAsDiff={highlightAsDiff}
+              highlightLines={highlightLines}
+              highlightDeletions={highlightDeletions}
+              highlightInsertions={highlightInsertions}
+              language={descriptiveLanguage.toLowerCase() as Language}>
               {message.trim()}
             </CodeBlock>
           </main>
@@ -144,4 +166,28 @@ function CopyCode({message}: {message: string}) {
       </StyledCopyCodeButton>
     </CopyToClipboard>
   );
+}
+
+function cleanCopyCode(message: string) {
+  const reDiffLine = /(^\s*(\+|\-))/;
+  const lines = message.split(/\r?\n/);
+
+  return lines
+    .map((line) => {
+      const match = reDiffLine.exec(line);
+      if (match) {
+        // remove entire line if deletion
+        if (match[2] == '-') {
+          return;
+        }
+
+        // remove the + operator, but keep the rest of the line
+        return line.substring(match.index + match[1].length);
+      }
+
+      // line unchanged
+      return line;
+    })
+    .filter(Boolean)
+    .join('\n');
 }

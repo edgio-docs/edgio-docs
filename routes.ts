@@ -5,7 +5,8 @@ import {Downloader as GithubDownloader} from 'github-download-directory';
 import semverMaxSatisfying from 'semver/ranges/max-satisfying';
 
 import {archiveRoutes} from './layer0/plugins/ArchiveRoutes';
-import prerenderRequests from './prerender';
+import redirects from './layer0/redirects';
+// import prerenderRequests from './layer0/prerender';
 
 const key = new CustomCacheKey().excludeAllQueryParametersExcept('query');
 
@@ -32,13 +33,6 @@ const staticCacheConfig = {
     staleWhileRevalidateSeconds: 60 * 60 * 24 * 365,
   },
 };
-
-const redirects = [
-  ['/guides/starter', '/guides/traditional_sites'],
-  ['/guides/debugging', '/guides/troubleshooting'],
-  ['/guides/deploying', '/guides/deploy_apps'],
-  ['/guides/getting_started', '/guides/build_web_apps'],
-];
 
 const scriptSrcDomains = [
   'player.vimeo.com',
@@ -86,7 +80,7 @@ const connectSrcDomains = [
 ].sort();
 
 const router = new Router()
-  //  .prerender(prerenderRequests)
+  // .prerender(prerenderRequests)
   .noIndexPermalink()
   // having no eid cookie will default to __xdn__
   .match('/__xdn__/:path*', ({redirect}) => redirect('/__edgio__/:path*'))
@@ -147,9 +141,13 @@ const router = new Router()
     }
   )
   // match current api docs with a terminating /
-  .match('/docs/api/:path*/', ({proxy, cache, request}) => {
+  .match('/docs/api/:path*/', ({proxy, cache, setResponseHeader, request}) => {
     cache(htmlCacheConfig);
     proxy('api', {path: '/current/api/:path*/index.html'});
+    setResponseHeader(
+      'Link',
+      `<https://docs.edg.io${request.url}index.html>; rel="canonical"`
+    );
   })
   // match current api docs without terminating /,
   // gets redirected to :path*/ to satisfy relative asset paths
@@ -197,10 +195,17 @@ const router = new Router()
     }
   )
   // match versioned api docs with a terminating /
-  .match('/docs/:version/api/:path*/', ({proxy, cache}) => {
-    cache(htmlCacheConfig);
-    proxy('api', {path: '/:version/api/:path*/index.html'});
-  })
+  .match(
+    '/docs/:version/api/:path*/',
+    ({proxy, cache, setResponseHeader, request}) => {
+      cache(htmlCacheConfig);
+      proxy('api', {path: '/:version/api/:path*/index.html'});
+      setResponseHeader(
+        'Link',
+        `<https://docs.edg.io${request.url}index.html>; rel="canonical"`
+      );
+    }
+  )
   // match versioned api docs without terminating /,
   // gets redirected to :path*/ to satisfy relative asset paths
   .match('/docs/:version/api/:path*', ({redirect}) => {
@@ -209,7 +214,7 @@ const router = new Router()
 
 redirects.forEach(([from, to, statusCode]) => {
   router.match(from, ({redirect}) =>
-    redirect(to, {statusCode: Number(statusCode || 302)})
+    redirect(to, {statusCode: Number(statusCode || 301)})
   );
 });
 

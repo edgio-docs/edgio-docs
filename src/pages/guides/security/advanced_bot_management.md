@@ -2,16 +2,29 @@
 title: Advanced Bot Management (BETA)
 ---
 
-<Callout type="important">
-
-  Advanced Bot Management, which is in BETA status, requires activation. {{ ACCOUNT_UPGRADE }}
-
-</Callout>
-
 {{ PRODUCT }}’s {{ PRODUCT_SECURITY_ADVANCED_BOT }} introduces a new layer of security dedicated to bot
 detection and mitigation. {{ PRODUCT_SECURITY_ADVANCED_BOT }} is agile, intelligent, configurable, and adapatable to changing threats. It provides deep, actionable analysis of
 all internet traffic, web reconnaissance, automated bots, and legitimate website
 visitors.
+
+## Getting Started  {/*getting-started*/}
+
+Get started with {{ PRODUCT_SECURITY_ADVANCED_BOT }} by requesting that we activate it on your account. After which, we will set it up for you. No additional configuration is required on your part.
+
+<Callout type="important">
+
+  {{ ACCOUNT_UPGRADE }}
+
+</Callout>
+
+## Viewing Reports {/*viewing-reports*/}
+
+{{ PRODUCT_SECURITY_ADVANCED_BOT }} reports data on a per environment basis. View a report by performing the following steps:
+
+1.  From the {{ PORTAL }}, load the desired property.
+2.  From within the **Environments** tab, click on the desired environment.
+3.  Click on the **Bot Management** tab. 
+4.  From the left-hand pane, click on the desired report.
 
 ## Real-Time Dashboard {/*real-time-dashboard*/}
 

@@ -9,6 +9,7 @@ import {
   PRODUCT_LEGACY_LOWER,
   PRODUCT_PLATFORM,
   PRODUCT_SECURITY,
+  PRODUCT_SECURITY_ADVANCED_BOT,
 } from '../../constants';
 import {
   IconAngular,
@@ -590,6 +591,10 @@ const SidebarMenuItems: ISidebarMenuItems = [
         {
           title: 'Managed Rule Groups',
           path: '/guides/security/managed_rule_groups',
+        },
+        {
+          title: PRODUCT_SECURITY_ADVANCED_BOT,
+          path: '/guides/advanced_bot_management',
         },
       ],
     },

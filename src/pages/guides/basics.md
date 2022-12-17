@@ -3,9 +3,13 @@ title: Basics
 ---
 
 The {{ PRODUCT }} Applications platform consists of the following products:
--   {{ PRODUCT }} {{ PRODUCT_EDGE }} improves your site's performance and speeds up your development lifecycle.
--   {{ PRODUCT }} {{ PRODUCT_SECURITY }} protects your web infrastructure and filters out malicious and bot traffic.
--   {{ PRODUCT }} {{ PRODUCT_PLATFORM }} provides optimal performance for your headless Jamstack applications.
+-   {{ PRODUCT }} {{ PRODUCT_EDGE }} improves your site's performance through caching, predictive prefetching, and serverless computing. Streamline your development workflow through a CDN-as-code approach to configuration, performance insights, and site previews.
+-   {{ PRODUCT }} {{ PRODUCT_SECURITY }} protects your web infrastructure through:
+    -   Distributed Denial-of-Service (DDoS) protection for all traffic served through our network.
+    -   An Origin Shield that reduces traffic to your origin servers through an additional caching layer.
+    -   A Web Application Firewall through which you can monitor, detect, and prevent application layer attacks.
+    -   Basic website security, such as a Content Security Policy (CSP), a TLS certificate, Basic Authentication enforcement, variables for sensitive data (e.g., API keys), and protection against cache poisoning. 
+-   {{ PRODUCT }} {{ PRODUCT_PLATFORM }} provides optimal performance and development efficiency to your headless Jamstack applications. In addition to allowing you to define performance configurations within your application code, it supports server-side rendering and static page generation.
 
 Combine the above solutions to ensure the secure delivery of your website while drastically improving performance.
 

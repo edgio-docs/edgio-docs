@@ -6,8 +6,8 @@ import styled from 'styled-components';
 import EdgioDark from '../../../../public/images/home/edgio-dark.webp';
 import EdgioLight from '../../../../public/images/home/edgio-light.webp';
 import NoSSRWrapper from '../NoSSRWrapper';
-import {Banner} from '../Page';
 
+import Banner from './Banner';
 import HeaderLinks from './HeaderLinks';
 
 import {ExternalLink} from 'components/ExternalLink';
@@ -208,7 +208,12 @@ export default function Header({
 }) {
   return (
     <StyledHeader className="docs-header">
-      {isMobile && <HeaderLinks />}
+      {!isMobile && (
+        <>
+          <Banner />
+          <HeaderLinks />
+        </>
+      )}
       <div className="nav-items">
         <div className="col-1">
           <div id="desktop">

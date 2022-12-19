@@ -45,11 +45,11 @@ const StyledSectionheader = styled.header`
   .section-header__content {
     display: grid;
     row-gap: 6px;
-    max-width: 42%;
+    max-width: initial;
 
-    @media (max-width: 1086px) {
+    /*@media (max-width: 1086px) {
       max-width: initial;
-    }
+    }*/
   }
 
   .section-header__title {

@@ -22,11 +22,12 @@ const StyledHeaderLinks = styled.div`
   display: grid;
   text-align: right;
   font-size: calc(1rem - 2px);
-  padding: 5px 24px;
+  padding: 10px 24px;
   text-decoration: none;
   font-weight: 500;
   align-content: center;
   line-height: 0;
+  background: var(--bg-primary);
 
   li {
     display: inline-block;

@@ -3,10 +3,13 @@ import Link from 'next/link';
 import {useRouter} from 'next/router';
 import React, {Fragment, useState} from 'react';
 import useCollapse from 'react-collapsed';
+import {BiGlobe} from 'react-icons/bi';
+import {BsArrowsFullscreen, BsPlayCircle} from 'react-icons/bs';
 import {CgExternal} from 'react-icons/cg';
 import {GoChevronRight} from 'react-icons/go';
 import styled from 'styled-components';
 
+import {PRODUCT} from '../../../../constants';
 import NavItems from '../../../../src/data/nav.json';
 
 interface IRoute {
@@ -248,6 +251,12 @@ const StyledSideNav = styled.div`
     overflow: hidden;
   }
 
+  .menu-toggle__wrap.header {
+    cursor: default;
+    color: var(--sidebar-link-primary);
+    font-weight: 500;
+  }
+
   .sidenav-menu__container:empty {
     height: 1px;
     width: calc(100% - 32px);
@@ -277,33 +286,23 @@ const StyledSideNav = styled.div`
 
 const links = [
   {
-    title: 'Edgio v4 Documentation',
-    path: 'https://docs.layer0.co',
-    icon: 'edgio',
+    title: 'Uplynk',
+    path: 'https://docs.edgecast.com/video?sgId=7bc47c45-c1d6-4189-b416-552581d86006',
+    icon: BsPlayCircle,
   },
   {
-    title: 'Fiddle',
-    path: 'https://fiddle.layer0.co/?sgId=7bc47c45-c1d6-4189-b416-552581d86006',
-    icon: 'fiddle',
+    title: 'Limelight Delivery',
+    path: 'https://support.limelight.com/public/en/Default.htm?sgId=7bc47c45-c1d6-4189-b416-552581d86006',
+    icon: BiGlobe,
   },
   {
-    title: 'Forum',
-    path: 'https://forum.edg.io/?sgId=7bc47c45-c1d6-4189-b416-552581d86006',
-    icon: 'forum',
+    title: 'Edgecast Delivery',
+    path: 'https://docs.edgecast.com/cdn?sgId=7bc47c45-c1d6-4189-b416-552581d86006',
+    icon: BsArrowsFullscreen,
   },
   {
-    title: 'Status',
-    path: 'https://status.edg.io/?sgId=7bc47c45-c1d6-4189-b416-552581d86006',
-    icon: 'status',
-  },
-  {
-    title: 'Support',
-    path: 'https://app.layer0.co/help?sgId=7bc47c45-c1d6-4189-b416-552581d86006',
-    icon: 'support',
-  },
-  {
-    title: 'Edg.io',
-    path: 'https://edg.io',
+    title: `${PRODUCT} v4`,
+    path: 'https://dpcs.layer0.co/?sgId=7bc47c45-c1d6-4189-b416-552581d86006',
     icon: 'edgio',
   },
 ];
@@ -316,7 +315,16 @@ export default function SideNav() {
       </ul>
       <hr />
       <ul className="sidenav-sublist" data-nav-depth="0">
+        <li className="sidenav-item">
+          <div className="sidenav-menu__container">
+            <span className="sidenav-link menu-toggle__wrap header">
+              Additional Documentation
+            </span>
+          </div>
+        </li>
         {links.map((link) => {
+          const Icon = typeof link.icon === 'string' ? null : link.icon;
+
           return (
             <li key={link.path} className="sidenav-item">
               <div className="sidenav-menu__container">
@@ -327,22 +335,30 @@ export default function SideNav() {
                   rel="noopener noreferrer">
                   <div className="icons">
                     <div id="dark-theme">
-                      <Image
-                        src={`/icons/${link.icon}.svg`}
-                        alt={link.icon}
-                        width="16px"
-                        height="16px"
-                        priority
-                      />
+                      {!Icon ? (
+                        <Image
+                          src={`/icons/${link.icon}.svg`}
+                          alt={link.title}
+                          width="16px"
+                          height="16px"
+                          priority
+                        />
+                      ) : (
+                        <Icon />
+                      )}
                     </div>
                     <div id="light-theme">
-                      <Image
-                        src={`/icons/${link.icon}-dark.svg`}
-                        alt={link.icon}
-                        width="16px"
-                        height="16px"
-                        priority
-                      />
+                      {!Icon ? (
+                        <Image
+                          src={`/icons/${link.icon}-dark.svg`}
+                          alt={link.title}
+                          width="16px"
+                          height="16px"
+                          priority
+                        />
+                      ) : (
+                        <Icon />
+                      )}
                     </div>
                   </div>
                   <span>{link.title}</span>

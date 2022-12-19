@@ -67,9 +67,6 @@ The default `routes.js` file created by `{{ FULL_CLI_NAME }} init` sends all req
 const { hexoRoutes } = require('{{ PACKAGE_NAME }}/hexo')
 const { Router } = require('{{ PACKAGE_NAME }}/core/router')
 export default new Router()
-  // Prevent search engine bot(s) from indexing
-  // Read more on: {{ DOCS_URL }}/guides/cookbook#blocking-search-engine-crawlers
-  .noIndexPermalink()
   .use(hexoRoutes)
 ```
 

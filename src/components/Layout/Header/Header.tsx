@@ -132,7 +132,7 @@ const StyledHeader = styled.header`
   position: sticky;
   top: 0;
   z-index: 1000;
-  background-color: var(--bg-secondary);
+  background-color: var(--lg-secondary);
   width: 100%;
   box-shadow: inset 0 -1px var(--shadow-primary);
   display: grid;
@@ -265,9 +265,6 @@ export default function Header({
               </NoSSRWrapper>
             </div>
             <ToggleTheme />
-            <ExternalLink href="https://app.layer0.co/?sgId=ef4d5169-93f2-4f55-aabb-dc3be4286e1f">
-              Login
-            </ExternalLink>
             <ExternalLink href="https://app.layer0.co/signup?redirectTo=%2F&sgId=ef4d5169-93f2-4f55-aabb-dc3be4286e1f">
               Sign up
             </ExternalLink>

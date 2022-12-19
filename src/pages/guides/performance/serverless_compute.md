@@ -4,19 +4,27 @@ title: Serverless Compute
 
 {{ PRODUCT }} makes it easy to develop, test, and deploy serverless functions without a JavaScript framework. Simply declare your routes and use the `compute` function or `proxy` with the `transformResponse` option to compute responses based on your own custom logic.
 
-## Availablity {/*availablity*/}
+## Availability  {/*availability*/}
 
-{{ PRODUCT_NAME }} has multiple global regions in which it will automatically provision the following:
+Serverless Compute is available in the following global regions:
 
--   Compute resources that run your code in two geographically close but entirely separate data centers.
+-   **Americas**: Eastern US and Western US
+-   **Europe**: Ireland, UK, Western Europe, Northern Europe, Central Europe
+-   **Asia**: Japan
+-   **Oceania**: Australia
 
-    <Callout type="info">
+<Callout type="info">
 
-      {{ PRODUCT }} provides high availability for all of its components. You can choose a particular [region](/guides/performance#high-availability) of the world in which your API servers are located. {{ PRODUCT }} will provision two data centers closest to it, connecting them with automatic DNS failover. High availability is also provided within the data centers themselves, with all individual processes being (at least) duplicated and sharing the traffic load among themselves. This architecture minimizes the chances of traffic loss.
+  Enterprise customers may choose the region where their workloads will run. Alternatively, if you are using our free tier, then your workloads will run in the Eastern US region.
 
-    </Callout>
+</Callout>
 
--   A level 2 cache to maximize the global cache hit rate and reduce traffic to your servers.
+{{ PRODUCT }} ensures high availability for your computing workloads by:
+
+-   Running your code within two separate data centers.
+-   Setting up automatic DNS failover between those data centers.
+-   Load balancing computing requests between redundant processes.
+-   Applying an Origin Shield to our Serverless Compute Lambda Workers. If your compute requests are cacheable, then this allows more requests to be served from cache.
 
 {{ PREREQ }}
 

@@ -163,6 +163,10 @@
       "path": "security",
       "icon": "shield",
       "routes": [
+        { 
+          "title": "Advanced Bot Management",
+          "path": "security/advanced_bot_management"
+        },
         {
           "title": "Managed Rule Groups",
           "path": "security/managed_rule_groups"

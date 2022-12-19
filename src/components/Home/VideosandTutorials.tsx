@@ -1,4 +1,4 @@
-import {Vimeo} from 'mdx-embed';
+import {Vimeo, YouTube} from 'mdx-embed';
 import styled from 'styled-components';
 
 import {PRODUCT} from '../../../constants';
@@ -59,8 +59,40 @@ const StyledComp = styled.div`
   }
 `;
 
+interface Video {
+  title: string;
+  url: string;
+  id: string;
+  player?: any;
+}
+
+function Player({item}: {item: Video}) {
+  if (item.player === YouTube) {
+    return <YouTube youTubeId={item.id} />;
+  }
+  return <Vimeo vimeoId={item.id} />;
+}
+
 export default function VideosandTutorials() {
   const categorisedVidoes = [
+    {
+      title: 'Getting Started',
+      slug: 'getting-started',
+      videos: [
+        {
+          title: 'Getting Started',
+          url: 'https://youtu.be/GNnOi7_PPVw',
+          id: 'GNnOi7_PPVw',
+          player: YouTube,
+        },
+        {
+          title: `${PRODUCT} v5 Migration`,
+          url: 'https://youtu.be/sHHg0tGR4EY',
+          id: 'sHHg0tGR4EY',
+          player: YouTube,
+        },
+      ],
+    },
     {
       title: 'CDN',
       slug: 'cdn',
@@ -178,9 +210,9 @@ export default function VideosandTutorials() {
             <div className="video-category" key={video.slug}>
               <h3 className="video-category__title">{video.title}</h3>
               <div className="videos">
-                {video.videos.map((item, vidIndex) => (
+                {video.videos.map((item: Video, vidIndex) => (
                   <div className="video" key={`${index}-${vidIndex}`}>
-                    <Vimeo vimeoId={item.id} />
+                    <Player item={item} />
                     <h4 className="title">{item.title}</h4>
                   </div>
                 ))}

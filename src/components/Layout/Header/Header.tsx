@@ -200,22 +200,15 @@ function transformItems(items: any) {
 export default function Header({
   showSidebar,
   setShowSidebar,
-  hideBanner,
+  isMobile,
 }: {
   showSidebar: boolean;
   setShowSidebar: (showSidebar: boolean) => void;
-  hideBanner: boolean;
+  isMobile: boolean;
 }) {
   return (
     <StyledHeader className="docs-header">
-      {hideBanner ? (
-        <div />
-      ) : (
-        <>
-          <Banner />
-          <HeaderLinks />
-        </>
-      )}
+      {isMobile && <HeaderLinks />}
       <div className="nav-items">
         <div className="col-1">
           <div id="desktop">

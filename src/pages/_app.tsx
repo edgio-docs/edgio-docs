@@ -87,7 +87,7 @@ export default function MyApp({Component, pageProps}: AppProps) {
     return () => {
       router.events.off('routeChangeStart', handleRouteChange);
       router.events.off('routeChangeComplete', handleRouteComplete);
-      router.events.on('routeChangeError', () => handleRouteComplete);
+      router.events.off('routeChangeError', () => handleRouteComplete);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);

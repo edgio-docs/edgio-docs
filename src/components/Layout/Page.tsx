@@ -22,7 +22,7 @@ const StyledMainPage = styled.div.attrs<IStyledMainPageProps>((props) => ({
   isBannerHidden: props.isBannerHidden || false,
 }))<IStyledMainPageProps>`
   --sidebar-width: 280px;
-  --mult: ${(props) => (props.isBannerHidden ? 1 : 3)};
+  --mult: ${(props) => (props.isBannerHidden ? 1 : 2)};
   display: grid;
   grid-template-rows: calc(var(--header-height) * var(--mult)) 1fr;
 
@@ -107,7 +107,6 @@ export function Page({routeTree, children}: PageProps) {
   const isMobile = useIsMobile(850);
   const [showSidebar, setShowSidebar] = React.useState(isMobile);
   const router = useRouter();
-  const hideBanner = useIsMobile(600);
 
   React.useEffect(() => {
     router.events.on('routeChangeComplete', () => setShowSidebar(false));
@@ -120,8 +119,8 @@ export function Page({routeTree, children}: PageProps) {
   }, [showSidebar]);
 
   return (
-    <StyledMainPage {...{isBannerHidden: hideBanner}}>
-      <Header {...{showSidebar, setShowSidebar, hideBanner}} />
+    <StyledMainPage {...{isBannerHidden: isMobile}}>
+      <Header {...{showSidebar, setShowSidebar, isMobile}} />
       <SidebarContext.Provider value={routeTree}>
         <main className="docs-content">
           <div className="docs-side__nav" data-open={isMobile && showSidebar}>

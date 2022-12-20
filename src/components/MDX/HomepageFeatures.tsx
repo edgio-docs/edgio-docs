@@ -1,3 +1,4 @@
+import {BiBook} from 'react-icons/bi';
 import styled from 'styled-components';
 
 import AccountsandTeams from '../Home/AccountsandTeams';
@@ -11,12 +12,14 @@ import VideosandTutorials from '../Home/VideosandTutorials';
 import {IconSpark} from '../Icon/IconSpark';
 import Container from '../Layout/Container';
 
+import DocsResources from 'components/Home/DocsResources';
+
 const StyledHomepageFeatures = styled.div`
   padding-bottom: 500px;
 
   .section-container {
     > * {
-      padding: 50px 0;
+      padding: 30px 0;
 
       :not(:last-child) {
         box-shadow: inset 0px -1px var(--hr-secondary);
@@ -58,6 +61,14 @@ export default function HomepageFeatures() {
           <SectionHeader Icon={IconSpark} title="Get Started" />
         </GetStarted>
 
+        <DocsResources>
+          <SectionHeader
+            Icon={BiBook}
+            title="Additional Documentation"
+            subtitle="As we continue to integrate all our businesses into a unified development environment please find additional product documentation below."
+          />
+        </DocsResources>
+
         <Cdn />
         <div className="grouped-col__2">
           <DeveloperTools />
@@ -65,7 +76,7 @@ export default function HomepageFeatures() {
         </div>
         <FrameworkGuides />
         <Reference />
-        <VideosandTutorials />
+        {/* <VideosandTutorials /> */}
       </Container>
     </StyledHomepageFeatures>
   );

@@ -4,7 +4,7 @@ title: Serverless Compute
 
 {{ PRODUCT }} makes it easy to develop, test, and deploy serverless functions without a JavaScript framework. Simply declare your routes and use the `compute` function or `proxy` with the `transformResponse` option to compute responses based on your own custom logic.
 
-## Availability  {/*availability*/}
+## Availability {/*availability*/}
 
 Serverless Compute is available in the following global regions:
 
@@ -225,6 +225,9 @@ Deploy your app to the {{ PRODUCT_PLATFORM }} by running the following command i
 
 ## Limits {/*limits*/}
 
-{{ PRODUCT }} serverless functions have a maximum runtime of 20 seconds per request. If a function exceeds this limit, {{ PRODUCT }} will respond with a 539 status.
+{{ PRODUCT }} Serverless Compute limits are listed below.
 
-See [Limits](/guides/limits#request-and-response-limits) for more information.
+-   Our serverless functions have a maximum runtime of 20 seconds per request. The response for a function that exceeds this limit is a [539 Project Timeout](/guides/performance/response#exclusive-status-codes).
+-   Our Serverless Compute Lambda workers are allowed to generate a response body with a maximum file size of 6 MB.
+-   Your project must comply with all applicable [{{ PRODUCT }} {{ PRODUCT_EDGE }} limitations.](/guides/performance/limits)
+-   Your project must comply with [{{ PRODUCT }} {{ PRODUCT_PLATFORM }} limitations.](/guides/sites_frameworks/limits)

@@ -23,7 +23,7 @@ Speed up your development lifecycle through:
 {{ PRODUCT }} ensures high availability when optimizing site performance through:
 
 -   Scalability. {{ PRODUCT }} automatically scales resources whenever it detects increased traffic levels. 
--   Origin Shield. This promotes high availability by funneling requests to a second caching layer instead of your web servers or our Serverless Compute Lambda workers. The first caching layer consists of our edge POPs, while the second caching layer consists of our global POPs.
+-   Origin Shield. This promotes high availability by funneling requests to a second caching layer instead of your web servers or our Serverless Compute workers. The first caching layer consists of our edge POPs, while the second caching layer consists of our global POPs.
 -   Redundancy. {{ PRODUCT }} computes your code within two data centers. These data centers, which are located close to your API servers, are configured with automatic DNS failover. Additionally, each data center provides redundancy for individual processes and load balances the traffic between them.
 
 [Learn how to get started with {{ PRODUCT }} {{ PRODUCT_EDGE }}.](/guides/performance/getting_started) 

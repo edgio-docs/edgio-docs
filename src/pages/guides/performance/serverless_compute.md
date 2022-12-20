@@ -24,7 +24,7 @@ Serverless Compute is available in the following global regions:
 -   Running your code within two separate data centers.
 -   Setting up automatic DNS failover between those data centers.
 -   Load balancing computing requests between redundant processes.
--   Applying an Origin Shield to our Serverless Compute Lambda Workers. If your compute requests are cacheable, then this allows more requests to be served from cache.
+-   Applying an Origin Shield to our Serverless Compute workers. If your compute requests are cacheable, then this allows more requests to be served from cache.
 
 {{ PREREQ }}
 
@@ -228,6 +228,6 @@ Deploy your app to the {{ PRODUCT_PLATFORM }} by running the following command i
 {{ PRODUCT }} Serverless Compute limits are listed below.
 
 -   Our serverless functions have a maximum runtime of 20 seconds per request. The response for a function that exceeds this limit is a [539 Project Timeout](/guides/performance/response#exclusive-status-codes).
--   Our Serverless Compute Lambda workers are allowed to generate a response body with a maximum file size of 6 MB.
+-   Our Serverless Compute workers are allowed to generate a response body with a maximum file size of 6 MB.
 -   Your project must comply with all applicable [{{ PRODUCT }} {{ PRODUCT_EDGE }} limitations.](/guides/performance/limits)
 -   Your project must comply with [{{ PRODUCT }} {{ PRODUCT_PLATFORM }} limitations.](/guides/sites_frameworks/limits)

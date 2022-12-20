@@ -8,7 +8,7 @@ title: Limits
 -   Your code will only be granted [read-only access to the file system.](#readonly-filesystem-in-serverless-runtime)
 -   [Your project's bundle size](#serverless-bundle-size-limitation) cannot exceed 50 MB compressed or 250 MB uncompressed.
 -   Our serverless functions have a maximum runtime of 20 seconds per request. The response for a function that exceeds this limit is a [539 Project Timeout](/guides/performance/response#exclusive-status-codes).
--   Our Serverless Compute Lambda workers are allowed to generate a response body with a maximum file size of 6 MB.
+-   Our Serverless Compute workers are allowed to generate a response body with a maximum file size of 6 MB.
 -   Your project must comply with all applicable [{{ PRODUCT }} {{ PRODUCT_EDGE }} limitations.](/guides/performance/limits)
 
 ## NodeJS native extensions {/*nodejs-native-extensions*/}

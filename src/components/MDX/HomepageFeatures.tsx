@@ -13,6 +13,7 @@ import {IconSpark} from '../Icon/IconSpark';
 import Container from '../Layout/Container';
 
 import DocsResources from 'components/Home/DocsResources';
+import Security from 'components/Home/Security';
 
 const StyledHomepageFeatures = styled.div`
   padding-bottom: 500px;
@@ -75,6 +76,7 @@ export default function HomepageFeatures() {
           <AccountsandTeams />
         </div>
         <FrameworkGuides />
+        <Security />
         <Reference />
         {/* <VideosandTutorials /> */}
       </Container>

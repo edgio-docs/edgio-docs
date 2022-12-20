@@ -581,7 +581,7 @@ const SidebarMenuItems: ISidebarMenuItems = [
       title: PRODUCT_SECURITY,
       icon: <IconSecurityPlain />,
       iconDark: <IconSecurityPlainDark />,
-      path: 'reference',
+      path: 'security',
       sortRoutes: true,
       routes: [
         {

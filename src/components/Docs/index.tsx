@@ -22,7 +22,7 @@ const StyledDocs = styled.div`
   }
 
   .docs-article__header {
-    padding: 18px 0 16px;
+    padding: calc(var(--header-height) / 2) 0 16px;
     display: flex;
     align-items: baseline;
     justify-content: space-between;

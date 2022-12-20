@@ -52,7 +52,6 @@ const StyledMainPage = styled.div`
       flex: 1 1 0%;
       min-height: calc(100vh - var(--header-height));
       position: relative;
-      margin: 8px 10px 8px 10px;
 
       .LayoutHome {
         max-width: 1000px;

@@ -122,7 +122,7 @@ export default function DocsResources({children}: {children: React.ReactNode}) {
         <ResourceCard
           icon={BiGlobe}
           title="Limelight Delivery"
-          subtitle="Content delivery network service, used for delivery of digital media content and software."
+          subtitle="Set up traditional content delivery on the Limelight network."
           href="https://support.limelight.com/public/en/Default.htm?sgId=7bc47c45-c1d6-4189-b416-552581d86006"
           hrefText="View Docs"
         />

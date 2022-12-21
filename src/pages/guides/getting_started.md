@@ -37,7 +37,7 @@ You are now ready to optimize and secure the delivery of your website. [Learn mo
 ## Prerequisites {/*prerequisites*/}
 
 {{ PRODUCT }} requires:
--   [Node.js v{{ NODE_VERSION }}](/guides/install_nodejs) 
+-   [Node.js v{{ NODE_VERSION }}](/guides/install_nodejs)
 -   npm or yarn package manager
 
     <Callout type="info">
@@ -51,23 +51,25 @@ You are now ready to optimize and secure the delivery of your website. [Learn mo
 
 ### {{ PRODUCT }} CLI Installation {/*cli-installation*/}
 
-Use the [{{ PRODUCT }} CLI](/guides/develop/cli) to build, test, and deploy your website to {{ PRODUCT }}. Install it through either npm or yarn. 
+Use the [{{ PRODUCT }} CLI](/guides/develop/cli) to build, test, and deploy your website to {{ PRODUCT }}. Install it through either npm or yarn.
 
-**npm: **
-```bash
+<SnippetGroup>
+
+```bash tabLabel=npm
 npm i -g {{ PACKAGE_NAME }}/cli
 ```
 
-**yarn:**
-```bash
+```bash tabLabel=Yarn
 yarn global add {{ PACKAGE_NAME }}/cli
 ```
 
+</SnippetGroup>
+
 ### {{ PRODUCT }} Account Creation {/*account-creation*/}
 
-Signing up for an {{ PRODUCT }} account is free and quick. 
+Signing up for an {{ PRODUCT }} account is free and quick.
 
-1.  [Sign up now by either:]({{ APP_URL }}/signup) 
+1.  [Sign up now by either:]({{ APP_URL }}/signup)
 
     -   Manually creating an account.
         1.   Provide your name, email (user name), and a password. Click **Create Account**.
@@ -78,7 +80,7 @@ Signing up for an {{ PRODUCT }} account is free and quick.
 
 ## Step 1: Create an {{ PRODUCT }} Property {/*create-property*/}
 
-Each website that will run behind {{ PRODUCT }} requires an {{ PRODUCT }} property. A property determines how {{ PRODUCT }} will process your website's traffic. 
+Each website that will run behind {{ PRODUCT }} requires an {{ PRODUCT }} property. A property determines how {{ PRODUCT }} will process your website's traffic.
 
 1.  From the {{ PRODUCT }} Developer console, set the **What is your website's URL?** option to your website's URL and then click **Launch my site**.
 
@@ -97,7 +99,7 @@ Each website that will run behind {{ PRODUCT }} requires an {{ PRODUCT }} proper
     </Callout>
 
 3.  Replace `<ORIGIN>` with your website's domain or IP address and then run the following command:
-    
+
     ```bash
       edgio init --name <ORIGIN> \
       --environment production  \
@@ -119,7 +121,7 @@ You may run {{ PRODUCT }} in local development mode to preview your website on y
 Run the following command from your property's root directory to deploy it to {{ PRODUCT }}:
 
 ```bash
-{{ FULL_CLI_NAME }} deploy 
+{{ FULL_CLI_NAME }} deploy
 ```
 
 ## Next Steps {/*next-steps*/}
@@ -131,7 +133,7 @@ Once you have successfully deployed your property to {{ PRODUCT }}, our CLI prov
 You are now ready to set up:
 
 -   [Performance.](/guides/performance/getting_started) Learn how to:
-    -   Optimize website performance through our CDN-as-code approach to [caching](/guides/performance/getting_started#configure-caching), [routing](/guides/performance/cdn_as_code) your content, and [predictive prefetching](/guides/performance/prefetching). 
+    -   Optimize website performance through our CDN-as-code approach to [caching](/guides/performance/getting_started#configure-caching), [routing](/guides/performance/cdn_as_code) your content, and [predictive prefetching](/guides/performance/prefetching).
     -   Gain performance insights through which you can fine-tune your configuration through our [Observability](/guides/performance/observability/core_web_vitals) solution.
     -   Speed up development by quickly iterating through different variations of your site through our [Traffic Splitting](/guides/performance/traffic_splitting) solution.
 -   [Security.](/guides/security) We automatically provide distributed denial-of-service (DDOS) protection to traffic that runs behind {{ PRODUCT }}. Apply additional protection to your web applications and APIs through our Web Application Firewall and Advanced Bot Management solutions. {{ ACCOUNT_UPGRADE }}

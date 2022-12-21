@@ -129,7 +129,7 @@ export default function DocsResources({children}: {children: React.ReactNode}) {
         <ResourceCard
           icon={BsArrowsFullscreen}
           title="Edgecast Delivery"
-          subtitle="Developer tools for quickly deploying edge-enabled solutions for web, events and streaming content. "
+          subtitle="Set up traditional content delivery, security, and DNS on the Edgecast network."
           href="https://docs.edgecast.com/cdn?sgId=7bc47c45-c1d6-4189-b416-552581d86006"
           hrefText="View Docs"
         />

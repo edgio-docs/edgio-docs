@@ -39,10 +39,6 @@ function Accordion({
     isExpanded: isActive,
   });
 
-  console.clear();
-  console.log('-'.repeat(33));
-  console.log(currentRoutePath);
-
   return (
     <li className="sidenav-item" data-comp="accordion" data-expanded={isActive}>
       <div className="sidenav-menu__container">

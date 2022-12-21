@@ -66,7 +66,7 @@ export default function HomepageFeatures() {
           <SectionHeader
             Icon={BiBook}
             title="Additional Documentation"
-            subtitle="As we continue to integrate all our businesses into a unified development environment please find additional product documentation below."
+            subtitle="Edgio also offers solutions for streaming and traditional content delivery."
           />
         </DocsResources>
 

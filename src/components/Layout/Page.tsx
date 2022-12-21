@@ -25,7 +25,6 @@ const StyledMainPage = styled.div`
       position: sticky;
       left: 0px;
       top: var(--header-height);
-      border-radius: 4px;
       height: calc(100vh - var(--header-height));
       width: var(--sidebar-width);
       overflow: auto;

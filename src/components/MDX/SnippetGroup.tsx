@@ -101,7 +101,8 @@ export function SnippetGroup({children}: SnippetGroupProps) {
           </header>
           <Tab.Group
             as="div"
-            onChange={() => setSelectedIndex}
+            // @ts-ignore
+            onChange={setSelectedIndex}
             className="tab-group">
             <Tab.List className="tab-list">
               {children.map((child, tabIndex) => {

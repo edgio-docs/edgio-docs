@@ -97,7 +97,7 @@ Deploy your app to the {{ PRODUCT }} cloud by running the following command in y
 {{ FULL_CLI_NAME }} deploy
 ```
 
-See [deploying](deploy_apps) for more information.
+[Learn more about deployments.](/guides/basics/deployments)
 
 ## Post Deployment Whitelisting {/*post-deployment-whitelisting*/}
 

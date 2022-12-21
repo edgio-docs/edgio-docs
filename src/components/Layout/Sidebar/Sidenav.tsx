@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import {useRouter} from 'next/router';
-import React, {Fragment, useState} from 'react';
+import React, {Fragment, useEffect, useState} from 'react';
 import useCollapse from 'react-collapsed';
 import {CgExternal} from 'react-icons/cg';
 import {GoChevronRight} from 'react-icons/go';
@@ -137,6 +137,10 @@ function AccordionParent({routes, depth}: {routes: IRoute[]; depth: number}) {
   const [activeIndex, setActiveIndex] = useState<number | null>(() =>
     getCurrentRouteIndex(routes, depth, currentRoutePath)
   );
+
+  useEffect(() => {
+    setActiveIndex(getCurrentRouteIndex(routes, depth, currentRoutePath));
+  }, [currentRoutePath, depth, routes]);
 
   return (
     <>

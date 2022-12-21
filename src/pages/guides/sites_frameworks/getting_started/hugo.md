@@ -7,7 +7,7 @@ This guide shows you how to deploy a [Hugo](https://gohugo.io) application to {{
 ## Example {/*example*/}
 
 <ExampleButtons
-  repoUrl="https://github.com/layer0-docs/layer0-hugo-example" 
+  repoUrl="https://github.com/layer0-docs/layer0-hugo-example"
    />
 
 {{ PREREQ }}
@@ -16,11 +16,17 @@ This guide shows you how to deploy a [Hugo](https://gohugo.io) application to {{
 
 ### Step 1: Install Hugo {/*step-1-install-hugo*/}
 
-```bash
+<SnippetGroup>
+
+```bash tabLabel=Brew
 brew install hugo
-# or
+```
+
+```bash tabLabel=Port
 port install hugo
 ```
+
+</SnippetGroup>
 
 To verify your new install:
 

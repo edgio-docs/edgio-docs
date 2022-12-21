@@ -80,15 +80,17 @@ const INSTALL_CLI = `## Install the ${PRODUCT_NAME} CLI {/*install-the-cli*/}
 
 If you have not already done so, install the [${PRODUCT_NAME} CLI](/guides/develop/cli).
 
-With \`npm\`:
-\`\`\`bash
+<SnippetGroup>
+
+\`\`\`bash tabLabel=npm
 npm i -g ${PACKAGE_NAME}/cli
 \`\`\`
 
-With \`yarn\`:
-\`\`\`bash
+\`\`\`bash tabLabel=Yarn
 yarn global add ${PACKAGE_NAME}/cli
 \`\`\`
+
+</SnippetGroup>
 `;
 
 const PREREQ = `
@@ -103,15 +105,17 @@ const INSTALL_CLI_STEP = `Install the ${PRODUCT_NAME} CLI
 
 If you have not already done so, install the [${PRODUCT_NAME} CLI](/guides/develop/cli).
 
-With \`npm\`:
-\`\`\`bash
+<SnippetGroup>
+
+\`\`\`bash tabLabel=npm
 npm i -g ${PACKAGE_NAME}/cli
 \`\`\`
 
-With \`yarn\`:
-\`\`\`bash
+\`\`\`bash tabLabel=Yarn
 yarn global add ${PACKAGE_NAME}/cli
 \`\`\`
+
+</SnippetGroup>
 `;
 
 const ACCOUNT_UPGRADE = `Contact your account manager or our [sales department](https://edg.io/contact-us/) at 1 (866) 200 - 5463 to upgrade your account.`;

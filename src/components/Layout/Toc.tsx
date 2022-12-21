@@ -21,6 +21,7 @@ const StyledToc = styled.div`
     --scrollbar-bg: #606060;
     max-height: calc(100vh - var(--header-height) - 16px);
     top: calc(var(--header-height) + 8px);
+    margin-top: calc(var(--header-height) / 2);
   }
 
   .docs-toc__heading {

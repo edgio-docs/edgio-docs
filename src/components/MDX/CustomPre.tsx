@@ -7,56 +7,25 @@ import getDescriptiveLanguage from '../getLanguage';
 
 import CodeBlock from './CodeBlock';
 
-export const StyledCustomPre = styled.div`
-  overflow: hidden;
+export function CopyCode({message}: {message: string}) {
+  const [copied, setCopied] = React.useState(false);
 
-  .code-block__inner {
-    display: flex;
-    flex-direction: column;
-    background: #181717;
-    border: 2px solid #2a2b2c;
-    border-radius: 8px;
-  }
-
-  .code-block__header {
-    border-bottom: 2px solid #2a2b2c;
-    border-top-right-radius: 4px;
-    border-top-left-radius: 4px;
-    padding: 6px 6px 6px 8px;
-    font-size: 14px;
-    color: var(--colors-white0);
-    display: flex;
-    justify-content: space-between;
-
-    [class*='header-'] {
-      display: flex;
-      align-items: center;
-      gap: 10px;
+  useEffect(() => {
+    if (copied) {
+      setTimeout(() => {
+        setCopied(false);
+      }, 1000);
     }
+  });
 
-    .code-block__filename {
-      background-color: var(--colors-blue0);
-      border-radius: 4px;
-      padding-top: 5px;
-      padding-left: 9px;
-      padding-right: 9px;
-      padding-bottom: 5px;
-    }
-  }
-
-  .code-block__header-text {
-    font-weight: 700;
-  }
-
-  .code-block__content {
-    max-height: 500px;
-    overflow: auto;
-  }
-
-  code {
-    --scrollbar-bg: #777;
-  }
-`;
+  return (
+    <CopyToClipboard text={message.trim()} onCopy={() => setCopied(true)}>
+      <StyledCopyCodeButton className="code-block__copy">
+        {copied ? 'Copied' : 'Copy'}
+      </StyledCopyCodeButton>
+    </CopyToClipboard>
+  );
+}
 
 export default function CustomPre({children}: {children: React.ReactNode}) {
   let message: string = '';
@@ -148,27 +117,55 @@ const StyledCopyCodeButton = styled.button`
   }
 `;
 
-function CopyCode({message}: {message: string}) {
-  const [copied, setCopied] = React.useState(false);
+export const StyledCustomPre = styled.div`
+  overflow: hidden;
 
-  useEffect(() => {
-    if (copied) {
-      setTimeout(() => {
-        setCopied(false);
-      }, 1000);
+  .code-block__inner {
+    display: flex;
+    flex-direction: column;
+    background: #181717;
+    border: 2px solid #2a2b2c;
+    border-radius: 8px;
+  }
+
+  .code-block__header {
+    border-bottom: 2px solid #2a2b2c;
+    border-top-right-radius: 4px;
+    border-top-left-radius: 4px;
+    padding: 6px 6px 6px 8px;
+    font-size: 14px;
+    color: var(--colors-white0);
+    display: flex;
+    justify-content: space-between;
+
+    [class*='header-'] {
+      display: flex;
+      align-items: center;
+      gap: 10px;
     }
-  });
 
-  return (
-    <CopyToClipboard text={message.trim()} onCopy={() => setCopied(true)}>
-      <StyledCopyCodeButton className="code-block__copy">
-        {copied ? 'Copied' : 'Copy'}
-      </StyledCopyCodeButton>
-    </CopyToClipboard>
-  );
-}
+    .code-block__filename {
+      border-radius: 4px;
+      font-family: 'IBM Plex mono';
+      font-weight: bold;
+    }
+  }
 
-function cleanCopyCode(message: string) {
+  .code-block__header-text {
+    font-weight: 700;
+  }
+
+  .code-block__content {
+    max-height: 500px;
+    overflow: auto;
+  }
+
+  code {
+    --scrollbar-bg: #777;
+  }
+`;
+
+export function cleanCopyCode(message: string) {
   const reDiffLine = /(^\s*(\+|\-))/;
   const lines = message.split(/\r?\n/);
 

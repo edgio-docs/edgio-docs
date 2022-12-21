@@ -9,7 +9,7 @@ import {siteConfig} from 'siteConfig';
 
 const StyledDocs = styled.div`
   max-width: var(--docs-area-width);
-  margin: 0 auto 500px auto;
+  margin: 0 auto 600px auto;
   display: grid;
   grid-template-columns: 75% 1fr;
 
@@ -22,7 +22,7 @@ const StyledDocs = styled.div`
   }
 
   .docs-article__header {
-    padding: 18px 0 16px;
+    padding: calc(var(--header-height) / 2) 0 16px;
     display: flex;
     align-items: baseline;
     justify-content: space-between;

@@ -24,9 +24,9 @@ const StyledMainPage = styled.div`
     .docs-side__nav {
       position: sticky;
       left: 0px;
-      top: calc(var(--header-height) + 8px);
+      top: var(--header-height);
       border-radius: 4px;
-      height: calc(100vh - var(--header-height) - 16px);
+      height: calc(100vh - var(--header-height));
       width: var(--sidebar-width);
       overflow: auto;
       user-select: none;
@@ -35,7 +35,6 @@ const StyledMainPage = styled.div`
       background-color: var(--bg-secondary);
       will-change: transform;
       transition: transform 0.2s;
-      margin-left: 8px;
 
       &[data-open='true'] {
         position: fixed;
@@ -53,7 +52,6 @@ const StyledMainPage = styled.div`
       flex: 1 1 0%;
       min-height: calc(100vh - var(--header-height));
       position: relative;
-      margin: 8px 10px 8px 10px;
 
       .LayoutHome {
         max-width: 1000px;

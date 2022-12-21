@@ -66,20 +66,20 @@ function HomepageHero() {
         <div className="copy">
           <div id="dark-theme">
             <Image
-              src="/images/home/l0-to-edgio-light.webp"
-              alt="Layer0 is now Edgio Applications"
-              width={286}
-              height={230}
+              src="/images/home/edgio-logo-dark.png"
+              alt="Edgio Applications"
+              width={296}
+              height={142}
               priority={true}
               unoptimized
             />
           </div>
           <div id="light-theme">
             <Image
-              src="/images/home/l0-to-edgio-dark.webp"
-              alt="Layer0 is now Edgio Applications"
-              width={286}
-              height={230}
+              src="/images/home/edgio-logo-light.png"
+              alt="Edgio Applications"
+              width={296}
+              height={142}
               priority={true}
               unoptimized
             />

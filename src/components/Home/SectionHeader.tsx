@@ -1,9 +1,10 @@
+import {IconType} from 'react-icons';
 import styled from 'styled-components';
 
 function IconBox({
   Icon,
 }: {
-  Icon: React.NamedExoticComponent<React.SVGProps<SVGSVGElement>>;
+  Icon: React.NamedExoticComponent<React.SVGProps<SVGSVGElement>> | IconType;
 }) {
   return (
     <div className="section-icon__box">
@@ -33,6 +34,7 @@ const StyledSectionheader = styled.header`
       width: var(--size);
       height: var(--size);
       position: relative;
+      color: #606060;
       background-color: var(--colors-gray1);
       display: flex;
       justify-content: center;
@@ -44,11 +46,11 @@ const StyledSectionheader = styled.header`
   .section-header__content {
     display: grid;
     row-gap: 6px;
-    max-width: 42%;
+    max-width: initial;
 
-    @media (max-width: 1086px) {
+    /*@media (max-width: 1086px) {
       max-width: initial;
-    }
+    }*/
   }
 
   .section-header__title {
@@ -59,14 +61,14 @@ const StyledSectionheader = styled.header`
   }
 
   .section-header__subtitle {
-    font-size: 20px;
+    font-size: 16px;
     line-height: 28px;
     color: var(--subtitle-primary);
   }
 `;
 
 interface ISectionHeaderProps {
-  Icon?: React.NamedExoticComponent<React.SVGProps<SVGSVGElement>>;
+  Icon?: React.NamedExoticComponent<React.SVGProps<SVGSVGElement>> | IconType;
   title: string;
   subtitle?: string;
 }

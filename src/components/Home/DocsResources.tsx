@@ -115,7 +115,7 @@ export default function DocsResources({children}: {children: React.ReactNode}) {
         <ResourceCard
           icon={BsPlayCircle}
           title="Uplynk"
-          subtitle="Live and on-demand video to every device, worldwide."
+          subtitle="Broadcast a live linear feed, a live event, or video on-demand (VOD)."
           href="https://docs.edgecast.com/video?sgId=7bc47c45-c1d6-4189-b416-552581d86006"
           hrefText="View Docs"
         />

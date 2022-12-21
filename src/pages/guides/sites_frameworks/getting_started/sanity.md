@@ -91,7 +91,7 @@ Setting `--production` runs your app exactly as it will be when deployed to the 
 
 ## Deploy to {{ PRODUCT }} {/*deploy-to*/}
 
-Deploy your app to the {{ PRODUCT_PLATFORM }} by running the following commands in your project's root directory:
+Deploy your app to the {{ PRODUCT }} cloud by running the following command in your project's root directory:
 
 ```bash
 {{ FULL_CLI_NAME }} deploy

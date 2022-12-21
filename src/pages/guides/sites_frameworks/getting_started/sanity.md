@@ -4,15 +4,23 @@ title: Sanity Studio
 
 This guide shows you how to deploy a [Sanity Studio](https://www.sanity.io/docs/sanity-studio) application to {{ PRODUCT }}.
 
-Sanity Studio is a single page app (SPA) written in React, where you can configure the document types and input fields, with simple JavaScript objects. This guide will walk you through how to deploy Sanity Studio with {{ PRODUCT }} in four simple steps.
+Sanity Studio is a single page app (SPA) written in React, where you can configure the document types and input fields, with simple JavaScript objects. This guide will walk you through how to deploy Sanity Studio with {{ PRODUCT }}.
 
 ## Example {/*example*/}
 
 <ExampleButtons
   title="Sanity Studio"
   siteUrl="https://layer0-docs-layer0-sanity-studio-example-default.layer0-limelight.link"
-  repoUrl="https://github.com/layer0-docs/layer0-sanity-studio-example" 
+  repoUrl="https://github.com/edgio-docs/edgio-sanity-studio-example"
   deployFromRepo />
+
+## Connector {/*connector*/}
+
+This framework has a connector developed for {{ PRODUCT }}. See [Connectors](connectors) for more information.
+
+<ButtonLink variant="stroke" type="code" withIcon={true} href="https://github.com/edgio-docs/edgio-connectors/tree/main/edgio-sanity-studio-connector">
+ View the Connector Code
+</ButtonLink>
 
 {{ PREREQ }}
 
@@ -48,69 +56,48 @@ In the root directory of your project run `{{ FULL_CLI_NAME }} init`:
 
 This will automatically update your `package.json` and add all of the required {{ PRODUCT }} dependencies and files to your project. These include:
 
-- The `{{ PACKAGE_NAME }}/core` package - Allows you to declare routes and deploy your application on {{ PRODUCT }}
-- The `{{ PACKAGE_NAME }}/prefetch` package - Allows you to configure a service worker to prefetch and cache pages to improve browsing speed
-- `{{ CONFIG_FILE }}` - A configuration file for {{ PRODUCT }}
-- `routes.js` - A default routes file that sends all requests to Sanity Studio.
+- The `{{ PACKAGE_NAME }}/core` package
+- The `{{ PACKAGE_NAME }}/cli` package
+- The `{{ PACKAGE_NAME }}/sanity-studio` package
+- `{{ CONFIG_FILE }}`- Contains various configuration options for {{ PRODUCT }}.
+- `routes.js` - A default routes file that sends all requests to the Sanity Studio. Update this file to add caching or proxy some URLs to a different origin.
 
-### Configure the routes {/*configure-the-routes*/}
+## Routing {/*routing*/}
 
-Update `routes.js` at the root of your project to the following:
+The default `routes.js` file created by `{{ FULL_CLI_NAME }} init` sends all requests to Sanity Studio server via a fallback route.
 
 ```js
-// This file was added by {{ FULL_CLI_NAME }} init.
-// You should commit this file to source control.
+const { Router } = require('{{ PACKAGE_NAME }}/core/router')
+const { sanityRoutes } = require('{{ PACKAGE_NAME }}/sanity-studio')
 
-import { Router } from '{{ PACKAGE_NAME }}/core/router'
-
-export default new Router()
-  // Create serveStatic route for each file in the folder dist with a cache-control header of 's-maxage=315360000'
-  .static('dist')
-  .fallback(({ appShell }) => {
-      appShell('dist/index.html')
-  })
+export default new Router({ indexPermalink: false }).use(sanityRoutes)
 ```
 
-Refer to the [CDN-as-code](/guides/performance/cdn_as_code) guide for the full syntax of the `routes.js` file and how to configure it for your use case.
+## Running Locally {/*running-locally*/}
 
-### Run the Sanity Studio app locally on {{ PRODUCT }} {/*run-the-sanity-studio-app-locally-on*/}
-
-Create a production build of your app by running the following in your project's root directory:
+To test your app locally, run:
 
 ```bash
-npm run build
+{{ FULL_CLI_NAME }} run
 ```
 
-Set default port number for the app to run on 3333:
+You can do a production build of your app and test it locally using:
 
 ```bash
-set PORT=3333 # windows
-export PORT=3333 # linux
+{{ FULL_CLI_NAME }} build && {{ FULL_CLI_NAME }} run --production
 ```
 
-Test your app with the {{ PRODUCT_PLATFORM }} on your local machine by running the following command in your project's root directory:
+Setting `--production` runs your app exactly as it will be when deployed to the {{ PRODUCT }} cloud.
 
-```bash
-{{ FULL_CLI_NAME }} dev
-```
+## Deploy to {{ PRODUCT }} {/*deploy-to*/}
 
-Load the site http://127.0.0.1:3333
-
-## Deploying {/*deploying*/}
-
-Create a production build of your app by running the following in your project's root directory:
-
-```bash
-npm run build
-```
-
-Deploy your app to the {{ PRODUCT_PLATFORM }} by running the following command in your project's root directory:
+Deploy your app to the {{ PRODUCT_PLATFORM }} by running the following commands in your project's root directory:
 
 ```bash
 {{ FULL_CLI_NAME }} deploy
 ```
 
-Refer to the [Deployments](/guides/basics/deployments) guide for more information on the `deploy` command and its options.
+See [deploying](deploy_apps) for more information.
 
 ## Post Deployment Whitelisting {/*post-deployment-whitelisting*/}
 

@@ -39,6 +39,10 @@ function Accordion({
     isExpanded: isActive,
   });
 
+  console.clear();
+  console.log('-'.repeat(33));
+  console.log(currentRoutePath);
+
   return (
     <li className="sidenav-item" data-comp="accordion" data-expanded={isActive}>
       <div className="sidenav-menu__container">
@@ -64,7 +68,8 @@ function Accordion({
               <a
                 className="menu-toggle__wrap"
                 data-is-highlighted={
-                  currentRoutePath.replace('/guides/', '') === route.path
+                  currentRoutePath.split('/')[depth] ===
+                  route.path.split('/')[depth]
                 }
                 {...getToggleProps({
                   onClick: onSelect,
@@ -127,6 +132,9 @@ function getCurrentRouteIndex(
   });
 }
 
+//click on the Link:
+//  1. Open or close if it has children
+//  2. Navigate
 function AccordionParent({routes, depth}: {routes: IRoute[]; depth: number}) {
   const router = useRouter();
   const currentRoutePath = router.pathname.replace('/guides/', '');
@@ -177,15 +185,12 @@ const StyledSideNav = styled.div`
   }
 
   [aria-expanded='true'] {
-    font-weight: 700 !important;
-    color: var(--colors-blue0) !important;
-
     .icon-chevron {
       transform: translateX(-20px) rotate(90deg);
     }
   }
 
-  [aria-expanded='false'][data-is-highlighted='true'] {
+  [data-is-highlighted='true'] {
     font-weight: 700 !important;
     color: var(--colors-blue0) !important;
   }

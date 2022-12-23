@@ -2,7 +2,7 @@
 title: Sites
 ---
 
-{{ PRODUCT }} {{ PRODUCT_PLATFORM }} is a Jamstack platform built from the group up to run high-performance websites and web apps. It is the only Jamstack platform with an integrated world-class CDN ([{{ PRODUCT }} {{ PRODUCT_EDGE }}](/guides/performance)) and a state-of-the-art [web security suite](/guides/security). {{ PRODUCT }} {{ PRODUCT_PLATFORM }} enables you to build your web apps faster and leverage a global CDN in your application code to achieve optimal performance for your production traffic. 
+{{ PRODUCT }} {{ PRODUCT_PLATFORM }} is a Jamstack platform built from the ground up to run high-performance websites and web apps. It is the only Jamstack platform with an integrated world-class CDN ([{{ PRODUCT }} {{ PRODUCT_EDGE }}](/guides/performance)) and a state-of-the-art [web security suite](/guides/security). {{ PRODUCT }} {{ PRODUCT_PLATFORM }} enables you to build your web apps faster and leverage a global CDN in your application code to achieve optimal performance for your production traffic. 
 
 Build upon these performance improvements through Server-Side Rendering (SSR). {{ PRODUCT }} {{ PRODUCT_PLATFORM }} takes an SSR-first approach that enables you to render your web apps using our Serverless Compute at any scale. This allows your teams to focus on shipping features that your customers will love instead of maintaining and scaling your backend server infrastructure. {{ PRODUCT }} {{ PRODUCT_PLATFORM }} improves real-world performance through [precise control over caching](/guides/performance/caching#cache-key) that allows you to cache highly dynamic content. Responses served from the CDN cache will achieve a comparable Time to First Byte (TTFB) as static cached content.
 

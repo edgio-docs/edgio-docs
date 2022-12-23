@@ -2,9 +2,9 @@
 title: Sites (Frameworks)
 ---
 
-{{ PRODUCT }} {{ PRODUCT_PLATFORM }}, which provides optimal performance for your Jamstack sites or applications, is powered by [{{ PRODUCT }} {{ PRODUCT_EDGE }}](/guides/performance). This means that you will be able to develop your application at a faster rate and it empowers you to define performance optimizations within your application code. 
+{{ PRODUCT }} {{ PRODUCT_PLATFORM }} is a Jamstack platform built from the group up to run high-performance websites and web apps. It is the only Jamstack platform with an integrated world-class CDN ([{{ PRODUCT }} {{ PRODUCT_EDGE }}](/guides/performance)) and a state-of-the-art [web security suite](/guides/security). {{ PRODUCT }} {{ PRODUCT_PLATFORM }} enables you to build your web apps faster and leverage a global CDN in your application code to achieve optimal performance for your production traffic. 
 
-Build upon these performance improvements through Server-Side Rendering (SSR). SSR allows you to compute code embedded within your web application using our Serverless Compute workers. Processing your code  within the {{ PRODUCT }} cloud eliminates the need for web servers to run that code. More importantly, it improves performance  through caching without compromising the dynamic nature of these requests. Responses served from cache will achieve a comparable Time to First Byte (TTFB) as static cached content.
+Build upon these performance improvements through Server-Side Rendering (SSR). {{ PRODUCT }} {{ PRODUCT_PLATFORM }} takes an SSR-first approach that enables you to render your web apps using our Serverless Compute at any scale. This allows your teams to focus on shipping features that your customers will love instead of maintaining and scaling your backend server infrastructure. {{ PRODUCT }} {{ PRODUCT_PLATFORM }} improves real-world performance through [precise control over caching](/guides/performance/caching#cache-key) that allows you to cache highly dynamic content. Responses served from the CDN cache will achieve a comparable Time to First Byte (TTFB) as static cached content.
 
 We also support static page generation:
 -   At build time through Static Site Generation (SSG).

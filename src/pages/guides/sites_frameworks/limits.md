@@ -13,7 +13,7 @@ title: Limits
 
 ## NodeJS native extensions {/*nodejs-native-extensions*/}
 
-In a lot of scenarios, NodeJS native extensions might be required to perform specific tasks related to your application.
+In a lot of scenarios, NodeJS native extensions might be required in order to perform specific tasks related to your application.
 For example, you might need to use [OpenCV](https://github.com/peterbraden/node-opencv) to perform some checks on an image before making it publicly available.
 Or you might need to use extensions like [`node-microtime`](https://github.com/wadey/node-microtime) for finer-grained performance analysis.
 
@@ -79,7 +79,7 @@ const tmpFilePath = path.join(tmpdir(), 'temp-upload.jpg');
 
 Another thing to keep in mind is that "tmp" directory is ephemeral, meaning that it gets reset/recycled. If you store a
 file in "tmp", it most likely won’t be available in the next request. That’s why you’ll need to use external services
-to store permanent file storage. These external services can be Amazon S3, Google Cloud Storage, or any other storage.
+to store permanent file storage. These external services can be Amazon S3, Google Cloud Storage, or any other storage service.
 
 ## Serverless Bundle Size Limitation {/*serverless-bundle-size-limitation*/}
 
@@ -94,7 +94,7 @@ Move all build-time dependencies such as webpack, babel, etc... to devDependenci
 
 Following are the possible fixes that would help you reduce serverless bundle size by better engineering. If none of these does it, feel free to raise an issue on [{{ PRODUCT }} Forums](https://forum.layer0.co).
 
-### Possible Fix [1]: Segregating devDependencies from dependencies {/*possible-fix-1-segregating-devdependencies-from-dependencies*/}
+### [1]: Segregating devDependencies from dependencies {/*possible-fix-1-segregating-devdependencies-from-dependencies*/}
 
 Typically, this is due to node_modules marked as `dependencies` when they are more appropriate in `devDependencies` within the `package.json` file. Modules marked as dependencies will be included in the serverless bundle. Dev-only modules such as `babel`, `jest`, `webpack`, etc. should be moved to `devDependencies` as shown:
 
@@ -111,7 +111,7 @@ Typically, this is due to node_modules marked as `dependencies` when they are mo
 }
 ```
 
-### Possible Fix [2]: Segregating assets from serverless bundle {/*possible-fix-2-segregating-assets-from-serverless-bundle*/}
+### [2]: Segregating assets from serverless bundle {/*possible-fix-2-segregating-assets-from-serverless-bundle*/}
 
 Additionally, this can be related to assets (such as fonts or images) that are imported into your project code. These resources are typically better referenced as static assets which are stored outside of the serverless bundle.
 
@@ -132,9 +132,9 @@ Now, you can update your code references from importing the assets to referencin
 + <div><img src="/assets/images/Image1.png"/></div>
 ```
 
-### Possible Fix [3]: Computing which node_modules be included in the serverless bundle {/*possible-fix-3-computing-which-node_modules-be-included-in-the-serverless-bundle*/}
+### [3]: Computing which node_modules be included in the serverless bundle {/*possible-fix-3-computing-which-node_modules-be-included-in-the-serverless-bundle*/}
 
-It might be possible, that [Possible Fix [1]](#possible-fix-1-segregating-devdependencies-from-dependencies) reduces your serverless bundle size, but not reduce it to less than 50 MB (250 MB Uncompresssed). Another way to identify which dependencies would be required in the runtime is to use `@vercel/nft` package (a "Node.js dependency tracing utility").
+It might be possible, that [[1]](#possible-fix-1-segregating-devdependencies-from-dependencies) reduces your serverless bundle size, but not reduce it to less than 50 MB (250 MB Uncompresssed). Another way to identify which dependencies would be required in the runtime is to use `@vercel/nft` package (a "Node.js dependency tracing utility").
 
 Step 1. Install `@vercel/nft` as devDependency:
 

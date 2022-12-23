@@ -6,7 +6,7 @@ title: Serverless Compute
 
 ## Availability {/*availability*/}
 
-Serverless Compute is available in the following global regions:
+{{ PRODUCT }} allows you to cache and deliver your content through any of our points of presence (POPs) around the world. However, your serverless code will be computed within one of the following global regions:
 
 -   **Americas**: Eastern US and Western US
 -   **Europe**: Ireland, UK, Western Europe, Northern Europe, Central Europe

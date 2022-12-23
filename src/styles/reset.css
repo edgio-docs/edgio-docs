@@ -75,3 +75,16 @@ video {
 .inline-icon {
   display: inline;
 }
+
+button,
+[type='button'],
+[type='reset'],
+[type='submit'] {
+  --webkit-apearance: button;
+  background-color: transparent;
+  border-image: none;
+}
+
+:focus-visible {
+  outline: none;
+}

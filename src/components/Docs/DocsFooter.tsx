@@ -15,10 +15,6 @@ const StyledDocsFooter = styled.footer`
 
   @media (max-width: 460px) {
     font-size: 12px;
-
-    .links {
-      /* grid-template-columns: 1fr; */
-    }
   }
 
   ul {
@@ -41,8 +37,6 @@ const StyledDocsFooter = styled.footer`
   bottom: 0;
   position: absolute;
   width: 100%;
-  display: grid;
-  row-gap: 10px;
 
   .footer-start {
     background-color: var(--bg-secondary);

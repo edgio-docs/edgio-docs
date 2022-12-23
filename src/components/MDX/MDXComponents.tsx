@@ -14,6 +14,7 @@ import InlineCode from './InlineCode';
 import Integrations from './Integrations';
 import Link from './Link';
 import PopularFrameworks from './PopularFrameworks';
+import {SnippetGroup} from './SnippetGroup';
 import Video, {VimeoMDXEmbed} from './Video';
 
 const P = (p: JSX.IntrinsicElements['p']) => (
@@ -76,4 +77,5 @@ export const MDXComponents = {
   img: Image,
   Integrations,
   ExampleButtons,
+  SnippetGroup,
 };

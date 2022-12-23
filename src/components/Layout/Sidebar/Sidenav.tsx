@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import {useRouter} from 'next/router';
-import React, {Fragment, useState} from 'react';
+import React, {Fragment, useEffect, useState} from 'react';
 import useCollapse from 'react-collapsed';
 import {CgExternal} from 'react-icons/cg';
 import {GoChevronRight} from 'react-icons/go';
@@ -64,7 +64,8 @@ function Accordion({
               <a
                 className="menu-toggle__wrap"
                 data-is-highlighted={
-                  currentRoutePath.replace('/guides/', '') === route.path
+                  currentRoutePath.split('/')[depth] ===
+                  route.path.split('/')[depth]
                 }
                 {...getToggleProps({
                   onClick: onSelect,
@@ -127,12 +128,19 @@ function getCurrentRouteIndex(
   });
 }
 
+//click on the Link:
+//  1. Open or close if it has children
+//  2. Navigate
 function AccordionParent({routes, depth}: {routes: IRoute[]; depth: number}) {
   const router = useRouter();
   const currentRoutePath = router.pathname.replace('/guides/', '');
   const [activeIndex, setActiveIndex] = useState<number | null>(() =>
     getCurrentRouteIndex(routes, depth, currentRoutePath)
   );
+
+  useEffect(() => {
+    setActiveIndex(getCurrentRouteIndex(routes, depth, currentRoutePath));
+  }, [currentRoutePath, depth, routes]);
 
   return (
     <>
@@ -177,15 +185,12 @@ const StyledSideNav = styled.div`
   }
 
   [aria-expanded='true'] {
-    font-weight: 700 !important;
-    color: var(--colors-blue0) !important;
-
     .icon-chevron {
       transform: translateX(-20px) rotate(90deg);
     }
   }
 
-  [aria-expanded='false'][data-is-highlighted='true'] {
+  [data-is-highlighted='true'] {
     font-weight: 700 !important;
     color: var(--colors-blue0) !important;
   }

@@ -1,5 +1,5 @@
 ---
-title: Sites (Frameworks)
+title: Sites
 ---
 
 {{ PRODUCT }} {{ PRODUCT_PLATFORM }} is a Jamstack platform built from the group up to run high-performance websites and web apps. It is the only Jamstack platform with an integrated world-class CDN ([{{ PRODUCT }} {{ PRODUCT_EDGE }}](/guides/performance)) and a state-of-the-art [web security suite](/guides/security). {{ PRODUCT }} {{ PRODUCT_PLATFORM }} enables you to build your web apps faster and leverage a global CDN in your application code to achieve optimal performance for your production traffic. 

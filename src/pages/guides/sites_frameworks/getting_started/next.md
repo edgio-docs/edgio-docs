@@ -251,7 +251,7 @@ export default new Router()
 
 ### Preview Mode {/*preview-mode*/}
 
-To be able to use [Preivew Mode](https://nextjs.org/docs/advanced-features/preview-mode) while being able to cache the respective pages, update your routes to match the requests that contain the two cookies `__prerender_bypass` & `__next_preview_data`, and send those to serverless for rendering.
+To be able to use [Preview Mode](https://nextjs.org/docs/advanced-features/preview-mode) while being able to cache the respective pages, update your routes to match the requests that contain the two cookies `__prerender_bypass` & `__next_preview_data`, and send those to serverless for rendering.
 
 ```js filename='routes.js' ins={8-24}
 import { Router } from '{{ PACKAGE_NAME }}/core/router';

@@ -26,7 +26,7 @@ Learn about reserved request headers and how requests are routed through our ser
 
     [View image.](/images/overview/request-flow-edge-disabled-caching.png)
 
--   **Serverless Compute:** {{ PRODUCT }} routes Serverless Compute requests similar to standard traffic. However, cache misses are forwarded to a [Serverless Compute](/guides/performance/serverless_compute) load balancer which distributes requests to a Serverless Compute Lambda worker.
+-   **Serverless Compute:** {{ PRODUCT }} routes Serverless Compute requests similar to standard traffic. However, cache misses are forwarded to a [Serverless Compute](/guides/performance/serverless_compute) load balancer which distributes requests to a Serverless Compute worker.
 
     ![](/images/overview/request-flow-serverless-compute.png)
 

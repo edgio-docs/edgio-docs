@@ -87,18 +87,18 @@ The above configuration proxies all requests that do not match a route to the `o
 
 You may define a route by any combination of URL path, HTTP method, cookies, request headers, and query string parameters. Here are a few sample routes:
 
--   Match all requests whose URL path starts with `/marketing/images`:
+-   Match all requests whose URL path starts with `/marketing/images/`:
 
     ```js
     .match('/marketing/images/:path*', () => { })
     ```
 
--   Match all GET requests whose URL path starts with `/marketing/images`:
+-   Match all GET requests whose URL path starts with `/marketing/images/`:
 
     ```js
     .get('/marketing/images/:path*', () => { }))
     ```
--   Match all GET and POST requests whose URL path starts with `/marketing/images` and contain the `sport` request header set to `basketball`:
+-   Match all GET and POST requests whose URL path starts with `/marketing/images/` and contain the `sport` request header set to `basketball`:
 
     ```js
     router.match(
@@ -139,7 +139,12 @@ export default new Router()
   .fallback(({ proxy }) => proxy('origin'))
 ```
 
-The newly uncommented route caches all requests that start with `/api/` and proxies those requests to your `origin` backend when we cannot serve them from cache. The `failback()` method proxies all other requests to your `origin` backend.
+The newly uncommented route matches all requests that start with `/api/`. It also defines how {{ PRODUCT }} will cache and proxy those requests. Specifically, it defines:
+-   A CDN caching policy that sets a max-age of one day and allows us to serve stale responses for one hour.
+-   A browser caching policy that sets a max-age of 0, which is similar to no-cache. It also sets a caching policy for prefetched requests. 
+-   Proxies the above requests to your `origin` backend when we cannot serve them from cache. 
+
+The `failback()` method proxies all other requests to your `origin` backend.
  
 #### Cache Constants {/*cache-constants*/}
 Cache constants in the {{ ROUTES_FILE }} have been abstracted out to enable reuse across different routes. You may add additional constants.

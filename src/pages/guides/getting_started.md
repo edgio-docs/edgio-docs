@@ -155,7 +155,7 @@ You may run {{ PRODUCT }} in local development mode to preview your website on y
 1.  From the command line or terminal, type `{{ FULL_CLI_NAME }} dev`.
 2.  Preview your website by loading `https://127.0.0.1:3000` from within your preferred web browser.
 
-## Step 3: Deploy Your Property {/*deploy-property*/}
+## Step 3: Deploying Your Property {/*deploy-property*/}
 
 Run the following command from your property's root directory to deploy it to {{ PRODUCT }}:
 

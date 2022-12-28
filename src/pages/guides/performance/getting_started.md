@@ -163,14 +163,14 @@ Learn more about:
 -   [Caching](/guides/performance/caching)
 -   [Predictive Prefetching](/guides/performance/prefetching)
 
-## Deploy Locally {/*deploy-locally*/}
+## Testing Locally {/*deploy-locally*/}
 
 You may run {{ PRODUCT }} in local development mode to preview your website on your local machine prior to deployment. Local development mode allows for rapid development by allowing you to quickly test changes prior to deployment.
 
 1.  From the command line or terminal, type `{{ FULL_CLI_NAME }} dev`.
 2.  Preview your website by loading `https://127.0.0.1:3000` from within your preferred web browser.
 
-## Deploy to {{ PRODUCT }} {/*deploy-to*/}
+## Deploying Your Property {/*deploy-to*/}
 
 Evaluate site performance and QA functionality by deploying your property to {{ PRODUCT }}. Run the following command from your property's root directory:
 
@@ -178,7 +178,11 @@ Evaluate site performance and QA functionality by deploying your property to {{ 
 {{ FULL_CLI_NAME }} deploy
 ```
 
-Assess performance and caching behavior from the {{ PORTAL }}. Fine-tune your configuration by adding routes and then redeploying your property.
+Assess performance and caching behavior from the {{ PORTAL }}. Fine-tune your configuration by adding routes and then redeploying your property. Once you are ready to serve production traffic through {{ PRODUCT }}, update your site's DNS to point to our service.
+
+[Learn more.](/guides/production)
+
+
 
 ## Example {/*example*/}
 

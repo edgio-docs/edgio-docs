@@ -135,3 +135,8 @@ body {
   color: var(--text-primary);
   background-color: var(--bg-primary);
 }
+
+h2 {
+  border-top: solid 1px var(--hr-primary);
+  margin-top: 30px;
+}

@@ -18,21 +18,43 @@ If you already have [Node.js v{{ NODE_VERSION }}](/guides/install_nodejs) and an
 
 <Callout type="tip">
 
-  An alternative approach is to perform each of the above tasks individually. [Learn more.](#prerequisites)
+  An alternative approach is to perform each of the above tasks individually. 
+
+  [Learn more.](#prerequisites)
 
 </Callout>
 
-Replace `<DOMAIN>` with your website's domain when running the following command:
+Run one of the following commands from the root directory of your web application or website:
+-   **Origin:** Run this command if you have web servers that will serve as the origin.
+-   **Framework:** Run this command to render your web app within our cloud through {{ PRODUCT_PLATFORM }}.
 
-```bash
+<Callout type="info">
+
+  Replace `<PROPERTY>` with the name for this configuration. If you are also setting `<DOMAIN>`, then you should replace it with your website's domain or IP address.
+
+</Callout>
+
+<SnippetGroup>
+
+```bash tabLabel=Origin
   npx {{ PACKAGE_NAME }}/cli@latest init \
-	--name <DOMAIN> \
+	--name <PROPERTY> \
 	--environment default \
 	--origin <DOMAIN> \
 	--deploy
 ```
 
-You are now ready to optimize and secure the delivery of your website. [Learn more.](#next-steps)
+```bash tabLabel=Framework
+  npx {{ PACKAGE_NAME }}/cli@latest init \
+        --name <PROPERTY> \
+        --environment default \
+        --deploy
+```
+
+</SnippetGroup>
+
+You are now ready to optimize and secure the delivery of your website. 
+[Learn more.](#next-steps)
 
 ## Prerequisites {/*prerequisites*/}
 
@@ -98,13 +120,30 @@ Each website that will run behind {{ PRODUCT }} requires an {{ PRODUCT }} proper
 
     </Callout>
 
-3.  Replace `<ORIGIN>` with your website's domain or IP address and then run the following command:
+3.  Run one of the following commands:
+    -   **Origin:** Run this command if you have web servers that will serve as the origin.
+    -   **Framework:** Run this command to render your web apps within our cloud through {{ PRODUCT_PLATFORM }}.
 
-    ```bash
-      edgio init --name <ORIGIN> \
-      --environment production  \
-      --origin <ORIGIN>
-    ```
+        <Callout type="info">
+
+          Replace `<PROPERTY>` with the domain defined in step 1. If you are also setting `<DOMAIN>`, then you should replace it with your website's domain or IP address.
+
+        </Callout>
+
+        <SnippetGroup>
+
+        ```bash tabLabel=Origin
+          {{ FULL_CLI_NAME }} init --name <PROPERTY> \
+            --environment production \
+            --origin <DOMAIN> 
+        ```
+
+        ```bash tabLabel=Framework
+          {{ FULL_CLI_NAME }} init --name <PROPERTY> \
+            --environment production 
+        ```
+
+        </SnippetGroup>
 
 4.  When prompted, confirm the selection of `Use the current directory` by pressing the `ENTER` key.
 5.  When prompted, select either the `npm` or `yarn` package manager and then press the `ENTER` key.

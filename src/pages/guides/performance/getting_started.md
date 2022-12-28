@@ -184,12 +184,12 @@ Assess performance and caching behavior from the {{ PORTAL }}. Fine-tune your co
 
 
 
-## Example {/*example*/}
+## Example Website {/*example*/}
 
-We provide links to a sample site and its source code below. You may also start experimenting with that site by clicking **Deploy to {{ PRODUCT }}**.
+Use the following links to interact with an example website, view its source code, or experiment on it by deploying it to {{ PRODUCT }}.
 
 <ExampleButtons
-  title="Web CDN"
+  title="Performance"
   siteUrl="https://layer0-docs-cdn-starter-template-default.layer0-limelight.link"
   repoUrl="https://github.com/layer0-docs/layer0-cdn-example"
   deployFromRepo />

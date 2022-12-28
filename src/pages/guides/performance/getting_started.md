@@ -44,7 +44,7 @@ The {{ ROUTES_FILE }} file defines a set of routes. A route:
 
 </Callout>
 
-## Default Route Configuration  {/*default-route-configuration*/}
+## Default Route Configuration {/*default-route-configuration*/}
 
 By default, your {{ ROUTES_FILE }} will contain the following configuration:
 
@@ -112,28 +112,28 @@ You may define a route by any combination of URL path, HTTP method, cookies, req
 
 In this case, we will define a route by uncommenting the constants and the `match()` method in your {{ ROUTES_FILE }} file. It should now look similar to the following configuration:
 
-```js filename="./routes.js"
+```js filename="./routes.js" highlight={3-4,9-21}
 import { Router } from '@edgio/core/router'
 
-+ const ONE_HOUR = 60 * 60
-+ const ONE_DAY = 24 * ONE_HOUR
+ const ONE_HOUR = 60 * 60
+ const ONE_DAY = 24 * ONE_HOUR
 
 export default new Router()
   
   // Here is an example where we cache api/* at the edge but prevent caching in the browser
-  + .match('/api/:path*', ({ proxy, cache }) => {
-  +   cache({
-  +     edge: {
-  +       maxAgeSeconds: ONE_DAY,
-  +       staleWhileRevalidateSeconds: ONE_HOUR,
-  +     },
-  +     browser: {
-  +       maxAgeSeconds: 0,
-  +       serviceWorkerSeconds: ONE_DAY,
-  +     },
-  +   })
-  +   proxy('origin')
-  + })
+   .match('/api/:path*', ({ proxy, cache }) => {
+     cache({
+       edge: {
+         maxAgeSeconds: ONE_DAY,
+         staleWhileRevalidateSeconds: ONE_HOUR,
+       },
+       browser: {
+         maxAgeSeconds: 0,
+         serviceWorkerSeconds: ONE_DAY,
+       },
+     })
+     proxy('origin')
+   })
 
   // send any unmatched request to origin
   .fallback(({ proxy }) => proxy('origin'))

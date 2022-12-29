@@ -165,9 +165,11 @@ Run the following command from your property's root directory to deploy it to {{
 
 ## Next Steps {/*next-steps*/}
 
-Once you have successfully deployed your property to {{ PRODUCT }}, our CLI provides the following edge URLs:
--   The first edge URL corresponds to production traffic. {{ PRODUCT }} will not serve this URL until you set up a TLS certificate and update your DNS configuration to point to our service. [Learn more.](/guides/basics/domains)
--   Use the second edge URL to preview your website behind {{ PRODUCT }}.
+Once you have successfully deployed your property to {{ PRODUCT }}, our CLI provides the following URLs:
+-   **{{ PRODUCT }} Developer Console:** View detailed information about this deployment, including its edge link and permalink, from within the {{ PORTAL }}.
+-   **Permalink:** Preview your website behind {{ PRODUCT }} without edge caching. Bypassing our cache will affect performance.
+
+-   **Edge:** Preview your website behind {{ PRODUCT }} and gain performance insights through our [DevTools](/guides/performance/observability/devtools).  
 
 You are now ready to set up:
 

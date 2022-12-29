@@ -10,7 +10,7 @@ Get started with {{ PRODUCT_EDGE }} by:
 
     <Callout type="tip">
 
-      Alternatively, you may deploy our [sample site](#example).
+      Alternatively, you may experiment with our [example site](#example) by deploying it.
 
     </Callout>
 
@@ -22,8 +22,6 @@ Get started with {{ PRODUCT_EDGE }} by:
 3.  Deploy your updated property to {{ PRODUCT }}.
 
 4.  Serve production traffic over {{ PRODUCT }} by updating your site's DNS to point to our service.
-
-    [Learn more.](/guides/production)
 
 Deploying your web application behind {{ PRODUCT }} optimizes the delivery of your site. As illustrated below, requests for your site will pass through {{ PRODUCT }}'s globally distributed edge network to your origin server.
 
@@ -40,13 +38,13 @@ The {{ ROUTES_FILE }} file defines a set of routes. A route:
 
 <Callout type = "info">
 
-  By default, our {{ PRODUCT }} CLI automatically creates `routes.js` and `{{ CONFIG_FILE }}` upon initializing a property (`{{ FULL_CLI_NAME }} init`). If our CLI detects that your web application supports TypeScript, then it will create `routes.ts` instead of `routes.js`. 
+  By default, our CLI automatically creates `routes.js` and `{{ CONFIG_FILE }}` upon initializing a property (`{{ FULL_CLI_NAME }} init`). If our CLI detects that your web application supports TypeScript, then it will create `routes.ts` instead of `routes.js`. 
 
 </Callout>
 
 ## Default Route Configuration {/*default-route-configuration*/}
 
-By default, your {{ ROUTES_FILE }} will contain the following configuration:
+By default, your {{ ROUTES_FILE }} contains the following configuration:
 
 ```js filename="./routes.js"
 import { Router } from '@edgio/core/router'
@@ -75,40 +73,72 @@ export default new Router()
   .fallback(({ proxy }) => proxy('origin'))
 ```
 
-The above configuration proxies all requests that do not match a route to the `origin` backend. In this case, a route has not been defined since the `match()` method  has been commented out. This means that all requests will be proxied to the `origin` backend. 
+The above configuration proxies all requests that do not match a route to the `origin` backend. Additionally, it does not define a route, since the only `match()` method has been commented-out. This means that all requests will be proxied to the `origin` backend.
 
 <Callout type="info">
 
-  Define backends within the [`{{ CONFIG_FILE }}` file](/guides/basics/edgio_config).
+  A backend identifies a domain or IP address to which {{ PRODUCT }} may proxy requests. In this case, the `origin` backend was defined when you initialized this property using the `edgio init` command. 
+<br /> 
+
+  Add, modify, and remove backends by editing the [`{{ CONFIG_FILE }}` file](/guides/basics/edgio_config).
 
 </Callout>
 
 ## Defining a Route {/*defining-a-route*/}
 
-You may define a route by any combination of URL path, HTTP method, cookies, request headers, and query string parameters. Here are a few sample routes:
+Define a route by first identifying a set of requests through any combination of URL path, HTTP method, cookies, request headers, and query string parameters. The following routes show various ways for identifying requests. 
 
--   Match all requests whose URL path starts with `/marketing/images/`:
+-   Match all requests:
 
     ```js
-    .match('/marketing/images/:path*', () => { })
+    .match('/:path*', () => { 
+      // route handler goes here
+    })
     ```
 
--   Match all GET requests whose URL path starts with `/marketing/images/`:
+-   Match all `GET` requests whose URL path starts with `/marketing/images/`:
 
     ```js
-    .get('/marketing/images/:path*', () => { }))
+    .get('/marketing/images/:path*', () => { 
+      // route handler goes here
+    })
     ```
--   Match all GET and POST requests whose URL path starts with `/marketing/images/` and contain the `sport` request header set to `basketball`:
+-   Match all `GET` and `POST` requests whose URL path starts with `/marketing/images/` and contain the `sport` request header set to `basketball`:
 
     ```js
-    router.match(
+    .match(
       {
         path: '/marketing/images/:path*', 
         method: /GET|POST/i, // regular expression
         headers: { 'sport': /^basketball$/i }, // keys are header names; values are regular expressions
       },
-      () => {})
+      () => {
+      // route handler goes here
+    })
     ```
+
+Once you have identified a set of requests, you need to define how {{ PRODUCT }} will handle those requests. The following routes show various ways in which requests can be processed.
+
+-   Apply a caching policy to all requests and proxy cache misses to the `origin` backend:
+    ```js
+    .match('/api/:path*', ({ proxy, cache }) => {
+      cache({
+        edge: {
+          maxAgeSeconds: 3600
+        }
+      })
+      proxy('origin')
+    })
+    ```
+-   Set the `images` response header and proxy cache misses to the `origin` backend for all GET requests whose URL path starts with `/marketing/images/`:
+    ```js
+    .get('/marketing/images/:path*', ({ setResponseHeader, proxy }) => { 
+      setResponseHeader('images', 'true')
+      proxy('origin')
+    })
+    ```
+
+[View additional examples.](/guides/performance/cdn_as_code/common_routing_patterns)
 
 In this case, we will define a route by uncommenting the constants and the `match()` method in your {{ ROUTES_FILE }} file. It should now look similar to the following configuration:
 
@@ -139,12 +169,14 @@ export default new Router()
   .fallback(({ proxy }) => proxy('origin'))
 ```
 
-The newly uncommented route matches all requests that start with `/api/`. It also defines how {{ PRODUCT }} will cache and proxy those requests. Specifically, it defines:
--   A CDN caching policy that sets a max-age of one day and allows us to serve stale responses for one hour.
--   A browser caching policy that sets a max-age of 0, which is similar to no-cache. It also sets a caching policy for prefetched requests. 
--   Proxies the above requests to your `origin` backend when we cannot serve them from cache. 
+We have just added a route that matches all requests that start with `/api/` and instructs {{ PRODUCT }} to:
+-   Cache those requests on our network for one day.
+-   Allow us to serve stale content for one hour.
+-   Instruct the browser to treat the response as immediately stale. 
+-   Allow prefetched requests to be served from cache for one day.
+-   Proxy those requests to your `origin` backend when we cannot serve them from cache.
 
-The `failback()` method proxies all other requests to your `origin` backend.
+The `failback()` method proxies all requests that do not match a route to your `origin` backend.
  
 #### Cache Constants {/*cache-constants*/}
 Cache constants in the {{ ROUTES_FILE }} have been abstracted out to enable reuse across different routes. You may add additional constants.

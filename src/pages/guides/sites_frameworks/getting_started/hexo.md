@@ -62,12 +62,13 @@ This will automatically update your `package.json` and add all of the required {
 The default `routes.js` file created by `{{ FULL_CLI_NAME }} init` sends all requests to Hexo server via a fallback route.
 
 ```js
-// This file was automatically added by {{ FULL_CLI_NAME }} deploy.
+// This file was added by {{ FULL_CLI_NAME }} init.
 // You should commit this file to source control.
+
 const { hexoRoutes } = require('{{ PACKAGE_NAME }}/hexo')
 const { Router } = require('{{ PACKAGE_NAME }}/core/router')
-export default new Router()
-  .use(hexoRoutes)
+
+export default new Router({ indexPermalink: false }).use(hexoRoutes)
 ```
 
 ## Running Locally {/*running-locally*/}

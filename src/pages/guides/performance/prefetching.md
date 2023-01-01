@@ -45,7 +45,7 @@ To ensure that excessive prefetch traffic isn't passed on to your origin, {{ PRO
 ```js filename="routes.js"
 import {Router} from '{{ PACKAGE_NAME }}/core';
 
-export default new Router()
+export default new Router({ indexPermalink: false })
   // Here we configure a route for the product API.
   .get('/api/products/:id.json', ({cache, proxy}) => {
     // In order to prefetch product data, we must cache responses at the edge and in the service worker.
@@ -327,7 +327,7 @@ module.exports = {
 const {Router, CustomCacheKey} = require('{{ PACKAGE_NAME }}/core/router');
 const {decompressRequest} = require('{{ PACKAGE_NAME }}/apollo');
 
-module.exports = new Router()
+module.exports = new Router({ indexPermalink: false })
   .post('/graphql', ({proxy}) => {
     proxy('graphql'); // forward posts requests to apollo unaltered
   })

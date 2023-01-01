@@ -241,7 +241,7 @@ The response was not cached because the edge caching was explicitly disabled (se
 The response was not cached because there was no `cache-control` response header with a non-zero `max-age` or `s-maxage` value. To cache the response, call `cache` in your route handler with `edge.maxAgeSeconds` set. For example:
 
 ```js
-new Router().get('/', ({ cache }) => {
+new Router({ indexPermalink: false }).get('/', ({ cache }) => {
   cache({
     edge: {
       maxAgeSeconds: 60 * 60 * 24,
@@ -261,7 +261,7 @@ The response was not cached because the response had a status code >= 400.
 The response was not cached because it contained a `cache-control` header with `private`. To cache the response, use:
 
 ```js
-new Router().get('/', ({ cache }) => {
+new Router({ indexPermalink: false }).get('/', ({ cache }) => {
   cache({
     edge: {
       forcePrivateCaching: true,

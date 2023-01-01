@@ -301,13 +301,8 @@ From the resulting changes, set your {{ PRODUCT }} `routes.js` file to the follo
 ```javascript
 import {Router} from '{{ PACKAGE_NAME }}/core/router';
 
-export default new Router()
-  .match('/static/:path*', ({serveStatic}) => {
-    serveStatic('build/static/:path*');
-  })
-  .match('/:path*', ({serveStatic}) => {
-    serveStatic('build/:path*');
-  })
+export default new Router({ indexPermalink: false })
+  .static('build')
   .fallback(({serveStatic}) => serveStatic('build/index.html'));
 ```
 

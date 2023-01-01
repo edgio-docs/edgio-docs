@@ -29,9 +29,9 @@ Generate a new app or deploy an existing one to {{ PRODUCT_NAME }}. You will nee
 To add {{ PRODUCT_NAME }} to an existing app, run the following:
 
 ```bash
-$ npm i -g {{ PACKAGE_NAME }}/cli # yarn global add {{ PACKAGE_NAME }}/cli
-$ {{ FULL_CLI_NAME }} init
-$ {{ FULL_CLI_NAME }} deploy
+npm i -g {{ PACKAGE_NAME }}/cli # yarn global add {{ PACKAGE_NAME }}/cli
+{{ FULL_CLI_NAME }} init
+{{ FULL_CLI_NAME }} deploy
 ```
 
 ### New app {/*new-app*/}

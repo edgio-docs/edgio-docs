@@ -128,7 +128,7 @@ new Metrics({
   token: 'your-token-here',
 
   // assign a page label for each route:
-  router: new Router()
+  router: new Router({ indexPermalink: false })
     .match('/', ({ setPageLabel }) => setPageLabel('home'))
     .match('/p/:id', ({ setPageLabel }) => setPageLabel('product'))
     .match('/c/:id', ({ setPageLabel }) => setPageLabel('category')),

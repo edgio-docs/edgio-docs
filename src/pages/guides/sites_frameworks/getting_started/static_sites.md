@@ -68,7 +68,7 @@ You can use the router's `static` method to serve everything in the `build` dire
 
 const { Router } = require('{{ PACKAGE_NAME }}/core/router')
 
-module.exports = new Router().static('build')
+module.exports = new Router({ indexPermalink: false }).static('build')
 ```
 
 If your site does not use a bundler for generating a build output, you can still serve the assets using `serveStatic` and reference the relative path to the resources. Any resource referenced using `serveStatic` or `appShell` will automatically be included in the {{ PRODUCT }} deployment. An example of serving assets from your `src` directory:
@@ -95,7 +95,7 @@ const handler = ({ cache, serveStatic }, cacheConfig, path) => {
   serveStatic(path)
 }
 
-module.exports = new Router()
+module.exports = new Router({ indexPermalink: false })
 
   // Assets (Hashed and Cached on Edge and in the Browser)
   .get('/css/:path*', res => handler(res, edgeAndBrowser, 'src/css/:path*')) 

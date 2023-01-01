@@ -51,16 +51,13 @@ This will automatically add all of the required dependencies and files to your p
 The default `routes.js` file created by `{{ FULL_CLI_NAME }} init` sends all requests to React server via a fallback route.
 
 ```js
-// This file was automatically added by {{ FULL_CLI_NAME }} deploy.
+// This file was added by {{ FULL_CLI_NAME }} init.
 // You should commit this file to source control.
 
 const { Router } = require('{{ PACKAGE_NAME }}/core/router')
 const { reactCRARoutes } = require('{{ PACKAGE_NAME }}/react-cra')
 
-module.exports = new Router()
-  // Prevent search engines from indexing permalink URLs
-  .noIndexPermalink()
-  .use(reactCRARoutes)
+module.exports = new Router({ indexPermalink: false }).use(reactCRARoutes)
 ```
 
 ## Running Locally {/*running-locally*/}

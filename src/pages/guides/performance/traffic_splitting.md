@@ -98,16 +98,16 @@ Add a destination for each site or application version to your `routes.js` file.
 
 ```js filename="routes.js"
 const { Router } = require('{{ PACKAGE_NAME }}/core/router')
-module.exports = new Router()
+module.exports = new Router({ indexPermalink: false })
   .destination(
     'legacy_experience', // displayed in the destination dropdown in the traffic splitting section of your environment configuration in the Edgio Developer Console
-    new Router()
+    new Router({ indexPermalink: false })
       // additional routing rules for the legacy experience go here
       .fallback(({ proxy }) => proxy('legacy')),
   )
   .destination(
     'new_experience', // displayed in the destination dropdown in the traffic splitting section of your environment configuration in the Edgio Developer Console
-    new Router()
+    new Router({ indexPermalink: false })
       // additional routing rules for the new experience go here
       .fallback(({ proxy }) => proxy('new')),
   )

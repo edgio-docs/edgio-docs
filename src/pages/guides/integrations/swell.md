@@ -184,7 +184,7 @@ module.exports = {
 const { Router } = require('{{ PACKAGE_NAME }}/core/router')
 const { nuxtRoutes } = require('{{ PACKAGE_NAME }}/nuxt')
 
-module.exports = new Router()
+module.exports = new Router({ indexPermalink: false })
   .match('/service-worker.js', ({ serviceWorker }) => {
     serviceWorker('.nuxt/dist/client/service-worker.js')
   })

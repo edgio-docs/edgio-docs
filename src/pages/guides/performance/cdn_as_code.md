@@ -26,7 +26,7 @@ Define routes within the `routes.js` file. The `routes.js` file should export an
 ```js filename="./routes.js"
 const { Router } = require('{{ PACKAGE_NAME }}/core/router')
 
-module.exports = new Router()
+module.exports = new Router({ indexPermalink: false })
 ```
 
 ## Declare Routes {/*declare-routes*/}
@@ -36,7 +36,7 @@ Declare routes using the method corresponding to the HTTP method you want to mat
 ```js filename="./routes.js"
 const { Router } = require('{{ PACKAGE_NAME }}/core/router')
 
-module.exports = new Router().get('/some-path', ({ cache, proxy }) => {
+module.exports = new Router({ indexPermalink: false }).get('/some-path', ({ cache, proxy }) => {
   // handle the request here
 })
 ```
@@ -55,7 +55,7 @@ To match all methods, use `match`:
 ```js filename="./routes.js"
 const { Router } = require('{{ PACKAGE_NAME }}/core/router')
 
-module.exports = new Router().match('/some-path', ({ cache, proxy }) => {
+module.exports = new Router({ indexPermalink: false }).match('/some-path', ({ cache, proxy }) => {
   // handle the request here
 })
 ```
@@ -81,7 +81,7 @@ const { Router } = require('{{ PACKAGE_NAME }}/core/router')
 const { nextRoutes } = require('{{ PACKAGE_NAME }}/next')
 
 // In this example a request to /products/1 will be cached by the first route, then served by the `nextRoutes` middleware
-new Router()
+new Router({ indexPermalink: false })
   .get('/products/:id', ({ cache }) => {
     cache({
       edge: { maxAgeSeconds: 60 * 60, staleWhileRevalidateSeconds: 60 * 60 },
@@ -131,7 +131,7 @@ The syntax for route paths is provided by [path-to-regexp](https://github.com/pi
 Named parameters are defined by prefixing a colon to the parameter name (`:foo`).
 
 ```js
-new Router().get('/:foo/:bar', res => {
+new Router({ indexPermalink: false }).get('/:foo/:bar', res => {
   /* ... */
 })
 ```
@@ -143,7 +143,7 @@ new Router().get('/:foo/:bar', res => {
 Parameters can have a custom regexp, which overrides the default match (`[^/]+`). For example, you can match digits or names in a path:
 
 ```js
-new Router().get('/icon-:foo(\\d+).png', res => {
+new Router({ indexPermalink: false }).get('/icon-:foo(\\d+).png', res => {
   /* ... */
 })
 ```
@@ -155,7 +155,7 @@ new Router().get('/icon-:foo(\\d+).png', res => {
 Parameters can be wrapped in `{}` to create custom prefixes or suffixes for your segment:
 
 ```js
-new Router().get('/:attr1?{-:attr2}?{-:attr3}?', res => {
+new Router({ indexPermalink: false }).get('/:attr1?{-:attr2}?{-:attr3}?', res => {
   /* ... */
 })
 ```
@@ -165,7 +165,7 @@ new Router().get('/:attr1?{-:attr2}?{-:attr3}?', res => {
 It is possible to write an unnamed parameter that only consists of a regexp. It works the same the named parameter, except it will be numerically indexed:
 
 ```js
-new Router().get('/:foo/(.*)', res => {
+new Router({ indexPermalink: false }).get('/:foo/(.*)', res => {
   /* ... */
 })
 ```
@@ -179,7 +179,7 @@ Modifiers must be placed after the parameter (e.g. `/:foo?`, `/(test)?`, `/:foo(
 Parameters can be suffixed with a question mark (`?`) to make the parameter optional.
 
 ```js
-new Router().get('/:foo/:bar?', res => {
+new Router({ indexPermalink: false }).get('/:foo/:bar?', res => {
   /* ... */
 })
 ```
@@ -191,7 +191,7 @@ new Router().get('/:foo/:bar?', res => {
 Parameters can be suffixed with an asterisk (`*`) to denote zero or more parameter matches.
 
 ```js
-new Router().get('/:foo*', res => {
+new Router({ indexPermalink: false }).get('/:foo*', res => {
   /* res.params.foo will be an array */
 })
 ```
@@ -203,7 +203,7 @@ The captured parameter value will be provided as an array.
 Parameters can be suffixed with a plus sign (`+`) to denote one or more parameter matches.
 
 ```js
-new Router().get('/:foo+', res => {
+new Router({ indexPermalink: false }).get('/:foo+', res => {
   /* res.params.foo will be an array */
 })
 ```
@@ -305,10 +305,7 @@ This example shows typical usage of `{{ PACKAGE_NAME }}/core`, including serving
 
 const { Router } = require('{{ PACKAGE_NAME }}/core/router')
 
-module.exports = new Router()
-  // adds `x-robots-tag: noindex` response header to {{ PRODUCT }} 
-  // edge links and permalinks to prevent bot indexing
-  .noIndexPermalink()
+module.exports = new Router({ indexPermalink: false })
   .get('/service-worker.js', ({ serviceWorker }) => {
     // serve the service worker built by webpack
     serviceWorker('dist/service-worker.js')
@@ -349,7 +346,7 @@ For example, to issue a custom error page when the origin returns any 5xx status
 
 const { Router } = require('{{ PACKAGE_NAME }}/core/router')
 
-module.exports = new Router()
+module.exports = new Router({ indexPermalink: false })
   // Example route that returns with a 5xx error status code
   .get('/failing-route', ({ proxy }) => {
     proxy('broken-origin')

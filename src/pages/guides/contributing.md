@@ -184,7 +184,7 @@ app.layer0.co
 You may highlight various lines of code by specifying line number ranges within `ins={}`, `del={}`, or `highlight={}`, where the value inside `{}` can be `{1,2,3,8,9,10}` or `{1-3,8-10}`, for example.
 
 ```js ins={1-3,8-10} 
-  new Router()
+  new Router({ indexPermalink: false })
   .get('/pages/c/:categoryId', ({ cache }) => {
     cache({
       browser: {
@@ -203,7 +203,7 @@ You may highlight various lines of code by specifying line number ranges within 
 To highlight lines based on a diff, mark lines with a leading `+`/`-` and specify the `diff` attribute such as: `` ```js diff ``
 
 ```js diff
-  new Router()
+  new Router({ indexPermalink: false })
   .get('/pages/c/:categoryId', ({ cache }) => {
     cache({
 +      browser: {

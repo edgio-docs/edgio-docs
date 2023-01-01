@@ -51,16 +51,13 @@ This will automatically add all of the required dependencies and files to your p
 The default `routes.js` file created by `{{ FULL_CLI_NAME }} init` sends all requests to Vite server via a fallback route.
 
 ```js
-// This file was automatically added by {{ FULL_CLI_NAME }} deploy.
+// This file was added by {{ FULL_CLI_NAME }} init.
 // You should commit this file to source control.
 
 const { Router } = require('{{ PACKAGE_NAME }}/core/router')
 const { vue3Routes } = require('{{ PACKAGE_NAME }}/vue-3')
 
-export default new Router()
-  // Prevent search engines from indexing permalink URLs
-  .noIndexPermalink()
-  .use(vue3Routes)
+export default new Router({ indexPermalink: false }).use(vue3Routes)
 ```
 
 ## Running Locally {/*running-locally*/}

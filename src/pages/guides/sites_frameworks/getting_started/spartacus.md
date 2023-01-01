@@ -259,23 +259,19 @@ Add `"skipLibCheck": true,` to `tsconfig.json` to avoid type errors from `workbo
 The default `routes.js` file created by `{{ FULL_CLI_NAME }} init` sends all requests to Angular server via a fallback route.
 
 ```js
-// This file was automatically added by {{ FULL_CLI_NAME }} deploy.
+// This file was added by {{ FULL_CLI_NAME }} init.
 // You should commit this file to source control.
 
 import { Router } from '{{ PACKAGE_NAME }}/core/router'
 import { angularRoutes } from '{{ PACKAGE_NAME }}/angular'
 
-export default new Router()
-  .use(angularRoutes)
+export default new Router({ indexPermalink: false }).use(angularRoutes)
 ```
 
 The default router also includes common cache configurations for most Spartacus apps:
 
 ```js
-  return new Router()
-    // Prevent search engine bot(s) from indexing
-    // Read more on: {{ DOCS_URL }}/guides/cookbook#blocking-search-engine-crawlers
-    .noIndexPermalink()
+  return new Router({ indexPermalink: false })
     .match('/rest/v2/:path*', ({ cache, proxy }) => {
       cache({
         browser: {
@@ -319,7 +315,7 @@ const CACHE_SSR_PAGE = {
   },
 }
 
-return new Router()
+return new Router({ indexPermalink: false })
   ...
   .get('/base-site-path/:path*', ({ cache }) => {
     cache(CACHE_SSR_PAGE)

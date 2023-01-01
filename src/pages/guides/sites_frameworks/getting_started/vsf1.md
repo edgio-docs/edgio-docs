@@ -93,7 +93,7 @@ const DIST_{{ PRODUCT_NAME_UPPER }}_ASSETS = 'dist-{{ PRODUCT_NAME_LOWER }}-asse
 const SPLAT = ':path*'
 const SUFFIX_SPLAT = `:suffix/${SPLAT}`
 
-const router = new Router()
+const router = new Router({ indexPermalink: false })
 
 const pages = [
   // home

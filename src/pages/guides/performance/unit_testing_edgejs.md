@@ -109,7 +109,7 @@ If your route sends a response from your application, such as `renderWithApp` or
 ```js
 // src/router.ts
 ...
-export default new Router()
+export default new Router({ indexPermalink: false })
   .get('/collections/:path*', ({ cache }) => {
     cache({
       edge: {
@@ -151,7 +151,7 @@ module.exports = {
 }
 
 // src/routes.ts
-export default new Router().get('/collections/:path*', ({ cache, proxy }) => {
+export default new Router({ indexPermalink: false }).get('/collections/:path*', ({ cache, proxy }) => {
   cache({
     edge: {
       maxAgeSeconds: 60 * 60,
@@ -181,7 +181,7 @@ For serving static assets, mock the asset host using `staticHost()`.
 
 ```js
 // src/routes.ts
-export default new Router().get('/icons/:path*', ({ cache, serveStatic }) => {
+export default new Router({ indexPermalink: false }).get('/icons/:path*', ({ cache, serveStatic }) => {
   cache({
     edge: {
       maxAgeSeconds: 60 * 60,

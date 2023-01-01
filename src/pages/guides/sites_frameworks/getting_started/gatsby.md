@@ -72,14 +72,13 @@ See [Deployments](/guides/basics/deployments) guide for more information.
 The default `routes.js` file created by `{{ FULL_CLI_NAME }} init` sends all requests to the Gatsby static site.
 
 ```js
-// This file was automatically added by {{ FULL_CLI_NAME }} deploy.
+// This file was added by {{ FULL_CLI_NAME }} init.
 // You should commit this file to source control.
 
 const { Router } = require('{{ PACKAGE_NAME }}/core/router')
 const { gatsbyRoutes } = require('{{ PACKAGE_NAME }}/gatsby')
 
-module.exports = new Router()
-  .use(gatsbyRoutes)
+module.exports = new Router({ indexPermalink: false }).use(gatsbyRoutes)
 ```
 
 ### Adding routes to a different origin {/*adding-routes-to-a-different-origin*/}
@@ -113,8 +112,7 @@ For example:
 const { Router } = require('{{ PACKAGE_NAME }}/core/router')
 const { gatsbyRoutes } = require('{{ PACKAGE_NAME }}/gatsby')
 
-module.exports = new Router()
-
+module.exports = new Router({ indexPermalink: false })
   .get('/some/legacy/url/:p', ({ proxy }) => {
     proxy('legacy')
   })

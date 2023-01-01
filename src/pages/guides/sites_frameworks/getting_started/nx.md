@@ -83,7 +83,7 @@ Open `routes.ts` and change to the following:
 import { Router } from '{{ PACKAGE_NAME }}/core/router';
 import { nextRoutes } from '{{ PACKAGE_NAME }}/next';
 
-export default new Router()
+export default new Router({ indexPermalink: false })
   .match('/service-worker.js', ({ serviceWorker }) => {
     return serviceWorker('.next/static/service-worker.js');
   })

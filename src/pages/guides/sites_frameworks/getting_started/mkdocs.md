@@ -55,14 +55,13 @@ This will automatically add all of the required dependencies and files to your p
 The default `routes.js` file created by `{{ FULL_CLI_NAME }} init` sends all requests to MkDocs server via a fallback route.
 
 ```js
-// This file was automatically added by {{ FULL_CLI_NAME }} deploy.
+// This file was added by {{ FULL_CLI_NAME }} init.
 // You should commit this file to source control.
 
 const { Router } = require('{{ PACKAGE_NAME }}/core/router')
 const { mkdocsRoutes } = require('{{ PACKAGE_NAME }}/mkdocs')
 
-export default new Router()
-  .use(mkdocsRoutes)
+export default new Router({ indexPermalink: false }).use(mkdocsRoutes)
 ```
 
 ## Running Locally {/*running-locally*/}

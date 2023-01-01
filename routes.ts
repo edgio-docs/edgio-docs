@@ -79,7 +79,7 @@ const connectSrcDomains = [
   '*.clarity.ms',
 ].sort();
 
-const router = new Router()
+const router = new Router({indexPermalink: false})
   // .prerender(prerenderRequests)
   .match({}, ({setResponseHeader, removeUpstreamResponseHeader}) => {
     if (isProductionBuild()) {

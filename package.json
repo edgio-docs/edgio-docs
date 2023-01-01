@@ -28,7 +28,7 @@
   "dependencies": {
     "@docsearch/css": "3.0.0-alpha.41",
     "@docsearch/react": "3.0.0-alpha.41",
-    "@edgio/rum": "^5.0.5",
+    "@edgio/rum": "^6.0.0",
     "@headlessui/react": "^1.7.7",
     "@material-ui/core": "^4.12.4",
     "@material-ui/styles": "^4.11.5",
@@ -59,12 +59,12 @@
     "styled-components": "^5.3.3"
   },
   "devDependencies": {
-    "@edgio/cli": "^6.0.0",
-    "@edgio/core": "^6.0.0",
-    "@edgio/devtools": "^6.0.0",
-    "@edgio/next": "^6.0.0",
-    "@edgio/prefetch": "^6.0.0",
-    "@edgio/react": "^6.0.0",
+    "@edgio/cli": "^6.0.5",
+    "@edgio/core": "^6.0.5",
+    "@edgio/devtools": "^6.0.5",
+    "@edgio/next": "^6.0.5",
+    "@edgio/prefetch": "^6.0.5",
+    "@edgio/react": "^6.0.5",
     "@mdx-js/loader": "^1.6.16",
     "@types/body-scroll-lock": "^2.6.1",
     "@types/classnames": "^2.3.1",

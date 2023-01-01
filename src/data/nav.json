@@ -182,12 +182,12 @@
       ]
     },
     {
-      "title": "Sites (Frameworks)",
+      "title": "Sites",
       "path": "sites_frameworks",
       "icon": "book-plain",
       "routes": [
         {
-          "title": "Getting Started",
+          "title": "Frameworks",
           "path": "sites_frameworks/getting_started",
           "routes": [
             {
@@ -383,6 +383,10 @@
         {
           "title": "Incremental Static Regeneration",
           "path": "sites_frameworks/isg"
+        },
+        {
+          "title": "Limits",
+          "path": "sites_frameworks/limits"
         }
       ]
     },

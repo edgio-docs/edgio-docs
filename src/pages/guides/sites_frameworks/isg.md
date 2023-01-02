@@ -16,7 +16,7 @@ Developers using Next.js don't need to do anything special to support ISG on {{ 
 const { Router } = require('{{ PACKAGE_NAME }}/core/router')
 const { nextRoutes } = require('{{ PACKAGE_NAME }}/next')
 
-module.exports = new Router({ indexPermalink: false }).use(nextRoutes)
+module.exports = new Router().use(nextRoutes)
 ```
 
 ## Adding ISG to an App Built with any Framework {/*adding-isg-to-an-app-built-with-any-framework*/}

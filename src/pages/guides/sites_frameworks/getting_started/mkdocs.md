@@ -61,7 +61,7 @@ The default `routes.js` file created by `{{ FULL_CLI_NAME }} init` sends all req
 const { Router } = require('{{ PACKAGE_NAME }}/core/router')
 const { mkdocsRoutes } = require('{{ PACKAGE_NAME }}/mkdocs')
 
-export default new Router({ indexPermalink: false }).use(mkdocsRoutes)
+export default new Router().use(mkdocsRoutes)
 ```
 
 ## Running Locally {/*running-locally*/}

@@ -24,7 +24,7 @@ To specify which URLs should be prerendered, use the Router's [prerender]({{ DOC
 ```js
 const { Router } = require('{{ PACKAGE_NAME }}/core/router')
 
-module.exports = new Router({ indexPermalink: false }).prerender([
+module.exports = new Router().prerender([
   // HTML pages
   { path: '/' },
   { path: '/categories/mens' },
@@ -50,7 +50,7 @@ module.exports = new Router({ indexPermalink: false }).prerender([
 ```js
 const { Router } = require('{{ PACKAGE_NAME }}/core/router')
 
-module.exports = new Router({ indexPermalink: false }).prerender(async () => {
+module.exports = new Router().prerender(async () => {
   const paths = await fetchCategoryPathsFromAPI()
   return paths.map(path => ({ path }))
 })
@@ -61,7 +61,7 @@ module.exports = new Router({ indexPermalink: false }).prerender(async () => {
 ```js
 const { Router } = require('{{ PACKAGE_NAME }}/core/router')
 
-module.exports = new Router({ indexPermalink: false }).prerender(async () => {
+module.exports = new Router().prerender(async () => {
   const paths = process.env.PRERENDER_PATHS.split(/\n/) // define the list of paths to prerender in the {{ PRODUCT_NAME }} Developer Console.
   return paths.map(path => ({ path }))
 })
@@ -76,7 +76,7 @@ module.exports = new Router({ indexPermalink: false }).prerender(async () => {
 ```js
 const { Router } = require('{{ PACKAGE_NAME }}/core/router')
 
-router = new Router({ indexPermalink: false }).prerender([
+router = new Router().prerender([
   {
     // the maximum number of pages that should be prerendered based on site traffic.
     top: 50,
@@ -87,7 +87,7 @@ router = new Router({ indexPermalink: false }).prerender([
 ### Example: With Cache Splitting {/*example-with-cache-splitting*/}
 
 ```js
-router = new Router({ indexPermalink: false }).prerender([
+router = new Router().prerender([
   // Prerender with language cookie
   {
     top: 10,
@@ -144,7 +144,7 @@ function getPrerenderRequests() {
   return prerenderRequests
 }
 
-module.exports = new Router({ indexPermalink: false }).prerender(getPrerenderRequests).use(nextRoutes)
+module.exports = new Router().prerender(getPrerenderRequests).use(nextRoutes)
 ```
 
 ## Advanced Configuration: Custom Cache Keys {/*advanced-configuration-custom-cache-keys*/}
@@ -155,7 +155,7 @@ your prerender configuration. For example, if you're splitting the cache by a `l
 ```js
 const { Router, CustomCacheKey } = require('{{ PACKAGE_NAME }}/core/router')
 
-module.exports = new Router({ indexPermalink: false })
+module.exports = new Router()
   .prerender([
     // German
     { path: '/categories/mens', headers: { cookie: 'language=de' } },

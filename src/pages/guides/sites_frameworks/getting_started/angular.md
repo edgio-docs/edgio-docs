@@ -66,7 +66,7 @@ The default `routes.js` file created by `{{ FULL_CLI_NAME }} init` sends all req
 const { Router } = require('@edgio/core/router')
 const { angularRoutes } = require('@edgio/angular')
 
-module.exports = new Router({ indexPermalink: false }).use(angularRoutes)
+module.exports = new Router().use(angularRoutes)
 ```
 
 ## Caching {/*caching*/}
@@ -74,7 +74,7 @@ module.exports = new Router({ indexPermalink: false }).use(angularRoutes)
 The easiest way to add edge caching to your Angular app is to add caching routes before the middleware. For example, imagine you have a route `/pages/c/:categoryId`:
 
 ```js ins={5-16}
-new Router({ indexPermalink: false })
+new Router()
   .get('/pages/c/:categoryId', ({ cache }) => {
     cache({
       browser: {

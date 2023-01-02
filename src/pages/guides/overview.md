@@ -40,7 +40,7 @@ const { nextRoutes } = require('{{ PACKAGE_NAME }}/next')
 const { Router } = require('{{ PACKAGE_NAME }}/core/router')
 
 export default nextJSApp => {
-  return new Router({ indexPermalink: false })
+  return new Router()
     .get('/p/:productId', ({ cache }) => {
       cache({
         edge: {

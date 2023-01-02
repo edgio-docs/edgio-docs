@@ -265,13 +265,13 @@ The default `routes.js` file created by `{{ FULL_CLI_NAME }} init` sends all req
 import { Router } from '{{ PACKAGE_NAME }}/core/router'
 import { angularRoutes } from '{{ PACKAGE_NAME }}/angular'
 
-export default new Router({ indexPermalink: false }).use(angularRoutes)
+export default new Router().use(angularRoutes)
 ```
 
 The default router also includes common cache configurations for most Spartacus apps:
 
 ```js
-  return new Router({ indexPermalink: false })
+  return new Router()
     .match('/rest/v2/:path*', ({ cache, proxy }) => {
       cache({
         browser: {
@@ -315,7 +315,7 @@ const CACHE_SSR_PAGE = {
   },
 }
 
-return new Router({ indexPermalink: false })
+return new Router()
   ...
   .get('/base-site-path/:path*', ({ cache }) => {
     cache(CACHE_SSR_PAGE)

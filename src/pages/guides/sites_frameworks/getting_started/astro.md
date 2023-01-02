@@ -68,7 +68,7 @@ The default `routes.js` file created by `{{ FULL_CLI_NAME }} init` sends all req
 const { Router } = require('{{ PACKAGE_NAME }}/core/router')
 const { astroRoutes } = require('{{ PACKAGE_NAME }}/astro')
 
-export default new Router({ indexPermalink: false }).use(astroRoutes)
+export default new Router().use(astroRoutes)
 ```
 
 ## Enable Server Side Rendering {/*enable-server-side-rendering*/}

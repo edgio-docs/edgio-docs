@@ -186,7 +186,7 @@ The next few sections of this guide explain how {{ PRODUCT_NAME }} interacts wit
 const { Router } = require('{{ PACKAGE_NAME }}/core/router')
 const { nuxtRoutes, renderNuxtPage } = require('{{ PACKAGE_NAME }}/nuxt')
 
-module.exports = new Router({ indexPermalink: false }).use(nuxtRoutes)
+module.exports = new Router().use(nuxtRoutes)
 ```
 
 ### nuxtRoutes Middleware {/*nuxtroutes-middleware*/}
@@ -216,7 +216,7 @@ You can add additional routes before and after `nuxtRoutes`, for example to send
 A popular use case is to fallback to a legacy site for any route that your Nuxt.js app isn't configured to handle:
 
 ```js
-export default new Router({ indexPermalink: false }).use(nuxtRoutes).fallback(({ proxy }) => proxy('legacy'))
+export default new Router().use(nuxtRoutes).fallback(({ proxy }) => proxy('legacy'))
 ```
 
 To configure the legacy backend, use {{ CONFIG_FILE }}:
@@ -240,7 +240,7 @@ The easiest way to add edge caching to your nuxt.js app is to add caching routes
 imagine you have `/pages/c/_categoryId.js`:
 
 ```js ins={2-13}
-export default new Router({ indexPermalink: false })
+export default new Router()
   .get('/pages/c/:categoryId', ({ cache }) => {
     cache({
       browser: {
@@ -339,7 +339,7 @@ By default, requests for any pages that are not statically rendered at build tim
 import { nuxtRoutes } from '{{ PACKAGE_NAME }}/nuxt'
 import { Router } from '{{ PACKAGE_NAME }}/core/router'
 
-export default new Router({ indexPermalink: false })
+export default new Router()
   .get('/products/:id', ({ cache }) => {
     cache({
       edge: {

@@ -115,7 +115,7 @@ Next we need to configure the caching in our newly created project. To do so, ad
 import { Router } from '{{ PACKAGE_NAME }}/core/router'
 import shoppingFlowRouteHandler from './shoppingFlowRouteHandler'
 
-export default new Router({ indexPermalink: false })
+export default new Router()
   .get('/', shoppingFlowRouteHandler)
   .get('/collections/*path', shoppingFlowRouteHandler)
   .get('/products/*path', shoppingFlowRouteHandler)
@@ -233,7 +233,7 @@ const postCacheConfig = {
   },
 }
 
-export default new Router({ indexPermalink: false })
+export default new Router()
   // When the request is a GET, convert it to post using serverless compute and cache the result
   .get('/some-post-path', ({ cache, proxy }) => {
     cache(postCacheConfig)

@@ -50,7 +50,7 @@ Use the [compute](/docs/api/core/classes/_router_responsewriter_.responsewriter.
 // routes.js
 import { Router } from '{{ PACKAGE_NAME }}/core'
 
-export default new Router({ indexPermalink: false }).get('/some-route/:someParam', ({ compute }) => {
+export default new Router().get('/some-route/:someParam', ({ compute }) => {
   compute((req, res) => {
     // Here you can access the following information about the request:
     // ================================================================
@@ -125,7 +125,7 @@ To forward a request to the origin and modify the response using a serverless fu
 // routes.js
 import { Router } from '{{ PACKAGE_NAME }}/core'
 
-export default new Router({ indexPermalink: false }).get('/some-route/:someParam', ({ proxy }) => {
+export default new Router().get('/some-route/:someParam', ({ proxy }) => {
   proxy('origin', {
     transformRequest: req => {
       // You can optionally transform the request before it is sent to the origin
@@ -189,7 +189,7 @@ To improve performance and minimize cost, cache the responses returned by your s
 // routes.js
 import { Router } from '{{ PACKAGE_NAME }}/core'
 
-export default new Router({ indexPermalink: false }).get('/', ({ cache, compute }) => {
+export default new Router().get('/', ({ cache, compute }) => {
   cache({
     edge: {
       maxAgeSeconds: 60 * 60, // cache for one hour at the edge

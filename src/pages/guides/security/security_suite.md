@@ -320,7 +320,7 @@ You can easily add CSP headers to your site via a catch-all route near the top o
 To enforce a content security policy:
 
 ```js
-new Router({ indexPermalink: false }).match('/:path*', ({ setResponseHeader }) => {
+new Router().match('/:path*', ({ setResponseHeader }) => {
   setResponseHeader(
     'Content-Security-Policy',
     "default-src 'self'; report-uri http://reportcollector.example.com/collector.cgi",
@@ -332,7 +332,7 @@ new Router({ indexPermalink: false }).match('/:path*', ({ setResponseHeader }) =
 To enable a content security policy in report-only mode:
 
 ```js
-new Router({ indexPermalink: false }).match('/:path*', ({ setResponseHeader }) => {
+new Router().match('/:path*', ({ setResponseHeader }) => {
   setResponseHeader('Content-Security-Policy-Report-Only', "default-src 'self'")
 })
 // The rest of your router...

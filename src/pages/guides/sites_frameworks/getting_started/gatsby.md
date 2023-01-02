@@ -78,7 +78,7 @@ The default `routes.js` file created by `{{ FULL_CLI_NAME }} init` sends all req
 const { Router } = require('{{ PACKAGE_NAME }}/core/router')
 const { gatsbyRoutes } = require('{{ PACKAGE_NAME }}/gatsby')
 
-module.exports = new Router({ indexPermalink: false }).use(gatsbyRoutes)
+module.exports = new Router().use(gatsbyRoutes)
 ```
 
 ### Adding routes to a different origin {/*adding-routes-to-a-different-origin*/}
@@ -112,7 +112,7 @@ For example:
 const { Router } = require('{{ PACKAGE_NAME }}/core/router')
 const { gatsbyRoutes } = require('{{ PACKAGE_NAME }}/gatsby')
 
-module.exports = new Router({ indexPermalink: false })
+module.exports = new Router()
   .get('/some/legacy/url/:p', ({ proxy }) => {
     proxy('legacy')
   })

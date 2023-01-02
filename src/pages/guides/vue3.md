@@ -57,7 +57,7 @@ The default `routes.js` file created by `{{ FULL_CLI_NAME }} init` sends all req
 const { Router } = require('{{ PACKAGE_NAME }}/core/router')
 const { vue3Routes } = require('{{ PACKAGE_NAME }}/vue-3')
 
-export default new Router({ indexPermalink: false }).use(vue3Routes)
+export default new Router().use(vue3Routes)
 ```
 
 ## Running Locally {/*running-locally*/}

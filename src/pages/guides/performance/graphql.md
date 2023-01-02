@@ -79,7 +79,7 @@ of the Apollo client ecosystem.
 ```js filename="./routes.js"
 import { Router } from '{{ PACKAGE_NAME }}/core'
 
-export default new Router({ indexPermalink: false }).graphqlOperation('GetProduct', ({ cache, proxy }) => {
+export default new Router().graphqlOperation('GetProduct', ({ cache, proxy }) => {
   cache({
     edge: {
       maxAgeSeconds: 60 * 60, // cache responses for one hour
@@ -122,7 +122,7 @@ To invalidate a cached query, you must first assign a surrogate key to the respo
 ```js filename="./routes.js"
 import { Router, deriveSurrogateKeysFromJson } from '{{ PACKAGE_NAME }}/core'
 
-export default new Router({ indexPermalink: false }).graphqlOperation('GetProduct', ({ cache, proxy }) => {
+export default new Router().graphqlOperation('GetProduct', ({ cache, proxy }) => {
   cache({
     edge: {
       maxAgeSeconds: 60 * 60, // cache responses for one hour

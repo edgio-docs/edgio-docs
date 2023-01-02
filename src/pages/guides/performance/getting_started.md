@@ -46,7 +46,7 @@ import { Router } from '{{ PACKAGE_NAME }}/core/router'
 const ONE_HOUR = 60 * 60
 const ONE_DAY = 24 * ONE_HOUR
 
-export default new Router({ indexPermalink: false })
+export default new Router()
   // Here is an example where we cache api/* at the edge but prevent caching in the browser
   .match('/api/:path*', ({ proxy, cache }) => {
     cache({

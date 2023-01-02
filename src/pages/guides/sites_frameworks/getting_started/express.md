@@ -65,7 +65,7 @@ If your express app serves any static assets, you'll need to add routes to your 
 ```js filename='routes.js' ins={8-18}
 import { Router } from '{{ PACKAGE_NAME }}/core'
 
-export default new Router({ indexPermalink: false })
+export default new Router()
   // Create serveStatic route for each file in the folder build 
   // dist/client/assets with a cache-control header of 's-maxage=315360000'
   // and serve them under the /assets route

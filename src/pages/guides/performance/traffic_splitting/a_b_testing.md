@@ -51,16 +51,16 @@ Then, add a `destination` for each site to your router. For example,
 ```js
 // routes.js
 const { Router } = require('{{ PACKAGE_NAME }}/core/router')
-module.exports = new Router({ indexPermalink: false })
+module.exports = new Router()
   .destination(
     'legacy_experience', // displayed in the destination dropdown in the traffic splitting section of your environment configuration in the {{ PRODUCT_NAME }} Developer Console
-    new Router({ indexPermalink: false })
+    new Router()
       // additional routing rules for the legacy experience go here
       .fallback(({ proxy }) => proxy('legacy')),
   )
   .destination(
     'new_experience', // displayed in the destination dropdown in the traffic splitting section of your environment configuration in the {{ PRODUCT_NAME }} Developer Console
-    new Router({ indexPermalink: false })
+    new Router()
       // additional routing rules for the new experience go here
       .fallback(({ proxy }) => proxy('new')),
   )

@@ -57,7 +57,7 @@ The default `routes.js` file created by `{{ FULL_CLI_NAME }} init` sends all req
 const { Router } = require('{{ PACKAGE_NAME }}/core/router')
 const { reactCRARoutes } = require('{{ PACKAGE_NAME }}/react-cra')
 
-module.exports = new Router({ indexPermalink: false }).use(reactCRARoutes)
+module.exports = new Router().use(reactCRARoutes)
 ```
 
 ## Running Locally {/*running-locally*/}

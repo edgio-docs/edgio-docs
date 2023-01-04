@@ -119,7 +119,9 @@ mywebsite.xyz.        599    IN    A        208.69.180.14
 
 ### Allowing {{ PRODUCT_NAME }} IP Addresses {/*allowing-ip-addresses*/}
 
-Before going live, ensure that all {{ PRODUCT_NAME }} IP addresses are allowed in the security layer in front of your origin and/or API servers. The IP addresses you need to allow can be found on the _Allowlisting_ section of the [_Domain Configuration_](#network-configuration) tab for your environment. Note that each team may have their own set of IPs so these values cannot be copied from one team to another.
+Before going live, ensure that all {{ PRODUCT_NAME }} IP addresses are allowed in the security layer in front of your origin and/or API servers. The IP addresses you need to allow can be found on the _Allowlisting_ section of the [_Domain Configuration_](#network-configuration) tab for your environment or under the _Origin Security_ tab for your property. Note that each team may have their own set of IPs so these values cannot be copied from one team to another.
+
+![allowlisting](/images/production/allowlisting.png)
 
 ## TLS/SSL {/*tlsssl*/}
 

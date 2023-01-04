@@ -18,21 +18,43 @@ If you already have [Node.js v{{ NODE_VERSION }}](/guides/install_nodejs) and an
 
 <Callout type="tip">
 
-  An alternative approach is to perform each of the above tasks individually. [Learn more.](#prerequisites)
+  An alternative approach is to perform each of the above tasks individually. 
+
+  [Learn more.](#prerequisites)
 
 </Callout>
 
-Replace `<DOMAIN>` with your website's domain when running the following command:
+Run one of the following commands from the root directory of your web application or website:
+-   **Origin:** Run this command if you have web servers that will serve as the origin.
+-   **Framework:** Run this command to render your web app within our cloud through {{ PRODUCT_PLATFORM }}.
 
-```bash
+<Callout type="info">
+
+  Replace `<PROPERTY>` with the name for this configuration. If you are also setting `<DOMAIN>`, then you should replace it with your website's domain or IP address.
+
+</Callout>
+
+<SnippetGroup>
+
+```bash tabLabel=Origin
   npx {{ PACKAGE_NAME }}/cli@latest init \
-	--name <DOMAIN> \
+	--name <PROPERTY> \
 	--environment default \
 	--origin <DOMAIN> \
 	--deploy
 ```
 
-You are now ready to optimize and secure the delivery of your website. [Learn more.](#next-steps)
+```bash tabLabel=Framework
+  npx {{ PACKAGE_NAME }}/cli@latest init \
+        --name <PROPERTY> \
+        --environment default \
+        --deploy
+```
+
+</SnippetGroup>
+
+You are now ready to optimize and secure the delivery of your website. 
+[Learn more.](#next-steps)
 
 ## Prerequisites {/*prerequisites*/}
 
@@ -98,13 +120,30 @@ Each website that will run behind {{ PRODUCT }} requires an {{ PRODUCT }} proper
 
     </Callout>
 
-3.  Replace `<ORIGIN>` with your website's domain or IP address and then run the following command:
+3.  Run one of the following commands:
+    -   **Origin:** Run this command if you have web servers that will serve as the origin.
+    -   **Framework:** Run this command to render your web apps within our cloud through {{ PRODUCT_PLATFORM }}.
 
-    ```bash
-      edgio init --name <ORIGIN> \
-      --environment production  \
-      --origin <ORIGIN>
+    <Callout type="info">
+
+      Replace `<PROPERTY>` with the domain defined in step 1. If you are also setting `<DOMAIN>`, then you should replace it with your website's domain or IP address.
+
+    </Callout>
+
+    <SnippetGroup>
+
+    ```bash tabLabel=Origin
+      {{ FULL_CLI_NAME }} init --name <PROPERTY> \
+        --environment production \
+        --origin <DOMAIN> 
     ```
+
+    ```bash tabLabel=Framework
+      {{ FULL_CLI_NAME }} init --name <PROPERTY> \
+        --environment production 
+    ```
+
+    </SnippetGroup>
 
 4.  When prompted, confirm the selection of `Use the current directory` by pressing the `ENTER` key.
 5.  When prompted, select either the `npm` or `yarn` package manager and then press the `ENTER` key.
@@ -116,7 +155,7 @@ You may run {{ PRODUCT }} in local development mode to preview your website on y
 1.  From the command line or terminal, type `{{ FULL_CLI_NAME }} dev`.
 2.  Preview your website by loading `https://127.0.0.1:3000` from within your preferred web browser.
 
-## Step 3: Deploy Your Property {/*deploy-property*/}
+## Step 3: Deploying Your Property {/*deploy-property*/}
 
 Run the following command from your property's root directory to deploy it to {{ PRODUCT }}:
 
@@ -126,9 +165,11 @@ Run the following command from your property's root directory to deploy it to {{
 
 ## Next Steps {/*next-steps*/}
 
-Once you have successfully deployed your property to {{ PRODUCT }}, our CLI provides the following edge URLs:
--   The first edge URL corresponds to production traffic. {{ PRODUCT }} will not serve this URL until you set up a TLS certificate and update your DNS configuration to point to our service. [Learn more.](/guides/basics/domains)
--   Use the second edge URL to preview your website behind {{ PRODUCT }}.
+Once you have successfully deployed your property to {{ PRODUCT }}, our CLI provides the following URLs:
+-   **{{ PRODUCT }} Developer Console:** View detailed information about this deployment, including its edge link and permalink, from within the {{ PORTAL }}.
+-   **Permalink:** Preview your website behind {{ PRODUCT }} without edge caching. Bypassing our cache will affect performance.
+
+-   **Edge:** Preview your website behind {{ PRODUCT }} and gain performance insights through our [DevTools](/guides/performance/observability/devtools).  
 
 You are now ready to set up:
 

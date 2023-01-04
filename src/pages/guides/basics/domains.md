@@ -12,7 +12,7 @@ Creating custom domains is always done in the context of creating or updating an
 
 2. Create the [Custom Domain](#custom-domains).
 
-2. Do [Network Configuration](#network-configuration) (DNS and the IP allow list) for the domain.
+2. Do [Domain Configuration](#network-configuration) (DNS and the IP allow list) for the domain.
 
 2. Configure [TLS/SSL](#tlsssl) for the domain.
 
@@ -55,9 +55,9 @@ If you're migrating to {{ PRODUCT_NAME }} from [Fastly](https://www.fastly.com/)
 - Contact [Fastly support](https://support.fastly.com/hc/en-us/requests/new?ticket_form_id=360000269711) and request that control of your domains be transferred to {{ PRODUCT_NAME }}. Be sure to explicitly list each domain that needs to be transferred and ask Fastly to contact `support@{{ DOMAIN }}` if they need {{ PRODUCT_NAME }} to confirm the transfer.
 - Before going live with {{ PRODUCT_NAME }}, you will need to ensure that you've removed your domains from all active Fastly services. To remove domains from a service, clone the service, remove the domains, then activate the new version of the service. Once the new service version is activated you can add the domains to your {{ PRODUCT_NAME }} environment and activate it.
 
-## Network Configuration {/*network-configuration*/}
+## Domain Configuration {/*network-configuration*/}
 
-You can find the DNS and allowed IP configurations in the _Networking_ tab for your environment.
+You can find the DNS and Allowlisting IP configurations in the _Domain Configuration_ tab for your environment.
 
 ![networking](/images/production/networking.png)
 
@@ -119,7 +119,7 @@ mywebsite.xyz.        599    IN    A        208.69.180.14
 
 ### Allowing {{ PRODUCT_NAME }} IP Addresses {/*allowing-ip-addresses*/}
 
-Before going live, ensure that all {{ PRODUCT_NAME }} IP addresses are allowed in the security layer in front of your origin and/or API servers. The IP addresses you need to allow can be found on the _Allowlisting_ section of the _Networking_ tab of the _Environment_ page. Note that each team may have their own set of IPs so these values cannot be copied from one team to another.
+Before going live, ensure that all {{ PRODUCT_NAME }} IP addresses are allowed in the security layer in front of your origin and/or API servers. The IP addresses you need to allow can be found on the _Allowlisting_ section of the [_Domain Configuration_](#network-configuration) tab for your environment. Note that each team may have their own set of IPs so these values cannot be copied from one team to another.
 
 ## TLS/SSL {/*tlsssl*/}
 

@@ -307,4 +307,4 @@ Troubleshoot your code to find and fix the error.
 #### Allowlist Error {/*allowlist-error*/}
 
 If the command succeeds and finishes quickly, it is probably an allowlist error.
-Contact your operations team and ask them to add the IP addresses in _Allowlisting_ in [Network Configuration](/guides/basics/domains#network-configuration) to your server's IP allowlist.
+Contact your operations team and ask them to add the IP addresses in _Allowlisting_ in [Domain Configuration](/guides/basics/domains#network-configuration) to your server's IP allowlist.

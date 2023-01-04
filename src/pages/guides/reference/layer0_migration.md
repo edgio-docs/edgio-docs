@@ -36,7 +36,7 @@ Once you deploy the new version of {{ PRODUCT }}, your Edge links will change to
 
 ## DNS will Need Updating for Custom Domains {/*dns-will-need-updating-for-custom-domains*/}
 
-If you have a custom domain pointing to {{ PRODUCT }}, you will need to update your A/CNAME record. To obtain the new network details, navigate to {{ APP_URL }} and go to your site. Click the _Environments_ tab and choose the environment that has the custom domain. From there, click on the _Networking_ tab.
+If you have a custom domain pointing to {{ PRODUCT }}, you will need to update your A/CNAME record. To obtain the new network details, navigate to {{ APP_URL }} and go to your site. Click the _Environments_ tab and choose the environment that has the custom domain. From there, click on the _Domain Configuration_ tab.
 
 You will see two different DNS configurations. If you are using a sub-domain, you will need to update the CNAME record with the value provided. If you are using an apex domain, you will need to update the A records to match the Anycast IP addresses listed.
 
@@ -44,7 +44,7 @@ These updates must be made with your domain registrar.
 
 ### Allowlisting {/*allowlisting*/}
 
-When users access your site, {{ PRODUCT }} will send traffic to your origin servers from specific IP addresses. The list of IP addresses are on the _Networking_ tab as mentioned above. You must add all these IPs to your firewall's allowlist to ensure that requests are not blocked by it.
+When users access your site, {{ PRODUCT }} will send traffic to your origin servers from specific IP addresses. The list of IP addresses are on the _Domain Configuration_ tab as mentioned above. You must add all these IPs to your firewall's allowlist to ensure that requests are not blocked by it.
 
 During deployment, the {{ PRODUCT }} CLI connects to the following domains. Please add these domains to the allowlist of any firewall in all development or CI/CD environments that deploy to {{ PRODUCT }}:
 

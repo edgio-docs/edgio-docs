@@ -12,7 +12,7 @@ Creating custom domains is always done in the context of creating or updating an
 
 2. Create the [Custom Domain](#custom-domains).
 
-3. [Setup DNS](#setup-dns) for your custom domain.
+3. [Set up DNS](#setup-dns) for your custom domain.
 
 4. [Allowlist](#allowing-ip-addresses) our network on your firewall.
 
@@ -57,7 +57,7 @@ If you're migrating to {{ PRODUCT_NAME }} from [Fastly](https://www.fastly.com/)
 - Contact [Fastly support](https://support.fastly.com/hc/en-us/requests/new?ticket_form_id=360000269711) and request that control of your domains be transferred to {{ PRODUCT_NAME }}. Be sure to explicitly list each domain that needs to be transferred and ask Fastly to contact `support@{{ DOMAIN }}` if they need {{ PRODUCT_NAME }} to confirm the transfer.
 - Before going live with {{ PRODUCT_NAME }}, you will need to ensure that you've removed your domains from all active Fastly services. To remove domains from a service, clone the service, remove the domains, then activate the new version of the service. Once the new service version is activated you can add the domains to your {{ PRODUCT_NAME }} environment and activate it.
 
-## Setup DNS {/*setup-dns*/}
+## Set up DNS {/*setup-dns*/}
 
 In order to configure your DNS provider to direct traffic for a particular set of domains to {{ PRODUCT_NAME }}, you must create DNS records for your website. If you are launching a new site, then you can create the records whenever you feel ready. For sites that are already live, the DNS update is the last step. Once you have updated your DNS you are committed to launching.
 
@@ -224,23 +224,7 @@ All data transmitted to and from your {{ PRODUCT_NAME }} site must be secured wi
 
    <Callout type="info">
 
-      Many DNS providers have already added this `CAA` DNS record by default
-
-   </Callout>
-
-   <p></p>
-   <p></p>
-
-   <Callout type="info">
-
-      Some DNS providers does not allow the creation of `CAA` DNS records and therefore allow any Certificate Authority to generate certificates
-
-   </Callout>
-
-   <p></p>
-   <p></p>
-
-   <Callout type="info">
+      Many DNS providers have already added this `CAA` DNS record by default while some DNS providers do not allow the creation of `CAA` DNS records and therefore allow any Certificate Authority to generate certificates.
 
       You can learn more about CAA DNS records on <a href="https://letsencrypt.org/docs/caa">Let's Encrypt website</a>, on <a href="https://en.wikipedia.org/wiki/DNS_Certification_Authority_Authorization">Wikipedia</a>, on <a href="https://docs.gandi.net/en/domain_names/faq/record_types/caa_record.html">Gandi</a> and on <a href="https://www.eff.org/deeplinks/2018/02/technical-deep-dive-securing-automation-acme-dns-challenge-validation">eff.org</a>
 

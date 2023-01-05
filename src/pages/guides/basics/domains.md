@@ -12,9 +12,11 @@ Creating custom domains is always done in the context of creating or updating an
 
 2. Create the [Custom Domain](#custom-domains).
 
-2. Do [Domain Configuration](#network-configuration) (DNS and the IP allow list) for the domain.
+3. [Setup DNS](#setup-dns) for your custom domain.
 
-2. Configure [TLS/SSL](#tlsssl) for the domain.
+4. [Allowlist](#allowing-ip-addresses) our network on your firewall.
+
+5. Configure [TLS/SSL](#tlsssl) for the domain.
 
 ## Custom Domains {/*custom-domains*/}
 
@@ -55,17 +57,15 @@ If you're migrating to {{ PRODUCT_NAME }} from [Fastly](https://www.fastly.com/)
 - Contact [Fastly support](https://support.fastly.com/hc/en-us/requests/new?ticket_form_id=360000269711) and request that control of your domains be transferred to {{ PRODUCT_NAME }}. Be sure to explicitly list each domain that needs to be transferred and ask Fastly to contact `support@{{ DOMAIN }}` if they need {{ PRODUCT_NAME }} to confirm the transfer.
 - Before going live with {{ PRODUCT_NAME }}, you will need to ensure that you've removed your domains from all active Fastly services. To remove domains from a service, clone the service, remove the domains, then activate the new version of the service. Once the new service version is activated you can add the domains to your {{ PRODUCT_NAME }} environment and activate it.
 
-## Domain Configuration {/*network-configuration*/}
-
-You can find the DNS and Allowlisting IP configurations in the _Domain Configuration_ tab for your environment.
-
-![networking](/images/production/networking.png)
-
-### DNS {/*dns*/}
+## Setup DNS {/*setup-dns*/}
 
 In order to configure your DNS provider to direct traffic for a particular set of domains to {{ PRODUCT_NAME }}, you must create DNS records for your website. If you are launching a new site, then you can create the records whenever you feel ready. For sites that are already live, the DNS update is the last step. Once you have updated your DNS you are committed to launching.
 
-#### Using a Sub-domain {/*using-a-sub-domain-eg-wwwmywebsitexyz*/}
+To see the DNS configuration values, click the _Actions needed_ button in the _Domains_ section of the _Configuration_ tab. This will show you the `A` and `CNAME` records you need to create in your DNS provider.
+
+![dns configuration](/images/production/setup-dns.png)
+
+### Using a Sub-domain {/*using-a-sub-domain-eg-wwwmywebsitexyz*/}
 
 To host your site on a subdomain (e.g. `www.mywebsite.xyz`), add a `CNAME` record with the value shown under _DNS Configuration_ (see above).
 
@@ -80,7 +80,7 @@ dig www.mywebsite.xyz
 www.mywebsite.xyz.   599    IN    CNAME    d12ea738-71b3-25e8-c771-6fdd3f6bd8ba.layer0-limelight.link.
 ```
 
-#### Using an Apex Domain {/*using-an-apex-domain-eg-mywebsitexyz*/}
+### Using an Apex Domain {/*using-an-apex-domain-eg-mywebsitexyz*/}
 
 To host your site on the apex domain (e.g. `mywebsite.xyz`), create multiple `A` records on your apex domain, with the following Anycast IP address values: 208.69.180.11, 208.69.180.12, 208.69.180.13, 208.69.180.14
 
@@ -98,7 +98,7 @@ mywebsite.xyz.        599    IN    A        208.69.180.13
 mywebsite.xyz.        599    IN    A        208.69.180.14
 ```
 
-#### Using Both an Apex Domain and a Sub-domain {/*using-both-an-apex-domain-and-a-sub-domain-eg-mywebsitexyz-and-wwwmywebsitexyz*/}
+### Using Both an Apex Domain and a Sub-domain {/*using-both-an-apex-domain-and-a-sub-domain-eg-mywebsitexyz-and-wwwmywebsitexyz*/}
 
 - Create the multiple `A` records with the IPs, on your apex domain (see above).
 - Create a `CNAME` record for your sub-domain, with the value of your apex domain.
@@ -117,11 +117,11 @@ mywebsite.xyz.        599    IN    A        208.69.180.14
    mywebsite.xyz.        599    IN    A        208.69.180.14
    ```
 
-### Allowing {{ PRODUCT_NAME }} IP Addresses {/*allowing-ip-addresses*/}
+## Allowing {{ PRODUCT_NAME }} IP Addresses {/*allowing-ip-addresses*/}
 
-Before going live, ensure that all {{ PRODUCT_NAME }} IP addresses are allowed in the security layer in front of your origin and/or API servers. The IP addresses you need to allow can be found on the _Allowlisting_ section of the [_Domain Configuration_](#network-configuration) tab for your environment or under the _Origin Security_ tab for your property. Note that each team may have their own set of IPs so these values cannot be copied from one team to another.
+Before going live, ensure that all {{ PRODUCT_NAME }} IP addresses are allowed in the security layer in front of your origin and/or API servers. The IP addresses you need to allow can be found on the _Allowlisting_ section under the _Origin Security_ tab for your property. Note that each team may have their own set of IPs so these values cannot be copied from one team to another.
 
-![allowlisting](/images/production/allowlisting.png)
+![allowlisting](/images/production/allowlist.png)
 
 ## TLS/SSL {/*tlsssl*/}
 

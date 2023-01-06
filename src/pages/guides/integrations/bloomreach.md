@@ -302,12 +302,7 @@ From the resulting changes, set your {{ PRODUCT }} `routes.js` file to the follo
 import {Router} from '{{ PACKAGE_NAME }}/core/router';
 
 export default new Router()
-  .match('/static/:path*', ({serveStatic}) => {
-    serveStatic('build/static/:path*');
-  })
-  .match('/:path*', ({serveStatic}) => {
-    serveStatic('build/:path*');
-  })
+  .static('build')
   .fallback(({serveStatic}) => serveStatic('build/index.html'));
 ```
 

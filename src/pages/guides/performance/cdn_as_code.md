@@ -312,9 +312,6 @@ This example shows typical usage of `{{ PACKAGE_NAME }}/core`, including serving
 const { Router } = require('{{ PACKAGE_NAME }}/core/router')
 
 module.exports = new Router()
-  // adds `x-robots-tag: noindex` response header to {{ PRODUCT }} 
-  // edge links and permalinks to prevent bot indexing
-  .noIndexPermalink()
   .get('/service-worker.js', ({ serviceWorker }) => {
     // serve the service worker built by webpack
     serviceWorker('dist/service-worker.js')

@@ -60,16 +60,13 @@ If you have several projects and the `defaultProject` as specified in `angular.j
 The default `routes.js` file created by `{{ FULL_CLI_NAME }} init` sends all requests to Angular server via a fallback route.
 
 ```js
-// This file was automatically added by edgio deploy.
+// This file was added by {{ FULL_CLI_NAME }} init.
 // You should commit this file to source control.
 
 const { Router } = require('@edgio/core/router')
 const { angularRoutes } = require('@edgio/angular')
 
-module.exports = new Router()
-  // Prevent search engines from indexing permalink URLs
-  .noIndexPermalink()
-  .use(angularRoutes)
+module.exports = new Router().use(angularRoutes)
 ```
 
 ## Caching {/*caching*/}

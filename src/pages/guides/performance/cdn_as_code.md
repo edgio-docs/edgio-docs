@@ -21,13 +21,19 @@ Before proceeding, you will need an {{ PRODUCT }} property. Create one now if yo
 
 ## Configuration {/*configuration*/}
 
-Define routes within the `routes.js` file. The `routes.js` file should export an instance of `{{ PACKAGE_NAME }}/core/router/Router`:
+Define routes within the {{ ROUTES_FILE }} file. This file should export an instance of `{{ PACKAGE_NAME }}/core/router/Router`:
 
 ```js filename="./routes.js"
 const { Router } = require('{{ PACKAGE_NAME }}/core/router')
 
 module.exports = new Router()
 ```
+
+<Callout type = "info">
+
+  By default, our CLI automatically creates `routes.js` and `{{ CONFIG_FILE }}` upon initializing a property (`{{ FULL_CLI_NAME }} init`). If your web application supports TypeScript and it uses a framework for which we have a TypeScript implementation, then our CLI will create `routes.ts` instead of `routes.js`.
+
+</Callout>
 
 ## Declare Routes {/*declare-routes*/}
 
@@ -306,9 +312,6 @@ This example shows typical usage of `{{ PACKAGE_NAME }}/core`, including serving
 const { Router } = require('{{ PACKAGE_NAME }}/core/router')
 
 module.exports = new Router()
-  // adds `x-robots-tag: noindex` response header to {{ PRODUCT }} 
-  // edge links and permalinks to prevent bot indexing
-  .noIndexPermalink()
   .get('/service-worker.js', ({ serviceWorker }) => {
     // serve the service worker built by webpack
     serviceWorker('dist/service-worker.js')

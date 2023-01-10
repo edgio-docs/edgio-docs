@@ -234,8 +234,8 @@ The `Prefetch` component fetches data for the linked page from {{ PRODUCT }}'s e
 {{ PRODUCT }} supports Next.js's built-in routing scheme for both page and API routes, including Next.js 9's clean dynamic routes. The default `routes.js` file created by `{{ FULL_CLI_NAME }} init` sends all requests to Next.js via a fallback route:
 
 ```js filename='routes.js'
-import { Router } from '{{ PACKAGE_NAME }}/core/router';
 import { nextRoutes } from '{{ PACKAGE_NAME }}/next';
+import { Router } from '{{ PACKAGE_NAME }}/core/router';
 
 export default new Router()
   .get('/service-worker.js', ({cache, serveStatic}) => {
@@ -293,8 +293,8 @@ In the code above, `nextRoutes` adds all Next.js routes to the router based on t
 A popular use case is to fallback to a legacy site for any route that your Next.js app isn't configured to handle:
 
 ```js filename='routes.js' ins={6}
-import { Router } from '{{ PACKAGE_NAME }}/core/router';
 import { nextRoutes } from '{{ PACKAGE_NAME }}/next';
+import { Router } from '{{ PACKAGE_NAME }}/core/router';
 
 export default new Router()
   .use(nextRoutes)
@@ -327,8 +327,7 @@ The easiest way to add edge caching to your Next.js app is to add caching routes
 imagine you have `/pages/p/[productId].js`. Here's how you can SSR responses as well as cache calls to `getServerSideProps`:
 
 ```js filename='routes.js' ins={6-14,16-28}
-new Router()
-
+export default new Router()
   // Products - SSR
   .get('/p/:productId', ({cache}) => {
     cache({

@@ -62,16 +62,13 @@ This will automatically add all of the required dependencies and files to your p
 The default `routes.js` file created by `{{ FULL_CLI_NAME }} init` sends all requests to Astro server via a fallback route.
 
 ```js
-// This file was automatically added by {{ FULL_CLI_NAME }} deploy.
+// This file was added by {{ FULL_CLI_NAME }} init.
 // You should commit this file to source control.
 
 const { Router } = require('{{ PACKAGE_NAME }}/core/router')
 const { astroRoutes } = require('{{ PACKAGE_NAME }}/astro')
 
-export default new Router()
-  // Prevent search engines from indexing permalink URLs
-  .noIndexPermalink()
-  .use(astroRoutes)
+export default new Router().use(astroRoutes)
 ```
 
 ## Enable Server Side Rendering {/*enable-server-side-rendering*/}

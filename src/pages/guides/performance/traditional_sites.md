@@ -199,7 +199,7 @@ After you've configured and tested your site on {{ PRODUCT_NAME }}, it's time to
 
 1. Specify the domain name of the site under the Configuration tab for the environment in the {{ PRODUCT_NAME }} Console.
 2. Configure your SSL certificate under the Configuration tab for the environment in the {{ PRODUCT_NAME }} Console.
-3. Create a CNAME record with your DNS provider with the value shown under the Networking tab for the environment in the {{ PRODUCT_NAME }} Console.
+3. Create a CNAME record with your DNS provider with the value shown under the _Domains_ section for the environment in the {{ PRODUCT_NAME }} Console.
 
 Each of these steps is described in more detail in the [Domains guide](/guides/basics/domains). Note that third step (configuring your DNS) will be the crucial step that effectively transitions your domain to {{ PRODUCT_NAME }} and should be done last.
 

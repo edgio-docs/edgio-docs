@@ -24,7 +24,7 @@ title: {{ PRODUCT }} Version 6 Migration Guide
 
 <Callout type="info">
 
-  {{ PRODUCT }} version 6 does not support [access control through JWT](#jwt-access-control-end-of-life). Additionally, [.noIndexPermalink() is now deprecated](#remove-noindexpermalink-references), since we now automatically block search engine traffic for edge links and permalinks. 
+  {{ PRODUCT }} version 6 does not support [access control through JWT](#jwt-access-control-end-of-life). Additionally, [.noIndexPermalink() is now deprecated](#permalink-indexing), since we now automatically block search engine traffic for edge links and permalinks. 
 
 </Callout>
 
@@ -34,7 +34,8 @@ Migrate from version 5.x to 6 through the following steps:
 2.  [Upgrade the {{ PRODUCT }} CLI.](#upgrade-the-cli)
 3.  [Use version 6 of our {{ PRODUCT }} packages.](#use-packages-version-6)
 4.  [Build your {{ PRODUCT }} properties](#build-your-properties)
-5.  [Deprecated Features](#deprecated-features)
+5.  [JWT Access Control End-of-Life](#jwt-access-control-end-of-life)
+6.  [Optional: Permalink Indexing](#permalink-indexing)
  
 ## Step 1: Upgrade Node.js {/*upgrade-node-js*/}
 
@@ -118,17 +119,11 @@ If you encounter a build issue as a result of upgrading Node.js, then you should
 
     Run `{{ FULL_CLI_NAME }} build` to rebuild your {{ PRODUCT }} property.
 
-## Step 5: Deprecated Features {/*deprecated-features*/}
-
-### JWT Access Control {/*jwt-access-control*/}
+## Step 5: JWT Access Control End-of-Life {/*jwt-access-control-end-of-life*/}
 
 {{ PRODUCT }} version 6 does not support JWT access control. Previous versions allowed you to     configure on a per route basis whether requests would be allowed or denied according to a JWT token.
 
-### GraphQL Caching  {/*graphql-caching*/}
-
-{{ PRODUCT }} has deprecated support for caching of GraphQL operations in version 5. If your {{ PRODUCT }} router ({{ ROUTES_FILE }}) contains usage of `.graphqlOperation(...)`, you should remove it. Otherwise, your application will fail to build.
-
-### Permalink Indexing {/*permalink-indexing*/}
+## Step 6: (Optional) Permalink Indexing {/*permalink-indexing*/}
 
 By default, {{ PRODUCT }} version 6 automatically blocks search engine traffic for edge links and permalinks. As a result, the `.noIndexPermalink()` router function serves no purpose and it has been deprecated. We recommend that you remove this function from your {{ ROUTES_FILE }} file. 
 

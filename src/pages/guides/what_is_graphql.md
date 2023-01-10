@@ -4,10 +4,6 @@ title: What is GraphQL?
 
 ![traffic](/images/graphql/graphql.svg)
 
-{{ PRODUCT_NAME }} provides full support for caching GraphQL APIs. Putting {{ PRODUCT }} in front of you GraphQL API can significantly improve its performance while reducing the amount of traffic that reaches your origin by serving cached queries from the network edge.
-
-<VimeoMDXEmbed id="691615246"/>
-
 ## GraphQL History {/*graphql-history*/}
 
 GraphQL was built in 2012 to support Facebook mobile apps. Facebook open sourced the project in 2015, and in 2018, it was moved to the GraphQL Foundation.

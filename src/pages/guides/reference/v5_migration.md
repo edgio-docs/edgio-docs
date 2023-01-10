@@ -30,7 +30,7 @@ Migrate from version 4.x to 5 through the following steps:
 5.  [Update scripts that reference the {{ PRODUCT }} CLI.](#update-scripts-that-reference-the-cli)
 6.  [Ignore {{ PRODUCT }} Build Artifacts](#ignore-build-artifacts)
 7.  [Optional: Review your code for duplicate query string parameters.](#optional-review-your-code-for-duplicate-query-string-parameters)
-8.  [Deprecated Features](#deprecated-features)
+8.  [GraphQL Caching End-of-Life](#graphql-caching-eol)
 
 ## Step 1: Upgrade the {{ PRODUCT }} CLI {/*upgrade-the-cli*/}
  

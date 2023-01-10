@@ -30,6 +30,7 @@ Migrate from version 4.x to 5 through the following steps:
 5.  [Update scripts that reference the {{ PRODUCT }} CLI.](#update-scripts-that-reference-the-cli)
 6.  [Ignore {{ PRODUCT }} Build Artifacts](#ignore-build-artifacts)
 7.  [Optional: Review your code for duplicate query string parameters.](#optional-review-your-code-for-duplicate-query-string-parameters)
+8.  [Deprecated Features](#deprecated-features)
 
 ## Step 1: Upgrade the {{ PRODUCT }} CLI {/*upgrade-the-cli*/}
  
@@ -177,7 +178,7 @@ To exclude build artifacts from being tracked in version control, update your `.
 .edgio
 ```
 
-## Optional: Review Your Code for Duplicate Query String Parameters {/*optional-review-your-code-for-duplicate-query-string-parameters*/}
+## Step 7 (Optional): Review Your Code for Duplicate Query String Parameters {/*optional-review-your-code-for-duplicate-query-string-parameters*/}
 
 {{ PRODUCT }} version 5 will no longer modify the request's query string when it detects a duplicate query string parameter.
 
@@ -194,6 +195,12 @@ For example, we will examine how both versions of {{ PRODUCT }} handle the follo
 `https://sports.example.com/index.html?id=123&type=Sports&type=Basketball`
 
 Review your code to see whether it generates duplicate query string parameters. If it does, update it to handle multiple query string parameters with the same name.
+
+## Step 8: Deprecated Features {/*deprecated-features*/}
+
+### GraphQL Caching  {/*graphql-caching*/}
+
+{{ PRODUCT }} has deprecated support for caching of GraphQL operations in version 5. If your {{ PRODUCT }} router ({{ ROUTES_FILE }}) contains usage of `.graphqlOperation(...)`, you should remove it. Otherwise, your application will fail to build.
 
 ## Migration Complete {/*migration-complete*/}
 

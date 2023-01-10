@@ -233,28 +233,6 @@ router.match(
 )
 ```
 
-## GraphQL Queries {/*graphql-queries*/}
-
-The {{ EDGEJS_LABEL }} router provides a `graphqlOperation` method for matching GraphQL.
-
-```js
-router.graphqlOperation('GetProducts', res => {
-  /* Handle the POST for the GetProducts query specifically */
-})
-```
-
-By default, the `graphqlOperation` assumes your GraphQL endpoint is at `/graphql`. You can alter this behavior by using the `path` property as shown below:
-
-```js
-router.graphqlOperation({ path: '/api/graphql', name: 'GetProducts' }, res => {
-  /* Handle the POST for the GetProducts query specifically */
-})
-```
-
-Note that when the `graphqlOperation` function is used, the HTTP request body will automatically be included in the cache key.
-
-See the guide on [Implementing GraphQL Routing](/guides/graphql) in your project.
-
 ## Request Handling {/*request-handling*/}
 
 The second argument to routes is a function that receives a `ResponseWriter` and uses it to send a response. Using `ResponseWriter` you can:

@@ -141,7 +141,7 @@ Customizing caching keys is a very powerful tool to make your site faster. At th
 
 ### Caching Responses for POST and other non-GET/HEAD Requests {/*caching-responses-for-post-and-other-non-gethead-requests*/}
 
-{{ PRODUCT_NAME }} only supports caching responses for `GET` and `HEAD` requests. Some APIs, particularly those implemented with GraphQL, use `POST` requests by default, with queries being sent through the request body. See [Prefetching - GraphQL](/guides/performance/prefetching#graphql) for more information on caching GraphQL with {{ PRODUCT_NAME }}.
+{{ PRODUCT_NAME }} only supports caching responses for `GET` and `HEAD` requests. Some APIs, particularly those implemented with GraphQL, use `POST` requests by default, with queries being sent through the request body.
 
 ### Caching Private Responses {/*caching-private-responses*/}
 

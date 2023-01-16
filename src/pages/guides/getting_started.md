@@ -11,6 +11,8 @@ Get started with {{ PRODUCT }} by satisfying our [prerequisites](#prerequisites)
 
 ## Quick Start {/*quick-start*/}
 
+<Video src="https://youtu.be/kCGBgzkaOJ0" width="400px" />
+
 If you already have [Node.js v{{ NODE_VERSION }}](/guides/install_nodejs) and an [{{ PRODUCT }} account](#account-creation), then you can use a single command to:
 -   Install the {{ PRODUCT }} CLI.
 -   Create an {{ PRODUCT }} property for your website.

@@ -21,6 +21,7 @@ We recommend that you perform the seamless {{ PRODUCT }} version 5 migration now
 
 {{ PRODUCT }} version 5 updates our CLI, packages, and a configuration file with {{ PRODUCT }} branding. Additionally, our service will no longer modify duplicate query string parameters.
 
+
 Migrate from version 4.x to 5 through the following steps:
 
 1.  [Upgrade the {{ PRODUCT }} CLI.](#upgrade-the-cli)
@@ -204,3 +205,9 @@ Review your code to see whether it generates duplicate query string parameters. 
 ## Migration Complete {/*migration-complete*/}
 
 Congratulations on successfully migrating {{ PRODUCT }} to version 5! Once you are ready to make your application compatible with Node.js version 16, you should migrate to [{{ PRODUCT }} version 6](/guides/reference/v6_migration).
+
+## Video Tutorial {/*video-tutorial*/}
+
+Follow along in this demonstration where we upgrade the {{ PRODUCT }} Documentation site from version 4 to version 5.
+
+<Video src="https://youtu.be/hn20Aghn9Nc" width="400px" />

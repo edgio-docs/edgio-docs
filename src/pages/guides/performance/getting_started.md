@@ -140,7 +140,7 @@ Once you have identified a set of requests, you need to define how {{ PRODUCT }}
 
 [View additional examples.](/guides/performance/cdn_as_code/common_routing_patterns)
 
-In this case, we will define a route by uncommenting the constants and the `match()` method in your {{ ROUTES_FILE }} file. It should now look similar to the following configuration:
+We will now define a route by uncommenting the constants and the `match()` method in your {{ ROUTES_FILE }} file. It should now look similar to the following configuration:
 
 ```js filename="./routes.js" highlight={3-4,9-21}
 import { Router } from '@edgio/core/router'
@@ -169,26 +169,96 @@ export default new Router()
   .fallback(({ proxy }) => proxy('origin'))
 ```
 
-We have just added a route that matches all requests that start with `/api/` and instructs {{ PRODUCT }} to:
+<a id="caching-policy" /> The above route matches all requests that start with `/api/` and instructs {{ PRODUCT }} to:
+
 -   Cache those requests on our network for one day.
 -   Allow us to serve stale content for one hour.
 -   Instruct the browser to treat the response as immediately stale. 
 -   Allow prefetched requests to be served from cache for one day.
 -   Proxy those requests to your `origin` backend when we cannot serve them from cache.
 
-The `failback()` method proxies all requests that do not match a route to your `origin` backend.
- 
-#### Cache Constants {/*cache-constants*/}
-Cache constants in the {{ ROUTES_FILE }} have been abstracted out to enable reuse across different routes. You may add additional constants.
+You can use constants to apply this same caching policy to various routes. Define a `CACHE_ASSETS` constant and set it to the cache object defined in the above route.
+
+```js filename="./routes.js" highlight={6-15}
+
+import { Router } from '@edgio/core/router'
+
+ const ONE_HOUR = 60 * 60
+ const ONE_DAY = 24 * ONE_HOUR
+
+ const CACHE_ASSETS = {
+   edge: {
+     maxAgeSeconds: ONE_DAY,
+     staleWhileRevalidateSeconds: ONE_HOUR,
+   },
+   browser: {
+     maxAgeSeconds: 0,
+     serviceWorkerSeconds: ONE_DAY,
+   },
+ }
+...
+```
+
+Update our route to use the `CACHE_ASSETS` constant.
 
 ```js filename="./routes.js"
-import { Router } from '{{ PACKAGE_NAME }}/core/router'
-
-const ONE_HOUR = 60 * 60
-const ONE_DAY = 24 * ONE_HOUR
-const ONE_YEAR = 365 * ONE_DAY
-// ...
+...
+   .match('/api/:path*', ({ proxy, cache }) => {
+     cache(CACHE_ASSETS)
+     proxy('origin')
+   })
+...
 ```
+
+We will now add a route that applies the same caching policy to all JavaScript (i.e., `.js` and `.mjs`) and CSS files. 
+
+```js filename="./routes.js" highlight={18-27}
+import { Router } from '@edgio/core/router'
+
+ const ONE_HOUR = 60 * 60
+ const ONE_DAY = 24 * ONE_HOUR
+ const CACHE_ASSETS = {
+   edge: {
+     maxAgeSeconds: ONE_DAY,
+     staleWhileRevalidateSeconds: ONE_HOUR,
+   },
+   browser: {
+     maxAgeSeconds: 0,
+     serviceWorkerSeconds: ONE_DAY,
+   },
+ }
+
+export default new Router()
+
+  // Here is an example where we cache api/* at the edge but prevent caching in the browser
+   .match('/api/:path*', ({ proxy, cache }) => {
+     cache(CACHE_ASSETS)
+     proxy('origin')
+   })
+  
+  // Cache stylesheets and scripts, but prevent browser caching
+  .match(
+    '/:path*/:file.:ext(js|mjs|css)',
+    ({ cache, removeUpstreamResponseHeader, proxy, setResponseHeader }) => {
+      setResponseHeader('cache-control', 'public, max-age=86400')
+      removeUpstreamResponseHeader('set-cookie')
+      cache(CACHE_ASSETS)
+      proxy('origin')
+    }
+  )
+
+  // send any unmatched request to origin
+  .fallback(({ proxy }) => proxy('origin'))
+```
+
+The above route instructs {{ PRODUCT }} to perform the following actions for all requests whose file extension matches `js`, `mjs`, or `css`:
+
+-   Set the `cache-control` response header to: `cache-control: public, max-age=86400`
+-   Remove the `set-cookie` response header. {{ PRODUCT }} will not cache a response when the `set-cookie` response header is present.
+-   Apply the [caching policy](#caching-policy) defined by the `CACHE_ASSETS` constant. 
+-   Proxy these requests to your `origin` backend when we cannot serve them from cache.
+
+Below all of your routes, there is a `fallback()` method that proxies all requests that do not match a route to your `origin` backend.
 
 Learn more about:
 -   [CDN-as-code](/guides/performance/cdn_as_code)
@@ -214,16 +284,46 @@ Assess performance and caching behavior from the {{ PORTAL }}. Fine-tune your co
 
 [Learn more.](/guides/production)
 
+## Examples {/*example*/}
 
+Use our sample websites to gain hands-on experience on how to set up {{ PRODUCT }} {{ PRODUCT_EDGE }}. Specifically, you can browse our sample websites, view their source code, and even experiment on them by deploying them to {{ PRODUCT }}:
 
-## Example Website {/*example*/}
+**Simple Example**
 
-Use the following links to interact with an example website, view its source code, or experiment on it by deploying it to {{ PRODUCT }}.
+This example demonstrates a basic {{ PRODUCT }} configuration for `publicdomainreview.org`. It contains two routes that cache content according to their file extension.
 
 <ExampleButtons
-  title="Performance"
-  siteUrl="https://layer0-docs-cdn-starter-template-default.layer0-limelight.link"
-  repoUrl="https://github.com/layer0-docs/layer0-cdn-example"
+  title="Simple"
+  siteUrl="https://demos-edgio-simple-performance-example-default.layer0-limelight.link/"
+  repoUrl="https://github.com/edgio-docs/edgio-examples/tree/main/examples/simple-performance"
+  deployFromRepo />
+
+**Full-Featured Example**
+
+This example demonstrates a full-featured {{ PRODUCT }} configuration that showcases the following functionality:
+
+-   [Proxying requests](/guides/performance/cdn_as_code/common_routing_patterns#proxying-an-origin) to multiple origins
+-   Increasing the cache buffer during revalidation through [StaleWhileRevalidate](/guides/performance/caching#achieving-100-cache-hit-rates)
+-   [Prerendering](/guides/performance/static_prerendering) pages and caching them to improve performance.
+-   Instructing the browser to [prefetch](/guides/performance/prefetching) and [deep fetch](/guides/performance/prefetching#deep-fetching) cached content to improve performance.
+
+    <Callout type="info">
+
+      Prefetching only improves performance for cached content. {{ PRODUCT }} returns `412 Precondition Failed` when prefetching a cache miss. This status code means that the prefetching did not occur for that request. 
+
+    </Callout>
+
+-   [Transforming and optimizing images](/guides/performance/image_optimization)
+-   Transforming the response through [Serverless Compute](/guides/performance/serverless_compute)
+-   [Removing response headers](/guides/performance/cdn_as_code#alter-requests-and-responses)
+-   [Normalizing the cache key](/guides/performance/caching#customizing-the-cache-key)
+-   Generating performance insights through [DevTools](/guides/performance/observability/devtools)
+-   Tracking [Core Web Vitals](/guides/performance/observability/core_web_vitals) through real user monitoring (RUM).
+
+<ExampleButtons
+  title="Full-Featured"
+  siteUrl="https://demos-edgio-full-featured-performance-example-default.layer0-limelight.link/"
+  repoUrl="https://github.com/edgio-docs/edgio-examples/tree/main/examples/full-featured-performance"
   deployFromRepo />
 
 ## Issues? {/*issues*/}

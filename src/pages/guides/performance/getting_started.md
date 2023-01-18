@@ -80,13 +80,13 @@ The above configuration proxies all requests that do not match a route to the `o
   A backend identifies a domain or IP address to which {{ PRODUCT }} may proxy requests. In this case, the `origin` backend was defined when you initialized this property using the `edgio init` command. 
 <br /> 
 
-  Add, modify, and remove backends by editing the [`{{ CONFIG_FILE }}` file](/guides/basics/edgio_config).
+  Add, modify, and remove backends by editing the [{{ CONFIG_FILE }} file](/guides/basics/edgio_config).
 
 </Callout>
 
-## Defining a Route {/*defining-a-route*/}
+## Routes {/*routes*/}
 
-Define a route by first identifying a set of requests through any combination of URL path, HTTP method, cookies, request headers, and query string parameters. The following routes show various ways for identifying requests. 
+A route identifies a set of requests through any combination of URL path, HTTP method, cookies, request headers, and query string parameters. The following routes show various ways for identifying requests. 
 
 -   Match all requests:
 
@@ -140,6 +140,8 @@ Once you have identified a set of requests, you need to define how {{ PRODUCT }}
 
 [View additional examples.](/guides/performance/cdn_as_code/common_routing_patterns)
 
+### Defining a Route {/*defining-a-route*/}
+
 We will now define a route by uncommenting the constants and the `match()` method in your {{ ROUTES_FILE }} file. It should now look similar to the following configuration:
 
 ```js filename="./routes.js" highlight={3-4,9-21}
@@ -169,7 +171,9 @@ export default new Router()
   .fallback(({ proxy }) => proxy('origin'))
 ```
 
-<a id="caching-policy" /> The above route matches all requests that start with `/api/` and instructs {{ PRODUCT }} to:
+<a id="caching-policy" /> 
+
+The above route matches all requests that start with `/api/` and instructs {{ PRODUCT }} to:
 
 -   Cache those requests on our network for one day.
 -   Allow us to serve stale content for one hour.
@@ -199,7 +203,7 @@ import { Router } from '@edgio/core/router'
 ...
 ```
 
-Update our route to use the `CACHE_ASSETS` constant.
+Update the `/api/` route to use the `CACHE_ASSETS` constant.
 
 ```js filename="./routes.js"
 ...
@@ -212,7 +216,7 @@ Update our route to use the `CACHE_ASSETS` constant.
 
 We will now add a route that applies the same caching policy to all JavaScript (i.e., `.js` and `.mjs`) and CSS files. 
 
-```js filename="./routes.js" highlight={18-27}
+```js filename="./routes.js" highlight={24-33}
 import { Router } from '@edgio/core/router'
 
  const ONE_HOUR = 60 * 60
@@ -286,7 +290,7 @@ Assess performance and caching behavior from the {{ PORTAL }}. Fine-tune your co
 
 ## Examples {/*example*/}
 
-Use our sample websites to gain hands-on experience on how to set up {{ PRODUCT }} {{ PRODUCT_EDGE }}. Specifically, you can browse our sample websites, view their source code, and even experiment on them by deploying them to {{ PRODUCT }}:
+Use our sample websites to gain hands-on experience on how to set up {{ PRODUCT }} {{ PRODUCT_EDGE }}. Specifically, you can browse our sample websites, view their source code, and even experiment on them by deploying them to {{ PRODUCT }}.
 
 **Simple Example**
 

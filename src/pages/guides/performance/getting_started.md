@@ -216,7 +216,31 @@ Update the `/api/` route to use the `CACHE_ASSETS` constant.
 
 We will now add a route that applies the same caching policy to all JavaScript (i.e., `.js` and `.mjs`) and CSS files. 
 
-```js filename="./routes.js" highlight={24-33}
+```js filename="./routes.js"
+... 
+  // Cache stylesheets and scripts, but prevent browser caching
+  .match(
+    '/:path*/:file.:ext(js|mjs|css)',
+    ({ cache, removeUpstreamResponseHeader, proxy, setResponseHeader }) => {
+      setResponseHeader('cache-control', 'public, max-age=86400')
+      removeUpstreamResponseHeader('set-cookie')
+      cache(CACHE_ASSETS)
+      proxy('origin')
+    }
+  )
+...
+```
+
+The above route instructs {{ PRODUCT }} to perform the following actions for all requests whose file extension matches `js`, `mjs`, or `css`:
+
+-   Set the `cache-control` response header to: `cache-control: public, max-age=86400`
+-   Remove the `set-cookie` response header. {{ PRODUCT }} will not cache a response when the `set-cookie` response header is present.
+-   Apply the [caching policy](#caching-policy) defined by the `CACHE_ASSETS` constant. 
+-   Proxy these requests to your `origin` backend when we cannot serve them from cache.
+
+Your {{ ROUTES_FILE }} should now look similar to the following:
+
+```js filename="./routes.js"
 import { Router } from '@edgio/core/router'
 
  const ONE_HOUR = 60 * 60
@@ -232,42 +256,30 @@ import { Router } from '@edgio/core/router'
    },
  }
 
-export default new Router()
+export default new Router() 
 
   // Here is an example where we cache api/* at the edge but prevent caching in the browser
    .match('/api/:path*', ({ proxy, cache }) => {
      cache(CACHE_ASSETS)
      proxy('origin')
    })
-  
+    
   // Cache stylesheets and scripts, but prevent browser caching
   .match(
     '/:path*/:file.:ext(js|mjs|css)',
-    ({ cache, removeUpstreamResponseHeader, proxy, setResponseHeader }) => {
+    ({ cache, removeUpstreamResponseHeader, proxy, setResponseHeader }) => { 
       setResponseHeader('cache-control', 'public, max-age=86400')
       removeUpstreamResponseHeader('set-cookie')
       cache(CACHE_ASSETS)
       proxy('origin')
     }
-  )
-
+  ) 
+    
   // send any unmatched request to origin
   .fallback(({ proxy }) => proxy('origin'))
 ```
 
-The above route instructs {{ PRODUCT }} to perform the following actions for all requests whose file extension matches `js`, `mjs`, or `css`:
-
--   Set the `cache-control` response header to: `cache-control: public, max-age=86400`
--   Remove the `set-cookie` response header. {{ PRODUCT }} will not cache a response when the `set-cookie` response header is present.
--   Apply the [caching policy](#caching-policy) defined by the `CACHE_ASSETS` constant. 
--   Proxy these requests to your `origin` backend when we cannot serve them from cache.
-
-Below all of your routes, there is a `fallback()` method that proxies all requests that do not match a route to your `origin` backend.
-
-Learn more about:
--   [CDN-as-code](/guides/performance/cdn_as_code)
--   [Caching](/guides/performance/caching)
--   [Predictive Prefetching](/guides/performance/prefetching)
+The final line in your {{ ROUTES_FILE }} defines a `fallback()` method that proxies all requests that do not match a route to your `origin` backend.
 
 ## Testing Locally {/*deploy-locally*/}
 

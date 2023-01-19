@@ -15,6 +15,35 @@ The `backends` config is an object whose keys are backend names and whose values
 | disableCheckCert | Boolean | A flag to turn off the TLS certificate check when making proxy requests to the backend site or API. By default it is `false` and for security purposes we strongly recommend that it is kept `false` in production environments. When using this option, you may also want to run your app with the `NODE_TLS_REJECT_UNAUTHORIZED` environment variable set to "0" to allow node to fetch from sites with invalid certificates.                                            |
 | port             | Number  | The port on which the backend receives https requests. Defaults to 443 but you can specify any other acceptable port value. Note that specifying `80` has no special meaning as {{ PRODUCT_NAME }} will never send secured requests to unsecured backends. To [enable HTTP traffic](/guides/security/security_suite#ssl) on a backend you must have a route matching `http` protocol in your router and serve content from that route. All HTTP traffic assumes port `80` on the backend. |
 
+### Nonstandard Ports {/*nonstandardports*/}
+ 
+If you need to proxy to a nonstandard port (not 443 or 80) then you must us `compute` to do so. This is for security reasons. 
+
+For instance, proxying to a backend named "commerce" on a nonstandard port would use the following in their `routes` file.
+
+```
+// proxy edge (standard use case)
+.match(
+  '/:path*',
+  ({ proxy }) => {
+    proxy('commerce', {
+      path: '/:path*',
+    });
+  }
+)
+
+// proxy via serverless (nonstandard port use case)
+.match(
+  '/:path*',
+  ({ proxy, compute }) => {
+    compute(async (req) => {
+      await proxy('commerce');
+    });
+  }
+)
+```
+
+
 ## connector {/*connector*/}
 
 The name of the connector package corresponding to the framework your app uses, or the path to a directory that implements the [connector interface](/guides/sites_frameworks/connectors).

@@ -113,11 +113,6 @@ export default function VideosandTutorials() {
           id: '691580370',
         },
         {
-          title: 'Getting Started with GraphQL',
-          url: 'https://player.vimeo.com/video/691615246?h=f0a9b2a5e7',
-          id: '691615246',
-        },
-        {
           title: 'Sub-Second Performance',
           url: 'https://player.vimeo.com/video/691580446?h=b9ca883f12',
           id: '691580446',

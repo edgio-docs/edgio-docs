@@ -31,7 +31,7 @@ This framework has a connector developed for {{ PRODUCT }}. See [Connectors](/gu
 
 ## Supported Versions {/*supported-versions*/}
 
-{{ PRODUCT_NAME }} supports Next.js version 9 through 12.
+{{ PRODUCT_NAME }} supports Next.js version 9 through 13.
 
 ## Supported Features {/*supported-features*/}
 
@@ -54,12 +54,6 @@ When installing the {{ PRODUCT }} CLI globally in a virtual environment that has
 If you run into permission issues while attempting to install the {{ PRODUCT }} CLI globally on your local development machine, these may be fixed by using [nvm](https://github.com/nvm-sh/nvm) to manage Node and NPM.
 
 ## Getting Started {/*getting-started*/}
-
-<Callout type="important">
-
-  {{ PRODUCT }} currently supports up to Next.js 12. Next.js 13+ is **not** supported at this time.
-
-</Callout>
 
 ### Create a Next.js Application {/*create-a-nextjs-application*/}
 

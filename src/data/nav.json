@@ -117,10 +117,6 @@
           "path": "performance/unit_testing_edgejs"
         },
         {
-          "title": "GraphQL Caching",
-          "path": "performance/graphql"
-        },
-        {
           "title": "Image Optimization",
           "path": "performance/image_optimization"
         },

@@ -11,7 +11,7 @@ Upgrading {{ PRODUCT }} involves updating:
 
   You cannot skip versions when migrating your {{ PRODUCT }} properties. 
 
-  For example, if your propery is currently using version 4, then you must migrate to version 5. Once you have succesfully migrated to version 5, you may proceed to migrate your property to version 6.
+  For example, if your property is currently using version 4, then you must migrate to version 5. Once you have successfully  migrated to version 5, you may proceed to migrate your property to version 6.
 
 </Callout>
 

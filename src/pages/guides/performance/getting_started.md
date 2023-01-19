@@ -10,7 +10,7 @@ Get started with {{ PRODUCT_EDGE }} by:
 
     <Callout type="tip">
 
-      Alternatively, you may experiment with our [example site](#example) by deploying it.
+      Alternatively, you may experiment with our [sample websites](#example) by deploying them to {{ PRODUCT }}.
 
     </Callout>
 
@@ -181,15 +181,14 @@ The above route matches all requests that start with `/api/` and instructs {{ PR
 -   Allow prefetched requests to be served from cache for one day.
 -   Proxy those requests to your `origin` backend when we cannot serve them from cache.
 
-You can use constants to apply this same caching policy to various routes. Define a `CACHE_ASSETS` constant and set it to the cache object defined in the above route.
+You can use constants to apply this same caching policy to various routes. Define a `CACHE_ASSETS` constant and set it to the `cache` object defined in the above route.
 
-```js filename="./routes.js" highlight={6-15}
+```js filename="./routes.js" highlight={5-14}
 
 import { Router } from '@edgio/core/router'
 
  const ONE_HOUR = 60 * 60
  const ONE_DAY = 24 * ONE_HOUR
-
  const CACHE_ASSETS = {
    edge: {
      maxAgeSeconds: ONE_DAY,

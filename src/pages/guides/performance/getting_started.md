@@ -140,7 +140,7 @@ Once you have identified a set of requests, you need to define how {{ PRODUCT }}
 
 [View additional examples.](/guides/performance/cdn_as_code/common_routing_patterns)
 
-### Defining a Route {/*defining-a-route*/}
+### Defining Routes {/*defining-a-route*/}
 
 We will now define a route by uncommenting the constants and the `match()` method in your {{ ROUTES_FILE }} file. It should now look similar to the following configuration:
 

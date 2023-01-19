@@ -309,8 +309,8 @@ This example demonstrates a basic {{ PRODUCT }} configuration for `publicdomainr
 
 <ExampleButtons
   title="Simple"
-  siteUrl="https://demos-edgio-simple-performance-example-default.layer0-limelight.link/"
-  repoUrl="https://github.com/edgio-docs/edgio-examples/tree/main/examples/simple-performance"
+  siteUrl="https://edgio-community-examples-simple-performance-live.layer0-limelight.link/"
+  repoUrl="https://github.com/edgio-docs/edgio-simple-performance-example/"
   deployFromRepo />
 
 **Full-Featured Example**
@@ -337,8 +337,8 @@ This example demonstrates a full-featured {{ PRODUCT }} configuration that showc
 
 <ExampleButtons
   title="Full-Featured"
-  siteUrl="https://demos-edgio-full-featured-performance-example-default.layer0-limelight.link/"
-  repoUrl="https://github.com/edgio-docs/edgio-examples/tree/main/examples/full-featured-performance"
+  siteUrl="https://edgio-community-examples-full-featured-performance-live.layer0-limelight.link/"
+  repoUrl="https://github.com/edgio-docs/edgio-full-featured-performance-example/"
   deployFromRepo />
 
 ## Issues? {/*issues*/}

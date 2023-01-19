@@ -453,21 +453,21 @@
       ]
     },
     {
-      "title": "Reference",
-      "path": "reference",
+      "title": "Upgrading",
+      "path": "upgrading",
       "icon": "stacks-plain",
       "routes": [
         {
           "title": "Migration to v4",
-          "path": "reference/layer0_migration"
+          "path": "upgrading/layer0_migration"
         },
         {
           "title": "Migration to v5",
-          "path": "reference/v5_migration"
+          "path": "upgrading/v5_migration"
         },
         {
           "title": "Migration to v6",
-          "path": "reference/v6_migration"
+          "path": "upgrading/v6_migration"
         }
       ]
     }

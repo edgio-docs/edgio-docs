@@ -4,7 +4,7 @@ title: {{ PRODUCT }} Version 5 Migration Guide
 
 <Callout type="important">
 
-  If you are using {{ PRODUCT }} version 3.x or earlier, you should review the [v4 Migration Guide](/guides/reference/layer0_migration) before migrating to version 5.
+  If you are using {{ PRODUCT }} version 3.x or earlier, you should review the [v4 Migration Guide](/guides/upgrading/layer0_migration) before migrating to version 5.
 
 </Callout>
 
@@ -203,4 +203,4 @@ Review your code to see whether it generates duplicate query string parameters. 
 
 ## Migration Complete {/*migration-complete*/}
 
-Congratulations on successfully migrating {{ PRODUCT }} to version 5! Once you are ready to make your application compatible with Node.js version 16, you should migrate to [{{ PRODUCT }} version 6](/guides/reference/v6_migration).
+Congratulations on successfully migrating {{ PRODUCT }} to version 5! Once you are ready to make your application compatible with Node.js version 16, you should migrate to [{{ PRODUCT }} version 6](/guides/upgrading/v6_migration).

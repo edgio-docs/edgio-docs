@@ -127,4 +127,7 @@ export default [
   ['/guides/static_prerendering', '/guides/performance/static_prerendering'],
   ['/guides/traditional_sites', '/guides/performance/traditional_sites'],
   ['/guides/troubleshooting', '/guides/performance/troubleshooting'],
+  ['/guides/reference/layer0_migration', '/guides/upgrading/layer0_migration'],
+  ['/guides/reference/v5_migration', '/guides/upgrading/v5_migration'],
+  ['/guides/reference/v6_migration', '/guides/upgrading/v6_migration'],
 ];

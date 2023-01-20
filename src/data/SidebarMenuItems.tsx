@@ -273,12 +273,6 @@ const SidebarMenuItems: ISidebarMenuItems = [
           iconDark: <IconNextJSCommerceDark />,
         },
         {
-          title: 'Nuxt.js',
-          path: '/guides/sites_frameworks/getting_started/nuxt',
-          icon: <IconNuxt />,
-          iconDark: <IconNuxt />,
-        },
-        {
           title: 'Nuxt3',
           path: '/guides/sites_frameworks/getting_started/nuxt3',
           icon: <IconNuxt />,
@@ -289,6 +283,12 @@ const SidebarMenuItems: ISidebarMenuItems = [
           path: '/guides/sites_frameworks/getting_started/react',
           icon: <IconReact />,
           iconDark: <IconReact />,
+        },
+        {
+          title: 'Vue.js',
+          path: '/guides/sites_frameworks/getting_started/vue',
+          icon: <IconVue />,
+          iconDark: <IconVue />,
         },
       ],
     },

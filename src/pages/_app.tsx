@@ -1,3 +1,4 @@
+import * as React from 'react';
 import '@docsearch/css';
 import {Metrics} from '@edgio/rum';
 import {MDXEmbedProvider} from 'mdx-embed';
@@ -7,7 +8,7 @@ import dynamic from 'next/dynamic';
 import {useRouter} from 'next/router';
 import Script from 'next/script';
 import NProgress from 'nprogress';
-import * as React from 'react';
+import {VersionProvider} from 'components/VersionProvider';
 
 import LoadingFallBackPage from 'components/Fallbacks/Loading';
 import {siteConfig} from 'siteConfig';
@@ -107,12 +108,14 @@ export default function MyApp({Component, pageProps}: AppProps) {
   return loading && fallbackMap.hasOwnProperty(changingTo) ? (
     fallbackMap[changingTo]
   ) : (
-    <AppShell>
-      <GAnalytics />
-      <DefaultSeo canonical={canonicalUrl} />
-      <MDXEmbedProvider>
-        <Component {...pageProps} />
-      </MDXEmbedProvider>
-    </AppShell>
+    <VersionProvider>
+      <AppShell>
+        <GAnalytics />
+        <DefaultSeo canonical={canonicalUrl} />
+        <MDXEmbedProvider>
+          <Component {...pageProps} />
+        </MDXEmbedProvider>
+      </AppShell>
+    </VersionProvider>
   );
 }

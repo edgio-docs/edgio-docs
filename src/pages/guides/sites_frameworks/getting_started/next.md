@@ -465,7 +465,7 @@ When using Next.js middleware it should be noted that the middleware functions a
 
 <Callout type="info">
 
-    Next.js Runtime Configuration requires {{ PRODUCT }} 6.0.5+. See <a href="/guides/develop/cli#upgrade-project-to-latest-version">Upgrading</a>.
+  Next.js Runtime Configuration requires {{ PRODUCT }} 6.0.5+. See <a href="/guides/develop/cli#upgrade-project-to-latest-version">Upgrading</a>.
 
 </Callout>
 

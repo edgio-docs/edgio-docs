@@ -21,6 +21,8 @@ We recommend that you perform the seamless {{ PRODUCT }} version 5 migration now
 
 {{ PRODUCT }} version 5 updates our CLI, packages, and a configuration file with {{ PRODUCT }} branding. Additionally, our service will no longer modify duplicate query string parameters.
 
+&nbsp;<img data-inline-img src="/icons/yt_icon_rgb.png?width=38" alt="" /> <a href="https://youtu.be/hn20Aghn9Nc">Version 5 Migration Walkthrough</a>
+
 Migrate from version 4.x to 5 through the following steps:
 
 1.  [Upgrade the {{ PRODUCT }} CLI.](#upgrade-the-cli)

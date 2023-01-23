@@ -8,6 +8,7 @@ const StyledComp = styled.figure`
 
   &[data-inline-img='true'] {
     display: inline-flex;
+    vertical-align: middle;
   }
 `;
 

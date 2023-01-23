@@ -8,7 +8,7 @@ title: {{ PRODUCT }} Version 6 Migration Guide
 
     <Callout type="info">
 
-      If you are using {{ PRODUCT }} version 4.x or earlier, [migrate to version 5](/guides/reference/v5_migration) before migrating to version 6.
+      If you are using {{ PRODUCT }} version 4.x or earlier, [migrate to version 5](/guides/upgrading/v5_migration) before migrating to version 6.
 
     </Callout>
 

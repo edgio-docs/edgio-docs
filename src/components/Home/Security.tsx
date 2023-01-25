@@ -2,12 +2,13 @@ import sortBy from 'lodash/sortBy';
 import Link from 'next/link';
 import styled from 'styled-components';
 
-import {PRODUCT} from '../../../constants';
+import {PRODUCT, PRODUCT_SECURITY} from '../../../constants';
 import {getChildrenRoutesFromSidebarMenuItems} from '../../utils/getChildrenRoutesFromSidebarMenuItems';
-import {IconSecurity} from '../Icon/IconSecurity';
 
 import {StyledFeatureSection} from './FeatureSection';
 import SectionHeader from './SectionHeader';
+
+import {IconSecurity} from 'components/Icon/IconSecurity';
 
 const StyledComp = styled(StyledFeatureSection)``;
 
@@ -26,8 +27,8 @@ export default function Security() {
     <StyledComp>
       <SectionHeader
         Icon={IconSecurity}
-        title="App Security"
-        subtitle={`Protect your web applications without sacrificing performance.`}
+        title="Security"
+        subtitle={`Protect your web applications without sacrificing performance through ${PRODUCT} ${PRODUCT_SECURITY}.`}
       />
 
       <div className="route-items">

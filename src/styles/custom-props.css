@@ -1,9 +1,9 @@
 :root {
   --colors-black0: #000000;
-  --colors-black1: #353535;
+  --colors-black1: #181717;
   --colors-black2: #2c2c30;
   --colors-black3: #58585f;
-  --colors-black4: #1a1a1a;
+  --colors-black4: #0e0e0e;
   --colors-gray0: #1a1a1a;
   --colors-gray1: #eeeeee;
   --colors-gray2: #f6f9fc;
@@ -23,7 +23,7 @@
   --shadow-primary: #00000026;
   --docsearch-searchbox-height: 36px;
   --docsearch-spacing: 6px;
-  --header-height: 64px;
+  --header-height: 48px;
 }
 
 :root.light {
@@ -39,7 +39,7 @@
   --hr-primary: #d8d8d8;
   --hr-secondary: #e3e8ee;
   --bg-primary: var(--colors-white0);
-  --bg-secondary: var(--colors-white0);
+  --bg-secondary: #fafbfb;
   --href-hover-primary: #e5e5e5;
   --copy-code-primary: var(--colors-white0);
   --code-bgColor: #f6f9fc;
@@ -129,10 +129,6 @@
   --docsearch-modal-background: var(--bg-primary);
   --docsearch-hit-background: #262626;
   --docsearch-hit-color: #cbcbcb;
-}
-
-html {
-  scroll-behavior: smooth;
 }
 
 body {

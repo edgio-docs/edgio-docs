@@ -25,8 +25,8 @@ export default function Cdn() {
     <StyledComp>
       <SectionHeader
         Icon={IconServer}
-        title="CDN"
-        subtitle={`Accelerate your web applications using ${PRODUCT_EDGE} and EdgeJS.`}
+        title="Performance"
+        subtitle={`Accelerate your web application through ${PRODUCT} ${PRODUCT_EDGE}.`}
       />
 
       <div className="route-items">

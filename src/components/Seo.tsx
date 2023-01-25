@@ -20,7 +20,7 @@ const Seo = withRouter(
     isHomePage,
     title,
     description = '',
-    image = 'https://docs.layer0.co/images/seo/docs.ogimage.png',
+    image = 'https://docs.edg.io/images/seo/docs.ogimage.png',
     router,
     children,
   }: SeoProps & {router: Router}) => (
@@ -52,7 +52,7 @@ const Seo = withRouter(
       <meta
         property="og:url"
         key="og:url"
-        content={`https://docs.layer0.co/guides${router.pathname}`}
+        content={`https://docs.edg.io/guides${router.pathname}`}
       />
       {title != null && (
         <meta property="og:title" content={title} key="og:title" />

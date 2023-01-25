@@ -7,6 +7,7 @@ import EdgioDark from '../../../../public/images/home/edgio-dark.webp';
 import EdgioLight from '../../../../public/images/home/edgio-light.webp';
 import NoSSRWrapper from '../NoSSRWrapper';
 
+import {ExternalLink} from 'components/ExternalLink';
 import {IconHamburger} from 'components/Icon/IconHamburger';
 import {IconLightMobileLogo} from 'components/Icon/IconMobileLogo';
 import {siteConfig} from 'siteConfig';
@@ -15,12 +16,12 @@ import useTheme from 'utils/hooks/useTheme';
 const StyledHeader = styled.header`
   position: sticky;
   top: 0;
-  z-index: 1;
+  z-index: 1000;
   background-color: var(--bg-secondary);
   width: 100%;
   height: var(--header-height);
   box-shadow: inset 0 -1px var(--shadow-primary);
-  padding: 17px 20px;
+  padding: 0 24px;
   display: grid;
   grid-template-columns: auto auto;
   align-content: center;
@@ -183,6 +184,13 @@ const {
   indexName,
 } = siteConfig.algolia;
 
+function transformItems(items: any) {
+  return items.map((item: any) => ({
+    ...item,
+    url: item.url.replace(/docs\.layer0\.co/g, 'docs.edg.io'),
+  }));
+}
+
 export default function Header({
   showSidebar,
   setShowSidebar,
@@ -199,8 +207,8 @@ export default function Header({
               <div className="logo-box" id="light-theme">
                 <Image
                   src={EdgioDark}
-                  width="86"
-                  height="36"
+                  width="66"
+                  height="26"
                   alt="Edgio"
                   unoptimized
                   priority
@@ -209,8 +217,8 @@ export default function Header({
               <div className="logo-box" id="dark-theme">
                 <Image
                   src={EdgioLight}
-                  width="86"
-                  height="36"
+                  width="66"
+                  height="26"
                   alt="Edgio"
                   unoptimized
                   priority
@@ -237,16 +245,17 @@ export default function Header({
                 appId={algoliaAppId}
                 indexName={indexName}
                 apiKey={algoliaApiKey}
+                transformItems={transformItems}
               />
             </NoSSRWrapper>
           </div>
           <ToggleTheme />
-          <Link href="https://app.layer0.co/?sgId=ef4d5169-93f2-4f55-aabb-dc3be4286e1f">
+          <ExternalLink href="https://app.layer0.co/?sgId=ef4d5169-93f2-4f55-aabb-dc3be4286e1f">
             Login
-          </Link>
-          <Link href="https://app.layer0.co/signup?redirectTo=%2F&sgId=ef4d5169-93f2-4f55-aabb-dc3be4286e1f">
+          </ExternalLink>
+          <ExternalLink href="https://app.layer0.co/signup?redirectTo=%2F&sgId=ef4d5169-93f2-4f55-aabb-dc3be4286e1f">
             Sign up
-          </Link>
+          </ExternalLink>
         </div>
         <div id="mobile">
           <div className="search-form__box">
@@ -255,6 +264,7 @@ export default function Header({
                 appId={algoliaAppId}
                 indexName={indexName}
                 apiKey={algoliaApiKey}
+                transformItems={transformItems}
               />
             </NoSSRWrapper>
           </div>

@@ -3,6 +3,24 @@
  */
 const fs = require('fs');
 const walk = require('./walk');
+const _find = require('lodash/find');
+const chalk = require('chalk');
+const stringSimilarity = require('string-similarity');
+
+const logInfo = (...s) => console.log(chalk.bgGray.yellow(s.join('')));
+const logWarning = (...s) =>
+  console.log(`🟡 ${chalk.yellow.bold('Unmatched Link')}\n${s.join('')}`);
+const logError = (...s) =>
+  console.log(`❌ ${chalk.red.bold('Invalid Link')}\n${s.join('')}`);
+const lineNumbers = (needle, haystack) =>
+  haystack
+    .split(/^/gm)
+    .map((v, i) => (v.includes(needle) ? i + 1 : 0))
+    .filter((a) => a);
+const errorsOnly = process.argv.includes('--errors-only');
+
+let invalidLinks = 0;
+const exit = () => process.exit(invalidLinks);
 
 /**
  * Validate if there is a custom heading id and exit if there isn't a heading
@@ -44,23 +62,128 @@ function validateHeaderIds(lines) {
     validateHeaderId(line);
   });
 }
+
+function validateLinks(headingLinksByPage) {
+  const invalidPages = [];
+
+  for (const [filePath, {links}] of Object.entries(headingLinksByPage)) {
+    for (let {path, hash, line} of links) {
+      // skip if we've already identified this page as invalid/missing
+      if (invalidPages.includes(path)) {
+        continue;
+      }
+
+      // empty path means the link only contains a hash and therefore must reference
+      // the current page
+      if (!path) {
+        path = filePath;
+      }
+
+      let headingPath;
+      const errorLink = (hash && `${path}#${hash}`) || path;
+      const {headings} =
+        _find(headingLinksByPage, (value, key) => {
+          const ret = path === key || `guides/${path}` === key;
+          if (ret) headingPath = key;
+          return ret;
+        }) || {};
+
+      // Could not find any pages with the specified path
+      if (!headings) {
+        if (!errorsOnly) {
+          const {bestMatch} = stringSimilarity.findBestMatch(
+            path,
+            Object.keys(headingLinksByPage)
+          );
+          logWarning(
+            `${chalk.bold('Source:')} ${filePath}\n`,
+            `${chalk.bold('Line:')} ${line}\n`,
+            `${chalk.bold('Link:')} ${chalk.underline(errorLink)}\n\n`,
+            `Unable to locate a local source for path '${chalk.bold(path)}'.\n`,
+            (bestMatch.rating &&
+              `${chalk.blue(
+                `Closest match found: '${chalk.bold(bestMatch.target)}'`
+              )}\n`) ||
+              ''
+          );
+        }
+        invalidPages.push(path);
+        continue;
+      }
+
+      // At this point, we have a file that matches the requested path.
+      // If there is a specific hash on the link, check all the headings
+      // within the file to ensure it is valid. If no hash, then the link
+      // is still valid because at least the path exists.
+      if (hash && !headings.includes(hash)) {
+        const {bestMatch} = stringSimilarity.findBestMatch(hash, headings);
+        logError(
+          `Source: ${chalk.bold(filePath)}\n`,
+          `Line: ${chalk.bold(line)}\n\n`,
+          `The link ${chalk.underline(errorLink)} `,
+          `containing hash '#${chalk.bold.underline(hash)}' `,
+          `could be found within '${headingPath}'.\n`,
+          (bestMatch.rating &&
+            `${chalk.blue(
+              `Closest match in '${headingPath}': '${chalk.bold(
+                bestMatch.target
+              )}'`
+            )}\n`) ||
+            ''
+        );
+        invalidLinks++;
+      }
+    }
+  }
+}
 /**
  * paths are basically array of path for which we have to validate heading IDs
  * @param {Array<string>} paths
  */
 async function main(paths) {
-  paths = paths.length === 0 ? ['src/pages'] : paths;
+  paths = paths.length === 0 ? ['src/pages/guides'] : paths;
   const files = paths.map((path) => [...walk(path)]).flat();
 
-  files.forEach((file) => {
-    if (!(file.endsWith('.md') || file.endsWith('.mdx'))) {
-      return;
-    }
+  const headingLinksByPage = {};
+
+  const reHeader =
+    /^(#{2,}\s+)(.+?)(\s*\{(?:\/\*|#)([^\}\*\/]+)(?:\*\/)?\}\s*)?$/gm;
+  const reLink = /\[.+?\]\((.*?)(?:\s.*)?\)/gm;
+
+  for (const file of files) {
+    const [, fullPath] = file.match(/^.+(guides\/(\w+)).mdx?$/) || [];
+    if (!fullPath) continue;
+
+    headingLinksByPage[fullPath] = {
+      headings: [],
+      links: [],
+    };
+
+    let match;
 
     const content = fs.readFileSync(file, 'utf8');
+
+    while ((match = reHeader.exec(content))) {
+      headingLinksByPage[fullPath].headings.push(match[4]);
+    }
+
+    while ((match = reLink.exec(content))) {
+      const link = (match[1] || '').replace(/^\/+/, '');
+      const [path, hash] = link.split('#');
+
+      headingLinksByPage[fullPath].links.push({
+        path,
+        hash,
+        line: lineNumbers(match[0], match.input),
+      });
+    }
+
     const lines = content.split('\n');
-    validateHeaderIds(lines);
-  });
+    // validateHeaderIds(lines);
+  }
+
+  validateLinks(headingLinksByPage);
+  exit();
 }
 
 module.exports = main;

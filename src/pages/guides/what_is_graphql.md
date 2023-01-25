@@ -4,10 +4,6 @@ title: What is GraphQL?
 
 ![traffic](/images/graphql/graphql.svg)
 
-{{ PRODUCT_NAME }} provides full support for caching GraphQL APIs. Putting {{ PRODUCT }} in front of you GraphQL API can significantly improve its performance while reducing the amount of traffic that reaches your origin by serving cached queries from the network edge.
-
-<VimeoMDXEmbed id="691615246"/>
-
 ## GraphQL History {/*graphql-history*/}
 
 GraphQL was built in 2012 to support Facebook mobile apps. Facebook open sourced the project in 2015, and in 2018, it was moved to the GraphQL Foundation.
@@ -84,7 +80,7 @@ GraphQL also supports programmer-defined objects, usually data resources.
 
 Schemas define your application’s resources, the relationships between resources, and the operations that are allowed on the resources. Resources and operations are types. Schemas are also used to validate queries and mutations on your data. If the query or mutation structure matches the schema, the operation is executed.
 
-For example, in an app where you maintain customers, you would have a `Customer` type and query operation types such as `getAllCustomers`and `getCustomerById`. You would also have mutation types like `createCustomer` and `deleteCustomer`. Operation types are somewhat like function prototypes; they simply define input and output. The function implementations are defined in [Resolvers](##Resolvers).
+For example, in an app where you maintain customers, you would have a `Customer` type and query operation types such as `getAllCustomers`and `getCustomerById`. You would also have mutation types like `createCustomer` and `deleteCustomer`. Operation types are somewhat like function prototypes; they simply define input and output. The function implementations are defined in [Resolvers](#resolvers).
 
 ## Resolvers {/*resolvers*/}
 

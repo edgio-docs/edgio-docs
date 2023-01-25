@@ -2,6 +2,8 @@ import cn from 'classnames';
 import NextLink from 'next/link';
 import * as React from 'react';
 
+import {findGuideBy} from '../../utils/getChildrenRoutesFromSidebarMenuItems';
+
 import {ExternalLink} from 'components/ExternalLink';
 
 function Link({
@@ -26,6 +28,18 @@ function Link({
     // eslint-disable-next-line jsx-a11y/anchor-has-content
     return <a href={href} className={className} {...props} />;
   }
+
+  // prepend mailto protocol if href matches email pattern
+  if (
+    href
+      .trim()
+      .match(
+        /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
+      )
+  ) {
+    href = `mailto:${href}`;
+  }
+
   return (
     <>
       {href.startsWith('https://') ? (

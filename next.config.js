@@ -1,15 +1,21 @@
-// This file was automatically added by layer0 init.
+// This file was automatically added by edgio init.
 // You should commit this file to source control.
-const {withLayer0, withServiceWorker} = require('@layer0/next/config');
+const {withEdgio, withServiceWorker} = require('@edgio/next/config');
 
 const mdConstants = require('./constants');
 
 const path = require('path');
 const {remarkPlugins} = require('./plugins/markdownToHtml');
 
-const _preLayer0Export = {
+const _preEdgioExport = {
   images: {
     domains: ['opt.moovweb.net'],
+  },
+  experimental: {
+    plugins: true,
+    // TODO: this doesn't work because https://github.com/vercel/next.js/issues/30714
+    concurrentFeatures: false,
+    scrollRestoration: true,
   },
   compiler: {
     // ssr and displayName are configured by default
@@ -69,8 +75,8 @@ const _preLayer0Export = {
 };
 
 module.exports = (phase, config) =>
-  withLayer0(
+  withEdgio(
     withServiceWorker({
-      ..._preLayer0Export,
+      ..._preEdgioExport,
     })
   );

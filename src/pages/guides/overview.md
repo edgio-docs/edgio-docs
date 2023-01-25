@@ -6,7 +6,7 @@ This guide introduces the high-level concepts behind {{ PRODUCT_NAME }}.
 
 <Video src="https://www.youtube.com/watch?v=u7ed4HFzR8A"/>
 
-## What is {{ PRODUCT_NAME }}? {/*what-is-layer0*/}
+## What is {{ PRODUCT_NAME }}? {/*what-is-*/}
 
 {{ PRODUCT_NAME }} extends the capabilities of a traditional **CDN** by not only hosting your static content, but also providing **server-side rendering** for progressive web applications as well as caching both your APIs and HTML at the network edge to provide your users with the **fastest browsing experience**.
 
@@ -33,10 +33,11 @@ Check out our video [{{ PRODUCT_NAME }} - What & Why](https://www.youtube.com/wa
 {{ PRODUCT_NAME }} makes it possible to deliver sub-second page load-times and instantaneous client-side page transitions through the use of prefetching and caching. It empowers developers to optimize performance by leveraging powerful caching and edge logic capabilities right from their application code using an {{ EDGEJS_LABEL }} JavaScript API. Rather than manually configuring your CDN through a web portal, {{ PRODUCT_NAME }} allows you to put your edge logic in code, so that it's source-controlled, reviewed, and tested using the same software development lifecycle as the rest of your vital application code. You can even A/B test edge logic in production!
 
 ```js
-// Example {{ PRODUCT_NAME }} routes file for a Next.js app
+// This file was added by {{ FULL_CLI_NAME }} init.
+// You should commit this file to source control.
 
-const { Router } = require('{{ PACKAGE_NAME }}/core/router')
 const { nextRoutes } = require('{{ PACKAGE_NAME }}/next')
+const { Router } = require('{{ PACKAGE_NAME }}/core/router')
 
 export default nextJSApp => {
   return new Router()
@@ -60,7 +61,7 @@ export default nextJSApp => {
 
 ## High Availability {/*high-availability*/}
 
-{{ PRODUCT_NAME }} provides high availability (HA) in all of its components. You can choose a particular [region](regions) of the world in which your API servers are located. {{ PRODUCT_NAME }} will provision two data centers closest to it, connecting them with automatic DNS failover. HA is also provided within the data centers themselves, with all individual processes being (at least) duplicated and sharing the traffic load among themselves. This in-depth HA architecture minimizes the chances of loss of traffic.
+{{ PRODUCT_NAME }} provides high availability (HA) in all of its components. You can choose a particular [region](/guides/performance#high-availability) of the world in which your API servers are located. {{ PRODUCT_NAME }} will provision two data centers closest to it, connecting them with automatic DNS failover. HA is also provided within the data centers themselves, with all individual processes being (at least) duplicated and sharing the traffic load among themselves. This in-depth HA architecture minimizes the chances of loss of traffic.
 
 ## Productivity {/*productivity*/}
 

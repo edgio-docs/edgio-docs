@@ -2,47 +2,28 @@
 title: Performance
 ---
 
-This guide shows you how to monitor and improve the performance of your application running on {{ PRODUCT_NAME }}.
+{{ PRODUCT }} {{ PRODUCT_EDGE }} allows you to quickly develop sites with sub-second page load-times and instantaneous client-side page transitions. 
 
-## Built-in Timings {/*built-in-timings*/}
+Improve your site's performance through:
 
-All responses contain an [{{ HEADER_PREFIX }}-t](/guides/response_headers#section_structure_of_) header that contains the time the request spent at each layer of the {{ PRODUCT_NAME }} stack.
+-   Full control over when to [cache](/guides/performance/caching) and [prefetch](/guides/performance/prefetching) your content. Caching improves performance by bringing the data closer to your users, while prefetching anticipates your user's needs by instructing the browser to request content before it is neeeded. 
+-   [Serverless computing](/guides/performance/serverless_compute). Computing your JavaScript functions within our cloud reduces latency and origin server load.
+-   On the fly [image optimization](/guides/performance/image_optimization).
 
-## Tracking your Own Timings {/*tracking-your-own-timings*/}
+Speed up your development lifecycle through:
 
-You can use the `{{ PACKAGE_NAME }}/core/timing` module to track how long it takes parts of your code to execute. A common case is
-tracking how long it takes to fetch a result from an upstream API. For example:
+-   A [CDN-as-code](/guides/performance/cdn_as_code) approach to configuration that empowers developers to define caching and edge logic capabilities from within their application code using an {{ EDGEJS_LABEL }} JavaScript API. 
+-   [Observability](/guides/performance/observability) that provides performance insights through which you may troubleshoot and fine-tune your configuration. 
+-   Automatic previews of your site whenever a developer pushes commits to source control. These site previews allow QA testers, code reviewers, and other stakeholders to immediately try out newly introduced changes. 
+-   Versioned deployments. This allows you to view or even roll back to an old version of your site. Access to old versions of your site allow you to discover when a bug was introduced or to quickly compare speed measurements between multiple iterations of your app. The ability to quickly roll back your site at anytime allows you to release at a rapid pace with minimal risk.
+-   [Traffic Splitting](/guides/performance/traffic_splitting) which controls traffic distribution for the purpose of A/B testing and iterative site migrations. 
 
-```js
-import Timing from '{{ PACKAGE_NAME }}/core/timing'
+![architecture](/images/overview/architecture.png)
 
-const timing = new Timing('api').start()
+{{ PRODUCT }} ensures high availability when optimizing site performance through:
 
-try {
-  const result = await fetch(API_URL)
-} finally {
-  timing.end() // this will result in a `{{ HEADER_PREFIX }}-user-t: api=(millis)` response header
-}
-```
+-   Scalability. {{ PRODUCT }} automatically scales resources whenever it detects increased traffic levels. 
+-   Origin Shield. This promotes high availability by funneling requests to a second caching layer instead of your web servers or our Serverless Compute workers. The first caching layer consists of our edge POPs, while the second caching layer consists of our global POPs.
+-   Redundancy. {{ PRODUCT }} computes your code within two data centers. These data centers, which are located close to your API servers, are configured with automatic DNS failover. Additionally, each data center provides redundancy for individual processes and load balances the traffic between them.
 
-- All timings are returned in an `{{ HEADER_PREFIX }}-user-t` response header.
-- The value is a comma-delimited list of pairs of the form `(name)=(duration-in-millis)`.
-- The value of this header will be logged into `xut` field in [access logs](/guides/logs#section_access_logs). The logged data is limited to 50 bytes after which it will be truncated.
-- Any timings that are not ended before the response is sent will have a value of `na`
-
-## Performance Optimizations {/*performance-optimizations*/}
-
-### Turn off Caching When not Needed {/*turn-off-caching-when-not-needed*/}
-
-For `GET` routes that you know you will not or must not cache, always explicitly disable caching. This indicates to {{ PRODUCT_NAME }} that it should not try to coalesce requests which leads to improved performance especially on slower upstreams.
-
-For example, if you know that nothing from your legacy upstream will or can ever be cached, do this:
-
-```js
-new Router().fallback(({ proxy, cache }) => {
-  cache({
-    edge: false,
-  })
-  proxy('legacy')
-})
-```
+[Learn how to get started with {{ PRODUCT }} {{ PRODUCT_EDGE }}.](/guides/performance/getting_started) 

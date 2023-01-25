@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import styled from 'styled-components';
 
-import {PRODUCT_EDGE} from '../../../constants';
+import {PRODUCT_PLATFORM} from '../../../constants';
 import {IconAngular} from '../Icon/IconAngular';
 import {IconAstro, IconAstroDark} from '../Icon/IconAstro';
 import {IconBook} from '../Icon/IconBook';
@@ -212,8 +212,8 @@ export default function FrameworkGuides() {
     <StyledComp>
       <SectionHeader
         Icon={IconBook}
-        title="Framework Guides"
-        subtitle={`Utilize ${PRODUCT_EDGE} on your pre-existing site, or use one of our templates.`}
+        title="Sites"
+        subtitle={`Accelerate your dynamic and static Jamstack sites through ${PRODUCT_PLATFORM}.`}
       />
 
       <div className="route-items">
@@ -234,12 +234,17 @@ export default function FrameworkGuides() {
                   ) : (
                     <div className="dot" />
                   )}
-                  <Link href={`/guides/${path}`}>{title}</Link>
+                  <Link
+                    href={`/guides/sites_frameworks/getting_started/${path}`}>
+                    {title}
+                  </Link>
                 </li>
               ))}
               {index === 2 && (
                 <li className="route-list__item">
-                  <Link href="/guides/jamstack_getting_started" passHref>
+                  <Link
+                    href="/guides/sites_frameworks/getting_started"
+                    passHref>
                     <a>
                       <div className="dot" />
                       <span>View all supported</span>

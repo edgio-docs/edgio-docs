@@ -53,7 +53,7 @@ function GetStartedCard({
 
 const StyledGetStarted = styled.div`
   line-height: 1.3;
-  margin-top: 50px;
+  /*margin-top: 50px;*/
 
   display: grid;
   row-gap: 20px;
@@ -66,7 +66,7 @@ const StyledGetStarted = styled.div`
 
   @media screen and (min-width: 1200px) {
     .cards {
-      grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
     }
   }
 
@@ -121,14 +121,14 @@ export default function GetStarted({children}: {children: React.ReactNode}) {
           icon={IconWebAppCDN}
           title={PRODUCT_EDGE}
           subtitle={`Deploy your web application and start seeing the performance benefits with the ${PRODUCT} ${PRODUCT_EDGE} network.`}
-          href="/guides/webapp_cdn_getting_started"
+          href="/guides/getting_started"
           hrefText="Deploy now"
         />
         <GetStartedCard
           icon={IconJamstack}
           title={PRODUCT_PLATFORM}
           subtitle={`Deploy static and dynamic Jamstack sites that run on ${PRODUCT}'s serverless functions.`}
-          href="/guides/jamstack_getting_started"
+          href="/guides/sites_frameworks/getting_started"
           hrefText="View Supported Frameworks"
         />
         <GetStartedCard

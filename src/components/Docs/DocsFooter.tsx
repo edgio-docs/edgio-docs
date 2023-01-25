@@ -2,7 +2,10 @@ import styled from 'styled-components';
 
 import {PRODUCT} from '../../../constants';
 
-import {IconEdgioSquareLogo} from 'components/Icon/IconEdgioSquareLogo';
+import {
+  IconEdgioSquareLogo,
+  IconEdgioSquareLogoDark,
+} from 'components/Icon/IconEdgioSquareLogo';
 import Link from 'components/MDX/Link';
 
 const StyledDocsFooter = styled.footer`
@@ -12,10 +15,6 @@ const StyledDocsFooter = styled.footer`
 
   @media (max-width: 460px) {
     font-size: 12px;
-
-    .links {
-      /* grid-template-columns: 1fr; */
-    }
   }
 
   ul {
@@ -34,14 +33,13 @@ const StyledDocsFooter = styled.footer`
     }
   }
 
-  /* margin-top: 50px; */
   color: var(--docs-footer-color);
   bottom: 0;
   position: absolute;
   width: 100%;
 
   .footer-start {
-    background-color: var(--bg-primary);
+    background-color: var(--bg-secondary);
   }
 
   .footer-end {
@@ -50,7 +48,7 @@ const StyledDocsFooter = styled.footer`
 
   .footer-start,
   .footer-end {
-    box-shadow: inset 0px 2px var(--hr-secondary);
+    border-radius: 4px;
   }
 
   .footer-start__nav {
@@ -140,11 +138,11 @@ const StyledDocsFooter = styled.footer`
 const secFooterLinks = [
   {
     name: 'About Edgio',
-    href: 'https://edg.io/company/about-us',
+    href: 'https://edg.io/company/about-us/',
   },
   {
     name: 'Careers',
-    href: 'https://edg.io/company/careers',
+    href: 'https://edg.io/company/careers/',
   },
   {
     name: 'Support',
@@ -155,7 +153,7 @@ const secFooterLinks = [
     href: 'https://investors.edg.io/corporate-profile/default.aspx',
   },
   {
-    name: 'Newsroom',
+    name: 'Press Releases',
     href: 'https://investors.edg.io/news/press-releases/default.aspx',
   },
 ];
@@ -172,7 +170,7 @@ const pryFooterLinks = {
     },
     {
       title: 'Status',
-      href: 'https://status.layer0.co/?sgId=7bc47c45-c1d6-4189-b416-552581d86006',
+      href: 'https://status.edg.io/?sgId=7bc47c45-c1d6-4189-b416-552581d86006',
     },
     {
       title: 'Support',
@@ -190,11 +188,11 @@ const pryFooterLinks = {
   community: [
     {
       title: 'Forum',
-      href: 'https://forum.layer0.co/?sgId=7bc47c45-c1d6-4189-b416-552581d86006',
+      href: 'https://forum.edg.io/?sgId=7bc47c45-c1d6-4189-b416-552581d86006',
     },
     {
       title: 'Blog',
-      href: 'https://edg.io/resources/blog',
+      href: 'https://edg.io/resources/blog/',
     },
     {
       title: 'JavaScript Jam',
@@ -234,23 +232,23 @@ const pryFooterLinks = {
   products: [
     {
       title: 'Delivery',
-      href: 'https://edg.io/delivery',
+      href: 'https://edg.io/media/delivery/',
     },
     {
       title: 'Streaming',
-      href: 'https://edg.io/streaming',
+      href: 'https://edg.io/media/uplynk/',
     },
     {
-      title: 'App Edge',
-      href: 'https://edg.io/appops/app-edge',
+      title: 'Performance',
+      href: 'https://edg.io/app/performance/',
     },
     {
-      title: 'App Security',
-      href: 'https://edg.io/appops/app-security',
+      title: 'Security',
+      href: 'https://edg.io/app/security/',
     },
     {
-      title: 'App Platform',
-      href: 'https://edg.io/appops/app-platform',
+      title: 'Sites',
+      href: 'https://edg.io/app/sites/',
     },
   ],
 };
@@ -261,8 +259,12 @@ export default function DocsFooter() {
       <div className="footer-start">
         <nav className="footer-start__nav">
           <div className="logo-wrap">
-            <div className="logo"></div>
-            <IconEdgioSquareLogo />
+            <div className="logo" id="light-theme">
+              <IconEdgioSquareLogo />
+            </div>
+            <div className="logo" id="dark-theme">
+              <IconEdgioSquareLogoDark />
+            </div>
           </div>
           <FooterNavItem title="Products" items={pryFooterLinks.products} />
           <FooterNavItem title="Resources" items={pryFooterLinks.resources} />

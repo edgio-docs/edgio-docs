@@ -22,6 +22,7 @@ export * from './IconEleventy';
 export * from './IconEmberFastboot';
 export * from './IconEmberJS';
 export * from './IconExpress';
+export * from './IconExternalLink';
 export * from './IconFacebookCircle';
 export * from './IconFiddle';
 export * from './IconFolder';
@@ -93,3 +94,5 @@ export * from './IconVue';
 export * from './IconVueStorefront';
 export * from './IconWebAppCDN';
 export * from './IconZola';
+
+export {FaWordpress as IconWordPress} from 'react-icons/fa';

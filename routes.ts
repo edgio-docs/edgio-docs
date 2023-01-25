@@ -1,9 +1,12 @@
-import {isProductionBuild} from '@layer0/core/environment';
-import {Router, CustomCacheKey} from '@layer0/core/router';
-import {nextRoutes} from '@layer0/next';
+import {isProductionBuild} from '@edgio/core/environment';
+import {Router, CustomCacheKey} from '@edgio/core/router';
+import {nextRoutes} from '@edgio/next';
+import {Downloader as GithubDownloader} from 'github-download-directory';
 import semverMaxSatisfying from 'semver/ranges/max-satisfying';
 
-import prerenderRequests from './prerender';
+import {archiveRoutes} from './layer0/plugins/ArchiveRoutes';
+import redirects from './layer0/redirects';
+// import prerenderRequests from './layer0/prerender';
 
 const key = new CustomCacheKey().excludeAllQueryParametersExcept('query');
 
@@ -31,13 +34,6 @@ const staticCacheConfig = {
   },
 };
 
-const redirects = [
-  ['/guides/starter', '/guides/traditional_sites'],
-  ['/guides/debugging', '/guides/troubleshooting'],
-  ['/guides/deploying', '/guides/deploy_apps'],
-  ['/guides/getting_started', '/guides/build_web_apps'],
-];
-
 const scriptSrcDomains = [
   'player.vimeo.com',
   'cdn.jsdelivr.net',
@@ -61,6 +57,7 @@ const scriptSrcDomains = [
 ].sort();
 
 const connectSrcDomains = [
+  '*.edg.io',
   '*.layer0.co',
   '*.layer0.link',
   '*.layer0-perma.link',
@@ -83,10 +80,8 @@ const connectSrcDomains = [
 ].sort();
 
 const router = new Router()
-  .prerender(prerenderRequests)
-  .noIndexPermalink()
-  .match('/__xdn__/:path*', ({redirect}) => redirect('/__layer0__/:path*'))
-  .match({}, ({setResponseHeader}) => {
+  // .prerender(prerenderRequests)
+  .match({}, ({setResponseHeader, removeUpstreamResponseHeader}) => {
     if (isProductionBuild()) {
       setResponseHeader(
         'Strict-Transport-Security',
@@ -110,8 +105,14 @@ const router = new Router()
         ].join('; ')
       );
       setResponseHeader('X-XSS-Protection', '1; mode=block');
+      removeUpstreamResponseHeader('cache-control');
     }
   })
+  .match('/googlea13e5ef2a6ea3f29.html', ({send, cache}) => {
+    cache(htmlCacheConfig);
+    send('google-site-verification: googlea13e5ef2a6ea3f29.html');
+  })
+  .match('/sitemap.xml', ({serveStatic}) => serveStatic('sitemap.xml'))
   .match('/service-worker.js', ({serviceWorker}) => {
     return serviceWorker('.next/static/service-worker.js');
   })
@@ -135,14 +136,34 @@ const router = new Router()
     }
   )
   // match current api docs with a terminating /
-  .match('/docs/api/:path*/', ({proxy, cache, request}) => {
+  .match('/docs/api/:path*/', ({proxy, cache, setResponseHeader, request}) => {
     cache(htmlCacheConfig);
     proxy('api', {path: '/current/api/:path*/index.html'});
+    setResponseHeader(
+      'Link',
+      `<https://docs.edg.io${request.url}index.html>; rel="canonical"`
+    );
   })
   // match current api docs without terminating /,
   // gets redirected to :path*/ to satisfy relative asset paths
   .match('/docs/api/:path*', ({redirect}) => {
     redirect('/docs/api/:path*/');
+  })
+  // match latest v4 api docs and redirect
+  .match('/docs/v4.x/:path*', ({cache, compute, redirect}) => {
+    cache(htmlCacheConfig);
+    compute(async () => {
+      // fetch the list of current published versions
+      const versions = await (
+        await fetch('https://docs.edg.io/docs/versions')
+      ).text();
+
+      const targetVersion = semverMaxSatisfying(
+        versions.replace(/\n/g, '').split(','),
+        'v4.x'
+      );
+      redirect(`/docs/${targetVersion}/:path*`);
+    });
   })
   // match latest v3 api docs and redirect
   .match('/docs/v3.x/:path*', ({cache, compute, redirect}) => {
@@ -150,7 +171,7 @@ const router = new Router()
     compute(async () => {
       // fetch the list of current published versions
       const versions = await (
-        await fetch('https://docs.layer0.co/docs/versions')
+        await fetch('https://docs.edg.io/docs/versions')
       ).text();
 
       const targetVersion = semverMaxSatisfying(
@@ -169,10 +190,17 @@ const router = new Router()
     }
   )
   // match versioned api docs with a terminating /
-  .match('/docs/:version/api/:path*/', ({proxy, cache}) => {
-    cache(htmlCacheConfig);
-    proxy('api', {path: '/:version/api/:path*/index.html'});
-  })
+  .match(
+    '/docs/:version/api/:path*/',
+    ({proxy, cache, setResponseHeader, request}) => {
+      cache(htmlCacheConfig);
+      proxy('api', {path: '/:version/api/:path*/index.html'});
+      setResponseHeader(
+        'Link',
+        `<https://docs.edg.io${request.url}index.html>; rel="canonical"`
+      );
+    }
+  )
   // match versioned api docs without terminating /,
   // gets redirected to :path*/ to satisfy relative asset paths
   .match('/docs/:version/api/:path*', ({redirect}) => {
@@ -181,15 +209,37 @@ const router = new Router()
 
 redirects.forEach(([from, to, statusCode]) => {
   router.match(from, ({redirect}) =>
-    redirect(to, {statusCode: Number(statusCode || 302)})
+    redirect(to, {statusCode: Number(statusCode || 301)})
   );
 });
 
 router.match('/:path*', ({cache}) => {
   cache(htmlCacheConfig);
 });
-router.use(nextRoutes).fallback(({redirect}) => {
-  return redirect('/', 302);
-});
+
+router
+  .use(
+    archiveRoutes.addRoute(
+      '/archive/github/:owner/:repo/:path*',
+      async (req) => {
+        const {owner, repo, path} = req.params || {};
+        const downloader = new GithubDownloader({
+          github: {auth: process.env.GITHUB_API_TOKEN},
+        });
+
+        const flatPath = (path as string[]).join('/');
+        const result = await downloader.fetchFiles(owner, repo, flatPath);
+
+        return result.map(({path, contents}) => ({
+          path: path.split(flatPath)[1],
+          data: contents,
+        }));
+      }
+    )
+  )
+  .use(nextRoutes)
+  .fallback(({redirect}) => {
+    return redirect('/', 302);
+  });
 
 export default router;

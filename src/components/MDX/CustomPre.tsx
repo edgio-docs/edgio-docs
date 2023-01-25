@@ -7,59 +7,35 @@ import getDescriptiveLanguage from '../getLanguage';
 
 import CodeBlock from './CodeBlock';
 
-export const StyledCustomPre = styled.div`
-  overflow: hidden;
+export function CopyCode({message}: {message: string}) {
+  const [copied, setCopied] = React.useState(false);
 
-  .code-block__inner {
-    display: flex;
-    flex-direction: column;
-    background: #242424;
-    border: 2px solid #363636;
-    border-radius: 8px;
-  }
-
-  .code-block__header {
-    border-bottom: 2px solid #363636;
-    border-top-right-radius: 4px;
-    border-top-left-radius: 4px;
-    padding: 6px 6px 6px 8px;
-    font-size: 14px;
-    color: var(--colors-white0);
-    display: flex;
-    justify-content: space-between;
-
-    [class*='header-'] {
-      display: flex;
-      align-items: center;
-      gap: 10px;
+  useEffect(() => {
+    if (copied) {
+      setTimeout(() => {
+        setCopied(false);
+      }, 1000);
     }
+  });
 
-    .code-block__filename {
-      background-color: #363636;
-      border-radius: 4px;
-      border: 1px solid #1a1a1a;
-    }
-  }
-
-  .code-block__header-text {
-    font-weight: 700;
-  }
-
-  .code-block__content {
-    max-height: 500px;
-    overflow: auto;
-  }
-
-  code {
-    --scrollbar-bg: #777;
-  }
-`;
+  return (
+    <CopyToClipboard text={message.trim()} onCopy={() => setCopied(true)}>
+      <StyledCopyCodeButton className="code-block__copy">
+        {copied ? 'Copied' : 'Copy'}
+      </StyledCopyCodeButton>
+    </CopyToClipboard>
+  );
+}
 
 export default function CustomPre({children}: {children: React.ReactNode}) {
   let message: string = '';
   const unknownLanguageString = 'language-unknown';
   let language: string = unknownLanguageString;
   let filename: string | undefined;
+  let highlightLines: any;
+  let highlightDeletions: any;
+  let highlightInsertions: any;
+  let highlightAsDiff = false;
 
   if (typeof children === 'string') {
     message = children;
@@ -70,10 +46,20 @@ export default function CustomPre({children}: {children: React.ReactNode}) {
     message = children.props.children;
     language = children.props.className || unknownLanguageString;
     filename = children.props.filename;
+    highlightDeletions = children.props.del;
+    highlightInsertions = children.props.ins;
+    highlightLines = children.props.highlight;
+    highlightAsDiff = children.props.diff;
+  }
+
+  // Clean up the copy code if it's a diff with deletions
+  let copyMessage = message;
+  if (highlightAsDiff) {
+    copyMessage = cleanCopyCode(copyMessage);
   }
 
   // MDX Metadata...https://mdxjs.com/guides/syntax-highlighting/#syntax-highlighting-with-the-meta-field
-  const replacedFilename = filename ? filename.replace(/"/g, '') : '';
+  const replacedFilename = filename?.replace(/"/g, '').replace(/'/g, '') ?? '';
   const descriptiveLanguage = getDescriptiveLanguage(language);
 
   return (
@@ -93,13 +79,18 @@ export default function CustomPre({children}: {children: React.ReactNode}) {
                 )}
               </div>
               <div className="header-end">
-                <CopyCode {...{message}} />
+                <CopyCode {...{message: copyMessage}} />
               </div>
             </header>
           ) : null}
 
           <main className="code-block__content">
-            <CodeBlock language={descriptiveLanguage.toLowerCase() as Language}>
+            <CodeBlock
+              highlightAsDiff={highlightAsDiff}
+              highlightLines={highlightLines}
+              highlightDeletions={highlightDeletions}
+              highlightInsertions={highlightInsertions}
+              language={descriptiveLanguage.toLowerCase() as Language}>
               {message.trim()}
             </CodeBlock>
           </main>
@@ -126,22 +117,74 @@ const StyledCopyCodeButton = styled.button`
   }
 `;
 
-function CopyCode({message}: {message: string}) {
-  const [copied, setCopied] = React.useState(false);
+export const StyledCustomPre = styled.div`
+  overflow: hidden;
 
-  useEffect(() => {
-    if (copied) {
-      setTimeout(() => {
-        setCopied(false);
-      }, 1000);
+  .code-block__inner {
+    display: flex;
+    flex-direction: column;
+    background: #181717;
+    border: 2px solid #2a2b2c;
+    border-radius: 8px;
+  }
+
+  .code-block__header {
+    border-bottom: 2px solid #2a2b2c;
+    border-top-right-radius: 4px;
+    border-top-left-radius: 4px;
+    padding: 6px 6px 6px 8px;
+    font-size: 14px;
+    color: var(--colors-white0);
+    display: flex;
+    justify-content: space-between;
+
+    [class*='header-'] {
+      display: flex;
+      align-items: center;
+      gap: 10px;
     }
-  });
 
-  return (
-    <CopyToClipboard text={message.trim()} onCopy={() => setCopied(true)}>
-      <StyledCopyCodeButton className="code-block__copy">
-        {copied ? 'Copied' : 'Copy'}
-      </StyledCopyCodeButton>
-    </CopyToClipboard>
-  );
+    .code-block__filename {
+      border-radius: 4px;
+      font-family: 'IBM Plex mono';
+      font-weight: bold;
+    }
+  }
+
+  .code-block__header-text {
+    font-weight: 700;
+  }
+
+  .code-block__content {
+    max-height: 500px;
+    overflow: auto;
+  }
+
+  code {
+    --scrollbar-bg: #777;
+  }
+`;
+
+export function cleanCopyCode(message: string) {
+  const reDiffLine = /(^\s*(\+|\-))/;
+  const lines = message.split(/\r?\n/);
+
+  return lines
+    .map((line) => {
+      const match = reDiffLine.exec(line);
+      if (match) {
+        // remove entire line if deletion
+        if (match[2] == '-') {
+          return;
+        }
+
+        // remove the + operator, but keep the rest of the line
+        return line.substring(match.index + match[1].length);
+      }
+
+      // line unchanged
+      return line;
+    })
+    .filter(Boolean)
+    .join('\n');
 }

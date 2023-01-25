@@ -121,7 +121,7 @@ Once you have identified a set of requests, you need to define how {{ PRODUCT }}
 
 -   Apply a caching policy to all requests and proxy cache misses to the `origin` backend:
     ```js
-    .match('/api/:path*', ({ proxy, cache }) => {
+    .match('/:path*', ({ proxy, cache }) => {
       cache({
         edge: {
           maxAgeSeconds: 3600

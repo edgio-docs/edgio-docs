@@ -153,7 +153,7 @@ const SidebarMenuItems: ISidebarMenuItems = [
         },
         {
           title: PRODUCT_SECURITY,
-          path: '/guides/app_security/getting_started',
+          path: '/guides/security/getting_started',
         },
         {
           title: 'Deploying',
@@ -589,13 +589,8 @@ const SidebarMenuItems: ISidebarMenuItems = [
       sortRoutes: false,
       routes: [
         {
-          title: 'Introduction',
-          path: '/guides/app_security/introduction',
-          separator: true,
-        },
-        {
           title: 'Website Security (EdgeJS)',
-          path: '/guides/app_security/edgejs_security',
+          path: '/guides/security/edgejs_security',
           separator: true,
         },
         {
@@ -605,59 +600,59 @@ const SidebarMenuItems: ISidebarMenuItems = [
         },
         {
           title: 'Web Application Firewall (WAF)',
-          path: '/guides/app_security/waf',
+          path: '/guides/security/waf',
         },
         {
           title: 'Access Rules',
-          path: '/guides/app_security/access_rules',
+          path: '/guides/security/access_rules',
         },
         {
           title: 'Rate Rules',
-          path: '/guides/app_security/rate_rules',
+          path: '/guides/security/rate_rules',
         },
         {
           title: 'Bot Rules',
-          path: '/guides/app_security/bot_rules',
+          path: '/guides/security/bot_rules',
         },
         {
           title: 'Custom Rules',
-          path: '/guides/app_security/custom_rules',
+          path: '/guides/security/custom_rules',
         },
         {
           title: 'Managed Rules',
-          path: '/guides/app_security/managed_rules',
+          path: '/guides/security/managed_rules',
         },
         {
           title: 'Security Applications',
-          path: '/guides/app_security/security_applications',
+          path: '/guides/security/security_applications',
         },
         {
           title: 'Threats Dashboard',
-          path: '/guides/app_security/threats_dashboard',
+          path: '/guides/security/threats_dashboard',
         },
         {
           title: 'Browser Challenges Dashboard',
-          path: '/guides/app_security/browser_challenges_dashboard',
+          path: '/guides/security/browser_challenges_dashboard',
         },
         {
           title: 'Rates Dashboard',
-          path: '/guides/app_security/rates_dashboard',
+          path: '/guides/security/rates_dashboard',
         },
         {
           title: 'Rate Enforcement Dashboard',
-          path: '/guides/app_security/rate_enforcement_dashboard',
+          path: '/guides/security/rate_enforcement_dashboard',
         },
         {
           title: 'Reports',
-          path: '/guides/app_security/reports',
+          path: '/guides/security/reports',
         },
         {
           title: 'Real-Time Statistics',
-          path: '/guides/app_security/real-time-statistics',
+          path: '/guides/security/real-time-statistics',
         },
         {
           title: 'Response to Client',
-          path: '/guides/app_security/response_to_client',
+          path: '/guides/security/response_to_client',
           separator: true,
         },
         {
@@ -666,7 +661,7 @@ const SidebarMenuItems: ISidebarMenuItems = [
         },
         {
           title: 'Matched On Variables',
-          path: '/guides/app_security/matched_on_variables',
+          path: '/guides/security/matched_on_variables',
         },
       ],
     },

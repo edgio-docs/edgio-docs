@@ -199,6 +199,7 @@ The purpose of a blacklist is to describe unwanted traffic.
     | Cookie     | 200                                                   |
     | Country    | 600                                                   |
     | IP Address | 1,000  <Callout type="tip">{{ PRODUCT_SECURITY }} Premier and Business customers are allowed to create up to 2 access rules that may contain up to 10,000 IP addresses or IP blocks. Once this limit is reached, all other access rules are limited to a maximum of 1,000 IP addresses or IP blocks. <br /><br />If you would like to create an additional high-capacity access rule (i.e., an access rule that contains more than 1,000 IP addresses or IP blocks), then you will first need to either reduce the number of IP addresses or IP blocks defined within an existing high-capacity access rule to less than 1,000 or delete an existing high-capacity access rule.</Callout> |
+
     | Referrer   | 200                                                   |
     | URL        | 200                                                   |
     | User Agent | 200                                                   |
@@ -246,7 +247,7 @@ Define the set of valid and invalid HTTP request methods through the
 
     `GET | POST | OPTIONS | HEAD | PUT | DELETE`
 
-### Media Types (aka Content Types) {/*media-types--aka-content-types-*/}
+### Media Types (aka Content Types) {/*media-types-aka-content-types-*/}
 
 Define the set of valid media types (aka content types or MIME types)
 via the **Allowed Request Content Types** option.

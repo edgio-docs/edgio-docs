@@ -1,25 +1,25 @@
 ---
-title: {{ PRODUCT }} Version 5 Migration Guide 
+title: {{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} Version 5 Migration Guide 
 ---
 
 <Callout type="important">
 
-  If you are using {{ PRODUCT }} version 3.x or earlier, you should review the [v4 Migration Guide](/guides/upgrading/layer0_migration) before migrating to version 5.
+  If you are using {{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} version 3.x or earlier, you should review the [v4 Migration Guide](/guides/upgrading/layer0_migration) before migrating to version 5.
 
 </Callout>
 
 <Callout type="tip">
 
-  Consider upgrading to {{ PRODUCT }} version 6. It introduces support for running your app in the cloud using Node.js version 16. {{ PRODUCT }} version 6 requires:
-  *   {{ PRODUCT }} version 5
+  Consider upgrading to {{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} version 6. It introduces support for running your app in the cloud using Node.js version 16. {{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} version 6 requires:
+  *   {{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} version 5
   *   Node.js version 16
   *   Updating your application(s) to be compatible with Node.js version 16. 
 
-We recommend that you perform the seamless {{ PRODUCT }} version 5 migration now. Once you are ready to update your application to be compatible with Node.js version 16, you should migrate to version 6.
+We recommend that you perform the seamless {{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} version 5 migration now. Once you are ready to update your application to be compatible with Node.js version 16, you should migrate to version 6.
 
 </Callout>
 
-{{ PRODUCT }} version 5 updates our CLI, packages, and a configuration file with {{ PRODUCT }} branding. Additionally, our service will no longer modify duplicate query string parameters.
+{{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} version 5 updates our CLI, packages, and a configuration file with {{ PRODUCT }} branding. Additionally, our service will no longer modify duplicate query string parameters.
 
 &nbsp;<img data-inline-img src="/icons/yt_icon_rgb.png?width=38" alt="" /> <a href="https://youtu.be/hn20Aghn9Nc">Version 5 Migration Walkthrough</a>
 
@@ -63,7 +63,7 @@ For each site, rename `layer0.config.js` to `edgio.config.js`.
 
 <Callout type="important">
 
-  {{ PRODUCT }} version 5.x ignores the `layer0.config.js` configuration file.
+  {{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} version 5.x ignores the `layer0.config.js` configuration file.
 
 </Callout>
 
@@ -187,17 +187,17 @@ To exclude build artifacts from being tracked in version control, update your `.
 
 ## Step 8 (Optional): Review Your Code for Duplicate Query String Parameters {/*optional-review-your-code-for-duplicate-query-string-parameters*/}
 
-{{ PRODUCT }} version 5 will no longer modify the request's query string when it detects a duplicate query string parameter.
+{{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} version 5 will no longer modify the request's query string when it detects a duplicate query string parameter.
 
 For example, we will examine how both versions of {{ PRODUCT }} handle the following request:
 
 `https://sports.example.com/index.html?id=123&type=Sports&type=Basketball`
 
-{{ PRODUCT }} version 4 will modify the duplicate query string parameters as shown below.
+{{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} version 4 will modify the duplicate query string parameters as shown below.
 
 `https://sports.example.com/index.html?id=123&type=Sports%5B0%5D&type%5B1%5D=Basketball`
 
-{{ PRODUCT }} version 5, on the other hand, will not modify the query string as shown below.
+{{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} version 5, on the other hand, will not modify the query string as shown below.
 
 `https://sports.example.com/index.html?id=123&type=Sports&type=Basketball`
 
@@ -205,4 +205,4 @@ Review your code to see whether it generates duplicate query string parameters. 
 
 ## Migration Complete {/*migration-complete*/}
 
-Congratulations on successfully migrating {{ PRODUCT }} to version 5! Once you are ready to make your application compatible with Node.js version 16, you should migrate to [{{ PRODUCT }} version 6](/guides/upgrading/v6_migration).
+Congratulations on successfully migrating {{ PRODUCT }} to version 5! Once you are ready to make your application compatible with Node.js version 16, you should migrate to [{{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} version 6](/guides/upgrading/v6_migration).

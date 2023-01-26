@@ -236,6 +236,8 @@ Define the set of valid and invalid HTTP request methods through the
 **Allowed HTTP Methods** option.
 
 -   **Valid:** {{ PRODUCT_SECURITY }} performs a threat assessment on requests whose
+    HTTP method matches a marked option.
+-   **Invalid:** {{ PRODUCT_SECURITY }} automatically sends an alert or blocks a
     request when its HTTP method does not match a marked option.
 
     **Sample HTTP methods:**

@@ -175,7 +175,7 @@ const StyledDocs = styled.div`
     tr {
       th,
       td {
-        padding: 16px;
+        padding: 12px;
         text-align: left;
         vertical-align: top;
       }

@@ -165,7 +165,7 @@
       "routes": [
         { 
           "title": "Website Security (EdgeJS)",
-          "path": "/security/edgejs_security"
+          "path": "security/edgejs_security"
         },
         {
           "title": "",
@@ -173,7 +173,7 @@
         },
         {
           "title": "Advanced Bot Management",
-          "path": "/security/advanced_bot_management"
+          "path": "security/advanced_bot_management"
         },
         {
           "title": "",
@@ -181,43 +181,43 @@
         },
         {
           "title": "Web Application Firewall (WAF)",
-          "path": "/security/waf"
+          "path": "security/waf"
         },
         {
           "title": "Access Rules",
-          "path": "/security/access_rules"
+          "path": "security/access_rules"
         },
         {
           "title": "Rate Rules",
-          "path": "/security/rate_rules"
+          "path": "security/rate_rules"
         },
         {
           "title": "Bot Rules",
-          "path": "/security/bot_rules"
+          "path": "security/bot_rules"
         },
         {
           "title": "Custom Rules",
-          "path": "/security/custom_rules"
+          "path": "security/custom_rules"
         },
         {
           "title": "Managed Rules",
-          "path": "/security/managed_rules"
+          "path": "security/managed_rules"
         },
         {
           "title": "Security Applications",
-          "path": "/security/security_applications"
+          "path": "security/security_applications"
         },
         {
           "title": "Threats Dashboard",
-          "path": "/security/threats_dashboard"
+          "path": "security/threats_dashboard"
         },
         {
           "title": "Bot Dashboard",
-          "path": "/security/bot_dashboard"
+          "path": "security/bot_dashboard"
         },
         {
           "title": "Rates Dashboard",
-          "path": "/security/rates_dashboard"
+          "path": "security/rates_dashboard"
         }
       ]
     },

@@ -205,6 +205,8 @@ support the following request elements:
         bit-length of the prefix (e.g., 11.22.33.0/22). 
     -   Do not specify more than 1,000 IP addresses or IP blocks.
 
+    **Example:** `192.0.2.20,203.0.113.0/24,2001:DB8::/32`
+
     <a id="request-cookies"></a>
 
 -   **Request cookies:** Match against all or specific

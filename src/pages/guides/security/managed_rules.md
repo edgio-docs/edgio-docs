@@ -40,12 +40,22 @@ be ignored when {{ PRODUCT_SECURITY }} performs threat assessment.
 
 ## File Size and Query String Limits (Advanced) {/*file-size-and-query-string-limits-advanced*/}
 
-You may define query string argument and file size limitations that
-cannot be exceeded by valid requests.
+You may define query string argument and file size limitations 
+for valid requests.
 
 <Callout type="important">
 
   The modification of these advanced settings is strongly discouraged.
+
+</Callout>
+
+<Callout type="info">
+
+  Any single violation of these limits adds 5 points to a request's anomaly score. 
+
+  For example, our service adds 10 points to a request's anomaly score if it exceeds both the query string length limit and the limit for the number of query string arguments.
+
+  [Learn more.](/guides/security/waf#managed-rule-violations)
 
 </Callout>
 

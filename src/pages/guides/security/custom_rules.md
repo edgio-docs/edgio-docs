@@ -149,6 +149,8 @@ support the following request elements:
 
     </Callout>
 
+    **Example:** `192.0.2.20,203.0.113.0/24,2001:DB8::/32`
+
     <a id="request-body-parsed"></a>
 
 -   **Request body parsed:** Match against

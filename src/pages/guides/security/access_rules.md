@@ -88,11 +88,9 @@ blacklists for the following categories:
 
     <Callout type="tip">
 
-      {{ PRODUCT_SECURITY }} Premier and Business customers are allowed to create up to 2 access rules that may contain up to 10,000 IP addresses or IP blocks. Once this limit is reached, all other access rules are limited to a maximum of 1,000 IP addresses or IP blocks. 
+      {{ PRODUCT_SECURITY }} Premier and Standard customers are allowed to create up to 2 access rules that may contain up to 10,000 IP addresses or IP blocks. Use the **High-Capacity** option to identify these two access rules. All other access rules are limited to a maximum of 1,000 IP addresses or IP blocks. You may reassign high-capacity status to another access rule by first clearing the **High-Capacity** option from an existing high-capacity access rule.
 
-      If you would like to create an additional high-capacity access rule (i.e., an access rule that contains more than 1,000 IP addresses or IP blocks), then you will first need to either reduce the number of IP addresses or IP blocks defined within an existing high-capacity access rule to less than 1,000 or delete an existing high-capacity rule.
-
-    </Callout>  
+    </Callout>
 
     <a id="referrer"></a>
 
@@ -198,7 +196,7 @@ The purpose of a blacklist is to describe unwanted traffic.
     | ASN        | 200                                                   |
     | Cookie     | 200                                                   |
     | Country    | 600                                                   |
-    | IP Address | 1,000  <Callout type="tip">{{ PRODUCT_SECURITY }} Premier and Business customers are allowed to create up to 2 access rules that may contain up to 10,000 IP addresses or IP blocks. Once this limit is reached, all other access rules are limited to a maximum of 1,000 IP addresses or IP blocks. <br /><br />If you would like to create an additional high-capacity access rule (i.e., an access rule that contains more than 1,000 IP addresses or IP blocks), then you will first need to either reduce the number of IP addresses or IP blocks defined within an existing high-capacity access rule to less than 1,000 or delete an existing high-capacity access rule.</Callout> |
+    | IP Address | 1,000  <Callout type="tip">{{ PRODUCT_SECURITY }} Premier and Standard customers are allowed to create up to 2 access rules that may contain up to 10,000 IP addresses or IP blocks. Use the **High-Capacity** option to identify these two access rules. All other access rules are limited to a maximum of 1,000 IP addresses or IP blocks. You may reassign high-capacity status to another access rule by first clearing the **High-Capacity** option from an existing high-capacity access rule.</Callout> |
     | Referrer   | 200                                                   |
     | URL        | 200                                                   |
     | User Agent | 200                                                   |
@@ -238,8 +236,6 @@ Define the set of valid and invalid HTTP request methods through the
 **Allowed HTTP Methods** option.
 
 -   **Valid:** {{ PRODUCT_SECURITY }} performs a threat assessment on requests whose
-    HTTP method matches a marked option.
--   **Invalid:** {{ PRODUCT_SECURITY }} automatically sends an alert or blocks a
     request when its HTTP method does not match a marked option.
 
     **Sample HTTP methods:**

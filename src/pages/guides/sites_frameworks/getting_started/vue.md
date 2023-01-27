@@ -40,15 +40,45 @@ Initialize your project for use with {{ PRODUCT }} by running the following comm
 
 This will automatically add all of the required dependencies and files to your project. These include:
 
-- The `{{ PACKAGE_NAME }}/cli` package
-- The `{{ PACKAGE_NAME }}/core` package
-- The `{{ PACKAGE_NAME }}/vue-3` package
-- `{{ CONFIG_FILE }}`- Contains various configuration options for {{ PRODUCT }}.
-- `routes.js` - A default routes file that sends all requests to the Vite. Update this file to add caching or proxy some URLs to a different origin.
+{{ INIT_DEFAULT_PACKAGES }}
+- The `{{ PACKAGE_NAME }}/vue` package - Provides a `Prefetch` component for prefetching pages.
+- The `{{ PACKAGE_NAME }}/vue-3` package - Provides build and routing mechanisms for Vue projects.
+
+{{ INIT_TIER1_FILES }}
+
+
+## Prefetching {/*prefetching*/}
+
+{{ PREFETCH_TIER1_INTRO }}
+
+The code above allows you to prefetch pages from {{ PRODUCT }}'s edge cache to greatly improve browsing speed. To prefetch a page, add the `Prefetch` component from `@edgio/vue` around any rendered component, as such:
+
+```js ins={2,7,9}
+<script>
+  import { Prefetch } from '{{ PACKAGE_NAME }}/vue'
+</script>
+
+<template>
+  {/* The URL you need to prefetch is the API call that the page component will make when it mounts. It will vary based on how you've implemented your site. */}
+  <Prefetch :url='/api/products/1.json'>
+    <a :href='/api/products/1.json'>Product 1</Link>
+  </Prefetch>
+</template>
+```
+
+The `Prefetch` component fetches data for the linked page from {{ PRODUCT }}'s edge cache and adds it to the service worker's cache when the link becomes visible in the viewport. When the user taps on the link, the page transition will be instantaneous because the browser won't need to fetch data from the network.
+
+By default, `Prefetch` waits until the link appears in the viewport before prefetching. You can prefetch immediately by setting the `immediately` prop:
+
+```js
+<Prefetch :url="/api/products/1.json" immediately>
+  <a href="/p/1">Product 1</Link>
+</Prefetch>
+```
 
 ## Routing {/*routing*/}
 
-The default `routes.js` file created by `{{ FULL_CLI_NAME }} init` sends all requests to Vite server via a fallback route.
+The default `routes.js` file created by `{{ FULL_CLI_NAME }} init` sends all requests to Vue server via a fallback route.
 
 ```js
 // This file was added by {{ FULL_CLI_NAME }} init.
@@ -59,6 +89,8 @@ const { vue3Routes } = require('{{ PACKAGE_NAME }}/vue-3')
 
 export default new Router().use(vue3Routes)
 ```
+
+Refer to the [CDN-as-code](/guides/performance/cdn_as_code) guide for the full syntax of the `routes.js` file and how to configure it for your use case.
 
 ## Running Locally {/*running-locally*/}
 
@@ -86,3 +118,7 @@ Deploy your app to the {{ PRODUCT_PLATFORM }} by running the following commands 
 
 See [deploying](deploy_apps) for more information.
 
+## Supported versions {/*supported-versions*/}
+
+Edgio supports both Vue 2 and Vue 3. Vue 2 is supported through Webpack-based `@vue/cli` package. As said package
+is in maintanance mode, it's recommended to use the approach described in this document, which leverages `vite` instead. More on that in the [Official Vue Docs](https://cli.vuejs.org). 

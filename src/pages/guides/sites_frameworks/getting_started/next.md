@@ -74,13 +74,11 @@ cd my-next-app
 
 This will automatically add all of the required dependencies and files to your project. These include:
 
-- The `{{ PACKAGE_NAME }}/core` package - Allows you to declare routes and deploy your application to {{ PRODUCT }}.
+{{ INIT_DEFAULT_PACKAGES }}
 - The `{{ PACKAGE_NAME }}/next` package - Provides router middleware that automatically adds Next.js pages and api routes to the {{ PRODUCT }} router.
-- The `{{ PACKAGE_NAME }}/prefetch` package - Allows you to configure a service worker to prefetch and cache pages to improve browsing speed.
 - The `{{ PACKAGE_NAME }}/react` package - Provides a `Prefetch` component for prefetching pages.
-- `{{ CONFIG_FILE }}`
-- `routes.js` - A default routes file that sends all requests to Next.js. Update this file to add caching or proxy some URLs to a different origin.
-- `sw/service-worker.js` A service worker implemented using Workbox.
+
+{{ INIT_TIER1_FILES }}
 
 ## Next.js Config Plugins {/*nextjs-config-plugins*/}
 
@@ -163,13 +161,7 @@ See [Deployments](/guides/basics/deployments) for more information.
 
 ## Prefetching {/*prefetching*/}
 
-The `{{ FULL_CLI_NAME }} init` command adds a service worker based on [Workbox](https://developers.google.com/web/tools/workbox) at `sw/service-worker.js`. If you have an existing service worker that uses workbox, you can copy its contents into `sw/service-worker.js` and simply add the following to your service worker:
-
-```js filename='sw/service-worker.js'
-import {Prefetcher} from '{{ PACKAGE_NAME }}/prefetch/sw';
-
-new Prefetcher().route();
-```
+{{ PREFETCH_TIER1_INTRO }}
 
 The code above allows you to prefetch pages from {{ PRODUCT }}'s edge cache to greatly improve browsing speed. To prefetch a page, add the `Prefetch` component from `{{ PACKAGE_NAME }}/react` to any Next.js `Link` element. The example below shows you how to prefetch JSON data from `getServerSideProps` or `getStaticProps` using the `createNextDataUrl` function from `{{ PACKAGE_NAME }}/next/client`.
 

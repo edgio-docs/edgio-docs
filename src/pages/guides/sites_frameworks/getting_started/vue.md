@@ -4,6 +4,9 @@ title: Vue.js
 
 [Vue.js](https://vuejs.org/) is a progressive javascript framework. This guide walks you through deploying Vue.js sites to {{ PRODUCT }}.
 
+Edgio supports both Vue 2 and Vue 3, using both CLIs - `@vue/cli` and `vite`.
+
+
 ## Example {/*example*/}
 
 <ExampleButtons
@@ -16,19 +19,26 @@ title: Vue.js
 
 This framework has a connector developed for {{ PRODUCT }}. See [Connectors](connectors) for more information.
 
-<ButtonLink variant="stroke" type="code" withIcon={true} href="https://github.com/edgio-docs/edgio-connectors/tree/main/edgio-vue-3-connector">
+<ButtonLink variant="stroke" type="code" withIcon={true} href="https://github.com/edgio-docs/edgio-connectors/tree/main/edgio-vue-connector">
  View the Connector Code
 </ButtonLink>
 
 {{ PREREQ }}
 
-## Create your Vue 3 site {/*create-your-vue-3-site*/}
+## Create your Vue site {/*create-your-vue-site*/}
 
 If you don't have an existing Vue 3 site, you can create one by running:
 
 ```bash
 npm init vue@latest
 ```
+
+This command will create a project based on `vite`. 
+
+If you need help with Vue initialization, please follow the [create-vue project's readme](https://github.com/vuejs/create-vue).
+
+{{ PRODUCT }} also supports the older, Webpack-based `@vue/cli` - more on that in the [Vue CLI documentation](https://cli.vuejs.org).
+
 
 ## Initializing your Project {/*initializing-your-project*/}
 
@@ -42,7 +52,7 @@ This will automatically add all of the required dependencies and files to your p
 
 {{ INIT_DEFAULT_PACKAGES }}
 - The `{{ PACKAGE_NAME }}/vue` package - Provides a `Prefetch` component for prefetching pages.
-- The `{{ PACKAGE_NAME }}/vue-3` package - Provides build and routing mechanisms for Vue projects.
+- The `{{ PACKAGE_NAME }}/vue-cva` package - Provides build and routing mechanisms for Vue projects
 
 {{ INIT_TIER1_FILES }}
 
@@ -85,9 +95,9 @@ The default `routes.js` file created by `{{ FULL_CLI_NAME }} init` sends all req
 // You should commit this file to source control.
 
 const { Router } = require('{{ PACKAGE_NAME }}/core/router')
-const { vue3Routes } = require('{{ PACKAGE_NAME }}/vue-3')
+const { vueRoutes } = require('{{ PACKAGE_NAME }}/vue-cva')
 
-export default new Router().use(vue3Routes)
+export default new Router().use(vueRoutes)
 ```
 
 Refer to the [CDN-as-code](/guides/performance/cdn_as_code) guide for the full syntax of the `routes.js` file and how to configure it for your use case.
@@ -117,8 +127,3 @@ Deploy your app to the {{ PRODUCT_PLATFORM }} by running the following commands 
 ```
 
 See [deploying](deploy_apps) for more information.
-
-## Supported versions {/*supported-versions*/}
-
-Edgio supports both Vue 2 and Vue 3. Vue 2 is supported through Webpack-based `@vue/cli` package. As said package
-is in maintanance mode, it's recommended to use the approach described in this document, which leverages `vite` instead. More on that in the [Official Vue Docs](https://cli.vuejs.org). 

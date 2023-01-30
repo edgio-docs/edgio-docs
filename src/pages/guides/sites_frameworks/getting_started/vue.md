@@ -45,7 +45,7 @@ If you need help with Vue initialization, please follow the [create-vue project'
 Initialize your project for use with {{ PRODUCT }} by running the following command in your project's root directory:
 
 ```bash
-{{ FULL_CLI_NAME }} init
+npm i && {{ FULL_CLI_NAME }} init
 ```
 
 This will automatically add all of the required dependencies and files to your project. These include:
@@ -60,6 +60,17 @@ This will automatically add all of the required dependencies and files to your p
 ## Prefetching {/*prefetching*/}
 
 {{ PREFETCH_TIER1_INTRO }}
+
+In order to initialize it, call the `install` function from `{{ PACKAGE_NAME }}/prefetch/window` when the app first loads:
+
+```js
+import { isProductionBuild } from '{{ PACKAGE_NAME }}/core/environment';
+import { install } from '{{ PACKAGE_NAME }}/prefetch/window'
+
+if (isProductionBuild()) {
+  install()
+}
+```
 
 The code above allows you to prefetch pages from {{ PRODUCT }}'s edge cache to greatly improve browsing speed. To prefetch a page, add the `Prefetch` component from `@edgio/vue` around any rendered component, as such:
 
@@ -85,6 +96,8 @@ By default, `Prefetch` waits until the link appears in the viewport before prefe
   <a href="/p/1">Product 1</Link>
 </Prefetch>
 ```
+
+Refer to the [Predictive Prefetch](/guides/performance/prefetching) for more examples of prefetch functionality.
 
 ## Routing {/*routing*/}
 

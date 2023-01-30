@@ -81,8 +81,8 @@ The code above allows you to prefetch pages from {{ PRODUCT }}'s edge cache to g
 
 <template>
   {/* The URL you need to prefetch is the API call that the page component will make when it mounts. It will vary based on how you've implemented your site. */}
-  <Prefetch :url='/api/products/1.json'>
-    <a :href='/api/products/1.json'>Product 1</a>
+  <Prefetch url='/api/products/1.json'>
+    <a href='/api/products/1.json'>Product 1</a>
   </Prefetch>
 </template>
 ```
@@ -92,8 +92,8 @@ The `Prefetch` component fetches data for the linked page from {{ PRODUCT }}'s e
 By default, `Prefetch` waits until the link appears in the viewport before prefetching. You can prefetch immediately by setting the `immediately` prop:
 
 ```js
-<Prefetch :url='/api/products/1.json' immediately>
-  <a :href='/api/products/1.json'>Product 1</a>
+<Prefetch url='/api/products/1.json' immediately>
+  <a href='/api/products/1.json'>Product 1</a>
 </Prefetch>
 ```
 

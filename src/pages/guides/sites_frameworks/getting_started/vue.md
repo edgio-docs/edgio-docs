@@ -52,7 +52,7 @@ This will automatically add all of the required dependencies and files to your p
 
 {{ INIT_DEFAULT_PACKAGES }}
 - The `{{ PACKAGE_NAME }}/vue` package - Provides a `Prefetch` component for prefetching pages.
-- The `{{ PACKAGE_NAME }}/vue-cva` package - Provides build and routing mechanisms for Vue projects
+- The `{{ PACKAGE_NAME }}/vue-cva` package - Provides build and routing mechanisms for Vue projects.
 
 {{ INIT_TIER1_FILES }}
 

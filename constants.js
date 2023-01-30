@@ -104,7 +104,7 @@ const INIT_DEFAULT_PACKAGES = `
 const INIT_TIER1_FILES = `
 - \`${CONFIG_FILE}\` - Contains various configuration options for ${PRODUCT}.
 - \`routes.js\` - A default routes file that proxies all requests to the server. Update this file to add caching or proxy some URLs to a different origin.
-- \`sw/service-worker.js\` A service worker implemented using Workbox.
+- \`sw/service-worker.js\` - A service worker implemented using Workbox.
 `;
 
 const PREFETCH_TIER1_INTRO = `

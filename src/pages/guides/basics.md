@@ -24,7 +24,7 @@ Before you can take advantage of {{ PRODUCT_EDGE }}, {{ PRODUCT_SECURITY }}, and
 
 ![setup](/images/basics/setup-overview.png)
 
-Once you have set up a basic configuration, you are ready to take full advantage of our {{ PRODUCT_APPLICATIONS }}:
+Once you have set up a basic configuration, you are ready to take full advantage of {{ PRODUCT }} {{ PRODUCT_APPLICATIONS }}:
 
 -   [{{ PRODUCT_EDGE }}](/guides/performance). Learn how to:
     -   Optimize website performance through our CDN-as-code approach to:

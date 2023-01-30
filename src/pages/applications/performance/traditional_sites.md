@@ -2,7 +2,7 @@
 title: Traditional Sites
 ---
 
-This guide describes how to get up and running with {{ PRODUCT_NAME }} for traditional, multi-page applications. {{ PRODUCT_NAME }} can enable traditional websites (e.g. jQuery, PHP, VanillaJS, etc.) to take advantage of the performance benefits of advanced caching and predictive prefetching. If your website is built on a modern framework such as React, Angular, or Vue, we recommend considering our [framework-specific guides](/guides/sites_frameworks/getting_started).
+This guide describes how to get up and running with {{ PRODUCT_NAME }} for traditional, multi-page applications. {{ PRODUCT_NAME }} can enable traditional websites (e.g. jQuery, PHP, VanillaJS, etc.) to take advantage of the performance benefits of advanced caching and predictive prefetching. If your website is built on a modern framework such as React, Angular, or Vue, we recommend considering our [framework-specific guides](/applications/sites_frameworks/getting_started).
 
 Note that the speed benefit for traditional sites from {{ PRODUCT_NAME }} is dependent on the site’s JavaScript usage during the page load. If a page has JavaScript heavy processing during load it may reduce the benefit from {{ PRODUCT_NAME }}. Contact your account manager or our [sales department](https://edg.io/contact-us/) at 1 (866) 200 - 5463 to request site analysis prior to installation. Our typical turnaround time is 1 to 2 business days.
 
@@ -67,7 +67,7 @@ Use this worksheet when auditing your site for personalized content to inventory
 
 ## Connector {/*connector*/}
 
-This framework has a connector developed for {{ PRODUCT_NAME }}. See [Connectors](/guides/sites_frameworks/connectors) for more information.
+This framework has a connector developed for {{ PRODUCT_NAME }}. See [Connectors](/applications/sites_frameworks/connectors) for more information.
 
 <ButtonLink variant="stroke" type="code" withIcon={true} href="https://github.com/layer0-docs/layer0-connectors/tree/main/layer0-starter-connector">
   View the Connector Code
@@ -155,7 +155,7 @@ export const CACHE_PAGES = {
 }
 ```
 
-Refer to the guides on [CDN-as-code](/guides/performance/cdn_as_code) and [Caching](/guides/performance/caching) for the full syntax to use in your `routes.js` file.
+Refer to the guides on [CDN-as-code](/applications/performance/cdn_as_code) and [Caching](/applications/performance/caching) for the full syntax to use in your `routes.js` file.
 
 In addition to configuring your caching in `routes.ts` as shown above, you may need to employ [advanced prefetching techniques](#advanced-prefetching-techniques) to achieve the best possible performance
 
@@ -173,7 +173,7 @@ Now that you've configured your caching in `routes.ts`, you should test it in yo
 
 ### Running Locally {/*running-locally*/}
 
-To test the caching behavior locally, run your project with the [local cache option](/guides/performance/caching#caching-during-development) as shown below:
+To test the caching behavior locally, run your project with the [local cache option](/applications/performance/caching#caching-during-development) as shown below:
 
 ```bash
 {{ FULL_CLI_NAME }} dev --cache
@@ -191,7 +191,7 @@ Deploy the build to {{ PRODUCT_NAME }} by running the `{{ FULL_CLI_NAME }} deplo
 {{ FULL_CLI_NAME }} deploy --team=[team-name]
 ```
 
-Consult the [Deployment guide](/guides/basics/deployments) for more information on the options for deploying your site.
+Consult the [Deployment guide](/applications/basics/deployments) for more information on the options for deploying your site.
 
 ## Go Live by Changing the DNS {/*go-live-by-changing-the-dns*/}
 
@@ -201,17 +201,17 @@ After you've configured and tested your site on {{ PRODUCT_NAME }}, it's time to
 2. Configure your SSL certificate under the Configuration tab for the environment in the {{ PRODUCT_NAME }} Console.
 3. Create a CNAME record with your DNS provider with the value shown under the _Domains_ section for the environment in the {{ PRODUCT_NAME }} Console.
 
-Each of these steps is described in more detail in the [Domains guide](/guides/basics/domains). Note that third step (configuring your DNS) will be the crucial step that effectively transitions your domain to {{ PRODUCT_NAME }} and should be done last.
+Each of these steps is described in more detail in the [Domains guide](/applications/basics/domains). Note that third step (configuring your DNS) will be the crucial step that effectively transitions your domain to {{ PRODUCT_NAME }} and should be done last.
 
 Before going live, you should use the [{{ PRODUCT_NAME }} Onboarding Discovery Worksheet](https://docs.google.com/spreadsheets/d/11T-Dqcv5a_bS6mVj-t9-qrTn5o-Qdn9CjXO3yEHS4zY/) to help you think through common use cases and concerns and ensure a smooth launch.
 
 ## Advanced Prefetching Techniques {/*advanced-prefetching-techniques*/}
 
-An introduction to prefetching is available in the [Prefetching guide](/guides/performance/prefetching). In addition, here are some techniques to take full advantage of the power of prefetching.
+An introduction to prefetching is available in the [Prefetching guide](/applications/performance/prefetching). In addition, here are some techniques to take full advantage of the power of prefetching.
 
 ### Deep Fetching {/*deep-fetching*/}
 
-Deep fetching is an important technique for {{ PRODUCT_NAME }} projects. By default, only HTML content is prefetched. In order to achieve truly instant page transitions, all of the assets needed to render the content that appears above the fold needs to be deep fetched. Refer to the [Deep Fetching](/guides/performance/prefetching#deep-fetching) section of the [Prefetching guide](/guides/performance/prefetching) for more details on how to configure deep fetching in your project.
+Deep fetching is an important technique for {{ PRODUCT_NAME }} projects. By default, only HTML content is prefetched. In order to achieve truly instant page transitions, all of the assets needed to render the content that appears above the fold needs to be deep fetched. Refer to the [Deep Fetching](/applications/performance/prefetching#deep-fetching) section of the [Prefetching guide](/applications/performance/prefetching) for more details on how to configure deep fetching in your project.
 
 ### Prefetching POSTs {/*prefetching-posts*/}
 
@@ -280,5 +280,5 @@ document.addEventListener('DOMContentLoaded', function() {
 For the most part maintenance for traditional sites running on {{ PRODUCT_NAME }} is minimal. However, the typical scenarios that require changes are:
 
 - If you add personalized or user-specific content to the page you will need to make sure it is late loaded as described in the [Make sure your pages are cacheable](#make-sure-your-pages-are-cacheable) section.
-- If you introduce a new segmentation of content (e.g. support a new language or currency), you may need to update your [custom cache key](/guides/caching#customizing-the-cache-key).
+- If you introduce a new segmentation of content (e.g. support a new language or currency), you may need to update your [custom cache key](/applications/caching#customizing-the-cache-key).
 - If you change the layout of the page (especially above the _fold_), it may alter the assets you need to prefetch or [deepfetch](#deep-fetching) to achieve the best performance.

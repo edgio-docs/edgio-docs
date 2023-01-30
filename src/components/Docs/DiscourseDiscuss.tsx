@@ -67,7 +67,7 @@ const StyledIcon = styled.div`
 `;
 
 const title = 'Discuss this guide on our forums';
-const IGNORE_PAGES = ['/guides/changelog'];
+const IGNORE_PAGES = ['/applications/changelog'];
 
 function createLink({
   title,

@@ -1,4 +1,3 @@
-import * as React from 'react';
 import '@docsearch/css';
 import {Metrics} from '@edgio/rum';
 import {MDXEmbedProvider} from 'mdx-embed';
@@ -8,9 +7,10 @@ import dynamic from 'next/dynamic';
 import {useRouter} from 'next/router';
 import Script from 'next/script';
 import NProgress from 'nprogress';
-import {VersionProvider} from 'components/VersionProvider';
+import * as React from 'react';
 
 import LoadingFallBackPage from 'components/Fallbacks/Loading';
+import {VersionProvider} from 'components/versioning';
 import {siteConfig} from 'siteConfig';
 
 // Universal loading page (used in dynamically imported components) which contains the wrapper of each page
@@ -40,7 +40,7 @@ const ChangeLogFallBackPage = dynamic(
 // Match a route being navigated to
 // and place the fallback/loading versions of those pages
 const fallbackMap: {[route: string]: React.ReactNode} = {
-  '/guides/changelog': <ChangeLogFallBackPage />,
+  '/applications/changelog': <ChangeLogFallBackPage />,
 };
 
 function GAnalytics() {
@@ -88,7 +88,7 @@ export default function MyApp({Component, pageProps}: AppProps) {
     return () => {
       router.events.off('routeChangeStart', handleRouteChange);
       router.events.off('routeChangeComplete', handleRouteComplete);
-      router.events.on('routeChangeError', () => handleRouteComplete);
+      router.events.off('routeChangeError', () => handleRouteComplete);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);

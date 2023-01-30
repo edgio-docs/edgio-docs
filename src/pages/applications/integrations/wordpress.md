@@ -22,7 +22,7 @@ If you don't already have a WordPress site, create one by following the [officia
 
 ![New Site button](/images/app-edge/new-site-button.png)
 
-2. Next, enter your WordPress site's domain name. This will eventually become the origin backend that you will [proxy to](/guides/performance/cdn_as_code/common_routing_patterns#proxying-an-origin) once your site is setup.
+2. Next, enter your WordPress site's domain name. This will eventually become the origin backend that you will [proxy to](/applications/performance/cdn_as_code/common_routing_patterns#proxying-an-origin) once your site is setup.
 
 ![Add New Site dialog](/images/app-edge/add-new-site-dialog.png)
 
@@ -65,11 +65,11 @@ Deploy your app to the {{ PRODUCT_PLATFORM }} by running the following command i
 {{ FULL_CLI_NAME }} deploy
 ```
 
-Refer to the [Deployments](/guides/basics/deployments) guide for more information on the `deploy` command and its options.
+Refer to the [Deployments](/applications/basics/deployments) guide for more information on the `deploy` command and its options.
 
 ## Direct Traffic to {{ PRODUCT_PLATFORM }} {/*direct-traffic-to*/}
 
-Once you have confirmed that your deployed {{ PRODUCT }} site is proxying content from your hosted WordPress site, you may go back to your site in the [Developer Console]({{ LOGIN_URL }}) and follow the instructions on configuring your production DNS to point to {{ PRODUCT }}. Refer to the [Custom Domains and SSL guide](/guides/basics/domains) for additional details.
+Once you have confirmed that your deployed {{ PRODUCT }} site is proxying content from your hosted WordPress site, you may go back to your site in the [Developer Console]({{ LOGIN_URL }}) and follow the instructions on configuring your production DNS to point to {{ PRODUCT }}. Refer to the [Custom Domains and SSL guide](/applications/basics/domains) for additional details.
 
 ## WordPress Plugin {/*wordpress-plugin*/}
 

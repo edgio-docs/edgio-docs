@@ -57,7 +57,7 @@ function Accordion({
         ) : (
           route.title && (
             <Link
-              href={`/guides/${route.path}`}
+              href={`/applications/${route.path}`}
               passHref
               className="sidenav-link"
               data-depth={depth}>
@@ -133,7 +133,7 @@ function getCurrentRouteIndex(
 //  2. Navigate
 function AccordionParent({routes, depth}: {routes: IRoute[]; depth: number}) {
   const router = useRouter();
-  const currentRoutePath = router.pathname.replace('/guides/', '');
+  const currentRoutePath = router.pathname.replace('/applications/', '');
   const [activeIndex, setActiveIndex] = useState<number | null>(() =>
     getCurrentRouteIndex(routes, depth, currentRoutePath)
   );

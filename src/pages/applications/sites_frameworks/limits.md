@@ -7,9 +7,9 @@ title: Limits
 -   You may need to [manually include NodeJS addons (aka native extensions).](#nodejs-native-extensions)
 -   Your code will only be granted [read-only access to the file system.](#readonly-filesystem-in-serverless-runtime)
 -   [Your project's bundle size](#serverless-bundle-size-limitation) cannot exceed 50 MB compressed or 250 MB uncompressed.
--   Our serverless functions have a maximum runtime of 20 seconds per request. The response for a function that exceeds this limit is a [539 Project Timeout](/guides/performance/response#exclusive-status-codes).
+-   Our serverless functions have a maximum runtime of 20 seconds per request. The response for a function that exceeds this limit is a [539 Project Timeout](/applications/performance/response#exclusive-status-codes).
 -   Our Serverless Compute workers are allowed to generate a response body with a maximum file size of 6 MB.
--   Your project must comply with all applicable [{{ PRODUCT }} {{ PRODUCT_EDGE }} limitations.](/guides/performance/limits)
+-   Your project must comply with all applicable [{{ PRODUCT }} {{ PRODUCT_EDGE }} limitations.](/applications/performance/limits)
 
 ## NodeJS native extensions {/*nodejs-native-extensions*/}
 
@@ -38,14 +38,14 @@ at Object.<anonymous> (/var/task/node_modules/broadcast-channel/dist/es5node/met
 ```
 
 To fix this issue, you need to instruct {{ PRODUCT_NAME }} to include the binary files that your application requires.
-This can be done by using the [`includeFiles` property  in `{{ CONFIG_FILE }}`](/guides/basics/edgio_config#includefiles) like so:
+This can be done by using the [`includeFiles` property  in `{{ CONFIG_FILE }}`](/applications/basics/edgio_config#includefiles) like so:
 ```js
 includeFiles: {
   'node_modules/microtime/**/*': true,
 },
 ```
 Or you could choose to bundle everything in the packages listed in the `dependencies` property of `package.json` by using
-[`includeNodeModules` property](/guides/basics/edgio_config#includenodemodules).
+[`includeNodeModules` property](/applications/basics/edgio_config#includenodemodules).
 
 ## Readonly filesystem in serverless runtime {/*readonly-filesystem-in-serverless-runtime*/}
 
@@ -196,7 +196,7 @@ Step 3. Change your existing `package.json` to have `node setNodeModules.js` bef
 Step 4. Change your `{{ CONFIG_FILE }}` to have:
 
 ```js
-// {{ DOCS_URL }}/guides/basics/edgio_config
+// {{ DOCS_URL }}/applications/basics/edgio_config
 module.exports = {
   includeFiles: require('./getNodeModules'),
 }

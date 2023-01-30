@@ -9,13 +9,13 @@ title: A/B Testing
 You can perform two kinds of A/B tests with {{ PRODUCT_NAME }}:
 
 1. A/B test multiple implementations of the same site (environment).
-2. Split traffic between multiple sites (environments) - This is commonly used to test a new experience against a legacy one. Check out the [Traffic Splitting](/guides/performance/traffic_splitting) guide for more detail.
+2. Split traffic between multiple sites (environments) - This is commonly used to test a new experience against a legacy one. Check out the [Traffic Splitting](/applications/performance/traffic_splitting) guide for more detail.
 
 The first option is configured in EdgeJS within the project, the second option is configured in the console application.
 
 ## A/B Testing Multiple Implementations {/*ab-testing-multiple-implementations*/}
 
-To A/B test multiple implementations of the same site, simply deploy each implementation to a separate [environment](/guides/basics/environments); then [configure the rules for splitting traffic using the {{ PRODUCT_NAME }} Developer Console](#configuring-the-split-test).
+To A/B test multiple implementations of the same site, simply deploy each implementation to a separate [environment](/applications/basics/environments); then [configure the rules for splitting traffic using the {{ PRODUCT_NAME }} Developer Console](#configuring-the-split-test).
 
 To use Continuous Integration (CI) to deploy A/B tests we recommend that you:
 
@@ -70,7 +70,7 @@ Once you have made these changes, deploy your site using `{{ FULL_CLI_NAME }} de
 
 After deploying a router with multiple destinations, all requests will be sent to the first destination until you have configured the A/B test in the {{ PRODUCT_NAME }} Developer Console.
 
-Check out the [Traffic Splitting](/guides/performance/traffic_splitting) guide for more detail.
+Check out the [Traffic Splitting](/applications/performance/traffic_splitting) guide for more detail.
 
 ## Configuring the A/B Test {/*configuring-the-split-test*/}
 
@@ -114,7 +114,7 @@ To end the A/B test, you can either deploy a new version of your app with the ro
 
 ## Third-Party CDNs {/*third-party-cdns*/}
 
-If {{ PRODUCT_NAME }} is behind a third-party CDN, it is critical that you update the third party CDN to not cache responses from {{ PRODUCT_NAME }} nor to affect any cookies that begin with `{{ COOKIE_PREFIX }}_`. You can find more details [here](/guides/performance/third_party_cdns#split-testing).
+If {{ PRODUCT_NAME }} is behind a third-party CDN, it is critical that you update the third party CDN to not cache responses from {{ PRODUCT_NAME }} nor to affect any cookies that begin with `{{ COOKIE_PREFIX }}_`. You can find more details [here](/applications/performance/third_party_cdns#split-testing).
 
 ## How Requests are Routed {/*how-requests-are-routed*/}
 

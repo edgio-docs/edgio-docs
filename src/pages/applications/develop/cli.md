@@ -46,7 +46,7 @@ Creates a build of your app optimized for production.
 | ---------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `--skip-framework`           | Alias: "-s". Skips the framework (Next.js, Vue, Angular, etc..) build and simply rebundles your router                                                                                                                                                                                                                                   |
 | `--disable-permanent-assets` | Set this to true to suppress errors like "Immutable file (...) content was changed" during deployment.                                                                                                                                                                                                                                   |
-| `--include-sources`          | Includes all non-gitignored source files in the bundle uploaded to {{ PRODUCT_NAME }}. This can be helpful when debugging, especially when working with {{ PRODUCT_NAME }} support. You can limit the files that are uploaded using the [sources](/guides/basics/edgio_config#sources) configuration in {{ CONFIG_FILE }}. |
+| `--include-sources`          | Includes all non-gitignored source files in the bundle uploaded to {{ PRODUCT_NAME }}. This can be helpful when debugging, especially when working with {{ PRODUCT_NAME }} support. You can limit the files that are uploaded using the [sources](/applications/basics/edgio_config#sources) configuration in {{ CONFIG_FILE }}. |
 
 #### Example {/*example*/}
 
@@ -132,7 +132,7 @@ Sets configuration options for this property.
 
 ### curl {/*curl*/}
 
-Uses `curl` to make a request to the specified URL, highlighting Edgio-specific telemetry information. See [Response](/guides/performance/response) for more information around response headers and telemetry values.
+Uses `curl` to make a request to the specified URL, highlighting Edgio-specific telemetry information. See [Response](/applications/performance/response) for more information around response headers and telemetry values.
 
 #### Options {/*options*/}
 
@@ -222,7 +222,7 @@ Builds and deploys your site on {{ PRODUCT_NAME }}.
 | `--skip-build`               | Skips the build step                                                                                                                                                                                                                                                                                                                     |
 | `--token`                    | Authenticates using a deploy token rather than your user credentials. Use this option when deploying from CI. Alternatively, you can also specify the deploy token by setting the `EDGIO_DEPLOY_TOKEN` environment variable.                                                                                                            |
 | `--commit-url`               | The URL at which the commit can be viewed in your source control provided. If your package.json provides the repository attribute the commit URL will be derived automatically if you use GitHub, GitLab, or BitBucket.                                                                                                                  |
-| `--include-sources`          | Includes all non-gitignored source files in the bundle uploaded to {{ PRODUCT_NAME }}. This can be helpful when debugging, especially when working with {{ PRODUCT_NAME }} support. You can limit the files that are uploaded using the [sources](/guides/basics/edgio_config#sources) configuration in {{ CONFIG_FILE }}. |
+| `--include-sources`          | Includes all non-gitignored source files in the bundle uploaded to {{ PRODUCT_NAME }}. This can be helpful when debugging, especially when working with {{ PRODUCT_NAME }} support. You can limit the files that are uploaded using the [sources](/applications/basics/edgio_config#sources) configuration in {{ CONFIG_FILE }}. |
 | `--disable-permanent-assets` | Set this to true to suppress errors like "Immutable file (...) content was changed" during deployment.                                                                                                                                                                                                                                   |
 
 #### Getting Information about the Deployment {/*getting-information-about-the-deployment*/}
@@ -286,7 +286,7 @@ Run in an existing app to add all required packages and files need to publish yo
 
 | Name          | Description                                                                                                                                                                                                |
 | ------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `--connector` | The name of a specific connector package to install, or a path to a directory that implements the [connector interface](/guides/sites_frameworks/connectors#implementing-a-connector-directly-within-your-project). |
+| `--connector` | The name of a specific connector package to install, or a path to a directory that implements the [connector interface](/applications/sites_frameworks/connectors#implementing-a-connector-directly-within-your-project). |
 
 ### login {/*login*/}
 

@@ -6,7 +6,7 @@ Get started with {{ PRODUCT_EDGE }} by:
 
 1.  Creating and deploying a property to {{ PRODUCT }}.
 
-    [Learn more.](/guides/getting_started)
+    [Learn more.](/applications/getting_started)
 
     <Callout type="tip">
 
@@ -80,7 +80,7 @@ The above configuration proxies all requests that do not match a route to the `o
   A backend identifies a domain or IP address to which {{ PRODUCT }} may proxy requests. In this case, the `origin` backend was defined when you initialized this property using the `edgio init` command. 
 <br /> 
 
-  Add, modify, and remove backends by editing the [`{{ CONFIG_FILE }}` file](/guides/basics/edgio_config).
+  Add, modify, and remove backends by editing the [`{{ CONFIG_FILE }}` file](/applications/basics/edgio_config).
 
 </Callout>
 
@@ -138,7 +138,7 @@ Once you have identified a set of requests, you need to define how {{ PRODUCT }}
     })
     ```
 
-[View additional examples.](/guides/performance/cdn_as_code/common_routing_patterns)
+[View additional examples.](/applications/performance/cdn_as_code/common_routing_patterns)
 
 In this case, we will define a route by uncommenting the constants and the `match()` method in your {{ ROUTES_FILE }} file. It should now look similar to the following configuration:
 
@@ -191,9 +191,9 @@ const ONE_YEAR = 365 * ONE_DAY
 ```
 
 Learn more about:
--   [CDN-as-code](/guides/performance/cdn_as_code)
--   [Caching](/guides/performance/caching)
--   [Predictive Prefetching](/guides/performance/prefetching)
+-   [CDN-as-code](/applications/performance/cdn_as_code)
+-   [Caching](/applications/performance/caching)
+-   [Predictive Prefetching](/applications/performance/prefetching)
 
 ## Testing Locally {/*deploy-locally*/}
 
@@ -212,7 +212,7 @@ Evaluate site performance and QA functionality by deploying your property to {{ 
 
 Assess performance and caching behavior from the {{ PORTAL }}. Fine-tune your configuration by adding routes and then redeploying your property. Once you are ready to serve production traffic through {{ PRODUCT }}, update your site's DNS to point to our service.
 
-[Learn more.](/guides/production)
+[Learn more.](/applications/production)
 
 
 

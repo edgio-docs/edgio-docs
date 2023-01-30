@@ -16,7 +16,7 @@ export function findGuideBy(identifier: string, as?: 'name' | 'route') {
   return flatItems.find(
     (item) =>
       item.path?.toLowerCase() ===
-      ((as === 'name' ? '/guides/' : '') + identifier).toLowerCase()
+      ((as === 'name' ? '/applications/' : '') + identifier).toLowerCase()
   );
 }
 

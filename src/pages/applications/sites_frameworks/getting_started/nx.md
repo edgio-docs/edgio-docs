@@ -11,7 +11,7 @@ Because every Nx project can be different, there are a couple ways to implement 
 1. Implement the connector at the root level of the Nx repo and specify in the connector which projects to configure.
 2. Implement within the specific project folder inside your Nx repo. Specify commands at the root level Nx repo for interacting.
 
-To learn more about what goes into making a connector, view this [connector guide](/guides/connectors).
+To learn more about what goes into making a connector, view this [connector guide](/applications/connectors).
 
 ## Example App {/*example-app*/}
 

@@ -6,7 +6,7 @@ This guide shows you how to troubleshoot applications running on {{ PRODUCT_NAME
 
 ## Server Timings {/*server-timings*/}
 
-When measuring the performance of your server, we provide numerous headers to decipher timings of requests. Visit our section on [response headers](/guides/performance/response#server-timing-response-header) for an in-depth explanation on the values available and how to leverage them.
+When measuring the performance of your server, we provide numerous headers to decipher timings of requests. Visit our section on [response headers](/applications/performance/response#server-timing-response-header) for an in-depth explanation on the values available and how to leverage them.
 
 ## Visual Studio Code {/*visual-studio-code*/}
 
@@ -41,7 +41,7 @@ Note that this configuration will allow you to set breakpoints in both your {{ P
 
 By viewing the server logs in the {{ PRODUCT_NAME }} Developer Console, you can see all of the messages logged by your application using `console.log`, `console.warn`, etc...
 
-By enabling [Deep Request Inspection](/guides/develop/logs#deep-request-inspection) in your environment, you can also see the headers and body of every request and response served by your application via the {{ PRODUCT }} serverless cloud. You can also see each upstream API request made by your application.
+By enabling [Deep Request Inspection](/applications/develop/logs#deep-request-inspection) in your environment, you can also see the headers and body of every request and response served by your application via the {{ PRODUCT }} serverless cloud. You can also see each upstream API request made by your application.
 
 You can also use the server logs to debug **routing issues** going to **custom backends** by temporarily moving the proxy from the edge to serverless:
 
@@ -61,17 +61,17 @@ You can also use the server logs to debug **routing issues** going to **custom b
   })
 ```
 
-Once you have this deployed, you can observe the output in your [server logs](/guides/develop/logs#server-logs).
+Once you have this deployed, you can observe the output in your [server logs](/applications/develop/logs#server-logs).
 
 Note that whenever possible, we strongly recommend to always proxy the traffic from the edge, as that is more performant and avoids serverless surcharges. The solution above should only be used as a temporary measure while addressing issues.
 
-[Learn more.](/guides/develop/logs#server-logs)
+[Learn more.](/applications/develop/logs#server-logs)
 
 ### Access Logs {/*access-logs*/}
 
 Access logs contain information about all requests, even those that never reach your application code (e.g. cache hits, static assets, requests routed to custom backends, edge redirects, and so on).
 
-[Learn more](/guides/develop/logs#access-logs)
+[Learn more](/applications/develop/logs#access-logs)
 
 ## Confirming Behavior with CURL {/*confirming-behavior-with-curl*/}
 
@@ -130,7 +130,7 @@ You can find both links on the detail page of a deployment.
 
 ## Cache Reasons {/*cache-reasons*/}
 
-We provide a header, `{{ HEADER_PREFIX }}-caching-status` to best understand why something is being cached. There is a [detailed guide](/guides/performance/caching#why-is-my-response-not-being-cached) available on deciphering those reasons.
+We provide a header, `{{ HEADER_PREFIX }}-caching-status` to best understand why something is being cached. There is a [detailed guide](/applications/performance/caching#why-is-my-response-not-being-cached) available on deciphering those reasons.
 
 ## Source Maps {/*source-maps*/}
 
@@ -176,7 +176,7 @@ module.exports = {
 
 ### Overview {/*overview*/}
 
-539 status codes (see [Status Codes](/guides/performance/response#status-codes)) are timeout errors, which can be:
+539 status codes (see [Status Codes](/applications/performance/response#status-codes)) are timeout errors, which can be:
 * An error in your SSR code
 * A backend error (server overloaded or offline)
 * An allowlist issue
@@ -190,7 +190,7 @@ module.exports = {
 #### Assumptions {/*assumptions*/}
 
 You have deployed your site to {{ PRODUCT }}. All your website code resides with {{ PRODUCT }} as SSR (server-side rendering) code. Your backend (server) simply contains data that is needed by your website code to construct a page and return it to a requesting client or browser.
-See [Architecture](/guides/performance#architecture) for more information.
+See [Architecture](/applications/performance#architecture) for more information.
 
 #### Typical Request Flows {/*typical-request-flows*/}
 
@@ -220,7 +220,7 @@ When you run your site on {{ PRODUCT_NAME }}, all requests come in through four 
 
 A typical pattern is that your site works fine for a few days after deploying to {{ PRODUCT_NAME }}, then your server starts interpreting the requests as a DDoS attack.
 
-To prevent this scenario, you must configure your server with allowlisted {{ PRODUCT_NAME }} IP addresses. See [Allow {{ PRODUCT }} IP Addresses](/guides/basics/domains#allowing-ip-addresses).
+To prevent this scenario, you must configure your server with allowlisted {{ PRODUCT_NAME }} IP addresses. See [Allow {{ PRODUCT }} IP Addresses](/applications/basics/domains#allowing-ip-addresses).
 
 ### Procedure {/*procedure*/}
 
@@ -307,4 +307,4 @@ Troubleshoot your code to find and fix the error.
 #### Allowlist Error {/*allowlist-error*/}
 
 If the command succeeds and finishes quickly, it is probably an allowlist error.
-Contact your operations team and ask them to add the IP addresses in [_Allowlisting_](/guides/basics/domains#allowing-ip-addresses) to your server's IP allowlist.
+Contact your operations team and ask them to add the IP addresses in [_Allowlisting_](/applications/basics/domains#allowing-ip-addresses) to your server's IP allowlist.

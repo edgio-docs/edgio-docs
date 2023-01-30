@@ -178,11 +178,11 @@ const pryFooterLinks = {
     },
     {
       title: 'How-to guides',
-      href: '/guides/how-to',
+      href: '/applications/how-to',
     },
     {
       title: 'Changelog',
-      href: '/guides/changelog',
+      href: '/applications/changelog',
     },
   ],
   community: [
@@ -200,15 +200,15 @@ const pryFooterLinks = {
     },
     {
       title: 'Learning resources',
-      href: '/guides/learning',
+      href: '/applications/learning',
     },
     // {
     //   title: 'Glossary',
-    //   href: '/guides/glossary',
+    //   href: '/applications/glossary',
     // },
     {
       title: 'Contributing',
-      href: '/guides/contributing',
+      href: '/applications/contributing',
     },
   ],
   social: [

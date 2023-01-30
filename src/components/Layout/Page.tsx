@@ -84,7 +84,8 @@ function Banner() {
   return (
     <StyledBanner>
       🎉 Introducing {PRODUCT} v6 which supports Node.js v16.{' '}
-      <a href="/guides/reference/v6_migration">Learn how to upgrade.</a> 🎉
+      <a href="/applications/reference/v6_migration">Learn how to upgrade.</a>{' '}
+      🎉
     </StyledBanner>
   );
 }

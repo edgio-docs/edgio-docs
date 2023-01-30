@@ -8,7 +8,7 @@ title: {{ PRODUCT }} Version 6 Migration Guide
 
     <Callout type="info">
 
-      If you are using {{ PRODUCT }} version 4.x or earlier, [migrate to version 5](/guides/upgrading/v5_migration) before migrating to version 6.
+      If you are using {{ PRODUCT }} version 4.x or earlier, [migrate to version 5](/applications/upgrading/v5_migration) before migrating to version 6.
 
     </Callout>
 
@@ -41,7 +41,7 @@ Migrate from version 5.x to 6 through the following steps:
 
 {{ PRODUCT }} version 6 runs your apps in Node.js v16. Therefore, we strongly recommend that you use Node.js v16.x when developing your web application. 
 
-[Learn how to use nvm to install Node.js v16.x.](/guides/install_nodejs)
+[Learn how to use nvm to install Node.js v16.x.](/applications/install_nodejs)
 
 Once you are using Node.js v16, update your application code to be compatible with Node.js v16.
 
@@ -59,7 +59,7 @@ Install the latest version of our CLI.
 
 <Callout type="info">
 
-  By default, {{ PRODUCT }} CLI v5.1.0+ collects usage and error reporting information to help improve our products. However, it omits personally identifiable information. [Learn how to opt-out](/guides/develop/cli#disable-analytics).
+  By default, {{ PRODUCT }} CLI v5.1.0+ collects usage and error reporting information to help improve our products. However, it omits personally identifiable information. [Learn how to opt-out](/applications/develop/cli#disable-analytics).
 
 </Callout>
 

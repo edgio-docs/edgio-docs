@@ -24,7 +24,7 @@ This Astro example app uses server-side rendering.
 
 ## Connector {/*connector*/}
 
-This framework has a connector developed for {{ PRODUCT }}. See [Connectors](/guides/sites_frameworks/connectors) for more information.
+This framework has a connector developed for {{ PRODUCT }}. See [Connectors](/applications/sites_frameworks/connectors) for more information.
 
 <ButtonLink variant="stroke" type="code" withIcon={true} href="https://github.com/edgio-docs/edgio-connectors/tree/main/edgio-astro-connector">
  View the Connector Code
@@ -75,7 +75,7 @@ export default new Router().use(astroRoutes)
 
 ### Specify appPath inside {{ CONFIG_FILE }} {/*specify-apppath-inside*/}
 
-After you've setup [@astrojs/node with Astro](https://docs.astro.build/en/guides/integrations-guide/node/), specify server file path in {{ CONFIG_FILE }} as below:
+After you've setup [@astrojs/node with Astro](https://docs.astro.build/en/applications/integrations-guide/node/), specify server file path in {{ CONFIG_FILE }} as below:
 
 ```js filename={{ CONFIG_FILE }} ins={1,4-6}
 import { join } from 'path'
@@ -114,4 +114,4 @@ Deploy your app to the {{ PRODUCT_PLATFORM }} by running the following commands 
 {{ FULL_CLI_NAME }} deploy
 ```
 
-See [Deployments](/guides/basics/deployments) for more information.
+See [Deployments](/applications/basics/deployments) for more information.

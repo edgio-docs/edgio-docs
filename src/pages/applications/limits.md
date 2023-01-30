@@ -16,25 +16,25 @@ This guide describes caveats and limits of {{ PRODUCT_NAME }} platform as applie
 
 | Type                                                  | Limit                 | Description                                                                                                                                                                           |
 | ----------------------------------------------------- | --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Response time from origin server                      | 60 seconds            | The maximum number of seconds that {{ PRODUCT }} will wait for a response from an origin server (e.g., your web server). The response for a request that exceeds this limit is a `531 Project Upstream Connection Error`. <br /><br /><Callout type="warning">Requests that exceed this limit should return a [536 Project HTTP Response Timeout](](/guides/performance/response#status-codes#536). We will update our service to return this status code instead of a `531 Project Upstream Connection Error` response in the near future. </Callout>  |
+| Response time from origin server                      | 60 seconds            | The maximum number of seconds that {{ PRODUCT }} will wait for a response from an origin server (e.g., your web server). The response for a request that exceeds this limit is a `531 Project Upstream Connection Error`. <br /><br /><Callout type="warning">Requests that exceed this limit should return a [536 Project HTTP Response Timeout](](/applications/performance/response#status-codes#536). We will update our service to return this status code instead of a `531 Project Upstream Connection Error` response in the near future. </Callout>  |
 | Response body size from static                        | 2Gb                   | The maximum size of a response body of {{ PRODUCT_NAME }} static assets.                                                                                                              |
 | Response body size from custom origin                 | 2Gb                   | The maximum size of a response body from a custom origin.                                                                                                                             |
 | Response body size from {{ PRODUCT_NAME }} serverless | 4.5Mb                   | The maximum size of a response body from {{ PRODUCT_NAME }} serverless.                                                                                                               |
 | Path and query string size                            | 8Kb                   | The maximum bytes (not characters) that {{ PRODUCT_NAME }} will accept in path and query string.                                                                                      |
 | Cookie size                                           | 32Kb                  | The maximum bytes that {{ PRODUCT_NAME }} will accept in request or response cookies.                                                                                                 |
 | HTTP header size                                      | 64Kb                  | The maximum bytes that {{ PRODUCT_NAME }} will accept in request or response HTTP headers.                                                                                            |
-| HTTP header count                                     | 70                    | The maximum number of developer-controlled headers {{ PRODUCT_NAME }} will accept in HTTP request or response. Exceeding this will result in 542 [status code](/guides/performance/response#status-codes). |
-| Scheduling timeout                                    | 60 seconds            | The number of seconds {{ PRODUCT_NAME }} will try to schedule a request processing before timing out. Exceeding this will result in 541 [status code](/guides/performance/response#status-codes).          |
-| Worker timeout                                        | 20 seconds            | The number of seconds {{ PRODUCT_NAME }} will wait for project code to process the request before timing out. Exceeding this will result in 539 [status code](/guides/performance/response#status-codes).  |
+| HTTP header count                                     | 70                    | The maximum number of developer-controlled headers {{ PRODUCT_NAME }} will accept in HTTP request or response. Exceeding this will result in 542 [status code](/applications/performance/response#status-codes). |
+| Scheduling timeout                                    | 60 seconds            | The number of seconds {{ PRODUCT_NAME }} will try to schedule a request processing before timing out. Exceeding this will result in 541 [status code](/applications/performance/response#status-codes).          |
+| Worker timeout                                        | 20 seconds            | The number of seconds {{ PRODUCT_NAME }} will wait for project code to process the request before timing out. Exceeding this will result in 539 [status code](/applications/performance/response#status-codes).  |
 | Prerender concurrency                                 | 200                   |
 | Total number of prerendered requests                  | 25,000 per deployment |
-| Maximum number of nested requests                     | 3                     | "Nested" means an {{ PRODUCT_NAME }} site is the upstream of itself or of another {{ PRODUCT_NAME }} site. Exceeding this will result in 538 [status code](/guides/performance/response#status-codes).     |
+| Maximum number of nested requests                     | 3                     | "Nested" means an {{ PRODUCT_NAME }} site is the upstream of itself or of another {{ PRODUCT_NAME }} site. Exceeding this will result in 538 [status code](/applications/performance/response#status-codes).     |
 
 ### Access Logs {/*access-logs*/}
 
 | Value | Limit     | Description                                                                                         |
 | ----- | --------- | --------------------------------------------------------------------------------------------------- |
-| Size  | Unlimited | All access logs will always be [logged](/guides/logs#access-logs).                          |
+| Size  | Unlimited | All access logs will always be [logged](/applications/logs#access-logs).                          |
 | Time  | 2 hours   | The minimum time that {{ PRODUCT_NAME }} guarantees that access logs will be available for reading. |
 
 ### Prohibited Headers {/*prohibited-headers*/}
@@ -166,7 +166,7 @@ Step 3. Change your existing `package.json` to have `node setNodeModules.js` bef
 Step 4. Change your `{{ CONFIG_FILE }}` to have:
 
 ```js
-// {{ DOCS_URL }}/guides/edgio_config
+// {{ DOCS_URL }}/applications/edgio_config
 module.exports = {
   includeFiles: require('./getNodeModules'),
 }
@@ -202,14 +202,14 @@ at Object.<anonymous> (/var/task/node_modules/broadcast-channel/dist/es5node/met
 ```
 
 To fix this issue, you need to instruct {{ PRODUCT_NAME }} to include the binary files that your application requires.
-This can be done by using the [`includeFiles` property  in `{{ CONFIG_FILE }}`](/guides/edgio_config#includefiles) like so:
+This can be done by using the [`includeFiles` property  in `{{ CONFIG_FILE }}`](/applications/edgio_config#includefiles) like so:
 ```js
 includeFiles: {
   'node_modules/microtime/**/*': true,
 },
 ```
 Or you could choose to bundle everything in the packages listed in the `dependencies` property of `package.json` by using
-[`includeNodeModules` property](/guides/edgio_config#includenodemodules).
+[`includeNodeModules` property](/applications/edgio_config#includenodemodules).
 
 ### Readonly filesystem in serverless runtime {/*readonly-filesystem-in-serverless-runtime*/}
 

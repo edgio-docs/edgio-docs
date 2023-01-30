@@ -7,7 +7,7 @@ const logSymbols = require('log-symbols');
 const EXAMPLES_RE = /(?:(siteUrl|repoUrl)=\"([^"]*)\")/g;
 
 !(async () => {
-  const paths = await globby('src/pages/guides', {
+  const paths = await globby('src/pages/applications', {
     expandDirectories: {
       extensions: ['md', 'mdx'],
     },

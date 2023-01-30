@@ -3,7 +3,7 @@ import {makeStyles} from '@material-ui/core/styles';
 import Router, {useRouter} from 'next/router';
 import React, {useEffect} from 'react';
 
-import useVersioning, {getVersions} from '../../VersionProvider';
+import useVersioning, {getVersions} from '../../versioning';
 
 const useStyles = makeStyles((theme) => ({
   control: {

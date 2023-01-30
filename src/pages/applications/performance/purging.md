@@ -24,11 +24,11 @@ You can choose to purge all entries, purge by path, by surrogate keys or by cach
 
 ## CLI {/*cli*/}
 
-To purge responses via the CLI, see the [CLI reference](/guides/cli#cache-clear).
+To purge responses via the CLI, see the [CLI reference](/applications/cli#cache-clear).
 
 ## REST API {/*rest-api*/}
 
-To purge responses via the REST API, see the [REST API reference](/guides/rest_api#clear-cache).
+To purge responses via the REST API, see the [REST API reference](/applications/rest_api#clear-cache).
 
 ## Deployments {/*deployments*/}
 

@@ -186,7 +186,7 @@ The following table list the user agents that {{ PRODUCT_NAME }} examines and de
 | xing-contenttabreceiver | Xing social network crawler bot that indexes content for the Xing social network.                                                                                                                                                               |
 | yahoo                   | Another Yahoo Search robot for crawling and indexing web page information.                                                                                                                                                                      |
 
-If the set of bots detected by {{ PRODUCT_NAME }} is not sufficient for your needs, you can easily add your own bot detection through [EdgeJS](/guides/routing) and its [`match`](/docs/api/core/classes/_router_router_.router.html#match) and [`setRequestHeader`](/docs/api/core/classes/_router_responsewriter_.responsewriter.html#setrequestheader) APIs:
+If the set of bots detected by {{ PRODUCT_NAME }} is not sufficient for your needs, you can easily add your own bot detection through [EdgeJS](/applications/routing) and its [`match`](/docs/api/core/classes/_router_router_.router.html#match) and [`setRequestHeader`](/docs/api/core/classes/_router_responsewriter_.responsewriter.html#setrequestheader) APIs:
 
 ```js
 router.match(
@@ -379,7 +379,7 @@ If you want the route to match both `http` and `https` protocols you can match o
 
 Additionally:
 
-- A request's protocol can be determined by reading the [`{{ HEADER_PREFIX }}-protocol`](/guides/performance/request#general-headers) request header or the [`request.secure`](/docs/api/core/interfaces/_router_request_.request.html#secure) property.
+- A request's protocol can be determined by reading the [`{{ HEADER_PREFIX }}-protocol`](/applications/performance/request#general-headers) request header or the [`request.secure`](/docs/api/core/interfaces/_router_request_.request.html#secure) property.
 - During local development all requests will appear secure by default. To test your router for `http` protocol matching you must either set the `local_{{ COOKIE_PREFIX }}_emulate_http_protocol` cookie to `true` (if using a browser) or send an `{{ HEADER_PREFIX }}-protocol` request header set to `http`.
 
 ### HTTP/1/2 Version {/*http12-version*/}
@@ -402,7 +402,7 @@ As of {{ PRODUCT_NAME }} CLI version 2.19.0, when you deploy to an environment u
 
 > The impact of a maliciously constructed response can be magnified if it is cached either by a web cache used by multiple users or even the browser cache of a single user. If a response is cached in a shared web cache, such as those commonly found in proxy servers, then all users of that cache will continue to receive the malicious content until the cache entry is purged.
 
-To guard against this attack you must ensure that all the request parameters that influence the rendering of the content are part of your [custom cache key](/guides/performance/caching#customizing-the-cache-key). {{ PRODUCT_NAME }} will [automatically include](/guides/performance/caching#cache-key) the `host` header and URL. Including other request headers and cookies are your responsibility.
+To guard against this attack you must ensure that all the request parameters that influence the rendering of the content are part of your [custom cache key](/applications/performance/caching#customizing-the-cache-key). {{ PRODUCT_NAME }} will [automatically include](/applications/performance/caching#cache-key) the `host` header and URL. Including other request headers and cookies are your responsibility.
 
 For example, if you are rendering content based on a custom language cookie, then you must include it in your custom cache key:
 

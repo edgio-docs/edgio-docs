@@ -15,19 +15,19 @@
       </image:image>
   </url>
   <url>
-    <loc>https://docs.edg.io/guides/performance/compression</loc>
+    <loc>https://docs.edg.io/applications/performance/compression</loc>
     <lastmod>2022-12-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://docs.edg.io/guides/sites_frameworks/getting_started/dojo</loc>
+    <loc>https://docs.edg.io/applications/sites_frameworks/getting_started/dojo</loc>
     <lastmod>2022-12-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://docs.edg.io/guides/performance/caching</loc>
+    <loc>https://docs.edg.io/applications/performance/caching</loc>
     <lastmod>2022-12-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
@@ -37,25 +37,25 @@
       </image:image>
   </url>
   <url>
-    <loc>https://docs.edg.io/guides/sites_frameworks/getting_started/nuxt</loc>
+    <loc>https://docs.edg.io/applications/sites_frameworks/getting_started/nuxt</loc>
     <lastmod>2022-12-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://docs.edg.io/guides/reference</loc>
+    <loc>https://docs.edg.io/applications/reference</loc>
     <lastmod>2022-12-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://docs.edg.io/guides/sites_frameworks/getting_started/spartacus</loc>
+    <loc>https://docs.edg.io/applications/sites_frameworks/getting_started/spartacus</loc>
     <lastmod>2022-12-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://docs.edg.io/guides/basics/collaboration</loc>
+    <loc>https://docs.edg.io/applications/basics/collaboration</loc>
     <lastmod>2022-12-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
@@ -91,19 +91,19 @@
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://docs.edg.io/guides/integrations/swell</loc>
+    <loc>https://docs.edg.io/applications/integrations/swell</loc>
     <lastmod>2022-12-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://docs.edg.io/guides/sites_frameworks/getting_started/serverless_functions</loc>
+    <loc>https://docs.edg.io/applications/sites_frameworks/getting_started/serverless_functions</loc>
     <lastmod>2022-12-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://docs.edg.io/guides/performance/request</loc>
+    <loc>https://docs.edg.io/applications/performance/request</loc>
     <lastmod>2022-12-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
@@ -129,13 +129,13 @@
       </image:image>
   </url>
   <url>
-    <loc>https://docs.edg.io/guides/develop/packages</loc>
+    <loc>https://docs.edg.io/applications/develop/packages</loc>
     <lastmod>2022-12-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://docs.edg.io/guides/integrations/bloomreach</loc>
+    <loc>https://docs.edg.io/applications/integrations/bloomreach</loc>
     <lastmod>2022-12-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
@@ -177,7 +177,7 @@
       </image:image>
   </url>
   <url>
-    <loc>https://docs.edg.io/guides/performance/observability/devtools</loc>
+    <loc>https://docs.edg.io/applications/performance/observability/devtools</loc>
     <lastmod>2022-12-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
@@ -187,13 +187,13 @@
       </image:image>
   </url>
   <url>
-    <loc>https://docs.edg.io/guides/learning</loc>
+    <loc>https://docs.edg.io/applications/learning</loc>
     <lastmod>2022-12-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://docs.edg.io/guides/performance/observability/core_web_vitals</loc>
+    <loc>https://docs.edg.io/applications/performance/observability/core_web_vitals</loc>
     <lastmod>2022-12-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
@@ -207,37 +207,37 @@
       </image:image>
   </url>
   <url>
-    <loc>https://docs.edg.io/guides/sites_frameworks/getting_started/sanity</loc>
+    <loc>https://docs.edg.io/applications/sites_frameworks/getting_started/sanity</loc>
     <lastmod>2022-12-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://docs.edg.io/guides/sites_frameworks/getting_started/eleventy</loc>
+    <loc>https://docs.edg.io/applications/sites_frameworks/getting_started/eleventy</loc>
     <lastmod>2022-12-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://docs.edg.io/guides/sites_frameworks/getting_started/express</loc>
+    <loc>https://docs.edg.io/applications/sites_frameworks/getting_started/express</loc>
     <lastmod>2022-12-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://docs.edg.io/guides/sites_frameworks/getting_started/astro</loc>
+    <loc>https://docs.edg.io/applications/sites_frameworks/getting_started/astro</loc>
     <lastmod>2022-12-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://docs.edg.io/guides/reference/v6_migration</loc>
+    <loc>https://docs.edg.io/applications/reference/v6_migration</loc>
     <lastmod>2022-12-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://docs.edg.io/guides/basics/alerts</loc>
+    <loc>https://docs.edg.io/applications/basics/alerts</loc>
     <lastmod>2022-12-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
@@ -263,37 +263,37 @@
       </image:image>
   </url>
   <url>
-    <loc>https://docs.edg.io/guides/reference/v5_migration</loc>
+    <loc>https://docs.edg.io/applications/reference/v5_migration</loc>
     <lastmod>2022-12-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://docs.edg.io/guides/develop/rest_api</loc>
+    <loc>https://docs.edg.io/applications/develop/rest_api</loc>
     <lastmod>2022-12-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://docs.edg.io/guides/sites_frameworks/getting_started/static_sites</loc>
+    <loc>https://docs.edg.io/applications/sites_frameworks/getting_started/static_sites</loc>
     <lastmod>2022-12-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://docs.edg.io/guides/performance/observability</loc>
+    <loc>https://docs.edg.io/applications/performance/observability</loc>
     <lastmod>2022-12-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://docs.edg.io/guides/performance/unit_testing_edgejs</loc>
+    <loc>https://docs.edg.io/applications/performance/unit_testing_edgejs</loc>
     <lastmod>2022-12-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://docs.edg.io/guides/performance/traditional_sites</loc>
+    <loc>https://docs.edg.io/applications/performance/traditional_sites</loc>
     <lastmod>2022-12-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
@@ -307,19 +307,19 @@
       </image:image>
   </url>
   <url>
-    <loc>https://docs.edg.io/guides/sites_frameworks/getting_started</loc>
+    <loc>https://docs.edg.io/applications/sites_frameworks/getting_started</loc>
     <lastmod>2022-12-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://docs.edg.io/guides/sites_frameworks/getting_started/razzle</loc>
+    <loc>https://docs.edg.io/applications/sites_frameworks/getting_started/razzle</loc>
     <lastmod>2022-12-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://docs.edg.io/guides/integrations</loc>
+    <loc>https://docs.edg.io/applications/integrations</loc>
     <lastmod>2022-12-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
@@ -373,31 +373,31 @@
       </image:image>
   </url>
   <url>
-    <loc>https://docs.edg.io/guides/performance/cdn_as_code/common_routing_patterns</loc>
+    <loc>https://docs.edg.io/applications/performance/cdn_as_code/common_routing_patterns</loc>
     <lastmod>2022-12-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://docs.edg.io/guides/sites_frameworks/getting_started/svelte</loc>
+    <loc>https://docs.edg.io/applications/sites_frameworks/getting_started/svelte</loc>
     <lastmod>2022-12-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://docs.edg.io/guides/sites_frameworks/getting_started/docusaurus</loc>
+    <loc>https://docs.edg.io/applications/sites_frameworks/getting_started/docusaurus</loc>
     <lastmod>2022-12-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://docs.edg.io/guides/sites_frameworks/getting_started/react-storefront</loc>
+    <loc>https://docs.edg.io/applications/sites_frameworks/getting_started/react-storefront</loc>
     <lastmod>2022-12-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://docs.edg.io/guides/integrations/wordpress</loc>
+    <loc>https://docs.edg.io/applications/integrations/wordpress</loc>
     <lastmod>2022-12-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
@@ -439,13 +439,13 @@
       </image:image>
   </url>
   <url>
-    <loc>https://docs.edg.io/guides/sites_frameworks/getting_started/nx</loc>
+    <loc>https://docs.edg.io/applications/sites_frameworks/getting_started/nx</loc>
     <lastmod>2022-12-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://docs.edg.io/guides/security/security_suite</loc>
+    <loc>https://docs.edg.io/applications/security/security_suite</loc>
     <lastmod>2022-12-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
@@ -495,7 +495,7 @@
       </image:image>
   </url>
   <url>
-    <loc>https://docs.edg.io/guides/performance/prefetching</loc>
+    <loc>https://docs.edg.io/applications/performance/prefetching</loc>
     <lastmod>2022-12-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
@@ -507,25 +507,25 @@
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://docs.edg.io/guides/sites_frameworks/getting_started/vuepress</loc>
+    <loc>https://docs.edg.io/applications/sites_frameworks/getting_started/vuepress</loc>
     <lastmod>2022-12-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://docs.edg.io/guides/sites_frameworks/getting_started/angular</loc>
+    <loc>https://docs.edg.io/applications/sites_frameworks/getting_started/angular</loc>
     <lastmod>2022-12-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://docs.edg.io/guides/sites_frameworks/getting_started/ionic_react</loc>
+    <loc>https://docs.edg.io/applications/sites_frameworks/getting_started/ionic_react</loc>
     <lastmod>2022-12-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://docs.edg.io/guides/develop/deploy_to_edgio</loc>
+    <loc>https://docs.edg.io/applications/develop/deploy_to_edgio</loc>
     <lastmod>2022-12-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
@@ -535,55 +535,55 @@
       </image:image>
   </url>
   <url>
-    <loc>https://docs.edg.io/guides/sites_frameworks/getting_started/gridsome</loc>
+    <loc>https://docs.edg.io/applications/sites_frameworks/getting_started/gridsome</loc>
     <lastmod>2022-12-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://docs.edg.io/guides/getting_started</loc>
+    <loc>https://docs.edg.io/applications/getting_started</loc>
     <lastmod>2022-12-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://docs.edg.io/guides/contributing</loc>
+    <loc>https://docs.edg.io/applications/contributing</loc>
     <lastmod>2022-12-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://docs.edg.io/guides/sites_frameworks/getting_started/zola</loc>
+    <loc>https://docs.edg.io/applications/sites_frameworks/getting_started/zola</loc>
     <lastmod>2022-12-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://docs.edg.io/guides/sites_frameworks/getting_started/remix</loc>
+    <loc>https://docs.edg.io/applications/sites_frameworks/getting_started/remix</loc>
     <lastmod>2022-12-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://docs.edg.io/guides/sites_frameworks/isg</loc>
+    <loc>https://docs.edg.io/applications/sites_frameworks/isg</loc>
     <lastmod>2022-12-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://docs.edg.io/guides/sites_frameworks/getting_started/ember</loc>
+    <loc>https://docs.edg.io/applications/sites_frameworks/getting_started/ember</loc>
     <lastmod>2022-12-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://docs.edg.io/guides/sites_frameworks/getting_started/gatsby</loc>
+    <loc>https://docs.edg.io/applications/sites_frameworks/getting_started/gatsby</loc>
     <lastmod>2022-12-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://docs.edg.io/guides/basics/domains</loc>
+    <loc>https://docs.edg.io/applications/basics/domains</loc>
     <lastmod>2022-12-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
@@ -653,7 +653,7 @@
       </image:image>
   </url>
   <url>
-    <loc>https://docs.edg.io/guides/performance/troubleshooting</loc>
+    <loc>https://docs.edg.io/applications/performance/troubleshooting</loc>
     <lastmod>2022-12-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
@@ -683,13 +683,13 @@
       </image:image>
   </url>
   <url>
-    <loc>https://docs.edg.io/guides/sites_frameworks/getting_started/jekyll</loc>
+    <loc>https://docs.edg.io/applications/sites_frameworks/getting_started/jekyll</loc>
     <lastmod>2022-12-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://docs.edg.io/guides/basics/deployments</loc>
+    <loc>https://docs.edg.io/applications/basics/deployments</loc>
     <lastmod>2022-12-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
@@ -703,7 +703,7 @@
       </image:image>
   </url>
   <url>
-    <loc>https://docs.edg.io/guides/basics/collaboration/sso</loc>
+    <loc>https://docs.edg.io/applications/basics/collaboration/sso</loc>
     <lastmod>2022-12-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
@@ -729,13 +729,13 @@
       </image:image>
   </url>
   <url>
-    <loc>https://docs.edg.io/guides/sites_frameworks/getting_started/frontity</loc>
+    <loc>https://docs.edg.io/applications/sites_frameworks/getting_started/frontity</loc>
     <lastmod>2022-12-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://docs.edg.io/guides/performance/traffic_splitting/a_b_testing</loc>
+    <loc>https://docs.edg.io/applications/performance/traffic_splitting/a_b_testing</loc>
     <lastmod>2022-12-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
@@ -769,19 +769,19 @@
       </image:image>
   </url>
   <url>
-    <loc>https://docs.edg.io/guides/sites_frameworks/getting_started/react_static</loc>
+    <loc>https://docs.edg.io/applications/sites_frameworks/getting_started/react_static</loc>
     <lastmod>2022-12-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://docs.edg.io/guides/security/managed_rule_groups</loc>
+    <loc>https://docs.edg.io/applications/security/managed_rule_groups</loc>
     <lastmod>2022-12-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://docs.edg.io/guides/performance/purging</loc>
+    <loc>https://docs.edg.io/applications/performance/purging</loc>
     <lastmod>2022-12-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
@@ -799,49 +799,49 @@
       </image:image>
   </url>
   <url>
-    <loc>https://docs.edg.io/guides/sites_frameworks/getting_started/umijs</loc>
+    <loc>https://docs.edg.io/applications/sites_frameworks/getting_started/umijs</loc>
     <lastmod>2022-12-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://docs.edg.io/guides/sites_frameworks/getting_started/hugo</loc>
+    <loc>https://docs.edg.io/applications/sites_frameworks/getting_started/hugo</loc>
     <lastmod>2022-12-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://docs.edg.io/guides/sites_frameworks/getting_started/vue</loc>
+    <loc>https://docs.edg.io/applications/sites_frameworks/getting_started/vue</loc>
     <lastmod>2022-12-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://docs.edg.io/guides/sites_frameworks/getting_started/nuxt3</loc>
+    <loc>https://docs.edg.io/applications/sites_frameworks/getting_started/nuxt3</loc>
     <lastmod>2022-12-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://docs.edg.io/guides/sites_frameworks/getting_started/hexo</loc>
+    <loc>https://docs.edg.io/applications/sites_frameworks/getting_started/hexo</loc>
     <lastmod>2022-12-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://docs.edg.io/guides/sites_frameworks</loc>
+    <loc>https://docs.edg.io/applications/sites_frameworks</loc>
     <lastmod>2022-12-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://docs.edg.io/guides/sites_frameworks/getting_started/preact</loc>
+    <loc>https://docs.edg.io/applications/sites_frameworks/getting_started/preact</loc>
     <lastmod>2022-12-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://docs.edg.io/guides/performance/traffic_splitting</loc>
+    <loc>https://docs.edg.io/applications/performance/traffic_splitting</loc>
     <lastmod>2022-12-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
@@ -875,37 +875,37 @@
       </image:image>
   </url>
   <url>
-    <loc>https://docs.edg.io/guides/sites_frameworks/getting_started/ember_fastboot</loc>
+    <loc>https://docs.edg.io/applications/sites_frameworks/getting_started/ember_fastboot</loc>
     <lastmod>2022-12-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://docs.edg.io/guides/integrations/shopify_hydrogen</loc>
+    <loc>https://docs.edg.io/applications/integrations/shopify_hydrogen</loc>
     <lastmod>2022-12-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://docs.edg.io/guides/performance/response</loc>
+    <loc>https://docs.edg.io/applications/performance/response</loc>
     <lastmod>2022-12-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://docs.edg.io/guides/sites_frameworks/getting_started/redwoodjs</loc>
+    <loc>https://docs.edg.io/applications/sites_frameworks/getting_started/redwoodjs</loc>
     <lastmod>2022-12-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://docs.edg.io/guides/changelog</loc>
+    <loc>https://docs.edg.io/applications/changelog</loc>
     <lastmod>2022-12-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://docs.edg.io/guides/develop/logs</loc>
+    <loc>https://docs.edg.io/applications/develop/logs</loc>
     <lastmod>2022-12-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
@@ -923,19 +923,19 @@
       </image:image>
   </url>
   <url>
-    <loc>https://docs.edg.io/guides/basics/edgio_config</loc>
+    <loc>https://docs.edg.io/applications/basics/edgio_config</loc>
     <lastmod>2022-12-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://docs.edg.io/guides/how-to</loc>
+    <loc>https://docs.edg.io/applications/how-to</loc>
     <lastmod>2022-12-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://docs.edg.io/guides/security</loc>
+    <loc>https://docs.edg.io/applications/security</loc>
     <lastmod>2022-12-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
@@ -945,37 +945,37 @@
       </image:image>
   </url>
   <url>
-    <loc>https://docs.edg.io/guides/sites_frameworks/getting_started/react</loc>
+    <loc>https://docs.edg.io/applications/sites_frameworks/getting_started/react</loc>
     <lastmod>2022-12-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://docs.edg.io/guides/sites_frameworks/getting_started/lit</loc>
+    <loc>https://docs.edg.io/applications/sites_frameworks/getting_started/lit</loc>
     <lastmod>2022-12-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://docs.edg.io/guides/sites_frameworks/connectors</loc>
+    <loc>https://docs.edg.io/applications/sites_frameworks/connectors</loc>
     <lastmod>2022-12-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://docs.edg.io/guides/sites_frameworks/getting_started/saber</loc>
+    <loc>https://docs.edg.io/applications/sites_frameworks/getting_started/saber</loc>
     <lastmod>2022-12-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://docs.edg.io/guides/sites_frameworks/getting_started/brunch</loc>
+    <loc>https://docs.edg.io/applications/sites_frameworks/getting_started/brunch</loc>
     <lastmod>2022-12-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://docs.edg.io/guides/performance/static_prerendering</loc>
+    <loc>https://docs.edg.io/applications/performance/static_prerendering</loc>
     <lastmod>2022-12-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
@@ -985,7 +985,7 @@
       </image:image>
   </url>
   <url>
-    <loc>https://docs.edg.io/guides/performance/getting_started</loc>
+    <loc>https://docs.edg.io/applications/performance/getting_started</loc>
     <lastmod>2022-12-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
@@ -995,49 +995,49 @@
       </image:image>
   </url>
   <url>
-    <loc>https://docs.edg.io/guides/develop</loc>
+    <loc>https://docs.edg.io/applications/develop</loc>
     <lastmod>2022-12-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://docs.edg.io/guides/sites_frameworks/getting_started/stencil</loc>
+    <loc>https://docs.edg.io/applications/sites_frameworks/getting_started/stencil</loc>
     <lastmod>2022-12-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://docs.edg.io/guides/sites_frameworks/getting_started/vsf</loc>
+    <loc>https://docs.edg.io/applications/sites_frameworks/getting_started/vsf</loc>
     <lastmod>2022-12-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://docs.edg.io/guides/sites_frameworks/getting_started/mkdocs</loc>
+    <loc>https://docs.edg.io/applications/sites_frameworks/getting_started/mkdocs</loc>
     <lastmod>2022-12-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://docs.edg.io/guides/develop/cli</loc>
+    <loc>https://docs.edg.io/applications/develop/cli</loc>
     <lastmod>2022-12-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://docs.edg.io/guides/sites_frameworks/getting_started/scully</loc>
+    <loc>https://docs.edg.io/applications/sites_frameworks/getting_started/scully</loc>
     <lastmod>2022-12-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://docs.edg.io/guides/sites_frameworks/getting_started/next_commerce</loc>
+    <loc>https://docs.edg.io/applications/sites_frameworks/getting_started/next_commerce</loc>
     <lastmod>2022-12-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://docs.edg.io/guides/integrations/bigcommerce</loc>
+    <loc>https://docs.edg.io/applications/integrations/bigcommerce</loc>
     <lastmod>2022-12-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
@@ -1071,13 +1071,13 @@
       </image:image>
   </url>
   <url>
-    <loc>https://docs.edg.io/guides/performance/image_optimization</loc>
+    <loc>https://docs.edg.io/applications/performance/image_optimization</loc>
     <lastmod>2022-12-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://docs.edg.io/guides/performance</loc>
+    <loc>https://docs.edg.io/applications/performance</loc>
     <lastmod>2022-12-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
@@ -1087,7 +1087,7 @@
       </image:image>
   </url>
   <url>
-    <loc>https://docs.edg.io/guides/basics</loc>
+    <loc>https://docs.edg.io/applications/basics</loc>
     <lastmod>2022-12-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
@@ -1097,19 +1097,19 @@
       </image:image>
   </url>
   <url>
-    <loc>https://docs.edg.io/guides/sites_frameworks/getting_started/vitepress</loc>
+    <loc>https://docs.edg.io/applications/sites_frameworks/getting_started/vitepress</loc>
     <lastmod>2022-12-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://docs.edg.io/guides/sites_frameworks/getting_started/sapper</loc>
+    <loc>https://docs.edg.io/applications/sites_frameworks/getting_started/sapper</loc>
     <lastmod>2022-12-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://docs.edg.io/guides/performance/cdn_as_code</loc>
+    <loc>https://docs.edg.io/applications/performance/cdn_as_code</loc>
     <lastmod>2022-12-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
@@ -1123,25 +1123,25 @@
       </image:image>
   </url>
   <url>
-    <loc>https://docs.edg.io/guides/sites_frameworks/getting_started/solid</loc>
+    <loc>https://docs.edg.io/applications/sites_frameworks/getting_started/solid</loc>
     <lastmod>2022-12-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://docs.edg.io/guides/performance/third_party_cdns</loc>
+    <loc>https://docs.edg.io/applications/performance/third_party_cdns</loc>
     <lastmod>2022-12-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://docs.edg.io/guides/performance/serverless_compute</loc>
+    <loc>https://docs.edg.io/applications/performance/serverless_compute</loc>
     <lastmod>2022-12-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://docs.edg.io/guides/basics/environments</loc>
+    <loc>https://docs.edg.io/applications/basics/environments</loc>
     <lastmod>2022-12-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
@@ -1191,25 +1191,25 @@
       </image:image>
   </url>
   <url>
-    <loc>https://docs.edg.io/guides/sites_frameworks/getting_started/next</loc>
+    <loc>https://docs.edg.io/applications/sites_frameworks/getting_started/next</loc>
     <lastmod>2022-12-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://docs.edg.io/guides/reference/layer0_migration</loc>
+    <loc>https://docs.edg.io/applications/reference/layer0_migration</loc>
     <lastmod>2022-12-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://docs.edg.io/guides/sites_frameworks/getting_started/ionic_vue</loc>
+    <loc>https://docs.edg.io/applications/sites_frameworks/getting_started/ionic_vue</loc>
     <lastmod>2022-12-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://docs.edg.io/guides/install_nodejs</loc>
+    <loc>https://docs.edg.io/applications/install_nodejs</loc>
     <lastmod>2022-12-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
@@ -1221,7 +1221,7 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://docs.edg.io/guides/overview</loc>
+    <loc>https://docs.edg.io/applications/overview</loc>
     <lastmod>2022-12-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
@@ -1231,31 +1231,31 @@
       </image:image>
   </url>
   <url>
-    <loc>https://docs.edg.io/guides/edgio_config</loc>
+    <loc>https://docs.edg.io/applications/edgio_config</loc>
     <lastmod>2022-12-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://docs.edg.io/guides/third_party_cdns</loc>
+    <loc>https://docs.edg.io/applications/third_party_cdns</loc>
     <lastmod>2022-12-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://docs.edg.io/guides/static_prerendering</loc>
+    <loc>https://docs.edg.io/applications/static_prerendering</loc>
     <lastmod>2022-12-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://docs.edg.io/guides/routing</loc>
+    <loc>https://docs.edg.io/applications/routing</loc>
     <lastmod>2022-12-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://docs.edg.io/guides/what_is_graphql</loc>
+    <loc>https://docs.edg.io/applications/what_is_graphql</loc>
     <lastmod>2022-12-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
@@ -1273,43 +1273,43 @@
       </image:image>
   </url>
   <url>
-    <loc>https://docs.edg.io/guides/deploy_apps</loc>
+    <loc>https://docs.edg.io/applications/deploy_apps</loc>
     <lastmod>2022-12-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://docs.edg.io/guides/logs</loc>
+    <loc>https://docs.edg.io/applications/logs</loc>
     <lastmod>2022-12-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://docs.edg.io/guides/response_headers</loc>
+    <loc>https://docs.edg.io/applications/response_headers</loc>
     <lastmod>2022-12-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://docs.edg.io/guides/caching</loc>
+    <loc>https://docs.edg.io/applications/caching</loc>
     <lastmod>2022-12-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://docs.edg.io/guides/build_web_apps</loc>
+    <loc>https://docs.edg.io/applications/build_web_apps</loc>
     <lastmod>2022-12-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://docs.edg.io/guides/rest_api</loc>
+    <loc>https://docs.edg.io/applications/rest_api</loc>
     <lastmod>2022-12-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://docs.edg.io/guides/cli</loc>
+    <loc>https://docs.edg.io/applications/cli</loc>
     <lastmod>2022-12-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
@@ -1321,7 +1321,7 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://docs.edg.io/guides/request_headers</loc>
+    <loc>https://docs.edg.io/applications/request_headers</loc>
     <lastmod>2022-12-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
@@ -1363,97 +1363,97 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://docs.edg.io/guides/support</loc>
+    <loc>https://docs.edg.io/applications/support</loc>
     <lastmod>2022-12-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://docs.edg.io/guides/purging</loc>
+    <loc>https://docs.edg.io/applications/purging</loc>
     <lastmod>2022-12-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://docs.edg.io/guides/production</loc>
+    <loc>https://docs.edg.io/applications/production</loc>
     <lastmod>2022-12-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://docs.edg.io/guides/troubleshooting</loc>
+    <loc>https://docs.edg.io/applications/troubleshooting</loc>
     <lastmod>2022-12-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://docs.edg.io/guides/limits</loc>
+    <loc>https://docs.edg.io/applications/limits</loc>
     <lastmod>2022-12-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://docs.edg.io/guides/next</loc>
+    <loc>https://docs.edg.io/applications/next</loc>
     <lastmod>2022-12-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://docs.edg.io/guides/prefetching</loc>
+    <loc>https://docs.edg.io/applications/prefetching</loc>
     <lastmod>2022-12-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://docs.edg.io/guides/devtools</loc>
+    <loc>https://docs.edg.io/applications/devtools</loc>
     <lastmod>2022-12-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://docs.edg.io/guides/split_testing</loc>
+    <loc>https://docs.edg.io/applications/split_testing</loc>
     <lastmod>2022-12-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://docs.edg.io/guides/graphql</loc>
+    <loc>https://docs.edg.io/applications/graphql</loc>
     <lastmod>2022-12-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://docs.edg.io/guides/angular</loc>
+    <loc>https://docs.edg.io/applications/angular</loc>
     <lastmod>2022-12-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://docs.edg.io/guides/nuxt</loc>
+    <loc>https://docs.edg.io/applications/nuxt</loc>
     <lastmod>2022-12-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://docs.edg.io/guides/bigcommerce</loc>
+    <loc>https://docs.edg.io/applications/bigcommerce</loc>
     <lastmod>2022-12-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://docs.edg.io/guides/vsf1</loc>
+    <loc>https://docs.edg.io/applications/vsf1</loc>
     <lastmod>2022-12-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://docs.edg.io/guides/performance/traffic_splitting/split_testing</loc>
+    <loc>https://docs.edg.io/applications/performance/traffic_splitting/split_testing</loc>
     <lastmod>2022-12-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://docs.edg.io/guides/sites_frameworks/getting_started/vsf1</loc>
+    <loc>https://docs.edg.io/applications/sites_frameworks/getting_started/vsf1</loc>
     <lastmod>2022-12-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.7</priority>

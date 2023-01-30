@@ -17,7 +17,7 @@ Using the Router, you can:
 
 Before proceeding, you will need an {{ PRODUCT }} property. Create one now if you do not already have one. 
 
-[Learn how to create a property.](/guides/getting_started)
+[Learn how to create a property.](/applications/getting_started)
 
 ## Configuration {/*configuration*/}
 

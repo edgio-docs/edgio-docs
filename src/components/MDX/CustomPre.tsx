@@ -58,7 +58,7 @@ export default function CustomPre({children}: {children: React.ReactNode}) {
     copyMessage = cleanCopyCode(copyMessage);
   }
 
-  // MDX Metadata...https://mdxjs.com/guides/syntax-highlighting/#syntax-highlighting-with-the-meta-field
+  // MDX Metadata...https://mdxjs.com/applications/syntax-highlighting/#syntax-highlighting-with-the-meta-field
   const replacedFilename = filename?.replace(/"/g, '').replace(/'/g, '') ?? '';
   const descriptiveLanguage = getDescriptiveLanguage(language);
 

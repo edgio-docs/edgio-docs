@@ -148,7 +148,7 @@ An access log file may contain the following fields:
 -   **ckh (*String*):** <a id="ckh" /> Indicates the cache key hash. 
 -   **clv (*Number*):** <a id="clv" /> Indicates the level at which the request was served from cache. Returns `0` for a cache miss, `1` for a cache hit on an edge POP (L1), and `2` for a cache hit on a global POP (L2). 
 -   **code (*String*):** <a id="code" /> Indicates the HTTP status code for the response. 
--   **cs (*String*):** <a id="cs" /> Indicates whether the response was cached or the reason why it was not cached.  [Learn more.](/guides/performance/caching#why-is-my-response-not-being-cached)
+-   **cs (*String*):** <a id="cs" /> Indicates whether the response was cached or the reason why it was not cached.  [Learn more.](/applications/performance/caching#why-is-my-response-not-being-cached)
 -   **ct (*String*):** <a id="ct" /> Indicates the response's media type (aka content type). 
 -   **cv (*String*):** <a id="cv" /> Indicates the version of the {{ PRODUCT }} edge compiler (e.g., `1.7.3`).
 -   **cy (*String*):** <a id="cy" /> Indicates the name of the city from which the request originated (e.g., `new york`).
@@ -156,11 +156,11 @@ An access log file may contain the following fields:
 -   **ds (*String*):** <a id="ds" /> Indicates the A/B testing destination assigned to this request. Returns `default` if a destination has not been assigned to this request or when you have not configured A/B testing. 
 -   **dv (*String*):** <a id="dv" /> Indicates the type of device (e.g., desktop, smartphone, tablet, and mobile) that submitted the request.
 -   **eid (*String*):** <a id="eid" /> Indicates the system-defined ID for the {{ PRODUCT }} environment through which the request was processed. 
--   **er (*Number*):** <a id="er" /> Indicates whether we sent a custom response as a result of the [send method](/guides/performance/cdn_as_code#route-execution). Returns `1` for custom responses and `0` for all other responses.
+-   **er (*Number*):** <a id="er" /> Indicates whether we sent a custom response as a result of the [send method](/applications/performance/cdn_as_code#route-execution). Returns `1` for custom responses and `0` for all other responses.
 -   **ev (*Number*):** <a id="ev" /> Indicates the version for the {{ PRODUCT }} environment through which the request was processed (e.g., `95`).
 -   **h2 (*String*):** <a id="h2" /> Indicates whether the connection between the client and our network is HTTP/2. Returns `1` for HTTP/2 and `0` for HTTP/1.1.
 -   **hh (*String*):** <a id="hh" /> Indicates the `Host` header value submitted by the client.  
--   **hrid (*String*):** <a id="hrid" /> If the response is served from cache, this field indicates the unique ID of the request whose response was cached. This value matches the ID reported by the [`{{ HEADER_PREFIX }}-hit-request-id` response header](/guides/performance/response#reserved-response-headers). 
+-   **hrid (*String*):** <a id="hrid" /> If the response is served from cache, this field indicates the unique ID of the request whose response was cached. This value matches the ID reported by the [`{{ HEADER_PREFIX }}-hit-request-id` response header](/applications/performance/response#reserved-response-headers). 
 -   **ic (*Number*):** <a id="ic" /> Indicates whether this request was eligible to be cached. This field does not indicate whether the response was actually cached. 
 -   **ip (*String*):** <a id="ip" /> Indicates the client's IP address (e.g., `192.0.2.22`).
 -   **jwt (*String*):** <a id="jwt" /> Reserved for future use.
@@ -170,7 +170,7 @@ An access log file may contain the following fields:
 -   **met (*String*):** <a id="met" /> Indicates the request's HTTP method (e.g., `GET`, `HEAD`, and `POST`).
 -   **pc (*String*):** <a id="pc" /> Indicates the postal code from which the request originated (e.g., `90405`).
 -   **pre (*Number*):** <a id="pre" /> Indicates whether the request was prefetched. Returns `1` for requests that have the `{{ COOKIE_PREFIX }}_prefetch=1` query string parameter and `0` for all other requests.
--   **prl (*Number*):** <a id="prl" /> Indicates whether the request was due to [static prerendering](/guides/performance/static_prerendering). Returns `1` for static prerendering requests and `0` for all other traffic.
+-   **prl (*Number*):** <a id="prl" /> Indicates whether the request was due to [static prerendering](/applications/performance/static_prerendering). Returns `1` for static prerendering requests and `0` for all other traffic.
 -   **prod (*Number*):** <a id="prod" /> Indicates whether the request was directed at the production environment. Returns `1` for the production environment and `0` for all other environments.
 -   **psh (*Number*):** <a id="psh" /> Indicates whether this response was sent due to HTTP/2 server push. Returns `1` for a HTTP/2 server push and `0` for client-driven requests.
 -   **rfr (*String*):** <a id="rfr" /> Indicates the value for the `Referer` request header. 
@@ -193,9 +193,9 @@ An access log file may contain the following fields:
 -   **wafv (*String*):** <a id="wafv" /> Indicates the WAF version (e.g., `WAF-1,2`) that screened the request.
 -   **xff (*String*):** <a id="xff" /> Indicates the value for the `x-forwarded-for` request header.
 -   **xmr (*String*):** <a id="xmr" /> Indicates the value for the `{{ HEADER_PREFIX }}-matched-routes` request header. The `{{ HEADER_PREFIX }}-matched-routes` request header identifies all matched routes. 
--   **xms (*String*):** <a id="xms" /> Indicates the value for the `{{ HEADER_PREFIX }}-status` response header (e.g., `eh=200,ed=200,gh=200,gd=200,p=200,w=200`). The `{{ HEADER_PREFIX }}-status` response header indicates the status codes for key [POP components](/guides/performance/response#-t-response-header). 
--   **xmt (*String*):** <a id="xmt" /> Indicates the value for the [{{ HEADER_PREFIX }}-t](/guides/performance/response#-t-response-header) response header (e.g., `eh=4,ect=2,ecc=hit`). The `{{ HEADER_PREFIX }}-t` response header contains time measurements for each Edgio POP component through which a request was routed. 
--   **xut (*String*):** <a id="xut" /> Indicates the value for the `{{ HEADER_PREFIX }}-user-t` response header (e.g., `fetch:/path=123`). The `{{ HEADER_PREFIX }}-user-t` response header contains [performance](/guides/performance) metrics. 
+-   **xms (*String*):** <a id="xms" /> Indicates the value for the `{{ HEADER_PREFIX }}-status` response header (e.g., `eh=200,ed=200,gh=200,gd=200,p=200,w=200`). The `{{ HEADER_PREFIX }}-status` response header indicates the status codes for key [POP components](/applications/performance/response#-t-response-header). 
+-   **xmt (*String*):** <a id="xmt" /> Indicates the value for the [{{ HEADER_PREFIX }}-t](/applications/performance/response#-t-response-header) response header (e.g., `eh=4,ect=2,ecc=hit`). The `{{ HEADER_PREFIX }}-t` response header contains time measurements for each Edgio POP component through which a request was routed. 
+-   **xut (*String*):** <a id="xut" /> Indicates the value for the `{{ HEADER_PREFIX }}-user-t` response header (e.g., `fetch:/path=123`). The `{{ HEADER_PREFIX }}-user-t` response header contains [performance](/applications/performance) metrics. 
 -   **zip (*String*):** <a id="zip" /> Indicates whether the response was compressed. Returns `1` for compressed responses and `0` for uncompressed responses.
 
 

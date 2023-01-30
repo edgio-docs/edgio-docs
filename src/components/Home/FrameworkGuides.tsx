@@ -235,7 +235,7 @@ export default function FrameworkGuides() {
                     <div className="dot" />
                   )}
                   <Link
-                    href={`/guides/sites_frameworks/getting_started/${path}`}>
+                    href={`/applications/sites_frameworks/getting_started/${path}`}>
                     {title}
                   </Link>
                 </li>
@@ -243,7 +243,7 @@ export default function FrameworkGuides() {
               {index === 2 && (
                 <li className="route-list__item">
                   <Link
-                    href="/guides/sites_frameworks/getting_started"
+                    href="/applications/sites_frameworks/getting_started"
                     passHref>
                     <a>
                       <div className="dot" />

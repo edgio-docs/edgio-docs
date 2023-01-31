@@ -2,7 +2,7 @@
 title: Vue.js
 ---
 
-[Vue.js](https://vuejs.org/) is a progressive javascript framework. This guide walks you through deploying Vue.js sites to {{ PRODUCT }}.
+[Vue.js](https://vuejs.org/) is a progressive JavaScript framework. This guide walks you through deploying Vue.js sites to {{ PRODUCT }}.
 
 Edgio supports both Vue 2 and Vue 3, using both CLIs - `@vue/cli` and `vite`.
 

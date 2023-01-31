@@ -1,14 +1,14 @@
 ---
-title: {{ PRODUCT }} Version 6 Migration Guide
+title: {{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} Version 6 Migration Guide
 ---
 
-{{ PRODUCT }} version 6, which introduces support for Node.js v16, requires:
+{{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} version 6, which introduces support for Node.js v16, requires:
 
-*   {{ PRODUCT }} version 5
+*   {{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} version 5
 
     <Callout type="info">
 
-      If you are using {{ PRODUCT }} version 4.x or earlier, [migrate to version 5](/guides/upgrading/v5_migration) before migrating to version 6.
+      If you are using {{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} version 4.x or earlier, [migrate to version 5](/guides/upgrading/v5_migration) before migrating to version 6.
 
     </Callout>
 
@@ -16,7 +16,7 @@ title: {{ PRODUCT }} Version 6 Migration Guide
 
     <Callout type="important">
 
-      {{ PRODUCT }} version 6 runs your apps in Node.js v16. Therefore, we strongly recommend that you use Node.js v16.x when developing your web application.
+      {{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} version 6 runs your apps in Node.js v16. Therefore, we strongly recommend that you use Node.js v16.x when developing your web application.
 
     </Callout>
 
@@ -24,7 +24,7 @@ title: {{ PRODUCT }} Version 6 Migration Guide
 
 <Callout type="info">
 
-  {{ PRODUCT }} version 6 does not support [access control through JWT](#jwt-access-control-end-of-life). Additionally, [.noIndexPermalink() is now deprecated](#permalink-indexing), since we now automatically block search engine traffic for edge links and permalinks. 
+  {{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} version 6 does not support [access control through JWT](#jwt-access-control-end-of-life). Additionally, [.noIndexPermalink() is now deprecated](#permalink-indexing), since we now automatically block search engine traffic for edge links and permalinks. 
 
 </Callout>
 
@@ -39,7 +39,7 @@ Migrate from version 5.x to 6 through the following steps:
  
 ## Step 1: Upgrade Node.js {/*upgrade-node-js*/}
 
-{{ PRODUCT }} version 6 runs your apps in Node.js v16. Therefore, we strongly recommend that you use Node.js v16.x when developing your web application. 
+{{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} version 6 runs your apps in Node.js v16. Therefore, we strongly recommend that you use Node.js v16.x when developing your web application. 
 
 [Learn how to use nvm to install Node.js v16.x.](/guides/install_nodejs)
 
@@ -121,11 +121,11 @@ If you encounter a build issue as a result of upgrading Node.js, then you should
 
 ## Step 5: JWT Access Control End-of-Life {/*jwt-access-control-end-of-life*/}
 
-{{ PRODUCT }} version 6 does not support JWT access control. Previous versions allowed you to     configure on a per route basis whether requests would be allowed or denied according to a JWT token.
+{{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} version 6 does not support JWT access control. Previous versions allowed you to     configure on a per route basis whether requests would be allowed or denied according to a JWT token.
 
 ## Step 6: (Optional) Permalink Indexing {/*permalink-indexing*/}
 
-By default, {{ PRODUCT }} version 6 automatically blocks search engine traffic for edge links and permalinks. As a result, the `.noIndexPermalink()` router function serves no purpose and it has been deprecated. We recommend that you remove this function from your {{ ROUTES_FILE }} file. 
+By default, {{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} version 6 automatically blocks search engine traffic for edge links and permalinks. As a result, the `.noIndexPermalink()` router function serves no purpose and it has been deprecated. We recommend that you remove this function from your {{ ROUTES_FILE }} file. 
 
 Override this behavior and allow search engines to index all permalinks by adding the following route to `routes.js`:
 

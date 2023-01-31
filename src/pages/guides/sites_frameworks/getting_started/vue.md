@@ -2,196 +2,136 @@
 title: Vue.js
 ---
 
-This guide shows you how to deploy a [Vue.js](https://vuejs.org/) application to {{ PRODUCT }}.
+[Vue.js](https://vuejs.org/) is a progressive javascript framework. This guide walks you through deploying Vue.js sites to {{ PRODUCT }}.
+
+Edgio supports both Vue 2 and Vue 3, using both CLIs - `@vue/cli` and `vite`.
+
 
 ## Example {/*example*/}
 
 <ExampleButtons
-  title="Vue.js"
-  siteUrl="https://layer0-docs-layer0-static-vuejs-example-default.layer0-limelight.link"
-  repoUrl="https://github.com/layer0-docs/layer0-static-vuejs-example" 
+  title="Vue 3"
+  repoUrl="https://github.com/edgio-docs/edgio-vue3-example"
+  siteUrl="https://layer0-docs-layer0-vue3-example-default.layer0-limelight.link/"
   deployFromRepo />
+
+## Connector {/*connector*/}
+
+This framework has a connector developed for {{ PRODUCT }}. See [Connectors](connectors) for more information.
+
+<ButtonLink variant="stroke" type="code" withIcon={true} href="https://github.com/edgio-docs/edgio-connectors/tree/main/edgio-vue-connector">
+ View the Connector Code
+</ButtonLink>
 
 {{ PREREQ }}
 
-## Create a new Vue.js app {/*create-a-new-vuejs-app*/}
+## Create your Vue site {/*create-your-vue-site*/}
 
-If you don't already have a Vue.js app, create one by using the Vue CLI:
-
-```bash
-npm install -g @vue/cli @vue/cli-service-global
-vue create hello-world
-```
-
-When running `vue create` select `Vue 2` or `Vue 3` as a preset,
+If you don't have an existing Vue 3 site, you can create one by running:
 
 ```bash
-Vue CLI v4.5.13
-? Please pick a preset: (Use arrow keys)
-❯ Default ([Vue 2] babel, eslint)
-  Default (Vue 3) ([Vue 3] babel, eslint)
-  Manually select features
+npm init vue@latest
 ```
 
-You can verify your app works by running it locally:
+This command will create a project based on `vite`. 
+
+If you need help with Vue initialization, please follow the [create-vue project's readme](https://github.com/vuejs/create-vue).
+
+{{ PRODUCT }} also supports the older, Webpack-based `@vue/cli` - more on that in the [Vue CLI documentation](https://cli.vuejs.org).
+
+
+## Initializing your Project {/*initializing-your-project*/}
+
+Initialize your project for use with {{ PRODUCT }} by running the following command in your project's root directory:
 
 ```bash
-cd hello-world
-npm run serve
+npm i && {{ FULL_CLI_NAME }} init
 ```
 
-## Configuring your Vue.js app for {{ PRODUCT }} {/*configuring-your-vuejs-app-for*/}
+This will automatically add all of the required dependencies and files to your project. These include:
 
-### Initialize your project {/*initialize-your-project*/}
+{{ INIT_DEFAULT_PACKAGES }}
+- The `{{ PACKAGE_NAME }}/vue` package - Provides a `Prefetch` component for prefetching pages.
+- The `{{ PACKAGE_NAME }}/vue-cva` package - Provides build and routing mechanisms for Vue projects.
 
-In the root directory of your project run `{{ FULL_CLI_NAME }} init`:
+{{ INIT_TIER1_FILES }}
 
-```bash
-{{ FULL_CLI_NAME }} init
-```
 
-This will automatically update your `package.json` and add all of the required {{ PRODUCT }} dependencies and files to your project. These include:
+## Prefetching {/*prefetching*/}
 
-- The `{{ PACKAGE_NAME }}/core` package - Allows you to declare routes and deploy your application to {{ PRODUCT }}.
-- The `{{ PACKAGE_NAME }}/prefetch` package - Allows you to configure a service worker to prefetch and cache pages to improve browsing speed
-- `{{ CONFIG_FILE }}` - A configuration file for {{ PRODUCT }}
-- `routes.js` - A default routes file that sends all requests to Vue.js.
+{{ PREFETCH_TIER1_INTRO }}
 
-### Adding {{ PRODUCT }} Service Worker {/*adding-service-worker*/}
-
-To add service worker to your Vue app, run the following in the root folder of your project:
-
-```bash
-npm i register-service-worker workbox-webpack-plugin
-```
-
-Create `service-worker.js` at the root of your project with the following:
+In order to initialize it, call the `install` function from `{{ PACKAGE_NAME }}/prefetch/window` when the app first loads:
 
 ```js
-import { skipWaiting, clientsClaim } from 'workbox-core'
-import { precacheAndRoute } from 'workbox-precaching'
-import { Prefetcher } from '{{ PACKAGE_NAME }}/prefetch/sw'
+import { isProductionBuild } from '{{ PACKAGE_NAME }}/core/environment';
+import { install } from '{{ PACKAGE_NAME }}/prefetch/window'
 
-skipWaiting()
-clientsClaim()
-precacheAndRoute(self.__WB_MANIFEST || [])
-
-new Prefetcher().route()
-```
-
-To register the service worker, first create `registerServiceWorker.js` in the `src` folder:
-
-```js
-/* eslint-disable no-console */
-
-import { register } from 'register-service-worker'
-
-if (process.env.NODE_ENV === 'production') {
-  register(`${process.env.BASE_URL}service-worker.js`, {
-    ready() {
-      console.log(
-        'App is being served from cache by a service worker.\n' +
-          'For more details, visit https://goo.gl/AFskqB',
-      )
-    },
-    registered() {
-      console.log('Service worker has been registered.')
-    },
-    cached() {
-      console.log('Content has been cached for offline use.')
-    },
-    updatefound() {
-      console.log('New content is downloading.')
-    },
-    updated() {
-      console.log('New content is available; please refresh.')
-    },
-    offline() {
-      console.log('No internet connection found. App is running in offline mode.')
-    },
-    error(error) {
-      console.error('Error during service worker registration:', error)
-    },
-  })
+if (isProductionBuild()) {
+  install()
 }
 ```
 
-and to include the service worker in the app, edit `main.js` (in the `src` folder) as follows:
+The code above allows you to prefetch pages from {{ PRODUCT }}'s edge cache to greatly improve browsing speed. To prefetch a page, add the `Prefetch` component from `@edgio/vue` around any rendered component, as such:
 
-```js ins={3}
-import { createApp } from 'vue'
-import App from './App.vue'
-import './registerServiceWorker'
+```js ins={2,7,9}
+<script>
+  import { Prefetch } from '{{ PACKAGE_NAME }}/vue'
+</script>
 
-createApp(App).mount('#app')
+<template>
+  {/* The URL you need to prefetch is the API call that the page component will make when it mounts. It will vary based on how you've implemented your site. */}
+  <Prefetch url='/api/products/1.json'>
+    <a href='/api/products/1.json'>Product 1</a>
+  </Prefetch>
+</template>
 ```
 
-Now, create `vue.config.js` at the root of your project with the following config:
+The `Prefetch` component fetches data for the linked page from {{ PRODUCT }}'s edge cache and adds it to the service worker's cache when the link becomes visible in the viewport. When the user taps on the link, the page transition will be instantaneous because the browser won't need to fetch data from the network.
+
+By default, `Prefetch` waits until the link appears in the viewport before prefetching. You can prefetch immediately by setting the `immediately` prop:
 
 ```js
-const { InjectManifest } = require('workbox-webpack-plugin')
-
-const config = {}
-
-if (process.env.NODE_ENV === 'production') {
-  config['configureWebpack'] = {
-    plugins: [
-      new InjectManifest({
-        swSrc: './service-worker.js',
-      }),
-    ],
-  }
-}
-
-module.exports = config
+<Prefetch url='/api/products/1.json' immediately>
+  <a href='/api/products/1.json'>Product 1</a>
+</Prefetch>
 ```
 
-### Configure the routes {/*configure-the-routes*/}
+Refer to the [Predictive Prefetch](/guides/performance/prefetching) for more examples of prefetch functionality.
 
-Next you'll need to configure {{ PRODUCT }} routing in the `routes.js` file.
+## Routing {/*routing*/}
 
-For the Vue `hello-world` template, replace the `routes.js` file that was created during `{{ FULL_CLI_NAME }} init` with the following:
+The default `routes.js` file created by `{{ FULL_CLI_NAME }} init` sends all requests to Vue server via a fallback route.
 
 ```js
+// This file was added by {{ FULL_CLI_NAME }} init.
+// You should commit this file to source control.
+
 const { Router } = require('{{ PACKAGE_NAME }}/core/router')
+const { vueRoutes } = require('{{ PACKAGE_NAME }}/vue-cva')
 
-module.exports = new Router()
-  // Send requests to static assets in the build output folder `dist`
-  .static('dist')
-
-  // Send everything else to the App Shell
-  .fallback(({ appShell }) => {
-    appShell('dist/index.html')
-  })
+export default new Router().use(vueRoutes)
 ```
-
-The example above assumes you're using Vue as a single page app. It routes the static assets (JavaScript, CSS, and Images) in the production build folder `dist` and maps all other requests to the app shell in `dist/index.html`.
 
 Refer to the [CDN-as-code](/guides/performance/cdn_as_code) guide for the full syntax of the `routes.js` file and how to configure it for your use case.
 
-### Run the Vue.js app locally on {{ PRODUCT }} {/*run-the-vuejs-app-locally-on*/}
+## Running Locally {/*running-locally*/}
 
-Create a production build of your app by running the following in your project's root directory:
-
-```bash
-npm run build
-```
-
-Test your app with the {{ PRODUCT_PLATFORM }} on your local machine by running the following command in your project's root directory:
+To test your app locally, run:
 
 ```bash
 {{ FULL_CLI_NAME }} dev
 ```
 
-Load the site: http://127.0.0.1:3000 !
-
-## Deploying {/*deploying*/}
-
-Create a production build of your app by running the following in your project's root directory:
+You can do a production build of your app and test it locally using:
 
 ```bash
-npm run build
+{{ FULL_CLI_NAME }} build && {{ FULL_CLI_NAME }} run --production
 ```
+
+Setting `--production` runs your app exactly as it will be when deployed to the {{ PRODUCT }} cloud.
+
+## Deploy to {{ PRODUCT }} {/*deploy-to*/}
 
 Deploy your app to the {{ PRODUCT_PLATFORM }} by running the following command in your project's root directory:
 
@@ -199,8 +139,4 @@ Deploy your app to the {{ PRODUCT_PLATFORM }} by running the following command i
 {{ FULL_CLI_NAME }} deploy
 ```
 
-Refer to the [Deployments](/guides/basics/deployments) guide for more information on the `deploy` command and its options.
-
-## Server Side Rendering {/*server-side-rendering*/}
-
-For server side rendered Vue.js apps we recommend using the Nuxt.js framework which is supported on {{ PRODUCT }}. Refer to the [Nuxt](nuxt) guide for more information.
+For more on deploying, see [Deploying](/guides/deploy_apps).

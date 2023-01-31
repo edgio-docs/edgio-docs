@@ -75,7 +75,7 @@ This will automatically add all of the required dependencies and files to your p
 - The `{{ PACKAGE_NAME }}/cli` package
 - The `{{ PACKAGE_NAME }}/spartacus` package
 - The `{{ PACKAGE_NAME }}/prefetch` package
-- `{{ CONFIG_FILE }}`- Contains various configuration options for {{ PRODUCT }}.
+- `{{ CONFIG_FILE }}` - Contains various configuration options for {{ PRODUCT }}.
 - `routes.js` - A default routes file that sends all requests to the Angular Universal server. Update this file to add caching or proxy some URLs to a different origin.
 - The `sw` folder - Contains the files needed to build the service worker that that provides static asset and API prefetching.
 

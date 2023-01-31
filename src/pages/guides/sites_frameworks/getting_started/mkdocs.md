@@ -47,7 +47,7 @@ This will automatically add all of the required dependencies and files to your p
 - The `{{ PACKAGE_NAME }}/core` package
 - The `{{ PACKAGE_NAME }}/cli` package
 - The `{{ PACKAGE_NAME }}/mkdocs` package
-- `{{ CONFIG_FILE }}`- Contains various configuration options for {{ PRODUCT }}.
+- `{{ CONFIG_FILE }}` - Contains various configuration options for {{ PRODUCT }}.
 - `routes.js` - A default routes file that sends all requests to the MkDocs. Update this file to add caching or proxy some URLs to a different origin.
 
 ## Routing {/*routing*/}

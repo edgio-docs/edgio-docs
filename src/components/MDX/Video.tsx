@@ -7,18 +7,27 @@ import useHydrationIsLoaded from 'utils/hooks/useHydrationIsLoaded';
 
 interface VideoProps {
   src: string;
+  height: string;
+  width: string;
 }
 
 // https://css-tricks.com/responsive-iframes
 // https://codepen.io/chriscoyier/pen/RXPjWp
-const StyledVideo = styled.div`
+interface StyledVideoProps {
+  width?: string;
+  height?: string;
+}
+
+const StyledVideo = styled.div<StyledVideoProps>`
   background: #353535;
+  width: ${(props) => props.width || '100%'};
+  height: ${(props) => props.height || 'auto'};
 
   &[style*='--aspect-ratio'] > :first-child {
-    width: 100%;
+    width: '100%';
   }
   &[style*='--aspect-ratio'] > img {
-    height: auto;
+    height: 'auto';
   }
   @supports (--custom: property) {
     &[style*='--aspect-ratio'] {
@@ -56,7 +65,11 @@ function Wait() {
 
 const style = {'--aspect-ratio': '16/9'} as React.CSSProperties;
 
-export default function Video({src}: VideoProps) {
+export default function Video({
+  src,
+  width = '100%',
+  height = 'auto',
+}: VideoProps) {
   const isLoaded = useHydrationIsLoaded();
 
   if (!isLoaded) {
@@ -64,7 +77,7 @@ export default function Video({src}: VideoProps) {
   }
 
   return (
-    <StyledVideo style={style}>
+    <StyledVideo style={style} width={width} height={height}>
       <ReactPlayer
         {...{
           fallback: <Wait />,

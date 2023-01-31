@@ -22,7 +22,7 @@ export default function ExampleButtons({
           type="default"
           withIcon={false}
           href={siteUrl}>
-          Try the {title} Example Site
+          Try the {title} Site Example
         </ButtonLink>
       )}
       {repoUrl && (

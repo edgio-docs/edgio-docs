@@ -99,7 +99,7 @@ In order for the plugin to be able to interact with the {{ PRODUCT_PLATFORM }}, 
 - API Key
 - Browser Cache TTL (seconds)
 - Edge Cache TTL (seconds)
-- Edge Stale-While-Revalidate (seconds)
+- Cache Stale-While-Revalidate (seconds)
 
 ![plugin fields](/images/wordpress/plugin_fields.png)
 

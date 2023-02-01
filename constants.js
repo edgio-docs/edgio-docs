@@ -94,6 +94,29 @@ yarn global add ${PACKAGE_NAME}/cli
 </SnippetGroup>
 `;
 
+const INIT_DEFAULT_PACKAGES = `
+- The \`${PACKAGE_NAME}/cli\` package - Allows you to control ${PRODUCT} through project-local CLI.
+- The \`${PACKAGE_NAME}/core\` package - Allows you to declare routes and deploy your application to ${PRODUCT}.
+- The \`${PACKAGE_NAME}/prefetch\` package - Allows you to configure a service worker to prefetch and cache pages to improve browsing speed.
+- The \`${PACKAGE_NAME}/devtools\` package - Allows you to monitor the caching and prefetching functionality.
+`;
+
+const INIT_TIER1_FILES = `
+- \`${CONFIG_FILE}\` - Contains various configuration options for ${PRODUCT}.
+- \`routes.js\` - A default routes file that proxies all requests to the server. Update this file to add caching or proxy some URLs to a different origin.
+- \`sw/service-worker.js\` - A service worker implemented using Workbox.
+`;
+
+const PREFETCH_TIER1_INTRO = `
+The \`${FULL_CLI_NAME} init\` command adds a service worker based on [Workbox](https://developers.google.com/web/tools/workbox) at \`sw/service-worker.js\`. 
+If you have an existing service worker that uses workbox, you can copy its contents into \`sw/service-worker.js\` and simply add the following to your service worker:
+
+\`\`\`js filename='sw/service-worker.js'
+import { Prefetcher } from '${PACKAGE_NAME}/prefetch/sw';
+
+new Prefetcher().route();
+\`\`\``;
+
 const PREREQ = `
 ${SYSTEM_REQUIREMENTS}
 
@@ -163,6 +186,9 @@ module.exports = {
   PORTAL,
   PREREQ,
   INSTALL_CLI_STEP,
+  INIT_DEFAULT_PACKAGES,
+  INIT_TIER1_FILES,
+  PREFETCH_TIER1_INTRO,
   NODE_VERSION,
   PACKAGE_NAME,
   PARTNERS_CONTACT,

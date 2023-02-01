@@ -48,7 +48,7 @@ This will automatically add all of the required dependencies and files to your p
 - The `{{ PACKAGE_NAME }}/core` package
 - The `{{ PACKAGE_NAME }}/angular` package
 - The `{{ PACKAGE_NAME }}/cli` package
-- `{{ CONFIG_FILE }}`- Contains various configuration options for {{ PRODUCT }}.
+- `{{ CONFIG_FILE }}` - Contains various configuration options for {{ PRODUCT }}.
 - `routes.js` - A default routes file that sends all requests to the Angular Universal server. Update this file to add caching or proxy some URLs to a different origin.
 
 #### 3. Use the right angular project {/*3-use-the-right-angular-project*/}

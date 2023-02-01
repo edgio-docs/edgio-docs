@@ -107,7 +107,7 @@ In order for the plugin to be able to interact with the {{ PRODUCT_PLATFORM }}, 
 
 To obtain the **API Key**, go to your site within the [{{ PRODUCT }} Developer Console]({{ LOGIN_URL }}). Click **Settings > Create new Deploy Token** and enter in a name for the token.
 
-For information on the **Browser Cache TTL**, **Edge Cache TTL**, and **Edge Stale-While-Revalidate** fields, refer to the [Caching guide](/guides/performance/caching).
+For information on the **Browser Cache TTL**, **Edge Cache TTL**, and **Cache Stale-While-Revalidate** fields, refer to the [Caching guide](/guides/performance/caching).
 
 ![plugin fields](/images/wordpress/deploy_token.png)
 

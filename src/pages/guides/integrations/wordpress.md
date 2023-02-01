@@ -73,7 +73,7 @@ Once you have confirmed that your deployed {{ PRODUCT }} site is proxying conten
 
 ## WordPress Plugin {/*wordpress-plugin*/}
 
-{{ PRODUCT }} provides a WordPress plugin you may leverage to automatically clear the {{ PRODUCT }} cache when a change is made to your site.
+{{ PRODUCT }} provides a WordPress plugin you may leverage to set cache TTL and automatically clear the {{ PRODUCT }} cache when a change is made to your site.
 
 First, to obtain the latest plugin version, [click here](/archive/github/edgio/edgiowordpress/wp-content/plugins/edgio) to download the ZIP file.
 
@@ -97,12 +97,17 @@ In order for the plugin to be able to interact with the {{ PRODUCT_PLATFORM }}, 
 
 - Environment Name
 - API Key
+- Browser Cache TTL (seconds)
+- Edge Cache TTL (seconds)
+- Edge Stale-While-Revalidate (seconds)
 
 ![plugin fields](/images/wordpress/plugin_fields.png)
 
 **Environment Name** refers to the {{ PRODUCT }} environment as defined in the [Developer Console]({{ LOGIN_URL }}) for your site. This value will typically be `default` or `production` depending on how your site is setup, but can be any valid environment that you have created.
 
 To obtain the **API Key**, go to your site within the [{{ PRODUCT }} Developer Console]({{ LOGIN_URL }}). Click **Settings > Create new Deploy Token** and enter in a name for the token.
+
+For information on the **Browser Cache TTL**, **Edge Cache TTL**, and **Edge Stale-While-Revalidate** fields, refer to the [Caching guide](/guides/performance/caching).
 
 ![plugin fields](/images/wordpress/deploy_token.png)
 

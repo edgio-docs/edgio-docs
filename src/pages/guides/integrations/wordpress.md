@@ -2,7 +2,7 @@
 title: WordPress Integration
 ---
 
-Optimize your [WordPress](https://www.wordpress.com) website's performance and security with {{ PRODUCT }}. Proxying traffic through our global network reduces latency and enhances the delivery of your website content. With our free WordPress plugin, you can manage cached website content directly from your control panel. Additionally, Edgio offers advanced performance enhancements such as Predictive Prefetching for an even better user experience. Upgrade your website's performance today with {{ PRODUCT }}!
+Optimize your [WordPress](https://www.wordpress.com) website's performance and security with {{ PRODUCT }}. Proxying traffic through our global network reduces latency and enhances the delivery of your website content. With our free WordPress plugin, you can manage cached website content directly from your control panel. Additionally, {{ PRODUCT }} offers advanced performance enhancements such as Predictive Prefetching for an even better user experience. Upgrade your website's performance today with {{ PRODUCT }}!
 
 ## What is WordPress? {/*what-is-wordpresss*/}
 
@@ -117,4 +117,4 @@ Lastly, test the behavior by clicking **Clear Cache**. You can validate the cach
 
 ![purge activity](/images/wordpress/purge_activity.png)
 
-With {{ PRODUCT }}, you never have to worry about outdated content. Whenever you make updates to a page on your WordPress site, our plugin automatically clears the cache for the changed page. This ensures that your viewers will always have access to the most up-to-date content. The Edgio plugin provides a seamless, efficient solution to keep your website's content fresh and accessible to your audience, without any manual intervention required.
+With {{ PRODUCT }}, you never have to worry about outdated content. Whenever you make updates to a page on your WordPress site, our plugin automatically clears the cache for the changed page. This ensures that your viewers will always have access to the most up-to-date content. The {{ PRODUCT }} plugin provides a seamless, efficient solution to keep your website's content fresh and accessible to your audience, without any manual intervention required.

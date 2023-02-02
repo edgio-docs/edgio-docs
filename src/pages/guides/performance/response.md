@@ -1,5 +1,5 @@
 ---
-title: Response Headers
+title: Response
 ---
 
 Each request for your content will generate a response from a server. This response consists of:

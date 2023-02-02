@@ -116,3 +116,5 @@ Once created, copy the token to the **API Key** field of the WordPress plugin. A
 Lastly, test the behavior by clicking **Clear Cache**. You can validate the cache clearing was successful by checking the **Activity** tab of your site:
 
 ![purge activity](/images/wordpress/purge_activity.png)
+
+With {{ PRODUCT }}, you never have to worry about outdated content. Whenever you make updates to a page on your WordPress site, our plugin automatically clears the cache for the changed page. This ensures that your viewers will always have access to the most up-to-date content. The Edgio plugin provides a seamless, efficient solution to keep your website's content fresh and accessible to your audience, without any manual intervention required.

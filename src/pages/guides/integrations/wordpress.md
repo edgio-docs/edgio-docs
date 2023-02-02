@@ -2,7 +2,7 @@
 title: WordPress Integration
 ---
 
-Improve performance for a website powered by a [WordPress](https://www.wordpress.com) instance by proxying traffic through {{ PRODUCT }}. This reduces latency by allowing your website content to be cached across our global network. It also empowers you to securely deliver your website content and to take advantage of other performance enhancements, such as Predictive Prefetching. Finally, you may manage cached website content from within your WordPress control panel through our free WordPress plugin.
+Optimize your [WordPress](https://www.wordpress.com) website's performance and security with {{ PRODUCT }}. Proxying traffic through our global network reduces latency and enhances the delivery of your website content. With our free WordPress plugin, you can manage cached website content directly from your control panel. Additionally, Edgio offers advanced performance enhancements such as Predictive Prefetching for an even better user experience. Upgrade your website's performance today with {{ PRODUCT }}!
 
 ## What is WordPress? {/*what-is-wordpresss*/}
 

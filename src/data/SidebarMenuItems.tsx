@@ -594,7 +594,7 @@ const SidebarMenuItems: ISidebarMenuItems = [
         },
         {
           title: PRODUCT_SECURITY_ADVANCED_BOT,
-          path: '/guides/advanced_bot_management',
+          path: '/guides/security/managed_bot_defense',
         },
       ],
     },

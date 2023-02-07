@@ -1,8 +1,8 @@
 ---
-title: {{ PRODUCT }} Version 4.x Migration Guide
+title: {{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} Version 4.x Migration Guide
 ---
 
-This guide describes what you need to know when migrating from {{ PRODUCT }} version 1.x/2.x/3.x to version 4.x. Note that while your site continues to function on a version previous to 4.x at this time, versions older than 4.x are deprecated and we urge you to upgrade to 4.x to avoid any interruptions. The biggest key change is that 4.x sites now run on our {{ PRODUCT }} network.
+This guide describes what you need to know when migrating from {{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} version 1.x/2.x/3.x to version 4.x. Note that while your site continues to function on a version previous to 4.x at this time, versions older than 4.x are deprecated and we urge you to upgrade to 4.x to avoid any interruptions. The biggest key change is that 4.x sites now run on our {{ PRODUCT }} network.
 
 ## Node Version {/*node-version*/}
 

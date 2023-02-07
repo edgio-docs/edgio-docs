@@ -60,7 +60,7 @@ If you run into permission issues while attempting to install the {{ PRODUCT }} 
 If you don't already have a Next.js application, you can create one using:
 
 ```bash
-npx create-next-app@^latest
+npx create-next-app@latest
 ```
 
 ### Initializing your Project {/*initializing-your-project*/}
@@ -460,3 +460,13 @@ Note that NextRouter.render404 and renderNextPage are retired when using Next.js
 {{ PRODUCT_NAME }} supports Next.js middleware starting with Next.js 12.2.0.
 
 When using Next.js middleware it should be noted that the middleware functions are only executed at the serverless layer, after the edge cache. Middleware that you want to execute on each request needs to have caching disabled explicitly for the route on which the middleware is enabled. Some Middleware use cases such as rewriting the request to another route would be fine to cache. These use cases need to be evaluated on a per route basis with caching enabled/disabled based on the desired result.
+
+## Runtime Variables Configuration {/*runtime-variables-configuration*/}
+
+<Callout type="info">
+
+  Next.js Runtime Configuration requires {{ PRODUCT }} 6.0.5+. See <a href="/guides/develop/cli#upgrade-project-to-latest-version">Upgrading</a>.
+
+</Callout>
+
+{{ PRODUCT }} supports runtime variables in `serverRuntimeConfig` and `publicRuntimeConfig` properties of `next.config.js`. For more information, visit the [Next.js Runtime Configuration](https://nextjs.org/docs/api-reference/next.config.js/runtime-configuration) documentation.

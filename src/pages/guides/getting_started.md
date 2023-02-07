@@ -9,6 +9,8 @@ Get started with {{ PRODUCT }} by satisfying our [prerequisites](#prerequisites)
 3.  [Deploy your property to {{ PRODUCT }}.](#deploy-property)
 4.  [Next steps.](#next-steps)
 
+&nbsp;<img data-inline-img src="/icons/yt_icon_rgb.png?width=38" alt="" /> <a href="https://youtu.be/kCGBgzkaOJ0">{{ PRODUCT }} Walkthrough</a>
+
 ## Quick Start {/*quick-start*/}
 
 If you already have [Node.js v{{ NODE_VERSION }}](/guides/install_nodejs) and an [{{ PRODUCT }} account](#account-creation), then you can use a single command to:

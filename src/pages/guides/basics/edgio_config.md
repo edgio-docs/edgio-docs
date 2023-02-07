@@ -17,7 +17,7 @@ The `backends` config is an object whose keys are backend names and whose values
 
 ### Nonstandard Ports {/*nonstandardports*/}
  
-If you need to proxy to a nonstandard port (not 443 or 80) then you must us `compute` to do so. This is for security reasons. 
+For security reasons, you must use the [compute](/docs/api/core/classes/_router_responsewriter_.responsewriter.html#compute) function to proxy requests to a custom port (i.e., a port other than 443 or 80). 
 
 For instance, proxying to a backend named "commerce" on a nonstandard port would use the following in their `routes` file.
 

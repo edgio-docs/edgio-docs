@@ -15,24 +15,14 @@ The `backends` config is an object whose keys are backend names and whose values
 | disableCheckCert | Boolean | A flag to turn off the TLS certificate check when making proxy requests to the backend site or API. By default it is `false` and for security purposes we strongly recommend that it is kept `false` in production environments. When using this option, you may also want to run your app with the `NODE_TLS_REJECT_UNAUTHORIZED` environment variable set to "0" to allow node to fetch from sites with invalid certificates.                                            |
 | port             | Number  | The port on which the backend receives https requests. Defaults to 443 but you can specify any other acceptable port value. Note that specifying `80` has no special meaning as {{ PRODUCT_NAME }} will never send secured requests to unsecured backends. To [enable HTTP traffic](/guides/security/security_suite#ssl) on a backend you must have a route matching `http` protocol in your router and serve content from that route. All HTTP traffic assumes port `80` on the backend. |
 
-### Nonstandard Ports {/*nonstandardports*/}
+### Custom Ports {/*customports*/}
  
 For security reasons, you must use the [compute](/docs/api/core/classes/_router_responsewriter_.responsewriter.html#compute) function to proxy requests to a custom port (i.e., a port other than 443 or 80). 
 
-For instance, proxying to a backend named "commerce" on a nonstandard port would use the following in their `routes` file.
+The following sample code demonstrates how to proxy to a backend (i.e., `commerce`) whose `port` property has been set to a custom port:
 
-```
-// proxy edge (standard use case)
-.match(
-  '/:path*',
-  ({ proxy }) => {
-    proxy('commerce', {
-      path: '/:path*',
-    });
-  }
-)
-
-// proxy via serverless (nonstandard port use case)
+```js filename="./routes.js"
+// proxy to a custom port through Serverless Compute 
 .match(
   '/:path*',
   ({ proxy, compute }) => {
@@ -42,7 +32,6 @@ For instance, proxying to a backend named "commerce" on a nonstandard port would
   }
 )
 ```
-
 
 ## connector {/*connector*/}
 

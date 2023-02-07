@@ -60,7 +60,7 @@ If you run into permission issues while attempting to install the {{ PRODUCT }} 
 If you don't already have a Next.js application, you can create one using:
 
 ```bash
-npx create-next-app@^latest
+npx create-next-app@latest
 ```
 
 ### Initializing your Project {/*initializing-your-project*/}

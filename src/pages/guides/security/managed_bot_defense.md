@@ -1,5 +1,5 @@
 ---
-title: Advanced Bot Management (BETA)
+title: Managed Bot Defense (BETA)
 ---
 
 {{ PRODUCT }}’s {{ PRODUCT_SECURITY_ADVANCED_BOT }} introduces a new layer of security dedicated to bot

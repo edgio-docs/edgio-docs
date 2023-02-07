@@ -53,6 +53,7 @@ export default [
   ['/guides/v5_migration', '/guides/reference/v5_migration'],
   ['/guides/managed_rule_groups', '/guides/security/managed_rule_groups'],
   ['/guides/security_suite', '/guides/security/security_suite'],
+  ['/guides/security/advanced_bot_management', '/guides/security/managed_bot_defense'],
   ['/guides/connectors', '/guides/sites_frameworks/connectors'],
   ['/guides/isg', '/guides/sites_frameworks/isg'],
   ['/guides/angular', '/guides/sites_frameworks/getting_started/angular'],

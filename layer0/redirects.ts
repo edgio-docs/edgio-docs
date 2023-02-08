@@ -131,4 +131,9 @@ export default [
   ['/guides/reference/layer0_migration', '/guides/upgrading/layer0_migration'],
   ['/guides/reference/v5_migration', '/guides/upgrading/v5_migration'],
   ['/guides/reference/v6_migration', '/guides/upgrading/v6_migration'],
+  ['/guides/bots', '/guides/security'],
+  ['/guides/build_web_apps', '/guides/getting_started'],
+  ['/guides/cookies', '/guides/performance/traffic_splitting/a_b_testing'],  
+  ['/guides/overview', '/guides/performance'],
+  ['/guides/regions', '/guides/sites_frameworks#regions'],
 ];

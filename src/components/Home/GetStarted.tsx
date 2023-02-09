@@ -121,21 +121,21 @@ export default function GetStarted({children}: {children: React.ReactNode}) {
           icon={IconWebAppCDN}
           title={PRODUCT_EDGE}
           subtitle={`Deploy your web application and start seeing the performance benefits with the ${PRODUCT} ${PRODUCT_EDGE} network.`}
-          href="/applications/getting_started"
+          href="/guides/getting_started"
           hrefText="Deploy now"
         />
         <GetStartedCard
           icon={IconJamstack}
           title={PRODUCT_PLATFORM}
           subtitle={`Deploy static and dynamic Jamstack sites that run on ${PRODUCT}'s serverless functions.`}
-          href="/applications/sites_frameworks/getting_started"
+          href="/guides/sites_frameworks/getting_started"
           hrefText="View Supported Frameworks"
         />
         <GetStartedCard
           icon={IconSecurity}
           title={PRODUCT_SECURITY}
           subtitle={`${PRODUCT} ${PRODUCT_SECURITY} keeps your apps protected without sacrificing performance.`}
-          href="/applications/security"
+          href="/guides/security"
           hrefText="Learn More"
         />
       </div>

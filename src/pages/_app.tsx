@@ -40,7 +40,7 @@ const ChangeLogFallBackPage = dynamic(
 // Match a route being navigated to
 // and place the fallback/loading versions of those pages
 const fallbackMap: {[route: string]: React.ReactNode} = {
-  '/applications/changelog': <ChangeLogFallBackPage />,
+  '/guides/changelog': <ChangeLogFallBackPage />,
 };
 
 function GAnalytics() {

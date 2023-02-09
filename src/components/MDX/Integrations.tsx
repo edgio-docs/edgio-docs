@@ -70,37 +70,37 @@ const StyledIntegrations = styled.div`
 const integrations: Object[] = [
   {
     title: 'BigCommerce',
-    path: '/applications/integrations/bigcommerce',
+    path: '/guides/integrations/bigcommerce',
     icon: 'bigcommerce',
     description: `${PRODUCT_NAME} provides integration with BigCommerce, an API-driven ecommerce platform with solutions for B2B, wholesale, social media platforms and more.`,
   },
   {
     title: 'Bloomreach',
-    path: '/applications/integrations/bloomreach',
+    path: '/guides/integrations/bloomreach',
     icon: 'bloomreach',
     description: `Bloomreach is an API-driven platform offering that focuses on powerful content, customer engagement, and product discovery offerings to achieve true personalization and drive unparalleled business growth.`,
   },
   {
     title: 'Shopify Hydrogen',
-    path: '/applications/integrations/shopify_hydrogen',
+    path: '/guides/integrations/shopify_hydrogen',
     icon: 'shopify-hydrogen',
     description: `${PRODUCT_NAME}'s integration with Hydrogen's React-based framework for building custom storefronts on Shopify gives you everything you need to start fast, build fast, and deliver the best personalized shopping experiences.`,
   },
   {
     title: 'Swell',
-    path: '/applications/integrations/swell',
+    path: '/guides/integrations/swell',
     icon: 'swell',
     description: `Swell is a customizable headless ecommerce platform that supports global B2C and B2B merchants. ${PRODUCT_NAME}'s integration with Swell and Nuxt.js let's you get up and running quickly.`,
   },
   {
     title: 'CI/CD Integration',
-    path: '/applications/basics/deployments#deploy-from-ci',
+    path: '/guides/basics/deployments#deploy-from-ci',
     icon: 'github',
     description: `${PRODUCT_NAME} has deploy integrations with your favorite CI/CD platform including GitHub, Jenkins, and GitLab.`,
   },
   {
     title: 'WordPress',
-    path: '/applications/integrations/wordpress',
+    path: '/guides/integrations/wordpress',
     icon: 'wordpress',
     description: `WordPress is a content management system (CMS) that allows you to host and build websites. ${PRODUCT_NAME}'s integration with WordPress extends to plugin support for cache purging from your WordPress control panel.`,
   },

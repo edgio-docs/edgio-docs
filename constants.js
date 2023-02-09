@@ -67,11 +67,11 @@ const EXAMPLES_REPOS = {
 
 const SYSTEM_REQUIREMENTS = `## System Requirements {/*system-requirements*/}
 
-- [Install Node.js 16.16.0](/applications/install_nodejs)`;
+- [Install Node.js 16.16.0](/guides/install_nodejs)`;
 
 const SYSTEM_REQUIREMENTS_H3 = `### System Requirements {/*system-requirements*/}
 
-- [Install Node.js 16.16.0](/applications/install_nodejs)`;
+- [Install Node.js 16.16.0](/guides/install_nodejs)`;
 
 const SIGN_UP = `## Sign up for ${PRODUCT} {/*sign-up*/}
 
@@ -79,7 +79,7 @@ Deploying requires an account on ${PRODUCT}. <a href="${APP_URL}/signup">Sign up
 
 const INSTALL_CLI = `## Install the ${PRODUCT_NAME} CLI {/*install-the-cli*/}
 
-If you have not already done so, install the [${PRODUCT_NAME} CLI](/applications/develop/cli).
+If you have not already done so, install the [${PRODUCT_NAME} CLI](/guides/develop/cli).
 
 <SnippetGroup>
 
@@ -104,7 +104,7 @@ ${INSTALL_CLI}
 
 const INSTALL_CLI_STEP = `Install the ${PRODUCT_NAME} CLI
 
-If you have not already done so, install the [${PRODUCT_NAME} CLI](/applications/develop/cli).
+If you have not already done so, install the [${PRODUCT_NAME} CLI](/guides/develop/cli).
 
 <SnippetGroup>
 

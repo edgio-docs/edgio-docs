@@ -4,6 +4,12 @@ title: Core Web Vitals
 
 This guide shows you how to track your website's [Core Web Vitals](https://web.dev/vitals/) on {{ PRODUCT_NAME }} in real time using real user monitoring (RUM).
 
+<Callout type="info">
+
+  {{ PRODUCT }} tracks Core Web Vitals for Chromium-based browsers and Firefox.
+
+</Callout>
+
 <Video src="https://player.vimeo.com/video/691615391"/>
 
 ## What are Core Web Vitals? {/*what-are-core-web-vitals*/}
@@ -23,7 +29,7 @@ be tracked via [Google Search Console](https://search.google.com/search-console/
 
 ## Why use {{ PRODUCT_NAME }} to track Core Web Vitals? {/*why-use-to-track-core-web-vitals*/}
 
-Instead of relying solely on Google Search Console, we recommend tracking Core Web Vitals using {{ PRODUCT_NAME }} so that you can:
+The benefits of using {{ PRODUCT }} instead of Google Search Console to track Core Web Vitals are that it allows you to:
 
 - See how changes to your site impact Core Web Vitals in real time
 - Correlate web vitals to your application's routes

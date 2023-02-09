@@ -4,10 +4,10 @@ title: Install Node.js and npm
 
 {{ PRODUCT }} support for Node.js runtimes varies according to the version of your `{{ PACKAGE_NAME }}` packages.
 
--   **{{ PRODUCT }} Version 5:** Node.js version 14.19.0
--   **{{ PRODUCT }} Version 6:** Node.js version 16.18.0
+-   **{{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} Version 5:** Node.js version 14.19.0
+-   **{{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} Version 6:** Node.js version 16.18.0
 
-Although you may use a higher version of Node.js, your app will run using the above version when deployed to {{ PRODUCT }}. Therefore, we strongly recommend that you use the Node.js version that corresponds to your {{ PRODUCT }} version when developing your web application.
+Although you may use a higher version of Node.js, your app will run using the above version when deployed to {{ PRODUCT }}. Therefore, we strongly recommend that you use the Node.js version that corresponds to your {{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} version when developing your web application.
 
 ## Node.js Installation {/*node-installation*/}
 

@@ -164,8 +164,8 @@
       "icon": "shield",
       "routes": [
         { 
-          "title": "Advanced Bot Management",
-          "path": "security/advanced_bot_management"
+          "title": "Managed Bot Defense",
+          "path": "security/managed_bot_defense"
         },
         {
           "title": "Managed Rule Groups",
@@ -435,7 +435,7 @@
           "path": "develop/deploy_to_edgio"
         },
         {
-          "title": "Edgio Packages",
+          "title": "EdgeJS API Reference",
           "path": "develop/packages",
           "routes": [
             {

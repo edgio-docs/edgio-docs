@@ -53,6 +53,7 @@ export default [
   ['/guides/v5_migration', '/guides/reference/v5_migration'],
   ['/guides/managed_rule_groups', '/guides/security/managed_rule_groups'],
   ['/guides/security_suite', '/guides/security/security_suite'],
+  ['/guides/security/advanced_bot_management', '/guides/security/managed_bot_defense'],
   ['/guides/connectors', '/guides/sites_frameworks/connectors'],
   ['/guides/isg', '/guides/sites_frameworks/isg'],
   ['/guides/angular', '/guides/sites_frameworks/getting_started/angular'],
@@ -130,4 +131,9 @@ export default [
   ['/guides/reference/layer0_migration', '/guides/upgrading/layer0_migration'],
   ['/guides/reference/v5_migration', '/guides/upgrading/v5_migration'],
   ['/guides/reference/v6_migration', '/guides/upgrading/v6_migration'],
+  ['/guides/bots', '/guides/security'],
+  ['/guides/build_web_apps', '/guides/getting_started'],
+  ['/guides/cookies', '/guides/performance/traffic_splitting/a_b_testing'],  
+  ['/guides/overview', '/guides/performance'],
+  ['/guides/regions', '/guides/sites_frameworks#regions'],
 ];

@@ -10,7 +10,7 @@ import NProgress from 'nprogress';
 import * as React from 'react';
 
 import LoadingFallBackPage from 'components/Fallbacks/Loading';
-import {VersionProvider} from 'components/versioning';
+// import {VersionProvider} from 'components/versioning';
 import {siteConfig} from 'siteConfig';
 
 // Universal loading page (used in dynamically imported components) which contains the wrapper of each page
@@ -108,14 +108,12 @@ export default function MyApp({Component, pageProps}: AppProps) {
   return loading && fallbackMap.hasOwnProperty(changingTo) ? (
     fallbackMap[changingTo]
   ) : (
-    <VersionProvider>
-      <AppShell>
-        <GAnalytics />
-        <DefaultSeo canonical={canonicalUrl} />
-        <MDXEmbedProvider>
-          <Component {...pageProps} />
-        </MDXEmbedProvider>
-      </AppShell>
-    </VersionProvider>
+    <AppShell>
+      <GAnalytics />
+      <DefaultSeo canonical={canonicalUrl} />
+      <MDXEmbedProvider>
+        <Component {...pageProps} />
+      </MDXEmbedProvider>
+    </AppShell>
   );
 }

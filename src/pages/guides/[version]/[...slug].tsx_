@@ -40,19 +40,32 @@ export const getStaticPaths = async () => {
     .map((file) => (file.match(/v(\d+)\.config\.js/) || [])[1]);
 
   // determine available guides from filesystem
-  const guides = await globby('pages/guides', {
-    cwd: join(process.cwd(), 'src'),
-    expandDirectories: {
-      extensions: ['md', 'mdx'],
-    },
-  });
+  const guides = (
+    await globby('pages/guides', {
+      cwd: join(process.cwd(), 'src'),
+      expandDirectories: {
+        extensions: ['md', 'mdx'],
+      },
+    })
+  )
 
-  console.log(versions, guides);
+    // exclude any path that matches /v*/* (e.g. /v5/getting_started)
+    .filter((path) => !path.match(/\/v\d+\/.+/));
 
-  const routes = [
-    {params: {version: 'v5', slug: ['getting_started']}},
-    {params: {version: 'v6', slug: ['getting_started']}},
-  ];
+  // create a list of routes for each version and guide
+  const routes = versions.flatMap((version) =>
+    guides.map((guide) => ({
+      params: {
+        version: `v${version}`,
+        slug: guide
+          .replace('pages/guides/', '')
+          .replace('.md', '')
+          .replace('.mdx', '')
+          .split('/'),
+      },
+    }))
+  );
+
   return {
     paths: routes,
     fallback: false,

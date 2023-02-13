@@ -45,6 +45,10 @@ const StyledVideo = styled.div<StyledVideoProps>`
       height: 100%;
     }
   }
+
+  @media (min-width: 560px) {
+    width: 560px;
+  }
 `;
 
 const StyledWait = styled.div`
@@ -65,7 +69,11 @@ function Wait() {
 
 const style = {'--aspect-ratio': '16/9'} as React.CSSProperties;
 
-export default function Video({src, height = 'auto'}: VideoProps) {
+export default function Video({
+  src,
+  width = '100%',
+  height = 'auto',
+}: VideoProps) {
   const isLoaded = useHydrationIsLoaded();
 
   if (!isLoaded) {
@@ -73,15 +81,7 @@ export default function Video({src, height = 'auto'}: VideoProps) {
   }
 
   return (
-    <StyledVideo
-      style={style}
-      css={css`
-        width: 100%;
-        @media (min-width: 560px) {
-          width: 560px;
-        }
-      `}
-      height={height}>
+    <StyledVideo style={style} width={width} height={height}>
       <ReactPlayer
         {...{
           fallback: <Wait />,

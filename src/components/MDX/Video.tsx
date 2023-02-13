@@ -20,11 +20,11 @@ interface StyledVideoProps {
 
 const StyledVideo = styled.div<StyledVideoProps>`
   background: #353535;
-  width: ${(props) => props.width || '560px'};
+  width: ${(props) => props.width || '80%'};
   height: ${(props) => props.height || 'auto'};
 
   &[style*='--aspect-ratio'] > :first-child {
-    width: '560px';
+    width: '80%';
   }
   &[style*='--aspect-ratio'] > img {
     height: 'auto';
@@ -42,7 +42,7 @@ const StyledVideo = styled.div<StyledVideoProps>`
       position: absolute;
       top: 0;
       left: 0;
-      height: 315px;
+      height: 100%;
     }
   }
 `;
@@ -51,8 +51,8 @@ const StyledWait = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 315px;
-  width: 560px;
+  height: auto;
+  width: 80%;
 `;
 
 function Wait() {
@@ -67,8 +67,8 @@ const style = {'--aspect-ratio': '16/9'} as React.CSSProperties;
 
 export default function Video({
   src,
-  width = '560px',
-  height = '315px',
+  width = '475px',
+  height = 'auto',
 }: VideoProps) {
   const isLoaded = useHydrationIsLoaded();
 
@@ -83,8 +83,8 @@ export default function Video({
           fallback: <Wait />,
           url: src,
           controls: true,
-          width: '560px',
-          height: '315px',
+          width: '100%',
+          height: '100%',
         }}
       />
     </StyledVideo>

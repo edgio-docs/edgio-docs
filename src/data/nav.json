@@ -435,7 +435,7 @@
           "path": "develop/deploy_to_edgio"
         },
         {
-          "title": "Edgio Packages",
+          "title": "EdgeJS API Reference",
           "path": "develop/packages",
           "routes": [
             {

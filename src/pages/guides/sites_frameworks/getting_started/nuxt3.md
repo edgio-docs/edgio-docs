@@ -4,7 +4,7 @@ title: Nuxt3
 
 This guide shows you how to deploy a [Nuxt3](https://v3.nuxtjs.org) application to {{ PRODUCT }}.
 
-Note: Nuxt3 is still in beta and is not recommended for production.
+<Video src="https://www.youtube.com/watch?v=Rliu4WTJ6SI" />
 
 ## Example {/*example*/}
 

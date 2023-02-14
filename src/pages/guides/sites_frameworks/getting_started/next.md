@@ -78,7 +78,7 @@ This will automatically add all of the required dependencies and files to your p
 - The `{{ PACKAGE_NAME }}/next` package - Provides router middleware that automatically adds Next.js pages and api routes to the {{ PRODUCT }} router.
 - The `{{ PACKAGE_NAME }}/react` package - Provides a `Prefetch` component for prefetching pages.
 
-{{ INIT_TIER1_FILES }}
+{{ INIT_DEFAULT_FILES }}
 
 ## Next.js Config Plugins {/*nextjs-config-plugins*/}
 

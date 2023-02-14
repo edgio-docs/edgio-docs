@@ -101,7 +101,7 @@ const INIT_DEFAULT_PACKAGES = `
 - The \`${PACKAGE_NAME}/devtools\` package - Allows you to monitor the caching and prefetching functionality.
 `;
 
-const INIT_TIER1_FILES = `
+const INIT_DEFAULT_FILES = `
 - \`${CONFIG_FILE}\` - Contains various configuration options for ${PRODUCT}.
 - \`routes.js\` - A default routes file that proxies all requests to the server. Update this file to add caching or proxy some URLs to a different origin.
 - \`sw/service-worker.js\` - A service worker implemented using Workbox.
@@ -187,7 +187,7 @@ module.exports = {
   PREREQ,
   INSTALL_CLI_STEP,
   INIT_DEFAULT_PACKAGES,
-  INIT_TIER1_FILES,
+  INIT_DEFAULT_FILES,
   PREFETCH_TIER1_INTRO,
   NODE_VERSION,
   PACKAGE_NAME,

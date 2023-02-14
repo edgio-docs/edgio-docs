@@ -4,6 +4,8 @@ title: Angular
 
 This guide shows you how to deploy an [Angular](https://angular.io) application to {{ PRODUCT }}.
 
+<Video src="https://www.youtube.com/watch?v=V3qY6ffUNHs" />
+
 ## Example {/*example*/}
 
 <ExampleButtons

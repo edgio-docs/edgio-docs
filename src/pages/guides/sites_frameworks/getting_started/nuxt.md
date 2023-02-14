@@ -385,6 +385,8 @@ The Nuxt team provides a renderer called [Nitro](https://www.npmjs.com/package/@
 
 {{ PRODUCT }} provides a connector specifically for Nuxt apps that use nitro called `{{ PACKAGE_NAME }}/nuxt-nitro`.
 
+<Video src="https://www.youtube.com/watch?v=cZt27HOhmLQ" />
+
 To add Nitro to your app, make the following changes:
 
 1. Install nitro and the connector as dev dependencies:

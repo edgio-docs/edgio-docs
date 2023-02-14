@@ -17,7 +17,7 @@ Edgio supports both Vue 2 and Vue 3, using both CLIs - `@vue/cli` and `vite`.
 
 ## Connector {/*connector*/}
 
-This framework has a connector developed for {{ PRODUCT }}. See [Connectors](connectors) for more information.
+{{ PRODUCT }} provides a connector for this framework. [Learn more.](/guides/sites_frameworks/connectors)
 
 <ButtonLink variant="stroke" type="code" withIcon={true} href="https://github.com/edgio-docs/edgio-connectors/tree/main/edgio-vue-connector">
  View the Connector Code

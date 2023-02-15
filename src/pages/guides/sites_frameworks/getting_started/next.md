@@ -4,6 +4,8 @@ title: Next.js
 
 This guide shows you how to deploy a [Next.js](https://nextjs.org/) application to {{ PRODUCT }}.
 
+<Video src="https://www.youtube.com/watch?v=ZN5oYSSpnmc" />
+
 ## Example {/*example*/}
 
 <ExampleButtons

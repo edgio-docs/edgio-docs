@@ -4,6 +4,8 @@ title: Hexo
 
 This guide shows you how to deploy a [Hexo](https://hexo.io/) application to {{ PRODUCT }}.
 
+<Video src="https://www.youtube.com/watch?v=WFFoHT7TqSE" />
+
 ## Example {/*example*/}
 
 <ExampleButtons

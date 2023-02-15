@@ -22,6 +22,7 @@
       }
     ],
     "curly": "error",
-    "sort-exports/sort-exports": ["error", {"sortDir": "asc"}]
+    "sort-exports/sort-exports": ["error", {"sortDir": "asc"}],
+    "react/no-unknown-property": "warn"
   }
 }

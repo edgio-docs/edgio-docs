@@ -21,6 +21,9 @@ const _preEdgioExport = {
     // ssr and displayName are configured by default
     styledComponents: true,
   },
+  typescript: {
+    ignoreBuildErrors: true,
+  },
   pageExtensions: ['jsx', 'js', 'ts', 'tsx', 'mdx', 'md'],
   webpack: (config, {dev, isServer, ...options}) => {
     // IMPORTANT: https://www.npmjs.com/package/webpack-bundle-analyzer

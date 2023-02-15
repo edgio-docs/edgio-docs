@@ -1,11 +1,11 @@
 import '@docsearch/css';
 import {Metrics} from '@edgio/rum';
 import {MDXEmbedProvider} from 'mdx-embed';
-import {DefaultSeo} from 'next-seo';
 import type {AppProps} from 'next/app';
 import dynamic from 'next/dynamic';
 import {useRouter} from 'next/router';
 import Script from 'next/script';
+import {DefaultSeo} from 'next-seo';
 import NProgress from 'nprogress';
 import * as React from 'react';
 

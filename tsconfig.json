@@ -24,7 +24,7 @@
     "next-env.d.ts",
     "src/**/*.ts",
     "src/**/*.tsx",
-    "src/pages/guides/[version]/[...slug].tsx_"
+    "src/pages/guides/[version]/[...slug].tsx"
   ],
   "exclude": ["node_modules"]
 }

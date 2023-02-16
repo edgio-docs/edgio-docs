@@ -2,7 +2,7 @@
 title: Contributing to the {{ PRODUCT_NAME }} Documentation
 ---
 
-{{ PRODUCT_NAME }} is about empowering developers and our documentation is no different. We welcome feedback whether it consists of fixing a typo or a better explanation. You can find the source code for this documentation site in a public [GitHub repository](https://github.com/{{ DOCS_REPO }}). Once you have made the desired changes, submit a [pull request](https://github.com/layer0-docs/layer0-docs/pulls). Alternatively, you can let us know how we can improve the documentation by [filing an issue](https://github.com/layer0-docs/layer0-docs/issues). 
+{{ PRODUCT_NAME }} is about empowering developers and our documentation is no different. We welcome feedback whether it consists of fixing a typo or a better explanation. You can find the source code for this documentation site in a public [GitHub repository](https://github.com/{{ DOCS_REPO }}). Once you have made the desired changes, submit a [pull request](https://github.com/edgio-docs/edgio-docs/pulls). Alternatively, you can let us know how we can improve the documentation by [filing an issue](https://github.com/edgio-docs/edgio-docs/issues). 
 
 ## Running the Documentation Site Locally {/*running-locally*/}
 
@@ -17,7 +17,7 @@ Run our documentation site on your local machine through the following steps:
 2.  Install the dependencies:
 
     ```bash
-    cd layer0-docs
+    cd edgio-docs
     yarn install
     ```
 
@@ -250,13 +250,13 @@ interface IButtonLinkProps {
 ```
 Renders:
 
-<ButtonLink variant="fill" type="default" href="https://layer0-docs-layer0-nextjs-example-default.layer0-limelight.link">
+<ButtonLink variant="fill" type="default" href="https://edgio-community-examples-nextjs-live.layer0-limelight.link/">
  Try the Next.js SSR Example Site
 </ButtonLink>
-<ButtonLink variant="stroke" type="code" withIcon={true} href="https://github.com/layer0-docs/layer0-nextjs-example">
+<ButtonLink variant="stroke" type="code" withIcon={true} href="https://github.com/edgio-docs/edgio-nextjs-example">
  View the Code
 </ButtonLink>
-<ButtonLink variant="stroke" type="deploy" withIcon={true} href="https://app.layer0.co/deploy?button&deploy&repo=https%253A%252F%252Fgithub.com%252Flayer0-docs%252Flayer0-nextjs-example" />
+<ButtonLink variant="stroke" type="deploy" withIcon={true} href="https://app.layer0.co/deploy?button&deploy&repo=https%253A%252F%252Fgithub.com%252Fedgio-docs%252Fedgio-nextjs-example" />
 
 ---
 
@@ -277,11 +277,11 @@ Renders:
 Renders:
 
 <ButtonLinksGroup>
-	<ButtonLink variant="fill" type="default" href="https://layer0-docs-layer0-nextjs-example-default.layer0-limelight.link">
+	<ButtonLink variant="fill" type="default" href="https://edgio-community-examples-nextjs-live.layer0-limelight.link/">
 	 Try the Next.js SSR Example Site
 	</ButtonLink>
-	<ButtonLink variant="stroke" type="code" withIcon={true} href="https://github.com/layer0-docs/layer0-nextjs-example">
+	<ButtonLink variant="stroke" type="code" withIcon={true} href="https://github.com/edgio-docs/edgio-nextjs-example">
 	 View the Code
 	</ButtonLink>
-	<ButtonLink variant="stroke" type="deploy" withIcon={true} href="https://app.layer0.co/deploy?button&deploy&repo=https%253A%252F%252Fgithub.com%252Flayer0-docs%252Flayer0-nextjs-example" />
+	<ButtonLink variant="stroke" type="deploy" withIcon={true} href="https://app.layer0.co/deploy?button&deploy&repo=https%253A%252F%252Fgithub.com%252Fedgio-docs%252Fedgio-nextjs-example" />
 </ButtonLinksGroup>

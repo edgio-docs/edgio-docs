@@ -10,8 +10,8 @@ Sanity Studio is a single page app (SPA) written in React, where you can configu
 
 <ExampleButtons
   title="Sanity Studio"
-  siteUrl="https://layer0-docs-layer0-sanity-studio-example-default.layer0-limelight.link"
-  repoUrl="https://github.com/layer0-docs/layer0-sanity-studio-example" 
+  siteUrl="https://edgio-community-examples-sanity-studio-live.layer0-limelight.link/"
+  repoUrl="https://github.com/edgio-docs/edgio-sanity-studio-example" 
   deployFromRepo />
 
 {{ PREREQ }}

@@ -69,7 +69,7 @@ Use this worksheet when auditing your site for personalized content to inventory
 
 This framework has a connector developed for {{ PRODUCT_NAME }}. See [Connectors](/guides/sites_frameworks/connectors) for more information.
 
-<ButtonLink variant="stroke" type="code" withIcon={true} href="https://github.com/layer0-docs/layer0-connectors/tree/main/layer0-starter-connector">
+<ButtonLink variant="stroke" type="code" withIcon={true} href="https://github.com/edgio-docs/edgio-connectors/tree/main/edgio-starter-connector">
   View the Connector Code
 </ButtonLink>
 

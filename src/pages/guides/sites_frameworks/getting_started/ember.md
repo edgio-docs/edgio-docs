@@ -9,7 +9,7 @@ This guide shows you how to deploy an [Ember.js](https://emberjs.com/) applicati
 <ExampleButtons
   title="Ember.js"
   siteUrl="https://layer0-docs-layer0-emberjs-example-default.layer0-limelight.link"
-  repoUrl="https://github.com/layer0-docs/layer0-emberjs-example" 
+  repoUrl="https://github.com/edgio-docs/edgio-emberjs-example" 
   deployFromRepo />
 
 {{ PREREQ }}

@@ -8,8 +8,8 @@ This guide shows you how to deploy a [VitePress](https://vitepress.vuejs.org/) a
 
 <ExampleButtons
   title="VitePress"
-  siteUrl="https://layer0-docs-layer0-vitepress-example-default.layer0-limelight.link"
-  repoUrl="https://github.com/layer0-docs/layer0-vitepress-example" 
+  siteUrl="https://edgio-community-examples-vitepress-live.layer0-limelight.link/"
+  repoUrl="https://github.com/edgio-docs/edgio-vitepress-example" 
   deployFromRepo />
 
 {{ PREREQ }}

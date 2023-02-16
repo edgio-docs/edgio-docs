@@ -9,7 +9,7 @@ This guide shows you how to deploy a [React Static](https://github.com/react-sta
 <ExampleButtons
   title="React Static"
   siteUrl="https://layer0-docs-layer0-react-static-example-default.layer0-limelight.link"
-  repoUrl="https://github.com/layer0-docs/layer0-react-static-example" 
+  repoUrl="https://github.com/edgio-docs/edgio-react-static-example" 
   deployFromRepo />
 
 {{ PREREQ }}

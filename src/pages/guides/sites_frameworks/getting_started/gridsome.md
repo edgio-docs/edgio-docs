@@ -9,7 +9,7 @@ This guide shows you how to deploy a [Gridsome](https://gridsome.org/) applicati
 <ExampleButtons
   title="Gridsome"
   siteUrl="https://layer0-docs-layer0-gridsome-example-default.layer0-limelight.link"
-  repoUrl="https://github.com/layer0-docs/layer0-gridsome-example" 
+  repoUrl="https://github.com/edgio-docs/edgio-gridsome-example" 
   deployFromRepo />
 
 {{ PREREQ }}

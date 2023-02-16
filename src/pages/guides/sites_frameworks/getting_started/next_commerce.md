@@ -4,6 +4,8 @@ title: Next.js Commerce
 
 This guide shows you how to deploy the [Next.js Commerce](https://github.com/vercel/commerce) starter kit on {{ PRODUCT }}. Note that Next.js Commerce repo is actively under development. This repo requires an account on the [BigCommerce](https://www.bigcommerce.com/) platform. BigCommerce has a generous free trial which can be used.
 
+<!--
+
 ## Next.js Commerce Example {/*nextjs-commerce-example*/}
 
 Here is an example of the [Next.js Commerce](https://nextjs.org/commerce) template running on {{ PRODUCT }}. It uses all of the latest Next.js 10 features including image optimization, localization, and incremental static regeneration with stale-while-revalidate.
@@ -12,11 +14,13 @@ Here is an example of the [Next.js Commerce](https://nextjs.org/commerce) templa
   <ButtonLink variant="fill" type="default" href="https://layer0-docs-layer0-nextjs-commerce-default.layer0-limelight.link">
     Try the Next.js Commerce Example Site
   </ButtonLink>
-  <ButtonLink variant="stroke" type="code" withIcon={true} href="https://github.com/layer0-docs/layer0-nextjs-commerce-example">
+  <ButtonLink variant="stroke" type="code" withIcon={true} href="https://github.com/edgio-docs/edgio-nextjs-commerce-example">
    View the Code
   </ButtonLink>
-  <ButtonLink variant="stroke" type="deploy" withIcon={true} href="{{ APP_URL }}/deploy?button&deploy&repo=https%3A%2F%2Fgithub.com%2Flayer0-docs%2Flayer0-nextjs-commerce-example" />
+  <ButtonLink variant="stroke" type="deploy" withIcon={true} href="{{ APP_URL }}/deploy?button&deploy&repo=https%3A%2F%2Fgithub.com%2Fedgio-docs%2Fedgio-nextjs-commerce-example" />
 </ButtonLinksGroup>
+
+-->
 
 {{ PREREQ }}
 
@@ -24,7 +28,7 @@ Here is an example of the [Next.js Commerce](https://nextjs.org/commerce) templa
 
 Quickly launch an example with no code by clicking the "Deploy to {{ PRODUCT }}" button.
 
-<ButtonLink variant="stroke" type="deploy" withIcon={true} href="{{ APP_URL }}/deploy?button&deploy&repo=https%3A%2F%2Fgithub.com%2Flayer0-docs%2Flayer0-nextjs-commerce-example" />
+<ButtonLink variant="stroke" type="deploy" withIcon={true} href="{{ APP_URL }}/deploy?button&deploy&repo=https%3A%2F%2Fgithub.com%2Fedgio-docs%2Fedgio-nextjs-commerce-example" />
 
 ## Deploying the official Next.js Commerce repository {/*deploying-the-official-nextjs-commerce-repository*/}
 
@@ -104,6 +108,6 @@ Or from within `site` directory
 
 This framework has a connector developed for {{ PRODUCT }}. See [Connectors](/guides/sites_frameworks/connectors) for more information.
 
-<ButtonLink variant="stroke" type="code" withIcon={true} href="https://github.com/layer0-docs/layer0-connectors/tree/main/layer0-next-connector">
+<ButtonLink variant="stroke" type="code" withIcon={true} href="https://github.com/edgio-docs/edgio-connectors/tree/main/edgio-next-connector">
   View the Connector Code
 </ButtonLink>

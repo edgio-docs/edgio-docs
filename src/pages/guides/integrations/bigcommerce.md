@@ -15,7 +15,7 @@ This example is a Next.js app powered by a BigCommerce backend.
 <ExampleButtons
   title="BigCommerce"
   siteUrl="https://layer0-docs-layer0-nextjs-commerce-default.layer0-limelight.link"
-  repoUrl="https://github.com/layer0-docs/layer0-nextjs-commerce-example"
+  repoUrl="https://github.com/edgio-docs/edgio-nextjs-commerce-example"
   deployFromRepo />
 
 {{ PREREQ }}

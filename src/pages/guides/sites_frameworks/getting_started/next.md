@@ -10,8 +10,8 @@ This guide shows you how to deploy a [Next.js](https://nextjs.org/) application 
 
 <ExampleButtons
   title="Next.js SSR"
-  siteUrl="https://layer0-docs-layer0-nextjs-example-default.layer0-limelight.link"
-  repoUrl="https://github.com/layer0-docs/layer0-nextjs-example"
+  siteUrl="https://edgio-community-examples-nextjs-live.layer0-limelight.link/"
+  repoUrl="https://github.com/edgio-docs/edgio-nextjs-example"
   deployFromRepo
 />
 
@@ -27,7 +27,7 @@ This framework has a connector developed for {{ PRODUCT }}. See [Connectors](/gu
   variant="stroke"
   type="code"
   withIcon={true}
-  href="https://github.com/layer0-docs/layer0-connectors/tree/main/layer0-next-connector">
+  href="https://github.com/edgio-docs/edgio-connectors/tree/main/edgio-next-connector">
   View the Connector Code
 </ButtonLink>
 
@@ -421,7 +421,7 @@ module.exports = {
 };
 ```
 
-A working example app can be found [here](https://github.com/layer0-docs/layer0-next-i18n-example).
+A working example app can be found [here](https://github.com/edgio-docs/edgio-next-i18n-example).
 
 ## Image optimizer {/*image-optimizer*/}
 

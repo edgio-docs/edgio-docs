@@ -8,7 +8,7 @@ title: MkDocs
 
 <ExampleButtons
   title="MkDocs"
-  siteUrl="https://layer0-docs-layer0-mkdocs-example-default.layer0-limelight.link"
+  siteUrl="https://edgio-community-examples-mkdocs-live.layer0-limelight.link/"
   repoUrl="https://github.com/edgio-docs/edgio-mkdocs-example"
   deployFromRepo />
 

@@ -10,8 +10,8 @@ This guide shows you how to deploy a [Hexo](https://hexo.io/) application to {{ 
 
 <ExampleButtons
   title="Hexo"
-  siteUrl="https://layer0-docs-layer0-hexo-example-default.layer0-limelight.link"
-  repoUrl="https://github.com/layer0-docs/layer0-hexo-example" 
+  siteUrl="https://edgio-community-examples-hexo-live.layer0-limelight.link/"
+  repoUrl="https://github.com/edgio-docs/edgio-hexo-example" 
   deployFromRepo />
 
 ## Connector {/*connector*/}

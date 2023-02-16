@@ -1,5 +1,5 @@
 import {useMemo, ReactNode} from 'react';
-import {satisfies, coerce, parse, validRange} from 'semver';
+import {satisfies, coerce, validRange} from 'semver';
 
 import useConditioning from '../../utils/hooks/useConditioning';
 
@@ -16,8 +16,8 @@ function Condition({version, children}: ConditionProps) {
   const {version: currentVersion} = useConditioning();
 
   const isVersionSatisfied = useMemo(() => {
-    // parse to a valid semver version
-    const currentVersionParsed = parse(`${currentVersion}.0.0`) || '0.0.0';
+    // coerce to a valid semver version
+    const currentVersionParsed = coerce(currentVersion) ?? '0.0.0';
 
     const versionRange = validRange(version) || '';
     return satisfies(currentVersionParsed, versionRange);

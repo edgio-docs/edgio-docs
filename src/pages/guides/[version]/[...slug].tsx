@@ -23,7 +23,6 @@ import templateReplace from 'utils/templateReplace';
 const applicationsPath = 'src/pages/guides';
 
 export default function VersionedGuide({source}: {source: any}) {
-  console.log('srouce', source);
   return (
     <Page routeTree={JSONRoutes}>
       <MarkdownPage meta={source.frontmatter}>

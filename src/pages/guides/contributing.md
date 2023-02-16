@@ -2,7 +2,7 @@
 title: Contributing to the {{ PRODUCT_NAME }} Documentation
 ---
 
-{{ PRODUCT_NAME }} is about empowering developers and our documentation is no different. We welcome feedback whether it consists of fixing a typo or a better explanation. You can find the source code for this documentation site in a public [GitHub repository](https://github.com/{{ DOCS_REPO }}). Once you have made the desired changes, submit a [pull request](https://github.com/layer0-docs/layer0-docs/pulls). Alternatively, you can let us know how we can improve the documentation by [filing an issue](https://github.com/layer0-docs/layer0-docs/issues). 
+{{ PRODUCT_NAME }} is about empowering developers and our documentation is no different. We welcome feedback whether it consists of fixing a typo or a better explanation. You can find the source code for this documentation site in a public [GitHub repository](https://github.com/{{ DOCS_REPO }}). Once you have made the desired changes, submit a [pull request](https://github.com/edgio-docs/edgio-docs/pulls). Alternatively, you can let us know how we can improve the documentation by [filing an issue](https://github.com/edgio-docs/edgio-docs/issues). 
 
 ## Running the Documentation Site Locally {/*running-locally*/}
 
@@ -17,7 +17,7 @@ Run our documentation site on your local machine through the following steps:
 2.  Install the dependencies:
 
     ```bash
-    cd layer0-docs
+    cd edgio-docs
     yarn install
     ```
 
@@ -49,10 +49,9 @@ You may contribute to our documentation by either:
 
 We recommend the following process for submitting a change:
 
-1. Fork the {{ PRODUCT_NAME }} documentation repository on GitHub.
-2. Clone the repo and make sure you can run the documentation site locally.
-3. Make your amazing edit — even a typo fix is an amazing edit!
-4. Commit and push your change back to your fork on GitHub.
+1. Clone the repo and make sure you can run the documentation site locally.
+2. Make your amazing edit — even a typo fix is an amazing edit!
+3. Commit and push your change branch to the origin repository.
 5. Submit a [pull request](https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/about-pull-requests) back to the {{ PRODUCT_NAME }} documentation repository (to the `main` branch).
 
 <Callout type="info">
@@ -285,3 +284,5 @@ Renders:
 	</ButtonLink>
 	<ButtonLink variant="stroke" type="deploy" withIcon={true} href="https://app.layer0.co/deploy?button&deploy&repo=https%253A%252F%252Fgithub.com%252Flayer0-docs%252Flayer0-nextjs-example" />
 </ButtonLinksGroup>
+
+## Versioning

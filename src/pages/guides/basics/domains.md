@@ -6,6 +6,16 @@ This guide covers the steps you need to take your site live on {{ PRODUCT_NAME }
 
 Creating custom domains is always done in the context of creating or updating an environment.
 
+<Condition version=">=6">
+
+  <Callout type="info">
+
+    This should only show for v6 and v7
+
+  </Callout>
+
+</Condition>
+
 ## Configuration Overview {/*configuration-overview*/}
 
 1. If needed, create an environment using instructions in [Environments](/guides/basics/environments).

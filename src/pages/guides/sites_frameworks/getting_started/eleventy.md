@@ -8,7 +8,7 @@ This guide shows you how to deploy a [Eleventy](https://www.11ty.dev/) applicati
 
 <ExampleButtons
   title="Eleventy"
-  siteUrl="https://layer0-docs-layer0-eleventy-example-default.layer0-limelight.link"
+  siteUrl="https://edgio-community-examples-eleventy-live.layer0-limelight.link/"
   repoUrl="https://github.com/edgio-docs/edgio-eleventy-example" 
   deployFromRepo />
 

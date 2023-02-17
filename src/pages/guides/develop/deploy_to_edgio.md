@@ -66,6 +66,6 @@ jobs:
 
 Once everything is setup, you can test your deploy button by appending your GitHub repository full URL to `{{ APP_URL }}/deploy?repo=`.
 
-For example, using our Next.js example located at `https://github.com/edgio-docs/edgio-nextjs-example` would become `{{ APP_URL }}/deploy?repo=https%3A%2F%2Fgithub.com%2Flayer0-docs%2Flayer0-nextjs-example`
+For example, using our Next.js example located at `https://github.com/edgio-docs/edgio-nextjs-example` would become `{{ APP_URL }}/deploy?repo=https%3A%2F%2Fgithub.com%2Fedgio-docs%2Fedgio-nextjs-example`
 
 Now, you can embed this link to let users instantly clone and deploy the project to {{ PRODUCT }}!

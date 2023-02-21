@@ -203,4 +203,4 @@ Refer to the [Deployments](/guides/basics/deployments) guide for more informatio
 
 ## Server Side Rendering {/*server-side-rendering*/}
 
-For server side rendered Vue.js apps we recommend using the Nuxt.js framework which is supported on {{ PRODUCT }}. Refer to the [Nuxt](nuxt) guide for more information.
+For server side rendered Vue.js apps we recommend using the Nuxt.js framework which is supported on {{ PRODUCT }}. Refer to the [Nuxt](/guides/sites_frameworks/getting_started/nuxt) guide for more information.

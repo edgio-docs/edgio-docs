@@ -17,11 +17,11 @@ This guide shows you how to deploy a [Next.js](https://nextjs.org/) application 
 
 ## Next.js Commerce {/*nextjs-commerce*/}
 
-For details on using the Next.js Commerce template with {{ PRODUCT }}, refer to our [Next.js Commerce Guide](next_commerce).
+For details on using the Next.js Commerce template with {{ PRODUCT }}, refer to our [Next.js Commerce Guide](/guides/sites_frameworks/getting_started/next_commerce).
 
 ## Connector {/*connector*/}
 
-This framework has a connector developed for {{ PRODUCT }}. See [Connectors](/guides/sites_frameworks/connectors) for more information.
+{{ PRODUCT }} provides a connector for this framework. [Learn more.](/guides/sites_frameworks/connectors)
 
 <ButtonLink
   variant="stroke"

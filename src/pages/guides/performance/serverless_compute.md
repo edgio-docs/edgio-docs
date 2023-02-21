@@ -36,10 +36,10 @@ To create a new {{ PRODUCT }} project using serverless functions, run:
 npx {{ PACKAGE_NAME }}/cli@latest init
 ```
 
-Or you can clone this example repo: [layer0-serverless-example](https://github.com/layer0-docs/layer0-serverless-example), which has some more complex examples of how to use serverless functions:
+Or you can clone this example repo: [layer0-serverless-example](https://github.com/edgio-docs/edgio-serverless-example), which has some more complex examples of how to use serverless functions:
 
 ```bash
-npx degit https://github.com/layer0-docs/layer0-serverless-example my-serverless-functions
+npx degit https://github.com/edgio-docs/edgio-serverless-example my-serverless-functions
 ```
 
 ## Responding to requests {/*responding-to-requests*/}

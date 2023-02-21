@@ -7,7 +7,7 @@ This guide shows you how to deploy a [Hugo](https://gohugo.io) application to {{
 ## Example {/*example*/}
 
 <ExampleButtons
-  repoUrl="https://github.com/layer0-docs/layer0-hugo-example"
+  repoUrl="https://github.com/edgio-docs/edgio-hugo-example"
    />
 
 {{ PREREQ }}

@@ -6,7 +6,7 @@ This guide shows you how to deploy a [Zola](https://www.getzola.org/) applicatio
 
 ## Example {/*example*/}
 
-<ExampleButtons repoUrl="https://github.com/layer0-docs/layer0-zola-example" />
+<ExampleButtons repoUrl="https://github.com/edgio-docs/edgio-zola-example" />
 
 {{ PREREQ }}
 

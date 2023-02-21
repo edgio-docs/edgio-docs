@@ -6,14 +6,6 @@ This guide shows you how to deploy a [Sanity Studio](https://www.sanity.io/docs/
 
 Sanity Studio is a single page app (SPA) written in React, where you can configure the document types and input fields, with simple JavaScript objects. This guide will walk you through how to deploy Sanity Studio with {{ PRODUCT }} in four simple steps.
 
-## Example {/*example*/}
-
-<ExampleButtons
-  title="Sanity Studio"
-  siteUrl="https://layer0-docs-layer0-sanity-studio-example-default.layer0-limelight.link"
-  repoUrl="https://github.com/layer0-docs/layer0-sanity-studio-example" 
-  deployFromRepo />
-
 {{ PREREQ }}
 
 ## Create a new Sanity Studio app {/*create-a-new-sanity-studio-app*/}

@@ -4,19 +4,21 @@ title: Angular
 
 This guide shows you how to deploy an [Angular](https://angular.io) application to {{ PRODUCT }}.
 
+<Video src="https://www.youtube.com/watch?v=V3qY6ffUNHs" />
+
 ## Example {/*example*/}
 
 <ExampleButtons
   title="Angular SSR"
-  siteUrl="https://layer0-docs-layer0-angular-example-default.layer0-limelight.link/category/hats"
-  repoUrl="https://github.com/layer0-docs/layer0-angular-example" 
+  siteUrl="https://edgio-community-examples-angular-live.layer0-limelight.link/commerce/jacket"
+  repoUrl="https://github.com/edgio-docs/edgio-angular-example" 
   deployFromRepo />
 
 ## Connector {/*connector*/}
 
 This framework has a connector developed for {{ PRODUCT }}. See [Connectors](/guides/sites_frameworks/connectors) for more information.
 
-<ButtonLink variant="stroke" type="code" withIcon={true} href="https://github.com/layer0-docs/layer0-connectors/tree/main/layer0-angular-connector">
+<ButtonLink variant="stroke" type="code" withIcon={true} href="https://github.com/edgio-docs/edgio-connectors/tree/main/edgio-angular-connector">
  View the Connector Code
 </ButtonLink>
 

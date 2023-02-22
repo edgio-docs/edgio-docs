@@ -8,8 +8,8 @@ This guide shows you how to deploy a [Brunch](https://brunch.io/) application to
 
 <ExampleButtons
   title="Brunch"
-  siteUrl="https://layer0-docs-layer0-brunch-example-default.layer0-limelight.link"
-  repoUrl="https://github.com/layer0-docs/layer0-brunch-example" 
+  siteUrl="https://edgio-community-examples-brunch-live.layer0-limelight.link/"
+  repoUrl="https://github.com/edgio-docs/edgio-brunch-example" 
   deployFromRepo />
 
 {{ PREREQ }}

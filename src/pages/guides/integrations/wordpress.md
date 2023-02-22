@@ -2,7 +2,7 @@
 title: WordPress Integration
 ---
 
-Improve performance for a website powered by a [WordPress](https://www.wordpress.com) instance by proxying traffic through {{ PRODUCT }}. This reduces latency by allowing your website content to be cached across our global network. It also empowers you to securely deliver your website content and to take advantage of other performance enhancements, such as Predictive Prefetching. Finally, you may manage cached website content from within your WordPress control panel through our free WordPress plugin.
+Optimize your [WordPress](https://www.wordpress.com) website's performance and security with {{ PRODUCT }}. Proxying traffic through our global network reduces latency and enhances the delivery of your website content. With our free WordPress plugin, you can manage cached website content directly from your control panel. Additionally, {{ PRODUCT }} offers advanced performance enhancements such as Predictive Prefetching for an even better user experience. Upgrade your website's performance today with {{ PRODUCT }}!
 
 ## What is WordPress? {/*what-is-wordpresss*/}
 
@@ -73,7 +73,7 @@ Once you have confirmed that your deployed {{ PRODUCT }} site is proxying conten
 
 ## WordPress Plugin {/*wordpress-plugin*/}
 
-{{ PRODUCT }} provides a WordPress plugin you may leverage to automatically clear the {{ PRODUCT }} cache when a change is made to your site.
+{{ PRODUCT }} provides a WordPress plugin you may leverage to set cache TTL and automatically clear the {{ PRODUCT }} cache when a change is made to your site.
 
 First, to obtain the latest plugin version, [click here](/archive/github/edgio/edgiowordpress/wp-content/plugins/edgio) to download the ZIP file.
 
@@ -97,12 +97,17 @@ In order for the plugin to be able to interact with the {{ PRODUCT_PLATFORM }}, 
 
 - Environment Name
 - API Key
+- Browser Cache TTL (seconds)
+- Edge Cache TTL (seconds)
+- Cache Stale-While-Revalidate (seconds)
 
 ![plugin fields](/images/wordpress/plugin_fields.png)
 
 **Environment Name** refers to the {{ PRODUCT }} environment as defined in the [Developer Console]({{ LOGIN_URL }}) for your site. This value will typically be `default` or `production` depending on how your site is setup, but can be any valid environment that you have created.
 
 To obtain the **API Key**, go to your site within the [{{ PRODUCT }} Developer Console]({{ LOGIN_URL }}). Click **Settings > Create new Deploy Token** and enter in a name for the token.
+
+For information on the **Browser Cache TTL**, **Edge Cache TTL**, and **Cache Stale-While-Revalidate** fields, refer to the [Caching guide](/guides/performance/caching).
 
 ![plugin fields](/images/wordpress/deploy_token.png)
 
@@ -111,3 +116,5 @@ Once created, copy the token to the **API Key** field of the WordPress plugin. A
 Lastly, test the behavior by clicking **Clear Cache**. You can validate the cache clearing was successful by checking the **Activity** tab of your site:
 
 ![purge activity](/images/wordpress/purge_activity.png)
+
+With {{ PRODUCT }}, you never have to worry about outdated content. Whenever you make updates to a page on your WordPress site, our plugin automatically clears the cache for the changed page. This ensures that your viewers will always have access to the most up-to-date content. The {{ PRODUCT }} plugin provides a seamless, efficient solution to keep your website's content fresh and accessible to your audience, without any manual intervention required.

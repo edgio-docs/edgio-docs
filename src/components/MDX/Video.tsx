@@ -45,6 +45,10 @@ const StyledVideo = styled.div<StyledVideoProps>`
       height: 100%;
     }
   }
+
+  @media (min-width: 560px) {
+    width: 560px;
+  }
 `;
 
 const StyledWait = styled.div`

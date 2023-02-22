@@ -8,8 +8,8 @@ This guide shows you how to deploy a [Docusaurus](https://docusaurus.io/) applic
 
 <ExampleButtons
   title="Docusaurus"
-  siteUrl="https://layer0-docs-layer0-docusaurus-example-default.layer0-limelight.link"
-  repoUrl="https://github.com/layer0-docs/layer0-docusaurus-example" 
+  siteUrl="https://edgio-community-examples-docusaurus-test.layer0-limelight.link/"
+  repoUrl="https://github.com/edgio-docs/edgio-docusaurus-example" 
   deployFromRepo />
 
 {{ PREREQ }}

@@ -8,8 +8,8 @@ This guide shows you how to serve a [React](https://reactjs.org/) application to
 
 <ExampleButtons
   title="React"
-  siteUrl="https://layer0-docs-layer0-static-react-example-default.layer0-limelight.link/"
-  repoUrl="https://github.com/layer0-docs/static-react-example" 
+  siteUrl="https://edgio-community-examples-static-react-live.layer0-limelight.link/"
+  repoUrl="https://github.com/edgio-docs/edgio-static-react-example" 
   deployFromRepo />
 
 ## Connector {/*connector*/}
@@ -23,6 +23,8 @@ This framework has a connector developed for {{ PRODUCT }}. See [Connectors](/gu
 {{ PREREQ }}
 
 ## Create React App {/*create-react-app*/}
+
+<Video src="https://www.youtube.com/watch?v=O-7YqHqAIJA" />
 
 This guide will use [Create React App](https://create-react-app.dev/) to generate a project.
 

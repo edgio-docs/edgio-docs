@@ -4,6 +4,8 @@ title: Express
 
 [Express](https://expressjs.com) is a fast, unopinionated, minimalist web framework for Node.js. The {{ PRODUCT_PLATFORM }}'s serverless environment makes it easy to run apps without managing Node.js servers.
 
+<Video src="https://youtu.be/HnDR07NCVoI" />
+
 ## Getting Started {/*getting-started*/}
 
 Add your Express app to {{ PRODUCT }} by running the following command in your project's root directory:

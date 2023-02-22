@@ -418,12 +418,6 @@ const SidebarMenuItems: ISidebarMenuItems = [
           iconDark: <IconMKDocsDark />,
         },
         {
-          title: 'Nx',
-          path: '/guides/sites_frameworks/getting_started/nx',
-          icon: <IconNX />,
-          iconDark: <IconNXDark />,
-        },
-        {
           title: 'Next.js',
           path: '/guides/sites_frameworks/getting_started/next',
           icon: <IconNextJS />,
@@ -595,7 +589,7 @@ const SidebarMenuItems: ISidebarMenuItems = [
         },
         {
           title: PRODUCT_SECURITY_ADVANCED_BOT,
-          path: '/guides/advanced_bot_management',
+          path: '/guides/security/managed_bot_defense',
           separator: true,
         },
         {

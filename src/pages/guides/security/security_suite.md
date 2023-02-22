@@ -36,7 +36,7 @@ The WAF includes Managed Rule Groups, managed by {{ PRODUCT_NAME }}, that can be
 
 </Callout>
 
-[{{ PRODUCT }} Managed Rule Group Descriptions](managed_rule_groups)
+[{{ PRODUCT }} Managed Rule Group Descriptions](/guides/security/managed_rule_groups)
 
 ---
 
@@ -44,7 +44,7 @@ The WAF includes Managed Rule Groups, managed by {{ PRODUCT_NAME }}, that can be
 
 The Admin protection rule group contains rules that allow you to block external access to exposed administrative pages. This might be useful if you run third-party software or want to reduce the risk of a malicious actor gaining administrative access to your application.
 
-[Admin Page Protection Rule Description](managed_rule_groups#admin-page-protection-rule)
+[Admin Page Protection Rule Description](/guides/security/managed_rule_groups#admin-page-protection-rule)
 
 ---
 
@@ -59,7 +59,7 @@ The Bad Input rule group contains rules to block request patterns that are known
 
 </Callout>
 
-[Bad Input Rule Descriptions](managed_rule_groups#bad-input-rules)
+[Bad Input Rule Descriptions](/guides/security/managed_rule_groups#bad-input-rules)
 
 ---
 
@@ -67,7 +67,7 @@ The Bad Input rule group contains rules to block request patterns that are known
 
 The PHP application rule group contains rules that block request patterns associated with the exploitation of vulnerabilities specific to the use of the PHP programming language. This includes the injection of unsafe PHP functions into requests.
 
-[PHP Application Rule Descriptions](managed_rule_groups#php-application-rules)
+[PHP Application Rule Descriptions](/guides/security/managed_rule_groups#php-application-rules)
 
 ---
 
@@ -75,7 +75,7 @@ The PHP application rule group contains rules that block request patterns associ
 
 The SQL database rule group contains rules to block request patterns associated with exploitation of SQL databases, like SQL injection attacks. This can help prevent remote injection of unauthorized queries. Evaluate this rule group for use if your application interfaces with an SQL database.
 
-[SQL Database Rule Descriptions](managed_rule_groups#sql-database-rules)
+[SQL Database Rule Descriptions](/guides/security/managed_rule_groups#sql-database-rules)
 
 ---
 
@@ -150,7 +150,7 @@ The Bot Control product applies labels to a set of verifiable bots that are comm
 
 You can monitor the impact of your bots by flagging each bot type of request gaining insights into SEO bots, scraping bots, advertising bots, malicious user agent bots, and several other categories of bots.
 
-[Bot Control Rule Descriptions](managed_rule_groups#bot-control-rules)
+[Bot Control Rule Descriptions](/guides/security/managed_rule_groups#bot-control-rules)
 
 ### Detect Bots with EdgeJS {/*detect-bots-with-edgejs*/}
 

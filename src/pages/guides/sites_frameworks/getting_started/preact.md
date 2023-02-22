@@ -8,8 +8,8 @@ This guide shows you how to deploy a [Preact](https://preactjs.com/) application
 
 <ExampleButtons
   title="Preact"
-  siteUrl="https://layer0-docs-layer0-preact-example-default.layer0-limelight.link"
-  repoUrl="https://github.com/layer0-docs/layer0-preact-example" 
+  siteUrl="https://edgio-community-examples-preact-live.layer0-limelight.link/"
+  repoUrl="https://github.com/edgio-docs/edgio-preact-example" 
   deployFromRepo />
 
 {{ PREREQ }}

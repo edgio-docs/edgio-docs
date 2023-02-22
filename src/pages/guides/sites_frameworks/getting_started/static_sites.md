@@ -12,20 +12,20 @@ Here are a few examples of common static sites served by {{ PRODUCT }}.
 
 <ExampleButtons
   title="(Static) Backbone.js"
-  siteUrl="https://layer0-docs-layer0-static-backbonejs-example-default.layer0-limelight.link"
-  repoUrl="https://github.com/layer0-docs/static-backbonejs-example" 
+  siteUrl="https://edgio-community-examples-static-backbonejs-live.layer0-limelight.link/"
+  repoUrl="https://github.com/edgio-docs/edgio-static-backbonejs-example" 
   deployFromRepo />
 
 <ExampleButtons
   title="(Static) React"
-  siteUrl="https://layer0-docs-layer0-static-react-example-default.layer0-limelight.link"
-  repoUrl="https://github.com/layer0-docs/layer0-static-react-example" 
+  siteUrl="https://edgio-community-examples-static-react-live.layer0-limelight.link/"
+  repoUrl="https://github.com/edgio-docs/edgio-static-react-example" 
   deployFromRepo />
 
 <ExampleButtons
   title="(Static) Vue.js"
-  siteUrl="https://layer0-docs-layer0-vue3-example-default.layer0-limelight.link"
-  repoUrl="https://github.com/layer0-docs/layer0-vue3-example" 
+  siteUrl="https://edgio-community-examples-vue3-live.layer0-limelight.link/"
+  repoUrl="https://github.com/edgio-docs/edgio-vue3-example" 
   deployFromRepo />
 
 {{ PREREQ }}

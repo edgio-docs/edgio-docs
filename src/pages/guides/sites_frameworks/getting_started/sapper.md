@@ -13,14 +13,14 @@ This Sapper example app uses server-side rendering and prefetching to provide li
 <ExampleButtons
   title="Sapper SSR"
   siteUrl="https://layer0-docs-layer0-sapper-example-default.layer0-limelight.link/category/hats"
-  repoUrl="https://github.com/layer0-docs/layer0-sapper-example" 
+  repoUrl="https://github.com/edgio-docs/edgio-sapper-example" 
   deployFromRepo />
 
 ## Connector {/*connector*/}
 
 This framework has a connector developed for {{ PRODUCT }}. See [Connectors](/guides/sites_frameworks/connectors) for more information.
 
-<ButtonLink variant="stroke" type="code" withIcon={true} href="https://github.com/layer0-docs/layer0-connectors/tree/main/layer0-sapper-connector">
+<ButtonLink variant="stroke" type="code" withIcon={true} href="https://github.com/edgio-docs/edgio-connectors/tree/main/edgio-sapper-connector">
   View the Connector Code
 </ButtonLink>
 

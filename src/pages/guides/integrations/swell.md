@@ -15,7 +15,7 @@ A Swell powered ecommerce backend and a Nuxt.js app for the framework.
 <ExampleButtons
   title="Swell with Nuxt.js"
   siteUrl="https://layer0-docs-swell-origin-theme-default.layer0-limelight.link"
-  repoUrl="https://github.com/layer0-docs/layer0-swell-example" 
+  repoUrl="https://github.com/edgio-docs/edgio-swell-example" 
   deployFromRepo />
 
 {{ PREREQ }}

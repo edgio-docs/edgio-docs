@@ -9,7 +9,7 @@ Get started with {{ PRODUCT }} by satisfying our [prerequisites](#prerequisites)
 3.  [Deploy your property to {{ PRODUCT }}.](#deploy-property)
 4.  [Next steps.](#next-steps)
 
-&nbsp;<img data-inline-img src="/icons/yt_icon_rgb.png?width=38" alt="" /> <a href="https://youtu.be/kCGBgzkaOJ0">{{ PRODUCT }} Walkthrough</a>
+<Video src="https://youtu.be/kCGBgzkaOJ0" />
 
 ## Quick Start {/*quick-start*/}
 

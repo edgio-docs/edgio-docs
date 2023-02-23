@@ -3,7 +3,7 @@ import styled from 'styled-components';
 const StyledComp = styled.figure`
   img {
     display: flex;
-    max-width: calc(min(var(--docs-area-width), 100%));
+    max-width: calc(min(var(--docs-area-width), 98%));
   }
 
   &[data-inline-img='true'] {

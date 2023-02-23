@@ -41,14 +41,15 @@ On a per environment-basis, define each hostname that will be served through {{ 
 
 **To add, modify, or delete hostnames from an environment**
 
-1.  From the {{ PORTAL }}, select the desired property.
-2.  From the left-hand pane, select the desired environment from under the **Environments** section.
-3.  From the left-hand pane, select **Hostnames**. 
-4.  If you are not in draft mode, click **Edit v#** or **Continue editing draft v#**. 
+1.  Load the **Hostnames** page.
+    1.  From the {{ PORTAL }}, select the desired property.
+    2.  From the left-hand pane, select the desired environment from under the **Environments** section.
+    3.  From the left-hand pane, select **Hostnames**. 
+2.  If you are not in draft mode, click **Edit v#** or **Continue editing draft v#**. 
 
 TODO: Is this step going away?
 
-5.  Perform one of the following steps:
+3.  Perform one of the following steps:
 
     -   **Add a Hostname:** 
 
@@ -60,8 +61,8 @@ TODO: Is this step going away?
     -   **Modify a Hostname:** Modify an existing hostname by replacing the existing value with a new value. 
     -   **Delete a Hostname:** Click <img data-inline-img src="/images/icons/delete.png" alt="Delete icon" /> next to the hostname that should be deleted. 
 
-6.  Repeat step 5 as needed.
-7.  If you are finished making changes to this environment, click **Deploy Changes**.
+4.  Repeat step 3 as needed.
+5.  If you are finished making changes to this environment, click **Deploy Changes**.
 
 ## Origin
 
@@ -82,12 +83,13 @@ On a per environment-basis, define how {{ PRODUCT }} will communicate with your 
 
 **To add an origin configuration**
 
-1.  From the {{ PORTAL }}, select the desired property.
-2.  From the left-hand pane, select the desired environment from under the **Environments** section.
-3.  From the left-hand pane, select **Origins**. 
-4.  If you are not in draft mode, click **Edit v#**. 
-5.  Click **+ Add Origin**.
-6.  In the **Name** option, assign a name to this origin configuration. This name should only consist of alphanumeric characters, hyphens, periods, and underscores.
+1.  Load the **Origins** page.
+    1.  From the {{ PORTAL }}, select the desired property.
+    2.  From the left-hand pane, select the desired environment from under the **Environments** section.
+    3.  From the left-hand pane, select **Origins**. 
+2.  If you are not in draft mode, click **Edit v#**. 
+3.  Click **+ Add Origin**.
+4.  In the **Name** option, assign a name to this origin configuration. This name should only consist of alphanumeric characters, hyphens, periods, and underscores.
 
     <Callout type="info">
 
@@ -95,12 +97,13 @@ On a per environment-basis, define how {{ PRODUCT }} will communicate with your 
 
     </Callout>
 
-7.  In the **Name** option, type a hostname or IP address that points to your web server(s).
-8.  Set the **Port** option to the port over which our network will serve traffic to the above hostname or IP address.
-9.  Set the **Scheme** option to always serve traffic to your hosts over HTTPS, HTTP, or to match the client's scheme.
-10. Optional. If you would like to override the client's `Host` header, set the **Override Host Header** option to the desired hostname.
-11. Optional. Add another host to this origin configuration by clicking **+ Add Host** and then performing steps 7 - 10. 
-12. Optional. Expand the **Origin TLS Settings** section to define TLS settings for this origin configuration.
+4.  Define one or more host(s). Each host determines how {{ PRODUCT }} will communicate with your web server(s).
+    1.  In the **Origin Hostname** option, type a hostname or IP address that points to your web server(s).
+    2.  Optional. Set the **Port** option to the port over which our network will serve traffic to the above hostname or IP address.
+    3.  Set the **Scheme** option to always serve traffic to your hosts over HTTPS, HTTP, or to match the client's scheme.
+    4.  Optional. If you would like to override the client's `Host` header, set the **Override Host Header** option to the desired hostname.
+    5.  Optional. Add another host to this origin configuration by clicking **+ Add Host** and then performing steps 4.1 - 4.4. 
+5. Optional. Define TLS settings for this origin configuration. Expand the **Origin TLS Settings** section.
     1.  Enable SNI by toggling the **Use SNI** option to the on position (ICON PLACEHOLDER) and then defining the hostname that will be sent as a SNI hint during the TLS handshake. 
 
     <Callout type="info">
@@ -114,13 +117,13 @@ On a per environment-basis, define how {{ PRODUCT }} will communicate with your 
         1.  Click **+ Add Pin**.
         2.  Paste the SHA-256 digest for the public key of your leaf certificate.
         3.  Repeat steps 1 and 2 as needed.
-13. Shield this origin by adding a global or multiple shields.
+6. Shield this origin by adding a global or multiple shields.
         1.  
         2.  
         3.  
         4.  
         5.  
-14. If you are finished making changes to this environment, click **Deploy Changes**.
+7. If you are finished making changes to this environment, click **Deploy Changes**.
 
 ## TLS Certificate
 

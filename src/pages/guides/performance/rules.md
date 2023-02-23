@@ -97,7 +97,7 @@ Rules are typically processed in the order that they are listed. If a request sa
 
 </Callout>
 
-A good rule of thumb when determining where a rule should be placed is to order rules according to the level of detail in the criteria. Rules with general criteria should be placed closer to the top of the list, while more detailed criteria should be placed closer to the bottom. This type of configuration allows catch-all rules to assign default handling behavior for your assets without interfering with the manner in which specific types of assets are handled.
+A good rule of thumb when determining where a rule should be positioned is to order rules according to the level of detail in the criteria. Rules with general criteria should be placed closer to the top of the list, while more detailed criteria should be placed closer to the bottom. This type of configuration allows catch-all rules to assign default handling behavior for your assets without interfering with the manner in which specific types of assets are handled.
 
 ![Order of Precedence](/images/performance/rules-order-of-precedence.png)
 
@@ -155,25 +155,26 @@ TODO: **Is this needed now that we have autodraft?**
 
 **To set up rules**
 
-1.  From the {{ PORTAL }}, select the desired property.
-2.  From the left-hand pane, select the desired environment from under the **Environments** section.
-3.  From the left-hand pane, select **Rules**. 
-4.  If you are in read-only mode, click **Edit v#**
-5.  Add a rule by clicking **+ Add Rule**.
-6.  Add a condition that defines the set of requests for which this rule will be applied. Repeat this step as needed.
+1.  Load the **Rules** page.
+    1.  From the {{ PORTAL }}, select the desired property.
+    2.  From the left-hand pane, select the desired environment from under the **Environments** section.
+    3.  From the left-hand pane, select **Rules**. 
+2.  If you are in read-only mode, click **Edit v#**
+3.  Add a rule by clicking **+ Add Rule**.
+4.  Add a condition that defines the set of requests for which this rule will be applied. Repeat this step as needed.
     1.  Click **+ Add Condition**.
     2.  From the **Variable** option, select the method by which requests will be identified. 
     3.  From the **Operator** option, define the relationship between the variable selected in the previous step and the value that will be defined in the next step.
     4.  In the **Match Value** option, define a value that will be compared against for each request. 
     5.  Click **Add Condition**.
-7.  Add a feature that determines how the requests defined in the previous step will be processed. Repeat this step as needed.
+5.  Add a feature that determines how the requests defined in the previous step will be processed. Repeat this step as needed.
     1.  Click **+ Add Feature**.
     2.  From the **Feature Type** option, select the category that best corresponds to the desired feature.
     3.  From the **Feature** option, select the desired feature.
     4.  Configure the selected feature.
     5.  Click **Add Feature**.
-8.  Add more rules as needed by repeating steps 5 - 7.
-9.  Review your rules to verify how requests will be handled and the order in which rules will be applied to requests. 
+6.  Add more rules as needed by repeating steps 5 - 7.
+7.  Review your rules to verify how requests will be handled and the order in which rules will be applied to requests. 
 
     <Callout type="tip">
 
@@ -181,25 +182,27 @@ TODO: **Is this needed now that we have autodraft?**
 
     </Callout>
 
-10. Click **Deploy Changes**.
+8.  Click **Deploy Changes**.
 
 **To delete a rule**
 
-1.  From the {{ PORTAL }}, select the desired property.
-2.  From the left-hand pane, select the desired environment from under the **Environments** section.
-3.  From the left-hand pane, select **Rules**. 
-4.  Click the <img data-inline-img src="/icons/delete-2.png" alt="" /> icon next to the desired rule.
-5.  Confirm the deletion by clicking **Delete Rules**.
+1.  Load the **Rules** page.
+    1.  From the {{ PORTAL }}, select the desired property.
+    2.  From the left-hand pane, select the desired environment from under the **Environments** section.
+    3.  From the left-hand pane, select **Rules**. 
+2.  Click the <img data-inline-img src="/icons/delete-2.png" alt="" /> icon next to the desired rule.
+3.  Confirm the deletion by clicking **Delete Rules**.
 
 **To export your rules as EdgeJS code** <a id="export-rules-edgejs" /> 
 
-1.  From the {{ PORTAL }}, select the desired property.
-2.  From the left-hand pane, select the desired environment from under the **Environments** section.
-3.  From the left-hand pane, select **Rules**. 
-4.  Click **Export**.
-5.  Select **EdgeJS**.
-6.  Copy the code by clicking the <img data-inline-img src="/icons/copy-to-clipboard.png" alt="" /> icon.
-7.  Optional. Paste your code into your {{ ROUTES_FILE }}.
+1.  Load the **Rules** page.
+    1.  From the {{ PORTAL }}, select the desired property.
+    2.  From the left-hand pane, select the desired environment from under the **Environments** section.
+    3.  From the left-hand pane, select **Rules**. 
+2.  Click **Export**.
+3.  Select **EdgeJS**.
+4.  Copy the code by clicking the <img data-inline-img src="/icons/copy-to-clipboard.png" alt="" /> icon.
+5.  Optional. Paste your code into your {{ ROUTES_FILE }}.
 
 <Callout type="info">
 

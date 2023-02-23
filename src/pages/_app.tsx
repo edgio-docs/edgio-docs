@@ -11,7 +11,7 @@ import * as React from 'react';
 
 import LoadingFallBackPage from 'components/Fallbacks/Loading';
 // import {VersionProvider} from 'components/versioning';
-import {siteConfig} from 'siteConfig';
+import {siteConfig} from 'config/appConfig';
 
 // Universal loading page (used in dynamically imported components) which contains the wrapper of each page
 

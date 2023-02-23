@@ -1,12 +1,22 @@
+import {globbySync} from 'globby';
+import {join} from 'lodash';
 import {useRouter} from 'next/router';
 
+// TODO - get latest version from config files
+const latestVersion = '7'; //getLatestVersion();
 interface RouterQuery {
   version?: string | string[];
   [key: string]: any;
 }
 
+interface IVersion {
+  selectedVersion: string;
+  latestVersion: string;
+  pathPrefix: string;
+}
+
 interface IConditioning {
-  version: string;
+  version: IVersion;
 }
 
 function useConditioning(): IConditioning {
@@ -17,7 +27,13 @@ function useConditioning(): IConditioning {
   const cleanedVersion =
     version && typeof version === 'string' ? version.replace(/v/, '') : '';
 
-  return {version: cleanedVersion};
+  const versionConfig: IVersion = {
+    selectedVersion: cleanedVersion,
+    latestVersion,
+    pathPrefix: cleanedVersion ? `/v${cleanedVersion}` : '',
+  };
+
+  return {version: versionConfig};
 }
 
 export default useConditioning;

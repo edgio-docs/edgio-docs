@@ -5,7 +5,7 @@ import {MDXProvider} from '@mdx-js/react';
 import {useRouter} from 'next/router';
 import * as React from 'react';
 
-import {siteConfig} from '../../siteConfig';
+import {siteConfig} from '../../config/appConfig';
 import Docs from '../Docs';
 import DocsFooter from '../Docs/DocsFooter';
 import {MDXComponents} from '../MDX/MDXComponents';

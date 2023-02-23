@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {siteConfig} from 'siteConfig';
+import {siteConfig} from 'config/appConfig';
 
 const TOP_OFFSET = 96;
 

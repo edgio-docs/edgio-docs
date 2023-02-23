@@ -1,3 +1,9 @@
+// NOTE: While this is base config is primarily based on v6,
+// all versions inherit these values. Changing these values
+// will affect all versions and should be avoided unless a new
+// variable is being added. Otherwise, all overrides should be
+// made in the versioned config files.
+
 const COMPANY_NAME = 'Edgio';
 const PRODUCT_NAME = 'Edgio';
 const PRODUCT = 'Edgio';
@@ -123,7 +129,7 @@ const ACCOUNT_UPGRADE = `Contact your account manager or our [sales department](
 
 const PARTNERS_CONTACT = `partner@llnw.com`;
 
-module.exports = {
+export default {
   COMPANY_NAME,
   PRODUCT,
   PRODUCT_LEGACY,

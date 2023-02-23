@@ -10,7 +10,7 @@ import NoSSRWrapper from '../NoSSRWrapper';
 import {ExternalLink} from 'components/ExternalLink';
 import {IconHamburger} from 'components/Icon/IconHamburger';
 import {IconLightMobileLogo} from 'components/Icon/IconMobileLogo';
-import {siteConfig} from 'siteConfig';
+import {siteConfig} from 'config/appConfig';
 import useTheme from 'utils/hooks/useTheme';
 
 const StyledHeader = styled.header`

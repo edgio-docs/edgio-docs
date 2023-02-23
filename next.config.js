@@ -1,11 +1,24 @@
-// This file was automatically added by edgio init.
-// You should commit this file to source control.
+const {join} = require('path');
 const {withEdgio, withServiceWorker} = require('@edgio/next/config');
-
 const mdConstants = require('./constants');
-
-const path = require('path');
 const {remarkPlugins} = require('./plugins/markdownToHtml');
+
+async function getLatestVersion() {
+  const {globby} = await import('globby');
+
+  const files = await globby('v*.config.js', {
+    cwd: join(process.cwd(), 'src', 'config'),
+  });
+
+  const versions = files.map((file) => {
+    const match = file.match(/v(\d+)\.config\.js/);
+    return match ? parseInt(match[1]) : 0;
+  });
+
+  const latestVersion = Math.max(...versions).toString();
+
+  return latestVersion;
+}
 
 const _preEdgioExport = {
   images: {
@@ -56,7 +69,7 @@ const _preEdgioExport = {
         // This is the starting point of the app. Makes sure all pages
         // 1. Are all .mdx files as oppose .ts or .tsx — it essentially reads
         // from the file-system without having to getStaticProps and co
-        path.join(__dirname, './plugins/md-layout-loader'),
+        join(__dirname, './plugins/md-layout-loader'),
 
         // Replace template strings (eg. {{ PRODUCT_NAME }} ) in .md files
         {
@@ -77,9 +90,12 @@ const _preEdgioExport = {
   },
 };
 
-module.exports = (phase, config) =>
-  withEdgio(
+module.exports = async (phase, config) => {
+  process.env.LATEST_VERSION = await getLatestVersion();
+
+  return withEdgio(
     withServiceWorker({
       ..._preEdgioExport,
     })
   );
+};

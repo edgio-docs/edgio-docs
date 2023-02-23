@@ -4,7 +4,7 @@ import React from 'react';
 
 import {PRODUCT} from '../../constants';
 
-import {siteConfig} from 'siteConfig';
+import {siteConfig} from 'config/appConfig';
 
 export interface SeoProps {
   isHomePage: boolean;

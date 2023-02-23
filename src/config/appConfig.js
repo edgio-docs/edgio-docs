@@ -1,4 +1,4 @@
-import {PRODUCT} from '../constants';
+import {PRODUCT} from '../../constants';
 // IMPORTANT
 export const siteConfig = {
   editUrl: 'https://github.com/edgio-docs/edgio-docs/edit/src/pages',

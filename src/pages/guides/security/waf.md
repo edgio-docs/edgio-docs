@@ -148,8 +148,6 @@ The above threat detection workflow is illustrated below.
 
 ![](/images/app_security/request_screening_workflow.png)
 
-[View image.](/images/app_security/request_screening_workflow.png)
-
 ### Managed Rule Violations {/*managed-rule-violations*/}
 
 If other security rules cannot identify whether a

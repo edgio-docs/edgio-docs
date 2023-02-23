@@ -13,12 +13,16 @@
       "icon": "server",
       "routes": [
         {
+          "title": "Properties",
+          "path": "basics/properties"
+        },
+        {
           "title": "Environments",
           "path": "basics/environments"
         },
         {
-          "title": "Domains",
-          "path": "basics/domains"
+          "title": "Hostnames and Origins",
+          "path": "basics/hostnames-and-origins"
         },
         {
           "title": "Deployments",
@@ -57,7 +61,10 @@
           "title": "Getting Started",
           "path": "performance/getting_started"
         },
-
+        {
+          "title": "Rules",
+          "path": "performance/rules"
+        },
         {
           "title": "CDN-as-Code (EdgeJS)",
           "path": "performance/cdn_as_code",

@@ -249,13 +249,13 @@ interface IButtonLinkProps {
 ```
 Renders:
 
-<ButtonLink variant="fill" type="default" href="https://layer0-docs-layer0-nextjs-example-default.layer0-limelight.link">
+<ButtonLink variant="fill" type="default" href="https://edgio-community-examples-nextjs-live.layer0-limelight.link/">
  Try the Next.js SSR Example Site
 </ButtonLink>
-<ButtonLink variant="stroke" type="code" withIcon={true} href="https://github.com/layer0-docs/layer0-nextjs-example">
+<ButtonLink variant="stroke" type="code" withIcon={true} href="https://github.com/edgio-docs/edgio-nextjs-example">
  View the Code
 </ButtonLink>
-<ButtonLink variant="stroke" type="deploy" withIcon={true} href="https://app.layer0.co/deploy?button&deploy&repo=https%253A%252F%252Fgithub.com%252Flayer0-docs%252Flayer0-nextjs-example" />
+<ButtonLink variant="stroke" type="deploy" withIcon={true} href="https://app.layer0.co/deploy?button&deploy&repo=https%253A%252F%252Fgithub.com%252Fedgio-docs%252Fedgio-nextjs-example" />
 
 ---
 
@@ -276,13 +276,13 @@ Renders:
 Renders:
 
 <ButtonLinksGroup>
-	<ButtonLink variant="fill" type="default" href="https://layer0-docs-layer0-nextjs-example-default.layer0-limelight.link">
+	<ButtonLink variant="fill" type="default" href="https://edgio-community-examples-nextjs-live.layer0-limelight.link/">
 	 Try the Next.js SSR Example Site
 	</ButtonLink>
-	<ButtonLink variant="stroke" type="code" withIcon={true} href="https://github.com/layer0-docs/layer0-nextjs-example">
+	<ButtonLink variant="stroke" type="code" withIcon={true} href="https://github.com/edgio-docs/edgio-nextjs-example">
 	 View the Code
 	</ButtonLink>
-	<ButtonLink variant="stroke" type="deploy" withIcon={true} href="https://app.layer0.co/deploy?button&deploy&repo=https%253A%252F%252Fgithub.com%252Flayer0-docs%252Flayer0-nextjs-example" />
+	<ButtonLink variant="stroke" type="deploy" withIcon={true} href="https://app.layer0.co/deploy?button&deploy&repo=https%253A%252F%252Fgithub.com%252Fedgio-docs%252Fedgio-nextjs-example" />
 </ButtonLinksGroup>
 
 ## Versioning

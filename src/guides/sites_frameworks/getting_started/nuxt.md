@@ -10,8 +10,8 @@ This Nuxt.js example app uses server-side rendering and prefetching to provide l
 
 <ExampleButtons
   title="Nuxt.js SSR"
-  siteUrl="https://layer0-docs-layer0-nuxt-example-default.layer0-limelight.link"
-  repoUrl="https://github.com/layer0-docs/layer0-nuxt-example" 
+  siteUrl="https://edgio-community-examples-nuxt-live.layer0-limelight.link/"
+  repoUrl="https://github.com/edgio-docs/edgio-nuxt-example" 
   deployFromRepo />
 
 ## Example ISG Site {/*example-isg-site*/}
@@ -20,15 +20,15 @@ This Nuxt.js example app uses ISG (Incremental Static Generation) to provide lig
 
 <ExampleButtons
   title="Nuxt.js ISG"
-  siteUrl="https://layer0-docs-layer0-nuxt-isg-example-default.layer0-limelight.link"
-  repoUrl="https://github.com/layer0-docs/layer0-nuxt-isg-example" 
+  siteUrl="https://edgio-community-examples-nuxt-isg-live.layer0-limelight.link/"
+  repoUrl="https://github.com/edgio-docs/edgio-nuxt-isg-example" 
   deployFromRepo />
 
 ## Connector {/*connector*/}
 
 This framework has a connector developed for {{ PRODUCT }}. See [Connectors](/guides/sites_frameworks/connectors) for more information.
 
-<ButtonLink variant="stroke" type="code" withIcon={true} href="https://github.com/layer0-docs/layer0-connectors/tree/main/layer0-nuxt-connector">
+<ButtonLink variant="stroke" type="code" withIcon={true} href="https://github.com/edgio-docs/edgio-connectors/tree/main/edgio-nuxt-connector">
   View the Connector Code
 </ButtonLink>
 

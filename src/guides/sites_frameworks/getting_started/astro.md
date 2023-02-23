@@ -8,8 +8,8 @@ title: Astro
 
 <ExampleButtons
   title="Astro"
-  siteUrl="https://layer0-docs-layer0-astro-example-default.layer0-limelight.link"
-  repoUrl="https://github.com/layer0-docs/layer0-astro-example" 
+  siteUrl="https://edgio-community-examples-astro-live.layer0-limelight.link/"
+  repoUrl="https://github.com/edgio-docs/edgio-astro-example" 
   deployFromRepo />
 
 ## Example SSR Site {/*example-ssr-site*/}
@@ -18,8 +18,8 @@ This Astro example app uses server-side rendering.
 
 <ExampleButtons
   title="Astro SSR"
-  siteUrl="https://layer0-docs-layer0-astro-ssr-example-default.layer0-limelight.link"
-  repoUrl="https://github.com/layer0-docs/layer0-astro-ssr-example" 
+  siteUrl="https://edgio-community-examples-astro-ssr-live.layer0-limelight.link/"
+  repoUrl="https://github.com/edgio-docs/edgio-astro-ssr-example" 
   deployFromRepo />
 
 ## Connector {/*connector*/}

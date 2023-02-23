@@ -9,7 +9,7 @@ title: Lit
 <ExampleButtons
   title="Lit"
   siteUrl="https://layer0-docs-layer0-lit-example-default.layer0-limelight.link"
-  repoUrl="https://github.com/layer0-docs/layer0-lit-example" 
+  repoUrl="https://github.com/edgio-docs/edgio-lit-example" 
   deployFromRepo
 />
 
@@ -20,7 +20,7 @@ title: Lit
 Clone this starter example and install dependencies:
 
 ```bash
-git clone https://github.com/layer0-docs/layer0-lit-example
+git clone https://github.com/edgio-docs/edgio-lit-example
 yarn install
 ```
 

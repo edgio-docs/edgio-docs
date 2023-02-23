@@ -23,14 +23,14 @@ This example is a React app powered by Bloomreach Content. The following is base
     variant="stroke"
     type="code"
     withIcon={true}
-    href="https://github.com/layer0-docs/layer0-docs-bloomreach-reference-spa-example">
+    href="https://github.com/edgio-docs/edgio-docs-bloomreach-reference-spa-static-example">
     View the Code
   </ButtonLink>
   <ButtonLink
     variant="stroke"
     type="deploy"
     withIcon={true}
-    href="{{ APP_URL }}/deploy?button&deploy&repo=https://github.com/layer0-docs/layer0-docs-bloomreach-reference-spa-static-example"
+    href="{{ APP_URL }}/deploy?button&deploy&repo=https://github.com/edgio-docs/edgio-docs-bloomreach-reference-spa-static-example"
   />
 </ButtonLinksGroup>
 
@@ -55,14 +55,14 @@ The sample application does the following things:
 There are a couple options to continue:
 
 1. Use the "Deploy to {{ PRODUCT }}" button above to copy the example repo to your own Github account and deploy to the {{ PRODUCT }} system.
-2. Create a copy of the [code](https://github.com/layer0-docs/layer0-docs-bloomreach-reference-spa-example) above via a fork of the repo.
+2. Create a copy of the [code](https://github.com/edgio-docs/edgio-docs-bloomreach-reference-spa-static-example) above via a fork of the repo.
 
 Whichever method is picked from above, clone the repo locally and open the project in your preferred text editor.
 
 If you were to clone the repo directly,
 
 ```bash
-git clone git@github.com:layer0-docs/layer0-docs-bloomreach-reference-spa-example.git
+git clone git@github.com:edgio-docs/edgio-docs-bloomreach-reference-spa-static-example.git
 ```
 
 ### Configure the project {/*configure-the-project*/}

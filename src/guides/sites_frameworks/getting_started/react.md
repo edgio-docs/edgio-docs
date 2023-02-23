@@ -8,8 +8,8 @@ This guide shows you how to serve a [React](https://reactjs.org/) application to
 
 <ExampleButtons
   title="React"
-  siteUrl="https://layer0-docs-layer0-static-react-example-default.layer0-limelight.link/"
-  repoUrl="https://github.com/layer0-docs/static-react-example" 
+  siteUrl="https://edgio-community-examples-static-react-live.layer0-limelight.link/"
+  repoUrl="https://github.com/edgio-docs/edgio-static-react-example" 
   deployFromRepo />
 
 ## Connector {/*connector*/}

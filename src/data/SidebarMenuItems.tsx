@@ -414,12 +414,6 @@ const SidebarMenuItems: ISidebarMenuItems = [
           iconDark: <IconMKDocsDark />,
         },
         {
-          title: 'Nx',
-          path: '/guides/sites_frameworks/getting_started/nx',
-          icon: <IconNX />,
-          iconDark: <IconNXDark />,
-        },
-        {
           title: 'Next.js',
           path: '/guides/sites_frameworks/getting_started/next',
           icon: <IconNextJS />,

@@ -8,8 +8,8 @@ title: Scully
 
 <ExampleButtons
   title="Scully"
-  siteUrl="https://layer0-docs-layer0-scully-example-default.layer0-limelight.link"
-  repoUrl="https://github.com/layer0-docs/layer0-scully-example" 
+  siteUrl="https://edgio-community-examples-scully-live.layer0-limelight.link/"
+  repoUrl="https://github.com/edgio-docs/edgio-scully-example" 
   deployFromRepo
 />
 
@@ -20,7 +20,7 @@ title: Scully
 Clone this starter example and install dependencies:
 
 ```bash
-git clone https://github.com/layer0-docs/layer0-scully-example
+git clone https://github.com/edgio-docs/edgio-scully-example
 yarn install
 ```
 

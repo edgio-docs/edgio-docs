@@ -12,31 +12,21 @@ Learn about reserved request headers and how requests are routed through our ser
 
     ![](/images/overview/request-flow-edge-global.png)
 
-    [View image.](/images/overview/request-flow-edge-global.png)
-
     {{ PRODUCT }} is optimized for performance and therefore always routes requests to the closest POP. If a global POP is the closest POP to a client, then {{ PRODUCT }} will treat it as an edge and global POP. This means that cache misses on that POP are sent directly to the origin server as illustrated below.
 
     ![](/images/overview/request-flow-edge.png)
-
-    [View image.](/images/overview/request-flow-edge.png)
 
     Another performance optimization occurs for routes on which you have disabled caching. {{ PRODUCT }} bypassses global POPs for those requests and sends them directly to your origin servers. 
 
     ![](/images/overview/request-flow-edge-disabled-caching.png)
 
-    [View image.](/images/overview/request-flow-edge-disabled-caching.png)
-
 -   **Serverless Compute:** {{ PRODUCT }} routes Serverless Compute requests similar to standard traffic. However, cache misses are forwarded to a [Serverless Compute](/guides/performance/serverless_compute) load balancer which distributes requests to a Serverless Compute worker.
 
     ![](/images/overview/request-flow-serverless-compute.png)
 
-    [View image.](/images/overview/request-flow-serverless-compute.png)
-
     {{ PRODUCT }} also optimizes Serverless Compute routes on which you have disabled caching. {{ PRODUCT }} bypassses global POPs for those requests and sends them directly to a Serverless Compute load balancer.
 
     ![](/images/overview/request-flow-serverless-compute-disabled-caching.png)
-
-    [View image.](/images/overview/request-flow-serverless-compute-disabled-caching.png)
 
 ### POP Components {/*pop-components*/}
 

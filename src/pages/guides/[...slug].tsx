@@ -1,7 +1,7 @@
 import {readFile} from 'fs/promises';
 import {join} from 'path';
 
-import {globby} from 'globby';
+import globby from 'globby';
 import {MDXRemote} from 'next-mdx-remote';
 import {serialize} from 'next-mdx-remote/serialize';
 

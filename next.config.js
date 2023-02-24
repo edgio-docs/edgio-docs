@@ -1,12 +1,11 @@
 const {join} = require('path');
+const globby = require('globby').sync;
 const {withEdgio, withServiceWorker} = require('@edgio/next/config');
 const mdConstants = require('./constants');
 const {remarkPlugins} = require('./plugins/markdownToHtml');
 
-async function getLatestVersion() {
-  const {globby} = await import('globby');
-
-  const files = await globby('v*.config.js', {
+function getLatestVersion() {
+  const files = globby('v*.config.js', {
     cwd: join(process.cwd(), 'src', 'config'),
   });
 
@@ -90,8 +89,8 @@ const _preEdgioExport = {
   },
 };
 
-module.exports = async (phase, config) => {
-  process.env.LATEST_VERSION = await getLatestVersion();
+module.exports = (phase, config) => {
+  process.env.LATEST_VERSION = getLatestVersion();
 
   return withEdgio(
     withServiceWorker({

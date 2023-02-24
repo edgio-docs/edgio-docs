@@ -1,7 +1,3 @@
-import {join} from 'path';
-
-const configPath = join(process.cwd(), 'src', 'config');
-
 export async function getVersionedNavigation(version?: string) {
   function flattenPaths(
     obj: {path: any; routes: any[]},
@@ -33,7 +29,7 @@ export async function getVersionedNavigation(version?: string) {
     version = process.env.LATEST_VERSION; // defined in next.config.js
   }
 
-  const nav = (await import(join(configPath, `./v${version}.nav.js`))).default;
+  const nav = (await import(`../config/v${version}.nav.js`)).default;
 
   const rootPath = nav.path;
   delete nav.path;

@@ -1,4 +1,5 @@
 import {readFile} from 'fs/promises';
+import {version} from 'os';
 import {join} from 'path';
 
 import globby from 'globby';
@@ -35,9 +36,19 @@ export const getStaticPaths = async () => {
     await globby('config/v*.config.js', {
       cwd: join(process.cwd(), 'src'),
     })
-  )
-    // extract the version from the filename
-    .map((file: string) => (file.match(/v(\d+)\.config\.js/) || [])[1]);
+  ).map(async (file: string) => {
+    const v = (file.match(/v(\d+)\.config\.js/) || [])[1];
+    const config = await getVersionedConfig(v);
+    const nav = await getVersionedNavigation(v);
+
+    return {
+      version: v,
+      config,
+      nav,
+    };
+  });
+
+  const versionObjects = await Promise.all(versions);
 
   // determine available guides from filesystem
   const guides = await globby('guides', {
@@ -61,33 +72,56 @@ export const getStaticPaths = async () => {
   );
 
   // create a list of paths for each version and guide
-  // eg. /guides/v6/overview => /guides/[...slug]
-  const versionedPaths = versions
-    .flatMap((version: string) =>
-      guidesFromFilePath.map((guide: string) => {
+  // eg. /guides/v6/overview => /guides/[...slug]]
+  const versionedPaths = versionObjects
+    .flatMap(({version, nav}) => {
+      return guidesFromFilePath.map((guide: string) => {
+        // Nav items will start with `/guide` so we need to prepend it to the slug
+        // this is only used for logging purposes
+        // const navGuide = `/guides/${guide}`;
+
+        // The slug param, since we are already in the `/guides/`context (eg `pages/guides`)
+        // will just be the name of the guide with the version prefixed (eg `v6/overview`).
+        // This will end up being `/guides/v6/overview` during SSG.
         const versionedGuide = `v${version}/${guide}`;
+        const versionedNavGuide = `/guides/${versionedGuide}`;
 
         // If the guide already has a version in the file structure, skip the SSG
         // version of it. Otherwise, this will attempt to create 2 routes for the
         // same guide.
         if (guidesFromFilePath.includes(versionedGuide)) {
           console.log(
-            `Skipping SSG route for '${versionedGuide}' as it already exists`
+            `Skipping SSG route for '${versionedNavGuide}' as it already exists in the filesystem`
           );
           return;
         }
 
-        // TODO need to verify this guide is part of the versioned navigation menu.
+        // We need to verify this guide is part of the versioned navigation menu.
         // We don't want to generate a route for a guide that is not part of the
         // navigation menu for that version.
-        //console.log(await getVersionedNavigation(version));
+        //
+        // TODO - if it's not part of the nav menu, it could still be a valid
+        // link elsewhere which still requires a route. We need to find a way to
+        // handle this. For now, we just skip this check and return the slug to
+        // render anyway.
+        //
+        // if (!nav.includes(navGuide)) {
+        //   console.log(
+        //     `Skipping SSG route for (v${version}) '${navGuide}' as it is not in the navigation menu`
+        //   );
+        //   if (Number(version) === 6) {
+        //     console.log(nav);
+        //   }
+        //   return;
+        // }
+
         return {
           params: {
             slug: versionedGuide.split('/'),
           },
         };
-      })
-    )
+      });
+    })
     .filter(Boolean);
   routes.push(...versionedPaths);
 

@@ -93,7 +93,7 @@ Rules are typically processed in the order that they are listed. If a request sa
 
 <Callout type="tip">
 
-  Move a rule by dragging the rule's <img data-inline-img src="/icons/grab-handle.png" alt="" /> icon to the desired position.
+  Move a rule by dragging the rule's <img data-inline-img src="/images/icons/grab-handle.png" alt="" /> icon to the desired position.
 
 </Callout>
 
@@ -178,7 +178,7 @@ TODO: **Is this needed now that we have autodraft?**
 
     <Callout type="tip">
 
-      Move a rule by dragging the rule's <img data-inline-img src="/icons/grab-handle.png" alt="" /> icon to the desired position.
+      Move a rule by dragging the rule's <img data-inline-img src="/images/icons/grab-handle.png" alt="" /> icon to the desired position.
 
     </Callout>
 
@@ -190,7 +190,7 @@ TODO: **Is this needed now that we have autodraft?**
     1.  From the {{ PORTAL }}, select the desired property.
     2.  From the left-hand pane, select the desired environment from under the **Environments** section.
     3.  From the left-hand pane, select **Rules**. 
-2.  Click the <img data-inline-img src="/icons/delete-2.png" alt="" /> icon next to the desired rule.
+2.  Click the <img data-inline-img src="/images/icons/delete-2.png" alt="" /> icon next to the desired rule.
 3.  Confirm the deletion by clicking **Delete Rules**.
 
 **To export your rules as EdgeJS code** <a id="export-rules-edgejs" /> 
@@ -201,7 +201,7 @@ TODO: **Is this needed now that we have autodraft?**
     3.  From the left-hand pane, select **Rules**. 
 2.  Click **Export**.
 3.  Select **EdgeJS**.
-4.  Copy the code by clicking the <img data-inline-img src="/icons/copy-to-clipboard.png" alt="" /> icon.
+4.  Copy the code by clicking the <img data-inline-img src="/images/icons/copy-to-clipboard.png" alt="" /> icon.
 5.  Optional. Paste your code into your {{ ROUTES_FILE }}.
 
 <Callout type="info">

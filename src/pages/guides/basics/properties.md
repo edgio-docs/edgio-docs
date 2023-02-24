@@ -2,18 +2,26 @@
 title: Properties
 ---
 
-A property instructs {{ PRODUCT }} how to process requests to your website. Key property components are:
--   **Environments:**
--   **Security:**
--   **Analytics:**
--   
+A property instructs {{ PRODUCT }} how to securely process requests for your website. Setting up a property typically involves creating:
 
-
-
+-   [Environment(s)](/guides/basics/environments). An environment allows you to serve your site on different domains.
+-   [TLS certificate(s)](/guides/FINDME). Each hostname associated with an environment requires the installation of a TLS certificate on our network. Manage these TLS certificates through your property's settings. 
+-   [Securing your web applications and API traffic](/guides/security/waf). Secure your web applications and APIs across all environments using a single configuration at the property level.
 
 ## Managing Properties
 
+You may create, rename, or delete a property. You may even transfer ownership to a different team. 
 
+Upon creating a property, it will contain a `production` environment with the following configuration:
+
+-   **Hostname:** Identifies a hostname through which your site will be served. Requests submitted by clients are directed to this hostname.
+-   **Origin Configuration:** Defines how {{ PRODUCT }} communicates with your web server(s). 
+
+<Callout type="info">
+
+  By default, hostname(s) defined during property creation are assigned to the first origin configuration. Once you have added multiple origin configurations, you may adjust this mapping as needed. 
+
+</Callout>
 
 **To create a property**
 1.  From the {{ PORTAL }}, click **+ New Property**.

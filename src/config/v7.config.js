@@ -123,7 +123,7 @@ const ACCOUNT_UPGRADE = `Contact your account manager or our [sales department](
 
 const PARTNERS_CONTACT = `partner@llnw.com`;
 
-export default {
+const config = {
   COMPANY_NAME,
   PRODUCT,
   PRODUCT_LEGACY,
@@ -175,3 +175,5 @@ export default {
   WWW_URL,
   RUM_NS,
 };
+
+export default config;

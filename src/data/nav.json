@@ -3,7 +3,7 @@
   "path": "/guides",
   "routes": [
     {
-      "title": "Getting Started",
+      "title": "Getting Started FOO",
       "path": "getting_started",
       "icon": "spark"
     },
@@ -163,7 +163,7 @@
       "path": "security",
       "icon": "shield",
       "routes": [
-        { 
+        {
           "title": "Managed Bot Defense",
           "path": "security/managed_bot_defense"
         },

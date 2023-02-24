@@ -7,8 +7,8 @@ import {serialize} from 'next-mdx-remote/serialize';
 
 import {remarkPlugins, markdownToHtml} from '../../../plugins/markdownToHtml';
 import {MDXComponents} from '../../components/MDX/MDXComponents';
-import {getVersionedConfig} from '../../config';
-import {basePaths, versionedPaths} from '../../data/navigation';
+import {getVersionedConfig} from '../../utils/config';
+import {getVersionedNavigation} from '../../utils/navigation';
 
 import {MarkdownPage} from 'components/Layout/MarkdownPage';
 import {Page} from 'components/Layout/Page';
@@ -80,7 +80,7 @@ export const getStaticPaths = async () => {
         // TODO need to verify this guide is part of the versioned navigation menu.
         // We don't want to generate a route for a guide that is not part of the
         // navigation menu for that version.
-
+        //console.log(await getVersionedNavigation(version));
         return {
           params: {
             slug: versionedGuide.split('/'),

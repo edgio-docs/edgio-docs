@@ -1,12 +1,12 @@
 import {readFile} from 'fs/promises';
-import {version} from 'os';
 import {join} from 'path';
 
 import globby from 'globby';
 import {MDXRemote} from 'next-mdx-remote';
 import {serialize} from 'next-mdx-remote/serialize';
 
-import {remarkPlugins, markdownToHtml} from '../../../plugins/markdownToHtml';
+import {remarkPlugins} from '../../../plugins/markdownToHtml';
+import rehypeExtractHeadings from '../../../plugins/rehype-extract-headings';
 import {MDXComponents} from '../../components/MDX/MDXComponents';
 import {getVersionedConfig} from '../../utils/config';
 import {getVersionedNavigation} from '../../utils/navigation';
@@ -15,13 +15,20 @@ import {MarkdownPage} from 'components/Layout/MarkdownPage';
 import {Page} from 'components/Layout/Page';
 import JSONRoutes from 'utils/jsonRoutes';
 import templateReplace from 'utils/templateReplace';
+import {MDHeadingsList} from 'utils/Types';
 
 const guidesPath = 'src/guides';
 
-export default function VersionedGuide({source}: {source: any}) {
+export default function VersionedGuide({
+  source,
+  headings,
+}: {
+  source: any;
+  headings: MDHeadingsList;
+}) {
   return (
     <Page routeTree={JSONRoutes}>
-      <MarkdownPage meta={source.frontmatter}>
+      <MarkdownPage meta={source.frontmatter} headings={headings}>
         <MDXRemote {...source} components={MDXComponents} />
       </MarkdownPage>
     </Page>
@@ -189,18 +196,21 @@ export async function getStaticProps({params}: {params: any}) {
   content = content.toString().replace(/<!--([\s\S]*?)-->/g, '');
 
   // Any {{ VALUE }} that was not replaced in the above step
-  // should be replaced with only 1 set of {} braces
+  // should be replaced with only 1 set of [] braces. Keeping them as
+  // double braces will cause the MDX parser to throw an error.
   content = content.toString().replace(/{{\s*(\w+)\s*}}/g, (match, p1) => {
-    return `{${p1}}`;
+    return `[${p1}]`;
   });
 
+  const headings: MDHeadingsList = [];
   const mdxSource = await serialize(content, {
     parseFrontmatter: true,
     mdxOptions: {
       remarkPlugins,
+      rehypePlugins: [[rehypeExtractHeadings, {headings}]],
       format: 'mdx',
     },
   });
 
-  return {props: {source: mdxSource}};
+  return {props: {source: mdxSource, headings}};
 }

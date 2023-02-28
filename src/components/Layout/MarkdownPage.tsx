@@ -1,4 +1,3 @@
-// @ts-nocheck
 import {MDXProvider} from '@mdx-js/react';
 import {useRouter} from 'next/router';
 import * as React from 'react';
@@ -29,11 +28,17 @@ export function MarkdownPage<
 
   const isHomePage = route === '/';
 
-  const tocHeadings = headings.map((heading: MDHeading) => ({
-    url: `#${heading.id}`,
-    depth: heading.rank,
-    text: heading.title,
-  }));
+  const tocHeadings = [];
+
+  if (headings) {
+    tocHeadings.push(
+      ...headings.map((heading: MDHeading) => ({
+        url: `#${heading.id}`,
+        depth: heading.rank,
+        text: heading.title,
+      }))
+    );
+  }
 
   if (tocHeadings.length > 0) {
     tocHeadings.unshift({

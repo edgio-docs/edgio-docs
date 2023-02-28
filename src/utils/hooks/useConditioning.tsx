@@ -1,9 +1,6 @@
-import {globbySync} from 'globby';
-import {join} from 'lodash';
 import {useRouter} from 'next/router';
 
-// TODO - get latest version from config files
-const latestVersion = '7'; //getLatestVersion();
+const latestVersion = process.env.LATEST_VERSION as string;
 interface RouterQuery {
   version?: string | string[];
   [key: string]: any;
@@ -25,7 +22,9 @@ function useConditioning(): IConditioning {
 
   // clean version from query
   const cleanedVersion =
-    version && typeof version === 'string' ? version.replace(/v/, '') : '';
+    version && typeof version === 'string'
+      ? version.replace(/v/, '')
+      : latestVersion;
 
   const versionConfig: IVersion = {
     selectedVersion: cleanedVersion,

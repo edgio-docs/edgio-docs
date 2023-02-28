@@ -46,12 +46,10 @@ export const getStaticPaths = async () => {
   ).map(async (file: string) => {
     const v = (file.match(/v(\d+)\.config\.js/) || [])[1];
     const config = await getVersionedConfig(v);
-    const nav = await getVersionedNavigation(v);
 
     return {
       version: v,
       config,
-      nav,
     };
   });
 
@@ -81,12 +79,8 @@ export const getStaticPaths = async () => {
   // create a list of paths for each version and guide
   // eg. /guides/v6/overview => /guides/[...slug]]
   const versionedPaths = versionObjects
-    .flatMap(({version, nav}) => {
+    .flatMap(({version}) => {
       return guidesFromFilePath.map((guide: string) => {
-        // Nav items will start with `/guide` so we need to prepend it to the slug
-        // this is only used for logging purposes
-        // const navGuide = `/guides/${guide}`;
-
         // The slug param, since we are already in the `/guides/`context (eg `pages/guides`)
         // will just be the name of the guide with the version prefixed (eg `v6/overview`).
         // This will end up being `/guides/v6/overview` during SSG.
@@ -102,25 +96,6 @@ export const getStaticPaths = async () => {
           );
           return;
         }
-
-        // We need to verify this guide is part of the versioned navigation menu.
-        // We don't want to generate a route for a guide that is not part of the
-        // navigation menu for that version.
-        //
-        // TODO - if it's not part of the nav menu, it could still be a valid
-        // link elsewhere which still requires a route. We need to find a way to
-        // handle this. For now, we just skip this check and return the slug to
-        // render anyway.
-        //
-        // if (!nav.includes(navGuide)) {
-        //   console.log(
-        //     `Skipping SSG route for (v${version}) '${navGuide}' as it is not in the navigation menu`
-        //   );
-        //   if (Number(version) === 6) {
-        //     console.log(nav);
-        //   }
-        //   return;
-        // }
 
         return {
           params: {

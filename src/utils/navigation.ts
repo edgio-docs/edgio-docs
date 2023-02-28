@@ -1,6 +1,16 @@
-export async function getVersionedNavigation(version?: string) {
+import {Route} from './Types';
+
+export async function getVersionedNavigation(version?: string): Promise<Route> {
+  if (!version) {
+    version = process.env.LATEST_VERSION; // defined in next.config.js
+  }
+
+  return (await import(`../config/v${version}.nav.js`)).default;
+}
+
+export async function getVersionedPaths(version?: string) {
   function flattenPaths(
-    obj: {path: any; routes: any[]},
+    obj: Route,
     basePath?: string | undefined,
     nested = false
   ) {
@@ -25,12 +35,7 @@ export async function getVersionedNavigation(version?: string) {
     return result;
   }
 
-  if (!version) {
-    version = process.env.LATEST_VERSION; // defined in next.config.js
-  }
-
-  const nav = (await import(`../config/v${version}.nav.js`)).default;
-
+  const nav = await getVersionedNavigation(version);
   const rootPath = nav.path;
   delete nav.path;
 

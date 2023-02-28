@@ -4,55 +4,43 @@ export default {
   routes: [
     {
       title: 'Getting Started',
-      path: 'overview',
-    },
-    {
-      title: 'Site Setup',
-      path: '',
+      icon: 'spark',
+      path: 'getting-started',
       routes: [
         {
-          title: 'Environments',
-          path: 'environments',
+          title: 'Performance',
+          path: 'webapp_cdn_getting_started',
         },
         {
-          title: 'Deployments',
+          title: 'Sites',
+          path: 'jamstack_getting_started',
+        },
+        {
+          title: 'Deploying',
           path: 'deploy_apps',
         },
         {
-          title: 'Configuration File',
-          path: '',
-        },
-        {
-          title: 'Audit Activity',
-          path: '',
-        },
-        {
-          title: 'Accounts & Teams',
-          path: '',
-          routes: [
-            {
-              title: 'SAML Single Sign On',
-              path: 'saml',
-            },
-            {
-              title: 'Teams',
-              path: 'teams',
-            },
-          ],
+          title: 'System Overview',
+          path: 'overview',
         },
       ],
     },
     {
-      title: 'App Edge',
-      path: '',
+      title: 'Performance',
+      icon: 'server',
+      path: 'cdn',
       routes: [
         {
-          title: 'Origins',
-          path: '',
+          title: 'Routing with EdgeJS',
+          path: 'routing',
         },
         {
-          title: 'CDN-as-code (EdgeJS)',
-          path: '',
+          title: 'Common Routing Patterns',
+          path: 'cookbook',
+        },
+        {
+          title: 'Custom Domains & SSL',
+          path: 'production',
         },
         {
           title: 'Caching',
@@ -63,413 +51,324 @@ export default {
           path: 'purging',
         },
         {
+          title: 'Static Prerendering',
+          path: 'static_prerendering',
+        },
+        {
           title: 'Predictive Prefetch',
           path: 'prefetching',
         },
         {
-          title: 'URL Redirects',
-          path: '',
+          title: 'Traditional Sites',
+          path: 'traditional_sites',
+        },
+        {
+          title: 'Split Testing',
+          path: 'split_testing',
         },
         {
           title: 'Traffic Splitting',
           path: 'traffic_splitting',
-          routes: [
-            {
-              title: 'Basic Setup',
-              path: '',
-            },
-            {
-              title: 'Split Testing',
-              path: 'split_testing',
-            },
-            {
-              title: null,
-            },
-            {
-              title: 'Troubleshooting',
-              path: '',
-            },
-          ],
         },
         {
           title: 'Observability',
-          path: '',
-          routes: [
-            {
-              title: 'Core Web Vitals',
-              path: 'core_web_vitals',
-            },
-            {
-              title: 'DevTools',
-              path: 'devtools',
-            },
-            {
-              title: 'Deep Request Inspection',
-              path: '',
-            },
-            {
-              title: 'Request Timing',
-              path: '',
-            },
-            {
-              title: 'Reports',
-              path: '',
-            },
-          ],
+          path: 'core_web_vitals',
+        },
+        {
+          title: 'Performance',
+          path: 'performance',
         },
         {
           title: 'Serverless Compute',
-          path: '',
-          routes: [
-            {
-              title: 'Setup',
-              path: '',
-            },
-            {
-              title: null,
-            },
-            {
-              title: 'Troubleshooting',
-              path: '',
-            },
-          ],
-        },
-        {
-          title: 'Unit Testing (EdgeJS)',
-          path: '',
-        },
-        {
-          title: 'GraphQL Caching',
-          path: '',
-        },
-        {
-          title: 'Image Optimization',
-          path: 'image_optimization',
+          path: 'serverless_functions',
         },
         {
           title: 'Third-Party CDNs',
           path: 'third_party_cdns',
         },
         {
-          title: null,
+          title: 'Image Optimization',
+          path: 'image_optimization',
+        },
+        {
+          title: '',
+          path: '',
         },
         {
           title: 'Compression',
-          path: '',
+          path: 'compression',
         },
         {
           title: 'Request',
-          path: '',
+          path: 'request_headers',
         },
         {
-          title: 'Response',
-          path: '',
+          title: 'Response Headers',
+          path: 'response_headers',
         },
         {
-          title: null,
+          title: 'Status Codes',
+          path: 'status_codes',
+        },
+        {
+          title: 'Cookies',
+          path: 'cookies',
+        },
+        {
+          title: 'Regions',
+          path: 'regions',
+        },
+        {
+          title: '',
+          path: '',
         },
         {
           title: 'Troubleshooting',
-          path: '',
+          path: 'troubleshooting',
         },
       ],
     },
     {
-      title: 'App Security',
-      path: '',
+      title: 'Sites',
+      icon: 'book',
+      path: 'framework-guides',
       routes: [
         {
-          title: 'Security through EdgeJS',
-          path: '',
+          title: 'Connectors',
+          path: 'connectors',
         },
         {
-          title: null,
-        },
-        {
-          title: 'Web Application Firewall (WAF)',
-          path: '',
-          routes: [
-            {
-              title: 'Access Rules',
-              path: '',
-            },
-            {
-              title: 'Rate Rules',
-              path: '',
-            },
-            {
-              title: 'Bot Rules',
-              path: '',
-            },
-            {
-              title: 'Custom Rules',
-              path: '',
-            },
-            {
-              title: 'Managed Rules',
-              path: 'managed_rule_groups',
-            },
-            {
-              title: 'Security Applications',
-              path: '',
-            },
-            {
-              title: 'Threat Dashboard',
-              path: '',
-            },
-            {
-              title: 'Browser Challenges Dashboard',
-              path: '',
-            },
-            {
-              title: 'Rates Dashboard',
-              path: '',
-            },
-            {
-              title: 'Rate Enforcement Dashboard',
-              path: '',
-            },
-            {
-              title: 'Response to Client',
-              path: '',
-            },
-            {
-              title: null,
-            },
-            {
-              title: 'Troubleshooting',
-              path: '',
-            },
-            {
-              title: null,
-            },
-            {
-              title: 'Country Codes',
-              path: '',
-            },
-            {
-              title: 'Matched On Variables',
-              path: '',
-            },
-          ],
-        },
-      ],
-    },
-    {
-      title: 'App Platform (Frameworks)',
-      path: '',
-      routes: [
-        {
-          title: 'Frameworks',
-          path: '',
-          routes: [
-            {
-              title: 'Angular',
-              path: 'angular',
-            },
-            {
-              title: 'Astro',
-              path: 'astro',
-            },
-            {
-              title: 'Brunch',
-              path: 'brunch',
-            },
-            {
-              title: 'Docusaurus',
-              path: 'docusaurus',
-            },
-            {
-              title: 'Dojo',
-              path: 'dojo',
-            },
-            {
-              title: 'Eleventy',
-              path: 'eleventy',
-            },
-            {
-              title: 'Ember.js',
-              path: 'ember',
-            },
-            {
-              title: 'Ember Fastboot',
-              path: 'ember_fastboot',
-            },
-            {
-              title: 'Express',
-              path: 'express',
-            },
-            {
-              title: 'Frontity',
-              path: 'frontity',
-            },
-            {
-              title: 'Gatsby',
-              path: 'gatsby',
-            },
-            {
-              title: 'Gridsome',
-              path: 'gridsome',
-            },
-            {
-              title: 'Hexo',
-              path: 'hexo',
-            },
-            {
-              title: 'Hugo',
-              path: 'hugo',
-            },
-            {
-              title: 'Ionic React',
-              path: 'ionic_react',
-            },
-            {
-              title: 'Ionic Vue',
-              path: 'ionic_vue',
-            },
-            {
-              title: 'Jekyll',
-              path: 'jekyll',
-            },
-            {
-              title: 'Lit',
-              path: 'lit',
-            },
-            {
-              title: 'MkDocs',
-              path: 'mkdocs',
-            },
-            {
-              title: 'Nx',
-              path: 'nx',
-            },
-            {
-              title: 'Next.js',
-              path: 'next',
-            },
-            {
-              title: 'Next.js Commerce',
-              path: 'next_commerce',
-            },
-            {
-              title: 'Nuxt.js',
-              path: 'nuxt',
-            },
-            {
-              title: 'Nuxt3',
-              path: 'nuxt3',
-            },
-            {
-              title: 'Preact',
-              path: 'preact',
-            },
-            {
-              title: 'Razzle',
-              path: 'razzle',
-            },
-            {
-              title: 'React',
-              path: 'react',
-            },
-            {
-              title: 'React Static',
-              path: 'react_static',
-            },
-            {
-              title: 'React Storefront',
-              path: 'react-storefront',
-            },
-            {
-              title: 'RedwoodJS',
-              path: 'redwoodjs',
-            },
-            {
-              title: 'Remix',
-              path: 'remix',
-            },
-            {
-              title: 'Saber',
-              path: 'saber',
-            },
-            {
-              title: 'Sanity',
-              path: 'sanity',
-            },
-            {
-              title: 'Sapper',
-              path: 'sapper',
-            },
-            {
-              title: 'Scully',
-              path: 'scully',
-            },
-            {
-              title: 'SolidJS',
-              path: 'solid',
-            },
-            {
-              title: 'Spartacus',
-              path: 'spartacus',
-            },
-            {
-              title: 'Static HTML/JS',
-              path: 'static_sites',
-            },
-            {
-              title: 'Stencil',
-              path: 'stencil',
-            },
-            {
-              title: 'Svelte',
-              path: 'svelte',
-            },
-            {
-              title: 'UmiJS',
-              path: 'umijs',
-            },
-            {
-              title: 'VitePress',
-              path: 'vitepress',
-            },
-            {
-              title: 'Vue Storefront',
-              path: 'vsf',
-            },
-            {
-              title: 'Vue.js',
-              path: 'vue',
-            },
-            {
-              title: 'VuePress',
-              path: 'vuepress',
-            },
-            {
-              title: 'Zola',
-              path: 'zola',
-            },
-          ],
-        },
-        {
-          title: 'Basic Setup',
-          path: '',
-        },
-        {
-          title: 'Incremental Static Regeneration',
+          title: 'Incremental Static (Re)generation',
           path: 'isg',
         },
         {
-          title: null,
+          title: '',
+          path: '',
         },
         {
-          title: 'Troubleshooting',
-          path: '',
+          title: 'Angular',
+          path: 'angular',
+        },
+        {
+          title: 'Astro',
+          path: 'astro',
+        },
+        {
+          title: 'Brunch',
+          path: 'brunch',
+        },
+        {
+          title: 'Docusaurus',
+          path: 'docusaurus',
+        },
+        {
+          title: 'Dojo',
+          path: 'dojo',
+        },
+        {
+          title: 'Eleventy',
+          path: 'eleventy',
+        },
+        {
+          title: 'Ember.js',
+          path: 'ember',
+        },
+        {
+          title: 'Ember Fastboot',
+          path: 'ember_fastboot',
+        },
+        {
+          title: 'Express',
+          path: 'express',
+        },
+        {
+          title: 'Frontity',
+          path: 'frontity',
+        },
+        {
+          title: 'Gatsby',
+          path: 'gatsby',
+        },
+        {
+          title: 'Gridsome',
+          path: 'gridsome',
+        },
+        {
+          title: 'Hexo',
+          path: 'hexo',
+        },
+        {
+          title: 'Hugo',
+          path: 'hugo',
+        },
+        {
+          title: 'Ionic React',
+          path: 'ionic_react',
+        },
+        {
+          title: 'Ionic Vue',
+          path: 'ionic_vue',
+        },
+        {
+          title: 'Jekyll',
+          path: 'jekyll',
+        },
+        {
+          title: 'Lit',
+          path: 'lit',
+        },
+        {
+          title: 'MkDocs',
+          path: 'mkdocs',
+        },
+        {
+          title: 'Nx',
+          path: 'nx',
+        },
+        {
+          title: 'Next.js',
+          path: 'next',
+        },
+        {
+          title: 'Next.js Commerce',
+          path: 'next_commerce',
+        },
+        {
+          title: 'Nuxt.js',
+          path: 'nuxt',
+        },
+        {
+          title: 'Nuxt3',
+          path: 'nuxt3',
+        },
+        {
+          title: 'Preact',
+          path: 'preact',
+        },
+        {
+          title: 'Razzle',
+          path: 'razzle',
+        },
+        {
+          title: 'React',
+          path: 'react',
+        },
+        {
+          title: 'React Static',
+          path: 'react_static',
+        },
+        {
+          title: 'React Storefront',
+          path: 'react-storefront',
+        },
+        {
+          title: 'RedwoodJS',
+          path: 'redwoodjs',
+        },
+        {
+          title: 'Remix',
+          path: 'remix',
+        },
+        {
+          title: 'Saber',
+          path: 'saber',
+        },
+        {
+          title: 'Sanity',
+          path: 'sanity',
+        },
+        {
+          title: 'Sapper',
+          path: 'sapper',
+        },
+        {
+          title: 'Scully',
+          path: 'scully',
+        },
+        {
+          title: 'SolidJS',
+          path: 'solid',
+        },
+        {
+          title: 'Spartacus',
+          path: 'spartacus',
+        },
+        {
+          title: 'Static HTML/JS',
+          path: 'static_sites',
+        },
+        {
+          title: 'Stencil',
+          path: 'stencil',
+        },
+        {
+          title: 'Svelte',
+          path: 'svelte',
+        },
+        {
+          title: 'UmiJS',
+          path: 'umijs',
+        },
+        {
+          title: 'VitePress',
+          path: 'vitepress',
+        },
+        {
+          title: 'Vue Storefront',
+          path: 'vsf',
+        },
+        {
+          title: 'Vue.js',
+          path: 'vue',
+        },
+        {
+          title: 'VuePress',
+          path: 'vuepress',
+        },
+        {
+          title: 'Zola',
+          path: 'zola',
         },
       ],
     },
     {
-      title: 'Third-Party Integrations',
+      title: 'Security',
+      icon: 'security',
+      path: 'reference',
+      routes: [
+        {
+          title: 'Security Suite',
+          path: 'security',
+        },
+        {
+          title: 'Managed Rule Groups',
+          path: 'managed_rule_groups',
+        },
+      ],
+    },
+    {
+      title: 'Environments',
+      icon: 'leaf',
+      path: 'environments',
+      routes: [
+        {
+          title: 'Environments',
+          path: 'environments',
+        },
+      ],
+    },
+    {
+      title: 'Integrations',
       path: 'integrations',
       routes: [
+        {
+          title: 'Overview',
+          path: 'integrations',
+        },
+        {
+          title: '',
+          path: '',
+        },
         {
           title: 'BigCommerce',
           path: 'bigcommerce',
@@ -477,10 +376,6 @@ export default {
         {
           title: 'Bloomreach',
           path: 'bloomreach',
-        },
-        {
-          title: 'CI/CD',
-          path: '',
         },
         {
           title: 'Shopify Hydrogen',
@@ -493,60 +388,98 @@ export default {
       ],
     },
     {
-      title: 'Develop',
-      path: '',
+      title: 'Accounts & Teams',
+      icon: 'user',
+      path: 'accounts-teams',
+      routes: [
+        {
+          title: 'Alerts',
+          path: 'alerts',
+        },
+        {
+          title: 'Teams',
+          path: 'teams',
+        },
+        {
+          title: 'SAML Single Sign On',
+          path: 'saml',
+        },
+      ],
+    },
+    {
+      title: 'Developer Tools',
+      icon: 'code',
+      path: 'dev-tools',
       routes: [
         {
           title: 'CLI',
           path: 'cli',
         },
         {
+          title: 'Devtools',
+          path: 'devtools',
+        },
+        {
+          title: 'EdgeJS Unit Testing',
+          path: 'edgejs_testing',
+        },
+        {
+          title: 'Logs',
+          path: 'logs',
+        },
+        {
+          title: `Deploy to Layer0 Button`,
+          path: 'deploy_to_layer0',
+        },
+      ],
+    },
+    {
+      title: 'APIs',
+      icon: 'folder',
+      path: 'apis',
+      routes: [
+        {
           title: 'REST API',
           path: 'rest_api',
         },
         {
-          title: 'Log Data',
-          path: 'logs',
+          title: `@layer0/core Package`,
+          path: '/docs/api/core/',
+          external: true,
         },
         {
-          title: 'Deloy to Edgio Button',
-          path: 'deploy_to_layer0',
+          title: `@layer0/prefetch Package`,
+          path: '/docs/api/prefetch/',
+          external: true,
         },
         {
-          title: 'Layer0 Packages',
-          path: '',
-          routes: [
-            {
-              title: '@layer0/core',
-              path: 'docs/api/core',
-              external: true,
-            },
-            {
-              title: '@layer0/prefetch',
-              path: 'docs/api/prefetch',
-              external: true,
-            },
-            {
-              title: '@layer0/core (v3.x)',
-              path: 'docs/v3.x/api/core',
-              external: true,
-            },
-            {
-              title: '@layer0/prefetch (v3.x)',
-              path: 'docs/v3.x/api/prefetch',
-              external: true,
-            },
-          ],
+          title: `@layer0/core (v3.x) Package`,
+          path: '/docs/v3.x/api/core/',
+          external: true,
+        },
+        {
+          title: `@layer0/prefetch (v3.x) Package`,
+          path: '/docs/v3.x/api/prefetch/',
+          external: true,
         },
       ],
     },
     {
       title: 'Reference',
+      icon: 'stacks',
       path: 'reference',
       routes: [
         {
-          title: 'Migration to V4',
+          title: 'Limits & Caveats',
+          path: 'limits',
+        },
+        {
+          title: 'v4 Migration Guide',
           path: 'layer0_migration',
+        },
+        {
+          title: 'layer0.config.js',
+          path: 'layer0_config',
         },
       ],
     },

@@ -7,7 +7,9 @@ import {CgExternal} from 'react-icons/cg';
 import {GoChevronRight} from 'react-icons/go';
 import styled from 'styled-components';
 
-import NavItems from '../../../../src/data/nav.json';
+import useConditioning from 'utils/hooks/useConditioning';
+import {getVersionedNavigation} from 'utils/navigation';
+import {Route} from 'utils/Types';
 
 interface IRoute {
   title: string | null;
@@ -276,11 +278,6 @@ const StyledSideNav = styled.div`
 
 const links = [
   {
-    title: 'Edgio v4 Documentation',
-    path: 'https://docs.layer0.co',
-    icon: 'edgio',
-  },
-  {
     title: 'Fiddle',
     path: 'https://fiddle.layer0.co/?sgId=7bc47c45-c1d6-4189-b416-552581d86006',
     icon: 'fiddle',
@@ -308,10 +305,25 @@ const links = [
 ];
 
 export default function SideNav() {
+  const {version} = useConditioning();
+  const [navItems, setNavItems] = useState({});
+
+  useEffect(() => {
+    async function fetchNavItems() {
+      const items = await getVersionedNavigation(version.selectedVersion);
+      setNavItems(items);
+    }
+    fetchNavItems();
+  }, [version.selectedVersion]);
+
+  if (!Object.keys(navItems).length) {
+    return null;
+  }
+
   return (
     <StyledSideNav>
       <ul className="sidenav-sublist" data-nav-depth="0">
-        <AccordionParent routes={(NavItems as IRoutes).routes} depth={0} />
+        <AccordionParent routes={(navItems as IRoutes).routes} depth={0} />
       </ul>
       <hr />
       <ul className="sidenav-sublist" data-nav-depth="0">

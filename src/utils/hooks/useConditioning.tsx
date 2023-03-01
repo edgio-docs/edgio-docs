@@ -1,6 +1,6 @@
 import {useRouter} from 'next/router';
 
-const latestVersion = process.env.LATEST_VERSION as string;
+const latestVersion = process.env.NEXT_PUBLIC_LATEST_VERSION as string;
 interface RouterQuery {
   version?: string | string[];
   [key: string]: any;
@@ -9,7 +9,9 @@ interface RouterQuery {
 interface IVersion {
   selectedVersion: string;
   latestVersion: string;
+  isLatest: boolean;
   pathPrefix: string;
+  toPath: (path: string) => string;
 }
 
 interface IConditioning {
@@ -26,10 +28,15 @@ function useConditioning(): IConditioning {
       ? version.replace(/v/, '')
       : latestVersion;
 
+  const isLatest = cleanedVersion === latestVersion;
   const versionConfig: IVersion = {
     selectedVersion: cleanedVersion,
     latestVersion,
-    pathPrefix: cleanedVersion ? `/v${cleanedVersion}` : '',
+    isLatest,
+    pathPrefix: !isLatest ? `v${cleanedVersion}` : '',
+    toPath: (path: string) => {
+      return [versionConfig.pathPrefix, path.replace(/^\/+/, '')].join('/');
+    },
   };
 
   return {version: versionConfig};

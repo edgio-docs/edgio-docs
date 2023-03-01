@@ -2,7 +2,7 @@ import {Route} from './Types';
 
 export async function getVersionedNavigation(version?: string): Promise<Route> {
   if (!version) {
-    version = process.env.LATEST_VERSION; // defined in next.config.js
+    version = process.env.NEXT_PUBLIC_LATEST_VERSION; // defined in next.config.js
   }
 
   return (await import(`../config/v${version}.nav.js`)).default;

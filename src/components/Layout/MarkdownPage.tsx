@@ -26,7 +26,7 @@ export function MarkdownPage<
     console.error('This page was not added to one of the sidebar JSON files.');
   }
 
-  const isHomePage = route === '/';
+  const isHomePage = ['/', '/[version]'].includes(route);
 
   const tocHeadings = [];
 

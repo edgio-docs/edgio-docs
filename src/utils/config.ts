@@ -11,7 +11,7 @@ export async function getVersionedConfig(
   mergeWithBase: boolean = true
 ) {
   if (!version) {
-    version = process.env.LATEST_VERSION ?? '6'; // defined in next.config.js
+    version = process.env.NEXT_PUBLIC_LATEST_VERSION ?? '6'; // defined in next.config.js
   }
 
   const versioned = (await import(`../config/v${version}.config.js`)).default;

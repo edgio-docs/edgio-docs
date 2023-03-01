@@ -115,7 +115,7 @@ export const getStaticPaths = async () => {
 
 export async function getStaticProps({params}: {params: any}) {
   const {slug}: {slug: string[]} = params;
-  const latestVersion = process.env.LATEST_VERSION || '6'; // defined in next.config.js
+  const latestVersion = process.env.NEXT_PUBLIC_LATEST_VERSION || '6'; // defined in next.config.js
   const versionRE = /^v(\d+)$/;
 
   // Determine the version from the first element of the slug.

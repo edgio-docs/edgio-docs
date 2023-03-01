@@ -2,9 +2,8 @@ import cn from 'classnames';
 import NextLink from 'next/link';
 import * as React from 'react';
 
-import {findGuideBy} from '../../utils/getChildrenRoutesFromSidebarMenuItems';
-
 import {ExternalLink} from 'components/ExternalLink';
+import useConditioning from 'utils/hooks/useConditioning';
 
 function Link({
   href,
@@ -12,6 +11,7 @@ function Link({
   children,
   ...props
 }: JSX.IntrinsicElements['a']) {
+  const {version} = useConditioning();
   const classes = 'text-link';
   const modifiedChildren = React.Children.toArray(children).map(
     (child: any, idx: number) => {
@@ -40,26 +40,37 @@ function Link({
     href = `mailto:${href}`;
   }
 
-  return (
-    <>
-      {href.startsWith('https://') ? (
+  let hrefType = 'internal';
+  if (href.startsWith('http')) {
+    hrefType = 'external';
+  } else if (href.startsWith('#')) {
+    hrefType = 'anchor';
+  }
+
+  switch (hrefType) {
+    case 'external':
+      return (
         <ExternalLink href={href} className={cn(classes, className)} {...props}>
           {modifiedChildren}
         </ExternalLink>
-      ) : href.startsWith('#') ? (
-        // eslint-disable-next-line jsx-a11y/anchor-has-content
+      );
+    case 'anchor':
+      // eslint-disable-next-line jsx-a11y/anchor-has-content
+      return (
         <a className={cn(classes, className)} href={href} {...props}>
           {modifiedChildren}
         </a>
-      ) : (
-        <NextLink href={href}>
-          {/* eslint-disable-next-line jsx-a11y/anchor-has-content */}
-          <a className={cn(classes, className)} {...props}>
-            {modifiedChildren}
-          </a>
-        </NextLink>
-      )}
-    </>
+      );
+  }
+
+  // internal link
+  return (
+    <NextLink href={version.toPath(href)}>
+      {/* eslint-disable-next-line jsx-a11y/anchor-has-content */}
+      <a className={cn(classes, className)} {...props}>
+        {modifiedChildren}
+      </a>
+    </NextLink>
   );
 }
 

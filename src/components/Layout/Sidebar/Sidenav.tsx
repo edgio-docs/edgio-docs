@@ -9,7 +9,6 @@ import styled from 'styled-components';
 
 import useConditioning from 'utils/hooks/useConditioning';
 import {getVersionedNavigation} from 'utils/navigation';
-import {Route} from 'utils/Types';
 
 interface IRoute {
   title: string | null;
@@ -41,6 +40,8 @@ function Accordion({
     isExpanded: isActive,
   });
 
+  const {version} = useConditioning();
+
   return (
     <li className="sidenav-item" data-comp="accordion" data-expanded={isActive}>
       <div className="sidenav-menu__container">
@@ -59,7 +60,7 @@ function Accordion({
         ) : (
           route.title && (
             <Link
-              href={`/guides/${route.path}`}
+              href={version.toPath(`/guides/${route.path}`)}
               passHref
               className="sidenav-link"
               data-depth={depth}>

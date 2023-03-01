@@ -90,7 +90,7 @@ const _preEdgioExport = {
 };
 
 module.exports = (phase, config) => {
-  process.env.LATEST_VERSION = getLatestVersion();
+  process.env.NEXT_PUBLIC_LATEST_VERSION = getLatestVersion();
 
   return withEdgio(
     withServiceWorker({

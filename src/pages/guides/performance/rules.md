@@ -49,14 +49,78 @@ A condition identifies a set of requests. Setting up a condition typically invol
 
     For example, you may identify requests by HTTP method, path, or request headers.
 
--   **Operator:** An operator defines the relationship between a variable and a value. Valid values are:
+-   **Operator:** An operator determines when a request satisfies a condition by defining the relationship between a variable and a value. Valid operators are:
 
-    -   **Equals:** A request satisfies this condition when an exact match to the specified value is found.
-    -   **Does Not Equal:** A request satisfies this condition when an exact match to the specified value is not found.
-    -   **Matches:** A request satisfies this condition when it contains a value that matches the [Perl-compatible regular expression](https://pcre.org/) defined within the **Match Value** option.
-    -   **Does Not Match:**  A request satisfies this condition when it contains a value that does not match the Perl-compatible regular expression defined within the **Match Value** option.
-    -   **In:** A request satisfies this condition when an exact match to one of the values defined within the **Match Value** option is found.
-    -   **Not In:** A request satisfies this condition when an exact match to one of the values defined within the **Match Value** option is not found.
+    -   **equals:** Indicates that the value derived from the request must be an exact match to the value defined within a condition.
+
+        A comparison will be performed against the exact value defined within the condition. The only exception occurs for the % symbol. This symbol represents a URL-encoded character (e.g., `%20` represents a space character).
+
+        **Example:**
+
+        If you set the Query String condition to `\'*'\`, then only requests whose query strings contain `\'*'\` will satisfy this condition.
+
+    -   **does not equal:** Indicates that the value derived from the request must be different from the value defined within a condition.
+
+        A comparison will be performed against the exact value defined within the condition. The only exception occurs for the % symbol. This symbol represents a URL-encoded character (e.g., `%20` represents a space character).
+
+        **Example:**
+
+        If you set the Query String condition to `\'*'\`, then only requests whose query strings contain `\'*'\` will satisfy this condition.
+
+    -   **matches (simple):** Indicates that the value derived from the request must match the pattern defined within a condition. You may define a pattern using our [route path syntax](/guides/performance/cdn_as_code#route-pattern-syntax).
+
+        <Callout type="info">
+
+          The intended use for this operator is to create a pattern for a URL path. For all other patterns, our recommendation is to use the `matches regular expression` operator.
+
+        </Callout>
+
+    -   **matches regular expression:** Indicates that the value derived from the request must match a [Perl-compatible regular expression](https://pcre.org/) defined within the **Match Value** option.
+
+        Regular expressions define a pattern that will be searched for within a text value. Regular expression notation defines specific meanings to a variety of symbols. Information on how special characters are handled within a regular expression is provided below. This information is not meant to be a comprehensive guide on regular expression usage or syntax. 
+
+        -   **\:** A backslash in a regular expression typically:
+            -   Defines a shorthand character class (e.g., \d instead of [0-9]).
+            -   Escapes the character that follows it. This causes that character to be treated as a literal value instead of taking on its regular expression meaning.
+
+                For example, the following syntax escapes an asterisk: `\*`
+
+                <Callout type="important">
+
+                  A single backslash is always ignored when defining a regular expression for a match condition. Contact our customer support team if you would like to escape a special character when defining a regular expression for a match condition.
+
+                </Callout>
+
+        -   **%:** The meaning of a percentage symbol depends on its usage.
+            -   `%{<HTTP VARIABLE>}:` This syntax identifies an HTTP variable.
+            -   `%{<HTTP VARIABLE%PATTERN>}:` This syntax uses a percentage symbol to identify an HTTP variable and as a delimiter.
+            -   `\%:` Escaping a percentage symbol allows it to be used as a literal value or to indicate URL encoding (e.g., \%20).
+
+        -   ***:** An asterisk allows the preceding character to be matched zero or more times.
+        -   `<SPACE>:` A space character is typically treated as a literal character.
+        -   **':** Single quotes are treated as literal characters. A set of single quotes does not have special meaning.
+
+    -   **does not match regular expression:** Indicates that the value derived from the request must not match a regular expression. 
+    -   **in:** Indicates that the value derived from the request must be an exact match to the one of the value(s) defined within a condition.
+
+        <Callout type="info">
+
+          Define a value by typing it and then pressing `ENTER`.
+
+        </Callout>
+
+    -   **not in:** Indicates that the value derived from the request must not be an exact match to the one of the value(s) defined within a condition.
+
+        <Callout type="info">
+
+          Define a value by typing it and then pressing `ENTER`.
+
+        </Callout>
+
+    -   **less than:** Indicates that the value derived from the request must be less than the value(s) defined within a condition.
+    -   **less than or equal:** Indicates that the value derived from the request must be less than or equal to the value(s) defined within a condition.
+    -   **greater than:** Indicates that the value derived from the request must be greater than the value(s) defined within a condition.
+    -   **greater than or equal:** Indicates that the value derived from the request must be greater than or equal to the value(s) defined within a     condition.
 
 -   **Value:** A value defines what a variable will be matched against. 
 

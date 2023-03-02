@@ -67,7 +67,7 @@
           "routes": [
             {
               "title": "Conditons and Features",
-              "path": "performance/cdn_as_code/rules/conditions_and_features"
+              "path": "performance/rules/conditions_and_features"
             }
           ]
         },

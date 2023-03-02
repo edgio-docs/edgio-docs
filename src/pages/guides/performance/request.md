@@ -69,7 +69,7 @@ User agent headers are headers that {{ PRODUCT_NAME }} derives by analyzing the 
 
 - `{{ HEADER_PREFIX }}-device`: device type which can be `smartphone`, `tablet`, `mobile` (feature phones) or `desktop`
 - `{{ HEADER_PREFIX }}-vendor`: vendor of the device which can be `apple`, `android` or `generic`
-- `{{ HEADER_PREFIX }}-device-is-bot`: flag indicating a bot device (`0` for not identified as bot, `1` for identified as bot)
+- `{{ HEADER_PREFIX }}-device-is-bot`: Indicates whether the request's user agent matches the user agent for a known bot. Returns `1` for known bots and `0` for all other requests.
 - `{{ HEADER_PREFIX }}-browser`: browser type which can be `chrome`, `safari`, `firefox`, `opera`, `edge`, `msie` or `generic`
 
 These values are provided as best effort as user agent, especially adversarial ones, can control the values by which we determine the values above.

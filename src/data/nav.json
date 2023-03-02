@@ -63,7 +63,13 @@
         },
         {
           "title": "Rules",
-          "path": "performance/rules"
+          "path": "performance/rules",
+          "routes": [
+            {
+              "title": "Conditons and Features",
+              "path": "performance/cdn_as_code/rules/conditions_and_features"
+            }
+          ]
         },
         {
           "title": "CDN-as-Code (EdgeJS)",

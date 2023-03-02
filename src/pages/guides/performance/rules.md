@@ -45,7 +45,7 @@ For example, the following rule applies a caching policy to all `GET` requests w
 
 A condition identifies a set of requests. Setting up a condition typically involves defining a relationship between a variable and a value.
 
--   **Variable:** A variable identifies the mechanism through which requests will be identified. 
+-   **Variable:** A variable identifies the type of condition through which requests will be identified. 
 
     For example, you may identify requests by HTTP method, path, or request headers.
 
@@ -53,8 +53,8 @@ A condition identifies a set of requests. Setting up a condition typically invol
 
     -   **Equals:** A request satisfies this condition when an exact match to the specified value is found.
     -   **Does Not Equal:** A request satisfies this condition when an exact match to the specified value is not found.
-    -   **Matches:** A request satisfies this condition when it contains a value that matches the regular expression defined within the **Match Value** option.
-    -   **Does Not Match:**  A request satisfies this condition when it contains a value that does not match the regular expression defined within the **Match Value** option.
+    -   **Matches:** A request satisfies this condition when it contains a value that matches the [Perl-compatible regular expression](https://pcre.org/) defined within the **Match Value** option.
+    -   **Does Not Match:**  A request satisfies this condition when it contains a value that does not match the Perl-compatible regular expression defined within the **Match Value** option.
     -   **In:** A request satisfies this condition when an exact match to one of the values defined within the **Match Value** option is found.
     -   **Not In:** A request satisfies this condition when an exact match to one of the values defined within the **Match Value** option is not found.
 
@@ -69,17 +69,13 @@ Identify all GET requests through the following condition:
 -   **Operator:** Equals
 -   **Match Value:** GET
 
-
-FINDMELINK to reference.
-
-
+[Learn more about types of conditions.](/guides/performance/rules/conditions)
 
 ### Features
 
 A feature determines how requests will be processed. Setting up a feature typically involves selecting a category, selecting the desired feature, and then configuring it.
 
-View a list of features.(FINDME)
-
+[Learn more about types of features.](/guides/performance/rules/features)
 
 ##  Rule Precedence
 

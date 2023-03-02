@@ -2,7 +2,7 @@
 title: Properties
 ---
 
-A property instructs {{ PRODUCT }} how to securely process requests for your website. Setting up a property typically involves creating:
+A property instructs {{ PRODUCT }} how to securely process requests for your website. Setting up a property typically involves:
 
 -   [Environment(s)](/guides/basics/environments). An environment allows you to serve your site on different domains.
 -   [TLS certificate(s)](/guides/FINDME). Each hostname associated with an environment requires the installation of a TLS certificate on our network. Manage these TLS certificates through your property's settings. 

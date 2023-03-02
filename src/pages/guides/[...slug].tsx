@@ -13,7 +13,7 @@ import {getVersionedNavigation} from '../../utils/navigation';
 
 import {MarkdownPage} from 'components/Layout/MarkdownPage';
 import {Page} from 'components/Layout/Page';
-import JSONRoutes from 'utils/jsonRoutes';
+//import JSONRoutes from 'utils/jsonRoutes';
 import templateReplace from 'utils/templateReplace';
 import {MDHeadingsList} from 'utils/Types';
 
@@ -27,7 +27,7 @@ export default function VersionedGuide({
   headings: MDHeadingsList;
 }) {
   return (
-    <Page routeTree={JSONRoutes}>
+    <Page routeTree={{}}>
       <MarkdownPage meta={source.frontmatter} headings={headings}>
         <MDXRemote {...source} components={MDXComponents} />
       </MarkdownPage>
@@ -35,10 +35,10 @@ export default function VersionedGuide({
   );
 }
 
+// The paths generated for this page contain no versioning in the path (eg. /guides/overview).
+// Because of that, those routes are assumed to be the latest available version
+// and will use the latest v*.config.js and v*.nav.js files.
 export const getStaticPaths = async () => {
-  // This structure is used to create the routes for the /guides/[...slug] pages.
-  // Because these paths are not prefixed with a version, they will be used for
-  // the latest available version.
   const routes = [];
 
   // determine available guides from filesystem, excluding any paths that are guides/v*
@@ -48,8 +48,6 @@ export const getStaticPaths = async () => {
   });
 
   // Create a list of routes for each guide that exists in the filesystem
-  // (eg. /guides/overview => /guides/[...slug])
-  // These non-versioned routes will be used for the latest version of the guide
   const guidesFromFilePath = guides.map(
     (path: string) =>
       path
@@ -76,6 +74,17 @@ export async function getStaticProps({params}: {params: any}) {
   );
 
   const slugAsString = slug.join('/');
+
+  // Even though no version is specified in the route, we still need to determine
+  // if there is a latest-versioned guide available. Assume that the latest version
+  // is v6, and the request is for the /guides/overview page. We check the filesystem
+  // for the following files:
+  // - guides/v6/overview.md
+  // - guides/v6/overview.mdx
+  // - guides/overview.md
+  // - guides/overview.mdx
+  // If any of those files exist, we use the first one we find. If none of those
+  // files exist, we return a 404.
   const files = (
     await globby(
       ['md', 'mdx'].flatMap((ext) => [
@@ -114,8 +123,8 @@ export async function getStaticProps({params}: {params: any}) {
   content = content.toString().replace(/<!--([\s\S]*?)-->/g, '');
 
   // Any {{ VALUE }} that was not replaced in the above step
-  // should be replaced with only 1 set of [] braces. Keeping them as
-  // double braces will cause the MDX parser to throw an error.
+  // should be replaced with only 1 set of [] brackets. Keeping them as
+  // {{ }} double braces will cause the MDX parser to throw an error.
   content = content.toString().replace(/{{\s*(\w+)\s*}}/g, (match, p1) => {
     return `[${p1}]`;
   });

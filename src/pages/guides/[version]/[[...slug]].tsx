@@ -5,11 +5,11 @@ import globby from 'globby';
 import {MDXRemote} from 'next-mdx-remote';
 import {serialize} from 'next-mdx-remote/serialize';
 
-import {remarkPlugins} from '../../../plugins/markdownToHtml';
-import rehypeExtractHeadings from '../../../plugins/rehype-extract-headings';
-import {MDXComponents} from '../../components/MDX/MDXComponents';
-import {getVersionedConfig} from '../../utils/config';
-import {getVersionedNavigation} from '../../utils/navigation';
+import {remarkPlugins} from '../../../../plugins/markdownToHtml';
+import rehypeExtractHeadings from '../../../../plugins/rehype-extract-headings';
+import {MDXComponents} from '../../../components/MDX/MDXComponents';
+import {getVersionedConfig} from '../../../utils/config';
+import {getVersionedNavigation} from '../../../utils/navigation';
 
 import {MarkdownPage} from 'components/Layout/MarkdownPage';
 import {Page} from 'components/Layout/Page';
@@ -35,10 +35,11 @@ export default function VersionedGuide({
   );
 }
 
+// The paths generated for this page contain versioning and potentially
+// the name of the guide in the path (eg. /guides/v6 or /guides/v6/overview).
+// The path with no guide name will be used for the homepage of the version.
+// The path with a guide name will be used for the guide.
 export const getStaticPaths = async () => {
-  // this structure is used to create the routes for the SSG pages
-  // /v* => ../index.md (versioned home page)
-  // /v*/guides/* => ../../guides/* (versioned guides)
   const routes = [];
 
   // determine available versions from config files
@@ -78,34 +79,32 @@ export const getStaticPaths = async () => {
   // eg. /v6/guides/overview
   const versionedPaths = versionObjects
     .flatMap(({version}) => {
-      // `guide` is the rest of the path after /src/guides
-      return guidesFromFilePath.map((guide: string) => {
-        // v*/guides/sites/overview
-        const versionedGuide = `v${version}/guides/${guide}`;
-        const versionedNavGuide = `/guides/${versionedGuide}`;
+      const versionedHomepage = {
+        params: {
+          version: `v${version}`,
+          // no slug since this will just be the homepage
+          slug: [],
+        },
+      };
 
-        // If the guide already has a version in the file structure, skip the SSG
-        // version of it. Otherwise, this will attempt to create 2 routes for the
-        // same guide.
-        if (guidesFromFilePath.includes(versionedGuide)) {
-          console.log(
-            `Skipping SSG route for '${versionedNavGuide}' as it already exists in the filesystem`
-          );
-          return;
-        }
+      // `guide` is the rest of the path after /src/guides
+      const versionedGuides = guidesFromFilePath.map((guide: string) => {
+        // v*/guides/sites/overview
+        const versionedGuide = `v${version}/${guide}`;
+        const versionedNavGuide = `/guides/${versionedGuide}`;
 
         return {
           params: {
             version: `v${version}`,
-            slug: ['guides', ...guide.split('/')].filter(Boolean),
+            slug: guide.split('/'),
           },
         };
       });
+
+      return [versionedHomepage, ...versionedGuides];
     })
     .filter(Boolean);
   routes.push(...versionedPaths);
-
-  console.log('routes', JSON.stringify(routes));
 
   return {
     paths: routes,
@@ -115,56 +114,55 @@ export const getStaticPaths = async () => {
 
 export async function getStaticProps({params}: {params: any}) {
   const {version, slug}: {version: string; slug: string[]} = params;
-  const latestVersion = process.env.NEXT_PUBLIC_LATEST_VERSION || '6'; // defined in next.config.js
   const cleanedVersion = version.replace('v', '');
   const versionRE = /^v(\d+)$/;
 
-  if (!version) {
-    console.log(
-      `No version specified; using latest version ${latestVersion} for route '${slug.join(
-        '/'
-      )}'`
-    );
-  }
-
-  const slugAsString = slug.join('/');
-  // The filesystem structure for guides is:
-  //  - /src/guides/v6/overview.mdx (example)
-  // The route slug is:
-  //  - /v6/guides/overview
-  // Notice the inversion between the version and `guides`. We need to remove
-  // `guides/` from the slug to match the filesystem structure.
-  const slugWithoutGuides = slugAsString.replace(/guides\//, '');
-  const files = (
-    await globby(
-      ['md', 'mdx'].flatMap((ext) => [
-        `${guidesPath}/v${cleanedVersion}/${slugWithoutGuides}.${ext}`,
-        `${guidesPath}/${slugWithoutGuides}.${ext}`,
-      ])
-    )
-  ).sort((a, b) => {
-    // prioritize versioned files over non-versioned files
-    if (a.match(versionRE) && !b.match(versionRE)) {
-      return -1;
-    }
-    if (!a.match(versionRE) && b.match(versionRE)) {
-      return 1;
-    }
-    return 0;
-  });
-
-  if (!files.length) {
-    console.log(`No matches files for route '${slugWithoutGuides}'`);
-    return {notFound: true};
-  }
-
-  const file = files[0];
-  console.log(
-    `Using '${file}' for route '${slugAsString}'. Available files:`,
-    files
+  // default to using the homepage for content
+  let content = await readFile(
+    join(process.cwd(), 'src', 'pages', 'index.md'),
+    'utf8'
   );
 
-  let content = await readFile(join(process.cwd(), file), 'utf8');
+  // slug is everything after `/guides/v6/...`. It may not exist
+  // if the request is for the homepage for the version.
+  if (slug && slug.length > 0) {
+    const slugAsString = slug.join('/');
+    // The filesystem structure for guides is:
+    //  - /src/guides/v6/overview.mdx (example)
+    // The route slug is:
+    //  - /guides/v6/overview (example)
+    const slugWithoutGuides = slugAsString.replace(/guides\//, '');
+    const files = (
+      await globby(
+        ['md', 'mdx'].flatMap((ext) => [
+          `${guidesPath}/v${cleanedVersion}/${slugWithoutGuides}.${ext}`,
+          `${guidesPath}/${slugWithoutGuides}.${ext}`,
+        ])
+      )
+    ).sort((a, b) => {
+      // prioritize versioned files over non-versioned files
+      if (a.match(versionRE) && !b.match(versionRE)) {
+        return -1;
+      }
+      if (!a.match(versionRE) && b.match(versionRE)) {
+        return 1;
+      }
+      return 0;
+    });
+
+    if (!files.length) {
+      console.log(`No matches files for route '${slugWithoutGuides}'`);
+      return {notFound: true};
+    }
+
+    const file = files[0];
+    console.log(
+      `Using '${file}' for route '${slugAsString}'. Available files:`,
+      files
+    );
+
+    content = await readFile(join(process.cwd(), file), 'utf8');
+  }
 
   // update template with versioned constants
   content = templateReplace(content, await getVersionedConfig(cleanedVersion));

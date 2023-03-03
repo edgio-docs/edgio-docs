@@ -6,7 +6,10 @@ Rules determine how requests for a specific environment will be processed.
 
 **Common Uses:**
 
+<---
 -   Proxy requests to your origin or to Serverless Compute.
+--->
+
 -   Define when requests will be prefetched.
 -   Override or define a custom cache policy.
 -   Secure or deny requests for sensitive content.
@@ -17,15 +20,21 @@ Rules determine how requests for a specific environment will be processed.
 
 Set up your rules through the following steps:
 
-1.  Identify the environment that will be configured.
+1.  Identify the environment (e.g., `production`) that will be configured.
 2.  Define one or more rule(s) for that environment. Each rule should contain at least one feature.
 3.  Apply your rules to that environment by deploying your changes.
 
 ## Rules and CDN-as-Code
 
-You may either manually generate rules through the {{ PORTAL }} or {{ PRODUCT }} can automatically generate them for you when you deploy your [CDN-as-Code configuration](/guides/performance/cdn_as_code).
+There are two basic workflows for defining your CDN configuration:
+
+-   Generate and deploy rules through the {{ PORTAL }}.
+-   Define a [CDN-as-Code configuration](/guides/performance/cdn_as_code) and then deploy it through the {{ PRODUCT }} CLI. 
 
 ![Rules and CDN-as-Code](/images/performance/rules-cdn-as-code.png)
+
+You may override a CDN-as-code configuration through the **Rules** page. However, complex CDN-as-code configurations are displayed in JSON format instead of being displayed as rules. Additionally, any future CDN-as-code deployments will override your rules.
+
 
 ## Rules
 
@@ -43,13 +52,17 @@ For example, the following rule applies a caching policy to all `GET` requests w
 
 ### Conditions
 
-A condition identifies a set of requests. Setting up a condition typically involves defining a relationship between a variable and a value.
+A condition identifies a set of requests. Setting up a condition requires:
 
--   **Variable:** A variable identifies the type of condition through which requests will be identified. 
+1.  Selecting the type of condition.
 
     For example, you may identify requests by HTTP method, path, or request headers.
 
--   **Operator:** An operator determines when a request satisfies a condition by defining the relationship between a variable and a value. Valid operators are:
+2.  Defining how a request will be compared against a value or state. In some cases, this involves selecting an operator and defining the value that will be compared against the request.
+
+    **Operator:** 
+
+    An operator determines when a request satisfies a condition by defining the relationship between a variable and a value. Valid operators are:
 
     -   **equals:** Indicates that the value derived from the request must be an exact match to the value defined within a condition.
 
@@ -57,7 +70,7 @@ A condition identifies a set of requests. Setting up a condition typically invol
 
         **Example:**
 
-        If you set the Query String condition to `\'*'\`, then only requests whose query strings contain `\'*'\` will satisfy this condition.
+        If you set the `Query String` condition to `\'*'\`, then only requests whose query strings contain `\'*'\` will satisfy this condition.
 
     -   **does not equal:** Indicates that the value derived from the request must be different from the value defined within a condition.
 
@@ -122,10 +135,6 @@ A condition identifies a set of requests. Setting up a condition typically invol
     -   **greater than:** Indicates that the value derived from the request must be greater than the value(s) defined within a condition.
     -   **greater than or equal:** Indicates that the value derived from the request must be greater than or equal to the value(s) defined within a     condition.
 
--   **Value:** A value defines what a variable will be matched against. 
-
-    For example, sample values for the `Method` variable are `POST` and `PUT`.
-
 **Example:**
 
 Identify all GET requests through the following condition:
@@ -133,13 +142,13 @@ Identify all GET requests through the following condition:
 -   **Operator:** Equals
 -   **Match Value:** GET
 
-[Learn more about types of conditions.](/guides/performance/rules/conditions)
+[Learn more about types of conditions.](/guides/performance/rules/conditions_and_features#conditions)
 
 ### Features
 
 A feature determines how requests will be processed. Setting up a feature typically involves selecting a category, selecting the desired feature, and then configuring it.
 
-[Learn more about types of features.](/guides/performance/rules/features)
+[Learn more about types of features.](/guides/performance/rules/conditions_and_features#features)
 
 ##  Rule Precedence
 

@@ -6,11 +6,11 @@ Rules determine how requests for a specific environment will be processed.
 
 **Common Uses:**
 
-<--
+<!---
 
 -   Proxy requests to your origin or to Serverless Compute.
 
--->
+--->
 
 -   Define when requests will be prefetched.
 -   Override or define a custom cache policy.
@@ -56,7 +56,7 @@ For example, the following rule applies a caching policy to all `GET` requests w
 
 A condition identifies a set of requests. Setting up a condition requires:
 
-1.  Selecting the type of condition.
+1.  Selecting the [type of condition](/guides/performance/rules/conditions_and_features#conditions).
 
     For example, you may identify requests by HTTP method, path, or request headers.
 
@@ -109,7 +109,7 @@ A condition identifies a set of requests. Setting up a condition requires:
         -   `%`**:** The meaning of a percentage symbol depends on its usage.
             -   `%{<HTTP VARIABLE>}:` This syntax identifies an HTTP variable.
             -   `%{<HTTP VARIABLE%PATTERN>}:` This syntax uses a percentage symbol to identify an HTTP variable and as a delimiter.
-            -   `\%:` Escaping a percentage symbol allows it to be used as a literal value or to indicate URL encoding (e.g., \`%20`).
+            -   `\%:` Escaping a percentage symbol allows it to be used as a literal value or to indicate URL encoding (e.g., `\%20`).
 
         -   ***:** An asterisk allows the preceding character to be matched zero or more times.
         -   `<SPACE>`**:** A space character is typically treated as a literal character.
@@ -281,10 +281,9 @@ TODO: **Is this needed now that we have autodraft?**
     1.  From the {{ PORTAL }}, select the desired property.
     2.  From the left-hand pane, select the desired environment from under the **Environments** section.
     3.  From the left-hand pane, select **Rules**. 
-2.  Click **Export**.
-3.  Select **EdgeJS**.
-4.  Copy the code by clicking the <img data-inline-img src="/images/icons/copy-to-clipboard.png" alt="" /> icon.
-5.  Optional. Paste your code into your {{ ROUTES_FILE }}.
+2.  Click **Export** and then select **EdgeJS** to display your rules as a CDN-as-code (EdgeJS) configuration. 
+3.  Copy the code by clicking the <img data-inline-img src="/images/icons/copy-to-clipboard.png" alt="" /> icon.
+4.  Optional. Paste your code into your {{ ROUTES_FILE }}.
 
 <Callout type="info">
 

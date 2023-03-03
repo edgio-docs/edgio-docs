@@ -561,14 +561,14 @@ TODO
 
 Features are categorized as follows:
 
--   [Access](#access): Controls access to content.
--   [Caching](#caching): Customizes when and how content is cached.
--   [Client](#client): Controls how the client communicates with our CDN.
+-   [Access](#access-features): Controls access to content.
+-   [Caching](#caching-features): Customizes when and how content is cached.
+-   [Client](#client-features): Controls how the client communicates with our CDN.
 -   **Comment:** Adds a note or metadata to your configuration. This feature is solely informational and does not affect your configuration.
--   [Headers](#headers): Adds, modifies, or deletes headers from the request or response.
--   [Logs](#logs): Customizes how log data is stored.
--   [Origin](#origin): Controls how the CDN communicates with an origin server.
--   [Response](#response): Customizes the response sent to the client and determines whether we will allow prefetching instructions to be sent to the client.
+-   [Headers](#headers-features): Adds, modifies, or deletes headers from the request or response.
+-   [Logs](#logs-features): Customizes how log data is stored.
+-   [Origin](#origin-features): Controls how the CDN communicates with an origin server.
+-   [Response](#response-features): Customizes the response sent to the client and determines whether we will allow prefetching instructions to be sent to the client.
 -   [Set Variables](#set-variables):
 -   [URL](#url): Redirects or rewrites requests to a different URL.
 

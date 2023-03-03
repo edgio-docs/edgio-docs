@@ -6,9 +6,11 @@ Rules determine how requests for a specific environment will be processed.
 
 **Common Uses:**
 
-<---
+<--
+
 -   Proxy requests to your origin or to Serverless Compute.
---->
+
+-->
 
 -   Define when requests will be prefetched.
 -   Override or define a custom cache policy.
@@ -62,19 +64,19 @@ A condition identifies a set of requests. Setting up a condition requires:
 
     **Operator:** 
 
-    An operator determines when a request satisfies a condition by defining the relationship between a variable and a value. Valid operators are:
+    An operator determines when a request satisfies a condition by defining the relationship between a variable and a value. Each operator is briefly described below.
 
     -   **equals:** Indicates that the value derived from the request must be an exact match to the value defined within a condition.
 
-        A comparison will be performed against the exact value defined within the condition. The only exception occurs for the % symbol. This symbol represents a URL-encoded character (e.g., `%20` represents a space character).
+        A comparison will be performed against the exact value defined within the condition. The only exception occurs for the `%` symbol. This symbol represents a URL-encoded character (e.g., `%20` represents a space character).
 
         **Example:**
 
-        If you set the `Query String` condition to `\'*'\`, then only requests whose query strings contain `\'*'\` will satisfy this condition.
+        If you set the `Query String` condition to `'*'\media`, then only requests whose query string contains that exact phrase (`'*'\media`) will satisfy this condition.
 
     -   **does not equal:** Indicates that the value derived from the request must be different from the value defined within a condition.
 
-        A comparison will be performed against the exact value defined within the condition. The only exception occurs for the % symbol. This symbol represents a URL-encoded character (e.g., `%20` represents a space character).
+        A comparison will be performed against the exact value defined within the condition. The only exception occurs for the `%` symbol. This symbol represents a URL-encoded character (e.g., `%20` represents a space character).
 
         **Example:**
 
@@ -92,8 +94,8 @@ A condition identifies a set of requests. Setting up a condition requires:
 
         Regular expressions define a pattern that will be searched for within a text value. Regular expression notation defines specific meanings to a variety of symbols. Information on how special characters are handled within a regular expression is provided below. This information is not meant to be a comprehensive guide on regular expression usage or syntax. 
 
-        -   **\:** A backslash in a regular expression typically:
-            -   Defines a shorthand character class (e.g., \d instead of [0-9]).
+        -   `\`**:** A backslash in a regular expression typically:
+            -   Defines a shorthand character class (e.g., `\d` instead of `[0-9]`).
             -   Escapes the character that follows it. This causes that character to be treated as a literal value instead of taking on its regular expression meaning.
 
                 For example, the following syntax escapes an asterisk: `\*`
@@ -104,21 +106,23 @@ A condition identifies a set of requests. Setting up a condition requires:
 
                 </Callout>
 
-        -   **%:** The meaning of a percentage symbol depends on its usage.
+        -   `%`**:** The meaning of a percentage symbol depends on its usage.
             -   `%{<HTTP VARIABLE>}:` This syntax identifies an HTTP variable.
             -   `%{<HTTP VARIABLE%PATTERN>}:` This syntax uses a percentage symbol to identify an HTTP variable and as a delimiter.
-            -   `\%:` Escaping a percentage symbol allows it to be used as a literal value or to indicate URL encoding (e.g., \%20).
+            -   `\%:` Escaping a percentage symbol allows it to be used as a literal value or to indicate URL encoding (e.g., \`%20`).
 
         -   ***:** An asterisk allows the preceding character to be matched zero or more times.
-        -   `<SPACE>:` A space character is typically treated as a literal character.
-        -   **':** Single quotes are treated as literal characters. A set of single quotes does not have special meaning.
+        -   `<SPACE>`**:** A space character is typically treated as a literal character.
+        -   `'`**:** Single quotes are treated as literal characters. A set of single quotes does not have special meaning.
 
     -   **does not match regular expression:** Indicates that the value derived from the request must not match a regular expression. 
     -   **in:** Indicates that the value derived from the request must be an exact match to the one of the value(s) defined within a condition.
 
         <Callout type="info">
 
-          Define a value by typing it and then pressing `ENTER`.
+          Add a value by typing it and then pressing `ENTER`. Remove a value from the list by clicking the `x` icon that appears directly to the right of it. A sample list item is shown below.
+
+          ![List item](/images/performance/list-item.png)
 
         </Callout>
 
@@ -126,19 +130,19 @@ A condition identifies a set of requests. Setting up a condition requires:
 
         <Callout type="info">
 
-          Define a value by typing it and then pressing `ENTER`.
+          Add a value by typing it and then pressing `ENTER`. Remove a value from the list by clicking the `x` icon that appears directly to the right of it.
 
         </Callout>
 
     -   **less than:** Indicates that the value derived from the request must be less than the value(s) defined within a condition.
     -   **less than or equal:** Indicates that the value derived from the request must be less than or equal to the value(s) defined within a condition.
     -   **greater than:** Indicates that the value derived from the request must be greater than the value(s) defined within a condition.
-    -   **greater than or equal:** Indicates that the value derived from the request must be greater than or equal to the value(s) defined within a     condition.
+    -   **greater than or equal:** Indicates that the value derived from the request must be greater than or equal to the value(s) defined within a condition.
 
 **Example:**
 
 Identify all GET requests through the following condition:
--   **Variable:** Method
+-   **Type of condition (aka variable):** Method
 -   **Operator:** Equals
 -   **Match Value:** GET
 
@@ -146,9 +150,18 @@ Identify all GET requests through the following condition:
 
 ### Features
 
-A feature determines how requests will be processed. Setting up a feature typically involves selecting a category, selecting the desired feature, and then configuring it.
+A feature determines how requests will be processed. They are categorized as follows:
 
-[Learn more about types of features.](/guides/performance/rules/conditions_and_features#features)
+-   [Access](/guides/performance/rules/conditions_and_features#access-features): Controls access to content.
+-   [Caching](/guides/performance/rules/conditions_and_features#caching-features): Customizes when and how content is cached.
+-   [Client](/guides/performance/rules/conditions_and_features#client-features): Controls how the client communicates with our CDN.
+-   **Comment:** Adds a note or metadata to your configuration. This feature is solely informational and does not affect your configuration.
+-   [Headers](/guides/performance/rules/conditions_and_features#headers-features): Adds, modifies, or deletes headers from the request or response.
+-   [Logs](/guides/performance/rules/conditions_and_features#logs-features): Customizes how log data is stored.
+-   [Origin](/guides/performance/rules/conditions_and_features#origin-features): Controls how the CDN communicates with an origin server.
+-   [Response](/guides/performance/rules/conditions_and_features#response-features): Customizes the response sent to the client and determines whether we will allow prefetching instructions to be sent to the client.
+-   [Set Variables](/guides/performance/rules/conditions_and_features#set-variables):
+-   [URL](/guides/performance/rules/conditions_and_features#url): Redirects or rewrites requests to a different URL.
 
 ##  Rule Precedence
 

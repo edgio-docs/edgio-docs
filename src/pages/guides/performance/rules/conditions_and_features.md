@@ -4,7 +4,7 @@ title: Conditions and Features Reference
 
 <Callout type="important">
 
-  The purpose of this article is to provide an internal preview of Rules/EdgeJS conditions, features, and HTTP variables. It does not necessarily reflect what will be released. Addiitonally, it may contain incomplete or incorrect information.
+  The purpose of this article is to provide a preview of conditions, features, and HTTP variables. It does not necessarily reflect what will be released. Additionally, it may contain incomplete or incorrect information.
 
 </Callout>
 
@@ -1830,16 +1830,6 @@ This feature allows our edge servers to rewrite the URL without performing a tra
 ```
 --->
 
-### Time Units
-
-Certain features support the following time unit abbreviations:
--   **s**: Seconds
--   **m**: Minutes
--   **h**: Hours
--   **d**: Days
--   **w**: Weeks
--   **y**: Years
-
 ### HTTP Variables
 
 HTTP variables retrieves request and response metadata. Use this metadata to dynamically alter a request or a response.
@@ -1853,7 +1843,15 @@ The following features support HTTP variables:
 -   [url_redirect](#url-redirect)
 -   [url_rewrite](#url-rewrite)
 
+#### Definitions
 
+HTTP variables are described below.
+
+<Callout type="info">
+
+  A blank value is returned when GEO metadata (e.g., postal code) is unavailable for a particular request.
+
+</Callout>
 
 -   **%{geo_asnum}:** Indicates the client's AS number.
 

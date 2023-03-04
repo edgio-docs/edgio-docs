@@ -331,7 +331,7 @@ The types of prerequisites that may be defined are described below.
     -   Regular expressions or wildcards may not be used to identify
         requests.
     -   Blank values are not allowed.
-    -   Specify each desired value on its own separate line.
+    -   Add a value by typing it and then pressing 'ENTER'.
 -   Ensure that your rate limiting configuration complies the following
     limits:
     -   **Condition groups per rate rule:** 5
@@ -436,7 +436,7 @@ You may create, modify, and delete rate rules.
 1.  Navigate to the **Rate Rules** page.
     {{ SECURITY_NAV }} **Rate Rules**.
 2.  Click **Add Rate Rule**.
-3.  In the **Rule name** option, type the unique name by which
+3.  In the **Name** option, type the unique name by which
     this rate rule will be identified. This name should be sufficiently
     descriptive to identify it when setting up a Security Application
     configuration.
@@ -449,23 +449,21 @@ You may create, modify, and delete rate rules.
     interval (e.g., 1 second, 30 seconds, 1 minute, etc.).
 6.  Optional. Create a condition group to identify
     the types of requests that qualify for rate limiting.
-    1.  Click the **+ New condition group** label.
+    1.  Click the **+ New Condition Group** label.
     2.  Optional. Click on its label (e.g., Condition group 1) and then
         type a brief name that describes the purpose of the condition
-        group.
-    3.  Select the condition (e.g., Condition 1) to view its
-         properties.
-    4.  In the **Match by** option, select the method by which
+        group.    
+    3.  In the **Matched by** option, select the method by which
         requests will be identified.
 
         If you set this option to **Request header**, then you
         should also select the desired request header from the **Request
         header name** option.
-    5.  Skip this step if you are matching by IP address. Otherwise, in
+    4.  Skip this step if you are matching by IP address. Otherwise, in
         the **Match type** option, determine whether the
         **Value(s)** option will contain one or more exact
         value(s) or a regular expression.
-    6.  Perform either of the following steps:
+    5.  Perform either of the following steps:
         -   **Multiple Exact Match:** In the **Value(s)**
             option, type the value that must be satisfied before a
             request will count towards the rate rule. Repeat this step
@@ -480,14 +478,14 @@ You may create, modify, and delete rate rules.
 
         -   **Regex:** In the **Value(s)** option, type the
             desired regular expression pattern.
-    7.  Choose whether this condition will be satisfied when a request
+    6.  Choose whether this condition will be satisfied when a request
         matches or does not match a value defined in the
          **Value(s)** option.
          -   **Matches:** Clear the **Negative match**
              option.
          -   **Does Not Match:** Mark the **Negative match**
              option.
-    8.  Optional. Add another condition to the current condition group
+    7.  Optional. Add another condition to the current condition group
           by clicking **+ New condition** and then repeating steps
           6.4 - 6.7.
 
@@ -499,7 +497,7 @@ You may create, modify, and delete rate rules.
 
         </Callout>
 
-    9.  Optional. Create another condition group by following steps 6.1 - 6.8.
+    8.  Optional. Create another condition group by following steps 6.1 - 6.7.
 
         <Callout type="tip">
 
@@ -508,7 +506,8 @@ You may create, modify, and delete rate rules.
 
         </Callout>
 
-7.  Click **Save**.
+7.  Optional. Enable a rule by toggling the `Rule Status` option to `On`.
+8.  Click **Submit**.
 
 **To modify a rate rule**
 
@@ -516,7 +515,7 @@ You may create, modify, and delete rate rules.
     {{ SECURITY_NAV }} **Rate Rules**.
 2.  Click on the desired rate rule.
 3.  Make the desired changes.
-4.  Click **Save**.
+4.  Click **Submit**.
 
 **To delete a rate rule**
 
@@ -533,9 +532,9 @@ delete that Security Application configuration.
     that the desired rate rule is not in use.
 2.  Navigate to the **Rate Rules** page.
     {{ SECURITY_NAV }} **Rate Rules**.
-3.  Click **Delete rate rule**.
-4.  Type *DELETE*.
-5.  Click **Delete**.
+3.  Click on the desired rate rule set.
+4.  Click **Delete**.
+5.  Click **Confirm**.
 
 ## Sample Scenario 1: Rate Limiting All Requests {/*scenario-1-rate-limiting-all-requests*/}
 

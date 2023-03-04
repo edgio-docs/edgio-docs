@@ -433,14 +433,13 @@ You may create, modify, and delete custom rule sets.
 **To create a custom rule set**
 1.  Navigate to the **Custom Rules** page.
     {{ SECURITY_NAV }} **Custom Rules**.
-2.  Click **Add Custom Rule Profile**.
+2.  Click **Add Custom Rule**.
 3.  In the **Name** option, type the unique name by which this
     custom rule set will be identified. This name should be sufficiently
     descriptive to identify it when setting up a Security Application
     configuration.
-4.  Each new custom rule set contains a default rule that appears
-    directly below the **Name** option. Find the **Name**
-    option for that default rule and set it to a name that identifies
+4.  Create a custom rule by clicking **+ Add Rule**. Find the rule's **Name**
+    option and set it to a name that identifies
     the purpose of this rule.
 5.  In the **Rule ID** option, specify a number between
     66,000,000 and 66,999,999.
@@ -452,9 +451,11 @@ You may create, modify, and delete custom rule sets.
         request element through which {{ PRODUCT_SECURITY }} will identify threats.
 
         [Learn more about variables.](#variables)
+
     2.  Certain variables (e.g., request cookies and request header)
         match on name and value. If you have selected this type of
         variable, then perform the following steps:
+
         1.  Click **+ Add Match**.
         2.  From the **Name** option, type the desired name.
 
@@ -474,11 +475,12 @@ You may create, modify, and delete custom rule sets.
             option.
         5.  Optional. Add another match through which this variable can
             be satisfied by repeating steps 7.2.1 - 7.2.4.
-    3.   Optional. Mark the **Count** option to match by the
+    3.  Optional. Mark the **Count** option to match by the
          number of instances that a match is found instead of by
          inspecting that request element.
 
-         [Learn more.](#count)
+        [Learn more.](#count)
+
     4.  Optional. Click **+ Add Variable** to add another
         variable through which this request may be satisfied. Repeat
         steps 7.1 - 7.3.
@@ -498,6 +500,7 @@ You may create, modify, and delete custom rule sets.
         element identified by the above variable.
 
         [Learn more.](#operators)
+
     6.  In the **Match value** option, type the value that will
         be compared against the request element identified by the above
         variable.
@@ -505,6 +508,7 @@ You may create, modify, and delete custom rule sets.
         transformation that will be applied to the source value.
 
         [Learn more.](#match-transformations)
+
     8.  Optional. Mark the **Negative Match** option to match
         for requests that do not contain a matching value for the
         value defined in step 7.6.
@@ -513,7 +517,7 @@ You may create, modify, and delete custom rule sets.
     step 7 for this new condition.
 9.  Optional. Click **+ Add Rule** to add another rule through
     which {{ PRODUCT_SECURITY }} may identify threats. Repeat steps 7 and 8.
-10. Click **Save**.
+10. Click **Submit**.
 
 **To modify a custom rule set**
 1.  Navigate to the **Custom Rules** page.
@@ -522,19 +526,18 @@ You may create, modify, and delete custom rule sets.
 3.  Make the desired changes.
 
     **Key tasks:**
-    -   Delete variables and matches within a variable by clicking the <img data-inline-img src="/images/icons/remove.png" alt="Delete icon" /> (delete) icon.
-    -   Delete a condition by clicking **Delete Condition**.
+    -   Delete a variable by clicking <img data-inline-img src="/images/icons/delete-3.png" alt="Delete icon" />  **Delete Variable**.
+    -   Delete a match within a variable by clicking the <img data-inline-img src="/images/icons/delete-3.png" alt="Delete icon" /> icon.
+    -   Delete a condition by clicking <img data-inline-img src="/images/icons/delete-3.png" alt="Delete icon" /> **Delete Condition**.
 
         <Callout type="info">
 
-          A rule must have at least one condition. Therefore, you cannot
-          delete the root condition.
+          A rule must have at least one condition. 
 
         </Callout>
 
-    -   Delete a rule by clicking **Delete Rule** and then
-        clicking **Confirm**.
-4.  Click **Save**.
+    -   Delete a rule by clicking the <img data-inline-img src="/images/icons/delete.png" alt="Delete icon" /> icon that appears to the right of the **Name** option and then clicking **Confirm**.
+4.  Click **Submit**.
 
 **To delete a custom rule set**
 
@@ -552,6 +555,6 @@ You may create, modify, and delete custom rule sets.
 2.  Navigate to the **Custom Rules** page.
     {{ SECURITY_NAV }} **Custom Rules**.
 3.  Click on the desired custom rule set.
-4.  Click **Delete Custom Rule Profile**.
-5.  Type *DELETE*.
-6.  Click **Delete**.
+3.  Click **Delete**.
+4.  Click **Confirm**.
+

@@ -389,7 +389,7 @@ You may create, modify, and delete access rules.
 1.  Navigate to the **Access Rules** page.
     {{ SECURITY_NAV }} **Access Rules**.
 2.  Click **Add Access Rule**.
-3.  In the **Name** option, type the unique name by which this
+3.  In the **Name of Rule** option, type the unique name by which this
     access rule will be identified. This name should be sufficiently
     descriptive to identify it when setting up a Security Application
     configuration.
@@ -398,9 +398,9 @@ You may create, modify, and delete access rules.
     1.  From the **Add an Access Control** option, select the
         [desired category](#basic-access-controls) (IP, Country, Referrer,
         etc.).
-    2.  Click **Add Whitelist**, **Add Blacklist**, or
-        **Add Accesslist**.
-    3.  Specify each unique value on a separate line.
+    2.  Click **+ Whitelist**, **+ Blacklist**, or
+        **+ Accesslist**.
+    3.  Add a value by typing it and then pressing `ENTER`. Repeat this step as needed.
 
         <Callout type="info">
 
@@ -416,12 +416,12 @@ You may create, modify, and delete access rules.
 5.  Define which HTTP methods and media types are allowed and which file
     extensions and request headers are disallowed.
 
-    1.  Click **Advanced Settings** to expand that section.
+    1.  If the **Advanced Settings** section is collapsed, click on it to expand it.
     2.  From the **Allowed HTTP Methods** section, verify that
         only the [HTTP methods](#http-methods) that should be
         allowed are marked. If the desired HTTP method is not listed,
         then you may manually define it in the **Other HTTP
-        Methods** option.
+        Methods** option by typing it and then pressing 'ENTER'.
 
         <Callout type="info">
 
@@ -430,10 +430,17 @@ You may create, modify, and delete access rules.
 
         </Callout>
 
-    3.  From the **Allowed Request Content Types** option,
+    3.  In the **Response Header Name** option, set the name of
+        the response header that will be included with blocked requests.
+        This name may only consist of alphanumeric characters and dashes.
+
+    4.  In the **Single File Upload Limit** option, define the maximum file size, in bytes, for a `POST` request.
+
+    5.  From the **Allowed Request Content Types** option,
          verify that the list only contains the [media
-         types](#media-types--aka-content-types-) that should be allowed. If the desired
-         media type is not listed, then type it on a separate line.
+         types](#media-types--aka-content-types-) that should be allowed. 
+
+        Add a media type by typing it and then pressing `ENTER`. Remove a media type by clicking the `x` icon that appears directly to the right of it.
 
         <Callout type="info">
 
@@ -442,33 +449,31 @@ You may create, modify, and delete access rules.
 
         </Callout>
 
-    4.  From the **Extension Blacklist** option, verify that all
+    6.  From the **Extension Blacklist** option, verify that all
         of the listed [file extensions](#file-extensions) should be
-        blocked. If the desired file extension is
-        not listed, then type it on a separate line.
+        blocked. 
+
+        Add a file extension by typing it and then pressing `ENTER`. Remove a file extension by clicking the `x` icon that appears directly to the right of it.
 
         <Callout type="info">
 
           A request is blocked when its file extension matches a
-          value defined in this option.
+          value defined within this option.
 
         </Callout>
 
-    5.  From the **Header Blacklist** option, verify that all of
-        the listed [request headers](#request-headers) should be blocked. If the desired request header
-        is not listed, then type it on a separate line.
+    7.  From the **Header Blacklist** option, add the set of [request headers](#request-headers) that should be blocked. 
+
+        Add a request header by typing it and then pressing `ENTER`. Remove a request header by clicking the `x` icon that appears directly to the right of it.
 
         <Callout type="info">
 
           A request is blocked when it contains a header whose name matches
-          a value defined in this option.
+          a value defined within this option.
 
         </Callout>
 
-    6.  In the **Response Header Name** option, set the name of
-        the response header that will be included with blocked requests.
-        This name may only consist of alphanumeric characters and dashes.
-6.  Click **Save**.
+6.  Click **Submit**.
 
 **To modify an access rule**
 
@@ -476,7 +481,7 @@ You may create, modify, and delete access rules.
     {{ SECURITY_NAV }} **Access Rules**.
 2.  Click on the desired access rule.
 3.  Make the desired changes.
-4.  Click **Save**.
+4.  Click **Submit**.
 
 **To delete an access rule**
 
@@ -493,6 +498,6 @@ You may create, modify, and delete access rules.
     that the desired access rule is not in use.
 2.  Navigate to the **Access Rules** page.
     {{ SECURITY_NAV }} **Access Rules**.
-3.  Click **Delete Access Rule**.
-4.  Type *DELETE*.
-5.  Click **Delete**.
+3.  Click on the desired access rule set.
+4.  Click **Delete**.
+5.  Click **Confirm**.

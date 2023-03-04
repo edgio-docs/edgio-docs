@@ -26,9 +26,8 @@ be ignored when {{ PRODUCT_SECURITY }} performs threat assessment.
 -   An ignore list does not behave like a whitelist, accesslist, or
     blacklist. Rather, it simply allows the system to ignore specific
     cookies when assessing whether a request is malicious traffic.
--   Specify each unique cookie, header, or query string argument on a
-    separate line.
--   Each line defines a regular expression.
+-   Specify each unique cookie, header, or query string argument by typing it and then pressing 'ENTER'.
+-   Each value defines a regular expression.
 
     <Callout type="info">
 
@@ -143,10 +142,7 @@ to site traffic will be detected.
 **Key information:**
 -   Only a single rule set may be associated with a managed rule.
 -   A threat detection policy or its rules may be disabled.
-    -   View a policy's rules by clicking its "*N* Rules Disabled"
-        link.
-
-        ![](/images/app_security/managed_rules_0_rules_disabled.png)
+    -   View a policy's rules by clicking on the <img data-inline-img src="/images/icons/expand-section.png" alt="Delete icon" /> icon that appears directly to the left of its name. 
 
         <Callout type="info">
 
@@ -184,7 +180,7 @@ Identify a rule set's version by the date on which it was released.
 
 **Example:** 
 
-`ECRS **2019-02-11**`
+`ECRS **2022-12-14**`
 
 <a id="rule-set-updates"></a>
 
@@ -289,8 +285,7 @@ Tips for setting up rule exceptions:
     will be identified. Mark the **Regex?** option to specify a
     regular expression instead of a literal value.
 -   The best strategy for defining exceptions is to:
-    1.  Identify false positives within the **Threats Dashboard**
-        or through our REST API's Get Event Log Entries endpoint
+    1.  Identify false positives within the **Threats Dashboard**         
         by reviewing recent threats and identifying requests that were
         made by actual users.
     2.  Identify a common attribute within those requests and the
@@ -327,12 +322,10 @@ You may create, modify, and delete managed rules.
 5.  Determine whether {{ PRODUCT_SECURITY }} will [ignore specific cookies, request
     headers, or query string arguments](#preventing-false-positives-ignore-list) when assessing
     whether a request is a threat.
-    1.  From the **Ignore List** option, choose to ignore
+    1.  From the **Ignore List** section, choose to ignore
         specific cookies, request headers, or query string arguments.
-    2.  Specify the name for each cookie, request header, or query
-        string argument that should be ignored on a separate line.
-    3.  Repeat the above steps if you need to create additional ignore
-        lists.
+    2.  Add a cookie, request header, or query string argument that should be ignored by typing it and then pressing 'ENTER'.
+    3.  Repeat the above steps if you need to create additional ignore lists.
 6.  **Advanced Users Only**
 
     Customize [file size and query string
@@ -340,10 +333,9 @@ You may create, modify, and delete managed rules.
     Details** and then making the necessary adjustments.
 7.  Enable the desired threat detection rules and define the threat
     identification threshold.
-    1.  Click the **Policies** tab. In the **Ruleset**
+    1.  Click the **Policies** tab. In the **Ruleset ERS**
         option, select the type and date for the rule set that may be
-        used to monitor traffic for threats. The **Policies**
-        section will be refreshed to reflect the selected rule set.
+        used to monitor traffic for threats. The list of policies shown below this section will be automatically refreshed to reflect the selected rule set.
 
         <Callout type="tip">
 
@@ -374,7 +366,7 @@ You may create, modify, and delete managed rules.
 
         </Callout>
 
-    3.  Set the **Paranoia Level** option to a level (e.g., 1)
+    3.  Set the **Paranoia Level** option to a level (e.g., `1`)
         that balances security with risk tolerance.
 
         <Callout type="tip">
@@ -408,10 +400,9 @@ You may create, modify, and delete managed rules.
             option to indicate that the specified value should be
             interpreted as a regular expression.
     5.  In the **Applied Rule ID's** option, type the ID for
-        each rule that will be ignored when processing the requests
-        identified in steps 8.3 and 8.4.
-    6. Click **Create Condition**.
-9.  Click **Save**.
+        a rule that will be ignored when processing the requests
+        identified in steps 8.3 and 8.4 and then press 'ENTER'. Repeat this step as needed.
+9.  Click **Submit**.
 
 **To modify a managed rule**
 
@@ -429,7 +420,7 @@ You may create, modify, and delete managed rules.
     {{ SECURITY_NAV }} **Managed Rules**.
 2.  Click on the desired managed rule.
 3.  Make the desired changes.
-4.  Click **Save**.
+4.  Click **Submit**.
 
 **To delete a managed rule**
 
@@ -446,7 +437,6 @@ You may create, modify, and delete managed rules.
     that the desired managed rule is not in use.
 2.  Navigate to the **Managed Rules** page.
     {{ SECURITY_NAV }} **Managed Rules**.
-3.  Click on the desired managed rule.
-4.  Click **Delete Managed Rule**.
-5.  Type *DELETE*.
-6.  Click **Delete**.
+3.  Click on the desired managed rule set.
+4.  Click **Delete**.
+5.  Click **Confirm**.

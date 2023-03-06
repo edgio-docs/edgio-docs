@@ -1,7 +1,6 @@
 const COMPANY_NAME = 'Edgio';
 const PRODUCT_NAME = 'Edgio';
 const PRODUCT = 'Edgio';
-const PRODUCT_UPPER = 'EDGIO';
 const PRODUCT_LEGACY = 'Layer0';
 const PRODUCT_EDGE = 'Performance';
 const PRODUCT_APPLICATIONS = 'Applications';

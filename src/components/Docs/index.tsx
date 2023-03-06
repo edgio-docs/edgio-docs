@@ -215,14 +215,14 @@ export default function Docs({
                 aria-hidden="true"></a>
             </h1>
 
-            <div className="docs-article__header-icons">
+            {/* <div className="docs-article__header-icons">
               <EditPage as="icon" />
               <DiscourseDiscuss as="icon" />
-            </div>
+            </div> */}
           </header>
           <div className="docs-article__body">{children}</div>
         </article>
-        <EditPage />
+        {/* <EditPage /> */}
       </div>
       <Toc headings={tocHeadings} />
     </StyledDocs>

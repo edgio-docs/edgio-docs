@@ -1,14 +1,34 @@
-import {Route} from './Types';
+import v4 from '../config/v4.nav';
+import v5 from '../config/v5.nav';
+import v6 from '../config/v6.nav';
+import v7 from '../config/v7.nav';
 
-export async function getVersionedNavigation(version?: string): Promise<Route> {
+import {Route, StringMap} from './Types';
+
+const navigation: StringMap = {
+  v4,
+  v5,
+  v6,
+  v7,
+};
+
+/**
+ *
+ * @param version
+ * @returns
+ */
+export function getVersionedNavigation(version?: string): Route {
   if (!version) {
-    version = process.env.NEXT_PUBLIC_LATEST_VERSION; // defined in next.config.js
+    version = process.env.NEXT_PUBLIC_LATEST_VERSION as string; // defined in next.config.js
   }
 
-  return (await import(`../config/v${version}.nav.js`)).default;
+  // clean up version string so it's just the numeric value
+  version = version.replace('v', '');
+
+  return navigation[`v${version}`];
 }
 
-export async function getVersionedPaths(version?: string) {
+export function getVersionedPaths(version?: string) {
   function flattenPaths(
     obj: Route,
     basePath?: string | undefined,
@@ -35,7 +55,7 @@ export async function getVersionedPaths(version?: string) {
     return result;
   }
 
-  const nav = await getVersionedNavigation(version);
+  const nav = getVersionedNavigation(version);
   const rootPath = nav.path;
   delete nav.path;
 

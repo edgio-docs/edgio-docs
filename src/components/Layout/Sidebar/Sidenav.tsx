@@ -307,19 +307,7 @@ const links = [
 
 export default function SideNav() {
   const {version} = useConditioning();
-  const [navItems, setNavItems] = useState({});
-
-  useEffect(() => {
-    async function fetchNavItems() {
-      const items = await getVersionedNavigation(version.selectedVersion);
-      setNavItems(items);
-    }
-    fetchNavItems();
-  }, [version.selectedVersion]);
-
-  if (!Object.keys(navItems).length) {
-    return null;
-  }
+  const navItems = getVersionedNavigation(version.selectedVersion);
 
   return (
     <StyledSideNav>

@@ -2,7 +2,7 @@ import baseConfig from '../config/base.config';
 import v4 from '../config/v4.config';
 import v5 from '../config/v5.config';
 import v6 from '../config/v6.config';
-import v7 from '../config/v7.config';
+//import v7 from '../config/_ignore_v7.config';
 
 import {StringMap} from './Types';
 
@@ -10,7 +10,7 @@ const configs: StringMap = {
   v4,
   v5,
   v6,
-  v7,
+  //v7,
 };
 
 export function getBaseConfig() {

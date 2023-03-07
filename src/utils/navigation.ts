@@ -1,7 +1,7 @@
 import v4 from '../config/v4.nav';
 import v5 from '../config/v5.nav';
 import v6 from '../config/v6.nav';
-import v7 from '../config/v7.nav';
+//import v7 from '../config/_ignore_v7.nav';
 
 import {Route, StringMap} from './Types';
 
@@ -9,7 +9,7 @@ const navigation: StringMap = {
   v4,
   v5,
   v6,
-  v7,
+  //v7,
 };
 
 /**

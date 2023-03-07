@@ -294,7 +294,7 @@ The `{{ HEADER_PREFIX }}-version` response header describes the latest {{ PRODUC
 `{{ HEADER_PREFIX }}-version: <Deployment Number> <Package Version> <Environment Version> <Deployment Timestamp> <Compiler Version>`
 
 Definitions for the above variables are provided below.
--   **&lt;Deployment #&gt;:** Identifies a deployment by its version number.
+-   **&lt;Deployment Number&gt;:** Identifies a deployment by its version number.
 -   **&lt;Package Version&gt;:** Indicates the {{ PRODUCT }} package version.
 -   **&lt;Environment Version&gt;:** Identifies an environment by its version number.
 -   **&lt;Deployment Timestamp&gt;:** Indicates the date and time (UTC; 24-hour clock) at which your site was deployed.

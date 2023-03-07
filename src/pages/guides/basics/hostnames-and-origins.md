@@ -19,11 +19,18 @@ You may also serve your site through [Serverless Compute](/guides/performance/se
 
 Set up your hostnames and origins through the following steps:
 
-1.  Define each hostname through which your site's content will be delivered. 
-2.  Optional. Define how {{ PRODUCT }} will communicate with your origin server(s). 
-3.  Optional. If you have defined one or more origin configuration(s), then you will also need to configure your firewall to accept traffic from our network. 
-4.  Set up a TLS certificate for each of the above hostname(s). 
-5.  Once you are ready to serve production traffic, update your DNS configuration to point each of the hostname(s) identified in step 1 to our service. 
+1.  [Define each hostname](#add-modify-delete-hostname) through which your site's content will be delivered. 
+2.  Optional. [Create an origin configuration](#add-an-origin-configuration) that defines how {{ PRODUCT }} communicates with your web server(s). 
+3.  Optional. If you have defined one or more origin configuration(s), then you will also need to [configure your firewall to accept traffic from our network.](#firewall-allowing-ip-addresses) 
+4.  From your DNS service provider, [add a CNAME record for each of the above hostname(s)](#FINDME).
+
+    <Callout type="info">
+
+      This CNAME record validates your control over a hostname. This allows our CDN to generate and install a TLS certificate on our network. This is required before our CDN can serve HTTPS traffic.
+
+    </Callout>
+
+5.  Perform this step once you are ready to [serve traffic on our CDN](#FINDME). From your DNS service provider, update the DNS record that corresponds to each of the hostname(s) identified in step 1 to point to our service. 
 
 ## Hostnames {/*hostnames*/}
 
@@ -40,7 +47,7 @@ On a per environment-basis, define each hostname that will be served through {{ 
 -   Each hostname requires the installation of a [TLS certificate](#FINDMElink) on our network.
 -   Once you are ready to serve traffic through {{ PRODUCT }}, update the hostname's [DNS configuration](#FINDME) to point to our service.
 
-**To add, modify, or delete hostnames from an environment**
+**To add, modify, or delete hostnames from an environment** <a id="add-modify-delete-hostname"></a>
 
 1.  Load the **Hostnames** page.
     1.  From the {{ PORTAL }}, select the desired property.
@@ -91,7 +98,7 @@ On a per environment-basis, define how {{ PRODUCT }} will communicate with your 
 -   By default, our network disables delivery when we detect a self-signed certificate from the origin server during the TLS handshake. Enable the **Allow Self-Signed Certs** option to require our edge servers to respond with a `502 Bad Gateway` response upon detecting a self-signed certificate from the origin server during the TLS handshake.
 -   Register the SHA-256 digest for the public key of your end-entity (i.e., leaf) certificate within the **Pinned Cert(s)** option. After which, our edge servers will respond with a `502 Bad Gateway` response when the SHA-256 digest for the public key detected from the origin server does not match one of the pinned certificates.
 
-**To add an origin configuration**
+**To add an origin configuration** <a id="add-origin-configuration"></a>
 
 1.  Load the **Origins** page.
     1.  From the {{ PORTAL }}, select the desired property.
@@ -188,7 +195,7 @@ allowlisting
 
 -->
 
-### DNS Setup {/*dns-setup*/}
+### Serving Traffic through {{ PRODUCT }} {/*serving-traffic-through*/}
 
 Once you are ready to serve traffic through {{ PRODUCT }}, you will need to configure DNS for each hostname.
 

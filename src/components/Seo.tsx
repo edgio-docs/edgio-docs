@@ -13,6 +13,7 @@ export interface SeoProps {
   image?: string;
   // jsonld?: JsonLDType | Array<JsonLDType>;
   children?: React.ReactNode;
+  isHomepage?: boolean;
 }
 
 const Seo = withRouter(

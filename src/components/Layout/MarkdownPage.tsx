@@ -28,7 +28,8 @@ export function MarkdownPage<
   }
 
   const isHomePage =
-    route === '/' || (slug && slug.length === 1 && slug[0].match(/^v\d+$/));
+    route === '/' ||
+    !!(slug && slug.length === 1 && slug[0].match(/^v\d+$/) !== null);
 
   const tocHeadings = [];
 

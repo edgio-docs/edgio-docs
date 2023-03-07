@@ -36,3 +36,10 @@ export function getVersionedConfig(
 
   return {...baseConfig, ...versioned};
 }
+
+export function getVersionedConfigs() {
+  return Object.keys(configs).reduce((acc, key) => {
+    acc[key] = {...baseConfig, ...configs[key]};
+    return acc;
+  }, {} as StringMap);
+}

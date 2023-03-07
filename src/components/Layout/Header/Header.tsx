@@ -7,6 +7,8 @@ import EdgioDark from '../../../../public/images/home/edgio-dark.webp';
 import EdgioLight from '../../../../public/images/home/edgio-light.webp';
 import NoSSRWrapper from '../NoSSRWrapper';
 
+import VersionChooser from './VersionChooser';
+
 import {ExternalLink} from 'components/ExternalLink';
 import {IconHamburger} from 'components/Icon/IconHamburger';
 import {IconLightMobileLogo} from 'components/Icon/IconMobileLogo';
@@ -236,6 +238,8 @@ export default function Header({
             </a>
           </Link>
         </div>
+
+        <VersionChooser />
       </div>
       <div className="col-2">
         <div id="desktop" className="desktop">

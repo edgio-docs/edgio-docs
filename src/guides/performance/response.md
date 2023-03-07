@@ -291,7 +291,7 @@ We will now examine each metric defined within the above sample response header:
 
 The `{{ HEADER_PREFIX }}-version` response header describes the latest {{ PRODUCT }} deployment using the following syntax:
 
-`{{ HEADER_PREFIX }}-version: <Deployment #> <Package Version> <Environment Version> <Deployment Timestamp> <Compiler Version>`
+`{{ HEADER_PREFIX }}-version: <Deployment Number> <Package Version> <Environment Version> <Deployment Timestamp> <Compiler Version>`
 
 Definitions for the above variables are provided below.
 -   **&lt;Deployment #&gt;:** Identifies a deployment by its version number.

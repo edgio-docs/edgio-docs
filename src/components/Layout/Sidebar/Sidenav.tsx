@@ -102,7 +102,7 @@ function Accordion({
           </a>
         ) : route.title && isActiveLink ? (
           <Link
-            href={version.toPath(`/guides/${route.path}`)}
+            href={version.toPath(route.path)}
             passHref
             className="sidenav-link"
             data-depth={depth}>

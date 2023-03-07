@@ -180,6 +180,10 @@
           "title": "Website Security (EdgeJS)",
           "path": "security/edgejs_security"
         },
+        { 
+          "title": "Origin Shield",
+          "path": "security/origin_shield"
+        },
         {
           "title": "",
           "path": ""

@@ -20,9 +20,9 @@ You may also serve your site through [Serverless Compute](/guides/performance/se
 Set up your hostnames and origins through the following steps:
 
 1.  [Define each hostname](#add-modify-delete-hostname) through which your site's content will be delivered. 
-2.  Optional. [Create an origin configuration](#add-an-origin-configuration) that defines how {{ PRODUCT }} communicates with your web server(s). 
-3.  Optional. If you have defined one or more origin configuration(s), then you will also need to [configure your firewall to accept traffic from our network.](#firewall-allowing-ip-addresses) 
-4.  From your DNS service provider, [add a CNAME record for each of the above hostname(s)](#FINDME).
+2.  [Create an origin configuration](#add-an-origin-configuration) that defines how {{ PRODUCT }} communicates with your web server(s). 
+3.  [Configure your firewall](#firewall-allowing-ip-addresses)  to accept traffic from our network.
+4.  From your DNS service provider, [add a CNAME record](#FINDME) for each hostname defined in step 1.
 
     <Callout type="info">
 
@@ -132,7 +132,7 @@ On a per environment-basis, define how {{ PRODUCT }} will communicate with your 
     </Callout>
 
     5.  Optional. Add another host to this origin configuration by clicking **+ Add Host** and then performing steps 4.1 - 4.4. 
-5.  Optional. Define TLS settings for this origin configuration. Expand the **Origin TLS Settings** section.
+5.  Optional. Define TLS settings for this origin configuration. Click on the **Origin TLS Settings** section to expand it.
 
     1.  Enable SNI by toggling the **Use SNI** option to the on position (<img data-inline-img src="/images/icons/toggle-on.png" alt="Toggle on" />) and then defining the hostname that will be sent as a SNI hint during the TLS handshake. 
 
@@ -149,9 +149,9 @@ On a per environment-basis, define how {{ PRODUCT }} will communicate with your 
         2.  Paste the SHA-256 digest for the public key of your leaf certificate.
         3.  Repeat steps 1 and 2 as needed.
 
-6.  Optional. Protect your origin by adding one or more shield(s).
+6.  Optional. Protect your origin by defining one or more [shield POP(s)](/guides/security/origin_shield). Click on the **Shields** section to expand it.
 
-    1.  Assign the region closest to your web server(s) a POP location.
+    1.  Assign a POP location to the region closest to your web server(s).
 
         Upon configuring a region, all other regions will be updated from `Bypass` to the selected POP. This configuration means that cache misses from all regions will be proxied to the selected POP location.
 
@@ -159,18 +159,28 @@ On a per environment-basis, define how {{ PRODUCT }} will communicate with your 
 
     2.  Optional. Assign a POP location to a different region.
 
-        Upon configuring a second region, the remaining regions will be updated from the selected POP to `Use the shield with the lowest RTT`. This configuration means that cache misses from the remaining regions will be proxied to the shield that will provide the best performance.
+        Upon configuring a second region, the remaining regions are automatically updated from the selected POP to `Use the shield with the lowest RTT`. This configuration means that cache misses from the remaining regions will be proxied to the shield POP that will provide the best performance.
 
-        For example, the following configuration may cause cache misses from the APAC region to be served through the shield location defined for the US West region (i.e., `OXR`).
+        For example, the following configuration may potentially allow cache misses from the APAC region to be served through the shield location defined for the US West region (i.e., `OXR`).
 
         ![Multiple Shields](/images/basics/origin-shields-multiple.png?width=600)
 
     3.  Optional. Repeat step 2 as needed.
 
+    4.  Optional. Configure cache misses from a specific region to always be proxied to your origin by selecting `Bypass`.
+
 7. If you are finished making changes to this environment, click **Deploy Changes**.
 
 ## TLS Certificate {/*tls-certificate*/}
 
+
+From your DNS service provider, [add a CNAME record](#FINDME) for each hostname defined in step 1.
+
+    <Callout type="info">
+
+      This CNAME record validates your control over a hostname. This allows our CDN to generate and install a TLS certificate on our network. This is required before our CDN can serve HTTPS traffic.
+
+    
 todo
 
 ## Firewall - Allowing {{ PRODUCT }} IP Addresses {/*firewall-allowing-ip-addresses*/}
@@ -178,6 +188,7 @@ todo
 For the purpose of fulfilling requests, our edge servers require access to all servers associated with your origin configurations.
 
 <!--
+
 customer origin group. Please ensure that your firewall allows access to all of the IP blocks listed in the Whitelist IP Blocks page.
 
 Export a list of the IPv4 and IPv6 blocks that should be whitelisted by clicking CSV from the Whitelist IP Blocks page.
@@ -200,6 +211,7 @@ allowlisting
 Once you are ready to serve traffic through {{ PRODUCT }}, you will need to configure DNS for each hostname.
 
 <!--
+
 In order to configure your DNS provider to direct traffic for a particular set of domains to Edgio, you must create DNS records for your website. If you are launching a new site, then you can create the records whenever you feel ready. For sites that are already live, the DNS update is the last step. Once you have updated your DNS you are committed to launching.
 
 To see the DNS configuration values, click the Actions needed button in the Domains section of the Configuration tab. This will show you the A and CNAME records you need to create in your DNS provider.
@@ -275,63 +287,4 @@ mywebsite.xyz.        599    IN    A        208.69.180.14
 
 -->
 
-## Origin Shield {/*origin-shield*/}
-
-Origin Shield establishes an additional buffer between a customer origin server and your clients. This buffer is useful for protecting a customer origin server from:
-
--   Denial of service attacks
--   Spikes in traffic
-
-### How Does It Work? {/*how-does-it-work*/}
-
-The Origin Shield feature reduces the number of requests that are sent to the customer origin server. This results in reduced server and network load on the customer origin server. It is able to accomplish this by establishing an intermediate caching layer between the customer origin server and an edge server. This intermediate caching layer is illustrated below.
-
-[image placeholder Origin Shield](todo)
-
-This intermediate caching layer augments the default CDN caching behavior in the following ways: 
-
--   Allows content requested from your origin servers to be cached on our origin shield servers (i.e., intermediate caching layer).
--   If an edge server does not have a fresh version of the requested content, then it will forward the request to an origin shield server.
-
-    The origin shield server will handle this request according to the cache state of the requested content (as indicated below).
-
-    -   **Found (Valid TTL):** If a cached version of the requested content is found with a valid time-to-live (TTL), then the origin shield server respond with that cached content to the edge server. The edge server will then forward that response to the client.
-
-        Our service was able to serve the requested content without communicating with your origin servers. In addition to improving performance, it eliminates bandwidth and load on your network.
-
-    -   **Stale:** If a stale version of the requested content is found, then the origin shield server will revalidate the cached asset with the origin server.
-
-        Our origin shield servers provide a central caching repository that increases the probability that the requested content has been previously cached. In turn, this drastically reduces the number of requests that must be fulfilled by your origin servers.
-
-    -   **Not Found (Cache Miss):** If the requested content is not found, then an origin shield server will forward the request to your origin servers.
-
-        Our origin shield servers provide a central caching repository through which the frequency of requests for the same content may be minimized. Requests forwarded by our origin shield servers to your origin servers may result in cached content. Our service may then serve that cached content for subsequent requests. 
-
-### Origin Shield Configuration {/*origin-shield-configuration*/}
-
-Protecting your origin through the origin shield requires the selection of a single (recommended) or multiple origin shield locations. Each configuration method is described below.
-
-<Callout type="info">
-
-  Each origin shield location is identified by the three-letter abbreviation for the POP where it is located. 
-
-</Callout>
-
-PLACEHOLDER: Single OS implementation???
-
-Multiple Origin Shield Locations
-
-You may define multiple origin shield locations for a single origin configuration. Choose one of the following options for each region:
-
--   **Blank:** Leaving a region blank indicates that cache misses for this region will be forwarded to the next closest origin shield region.
--   **POP:** Selecting a POP activates origin shield for that region. Cache misses for this region will go through the selected origin shield. If the origin shield does not have the requested asset, it will request it from your origin servers.
--   **Bypass:** Selecting to bypass a region indicates that cache misses for this region will bypass origin shield and go directly to your origin servers. This type of configuration is the equivalent of turning origin shield off for a particular region.
-
-<Callout type="info">
-
-  Origin shield locations in Asia and South America require the activation of the Premium Asia and Latin America geographic delivery regions, respectively.
-
-</Callout>
-
-TODO: Verify callout
 

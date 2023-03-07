@@ -16,7 +16,8 @@ export function MarkdownPage<
     status?: string;
   }
 >({children, meta, headings}: MarkdownProps<T>) {
-  const {route} = useRouter();
+  const {route, query} = useRouter();
+  const {slug} = query;
 
   // const {route, nextRoute, prevRoute} = useRouteMeta();
   const title = meta.title || route || '';
@@ -26,7 +27,8 @@ export function MarkdownPage<
     console.error('This page was not added to one of the sidebar JSON files.');
   }
 
-  const isHomePage = ['/', '/[version]'].includes(route);
+  const isHomePage =
+    route === '/' || (slug && slug.length === 1 && slug[0].match(/^v\d+$/));
 
   const tocHeadings = [];
 

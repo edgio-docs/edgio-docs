@@ -7,6 +7,7 @@ import {CgExternal} from 'react-icons/cg';
 import {GoChevronRight} from 'react-icons/go';
 import styled from 'styled-components';
 
+import {getVersionedConfig} from 'utils/config';
 import useConditioning from 'utils/hooks/useConditioning';
 import {getVersionedNavigation} from 'utils/navigation';
 
@@ -41,6 +42,48 @@ function Accordion({
   });
 
   const {version} = useConditioning();
+  //const config = getVersionedConfig(version.selectedVersion);
+  const isActiveLink = route.path.length > 0;
+  //console.log('currentRoutePath', currentRoutePath, route.path);
+  const childElement = (
+    <a
+      className="menu-toggle__wrap"
+      data-is-highlighted={
+        currentRoutePath.split('/')[depth] === route.path.split('/')[depth]
+      }
+      {...getToggleProps({
+        onClick: onSelect,
+      })}>
+      {depth === 0 && (
+        <div className="icons">
+          <div id="dark-theme">
+            <Image
+              src={`/icons/${route.icon}.svg`}
+              alt={route.icon}
+              width="16px"
+              height="16px"
+              priority
+            />
+          </div>
+          <div id="light-theme">
+            <Image
+              src={`/icons/${route.icon}-dark.svg`}
+              alt={route.icon}
+              width="16px"
+              height="16px"
+              priority
+            />
+          </div>
+        </div>
+      )}
+      <span>{route.title}</span>
+      {route.routes && (
+        <div className="icon-chevron">
+          <GoChevronRight />
+        </div>
+      )}
+    </a>
+  );
 
   return (
     <li className="sidenav-item" data-comp="accordion" data-expanded={isActive}>
@@ -57,53 +100,16 @@ function Accordion({
               <CgExternal />
             </div>
           </a>
+        ) : route.title && isActiveLink ? (
+          <Link
+            href={version.toPath(`/guides/${route.path}`)}
+            passHref
+            className="sidenav-link"
+            data-depth={depth}>
+            {childElement}
+          </Link>
         ) : (
-          route.title && (
-            <Link
-              href={version.toPath(`/guides/${route.path}`)}
-              passHref
-              className="sidenav-link"
-              data-depth={depth}>
-              <a
-                className="menu-toggle__wrap"
-                data-is-highlighted={
-                  currentRoutePath.split('/')[depth] ===
-                  route.path.split('/')[depth]
-                }
-                {...getToggleProps({
-                  onClick: onSelect,
-                })}>
-                {depth === 0 && (
-                  <div className="icons">
-                    <div id="dark-theme">
-                      <Image
-                        src={`/icons/${route.icon}.svg`}
-                        alt={route.icon}
-                        width="16px"
-                        height="16px"
-                        priority
-                      />
-                    </div>
-                    <div id="light-theme">
-                      <Image
-                        src={`/icons/${route.icon}-dark.svg`}
-                        alt={route.icon}
-                        width="16px"
-                        height="16px"
-                        priority
-                      />
-                    </div>
-                  </div>
-                )}
-                <span>{route.title}</span>
-                {route.routes && (
-                  <div className="icon-chevron">
-                    <GoChevronRight />
-                  </div>
-                )}
-              </a>
-            </Link>
-          )
+          <Fragment>{childElement}</Fragment>
         )}
         {/* Collapse */}
         {route.routes && (
@@ -124,9 +130,11 @@ function getCurrentRouteIndex(
   depth: number,
   currentRoutePath: string
 ) {
+  //console.log('routes', routes);
   return routes.findIndex((route) => {
     const _route = route.path.split('/')[route.path.split('/').length - 1];
     const _crp = currentRoutePath.split('/')[depth];
+    // if (_route == _crp) console.log(route.path, currentRoutePath, depth);
     return _route == _crp;
   });
 }
@@ -136,7 +144,16 @@ function getCurrentRouteIndex(
 //  2. Navigate
 function AccordionParent({routes, depth}: {routes: IRoute[]; depth: number}) {
   const router = useRouter();
-  const currentRoutePath = router.pathname.replace('/guides/', '');
+  const {version} = useConditioning();
+  const slug = (router.query?.slug as string[]) ?? [];
+  const index = slug.indexOf(version.pathPrefix);
+  const currentRoutePath = (index === -1 ? slug : slug.slice(index + 1)).join(
+    '/'
+  );
+
+  // if (version.selectedVersion === '4') {
+  //   depth = 0;
+  // }
   const [activeIndex, setActiveIndex] = useState<number | null>(() =>
     getCurrentRouteIndex(routes, depth, currentRoutePath)
   );
@@ -308,6 +325,7 @@ const links = [
 export default function SideNav() {
   const {version} = useConditioning();
   const navItems = getVersionedNavigation(version.selectedVersion);
+  //console.log('selectedVersion', version);
 
   return (
     <StyledSideNav>

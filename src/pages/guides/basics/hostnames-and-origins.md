@@ -126,6 +126,7 @@ On a per environment-basis, define how {{ PRODUCT }} will communicate with your 
 
     5.  Optional. Add another host to this origin configuration by clicking **+ Add Host** and then performing steps 4.1 - 4.4. 
 5.  Optional. Define TLS settings for this origin configuration. Expand the **Origin TLS Settings** section.
+
     1.  Enable SNI by toggling the **Use SNI** option to the on position (<img data-inline-img src="/images/icons/toggle-on.png" alt="Toggle on" />) and then defining the hostname that will be sent as a SNI hint during the TLS handshake. 
 
     <Callout type="info">
@@ -163,7 +164,7 @@ On a per environment-basis, define how {{ PRODUCT }} will communicate with your 
 
 ## TLS Certificate {/*tls-certificate*/}
 
-
+todo
 
 ## Firewall - Allowing {{ PRODUCT }} IP Addresses {/*firewall-allowing-ip-addresses*/}
 
@@ -176,8 +177,8 @@ Export a list of the IPv4 and IPv6 blocks that should be whitelisted by clicking
 
 The Whitelist IP Blocks page contains a superset of IP addresses that includes:
 
-    The IP blocks defined within the CDN IP's page.
-    The IP blocks for future POPs.
+The IP blocks defined within the CDN IP's page.
+The IP blocks for future POPs.
 
 Once the IP blocks defined within the Whitelist IP Blocks page have been whitelisted on your firewall, it is unnecessary to add the IP blocks defined within the CDN IP's page.
 Verify that the firewall for your web servers does not restrict access to the IP address blocks listed within the Whitelist IP Blocks page.
@@ -202,7 +203,7 @@ To host your site on a subdomain (e.g. www.mywebsite.xyz), add a CNAME record wi
 
 # To verify your DNS entry, run the following command {/*to-verify-your-dns-entry-run-the-following-command*/}
 
-dig <your-sub-domain>
+dig your-sub-domain
 
 
 # Example {/*example*/}
@@ -220,7 +221,7 @@ To host your site on the apex domain (e.g. mywebsite.xyz), create multiple A rec
 
 # To verify your DNS entry, run the following command {/*to-verify-your-dns-entry-run-the-following-command*/}
 
-dig <your-apex-domain>
+dig your-apex-domain
 
 
 # Example {/*example*/}
@@ -240,13 +241,13 @@ mywebsite.xyz.        599    IN    A        208.69.180.14
 
 Using Both an Apex Domain and a Sub-domain
 
-    Create the multiple A records with the IPs, on your apex domain (see above).
+Create the multiple A records with the IPs, on your apex domain (see above).
 
-    Create a CNAME record for your sub-domain, with the value of your apex domain.
+Create a CNAME record for your sub-domain, with the value of your apex domain.
 
 # To verify your DNS entries, run the following command {/*to-verify-your-dns-entries-run-the-following-command*/}
 
-dig <your-sub-domain>
+dig your-sub-domain
 
 # Example {/*example*/}
 
@@ -262,7 +263,7 @@ mywebsite.xyz.        599    IN    A        208.69.180.12
 
 mywebsite.xyz.        599    IN    A        208.69.180.13
 
-    mywebsite.xyz.        599    IN    A        208.69.180.14
+mywebsite.xyz.        599    IN    A        208.69.180.14
 
 
 -->
@@ -278,7 +279,7 @@ Origin Shield establishes an additional buffer between a customer origin server 
 
 The Origin Shield feature reduces the number of requests that are sent to the customer origin server. This results in reduced server and network load on the customer origin server. It is able to accomplish this by establishing an intermediate caching layer between the customer origin server and an edge server. This intermediate caching layer is illustrated below.
 
-[image placeholder Origin Shield]()
+[image placeholder Origin Shield](todo)
 
 This intermediate caching layer augments the default CDN caching behavior in the following ways: 
 
@@ -309,7 +310,6 @@ Protecting your origin through the origin shield requires the selection of a sin
 
 </Callout>
 
-
 PLACEHOLDER: Single OS implementation???
 
 Multiple Origin Shield Locations
@@ -324,6 +324,7 @@ You may define multiple origin shield locations for a single origin configuratio
 
   Origin shield locations in Asia and South America require the activation of the Premium Asia and Latin America geographic delivery regions, respectively.
 
-  TODO: Verify.
-
 </Callout>
+
+TODO: Verify callout
+

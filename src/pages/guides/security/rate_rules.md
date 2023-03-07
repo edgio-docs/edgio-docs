@@ -25,7 +25,7 @@ honored.
 -   A rate rule may be applied to all requests, unique clients, or
     unique user agents.
 
-    ![](/images/app_security/rate_rules_source_scope.png)
+    ![](/images/security/rate_rules_source_scope.png)
 -   A [Security Application](security_applications) configuration determines
     the set of requests to which this rate rule will be applied. Use
     condition groups to define one or more additional prerequisites
@@ -559,7 +559,7 @@ Requests will be rate limited according to this configuration:
 | Rate Rule            | Apply rate limit to | Any request  <br /><br />This type of source applies a rate limit to all requests without taking into account the client that submitted each request.|
 | Rate Rule            | Rate limit          | 300 requests per minute               |
 
-![](/images/app_security/rate_rules_example_all_requests.png)
+![](/images/security/rate_rules_example_all_requests.png)
 
 In the above scenario, the CDN received 1200 requests per minute for the
 following three files:
@@ -622,7 +622,7 @@ Requests will be rate limited according to this configuration:
 The following diagram illustrates how this rate rule controls the total
 number of requests that may flow through our network.
 
-![](/images/app_security/rate_rules_example_unique_clients.png)
+![](/images/security/rate_rules_example_unique_clients.png)
 
 In this scenario, only a single client (i.e., laptop) exceeded the rate
 limit. Specifically, our CDN service enforced rate limiting for that

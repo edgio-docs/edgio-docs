@@ -74,7 +74,7 @@ at your applications and web servers. This view consists of a chart and statisti
     The following information is displayed for each category:
     -   `<Value>`**:** Groups threats by the request's value for the current category.  The following illustration shows a partial listing of values for the `Rule Message` category.  
 
-        ![](/images/app_security/dashboard_category.png)  
+        ![](/images/security/dashboard_category.png)  
 
     -   **%:** Indicates the percentage of detected threats over a given time period that belong to the group identified by the **Value** field.  
 
@@ -263,7 +263,7 @@ fields support filtering.
         and then click on the desired value to filter for all requests
         that match it.
 
-        ![](/images/app_security/dashboard_filter_by_stat.png)
+        ![](/images/security/dashboard_filter_by_stat.png)
 
     -   **Event Log:** Expand a rule violation and then click on
         the desired field value.

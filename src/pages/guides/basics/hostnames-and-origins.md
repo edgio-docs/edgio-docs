@@ -155,7 +155,7 @@ On a per environment-basis, define how {{ PRODUCT }} will communicate with your 
 
         Upon configuring a region, all other regions will be updated from `Bypass` to the selected POP. This configuration means that cache misses from all regions will be proxied to the selected POP location.
 
-        ![Single Shield](/images/basics/origin-shields-single.png?width=600)
+        ![Single Shield](/images/security/origin-shield-single.png?width=600)
 
     2.  Optional. Assign a POP location to a different region.
 
@@ -163,7 +163,7 @@ On a per environment-basis, define how {{ PRODUCT }} will communicate with your 
 
         For example, the following configuration may potentially allow cache misses from the APAC region to be served through the shield location defined for the US West region (i.e., `OXR`).
 
-        ![Multiple Shields](/images/basics/origin-shields-multiple.png?width=600)
+        ![Multiple Shields](/images/security/origin-shield-multiple.png?width=600)
 
     3.  Optional. Repeat step 2 as needed.
 

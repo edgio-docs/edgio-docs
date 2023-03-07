@@ -11,7 +11,7 @@ Origin Shield establishes an additional buffer between your web servers and your
 
 Origin Shield reduces your server and network load by reducing the number of requests that are sent to your web servers. This reduction in requests is accomplished through an intermediate caching layer between your web servers and an edge server. 
 
-![How does Origin Shield work?](/images/basics/origin-shield-how-does-it-work?width=781)
+![How does Origin Shield work?](/images/security/origin-shield-how-does-it-work?width=781)
 
 This intermediate caching layer augments the default CDN caching behavior in the following ways: 
 
@@ -48,13 +48,13 @@ Protecting your origin through the origin shield requires the selection of one o
 
     </Callout>
 
-    ![Single Shield](/images/basics/origin-shields-single.png?width=600)
+    ![Single Shield](/images/security/origin-shield-single.png?width=600)
 
 -   **Use the shield with the lowest RTT:** If you assign a shield POP to more than one region, the remaining regions are automatically updated from the previously selected shield POP to `Use the shield with the lowest RTT`. This configuration means that cache misses from the remaining regions will be proxied to the shield POP that will provide the best performance.
 
     For example, the following configuration may potentially allow cache misses from the APAC region to be served through the shield location defined for the US West region (i.e., `OXR`).
 
-    ![Multiple Shields](/images/basics/origin-shields-multiple.png?width=600)
+    ![Multiple Shields](/images/security/origin-shield-multiple.png?width=600)
 
 **Key information:**
 

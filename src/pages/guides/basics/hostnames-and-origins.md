@@ -9,13 +9,13 @@ Setting up the delivery of your site through {{ PRODUCT }} requires the followin
 
 Control how {{ PRODUCT }} communicates with your web servers by mapping hostnames to origin configurations.
 
-![Hostname and Origin Workflow](/images/basics/hostnames-origins.png)
+![Hostname and Origin Workflow](/images/basics/hostnames-origins.png?width=781)
 
 You may also serve your site through [Serverless Compute](/guides/performance/serverless_compute). You may serve all of your site traffic through Serverless Compute, your origin server(s), or any combination of both.
 
 ![Hostname, Origin, and Serverless Compute Workflow](/images/basics/hostnames-origins-serverless-compute.png)
 
-## Quick Start
+## Quick Start {/*quick-start*/}
 
 Set up your hostnames and origins through the following steps:
 
@@ -25,7 +25,7 @@ Set up your hostnames and origins through the following steps:
 4.  Set up a TLS certificate for each of the above hostname(s). 
 5.  Once you are ready to serve production traffic, update your DNS configuration to point each of the hostname(s) identified in step 1 to our service. 
 
-## Hostnames
+## Hostnames {/*hostnames*/}
 
 On a per environment-basis, define each hostname that will be served through {{ PRODUCT }}. 
 
@@ -53,7 +53,7 @@ On a per environment-basis, define each hostname that will be served through {{ 
         1.  Click **+ Add hostname**. 
         2.  Add each desired hostname on a separate line. 
 
-        ![Add Hostnames](/images/basics/add-hostnames.png?width=500)
+        ![Add Hostnames](/images/basics/add-hostnames.png?width=550)
 
         3.  Click **Add Hostnames**.
 
@@ -67,14 +67,14 @@ On a per environment-basis, define each hostname that will be served through {{ 
 
     -   **Modify a Hostname:** Modify an existing hostname by replacing the existing hostname with a new value. 
 
-        ![Hostnames](/images/basics/hostnames.png?width=500)
+        ![Hostnames](/images/basics/hostnames.png?width=600)
 
     -   **Delete a Hostname:** Click <img data-inline-img src="/images/icons/delete.png" alt="Delete icon" /> next to the hostname that should be deleted. 
 
 3.  Repeat step 2 as needed.
 4.  If you are finished making changes to this environment, click **Deploy Changes**.
 
-## Origin
+## Origin {/*origin*/}
 
 On a per environment-basis, define how {{ PRODUCT }} will communicate with your origin server(s). 
 
@@ -99,7 +99,7 @@ On a per environment-basis, define how {{ PRODUCT }} will communicate with your 
     3.  From the left-hand pane, select **Origins**. 
 2.  Click **+ Add Origin**.
 
-    ![Add Origin](/images/basics/origins-add-origin.png?width=500)
+    ![Add Origin](/images/basics/origins-add-origin.png?width=600)
 
 3.  In the **Name** option, assign a name to this origin configuration. This name should only consist of alphanumeric characters, hyphens, periods, and underscores.
 
@@ -111,7 +111,7 @@ On a per environment-basis, define how {{ PRODUCT }} will communicate with your 
 
 4.  Define one or more host(s). Each host determines how {{ PRODUCT }} will communicate with your web server(s).
 
-    ![Define host](/images/basics/origins-add-origin-2.png?width=500)
+    ![Define host](/images/basics/origins-add-origin-2.png?width=600)
 
     1.  In the **Origin Hostname** option, type a hostname or IP address that points to your web server(s).
     2.  Optional. Set the **Port** option to the port over which our network will serve traffic to the above hostname or IP address.
@@ -136,34 +136,36 @@ On a per environment-basis, define how {{ PRODUCT }} will communicate with your 
 
     2.  If your origin servers use a self-signed certificate, then you should toggle the **Allow Self Signed Certs** option to the on position (<img data-inline-img src="/images/icons/toggle-on.png" alt="Toggle on" />).
     3.  Set up certificate pinning by adding one or more public keys.
+
         1.  Click **+ Add Pin**.
         2.  Paste the SHA-256 digest for the public key of your leaf certificate.
         3.  Repeat steps 1 and 2 as needed.
+
 6.  Optional. Protect your origin by adding one or more shield(s).
 
-        1.  Assign the region closest to your web server(s) a POP location.
+    1.  Assign the region closest to your web server(s) a POP location.
 
-            Upon configuring a region, all other regions will be updated from `Bypass` to the selected POP. This configuration means that cache misses from all regions will be proxied to the selected POP location.
+        Upon configuring a region, all other regions will be updated from `Bypass` to the selected POP. This configuration means that cache misses from all regions will be proxied to the selected POP location.
 
-            ![Single Shield](/images/basics/origin-shields-single.png?width=500)
+        ![Single Shield](/images/basics/origin-shields-single.png?width=600)
 
-        2.  Optional. Assign a POP location to a different region.
+    2.  Optional. Assign a POP location to a different region.
 
-            Upon configuring a second region, the remaining regions will be updated from the selected POP to `Use the shield with the lowest RTT`. This configuration means that cache misses from the remaining regions will be proxied to the shield that will provide the best performance.
+        Upon configuring a second region, the remaining regions will be updated from the selected POP to `Use the shield with the lowest RTT`. This configuration means that cache misses from the remaining regions will be proxied to the shield that will provide the best performance.
 
-            For example, the following configuration may cause cache misses from the APAC region to be served through the shield location defined for the US West region (i.e., `OXR`).
+        For example, the following configuration may cause cache misses from the APAC region to be served through the shield location defined for the US West region (i.e., `OXR`).
 
-            ![Multiple Shields](/images/basics/origin-shields-mulitple.png?width=500)
+        ![Multiple Shields](/images/basics/origin-shields-multiple.png?width=600)
 
-        3.  Optional. Repeat step 2 as needed.
+    3.  Optional. Repeat step 2 as needed.
 
 7. If you are finished making changes to this environment, click **Deploy Changes**.
 
-## TLS Certificate
+## TLS Certificate {/*tls-certificate*/}
 
 
 
-## Firewall - Allowing {{ PRODUCT }} IP Addresses
+## Firewall - Allowing {{ PRODUCT }} IP Addresses {/*firewall-allowing-ip-addresses*/}
 
 For the purpose of fulfilling requests, our edge servers require access to all servers associated with your origin configurations.
 
@@ -185,7 +187,7 @@ allowlisting
 
 -->
 
-### DNS Setup
+### DNS Setup {/*dns-setup*/}
 
 Once you are ready to serve traffic through {{ PRODUCT }}, you will need to configure DNS for each hostname.
 
@@ -198,17 +200,17 @@ Using a Sub-domain
 
 To host your site on a subdomain (e.g. www.mywebsite.xyz), add a CNAME record with the value shown under DNS Configuration (see above).
 
-# To verify your DNS entry, run the following command
+# To verify your DNS entry, run the following command {/*to-verify-your-dns-entry-run-the-following-command*/}
 
 dig <your-sub-domain>
 
 
-# Example
+# Example {/*example*/}
 
 dig www.mywebsite.xyz
 
 
-# Result
+# Result {/*result*/}
 
 www.mywebsite.xyz.   599    IN    CNAME    d12ea738-71b3-25e8-c771-6fdd3f6bd8ba.layer0-limelight.link.
 
@@ -216,17 +218,17 @@ Using an Apex Domain
 
 To host your site on the apex domain (e.g. mywebsite.xyz), create multiple A records on your apex domain, with the following Anycast IP address values: 208.69.180.11, 208.69.180.12, 208.69.180.13, 208.69.180.14
 
-# To verify your DNS entry, run the following command
+# To verify your DNS entry, run the following command {/*to-verify-your-dns-entry-run-the-following-command*/}
 
 dig <your-apex-domain>
 
 
-# Example
+# Example {/*example*/}
 
 dig mywebsite.xyz
 
 
-# Result
+# Result {/*result*/}
 
 mywebsite.xyz.        599    IN    A        208.69.180.11
 
@@ -242,15 +244,15 @@ Using Both an Apex Domain and a Sub-domain
 
     Create a CNAME record for your sub-domain, with the value of your apex domain.
 
-# To verify your DNS entries, run the following command
+# To verify your DNS entries, run the following command {/*to-verify-your-dns-entries-run-the-following-command*/}
 
 dig <your-sub-domain>
 
-# Example
+# Example {/*example*/}
 
 dig www.mywebsite.xyz
 
-# Result
+# Result {/*result*/}
 
 www.mywebsite.xyz.    599    IN    CNAME.   mywebsite.xyz.
 
@@ -265,14 +267,14 @@ mywebsite.xyz.        599    IN    A        208.69.180.13
 
 -->
 
-## Origin Shield
+## Origin Shield {/*origin-shield*/}
 
 Origin Shield establishes an additional buffer between a customer origin server and your clients. This buffer is useful for protecting a customer origin server from:
 
 -   Denial of service attacks
 -   Spikes in traffic
 
-### How Does It Work?
+### How Does It Work? {/*how-does-it-work*/}
 
 The Origin Shield feature reduces the number of requests that are sent to the customer origin server. This results in reduced server and network load on the customer origin server. It is able to accomplish this by establishing an intermediate caching layer between the customer origin server and an edge server. This intermediate caching layer is illustrated below.
 
@@ -297,7 +299,7 @@ This intermediate caching layer augments the default CDN caching behavior in the
 
         Our origin shield servers provide a central caching repository through which the frequency of requests for the same content may be minimized. Requests forwarded by our origin shield servers to your origin servers may result in cached content. Our service may then serve that cached content for subsequent requests. 
 
-### Origin Shield Configuration
+### Origin Shield Configuration {/*origin-shield-configuration*/}
 
 Protecting your origin through the origin shield requires the selection of a single (recommended) or multiple origin shield locations. Each configuration method is described below.
 

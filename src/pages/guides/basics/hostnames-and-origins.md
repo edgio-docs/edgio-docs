@@ -23,6 +23,7 @@ Set up your hostnames and origins through the following steps:
 2.  Optional. Define how {{ PRODUCT }} will communicate with your origin server(s). 
 3.  Optional. If you have defined one or more origin configuration(s), then you will also need to configure your firewall to accept traffic from our network. 
 4.  Set up a TLS certificate for each of the above hostname(s). 
+5.  Once you are ready to serve production traffic, update your DNS configuration to point each of the hostname(s) identified in step 1 to our service. 
 
 ## Hostnames
 
@@ -45,24 +46,33 @@ On a per environment-basis, define each hostname that will be served through {{ 
     1.  From the {{ PORTAL }}, select the desired property.
     2.  From the left-hand pane, select the desired environment from under the **Environments** section.
     3.  From the left-hand pane, select **Hostnames**. 
-2.  If you are not in draft mode, click **Edit v#** or **Continue editing draft v#**. 
-
-TODO: Is this step going away?
-
-3.  Perform one of the following steps:
+2.  Perform one of the following steps:
 
     -   **Add a Hostname:** 
 
         1.  Click **+ Add hostname**. 
         2.  Add each desired hostname on a separate line. 
+
+        ![Add Hostnames](/images/basics/add-hostnames.png?width=500)
+
         3.  Click **Add Hostnames**.
 
     -   **Assign an Origin:** Map a hostname to a different origin by selecting the desired origin from under the **Default Origin** column. 
-    -   **Modify a Hostname:** Modify an existing hostname by replacing the existing value with a new value. 
+
+        <Callout type="info">
+
+          The **Default Origin** column is read-only when the current property only contains a single origin configuration (e.g., `web`).
+
+        </Callout>
+
+    -   **Modify a Hostname:** Modify an existing hostname by replacing the existing hostname with a new value. 
+
+        ![Hostnames](/images/basics/hostnames.png?width=500)
+
     -   **Delete a Hostname:** Click <img data-inline-img src="/images/icons/delete.png" alt="Delete icon" /> next to the hostname that should be deleted. 
 
-4.  Repeat step 3 as needed.
-5.  If you are finished making changes to this environment, click **Deploy Changes**.
+3.  Repeat step 2 as needed.
+4.  If you are finished making changes to this environment, click **Deploy Changes**.
 
 ## Origin
 
@@ -75,7 +85,7 @@ On a per environment-basis, define how {{ PRODUCT }} will communicate with your 
 -   The maximum number of origin configurations per environment is 100.
 -   It is strongly recommended to cloak your origin to protect it against attacks that directly target your web servers and thereby bypass the security provided by our service.
 -   You may configure an origin configuration to always serve traffic to your hosts over HTTP, HTTPS, or to match the client's scheme. Matching a client's scheme means that our network will serve HTTP traffic to your web servers over port 80, while HTTPS traffic will be served over port 443.
--   Our network can leverage Server Name Indication (SNI) during the TLS handshake. If the SNI hint is not found, then your origin server's implementation determines the TLS certificate that will be returned.
+-   Our network can use Server Name Indication (SNI) during the TLS handshake. If the SNI hint is not found, then your origin server's implementation determines the TLS certificate that will be returned.
 
     Additionally, our service will compare the hostname used for the SNI hint to the certificate's Subject Alternative Name (SAN) or Common Name (CN) during the TLS handshake. If the hostname does not match, then we will respond with a `502 Bad Gateway` response.
 -   By default, our network disables delivery when we detect a self-signed certificate from the origin server during the TLS handshake. Enable the **Allow Self-Signed Certs** option to require our edge servers to respond with a `502 Bad Gateway` response upon detecting a self-signed certificate from the origin server during the TLS handshake.
@@ -87,9 +97,8 @@ On a per environment-basis, define how {{ PRODUCT }} will communicate with your 
     1.  From the {{ PORTAL }}, select the desired property.
     2.  From the left-hand pane, select the desired environment from under the **Environments** section.
     3.  From the left-hand pane, select **Origins**. 
-2.  If you are not in draft mode, click **Edit v#**. 
-3.  Click **+ Add Origin**.
-4.  In the **Name** option, assign a name to this origin configuration. This name should only consist of alphanumeric characters, hyphens, periods, and underscores.
+2.  Click **+ Add Origin**.
+3.  In the **Name** option, assign a name to this origin configuration. This name should only consist of alphanumeric characters, hyphens, periods, and underscores.
 
     <Callout type="info">
 
@@ -101,28 +110,46 @@ On a per environment-basis, define how {{ PRODUCT }} will communicate with your 
     1.  In the **Origin Hostname** option, type a hostname or IP address that points to your web server(s).
     2.  Optional. Set the **Port** option to the port over which our network will serve traffic to the above hostname or IP address.
     3.  Set the **Scheme** option to always serve traffic to your hosts over HTTPS, HTTP, or to match the client's scheme.
-    4.  Optional. If you would like to override the client's `Host` header, set the **Override Host Header** option to the desired hostname.
-    5.  Optional. Add another host to this origin configuration by clicking **+ Add Host** and then performing steps 4.1 - 4.4. 
-5. Optional. Define TLS settings for this origin configuration. Expand the **Origin TLS Settings** section.
-    1.  Enable SNI by toggling the **Use SNI** option to the on position (ICON PLACEHOLDER) and then defining the hostname that will be sent as a SNI hint during the TLS handshake. 
+    4.  Optional. Override the client's `Host` header by setting the **Override Host Header** option to the desired hostname. 
 
     <Callout type="info">
 
-      Our service will perform a strict check using this hostname against the certificate's Subject Alternative Name (SAN) or Common Name (CN) during the TLS handshake.
+      This option forces our CDN to set the `Host` header to the specified hostname whenever it proxies traffic to this origin configuration.
 
     </Callout>
 
-    2.  If your origin servers use a self-signed certificate, then you should toggle the **Allow Self Signed Certs** option to the on position (ICON PLACEHOLDER).
+    5.  Optional. Add another host to this origin configuration by clicking **+ Add Host** and then performing steps 4.1 - 4.4. 
+5.  Optional. Define TLS settings for this origin configuration. Expand the **Origin TLS Settings** section.
+    1.  Enable SNI by toggling the **Use SNI** option to the on position (<img data-inline-img src="/images/icons/toggle-on.png" alt="Toggle on" />) and then defining the hostname that will be sent as a SNI hint during the TLS handshake. 
+
+    <Callout type="info">
+
+      Upon enabling SNI, our service will perform a strict check using this hostname against the certificate's Subject Alternative Name (SAN) or Common Name (CN) during the TLS handshake.
+
+    </Callout>
+
+    2.  If your origin servers use a self-signed certificate, then you should toggle the **Allow Self Signed Certs** option to the on position (<img data-inline-img src="/images/icons/toggle-on.png" alt="Toggle on" />).
     3.  Set up certificate pinning by adding one or more public keys.
         1.  Click **+ Add Pin**.
         2.  Paste the SHA-256 digest for the public key of your leaf certificate.
         3.  Repeat steps 1 and 2 as needed.
-6. Shield this origin by adding a global or multiple shields.
-        1.  
-        2.  
-        3.  
-        4.  
-        5.  
+6.  Optional. Protect your origin by adding one or more shield(s).
+        1.  Assign the region closest to your web server(s) a POP location.
+
+        Upon configuring a region, all other regions will be updated from `Bypass` to the selected POP. This configuration means that cache misses from all regions will be proxied to the selected POP location.
+
+        ![Single Shield](/images/basics/origin-shields-single.png?width=500)
+
+        2.  Optional. Assign a POP location to a different region.
+
+        Upon configuring a second region, the remaining regions will be updated from the selected POP to `Use the shield with the lowest RTT`. This configuration means that cache misses from the remaining regions will be proxied to the shield that will provide the best performance.
+
+        For example, the following configuration may cause cache misses from the APAC region to be served through the shield location defined for the US West region (i.e., `OXR`).
+
+        ![Multiple Shields](/images/basics/origin-shields-mulitple.png?width=500)
+
+        3.  Optional. Repeat step 2 as needed.
+
 7. If you are finished making changes to this environment, click **Deploy Changes**.
 
 ## TLS Certificate

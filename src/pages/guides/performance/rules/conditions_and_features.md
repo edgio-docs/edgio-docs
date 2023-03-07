@@ -252,7 +252,7 @@ Identifies requests by their HTTP method. Only assets that are requested using t
 
 The available HTTP methods are: `GET | POST | PUT | DELETE | PATCH | HEAD | OPTIONS`
 
-<---
+<!---
 PATCH?
 Add TRACE and CONNECT?
 --->
@@ -569,7 +569,7 @@ Features are categorized as follows:
 -   [Logs](#logs-features): Customizes how log data is stored.
 -   [Origin](#origin-features): Controls how the CDN communicates with an origin server.
 -   [Response](#response-features): Customizes the response sent to the client and determines whether we will allow prefetching instructions to be sent to the client.
--   [Set Variables](#set-variables):
+-   [Set Variables](#set-variables): Assigns a value to one or more user-defined variable(s) that are  passed to your bespoke traffic processing solution.
 -   [URL](#url): Redirects or rewrites requests to a different URL.
 
 ### Access Features {/*access-features*/}

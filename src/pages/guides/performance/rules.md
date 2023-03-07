@@ -178,7 +178,7 @@ A feature determines how requests will be processed. They are categorized as fol
 -   [Logs](/guides/performance/rules/conditions_and_features#logs-features): Customizes how log data is stored.
 -   [Origin](/guides/performance/rules/conditions_and_features#origin-features): Controls how the CDN communicates with an origin server.
 -   [Response](/guides/performance/rules/conditions_and_features#response-features): Customizes the response sent to the client and determines whether we will allow prefetching instructions to be sent to the client.
--   [Set Variables](/guides/performance/rules/conditions_and_features#set-variables):
+-   [Set Variables](/guides/performance/rules/conditions_and_features#set-variables): Assigns a value to one or more user-defined variable(s) that are  passed to your bespoke traffic processing solution.
 -   [URL](/guides/performance/rules/conditions_and_features#url): Redirects or rewrites requests to a different URL.
 
 ##  Rule Precedence

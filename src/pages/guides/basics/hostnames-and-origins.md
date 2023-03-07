@@ -98,6 +98,9 @@ On a per environment-basis, define how {{ PRODUCT }} will communicate with your 
     2.  From the left-hand pane, select the desired environment from under the **Environments** section.
     3.  From the left-hand pane, select **Origins**. 
 2.  Click **+ Add Origin**.
+
+    ![Add Origin](/images/basics/origins-add-origin.png?width=500)
+
 3.  In the **Name** option, assign a name to this origin configuration. This name should only consist of alphanumeric characters, hyphens, periods, and underscores.
 
     <Callout type="info">
@@ -107,6 +110,9 @@ On a per environment-basis, define how {{ PRODUCT }} will communicate with your 
     </Callout>
 
 4.  Define one or more host(s). Each host determines how {{ PRODUCT }} will communicate with your web server(s).
+
+    ![Define host](/images/basics/origins-add-origin-2.png?width=500)
+
     1.  In the **Origin Hostname** option, type a hostname or IP address that points to your web server(s).
     2.  Optional. Set the **Port** option to the port over which our network will serve traffic to the above hostname or IP address.
     3.  Set the **Scheme** option to always serve traffic to your hosts over HTTPS, HTTP, or to match the client's scheme.
@@ -134,19 +140,20 @@ On a per environment-basis, define how {{ PRODUCT }} will communicate with your 
         2.  Paste the SHA-256 digest for the public key of your leaf certificate.
         3.  Repeat steps 1 and 2 as needed.
 6.  Optional. Protect your origin by adding one or more shield(s).
+
         1.  Assign the region closest to your web server(s) a POP location.
 
-        Upon configuring a region, all other regions will be updated from `Bypass` to the selected POP. This configuration means that cache misses from all regions will be proxied to the selected POP location.
+            Upon configuring a region, all other regions will be updated from `Bypass` to the selected POP. This configuration means that cache misses from all regions will be proxied to the selected POP location.
 
-        ![Single Shield](/images/basics/origin-shields-single.png?width=500)
+            ![Single Shield](/images/basics/origin-shields-single.png?width=500)
 
         2.  Optional. Assign a POP location to a different region.
 
-        Upon configuring a second region, the remaining regions will be updated from the selected POP to `Use the shield with the lowest RTT`. This configuration means that cache misses from the remaining regions will be proxied to the shield that will provide the best performance.
+            Upon configuring a second region, the remaining regions will be updated from the selected POP to `Use the shield with the lowest RTT`. This configuration means that cache misses from the remaining regions will be proxied to the shield that will provide the best performance.
 
-        For example, the following configuration may cause cache misses from the APAC region to be served through the shield location defined for the US West region (i.e., `OXR`).
+            For example, the following configuration may cause cache misses from the APAC region to be served through the shield location defined for the US West region (i.e., `OXR`).
 
-        ![Multiple Shields](/images/basics/origin-shields-mulitple.png?width=500)
+            ![Multiple Shields](/images/basics/origin-shields-mulitple.png?width=500)
 
         3.  Optional. Repeat step 2 as needed.
 

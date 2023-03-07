@@ -7,6 +7,8 @@ import {CgExternal} from 'react-icons/cg';
 import {GoChevronRight} from 'react-icons/go';
 import styled from 'styled-components';
 
+import {FIDDLE_URL} from '../../../../constants';
+
 import {getVersionedConfig} from 'utils/config';
 import useConditioning from 'utils/hooks/useConditioning';
 import {getVersionedNavigation} from 'utils/navigation';
@@ -297,7 +299,7 @@ const StyledSideNav = styled.div`
 const links = [
   {
     title: 'Fiddle',
-    path: 'https://fiddle.layer0.co/?sgId=7bc47c45-c1d6-4189-b416-552581d86006',
+    path: `${FIDDLE_URL}/?sgId=7bc47c45-c1d6-4189-b416-552581d86006`,
     icon: 'fiddle',
   },
   {

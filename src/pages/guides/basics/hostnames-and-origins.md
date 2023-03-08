@@ -28,7 +28,7 @@ Set up your hostnames and origins through the following steps:
 
     <Callout type="info">
 
-      These steps allow our CDN to generate and install a TLS certificate on our network. This is required before our CDN can serve HTTPS traffic.
+      These steps allow our CDN to automatically generate and install a TLS certificate on our network. This is required before our CDN can serve HTTPS traffic.
 
     </Callout>
 

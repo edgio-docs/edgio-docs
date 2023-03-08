@@ -212,7 +212,7 @@ Review your code to see whether it generates duplicate query string parameters. 
 
 ## Step 9: (Optional) Permalink Indexing {/permalink-indexing/}
 
-For {{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} version 5.1 and above, the `x-robots-tag` is automatically set to `noindex` to prevent search engines from crawling edge links and permalinks. Prior to version 5.1, the `.noIndexPermalink()` function was an opt-in solution to achieve the same effect.
+For {{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} version 5.1 and above, `x-robots-tag: noindex` header is automatically added to all responses being served from edge links and permalinks to prevent search engines from indexing those links. By default, this header will not be added to any responses served from a custom domain name. Prior to version 5.1, the `.noIndexPermalink()` function was an opt-in solution to achieve the same effect.
 
 As a result, the `.noIndexPermalink()` router function is deprecated in version 5.1+ and serves no purpose. We recommend that you remove this function from your {{ ROUTES_FILE }} file.
 

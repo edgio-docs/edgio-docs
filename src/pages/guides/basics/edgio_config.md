@@ -169,3 +169,31 @@ module.exports = {
   includeNodeModules: true,
 };
 ```
+
+## Troubleshooting {/*troubleshooting*/}
+
+### Proxying local HTTPS content {/*proxying-local-https-content*/}
+In some situations it may be necessary to proxy content running on `localhost` which is being served HTTPS-only. In these situations, we recommend first setting up a local DNS host resolution to use in place of `localhost` or `127.0.0.1` in your system's hosts file, eg. `/etc/hosts` on Linux or Mac OS systems:
+```
+127.0.0.1 proxied.local
+```
+<Callout type="info">
+  
+ You can use any domain you wish in place of `proxied.local`.
+ 
+</Callout>
+
+Once the new resolution is in place, update your `{{ CONFIG_FILE }}` backend definition for the local service to use the new resolution name, as well as the port. If your service does not have a valid TLS certificate for `localhost` traffic, ensure you add `disableCheckCert: true`.
+```js
+module.exports = {
+ backends: {
+  proxied: {
+   domainOrIp: "proxied.local",
+   hostHeader: "proxied.local", // depending on your setup, you may need something different here.
+   port: 1234,
+   disableCheckCert: true, // only if you do not have a valid TLS cert for localhost.
+  }
+ }
+}
+```
+Save and restart your dev server. Your `proxy` calls should connect successfully.

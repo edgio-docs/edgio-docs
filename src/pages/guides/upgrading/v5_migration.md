@@ -210,11 +210,13 @@ For example, we will examine how both versions of {{ PRODUCT }} handle the follo
 
 Review your code to see whether it generates duplicate query string parameters. If it does, update it to handle multiple query string parameters with the same name.
 
-## Step 9: (Optional) Permalink Indexing {/*permalink-indexing*/}
+## Step 9: (Optional) Permalink Indexing {/permalink-indexing/}
 
-By default, {{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} version 5.1+ automatically blocks search engine traffic for edge links and permalinks. As a result, the `.noIndexPermalink()` router function serves no purpose and it has been deprecated. We recommend that you remove this function from your {{ ROUTES_FILE }} file. 
+For {{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} version 5.1 and above, the `x-robots-tag` is automatically set to `noindex` to prevent search engines from crawling edge links and permalinks. Prior to version 5.1, the `.noIndexPermalink()` function was an opt-in solution to achieve the same effect.
 
-Override this behavior and allow search engines to index all permalinks by adding the following route to `routes.js`:
+As a result, the `.noIndexPermalink()` router function is deprecated in version 5.1+ and serves no purpose. We recommend that you remove this function from your {{ ROUTES_FILE }} file.
+
+However, if you want to override this default behavior and allow search engines to index all permalinks, you can pass the option `indexPermalink` set to `true` to the `Router` constructor:
 
 ```js
 new Router({ indexPermalink: true })

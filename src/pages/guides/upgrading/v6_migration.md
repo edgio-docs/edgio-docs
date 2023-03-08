@@ -125,9 +125,9 @@ If you encounter a build issue as a result of upgrading Node.js, then you should
 
 ## Step 6: (Optional) Permalink Indexing {/*permalink-indexing*/}
 
-For {{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} version 6.0 and above, the `x-robots-tag: noindex` header is automatically added to all responses being served from edge links and permalinks to prevent search engines from indexing those links. By default, this header will not be added to any responses served from a custom domain. Prior to version 6, the `.noIndexPermalink()` function was an opt-in solution to achieve the same effect.
+For {{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} version 5.1/6.0 and above, the `x-robots-tag: noindex` header is automatically added to all responses being served from edge links and permalinks to prevent search engines from indexing those links. By default, this header will not be added to any responses served from a custom domain. Prior to version 5.1/6, the `.noIndexPermalink()` function was an opt-in solution to achieve the same effect.
 
-As a result, the `.noIndexPermalink()` router function is deprecated in version 6+ and serves no purpose. We recommend that you remove this function from your {{ ROUTES_FILE }} file.
+As a result, the `.noIndexPermalink()` router function is now deprecated and serves no purpose. We recommend that you remove this function from your {{ ROUTES_FILE }} file.
 
 However, if you want to override this default behavior and allow search engines to index all permalinks, you can pass the option `indexPermalink` set to `true` to the `Router` constructor:
 

@@ -250,6 +250,9 @@ export default function Header({
                 indexName={indexName}
                 apiKey={algoliaApiKey}
                 transformItems={transformItems}
+                searchParameters={{
+                  facetFilters: ['version:current'],
+                }}
               />
             </NoSSRWrapper>
           </div>
@@ -269,6 +272,9 @@ export default function Header({
                 indexName={indexName}
                 apiKey={algoliaApiKey}
                 transformItems={transformItems}
+                searchParameters={{
+                  facetFilters: ['version:current'],
+                }}
               />
             </NoSSRWrapper>
           </div>

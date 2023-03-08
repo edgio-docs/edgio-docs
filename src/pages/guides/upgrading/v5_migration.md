@@ -19,6 +19,12 @@ We recommend that you perform the seamless {{ PRODUCT }} {{ PRODUCT_APPLICATIONS
 
 </Callout>
 
+<Callout type="info">
+
+  {{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} version 5.1+ [.noIndexPermalink() is now deprecated](#permalink-indexing), since we now instruct search engines to not index pages on edge links and permalinks by default.
+
+</Callout>
+
 {{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} version 5 updates our CLI, packages, and a configuration file with {{ PRODUCT }} branding. Additionally, our service will no longer modify duplicate query string parameters.
 
 <Video src="https://youtu.be/hn20Aghn9Nc" />
@@ -34,6 +40,7 @@ Migrate from version 4.x to 5 through the following steps:
 (#optional-review-your-code-for-duplicate-query-string-parameters)
 7.  [GraphQL Caching End-of-Life](#graphql-caching-eol)
 8.  [Optional: Review your code for duplicate query string parameters.](#optional-review-your-code-for-duplicate-query-string-parameters)
+9.  [Optional: Permalink Indexing](#permalink-indexing)
 
 ## Step 1: Upgrade the {{ PRODUCT }} CLI {/*upgrade-the-cli*/}
  
@@ -202,6 +209,18 @@ For example, we will examine how both versions of {{ PRODUCT }} handle the follo
 `https://sports.example.com/index.html?id=123&type=Sports&type=Basketball`
 
 Review your code to see whether it generates duplicate query string parameters. If it does, update it to handle multiple query string parameters with the same name.
+
+## Step 9: (Optional) Permalink Indexing {/*permalink-indexing*/}
+
+For {{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} version 5.1 and above, the `x-robots-tag: noindex` header is automatically added to all responses being served from edge links and permalinks to prevent search engines from indexing those links. By default, this header will not be added to any responses served from a custom domain. Prior to version 5.1, the `.noIndexPermalink()` function was an opt-in solution to achieve the same effect.
+
+As a result, the `.noIndexPermalink()` router function is now deprecated and serves no purpose. We recommend that you remove this function from your {{ ROUTES_FILE }} file.
+
+However, if you want to override this default behavior and allow search engines to index all permalinks, you can pass the option `indexPermalink` set to `true` to the `Router` constructor:
+
+```js
+new Router({ indexPermalink: true })
+```
 
 ## Migration Complete {/*migration-complete*/}
 

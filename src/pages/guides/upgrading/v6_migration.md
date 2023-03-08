@@ -24,7 +24,7 @@ title: {{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} Version 6 Migration Guide
 
 <Callout type="info">
 
-  {{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} version 6 does not support [access control through JWT](#jwt-access-control-end-of-life). Additionally, [.noIndexPermalink() is now deprecated](#permalink-indexing), since we now automatically block search engine traffic for edge links and permalinks. 
+  {{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} version 6 does not support [access control through JWT](#jwt-access-control-end-of-life). Additionally, [.noIndexPermalink() is now deprecated](#permalink-indexing), since we now instruct search engines to not index pages on edge links and permalinks by default.
 
 </Callout>
 
@@ -125,9 +125,11 @@ If you encounter a build issue as a result of upgrading Node.js, then you should
 
 ## Step 6: (Optional) Permalink Indexing {/*permalink-indexing*/}
 
-By default, {{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} version 6 automatically blocks search engine traffic for edge links and permalinks. As a result, the `.noIndexPermalink()` router function serves no purpose and it has been deprecated. We recommend that you remove this function from your {{ ROUTES_FILE }} file. 
+For {{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} version 5.1/6.0 and above, the `x-robots-tag: noindex` header is automatically added to all responses being served from edge links and permalinks to prevent search engines from indexing those links. By default, this header will not be added to any responses served from a custom domain. Prior to version 5.1/6, the `.noIndexPermalink()` function was an opt-in solution to achieve the same effect.
 
-Override this behavior and allow search engines to index all permalinks by adding the following route to `routes.js`:
+As a result, the `.noIndexPermalink()` router function is now deprecated and serves no purpose. We recommend that you remove this function from your {{ ROUTES_FILE }} file.
+
+However, if you want to override this default behavior and allow search engines to index all permalinks, you can pass the option `indexPermalink` set to `true` to the `Router` constructor:
 
 ```js
 new Router({ indexPermalink: true })

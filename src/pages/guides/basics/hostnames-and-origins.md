@@ -22,15 +22,17 @@ Set up your hostnames and origins through the following steps:
 1.  [Define each hostname](#add-modify-delete-hostname) through which your site's content will be delivered. 
 2.  [Create an origin configuration](#add-an-origin-configuration) that defines how {{ PRODUCT }} communicates with your web server(s). 
 3.  [Configure your firewall](#firewall-allowing-ip-addresses)  to accept traffic from our network.
-4.  From your DNS service provider, [add a CNAME record](#FINDME) for each hostname defined in step 1.
+4.  For each hostname defined in step 1, perform the following steps through your DNS service provider:
+    1.  Check for CAA records and verify that the Let's Encrypt certificate authority is allowed to issue certificates for that hostname.
+    2.  [Add an _acme-challenge CNAME record](#FINDME) that proves your control over that hostname. 
 
     <Callout type="info">
 
-      This CNAME record validates your control over a hostname. This allows our CDN to generate and install a TLS certificate on our network. This is required before our CDN can serve HTTPS traffic.
+      These steps allow our CDN to generate and install a TLS certificate on our network. This is required before our CDN can serve HTTPS traffic.
 
     </Callout>
 
-5.  Perform this step once you are ready to [serve traffic on our CDN](#FINDME). From your DNS service provider, update the DNS record that corresponds to each of the hostname(s) identified in step 1 to point to our service. 
+5.  Once you are ready to [serve traffic on our CDN](#FINDME), use your DNS service provider to update the DNS record for each hostname defined in step 1 to point to our service. 
 
 ## Hostnames {/*hostnames*/}
 
@@ -44,7 +46,19 @@ On a per environment-basis, define each hostname that will be served through {{ 
     For example, if you have defined `www.example.com` within the `production` environment, then you cannot define it within any other environment until you delete it from the `production` environment.
 
 -   Each hostname is mapped to an origin configuration. By default, {{ PRODUCT }} proxies cache misses for that hostname to that origin configuration. You may override this mapping through your [CDN-as-code configuration](/guides/performance/cdn-as-code).
--   Each hostname requires the installation of a [TLS certificate](#FINDMElink) on our network.
+-   Each hostname requires the installation of a [TLS certificate](#FINDMElink) on our network. {{ PRODUCT }} can automatically generate and install this TLS certificate when both of the following requirements are met:
+
+    -   **Certificate Authority Authorization:** The Let's Encrypt certificate authority (CA) must be allowed to issue certificates for that hostname. It is allowed to issue certificates when either of the following conditions are true:
+
+        -   A CAA record has not been issued for that hostname or a parent hostname. This DNS configuration means that any CA is allowed to generate certificates for that hostname.
+        -   A CAA record explicitly allows the Let's Encrypt CA to generate certificates for that hostname. 
+
+        This sample CAA record indicates that the Let's Encrypt CA is allowed to issue certificates for `cdn.example.com`:
+
+        `cdn.example.com.   CAA 0 issue "letsencrypt.org"`
+
+    -   **Domain Control Validation:** Prove your control over that domain by adding an _acme-challenge CNAME record to it.
+
 -   Once you are ready to serve traffic through {{ PRODUCT }}, update the hostname's [DNS configuration](#FINDME) to point to our service.
 
 **To add, modify, or delete hostnames from an environment** <a id="add-modify-delete-hostname"></a>
@@ -174,14 +188,6 @@ On a per environment-basis, define how {{ PRODUCT }} will communicate with your 
 ## TLS Certificate {/*tls-certificate*/}
 
 
-From your DNS service provider, [add a CNAME record](#FINDME) for each hostname defined in step 1.
-
-    <Callout type="info">
-
-      This CNAME record validates your control over a hostname. This allows our CDN to generate and install a TLS certificate on our network. This is required before our CDN can serve HTTPS traffic.
-
-    
-todo
 
 ## Firewall - Allowing {{ PRODUCT }} IP Addresses {/*firewall-allowing-ip-addresses*/}
 

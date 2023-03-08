@@ -24,7 +24,7 @@ title: {{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} Version 6 Migration Guide
 
 <Callout type="info">
 
-  {{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} version 6 does not support [access control through JWT](#jwt-access-control-end-of-life). Additionally, [.noIndexPermalink() is now deprecated](#permalink-indexing), since we now automatically block search engine traffic for edge links and permalinks. 
+  {{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} version 6 does not support [access control through JWT](#jwt-access-control-end-of-life). Additionally, [.noIndexPermalink() is now deprecated](#permalink-indexing), since we now instruct search engines to not index pages on edge links and permalinks by default.
 
 </Callout>
 

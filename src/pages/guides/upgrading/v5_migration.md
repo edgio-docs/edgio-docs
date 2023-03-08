@@ -21,7 +21,7 @@ We recommend that you perform the seamless {{ PRODUCT }} {{ PRODUCT_APPLICATIONS
 
 <Callout type="info">
 
-  {{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} version 5.1+ [.noIndexPermalink() is now deprecated](#permalink-indexing), since we now automatically block search engine traffic for edge links and permalinks. 
+  {{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} version 5.1+ [.noIndexPermalink() is now deprecated](#permalink-indexing), since we now instruct search engines to not index pages on edge links and permalinks by default.
 
 </Callout>
 

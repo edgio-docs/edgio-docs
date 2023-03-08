@@ -11,7 +11,7 @@ Origin Shield establishes an additional buffer between your web servers and your
 
 Origin Shield reduces your server and network load by reducing the number of requests that are sent to your web servers. This reduction in requests is accomplished through an intermediate caching layer between your web servers and an edge server. 
 
-![How does Origin Shield work?](/images/security/origin-shield-how-does-it-work?width=781)
+![How does Origin Shield work?](/images/security/origin-shield-how-does-it-work.png?width=781)
 
 This intermediate caching layer augments the default CDN caching behavior in the following ways: 
 
@@ -22,7 +22,7 @@ This intermediate caching layer augments the default CDN caching behavior in the
 
     -   **Found (Valid TTL):** If a cached version of the requested content is found with a valid time-to-live (TTL), then the shield POP will respond with that cached content to the edge server. The edge server will then forward that response to the client.
 
-        Our service was able to serve the requested content without communicating with your web servers. In addition to improving performance, it eliminates bandwidth and load on your network.
+        Our shield POPs can serve cached content without communicating with your web servers. In addition to improving performance, this eliminates bandwidth and load on your network.
 
     -   **Stale:** If a stale version of the requested content is found, then the shield POP will revalidate the cached asset with the web server.
 

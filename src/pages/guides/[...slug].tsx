@@ -13,6 +13,7 @@ import {getVersionedConfig} from '../../utils/config';
 import {MarkdownPage} from 'components/Layout/MarkdownPage';
 import {Page} from 'components/Layout/Page';
 import JSONRoutes from 'utils/jsonRoutes';
+import {logDev} from 'utils/logging';
 import templateReplace from 'utils/templateReplace';
 import {MDHeadingsList} from 'utils/Types';
 
@@ -22,13 +23,15 @@ const pagesPath = 'src/pages';
 export default function VersionedGuide({
   source,
   headings,
+  version,
 }: {
   source: any;
   headings: MDHeadingsList;
+  version: string;
 }) {
   return (
     <Page routeTree={JSONRoutes}>
-      <MarkdownPage meta={source.frontmatter} headings={headings}>
+      <MarkdownPage meta={{...source.frontmatter, version}} headings={headings}>
         <MDXRemote {...source} components={MDXComponents} />
       </MarkdownPage>
     </Page>
@@ -145,11 +148,11 @@ export async function getStaticProps({params}: {params: any}) {
 
   const [file] = files;
   if (!file) {
-    console.log(`No matching files for route '${slugAsString}'`);
+    logDev(`No matching files for route '${slugAsString}'`);
     return {notFound: true};
   }
 
-  console.log(
+  logDev(
     `Using '${file}' for route '${slugAsString}'. Available files:`,
     files
   );
@@ -179,5 +182,5 @@ export async function getStaticProps({params}: {params: any}) {
     },
   });
 
-  return {props: {source: mdxSource, headings}};
+  return {props: {source: mdxSource, headings, version}};
 }

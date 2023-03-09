@@ -11,9 +11,10 @@ import Seo from '../Seo';
 import {MDHeading, MDHeadingsList} from 'utils/Types';
 
 export function MarkdownPage<
-  T extends {title: string; status?: string} = {
+  T extends {title: string; status?: string; version: string} = {
     title: string;
     status?: string;
+    version: string;
   }
 >({children, meta, headings}: MarkdownProps<T>) {
   const {route, query} = useRouter();
@@ -21,7 +22,8 @@ export function MarkdownPage<
 
   // const {route, nextRoute, prevRoute} = useRouteMeta();
   const title = meta.title || route || '';
-  // const description = meta.description || route?.description || '';
+  const description = meta.description || siteConfig.tagline;
+  const version = meta.version;
 
   if (!route) {
     console.error('This page was not added to one of the sidebar JSON files.');
@@ -53,7 +55,7 @@ export function MarkdownPage<
 
   return (
     <MDXProvider components={MDXComponents}>
-      <Seo {...{isHomePage, title, description: siteConfig.tagline}} />
+      <Seo {...{isHomePage, title, description, version}} />
       {isHomePage ? (
         children
       ) : (

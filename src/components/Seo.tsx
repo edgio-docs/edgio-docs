@@ -14,6 +14,7 @@ export interface SeoProps {
   // jsonld?: JsonLDType | Array<JsonLDType>;
   children?: React.ReactNode;
   isHomepage?: boolean;
+  version?: string;
 }
 
 const Seo = withRouter(
@@ -24,6 +25,7 @@ const Seo = withRouter(
     image = 'https://docs.edg.io/images/seo/docs.ogimage.png',
     router,
     children,
+    version = '',
   }: SeoProps & {router: Router}) => (
     <Head>
       {/* DEFAULT */}
@@ -43,6 +45,9 @@ const Seo = withRouter(
       {description != null && (
         <meta name="description" key="description" content={description} />
       )}
+
+      {/* VERSION */}
+      {<meta name="app:guide-version" key="version" content={version} />}
 
       {/* <link rel="icon" type="image/x-icon" href={favicon} />
       <link rel="apple-touch-icon" href={favicon} />  @todo favicon */}

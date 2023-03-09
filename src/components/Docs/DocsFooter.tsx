@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import {PRODUCT} from '../../../constants';
+import {PRODUCT, FIDDLE_URL} from '../../../constants';
 
 import {
   IconEdgioSquareLogo,
@@ -166,7 +166,7 @@ const pryFooterLinks = {
     },
     {
       title: 'Fiddle',
-      href: 'https://fiddle.layer0.co/?sgId=7bc47c45-c1d6-4189-b416-552581d86006',
+      href: `${FIDDLE_URL}/?sgId=7bc47c45-c1d6-4189-b416-552581d86006`,
     },
     {
       title: 'Status',

@@ -10,6 +10,7 @@ import {
   PRODUCT_PLATFORM,
   PRODUCT_SECURITY,
   PRODUCT_SECURITY_ADVANCED_BOT,
+  FIDDLE_URL,
 } from '../../constants';
 import {
   IconAngular,
@@ -851,7 +852,7 @@ const SidebarMenuItems: ISidebarMenuItems = [
       title: 'Fiddle',
       icon: <IconFiddle />,
       iconDark: <IconFiddleDark />,
-      path: 'https://fiddle.layer0.co/?sgId=7bc47c45-c1d6-4189-b416-552581d86006',
+      path: `${FIDDLE_URL}/?sgId=7bc47c45-c1d6-4189-b416-552581d86006`,
     },
     {
       title: 'Forum',

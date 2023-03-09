@@ -7,6 +7,7 @@ import {CgExternal} from 'react-icons/cg';
 import {GoChevronRight} from 'react-icons/go';
 import styled from 'styled-components';
 
+import {FIDDLE_URL} from '../../../../constants';
 import NavItems from '../../../../src/data/nav.json';
 
 interface IRoute {
@@ -282,7 +283,7 @@ const links = [
   },
   {
     title: 'Fiddle',
-    path: 'https://fiddle.layer0.co/?sgId=7bc47c45-c1d6-4189-b416-552581d86006',
+    path: `${FIDDLE_URL}/?sgId=7bc47c45-c1d6-4189-b416-552581d86006`,
     icon: 'fiddle',
   },
   {

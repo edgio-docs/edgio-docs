@@ -80,7 +80,7 @@ The Let's Encrypt certificate authority (CA) must be allowed to issue certificat
 
     ![CAA Record on Gandi](/images/production/gandi-caa.jpg)
 
-    Learn more on how to define a CAA record:
+    Learn more on:
 
     - [How to add a CAA record on Gandi](https://docs.gandi.net/en/domain_names/faq/record_types/caa_record.html)
     - [How to add a CAA record on Godaddy](https://uk.godaddy.com/help/add-a-caa-record-27288)
@@ -89,16 +89,16 @@ The Let's Encrypt certificate authority (CA) must be allowed to issue certificat
 
     Verify your CAA configuration. We recommend the following CAA lookup tools: 
 
-    - [CAA Test](https://caatest.co.uk/)
-    - [Entrust CAA Lookup](https://www.entrust.com/resources/certificate-solutions/tools/caa-lookup)
+    -   [CAA Test](https://caatest.co.uk/)
+    -   [Entrust CAA Lookup](https://www.entrust.com/resources/certificate-solutions/tools/caa-lookup)
 
-   <Callout type="info">
+    <Callout type="info">
 
       By default, some DNS service providers add `CAA` DNS record(s), while others do not allow the creation of `CAA` DNS records and therefore allow any CA to generate certificates.
 
       Learn more about CAA DNS records: <a href="https://letsencrypt.org/docs/caa">Let's Encrypt</a>, <a href="https://en.wikipedia.org/wiki/DNS_Certification_Authority_Authorization">Wikipedia</a>, <a href="https://docs.gandi.net/en/domain_names/faq/record_types/caa_record.html">Gandi</a>, and <a href="https://www.eff.org/deeplinks/2018/02/technical-deep-dive-securing-automation-acme-dns-challenge-validation">eff.org</a>
 
-   </Callout>
+    </Callout>
 
 #### Domain Control Validation
 

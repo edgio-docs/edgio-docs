@@ -204,7 +204,7 @@ As clients request your site, {{ PRODUCT }} sends traffic through our network to
 
 <Callout type="info">
 
-  If you plan on using the {{ PRODUCT }} CLI to deploy to a development or CI/CD environment, then you will also need to allow traffic from the domain to which it connects. You may view this domain following the instructions below.
+  If you plan on using the {{ PRODUCT }} CLI to deploy to a development or CI/CD environment, then you will also need to allow traffic from the domain to which it connects. This domain is listed within the **Allowlisting** window.
 
 </Callout>
 
@@ -216,7 +216,7 @@ As clients request your site, {{ PRODUCT }} sends traffic through our network to
     3.  From the left-hand pane, select **Origins**. 
 2.  From the information bar at the top of the page, click **instructions**.
 
-    ![Firewall instructions](/images/basics/origins-instructions)
+    ![Firewall instructions](/images/basics/origins-instructions.png)
 
     The **Allowlisting** window will display a list of IPv4 and IPv6 blocks for standard traffic, a list of IP blocks for Serverless Compute, and the domain to which the {{ PRODUCT }} CLI connects when deploying to a development or CI/CD environment.
 

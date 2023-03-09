@@ -4,7 +4,7 @@ export default {
   routes: [
     {
       title: 'Getting Started',
-      path: 'getting_started_v6_foo',
+      path: 'getting_started',
       icon: 'spark',
     },
     {

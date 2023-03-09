@@ -1,81 +1,70 @@
-import {FormControl, MenuItem, Select} from '@material-ui/core';
-import {makeStyles} from '@material-ui/core/styles';
 import Router, {useRouter} from 'next/router';
+import {useState} from 'react';
+import {Button} from 'styled-button-component';
+import styled from 'styled-components';
+import {Dropdown, DropdownItem, DropdownMenu} from 'styled-dropdown-component';
 
 import {getVersionedConfig, getVersionedConfigs} from 'utils/config';
 import useConditioning from 'utils/hooks/useConditioning';
 
-const useStyles = makeStyles((theme) => ({
-  control: {
-    '& > div': {
-      borderRadius: 3,
-      backgroundColor: 'transparent',
-    },
-    [theme.breakpoints.down('xs')]: {
-      marginRight: theme.spacing(-1.5),
-    },
-    flexShrink: 0,
-  },
-  selectMenu: {
-    textOverflow: 'clip',
-  },
-  icon: {
-    color: theme.palette.grey[200],
-  },
-  selectRoot: {
-    '&:hover': {
-      backgroundColor: 'rgba(255,255,255,0.1)',
-    },
-    border: 0,
-    padding: theme.spacing(1, 2),
-    fontSize: '1.00em',
-    color: theme.palette.grey[200],
-    [theme.breakpoints.down('xs')]: {
-      fontSize: '1em',
-    },
-  },
-}));
+//@ts-ignore
+//@ts-ignore
+
+const StyledDropdown = styled(Dropdown)`
+  margin-left: 15px;
+
+  button {
+    padding: 4px;
+    font-size: 14px;
+  }
+`;
+
+const StyledDropdownMenu = styled(DropdownMenu)``;
+
+const StyledDropdownItem = styled(DropdownItem)`
+  font-size: 14px;
+`;
 
 export default function VersionChooser() {
-  const classes = useStyles();
   const {route} = useRouter();
   const {version} = useConditioning();
-  const {selectedVersion} = version;
+  const [hidden, setHidden] = useState(true);
+  const {selectedVersion, latestVersion} = version;
   const config = getVersionedConfig(selectedVersion);
   const versions = Object.keys(getVersionedConfigs()).map((v) => [
     v,
-    `${config.PRODUCT_NAME} ${v}`,
+    `Applications ${v}`,
   ]);
 
-  const onChange = (event: any) => {
-    let version = event.target?.value;
+  const prefixedLatestVersion = `v${latestVersion}`;
+  const prefixedSelectedVersion = `v${selectedVersion}`;
 
-    Router.push(route, `/guides/${version}`);
+  const onChange = (version: string) => {
+    if (version === prefixedLatestVersion) {
+      Router.push(`/`);
+    } else {
+      Router.push(`/guides/${version}`);
+    }
   };
 
-  // don't render unless we are on the api docs route
-  // if (/*!route.startsWith('/docs/') ||*/ !versions.length) {
-  //   return <></>;
-  // }
+  const [selectedValue, selectedLabel] =
+    versions.find((v) => v[0] === prefixedSelectedVersion) || [];
 
   return (
-    <FormControl variant="filled" className={classes.control} size="small">
-      <Select
-        value={`v${selectedVersion}`}
-        onChange={onChange}
-        disableUnderline
-        autoWidth
-        classes={{
-          root: classes.selectRoot,
-          icon: classes.icon,
-          selectMenu: classes.selectMenu,
-        }}>
-        {versions.map(([value, key]) => (
-          <MenuItem value={value} key={value}>
-            {key}
-          </MenuItem>
+    <StyledDropdown>
+      <Button dropdownToggle onClick={() => setHidden(!hidden)}>
+        {selectedLabel}
+      </Button>
+      <StyledDropdownMenu hidden={hidden} toggle={() => setHidden(!hidden)}>
+        {versions.map(([value, label]) => (
+          <StyledDropdownItem
+            key={value}
+            value={value}
+            onClick={() => onChange(value)}>
+            {label}
+          </StyledDropdownItem>
         ))}
-      </Select>
-    </FormControl>
+      </StyledDropdownMenu>
+    </StyledDropdown>
   );
 }

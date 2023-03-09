@@ -22,17 +22,14 @@ Set up your hostnames and origins through the following steps:
 1.  [Define each hostname](#add-modify-delete-hostname) through which your site's content will be delivered. 
 2.  [Create an origin configuration](#add-an-origin-configuration) that defines how {{ PRODUCT }} communicates with your web server(s). 
 3.  [Configure your firewall](#firewall-allowing-ip-addresses)  to accept traffic from our network.
-4.  For each hostname defined in step 1, perform the following steps through your DNS service provider:
+4.  {{ PRODUCT }} requires a TLS certificate hosted on our network to serve HTTPS traffic. You may either [upload your own TLS certificate](/guides/security/tls_certificate#uploading-your-certificate) or you may allow {{ PRODUCT }} to autogenerate it for each hostname defined in step 1 by performing the following steps:
+
     1.  Check for CAA records and verify that the Let's Encrypt certificate authority is allowed to issue certificates for that hostname.
-    2.  [Add an _acme-challenge CNAME record](#FINDME) that proves your control over that hostname. 
+    2.  [Add an _acme-challenge CNAME record](/guides/security/tls_certificates#domain-control-validation) that proves your control over that hostname. 
 
-    <Callout type="info">
+        **Example:** `_acme-challenge.cdn.example.com. CNAME _acme-challenge.xdn-validation.com.`
 
-      These steps allow our CDN to automatically generate and install a TLS certificate on our network. This is required before our CDN can serve HTTPS traffic.
-
-    </Callout>
-
-5.  Once you are ready to [serve traffic on our CDN](#FINDME), use your DNS service provider to update the DNS record for each hostname defined in step 1 to point to our service. 
+5.  Once you are ready to [serve traffic on our CDN](#serving-traffic-through), use your DNS service provider to update the DNS record for each hostname defined in step 1 to point to our service. 
 
 ## Hostnames {/*hostnames*/}
 
@@ -46,7 +43,7 @@ On a per environment-basis, define each hostname that will be served through {{ 
     For example, if you have defined `www.example.com` within the `production` environment, then you cannot define it within any other environment until you delete it from the `production` environment.
 
 -   Each hostname is mapped to an origin configuration. By default, {{ PRODUCT }} proxies cache misses for that hostname to that origin configuration. You may override this mapping through your [CDN-as-code configuration](/guides/performance/cdn-as-code).
--   Each hostname requires the installation of a [TLS certificate](#FINDMElink) on our network. {{ PRODUCT }} can automatically generate and install this TLS certificate when both of the following requirements are met:
+-   Each hostname requires the installation of a [TLS certificate](/guides/security/tls_certificate) on our network. {{ PRODUCT }} can automatically generate and install this TLS certificate when both of the following requirements are met:
 
     -   **Certificate Authority Authorization:** The Let's Encrypt certificate authority (CA) must be allowed to issue certificates for that hostname. It is allowed to issue certificates when either of the following conditions are true:
 
@@ -57,16 +54,26 @@ On a per environment-basis, define each hostname that will be served through {{ 
 
         `cdn.example.com.   CAA 0 issue "letsencrypt.org"`
 
-    -   **Domain Control Validation:** Prove your control over that domain by adding an _acme-challenge CNAME record to it.
+    -   **Domain Control Validation:** Prove your control over that domain by adding an `_acme-challenge` CNAME record to it.
 
--   Once you are ready to serve traffic through {{ PRODUCT }}, update the hostname's [DNS configuration](#FINDME) to point to our service.
+        **Example:** `_acme-challenge.cdn.example.com. CNAME _acme-challenge.xdn-validation.com.`
+
+    <Callout type="info">
+
+      Alternatively, you may [upload your own TLS certificate](/guides/security/tls_certificate#uploading-your-certificate).
+
+    </Callout>
+
+-   Once you are ready to serve traffic through {{ PRODUCT }}, update the hostname's [DNS configuration](#serving-traffic-through) to point to our service.
 
 **To add, modify, or delete hostnames from an environment** <a id="add-modify-delete-hostname"></a>
 
 1.  Load the **Hostnames** page.
+
     1.  From the {{ PORTAL }}, select the desired property.
     2.  From the left-hand pane, select the desired environment from under the **Environments** section.
     3.  From the left-hand pane, select **Hostnames**. 
+
 2.  Perform one of the following steps:
 
     -   **Add a Hostname:** 
@@ -185,32 +192,39 @@ On a per environment-basis, define how {{ PRODUCT }} will communicate with your 
 
 7. If you are finished making changes to this environment, click **Deploy Changes**.
 
-## TLS Certificate {/*tls-certificate*/}
-
-
-
 ## Firewall - Allowing {{ PRODUCT }} IP Addresses {/*firewall-allowing-ip-addresses*/}
 
-For the purpose of fulfilling requests, our edge servers require access to all servers associated with your origin configurations.
+As clients request your site, {{ PRODUCT }} sends traffic through our network to the servers associated with your origin configuration(s). You must configure your firewall to allow this traffic to ensure that these requests are not blocked.
 
-<!--
+<Callout type="important">
 
-customer origin group. Please ensure that your firewall allows access to all of the IP blocks listed in the Whitelist IP Blocks page.
+  IP blocks may vary by team. 
 
-Export a list of the IPv4 and IPv6 blocks that should be whitelisted by clicking CSV from the Whitelist IP Blocks page.
+</Callout>
 
-The Whitelist IP Blocks page contains a superset of IP addresses that includes:
+<Callout type="info">
 
-The IP blocks defined within the CDN IP's page.
-The IP blocks for future POPs.
+  If you plan on using the {{ PRODUCT }} CLI to deploy to a development or CI/CD environment, then you will also need to allow traffic from the domain to which it connects. You may view this domain following the instructions below.
 
-Once the IP blocks defined within the Whitelist IP Blocks page have been whitelisted on your firewall, it is unnecessary to add the IP blocks defined within the CDN IP's page.
-Verify that the firewall for your web servers does not restrict access to the IP address blocks listed within the Whitelist IP Blocks page.
+</Callout>
 
-Before going live, ensure that all Edgio IP addresses are allowed in the security layer in front of your origin and/or API servers. The IP addresses you need to allow can be found on the Allowlisting section under the Origin Security tab for your property. Note that each team may have their own set of IPs so these values cannot be copied from one team to another.
-allowlisting
+**To view our network's IP blocks**
 
--->
+1.  Load the **Origins** page.
+    1.  From the {{ PORTAL }}, select the desired property.
+    2.  From the left-hand pane, select the desired environment from under the **Environments** section.
+    3.  From the left-hand pane, select **Origins**. 
+2.  From the information bar at the top of the page, click **instructions**.
+
+    ![Firewall instructions](/images/basics/origins-instructions)
+
+    The **Allowlisting** window will display a list of IPv4 and IPv6 blocks for standard traffic, a list of IP blocks for Serverless Compute, and the domain to which the {{ PRODUCT }} CLI connects when deploying to a development or CI/CD environment.
+
+    <Callout type="important">
+
+      We strongly recommend that you allow traffic for all IP blocks and the domain listed on the **Allowlisting** window.
+
+    </Callout>
 
 ### Serving Traffic through {{ PRODUCT }} {/*serving-traffic-through*/}
 

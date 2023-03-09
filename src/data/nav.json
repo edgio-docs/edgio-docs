@@ -184,6 +184,10 @@
           "title": "Origin Shield",
           "path": "security/origin_shield"
         },
+        { 
+          "title": "TLS Certificates",
+          "path": "security/tls_certificates"
+        },
         {
           "title": "",
           "path": ""

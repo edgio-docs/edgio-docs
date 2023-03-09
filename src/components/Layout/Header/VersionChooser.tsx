@@ -1,14 +1,13 @@
 import Router, {useRouter} from 'next/router';
 import {useState} from 'react';
+//@ts-ignore
 import {Button} from 'styled-button-component';
 import styled from 'styled-components';
+//@ts-ignore
 import {Dropdown, DropdownItem, DropdownMenu} from 'styled-dropdown-component';
 
 import {getVersionedConfig, getVersionedConfigs} from 'utils/config';
 import useConditioning from 'utils/hooks/useConditioning';
-
-//@ts-ignore
-//@ts-ignore
 
 const StyledDropdown = styled(Dropdown)`
   margin-left: 15px;

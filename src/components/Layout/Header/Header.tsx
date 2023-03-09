@@ -186,11 +186,13 @@ const {
   indexName,
 } = siteConfig.algolia;
 
+const searchParameters = {
+  facetFilters: [['version:all', 'version:v5']],
+};
+
 function transformItems(items: any) {
-  return items.map((item: any) => ({
-    ...item,
-    url: item.url.replace(/docs\.layer0\.co/g, 'docs.edg.io'),
-  }));
+  // do transformation here...
+  return items;
 }
 
 export default function Header({
@@ -200,6 +202,17 @@ export default function Header({
   showSidebar: boolean;
   setShowSidebar: (showSidebar: boolean) => void;
 }) {
+  const SearchField = () => (
+    <NoSSRWrapper>
+      <DocSearch
+        appId={algoliaAppId}
+        indexName={indexName}
+        apiKey={algoliaApiKey}
+        transformItems={transformItems}
+        searchParameters={searchParameters}
+      />
+    </NoSSRWrapper>
+  );
   return (
     <StyledHeader className="docs-header">
       <div className="col-1">
@@ -244,17 +257,7 @@ export default function Header({
       <div className="col-2">
         <div id="desktop" className="desktop">
           <div className="search-form__box">
-            <NoSSRWrapper>
-              <DocSearch
-                appId={algoliaAppId}
-                indexName={indexName}
-                apiKey={algoliaApiKey}
-                transformItems={transformItems}
-                searchParameters={{
-                  facetFilters: ['version:current'],
-                }}
-              />
-            </NoSSRWrapper>
+            <SearchField />
           </div>
           <ToggleTheme />
           <ExternalLink href="https://app.layer0.co/?sgId=ef4d5169-93f2-4f55-aabb-dc3be4286e1f">
@@ -266,17 +269,7 @@ export default function Header({
         </div>
         <div id="mobile">
           <div className="search-form__box">
-            <NoSSRWrapper>
-              <DocSearch
-                appId={algoliaAppId}
-                indexName={indexName}
-                apiKey={algoliaApiKey}
-                transformItems={transformItems}
-                searchParameters={{
-                  facetFilters: ['version:current'],
-                }}
-              />
-            </NoSSRWrapper>
+            <SearchField />
           </div>
           <ToggleTheme />
           <button

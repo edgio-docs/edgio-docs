@@ -1,4 +1,4 @@
-import Router, {useRouter} from 'next/router';
+import Link from 'next/link';
 import {useState} from 'react';
 //@ts-ignore
 import {Button} from 'styled-button-component';
@@ -6,7 +6,7 @@ import styled from 'styled-components';
 //@ts-ignore
 import {Dropdown, DropdownItem, DropdownMenu} from 'styled-dropdown-component';
 
-import {getVersionedConfig, getVersionedConfigs} from 'utils/config';
+import {getVersionedConfigs} from 'utils/config';
 import useConditioning from 'utils/hooks/useConditioning';
 
 const StyledDropdown = styled(Dropdown)`
@@ -22,32 +22,33 @@ const StyledDropdownMenu = styled(DropdownMenu)``;
 
 const StyledDropdownItem = styled(DropdownItem)`
   font-size: 14px;
+  font-weight: ${({selected}) => (selected ? 'bold' : 'normal')};
+
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
 `;
 
 export default function VersionChooser() {
-  const {route} = useRouter();
   const {version} = useConditioning();
   const [hidden, setHidden] = useState(true);
   const {selectedVersion, latestVersion} = version;
-  const config = getVersionedConfig(selectedVersion);
-  const versions = Object.keys(getVersionedConfigs()).map((v) => [
-    v,
-    `Applications ${v}`,
-  ]);
 
   const prefixedLatestVersion = `v${latestVersion}`;
   const prefixedSelectedVersion = `v${selectedVersion}`;
 
-  const onChange = (version: string) => {
-    if (version === prefixedLatestVersion) {
-      Router.push(`/`);
-    } else {
-      Router.push(`/guides/${version}`);
-    }
-  };
+  const versions = Object.keys(getVersionedConfigs())
+    .map((v) => ({
+      version: v,
+      href: v === prefixedLatestVersion ? `/` : `/guides/${v}`,
+      label: `Applications ${v}`,
+    }))
+    .reverse();
 
-  const [selectedValue, selectedLabel] =
-    versions.find((v) => v[0] === prefixedSelectedVersion) || [];
+  const {label: selectedLabel} = versions.find(
+    ({version}) => version === prefixedSelectedVersion
+  ) || {label: `Applications ${prefixedLatestVersion}`};
 
   return (
     <StyledDropdown>
@@ -55,14 +56,16 @@ export default function VersionChooser() {
         {selectedLabel}
       </Button>
       <StyledDropdownMenu hidden={hidden} toggle={() => setHidden(!hidden)}>
-        {versions.map(([value, label]) => (
-          <StyledDropdownItem
-            key={value}
-            value={value}
-            onClick={() => onChange(value)}>
-            {label}
-          </StyledDropdownItem>
-        ))}
+        {versions.map(({version, href, label}) => {
+          console.log(version, prefixedSelectedVersion);
+          return (
+            <StyledDropdownItem
+              key={version}
+              selected={version === prefixedSelectedVersion}>
+              <Link href={href}>{label}</Link>
+            </StyledDropdownItem>
+          );
+        })}
       </StyledDropdownMenu>
     </StyledDropdown>
   );

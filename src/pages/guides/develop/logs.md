@@ -57,7 +57,7 @@ Use DRI to view the headers and body for:
 
 <Callout type="warning">
 
-  {{ PRODUCT }} automatically scrubs Social Security Numbers and common credit card formats from our log data. However, it is unaware of other personally identifiable information (PII). Any team member that has been assigned the Admin role will have access to this data.
+  {{ PRODUCT }} automatically scrubs Social Security Numbers and common credit card formats from our log data. However, it is unaware of other personally identifiable information (PII). Any team member that has been assigned the `Admin` role will have access to this data.
 
 </Callout>
 

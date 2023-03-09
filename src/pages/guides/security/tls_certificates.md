@@ -213,7 +213,7 @@ The following procedure indicates how to create a CSR and a private key with Ope
     commonName=Fully Qualified Domain Name (FQDN) e.g., www.your-company-name.com
     commonName_default=www.your-company-domain.com
 
-    [ v3_req ]
+    [v3_req]
     subjectAltName=@alt_names
 
     [alt_names] # Other domains: apex domain, wildcard domain for staging and dev, and so on
@@ -229,7 +229,7 @@ The following procedure indicates how to create a CSR and a private key with Ope
 
 3.  Run the following command:
 
-    ```
+    ```bash
     openssl req -out {{ PRODUCT_NAME_LOWER }}.csr -newkey rsa:2048 -nodes -keyout {{ PRODUCT_NAME_LOWER }}.key -config {{ PRODUCT_NAME_LOWER }}_cert.conf -batch
     ```
 
@@ -243,7 +243,7 @@ The following procedure indicates how to create a CSR and a private key with Ope
 
 4.  Verify your CSR contains the expected domains by running the following command:
 
-    ```
+    ```bash
     openssl req -in {{ PRODUCT_NAME_LOWER }}.csr -noout -text | grep DNS
     ```
 
@@ -254,7 +254,7 @@ The following procedure indicates how to create a CSR and a private key with Ope
 Uploading a TLS certificate requires:
 
 -   An Enterprise account.  {{ ACCOUNT_UPGRADE }}
--   The **Admin** role within your team.
+-   The `Admin` role within your team.
 -   A certificate issued by a CA.
 -   The intermediate certificates (IC) used by the CA, including the CA's signing certificate.
 -   The private key that was generated with the CSR.

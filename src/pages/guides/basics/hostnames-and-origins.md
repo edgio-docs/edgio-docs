@@ -226,7 +226,7 @@ As clients request your site, {{ PRODUCT }} sends traffic through our network to
 
     </Callout>
 
-### Serving Traffic through {{ PRODUCT }} {/*serving-traffic-through*/}
+## Serving Traffic through {{ PRODUCT }} {/*serving-traffic-through*/}
 
 Once you are ready to serve traffic through {{ PRODUCT }}, you will need to configure DNS for each hostname.
 
@@ -240,17 +240,17 @@ Using a Sub-domain
 
 To host your site on a subdomain (e.g. www.mywebsite.xyz), add a CNAME record with the value shown under DNS Configuration (see above).
 
-# To verify your DNS entry, run the following command {/*to-verify-your-dns-entry-run-the-following-command*/}
+To verify your DNS entry, run the following command {/*to-verify-your-dns-entry-run-the-following-command*/}
 
 dig your-sub-domain
 
 
-# Example {/*example*/}
+Example {/*example*/}
 
 dig www.mywebsite.xyz
 
 
-# Result {/*result*/}
+Result {/*result*/}
 
 www.mywebsite.xyz.   599    IN    CNAME    d12ea738-71b3-25e8-c771-6fdd3f6bd8ba.layer0-limelight.link.
 
@@ -258,17 +258,17 @@ Using an Apex Domain
 
 To host your site on the apex domain (e.g. mywebsite.xyz), create multiple A records on your apex domain, with the following Anycast IP address values: 208.69.180.11, 208.69.180.12, 208.69.180.13, 208.69.180.14
 
-# To verify your DNS entry, run the following command {/*to-verify-your-dns-entry-run-the-following-command*/}
+To verify your DNS entry, run the following command {/*to-verify-your-dns-entry-run-the-following-command*/}
 
 dig your-apex-domain
 
 
-# Example {/*example*/}
+Example {/*example*/}
 
 dig mywebsite.xyz
 
 
-# Result {/*result*/}
+Result {/*result*/}
 
 mywebsite.xyz.        599    IN    A        208.69.180.11
 
@@ -284,15 +284,15 @@ Create the multiple A records with the IPs, on your apex domain (see above).
 
 Create a CNAME record for your sub-domain, with the value of your apex domain.
 
-# To verify your DNS entries, run the following command {/*to-verify-your-dns-entries-run-the-following-command*/}
+To verify your DNS entries, run the following command {/*to-verify-your-dns-entries-run-the-following-command*/}
 
 dig your-sub-domain
 
-# Example {/*example*/}
+Example {/*example*/}
 
 dig www.mywebsite.xyz
 
-# Result {/*result*/}
+Result {/*result*/}
 
 www.mywebsite.xyz.    599    IN    CNAME.   mywebsite.xyz.
 
@@ -304,7 +304,4 @@ mywebsite.xyz.        599    IN    A        208.69.180.13
 
 mywebsite.xyz.        599    IN    A        208.69.180.14
 
-
 -->
-
-

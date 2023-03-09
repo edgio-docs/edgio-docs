@@ -4,6 +4,7 @@ title: Properties
 
 A property instructs {{ PRODUCT }} how to securely process requests for your website. Setting up a property typically involves:
 
+-   Determining whether it will belong to a team space that allows collaboration with other team members or a private space with access restricted to your account.
 -   [Environment(s)](/guides/basics/environments). An environment allows you to serve your site on different domains.
 -   [TLS certificate(s)](/guides/FINDME). Each hostname associated with an environment requires the installation of a TLS certificate on our network. Manage these TLS certificates through your property's settings. 
 -   [Securing your web applications and API traffic](/guides/security/waf). Secure your web applications and APIs across all environments using a single configuration at the property level.
@@ -11,6 +12,12 @@ A property instructs {{ PRODUCT }} how to securely process requests for your web
 ## Managing Properties
 
 You may create, rename, or delete a property. You may even transfer ownership to a different team. 
+
+<Callout type="important">
+
+  The administration of properties within a team space requires the `Admin` role for that team.
+
+</Callout>
 
 Upon creating a property, it will contain a `production` environment with the following configuration:
 
@@ -24,14 +31,18 @@ Upon creating a property, it will contain a `production` environment with the fo
 </Callout>
 
 **To create a property**
-1.  From the {{ PORTAL }}, click **+ New Property**.
-2.  In the **Property Name** option, assign a unique name to this property.
-3.  Add one or more hostname(s) through which your site will be delivered.
+1.  From the {{ PORTAL }}, determine where you will create a property.
+    -   **Private Space:** By default, the {{ PRODUCT }} Developer console loads your private space. Proceed to the next step.
+    -   **Team Space:** Load the desired team by clicking the <img data-inline-img src="/images/icons/menu-1.png" alt="" /> icon that appears next to your name and then selecting the desired team.
+
+2.  Click **+ New Property**.
+3.  In the **Property Name** option, assign a unique name to this property.
+4.  Add one or more hostname(s) through which your site will be delivered.
     1.  From the **Hostnames** section, click **+ Add Hostname**.
     2.  Type the desired hostname (e.g., `www.example.com`).
     3.  Repeat steps 1 and 2 as needed.
 
-4.  Add one or more origin configuration(s). An origin configuration identifies your web servers and defines how {{ PRODUCT }} proxies cache misses to them.
+5.  Add one or more origin configuration(s). An origin configuration identifies your web servers and defines how {{ PRODUCT }} proxies cache misses to them.
 
     By default, a new property contains an origin configuration called `web` that requires configuration.
 
@@ -45,7 +56,7 @@ Upon creating a property, it will contain a `production` environment with the fo
         [Learn more.](#FINDME)
     7.  Add more origin configurations as needed by clicking **+ Add Origin** and then repeating the above steps.
 
-5.  Click **Create Property**.
+6.  Click **Create Property**.
 
 **To rename a property**
 1.  From the {{ PORTAL }}, click on the desired property.

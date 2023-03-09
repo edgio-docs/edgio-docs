@@ -11,7 +11,7 @@ Origin Shield establishes an additional buffer between your web servers and your
 
 Origin Shield reduces your server and network load by reducing the number of requests that are sent to your web servers. This reduction in requests is accomplished through an intermediate caching layer between your web servers and an edge server. 
 
-![How does Origin Shield work?](/images/security/origin-shield-how-does-it-work.png?width=781)
+![How does Origin Shield work?](/images/security/origin-shield-how-does-it-work.png)
 
 This intermediate caching layer augments the default CDN caching behavior in the following ways: 
 

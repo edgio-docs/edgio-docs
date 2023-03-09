@@ -149,25 +149,24 @@ _acme-challenge.www.mywebsite.xyz -> _acme-challenge.xdn-validation.com.
 
 If you have previously used Let's Encrypt to generate certificates for your hostnames, you should verify that all `_acme-challenge.<HOSTNAME>` TXT records have been removed.
 
-<Callout type="info">
-
-  You can read more about the `acme-challenge.` process by visiting <a href="https://letsencrypt.org/docs/challenge-types/#dns-01-challenge">Let's Encrypt Website</a>
-
-</Callout>
+[Learn more about DNS TXT domain control.](https://letsencrypt.org/docs/challenge-types/#dns-01-challenge)
 
 #### TLS Certificate Verification
 
-Once the requirements above are met, you should verify that a TLS certificate for each of your hostnames has been generated.
+Once the above requirements are met, you should verify that a TLS certificate for each of your hostnames has been generated.
 
 **To verify TLS certificate creation**
 
 1.  From the {{ PORTAL }}, click **Settings** to load the **Settings** page. Find the **TLS Certificate** section.
 2.  Review the TLS status for each of your hostnames.
 
-    ![TLS Certificate section](/images/security/tls-certificate)
+    ![TLS Certificate section](/images/security/tls-certificate.png)
 
 3.  If a TLS certificate has not yet been generated, you may manually generate it by clicking <img data-inline-img src="/images/icons/recheck-validation.png" alt="Recheck Validation icon" /> under the **ACME Challenge Record** column.
-4. {{ PRODUCT }} will generate a TLS certificate for that hostname within a few minutes.
+
+    {{ PRODUCT }} will generate a TLS certificate for that hostname within a few minutes.
+
+4.  Wait a few minutes and then verify that a certificate was created for that hostname.
 
 ### Manually Creating a TLS Certificate {/*creating-a-certificate-manually*/}
 
@@ -177,9 +176,15 @@ Once the requirements above are met, you should verify that a TLS certificate fo
 
 </Callout>
 
-TLS certificates are issued by Certificate Authorities (CA) based on a Certificate Signing Request (CSR) that they receive from you. Although the same process generates a CSR and a private key, you should only share your CSR with the CA. You should securely store your private key.
+TLS certificates are issued by Certificate Authorities (CA) based on your Certificate Signing Request (CSR). Although a single command generates a CSR and a private key, you should only share your CSR with the CA. You should also securely store your private key.
 
-The following steps describe the creation of the CSR and private key with OpenSSL. OpenSSL is an open-source toolkit for the TLS protocol. We recommend using OpenSSL because it ensures that your private key will only be stored locally on your infrastructure. Your CA may have more customized guides or an entirely customized certification process.
+The following procedure indicates how to create a CSR and a private key with OpenSSL. OpenSSL is an open-source toolkit for the TLS protocol. We recommend using OpenSSL because it ensures that your private key will only be stored locally on your infrastructure. 
+
+<Callout type="info">
+
+  Review your CA's documentation to check for additonal requirements or a custom certification workflow.
+
+</Callout>
 
 **To generate a CSR and a private key**
 
@@ -188,7 +193,7 @@ The following steps describe the creation of the CSR and private key with OpenSS
     -   **Windows:** Install it by using [`Chocolatey`](https://chocolatey.org/) package manager (e.g., `choco install openssl`).
     -   **Linux/Unix:** Install it by running the built-in OS package manager (e.g., `apt-get install openssl`, `apk add openssl`, and so on).
 
-2. Go to the directory of your choice and create a configuration file `{{ PRODUCT_NAME_LOWER }}.conf` based on this template:
+2. Go to the directory of your choice and create a configuration file (e.g., `{{ PRODUCT_NAME_LOWER }}_cert.conf`) based on this template:
 
     ```
     [req]
@@ -225,7 +230,7 @@ The following steps describe the creation of the CSR and private key with OpenSS
 3.  Run the following command:
 
     ```
-    openssl req -out {{ PRODUCT_NAME_LOWER }}.csr -newkey rsa:2048 -nodes -keyout {{ PRODUCT_NAME_LOWER }}.key -config {{ PRODUCT_NAME_LOWER }}.conf -batch
+    openssl req -out {{ PRODUCT_NAME_LOWER }}.csr -newkey rsa:2048 -nodes -keyout {{ PRODUCT_NAME_LOWER }}.key -config {{ PRODUCT_NAME_LOWER }}_cert.conf -batch
     ```
 
     This should generate your CSR in `{{ PRODUCT_NAME_LOWER }}.csr` and private key in `{{ PRODUCT_NAME_LOWER }}.key`. 
@@ -249,9 +254,9 @@ The following steps describe the creation of the CSR and private key with OpenSS
 Uploading a TLS certificate requires:
 
 -   An Enterprise account.  {{ ACCOUNT_UPGRADE }}
--   The **Admin** role within your team
--   A certificate issued by a CA
--   The intermediate certificates (IC) used by the CA, including the CA's signing certificate
+-   The **Admin** role within your team.
+-   A certificate issued by a CA.
+-   The intermediate certificates (IC) used by the CA, including the CA's signing certificate.
 -   The private key that was generated with the CSR.
 
 **To upload your TLS certificate**
@@ -262,7 +267,7 @@ Uploading a TLS certificate requires:
 
     <Callout type="info">
 
-      The private key is non-public data and must not be shared with parties other than {{ PRODUCT_NAME }}. {{ PRODUCT_NAME }} securely stores your private key. It is never shown in the developer console and it is only used to provision parts of the infrastructure that are used to terminate TLS connections.
+      The private key is non-public data and must not be shared with parties other than {{ PRODUCT_NAME }}. {{ PRODUCT_NAME }} securely stores your private key. It is never shown in the {{ PRODUCT }} Developer console and it is only used to provision parts of the infrastructure that are used to terminate TLS connections.
 
     </Callout>
 
@@ -272,7 +277,7 @@ Uploading a TLS certificate requires:
 
     ![in-progress-certificate](/images/production/in-progress-certificate.png)
 
-    After the certificate is activated, its status becomes *Active*.
+    After the certificate is activated, its status becomes **Active**.
 
     ![activated-certificate](/images/production/activated-certificate.png)
 

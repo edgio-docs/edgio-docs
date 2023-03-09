@@ -1803,19 +1803,19 @@ This feature allows our edge servers to rewrite the URL without performing a tra
 
 -   **Destination Path:** Define a regular expression that sets a new relative path. This relative path starts directly after the hostname. 
 
-        <Callout type="info">
+    <Callout type="info">
 
-          You may use up to 9 numbered backreferences for text captured within the `source` property. 
+      You may use up to 9 numbered backreferences for text captured within the `source` property. 
 
-          For example, if the **Source Path** option contains two capture groups (e.g., `/(sales|marketing)/(.*)`, then you may backreference them within the **Destination Path** option (e.g., `/$1/$2`). 
+      For example, if the **Source Path** option contains two capture groups (e.g., `/(sales|marketing)/(.*)`, then you may backreference them within the **Destination Path** option (e.g., `/$1/$2`). 
 
-        </Callout>
+    </Callout>
 
-        <Callout type="info">
+    <Callout type="info">
 
-          Use [HTTP variables](#http-variables) to dynamically construct the above paths. However, you may not use response metadata.
+      Use [HTTP variables](#http-variables) to dynamically construct the above paths. However, you may not use response metadata.
 
-        </Callout>
+    </Callout>
 
 **Default Behavior:** By default, requests are not rewritten.
 
@@ -1853,15 +1853,15 @@ HTTP variables are described below.
 
 </Callout>
 
--   **%{geo_asnum}:** Indicates the client's AS number.
+-   `%{geo_asnum}`**:** Indicates the client's AS number.
 
     **Sample Value:** `AS15133`
 
--   **%{geo_city}:** Indicates the client's city.
+-   `%{geo_city}`**:** Indicates the client's city.
 
     **Sample Value:** `Los Angeles`
 
--   **%{geo_continent}:** Indicates the client's continent through its abbreviation. Valid values are:
+-   `%{geo_continent}`**:** Indicates the client's continent through its abbreviation. Valid values are:
     -   **AF:** Africa
     -   **AS:** Asia
     -   **EU:** Europe
@@ -1871,45 +1871,45 @@ HTTP variables are described below.
 
     **Sample Value:** `NA`
 
--   **%{cookie_&lt;COOKIE>}:** Returns the value corresponding to the cookie identified by the `<COOKIE>` term. Replace dashes in the cookie name with underscores (e.g., change `preferences-cookie` to `preferences_cookie`).
+-   `%{cookie_<COOKIE>}`**:** Returns the value corresponding to the cookie identified by the `<COOKIE>` term. Replace dashes in the cookie name with underscores (e.g., change `preferences-cookie` to `preferences_cookie`).
 
     **Sample Usage:** `%{cookie__utma}`
 
     **Sample Value:** `111662281.2.10.1222100123`
 
--   **%{geo_country}:** Indicates the country from which the requested originated through its country code.
+-   `%{geo_country}`**:** Indicates the country from which the requested originated through its country code.
 
     **Sample Value:** `US`
 
--   **%{geo_dma_code}:** Indicates the client's media market by its region code. This field is only applicable to requests that originate from the United States.
+-   `%{geo_dma_code}`**:** Indicates the client's media market by its region code. This field is only applicable to requests that originate from the United States.
 
     **Sample Value:** `745`
 
--   **%{request_method}:** Indicates the HTTP request method.
+-   `%{request_method}`**:** Indicates the HTTP request method.
 
     **Sample Value:** `GET`
 
--   **%{status}:** Indicates the HTTP status code for the response.
+-   `%{status}`**:** Indicates the HTTP status code for the response.
 
     **Sample Value:** `200`
 
--   **%{virt_dst_addr}:** Indicates the client's IP address.
+-   `%{virt_dst_addr}`**:** Indicates the client's IP address.
 
     **Sample Value:** `192.168.1.1`
 
--   **%{geo_latitude}:** Indicates the client's latitude.
+-   `%{geo_latitude}`**:** Indicates the client's latitude.
 
     **Sample Value:** `34.0995`
 
--   **%{geo_longitude}:** Indicates the client's longitude.
+-   `%{geo_longitude}`**:** Indicates the client's longitude.
 
     **Sample Value:** `-118.4143`
 
--   **%{geo_metro_code}:** Indicates the client's metropolitan area. This field is only applicable to requests that originate from the United States.
+-   `%{geo_metro_code}`**:** Indicates the client's metropolitan area. This field is only applicable to requests that originate from the United States.
 
     **Sample Value:** `745`
 
--   **%{normalized_path}:** Indicates the normalized relative path for the request submitted to the CDN.
+-   `%{normalized_path}`**:** Indicates the normalized relative path for the request submitted to the CDN.
 
     **Key information:**
 
@@ -1919,13 +1919,13 @@ HTTP variables are described below.
 
     **Sample Value:** `/marketing/images/bunny.png`
 
--   **%{normalized_query}:** Indicates the normalized query string defined in the request URL. URL normalization, as defined in [RFC 3986](https://tools.ietf.org/html/rfc3986#page-38), was applied to this value.
+-   `%{normalized_query}`**:** Indicates the normalized query string defined in the request URL. URL normalization, as defined in [RFC 3986](https://tools.ietf.org/html/rfc3986#page-38), was applied to this value.
 
     **Original Query String:** `"client=/123?"`
 
     **Sample Value:** `%22client=/123?%22`
 
--   **%{normalized_uri}:** Indicates the normalized relative path and query string for the request submitted to the CDN.
+-   `%{normalized_uri}`**:** Indicates the normalized relative path and query string for the request submitted to the CDN.
 
     **Key information:**
 
@@ -1934,7 +1934,7 @@ HTTP variables are described below.
 
     **Sample Value:** `/dir/foo.js?%22client=/123?%22`
 
--   **%{path}:** Indicates the relative path to the requested content. 
+-   `%{path}`**:** Indicates the relative path to the requested content. 
 
     **Key information:**
 
@@ -1943,27 +1943,27 @@ HTTP variables are described below.
 
     **Sample Value:** `/rewrittendir/foo.js`
 
--   **%{virt_dst_port}:** Indicates the client's ephemeral port. 
+-   `%{virt_dst_port}`**:** Indicates the client's ephemeral port. 
 
     **Sample Value:** `55885`
 
--   **%{geo_postal_code}:** Indicates the client's postal code. We only return the first 3 characters for Canadian postal codes and the first 2 - 4 characters for United Kingdom postal codes.
+-   `%{geo_postal_code}`**:** Indicates the client's postal code. We only return the first 3 characters for Canadian postal codes and the first 2 - 4 characters for United Kingdom postal codes.
 
     **Sample Value:** `90210`
 
--   **%{is_args}:** The value for this variable varies according to whether the request contains a query string.
+-   `%{is_args}`**:** The value for this variable varies according to whether the request contains a query string.
     -   **Query String Found:** ?
     -   **No Query String:** NULL
 
     **Sample Value:** `?`
 
--   **%{is_amp}:** The value for this variable varies according to whether the request contains at least one query string parameter.
+-   `%{is_amp}`**:** The value for this variable varies according to whether the request contains at least one query string parameter.
     -   **Parameter Found:** &
     -   **No Parameters:** NULL
 
     **Sample Value:** `&`
 
--   **%{arg_&lt;QUERY STRING PARAMETER>}:** Returns the value corresponding to the query string parameter identified by the `<QUERY STRING PARAMETER>` term. 
+-   `%{arg_<QUERY STRING PARAMETER>}`**:** Returns the value corresponding to the query string parameter identified by the `<QUERY STRING PARAMETER>` term. 
 
     **Sample Usage:** `%{arg_language} `
 
@@ -1971,69 +1971,69 @@ HTTP variables are described below.
 
     **Sample Value:** `en`
 
--   **%{query_string}:** Indicates the entire query string value defined in the request URL.
+-   `%{query_string}`**:** Indicates the entire query string value defined in the request URL.
 
     **Sample Value:** `key1=val1&key2=val2&key3=val3`
 
--   **%{quic_altsvc_versions}:** Indicates the set of QUIC versions supported by our CDN service. This variable identifies QUIC versions using Google's latest specification.
+-   `%{quic_altsvc_versions}`**:** Indicates the set of QUIC versions supported by our CDN service. This variable identifies QUIC versions using Google's latest specification.
 
     **Sample Value:** `h3-Q049=":443"; ma=2592000,h3-Q048=":443"; ma=2592000,h3-Q046=":443"; ma=2592000,h3-Q043=":443"; ma=2592000`
 
--   **%{quic_versions}:** Indicates the set of QUIC versions supported by our CDN service. This variable identifies QUIC versions using Google's legacy specification.
+-   `%{quic_versions}`**:** Indicates the set of QUIC versions supported by our CDN service. This variable identifies QUIC versions using Google's legacy specification.
 
     **Sample Value:** `43,41,39,35`
 
--   **%{referring_domain}:** Indicates the domain defined in the `Referer` request header. 
+-   `%{referring_domain}`**:** Indicates the domain defined in the `Referer` request header. 
 
     **Sample Value:** `www.google.com`
 
--   **%{geo_region}:** Indicates the client's region (e.g., state or province) through its alphanumeric abbreviation. 
+-   `%{geo_region}`**:** Indicates the client's region (e.g., state or province) through its alphanumeric abbreviation. 
 
     **Sample Value:** `CA`
 
--   **%{http_&lt;REQUEST HEADER>}:**  Returns the value corresponding to the request header identified by the `<REQUEST HEADER>` term. Replace dashes in the request header name with underscores (e.g., change `User-Agent` to `User_Agent`).
+-   `%{http_<REQUEST HEADER>}`**:**  Returns the value corresponding to the request header identified by the `<REQUEST HEADER>` term. Replace dashes in the request header name with underscores (e.g., change `User-Agent` to `User_Agent`).
 
     **Sample Usage:** `%{http_Connection} `
 
     **Sample Value:** `Keep-Alive`
 
--   **%{host}:** Indicates the host defined in the request URL. 
+-   `%{host}`**:** Indicates the host defined in the request URL. 
 
     **Sample Value:** `www.example.com`
 
--   **%{http_x_ec_uuid}:** Indicates a request's unique system-defined ID.  A new ID is generated whenever a client (i.e., user agent) submits a request.
+-   `%{http_x_ec_uuid}`**:** Indicates a request's unique system-defined ID.  A new ID is generated whenever a client (i.e., user agent) submits a request.
 
     **Sample Value:** `12345678901234567890123456789012345678`
 
--   **%{virt_http_version}:** Indicates the version of the client's request protocol.
+-   `%{virt_http_version}`**:** Indicates the version of the client's request protocol.
 
     **Sample Value:** `2.0`
 
--   **%{request_protocol}:** Indicates the request protocol used by an edge server to proxy the request.
+-   `%{request_protocol}`**:** Indicates the request protocol used by an edge server to proxy the request.
 
     **Sample Value:** `HTTP/1.1`
 
--   **%{scheme}:** Indicates the request scheme.
+-   `%{scheme}`**:** Indicates the request scheme.
 
     **Sample Value:** `http`
 
--   **%{request}:** Describes the request.
+-   `%{request}`**:** Describes the request.
 
     **Syntax:**
 
     `<HTTP METHOD> <RELATIVE PATH> <PROTOCOL>`
 
-    -   **&lt;HTTP METHOD>:** Indicates the HTTP method that was requested. 
-    -   **&lt;RELATIVE PATH>:** Indicates the relative path, including query string parameters, defined in the request URI.
-    -   **&lt;PROTOCOL>:** Indicates the HTTP protocol and version that was requested.
+    -   `<HTTP METHOD>`**:** Indicates the HTTP method that was requested. 
+    -   `RELATIVE PATH>`**:** Indicates the relative path, including query string parameters, defined in the request URI.
+    -   `<PROTOCOL>`**:** Indicates the HTTP protocol and version that was requested.
 
     **Sample Value:** `GET /marketing/foo.js?loggedin=true HTTP/1.1`
 
--   **%{request_uri}:** Indicates the relative path, including the query string, defined in the request URI.
+-   `%{request_uri}`**:** Indicates the relative path, including the query string, defined in the request URI.
 
     **Sample Value:** `/marketing/foo.js?loggedin=true`
 
--   **%{resp_&lt;RESPONSE HEADER>}:**  Returns the value corresponding to the response header identified by the `<RESPONSE HEADER>` term. Replace dashes in the response header name with underscores (e.g., change `User-Agent` to `User_Agent`).
+-   `%{resp_<RESPONSE HEADER>}`**:**  Returns the value corresponding to the response header identified by the `<RESPONSE HEADER>` term. Replace dashes in the response header name with underscores (e.g., change `User-Agent` to `User_Agent`).
 
     <Callout type="info">
 
@@ -2045,7 +2045,7 @@ HTTP variables are described below.
 
     **Sample Value:** `100`
 
--   **%{http_x_ec_session_id}:** Indicates a unique system-defined ID for the request's connection to our servers.
+-   `%{http_x_ec_session_id}`**:** Indicates a unique system-defined ID for the request's connection to our servers.
 
     <Callout type="tip">
 
@@ -2055,11 +2055,11 @@ HTTP variables are described below.
 
     **Sample Value:** `12345678901234567890123456789012345678`
 
--   **%{virt_ssl_cipher}:** Indicates the name of the cipher suite used to secure a HTTPS connection.
+-   `%{virt_ssl_cipher}`**:** Indicates the name of the cipher suite used to secure a HTTPS connection.
 
     **Sample Value:** `ECDHE-RSA-AES256-SHA`
 
--   **%{virt_ssl_protocol}:** Indicates the SSL/TLS protocol used to secure a HTTPS connection. 
+-   `%{virt_ssl_protocol}`**:** Indicates the SSL/TLS protocol used to secure a HTTPS connection. 
 
     **Sample Value:** `TLSv1.2`
 

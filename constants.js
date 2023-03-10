@@ -22,7 +22,7 @@ const RUM_NS = 'Edgio'; // namespace for the JS package used by RUM
 
 const DOMAIN = 'edg.io';
 const DOMAIN_LEGACY = 'layer0.co';
-const APP_DOMAIN = `app.${DOMAIN_LEGACY}`;
+const APP_DOMAIN = `edgio.app`;
 const DOCS_DOMAIN = `docs.${DOMAIN}`;
 const DOCS_PAGES_DOMAIN = 'layer0-docs.s3.amazonaws.com';
 const DOCS_REPO = 'edgio-docs/edgio-docs';
@@ -44,7 +44,7 @@ const NODE_VERSION = '16.x';
 const STARTER_NAME = 'layer0-app';
 const EDGEJS_LABEL = 'EdgeJS';
 
-const YEAR = '2022';
+const YEAR = '2023';
 
 const EXAMPLES_REPOS = {
   angular: 'https://github.com/edgio-docs/edgio-angular-example',

@@ -6,7 +6,7 @@ A property instructs {{ PRODUCT }} how to securely process requests for your web
 
 -   Determining whether it will belong to a team space that allows collaboration with other team members or a private space with access restricted to your account.
 -   [Environment(s)](/guides/basics/environments). An environment allows you to serve your site on different domains.
--   [TLS certificate(s)](/guides/FINDME). Each hostname associated with an environment requires the installation of a TLS certificate on our network. Manage these TLS certificates through your property's settings. 
+-   [TLS certificate(s)](/guides/security/tls_certificates). Each hostname associated with an environment requires the installation of a TLS certificate on our network. Manage these TLS certificates through your property's settings. 
 -   [Securing your web applications and API traffic](/guides/security/waf). Secure your web applications and APIs across all environments using a single configuration at the property level.
 
 ## Managing Properties
@@ -15,7 +15,7 @@ You may create, rename, or delete a property. You may even transfer ownership to
 
 <Callout type="important">
 
-  The administration of properties within a team space requires the `Admin` role for that team.
+  The administration of a property that lives within a team space requires the `Admin` role for that team.
 
 </Callout>
 
@@ -32,8 +32,10 @@ Upon creating a property, it will contain a `production` environment with the fo
 
 **To create a property**
 1.  From the {{ PORTAL }}, determine where you will create a property.
-    -   **Private Space:** By default, the {{ PRODUCT }} Developer console loads your private space. Proceed to the next step.
+    -   **Private Space:** By default, the {{ PRODUCT }} Developer console loads your private space. Access to a property created in your private space is restricted to your account. Proceed to the next step.
     -   **Team Space:** Load the desired team by clicking the <img data-inline-img src="/images/icons/menu-1.png" alt="" /> icon that appears next to your name and then selecting the desired team.
+
+    ![Team Selection](/images/basics/team-selection.png)
 
 2.  Click **+ New Property**.
 3.  In the **Property Name** option, assign a unique name to this property.
@@ -53,7 +55,7 @@ Upon creating a property, it will contain a `production` environment with the fo
     5.  Optional. By default, the request determines the value assigned to the `Host` request header. You may override the value assigned to this request header through the **Override Host Header** option.
     6.  Optional. Define the TLS requirements when communicating with your web servers through the **Origin TLS Settings** section. 
 
-        [Learn more.](#FINDME)
+        [Learn more.](/guides/basics/hostnames_and_origins#origin)
     7.  Add more origin configurations as needed by clicking **+ Add Origin** and then repeating the above steps.
 
 6.  Click **Create Property**.

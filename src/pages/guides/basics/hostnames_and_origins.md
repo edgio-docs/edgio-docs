@@ -43,7 +43,7 @@ On a per environment-basis, define each hostname that will be served through {{ 
     For example, if you have defined `www.example.com` within the `production` environment, then you cannot define it within any other environment until you delete it from the `production` environment.
 
 -   Each hostname is mapped to an origin configuration. By default, {{ PRODUCT }} proxies cache misses for that hostname to that origin configuration. You may override this mapping through your [CDN-as-code configuration](/guides/performance/cdn-as-code).
--   Each hostname requires the installation of a [TLS certificate](/guides/security/tls_certificate) on our network. {{ PRODUCT }} can automatically generate and install this TLS certificate when both of the following requirements are met:
+-   Each hostname requires the installation of a [TLS certificate](/guides/security/tls_certificates) on our network. {{ PRODUCT }} can automatically generate and install this TLS certificate when both of the following requirements are met:
 
     -   **Certificate Authority Authorization:** The Let's Encrypt certificate authority (CA) must be allowed to issue certificates for that hostname. It is allowed to issue certificates when either of the following conditions are true:
 

@@ -22,7 +22,7 @@
         },
         {
           "title": "Hostnames and Origins",
-          "path": "basics/hostnames-and-origins"
+          "path": "basics/hostnames_and_origins"
         },
         {
           "title": "Deployments",
@@ -473,6 +473,11 @@
           "path": "integrations/wordpress"
         }
       ]
+    },
+    {
+      "title": "Logs",
+      "path": "logs",
+      "icon": "data-plain",
     },
     {
       "title": "Develop",

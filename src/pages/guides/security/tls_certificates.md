@@ -17,7 +17,7 @@ title: TLS Certificates
 
 {{ PRODUCT_NAME }} can automatically generate TLS Certificates on your behalf using [Let's Encrypt](https://letsencrypt.org/). These certificates are free, valid for 3 months, and automatically renewed as long as the following technical requirements remain met:
 
--   [Hostnames:](/guides/basics/hostnames-and-origins#hostnames) Register the hostnames that will serve traffic for each environment.
+-   [Hostnames:](/guides/basics/hostnames_and_origins#hostnames) Register the hostnames that will serve traffic for each environment.
 -   [Certificate Authority Authorization:](#certificate-authority-authorization) The Let's Encrypt certificate authority (CA) must be allowed to issue certificates for each registered hostname. 
 -   [Domain Control Validation:](#domain-control-validation) Prove your control over that domain by adding an `_acme-challenge` CNAME record to it.
 

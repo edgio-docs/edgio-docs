@@ -477,7 +477,7 @@
     {
       "title": "Logs",
       "path": "logs",
-      "icon": "data-plain",
+      "icon": "data-plain"
     },
     {
       "title": "Develop",

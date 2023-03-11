@@ -8,7 +8,7 @@ Log fields vary by RTLD module. Learn more: [RTLD CDN](/guides/logs/rtld/log_fie
 
 RTLD applies gzip compression to log data. Each HTTPS POST request includes a `Content-Encoding` header set to gzip.
 
-To create a log delivery profile
+**To prepare your web servers for log delivery**
 
 1.  Configure your web server(s) to:
     
@@ -25,23 +25,29 @@ To create a log delivery profile
     
 3.  Set up a workflow for handling or processing the log data that will be posted to your web server(s).
     
-    **Example:**
+    **Example:** Create a listener for HTTPS POST requests that mines specific data from log entries.
+
+**To create a log delivery profile**
+
+1.  From the **Real-Time Log Delivery CDN** page, click **+ New Log Delivery Profile**.
+
+    1.  Open the desired property by loading either your private or a team space and then clicking on it.
+    2.  From the left pane, click on the desired environment.
+    3.  From the left pane, click **Realtime Log Delivery**.
+
+2.  From the **Profile Name** option, assign a name to this log delivery profile.
+3.  From the **Log Delivery Method** option, select HTTP Post.
+4.  Set the **Request URL** option to a URL that may leverage the workflow defined in the **To prepare your web servers for log delivery** procedure. This URL must use the HTTPS protocol.
+
+    <Callout type="info">
+
+      Specify a custom port to deliver log data over that port instead of 443.
+
+    </Callout>
     
-    Create a listener for HTTPS POST requests that mines specific data from log entries.
+    **Sample URL:** `https://logs.mydomain.com/cdn/logs.aspx`
     
-4.  Navigate to the Real-Time Log Delivery CDN | Rate Limiting | WAF page. 
-    
-5.  Click Add Profile.
-6.  From the **Log Delivery Method** option, select HTTP Post.
-7.  Set the **Request URL** option to a URL that may leverage the workflow defined in step 3. This URL must use the HTTPS protocol.
-    
-    Specify a custom port to deliver log data over that port instead of 443.
-    
-    **Sample URL:**
-    
-    https://logs.mydomain.com/cdn/logs.aspx
-    
-8.  From the **Authentication** option, select one of the following modes:
+5.  From the **Authentication Type** option, select one of the following modes:
     
     -   **Custom Authentication:** Select this mode when your web server(s) expects the `Authorization` request header to be set to a custom token value. Set the **Token** option to a value that will authorize requests to your web server(s).
         
@@ -56,16 +62,20 @@ To create a log delivery profile
         **Authorization header syntax:** `Authorization: Basic <BASE64-ENCODED CREDENTIALS>`
         
     -   **None:** Select this mode if your web server(s) allow content to be posted without authorization.
-9.  From the **Log Format** option, select whether to format log data using our standard JSON format, as a JSON array, as JSON lines, or as a CSV (RTLD CDN only).
+6.  From the **Log Format** option, select whether to format log data using our standard JSON format, as a JSON array, as JSON lines, or as a CSV (RTLD CDN only).
     
     Learn more: [RTLD CDN](/guides/logs/rtld/log_fields_rtld_cdn) | [RTLD Rate Limiting](/guides/logs/rtld/log_fields_rtld_rate_limiting) | [RTLD WAF](/guides/logs/rtld/log_fields_rtld_waf)
     
-10. From the **Downsample the Logs** option, determine whether all or downsampled Reduces the amount of log data that will be delivered. For example, you may choose to only deliver 1% of your log data. log data will be delivered.
+7. From the **Downsample the Logs** option, determine whether all or downsampled Reduces the amount of log data that will be delivered. For example, you may choose to only deliver 1% of your log data. log data will be delivered.
     
-    -   **All Log Data:** Verify that the **Downsample the Logs** option is disabled.
+    -   **All Log Data:** Verify that the **Downsample the Logs** option is cleared.
     -   **Downsampled Log Data:** Downsample logs to 0.1%, 1%, 25%, 50%, or 75% of total log data by enabling the **Downsample the Logs** option and then selecting the desired rate from the **Downsampling Rate** option.
-        
-        Use this capability to reduce the amount of data that needs to be processed or stored within your web server(s).  
+
+        <Callout type="tip">
+
+          Use this capability to reduce the amount of data that needs to be processed or stored within your web server(s).  
+
+        </Callout>
 
         <Callout type="info">
 
@@ -73,8 +83,9 @@ To create a log delivery profile
 
         </Callout>
         
-11. Log delivery setup varies according to whether you are delivering log data for CDN traffic, threats identified by WAF, or rate limited requests.
-    
+8. Log delivery setup varies according to whether you are delivering log data for CDN traffic, threats identified by WAF, or rate limited requests.
+ 
+{/*   
     **To set up RTLD CDN**
     
     1.  From the **Filter by Edge CNAME** section, perform one of the following steps:
@@ -318,8 +329,6 @@ To create a log delivery profile
         1.  Mark [each field](/guides/logs/rtld/log_fields_rtld_waf#logs-array) that will be reported for each request submitted to the CDN.
         2.  Clear each field for which log data should not be reported.
     
-12.  Set the **Log Delivery Enabled** option to the "on" position.
-    
-    ![](../Resources/Images/RTLD/RTLD-LD-Enabled.png)
-    
-13.  Click Save.
+*/}
+
+9.  Click **Create Log Delivery Profile**.

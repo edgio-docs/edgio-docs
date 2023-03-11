@@ -477,7 +477,7 @@
     {
       "title": "Logs",
       "path": "logs",
-      "icon": "data-plain"
+      "icon": "data-plain",
       "routes": [
         {
           "title": "Build Logs",
@@ -493,7 +493,7 @@
         },
         {
           "title": "Real-Time Log Delivery",
-          "path": "logs/rtld"
+          "path": "logs/rtld",
           "routes": [
             {
               "title": "Web Server Log Delivery",
@@ -543,7 +543,9 @@
               "title": "Log Fields (RTLD Rate Limiting",
               "path": "logs/rtld/log_fields_rtld_rate_limiting"
             }
+          ]
         }
+      ]
     },
     {
       "title": "Develop",

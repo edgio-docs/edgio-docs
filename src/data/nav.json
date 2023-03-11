@@ -478,6 +478,72 @@
       "title": "Logs",
       "path": "logs",
       "icon": "data-plain"
+      "routes": [
+        {
+          "title": "Build Logs",
+          "path": "logs/build_logs"
+        },
+        {
+          "title": "Server Logs",
+          "path": "logs/server_logs"
+        },
+        {
+          "title": "Access Logs",
+          "path": "logs/access_logs"
+        },
+        {
+          "title": "Real-Time Log Delivery",
+          "path": "logs/rtld"
+          "routes": [
+            {
+              "title": "Web Server Log Delivery",
+              "path": "logs/rtld/web_server_log_delivery"
+            },
+            {
+              "title": "AWS S3 Log Delivery",
+              "path": "logs/rtld/aws_s3_log_delivery"
+            },
+            {
+              "title": "Azure Blob Storage Log Delivery",
+              "path": "logs/rtld/azure_blob_storage_log_delivery"
+            },
+            {
+              "title": "Splunk Enterprise Log Delivery",
+              "path": "logs/rtld/splunk_enterprise_log_delivery"
+            },
+            {
+              "title": "Sumo Logic Log Delivery",
+              "path": "logs/rtld/sumo_logic_log_delivery"
+            },
+            {
+              "title": "Datadog Log Delivery",
+              "path": "logs/rtld/datadog_log_delivery"
+            },
+            {
+              "title": "Google Cloud Storage Log Delivery",
+              "path": "logs/rtld/google_cloud_storage_log_delivery"
+            },
+            {
+              "title": "New Relic Log Delivery",
+              "path": "logs/rtld/new_relic_log_delivery"
+            },
+            {
+              "title": "Log Data Verification",
+              "path": "logs/rtld/log_data_verification"
+            },
+            {
+              "title": "Log Fields (RTLD CDN)",
+              "path": "logs/rtld/log_fields_rtld_cdn"
+            },
+            {
+              "title": "Log Fields (RTLD WAF)",
+              "path": "logs/rtld/log_fields_rtld_waf"
+            },
+            {
+              "title": "Log Fields (RTLD Rate Limiting",
+              "path": "logs/rtld/log_fields_rtld_rate_limiting"
+            }
+        }
     },
     {
       "title": "Develop",
@@ -491,10 +557,6 @@
         {
           "title": "REST API",
           "path": "develop/rest_api"
-        },
-        {
-          "title": "Log Data",
-          "path": "develop/logs"
         },
         {
           "title": "Deploy to Edgio Button",

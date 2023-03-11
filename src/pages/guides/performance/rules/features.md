@@ -1,578 +1,21 @@
 ---
-title: Conditions and Features Reference
+title: Features Reference
 ---
 
-<Callout type="important">
-
-  The purpose of this article is to provide a preview of conditions, features, and HTTP variables. It does not necessarily reflect what will be released. Additionally, it may contain incomplete or incorrect information.
-
-</Callout>
-
-## Conditions
-
-A match condition identifies the set of requests to which one or more feature(s) will be applied.
-
-#### ASN
-
-Identifies requests by the network from which the request was issued. A network is identified by its Autonomous System Number (ASN).
-
-**Key information:**
-
--   Certain requests may not return a valid AS number. A question mark (i.e., `?`) will match requests for which a valid AS number could not be determined.
--   You must specify a value, pattern, or regular expression that matches the entire AS number for the desired network.
-
-
-#### Brand Name
-
-Identifies requests by the manufacturer (e.g., Samsung) of the device that issued the request.
-
-#### Browser
-
-TODO
-
-#### City
-
-Identifies requests by the city from which they originated.
-
-**Key information:**
-
--   Certain requests may not return a valid city name. A question mark (i.e., `?`) will match requests for which a valid city name could not be determined.
-
-#### Client IP
-
-Identifies requests that originate from a particular IP address.
-
-**Key information:**
-
--   Use CIDR notation.
--   Specify multiple IP addresses and/or IP address blocks by delimiting each one with a single space.
-
-    -   **IPv4 Example:** `1.2.3.4 10.20.30.40` matches any requests arriving from either `1.2.3.4` or `10.20.30.40`.
-    -   **IPv6 Example:** `1:2:3:4:5:6:7:8 10:20:30:40:50:60:70:80` matches any requests arriving from either `1:2:3:4:5:6:7:8` or `10:20:30:40:50:60:70:80`.
-
--   The syntax for an IP address block is the base IP address followed by a forward slash and the prefix size.
-
-    -   **IPv4 Example:** `5.5.5.64/26` matches any requests arriving from `5.5.5.64` through `5.5.5.127`.
-    -   **IPv6 Example:** `1:2:3::0/48` matches any requests arriving from `1:2:3:0:0:0:0:0` through `1:2:3:ffff:ffff:ffff:ffff:ffff`.
-
-        <Callout type="info">
-
-          IPv6 address blocks should not be fully shortened. As shown in the above example, a trailing 0 is required when shortening fields that consist of 0's.
-
-        </Callout>
-
-#### Continent
-
-Identifies requests by the continent from which the request was issued.
-
-**Key information:**
-
--   Specify one or more continents using the following codes:
-    -   **AF:** Africa
-    -   **AS:** Asia
-    -   **EU:** Europe
-    -   **NA:** North America
-    -   **OC:** Oceania
-    -   **SA:** South and Central America
-    -   **?:** Unknown continent
-
--   Certain requests may not return a valid continent code. A question mark (i.e., ?) will match requests for which a valid continent code could not be determined.
--   Continent codes are case-sensitive.
-
-#### Cookie
-
-Identifies requests by a cookie's value.
-
-**Key information:**
-
--   Set the **Cookie Name** option to the exact name of the desired cookie. You may not use special characters, including an asterisk, or a regular expression.
--   Only a single cookie name may be specified per instance of this match condition.
--   Cookie name comparisons are case-insensitive.
-
-#### Country
-
-Identifies requests by the country from which the request was issued.
-
-**Key information:**
-
--   Specify a country through its country code.
--   The `EU` and `AP` country codes do not encompass all IP addresses in those regions.
--   Certain requests may not return a valid country code. A question mark (i.e., ?) will match requests for which a valid country code could not be determined.
--   Country codes are case-sensitive.
-
-#### Directory
-
-Identifies requests by the request URL's relative path. This relative path excludes the filename of the requested asset.
-
-**Key information:**
-
--   This relative path starts directly after the hostname.
--   A URL comparison ends right before the filename of the requested asset. A trailing forward slash is the last character in this type of path.
--   Certain characters require URL encoding. Use the percentage symbol to URL encode the following characters:
-
-    -   **SPACE:** %20
-    -   **&:** %26
-    -   **%:** %25
-
-#### DMA Code
-
-Identifies requests by the metro code (Designated Market Area - DMA) from which the request was issued.
-
-**Key information:**
-
--   Specify a metro code as an integer value.
--   Request DMA codes from Nielsen.
--   Metro codes are only applicable for traffic from the United States.
--   Certain requests may not return a valid metro code. A question mark (i.e., `?`) will match requests for which a valid metro code could not be determined.
-
-#### Dual Orientation
-
-Identifies requests by whether the device that issued the request supports dual orientation (i.e., portrait and landscape).
-
-#### Extensions
-
-Identifies requests by the file extension defined in the URL.
-
-This match condition looks for a URL that ends with a period (`.`) and the specified file extension. Therefore, make sure that any file extensions specified in the **Value** option do not contain a leading period.
-
-**Correct:** `htm`
-
-**Incorrect:** `.htm`
-
-#### Filename
-
-Identifies requests by the filename defined in the URL. 
-
-**Key information:**
-
--   For the purposes of this match condition, a filename consists of the name of the requested asset, a period, and the file extension (e.g., index.html). 
--   Replace spaces in the filename with %20.
-
-#### HTML Preferred DTD
-
-Identifies requests by a device's preferred document type definition (DTD) for HTML content (e.g., `html5`).
-
-#### Image Inlining
-
-Identifies requests by whether the device that issued the request supports Base64-encoded images.
-
-#### Is Android
-
-Identifies requests by whether the operating system of the device that issued the request is Android.
-
-#### Is App
-
-Identifies requests by whether the device that issued the request is a native application. 
-
-#### Is Full Desktop
-
-Identifies requests by whether the device that issued the request provides a full desktop experience.
-
-#### Is HTML Preferred
-
-TODO
-
-#### Is iOS
-
-Identifies requests by whether the operating system of the device that issued the request is iOS.
-
-#### Is Largescreen
-
-TODO
-
-#### Is Mobile
-
-TODO
-
-#### Is Robot
-
-Identifies requests by whether the device that issued the request is considered to be an automated HTTP client (e.g., a robot crawler).
-
-#### Is Smartphone
-
-Identifies requests by whether the device that issued the request is a smartphone.
-
-#### Is SmartTV
-
-Identifies requests by whether the device that issued the request is a smart TV.
-
-#### Is Tablet
-
-Identifies requests by whether the device that issued the request is a tablet. This is an OS-independent description.
-
-#### Is Touchscreen
-
-Identifies requests by whether the device that issued the request uses a touchscreen as the primary pointing device.
-
-#### Is Windows Phone
-
-Identifies requests by whether the device that issued the request is a Windows Mobile 6.5/Windows Phone 7 or higher.
-
-#### Is Wireless Device
-
-Identifies requests by whether the device that issued the request is a wireless device. 
-
-#### Is WML Preferred
-
-TODO
-
-#### Latitude
-
-Identifies requests by the latitude from which the request was issued.
-
-**Key information:**
-
--   Latitude is not precise. It returns the geographic coordinate for the postal code, city, region, or country associated with the IP address that submitted the request.
--   Specify latitude as a decimal value from 0 to 90. Preprend `-` for negative values.
-
-    **Example:** `33.9705`
-
--   Certain requests may not return a valid latitude. A question mark (i.e., `?`) will match requests for which a valid latitude could not be determined.
-
-#### Longitude
-
-Identifies requests by the longitude from which the request was issued.
-
-**Key information:**
-
--   Longitude is not precise. It returns the geographic coordinate for the postal code, city, region, or country associated with the IP address that submitted the request.
--   Specify longitude as a decimal value from 0 to 90. Preprend `-` for negative values.
-
-    **Example:** `-118.4308`
-
--   Certain requests may not return a valid longitude. A question mark (i.e., `?`) will match requests for which a valid longitude could not be determined.
-
-#### Marketing Name
-
-Identifies requests by the marketing name (e.g., `BlackBerry 8100 Pearl`) of the device that issued the request.
-
-#### Method
-
-Identifies requests by their HTTP method. Only assets that are requested using the selected request method will satisfy this condition.
-
-The available HTTP methods are: `GET | POST | PUT | DELETE | PATCH | HEAD | OPTIONS`
-
-<!---
-PATCH?
-Add TRACE and CONNECT?
---->
-
-#### Mobile Browser
-
-Identifies requests by the name of the browser (e.g., Chrome) that issued the request.
-
-#### Model Name
-
-Identifies requests by the model name (e.g., s7) of the device that issued the request.
-
-#### Operating System
-
-Identifies requests by the operating system (e.g., IOS) of the device that issued the request.
-
-#### Query
-
-TODO
-
-Identifies requests by the query string of the requested URL.
-
-**Key information:**
-
--   The value associated with this match condition will be compared against the entire request's query string.
--   For the purposes of this option, a query string starts with the first character after the question mark (?) delimiter for the query string. Therefore, the text specified in the **Value** option should not include a leading question mark (?).
--   Certain characters require URL encoding. Use the percentage symbol to URL encode the following characters:
-
-    -   **SPACE:** %20
-    -   **&:** %26
-    -   **%:** %25
-
--   Matching against URLs that contain non-US-ASCII characters requires that you specify encoded Unicode characters (e.g., `%E3%81%93`).
-    -   Encode all Unicode characters before setting the **Value** option. This match condition only accepts encoded Unicode characters.
-
-        **Example:**
-
-        You should include the following characters instead of こんにちは when defining this match condition's value: `%E3%81%93%E3%82%93%E3%81%AB%E3%81%A1%E3%81%AF`
-
-    -   The majority of user agents (e.g., web browsers) encode non-US-ASCII characters in the request's query string before submitting the request to our CDN. By default, our CDN service does not decode those characters.
-
-        <Callout type="tip">
-
-          Curl does not encode non-US-ASCII characters. If you would like to test this match condition using curl, then you will need to create a mutually exclusive match section (i.e., IF / ELSE IF). Each conditional expression within that statement should contain this match condition with the Encoded option set to different values.
-
-        </Callout>
-
-<!---
-TODO
-Use the Encoded option to determine whether your match value, as defined in the Value option, will be decoded prior to comparison with the request's query string. You must set this option to Yes when either of the following conditions are true:
-
-A URL normalization customization has been applied to your traffic.
-The request's query string contains encoded Unicode characters (e.g., %E3%81%93).
-
-Enabling this option ensures that your match value remains encoded.
-
-TODO
-If both of the above conditions are not applicable, then you should use the default configuration (i.e., No) which allows our service to decode your match value.
---->
-
-#### Origin Path
-
-TODO
-
-Identifies requests by the request URL's relative path.
-
-**Key information:**
-
--   This relative path starts directly after the hostname.
--   For the purpose of satisfying this condition, query strings in the URL are ignored.
--   Certain characters require URL encoding. Use the percentage symbol to URL encode the following characters:
-
-    -   **SPACE:** %20
-    -   **&:** %26
-    -   **%:** %25
-
--   Matching against URLs that contain non-US-ASCII characters requires that you specify encoded Unicode characters (e.g., `%E3%81%93`).
-    -   Encode all Unicode characters before setting the **Value** option. This match condition only accepts encoded Unicode characters.
-
-        **Example:**
-
-        You should include the following characters instead of こんにちは when defining this match condition's value: `%E3%81%93%E3%82%93%E3%81%AB%E3%81%A1%E3%81%AF`
-
-    -   The majority of user agents (e.g., web browsers) encode non-US-ASCII characters in the request's query string before submitting the request to our CDN. By default, our CDN service does not decode those characters.
-
-        <Callout type="tip">
-
-          Curl does not encode non-US-ASCII characters. If you would like to test this match condition using curl, then you will need to create a mutually exclusive match section (i.e., IF / ELSE IF). Each conditional expression within that statement should contain this match condition with the Encoded option set to different values.
-
-        </Callout>
-
-#### Query String
-
-TODO
-
-Identifies requests by the query string of the requested URL.
-
-**Key information:**
-
--   The value associated with this match condition will be compared against the entire request's query string.
--   For the purposes of this option, a query string starts with the first character after the question mark (?) delimiter for the query string. Therefore, the text specified in the **Value** option should not include a leading question mark (?).
--   Certain characters require URL encoding. Use the percentage symbol to URL encode the following characters:
-
-    -   **SPACE:** %20
-    -   **&:** %26
-    -   **%:** %25
-
--   Matching against URLs that contain non-US-ASCII characters requires that you specify encoded Unicode characters (e.g., `%E3%81%93`).
-    -   Encode all Unicode characters before setting the **Value** option. This match condition only accepts encoded Unicode characters.
-
-        **Example:**
-
-        You should include the following characters instead of こんにちは when defining this match condition's value: `%E3%81%93%E3%82%93%E3%81%AB%E3%81%A1%E3%81%AF`
-
-    -   The majority of user agents (e.g., web browsers) encode non-US-ASCII characters in the request's query string before submitting the request to our CDN. By default, our CDN service does not decode those characters.
-
-        <Callout type="tip">
-
-          Curl does not encode non-US-ASCII characters. If you would like to test this match condition using curl, then you will need to create a mutually exclusive match section (i.e., IF / ELSE IF). Each conditional expression within that statement should contain this match condition with the Encoded option set to different values.
-
-        </Callout>
-
-<!---
-TODO
-Use the Encoded option to determine whether your match value, as defined in the Value option, will be decoded prior to comparison with the request's query string. You must set this option to Yes when either of the following conditions are true:
-
-A URL normalization customization has been applied to your traffic.
-The request's query string contains encoded Unicode characters (e.g., %E3%81%93).
-
-Enabling this option ensures that your match value remains encoded.
-
-TODO
-If both of the above conditions are not applicable, then you should use the default configuration (i.e., No) which allows our service to decode your match value.
---->
-
-
-#### Path
-
-TODO
-
-Identifies requests by the request URL's relative path.
-
-**Key information:**
-
--   This relative path starts directly after the hostname.
--   For the purpose of satisfying this condition, query strings in the URL are ignored.
--   Certain characters require URL encoding. Use the percentage symbol to URL encode the following characters:
-
-    -   **SPACE:** %20
-    -   **&:** %26
-    -   **%:** %25
-
--   Matching against URLs that contain non-US-ASCII characters requires that you specify encoded Unicode characters (e.g., `%E3%81%93`).
-    -   Encode all Unicode characters before setting the **Value** option. This match condition only accepts encoded Unicode characters.
-
-        **Example:**
-
-        You should include the following characters instead of こんにちは when defining this match condition's value: `%E3%81%93%E3%82%93%E3%81%AB%E3%81%A1%E3%81%AF`
-
-    -   The majority of user agents (e.g., web browsers) encode non-US-ASCII characters in the request's query string before submitting the request to our CDN. By default, our CDN service does not decode those characters.
-
-        <Callout type="tip">
-
-          Curl does not encode non-US-ASCII characters. If you would like to test this match condition using curl, then you will need to create a mutually exclusive match section (i.e., IF / ELSE IF). Each conditional expression within that statement should contain this match condition with the Encoded option set to different values.
-
-        </Callout>
-
-
-#### Pointing Method
-
-TODO
-
-#### POP Code
-
-Identifies requests by the POP that processed the request.
-
-TODO - POP List
-
-#### Postal Code
-
-Identifies requests by the postal code from which the request was issued.
-
-#### Preferred Markup
-
-TODO
-
-#### Progressive Download
-
-TODO
-
-#### Query Parameter
-
-Identifies requests by the value assigned to a query string parameter in the request URL.
-
-**Key information:**
-
--   **Parameter name:**
-
-    -   Query parameter name comparisons are case-insensitive.
-    -   Replace spaces in the parameter name with %20.
-    -   Only query parameters whose name is an exact match to the specified value may satisfy this condition.
-
--   Parameter value:
-    -   Certain characters require URL encoding. Use the percentage symbol to URL encode the following characters:
-
-        -   **SPACE:** %20
-        -   **&:** %26
-        -   **%:** %25
-
-#### Random Integer
-
-TODO
-
-#### Referring Domain
-
-Identifies requests by referrer's hostname. A referrer's hostname is determined by the `Referer` header.
-
-#### Region Code
-
-Identifies requests by the code for the region (e.g., state or province) from which the request was issued.
-
-**Key information:**
-
--   Identify the desired region by its region code. A region code, which consists of 1 to 3 alphanumeric characters, identifies a subdivision of a country by the region segment of the corresponding ISO 3166-2 code.
-
-    [View ISO 3166-2 codes. (Wikipedia)](https://en.wikipedia.org/wiki/ISO_3166-2)
-
-    [View ISO 3166-2 codes. (UNECE)](http://www.unece.org/cefact/locode/subdivisions.html)
-
-    **Example:**
-
-    The ISO 3166-2 code for California is `US-CA`. Therefore, the region code for California is `CA`.
-
--   Certain regions have two levels of subdivisions. The specified value will be compared against the most specific region code.
-
-    **Example:**
-
-    A request that originates from the Devon (aka Devonshire) county of England, which is part of the United Kingdom (`UK`), has the following subdivisions: `GB` and `DEV`. Requests from this county will be matched against `DEV`.
-
--   Region codes are only unique within a country. In order to prevent false positives, we strongly recommend that you also add the Country match condition to your rule.
-
-    **Example:**
-
-    Requests from the following regions will report the same region code (i.e., `SP`).
-
-    -   São Paulo, Brazil (`BR-SP`)
-    -   La Spezia, Italy (`IT-SP`)
-    -   Sandy Point, Bahamas (`BS-SP`)
-
--   Certain requests may not return a valid region code. A question mark (i.e., `?`) will match requests for which a valid region code could not be determined.
-
-#### Release Date
-
-Identifies requests by the date on which the device that issued the request was added to the WURFL database.
-
-**Format:** `<YYYY>_<MM>`
-
-**Example:** `2022_december`
-
-#### Request Header
-
-Identifies requests by request header value.
-
-**Key information:**
-
--   **Header name:**
-
-    -   Header name comparisons are case-insensitive.
-    -   Replace spaces in the header name with `%20`.
-    -   Only request headers whose name is an exact match to the specified value may satisfy this condition.
-
--   **Header value:**
-    -   Replace spaces in the header value with `%20`.
-
-#### Resolution Height
-
-Identifies requests by the height, in pixels, of the device that issued the request.
-
-**Key information:**
-
--   Height must be specified in pixels. 
--   Height must be specified as a whole number.
-
-#### Resolution Width
-
-Identifies requests by the width, in pixels, of the device that issued the request.
-
-**Key information:**
-
--   Width must be specified in pixels. 
--   Width must be specified as a whole number.
-
-#### Scheme
-
-Identifies requests by their HTTP protocol: HTTP or HTTPS.
-
-#### UX Full Desktop
-
-TODO
-
-#### XHTML Support Level
-
-TODO
-
-## Features 
-
-Features are categorized as follows:
-
--   [Access](#access-features): Controls access to content.
--   [Caching](#caching-features): Customizes when and how content is cached.
--   [Client](#client-features): Controls how the client communicates with our CDN.
+A feature identifies an action that will be applied to a request. Features are categorized as follows:
+
+-   [Access](#access): Controls access to content.
+-   [Caching](#caching): Customizes when and how content is cached.
+-   [Client](#client): Controls how the client communicates with our CDN.
 -   **Comment:** Adds a note or metadata to your configuration. This feature is solely informational and does not affect your configuration.
--   [Headers](#headers-features): Adds, modifies, or deletes headers from the request or response.
--   [Logs](#logs-features): Customizes how log data is stored.
--   [Origin](#origin-features): Controls how the CDN communicates with an origin server.
--   [Response](#response-features): Customizes the response sent to the client and determines whether we will allow prefetching instructions to be sent to the client.
+-   [Headers](#headers): Adds, modifies, or deletes headers from the request or response.
+-   [Log](#log): Customizes how log data is stored.
+-   [Origin](#origin): Controls how the CDN communicates with an origin server.
+-   [Response](#response): Customizes the response sent to the client and determines whether we will allow prefetching instructions to be sent to the client.
 -   [Set Variables](#set-variables): Assigns a value to one or more user-defined variable(s) that are  passed to your bespoke traffic processing solution.
 -   [URL](#url): Redirects or rewrites requests to a different URL.
 
-### Access Features {/*access-features*/}
+## Access {/*access*/}
 
 Access features control access to content.
 
@@ -582,8 +25,9 @@ Determines whether requests are rejected with a `403 Forbidden` response.
 
 **Default Behavior:** false
 
-<!---
-**CDN-as-Code (EdgeJS):** 
+{/* @edgejs
+
+**Property:** 
 
 ```js
 "deny_access": Boolean
@@ -599,7 +43,8 @@ new Router()
     }
   })
 ```
---->
+
+*/}
 
 #### Token Auth  {/*token-auth*/}
 
@@ -613,7 +58,7 @@ Determines whether Token-Based Authentication will be applied to a request.
 
 **Default Behavior:** false
 
-<!---
+{/* @edgejs
 **CDN-as-Code (EdgeJS):** 
 
 ```js
@@ -630,7 +75,7 @@ new Router()
     }
   })
 ```
---->
+*/}
 
 #### Token Auth Denial Code {/*token-auth-denial-code*/}
 
@@ -644,7 +89,7 @@ Determines the type of response that will be returned to a user when a request i
 
 **Default Behavior:** By default, requests denied by Token-Based Authentication return a `403 Forbidden` response.
 
-<!---
+{/* @edgejs
 **CDN-as-Code (EdgeJS):** 
 
 ```js
@@ -688,7 +133,7 @@ new Router()
     }
   })
 ```
---->
+*/}
 
 
 #### Token Auth Ignore 	URL Case {/*token-auth-ignore-url-case*/}
@@ -701,15 +146,15 @@ Determines whether URL comparisons made by the following Token-Based Authenticat
 
 **Default Behavior:** false
 
-<!---
+{/* @edgejs
 
 ```js
 "token_auth_ignore_url_case": true,
 ```
 
---->
+*/}
 
-### Caching {/*caching*/}
+## Caching {/*caching*/}
 
 Caching features customize when and how content is cached.
 
@@ -726,7 +171,7 @@ This feature also allows bandwidth throttling to be customized on a per request 
 
 **Default Behavior:** By default, our CDN does not throttle requests.
 
-<!---
+{/* @edgejs
 
 ```js
 "bandwidth_throttling": {
@@ -735,7 +180,7 @@ This feature also allows bandwidth throttling to be customized on a per request 
 }
 ```
 
---->
+*/}
 
 #### Bypass Cache {/*bypass-cache*/}
 
@@ -743,13 +188,13 @@ Determines whether our CDN will honor your caching policy when determining wheth
 
 **Default Behavior:** false
 
-<!---
+{/* @edgejs
 
     ```js
     "bypass_cache": true,
     ```
 
---->
+*/}
 
 #### Bypass Client Cache {/*bypass-client-cache*/}
 
@@ -766,13 +211,13 @@ Determines whether our CDN will instruct the client to bypass cache.
 
 **Default Behavior:** false
 
-<!---
+{/* @edgejs
 
 ```js
 "bypass_client_cache": true,
 ```
 
---->
+*/}
 
 #### Cache Control Header Treatment {/*cache-control-header-treatment*/}
 
@@ -807,13 +252,13 @@ Valid values are:
 
 **Default Behavior:** Overwrite
 
-<!---
+{/* @edgejs
 
 ```js
 "cache_control_header_treatment": "pass",
 ```
 
---->
+*/}
 
 #### Cache Key Query String {/*cache-key-query-string*/}
 
@@ -835,7 +280,7 @@ Include or exclude all query string parameters through the `Include All` or `Exc
 
 -   **Include All Except:** Contains the set of parameter(s) will be excluded from the cache-key. All other query string parameters will be included in the cache-key.
 
-<!---
+{/* @edgejs
 **CDN-as-Code (EdgeJS):** 
 
 ```js
@@ -872,7 +317,7 @@ new Router()
     }
   })
 ```
---->
+*/}
 
 #### Cacheable Request Body Size {/*cacheable-request-body-size*)
 
@@ -893,11 +338,11 @@ Restricts caching to requests whose body does not exceed the specified file size
 
 **Default Behavior:** 14 Kb
 
-<!---
+{/* @edgejs
     ```js
     "cacheable_request_body_size": 12,
     ```
---->
+*/}
 
 #### Cacheable Status Codes {/*cacheable-status-codes*/}
 
@@ -908,18 +353,18 @@ Defines the set of status codes that can result in cached content.
 -   Caching non-`200 OK` response also requires enabling the `Ignore Origin No Cache` feature. 
 -   This feature cannot be used to disable caching for responses that generate a `200 OK` status code.
 
-<!---
+{/* @edgejs
     -   The set of valid status codes for this feature are:
         `200 | 203 | 300 | 301 | 302 | 305 | 307 | 400 | 401 | 402 | 403 | 404 | 405 | 406 | 407 | 408 | 409 | 410 | 411 | 412 | 413 | 414 | 415 | 416 | 417 | 429 | 451 | 500 | 501 | 502 | 503 | 504 | 505`
---->
+*/}
 
 **Default Behavior:** By default, caching is restricted to responses that generate a `200 OK` status code.
 
-<!---
+{/* @edgejs
     ```js
     "cacheable_status_codes": [300, 301, 302],
     ```
---->
+*/}
 
 
 #### Client Max Age {/*client-max-age*/}
@@ -936,11 +381,14 @@ Enabling this feature will generate `Cache-Control:max-age` and `Expires` header
 
 **Default Behavior:** The `Cache-Control` / `Expires` headers cached with the response of the origin server will pass through to the browser.
 
-<!---
-    ```js
-    "client_max_age": "10h",
-    ```
---->
+{/* @edgejs
+
+**Example:** 
+
+```js
+"client_max_age": "10h",
+```
+*/}
 
 #### Enable Caching for Methods {/*enable-caching-for-methods*/}
 
@@ -960,11 +408,11 @@ Determines whether `POST` and `PUT` requests are eligible for caching on our net
 
 **Default Behavior:** By default, only `GET` requests are eligible for caching.
 
-<!---
+{/* @edgejs
     ```js
     "enable_caching_for_methods": ["POST", "PUT"],
     ```
---->
+*/}
 
 #### Expires Header Treatment {/*expires-header-treatment*/}
 
@@ -999,11 +447,11 @@ Valid values are:
 
 **Default Behavior:** Overwrite
 
-<!---
+{/* @edgejs
     ```js
     "expires_header_treatment": 'if_missing',
     ```
---->
+*/}
 
 
 #### Enable H264 encoding {/*enable-h264-encoding*/}
@@ -1022,11 +470,11 @@ Determines the types of H.264 file formats that may be used when streaming conte
 
 **Default Behavior:** By default, HTTP Progressive Download supports MP4 and F4V file extensions.
 
-<!---
+{/* @edgejs
     ```js
     "h264_support": [".mp4", ".f4v"],
     ```
---->
+*/}
 
 -   **h264_support_video_seek_params (*Object*):** <a id="h264-support-video-seek-params" /> Overrides the names assigned to parameters that control seeking through H.264 media when using HTTP Progressive Download. Set the following properties:
 
@@ -1079,11 +527,11 @@ Determines on a per HTTP status code basis whether our CDN will ignore cache dir
 
 **Default Behavior:** The default behavior is to honor the above directives.
 
-<!---
+{/* @edgejs
     ```js
     "ignore_origin_no_cache": [200, 300, 301],
     ```
---->
+*/}
 
 #### Ignore Unsatisfiable Ranges {/*ignore-unsatisfiable-ranges*/}
 
@@ -1093,11 +541,11 @@ Enabling this feature prevents our edge servers from responding to an invalid by
 
 **Default Behavior:** The default behavior is to honor the `416 Requested Range Not Satisfiable` status code.
 
-<!---
+{/* @edgejs
     ```js
     "ignore_unsatisfiable_ranges": true,
     ```
---->
+*/}
 
 #### Max Age{/*max-age*/}
 
@@ -1121,11 +569,11 @@ Determines whether cached content will be eligible for early revalidation before
 
 **Default Behavior:** Revalidation may only take place after the cached content's TTL has expired.
 
-<!---
+{/* @edgejs
     ```js
     "prevalidate_cached_content": "10m",
     ```
---->
+*/}
 
 #### Refresh Zero Byte Cache Files {/*refresh-zero-byte-cache-files*/}
 
@@ -1141,11 +589,11 @@ Enabling this feature causes our edge server to re-fetch the asset from the orig
 
 **Default Behavior:** The default behavior is to serve valid cache assets upon request.
 
-<!---
+{/* @edgejs
     ```js
     "refresh_zero_byte_cache_files": true,
     ```
---->
+*/}
 
 #### Rewrite Cache Key {/*rewrite-cache-key*/}
 
@@ -1169,14 +617,14 @@ Rewrites the cache-key associated with a request. Pass the following properties:
 
 **Default Behavior:** By default, a request's cache-key is determined by the request URI's relative path.
 
-<!---
+{/* @edgejs
     ```js
     "cache_key_rewrite": {
 		"source": "/marketing/images/(.*)",
 		"destination": "/images/$1"
     }
     ```
---->
+*/}
 
 #### Revalidate After Origin Unavailable {/*revalidate-after-origin-unavailable*/}
 
@@ -1211,11 +659,11 @@ Determines how often, in seconds, the system will attempt to connect to an unava
 
 **Default Behavior:** By default, our CDN will not attempt to connect to your origin server while it is in stale mode.
 
-<!---
+{/* @edgejs
     ```js
     "revalidate_while_stale_timer": 200,
     ```
---->
+*/}
 
 #### Stale On Error {/*stale-on-error*/}
 
@@ -1237,13 +685,13 @@ Improves performance by allowing our edge servers to serve stale content while r
 
 **Default Behavior:** Revalidation must take place before the requested content can be served.
 
-<!---
+{/* @edgejs
     ```js
     "stale_while_revalidate": "10m",
     ```
 
 
-### Client
+## Client
 
 Client features control how the client communicates with our CDN.
 
@@ -1260,9 +708,9 @@ Client features control how the client communicates with our CDN.
     ```
 
     **Default Behavior:** By default, our CDN is agnostic with regards to the `alt-svc` response header.
---->
+*/}
 
-### Header
+## Header
 
 Header features add, modify, or delete headers from the request or response.
 
@@ -1293,7 +741,7 @@ Adds one or more header(s) from the response. If the header already exists in th
     -   warning 
     -   All header names that start with "x-ec" are reserved.
 
-<!---
+{/* @edgejs
     The following example sets or appends `basketball` to the `sports` response header:
 
     ```js
@@ -1301,7 +749,7 @@ Adds one or more header(s) from the response. If the header already exists in th
 		"sports": "basketball"
     },
     ```
---->
+*/}
 
 #### Debug Header {/*debug-header*/}
 
@@ -1322,11 +770,11 @@ Our CDN returns debug cache response headers when both of the following are true
 
 **Default Behavior:** By default, the response excludes debug cache response headers.
 
-<!---
+{/* @edgejs
     ```js
     "debug_header": true,
     ```
---->
+*/}
 
 #### Set Request Headers {/*set-request-headers*/}
 
@@ -1351,7 +799,7 @@ Sets or deletes one or more header(s) from a request. When setting a request hea
     -   x-forwarded-for
     -   All header names that start with "x-ec" are reserved.
 
-<!---
+{/* @edgejs
 The following example:
 -   Sets the `sports` request header to `basketball` regardless of whether it was previously set to another value. 
 -   Appends ` ott` to the `broadcast` header's value. For example, if it were set to `network`, then the new value after this feature has been applied will be `network ott`.
@@ -1362,7 +810,7 @@ The following example:
 		"+broadcast": " ott"
     },
     ```
---->
+*/}
 
 #### Set Response Headers {/*set-response-headers*/}
 
@@ -1395,7 +843,7 @@ Sets or deletes one or more header(s) from the response. When setting a response
     -   warning 
     -   All header names that start with "x-ec" are reserved.
 
-<!---
+{/* @edgejs
     The following example:
     -   Sets the `sports` response header to `basketball` regardless of whether it was previously set to another value. 
     -   Appends ` ott` to the `broadcast` header's value. For example, if it were set to `network`, then the new value after this feature has been applied will be `network ott`.
@@ -1432,7 +880,7 @@ Sets or deletes one or more header(s) from the response. When setting a response
     ```
 
     **Default Behavior:** By default, a client's IP address is not logged within a custom request header. However, it is always logged within the `X-Forwarded-For` request header.
---->
+*/}
 
 #### Remove Origin Response Headers {/*remove-origin-response-headers*/}
 
@@ -1444,11 +892,11 @@ Deletes one or more header(s) from the response provided by an origin server.
 -   Use alphanumeric characters, dashes, or underscores when specifying a header name.
 -   Our service adds a set of reserved headers to each response. Although this feature removes a header from the response provided by the origin server, it does not affect whether our service will add a reserved header to the response. 
 
-<!---
+{/* @edgejs
     ```js
     "remove_origin_response_headers": ["city", "state", "zipcode"],
     ```
---->
+*/}
 
 #### Remove Response Headers {/*remove-response-headers*/}
 
@@ -1475,7 +923,7 @@ Deletes one or more header(s) from a response.
     -   warning 
     -   All header names that start with "x-ec" are reserved.
 
-<!---
+{/* @edgejs
     ```js
     "remove_response_headers": ["city", "state", "zipcode"],
     ```
@@ -1491,9 +939,9 @@ Deletes one or more header(s) from a response.
     ```
 
     **Default Behavior:** By default, the response will not include a `Server-Timing` header.
---->
+*/}
 
-### Log
+## Log
 
 Log features customize how log data is stored.
 
@@ -1562,48 +1010,77 @@ This feature masks a client's subnet by:
 
 **Default Behavior:** By default, the system logs a client's IP address without masking.
 
-<!---
+{/* @edgejs
     ```js
     "mask_client_subnet": true,
     ```
 
-### Origin
+## Origin
 
 Origin features control how the CDN communicates with an origin server.
 
+#### Max Keep-Alive Requests {/*max-keep-alive-requests*/}
 
+Defines the maximum number of requests for a `Keep-Alive` connection before it is closed. 
 
--   **max_keep_alive_requests (*Integer*):** <a id="max-keep-alive-requests" /> Defines the maximum number of requests for a `Keep-Alive` connection before it is closed. 
+**Key information:**
 
-    **Key information:**
+-   Specify this value as a whole integer. Do not include commas or periods in the specified value.
+-   Setting the maximum number of requests to a low value is strongly discouraged and may result in performance degradation.
 
-    -   Specify this value as a whole integer. Do not include commas or periods in the specified value.
-    -   Setting the maximum number of requests to a low value is strongly discouraged and may result in performance degradation.
+{/* @edgejs
 
-    **Example:** 
+**Example:** 
 
-    ```js
-    "max_keep_alive_requests": 12000,
-    ```
+```js
+"max_keep_alive_requests": 12000,
+```
 
-    **Default Behavior:** 10,000 requests
+*/}
 
+**Default Behavior:** 10,000 requests
 
--   **proxy_special_headers (*Array of string values*):** <a id="proxy-special-headers" /> Defines the set of CDN-specific request headers that will be forwarded from an edge server to an origin server. 
+#### Proxy Special Headers {/*proxy-special-headers*/}
 
-    **Key information:**
+Defines the set of CDN-specific request headers that will be forwarded from an edge server to an origin server. 
 
-    -   Each CDN-specific request header defined in this feature will be forwarded to an origin server.
-    -   Prevent a CDN-specific request header from being forwarded to an origin server by removing it from this list.
+**Key information:**
 
-    **Example:** 
+-   Assign a value by typing it and then pressing 'ENTER'. Repeat this step as needed.
+-   Each CDN-specific request header defined in this feature will be forwarded to an origin server.
+-   Prevent a CDN-specific request header from being forwarded to an origin server by removing it from this list.
 
-    ```js
-    "proxy_special_headers": ["X-Forwarded-For","X-Host","X-EC-Tag"]
-    ```
+{/* @edgejs
 
-    **Default Behavior:** By default, all CDN-specific request headers are forwarded to the origin server.
---->
+**Example:** 
+
+```js
+"proxy_special_headers": ["X-Forwarded-For","X-Host","X-EC-Tag"]
+```
+
+*/}
+
+**Default Behavior:** By default, all CDN-specific request headers are forwarded to the origin server.
+
+#### Set Origin {/*set-origin*/}
+
+Defines the origin configuration to which requests will be forwarded when they cannot be served from cache.
+
+{/* @edgejs
+
+```js
+"set_origin": string
+```
+
+**Example:** 
+
+```js
+"set_origin": "marketing"
+```
+
+*/}
+
+**Default Behavior:** By default, requests that are not served from cache are served through either Serverless Compute or the origin configuration mapped to the request's hostname. 
 
 ### Response
 
@@ -1619,11 +1096,13 @@ Defines the set of media types (aka content type) that are eligible for edge ser
 -   Certain types of content, such as images, video, and audio media assets (e.g., JPG, MP3, MP4, etc.), are already compressed. Additional compression on these types of assets will not significantly diminish file size. Therefore, the compression of these types of assets is not recommended.
 -   Wildcard characters, such as asterisks, are not supported.
 
-<!---
-    ```js
-    "compress_content_types": ["text/plain", "text/html", "text/css"],
-    ```
---->
+{/* @edgejs
+
+```js
+"compress_content_types": ["text/plain", "text/html", "text/css"],
+```
+
+*/}
 
 #### Allow Prefetching of Uncached Content {/*allow-prefetching-of-uncached-content*/}
 
@@ -1631,11 +1110,11 @@ Determines whether prefetching will be allowed for cache misses.
 
 **Default Behavior:** By default, prefetching is allowed for cache misses.
 
-<!---
+{/* @edgejs
     ```js
     "disable_prefetching_uncached_content": true
     ```
---->
+*/}
 
 #### Set Done {/*set-done*/}
 
@@ -1649,13 +1128,13 @@ Omitting this feature allows:
 
 **Default Behavior:** By default, cache misses are forwarded to an origin server or to Serverless Compute. Additionally, responses are cached according to your caching policy.
 
-<!---
+{/* @edgejs
     ```js
     "set_status_code": 200,
     "set_response_body": "<!DOCTYPE html><title>hi</title>",
     "set_done": true
     ```
---->
+*/}
 
 #### Set Response Body {/*set-response-body*/}
 
@@ -1669,11 +1148,11 @@ Defines a custom response body.
 
 **Default Behavior:** By default, our CDN does not alter the response body sent to the client.
 
-<!---
+{/* @edgejs
     ```js
     "set_response_body": "<!DOCTYPE html><title>hi</title>",
     ```
---->
+*/}
 
 #### Set Status Code {/*set-status-code*/}
 
@@ -1681,11 +1160,11 @@ Defines the HTTP status code for the response sent to the client.
 
 **Default Behavior:** By default, the HTTP status code indicates how the request was handled. 
 
-<!---
+{/* @edgejs
     ```js
     "set_status_code": 200,
     ```
---->
+*/}
 
 ### Set Variables {/*set-variables*/}
 
@@ -1715,14 +1194,14 @@ This feature assigns a value to one or more user-defined variable(s) that are  p
 
 **Default Behavior:** By default, our CDN does not pass user variables. 
 
-<!---
+{/* @edgejs
     ```js
     "set_variables": {
 		"traffic": "standard",
 		"event": "basketball"
     },
     ```
---->
+*/}
 
 ### URL
 
@@ -1740,11 +1219,11 @@ Determines whether requests may be redirected to the hostname defined in the `Lo
 
 **Default Behavior:** By default, our edge servers will not follow the redirect defined in the `Location` response header returned by an origin server.
 
-<!---
+{/* @edgejs
     ```js
     "follow_redirects": true,
     ```
---->
+*/}
 
 #### URL Redirect {/*url-redirect*/}
 
@@ -1819,7 +1298,7 @@ This feature allows our edge servers to rewrite the URL without performing a tra
 
 **Default Behavior:** By default, requests are not rewritten.
 
-<!---
+{/* @edgejs
 ```js
 "url_rewrite": [{
 "regex_rewrite_params": {
@@ -1828,7 +1307,7 @@ This feature allows our edge servers to rewrite the URL without performing a tra
 "syntax": "path-to-regexp"
 }]
 ```
---->
+*/}
 
 ### HTTP Variables
 

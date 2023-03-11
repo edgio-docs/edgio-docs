@@ -50,7 +50,7 @@ For example, the following rule applies a caching policy to all `GET` requests w
 
 A condition identifies a set of requests. Setting up a condition requires:
 
-1.  Selecting the [type of condition](/guides/performance/rules/conditions_and_features#conditions).
+1.  Selecting the [type of condition](/guides/performance/rules/conditions).
 
     For example, you may identify requests by HTTP method, path, or request headers.
 
@@ -63,7 +63,7 @@ Identify all GET requests through the following condition:
 -   **Operator:** Equals
 -   **Match Value:** GET
 
-[Learn more about types of conditions.](/guides/performance/rules/conditions_and_features#conditions)
+[Learn more about types of conditions.](/guides/performance/rules/conditions)
 
 #### Operators
 
@@ -170,16 +170,16 @@ An operator determines when a request satisfies a condition by defining the rela
 
 A feature determines how requests will be processed. They are categorized as follows:
 
--   [Access](/guides/performance/rules/conditions_and_features#access-features): Controls access to content.
--   [Caching](/guides/performance/rules/conditions_and_features#caching-features): Customizes when and how content is cached.
--   [Client](/guides/performance/rules/conditions_and_features#client-features): Controls how the client communicates with our CDN.
+-   [Access](/guides/performance/rules/features#access): Controls access to content.
+-   [Caching](/guides/performance/rules/features#caching): Customizes when and how content is cached.
+-   [Client](/guides/performance/rules/features#client): Controls how the client communicates with our CDN.
 -   **Comment:** Adds a note or metadata to your configuration. This feature is solely informational and does not affect your configuration.
--   [Headers](/guides/performance/rules/conditions_and_features#headers-features): Adds, modifies, or deletes headers from the request or response.
--   [Logs](/guides/performance/rules/conditions_and_features#logs-features): Customizes how log data is stored.
--   [Origin](/guides/performance/rules/conditions_and_features#origin-features): Controls how the CDN communicates with an origin server.
--   [Response](/guides/performance/rules/conditions_and_features#response-features): Customizes the response sent to the client and determines whether we will allow prefetching instructions to be sent to the client.
--   [Set Variables](/guides/performance/rules/conditions_and_features#set-variables): Assigns a value to one or more user-defined variable(s) that are  passed to your bespoke traffic processing solution.
--   [URL](/guides/performance/rules/conditions_and_features#url): Redirects or rewrites requests to a different URL.
+-   [Headers](/guides/performance/rules/features#headers): Adds, modifies, or deletes headers from the request or response.
+-   [Logs](/guides/performance/rules/features#logs): Customizes how log data is stored.
+-   [Origin](/guides/performance/rules/features#origin): Controls how the CDN communicates with an origin server.
+-   [Response](/guides/performance/rules/features#response): Customizes the response sent to the client and determines whether we will allow prefetching instructions to be sent to the client.
+-   [Set Variables](/guides/performance/rules/features#set-variables): Assigns a value to one or more user-defined variable(s) that are  passed to your bespoke traffic processing solution.
+-   [URL](/guides/performance/rules/features#url): Redirects or rewrites requests to a different URL.
 
 ##  Rule Precedence
 

@@ -1082,7 +1082,7 @@ Defines the origin configuration to which requests will be forwarded when they c
 
 **Default Behavior:** By default, requests that are not served from cache are served through either Serverless Compute or the origin configuration mapped to the request's hostname. 
 
-### Response
+## Response
 
 Response features manipulate the response sent to the client.
 
@@ -1166,7 +1166,7 @@ Defines the HTTP status code for the response sent to the client.
     ```
 */}
 
-### Set Variables {/*set-variables*/}
+## Set Variables {/*set-variables*/}
 
 This feature assigns a value to one or more user-defined variable(s) that are  passed to your bespoke traffic processing solution. Define each desired variable as a key-value pair. 
 
@@ -1203,7 +1203,7 @@ This feature assigns a value to one or more user-defined variable(s) that are  p
     ```
 */}
 
-### URL
+## URL
 
 URL features redirect or rewrite requests to a different URL.
 
@@ -1309,7 +1309,7 @@ This feature allows our edge servers to rewrite the URL without performing a tra
 ```
 */}
 
-### HTTP Variables
+## HTTP Variables
 
 HTTP variables retrieves request and response metadata. Use this metadata to dynamically alter a request or a response.
 
@@ -1322,7 +1322,7 @@ The following features support HTTP variables:
 -   [url_redirect](#url-redirect)
 -   [url_rewrite](#url-rewrite)
 
-#### Definitions
+### Definitions
 
 HTTP variables are described below.
 
@@ -1542,7 +1542,7 @@ HTTP variables are described below.
 
     **Sample Value:** `TLSv1.2`
 
-#### Usage
+### Usage
 
 HTTP variables support the following syntax:
 
@@ -1665,7 +1665,7 @@ Variables can be manipulated in the following ways:
 -   Expanding substrings
 -   Removing patterns
 
-##### Substring Expansion
+#### Substring Expansion
 
 By default, a variable will expand to its full value. Use the following syntax to only expand a substring of the variable's value:
 
@@ -1694,7 +1694,7 @@ The following string demonstrates various methods for manipulating variables:
 Based on the sample request URL, the above variable manipulation will produce the following value:
 `https://www.mydomain.com/mobile/marketing/proposal.htm`
 
-##### Pattern Removal
+#### Pattern Removal
 
 Text that matches a specific pattern can be removed from either the beginning or the end of a variable's value. 
 -   Remove text when the specified pattern is found at the beginning of a variable's value.
@@ -1705,7 +1705,7 @@ Text that matches a specific pattern can be removed from either the beginning or
 
     `%{<VARIABLE>%<PATTERN>}`
 
-##### Find And Replace
+#### Find And Replace
 
 Find and replace syntax is described below.
 

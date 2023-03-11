@@ -66,8 +66,12 @@
           "path": "performance/rules",
           "routes": [
             {
-              "title": "Conditons and Features",
-              "path": "performance/rules/conditions_and_features"
+              "title": "Conditions",
+              "path": "performance/rules/conditions"
+            },
+            {
+              "title": "Features",
+              "path": "performance/rules/features"
             }
           ]
         },

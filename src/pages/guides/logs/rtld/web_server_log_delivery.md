@@ -4,6 +4,12 @@ title: Log Delivery Setup
 
 PLACEHOLDER
 
+-   Log fields vary by RTLD module: [RTLD CDN](/guides/logs/rtld/log_fields_rtld_cdn) | [RTLD Rate Limiting](/guides/logs/rtld/log_fields_rtld_rate_limiting) | [RTLD WAF](/guides/logs/rtld/log_fields_rtld_waf)
+
+
+Learn more: [RTLD CDN](Log-Fields.htm) | [RTLD Rate Limiting](Log-Fields-RTLD-Rate-Limiting.htm) | [RTLD WAF](Log-Fields-RTLD-WAF.htm)
+
+
 ## Quick Start
 
 PLACEHOLDER
@@ -15,22 +21,114 @@ PLACEHOLDER
     -   [Datadog](#datadog-log-delivery)
     -   [Google Cloud Storage](#google-cloud-storage-log-delivery)
     -   [New Relic](#new-relic-log-delivery)
-    -   [Splunk Enteprise](#splunk-enterprise-log-delivery)
+    -   [Splunk Enterprise](#splunk-enterprise-log-delivery)
     -   [Sumo Logic](#sumo-logic-log-delivery)
     -   [Web Server (HTTP POST)](#web-server-log-delivery)
 
 2.  [Create a log delivery profile](#managing-log-delivery-profiles) for your destination.
 
-## Web Server Log Delivery {/*web-server-log-delivery*/}
+## AWS S3 {/*aws-s3-log-delivery*/}
 
-RTLD may automatically deliver compressed log data to a web server by submitting HTTPS `POST` requests to it. The body for each of these requests will be a JSON or CSV document that uniquely identifies a set of log data and describes one or more log entries.
+RTLD may automatically deliver compressed log data to an AWS S3 bucket by submitting HTTPS PUT requests to it. Each request adds an object to the bucket. This object contains a compressed JSON or CSV document that uniquely identifies a set of log data and describes one or more log entries.
 
 
 **Key information:**
 
--   Log fields vary by RTLD module: [RTLD CDN](/guides/logs/rtld/log_fields_rtld_cdn) | [RTLD Rate Limiting](/guides/logs/rtld/log_fields_rtld_rate_limiting) | [RTLD WAF](/guides/logs/rtld/log_fields_rtld_waf)
+-   RTLD applies gzip compression to log data. AWS S3 stores compressed log data as an object with a gz file extension.
+    
+    [Learn more.](#NamingConvention)
+    
+-   AWS S3 may automatically decompress files downloaded via the S3 Management Console into JSON or CSV files. No additional decompression is required to process this data.
+-   RTLD requires a [bucket policy](#bucketpolicy) that authorizes our service to upload content to your bucket.
+-   If you have enabled server-side encryption on the desired AWS S3 bucket, then you must also enable default bucket encryption. Otherwise, RTLD will be unable to post log data to that bucket.
+    
+    RTLD does not include Amazon-specific encryption headers when posting log data to your bucket.
+    
+    [View AWS documentation on default bucket encryption.](https://docs.aws.amazon.com/AmazonS3/latest/userguide/default-bucket-encryption.html)
 
--   RTLD applies gzip compression to log data. Each HTTPS `POST` request includes a `Content-Encoding` header set to `gzip`.
+    <a id="aws-s3-prefix" />
+
+-   You must define a prefix when setting up a log delivery profile. This prefix defines a virtual log file storage location and/or a prefix that will be added to each object added to your bucket.
+    
+        *   A prefix should not start with a forward slash.
+        *   A forward slash within the specified prefix is interpreted as a delimiter for a virtual directory.
+        *   A trailing forward slash means that the specified value only defines a virtual directory path within your AWS S3 bucket where logs will be stored. If the specified value ends in a character other than a forward slash, then the characters specified after the forward slash will be prepended to the file name for each log file uploaded to AWS S3.
+        
+        **Sample prefix:** `logs/CDN/siteA\_`
+        
+        The above prefix will store log files in the following virtual directory: `/logs/CDN`
+        
+        The file name for each log file uploaded to AWS S3 will start with `siteA\_`.
+        
+        **Sample log file name:** `siteA\_adn\_0001\_123\_20220111\_50550000F98AB95B\_1.json`
+
+**To prepare AWS S3 for log delivery**
+
+1.  Create or identify an AWS S3 bucket to which log data will be posted.
+    
+    [View AWS documentation on how to create a bucket.](https://docs.aws.amazon.com/AmazonS3/latest/user-guide/create-bucket.html)
+    
+2.  Apply the following bucket policy to the AWS S3 bucket identified in step 1. This bucket policy authorizes our service to upload content to your bucket.
+    
+    [View AWS documentation on how to add a bucket policy.](http://docs.aws.amazon.com/AmazonS3/latest/user-guide/add-bucket-policy.html)
+    
+    {
+    	"Version": "2012-10-17",
+    	"Statement": \[{
+    			"Sid": "CDNRealTimeLogDelivery",
+    			"Effect": "Allow",
+    			"Principal": {
+    				"AWS": "arn:aws:iam::638349102478:user/real-time-log-delivery"
+    			},
+    			"Action": \[
+    				"s3:PutObject",
+    				"s3:GetBucketLocation",
+    				"s3:PutObjectTagging",
+    				"s3:PutObjectACL"
+    			\],
+    			"Resource": \[
+    				"arn:aws:s3:::Bucket-Name",
+    				"arn:aws:s3:::Bucket-Name/\*"
+    			\]
+    		}
+    	\]
+    }
+    
+    Replace the term "_Bucket-Name_" in lines 16 and 17 with the name of the AWS S3 bucket to which this policy is being applied.
+    
+3.  If you have enabled server-side encryption on the AWS S3 bucket identified in step 1, then you must also enable default bucket encryption.
+    
+    [View AWS documentation on default bucket encryption.](https://docs.aws.amazon.com/AmazonS3/latest/userguide/default-bucket-encryption.html)
+    
+4.  Optional. Set up AWS to process the log data that will be posted to it.
+    
+    Example:
+    
+    Leverage [AWS Lambda](https://aws.amazon.com/documentation/lambda/) to mine specific data from log entries.
+    
+5.  [Create a log delivery profile](#managing-log-delivery-profiles) for AWS S3.
+
+## Azure Blob Storage {/*azure-blob-storage-log-delivery*/}
+
+## Datadog {/*datadog-log-delivery*/}
+
+## Google Cloud Storage {/*google-cloud-storage-log-delivery*/}
+
+## New Relic {/*new-relic-log-delivery*/}
+
+## Splunk Enterprise {/*splunk-enterprise-log-delivery*/}
+
+## Sumo Logic {/*sumo-logic-log-delivery*/}
+
+## Web Server Log Delivery {/*web-server-log-delivery*/}
+
+RTLD may automatically deliver compressed log data to a web server by submitting HTTPS `POST` requests to it. The body for each of these requests will be a JSON or CSV document that uniquely identifies a set of log data and describes one or more log entries.
+
+<Callout type="info">
+
+  RTLD applies gzip compression to log data. Each HTTPS `POST` request includes a `Content-Encoding` header set to `gzip`.
+
+</Callout>
 
 <a id="prepare-web-servers-for-log-delivery" />
 
@@ -61,7 +159,7 @@ RTLD may automatically deliver compressed log data to a web server by submitting
     
     **Example:** Create a listener for HTTPS `POST` requests that mines specific data from log entries.
 
-4.  Create a log delivery profile.
+4.  [Create a log delivery profile](#managing-log-delivery-profiles) for HTTP `POST`.
 
 ## Managing Log Delivery Profiles {/*managing-log-delivery-profiles*/}
 
@@ -88,6 +186,15 @@ TODO: Info about setting up destination.
 4.  Define how RTLD will communicate with your destination.
 
     -   [AWS S3](#aws-s3-log-delivery)
+
+        1.  Set the **Bucket** option to the name of the AWS S3 bucket to which log data will be posted.
+
+        2.  Optional. Set the **Prefix** option to the desired prefix that defines a virtual log file storage location and/or a prefix that will be added to each object added to your bucket.
+    
+        [Learn more.](#aws-s3-prefix)
+
+        3.  From the **AWS Region** option, select the region assigned to the AWS S3 bucket.
+
     -   [Azure Blob Storage](#azure-blob-storage-log-delivery)
     -   [Datadog](#datadog-log-delivery)
     -   [Google Cloud Storage](#google-cloud-storage-log-delivery)
@@ -137,7 +244,7 @@ TODO: Info about setting up destination.
 
     <a id="downsampling" />
 
-6. From the **Downsample the Logs** option, determine whether all or downsampled Reduces the amount of log data that will be delivered. For example, you may choose to only deliver 1% of your log data. log data will be delivered.
+6. From the **Downsample the Logs** option, determine whether to reduce the amount of log data that will be delivered. For example, you may choose to only deliver 1% of your log data.
     
     -   **All Log Data:** Verify that the **Downsample the Logs** option is cleared.
     -   **Downsampled Log Data:** Downsample logs to 0.1%, 1%, 25%, 50%, or 75% of total log data by enabling the **Downsample the Logs** option and then selecting the desired rate from the **Downsampling Rate** option.
@@ -401,3 +508,63 @@ You may filter by:
             
             Set it to a blank value.
 -->
+
+### Log File Naming Convention
+
+Your destination determines whether log data is stored within a database or as an object within cloud storage. Log data is stored as individual objects for the following destinations:
+ 
+-   [AWS S3](#aws-s3-log-delivery)
+-   [Azure Blob Storage](#azure-blob-storage-log-delivery)
+-   [Google Cloud Storage](#google-cloud-storage-log-delivery)
+
+Log data stored within an object is compressed using gzip. Each object follows this naming convention:
+
+`[&lt;LOG TYPE>](#Type)_[&lt;AN>](#AN)_[&lt;PROFILE ID>](#ProfileID)_[&lt;DATE STAMP>](#DateStamp)_[&lt;AGENT ID>](#AgentID)_[&lt;SEQUENCE NUMBER>](#SequenceNumber).[&lt;FILE EXTENSION>](#FileExtension).gz`
+
+The JSON document contained within an object follows this naming convention:
+
+`[Log Type](#Type)_[AN](#AN)_[Profile ID](#ProfileID)_[Date Stamp](#DateStamp)_[Agent ID](#AgentID)_[Sequence Number](#SequenceNumber).[File Extension](#FileExtension)`
+
+**Sample file name (RTLD CDN - JSON log format):** `wpc_0001_123_20220111_50550000F98AB95B_1.json`
+
+**Sample file name (RTLD Rate Limiting - JSON log format):** `rl_0001_123_20220111_50550000F98AB95B_1.json`
+
+**Sample file name (RTLD WAF - JSON log format):** `waf_0001_123_20220111_50550000F98AB95B_1.json`
+
+Each of the above file naming variables are described below.
+
+-   `<LOG TYPE>`**:** Represents the type of log data.
+    -   RTLD Rate Limiting: This variable is always set to rl.
+    -   RTLD WAF: This variable is always set to waf.
+
+-   `<AN>`**:** Represents your CDN account number (e.g., 0001). This account number may be viewed from the upper-right hand corner of the MCC.
+-   `<PROFILE ID>`**:** Represents the system-defined ID for your Real-Time Log Delivery configuration.
+
+    <Callout type="info">
+
+      You cannot currently view the system-defined ID assigned to your Real-Time Log Delivery configuration from within the MCC.
+
+    </Callout>
+
+-   `<DATE STAMP>`**:** Represents the date on which the log file was generated.
+
+    **Syntax:** `YYYYMMDD`
+
+    **Example:** `20230110`
+-   `<AGENT ID>`**:** Represents a unique ID that identifies the Real-Time Log Delivery software agent that generated the log file.
+-   `<SEQUENCE NUMBER>`**:** Represents a sequential number that identifies the order in which the log file was generated by the software agent identified above.
+
+    Each software agent assigns a sequential number to the log files that it generates. A gap between log files generated on the same day by the same software agent indicates missing log data.  
+
+    [Learn more.](LD-Verification.htm)
+
+    **Key information:**
+
+    -   This number starts at 0.
+    -   This number resets to 0 at the start of a new day (UTC).
+
+-   `<FILE EXTENSION>`**:** Represents the file extension for the log file. This file extension varies by log format.
+
+    -   JSON Log Format: json
+    -   JSON Array Log Format: json\_array
+    -   JSON Lines Log Format: json\_lines

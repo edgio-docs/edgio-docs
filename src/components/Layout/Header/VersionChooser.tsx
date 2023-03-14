@@ -10,19 +10,37 @@ import {getVersionedConfigs} from 'utils/config';
 import useConditioning from 'utils/hooks/useConditioning';
 
 const StyledDropdown = styled(Dropdown)`
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
   margin-left: 15px;
 
   button {
     padding: 4px;
     font-size: 14px;
+    background-color: var(--bg-secondary) !important;
+    color: var(--text-primary) !important;
   }
 `;
 
-const StyledDropdownMenu = styled(DropdownMenu)``;
+const StyledDropdownMenu = styled(DropdownMenu)`
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
+  border-color: var(--colors-blue0) !important;
+`;
 
 const StyledDropdownItem = styled(DropdownItem)`
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
   font-size: 14px;
-  font-weight: ${({selected}) => (selected ? 'bold' : 'normal')};
+  ${({selected}) =>
+    selected
+      ? `
+    font-weight: bold;
+    color: var(--colors-blue0);
+  `
+      : `
+        font-weight: normal;
+        `};
 
   a {
     text-decoration: none;
@@ -57,7 +75,6 @@ export default function VersionChooser() {
       </Button>
       <StyledDropdownMenu hidden={hidden} toggle={() => setHidden(!hidden)}>
         {versions.map(({version, href, label}) => {
-          console.log(version, prefixedSelectedVersion);
           return (
             <StyledDropdownItem
               key={version}

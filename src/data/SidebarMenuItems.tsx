@@ -752,10 +752,6 @@ const SidebarMenuItems: ISidebarMenuItems = [
       sortRoutes: true,
       routes: [
         {
-          title: 'Limits & Caveats',
-          path: '/guides/limits',
-        },
-        {
           title: 'v6 Migration Guide',
           path: '/guides/upgrading/v6_migration',
         },

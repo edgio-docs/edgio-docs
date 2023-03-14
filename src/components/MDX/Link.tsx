@@ -5,12 +5,19 @@ import * as React from 'react';
 import {ExternalLink} from 'components/ExternalLink';
 import useConditioning from 'utils/hooks/useConditioning';
 
+type AProps = JSX.IntrinsicElements['a'];
+
+interface LinkProps extends AProps {
+  versioned?: boolean;
+}
+
 function Link({
   href,
   className,
   children,
+  versioned = true,
   ...props
-}: JSX.IntrinsicElements['a']) {
+}: LinkProps) {
   const {version} = useConditioning();
   const classes = 'text-link';
   const modifiedChildren = React.Children.toArray(children).map(

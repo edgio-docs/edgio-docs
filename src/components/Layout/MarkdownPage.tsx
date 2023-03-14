@@ -8,22 +8,24 @@ import Docs from '../Docs';
 import DocsFooter from '../Docs/DocsFooter';
 import Seo from '../Seo';
 
+import useConditioning from 'utils/hooks/useConditioning';
 import {MDHeading, MDHeadingsList} from 'utils/Types';
 
 export function MarkdownPage<
-  T extends {title: string; status?: string; version: string} = {
+  T extends {title: string; status?: string; version?: string} = {
     title: string;
     status?: string;
-    version: string;
+    version?: string;
   }
 >({children, meta, headings}: MarkdownProps<T>) {
   const {route, query} = useRouter();
   const {slug} = query;
-
-  // const {route, nextRoute, prevRoute} = useRouteMeta();
+  const {
+    version: {latestVersion},
+  } = useConditioning();
   const title = meta.title || route || '';
   const description = meta.description || siteConfig.tagline;
-  const version = meta.version;
+  const version = meta.version || latestVersion;
 
   if (!route) {
     console.error('This page was not added to one of the sidebar JSON files.');

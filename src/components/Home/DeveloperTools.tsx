@@ -9,9 +9,14 @@ import {IconCode} from '../Icon/IconCode';
 import {StyledFeatureSection} from './FeatureSection';
 import SectionHeader from './SectionHeader';
 
+import useConditioning from 'utils/hooks/useConditioning';
+
 const StyledComp = styled(StyledFeatureSection)``;
 
 export default function DeveloperTools() {
+  const {
+    version: {toPath},
+  } = useConditioning();
   const parentPath = 'dev-tools';
   const allRoutes = getChildrenRoutesFromSidebarMenuItems(parentPath);
   const allRoutesSorted = sortBy(allRoutes, 'title');
@@ -33,7 +38,7 @@ export default function DeveloperTools() {
               {route.map(({path, title}) => (
                 <li className="route-list__item" key={title}>
                   <div className="dot" />
-                  <Link href={path}>{title}</Link>
+                  <Link href={toPath(path)}>{title}</Link>
                 </li>
               ))}
             </ul>

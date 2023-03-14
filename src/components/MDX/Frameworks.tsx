@@ -3,6 +3,8 @@ import styled from 'styled-components';
 
 import {getChildrenRoutesFromSidebarMenuItems} from '../../utils/getChildrenRoutesFromSidebarMenuItems';
 
+import useConditioning from 'utils/hooks/useConditioning';
+
 const StyledFrameworks = styled.div`
   .framework-lists {
     padding: 0;
@@ -39,15 +41,17 @@ const StyledFrameworks = styled.div`
 `;
 
 export default function Frameworks() {
+  const {
+    version: {toPath},
+  } = useConditioning();
   const parentPath = 'framework-guides';
   const allRoutes = getChildrenRoutesFromSidebarMenuItems(parentPath);
-
   return (
     <StyledFrameworks>
       <ul className="framework-lists">
         {allRoutes.map((route) => (
           <li key={route.path} className="framework-list__item">
-            <Link href={route.path} passHref>
+            <Link href={toPath(route.path)} passHref>
               <a className="framework-link">
                 <div className="icon" id="light-theme">
                   {route.icon ? route.icon : null}

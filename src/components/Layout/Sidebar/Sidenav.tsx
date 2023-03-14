@@ -1,5 +1,4 @@
 import Image from 'next/image';
-import Link from 'next/link';
 import {useRouter} from 'next/router';
 import React, {Fragment, useEffect, useState} from 'react';
 import useCollapse from 'react-collapsed';
@@ -8,8 +7,8 @@ import {GoChevronRight} from 'react-icons/go';
 import styled from 'styled-components';
 
 import {FIDDLE_URL} from '../../../../constants';
+import Link from '../../MDX/Link';
 
-import {getVersionedConfig} from 'utils/config';
 import useConditioning from 'utils/hooks/useConditioning';
 import {getVersionedNavigation} from 'utils/navigation';
 
@@ -44,9 +43,7 @@ function Accordion({
   });
 
   const {version} = useConditioning();
-  //const config = getVersionedConfig(version.selectedVersion);
   const isActiveLink = route.path.length > 0;
-  //console.log('currentRoutePath', currentRoutePath, route.path);
   const childElement = (
     <a
       className="menu-toggle__wrap"
@@ -103,11 +100,7 @@ function Accordion({
             </div>
           </a>
         ) : route.title && isActiveLink ? (
-          <Link
-            href={version.toPath(route.path)}
-            passHref
-            className="sidenav-link"
-            data-depth={depth}>
+          <Link href={route.path} className="sidenav-link" data-depth={depth}>
             {childElement}
           </Link>
         ) : (

@@ -4,6 +4,8 @@ import styled from 'styled-components';
 
 import {useTocHighlight} from './useTocHighlight';
 
+import useConditioning from 'utils/hooks/useConditioning';
+
 const StyledToc = styled.div`
   padding: 0 20px;
 
@@ -87,6 +89,9 @@ export function Toc({
 }: {
   headings: Array<{url: string; text: React.ReactNode; depth: number}>;
 }) {
+  const {
+    version: {toPath},
+  } = useConditioning();
   const {currentIndex} = useTocHighlight();
   const selectedIndex = Math.min(currentIndex, headings.length - 1);
 
@@ -104,7 +109,7 @@ export function Toc({
                     data-selected={i === selectedIndex}
                     data-depth={h.depth && h.depth < 4 ? h.depth : -1}
                     className="docs-toc__listItem">
-                    <Link href={h.url}>
+                    <Link href={toPath(h.url)}>
                       <a>{h.text}</a>
                     </Link>
                   </li>

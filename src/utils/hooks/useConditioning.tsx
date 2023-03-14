@@ -36,8 +36,15 @@ function useConditioning(): IConditioning {
     isLatest,
     pathPrefix: !isLatest ? `v${cleanedVersion}` : '',
     toPath: (path: string) => {
+      const {route} = router;
+
+      // if the route already includes guides, don't add it again
+      const guidesPrefix = route.includes('guides') ? '' : 'guides';
+
       return [
-        versionConfig.pathPrefix.length ? versionConfig.pathPrefix : 'guides',
+        versionConfig.pathPrefix.length
+          ? versionConfig.pathPrefix
+          : guidesPrefix,
         ...path.replace('guides', '').split('/'),
       ]
         .filter(Boolean)

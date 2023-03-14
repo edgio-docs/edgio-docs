@@ -4,6 +4,8 @@ import styled from 'styled-components';
 
 import {PRODUCT_NAME} from '../../../constants';
 
+import useConditioning from 'utils/hooks/useConditioning';
+
 const StyledIntegrations = styled.div`
   .integrations {
     padding: 0;
@@ -107,12 +109,16 @@ const integrations: Object[] = [
 ];
 
 export default function Integrations() {
+  const {
+    version: {toPath},
+  } = useConditioning();
+
   return (
     <StyledIntegrations>
       <ul className="integrations">
         {integrations.map((route: any) => (
           <li key={route.path} className="integration-list__item">
-            <Link href={route.path} passHref>
+            <Link href={toPath(route.path)} passHref>
               <a className="integration-link">
                 <div className="icon" id="light-theme">
                   <img

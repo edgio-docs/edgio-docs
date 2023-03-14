@@ -480,7 +480,7 @@ These additional options allow you to change certain behavior of routes that are
 
 ### setEnforceTrailingSlash {*set-enforce-trailing-slash*/}
 Set this option to `true` to suppress Next's default behavior of removing trailing slashes via a redirect.
-If `trailingSlash: true` is set in next.config.js, setting this option to false or removing it will remove the redirect that adds the trailing slash.
+If `trailingSlash: true` is set in next.config.js, setting this option to `false` or removing it will remove the redirect that adds the trailing slash.
 
 ```js filename='routes.js'
 import { nextRoutes } from '{{ PACKAGE_NAME }}/next';

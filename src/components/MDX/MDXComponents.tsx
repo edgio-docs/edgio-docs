@@ -3,6 +3,7 @@ import {GoKebabVertical} from 'react-icons/go';
 import ButtonLink from './ButtonLink';
 import ButtonLinksGroup from './ButtonLinksGroup';
 import Callout from './Callout';
+import Comment from './Comment';
 import Condition from './Condition';
 import CustomPre from './CustomPre';
 import ExampleButtons from './ExampleButtons';
@@ -80,4 +81,6 @@ export const MDXComponents = {
   ExampleButtons,
   SnippetGroup,
   Condition,
+  Comment,
+  edgejs: Comment,
 };

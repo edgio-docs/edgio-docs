@@ -2,7 +2,7 @@
 title: Sumo Logic Log Delivery
 ---
 
-RTLD may automatically deliver compressed log data to Sumo Logic by submitting HTTPS POST requests to it. Sumo Logic will collect these requests as they are pushed from the CDN. Each request represents a compressed JSON document that describes one or more log entries.
+RTLD may automatically deliver compressed log data to Sumo Logic by submitting HTTPS `POST` requests to it. Sumo Logic will collect these requests as they are pushed from the CDN. Each request represents a compressed JSON document that describes one or more log entries.
 
 **Key information:**
 
@@ -41,7 +41,9 @@ RTLD may automatically deliver compressed log data to Sumo Logic by submitting H
 
 2.  Upon completing the above steps, you should create a log delivery profile for Sumo Logic.
 
-{{ RTLD_PROFILE_SETUP_1 }} Sumo Logic.
+{{ RTLD_PROFILE_SETUP_1 }} `Sumo Logic`.
+
+4.  Define how RTLD will communicate with Sumo Logic.
 
     In the **Sumo Logic URL** option, paste the URL associated with your [HTTP Source](#http-source).
 

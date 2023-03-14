@@ -126,8 +126,6 @@ const SECURITY_NAV = `1.  From the ${PORTAL}, expand the **Security** section.
 
 const ACCOUNT_UPGRADE = `Contact your account manager or our [sales department](https://edg.io/contact-us/) at 1 (866) 200 - 5463 to upgrade your account.`;
 
-
-
 const RTLD_PROFILE_SETUP_1 = `**To set up a log delivery profile**
 
 1.  From the **Real-Time Log Delivery CDN** page, click **+ New Log Delivery Profile**.
@@ -141,11 +139,7 @@ const RTLD_PROFILE_SETUP_1 = `**To set up a log delivery profile**
     3.  From the left pane, click **Realtime Log Delivery**.
 
 2.  From the **Profile Name** option, assign a name to this log delivery profile.
-3.  From the **Log Delivery Method** option, select the method that corresponds to the desired type of destination.
-
-    For example, set up this profile to deliver log data to your web server(s) by selecting \`HTTP POST\`.
-
-4.  Define how RTLD will communicate with`;
+3.  From the **Log Delivery Method** option, select`;
 
 const RTLD_PROFILE_SETUP_2 = `5.  From the **Log Format** option, select whether to format log data using our standard JSON format, as a JSON array, as JSON lines, or as a CSV (RTLD CDN only).
     
@@ -178,13 +172,17 @@ const RTLD_PROFILE_SETUP_2 = `5.  From the **Log Format** option, select whether
 
     Log fields are categorized. You may add or remove individual fields by expanding a category and then marking or clearing specific log fields. Alternatively, add or remove all of the log fields associated with a category by marking or clearing the desired category.
 
-    **RTLD CDN Only:** You may also log request headers, response headers, and cookies by adding them through the **Custom Request Headers**, **Custom Response Headers**, and **Custom Cookies** options.
-            
-    You may either select the name of the desired header or cookie, or type its name and then press \`ENTER\`. Click on the list to add additional headers or cookies. Remove a header or cookie by clicking on its \`x\`.
-            
-    Although other settings take effect quickly, it may take up to 90 minutes before data for custom request/response headers and cookies is logged.
+    <Callout type="tip">
 
-    TODO: Verify
+      **RTLD CDN Only:** You may also log request headers, response headers, and cookies by adding them through the **Custom Request Headers**, **Custom Response Headers**, and **Custom Cookies** options.i
+
+      You may either select the name of the desired header or cookie, or type its name and then press \`ENTER\`. Click on the list to add additional headers or cookies. Remove a header or cookie by clicking on its \`x\`.
+            
+      Although other settings take effect quickly, it may take up to 90 minutes before data for custom request/response headers and cookies is logged.
+
+      TODO: Verify
+
+    </Callout>
 
 9.  Click **Create Log Delivery Profile**.
 
@@ -417,7 +415,6 @@ You may filter by:
             
             Set it to a blank value.
 -->`;
-
 
 const PARTNERS_CONTACT = `partner@llnw.com`;
 

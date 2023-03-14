@@ -2,7 +2,7 @@
 title: Datadog Log Delivery
 ---
 
-RTLD may automatically deliver compressed log data to Datadog by submitting HTTPS POST requests to it. Datadog will collect these requests as they are pushed from the CDN. Each request contains a compressed JSON document that describes one or more log entries.
+RTLD may automatically deliver compressed log data to Datadog by submitting HTTPS `POST` requests to it. Datadog will collect these requests as they are pushed from the CDN. Each request contains a compressed JSON document that describes one or more log entries.
 
 **Key information:**
 
@@ -15,7 +15,9 @@ RTLD may automatically deliver compressed log data to Datadog by submitting HTTP
 2.  Identify the Datadog location to which log data will be delivered.
 3.  Upon completing the above steps, you should create a log delivery profile for Datadog.
 
-{{ RTLD_PROFILE_SETUP_1 }} Datadog.
+{{ RTLD_PROFILE_SETUP_1 }} `Datadog`.
+
+4.  Define how RTLD will communicate with Datadog.
 
     1.  From the **Datadog Site** option, select the Datadog location to which log data will be delivered.
     2.  From the **Datadog API Key** option, paste your Datadog API key. This API key authorizes our service to upload log data to Datadog.

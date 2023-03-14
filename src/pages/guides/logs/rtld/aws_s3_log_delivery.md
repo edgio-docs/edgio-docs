@@ -2,7 +2,7 @@
 title: AWS S3 Log Delivery
 ---
 
-RTLD may automatically deliver compressed log data to an AWS S3 bucket by submitting HTTPS PUT requests to it. Each request adds an object to the bucket. This object contains a compressed JSON or CSV document that uniquely identifies a set of log data and describes one or more log entries.
+RTLD may automatically deliver compressed log data to an AWS S3 bucket by submitting HTTPS `PUT` requests to it. Each request adds an object to the bucket. This object contains a compressed JSON or CSV document that uniquely identifies a set of log data and describes one or more log entries.
 
 **Key information:**
 
@@ -14,9 +14,14 @@ RTLD may automatically deliver compressed log data to an AWS S3 bucket by submit
 -   AWS S3 may automatically decompress files downloaded via the S3 Management Console into JSON or CSV files. No additional decompression is required to process this data.
 -   RTLD requires a [bucket policy](#bucket-policy) that authorizes our service to upload content to your bucket.
 -   If you have enabled server-side encryption on the desired AWS S3 bucket, then you must also enable default bucket encryption. Otherwise, RTLD will be unable to post log data to that bucket.
+
+    <Callout type="info">
+
     
-    RTLD does not include Amazon-specific encryption headers when posting log data to your bucket.
-    
+      RTLD does not include Amazon-specific encryption headers when posting log data to your bucket.
+
+    </Callout>
+
     [View AWS documentation on default bucket encryption.](https://docs.aws.amazon.com/AmazonS3/latest/userguide/default-bucket-encryption.html)
 
     <a id="log-file-prefix" />
@@ -70,9 +75,14 @@ RTLD may automatically deliver compressed log data to an AWS S3 bucket by submit
     	\]
     }
     ```
+
+    <Callout type="important">
+
     
-    Replace the term `BUCKET-NAME` in lines 16 and 17 with the name of the AWS S3 bucket to which this policy is being applied.
-    
+      Replace the term `BUCKET-NAME` in lines 16 and 17 with the name of the AWS S3 bucket to which this policy is being applied.
+
+    </Callout>
+
 3.  If you have enabled server-side encryption on the AWS S3 bucket identified in step 1, then you must also enable default bucket encryption.
     
     [View AWS documentation on default bucket encryption.](https://docs.aws.amazon.com/AmazonS3/latest/userguide/default-bucket-encryption.html)
@@ -85,7 +95,9 @@ RTLD may automatically deliver compressed log data to an AWS S3 bucket by submit
 
 5.  Upon completing the above steps, you should create a log delivery profile for AWS S3.
 
-{{ RTLD_PROFILE_SETUP_1 }} AWS S3.
+{{ RTLD_PROFILE_SETUP_1 }} `AWS S3`.
+
+4.  Define how RTLD will communicate with AWS S3.
 
     1.  Set the **Bucket** option to the name of the AWS S3 bucket to which log data will be posted.
 

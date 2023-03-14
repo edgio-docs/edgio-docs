@@ -2,7 +2,7 @@
 title: Google Cloud Storage Log Delivery
 ---
 
-RTLD may automatically deliver compressed log data to a Google Cloud Storage bucket by submitting HTTPS PUT requests to it. Each request adds an object to a Cloud Storage bucket. This object contains a compressed JSON or CSV document that uniquely identifies a set of log data and describes one or more log entries.
+RTLD may automatically deliver compressed log data to a Google Cloud Storage bucket by submitting HTTPS `PUT` requests to it. Each request adds an object to a Cloud Storage bucket. This object contains a compressed JSON or CSV document that uniquely identifies a set of log data and describes one or more log entries.
 
 **Key information:**
 
@@ -55,7 +55,9 @@ RTLD may automatically deliver compressed log data to a Google Cloud Storage buc
 
 4.  Upon completing the above steps, you should create a log delivery profile for Google Cloud Storage.
 
-{{ RTLD_PROFILE_SETUP_1 }} Google Cloud Storage.
+{{ RTLD_PROFILE_SETUP_1 }} `Google Cloud Storage`.
+
+4.  Define how RTLD will communicate with Google Cloud Storage.
 
     1.  Set the **Bucket** option to the name of the Google Cloud Storage bucket to which log data will be posted.
     2.  Optional. Set the **Prefix** option to the desired prefix that defines a virtual log file storage location and/or a prefix that will be added to each object added to your bucket.

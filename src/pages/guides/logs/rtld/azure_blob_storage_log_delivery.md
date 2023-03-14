@@ -2,7 +2,7 @@
 title: Azure Blob Storage Log Delivery
 ---
 
-RTLD may automatically deliver compressed log data to an Azure Blob Storage container by submitting HTTPS PUT requests to it. Each request creates a block blob within the container. This block blob contains a compressed JSON or CSV document that uniquely identifies a set of log data and describes one or more log entries.
+RTLD may automatically deliver compressed log data to an Azure Blob Storage container by submitting HTTPS `PUT` requests to it. Each request creates a block blob within the container. This block blob contains a compressed JSON or CSV document that uniquely identifies a set of log data and describes one or more log entries.
 
 **Key information:**
 
@@ -69,7 +69,9 @@ RTLD may automatically deliver compressed log data to an Azure Blob Storage cont
 
 3.  Upon completing the above steps, you should create a log delivery profile for Azure Blob Storage.
 
-{{ RTLD_PROFILE_SETUP_1 }} Azure Blob Storage.
+{{ RTLD_PROFILE_SETUP_1 }} `Azure Blob Storage`.
+
+4.  Define how RTLD will communicate with Azure Blob Storage.
 
     1.  Set the **Blob Container URL** option to a URL that points to the container to which log data will be posted.
     

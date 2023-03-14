@@ -10,11 +10,11 @@ RTLD assigns a name to log data stored as an object. Log data is stored as indiv
 
 Log data stored within an object is compressed using gzip. Each object follows this naming convention:
 
-`<PREFIX><LOG TYPE>_<AN>_<PROFILE ID>_<DATE STAMP>_<AGENT ID>_<SEQUENCE NUMBER>.<FILE EXTENSION>.gz`
+`[<PREFIX>]<LOG TYPE>_<AN>_<PROFILE ID>_<DATE STAMP>_<AGENT ID>_<SEQUENCE NUMBER>.<FILE EXTENSION>.gz`
 
 The JSON document contained within an object follows this naming convention:
 
-`<LOG TYPE>_<AN>_<PROFILE ID>_<DATE STAMP>_<AGENT ID>_<SEQUENCE NUMBER>.<FILE EXTENSION>`
+`[<PREFIX>]<LOG TYPE>_<AN>_<PROFILE ID>_<DATE STAMP>_<AGENT ID>_<SEQUENCE NUMBER>.<FILE EXTENSION>`
 
 **Sample file name (RTLD CDN - JSON log format):** `wpc_0001_123_20220111_50550000F98AB95B_1.json`
 
@@ -22,7 +22,7 @@ The JSON document contained within an object follows this naming convention:
 
 **Sample file name (RTLD WAF - JSON log format):** `waf_0001_123_20220111_50550000F98AB95B_1.json`
 
-Each of the above file naming variables are described below.
+Each of the above variables are described below.
 
 -   `<PREFIX>`**:** You may define a prefix when setting up a log delivery profile. This prefix defines a virtual log file storage location and/or a prefix that will be added to each object added to your bucket.
     
@@ -52,7 +52,7 @@ Each of the above file naming variables are described below.
 
     <Callout type="info">
 
-      You cannot currently view the system-defined ID assigned to your Real-Time Log Delivery configuration from within the MCC.
+      You cannot currently view the system-defined ID assigned to your Real-Time Log Delivery configuration from within the {{ PORTAL }}.
 
     </Callout>
 

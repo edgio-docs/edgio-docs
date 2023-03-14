@@ -2,7 +2,7 @@
 title: Splunk Enterprise Log Delivery
 ---
 
-RTLD may automatically deliver compressed log data to Splunk Enterprise by submitting HTTPS POST requests to it. The Splunk HTTP Event Collector (HEC) will collect and log each request. Each request contains a compressed JSON document that describes one or more log entries.
+RTLD may automatically deliver compressed log data to Splunk Enterprise by submitting HTTPS `POST` requests to it. The Splunk HTTP Event Collector (HEC) will collect and log each request. Each request contains a compressed JSON document that describes one or more log entries.
 
 The format for log data delivered to Splunk Enterprise is JSON Lines. This log format does not provide information that uniquely identifies a set of log data. As a result, there is no way to check for gaps in sequence numbers when attempting to identify missing log data.
 
@@ -47,7 +47,7 @@ The format for log data delivered to Splunk Enterprise is JSON Lines. This log f
 
 2.  Perform the following steps if you have hosted Splunk Enterprise within your network:
     
-    1.  Configure your firewall to allow POST requests from the following IP blocks:
+    1.  Configure your firewall to allow `POST` requests from the following IP blocks:
         
     2.  Set up support for the HTTPS protocol.
         
@@ -55,7 +55,9 @@ The format for log data delivered to Splunk Enterprise is JSON Lines. This log f
 
 3.  Upon completing the above steps, you should create a log delivery profile for Splunk Enterprise.
 
-{{ RTLD_PROFILE_SETUP_1 }} Splunk Enterprise.
+{{ RTLD_PROFILE_SETUP_1 }} `Splunk Enterprise`.
+
+4.  Define how RTLD will communicate with Splunk Enterprise.
 
     1.  Set the **Splunk URL** option to a URL that points to your Splunk Enterprise's HTTP Event Collector configuration.
     

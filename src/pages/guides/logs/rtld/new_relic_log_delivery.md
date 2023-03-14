@@ -2,7 +2,7 @@
 title: New Relic Log Delivery
 ---
 
-RTLD may automatically deliver compressed log data to your New Relic account by submitting HTTPS POST requests to it. Each request represents a compressed JSON or CSV document that uniquely identifies a set of log data and describes one or more log entries.
+RTLD may automatically deliver compressed log data to your New Relic account by submitting HTTPS `POST` requests to it. Each request represents a compressed JSON or CSV document that uniquely identifies a set of log data and describes one or more log entries.
 
 **Key information:**
 
@@ -23,7 +23,9 @@ RTLD CDN and RTLD Rate Limiting support delivery to the New Relic destination.
 
 2.  Upon completing the above step, you should create a log delivery profile for New Relic.
 
-{{ RTLD_PROFILE_SETUP_1 }} New Relic.
+{{ RTLD_PROFILE_SETUP_1 }} `New Relic`.
+
+4.  Define how RTLD will communicate with New Relic.
 
     1.  Set the **Account ID** option to your New Relic account ID.
     2.  Set the **Event Type** option to a label that identifies log data delivered to New Relic as a result of this profile. Specify a label that solely consists of alphanumeric characters, underscores, and colons.

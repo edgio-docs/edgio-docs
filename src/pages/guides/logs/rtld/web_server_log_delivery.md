@@ -38,7 +38,9 @@ RTLD may automatically deliver compressed log data to a web server by submitting
 
 4.  Upon completing the above steps, you should create a log delivery profile for HTTP `POST`.
 
-{{ RTLD_PROFILE_SETUP_1 }} HTTP `POST`.
+{{ RTLD_PROFILE_SETUP_1 }} `HTTP POST`.
+
+4.  Define how RTLD will communicate with your web server(s).
 
     1.  Set the **Request URL** option to a URL that may leverage the workflow defined in the [To prepare your web servers for log delivery procedure](#prepare-web-servers-for-log-delivery). This URL must use the HTTPS protocol.
 

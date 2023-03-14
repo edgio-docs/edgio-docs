@@ -11,7 +11,7 @@ Edgio supports both Vue 2 and Vue 3, using both CLIs - `@vue/cli` and `vite`.
 
 <ExampleButtons
   title="Vue.js"
-  siteUrl="https://edgio-community-examples-static-vuejs-live.layer0-limelight.link/"
+  siteUrl="https://edgio-community-examples-vue3-live.layer0-limelight.link"
   repoUrl="https://github.com/edgio-docs/edgio-vue3-example" 
   deployFromRepo />
 

@@ -25,7 +25,7 @@ Determines whether requests are rejected with a `403 Forbidden` response.
 
 **Default Behavior:** false
 
-{/* @edgejs
+<edgejs>
 
 **Property:** 
 
@@ -42,9 +42,9 @@ new Router()
       "deny_access": true,
     }
   })
-```
+</edgejs>
 
-*/}
+</edgejs>
 
 #### Token Auth  {/*token-auth*/}
 
@@ -58,7 +58,7 @@ Determines whether Token-Based Authentication will be applied to a request.
 
 **Default Behavior:** false
 
-{/* @edgejs
+<edgejs>
 **CDN-as-Code (EdgeJS):** 
 
 ```js
@@ -75,7 +75,7 @@ new Router()
     }
   })
 ```
-*/}
+</edgejs>
 
 #### Token Auth Denial Code {/*token-auth-denial-code*/}
 
@@ -89,7 +89,7 @@ Determines the type of response that will be returned to a user when a request i
 
 **Default Behavior:** By default, requests denied by Token-Based Authentication return a `403 Forbidden` response.
 
-{/* @edgejs
+<edgejs>
 **CDN-as-Code (EdgeJS):** 
 
 ```js
@@ -133,7 +133,7 @@ new Router()
     }
   })
 ```
-*/}
+</edgejs>
 
 
 #### Token Auth Ignore 	URL Case {/*token-auth-ignore-url-case*/}
@@ -146,13 +146,13 @@ Determines whether URL comparisons made by the following Token-Based Authenticat
 
 **Default Behavior:** false
 
-{/* @edgejs
+<edgejs>
 
 ```js
 "token_auth_ignore_url_case": true,
 ```
 
-*/}
+</edgejs>
 
 ## Caching {/*caching*/}
 
@@ -171,7 +171,7 @@ This feature also allows bandwidth throttling to be customized on a per request 
 
 **Default Behavior:** By default, our CDN does not throttle requests.
 
-{/* @edgejs
+<edgejs>
 
 ```js
 "bandwidth_throttling": {
@@ -180,7 +180,7 @@ This feature also allows bandwidth throttling to be customized on a per request 
 }
 ```
 
-*/}
+</edgejs>
 
 #### Bypass Cache {/*bypass-cache*/}
 
@@ -188,13 +188,13 @@ Determines whether our CDN will honor your caching policy when determining wheth
 
 **Default Behavior:** false
 
-{/* @edgejs
+<edgejs>
 
     ```js
     "bypass_cache": true,
     ```
 
-*/}
+</edgejs>
 
 #### Bypass Client Cache {/*bypass-client-cache*/}
 
@@ -211,13 +211,13 @@ Determines whether our CDN will instruct the client to bypass cache.
 
 **Default Behavior:** false
 
-{/* @edgejs
+<edgejs>
 
 ```js
 "bypass_client_cache": true,
 ```
 
-*/}
+</edgejs>
 
 #### Cache Control Header Treatment {/*cache-control-header-treatment*/}
 
@@ -252,13 +252,13 @@ Valid values are:
 
 **Default Behavior:** Overwrite
 
-{/* @edgejs
+<edgejs>
 
 ```js
 "cache_control_header_treatment": "pass",
 ```
 
-*/}
+</edgejs>
 
 #### Cache Key Query String {/*cache-key-query-string*/}
 
@@ -280,7 +280,7 @@ Include or exclude all query string parameters through the `Include All` or `Exc
 
 -   **Include All Except:** Contains the set of parameter(s) will be excluded from the cache-key. All other query string parameters will be included in the cache-key.
 
-{/* @edgejs
+<edgejs>
 **CDN-as-Code (EdgeJS):** 
 
 ```js
@@ -317,7 +317,7 @@ new Router()
     }
   })
 ```
-*/}
+</edgejs>
 
 #### Cacheable Request Body Size {/*cacheable-request-body-size*)
 
@@ -338,11 +338,11 @@ Restricts caching to requests whose body does not exceed the specified file size
 
 **Default Behavior:** 14 Kb
 
-{/* @edgejs
+<edgejs>
     ```js
     "cacheable_request_body_size": 12,
     ```
-*/}
+</edgejs>
 
 #### Cacheable Status Codes {/*cacheable-status-codes*/}
 
@@ -353,18 +353,18 @@ Defines the set of status codes that can result in cached content.
 -   Caching non-`200 OK` response also requires enabling the `Ignore Origin No Cache` feature. 
 -   This feature cannot be used to disable caching for responses that generate a `200 OK` status code.
 
-{/* @edgejs
+<edgejs>
     -   The set of valid status codes for this feature are:
         `200 | 203 | 300 | 301 | 302 | 305 | 307 | 400 | 401 | 402 | 403 | 404 | 405 | 406 | 407 | 408 | 409 | 410 | 411 | 412 | 413 | 414 | 415 | 416 | 417 | 429 | 451 | 500 | 501 | 502 | 503 | 504 | 505`
-*/}
+</edgejs>
 
 **Default Behavior:** By default, caching is restricted to responses that generate a `200 OK` status code.
 
-{/* @edgejs
+<edgejs>
     ```js
     "cacheable_status_codes": [300, 301, 302],
     ```
-*/}
+</edgejs>
 
 
 #### Client Max Age {/*client-max-age*/}
@@ -381,14 +381,14 @@ Enabling this feature will generate `Cache-Control:max-age` and `Expires` header
 
 **Default Behavior:** The `Cache-Control` / `Expires` headers cached with the response of the origin server will pass through to the browser.
 
-{/* @edgejs
+<edgejs>
 
 **Example:** 
 
 ```js
 "client_max_age": "10h",
 ```
-*/}
+</edgejs>
 
 #### Enable Caching for Methods {/*enable-caching-for-methods*/}
 
@@ -408,11 +408,11 @@ Determines whether `POST` and `PUT` requests are eligible for caching on our net
 
 **Default Behavior:** By default, only `GET` requests are eligible for caching.
 
-{/* @edgejs
+<edgejs>
     ```js
     "enable_caching_for_methods": ["POST", "PUT"],
     ```
-*/}
+</edgejs>
 
 #### Expires Header Treatment {/*expires-header-treatment*/}
 
@@ -447,11 +447,11 @@ Valid values are:
 
 **Default Behavior:** Overwrite
 
-{/* @edgejs
+<edgejs>
     ```js
     "expires_header_treatment": 'if_missing',
     ```
-*/}
+</edgejs>
 
 
 #### Enable H264 encoding {/*enable-h264-encoding*/}
@@ -470,11 +470,11 @@ Determines the types of H.264 file formats that may be used when streaming conte
 
 **Default Behavior:** By default, HTTP Progressive Download supports MP4 and F4V file extensions.
 
-{/* @edgejs
+<edgejs>
     ```js
     "h264_support": [".mp4", ".f4v"],
     ```
-*/}
+</edgejs>
 
 -   **h264_support_video_seek_params (*Object*):** <a id="h264-support-video-seek-params" /> Overrides the names assigned to parameters that control seeking through H.264 media when using HTTP Progressive Download. Set the following properties:
 
@@ -527,11 +527,11 @@ Determines on a per HTTP status code basis whether our CDN will ignore cache dir
 
 **Default Behavior:** The default behavior is to honor the above directives.
 
-{/* @edgejs
+<edgejs>
     ```js
     "ignore_origin_no_cache": [200, 300, 301],
     ```
-*/}
+</edgejs>
 
 #### Ignore Unsatisfiable Ranges {/*ignore-unsatisfiable-ranges*/}
 
@@ -541,11 +541,11 @@ Enabling this feature prevents our edge servers from responding to an invalid by
 
 **Default Behavior:** The default behavior is to honor the `416 Requested Range Not Satisfiable` status code.
 
-{/* @edgejs
+<edgejs>
     ```js
     "ignore_unsatisfiable_ranges": true,
     ```
-*/}
+</edgejs>
 
 #### Max Age{/*max-age*/}
 
@@ -569,11 +569,11 @@ Determines whether cached content will be eligible for early revalidation before
 
 **Default Behavior:** Revalidation may only take place after the cached content's TTL has expired.
 
-{/* @edgejs
+<edgejs>
     ```js
     "prevalidate_cached_content": "10m",
     ```
-*/}
+</edgejs>
 
 #### Refresh Zero Byte Cache Files {/*refresh-zero-byte-cache-files*/}
 
@@ -589,11 +589,11 @@ Enabling this feature causes our edge server to re-fetch the asset from the orig
 
 **Default Behavior:** The default behavior is to serve valid cache assets upon request.
 
-{/* @edgejs
+<edgejs>
     ```js
     "refresh_zero_byte_cache_files": true,
     ```
-*/}
+</edgejs>
 
 #### Rewrite Cache Key {/*rewrite-cache-key*/}
 
@@ -617,14 +617,14 @@ Rewrites the cache-key associated with a request. Pass the following properties:
 
 **Default Behavior:** By default, a request's cache-key is determined by the request URI's relative path.
 
-{/* @edgejs
+<edgejs>
     ```js
     "cache_key_rewrite": {
 		"source": "/marketing/images/(.*)",
 		"destination": "/images/$1"
     }
     ```
-*/}
+</edgejs>
 
 #### Revalidate After Origin Unavailable {/*revalidate-after-origin-unavailable*/}
 
@@ -659,11 +659,11 @@ Determines how often, in seconds, the system will attempt to connect to an unava
 
 **Default Behavior:** By default, our CDN will not attempt to connect to your origin server while it is in stale mode.
 
-{/* @edgejs
+<edgejs>
     ```js
     "revalidate_while_stale_timer": 200,
     ```
-*/}
+</edgejs>
 
 #### Stale On Error {/*stale-on-error*/}
 
@@ -685,11 +685,13 @@ Improves performance by allowing our edge servers to serve stale content while r
 
 **Default Behavior:** Revalidation must take place before the requested content can be served.
 
-{/* @edgejs
+<edgejs>
     ```js
     "stale_while_revalidate": "10m",
     ```
+</edgejs>
 
+<!--
 
 ## Client
 
@@ -708,7 +710,8 @@ Client features control how the client communicates with our CDN.
     ```
 
     **Default Behavior:** By default, our CDN is agnostic with regards to the `alt-svc` response header.
-*/}
+
+-->
 
 ## Header
 
@@ -741,7 +744,7 @@ Adds one or more header(s) from the response. If the header already exists in th
     -   warning 
     -   All header names that start with "x-ec" are reserved.
 
-{/* @edgejs
+<edgejs>
     The following example sets or appends `basketball` to the `sports` response header:
 
     ```js
@@ -749,7 +752,7 @@ Adds one or more header(s) from the response. If the header already exists in th
 		"sports": "basketball"
     },
     ```
-*/}
+</edgejs>
 
 #### Debug Header {/*debug-header*/}
 
@@ -770,11 +773,11 @@ Our CDN returns debug cache response headers when both of the following are true
 
 **Default Behavior:** By default, the response excludes debug cache response headers.
 
-{/* @edgejs
+<edgejs>
     ```js
     "debug_header": true,
     ```
-*/}
+</edgejs>
 
 #### Set Request Headers {/*set-request-headers*/}
 
@@ -799,7 +802,7 @@ Sets or deletes one or more header(s) from a request. When setting a request hea
     -   x-forwarded-for
     -   All header names that start with "x-ec" are reserved.
 
-{/* @edgejs
+<edgejs>
 The following example:
 -   Sets the `sports` request header to `basketball` regardless of whether it was previously set to another value. 
 -   Appends ` ott` to the `broadcast` header's value. For example, if it were set to `network`, then the new value after this feature has been applied will be `network ott`.
@@ -810,7 +813,7 @@ The following example:
 		"+broadcast": " ott"
     },
     ```
-*/}
+</edgejs>
 
 #### Set Response Headers {/*set-response-headers*/}
 
@@ -843,7 +846,7 @@ Sets or deletes one or more header(s) from the response. When setting a response
     -   warning 
     -   All header names that start with "x-ec" are reserved.
 
-{/* @edgejs
+<!--
     The following example:
     -   Sets the `sports` response header to `basketball` regardless of whether it was previously set to another value. 
     -   Appends ` ott` to the `broadcast` header's value. For example, if it were set to `network`, then the new value after this feature has been applied will be `network ott`.
@@ -880,7 +883,7 @@ Sets or deletes one or more header(s) from the response. When setting a response
     ```
 
     **Default Behavior:** By default, a client's IP address is not logged within a custom request header. However, it is always logged within the `X-Forwarded-For` request header.
-*/}
+-->
 
 #### Remove Origin Response Headers {/*remove-origin-response-headers*/}
 
@@ -892,11 +895,11 @@ Deletes one or more header(s) from the response provided by an origin server.
 -   Use alphanumeric characters, dashes, or underscores when specifying a header name.
 -   Our service adds a set of reserved headers to each response. Although this feature removes a header from the response provided by the origin server, it does not affect whether our service will add a reserved header to the response. 
 
-{/* @edgejs
+<edgejs>
     ```js
     "remove_origin_response_headers": ["city", "state", "zipcode"],
     ```
-*/}
+</edgejs>
 
 #### Remove Response Headers {/*remove-response-headers*/}
 
@@ -923,7 +926,7 @@ Deletes one or more header(s) from a response.
     -   warning 
     -   All header names that start with "x-ec" are reserved.
 
-{/* @edgejs
+<edgejs>
     ```js
     "remove_response_headers": ["city", "state", "zipcode"],
     ```
@@ -939,7 +942,7 @@ Deletes one or more header(s) from a response.
     ```
 
     **Default Behavior:** By default, the response will not include a `Server-Timing` header.
-*/}
+</edgejs>
 
 ## Log
 
@@ -1010,7 +1013,7 @@ This feature masks a client's subnet by:
 
 **Default Behavior:** By default, the system logs a client's IP address without masking.
 
-{/* @edgejs
+<edgejs>
     ```js
     "mask_client_subnet": true,
     ```
@@ -1028,7 +1031,7 @@ Defines the maximum number of requests for a `Keep-Alive` connection before it i
 -   Specify this value as a whole integer. Do not include commas or periods in the specified value.
 -   Setting the maximum number of requests to a low value is strongly discouraged and may result in performance degradation.
 
-{/* @edgejs
+<edgejs>
 
 **Example:** 
 
@@ -1036,7 +1039,7 @@ Defines the maximum number of requests for a `Keep-Alive` connection before it i
 "max_keep_alive_requests": 12000,
 ```
 
-*/}
+</edgejs>
 
 **Default Behavior:** 10,000 requests
 
@@ -1050,7 +1053,7 @@ Defines the set of CDN-specific request headers that will be forwarded from an e
 -   Each CDN-specific request header defined in this feature will be forwarded to an origin server.
 -   Prevent a CDN-specific request header from being forwarded to an origin server by removing it from this list.
 
-{/* @edgejs
+<edgejs>
 
 **Example:** 
 
@@ -1058,7 +1061,7 @@ Defines the set of CDN-specific request headers that will be forwarded from an e
 "proxy_special_headers": ["X-Forwarded-For","X-Host","X-EC-Tag"]
 ```
 
-*/}
+</edgejs>
 
 **Default Behavior:** By default, all CDN-specific request headers are forwarded to the origin server.
 
@@ -1066,7 +1069,7 @@ Defines the set of CDN-specific request headers that will be forwarded from an e
 
 Defines the origin configuration to which requests will be forwarded when they cannot be served from cache.
 
-{/* @edgejs
+<edgejs>
 
 ```js
 "set_origin": string
@@ -1078,7 +1081,7 @@ Defines the origin configuration to which requests will be forwarded when they c
 "set_origin": "marketing"
 ```
 
-*/}
+</edgejs>
 
 **Default Behavior:** By default, requests that are not served from cache are served through either Serverless Compute or the origin configuration mapped to the request's hostname. 
 
@@ -1096,13 +1099,13 @@ Defines the set of media types (aka content type) that are eligible for edge ser
 -   Certain types of content, such as images, video, and audio media assets (e.g., JPG, MP3, MP4, etc.), are already compressed. Additional compression on these types of assets will not significantly diminish file size. Therefore, the compression of these types of assets is not recommended.
 -   Wildcard characters, such as asterisks, are not supported.
 
-{/* @edgejs
+<edgejs>
 
 ```js
 "compress_content_types": ["text/plain", "text/html", "text/css"],
 ```
 
-*/}
+</edgejs>
 
 #### Allow Prefetching of Uncached Content {/*allow-prefetching-of-uncached-content*/}
 
@@ -1110,11 +1113,11 @@ Determines whether prefetching will be allowed for cache misses.
 
 **Default Behavior:** By default, prefetching is allowed for cache misses.
 
-{/* @edgejs
+<edgejs>
     ```js
     "disable_prefetching_uncached_content": true
     ```
-*/}
+</edgejs>
 
 #### Set Done {/*set-done*/}
 
@@ -1128,13 +1131,13 @@ Omitting this feature allows:
 
 **Default Behavior:** By default, cache misses are forwarded to an origin server or to Serverless Compute. Additionally, responses are cached according to your caching policy.
 
-{/* @edgejs
+<edgejs>
     ```js
     "set_status_code": 200,
     "set_response_body": "<!DOCTYPE html><title>hi</title>",
     "set_done": true
     ```
-*/}
+</edgejs>
 
 #### Set Response Body {/*set-response-body*/}
 
@@ -1148,11 +1151,11 @@ Defines a custom response body.
 
 **Default Behavior:** By default, our CDN does not alter the response body sent to the client.
 
-{/* @edgejs
+<edgejs>
     ```js
     "set_response_body": "<!DOCTYPE html><title>hi</title>",
     ```
-*/}
+</edgejs>
 
 #### Set Status Code {/*set-status-code*/}
 
@@ -1160,11 +1163,11 @@ Defines the HTTP status code for the response sent to the client.
 
 **Default Behavior:** By default, the HTTP status code indicates how the request was handled. 
 
-{/* @edgejs
+<edgejs>
     ```js
     "set_status_code": 200,
     ```
-*/}
+</edgejs>
 
 ## Set Variables {/*set-variables*/}
 
@@ -1194,14 +1197,14 @@ This feature assigns a value to one or more user-defined variable(s) that are  p
 
 **Default Behavior:** By default, our CDN does not pass user variables. 
 
-{/* @edgejs
+<edgejs>
     ```js
     "set_variables": {
 		"traffic": "standard",
 		"event": "basketball"
     },
     ```
-*/}
+</edgejs>
 
 ## URL
 
@@ -1219,11 +1222,11 @@ Determines whether requests may be redirected to the hostname defined in the `Lo
 
 **Default Behavior:** By default, our edge servers will not follow the redirect defined in the `Location` response header returned by an origin server.
 
-{/* @edgejs
+<edgejs>
     ```js
     "follow_redirects": true,
     ```
-*/}
+</edgejs>
 
 #### URL Redirect {/*url-redirect*/}
 
@@ -1298,7 +1301,7 @@ This feature allows our edge servers to rewrite the URL without performing a tra
 
 **Default Behavior:** By default, requests are not rewritten.
 
-{/* @edgejs
+<edgejs>
 ```js
 "url_rewrite": [{
 "regex_rewrite_params": {
@@ -1307,7 +1310,7 @@ This feature allows our edge servers to rewrite the URL without performing a tra
 "syntax": "path-to-regexp"
 }]
 ```
-*/}
+</edgejs>
 
 ## HTTP Variables
 

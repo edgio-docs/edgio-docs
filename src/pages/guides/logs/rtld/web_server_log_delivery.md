@@ -47,7 +47,19 @@ RTLD may automatically deliver compressed log data to an AWS S3 bucket by submit
 
     <a id="aws-s3-prefix" />
 
--   You may define a prefix when setting up a log delivery profile. This prefix defines a virtual log file storage location and/or a prefix that will be added to each object added to your bucket. [Learn more.](#log-file-prefix)
+-   You may define a prefix when setting up a log delivery profile. This prefix defines a virtual log file storage location and/or a prefix that will be pre-pended to the name of each object added to your bucket. Use the following guidelines when setting this prefix:
+    
+    -   A prefix should not start with a forward slash.
+    -   A forward slash within the specified prefix is interpreted as a delimiter for a virtual directory.
+    -   A trailing forward slash means that the specified value only defines a virtual directory path within your bucket where logs will be stored. If the specified value ends in a character other than a forward slash, then the characters specified after the forward slash will be prepended to the file name for each log file uploaded to your destination.
+        
+    **Sample prefix:** `logs/CDN/siteA_`
+        
+    The above prefix will store log files in the following virtual directory: `/logs/CDN`
+        
+    The file name for each log file uploaded to your destination will start with `siteA_`.
+        
+    **Sample log file name:** `siteA_wpc_0001_123_20220111_50550000F98AB95B_1.json`
 
 **To set up AWS S3 log delivery**
 
@@ -131,7 +143,19 @@ RTLD may automatically deliver compressed log data to an Azure Blob Storage cont
     
         `sv=2018-03-28&sr=c&si=myblobReadWritekey1\_123456789012345678&sig=a1bCDefghijklMnOpqrsTuv2wXYzABc3d34efGHIjkL%5M`
     
--   You may define a prefix when setting up a log delivery profile. This prefix defines a virtual log file storage location and/or a prefix that will be added to each object added to your bucket. [Learn more.](#log-file-prefix)
+-   You may define a prefix when setting up a log delivery profile. This prefix defines a virtual log file storage location and/or a prefix that will be pre-pended to the name of each object added to your bucket. Use the following guidelines when setting this prefix:
+    
+    -   A prefix should not start with a forward slash.
+    -   A forward slash within the specified prefix is interpreted as a delimiter for a virtual directory.
+    -   A trailing forward slash means that the specified value only defines a virtual directory path within your bucket where logs will be stored. If the specified value ends in a character other than a forward slash, then the characters specified after the forward slash will be prepended to the file name for each log file uploaded to your destination.
+        
+    **Sample prefix:** `logs/CDN/siteA_`
+        
+    The above prefix will store log files in the following virtual directory: `/logs/CDN`
+        
+    The file name for each log file uploaded to your destination will start with `siteA_`.
+        
+    **Sample log file name:** `siteA_wpc_0001_123_20220111_50550000F98AB95B_1.json`
 
 **To set up Azure Blob Storage log delivery**
 
@@ -181,7 +205,20 @@ RTLD may automatically deliver compressed log data to a Google Cloud Storage buc
         [View Google Cloud Storage documentation on how to set up an IAM policy for a bucket.](https://cloud.google.com/storage/docs/access-control/using-iam-permissions)
     
     [View Google Cloud Storage documentation on how to create a bucket.](https://cloud.google.com/storage/docs/creating-buckets)
--   You may define a prefix when setting up a log delivery profile. This prefix defines a virtual log file storage location and/or a prefix that will be added to each object added to your bucket. [Learn more.](#log-file-prefix)
+
+-   You may define a prefix when setting up a log delivery profile. This prefix defines a virtual log file storage location and/or a prefix that will be pre-pended to the name of each object added to your bucket. Use the following guidelines when setting this prefix:
+    
+    -   A prefix should not start with a forward slash.
+    -   A forward slash within the specified prefix is interpreted as a delimiter for a virtual directory.
+    -   A trailing forward slash means that the specified value only defines a virtual directory path within your bucket where logs will be stored. If the specified value ends in a character other than a forward slash, then the characters specified after the forward slash will be prepended to the file name for each log file uploaded to your destination.
+        
+    **Sample prefix:** `logs/CDN/siteA_`
+        
+    The above prefix will store log files in the following virtual directory: `/logs/CDN`
+        
+    The file name for each log file uploaded to your destination will start with `siteA_`.
+        
+    **Sample log file name:** `siteA_wpc_0001_123_20220111_50550000F98AB95B_1.json`
 
 **To set up Google Cloud Storage log delivery**
 

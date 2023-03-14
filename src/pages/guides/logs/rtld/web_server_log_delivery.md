@@ -49,7 +49,7 @@ RTLD may automatically deliver compressed log data to an AWS S3 bucket by submit
 
 -   You may define a prefix when setting up a log delivery profile. This prefix defines a virtual log file storage location and/or a prefix that will be added to each object added to your bucket. [Learn more.](#log-file-prefix)
 
-**To prepare AWS S3 for log delivery**
+**To set up AWS S3 log delivery**
 
 1.  Create or identify an AWS S3 bucket to which log data will be posted.
     
@@ -59,7 +59,7 @@ RTLD may automatically deliver compressed log data to an AWS S3 bucket by submit
     
     [View AWS documentation on how to add a bucket policy.](https://docs.aws.amazon.com/AmazonS3/latest/userguide/add-bucket-policy.html)
 
-    ```Bucket Policy
+    ```AWS-S3-Bucket-Policy
     {
     	"Version": "2012-10-17",
     	"Statement": \[{
@@ -83,7 +83,7 @@ RTLD may automatically deliver compressed log data to an AWS S3 bucket by submit
     }
     ```
     
-    Replace the term "BUCKET-NAME" in lines 16 and 17 with the name of the AWS S3 bucket to which this policy is being applied.
+    Replace the term `BUCKET-NAME` in lines 16 and 17 with the name of the AWS S3 bucket to which this policy is being applied.
     
 3.  If you have enabled server-side encryption on the AWS S3 bucket identified in step 1, then you must also enable default bucket encryption.
     
@@ -114,6 +114,9 @@ RTLD may automatically deliver compressed log data to an Azure Blob Storage cont
         [Get started.](https://azure.microsoft.com/en-us/services/storage/blobs/)
     
     -   A container to which log data will be uploaded.
+
+        <a id="azure-blob-container-url" />
+
     -   A base URL that points to your container.
     
         **Blob Container URL:** `https://Storage Account.blob.core.windows.net/<CONTAINER>`
@@ -130,7 +133,7 @@ RTLD may automatically deliver compressed log data to an Azure Blob Storage cont
     
 -   You may define a prefix when setting up a log delivery profile. This prefix defines a virtual log file storage location and/or a prefix that will be added to each object added to your bucket. [Learn more.](#log-file-prefix)
 
-**To prepare Azure Blob Storage for log delivery**
+**To set up Azure Blob Storage log delivery**
 
 1.  Create or identify an Azure storage account and a container to which log data will be posted.
     
@@ -166,7 +169,7 @@ RTLD may automatically deliver compressed log data to a Google Cloud Storage buc
 
 **Key information:**
 
--   RTLD applies gzip compression to log data. Google Cloud Storage stores compressed log data as an object with a gz file extension. [Learn more.](#NamingConvention)
+-   RTLD applies gzip compression to log data. Google Cloud Storage stores compressed log data as an object with a `gz` file extension. [Learn more.](#log-file-naming-convention)
 -   Configure your Google Cloud Storage bucket as follows:
 
     -   The recommended configuration is to set the **Access control** option to `Uniform`.
@@ -180,7 +183,7 @@ RTLD may automatically deliver compressed log data to a Google Cloud Storage buc
     [View Google Cloud Storage documentation on how to create a bucket.](https://cloud.google.com/storage/docs/creating-buckets)
 -   You may define a prefix when setting up a log delivery profile. This prefix defines a virtual log file storage location and/or a prefix that will be added to each object added to your bucket. [Learn more.](#log-file-prefix)
 
-**To prepare Google Cloud Storage for log delivery**
+**To set up Google Cloud Storage log delivery**
 
 1.  Create or identify a Google Cloud Storage bucket to which log data will be posted.
 
@@ -198,11 +201,116 @@ RTLD may automatically deliver compressed log data to a Google Cloud Storage buc
 
 ## New Relic {/*new-relic-log-delivery*/}
 
+RTLD may automatically deliver compressed log data to your New Relic account by submitting HTTPS POST requests to it. Each request represents a compressed JSON or CSV document that uniquely identifies a set of log data and describes one or more log entries.
 
+The format for log data delivered to New Relic is JSON Array. This log format does not provide information that uniquely identifies a set of log data. As a result, there is no way to check for gaps in sequence numbers when attempting to identify missing log data.
+
+<Callout type="tip">
+
+  You must define an event type when setting up a log delivery profile. Query delivered log data by constructing a NRQL that selects data using this event type label (e.g., `SELECT \* FROM Event Type`).
+
+</Callout>
+
+<!--
+RTLD CDN and RTLD Rate Limiting support delivery to the New Relic destination.
+-->
+
+**To set up New Relic log delivery**
+
+1.  Optional. Register an Inserts insight API key that is dedicated for RTLD log delivery.
+    
+    [View New Relic documentation on how to register an Inserts insight API key.](https://docs.newrelic.com/docs/telemetry-data-platform/ingest-manage-data/ingest-apis/introduction-event-api/)
+    
+2.  [Create a log delivery profile](#managing-log-delivery-profiles) for New Relic.
 
 ## Splunk Enterprise {/*splunk-enterprise-log-delivery*/}
 
+RTLD may automatically deliver compressed log data to Splunk Enterprise by submitting HTTPS POST requests to it. The Splunk HTTP Event Collector (HEC) will collect and log each request. Each request contains a compressed JSON document that describes one or more log entries.
+
+The format for log data delivered to Splunk Enterprise is JSON Lines. This log format does not provide information that uniquely identifies a set of log data. As a result, there is no way to check for gaps in sequence numbers when attempting to identify missing log data.
+
+**Key information:**
+
+-   The prerequisite for log delivery are:
+    -   Splunk Enterprise 7.x
+    -   Your instance of Splunk Enterprise 7.x must be secured with SSL.
+    -   SSL must be enabled on the HTTP Event Collector.
+        
+    For information on how to set up Splunk Enterprise, please refer to [their documentation](https://docs.splunk.com/Documentation).
+
+**To set up Splunk Enterprise log delivery**
+
+1.  Set up Splunk Enterprise's HTTP Event Collector to accept CDN log data in JSON format.
+
+    1.  From with Splunk Enterprise, click **Settings** and then **Add Data**.
+
+        ![](/images/logs/splunk-1.png?width=500)
+        
+    3.  Click **Monitor**.
+        
+        ![](/images/logs/splunk-2.png?width=500)
+        
+    4.  Click **HTTP Event Collector**.
+        
+        ![](/images/logs/splunk-3.png?width=500)
+        
+    5.  In the **Name** option, define a name for the CDN log data that will be collected.
+        
+        ![](/images/logs/splunk-4.png?width=500)
+        
+    6.  Click **Next >**.
+    7.  Click **Select** to display the **Select Source Type** option. Click that option, type `\_json` to filter source types, and then select it.
+        
+        ![](/images/logs/splunk-5.png?width=500)
+        
+    8.  Click **Review**.
+    9.  Click **Submit >** to finish setting up the HTTP Event Collector. An HEC token will be generated. Use this token to authorize requests posted to the HEC.
+
+2.  Perform the following steps if you have hosted Splunk Enterprise within your network:
+    
+    1.  Configure your firewall to allow POST requests from the following IP blocks:
+        
+    2.  Set up support for the HTTPS protocol.
+        
+        Log delivery requires a certificate whose trust anchor is a publicly trusted certificate authority (CA). Additionally, the certificate must include a chain of trust for all intermediate certificate(s) and a leaf certificate.
+
+3.  [Create a log delivery profile](#managing-log-delivery-profiles) for Splunk Enterprise.
+
 ## Sumo Logic {/*sumo-logic-log-delivery*/}
+
+RTLD may automatically deliver compressed log data to Sumo Logic by submitting HTTPS POST requests to it. Sumo Logic will collect these requests as they are pushed from the CDN. Each request represents a compressed JSON document that describes one or more log entries.
+
+The format for log data delivered to Sumo Logic is JSON Lines. This log format does not provide information that uniquely identifies a set of log data. As a result, there is no way to check for gaps in sequence numbers when attempting to identify missing log data.
+
+**To set up Sumo Logic log delivery**
+
+1.  Set up Sumo Logic to listen for CDN log data in JSON format.
+    
+    1.  Log in to Sumo Logic.
+    2.  Click **Setup Wizard**.
+        
+        ![](/images/logs/sumo-logic-1.png?width=500)
+        
+    3.  Click **Set Up Streaming Data**.
+        
+        ![](/images/logs/sumo-logic-2.png?width=500)
+        
+    4.  Click **Your Custom App**.
+        
+        ![](/images/logs/sumo-logic-3.png?width=500)
+        
+    5.  Click **HTTP Source**.
+        
+        ![](/images/logs/sumo-logic-4.png?width=500)
+        
+    6.  In the **Source Category** option, type the name of the tag that will be applied to CDN log data. This tag may be used to search for CDN log data within Sumo Logic.
+        
+        ![](/images/logs/sumo-logic-5.png?width=500)
+        
+    7.  Click **Continue**. An HTTP Source for CDN log data will be created.
+    8.  Copy the URL associated with this HTTP Source.
+
+2.  [Create a log delivery profile](#managing-log-delivery-profiles) for Sumo Logic.
 
 ## Web Server Log Delivery {/*web-server-log-delivery*/}
 
@@ -281,22 +389,48 @@ TODO: Info about setting up destination.
 
     -   [Azure Blob Storage](#azure-blob-storage-log-delivery)
 
+        1.  Set the **Blob Container URL** option to a [URL that points to the container](#azure-blob-container-url) to which log data will be posted.
+    
+        2.  Optional. Set the **Prefix** option to a value that defines a virtual log file storage location and/or a prefix that will be added to each log file added to your container.
+
+        [Learn more.](#log-file-prefix)
+    
+        3.  From the **Access Type** option, select whether log data uploads will be authorized via a SAS token or an access key and then paste it in the field below it.
+    
+        If you plan on providing a SAS token, make sure that the token has permission to write to the blob/container. Additionally, it should start with `sv=` and it should not include a `?`.
 
     -   [Datadog](#datadog-log-delivery)
 
+        1.  From the **Datadog Site** option, select the Datadog location to which log data will be delivered.
+        2.  From the **Datadog API Key** option, paste your Datadog API key. This API key authorizes our service to upload log data to Datadog.
+        3.  From the **Datadog Service Attribute Value** option, type a value that identifies the data delivered as a result of this profile. Our service sets Datadog's service reserved attribute to this value.
 
     -   [Google Cloud Storage](#google-cloud-storage-log-delivery)
 
+        1.  Set the **Bucket** option to the name of the Google Cloud Storage bucket to which log data will be posted.
+        2.  Optional. Set the **Prefix** option to the desired prefix that defines a virtual log file storage location and/or a prefix that will be added to each object added to your bucket.
+    
+            [Learn more.](#aws-s3-prefix)
 
     -   [New Relic](#new-relic-log-delivery)
 
+        1.  Set the **Account ID** option to your New Relic account ID.
+        2.  Set the **Event Type** option to a label that identifies log data delivered to New Relic as a result of this profile. Specify a label that solely consists of alphanumeric characters, underscores, and colons.
+        3.  Set the **Insert Key** option to an Inserts insight API key.
 
     -   [Splunk Enteprise](#splunk-enterprise-log-delivery)
 
+        1.  Set the **Splunk URL** option to a URL that points to your Splunk Enterprise's HTTP Event Collector configuration.
+    
+            **Default URL syntax:** `https://<SPLUNK ENTERPRISE HOSTNAME>:<PORT>/services/collector/raw`
+    
+             Replace `<SPLUNK ENTERPRISE HOSTNAME>` with the hostname where your instance of Splunk Enterprise is hosted. Replace `<PORT>` with the port number (e.g., `8088`) that the HTTP Event Collector is listening for data. This port number may be configured when defining your HEC's global settings.
+
+        2.  Set the **HEC Token** option to the token generated for your HTTP Event Collector configuration.
 
     -   [Sumo Logic](#sumo-logic-log-delivery)
 
-
+        In the **Sumo Logic URL** option, paste the URL associated with your [HTTP Source](#sumo-logic-log-delivery).
 
     -   [Web Server (HTTP POST):](#web-server-log-delivery)
 

@@ -493,7 +493,7 @@ export default new Router()
 ```
 
 ### setQueryDuplicatesToArrayOnly {*set-query-duplicates-to-array-only*/}
-This option allows you to change the way duplicate query and next parameters are parsed by the renderNextPage function.
+This option allows you to change the way duplicate query and next parameters are parsed by the `renderNextPage` function.
 By default, the duplicate query parameters are parsed as array and strings with an index in the name. Set it to `true` to parse them only as an array.
 
 ```js filename='routes.js'

@@ -289,7 +289,7 @@ The format for log data delivered to Sumo Logic is JSON Lines. This log format d
     1.  Log in to Sumo Logic.
     2.  Click **Setup Wizard**.
         
-        ![](/images/logs/sumo-logic-1.png?width=500)
+        ![](/images/logs/sumo-logic-1.png)
         
     3.  Click **Set Up Streaming Data**.
         
@@ -297,7 +297,7 @@ The format for log data delivered to Sumo Logic is JSON Lines. This log format d
         
     4.  Click **Your Custom App**.
         
-        ![](/images/logs/sumo-logic-3.png?width=500)
+        ![](/images/logs/sumo-logic-3.png)
         
     5.  Click **HTTP Source**.
         
@@ -305,7 +305,7 @@ The format for log data delivered to Sumo Logic is JSON Lines. This log format d
         
     6.  In the **Source Category** option, type the name of the tag that will be applied to CDN log data. This tag may be used to search for CDN log data within Sumo Logic.
         
-        ![](/images/logs/sumo-logic-5.png?width=500)
+        ![](/images/logs/sumo-logic-5.png)
         
     7.  Click **Continue**. An HTTP Source for CDN log data will be created.
     8.  Copy the URL associated with this HTTP Source.
@@ -393,11 +393,11 @@ TODO: Info about setting up destination.
     
         2.  Optional. Set the **Prefix** option to a value that defines a virtual log file storage location and/or a prefix that will be added to each log file added to your container.
 
-        [Learn more.](#log-file-prefix)
+            [Learn more.](#log-file-prefix)
     
         3.  From the **Access Type** option, select whether log data uploads will be authorized via a SAS token or an access key and then paste it in the field below it.
     
-        If you plan on providing a SAS token, make sure that the token has permission to write to the blob/container. Additionally, it should start with `sv=` and it should not include a `?`.
+            If you plan on providing a SAS token, make sure that the token has permission to write to the blob/container. Additionally, it should start with `sv=` and it should not include a `?`.
 
     -   [Datadog](#datadog-log-delivery)
 
@@ -436,13 +436,13 @@ TODO: Info about setting up destination.
 
         1.  Set the **Request URL** option to a URL that may leverage the workflow defined in the [To prepare your web servers for log delivery procedure](#prepare-web-servers-for-log-delivery). This URL must use the HTTPS protocol.
 
-        <Callout type="info">
+            <Callout type="info">
 
-          Specify a custom port to deliver log data over that port instead of 443.
+              Specify a custom port to deliver log data over that port instead of 443.
 
-        </Callout>
+            </Callout>
     
-        **Sample URL:** `https://logs.mydomain.com/cdn/logs.aspx`
+            **Sample URL:** `https://logs.mydomain.com/cdn/logs.aspx`
     
         2.  From the **Authentication Type** option, select one of the following modes:
     

@@ -500,24 +500,12 @@
           "path": "logs/rtld",
           "routes": [
             {
-              "title": "Web Server Log Delivery",
-              "path": "logs/rtld/web_server_log_delivery"
-            },
-            {
               "title": "AWS S3 Log Delivery",
               "path": "logs/rtld/aws_s3_log_delivery"
             },
             {
               "title": "Azure Blob Storage Log Delivery",
               "path": "logs/rtld/azure_blob_storage_log_delivery"
-            },
-            {
-              "title": "Splunk Enterprise Log Delivery",
-              "path": "logs/rtld/splunk_enterprise_log_delivery"
-            },
-            {
-              "title": "Sumo Logic Log Delivery",
-              "path": "logs/rtld/sumo_logic_log_delivery"
             },
             {
               "title": "Datadog Log Delivery",
@@ -528,8 +516,24 @@
               "path": "logs/rtld/google_cloud_storage_log_delivery"
             },
             {
+              "title": "Splunk Enterprise Log Delivery",
+              "path": "logs/rtld/splunk_enterprise_log_delivery"
+            },
+            {
+              "title": "Sumo Logic Log Delivery",
+              "path": "logs/rtld/sumo_logic_log_delivery"
+            },
+            {
               "title": "New Relic Log Delivery",
               "path": "logs/rtld/new_relic_log_delivery"
+            },
+            {
+              "title": "Web Server Log Delivery",
+              "path": "logs/rtld/web_server_log_delivery"
+            },
+            {
+              "title": "",
+              "path": ""
             },
             {
               "title": "Log Data Verification",

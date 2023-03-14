@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import {useRouter} from 'next/router';
 import * as React from 'react';
 import styled from 'styled-components';
 
@@ -89,6 +90,8 @@ export function Toc({
 }: {
   headings: Array<{url: string; text: React.ReactNode; depth: number}>;
 }) {
+  const router = useRouter();
+  const {asPath} = router;
   const {
     version: {toPath},
   } = useConditioning();
@@ -103,13 +106,19 @@ export function Toc({
           <div className="toc">
             <ul className="docs-toc__listItems">
               {headings.map((h, i) => {
+                // `h.url` is the anchor link for the heading
+                // so we need to prepend the current path to it
+                let path = h.url;
+                if (path.length) {
+                  path = asPath.split('#')[0] + path;
+                }
                 return (
                   <li
                     key={`heading-${h.url}-${i}`}
                     data-selected={i === selectedIndex}
                     data-depth={h.depth && h.depth < 4 ? h.depth : -1}
                     className="docs-toc__listItem">
-                    <Link href={toPath(h.url)}>
+                    <Link href={toPath(path)}>
                       <a>{h.text}</a>
                     </Link>
                   </li>

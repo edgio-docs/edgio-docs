@@ -45,7 +45,10 @@ function useConditioning(): IConditioning {
         versionConfig.pathPrefix.length
           ? versionConfig.pathPrefix
           : guidesPrefix,
-        ...path.replace('guides', '').split('/'),
+        ...path
+          .replace('/guides/', '/')
+          .replace(`/${versionConfig.pathPrefix}/`, '/')
+          .split('/'),
       ]
         .filter(Boolean)
         .join('/');

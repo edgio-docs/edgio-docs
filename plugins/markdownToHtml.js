@@ -12,6 +12,7 @@ const remarkMdxCodeMeta = require('remark-mdx-code-meta');
 //   extendedTableHandlers,
 // } = require('remark-extended-table');
 // const embed = require('mdx-embed');
+const remarkGfm = require('remark-gfm');
 
 module.exports = {
   remarkPlugins: [
@@ -21,6 +22,7 @@ module.exports = {
     unrwapImages,
     smartyPants,
     remarkMdxCodeMeta,
+    remarkGfm,
     // embed
   ],
   markdownToHtml,

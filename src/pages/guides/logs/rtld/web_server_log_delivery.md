@@ -31,12 +31,11 @@ PLACEHOLDER
 
 RTLD may automatically deliver compressed log data to an AWS S3 bucket by submitting HTTPS PUT requests to it. Each request adds an object to the bucket. This object contains a compressed JSON or CSV document that uniquely identifies a set of log data and describes one or more log entries.
 
-
 **Key information:**
 
--   RTLD applies gzip compression to log data. AWS S3 stores compressed log data as an object with a gz file extension.
+-   RTLD applies gzip compression to log data. AWS S3 stores compressed log data as an object with a `gz` file extension.
     
-    [Learn more.](#NamingConvention)
+    [Learn more.](#log-file-naming-convention)
     
 -   AWS S3 may automatically decompress files downloaded via the S3 Management Console into JSON or CSV files. No additional decompression is required to process this data.
 -   RTLD requires a [bucket policy](#bucketpolicy) that authorizes our service to upload content to your bucket.
@@ -48,19 +47,7 @@ RTLD may automatically deliver compressed log data to an AWS S3 bucket by submit
 
     <a id="aws-s3-prefix" />
 
--   You must define a prefix when setting up a log delivery profile. This prefix defines a virtual log file storage location and/or a prefix that will be added to each object added to your bucket.
-    
-        *   A prefix should not start with a forward slash.
-        *   A forward slash within the specified prefix is interpreted as a delimiter for a virtual directory.
-        *   A trailing forward slash means that the specified value only defines a virtual directory path within your AWS S3 bucket where logs will be stored. If the specified value ends in a character other than a forward slash, then the characters specified after the forward slash will be prepended to the file name for each log file uploaded to AWS S3.
-        
-        **Sample prefix:** `logs/CDN/siteA\_`
-        
-        The above prefix will store log files in the following virtual directory: `/logs/CDN`
-        
-        The file name for each log file uploaded to AWS S3 will start with `siteA\_`.
-        
-        **Sample log file name:** `siteA\_adn\_0001\_123\_20220111\_50550000F98AB95B\_1.json`
+-   You may define a prefix when setting up a log delivery profile. This prefix defines a virtual log file storage location and/or a prefix that will be added to each object added to your bucket. [Learn more.](#log-file-prefix)
 
 **To prepare AWS S3 for log delivery**
 
@@ -70,8 +57,9 @@ RTLD may automatically deliver compressed log data to an AWS S3 bucket by submit
     
 2.  Apply the following bucket policy to the AWS S3 bucket identified in step 1. This bucket policy authorizes our service to upload content to your bucket.
     
-    [View AWS documentation on how to add a bucket policy.](http://docs.aws.amazon.com/AmazonS3/latest/user-guide/add-bucket-policy.html)
-    
+    [View AWS documentation on how to add a bucket policy.](https://docs.aws.amazon.com/AmazonS3/latest/userguide/add-bucket-policy.html)
+
+    ```Bucket Policy
     {
     	"Version": "2012-10-17",
     	"Statement": \[{
@@ -87,14 +75,15 @@ RTLD may automatically deliver compressed log data to an AWS S3 bucket by submit
     				"s3:PutObjectACL"
     			\],
     			"Resource": \[
-    				"arn:aws:s3:::Bucket-Name",
-    				"arn:aws:s3:::Bucket-Name/\*"
+    				"arn:aws:s3:::BUCKET-NAME",
+    				"arn:aws:s3:::BUCKET-NAME/\*"
     			\]
     		}
     	\]
     }
+    ```
     
-    Replace the term "_Bucket-Name_" in lines 16 and 17 with the name of the AWS S3 bucket to which this policy is being applied.
+    Replace the term "BUCKET-NAME" in lines 16 and 17 with the name of the AWS S3 bucket to which this policy is being applied.
     
 3.  If you have enabled server-side encryption on the AWS S3 bucket identified in step 1, then you must also enable default bucket encryption.
     
@@ -110,11 +99,106 @@ RTLD may automatically deliver compressed log data to an AWS S3 bucket by submit
 
 ## Azure Blob Storage {/*azure-blob-storage-log-delivery*/}
 
+RTLD may automatically deliver compressed log data to an Azure Blob Storage container by submitting HTTPS PUT requests to it. Each request creates a block blob within the container. This block blob contains a compressed JSON or CSV document that uniquely identifies a set of log data and describes one or more log entries.
+
+**Key information:**
+
+-   RTLD applies gzip compression to log data. Azure Blob Storage stores compressed log data as an object with a `gz` file extension.
+    
+    [Learn more.](#log-file-naming-convention)
+    
+-   Setting up log delivery to Azure Blob Storage requires:
+
+    -   An existing Azure Blob Storage account.
+    
+        [Get started.](https://azure.microsoft.com/en-us/services/storage/blobs/)
+    
+    -   A container to which log data will be uploaded.
+    -   A base URL that points to your container.
+    
+        **Blob Container URL:** `https://Storage Account.blob.core.windows.net/<CONTAINER>`
+    
+        **Sample Blob Container URL:** `https://myaccount.blob.core.windows.net/mycontainer`
+    
+    -   Either a SAS token or an access key through which our service will authorize requests to upload content to your Azure Blob Storage account.
+    
+        If you plan on providing a SAS token, make sure that the token has permission to write to the blob/container. Additionally, it should start with sv= and it should not include a ?.
+    
+        **Sample SAS token:**
+    
+        `sv=2018-03-28&sr=c&si=myblobReadWritekey1\_123456789012345678&sig=a1bCDefghijklMnOpqrsTuv2wXYzABc3d34efGHIjkL%5M`
+    
+-   You may define a prefix when setting up a log delivery profile. This prefix defines a virtual log file storage location and/or a prefix that will be added to each object added to your bucket. [Learn more.](#log-file-prefix)
+
+**To prepare Azure Blob Storage for log delivery**
+
+1.  Create or identify an Azure storage account and a container to which log data will be posted.
+    
+    [View Microsoft Azure documentation on how to create a storage account.](https://docs.microsoft.com/en-us/azure/storage/common/storage-quickstart-create-account)
+    
+2.  Identify or configure how requests submitted will be submitted by RTLD will be authorized. 
+
+    RTLD supports authorization through a SAS token or an access key.
+
+    <Callout type="info">
+
+      If you plan on providing a SAS token, make sure that the token has permission to write to the blob/container. Additionally, it should start with `sv=` and it should not include a `?`.
+
+    </Callout>
+
+3.  [Create a log delivery profile](#managing-log-delivery-profiles) for Azure Blob Storage.
+
 ## Datadog {/*datadog-log-delivery*/}
+
+RTLD may automatically deliver compressed log data to Datadog by submitting HTTPS POST requests to it. Datadog will collect these requests as they are pushed from the CDN. Each request contains a compressed JSON document that describes one or more log entries.
+
+The format for log data delivered to Datadog is JSON Array. This log format does not provide information that uniquely identifies a set of log data. As a result, there is no way to check for gaps in sequence numbers when attempting to identify missing log data.
+
+**To prepare Datadog for log delivery**
+
+1.  From within the Datadog portal, copy your API key.
+2.  Identify the Datadog location to which log data will be delivered.
+3.  [Create a log delivery profile](#managing-log-delivery-profiles) for Datadog.
 
 ## Google Cloud Storage {/*google-cloud-storage-log-delivery*/}
 
+RTLD may automatically deliver compressed log data to a Google Cloud Storage bucket by submitting HTTPS PUT requests to it. Each request adds an object to a Cloud Storage bucket. This object contains a compressed JSON or CSV document that uniquely identifies a set of log data and describes one or more log entries.
+
+**Key information:**
+
+-   RTLD applies gzip compression to log data. Google Cloud Storage stores compressed log data as an object with a gz file extension. [Learn more.](#NamingConvention)
+-   Configure your Google Cloud Storage bucket as follows:
+
+    -   The recommended configuration is to set the **Access control** option to `Uniform`.
+    -   Set the **Encryption** option to a Google-managed encryption key.
+    -   Authorize RTLD to upload content by adding the following user with the **Storage Object Creator** role:
+
+        `vdms-partner-gcs-transfer@maw-partner-gcs.iam.gserviceaccount.com`
+    
+        [View Google Cloud Storage documentation on how to set up an IAM policy for a bucket.](https://cloud.google.com/storage/docs/access-control/using-iam-permissions)
+    
+    [View Google Cloud Storage documentation on how to create a bucket.](https://cloud.google.com/storage/docs/creating-buckets)
+-   You may define a prefix when setting up a log delivery profile. This prefix defines a virtual log file storage location and/or a prefix that will be added to each object added to your bucket. [Learn more.](#log-file-prefix)
+
+**To prepare Google Cloud Storage for log delivery**
+
+1.  Create or identify a Google Cloud Storage bucket to which log data will be posted.
+
+2.  Add the following user to the bucket and assign it the **Storage Object Creator** role:
+    
+    `vdms-partner-gcs-transfer@maw-partner-gcs.iam.gserviceaccount.com`
+    
+3.  Optional. Set up Google Cloud to process the log data that will be posted to it.
+    
+    **Example:**
+    
+    Load logs into [BigQuery](https://cloud.google.com/storage/docs/access-logs) and then leverage BigQuery functionality through the [BigQuery Browser Tool](https://cloud.google.com/bigquery/bigquery-browser-tool).
+
+4.  [Create a log delivery profile](#managing-log-delivery-profiles) for Google Cloud Storage.
+
 ## New Relic {/*new-relic-log-delivery*/}
+
+
 
 ## Splunk Enterprise {/*splunk-enterprise-log-delivery*/}
 
@@ -191,16 +275,28 @@ TODO: Info about setting up destination.
 
         2.  Optional. Set the **Prefix** option to the desired prefix that defines a virtual log file storage location and/or a prefix that will be added to each object added to your bucket.
     
-        [Learn more.](#aws-s3-prefix)
+            [Learn more.](#aws-s3-prefix)
 
         3.  From the **AWS Region** option, select the region assigned to the AWS S3 bucket.
 
     -   [Azure Blob Storage](#azure-blob-storage-log-delivery)
+
+
     -   [Datadog](#datadog-log-delivery)
+
+
     -   [Google Cloud Storage](#google-cloud-storage-log-delivery)
+
+
     -   [New Relic](#new-relic-log-delivery)
+
+
     -   [Splunk Enteprise](#splunk-enterprise-log-delivery)
+
+
     -   [Sumo Logic](#sumo-logic-log-delivery)
+
+
 
     -   [Web Server (HTTP POST):](#web-server-log-delivery)
 
@@ -229,14 +325,6 @@ TODO: Info about setting up destination.
             **Authorization header syntax:** `Authorization: Basic <BASE64-ENCODED CREDENTIALS>`
         
         -   **None:** Select this mode if your web server(s) allow content to be posted without authorization.
-
-    -   [:](#)
-    -   [:](#)
-    -   [:](#)
-    -   [:](#)
-    -   [:](#)
-    -   [:](#)
-    -   [:](#)
 
 5.  From the **Log Format** option, select whether to format log data using our standard JSON format, as a JSON array, as JSON lines, or as a CSV (RTLD CDN only).
     
@@ -509,7 +597,7 @@ You may filter by:
             Set it to a blank value.
 -->
 
-### Log File Naming Convention
+## Log File Naming Convention {/*log-file-naming-convention*/}
 
 Your destination determines whether log data is stored within a database or as an object within cloud storage. Log data is stored as individual objects for the following destinations:
  
@@ -519,11 +607,11 @@ Your destination determines whether log data is stored within a database or as a
 
 Log data stored within an object is compressed using gzip. Each object follows this naming convention:
 
-`[&lt;LOG TYPE>](#Type)_[&lt;AN>](#AN)_[&lt;PROFILE ID>](#ProfileID)_[&lt;DATE STAMP>](#DateStamp)_[&lt;AGENT ID>](#AgentID)_[&lt;SEQUENCE NUMBER>](#SequenceNumber).[&lt;FILE EXTENSION>](#FileExtension).gz`
+`<PREFIX><LOG TYPE>_<AN>_<PROFILE ID>_<DATE STAMP>_<AGENT ID>_<SEQUENCE NUMBER>.<FILE EXTENSION>.gz`
 
 The JSON document contained within an object follows this naming convention:
 
-`[Log Type](#Type)_[AN](#AN)_[Profile ID](#ProfileID)_[Date Stamp](#DateStamp)_[Agent ID](#AgentID)_[Sequence Number](#SequenceNumber).[File Extension](#FileExtension)`
+`<LOG TYPE>_<AN>_<PROFILE ID>_<DATE STAMP>_<AGENT ID>_<SEQUENCE NUMBER>.<FILE EXTENSION>`
 
 **Sample file name (RTLD CDN - JSON log format):** `wpc_0001_123_20220111_50550000F98AB95B_1.json`
 
@@ -533,11 +621,32 @@ The JSON document contained within an object follows this naming convention:
 
 Each of the above file naming variables are described below.
 
--   `<LOG TYPE>`**:** Represents the type of log data.
-    -   RTLD Rate Limiting: This variable is always set to rl.
-    -   RTLD WAF: This variable is always set to waf.
+<a id="log-file-prefix" />
 
--   `<AN>`**:** Represents your CDN account number (e.g., 0001). This account number may be viewed from the upper-right hand corner of the MCC.
+-   `<PREFIX>`**:** You may define a prefix when setting up a log delivery profile. This prefix defines a virtual log file storage location and/or a prefix that will be added to each object added to your bucket.
+    
+    -   A prefix should not start with a forward slash.
+    -   A forward slash within the specified prefix is interpreted as a delimiter for a virtual directory.
+    -   A trailing forward slash means that the specified value only defines a virtual directory path within your bucket where logs will be stored. If the specified value ends in a character other than a forward slash, then the characters specified after the forward slash will be prepended to the file name for each log file uploaded to your destination.
+        
+    **Sample prefix:** `logs/CDN/siteA_`
+        
+    The above prefix will store log files in the following virtual directory: `/logs/CDN`
+        
+    The file name for each log file uploaded to your destination will start with `siteA_`.
+        
+    **Sample log file name:** `siteA_wpc_0001_123_20220111_50550000F98AB95B_1.json`
+
+-   `<LOG TYPE>`**:** Represents the type of log data.
+
+    -   **RTLD CDN:** This variable is always set to `wpc`.
+
+<!--
+    -   **RTLD Rate Limiting:** This variable is always set to `rl`.
+    -   **RTLD WAF:** This variable is always set to `waf`.
+-->
+
+-   `<AN>`**:** Represents your CDN account number (e.g., 0001).
 -   `<PROFILE ID>`**:** Represents the system-defined ID for your Real-Time Log Delivery configuration.
 
     <Callout type="info">
@@ -551,6 +660,7 @@ Each of the above file naming variables are described below.
     **Syntax:** `YYYYMMDD`
 
     **Example:** `20230110`
+
 -   `<AGENT ID>`**:** Represents a unique ID that identifies the Real-Time Log Delivery software agent that generated the log file.
 -   `<SEQUENCE NUMBER>`**:** Represents a sequential number that identifies the order in which the log file was generated by the software agent identified above.
 
@@ -565,6 +675,6 @@ Each of the above file naming variables are described below.
 
 -   `<FILE EXTENSION>`**:** Represents the file extension for the log file. This file extension varies by log format.
 
-    -   JSON Log Format: json
-    -   JSON Array Log Format: json\_array
-    -   JSON Lines Log Format: json\_lines
+    -   **JSON Log Format:** `json`
+    -   **JSON Array Log Format:** `json_array`
+    -   **JSON Lines Log Format:** `json_lines`

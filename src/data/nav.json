@@ -164,8 +164,8 @@
       "icon": "shield",
       "routes": [
         { 
-          "title": "Advanced Bot Management",
-          "path": "security/advanced_bot_management"
+          "title": "Managed Bot Defense",
+          "path": "security/managed_bot_defense"
         },
         {
           "title": "Managed Rule Groups",
@@ -261,10 +261,6 @@
             {
               "title": "MkDocs",
               "path": "sites_frameworks/getting_started/mkdocs"
-            },
-            {
-              "title": "Nx",
-              "path": "sites_frameworks/getting_started/nx"
             },
             {
               "title": "Next.js",
@@ -435,7 +431,7 @@
           "path": "develop/deploy_to_edgio"
         },
         {
-          "title": "Edgio Packages",
+          "title": "EdgeJS API Reference",
           "path": "develop/packages",
           "routes": [
             {

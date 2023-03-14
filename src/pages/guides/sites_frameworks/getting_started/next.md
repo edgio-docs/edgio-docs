@@ -4,28 +4,30 @@ title: Next.js
 
 This guide shows you how to deploy a [Next.js](https://nextjs.org/) application to {{ PRODUCT }}.
 
+<Video src="https://www.youtube.com/watch?v=ZN5oYSSpnmc" />
+
 ## Example {/*example*/}
 
 <ExampleButtons
   title="Next.js SSR"
-  siteUrl="https://layer0-docs-layer0-nextjs-example-default.layer0-limelight.link"
-  repoUrl="https://github.com/layer0-docs/layer0-nextjs-example"
+  siteUrl="https://edgio-community-examples-nextjs-live.layer0-limelight.link/"
+  repoUrl="https://github.com/edgio-docs/edgio-nextjs-example"
   deployFromRepo
 />
 
 ## Next.js Commerce {/*nextjs-commerce*/}
 
-For details on using the Next.js Commerce template with {{ PRODUCT }}, refer to our [Next.js Commerce Guide](next_commerce).
+For details on using the Next.js Commerce template with {{ PRODUCT }}, refer to our [Next.js Commerce Guide](/guides/sites_frameworks/getting_started/next_commerce).
 
 ## Connector {/*connector*/}
 
-This framework has a connector developed for {{ PRODUCT }}. See [Connectors](/guides/sites_frameworks/connectors) for more information.
+{{ PRODUCT }} provides a connector for this framework. [Learn more.](/guides/sites_frameworks/connectors)
 
 <ButtonLink
   variant="stroke"
   type="code"
   withIcon={true}
-  href="https://github.com/layer0-docs/layer0-connectors/tree/main/layer0-next-connector">
+  href="https://github.com/edgio-docs/edgio-connectors/tree/main/edgio-next-connector">
   View the Connector Code
 </ButtonLink>
 
@@ -60,7 +62,7 @@ If you run into permission issues while attempting to install the {{ PRODUCT }} 
 If you don't already have a Next.js application, you can create one using:
 
 ```bash
-npx create-next-app@^latest
+npx create-next-app@latest
 ```
 
 ### Initializing your Project {/*initializing-your-project*/}
@@ -411,7 +413,7 @@ module.exports = {
 };
 ```
 
-A working example app can be found [here](https://github.com/layer0-docs/layer0-next-i18n-example).
+A working example app can be found [here](https://github.com/edgio-docs/edgio-next-i18n-example).
 
 ## Image optimizer {/*image-optimizer*/}
 

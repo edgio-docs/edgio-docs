@@ -10,9 +10,9 @@ Edgio supports both Vue 2 and Vue 3, using both CLIs - `@vue/cli` and `vite`.
 ## Example {/*example*/}
 
 <ExampleButtons
-  title="Vue 3"
-  repoUrl="https://github.com/edgio-docs/edgio-vue3-example"
-  siteUrl="https://layer0-docs-layer0-vue3-example-default.layer0-limelight.link/"
+  title="Vue.js"
+  siteUrl="https://edgio-community-examples-static-vuejs-live.layer0-limelight.link/"
+  repoUrl="https://github.com/edgio-docs/edgio-vue3-example" 
   deployFromRepo />
 
 ## Connector {/*connector*/}
@@ -139,4 +139,8 @@ Deploy your app to the {{ PRODUCT_PLATFORM }} by running the following command i
 {{ FULL_CLI_NAME }} deploy
 ```
 
-For more on deploying, see [Deploying](/guides/deploy_apps).
+Refer to the [Deployments](/guides/basics/deployments) guide for more information on the `deploy` command and its options.
+
+## Server Side Rendering {/*server-side-rendering*/}
+
+For server side rendered Vue.js apps we recommend using the Nuxt.js framework which is supported on {{ PRODUCT }}. Refer to the [Nuxt](/guides/sites_frameworks/getting_started/nuxt) guide for more information.

@@ -10,15 +10,15 @@ This guide shows you how to deploy an [Gatsby](https://www.gatsbyjs.com/) applic
 
 <ExampleButtons
   title="Gatsby SSG"
-  siteUrl="https://layer0-docs-layer0-gatsby-example-default.layer0-limelight.link"
-  repoUrl="https://github.com/layer0-docs/layer0-gatsby-example" 
+  siteUrl="https://edgio-community-examples-gatsby-live.layer0-limelight.link/"
+  repoUrl="https://github.com/edgio-docs/edgio-gatsby-example" 
   deployFromRepo />
 
 ## Connector {/*connector*/}
 
 This framework has a connector developed for {{ PRODUCT }}. See [Connectors](/guides/sites_frameworks/connectors) for more information.
 
-<ButtonLink variant="stroke" type="code" withIcon={true} href="https://github.com/layer0-docs/layer0-connectors/tree/main/layer0-gatsby-connector">
+<ButtonLink variant="stroke" type="code" withIcon={true} href="https://github.com/edgio-docs/edgio-connectors/tree/main/edgio-gatsby-connector">
   View the Connector Code
 </ButtonLink>
 

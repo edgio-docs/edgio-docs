@@ -10,8 +10,8 @@ This Nuxt.js example app uses server-side rendering and prefetching to provide l
 
 <ExampleButtons
   title="Nuxt.js SSR"
-  siteUrl="https://layer0-docs-layer0-nuxt-example-default.layer0-limelight.link"
-  repoUrl="https://github.com/layer0-docs/layer0-nuxt-example" 
+  siteUrl="https://edgio-community-examples-nuxt-live.layer0-limelight.link/"
+  repoUrl="https://github.com/edgio-docs/edgio-nuxt-example" 
   deployFromRepo />
 
 ## Example ISG Site {/*example-isg-site*/}
@@ -20,15 +20,15 @@ This Nuxt.js example app uses ISG (Incremental Static Generation) to provide lig
 
 <ExampleButtons
   title="Nuxt.js ISG"
-  siteUrl="https://layer0-docs-layer0-nuxt-isg-example-default.layer0-limelight.link"
-  repoUrl="https://github.com/layer0-docs/layer0-nuxt-isg-example" 
+  siteUrl="https://edgio-community-examples-nuxt-isg-live.layer0-limelight.link/"
+  repoUrl="https://github.com/edgio-docs/edgio-nuxt-isg-example" 
   deployFromRepo />
 
 ## Connector {/*connector*/}
 
 This framework has a connector developed for {{ PRODUCT }}. See [Connectors](/guides/sites_frameworks/connectors) for more information.
 
-<ButtonLink variant="stroke" type="code" withIcon={true} href="https://github.com/layer0-docs/layer0-connectors/tree/main/layer0-nuxt-connector">
+<ButtonLink variant="stroke" type="code" withIcon={true} href="https://github.com/edgio-docs/edgio-connectors/tree/main/edgio-nuxt-connector">
   View the Connector Code
 </ButtonLink>
 
@@ -384,6 +384,8 @@ includeFiles: {
 The Nuxt team provides a renderer called [Nitro](https://www.npmjs.com/package/@nuxt/nitro) which optimizes your application for serverless deployment and greatly minimizes the size of your server application bundle. If you're running into the size limitation for serverless bundles (50MB), you might try adding Nitro to your app. As of June 2021 Nitro is still not production ready, so use at your own risk.
 
 {{ PRODUCT }} provides a connector specifically for Nuxt apps that use nitro called `{{ PACKAGE_NAME }}/nuxt-nitro`.
+
+<Video src="https://www.youtube.com/watch?v=cZt27HOhmLQ" />
 
 To add Nitro to your app, make the following changes:
 

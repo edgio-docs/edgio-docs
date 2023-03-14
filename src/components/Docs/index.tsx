@@ -146,8 +146,8 @@ const StyledDocs = styled.div`
 
   img {
     border-radius: 4px;
-    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px,
-      rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+    box-shadow: rgba(0, 0, 0, 0.1) 1px 3px 7px 2px,
+      rgba(0, 0, 0, 0.06) 1px 3px 1px 0px;
   }
 
   table {

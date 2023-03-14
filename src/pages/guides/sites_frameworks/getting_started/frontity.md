@@ -8,15 +8,15 @@ This guide shows you how to deploy a [Frontity](https://frontity.org/) applicati
 
 <ExampleButtons
   title="Frontity"
-  siteUrl="https://layer0-docs-layer0-frontity-example-default.layer0-limelight.link"
-  repoUrl="https://github.com/layer0-docs/layer0-frontity-example" 
+  siteUrl="https://edgio-community-examples-frontity-live.layer0-limelight.link/"
+  repoUrl="https://github.com/edgio-docs/edgio-frontity-example" 
   deployFromRepo />
 
 ## Connector {/*connector*/}
 
 This framework has a connector developed for {{ PRODUCT }}. See [Connectors](/guides/sites_frameworks/connectors) for more information.
 
-<ButtonLink variant="stroke" type="code" withIcon={true} href="https://github.com/layer0-docs/layer0-connectors/tree/main/layer0-frontity-connector">
+<ButtonLink variant="stroke" type="code" withIcon={true} href="https://github.com/edgio-docs/edgio-connectors/tree/main/edgio-frontity-connector">
  View the Connector Code
 </ButtonLink>
 

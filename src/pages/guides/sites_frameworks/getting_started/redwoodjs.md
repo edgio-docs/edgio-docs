@@ -8,8 +8,8 @@ This guide shows you how to deploy a [RedwoodJS](https://redwoodjs.com/) applica
 
 <ExampleButtons
   title="RedwoodJS"
-  siteUrl="https://layer0-docs-layer0-redwoodjs-example-default.layer0-limelight.link"
-  repoUrl="https://github.com/layer0-docs/layer0-redwoodjs-example" 
+  siteUrl="https://edgio-community-examples-redwoodjs-live.layer0-limelight.link/"
+  repoUrl="https://github.com/edgio-docs/edgio-redwoodjs-example" 
   deployFromRepo />
 
 ## Connector {/*connector*/}

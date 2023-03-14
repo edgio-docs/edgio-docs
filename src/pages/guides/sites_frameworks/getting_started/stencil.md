@@ -8,8 +8,8 @@ This guide shows you how to deploy a [Stencil](https://stenciljs.com/) applicati
 
 <ExampleButtons
   title="Stencil"
-  siteUrl="https://layer0-docs-layer0-stencil-example-default.layer0-limelight.link"
-  repoUrl="https://github.com/layer0-docs/layer0-stencil-example" 
+  siteUrl="https://edgio-community-examples-stencil-live.layer0-limelight.link/"
+  repoUrl="https://github.com/edgio-docs/edgio-stencil-example" 
   deployFromRepo />
 
 {{ PREREQ }}

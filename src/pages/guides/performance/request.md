@@ -12,31 +12,21 @@ Learn about reserved request headers and how requests are routed through our ser
 
     ![](/images/overview/request-flow-edge-global.png)
 
-    [View image.](/images/overview/request-flow-edge-global.png)
-
     {{ PRODUCT }} is optimized for performance and therefore always routes requests to the closest POP. If a global POP is the closest POP to a client, then {{ PRODUCT }} will treat it as an edge and global POP. This means that cache misses on that POP are sent directly to the origin server as illustrated below.
 
     ![](/images/overview/request-flow-edge.png)
-
-    [View image.](/images/overview/request-flow-edge.png)
 
     Another performance optimization occurs for routes on which you have disabled caching. {{ PRODUCT }} bypassses global POPs for those requests and sends them directly to your origin servers. 
 
     ![](/images/overview/request-flow-edge-disabled-caching.png)
 
-    [View image.](/images/overview/request-flow-edge-disabled-caching.png)
-
 -   **Serverless Compute:** {{ PRODUCT }} routes Serverless Compute requests similar to standard traffic. However, cache misses are forwarded to a [Serverless Compute](/guides/performance/serverless_compute) load balancer which distributes requests to a Serverless Compute worker.
 
     ![](/images/overview/request-flow-serverless-compute.png)
 
-    [View image.](/images/overview/request-flow-serverless-compute.png)
-
     {{ PRODUCT }} also optimizes Serverless Compute routes on which you have disabled caching. {{ PRODUCT }} bypassses global POPs for those requests and sends them directly to a Serverless Compute load balancer.
 
     ![](/images/overview/request-flow-serverless-compute-disabled-caching.png)
-
-    [View image.](/images/overview/request-flow-serverless-compute-disabled-caching.png)
 
 ### POP Components {/*pop-components*/}
 
@@ -79,7 +69,7 @@ User agent headers are headers that {{ PRODUCT_NAME }} derives by analyzing the 
 
 - `{{ HEADER_PREFIX }}-device`: device type which can be `smartphone`, `tablet`, `mobile` (feature phones) or `desktop`
 - `{{ HEADER_PREFIX }}-vendor`: vendor of the device which can be `apple`, `android` or `generic`
-- `{{ HEADER_PREFIX }}-device-is-bot`: flag indicating a bot device (`0` for not identified as bot, `1` for identified as bot)
+- `{{ HEADER_PREFIX }}-device-is-bot`: Indicates whether the request's user agent matches the user agent for a known bot. Returns `1` for known bots and `0` for all other requests.
 - `{{ HEADER_PREFIX }}-browser`: browser type which can be `chrome`, `safari`, `firefox`, `opera`, `edge`, `msie` or `generic`
 
 These values are provided as best effort as user agent, especially adversarial ones, can control the values by which we determine the values above.

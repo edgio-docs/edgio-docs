@@ -4,17 +4,19 @@ title: Hexo
 
 This guide shows you how to deploy a [Hexo](https://hexo.io/) application to {{ PRODUCT }}.
 
+<Video src="https://www.youtube.com/watch?v=WFFoHT7TqSE" />
+
 ## Example {/*example*/}
 
 <ExampleButtons
   title="Hexo"
-  siteUrl="https://layer0-docs-layer0-hexo-example-default.layer0-limelight.link"
-  repoUrl="https://github.com/layer0-docs/layer0-hexo-example" 
+  siteUrl="https://edgio-community-examples-hexo-live.layer0-limelight.link/"
+  repoUrl="https://github.com/edgio-docs/edgio-hexo-example" 
   deployFromRepo />
 
 ## Connector {/*connector*/}
 
-This framework has a connector developed for {{ PRODUCT }}. See [Connectors](connectors) for more information.
+{{ PRODUCT }} provides a connector for this framework. [Learn more.](/guides/sites_frameworks/connectors)
 
 <ButtonLink variant="stroke" type="code" withIcon={true} href="https://github.com/edgio-docs/edgio-connectors/tree/main/edgio-hexo-connector">
  View the Connector Code
@@ -95,4 +97,4 @@ Deploy your app to the {{ PRODUCT_PLATFORM }} by running the following commands 
 {{ FULL_CLI_NAME }} deploy
 ```
 
-See [deploying](deploy_apps) for more information.
+[Learn more.](/guides/basics/deployments)

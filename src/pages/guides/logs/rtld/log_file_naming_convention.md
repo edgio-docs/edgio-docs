@@ -24,8 +24,6 @@ The JSON document contained within an object follows this naming convention:
 
 Each of the above file naming variables are described below.
 
-<a id="log-file-prefix" />
-
 -   `<PREFIX>`**:** You may define a prefix when setting up a log delivery profile. This prefix defines a virtual log file storage location and/or a prefix that will be added to each object added to your bucket.
     
     -   A prefix should not start with a forward slash.

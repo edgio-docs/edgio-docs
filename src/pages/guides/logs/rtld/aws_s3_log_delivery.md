@@ -12,14 +12,14 @@ RTLD may automatically deliver compressed log data to an AWS S3 bucket by submit
     [Learn more.](/guides/logs/rtld/log_file_naming_convention)
     
 -   AWS S3 may automatically decompress files downloaded via the S3 Management Console into JSON or CSV files. No additional decompression is required to process this data.
--   RTLD requires a [bucket policy](#bucketpolicy) that authorizes our service to upload content to your bucket.
+-   RTLD requires a [bucket policy](#bucket-policy) that authorizes our service to upload content to your bucket.
 -   If you have enabled server-side encryption on the desired AWS S3 bucket, then you must also enable default bucket encryption. Otherwise, RTLD will be unable to post log data to that bucket.
     
     RTLD does not include Amazon-specific encryption headers when posting log data to your bucket.
     
     [View AWS documentation on default bucket encryption.](https://docs.aws.amazon.com/AmazonS3/latest/userguide/default-bucket-encryption.html)
 
-    <a id="aws-s3-prefix" />
+    <a id="log-file-prefix" />
 
 -   You may define a prefix when setting up a log delivery profile. This prefix defines a virtual log file storage location and/or a prefix that will be pre-pended to the name of each object added to your bucket. Use the following guidelines when setting this prefix:
     
@@ -40,6 +40,8 @@ RTLD may automatically deliver compressed log data to an AWS S3 bucket by submit
 1.  Create or identify an AWS S3 bucket to which log data will be posted.
     
     [View AWS documentation on how to create a bucket.](https://docs.aws.amazon.com/AmazonS3/latest/user-guide/create-bucket.html)
+
+    <a id="bucket-policy" />
     
 2.  Apply the following bucket policy to the AWS S3 bucket identified in step 1. This bucket policy authorizes our service to upload content to your bucket.
     
@@ -89,7 +91,7 @@ RTLD may automatically deliver compressed log data to an AWS S3 bucket by submit
 
     2.  Optional. Set the **Prefix** option to the desired prefix that defines a virtual log file storage location and/or a prefix that will be added to each object added to your bucket.
 
-        [Learn more.](#aws-s3-prefix)
+        [Learn more.](#log-file-prefix)
 
     3.  From the **AWS Region** option, select the region assigned to the AWS S3 bucket.
 

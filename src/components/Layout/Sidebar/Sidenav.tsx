@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import {useRouter} from 'next/router';
 import React, {Fragment, useEffect, useState} from 'react';
 import useCollapse from 'react-collapsed';
@@ -7,7 +8,6 @@ import {GoChevronRight} from 'react-icons/go';
 import styled from 'styled-components';
 
 import {FIDDLE_URL} from '../../../../constants';
-import Link from '../../MDX/Link';
 
 import useConditioning from 'utils/hooks/useConditioning';
 import {getVersionedNavigation} from 'utils/navigation';
@@ -42,7 +42,9 @@ function Accordion({
     isExpanded: isActive,
   });
 
-  const {version} = useConditioning();
+  const {
+    version: {toPath},
+  } = useConditioning();
   const isActiveLink = route.path.length > 0;
   const childElement = (
     <a
@@ -100,7 +102,10 @@ function Accordion({
             </div>
           </a>
         ) : route.title && isActiveLink ? (
-          <Link href={route.path} className="sidenav-link" data-depth={depth}>
+          <Link
+            href={toPath(route.path)}
+            className="sidenav-link"
+            data-depth={depth}>
             {childElement}
           </Link>
         ) : (
@@ -320,7 +325,6 @@ const links = [
 export default function SideNav() {
   const {version} = useConditioning();
   const navItems = getVersionedNavigation(version.selectedVersion);
-  //console.log('selectedVersion', version);
 
   return (
     <StyledSideNav>

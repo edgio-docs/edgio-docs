@@ -144,8 +144,13 @@ yarn global add ${PACKAGE_NAME}/cli
 </SnippetGroup>
 `;
 
-const SECURITY_NAV = `1.  From the ${PORTAL}, expand the **Security** section.
-    2.  Click `;
+const SECURITY_NAV = `1.  From the ${PORTAL}, select the desired team space. 
+    2.  From the **Security** section, click `;
+
+const ENV_NAV = `1.  From the ${PORTAL}, select the desired private or team space.
+    2.  Select the desired property.
+    3.  From the left-hand pane, select the desired environment from under the **Environments** section.
+    4.  From the left-hand pane, select`;
 
 const ACCOUNT_UPGRADE = `Contact your account manager or our [sales department](https://edg.io/contact-us/) at 1 (866) 200 - 5463 to upgrade your account.`;
 
@@ -469,6 +474,7 @@ module.exports = {
   DOMAIN,
   DOMAIN_LEGACY,
   EDGEJS_LABEL,
+  ENV_NAV,
   EXAMPLES_REPO,
   EXAMPLES_REPOS,
   FIDDLE_URL,

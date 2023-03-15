@@ -70,10 +70,7 @@ On a per environment-basis, define each hostname that will be served through {{ 
 
 1.  Load the **Hostnames** page.
 
-    1.  From the {{ PORTAL }}, select the desired private or team space.
-    2.  Select the desired property.
-    3.  From the left-hand pane, select the desired environment from under the **Environments** section.
-    4.  From the left-hand pane, select **Hostnames**. 
+    {{ ENV_NAV }} **Hostnames**. 
 
 2.  Perform one of the following steps:
 
@@ -124,10 +121,7 @@ On a per environment-basis, define how {{ PRODUCT }} will communicate with your 
 
 1.  Load the **Origins** page.
 
-    1.  From the {{ PORTAL }}, select the desired private or team space.
-    2.  Select the desired property.
-    3.  From the left-hand pane, select the desired environment from under the **Environments** section.
-    4.  From the left-hand pane, select **Origins**. 
+    {{ ENV_NAV }} **Origins**. 
 
 2.  Click **+ Add Origin**.
 
@@ -216,10 +210,7 @@ As clients request your site, {{ PRODUCT }} sends traffic through our network to
 
 1.  Load the **Origins** page.
 
-    1.  From the {{ PORTAL }}, select the desired private or team space.
-    2.  Select the desired property.
-    3.  From the left-hand pane, select the desired environment from under the **Environments** section.
-    4.  From the left-hand pane, select **Origins**. 
+    {{ ENV_NAV }} **Origins**. 
 
 2.  From the information bar at the top of the page, click **instructions**.
 
@@ -237,31 +228,45 @@ As clients request your site, {{ PRODUCT }} sends traffic through our network to
 
 Once you are ready to serve traffic through {{ PRODUCT }}, you will need to configure DNS for each hostname. DNS configuration consists of defining a CNAME record that points your hostname to our service. 
 
-Point your hostnames to a domain that is either specific to your:
+Point your hostname(s) to a service domain that is either specific to your property's environment or space.
 
--   **Property's Environment:** {{ PRODUCT }} assigns a service domain to each of your environments. You may point any hostname defined within a specific environment to its service domain. Perform the following steps to view this domain:
+**Sample Service Domain:** `2af36ae6-2146-4b73-a5e7-f86c4a93bc06.edgio.link`
 
-    1.  Load the **Hostnames** page.
+### Environment-Specific Service Domain {/*environment-specific-service-domain*/}
 
-        1.  From the {{ PORTAL }}, select the desired private or team space.
-        2.  Select the desired property.
-        3.  From the left-hand pane, select the desired environment from under the **Environments** section.
-        4.  From the left-hand pane, select **Hostnames**. 
+{{ PRODUCT }} assigns a different service domain to each of your environments. You may point any hostname defined within a specific environment to its service domain. 
 
-    2.  From the **DNS** column, click **Actions needed**.
+**To view the service domain assigned to a specific environment**
 
-        ![DNS - Actions needed](/images/basics/hostnames-dns.png)
+1.  Load the **Hostnames** page.
 
-    3.  From the **DNS Configuration** pane, click <img data-inline-img src="/images/icons/copy-to-clipboard.png" alt="Copy to clipboard icon" />  to copy this domain. 
+    {{ ENV_NAV }} **Hostnames**. 
 
--   **Space:** {{ PRODUCT }} assigns a service domain to your private space and each team space to which you belong. You may point any hostname defined within that private or team space to this domain. Perform the following steps to view this domain:
+2.  From the **DNS** column, click **Actions needed**.
 
-    1.  Load the space's **Settings** page.
+    ![DNS - Actions needed](/images/basics/hostnames-dns.png)
 
-        1.  From the {{ PORTAL }}, select the desired private or team space.
-        2.  Click **Settings**.
+3.  From the **DNS Configuration** pane, click <img data-inline-img src="/images/icons/copy-to-clipboard.png" alt="Copy to clipboard icon" />  to copy this domain. 
 
-    2.  From the **Team DNS Configuration** section, click <img data-inline-img src="/images/icons/copy-to-clipboard.png" alt="Copy to clipboard icon" />  to copy this domain. 
+### Space-Specific Service Domain {/*space-specific-service-domain*/}
+
+{{ PRODUCT }} assigns a different service domain to:
+
+-   Your private space.
+-   Each team space to which you belong. 
+
+You may point any hostname defined within a space to its service domain. 
+
+**To view the service domain assigned to a space**
+
+1.  Load the space's **Settings** page.
+
+    1.  From the {{ PORTAL }}, select the desired private or team space.
+    2.  Click **Settings**.
+
+2.  From the **Team DNS Configuration** section, click <img data-inline-img src="/images/icons/copy-to-clipboard.png" alt="Copy to clipboard icon" />  to copy this domain. 
+
+### DNS Verification {/*dns-verification*/}
 
 Once you have updated your DNS configuration, run the following command to verify it:
 

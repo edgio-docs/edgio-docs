@@ -759,10 +759,6 @@ const SidebarMenuItems: ISidebarMenuItems = [
           path: '/guides/performance/unit_testing_edgejs',
         },
         {
-          title: 'Logs',
-          path: '/guides/develop/logs',
-        },
-        {
           title: `Deploy to ${PRODUCT} Button`,
           path: '/guides/develop/deploy_to_edgio',
         },

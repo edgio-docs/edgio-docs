@@ -70,9 +70,10 @@ On a per environment-basis, define each hostname that will be served through {{ 
 
 1.  Load the **Hostnames** page.
 
-    1.  From the {{ PORTAL }}, select the desired property.
-    2.  From the left-hand pane, select the desired environment from under the **Environments** section.
-    3.  From the left-hand pane, select **Hostnames**. 
+    1.  From the {{ PORTAL }}, select the desired private or team space.
+    2.  Select the desired property.
+    3.  From the left-hand pane, select the desired environment from under the **Environments** section.
+    4.  From the left-hand pane, select **Hostnames**. 
 
 2.  Perform one of the following steps:
 
@@ -122,9 +123,12 @@ On a per environment-basis, define how {{ PRODUCT }} will communicate with your 
 **To add an origin configuration** <a id="add-origin-configuration"></a>
 
 1.  Load the **Origins** page.
-    1.  From the {{ PORTAL }}, select the desired property.
-    2.  From the left-hand pane, select the desired environment from under the **Environments** section.
-    3.  From the left-hand pane, select **Origins**. 
+
+    1.  From the {{ PORTAL }}, select the desired private or team space.
+    2.  Select the desired property.
+    3.  From the left-hand pane, select the desired environment from under the **Environments** section.
+    4.  From the left-hand pane, select **Origins**. 
+
 2.  Click **+ Add Origin**.
 
     ![Add Origin](/images/basics/origins-add-origin.png?width=600)
@@ -211,9 +215,12 @@ As clients request your site, {{ PRODUCT }} sends traffic through our network to
 **To view our network's IP blocks**
 
 1.  Load the **Origins** page.
-    1.  From the {{ PORTAL }}, select the desired property.
-    2.  From the left-hand pane, select the desired environment from under the **Environments** section.
-    3.  From the left-hand pane, select **Origins**. 
+
+    1.  From the {{ PORTAL }}, select the desired private or team space.
+    2.  Select the desired property.
+    3.  From the left-hand pane, select the desired environment from under the **Environments** section.
+    4.  From the left-hand pane, select **Origins**. 
+
 2.  From the information bar at the top of the page, click **instructions**.
 
     ![Firewall instructions](/images/basics/origins-instructions.png)
@@ -228,80 +235,82 @@ As clients request your site, {{ PRODUCT }} sends traffic through our network to
 
 ## Serving Traffic through {{ PRODUCT }} {/*serving-traffic-through*/}
 
-Once you are ready to serve traffic through {{ PRODUCT }}, you will need to configure DNS for each hostname.
+Once you are ready to serve traffic through {{ PRODUCT }}, you will need to configure DNS for each hostname. DNS configuration consists of defining a CNAME record that points your hostname to our service. 
+
+Point your hostnames to a domain that is either specific to your:
+
+-   **Property's Environment:** {{ PRODUCT }} assigns a service domain to each of your environments. You may point any hostname defined within a specific environment to its service domain. Perform the following steps to view this domain:
+
+    1.  Load the **Hostnames** page.
+
+        1.  From the {{ PORTAL }}, select the desired private or team space.
+        2.  Select the desired property.
+        3.  From the left-hand pane, select the desired environment from under the **Environments** section.
+        4.  From the left-hand pane, select **Hostnames**. 
+
+    2.  From the **DNS** column, click **Actions needed**.
+
+        ![DNS - Actions needed](/images/basics/hostnames-dns.png)
+
+    3.  From the **DNS Configuration** pane, click <img data-inline-img src="/images/icons/copy-to-clipboard.png" alt="Copy to clipboard icon" />  to copy this domain. 
+
+-   **Space:** {{ PRODUCT }} assigns a service domain to your private space and each team space to which you belong. You may point any hostname defined within that private or team space to this domain. Perform the following steps to view this domain:
+
+    1.  Load the space's **Settings** page.
+
+        1.  From the {{ PORTAL }}, select the desired private or team space.
+        2.  Click **Settings**.
+
+    2.  From the **Team DNS Configuration** section, click <img data-inline-img src="/images/icons/copy-to-clipboard.png" alt="Copy to clipboard icon" />  to copy this domain. 
+
+Once you have updated your DNS configuration, run the following command to verify it:
+
+`dig <HOSTNAME>`
+
+**Example:** The following example demonstrates how to verify the DNS configuration for `cdn.example.com`:
+
+```bash
+> dig cdn.example.com
+
+# Result
+cdn.example.com.   599    IN    CNAME    2af36ae6-2146-4b73-a5e7-f86c4a93bc06.edgio.link
+```
 
 <!--
+### Using an Apex Domain {/*using-an-apex-domain-eg-mywebsitexyz*/}
 
-In order to configure your DNS provider to direct traffic for a particular set of domains to Edgio, you must create DNS records for your website. If you are launching a new site, then you can create the records whenever you feel ready. For sites that are already live, the DNS update is the last step. Once you have updated your DNS you are committed to launching.
+To host your site on the apex domain (e.g. `mywebsite.xyz`), create multiple `A` records on your apex domain, with the following Anycast IP address values: 208.69.180.11, 208.69.180.12, 208.69.180.13, 208.69.180.14
 
-To see the DNS configuration values, click the Actions needed button in the Domains section of the Configuration tab. This will show you the A and CNAME records you need to create in your DNS provider.
-dns configuration
-Using a Sub-domain
+```
+# To verify your DNS entry, run the following command
+dig <your-apex-domain>
 
-To host your site on a subdomain (e.g. www.mywebsite.xyz), add a CNAME record with the value shown under DNS Configuration (see above).
-
-To verify your DNS entry, run the following command {/*to-verify-your-dns-entry-run-the-following-command*/}
-
-dig your-sub-domain
-
-
-Example {/*example*/}
-
-dig www.mywebsite.xyz
-
-
-Result {/*result*/}
-
-www.mywebsite.xyz.   599    IN    CNAME    d12ea738-71b3-25e8-c771-6fdd3f6bd8ba.layer0-limelight.link.
-
-Using an Apex Domain
-
-To host your site on the apex domain (e.g. mywebsite.xyz), create multiple A records on your apex domain, with the following Anycast IP address values: 208.69.180.11, 208.69.180.12, 208.69.180.13, 208.69.180.14
-
-To verify your DNS entry, run the following command {/*to-verify-your-dns-entry-run-the-following-command*/}
-
-dig your-apex-domain
-
-
-Example {/*example*/}
-
+# Example
 dig mywebsite.xyz
 
-
-Result {/*result*/}
-
+# Result
 mywebsite.xyz.        599    IN    A        208.69.180.11
-
 mywebsite.xyz.        599    IN    A        208.69.180.12
-
 mywebsite.xyz.        599    IN    A        208.69.180.13
-
 mywebsite.xyz.        599    IN    A        208.69.180.14
+```
 
-Using Both an Apex Domain and a Sub-domain
+### Using Both an Apex Domain and a Sub-domain {/*using-both-an-apex-domain-and-a-sub-domain-eg-mywebsitexyz-and-wwwmywebsitexyz*/}
 
-Create the multiple A records with the IPs, on your apex domain (see above).
+- Create the multiple `A` records with the IPs, on your apex domain (see above).
+- Create a `CNAME` record for your sub-domain, with the value of your apex domain.
+   <p></p>
 
-Create a CNAME record for your sub-domain, with the value of your apex domain.
-
-To verify your DNS entries, run the following command {/*to-verify-your-dns-entries-run-the-following-command*/}
-
-dig your-sub-domain
-
-Example {/*example*/}
-
-dig www.mywebsite.xyz
-
-Result {/*result*/}
-
-www.mywebsite.xyz.    599    IN    CNAME.   mywebsite.xyz.
-
-mywebsite.xyz.        599    IN    A        208.69.180.11
-
-mywebsite.xyz.        599    IN    A        208.69.180.12
-
-mywebsite.xyz.        599    IN    A        208.69.180.13
-
-mywebsite.xyz.        599    IN    A        208.69.180.14
-
+   ```
+   # To verify your DNS entries, run the following command
+   dig <your-sub-domain>
+   # Example
+   dig www.mywebsite.xyz
+   # Result
+   www.mywebsite.xyz.    599    IN    CNAME.   mywebsite.xyz.
+   mywebsite.xyz.        599    IN    A        208.69.180.11
+   mywebsite.xyz.        599    IN    A        208.69.180.12
+   mywebsite.xyz.        599    IN    A        208.69.180.13
+   mywebsite.xyz.        599    IN    A        208.69.180.14
+   ```
 -->

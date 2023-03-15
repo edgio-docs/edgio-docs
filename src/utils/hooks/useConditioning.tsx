@@ -8,7 +8,9 @@ interface RouterQuery {
 
 interface IVersion {
   selectedVersion: string;
+  selectedVersionText: string;
   latestVersion: string;
+  latestVersionText: string;
   isLatest: boolean;
   pathPrefix: string;
   toVersionedPath: (path: string) => string;
@@ -32,7 +34,9 @@ function useConditioning(): IConditioning {
   const isLatest = cleanedVersion === latestVersion;
   const versionConfig: IVersion = {
     selectedVersion: cleanedVersion,
-    latestVersion,
+    selectedVersionText: `v${cleanedVersion}`,
+    latestVersion: latestVersion,
+    latestVersionText: `v${latestVersion}`,
     isLatest,
     pathPrefix: !isLatest ? `v${cleanedVersion}` : '',
     toVersionedPath: (path: string) => {

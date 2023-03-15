@@ -79,7 +79,6 @@ This will automatically add all of the required dependencies and files to your p
 {{ INIT_DEFAULT_PACKAGES }}
 - The `{{ PACKAGE_NAME }}/next` package - Provides router middleware that automatically adds Next.js pages and api routes to the {{ PRODUCT }} router.
 - The `{{ PACKAGE_NAME }}/react` package - Provides a `Prefetch` component for prefetching pages.
-
 {{ INIT_DEFAULT_FILES }}
 
 ## Next.js Config Plugins {/*nextjs-config-plugins*/}
@@ -165,7 +164,7 @@ See [Deployments](/guides/basics/deployments) for more information.
 
 {{ PREFETCH_TIER1_INTRO }}
 
-The code above allows you to prefetch pages from {{ PRODUCT }}'s edge cache to greatly improve browsing speed. To prefetch a page, add the `Prefetch` component from `{{ PACKAGE_NAME }}/react` to any Next.js `Link` element. The example below shows you how to prefetch JSON data from `getServerSideProps` or `getStaticProps` using the `createNextDataUrl` function from `{{ PACKAGE_NAME }}/next/client`.
+The above code allows you to prefetch pages from {{ PRODUCT }}'s edge cache to significantly improve browsing speed. To prefetch a page, add the `Prefetch` component from `{{ PACKAGE_NAME }}/react` to any Next.js `Link` element. The following example shows you how to prefetch JSON data from `getServerSideProps` or `getStaticProps` using the `createNextDataUrl` function from `{{ PACKAGE_NAME }}/next/client`.
 
 ```js ins={4,14-23,27}
 import {Prefetch} from '{{ PACKAGE_NAME }}/react';
@@ -276,7 +275,7 @@ export default new Router()
 
 ### nextRoutes {/*nextroutes*/}
 
-In the code above, `nextRoutes` adds all Next.js routes to the router based on the `/pages` directory. You can add additional routes before and after `nextRoutes`. For example, you can choose to send some URLs to an alternate backend. This is useful for gradually replacing an existing site with a new Next.js app.
+In the above code, `nextRoutes` adds all Next.js routes to the router based on the `/pages` directory. You can add additional routes before and after `nextRoutes`. For example, you can choose to send some URLs to an alternate backend. This is useful for gradually replacing an existing site with a new Next.js app.
 
 A popular use case is to fallback to a legacy site for any route that your Next.js app isn't configured to handle:
 

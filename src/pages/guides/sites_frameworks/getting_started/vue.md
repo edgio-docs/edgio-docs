@@ -53,7 +53,6 @@ This will automatically add all of the required dependencies and files to your p
 {{ INIT_DEFAULT_PACKAGES }}
 - The `{{ PACKAGE_NAME }}/vue` package - Provides a `Prefetch` component for prefetching pages.
 - The `{{ PACKAGE_NAME }}/vue-cva` package - Provides build and routing mechanisms for Vue projects.
-
 {{ INIT_DEFAULT_FILES }}
 
 
@@ -72,7 +71,7 @@ if (isProductionBuild()) {
 }
 ```
 
-The code above allows you to prefetch pages from {{ PRODUCT }}'s edge cache to greatly improve browsing speed. To prefetch a page, add the `Prefetch` component from `@edgio/vue` around any rendered component, as such:
+The above code allows you to prefetch pages from {{ PRODUCT }}'s edge cache to greatly improve browsing speed. To prefetch a page, add the `Prefetch` component from `@edgio/vue` around any rendered component, as such:
 
 ```js ins={2,7,9}
 <script>

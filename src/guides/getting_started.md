@@ -40,7 +40,7 @@ Replace `<PROPERTY>` with the name for this configuration. If you are also setti
 
 <SnippetGroup>
 
-```bash tabLabel=Origin
+```bash tabLabel="Origin"
   npx {{ PACKAGE_NAME }}/cli@latest init \
 	--name <PROPERTY> \
 	--environment default \
@@ -48,7 +48,7 @@ Replace `<PROPERTY>` with the name for this configuration. If you are also setti
 	--deploy
 ```
 
-```bash tabLabel=Framework
+```bash tabLabel="Framework"
   npx {{ PACKAGE_NAME }}/cli@latest init \
         --name <PROPERTY> \
         --environment default \
@@ -82,11 +82,11 @@ Use the [{{ PRODUCT }} CLI](/guides/develop/cli) to build, test, and deploy your
 
 <SnippetGroup>
 
-```bash tabLabel=npm
+```bash tabLabel="npm"
 npm i -g {{ PACKAGE_NAME }}/cli
 ```
 
-```bash tabLabel=Yarn
+```bash tabLabel="Yarn"
 yarn global add {{ PACKAGE_NAME }}/cli
 ```
 
@@ -138,13 +138,13 @@ Each website that will run behind {{ PRODUCT }} requires an {{ PRODUCT }} proper
 
     <SnippetGroup>
 
-    ```bash tabLabel=Origin
+    ```bash tabLabel="Origin"
       {{ FULL_CLI_NAME }} init --name <PROPERTY> \
         --environment production \
         --origin <DOMAIN>
     ```
 
-    ```bash tabLabel=Framework
+    ```bash tabLabel="Framework"
       {{ FULL_CLI_NAME }} init --name <PROPERTY> \
         --environment production
     ```

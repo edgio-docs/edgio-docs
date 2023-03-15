@@ -89,11 +89,11 @@ If you have not already done so, install the [${PRODUCT_NAME} CLI](/guides/devel
 
 <SnippetGroup>
 
-\`\`\`bash tabLabel=npm
+\`\`\`bash tabLabel="npm"
 npm i -g ${PACKAGE_NAME}/cli
 \`\`\`
 
-\`\`\`bash tabLabel=Yarn
+\`\`\`bash tabLabel="Yarn"
 yarn global add ${PACKAGE_NAME}/cli
 \`\`\`
 
@@ -114,11 +114,11 @@ If you have not already done so, install the [${PRODUCT_NAME} CLI](/guides/devel
 
 <SnippetGroup>
 
-\`\`\`bash tabLabel=npm
+\`\`\`bash tabLabel="npm"
 npm i -g ${PACKAGE_NAME}/cli
 \`\`\`
 
-\`\`\`bash tabLabel=Yarn
+\`\`\`bash tabLabel="Yarn"
 yarn global add ${PACKAGE_NAME}/cli
 \`\`\`
 

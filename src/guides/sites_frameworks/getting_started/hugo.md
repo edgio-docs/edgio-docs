@@ -4,25 +4,23 @@ title: Hugo
 
 This guide shows you how to deploy a [Hugo](https://gohugo.io) application to {{ PRODUCT }}.
 
-## Example {/*example*/}
+## Example {/* example */}
 
-<ExampleButtons
-  repoUrl="https://github.com/edgio-docs/edgio-hugo-example"
-   />
+<ExampleButtons repoUrl="https://github.com/edgio-docs/edgio-hugo-example" />
 
 {{ PREREQ }}
 
-## Create a new Hugo app {/*create-a-new-hugo-app*/}
+## Create a new Hugo app {/* create-a-new-hugo-app */}
 
-### Step 1: Install Hugo {/*step-1-install-hugo*/}
+### Step 1: Install Hugo {/* step-1-install-hugo */}
 
 <SnippetGroup>
 
-```bash tabLabel=Brew
+```bash tabLabel="Brew"
 brew install hugo
 ```
 
-```bash tabLabel=Port
+```bash tabLabel="Port"
 port install hugo
 ```
 
@@ -34,13 +32,13 @@ To verify your new install:
 hugo version
 ```
 
-### Step 2: Create a New Site {/*step-2-create-a-new-site*/}
+### Step 2: Create a New Site {/* step-2-create-a-new-site */}
 
 ```bash
 hugo new site quickstart
 ```
 
-### Step 3: Add a Theme {/*step-3-add-a-theme*/}
+### Step 3: Add a Theme {/* step-3-add-a-theme */}
 
 See [themes.gohugo.io](https://themes.gohugo.io/) for a list of themes to consider. This quickstart uses the beautiful [Ananke theme](https://themes.gohugo.io/gohugo-theme-ananke/).
 
@@ -66,7 +64,7 @@ Then, add the theme to the site configuration:
 echo theme = \"ananke\" >> config.toml
 ```
 
-### Step 4: Add Some Content {/*step-4-add-some-content*/}
+### Step 4: Add Some Content {/* step-4-add-some-content */}
 
 You can manually create content files (for example as `content/<CATEGORY>/<FILE>.<FORMAT>`) and provide metadata in them, however you can use the `new` command to do a few things for you (like add title and date):
 
@@ -74,13 +72,13 @@ You can manually create content files (for example as `content/<CATEGORY>/<FILE>
 hugo new posts/my-first-post.md
 ```
 
-### Step 5: Start the Hugo server {/*step-5-start-the-hugo-server*/}
+### Step 5: Start the Hugo server {/* step-5-start-the-hugo-server */}
 
 ```bash
 hugo server -D
 ```
 
-## Configuring your Hugo app for {{ PRODUCT }} {/*configuring-your-hugo-app-for*/}
+## Configuring your Hugo app for {{ PRODUCT }} {/* configuring-your-hugo-app-for */}
 
 Create a `package.json` at the root of your project with the following:
 
@@ -97,7 +95,7 @@ Create a `package.json` at the root of your project with the following:
 }
 ```
 
-### Initialize your project {/*initialize-your-project*/}
+### Initialize your project {/* initialize-your-project */}
 
 In the root directory of your project run `{{ FULL_CLI_NAME }} init`:
 
@@ -112,7 +110,7 @@ This will automatically update your `package.json` and add all of the required {
 - `{{ CONFIG_FILE }}` - A configuration file for {{ PRODUCT }}
 - `routes.js` - A default routes file that sends all requests to Hugo.
 
-### Configure the routes {/*configure-the-routes*/}
+### Configure the routes {/* configure-the-routes */}
 
 Update `routes.js` at the root of your project to the following:
 
@@ -120,16 +118,16 @@ Update `routes.js` at the root of your project to the following:
 // This file was added by {{ FULL_CLI_NAME }} init.
 // You should commit this file to source control.
 
-import { Router } from '{{ PACKAGE_NAME }}/core/router'
+import {Router} from '{{ PACKAGE_NAME }}/core/router';
 
 export default new Router()
   // Create serveStatic route for each file in the folder public with a cache-control header of 's-maxage=315360000'
-  .static('public')
+  .static('public');
 ```
 
 Refer to the [CDN-as-code](/guides/performance/cdn_as_code) guide for the full syntax of the `routes.js` file and how to configure it for your use case.
 
-### Run the Hugo app locally on {{ PRODUCT }} {/*run-the-hugo-app-locally-on*/}
+### Run the Hugo app locally on {{ PRODUCT }} {/* run-the-hugo-app-locally-on */}
 
 Create a production build of your app by running the following in your project's root directory:
 
@@ -145,7 +143,7 @@ Test your app with the {{ PRODUCT_PLATFORM }} on your local machine by running t
 
 Load the site http://127.0.0.1:3000
 
-## Deploying {/*deploying*/}
+## Deploying {/* deploying */}
 
 Create a production build of your app by running the following in your project's root directory:
 

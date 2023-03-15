@@ -947,7 +947,7 @@ Deletes one or more header(s) from a response.
 
 Log features customize how log data is stored.
 
-#### Custom Log Field {/*custom-log-field-format*/}
+#### Custom Log Field {/*custom-log-field*/}
 
 Determines the value that will be assigned to RTLD's custom log field. 
 

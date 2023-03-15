@@ -56,7 +56,7 @@ This will automatically update your `package.json` and add all of the required {
 - The `{{ PACKAGE_NAME }}/core` package
 - The `{{ PACKAGE_NAME }}/cli` package
 - The `{{ PACKAGE_NAME }}/hexo` package
-- `{{ CONFIG_FILE }}`- Contains various configuration options for {{ PRODUCT }}.
+- `{{ CONFIG_FILE }}` - Contains various configuration options for {{ PRODUCT }}.
 - `routes.js` - A default routes file that sends all requests to Hexo. Update this file to add caching or proxy some URLs to a different origin.
 
 ## Routing {/*routing*/}

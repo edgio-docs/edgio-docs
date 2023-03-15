@@ -15,7 +15,7 @@ const StyledComp = styled(StyledFeatureSection)``;
 
 export default function DeveloperTools() {
   const {
-    version: {toPath},
+    version: {toVersionedPath},
   } = useConditioning();
   const parentPath = 'dev-tools';
   const allRoutes = getChildrenRoutesFromSidebarMenuItems(parentPath);
@@ -38,7 +38,7 @@ export default function DeveloperTools() {
               {route.map(({path, title}) => (
                 <li className="route-list__item" key={title}>
                   <div className="dot" />
-                  <Link href={toPath(path)}>{title}</Link>
+                  <Link href={toVersionedPath(path)}>{title}</Link>
                 </li>
               ))}
             </ul>

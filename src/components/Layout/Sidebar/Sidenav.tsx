@@ -43,7 +43,7 @@ function Accordion({
   });
 
   const {
-    version: {toPath},
+    version: {toVersionedPath},
   } = useConditioning();
   const isActiveLink = route.path.length > 0;
   const childElement = (
@@ -103,7 +103,7 @@ function Accordion({
           </a>
         ) : route.title && isActiveLink ? (
           <Link
-            href={toPath(route.path)}
+            href={toVersionedPath(route.path)}
             className="sidenav-link"
             data-depth={depth}>
             {childElement}

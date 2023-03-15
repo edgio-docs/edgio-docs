@@ -110,7 +110,7 @@ const integrations: Object[] = [
 
 export default function Integrations() {
   const {
-    version: {toPath},
+    version: {toVersionedPath},
   } = useConditioning();
 
   return (
@@ -118,7 +118,7 @@ export default function Integrations() {
       <ul className="integrations">
         {integrations.map((route: any) => (
           <li key={route.path} className="integration-list__item">
-            <Link href={toPath(route.path)} passHref>
+            <Link href={toVersionedPath(route.path)} passHref>
               <a className="integration-link">
                 <div className="icon" id="light-theme">
                   <img

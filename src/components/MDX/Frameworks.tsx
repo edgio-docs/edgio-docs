@@ -42,7 +42,7 @@ const StyledFrameworks = styled.div`
 
 export default function Frameworks() {
   const {
-    version: {toPath},
+    version: {toVersionedPath},
   } = useConditioning();
   const parentPath = 'framework-guides';
   const allRoutes = getChildrenRoutesFromSidebarMenuItems(parentPath);
@@ -51,7 +51,7 @@ export default function Frameworks() {
       <ul className="framework-lists">
         {allRoutes.map((route) => (
           <li key={route.path} className="framework-list__item">
-            <Link href={toPath(route.path)} passHref>
+            <Link href={toVersionedPath(route.path)} passHref>
               <a className="framework-link">
                 <div className="icon" id="light-theme">
                   {route.icon ? route.icon : null}

@@ -14,7 +14,7 @@ import useConditioning from 'utils/hooks/useConditioning';
 const StyledComp = styled(StyledFeatureSection)``;
 export default function Cdn() {
   const {
-    version: {toPath},
+    version: {toVersionedPath},
   } = useConditioning();
   const parentPath = 'cdn';
   const allRoutes = getChildrenRoutesFromSidebarMenuItems(parentPath);
@@ -41,7 +41,7 @@ export default function Cdn() {
               {route.map(({path, title}) => (
                 <li className="route-list__item" key={title}>
                   <div className="dot" />
-                  <Link href={toPath(path)}>{title}</Link>
+                  <Link href={toVersionedPath(path)}>{title}</Link>
                 </li>
               ))}
             </ul>

@@ -93,7 +93,7 @@ export function Toc({
   const router = useRouter();
   const {asPath} = router;
   const {
-    version: {toPath},
+    version: {toVersionedPath},
   } = useConditioning();
   const {currentIndex} = useTocHighlight();
   const selectedIndex = Math.min(currentIndex, headings.length - 1);
@@ -112,13 +112,14 @@ export function Toc({
                 if (path.length) {
                   path = asPath.split('#')[0] + path;
                 }
+                console.log('path', path);
                 return (
                   <li
                     key={`heading-${h.url}-${i}`}
                     data-selected={i === selectedIndex}
                     data-depth={h.depth && h.depth < 4 ? h.depth : -1}
                     className="docs-toc__listItem">
-                    <Link href={toPath(path)}>
+                    <Link href={toVersionedPath(path)}>
                       <a>{h.text}</a>
                     </Link>
                   </li>

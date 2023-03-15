@@ -209,7 +209,7 @@ export default function FrameworkGuides() {
   ];
   const routes = [routesCol1, routesCol2, routesCol3];
   const {
-    version: {toPath},
+    version: {toVersionedPath},
   } = useConditioning();
 
   return (
@@ -239,7 +239,9 @@ export default function FrameworkGuides() {
                     <div className="dot" />
                   )}
                   <Link
-                    href={toPath(`sites_frameworks/getting_started/${path}`)}>
+                    href={toVersionedPath(
+                      `sites_frameworks/getting_started/${path}`
+                    )}>
                     {title}
                   </Link>
                 </li>

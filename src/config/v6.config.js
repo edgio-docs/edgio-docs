@@ -1,5 +1,3 @@
-const config = {
-  PRODUCT: 'Edgio v6',
-};
+const config = {};
 
 export default config;

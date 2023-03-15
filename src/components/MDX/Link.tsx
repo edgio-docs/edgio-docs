@@ -72,7 +72,7 @@ function Link({
 
   // internal link
   return (
-    <NextLink href={version.toPath(href)}>
+    <NextLink href={version.toVersionedPath(href)}>
       {/* eslint-disable-next-line jsx-a11y/anchor-has-content */}
       <a className={cn(classes, className)} {...props}>
         {modifiedChildren}

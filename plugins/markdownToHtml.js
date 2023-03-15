@@ -6,7 +6,7 @@ const images = require('remark-images'); // Improved image syntax
 const unrwapImages = require('remark-unwrap-images'); // Removes <p> wrapper around images
 const smartyPants = require('./remark-smartypants'); // Cleans up typography
 const html = require('remark-html');
-const remarkMdxCodeMeta = require('remark-mdx-code-meta');
+const {remarkMdxCodeMeta} = require('remark-mdx-code-meta');
 // const {
 //   remarkExtendedTable,
 //   extendedTableHandlers,

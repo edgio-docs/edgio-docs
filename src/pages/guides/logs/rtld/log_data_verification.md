@@ -7,9 +7,10 @@ Check for missing log data by either:
 -   Reviewing recent log performance statistics.
 -   Looking for gaps in the sequential number reported by each Real-Time Log Delivery software agent.
 
-## Log Performance Statistics
-
 <!--
+
+## Log Performance Statistics {/*log-performance-statistics*/}
+
 The Log Performance page provides a summary view and a breakdown of log delivery failures for up to the last 30 days.
 
 Find out which log files are missing by manually checking for gaps in the sequence number reported by each Real-Time Log Delivery software agent.  
@@ -81,7 +82,7 @@ Use the following information when assessing whether there is a gap in the seque
 
 If log data uses either the JSON Array or JSON Lines log format, then you will be unable to use the JSON payload to check for sequence number gaps. This means that you will be unable to check for sequence gaps when delivering log data to your web server(s), Splunk Enterprise, Sumo Logic, Datadog, or New Relic.
 
-### Log File Example
+### Log File Example {/*log-file-example*/}
 
 Let's assume that your AWS S3 bucket, Azure Blob container, or Google Cloud Storage bucket contains the following log files:
 

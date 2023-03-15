@@ -44,7 +44,7 @@ Log data is reported as a JSON document. Log format determines whether log data 
 
 </Callout>
 
-## Top-Level Name/Value Pairs
+## Top-Level Name/Value Pairs {/*top-level-namevalue-pairs*/}
 
 <Callout type="info">
 
@@ -210,17 +210,13 @@ The logs array contains an object for each log entry associated with the current
 
     The name of this field identifies a request header using lowercase letters. Additionally, hyphens in the request header's name are converted to underscores.
 
-    **Example:** The following key-value pair indicates that the `Accept-Encoding` request header was set to `gzip, deflate`: 
+    **Example:** The following key-value pair indicates that the `Accept-Encoding` request header was set to `gzip, deflate`: `"req_hdr_accept_encoding": "gzip, deflate",`
 
-    `"req_hdr_accept_encoding": "gzip, deflate",`
-
--   `resp_hdr_`<RESPONSE_HEADER>` **(*String*):** Response Header. Indicates the value of the response header defined within the field name. A key-value pair will be included for each response header defined within the **Custom Response Headers** option.
+-   `resp_hdr_<RESPONSE_HEADER>` **(*String*):** Response Header. Indicates the value of the response header defined within the field name. A key-value pair will be included for each response header defined within the **Custom Response Headers** option.
 
     The name of this field identifies a response header using lowercase letters. Additionally, hyphens in the response header's name are converted to underscores.
 
-    **Example:** The following key-value pair indicates that the `Content-Length` request header was set to `445`:
-
-    `"resp_hdr_content_length": "445",`
+    **Example:** The following key-value pair indicates that the `Content-Length` request header was set to `445`: `"resp_hdr_content_length": "445",`
 
 -   **rewritten_path (*String*):** Rewritten URL Path. (Category: Request) Indicates the rewritten URL path for the CDN content that was requested, posted, or deleted. This URL, which excludes the query string, is reported as a relative path that starts directly after the hostname.
 
@@ -249,7 +245,7 @@ The logs array contains an object for each log entry associated with the current
 
 -   **total_time (*Decimal*):** Total Time. (Category: Performance) Indicates the length of time, in seconds, that it took to send a response to the client. This metric measures the duration between when an edge server receives a request and when it finishes sending the response to the client.
 
-    <Callout type="info>
+    <Callout type="info">
 
       This field does not take into account network time.
 
@@ -293,7 +289,7 @@ The logs array contains an object for each log entry associated with the current
 
     **Syntax:** `<SECONDS>.<MICROSECONDS>`
 
-## Sample Log Data
+## Sample Log Data {/*sample-log-data*/}
 
 Sample log data that contains two log entries is provided below for all four log formats.
 
@@ -355,6 +351,7 @@ Sample log data that contains two log entries is provided below for all four log
 		}
 	]
 }
+```
 
 <a id="json-array" />
 
@@ -407,18 +404,19 @@ Sample log data that contains two log entries is provided below for all four log
 		"status_code": 200
 	}
 ]
+```
 
 <a id="json-lines" />
 
 ```JSON_Lines
-{"user_agent": "Mozilla/5.0 (Windows NT ... Represents a log entry.}
+{"user_agent": "Mozilla/5.0 (Windows NT ...}
 {"user_agent": "Mozilla/5.0 (Windows NT ...}
 ```
 
 <a id="csv" />
 
 ```CSV
-user_agent,rewritten_path,timestamp,..., Represents additional log fields.status_code
-"Mozilla/5.0 (Windows NT 10.0; WOW64; rv:59.0) Gecko/20100101 Firefox/59.0","/800001/marketing/Resources/Scripts/script.js",1523916295.768957,.., Represents data for additional log fields.200
-"Mozilla/5.0 (Windows NT 10.0; WOW64; rv:59.0) Gecko/20100101 Firefox/59.0","/800001/marketing/skins/Images/print-black-24-px.png",1523916295.841614,..., Represents data for additional log fields.200
+user_agent,rewritten_path,timestamp,...,status_code
+"Mozilla/5.0 (Windows NT 10.0; WOW64; rv:59.0) Gecko/20100101 Firefox/59.0","/800001/marketing/Resources/Scripts/script.js",1523916295.768957,..,200
+"Mozilla/5.0 (Windows NT 10.0; WOW64; rv:59.0) Gecko/20100101 Firefox/59.0","/800001/marketing/skins/Images/print-black-24-px.png",1523916295.841614,...,200
 ```

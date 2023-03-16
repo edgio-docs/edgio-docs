@@ -163,12 +163,15 @@ export async function getStaticProps({params}: {params: any}) {
   content = templateReplace(content, getVersionedConfig(version));
 
   // remove any html comments (<!-- -->) as these will not parse correctly
-  content = content.toString().replace(/<!--([\s\S]*?)-->/g, '');
+  content = content.replace(/<!--([\s\S]*?)-->/g, '');
+
+  // <edgejs> tags are used for external documentation and should be removed
+  content = content.replace(/<edgejs([\s\S]*?)edgejs>/g, '');
 
   // Any {{ VALUE }} that was not replaced in the above step
   // should be replaced with only 1 set of [] brackets. Keeping them as
   // {{ }} double braces will cause the MDX parser to throw an error.
-  content = content.toString().replace(/{{\s*(\w+)\s*}}/g, (match, p1) => {
+  content = content.replace(/{{\s*(\w+)\s*}}/g, (match, p1) => {
     return `[${p1}]`;
   });
 

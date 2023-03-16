@@ -13,7 +13,9 @@ function Condition({version, children}: ConditionProps) {
 
   // `currentVersion` is the version defined in the route (eg. `/guides/v6/...`)
   // but will return as a string (eg. `6`)
-  const {version: currentVersion} = useConditioning();
+  const {
+    version: {selectedVersion: currentVersion},
+  } = useConditioning();
 
   const isVersionSatisfied = useMemo(() => {
     // coerce to a valid semver version

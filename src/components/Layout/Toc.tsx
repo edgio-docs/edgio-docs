@@ -112,7 +112,6 @@ export function Toc({
                 if (path.length) {
                   path = asPath.split('#')[0] + path;
                 }
-                console.log('path', path);
                 return (
                   <li
                     key={`heading-${h.url}-${i}`}

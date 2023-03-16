@@ -5,7 +5,6 @@ const visit = require('unist-util-visit');
 const parser = Parser.extend(jsx());
 
 const transformer = (ast) => {
-  console.log('custom transformer');
   visit(ast, 'code', (node, index, parent) => {
     if (!node.meta) {
       return;

@@ -78,4 +78,7 @@ export const MDXComponents = {
   Integrations,
   ExampleButtons,
   SnippetGroup,
+
+  // for `<edgejs />` comment tag; nothing to render
+  edgejs: () => null,
 };

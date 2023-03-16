@@ -18,14 +18,14 @@ Free accounts are limited to three environments. Paid accounts allow you to crea
 
 Each environment consists of:
 
--   **Hostnames**: Each hostname identifies a domain (e.g., www.example.com) through which your site will be served.
--   **Origins:** Each origin configuration defines how our service will communicate with your web servers.
--   **Rules:** Rules determine how requests for a specific environment will be processed.
--   **Core Web Vitals:** Performance metrics as measured by actual Chrome users. 
--   **Caching**: Each environment has a separate cache space that is automatically cleared each time you deploy. Use the **Caching** tab to clear the cache by path or surrogate key.
--   **Environment Variables**: An environment variable is a placeholder for sensitive information (e.g., secrets and API keys) that should not be checked into source control. 
+-   [Hostnames:](/guides/basics/hostnames_and_origins) Each hostname identifies a domain (e.g., www.example.com) through which your site will be served.
+-   [Origins:](/guides/basics/hostnames_and_origins) Each origin configuration defines how our service will communicate with your web servers.
+-   [Rules:](/guides/performance/rules) Rules determine how requests for a specific environment will be processed.
+-   [Core Web Vitals:](/guides/performance/observability/core_web_vitals) Performance metrics as measured by actual Chrome users. 
+-   [Caching:](/guides/performance/caching) Each environment has a separate cache space that is automatically cleared each time you deploy. Use the **Caching** tab to clear the cache by path or surrogate key.
+-   [Environment Variables:](#environment-variables) An environment variable is a placeholder for sensitive information (e.g., secrets and API keys) that should not be checked into source control. 
 -   **Traffic (Analytics):** Contains real-time statistics for this environment's traffic. You may also view a breakdown of traffic by specific routes.
--   **Real-Time Log Delivery:** Delivers log data in near real-time to a variety of destinations. 
+-   [Real-Time Log Delivery:](/guides/logs/rtld) Delivers log data in near real-time to a variety of destinations. 
 -   **User Activity:** Contains an audit trail of changes to this environment (e.g., changes to your configuration and deployments).
 -   **Edge Insights:** Gain historical and near real-time insights into threat profiles, performance, and CDN usage. 
 
@@ -35,7 +35,7 @@ Each environment consists of:
 
 ## Creating an Environment {/*creating-an-environment*/}
 
-To create an environment, navigate to your site, select the _Environments_ tab, and click _New Environment_:
+Perform the following steps to create an environment:
 
 1.  Load the **Environments** page.
 

@@ -2,24 +2,63 @@
 title: Environments
 ---
 
-This guide shows you how to create production, staging, and other environments.
+An environment is required to serve traffic. By default, all new properties contain an environment called `production`.
 
-In order to serve your site on a specific domain, you need to configure an environment. Most sites have at least three environments: default, staging, and production. Free accounts are limited to three environments. Paid accounts allow you to create either five environments (on the Hyper plan) or as many environments as you need (on Enterprise plans). Each environment consists of:
+<Callout type="tip">
 
-- **Domains** - one or more domains on which the site will be served. Domains cannot be set on the default environment. The domain name for the default environment is derived from your team and site's name.
-- **Environment Variables** - secrets and other values that are specific to the environment and are not appropriate to check into source control. For example, API keys are commonly stored as environment variables.
-- **A/B Testing** - Split traffic between multiple router destinations or other environments to conduct A/B testing or implement blue/green deployments.
-- **Caching** - Each environment has a separate cache space that is automatically cleared each time you deploy. Use the _Caching_ tab to clear the cache by path or surrogate key.
+  Set up your environments to match your software development workflow.
+
+  For example, you could create a development, testing, and staging environment to allow your team members to collaborate at every stage of your software development life cycle.
+
+</Callout>
+
+<!--
+Free accounts are limited to three environments. Paid accounts allow you to create either five environments (on the Hyper plan) or as many environments as you need (on Enterprise plans). 
+-->
+
+Each environment consists of:
+
+-   **Hostnames**: Each hostname identifies a domain (e.g., www.example.com) through which your site will be served.
+-   **Origins:** Each origin configuration defines how our service will communicate with your web servers.
+-   **Rules:** Rules determine how requests for a specific environment will be processed.
+-   **Core Web Vitals:** Performance metrics as measured by actual Chrome users. 
+-   **Caching**: Each environment has a separate cache space that is automatically cleared each time you deploy. Use the **Caching** tab to clear the cache by path or surrogate key.
+-   **Environment Variables**: An environment variable is a placeholder for sensitive information (e.g., secrets and API keys) that should not be checked into source control. 
+-   **Traffic (Analytics):** Contains real-time statistics for this environment's traffic. You may also view a breakdown of traffic by specific routes.
+-   **Real-Time Log Delivery:** Delivers log data in near real-time to a variety of destinations. 
+-   **User Activity:** Contains an audit trail of changes to this environment (e.g., changes to your configuration and deployments).
+-   **Edge Insights:** Gain historical and near real-time insights into threat profiles, performance, and CDN usage. 
+
+<!--
+-   **A/B Testing**: Split traffic between multiple router destinations or other environments to conduct A/B testing or implement blue/green deployments.
+-->
 
 ## Creating an Environment {/*creating-an-environment*/}
 
 To create an environment, navigate to your site, select the _Environments_ tab, and click _New Environment_:
 
-![environments](/images/environments/environments.png)
+1.  Load the **Environments** page.
 
-When creating an environment, you can choose whether or not to limit deployment capabilities to admins and deploy tokens, or to make it available to all members of the team:
+    1.  From the {{ PORTAL }}, select the desired private or team space.
+    2.  Select the desired property.
+    3.  From the left-hand pane, select the desired environment from under the **Environments** section.
 
-![limit environment](/images/teams/environment-permissions.png?width=450)
+2.  Click **+ New Environment**.
+
+    ![environments](/images/basics/environments.png)
+
+3.  In the **Name** option, specify a name for this environment. This name may consist of lowercase characters, numbers, dashes (`-`), and underscores (`_`).
+
+4.  Optional. Copy environment variables, A/B testing configuration, and notes from another environment by selecting it from the `Copy settings from environment` option.
+
+5.  Determine deployment permissions through the **Allow all team members to deploy to this environment** option. 
+
+    -   Mark this option to allow all team members to deploy to this environment.
+    -   Clear this option to restrict deployment to admins and the deploy token. 
+
+    ![limit environment](/images/basics/environment-permissions.png?width=450)
+
+6.  Click **Create**.
 
 ## Deploying to an Environment {/*deploying-to-an-environment*/}
 

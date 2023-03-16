@@ -4,8 +4,8 @@ title: Hostnames and Origins
 
 Setting up the delivery of your site through {{ PRODUCT }} requires the following configuration for each desired [environment](/guides/basics/environments):
 
--   **Hostname:** Identifies a hostname (e.g., www.example.com) through which your site will be served.
--   **Origin Configuration:** Defines how our service will communicate with your web servers
+-   **Hostname:** Identifies a domain (e.g., www.example.com) through which your site will be served.
+-   **Origin:** Defines how our service will communicate with your web servers.
 
 Control how {{ PRODUCT }} communicates with your web servers by mapping hostnames to origin configurations.
 
@@ -228,7 +228,7 @@ As clients request your site, {{ PRODUCT }} sends traffic through our network to
 
 Once you are ready to serve traffic through {{ PRODUCT }}, you will need to configure DNS for each hostname. DNS configuration consists of defining a CNAME record that points your hostname to our service. 
 
-Point your hostname(s) to a service domain that is either specific to your property's environment or space.
+From your DNS service provider, point your hostname(s) to a service domain that is either specific to your property's environment or space.
 
 **Sample Service Domain:** `2af36ae6-2146-4b73-a5e7-f86c4a93bc06.edgio.link`
 

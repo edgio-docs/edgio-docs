@@ -473,7 +473,6 @@ Determines the types of H.264 file formats that may be used when streaming conte
     ```js
     "h264_support": [".mp4", ".f4v"],
     ```
--->
 
 -   **h264_support_video_seek_params (*Object*):** <a id="h264-support-video-seek-params" /> Overrides the names assigned to parameters that control seeking through H.264 media when using HTTP Progressive Download. Set the following properties:
 
@@ -493,6 +492,7 @@ Determines the types of H.264 file formats that may be used when streaming conte
     </Callout>
 
     **Default Behavior:** By default, HTTP Progressive Download looks for `ec_seek` and `ec_end` parameters in the query string.
+-->
 
 #### Honor No Cache Request Header {/*honor-no-cache-request-header*/}
 

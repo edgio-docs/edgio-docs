@@ -180,9 +180,9 @@ upload.build.layer0.co
 app.layer0.co
 ```
 
-You may highlight various lines of code by specifying line number ranges within `ins={}`, `del={}`, or `highlight={}`, where the value inside `{}` can be `{1,2,3,8,9,10}` or `{1-3,8-10}`, for example.
+You may highlight various lines of code by specifying line number ranges within `ins=""`, `del=""`, or `highlight=""`, where the value inside `""` can be `"1,2,3,8,9,10"` or `"1-3,8-10"`, for example.
 
-```js ins={1-3,8-10} 
+```js ins="1-3,8-10"
   new Router()
   .get('/pages/c/:categoryId', ({ cache }) => {
     cache({

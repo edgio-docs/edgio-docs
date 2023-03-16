@@ -233,7 +233,7 @@ export class AppComponent implements OnInit {
 
 To avoid Spartacus installing `ngsw-worker`, set `production: false` in `environment.prod.ts` as a temporary workaround:
 
-```js del={2} ins={3}
+```js del="2" ins="3"
 pwa: {
   enabled: environment.production
   enabled: false
@@ -242,7 +242,7 @@ pwa: {
 
 You may also need to disable it in your `app.module.ts` file:
 
-```js del={4} ins={5}
+```js del="4" ins="5"
 ServiceWorkerModule.register(
   'ngsw-worker.js',
   {

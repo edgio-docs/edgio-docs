@@ -64,7 +64,7 @@ This will automatically add all of the required dependencies and files to your p
 
 If you're using webpack to build your app, update `webpack.config.js` to bundle all dependencies in the server build:
 
-```js filename='webpack.config.js' del={1} ins={2}
+```js filename='webpack.config.js' del="1" ins="2"
 externals: Object.keys(pkg.dependencies).concat('encoding'),
 externals: ['encoding'],
 ```
@@ -79,7 +79,7 @@ npm i -D @rollup/plugin-json
 
 Then make the following changes to `rollup.config.js`:
 
-```js filename='rollup.config.js' del={1} ins={2}
+```js filename='rollup.config.js' del="1" ins="2"
 import pkg from './package.json';
 import json from '@rollup/plugin-json';
 ```
@@ -95,7 +95,7 @@ plugins: [
 
 and
 
-```js del={1} ins={2}
+```js del="1" ins="2"
 external: Object.keys(pkg.dependencies).concat(require('module').builtinModules),
 external: require('module').builtinModules,
 ```

@@ -4,17 +4,18 @@ title: VuePress
 
 This guide shows you how to deploy a [VuePress](https://vuepress.vuejs.org/) application to {{ PRODUCT }}.
 
-## Example {/*example*/}
+## Example {/* example */}
 
 <ExampleButtons
   title="VuePress"
   siteUrl="https://edgio-community-examples-vuepress-live.layer0-limelight.link/"
-  repoUrl="https://github.com/edgio-docs/edgio-vuepress-example" 
-  deployFromRepo />
+  repoUrl="https://github.com/edgio-docs/edgio-vuepress-example"
+  deployFromRepo
+/>
 
 {{ PREREQ }}
 
-## Create a new VuePress app {/*create-a-new-vuepress-app*/}
+## Create a new VuePress app {/* create-a-new-vuepress-app */}
 
 If you don't already have a VuePress app, create one by running the following:
 
@@ -30,15 +31,16 @@ You can verify your app works by running it locally with:
 yarn dev
 ```
 
-## Configuring your VuePress app for {{ PRODUCT }} {/*configuring-your-vuepress-app-for*/}
+## Configuring your VuePress app for {{ PRODUCT }} {/* configuring-your-vuepress-app-for */}
 
-### Update package.json {/*update-packagejson*/}
-```json del={1} ins={2}
+### Update package.json {/* update-packagejson */}
+
+```json del="1" ins="2"
 "build": "vuepress build src",
 "build": "vuepress build src -d=public",
 ```
 
-### Initialize your project {/*initialize-your-project*/}
+### Initialize your project {/* initialize-your-project */}
 
 In the root directory of your project run `{{ FULL_CLI_NAME }} init`:
 
@@ -53,7 +55,7 @@ This will automatically update your `package.json` and add all of the required {
 - `{{ CONFIG_FILE }}` - A configuration file for {{ PRODUCT }}
 - `routes.js` - A default routes file that sends all requests to VuePress.
 
-### Configure the routes {/*configure-the-routes*/}
+### Configure the routes {/* configure-the-routes */}
 
 Update `routes.js` at the root of your project to the following:
 
@@ -61,16 +63,16 @@ Update `routes.js` at the root of your project to the following:
 // This file was added by {{ FULL_CLI_NAME }} init.
 // You should commit this file to source control.
 
-import { Router } from '{{ PACKAGE_NAME }}/core/router'
+import {Router} from '{{ PACKAGE_NAME }}/core/router';
 
 export default new Router()
   // Create serveStatic route for each file in the folder public with a cache-control header of 's-maxage=315360000'
-  .static('public')
+  .static('public');
 ```
 
 Refer to the [CDN-as-code](/guides/performance/cdn_as_code) guide for the full syntax of the `routes.js` file and how to configure it for your use case.
 
-### Run the VuePress app locally on {{ PRODUCT }} {/*run-the-vuepress-app-locally-on*/}
+### Run the VuePress app locally on {{ PRODUCT }} {/* run-the-vuepress-app-locally-on */}
 
 Create a production build of your app by running the following in your project's root directory:
 
@@ -86,7 +88,7 @@ Test your app with the {{ PRODUCT_PLATFORM }} on your local machine by running t
 
 Load the site http://127.0.0.1:3000
 
-## Deploying {/*deploying*/}
+## Deploying {/* deploying */}
 
 Create a production build of your app by running the following in your project's root directory:
 

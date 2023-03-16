@@ -111,7 +111,7 @@ const PREFETCH_TIER1_INTRO = `
 The \`${FULL_CLI_NAME} init\` command adds a service worker based on [Workbox](https://developers.google.com/web/tools/workbox) at \`sw/service-worker.js\`. 
 If you have an existing service worker that uses workbox, you can copy its contents into \`sw/service-worker.js\` and simply add the following to your service worker:
 
-\`\`\`js filename='sw/service-worker.js'
+\`\`\`js filename="sw/service-worker.js"
 import { Prefetcher } from '${PACKAGE_NAME}/prefetch/sw';
 
 new Prefetcher().route();

@@ -280,7 +280,7 @@ Manage deployed property's environments and environment variables.
 
 | Name                      | Description                                                                     |
 |----------------------------|----------------------------------------------------------------------------------|
-| `pull <path-to-env-file>` | Copy non-secret environment variables from an environment to a local .env file. |
+| `pull <path-to-env-file>` | Copy non-secret environment variables from an environment to a local `.env` file. |
 
 #### Options {/*options*/}
 

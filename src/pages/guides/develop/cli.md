@@ -272,6 +272,31 @@ Runs your project in development mode, simulating the {{ PRODUCT_NAME }} cloud e
 {{ FULL_CLI_NAME }} dev
 ```
 
+### env {/*env*/}
+
+Manage deployed property's environments and environment variables.
+
+#### Parameters {/*parameters*/}
+
+| Name                      | Description                                                                     |
+|----------------------------|----------------------------------------------------------------------------------|
+| `pull <path-to-env-file>` | Copy non-secret environment variables from an environment to a local `.env` file. |
+
+#### Options {/*options*/}
+
+| Name            | Description                                                                          |
+|------------------|---------------------------------------------------------------------------------------|
+| `--team`        | The name of the team under which the site belongs. Uses private space if omitted.    |
+| `--site`        | Slug of the site to pull variables from. Uses package.json name property if omitted. |
+| `--environment` | Environment to pull variables from. Uses default environment if omitted.             |
+
+
+#### Example {/*example*/}
+
+```bash
+{{ FULL_CLI_NAME }} env pull .env.local --team my-team --site my-site --environment production
+```
+
 ### init {/*init*/}
 
 Run in an existing app to add all required packages and files need to publish your app on {{ PRODUCT_NAME }}

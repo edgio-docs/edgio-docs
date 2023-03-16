@@ -38,7 +38,8 @@ const SUPPORT_URL = `${APP_URL}/help`;
 const DOCS_URL = `https://${DOCS_DOMAIN}`;
 const DOCS_PAGES_REPO_URL = `https://${DOCS_PAGES_DOMAIN}`;
 const LOGIN_URL = `${APP_URL}/?sgId=ef4d5169-93f2-4f55-aabb-dc3be4286e1f`;
-const PORTAL = `[${COMPANY_NAME} Developer console](${LOGIN_URL})`;
+const PORTAL_PLAIN = `${COMPANY_NAME} Developer console`;
+const PORTAL = `[${PORTAL_PLAIN}](${LOGIN_URL})`;
 
 const NODE_VERSION = '16.x';
 const STARTER_NAME = 'layer0-app';
@@ -484,6 +485,7 @@ module.exports = {
   HELP_URL,
   INSTALL_CLI,
   LOGIN_URL,
+  PORTAL_PLAIN,
   PORTAL,
   PREREQ,
   INSTALL_CLI_STEP,

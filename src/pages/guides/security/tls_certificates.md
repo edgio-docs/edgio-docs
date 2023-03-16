@@ -267,7 +267,7 @@ Uploading a TLS certificate requires:
 
     <Callout type="info">
 
-      The private key is non-public data and must not be shared with parties other than {{ PRODUCT_NAME }}. {{ PRODUCT_NAME }} securely stores your private key. It is never shown in the {{ PRODUCT }} Developer console and it is only used to provision parts of the infrastructure that are used to terminate TLS connections.
+      The private key is non-public data and must not be shared with parties other than {{ PRODUCT_NAME }}. {{ PRODUCT_NAME }} securely stores your private key. It is never shown in the {{ PORTAL_PLAIN }} and it is only used to provision parts of the infrastructure that are used to terminate TLS connections.
 
     </Callout>
 

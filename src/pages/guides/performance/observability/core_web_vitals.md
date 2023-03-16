@@ -39,7 +39,7 @@ The benefits of using {{ PRODUCT }} instead of Google Search Console to track Co
 
 ## Installation {/*installation*/}
 
-In order to start tracking Core Web Vitals on {{ PRODUCT_NAME }}, you need to add the `{{ PACKAGE_NAME }}/rum` client library to your application. Navigate to your site in the [{{ PRODUCT }} Developer Console]({{ LOGIN_URL }}) and click on **More Details** under the **Core Web Vitals** section. 
+In order to start tracking Core Web Vitals on {{ PRODUCT_NAME }}, you need to add the `{{ PACKAGE_NAME }}/rum` client library to your application. Navigate to your site in the [{{ PORTAL_PLAIN }}]({{ LOGIN_URL }}) and click on **More Details** under the **Core Web Vitals** section. 
 
 ![Core Web Vitals More Details](/images/cwv/cwv_more_details.png)
 

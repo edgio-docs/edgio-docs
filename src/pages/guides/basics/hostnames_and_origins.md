@@ -4,7 +4,7 @@ title: Hostnames and Origins
 
 Setting up the delivery of your site through {{ PRODUCT }} requires the following configuration for each desired [environment](/guides/basics/environments):
 
--   **Hostname:** Identifies a domain (e.g., www.example.com) through which your site will be served.
+-   **Hostname:** Identifies a domain (e.g., `cdn.example.com`) through which your site will be served.
 -   **Origin:** Defines how our service will communicate with your web servers.
 
 Control how {{ PRODUCT }} communicates with your web servers by mapping hostnames to origin configurations.

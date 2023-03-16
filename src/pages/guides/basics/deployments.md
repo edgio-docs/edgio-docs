@@ -2,31 +2,67 @@
 title: Deployments
 ---
 
-This guide walks you through deploying your app to {{ PRODUCT_NAME }}.
+A deployment is required to apply changes to your code or configuration to an environment. 
 
-## Deploy From the CLI {/*deploy-from-the-cli*/}
+## Deploying 
 
-Once you've created your {{ PRODUCT_NAME }} project, run the following to deploy your site to your private space on {{ PRODUCT_NAME }} using the CLI:
+Deploy to an environment using either of the following methods:
 
-```bash
-{{ FULL_CLI_NAME }} deploy
-```
+-   **{{ PORTAL }}:** Use this method to deploy changes made within the {{ PORTAL_PLAIN }}. 
+    1.  Load the desired environment.
 
-The CLI will automatically detect the framework you're using, create an optimized production build, and upload it to {{ PRODUCT_NAME }}. This takes about a minute for most applications.
+        1.  From the {{ PORTAL }}, select the desired private or team space.
+        2.  Select the desired property.
+        3.  From the left-hand pane, select the desired environment from under the **Environments** section.
 
-Once the deployment is complete, the CLI will output the URL for your site. The site name is automatically derived from the `name` field in `package.json`. This can be overridden by using `--site` option when running `{{ FULL_CLI_NAME }} deploy`.
+    2.  From the notification bar at the top of the page, click **Deploy Changes**.
+
+-   **{{ PRODUCT }} CLI:** Use this method to deploy changes from your local machine (e.g., changes to {{ CONFIG_FILE }} or {{ ROUTES_FILE }}).
+
+    ```bash
+    {{ FULL_CLI_NAME }} deploy [<TEAM>] [--environment=<ENVIRONMENT>]
+    ```
+    <Callout type="info">
+
+      If you omit the `environment` argument, then the deployment will be applied to the `production` environment.
+
+    </Callout>
+
+    The CLI will automatically detect your property's framework, create an optimized production build, and upload it to {{ PRODUCT }}. This takes about a minute for most applications.
+
+    Once the deployment is complete, the CLI will output the URL for your site. The site name is automatically derived from the `name` field in `package.json`. This can be overridden by using `--site` option when running `{{ FULL_CLI_NAME }} deploy`.
+
+
+## Versioning {/*environment-versions*/}
+
+Deployments are versioned. Each deployment is assigned a unique version number. This allows you to quickly roll back to a previous version when a breaking change is introduced into an environment. 
+
+**To roll back to a previous version**
+
+1.  Load the **Deployments** page.
+
+    {{ ENV_NAV }} **Deployments**.
+
+2.  Find the deployment that should be applied to this environment, click its <img data-inline-img src="/images/icons/menu-kebab.png" alt="Menu" /> icon, and then click **Rollback to this version**.
+
+3.  When prompted, click **Promote to production** to confirm this deployment.
 
 ## Branches and Deployments {/*branches-and-deployments*/}
 
-Each time you deploy your site to {{ PRODUCT_NAME }} a "deployment" is created and given a unique and permanent URL based on the team name, site name, branch name in source control, and an incrementing deployment number. If you use Git, the branch name is set by the default. If not, you can specify the `--branch` option when running `{{ FULL_CLI_NAME }} deploy`.
+Each time you deploy your site to {{ PRODUCT }} a deployment is created and given a unique and permanent URL based on the team name, site name, branch name in source control, and an incrementing deployment number. If you use Git, the branch name is set by the default. If not, you can specify the `--branch` option when running `{{ FULL_CLI_NAME }} deploy`.
 
 ![deployments](/images/deploying/deployments.png)
 
-Having each deployment be simultaneously and permanently accessible makes it easy to preview other developers' work before merging a pull request and enables you to "go back in time" to find where a bug or change in behavior originated. We recommend configuring your CI environment to deploy every push to {{ PRODUCT_NAME }}.
+Having each deployment be simultaneously and permanently accessible makes it easy to preview other developers' work before merging a pull request and enables you to "go back in time" to find where a bug or change in behavior originated. We recommend configuring your CI environment to deploy every push to {{ PRODUCT }}.
 
 ## Deploy from CI {/*deploy-from-ci*/}
 
-To deploy from your CI environment, create a deploy token using the site settings tab in the {{ PRODUCT_NAME }} console.
+When configuring CI, we recommend:
+
+-   Automatically deploying to your staging environment when a PR is merged to the master branch of your repo.
+-   Manually promoting deployments to production using the {{ PORTAL_PLAIN }} to prevent unwanted builds from being published by misconfigured CI workflows.
+
+To deploy from your CI environment, create a deploy token using the site settings tab in the {{ PRODUCT }} console.
 
 ![deployments](/images/deploying/token.png)
 
@@ -46,7 +82,7 @@ You need to configure the following items in order to get a GitHub action set up
 2. Save the deploy token inside GitHub ([more info](https://docs.github.com/en/actions/security-guides/encrypted-secrets#using-encrypted-secrets-in-a-workflow)). Go to your `GitHub project > Settings > Secrets > New repository secret`. Save the item as `EDGIO_DEPLOY_TOKEN`.
 3. Inside your development project, create a top level folder titled `.github`. Inside that create a `workflows` folder. From there create a `edgio.yml` file and use the example below for its content.
 
-This is an example GitHub action that will deploy your site to {{ PRODUCT_NAME }}.
+This is an example GitHub action that will deploy your site to {{ PRODUCT }}.
 
 For this action to work
 
@@ -145,7 +181,7 @@ jobs:
 
 ## Jenkins Pipeline {/*jenkins-pipeline*/}
 
-Here is an example Jenkins pipeline that deploys your site to {{ PRODUCT_NAME }}:
+Here is an example Jenkins pipeline that deploys your site to {{ PRODUCT }}:
 
 This guide assumes:
 
@@ -157,7 +193,7 @@ This guide assumes:
 ```groovy
 // Add this file to your project at ./Jenkinsfile
 //
-// This Jenkins pipeline deploys your site on {{ PRODUCT_NAME }}.
+// This Jenkins pipeline deploys your site on {{ PRODUCT }}.
 //
 // The site is deployed each time commits are pushed. The environment to which the changes are deployed
 // is based on the following rules:
@@ -201,7 +237,7 @@ pipeline {
         sh "npm i"
       }
     }
-    stage("Deploy to {{ PRODUCT_NAME }}") {
+    stage("Deploy to {{ PRODUCT }}") {
       steps {
         script {
           def branch = env.GIT_BRANCH // typically referenced as `origin/{branch}`
@@ -219,7 +255,7 @@ pipeline {
 
 ## GitLab CI/CD {/*gitlab-cicd*/}
 
-Here is an example GitLab CI/CD configuration that deploys your site to {{ PRODUCT_NAME }}:
+Here is an example GitLab CI/CD configuration that deploys your site to {{ PRODUCT }}:
 
 This guide assumes:
 
@@ -231,7 +267,7 @@ This guide assumes:
 ```yml
 # Add this file to your project at .gitlab-ci.yml
 #
-# This GitLab CI/CD configuration deploys your site on {{ PRODUCT_NAME }}.
+# This GitLab CI/CD configuration deploys your site on {{ PRODUCT }}.
 #
 # The site is deployed each time commits are pushed. The environment to which the changes are deployed
 # is based on the following rules:

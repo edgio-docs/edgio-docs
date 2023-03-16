@@ -62,7 +62,7 @@ module.exports = new Router().prerender(async () => {
 const { Router } = require('{{ PACKAGE_NAME }}/core/router')
 
 module.exports = new Router().prerender(async () => {
-  const paths = process.env.PRERENDER_PATHS.split(/\n/) // define the list of paths to prerender in the {{ PRODUCT_NAME }} Developer Console.
+  const paths = process.env.PRERENDER_PATHS.split(/\n/) // define the list of paths to prerender in the {{ PORTAL_PLAIN }}.
   return paths.map(path => ({ path }))
 })
 ```
@@ -192,10 +192,10 @@ By default, {{ PRODUCT_NAME }} prerenders a maximum of 200 URLs at a time. This 
 
 <a id="viewing-prerendering-results-in-the-developer-console"></a>
 
-## Viewing Prerendering Results in the {{ PRODUCT_NAME }} Developer Console {/*viewing-prerendering-results-in-the-developer-console*/}
+## Viewing Prerendering Results in the {{ PORTAL_PLAIN }} {/*viewing-prerendering-results-in-the-developer-console*/}
 
 When you deploy a new version of your site, you can view the progress and results of prerendering from the deployment
-view in {{ PRODUCT_NAME }} Developer Console:
+view in {{ PORTAL_PLAIN }}:
 
 ![progress](/images/static-prerendering/progress.png)
 

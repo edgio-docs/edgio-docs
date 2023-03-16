@@ -268,10 +268,10 @@ const SidebarMenuItems: ISidebarMenuItems = [
           iconDark: <IconNextJSDark />,
         },
         {
-          title: 'Next.js Commerce',
-          path: '/guides/sites_frameworks/getting_started/next_commerce',
-          icon: <IconNextJSCommerce />,
-          iconDark: <IconNextJSCommerceDark />,
+          title: 'Nuxt3',
+          path: '/guides/sites_frameworks/getting_started/nuxt3',
+          icon: <IconNuxt />,
+          iconDark: <IconNuxt />,
         },
         {
           title: 'Nuxt.js',
@@ -280,16 +280,16 @@ const SidebarMenuItems: ISidebarMenuItems = [
           iconDark: <IconNuxt />,
         },
         {
-          title: 'Nuxt3',
-          path: '/guides/sites_frameworks/getting_started/nuxt3',
-          icon: <IconNuxt />,
-          iconDark: <IconNuxt />,
-        },
-        {
           title: 'React',
           path: '/guides/sites_frameworks/getting_started/react',
           icon: <IconReact />,
           iconDark: <IconReact />,
+        },
+        {
+          title: 'Vue.js',
+          path: '/guides/sites_frameworks/getting_started/vue',
+          icon: <IconVue />,
+          iconDark: <IconVue />,
         },
       ],
     },
@@ -751,10 +751,6 @@ const SidebarMenuItems: ISidebarMenuItems = [
       path: 'reference',
       sortRoutes: true,
       routes: [
-        {
-          title: 'Limits & Caveats',
-          path: '/guides/limits',
-        },
         {
           title: 'v6 Migration Guide',
           path: '/guides/v6_migration',

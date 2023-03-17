@@ -733,10 +733,6 @@ const SidebarMenuItems: ISidebarMenuItems = [
           title: 'Teams',
           path: '/guides/basics/collaboration',
         },
-        {
-          title: 'SAML Single Sign On',
-          path: '/guides/basics/collaboration/sso',
-        },
       ],
     },
     {

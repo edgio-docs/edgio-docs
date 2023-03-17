@@ -31,12 +31,6 @@
         {
           "title": "Collaboration",
           "path": "basics/collaboration",
-          "routes": [
-            {
-              "title": "Single-Sign On (SSO)",
-              "path": "basics/collaboration/sso"
-            }
-          ]
         },
         {
           "title": "Alerts",

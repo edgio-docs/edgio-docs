@@ -24,7 +24,7 @@ Set up your rules through the following steps:
 
 There are two basic workflows for defining your CDN configuration:
 
--   Generate and deploy rules through the {{ PORTAL }}.
+-   Generate and deploy rules through the {{ PORTAL_LINK }}.
 -   Define a [CDN-as-Code configuration](/guides/performance/cdn_as_code) and then deploy it through the {{ PRODUCT }} CLI. 
 
 ![Rules and CDN-as-Code](/images/performance/rules-cdn-as-code.png)
@@ -247,7 +247,7 @@ TODO: **Is this needed now that we have autodraft?**
 
 -   Apply your changes to the current environment by clicking **Deploy Changes**.
 -   Add a comment or a note to a rule by clicking **Add Comments** and then typing the desired message. Comments or notes are  informational and do not affect your configuration. 
--   An alternative method for setting up your configuration is [CDN-as-code](/guides/performance/cdn_as_code). CDN-as-code is a developer-oriented solution that provides more flexibility during CDN setup. You may create a base CDN-as-code configuration by setting up your rules through the {{ PORTAL }}, [exporting them as EdgeJS code](#export-rules-edgejs), and then pasting that code into your {{ ROUTES_FILE }} file. 
+-   An alternative method for setting up your configuration is [CDN-as-code](/guides/performance/cdn_as_code). CDN-as-code is a developer-oriented solution that provides more flexibility during CDN setup. You may create a base CDN-as-code configuration by setting up your rules through the {{ PORTAL_LINK }}, [exporting them as EdgeJS code](#export-rules-edgejs), and then pasting that code into your {{ ROUTES_FILE }} file. 
 
     <Callout type="info">
 
@@ -258,7 +258,7 @@ TODO: **Is this needed now that we have autodraft?**
 **To set up rules**
 
 1.  Load the **Rules** page.
-    1.  From the {{ PORTAL }}, select the desired property.
+    1.  From the {{ PORTAL_LINK }}, select the desired property.
     2.  From the left-hand pane, select the desired environment from under the **Environments** section.
     3.  From the left-hand pane, select **Rules**. 
 2.  If you are in read-only mode, click **Edit v#**
@@ -289,7 +289,7 @@ TODO: **Is this needed now that we have autodraft?**
 **To delete a rule**
 
 1.  Load the **Rules** page.
-    1.  From the {{ PORTAL }}, select the desired property.
+    1.  From the {{ PORTAL_LINK }}, select the desired property.
     2.  From the left-hand pane, select the desired environment from under the **Environments** section.
     3.  From the left-hand pane, select **Rules**. 
 2.  Click the <img data-inline-img src="/images/icons/delete-2.png" alt="" /> icon next to the desired rule.
@@ -298,7 +298,7 @@ TODO: **Is this needed now that we have autodraft?**
 **To export your rules as EdgeJS code** <a id="export-rules-edgejs" /> 
 
 1.  Load the **Rules** page.
-    1.  From the {{ PORTAL }}, select the desired property.
+    1.  From the {{ PORTAL_LINK }}, select the desired property.
     2.  From the left-hand pane, select the desired environment from under the **Environments** section.
     3.  From the left-hand pane, select **Rules**. 
 2.  Click **Export** and then select **EdgeJS** to display your rules as a CDN-as-code (EdgeJS) configuration. 
@@ -307,6 +307,6 @@ TODO: **Is this needed now that we have autodraft?**
 
 <Callout type="info">
 
-  Deploying your CDN-as-code configuration through the {{ PRODUCT }} CLI will overwrite your rules. Likewise, deploying rule changes from the {{ PORTAL }} will override a previously deployed CDN-as-code configuration.
+  Deploying your CDN-as-code configuration through the {{ PRODUCT }} CLI will overwrite your rules. Likewise, deploying rule changes from the {{ PORTAL_LINK }} will override a previously deployed CDN-as-code configuration.
 
 </Callout>

@@ -23,7 +23,7 @@ This guide provides an overview of site migrations and explains how to configure
 
 ## Configurations Entities {/*configurations-entities*/}
 
-Traffic splitting requires that you make configurations in your project folder and create traffic splitting rules in the {{ PORTAL_PLAIN }}. The entities in the Console and files in your project folder where various configurations reside are called out. To provide a bigger picture, additional Console entities are included.
+Traffic splitting requires that you make configurations in your project folder and create traffic splitting rules in the {{ PORTAL }}. The entities in the Console and files in your project folder where various configurations reside are called out. To provide a bigger picture, additional Console entities are included.
 
 ![Configuration Entities](/images/traffic-splitting/configuration_entities.png)
 
@@ -53,19 +53,19 @@ Although there are several ways you might organize your sites for migration, we 
 
 1. [Configure the backends](#step-1-configuring-backends) in the `{{ CONFIG_FILE }}` file.
 2. [Configure destinations](#step-2-configuring-destination-environments) in the `routes.js` file.
-3. [Configure traffic splitting rules](#step-3-configure-traffic-splitting-rules-in-the-developer-console) in the {{ PORTAL_PLAIN }}.
+3. [Configure traffic splitting rules](#step-3-configure-traffic-splitting-rules-in-the-developer-console) in the {{ PORTAL }}.
 
 ### Separate Code Versions {/*separate-code-versions*/}
 
 If you are using two code versions you can use Continuous Integration/Continuous Deployment  (CI/CD) to push changes to your `new` and `legacy` sites. Regardless of whether your versions reside in branches in the same repository or two different repositories, or some other way of separating your code, we recommend that you:
 
-1. Create environments called `new` and `legacy` in the {{ PORTAL_PLAIN }}.
+1. Create environments called `new` and `legacy` in the {{ PORTAL }}.
 2. Configure CI/CD to deploy to the `new` or `legacy` site whenever you push changes. Integrate either of these  commands in your deployment script as appropriate:
 `0 deploy –environment=new` 
 `0 deploy –environment=legacy`
 
 1. [Configure the destinations](#step-2-configuring-destination-environments) in the `routes.js` file, 
-2. [Configure traffic splitting rules](#step-3-configure-traffic-splitting-rules-in-the-developer-console) in the {{ PORTAL_PLAIN }}.
+2. [Configure traffic splitting rules](#step-3-configure-traffic-splitting-rules-in-the-developer-console) in the {{ PORTAL }}.
 
 ### Step 1. Configuring Backends {/*step-1-configuring-backends*/}
 
@@ -94,27 +94,27 @@ module.exports = {
 
 ### Step 2. Configuring Destination Environments {/*step-2-configuring-destination-environments*/}
 
-Add a destination for each site or application version to your `routes.js` file. The destinations will appear in the {{ PORTAL_PLAIN }} and you will use them later on when configuring traffic splitting rules.
+Add a destination for each site or application version to your `routes.js` file. The destinations will appear in the {{ PORTAL }} and you will use them later on when configuring traffic splitting rules.
 
 ```js filename="routes.js"
 const { Router } = require('{{ PACKAGE_NAME }}/core/router')
 module.exports = new Router()
   .destination(
-    'legacy_experience', // displayed in the destination dropdown in the traffic splitting section of your environment configuration in the {{ PORTAL_PLAIN }}
+    'legacy_experience', // displayed in the destination dropdown in the traffic splitting section of your environment configuration in the {{ PORTAL }}
     new Router()
       // additional routing rules for the legacy experience go here
       .fallback(({ proxy }) => proxy('legacy')),
   )
   .destination(
-    'new_experience', // displayed in the destination dropdown in the traffic splitting section of your environment configuration in the {{ PORTAL_PLAIN }}
+    'new_experience', // displayed in the destination dropdown in the traffic splitting section of your environment configuration in the {{ PORTAL }}
     new Router()
       // additional routing rules for the new experience go here
       .fallback(({ proxy }) => proxy('new')),
   )
 ```
-After deploying a router with multiple destinations, all requests will be sent to the first destination until you have defined traffic splitting rules within the {{ PORTAL_PLAIN }}.
+After deploying a router with multiple destinations, all requests will be sent to the first destination until you have defined traffic splitting rules within the {{ PORTAL }}.
 
-### Step 3. Configure Traffic Splitting Rules in the {{ PORTAL_PLAIN }} {/*step-3-configure-traffic-splitting-rules-in-the-developer-console*/}
+### Step 3. Configure Traffic Splitting Rules in the {{ PORTAL }} {/*step-3-configure-traffic-splitting-rules-in-the-developer-console*/}
 
 1.  [Log into your account]({{ APP_URL }}/login/), then navigate to the environment in which you want to configure the iterative migration and click Edit:
 

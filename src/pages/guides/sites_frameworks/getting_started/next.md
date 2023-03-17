@@ -96,7 +96,7 @@ const { with{{ PRODUCT }}, withServiceWorker } = require('{{ PACKAGE_NAME }}/nex
 module.exports = with{{ PRODUCT }}(
   withServiceWorker({
     // Output source maps so that stack traces have original source filenames and line numbers when tailing
-    // the logs in the {{ PORTAL_PLAIN }}.
+    // the logs in the {{ PORTAL }}.
     {{ FULL_CLI_NAME }}SourceMaps: true,
   })
 )
@@ -108,7 +108,7 @@ module.exports = with{{ PRODUCT }}(
 
 The `with{{ PRODUCT }}` plugin optimizes the Next.js build for running on {{ PRODUCT }}. It is required to deploy your application on {{ PRODUCT }} and accepts the following parameters:
 
-- `{{ FULL_CLI_NAME }}SourceMaps`: Defaults to `false`. Set to `true` to add server-side source maps so that stack traces have original source filenames and line numbers when tailing the logs in the {{ PORTAL_PLAIN }}. This will increase the serverless bundle size but will not affect performance. If you find that your app exceeds the maximum serverless bundle size allowed by {{ PRODUCT_NAME }}, you can disable this option to conserve space.
+- `{{ FULL_CLI_NAME }}SourceMaps`: Defaults to `false`. Set to `true` to add server-side source maps so that stack traces have original source filenames and line numbers when tailing the logs in the {{ PORTAL }}. This will increase the serverless bundle size but will not affect performance. If you find that your app exceeds the maximum serverless bundle size allowed by {{ PRODUCT_NAME }}, you can disable this option to conserve space.
 
 <Callout type="warning">
 
@@ -133,7 +133,7 @@ const { with{{ PRODUCT }}, withServiceWorker } = require('{{ PACKAGE_NAME }}/nex
 module.exports = with{{ PRODUCT }}(
   withServiceWorker({
     // Output source maps so that stack traces have original source filenames and line numbers when tailing
-    // the logs in the {{ PORTAL_PLAIN }}.
+    // the logs in the {{ PORTAL }}.
     {{ FULL_CLI_NAME }}SourceMaps: true,
     // Don't include {{ PRODUCT_NAME }} Devtools in production
     // More on {{ PRODUCT_NAME }} Devtools at {{ DOCS_URL }}/guides/devtools

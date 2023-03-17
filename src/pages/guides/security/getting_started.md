@@ -143,7 +143,7 @@ Security Application configuration before performing data analysis.
 
 Identify trends by reviewing the Threats dashboard's graph and detailed alert data.
 
-1.  From the {{ PORTAL }}, click on the **AppOps** tab.
+1.  From the {{ PORTAL_LINK }}, click on the **AppOps** tab.
 2.  Click **Open on my.edgecast.com** to load the **Security** page.
 3.  From the **Security** page's navigation pane, click **Overview**.
 3.  Verify that the **Threats** tab is active.

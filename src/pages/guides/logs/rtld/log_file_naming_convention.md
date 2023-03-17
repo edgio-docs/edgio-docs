@@ -52,7 +52,7 @@ Each of the above variables are described below.
 
     <Callout type="info">
 
-      You cannot currently view the system-defined ID assigned to your Real-Time Log Delivery configuration from within the {{ PORTAL }}.
+      You cannot currently view the system-defined ID assigned to your Real-Time Log Delivery configuration from within the {{ PORTAL_LINK }}.
 
     </Callout>
 

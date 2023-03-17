@@ -45,7 +45,7 @@ You may filter real-time data by domain, POP (Point of Presence), or country.
 **To filter real-time data**
 
 1.  Navigate to the **Real-Time Stats** page.
-    1.  From the {{ PORTAL }}, click on the **AppOps** tab.
+    1.  From the {{ PORTAL_LINK }}, click on the **AppOps** tab.
     2.  Click **Open on my.edgecast.com** to load the **Security** page.
     3.  Click **Real-Time Stats**. By default, our graphs are configured to display real-time data for the last five minutes.
 2.  From the **Filtering Options** option, select one of the following:

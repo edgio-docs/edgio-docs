@@ -270,7 +270,7 @@ Restrict access to your website on a per environment basis through an IP address
 
 **To manage an IP address access control list**
 
-1.  From the {{ PORTAL }}, load the desired property.
+1.  From the {{ PORTAL_LINK }}, load the desired property.
 2.  From within the **Environments** tab, click on the desired environment.
 3.  From within the **Configuration** tab, find the **Access Control List** section and then click **Edit ACL**.
 4.  Perform one or more of the following actions:
@@ -299,7 +299,7 @@ Restrict access to your website on a per environment basis through a country acc
 
 **To manage geoblocking**
 
-1.  From the {{ PORTAL }}, load the desired property.
+1.  From the {{ PORTAL_LINK }}, load the desired property.
 2.  From within the **Environments** tab, click on the desired environment.
 3.  From within the **Configuration** tab, find the **Geoblocking** section and then click **Edit Geoblocking**.
 4.  Perform one or more of the following actions:

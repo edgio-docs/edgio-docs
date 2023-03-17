@@ -20,7 +20,7 @@ To A/B test multiple implementations of the same site, simply deploy each implem
 To use Continuous Integration (CI) to deploy A/B tests we recommend that you:
 
 1. Set up separate branches in source control for the main experience and the new experience, for example `main` and `preview`.
-2. Create environments called `production` and `preview` in the {{ PORTAL_PLAIN }}.
+2. Create environments called `production` and `preview` in the {{ PORTAL }}.
 3. Configure CI to deploy the `main` branch to the `production` environment and the `preview` branch to the `preview` environment. (Using `{{ FULL_CLI_NAME }} deploy --environment={environment name}`).
 
 ### Limitations {/*limitations*/}
@@ -53,22 +53,22 @@ Then, add a `destination` for each site to your router. For example,
 const { Router } = require('{{ PACKAGE_NAME }}/core/router')
 module.exports = new Router()
   .destination(
-    'legacy_experience', // displayed in the destination dropdown in the traffic splitting section of your environment configuration in the {{ PORTAL_PLAIN }}
+    'legacy_experience', // displayed in the destination dropdown in the traffic splitting section of your environment configuration in the {{ PORTAL }}
     new Router()
       // additional routing rules for the legacy experience go here
       .fallback(({ proxy }) => proxy('legacy')),
   )
   .destination(
-    'new_experience', // displayed in the destination dropdown in the traffic splitting section of your environment configuration in the {{ PORTAL_PLAIN }}
+    'new_experience', // displayed in the destination dropdown in the traffic splitting section of your environment configuration in the {{ PORTAL }}
     new Router()
       // additional routing rules for the new experience go here
       .fallback(({ proxy }) => proxy('new')),
   )
 ```
 
-Once you have made these changes, deploy your site using `{{ FULL_CLI_NAME }} deploy --environment={my production environment name}`, then [configure the rules for splitting traffic using the {{ PORTAL_PLAIN }}](#configuring-the-split-test).
+Once you have made these changes, deploy your site using `{{ FULL_CLI_NAME }} deploy --environment={my production environment name}`, then [configure the rules for splitting traffic using the {{ PORTAL }}](#configuring-the-split-test).
 
-After deploying a router with multiple destinations, all requests will be sent to the first destination until you have configured the A/B test in the {{ PORTAL_PLAIN }}.
+After deploying a router with multiple destinations, all requests will be sent to the first destination until you have configured the A/B test in the {{ PORTAL }}.
 
 Check out the [Traffic Splitting](/guides/performance/traffic_splitting) guide for more detail.
 
@@ -120,7 +120,7 @@ If {{ PRODUCT_NAME }} is behind a third-party CDN, it is critical that you updat
 
 When an A/B test is active, all users are assigned to a random number between 1 and 100 via a cookie called `{{ COOKIE_PREFIX }}_bucket`. This cookie assignment is done at the edge before the user's first request hits the cache, so there is no performance penalty for new users.
 
-The experience the user sees is determined by the traffic split percentage you set in the environment configuration in the {{ PORTAL_PLAIN }} and on which side of the split the user's `{{ COOKIE_PREFIX }}_bucket` value falls.
+The experience the user sees is determined by the traffic split percentage you set in the environment configuration in the {{ PORTAL }} and on which side of the split the user's `{{ COOKIE_PREFIX }}_bucket` value falls.
 
 ## Identifying the Experience on the Client {/*identifying-the-experience-on-the-client*/}
 
@@ -138,7 +138,7 @@ But when A/B testing is enabled, all the traffic arrives using the same `host` h
 
 ## Metrics and Cache Purging with A/B Tests {/*metrics-and-cache-purging-with-split-tests*/}
 
-When A/B tests are enabled, all metrics and caching are recorded under the environment that is the result of the A/B test. Using the above example, all traffic arrives on `www.mysite.com` but to see the traffic and caching metrics for requests A/B test to the `new` environment, you need to view those graphs in `new` environment in {{ PORTAL_PLAIN }}. This is also true for cache purging. To purge traffic that was split to the `new` environment you use the cache purge button in the `new` environment in {{ PORTAL_PLAIN }}. If want to purge the entire cache during a split you need to purge both the `production` cache and the `new` cache.
+When A/B tests are enabled, all metrics and caching are recorded under the environment that is the result of the A/B test. Using the above example, all traffic arrives on `www.mysite.com` but to see the traffic and caching metrics for requests A/B test to the `new` environment, you need to view those graphs in `new` environment in {{ PORTAL }}. This is also true for cache purging. To purge traffic that was split to the `new` environment you use the cache purge button in the `new` environment in {{ PORTAL }}. If want to purge the entire cache during a split you need to purge both the `production` cache and the `new` cache.
 
 ## Compatibility with A/B Testing Tools {/*compatibility-with-ab-testing-tools*/}
 

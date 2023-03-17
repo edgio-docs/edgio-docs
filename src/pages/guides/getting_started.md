@@ -97,7 +97,7 @@ Signing up for an {{ PRODUCT }} account is free and quick.
 
     -   Manually creating an account.
         1.   Provide your name, email (user name), and a password. Click **Create Account**.
-        2.   Check your email for confirmation instructions. Click **CONFIRM MY ACCOUNT** to load the {{ PORTAL_PLAIN }}.
+        2.   Check your email for confirmation instructions. Click **CONFIRM MY ACCOUNT** to load the {{ PORTAL }}.
     -   Using your existing Github or Google account. You will need to log in to Github or Google and then authorize linking Edgio to your account.
 
 2.  Click **Accept** to accept our terms of service and privacy policy.
@@ -106,7 +106,7 @@ Signing up for an {{ PRODUCT }} account is free and quick.
 
 Each website that will run behind {{ PRODUCT }} requires an {{ PRODUCT }} property. A property determines how {{ PRODUCT }} will process your website's traffic.
 
-1.  From the {{ PORTAL_PLAIN }}, set the **What is your website's URL?** option to your website's URL and then click **Launch my site**.
+1.  From the {{ PORTAL }}, set the **What is your website's URL?** option to your website's URL and then click **Launch my site**.
 
     <Callout type="info">
 
@@ -168,7 +168,7 @@ Run the following command from your property's root directory to deploy it to {{
 ## Next Steps {/*next-steps*/}
 
 Once you have successfully deployed your property to {{ PRODUCT }}, our CLI provides the following URLs:
--   **{{ PORTAL_PLAIN }}:** View detailed information about this deployment, including its edge link and permalink, from within the {{ PORTAL }}.
+-   **{{ PORTAL }}:** View detailed information about this deployment, including its edge link and permalink, from within the {{ PORTAL_LINK }}.
 -   **Permalink:** Preview your website behind {{ PRODUCT }} without edge caching. Bypassing our cache will affect performance.
 
 -   **Edge:** Preview your website behind {{ PRODUCT }} and gain performance insights through our [DevTools](/guides/performance/observability/devtools).  

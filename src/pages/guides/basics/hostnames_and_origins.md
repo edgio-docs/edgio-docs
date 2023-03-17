@@ -261,7 +261,7 @@ You may point any hostname defined within a space to its service domain.
 
 1.  Load the space's **Settings** page.
 
-    1.  From the {{ PORTAL }}, select the desired private or team space.
+    1.  From the {{ PORTAL_LINK }}, select the desired private or team space.
     2.  Click **Settings**.
 
 2.  From the **Team DNS Configuration** section, click <img data-inline-img src="/images/icons/copy-to-clipboard.png" alt="Copy to clipboard icon" />  to copy this domain. 

@@ -21,7 +21,7 @@ Get started with {{ PRODUCT_SECURITY_ADVANCED_BOT }} by requesting that we activ
 
 {{ PRODUCT_SECURITY_ADVANCED_BOT }} reports data on a per environment basis. View a report by performing the following steps:
 
-1.  From the {{ PORTAL }}, load the desired property.
+1.  From the {{ PORTAL_LINK }}, load the desired property.
 2.  From within the **Environments** tab, click on the desired environment.
 3.  Click on the **Bot Management** tab. 
 4.  From the left-hand pane, click on the desired report.

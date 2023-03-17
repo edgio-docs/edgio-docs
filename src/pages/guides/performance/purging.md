@@ -14,7 +14,7 @@ This guide covers how you can purge data from the {{ PRODUCT }} edge cache.
 
 ## Developer Console {/*developer-console*/}
 
-You can purge the cache via the [{{ PORTAL_PLAIN }}]({{ APP_URL }}) by navigating to an environment, selecting the _Caching_ tab, and clicking _Purge the Cache_ under _Cache Purge History_:
+You can purge the cache via the [{{ PORTAL }}]({{ APP_URL }}) by navigating to an environment, selecting the _Caching_ tab, and clicking _Purge the Cache_ under _Cache Purge History_:
 
 ![purge_the_cache_button](/images/purging/purge_the_cache_button.png)
 

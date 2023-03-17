@@ -8,10 +8,10 @@ A deployment is required to apply changes to your code or configuration to an en
 
 Deploy to an environment using either of the following methods:
 
--   **{{ PORTAL }}:** Use this method to deploy changes made within the {{ PORTAL_PLAIN }}. 
+-   **{{ PORTAL_LINK }}:** Use this method to deploy changes made within the {{ PORTAL }}. 
     1.  Load the desired environment.
 
-        1.  From the {{ PORTAL }}, select the desired private or team space.
+        1.  From the {{ PORTAL_LINK }}, select the desired private or team space.
         2.  Select the desired property.
         3.  From the left-hand pane, select the desired environment from under the **Environments** section.
 
@@ -60,7 +60,7 @@ Having each deployment be simultaneously and permanently accessible makes it eas
 When configuring CI, we recommend:
 
 -   Automatically deploying to your staging environment when a PR is merged to the master branch of your repo.
--   Manually promoting deployments to production using the {{ PORTAL_PLAIN }} to prevent unwanted builds from being published by misconfigured CI workflows.
+-   Manually promoting deployments to production using the {{ PORTAL }} to prevent unwanted builds from being published by misconfigured CI workflows.
 
 To deploy from your CI environment, create a deploy token using the site settings tab in the {{ PRODUCT }} console.
 

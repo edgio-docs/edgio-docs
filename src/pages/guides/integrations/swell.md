@@ -80,7 +80,7 @@ module.exports = {
 
 Options:
 
-- `{{ FULL_CLI_NAME }}SourceMaps: true|false`: when true, the serverless build includes sourcemap files which make debugging easier when tailing the server logs in the {{ PORTAL_PLAIN }}. It also increases the serverless bundle size, which may push your deployments over the 50MB (compressed) limit.
+- `{{ FULL_CLI_NAME }}SourceMaps: true|false`: when true, the serverless build includes sourcemap files which make debugging easier when tailing the server logs in the {{ PORTAL }}. It also increases the serverless bundle size, which may push your deployments over the 50MB (compressed) limit.
 
 <Callout type="warning">
 

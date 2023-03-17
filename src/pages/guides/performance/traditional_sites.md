@@ -163,7 +163,7 @@ In addition to configuring your caching in `routes.ts` as shown above, you may n
 
 By injecting `main.js` into your app's front-end code, your app will automatically prefetch all visible HTML links with URLs that match a route configured with `edge.maxAgeSeconds` and `browser.serviceWorkerSeconds` (in essence, when you configure a route to be cached, you are also declaring it to be a candidate for prefetching as well). Links that are visible when the page first loads are fetched immediately. Additional links will be fetched when the user scrolls down the page and more links become visible.
 
-Prefetching can generate substantial additional network traffic. {{ PRODUCT_NAME }} automatically shields your origin from this additional traffic by only serving prefetch requests from the edge cache. If a prefetch request cannot be served from the cache, {{ PRODUCT_NAME }} will return an HTTP 412 status and the request will not be proxied to the origin. When this happens, the only effect for the user is that they will not see the speed benefit of prefetching. Therefore, the effectiveness of prefetching ramps up over time as users visit pages throughout your site. When the edge cache is cleared, either through the {{ PORTAL_PLAIN }} or automatically following a deployment, the speed benefit of prefetching is decreased until the cache fills up based on organic traffic.
+Prefetching can generate substantial additional network traffic. {{ PRODUCT_NAME }} automatically shields your origin from this additional traffic by only serving prefetch requests from the edge cache. If a prefetch request cannot be served from the cache, {{ PRODUCT_NAME }} will return an HTTP 412 status and the request will not be proxied to the origin. When this happens, the only effect for the user is that they will not see the speed benefit of prefetching. Therefore, the effectiveness of prefetching ramps up over time as users visit pages throughout your site. When the edge cache is cleared, either through the {{ PORTAL }} or automatically following a deployment, the speed benefit of prefetching is decreased until the cache fills up based on organic traffic.
 
 <a id="test-your-code-locally"></a>
 
@@ -197,9 +197,9 @@ Consult the [Deployment guide](/guides/basics/deployments) for more information 
 
 After you've configured and tested your site on {{ PRODUCT_NAME }}, it's time to take it live. At a high level, the process is:
 
-1. Specify the domain name of the site under the Configuration tab for the environment in the {{ PORTAL_PLAIN }}.
-2. Configure your SSL certificate under the Configuration tab for the environment in the {{ PORTAL_PLAIN }}.
-3. Create a CNAME record with your DNS provider with the value shown under the _Domains_ section for the environment in the {{ PORTAL_PLAIN }}.
+1. Specify the domain name of the site under the Configuration tab for the environment in the {{ PORTAL }}.
+2. Configure your SSL certificate under the Configuration tab for the environment in the {{ PORTAL }}.
+3. Create a CNAME record with your DNS provider with the value shown under the _Domains_ section for the environment in the {{ PORTAL }}.
 
 Each of these steps is described in more detail in the [Domains guide](/guides/basics/domains). Note that third step (configuring your DNS) will be the crucial step that effectively transitions your domain to {{ PRODUCT_NAME }} and should be done last.
 

@@ -8,7 +8,7 @@ Serverless Compute supports the ability to log console messages. Console message
 
 You may view these console messages in real time or as log data.
 
--   **Real Time:** From within the {{ PORTAL }}, load the desired deployment and then click on the `SERVER` tab. Focus on specific data by limiting the output to your IP address or through a regular expression. 
+-   **Real Time:** From within the {{ PORTAL_LINK }}, load the desired deployment and then click on the `SERVER` tab. Focus on specific data by limiting the output to your IP address or through a regular expression. 
 -   **Log Data:** Retrieve log data from an AWS S3 bucket.
 
     <Callout type="info">
@@ -51,7 +51,7 @@ One use case for DRI is to analyze traffic during a deployment by tailing the se
 
 **To enable Deep Request Inspection**
 
-1.  From within the {{ PORTAL }}, navigate to the desired environment.
+1.  From within the {{ PORTAL_LINK }}, navigate to the desired environment.
 2.  Click the **Configuration** tab.
 3.  From the banner at the top of the page, click **Edit v#**.
 4.  Mark the **Deep Request Inspection is disabled** option.

@@ -295,7 +295,7 @@ Evaluate site performance and QA functionality by deploying your property to {{ 
 {{ FULL_CLI_NAME }} deploy
 ```
 
-Assess performance and caching behavior from the {{ PORTAL }}. Fine-tune your configuration by adding routes and then redeploying your property. Once you are ready to serve production traffic through {{ PRODUCT }}, update your site's DNS to point to our service.
+Assess performance and caching behavior from the {{ PORTAL_LINK }}. Fine-tune your configuration by adding routes and then redeploying your property. Once you are ready to serve production traffic through {{ PRODUCT }}, update your site's DNS to point to our service.
 
 [Learn more.](/guides/production)
 

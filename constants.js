@@ -10,6 +10,7 @@ const PRODUCT_SECURITY_ADVANCED_BOT = 'Managed Bot Defense';
 const PRODUCT_NAME_LOWER = PRODUCT.toLowerCase();
 const PRODUCT_NAME_UPPER = PRODUCT.toUpperCase();
 const PRODUCT_LEGACY_LOWER = PRODUCT_LEGACY.toLowerCase();
+const PORTAL = `${COMPANY_NAME} Developer console`;
 
 const CLI_NAME = 'edg';
 const FULL_CLI_NAME = 'edgio';
@@ -38,8 +39,8 @@ const SUPPORT_URL = `${APP_URL}/help`;
 const DOCS_URL = `https://${DOCS_DOMAIN}`;
 const DOCS_PAGES_REPO_URL = `https://${DOCS_PAGES_DOMAIN}`;
 const LOGIN_URL = `${APP_URL}/?sgId=ef4d5169-93f2-4f55-aabb-dc3be4286e1f`;
-const PORTAL_PLAIN = `${COMPANY_NAME} Developer console`;
-const PORTAL = `[${PORTAL_PLAIN}](${LOGIN_URL})`;
+
+const PORTAL_LINK = `[${PORTAL}](${LOGIN_URL})`;
 
 const NODE_VERSION = '16.x';
 const STARTER_NAME = 'layer0-app';
@@ -145,10 +146,10 @@ yarn global add ${PACKAGE_NAME}/cli
 </SnippetGroup>
 `;
 
-const SECURITY_NAV = `1.  From the ${PORTAL}, select the desired team space. 
+const SECURITY_NAV = `1.  From the ${PORTAL_LINK}, select the desired team space. 
     2.  From the **Security** section, click `;
 
-const ENV_NAV = `1.  From the ${PORTAL}, select the desired private or team space.
+const ENV_NAV = `1.  From the ${PORTAL_LINK}, select the desired private or team space.
     2.  Select the desired property.
     3.  From the left-hand pane, select the desired environment from under the **Environments** section.
     4.  From the left-hand pane, select`;
@@ -485,8 +486,8 @@ module.exports = {
   HELP_URL,
   INSTALL_CLI,
   LOGIN_URL,
-  PORTAL_PLAIN,
   PORTAL,
+  PORTAL_LINK,
   PREREQ,
   INSTALL_CLI_STEP,
   INIT_DEFAULT_PACKAGES,

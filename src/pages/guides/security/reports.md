@@ -107,7 +107,7 @@ available field.
 **To generate a Traffic Summary report**
 
 1.  Navigate to the Traffic Summary report.
-    1.  From the {{ PORTAL }}, click on the **AppOps** tab.
+    1.  From the {{ PORTAL_LINK }}, click on the **AppOps** tab.
     2.  Click **Open on my.edgecast.com** to load the **Security** page.
     3.  Click **Core Reports**.
     4.  Click **Traffic Summary**. By default, a Traffic Summary report displays data for the current month across our entire network.
@@ -302,7 +302,7 @@ intervals over the time period covered by the report.
 **To generate a Bandwidth report**
 
 1.  Navigate to the Bandwidth report.
-    1.  From the {{ PORTAL }}, click on the **AppOps** tab.
+    1.  From the {{ PORTAL_LINK }}, click on the **AppOps** tab.
     2.  Click **Open on my.edgecast.com** to load the **Security** page.
     3.  Click **Core Reports**.
     4.  Expand **Bandwidth** and then select **HTTPS Large**. By default, a Bandwidth report displays data for the last 24 hours across our entire network.
@@ -369,7 +369,7 @@ report.
 **To generate a Data Transferred report**
 
 1.  Navigate to the Data Transferred report.
-    1.  From the {{ PORTAL }}, click on the **AppOps** tab.
+    1.  From the {{ PORTAL_LINK }}, click on the **AppOps** tab.
     2.  Click **Open on my.edgecast.com** to load the **Security** page.
     3.  Click **Core Reports**.
     4.  Perform either of the following steps:
@@ -431,7 +431,7 @@ the most amount of traffic.
 
 1.  Navigate to the **Custom Reports** page.
 
-    1.  From the {{ PORTAL }}, click on the **AppOps** tab.
+    1.  From the {{ PORTAL_LINK }}, click on the **AppOps** tab.
     2.  Click **Open on my.edgecast.com** to load the **Security** page.
     3.  Click **Custom Reports**.
 

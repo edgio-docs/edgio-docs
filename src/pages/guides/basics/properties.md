@@ -31,8 +31,8 @@ Upon creating a property, it will contain a `production` environment with the fo
 </Callout>
 
 **To create a property**
-1.  From the {{ PORTAL }}, determine where you will create a property.
-    -   **Private Space:** By default, the {{ PORTAL_PLAIN }} loads your private space. Access to a property created in your private space is restricted to your account. Proceed to the next step.
+1.  From the {{ PORTAL_LINK }}, determine where you will create a property.
+    -   **Private Space:** By default, the {{ PORTAL }} loads your private space. Access to a property created in your private space is restricted to your account. Proceed to the next step.
     -   **Team Space:** Load the desired team by clicking the <img data-inline-img src="/images/icons/menu-up-down.png" alt="Menu" /> icon that appears next to your name and then selecting the desired team.
 
     ![Team Selection](/images/basics/team-selection.png)
@@ -61,19 +61,19 @@ Upon creating a property, it will contain a `production` environment with the fo
 6.  Click **Create Property**.
 
 **To rename a property**
-1.  From the {{ PORTAL }}, click on the desired property.
+1.  From the {{ PORTAL_LINK }}, click on the desired property.
 2.  Click **Settings**.
 3.  From the **Rename property "&lt;PROPERTY>"** section, set the **New Name** option to the desired name.
 4.  Click **Save**.
 
 **To delete a property**
-1.  From the {{ PORTAL }}, click on the desired property.
+1.  From the {{ PORTAL_LINK }}, click on the desired property.
 2.  Click **Settings**.
 3.  From the **Delete property** section, mark the **Confirm that I want to delete the property "&lt;PROPERTY>".** option. 
 4.  Click **Delete Property**.
 
 **To transfer ownership to another team**
-1.  From the {{ PORTAL }}, click on the desired property.
+1.  From the {{ PORTAL_LINK }}, click on the desired property.
 2.  Click **Settings**.
 3.  From the **Move property to another team** section, select the desired team.
 4.  Click **Save**.

@@ -157,7 +157,7 @@ Once the above requirements are met, you should verify that a TLS certificate fo
 
 **To verify TLS certificate creation**
 
-1.  From the {{ PORTAL }}, click **Settings** to load the **Settings** page. Find the **TLS Certificate** section.
+1.  From the {{ PORTAL_LINK }}, click **Settings** to load the **Settings** page. Find the **TLS Certificate** section.
 2.  Review the TLS status for each of your hostnames.
 
     ![TLS Certificate section](/images/security/tls-certificate.png)
@@ -261,13 +261,13 @@ Uploading a TLS certificate requires:
 
 **To upload your TLS certificate**
 
-1.  From the {{ PORTAL }}, click **Settings** to load the **Settings** page. Find the **TLS Certificate** section.
+1.  From the {{ PORTAL_LINK }}, click **Settings** to load the **Settings** page. Find the **TLS Certificate** section.
 2.  Clear the **Automatically create an TLS certificate for my custom domains.** option.
 3.  Copy the certificate, intermediate certificates, and the private key into the corresponding options.
 
     <Callout type="info">
 
-      The private key is non-public data and must not be shared with parties other than {{ PRODUCT_NAME }}. {{ PRODUCT_NAME }} securely stores your private key. It is never shown in the {{ PORTAL_PLAIN }} and it is only used to provision parts of the infrastructure that are used to terminate TLS connections.
+      The private key is non-public data and must not be shared with parties other than {{ PRODUCT_NAME }}. {{ PRODUCT_NAME }} securely stores your private key. It is never shown in the {{ PORTAL }} and it is only used to provision parts of the infrastructure that are used to terminate TLS connections.
 
     </Callout>
 

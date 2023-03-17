@@ -33,7 +33,7 @@ Deploy to an environment using either of the following methods:
     Once the deployment is complete, the CLI will output the URL for your site. The site name is automatically derived from the `name` field in `package.json`. This can be overridden by using `--site` option when running `{{ FULL_CLI_NAME }} deploy`.
 
 
-## Versioning {/*environment-versions*/}
+## Versioning {/*versioning*/}
 
 Deployments are versioned. Each deployment is assigned a unique version number. This allows you to quickly roll back to a previous version when a breaking change is introduced into an environment. 
 

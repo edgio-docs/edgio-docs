@@ -2,13 +2,13 @@
 title: Environments
 ---
 
-An environment, which is required to serve traffic, allows you to define how traffic will be served through {{ PRODUCT }}. Each environment consists of:
+An environment defines how traffic will be served through {{ PRODUCT }}. Each environment consists of:
 
--   [Hostnames:](/guides/basics/hostnames_and_origins) Each hostname identifies a domain (e.g., `cdn.example.com`) through which your site will be served.
--   [Origins:](/guides/basics/hostnames_and_origins) Each origin configuration defines how our service will communicate with your web servers.
--   [Rules:](/guides/performance/rules) Rules determine how requests for a specific environment will be processed.
+-   [Hostnames:](/guides/basics/hostnames_and_origins) A hostname identifies a domain (e.g., `cdn.example.com`) through which your site will be served.
+-   [Origins:](/guides/basics/hostnames_and_origins) An origin configuration defines how our service will communicate with your web servers.
+-   [Rules:](/guides/performance/rules) A rule determines how requests for a specific environment will be processed.
 -   [Core Web Vitals:](/guides/performance/observability/core_web_vitals) Review and analyze performance metrics collected through the measurement of actual Chrome users. 
--   [Caching:](/guides/performance/caching) Each environment has a separate cache space that is automatically cleared each time you deploy. Use the **Caching** tab to clear the cache by path or surrogate key.
+-   [Caching:](/guides/performance/caching) By default, deploying to an environment also clears that environment's cached content. You may manually [purge content](/guides/caching) from the **Caching** page, the [{{ PRODUCT }} CLI](/guides/cli#cache-clear), or our [REST API](/guides/rest_api#clear-cache). 
 -   [Environment Variables:](#environment-variables) An environment variable is a placeholder for sensitive information (e.g., API keys and passwords) that should not be checked into source control. 
 -   **Traffic (Analytics):** Contains real-time statistics for this environment's traffic. You may also view a breakdown of traffic by specific routes.
 -   [Real-Time Log Delivery:](/guides/logs/rtld) Delivers log data in near real-time to a variety of destinations. 
@@ -37,7 +37,7 @@ Free accounts are limited to three environments. Paid accounts allow you to crea
 -->
 
 -   Applying changes to an environment requires a [deployment](/guides/basics/deployments).
--   Deployments to your environments are [versioned](/guides/basics/deployments#versioning). This allows you to quickly roll back your environment's configuration to a version that is known to work.
+-   Deployments to your environments are [versioned](/guides/basics/deployments#versioning). This allows you to quickly roll back your environment's configuration to a known working version.
 
 ## Creating an Environment {/*creating-an-environment*/}
 
@@ -67,7 +67,7 @@ Perform the following steps to create an environment:
 6.  Click **Create**.
 
 <!--
-## Production Environment {/*production-environment*/}
+Production Environment 
 
 To ensure that your production environment gets priority over all other environments during periods of high traffic, mark it as _production_ by selecting this option during creation:
 

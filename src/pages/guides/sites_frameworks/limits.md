@@ -92,7 +92,7 @@ Please ensure that list of dependencies in package.json contains only those pack
 Move all build-time dependencies such as webpack, babel, etc... to devDependencies, rerun npm | yarn install, and try to deploy again.
 ```
 
-Following are the possible fixes that would help you reduce serverless bundle size by better engineering. If none of these does it, feel free to raise an issue on [{{ PRODUCT }} Forums](https://forum.layer0.co).
+Following are the possible fixes that would help you reduce serverless bundle size by better engineering. If none of these does it, feel free to raise an issue on [{{ PRODUCT }} Forums]({{ FORUM_URL }}).
 
 ### [1]: Segregating devDependencies from dependencies {/*possible-fix-1-segregating-devdependencies-from-dependencies*/}
 

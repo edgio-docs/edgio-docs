@@ -846,7 +846,7 @@ const SidebarMenuItems: ISidebarMenuItems = [
       title: 'Forum',
       icon: <IconForum />,
       iconDark: <IconForumDark />,
-      path: 'https://forum.layer0.co/?sgId=7bc47c45-c1d6-4189-b416-552581d86006',
+      path: 'https://forum.edg.io/?sgId=7bc47c45-c1d6-4189-b416-552581d86006',
     },
     {
       title: 'Status',
@@ -858,7 +858,7 @@ const SidebarMenuItems: ISidebarMenuItems = [
       title: 'Support',
       icon: <IconSupport />,
       iconDark: <IconSupportDark />,
-      path: 'https://app.layer0.co/help?sgId=7bc47c45-c1d6-4189-b416-552581d86006',
+      path: 'https://edg.io/contact-support/?sgId=7bc47c45-c1d6-4189-b416-552581d86006',
     },
     {
       title: 'Edg.io',

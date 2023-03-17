@@ -298,7 +298,7 @@ const links = [
   },
   {
     title: 'Support',
-    path: 'https://app.layer0.co/help?sgId=7bc47c45-c1d6-4189-b416-552581d86006',
+    path: 'https://edg.io/contact-support/?sgId=7bc47c45-c1d6-4189-b416-552581d86006',
     icon: 'support',
   },
   {

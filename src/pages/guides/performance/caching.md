@@ -294,7 +294,7 @@ The response was not cached because the request was issued with `{{ HEADER_PREFI
 
 ### pass {/*pass*/}
 
-The response was not cached due to unknown reasons. If you happen to receive this status then please contact [support]({{ APP_URL }}/help).
+The response was not cached due to unknown reasons. If you happen to receive this status then please contact [support]({{ SUPPORT_URL }}).
 
 If the "pass" is intermittent on an otherwise cacheable resource, you may want to explore if "hit-for-pass" may have been triggered.
 

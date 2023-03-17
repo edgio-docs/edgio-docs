@@ -8,7 +8,7 @@ A deployment is required to apply changes to your code or configuration to an en
 
 Deploy to an environment using either of the following methods:
 
--   **{{ PORTAL_LINK }}:** Use this method to deploy changes made within the {{ PORTAL }}. 
+-   **{{ PORTAL }}:** Use this method to deploy changes made within the {{ PORTAL }}. 
     1.  Load the desired environment.
 
         1.  From the {{ PORTAL_LINK }}, select the desired private or team space.

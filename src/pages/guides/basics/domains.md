@@ -405,4 +405,4 @@ To upload your SSL certificate, do the following:
 
    ![activated-certificate](/images/production/activated-certificate.png)
 
-   _Note: Certificate activation should take just a few minutes. If the status does not become *Active* within an hour, please contact [support]({{ APP_URL }}/help). _
+   _Note: Certificate activation should take just a few minutes. If the status does not become *Active* within an hour, please contact [support]({{ SUPPORT_URL }}). _

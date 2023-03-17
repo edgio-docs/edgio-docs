@@ -146,7 +146,7 @@ const secFooterLinks = [
   },
   {
     name: 'Support',
-    href: 'https://edg.io/contact-support',
+    href: 'https://edg.io/contact-support/?sgId=7bc47c45-c1d6-4189-b416-552581d86006',
   },
   {
     name: 'Investors',
@@ -174,7 +174,7 @@ const pryFooterLinks = {
     },
     {
       title: 'Support',
-      href: 'https://app.layer0.co/help?sgId=7bc47c45-c1d6-4189-b416-552581d86006',
+      href: 'https://edg.io/contact-support/?sgId=7bc47c45-c1d6-4189-b416-552581d86006',
     },
     {
       title: 'How-to guides',

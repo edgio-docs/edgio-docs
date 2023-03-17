@@ -40,7 +40,7 @@ Team management consists of:
 
 2.  In the **Team Name** option, assign a name to your team (e.g., `nature-videos`) and then click **Create a Team**.
 
-    ![Add a Team](/images/basics/team-create2.png)
+    ![Add a Team](/images/basics/team-create-2.png)
 
     <Callout type="info">
 
@@ -49,6 +49,8 @@ Team management consists of:
     </Callout>
 
 ### Managing Team Members {/*managing-team-members*/}
+
+<a id="roles" />
 
 Each team member must be assigned one of the following roles:
 

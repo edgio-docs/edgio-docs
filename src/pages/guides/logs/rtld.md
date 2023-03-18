@@ -36,7 +36,7 @@ RTLD delivers compressed log data to one or more of the following destination(s)
 -   [Splunk Enterprise](/guides/logs/rtld/splunk_log_delivery).
 -   [Sumo Logic](/guides/logs/rtld/sumo_logic_log_delivery).
 
-![](../Resources/Images/RTLD/RTLD-Workflow.png)
+![RTLD Workflow](/images/logs/rtld-workflow.png)
 
 Log data consists a set of log entries. Each entry describes either:
 
@@ -77,11 +77,11 @@ You may create multiple profiles. This allows you to:
     
 -   Log fields vary by RTLD module.
     
-    Learn more: [RTLD CDN](/guides/logs/rtld/log_fields_rtld_cdn) | [RTLD Rate Limiting](Log-Fields-RTLD-Rate-Limiting.htm) | [RTLD WAF](Log-Fields-RTLD-WAF.htm)
+    Learn more: [RTLD CDN](/guides/logs/rtld/log_fields_rtld_cdn) | [RTLD Rate Limiting](/guides/logs/rtld/log_fields_rtld_rate_limiting) | [RTLD WAF](/guides/logs/rtld/log_fields_rtld_waf)
     
 -   Log data will only be delivered when a profile's status is enabled.
 -   The procedure for creating and modifying profiles varies by the destination to which log files will be delivered. Learn more about delivering to:
     
-    [Your web server(s)](Web-Server.htm) | [An AWS S3 Bucket](AWS-S3.htm)| [An Azure Block Blob container](Azure.htm) | [Splunk Enterprise](Splunk.htm) | [Sumo Logic](Sumo-Logic.htm) | [Datadog](Datadog.htm) | [Google Cloud Storage](Google-Cloud-Storage.htm) | [New Relic (RTLD CDN and RTLD Rate Limiting)](New-Relic.htm)
+    [Your web server(s)](/guides/logs/rtld/web_server_log_delivery) | [An AWS S3 Bucket](/guides/logs/rtld/aws_s3_log_delivery)| [An Azure Block Blob container](/guides/logs/rtld/azure_log_delivery) | [Splunk Enterprise](/guides/logs/rtld/splunk_log_delivery) | [Sumo Logic](/guides/logs/rtld/sumo_logic_log_delivery) | [Datadog](/guides/logs/rtld/datadog_log_delivery) | [Google Cloud Storage](/guides/logs/rtld/google_cloud_storage_log_delivery) | [New Relic (RTLD CDN and RTLD Rate Limiting)](/guides/logs/rtld/new_relic_log_delivery)
     
--   Delete a profile by clicking the corresponding ![](../Resources/Images/Icon/Icon_Delete_Red.png) icon. When prompted, confirm the deletion.
+-   Delete a profile by clicking the corresponding ![Delete](/images/icons/delete-2.png) icon. When prompted, confirm the deletion.

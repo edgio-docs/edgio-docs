@@ -67,7 +67,7 @@ Each of the above variables are described below.
 
     Each software agent assigns a sequential number to the log files that it generates. A gap between log files generated on the same day by the same software agent indicates missing log data.  
 
-    [Learn more.](LD-Verification.htm)
+    [Learn more.](/guides/logs/rtld/log_data_verification)
 
     **Key information:**
 

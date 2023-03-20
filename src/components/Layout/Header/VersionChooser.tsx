@@ -51,6 +51,7 @@ const menuProps = {
   sx: {
     '& a': linkStyles,
     '& .MuiMenuItem-root': {
+      ...linkStyles,
       fontSize: 14,
     },
     '& .MuiMenu-paper': {

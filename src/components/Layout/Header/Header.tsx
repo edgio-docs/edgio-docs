@@ -187,7 +187,7 @@ const {
 } = siteConfig.algolia;
 
 const searchParameters = {
-  facetFilters: [['version:all', 'version:v5']],
+  // facetFilters: [['version:all', 'version:v5']],
 };
 
 function transformItems(items: any) {

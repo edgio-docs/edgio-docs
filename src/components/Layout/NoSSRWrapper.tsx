@@ -1,7 +1,7 @@
 import dynamic from 'next/dynamic';
 import React from 'react';
 
-class NoSSRWrapper extends React.Component {
+class NoSSRWrapper extends React.Component<any, any> {
   render() {
     return <React.Fragment>{this.props.children}</React.Fragment>;
   }

@@ -2,11 +2,19 @@
 title: Purging
 ---
 
-Purged cached content from {{ PRODUCT }} through the:
+Purge cached content to force the CDN to request a new version of that content from an origin server or Serverless Compute. This ensures that the latest version of that content is delivered to your clients.
 
--   {{ PORTAL_LINK }}
--   {{ PRODUCT }} CLI
--   [{{ PRODUCT }} REST API (clear-cache)](/guides/rest_api#clear-cache)
+<Callout type="info">
+
+  Purging does not delete content from the origin server. A file management tool (e.g., SFTP or rsync) may be used to delete content from an origin server.
+
+</Callout>
+
+Purge by relative path, surrogate key, or all cached content using the:
+
+-   [{{ PORTAL }}](#developer-console)
+-   [{{ PRODUCT }} CLI](#cli)
+-   [{{ PRODUCT }} REST API (clear-cache)](#rest-api)
 
 <Callout type="info">
 
@@ -14,48 +22,51 @@ Purged cached content from {{ PRODUCT }} through the:
 
 </Callout>
 
-## Scope
+## Relative Path {/*relative-path*/}
 
-You may purge:
+You may specify a relative path that identifies the set of cached respones that will be purged. This relative path starts directly after the hostname.
 
--   All cached content.
--   By relative path. 
+<Callout type="tip">
 
-    **Key information:**
+  Use an `*` to represent zero or more characters.
 
-    -   This relative path starts directly after the hostname. 
-    -   Specify each desired path on a separate line.
-    -   You may use an `*` to represent zero or more characters.
+</Callout>
 
-    **Example:**
+**Example:**
 
-    Purging the following path will purge all cached content whose path starts with `/sports/` (e.g., `https://cdn.example.com/sports/basketball/marchtournament.html`):
+This example assumes that you need to purge the following content:
 
-    `/sports/*`
+`https://cdn.example.com/sports/basketball/marchtournament.html`
 
-    <a id="surrogate-key" />
+Purge the above URL by specifying the following relative path:
 
--   By surrogate key (aka cache tag). A surrogate key identifies a set of cached responses. Purging by surrogate key allows you to purge related content across your entire site. 
+`/sports/basketball/marchtournament.html`
 
-    **Key information:**
+Alternatively, you can use an `*` to recursively purge a directory. The following relative path pattern recursively purges all content from the `/sports` directory including `marchtournament.html`:
 
-    -   Apply a surrogate key by setting the `Surrogate-Key` response header. 
+`/sports/*` 
 
-        **Syntax:** `Surrogate-Key: <TAG1> <TAG2> <TAG3>`
+## Surrogate Key {/*surrogate-key*/}
 
-        **Example:** 
-
-        For example, the following response header applies three surrogate keys to the cached response. Purging any of those three surrogate keys will purge all cached responses tagged with that surrogate key.
-
-        `Surrogate-Key: sports basketball march-tournament`
-
-    -   You may specify multiple surrogate keys when purging content. Specify each desired surrogate key on a separate line.
+You  may purge cached content by surrogate key (aka cache tag). A surrogate key is a label that you may apply to cached responses. Purging by surrogate key allows you to purge related content across your entire site. 
 
 <Callout type="tip">
 
   Improve performance and reduce the load on your web servers by only purging targetted content through the use of surrogate keys. 
 
 </Callout>
+
+#### Tagging Cached Content {/*tagging-cached-content*/}
+
+Apply a surrogate key by setting the `Surrogate-Key` response header. 
+
+**Syntax:** `Surrogate-Key: <TAG1> <TAG2> <TAG3>`
+
+**Example:** 
+
+For example, the following response header applies three surrogate keys to the cached response. Purging any of those three surrogate keys will purge all cached responses tagged with that surrogate key.
+
+`Surrogate-Key: sports basketball march-tournament`
 
 ## {{ PRODUCT }} Developer Console {/*developer-console*/}
 
@@ -74,8 +85,8 @@ Use the {{ PORTAL }} to purge cached content within a specific environment.
 3.  Purge:
 
     -   **All Cached Content:** Select **Purge all entries**.
-    -   **By Path:** Select **Purge by path**. Specify each desired relative path on a separate line.
-    -   **By Surrogate Key:** Select **Purge by surrogate key**. Specify each desired surrogate key on a separate line.
+    -   **By Path:** Select **Purge by path**. Specify each desired [relative path](#relative-path) on a separate line.
+    -   **By Surrogate Key:** Select **Purge by surrogate key**. Specify each desired [surrogate key](#surrogate-key) on a separate line.
 
 4.  Click **Purge Cache**.
 

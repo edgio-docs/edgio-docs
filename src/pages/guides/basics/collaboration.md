@@ -38,7 +38,7 @@ Team management consists of:
 
     ![Space menu](/images/basics/team-create.png)
 
-2.  In the **Team Name** option, assign a name to your team (e.g., `nature-videos`) and then click **Create a Team**.
+2.  In the **Team Name** option, assign a name to your team (e.g., `my-company`) and then click **Create a Team**.
 
     ![Add a Team](/images/basics/team-create-2.png)
 

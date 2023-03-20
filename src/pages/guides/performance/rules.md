@@ -239,7 +239,9 @@ You may create, modify, and delete rules.
 
 -   You may only administer rules when you are in draft mode. If you are in read-only mode, you may enter draft mode by clicking **Edit v#**. 
 
+<!--
 TODO: **Is this needed now that we have autodraft?**
+-->
 
 -   Draft mode allows you to make changes without affecting an environment's traffic. This allows you to collaborate with other team members when setting up rules and to stage changes until they are needed. 
 

@@ -61,7 +61,9 @@ Protecting your origin through the origin shield requires the selection of one o
 -   Each shield POP is identified by city and the three-letter abbreviation for the POP where it is located. 
 -   Shield POPs in Asia and South America require the activation of the Premium Asia and Latin America geographic delivery regions, respectively.
 
-    TODO: Verify.
+<!--
+TODO: Verify.
+-->
 
 -   Your CDN caching policy applies to both POPs and shield POPs. 
 -   Updating an origin configuration's shield configuration does not purge or modify content cached on the initial shield POP. However, it may result in a temporary increase in bandwidth as content is cached at the new location. This cache fill occurs when the new shield POP handles traffic that has not been previously cached at that location.

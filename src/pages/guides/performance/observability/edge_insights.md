@@ -32,11 +32,11 @@ Generating a report consists of performing the following steps:
         -   **Sampled, BF:**
         -   **Sampled, SOC:**
 
-    -   Analytics: Use this data source to analyze CDN traffic that has been downsampled to 0.1%.
-    -   Bot Manager Alerts: Use this data source to view bot rule violations of your WAF security application manager configuration that have been downsampled to 10%. <!--TODO verify-->
-    -   Edge Control: Use this data source to analyze how a new CDN configuration affects content delivery and performance.
-    -   Rate Limiting Alerts: Use this data source to view rate rule violations of your WAF security application manager configuration that have been downsampled to 10%.
-    -   WAF Alerts: Use this data source to view access rule, bot rule, custom rule, and managed rule violations of your WAF security application manager configuration.
+    -   **Analytics:** Use this data source to analyze CDN traffic that has been downsampled to 0.1%.
+    -   **Bot Manager Alerts:** Use this data source to view bot rule violations of your WAF security application manager configuration that have been downsampled to 10%. <!--TODO verify-->
+    -   **Edge Control:** Use this data source to analyze how a new CDN configuration affects content delivery and performance.
+    -   **Rate Limiting Alerts:** Use this data source to view rate rule violations of your WAF security application manager configuration that have been downsampled to 10%.
+    -   **WAF Alerts:** Use this data source to view access rule, bot rule, custom rule, and managed rule violations of your WAF security application manager configuration.
 
 3.  Select the time period for which data will be returned.
 
@@ -143,7 +143,7 @@ The following common use cases are provided to demonstrate various ways in which
     
     For example, if the spike occurred on a Monday at 3 p.m., then you should generate a report for Monday from 2 p.m. to 4 p.m.
     
-3.  From the **Top Results** section, select the Client IP field.
+3.  From the **Top Results** section, select the `Client IP` field.
 4.  Review the top requests for that time period.
 5.  Optional. If you cannot detect a clear pattern, try selecting a region field (e.g., `City Name`) from within the **Top Results** section.
 
@@ -185,7 +185,7 @@ Our policy on downsampling data and the amount of time that we store it varies a
 |Access Logs, (Sampled, BF)|?|? days|
 |Access Logs, (Sampled, SOC)|?|? days|
 |Analytics|0.1%|7 days|
-|Edge Control| 100%|7 days|
+|Edge Control| Not Downsampled|7 days|
 
 ## Time Chart
 
@@ -211,7 +211,7 @@ The time chart (aka line graph) graphs the current report's data over time.
 
     -    **Multiple Line Charts:** Generate a line graph for each entry by clicking the <img data-inline-img src="/images/icons/separate-charts.png" alt="Separate Charts icon" /> icon.
 
-    ![Layout options](/images/icons/edge-insights-layout-options)
+    ![Layout options](/images/performance/edge-insights-layout-options)
 
 -   Hovering over the line graph will indicate the exact number of requests that were plotted for that time slot.
 -   By default, Edge Insights plots data using an optimal time interval for the report's time range. You may override this by switching the resolution from **Auto** to the desired time interval.
@@ -240,11 +240,11 @@ The top results charts displays the top results for 2 fields.
     
     In the following illustration, the `Client Postal Code` pie chart returns a single slice called `Rest...`. The traffic represented by this pie chart is distributed throughout the world and therefore no single postal code was responsible for a statistically significant traffic segment. The `Client Region Name` pie chart, on the other hand, displays the top 10 regions. Those regions were responsible for majority of traffic included in this report.
     
-    [![Top Results - Rest...](/images/performance/edge-insights-top-results-rest.png?width=450)
+    ![Top Results - Rest...](/images/performance/edge-insights-top-results-rest.png?width=450)
     
     Increasing the **Limit Results to Top** option to 30 provides visibility into additional POPs that were responsible for serving the majority of your traffic. Notice in the following illustration that the `Rest...` slice is now smaller since the pie chart now reports data for regions that were previously included by that slice.
     
-    [![Top Results - Top 30](/images/performance/edge-insights-top-results-rest-30.png?width=450)
+    ![Top Results - Top 30](/images/performance/edge-insights-top-results-rest-30.png?width=450)
     
 -   You may switch a chart's field by selecting a new one directly underneath the chart. The available set of fields vary by data source.
 -   The fields selected in the **Top Results** section determine the available set of sources within the time chart.
@@ -269,14 +269,14 @@ Filtering is critical for gaining deeper insights into your data.
     
     From the **Top Results** section, select the `HTTP Status Code` field and then click on `404` to create the following filter:
 
-    ![Filters](/images/performance/edge-insights-filters.png?width=450)
+    ![Filters](/images/performance/edge-insights-filters.png)
 
 
 Perform the following common tasks from within the **Filters** section in the left-hand pane:
 
 -   Click on a filter to toggle between enabling and disabling it. Gray font indicates that the filter has been disabled.
 
-    ![Disabled filter](/images/performance/edge-insights-disabled-filter)
+    ![Disabled filter](/images/performance/edge-insights-disabled-filter.png)
 
 -   Modify a filter by clicking the <img data-inline-img src="/images/icons/pencil.png" alt="Edit icon" /> icon next to it.
 -   Manually add a filter by performing the following steps:
@@ -285,7 +285,7 @@ Perform the following common tasks from within the **Filters** section in the le
     2.  Select the desired field.
         
         The set of available fields varies by data source. View field definitions for:  
-        [Access Logs](#FINDME), [Analytics](#FINDME), [Bot Manager Alerts](#FINDME), [Rate Limiting Alerts](#FINDME), [WAF Alerts](#FINDME)
+        [Access Logs](#access-logs), [Analytics](#analytics), [Bot Manager Alerts](#bot-manager-alerts), [Rate Limiting Alerts](#rate-limiting-alerts), [WAF Alerts](#waf-alerts)
         
     3.  Optional. Click on `=` to toggle between filtering for requests that:
         
@@ -321,7 +321,7 @@ Log data provides contextual information about a request that allows you to gain
 
     <Callout type="info">
 
-      Edge Insights is not meant to be used as a log retrieval or log archival tool. Use [Real-Time Log Delivery](../RTLD/RTLD.htm) to automatically archive log data to one or more destinations.
+      Edge Insights is not meant to be used as a log retrieval or log archival tool. Use [Real-Time Log Delivery](/guides/logs/rtld) to automatically archive log data to one or more destinations.
 
     </Callout>
 
@@ -488,7 +488,10 @@ Each Analytics field is defined below.
 |User Agent|Indicates the user agent that submitted the request. This information is derived from the `User-Agent` request header.|
 |Write Time Used|Indicates the length of time, in seconds, that it took an edge server to write the response. This metric measures the duration between when an edge server starts writing the response and when it finishes sending the response to the client. Our servers forward data as it is read. This means that the `read_time` and `write_time` reported for an asset spans over an overlapping time period. This field does not take into account network time. <br />**Example:** `2.9999e-05`|
 |X Midgress|Indicates whether the request was proxied through an additional CDN server (e.g., edge server to Origin Shield server). This field reports `__na__` for requests that did not have midgress traffic.|
- 
+
+## Bot Manager Alerts
+
+Use the Bot Manager Alerts data source for historical and near real-time analysis of recently detected [bot traffic](/guides/security/bot_rules).
 
 ## Edge Control
 
@@ -496,7 +499,7 @@ Use this data source to analyze how a new CDN configuration affects content deli
 
 ## Rate Limiting Alerts
 
-Use the Rate Limiting Alerts data source for historical and near real-time analysis of recently [rate limited requests](../Web-Security/Rate-Rules.htm). For example, use this data to:
+Use the Rate Limiting Alerts data source for historical and near real-time analysis of recently [rate limited requests](/guides/security/rate_rules). For example, use this data to:
 
 -   Understand the severity of rate limited requests.
 -   Identify the countries from which rate limited traffic originated.
@@ -563,7 +566,7 @@ Each Rate Limiting field is defined below.
 
 ## WAF Alerts
 
-Use the WAF Alerts data source for historical and near real-time analysis of [recent threats to site traffic](../Web-Security/Web-Application-Firewall-WAF.htm). For example, use this data to:
+Use the WAF Alerts data source for historical and near real-time analysis of [recent threats to site traffic](/guides/security/waf). For example, use this data to:
 
 -   Visualize the time periods during which site traffic is most heavily targeted.
 -   Understand the variety, frequency, and severity of illegitimate traffic.
@@ -584,7 +587,7 @@ Each WAF field is defined below.
 |Bytes Out|Indicates the number of bytes in the response sent from the edge server to the client. Returns `0` for blocked requests.|
 |Cache Status|Indicates the cache status code that was generated by the request. This code indicates how the request was handled by the CDN with regards to caching.|
 |City Name|Indicates the city from which the request originated.|
-|Client Content Type|This field has been deprecated. Use the Content Type field instead.|
+|Client Content Type|This field has been deprecated. Use the `Content Type` field instead.|
 |Client IP|Identifies the IP address of the client from which the request originated.|
 |Content Type|Indicates the media type (aka content type) for the requested content. <br />**Example:** `application/javascript`|
 |Country Code|Identifies the country from which the request originated by its country code.|
@@ -599,10 +602,9 @@ Each WAF field is defined below.
 |IP Version|Reserved for future use.|
 |LC|Reserved for future use.|
 |Matched On|Indicates a variable that identifies where the violation was found.|
-|Matched Value|Indicates the value of the variable defined by the Matched On field. 
- Standard security practices dictate that measures should be taken to prevent sensitive data (e.g., credit card information or passwords) from being passed as clear text from the client to your origin server.  Another incentive for encrypting sensitive data is that it will be logged by our system when an alert is triggered as a result of this data. If sensitive data cannot be encrypted or obfuscated, then it is strongly recommended to contact our technical customer support to disable logging for the Matched Value field.|
-|Operator Name|Indicates how the system interpreted the comparison between the Operator Parameter and the Matched Value fields. Common operators are: <br />**BEGINSWITH:** Begins with. Identifies a match due to a request element that started with the specified match value. <br />**CONTAINS:** Contains. Identifies a match due to a request element that contained the specified match value. <br />**ENDSWITH:** Ends with. Identifies a match due to a request element that ended with the specified match value. <br />**STREQ:** Exact match. Identifies a match due to a request element that was an exact match to the specified match value. <br />**RX:** Regex. Identifies a match due to a request element that satisfied the regular expression defined in the match value. <br />**EQ:** Value match. Identifies a match due to a request element that occurred the exact number of times defined in your custom rule. <br />**IPMATCH:** IP Address. Identifies a match due to the request's IP address either being contained within an IP block or that was an exact match to an IP address defined in your custom rule.|
-|Operator Parameter|Indicates the source or the value that was compared against the Matched Value field.|
+|Matched Value|Indicates the value of the variable defined by the `Matched On` field. Standard security practices dictate that measures should be taken to prevent sensitive data (e.g., credit card information or passwords) from being passed as clear text from the client to your origin server.  Another incentive for encrypting sensitive data is that it will be logged by our system when an alert is triggered as a result of this data. If sensitive data cannot be encrypted or obfuscated, then it is strongly recommended to contact our technical customer support to disable logging for the `Matched Value` field.|
+|Operator Name|Indicates how the system interpreted the comparison between the `Operator Parameter` and the `Matched Value` fields. Common operators are: <br />**BEGINSWITH:** Begins with. Identifies a match due to a request element that started with the specified match value. <br />**CONTAINS:** Contains. Identifies a match due to a request element that contained the specified match value. <br />**ENDSWITH:** Ends with. Identifies a match due to a request element that ended with the specified match value. <br />**STREQ:** Exact match. Identifies a match due to a request element that was an exact match to the specified match value. <br />**RX:** Regex. Identifies a match due to a request element that satisfied the regular expression defined in the match value. <br />**EQ:** Value match. Identifies a match due to a request element that occurred the exact number of times defined in your custom rule. <br />**IPMATCH:** IP Address. Identifies a match due to the request's IP address either being contained within an IP block or that was an exact match to an IP address defined in your custom rule.|
+|Operator Parameter|Indicates the source or the value that was compared against the `Matched Value` field.|
 |Pipeline Time|Indicates the number of seconds between when the request was received by our network and ingestion.|
 |Platform|Returns `cache`.|
 |POP|Identifies the POP that handled the client's request by its three-letter abbreviation.|

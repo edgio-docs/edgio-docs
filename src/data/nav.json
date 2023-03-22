@@ -110,6 +110,10 @@
           "path": "performance/observability",
           "routes": [
             {
+              "title": "Edge Insights",
+              "path": "performance/observability/edge_insights"
+            },
+            {
               "title": "Core Web Vitals",
               "path": "performance/observability/core_web_vitals"
             },

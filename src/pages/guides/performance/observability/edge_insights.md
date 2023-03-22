@@ -201,6 +201,8 @@ The time chart (aka line graph) graphs the current report's data over time.
     
     Use the layout options to determine whether all data will be plotted on a single or multiple line charts.
 
+    ![Layout options](/images/performance/edge-insights-layout-options.png)
+
     -    **Single Line Chart:** By default, all data is plotted within a single chart with individual lines for each entry. Switch from multiple line charts to a single line chart by clicking the <img data-inline-img src="/images/icons/single-chart.png" alt="Single Chart icon" /> icon.
 
         <Callout type="info">
@@ -210,8 +212,6 @@ The time chart (aka line graph) graphs the current report's data over time.
         </Callout>
 
     -    **Multiple Line Charts:** Generate a line graph for each entry by clicking the <img data-inline-img src="/images/icons/separate-charts.png" alt="Separate Charts icon" /> icon.
-
-    ![Layout options](/images/performance/edge-insights-layout-options)
 
 -   Hovering over the line graph will indicate the exact number of requests that were plotted for that time slot.
 -   By default, Edge Insights plots data using an optimal time interval for the report's time range. You may override this by switching the resolution from **Auto** to the desired time interval.

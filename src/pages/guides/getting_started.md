@@ -28,20 +28,24 @@ Each website that will run behind {{ PRODUCT }} requires an {{ PRODUCT }} proper
 
 1.  From the {{ PORTAL }}, click **+ New Property**.
 
-    ![+ New Property](/images/basics/property-create-1.png?width=300)
+    ![+ New Property](/images/basics/property-create-1.png?width=400)
 
 2.  In the **Property Name** option, assign a name to your new property (e.g., `My Property`).
 3.  Under the **Hostnames** section, click **+ Add Hostname** and then type the desired hostname (e.g., `www.example.com`).
 
-    ![+ New Property](/images/basics/property-create-2.png?width=300)
+    ![+ New Property](/images/basics/property-create-2.png?width=400)
 
-4.  {{ PRODUCT }} allows you to use your web servers as an origin, fulfill requests through Serverless Compute, or both. 
+4.  {{ PRODUCT }} allows you to use your web servers as an origin, fulfill requests through [Serverless Compute](/guides/performance/serverless_compute), or both. 
 
-    For example, if you are integrating a JavaScript framework through {{ PRODUCT }} {{ PRODUCT_PLATFORM }}, then your configuration may not require an origin since all requests may be served through Serverless Compute.
+    <Callout type="info">
+
+      **Example:** If you are integrating a JavaScript framework through {{ PRODUCT }} {{ PRODUCT_PLATFORM }}, then your configuration may not require an origin since all requests may be served through Serverless Compute.
+
+    </Callout>
 
     Perform one of the following steps:
 
-    -   **Origin:** Identify the set of web servers that will serve as the origin for the hostname defined in step 3 by setting the **Origin Hostname** option to a domain or an IP address (e.g., `www-origin.example.com` or `192.0.2.222`) that points to them. 
+    -   **Origin:** Define the set of web servers that will serve as the origin for the hostname defined in step 3 by setting the **Origin Hostname** option to a domain or an IP address (e.g., `www-origin.example.com` or `192.0.2.222`) that points to them. 
 
         <Callout type="info">
 
@@ -51,13 +55,13 @@ Each website that will run behind {{ PRODUCT }} requires an {{ PRODUCT }} proper
 
         Your origin configuration should now look similar to this:
 
-        ![+ New Property](/images/basics/property-create-3-a.png?width=300)
+        ![+ New Property](/images/basics/property-create-3-a.png?width=400)
 
-    -   **Framework:** If you plan on integrating a framework and do not plan on using an origin server to serve requests, then delete the `web` origin by clicking the <img data-inline-img src="/images/icons/menu-delete.png" alt="Menu" /> icon that appears next to it. 
+    -   **Framework:** If you plan on integrating a framework and do not plan on using an origin server to serve requests, then delete the `web` origin by clicking the <img data-inline-img src="/images/icons/menu-delete-2.png" alt="Delete" /> icon that appears next to it. 
 
         Your origin configuration should now look similar to this:
 
-        ![+ New Property](/images/basics/property-create-3-b.png?width=300)
+        ![+ New Property](/images/basics/property-create-3-b.png?width=400)
 
 5.  Click **Create Property**.
 6.  If you have defined at least one origin configuration, your property will be automatically deployed to the {{ PRODUCT }} network. [Proceed to step 3.](#test-your-property)
@@ -75,7 +79,6 @@ Each website that will run behind {{ PRODUCT }} requires an {{ PRODUCT }} proper
     ```bash
     npx {{ PACKAGE_NAME }}/cli@latest init \
 	--name <PROPERTY> \
-	--environment production \
 	--deploy
     ```
 

@@ -12,6 +12,7 @@ import {IconSecurity} from '../Icon/IconSecurity';
 import {IconWebAppCDN} from '../Icon/IconWebAppCDN';
 
 import {IconArrow} from 'components/Icon/IconArrow';
+import useConditioning from 'utils/hooks/useConditioning';
 
 const NextLink = Link;
 
@@ -112,6 +113,10 @@ const StyledGetStarted = styled.div`
 `;
 
 export default function GetStarted({children}: {children: React.ReactNode}) {
+  const {
+    version: {toVersionedPath},
+  } = useConditioning();
+
   return (
     <StyledGetStarted>
       {children}
@@ -121,21 +126,21 @@ export default function GetStarted({children}: {children: React.ReactNode}) {
           icon={IconWebAppCDN}
           title={PRODUCT_EDGE}
           subtitle={`Deploy your web application and start seeing the performance benefits with the ${PRODUCT} ${PRODUCT_EDGE} network.`}
-          href="/guides/getting_started"
+          href={toVersionedPath('getting_started')}
           hrefText="Deploy now"
         />
         <GetStartedCard
           icon={IconJamstack}
           title={PRODUCT_PLATFORM}
           subtitle={`Deploy static and dynamic Jamstack sites that run on ${PRODUCT}'s serverless functions.`}
-          href="/guides/sites_frameworks/getting_started"
+          href={toVersionedPath('sites_frameworks/getting_started')}
           hrefText="View Supported Frameworks"
         />
         <GetStartedCard
           icon={IconSecurity}
           title={PRODUCT_SECURITY}
           subtitle={`${PRODUCT} ${PRODUCT_SECURITY} keeps your apps protected without sacrificing performance.`}
-          href="/guides/security"
+          href={toVersionedPath('security')}
           hrefText="Learn More"
         />
       </div>

@@ -5,7 +5,7 @@ import {Toc} from '../Layout/Toc';
 import DiscourseDiscuss from './DiscourseDiscuss';
 import EditPage from './EditPage';
 
-import {siteConfig} from 'siteConfig';
+import {siteConfig} from 'config/appConfig';
 
 const StyledDocs = styled.div`
   max-width: var(--docs-area-width);
@@ -215,14 +215,14 @@ export default function Docs({
                 aria-hidden="true"></a>
             </h1>
 
-            <div className="docs-article__header-icons">
+            {/* <div className="docs-article__header-icons">
               <EditPage as="icon" />
               <DiscourseDiscuss as="icon" />
-            </div>
+            </div> */}
           </header>
           <div className="docs-article__body">{children}</div>
         </article>
-        <EditPage />
+        {/* <EditPage /> */}
       </div>
       <Toc headings={tocHeadings} />
     </StyledDocs>

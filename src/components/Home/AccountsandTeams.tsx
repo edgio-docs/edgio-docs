@@ -8,12 +8,17 @@ import {IconUser} from '../Icon/IconUser';
 import {StyledFeatureSection} from './FeatureSection';
 import SectionHeader from './SectionHeader';
 
+import useConditioning from 'utils/hooks/useConditioning';
+
 const StyledComp = styled(StyledFeatureSection)``;
 
 export default function AccountsandTeams() {
   const parentPath = 'accounts-teams';
   const allRoutes = getChildrenRoutesFromSidebarMenuItems(parentPath);
   const allRoutesSorted = sortBy(allRoutes, 'title');
+  const {
+    version: {toVersionedPath},
+  } = useConditioning();
 
   const routesByColumns = [allRoutesSorted];
 
@@ -32,7 +37,7 @@ export default function AccountsandTeams() {
               {route.map(({path, title}) => (
                 <li className="route-list__item" key={title}>
                   <div className="dot" />
-                  <Link href={path}>{title}</Link>
+                  <Link href={toVersionedPath(path)}>{title}</Link>
                 </li>
               ))}
             </ul>

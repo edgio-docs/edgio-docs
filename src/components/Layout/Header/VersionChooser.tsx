@@ -1,91 +1,115 @@
-import {FormControl, MenuItem, Select} from '@material-ui/core';
-import {makeStyles} from '@material-ui/core/styles';
-import Router, {useRouter} from 'next/router';
-import React, {useEffect} from 'react';
+import {ExpandMore as ExpandMoreIcon} from '@mui/icons-material';
+import {styled} from '@mui/material';
+import MenuItem from '@mui/material/MenuItem';
+import Select from '@mui/material/Select';
+import Link from 'next/link';
 
-import useVersioning, {getVersions} from '../../versioning';
+import {useIsMobile} from '../useMediaQuery';
 
-const useStyles = makeStyles((theme) => ({
-  control: {
-    '& > div': {
-      borderRadius: 3,
-      backgroundColor: 'transparent',
-    },
-    [theme.breakpoints.down('xs')]: {
-      marginRight: theme.spacing(-1.5),
-    },
-    flexShrink: 0,
+import {getVersionedConfigs} from 'utils/config';
+import useConditioning from 'utils/hooks/useConditioning';
+
+const linkStyles = {
+  color: 'var(--text-primary)',
+  textDecoration: 'none',
+  '&:visited': {
+    color: 'var(--text-primary)',
   },
-  selectMenu: {
-    textOverflow: 'clip',
+};
+
+const VersionItem = styled(MenuItem)(() => ({
+  '&.MuiMenuItem-root.Mui-selected': {
+    backgroundColor: 'var(--select-item-selected-bg)',
   },
-  icon: {
-    color: theme.palette.grey[200],
-  },
-  selectRoot: {
-    '&:hover': {
-      backgroundColor: 'rgba(255,255,255,0.1)',
-    },
-    border: 0,
-    padding: theme.spacing(1, 2),
-    fontSize: '1.00em',
-    color: theme.palette.grey[200],
-    [theme.breakpoints.down('xs')]: {
-      fontSize: '1em',
-    },
+  '&.MuiMenuItem-root:hover': {
+    backgroundColor: 'var(--select-item-hover-bg)',
   },
 }));
 
+const VersionSelect = styled(Select)(() => ({
+  '&': {
+    marginLeft: 20,
+  },
+  '& .MuiSelect-icon': {
+    color: 'var(--text-primary)',
+  },
+  '& .MuiSelect-select': {
+    color: 'var(--text-primary)',
+    backgroundColor: 'var(--select-bg)',
+    border: '1px solid var(--sidebar-link-primary)',
+    fontSize: 14,
+    padding: '5px 14px',
+    '& a': linkStyles,
+  },
+  '& .Mui-focused .MuiOutlinedInput-notchedOutline': {
+    borderColor: 'var(--select-border-color)',
+  },
+  '&:hover .MuiOutlinedInput-notchedOutline': {
+    borderColor: 'var(--select-border-color)',
+  },
+}));
+
+const menuProps = {
+  sx: {
+    '& a': linkStyles,
+    '& .MuiMenuItem-root': {
+      ...linkStyles,
+      fontSize: 14,
+    },
+    '& .MuiMenu-paper': {
+      backgroundColor: 'var(--select-bg)',
+    },
+  },
+};
+
 export default function VersionChooser() {
-  const classes = useStyles();
-  const {route} = useRouter();
-  const {currentVersion, setCurrentVersion, createUrl, versions, setVersions} =
-    useVersioning();
+  const {version} = useConditioning();
+  const isMobile = useIsMobile(850);
+  const {selectedVersion, latestVersion} = version;
 
-  useEffect(() => {
-    const doGetVersions = async () => {
-      const versions = await getVersions();
+  const prefixedLatestVersion = `v${latestVersion}`;
+  const prefixedSelectedVersion = `v${selectedVersion}`;
 
-      setVersions(versions);
-    };
+  const versions = Object.keys(getVersionedConfigs())
+    .map((v) => ({
+      version: v,
+      href: v === prefixedLatestVersion ? `/` : `/guides/${v}`,
+      label: `Applications ${v}`,
+    }))
+    .reverse();
 
-    doGetVersions();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  const renderValue = (value: any) => {
+    const matchedVersion = versions.find((v) => v.version === value);
+    let label = matchedVersion?.label;
 
-  const onChange = (event: any) => {
-    let version = event.target?.value;
+    // TODO: Remove this once we have a better solution for mobile header sizing
+    if (isMobile) {
+      label = label?.replace('Applications ', '');
+    }
 
-    Router.push(route, createUrl({version, forceVersion: true}));
-    setCurrentVersion(version);
+    return label;
   };
 
-  // don't render unless we are on the api docs route
-  if (/*!route.startsWith('/docs/') ||*/ !versions.length) {
-    return <></>;
-  }
-
-  const selectedVersion =
-    currentVersion === 'current' ? versions[0] : currentVersion;
-
   return (
-    <FormControl variant="filled" className={classes.control} size="small">
-      <Select
-        value={selectedVersion}
-        onChange={onChange}
-        disableUnderline
-        autoWidth
-        classes={{
-          root: classes.selectRoot,
-          icon: classes.icon,
-          selectMenu: classes.selectMenu,
-        }}>
-        {versions.map((version: string) => (
-          <MenuItem value={version} key={version}>
-            {version}
-          </MenuItem>
-        ))}
-      </Select>
-    </FormControl>
+    <VersionSelect
+      sx={{m: 1, minWidth: isMobile ? 75 : 150}}
+      size="small"
+      IconComponent={ExpandMoreIcon}
+      MenuProps={menuProps}
+      value={prefixedSelectedVersion}
+      variant="outlined"
+      renderValue={renderValue}>
+      {versions.map(({version, href, label}) => {
+        return (
+          <Link href={href} key={version}>
+            <VersionItem
+              selected={version === prefixedSelectedVersion}
+              value={version}>
+              {label}
+            </VersionItem>
+          </Link>
+        );
+      })}
+    </VersionSelect>
   );
 }

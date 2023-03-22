@@ -753,15 +753,15 @@ const SidebarMenuItems: ISidebarMenuItems = [
       routes: [
         {
           title: 'v6 Migration Guide',
-          path: '/guides/v6_migration',
+          path: '/guides/upgrading/v6_migration',
         },
         {
           title: 'v5 Migration Guide',
-          path: '/guides/reference/v5_migration',
+          path: '/guides/upgrading/v5_migration',
         },
         {
           title: 'v4 Migration Guide',
-          path: '/guides/reference/layer0_migration',
+          path: '/guides/upgrading/layer0_migration',
         },
         {
           title: CONFIG_FILE,

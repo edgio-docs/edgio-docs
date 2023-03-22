@@ -113,7 +113,7 @@ export function SnippetGroup({children}: SnippetGroupProps) {
                     selectedIndex={selectedIndex}>
                     {
                       // @ts-ignore
-                      child.props.children.props.tabLabel
+                      child.props.tabLabel
                     }
                   </TabItem>
                 );

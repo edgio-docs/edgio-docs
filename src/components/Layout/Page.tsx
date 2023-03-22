@@ -9,9 +9,15 @@ import SideNav from './Sidebar/Sidenav';
 import {useIsMobile} from './useMediaQuery';
 import {RouteItem, SidebarContext} from './useRouteMeta';
 
+import useConditioning from 'utils/hooks/useConditioning';
+
 interface PageProps {
   routeTree: RouteItem;
   children: React.ReactNode;
+}
+
+interface StyledBannerxProps {
+  legacy?: boolean;
 }
 
 const StyledMainPage = styled.div`
@@ -61,18 +67,23 @@ const StyledMainPage = styled.div`
   }
 `;
 
-const StyledBanner = styled.div`
+const StyledBanner = styled.div<StyledBannerxProps>`
+  --banner-text-color: ${({legacy}) => (legacy ? '#000' : '#fff')};
+  --banner-background-color: var(
+    ${({legacy}) => (legacy ? '--callout-tip' : '--lg-primary')}
+  );
+
   display: block;
   text-align: center;
-  color: #fff;
-  background: var(--lg-primary);
+  color: var(--banner-text-color);
+  background: var(--banner-background-color);
   font-size: calc(1rem - 2px);
   padding: 1em;
   text-decoration: none;
   font-weight: 500;
 
   a {
-    color: #fff;
+    color: var(--banner-text-color);
     text-decoration: none;
     &:hover {
       text-decoration: underline;
@@ -81,6 +92,17 @@ const StyledBanner = styled.div`
 `;
 
 function Banner() {
+  const {version} = useConditioning();
+  if (!version.isLatest) {
+    return (
+      <StyledBanner legacy>
+        You are reading {PRODUCT} {version.selectedVersionText} docs.&nbsp;
+        <a href="/">
+          Check out our latest docs for {PRODUCT} {version.latestVersionText}.
+        </a>
+      </StyledBanner>
+    );
+  }
   return (
     <StyledBanner>
       🎉 Introducing {PRODUCT} v6 which supports Node.js v16.{' '}
@@ -93,6 +115,7 @@ export function Page({routeTree, children}: PageProps) {
   const isMobile = useIsMobile(850);
   const [showSidebar, setShowSidebar] = React.useState(isMobile);
   const router = useRouter();
+  const showBanner = !isMobile || (isMobile && !showSidebar);
 
   React.useEffect(() => {
     router.events.on('routeChangeComplete', () => setShowSidebar(false));
@@ -100,7 +123,7 @@ export function Page({routeTree, children}: PageProps) {
 
   return (
     <StyledMainPage>
-      <Banner />
+      {showBanner && <Banner />}
       <Header {...{showSidebar, setShowSidebar}} />
       <SidebarContext.Provider value={routeTree}>
         <main className="docs-content">

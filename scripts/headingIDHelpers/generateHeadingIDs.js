@@ -119,7 +119,7 @@ async function main(paths) {
     import('remark-parse'),
     import('remark-slug'),
   ]);
-  const unified = unifiedMod.default;
+  const unified = unifiedMod;
   const remarkParse = remarkParseMod.default;
   const remarkSlug = remarkSlugMod.default;
   modules = {unified, remarkParse, remarkSlug};

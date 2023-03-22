@@ -1,7 +1,7 @@
 import cn from 'classnames';
 import * as React from 'react';
 
-import {siteConfig} from 'siteConfig';
+import {siteConfig} from 'config/appConfig';
 import {forwardRefWithAs} from 'utils/forwardRefWithAs';
 
 export const H1 = ({className, ...props}: HeadingProps) => (

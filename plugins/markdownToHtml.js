@@ -6,12 +6,13 @@ const images = require('remark-images'); // Improved image syntax
 const unrwapImages = require('remark-unwrap-images'); // Removes <p> wrapper around images
 const smartyPants = require('./remark-smartypants'); // Cleans up typography
 const html = require('remark-html');
-const remarkMdxCodeMeta = require('remark-mdx-code-meta');
+const {remarkMdxCodeMeta} = require('./remark-mdx-code-meta');
 // const {
 //   remarkExtendedTable,
 //   extendedTableHandlers,
 // } = require('remark-extended-table');
 // const embed = require('mdx-embed');
+const remarkGfm = require('remark-gfm');
 
 module.exports = {
   remarkPlugins: [
@@ -21,6 +22,7 @@ module.exports = {
     unrwapImages,
     smartyPants,
     remarkMdxCodeMeta,
+    remarkGfm,
     // embed
   ],
   markdownToHtml,

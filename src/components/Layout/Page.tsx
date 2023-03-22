@@ -115,6 +115,7 @@ export function Page({routeTree, children}: PageProps) {
   const isMobile = useIsMobile(850);
   const [showSidebar, setShowSidebar] = React.useState(isMobile);
   const router = useRouter();
+  const showBanner = !isMobile || (isMobile && !showSidebar);
 
   React.useEffect(() => {
     router.events.on('routeChangeComplete', () => setShowSidebar(false));
@@ -122,7 +123,7 @@ export function Page({routeTree, children}: PageProps) {
 
   return (
     <StyledMainPage>
-      <Banner />
+      {showBanner && <Banner />}
       <Header {...{showSidebar, setShowSidebar}} />
       <SidebarContext.Provider value={routeTree}>
         <main className="docs-content">

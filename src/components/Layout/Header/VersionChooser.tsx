@@ -4,6 +4,8 @@ import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
 import Link from 'next/link';
 
+import {useIsMobile} from '../useMediaQuery';
+
 import {getVersionedConfigs} from 'utils/config';
 import useConditioning from 'utils/hooks/useConditioning';
 
@@ -62,6 +64,7 @@ const menuProps = {
 
 export default function VersionChooser() {
   const {version} = useConditioning();
+  const isMobile = useIsMobile(850);
   const {selectedVersion, latestVersion} = version;
 
   const prefixedLatestVersion = `v${latestVersion}`;
@@ -75,20 +78,27 @@ export default function VersionChooser() {
     }))
     .reverse();
 
-  const onChange = (e: any) => {
-    console.log(e);
+  const renderValue = (value: any) => {
+    const matchedVersion = versions.find((v) => v.version === value);
+    let label = matchedVersion?.label;
+
+    // TODO: Remove this once we have a better solution for mobile header sizing
+    if (isMobile) {
+      label = label?.replace('Applications ', '');
+    }
+
+    return label;
   };
 
   return (
     <VersionSelect
-      sx={{m: 1, minWidth: 150}}
+      sx={{m: 1, minWidth: isMobile ? 75 : 150}}
       size="small"
       IconComponent={ExpandMoreIcon}
       MenuProps={menuProps}
-      onChange={onChange}
       value={prefixedSelectedVersion}
       variant="outlined"
-      renderValue={(value) => versions.find((v) => v.version === value)?.label}>
+      renderValue={renderValue}>
       {versions.map(({version, href, label}) => {
         return (
           <Link href={href} key={version}>

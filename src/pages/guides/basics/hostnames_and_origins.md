@@ -111,7 +111,7 @@ On a per environment-basis, define how {{ PRODUCT }} will communicate with your 
 -   The maximum number of origin configurations per environment is 100.
 -   It is strongly recommended to cloak your origin to protect it against attacks that directly target your web servers and thereby bypass the security provided by our service.
 -   You may configure an origin configuration to always serve traffic to your hosts over HTTP, HTTPS, or to match the client's scheme. Matching a client's scheme means that our network will serve HTTP traffic to your web servers over port 80, while HTTPS traffic will be served over port 443.
--   Our network can use Server Name Indication (SNI) during the TLS handshake. If the SNI hint is not found, then your origin server's implementation determines the TLS certificate that will be returned.
+-   You may enable Server Name Indication (SNI) on an origin configuration to allow {{ PRODUCT }} to use it during the TLS handshake. If the SNI hint is not found, then your origin server's implementation determines the TLS certificate that will be returned.
 
     Additionally, our service will compare the hostname used for the SNI hint to the certificate's Subject Alternative Name (SAN) or Common Name (CN) during the TLS handshake. If the hostname does not match, then we will respond with a `502 Bad Gateway` response.
 -   By default, our network disables delivery when we detect a self-signed certificate from the origin server during the TLS handshake. Enable the **Allow Self-Signed Certs** option to require our edge servers to respond with a `502 Bad Gateway` response upon detecting a self-signed certificate from the origin server during the TLS handshake.

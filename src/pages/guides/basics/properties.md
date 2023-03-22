@@ -72,6 +72,8 @@ Upon creating a property, it will contain a `production` environment with the fo
 3.  From the **Delete property** section, mark the **Confirm that I want to delete the property "&lt;PROPERTY>".** option. 
 4.  Click **Delete Property**.
 
+<a id="transfer-ownership" />
+
 **To transfer ownership to another team**
 1.  From the {{ PORTAL_LINK }}, click on the desired property.
 2.  Click **Settings**.

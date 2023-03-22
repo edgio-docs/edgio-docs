@@ -2,94 +2,14 @@
 title: Getting Started
 ---
 
-Get started with {{ PRODUCT }} by satisfying our [prerequisites](#prerequisites) and then performing these steps:
+Get started with {{ PRODUCT }} by performing these steps:
 
-1.  [Create an {{ PRODUCT }} property.](#create-property)
-2.  [Test your property.](#testing-locally)
-3.  [Deploy your property to {{ PRODUCT }}.](#deploy-property)
+1.  [Create an {{ PRODUCT }} account.](#create-account)
+2.  [Create an {{ PRODUCT }} property.](#create-property)
+3.  [Test your property.](#testing)
 4.  [Next steps.](#next-steps)
 
-<Video src="https://youtu.be/kCGBgzkaOJ0" />
-
-## Quick Start {/*quick-start*/}
-
-If you already have [Node.js v{{ NODE_VERSION }}](/guides/install_nodejs) and an [{{ PRODUCT }} account](#account-creation), then you can use a single command to:
--   Install the {{ PRODUCT }} CLI.
--   Create an {{ PRODUCT }} property for your website.
--   Deploy a property to {{ PRODUCT }}.
-
-<Callout type="tip">
-
-  An alternative approach is to perform each of the above tasks individually. 
-
-  [Learn more.](#prerequisites)
-
-</Callout>
-
-Run one of the following commands from the root directory of your web application or website:
--   **Origin:** Run this command if you have web servers that will serve as the origin.
--   **Framework:** Run this command to render your web app within our cloud through {{ PRODUCT_PLATFORM }}.
-
-<Callout type="info">
-
-  Replace `<PROPERTY>` with the name for this configuration. If you are also setting `<DOMAIN>`, then you should replace it with your website's domain or IP address.
-
-</Callout>
-
-<SnippetGroup>
-
-```bash tabLabel=Origin
-  npx {{ PACKAGE_NAME }}/cli@latest init \
-	--name <PROPERTY> \
-	--environment default \
-	--origin <DOMAIN> \
-	--deploy
-```
-
-```bash tabLabel=Framework
-  npx {{ PACKAGE_NAME }}/cli@latest init \
-	--name <PROPERTY> \
-	--environment default \
-	--deploy
-```
-
-</SnippetGroup>
-
-You are now ready to optimize and secure the delivery of your website. 
-[Learn more.](#next-steps)
-
-## Prerequisites {/*prerequisites*/}
-
-{{ PRODUCT }} requires:
--   [Node.js v{{ NODE_VERSION }}](/guides/install_nodejs)
--   npm or yarn package manager
-
-    <Callout type="info">
-
-      npm is installed with Node.js, while yarn requires a separate installation.
-
-    </Callout>
-
--   {{ PRODUCT }} CLI
--   {{ PRODUCT }} account
-
-### {{ PRODUCT }} CLI Installation {/*cli-installation*/}
-
-Use the [{{ PRODUCT }} CLI](/guides/develop/cli) to build, test, and deploy your website to {{ PRODUCT }}. Install it through either npm or yarn.
-
-<SnippetGroup>
-
-```bash tabLabel=npm
-npm i -g {{ PACKAGE_NAME }}/cli
-```
-
-```bash tabLabel=Yarn
-yarn global add {{ PACKAGE_NAME }}/cli
-```
-
-</SnippetGroup>
-
-### {{ PRODUCT }} Account Creation {/*account-creation*/}
+## Step 1: Create an {{ PRODUCT }} Account {/*create-account*/}
 
 Signing up for an {{ PRODUCT }} account is free and quick.
 
@@ -102,81 +22,69 @@ Signing up for an {{ PRODUCT }} account is free and quick.
 
 2.  Click **Accept** to accept our terms of service and privacy policy.
 
-## Step 1: Create an {{ PRODUCT }} Property {/*create-property*/}
+## Step 2: Create an {{ PRODUCT }} Property {/*create-property*/}
 
 Each website that will run behind {{ PRODUCT }} requires an {{ PRODUCT }} property. A property determines how {{ PRODUCT }} will process your website's traffic.
 
-1.  From the {{ PORTAL }}, set the **What is your website's URL?** option to your website's URL and then click **Launch my site**.
+1.  From the {{ PORTAL }}, click **+ New Property**.
+2.  In the **Property Name** option, assign a name to your new property (e.g., `My Property`).
+3.  Under the **Hostnames** section, click **+ Add Hostname** and then type the desired hostname (e.g., `www.example.com`).
+4.  {{ PRODUCT }} allows you to use your web servers as an origin, fulfill requests through Serverless Compute, or both. 
+
+    For example, if you are integrating a JavaScript framework through {{ PRODUCT }} {{ PRODUCT_PLATFORM }}, then your configuration may not require an origin since all requests may be served through Serverless Compute.
+
+    Perform one of the following steps:
+
+    -   **Origin:** Identify the set of web servers that will serve as the origin for the hostname defined in step 3 by setting the **Origin Hostname** option to a domain or an IP address (e.g., `www-origin.example.com` or `192.0.2.222`) that points to them. 
+
+        <Callout type="info">
+
+          You may safely ignore the other origin settings until you are ready to fine-tune your setup. [Learn more about origins.](/guides/basics/hostnames_and_origins#origin)
+
+        </Callout>
+
+    -   **Framework:** If you plan on integrating a framework and do not plan on using an origin server to serve requests, then delete the `web` origin by clicking the <img data-inline-img src="/images/icons/menu-delete.png" alt="Menu" /> icon that appears next to it. 
+
+5.  Click **Create Property**.
+6.  If you defined an origin configuration, your property will be automatically deployed to the {{ PRODUCT }} network.
+
+    **JavaScript Framework Only:** If you are using a JavaScript framework, then you need to use the {{ PRODUCT }} CLI to initialize your property. 
 
     <Callout type="info">
 
-      If you have previously created a site, you will need to click **+ New Site**, provide your website's URL, and then click **Create my site**.
+      This step requires [Node.js v{{ NODE_VERSION }}](/guides/install_nodejs). 
 
     </Callout>
 
-2.  From the command line or terminal, navigate to a directory where project files will be stored.
+    Install the {{ PRODUCT }} CLI, initialize your property, and then deploy it by running the following command from the root directory of your web application or website:
 
-    <Callout type="tip">
-
-      If possible, try to use your website's root directory.
-
-    </Callout>
-
-3.  Run one of the following commands:
-    -   **Origin:** Run this command if you have web servers that will serve as the origin.
-    -   **Framework:** Run this command to render your web apps within our cloud through {{ PRODUCT_PLATFORM }}.
-
-    <Callout type="info">
-
-      Replace `<PROPERTY>` with the domain defined in step 1. If you are also setting `<DOMAIN>`, then you should replace it with your website's domain or IP address.
-
-    </Callout>
-
-    <SnippetGroup>
-
-    ```bash tabLabel=Origin
-      {{ FULL_CLI_NAME }} init --name <PROPERTY> \
-        --environment production \
-        --origin <DOMAIN> 
+    ```bash
+    npx {{ PACKAGE_NAME }}/cli@latest init \
+	--name <PROPERTY> \
+	--environment production \
+	--deploy
     ```
 
-    ```bash tabLabel=Framework
-      {{ FULL_CLI_NAME }} init --name <PROPERTY> \
-        --environment production 
-    ```
+    Once you have successfully deployed your property to {{ PRODUCT }}, our CLI provides an edge URL that allows you to preview your site.
 
-    </SnippetGroup>
+## Step 3: Test Your Property
 
-4.  When prompted, confirm the selection of `Use the current directory` by pressing the `ENTER` key.
-5.  When prompted, select either the `npm` or `yarn` package manager and then press the `ENTER` key.
+Once your property is successfully deployed to the {{ PRODUCT }} network, a URL will appear within the **Latest Production Deployment** section. Follow that link to preview your site behind {{ PRODUCT }}.
 
-## Step 2: Testing Locally {/*testing-locally*/}
-
-You may run {{ PRODUCT }} in local development mode to preview your website on your local machine prior to deployment. Local development mode allows for rapid development by allowing you to quickly test changes prior to deployment.
-
-1.  From the command line or terminal, type `{{ FULL_CLI_NAME }} dev`.
-2.  Preview your website by loading `https://127.0.0.1:3000` from within your preferred web browser.
-
-## Step 3: Deploying Your Property {/*deploy-property*/}
-
-Run the following command from your property's root directory to deploy it to {{ PRODUCT }}:
-
-```bash
-{{ FULL_CLI_NAME }} deploy
-```
+![Latest Production Deployment](/guides/basics/deployment-latest-production.png)
 
 ## Next Steps {/*next-steps*/}
 
-Once you have successfully deployed your property to {{ PRODUCT }}, our CLI provides the following URLs:
--   **{{ PORTAL }}:** View detailed information about this deployment, including its edge link and permalink, from within the {{ PORTAL_LINK }}.
--   **Permalink:** Preview your website behind {{ PRODUCT }} without edge caching. Bypassing our cache will affect performance.
+Congratulations on setting up a basic property on {{ PRODUCT }}! You are now ready to:
 
--   **Edge:** Preview your website behind {{ PRODUCT }} and gain performance insights through our [DevTools](/guides/performance/observability/devtools).  
+-   Fine-tune your [origin configuration](/guides/basics/hostnames_and_origins#origin).
 
-You are now ready to set up:
+    For example, you can enable Server Name Indication (SNI) on an origin configuration or shield it from requests to reduce network bandwith usage and the load on your web servers.
 
+-   If you plan on collaborating with other team members, then you should [create a team](/guides/basics/collaboration). After which, you will need to either create a property for that team or [transfer the ownership of your new property](/guides/basics/properties#transfer-ownership) to that team.
+-   [Create environments](/guides/basics/environments) to match your software development workflow. Each environments provides site previews that allow QA testers, code reviewers, and other stakeholders to immediately try out newly introduced changes before they are introduced into your production environment. 
 -   [Performance.](/guides/performance/getting_started) Learn how to:
-    -   Optimize website performance through our CDN-as-code approach to [caching](/guides/performance/getting_started#configure-caching), [routing](/guides/performance/cdn_as_code) your content, and [predictive prefetching](/guides/performance/prefetching).
+    -   Optimize website performance by defining a [caching policy](/guides/performance/caching), [predictive prefetching](/guides/performance/prefetching), and other edge logic through [Rules](/guides/performance/rules). Alternatively, if you prefer code to UI, then you can take advantage of our [CDN-as-code approach](/guides/performance/cdn_as_code) to CDN configuration.
     -   Gain performance insights through which you can fine-tune your configuration through our [Observability](/guides/performance/observability/core_web_vitals) solution.
     -   Speed up development by quickly iterating through different variations of your site through our [Traffic Splitting](/guides/performance/traffic_splitting) solution.
 -   [Security.](/guides/security) We automatically provide distributed denial-of-service (DDOS) protection to traffic that runs behind {{ PRODUCT }}. Apply additional protection to your web applications and APIs through our Web Application Firewall and {{ PRODUCT_SECURITY_ADVANCED_BOT }} solutions. {{ ACCOUNT_UPGRADE }}

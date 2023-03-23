@@ -74,6 +74,10 @@
           "path": "performance/cdn_as_code",
           "routes": [
             {
+              "title": "Getting Started",
+              "path": "performance/cdn_as_code/getting_started"
+            },
+            {
               "title": "Common Routing Patterns",
               "path": "performance/cdn_as_code/common_routing_patterns"
             }

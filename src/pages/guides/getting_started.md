@@ -28,18 +28,18 @@ Each website that will run behind {{ PRODUCT }} requires an {{ PRODUCT }} proper
 
 1.  From the {{ PORTAL }}, click **+ New Property**.
 
-    ![+ New Property](/images/basics/property-create-1.png?width=400)
+    ![+ New Property](/images/basics/property-create-1.png?width=450)
 
 2.  In the **Property Name** option, assign a name to your new property (e.g., `My Property`).
 3.  Under the **Hostnames** section, click **+ Add Hostname** and then type the desired hostname (e.g., `www.example.com`).
 
-    ![+ New Property](/images/basics/property-create-2.png?width=400)
+    ![+ New Property](/images/basics/property-create-2.png?width=450)
 
 4.  {{ PRODUCT }} allows you to use your web servers as an origin, fulfill requests through [Serverless Compute](/guides/performance/serverless_compute), or both. 
 
     <Callout type="info">
 
-      **Example:** If you are integrating a JavaScript framework through {{ PRODUCT }} {{ PRODUCT_PLATFORM }}, then your configuration may not require an origin since all requests may be served through Serverless Compute.
+      If you are integrating a JavaScript framework through {{ PRODUCT }} {{ PRODUCT_PLATFORM }}, then your configuration may not require an origin since all requests may be served through Serverless Compute.
 
     </Callout>
 
@@ -55,18 +55,18 @@ Each website that will run behind {{ PRODUCT }} requires an {{ PRODUCT }} proper
 
         Your origin configuration should now look similar to this:
 
-        ![+ New Property](/images/basics/property-create-3-a.png?width=400)
+        ![+ New Property](/images/basics/property-create-3-a.png?width=450)
 
-    -   **Framework:** If you plan on integrating a framework and do not plan on using an origin server to serve requests, then delete the `web` origin by clicking the <img data-inline-img src="/images/icons/menu-delete-2.png" alt="Delete" /> icon that appears next to it. 
+    -   **Framework:** If you plan on integrating a framework and do not plan on using an origin server to serve requests, then delete the `web` origin by clicking the <img data-inline-img src="/images/icons/delete-2.png" alt="Delete" /> icon that appears next to it. 
 
         Your origin configuration should now look similar to this:
 
-        ![+ New Property](/images/basics/property-create-3-b.png?width=400)
+        ![+ New Property](/images/basics/property-create-3-b.png?width=450)
 
 5.  Click **Create Property**.
 6.  If you have defined at least one origin configuration, your property will be automatically deployed to the {{ PRODUCT }} network. [Proceed to step 3.](#test-your-property)
 
-    **JavaScript Framework Only:** If you are using a JavaScript framework, then you need to use the {{ PRODUCT }} CLI to initialize your property. 
+    **JavaScript Framework Only:** If you are using a JavaScript framework, then you should use the {{ PRODUCT }} CLI to initialize your property. 
 
     <Callout type="info">
 
@@ -82,7 +82,7 @@ Each website that will run behind {{ PRODUCT }} requires an {{ PRODUCT }} proper
 	--deploy
     ```
 
-    Once you have successfully deployed your property to {{ PRODUCT }}, our CLI provides an edge URL that allows you to preview your site.
+    Once you have successfully deployed your property to {{ PRODUCT }}, our CLI provides an edge URL that allows you to preview your site. [Proceed to step 4.](#next-steps)
 
 ## Step 3: Test Your Property
 

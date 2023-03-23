@@ -76,7 +76,7 @@ export default function HomepageFeatures() {
           <DeveloperTools />
           <AccountsandTeams />
         </div>
-        <FrameworkGuides />        
+        <FrameworkGuides />
         <Reference />
         {/* <VideosandTutorials /> */}
       </Container>

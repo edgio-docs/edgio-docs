@@ -101,15 +101,16 @@ function Accordion({
               <CgExternal />
             </div>
           </a>
-        ) : route.title && isActiveLink ? (
-          <Link
-            href={toVersionedPath(route.path)}
-            className="sidenav-link"
-            data-depth={depth}>
-            {childElement}
-          </Link>
         ) : (
-          <Fragment>{childElement}</Fragment>
+          route.title &&
+          isActiveLink && (
+            <Link
+              href={toVersionedPath(route.path)}
+              className="sidenav-link"
+              data-depth={depth}>
+              {childElement}
+            </Link>
+          )
         )}
         {/* Collapse */}
         {route.routes && (

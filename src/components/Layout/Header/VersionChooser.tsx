@@ -102,11 +102,13 @@ export default function VersionChooser() {
       {versions.map(({version, href, label}) => {
         return (
           <Link href={href} key={version} passHref>
-            <VersionItem
-              selected={version === prefixedSelectedVersion}
-              value={version}>
-              {label}
-            </VersionItem>
+            <a>
+              <VersionItem
+                selected={version === prefixedSelectedVersion}
+                value={version}>
+                {label}
+              </VersionItem>
+            </a>
           </Link>
         );
       })}

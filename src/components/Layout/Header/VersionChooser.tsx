@@ -101,7 +101,7 @@ export default function VersionChooser() {
       renderValue={renderValue}>
       {versions.map(({version, href, label}) => {
         return (
-          <Link href={href} key={version}>
+          <Link href={href} key={version} passHref>
             <VersionItem
               selected={version === prefixedSelectedVersion}
               value={version}>

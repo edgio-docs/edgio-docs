@@ -18,9 +18,11 @@ ${base.SIGN_UP}
 ${base.INSTALL_CLI}
   `.trim();
 
-export default {
+const config = {
   NODE_VERSION,
   SYSTEM_REQUIREMENTS,
   SYSTEM_REQUIREMENTS_H3,
   PREREQ,
 };
+
+export default config;

@@ -40,7 +40,7 @@ Get started with CDN-as-code by:
 
 5.  [Deploy your property](#deploy-to) to the {{ PRODUCT }} network.
 
-## {{ ROUTES_FILE }} {/*routes-js-ts*/}
+## Routes.js|ts File {/*routes-js-ts*/}
 
 The {{ ROUTES_FILE }} file defines a set of routes. A route:
 

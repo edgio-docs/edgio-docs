@@ -245,7 +245,7 @@ data logged by our servers.
 
 1.  Generate the desired report.
 2.  Click the 
-    <img data-inline-img src="/images/icons/icon_spreadsheet.png" alt="Spreadsheet icon" /> (spreadsheet) icon. Report data
+    <img data-inline-img src="/images/v7/icons/icon_spreadsheet.png" alt="Spreadsheet icon" /> (spreadsheet) icon. Report data
     will be saved on your computer as a CSV file.
 3.  Import the CSV file using the desired log file analysis or
     spreadsheet application.

@@ -22,7 +22,7 @@ There are two types of spaces:
 
 A breakdown of team and private spaces is illustrated below.
 
-![Types of Spaces](/images/basics/setup-overview.png)
+![Types of Spaces](/images/v7/basics/setup-overview.png)
 
 ## Managing Teams
 
@@ -34,13 +34,13 @@ Team management consists of:
 
 **To create a team**
 
-1.  From the {{ PORTAL_LINK }}, click on the <img data-inline-img src="/images/icons/menu-up-down.png" alt="Menu" /> icon next to your name and then click on **Create a team**. 
+1.  From the {{ PORTAL_LINK }}, click on the <img data-inline-img src="/images/v7/icons/menu-up-down.png" alt="Menu" /> icon next to your name and then click on **Create a team**. 
 
-    ![Space menu](/images/basics/team-create.png)
+    ![Space menu](/images/v7/basics/team-create.png)
 
 2.  In the **Team Name** option, assign a name to your team (e.g., `my-company`) and then click **Create a Team**.
 
-    ![Add a Team](/images/basics/team-create-2.png)
+    ![Add a Team](/images/v7/basics/team-create-2.png)
 
     <Callout type="info">
 

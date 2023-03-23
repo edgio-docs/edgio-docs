@@ -23,24 +23,24 @@ The format for log data delivered to Splunk Enterprise is JSON Lines. This log f
 
     1.  From with Splunk Enterprise, click **Settings** and then **Add Data**.
 
-        ![](/images/logs/splunk-1.png?width=500)
+        ![](/images/v7/logs/splunk-1.png?width=500)
         
     3.  Click **Monitor**.
         
-        ![](/images/logs/splunk-2.png?width=500)
+        ![](/images/v7/logs/splunk-2.png?width=500)
         
     4.  Click **HTTP Event Collector**.
         
-        ![](/images/logs/splunk-3.png?width=500)
+        ![](/images/v7/logs/splunk-3.png?width=500)
         
     5.  In the **Name** option, define a name for the CDN log data that will be collected.
         
-        ![](/images/logs/splunk-4.png?width=500)
+        ![](/images/v7/logs/splunk-4.png?width=500)
         
     6.  Click **Next >**.
     7.  Click **Select** to display the **Select Source Type** option. Click that option, type `\_json` to filter source types, and then select it.
         
-        ![](/images/logs/splunk-5.png?width=500)
+        ![](/images/v7/logs/splunk-5.png?width=500)
         
     8.  Click **Review**.
     9.  Click **Submit >** to finish setting up the HTTP Event Collector. An HEC token will be generated. Use this token to authorize requests posted to the HEC.

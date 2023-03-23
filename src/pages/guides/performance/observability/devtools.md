@@ -62,7 +62,7 @@ To customize when {{ PRODUCT }} Devtools appear:
 
 ### Per Environment {/*per-environment*/}
 
-Using the [{{ PORTAL }}]({{ APP_URL }}), navigate to your environment and create an environment variable named `PREVIEW_{{ PRODUCT_NAME_UPPER }}_DEVTOOLS_ENABLED`. Set the value to `true` or `false` to explicitly enable or disable the Devtools on the given environment.
+Using the {{ PORTAL_LINK }}, navigate to your environment and create an environment variable named `PREVIEW_{{ PRODUCT_NAME_UPPER }}_DEVTOOLS_ENABLED`. Set the value to `true` or `false` to explicitly enable or disable the Devtools on the given environment.
 
 ### Per Browsing Session {/*per-browsing-session*/}
 

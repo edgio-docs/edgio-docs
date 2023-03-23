@@ -94,11 +94,11 @@ The following common use cases are provided to demonstrate various ways in which
 1.  From the **Data Source** option, select `Access Logs (Full - last 6 hours)`.
 2.  From the **Top Results** section, select the `HTTP Status Code` field.
     
-    ![Top Results - Select Field](/images/performance/edge-insights-top-results-select.png?width=450)
+    ![Top Results - Select Field](/images/v7/performance/edge-insights-top-results-select.png?width=450)
     
 3.  From the pie chart, click on `404`.
     
-    ![Top Results - Filter](/images/performance/edge-insights-top-results-filter.png?width=450)
+    ![Top Results - Filter](/images/v7/performance/edge-insights-top-results-filter.png?width=450)
     
 4.  From the **Top Results** section, select the `URL Path` field.
 5.  Review the top requests for that time period.
@@ -157,7 +157,7 @@ You may share an entire report or specific data with other users.
     
     `https://edge-insights.edgio.app/?avg=0&bin=auto&end_time=1638817682&f=%7B%22geoip_country_name%22%3A%22United+States%22%7D&fstatus=%7B%22geoip_country_name%22%3A%7B%22value%22%3A%22United+States%22%2C%22active%22%3Atrue%7D%7D&gt=chart1&h=0&legend=0&log=0&mt=graph_by_pop&nm=false&notf=%7B%7D&notfstatus=%7B%7D&p=1&pc1s=status_code&pc2s=geoip_country_name&pp=10&prefix=&quantiles=&selectedChart=histogram&selectedQuantitativeField=bytes_in&start_time=1638212206&ti=604800&topn=10&ttr=10&vs=&vt=accesslog`
     
--   **Specific Data:** Click on the <img data-inline-img src="/images/icons/json.png" alt="JSON icon" /> icon next to the data that you would like to share. {{ PRODUCT }} will load the corresponding JSON data in a new window or tab. You should then either:
+-   **Specific Data:** Click on the <img data-inline-img src="/images/v7/icons/json.png" alt="JSON icon" /> icon next to the data that you would like to share. {{ PRODUCT }} will load the corresponding JSON data in a new window or tab. You should then either:
     
     -   Share the JSON data with the desired individual(s).
     -   Share the data's URL with another {{ PRODUCT }} team member.
@@ -195,15 +195,15 @@ The time chart (aka line graph) graphs the current report's data over time.
 
 -   By default, a single line plots all requests over time. Graph the top results for a specific field by clicking on the button that corresponds to that field. If the desired field is not listed, select it from within the **Top Results** section.
     
-    ![Time Chart - Source](/images/performance/edge-insights-time-chart-source.png)
+    ![Time Chart - Source](/images/v7/performance/edge-insights-time-chart-source.png)
     
     By default, a line graph includes up to the 10 most popular entries. Customize this limit through the **Limit Results to Top** option from the left-hand pane. This option also affects the maximum number of unique entries that may be listed within a **Top Result** chart.
     
     Use the layout options to determine whether all data will be plotted on a single or multiple line charts.
 
-    ![Layout options](/images/performance/edge-insights-layout-options.png)
+    ![Layout options](/images/v7/performance/edge-insights-layout-options.png)
 
-    -    **Single Line Chart:** By default, all data is plotted within a single chart with individual lines for each entry. Switch from multiple line charts to a single line chart by clicking the <img data-inline-img src="/images/icons/single-chart.png" alt="Single Chart icon" /> icon.
+    -    **Single Line Chart:** By default, all data is plotted within a single chart with individual lines for each entry. Switch from multiple line charts to a single line chart by clicking the <img data-inline-img src="/images/v7/icons/single-chart.png" alt="Single Chart icon" /> icon.
 
         <Callout type="info">
 
@@ -211,7 +211,7 @@ The time chart (aka line graph) graphs the current report's data over time.
 
         </Callout>
 
-    -    **Multiple Line Charts:** Generate a line graph for each entry by clicking the <img data-inline-img src="/images/icons/separate-charts.png" alt="Separate Charts icon" /> icon.
+    -    **Multiple Line Charts:** Generate a line graph for each entry by clicking the <img data-inline-img src="/images/v7/icons/separate-charts.png" alt="Separate Charts icon" /> icon.
 
 -   Hovering over the line graph will indicate the exact number of requests that were plotted for that time slot.
 -   By default, Edge Insights plots data using an optimal time interval for the report's time range. You may override this by switching the resolution from **Auto** to the desired time interval.
@@ -222,7 +222,7 @@ The time chart (aka line graph) graphs the current report's data over time.
 
     </Callout>
     
--   View the data used to plot this chart by clicking on the <img data-inline-img src="/images/icons/json.png" alt="JSON icon" /> icon. Upon clicking this icon, {{ PRODUCT }} displays this data in JSON format within a new tab.
+-   View the data used to plot this chart by clicking on the <img data-inline-img src="/images/v7/icons/json.png" alt="JSON icon" /> icon. Upon clicking this icon, {{ PRODUCT }} displays this data in JSON format within a new tab.
 
 ## Top Results Charts
 
@@ -240,11 +240,11 @@ The top results charts displays the top results for 2 fields.
     
     In the following illustration, the `Client Postal Code` pie chart returns a single slice called `Rest...`. The traffic represented by this pie chart is distributed throughout the world and therefore no single postal code was responsible for a statistically significant traffic segment. The `Client Region Name` pie chart, on the other hand, displays the top 10 regions. Those regions were responsible for majority of traffic included in this report.
     
-    ![Top Results - Rest...](/images/performance/edge-insights-top-results-rest.png?width=450)
+    ![Top Results - Rest...](/images/v7/performance/edge-insights-top-results-rest.png?width=450)
     
     Increasing the **Limit Results to Top** option to 30 provides visibility into additional POPs that were responsible for serving the majority of your traffic. Notice in the following illustration that the `Rest...` slice is now smaller since the pie chart now reports data for regions that were previously included by that slice.
     
-    ![Top Results - Top 30](/images/performance/edge-insights-top-results-rest-30.png?width=450)
+    ![Top Results - Top 30](/images/v7/performance/edge-insights-top-results-rest-30.png?width=450)
     
 -   You may switch a chart's field by selecting a new one directly underneath the chart. The available set of fields vary by data source.
 -   The fields selected in the **Top Results** section determine the available set of sources within the time chart.
@@ -259,7 +259,7 @@ Filtering is critical for gaining deeper insights into your data.
 
 1.  From the **Top Results** section, select the field that contains the data that you would like to filter.
     
-    ![Top Results - Select Field](/images/performance/edge-insights-top-results-select.png?width=450)
+    ![Top Results - Select Field](/images/v7/performance/edge-insights-top-results-select.png?width=450)
     
 2.  From the pie chart, click on the value by which you would like to filter.
     
@@ -269,16 +269,16 @@ Filtering is critical for gaining deeper insights into your data.
     
     From the **Top Results** section, select the `HTTP Status Code` field and then click on `404` to create the following filter:
 
-    ![Filters](/images/performance/edge-insights-filters.png)
+    ![Filters](/images/v7/performance/edge-insights-filters.png)
 
 
 Perform the following common tasks from within the **Filters** section in the left-hand pane:
 
 -   Click on a filter to toggle between enabling and disabling it. Gray font indicates that the filter has been disabled.
 
-    ![Disabled filter](/images/performance/edge-insights-disabled-filter.png)
+    ![Disabled filter](/images/v7/performance/edge-insights-disabled-filter.png)
 
--   Modify a filter by clicking the <img data-inline-img src="/images/icons/pencil.png" alt="Edit icon" /> icon next to it.
+-   Modify a filter by clicking the <img data-inline-img src="/images/v7/icons/pencil.png" alt="Edit icon" /> icon next to it.
 -   Manually add a filter by performing the following steps:
     
     1.  Click on **+ Add Filter**.
@@ -316,7 +316,7 @@ Log data provides contextual information about a request that allows you to gain
 
 -   Log entries are returned as paginated results. By default, we provide 10 log entries per page. You may increase this value up to 1,000 through the Logs per page option.
 -   View a specific log entry by clicking on it.
--   View log data for the current page by clicking on the <img data-inline-img src="/images/icons/json.png" alt="JSON icon" /> icon. Upon clicking this icon, Edge Insights displays the current page's log data in JSON format within a new tab.
+-   View log data for the current page by clicking on the <img data-inline-img src="/images/v7/icons/json.png" alt="JSON icon" /> icon. Upon clicking this icon, Edge Insights displays the current page's log data in JSON format within a new tab.
 -   Edge Insights restricts log retrieval to 10,000 log entries. If the current report consists of more log entries, then you may only retrieve log data for 10,000 of the most recent requests. This limit solely applies to log retrieval. Your report's time chart and **Top Results** charts display all available data without regard to this limit.
 
     <Callout type="info">

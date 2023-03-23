@@ -74,7 +74,7 @@ at your applications and web servers. This view consists of a chart and statisti
     The following information is displayed for each category:
     -   `<Value>`**:** Groups threats by the request's value for the current category.  The following illustration shows a partial listing of values for the `Rule Message` category.  
 
-        ![](/images/security/dashboard_category.png)  
+        ![](/images/v7/security/dashboard_category.png)  
 
     -   **%:** Indicates the percentage of detected threats over a given time period that belong to the group identified by the **Value** field.  
 
@@ -256,14 +256,14 @@ fields support filtering.
 
 **Key information:**
 -   Most filters may be applied by  clicking on the desired entry.
-    After which, the <img data-inline-img src="/images/icons/filter.png" alt="Filter icon" /> (filter) icon
+    After which, the <img data-inline-img src="/images/v7/icons/filter.png" alt="Filter icon" /> (filter) icon
     will be displayed next to it. This icon indicates that the dashboard
     is being filtered by that entry.
     -   **Overview:** Look for the statistics shown under the graph
         and then click on the desired value to filter for all requests
         that match it.
 
-        ![](/images/security/dashboard_filter_by_stat.png)
+        ![](/images/v7/security/dashboard_filter_by_stat.png)
 
     -   **Event Log:** Expand a rule violation and then click on
         the desired field value.
@@ -288,6 +288,6 @@ fields support filtering.
     and the Event Log will be filtered.
 -   The **Filters** section, which appears on the left-hand side
     of the dashboard, displays a list of active filters. It also allows
-    a filter to be cleared by clicking on the <img data-inline-img src="/images/icons/remove.png" alt="Delete icon" /> (delete)
+    a filter to be cleared by clicking on the <img data-inline-img src="/images/v7/icons/remove.png" alt="Delete icon" /> (delete)
     icon displayed next to
     it.

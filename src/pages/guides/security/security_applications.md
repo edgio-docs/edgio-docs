@@ -442,7 +442,7 @@ configuration in the list.
 <Callout type="tip">
 
   Reorder Security Application configurations by dragging the
-  desired configuration's <img data-inline-img src="/images/icons/drag.png" /> icon to the desired position.
+  desired configuration's <img data-inline-img src="/images/v7/icons/drag.png" /> icon to the desired position.
 
 </Callout>
 
@@ -779,7 +779,7 @@ configurations.
 1.  Navigate to the **Security Applications** page.
     {{ SECURITY_NAV }} **Security Applications**.
 2.  Drag the desired
-    configuration's <img data-inline-img src="/images/icons/drag.png" /> icon
+    configuration's <img data-inline-img src="/images/v7/icons/drag.png" /> icon
     to the desired position.
 3.  Click **Apply All Changes**.
 4.  Click **Save Changes**.

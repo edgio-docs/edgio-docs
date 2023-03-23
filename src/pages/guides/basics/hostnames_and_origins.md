@@ -9,11 +9,11 @@ Setting up the delivery of your site through {{ PRODUCT }} requires the followin
 
 Control how {{ PRODUCT }} communicates with your web servers by mapping hostnames to origin configurations.
 
-![Hostname and Origin Workflow](/images/basics/hostnames-origins.png?width=781)
+![Hostname and Origin Workflow](/images/v7/basics/hostnames-origins.png?width=781)
 
 You may also serve your site through [Serverless Compute](/guides/performance/serverless_compute). You may serve all of your site traffic through Serverless Compute, your origin server(s), or any combination of both.
 
-![Hostname, Origin, and Serverless Compute Workflow](/images/basics/hostnames-origins-serverless-compute.png)
+![Hostname, Origin, and Serverless Compute Workflow](/images/v7/basics/hostnames-origins-serverless-compute.png)
 
 ## Quick Start {/*quick-start*/}
 
@@ -79,7 +79,7 @@ On a per environment-basis, define each hostname that will be served through {{ 
         1.  Click **+ Add hostname**. 
         2.  Add each desired hostname on a separate line. 
 
-        ![Add Hostnames](/images/basics/add-hostnames.png?width=550)
+        ![Add Hostnames](/images/v7/basics/add-hostnames.png?width=550)
 
         3.  Click **Add Hostnames**.
 
@@ -93,7 +93,7 @@ On a per environment-basis, define each hostname that will be served through {{ 
 
     -   **Modify a Hostname:** Modify an existing hostname by replacing the existing hostname with a new value. 
 
-        ![Hostnames](/images/basics/hostnames.png?width=600)
+        ![Hostnames](/images/v7/basics/hostnames.png?width=600)
 
     -   **Delete a Hostname:** Click <img data-inline-img src="/images/icons/delete.png" alt="Delete icon" /> next to the hostname that should be deleted. 
 
@@ -125,7 +125,7 @@ On a per environment-basis, define how {{ PRODUCT }} will communicate with your 
 
 2.  Click **+ Add Origin**.
 
-    ![Add Origin](/images/basics/origins-add-origin.png?width=600)
+    ![Add Origin](/images/v7/basics/origins-add-origin.png?width=600)
 
 3.  In the **Name** option, assign a name to this origin configuration. This name should only consist of alphanumeric characters, hyphens, periods, and underscores.
 
@@ -137,7 +137,7 @@ On a per environment-basis, define how {{ PRODUCT }} will communicate with your 
 
 4.  Define one or more host(s). Each host determines how {{ PRODUCT }} will communicate with your web server(s).
 
-    ![Define host](/images/basics/origins-add-origin-2.png?width=600)
+    ![Define host](/images/v7/basics/origins-add-origin-2.png?width=600)
 
     1.  In the **Origin Hostname** option, type a hostname or IP address that points to your web server(s).
     2.  Optional. Set the **Port** option to the port over which our network will serve traffic to the above hostname or IP address.
@@ -153,7 +153,7 @@ On a per environment-basis, define how {{ PRODUCT }} will communicate with your 
     5.  Optional. Add another host to this origin configuration by clicking **+ Add Host** and then performing steps 4.1 - 4.4. 
 5.  Optional. Define TLS settings for this origin configuration. Click on the **Origin TLS Settings** section to expand it.
 
-    1.  Enable SNI by toggling the **Use SNI** option to the on position (<img data-inline-img src="/images/icons/toggle-on.png" alt="Toggle on" />) and then defining the hostname that will be sent as a SNI hint during the TLS handshake. 
+    1.  Enable SNI by toggling the **Use SNI** option to the on position (<img data-inline-img src="/images/v7/icons/toggle-on.png" alt="Toggle on" />) and then defining the hostname that will be sent as a SNI hint during the TLS handshake. 
 
     <Callout type="info">
 
@@ -161,7 +161,7 @@ On a per environment-basis, define how {{ PRODUCT }} will communicate with your 
 
     </Callout>
 
-    2.  If your origin servers use a self-signed certificate, then you should toggle the **Allow Self Signed Certs** option to the on position (<img data-inline-img src="/images/icons/toggle-on.png" alt="Toggle on" />).
+    2.  If your origin servers use a self-signed certificate, then you should toggle the **Allow Self Signed Certs** option to the on position (<img data-inline-img src="/images/v7/icons/toggle-on.png" alt="Toggle on" />).
     3.  Set up certificate pinning by adding one or more public keys.
 
         1.  Click **+ Add Pin**.
@@ -174,7 +174,7 @@ On a per environment-basis, define how {{ PRODUCT }} will communicate with your 
 
         Upon configuring a region, all other regions will be updated from `Bypass` to the selected POP. This configuration means that cache misses from all regions will be proxied to the selected POP location.
 
-        ![Single Shield](/images/security/origin-shield-single.png?width=600)
+        ![Single Shield](/images/v7/security/origin-shield-single.png?width=600)
 
     2.  Optional. Assign a POP location to a different region.
 
@@ -182,7 +182,7 @@ On a per environment-basis, define how {{ PRODUCT }} will communicate with your 
 
         For example, the following configuration may potentially allow cache misses from the APAC region to be served through the shield location defined for the US West region (i.e., `OXR`).
 
-        ![Multiple Shields](/images/security/origin-shield-multiple.png?width=600)
+        ![Multiple Shields](/images/v7/security/origin-shield-multiple.png?width=600)
 
     3.  Optional. Repeat step 2 as needed.
 
@@ -214,7 +214,7 @@ As clients request your site, {{ PRODUCT }} sends traffic through our network to
 
 2.  From the information bar at the top of the page, click **instructions**.
 
-    ![Firewall instructions](/images/basics/origins-instructions.png)
+    ![Firewall instructions](/images/v7/basics/origins-instructions.png)
 
     The **Allowlisting** window will display a list of IPv4 and IPv6 blocks for standard traffic, a list of IP blocks for Serverless Compute, and the domain to which the {{ PRODUCT }} CLI connects when deploying to a development or CI/CD environment.
 
@@ -244,9 +244,9 @@ From your DNS service provider, point your hostname(s) to a service domain that 
 
 2.  From the **DNS** column, click **Actions needed**.
 
-    ![DNS - Actions needed](/images/basics/hostnames-dns.png)
+    ![DNS - Actions needed](/images/v7/basics/hostnames-dns.png)
 
-3.  From the **DNS Configuration** pane, click <img data-inline-img src="/images/icons/copy-to-clipboard.png" alt="Copy to clipboard icon" />  to copy this domain. 
+3.  From the **DNS Configuration** pane, click <img data-inline-img src="/images/v7/icons/copy-to-clipboard.png" alt="Copy to clipboard icon" />  to copy this domain. 
 
 ### Space-Specific Service Domain {/*space-specific-service-domain*/}
 
@@ -264,7 +264,7 @@ You may point any hostname defined within a space to its service domain.
     1.  From the {{ PORTAL_LINK }}, select the desired private or team space.
     2.  Click **Settings**.
 
-2.  From the **Team DNS Configuration** section, click <img data-inline-img src="/images/icons/copy-to-clipboard.png" alt="Copy to clipboard icon" />  to copy this domain. 
+2.  From the **Team DNS Configuration** section, click <img data-inline-img src="/images/v7/icons/copy-to-clipboard.png" alt="Copy to clipboard icon" />  to copy this domain. 
 
 ### DNS Verification {/*dns-verification*/}
 

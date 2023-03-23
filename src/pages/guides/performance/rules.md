@@ -27,7 +27,7 @@ There are two basic workflows for defining your CDN configuration:
 -   Generate and deploy rules through the {{ PORTAL_LINK }}.
 -   Define a [CDN-as-Code configuration](/guides/performance/cdn_as_code) and then deploy it through the {{ PRODUCT }} CLI. 
 
-![Rules and CDN-as-Code](/images/performance/rules-cdn-as-code.png)
+![Rules and CDN-as-Code](/images/v7/performance/rules-cdn-as-code.png)
 
 You may override a CDN-as-code configuration through the **Rules** page. However, complex CDN-as-code configurations are displayed in JSON format instead of being displayed as rules. Additionally, any future CDN-as-code deployments will override your rules.
 
@@ -44,7 +44,7 @@ A rule:
 
 For example, the following rule applies a caching policy to all `GET` requests whose relative path starts with `/marketing/`.
 
-![Rule Example](/images/performance/rule-condition-feature-example.png)
+![Rule Example](/images/v7/performance/rule-condition-feature-example.png)
 
 ### Conditions
 
@@ -149,7 +149,7 @@ An operator determines when a request satisfies a condition by defining the rela
 
       Add a value by typing it and then pressing `ENTER`. Remove a value from the list by clicking the `x` icon that appears directly to the right of it. A sample list item is shown below.
 
-      ![List item](/images/performance/list-item.png)
+      ![List item](/images/v7/performance/list-item.png)
 
     </Callout>
 
@@ -193,13 +193,13 @@ Rules are typically processed in the order that they are listed. If a request sa
 
 <Callout type="tip">
 
-  Move a rule by dragging the rule's <img data-inline-img src="/images/icons/grab-handle.png" alt="" /> icon to the desired position.
+  Move a rule by dragging the rule's <img data-inline-img src="/images/v7/icons/grab-handle.png" alt="" /> icon to the desired position.
 
 </Callout>
 
 A good rule of thumb when determining where a rule should be positioned is to order rules according to the level of detail in the criteria. Rules with general criteria should be placed closer to the top of the list, while more detailed criteria should be placed closer to the bottom. This type of configuration allows catch-all rules to assign default handling behavior for your assets without interfering with the manner in which specific types of assets are handled.
 
-![Order of Precedence](/images/performance/rules-order-of-precedence.png)
+![Order of Precedence](/images/v7/performance/rules-order-of-precedence.png)
 
 ### Exceptions to Rule Precedence
 
@@ -282,7 +282,7 @@ TODO: **Is this needed now that we have autodraft?**
 
     <Callout type="tip">
 
-      Move a rule by dragging the rule's <img data-inline-img src="/images/icons/grab-handle.png" alt="" /> icon to the desired position.
+      Move a rule by dragging the rule's <img data-inline-img src="/images/v7/icons/grab-handle.png" alt="" /> icon to the desired position.
 
     </Callout>
 
@@ -294,7 +294,7 @@ TODO: **Is this needed now that we have autodraft?**
     1.  From the {{ PORTAL_LINK }}, select the desired property.
     2.  From the left-hand pane, select the desired environment from under the **Environments** section.
     3.  From the left-hand pane, select **Rules**. 
-2.  Click the <img data-inline-img src="/images/icons/delete-2.png" alt="" /> icon next to the desired rule.
+2.  Click the <img data-inline-img src="/images/v7/icons/delete-2.png" alt="" /> icon next to the desired rule.
 3.  Confirm the deletion by clicking **Delete Rules**.
 
 **To export your rules as EdgeJS code** <a id="export-rules-edgejs" /> 
@@ -304,7 +304,7 @@ TODO: **Is this needed now that we have autodraft?**
     2.  From the left-hand pane, select the desired environment from under the **Environments** section.
     3.  From the left-hand pane, select **Rules**. 
 2.  Click **Export** and then select **EdgeJS** to display your rules as a CDN-as-code (EdgeJS) configuration. 
-3.  Copy the code by clicking the <img data-inline-img src="/images/icons/copy-to-clipboard.png" alt="" /> icon.
+3.  Copy the code by clicking the <img data-inline-img src="/images/v7/icons/copy-to-clipboard.png" alt="" /> icon.
 4.  Optional. Paste your code into your {{ ROUTES_FILE }}.
 
 <Callout type="info">

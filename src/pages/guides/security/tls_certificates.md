@@ -160,9 +160,9 @@ Once the above requirements are met, you should verify that a TLS certificate fo
 1.  From the {{ PORTAL_LINK }}, click **Settings** to load the **Settings** page. Find the **TLS Certificate** section.
 2.  Review the TLS status for each of your hostnames.
 
-    ![TLS Certificate section](/images/security/tls-certificate.png)
+    ![TLS Certificate section](/images/v7/security/tls-certificate.png)
 
-3.  If a TLS certificate has not yet been generated, you may manually generate it by clicking <img data-inline-img src="/images/icons/recheck-validation.png" alt="Recheck Validation icon" /> under the **ACME Challenge Record** column.
+3.  If a TLS certificate has not yet been generated, you may manually generate it by clicking <img data-inline-img src="/images/v7/icons/recheck-validation.png" alt="Recheck Validation icon" /> under the **ACME Challenge Record** column.
 
     {{ PRODUCT }} will generate a TLS certificate for that hostname within a few minutes.
 

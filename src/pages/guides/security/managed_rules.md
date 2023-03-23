@@ -137,12 +137,12 @@ The ECRS rule set consists of a set of threat detection policies. Each
 threat detection policy contains a set of rules that define how threats
 to site traffic will be detected.
 
-![](/images/security/managed_rule_set.png)
+![](/images/v7/security/managed_rule_set.png)
 
 **Key information:**
 -   Only a single rule set may be associated with a managed rule.
 -   A threat detection policy or its rules may be disabled.
-    -   View a policy's rules by clicking on the <img data-inline-img src="/images/icons/expand-section.png" alt="Delete icon" /> icon that appears directly to the left of its name. 
+    -   View a policy's rules by clicking on the <img data-inline-img src="/images/v7/icons/expand-section.png" alt="Delete icon" /> icon that appears directly to the left of its name. 
 
         <Callout type="info">
 

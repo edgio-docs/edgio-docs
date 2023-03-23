@@ -51,7 +51,7 @@ Perform the following steps to create an environment:
 
 2.  Click **+ New Environment**.
 
-    ![environments](/images/basics/environments.png)
+    ![environments](/images/v7/basics/environments.png)
 
 3.  In the **Name** option, specify a name for this environment. This name may consist of lowercase characters, numbers, dashes (`-`), and underscores (`_`).
 
@@ -62,7 +62,7 @@ Perform the following steps to create an environment:
     -   Mark this option to allow all team members to deploy to this environment.
     -   Clear this option to restrict deployment to admins and the deploy token. 
 
-    ![limit environment](/images/basics/environment-permissions.png?width=450)
+    ![limit environment](/images/v7/basics/environment-permissions.png?width=450)
 
 6.  Click **Create**.
 
@@ -135,7 +135,7 @@ You may create, modify, and delete environment variables from the {{ PORTAL }}.
 
     {{ ENV_NAV }} **Environment Variables**.
 
-2.  Click on the <img data-inline-img src="/images/icons/delete-4.png" alt="Delete" /> icon next to the desired environment variable.
+2.  Click on the <img data-inline-img src="/images/v7/icons/delete-4.png" alt="Delete" /> icon next to the desired environment variable.
 
 3.  When prompted, click **Remove Variable** to confirm the permenant deletion of that environment variable.    
 
@@ -190,7 +190,7 @@ Perform the following steps to permanently delete an environment:
     2.  Select the desired property.
     3.  From the left-hand pane, select the desired environment from under the **Environments** section.
 
-2.  Click the <img data-inline-img src="/images/icons/menu-kebab.png" alt="Menu" /> icon next to the desired environment and then click **Delete**.
+2.  Click the <img data-inline-img src="/images/v7/icons/menu-kebab.png" alt="Menu" /> icon next to the desired environment and then click **Delete**.
 3.  When prompted, click **Remove Environment** to confirm the permenant deletion of that environment.
 
 <Callout type="info">

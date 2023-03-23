@@ -50,7 +50,7 @@ Secure your web applications by defining security rules and then creating a Secu
 configuration that enforces them. After which, perform
 near-real-time threat monitoring through the dashboard.
 
-![](/images/security/setup_overview.png)
+![](/images/v7/security/setup_overview.png)
 
 Additional information on each of the above steps is provided below.
 
@@ -146,7 +146,7 @@ below.
 
 The above threat detection workflow is illustrated below.
 
-![](/images/security/request_screening_workflow.png)
+![](/images/v7/security/request_screening_workflow.png)
 
 ### Managed Rule Violations {/*managed-rule-violations*/}
 

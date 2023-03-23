@@ -36,7 +36,7 @@ RTLD delivers compressed log data to one or more of the following destination(s)
 -   [Splunk Enterprise](/guides/logs/rtld/splunk_log_delivery).
 -   [Sumo Logic](/guides/logs/rtld/sumo_logic_log_delivery).
 
-![RTLD Workflow](/images/logs/rtld-workflow.png)
+![RTLD Workflow](/images/v7/logs/rtld-workflow.png)
 
 Log data consists a set of log entries. Each entry describes either:
 
@@ -84,4 +84,4 @@ You may create multiple profiles. This allows you to:
     
     [Your web server(s)](/guides/logs/rtld/web_server_log_delivery) | [An AWS S3 Bucket](/guides/logs/rtld/aws_s3_log_delivery)| [An Azure Block Blob container](/guides/logs/rtld/azure_log_delivery) | [Splunk Enterprise](/guides/logs/rtld/splunk_log_delivery) | [Sumo Logic](/guides/logs/rtld/sumo_logic_log_delivery) | [Datadog](/guides/logs/rtld/datadog_log_delivery) | [Google Cloud Storage](/guides/logs/rtld/google_cloud_storage_log_delivery) | [New Relic (RTLD CDN and RTLD Rate Limiting)](/guides/logs/rtld/new_relic_log_delivery)
     
--   Delete a profile by clicking the corresponding ![Delete](/images/icons/delete-2.png) icon. When prompted, confirm the deletion.
+-   Delete a profile by clicking the corresponding ![Delete](/images/v7/icons/delete-2.png) icon. When prompted, confirm the deletion.

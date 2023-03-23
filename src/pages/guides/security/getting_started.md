@@ -31,7 +31,7 @@ Before you can secure your traffic, you will need an {{ COMPANY_NAME }} site con
 
 Setting up security requires creating rules that determine how your traffic will be secured, identifying the set of traffic that will be secured, and then monitoring flagged traffic to verify or fine-tune your security configuration.
 
-![](/images/security/setup_overview.png)
+![](/images/v7/security/setup_overview.png)
 
 ## Step 1: Create Rules {/*step-1-create-rules*/}
 
@@ -60,7 +60,7 @@ denied, or screened through whitelists, accesslists, and blacklists.
 6.  Specify an IP address from which suspicious traffic originates.
 7.  Specify an additional IP address on a separate line. Repeat this step as needed.
 
-    [View sample configuration.](/images/security/getting_started_access_rules.png)
+    [View sample configuration.](/images/v7/security/getting_started_access_rules.png)
 
 7.  Click **Save**.
 
@@ -76,7 +76,7 @@ Create a rate rule that restricts the flow of traffic from a client to your appl
 4.  In the **Apply rate limit to** option, select **IP address**.
 5.  In the **Rate limit** section, set the **Number of requests** option to *100* and the **Time period** option to **1 minute**.
 
-    [View sample configuration.](/images/security/getting_started_rate_rules.png)
+    [View sample configuration.](/images/v7/security/getting_started_rate_rules.png)
 
 6.  Click **Save**.
 
@@ -94,7 +94,7 @@ application layer attacks.
 6.  Set the **Paranoia Level** option to **1**.
 7.  From the **Policies** section, disable policies that do not apply to your application. For example, you may safely disable **Adv Drupal**, **Adv SharePoint**, and **Adv WordPress** if your application does not leverage those platforms.
 
-    [View sample configuration.](/images/security/getting_started_managed_rule.png)
+    [View sample configuration.](/images/v7/security/getting_started_managed_rule.png)
 
 8.  Click **Save**.
 
@@ -117,7 +117,7 @@ Rule**.
 11. From the **Production Managed Rule** option, select **My Managed Rule**.
 12. From the **Action type** option, select **Alert only**.
 
-    [View sample configuration.](/images/security/getting_started_security_application.png)
+    [View sample configuration.](/images/v7/security/getting_started_application.png)
 
 13. Click **Save**.
 
@@ -153,7 +153,7 @@ Identify trends by reviewing the Threats dashboard's graph and detailed alert da
 
 Ensure that {{ PRODUCT_SECURITY }} is correctly identifying threats by viewing detailed information on detected threats.
 
-1.  Click the <img data-inline-img src="/images/icons/event_log.png" alt="Event log icon" /> (event log) icon from the upper-right hand side of the window.
+1.  Click the <img data-inline-img src="/images/v7/icons/event_log.png" alt="Event log icon" /> (event log) icon from the upper-right hand side of the window.
 2.  Click on each alert to view detailed information on it.
 
     -   Pay special attention to the requested URL. Verify that it is an illegitimate request.

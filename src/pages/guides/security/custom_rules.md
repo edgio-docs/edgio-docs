@@ -526,9 +526,9 @@ You may create, modify, and delete custom rule sets.
 3.  Make the desired changes.
 
     **Key tasks:**
-    -   Delete a variable by clicking <img data-inline-img src="/images/icons/delete-3.png" alt="Delete icon" />  **Delete Variable**.
-    -   Delete a match within a variable by clicking the <img data-inline-img src="/images/icons/delete-3.png" alt="Delete icon" /> icon.
-    -   Delete a condition by clicking <img data-inline-img src="/images/icons/delete-3.png" alt="Delete icon" /> **Delete Condition**.
+    -   Delete a variable by clicking <img data-inline-img src="/images/v7/icons/delete-3.png" alt="Delete icon" />  **Delete Variable**.
+    -   Delete a match within a variable by clicking the <img data-inline-img src="/images/v7/icons/delete-3.png" alt="Delete icon" /> icon.
+    -   Delete a condition by clicking <img data-inline-img src="/images/v7/icons/delete-3.png" alt="Delete icon" /> **Delete Condition**.
 
         <Callout type="info">
 

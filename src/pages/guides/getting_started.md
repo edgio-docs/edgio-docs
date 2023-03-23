@@ -28,12 +28,12 @@ Each website that will run behind {{ PRODUCT }} requires an {{ PRODUCT }} proper
 
 1.  From the {{ PORTAL }}, click **+ New Property**.
 
-    ![+ New Property](/images/basics/property-create-1.png?width=450)
+    ![+ New Property](/images/v7/basics/property-create-1.png?width=450)
 
 2.  In the **Property Name** option, assign a name to your new property (e.g., `My Property`).
 3.  Under the **Hostnames** section, click **+ Add Hostname** and then type the desired hostname (e.g., `www.example.com`).
 
-    ![+ New Property](/images/basics/property-create-2.png?width=450)
+    ![+ New Property](/images/v7/basics/property-create-2.png?width=450)
 
 4.  {{ PRODUCT }} allows you to use your web servers as an origin, fulfill requests through [Serverless Compute](/guides/performance/serverless_compute), or both. 
 
@@ -55,13 +55,13 @@ Each website that will run behind {{ PRODUCT }} requires an {{ PRODUCT }} proper
 
         Your origin configuration should now look similar to this:
 
-        ![+ New Property](/images/basics/property-create-3-a.png?width=450)
+        ![+ New Property](/images/v7/basics/property-create-3-a.png?width=450)
 
-    -   **Framework:** If you plan on integrating a framework and do not plan on using an origin server to serve requests, then delete the `web` origin by clicking the <img data-inline-img src="/images/icons/delete-2.png" alt="Delete" /> icon that appears next to it. 
+    -   **Framework:** If you plan on integrating a framework and do not plan on using an origin server to serve requests, then delete the `web` origin by clicking the <img data-inline-img src="/images/v7/icons/delete-2.png" alt="Delete" /> icon that appears next to it. 
 
         Your origin configuration should now look similar to this:
 
-        ![+ New Property](/images/basics/property-create-3-b.png?width=450)
+        ![+ New Property](/images/v7/basics/property-create-3-b.png?width=450)
 
 5.  Click **Create Property**.
 6.  If you have defined at least one origin configuration, your property will be automatically deployed to the {{ PRODUCT }} network. [Proceed to step 3.](#test-your-property)
@@ -82,13 +82,13 @@ Each website that will run behind {{ PRODUCT }} requires an {{ PRODUCT }} proper
 	--deploy
     ```
 
-    Once you have successfully deployed your property to {{ PRODUCT }}, our CLI provides an edge URL that allows you to preview your site. [Proceed to step 4.](#next-steps)
+    Once you have successfully deployed your property to {{ PRODUCT }}, our CLI provides an edge URL that allows you to preview your site. [Proceed to Next Steps.](#next-steps)
 
 ## Step 3: Test Your Property
 
 Once your property is successfully deployed to the {{ PRODUCT }} network, a URL will appear within the **Latest Production Deployment** section. Follow that link to preview your site behind {{ PRODUCT }}.
 
-![Latest Production Deployment](/images/basics/deployment-latest-production.png)
+![Latest Production Deployment](/images/v7/basics/deployment-latest-production.png)
 
 ## Next Steps {/*next-steps*/}
 
@@ -103,7 +103,7 @@ You are now ready to:
 -   If you plan on collaborating with other team members, then you should [create a team](/guides/basics/collaboration). After which, you will need to either create a property for that team or [transfer the ownership of your new property](/guides/basics/properties#transfer-ownership) to that team.
 -   [Create environments](/guides/basics/environments) to match your software development workflow. Each environment provides site previews that allow QA testers, code reviewers, and other stakeholders to immediately try out newly introduced changes before they are introduced into your production environment. 
 -   Set up {{ PRODUCT }} [Performance.](/guides/performance/getting_started) Learn how to:
-    -   Optimize website performance by defining a [caching policy](/guides/performance/caching), [predictive prefetching](/guides/performance/prefetching), and other edge logic through [Rules](/guides/performance/rules). Alternatively, if you prefer code to UI, then you can take advantage of our [CDN-as-code approach](/guides/performance/cdn_as_code) to CDN configuration.
+    -   Optimize website performance by defining a [caching policy](/guides/performance/caching), [predictive prefetching](/guides/performance/prefetching), and other edge logic through [Rules](/guides/performance/rules). Alternatively, if you prefer code to UI, then you can take advantage of our [CDN-as-code approach](/guides/performance/cdn_as_code/getting_started) to CDN configuration.
     -   Gain performance insights through which you can fine-tune your configuration through our [Observability](/guides/performance/observability/core_web_vitals) solution.
     -   Speed up development by quickly iterating through different variations of your site through our [Traffic Splitting](/guides/performance/traffic_splitting) solution.
 -   Set up {{ PRODUCT }} [Security.](/guides/security) We automatically provide distributed denial-of-service (DDOS) protection to traffic that runs behind {{ PRODUCT }}. Apply additional protection to your web applications and APIs through our Web Application Firewall and {{ PRODUCT_SECURITY_ADVANCED_BOT }} solutions. {{ ACCOUNT_UPGRADE }}

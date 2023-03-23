@@ -16,25 +16,25 @@ RTLD may automatically deliver compressed log data to Sumo Logic by submitting H
     1.  Log in to Sumo Logic.
     2.  Click **Setup Wizard**.
         
-        ![](/images/logs/sumo-logic-1.png)
+        ![](/images/v7/logs/sumo-logic-1.png)
         
     3.  Click **Set Up Streaming Data**.
         
-        ![](/images/logs/sumo-logic-2.png?width=500)
+        ![](/images/v7/logs/sumo-logic-2.png?width=500)
         
     4.  Click **Your Custom App**.
         
-        ![](/images/logs/sumo-logic-3.png)
+        ![](/images/v7/logs/sumo-logic-3.png)
 
         <a id="http-source" />
 
     5.  Click **HTTP Source**.
         
-        ![](/images/logs/sumo-logic-4.png?width=500)
+        ![](/images/v7/logs/sumo-logic-4.png?width=500)
         
     6.  In the **Source Category** option, type the name of the tag that will be applied to CDN log data. This tag may be used to search for CDN log data within Sumo Logic.
         
-        ![](/images/logs/sumo-logic-5.png)
+        ![](/images/v7/logs/sumo-logic-5.png)
         
     7.  Click **Continue**. An HTTP Source for CDN log data will be created.
     8.  Copy the URL associated with this HTTP Source.

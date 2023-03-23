@@ -1,16 +1,17 @@
 import '@docsearch/css';
 import {Metrics} from '@edgio/rum';
 import {MDXEmbedProvider} from 'mdx-embed';
-import {DefaultSeo} from 'next-seo';
 import type {AppProps} from 'next/app';
 import dynamic from 'next/dynamic';
 import {useRouter} from 'next/router';
 import Script from 'next/script';
+import {DefaultSeo} from 'next-seo';
 import NProgress from 'nprogress';
 import * as React from 'react';
 
 import LoadingFallBackPage from 'components/Fallbacks/Loading';
-import {siteConfig} from 'siteConfig';
+// import {VersionProvider} from 'components/versioning';
+import {siteConfig} from 'config/appConfig';
 
 // Universal loading page (used in dynamically imported components) which contains the wrapper of each page
 
@@ -87,7 +88,7 @@ export default function MyApp({Component, pageProps}: AppProps) {
     return () => {
       router.events.off('routeChangeStart', handleRouteChange);
       router.events.off('routeChangeComplete', handleRouteComplete);
-      router.events.on('routeChangeError', () => handleRouteComplete);
+      router.events.off('routeChangeError', () => handleRouteComplete);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);

@@ -1,20 +1,25 @@
-// @ts-nocheck
-import fetch from 'cross-fetch';
-import {useRouter} from 'next/router';
-import {createContext, useContext, useState} from 'react';
-import semverRSort from 'semver/functions/rsort';
+// THIS FILE IS INCOMPLETE/NON-FUNCTIONAL
 
-import {DOCS_PAGES_REPO_URL} from '../../constants';
+import {Router, useRouter} from 'next/router';
+import {
+  createContext,
+  ReactChildren,
+  ReactElement,
+  useContext,
+  useState,
+} from 'react';
 
-export const VERSION_REGEX = /(v\d+.\d+.\d+\/?)/;
+export const VERSION_REGEX = /(v\d\/?)/;
+const latestVersionValue = 'latest';
+const versions = [4, 5, 6];
 
-export const VersionContext = createContext({currentVersion: 'current'});
+export const VersionContext = createContext({
+  currentVersion: latestVersionValue,
+  setCurrentVersion: (version: string) => {},
+});
 
-export const VersionProvider = ({children}) => {
-  const router = useRouter();
-  const [currentVersion, setCurrentVersion] = useState(
-    getVersionFromPath(router.asPath)
-  );
+export const VersionProvider = ({children}: {children: ReactElement}) => {
+  const [currentVersion, setCurrentVersion] = useState(getVersionFromRoute());
   return (
     <VersionContext.Provider value={{currentVersion, setCurrentVersion}}>
       {children}
@@ -24,11 +29,11 @@ export const VersionProvider = ({children}) => {
 
 export default function useVersioning() {
   let {currentVersion, setCurrentVersion} = useContext(VersionContext);
-  const [versions, setVersions] = useState<string[]>([]);
 
   const {asPath} = useRouter();
 
-  const isLatestVersion = (version = currentVersion) => version === versions[0];
+  const isLatestVersion = (version = currentVersion) =>
+    version === versions[0].toString();
 
   const matchVersionInRoute = asPath.match(VERSION_REGEX);
 
@@ -42,7 +47,6 @@ export default function useVersioning() {
 
   return {
     versions,
-    setVersions,
     currentVersion,
     setCurrentVersion,
     isLatestVersion,
@@ -75,26 +79,12 @@ export default function useVersioning() {
   };
 }
 
-export function getVersionFromPath(path: string) {
-  const matchVersionInRoute = path.match(VERSION_REGEX);
-
+// INCOMPLETE
+export function getVersionFromRoute() {
+  const matchVersionInRoute = ''.match(VERSION_REGEX);
   if (matchVersionInRoute) {
     return matchVersionInRoute[0].slice(0, -1);
   }
 
-  return 'current';
-}
-
-export async function getVersions() {
-  let url;
-
-  if (typeof window !== 'undefined') {
-    url = '/docs/versions';
-  } else {
-    url = `${DOCS_PAGES_REPO_URL}/versions.csv`;
-  }
-
-  const verRes = await fetch(url);
-
-  return semverRSort((await verRes.text()).split(',').map((ver) => ver.trim()));
+  return latestVersionValue;
 }

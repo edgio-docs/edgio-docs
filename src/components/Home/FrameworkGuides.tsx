@@ -26,6 +26,7 @@ import {StyledFeatureSection} from './FeatureSection';
 import SectionHeader from './SectionHeader';
 
 import {IconArrow} from 'components/Icon/IconArrow';
+import useConditioning from 'utils/hooks/useConditioning';
 
 const StyledComp = styled(StyledFeatureSection)`
   .icon {
@@ -207,6 +208,9 @@ export default function FrameworkGuides() {
     },
   ];
   const routes = [routesCol1, routesCol2, routesCol3];
+  const {
+    version: {toVersionedPath},
+  } = useConditioning();
 
   return (
     <StyledComp>
@@ -235,7 +239,9 @@ export default function FrameworkGuides() {
                     <div className="dot" />
                   )}
                   <Link
-                    href={`/guides/sites_frameworks/getting_started/${path}`}>
+                    href={toVersionedPath(
+                      `sites_frameworks/getting_started/${path}`
+                    )}>
                     {title}
                   </Link>
                 </li>

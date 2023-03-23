@@ -1,49 +1,51 @@
-// @ts-nocheck
-
-import {ExpansionPanelDetails} from '@material-ui/core';
 import {MDXProvider} from '@mdx-js/react';
 import {useRouter} from 'next/router';
 import * as React from 'react';
 
-import {siteConfig} from '../../siteConfig';
+import {MDXComponents} from '../../components/MDX/MDXComponents';
+import {siteConfig} from '../../config/appConfig';
 import Docs from '../Docs';
 import DocsFooter from '../Docs/DocsFooter';
-import {MDXComponents} from '../MDX/MDXComponents';
 import Seo from '../Seo';
 
+import useConditioning from 'utils/hooks/useConditioning';
+import {MDHeading, MDHeadingsList} from 'utils/Types';
+
 export function MarkdownPage<
-  T extends {title: string; status?: string} = {
+  T extends {title: string; status?: string; version?: string} = {
     title: string;
     status?: string;
+    version?: string;
   }
->({children, meta}: MarkdownProps<T>) {
-  const {route} = useRouter();
-
-  // const {route, nextRoute, prevRoute} = useRouteMeta();
+>({children, meta, headings}: MarkdownProps<T>) {
+  const {route, query} = useRouter();
+  const {slug} = query;
+  const {
+    version: {latestVersion},
+  } = useConditioning();
   const title = meta.title || route || '';
-  // const description = meta.description || route?.description || '';
+  const description = meta.description || siteConfig.tagline;
+  const version = meta.version || latestVersion;
 
   if (!route) {
     console.error('This page was not added to one of the sidebar JSON files.');
   }
 
-  const isHomePage = route === '/';
+  const isHomePage =
+    route === '/' ||
+    !!(slug && slug.length === 1 && slug[0].match(/^v\d+$/) !== null);
 
-  const tocHeadings = React.Children.toArray(children)
-    .filter((child) => {
-      if (child.props?.mdxType) {
-        return ['h1', 'h2', 'h3'].includes(child.props.mdxType);
-      }
-      return false;
-    })
-    .map((child: any) => ({
-      url: `#${child.props.id}`,
-      depth:
-        (child.props?.mdxType &&
-          parseInt(child.props.mdxType.replace('h', ''), 0)) ??
-        0,
-      text: child.props.children,
-    }));
+  const tocHeadings = [];
+
+  if (headings) {
+    tocHeadings.push(
+      ...headings.map((heading: MDHeading) => ({
+        url: `#${heading.id}`,
+        depth: heading.rank,
+        text: heading.title,
+      }))
+    );
+  }
 
   if (tocHeadings.length > 0) {
     tocHeadings.unshift({
@@ -55,7 +57,7 @@ export function MarkdownPage<
 
   return (
     <MDXProvider components={MDXComponents}>
-      <Seo {...{isHomePage, title, description: siteConfig.tagline}} />
+      <Seo {...{isHomePage, title, description, version}} />
       {isHomePage ? (
         children
       ) : (
@@ -71,4 +73,5 @@ export function MarkdownPage<
 export interface MarkdownProps<Frontmatter> {
   meta: Frontmatter & {description?: string};
   children?: React.ReactNode;
+  headings?: MDHeadingsList;
 }

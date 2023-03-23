@@ -4,8 +4,8 @@ import {nextRoutes} from '@edgio/next';
 import {Downloader as GithubDownloader} from 'github-download-directory';
 import semverMaxSatisfying from 'semver/ranges/max-satisfying';
 
-import {archiveRoutes} from './layer0/plugins/ArchiveRoutes';
-import redirects from './layer0/redirects';
+import {archiveRoutes} from './edgio/plugins/ArchiveRoutes';
+import redirects from './edgio/redirects';
 // import prerenderRequests from './layer0/prerender';
 
 const key = new CustomCacheKey().excludeAllQueryParametersExcept('query');

@@ -24,6 +24,11 @@
   --docsearch-searchbox-height: 36px;
   --docsearch-spacing: 6px;
   --header-height: 48px;
+
+  --select-bg: #0f1216;
+  --select-border-color: #0094d6;
+  --select-item-selected-bg: #0e2430;
+  --select-item-hover-bg: #0f1e27;
 }
 
 :root.light {
@@ -60,6 +65,11 @@
   --callout-warning: #ffc800;
   --callout-danger: #f45263;
   --table-header-bg: #f0f0f0;
+
+  --select-bg: #ffffff;
+  --select-border-color: #0094d6;
+  --select-item-selected-bg: #e5f4fb;
+  --select-item-hover-bg: #f2fafd;
 
   /* Light's on... */
   --dark-theme-display: none;
@@ -112,6 +122,11 @@
   --callout-warning: #ffc800;
   --callout-danger: #f45263;
   --table-header-bg: var(--colors-black3);
+
+  --select-bg: #0f1216;
+  --select-border-color: #0094d6;
+  --select-item-selected-bg: #0e2430;
+  --select-item-hover-bg: #0f1e27;
 
   /* Light's off... */
   --dark-theme-display: flex;

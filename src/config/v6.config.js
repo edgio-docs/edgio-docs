@@ -1,3 +1,7 @@
-const config = {};
+import {default as base} from './base.config';
 
-export default config;
+const APP_DOMAIN = `app.${DOMAIN_LEGACY}`;
+
+export default {
+  APP_DOMAIN,
+};

@@ -1,5 +1,6 @@
 import {default as base} from './base.config';
 
+const APP_DOMAIN = `app.${DOMAIN_LEGACY}`;
 const NODE_VERSION = '14.x';
 
 const SYSTEM_REQUIREMENTS = `## System Requirements {/*system-requirements*/}
@@ -19,6 +20,7 @@ ${base.INSTALL_CLI}
   `.trim();
 
 export default {
+  APP_DOMAIN,
   NODE_VERSION,
   SYSTEM_REQUIREMENTS,
   SYSTEM_REQUIREMENTS_H3,

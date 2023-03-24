@@ -20,7 +20,7 @@ ${base.SIGN_UP}
 ${base.INSTALL_CLI}
   `.trim();
 
-export default {
+const config = {
   DOMAIN_LEGACY,
   APP_DOMAIN,
   NODE_VERSION,
@@ -28,3 +28,5 @@ export default {
   SYSTEM_REQUIREMENTS_H3,
   PREREQ,
 };
+
+export default config;

@@ -45,8 +45,8 @@ export default function Image({
   } else {
     return (
       <StyledComp {...{...props}}>
-        {/* eslint-disable-next-line @next/next/no-img-element */}
         <a href={src} target="_blank" rel="noopener noreferrer">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             {...{
               src,

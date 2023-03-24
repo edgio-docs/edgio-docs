@@ -1,4 +1,4 @@
-export default {
+const nav = {
   title: 'guides',
   path: '/guides',
   routes: [
@@ -473,3 +473,4 @@ export default {
     },
   ],
 };
+export default nav;

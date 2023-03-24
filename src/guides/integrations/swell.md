@@ -139,7 +139,7 @@ Refer to the [Deployments](/guides/basics/deployments) guide for more informatio
 
 1. To preserve packages that are imported in the `modules` directories required in the generating pages on the server, update `package.json` as follows:
 
-```json ins={4-10}
+```json ins="4-10"
 "dependencies": {
   "@nuxtjs/sitemap": "2.4.0",
   "@nuxt/core": "2.15.7",
@@ -155,7 +155,7 @@ Refer to the [Deployments](/guides/basics/deployments) guide for more informatio
 
 2. To include the `config` and `modules` directories in the production build, update your `{{ CONFIG_FILE }}` as follows:
 
-```js ins={10-14}
+```js ins="10-14"
 'use strict'
 
 // This file was automatically added by {{ FULL_CLI_NAME }} deploy.
@@ -176,7 +176,7 @@ module.exports = {
 
 3. Update the `routes.js` as following to enable ISG with your Swell app:
 
-```js ins={15-25}
+```js ins="15-25"
 
 // This file was added by {{ FULL_CLI_NAME }} init.
 // You should commit this file to source control.

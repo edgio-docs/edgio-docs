@@ -86,7 +86,7 @@ import json from '@rollup/plugin-json';
 
 ... and make the following changes to the `server` config ...
 
-```js filename='rollup.config.js' ins={2}
+```js filename="rollup.config.js" ins="2"
 plugins: [
   json(),
   // Rest of the plugins
@@ -150,7 +150,7 @@ new Prefetcher().route()
 
 To prefetch data when links become visible in the viewport, wrap the link in the `Prefetch` component from `{{ PACKAGE_NAME }}/svelte`
 
-```html ins={2,5,7}
+```html ins="2,5,7"
 <script>
   import { Prefetch } from '{{ PACKAGE_NAME }}/svelte'
 </script>

@@ -100,7 +100,7 @@ We will now create a rule that applies a different caching policy for requests w
 
           The `matches (simple)` operator supports named parameters. A named parameter (e.g., `:path`) represents a URL segment. Appending a `*` matches everything that follows that URL segment.
 
-        <Callout type="info">
+        </Callout>
 
         Your condition should now look like this:
 

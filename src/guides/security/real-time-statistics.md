@@ -96,7 +96,9 @@ A brief description is provided for each status code below.
 | 404 per second        | Represents the total number of `404` status codes that occur per second. This status code indicates that the requested asset could not be found.                                                                                                                              |
 | 4xx per second        | Represents the total number of `4xx` status codes (e.g., `400`, `401`, `402`, `405`, etc.) that occur per second. This status code indicates that the requested asset was not delivered to the client.                    |
 | 5xx per second        | Represents the total number of `5xx` status codes (e.g., `500`, `501`, `502`, etc.) that occur per second.                                                                                                                             |
-| Other per second      | Represents the total occurrences for all other status codes will be reported in the graph.                                                                                                                                                                                                                                                         |
+| Other per second      | Represents the total occurrences for all other status codes will be reported in the graph.  |
+
+
 <Callout type="info">
 
   The color-coded list of status codes provided directly below the graph only affect what is

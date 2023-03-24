@@ -318,7 +318,7 @@ new Router()
 ```
 -->
 
-#### Cacheable Request Body Size {/*cacheable-request-body-size*)
+#### Cacheable Request Body Size {/*cacheable-request-body-size*/}
 
 Restricts caching to requests whose body does not exceed the specified file size (Kb).
 

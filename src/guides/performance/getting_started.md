@@ -36,13 +36,13 @@ We will now create a rule that applies a default caching policy to all traffic f
 
     {{ ENV_NAV }} **Rules**.
 
-    ![Rules landing page](/images/performance/rules-blank.png?width=450)
+    ![Rules landing page](/images/v7/performance/rules-blank.png?width=450)
 
 2.  Add a rule by clicking **+ Add Rule**.
 
     <Callout type="info">
 
-      You may add conditions and features to a rule. A condition identifies a set of requests and a feature defines an action that will be applied to them.
+      You may add conditions and features to a rule. A condition identifies a set of requests and a feature defines the action that will be applied to them.
 
       We will not add a condition to this rule. A rule without a condition applies to all requests. 
 
@@ -114,6 +114,8 @@ We will now create a rule that applies a different caching policy for requests w
 
         ![Add Condition](/images/v7/performance/rules-add-condition.png?width=450)
 
+    5.  Click **Add Condition**.
+
 3.  Define how long our CDN will cache content for `200 OK` responses to the requests identified in the previous step.
 
     1.  Click **+ Add Feature**.
@@ -155,4 +157,4 @@ You are now ready to:
 -   Fine-tune your configuration by adding rules and then redeploying your property. 
 -   Once you are ready to serve production traffic through {{ PRODUCT }}, update your site's DNS to point to our service.
 
-    [Learn more.](/guides/hostnames_and_origins#serving-traffic-through)
+    [Learn more.](/guides/basics/hostnames_and_origins#serving-traffic-through)

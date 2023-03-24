@@ -28,15 +28,21 @@ Deploying your web application behind {{ PRODUCT }} optimizes the delivery of yo
 
 Rules determine how requests to a specific environment will be processed by {{ PRODUCT }}. 
 
+#### Rule #1: Default Caching Policy
+
 We will now create a rule that applies a default caching policy to all traffic for the `production` environment.
 
-1.  From the {{ PORTAL_LINK }}, load the **Rules** page.
+1.  Load the **Rules** page.
 
     {{ ENV_NAV }} **Rules**.
+
+    ![Rules landing page](/images/performance/rules-blank.png?width=450)
 
 2.  Add a rule by clicking **+ Add Rule**.
 
     <Callout type="info">
+
+      You may add conditions and features to a rule. A condition identifies a set of requests and a feature defines an action that will be applied to them.
 
       We will not add a condition to this rule. A rule without a condition applies to all requests. 
 
@@ -50,13 +56,13 @@ We will now create a rule that applies a default caching policy to all traffic f
 
         <Callout type="tip">
 
-          Typing automatically filters this list. If you can't remember the name of the feature, type a keyword (e.g., `Age`) to filter the list to relevant results.
+          Typing automatically filters this list. If you can't remember the name of the feature, type a keyword (e.g., `Age`) to filter the list for relevant results.
 
         </Callout>
 
     3.  Set the duration to 5 minutes. 
 
-        ![Add Feature](/images/v7/performance/rules-add-feature.png)
+        ![Add Feature](/images/v7/performance/rules-add-feature.png?width=450)
 
     4.  Click **Add Feature**.
 
@@ -78,7 +84,7 @@ We will now create a rule that applies a default caching policy to all traffic f
 
     3.  Set the duration to 1 day for `200 OK` responses.
 
-        ![Add Feature](/images/v7/performance/rules-add-feature-2.png)
+        ![Add Feature](/images/v7/performance/rules-add-feature-2.png?width=450)
 
     4.  Click **Add Feature**.
 
@@ -86,7 +92,9 @@ We will now create a rule that applies a default caching policy to all traffic f
 
         ![Rule with 1 Feature](/images/v7/performance/rules-rule-with-2-features.png)
 
-We will now create a rule that applies a different caching policy for requests whose relative path starts with `/news/`. In order to allow this rule to override your default caching policy, it needs to be positioned below it.
+#### Rule #2: Path-Specific Caching Policy
+
+We will now create a rule that applies a different caching policy for requests whose relative path starts with `/news/`. In order to allow this rule to override your default caching policy, it needs to be positioned below your initial rule.
 
 1.  Add a rule by clicking **+ Add Rule**.
 2.  Define the type of requests to which this rule will be applied.
@@ -104,7 +112,7 @@ We will now create a rule that applies a different caching policy for requests w
 
         Your condition should now look like this:
 
-        ![Add Condition](/images/v7/performance/rules-add-condition.png)
+        ![Add Condition](/images/v7/performance/rules-add-condition.png?width=450)
 
 3.  Define how long our CDN will cache content for `200 OK` responses to the requests identified in the previous step.
 
@@ -115,7 +123,7 @@ We will now create a rule that applies a different caching policy for requests w
 
         Your rule should now look similar to this:
 
-        ![Rule with 1 Feature](/images/v7/performance/rules-2-rules.png)
+        ![Rule with 1 Feature](/images/v7/performance/rules-2-rules.png?width=450)
 
 ## Deploying Your Property {/* deploy-to */}
 
@@ -123,7 +131,7 @@ Evaluate site performance and QA functionality by deploying your property to {{ 
 
 1.  Click **Deploy Changes** from any page within the `production` environment.
 
-    ![Deploy Changes](/images/v7/performance/rules-deploy-changes)
+    ![Deploy Changes](/images/v7/performance/rules-deploy-changes.png?width=450)
 
 2.  When prompted, provide a brief description for this change and then click **Deploy Changes**.
 
@@ -133,12 +141,18 @@ Evaluate site performance and QA functionality by deploying your property to {{ 
 
 4.  View the deployment by clicking on the version number (e.g., `#2`) for the latest deployment. 
 
-    ![View Deployment](/images/v7/performance/deployments-version-number.png)
+    ![View Deployment](/images/v7/performance/deployments-version-number.png?width=450)
 
 5.  Preview your site by clicking the second edge link displayed under the **URL** section.
 
-    ![Preview Site](/images/v7/performance/deployments-second-url.png)
+    ![Preview Site](/images/v7/performance/deployments-second-url.png?width=450)
 
-Assess performance and caching behavior through [Edge Insights](/guides/performance/observability/edge_insights)  and [Core Web Vitals](/guides/performance/observability/core_web_vitals). Fine-tune your configuration by adding routes and then redeploying your property. Once you are ready to serve production traffic through {{ PRODUCT }}, update your site's DNS to point to our service.
+Congratulations on deploying a caching policy to {{ PRODUCT }}! 
 
-[Learn more.](/guides/hostnames_and_origins#serving-traffic-through)
+You are now ready to:
+
+-   Assess performance and caching behavior through [Edge Insights](/guides/performance/observability/edge_insights)  and [Core Web Vitals](/guides/performance/observability/core_web_vitals). 
+-   Fine-tune your configuration by adding rules and then redeploying your property. 
+-   Once you are ready to serve production traffic through {{ PRODUCT }}, update your site's DNS to point to our service.
+
+    [Learn more.](/guides/hostnames_and_origins#serving-traffic-through)

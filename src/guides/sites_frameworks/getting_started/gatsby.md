@@ -6,25 +6,30 @@ This guide shows you how to deploy an [Gatsby](https://www.gatsbyjs.com/) applic
 
 <Video src="https://www.youtube.com/watch?v=ici9j6oF_5E" />
 
-## Example {/*example*/}
+## Example {/* example */}
 
 <ExampleButtons
   title="Gatsby SSG"
   siteUrl="https://edgio-community-examples-gatsby-live.layer0-limelight.link/"
-  repoUrl="https://github.com/edgio-docs/edgio-gatsby-example" 
-  deployFromRepo />
+  repoUrl="https://github.com/edgio-docs/edgio-gatsby-example"
+  deployFromRepo
+/>
 
-## Connector {/*connector*/}
+## Connector {/* connector */}
 
 This framework has a connector developed for {{ PRODUCT }}. See [Connectors](/guides/sites_frameworks/connectors) for more information.
 
-<ButtonLink variant="stroke" type="code" withIcon={true} href="https://github.com/edgio-docs/edgio-connectors/tree/main/edgio-gatsby-connector">
+<ButtonLink
+  variant="stroke"
+  type="code"
+  withIcon={true}
+  href="https://github.com/edgio-docs/edgio-connectors/tree/main/edgio-gatsby-connector">
   View the Connector Code
 </ButtonLink>
 
 {{ PREREQ }}
 
-## Getting Started {/*getting-started*/}
+## Getting Started {/* getting-started */}
 
 If you don't already have a Gatsby application, you can create one using:
 
@@ -49,7 +54,7 @@ This will automatically add all of the required dependencies and files to your p
 - `{{ CONFIG_FILE }}`
 - `routes.js` - A default routes file that sends all requests to your Gatsby static site. Update this file to add caching or proxy some URLs to a different origin.
 
-## Running Locally {/*running-locally*/}
+## Running Locally {/* running-locally */}
 
 You can test the integration of the {{ PRODUCT_PLATFORM }} router with your gatsby site locally using:
 
@@ -57,7 +62,7 @@ You can test the integration of the {{ PRODUCT_PLATFORM }} router with your gats
 {{ FULL_CLI_NAME }} dev
 ```
 
-## Deploying {/*deploying*/}
+## Deploying {/* deploying */}
 
 Deploy your app to the {{ PRODUCT_PLATFORM }} by running the following command in your project's root directory:
 
@@ -67,7 +72,7 @@ Deploy your app to the {{ PRODUCT_PLATFORM }} by running the following command i
 
 See [Deployments](/guides/basics/deployments) guide for more information.
 
-## Routing {/*routing*/}
+## Routing {/* routing */}
 
 The default `routes.js` file created by `{{ FULL_CLI_NAME }} init` sends all requests to the Gatsby static site.
 
@@ -75,29 +80,30 @@ The default `routes.js` file created by `{{ FULL_CLI_NAME }} init` sends all req
 // This file was added by {{ FULL_CLI_NAME }} init.
 // You should commit this file to source control.
 
-const { Router } = require('{{ PACKAGE_NAME }}/core/router')
-const { gatsbyRoutes } = require('{{ PACKAGE_NAME }}/gatsby')
+const {Router} = require('{{ PACKAGE_NAME }}/core/router');
+const {gatsbyRoutes} = require('{{ PACKAGE_NAME }}/gatsby');
 
-module.exports = new Router().use(gatsbyRoutes)
+module.exports = new Router().use(gatsbyRoutes);
 ```
 
-### Adding routes to a different origin {/*adding-routes-to-a-different-origin*/}
+### Adding routes to a different origin {/* adding-routes-to-a-different-origin */}
 
 To proxy some URLs to a different origin, you need first to configure that origin in your `{{ CONFIG_FILE }}` file.
 
 For example:
 
-```js ins={4-9}
+```js ins="4-9"
 // {{ CONFIG_FILE }}
 
 module.exports = {
   backends: {
     legacy: {
       domainOrIp: process.env.LEGACY_BACKEND_DOMAIN || 'legacy.my-site.com',
-      hostHeader: process.env.LEGACY_BACKEND_HOST_HEADER || 'legacy.my-site.com',
+      hostHeader:
+        process.env.LEGACY_BACKEND_HOST_HEADER || 'legacy.my-site.com',
     },
   },
-}
+};
 ```
 
 Using environment variables here allows you to configure different legacy domains for each {{ PRODUCT }} environment.
@@ -106,17 +112,17 @@ Then you can add routing and caching rules to your `routes.js` file. Note that g
 
 For example:
 
-```js ins={10-12}
+```js ins="10-12"
 // routes.js
 
-const { Router } = require('{{ PACKAGE_NAME }}/core/router')
-const { gatsbyRoutes } = require('{{ PACKAGE_NAME }}/gatsby')
+const {Router} = require('{{ PACKAGE_NAME }}/core/router');
+const {gatsbyRoutes} = require('{{ PACKAGE_NAME }}/gatsby');
 
 module.exports = new Router()
-  .get('/some/legacy/url/:p', ({ proxy }) => {
-    proxy('legacy')
+  .get('/some/legacy/url/:p', ({proxy}) => {
+    proxy('legacy');
   })
-  .use(gatsbyRoutes)
+  .use(gatsbyRoutes);
 ```
 
 Check [CDN-as-code](/guides/performance/cdn_as_code) and [Caching](/guides/performance/caching) guides for more information.

@@ -83,7 +83,9 @@ Each website that will run behind {{ PRODUCT }} requires an {{ PRODUCT }} proper
       --deploy
     ```
 
-    Once you have successfully deployed your property to {{ PRODUCT }}, our CLI provides an edge URL that allows you to preview your site. [Proceed to Next Steps.](#next-steps)
+    Replace `<PROPERTY>` with the name of the property defined in step 2. You should only use lower-case characters and replace spaces with dashes (e.g., `my-property`). 
+
+    Once you have successfully deployed your property to {{ PRODUCT }}, our CLI provides an edge URL that allows you to preview your site. Learn how to [get started with CDN-as-code.](/guides/performance/cdn_as_code/getting_started)
 
 ## Step 3: Test Your Property
 

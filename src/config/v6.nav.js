@@ -263,10 +263,6 @@ export default {
               path: 'sites_frameworks/getting_started/mkdocs',
             },
             {
-              title: 'Nx',
-              path: 'sites_frameworks/getting_started/nx',
-            },
-            {
               title: 'Next.js',
               path: 'sites_frameworks/getting_started/next',
             },

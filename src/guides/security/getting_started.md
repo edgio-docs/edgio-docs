@@ -102,8 +102,8 @@ application layer attacks.
 
 A Security Application configuration defines the set of traffic that will be inspected and identifies the security policy that will be applied to it. Instructions on how to create a Security Application configuration for all of your site's traffic is provided below.
 
-1.  Navigate to the **Security Applications** page.
-    {{ SECURITY_NAV }} **Security Applications**.
+1.  Navigate to the **Security Application Manager** page.
+    {{ SECURITY_NAV }} **Security Apps**.
 2.  Click **Add New**.
 3.  In the **Name** option, type *My Security Application*.
 4.  From the **Rules **section, click **Access Rule**.

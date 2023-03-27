@@ -80,7 +80,11 @@ Use the following information when assessing whether there is a gap in the seque
     -   [JSON payload (date-stamp)](/guides/logs/rtld/log_fields_rtld_cdn#datestamp)
 -   If a software agent stops running, then it will be assigned a new unique ID.
 
-If log data uses either the JSON Array or JSON Lines log format, then you will be unable to use the JSON payload to check for sequence number gaps. This means that you will be unable to check for sequence gaps when delivering log data to your web server(s), Splunk Enterprise, Sumo Logic, Datadog, or New Relic.
+<Callout type="important">
+
+  If log data uses either the CSV, JSON Array, or JSON Lines log format, then it will not contain information that uniquely identifies a set of log data. If log data using one of these formats is delivered to a destination other than AWS S3, Azure Blob Storage, or Google Cloud Storage, then there is no way to check for gaps in sequence numbers when attempting to [identify missing log data](/guides/logs/rtld/log_data_verification#checking-for-sequence-number-gaps).
+
+</Callout>
 
 ### Log File Example {/*log-file-example*/}
 

@@ -34,6 +34,11 @@ Once you have set up a basic configuration, you are ready to take full advantage
         -   Determine how your content is routed through our network.
         -   Define when web browsers should use [predictive prefetching](/guides/performance/prefetching) and the content that will be delivered before it is requested by your users.
     -   Gain performance insights through which you can fine-tune your configuration through our [Observability](/guides/performance/observability) solution.
+
+<!--
     -   Speed up development by quickly iterating through different variations of your site through our [Traffic Splitting](/guides/performance/traffic_splitting) solution.
+
+-->
+
 -   [{{ PRODUCT_SECURITY }}.](/guides/security) We automatically provide distributed denial-of-service (DDOS) protection to traffic that runs behind {{ PRODUCT }}. Apply additional protection to your web applications and APIs through our Web Application Firewall and [Managed Bot Defense](/guides/security/managed_bot_defense) solutions.
 -   [{{ PRODUCT_PLATFORM }}.](/guides/sites_frameworks/getting_started) If you are currently using a JavaScript framework, then you can improve your website's performance by using our serverless workers to quickly render server-side content in a scalable manner.

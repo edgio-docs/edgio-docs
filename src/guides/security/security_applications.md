@@ -488,8 +488,8 @@ configurations.
     configuration to be applied across our entire network.
 
 **To create a Security Application configuration**
-1.  Navigate to the **Security Applications** page.
-    {{ SECURITY_NAV }} **Security Applications**.
+1.  Navigate to the **Security Application Manager** page.
+    {{ SECURITY_NAV }} **Security Apps**.
 2.  Click **Add New**.
 3.  In the **Name** option, type the unique name by which this
     Security Application configuration will be identified.
@@ -776,8 +776,8 @@ configurations.
 15. Click **Save Changes**.
 
 **To reorder Security Application configurations**
-1.  Navigate to the **Security Applications** page.
-    {{ SECURITY_NAV }} **Security Applications**.
+1.  Navigate to the **Security Application Manager** page.
+    {{ SECURITY_NAV }} **Security Apps**.
 2.  Drag the desired
     configuration's <Image inline src="/images/v7/icons/drag.png" /> icon
     to the desired position.
@@ -800,8 +800,8 @@ configurations.
 </Callout>
 
 **To modify a Security Application configuration**
-1.  Navigate to the **Security Applications** page.
-    {{ SECURITY_NAV }} **Security Applications**.
+1.  Navigate to the **Security Application Manager** page.
+    {{ SECURITY_NAV }} **Security Apps**.
 2.  Click on the desired Security Application configuration.
 3.  Make the desired changes.
 4.  Click **Save**.
@@ -809,8 +809,8 @@ configurations.
 6.  Click **Save Changes**.
 
 **To delete a Security Application configuration**
-1.  Navigate to the **Security Applications** page.
-    {{ SECURITY_NAV }} **Security Applications**.
+1.  Navigate to the **Security Application Manager** page.
+    {{ SECURITY_NAV }} **Security Apps**.
 2.  Click on the desired Security Application configuration.
 3.  Click **Delete Security Application**.
 4.  Type *DELETE*.

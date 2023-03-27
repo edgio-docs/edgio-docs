@@ -2145,7 +2145,7 @@ This feature allows our edge servers to rewrite the URL without performing a tra
 
 **Default Behavior:** By default, requests are not rewritten.
 
-## Rule variables {/*rule-variables*/}
+## Rule Variables {/*rule-variables*/}
 
 Rule variables retrieves request and response metadata. Use this metadata to dynamically alter a request or a response.
 

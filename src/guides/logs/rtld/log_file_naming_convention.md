@@ -41,11 +41,8 @@ Each of the above variables are described below.
 -   `<LOG TYPE>`**:** Represents the type of log data.
 
     -   **RTLD CDN:** This variable is always set to `wpc`.
-
-<!--
     -   **RTLD Rate Limiting:** This variable is always set to `rl`.
     -   **RTLD WAF:** This variable is always set to `waf`.
--->
 
 -   `<AN>`**:** Represents your CDN account number (e.g., 0001).
 -   `<PROFILE ID>`**:** Represents the system-defined ID for your Real-Time Log Delivery configuration.

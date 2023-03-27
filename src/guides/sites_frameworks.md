@@ -14,15 +14,13 @@ We also support static page generation:
 
 {{ PRODUCT }} {{ PRODUCT_PLATFORM }} provides over [40 popular frameworks integrations](/guides/sites_frameworks/getting_started) through which you can deploy your websites and applications to {{ PRODUCT }}. Getting started with {{ PRODUCT }} {{ PRODUCT_PLATFORM }} involves initializing your {{ PRODUCT }} property through our CLI. Our CLI will then automatically detect your framework and configure your app accordingly.
 
-<!--
-
+<Condition version="<=6">
 <Callout type="tip">
 
   If you are still planning or developing your website or application, then consider using our [Traffic Splitting](/guides/performance/traffic_splitting) capability to migrate to a Jamstack site or application in stages.
 
 </Callout>
-
--->
+</Condition>
 
 ## Compute Regions {/*regions*/}
 

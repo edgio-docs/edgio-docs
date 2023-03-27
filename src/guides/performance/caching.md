@@ -26,11 +26,11 @@ Define a caching policy through response headers, rules, or the cache function (
 ### Response Headers
 
 The amount of time that an asset will be cached on our edge servers is determined by the response headers returned by the origin server when a client requests it. By default, our CDN honors the following response headers:
--   **Cache-Control: private|Prevents our edge servers from caching the response.|:** 
--   **Cache-Control: no-store|Prevents our edge servers from caching the response.|:** 
--   **Cache-Control: no-cache|Prevents our edge servers or the client from caching the response.|:** 
--   **Pragma: no-cache|Prevents our edge servers or the client from caching the response.|:** 
--   **Cache-Control: s-maxage:**Determines the requested content's TTL on our edge servers The length of time that the requested content will be cached on our network.
+-   **Cache-Control: private:** Prevents our edge servers from caching the response.
+-   **Cache-Control: no-store:** Prevents our edge servers from caching the response.
+-   **Cache-Control: no-cache:**Prevents our edge servers or the client from caching the response.
+-   **Pragma: no-cache:** Prevents our edge servers or the client from caching the response.
+-   **Cache-Control: s-maxage:** Determines the requested content's TTL on our edge servers The length of time that the requested content will be cached on our network.
 
     <Callout type="info">
 
@@ -124,10 +124,9 @@ Use the [cache](/docs/api/core/classes/_router_responsewriter_.responsewriter.ht
 - Value of `host` request header
 - Complete request URL, including the query parameters (this can be customized)
 - Value of `accept-encoding` request header
-
-<!--
+<Condition version="<=6">
 - Name of the destination when [A/B testing](/guides/performance/traffic_splitting/a_b_testing) is in effect
--->
+</Condition>
 
 When [POST and other non-GET/HEAD](#caching-responses-for-post-and-other-non-gethead-requests) methods caching is enabled, {{ PRODUCT_NAME }} automatically adds the following to the cache key:
 

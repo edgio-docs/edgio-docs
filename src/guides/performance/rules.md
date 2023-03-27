@@ -249,7 +249,7 @@ TODO: **Is this needed now that we have autodraft?**
 
 -   Apply your changes to the current environment by clicking **Deploy Changes**.
 -   Add a comment or a note to a rule by clicking **Add Comments** and then typing the desired message. Comments or notes are  informational and do not affect your configuration. 
--   An alternative method for setting up your configuration is [CDN-as-code](/guides/performance/cdn_as_code). CDN-as-code is a developer-oriented solution that provides more flexibility during CDN setup. You may create a base CDN-as-code configuration by setting up your rules through the {{ PORTAL_LINK }}, [exporting them as EdgeJS code](#export-rules-edgejs), and then pasting that code into your {{ ROUTES_FILE }} file. 
+-   An alternative method for setting up your configuration is [CDN-as-code](/guides/performance/cdn_as_code). CDN-as-code is a developer-oriented solution that provides more flexibility during CDN setup. You may create a base CDN-as-code configuration by setting up your rules through the {{ PORTAL_LINK }}, [exporting them as {{ EDGEJS_LABEL }} code](#export-rules-edgejs), and then pasting that code into your {{ ROUTES_FILE }} file. 
 
     <Callout type="info">
 
@@ -297,13 +297,13 @@ TODO: **Is this needed now that we have autodraft?**
 2.  Click the <Image inline src="/images/v7/icons/delete-2.png" alt="" /> icon next to the desired rule.
 3.  Confirm the deletion by clicking **Delete Rules**.
 
-**To export your rules as EdgeJS code** <a id="export-rules-edgejs" /> 
+**To export your rules as {{ EDGEJS_LABEL }} code** <a id="export-rules-edgejs" /> 
 
 1.  Load the **Rules** page.
     1.  From the {{ PORTAL_LINK }}, select the desired property.
     2.  From the left-hand pane, select the desired environment from under the **Environments** section.
     3.  From the left-hand pane, select **Rules**. 
-2.  Click **Export** and then select **EdgeJS** to display your rules as a CDN-as-code (EdgeJS) configuration. 
+2.  Click **Export** and then select **{{ EDGEJS_LABEL }}** to display your rules as a CDN-as-code ({{ EDGEJS_LABEL }}) configuration. 
 3.  Copy the code by clicking the <Image inline src="/images/v7/icons/copy-to-clipboard.png" alt="" /> icon.
 4.  Optional. Paste your code into your {{ ROUTES_FILE }}.
 

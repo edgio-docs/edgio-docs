@@ -1,4 +1,4 @@
-export default {
+const nav = {
   title: 'guides',
   path: '/guides',
   routes: [
@@ -263,10 +263,6 @@ export default {
               path: 'sites_frameworks/getting_started/mkdocs',
             },
             {
-              title: 'Nx',
-              path: 'sites_frameworks/getting_started/nx',
-            },
-            {
               title: 'Next.js',
               path: 'sites_frameworks/getting_started/next',
             },
@@ -473,3 +469,4 @@ export default {
     },
   ],
 };
+export default nav;

@@ -18,7 +18,7 @@ Get started with CDN-as-code by:
 
     </Callout>
 
-2.  Use the {{ PRODUCT }} CLI to initialize your property. 
+2.  Using the {{ PRODUCT }} CLI to initialize your property. If you have already performed this step, proceed to the next step.
 
     <Callout type="info">
 
@@ -30,15 +30,18 @@ Get started with CDN-as-code by:
 
     ```bash
     npx {{ PACKAGE_NAME }}/cli@latest init \
-	--name <PROPERTY> \
-	--deploy
+      --name <PROPERTY> \
+      --api-url https://api.edgio.app \
+      --deploy
     ```
 
-3.  [Define routes](#routes) that determine how {{ PRODUCT }} will handle that traffic.
+    Replace `<PROPERTY>` with the name of the property defined in step 1. You should only use lower-case characters and replace spaces with dashes (e.g., `my-property`). 
 
-4.  [Test your changes locally.](#deploy-locally)
+3.  [Defining routes](#routes) that determine how {{ PRODUCT }} will handle that traffic.
 
-5.  [Deploy your property](#deploy-to) to the {{ PRODUCT }} network.
+4.  [Testing your changes locally.](#deploy-locally)
+
+5.  [Deploying your property](#deploy-to) to the {{ PRODUCT }} network.
 
 ## Routes.js|ts File {/*routes-js-ts*/}
 

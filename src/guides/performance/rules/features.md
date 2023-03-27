@@ -23,17 +23,9 @@ Access features control access to content.
 
 Determines whether requests are rejected with a `403 Forbidden` response.
 
-**Default Behavior:** false
+<edgejs>
 
-<!--
-
-**Property:** 
-
-```js
-"deny_access": Boolean
-```
-
-**CDN-as-Code Example:**
+**Example:**
 
 ```js filename="./routes.js"
 new Router()
@@ -42,29 +34,24 @@ new Router()
       "deny_access": true,
     }
   })
--->
+</edgejs>
 
+**Default Behavior:** false
 
 #### Token Auth  {/*token-auth*/}
 
 Determines whether Token-Based Authentication will be applied to a request.
 
 -   If Token-Based Authentication is enabled, then only requests that provide an encrypted token and comply to the requirements specified by that token will be honored.
-
 -   Token values will be encrypted and decrypted using your primary and backup encryption key(s).
-
 -   This feature takes precedence over most features with the exception of the [URL Rewrite feature](#url-rewrite).
 
-**Default Behavior:** false
+<edgejs>
+-   If Token-Based Authentication is enabled, then only requests that provide an encrypted token and comply to the requirements specified by that token will be honored.
+-   Token values will be encrypted and decrypted using your primary and backup encryption key(s).
+-   This feature takes precedence over most features with the exception of the URL Rewrite feature.
 
-<!--
-**CDN-as-Code (EdgeJS):** 
-
-```js
-"token_auth": Boolean
-```
-   
-**CDN-as-Code Example:**
+**Example:**
 
 ```js filename="./routes.js"
 new Router()
@@ -74,7 +61,9 @@ new Router()
     }
   })
 ```
--->
+</edgejs>
+
+**Default Behavior:** false
 
 #### Token Auth Denial Code {/*token-auth-denial-code*/}
 
@@ -86,53 +75,49 @@ Determines the type of response that will be returned to a user when a request i
     -   **3xx:** Set the `Location` response header to the URL to which denied requests will be redirected. If this header is not set, then we will return a standard response page.
     -   **401:** Set the `WWW-Authenticate` response header to info on how to authenticate. If the `WWW-Authenticate` header is set to `basic`, then the unauthorized user will be prompted for account credentials.
 
+<edgejs>
+-   **token_auth_denial_code (*Object*):** <a id="token-auth-denial-code" /> Determines the type of response that will be returned to a user when a request is denied due to Token-Based Authentication. 
+-   **code (*Integer*):** Determines the HTTP status code for the response for requests denied due to Token-Based Authentication. 
+
+-   **headers (*Object*):** Contains a key-value pair that defines a response header that is specific to the status code set by `code`. 
+-   **3xx:** Set the `Location` response header to the URL to which denied requests will be redirected. If this header is not set, then we will return a standard response page. 
+
+    **Example:** 
+
+    ```js filename="./routes.js"
+    new Router()
+      .get('/', {
+        access: {
+          "token_auth_denial_code": {
+            "code": 301,
+            "headers": {
+              "Location": "https://cdn.example.com/accessdenied"
+            }
+          }
+        }
+      })
+    ```
+
+-   **401:** Set the `WWW-Authenticate` response header to info on how to authenticate. If the `WWW-Authenticate` header is set to `basic`, then the unauthorized user will be prompted for account credentials.
+
+    **Example:** 
+
+    ```js filename="./routes.js"
+    new Router()
+      .get('/', {
+        access: {
+          "token_auth_denial_code": {
+            "code": 401,
+            "headers": {
+              "WWW-Authenticate": "Basic"
+            }
+          }
+        }
+      })
+    ```
+</edgejs>
+
 **Default Behavior:** By default, requests denied by Token-Based Authentication return a `403 Forbidden` response.
-
-<!--
-**CDN-as-Code (EdgeJS):** 
-
-```js
-"token_auth_denial_code": {
-	"code": Integer,
-	"headers": {
-        "Location": "String"
-        }
-    }
-}
-```
-
-**CDN-as-Code Example (3xx):**
-
-```js filename="./routes.js"
-new Router()
-  .get('/', {
-    access: {
-      "token_auth_denial_code": {
-        "code": 301,
-        "headers": {
-          "Location": "https://cdn.example.com/accessdenied"
-        }
-      }
-    }
-  })
-```
-
-**CDN-as-Code Example (401):**
-
-```js filename="./routes.js"
-new Router()
-  .get('/', {
-    access: {
-      "token_auth_denial_code": {
-        "code": 401,
-        "headers": {
-          "WWW-Authenticate": "Basic"
-        }
-      }
-    }
-  })
-```
--->
 
 
 #### Token Auth Ignore 	URL Case {/*token-auth-ignore-url-case*/}
@@ -143,15 +128,20 @@ Determines whether URL comparisons made by the following Token-Based Authenticat
 -   ec_ref_allow
 -   ec_ref_deny
 
-**Default Behavior:** false
+<edgejs>
+**Example:**
 
-<!--
-
-```js
-"token_auth_ignore_url_case": true,
+```js filename="./routes.js"
+new Router()
+  .get('/', {
+    access: {
+      "token_auth_ignore_url_case": true,
+    }
+  })
 ```
+</edgejs>
 
--->
+**Default Behavior:** false
 
 ## Caching {/*caching*/}
 
@@ -168,32 +158,49 @@ This feature also allows bandwidth throttling to be customized on a per request 
 
     The purpose of this time period of unrestricted bandwidth is to prevent a media player from experiencing stuttering or buffering issues due to bandwidth throttling.
 
-**Default Behavior:** By default, our CDN does not throttle requests.
+<edgejs>
+This feature also allows bandwidth throttling to be customized on a per request basis through query string parameters (i.e., `ec_rate` and `ec_prebuf`).
 
-<!--
+-   **kbytes_per_sec (*Integer*):** Set this option to the maximum bandwidth (Kb per second) that may be used to deliver the response.
+-   **prebuf_seconds (*Number*):** Set this option to the number of seconds that our edge servers will wait until throttling bandwidth.
 
-```js
-"bandwidth_throttling": {
+The purpose of this time period of unrestricted bandwidth is to prevent a media player from experiencing stuttering or buffering issues due to bandwidth throttling.
+
+**Example:**
+
+```js filename="./routes.js"
+new Router()
+  .get('/', {
+    caching: {
+      "bandwidth_throttling": {
 		"kbytes_per_sec": 300,
 		"prebuf_seconds": 15,
-}
+      }
+    }
+  })
 ```
+</edgejs>
 
--->
+**Default Behavior:** By default, our CDN does not throttle requests.
 
 #### Bypass Cache {/*bypass-cache*/}
 
 Determines whether our CDN will honor your caching policy when determining whether requests should be cached.
 
+<edgejs>
+**Example:**
+
+```js filename="./routes.js"
+new Router()
+  .get('/', {
+    caching: {
+      "bypass_cache": true,
+    }
+  })
+```
+</edgejs>
+
 **Default Behavior:** false
-
-<!--
-
-    ```js
-    "bypass_cache": true,
-    ```
-
--->
 
 #### Bypass Client Cache {/*bypass-client-cache*/}
 
@@ -208,15 +215,29 @@ Determines whether our CDN will instruct the client to bypass cache.
 
 </Callout>
 
-**Default Behavior:** false
+<edgejs>
+-   **true:** Sets the `cache-control` response header to: `cache-control: private, no-cache, no-store, must-revalidate`
+-   **false:** No effect.
 
-<!--
+<Callout type="info">
 
-```js
-"bypass_client_cache": true,
+  An alternative method for defining a client's caching policy is to set the `cache-control` response header through the `set_response_headers` feature.
+
+</Callout>
+
+**Example:**
+
+```js filename="./routes.js"
+new Router()
+  .get('/', {
+    caching: {
+      "bypass_client_cache": true,
+    }
+  })
 ```
+</edgejs>
 
--->
+**Default Behavior:** false
 
 #### Cache Control Header Treatment {/*cache-control-header-treatment*/}
 
@@ -249,15 +270,46 @@ Valid values are:
 -   **If missing:** If a `Cache-Control` header was not received from the origin server, then this option adds the `Cache-Control` header produced by the `Client Max Age` feature. This option is useful for ensuring that all assets will be assigned a `Cache-Control` header.
 -   **Remove:** Excludes the `Cache-Control` header from the response. If a `Cache-Control` header has already been assigned, then it will be stripped from the response.
 
-**Default Behavior:** Overwrite
+<edgejs>
+<Callout type="tip">
 
-<!--
+  The recommended method for setting up this feature is to add both `client_max_age` and `cache_control_header_treatment` within the same `caching` object.
 
-```js
-"cache_control_header_treatment": "pass",
+</Callout>
+
+Valid values are:
+
+-   **pass:** Ensures that the following actions will take place:
+    -   Ensures that the `Cache-Control` header produced by the `client_max_age` feature is never added to the response.
+    -   If the origin server produces a `Cache-Control` header, it will pass through to the user.
+
+    <Callout type="info">
+
+      This mode may result in a response without a `Cache-Control` header when the origin server does not set it.  
+
+    </Callout>
+
+-   **overwrite:** Ensures that the following actions will take place:
+
+    -   Overwrites the `Cache-Control` header generated by the origin server.
+    -   Adds the `Cache-Control` header produced by the `client_max_age` feature to the response.
+
+-   **if_missing:** If a `Cache-Control` header was not received from the origin server, then this option adds the `Cache-Control` header produced by the `client_max_age` feature. This option is useful for ensuring that all assets will be assigned a `Cache-Control` header.
+-   **remove:** Excludes the `Cache-Control` header from the response. If a `Cache-Control` header has already been assigned, then it will be stripped from the response.
+
+**Example:**
+
+```js filename="./routes.js"
+new Router()
+  .get('/', {
+    caching: {
+      "cache_control_header_treatment": "pass",
+    }
+  })
 ```
+</edgejs>
 
--->
+**Default Behavior:** Overwrite
 
 #### Cache Key Query String {/*cache-key-query-string*/}
 
@@ -279,44 +331,75 @@ Include or exclude all query string parameters through the `Include All` or `Exc
 
 -   **Include All Except:** Contains the set of parameter(s) will be excluded from the cache-key. All other query string parameters will be included in the cache-key.
 
-<!--
-**CDN-as-Code (EdgeJS):** 
+<edgejs>
+Include or exclude all query string parameters through the `include_all` property or `exclude_all` property. Alternatively, include or exclude specific query string parameters through the `include` property, `exclude` property, or both.
 
-```js
-	"cache_key_query_string": {
-		"include_all": Boolean,
-		"exclude_all": Boolean,
-		"include": String[],
-		"include_all_except": String[]
-	}
-```
+-   **include_all (*Boolean*):** Indicates that a unique cache-key will be created for each request to an asset that includes a unique query string.
 
-**CDN-as-Code Example (include_all):**
+    <Callout type="info">
 
-```js filename="./routes.js"
-new Router()
-  .get('/', {
-    access: {
-      "cache_key_query_string": {
-        "include_all": true
-      },
-    }
-  })
-```
+      This type of configuration is not typically recommended since it may lead to a small percentage of cache hits. This will increase the load on the origin server, since it will have to serve more requests. 
 
-**CDN-as-Code Example (include):**
+    </Callout>
 
-```js filename="./routes.js"
-new Router()
-  .get('/', {
-    access: {
-      "cache_key_query_string": {
-        "include": ["param1", "param2"]
-      },
-    }
-  })
-```
--->
+    **Example:**
+
+    ```js filename="./routes.js"
+    new Router()
+      .get('/', {
+        caching: {
+          "cache_key_query_string": {
+			"include_all": true
+          }
+        }
+      })
+    ```
+
+-   **exclude_all (*Boolean*):** Indicates that all query string parameters will be excluded from the cache-key. 
+
+    **Example:**
+
+    ```js filename="./routes.js"
+    new Router()
+      .get('/', {
+        caching: {
+          "cache_key_query_string": {
+			"exclude_all": true
+          }
+        }
+      })
+    ```
+
+-   **include (*Array of string values*):** Contains the set of parameter(s) that may be included in the cache-key. A unique cache-key will be generated for each request that contains a unique value for a query string parameter defined in this feature.
+
+    **Example:**
+
+    ```js filename="./routes.js"
+    new Router()
+      .get('/', {
+        caching: {
+          "cache_key_query_string": {
+			"include": ["param1", "param2"]
+          }
+        }
+      })
+    ```
+
+-   **include_all_except (*Array of string values*):** Contains the set of parameter(s) will be excluded from the cache-key. All other query string parameters will be included in the cache-key.
+
+    **Example:**
+
+    ```js filename="./routes.js"
+    new Router()
+      .get('/', {
+        caching: {
+          "cache_key_query_string": {
+			"include_all_except": ["param1", "param2"]
+          }
+        }
+      })
+    ```
+</edgejs>
 
 #### Cacheable Request Body Size {/*cacheable-request-body-size*/}
 
@@ -335,13 +418,33 @@ Restricts caching to requests whose body does not exceed the specified file size
     -   **Recommended Value:** 14 Kb
     -   **Minimum Value:** 1 Kb
 
-**Default Behavior:** 14 Kb
+<edgejs>
+**Key information:**
 
-<!--
-    ```js
-    "cacheable_request_body_size": 12,
-    ```
--->
+-   This feature is only applicable when `POST` or `PUT` responses are eligible for caching. Use the `enable_caching_for_methods` feature to enable `POST` / `PUT` request caching.
+-   The request body is taken into consideration for:
+
+    -   `x-www-form-urlencoded` values
+    -   Ensuring a unique cache-key
+
+-   Defining a large maximum request body size may impact data delivery performance.
+
+    -   **Recommended Value:** 14 Kb
+    -   **Minimum Value:** 1 Kb
+
+**Example:** 
+
+```js filename="./routes.js"
+new Router()
+  .get('/', {
+    caching: {
+      "cacheable_request_body_size": 12,
+    }
+  })
+```
+</edgejs>
+
+**Default Behavior:** 14 Kb
 
 #### Cacheable Status Codes {/*cacheable-status-codes*/}
 
@@ -352,19 +455,30 @@ Defines the set of status codes that can result in cached content.
 -   Caching non-`200 OK` response also requires enabling the `Ignore Origin No Cache` feature. 
 -   This feature cannot be used to disable caching for responses that generate a `200 OK` status code.
 
+<edgejs>
+**Key information:**
+
+-   Caching non-`200 OK` response also requires enabling the `ignore_origin_no_cache` feature. 
+-   This feature cannot be used to disable caching for responses that generate a `200 OK` status code.
+
 <!--
-    -   The set of valid status codes for this feature are:
-        `200 | 203 | 300 | 301 | 302 | 305 | 307 | 400 | 401 | 402 | 403 | 404 | 405 | 406 | 407 | 408 | 409 | 410 | 411 | 412 | 413 | 414 | 415 | 416 | 417 | 429 | 451 | 500 | 501 | 502 | 503 | 504 | 505`
+-   The set of valid status codes for this feature are:
+`200 | 203 | 300 | 301 | 302 | 305 | 307 | 400 | 401 | 402 | 403 | 404 | 405 | 406 | 407 | 408 | 409 | 410 | 411 | 412 | 413 | 414 | 415 | 416 | 417 | 429 | 451 | 500 | 501 | 502 | 503 | 504 | 505`
 -->
+
+**Example:**
+
+```js filename="./routes.js"
+new Router()
+  .get('/', {
+    caching: {
+      "cacheable_status_codes": [300, 301, 302],
+    }
+  })
+```
+</edgejs>
 
 **Default Behavior:** By default, caching is restricted to responses that generate a `200 OK` status code.
-
-<!--
-    ```js
-    "cacheable_status_codes": [300, 301, 302],
-    ```
--->
-
 
 #### Client Max Age {/*client-max-age*/}
 
@@ -378,16 +492,30 @@ Enabling this feature will generate `Cache-Control:max-age` and `Expires` header
 
 -   Setting this feature to a negative value causes our edge servers to send a `Cache-Control:no-cache` and an `Expires` time that is set in the past with each response to the browser. Although an HTTP client will not cache the response, this setting will not affect our edge servers' ability to cache the response from the origin server.
 
-**Default Behavior:** The `Cache-Control` / `Expires` headers cached with the response of the origin server will pass through to the browser.
+<edgejs>
+Enabling this feature will generate `Cache-Control:max-age` and `Expires` headers from our edge servers and send them to the HTTP client. By default, these headers will overwrite those created by the origin server. However, the `cache_control_header_treatment` and the `expires_header_treatment` features may be used to alter this behavior.
 
-<!--
+**Key information:**
 
-**Example:** 
+-   **Syntax:** `<TIME>[s|m|h|d|w|y]`
 
-```js
-"client_max_age": "10h",
+-   This action does not affect edge server to origin server cache revalidations. These types of revalidations are determined by the `Cache-Control` / `Expires` headers received from the origin server, and can be customized with the Default Internal Max-Age and the `max_age` features.
+
+-   Setting this feature to a negative value causes our edge servers to send a `Cache-Control:no-cache` and an `Expires` time that is set in the past with each response to the browser. Although an HTTP client will not cache the response, this setting will not affect our edge servers' ability to cache the response from the origin server.
+
+**Example:**
+
+```js filename="./routes.js"
+new Router()
+  .get('/', {
+    caching: {
+      "client_max_age": "10h",
+    }
+  })
 ```
--->
+</edgejs>
+
+**Default Behavior:** The `Cache-Control` / `Expires` headers cached with the response of the origin server will pass through to the browser.
 
 #### Enable Caching for Methods {/*enable-caching-for-methods*/}
 
@@ -405,13 +533,34 @@ Determines whether `POST` and `PUT` requests are eligible for caching on our net
 
 -   Although you may enable caching for `POST` and `PUT` requests, purge is only supported for `GET` requests.
 
-**Default Behavior:** By default, only `GET` requests are eligible for caching.
+<edgejs>
+**Key information:**
 
-<!--
-    ```js
-    "enable_caching_for_methods": ["POST", "PUT"],
-    ```
--->
+-   This feature supports the following HTTP methods: `POST` and `PUT`.
+-   By default, our CDN restricts caching to requests whose body is smaller than 14 Kb.
+
+<Callout type="tip">
+
+  Use the `cacheable_request_body_size` feature to set the maximum request body size for cache-eligible requests.
+
+</Callout>
+
+-   Although you may enable caching for `POST` and `PUT` requests, purge is only supported for `GET` requests.
+-   `GET` requests are unaffected by this feature. Including or excluding the `GET` method when defining this feature will not impact whether `GET` requests are eligible for caching.
+
+**Example:**
+
+```js filename="./routes.js"
+new Router()
+  .get('/', {
+    caching: {
+      "enable_caching_for_methods": ["POST", "PUT"],
+    }
+  })
+```
+</edgejs>
+
+**Default Behavior:** By default, only `GET` requests are eligible for caching.
 
 #### Expires Header Treatment {/*expires-header-treatment*/}
 
@@ -444,14 +593,47 @@ Valid values are:
 -   **If missing:** If an `Expires` header was not received from the origin server, then this option adds the `Expires` header produced by the `Client Max Age` feature. This option is useful for ensuring that all assets will be assigned an `Expires` header.
 -   **Remove:** Ensures that an `Expires` header is not included with the header response. If an `Expires` header has already been assigned, then it will be stripped from the header response.
 
+<edgejs>
+<Callout type="tip">
+
+  The recommended method for setting up this feature is to add both `client_max_age` and `expires_header_treatment` within the same `caching` object.
+
+</Callout>
+
+Valid values are:
+
+-   **pass:** Ensures that the following actions will take place:
+
+    -   Ensures that the `Expires` header produced by the `client_max_age` feature is never added to the response.
+    -   If the origin server produces an `Expires` header, it will pass through to the user.
+
+    <Callout type="info">
+
+      This mode may result in a response without an `Expires` header when the origin server does not set it.  
+
+    </Callout>
+
+-   **overwrite:** Ensures that the following actions will take place:
+
+    -   Overwrites the `Expires` header generated by the origin server.
+    -   Adds the `Expires` header produced by the `client_max_age` feature to the response.
+
+-   **if_missing:** If an `Expires` header was not received from the origin server, then this option adds the `Expires` header produced by the `client_max_age` feature. This option is useful for ensuring that all assets will be assigned an `Expires` header.
+-   **remove:** Ensures that an `Expires` header is not included with the header response. If an `Expires` header has already been assigned, then it will be stripped from the header response.
+
+**Example:**
+
+```js filename="./routes.js"
+new Router()
+  .get('/', {
+    caching: {
+      "expires_header_treatment": 'if_missing',
+    }
+  })
+```
+</edgejs>
+
 **Default Behavior:** Overwrite
-
-<!--
-    ```js
-    "expires_header_treatment": 'if_missing',
-    ```
--->
-
 
 #### Enable H264 encoding {/*enable-h264-encoding*/}
 
@@ -467,32 +649,28 @@ Determines the types of H.264 file formats that may be used when streaming conte
 
 **Example:** `.mp4 .f4v`
 
+<edgejs>
+<Callout type="tip">
+
+  Maintain MP4 and F4V support by including those file extensions when setting this feature.
+
+</Callout>
+
+**Syntax:** `.<FILE EXTENSION>`
+
+**Example:**
+
+```js filename="./routes.js"
+new Router()
+  .get('/', {
+    caching: {
+      "h264_support": [".mp4", ".f4v"],
+    }
+  })
+```
+</edgejs>
+
 **Default Behavior:** By default, HTTP Progressive Download supports MP4 and F4V file extensions.
-
-<!--
-    ```js
-    "h264_support": [".mp4", ".f4v"],
-    ```
-
--   **h264_support_video_seek_params (*Object*):** <a id="h264-support-video-seek-params" /> Overrides the names assigned to parameters that control seeking through H.264 media when using HTTP Progressive Download. Set the following properties:
-
-    -   **seek_start (*String*):** Overrides the name of the `ec_seek` parameter.
-    -   **seek_end (*String*):** Overrides the name of the `ec_end` parameter.
-
-    <Callout type="tip">
-
-      Rename seek parameters to match the names assigned to your player's native parameters.
-
-    </Callout>
-
-    <Callout type="info">
-
-      A valid name may only consist of alphanumeric characters, dashes, underscores, and periods.
-
-    </Callout>
-
-    **Default Behavior:** By default, HTTP Progressive Download looks for `ec_seek` and `ec_end` parameters in the query string.
--->
 
 #### Honor No Cache Request Header {/*honor-no-cache-request-header*/}
 
@@ -510,6 +688,31 @@ Determines whether an HTTP client's no-cache requests will be forwarded to the o
 
 </Callout>
 
+<edgejs>
+<Callout type="tip">
+
+  For all production traffic, it is highly recommended to leave this feature in its default disabled state. Otherwise, origin servers will not be shielded from users who may inadvertently trigger many no-cache requests when refreshing web pages, or from the many popular media players that are coded to send a no-cache header with every video request. Nevertheless, this feature can be useful to apply to certain non-production staging or testing directories, in order to allow fresh content to be pulled on-demand from the origin server.
+
+</Callout>
+
+<Callout type="info">
+
+  The cache status that will be reported for a request that is allowed to be forwarded to an origin server due to this feature is `TCP_Client_Refresh_Miss`. Use this cache status to track the number and percentage of requests that are being forwarded to an origin server due to this feature.
+
+</Callout>
+
+**Example:**
+
+```js filename="./routes.js"
+new Router()
+  .get('/', {
+    caching: {
+      "honor_no_cache_request_header": true,
+    }
+  })
+```
+</edgejs>
+
 **Default Behavior:** The default behavior is to prevent no-cache requests from being forwarded to the origin server.
 
 #### Ignore Origin No Cache {/*ignore-origin-no-cache*/}
@@ -524,13 +727,28 @@ Determines on a per HTTP status code basis whether our CDN will ignore cache dir
 -   This feature supports most `1xx` - `5xx` status codes. The following status codes are unsupported:
     `100 | 101 | 102 | 103 | 201 | 202 | 204 | 205 | 206 | 207 | 208 | 226 | 303 | 304 | 306`
 
-**Default Behavior:** The default behavior is to honor the above directives.
+<edgejs>
+-   This feature only affects these directives:
+-   `Cache-Control: private`
+-   `Cache-Control: no-store`
+-   `Cache-Control: no-cache`
+-   `Pragma: no-cache`
+-   This feature supports most `1xx` - `5xx` status codes. The following status codes are unsupported:
+`100 | 101 | 102 | 103 | 201 | 202 | 204 | 205 | 206 | 207 | 208 | 226 | 303 | 304 | 306`
 
-<!--
-    ```js
-    "ignore_origin_no_cache": [200, 300, 301],
-    ```
--->
+**Example:**
+
+```js filename="./routes.js"
+new Router()
+  .get('/', {
+    caching: {
+      "ignore_origin_no_cache": [200, 300, 301],
+    }
+  })
+```
+</edgejs>
+
+**Default Behavior:** The default behavior is to honor the above directives.
 
 #### Ignore Unsatisfiable Ranges {/*ignore-unsatisfiable-ranges*/}
 
@@ -538,13 +756,22 @@ Determines the response that will be returned to clients when a request generate
 
 Enabling this feature prevents our edge servers from responding to an invalid byte-range request with a `416 Requested Range Not Satisfiable` status code. Instead our servers will deliver the requested asset and return a `200 OK` to the client.
 
-**Default Behavior:** The default behavior is to honor the `416 Requested Range Not Satisfiable` status code.
+<edgejs>
+Enabling this feature prevents our edge servers from responding to an invalid byte-range request with a `416 Requested Range Not Satisfiable` status code. Instead our servers will deliver the requested asset and return a `200 OK` to the client.
 
-<!--
-    ```js
-    "ignore_unsatisfiable_ranges": true,
-    ```
--->
+**Example:**
+
+```js filename="./routes.js"
+new Router()
+  .get('/', {
+    caching: {
+      "ignore_unsatisfiable_ranges": true,
+    }
+  })
+```
+</edgejs>
+
+**Default Behavior:** The default behavior is to honor the `416 Requested Range Not Satisfiable` status code.
 
 #### Max Age{/*max-age*/}
 
@@ -556,23 +783,89 @@ Defines a `max-age` interval for edge server to origin server cache revalidation
 -   This feature does not affect browser to edge server cache revalidations. These types of revalidations are determined by the `Cache-Control` or `Expires` headers sent to the browser.
 -   This feature does not have an observable effect on the response sent to a user. However, it may have an effect on the amount of revalidation traffic sent from our edge servers to the origin server.
 
+<edgejs>
+**Key information:**
+
+-   Define this feature either as a string value or an object. 
+-   **Object:** Define key-value pair(s) that identify an HTTP status code and its `max-age` interval.
+
+    **Syntax:** `"<STATUS CODE>": "<TIME>[s|m|h|d|w|y]"`
+
+    **Example:**
+
+    ```js filename="./routes.js"
+    new Router()
+      .get('/', {
+        caching: {
+          "max_age": {
+	        "200": "10h",
+	        "301": "5m"
+          },
+        }
+      })
+    ```
+
+-   **String:** Use a string value if you only need to define the `max-age` interval for `200 OK` responses.
+
+    **Syntax:** `<TIME>[s|m|h|d|w|y]`
+
+    **Example:**
+
+    ```js filename="./routes.js"
+    new Router()
+      .get('/', {
+        caching: {
+          "max_age": `10h`,
+        }
+      })
+    ```
+
+-   This feature does not affect browser to edge server cache revalidations. These types of revalidations are determined by the `Cache-Control` or `Expires` headers sent to the browser.
+-   This feature does not have an observable effect on the response sent to a user. However, it may have an effect on the amount of revalidation traffic sent from our edge servers to the origin server.
+
+</edgejs>
+
 **Default Behavior:** Disabled. An internal max-age interval will not be assigned to requested assets. If the origin server does not serve a response that contains caching instructions, then the asset will be cached according to the active setting in the Default Internal Max-Age feature.
 
 #### Partial Cache Sharing Min Hit Size {/*partial-cache-sharing-min-hit-size*/}
 
 Defines the minimum file size (Kb) for caching partial content. 
 
+<edgejs>
+**Example:**
+
+```js filename="./routes.js"
+new Router()
+  .get('/', {
+    caching: {
+      "partial_cache_sharing_min_hit_size": 1024,
+    }
+  })
+```
+</edgejs>
+
+**Default Behavior:** By default, partial cache sharing is disabled. 
+
 #### Prevalidate Cached Content {/*prevalidate-cached-content*/}
 
 Determines whether cached content will be eligible for early revalidation before its TTL expires. Define the amount of time prior to the expiration of the requested content's TTL during which it will be eligible for early revalidation.
 
-**Default Behavior:** Revalidation may only take place after the cached content's TTL has expired.
+<edgejs>
+**Syntax:** `<TIME>[s|m|h|d|w|y]`
 
-<!--
-    ```js
-    "prevalidate_cached_content": "10m",
-    ```
--->
+**Example:**
+
+```js filename="./routes.js"
+new Router()
+  .get('/', {
+    caching: {
+      "prevalidate_cached_content": "10m",
+    }
+  })
+```
+</edgejs>
+
+**Default Behavior:** Revalidation may only take place after the cached content's TTL has expired.
 
 #### Refresh Zero Byte Cache Files {/*refresh-zero-byte-cache-files*/}
 
@@ -586,13 +879,28 @@ Enabling this feature causes our edge server to re-fetch the asset from the orig
 
 </Callout>
 
-**Default Behavior:** The default behavior is to serve valid cache assets upon request.
+<edgejs>
+Enabling this feature causes our edge server to re-fetch the asset from the origin server.
 
-<!--
-    ```js
-    "refresh_zero_byte_cache_files": true,
-    ```
--->
+<Callout type="tip">
+
+  This feature is not required for correct caching and content delivery, but may be useful as a workaround. For example, dynamic content generators on origin servers can inadvertently result in 0-byte responses being sent to the edge servers. These types of responses are typically cached by our edge servers. If you know that a 0-byte response is never a valid response for such content, then this feature can prevent these types of assets from being served to your clients.
+
+</Callout>
+
+**Example:**
+
+```js filename="./routes.js"
+new Router()
+  .get('/', {
+    caching: {
+      "refresh_zero_byte_cache_files": true,
+    }
+  })
+```
+</edgejs>
+
+**Default Behavior:** The default behavior is to serve valid cache assets upon request.
 
 #### Rewrite Cache Key {/*rewrite-cache-key*/}
 
@@ -614,16 +922,39 @@ Rewrites the cache-key associated with a request. Pass the following properties:
 
     </Callout>
 
-**Default Behavior:** By default, a request's cache-key is determined by the request URI's relative path.
+<edgejs>
+-   **source (*String*):** Define a regular expression that identifies the cache-key that will be rewritten. This cache-key is a relative path that starts directly after the hostname.
 
-<!--
-    ```js
-    "cache_key_rewrite": {
+    <Callout type="important">
+
+      Verify that the specified pattern does not conflict with this route's path.
+
+    </Callout>
+
+-   **destination (*String*):** Define a regular expression that sets a new cache-key. This cache-key is a relative path that starts directly after the hostname. 
+
+    <Callout type="tip">
+
+      Use [HTTP variables](#http-variables) to dynamically construct this relative path. However, you may not use response metadata (e.g., `%{resp_<RESPONSE HEADER>}`) when defining a cache-key.
+
+    </Callout>
+
+**Example:**
+
+```js filename="./routes.js"
+new Router()
+  .get('/', {
+    caching: {
+      "cache_key_rewrite": {
 		"source": "/marketing/images/(.*)",
 		"destination": "/images/$1"
+      }
     }
-    ```
--->
+  })
+```
+</edgejs>
+
+**Default Behavior:** By default, a request's cache-key is determined by the request URI's relative path.
 
 #### Revalidate After Origin Unavailable {/*revalidate-after-origin-unavailable*/}
 
@@ -645,6 +976,56 @@ Any value configured for this feature is superseded by `Cache-Control:must-reval
 
 </Callout>
 
+<edgejs>
+Normally, when an asset's max-age time expires, the edge server will send a revalidation request to the origin server. The origin server will then respond with either a `304 Not Modified` to give the edge server a fresh lease on the cached asset, or else with `200 OK` to provide the edge server with an updated version of the cached asset.
+
+If the edge server is unable to establish a connection with the origin server while attempting such a revalidation, then this `revalidate_after_origin_unavailable` feature controls whether, and for how long, the edge server may continue to serve the now-stale asset.
+
+This time interval starts when the asset's `max-age` expires, not when the failed revalidation occurs. Therefore, the maximum period during which an asset can be served without successful revalidation is the amount of time specified by the combination of `max-age` plus `max-stale`. 
+
+For example, if an asset was cached at 9:00 with a `max-age` of 30 minutes and a `max-stale` of 15 minutes, then a failed revalidation attempt at 9:44 would result in a user receiving the stale cached asset, while a failed revalidation attempt at 9:46 would result in the user receiving a `504 Gateway Timeout`.
+
+Any value configured for this feature is superseded by `Cache-Control:must-revalidate` or `Cache-Control:proxy-revalidate` headers received from the origin server. If either of those headers is received from the origin server when an asset is initially cached, then the edge server will not serve a stale cached asset. In such a case, if the edge server is unable to revalidate with the origin when the asset's max-age interval has expired, then the edge server will return a `504 Gateway Timeout`.
+
+**Key information:**
+
+-   This feature may either be an object or a string value. 
+    -   **Object:** Define key-value pair(s) that identify an HTTP status code and its `max-stale` interval.
+
+    **Syntax:** `"<STATUS CODE>": "<TIME>[s|m|h|d|w|y]"`
+
+    **Example:**
+
+    ```js filename="./routes.js"
+    new Router()
+      .get('/', {
+        caching: {
+          "revalidate_after_origin_unavailable": {
+        	"200": "10m",
+	        "301": "5m"
+          },
+        }
+      })
+    ```
+
+-   **String:** Use a string value if you only need to define the `max-stale` interval for `200 OK` responses.
+
+    **Syntax:** `<TIME>[s|m|h|d|w|y]`
+
+    **Example:**
+
+    ```js filename="./routes.js"
+    new Router()
+      .get('/', {
+        caching: {
+          "revalidate_after_origin_unavailable": `10h`,
+        }
+      })
+    ```
+
+-   Each stale response includes a `Warning` response header.
+</edgejs>
+
 **Default Behavior:** 2 minutes
 
 #### Revalidate While Stale Timer {/*revalidate-while-stale-timer*/}
@@ -656,13 +1037,25 @@ Determines how often, in seconds, the system will attempt to connect to an unava
 -   This features requires the `Revalidate While Stale` feature.
 -   This feature determines how often the system will attempt revalidation with an origin server whose configuration is in stale mode due to repeated TCP connection failures. However, it does not apply to requests that have been assigned a `Cache-Control: must-revalidate` directive.
 
-**Default Behavior:** By default, our CDN will not attempt to connect to your origin server while it is in stale mode.
+<edgejs>
+**Key information:**
 
-<!--
-    ```js
-    "revalidate_while_stale_timer": 200,
-    ```
--->
+-   This features requires the `revalidate_while_stale` feature.
+-   This feature determines how often the system will attempt revalidation with an origin server whose configuration is in stale mode due to repeated TCP connection failures. However, it does not apply to requests that have been assigned a `Cache-Control: must-revalidate` directive.
+
+**Example:**
+
+```js filename="./routes.js"
+new Router()
+  .get('/', {
+    caching: {
+      "revalidate_while_stale_timer": 200,
+    }
+  })
+```
+</edgejs>
+
+**Default Behavior:** By default, our CDN will not attempt to connect to your origin server while it is in stale mode.
 
 #### Stale On Error {/*stale-on-error*/}
 
@@ -676,43 +1069,51 @@ Enabling this feature serves stale content when an error occurs during a connect
 
 </Callout>
 
+<edgejs>
+Enabling this feature serves stale content when an error occurs during a connection to an origin server. Use the `revalidate_after_origin_unavailable` feature to configure the length of time after TTL expiration during which stale content may be delivered.
+
+<Callout type="info">
+
+  Each stale response includes a `Warning` response header.
+
+</Callout>
+
+**Example:**
+
+```js filename="./routes.js"
+new Router()
+  .get('/', {
+    caching: {
+      "stale_on_error": true,
+    }
+  })
+```
+</edgejs>
+
 **Default Behavior:** By default, we forward the origin server's error response to the user.
 
 #### Stale While Revalidate {/*stale-while-revalidate*/}
 
 Improves performance by allowing our edge servers to serve stale content while revalidation takes place.
 
+<edgejs>
+**Syntax:** `<TIME>[s|m|h|d|w|y]`
+
+**Example:**
+
+```js filename="./routes.js"
+new Router()
+  .get('/', {
+    caching: {
+      "stale_while_revalidate": "10m",
+    }
+  })
+```
+</edgejs>
+
 **Default Behavior:** Revalidation must take place before the requested content can be served.
 
-<!--
-    ```js
-    "stale_while_revalidate": "10m",
-    ```
--->
-
-<!--
-
-## Client
-
-Client features control how the client communicates with our CDN.
-
-#### QUIC
-
--   **quic (*Boolean*):** <a id="quic" /> Determines whether the client will be informed that our CDN service supports Google QUIC (gQUIC).
-
-    Enabling this feature informs the client that our CDN service supports gQUIC by including the `alt-svc` header in the response sent to the client. This response header also informs the client the set of QUIC versions that our CDN service supports.
-
-    **Example:** 
-
-    ```js
-    "quic": true,
-    ```
-
-    **Default Behavior:** By default, our CDN is agnostic with regards to the `alt-svc` response header.
-
--->
-
-## Header
+## Headers {/*headers*/}
 
 Header features add, modify, or delete headers from the request or response.
 
@@ -743,15 +1144,45 @@ Adds one or more header(s) from the response. If the header already exists in th
     -   warning 
     -   All header names that start with "x-ec" are reserved.
 
-<!--
-    The following example sets or appends `basketball` to the `sports` response header:
+<edgejs>
+**Key information:**
 
-    ```js
-    "add_response_headers": {
+-   **Syntax:** `"<HEADER NAME>": "<HEADER VALUE>"`
+-   `<HEADER NAME>` must be an exact match for the desired response header. However, case is not taken into account for the purpose of identifying a header. 
+-   Make sure to only use alphanumeric characters, dashes, or underscores when specifying a header name.
+-   Use HTTP variables to dynamically construct header values.
+-   The following headers are reserved and cannot be modified by this feature:
+    -   accept-ranges
+    -   age
+    -   connection
+    -   content-encoding
+    -   content-length
+    -   content-range
+    -   date
+    -   server
+    -   trailer
+    -   transfer-encoding
+    -   upgrade
+    -   vary
+    -   via
+    -   warning 
+    -   All header names that start with "x-ec" are reserved.
+
+**Example:**
+
+The following example sets or appends `basketball` to the `sports` response header:
+
+```js filename="./routes.js"
+new Router()
+  .get('/', {
+    headers: {
+      "add_response_headers": {
 		"sports": "basketball"
-    },
-    ```
--->
+      },
+    }
+  })
+```
+</edgejs>
 
 #### Debug Header {/*debug-header*/}
 
@@ -770,27 +1201,47 @@ Our CDN returns debug cache response headers when both of the following are true
 
     `X-EC-Debug: x-ec-cache,x-ec-check-cacheable,x-ec-cache-key,x-ec-cache-state`
 
-**Default Behavior:** By default, the response excludes debug cache response headers.
+<edgejs>
+Our CDN returns debug cache response headers when both of the following are true:
 
-<!--
-    ```js
-    "debug_header": true,
-    ```
--->
+-   The `debug_header` feature has been enabled on the desired request.
+-   The request includes the `X-EC-Debug` request header. This request header defines the set of debug cache response headers that will be included in the response.
+
+**Request Header Syntax:**
+
+`X-EC-Debug: <DEBUG CACHE HEADER 1>,<DEBUG CACHE HEADER 2>,<DEBUG CACHE HEADER N>`
+ 
+**Sample Request Header:**
+
+`X-EC-Debug: x-ec-cache,x-ec-check-cacheable,x-ec-cache-key,x-ec-cache-state`
+
+**Example:**
+
+```js filename="./routes.js"
+new Router()
+  .get('/', {
+    headers: {
+      "debug_header": true,
+    }
+  })
+```
+</edgejs>
+
+**Default Behavior:** By default, the response excludes debug cache response headers.
 
 #### Set Request Headers {/*set-request-headers*/}
 
-Sets or deletes one or more header(s) from a request. When setting a request header, you may choose to overwrite or append to an existing request header value.
+Set, overwrite, append, or delete one or more header(s) from the request. 
 
 **Key information:**
 
 -   **Syntax:** `"<HEADER NAME>": "<HEADER VALUE>"`
 -   `<HEADER NAME>` must be an exact match for the desired request header. However, case is not taken into account for the purpose of identifying a header. 
 -   Use alphanumeric characters, dashes, or underscores when specifying a header name.
--   This feature allows you to manipulate a request header:
+-   Use the following syntax to determine the action that will be applied to the request header:
     -   **Set:** Set or overwrite a header's value by replacing `<HEADER NAME>` with a value that does not start with a `+` symbol. 
-    -   **Append:** Add to the end of an existing request header value by prepending a `+` symbol to the header name.
-    -   **Delete:** Set it to a blank value. Deleting a header will prevent it from being forwarded to an origin server by our edge servers.
+    -   **Append:** Add to the end of an existing request header value by prepending a `+` symbol to the header name. For example, append a value to the `broadcast` request header by specifying `+broadcast`.
+    -   **Delete:** Set the header value to a blank value. Deleting a header will prevent it from being forwarded to an origin server by our edge servers.
 -   Use [HTTP variables](#http-variables) to dynamically construct header values.
 -   The following headers are reserved and cannot be modified by this feature:
     -   forwarded-for
@@ -801,31 +1252,57 @@ Sets or deletes one or more header(s) from a request. When setting a request hea
     -   x-forwarded-for
     -   All header names that start with "x-ec" are reserved.
 
-<!--
+<edgejs>
+**Key information:**
+
+-   **Syntax:** `"<HEADER NAME>": "<HEADER VALUE>"`
+-   `<HEADER NAME>` must be an exact match for the desired request header. However, case is not taken into account for the purpose of identifying a header. 
+-   Use alphanumeric characters, dashes, or underscores when specifying a header name.
+-   Use the following syntax to determine the action that will be applied to the request header:
+    -   **Set:** Set or overwrite a header's value by replacing `<HEADER NAME>` with a value that does not start with a `+` symbol. 
+    -   **Append:** Add to the end of an existing request header value by prepending a `+` symbol to the header name.
+    -   **Delete:** Set it to a blank value. Deleting a header will prevent it from being forwarded to an origin server by our edge servers.
+-   Use HTTP variables to dynamically construct header values.
+-   The following headers are reserved and cannot be modified by this feature:
+    -   forwarded-for
+    -   host
+    -   vary
+    -   via
+    -   warning
+    -   x-forwarded-for
+    -   All header names that start with "x-ec" are reserved.
+
+**Example:**
+
 The following example:
 -   Sets the `sports` request header to `basketball` regardless of whether it was previously set to another value. 
 -   Appends ` ott` to the `broadcast` header's value. For example, if it were set to `network`, then the new value after this feature has been applied will be `network ott`.
 
-    ```js
-    "set_request_headers": {
+```js filename="./routes.js"
+new Router()
+  .get('/', {
+    headers: {
+      "set_request_headers": {
 		"sports": "basketball",
 		"+broadcast": " ott"
-    },
-    ```
--->
+      },
+    }
+  })
+```
+</edgejs>
 
 #### Set Response Headers {/*set-response-headers*/}
 
-Sets or deletes one or more header(s) from the response. When setting a response header, you may choose to overwrite or append to an existing response header value.
+Set, overwrite, append, or delete one or more header(s) from the response.
 
 **Key information:**
 
 -   **Syntax:** `"<HEADER NAME>": "<HEADER VALUE>"`
 -   `<HEADER NAME>` must be an exact match for the desired response header. However, case is not taken into account for the purpose of identifying a header. 
 -   Use alphanumeric characters, dashes, or underscores when specifying a header name.
--   This feature allows you to set or append to a header value.
+-   Use the following syntax to determine the action that will be applied to the response header:
     -   **Set:** Set or overwrite a header's value by replacing `<HEADER NAME>` with a value that does not start with a `+` symbol. 
-    -   **Append:** Add to the end of an existing response header value by prepending a `+` symbol to the header name.
+    -   **Append:** Add to the end of an existing response header value by prepending a `+` symbol to the header name. For example, append a value to the `broadcast` response header by specifying `+broadcast`.
     -   **Delete:** Set it to a blank value. Deleting a header will prevent it from being included in the response to the client.
 -   Use [HTTP variables](#http-variables) to dynamically construct header values.
 -   The following headers are reserved and cannot be modified by this feature:
@@ -845,44 +1322,54 @@ Sets or deletes one or more header(s) from the response. When setting a response
     -   warning 
     -   All header names that start with "x-ec" are reserved.
 
-<!--
-    The following example:
-    -   Sets the `sports` response header to `basketball` regardless of whether it was previously set to another value. 
-    -   Appends ` ott` to the `broadcast` header's value. For example, if it were set to `network`, then the new value after this feature has been applied will be `network ott`.
+<edgejs>
+**Key information:**
 
-    ```js
-    "set_response_headers": {
+-   **Syntax:** `"<HEADER NAME>": "<HEADER VALUE>"`
+-   `<HEADER NAME>` must be an exact match for the desired response header. However, case is not taken into account for the purpose of identifying a header. 
+-   Make sure to only use alphanumeric characters, dashes, or underscores when specifying a header name.
+-   Use the following syntax to determine the action that will be applied to the response header:
+    -   **Set:** Set or overwrite a header's value by replacing `<HEADER NAME>` with a value that does not start with a `+` symbol. 
+    -   **Append:** Add to the end of an existing response header value by prepending a `+` symbol to the header name.
+    -   **Delete:** Set it to a blank value. Deleting a header will prevent it from being included in the response to the client.
+-   Use HTTP variables to dynamically construct header values.
+-   The following headers are reserved and cannot be modified by this feature:
+    -   accept-ranges
+    -   age
+    -   connection
+    -   content-encoding
+    -   content-length
+    -   content-range
+    -   date
+    -   server
+    -   trailer
+    -   transfer-encoding
+    -   upgrade
+    -   vary
+    -   via
+    -   warning 
+    -   All header names that start with "x-ec" are reserved.
+
+**Example:**
+
+The following example:
+-   Sets the `sports` response header to `basketball` regardless of whether it was previously set to another value. 
+-   Appends ` ott` to the `broadcast` header's value. For example, if it were set to `network`, then the new value after this feature has been applied will be `network ott`.
+
+**Example:**
+
+```js filename="./routes.js"
+new Router()
+  .get('/', {
+    headers: {
+      "set_response_headers": {
 		"sports": "basketball",
 		"+broadcast": " ott"
-    },
-    ```
-
-
-
--   **set_client_ip_custom_header (*String*):** <a id="set-client-ip-custom-header" /> Adds a custom request header that identifies the client by IP address. 
-
-    **Key information:**
-
-    -   Set this feature to the name of the custom request header to which the client's IP address will be logged.
-    -   Make sure to only use alphanumeric characters, dashes, or underscores when specifying a header name.
-    -   The following headers are reserved and should not be modified by this feature:
-        -   forwarded-for
-        -   host
-        -   vary
-        -   via
-        -   warning
-        -   x-forwarded-for
-        -   All header names that start with "x-ec" are reserved.
-    -   Requests served from cache are not forwarded to your web servers and therefore this feature is inapplicable to those requests.
-
-    **Example:**
-
-    ```js
-    "set_client_ip_custom_header": "client_ip",
-    ```
-
-    **Default Behavior:** By default, a client's IP address is not logged within a custom request header. However, it is always logged within the `X-Forwarded-For` request header.
--->
+      },
+    }
+  })
+```
+</edgejs>
 
 #### Remove Origin Response Headers {/*remove-origin-response-headers*/}
 
@@ -894,11 +1381,24 @@ Deletes one or more header(s) from the response provided by an origin server.
 -   Use alphanumeric characters, dashes, or underscores when specifying a header name.
 -   Our service adds a set of reserved headers to each response. Although this feature removes a header from the response provided by the origin server, it does not affect whether our service will add a reserved header to the response. 
 
-<!--
-    ```js
-    "remove_origin_response_headers": ["city", "state", "zipcode"],
-    ```
--->
+<edgejs>
+**Key information:**
+
+-   Set each string value to the exact name of the header that will be removed from the response provided by an origin server. Case is not taken into account for the purpose of identifying a header. 
+-   Use alphanumeric characters, dashes, or underscores when specifying a header name.
+-   Our service adds a set of reserved headers to each response. Although this feature removes a header from the response provided by the origin server, it does not affect whether our service will add a reserved header to the response. 
+
+**Example:**
+
+```js filename="./routes.js"
+new Router()
+  .get('/', {
+    headers: {
+      "remove_origin_response_headers": ["city", "state", "zipcode"],
+    }
+  })
+```
+</edgejs>
 
 #### Remove Response Headers {/*remove-response-headers*/}
 
@@ -925,25 +1425,41 @@ Deletes one or more header(s) from a response.
     -   warning 
     -   All header names that start with "x-ec" are reserved.
 
-<!--
-    ```js
-    "remove_response_headers": ["city", "state", "zipcode"],
-    ```
+<edgejs>
+**Key information:**
 
+-   Set each string value to the exact name of the header that will be removed from the response. Case is not taken into account for the purpose of identifying a header. 
+-   Use alphanumeric characters, dashes, or underscores when specifying a header name.
+-   The following headers are reserved and should not be removed by this feature:
+    -   accept-ranges
+    -   age
+    -   connection
+    -   content-encoding
+    -   content-length
+    -   content-range
+    -   date
+    -   server
+    -   trailer
+    -   transfer-encoding
+    -   upgrade
+    -   vary
+    -   via
+    -   warning 
+    -   All header names that start with "x-ec" are reserved.
 
+**Example:**
 
--   **server_timing_header (*Boolean*):** <a id="server-timing-header" /> Determines whether to include a `Server-Timing` header within the response.
+```js filename="./routes.js"
+new Router()
+  .get('/', {
+    headers: {
+      "remove_response_headers": ["city", "state", "zipcode"],
+    }
+  })
+```
+</edgejs>
 
-    **Example:**
-
-    ```js
-    "server_timing_header": true,
-    ```
-
-    **Default Behavior:** By default, the response will not include a `Server-Timing` header.
--->
-
-## Log
+## Log {/*log*/}
 
 Log features customize how log data is stored.
 
@@ -951,7 +1467,11 @@ Log features customize how log data is stored.
 
 Determines the value that will be assigned to RTLD's custom log field. 
 
-One use for this feature is to add request and response header values to your log data. 
+<Callout type="info">
+
+  One use for this feature is to add request and response header values to your log data. 
+
+</Callout>
 
 -   **Request Header Syntax:** `%{<REQUEST HEADER>}i`
 
@@ -974,11 +1494,64 @@ One use for this feature is to add request and response header values to your lo
 
 -   This feature defines the value that will be set for the custom log field. If this feature is applied multiple times to the same request, then the last instance applied to the request will overwrite all previous instances.
 
+<edgejs>
+<Callout type="info">
+
+  One use for this feature is to add request and response header values to your log data. 
+
+</Callout>
+
+-   **Request Header Syntax:** `%{<REQUEST HEADER>}i`
+
+    **Examples:** `%{Accept-Encoding}i` `%{Referer}i` `%{Authorization}i`
+
+-   **Response Header:** `%{<RESPONSE HEADER>}o`
+
+    **Examples:** `%{Age}o` `%{Content-Type}o` `%{Cookie}o`
+
+**Key information:**
+
+-   A custom log field can contain any combination of header fields and plain text.
+-   Valid characters for this field include the following: alphanumeric (i.e., 0-9, a-z, and A-Z), dashes, colons, semi-colons, apostrophes, commas, periods, underscores, equal signs, parentheses, brackets, and spaces. The percentage symbol and curly braces are only allowed when used to specify a header field.
+-   The spelling for each specified header field must match the desired request/response header name.
+-   When specifying multiple headers, it is recommended to use a separator to identify each header.
+
+For example, an abbreviation may be used to identify each header.
+
+**Sample Syntax:** `AE: %{Accept-Encoding}i A: %{Authorization}i CT: %{Content-Type}o`
+
+-   This feature defines the value that will be set for the custom log field. If this feature is applied multiple times to the same request, then the last instance applied to the request will overwrite all previous instances.
+
+**Example:**
+
+```js filename="./routes.js"
+new Router()
+  .get('/', {
+    logs: {
+      "custom_log_field_format": "%{Accept-Encoding}i %{Referer}i %{Authorization}i",
+    }
+  })
+```
+</edgejs>
+
 **Default Value:** -
 
 #### Log Query String {/*log-query-string*/}
 
 Determines whether a query string will be stored along with the URL in access logs. This feature does not apply to requests whose URL does not contain a query string.
+
+<edgejs>
+**Example:**
+
+```js filename="./routes.js"
+new Router()
+  .get('/', {
+    logs: {
+      "log_query_string": true,
+    }
+  })
+```
+</edgejs>
 
 **Default Behavior:** The default behavior is to ignore query strings when recording URLs in an access log.
 
@@ -992,17 +1565,13 @@ This feature masks a client's subnet by:
 
     **Sample Scenario:**
 
-    Applying this feature to a client whose IP address is `192.0.2.50` would result in the following masked IP address:
-
-    `192.0.2.0`
+    Applying this feature to a client whose IP address is `192.0.2.50` would result in the following masked IP address: `192.0.2.0`
 
 -   **IPv6:** Setting the last 32 bits to `0`.
 
     **Sample Scenario:**
 
-    Applying this feature to a client whose IP address is `2001:DB8::DD22:42:1234` would result in the following masked IP address:
-
-    `2001:DB8::DD22:42:0`
+    Applying this feature to a client whose IP address is `2001:DB8::DD22:42:1234` would result in the following masked IP address: `2001:DB8::DD22:42:0`
 
 <Callout type="tip">
 
@@ -1010,15 +1579,42 @@ This feature masks a client's subnet by:
 
 </Callout>
 
+<edgejs>
+This feature masks a client's subnet by:
+
+-   **IPv4:** Setting the last octet to `0`.
+
+    **Sample Scenario:**
+
+    Applying this feature to a client whose IP address is `192.0.2.50` would result in the following masked IP address: `192.0.2.0`
+
+-   **IPv6:** Setting the last 32 bits to `0`.
+
+    **Sample Scenario:**
+
+    Applying this feature to a client whose IP address is `2001:DB8::DD22:42:1234` would result in the following masked IP address: `2001:DB8::DD22:42:0`
+
+<Callout type="tip">
+
+  Use this feature as part of your General Data Protection Regulation (GDPR) compliance strategy.
+
+</Callout>
+
+**Example:**
+
+```js filename="./routes.js"
+new Router()
+  .get('/', {
+    logs: {
+      "mask_client_subnet": true,
+    }
+  })
+```
+</edgejs>
+
 **Default Behavior:** By default, the system logs a client's IP address without masking.
 
-<!--
-    ```js
-    "mask_client_subnet": true,
-    ```
--->
-
-## Origin
+## Origin {/*origin*/}
 
 Origin features control how the CDN communicates with an origin server.
 
@@ -1031,15 +1627,23 @@ Defines the maximum number of requests for a `Keep-Alive` connection before it i
 -   Specify this value as a whole integer. Do not include commas or periods in the specified value.
 -   Setting the maximum number of requests to a low value is strongly discouraged and may result in performance degradation.
 
-<!--
+<edgejs>
+**Key information:**
 
-**Example:** 
+-   Specify this value as a whole integer. Do not include commas or periods in the specified value.
+-   Setting the maximum number of requests to a low value is strongly discouraged and may result in performance degradation.
 
-```js
-"max_keep_alive_requests": 12000,
+**Example:**
+
+```js filename="./routes.js"
+new Router()
+  .get('/', {
+    origin: {
+      "max_keep_alive_requests": 12000,
+    }
+  })
 ```
-
--->
+</edgejs>
 
 **Default Behavior:** 10,000 requests
 
@@ -1053,15 +1657,23 @@ Defines the set of CDN-specific request headers that will be forwarded from an e
 -   Each CDN-specific request header defined in this feature will be forwarded to an origin server.
 -   Prevent a CDN-specific request header from being forwarded to an origin server by removing it from this list.
 
-<!--
+<edgejs>
+**Key information:**
 
-**Example:** 
+-   Each CDN-specific request header defined in this feature will be forwarded to an origin server.
+-   Prevent a CDN-specific request header from being forwarded to an origin server by removing it from this list.
 
-```js
-"proxy_special_headers": ["X-Forwarded-For","X-Host","X-EC-Tag"]
+**Example:**
+
+```js filename="./routes.js"
+new Router()
+  .get('/', {
+    origin: {
+      "proxy_special_headers": ["X-Forwarded-For","X-Host","X-EC-Tag"],
+    }
+  })
 ```
-
--->
+</edgejs>
 
 **Default Behavior:** By default, all CDN-specific request headers are forwarded to the origin server.
 
@@ -1069,23 +1681,22 @@ Defines the set of CDN-specific request headers that will be forwarded from an e
 
 Defines the origin configuration to which requests will be forwarded when they cannot be served from cache.
 
-<!--
+<edgejs>
+**Example:**
 
-```js
-"set_origin": string
+```js filename="./routes.js"
+new Router()
+  .get('/', {
+    origin: {
+      "set_origin": "marketing",
+    }
+  })
 ```
-
-**Example:** 
-
-```js
-"set_origin": "marketing"
-```
-
--->
+</edgejs>
 
 **Default Behavior:** By default, requests that are not served from cache are served through either Serverless Compute or the origin configuration mapped to the request's hostname. 
 
-## Response
+## Response {/*response*/}
 
 Response features manipulate the response sent to the client.
 
@@ -1099,25 +1710,45 @@ Defines the set of media types (aka content type) that are eligible for edge ser
 -   Certain types of content, such as images, video, and audio media assets (e.g., JPG, MP3, MP4, etc.), are already compressed. Additional compression on these types of assets will not significantly diminish file size. Therefore, the compression of these types of assets is not recommended.
 -   Wildcard characters, such as asterisks, are not supported.
 
-<!--
+<edgejs>
+**Key information:**
 
-```js
-"compress_content_types": ["text/plain", "text/html", "text/css"],
+-   This feature only applies to assets whose size is less than 1 MB. Larger assets will not be compressed by our servers.
+-   Certain types of content, such as images, video, and audio media assets (e.g., JPG, MP3, MP4, etc.), are already compressed. Additional compression on these types of assets will not significantly diminish file size. Therefore, the compression of these types of assets is not recommended.
+-   Wildcard characters, such as asterisks, are not supported.
+
+**Example:**
+
+```js filename="./routes.js"
+new Router()
+  .get('/', {
+    response: {
+      "compress_content_types": ["text/plain", "text/html", "text/css"],
+    }
+  })
 ```
-
--->
+</edgejs>
 
 #### Allow Prefetching of Uncached Content {/*allow-prefetching-of-uncached-content*/}
 
 Determines whether prefetching will be allowed for cache misses.
 
-**Default Behavior:** By default, prefetching is allowed for cache misses.
+<edgejs>
+Determines whether prefetching will be disabled for cache misses.
 
-<!--
-    ```js
-    "disable_prefetching_uncached_content": true
-    ```
--->
+**Example:**
+
+```js filename="./routes.js"
+new Router()
+  .get('/', {
+    response: {
+      "disable_prefetching_uncached_content": true,
+    }
+  })
+```
+</edgejs>
+
+**Default Behavior:** By default, prefetching is allowed for cache misses.
 
 #### Set Done {/*set-done*/}
 
@@ -1129,15 +1760,28 @@ Omitting this feature allows:
 -   The request to be forwarded to an origin server.
 -   The response to be cached. 
 
-**Default Behavior:** By default, cache misses are forwarded to an origin server or to Serverless Compute. Additionally, responses are cached according to your caching policy.
+<edgejs>
+This feature is typically combined with the `set_status_code` and `set_response_body` features to send a custom response. 
 
-<!--
-    ```js
-    "set_status_code": 200,
-    "set_response_body": "<!DOCTYPE html><title>hi</title>",
-    "set_done": true
-    ```
--->
+Omitting this feature allows:
+-   The request to be forwarded to an origin server.
+-   The response to be cached. 
+
+**Example:**
+
+```js filename="./routes.js"
+new Router()
+  .get('/', {
+    response: {
+      "set_status_code": 200,
+      "set_response_body": "<!DOCTYPE html><title>hi</title>",
+      "set_done": true,
+    }
+  })
+```
+</edgejs>
+
+**Default Behavior:** By default, cache misses are forwarded to an origin server or to Serverless Compute. Additionally, responses are cached according to your caching policy.
 
 #### Set Response Body {/*set-response-body*/}
 
@@ -1149,25 +1793,45 @@ Defines a custom response body.
 -   This response body is always sent instead of a cached response or the response provided by an origin server.
 -   Prevent requests from being forwarded to an origin server by also passing the `set_done` feature.
 
-**Default Behavior:** By default, our CDN does not alter the response body sent to the client.
+<edgejs>
+**Key information:**
 
-<!--
-    ```js
-    "set_response_body": "<!DOCTYPE html><title>hi</title>",
-    ```
--->
+-   Use HTTP variables to dynamically construct this response body.
+-   This response body is always sent instead of a cached response or the response provided by an origin server.
+-   Prevent requests from being forwarded to an origin server by also passing the `set_done` feature.
+
+**Example:**
+
+```js filename="./routes.js"
+new Router()
+  .get('/', {
+    response: {
+      "set_response_body": "<!DOCTYPE html><title>hi</title>",
+    }
+  })
+```
+</edgejs>
+
+**Default Behavior:** By default, our CDN does not alter the response body sent to the client.
 
 #### Set Status Code {/*set-status-code*/}
 
 Defines the HTTP status code for the response sent to the client.
 
-**Default Behavior:** By default, the HTTP status code indicates how the request was handled. 
+<edgejs>
+**Example:**
 
-<!--
-    ```js
-    "set_status_code": 200,
-    ```
--->
+```js filename="./routes.js"
+new Router()
+  .get('/', {
+    response: {
+      "set_status_code": 200,
+    }
+  })
+```
+</edgejs>
+
+**Default Behavior:** By default, the HTTP status code indicates how the request was handled. 
 
 ## Set Variables {/*set-variables*/}
 
@@ -1195,18 +1859,47 @@ This feature assigns a value to one or more user-defined variable(s) that are  p
 -   Valid characters for the variable name are: alphanumeric, dashes, underscores, and periods.
 -   **Syntax:** `"<VARIABLE>": "<VALUE>"`
 
+<edgejs>
+The `set_variables` object assigns a value to one or more user-defined variable(s) that are  passed to your bespoke traffic processing solution. Define each desired variable as a key-value pair. 
+
+**Key information:**
+
+-   This feature is only applicable when:
+    -   Custom logic that is specific to your traffic controls how requests will be processed. Our CDN service supports the capability to define customized traffic processing logic. This solution addresses specialized customer needs that cannot be implemented through standard configuration. If your CDN traffic requires a bespoke solution, then contact our Solutions Engineering team.
+    -   This bespoke solution expects a variable. 
+
+    <Callout type="info">
+
+      Upon implementing a bespoke solution, a member of our Solutions Engineering team will provide information about a variable's purpose and the information that should be passed to it.
+
+    </Callout>
+
+    <Callout type="info">
+
+      Variables defined by this feature will be ignored when either a bespoke solution has not been defined for your CDN account or the specified variable has not been defined within your solution.
+
+    </Callout>
+
+-   HTTP variables may not be used when defining a user-defined variable.
+-   Valid characters for the variable name are: alphanumeric, dashes, underscores, and periods.
+-   **Syntax:** `"<VARIABLE>": "<VALUE>"`
+
+**Example:**
+
+```js filename="./routes.js"
+new Router()
+  .get('/', {
+    set_variables: {
+        "traffic": "standard",
+        "event": "basketball",
+    }
+  })
+```
+</edgejs>
+
 **Default Behavior:** By default, our CDN does not pass user variables. 
 
-<!--
-    ```js
-    "set_variables": {
-		"traffic": "standard",
-		"event": "basketball"
-    },
-    ```
--->
-
-## URL
+## URL {/*url*/}
 
 URL features redirect or rewrite requests to a different URL.
 
@@ -1222,11 +1915,24 @@ Determines whether requests may be redirected to the hostname defined in the `Lo
 
 **Default Behavior:** By default, our edge servers will not follow the redirect defined in the `Location` response header returned by an origin server.
 
-<!--
-    ```js
-    "follow_redirects": true,
-    ```
--->
+<edgejs>
+<Callout type="important">
+
+  All requests, regardless of HTTP method (e.g., `POST` and `PUT`), are redirected as `GET` requests.
+
+</Callout>
+
+**Example:**
+
+```js filename="./routes.js"
+new Router()
+  .get('/', {
+    url: {
+      "follow_redirects": true,
+    }
+  })
+```
+</edgejs>
 
 #### URL Redirect {/*url-redirect*/}
 
@@ -1254,6 +1960,73 @@ Redirects requests according to the `Location` header. Pass the following proper
       Redirecting requests to a relative path may result in an invalid URL when fielding requests from various hostnames. Use an absolute URL to ensure that requests are properly redirected.
 
     </Callout>
+
+<edgejs>
+Pass the following properties:
+
+-   **code (*Integer*):** Determines the HTTP status code for the response.
+-   **source (*String*):** Define a regular expression that identifies the requests that will be redirected by their relative path. This relative path starts directly after the hostname.
+
+    <Callout type="important">
+
+      Verify that the specified pattern does not conflict with this route's path.
+
+    </Callout>
+
+-   **destination (*String*):** Define a regular expression for the URL to which the requests identified in the `source` property will be redirected. 
+-   **syntax (*String*):** Determines whether the `source` property consists of a regular expression or a path that will be converted into a regular expression. Valid values are:
+
+    -   **regexp:** Treats both the `source` and `destination` properties as regular expressions.
+
+    <Callout type="info">
+
+      You may use up to 9 numbered backreferences for text captured within the `source` property. 
+
+      For example, if the `source` property contains two capture groups (e.g., `/(sales|marketing)/(.*)`, then you may backreference them within the `destination` property (e.g., `/$1/$2`). 
+
+    </Callout>
+
+    **Example:**
+
+    ```js filename="./routes.js"
+    new Router()
+      .get('/', {
+        url: {
+          "url_redirect": {
+            "source": "/marketing/images/(.*)",
+            "destination": "/images/$1",
+            "syntax": "regexp",
+            "code": 301
+            }
+        }
+      })
+    ```
+
+-   **path-to-regexp:** Treats both the `source` and `destination` properties as paths that will be converted into regular expressions. This syntax supports named parameters (e.g., `:productId`), which are defined by prefixing the parameter name with a colon. Backreference a named parameter defined within the `syntax` property by specifying it within the `destination` property.
+
+    **Example:**
+
+    ```js filename="./routes.js"
+    new Router()
+      .get('/', {
+        url: {
+          "url_redirect": {
+            "source": "/marketing/images/:path",
+            "destination": "/images/:path",
+            "syntax": "path-to-regexp",
+            "code": 301
+            }
+        }
+      })
+    ```
+
+<Callout type="info">
+
+  Use HTTP variables to dynamically construct the above paths. However, you may not use response metadata (e.g., `%{resp_<RESPONSE HEADER>}`).
+
+</Callout>
+
+</edgejs>
     
 **Default Behavior:** By default, requests are not redirected.
 
@@ -1299,20 +2072,80 @@ This feature allows our edge servers to rewrite the URL without performing a tra
 
     </Callout>
 
+<edgejs>
+This feature allows our edge servers to rewrite the URL without performing a traditional redirect. This means that the requester will receive the same response code as if the rewritten URL had been requested.
+
+<Callout type="info">
+
+  This feature takes precedence when multiple features will be applied to a request.
+
+</Callout>
+
+-   **source (*String*):** Define a regular expression that identifies the requests that will be rewritten by their relative path. This relative path starts directly after the hostname.
+
+    <Callout type="important">
+
+      Verify that the specified pattern does not conflict with this route's path.
+
+    </Callout>
+
+-   **destination (*String*):** Define a regular expression that sets a new relative path. This relative path starts directly after the hostname. 
+
+-   **syntax (*String*):** Determines whether the `source` property consists of a regular expression or a path that will be converted into a regular expression. Valid values are:
+
+    -   **regexp:** Treats both the `source` and `destination` properties as regular expressions.
+
+        <Callout type="info">
+
+          You may use up to 9 numbered backreferences for text captured within the `source` property. 
+
+          For example, if the `source` property contains two capture groups (e.g., `/(sales|marketing)/(.*)`, then you may backreference them within the `destination` property (e.g., `/$1/$2`). 
+
+        </Callout>
+
+        **Example:**
+
+        ```js filename="./routes.js"
+        new Router()
+          .get('/', {
+            url: {
+              "url_rewrite": [{
+                "source": "/marketing/images/(.*)",
+                "destination": "/images/$1",
+                "syntax": "regexp"
+	          }]
+            }
+          })
+        ```
+
+    -   **path-to-regexp:** Treats both the `source` and `destination` properties as paths that will be converted into regular expressions. This syntax supports named parameters (e.g., `:productId`), which are defined by prefixing the parameter name with a colon. Backereference a named parameter defined within the `syntax` property by specifying it within the `destination` property.
+
+        **Example:**
+
+        ```js filename="./routes.js"
+        new Router()
+          .get('/', {
+            url: {
+              "url_rewrite": [{
+                "source": "/marketing/images/:path",
+                "destination": "/images/:path",
+                "syntax": "path-to-regexp"
+	          }]
+            }
+          })
+        ```
+
+<Callout type="info">
+
+  Use HTTP variables to dynamically construct the above paths. However, you may not use response metadata (e.g., `%{resp_<RESPONSE HEADER>}`).
+
+</Callout>
+
+</edgejs>
+
 **Default Behavior:** By default, requests are not rewritten.
 
-<!--
-```js
-"url_rewrite": [{
-"regex_rewrite_params": {
-"source": "/marketing/images/:path",
-"destination": "/images/:path",
-"syntax": "path-to-regexp"
-}]
-```
--->
-
-## HTTP Variables
+## HTTP Variables {/*http-variables*/}
 
 HTTP variables retrieves request and response metadata. Use this metadata to dynamically alter a request or a response.
 
@@ -1325,7 +2158,7 @@ The following features support HTTP variables:
 -   [url_redirect](#url-redirect)
 -   [url_rewrite](#url-rewrite)
 
-### Definitions
+### Definitions {/*definitions*/}
 
 HTTP variables are described below.
 
@@ -1545,7 +2378,7 @@ HTTP variables are described below.
 
     **Sample Value:** `TLSv1.2`
 
-### Usage
+### Usage {/*usage*/}
 
 HTTP variables support the following syntax:
 
@@ -1569,7 +2402,7 @@ HTTP variables support the following syntax:
 
 </Callout>
 
-#### Delimiter Quick Reference
+#### Delimiter Quick Reference {/*delimiter-quick-reference*/}
 
 A delimiter can be specified after an HTTP variable to achieve any of the following effects:
 
@@ -1599,7 +2432,7 @@ A brief description for each delimiter is provided below.
 | ,,        | Convert all instances of the specified character in the value associated with the HTTP variable to lower-case.  |
 | ^^        | Convert all instances of the specified character in the value associated with the HTTP variable to upper-case.  |
 
-#### Exceptions
+#### Exceptions {/*exceptions*/}
 
 Text will not be treated as an HTTP variable under the following circumstances:
 
@@ -1625,7 +2458,7 @@ Text will not be treated as an HTTP variable under the following circumstances:
 
     **Example:** The following sample value contains a trailing curly brace that will be treated as a literal value: `%{host}}`
 
-#### Setting Default Header Values
+#### Setting Default Header Values {/*setting-default-header-values*/}
 
 A default value can be assigned to a header when it meets any of the following conditions:
 
@@ -1661,14 +2494,14 @@ Define this default value through any of the following methods:
 
     `%{http_referer:+unspecified}`
 
-#### Manipulating Variables
+#### Manipulating Variables {/*manipulating-variables*/}
 
 Variables can be manipulated in the following ways:
 
 -   Expanding substrings
 -   Removing patterns
 
-#### Substring Expansion
+#### Substring Expansion {/*substring-expansion*/}
 
 By default, a variable will expand to its full value. Use the following syntax to only expand a substring of the variable's value:
 
@@ -1697,7 +2530,7 @@ The following string demonstrates various methods for manipulating variables:
 Based on the sample request URL, the above variable manipulation will produce the following value:
 `https://www.mydomain.com/mobile/marketing/proposal.htm`
 
-#### Pattern Removal
+#### Pattern Removal {/*pattern-removal*/}
 
 Text that matches a specific pattern can be removed from either the beginning or the end of a variable's value. 
 -   Remove text when the specified pattern is found at the beginning of a variable's value.
@@ -1708,7 +2541,7 @@ Text that matches a specific pattern can be removed from either the beginning or
 
     `%{<VARIABLE>%<PATTERN>}`
 
-#### Find And Replace
+#### Find And Replace {/*find-and-replace*/}
 
 Find and replace syntax is described below.
 
@@ -1764,3 +2597,4 @@ Find and replace syntax is described below.
         `^` indicates that only text that starts with the specified pattern will be captured.
         `$` indicates that only text that ends with the specified pattern will be capture.
 -   Omitting the `/<REWRITE>` value will result in the deletion of the text that matches the pattern.
+

@@ -135,7 +135,7 @@ You may create, modify, and delete environment variables from the {{ PORTAL }}.
 
     {{ ENV_NAV }} **Environment Variables**.
 
-2.  Click on the <img data-inline-img src="/images/v7/icons/delete-4.png" alt="Delete" /> icon next to the desired environment variable.
+2.  Click on the <Image inline src="/images/v7/icons/delete-4.png" alt="Delete" /> icon next to the desired environment variable.
 
 3.  When prompted, click **Remove Variable** to confirm the permenant deletion of that environment variable.    
 
@@ -190,7 +190,7 @@ Perform the following steps to permanently delete an environment:
     2.  Select the desired property.
     3.  From the left-hand pane, select the desired environment from under the **Environments** section.
 
-2.  Click the <img data-inline-img src="/images/v7/icons/menu-kebab.png" alt="Menu" /> icon next to the desired environment and then click **Delete**.
+2.  Click the <Image inline src="/images/v7/icons/menu-kebab.png" alt="Menu" /> icon next to the desired environment and then click **Delete**.
 3.  When prompted, click **Remove Environment** to confirm the permenant deletion of that environment.
 
 <Callout type="info">

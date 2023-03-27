@@ -142,7 +142,7 @@ to site traffic will be detected.
 **Key information:**
 -   Only a single rule set may be associated with a managed rule.
 -   A threat detection policy or its rules may be disabled.
-    -   View a policy's rules by clicking on the <img data-inline-img src="/images/v7/icons/expand-section.png" alt="Delete icon" /> icon that appears directly to the left of its name. 
+    -   View a policy's rules by clicking on the <Image inline src="/images/v7/icons/expand-section.png" alt="Delete icon" /> icon that appears directly to the left of its name. 
 
         <Callout type="info">
 

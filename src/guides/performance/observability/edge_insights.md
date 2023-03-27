@@ -157,7 +157,7 @@ You may share an entire report or specific data with other users.
     
     `https://edge-insights.edgio.app/?avg=0&bin=auto&end_time=1638817682&f=%7B%22geoip_country_name%22%3A%22United+States%22%7D&fstatus=%7B%22geoip_country_name%22%3A%7B%22value%22%3A%22United+States%22%2C%22active%22%3Atrue%7D%7D&gt=chart1&h=0&legend=0&log=0&mt=graph_by_pop&nm=false&notf=%7B%7D&notfstatus=%7B%7D&p=1&pc1s=status_code&pc2s=geoip_country_name&pp=10&prefix=&quantiles=&selectedChart=histogram&selectedQuantitativeField=bytes_in&start_time=1638212206&ti=604800&topn=10&ttr=10&vs=&vt=accesslog`
     
--   **Specific Data:** Click on the <img data-inline-img src="/images/v7/icons/json.png" alt="JSON icon" /> icon next to the data that you would like to share. {{ PRODUCT }} will load the corresponding JSON data in a new window or tab. You should then either:
+-   **Specific Data:** Click on the <Image inline src="/images/v7/icons/json.png" alt="JSON icon" /> icon next to the data that you would like to share. {{ PRODUCT }} will load the corresponding JSON data in a new window or tab. You should then either:
     
     -   Share the JSON data with the desired individual(s).
     -   Share the data's URL with another {{ PRODUCT }} team member.
@@ -203,7 +203,7 @@ The time chart (aka line graph) graphs the current report's data over time.
 
     ![Layout options](/images/v7/performance/edge-insights-layout-options.png)
 
-    -    **Single Line Chart:** By default, all data is plotted within a single chart with individual lines for each entry. Switch from multiple line charts to a single line chart by clicking the <img data-inline-img src="/images/v7/icons/single-chart.png" alt="Single Chart icon" /> icon.
+    -    **Single Line Chart:** By default, all data is plotted within a single chart with individual lines for each entry. Switch from multiple line charts to a single line chart by clicking the <Image inline src="/images/v7/icons/single-chart.png" alt="Single Chart icon" /> icon.
 
         <Callout type="info">
 
@@ -211,7 +211,7 @@ The time chart (aka line graph) graphs the current report's data over time.
 
         </Callout>
 
-    -    **Multiple Line Charts:** Generate a line graph for each entry by clicking the <img data-inline-img src="/images/v7/icons/separate-charts.png" alt="Separate Charts icon" /> icon.
+    -    **Multiple Line Charts:** Generate a line graph for each entry by clicking the <Image inline src="/images/v7/icons/separate-charts.png" alt="Separate Charts icon" /> icon.
 
 -   Hovering over the line graph will indicate the exact number of requests that were plotted for that time slot.
 -   By default, Edge Insights plots data using an optimal time interval for the report's time range. You may override this by switching the resolution from **Auto** to the desired time interval.
@@ -222,7 +222,7 @@ The time chart (aka line graph) graphs the current report's data over time.
 
     </Callout>
     
--   View the data used to plot this chart by clicking on the <img data-inline-img src="/images/v7/icons/json.png" alt="JSON icon" /> icon. Upon clicking this icon, {{ PRODUCT }} displays this data in JSON format within a new tab.
+-   View the data used to plot this chart by clicking on the <Image inline src="/images/v7/icons/json.png" alt="JSON icon" /> icon. Upon clicking this icon, {{ PRODUCT }} displays this data in JSON format within a new tab.
 
 ## Top Results Charts
 
@@ -278,7 +278,7 @@ Perform the following common tasks from within the **Filters** section in the le
 
     ![Disabled filter](/images/v7/performance/edge-insights-disabled-filter.png)
 
--   Modify a filter by clicking the <img data-inline-img src="/images/v7/icons/pencil.png" alt="Edit icon" /> icon next to it.
+-   Modify a filter by clicking the <Image inline src="/images/v7/icons/pencil.png" alt="Edit icon" /> icon next to it.
 -   Manually add a filter by performing the following steps:
     
     1.  Click on **+ Add Filter**.
@@ -316,7 +316,7 @@ Log data provides contextual information about a request that allows you to gain
 
 -   Log entries are returned as paginated results. By default, we provide 10 log entries per page. You may increase this value up to 1,000 through the Logs per page option.
 -   View a specific log entry by clicking on it.
--   View log data for the current page by clicking on the <img data-inline-img src="/images/v7/icons/json.png" alt="JSON icon" /> icon. Upon clicking this icon, Edge Insights displays the current page's log data in JSON format within a new tab.
+-   View log data for the current page by clicking on the <Image inline src="/images/v7/icons/json.png" alt="JSON icon" /> icon. Upon clicking this icon, Edge Insights displays the current page's log data in JSON format within a new tab.
 -   Edge Insights restricts log retrieval to 10,000 log entries. If the current report consists of more log entries, then you may only retrieve log data for 10,000 of the most recent requests. This limit solely applies to log retrieval. Your report's time chart and **Top Results** charts display all available data without regard to this limit.
 
     <Callout type="info">

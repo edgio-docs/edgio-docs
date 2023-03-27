@@ -33,7 +33,7 @@ Upon creating a property, it will contain a `production` environment with the fo
 **To create a property**
 1.  From the {{ PORTAL_LINK }}, determine where you will create a property.
     -   **Private Space:** By default, the {{ PORTAL }} loads your private space. Access to a property created in your private space is restricted to your account. Proceed to the next step.
-    -   **Team Space:** Load the desired team by clicking the <img data-inline-img src="/images/v7/icons/menu-up-down.png" alt="Menu" /> icon that appears next to your name and then selecting the desired team.
+    -   **Team Space:** Load the desired team by clicking the <Image inline src="/images/v7/icons/menu-up-down.png" alt="Menu" /> icon that appears next to your name and then selecting the desired team.
 
         ![Team Selection](/images/v7/basics/team-selection.png)
 

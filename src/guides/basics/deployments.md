@@ -43,7 +43,7 @@ Deployments are versioned. Each deployment is assigned a unique version number. 
 
     {{ ENV_NAV }} **Deployments**.
 
-2.  Find the deployment that should be applied to this environment, click its <img data-inline-img src="/images/v7/icons/menu-kebab.png" alt="Menu" /> icon, and then click **Rollback to this version**.
+2.  Find the deployment that should be applied to this environment, click its <Image inline src="/images/v7/icons/menu-kebab.png" alt="Menu" /> icon, and then click **Rollback to this version**.
 
 3.  When prompted, click **Promote to production** to confirm this deployment.
 

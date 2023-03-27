@@ -526,9 +526,9 @@ You may create, modify, and delete custom rule sets.
 3.  Make the desired changes.
 
     **Key tasks:**
-    -   Delete a variable by clicking <img data-inline-img src="/images/v7/icons/delete-3.png" alt="Delete icon" />  **Delete Variable**.
-    -   Delete a match within a variable by clicking the <img data-inline-img src="/images/v7/icons/delete-3.png" alt="Delete icon" /> icon.
-    -   Delete a condition by clicking <img data-inline-img src="/images/v7/icons/delete-3.png" alt="Delete icon" /> **Delete Condition**.
+    -   Delete a variable by clicking <Image inline src="/images/v7/icons/delete-3.png" alt="Delete icon" />  **Delete Variable**.
+    -   Delete a match within a variable by clicking the <Image inline src="/images/v7/icons/delete-3.png" alt="Delete icon" /> icon.
+    -   Delete a condition by clicking <Image inline src="/images/v7/icons/delete-3.png" alt="Delete icon" /> **Delete Condition**.
 
         <Callout type="info">
 
@@ -536,7 +536,7 @@ You may create, modify, and delete custom rule sets.
 
         </Callout>
 
-    -   Delete a rule by clicking the <img data-inline-img src="/images/icons/delete.png" alt="Delete icon" /> icon that appears to the right of the **Name** option and then clicking **Confirm**.
+    -   Delete a rule by clicking the <Image inline src="/images/icons/delete.png" alt="Delete icon" /> icon that appears to the right of the **Name** option and then clicking **Confirm**.
 4.  Click **Submit**.
 
 **To delete a custom rule set**
@@ -557,4 +557,3 @@ You may create, modify, and delete custom rule sets.
 3.  Click on the desired custom rule set.
 3.  Click **Delete**.
 4.  Click **Confirm**.
-

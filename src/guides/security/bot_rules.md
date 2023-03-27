@@ -467,7 +467,7 @@ You may create, modify, and delete bot rule sets.
         type** option.
     -   **Custom matches only:**
 
-        Delete variables and matches within a variable by clicking the <img data-inline-img src="/images/v7/icons/remove.png" alt="Delete" /> (delete) icon.
+        Delete variables and matches within a variable by clicking the <Image inline src="/images/v7/icons/remove.png" alt="Delete" /> (delete) icon.
     -   **Custom matches only:**
 
         Delete a condition by clicking **Delete Condition**.

@@ -57,7 +57,7 @@ Each website that will run behind {{ PRODUCT }} requires an {{ PRODUCT }} proper
 
         ![+ New Property](/images/v7/basics/property-create-3-a.png?width=450)
 
-    -   **Framework:** If you plan on integrating a framework and do not plan on using an origin server to serve requests, then delete the `web` origin by clicking the <img data-inline-img src="/images/v7/icons/delete-2.png" alt="Delete" /> icon that appears next to it. 
+    -   **Framework:** If you plan on integrating a framework and do not plan on using an origin server to serve requests, then delete the `web` origin by clicking the <Image inline src="/images/v7/icons/delete-2.png" alt="Delete" /> icon that appears next to it. 
 
         Your origin configuration should now look similar to this:
 

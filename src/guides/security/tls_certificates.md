@@ -162,7 +162,7 @@ Once the above requirements are met, you should verify that a TLS certificate fo
 
     ![TLS Certificate section](/images/v7/security/tls-certificate.png)
 
-3.  If a TLS certificate has not yet been generated, you may manually generate it by clicking <img data-inline-img src="/images/v7/icons/recheck-validation.png" alt="Recheck Validation icon" /> under the **ACME Challenge Record** column.
+3.  If a TLS certificate has not yet been generated, you may manually generate it by clicking <Image inline src="/images/v7/icons/recheck-validation.png" alt="Recheck Validation icon" /> under the **ACME Challenge Record** column.
 
     {{ PRODUCT }} will generate a TLS certificate for that hostname within a few minutes.
 

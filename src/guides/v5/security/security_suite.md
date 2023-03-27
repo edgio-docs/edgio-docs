@@ -283,7 +283,7 @@ Restrict access to your website on a per environment basis through an IP address
         1.  From the **Blocked IPs** section, click **Add rule**. 
         2.  In the **IP/CIDR** option, type the IPv4 address or IP block that will be always be blocked within this environment.
         3.  Optional. In the **Description** option, provide a reason for why this IPv4 address or IP block should always be blocked.
-    -   **Delete Rule:** Click <img data-inline-img src="/images/icons/delete.png" alt="Delete icon" /> next to the rule that should be deleted.
+    -   **Delete Rule:** Click <Image inline src="/images/icons/delete.png" alt="Delete icon" /> next to the rule that should be deleted.
 
 5.  Click **Save changes**.
 

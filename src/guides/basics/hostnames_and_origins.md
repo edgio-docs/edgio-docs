@@ -95,7 +95,7 @@ On a per environment-basis, define each hostname that will be served through {{ 
 
         ![Hostnames](/images/v7/basics/hostnames.png?width=600)
 
-    -   **Delete a Hostname:** Click <img data-inline-img src="/images/icons/delete.png" alt="Delete icon" /> next to the hostname that should be deleted. 
+    -   **Delete a Hostname:** Click <Image inline src="/images/icons/delete.png" alt="Delete icon" /> next to the hostname that should be deleted. 
 
 3.  Repeat step 2 as needed.
 4.  If you are finished making changes to this environment, click **Deploy Changes**.
@@ -153,7 +153,7 @@ On a per environment-basis, define how {{ PRODUCT }} will communicate with your 
     5.  Optional. Add another host to this origin configuration by clicking **+ Add Host** and then performing steps 4.1 - 4.4. 
 5.  Optional. Define TLS settings for this origin configuration. Click on the **Origin TLS Settings** section to expand it.
 
-    1.  Enable SNI by toggling the **Use SNI** option to the on position (<img data-inline-img src="/images/v7/icons/toggle-on.png" alt="Toggle on" />) and then defining the hostname that will be sent as a SNI hint during the TLS handshake. 
+    1.  Enable SNI by toggling the **Use SNI** option to the on position (<Image inline src="/images/v7/icons/toggle-on.png" alt="Toggle on" />) and then defining the hostname that will be sent as a SNI hint during the TLS handshake. 
 
     <Callout type="info">
 
@@ -161,7 +161,7 @@ On a per environment-basis, define how {{ PRODUCT }} will communicate with your 
 
     </Callout>
 
-    2.  If your origin servers use a self-signed certificate, then you should toggle the **Allow Self Signed Certs** option to the on position (<img data-inline-img src="/images/v7/icons/toggle-on.png" alt="Toggle on" />).
+    2.  If your origin servers use a self-signed certificate, then you should toggle the **Allow Self Signed Certs** option to the on position (<Image inline src="/images/v7/icons/toggle-on.png" alt="Toggle on" />).
     3.  Set up certificate pinning by adding one or more public keys.
 
         1.  Click **+ Add Pin**.
@@ -246,7 +246,7 @@ From your DNS service provider, point your hostname(s) to a service domain that 
 
     ![DNS - Actions needed](/images/v7/basics/hostnames-dns.png)
 
-3.  From the **DNS Configuration** pane, click <img data-inline-img src="/images/v7/icons/copy-to-clipboard.png" alt="Copy to clipboard icon" />  to copy this domain. 
+3.  From the **DNS Configuration** pane, click <Image inline src="/images/v7/icons/copy-to-clipboard.png" alt="Copy to clipboard icon" />  to copy this domain. 
 
 ### Space-Specific Service Domain {/*space-specific-service-domain*/}
 
@@ -264,7 +264,7 @@ You may point any hostname defined within a space to its service domain.
     1.  From the {{ PORTAL_LINK }}, select the desired private or team space.
     2.  Click **Settings**.
 
-2.  From the **Team DNS Configuration** section, click <img data-inline-img src="/images/v7/icons/copy-to-clipboard.png" alt="Copy to clipboard icon" />  to copy this domain. 
+2.  From the **Team DNS Configuration** section, click <Image inline src="/images/v7/icons/copy-to-clipboard.png" alt="Copy to clipboard icon" />  to copy this domain. 
 
 ### DNS Verification {/*dns-verification*/}
 

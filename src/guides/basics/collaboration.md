@@ -34,7 +34,7 @@ Team management consists of:
 
 **To create a team**
 
-1.  From the {{ PORTAL_LINK }}, click on the <img data-inline-img src="/images/v7/icons/menu-up-down.png" alt="Menu" /> icon next to your name and then click on **Create a team**. 
+1.  From the {{ PORTAL_LINK }}, click on the <Image inline src="/images/v7/icons/menu-up-down.png" alt="Menu" /> icon next to your name and then click on **Create a team**. 
 
     ![Space menu](/images/v7/basics/team-create.png)
 
@@ -97,6 +97,6 @@ Each team member must be assigned one of the following roles:
     1.  From the {{ PORTAL_LINK }}, select the desired team space. 
     2.  From the left-hand pane, click **Members**.
 
-2.  Click the <img data-inline-img src="/images/icons/delete.png" alt="Delete" /> icon next to the team member that will be removed.
+2.  Click the <Image inline src="/images/icons/delete.png" alt="Delete" /> icon next to the team member that will be removed.
 
 3.  When prompted, click **Remove** to confirm that the user will be removed from the team.

@@ -19,7 +19,9 @@ import {SnippetGroup} from './SnippetGroup';
 import Video, {VimeoMDXEmbed} from './Video';
 
 const P = (p: JSX.IntrinsicElements['p']) => (
-  <p className="article-text" {...p} />
+  // modified `<p>` elements to render as a `<div>` element
+  // to allow for inline figures without hydration errors
+  <div className="article-text" {...p} />
 );
 
 const Strong = (strong: JSX.IntrinsicElements['strong']) => (
@@ -60,6 +62,7 @@ export const MDXComponents = {
   h2: H2,
   h3: H3,
   h4: H4,
+  code: InlineCode,
   inlineCode: InlineCode,
   hr: Divider,
   br: BR,
@@ -76,6 +79,7 @@ export const MDXComponents = {
   Video,
   VimeoMDXEmbed,
   img: Image,
+  Image,
   Integrations,
   ExampleButtons,
   SnippetGroup,

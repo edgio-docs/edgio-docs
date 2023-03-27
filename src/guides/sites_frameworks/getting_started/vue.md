@@ -73,7 +73,7 @@ if (isProductionBuild()) {
 
 The above code allows you to prefetch pages from {{ PRODUCT }}'s edge cache to greatly improve browsing speed. To prefetch a page, add the `Prefetch` component from `@edgio/vue` around any rendered component, as such:
 
-```js ins={2,7,9}
+```js ins="2,7,9"
 <script>
   import { Prefetch } from '{{ PACKAGE_NAME }}/vue'
 </script>

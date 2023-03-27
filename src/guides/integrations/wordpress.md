@@ -16,7 +16,7 @@ WordPress is a content management system (CMS) that allows you to host and build
 
 If you don't already have a WordPress site, create one by following the [official WordPress.com guide](https://wordpress.com/support/start/). You may also use other WordPress providers, but setup instructions may differ.
 
-### Create via {{ PRODUCT }} Developer Console {/*create-via-developer-console*/}
+### Create via {{ PORTAL }} {/*create-via-developer-console*/}
 
 1. First, [login to the Developer Console]({{ LOGIN_URL }}) and locate the **New Site** button.
 
@@ -105,7 +105,7 @@ In order for the plugin to be able to interact with the {{ PRODUCT_PLATFORM }}, 
 
 **Environment Name** refers to the {{ PRODUCT }} environment as defined in the [Developer Console]({{ LOGIN_URL }}) for your site. This value will typically be `default` or `production` depending on how your site is setup, but can be any valid environment that you have created.
 
-To obtain the **API Key**, go to your site within the [{{ PRODUCT }} Developer Console]({{ LOGIN_URL }}). Click **Settings > Create new Deploy Token** and enter in a name for the token.
+To obtain the **API Key**, go to your site within the [{{ PORTAL }}]({{ LOGIN_URL }}). Click **Settings > Create new Deploy Token** and enter in a name for the token.
 
 For information on the **Browser Cache TTL**, **Edge Cache TTL**, and **Cache Stale-While-Revalidate** fields, refer to the [Caching guide](/guides/performance/caching).
 

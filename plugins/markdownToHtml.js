@@ -23,7 +23,7 @@ module.exports = {
     smartyPants,
     remarkMdxCodeMeta,
     remarkGfm,
-    // embed
+    html,
   ],
   markdownToHtml,
 };

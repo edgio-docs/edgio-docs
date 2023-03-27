@@ -75,7 +75,7 @@ module.exports = new Router().use(angularRoutes)
 
 The easiest way to add edge caching to your Angular app is to add caching routes before the middleware. For example, imagine you have a route `/pages/c/:categoryId`:
 
-```js ins={5-16}
+```js ins="5-16"
 new Router()
   .get('/pages/c/:categoryId', ({ cache }) => {
     cache({

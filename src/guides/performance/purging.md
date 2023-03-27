@@ -2,75 +2,137 @@
 title: Purging
 ---
 
-This guide covers how you can purge data from the {{ PRODUCT }} edge cache.
+Purge cached content to force the CDN to request a new version of that content from an origin server or Serverless Compute. This ensures that the latest version of that content is delivered to your clients.
 
-## Overview {/*overview*/}
+<Callout type="info">
 
-{{ PRODUCT }} offers three ways to purge responses from the cache:
+  Purging does not delete content from the origin server. A file management tool (e.g., SFTP or rsync) may be used to delete content from an origin server.
 
-- Developer Console
-- CLI
-- REST API
+</Callout>
 
-## Developer Console {/*developer-console*/}
+Purge by relative path, surrogate key, or all cached content using the:
 
-You can purge the cache via the [{{ PRODUCT }} Developer Console]({{ APP_URL }}) by navigating to an environment, selecting the _Caching_ tab, and clicking _Purge the Cache_ under _Cache Purge History_:
+-   [{{ PORTAL }}](#developer-console)
+-   [{{ PRODUCT }} CLI](#cli)
+-   [{{ PRODUCT }} REST API (clear-cache)](#rest-api)
 
-![purge_the_cache_button](/images/purging/purge_the_cache_button.png)
+<Callout type="info">
 
-You can choose to purge all entries, purge by path, by surrogate keys or by cache hashes. You can also save multiple paths in a group if you purge them together regularly:
+  By default, deploying to {{ PRODUCT }} automatically purges that environment's cached content. [Learn more.](#deployments)
 
-![purge_dialog](/images/purging/dialog.png)
+</Callout>
 
-## CLI {/*cli*/}
+## Relative Path {/*relative-path*/}
 
-To purge responses via the CLI, see the [CLI reference](/guides/cli#cache-clear).
+You may specify a relative path that identifies the set of cached respones that will be purged. This relative path starts directly after the hostname.
+
+<Callout type="tip">
+
+  Use an `*` to represent zero or more characters.
+
+</Callout>
+
+**Example:**
+
+This example assumes that you need to purge the following content:
+
+`https://cdn.example.com/sports/basketball/marchtournament.html`
+
+Purge the above URL by specifying the following relative path:
+
+`/sports/basketball/marchtournament.html`
+
+Alternatively, you can use an `*` to recursively purge a directory. The following relative path pattern recursively purges all content from the `/sports` directory including `marchtournament.html`:
+
+`/sports/*` 
+
+## Surrogate Key {/*surrogate-key*/}
+
+You  may purge cached content by surrogate key (aka cache tag). A surrogate key is a label that you may apply to cached responses. Purging by surrogate key allows you to purge related content across your entire site. 
+
+<Callout type="tip">
+
+  Improve performance and reduce the load on your web servers by only purging targetted content through the use of surrogate keys. 
+
+</Callout>
+
+#### Tagging Cached Content {/*tagging-cached-content*/}
+
+Apply a surrogate key by setting the `Surrogate-Key` response header. 
+
+**Syntax:** `Surrogate-Key: <TAG1> <TAG2> <TAG3>`
+
+**Example:** 
+
+For example, the following response header applies three surrogate keys to the cached response. Purging any of those three surrogate keys will purge all cached responses tagged with that surrogate key.
+
+`Surrogate-Key: sports basketball march-tournament`
+
+## {{ PRODUCT }} Developer Console {/*developer-console*/}
+
+Use the {{ PORTAL }} to purge cached content within a specific environment. 
+
+**To purge content**
+
+1.  Load the **Caching** page.
+
+    {{ ENV_NAV }} **Caching**.
+
+2.  From the **Cache Purge History** section, click **Purge the Cache**.
+
+    ![purge_the_cache_button](/images/purging/purge_the_cache_button.png)
+
+3.  Purge:
+
+    -   **All Cached Content:** Select **Purge all entries**.
+    -   **By Path:** Select **Purge by path**. Specify each desired [relative path](#relative-path) on a separate line.
+    -   **By Surrogate Key:** Select **Purge by surrogate key**. Specify each desired [surrogate key](#surrogate-key) on a separate line.
+
+4.  Click **Purge Cache**.
+
+5.  When prompted, click **Purge** to confirm that your content will be purged.
+
+## {{ PRODUCT }} CLI {/*cli*/}
+
+Purge cached content through the {{ PRODUCT }} CLI by passing the [cache-clear argument](/guides/cli#cache-clear). You may purge:
+
+-   **All content:** Exclude the `--path` and `--surrogate-key` options.
+-   **By relative path:** Pass the `--path` option. You may use an `*` to represent zero or more characters.
+-   **By surrogate key:** Pass the `--surrogate-key` option. [Learn more about surrogate keys.](#surrogate-key)
+
+**Example:**
+
+Run the following command to purge the `basketball` surrogate key from the `production` environment from the `my-videos` property:
+
+```bash
+{{ FULL_CLI_NAME }} cache-clear --team=my-team --site=my-videos --environment=production --surrogate-key=basketball
+```
 
 ## REST API {/*rest-api*/}
 
-To purge responses via the REST API, see the [REST API reference](/guides/rest_api#clear-cache).
+Purge cached content through the {{ PRODUCT }} REST API through the [clear-cache endpoint](/guides/rest_api#clear-cache). You may purge:
+
+-   **All content:** Exclude the `paths` and `surrogateKeys` properties.
+-   **By relative path:** Pass the `paths` array of string values. You may use an `*` to represent zero or more characters.
+-   **By surrogate key:** Pass the `surrogateKeys` array of string values. [Learn more about surrogate keys.](#surrogate-key)
 
 ## Deployments {/*deployments*/}
 
-By default, all response are purged from the cache when you deploy a new version of your site. You can override this behavior using the _Preserve cache between deployments_ setting in your environment configuration:
+By default, all cached responses are purged from an environment when you deploy a new version of your site. Override this behavior by marking the **Preserve cache between deployments** setting on the **Caching** page.
 
-![preserve_cache](/images/purging/preserve.png)
+<Callout type="warning">
 
-__Caution:__ While preserving the cache between deployments can greatly reduce the load on your origin following a deployment, it can also lead to inconsistent behavior if the new version of your browser code receives an old, incompatible API response from the cache. Before enabling this feature, we recommend adding an API version number to your URL scheme to ensure that breaking changes to your API don't affect your website's functionality when old responses are served from the cache.
+  While preserving the cache between deployments can greatly reduce the load on your origin following a deployment, it can also lead to inconsistent behavior if the new version of your browser code receives an old, incompatible API response from the cache. Before enabling this feature, we recommend adding an API version number to your URL scheme to ensure that breaking changes to your API don't affect your website's functionality when old responses are served from the cache.
+
+</Callout>
 
 ## Static prerendering after clearing the cache {/*static-prerendering-after-clearing-the-cache*/}
 
-If you have [static prerendering] enabled, the cache will automatically be repopulated when you clear all entries from the cache (such as when you select _Purge all entries_ in the {{ PRODUCT_NAME }} Developer Console or run `{{ FULL_CLI_NAME }} cache-clear` without providing `--path` or `--surrogate-key`). You can view the prerendering progress by clicking on the active deployment for the environment that was cleared.
-
-## Surrogate Keys (Cache Tags) {/*surrogate-keys-cache-tags*/}
-
-Efficient cache purging is an essential part of keeping your website fast and reducing the load on your origin servers. Purging all entries from the cache all may increase your website's load time while the cache repopulates. If you purge all entries from the cache more than once a week, consider using surrogate keys for more targeted purging.
-
-Surrogate keys, also known as **cache tags**,  are unique identifiers that you assign to groups of responses. They allow you to selectively purge related content. You can assign one or more surrogate keys to a response by sending an `{{ HEADER_PREFIX }}-surrogate-key` header in the response. Multiple keys should be separated by spaces.
-
-For example:
-
-```
-HTTP/1.1 200 OK
-{{ HEADER_PREFIX }}-surrogate-key: product.123 shoes all-products
-Content-Type: text/html
-```
-
-In the example above you could purge this response from the cache using any of the surrogate keys. For example, to purge via the CLI:
-
-```bash
-{{ FULL_CLI_NAME }} cache-clear --team=my-team --site=my-site --environment=production --surrogate-key=product.123
-```
-
-or
-
-```bash
-{{ FULL_CLI_NAME }} cache-clear --team=my-team --site=my-site --environment=production --surrogate-key=shoes
-```
+If you have enabled [static prerendering](/guides/performance/static_prerendering), the cache will automatically be repopulated when you clear all entries from the cache (such as when you select _Purge all entries_ in the {{ PRODUCT_NAME }} Developer Console or run `{{ FULL_CLI_NAME }} cache-clear` without providing `--path` or `--surrogate-key`). You can view the prerendering progress by clicking on the active deployment for the environment that was cleared.
 
 ## Automated Purging {/*automated-purging*/}
 
-Here are some ways that you can automate cache purging:
+Automate cache purging through [NPM scripts](#npm-scripts) and [GitHub actions](#github-actions).
 
 ### NPM Scripts {/*npm-scripts*/}
 

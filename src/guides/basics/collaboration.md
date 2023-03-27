@@ -1,63 +1,102 @@
 ---
-title: Teams
+title: Collaboration (Teams)
 ---
 
-This guide shows you how to share your project with other collaborators using teams.
+There are two types of spaces:
 
-## Private Space {/*private-space*/}
+-   **Private:** Access to properties created within a private space is restricted to your user account. You should only use this space for properties that do not require collaboration.
 
-When you first log into {{ PRODUCT_NAME }} console, you'll see your private space:
+    <Callout type="info">
 
-![private space](/images/deploying/private_space.png)
+      If you have not created a team space yet, then the {{ PORTAL }} will only display your private space. 
 
-### Launching Your Site {/*launching-your-site*/}
+    </Callout>
 
-Your site will be hosted on {{ PRODUCT_NAME }} through DNS, but you need to provide your site's name. Enter your site's URL in the *Get Started* dialog and click *LAUNCH MY SITE*.
+-   **Team:** {{ PRODUCT }} allows you to collaborate with other team members through a team space. A team space provides a hub for all property-related tasks, such as managing a property's configuration, deploying code, and reviewing analytics.
 
-## Creating a Team {/*creating-a-team*/}
+<Callout type="tip">
 
-After launching your site, your  private space will look similar to this example:
+  You may transfer ownership of any property to a team space to which you have been assigned the `Admin` role. 
 
-![new site](/images/teams/new-site.png)
+</Callout>
 
-When you run `{{ FULL_CLI_NAME }} deploy` your site will be created here. Sites in your private space can only be seen by you. To collaborate with other developers, create a team.
+A breakdown of team and private spaces is illustrated below.
 
-To create a team, click the diamond icon to the right of your name in the upper left of your window, then choose *Create a team* from the popup. 
+![Types of Spaces](/images/v7/basics/setup-overview.png)
 
-![create team icon](/images/teams/create-team-icon.png?width=300px)
+## Managing Teams
 
-Enter a name in the *Add a Team* dialog and click *CREATE A TEAM*.
+Team management consists of:
 
-![create dialog](/images/teams/create_dialog.png)
+-   Creating a team.
+-   Managing the [team's membership](#managing-team-members).
+-   [Setting up security](/guides/security) for your web applications and API.
 
-The name you choose also determines the default URL from which your site will be accessible. To configure custom domains, see [Environments](/guides/basics/environments).
+**To create a team**
 
-## Adding Your Website to the Team {/*adding-your-website-to-the-team*/}
+1.  From the {{ PORTAL_LINK }}, click on the <Image inline src="/images/v7/icons/menu-up-down.png" alt="Menu" /> icon next to your name and then click on **Create a team**. 
 
-After you create the team, the *Get Started* dialog is displayed (see [Launching Your Site](#launching-your-site).) Enter the URL and click *LAUNCH MY SITE*.
+    ![Space menu](/images/v7/basics/team-create.png)
 
-## Adding Team Members {/*adding-team-members*/}
+2.  In the **Team Name** option, assign a name to your team (e.g., `my-company`) and then click **Create a Team**.
 
-You add members by supplying an email address and inviting them. 
+    ![Add a Team](/images/v7/basics/team-create-2.png)
 
-Click your team name in the page header, then click the _Team Members_ tab:
+    <Callout type="info">
 
-![team members](/images/teams/members.png)
+      As shown above, the URL for your team's **Overview** page is formed by appending your team name to the {{ PORTAL }}'s base URL. Additionally, a team's edge link starts with the team's name (e.g., `https://my-company-nature-videos-production.edgio.link/`).
 
-Click the *ADD MEMBERS* button. For each desired team member, enter an email, and click the + button. Click *INVITE TEAM MEMBERS* when done.
+    </Callout>
 
-![team members](/images/teams/add-members-dlg.png)
+### Managing Team Members {/*managing-team-members*/}
 
-Members receive an email indicating that they have been added to a team.
+<a id="roles" />
 
-After you add the team member, select a role:
+Each team member must be assigned one of the following roles:
 
-| Role        | Role Description                                                                                                                                                                         |
-|-------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Read Only   | Users with a _Read Only_ role can see all of the team's sites and settings, but are barred from  all further actions.                                                                    |
-| Purger      | As a _Purger_ a user can see all of the team's sites and settings _and_ purge the cache on the sites in scope.                                                                           |
-| Member      | Users in the _Member_ role can see all of the team's sites and settings, and deploy updates to existing sites via `{{ FULL_CLI_NAME }} deploy`, but cannot change site or team settings. |
-| Admin       | Users in the _Admin_ role have full control over all team and site settings, but cannot add, remove, promote or demote other _Admin_ or _Super Admin_ roles.                             |
-| Super Admin | Users in the _Super Admin_ role have full control over all team and site settings. They are the only ones to add, remove, promote or demote other _Admin_ or _Super Admin_ roles.        |
+-   **Read only:** This type of user may only view this team space's configuration and all of the properties that it contains.
+-   **Purger:** This type of user has the same permissions as the *Read only* role. Additionally, this role allows a user to purge cached content for any property within this team space.
+-   **Member:** This type of user has the same permissions as the *Purger* role. Additionally, this role allows a user to submit deployments to any environment. However, it does not allow configuration changes to this team or any of its properties.
+-   **Admin:** This type of user is authorized to manage the entire team space. However, this role does not allow a user to add, remove, promote, or demote *Admin* or *Super Admin* users.
+-   **Super Admin:** This type of user has full control over the entire team space.
 
-See [Creating an Environment](/guides/basics/environments#creating-an-environment) for more information.
+**To add team members**
+
+1.  Load the desired team's **Members** page.
+
+    1.  From the {{ PORTAL_LINK }}, select the desired team space. 
+    2.  From the left-hand pane, click **Members**.
+
+2.  Click **Add Members**.
+
+3.  From the **Add Members** dialog box, type the prospective team member's email address and then assign that user a [role](#roles). 
+
+4.  Optional. Invite another team member by clicking **+** and then repeating step 3.
+
+5.  Click **Invite Members** to send an email invitation to each prospective team member.
+
+    Each prospective team member will receive an email welcoming them to {{ PRODUCT }}. They must confirm their account by:
+
+    1.  Clicking **CONFIRM MY ACCOUNT** from the welcome email.
+    2.  Clicking **Accept** to accept our terms of service and privacy policy.
+    3.  Set their password or link their account to Github or Google.
+
+**To change a user's role**
+
+1.  Load the desired team's **Members** page.
+
+    1.  From the {{ PORTAL_LINK }}, select the desired team space. 
+    2.  From the left-hand pane, click **Members**.
+
+2.  Find the user and select the desired role. 
+
+**To remove a team member**
+
+1.  Load the desired team's **Members** page.
+
+    1.  From the {{ PORTAL_LINK }}, select the desired team space. 
+    2.  From the left-hand pane, click **Members**.
+
+2.  Click the <Image inline src="/images/icons/delete.png" alt="Delete" /> icon next to the team member that will be removed.
+
+3.  When prompted, click **Remove** to confirm that the user will be removed from the team.

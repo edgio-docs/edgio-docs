@@ -5,7 +5,7 @@ function addCalloutSpace(lines) {
   let callOutIndex;
   const results = [];
   lines.forEach((line, index) => {
-    if (!line.startsWith('|')) {
+    if (!line.startsWith('|') && !line.startsWith('    |')) {
       if (line.includes('<Callout') || line.includes('</Callout>')) {
         const isOpeningTag = line.includes('<Callout');
         callOutIndex = index;

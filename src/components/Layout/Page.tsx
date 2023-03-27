@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import {useRouter} from 'next/router';
 import * as React from 'react';
 import styled from 'styled-components';
@@ -97,16 +98,21 @@ function Banner() {
     return (
       <StyledBanner legacy>
         You are reading {PRODUCT} {version.selectedVersionText} docs.&nbsp;
-        <a href="/">
-          Check out our latest docs for {PRODUCT} {version.latestVersionText}.
-        </a>
+        <Link href="/" passHref>
+          <a>
+            Check out our latest docs for {PRODUCT} {version.latestVersionText}.
+          </a>
+        </Link>
       </StyledBanner>
     );
   }
   return (
     <StyledBanner>
       🎉 Introducing {PRODUCT} v6 which supports Node.js v16.{' '}
-      <a href="/guides/reference/v6_migration">Learn how to upgrade.</a> 🎉
+      <Link href="/guides/reference/v6_migration" passHref>
+        <a>Learn how to upgrade.</a>
+      </Link>{' '}
+      🎉
     </StyledBanner>
   );
 }

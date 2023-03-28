@@ -6,9 +6,9 @@ Our CDN-as-code approach to configuration allows you to configure CDN behavior u
 
 ## Quick Start
 
-Get started with CDN-as-code by:
+Get started with CDN-as-code by performing these steps:
 
-1.  Creating and deploying a property to {{ PRODUCT }}.
+1.  Create a property. If you have already performed this step, proceed to the next step.
 
     [Learn more.](/guides/getting_started)
 
@@ -18,7 +18,7 @@ Get started with CDN-as-code by:
 
     </Callout>
 
-2.  Using the {{ PRODUCT }} CLI to initialize your property. If you have already performed this step, proceed to the next step.
+2.  Use the {{ PRODUCT }} CLI to initialize your property. If you have already performed this step, proceed to the next step.
 
     <Callout type="info">
 
@@ -37,11 +37,11 @@ Get started with CDN-as-code by:
 
     Replace `<PROPERTY>` with the name of the property defined in step 1. You should only use lower-case characters and replace spaces with dashes (e.g., `my-property`). 
 
-3.  [Defining routes](#routes) that determine how {{ PRODUCT }} will handle that traffic.
+3.  [Define routes](#routes) that determine how {{ PRODUCT }} will handle that traffic.
 
-4.  [Testing your changes locally.](#deploy-locally)
+4.  [Test your changes locally.](#deploy-locally)
 
-5.  [Deploying your property](#deploy-to) to the {{ PRODUCT }} network.
+5.  [Deploy your property](#deploy-to) to the {{ PRODUCT }} network.
 
 ## Routes.js|ts File {/*routes-js-ts*/}
 

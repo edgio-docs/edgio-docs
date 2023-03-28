@@ -6,51 +6,116 @@ This guide introduces the caching capabilities of {{ PRODUCT_NAME }}. While most
 
 ## Environments and Caching {/*environments-and-caching*/}
 
-To begin caching responses, you need to create an [environment](/guides/basics/environments). Each environment provides a separate edge cache for the most recent deployment. Older deployments will no longer have edge caching, but can always be [redeployed](/guides/basics/deployments#branches-and-deployments) to re-enable caching.
+Each environment provides a separate edge cache for the most recent deployment. Although older deployments do not support edge caching, you may re-enable it by [rolling back to that version](/guides/basics/deployments#versioning).
 
-## L1 and L2 Caches {/*l1-and-l2-caches*/}
+## Edge and Shield Caching
 
-Each edge point-of-presence (POP) has its own L1 cache. If a request cannot be fulfilled from the L1 cache, {{ PRODUCT_NAME }} will attempt to fulfill the request from a single global L2 cache POP in order to maximize your effective cache hit ratio. There is very little difference in time to first byte (TTFB) for responses served from the L1 vs L2 cache. In either case, the response is served nearly instantly (typically 25-100ms). Concurrent requests for the same URL on different POPs that result in a cache miss will be coalesced at the L2 cache. This means that only one request at a time will be sent to your origin servers for each cacheable URL.
+{{ PRODUCT }} may cache your content on our:
+
+-   **Edge Points-of-Presence (POP):** An edge POP handles receives and responds to requests for your content. 
+-   **Shield POP:** A shield POP reduces your network bandwidth and the load on your origin server by providing an intermediate caching layer between the edge of our network (aka edge POPs) and your web servers. This means that if a request cannot be served from cache by an edge POP, then it will be forwarded to a shield POP. Funneling requests to a shield POP maximizes your cache hit ratio. 
+
+There is very little difference in time to first byte (TTFB) for responses served from an edge or shield POP. In either case, the response is served nearly instantly (typically 25-100ms). Concurrent requests for the same URL on different POPs that result in a cache miss will be coalesced at the shield POP. If you have configured your origin to only use a shield POP, then it will only submit a single request at a time to your origin servers for each cacheable URL.
+
+[Learn more about Origin Shield.](/guides/security/origin_shield)
 
 ## Caching a Response {/*caching-a-response*/}
 
-To cache a response, use the [cache](/docs/api/core/classes/_router_responsewriter_.responsewriter.html#cache) function in your route's callback:
+Define a caching policy through response headers, rules, or the cache function (CDN-as-code).
 
-```js
-import { CustomCacheKey } from '{{ PACKAGE_NAME }}/core/router'
+### Response Headers
 
-router.get('/some/path', ({ cache }) => {
-  cache({
-    browser: {
-      // Sets the cache-control: maxage=n header sent to the browser.  To prevent the browser from caching this route
-      // set maxAgeSeconds: 0
-      maxAgeSeconds: 0,
+The amount of time that an asset will be cached on our edge servers is determined by the response headers returned by the origin server when a client requests it. By default, our CDN honors the following response headers:
+-   **Cache-Control: private:** Prevents our edge servers from caching the response.
+-   **Cache-Control: no-store:** Prevents our edge servers from caching the response.
+-   **Cache-Control: no-cache:**Prevents our edge servers or the client from caching the response.
+-   **Pragma: no-cache:** Prevents our edge servers or the client from caching the response.
+-   **Cache-Control: s-maxage:** Determines the requested content's TTL on our edge servers The length of time that the requested content will be cached on our network.
 
-      // Sends a non-standard header `x-sw-cache-control: n` that you can use to control caching your service worker.
-      // Note that service workers do not understand this header by default, so you would need to add code to your service
-      // worker to support it
-      serviceWorkerSeconds: 60 * 60,
-    },
-    edge: {
-      // Sets the TTL for a response in {{ PRODUCT_NAME }}'s edge cache
-      maxAgeSeconds: 60 * 60 * 24,
+    <Callout type="info">
 
-      // Sets the amount of time a stale response will be served from the cache.  When a stale response is sent, {{ PRODUCT_NAME }}
-      // will simultaneously fetch a new response to serve subsequent requests.
-      // Using stale-while-revalidate helps raise your effective cache hit rate to near 100%.
-      staleWhileRevalidateSeconds: 60 * 60, // serve stale responses for up to 1 hour while fetching a new response
+      This response header is ignored if the response contains any of the above response headers.
 
-      // And many other options
-    },
-    // Optionally customizes the cache key for both edge and browser
-    key: new CustomCacheKey()
-      .addBrowser() // Split cache by browser type
-      .addCookie('some-cookie'), // Split cache by some-cookie cookie
-  })
-})
-```
+    </Callout>
 
-The `cache` function can be used in the same route as other functions such as `serveStatic`, `proxy` and `render`, or in a separate route prior to sending the response.
+-   **Cache-Control: max-age:** Determines the requested content's TTL on the user agent and our edge servers.
+
+    <Callout type="info">
+
+      This response header is ignored if the response contains any of the above response headers.
+
+    </Callout>
+
+-   **Expires:** Defines an expiration date for the requested content's TTL. The requested content will be considered stale after the specified date/time.
+
+    <Callout type="info">
+
+      If this directive has been assigned an invalid value, including zero, then it will be ignored for the request in question.
+
+    </Callout> 
+
+    <Callout type="info">
+
+      This response header is ignored if the response contains any of the above response headers.
+
+    </Callout>
+
+**Key information:**
+
+-   By default, content will only be cached after a POP receives two GET requests that result in a 200 OK response.
+-   The above directives are ordered according to precedence. Higher directives take precedence over lower directives. In other words, if an asset contains both a `Cache-Control` and an `Expires` header, then the `Cache-Control` header will take precedence.
+-   Please refer to your web server’s documentation for more information on how to configure these settings.
+-   You may create a rule to override a web server's cache policy.
+
+### Rules
+
+Set or override a cache policy through rules. The most commonly used features for defining a caching policy are: 
+
+    -   [Bypass Cache](/guides/performance/rules/features#bypass-cache)
+    -   [Cache-Control Header Treatment](/guides/performance/rules/features#cache-control-header-treatment)
+    -   [Set Client Max-Age](/guides/performance/rules/features#set-client-max-age)
+
+[View all caching-related features.](/guides/performance/rules/features#caching)
+
+### CDN-as-Code
+
+Use the [cache](/docs/api/core/classes/_router_responsewriter_.responsewriter.html#cache) function in your route's callback:
+
+    ```js
+    import { CustomCacheKey } from '{{ PACKAGE_NAME }}/core/router'
+
+    router.get('/some/path', ({ cache }) => {
+      cache({
+        browser: {
+          // Sets the cache-control: maxage=n header sent to the browser.  To prevent the browser from caching this route
+          // set maxAgeSeconds: 0
+          maxAgeSeconds: 0,
+
+          // Sends a non-standard header `x-sw-cache-control: n` that you can use to control caching your service worker.
+          // Note that service workers do not understand this header by default, so you would need to add code to your service
+          // worker to support it
+          serviceWorkerSeconds: 60 * 60,
+        },
+        edge: {
+          // Sets the TTL for a response in {{ PRODUCT_NAME }}'s edge cache
+          maxAgeSeconds: 60 * 60 * 24,
+
+          // Sets the amount of time a stale response will be served from the cache.  When a stale response is sent, {{ PRODUCT_NAME }}
+          // will simultaneously fetch a new response to serve subsequent requests.
+          // Using stale-while-revalidate helps raise your effective cache hit rate to near 100%.
+          staleWhileRevalidateSeconds: 60 * 60, // serve stale responses for up to 1 hour while fetching a new response
+
+          // And many other options
+        },
+        // Optionally customizes the cache key for both edge and browser
+        key: new CustomCacheKey()
+          .addBrowser() // Split cache by browser type
+          .addCookie('some-cookie'), // Split cache by some-cookie cookie
+      })
+    })
+    ```
+
+    The `cache` function can be used in the same route as other functions such as `serveStatic`, `proxy` and `render`, or in a separate route prior to sending the response.
 
 ### Cache Key {/*cache-key*/}
 
@@ -59,7 +124,9 @@ The `cache` function can be used in the same route as other functions such as `s
 - Value of `host` request header
 - Complete request URL, including the query parameters (this can be customized)
 - Value of `accept-encoding` request header
+<Condition version="<=6">
 - Name of the destination when [A/B testing](/guides/performance/traffic_splitting/a_b_testing) is in effect
+</Condition>
 
 When [POST and other non-GET/HEAD](#caching-responses-for-post-and-other-non-gethead-requests) methods caching is enabled, {{ PRODUCT_NAME }} automatically adds the following to the cache key:
 

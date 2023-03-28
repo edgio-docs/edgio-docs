@@ -206,14 +206,6 @@ const SidebarMenuItems: ISidebarMenuItems = [
           path: '/guides/performance/traditional_sites',
         },
         {
-          title: 'A/B Testing',
-          path: '/guides/performance/traffic_splitting/a_b_testing',
-        },
-        {
-          title: 'Traffic Splitting',
-          path: '/guides/performance/traffic_splitting',
-        },
-        {
           title: 'Observability',
           path: '/guides/performance/observability',
         },

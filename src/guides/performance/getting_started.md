@@ -2,13 +2,13 @@
 title: Getting Started with {{ PRODUCT_EDGE }}
 ---
 
-Get started with {{ PRODUCT_EDGE }} by:
+Get started with {{ PRODUCT_EDGE }} by performing these steps:
 
-1.  Creating and deploying a property to {{ PRODUCT }}.
+1.  Create a property. If you have already performed this step, proceed to the next step.
 
     [Learn more.](/guides/getting_started)
 
-2.  Creating rules that define how {{ PRODUCT }} handles your traffic.
+2.  Create rules that define how {{ PRODUCT }} handles your traffic.
 
     <Callout type="info">
 
@@ -16,9 +16,9 @@ Get started with {{ PRODUCT_EDGE }} by:
 
     </Callout>
 
-3.  Deploying your updated property to {{ PRODUCT }}.
+3.  Deploy your updated property to {{ PRODUCT }}.
 
-4.  Serving production traffic over {{ PRODUCT }} by updating your site's DNS to point to our service.
+4.  Serve production traffic over {{ PRODUCT }} by updating your site's DNS to point to our service.
 
 Deploying your web application behind {{ PRODUCT }} optimizes the delivery of your site. As illustrated below, requests for your site will pass through {{ PRODUCT }}'s globally distributed edge network to your origin server.
 

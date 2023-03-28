@@ -22,15 +22,28 @@ Set up your rules through the following steps:
 
 ## Rules and CDN-as-Code
 
-There are two basic workflows for defining your CDN configuration:
+There are two workflows for defining your CDN configuration:
 
 -   Generate and deploy rules through the {{ PORTAL_LINK }}.
 -   Define a [CDN-as-Code configuration](/guides/performance/cdn_as_code) and then deploy it through the {{ PRODUCT }} CLI. 
 
 ![Rules and CDN-as-Code](/images/v7/performance/rules-cdn-as-code.png)
 
-You may override a CDN-as-code configuration through the **Rules** page. However, complex CDN-as-code configurations are displayed in JSON format instead of being displayed as rules. Additionally, any future CDN-as-code deployments will override your rules.
+Deploying to an environment always overrides the previous configuration. However, if you use a different workflow, you may not be aware of how a deployment will override your current configuration. 
 
+For example, if you deploy rules to an environment and a teammate deploys a CDN-as-code configuration at a later date, then your teammate may not be aware of the configuration defined within your rules. 
+
+<Callout type="tip">
+
+  There are benefits and disadvantages to each approach. For example, some teams may prefer the straightforward approach of setting up rules, while other teams may prefer writing code. Another important factor is that the integration of a JavaScript framework through {{ PRODUCT }} {{ PRODUCT_PLATFORM }} requires the CDN-as-code approach. 
+
+</Callout>
+
+<Callout type="info">
+
+  Complex CDN-as-code configurations are displayed in JSON format instead of being displayed as rules.
+
+</Callout>
 
 ## Rules
 
@@ -237,13 +250,7 @@ You may create, modify, and delete rules.
 
 **Key information:**
 
--   You may only administer rules when you are in draft mode. If you are in read-only mode, you may enter draft mode by clicking **Edit v#**. 
-
-<!--
-TODO: **Is this needed now that we have autodraft?**
--->
-
--   Draft mode allows you to make changes without affecting an environment's traffic. This allows you to collaborate with other team members when setting up rules and to stage changes until they are needed. 
+-   You may make changes without affecting an environment's traffic. This allows you to collaborate with other team members when setting up rules and to stage changes until they are needed. 
 
     For example, a sales event may require URL redirects or a different caching policy than standard site traffic. You can stage these changes until they are needed for the sales event.
 
@@ -263,22 +270,21 @@ TODO: **Is this needed now that we have autodraft?**
     1.  From the {{ PORTAL_LINK }}, select the desired property.
     2.  From the left-hand pane, select the desired environment from under the **Environments** section.
     3.  From the left-hand pane, select **Rules**. 
-2.  If you are in read-only mode, click **Edit v#**
-3.  Add a rule by clicking **+ Add Rule**.
-4.  Add a condition that defines the set of requests for which this rule will be applied. Repeat this step as needed.
+2.  Add a rule by clicking **+ Add Rule**.
+3.  Add a condition that defines the set of requests for which this rule will be applied. Repeat this step as needed.
     1.  Click **+ Add Condition**.
     2.  From the **Variable** option, select the method by which requests will be identified. 
     3.  From the **Operator** option, define the relationship between the variable selected in the previous step and the value that will be defined in the next step.
     4.  In the **Match Value** option, define a value that will be compared against for each request. 
     5.  Click **Add Condition**.
-5.  Add a feature that determines how the requests defined in the previous step will be processed. Repeat this step as needed.
+4.  Add a feature that determines how the requests defined in the previous step will be processed. Repeat this step as needed.
     1.  Click **+ Add Feature**.
     2.  From the **Feature Type** option, select the category that best corresponds to the desired feature.
     3.  From the **Feature** option, select the desired feature.
     4.  Configure the selected feature.
     5.  Click **Add Feature**.
-6.  Add more rules as needed by repeating steps 5 - 7.
-7.  Review your rules to verify how requests will be handled and the order in which rules will be applied to requests. 
+5.  Add more rules as needed by repeating steps 2 - 4.
+6.  Review your rules to verify how requests will be handled and the order in which rules will be applied to requests. 
 
     <Callout type="tip">
 
@@ -286,7 +292,7 @@ TODO: **Is this needed now that we have autodraft?**
 
     </Callout>
 
-8.  Click **Deploy Changes**.
+7.  Click **Deploy Changes**.
 
 **To delete a rule**
 

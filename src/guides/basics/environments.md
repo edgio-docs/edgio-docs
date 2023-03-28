@@ -15,9 +15,9 @@ An environment defines how traffic will be served through {{ PRODUCT }}. Each en
 -   **User Activity:** Contains an audit trail of changes to this environment (e.g., changes to your configuration and deployments).
 -   **Edge Insights:** Gain historical and near real-time insights into threat profiles, performance, and CDN usage. 
 
-<!--
+<Condition version="<=6"> 
 -   **A/B Testing**: Split traffic between multiple router destinations or other environments to conduct A/B testing or implement blue/green deployments.
--->
+</Condition>
 
 **Key information:**
 
@@ -55,7 +55,7 @@ Perform the following steps to create an environment:
 
 3.  In the **Name** option, specify a name for this environment. This name may consist of lowercase characters, numbers, dashes (`-`), and underscores (`_`).
 
-4.  Optional. Copy environment variables, A/B testing configuration, and notes from another environment by selecting it from the `Copy settings from environment` option.
+4.  Optional. Copy environment variables<Condition version="<=6">, A/B testing configuration,</Condition> and notes from another environment by selecting it from the `Copy settings from environment` option.
 
 5.  Determine deployment permissions through the **Allow all team members to deploy to this environment** option. 
 

@@ -15,7 +15,11 @@ Deploy to an environment using either of the following methods:
         2.  Select the desired property.
         3.  From the left-hand pane, select the desired environment from under the **Environments** section.
 
-    2.  From the notification bar at the top of the page, click **Deploy Changes**.
+    2.  Update your hostname, origin, or rule configuration. 
+
+    3.  From the notification bar at the top of the page, click **Deploy Changes**.
+
+        ![Deploy Changes](/images/v7/performance/rules-deploy-changes.png?width=450)
 
 -   **{{ PRODUCT }} CLI:** Use this method to deploy changes from your local machine (e.g., changes to {{ CONFIG_FILE }} or {{ ROUTES_FILE }}).
 
@@ -45,13 +49,15 @@ Deployments are versioned. Each deployment is assigned a unique version number. 
 
 2.  Find the deployment that should be applied to this environment, click its <Image inline src="/images/v7/icons/menu-kebab.png" alt="Menu" /> icon, and then click **Rollback to this version**.
 
-3.  When prompted, click **Promote to production** to confirm this deployment.
+    ![Rollback Deployment](/images/v7/performance/deployments-rollback.png?width=450)
+
+3.  When prompted, click **Promote to production** to confirm that a previous deployment will be applied to this environment.
 
 ## Branches and Deployments {/*branches-and-deployments*/}
 
 Each time you deploy your site to {{ PRODUCT }} a deployment is created and given a unique and permanent URL based on the team name, site name, branch name in source control, and an incrementing deployment number. If you use Git, the branch name is set by the default. If not, you can specify the `--branch` option when running `{{ FULL_CLI_NAME }} deploy`.
 
-![deployments](/images/deploying/deployments.png)
+![Deployments](/images/v7/performance/deployments.png?width=450)
 
 Having each deployment be simultaneously and permanently accessible makes it easy to preview other developers' work before merging a pull request and enables you to "go back in time" to find where a bug or change in behavior originated. We recommend configuring your CI environment to deploy every push to {{ PRODUCT }}.
 

@@ -22,15 +22,28 @@ Set up your rules through the following steps:
 
 ## Rules and CDN-as-Code
 
-There are two basic workflows for defining your CDN configuration:
+There are two workflows for defining your CDN configuration:
 
 -   Generate and deploy rules through the {{ PORTAL_LINK }}.
 -   Define a [CDN-as-Code configuration](/guides/performance/cdn_as_code) and then deploy it through the {{ PRODUCT }} CLI. 
 
 ![Rules and CDN-as-Code](/images/v7/performance/rules-cdn-as-code.png)
 
-You may override a CDN-as-code configuration through the **Rules** page. However, complex CDN-as-code configurations are displayed in JSON format instead of being displayed as rules. Additionally, any future CDN-as-code deployments will override your rules.
+Deploying to an environment always overrides the previous configuration. However, if you use a different workflow, you may not be aware of how a deployment will override your current configuration. 
 
+For example, if you deploy rules to an environment and a teammate deploys a CDN-as-code configuration at a later date, then your teammate may not be aware of the configuration defined within your rules. 
+
+<Callout type="tip">
+
+  There are benefits and disadvantages to each approach. For example, some teams may prefer the straightforward approach of setting up rules, while other teams may prefer writing code. Another important factor is that the integration of a JavaScript framework through {{ PRODUCT }} {{ PRODUCT_PLATFORM }} requires the CDN-as-code approach. 
+
+</Callout>
+
+<Callout type="info">
+
+  Complex CDN-as-code configurations are displayed in JSON format instead of being displayed as rules.
+
+</Callout>
 
 ## Rules
 

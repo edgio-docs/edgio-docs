@@ -95,9 +95,9 @@ curl -o/dev/null -vv
 ```
 
 **Specify a Cookie**
-
+<Condition version="<=6">
 Typically used for A/B test validation.
-
+</Condition>
 ```bash
 curl -o/dev/null -vv
     -H "Cookie: cache_enabled=true" https://www.yoursite.com/main.js

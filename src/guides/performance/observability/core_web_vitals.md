@@ -23,8 +23,9 @@ be tracked via [Google Search Console](https://search.google.com/search-console/
 
 - It can take days to weeks to see the effect of changes to your site on Core Web Vitals.
 - It's hard to diagnose Core Web Vitals by page type or URL.
+<Condition version="<=6">
 - It's impossible to A/B test the impact of site optimizations on Core Web Vitals. Note that to effectively A/B test performance optimizations you need both a RUM measurement tool and split testing at the edge, both of which {{ PRODUCT_NAME }} provides. 
-
+</Condition>
 <a id="why-use-layer0-to-track-core-web-vitals"></a>
 
 ## Why use {{ PRODUCT_NAME }} to track Core Web Vitals? {/*why-use-to-track-core-web-vitals*/}

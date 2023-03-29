@@ -53,7 +53,7 @@ Tracking Core Web Vitals on {{ PRODUCT_NAME }} requires adding the `{{ PACKAGE_N
 
     ![RUM Package Installation](/images/v7/performance/cwv-configuration-guide.png?width=450)
 
-    <Callout type="Info">
+    <Callout type="info">
 
       The {{ PORTAL }} provides installation instructions that contain a token that is specific to your property. 
 
@@ -69,7 +69,7 @@ Add Core Web Vitals tracking by adding the following code to each page in your a
 <script defer>
   function init{{ PRODUCT }}Rum() {
     new {{ RUM_NS }}.Metrics({
-      token: '<TOKEN>' // Get your token from the {{ PORTAL_LINK }}
+      token: '<TOKEN>' // Get your token from the {{ PORTAL }}
     }).collect()
   }
 </script>
@@ -80,7 +80,7 @@ Add Core Web Vitals tracking by adding the following code to each page in your a
 <script>
   function init{{ PRODUCT }}Rum() {
     new {{ RUM_NS }}.Metrics({
-      token: '<TOKEN>' // Get your token from the {{ PORTAL_LINK }}
+      token: '<TOKEN>' // Get your token from the {{ PORTAL }}
     }).collect()
   }
   var rumScriptTag = document.createElement('script')
@@ -116,13 +116,13 @@ Add the following code to your application's browser bundle:
 import { Metrics } from '@edgio/rum'
 
 new Metrics({
-  token: '<TOKEN>' // Get your token from the {{ PORTAL_LINK }}
+  token: '<TOKEN>' // Get your token from the {{ PORTAL }}
 }).collect()
 ```
 
 ## Tie URLs to Page Templates {/*tie-urls-to-page-templates*/}
 
-Tie URLs to page templates by providing an optional `router` parameter to `Metrics`.
+Tie URLs to page templates by passing an optional `router` parameter to `Metrics`.
 
 Define page labels by adding a route for each page template:
 
@@ -132,7 +132,7 @@ Define page labels by adding a route for each page template:
 <script defer>
   function init{{ PRODUCT }}Rum() {
     new {{ RUM_NS }}.Metrics({
-      token: '<TOKEN>', // Get your token from the {{ PORTAL_LINK }}
+      token: '<TOKEN>', // Get your token from the {{ PORTAL }}
 
       // assign a page label for each route
       router: new {{ PRODUCT }}.Router()
@@ -149,7 +149,7 @@ Define page labels by adding a route for each page template:
 <script>
   function init{{ PRODUCT }}Rum() {
     new {{ RUM_NS }}.Metrics({
-      token: '<TOKEN>', // Get your token from the {{ PORTAL_LINK }}
+      token: '<TOKEN>', // Get your token from the {{ PORTAL }}
 
       // assign a page label for each route
       router: new {{ PRODUCT }}.Router()
@@ -172,7 +172,7 @@ import Router from '@edgio/rum/Router'
 import { Metrics } from '@edgio/rum'
 
 new Metrics({
-  token: '<TOKEN>', // Get your token from the {{ PORTAL_LINK }}
+  token: '<TOKEN>', // Get your token from the {{ PORTAL }}
 
   // assign a page label for each route
   router: new Router()
@@ -187,7 +187,7 @@ import Router from '@edgio/rum/Router'
 import { Metrics } from '@edgio/rum'
 
 new Metrics({
-  token: '<TOKEN>', // Get your token from the {{ PORTAL_LINK }}
+  token: '<TOKEN>', // Get your token from the {{ PORTAL }}
 
    // assign a page label for each route
   router: new Router()
@@ -207,7 +207,7 @@ For non single page applications (e.g. traditional "multi-page apps"), you can a
 <script>
   function init{{ PRODUCT }}Rum() {
     new {{ RUM_NS }}.Metrics({
-      token: '<TOKEN>', // Get your token from the {{ PORTAL_LINK }}
+      token: '<TOKEN>', // Get your token from the {{ PORTAL }}
       pageLabel: document.title ? document.title : "(No title)",
     }).collect()
   }

@@ -1029,7 +1029,6 @@ Enabling this feature will generate `Cache-Control:max-age` and `Expires` header
 **Key information:**
 
 -   This action does not affect edge server to origin server cache revalidations. These types of revalidations are determined by the `Cache-Control` / `Expires` headers received from the origin server, and can be customized with the Default Internal Max-Age and the `Max Age` features.
-
 -   Setting this feature to a negative value causes our edge servers to send a `Cache-Control:no-cache` and an `Expires` time that is set in the past with each response to the browser. Although an HTTP client will not cache the response, this setting will not affect our edge servers' ability to cache the response from the origin server.
 
 <edgejs>
@@ -1056,6 +1055,33 @@ new Router()
 </edgejs>
 
 **Default Behavior:** The `Cache-Control` / `Expires` headers cached with the response of the origin server will pass through to the browser.
+
+#### Set Service Worker Max Age {/*set-service-worker-max-age*/}
+
+Set the amount of time that must pass before a browser can check for a new version of a prefetched request. Specifically, it determines the `max-age` interval for the [Prefetch service worker](/guides/performance/prefetching) to edge server cache revalidation. 
+
+**Key information:**
+-   Define this `max-age` interval in seconds.
+-   This configuration does not affect edge server to origin server cache revalidations. These types of revalidations are determined by the `Cache-Control` / `Expires` headers received from the origin server, and can be customized with the Default Internal Max-Age and the `max_age` features.
+
+<edgejs>
+**Key information:**
+-   Define this `max-age` interval in seconds.
+-   This configuration does not affect edge server to origin server cache revalidations. These types of revalidations are determined by the `Cache-Control` / `Expires` headers received from the origin server, and can be customized with the Default Internal Max-Age and the `max_age` features.
+
+**Example:**
+
+```js filename="./routes.js"
+new Router()
+  .get('/', {
+    caching: {
+      "service_worker_max_age": "360",
+    }
+  })
+```
+</edgejs>
+
+**Default Behavior:** By default, all prefetched requests are cached by service workers and our edge servers for 2 minutes.
 
 #### Stale On Error {/*stale-on-error*/}
 
@@ -1679,7 +1705,7 @@ new Router()
 
 #### Set Origin {/*set-origin*/}
 
-Defines the origin configuration to which requests will be forwarded when they cannot be served from cache.
+Defines the [origin configuration](/guides/basics/hostnames_and_origins#origin) to which requests will be forwarded when they cannot be served from cache.
 
 <edgejs>
 **Example:**

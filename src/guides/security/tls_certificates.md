@@ -11,7 +11,7 @@ title: TLS Certificates
 
 -   **{{ PRODUCT }} Domains:** {{ PRODUCT }} provides a wildcard TLS certificate for the domains that we automatically generate when you deploy to your property. This certificate is managed by {{ PRODUCT }} and it does not require configuration.
 
-    **Sample domain:** `my-team-my-site-feature-a-1234.layer0-limelight.link`
+    **Sample domain:** `my-team-my-site-feature-a-1234.{{ LINK_DOMAIN }}`
 
 ### Autogenerating TLS Certificates {/*autogenerating-tls-certificates*/}
 

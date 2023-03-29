@@ -23,9 +23,7 @@ Speed up your development lifecycle through:
 -   [Observability](/guides/performance/observability) that provides performance insights through which you may troubleshoot and fine-tune your configuration. 
 -   Automatic previews of your site whenever a developer pushes commits to source control. These site previews allow QA testers, code reviewers, and other stakeholders to immediately try out newly introduced changes. 
 -   Versioned deployments. This allows you to view or even roll back to an old version of your site. Access to old versions of your site allow you to discover when a bug was introduced or to quickly compare speed measurements between multiple iterations of your app. The ability to quickly roll back your site at anytime allows you to release at a rapid pace with minimal risk.
-<Condition version="<=6">
--   [Traffic Splitting](/guides/performance/traffic_splitting) which controls traffic distribution for the purpose of A/B testing and iterative site migrations. 
-</Condition>
+-   [Traffic Splitting](/guides/performance/traffic_splitting) which controls traffic distribution for the purpose of A/B testing<Condition version="<=6"> and iterative site migrations</Condition>.
 
 ![architecture](/images/overview/architecture.png)
 

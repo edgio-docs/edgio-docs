@@ -30,6 +30,9 @@ const RUM_NS = 'Edgio'; // namespace for the JS package used by RUM
 const DOMAIN = 'edg.io';
 const DOMAIN_LEGACY = 'layer0.co';
 const APP_DOMAIN = `edgio.app`;
+const LINK_DOMAIN = `edgio.link`;
+const PERMALINK_DOMAIN = `edgio-perma.link`;
+const RUM_DOMAIN = `rum.edgio.net`;
 const DOCS_DOMAIN = `docs.${DOMAIN}`;
 const DOCS_PAGES_DOMAIN = 'layer0-docs.s3.amazonaws.com';
 const DOCS_REPO = 'edgio-docs/edgio-docs';
@@ -491,6 +494,9 @@ const config = {
   HEADER_PREFIX,
   HELP_URL,
   INSTALL_CLI,
+  LINK_DOMAIN,
+  PERMALINK_DOMAIN,
+  RUM_DOMAIN,
   LOGIN_URL,
   PORTAL,
   PORTAL_LINK,

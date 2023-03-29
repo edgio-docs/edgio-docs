@@ -14,10 +14,7 @@ An environment defines how traffic will be served through {{ PRODUCT }}. Each en
 -   [Real-Time Log Delivery:](/guides/logs/rtld) Delivers log data in near real-time to a variety of destinations. 
 -   **User Activity:** Contains an audit trail of changes to this environment (e.g., changes to your configuration and deployments).
 -   **Edge Insights:** Gain historical and near real-time insights into threat profiles, performance, and CDN usage. 
-
-<Condition version="<=6"> 
--   **A/B Testing**: Split traffic between multiple router destinations or other environments to conduct A/B testing or implement blue/green deployments.
-</Condition>
+-   <Condition version="7">**Traffic Splitting**: Create rules to split traffic between multiple origins to conduct A/B testing or implement blue/green deployments.</Condition><Condition version="<=6">**A/B Testing**: Split traffic between multiple router destinations or other environments to conduct A/B testing or implement blue/green deployments.</Condition>
 
 **Key information:**
 

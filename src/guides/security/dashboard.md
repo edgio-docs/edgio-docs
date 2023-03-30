@@ -17,11 +17,13 @@ The {{ PRODUCT_SECURITY }} dashboard provides the means through which you may pe
 
 **To view the dashboard**
 1.  Navigate to the {{ PRODUCT_SECURITY }} dashboard.
-    {{ SECURITY_NAV }} **Security**.
+
+    1.  From the {{ PORTAL_LINK }}, select the desired team space.    
+    2.  Click **Security**.
     
     By default, the dashboard displays recent [threats](#threats) (i.e., access rule, custom rule, and managed rule violations).
 
-2.  Optional. Click on the [Bot](#bot), [Rates](#rates), or [Rate Enforcement](#rate-enforcement) tab to analyze bot traffic or rate limiting.
+2.  Optional. Click on the [Bot](#bot), [Rates](#rate-limit), or [Rate Enforcement](#rate-enforcement) tab to view bot traffic or rate limiting trends.
 
 <Callout type="tip">
 
@@ -29,7 +31,7 @@ The {{ PRODUCT_SECURITY }} dashboard provides the means through which you may pe
 
 </Callout>
 
-## Threats {/*threats*/}
+## Threats View {/*threats*/}
 
 A threat event occurs when an access rule, custom rule, or managed rule is violated. It allows you to:
 
@@ -41,9 +43,9 @@ A threat event occurs when an access rule, custom rule, or managed rule is viola
 
 [View field definitions.](/guides/security/logs#threat-field-definitions)
 
-## Bot {/*bot*/}
+## Bot View {/*bot*/}
 
-This type of event occurs when a Bot Manager rule is violated. Analyze recently detected bot traffic to 
+A bot event occurs when a bot manager rule is violated. Analyze recently detected bot traffic to 
 -   Visualize peak bot traffic time periods and the amount of bot traffic directed at your web application and APIs.
 -   Identify the countries from which bot traffic originates.
 -   Identify key individual offenders by their IP address.
@@ -56,7 +58,7 @@ This type of event occurs when a Bot Manager rule is violated. Analyze recently 
 
 [View field definitions.](/guides/security/logs#bot-field-definitions)
 
-## Rate Limit {/*rate-limit*/}
+## Rate Limit View {/*rate-limit*/}
 
 A rate limit event occurs when a request exceeds a rate limit. Analyze recently rate limited requests to:
 -   Understand the severity of rate limited requests.
@@ -72,27 +74,46 @@ Logging for rate limited requests is downsampled to 10% due to the volume of req
 
 [View field definitions.](/guides/security/logs#rate-limit-field-definitions)
 
-## Rate Enforcement {/*rate-enforcement*/}
+## Rate Enforcement View {/*rate-enforcement*/}
 
-A rate limit enforcement event identifies when a set of requests were rate limited. 
+A rate limit enforcement event identifies when a set of requests were rate limited. Analyze rate limit enforcement events to:
+
+-   Visualize the time periods during which a high volume of requests resulted in the enforcement of a rate rule.
+-   Understand the frequency of rate limited requests.
 
 [View field definitions.](/guides/security/logs#rate-enforcement-field-definitions)
+
+### Sample Scenario {/*sample-scenario*/}
+
+The Rate Enforcement dashboard will log a single event whenever your rate limit threshold is exceeded. This occurs regardless of the number
+of requests that end up being rate limited as a result of this enforcement.
+
+In this example, you have configured a rate limit of 300 requests per minute with an enforcement duration of 1 minute. Assuming the traffic
+pattern described below, the Rate Enforcement dashboard will indicate that 4 events took place.
+
+| Time  | # of Requests |
+|-------|----------------|
+| 12:01 | 300,000        |
+| 12:03 | 1,000,000      |
+| 12:05 | 800,000        |
+| 12:07 | 400,000        |
+
 
 ## Usage {/*usage*/}
 
 The {{ PRODUCT_SECURITY }} dashboard contains the following components:
 
--   **Chart:** A chart or line graph displays the number of threats detected over a given time period.
+-   **Chart:** A chart or line graph displays the number of events detected over a given time period.
 
-    By default, a single line on the graph represents all threats. Alternatively, categorize threats by selecting the desired categorization criteria from the option that appears directly above the graph. A line will be drawn on the chart for each unique value. For example, if you select **Profile Type** and requests were screened by production and audit rules, then the graph will contain a line for audit and another one for production.  
+    By default, a single line on the graph represents all events. Alternatively, categorize events by selecting the desired categorization criteria from the option that appears directly above the graph. A line will be drawn on the chart for each unique value. For example, if you select **Profile Type** and requests were screened by production and audit rules, then the graph will contain a line for audit and another one for production.  
 
     <Callout type="info">
 
-      By default, graphing threats by type will include up to the 10 most popular entries. Customize this limit through the **Max Top Number** option. This option also affects the maximum number of unique entries that may be listed for each type of statistic listed under the graph.
+      By default, graphing events by type will include up to the 10 most popular entries. Customize this limit through the **Max Top Number** option. This option also affects the maximum number of unique entries that may be listed for each type of statistic listed under the graph.
 
     </Callout>
 
--   **Statistics:** Statistics on the threats detected over a given time period are displayed directly below the chart. 
+-   **Statistics:** Statistics on the events detected over a given time period are displayed directly below the chart. 
     Statistics are broken down by category.  
 
     [View category definitions.](#field-definitions)  
@@ -104,21 +125,21 @@ The {{ PRODUCT_SECURITY }} dashboard contains the following components:
     </Callout>
 
     The following information is displayed for each category:
-    -   `<Value>`**:** Groups threats by the request's value for the current category.  
+    -   `<Value>`**:** Groups events by the request's value for the current category.  
 
         The following illustration shows a partial listing of values for the `Rule Message` category.  
 
         ![](/images/v7/security/dashboard_category.png)  
 
-    -   **%:** Indicates the percentage of detected threats over a given time period that belong to the group identified by the **Value** field.  
+    -   **%:** Indicates the percentage of detected events over a given time period that belong to the group identified by the **Value** field.  
 
         <Callout type="info">
 
-          Percentages are calculated from the total threats detected during the given time period. The **Max Top Number** option determines the limit of entries per category. If the number of entries exceeds this limit, then the sum of the percentages for that category will not add up to 100%.
+          Percentages are calculated from the total events detected during the given time period. The **Max Top Number** option determines the limit of entries per category. If the number of entries exceeds this limit, then the sum of the percentages for that category will not add up to 100%.
 
         </Callout>
 
-    -   **Events:** Indicates the number of detected threats that belong to the group identified by the **Value** field.  
+    -   **Events:** Indicates the number of detected events that belong to the group identified by the **Value** field.  
 
 **Key information:**
 -   By default, a chart includes all rule violations within the last seven days.

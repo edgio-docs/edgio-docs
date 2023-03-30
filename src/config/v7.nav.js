@@ -225,17 +225,17 @@ const nav = {
           path: 'security/security_applications',
         },
         {
-          title: 'Threats Dashboard',
-          path: 'security/threats_dashboard',
+          title: 'Dashboard',
+          path: 'security/dashboard',
         },
         {
-          title: 'Bot Dashboard',
-          path: 'security/bot_dashboard',
+          title: 'Logs',
+          path: 'security/logs',
         },
         {
-          title: 'Rates Dashboard',
-          path: 'security/rates_dashboard',
-        },
+          title: 'Response to Client',
+          path: 'security/response_to_client',
+        }
       ],
     },
     {

@@ -41,7 +41,7 @@ A threat event occurs when an access rule, custom rule, or managed rule is viola
 -   Identify key individual offenders by their IP address.
 -   Learn detailed information on the types of attack being mounted against your site.
 
-[View field definitions.](/guides/security/logs#threat-field-definitions)
+[View field definitions.](/guides/security/logs#threat-log-fields)
 
 ## Bot View {/*bot*/}
 
@@ -56,7 +56,7 @@ A bot event occurs when a bot manager rule is violated. Analyze recently detecte
 
 </Callout>
 
-[View field definitions.](/guides/security/logs#bot-field-definitions)
+[View field definitions.](/guides/security/logs#bot-log-fields)
 
 ## Rate Limit View {/*rate-limit*/}
 
@@ -72,7 +72,7 @@ Logging for rate limited requests is downsampled to 10% due to the volume of req
 
 </Callout>
 
-[View field definitions.](/guides/security/logs#rate-limit-field-definitions)
+[View field definitions.](/guides/security/logs#rate-limit-log-fields)
 
 ## Rate Enforcement View {/*rate-enforcement*/}
 
@@ -81,7 +81,7 @@ A rate limit enforcement event identifies when a set of requests were rate limit
 -   Visualize the time periods during which a high volume of requests resulted in the enforcement of a rate rule.
 -   Understand the frequency of rate limited requests.
 
-[View field definitions.](/guides/security/logs#rate-enforcement-field-definitions)
+[View field definitions.](/guides/security/logs#rate-limit-enforcement-log-fields)
 
 ### Sample Scenario {/*sample-scenario*/}
 

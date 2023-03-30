@@ -70,20 +70,19 @@ honored.
 
 ## Configuration {/*configuration*/}
 
-Setting up a rate rule involves determining how requests are grouped and
-a rate limit. You may also specify additional criteria to identify the
-set of requests to which this rate rule will be applied.
+Setting up a rate rule involves defining a rate limit and determining how that rate limit will be applied. You may also specify additional critieria that identify the set of requests to which this rate rule will be applied.
 
--   **[Source:](#source)** Apply a rate limit:
+-   **[Rate Limit:](#rate-limit)** Define a maximum request rate before a predefined action is triggered.
+-   **[Source:](#source)** Apply this rate limit:
     -   Indiscriminately across all requests.
     -   To each unique client that exceeds the defined rate limit.
 
         <Callout type="info">
 
-          A unique client may be identified by its user agent and/or IP address.
+          A unique client may be identified by its user agent, IP address, or both.
 
         </Callout>
--   **[Rate Limit:](#rate-limit)** Define a maximum request rate before a predefined action is triggered.
+
 -   **[Condition Group:](#condition-group)** A request counts towards a rate limit when it satisfies all of the following criteria:
     -   A [Security Application configuration's](security_applications#traffic-identification) hostname and URL path match conditions. 
     -   If one or more condition group(s) have been defined, then the request must also satisfy all of the conditions defined within at least one condition group.  
@@ -93,7 +92,7 @@ set of requests to which this rate rule will be applied.
 
 ### Source {/*source*/}
 
-Rate limiting may be applied across all requests or to each unique
+Apply a rate limit across all requests or to each unique
 client. Define this behavior from within the **Apply rate limit
 to** option. The available modes are described below.
 

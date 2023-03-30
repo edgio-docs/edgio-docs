@@ -614,28 +614,12 @@ const SidebarMenuItems: ISidebarMenuItems = [
           path: '/guides/security/security_applications',
         },
         {
-          title: 'Threats Dashboard',
-          path: '/guides/security/threats_dashboard',
+          title: 'Dashboard',
+          path: '/guides/security/dashboard',
         },
         {
-          title: 'Browser Challenges Dashboard',
-          path: '/guides/security/browser_challenges_dashboard',
-        },
-        {
-          title: 'Rates Dashboard',
-          path: '/guides/security/rates_dashboard',
-        },
-        {
-          title: 'Rate Enforcement Dashboard',
-          path: '/guides/security/rate_enforcement_dashboard',
-        },
-        {
-          title: 'Reports',
-          path: '/guides/security/reports',
-        },
-        {
-          title: 'Real-Time Statistics',
-          path: '/guides/security/real-time-statistics',
+          title: 'Logs',
+          path: '/guides/security/logs',
         },
         {
           title: 'Response to Client',

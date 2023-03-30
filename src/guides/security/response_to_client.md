@@ -19,9 +19,7 @@ experience for each possible configuration is described below.
     -   The user will receive a `403 Forbidden` instead of the requested asset.
     -   The response for the blocked request will include an additional response header. The name of this response header is defined by the corresponding rule's `Response Header Name` option. This response header will be set to `403`.
 
-    **Default security response header name/value:**
-
-    `X-EC-Security-Audit: 403`
+    **Default security response header name/value:** `X-EC-Security-Audit: 403`
 
 -   **Custom Response:** Our service provides a custom response to identified threats. This custom response is defined within a Security Application configuration when setting up access rules and managed rules. It defines the response headers, body, and status code that will be sent to the user.
 
@@ -36,6 +34,15 @@ described below.
 -   **Drop Request:** Our service sends a `503 Service Unavailable` response with a `Retry-After` header to rate limited requests.
 -   **Redirect (HTTP 302):** Our service redirects rate limited requests to a predefined URL. The client will receive the response for the resource located at that URL and a `302 Found`.
 
-## Bot Rules {/*bot-rules*/}
+## Bot Manager {/*bot-manager*/}
 
-Our service serves a browser challenege whenever a client submits a request that matches the traffic identification critieria defined within your Security Application and bot rule configuration. The status code for this browser challenge is defined within your Security Application configuration. If a client is unable to solve a request, then the client will receive another browser challenge.  
+Your Bot Manager configuration determines the action that will be applied to requests flagged as bot traffic. 
+-   **Alert:** Our service treats the request as if it had not been screened. The client will be unaware that the request was screened by {{ PRODUCT_SECURITY }}.
+-   **Browser Challenge:** Our service serves a browser challenege whenever a client submits a request that matches the traffic identification critieria defined within your Security Application and bot rule configuration. The status code for this browser challenge is defined within your Security Application configuration. If a client is unable to solve a request, then the client will receive another browser challenge.  
+-   **Block:** The user experience for requests blocked by {{ PRODUCT_SECURITY }} is described below.
+    -   The user will receive a `403 Forbidden` instead of the requested asset.
+    -   The response for the blocked request will include an additional response header. The name of this response header is defined by the corresponding rule's `Response Header Name` option. This response header will be set to `403`.
+
+    **Default security response header name/value:** `X-EC-Security-Audit: 403`
+-   **Custom Response:** Our service provides a custom response to identified threats. This custom response is defined within a Security Application configuration when setting up access rules and managed rules. It defines the response headers, body, and status code that will be sent to the user.
+-   **Redirect (HTTP 302):** Our service redirects rate limited requests to a predefined URL. The client will receive the response for the resource located at that URL and a `302 Found`.

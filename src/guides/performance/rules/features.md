@@ -1768,7 +1768,7 @@ Determines whether prefetching will be disabled for cache misses.
 new Router()
   .get('/', {
     response: {
-      "disable_prefetching_uncached_content": true,
+      "allow_prefetching_uncached_content": true,
     }
   })
 ```

@@ -2,6 +2,41 @@
 title: Getting Started with CDN-As-Code
 ---
 
+<RawEdgeJS>
+```
+[
+  {
+    "if": [
+      {
+        "==": [
+          {
+            "request": "path"
+          },
+          "/api/:path*"
+        ]
+      },
+      {
+        "caching": {
+          "max_age": "86400s",
+          "stale_while_revalidate": "3600s",
+          "service_worker_max_age": 86400,
+          "bypass_client_cache": true
+        },
+        "headers": {
+          "set_response_headers": {
+            "x-sw-cache-control": "max-age=86400"
+          }
+        },
+        "origin": {
+          "set_origin": "origin"
+        }
+      }
+    ]
+  }
+]
+```
+</RawEdgeJS>
+
 Our CDN-as-code approach to configuration allows you to configure CDN behavior using {{ EDGEJS_LABEL }} within a file ({{ ROUTES_FILE }}) stored alongside your code. This allows you to leverage the power of source control for collaboration and to link your CDN configurations with specific versions of your web application. 
 
 ## Quick Start
@@ -61,7 +96,10 @@ The {{ ROUTES_FILE }} file defines a set of routes. A route:
 By default, your {{ ROUTES_FILE }} contains the following configuration:
 
 ```js filename="./routes.js"
-import { Router } from '@edgio/core/router'
+// This file was added by edgio init.
+// You should commit this file to source control.
+
+import { Router, edgioRoutes } from '@edgio/core'
 
 // const ONE_HOUR = 60 * 60
 // const ONE_DAY = 24 * ONE_HOUR
@@ -69,22 +107,24 @@ import { Router } from '@edgio/core/router'
 export default new Router()
 
   // Here is an example where we cache api/* at the edge but prevent caching in the browser
-  // .match('/api/:path*', ({ proxy, cache }) => {
-  //   cache({
-  //     edge: {
-  //       maxAgeSeconds: ONE_DAY,
-  //       staleWhileRevalidateSeconds: ONE_HOUR,
-  //     },
-  //     browser: {
-  //       maxAgeSeconds: 0,
-  //       serviceWorkerSeconds: ONE_DAY,
-  //     },
-  //   })
-  //   proxy('origin')
-  // })
+  .match('/api/:path*', ({ proxy, cache }) => {
+    cache({
+      edge: {
+        maxAgeSeconds: ONE_DAY,
+        staleWhileRevalidateSeconds: ONE_HOUR,
+      },
+      browser: {
+        maxAgeSeconds: 0,
+        serviceWorkerSeconds: ONE_DAY,
+      },
+    })
+    proxy('origin')
+  })
 
-  // send any unmatched request to origin
-  .fallback(({ proxy }) => proxy('origin'))
+  // send any request to origin
+  .match('/:path*', ({ proxy }) => proxy('origin'))
+  // plugin enabling basic Edgio functionality
+  .use(edgioRoutes)
 ```
 
 The above configuration proxies all requests that do not match a route to the `origin` backend. Additionally, it does not define a route, since the only `match()` method has been commented-out. This means that all requests will be proxied to the `origin` backend.

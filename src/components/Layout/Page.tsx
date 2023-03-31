@@ -98,22 +98,23 @@ function Banner() {
   if (version.selectedVersion === '7') {
     return (
       <StyledBanner future>
-        Get ready for {PRODUCT} {PRODUCT_APPLICATIONS} {version.selectedVersionText}.&nbsp;
-
-        <Link href="/guides/v7-intro" passHref>
+        Get ready for {PRODUCT} {PRODUCT_APPLICATIONS}{' '}
+        {version.selectedVersionText}.&nbsp;
+        <Link href="/guides/v7/intro" passHref>
           <a>Learn about this upcoming product release.</a>
         </Link>
-
       </StyledBanner>
     );
   }
   if (!version.isLatest) {
     return (
       <StyledBanner legacy>
-        You are reading {PRODUCT} {PRODUCT_APPLICATIONS} {version.selectedVersionText} docs.&nbsp;
+        You are reading {PRODUCT} {PRODUCT_APPLICATIONS}{' '}
+        {version.selectedVersionText} docs.&nbsp;
         <Link href="/" passHref>
           <a>
-            Check out our latest docs for {PRODUCT} {PRODUCT_APPLICATIONS} {version.latestVersionText}.
+            Check out our latest docs for {PRODUCT} {PRODUCT_APPLICATIONS}{' '}
+            {version.latestVersionText}.
           </a>
         </Link>
       </StyledBanner>
@@ -121,7 +122,8 @@ function Banner() {
   }
   return (
     <StyledBanner>
-      🎉 Introducing {PRODUCT} {PRODUCT_APPLICATIONS} v6 which supports Node.js v16.{' '}
+      🎉 Introducing {PRODUCT} {PRODUCT_APPLICATIONS} v6 which supports Node.js
+      v16.{' '}
       <Link href="/guides/reference/v6_migration" passHref>
         <a>Learn how to upgrade.</a>
       </Link>{' '}

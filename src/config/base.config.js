@@ -157,7 +157,7 @@ yarn global add ${PACKAGE_NAME}/cli
 
 const ROUTEHELPER = `<Callout type="warning">
 
-  RouteHelper has been deprecated in favor of JSON syntax. Certain methods, such as `fallback` and `destination`, are no longer supported. [Learn more.](/guides/v7/intro#routehelper)
+  RouteHelper has been deprecated in favor of JSON syntax. Certain methods, such as \`fallback\` and \`destination\`, are no longer supported. [Learn more.](/guides/v7/intro#routehelper)
 
 </Callout>
 `;

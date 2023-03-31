@@ -19,6 +19,7 @@ interface PageProps {
 
 interface StyledBannerxProps {
   legacy?: boolean;
+  future?: boolean;
 }
 
 const StyledMainPage = styled.div`
@@ -69,10 +70,9 @@ const StyledMainPage = styled.div`
 `;
 
 const StyledBanner = styled.div<StyledBannerxProps>`
-  --banner-text-color: ${({legacy}) => (legacy ? '#000' : '#fff')};
-  --banner-background-color: var(
-    ${({legacy}) => (legacy ? '--callout-tip' : '--lg-primary')}
-  );
+  --banner-text-color: ${({legacy, future}) => (legacy ? '#000' : '#fff')};
+  --banner-background-color: ${({legacy, future}) =>
+    legacy ? 'var(--callout-tip)' : future ? '#812990' : 'var(--lg-primary)'};
 
   display: block;
   text-align: center;
@@ -94,6 +94,14 @@ const StyledBanner = styled.div<StyledBannerxProps>`
 
 function Banner() {
   const {version} = useConditioning();
+  if (version.selectedVersion === '7') {
+    return (
+      <StyledBanner future>
+        Get ready for {PRODUCT} {version.selectedVersionText}. Learn about this
+        upcoming product release.
+      </StyledBanner>
+    );
+  }
   if (!version.isLatest) {
     return (
       <StyledBanner legacy>

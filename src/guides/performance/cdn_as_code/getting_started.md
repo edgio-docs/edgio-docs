@@ -84,7 +84,7 @@ export default new Router()
   // })
 
   // send any unmatched request to origin
-  .fallback(({ proxy }) => proxy('origin'))
+  .match('/:path*', ({ proxy }) => proxy('origin'))
 ```
 
 The above configuration proxies all requests that do not match a route to the `origin` backend. Additionally, it does not define a route, since the only `match()` method has been commented-out. This means that all requests will be proxied to the `origin` backend.
@@ -182,7 +182,7 @@ export default new Router()
    })
 
   // send any unmatched request to origin
-  .fallback(({ proxy }) => proxy('origin'))
+  .match('/:path*', ({ proxy }) => proxy('origin'))
 ```
 
 <a id="caching-policy" /> 
@@ -289,7 +289,7 @@ export default new Router()
   ) 
     
   // send any unmatched request to origin
-  .fallback(({ proxy }) => proxy('origin'))
+  .match('/:path*', ({ proxy }) => proxy('origin'))
 ```
 
 The final line in your {{ ROUTES_FILE }} defines a `fallback()` method that proxies all requests that do not match a route to your `origin` backend.

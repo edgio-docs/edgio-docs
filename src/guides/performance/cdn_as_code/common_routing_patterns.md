@@ -129,7 +129,7 @@ router.match(
 The rules for interpolating the values of request and response objects can be found in the [routing](/guides/performance/cdn_as_code#embedded-values) guide.
 Note that catch-all routes that alter headers, cookies, or caching can be placed at the start of your router while allowing subsequent routes to run because they alter the request or the response without actually sending a response. See [route execution](/guides/routing#route-execution) for more information on route execution order and sending responses.
 
-### Manipulating Cookies {/*manipulating-cookies*/}
+<!-- ### Manipulating Cookies {/*manipulating-cookies*/}
 
 You can manipulate cookies before they are sent to the browser using cookie response API calls like [`addResponseCookie`](/docs/api/core/classes/_router_responsewriter_.responsewriter.html#addresponsecookie):
 
@@ -155,9 +155,9 @@ router.get('/some/path', ({
   removeResponseCookie('cookie-to-remove')
   updateResponseCookie('cookie-to-alter', /Domain=.+;/, 'Domain=mydomain.com;')
 })
-```
+``` -->
 
-### Adding Options to Cookies {/*adding-options-to-cookies*/}
+<!-- ### Adding Options to Cookies {/*adding-options-to-cookies*/}
 
 In addition to the name and value of the cookie, you can also add attributes to each cookie. For
 information on possible cookie attributes, please refer to https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Set-Cookie
@@ -172,7 +172,7 @@ router.get('/some/path', ({ addUpstreamResponseCookie, addResponseCookie, proxy 
 
   addResponseCookie('cookie-to-add', 'cookie-value', { 'max-age': 50000 })
 })
-```
+``` -->
 
 ### Proxying to Different Backends Based on Different Host Names {/*proxying-to-different-backends-based-on-different-host-names*/}
 
@@ -428,7 +428,7 @@ router.get(
 ### Blocking Search Engine Crawlers {/*blocking-search-engine-crawlers*/}
 
 If you need to block all search engine bot traffic to specific environments (such as your default or staging environment), the easiest way is to include the `x-robots-tag` header with the same directives you would otherwise set in a `meta` tag. 
-
+<!-- 
 <Callout type="info">
 
   The search engine traffic is automatically blocked on {{ PRODUCT }} edge links and permalinks as of {{ PRODUCT }} v6.
@@ -441,7 +441,7 @@ If you need to block all search engine bot traffic to specific environments (suc
   Otherwise, {{ PRODUCT }} will match requests with the `host` header matching `/{{ LINK_DOMAIN }}|{{ PERMALINK_DOMAIN }}/` and set a response header of `x-robots-tag: noindex`.
     
 
-</Callout>
+</Callout> -->
 
 Additionally, you can customize this to block traffic to development or staging websites based on the `host` header of the request:
 

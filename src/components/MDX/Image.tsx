@@ -1,15 +1,22 @@
 import styled from 'styled-components';
 
-const StyledComp = styled.figure`
+interface StyledCompProps {
+  inline?: boolean;
+}
+
+const StyledComp = styled.figure<StyledCompProps>`
   img {
     display: flex;
     max-width: calc(min(var(--docs-area-width), 98%));
   }
 
-  &[data-inline-img='true'] {
+  ${({inline}) =>
+    inline
+      ? `
     display: inline-flex;
     vertical-align: middle;
-  }
+  `
+      : ''}
 `;
 
 export default function Image({
@@ -19,14 +26,14 @@ export default function Image({
 }: {
   src: string;
   alt: string;
-  'data-inline-img'?: boolean;
+  inline?: boolean;
 }) {
   const srcArray = src.split('?');
-  const srcSearchParams = srcArray[1] ? srcArray[1] : '';
+  const srcSearchParams = srcArray[1] || '';
   const url = new URLSearchParams(srcSearchParams);
   const width = url.get('width');
 
-  if (props['data-inline-img']) {
+  if (props.inline) {
     return (
       <StyledComp {...{...props}}>
         {/* eslint-disable-next-line @next/next/no-img-element */}

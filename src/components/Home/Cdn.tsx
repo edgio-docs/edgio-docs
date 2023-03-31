@@ -21,9 +21,9 @@ export default function Cdn() {
   const allRoutesSorted = sortBy(allRoutes, 'title');
 
   const routesByColumns = [
-    allRoutesSorted?.slice(0, 6),
-    allRoutesSorted?.slice(6, 12),
-    allRoutesSorted?.slice(12),
+    allRoutesSorted?.slice(0, 8),
+    allRoutesSorted?.slice(8, 16),
+    allRoutesSorted?.slice(16),
   ];
 
   return (

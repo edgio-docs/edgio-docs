@@ -153,6 +153,10 @@ const SidebarMenuItems: ISidebarMenuItems = [
           path: '/guides/sites_frameworks/getting_started',
         },
         {
+          title: PRODUCT_SECURITY,
+          path: '/guides/security/getting_started',
+        },
+        {
           title: 'Deploying',
           path: '/guides/basics/deployments',
         },
@@ -200,14 +204,6 @@ const SidebarMenuItems: ISidebarMenuItems = [
         {
           title: 'Traditional Sites',
           path: '/guides/performance/traditional_sites',
-        },
-        {
-          title: 'A/B Testing',
-          path: '/guides/performance/traffic_splitting/a_b_testing',
-        },
-        {
-          title: 'Traffic Splitting',
-          path: '/guides/performance/traffic_splitting',
         },
         {
           title: 'Observability',
@@ -577,19 +573,66 @@ const SidebarMenuItems: ISidebarMenuItems = [
       icon: <IconSecurityPlain />,
       iconDark: <IconSecurityPlainDark />,
       path: 'security',
-      sortRoutes: true,
+      sortRoutes: false,
       routes: [
         {
-          title: 'Security Suite',
-          path: '/guides/security/security_suite',
-        },
-        {
-          title: 'Managed Rule Groups',
-          path: '/guides/security/managed_rule_groups',
+          title: 'Website Security (EdgeJS)',
+          path: '/guides/security/edgejs_security',
+          separator: true,
         },
         {
           title: PRODUCT_SECURITY_ADVANCED_BOT,
           path: '/guides/security/managed_bot_defense',
+          separator: true,
+        },
+        {
+          title: 'Web Application Firewall (WAF)',
+          path: '/guides/security/waf',
+        },
+        {
+          title: 'Access Rules',
+          path: '/guides/security/access_rules',
+        },
+        {
+          title: 'Rate Rules',
+          path: '/guides/security/rate_rules',
+        },
+        {
+          title: 'Bot Rules',
+          path: '/guides/security/bot_rules',
+        },
+        {
+          title: 'Custom Rules',
+          path: '/guides/security/custom_rules',
+        },
+        {
+          title: 'Managed Rules',
+          path: '/guides/security/managed_rules',
+        },
+        {
+          title: 'Security Applications',
+          path: '/guides/security/security_applications',
+        },
+        {
+          title: 'Dashboard',
+          path: '/guides/security/dashboard',
+        },
+        {
+          title: 'Logs',
+          path: '/guides/security/recent_event_logs',
+        },
+        {
+          title: 'Response to Client',
+          path: '/guides/security/response_to_client',
+          separator: true,
+        },
+        {
+          title: 'Country Codes',
+          path: '/reference/country_codes',
+        },
+        {
+          title: 'Matched On Variables',
+          path: '/guides/security/matched_on_variables',
         },
       ],
     },
@@ -666,10 +709,6 @@ const SidebarMenuItems: ISidebarMenuItems = [
           title: 'Teams',
           path: '/guides/basics/collaboration',
         },
-        {
-          title: 'SAML Single Sign On',
-          path: '/guides/basics/collaboration/sso',
-        },
       ],
     },
     {
@@ -690,10 +729,6 @@ const SidebarMenuItems: ISidebarMenuItems = [
         {
           title: 'EdgeJS Unit Testing',
           path: '/guides/performance/unit_testing_edgejs',
-        },
-        {
-          title: 'Logs',
-          path: '/guides/develop/logs',
         },
         {
           title: `Deploy to ${PRODUCT} Button`,

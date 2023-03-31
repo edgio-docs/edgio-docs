@@ -23,8 +23,9 @@ be tracked via [Google Search Console](https://search.google.com/search-console/
 
 - It can take days to weeks to see the effect of changes to your site on Core Web Vitals.
 - It's hard to diagnose Core Web Vitals by page type or URL.
+<Condition version="<=6">
 - It's impossible to A/B test the impact of site optimizations on Core Web Vitals. Note that to effectively A/B test performance optimizations you need both a RUM measurement tool and split testing at the edge, both of which {{ PRODUCT_NAME }} provides. 
-
+</Condition>
 <a id="why-use-layer0-to-track-core-web-vitals"></a>
 
 ## Why use {{ PRODUCT_NAME }} to track Core Web Vitals? {/*why-use-to-track-core-web-vitals*/}
@@ -35,130 +36,187 @@ The benefits of using {{ PRODUCT }} instead of Google Search Console to track Co
 - Correlate web vitals to your application's routes
 - Analyze score across a number of dimensions such as country, device, and connection type
 - Identify which pages are most negatively impacting your search ranking.
+<Condition version="<=6">
 - Use {{ PRODUCT_NAME }}'s [Edge-based A/B testing](/guides/performance/traffic_splitting/a_b_testing) to A/B test the impact of performance optimizations on Core Web Vitals.
+</Condition>
 
 ## Installation {/*installation*/}
 
-In order to start tracking Core Web Vitals on {{ PRODUCT_NAME }}, you need to add the `{{ PACKAGE_NAME }}/rum` client library to your application. Navigate to your site in the [{{ PRODUCT }} Developer Console]({{ LOGIN_URL }}) and click on **More Details** under the **Core Web Vitals** section. 
+Tracking Core Web Vitals on {{ PRODUCT_NAME }} requires adding the `{{ PACKAGE_NAME }}/rum` client library to your application. The {{ PORTAL_LINK }} provides information on how to install this library using a script tag, Google tag manager, npm, and yarn. 
 
-![Core Web Vitals More Details](/images/cwv/cwv_more_details.png)
+**To view {{ PACKAGE_NAME }}/rum installation instructions**
 
-Here you will find various ways to implement Core Web Vitals, including the metrics token which is specific to your site:
+1.  Load the **Core Web Vitals** page.
+    1.  {{ ENV_NAV }} **Core Web Vitals**.
 
-![Core Web Vitals Token](/images/cwv/cwv_token.png)
+2.  Click on the tab for the desired installation method. 
 
-### Script Tag {/*script-tag*/}
+    ![RUM Package Installation](/images/v7/performance/cwv-configuration-guide.png?width=450)
 
-To add Core Web Vitals tracking via a script tag, add the following to each page in your application:
+    <Callout type="info">
 
-```html
+      The {{ PORTAL }} provides installation instructions that contain a token that is specific to your property. 
+
+    </Callout>
+
+### Script Tag and Google Tag Manager {/*google-tag-manager*/}
+
+Add Core Web Vitals tracking by adding the following code to each page in your application:
+
+<SnippetGroup>
+
+```Script tabLabel="Script Tag"
 <script defer>
-  function initMetrics() {
+  function init{{ PRODUCT }}Rum() {
     new {{ RUM_NS }}.Metrics({
-      token: 'your-token-here', // get this from {{ APP_URL }}
+      token: '<TOKEN>' // Get your token from the {{ PORTAL }}
     }).collect()
   }
 </script>
-<script src="https://rum.{{ DOMAIN_LEGACY }}/latest.js" defer onload="initMetrics()"></script>
+<script src="https://{{ RUM_DOMAIN }}/latest.js" defer onload="init{{ PRODUCT }}Rum()"></script>
 ```
 
-### Google Tag Manager {/*google-tag-manager*/}
-
-```html
+```Script tabLabel="Google Tag Manager"
 <script>
-  function initMetrics() {
+  function init{{ PRODUCT }}Rum() {
     new {{ RUM_NS }}.Metrics({
-      token: 'your-token-here', // get this from {{ APP_URL }}
+      token: '<TOKEN>' // Get your token from the {{ PORTAL }}
     }).collect()
   }
   var rumScriptTag = document.createElement('script')
-  rumScriptTag.src = 'https://rum.{{ DOMAIN_LEGACY }}/latest.js'
+  rumScriptTag.src = 'https://{{ RUM_DOMAIN }}/latest.js'
   rumScriptTag.setAttribute('defer', '')
   rumScriptTag.type = 'text/javascript'
-  rumScriptTag.onload = initMetrics
+  rumScriptTag.onload = init{{ PRODUCT }}Rum
   document.body.appendChild(rumScriptTag)
 </script>
 ```
 
+</SnippetGroup>
+
 ### NPM or Yarn {/*npm-or-yarn*/}
 
-To install the Core Web Vitals library using npm, run:
+Install the Core Web Vitals library using npm or yarn by running the following command:
 
-```bash
-npm install {{ PACKAGE_NAME }}/rum
+<SnippetGroup>
+
+```bash tabLabel="npm"
+npm install --save {{ PACKAGE_NAME }}/rum
 ```
 
-Or, using yarn:
-
-```bash
+```bash tabLabel="Yarn"
 yarn add {{ PACKAGE_NAME }}/rum
 ```
 
-Then, add the following to your application's browser bundle:
+</SnippetGroup>
+
+Add the following code to your application's browser bundle:
 
 ```js
-import { Metrics } from '{{ PACKAGE_NAME }}/rum'
+import { Metrics } from '@edgio/rum'
 
 new Metrics({
-  token: 'your-token-here', // get this from {{ APP_URL }}
+  token: '<TOKEN>' // Get your token from the {{ PORTAL }}
 }).collect()
 ```
 
 ## Tie URLs to Page Templates {/*tie-urls-to-page-templates*/}
 
-You can tie URLs to page templates by providing an optional `router` parameter to `Metrics`.
+Tie URLs to page templates by passing an optional `router` parameter to `Metrics`.
 
-When installing `{{ PACKAGE_NAME }}/rum` using a script tag, use:
+Define page labels by adding a route for each page template:
 
-```js
-new {{ RUM_NS }}.Metrics({
-  // get this from {{ APP_URL }}
-  token: 'your-token-here',
+<SnippetGroup>
 
-  // assign a page label for each route:
-  router: new {{ PRODUCT_NAME }}.Router()
-    .match('/', ({ setPageLabel }) => setPageLabel('home'))
-    .match('/p/:id', ({ setPageLabel }) => setPageLabel('product'))
-    .match('/c/:id', ({ setPageLabel }) => setPageLabel('category')),
-}).collect()
+```bash tabLabel="Script Tag"
+<script defer>
+  function init{{ PRODUCT }}Rum() {
+    new {{ RUM_NS }}.Metrics({
+      token: '<TOKEN>', // Get your token from the {{ PORTAL }}
+
+      // assign a page label for each route
+      router: new {{ PRODUCT }}.Router()
+        .match('/', ({ setPageLabel }) => setPageLabel('home'))
+        .match('/p/:id', ({ setPageLabel }) => setPageLabel('product'))
+        .match('/c/:id', ({ setPageLabel }) => setPageLabel('category'))
+    }).collect()
+  }
+</script>
+<script src="https://{{ RUM_DOMAIN }}/latest.js" defer onload="init{{ PRODUCT }}Rum()"></script>
 ```
 
-When installing `{{ PACKAGE_NAME }}/rum` via NPM or Yarn use:
+```bash tabLabel="Google Tag Manager"
+<script>
+  function init{{ PRODUCT }}Rum() {
+    new {{ RUM_NS }}.Metrics({
+      token: '<TOKEN>', // Get your token from the {{ PORTAL }}
 
-```js
-import { Router } from '{{ PACKAGE_NAME }}/rum/Router'
-import { Metrics } from '{{ PACKAGE_NAME }}/rum'
+      // assign a page label for each route
+      router: new {{ PRODUCT }}.Router()
+        .match('/', ({ setPageLabel }) => setPageLabel('home'))
+        .match('/p/:id', ({ setPageLabel }) => setPageLabel('product'))
+        .match('/c/:id', ({ setPageLabel }) => setPageLabel('category'))
+    }).collect()
+  }
+  var rumScriptTag = document.createElement('script')
+  rumScriptTag.src = 'https://{{ RUM_DOMAIN }}/latest.js'
+  rumScriptTag.setAttribute('defer', '')
+  rumScriptTag.type = 'text/javascript'
+  rumScriptTag.onload = init{{ PRODUCT }}Rum
+  document.body.appendChild(rumScriptTag)
+</script>
+```
+
+```bash tabLabel="npm"
+import Router from '@edgio/rum/Router'
+import { Metrics } from '@edgio/rum'
 
 new Metrics({
-  // get this from {{ APP_URL }}
-  token: 'your-token-here',
+  token: '<TOKEN>', // Get your token from the {{ PORTAL }}
 
-  // assign a page label for each route:
+  // assign a page label for each route
   router: new Router()
-    .match('/', ({ setPageLabel }) => setPageLabel('home'))
-    .match('/p/:id', ({ setPageLabel }) => setPageLabel('product'))
-    .match('/c/:id', ({ setPageLabel }) => setPageLabel('category')),
+        .match('/', ({ setPageLabel }) => setPageLabel('home'))
+        .match('/p/:id', ({ setPageLabel }) => setPageLabel('product'))
+        .match('/c/:id', ({ setPageLabel }) => setPageLabel('category'))
 }).collect()
 ```
 
-The router supports the same pattern syntax as Express. Here's more information on [routing syntax](/guides/routing#route-pattern-syntax).
+```bash tabLabel="Yarn"
+import Router from '@edgio/rum/Router'
+import { Metrics } from '@edgio/rum'
+
+new Metrics({
+  token: '<TOKEN>', // Get your token from the {{ PORTAL }}
+
+   // assign a page label for each route
+  router: new Router()
+        .match('/', ({ setPageLabel }) => setPageLabel('home'))
+        .match('/p/:id', ({ setPageLabel }) => setPageLabel('product'))
+        .match('/c/:id', ({ setPageLabel }) => setPageLabel('category'))
+}).collect()
+```
+
+</SnippetGroup>
+
+[Learn more about route syntax.](/guides/routing#route-pattern-syntax)
 
 For non single page applications (e.g. traditional "multi-page apps"), you can also explicitly set the page label by passing a `pageLabel` property during initialization. An example is shown below where the `pageLabel` is pulled from `document.title`:
 
 ```js
 <script>
-  function initMetrics() {
+  function init{{ PRODUCT }}Rum() {
     new {{ RUM_NS }}.Metrics({
-      token: 'your-token-here',
+      token: '<TOKEN>', // Get your token from the {{ PORTAL }}
       pageLabel: document.title ? document.title : "(No title)",
-    }).collect();
+    }).collect()
   }
-  var rumScriptTag = document.createElement('script');
-  rumScriptTag.src = "https://rum.{{ DOMAIN_LEGACY }}/latest.js";
-  rumScriptTag.setAttribute("defer", "");
-  rumScriptTag.type = "text/javascript";
-  rumScriptTag.onload = initMetrics;
-  document.body.appendChild(rumScriptTag);
+  var rumScriptTag = document.createElement('script')
+  rumScriptTag.src = 'https://{{ RUM_DOMAIN }}/latest.js'
+  rumScriptTag.setAttribute('defer', '')
+  rumScriptTag.type = 'text/javascript'
+  rumScriptTag.onload = init{{ PRODUCT }}Rum
+  document.body.appendChild(rumScriptTag)
 </script>
 ```
 
@@ -172,10 +230,6 @@ new {{ RUM_NS }}.Metrics({
   // Use this option if it is more convenient to add the script tag to each page template individually
   // rather than adding it to the main application template.
   pageLabel: 'home',
-
-  // When running a split test, use this field to specify which variant is active.
-  // This is automatically set for sites that are deployed on {{ PRODUCT_NAME }}.
-  splitTestVariant: 'name-of-variant',
 
   // The version of your application that is running.
   appVersion: 'v1.0.0',
@@ -191,6 +245,11 @@ new {{ RUM_NS }}.Metrics({
 })
 ```
 
+<!--
+  // When running a split test, use this field to specify which variant is active.
+  // This is automatically set for sites that are deployed on {{ PRODUCT_NAME }}.
+  splitTestVariant: 'name-of-variant',
+-->
 
 ## Custom cache TTL {/*custom-cache-ttl*/}
 

@@ -2,22 +2,19 @@
 title: Getting Started with {{ PRODUCT_EDGE }}
 ---
 
-Get started with {{ PRODUCT_EDGE }} by:
+Get started with {{ PRODUCT_EDGE }} by performing these steps:
 
-1.  Creating and deploying a property to {{ PRODUCT }}.
+1.  Create a property. If you have already performed this step, proceed to the next step.
 
     [Learn more.](/guides/getting_started)
 
-    <Callout type="tip">
+2.  Create rules that define how {{ PRODUCT }} handles your traffic.
 
-    Alternatively, you may experiment with our [sample websites](#example) by deploying them to {{ PRODUCT }}.
+    <Callout type="info">
+
+      If you prefer code to UI, then try our [CDN-as-code approach](/guides/performance/cdn_as_code/getting_started) to configuration instead. 
 
     </Callout>
-
-2.  Use our CDN-as-code approach to configuration to:
-
-    - Define routes.
-    - Set up edge caching.
 
 3.  Deploy your updated property to {{ PRODUCT }}.
 
@@ -27,324 +24,137 @@ Deploying your web application behind {{ PRODUCT }} optimizes the delivery of yo
 
 ![traffic](/images/starter/traffic.png)
 
-## CDN-As-Code {/* cdn-as-code */}
+## Creating Rules
 
-Our CDN-as-code approach to configuration allows you to configure CDN behavior using {{ EDGEJS_LABEL }} within a file ({{ ROUTES_FILE }}) stored alongside your code. This allows you to leverage the power of source control for collaboration and to link your CDN configurations with specific versions of your web application.
+Rules determine how requests to a specific environment will be processed by {{ PRODUCT }}. 
 
-The {{ ROUTES_FILE }} file defines a set of routes. A route:
+#### Rule #1: Default Caching Policy
 
-- Identifies a set of requests by HTTP method, URL path, query string parameters, cookies, and request headers.
-- Determines how our CDN will handle the above requests. For example, you may configure those requests to be cached, prefetched, passed through without modification, or served as static content.
+We will now create a rule that applies a default caching policy to all traffic for the `production` environment.
 
-<Callout type = "info">
+1.  Load the **Rules** page.
 
-By default, our CLI automatically creates `routes.js` and `{{ CONFIG_FILE }}` upon initializing a property (`{{ FULL_CLI_NAME }} init`). If your web application supports TypeScript and it uses a framework for which we have a TypeScript implementation, then our CLI will create `routes.ts` instead of `routes.js`.
+    {{ ENV_NAV }} **Rules**.
 
-</Callout>
+    ![Rules landing page](/images/v7/performance/rules-blank.png?width=450)
 
-## Default Route Configuration {/* default-route-configuration */}
+2.  Add a rule by clicking **+ Add Rule**.
 
-By default, your {{ ROUTES_FILE }} contains the following configuration:
+    <Callout type="info">
 
-```js filename="./routes.js"
-import {Router} from '@edgio/core/router';
+      You may add conditions and features to a rule. A condition identifies a set of requests and a feature defines the action that will be applied to them.
 
-// const ONE_HOUR = 60 * 60
-// const ONE_DAY = 24 * ONE_HOUR
+      We will not add a condition to this rule. A rule without a condition applies to all requests. 
 
-export default new Router()
+    </Callout>
 
-  // Here is an example where we cache api/* at the edge but prevent caching in the browser
-  // .match('/api/:path*', ({ proxy, cache }) => {
-  //   cache({
-  //     edge: {
-  //       maxAgeSeconds: ONE_DAY,
-  //       staleWhileRevalidateSeconds: ONE_HOUR,
-  //     },
-  //     browser: {
-  //       maxAgeSeconds: 0,
-  //       serviceWorkerSeconds: ONE_DAY,
-  //     },
-  //   })
-  //   proxy('origin')
-  // })
+3.  Define a default policy for how long your clients (e.g., web browsers) will cache your content.
 
-  // send any unmatched request to origin
-  .fallback(({proxy}) => proxy('origin'));
-```
+    1.  Click **+ Add Feature**.
 
-The above configuration proxies all requests that do not match a route to the `origin` backend. Additionally, it does not define a route, since the only `match()` method has been commented-out. This means that all requests will be proxied to the `origin` backend.
+    2.  Select `Set Client Max Age`.
 
-<Callout type="info">
+        <Callout type="tip">
 
-A backend identifies a domain or IP address to which {{ PRODUCT }} may proxy requests. In this case, the `origin` backend was defined when you initialized this property using the `edgio init` command.
+          Typing automatically filters this list. If you can't remember the name of the feature, type a keyword (e.g., `Age`) to filter the list for relevant results.
 
-<br />{' '}
+        </Callout>
 
-Add, modify, and remove backends by editing the [{{ CONFIG_FILE }} file](/guides/basics/edgio_config).
+    3.  Set the duration to 5 minutes. 
 
-</Callout>
+        ![Add Feature](/images/v7/performance/rules-add-feature.png?width=450)
 
-## Routes {/* routes */}
+    4.  Click **Add Feature**.
 
-A route identifies a set of requests through any combination of URL path, HTTP method, cookies, request headers, and query string parameters. The following routes show various ways for identifying requests.
+        Your rule should now look similar to this:
 
-- Match all requests:
+        ![Rule with 1 Feature](/images/v7/performance/rules-rule-with-1-feature.png)
 
-  ```js
-  .match('/:path*', () => {
-    // route handler goes here
-  })
-  ```
+4.  Define a default policy for how long our CDN will cache your content for `200 OK` responses.
 
-- Match all `GET` requests whose URL path starts with `/marketing/images/`:
+    1.  Click **+ Add Feature**.
 
-  ```js
-  .get('/marketing/images/:path*', () => {
-    // route handler goes here
-  })
-  ```
+    2.  Select `Set Max Age`.
 
-- Match all `GET` and `POST` requests whose URL path starts with `/marketing/images/` and contain the `sport` request header set to `basketball`:
+        <Callout type="info">
 
-  ```js
-  .match(
-    {
-      path: '/marketing/images/:path*',
-      method: /GET|POST/i, // regular expression
-      headers: { 'sport': /^basketball$/i }, // keys are header names; values are regular expressions
-    },
-    () => {
-    // route handler goes here
-  })
-  ```
+          You may notice that `Set Client Max Age` is no longer available for selection. This is due to the fact that you may only add a feature a single time per rule.
 
-Once you have identified a set of requests, you need to define how {{ PRODUCT }} will handle those requests. The following routes show various ways in which requests can be processed.
+        </Callout>
 
-- Apply a caching policy to all requests and proxy cache misses to the `origin` backend:
-  ```js
-  .match('/:path*', ({ proxy, cache }) => {
-    cache({
-      edge: {
-        maxAgeSeconds: 3600
-      }
-    })
-    proxy('origin')
-  })
-  ```
-- Set the `images` response header and proxy cache misses to the `origin` backend for all GET requests whose URL path starts with `/marketing/images/`:
-  ```js
-  .get('/marketing/images/:path*', ({ setResponseHeader, proxy }) => {
-    setResponseHeader('images', 'true')
-    proxy('origin')
-  })
-  ```
+    3.  Set the duration to 1 day for `200 OK` responses.
 
-[View additional examples.](/guides/performance/cdn_as_code/common_routing_patterns)
+        ![Add Feature](/images/v7/performance/rules-add-feature-2.png?width=450)
 
-### Defining Routes {/* defining-a-route */}
+    4.  Click **Add Feature**.
 
-We will now define a route by uncommenting the constants and the `match()` method in your {{ ROUTES_FILE }} file. It should now look similar to the following configuration:
+        Your rule should now look similar to this:
 
-```js filename="./routes.js" highlight="3-4,9-21"
-import {Router} from '@edgio/core/router';
+        ![Rule with 1 Feature](/images/v7/performance/rules-rule-with-2-features.png)
 
-const ONE_HOUR = 60 * 60;
-const ONE_DAY = 24 * ONE_HOUR;
+#### Rule #2: Path-Specific Caching Policy
 
-export default new Router()
+We will now create a rule that applies a different caching policy for requests whose relative path starts with `/news/`. In order to allow this rule to override your default caching policy, it needs to be positioned below your initial rule.
 
-  // Here is an example where we cache api/* at the edge but prevent caching in the browser
-  .match('/api/:path*', ({proxy, cache}) => {
-    cache({
-      edge: {
-        maxAgeSeconds: ONE_DAY,
-        staleWhileRevalidateSeconds: ONE_HOUR,
-      },
-      browser: {
-        maxAgeSeconds: 0,
-        serviceWorkerSeconds: ONE_DAY,
-      },
-    });
-    proxy('origin');
-  })
+1.  Add a rule by clicking **+ Add Rule**.
+2.  Define the type of requests to which this rule will be applied.
 
-  // send any unmatched request to origin
-  .fallback(({proxy}) => proxy('origin'));
-```
+    1.  Click **+Add Condition**.
+    2.  Select `Path`.
+    3.  Leave the **Operator** option to `matches (simple)`.
+    4.  Match for requests whose relative path starts with `/news/` by setting the **Match Value** option to: `/news/:path*`
 
-<a id="caching-policy" />{' '}
+        <Callout type="info">
 
-The above route matches all requests that start with `/api/` and instructs {{ PRODUCT }} to:
+          The `matches (simple)` operator supports named parameters. A named parameter (e.g., `:path`) represents a URL segment. Appending a `*` matches everything that follows that URL segment.
 
-- Cache those requests on our network for one day.
-- Allow us to serve stale content for one hour.
-- Instruct the browser to treat the response as immediately stale.
-- Allow prefetched requests to be served from cache for one day.
-- Proxy those requests to your `origin` backend when we cannot serve them from cache.
+        </Callout>
 
-You can use constants to apply this same caching policy to various routes. Define a `CACHE_ASSETS` constant and set it to the `cache` object defined in the above route.
+        Your condition should now look like this:
 
-```js filename="./routes.js" highlight="5-14"
+        ![Add Condition](/images/v7/performance/rules-add-condition.png?width=450)
 
-import { Router } from '@edgio/core/router'
+    5.  Click **Add Condition**.
 
- const ONE_HOUR = 60 * 60
- const ONE_DAY = 24 * ONE_HOUR
- const CACHE_ASSETS = {
-   edge: {
-     maxAgeSeconds: ONE_DAY,
-     staleWhileRevalidateSeconds: ONE_HOUR,
-   },
-   browser: {
-     maxAgeSeconds: 0,
-     serviceWorkerSeconds: ONE_DAY,
-   },
- }
-...
-```
+3.  Define how long our CDN will cache content for `200 OK` responses to the requests identified in the previous step.
 
-Update the `/api/` route to use the `CACHE_ASSETS` constant.
+    1.  Click **+ Add Feature**.
+    2.  Select `Set Max Age`.
+    3.  Set the duration to 1 minute for `200 OK` responses.
+    4.  Click **Add Feature**.
 
-```js filename="./routes.js"
-...
-   .match('/api/:path*', ({ proxy, cache }) => {
-     cache(CACHE_ASSETS)
-     proxy('origin')
-   })
-...
-```
+        Your rule should now look similar to this:
 
-We will now add a route that applies the same caching policy to all JavaScript (i.e., `.js` and `.mjs`) and CSS files.
-
-```js filename="./routes.js"
-...
-  // Cache stylesheets and scripts, but prevent browser caching
-  .match(
-    '/:path*/:file.:ext(js|mjs|css)',
-    ({ cache, removeUpstreamResponseHeader, proxy, setResponseHeader }) => {
-      setResponseHeader('cache-control', 'public, max-age=86400')
-      removeUpstreamResponseHeader('set-cookie')
-      cache(CACHE_ASSETS)
-      proxy('origin')
-    }
-  )
-...
-```
-
-The above route instructs {{ PRODUCT }} to perform the following actions for all requests whose file extension matches `js`, `mjs`, or `css`:
-
-- Set the `cache-control` response header to: `cache-control: public, max-age=86400`
-- Remove the `set-cookie` response header. {{ PRODUCT }} will not cache a response when the `set-cookie` response header is present.
-- Apply the [caching policy](#caching-policy) defined by the `CACHE_ASSETS` constant.
-- Proxy these requests to your `origin` backend when we cannot serve them from cache.
-
-Your {{ ROUTES_FILE }} should now look similar to the following:
-
-```js filename="./routes.js"
-import {Router} from '@edgio/core/router';
-
-const ONE_HOUR = 60 * 60;
-const ONE_DAY = 24 * ONE_HOUR;
-const CACHE_ASSETS = {
-  edge: {
-    maxAgeSeconds: ONE_DAY,
-    staleWhileRevalidateSeconds: ONE_HOUR,
-  },
-  browser: {
-    maxAgeSeconds: 0,
-    serviceWorkerSeconds: ONE_DAY,
-  },
-};
-
-export default new Router()
-
-  // Here is an example where we cache api/* at the edge but prevent caching in the browser
-  .match('/api/:path*', ({proxy, cache}) => {
-    cache(CACHE_ASSETS);
-    proxy('origin');
-  })
-
-  // Cache stylesheets and scripts, but prevent browser caching
-  .match(
-    '/:path*/:file.:ext(js|mjs|css)',
-    ({cache, removeUpstreamResponseHeader, proxy, setResponseHeader}) => {
-      setResponseHeader('cache-control', 'public, max-age=86400');
-      removeUpstreamResponseHeader('set-cookie');
-      cache(CACHE_ASSETS);
-      proxy('origin');
-    }
-  )
-
-  // send any unmatched request to origin
-  .fallback(({proxy}) => proxy('origin'));
-```
-
-The final line in your {{ ROUTES_FILE }} defines a `fallback()` method that proxies all requests that do not match a route to your `origin` backend.
-
-## Testing Locally {/* deploy-locally */}
-
-You may run {{ PRODUCT }} in local development mode to preview your website on your local machine prior to deployment. Local development mode allows for rapid development by allowing you to quickly test changes prior to deployment.
-
-1.  From the command line or terminal, type `{{ FULL_CLI_NAME }} dev`.
-2.  Preview your website by loading `https://127.0.0.1:3000` from within your preferred web browser.
+        ![Rule with 1 Feature](/images/v7/performance/rules-2-rules.png?width=450)
 
 ## Deploying Your Property {/* deploy-to */}
 
-Evaluate site performance and QA functionality by deploying your property to {{ PRODUCT }}. Run the following command from your property's root directory:
+Evaluate site performance and QA functionality by deploying your property to {{ PRODUCT }}. 
 
-```bash
-{{ FULL_CLI_NAME }} deploy
-```
+1.  Click **Deploy Changes** from any page within the `production` environment.
 
-Assess performance and caching behavior from the {{ PORTAL }}. Fine-tune your configuration by adding routes and then redeploying your property. Once you are ready to serve production traffic through {{ PRODUCT }}, update your site's DNS to point to our service.
+    ![Deploy Changes](/images/v7/performance/rules-deploy-changes.png?width=450)
 
-[Learn more.](/guides/production)
+2.  When prompted, provide a brief description for this change and then click **Deploy Changes**.
 
-## Examples {/* example */}
+    **Example:** `Setting a default caching policy and a caching policy for /news/ requests.`
 
-Use our sample websites to gain hands-on experience on how to set up {{ PRODUCT }} {{ PRODUCT_EDGE }}. Specifically, you can browse our sample websites, view their source code, and even experiment on them by deploying them to {{ PRODUCT }}.
+3.  From the left-hand pane, select **Deployments**.
 
-**Simple Example**
+4.  View the deployment by clicking on the version number (e.g., `#2`) for the latest deployment. 
 
-This example demonstrates a basic {{ PRODUCT }} configuration for `publicdomainreview.org`. It contains two routes that cache content according to their file extension.
+    ![View Deployment](/images/v7/performance/deployments-version-number.png?width=450)
 
-<ExampleButtons
-  title="Simple"
-  siteUrl="https://edgio-community-examples-simple-performance-live.layer0-limelight.link/"
-  repoUrl="https://github.com/edgio-docs/edgio-simple-performance-example/"
-  deployFromRepo
-/>
+5.  Preview your site by clicking the second edge link displayed under the **URL** section.
 
-**Full-Featured Example**
+    ![Preview Site](/images/v7/performance/deployments-second-url.png?width=450)
 
-This example demonstrates a full-featured {{ PRODUCT }} configuration that showcases the following functionality:
+Congratulations on deploying a caching policy to {{ PRODUCT }}! 
 
-- [Proxying requests](/guides/performance/cdn_as_code/common_routing_patterns#proxying-an-origin) to multiple origins
-- Increasing the cache buffer during revalidation through [StaleWhileRevalidate](/guides/performance/caching#achieving-100-cache-hit-rates)
-- [Prerendering](/guides/performance/static_prerendering) pages and caching them to improve performance.
-- Instructing the browser to [prefetch](/guides/performance/prefetching) and [deep fetch](/guides/performance/prefetching#deep-fetching) cached content to improve performance.
+You are now ready to:
 
-  <Callout type="info">
+-   Assess performance and caching behavior through [Edge Insights](/guides/performance/observability/edge_insights)  and [Core Web Vitals](/guides/performance/observability/core_web_vitals). 
+-   Fine-tune your configuration by adding rules and then redeploying your property. 
+-   Once you are ready to serve production traffic through {{ PRODUCT }}, update your site's DNS to point to our service.
 
-  Prefetching only improves performance for cached content. {{ PRODUCT }} returns `412 Precondition Failed` when prefetching a cache miss. This status code means that the prefetching did not occur for that request.
-
-  </Callout>
-
-- [Transforming and optimizing images](/guides/performance/image_optimization)
-- Transforming the response through [Serverless Compute](/guides/performance/serverless_compute)
-- [Removing response headers](/guides/performance/cdn_as_code#alter-requests-and-responses)
-- [Normalizing the cache key](/guides/performance/caching#customizing-the-cache-key)
-- Generating performance insights through [DevTools](/guides/performance/observability/devtools)
-- Tracking [Core Web Vitals](/guides/performance/observability/core_web_vitals) through real user monitoring (RUM).
-
-<ExampleButtons
-  title="Full-Featured"
-  siteUrl="https://edgio-community-examples-full-featured-performance-live.layer0-limelight.link/"
-  repoUrl="https://github.com/edgio-docs/edgio-full-featured-performance-example/"
-  deployFromRepo
-/>
-
-## Issues? {/* issues */}
-
-If you have any issues during this process, check our [forums]({{ FORUM_URL }}) for assistance.
+    [Learn more.](/guides/basics/hostnames_and_origins#serving-traffic-through)

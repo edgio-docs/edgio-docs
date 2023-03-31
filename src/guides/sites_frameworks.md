@@ -12,13 +12,15 @@ We also support static page generation:
 
 ## Getting Started {/*getting-started*/}
 
-{{ PRODUCT }} {{ PRODUCT_PLATFORM }} provides over [40 popular frameworks integrations](/guides/sites_frameworks/getting_started) through which you can deploy your websites and applications to {{ PRODUCT }}. Getting started with {{ PRODUCT }} {{ PRODUCT_PLATFORM }} involves initializing your {{ PRODUCT }} property through our CLI. Our CLI will then automatically detect your framework and configure your app accordingly.
+{{ PRODUCT }} {{ PRODUCT_PLATFORM }} provides <Condition version="<=6">over [40 popular frameworks integrations](/guides/sites_frameworks/getting_started)</Condition><Condition version="7">[Next](/guides/sites_frameworks/getting_started/next), [Nuxt](/guides/sites_frameworks/getting_started/nuxt), and [Nuxt3](/guides/sites_frameworks/getting_started/nuxt3) integrations</Condition> through which you can deploy your websites and applications to {{ PRODUCT }}. Getting started with {{ PRODUCT }} {{ PRODUCT_PLATFORM }} involves initializing your {{ PRODUCT }} property through our CLI. Our CLI will then automatically detect your framework and configure your app accordingly.
 
+<Condition version="<=6">
 <Callout type="tip">
 
   If you are still planning or developing your website or application, then consider using our [Traffic Splitting](/guides/performance/traffic_splitting) capability to migrate to a Jamstack site or application in stages.
 
 </Callout>
+</Condition>
 
 ## Compute Regions {/*regions*/}
 

@@ -3,7 +3,7 @@ title: Basics
 ---
 
 The {{ PRODUCT }} Applications platform consists of the following products:
--   {{ PRODUCT }} {{ PRODUCT_EDGE }} improves your site's performance through caching, predictive prefetching, and serverless computing. Streamline your development workflow through a CDN-as-code approach to configuration, performance insights, and site previews.
+-   {{ PRODUCT }} {{ PRODUCT_EDGE }} improves your site's performance through caching, predictive prefetching, and serverless computing. Set up rules that identify traffic segments and how they will be handled by {{ PRODUCT }}. Or, if you prefer code to UI, then you can integrate your CDN configuration into your development workflow through our CDN-as-code approach to configuration. We also provide performance insights and site previews to speed up software development and improve collaboration between your teams.
 -   {{ PRODUCT }} {{ PRODUCT_SECURITY }} protects your web infrastructure through:
     -   Distributed Denial-of-Service (DDoS) protection for all traffic served through our network.
     -   An Origin Shield that reduces traffic to your origin servers through an additional caching layer.
@@ -20,16 +20,18 @@ Before you can take advantage of {{ PRODUCT_EDGE }}, {{ PRODUCT_SECURITY }}, and
 -   [An {{ PRODUCT }} team space.](/guides/basics/collaboration) By default, your account will only have a private space that may only be accessed through your user account. Create a team space if you plan on collaborating with other teammates.
 -   [An {{ PRODUCT }} property.](/guides/getting_started#create-property) A property instructs {{ PRODUCT }} how to process requests to your website.
 -   [An environment.](/guides/basics/environments) An environment allows you to serve your site on different domains. For example, you can create environments for development, staging, and production to which you can deploy builds as they progress through your release workflow.
--   [A domain configuration that supports HTTPS.](/guides/basics/domains) In addition to setting up a domain configuration on the desired environment, {{ PRODUCT }} needs to generate a TLS certificate for it. After which, you may update your DNS configuration to point your website's domain to our service. Once your updated DNS configuration takes effect, {{ PRODUCT }} will serve your production traffic.
+-   [A hostname](/guides/basics/hostnames_and_origins#hostnames) that identifies the domains through which traffic will be served. You must also authorize {{ PRODUCT }} to generate a TLS certificate for this hostname.
+-   [An origin configuration](/guides/basics/hostnames_and_origins#origin) that identifies your web servers.
+-   Once you are ready to [serve traffic through {{ PRODUCT }}](/guides/basics/hostnames_and_origins#serving-traffic-through), you should update your DNS configuration to point your website's domain to our service. 
 
-![setup](/images/basics/setup-overview.png)
+![setup](/images/v7/basics/setup-overview.png)
 
 Once you have set up a basic configuration, you are ready to take full advantage of {{ PRODUCT }} {{ PRODUCT_APPLICATIONS }}:
 
 -   [{{ PRODUCT_EDGE }}](/guides/performance). Learn how to:
-    -   Optimize website performance through our CDN-as-code approach to:
+    -   Optimize website performance through either [rules](/guides/performance/rules) or our [CDN-as-code approach](/guides/performance/cdn_as_code) to:
         -   [Cache](/guides/performance/getting_started#configure-caching) your content.
-        -   Determine how your content is [routed](/guides/performance/cdn_as_code) through our network.
+        -   Determine how your content is routed through our network.
         -   Define when web browsers should use [predictive prefetching](/guides/performance/prefetching) and the content that will be delivered before it is requested by your users.
     -   Gain performance insights through which you can fine-tune your configuration through our [Observability](/guides/performance/observability) solution.
     -   Speed up development by quickly iterating through different variations of your site through our [Traffic Splitting](/guides/performance/traffic_splitting) solution.

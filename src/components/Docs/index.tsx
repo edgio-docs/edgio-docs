@@ -169,12 +169,13 @@ const StyledDocs = styled.div`
       font-weight: 600;
       color: var(--docs-text-primary);
       font-size: 14px;
+      background-color: var(--table-header-bg);
     }
 
     tr {
       th,
       td {
-        padding: 16px;
+        padding: 12px;
         text-align: left;
         vertical-align: top;
       }

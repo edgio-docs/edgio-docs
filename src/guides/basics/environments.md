@@ -2,43 +2,69 @@
 title: Environments
 ---
 
-This guide shows you how to create production, staging, and other environments.
+An environment defines how traffic will be served through {{ PRODUCT }}. Each environment consists of:
 
-In order to serve your site on a specific domain, you need to configure an environment. Most sites have at least three environments: default, staging, and production. Free accounts are limited to three environments. Paid accounts allow you to create either five environments (on the Hyper plan) or as many environments as you need (on Enterprise plans). Each environment consists of:
+-   [Hostnames:](/guides/basics/hostnames_and_origins) A hostname identifies a domain (e.g., `cdn.example.com`) through which your site will be served.
+-   [Origins:](/guides/basics/hostnames_and_origins) An origin configuration defines how our service will communicate with your web servers.
+-   [Rules:](/guides/performance/rules) A rule determines how requests for a specific environment will be processed.
+-   [Core Web Vitals:](/guides/performance/observability/core_web_vitals) Review and analyze performance metrics collected through the measurement of actual Chrome users. 
+-   [Caching:](/guides/performance/caching) By default, deploying to an environment also clears that environment's cached content. You may manually [purge content](/guides/caching) from the **Caching** page, the [{{ PRODUCT }} CLI](/guides/cli#cache-clear), or our [REST API](/guides/rest_api#clear-cache). 
+-   [Environment Variables:](#environment-variables) An environment variable is a placeholder for sensitive information (e.g., API keys and passwords) that should not be checked into source control. 
+-   **Traffic (Analytics):** Contains real-time statistics for this environment's traffic. You may also view a breakdown of traffic by specific routes.
+-   [Real-Time Log Delivery:](/guides/logs/rtld) Delivers log data in near real-time to a variety of destinations. 
+-   **User Activity:** Contains an audit trail of changes to this environment (e.g., changes to your configuration and deployments).
+-   **Edge Insights:** Gain historical and near real-time insights into threat profiles, performance, and CDN usage. 
+-   <Condition version="7">**Traffic Splitting**: Create rules to split traffic between multiple origins to conduct A/B testing or implement blue/green deployments.</Condition><Condition version="<=6">**A/B Testing**: Split traffic between multiple router destinations or other environments to conduct A/B testing or implement blue/green deployments.</Condition>
 
-- **Domains** - one or more domains on which the site will be served. Domains cannot be set on the default environment. The domain name for the default environment is derived from your team and site's name.
-- **Environment Variables** - secrets and other values that are specific to the environment and are not appropriate to check into source control. For example, API keys are commonly stored as environment variables.
-- **A/B Testing** - Split traffic between multiple router destinations or other environments to conduct A/B testing or implement blue/green deployments.
-- **Caching** - Each environment has a separate cache space that is automatically cleared each time you deploy. Use the _Caching_ tab to clear the cache by path or surrogate key.
+**Key information:**
+
+-   By default, all new properties contain an environment called `production`. The `production` environment cannot be renamed or deleted.
+-   You may create additional environments for your property.
+
+    <Callout type="tip">
+
+      Set up your environments to match your software development workflow.
+
+      For example, you could create a development, testing, and staging environment to allow your team members to collaborate at every stage of your software development life cycle.
+
+    </Callout>
+
+<!--
+Free accounts are limited to three environments. Paid accounts allow you to create either five environments (on the Hyper plan) or as many environments as you need (on Enterprise plans). 
+-->
+
+-   Applying changes to an environment requires a [deployment](/guides/basics/deployments).
+-   Deployments to your environments are [versioned](/guides/basics/deployments#versioning). This allows you to quickly roll back your environment's configuration to a known working version.
 
 ## Creating an Environment {/*creating-an-environment*/}
 
-To create an environment, navigate to your site, select the _Environments_ tab, and click _New Environment_:
+Perform the following steps to create an environment:
 
-![environments](/images/environments/environments.png)
+1.  Load the **Environments** page.
 
-When creating an environment, you can choose whether or not to limit deployment capabilities to admins and deploy tokens, or to make it available to all members of the team:
+    1.  From the {{ PORTAL_LINK }}, select the desired private or team space.
+    2.  Select the desired property.
+    3.  From the left-hand pane, select the desired environment from under the **Environments** section.
 
-![limit environment](/images/teams/environment-permissions.png?width=450)
+2.  Click **+ New Environment**.
 
-## Deploying to an Environment {/*deploying-to-an-environment*/}
+    ![environments](/images/v7/basics/environments.png)
 
-To deploy to an environment, you can `{{ FULL_CLI_NAME }} deploy` with the `--environment` option:
+3.  In the **Name** option, specify a name for this environment. This name may consist of lowercase characters, numbers, dashes (`-`), and underscores (`_`).
 
-```bash
-{{ FULL_CLI_NAME }} deploy <team name> --environment=<environment name>
-```
+4.  Optional. Copy environment variables<Condition version="<=6">, A/B testing configuration,</Condition> and notes from another environment by selecting it from the `Copy settings from environment` option.
 
-You can also promote any existing deployment to an environment using the _PROMOTE TO ENVIRONMENT_ button at the top of the deployment view:
+5.  Determine deployment permissions through the **Allow all team members to deploy to this environment** option. 
 
-![promote](/images/environments/promote.png)
+    -   Mark this option to allow all team members to deploy to this environment.
+    -   Clear this option to restrict deployment to admins and the deploy token. 
 
-When configuring CI, we recommend:
+    ![limit environment](/images/v7/basics/environment-permissions.png?width=450)
 
-- Automatically deploying to your staging environment when a PR is merged to the master branch of your repo.
-- Manually promoting deployments to production using the {{ PRODUCT_NAME }} Console to prevent unwanted builds from being published by misconfigured CI workflows.
+6.  Click **Create**.
 
-## Production Environment {/*production-environment*/}
+<!--
+Production Environment 
 
 To ensure that your production environment gets priority over all other environments during periods of high traffic, mark it as _production_ by selecting this option during creation:
 
@@ -49,86 +75,74 @@ Or from the environments list in the site view:
 ![promote](/images/environments/environments_table.png)
 
 Failure to do so could cause your production environment to become slow if another environment experiences an unexpected surge in traffic, for example due to an attack or load test.
-
-## Environment Versions {/*environment-versions*/}
-
-Since environments contain important settings that affect how your site functions, they are versioned. This makes it easy to roll back to a previous version of the environment if you make a change that breaks the site. To change your environment settings, create a new draft version by clicking the _Edit_ button:
-
-![edit](/images/environments/edit.png)
-
-As you make changes they are saved in the draft version. Once you're ready to deploy your changes, click _Activate_.
-
-![activate](/images/environments/activate.png)
-
-Doing so will redeploy the environment's active deployment, but updated with the new environment configuration.
+-->
 
 ## Environment Variables {/*environment-variables*/}
 
-You can create environment variables on a {{PRODUCT_NAME}} environment basis. Environment variables allow you to control certain facets of your application outside of its code.  {{PRODUCT_NAME}} environment variable types are:
+Environment variables allow you to control certain facets of your application outside of its code. There are two types of {{PRODUCT}} environment variables: 
 
-* User-defined - see [Creating and Editing Environment Variables](#creating-and-editing-environment-variables)
-* Built-in - see [Built-in Environment Variables](#built-in-environment-variables)
+-   **System-defined:** {{ PRODUCT }} automatically defines the following variables within each environment:
 
-### Creating and Editing Environment Variables {/*creating-and-editing-environment-variables*/}
+    - `NODE_ENV`**:** By default, this variable is set to `production`. Override this default value by [creating a variable](#managing-environment-variables) called `NODE_ENV` and setting it to the desired value.
+    - `{{ PRODUCT_NAME_UPPER }}_ENVIRONMENT_NAME`**:** This read-only variable is set during deployment to the name of the environment (e.g., `production`) being deployed.
 
-1. Navigate to your site and select the _ENVIRONMENTS_ tab:
+-   **Custom:** Create custom variables for sensitive information (e.g., API keys and passwords) that should be excluded from source control.
 
-  ![environments](/images/environments/environments.png)
+### Managing Environment Variables {/*managing-environment-variables*/}
 
-2. In the resulting list of deployments, click the desired version under the *ENVIRONMENT* list header.
+You may create, modify, and delete environment variables from the {{ PORTAL }}.
 
-  ![deployments](/images/environments/deployments.png)
+**Key information:**
 
-  The environment's current settings are listed and environment variables are displayed in the resulting *CONFIGURATION* tab:
+-   Applying environment variable changes requires a [deployment](/guides/basics/deployments).
+-   Once an environment variable has been marked as secret, you cannot unset the **Keep this value a secret** option for that environment variable.
+-   The value assigned to a secret environment variable is masked using asterisks and it is never revealed. However, you may set it to a different value. 
 
-  ![env-var-list](/images/environments/env-var-list.png)
+**To create an environment variable**
 
-To add or edit environment variables, you must create a new environment version (see [Environment Versions](#environment-versions)).
+1.  Load the **Environment Variables** page.
 
-3. Click the *EDIT* button at the top right of the screen and scroll to the *Environment Variables* section.
+    {{ ENV_NAV }} **Environment Variables**.
 
-    * **Create a Variable**
+2.  Click **+ Add an Environment Variable**.
 
-      1. Click the the *ADD VARIABLE* button. 
+3.  In the **Key** option, type a name for this environment variable.
 
-        ![add](/images/environments/add-env-var.png)
-      
-      2. Enter the variable name (key) and value in the *Add Variable* dialog. If you wish to hide the value after creation, click the *Keep this value a secret* field. 
+4.  In the **Value** option, assign a value to this environment variable.
 
-      3. Click the *ADD VARIABLE* button in the dialog.
+5.  If this environment variable contains sensitive information that should not be revealed to other team members, then you should mark the **Keep this value a secret** option. Otherwise, this option should be cleared.
 
-    * **Edit a Variable**
+6.  Click **Add variable**.
 
-      1. Click the variable's row.
+**To modify an environment variable**
 
-      2. The resulting dialog is similar to the *Add Variable* dialog. Modify the variable name and value and  click the *Keep this value a secret* field if needed.
+1.  Load the **Environment Variables** page.
 
-      3. Click the *ADD VARIABLE* button in the dialog. 
+    {{ ENV_NAV }} **Environment Variables**.
 
-  Each variable you add or edit is listed in a table and can be deleted by clicking the delete icon. 
+2.  Click on the desired environment variable.
 
-  ![config](/images/environments/config-env-vars.png)
+3.  Modify the environment variable's name, value, or both. 
 
-7. Click the *ACTIVATE* button at the top right of the screen to save the new [version](#environment-versions). 
+4.  Click **Apply**.
 
-  You are returned to the new version's *CONFIGURATION* tab and all variables are listed in the *Environment Variables* section. Secret values are masked with asterisks.
+**To delete an environment variable**
 
-  ![env-var-list](/images/environments/env-var-list.png)
+1.  Load the **Environment Variables** page.
 
-### Built-in Environment Variables {/*built-in-environment-variables*/}
+    {{ ENV_NAV }} **Environment Variables**.
 
-{{ PRODUCT_NAME }} automatically injects the following environment variables:
+2.  Click on the <Image inline src="/images/v7/icons/delete-4.png" alt="Delete" /> icon next to the desired environment variable.
 
-- `NODE_ENV`: Set to `production` by default, but you can override this through the console.
-- `{{ PRODUCT_NAME_UPPER }}_ENVIRONMENT_NAME`: The name of the environment (e.g. `default`, `production` and so on). This cannot be overridden by you.
+3.  When prompted, click **Remove Variable** to confirm the permenant deletion of that environment variable.    
 
 ### Accessing Environment Variables {/*accessing-environment-variables*/}
 
-#### At Build Time {/*at-build-time*/}
+#### Build Time {/*build-time*/}
 
-When you deploy to an environment using a deploy token, for example by running `{{ FULL_CLI_NAME }} deploy my-team --environment=production --token=(my token)` option, all environment variables are pulled down from the {{ PRODUCT_NAME }} Developer Console and applied to `process.env` so they can be accessed at build time. This allows you to store all of your build and runtime secrets in a single place, the {{ PRODUCT_NAME }} Developer Console, rather than storing some in your CI system's secret manager.
+When you deploy to an environment using a deploy token, for example by running `{{ FULL_CLI_NAME }} deploy my-team --environment=production --token=(my token)` option, all environment variables are pulled down from the {{ PORTAL }} and applied to `process.env` so they can be accessed at build time. This allows you to store all of your build and runtime secrets in a single place, the {{ PORTAL }}, rather than storing some in your CI system's secret manager.
 
-#### At Run Time {/*at-run-time*/}
+#### Runtime {/*runtime*/}
 
 The variables you configure on an environment can be accessed in your code using `process.env`. A common use case is to configure
 different backend host names in `{{ CONFIG_FILE }}` based on the environment. Here is an example where the origin backend is determined
@@ -162,3 +176,22 @@ of `{{ CONFIG_FILE }}`:
 // {{ CONFIG_FILE }}
 require('dotenv').config()
 ```
+
+## Deleting an Environment
+
+Perform the following steps to permanently delete an environment:
+
+1.  Load the **Environments** page.
+
+    1.  From the {{ PORTAL_LINK }}, select the desired private or team space.
+    2.  Select the desired property.
+    3.  From the left-hand pane, select the desired environment from under the **Environments** section.
+
+2.  Click the <Image inline src="/images/v7/icons/menu-kebab.png" alt="Menu" /> icon next to the desired environment and then click **Delete**.
+3.  When prompted, click **Remove Environment** to confirm the permenant deletion of that environment.
+
+<Callout type="info">
+
+  The `production` environment cannot be deleted. 
+
+</Callout>

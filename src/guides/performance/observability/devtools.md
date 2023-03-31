@@ -16,25 +16,36 @@ title: Devtools
 
 ## Installation {/*installation*/}
 
+<Condition version="7">
+Devtools, which requires our CDN-as-code approach to CDN configuration, is automatically installed when you initialize your property (`{{ FULL_CLI_NAME }} init`). Use the following installation instructions if Devtools was not installed when your property was initalized.
+</Condition>
+<Condition version="<=6">
 It's likely that Devtools was added to your app when you ran `{{ FULL_CLI_NAME }} init`. If that's not the case, or your app predates {{ PRODUCT }} v2.22.0, follow these steps to add the Devtools to your app:
+</Condition>
 
 ### Packages {/*packages*/}
 
 In order to enable {{ PRODUCT }} Devtools, first ensure that the `{{ PACKAGE_NAME }}/devtools` and `{{ PACKAGE_NAME }}/prefetch` packages have been added to your project. To install them using NPM, run:
 
-```bash
+<SnippetGroup>
+
+```bash tabLabel="npm"
 npm i -D {{ PACKAGE_NAME }}/devtools {{ PACKAGE_NAME }}/prefetch
 ```
 
-Or with Yarn
-
-```bash
+```bash tabLabel="Yarn"
 yarn add --dev {{ PACKAGE_NAME }}/devtools {{ PACKAGE_NAME }}/prefetch
 ```
 
+</SnippetGroup>
+
 ### Client Widget {/*client-widget*/}
 
-**Note**: you can skip this step if you are using `{{ PACKAGE_NAME }}/next` or `{{ PACKAGE_NAME }}/nuxt`
+<Callout type="info">
+
+  You may skip this step if you are using `{{ PACKAGE_NAME }}/next` or `{{ PACKAGE_NAME }}/nuxt`.
+
+</Callout>
 
 Add the following to your client JavaScript bundle:
 
@@ -56,13 +67,13 @@ Then, if you haven't already, enable `{{ PACKAGE_NAME }}/prefetch` in your servi
 
 ## Enabling or Disabling the Devtools {/*enabling-or-disabling-the-devtools*/}
 
-By default, {{ PRODUCT }} Devtools is enabled when your app is served from `localhost`, `127.0.0.1` or any `*.layer0-limelight.link` domain.
+By default, {{ PRODUCT }} Devtools is enabled when your app is served from `localhost`, `127.0.0.1` or any `*.{{ LINK_DOMAIN }}` domain.
 
 To customize when {{ PRODUCT }} Devtools appear:
 
 ### Per Environment {/*per-environment*/}
 
-Using the [{{ PRODUCT }} Developer Console]({{ APP_URL }}), navigate to your environment and create an environment variable named `PREVIEW_{{ PRODUCT_NAME_UPPER }}_DEVTOOLS_ENABLED`. Set the value to `true` or `false` to explicitly enable or disable the Devtools on the given environment.
+Using the {{ PORTAL_LINK }}, navigate to your environment and create an environment variable named `PREVIEW_{{ PRODUCT_NAME_UPPER }}_DEVTOOLS_ENABLED`. Set the value to `true` or `false` to explicitly enable or disable the Devtools on the given environment.
 
 ### Per Browsing Session {/*per-browsing-session*/}
 

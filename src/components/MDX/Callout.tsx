@@ -10,7 +10,7 @@ import styled, {css} from 'styled-components';
 import {StyledCodeWrap} from './InlineCode';
 
 interface IStyledCallout {
-  type: 'info' | 'warning' | 'danger';
+  type: 'info' | 'tip' | 'important' | 'warning' | 'danger';
 }
 const types = {
   info: {
@@ -72,7 +72,7 @@ export default function Callout({
   type,
   children,
 }: {
-  type: 'info' | 'warning' | 'danger';
+  type: 'info' | 'tip' | 'important' | 'warning' | 'danger';
   children: React.ReactNode;
 }) {
   const Icon = types[type].icon;

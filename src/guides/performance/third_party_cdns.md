@@ -19,6 +19,7 @@ There are two major techniques to solve these problems:
 1. Configuring the third-party CDN to rewrite the `location` header whenever it sees such a response from {{ PRODUCT_NAME }}.
 2. Configuring {{ PRODUCT_NAME }} to serve the traffic on the same public facing domain and configuring the third-party CDN to send the traffic to {{ PRODUCT_NAME }} edge IPs with the public facing domain in the `host` header.
 
+<Condition version="<=6">
 ## A/B Testing {/*split-testing*/}
 
 {{ PRODUCT_NAME }} offers fully featured [A/B testing](/guides/split_testing). When {{ PRODUCT_NAME }} is running behind another CDN, the CDN must be configured in a very specific way in order for A/B testing to work:
@@ -27,12 +28,13 @@ There are two major techniques to solve these problems:
 2. The CDN must be configured to not affect any cookies that begin with [`{{ COOKIE_PREFIX }}_`](/guides/performance/traffic_splitting/a_b_testing#how-requests-are-routed).
 
 Unless these conditions are met, the users will almost certainly receive a mix of content from both experiences in the A/B test, which can lead to a broken app and invalid A/B testing results.
+</Condition>
 
 ## Caching {/*caching*/}
 
 When {{ PRODUCT_NAME }} is behind a third-party CDN, we strongly recommend that all caching on it be turned off. If, for whatever reason, you cannot do this, it is then your responsibility to first purge the cache on {{ PRODUCT_NAME }}, and only afterwards on CDN - in that exact order. Failing to do so will almost certainly lead to a situation where stale responses that you wanted to purge are served from {{ PRODUCT_NAME }} to your CDN and cached there as non-stale responses before {{ PRODUCT_NAME }} itself is purged (so-called cache poisoning).
 
-Caching and traffic metrics are another area that is affected by CDN caching or any kind of traffic shaping where {{ PRODUCT_NAME }} no longer sees all the traffic that your site is serving. If the third-party CDN is caching responses, then the perceived cache hit ratio on {{ PRODUCT_NAME }} will be lower than it actually is ({{ PRODUCT_NAME }} would only serve cache misses but never cache hits). If the third-party CDN is routing some traffic away from {{ PRODUCT_NAME }}, then the traffic metrics will be affected as the {{ PRODUCT_NAME }} Developer Console will only provide statistics for the traffic that goes through {{ PRODUCT_NAME }}.
+Caching and traffic metrics are another area that is affected by CDN caching or any kind of traffic shaping where {{ PRODUCT_NAME }} no longer sees all the traffic that your site is serving. If the third-party CDN is caching responses, then the perceived cache hit ratio on {{ PRODUCT_NAME }} will be lower than it actually is ({{ PRODUCT_NAME }} would only serve cache misses but never cache hits). If the third-party CDN is routing some traffic away from {{ PRODUCT_NAME }}, then the traffic metrics will be affected as the {{ PORTAL }} will only provide statistics for the traffic that goes through {{ PRODUCT_NAME }}.
 
 ## Client IPs {/*client-ips*/}
 

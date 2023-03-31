@@ -71,12 +71,12 @@ export default function HomepageFeatures() {
         </DocsResources>
 
         <Cdn />
+        <Security />
         <div className="grouped-col__2">
           <DeveloperTools />
           <AccountsandTeams />
         </div>
         <FrameworkGuides />
-        <Security />
         <Reference />
         {/* <VideosandTutorials /> */}
       </Container>

@@ -9,7 +9,8 @@ title: Web Application Frameworks
 Learn how to get started with these popular web application frameworks:
 
 <PopularFrameworks/>
-
+<Condition version="<=6">
 Are you looking for a different web application framework? We have you covered. Learn how to get started with any of our suppported web application frameworks.
 
 <Frameworks/>
+</Condition>

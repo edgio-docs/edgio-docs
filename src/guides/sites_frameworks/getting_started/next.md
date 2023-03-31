@@ -97,7 +97,7 @@ const { with{{ PRODUCT }}, withServiceWorker } = require('{{ PACKAGE_NAME }}/nex
 module.exports = with{{ PRODUCT }}(
   withServiceWorker({
     // Output source maps so that stack traces have original source filenames and line numbers when tailing
-    // the logs in the {{ PRODUCT_NAME }} developer console.
+    // the logs in the {{ PORTAL }}.
     {{ FULL_CLI_NAME }}SourceMaps: true,
   })
 )
@@ -109,7 +109,7 @@ module.exports = with{{ PRODUCT }}(
 
 The `with{{ PRODUCT }}` plugin optimizes the Next.js build for running on {{ PRODUCT }}. It is required to deploy your application on {{ PRODUCT }} and accepts the following parameters:
 
-- `{{ FULL_CLI_NAME }}SourceMaps`: Defaults to `false`. Set to `true` to add server-side source maps so that stack traces have original source filenames and line numbers when tailing the logs in the {{ PRODUCT_NAME }} developer console. This will increase the serverless bundle size but will not affect performance. If you find that your app exceeds the maximum serverless bundle size allowed by {{ PRODUCT_NAME }}, you can disable this option to conserve space.
+- `{{ FULL_CLI_NAME }}SourceMaps`: Defaults to `false`. Set to `true` to add server-side source maps so that stack traces have original source filenames and line numbers when tailing the logs in the {{ PORTAL }}. This will increase the serverless bundle size but will not affect performance. If you find that your app exceeds the maximum serverless bundle size allowed by {{ PRODUCT_NAME }}, you can disable this option to conserve space.
 
 <Callout type="warning">
 
@@ -134,7 +134,7 @@ const { with{{ PRODUCT }}, withServiceWorker } = require('{{ PACKAGE_NAME }}/nex
 module.exports = with{{ PRODUCT }}(
   withServiceWorker({
     // Output source maps so that stack traces have original source filenames and line numbers when tailing
-    // the logs in the {{ PRODUCT_NAME }} developer console.
+    // the logs in the {{ PORTAL }}.
     {{ FULL_CLI_NAME }}SourceMaps: true,
     // Don't include {{ PRODUCT_NAME }} Devtools in production
     // More on {{ PRODUCT_NAME }} Devtools at {{ DOCS_URL }}/guides/devtools
@@ -167,7 +167,7 @@ See [Deployments](/guides/basics/deployments) for more information.
 
 The above code allows you to prefetch pages from {{ PRODUCT }}'s edge cache to significantly improve browsing speed. To prefetch a page, add the `Prefetch` component from `{{ PACKAGE_NAME }}/react` to any Next.js `Link` element. The following example shows you how to prefetch JSON data from `getServerSideProps` or `getStaticProps` using the `createNextDataUrl` function from `{{ PACKAGE_NAME }}/next/client`.
 
-```js ins={4,14-23,27}
+```js ins="4,14-23,27"
 import {Prefetch} from '{{ PACKAGE_NAME }}/react';
 import Link from 'next/link';
 import {useRouter} from 'next/router';
@@ -241,7 +241,7 @@ export default new Router()
 
 To be able to use [Preview Mode](https://nextjs.org/docs/advanced-features/preview-mode) while being able to cache the respective pages, update your routes to match the requests that contain the two cookies `__prerender_bypass` & `__next_preview_data`, and send those to serverless for rendering.
 
-```js filename='routes.js' ins={8-24}
+```js filename="routes.js" ins="8-24"
 import {Router} from '{{ PACKAGE_NAME }}/core/router';
 import {nextRoutes, renderNextPage} from '{{ PACKAGE_NAME }}/next';
 
@@ -280,18 +280,18 @@ In the above code, `nextRoutes` adds all Next.js routes to the router based on t
 
 A popular use case is to fallback to a legacy site for any route that your Next.js app isn't configured to handle:
 
-```js filename='routes.js' ins={6}
+```js filename="routes.js" ins="6"
 import {nextRoutes} from '{{ PACKAGE_NAME }}/next';
 import {Router} from '{{ PACKAGE_NAME }}/core/router';
 
 export default new Router()
   .use(nextRoutes)
-  .fallback(({proxy}) => proxy('legacy'));
+  match('/:path*', ({proxy}) => proxy('legacy'));
 ```
 
 To configure the legacy backend, use {{ CONFIG_FILE }}:
 
-```js filename='{{ CONFIG_FILE }}' ins={2-8}
+```js filename='{{ CONFIG_FILE }}' ins="2-8"
 module.exports = {
   backends: {
     legacy: {
@@ -314,7 +314,7 @@ The `nextRoutes` plugin automatically adds routes for [rewrites](https://nextjs.
 The easiest way to add edge caching to your Next.js app is to add caching routes before `nextRoutes`. For example,
 imagine you have `/pages/p/[productId].js`. Here's how you can SSR responses as well as cache calls to `getServerSideProps`:
 
-```js filename='routes.js' ins={6-14,16-28}
+```js filename="routes.js" ins="6-14,16-28"
 export default new Router()
   // Products - SSR
   .get('/p/:productId', ({cache}) => {
@@ -391,7 +391,7 @@ export async function getStaticProps({locale}) {
 
 Make sure you also import the config correctly with the new name into your `next.config.js`:
 
-```js filename='next.config.js' ins={6}
+```js filename="next.config.js" ins="6"
 const { with{{ PRODUCT }}, withServiceWorker } = require('{{ PACKAGE_NAME }}/next/config')
 const { i18n } = require('./i18next.config')
 
@@ -404,7 +404,7 @@ module.exports = with{{ PRODUCT }}(
 
 Finally, you will need to update your `{{ CONFIG_FILE }}` to [includeFiles](/guides/edgio_config#includefiles) where the locale files are stored. Example using the default of `/public`:
 
-```js filename='{{ CONFIG_FILE }}' ins={3-5}
+```js filename='{{ CONFIG_FILE }}' ins="3-5"
 module.exports = {
   connector: '{{ PACKAGE_NAME }}/next',
   includeFiles: {
@@ -419,7 +419,7 @@ A working example app can be found [here](https://github.com/edgio-docs/edgio-ne
 
 By default, Next.js image optimizer is replaced by our image optimizer, which is available in all build modes. You can disable it and use the built-in Next.js image optimizer instead by adding `disableImageOptimizer: true` to the `{{ CONFIG_FILE }}` file.
 
-```js filename='{{ CONFIG_FILE }}' ins={3}
+```js filename='{{ CONFIG_FILE }}' ins="3"
 module.exports = {
   /* ... */
   disableImageOptimizer: true,

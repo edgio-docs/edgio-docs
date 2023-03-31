@@ -13,12 +13,16 @@
       "icon": "server",
       "routes": [
         {
+          "title": "Properties",
+          "path": "basics/properties"
+        },
+        {
           "title": "Environments",
           "path": "basics/environments"
         },
         {
-          "title": "Domains",
-          "path": "basics/domains"
+          "title": "Hostnames and Origins",
+          "path": "basics/hostnames_and_origins"
         },
         {
           "title": "Deployments",
@@ -26,13 +30,7 @@
         },
         {
           "title": "Collaboration",
-          "path": "basics/collaboration",
-          "routes": [
-            {
-              "title": "Single-Sign On (SSO)",
-              "path": "basics/collaboration/sso"
-            }
-          ]
+          "path": "basics/collaboration"
         },
         {
           "title": "Alerts",
@@ -57,11 +55,28 @@
           "title": "Getting Started",
           "path": "performance/getting_started"
         },
-
+        {
+          "title": "Rules",
+          "path": "performance/rules",
+          "routes": [
+            {
+              "title": "Conditions",
+              "path": "performance/rules/conditions"
+            },
+            {
+              "title": "Features",
+              "path": "performance/rules/features"
+            }
+          ]
+        },
         {
           "title": "CDN-as-Code (EdgeJS)",
           "path": "performance/cdn_as_code",
           "routes": [
+            {
+              "title": "Getting Started",
+              "path": "performance/cdn_as_code/getting_started"
+            },
             {
               "title": "Common Routing Patterns",
               "path": "performance/cdn_as_code/common_routing_patterns"
@@ -85,19 +100,13 @@
           "path": "performance/prefetching"
         },
         {
-          "title": "Traffic Splitting",
-          "path": "performance/traffic_splitting",
-          "routes": [
-            {
-              "title": "A/B Testing",
-              "path": "performance/traffic_splitting/a_b_testing"
-            }
-          ]
-        },
-        {
           "title": "Observability",
           "path": "performance/observability",
           "routes": [
+            {
+              "title": "Edge Insights",
+              "path": "performance/observability/edge_insights"
+            },
             {
               "title": "Core Web Vitals",
               "path": "performance/observability/core_web_vitals"
@@ -163,17 +172,65 @@
       "path": "security",
       "icon": "shield",
       "routes": [
+        { 
+          "title": "Website Security (EdgeJS)",
+          "path": "security/edgejs_security"
+        },
+        { 
+          "title": "Origin Shield",
+          "path": "security/origin_shield"
+        },
+        { 
+          "title": "TLS Certificates",
+          "path": "security/tls_certificates"
+        },
+        {
+          "title": "",
+          "path": ""
+        },
         {
           "title": "Managed Bot Defense",
           "path": "security/managed_bot_defense"
         },
         {
-          "title": "Managed Rule Groups",
-          "path": "security/managed_rule_groups"
+          "title": "",
+          "path": ""
         },
         {
-          "title": "Security Suite",
-          "path": "security/security_suite"
+          "title": "Web Application Firewall (WAF)",
+          "path": "security/waf"
+        },
+        {
+          "title": "Access Rules",
+          "path": "security/access_rules"
+        },
+        {
+          "title": "Rate Rules",
+          "path": "security/rate_rules"
+        },
+        {
+          "title": "Bot Rules",
+          "path": "security/bot_rules"
+        },
+        {
+          "title": "Custom Rules",
+          "path": "security/custom_rules"
+        },
+        {
+          "title": "Managed Rules",
+          "path": "security/managed_rules"
+        },
+        {
+          "title": "Security Applications",
+          "path": "security/security_applications"
+        },
+        {
+          "title": "Dashboard",
+          "path": "security/dashboard"
+        },
+        {
+          "title": "Logs",
+          "path": "security/recent_event_logs"
         }
       ]
     },
@@ -410,6 +467,91 @@
       ]
     },
     {
+      "title": "Logs",
+      "path": "logs",
+      "icon": "data-plain",
+      "routes": [
+        {
+          "title": "Build Logs",
+          "path": "logs/build_logs"
+        },
+        {
+          "title": "Server Logs",
+          "path": "logs/server_logs"
+        },
+        {
+          "title": "Access Logs",
+          "path": "logs/access_logs"
+        },
+        {
+          "title": "Real-Time Log Delivery",
+          "path": "logs/rtld",
+          "routes": [
+            {
+              "title": "AWS S3 Log Delivery",
+              "path": "logs/rtld/aws_s3_log_delivery"
+            },
+            {
+              "title": "Azure Blob Storage Log Delivery",
+              "path": "logs/rtld/azure_blob_storage_log_delivery"
+            },
+            {
+              "title": "Datadog Log Delivery",
+              "path": "logs/rtld/datadog_log_delivery"
+            },
+            {
+              "title": "Google Cloud Storage Log Delivery",
+              "path": "logs/rtld/google_cloud_storage_log_delivery"
+            },
+            {
+              "title": "Splunk Enterprise Log Delivery",
+              "path": "logs/rtld/splunk_enterprise_log_delivery"
+            },
+            {
+              "title": "Sumo Logic Log Delivery",
+              "path": "logs/rtld/sumo_logic_log_delivery"
+            },
+            {
+              "title": "New Relic Log Delivery",
+              "path": "logs/rtld/new_relic_log_delivery"
+            },
+            {
+              "title": "Web Server Log Delivery",
+              "path": "logs/rtld/web_server_log_delivery"
+            },
+            {
+              "title": "",
+              "path": ""
+            },
+            {
+              "title": "Log File Naming Convention",
+              "path": "logs/rtld/log_file_naming_convention"
+            },
+            {
+              "title": "Log Data Verification",
+              "path": "logs/rtld/log_data_verification"
+            },
+            {
+              "title": "",
+              "path": ""
+            },
+            {
+              "title": "Log Fields (RTLD CDN)",
+              "path": "logs/rtld/log_fields_rtld_cdn"
+            },
+            {
+              "title": "Log Fields (RTLD WAF)",
+              "path": "logs/rtld/log_fields_rtld_waf"
+            },
+            {
+              "title": "Log Fields (RTLD Rate Limiting",
+              "path": "logs/rtld/log_fields_rtld_rate_limiting"
+            }
+          ]
+        }
+      ]
+    },
+    {
       "title": "Develop",
       "path": "develop",
       "icon": "code-plain",
@@ -421,10 +563,6 @@
         {
           "title": "REST API",
           "path": "develop/rest_api"
-        },
-        {
-          "title": "Log Data",
-          "path": "develop/logs"
         },
         {
           "title": "Deploy to Edgio Button",

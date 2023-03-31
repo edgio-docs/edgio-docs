@@ -7,7 +7,7 @@ detection and mitigation. {{ PRODUCT_SECURITY_ADVANCED_BOT }} is agile, intellig
 all internet traffic, web reconnaissance, automated bots, and legitimate website
 visitors.
 
-## Getting Started  {/*getting-started*/}
+## Getting Started {/*getting-started*/}
 
 Get started with {{ PRODUCT_SECURITY_ADVANCED_BOT }} by requesting that we activate it on your account. After which, we will set it up for you. No additional configuration is required on your part.
 
@@ -21,7 +21,7 @@ Get started with {{ PRODUCT_SECURITY_ADVANCED_BOT }} by requesting that we activ
 
 {{ PRODUCT_SECURITY_ADVANCED_BOT }} reports data on a per environment basis. View a report by performing the following steps:
 
-1.  From the {{ PORTAL }}, load the desired property.
+1.  From the {{ PORTAL_LINK }}, load the desired property.
 2.  From within the **Environments** tab, click on the desired environment.
 3.  Click on the **Bot Management** tab. 
 4.  From the left-hand pane, click on the desired report.

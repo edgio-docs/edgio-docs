@@ -22,9 +22,9 @@ export default function Security() {
   const allRoutesSorted = sortBy(allRoutes, 'title');
 
   const routesByColumns = [
-    allRoutesSorted?.slice(0, 6),
-    allRoutesSorted?.slice(6, 12),
-    allRoutesSorted?.slice(12),
+    allRoutes?.slice(0, 8),
+    allRoutes?.slice(8, 16),
+    allRoutes?.slice(16),
   ];
 
   return (
@@ -32,7 +32,7 @@ export default function Security() {
       <SectionHeader
         Icon={IconSecurity}
         title="Security"
-        subtitle={`${PRODUCT} ${PRODUCT_SECURITY} keeps your apps protected without sacrificing performance.`}
+        subtitle={`Protect your web applications without sacrificing performance through ${PRODUCT} ${PRODUCT_SECURITY}.`}
       />
 
       <div className="route-items">

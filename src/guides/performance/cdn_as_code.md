@@ -8,10 +8,10 @@ Using the Router, you can:
 
 - Proxy requests to upstream sites
 - Send redirects from the network edge
-- Render responses on the server using Next.js, Nuxt.js, Angular, or any other framework that supports server side rendering.
+- Render responses on the server using Next.js and Nuxt.js<!--, Angular, or any other framework that supports server side rendering. -->
 - Alter request and response headers
 - Send synthetic responses
-- Configure multiple destinations for A/B testing
+<!-- - Configure multiple destinations for A/B testing -->
 
 ## Prerequisites {/*prerequisites*/}
 
@@ -68,7 +68,9 @@ module.exports = new Router().match('/some-path', ({ cache, proxy }) => {
 
 ## Route Execution {/*route-execution*/}
 
-When {{ PRODUCT_NAME }} receives a request, it executes **each route that matches the request** in the order in which they are declared until one sends a response. The following methods return a response:
+When {{ PRODUCT_NAME }} receives a request, it executes **each route that matches the request** in the order in which they are declared until one sends a response.
+
+<!-- The following methods return a response:
 
 - [appShell](/docs/api/core/classes/_router_responsewriter_.responsewriter.html#appshell)
 - [compute](/docs/api/core/classes/_router_responsewriter_.responsewriter.html#compute)
@@ -78,7 +80,7 @@ When {{ PRODUCT_NAME }} receives a request, it executes **each route that matche
 - [serveStatic](/docs/api/core/classes/_router_responsewriter_.responsewriter.html#servestatic)
 - [serviceWorker](/docs/api/core/classes/_router_responsewriter_.responsewriter.html#serviceworker)
 - [stream](/docs/api/core/classes/_router_responsewriter_.responsewriter.html#stream)
-- [use](/docs/api/core/classes/_router_responsewriter_.responsewriter.html#compute)
+- [use](/docs/api/core/classes/_router_responsewriter_.responsewriter.html#compute) -->
 
 Multiple routes can therefore be executed for a given request. A common pattern is to add caching with one route and render the response with a later one using middleware. In the following example we cache then render a response with Next.js:
 
@@ -100,18 +102,18 @@ new Router()
 
 {{ PRODUCT_NAME }} offers APIs to manipulate request and response headers and cookies. The APIs are:
 
-| Operation     | Request               | Upstream Response              | Response sent to Browser |
-| ------------- | --------------------- | ------------------------------ | ------------------------ |
-| Set header    | `setRequestHeader`    | `setUpstreamResponseHeader`    | `setResponseHeader`      |
-| Add cookie    | `*`                   | `addUpstreamResponseCookie`    | `addResponseCookie`      |
-| Update header | `updateRequestHeader` | `updateUpstreamResponseHeader` | `updateResponseHeader`   |
-| Update cookie | `*`                   | `updateUpstreamResponseCookie` | `updateResponseCookie`   |
-| Remove header | `removeRequestHeader` | `removeUpstreamResponseHeader` | `removeResponseHeader`   |
-| Remove cookie | `*`                   | `removeUpstreamResponseCookie` | `removeResponseCookie`   |
+| Operation     | Request               | Upstream Response              | Response sent to Browser       |
+|---------------|-----------------------|--------------------------------|--------------------------------|
+| Set header    | `setRequestHeader`    | `setUpstreamResponseHeader`    | `setResponseHeader`            |
+| Add cookie    | `*`                   | N/A                            | `addResponseCookie`            |
+| Update header | `updateRequestHeader` | `updateUpstreamResponseHeader` | `updateResponseHeader`         |
+| <!--          | Update cookie         | `*`                            | `updateUpstreamResponseCookie` | `updateResponseCookie` | --> |
+| Remove header | `removeRequestHeader` | `removeUpstreamResponseHeader` | `removeResponseHeader`         |
+| <!--          | Remove cookie         | `*`                            | `removeUpstreamResponseCookie` | `removeResponseCookie` | --> |
 
 `*` Adding, updating, or removing a request cookie can be achieved with `updateRequestHeader` applied to `cookie` header.
 
-You can find detailed descriptions of these APIs in the `{{ PACKAGE_NAME }}/core` [documentation](/docs/api/core/classes/_router_responsewriter_.responsewriter.html).
+<!-- You can find detailed descriptions of these APIs in the `{{ PACKAGE_NAME }}/core` [documentation](/docs/api/core/classes/_router_responsewriter_.responsewriter.html). -->
 
 ### Embedded Values {/*embedded-values*/}
 
@@ -235,7 +237,7 @@ router.match(
 
 ## Request Handling {/*request-handling*/}
 
-The second argument to routes is a function that receives a `ResponseWriter` and uses it to send a response. Using `ResponseWriter` you can:
+The second argument to routes is a function that receives a `RouteHelper` and uses it to send a response. Using `RouteHelper` you can:
 
 - Proxy a backend configured in `{{ CONFIG_FILE }}`
 - Serve a static file
@@ -244,13 +246,13 @@ The second argument to routes is a function that receives a `ResponseWriter` and
 - Cache the response at edge and in the browser
 - Manipulate request and response headers
 
-[See the API Docs for Response Writer](/docs/api/core/classes/_router_responsewriter_.responsewriter.html)
+<!-- [See the API Docs for Response Writer](/docs/api/core/classes/_router_responsewriter_.responsewriter.html) -->
 
 ## Blocking Search Engine Crawlers {/*blocking-search-engine-crawlers*/}
 
 If you need to block all search engine bot traffic to specific environments (such as your default or staging environment), the easiest way is to include the `x-robots-tag` header with the same directives you would otherwise set in a `meta` tag. 
 
-<Callout type="info">
+<!-- <Callout type="info">
 
   The search engine traffic is automatically blocked on {{ PRODUCT }} edge links and permalinks as of {{ PRODUCT }} v6.
 
@@ -261,7 +263,7 @@ If you need to block all search engine bot traffic to specific environments (suc
   
   Otherwise, {{ PRODUCT }} will match requests with the `host` header matching `/layer0.link|layer0-perma.link/` and set a response header of `x-robots-tag: noindex`.
 
-</Callout>
+</Callout> -->
 
 Additionally, you can customize this to block traffic to development or staging websites based on the `host` header of the request:
 
@@ -308,21 +310,21 @@ module.exports = new Router()
     })
     proxy('origin')
   })
-  .fallback(({ proxy }) => {
+  .match('/:path*', ({ proxy }) => {
     // serve all unmatched URLs from the origin backend configured in {{ CONFIG_FILE }}
     proxy('origin')
   })
 ```
 
-## Errors Handling {/*errors-handling*/}
+<!-- ## Errors Handling {/*errors-handling*/}
 
 You can use the router's `catch` method to return specific content when the request results in an error status (For example, a status code of 537). Using `catch`, you can also alter the `statusCode` and `response` on the edge before issuing a response to the user.
 
 ```js
 router.catch(RegExp | string | number, (routeHandler: Function))
-```
+``` -->
 
-### Examples {/*examples*/}
+<!-- ### Examples {/*examples*/}
 
 For example, to issue a custom error page when the origin returns any 5xx status code:
 
@@ -346,11 +348,11 @@ module.exports = new Router()
 The `.catch` method allows the edge router to render a response based on the result preceeding routes. So in the example above whenever we receive a 5xx, we respond with `customized-error-page.html` from the application's root directory, and change the status code to 502.
 
 - Your catch callback is provided a [ResponseWriter](/docs/api/core/classes/_router_responsewriter_.responsewriter.html) instance. You can use any ResponseWriter method except `proxy` inside `.catch`.
-- We highly recommend keeping `catch` routes simple. Serve responses using `serveStatic` instead of `send` to minimize the size of the edge bundle.
+- We highly recommend keeping `catch` routes simple. Serve responses using `serveStatic` instead of `send` to minimize the size of the edge bundle. -->
 
 ## Environment Edge Redirects {/*environment-edge-redirects*/}
 
-In addition to sending redirects at the edge within the router configuration, this can also be configured at the environment level within the {{ PRODUCT }} Developer Console.
+In addition to sending redirects at the edge within the router configuration, this can also be configured at the environment level within the {{ PORTAL }}.
 
 Under _&lt;Your Environment&gt; &#8594; Configuration_, click _Edit_ to draft a new configuration. Scroll down to the _Redirects_ section:
 ![redirects](/images/environments/redirects.png)

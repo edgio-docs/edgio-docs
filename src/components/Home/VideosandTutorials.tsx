@@ -125,17 +125,6 @@ export default function VideosandTutorials() {
       ],
     },
     {
-      title: 'Security',
-      slug: 'security',
-      videos: [
-        {
-          title: 'Security Suite',
-          url: 'https://player.vimeo.com/video/691580518?h=ec5e0f1370',
-          id: '691580518',
-        },
-      ],
-    },
-    {
       title: 'Deploying',
       slug: 'deploying',
       videos: [

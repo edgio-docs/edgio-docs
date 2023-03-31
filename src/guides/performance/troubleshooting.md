@@ -39,7 +39,7 @@ Note that this configuration will allow you to set breakpoints in both your {{ P
 
 ### Server Logs {/*server-logs*/}
 
-By viewing the server logs in the {{ PRODUCT_NAME }} Developer Console, you can see all of the messages logged by your application using `console.log`, `console.warn`, etc...
+By viewing the server logs in the {{ PORTAL }}, you can see all of the messages logged by your application using `console.log`, `console.warn`, etc...
 
 By enabling [Deep Request Inspection](/guides/develop/logs#deep-request-inspection) in your environment, you can also see the headers and body of every request and response served by your application via the {{ PRODUCT }} serverless cloud. You can also see each upstream API request made by your application.
 
@@ -95,9 +95,9 @@ curl -o/dev/null -vv
 ```
 
 **Specify a Cookie**
-
+<Condition version="<=6">
 Typically used for A/B test validation.
-
+</Condition>
 ```bash
 curl -o/dev/null -vv
     -H "Cookie: cache_enabled=true" https://www.yoursite.com/main.js
@@ -152,7 +152,7 @@ const { with{{ PRODUCT }}, withServiceWorker } = require('{{ PACKAGE_NAME }}/nex
 module.exports = with{{ PRODUCT }}(
   withServiceWorker({
     // Output sourcemaps so that stacktraces have original source filenames and line numbers when tailing
-    // the logs in the {{ PRODUCT }} developer console.
+    // the logs in the {{ PORTAL }}.
     {{ FULL_CLI_NAME }}SourceMaps: true,
   }),
 )

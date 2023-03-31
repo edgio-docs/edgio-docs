@@ -590,25 +590,6 @@ const nav = {
         },
       ],
     },
-    {
-      title: 'Upgrading',
-      path: 'upgrading',
-      icon: 'stacks-plain',
-      routes: [
-        {
-          title: 'Migration to v4',
-          path: 'upgrading/layer0_migration',
-        },
-        {
-          title: 'Migration to v5',
-          path: 'upgrading/v5_migration',
-        },
-        {
-          title: 'Migration to v6',
-          path: 'upgrading/v6_migration',
-        },
-      ],
-    },
   ],
 };
 export default nav;

@@ -2,58 +2,73 @@
 title: Request
 ---
 
-Learn about reserved request headers and how requests are routed through our service.
+A request commonly contains the following components:
+
+-   [Request Method](#request-method)
+-   [Request Protocol Version](#request-protocol-version)
+-   [Request URL](#request-url)
+-   [Request Headers](#request-headers)
+-   [Request Body](#request-body)
+
+**Key information:**
+
+-   By default, our edge servers will typically forward the entire request to your origin configuration. However, a rule or your CDN-as-code configuration can override the default CDN behavior.
+-   Our CDN only accepts requests that comply with the HTTP specification (e.g., HTTP/1.1). We return a `400 Bad Request` for non-compliant requests.
 
 ## Request Flow {/*request-flow*/}
 
 {{ PRODUCT }} routes requests according to traffic type and whether the request is eligible for caching.
 
--   **Standard Traffic:** By default, requests are routed to an origin server through an edge POP (L1) and a global POP (L2). This behavior maximizes cache hits and shields your origin servers by funneling all cache misses through a global POP. 
+-   **Standard Traffic:** By default, requests are routed to your web servers through an edge POP.
 
-    ![](/images/overview/request-flow-edge-global.png)
+    ![](/images/v7/performance/request-flow-edge-origin.png)
 
-    {{ PRODUCT }} is optimized for performance and therefore always routes requests to the closest POP. If a global POP is the closest POP to a client, then {{ PRODUCT }} will treat it as an edge and global POP. This means that cache misses on that POP are sent directly to the origin server as illustrated below.
+    You can shield your web servers to improve cache efficiency, reduce the load on your servers, and reduce network bandwidth. If you have assigned at least one shield POP to your origin configuration, our edge POPs can funnel cache misses through a shield POP.
 
-    ![](/images/overview/request-flow-edge.png)
-
-    Another performance optimization occurs for routes on which you have disabled caching. {{ PRODUCT }} bypassses global POPs for those requests and sends them directly to your origin servers. 
-
-    ![](/images/overview/request-flow-edge-disabled-caching.png)
+    ![](/images/overview/request-flow-edge-global.png)    
 
 -   **Serverless Compute:** {{ PRODUCT }} routes Serverless Compute requests similar to standard traffic. However, cache misses are forwarded to a [Serverless Compute](/guides/performance/serverless_compute) load balancer which distributes requests to a Serverless Compute worker.
 
     ![](/images/overview/request-flow-serverless-compute.png)
 
-    {{ PRODUCT }} also optimizes Serverless Compute routes on which you have disabled caching. {{ PRODUCT }} bypassses global POPs for those requests and sends them directly to a Serverless Compute load balancer.
+## Request Method {/*request-method*/}
 
-    ![](/images/overview/request-flow-serverless-compute-disabled-caching.png)
+Every HTTP request must include instructions on how the request should be handled. This is known as an HTTP request method. The default manner in which our CDN service handles these request methods is described below.
 
-### POP Components {/*pop-components*/}
+| Request Method | Cache?  | Proxy? | Request Size Limit | Response Size Limit |
+|---|---|---|---|---|
+| GET | Yes  | Yes  | Request headers only  | Unlimited  |
+|All other request methods (e.g., POST, PUT, and DELETE).   | No  | Yes | 100 MB  | Unlimited |
 
-All POPs have the following components:
+**Key information:**
 
--   **HAProxy**: This component load balances requests to Varnish.
--   **Varnish**: This component is a web application accelerator that is responsible for cache management.
--   **Dynamic Proxy Service (DPS)**: This component forwards requests from Varnish to an origin server. 
+-   By default, only `GET` requests are eligible for caching. Use the Enable Caching for Methods feature to allow caching for `POST` and/or `PUT` requests. Although you may enable caching for `POST` and `PUT` requests, purge is only supported for `GET` requests.
+-   A request body should not be included when submitting a `GET` request.
+-   The file size limit for the response provided by the CDN is determined by the client's operating system. 
+-   Your CDN setup, including security measures, may place further restrictions on when content will be cached or proxied. 
 
-Requests are routed through the above components in the following order:
+### POST {/*post*/}
 
-`HAProxy -> Varnish -> DPS`
+Our CDN accepts `POST` requests regardless of whether they contain a payload.
 
-If a request is routed to an origin server through both an edge and global POP, then it will be routed through the above components twice:
+-   **No Payload:** A `POST` request that does not have a payload should include either a `Content-Length` or `Transfer-Encoding` request header. If the request does not contain either header, then our CDN automatically adds the following header: `Content-Length: 0`
+-   **Payload:** A `POST` request that has a payload must also include either a `Content-Length` or `Transfer-Encoding` request header. Our CDN returns a `411 Length Required` error for `POST` requests that have payloads that are missing both of these request headers.
 
-` Client -> Edge POP (HAProxy -> Varnish -> DPS) -> Global POP (HAProxy -> Varnish -> DPS) -> Origin Server`
+## Request Protocol Version {/*request-protocol-version*/}
 
-## Reserved Request Headers {/*reserved-request-headers*/}
-{{ PRODUCT }} injects headers into requests making them visible to your server code. 
+The CDN service communicates using the HTTP protocol version (i.e., HTTP/1.0 or HTTP/1.1) defined in the request. The HTTP/2.0 protocol version is only used for the communication between the client and the edge of our network.
 
-<Callout type="important">
+## Request URL {/*request-url*/}
 
-  Request headers that start with `{{ HEADER_PREFIX }}-*` are reserved for use by {{ PRODUCT }}. You may not modify these request headers. 
+By default, requests that are proxied through our network to an origin server will include the entire URL submitted by the client. If the requested URL includes a query string, then it will also be forwarded to the origin server. Request URLs, with the exception of the scheme and domain name, are case-sensitive.
 
-  [Learn more.](/guides/performance#prohibited-headers)
+## Request Headers {/*request-headers*/}
 
-</Callout>
+We return a `400 Bad Request` if a request contains a header that does not comply with the HTTP specification (e.g., HTTP/1.1). For example, we will not accept a request with a header that contains whitespace between its name and the colon.
+
+By default, all request headers may be forwarded to the origin server. Our edge servers may also add or overwrite the following reserved request headers:
+
+`User-Agent | Via | X-Forwarded-For | X-Forwarded-Proto | X-Host | X-Midgress | Host | X-Gateway-List | X-EC-<NAME> | {{ HEADER_PREFIX }}-*`
 
 ### General headers {/*general-headers*/}
 
@@ -91,3 +106,10 @@ These values are provided as a best effort. {{ PRODUCT_NAME }} cannot guarantee 
 ### Static prerendering headers {/*static-prerendering-headers*/}
 
 - `{{ HEADER_PREFIX }}-preload`: Will be "1" if the request originated from [Static Prerendering](/guides/static_prerendering). Otherwise this header will not be present.
+
+## Request Body {/*request-body*/}
+
+Requests that are proxied through our network to an origin server will include a request body except if either of the following conditions are true:
+
+-   A `GET` request is submitted.
+-   The request is redirected due to the Follow Redirects feature.

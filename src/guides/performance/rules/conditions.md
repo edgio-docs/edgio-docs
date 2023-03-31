@@ -550,19 +550,6 @@ Identifies requests by the query string of the request URL submitted by the clie
 
         </Callout>
 
-<!---
-TODO
-Use the Encoded option to determine whether your match value, as defined in the Value option, will be decoded prior to comparison with the request's query string. You must set this option to Yes when either of the following conditions are true:
-
-A URL normalization customization has been applied to your traffic.
-The request's query string contains encoded Unicode characters (e.g., %E3%81%93).
-
-Enabling this option ensures that your match value remains encoded.
-
-TODO
-If both of the above conditions are not applicable, then you should use the default configuration (i.e., No) which allows our service to decode your match value.
---->
-
 <edgejs>
 
 query
@@ -627,19 +614,6 @@ Identifies requests by the query string of the requested URL. This query string 
           Curl does not encode non-US-ASCII characters. If you would like to test this match condition using curl, then you will need to create a mutually exclusive match section (i.e., IF / ELSE IF). Each conditional expression within that statement should contain this match condition with the Encoded option set to different values.
 
         </Callout>
-
-<!---
-TODO
-Use the Encoded option to determine whether your match value, as defined in the Value option, will be decoded prior to comparison with the request's query string. You must set this option to Yes when either of the following conditions are true:
-
-A URL normalization customization has been applied to your traffic.
-The request's query string contains encoded Unicode characters (e.g., %E3%81%93).
-
-Enabling this option ensures that your match value remains encoded.
-
-TODO
-If both of the above conditions are not applicable, then you should use the default configuration (i.e., No) which allows our service to decode your match value.
---->
 
 <edgejs>
 

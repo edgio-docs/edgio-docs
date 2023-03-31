@@ -16,7 +16,7 @@ title: GraphQL Caching
 
 <ExampleButtons
   title=" GraphQL with Apollo Server Micro"
-  siteUrl="https://layer0-docs-layer0-next-graphql-example-default.layer0-limelight.link"
+  siteUrl="https://edgio-community-layer0-next-graphql-example-default.layer0-limelight.link"
   repoUrl="https://github.com/layer0-docs/layer0-nextjs-graphql-example" 
   deployFromRepo />
 

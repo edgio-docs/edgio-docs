@@ -12,7 +12,7 @@ This Sapper example app uses server-side rendering and prefetching to provide li
 
 <ExampleButtons
   title="Sapper SSR"
-  siteUrl="https://layer0-docs-layer0-sapper-example-default.layer0-limelight.link/category/hats"
+  siteUrl="https://edgio-community-layer0-sapper-example-default.layer0-limelight.link/category/hats"
   repoUrl="https://github.com/layer0-docs/layer0-sapper-example" 
   deployFromRepo />
 

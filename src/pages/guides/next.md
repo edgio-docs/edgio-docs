@@ -8,7 +8,7 @@ This guide shows you how to deploy a [Next.js](https://nextjs.org/) application 
 
 <ExampleButtons
   title="Next.js SSR"
-  siteUrl="https://layer0-docs-layer0-nextjs-example-default.layer0-limelight.link"
+  siteUrl="https://edgio-community-layer0-nextjs-example-default.layer0-limelight.link"
   repoUrl="https://github.com/layer0-docs/layer0-nextjs-example"
   deployFromRepo
 />

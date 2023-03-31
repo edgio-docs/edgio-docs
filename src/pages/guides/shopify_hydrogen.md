@@ -8,7 +8,7 @@ This guide shows you how to deploy a [Shopify Hydrogen](https://hydrogen.shopify
 
 <ExampleButtons
   title="Shopify Hydrogen"
-  siteUrl="https://layer0-docs-layer0-shopify-hydrogen-example-default.layer0-limelight.link"
+  siteUrl="https://edgio-community-layer0-shopify-hydrogen-example-default.layer0-limelight.link"
   repoUrl="https://github.com/layer0-docs/layer0-shopify-hydrogen-example" 
   deployFromRepo />
 

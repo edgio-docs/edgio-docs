@@ -10,7 +10,7 @@ Here's an example React app running on {{ PRODUCT }}:
 
 <ExampleButtons
   title="React"
-  siteUrl="https://layer0-docs-layer0-static-react-example-default.layer0-limelight.link/"
+  siteUrl="https://edgio-community-layer0-static-react-example-default.layer0-limelight.link/"
   repoUrl="https://github.com/layer0-docs/static-react-example" 
   deployFromRepo />
 

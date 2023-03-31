@@ -8,7 +8,7 @@ title: Lit
 
 <ExampleButtons
   title="Lit"
-  siteUrl="https://layer0-docs-layer0-lit-example-default.layer0-limelight.link"
+  siteUrl="https://edgio-community-layer0-lit-example-default.layer0-limelight.link"
   repoUrl="https://github.com/layer0-docs/layer0-lit-example" 
   deployFromRepo
 />

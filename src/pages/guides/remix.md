@@ -8,7 +8,7 @@ This guide shows you how to deploy a [Remix](https://remix.run/) application to 
 
 <ExampleButtons
   title="Remix Express"
-  siteUrl="https://layer0-docs-layer0-remix-express-example-default.layer0-limelight.link"
+  siteUrl="https://edgio-community-layer0-remix-express-example-default.layer0-limelight.link"
   repoUrl="https://github.com/layer0-docs/layer0-remix-express-example" 
   deployFromRepo />
 

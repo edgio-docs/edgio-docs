@@ -8,7 +8,7 @@ title: Astro
 
 <ExampleButtons
   title="Astro"
-  siteUrl="https://layer0-docs-layer0-astro-example-default.layer0-limelight.link"
+  siteUrl="https://edgio-community-layer0-astro-example-default.layer0-limelight.link"
   repoUrl="https://github.com/layer0-docs/layer0-astro-example" 
   deployFromRepo />
 
@@ -18,7 +18,7 @@ This Astro example app uses server-side rendering.
 
 <ExampleButtons
   title="Astro SSR"
-  siteUrl="https://layer0-docs-layer0-astro-ssr-example-default.layer0-limelight.link"
+  siteUrl="https://edgio-community-layer0-astro-ssr-example-default.layer0-limelight.link"
   repoUrl="https://github.com/layer0-docs/layer0-astro-ssr-example" 
   deployFromRepo />
 

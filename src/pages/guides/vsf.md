@@ -12,7 +12,7 @@ Here's an example Vue Storefront 2 app running on {{ PRODUCT }}:
 
 <ExampleButtons
   title="Vue Storefront"
-  siteUrl="https://edgio-community-layer0-vue-storefront-commercetools-example-default.layer0-limelight.link"
+  siteUrl="https://layer0-docs-layer0-vue-storefront-commercetools-example-default.layer0-limelight.link"
   repoUrl="https://github.com/layer0-docs/layer0-vue-storefront-commercetools-example" 
   deployFromRepo />
 

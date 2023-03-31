@@ -8,7 +8,7 @@ This guide shows you how to deploy a [Dojo](https://dojo.io/) application to {{ 
 
 <ExampleButtons
   title="Dojo"
-  siteUrl="https://edgio-community-layer0-dojo-example-default.layer0-limelight.link"
+  siteUrl="https://layer0-docs-layer0-dojo-example-default.layer0-limelight.link"
   repoUrl="https://github.com/layer0-docs/layer0-dojo-example" 
   deployFromRepo />
 

@@ -8,7 +8,7 @@ This guide shows you how to deploy a [UmiJS](https://umijs.org/) application to 
 
 <ExampleButtons
   title="UmiJS"
-  siteUrl="https://edgio-community-layer0-umijs-example-default.layer0-limelight.link"
+  siteUrl="https://layer0-docs-layer0-umijs-example-default.layer0-limelight.link"
   repoUrl="https://github.com/layer0-docs/layer0-umijs-example"
   deployFromRepo />
 

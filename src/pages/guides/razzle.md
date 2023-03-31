@@ -8,7 +8,7 @@ This guide shows you how to deploy a [Razzle](https://razzlejs.org/) application
 
 <ExampleButtons
   title="Razzle"
-  siteUrl="https://edgio-community-layer0-razzle-example-default.layer0-limelight.link"
+  siteUrl="https://layer0-docs-layer0-razzle-example-default.layer0-limelight.link"
   repoUrl="https://github.com/layer0-docs/layer0-razzle-example"
   deployFromRepo />
 

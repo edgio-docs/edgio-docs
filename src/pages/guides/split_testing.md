@@ -163,7 +163,7 @@ This example Next.js application showcases how you can use Google Analytics to t
 <ExampleButtons 
   title="Analytics Variant"
   repoUrl="https://github.com/layer0-docs/layer0-analytics-variant-example"
-  siteUrl="https://edgio-community-layer0-analytics-example-default.layer0-limelight.link" />
+  siteUrl="https://layer0-docs-layer0-analytics-example-default.layer0-limelight.link" />
 
 This example site has a configured split test in the Edgio Developer Console to split 50% of desktop traffic between the `default` (production) and the `split_test` environments.
 

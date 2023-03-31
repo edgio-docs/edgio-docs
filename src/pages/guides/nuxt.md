@@ -10,7 +10,7 @@ This Nuxt.js example app uses server-side rendering and prefetching to provide l
 
 <ExampleButtons
   title="Nuxt.js SSR"
-  siteUrl="https://edgio-community-layer0-nuxt-example-default.layer0-limelight.link"
+  siteUrl="https://layer0-docs-layer0-nuxt-example-default.layer0-limelight.link"
   repoUrl="https://github.com/layer0-docs/layer0-nuxt-example" 
   deployFromRepo />
 
@@ -20,7 +20,7 @@ This Nuxt.js example app uses ISG (Incremental Static Generation) to provide lig
 
 <ExampleButtons
   title="Nuxt.js ISG"
-  siteUrl="https://edgio-community-layer0-nuxt-isg-example-default.layer0-limelight.link"
+  siteUrl="https://layer0-docs-layer0-nuxt-isg-example-default.layer0-limelight.link"
   repoUrl="https://github.com/layer0-docs/layer0-nuxt-isg-example" 
   deployFromRepo />
 

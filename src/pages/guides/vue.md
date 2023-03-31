@@ -8,7 +8,7 @@ This guide shows you how to deploy a [Vue.js](https://vuejs.org/) application to
 
 <ExampleButtons
   title="Vue.js"
-  siteUrl="https://edgio-community-layer0-static-vuejs-example-default.layer0-limelight.link"
+  siteUrl="https://layer0-docs-layer0-static-vuejs-example-default.layer0-limelight.link"
   repoUrl="https://github.com/layer0-docs/layer0-static-vuejs-example" 
   deployFromRepo />
 

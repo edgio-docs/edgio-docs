@@ -8,7 +8,7 @@ This guide shows you how to deploy a [Svelte](https://svelte.dev/) application t
 
 <ExampleButtons
   title="Svelte"
-  siteUrl="https://edgio-community-layer0-svelte-example-default.layer0-limelight.link"
+  siteUrl="https://layer0-docs-layer0-svelte-example-default.layer0-limelight.link"
   repoUrl="https://github.com/layer0-docs/layer0-svelte-example" 
   deployFromRepo />
 

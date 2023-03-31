@@ -8,7 +8,7 @@ This guide shows you how to deploy a [SolidJS](https://solidjs.com) application 
 
 <ExampleButtons
   title="SolidJS"
-  siteUrl="https://edgio-community-layer0-solidjs-example-default.layer0-limelight.link"
+  siteUrl="https://layer0-docs-layer0-solidjs-example-default.layer0-limelight.link"
   repoUrl="https://github.com/layer0-docs/layer0-solidjs-example" 
   deployFromRepo />
 

@@ -19,7 +19,7 @@ Here we use [Next.js](https://nextjs.org/) for the example Nx project.
 
 <ExampleButtons
   title="Nx"
-  siteUrl="https://edgio-community-layer0-nx-example-default.layer0-limelight.link"
+  siteUrl="https://layer0-docs-layer0-nx-example-default.layer0-limelight.link"
   repoUrl="https://github.com/layer0-docs/layer0-nx-example" 
   deployFromRepo />
 

@@ -8,7 +8,7 @@ This guide shows you how to deploy a [Ionic React](https://ionicframework.com/do
 
 <ExampleButtons
   title="Ionic React"
-  siteUrl="https://edgio-community-layer0-ionic-react-example-default.layer0-limelight.link"
+  siteUrl="https://layer0-docs-layer0-ionic-react-example-default.layer0-limelight.link"
   repoUrl="https://github.com/layer0-docs/layer0-ionic-react-example" 
   deployFromRepo />
 

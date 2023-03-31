@@ -8,7 +8,7 @@ This guide shows you how to deploy an [Angular](https://angular.io) application 
 
 <ExampleButtons
   title="Angular SSR"
-  siteUrl="https://edgio-community-layer0-angular-example-default.layer0-limelight.link/category/hats"
+  siteUrl="https://layer0-docs-layer0-angular-example-default.layer0-limelight.link/category/hats"
   repoUrl="https://github.com/layer0-docs/layer0-angular-example" 
   deployFromRepo />
 

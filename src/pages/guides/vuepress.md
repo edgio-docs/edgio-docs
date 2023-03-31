@@ -8,7 +8,7 @@ This guide shows you how to deploy a [VuePress](https://vuepress.vuejs.org/) app
 
 <ExampleButtons
   title="VuePress"
-  siteUrl="https://edgio-community-layer0-vuepress-example-default.layer0-limelight.link"
+  siteUrl="https://layer0-docs-layer0-vuepress-example-default.layer0-limelight.link"
   repoUrl="https://github.com/layer0-docs/layer0-vuepress-example" 
   deployFromRepo />
 

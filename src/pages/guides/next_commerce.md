@@ -9,7 +9,7 @@ This guide shows you how to deploy the [Next.js Commerce](https://github.com/ver
 Here is an example of the [Next.js Commerce](https://nextjs.org/commerce) template running on {{ PRODUCT }}. It uses all of the latest Next.js 10 features including image optimization, localization, and incremental static regeneration with stale-while-revalidate.
 
 <ButtonLinksGroup>
-  <ButtonLink variant="fill" type="default" href="https://edgio-community-layer0-nextjs-commerce-default.layer0-limelight.link">
+  <ButtonLink variant="fill" type="default" href="https://layer0-docs-layer0-nextjs-commerce-default.layer0-limelight.link">
     Try the Next.js Commerce Example Site
   </ButtonLink>
   <ButtonLink variant="stroke" type="code" withIcon={true} href="https://github.com/layer0-docs/layer0-nextjs-commerce-example">

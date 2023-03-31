@@ -8,7 +8,7 @@ This guide shows you how to deploy a [Saber](https://saber.egoist.dev) applicati
 
 <ExampleButtons
   title="Saber"
-  siteUrl="https://edgio-community-layer0-saber-example-default.layer0-limelight.link"
+  siteUrl="https://layer0-docs-layer0-saber-example-default.layer0-limelight.link"
   repoUrl="https://github.com/layer0-docs/layer0-saber-example" 
   deployFromRepo />
 

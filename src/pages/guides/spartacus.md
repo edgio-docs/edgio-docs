@@ -5,7 +5,7 @@ title: Spartacus for SAP Commerce Cloud (formerly SAP Hybris)
 This guide shows you how to deploy a [Spartacus](https://sap.github.io/spartacus-docs) application to {{ PRODUCT }}.
 
 <ButtonLinksGroup>
-  <ButtonLink variant="fill" type="default" href="https://edgio-community-layer0-spartacus-example-default.layer0-limelight.link/">
+  <ButtonLink variant="fill" type="default" href="https://layer0-docs-layer0-spartacus-example-default.layer0-limelight.link/">
     Try the Spartacus Example Site
     </ButtonLink>
   <ButtonLink variant="stroke" type="code" withIcon={true} href="https://github.com/layer0-docs/layer0-spartacus-example">

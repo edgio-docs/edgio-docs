@@ -68,11 +68,11 @@ When configuring CI, we recommend:
 -   Automatically deploying to your staging environment when a PR is merged to the master branch of your repo.
 -   Manually promoting deployments to production using the {{ PORTAL }} to prevent unwanted builds from being published by misconfigured CI workflows.
 
-To deploy from your CI environment, create a deploy token using the site settings tab in the {{ PRODUCT }} console.
+A deploy token is required to deploy from your CI environment. Create one from the **Settings** page in the {{ PORTAL }}.
 
-![deployments](/images/deploying/token.png)
+![deployments](/images/v7/basics/property-deploy-tokens-create.png)
 
-Then use the `--token` option when deploying from your CI script:
+Use the `--token` option when deploying from your CI script:
 
 ```bash
 {{ FULL_CLI_NAME }} deploy my-site --token=$EDGIO_DEPLOY_TOKEN

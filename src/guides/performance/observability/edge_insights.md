@@ -30,7 +30,7 @@ Generating a report consists of performing the following steps:
     -   **Bot Manager Alerts:** Use this data source to view bot manager rule violations for up to the last 7 days.
     -   **Edge Control:** Use this data source to analyze how recent CDN deployments affects content delivery and performance.
     -   **Downsampled Access Logs:** Use this data source to analyze CDN traffic, downsampled to 0.1%, for up to the last 7 days.
-    -   **Rate Limiting Alerts:** Use this data source to view traffic that exceeded your rate limit(s) for up to the last 30 days.
+    -   **Rate Limiting Alerts:** Use this data source to view traffic that exceeded your rate limit(s), downsampled to 10%, for up to the last 30 days.
     -   **WAF Alerts:** Use this data source to view access rule, custom rule, and managed rule violations of your WAF security application manager configuration for up to the last 30 days.
 
 3.  Select the time period for which data will be returned.
@@ -178,7 +178,7 @@ Our policy on downsampling data and the amount of time that we store it varies a
 |Bot Manager Alerts|Full |7 days|
 |Edge Control| Full |7 days|
 |Downsampled Access Logs|Downsampled to 0.1%|7 days|
-|Rate Limiting Alerts|Full|7 days|
+|Rate Limiting Alerts|Downsampled to 10%|30 days|
 |WAF Alerts|Full |30 days|
 
 ## Time Chart

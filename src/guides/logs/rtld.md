@@ -49,9 +49,9 @@ RTLD delivers compressed log data to one or more of the following destination(s)
 
 Log data consists a set of log entries. Each entry describes either:
 
--   RTLD CDN: A HTTP/HTTPS request that was directed to our CDN service.
--   RTLD Rate Limiting: A HTTP/HTTPS request that exceeded a rate limit enforced by a Security Application Manager configuration.
--   RTLD WAF: A HTTP/HTTPS request that was identified as a threat by WAF and information on why it was deemed a threat.
+-   **RTLD CDN:** A HTTP/HTTPS request that was directed to our CDN service.
+-   **RTLD Rate Limiting:** A HTTP/HTTPS request that exceeded a rate limit enforced by a Security Application Manager configuration.
+-   **RTLD WAF:** A HTTP/HTTPS request that was identified as a threat by WAF and information on why it was deemed a threat.
 
 If our service is unable to deliver log data, then we will store it for up to 3 days and deliver it when communication resumes. If we cannot deliver log data within 3 days, then it will be permanently deleted.
 
@@ -86,7 +86,7 @@ You may create multiple profiles. This allows you to:
     
 -   Log fields vary by RTLD module.
     
-    Learn more: [RTLD CDN](/guides/logs/rtld/log_fields_rtld_cdn) | [RTLD Rate Limiting](/guides/logs/rtld/log_fields_rtld_rate_limiting) | [RTLD WAF](/guides/logs/rtld/log_fields_rtld_waf)
+    Learn more about log fields: [RTLD CDN](/guides/logs/rtld/log_fields_rtld_cdn) | [RTLD Rate Limiting](/guides/logs/rtld/log_fields_rtld_rate_limiting) | [RTLD WAF](/guides/logs/rtld/log_fields_rtld_waf)
     
 -   Log data will only be delivered when a profile's status is enabled.
 -   The procedure for creating and modifying profiles varies by the destination to which log files will be delivered. Learn more about delivering to:

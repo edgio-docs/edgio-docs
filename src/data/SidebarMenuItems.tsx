@@ -619,7 +619,7 @@ const SidebarMenuItems: ISidebarMenuItems = [
         },
         {
           title: 'Logs',
-          path: '/guides/security/logs',
+          path: '/guides/security/recent_event_logs',
         },
         {
           title: 'Response to Client',

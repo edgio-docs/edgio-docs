@@ -151,7 +151,7 @@ A sample rule violation is provided below.
 
 `Enforced Rule: Marketing [10s ago 12:00:00.00 UTC]`
 
-## Bot Log Fields {/*bot-log-fields*/}
+### Bot Log Fields {/*bot-log-fields*/}
 
 A brief description for each field used to describe/categorize bot traffic is provided below.
 

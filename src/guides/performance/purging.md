@@ -80,7 +80,7 @@ Use the {{ PORTAL }} to purge cached content within a specific environment.
 
 2.  From the **Cache Purge History** section, click **Purge the Cache**.
 
-    ![purge_the_cache_button](/images/purging/purge_the_cache_button.png)
+    ![purge_the_cache_button](/images/v7/performance/caching-purge-the-cache.png)
 
 3.  Purge:
 

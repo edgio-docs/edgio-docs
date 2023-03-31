@@ -31,7 +31,7 @@ The {{ PRODUCT_SECURITY }} dashboard provides the means through which you may pe
 
 </Callout>
 
-## Threats View {/*threats*/}
+## Threats View {/*threats-view*/}
 
 A threat event occurs when an access rule, custom rule, or managed rule is violated. It allows you to:
 
@@ -41,9 +41,9 @@ A threat event occurs when an access rule, custom rule, or managed rule is viola
 -   Identify key individual offenders by their IP address.
 -   Learn detailed information on the types of attack being mounted against your site.
 
-[View field definitions.](/guides/security/logs#threat-log-fields)
+[View field definitions.](/guides/security/recent_event_logs#threat-log-fields)
 
-## Bot View {/*bot*/}
+## Bot View {/*bot-view*/}
 
 A bot event occurs when a bot manager rule is violated. Analyze recently detected bot traffic to 
 -   Visualize peak bot traffic time periods and the amount of bot traffic directed at your web application and APIs.
@@ -56,9 +56,9 @@ A bot event occurs when a bot manager rule is violated. Analyze recently detecte
 
 </Callout>
 
-[View field definitions.](/guides/security/logs#bot-log-fields)
+[View field definitions.](/guides/security/recent_event_logs#bot-log-fields)
 
-## Rate Limit View {/*rate-limit*/}
+## Rates View {/*rates-view*/}
 
 A rate limit event occurs when a request exceeds a rate limit. Analyze recently rate limited requests to:
 -   Understand the severity of rate limited requests.
@@ -72,18 +72,18 @@ Logging for rate limited requests is downsampled to 10% due to the volume of req
 
 </Callout>
 
-[View field definitions.](/guides/security/logs#rate-limit-log-fields)
+[View field definitions.](/guides/security/recent_event_logs#rate-limit-log-fields)
 
-## Rate Enforcement View {/*rate-enforcement*/}
+## Rate Enforcement View {/*rate-enforcement-view*/}
 
 A rate limit enforcement event identifies when a set of requests were rate limited. Analyze rate limit enforcement events to:
 
 -   Visualize the time periods during which a high volume of requests resulted in the enforcement of a rate rule.
 -   Understand the frequency of rate limited requests.
 
-[View field definitions.](/guides/security/logs#rate-limit-enforcement-log-fields)
+[View field definitions.](/guides/security/recent_event_logs#rate-limit-enforcement-log-fields)
 
-### Sample Scenario {/*sample-scenario*/}
+### Rate Enforcement Example {/*rate-enforcement-example*/}
 
 The Rate Enforcement dashboard will log a single event whenever your rate limit threshold is exceeded. This occurs regardless of the number
 of requests that end up being rate limited as a result of this enforcement.
@@ -147,7 +147,7 @@ The {{ PRODUCT_SECURITY }} dashboard contains the following components:
     -   The time period being charted may be adjusted through the **Time Frame** option.
 -   Hovering over the line graph will indicate the exact number of violations that took place during that time slot.
 
-## Filters {/*filters*/}
+### Filters {/*filters*/}
 
 Filter the {{ PRODUCT_SECURITY }} dashboard by clicking on a top entry for a particular category or by setting up an advanced filter. 
 

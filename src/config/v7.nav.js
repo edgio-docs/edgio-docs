@@ -229,8 +229,8 @@ const nav = {
           path: 'security/dashboard',
         },
         {
-          title: 'Logs',
-          path: 'security/logs',
+          title: 'Recent Event Logs',
+          path: 'security/recent_event_logs',
         },
         {
           title: 'Response to Client',

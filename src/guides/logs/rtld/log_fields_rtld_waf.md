@@ -60,10 +60,10 @@ The logs array contains an object for each log entry associated with the current
 
 -   **account_number (*String*):** Customer AN. (Category: General) Indicates your CDN account number (e.g., 0001). 
 -   **action_type (*String*):** Action Type. (Category: Event) Indicates the action that was triggered as a result of the violation. Valid values are:
-    -   **BLOCK_REQUEST: Indicates that the request that violated a rule was blocked.
-    -   **NOP: Indicates that an alert was generated in response to the rule violation.
-    -   **REDIRECT_302: Indicates that the request that violated a rule was redirected to a URL defined by your security policy.
-    -   **CUSTOM_RESPONSE: Indicates that a custom response was returned to the client that submitted a request that violated a rule.
+    -   **BLOCK_REQUEST:** Indicates that the request that violated a rule was blocked.
+    -   **NOP:** Indicates that an alert was generated in response to the rule violation.
+    -   **REDIRECT_302:** Indicates that the request that violated a rule was redirected to a URL defined by your security policy.
+    -   **CUSTOM_RESPONSE:** Indicates that a custom response was returned to the client that submitted a request that violated a rule.
 
 -   **client_city (*String*):** City Name. (Category: Client Geography) Indicates the city from which the request originated.
 -   **client_country_code (*String*):** Country Code. (Category: Client Geography) Indicates the two-character ISO 3166-1 code for the country from which the request originated.
@@ -103,15 +103,15 @@ The sub_events array contains a list of fields that describe each sub event asso
 
     **Example:** The anomaly score incurred by each sub event in this example is listed below.
 
-    -   **Sub Event 1: Anomaly Score 2
-    -   **Sub Event 2: Anomaly Score 3
-    -   **Sub Event 3: Anomaly Score 2
+    -   **Sub Event 1:** Anomaly Score 2
+    -   **Sub Event 2:** Anomaly Score 3
+    -   **Sub Event 3:** Anomaly Score 2
 
     The total anomaly score for each sub event is listed below.
 
-    -   **Sub Event 1: Total Anomaly Score = 2
-    -   **Sub Event 2: Total Anomaly Score = 5
-    -   **Sub Event 3: Total Anomaly Score = 7
+    -   **Sub Event 1:** Total Anomaly Score = 2
+    -   **Sub Event 2:** Total Anomaly Score = 5
+    -   **Sub Event 3:** Total Anomaly Score = 7
 
 ## Sample Log Data {/*sample-log-data*/}
 

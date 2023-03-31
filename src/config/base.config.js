@@ -280,7 +280,7 @@ You may filter by:
             1.  Determine whether log data will be filtered to include or exclude requests to the selected hostname(s) by selecting either **Matches** or **Does Not Match**, respectively.
             2.  Select one or more hostnames from the option directly to the right of the above option.
                 
-                Filter the list by typing the entire or partial hostname. For example, typing \`co`\ will filter the list to include all hostnames that contain \`co`\ (e.g., cdn.example.com and corp.example.org).
+                Filter the list by typing the entire or partial hostname. For example, typing \`co\` will filter the list to include all hostnames that contain \`co\` (e.g., cdn.example.com and corp.example.org).
                 
         -   Upload all log data regardless of hostname
             
@@ -290,10 +290,10 @@ You may filter by:
         
         -   Filter log data by one or more countries:
             
-            1.  Determine whether log data will be filtered to include or exclude requests to the selected countries by selecting either **Matches** or Does Not Match, respectively.
+            1.  Determine whether log data will be filtered to include or exclude requests to the selected countries by selecting either **Matches** or **Does Not Match**, respectively.
             2.  Select one or more countries from the option directly to the right of the above option.
                 
-                Filter the list by typing the entire or partial country name. For example, typing \`un`\ will filter the list to include all countries that contain \`un`\ (e.g., United States and United Kingdom).
+                Filter the list by typing the entire or partial country name. For example, typing \`un\` will filter the list to include all countries that contain \`un\` (e.g., United States and United Kingdom).
                 
         -   Upload all log data regardless of country of origin:
             
@@ -381,7 +381,7 @@ You may filter by:
             1.  Determine whether log data will be filtered to include or exclude requests to the selected hostname(s) by selecting either **Matches** or **Does Not Match**, respectively.
             2.  Select one or more hostnames from the option directly to the right of the above option.
                 
-                Filter the list by typing the entire or partial hostname. For example, typing \`co`\ will filter the list to include all hostnames that contain \`co`\ (e.g., cdn.example.com and corp.example.org).
+                Filter the list by typing the entire or partial hostname. For example, typing \`co\` will filter the list to include all hostnames that contain \`co\` (e.g., cdn.example.com and corp.example.org).
                 
         -   Upload all log data regardless of hostname
             
@@ -394,7 +394,7 @@ You may filter by:
             1.  Determine whether log data will be filtered to include or exclude requests to the selected countries by selecting either **Matches** or **Does Not Match**, respectively.
             2.  Select one or more countries from the option directly to the right of the above option.
                 
-                Filter the list by typing the entire or partial country name. For example, typing \`un`\ will filter the list to include all countries that contain \`un`\ (e.g., United States and United Kingdom).
+                Filter the list by typing the entire or partial country name. For example, typing \`un\` will filter the list to include all countries that contain \`un\` (e.g., United States and United Kingdom).
                 
         -   Upload all log data regardless of country of origin:
             

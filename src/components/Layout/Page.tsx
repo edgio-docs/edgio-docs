@@ -64,7 +64,7 @@ const StyledBanner = styled.a`
   display: block;
   text-align: center;
   color: #fff;
-  background: var(--lg-primary);
+  background: var(--callout-tip);
   font-size: calc(1rem - 2px);
   padding: 1em;
   text-decoration: none;

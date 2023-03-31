@@ -173,7 +173,7 @@ Parameters can be suffixed with an asterisk (`*`) to denote zero or more paramet
 
 ```js
 new Router().get('/:foo*', {
-  /* res.params.foo will be an array */
+  /* ... */
 })
 ```
 
@@ -185,7 +185,7 @@ Parameters can be suffixed with a plus sign (`+`) to denote one or more paramete
 
 ```js
 new Router().get('/:foo+', {
-  /* res.params.foo will be an array */
+  /*... */
 })
 ```
 
@@ -316,9 +316,9 @@ This example shows typical usage of `{{ PACKAGE_NAME }}/core`, including serving
         "url": {
           "url_rewrite": [
             {
-              "source": "/service-worker.js:optionalSlash(\\/?)?:optionalQuery(\\?.*)?",
+              "source": "/service-worker.js",
               "syntax": "path-to-regexp",
-              "destination": "/dist/service-worker.js:optionalSlash:optionalQuery"
+              "destination": "/dist/service-worker.js"
             }
           ]
         },

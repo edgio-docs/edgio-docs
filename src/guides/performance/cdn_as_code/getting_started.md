@@ -2,6 +2,10 @@
 title: Getting Started with CDN-As-Code
 ---
 
+<Condition version="7">
+{{ ROUTEHELPER }}
+</Condition>
+
 Our CDN-as-code approach to configuration allows you to configure CDN behavior using {{ EDGEJS_LABEL }} within a file ({{ ROUTES_FILE }}) stored alongside your code. This allows you to leverage the power of source control for collaboration and to link your CDN configurations with specific versions of your web application. 
 
 ## Quick Start
@@ -291,8 +295,6 @@ export default new Router()
   // send any unmatched request to origin
   .match('/:path*', ({ proxy }) => proxy('origin'))
 ```
-
-The final line in your {{ ROUTES_FILE }} defines a `fallback()` method that proxies all requests that do not match a route to your `origin` backend.
 
 ## Testing Locally {/*deploy-locally*/}
 

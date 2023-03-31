@@ -2,6 +2,10 @@
 title: Common Routing Patterns
 ---
 
+<Condition version="7">
+{{ ROUTEHELPER }}
+</Condition>
+
 This guide gives examples of common routing patterns using {{ PRODUCT_NAME }}.
 
 ## Proxying an Origin {/*proxying-an-origin*/}

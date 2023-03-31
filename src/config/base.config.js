@@ -155,6 +155,13 @@ yarn global add ${PACKAGE_NAME}/cli
 </SnippetGroup>
 `;
 
+const ROUTEHELPER = `<Callout type="warning">
+
+  RouteHelper has been deprecated in favor of JSON syntax. Certain methods, such as `fallback` and `destination`, are no longer supported. [Learn more.](/guides/v7/intro#routehelper)
+
+</Callout>
+`;
+
 const SECURITY_NAV = `1.  From the ${PORTAL_LINK}, select the desired team space. 
     2.  From the **Security** section, click `;
 
@@ -507,6 +514,7 @@ const config = {
   NODE_VERSION,
   PACKAGE_NAME,
   PARTNERS_CONTACT,
+  ROUTEHELPER,
   RTLD_PROFILE_SETUP_1,
   RTLD_PROFILE_SETUP_2,
   SECURITY_NAV,

@@ -36,15 +36,7 @@ export default new Router()
 
 ## Declare Routes {/*declare-routes*/}
 
-Declare routes using the method corresponding to the HTTP method you want to match.
-
-```js filename="./routes.js"
-import { Router } from "{{ PACKAGE_NAME }}/core";
-
-export default new Router()
-```
-
-All HTTP methods are available:
+Declare routes using the method corresponding to the HTTP method you want to match. All HTTP methods are available:
 
 - get
 - put
@@ -63,17 +55,7 @@ export default new Router().match("/:path*", {});
 
 ## Route Execution {/*route-execution*/}
 
-When {{ PRODUCT_NAME }} receives a request, it executes **each route that matches the request** in the order in which they are declared until one sends a response. The following methods return a response:
-
-<!-- - [appShell](/docs/api/core/classes/_router_responsewriter_.responsewriter.html#appshell)
-- [compute](/docs/api/core/classes/_router_responsewriter_.responsewriter.html#compute)
-- [proxy](/docs/api/core/classes/_router_responsewriter_.responsewriter.html#proxy)
-- [redirect](/docs/api/core/classes/_router_responsewriter_.responsewriter.html#redirect)
-- [send](/docs/api/core/classes/_router_responsewriter_.responsewriter.html#send)
-- [serveStatic](/docs/api/core/classes/_router_responsewriter_.responsewriter.html#servestatic)
-- [serviceWorker](/docs/api/core/classes/_router_responsewriter_.responsewriter.html#serviceworker)
-- [stream](/docs/api/core/classes/_router_responsewriter_.responsewriter.html#stream)
-- [use](/docs/api/core/classes/_router_responsewriter_.responsewriter.html#compute) -->
+When {{ PRODUCT_NAME }} receives a request, it executes **each route that matches the request** in the order in which they are declared until one sends a response.
 
 Multiple routes can therefore be executed for a given request. A common pattern is to add caching with one route and render the response with a later one using middleware. In the following example we cache then render a response with Next.js:
 
@@ -93,7 +75,7 @@ new Router()
 
 {{ PRODUCT_NAME }} offers APIs to manipulate request and response headers and cookies. The APIs are:
 
-| Operation     | Request               | Upstream Response              | Response sent to Browser |
+<!-- | Operation     | Request               | Upstream Response              | Response sent to Browser |
 | ------------- | --------------------- | ------------------------------ | ------------------------ |
 | Set header    | `setRequestHeader`    | `setUpstreamResponseHeader`    | `setResponseHeader`      |
 | Add cookie    | `*`                   | `addUpstreamResponseCookie`    | `addResponseCookie`      |
@@ -102,11 +84,11 @@ new Router()
 | Remove header | `removeRequestHeader` | `removeUpstreamResponseHeader` | `removeResponseHeader`   |
 | Remove cookie | `*`                   | `removeUpstreamResponseCookie` | `removeResponseCookie`   |
 
-`*` Adding, updating, or removing a request cookie can be achieved with `updateRequestHeader` applied to `cookie` header.
+`*` Adding, updating, or removing a request cookie can be achieved with `updateRequestHeader` applied to `cookie` header. -->
 
 <!-- You can find detailed descriptions of these APIs in the `{{ PACKAGE_NAME }}/core` [documentation](/docs/api/core/classes/_router_responsewriter_.responsewriter.html). -->
 
-### Embedded Values {/*embedded-values*/}
+<!-- ### Embedded Values {/*embedded-values*/}
 
 You can inject values from the request or response into headers or cookies as template literals using the `${value}` format. For example: `setResponseHeader('original-request-path', '${path}')` would add an `original-request-path` response header whose value is the request path.
 
@@ -119,7 +101,7 @@ You can inject values from the request or response into headers or cookies as te
 | Request header          | `${req:<name>}`        | The value of the `<name>` request header or empty if not available.                                                           |
 | Request cookie          | `${req:cookie:<name>}` | The value of the `<name>` cookie in `cookie` request header or empty if not available.                                        |
 | Request named parameter | `${req:param:<name>}`  | The value of the `<name>` param defined in the route or empty if not available.                                               |
-| Response header         | `${res:<name>}`        | The value of the `<name>` response header or empty if not available.                                                          |
+| Response header         | `${res:<name>}`        | The value of the `<name>` response header or empty if not available.                                                          | -->
 
 ## Route Pattern Syntax {/*route-pattern-syntax*/}
 

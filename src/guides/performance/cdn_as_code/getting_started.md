@@ -2,41 +2,6 @@
 title: Getting Started with CDN-As-Code
 ---
 
-<RawEdgeJS>
-```
-[
-  {
-    "if": [
-      {
-        "==": [
-          {
-            "request": "path"
-          },
-          "/api/:path*"
-        ]
-      },
-      {
-        "caching": {
-          "max_age": "86400s",
-          "stale_while_revalidate": "3600s",
-          "service_worker_max_age": 86400,
-          "bypass_client_cache": true
-        },
-        "headers": {
-          "set_response_headers": {
-            "x-sw-cache-control": "max-age=86400"
-          }
-        },
-        "origin": {
-          "set_origin": "origin"
-        }
-      }
-    ]
-  }
-]
-```
-</RawEdgeJS>
-
 Our CDN-as-code approach to configuration allows you to configure CDN behavior using {{ EDGEJS_LABEL }} within a file ({{ ROUTES_FILE }}) stored alongside your code. This allows you to leverage the power of source control for collaboration and to link your CDN configurations with specific versions of your web application. 
 
 ## Quick Start

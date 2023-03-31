@@ -13,6 +13,7 @@ import {ExternalLink} from 'components/ExternalLink';
 import {IconHamburger} from 'components/Icon/IconHamburger';
 import {IconLightMobileLogo} from 'components/Icon/IconMobileLogo';
 import {siteConfig} from 'config/appConfig';
+import useConditioning from 'utils/hooks/useConditioning';
 import useTheme from 'utils/hooks/useTheme';
 
 const StyledHeader = styled.header`
@@ -186,10 +187,6 @@ const {
   indexName,
 } = siteConfig.algolia;
 
-const searchParameters = {
-  // facetFilters: [['version:all', 'version:v5']],
-};
-
 function transformItems(items: any) {
   // do transformation here...
   return items;
@@ -202,6 +199,12 @@ export default function Header({
   showSidebar: boolean;
   setShowSidebar: (showSidebar: boolean) => void;
 }) {
+  const {version} = useConditioning();
+
+  const searchParameters = {
+    facetFilters: [['version:all', `version:${version.selectedVersionText}`]],
+  };
+
   const SearchField = () => (
     <NoSSRWrapper>
       <DocSearch

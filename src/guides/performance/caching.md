@@ -80,6 +80,10 @@ Set or override a cache policy through rules. The most commonly used features fo
 
 ### CDN-as-Code
 
+<Condition version="7">
+{{ ROUTEHELPER }}
+</Condition>
+
 Use the [cache](/docs/api/core/classes/_router_responsewriter_.responsewriter.html#cache) function in your route's callback:
 
     ```js

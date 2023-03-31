@@ -102,6 +102,7 @@ If the route being tested has an upstream request or serves a static file, you w
 
 These functions reference the backend entries defined in your `{{ CONFIG_FILE }}` file.
 
+<Condition version="<=6">
 #### Mocking _appHost_ Example {/*mocking-apphost-example*/}
 
 If your route sends a response from your application, such as `renderWithApp` or using `NextRoutes`, `NuxtRoutes`, etc., use `appHost()` to reference the host and port for mocking the request and response.
@@ -133,6 +134,7 @@ it('should cache the collections page at the edge for 1 hour', async () => {
   expect(result).toBeCachedByTheEdgeFor(60 * 60)
 })
 ```
+</Condition>
 
 #### Mocking _backendHost_ Example {/*mocking-backendhost-example*/}
 

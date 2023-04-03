@@ -10,7 +10,7 @@ Each request for your content will generate a response from a server. This respo
 
 ## Protocol and Version {/*protocol-and-version*/}
 
-Identifies the network protocol and version (e.g., HTTP/1.1) used to transmit the response to the client. <!-- This protocol and version typically matches the one defined in the request. -->
+Identifies the network protocol and version (e.g., HTTP/1.1) used to transmit the response to the client. This protocol and version typically matches the one defined in the request. If an invalid protocol or version was requested, then the response will return a `505 HTTP Version Not Supported`.
 
 ## Status Codes {/*status-codes*/}
 
@@ -98,6 +98,7 @@ A POP component is identified through the following two abbreviations:
 -    [Who handled the request.](#request-element)
 -    [POP component.](#pop-component)
 
+<!--
 **Standard Traffic Example:**
 The following sample response header indicates that the following POP components returned a `200 OK`: Edge POP's HAProxy, Edge POP's DPS, Global POP's HAProxy, and Global POP's DPS.
 
@@ -107,6 +108,7 @@ The following sample response header indicates that the following POP components
 The following sample response header indicates that the following POP components returned a `200 OK`: Edge POP's HAProxy, Edge POP's DPS, Global POP's HAProxy, Global POP's DPS, Serverless Compute (load balancer), and Serverless Compute (worker).
 
 `{{ HEADER_PREFIX }}-status: eh=200,ed=200,gh=200,gd=200,p=200,w=200` <a id="structure-of--header_prefix--t"></a>
+-->
 
 ### {{ HEADER_PREFIX }}-t Response Header {/*-t-response-header*/}
 
@@ -144,10 +146,12 @@ Each metric is defined through a set of abbreviations. These abbreviations ident
     -   **p**: Serverless Compute (load balancer)
     -   **w**: Serverless Compute (worker) <a id="pop-component"></a>
 
--   The [POP component](/guides/performance/request#pop-components) that processed the request:
-
+-   The POP component that processed the request:
+<!--
     -   **h:** HAProxy (load balancer)
     -   **c:** Varnish (cache)
+-->
+
     -   **d:** Dynamic Proxy Service (DPS)
     -   **b:** Billing
     -   **k:** Kolben
@@ -214,10 +218,12 @@ Each metric is defined through a set of abbreviations. These abbreviations ident
 #### Exceptions {/*exceptions*/}
 
 Most metrics follow the above convention. However, there are some metrics that use a different convention. Here are a few common exceptions to the above convention:
-
--   **dgpop:** Identifies the global POP to which an edge POP forwarded a request.
+<!--
 -   **eh:** Identifies the total time, in milliseconds, as measured by an edge POP's HAProxy.
 -   **gh:** Identifies the total time, in milliseconds, as measured by a global POP's HAProxy.
+-->
+
+-   **dgpop:** Identifies the global POP to which an edge POP forwarded a request.
 -   **wa:** Indicates the `transformRequest` time, in milliseconds, as measured by a Serverless Compute (worker).
 -   **wp:** Indicates the fetch or proxy time, in milliseconds, as measured by a Serverless Compute (worker).
 
@@ -227,6 +233,7 @@ Most metrics follow the above convention. However, there are some metrics that u
     -   **transformResponse:** If the route uses `transformResponse`, then this metric measures the `transformResponse` time in milliseconds.
     -   **Image Optimization:** If the route contains an image optimization tag, such as Next [Image](https://nextjs.org/docs/api-reference/next/image) or Nuxt [nuxt-img](https://image.nuxtjs.org/components/nuxt-img/),  instead of `transformResponse`, then this metric measures processing time in milliseconds.
 
+<!--
 #### Sample {{ HEADER_PREFIX }}-t Response Headers {/*sample-t-response-headers*/}
 
 Sample response headers for both standard traffic and Serverless Compute are explained below.
@@ -286,6 +293,7 @@ We will now examine each metric defined within the above sample response header:
 | `wp=705`   | Indicates the fetch or proxy time as measured by a Serverless Compute (worker) was 705 milliseconds.  |
 | `wa=1`     | Indicates the `transformRequest` time as measured by a Serverless Compute (worker) was 1 millisecond. |
 | `wz=1`     | Indicates either a `transformResponse` time or processing time in milliseconds. [Learn more.](#wz)
+-->
 
 ### {{ HEADER_PREFIX }}-version Response Header {/*-version-response-header*/}
 

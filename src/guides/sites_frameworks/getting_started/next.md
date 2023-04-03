@@ -286,7 +286,7 @@ import {Router} from '{{ PACKAGE_NAME }}/core/router';
 
 export default new Router()
   .use(nextRoutes)
-  .fallback(({proxy}) => proxy('legacy'));
+  match('/:path*', ({proxy}) => proxy('legacy'));
 ```
 
 To configure the legacy backend, use {{ CONFIG_FILE }}:

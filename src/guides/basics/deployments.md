@@ -49,7 +49,7 @@ Deployments are versioned. Each deployment is assigned a unique version number. 
 
 2.  Find the deployment that should be applied to this environment, click its <Image inline src="/images/v7/icons/menu-kebab.png" alt="Menu" /> icon, and then click **Rollback to this version**.
 
-    ![Rollback Deployment](/images/v7/performance/deployments-rollback.png?width=450)
+    ![Rollback Deployment](/images/v7/basics/deployments-rollback.png?width=450)
 
 3.  When prompted, click **Promote to production** to confirm that a previous deployment will be applied to this environment.
 
@@ -57,7 +57,7 @@ Deployments are versioned. Each deployment is assigned a unique version number. 
 
 Each time you deploy your site to {{ PRODUCT }} a deployment is created and given a unique and permanent URL based on the team name, site name, branch name in source control, and an incrementing deployment number. If you use Git, the branch name is set by the default. If not, you can specify the `--branch` option when running `{{ FULL_CLI_NAME }} deploy`.
 
-![Deployments](/images/v7/performance/deployments.png?width=450)
+![Deployments](/images/v7/basics/deployments.png?width=450)
 
 Having each deployment be simultaneously and permanently accessible makes it easy to preview other developers' work before merging a pull request and enables you to "go back in time" to find where a bug or change in behavior originated. We recommend configuring your CI environment to deploy every push to {{ PRODUCT }}.
 
@@ -68,11 +68,11 @@ When configuring CI, we recommend:
 -   Automatically deploying to your staging environment when a PR is merged to the master branch of your repo.
 -   Manually promoting deployments to production using the {{ PORTAL }} to prevent unwanted builds from being published by misconfigured CI workflows.
 
-To deploy from your CI environment, create a deploy token using the site settings tab in the {{ PRODUCT }} console.
+A deploy token is required to deploy from your CI environment. Create one from the **Settings** page in the {{ PORTAL }}.
 
-![deployments](/images/deploying/token.png)
+![deployments](/images/v7/basics/property-deploy-tokens-create.png)
 
-Then use the `--token` option when deploying from your CI script:
+Use the `--token` option when deploying from your CI script:
 
 ```bash
 {{ FULL_CLI_NAME }} deploy my-site --token=$EDGIO_DEPLOY_TOKEN

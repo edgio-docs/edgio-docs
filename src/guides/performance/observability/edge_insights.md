@@ -25,18 +25,13 @@ Generating a report consists of performing the following steps:
 
 2.  Select one of the following data sources:
 
-    -   **Access Logs:** Use this data source to analyze CDN traffic.
-
-        -   **Full - last 6 hours:** Contains all traffic for up to the last 6 hours.
-        -   **Sampled:** Contains traffic that has been downsampled to 0.1% for up to the last 7 days.
-        -   **Sampled, BF:**
-        -   **Sampled, SOC:**
-
-    -   **Analytics:** Use this data source to analyze CDN traffic that has been downsampled to 0.1%.
-    -   **Bot Manager Alerts:** Use this data source to view bot rule violations of your WAF security application manager configuration that have been downsampled to 10%. <!--TODO verify-->
-    -   **Edge Control:** Use this data source to analyze how a new CDN configuration affects content delivery and performance.
-    -   **Rate Limiting Alerts:** Use this data source to view rate rule violations of your WAF security application manager configuration that have been downsampled to 10%.
-    -   **WAF Alerts:** Use this data source to view access rule, bot rule, custom rule, and managed rule violations of your WAF security application manager configuration.
+    -   **Access Logs:** Use this data source to analyze CDN traffic for up to the last 6 hours.
+    -   **Analytics:** Use this data source to analyze aggregated CDN traffic for up to the last 7 days.
+    -   **Bot Manager Alerts:** Use this data source to view bot manager rule violations for up to the last 7 days.
+    -   **Edge Control:** Use this data source to analyze how recent CDN deployments affects content delivery and performance.
+    -   **Downsampled Access Logs:** Use this data source to analyze CDN traffic, downsampled to 0.1%, for up to the last 7 days.
+    -   **Rate Limiting Alerts:** Use this data source to view traffic that exceeded your rate limit(s), downsampled to 10%, for up to the last 30 days.
+    -   **WAF Alerts:** Use this data source to view access rule, custom rule, and managed rule violations of your WAF security application manager configuration for up to the last 30 days.
 
 3.  Select the time period for which data will be returned.
 
@@ -176,16 +171,15 @@ You may share an entire report or specific data with other users.
 
 Our policy on downsampling data and the amount of time that we store it varies according to data source.
  
-|Data Source|Downsampling|Retention Schedule|
+|Data Source|Coverage|Retention Schedule|
 |--- |--- |--- |
-|WAF Alerts|Not Downsampled |30 days|
-|Rate Limiting Alerts|10%|30 days|
-|Access Logs, (Full - last 6 hours)|Not Downsampled |6 hours|
-|Access Logs, (Sampled)|0.1%|7 days|
-|Access Logs, (Sampled, BF)|?|? days|
-|Access Logs, (Sampled, SOC)|?|? days|
-|Analytics|0.1%|7 days|
-|Edge Control| Not Downsampled|7 days|
+|Access Logs|Full |6 hours|
+|Analytics|Aggregate|7 days|
+|Bot Manager Alerts|Full |7 days|
+|Edge Control| Full |7 days|
+|Downsampled Access Logs|Downsampled to 0.1%|7 days|
+|Rate Limiting Alerts|Downsampled to 10%|30 days|
+|WAF Alerts|Full |30 days|
 
 ## Time Chart
 
@@ -328,8 +322,6 @@ Log data provides contextual information about a request that allows you to gain
 ## Access Logs
 
 Use this data source to analyze CDN traffic. This data provides historical and near real-time visibility into your CDN traffic at a high-level.
-
-For data sources that have been downsampled to 0.1%, calculate an approximation of your actual total events by multiplying your total events by 1,000. For example, if your total events reports 235K, then the approximate number of requests for that time period is 235,000,000.
 
 Each Access Log field is defined below.
 

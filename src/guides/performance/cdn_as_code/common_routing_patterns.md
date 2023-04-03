@@ -2,6 +2,10 @@
 title: Common Routing Patterns
 ---
 
+<Condition version="7">
+{{ ROUTEHELPER }}
+</Condition>
+
 This guide gives examples of common routing patterns using {{ PRODUCT_NAME }}.
 
 ## Proxying an Origin {/*proxying-an-origin*/}
@@ -320,9 +324,9 @@ router.get('/some/path', ({
   removeResponseCookie('cookie-to-remove')
   updateResponseCookie('cookie-to-alter', /Domain=.+;/, 'Domain=mydomain.com;')
 })
-```
+``` -->
 
-### Adding Options to Cookies {/*adding-options-to-cookies*/}
+<!-- ### Adding Options to Cookies {/*adding-options-to-cookies*/}
 
 In addition to the name and value of the cookie, you can also add attributes to each cookie. For
 information on possible cookie attributes, please refer to https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Set-Cookie

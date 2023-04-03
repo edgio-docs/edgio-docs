@@ -216,7 +216,7 @@ You can add additional routes before and after `nuxtRoutes`, for example to send
 A popular use case is to fallback to a legacy site for any route that your Nuxt.js app isn't configured to handle:
 
 ```js
-export default new Router().use(nuxtRoutes).fallback(({ proxy }) => proxy('legacy'))
+export default new Router().use(nuxtRoutes).match('/:path*', ({ proxy }) => proxy('legacy'))
 ```
 
 To configure the legacy backend, use {{ CONFIG_FILE }}:

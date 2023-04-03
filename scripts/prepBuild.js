@@ -11,7 +11,8 @@ function removeFiles(dirPath) {
     if (fs.statSync(filePath).isDirectory()) {
       removeFiles(filePath);
     } else if (
-      !['.js', '.js.nft.json'].includes((ext) => filePath.endsWith(ext))
+      !filePath.endsWith('.js') &&
+      !filePath.endsWith('.js.nft.json')
     ) {
       fs.unlinkSync(filePath);
       console.log(`Removed file: ${filePath}`);

@@ -230,7 +230,7 @@
         },
         {
           "title": "Logs",
-          "path": "security/logs"
+          "path": "security/recent_event_logs"
         }
       ]
     },

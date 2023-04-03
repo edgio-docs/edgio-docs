@@ -1258,7 +1258,7 @@ new Router()
 
 #### Server-Timing Header {/*server-timing-header*/}
 
-Determines whether to include the [server-timing header](/performance/response#server-timing-header) in the response.
+Determines whether to include the [Server-Timing header](/performance/response#server-timing-header) in the response. The `Server-Timing` response header contains cache status information and information about the POP that served the response. 
 
 <edgejs>
 **Example:**

@@ -75,7 +75,7 @@ The response headers generated for content requested through our CDN describe th
 -   Response headers that define or describe the requested content's cache policy.
 -   Information that identifies the edge server that served the response.
 
-### Common Response Headers
+Common response headers are:
 
 -   **Accept-Ranges:** Indicates whether a server can accept range requests.
 
@@ -107,7 +107,7 @@ The response headers generated for content requested through our CDN describe th
 
         **Example:** `server: ECAcc (lac/55D2)`
 
--   **Server-Timing:** {{ PRODUCT }} returns this response header when the [Server-Timing Header feature](/performance/rules/features#server-timing-header) has been enabled. The `Server-Timing` response header 
+-   **Server-Timing:** {{ PRODUCT }} returns this response header when the [Server-Timing Header feature](/performance/rules/features#server-timing-header) has been enabled. The `Server-Timing` response header contains cache status information and information about the POP that served the response. 
 
     **Syntax:** `server-timing: edgio_cache;desc=<CACHE STATUS CODE>,edgio_pop;desc=<POP>,edgio_country;desc=<COUNTRY>`
 
@@ -199,7 +199,7 @@ The response headers generated for content requested through our CDN describe th
 -->
 <!-- surrogate keys can be injected when needed into your backend responses -->
 
-#### Requesting Debug Cache Information {/*requesting-debug-cache-information*/}
+### Requesting Debug Cache Information {/*requesting-debug-cache-information*/}
 
 The debug cache response headers provide additional information about the cache policy applied to the requested asset. The response sent from our edge servers to a user will only include debug cache response headers when the following conditions are true:
 
@@ -218,7 +218,7 @@ Valid debug cache header values are provided below.
 -   **x-ec-cache-key:** [Cache-key](#cache-key)
 -   **x-ec-cache-state:** [Cache state](#cache-state)
 
-##### Cache Status Code Information
+#### Cache Status Code Information
 
 The following response headers identify a server and how it handled the response:
 
@@ -226,13 +226,13 @@ The following response headers identify a server and how it handled the response
 
     **Syntax:** `x-ec-cache: <CACHE STATUS CODE> from ECAcc (<POP>/<ID>)`
 
-    **Example:** `x-ec-cache: TCP\_HIT from ECAcc (lga/0FE8)`
+    **Example:** `x-ec-cache: TCP_HIT from ECAcc (lga/0FE8)`
 
--   **x-ec-cache-remote:** This response header is only reported when the requested content was cached on an origin shield server or ADN Gateway server.
+-   **x-ec-cache-remote:** This response header is only reported when the requested content was cached on an origin shield server.
 
     **Syntax:** `x-ec-cache: <CACHE STATUS CODE> from ECAcc (<POP>/<ID>)`
 
-    **Example:** `x-ec-cache-remote: TCP\_HIT from ECAcc (dca/EF00)`
+    **Example:** `x-ec-cache-remote: TCP_HIT from ECAcc (dca/EF00)`
 
 The terms used in the above response header syntax are defined below:
 
@@ -240,13 +240,13 @@ The terms used in the above response header syntax are defined below:
 
     <Callout type="info">
 
-      The TCP\_DENIED status code may be reported instead of NONE when an unauthorized request is denied due to Token-Based Authentication. However, the NONE status code will continue to be used when viewing Cache Status reports or raw log data.
+      The `TCP_DENIED` status code may be reported instead of `NONE` when an unauthorized request is denied due to Token-Based Authentication. However, the `NONE` status code will continue to be used when viewing reports or raw log data.
 
     </Callout>
 
 -   **POP:** Indicates the three-letter abbreviation for the POP that handled the request.
     
-##### Cacheable Response Header
+#### Cacheable Response Header
 
 The `x-ec-check-cacheable` response header indicates whether the requested content could have been cached.
 
@@ -270,7 +270,7 @@ The term `CACHEABLE` indicates whether the requested content could have been cac
 
 -   **UNKNOWN:** Indicates that our servers were unable to assess whether the requested asset was cacheable. This typically occurs when the request is denied due to Token-Based Authentication.
 
-##### Cache-Key Response Header
+#### Cache-Key Response Header
 
 The `x-ec-cache-key` response header indicates the physical cache-key associated with the requested content. A physical cache-key consists of a path that identifies an asset for the purposes of caching. In other words, our servers will check for a cached version of an asset according to its path as defined by its cache-key.
 
@@ -288,7 +288,7 @@ By default, query strings are ignored by the caching mechanism and therefore the
 
 **Example:** `x-ec-cache-key: //http/800001/origin/images/foo.jpg`
 
-##### Cache State Response Header
+#### Cache State Response Header
 
 The x-ec-cache-state response header indicates the cache state of the requested content at the time it was requested.
 
@@ -316,7 +316,7 @@ The terms used in the above response header syntax are defined below:
     
 -   **EXPIRES SECONDS:** Indicates the number of seconds remaining before the date/time specified in the Expires response header. If the Expires response header was not included in the response, then this term will report none.
 
-##### Time Unit Abbreviations {/*time-unit-abbreviations*/}
+#### Time Unit Abbreviations {/*time-unit-abbreviations*/}
 
 The following abbreviations are used for time units:
 
@@ -326,7 +326,7 @@ The following abbreviations are used for time units:
 -   **m:** Month(s)
 -   **y:** Year(s)
 
-#### {{ HEADER_PREFIX }}-status Response Header {/*-status-response-header*/}
+### {{ HEADER_PREFIX }}-status Response Header {/*-status-response-header*/}
 
 The `{{ HEADER_PREFIX }}-status` response header contains an HTTP status code for each POP component that processed the request. This comma-delimited list is presented sequentially according to the order in which POP components processed the request.
 
@@ -349,7 +349,7 @@ The following sample response header indicates that the following POP components
 `{{ HEADER_PREFIX }}-status: eh=200,ed=200,gh=200,gd=200,p=200,w=200` <a id="structure-of--header_prefix--t"></a>
 -->
 
-#### {{ HEADER_PREFIX }}-t Response Header {/*-t-response-header*/}
+### {{ HEADER_PREFIX }}-t Response Header {/*-t-response-header*/}
 
 The `{{ HEADER_PREFIX }}-t` response header contains time measurements for each {{ PRODUCT }} POP component through which a request was routed. It also provides cache status information for edge and global POPs. This data is presented sequentially according to the order in which POP components processed the request.
 
@@ -454,7 +454,7 @@ Each metric is defined through a set of abbreviations. These abbreviations ident
 
         For example, `ecwt` identifies the total time the request spent waiting in the request coalescing queue on the edge POP. The analogue for the global POP is `gcwt`. These are useful to check when apparent cache hits have high total time. Those cases are actually due to request coalescing resulting in a cache hit.
 
-##### Exceptions {/*exceptions*/}
+#### Exceptions {/*exceptions*/}
 
 Most metrics follow the above convention. However, there are some metrics that use a different convention. Here are a few common exceptions to the above convention:
 <!--
@@ -473,11 +473,11 @@ Most metrics follow the above convention. However, there are some metrics that u
     -   **Image Optimization:** If the route contains an image optimization tag, such as Next [Image](https://nextjs.org/docs/api-reference/next/image) or Nuxt [nuxt-img](https://image.nuxtjs.org/components/nuxt-img/),  instead of `transformResponse`, then this metric measures processing time in milliseconds.
 
 <!--
-##### Sample {{ HEADER_PREFIX }}-t Response Headers {/*sample-t-response-headers*/}
+#### Sample {{ HEADER_PREFIX }}-t Response Headers {/*sample-t-response-headers*/}
 
 Sample response headers for both standard traffic and Serverless Compute are explained below.
 
-###### Standard Traffic {/*standard-traffic*/}
+##### Standard Traffic {/*standard-traffic*/}
 The following sample {{ HEADER_PREFIX }}-t response header is for a request that was routed through an edge POP to a global POP:
 
 `{{ HEADER_PREFIX }}-t: eh=325,ect=322,ecc=cached,edt=316,edd=0,edf=316,dgpop=hef,gh=7,gct=5,gcc=hit`
@@ -497,7 +497,7 @@ We will now examine each metric defined within the above sample response header:
 | `gct=5`      | Indicates the total time from a global POP's Varnish (cache) was 5 milliseconds.                         |
 | `gcc=hit`    | Indicates that the global POP's Varnish (cache) served the response from cache.                          |
 
-###### Serverless Compute {/*serverless-compute*/}
+##### Serverless Compute {/*serverless-compute*/}
 
 The following sample {{ HEADER_PREFIX }}-t response header is for a Serverless Compute request. A Serverless Compute request is routed through an edge POP, global POP, and then to our Serverless Compute service. This request flow ensures optimal performance by serving requests from cache whenever possible.
 

@@ -90,11 +90,9 @@ The response headers generated for content requested through our CDN describe th
 
     </Callout>
 
--   **:** 
-
-    **Default value:** 
-
 -   **Cache-Control: max-age:** Indicates the maximum length of time that a request is considered fresh. An edge server can serve fresh content directly from cache without having to perform a revalidation with the origin server. <!--Default value: 604800 The default value indicates that the max-age for the requested content is 7 days Max-age is defined in seconds. 604800 seconds = 7 days.-->
+-   **Content-Encoding:** Indicates that a compressed version of the requested content was served to the client. This response header indicates the asset's compression type (e.g., gzip, deflate, bzip2, etc.).
+-   **Content-Length:** Indicates the size of the response body in octets.
 -   **Content-Type:** Indicates the media type (aka content type) for the response body.
 -   **Date:** Indicates the date and time (GMT) on which the edge server returned a response.
 -   **Etag:** Indicates the entity tag (ETag) for the requested content. This ETag allows our edge servers to revalidate stale content. In other words, our edge servers will use ETag when checking with the origin server to see if there is a newer version of the requested content.
@@ -112,18 +110,17 @@ The response headers generated for content requested through our CDN describe th
 
         **Example:** `server: ECAcc (lac/55D2)`
 
--   **Warning:** This response header is only returned when a stale response is served to the client. A stale response is typically served under the following conditions:
+-   **Server-Timing:** {{ PRODUCT }} returns this response header when the [Server-Timing Header feature](/performance/rules/features#server-timing-header) has been enabled. The `Server-Timing` response header 
 
-    -   The [Stale While Revalidate feature](/performance/rules/features#stale-while-revalidate) was applied to the request.
-    
-        **Response header value:** `110 - "Response is stale"`
-    
--   Revalidation failed and either of the following conditions is true:
-    
-    -   The origin server returned a `5xx` response and the [Stale on Error feature](/performance/rules/features#stale-on-error) was applied to the request.
-    -   The origin server is unresponsive and the stale window, as defined by the [Revalidate After Origin Unavailable feature](/performance/rules/features#revalidate-after-origin-unavailable), is active.
-    
-    **Response header value:** `111 - "Revalidation Failed", 110 - "Response is stale"`
+    **Syntax:** `server-timing: edgio_cache;desc=<CACHE STATUS CODE>,edgio_pop;desc=<POP>,edgio_country;desc=<COUNTRY>`
+
+    **Example:** `server-timing: edgio_cache;desc=TCP_HIT,edgio_pop;desc=lac,edgio_country;desc=US`
+
+    The terms used in the above syntax are defined below:
+
+    -   **CACHE STATUS CODE:** Indicates the cache status code for the response served to the client.
+    -   **POP:** Indicates the POP that served the response.
+    -   **COUNTRY:** Indicates the POP's country.
 
 -   **Vary:** Identifies the variant that defines whether cached content can be served for future requests.
 
@@ -132,12 +129,23 @@ The response headers generated for content requested through our CDN describe th
     -   Our network only supports a single variant called `Accept-Encoding`. This value indicates that the `Accept-Encoding` request header determines whether cached content will be served.
     -   By default, our edge servers only return this header when the requested content was previously cached.
     -   The `Accept-Encoding` request header identifies the type of compression requested by the client. An edge server may deliver the requested content immediately if the cached asset matches the requested compression method.
+
+-   **Warning:** This response header is only returned when a stale response is served to the client. A stale response is typically served under the following conditions:
+
+    -   The [Stale While Revalidate feature](/performance/rules/features#stale-while-revalidate) was applied to the request.
+    
+        **Response header value:** `110 - "Response is stale"`
+    
+    -   Revalidation failed and either of the following conditions is true:
+   
+        -   The origin server returned a `5xx` response and the [Stale on Error feature](/performance/rules/features#stale-on-error) was applied to the request.
+        -   The origin server is unresponsive and the stale window, as defined by the [Revalidate After Origin Unavailable feature](/performance/rules/features#revalidate-after-origin-unavailable), is active.
+    
+        **Response header value:** `111 - "Revalidation Failed", 110 - "Response is stale"`
+
 -   **X-Cache: HIT:** Indicates that a cached version of the requested content was served directly to the client by an edge server.
 
     **Example:** `x-cache: HIT`
-
--   **Content-Encoding:** Indicates that a compressed version of the requested content was served to the client. This response header indicates the asset's compression type (e.g., gzip, deflate, bzip2, etc.).
--   **Content-Length:** Indicates the size of the response body in octets.
 
 <Callout type="tip">
 
@@ -163,7 +171,6 @@ The response headers generated for content requested through our CDN describe th
     **Syntax:** `x-edg-version: <BUILD NUMBER> <DEPLOYMENT> <INTERNAL> NA <BUILD DATE> <ENVIRONMENT ID>`
 
     **Example:** `x-edg-version: 16 16 19 NA 2023-04-02T22:52:30Z ed922fee-185c-427d-8949-83d135108aab`
-
 
 #### Requesting Debug Cache Information
 

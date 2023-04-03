@@ -5,7 +5,7 @@ title: Response
 Each request for your content will generate a response from a server. This response consists of:
 -   [Protocol and version](#protocol-and-version)
 -   [Status code](#status-codes)
--   [Response headers](#reserved-response-headers)
+-   [Response headers](#response-headers)
 -   [Response body](#response-body)
 
 ## Protocol and Version {/*protocol-and-version*/}
@@ -57,7 +57,7 @@ Obviously, your project can set status codes of their own, which may sometimes m
 | 404  | Not Found           | The server cannot find the requested resource. This usually occurs when the browser requests a page that your app does not have. A 404 will also occur when a request does not match any of the routes in your {{ PRODUCT_NAME }} router. See [routing](/guides/routing) for more information. |
 | 412  | Precondition Failed | This code is returned when the query string parameter `{{ COOKIE_PREFIX }}_prefetch` equals `1` and the content was not found in the edge cache.                                                                                                                                               |
 
-## Response Headers
+## Response Headers {/*response-headers*/}
 
 <Callout type="info">
 
@@ -218,7 +218,7 @@ Valid debug cache header values are provided below.
 -   **x-ec-cache-key:** [Cache-key](#cache-key)
 -   **x-ec-cache-state:** [Cache state](#cache-state)
 
-#### Cache Status Code Information
+#### Cache Status Code Information {/*cache-status-code-information*/}
 
 The following response headers identify a server and how it handled the response:
 
@@ -246,7 +246,7 @@ The terms used in the above response header syntax are defined below:
 
 -   **POP:** Indicates the three-letter abbreviation for the POP that handled the request.
     
-#### Cacheable Response Header
+#### Cacheable Response Header {/*cacheable-response-header*/}
 
 The `x-ec-check-cacheable` response header indicates whether the requested content could have been cached.
 
@@ -270,7 +270,7 @@ The term `CACHEABLE` indicates whether the requested content could have been cac
 
 -   **UNKNOWN:** Indicates that our servers were unable to assess whether the requested asset was cacheable. This typically occurs when the request is denied due to Token-Based Authentication.
 
-#### Cache-Key Response Header
+#### Cache-Key Response Header {/*cache-key-response-header*/}
 
 The `x-ec-cache-key` response header indicates the physical cache-key associated with the requested content. A physical cache-key consists of a path that identifies an asset for the purposes of caching. In other words, our servers will check for a cached version of an asset according to its path as defined by its cache-key.
 
@@ -288,7 +288,7 @@ By default, query strings are ignored by the caching mechanism and therefore the
 
 **Example:** `x-ec-cache-key: //http/800001/origin/images/foo.jpg`
 
-#### Cache State Response Header
+#### Cache State Response Header {/*cache-state-response-header*/}
 
 The x-ec-cache-state response header indicates the cache state of the requested content at the time it was requested.
 

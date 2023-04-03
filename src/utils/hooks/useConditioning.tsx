@@ -13,6 +13,7 @@ interface IVersion {
   latestVersionText: string;
   isLatest: boolean;
   pathPrefix: string;
+  packageVersion: string;
   toVersionedPath: (path: string) => string;
 }
 
@@ -39,6 +40,7 @@ function useConditioning(): IConditioning {
     latestVersionText: `v${latestVersion}`,
     isLatest,
     pathPrefix: !isLatest ? `v${cleanedVersion}` : '',
+    packageVersion: `^${cleanedVersion}.0.0`,
     toVersionedPath: (path: string) => {
       const {route} = router;
 

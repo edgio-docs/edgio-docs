@@ -64,8 +64,8 @@ When {{ PRODUCT_NAME }} receives a request, it executes **each route that matche
 Multiple routes can therefore be executed for a given request. A common pattern is to add caching with one route and render the response with a later one using middleware. In the following example we cache then render a response with Next.js:
 
 ```js
-const { Router } = require('{{ PACKAGE_NAME }}/core/router')
-const { nextRoutes } = require('{{ PACKAGE_NAME }}/next')
+import { Router } from "{{ PACKAGE_NAME }}/core";
+import { nextRoutes } from "{{ PACKAGE_NAME }}/next";
 
 // In this example a request to /products/1 will be cached by the first route, then served by the `nextRoutes` middleware
 new Router()
@@ -79,16 +79,16 @@ new Router()
 
 {{ PRODUCT_NAME }} offers APIs to manipulate request and response headers and cookies. The APIs are:
 
-<!-- | Operation     | Request               | Upstream Response              | Response sent to Browser |
-| ------------- | --------------------- | ------------------------------ | ------------------------ |
-| Set header    | `setRequestHeader`    | `setUpstreamResponseHeader`    | `setResponseHeader`      |
-| Add cookie    | `*`                   | `addUpstreamResponseCookie`    | `addResponseCookie`      |
-| Update header | `updateRequestHeader` | `updateUpstreamResponseHeader` | `updateResponseHeader`   |
-| Update cookie | `*`                   | `updateUpstreamResponseCookie` | `updateResponseCookie`   |
-| Remove header | `removeRequestHeader` | `removeUpstreamResponseHeader` | `removeResponseHeader`   |
-| Remove cookie | `*`                   | `removeUpstreamResponseCookie` | `removeResponseCookie`   |
+| Operation     | Request               | Response sent to Browser  |
+|---------------|-----------------------|---------------------------|
+| Add header    | `set_request_headers` | `add_response_headers`    |
+| Add cookie    | `--`                  | `*`                       |
+| Update header | `set_request_headers` | `set_response_headers`    |
+| Update cookie | `--`                  | `*`                       |
+| Remove header | `removeRequestHeader` | `remove_response_headers` |
+| Remove cookie | `--`                  | `*`                       |
 
-`*` Adding, updating, or removing a request cookie can be achieved with `updateRequestHeader` applied to `cookie` header. -->
+`*` Adding, updating, or removing a response cookie can be achieved with `set_response_headers` applied to `set-cookie` header.
 
 <!-- You can find detailed descriptions of these APIs in the `{{ PACKAGE_NAME }}/core` [documentation](/docs/api/core/classes/_router_responsewriter_.responsewriter.html). -->
 

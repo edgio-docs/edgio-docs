@@ -63,8 +63,8 @@ const StyledMainPage = styled.div`
 const StyledBanner = styled.a`
   display: block;
   text-align: center;
-  color: #fff;
-  background: var(--lg-primary);
+  color: #000;
+  background: var(--callout-tip);
   font-size: calc(1rem - 2px);
   padding: 1em;
   text-decoration: none;

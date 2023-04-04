@@ -91,27 +91,38 @@ export default function VersionChooser() {
   };
 
   return (
-    <VersionSelect
-      sx={{m: 1, minWidth: isMobile ? 75 : 150}}
-      size="small"
-      IconComponent={ExpandMoreIcon}
-      MenuProps={menuProps}
-      value={prefixedSelectedVersion}
-      variant="outlined"
-      renderValue={renderValue}>
+    <>
+      <VersionSelect
+        sx={{m: 1, minWidth: isMobile ? 75 : 150}}
+        size="small"
+        IconComponent={ExpandMoreIcon}
+        MenuProps={menuProps}
+        value={prefixedSelectedVersion}
+        variant="outlined"
+        renderValue={renderValue}>
+        {versions.map(({version, href, label}) => {
+          return (
+            <Link href={href} key={version} passHref>
+              <a>
+                <VersionItem
+                  selected={version === prefixedSelectedVersion}
+                  value={version}>
+                  {label}
+                </VersionItem>
+              </a>
+            </Link>
+          );
+        })}
+      </VersionSelect>
       {versions.map(({version, href, label}) => {
         return (
           <Link href={href} key={version} passHref>
-            <a>
-              <VersionItem
-                selected={version === prefixedSelectedVersion}
-                value={version}>
-                {label}
-              </VersionItem>
+            <a aria-hidden style={{display: 'none'}}>
+              {label}
             </a>
           </Link>
         );
       })}
-    </VersionSelect>
+    </>
   );
 }

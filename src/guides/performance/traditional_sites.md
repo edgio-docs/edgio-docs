@@ -84,7 +84,7 @@ This framework has a connector developed for {{ PRODUCT_NAME }}. See [Connectors
 Create a project through the following command:
 
 ```bash
-  npx {{ PACKAGE_NAME }}/cli@latest init \
+  npx {{ PACKAGE_NAME }}/cli@{{ PACKAGE_VERSION }}init \
 	--name <DOMAIN> \
 	--environment default \
 	--origin <DOMAIN> \

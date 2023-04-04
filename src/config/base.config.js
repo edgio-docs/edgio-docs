@@ -21,9 +21,10 @@ const PORTAL = `${COMPANY_NAME} Developer console`;
 const CLI_NAME = 'edg';
 const FULL_CLI_NAME = 'edgio';
 const PACKAGE_NAME = '@edgio';
+const PACKAGE_VERSION = 'latest';
 const CONFIG_FILE = 'edgio.config.js';
 const ROUTES_FILE = `\`routes.[js|ts]\``;
-const HEADER_PREFIX = 'x-0';
+const HEADER_PREFIX = 'x-edg';
 const COOKIE_PREFIX = 'edgio';
 const RUM_NS = 'Edgio'; // namespace for the JS package used by RUM
 
@@ -527,6 +528,7 @@ const config = {
   YEAR,
   WWW_URL,
   RUM_NS,
+  PACKAGE_VERSION,
 };
 
 export default config;

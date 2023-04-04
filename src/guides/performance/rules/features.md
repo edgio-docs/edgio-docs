@@ -1168,7 +1168,7 @@ Adds one or more header(s) from the response. If the header already exists in th
     -   vary
     -   via
     -   warning 
-    -   All header names that start with "x-ec" are reserved.
+    -   All header names that start with `{{ HEADER_PREFIX }}` and `x-ec` are reserved.
 
 <edgejs>
 **Key information:**
@@ -1192,7 +1192,7 @@ Adds one or more header(s) from the response. If the header already exists in th
     -   vary
     -   via
     -   warning 
-    -   All header names that start with "x-ec" are reserved.
+    -   All header names that start with `{{ HEADER_PREFIX }}` and `x-ec` are reserved.
 
 **Example:**
 
@@ -1255,6 +1255,26 @@ new Router()
 
 **Default Behavior:** By default, the response excludes debug cache response headers.
 
+
+#### Server-Timing Header {/*server-timing-header*/}
+
+Determines whether to include the [Server-Timing header](/performance/response#server-timing-header) in the response. The `Server-Timing` response header contains cache status information and information about the POP that served the response. 
+
+<edgejs>
+**Example:**
+
+```js filename="./routes.js"
+new Router()
+  .get('/', {
+    headers: {
+      "server_timing_header": true,
+    }
+  })
+```
+</edgejs>
+
+**Default Behavior:** By default, the response excludes the `server-timing` response header.
+
 #### Set Request Headers {/*set-request-headers*/}
 
 Set, overwrite, append, or delete one or more header(s) from the request. 
@@ -1276,7 +1296,7 @@ Set, overwrite, append, or delete one or more header(s) from the request.
     -   via
     -   warning
     -   x-forwarded-for
-    -   All header names that start with "x-ec" are reserved.
+    -   All header names that start with `{{ HEADER_PREFIX }}` and `x-ec` are reserved.
 
 <edgejs>
 **Key information:**
@@ -1296,7 +1316,7 @@ Set, overwrite, append, or delete one or more header(s) from the request.
     -   via
     -   warning
     -   x-forwarded-for
-    -   All header names that start with "x-ec" are reserved.
+    -   All header names that start with `{{ HEADER_PREFIX }}` and `x-ec` are reserved.
 
 **Example:**
 
@@ -1346,7 +1366,7 @@ Set, overwrite, append, or delete one or more header(s) from the response.
     -   vary
     -   via
     -   warning 
-    -   All header names that start with "x-ec" are reserved.
+    -   All header names that start with `{{ HEADER_PREFIX }}` and `x-ec` are reserved.
 
 <edgejs>
 **Key information:**
@@ -1374,7 +1394,7 @@ Set, overwrite, append, or delete one or more header(s) from the response.
     -   vary
     -   via
     -   warning 
-    -   All header names that start with "x-ec" are reserved.
+    -   All header names that start with `{{ HEADER_PREFIX }}` and `x-ec` are reserved.
 
 **Example:**
 
@@ -1449,7 +1469,7 @@ Deletes one or more header(s) from a response.
     -   vary
     -   via
     -   warning 
-    -   All header names that start with "x-ec" are reserved.
+    -   All header names that start with `{{ HEADER_PREFIX }}` and `x-ec` are reserved.
 
 <edgejs>
 **Key information:**
@@ -1471,7 +1491,7 @@ Deletes one or more header(s) from a response.
     -   vary
     -   via
     -   warning 
-    -   All header names that start with "x-ec" are reserved.
+    -   All header names that start with `{{ HEADER_PREFIX }}` and `x-ec` are reserved.
 
 **Example:**
 

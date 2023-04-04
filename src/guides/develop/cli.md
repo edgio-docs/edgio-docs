@@ -15,13 +15,13 @@ This guide shows you everything you can do with the {{ PRODUCT_NAME }} command l
 To install, or upgrade to the latest, {{ PRODUCT_NAME }} CLI run
 
 ```bash
-npm i -g {{ PACKAGE_NAME }}/cli
+npm i -g {{ PACKAGE_NAME }}/cli@{{ PACKAGE_VERSION }}
 ```
 
 Or with yarn
 
 ```bash
-yarn global add {{ PACKAGE_NAME }}/cli
+yarn global add {{ PACKAGE_NAME }}/cli@{{ PACKAGE_VERSION }}
 ```
 
 ## Upgrade Project to Latest Version {/*upgrade-project-to-latest-version*/}
@@ -393,4 +393,4 @@ An uncommon issue when running `{{ FULL_CLI_NAME }} init` can present a similar 
 > installing {{ PACKAGE_NAME }}/core, {{ PACKAGE_NAME }}/cli, {{ PACKAGE_NAME }}/prefetch, {{ PACKAGE_NAME }}/devtools, {{ PACKAGE_NAME }}/angular… done.
 > Error: Cannot find module ‘/Users/myUser/Projects/my-{{ PACKAGE_NAME }}-poc/node_modules/{{ PACKAGE_NAME }}/angular/bin/init’
 
-This may be related to an outdated global version of {{ PRODUCT_NAME }} CLI. The telltale sign is reference to `/bin/` in the module path. This is an old convention. Recommended approach would be to `npm i -g {{ PACKAGE_NAME }}/cli@latest` and then run `{{ FULL_CLI_NAME }} init` on the project.
+This may be related to an outdated global version of {{ PRODUCT_NAME }} CLI. The telltale sign is reference to `/bin/` in the module path. This is an old convention. Recommended approach would be to `npm i -g {{ PACKAGE_NAME }}/cli@{{ PACKAGE_VERSION }}` and then run `{{ FULL_CLI_NAME }} init` on the project.

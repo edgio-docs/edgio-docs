@@ -281,21 +281,18 @@ router.get('/:path*', {
 
 ## Routing to Serverless {/*routing-to-serverless*/}
 
-If your request needs to be run on the serverless tier, you can use the `+x-edg-serverless-hint` request header and the origin as `edgio_serverless` to render your result using your application. Use this method to respond with an SSR or API result from your application:
+If your request needs to be run on the serverless tier, you can use the `SERVERLESS_ORIGIN_NAME` origin to render your result using your application. Use this method to respond with an SSR or API result from your application:
 
 ```js
+import { SERVERLESS_ORIGIN_NAME } from '@edgio/core/origins'
+...
 router.get('/some/:path*', {
   caching: {
     max_age: "1d",
     bypass_client_cache: true
   },
-  headers: {
-    set_request_headers: {
-      "+x-edg-serverless-hint": "app-exclusive"
-    }
-  },
   origin: {
-    set_origin: "edgio_serverless"
+    set_origin: SERVERLESS_ORIGIN_NAME
   }
 })
 ```

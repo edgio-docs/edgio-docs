@@ -169,6 +169,7 @@ Common response headers are:
         -   **DEPLOYMENT:** Indicates the version number of the current deployment.
         -   **RULE #:** Indicates the index number of the rule or route that was applied to the request.
 
+-   **{{ HEADER_PREFIX }}-p:** Returns `1` when the client's request includes an `edgio_prefetch` query string parameter. This parameter indicates that the client is requesting [Predictive Prefetching](/performance/prefetching).
 -   [{{ HEADER_PREFIX }}-t](#-t-response-header): Contains time measurements for each {{ PRODUCT }} component through which a request was routed. It also provides cache status information for edge and global POPs.
 -   **{{ HEADER_PREFIX }}-version:** Indicates basic information for your current deployment.
 

@@ -79,7 +79,6 @@ Each website that will run behind {{ PRODUCT }} requires an {{ PRODUCT }} proper
     ```bash
     npx {{ PACKAGE_NAME }}/cli@{{ PACKAGE_VERSION }} init \
       --name <PROPERTY> \
-      --api-url https://api.edgio.app \
       --deploy
     ```
 

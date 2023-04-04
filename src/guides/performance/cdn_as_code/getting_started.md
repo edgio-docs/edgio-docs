@@ -35,7 +35,6 @@ Get started with CDN-as-code by performing these steps:
     ```bash
     npx {{ PACKAGE_NAME }}/cli@{{ PACKAGE_VERSION }} init \
       --name <PROPERTY> \
-      --api-url https://api.edgio.app \
       --deploy
     ```
 

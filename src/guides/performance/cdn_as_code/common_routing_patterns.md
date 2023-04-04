@@ -12,7 +12,7 @@ This guide gives examples of common routing patterns using {{ PRODUCT_NAME }}.
 
 ### Same Path {/*same-path*/}
 
-To forward a request to the same path on one of the backends listed in `{{ CONFIG_FILE }}`, use the `origin` rule:
+To forward a request to the same path on one of the backends listed in `{{ CONFIG_FILE }}`, use the `origin` feature:
 
 ```js
 router.get('/some-path', {
@@ -37,7 +37,7 @@ module.exports = {
 
 ### Different Path {/*different-path*/}
 
-To forward the request to a different path, use the `url.url_rewrite` rule:
+To forward the request to a different path, use the `url.url_rewrite` feature:
 
 ```js
 router.get('/products/:productId', {
@@ -58,7 +58,7 @@ router.get('/products/:productId', {
 
 ### Adding Caching {/*adding-caching*/}
 
-To cache proxied requests at the edge, use the `caching` rule:
+To cache proxied requests at the edge, use the `caching` feature:
 
 ```js
 router.get('/products/:productId', {
@@ -89,7 +89,7 @@ router.get('/products/:productId', {
 })
 ```
 
-The above example makes use of the `headers.set_request_headers` rule.
+The above example makes use of the `headers.set_request_headers` feature.
 
 ### Altering the Response {/*altering-the-response*/}
 
@@ -231,7 +231,7 @@ router
 
 ## Serving a Static File {/*serving-a-static-file*/}
 
-To serve a specific file use the `origin.set_origin` rule with the `edgio_static` value:
+To serve a specific file use the `origin.set_origin` feature with the `edgio_static` value:
 
 ```js
 router.get('/favicon.ico', {
@@ -343,7 +343,7 @@ router.get('/products/:id', ({ serveStatic, cache }) => {
 
 ## Responding with a String Response Body {/*responding-with-a-string-response-body*/}
 
-To respond with a simple, constant string as the response body use the `response.set_response_body` rule:
+To respond with a simple, constant string as the response body use the `response.set_response_body` feature:
 
 ```js
 router.get('/some-path', {
@@ -389,7 +389,7 @@ router.get('/hello/:name', ({ cache, setResponseHeader, compute, send }) => {
 
 ## Redirecting {/*redirecting*/}
 
-To redirect the browser to a different URL, use the `url.url_redirect` rule, optionally specifying the HTTP status code:
+To redirect the browser to a different URL, use the `url.url_redirect` feature, optionally specifying the HTTP status code:
 
 ```js
 router.get('/p/:productId', {

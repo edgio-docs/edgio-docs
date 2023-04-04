@@ -169,7 +169,6 @@ Common response headers are:
         -   **DEPLOYMENT:** Indicates the version number of the current deployment.
         -   **RULE #:** Indicates the index number of the rule or route that was applied to the request.
 
--   [{{ HEADER_PREFIX }}-status](#-status-response-header): Contains a comma-delimited list of HTTP status codes for each POP component that processed the request.
 -   [{{ HEADER_PREFIX }}-t](#-t-response-header): Contains time measurements for each {{ PRODUCT }} component through which a request was routed. It also provides cache status information for edge and global POPs.
 -   **{{ HEADER_PREFIX }}-version:** Indicates basic information for your current deployment.
 
@@ -189,6 +188,7 @@ Common response headers are:
     -   **ENVIRONMENT ID:** Identifies an environment by its system-defined ID.
 
 <!-- 
+-   [{{ HEADER_PREFIX }}-status](#-status-response-header): Contains a comma-delimited list of HTTP status codes for each POP component that processed the request.
 -   `{{ HEADER_PREFIX }}-components`: Indicates the version for each POP component that processed the request and the environment ID. This response header is primarily meant for internal use when troubleshooting issues.
 `{{ HEADER_PREFIX }}-components: eh=0.1.6,e=atl,ec=1.1.0,ed=1.0.1,gh=0.1.6,g=hef,gd=1.0.1,p=1.21.10,w=3.11.0,wi=e8ce8753-163d-4be9-a39e-40454ace5146,b=serverless`
 -   `{{ HEADER_PREFIX }}-hit-request-id`: If the response is served from cache, this header indicates the unique ID of the request whose response was cached.
@@ -290,7 +290,7 @@ By default, query strings are ignored by the caching mechanism and therefore the
 
 #### Cache State Response Header {/*cache-state-response-header*/}
 
-The x-ec-cache-state response header indicates the cache state of the requested content at the time it was requested.
+The `x-ec-cache-state` response header indicates the cache state of the requested content at the time it was requested.
 
 **Syntax:** `x-ec-cache-state: max-age=<MAX-AGE SECONDS> (<MAX-AGE TIME PERIOD>); cache-ts=<UNIX TIME> (<ddd>, <dd MMM yyyy HH:mm:ss> GMT); cache-age=<CACHE-AGE SECONDS> (<CACHE-AGE TIME PERIOD); remaining-ttl=<REMAINING TTL (SECONDS)> (<REMAINING TTL TIME PERIOD>; expires-delta=<EXPIRES SECONDS>`
 
@@ -326,6 +326,7 @@ The following abbreviations are used for time units:
 -   **m:** Month(s)
 -   **y:** Year(s)
 
+<!--
 ### {{ HEADER_PREFIX }}-status Response Header {/*-status-response-header*/}
 
 The `{{ HEADER_PREFIX }}-status` response header contains an HTTP status code for each POP component that processed the request. This comma-delimited list is presented sequentially according to the order in which POP components processed the request.
@@ -337,7 +338,6 @@ A POP component is identified through the following two abbreviations:
 -    [Who handled the request.](#request-element)
 -    [POP component.](#pop-component)
 
-<!--
 **Standard Traffic Example:**
 The following sample response header indicates that the following POP components returned a `200 OK`: Edge POP's HAProxy, Edge POP's DPS, Global POP's HAProxy, and Global POP's DPS.
 

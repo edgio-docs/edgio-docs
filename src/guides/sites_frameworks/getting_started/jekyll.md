@@ -18,7 +18,7 @@ cd my-jekyll-site
 
 ```bash
 # First, globally install the {{ PRODUCT }} CLI:
-npm i -g {{ PACKAGE_NAME }}/cli # yarn global add {{ PACKAGE_NAME }}/cli
+npm i -g {{ PACKAGE_NAME }}/cli@{{ PACKAGE_VERSION }} # yarn global add {{ PACKAGE_NAME }}/cli@{{ PACKAGE_VERSION }}
 # Next, create a stub package.json:
 npm init
 # Then, add {{ PRODUCT }} to your Jekyll site:

@@ -41,7 +41,7 @@ Replace `<PROPERTY>` with the name for this configuration. If you are also setti
 <SnippetGroup>
 
 ```bash tabLabel="Origin"
-  npx {{ PACKAGE_NAME }}/cli@latest init \
+  npx {{ PACKAGE_NAME }}/cli@{{ PACKAGE_VERSION }} init \
 	--name <PROPERTY> \
 	--environment default \
 	--origin <DOMAIN> \
@@ -49,7 +49,7 @@ Replace `<PROPERTY>` with the name for this configuration. If you are also setti
 ```
 
 ```bash tabLabel="Framework"
-  npx {{ PACKAGE_NAME }}/cli@latest init \
+  npx {{ PACKAGE_NAME }}/cli@{{ PACKAGE_VERSION }} init \
         --name <PROPERTY> \
         --environment default \
         --deploy
@@ -83,11 +83,11 @@ Use the [{{ PRODUCT }} CLI](/guides/develop/cli) to build, test, and deploy your
 <SnippetGroup>
 
 ```bash tabLabel="npm"
-npm i -g {{ PACKAGE_NAME }}/cli
+npm i -g {{ PACKAGE_NAME }}/cli@{{ PACKAGE_VERSION }}
 ```
 
 ```bash tabLabel="Yarn"
-yarn global add {{ PACKAGE_NAME }}/cli
+yarn global add {{ PACKAGE_NAME }}/cli@{{ PACKAGE_VERSION }}
 ```
 
 </SnippetGroup>

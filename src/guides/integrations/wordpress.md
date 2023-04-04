@@ -32,7 +32,7 @@ If you don't already have a WordPress site, create one by following the [officia
 
 An example command for **www.yourdomain.com**:
 ```bash
-  npx {{ PACKAGE_NAME }}/cli@latest init \
+  npx {{ PACKAGE_NAME }}/cli@{{ PACKAGE_VERSION }} init \
     --name yourdomain.com \
     --environment production \
     --origin www.yourdomain.com \

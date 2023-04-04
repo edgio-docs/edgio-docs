@@ -245,43 +245,20 @@ If you need to block all search engine bot traffic to specific environments (suc
 
 Additionally, you can customize this to block traffic to development or staging websites based on the `host` header of the request:
 
-<RawEdgeJS>
-```
-[
-  {
-    "if": [
-      {
-        "and": [
-          {
-            "===": [
-              {
-                "request": "method"
-              },
-              "GET"
-            ]
-          },
-          {
-            "=~": [
-              {
-                "request.header": "host"
-              },
-              "dev.example.com|staging.example.com"
-            ]
-          }
-        ]
-      },
-      {
-        "headers": {
-          "set_response_headers": {
-            "x-robots-tag": "noindex"
-          }
-        }
-      }
-    ]
+```js
+router.get({
+  headers: {
+    // Regex to catch multiple hostnames
+    host: /dev.example.com|staging.example.com/,
+  },
+}, {
+  "headers": {
+    "set_response_headers": {
+      "x-robots-tag": "noindex"
+    }
   }
-]
+})
 ```
-</RawEdgeJS>
 
 ## Full Example {/*full-example*/}
 
@@ -432,7 +409,7 @@ The `.catch` method allows the edge router to render a response based on the res
 - Your catch callback is provided a [ResponseWriter](/docs/api/core/classes/_router_responsewriter_.responsewriter.html) instance. You can use any ResponseWriter method except `proxy` inside `.catch`.
 - We highly recommend keeping `catch` routes simple. Serve responses using `serveStatic` instead of `send` to minimize the size of the edge bundle. -->
 
-## Environment Edge Redirects {/*environment-edge-redirects*/}
+<!-- ## Environment Edge Redirects {/*environment-edge-redirects*/}
 
 In addition to sending redirects at the edge within the router configuration, this can also be configured at the environment level within the {{ PORTAL }}.
 
@@ -442,4 +419,4 @@ Under _Environments &#8594; &lt;Your Environment&gt;_, click _Rules_ then _Add R
 Click _Add A Redirect_ to configure the path or host you wish to redirect to:
 ![add redirect](/images/environments/add_redirects.png)
 
-**Note:** you will need to activate and redeploy your site for this change to take effect.
+**Note:** you will need to activate and redeploy your site for this change to take effect. -->

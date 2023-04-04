@@ -34,7 +34,7 @@ This framework has a connector developed for {{ PRODUCT }}. See [Connectors](/gu
 To prepare your Fastboot app for deployment on the {{ PRODUCT }}, run the following command in the root folder of your project:
 
 ```bash
-npm i -g {{ PACKAGE_NAME }}/cli # yarn global add {{ PACKAGE_NAME }}/cli
+npm i -g {{ PACKAGE_NAME }}/cli@{{ PACKAGE_VERSION }} # yarn global add {{ PACKAGE_NAME }}/cli@{{ PACKAGE_VERSION }}
 {{ FULL_CLI_NAME }} init
 ```
 

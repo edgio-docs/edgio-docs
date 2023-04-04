@@ -11,7 +11,7 @@ title: Express
 Add your Express app to {{ PRODUCT }} by running the following command in your project's root directory:
 
 ```bash
-npm i -g {{ PACKAGE_NAME }}/cli # yarn global add {{ PACKAGE_NAME }}/cli
+npm i -g {{ PACKAGE_NAME }}/cli@{{ PACKAGE_VERSION }} # yarn global add {{ PACKAGE_NAME }}/cli@{{ PACKAGE_VERSION }}
 {{ FULL_CLI_NAME }} init
 ```
 

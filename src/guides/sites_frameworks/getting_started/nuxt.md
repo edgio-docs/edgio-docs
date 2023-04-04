@@ -471,7 +471,7 @@ If you get a command not found error such as:
 Make sure you installed the {{ PRODUCT }} CLI
 
 ```bash
-npm i -g {{ PACKAGE_NAME }}/cli
+npm i -g {{ PACKAGE_NAME }}/cli@{{ PACKAGE_VERSION }}
 ```
 
 ---

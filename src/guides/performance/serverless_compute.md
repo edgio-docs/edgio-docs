@@ -33,7 +33,7 @@ title: Serverless Compute
 To create a new {{ PRODUCT }} project using serverless functions, run:
 
 ```bash
-npx {{ PACKAGE_NAME }}/cli@latest init
+npx {{ PACKAGE_NAME }}/cli@{{ PACKAGE_VERSION }} init
 ```
 
 Or you can clone this example repo: [layer0-serverless-example](https://github.com/edgio-docs/edgio-serverless-example), which has some more complex examples of how to use serverless functions:

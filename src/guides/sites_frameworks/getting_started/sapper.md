@@ -47,7 +47,7 @@ npm run dev & open http://localhost:3000
 To prepare your Sapper app for deployment on {{ PRODUCT }}, run the following in the root folder of your project:
 
 ```bash
-npm i -g {{ PACKAGE_NAME }}/cli # yarn global add {{ PACKAGE_NAME }}/cli
+npm i -g {{ PACKAGE_NAME }}/cli@{{ PACKAGE_VERSION }} # yarn global add {{ PACKAGE_NAME }}/cli@{{ PACKAGE_VERSION }}
 {{ FULL_CLI_NAME }} init
 ```
 

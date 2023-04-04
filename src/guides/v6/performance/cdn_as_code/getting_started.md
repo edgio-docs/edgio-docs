@@ -2,17 +2,13 @@
 title: Getting Started with CDN-As-Code
 ---
 
-<Condition version="7">
-{{ ROUTEHELPER }}
-</Condition>
-
 Our CDN-as-code approach to configuration allows you to configure CDN behavior using {{ EDGEJS_LABEL }} within a file ({{ ROUTES_FILE }}) stored alongside your code. This allows you to leverage the power of source control for collaboration and to link your CDN configurations with specific versions of your web application. 
 
 ## Quick Start
 
-Get started with CDN-as-code by performing these steps:
+Get started with CDN-as-code by:
 
-1.  Create a property. If you have already performed this step, proceed to the next step.
+1.  Creating and deploying a property to {{ PRODUCT }}.
 
     [Learn more.](/guides/getting_started)
 
@@ -22,7 +18,7 @@ Get started with CDN-as-code by performing these steps:
 
     </Callout>
 
-2.  Use the {{ PRODUCT }} CLI to initialize your property. If you have already performed this step, proceed to the next step.
+2.  Use the {{ PRODUCT }} CLI to initialize your property. 
 
     <Callout type="info">
 
@@ -33,12 +29,10 @@ Get started with CDN-as-code by performing these steps:
     Install the {{ PRODUCT }} CLI, initialize your property, and then deploy it by running the following command from the root directory of your web application or website:
 
     ```bash
-    npx {{ PACKAGE_NAME }}/cli@{{ PACKAGE_VERSION }} init \
-      --name <PROPERTY> \
-      --deploy
+    npx {{ PACKAGE_NAME }}/cli@latest init \
+	--name <PROPERTY> \
+	--deploy
     ```
-
-    Replace `<PROPERTY>` with the name of the property defined in step 1. You should only use lower-case characters and replace spaces with dashes (e.g., `my-property`). 
 
 3.  [Define routes](#routes) that determine how {{ PRODUCT }} will handle that traffic.
 
@@ -64,35 +58,42 @@ The {{ ROUTES_FILE }} file defines a set of routes. A route:
 By default, your {{ ROUTES_FILE }} contains the following configuration:
 
 ```js filename="./routes.js"
-// This file was added by edgio init.
-// You should commit this file to source control.
-import { Router, edgioRoutes } from '{{ PACKAGE_NAME }}/core'
+import { Router } from '@edgio/core/router'
+
+// const ONE_HOUR = 60 * 60
+// const ONE_DAY = 24 * ONE_HOUR
 
 export default new Router()
+
   // Here is an example where we cache api/* at the edge but prevent caching in the browser
-  // .match('/api/:path*', {
-  //   caching: {
-  //     max_age: '1d',
-  //     stale_while_revalidate: '1h',
-  //     bypass_client_cache: true,
-  //     service_worker_max_age: '1d',
-  //   },
+  // .match('/api/:path*', ({ proxy, cache }) => {
+  //   cache({
+  //     edge: {
+  //       maxAgeSeconds: ONE_DAY,
+  //       staleWhileRevalidateSeconds: ONE_HOUR,
+  //     },
+  //     browser: {
+  //       maxAgeSeconds: 0,
+  //       serviceWorkerSeconds: ONE_DAY,
+  //     },
+  //   })
+  //   proxy('origin')
   // })
 
-  // plugin enabling basic Edgio functionality
-  .use(edgioRoutes)
+  // send any unmatched request to origin
+  .fallback(({ proxy }) => proxy('origin'))
 ```
 
-The above configuration shows an example of how you can match all requests to the `/api/` URL path and cache them at the edge for 1 day.
+The above configuration proxies all requests that do not match a route to the `origin` backend. Additionally, it does not define a route, since the only `match()` method has been commented-out. This means that all requests will be proxied to the `origin` backend.
 
-<!-- <Callout type="info">
+<Callout type="info">
 
   A backend identifies a domain or IP address to which {{ PRODUCT }} may proxy requests. In this case, the `origin` backend was defined when you initialized this property using the `edgio init` command. 
 <br /> 
 
   Add, modify, and remove backends by editing the [{{ CONFIG_FILE }} file](/guides/basics/edgio_config).
 
-</Callout> -->
+</Callout>
 
 ### Routes {/*routes*/}
 
@@ -101,7 +102,7 @@ A route identifies a set of requests through any combination of URL path, HTTP m
 -   Match all requests:
 
     ```js
-    .match('/:path*', { 
+    .match('/:path*', () => { 
       // route handler goes here
     })
     ```
@@ -109,7 +110,7 @@ A route identifies a set of requests through any combination of URL path, HTTP m
 -   Match all `GET` requests whose URL path starts with `/marketing/images/`:
 
     ```js
-    .get('/marketing/images/:path*', { 
+    .get('/marketing/images/:path*', () => { 
       // route handler goes here
     })
     ```
@@ -122,7 +123,7 @@ A route identifies a set of requests through any combination of URL path, HTTP m
         method: /GET|POST/i, // regular expression
         headers: { 'sport': /^basketball$/i }, // keys are header names; values are regular expressions
       },
-      {
+      () => {
       // route handler goes here
     })
     ```
@@ -131,30 +132,20 @@ Once you have identified a set of requests, you need to define how {{ PRODUCT }}
 
 -   Apply a caching policy to all requests and proxy cache misses to the `origin` backend:
     ```js
-    .match('/:path*', {
-      {
-        caching: {
-          max_age: "1h"
-        },
-        origin: {
-          set_origin: "origin"
+    .match('/:path*', ({ proxy, cache }) => {
+      cache({
+        edge: {
+          maxAgeSeconds: 3600
         }
-      }
+      })
+      proxy('origin')
     })
     ```
 -   Set the `images` response header and proxy cache misses to the `origin` backend for all GET requests whose URL path starts with `/marketing/images/`:
     ```js
-    .get('/marketing/images/:path*', { 
-      {
-        headers: {
-          set_response_headers: {
-            images: "true"
-          }
-        },
-        origin: {
-          set_origin: "origin"
-        }
-      }
+    .get('/marketing/images/:path*', ({ setResponseHeader, proxy }) => { 
+      setResponseHeader('images', 'true')
+      proxy('origin')
     })
     ```
 
@@ -167,31 +158,28 @@ We will now define a route by uncommenting the constants and the `match()` metho
 ```js filename="./routes.js" highlight={3-4,9-21}
 import { Router } from '@edgio/core/router'
 
+ const ONE_HOUR = 60 * 60
+ const ONE_DAY = 24 * ONE_HOUR
+
 export default new Router()
   
   // Here is an example where we cache api/* at the edge but prevent caching in the browser
-   .match('/api/:path*', {
-     {
-      caching: {
-        max_age: "1d",
-        stale_while_revalidate: "1h",
-        service_worker_max_age: '1d',
-        bypass_client_cache: true
-      },
-      origin: {
-        set_origin: "origin"
-      }
-    }
+   .match('/api/:path*', ({ proxy, cache }) => {
+     cache({
+       edge: {
+         maxAgeSeconds: ONE_DAY,
+         staleWhileRevalidateSeconds: ONE_HOUR,
+       },
+       browser: {
+         maxAgeSeconds: 0,
+         serviceWorkerSeconds: ONE_DAY,
+       },
+     })
+     proxy('origin')
    })
 
   // send any unmatched request to origin
-  .match('/:path*', {
-    {
-      origin: {
-        set_origin: "origin"
-      }
-    }
-  })
+  .fallback(({ proxy }) => proxy('origin'))
 ```
 
 <a id="caching-policy" /> 
@@ -204,6 +192,38 @@ The above route matches all requests that start with `/api/` and instructs {{ PR
 -   Allow prefetched requests to be served from cache for one day.
 -   Proxy those requests to your `origin` backend when we cannot serve them from cache.
 
+You can use constants to apply this same caching policy to various routes. Define a `CACHE_ASSETS` constant and set it to the `cache` object defined in the above route.
+
+```js filename="./routes.js" highlight={5-14}
+
+import { Router } from '@edgio/core/router'
+
+ const ONE_HOUR = 60 * 60
+ const ONE_DAY = 24 * ONE_HOUR
+ const CACHE_ASSETS = {
+   edge: {
+     maxAgeSeconds: ONE_DAY,
+     staleWhileRevalidateSeconds: ONE_HOUR,
+   },
+   browser: {
+     maxAgeSeconds: 0,
+     serviceWorkerSeconds: ONE_DAY,
+   },
+ }
+...
+```
+
+Update the `/api/` route to use the `CACHE_ASSETS` constant.
+
+```js filename="./routes.js"
+...
+   .match('/api/:path*', ({ proxy, cache }) => {
+     cache(CACHE_ASSETS)
+     proxy('origin')
+   })
+...
+```
+
 We will now add a route that applies the same caching policy to all JavaScript (i.e., `.js` and `.mjs`) and CSS files. 
 
 ```js filename="./routes.js"
@@ -211,24 +231,11 @@ We will now add a route that applies the same caching policy to all JavaScript (
   // Cache stylesheets and scripts, but prevent browser caching
   .match(
     '/:path*/:file.:ext(js|mjs|css)',
-    {
-      caching: {
-        max_age: "1d",
-        stale_while_revalidate: "1h",
-        service_worker_max_age: '1d',
-        bypass_client_cache: true
-      },
-      headers: {
-        set_response_headers: {
-          "cache-control": "public, max-age=86400"
-        },
-        remove_origin_response_headers: [
-          "set-cookie"
-        ]
-      },
-      origin: {
-        set_origin: "origin"
-      }
+    ({ cache, removeUpstreamResponseHeader, proxy, setResponseHeader }) => {
+      setResponseHeader('cache-control', 'public, max-age=86400')
+      removeUpstreamResponseHeader('set-cookie')
+      cache(CACHE_ASSETS)
+      proxy('origin')
     }
   )
 ...
@@ -238,7 +245,7 @@ The above route instructs {{ PRODUCT }} to perform the following actions for all
 
 -   Set the `cache-control` response header to: `cache-control: public, max-age=86400`
 -   Remove the `set-cookie` response header. {{ PRODUCT }} will not cache a response when the `set-cookie` response header is present.
--   Apply the [caching policy](#caching-policy). 
+-   Apply the [caching policy](#caching-policy) defined by the `CACHE_ASSETS` constant. 
 -   Proxy these requests to your `origin` backend when we cannot serve them from cache.
 
 Your {{ ROUTES_FILE }} should now look similar to the following:
@@ -246,54 +253,43 @@ Your {{ ROUTES_FILE }} should now look similar to the following:
 ```js filename="./routes.js"
 import { Router } from '@edgio/core/router'
 
+ const ONE_HOUR = 60 * 60
+ const ONE_DAY = 24 * ONE_HOUR
+ const CACHE_ASSETS = {
+   edge: {
+     maxAgeSeconds: ONE_DAY,
+     staleWhileRevalidateSeconds: ONE_HOUR,
+   },
+   browser: {
+     maxAgeSeconds: 0,
+     serviceWorkerSeconds: ONE_DAY,
+   },
+ }
+
 export default new Router() 
-  .match('/api/:path*', {
-     {
-      caching: {
-        max_age: "1d",
-        stale_while_revalidate: "1h",
-        service_worker_max_age: '1d',
-        bypass_client_cache: true
-      },
-      origin: {
-        set_origin: "origin"
-      }
-    }
+
+  // Here is an example where we cache api/* at the edge but prevent caching in the browser
+   .match('/api/:path*', ({ proxy, cache }) => {
+     cache(CACHE_ASSETS)
+     proxy('origin')
    })
     
   // Cache stylesheets and scripts, but prevent browser caching
   .match(
     '/:path*/:file.:ext(js|mjs|css)',
-    {
-      caching: {
-        max_age: "1d",
-        stale_while_revalidate: "1h",
-        service_worker_max_age: '1d',
-        bypass_client_cache: true
-      },
-      headers: {
-        set_response_headers: {
-          "cache-control": "public, max-age=86400"
-        },
-        remove_origin_response_headers: [
-          "set-cookie"
-        ]
-      },
-      origin: {
-        set_origin: "origin"
-      }
+    ({ cache, removeUpstreamResponseHeader, proxy, setResponseHeader }) => { 
+      setResponseHeader('cache-control', 'public, max-age=86400')
+      removeUpstreamResponseHeader('set-cookie')
+      cache(CACHE_ASSETS)
+      proxy('origin')
     }
-  )
+  ) 
     
   // send any unmatched request to origin
-  .match('/:path*', {
-    {
-      origin: {
-        set_origin: "origin"
-      }
-    }
-  })
+  .fallback(({ proxy }) => proxy('origin'))
 ```
+
+The final line in your {{ ROUTES_FILE }} defines a `fallback()` method that proxies all requests that do not match a route to your `origin` backend.
 
 ## Testing Locally {/*deploy-locally*/}
 

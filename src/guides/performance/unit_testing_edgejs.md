@@ -1,8 +1,8 @@
 ---
-title: EdgeJS Unit Testing
+title: {{ EDGEJS_LABEL }} Unit Testing
 ---
 
-{{ PRODUCT }} provides an EdgeJS testing utility to facilitate in unit-testing your {{ PRODUCT }} router logic, helping to mock and run your routes in a test environment just as they would be handled live on your production site.
+{{ PRODUCT }} provides an {{ EDGEJS_LABEL }} testing utility to facilitate in unit-testing your {{ PRODUCT }} router logic, helping to mock and run your routes in a test environment just as they would be handled live on your production site.
 
 ## Configuration {/*configuration*/}
 
@@ -209,4 +209,4 @@ it('should cache the static asset at the edge for 1 hour', async () => {
 
 ## Example Tests {/*example-tests*/}
 
-For a more detailed example of EdgeJS unit testing, check out our [{{ PRODUCT }} Templates](https://github.com/layer0-docs/layer0-templates) for a full implementation.
+For a more detailed example of {{ EDGEJS_LABEL }} unit testing, check out our [{{ PRODUCT }} Templates](https://github.com/edgio-docs/edgio-templates/tree/main/default) for a full implementation.

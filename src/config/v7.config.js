@@ -1,6 +1,6 @@
 import {default as base} from './base.config';
 
-const PACKAGE_VERSION = '^7.0.0';
+const PACKAGE_VERSION = 'latest';
 
 const INSTALL_CLI = `## Install the ${base.PRODUCT_NAME} CLI {/*install-the-cli*/}
 

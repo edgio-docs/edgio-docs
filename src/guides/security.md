@@ -34,7 +34,7 @@ Protect your external web infrastructure against these threats through the follo
     -   Uses our open source Waflz rules engine that is optimized for low latency.
     -   Runs at the CDN edge to prevent malicious traffic from being proxied to the origin. This reduces the load on your web servers and improves site performance.
 
--   **Website Security through EdgeJS**
+-   **Website Security through {{ EDGEJS_LABEL }}**
 
     Set up basic website security, such as a Content Security Policy (CSP), a TLS certificate, Basic Authentication enforcement, variables for sensitive data (e.g., API keys), and protection against cache poisoning.
 

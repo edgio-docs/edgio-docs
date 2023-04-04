@@ -15,6 +15,7 @@ import InlineCode from './InlineCode';
 import Integrations from './Integrations';
 import Link from './Link';
 import PopularFrameworks from './PopularFrameworks';
+import RawEdgeJS from './RawEdgeJS';
 import {SnippetGroup} from './SnippetGroup';
 import Video, {VimeoMDXEmbed} from './Video';
 
@@ -84,4 +85,5 @@ export const MDXComponents = {
   ExampleButtons,
   SnippetGroup,
   Condition,
+  RawEdgeJS,
 };

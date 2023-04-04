@@ -12,11 +12,13 @@ This guide gives examples of common routing patterns using {{ PRODUCT_NAME }}.
 
 ### Same Path {/*same-path*/}
 
-To forward a request to the same path on one of the backends listed in `{{ CONFIG_FILE }}`, use the [`proxy`](/docs/api/core/classes/_router_responsewriter_.responsewriter.html#proxy) method of `ResponseWriter`:
+To forward a request to the same path on one of the backends listed in `{{ CONFIG_FILE }}`, use the `origin` feature:
 
 ```js
-router.get('/some-path', ({ proxy }) => {
-  proxy('origin')
+router.get('/some-path', {
+  origin: {
+    set_origin: "origin"
+  }
 })
 ```
 
@@ -35,28 +37,38 @@ module.exports = {
 
 ### Different Path {/*different-path*/}
 
-To forward the request to a different path, use the [`path`](/docs/api/core/interfaces/_router_responsewriter_.proxyoptions.html#path) option of the `ProxyOptions` interface:
+To forward the request to a different path, use the `url.url_rewrite` feature:
 
 ```js
-router.get('/products/:productId', ({ proxy }) => {
-  proxy('origin', { path: '/p/:productId' })
+router.get('/products/:productId', {
+  origin: {
+    set_origin: "origin"
+  },
+  url: {
+    url_rewrite: [
+      {
+        source: "/products/:productId",
+        syntax: "path-to-regexp",
+        destination: "/p/:productId"
+      }
+    ]
+  }
 })
 ```
 
 ### Adding Caching {/*adding-caching*/}
 
-To cache proxied requests at the edge, use the [`cache`](/docs/api/core/classes/_router_responsewriter_.responsewriter.html#cache) method.
+To cache proxied requests at the edge, use the `caching` feature:
 
 ```js
-router.get('/products/:productId', ({ cache, proxy }) => {
-  cache({
-    edge: {
-      maxAgeSeconds: 60 * 60 * 24           // keep entries in the cache for 24 hours
-      staleWhileRevalidateSeconds: 60 * 60  // when a cached page is older than 24 hours, serve it one more time
-                                            // for up to 60 minutes while fetching a new version from the origin
-    }
-  })
-  proxy('origin')
+router.get('/products/:productId', {
+  caching: {
+    max_age: "1d",
+    stale_while_revalidate: "1h"
+  },
+  origin: {
+    set_origin: "origin"
+  }
 })
 ```
 
@@ -65,48 +77,46 @@ router.get('/products/:productId', ({ cache, proxy }) => {
 You can alter request headers when forwarding a request to a backend:
 
 ```js
-router.get(
-  '/products/:productId',
-  ({ setRequestHeader, updateRequestHeader, removeRequestHeader, proxy }) => {
-    setRequestHeader('header-name', 'header-value')
-    updateRequestHeader('header-name', /some-.*-part/gi, 'some-replacement')
-    removeRequestHeader('header-name')
-    proxy('origin')
+router.get('/products/:productId', {
+  headers: {
+    set_request_headers: {
+      "header-name": "some-value"
+    }
   },
-)
+  origin: {
+    set_origin: "origin"
+  }
+})
 ```
 
-The above example makes use of [`setRequestHeader`](/docs/api/core/classes/_router_responsewriter_.responsewriter.html#setrequestheader), [`updateRequestHeader`](/docs/api/core/classes/_router_responsewriter_.responsewriter.html#updaterequestheader), and [`removeRequestHeader`](/docs/api/core/classes/_router_responsewriter_.responsewriter.html#removerequestheader) API calls.
+The above example makes use of the `headers.set_request_headers` feature.
 
 ### Altering the Response {/*altering-the-response*/}
 
 You can also alter the response before and after the cache:
 
 ```js
-router.get(
-  '/products/:productId',
-  ({
-    setUpstreamResponseHeader,
-    setResponseHeader,
-    removeResponseHeader,
-    removeUpstreamResponseHeader,
-    updateResponseHeader
-    updateUpstreamResponseHeader
-    proxy,
-  }) => {
-    proxy('origin')
-
-    // applied before the cache
-    setUpstreamResponseHeader('header-name', 'header-value')
-    updateUpstreamResponseHeader('header-name', /some-.*-part/gi, 'some-replacement')
-    removeUpstreamResponseHeader('header-name')
-
-    // applied after the cache
-    setResponseHeader('header-name', 'header-value')
-    updateResponseHeader('header-name', /some-.*-part/gi, 'some-replacement')
-    removeResponseHeader('header-name')
+router.get('/products/:productId', {
+  origin: {
+    set_origin: "origin"
   },
-)
+  headers: {
+    // remove `header-name` from the origin response
+    remove_origin_response_headers: [
+      "header-name"
+    ],
+
+    // set `header-name` to `some-value` in the response
+    set_response_headers: {
+      "header-name": "some-value"
+    },
+
+    // remove `header-name` from the response
+    remove_response_headers: [
+      "header-name"
+    ]
+  }
+})
 ```
 
 #### Altering All Responses {/*altering-all-responses*/}
@@ -116,18 +126,18 @@ You can also write catch-all routes that will alter all responses. One example w
 Another example is adding response headers for debugging, which is often useful if [{{ PRODUCT_NAME }} is behind another CDN](/guides/performance/traffic_splitting/a_b_testing#third-party-cdns) or if you are troubleshooting your router rules. For example, you could respond with the value of request `x-forwarded-for` into `x-debug-xff` to see the value that {{ PRODUCT_NAME }} is receiving from the CDN:
 
 ```js
-router.match(
-  {
+router.match({
     path: '/:path*',
     query: {
       my_site_debug: 'true',
-    },
-  },
-  ({ setResponseHeader }) => {
-    setResponseHeader('x-debug-xff', '${req:x-forwarded-for}')
-  },
-)
-// The rest of your router...
+    }
+  }, {
+  "headers": {
+    "set_response_headers": {
+      "x-debug-xff": "${req:x-forwarded-for}"
+    }
+  }
+})
 ```
 
 The rules for interpolating the values of request and response objects can be found in the [routing](/guides/performance/cdn_as_code#embedded-values) guide.
@@ -190,10 +200,11 @@ router
       headers: {
         host: 'yoursite.c1',
       },
-    },
-    ({ proxy }) => {
-      proxy('country1-backend')
-    },
+    }, {
+      origin: {
+        set_origin: "country1-backend"
+      }
+    }
   )
   .match(
     {
@@ -201,36 +212,45 @@ router
       headers: {
         host: 'yoursite.c2',
       },
-    },
-    ({ proxy }) => {
-      proxy('country2-backend')
-    },
+    }, {
+      origin: {
+        set_origin: "country2-backend"
+      }
+    }
   )
   .match(
     {
       path: '/:path*',
-    },
-    ({ proxy }) => {
-      proxy('everybody-else-backend')
-    },
+    },{
+      origin: {
+        set_origin: "everybody-else-backend"
+      }
+    }
   )
 ```
 
 ## Serving a Static File {/*serving-a-static-file*/}
 
-To serve a specific file use the [`serveStatic`](/docs/api/core/classes/_router_responsewriter_.responsewriter.html#servestatic) API:
+To serve a specific file use the `origin.set_origin` feature with the `edgio_static` value:
 
 ```js
-router.get('/favicon.ico', ({ serveStatic, cache }) => {
-  cache({
-    edge: {
-      maxAgeSeconds: 60 * 60 * 24, // cache at the edge for 24 hours
-    },
-    browser: {
-      maxAgeSeconds: 60 * 60 * 24, // cache for 24 hours
-    },
-  })
-  serveStatic('assets/favicon.ico') // path is relative to the root of your project
+router.get('/favicon.ico', {
+  caching: {
+    max_age: "1d",
+    client_max_age: "1h"
+  },
+  origin: {
+    set_origin: "edgio_static"
+  },
+  url: {
+    url_rewrite: [
+      {
+        source: "/favicon.ico",
+        syntax: "path-to-regexp",
+        destination: "/assets/favicon.ico"
+      }
+    ]
+  }
 })
 ```
 
@@ -239,31 +259,45 @@ router.get('/favicon.ico', ({ serveStatic, cache }) => {
 Here's an example that serves all requests by sending the corresponding file in the `public` directory
 
 ```js
-router.get('/:path*', ({ serveStatic, cache }) => {
-  cache({
-    edge: {
-      maxAgeSeconds: 60 * 60 * 24, // cache at the edge for 24 hours
-    },
-    browser: false, // prevent caching of stale html in the browser
-  })
-  serveStatic('public/:path*')
+router.get('/:path*', {
+  caching: {
+    max_age: "1d",
+    bypass_client_cache: true
+  },
+  origin: {
+    set_origin: "edgio_static"
+  },
+  url: {
+    url_rewrite: [
+      {
+        source: "/:path*",
+        syntax: "path-to-regexp",
+        destination: "/public/:path*"
+      }
+    ]
+  }
 })
 ```
 
 ## Routing to Serverless {/*routing-to-serverless*/}
 
-If your request needs to be run on the serverless tier, you can use the `renderWithApp` handler to render your result using your application. Use this method to respond with an SSR or API result from your application.
-
-Example using the `renderWithApp` handler:
+If your request needs to be run on the serverless tier, you can use the `SERVERLESS_ORIGIN_NAME` origin to render your result using your application. Use this method to respond with an SSR or API result from your application:
 
 ```js
-router.get('/some/:path*', ({ renderWithApp, cache }) => {
-  cache(CACHE_PAGES)
-  renderWithApp()
+import { SERVERLESS_ORIGIN_NAME } from '@edgio/core/origins'
+...
+router.get('/some/:path*', {
+  caching: {
+    max_age: "1d",
+    bypass_client_cache: true
+  },
+  origin: {
+    set_origin: SERVERLESS_ORIGIN_NAME
+  }
 })
 ```
 
-### Falling Back to Server-side Rendering {/*falling-back-to-server-side-rendering*/}
+<!-- ### Falling Back to Server-side Rendering {/*falling-back-to-server-side-rendering*/}
 
 If you render some but not all paths for a given route at build time, you can fall back to server side rendering using the `onNotFound` option. Add the `loadingPage`
 option to display a loading page while server-side rendering is in progress.
@@ -283,9 +317,9 @@ router.get('/products/:id', ({ serveStatic, cache, renderWithApp }) => {
 ```
 
 This hybrid of static and dynamic rendering was first introduced in Next.js as [Incremental Static Generation (ISG)](https://nextjs.org/docs/basic-features/data-fetching#the-fallback-key-required). In Next.js apps, developers enable this behavior by returning `fallback: true` from
-`getStaticPaths()`. The `{{ PACKAGE_NAME }}/next` package automatically configures the routes for ISG pages to use `onNotFound` and `loadingPage`.
+`getStaticPaths()`. The `{{ PACKAGE_NAME }}/next` package automatically configures the routes for ISG pages to use `onNotFound` and `loadingPage`. -->
 
-### Returning a Custom 404 Page {/*returning-a-custom-404-page*/}
+<!-- ### Returning a Custom 404 Page {/*returning-a-custom-404-page*/}
 
 When a request matches a route with `serveStatic`, but no matching static asset exists, you can serve a custom 404 page using the `onNotFound` option.
 
@@ -305,30 +339,34 @@ router.get('/products/:id', ({ serveStatic, cache }) => {
     },
   })
 })
-```
+``` -->
 
 ## Responding with a String Response Body {/*responding-with-a-string-response-body*/}
 
-To respond with a simple, constant string as the response body use the [`send`](/docs/api/core/classes/_router_responsewriter_.responsewriter.html#send) method:
+To respond with a simple, constant string as the response body use the `response.set_response_body` feature:
 
 ```js
-router.get('/some-path', ({ cache, setResponseHeader, send }) => {
-  cache({
-    edge: {
-      maxAgeSeconds: 60 * 60 * 24, // cache for 24 hours
-    },
-  })
-  setResponseHeader('Content-Type', 'text/html')
-  send(`
-    <!doctype html>
-    <html>
-      <body>Hello World</body>
-    </html>
-  `)
+router.get('/some-path', {
+  caching: {
+    max_age: "1d"
+  },
+  headers: {
+    set_response_headers: {
+      "Content-Type": "text/html"
+    }
+  },
+  response: {
+    set_done: true,
+    set_response_body: `
+      <!doctype html>
+      <html>
+        <body>Hello World</body>
+      </html>`
+  }
 })
 ```
 
-To compute a dynamic response use the [`compute`](/docs/api/core/classes/_router_responsewriter_.responsewriter.html#compute) method:
+<!-- To compute a dynamic response use the [`compute`](/docs/api/core/classes/_router_responsewriter_.responsewriter.html#compute) method:
 
 ```js
 router.get('/hello/:name', ({ cache, setResponseHeader, compute, send }) => {
@@ -347,19 +385,26 @@ router.get('/hello/:name', ({ cache, setResponseHeader, compute, send }) => {
     `)
   })
 })
-```
+``` -->
 
 ## Redirecting {/*redirecting*/}
 
-To redirect the browser to a different URL, use the [`redirect`](/docs/api/core/classes/_router_responsewriter_.responsewriter.html#redirect) API:
+To redirect the browser to a different URL, use the `url.url_redirect` feature, optionally specifying the HTTP status code:
 
 ```js
-router.get('/p/:productId', ({ redirect }) => {
-  return redirect('/products/:productId', 301) // overrides the default status of 302 (Temporary Redirect)
+router.get('/p/:productId', {
+  url: {
+    url_redirect: {
+      code: 301,
+      source: "/p/:productId",
+      syntax: "path-to-regexp",
+      destination: "/products/:productId"
+    }
+  }
 })
 ```
 
-If you need to compute the destination with sophisticated logic:
+<!-- If you need to compute the destination with sophisticated logic:
 
 ```js
 router.get('/p/:productId', ({ redirect, compute, cache }) => {
@@ -373,19 +418,29 @@ router.get('/p/:productId', ({ redirect, compute, cache }) => {
     redirect(destination)
   })
 })
-```
+``` -->
 
 ### Redirecting All Traffic to a Different Domain {/*redirecting-all-traffic-to-a-different-domain*/}
 
 ```js
 // Redirect all traffic except those with host header starting with www. to www.mydomain.com
-router.match({ headers: { host: /^(?!www\.).*$/ } }, ({ redirect }) => {
-  redirect('https://www.mydomain.com${path}')
+router.match({ headers: { host: /^(?!www\.).*$/ } }, {
+  url: {
+    url_redirect: {
+      code: 302,
+      destination: "https://www.mydomain.com${path}"
+    }
+  }
 })
 
 // Redirect all traffic from www.domain.com to domain.com
-router.match({ headers: { host: /^(www\.).*$/ } }, ({ redirect }) => {
-  redirect('https://domain.com${path}')
+router.match({ headers: { host: /^(www\.).*$/ } }, {
+  url: {
+    url_redirect: {
+      code: 302,
+      destination: "https://domain.com${path}"
+    }
+  }
 })
 ```
 
@@ -401,11 +456,13 @@ router.get(
     headers: {
       '{{ HEADER_PREFIX }}-geo-country-code': /XX|XY|XZ/, // Regex matching two-letter country codes of the countries you want to block
     },
-  },
-  ({ send }) => {
-    send('Blocked', 403)
-  },
-)
+  }, {
+  response: {
+    set_done: true,
+    set_response_body: "Blocked",
+    set_status_code: 403
+  }
+})
 ```
 
 You can find more about geolocation headers [here](/guides/request_headers).
@@ -422,11 +479,13 @@ router.get(
       // In this example 172.16.16.0/24 and 10.10.10.3/32 will be allowed and everything else will receive a 403
       '{{ HEADER_PREFIX }}-client-ip': /\b((?!172\.16\.16)(?!10.10.10.3)\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})\b/,
     },
-  },
-  ({ send }) => {
-    send('Blocked', 403)
-  },
-)
+  }, {
+  response: {
+    set_done: true,
+    set_response_body: "Blocked",
+    set_status_code: 403
+  }
+})
 ```
 
 ### Blocking Search Engine Crawlers {/*blocking-search-engine-crawlers*/}
@@ -450,19 +509,18 @@ If you need to block all search engine bot traffic to specific environments (suc
 Additionally, you can customize this to block traffic to development or staging websites based on the `host` header of the request:
 
 ```js
-
-router
-  .get(
-    {
-      headers: {
-        // Regex to catch multiple hostnames
-        host: /dev.example.com|staging.example.com/,
-      },
-    },
-    ({ setResponseHeader }) => {
-      setResponseHeader('x-robots-tag', 'noindex')
-    },
-  )
+router.get({
+  headers: {
+    // Regex to catch multiple hostnames
+    host: /dev.example.com|staging.example.com/,
+  },
+}, {
+  "headers": {
+    "set_response_headers": {
+      "x-robots-tag": "noindex"
+    }
+  }
+})
 ```
 
 For other available directives, see [Google Developer Central](https://developers.google.com/search/docs/advanced/robots/robots_meta_tag#directives) and [Bing Webmaster Tools](https://www.bing.com/webmasters/help/which-robots-metatags-does-bing-support-5198d240) for lists of supported options.

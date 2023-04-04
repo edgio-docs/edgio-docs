@@ -67,45 +67,33 @@ By default, your {{ ROUTES_FILE }} contains the following configuration:
 ```js filename="./routes.js"
 // This file was added by edgio init.
 // You should commit this file to source control.
-
-import { Router, edgioRoutes } from '@edgio/core'
-
-// const ONE_HOUR = 60 * 60
-// const ONE_DAY = 24 * ONE_HOUR
+import { Router, edgioRoutes } from '{{ PACKAGE_NAME }}/core'
 
 export default new Router()
-
   // Here is an example where we cache api/* at the edge but prevent caching in the browser
-  .match('/api/:path*', ({ proxy, cache }) => {
-    cache({
-      edge: {
-        maxAgeSeconds: ONE_DAY,
-        staleWhileRevalidateSeconds: ONE_HOUR,
-      },
-      browser: {
-        maxAgeSeconds: 0,
-        serviceWorkerSeconds: ONE_DAY,
-      },
-    })
-    proxy('origin')
-  })
+  // .match('/api/:path*', {
+  //   caching: {
+  //     max_age: '1d',
+  //     stale_while_revalidate: '1h',
+  //     bypass_client_cache: true,
+  //     service_worker_max_age: '1d',
+  //   },
+  // })
 
-  // send any request to origin
-  .match('/:path*', ({ proxy }) => proxy('origin'))
   // plugin enabling basic Edgio functionality
   .use(edgioRoutes)
 ```
 
-The above configuration proxies all requests that do not match a route to the `origin` backend. Additionally, it does not define a route, since the only `match()` method has been commented-out. This means that all requests will be proxied to the `origin` backend.
+The above configuration shows an example of how you can match all requests to the `/api/` URL path and cache them at the edge for 1 day.
 
-<Callout type="info">
+<!-- <Callout type="info">
 
   A backend identifies a domain or IP address to which {{ PRODUCT }} may proxy requests. In this case, the `origin` backend was defined when you initialized this property using the `edgio init` command. 
 <br /> 
 
   Add, modify, and remove backends by editing the [{{ CONFIG_FILE }} file](/guides/basics/edgio_config).
 
-</Callout>
+</Callout> -->
 
 ### Routes {/*routes*/}
 
@@ -114,7 +102,7 @@ A route identifies a set of requests through any combination of URL path, HTTP m
 -   Match all requests:
 
     ```js
-    .match('/:path*', () => { 
+    .match('/:path*', { 
       // route handler goes here
     })
     ```
@@ -122,7 +110,7 @@ A route identifies a set of requests through any combination of URL path, HTTP m
 -   Match all `GET` requests whose URL path starts with `/marketing/images/`:
 
     ```js
-    .get('/marketing/images/:path*', () => { 
+    .get('/marketing/images/:path*', { 
       // route handler goes here
     })
     ```
@@ -135,7 +123,7 @@ A route identifies a set of requests through any combination of URL path, HTTP m
         method: /GET|POST/i, // regular expression
         headers: { 'sport': /^basketball$/i }, // keys are header names; values are regular expressions
       },
-      () => {
+      {
       // route handler goes here
     })
     ```
@@ -144,20 +132,30 @@ Once you have identified a set of requests, you need to define how {{ PRODUCT }}
 
 -   Apply a caching policy to all requests and proxy cache misses to the `origin` backend:
     ```js
-    .match('/:path*', ({ proxy, cache }) => {
-      cache({
-        edge: {
-          maxAgeSeconds: 3600
+    .match('/:path*', {
+      {
+        caching: {
+          max_age: "1h"
+        },
+        origin: {
+          set_origin: "origin"
         }
-      })
-      proxy('origin')
+      }
     })
     ```
 -   Set the `images` response header and proxy cache misses to the `origin` backend for all GET requests whose URL path starts with `/marketing/images/`:
     ```js
-    .get('/marketing/images/:path*', ({ setResponseHeader, proxy }) => { 
-      setResponseHeader('images', 'true')
-      proxy('origin')
+    .get('/marketing/images/:path*', { 
+      {
+        headers: {
+          set_response_headers: {
+            images: "true"
+          }
+        },
+        origin: {
+          set_origin: "origin"
+        }
+      }
     })
     ```
 
@@ -170,28 +168,31 @@ We will now define a route by uncommenting the constants and the `match()` metho
 ```js filename="./routes.js" highlight={3-4,9-21}
 import { Router } from '@edgio/core/router'
 
- const ONE_HOUR = 60 * 60
- const ONE_DAY = 24 * ONE_HOUR
-
 export default new Router()
   
   // Here is an example where we cache api/* at the edge but prevent caching in the browser
-   .match('/api/:path*', ({ proxy, cache }) => {
-     cache({
-       edge: {
-         maxAgeSeconds: ONE_DAY,
-         staleWhileRevalidateSeconds: ONE_HOUR,
-       },
-       browser: {
-         maxAgeSeconds: 0,
-         serviceWorkerSeconds: ONE_DAY,
-       },
-     })
-     proxy('origin')
+   .match('/api/:path*', {
+     {
+      caching: {
+        max_age: "1d",
+        stale_while_revalidate: "1h",
+        service_worker_max_age: '1d',
+        bypass_client_cache: true
+      },
+      origin: {
+        set_origin: "origin"
+      }
+    }
    })
 
   // send any unmatched request to origin
-  .match('/:path*', ({ proxy }) => proxy('origin'))
+  .match('/:path*', {
+    {
+      origin: {
+        set_origin: "origin"
+      }
+    }
+  })
 ```
 
 <a id="caching-policy" /> 
@@ -204,38 +205,6 @@ The above route matches all requests that start with `/api/` and instructs {{ PR
 -   Allow prefetched requests to be served from cache for one day.
 -   Proxy those requests to your `origin` backend when we cannot serve them from cache.
 
-You can use constants to apply this same caching policy to various routes. Define a `CACHE_ASSETS` constant and set it to the `cache` object defined in the above route.
-
-```js filename="./routes.js" highlight={5-14}
-
-import { Router } from '@edgio/core/router'
-
- const ONE_HOUR = 60 * 60
- const ONE_DAY = 24 * ONE_HOUR
- const CACHE_ASSETS = {
-   edge: {
-     maxAgeSeconds: ONE_DAY,
-     staleWhileRevalidateSeconds: ONE_HOUR,
-   },
-   browser: {
-     maxAgeSeconds: 0,
-     serviceWorkerSeconds: ONE_DAY,
-   },
- }
-...
-```
-
-Update the `/api/` route to use the `CACHE_ASSETS` constant.
-
-```js filename="./routes.js"
-...
-   .match('/api/:path*', ({ proxy, cache }) => {
-     cache(CACHE_ASSETS)
-     proxy('origin')
-   })
-...
-```
-
 We will now add a route that applies the same caching policy to all JavaScript (i.e., `.js` and `.mjs`) and CSS files. 
 
 ```js filename="./routes.js"
@@ -243,11 +212,24 @@ We will now add a route that applies the same caching policy to all JavaScript (
   // Cache stylesheets and scripts, but prevent browser caching
   .match(
     '/:path*/:file.:ext(js|mjs|css)',
-    ({ cache, removeUpstreamResponseHeader, proxy, setResponseHeader }) => {
-      setResponseHeader('cache-control', 'public, max-age=86400')
-      removeUpstreamResponseHeader('set-cookie')
-      cache(CACHE_ASSETS)
-      proxy('origin')
+    {
+      caching: {
+        max_age: "1d",
+        stale_while_revalidate: "1h",
+        service_worker_max_age: '1d',
+        bypass_client_cache: true
+      },
+      headers: {
+        set_response_headers: {
+          "cache-control": "public, max-age=86400"
+        },
+        remove_origin_response_headers: [
+          "set-cookie"
+        ]
+      },
+      origin: {
+        set_origin: "origin"
+      }
     }
   )
 ...
@@ -257,7 +239,7 @@ The above route instructs {{ PRODUCT }} to perform the following actions for all
 
 -   Set the `cache-control` response header to: `cache-control: public, max-age=86400`
 -   Remove the `set-cookie` response header. {{ PRODUCT }} will not cache a response when the `set-cookie` response header is present.
--   Apply the [caching policy](#caching-policy) defined by the `CACHE_ASSETS` constant. 
+-   Apply the [caching policy](#caching-policy). 
 -   Proxy these requests to your `origin` backend when we cannot serve them from cache.
 
 Your {{ ROUTES_FILE }} should now look similar to the following:
@@ -265,40 +247,53 @@ Your {{ ROUTES_FILE }} should now look similar to the following:
 ```js filename="./routes.js"
 import { Router } from '@edgio/core/router'
 
- const ONE_HOUR = 60 * 60
- const ONE_DAY = 24 * ONE_HOUR
- const CACHE_ASSETS = {
-   edge: {
-     maxAgeSeconds: ONE_DAY,
-     staleWhileRevalidateSeconds: ONE_HOUR,
-   },
-   browser: {
-     maxAgeSeconds: 0,
-     serviceWorkerSeconds: ONE_DAY,
-   },
- }
-
 export default new Router() 
-
-  // Here is an example where we cache api/* at the edge but prevent caching in the browser
-   .match('/api/:path*', ({ proxy, cache }) => {
-     cache(CACHE_ASSETS)
-     proxy('origin')
+  .match('/api/:path*', {
+     {
+      caching: {
+        max_age: "1d",
+        stale_while_revalidate: "1h",
+        service_worker_max_age: '1d',
+        bypass_client_cache: true
+      },
+      origin: {
+        set_origin: "origin"
+      }
+    }
    })
     
   // Cache stylesheets and scripts, but prevent browser caching
   .match(
     '/:path*/:file.:ext(js|mjs|css)',
-    ({ cache, removeUpstreamResponseHeader, proxy, setResponseHeader }) => { 
-      setResponseHeader('cache-control', 'public, max-age=86400')
-      removeUpstreamResponseHeader('set-cookie')
-      cache(CACHE_ASSETS)
-      proxy('origin')
+    {
+      caching: {
+        max_age: "1d",
+        stale_while_revalidate: "1h",
+        service_worker_max_age: '1d',
+        bypass_client_cache: true
+      },
+      headers: {
+        set_response_headers: {
+          "cache-control": "public, max-age=86400"
+        },
+        remove_origin_response_headers: [
+          "set-cookie"
+        ]
+      },
+      origin: {
+        set_origin: "origin"
+      }
     }
-  ) 
+  )
     
   // send any unmatched request to origin
-  .match('/:path*', ({ proxy }) => proxy('origin'))
+  .match('/:path*', {
+    {
+      origin: {
+        set_origin: "origin"
+      }
+    }
+  })
 ```
 
 ## Testing Locally {/*deploy-locally*/}

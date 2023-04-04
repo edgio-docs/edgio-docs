@@ -12,43 +12,15 @@ This guide gives examples of common routing patterns using {{ PRODUCT_NAME }}.
 
 ### Same Path {/*same-path*/}
 
-To forward a request to the same path on one of the backends listed in `{{ CONFIG_FILE }}`, use the [`proxy`](/docs/api/core/classes/_router_responsewriter_.responsewriter.html#proxy) method of `ResponseWriter`:
+To forward a request to the same path on one of the backends listed in `{{ CONFIG_FILE }}`, use the `origin` rule:
 
-<RawEdgeJS>
-```
-[
-  {
-    "if": [
-      {
-        "and": [
-          {
-            "==": [
-              {
-                "request": "path"
-              },
-              "/some-path"
-            ]
-          },
-          {
-            "===": [
-              {
-                "request": "method"
-              },
-              "GET"
-            ]
-          }
-        ]
-      },
-      {
-        "origin": {
-          "set_origin": "origin"
-        }
-      }
-    ]
+```js
+router.get('/some-path', {
+  origin: {
+    set_origin: "origin"
   }
-]
+})
 ```
-</RawEdgeJS>
 
 The first argument corresponds to the name of a backend in `{{ CONFIG_FILE }}`. For example:
 
@@ -65,191 +37,87 @@ module.exports = {
 
 ### Different Path {/*different-path*/}
 
-To forward the request to a different path, use the [`path`](/docs/api/core/interfaces/_router_responsewriter_.proxyoptions.html#path) option of the `ProxyOptions` interface:
+To forward the request to a different path, use the `url.url_rewrite` rule:
 
-<RawEdgeJS>
-```
-[
-  {
-    "if": [
+```js
+router.get('/products/:productId', {
+  origin: {
+    set_origin: "origin"
+  },
+  url: {
+    url_rewrite: [
       {
-        "and": [
-          {
-            "==": [
-              {
-                "request": "path"
-              },
-              "/products/:productId"
-            ]
-          },
-          {
-            "===": [
-              {
-                "request": "method"
-              },
-              "GET"
-            ]
-          }
-        ]
-      },
-      {
-        "origin": {
-          "set_origin": "origin"
-        },
-        "url": {
-          "url_rewrite": [
-            {
-              "source": "/products/:productId:optionalSlash(\\/?)?:optionalQuery(\\?.*)?",
-              "syntax": "path-to-regexp",
-              "destination": "/p/:productId:optionalSlash:optionalQuery"
-            }
-          ]
-        }
+        source: "/products/:productId",
+        syntax: "path-to-regexp",
+        destination: "/p/:productId"
       }
     ]
   }
-]
+})
 ```
-</RawEdgeJS>
 
 ### Adding Caching {/*adding-caching*/}
 
-To cache proxied requests at the edge, use the [`cache`](/docs/api/core/classes/_router_responsewriter_.responsewriter.html#cache) method.
+To cache proxied requests at the edge, use the `caching` rule:
 
-<RawEdgeJS>
-```
-[
-  {
-    "if": [
-      {
-        "and": [
-          {
-            "==": [
-              {
-                "request": "path"
-              },
-              "/products/:productId"
-            ]
-          },
-          {
-            "===": [
-              {
-                "request": "method"
-              },
-              "GET"
-            ]
-          }
-        ]
-      },
-      {
-        "caching": {
-          "max_age": "86400s",
-          "stale_while_revalidate": "3600s"
-        },
-        "origin": {
-          "set_origin": "origin"
-        }
-      }
-    ]
+```js
+router.get('/products/:productId', {
+  caching: {
+    max_age: "1d",
+    stale_while_revalidate: "1h"
+  },
+  origin: {
+    set_origin: "origin"
   }
-]
+})
 ```
-</RawEdgeJS>
 
 ### Altering the Request {/*altering-the-request*/}
 
 You can alter request headers when forwarding a request to a backend:
 
-<RawEdgeJS>
-```
-[
-  {
-    "if": [
-      {
-        "and": [
-          {
-            "==": [
-              {
-                "request": "path"
-              },
-              "/products/:productId"
-            ]
-          },
-          {
-            "===": [
-              {
-                "request": "method"
-              },
-              "GET"
-            ]
-          }
-        ]
-      },
-      {
-        "headers": {
-          "set_request_headers": {
-            "header-name": ""
-          }
-        },
-        "origin": {
-          "set_origin": "origin"
-        }
-      }
-    ]
+```js
+router.get('/products/:productId', {
+  headers: {
+    set_request_headers: {
+      "header-name": "some-value"
+    }
+  },
+  origin: {
+    set_origin: "origin"
   }
-]
+})
 ```
-</RawEdgeJS>
 
-The above example makes use of [`setRequestHeader`](/docs/api/core/classes/_router_responsewriter_.responsewriter.html#setrequestheader), [`updateRequestHeader`](/docs/api/core/classes/_router_responsewriter_.responsewriter.html#updaterequestheader), and [`removeRequestHeader`](/docs/api/core/classes/_router_responsewriter_.responsewriter.html#removerequestheader) API calls.
+The above example makes use of the `headers.set_request_headers` rule.
 
 ### Altering the Response {/*altering-the-response*/}
 
 You can also alter the response before and after the cache:
 
-<RawEdgeJS>
-```
-[
-  {
-    "if": [
-      {
-        "and": [
-          {
-            "==": [
-              {
-                "request": "path"
-              },
-              "/products/:productId"
-            ]
-          },
-          {
-            "===": [
-              {
-                "request": "method"
-              },
-              "GET"
-            ]
-          }
-        ]
-      },
-      {
-        "origin": {
-          "set_origin": "origin"
-        },
-        "headers": {
-          "set_response_headers": {
-            "header-name": "%{resp_header-name//(?i)some-.*-part/some-replacement}"
-          },
-          "remove_response_headers": [
-            "header-name"
-          ]
-        }
-      }
+```js
+router.get('/products/:productId', {
+  origin: {
+    set_origin: "origin"
+  },
+  headers: {
+    // remove `header-name` from the origin response
+    remove_origin_response_headers: [
+      "header-name"
+    ],
+
+    // set `header-name` to `some-value` in the response
+    set_response_headers: {
+      "header-name": "some-value"
+    },
+
+    // remove `header-name` from the response
+    remove_response_headers: [
+      "header-name"
     ]
   }
-]
+})
 ```
-</RawEdgeJS>
 
 #### Altering All Responses {/*altering-all-responses*/}
 
@@ -257,43 +125,20 @@ You can also write catch-all routes that will alter all responses. One example w
 
 Another example is adding response headers for debugging, which is often useful if [{{ PRODUCT_NAME }} is behind another CDN](/guides/performance/traffic_splitting/a_b_testing#third-party-cdns) or if you are troubleshooting your router rules. For example, you could respond with the value of request `x-forwarded-for` into `x-debug-xff` to see the value that {{ PRODUCT_NAME }} is receiving from the CDN:
 
-<RawEdgeJS>
-```
-[
-  {
-    "if": [
-      {
-        "and": [
-          {
-            "==": [
-              {
-                "request": "path"
-              },
-              "/:path*"
-            ]
-          },
-          {
-            "===": [
-              {
-                "request.origin_query": "my_site_debug"
-              },
-              "true"
-            ]
-          }
-        ]
-      },
-      {
-        "headers": {
-          "set_response_headers": {
-            "x-debug-xff": "${req:x-forwarded-for}"
-          }
-        }
-      }
-    ]
+```js
+router.match({
+    path: '/:path*',
+    query: {
+      my_site_debug: 'true',
+    }
+  }, {
+  "headers": {
+    "set_response_headers": {
+      "x-debug-xff": "${req:x-forwarded-for}"
+    }
   }
-]
+})
 ```
-</RawEdgeJS>
 
 The rules for interpolating the values of request and response objects can be found in the [routing](/guides/performance/cdn_as_code#embedded-values) guide.
 Note that catch-all routes that alter headers, cookies, or caching can be placed at the start of your router while allowing subsequent routes to run because they alter the request or the response without actually sending a response. See [route execution](/guides/routing#route-execution) for more information on route execution order and sending responses.
@@ -347,590 +192,260 @@ router.get('/some/path', ({ addUpstreamResponseCookie, addResponseCookie, proxy 
 
 To proxy to different backends by matching the `host` header (e.g. different backends for different international sites):
 
-<RawEdgeJS>
+```js
+router
+  .match(
+    {
+      path: '/:path*',
+      headers: {
+        host: 'yoursite.c1',
+      },
+    }, {
+      origin: {
+        set_origin: "country1-backend"
+      }
+    }
+  )
+  .match(
+    {
+      path: '/:path*',
+      headers: {
+        host: 'yoursite.c2',
+      },
+    }, {
+      origin: {
+        set_origin: "country2-backend"
+      }
+    }
+  )
+  .match(
+    {
+      path: '/:path*',
+    },{
+      origin: {
+        set_origin: "everybody-else-backend"
+      }
+    }
+  )
 ```
-[
-  {
-    "if": [
-      {
-        "and": [
-          {
-            "==": [
-              {
-                "request": "path"
-              },
-              "/:path*"
-            ]
-          },
-          {
-            "===": [
-              {
-                "request.header": "host"
-              },
-              "yoursite.c1"
-            ]
-          }
-        ]
-      },
-      {
-        "origin": {
-          "set_origin": "country1-backend"
-        }
-      }
-    ]
-  },
-  {
-    "if": [
-      {
-        "and": [
-          {
-            "==": [
-              {
-                "request": "path"
-              },
-              "/:path*"
-            ]
-          },
-          {
-            "===": [
-              {
-                "request.header": "host"
-              },
-              "yoursite.c2"
-            ]
-          }
-        ]
-      },
-      {
-        "origin": {
-          "set_origin": "country2-backend"
-        }
-      }
-    ]
-  },
-  {
-    "if": [
-      {
-        "==": [
-          {
-            "request": "path"
-          },
-          "/:path*"
-        ]
-      },
-      {
-        "origin": {
-          "set_origin": "everybody-else-backend"
-        }
-      }
-    ]
-  }
-]
-```
-</RawEdgeJS>
 
 ## Serving a Static File {/*serving-a-static-file*/}
 
-To serve a specific file use the [`serveStatic`](/docs/api/core/classes/_router_responsewriter_.responsewriter.html#servestatic) API:
+To serve a specific file use the `origin.set_origin` rule with the `edgio_static` value:
 
-<RawEdgeJS>
-```
-[
-  {
-    "if": [
+```js
+router.get('/favicon.ico', {
+  caching: {
+    max_age: "1d",
+    client_max_age: "1h"
+  },
+  origin: {
+    set_origin: "edgio_static"
+  },
+  url: {
+    url_rewrite: [
       {
-        "and": [
-          {
-            "==": [
-              {
-                "request": "path"
-              },
-              "/favicon.ico"
-            ]
-          },
-          {
-            "===": [
-              {
-                "request": "method"
-              },
-              "GET"
-            ]
-          }
-        ]
-      },
-      {
-        "caching": {
-          "max_age": "30758400s",
-          "client_max_age": "86400s"
-        },
-        "url": {
-          "url_rewrite": [
-            {
-              "source": "/favicon.ico:optionalSlash(\\/?)?:optionalQuery(\\?.*)?",
-              "syntax": "path-to-regexp",
-              "destination": "/assets/favicon.ico:optionalSlash:optionalQuery"
-            }
-          ]
-        },
-        "headers": {
-          "set_request_headers": {
-            "x-edg-serverless-hint": ""
-          }
-        },
-        "origin": {
-          "set_origin": "edgio_static"
-        }
+        source: "/favicon.ico",
+        syntax: "path-to-regexp",
+        destination: "/assets/favicon.ico"
       }
     ]
   }
-]
+})
 ```
-</RawEdgeJS>
 
 ## Serving Static Files From a Directory {/*serving-static-files-from-a-directory*/}
 
 Here's an example that serves all requests by sending the corresponding file in the `public` directory
 
-<RawEdgeJS>
-```
-[
-  {
-    "if": [
+```js
+router.get('/:path*', {
+  caching: {
+    max_age: "1d",
+    bypass_client_cache: true
+  },
+  origin: {
+    set_origin: "edgio_static"
+  },
+  url: {
+    url_rewrite: [
       {
-        "and": [
-          {
-            "==": [
-              {
-                "request": "path"
-              },
-              "/:path*"
-            ]
-          },
-          {
-            "===": [
-              {
-                "request": "method"
-              },
-              "GET"
-            ]
-          }
-        ]
-      },
-      {
-        "caching": {
-          "max_age": "30758400s",
-          "bypass_client_cache": true
-        },
-        "url": {
-          "url_rewrite": [
-            {
-              "source": "/:path*:optionalSlash(\\/?)?:optionalQuery(\\?.*)?",
-              "syntax": "path-to-regexp",
-              "destination": "/public/:path*:optionalSlash:optionalQuery"
-            }
-          ]
-        },
-        "headers": {
-          "set_request_headers": {
-            "x-edg-serverless-hint": ""
-          }
-        },
-        "origin": {
-          "set_origin": "edgio_static"
-        }
+        source: "/:path*",
+        syntax: "path-to-regexp",
+        destination: "/public/:path*"
       }
     ]
   }
-]
+})
 ```
-</RawEdgeJS>
 
 ## Routing to Serverless {/*routing-to-serverless*/}
 
-If your request needs to be run on the serverless tier, you can use the `renderWithApp` handler to render your result using your application. Use this method to respond with an SSR or API result from your application.
+If your request needs to be run on the serverless tier, you can use the `+x-edg-serverless-hint` request header and the origin as `edgio_serverless` to render your result using your application. Use this method to respond with an SSR or API result from your application:
 
-Example using the `renderWithApp` handler:
-
-<RawEdgeJS>
-```
-[
-  {
-    "if": [
-      {
-        "and": [
-          {
-            "==": [
-              {
-                "request": "path"
-              },
-              "/some/:path*"
-            ]
-          },
-          {
-            "===": [
-              {
-                "request": "method"
-              },
-              "GET"
-            ]
-          }
-        ]
-      },
-      {
-        "caching": {
-          "max_age": "86400s",
-          "bypass_client_cache": true
-        },
-        "headers": {
-          "set_request_headers": {
-            "+x-edg-serverless-hint": "app"
-          }
-        },
-        "origin": {
-          "set_origin": "edgio_serverless"
-        }
-      }
-    ]
+```js
+router.get('/some/:path*', {
+  caching: {
+    max_age: "1d",
+    bypass_client_cache: true
+  },
+  headers: {
+    set_request_headers: {
+      "+x-edg-serverless-hint": "app-exclusive"
+    }
+  },
+  origin: {
+    set_origin: "edgio_serverless"
   }
-]
+})
 ```
-</RawEdgeJS>
 
-### Falling Back to Server-side Rendering {/*falling-back-to-server-side-rendering*/}
+<!-- ### Falling Back to Server-side Rendering {/*falling-back-to-server-side-rendering*/}
 
 If you render some but not all paths for a given route at build time, you can fall back to server side rendering using the `onNotFound` option. Add the `loadingPage`
 option to display a loading page while server-side rendering is in progress.
 
-<RawEdgeJS>
+```js
+router.get('/products/:id', ({ serveStatic, cache, renderWithApp }) => {
+  cache({
+    edge: {
+      maxAgeSeconds: 60 * 60 * 24, // cache at the edge for 24 hours
+    },
+  })
+  serveStatic('dist/products/:id.html', {
+    onNotFound: () => renderWithApp(),
+    loadingPage: 'dist/products/loading.html',
+  })
+})
 ```
-[
-  {
-    "if": [
-      {
-        "and": [
-          {
-            "==": [
-              {
-                "request": "path"
-              },
-              "/products/:id"
-            ]
-          },
-          {
-            "===": [
-              {
-                "request": "method"
-              },
-              "GET"
-            ]
-          }
-        ]
-      },
-      {
-        "caching": {
-          "max_age": "30758400s"
-        },
-        "url": {
-          "url_rewrite": [
-            {
-              "source": "/products/:id:optionalSlash(\\/?)?:optionalQuery(\\?.*)?",
-              "syntax": "path-to-regexp",
-              "destination": "/dist/products/:id.html:optionalSlash:optionalQuery"
-            }
-          ]
-        },
-        "headers": {
-          "set_request_headers": {
-            "x-edg-serverless-hint": ""
-          }
-        },
-        "origin": {
-          "set_origin": "edgio_static"
-        }
-      }
-    ]
-  }
-]
-```
-</RawEdgeJS>
 
 This hybrid of static and dynamic rendering was first introduced in Next.js as [Incremental Static Generation (ISG)](https://nextjs.org/docs/basic-features/data-fetching#the-fallback-key-required). In Next.js apps, developers enable this behavior by returning `fallback: true` from
-`getStaticPaths()`. The `{{ PACKAGE_NAME }}/next` package automatically configures the routes for ISG pages to use `onNotFound` and `loadingPage`.
+`getStaticPaths()`. The `{{ PACKAGE_NAME }}/next` package automatically configures the routes for ISG pages to use `onNotFound` and `loadingPage`. -->
 
-### Returning a Custom 404 Page {/*returning-a-custom-404-page*/}
+<!-- ### Returning a Custom 404 Page {/*returning-a-custom-404-page*/}
 
 When a request matches a route with `serveStatic`, but no matching static asset exists, you can serve a custom 404 page using the `onNotFound` option.
 
-<RawEdgeJS>
-```
-[
-  {
-    "if": [
-      {
-        "and": [
-          {
-            "==": [
-              {
-                "request": "path"
-              },
-              "/products/:id"
-            ]
-          },
-          {
-            "===": [
-              {
-                "request": "method"
-              },
-              "GET"
-            ]
-          }
-        ]
-      },
-      {
-        "caching": {
-          "max_age": "30758400s"
-        },
-        "url": {
-          "url_rewrite": [
-            {
-              "source": "/products/:id:optionalSlash(\\/?)?:optionalQuery(\\?.*)?",
-              "syntax": "path-to-regexp",
-              "destination": "/dist/products/:id.html:optionalSlash:optionalQuery"
-            }
-          ]
-        },
-        "headers": {
-          "set_request_headers": {
-            "x-edg-serverless-hint": ""
-          }
-        },
-        "origin": {
-          "set_origin": "edgio_static"
-        }
-      }
-    ]
-  }
-]
-```
-</RawEdgeJS>
+```js
+router.get('/products/:id', ({ serveStatic, cache }) => {
+  cache({
+    edge: {
+      maxAgeSeconds: 60 * 60 * 24, // cache at the edge for 24 hours
+    },
+  })
+  serveStatic('dist/products/:id.html', {
+    onNotFound: async () => {
+      await serveStatic('/products/not-found.html', {
+        statusCode: 404,
+        statusMessage: 'Not Found',
+      })
+    },
+  })
+})
+``` -->
 
 ## Responding with a String Response Body {/*responding-with-a-string-response-body*/}
 
-To respond with a simple, constant string as the response body use the [`send`](/docs/api/core/classes/_router_responsewriter_.responsewriter.html#send) method:
+To respond with a simple, constant string as the response body use the `response.set_response_body` rule:
 
-<RawEdgeJS>
-```
-[
-  {
-    "if": [
-      {
-        "and": [
-          {
-            "==": [
-              {
-                "request": "path"
-              },
-              "/some-path"
-            ]
-          },
-          {
-            "===": [
-              {
-                "request": "method"
-              },
-              "GET"
-            ]
-          }
-        ]
-      },
-      {
-        "caching": {
-          "max_age": "86400s"
-        },
-        "headers": {
-          "set_response_headers": {
-            "Content-Type": "text/html"
-          }
-        },
-        "response": {
-          "set_done": false,
-          "set_response_body": "\n    <!doctype html>\n    <html>\n      <body>Hello World</body>\n    </html>\n  "
-        }
-      }
-    ]
+```js
+router.get('/some-path', {
+  caching: {
+    max_age: "1d"
+  },
+  headers: {
+    set_response_headers: {
+      "Content-Type": "text/html"
+    }
+  },
+  response: {
+    set_done: true,
+    set_response_body: `
+      <!doctype html>
+      <html>
+        <body>Hello World</body>
+      </html>`
   }
-]
+})
 ```
-</RawEdgeJS>
 
-To compute a dynamic response use the [`compute`](/docs/api/core/classes/_router_responsewriter_.responsewriter.html#compute) method:
+<!-- To compute a dynamic response use the [`compute`](/docs/api/core/classes/_router_responsewriter_.responsewriter.html#compute) method:
 
-<RawEdgeJS>
-```
-[
-  {
-    "if": [
-      {
-        "and": [
-          {
-            "==": [
-              {
-                "request": "path"
-              },
-              "/hello/:name"
-            ]
-          },
-          {
-            "===": [
-              {
-                "request": "method"
-              },
-              "GET"
-            ]
-          }
-        ]
-      },
-      {
-        "caching": {
-          "max_age": "86400s"
-        },
-        "headers": {
-          "set_response_headers": {
-            "Content-Type": "text/html"
-          },
-          "set_request_headers": {
-            "+x-edg-serverless-hint": "compute:0"
-          }
-        },
-        "origin": {
-          "set_origin": "edgio_serverless"
-        }
-      }
-    ]
-  }
-]
-```
-</RawEdgeJS>
+```js
+router.get('/hello/:name', ({ cache, setResponseHeader, compute, send }) => {
+  cache({
+    edge: {
+      maxAgeSeconds: 60 * 60 * 24, // cache for 24 hours
+    },
+  })
+  setResponseHeader('Content-Type', 'text/html')
+  compute((request, response) => {
+    send(`
+      <!doctype html>
+      <html>
+        <body>Hello ${request.params.name}</body>
+      </html>
+    `)
+  })
+})
+``` -->
 
 ## Redirecting {/*redirecting*/}
 
-To redirect the browser to a different URL, use the [`redirect`](/docs/api/core/classes/_router_responsewriter_.responsewriter.html#redirect) API:
+To redirect the browser to a different URL, use the `url.url_redirect` rule, optionally specifying the HTTP status code:
 
-<RawEdgeJS>
-```
-[
-  {
-    "if": [
-      {
-        "and": [
-          {
-            "==": [
-              {
-                "request": "path"
-              },
-              "/p/:productId"
-            ]
-          },
-          {
-            "===": [
-              {
-                "request": "method"
-              },
-              "GET"
-            ]
-          }
-        ]
-      },
-      {
-        "url": {
-          "url_redirect": {
-            "code": 301,
-            "source": "/p/:productId:optionalSlash(\\/?)?:optionalQuery(\\?.*)?",
-            "syntax": "path-to-regexp",
-            "destination": "/products/:productId"
-          }
-        }
-      }
-    ]
+```js
+router{
+  url: {
+    url_redirect: {
+      code: 301,
+      source: "/p/:productId",
+      syntax: "path-to-regexp",
+      destination: "/products/:productId"
+    }
   }
-]
+}
 ```
-</RawEdgeJS>
 
-If you need to compute the destination with sophisticated logic:
+<!-- If you need to compute the destination with sophisticated logic:
 
-<RawEdgeJS>
-```
-[
-  {
-    "if": [
-      {
-        "and": [
-          {
-            "==": [
-              {
-                "request": "path"
-              },
-              "/p/:productId"
-            ]
-          },
-          {
-            "===": [
-              {
-                "request": "method"
-              },
-              "GET"
-            ]
-          }
-        ]
-      },
-      {
-        "caching": {
-          "max_age": "86400s"
-        },
-        "headers": {
-          "set_request_headers": {
-            "+x-edg-serverless-hint": "compute:0"
-          }
-        },
-        "origin": {
-          "set_origin": "edgio_serverless"
-        }
-      }
-    ]
-  }
-]
-```
-</RawEdgeJS>
+```js
+router.get('/p/:productId', ({ redirect, compute, cache }) => {
+  cache({
+    edge: {
+      maxAgeSeconds: 60 * 60 * 24, // cache for 24 hours
+    },
+  })
+  compute(async request => {
+    const destination = await getDestinationFromMyAPI(request.params.productId)
+    redirect(destination)
+  })
+})
+``` -->
 
 ### Redirecting All Traffic to a Different Domain {/*redirecting-all-traffic-to-a-different-domain*/}
 
-<RawEdgeJS>
-```
-[
-  {
-    "if": [
-      {
-        "=~": [
-          {
-            "request.header": "host"
-          },
-          "^(?!www\\.).*$"
-        ]
-      },
-      {
-        "url": {
-          "url_redirect": {
-            "code": 302,
-            "destination": "https://www.mydomain.com${path}"
-          }
-        }
-      }
-    ]
+```js
+// Redirect all traffic except those with host header starting with www. to www.mydomain.com
+router.match({ headers: { host: /^(?!www\.).*$/ } }, {
+  url: {
+    url_redirect: {
+      code: 302,
+      destination: "https://www.mydomain.com${path}"
+    }
   }
-]
+})
+
+// Redirect all traffic from www.domain.com to domain.com
+router.match({ headers: { host: /^(www\.).*$/ } }, {
+  url: {
+    url_redirect: {
+      code: 302,
+      destination: "https://domain.com${path}"
+    }
+  }
+})
 ```
-</RawEdgeJS>
 
 ## Blocking Unwanted Traffic {/*blocking-unwanted-traffic*/}
 
@@ -938,43 +453,20 @@ If you need to compute the destination with sophisticated logic:
 
 If you need to block all traffic from a specific country or set of countries, you can do so by matching requests by the [country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) geolocation header:
 
-<RawEdgeJS>
-```
-[
+```js
+router.get(
   {
-    "if": [
-      {
-        "and": [
-          {
-            "===": [
-              {
-                "request": "method"
-              },
-              "GET"
-            ]
-          },
-          {
-            "=~": [
-              {
-                "request.header": "{{ HEADER_PREFIX }}-geo-country-code"
-              },
-              "XX|XY|XZ"
-            ]
-          }
-        ]
-      },
-      {
-        "response": {
-          "set_done": false,
-          "set_response_body": "Blocked",
-          "set_status_code": 403
-        }
-      }
-    ]
+    headers: {
+      '{{ HEADER_PREFIX }}-geo-country-code': /XX|XY|XZ/, // Regex matching two-letter country codes of the countries you want to block
+    },
+  }, {
+  response: {
+    set_done: true,
+    set_response_body: "Blocked",
+    set_status_code: 403
   }
-]
+})
 ```
-</RawEdgeJS>
 
 You can find more about geolocation headers [here](/guides/request_headers).
 
@@ -982,49 +474,28 @@ You can find more about geolocation headers [here](/guides/request_headers).
 
 If you need to block all traffic except requests that originate from specific IP addresses, you can do so by matching requests by the [{{ HEADER_PREFIX }}-client-ip](/guides/request_headers#general-headers) header:
 
-<RawEdgeJS>
-```
-[
+```js
+router.get(
   {
-    "if": [
-      {
-        "and": [
-          {
-            "===": [
-              {
-                "request": "method"
-              },
-              "GET"
-            ]
-          },
-          {
-            "=~": [
-              {
-                "request.header": "{{ HEADER_PREFIX }}-client-ip"
-              },
-              "\\b((?!172\\.16\\.16)(?!10.10.10.3)\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,3})\\b"
-            ]
-          }
-        ]
-      },
-      {
-        "response": {
-          "set_done": false,
-          "set_response_body": "Blocked",
-          "set_status_code": 403
-        }
-      }
-    ]
+    headers: {
+      // Regex that will do a negative lookahead for IPs you want to allow.
+      // In this example 172.16.16.0/24 and 10.10.10.3/32 will be allowed and everything else will receive a 403
+      '{{ HEADER_PREFIX }}-client-ip': /\b((?!172\.16\.16)(?!10.10.10.3)\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})\b/,
+    },
+  }, {
+  response: {
+    set_done: true,
+    set_response_body: "Blocked",
+    set_status_code: 403
   }
-]
+})
 ```
-</RawEdgeJS>
 
 ### Blocking Search Engine Crawlers {/*blocking-search-engine-crawlers*/}
 
 If you need to block all search engine bot traffic to specific environments (such as your default or staging environment), the easiest way is to include the `x-robots-tag` header with the same directives you would otherwise set in a `meta` tag. 
-
-<!-- <Callout type="info">
+<!-- 
+<Callout type="info">
 
   The search engine traffic is automatically blocked on {{ PRODUCT }} edge links and permalinks as of {{ PRODUCT }} v6.
 
@@ -1040,42 +511,19 @@ If you need to block all search engine bot traffic to specific environments (suc
 
 Additionally, you can customize this to block traffic to development or staging websites based on the `host` header of the request:
 
-<RawEdgeJS>
-```
-[
-  {
-    "if": [
-      {
-        "and": [
-          {
-            "===": [
-              {
-                "request": "method"
-              },
-              "GET"
-            ]
-          },
-          {
-            "=~": [
-              {
-                "request.header": "host"
-              },
-              "dev.example.com|staging.example.com"
-            ]
-          }
-        ]
-      },
-      {
-        "headers": {
-          "set_response_headers": {
-            "x-robots-tag": "noindex"
-          }
-        }
-      }
-    ]
+```js
+router.get({
+  headers: {
+    // Regex to catch multiple hostnames
+    host: /dev.example.com|staging.example.com/,
+  },
+}, {
+  "headers": {
+    "set_response_headers": {
+      "x-robots-tag": "noindex"
+    }
   }
-]
+})
 ```
-</RawEdgeJS>
 
 For other available directives, see [Google Developer Central](https://developers.google.com/search/docs/advanced/robots/robots_meta_tag#directives) and [Bing Webmaster Tools](https://www.bing.com/webmasters/help/which-robots-metatags-does-bing-support-5198d240) for lists of supported options.

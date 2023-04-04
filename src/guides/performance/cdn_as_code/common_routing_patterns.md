@@ -392,7 +392,7 @@ router.get('/hello/:name', ({ cache, setResponseHeader, compute, send }) => {
 To redirect the browser to a different URL, use the `url.url_redirect` rule, optionally specifying the HTTP status code:
 
 ```js
-router{
+router.get('/p/:productId', {
   url: {
     url_redirect: {
       code: 301,
@@ -401,7 +401,7 @@ router{
       destination: "/products/:productId"
     }
   }
-}
+})
 ```
 
 <!-- If you need to compute the destination with sophisticated logic:

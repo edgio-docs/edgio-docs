@@ -22,7 +22,7 @@ Set up your hostnames and origins through the following steps:
 1.  [Define each hostname](#add-modify-delete-hostname) through which your site's content will be delivered. 
 2.  [Create an origin configuration](#add-an-origin-configuration) that defines how {{ PRODUCT }} communicates with your web server(s). 
 3.  [Configure your firewall](#firewall-allowing-ip-addresses)  to accept traffic from our network.
-4.  {{ PRODUCT }} requires a TLS certificate hosted on our network to serve HTTPS traffic. You may either [upload your own TLS certificate](/guides/security/tls_certificate#uploading-your-certificate) or you may allow {{ PRODUCT }} to autogenerate it for each hostname defined in step 1 by performing the following steps:
+4.  {{ PRODUCT }} requires a TLS certificate hosted on our network to serve HTTPS traffic. You may either [upload your own TLS certificate](/guides/security/tls_certificates#uploading-your-certificate) or you may allow {{ PRODUCT }} to autogenerate it for each hostname defined in step 1 by performing the following steps:
 
     1.  Check for CAA records and verify that the Let's Encrypt certificate authority is allowed to issue certificates for that hostname.
     2.  [Add an _acme-challenge CNAME record](/guides/security/tls_certificates#domain-control-validation) that proves your control over that hostname. 
@@ -60,7 +60,7 @@ On a per environment-basis, define each hostname that will be served through {{ 
 
     <Callout type="info">
 
-      Alternatively, you may [upload your own TLS certificate](/guides/security/tls_certificate#uploading-your-certificate).
+      Alternatively, you may [upload your own TLS certificate](/guides/security/tls_certificates#uploading-your-certificate).
 
     </Callout>
 

@@ -204,13 +204,13 @@ Common response headers are:
 The debug cache response headers provide additional information about the cache policy applied to the requested asset. The response sent from our edge servers to a user will only include debug cache response headers when the following conditions are true:
 
 -   The [Debug Header feature](/guides/performance/rules/features#debug-header) has been enabled on the desired request.
--   The request sets a `X-EC-Debug` header to the set of debug cache response headers that will be included in the response.
+-   The request sets a `X-EC-Debug` header to the set of debug cache headers that will be included in the response.
 
-**Syntax:** `X-EC-Debug: <DEBUG CACHE HEADER 1>,<DEBUG CACHE HEADER 2>,<DEBUG CACHE HEADER n>`
+**Syntax:** `X-EC-Debug: <DEBUG CACHE HEADER>[,<DEBUG CACHE HEADER>,<DEBUG CACHE HEADER>]`
 
 **Example:** `X-EC-Debug: x-ec-cache,x-ec-check-cacheable,x-ec-cache-key,x-ec-cache-state`
 
-Valid debug cache header values are provided below.
+Valid values for the `x-ec-debug` request header are provided below.
 
 -   **x-ec-cache:** [Cache status code](#cache-status-code)
 -   **x-ec-cache-remote:** [Cache status code](#cache-status-code)

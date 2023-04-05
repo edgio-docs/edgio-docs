@@ -881,7 +881,7 @@ Rewrites the cache-key associated with a request. Pass the following properties:
 
     <Callout type="tip">
 
-      Use [rule variables](#rule-variables) to dynamically construct this relative path. However, you may not use response metadata when defining a cache-key.
+      Use [feature variables](#feature-variables) to dynamically construct this relative path. However, you may not use response metadata when defining a cache-key.
 
     </Callout>
 
@@ -898,7 +898,7 @@ Rewrites the cache-key associated with a request. Pass the following properties:
 
     <Callout type="tip">
 
-      Use [rule variables](#rule-variables) to dynamically construct this relative path. However, you may not use response metadata (e.g., `%{resp_<RESPONSE HEADER>}`) when defining a cache-key.
+      Use [feature variables](#feature-variables) to dynamically construct this relative path. However, you may not use response metadata (e.g., `%{resp_<RESPONSE HEADER>}`) when defining a cache-key.
 
     </Callout>
 
@@ -1152,7 +1152,7 @@ Adds one or more header(s) from the response. If the header already exists in th
 -   **Syntax:** `"<HEADER NAME>": "<HEADER VALUE>"`
 -   `<HEADER NAME>` must be an exact match for the desired response header. However, case is not taken into account for the purpose of identifying a header. 
 -   Make sure to only use alphanumeric characters, dashes, or underscores when specifying a header name.
--   Use [rule variables](#rule-variables) to dynamically construct header values.
+-   Use [feature variables](#feature-variables) to dynamically construct header values.
 -   The following headers are reserved and cannot be modified by this feature:
     -   accept-ranges
     -   age
@@ -1176,7 +1176,7 @@ Adds one or more header(s) from the response. If the header already exists in th
 -   **Syntax:** `"<HEADER NAME>": "<HEADER VALUE>"`
 -   `<HEADER NAME>` must be an exact match for the desired response header. However, case is not taken into account for the purpose of identifying a header. 
 -   Make sure to only use alphanumeric characters, dashes, or underscores when specifying a header name.
--   Use rule variables to dynamically construct header values.
+-   Use feature variables to dynamically construct header values.
 -   The following headers are reserved and cannot be modified by this feature:
     -   accept-ranges
     -   age
@@ -1288,7 +1288,7 @@ Set, overwrite, append, or delete one or more header(s) from the request.
     -   **Set:** Set or overwrite a header's value by replacing `<HEADER NAME>` with a value that does not start with a `+` symbol. 
     -   **Append:** Add to the end of an existing request header value by prepending a `+` symbol to the header name. For example, append a value to the `broadcast` request header by specifying `+broadcast`.
     -   **Delete:** Set the header value to a blank value. Deleting a header will prevent it from being forwarded to an origin server by our edge servers.
--   Use [rule variables](#rule-variables) to dynamically construct header values.
+-   Use [feature variables](#feature-variables) to dynamically construct header values.
 -   The following headers are reserved and cannot be modified by this feature:
     -   forwarded-for
     -   host
@@ -1308,7 +1308,7 @@ Set, overwrite, append, or delete one or more header(s) from the request.
     -   **Set:** Set or overwrite a header's value by replacing `<HEADER NAME>` with a value that does not start with a `+` symbol. 
     -   **Append:** Add to the end of an existing request header value by prepending a `+` symbol to the header name.
     -   **Delete:** Set it to a blank value. Deleting a header will prevent it from being forwarded to an origin server by our edge servers.
--   Use rule variables to dynamically construct header values.
+-   Use feature variables to dynamically construct header values.
 -   The following headers are reserved and cannot be modified by this feature:
     -   forwarded-for
     -   host
@@ -1350,7 +1350,7 @@ Set, overwrite, append, or delete one or more header(s) from the response.
     -   **Set:** Set or overwrite a header's value by replacing `<HEADER NAME>` with a value that does not start with a `+` symbol. 
     -   **Append:** Add to the end of an existing response header value by prepending a `+` symbol to the header name. For example, append a value to the `broadcast` response header by specifying `+broadcast`.
     -   **Delete:** Set it to a blank value. Deleting a header will prevent it from being included in the response to the client.
--   Use [rule variables](#rule-variables) to dynamically construct header values.
+-   Use [feature variables](#feature-variables) to dynamically construct header values.
 -   The following headers are reserved and cannot be modified by this feature:
     -   accept-ranges
     -   age
@@ -1378,7 +1378,7 @@ Set, overwrite, append, or delete one or more header(s) from the response.
     -   **Set:** Set or overwrite a header's value by replacing `<HEADER NAME>` with a value that does not start with a `+` symbol. 
     -   **Append:** Add to the end of an existing response header value by prepending a `+` symbol to the header name.
     -   **Delete:** Set it to a blank value. Deleting a header will prevent it from being included in the response to the client.
--   Use rule variables to dynamically construct header values.
+-   Use feature variables to dynamically construct header values.
 -   The following headers are reserved and cannot be modified by this feature:
     -   accept-ranges
     -   age
@@ -1835,14 +1835,14 @@ Defines a custom response body.
 
 **Key information:**
 
--   Use [rule variables](#rule-variables) to dynamically construct this response body.
+-   Use [feature variables](#feature-variables) to dynamically construct this response body.
 -   This response body is always sent instead of a cached response or the response provided by an origin server.
 -   Prevent requests from being forwarded to an origin server by also passing the `set_done` feature.
 
 <edgejs>
 **Key information:**
 
--   Use rule variables to dynamically construct this response body.
+-   Use feature variables to dynamically construct this response body.
 -   This response body is always sent instead of a cached response or the response provided by an origin server.
 -   Prevent requests from being forwarded to an origin server by also passing the `set_done` feature.
 
@@ -1901,7 +1901,7 @@ This feature assigns a value to one or more user-defined variable(s) that are  p
 
     </Callout>
 
--   rule variables may not be used when defining a user-defined variable.
+-   feature variables may not be used when defining a user-defined variable.
 -   Valid characters for the variable name are: alphanumeric, dashes, underscores, and periods.
 -   **Syntax:** `"<VARIABLE>": "<VALUE>"`
 
@@ -1926,7 +1926,7 @@ The `set_variables` object assigns a value to one or more user-defined variable(
 
     </Callout>
 
--   rule variables may not be used when defining a user-defined variable.
+-   feature variables may not be used when defining a user-defined variable.
 -   Valid characters for the variable name are: alphanumeric, dashes, underscores, and periods.
 -   **Syntax:** `"<VARIABLE>": "<VALUE>"`
 
@@ -1997,7 +1997,7 @@ Redirects requests according to the `Location` header. Pass the following proper
 
     <Callout type="info">
 
-      Use [rule variables](#rule-variables) to dynamically construct the above paths. However, you may not use response metadata.
+      Use [feature variables](#feature-variables) to dynamically construct the above paths. However, you may not use response metadata.
 
     </Callout>
 
@@ -2068,7 +2068,7 @@ Pass the following properties:
 
 <Callout type="info">
 
-  Use rule variables to dynamically construct the above paths. However, you may not use response metadata (e.g., `%{resp_<RESPONSE HEADER>}`).
+  Use feature variables to dynamically construct the above paths. However, you may not use response metadata (e.g., `%{resp_<RESPONSE HEADER>}`).
 
 </Callout>
 
@@ -2114,7 +2114,7 @@ This feature allows our edge servers to rewrite the URL without performing a tra
 
     <Callout type="info">
 
-      Use [rule variables](#rule-variables) to dynamically construct the above paths. However, you may not use response metadata.
+      Use [feature variables](#feature-variables) to dynamically construct the above paths. However, you may not use response metadata.
 
     </Callout>
 
@@ -2183,7 +2183,7 @@ This feature allows our edge servers to rewrite the URL without performing a tra
 
 <Callout type="info">
 
-  Use rule variables to dynamically construct the above paths. However, you may not use response metadata (e.g., `%{resp_<RESPONSE HEADER>}`).
+  Use feature variables to dynamically construct the above paths. However, you may not use response metadata (e.g., `%{resp_<RESPONSE HEADER>}`).
 
 </Callout>
 
@@ -2191,22 +2191,22 @@ This feature allows our edge servers to rewrite the URL without performing a tra
 
 **Default Behavior:** By default, requests are not rewritten.
 
-## Rule Variables {/*rule-variables*/}
+## Feature variables {/*feature-variables*/}
 
-Rule variables retrieves request and response metadata. Use this metadata to dynamically alter a request or a response.
+Feature variables retrieves request and response metadata. Use this metadata to dynamically alter a request or a response.
 
-The following features support rule variables:
+The following features support variables:
 
--   [cache_key_rewrite](#cache-key-rewrite)
--   [add_response_headers](#add-response-headers)
--   [set_request_headers](#set-request-headers)
--   [set_response_headers](#set-response-headers)
--   [url_redirect](#url-redirect)
--   [url_rewrite](#url-rewrite)
+-   [Rewrite Cache Key (cache_key_rewrite)](#rewrite-cache-key)
+-   [Add Response Headers (add_response_headers)](#add-response-headers)
+-   [Set Request Headers (set_request_headers)](#set-request-headers)
+-   [Set Response Headers (set_response_headers)](#set-response-headers)
+-   [URL Redirect (url_redirect)](#url-redirect)
+-   [URL Rewrite (url_rewrite)](#url-rewrite)
 
 ### Definitions {/*definitions*/}
 
-Rule variables are described below.
+Feature variables are described below.
 
 <Callout type="info">
 
@@ -2426,31 +2426,31 @@ Rule variables are described below.
 
 ### Usage {/*usage*/}
 
-Rule variables support the following syntax:
+Feature variables support the following syntax:
 
--   **Rule Variable:** Use this syntax to get the entire value corresponding to the specified rule variable. 
+-   **Feature Variable:** Use this syntax to get the entire value corresponding to the specified feature variable. 
 
     **Example:** `%{host}`
 
--   **Rule Variable with a Delimiter:** Use this syntax to transform the value corresponding to the specified rule variable. 
+-   **Feature Variable with a Delimiter:** Use this syntax to transform the value corresponding to the specified feature variable. 
 
     **Example:** The following example converts the value associated with the `%{host}` variable to lower-case.
 
     `%{host,}`
 
--   **Rule Variable with a Delimiter and an Expression:** Use regular expressions to replace, delete, or manipulate a rule variable's value. 
+-   **Feature Variable with a Delimiter and an Expression:** Use regular expressions to replace, delete, or manipulate a feature variable's value. 
 
     **Example:** `%{host/=^www\.([^\.]+)\.([^\.:]+)/cdn.$2.$3:80}`
 
 <Callout type="important">
 
-  Rule variable names only support alphabet characters and underscores. Convert unsupported characters to underscores. 
+  Feature variable names only support alphabet characters and underscores. Convert unsupported characters to underscores. 
 
 </Callout>
 
 #### Delimiter Quick Reference {/*delimiter-quick-reference*/}
 
-A delimiter can be specified after a rule variable to achieve any of the following effects:
+A delimiter can be specified after a feature variable to achieve any of the following effects:
 
 -   Transform the value associated with the variable.
 
@@ -2459,7 +2459,7 @@ A delimiter can be specified after a rule variable to achieve any of the followi
 -   Delete the value associated with the variable.
 -   Manipulate the value associated with the variable.
 
-    **Example:** Use regular expressions to change the value associated with the rule variable.
+    **Example:** Use regular expressions to change the value associated with the feature variable.
 
 A brief description for each delimiter is provided below.
 
@@ -2470,21 +2470,21 @@ A brief description for each delimiter is provided below.
 | :         | Indicates that a substring of the value assigned to the variable will be expanded.                              |
 | #         | Indicates that the pattern specified after this delimiter should be deleted when it is found at the beginning of the value associated with the variable.  |
 | %         | Indicates that the pattern specified after this delimiter should be deleted when it is found at the end of the value associated with the variable. The above definition is only applicable when the % symbol is used as a delimiter.                               |
-| /         | Delimits a rule variable or a pattern.                                                                         |
+| /         | Delimits a feature variable or a pattern.                                                                         |
 | //        | Find and replace all instances of the specified pattern.                                                        |
 | /=        | Find, copy, and rewrite all occurrences of the specified pattern.                                               |
-| ,         | Convert the value associated with the rule variable to lower-case.                                              |
-| ^         | Convert the value associated with the rule variable to upper-case.                                              |
-| ,,        | Convert all instances of the specified character in the value associated with the rule variable to lower-case.  |
-| ^^        | Convert all instances of the specified character in the value associated with the rule variable to upper-case.  |
+| ,         | Convert the value associated with the feature variable to lower-case.                                              |
+| ^         | Convert the value associated with the feature variable to upper-case.                                              |
+| ,,        | Convert all instances of the specified character in the value associated with the feature variable to lower-case.  |
+| ^^        | Convert all instances of the specified character in the value associated with the feature variable to upper-case.  |
 
 #### Exceptions {/*exceptions*/}
 
-Text will not be treated as a rule variable under the following circumstances:
+Text will not be treated as a feature variable under the following circumstances:
 
 -   **Escaping % Symbol:** The percentage symbol can be escaped through the use of a backslash.
 
-    **Example:** The following sample value will be treated as a literal value and not as a rule variable: `\%{host}`
+    **Example:** The following sample value will be treated as a literal value and not as a feature variable: `\%{host}`
 
 -   **Unknown Variables:** An empty string is always returned for unknown variables.
 
@@ -2515,7 +2515,7 @@ Define this default value through any of the following methods:
 
 -   Set a header to a default value when the header is missing or its value is set to `NULL`. 
 
-    **Syntax:** `%{<RULE VARIABLE>:=<DEFAULT VALUE>}`
+    **Syntax:** `%{<FEATURE VARIABLE>:=<DEFAULT VALUE>}`
 
     **Example:** The following value sets the `Referer` header to `unspecified` when it is either missing or set to NULL. No action will take place if it has been set.
 
@@ -2523,7 +2523,7 @@ Define this default value through any of the following methods:
 
 -   Set a header to a default value when it is missing. 
 
-    **Syntax:** `%{<RULE VARIABLE>=<DEFAULT VALUE>}`
+    **Syntax:** `%{<FEATURE VARIABLE>=<DEFAULT VALUE>}`
 
     **Example:** The following value sets the `Referer` header to `unspecified` when it is missing. No action will take place if it has been set.
 
@@ -2534,7 +2534,7 @@ Define this default value through any of the following methods:
     -   Missing header.
     -   Set to `NULL`.
 
-    **Syntax:** `%{<RULE VARIABLE>:+<DEFAULT VALUE>}`
+    **Syntax:** `%{<FEATURE VARIABLE>:+<DEFAULT VALUE>}`
 
     **Example:** The following value sets the `Referer` header to `unspecified` when a value has been assigned to it. No action will take place if it has been set.
 

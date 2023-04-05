@@ -148,21 +148,17 @@ Common response headers are:
 
 -   `{{ HEADER_PREFIX }}-caching-status`: Indicates cache status information. If the response was not cached or served from cache, then it will report the reason why it was not cached.
 
-    **Example:**
-
-    The following sample response header indicates that caching was explictly disabled for this request:
-
-    `{{ HEADER_PREFIX }}-caching-status: disabled`
+    **Example:** The following sample response header indicates that caching was explictly disabled for this request: `{{ HEADER_PREFIX }}-caching-status: disabled`
 
     [Learn more.](/guides/caching#why-is-my-response-not-being-cached)
 
 -   **{{ HEADER_PREFIX }}-mr:** Indicates one or more matched route(s). 
 
-    **Syntax (Single Route):** `x-edg-mr: <DEPLOYMENT>:<RULE #>`
+    **Syntax (Single Route):** `{{ HEADER_PREFIX }}-mr: <DEPLOYMENT>:<RULE #>`
 
-    **Syntax (Multiple Routes):** `x-edg-mr: <DEPLOYMENT>:<RULE #>;<DEPLOYMENT>:<RULE #>;<DEPLOYMENT>:<RULE #>`
+    **Syntax (Multiple Routes):** `{{ HEADER_PREFIX }}-mr: <DEPLOYMENT>:<RULE #>;<DEPLOYMENT>:<RULE #>;<DEPLOYMENT>:<RULE #>`
 
-    **Example:** `x-edg-mr: 16:0;16:1;`
+    **Example:** `{{ HEADER_PREFIX }}-mr: 16:0;16:1;`
 
     Definitions for the above terms are provided below.
 
@@ -170,12 +166,15 @@ Common response headers are:
         -   **RULE #:** Indicates the index number of the rule or route that was applied to the request.
 
 -   **{{ HEADER_PREFIX }}-p:** Returns `1` when the client's request includes an `edgio_prefetch` query string parameter. This parameter indicates that the client is requesting [Predictive Prefetching](/guides/performance/prefetching).
+
+    **Example:** `{{ HEADER_PREFIX }}-p: 1`
+
 -   [{{ HEADER_PREFIX }}-t](#-t-response-header): Contains time measurements for each {{ PRODUCT }} component through which a request was routed. It also provides cache status information for edge and global POPs.
 -   **{{ HEADER_PREFIX }}-version:** Indicates basic information for your current deployment.
 
-    **Syntax:** `x-edg-version: <DEPLOYMENT> <ENVIRONMENT VERSION> <INTERNAL> NA <DEPLOYMENT TIMESTAMP> <ENVIRONMENT ID>`
+    **Syntax:** `{{ HEADER_PREFIX }}-version: <DEPLOYMENT> <ENVIRONMENT VERSION> <INTERNAL> NA <DEPLOYMENT TIMESTAMP> <ENVIRONMENT ID>`
 
-    **Example:** `x-edg-version: 16 16 19 NA 2023-04-02T22:52:30Z ed922fee-185c-427d-8949-83d135108aab`
+    **Example:** `{{ HEADER_PREFIX }}-version: 16 16 19 NA 2023-04-02T22:52:30Z ed922fee-185c-427d-8949-83d135108aab`
 
     Definitions for the above terms are provided below.
 
@@ -188,17 +187,14 @@ Common response headers are:
 
     -   **ENVIRONMENT ID:** Identifies an environment by its system-defined ID.
 
-<!-- 
 -   [{{ HEADER_PREFIX }}-status](#-status-response-header): Contains a comma-delimited list of HTTP status codes for each POP component that processed the request.
 -   `{{ HEADER_PREFIX }}-components`: Indicates the version for each POP component that processed the request and the environment ID. This response header is primarily meant for internal use when troubleshooting issues.
 `{{ HEADER_PREFIX }}-components: eh=0.1.6,e=atl,ec=1.1.0,ed=1.0.1,gh=0.1.6,g=hef,gd=1.0.1,p=1.21.10,w=3.11.0,wi=e8ce8753-163d-4be9-a39e-40454ace5146,b=serverless`
 -   `{{ HEADER_PREFIX }}-hit-request-id`: If the response is served from cache, this header indicates the unique ID of the request whose response was cached.
 -   `{{ HEADER_PREFIX }}-request-id`: Indicates the request's unique ID.
--   `{{ HEADER_PREFIX }}-surrogate-key`: Contains a space-delimited list of surrogate keys (cache tags). 
+-   `{{ HEADER_PREFIX }}-surrogate-key`: Contains a space-delimited list of surrogate keys (cache tags). <!-- surrogate keys can be injected when needed into your backend responses -->
 
-    [Learn more.](/guides/purging#surrogate-keys)
--->
-<!-- surrogate keys can be injected when needed into your backend responses -->
+    [Learn more.](/guides/performance/purging#surrogate-keys-cache-tags)
 
 ### Requesting Debug Cache Information {/*requesting-debug-cache-information*/}
 
@@ -327,7 +323,6 @@ The following abbreviations are used for time units:
 -   **m:** Month(s)
 -   **y:** Year(s)
 
-<!--
 ### {{ HEADER_PREFIX }}-status Response Header {/*-status-response-header*/}
 
 The `{{ HEADER_PREFIX }}-status` response header contains an HTTP status code for each POP component that processed the request. This comma-delimited list is presented sequentially according to the order in which POP components processed the request.
@@ -339,6 +334,7 @@ A POP component is identified through the following two abbreviations:
 -    [Who handled the request.](#request-element)
 -    [POP component.](#pop-component)
 
+<!--
 **Standard Traffic Example:**
 The following sample response header indicates that the following POP components returned a `200 OK`: Edge POP's HAProxy, Edge POP's DPS, Global POP's HAProxy, and Global POP's DPS.
 

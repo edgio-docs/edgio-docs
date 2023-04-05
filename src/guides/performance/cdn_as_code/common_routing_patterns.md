@@ -136,6 +136,8 @@ router.get('/products/:productId', {
 })
 ```
 
+Additional information on the `headers` feature can be found in the [Features](/guides/performance/rules/features#headers) guide.
+
 #### Altering All Responses {/*altering-all-responses*/}
 
 You can also write catch-all routes that will alter all responses. One example where this is useful is injecting [Content Security Policy](/guides/security/security_suite#content-security-policy-csp) headers.
@@ -151,7 +153,7 @@ router.match({
   }, {
   "headers": {
     "set_response_headers": {
-      "x-debug-xff": "${req:x-forwarded-for}"
+      "x-debug-xff": "%{http_x_forwarded_for}"
     }
   }
 })
@@ -160,50 +162,52 @@ router.match({
 The rules for interpolating the values of request and response objects can be found in the [routing](/guides/performance/cdn_as_code#embedded-values) guide.
 Note that catch-all routes that alter headers, cookies, or caching can be placed at the start of your router while allowing subsequent routes to run because they alter the request or the response without actually sending a response. See [route execution](/guides/routing#route-execution) for more information on route execution order and sending responses.
 
-<!-- ### Manipulating Cookies {/*manipulating-cookies*/}
+### Manipulating Cookies {/*manipulating-cookies*/}
 
-You can manipulate cookies before they are sent to the browser using cookie response API calls like [`addResponseCookie`](/docs/api/core/classes/_router_responsewriter_.responsewriter.html#addresponsecookie):
+You can manipulate cookies before they are sent to the browser using `headers.set_response_headers`:
 
 ```js
-router.get('/some/path', ({
-  addUpstreamResponseCookie,
-  addResponseCookie,
-  removeResponseCookie,
-  removeUpstreamResponseCookie,
-  updateResponseCookie
-  updateUpstreamResponseCookie,
-  proxy
-}) => {
-  proxy('origin')
-
-  // applied before the cache
-  addUpstreamResponseCookie('cookie-to-add', 'cookie-value')
-  removeUpstreamResponseCookie('cookie-to-remove')
-  updateUpstreamResponseCookie('cookie-to-alter', /Domain=.+;/, 'Domain=mydomain.com;')
-
-  // applied after the cache
-  addResponseCookie('cookie-to-add', 'cookie-value')
-  removeResponseCookie('cookie-to-remove')
-  updateResponseCookie('cookie-to-alter', /Domain=.+;/, 'Domain=mydomain.com;')
+router.get('/products/:productId', {
+  origin: {
+    set_origin: "origin"
+  },
+  headers: {
+    // add cookie `foo=bar` to the response
+    add_response_headers: {
+      "set-cookie": "foo=bar;"
+    },
+  }
 })
-``` -->
+```
 
-<!-- ### Adding Options to Cookies {/*adding-options-to-cookies*/}
+### Adding Options to Cookies {/*adding-options-to-cookies*/}
 
 In addition to the name and value of the cookie, you can also add attributes to each cookie. For
 information on possible cookie attributes, please refer to https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Set-Cookie
 
 ```js
-router.get('/some/path', ({ addUpstreamResponseCookie, addResponseCookie, proxy }) => {
-  proxy('origin')
+import { serializeCookie } from '@edgio/core/utils/cookieUtils';
 
-  addUpstreamResponseCookie('cookie-to-add', 'cookie-value', {
-    domain: 'test.com',
-  })
+router.get('/products/:productId', {
+  origin: {
+    set_origin: "origin"
+  },
+  headers: {
+    // set cookie with options
+    add_response_headers: {
+      "set-cookie": "foo=bar; Secure; HttpOnly;"
+    },
 
-  addResponseCookie('cookie-to-add', 'cookie-value', { 'max-age': 50000 })
+    // set cookie with options using the serializeCookie helper
+    add_response_headers: {
+      "set-cookie": serializeCookie("foo", "bar", {
+        Secure: true,
+        HttpOnly: true,
+      })
+    },
+  }
 })
-``` -->
+```
 
 ### Proxying to Different Backends Based on Different Host Names {/*proxying-to-different-backends-based-on-different-host-names*/}
 

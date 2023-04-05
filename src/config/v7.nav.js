@@ -209,7 +209,7 @@ const nav = {
           path: 'security/rate_rules',
         },
         {
-          title: 'Bot Rules',
+          title: 'Bot Manager',
           path: 'security/bot_rules',
         },
         {

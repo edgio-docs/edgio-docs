@@ -123,15 +123,12 @@ Rule**.
 
 ## Step 3: Monitor Threats {/*step-3-monitor-threats*/}
 
-The Threats dashboard illustrates threat detection trends and lists
-recent illegitimate requests. This dashboard is a useful tool for:
+The **Threats** tab on the **Security** dashboard illustrates threat detection trends and lists recent illegitimate requests. This dashboard is a useful tool for:
 
--   Verifying that a new or an updated security policy will not impact
-    legitimate traffic.
+-   Verifying that a new or an updated security policy will not impact legitimate traffic.
 -   Analyzing threats directed to your site.
 
-By default, the dashboard tracks the set of threats detected over the
-last week.
+By default, the dashboard tracks the set of threats detected over the last week.
 
 ### Data Gathering {/*data-gathering*/}
 

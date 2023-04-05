@@ -1145,13 +1145,12 @@ Header features add, modify, or delete headers from the request or response.
 
 #### Add Response Headers {/*add-response-headers*/}
 
-Adds one or more header(s) from the response. If the header already exists in the response, then the provided value will be appended to the existing response header value.
+Adds one or more header(s) to the response. If the header already exists in the response, then the provided value will be appended to the existing response header value.
 
 **Key information:**
 
--   **Syntax:** `"<HEADER NAME>": "<HEADER VALUE>"`
--   `<HEADER NAME>` must be an exact match for the desired response header. However, case is not taken into account for the purpose of identifying a header. 
--   Make sure to only use alphanumeric characters, dashes, or underscores when specifying a header name.
+-   Specify a header name that is an exact match for the desired response header. However, case is not taken into account for the purpose of identifying a header. 
+-   Use alphanumeric characters, dashes, or underscores when specifying a header name.
 -   Use [feature variables](#feature-variables) to dynamically construct header values.
 -   The following headers are reserved and cannot be modified by this feature:
     -   accept-ranges
@@ -1169,6 +1168,16 @@ Adds one or more header(s) from the response. If the header already exists in th
     -   via
     -   warning 
     -   All header names that start with `{{ HEADER_PREFIX }}` and `x-ec` are reserved.
+
+**Example:**
+
+If you configure this feature to add the `event-type` response header set to `basketball`, then it will set the following response header when the response does not already contain that header or if it is set to a blank value:
+
+`event-type: basketball`
+
+However, if the response already contains an `event-type` response header set to `sports`, then it would append `basketball` to that value.
+
+`event-type: sportsbasketball`
 
 <edgejs>
 **Key information:**
@@ -1227,6 +1236,8 @@ Our CDN returns debug cache response headers when both of the following are true
 
     `X-EC-Debug: x-ec-cache,x-ec-check-cacheable,x-ec-cache-key,x-ec-cache-state`
 
+    [Learn more.](/guides/performance/response#requesting-debug-cache-information)
+
 <edgejs>
 Our CDN returns debug cache response headers when both of the following are true:
 
@@ -1258,7 +1269,7 @@ new Router()
 
 #### Server-Timing Header {/*server-timing-header*/}
 
-Determines whether to include the [Server-Timing header](/performance/response#server-timing-header) in the response. The `Server-Timing` response header contains cache status information and information about the POP that served the response. 
+Determines whether to include the [Server-Timing header](/guides/performance/response#server-timing-response-header) in the response. The `Server-Timing` response header contains cache status information and information about the POP that served the response. 
 
 <edgejs>
 **Example:**
@@ -1281,12 +1292,13 @@ Set, overwrite, append, or delete one or more header(s) from the request.
 
 **Key information:**
 
--   **Syntax:** `"<HEADER NAME>": "<HEADER VALUE>"`
--   `<HEADER NAME>` must be an exact match for the desired request header. However, case is not taken into account for the purpose of identifying a header. 
+-   Specify a header name that is an exact match for the desired request header. However, case is not taken into account for the purpose of identifying a header. 
 -   Use alphanumeric characters, dashes, or underscores when specifying a header name.
 -   Use the following syntax to determine the action that will be applied to the request header:
-    -   **Set:** Set or overwrite a header's value by replacing `<HEADER NAME>` with a value that does not start with a `+` symbol. 
-    -   **Append:** Add to the end of an existing request header value by prepending a `+` symbol to the header name. For example, append a value to the `broadcast` request header by specifying `+broadcast`.
+    -   **Set:** Set or overwrite a header's value by specifying a header name that does not start with a `+` symbol. 
+    -   **Append:** Add to the end of an existing request header value by prepending a `+` symbol to the header name. 
+
+        **Example:** Append a value to the `broadcast` request header by specifying `+broadcast`. If the request does not contain the `broadcast` header, then it will be set to the value defined in this feature (e.g., `network`). On the other hand, if it is already set to `ott`, then it will append the value defined in this feature (e.g., `broadast: ottnetwork`).
     -   **Delete:** Set the header value to a blank value. Deleting a header will prevent it from being forwarded to an origin server by our edge servers.
 -   Use [feature variables](#feature-variables) to dynamically construct header values.
 -   The following headers are reserved and cannot be modified by this feature:
@@ -1343,12 +1355,13 @@ Set, overwrite, append, or delete one or more header(s) from the response.
 
 **Key information:**
 
--   **Syntax:** `"<HEADER NAME>": "<HEADER VALUE>"`
--   `<HEADER NAME>` must be an exact match for the desired response header. However, case is not taken into account for the purpose of identifying a header. 
+-   Specify a header name that is an exact match for the desired response header. However, case is not taken into account for the purpose of identifying a header. 
 -   Use alphanumeric characters, dashes, or underscores when specifying a header name.
 -   Use the following syntax to determine the action that will be applied to the response header:
-    -   **Set:** Set or overwrite a header's value by replacing `<HEADER NAME>` with a value that does not start with a `+` symbol. 
-    -   **Append:** Add to the end of an existing response header value by prepending a `+` symbol to the header name. For example, append a value to the `broadcast` response header by specifying `+broadcast`.
+    -   **Set:** Set or overwrite a header's value by specifying a header name that does not start with a `+` symbol. 
+    -   **Append:** Add to the end of an existing response header value by prepending a `+` symbol to the header name. 
+
+        **Example:** Append a value to the `broadcast` response header by specifying `+broadcast`. If the response does not contain the `broadcast` header, then it will be set to the value defined in this feature (e.g., `network`). On the other hand, if it is already set to `ott`, then it will append the value defined in this feature (e.g., `broadast: ottnetwork`).
     -   **Delete:** Set it to a blank value. Deleting a header will prevent it from being included in the response to the client.
 -   Use [feature variables](#feature-variables) to dynamically construct header values.
 -   The following headers are reserved and cannot be modified by this feature:

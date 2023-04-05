@@ -31,10 +31,10 @@ If the error is generated in {{ PRODUCT_NAME }} itself, the platform generates a
 | <a id="536"></a> 536  | Project HTTP Response Timeout          | {{ PRODUCT_NAME }} did not receive an HTTP response from the upstream. Common causes are the upstream dropped the connection prematurely, the upstream application threw an exception, and the upstream took too long to respond.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
 | 537  | Project DNS Resolution Error           | Failed to resolve the host name through DNS, which might indicate a problem with your DNS provider or incorrectly configured domain name.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
 | 538  | Project Request Loop                   | The {{ PRODUCT_NAME }} project exceeded the maximum level (3) of nested {{ PRODUCT_NAME }} requests. "Nested" means an {{ PRODUCT_NAME }} site is the upstream of itself or of another {{ PRODUCT_NAME }} site.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
-| 539  | Project Timeout                        | The 539 status code is primarily caused by timeouts, but can also be caused by lack of allow lists (white lists) configured on your backend server. **Timeouts:** Your project's serverless code did not respond on time, either due to slow or blocking upstream or to badly handled asynchronous requests in code (e.g. missing `await` or call to `callback`). **Troubleshooting:** You can view the timings and status codes of the components in the stack in the [{{ HEADER_PREFIX }}-t header](/guides/response_headers#-t-response-header) Use [server logs](/guides/logs#server-logs) and [performance profiling](/guides/performance) to debug. You can also debug using information in [Troubleshooting 539 Status Codes](/guides/troubleshooting#troubleshooting-539-status-codes), which includes information about detecting allow list errors. |
-| 540  | Out of Memory                          | Your project's serverless code caused an out-of-memory situation. Use [server logs](/guides/logs#server-logs) to debug and lower the memory use.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+| 539  | Project Timeout                        | The 539 status code is primarily caused by timeouts, but can also be caused by lack of allow lists (white lists) configured on your backend server. **Timeouts:** Your project's serverless code did not respond on time, either due to slow or blocking upstream or to badly handled asynchronous requests in code (e.g. missing `await` or call to `callback`). **Troubleshooting:** You can view the timings and status codes of the components in the stack in the [{{ HEADER_PREFIX }}-t header](#-t-response-header) Use [server logs](/guides/logs/server_logs) and [performance profiling](/guides/performance) to debug. You can also debug using information in [Troubleshooting 539 Status Codes](/guides/performance/troubleshooting#troubleshooting-539-status-codes), which includes information about detecting allow list errors. |
+| 540  | Out of Memory                          | Your project's serverless code caused an out-of-memory situation. Use [server logs](/guides/logs/server_logs) to debug and lower the memory use.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
 | 541  | {{ PRODUCT_NAME }} Out of Workers      | The traffic was so high that the request could not be scheduled for processing within the scheduling timeout. Please contact [support]({{ SUPPORT_URL }}) to upgrade your account.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
-| 542  | Project Header Overflow                | The {{ PRODUCT_NAME }} project's request or response had too many HTTP headers. See [limits](/guides/limits)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
+| 542  | Project Header Overflow                | The {{ PRODUCT_NAME }} project's request or response had too many HTTP headers. See [limits](/guides/performance/limits)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
 | 543  | Global Upstream Timeout                | The request failed to propagate between {{ PRODUCT_NAME }} edge and the global POP. Please contact [support]({{ HELP_URL }}).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
 | 544  | Invalid Host Header                    | The {{ PRODUCT_NAME }} received a value in `host` header that is not a valid domain name.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
 | 545  | {{ PRODUCT_NAME }} Component Not Ready | An unprepared {{ PRODUCT_NAME }} component received traffic. Please contact [support]({{ HELP_URL }}) immediately.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
@@ -53,8 +53,8 @@ Obviously, your project can set status codes of their own, which may sometimes m
 
 | CODE | NAME                | DESCRIPTION                                                                                                                                                                                                                                                                                    |
 | ---- | ------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 400  | Bad Request         | The URL is too long or the request headers are too large. See [limits](/guides/limits)                                                                                                                                                                                                         |
-| 404  | Not Found           | The server cannot find the requested resource. This usually occurs when the browser requests a page that your app does not have. A 404 will also occur when a request does not match any of the routes in your {{ PRODUCT_NAME }} router. See [routing](/guides/routing) for more information. |
+| 400  | Bad Request         | The URL is too long or the request headers are too large. See [limits](/guides/performance/limits)                                                                                                                                                                                                         |
+| 404  | Not Found           | The server cannot find the requested resource. This usually occurs when the browser requests a page that your app does not have. A 404 will also occur when a request does not match any of the routes in your {{ PRODUCT_NAME }} router. [Learn more.](/guides/performance/cdn_as_code). |
 | 412  | Precondition Failed | This code is returned when the query string parameter `{{ COOKIE_PREFIX }}_prefetch` equals `1` and the content was not found in the edge cache.                                                                                                                                               |
 
 ## Response Headers {/*response-headers*/}
@@ -74,6 +74,8 @@ The response headers generated for content requested through our CDN describe th
 -   Response headers that describe the response (i.e., date, size, and content type).
 -   Response headers that define or describe the requested content's cache policy.
 -   Information that identifies the edge server that served the response.
+
+### Common Response Headers {/*common-response-headers*/}
 
 Common response headers are:
 
@@ -107,7 +109,9 @@ Common response headers are:
 
         **Example:** `server: ECAcc (lac/55D2)`
 
--   **Server-Timing:** {{ PRODUCT }} returns this response header when the [Server-Timing Header feature](/performance/rules/features#server-timing-header) has been enabled. The `Server-Timing` response header contains cache status information and information about the POP that served the response. 
+    <a id="server-timing-response-header" />
+
+-   **Server-Timing:** {{ PRODUCT }} returns this response header when the [Server-Timing Header feature](/guides/performance/rules/features#server-timing-header) has been enabled. The `Server-Timing` response header contains cache status information and information about the POP that served the response. 
 
     **Syntax:** `server-timing: edgio_cache;desc=<CACHE STATUS CODE>,edgio_pop;desc=<POP>,edgio_country;desc=<COUNTRY>`
 
@@ -129,28 +133,34 @@ Common response headers are:
 
 -   **Warning:** This response header is only returned when a stale response is served to the client. A stale response is typically served under the following conditions:
 
-    -   The [Stale While Revalidate feature](/performance/rules/features#stale-while-revalidate) was applied to the request.
+    -   The [Stale While Revalidate feature](/guides/performance/rules/features#stale-while-revalidate) was applied to the request.
     
         **Response header value:** `110 - "Response is stale"`
     
     -   Revalidation failed and either of the following conditions is true:
    
-        -   The origin server returned a `5xx` response and the [Stale on Error feature](/performance/rules/features#stale-on-error) was applied to the request.
-        -   The origin server is unresponsive and the stale window, as defined by the [Revalidate After Origin Unavailable feature](/performance/rules/features#revalidate-after-origin-unavailable), is active.
+        -   The origin server returned a `5xx` response and the [Stale on Error feature](/guides/performance/rules/features#stale-on-error) was applied to the request.
+        -   The origin server is unresponsive and the stale window, as defined by the [Revalidate After Origin Unavailable feature](/guides/performance/rules/features#revalidate-after-origin-unavailable), is active.
     
         **Response header value:** `111 - "Revalidation Failed", 110 - "Response is stale"`
+
+### {{ PRODUCT }}-Specific Headers {/*-specific-headers*/}
+
+{{ PRODUCT }}-specific headers are:
 
 -   **x-cache: HIT:** Indicates that a cached version of the requested content was served directly to the client by an edge server.
 
     **Example:** `x-cache: HIT`
 
--  **x-ec-debug:** Contains the requested debug cache metadata when the [Debug Header feature](/performance/rules/features#debug-header) has been enabled. [Learn more.](#requesting-debug-cache-information)
+-  **x-ec-debug:** Contains the requested debug cache metadata when the [Debug Header feature](/guides/performance/rules/features#debug-header) has been enabled. [Learn more.](#requesting-debug-cache-information)
 
--   `{{ HEADER_PREFIX }}-caching-status`: Indicates cache status information. If the response was not cached or served from cache, then it will report the reason why it was not cached.
+-   **{{ HEADER_PREFIX }}-caching-status:** Indicates cache status information. If the response was not cached or served from cache, then it will report the reason why it was not cached.
 
-    **Example:** The following sample response header indicates that caching was explictly disabled for this request: `{{ HEADER_PREFIX }}-caching-status: disabled`
+    **Example:** The following sample response header indicates that caching was explictly disabled for this request: 
 
-    [Learn more.](/guides/caching#why-is-my-response-not-being-cached)
+    `{{ HEADER_PREFIX }}-caching-status: disabled`
+
+    [Learn more.](/guides/performance/caching#why-is-my-response-not-being-cached)
 
 -   **{{ HEADER_PREFIX }}-mr:** Indicates one or more matched route(s). 
 
@@ -188,11 +198,13 @@ Common response headers are:
     -   **ENVIRONMENT ID:** Identifies an environment by its system-defined ID.
 
 -   [{{ HEADER_PREFIX }}-status](#-status-response-header): Contains a comma-delimited list of HTTP status codes for each POP component that processed the request.
--   `{{ HEADER_PREFIX }}-components`: Indicates the version for each POP component that processed the request and the environment ID. This response header is primarily meant for internal use when troubleshooting issues.
-`{{ HEADER_PREFIX }}-components: eh=0.1.6,e=atl,ec=1.1.0,ed=1.0.1,gh=0.1.6,g=hef,gd=1.0.1,p=1.21.10,w=3.11.0,wi=e8ce8753-163d-4be9-a39e-40454ace5146,b=serverless`
--   `{{ HEADER_PREFIX }}-hit-request-id`: If the response is served from cache, this header indicates the unique ID of the request whose response was cached.
--   `{{ HEADER_PREFIX }}-request-id`: Indicates the request's unique ID.
--   `{{ HEADER_PREFIX }}-surrogate-key`: Contains a space-delimited list of surrogate keys (cache tags). <!-- surrogate keys can be injected when needed into your backend responses -->
+-   **{{ HEADER_PREFIX }}-components:** Indicates the version for each POP component that processed the request and the environment ID. This response header is primarily meant for internal use when troubleshooting issues.
+
+    **Example:** `{{ HEADER_PREFIX }}-components: eh=0.1.6,e=atl,ec=1.1.0,ed=1.0.1,gh=0.1.6,g=hef,gd=1.0.1,p=1.21.10,w=3.11.0,wi=e8ce8753-163d-4be9-a39e-40454ace5146,b=serverless`
+
+-   **{{ HEADER_PREFIX }}-hit-request-id:** For responses served from cache, this header indicates the unique ID of the request that was cached on our CDN. 
+-   **{{ HEADER_PREFIX }}-request-id:** Indicates the request's unique ID.
+-   **{{ HEADER_PREFIX }}-surrogate-key:** Contains a space-delimited list of surrogate keys (cache tags). <!-- surrogate keys can be injected when needed into your backend responses -->
 
     [Learn more.](/guides/performance/purging#surrogate-keys-cache-tags)
 

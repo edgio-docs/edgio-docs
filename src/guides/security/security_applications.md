@@ -23,9 +23,7 @@ A Security Application configuration:
 
     <Callout type="info">
 
-      Each detected threat is logged regardless of enforcement action
-      (i.e., block, custom response, redirect, or alert). View logged
-      threats from the Threats, Rates, or Rate Enforcement dashboards.
+      Each detected threat is logged regardless of enforcement action (i.e., block, custom response, redirect, or alert). View logged threats from the **Threats**, **Bots**, **Rates**, or **Rate Enforcement** tabs of the **Security** dashboard.
 
     </Callout>
 
@@ -43,8 +41,7 @@ A Security Application configuration:
     </Callout>
 -   Allows you to keep your applications secure with known
     configurations and audit new access rules, custom rules, and managed
-    rules without impacting production traffic. Use the Threats
-    dashboard to isolate and analyze threats detected as a result of an
+    rules without impacting production traffic. Use the **Threats** tab of the **Security** dashboard to isolate and analyze threats detected as a result of an
     audit of new access rules, custom rules, and managed rules.
 
     <Callout type="info">
@@ -293,7 +290,7 @@ one of the following modes:
     policy will be [enforced](#enforcement).
 -   **Audit:** This mode allows you to test new security policies
     without impacting production traffic. Requests that are identified
-    as threats are logged. Use the Threats dashboard to analyze detected
+    as threats are logged. Use the **Threats** tab of the **Security** dashboard to analyze detected
     threats and check for false positives. You should apply this
     security policy to production traffic once you are confident that it
     will generate minimal false positives.
@@ -559,8 +556,7 @@ configurations.
 
     <Callout type="info">
 
-      Filter the Threats dashboard by the above access rule or the
-      `audit` profile type to track detected threats.
+      Filter the **Threats** tab of the **Security** dashboard by the above access rule or the `audit` profile type to track detected threats.
 
     </Callout>
 
@@ -711,8 +707,7 @@ configurations.
 
     <Callout type="info">
 
-      Filter the Threats dashboard by the above custom rule or the
-      *audit* profile type to track detected threats.
+      Filter the **Threats** tab of the **Security** dashboard by the above custom rule or the *audit* profile type to track detected threats.
 
     </Callout>
 
@@ -759,8 +754,7 @@ configurations.
 
     <Callout type="info">
 
-      Filter the Threats dashboard by the above managed rule or the
-      *audit* profile type to track detected threats.
+      Filter the **Threats** tab of the **Security** dashboard by the above managed rule or the *audit* profile type to track detected threats.
 
     </Callout>
 

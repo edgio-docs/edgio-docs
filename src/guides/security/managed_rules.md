@@ -187,11 +187,8 @@ Identify a rule set's version by the date on which it was released.
 **To apply an updated rule set to production traffic (recommended)**
 
 1.  Create a managed rule that points to the updated rule set.
-2.  Modify the desired Security Application configuration's
-    **Audit Managed Rule** option to the above managed rule.
-3.  Wait a reasonable amount of time (e.g., 24 to 48 hours) to screen
-    traffic. After which, review the Threats dashboard for false
-    positives.
+2.  Modify the desired Security Application configuration's **Audit Managed Rule** option to the above managed rule.
+3.  Wait a reasonable amount of time (e.g., 24 to 48 hours) to screen traffic. After which, review the **Threats** tab of the **Security** dashboard for false positives.
     -   If many false positives are found, identify the policies and/or
         rules that are causing them and disable them from the managed
         rule created in step 1. After which, repeat step 3.
@@ -285,9 +282,7 @@ Tips for setting up rule exceptions:
     will be identified. Mark the **Regex?** option to specify a
     regular expression instead of a literal value.
 -   The best strategy for defining exceptions is to:
-    1.  Identify false positives within the **Threats Dashboard**         
-        by reviewing recent threats and identifying requests that were
-        made by actual users.
+    1.  Identify false positives within the **Threats** tab of the **Security** dashboard by reviewing recent threats and identifying requests that were made by actual users.
     2.  Identify a common attribute within those requests and the
         rule(s) that they inadvertently triggered.
     3.  Use the information identified in step 2 to [create a rule
@@ -412,7 +407,7 @@ You may create, modify, and delete managed rules.
   by [adding a rule exception](#create-rule-exception). A rule exception identifies one
   or more rules that should be ignored for a specific set of requests.
   Typically, the criteria for a rule exception are identified through analysis within the
-  Threats Dashboard.
+  **Threats** tab of the **Security** dashboard.
 
 </Callout>
 

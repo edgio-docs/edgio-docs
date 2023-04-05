@@ -183,6 +183,7 @@ const pryFooterLinks = {
     {
       title: 'Changelog',
       href: '/guides/changelog',
+      versioned: false,
     },
   ],
   community: [
@@ -296,15 +297,17 @@ function FooterNavItem({
   items,
 }: {
   title: string;
-  items: Array<{title: string; href: string}>;
+  items: Array<{title: string; href: string; versioned?: boolean}>;
 }) {
   return (
     <nav className="footerNavItem">
       <h4 className="navItemTitle">{title}</h4>
       <ul className="navList">
-        {items.map(({href, title}) => (
+        {items.map(({href, title, versioned = true}) => (
           <li className="navListItem" key={href}>
-            <Link href={href}>{title}</Link>
+            <Link href={href} versioned={versioned}>
+              {title}
+            </Link>
           </li>
         ))}
       </ul>

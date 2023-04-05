@@ -75,38 +75,67 @@ new Router()
   .use(nextRoutes)
 ```
 
-### Alter Requests and Responses {/*alter-requests-and-responses*/}
+## Alter Requests and Responses {/*alter-requests-and-responses*/}
 
 {{ PRODUCT_NAME }} offers APIs to manipulate request and response headers and cookies. The APIs are:
 
-| Operation     | Request               | Response sent to Browser  |
-|---------------|-----------------------|---------------------------|
-| Add header    | `set_request_headers` | `add_response_headers`    |
-| Add cookie    | `--`                  | `*`                       |
-| Update header | `set_request_headers` | `set_response_headers`    |
-| Update cookie | `--`                  | `*`                       |
-| Remove header | `removeRequestHeader` | `remove_response_headers` |
-| Remove cookie | `--`                  | `*`                       |
+| Operation     | Request               | Response sent to Browser                                          |
+|---------------|-----------------------|-------------------------------------------------------------------|
+| Add header    | `set_request_headers` | `add_response_headers`                                            |
+| Add cookie    | `*`                   | `*`                                                               |
+| Update header | `set_request_headers` | `set_response_headers`                                            |
+| Update cookie | `*`                   | `*`                                                               |
+| Remove header | `set_request_headers` | `remove_response_headers` <br /> `remove_origin_response_headers` |
+| Remove cookie | `*`                   | `*`                                                               |
 
-`*` Adding, updating, or removing a response cookie can be achieved with `set_response_headers` applied to `set-cookie` header.
+`*` Adding, updating, or removing request cookies can be achieved with `set_request_headers` applied to `cookie` header. Similarly, adding, updating, or removing response cookies can be achieved with `set_response_headers` applied to `set-cookie` header.
 
-<!-- You can find detailed descriptions of these APIs in the `{{ PACKAGE_NAME }}/core` [documentation](/docs/api/core/classes/_router_responsewriter_.responsewriter.html). -->
+## Embedded Request / Response Values {/*embedded-values*/}
 
-<!-- ### Embedded Values {/*embedded-values*/}
+You can inject values from the request or response into headers or cookies as template literals using the `%{<FEATURE VALUE>}` format. For example: `set_response_header: { 'original-request-path', '%{path}' }` would add an `original-request-path` response header whose value is the request path.
 
-You can inject values from the request or response into headers or cookies as template literals using the `${value}` format. For example: `setResponseHeader('original-request-path', '${path}')` would add an `original-request-path` response header whose value is the request path.
+| Feature Variable                  | Description                                                                                                                                                                                                          |
+|-----------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `%{arg_<QUERY STRING PARAMETER>}` | Returns the value corresponding to the query string parameter identified by the `<QUERY STRING PARAMETER>` term.                                                                                                     |
+| `%{cookie_<COOKIE>}`              | Returns the value corresponding to the cookie identified by the `<COOKIE>` term.                                                                                                                                     |
+| `%{geo_asnum}`                    | Indicates the client's AS number.                                                                                                                                                                                    |
+| `%{geo_city}`                     | Indicates the client's city.                                                                                                                                                                                         |
+| `%{geo_continent}`                | Indicates the client's continent through its abbreviation. Valid values are:<ul><li>AF: Africa</li><li>AS: Asia</li><li>EU: Europe</li><li>NA: North America</li><li>OC: Oceania</li><li>SA: South America</li></ul> |
+| `%{geo_country}`                  | Indicates the country from which the requested originated through its country code.                                                                                                                                  |
+| `%{geo_dma_code}`                 | Indicates the client's media market by its region code. This field is only applicable to requests that originate from the United States.                                                                             |
+| `%{geo_latitude}`                 | Indicates the client's latitude.                                                                                                                                                                                     |
+| `%{geo_longitude}`                | Indicates the client's longitude.                                                                                                                                                                                    |
+| `%{geo_metro_code}`               | Indicates the client's metropolitan area. This field is only applicable to requests that originate from the United States.                                                                                           |
+| `%{geo_postal_code}`              | Indicates the client's postal code. We only return the first 3 characters for Canadian postal codes and the first 2 - 4 characters for United Kingdom postal codes.                                                  |
+| `%{geo_region}`                   | Indicates the client's region (e.g., state or province)                                                                                                                                                              |
+| `%{host}`                         | Indicates the host defined in the request URL.                                                                                                                                                                       |
+| `%{http_<REQUEST HEADER>}`        | Returns the value corresponding to the request header identified by the `<REQUEST HEADER>` term.                                                                                                                       |
+| `%{http_x_ec_session_id}`         | Indicates a unique system-defined ID for the request's connection to our servers.                                                                                                                                    |
+| `%{http_x_ec_uuid}`               | Indicates a request's unique system-defined ID. A new ID is generated whenever a client (i.e., user agent) submits a request.                                                                                        |
+| `%{is_amp}`                       | The value for this variable varies according to whether the request contains at least one query string parameter.<ul><li>Parameter Found: &</li><li>No Parameters: NULL</li></ul>                                    |
+| `%{is_args}`                      | The value for this variable varies according to whether the request contains a query string.<ul><li>Query String Found: ?</li><li>No Query String: NULL</li></ul>                                                    |
+| `%{normalized_path}`              | Indicates the normalized relative path for the request submitted to the CDN.                                                                                                                                         |
+| `%{normalized_query}`             | Indicates the normalized query string defined in the request URL.                                                                                                                                                    |
+| `%{normalized_uri}`               | Indicates the normalized relative path and query string for the request submitted to the CDN.                                                                                                                        |
+| `%{path}`                         | Indicates the relative path to the requested content. This relative path reflects URL rewrites due to `url_rewrite`.                                                                                                 |
+| `%{query_string}`                 | Indicates the entire query string value defined in the request URL.                                                                                                                                                  |  |
+| `%{quic_altsvc_versions}`         | Indicates the set of QUIC versions supported by our CDN service. This variable identifies QUIC versions using Google's latest specification.                                                                         |
+| `%{quic_versions}`                | Indicates the set of QUIC versions supported by our CDN service. This variable identifies QUIC versions using Google's legacy specification.                                                                         |
+| `%{referring_domain}`             | Indicates the domain defined in the `Referer` request header.                                                                                                                                                        |
+| `%{request}`                      | Describes the request.                                                                                                                                                                                               |
+| `%{request_method}`               | Indicates the HTTP request method.                                                                                                                                                                                   |
+| `%{request_protocol}`             | Indicates the request protocol used by an edge server to proxy the request.                                                                                                                                          |
+| `%{request_uri}`                  | Indicates the relative path, including the query string, defined in the request URI.                                                                                                                                 |
+| `%{resp_<RESPONSE HEADER>}`       | Returns the value corresponding to the response header identified by the `<RESPONSE HEADER>` term.                                                                                                                     |
+| `%{scheme}`                       | Indicates the request scheme.                                                                                                                                                                                        |
+| `%{status}`                       | Indicates the HTTP status code for the response.                                                                                                                                                                     |
+| `%{virt_dst_addr}`                | Indicates the client's IP address.                                                                                                                                                                                   |
+| `%{virt_dst_port}`                | Indicates the client's ephemeral port.                                                                                                                                                                               |
+| `%{virt_http_version}`            | Indicates the version of the client's request protocol.                                                                                                                                                              |
+| `%{virt_ssl_cipher}`              | Indicates the name of the cipher suite used to secure a HTTPS connection.                                                                                                                                            |
+| `%{virt_ssl_protocol}`            | Indicates the SSL/TLS protocol used to secure a HTTPS connection.                                                                                                                                                    |
 
-| Value                   | Embedded value         | Description                                                                                                                   |
-| ----------------------- | ---------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
-| HTTP method             | `${method}`            | The value of the HTTP method used for the request (e.g. `GET`)                                                                |
-| URL                     | `${url}`               | The complete URL path including any query strings (e.g. `/search?query=docs`). Protocol, hostname, and port are not included. |
-| Path                    | `${path}`              | The URL path excluding any query strings (e.g. `/search`)                                                                     |
-| Query string            | `${query:<name>}`      | The value of the `<name>` query string or empty if not available.                                                             |
-| Request header          | `${req:<name>}`        | The value of the `<name>` request header or empty if not available.                                                           |
-| Request cookie          | `${req:cookie:<name>}` | The value of the `<name>` cookie in `cookie` request header or empty if not available.                                        |
-| Request named parameter | `${req:param:<name>}`  | The value of the `<name>` param defined in the route or empty if not available.                                               |
-| Response header         | `${res:<name>}`        | The value of the `<name>` response header or empty if not available.                                                          | -->
-
+For additional information, see the [Feature Variables](/guides/performance/rules/features#feature-variables) guide.
 ## Route Pattern Syntax {/*route-pattern-syntax*/}
 
 The syntax for route paths is provided by [path-to-regexp](https://github.com/pillarjs/path-to-regexp#path-to-regexp), which is the same library used by [Express](https://expressjs.com/).

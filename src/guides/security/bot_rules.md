@@ -29,7 +29,7 @@ The differences between the behavior of Bot Manager Standard and Bot Manager Adv
 
 ### Bot Manager Standard {/*bot-manager-standard*/}
 
-Bot Manager Standard requires a client (e.g., a web browser) to solve a challenge before resolving the request. {{ PRODUCT_SECURITY }} blocks traffic when the client cannot solve this challenge within a few seconds. Basic bots typically cannot solve this type of challenge and therefore their
+Bot Manager Standard requires a client (e.g., a web browser) to solve a challenge before resolving the request. {{ PRODUCT }} {{ PRODUCT_SECURITY }} blocks traffic when the client cannot solve this challenge within a few seconds. Basic bots typically cannot solve this type of challenge and therefore their
 traffic is blocked. [Learn more.](#browser-challenge)
 
 ### Bot Manager Advanced {/*bot-manager-advanced*/}
@@ -187,13 +187,13 @@ A request must satisfy at least one rule before WAF will consider it bot traffic
     
     <Callout type="info">
 
-      Certain variables match on key-value pairs. If you match on multiple keys within a single variable, {{ PRODUCT_SECURITY }} will only need to find one of those matches to satisfy that variable.
+      Certain variables match on key-value pairs. If you match on multiple keys within a single variable, {{ PRODUCT }} {{ PRODUCT_SECURITY }} will only need to find one of those matches to satisfy that variable.
     
       For example, if you set up a request header variable to match for `Authorization` and `Content-Type`, then requests that contain either or both of those headers will satisfy that variable.
 
     </Callout>
     
--   Edgecast Reputation DB: This type of rule is satisfied when the client's IP address matches an IP address defined within our reputation database. Our reputation database contains a list of IP addresses known to be used by bots.
+-   **Edgecast Reputation DB:** This type of rule is satisfied when the client's IP address matches an IP address defined within our reputation database. Our reputation database contains a list of IP addresses known to be used by bots.
 
 **Example #1:**
 
@@ -218,7 +218,7 @@ This example assumes that your Bot Manager configuration contains the following 
 | 1    | Custom matches         | This rule contains two conditions.                                                                         |
 | 2    | Edgecast Reputation DB | This rule is satisfied when the client's IP address matches an IP address within our reputation database. |
 
-Assuming the above configuration, {{ PRODUCT_SECURITY }} applies bot rules protection under either of the following circumstances:
+Assuming the above configuration, {{ PRODUCT }} {{ PRODUCT_SECURITY }} applies bot rules protection under either of the following circumstances:
 
 -   A match is found for the variables defined in both of the first rule's conditions.
 -   The client's IP address matches an IP address within our reputation database.
@@ -229,7 +229,7 @@ A condition determines how requests will be identified through variables, operat
 
 ##### Variables {/*variables*/}
 
-A variable identifies the request element that {{ PRODUCT_SECURITY }} will analyze. We support the following request elements:
+A variable identifies the request element that {{ PRODUCT }} {{ PRODUCT_SECURITY }} will analyze. We support the following request elements:
 
 <a id="asn" />
 
@@ -286,7 +286,7 @@ A variable identifies the request element that {{ PRODUCT_SECURITY }} will anal
 
         <Callout type="info">
 
-          Setting up a cookie variable also allows you to define whether {{ PRODUCT_SECURITY }} uses a regular expression, a negative match, or both when comparing the value assigned to the variable against cookies. Use a negative match to find requests whose payload does not
+          Setting up a cookie variable also allows you to define whether {{ PRODUCT }} {{ PRODUCT_SECURITY }} uses a regular expression, a negative match, or both when comparing the value assigned to the variable against cookies. Use a negative match to find requests whose payload does not
           contain the specified cookie.
 
         </Callout>
@@ -300,7 +300,7 @@ A variable identifies the request element that {{ PRODUCT_SECURITY }} will anal
 
         <Callout type="info">
 
-          Setting up a request header variable also allows you to define whether {{ PRODUCT_SECURITY }} uses a regular expression, a negative match, or both when comparing the value assigned to the variable against request headers. Use a negative match to find requests whose
+          Setting up a request header variable also allows you to define whether {{ PRODUCT }} {{ PRODUCT_SECURITY }} uses a regular expression, a negative match, or both when comparing the value assigned to the variable against request headers. Use a negative match to find requests whose
           payload does not contain the specified request header.
 
         </Callout>
@@ -335,13 +335,13 @@ A variable identifies the request element that {{ PRODUCT_SECURITY }} will anal
 
 <Callout type="info">
 
-  You may define zero or more keys when setting up variables that match on key-value pairs. {{ PRODUCT_SECURITY }} must find at least one of the specified keys in the request before that variable will be satisfied. For example, if you set up a request header variable to match for `Authorization` and `Content-Type`, then requests that contain either or both of those headers will satisfy that variable.
+  You may define zero or more keys when setting up variables that match on key-value pairs. {{ PRODUCT }} {{ PRODUCT_SECURITY }} must find at least one of the specified keys in the request before that variable will be satisfied. For example, if you set up a request header variable to match for `Authorization` and `Content-Type`, then requests that contain either or both of those headers will satisfy that variable.
 
 </Callout>
 
 ##### Operators {/*operators*/}
 
-An operator determines how {{ PRODUCT_SECURITY }} will compare a match value against the request element identified by a variable.
+An operator determines how {{ PRODUCT }} {{ PRODUCT_SECURITY }} will compare a match value against the request element identified by a variable.
 -   **Begins with:** A match is found when the request element starts with the specified match value.
 -   **Contains:** A match is found when the request element contains the specified match value.
 -   **Ends with:**  A match is found when the request element ends with the specified match value.
@@ -364,8 +364,8 @@ An operator determines how {{ PRODUCT_SECURITY }} will compare a match value ag
 
 ##### Match Value {/*match-value*/}
 
-{{ PRODUCT_SECURITY }} uses a match value to identify threats.
--   **Default:** By default, {{ PRODUCT_SECURITY }} compares a match value against the request element identified by a variable (e.g., URL path or a
+{{ PRODUCT }} {{ PRODUCT_SECURITY }} uses a match value to identify threats.
+-   **Default:** By default, {{ PRODUCT }} {{ PRODUCT_SECURITY }} compares a match value against the request element identified by a variable (e.g., URL path or a
     request header's value).
 -   **Count:** Enable the **Count** option on a variable to compare this value against the number of times that the request element identified by a variable (e.g., a specific cookie or request header) occurs within the request.
 
@@ -379,9 +379,9 @@ Match value: 1
 ```
 
 We will now examine how the **Count** option affects comparisons for this configuration.
--   **Disabled:** If the **Count** option has been disabled on the variable, then {{ PRODUCT_SECURITY }} will compare the value of the
+-   **Disabled:** If the **Count** option has been disabled on the variable, then {{ PRODUCT }} {{ PRODUCT_SECURITY }} will compare the value of the
     `Authentication` request header to `1`.
--   **Enabled:** If the **Count** option has been enabled on the variable, then {{ PRODUCT_SECURITY }} will compare the number of times that the
+-   **Enabled:** If the **Count** option has been enabled on the variable, then {{ PRODUCT }} {{ PRODUCT_SECURITY }} will compare the number of times that the
     `Authentication` request header occurred in the request to *1*.
 
 <Callout type="info">

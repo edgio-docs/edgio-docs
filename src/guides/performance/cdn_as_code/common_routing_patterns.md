@@ -106,15 +106,32 @@ router.get('/products/:productId', {
       "header-name"
     ],
 
-    // set `header-name` to `some-value` in the response
+    // add `header-name` to the response, appending the value to the
+    // header if it already exists
+    add_response_headers: {
+      "header-name": "some-value"
+    },
+
+    // set/overwrite `header-name` to `some-value` in the response
     set_response_headers: {
       "header-name": "some-value"
     },
 
-    // remove `header-name` from the response
+    // append `another-value` to `header-name` in the response,
+    // becoming `some-value,another-value`
+    set_response_headers: {
+      "+header-name": ",another-value"
+    },
+
+    // remove `header-name` from the response by name
     remove_response_headers: [
       "header-name"
     ]
+    
+    // or set with an empty value to remove `header-name` from the response 
+    set_response_headers: {
+      "header-name": ""
+    }
   }
 })
 ```

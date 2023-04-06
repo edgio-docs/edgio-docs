@@ -107,7 +107,7 @@ On a per environment-basis, define how {{ PRODUCT }} will communicate with your 
 **Key information:**
 
 -   Each origin configuration identifies a set of web server(s) by hostname or IP address.  
--   An origin configuration may identify up to 10 hostnames or IP addresses. 
+-   An origin configuration may identify up to 4 hostnames or IP addresses. 
 -   {{ PRODUCT }} applies [primary/failover load balancing](#primary-failover-load-balancing) for traffic directed to an origin configuration that contains multiple origin hostnames. 
 -   The maximum number of origin configurations per environment is 100.
 -   It is strongly recommended to cloak your origin to protect it against attacks that directly target your web servers and thereby bypass the security provided by our service.

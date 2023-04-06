@@ -12,7 +12,9 @@ Rules determine how requests for a specific environment will be processed.
 -   Redirect requests.
 -   Store custom log data.
 
-## Quick Start
+<Video src="https://www.youtube.com/watch?v=5xPItxYBGK0" />
+
+## Quick Start {/*quick-start*/}
 
 Set up your rules through the following steps:
 
@@ -20,7 +22,7 @@ Set up your rules through the following steps:
 2.  Define one or more rule(s) for that environment. Each rule should contain at least one feature.
 3.  Apply your rules to that environment by deploying your changes.
 
-## Rules and CDN-as-Code
+## Rules and CDN-as-Code {/*rules-and-cdn-as-code*/}
 
 There are two workflows for defining your CDN configuration:
 
@@ -45,7 +47,7 @@ For example, if you deploy rules to an environment and a teammate deploys a CDN-
 
 </Callout>
 
-## Rules
+## Rules {/*rules*/}
 
 A rule:
 
@@ -59,7 +61,7 @@ For example, the following rule applies a caching policy to all `GET` requests w
 
 ![Rule Example](/images/v7/performance/rule-condition-feature-example.png)
 
-### Conditions
+### Conditions {/*conditions*/}
 
 A condition identifies a set of requests. Setting up a condition requires:
 
@@ -78,7 +80,7 @@ Identify all GET requests through the following condition:
 
 [Learn more about types of conditions.](/guides/performance/rules/conditions)
 
-#### Operators
+#### Operators {/*operators*/}
 
 An operator determines when a request satisfies a condition by defining the relationship between a variable and a value. Each operator is briefly described below.
 
@@ -179,7 +181,7 @@ An operator determines when a request satisfies a condition by defining the rela
 -   **greater than:** Indicates that the value derived from the request must be greater than the value(s) defined within a condition.
 -   **greater than or equal:** Indicates that the value derived from the request must be greater than or equal to the value(s) defined within a condition.
 
-### Features
+### Features {/*features*/}
 
 A feature determines how requests will be processed. They are categorized as follows:
 
@@ -194,7 +196,7 @@ A feature determines how requests will be processed. They are categorized as fol
 -   [Set Variables](/guides/performance/rules/features#set-variables): Assigns a value to one or more user-defined variable(s) that are  passed to your bespoke traffic processing solution.
 -   [URL](/guides/performance/rules/features#url): Redirects or rewrites requests to a different URL.
 
-##  Rule Precedence
+##  Rule Precedence {/*rule-precedence*/}
 
 You may create multiple rules. The use of multiple rules facilitates:
 
@@ -214,7 +216,7 @@ A good rule of thumb when determining where a rule should be positioned is to or
 
 ![Order of Precedence](/images/v7/performance/rules-order-of-precedence.png)
 
-### Exceptions to Rule Precedence
+### Exceptions to Rule Precedence {/*exceptions-to-rule-precedence*/}
 
 The following cases are exceptions to the order-based rule precedence stated above:
 
@@ -228,7 +230,19 @@ The following cases are exceptions to the order-based rule precedence stated abo
 
 -   **Token Auth Precedence:** The Token Auth feature takes precedence over most features with the exception of the URL Rewrite feature. This occurs regardless of rule order.
 
-## Sample Scenario
+### Fine-Tuning Your Rules {/*fine-tuning-your-rules*/}
+
+If the response provided by {{ PRODUCT }} does not match your expectations, you can check the [{{ HEADER_PREFIX }}-mr response header](/guides/performance/response#-mr) to find out which rules were applied to a request. 
+
+For example, the following value indicates that the request matched both the first rule (i.e., `0`) and the second rule (i.e., `1`) within deployment version #16.
+
+`{{ HEADER_PREFIX }}-mr: 16:0;16:1;`
+
+You can now use this information to adjust your rules. For example, you may adjust the second rule to exclude this type of request or modify another rule to match this type of request. 
+
+<Video src="https://www.youtube.com/watch?v=oQ5EMbxvprM" />
+
+## Sample Scenario {/*sample-scenario*/}
 
 In this sample scenario, create the following rules:
 
@@ -244,7 +258,7 @@ In this sample scenario, create the following rules:
 
 </Callout>
 
-## Managing Rules
+## Managing Rules {/*managing-rules*/}
 
 You may create, modify, and delete rules.
 

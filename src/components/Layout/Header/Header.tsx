@@ -13,6 +13,7 @@ import {ExternalLink} from 'components/ExternalLink';
 import {IconHamburger} from 'components/Icon/IconHamburger';
 import {IconLightMobileLogo} from 'components/Icon/IconMobileLogo';
 import {siteConfig} from 'config/appConfig';
+import {getVersionedConfig} from 'utils/config';
 import useConditioning from 'utils/hooks/useConditioning';
 import useTheme from 'utils/hooks/useTheme';
 
@@ -200,6 +201,7 @@ export default function Header({
   setShowSidebar: (showSidebar: boolean) => void;
 }) {
   const {version} = useConditioning();
+  const {APP_DOMAIN} = getVersionedConfig(version.selectedVersion);
 
   const searchParameters = {
     facetFilters: [['version:all', `version:${version.selectedVersionText}`]],
@@ -263,10 +265,12 @@ export default function Header({
             <SearchField />
           </div>
           <ToggleTheme />
-          <ExternalLink href="https://app.layer0.co/?sgId=ef4d5169-93f2-4f55-aabb-dc3be4286e1f">
+          <ExternalLink
+            href={`https://${APP_DOMAIN}/?sgId=ef4d5169-93f2-4f55-aabb-dc3be4286e1f`}>
             Login
           </ExternalLink>
-          <ExternalLink href="https://app.layer0.co/signup?redirectTo=%2F&sgId=ef4d5169-93f2-4f55-aabb-dc3be4286e1f">
+          <ExternalLink
+            href={`https://${APP_DOMAIN}/signup?redirectTo=%2F&sgId=ef4d5169-93f2-4f55-aabb-dc3be4286e1f`}>
             Sign up
           </ExternalLink>
         </div>

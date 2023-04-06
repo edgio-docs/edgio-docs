@@ -41,17 +41,21 @@ const StyledFrameworks = styled.div`
 `;
 
 export default function Frameworks() {
-  const {
-    version: {toVersionedPath},
-  } = useConditioning();
+  const {version} = useConditioning();
   const parentPath = 'framework-guides';
-  const allRoutes = getChildrenRoutesFromSidebarMenuItems(parentPath);
+  let allRoutes = getChildrenRoutesFromSidebarMenuItems(parentPath);
+
+  // TODO - remove this when we have a version 7 support for other frameworks
+  if (version.selectedVersion === '7') {
+    allRoutes = allRoutes.slice(0, 3);
+  }
+
   return (
     <StyledFrameworks>
       <ul className="framework-lists">
         {allRoutes.map((route) => (
           <li key={route.path} className="framework-list__item">
-            <Link href={toVersionedPath(route.path)} passHref>
+            <Link href={version.toVersionedPath(route.path)} passHref>
               <a className="framework-link">
                 <div className="icon" id="light-theme">
                   {route.icon ? route.icon : null}

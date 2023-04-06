@@ -2,6 +2,7 @@ import ButtonLink from './ButtonLink';
 import ButtonLinksGroup from './ButtonLinksGroup';
 
 import {IconDeploy} from 'components/Icon';
+import useConditioning from 'utils/hooks/useConditioning';
 
 export default function ExampleButtons({
   title,
@@ -14,6 +15,7 @@ export default function ExampleButtons({
   repoUrl: string;
   deployFromRepo: boolean;
 }) {
+  const {version} = useConditioning();
   return (
     <ButtonLinksGroup>
       {siteUrl && (
@@ -30,7 +32,7 @@ export default function ExampleButtons({
           View the Code
         </ButtonLink>
       )}
-      {deployFromRepo && repoUrl && (
+      {deployFromRepo && repoUrl && Number(version.selectedVersion) < 7 && (
         <ButtonLink
           variant="stroke"
           type="deploy"

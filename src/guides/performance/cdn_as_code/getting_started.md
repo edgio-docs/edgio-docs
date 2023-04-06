@@ -314,6 +314,8 @@ Assess performance and caching behavior from the {{ PORTAL_LINK }}. Fine-tune yo
 
 [Learn more.](/guides/production)
 
+<Condition version="<7">
+
 ## Examples {/*example*/}
 
 Use our sample websites to gain hands-on experience on how to set up {{ PRODUCT }} {{ PRODUCT_EDGE }}. Specifically, you can browse our sample websites, view their source code, and even experiment on them by deploying them to {{ PRODUCT }}.
@@ -355,6 +357,8 @@ This example demonstrates a full-featured {{ PRODUCT }} configuration that showc
   siteUrl="https://edgio-community-examples-full-featured-performance-live.layer0-limelight.link/"
   repoUrl="https://github.com/edgio-docs/edgio-full-featured-performance-example/"
   deployFromRepo />
+
+</Condition>
 
 ## Issues? {/*issues*/}
 

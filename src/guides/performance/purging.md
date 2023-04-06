@@ -110,7 +110,7 @@ Run the following command to purge the `basketball` surrogate key from the `prod
 
 ## REST API {/*rest-api*/}
 
-Purge cached content through the {{ PRODUCT }} REST API through the [clear-cache endpoint](/guides/rest_api#clear-cache). You may purge:
+Purge cached content through the {{ PRODUCT }} REST API through the [clear-cache endpoint](/guides/develop/rest_api#clear-cache). You may purge:
 
 -   **All content:** Exclude the `paths` and `surrogateKeys` properties.
 -   **By relative path:** Pass the `paths` array of string values. You may use an `*` to represent zero or more characters.

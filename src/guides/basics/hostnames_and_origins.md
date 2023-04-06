@@ -107,7 +107,8 @@ On a per environment-basis, define how {{ PRODUCT }} will communicate with your 
 **Key information:**
 
 -   Each origin configuration identifies a set of web server(s) by hostname or IP address.  
--   An origin configuration may identify up to 10 hostnames or IP addresses. 
+-   An origin configuration may identify up to 4 hostnames or IP addresses. 
+-   {{ PRODUCT }} applies [primary/failover load balancing](#primary-failover-load-balancing) for traffic directed to an origin configuration that contains multiple origin hostnames. 
 -   The maximum number of origin configurations per environment is 100.
 -   It is strongly recommended to cloak your origin to protect it against attacks that directly target your web servers and thereby bypass the security provided by our service.
 -   You may configure an origin configuration to always serve traffic to your hosts over HTTP, HTTPS, or to match the client's scheme. Matching a client's scheme means that our network will serve HTTP traffic to your web servers over port 80, while HTTPS traffic will be served over port 443.
@@ -189,6 +190,27 @@ On a per environment-basis, define how {{ PRODUCT }} will communicate with your 
     4.  Optional. Configure cache misses from a specific region to always be proxied to your origin by selecting `Bypass`.
 
 7. If you are finished making changes to this environment, click **Deploy Changes**.
+
+### Primary/Failover Load Balancing {/*primary-failover-load-balancing*/}
+
+{{ PRODUCT }} determines how to load balance traffic directed at your origin configuration as follows:
+
+    1.  All requests that {{ PRODUCT }} proxies to this origin configuration will be directed to the first origin hostname listed within your origin configuration.
+    2.  If a server corresponding to that origin hostname is unavailable, then the request will be sent to the next origin configuration on the list. This step is repeated until a server is able to honor the request. 
+
+#### Unavailable Servers
+
+A server is considered unavailable when either of the following conditions are true:
+
+-   A TCP connection is refused.
+-   The connection times out.
+
+The manner in which an unavailable server affects load balancing is described below.
+
+1.  Once a server is designated as unavailable, CDN traffic will not be load balanced to the corresponding hostname or IP address for a brief time period.
+2.  Upon the expiration of this time period, CDN traffic may once again flow through the corresponding hostname or IP address according to its position within your origin configuration. 
+3.  If the server is still unavailable, then CDN traffic will not be load balanced to the corresponding hostname or IP address for a brief, but slightly longer time period.
+4.  Steps 2 and 3 repeat until the server becomes available.
 
 ## Firewall - Allowing {{ PRODUCT }} IP Addresses {/*firewall-allowing-ip-addresses*/}
 

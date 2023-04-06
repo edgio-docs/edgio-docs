@@ -56,7 +56,7 @@ Top-level name/value pairs are described below.
 
 ### logs Array {/*logs-array*/}
 
-The logs array contains an object for each log entry associated with the current JSON document. Each log entry describes a threat through the following fields:
+The `logs` array contains an object for each log entry associated with the current JSON document. Each log entry describes a threat through the following fields:
 
 -   **account_number (*String*):** Customer AN. (Category: General) Indicates your CDN account number (e.g., 0001). 
 -   **action_type (*String*):** Action Type. (Category: Event) Indicates the action that was triggered as a result of the violation. Valid values are:

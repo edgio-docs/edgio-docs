@@ -2204,7 +2204,7 @@ This feature allows our edge servers to rewrite the URL without performing a tra
 
 **Default Behavior:** By default, requests are not rewritten.
 
-## Feature variables {/*feature-variables*/}
+## Feature Variables {/*feature-variables*/}
 
 Feature variables retrieves request and response metadata. Use this metadata to dynamically alter a request or a response.
 

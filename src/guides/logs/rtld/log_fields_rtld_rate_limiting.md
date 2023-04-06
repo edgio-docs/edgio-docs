@@ -56,7 +56,7 @@ Top-level name/value pairs are described below.
 
 ### logs Array {/*logs-array*/}
 
-The logs array contains an object for each log entry associated with the current JSON document. Each log entry describes a request to our CDN via the following fields:
+The `logs` array contains an object for each log entry associated with the current JSON document. Each log entry describes a request to our CDN via the following fields:
 
 -   **account_number (*String*):** Customer AN. (Category: General) Indicates your CDN account number (e.g., 0001). 
 -   **client_city (*String*):** City. (Category: Client Geography) Indicates the city from which the request originated.

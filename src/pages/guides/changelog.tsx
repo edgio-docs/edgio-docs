@@ -113,8 +113,9 @@ export async function getServerSideProps() {
         // Conditions for modifying the line contents
         v = v.replace(/## What\Ws Changed/, ''); // remove "What's Changed" heading
         v = v.replace(/### CHANGELOG/, ''); // remove "CHANGELOG" heading
+        v = v.replace(/\*\*Full Changelog.+$/g, ''); // remove "Full Changelog" link
         v = v.replace(/\[(.+)\]\(\S+\)/g, '$1'); // remove any markdown links
-        v = v.replace(/https?:\/\/\S+/g, ''); // replace any url with an empty string
+        v = v.replace(/(?:in\s)?https?:\/\/\S+/g, ''); // replace any url with an empty string
         v = v.toLowerCase().indexOf(SKIP_LABEL) > -1 ? '' : v; // exclude if labeled to skip notes
 
         // check PR labels for skipping notes
@@ -153,9 +154,9 @@ export async function getServerSideProps() {
   ];
 
   // split the major release versions
-  const [v6, v5, v4, v3] = splitByVersion(/^v6/, /^v5/, /^v4/, /^v3/);
+  const [v7, v6, v5] = splitByVersion(/^v7/, /^v6/, /^v5/);
 
-  const content = await markdownToHtml([v6, v5].join('\n'));
+  const content = await markdownToHtml([v7, v6, v5].join('\n'));
 
   return {props: {content}};
 }

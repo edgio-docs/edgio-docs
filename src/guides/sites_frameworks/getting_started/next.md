@@ -6,6 +6,8 @@ This guide shows you how to deploy a [Next.js](https://nextjs.org/) application 
 
 <Video src="https://www.youtube.com/watch?v=ZN5oYSSpnmc" />
 
+<Condition version="<7">
+
 ## Example {/* example */}
 
 <ExampleButtons
@@ -15,9 +17,13 @@ This guide shows you how to deploy a [Next.js](https://nextjs.org/) application 
   deployFromRepo
 />
 
+</Condition>
+
 ## Next.js Commerce {/* nextjs-commerce */}
 
 For details on using the Next.js Commerce template with {{ PRODUCT }}, refer to our [Next.js Commerce Guide](/guides/sites_frameworks/getting_started/next_commerce).
+
+<Condition version="<7">
 
 ## Connector {/* connector */}
 
@@ -30,6 +36,8 @@ For details on using the Next.js Commerce template with {{ PRODUCT }}, refer to 
   href="https://github.com/edgio-docs/edgio-connectors/tree/main/edgio-next-connector">
   View the Connector Code
 </ButtonLink>
+
+</Condition>
 
 ## Supported Versions {/* supported-versions */}
 

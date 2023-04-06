@@ -224,24 +224,24 @@ new Router()
 
 You can inject values into the request or response via cache key rewrite, headers, cookies, URL redirect and rewrite as template literals using the `%{<FEATURE VALUE>}` format. 
 
-| Feature Variable                  | Description                                                                                                                                                                                                          |
-|-----------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `%{arg_<QUERY STRING PARAMETER>}` | Returns the value corresponding to the query string parameter identified by the `<QUERY STRING PARAMETER>` term.                                                                                                     |
-| `%{cookie_<COOKIE>}`              | Returns the value corresponding to the cookie identified by the `<COOKIE>` term.                                                                                                                                     |
-| `%{host}`                         | Indicates the host defined in the request URL.                                                                                                                                                                       |
-| `%{http_<REQUEST HEADER>}`        | Returns the value corresponding to the request header identified by the `<REQUEST HEADER>` term.                                                                                                                       |
-| `%{normalized_path}`              | Indicates the normalized relative path for the request submitted to the CDN.                                                                                                                                         |
-| `%{normalized_query}`             | Indicates the normalized query string defined in the request URL.                                                                                                                                                    |
-| `%{normalized_uri}`               | Indicates the normalized relative path and query string for the request submitted to the CDN.                                                                                                                        |
-| `%{path}`                         | Indicates the relative path to the requested content. This relative path reflects URL rewrites due to `url_rewrite`.                                                                                                 |
-| `%{query_string}`                 | Indicates the entire query string value defined in the request URL.                                                                                                                                                  |  |
-| `%{referring_domain}`             | Indicates the domain defined in the `Referer` request header.                                                                                                                                                        |
-| `%{request}`                      | Describes the request.                                                                                                                                                                                               |
-| `%{request_method}`               | Indicates the HTTP request method.                                                                                                                                                                                   |
-| `%{request_protocol}`             | Indicates the request protocol used by an edge server to proxy the request.                                                                                                                                          |
-| `%{request_uri}`                  | Indicates the relative path, including the query string, defined in the request URI.                                                                                                                                 |
-| `%{resp_<RESPONSE HEADER>}`       | Returns the value corresponding to the response header identified by the `<RESPONSE HEADER>` term.                                                                                                                     |
-| `%{status}`                       | Indicates the HTTP status code for the response.                                                                                                                                                                     |
+| Feature Variable                  | Description                                                                                                          |
+|-----------------------------------|----------------------------------------------------------------------------------------------------------------------|
+| `%{arg_<QUERY STRING PARAMETER>}` | Returns the value corresponding to the query string parameter identified by the `<QUERY STRING PARAMETER>` term.     |
+| `%{cookie_<COOKIE>}`              | Returns the value corresponding to the cookie identified by the `<COOKIE>` term.                                     |
+| `%{host}`                         | Indicates the host defined in the request URL.                                                                       |
+| `%{http_<REQUEST HEADER>}`        | Returns the value corresponding to the request header identified by the `<REQUEST HEADER>` term.                     |
+| `%{normalized_path}`              | Indicates the normalized relative path for the request submitted to the CDN.                                         |
+| `%{normalized_query}`             | Indicates the normalized query string defined in the request URL.                                                    |
+| `%{normalized_uri}`               | Indicates the normalized relative path and query string for the request submitted to the CDN.                        |
+| `%{path}`                         | Indicates the relative path to the requested content. This relative path reflects URL rewrites due to `url_rewrite`. |
+| `%{query_string}`                 | Indicates the entire query string value defined in the request URL.                                                  |  |
+| `%{referring_domain}`             | Indicates the domain defined in the `Referer` request header.                                                        |
+| `%{request}`                      | Describes the request.                                                                                               |
+| `%{request_method}`               | Indicates the HTTP request method.                                                                                   |
+| `%{request_protocol}`             | Indicates the request protocol used by an edge server to proxy the request.                                          |
+| `%{request_uri}`                  | Indicates the relative path, including the query string, defined in the request URI.                                 |
+| `%{resp_<RESPONSE HEADER>}`       | Returns the value corresponding to the response header identified by the `<RESPONSE HEADER>` term.                   |
+| `%{status}`                       | Indicates the HTTP status code for the response.                                                                     |
 
 ### Example {/*feature-variables-example*/}
 

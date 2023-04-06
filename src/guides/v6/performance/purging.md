@@ -28,7 +28,7 @@ To purge responses via the CLI, see the [CLI reference](/guides/cli#cache-clear)
 
 ## REST API {/*rest-api*/}
 
-To purge responses via the REST API, see the [REST API reference](/guides/rest_api#clear-cache).
+To purge responses via the REST API, see the [REST API reference](/guides/develop/rest_api#clear-cache).
 
 ## Deployments {/*deployments*/}
 

@@ -57,56 +57,6 @@ import { Router } from "{{ PACKAGE_NAME }}/core";
 export default new Router().match("/:path*", {});
 ```
 
-## Route Execution {/*route-execution*/}
-
-When {{ PRODUCT_NAME }} receives a request, it executes **each route that matches the request** in the order in which they are declared until one sends a response.
-
-Multiple routes can therefore be executed for a given request. A common pattern is to add caching with one route and render the response with a later one using middleware. In the following example we cache then render a response with Next.js:
-
-```js
-import { Router } from "{{ PACKAGE_NAME }}/core";
-import { nextRoutes } from "{{ PACKAGE_NAME }}/next";
-
-// In this example a request to /products/1 will be cached by the first route, then served by the `nextRoutes` middleware
-new Router()
-  .get('/products/:id', {
-    caching: { max_age: { 200: "1h" }, stale_while_revalidate: "1h" },
-  })
-  .use(nextRoutes)
-```
-
-### Alter Requests and Responses {/*alter-requests-and-responses*/}
-
-{{ PRODUCT_NAME }} offers APIs to manipulate request and response headers and cookies. The APIs are:
-
-| Operation     | Request               | Response sent to Browser  |
-|---------------|-----------------------|---------------------------|
-| Add header    | `set_request_headers` | `add_response_headers`    |
-| Add cookie    | `--`                  | `*`                       |
-| Update header | `set_request_headers` | `set_response_headers`    |
-| Update cookie | `--`                  | `*`                       |
-| Remove header | `removeRequestHeader` | `remove_response_headers` |
-| Remove cookie | `--`                  | `*`                       |
-
-`*` Adding, updating, or removing a response cookie can be achieved with `set_response_headers` applied to `set-cookie` header.
-
-<!-- You can find detailed descriptions of these APIs in the `{{ PACKAGE_NAME }}/core` [documentation](/docs/api/core/classes/_router_responsewriter_.responsewriter.html). -->
-
-<!-- ### Embedded Values {/*embedded-values*/}
-
-You can inject values from the request or response into headers or cookies as template literals using the `${value}` format. For example: `setResponseHeader('original-request-path', '${path}')` would add an `original-request-path` response header whose value is the request path.
-
-| Value                   | Embedded value         | Description                                                                                                                   |
-| ----------------------- | ---------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
-| HTTP method             | `${method}`            | The value of the HTTP method used for the request (e.g. `GET`)                                                                |
-| URL                     | `${url}`               | The complete URL path including any query strings (e.g. `/search?query=docs`). Protocol, hostname, and port are not included. |
-| Path                    | `${path}`              | The URL path excluding any query strings (e.g. `/search`)                                                                     |
-| Query string            | `${query:<name>}`      | The value of the `<name>` query string or empty if not available.                                                             |
-| Request header          | `${req:<name>}`        | The value of the `<name>` request header or empty if not available.                                                           |
-| Request cookie          | `${req:cookie:<name>}` | The value of the `<name>` cookie in `cookie` request header or empty if not available.                                        |
-| Request named parameter | `${req:param:<name>}`  | The value of the `<name>` param defined in the route or empty if not available.                                               |
-| Response header         | `${res:<name>}`        | The value of the `<name>` response header or empty if not available.                                                          | -->
-
 ## Route Pattern Syntax {/*route-pattern-syntax*/}
 
 The syntax for route paths is provided by [path-to-regexp](https://github.com/pillarjs/path-to-regexp#path-to-regexp), which is the same library used by [Express](https://expressjs.com/).
@@ -214,7 +164,7 @@ router.match(
 
 ## Request Handling {/*request-handling*/}
 
-The second argument to routes is a function that receives a `RouteHelper` and uses it to send a response. Using `RouteHelper` you can:
+The second argument to routes is a function that receives a `Features` type and uses it to send a response, such as:
 
 - Proxy a backend configured in `{{ CONFIG_FILE }}`
 - Serve a static file
@@ -223,8 +173,91 @@ The second argument to routes is a function that receives a `RouteHelper` and us
 - Cache the response at edge and in the browser
 - Manipulate request and response headers
 
-<!-- TODO API link to RouteHelper
-[See the API Docs for Response Writer](/docs/api/core/classes/_router_responsewriter_.responsewriter.html) -->
+For example, to send a synthetic response for requests to `/hello-world`:
+
+```js
+import { Router } from "{{ PACKAGE_NAME }}/core";
+
+new Router()
+  .get('/hello-world', {
+    'response': {
+      'set_response_body': 'Hello, world!',
+      'set_done': true
+    }
+  })
+```
+
+## Route Execution {/*route-execution*/}
+
+When {{ PRODUCT_NAME }} receives a request, it executes **each route that matches the request** in the order in which they are declared until one sends a response.
+
+Multiple routes can therefore be executed for a given request. A common pattern is to add caching with one route and render the response with a later one using middleware. In the following example we cache then render a response with Next.js:
+
+```js
+import { Router } from "{{ PACKAGE_NAME }}/core";
+import { nextRoutes } from "{{ PACKAGE_NAME }}/next";
+
+// In this example a request to /products/1 will be cached by the first route, then served by the `nextRoutes` middleware
+new Router()
+  .get('/products/:id', {
+    caching: { max_age: { 200: "1h" }, stale_while_revalidate: "1h" },
+  })
+  .use(nextRoutes)
+```
+
+## Alter Requests and Responses {/*alter-requests-and-responses*/}
+
+{{ PRODUCT_NAME }} offers APIs to manipulate request and response headers and cookies. The APIs are:
+
+| Operation     | Request               | Response sent to Browser                                          |
+|---------------|-----------------------|-------------------------------------------------------------------|
+| Add header    | `set_request_headers` | `add_response_headers`                                            |
+| Add cookie    | `*`                   | `*`                                                               |
+| Update header | `set_request_headers` | `set_response_headers`                                            |
+| Update cookie | `*`                   | `*`                                                               |
+| Remove header | `set_request_headers` | `remove_response_headers` <br /> `remove_origin_response_headers` |
+| Remove cookie | `*`                   | `*`                                                               |
+
+`*` Adding, updating, or removing request cookies can be achieved with `set_request_headers` applied to `cookie` header. Similarly, adding, updating, or removing response cookies can be achieved with `set_response_headers` applied to `set-cookie` header.
+
+## Request / Response Variables {/*embedded-variables*/}
+
+You can inject values into the request or response via cache key rewrite, headers, cookies, URL redirect and rewrite as template literals using the `%{<FEATURE VALUE>}` format. 
+
+| Feature Variable                  | Description                                                                                                          |
+|-----------------------------------|----------------------------------------------------------------------------------------------------------------------|
+| `%{arg_<QUERY STRING PARAMETER>}` | Returns the value corresponding to the query string parameter identified by the `<QUERY STRING PARAMETER>` term.     |
+| `%{cookie_<COOKIE>}`              | Returns the value corresponding to the cookie identified by the `<COOKIE>` term.                                     |
+| `%{host}`                         | Indicates the host defined in the request URL.                                                                       |
+| `%{http_<REQUEST HEADER>}`        | Returns the value corresponding to the request header identified by the `<REQUEST HEADER>` term.                     |
+| `%{normalized_path}`              | Indicates the normalized relative path for the request submitted to the CDN.                                         |
+| `%{normalized_query}`             | Indicates the normalized query string defined in the request URL.                                                    |
+| `%{normalized_uri}`               | Indicates the normalized relative path and query string for the request submitted to the CDN.                        |
+| `%{path}`                         | Indicates the relative path to the requested content. This relative path reflects URL rewrites due to `url_rewrite`. |
+| `%{query_string}`                 | Indicates the entire query string value defined in the request URL.                                                  |  |
+| `%{referring_domain}`             | Indicates the domain defined in the `Referer` request header.                                                        |
+| `%{request}`                      | Describes the request.                                                                                               |
+| `%{request_method}`               | Indicates the HTTP request method.                                                                                   |
+| `%{request_protocol}`             | Indicates the request protocol used by an edge server to proxy the request.                                          |
+| `%{request_uri}`                  | Indicates the relative path, including the query string, defined in the request URI.                                 |
+| `%{resp_<RESPONSE HEADER>}`       | Returns the value corresponding to the response header identified by the `<RESPONSE HEADER>` term.                   |
+| `%{status}`                       | Indicates the HTTP status code for the response.                                                                     |
+
+### Example {/*feature-variables-example*/}
+
+This example shows how you would add an `original-request-path` response header for all requests whose value is the request path:
+
+```js
+router.match({}, {
+  'headers': {
+    set_response_header: { 
+      'original-request-path': '%{path}' 
+    }
+  }
+})
+```
+
+For a comprehensive list of variables, see the [Feature Variables](/guides/performance/rules/features#feature-variables) guide.
 
 ## Blocking Search Engine Crawlers {/*blocking-search-engine-crawlers*/}
 

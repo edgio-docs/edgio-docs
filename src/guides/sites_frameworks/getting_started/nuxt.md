@@ -4,6 +4,8 @@ title: Nuxt.js
 
 This guide shows you how to deploy a Nuxt.js application to {{ PRODUCT }}. If you run into any issues please consult the [Troubleshooting](#troubleshooting) section.
 
+<Condition version="<7">
+
 ## Example SSR Site {/*example-ssr-site*/}
 
 This Nuxt.js example app uses server-side rendering and prefetching to provide lightening-fast transitions between pages.
@@ -31,6 +33,8 @@ This framework has a connector developed for {{ PRODUCT }}. See [Connectors](/gu
 <ButtonLink variant="stroke" type="code" withIcon={true} href="https://github.com/edgio-docs/edgio-connectors/tree/main/edgio-nuxt-connector">
   View the Connector Code
 </ButtonLink>
+
+</Condition>
 
 {{ PREREQ }}
 

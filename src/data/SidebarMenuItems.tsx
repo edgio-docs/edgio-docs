@@ -745,7 +745,7 @@ const SidebarMenuItems: ISidebarMenuItems = [
       routes: [
         {
           title: 'REST API',
-          path: '/guides/rest_api',
+          path: '/guides/develop/rest_api',
         },
         {
           title: `${PACKAGE_NAME}/core Package`,

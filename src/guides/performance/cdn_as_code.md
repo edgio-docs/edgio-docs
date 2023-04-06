@@ -90,9 +90,9 @@ new Router()
 
 `*` Adding, updating, or removing request cookies can be achieved with `set_request_headers` applied to `cookie` header. Similarly, adding, updating, or removing response cookies can be achieved with `set_response_headers` applied to `set-cookie` header.
 
-## Embedded Request / Response Values {/*embedded-values*/}
+## Embedded Request / Response Variables {/*embedded-variables*/}
 
-You can inject values from the request or response into headers or cookies as template literals using the `%{<FEATURE VALUE>}` format. For example: `set_response_header: { 'original-request-path', '%{path}' }` would add an `original-request-path` response header whose value is the request path.
+You can inject values from the request or response into headers or cookies as template literals using the `%{<FEATURE VALUE>}` format. 
 
 | Feature Variable                  | Description                                                                                                                                                                                                          |
 |-----------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -134,8 +134,22 @@ You can inject values from the request or response into headers or cookies as te
 | `%{virt_http_version}`            | Indicates the version of the client's request protocol.                                                                                                                                                              |
 | `%{virt_ssl_cipher}`              | Indicates the name of the cipher suite used to secure a HTTPS connection.                                                                                                                                            |
 | `%{virt_ssl_protocol}`            | Indicates the SSL/TLS protocol used to secure a HTTPS connection.                                                                                                                                                    |
+### Example {/*feature-variables-example*/}
+
+This example shows how you would add an `original-request-path` response header for all requests whose value is the request path:
+
+```js
+router.match({}, {
+  'headers': {
+    set_response_header: { 
+      'original-request-path': '%{path}' 
+    }
+  }
+})
+```
 
 For additional information, see the [Feature Variables](/guides/performance/rules/features#feature-variables) guide.
+
 ## Route Pattern Syntax {/*route-pattern-syntax*/}
 
 The syntax for route paths is provided by [path-to-regexp](https://github.com/pillarjs/path-to-regexp#path-to-regexp), which is the same library used by [Express](https://expressjs.com/).

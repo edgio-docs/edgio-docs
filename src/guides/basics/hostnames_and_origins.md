@@ -108,7 +108,7 @@ On a per environment-basis, define how {{ PRODUCT }} will communicate with your 
 
 -   Each origin configuration identifies a set of web server(s) by hostname or IP address.  
 -   An origin configuration may identify up to 10 hostnames or IP addresses. 
--   {{ PRODUCT }} applies primary/failover load balancing for traffic directed to an origin configuration that contains multiple origin entries. 
+-   {{ PRODUCT }} applies [primary/failover load balancing](#primary-failover-load-balancing) for traffic directed to an origin configuration that contains multiple origin hostnames. 
 -   The maximum number of origin configurations per environment is 100.
 -   It is strongly recommended to cloak your origin to protect it against attacks that directly target your web servers and thereby bypass the security provided by our service.
 -   You may configure an origin configuration to always serve traffic to your hosts over HTTP, HTTPS, or to match the client's scheme. Matching a client's scheme means that our network will serve HTTP traffic to your web servers over port 80, while HTTPS traffic will be served over port 443.

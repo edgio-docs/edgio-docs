@@ -69,7 +69,7 @@ Top-level name/value pairs are described below.
 
 ### logs Array {/*logs-array*/}
 
-The logs array contains an object for each log entry associated with the current JSON document. Each log entry describes a request to our CDN via the following fields:
+The `logs` array contains an object for each log entry associated with the current JSON document. Each log entry describes a request to our CDN via the following fields:
 
 -   **account_number (*String*):** Customer AN. (Category: General) Indicates your CDN account number (e.g., 0001). 
 -   **auth_user (*String*):** User (Basic Authentication). (Category: Request) Indicates the user name passed in the request URL for the purpose of HTTP basic authentication.
@@ -78,7 +78,7 @@ The logs array contains an object for each log entry associated with the current
 
     The following value will be reported for this field: `joe`
 
--   **background_fill_wait_time (**):** Background Fill Wait Time. (Category: Network) Indicates the amount of time, in seconds, that it took for a sub-request to receive the first byte of the response.
+-   **background_fill_wait_time<!-- (* *)-->:** Background Fill Wait Time. (Category: Network) Indicates the amount of time, in seconds, that it took for a sub-request to receive the first byte of the response.
 -   **bytes_in (*Integer*):** Bytes In. (Category: Network) Indicates the sum of the number of bytes read from both of the following sources:
 
     -   Requesting client

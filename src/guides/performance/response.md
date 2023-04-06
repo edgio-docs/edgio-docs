@@ -77,7 +77,7 @@ The response headers generated for content requested through our CDN describe th
 
 ### Common Response Headers {/*common-response-headers*/}
 
-Common response headers are:
+Common response headers are described below.
 
 -   **Accept-Ranges:** Indicates whether a server can accept range requests.
 
@@ -146,7 +146,7 @@ Common response headers are:
 
 ### {{ PRODUCT }}-Specific Headers {/*-specific-headers*/}
 
-{{ PRODUCT }}-specific headers are:
+{{ PRODUCT }}-specific headers are described below.
 
 -   **x-cache: HIT:** Indicates that a cached version of the requested content was served directly to the client by an edge server.
 

@@ -195,4 +195,4 @@ layer0 cache-clear --team=my-team --site=my-site --environment=production --surr
 
 For more information, see [clearing the cache from the CLI](/guides/cli#section_cache_clear).
 
-You can also purge responses by surrogate key [via the REST API](/guides/develop/rest_api#section_clear_cache) by specifying the `surrogateKeys` option.
+You can also purge responses by surrogate key [via the REST API](/guides/rest_api#section_clear_cache) by specifying the `surrogateKeys` option.

@@ -41,7 +41,10 @@ If the error is generated in {{ PRODUCT_NAME }} itself, the platform generates a
 | 546  | {{ PRODUCT_NAME }} Global POP TLS Error | The was an error negotiating a secure TLS connection with the {{ PRODUCT_NAME }} global POP. Please contact [support]({{ HELP_URL }}) immediately. |
 | 547  | {{ PRODUCT_NAME }} Global POP No HTTP Response | {{ PRODUCT_NAME }} did not receive an HTTP response from the global POP. Please contact [support]({{ HELP_URL }}) immediately. |
 | 548  | {{ PRODUCT_NAME }} Global POP DNS Resolution Error | {{ PRODUCT_NAME }} failed to resolve the global POP's host name through DNS. Please contact [support]({{ HELP_URL }}) immediately. |
+
+<!--
 | 549 | {{ PRODUCT_NAME }} Captcha Served | Indicates that {{ PRODUCT_SECURITY_ADVANCED_BOT }} flagged a request as potential bot traffic. As a result, {{ PRODUCT }} served a CAPTCHA challenge instead of your site. Only visitors that can solve this challenge will be allowed to proceed to your site. |
+-->
 
 Obviously, your project can set status codes of their own, which may sometimes match codes above. We encourage you to avoid setting your own status code so as to lower troubleshooting overhead and other issues.
 

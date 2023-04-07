@@ -164,10 +164,6 @@ const nav = {
       icon: 'shield',
       routes: [
         {
-          title: 'Managed Bot Defense',
-          path: 'security/managed_bot_defense',
-        },
-        {
           title: 'Managed Rule Groups',
           path: 'security/managed_rule_groups',
         },

@@ -3,9 +3,9 @@ title: Account Settings
 ---
 
 Your account settings consist of:
--   Name
--   Date/time preferences
--   Multi-factor authentication
+-   [Name](#name)
+-   [Date/time preferences](#date-time-preferences)
+-   [Multi-factor authentication](#multi-factor-authentication)
 
 ## Name {/*name*/}
 

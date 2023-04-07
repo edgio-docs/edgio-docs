@@ -181,6 +181,31 @@ An operator determines when a request satisfies a condition by defining the rela
 -   **greater than:** Indicates that the value derived from the request must be greater than the value(s) defined within a condition.
 -   **greater than or equal:** Indicates that the value derived from the request must be greater than or equal to the value(s) defined within a condition.
 
+#### Multiple Conditions
+
+You may add multiple conditions to a rule. By default, a request must satisfy each condition defined within a rule. This is indicated by an `and` label. However, you may configure your rule to only require a single condition by toggling the `and` label to `or`.
+
+**To match requests using a single condition**
+
+1.  Create a rule with multiple condition(s).
+2.  Click on the `and` label.
+
+    ![Toggle condition logic](/images/v7/performance/rules-change-condition-logic.png)
+
+3.  When prompted, click **Change operators** to only require a single condition before matching a request to this rule.
+
+<Callout type="info">
+
+  Switch it back to requiring all conditions by clicking on the `or` label and then confirming this change by clicking **Change operators**.
+
+</Callout>
+
+<Callout type="info">
+
+  Your changes will not take effect until they are deployed. 
+
+</Callout>
+
 ### Features {/*features*/}
 
 A feature determines how requests will be processed. They are categorized as follows:
@@ -316,6 +341,7 @@ You may create, modify, and delete rules.
     3.  From the left-hand pane, select **Rules**. 
 2.  Click the <Image inline src="/images/v7/icons/delete-2.png" alt="" /> icon next to the desired rule.
 3.  Confirm the deletion by clicking **Delete Rules**.
+4.  Apply your changes to this environment by clicking **Deploy Changes**.
 
 **To export your rules as {{ EDGEJS_LABEL }} code** <a id="export-rules-edgejs" /> 
 

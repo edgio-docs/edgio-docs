@@ -11,7 +11,10 @@ Identifies requests by the network from which the request was issued. A network 
 **Key information:**
 
 -   Certain requests may not return a valid AS number. A question mark (i.e., `?`) will match requests for which a valid AS number could not be determined.
--   You must specify a value, pattern, or regular expression that matches the entire AS number for the desired network.
+-   Specify a value, pattern, or regular expression that matches the entire AS number for the desired network.
+-   Specify multiple AS numbers by delimiting each one with a single space.
+
+    **Example:** A value of `64514 64515` matches requests arriving from either `64514` or `64515`.
 
 <edgejs>
 
@@ -22,6 +25,21 @@ Identifies requests by the network from which the request was issued. A network 
 #### Brand Name {/*brand-name*/} <edgejs>device</edgejs>
 
 Identifies requests by the manufacturer (e.g., Samsung) of the device that issued the request.
+
+**Key information:**
+
+-   Specify a value using any combination of numbers, letters, or symbols.
+-   The method for specifying multiple values varies by operator:
+
+    -   **equals | does not equal:** Delimit each one with a single space  (e.g., `value1 value2`)..
+
+        <Callout type="info">
+
+          Replace spaces in the brand name with `%20`.
+
+        </Callout>
+
+    -   **matches regular expression | does not match regular expression:** Use regular expression syntax (e.g., `value 1|value 2`).
 
 <edgejs>
 
@@ -105,6 +123,10 @@ Identifies requests by a cookie's value.
 -   Set the **Cookie Name** option to the exact name of the desired cookie. You may not use special characters, including an asterisk, or a regular expression.
 -   Only a single cookie name may be specified per instance of this match condition.
 -   Cookie name comparisons are case-insensitive.
+-   The method for specifying multiple cookie values varies by operator:
+
+    -   **equals | does not equal:** Delimit each one with a single space.
+    -   **matches regular expression | does not match regular expression:** Use regular expression syntax (e.g., `value 1|value 2`).
 
 <edgejs>
 
@@ -119,6 +141,7 @@ Identifies requests by the country from which the request was issued.
 **Key information:**
 
 -   Specify a country through its country code.
+-   Specify multiple country codes by delimiting each one with a single space.
 -   The `EU` and `AP` country codes do not encompass all IP addresses in those regions.
 -   Certain requests may not return a valid country code. A question mark (i.e., ?) will match requests for which a valid country code could not be determined.
 -   Country codes are case-sensitive.
@@ -209,7 +232,17 @@ Identifies requests by the filename defined in the URL.
 **Key information:**
 
 -   For the purposes of this match condition, a filename consists of the name of the requested asset, a period, and the file extension (e.g., index.html). 
--   Replace spaces in the filename with %20.
+-   The method for specifying multiple values varies by operator:
+
+    -   **equals | does not equal:** Delimit each one with a single space.
+
+        <Callout type="info">
+
+          Replace spaces in the filename with `%20`.
+
+        </Callout>
+
+    -   **matches regular expression | does not match regular expression:** Use regular expression syntax (e.g., `value 1|value 2`).
 
 <edgejs>
 
@@ -389,6 +422,21 @@ Identifies requests by the longitude from which the request was issued.
 
 Identifies requests by the marketing name (e.g., `BlackBerry 8100 Pearl`) of the device that issued the request.
 
+**Key information:**
+
+-   The method for specifying multiple values varies by operator:
+
+    -   **equals | does not equal:** Delimit each one with a single space.
+
+        <Callout type="info">
+
+          Replace spaces in the name with `%20`.
+
+        </Callout>
+
+    -   **matches regular expression | does not match regular expression:** Use regular expression syntax (e.g., `value 1|value 2`).
+
+
 <edgejs>
 
 **Example:**
@@ -416,6 +464,20 @@ Add TRACE and CONNECT?
 
 Identifies requests by the name of the browser (e.g., Chrome) that issued the request.
 
+**Key information:**
+
+-   The method for specifying multiple values varies by operator:
+
+    -   **equals | does not equal:** Delimit each one with a single space.
+
+        <Callout type="info">
+
+          Replace spaces in the browser name with `%20`.
+
+        </Callout>
+
+    -   **matches regular expression | does not match regular expression:** Use regular expression syntax (e.g., `value 1|value 2`).
+
 <edgejs>
 
 **Example:**
@@ -425,6 +487,20 @@ Identifies requests by the name of the browser (e.g., Chrome) that issued the re
 #### Model Name {/*model-name*/} <edgejs>device</edgejs>
 
 Identifies requests by the model name (e.g., s7) of the device that issued the request.
+
+**Key information:**
+
+-   The method for specifying multiple values varies by operator:
+
+    -   **equals | does not equal:** Delimit each one with a single space.
+
+        <Callout type="info">
+
+          Replace spaces in the model name with `%20`.
+
+        </Callout>
+
+    -   **matches regular expression | does not match regular expression:** Use regular expression syntax (e.g., `value 1|value 2`).
 
 <edgejs>
 
@@ -518,6 +594,13 @@ Identifies requests by the POP that processed the request.
 
 Identifies requests by the postal code from which the request was issued.
 
+**Key information:**
+
+-   The method for specifying multiple values varies by operator:
+
+    -   **equals | does not equal:** Delimit each one with a single space.
+    -   **matches regular expression | does not match regular expression:** Use regular expression syntax (e.g., `value 1|value 2`).
+
 <edgejs>
 
 **Example:**
@@ -580,6 +663,17 @@ Identifies requests by the value assigned to a query string parameter in the req
         -   **SPACE:** %20
         -   **&:** %26
         -   **%:** %25
+    -   The method for specifying multiple values varies by operator:
+
+        -   **equals | does not equal:** Delimit each one with a single space.
+
+            <Callout type="info">
+
+              Replace spaces in the value with `%20`.
+
+            </Callout>
+
+        -   **matches regular expression | does not match regular expression:** Use regular expression syntax (e.g., `value 1|value 2`).
 
 <edgejs>
 
@@ -654,6 +748,13 @@ Identifies requests by performing a comparison against a random integer.
 
 Identifies requests by the referrer's hostname. A referrer's hostname is determined by the `Referer` header.
 
+**Key information:**
+
+-   The method for specifying multiple values varies by operator:
+
+    -   **equals | does not equal:** Delimit each one with a single space.
+    -   **matches regular expression | does not match regular expression:** Use regular expression syntax (e.g., `value 1|value 2`).
+
 <edgejs>
 
 **Example:**
@@ -693,6 +794,11 @@ Identifies requests by the code for the region (e.g., state or province) from wh
     -   Sandy Point, Bahamas (`BS-SP`)
 
 -   Certain requests may not return a valid region code. A question mark (i.e., `?`) will match requests for which a valid region code could not be determined.
+-   The method for specifying multiple values varies by operator:
+
+    -   **equals | does not equal:** Delimit each one with a single space.
+    -   **matches regular expression | does not match regular expression:** Use regular expression syntax (e.g., `value 1|value 2`).
+
 
 <edgejs>
 
@@ -727,7 +833,17 @@ Identifies requests by request header value.
     -   Only request headers whose name is an exact match to the specified value may satisfy this condition.
 
 -   **Header value:**
-    -   Replace spaces in the header value with `%20`.
+    -   The method for specifying multiple values varies by operator:
+
+        -   **equals | does not equal:** Delimit each one with a single space.
+
+            <Callout type="info">
+
+              Replace spaces in the value with `%20`.
+
+            </Callout>
+
+        -   **matches regular expression | does not match regular expression:** Use regular expression syntax (e.g., `value 1|value 2`).
 
 <edgejs>
 

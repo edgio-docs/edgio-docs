@@ -37,6 +37,10 @@ const nav = {
           path: 'basics/alerts',
         },
         {
+          title: 'Account Settings',
+          path: 'basics/account_settings',
+        },
+        {
           title: '',
           path: '',
         },

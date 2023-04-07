@@ -15,13 +15,11 @@ The {{ PORTAL }} uses your profile icon, account name, and your email address to
 
 1.  From the {{ PORTAL_LINK }}, click your profile icon and then select **My Account**.
 
-    ![Profile Icon](/images/v7/basics/account-settings.png?width=450)
+    ![Profile Icon](/images/v7/basics/account-settings.png?width=200)
 
-2.  Change your name by performing the following steps:
-
-    1.  Find your name and then click the <Image inline src="/images/v7/icons/edit.png" alt="Edit" /> icon that appears directly to the right of it.
-    2.  Set the desired name.
-    3.  Click the <Image inline src="/images/v7/icons/save.png" alt="Save" /> icon.
+2.  Find your name and then click the <Image inline src="/images/v7/icons/edit.png" alt="Edit" /> icon that appears directly to the right of it.
+3.  Set the desired name.
+4.  Click the <Image inline src="/images/v7/icons/save.png" alt="Save" /> icon.
 
 ## Date/Time Preferences {/*date-time-preferences*/}
 
@@ -31,7 +29,7 @@ By default, date/time values are displayed as a time period relative to the pres
 
 1.  From the {{ PORTAL_LINK }}, click your profile icon and then select **My Account**.
 
-    ![Profile Icon](/images/v7/basics/account-settings.png?width=450)
+    ![Profile Icon](/images/v7/basics/account-settings.png?width=200)
 
 2.  Optional. From the **Display date/time values as** option, determine whether date/time values are displayed within the {{ PORTAL }} as:
 

@@ -11,7 +11,7 @@ Identifies requests by the network from which the request was issued. A network 
 **Key information:**
 
 -   Certain requests may not return a valid AS number. A question mark (i.e., `?`) will match requests for which a valid AS number could not be determined.
--   Specify a value, pattern, or regular expression that matches the entire AS number for the desired network.
+-   Specify a value that matches the entire AS number for the desired network.
 -   Specify multiple AS numbers by delimiting each one with a single space.
 
     **Example:** A value of `64514 64515` matches requests arriving from either `64514` or `64515`.

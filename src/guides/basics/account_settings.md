@@ -84,18 +84,18 @@ You may reset your password at any time. Resetting a password will generate an e
 
 **To reset your password**
 
-1.  Follow the "Forgot password?" link.
+1.  Follow the `Forgot password?` link.
     
     1.  Load the {{ PORTAL_LINK }}'s sign in page.
     2.  Type your email address from the **Sign In To Your Account** option, and then click **Next**.   
-    3.  Click the **Forgot Password? link.
+    3.  Click the `Forgot Password?` link.
 
-    ![Forgot Password](/images/v7/basics/forgot-password.png?width=450)
+    ![Forgot Password](/images/v7/basics/forgot-password.png?width=250)
   
-2.  Type your email address again.
-3.  Click **Reset Password**.
-4.  Check for new mail on the email account specified above. Open the message and then click **Reset your password**.
-5.  Specify a new password and then confirm it.
+2.  Type your email address again and then click **Reset Password**.
+3.  Check for new mail on the email account specified above. Open the message and then click **Reset your password**.
+4.  Specify a new password and then confirm it by typing it again.
+5.  Click **Change Password**.
 
 ## Multi-factor Authentication {/*multi-factor-authentication*/}
 

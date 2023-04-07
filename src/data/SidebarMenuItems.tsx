@@ -9,7 +9,6 @@ import {
   PRODUCT_LEGACY_LOWER,
   PRODUCT_PLATFORM,
   PRODUCT_SECURITY,
-  PRODUCT_SECURITY_ADVANCED_BOT,
   FIDDLE_URL,
 } from '../../constants';
 import {
@@ -578,11 +577,6 @@ const SidebarMenuItems: ISidebarMenuItems = [
         {
           title: 'Website Security (EdgeJS)',
           path: '/guides/security/edgejs_security',
-          separator: true,
-        },
-        {
-          title: PRODUCT_SECURITY_ADVANCED_BOT,
-          path: '/guides/security/managed_bot_defense',
           separator: true,
         },
         {

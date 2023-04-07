@@ -50,12 +50,6 @@ A bot event occurs when a bot manager rule is violated. Analyze recently detecte
 -   Identify the countries from which bot traffic originates.
 -   Identify key individual offenders by their IP address.
 
-<Callout type="info">
-
-  This type of event does not report data for [Managed Bot Defense](/guides/security/managed_bot_defense). 
-
-</Callout>
-
 [View field definitions.](/guides/security/recent_event_logs#bot-log-fields)
 
 ## Rates View {/*rates-view*/}

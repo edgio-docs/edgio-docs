@@ -193,14 +193,6 @@ const nav = {
           path: '',
         },
         {
-          title: 'Managed Bot Defense',
-          path: 'security/managed_bot_defense',
-        },
-        {
-          title: '',
-          path: '',
-        },
-        {
           title: 'Web Application Firewall (WAF)',
           path: 'security/waf',
         },

@@ -22,8 +22,8 @@ title: {{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} Version 7
 
     ![Edge Insights](/images/v7/performance/edge-insights-example.png)
 
--   A refreshed UI for [Web Application Firewall (WAF)](/security/waf). You may now apply WAF protection to all of your properties at the team level.
--   {{ PRODUCT }} {{ PRODUCT_PLATFORM }} now supports Next, Nuxt, and Nuxt3. We plan on introducing support for additional web application frameworks in the near future. <a id="routehelper" />
+-   A refreshed UI for [Web Application Firewall (WAF)](/guides/security/waf). You may now apply WAF protection to all of your properties at the team level.
+-   {{ PRODUCT }} {{ PRODUCT_PLATFORM }} now supports Next, Nuxt 2, and Nuxt 3. We plan on introducing support for additional web application frameworks in the near future. <a id="routehelper" />
 -   Our CDN-as-code syntax now uses JSON instead of RouteHelper, which has been deprecated in version 7. {{ PRODUCT }} provides limited backward-compatibility for RouteHelper. The following methods are currently unsupported in {{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} v7:
     -   fallback
     -   destination

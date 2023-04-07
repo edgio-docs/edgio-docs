@@ -5,6 +5,7 @@ title: Account Settings
 Your account settings consist of:
 -   [Name](#name)
 -   [Date/time preferences](#date-time-preferences)
+-   [Password](#password)
 -   [Multi-factor authentication](#multi-factor-authentication)
 
 ## Name {/*name*/}
@@ -45,6 +46,56 @@ By default, date/time values are displayed as a time period relative to the pres
 
     -   **Your Local Time Zone:** Select `Always display times in my local time zone`.
     -   **UTC:** Select `Always display times in UTC`.
+
+## Password {/*password*/}
+
+<Callout type="info">
+
+  Our password policy does not apply to users that log in using Google or Github.
+
+</Callout>
+
+If you are setting or resetting your password, specify one that:
+
+-   Contains at least one of each of the following types of characters:
+    
+    -   Upper-case letters        
+    -   Lower-case letters        
+    -   Numbers        
+    -   Symbols
+        
+-   Contains at least 8 characters but no more than 64 characters.
+-   Is different from your last 4 passwords.
+-   Does not contain a backslash (`\`).
+
+**Key information:**
+
+-   Your account is automatically locked for 30 minutes after six consecutive unsuccessful log in attempts. Manually unlock your account by resetting your password.
+-   Our password rotation policy requires that you change your password every 90 days. Your new password must meet the requirements defined above.
+
+### Resetting Your Password {/*resetting-your-password*/}
+
+You may reset your password at any time. Resetting a password will generate an email message containing a password reset link. Upon following this link, you will be prompted to identify your email account and to set a new password.
+
+**Key information:**
+
+-   A password reset link is only valid for 1 hour.
+-   If a password reset link has expired before you have reset your password, then you will need to submit another password reset request.
+
+**To reset your password**
+
+1.  Follow the "Forgot password?" link.
+    
+    1.  Load the {{ PORTAL_LINK }}'s sign in page.
+    2.  Type your email address from the **Sign In To Your Account** option, and then click **Next**.   
+    3.  Click the **Forgot Password? link.
+
+    ![Forgot Password](/images/v7/basics/forgot-password.png?width=450)
+  
+2.  Type your email address again.
+3.  Click **Reset Password**.
+4.  Check for new mail on the email account specified above. Open the message and then click **Reset your password**.
+5.  Specify a new password and then confirm it.
 
 ## Multi-factor Authentication {/*multi-factor-authentication*/}
 

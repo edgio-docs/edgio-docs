@@ -78,7 +78,10 @@ The `logs` array contains an object for each log entry associated with the curre
 
     The following value will be reported for this field: `joe`
 
--   **background_fill_wait_time<!-- (* *)-->:** Background Fill Wait Time. (Category: Network) Indicates the amount of time, in seconds, that it took for a sub-request to receive the first byte of the response.
+-   **background_fill_wait_time(*Decimal*):** Background Fill Wait Time. (Category: Network) Indicates the amount of time, in seconds, that it took for a sub-request to receive the first byte of the response.
+
+    **Syntax:** `<SECONDS>.<MICROSECONDS>`
+
 -   **bytes_in (*Integer*):** Bytes In. (Category: Network) Indicates the sum of the number of bytes read from both of the following sources:
 
     -   Requesting client

@@ -62,7 +62,7 @@ The amount of time that an asset will be cached on our edge servers is determine
 
 **Key information:**
 
--   By default, content will only be cached after a POP receives two GET requests that result in a 200 OK response.
+-   By default, content will only be cached after a POP receives two `GET` requests that result in a 200 OK response.
 -   By default, {{ PRODUCT }} honors an origin server's cache directives. Allow {{ PRODUCT }} to override those directives by creating a rule with the [Ignore Origin No Cache](/guides/performance/rules/features#ignore-origin-no-cache) feature enabled for the desired status code (e.g., `200 OK`).
 -   The above directives are ordered according to precedence. Higher directives take precedence over lower directives. In other words, if an asset contains both a `Cache-Control` and an `Expires` header, then the `Cache-Control` header will take precedence.
 -   Please refer to your web server’s documentation for more information on how to configure these settings.

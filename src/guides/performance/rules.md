@@ -73,7 +73,7 @@ A condition identifies a set of requests. Setting up a condition requires:
 
 **Example:**
 
-Identify all GET requests through the following condition:
+Identify all `GET` requests through the following condition:
 -   **Type of condition (aka variable):** Method
 -   **Operator:** Equals
 -   **Match Value:** GET
@@ -122,7 +122,7 @@ An operator determines when a request satisfies a condition by defining the rela
 
     Regular expressions define a pattern that will be searched for within a text value. Regular expression notation defines specific meanings to a variety of symbols. Information on how special characters are handled within a regular expression is provided below. This information is not meant to be a comprehensive guide on regular expression usage or syntax. 
 
-    -   '/'**:** A forward slash is treated as a literal character instead of a special regular expression character. Do not escape it.
+    -   `/`**:** A forward slash is treated as a literal character instead of a special regular expression character. Do not escape it.
     -   `\`**:** A backslash in a regular expression typically:
         -   Defines a shorthand character class (e.g., `\d` instead of `[0-9]`).
         -   Escapes the character that follows it. This causes that character to be treated as a literal value instead of taking on its regular expression meaning.
@@ -140,7 +140,7 @@ An operator determines when a request satisfies a condition by defining the rela
         -   `%{<HTTP VARIABLE%PATTERN>}:` This syntax uses a percentage symbol to identify an HTTP variable and as a delimiter.
         -   `\%:` Escaping a percentage symbol allows it to be used as a literal value or to indicate URL encoding (e.g., `\%20`).
 
-    -   ***:** An asterisk allows the preceding character to be matched zero or more times.
+    -   `*`**:** An asterisk allows the preceding character to be matched zero or more times.
     -   `<SPACE>`**:** A space character is typically treated as a literal character.
     -   `'`**:** Single quotes are treated as literal characters. A set of single quotes does not have special meaning.
 

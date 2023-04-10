@@ -142,7 +142,7 @@ Once you have identified a set of requests, you need to define how {{ PRODUCT }}
       }
     })
     ```
--   Set the `images` response header and proxy cache misses to the `origin` backend for all GET requests whose URL path starts with `/marketing/images/`:
+-   Set the `images` response header and proxy cache misses to the `origin` backend for all `GET` requests whose URL path starts with `/marketing/images/`:
     ```js
     .get('/marketing/images/:path*', { 
       {

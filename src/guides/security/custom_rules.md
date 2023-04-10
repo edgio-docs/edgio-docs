@@ -153,9 +153,7 @@ support the following request elements:
 
     <a id="request-body-parsed"></a>
 
--   **Request body parsed:** Match against
-    all or specific key-value pair(s) in the request body for a
-    URL-encoded or JSON POST request:
+-   **Request body parsed:** Match against all or specific key-value pair(s) in the request body for a URL-encoded or JSON `POST` request:
     -   **All:** Do not specify a key within this variable and
         specify the desired value or pattern within the **Match
         value** option.

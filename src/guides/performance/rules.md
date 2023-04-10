@@ -257,7 +257,9 @@ The following cases are exceptions to the order-based rule precedence stated abo
 
 ### Fine-Tuning Your Rules {/*fine-tuning-your-rules*/}
 
-If the response provided by {{ PRODUCT }} does not match your expectations, you can check the [{{ HEADER_PREFIX }}-mr response header](/guides/performance/response#-mr) to find out which rules were applied to a request. 
+If the response provided by {{ PRODUCT }} does not match your expectations, you can check the [{{ HEADER_PREFIX }}-mr response header](/guides/performance/response#-mr) to find out which rules were applied to a request. This response header identifies each rule that was applied to a request by its number. Display rule numbers by clicking **Show Rule Numbers**.
+
+![Show Rule Numbers](/images/v7/performance/rules-show-rule-numbers.png)
 
 For example, the following value indicates that the request matched both the first rule (i.e., `0`) and the second rule (i.e., `1`) within deployment version #16.
 

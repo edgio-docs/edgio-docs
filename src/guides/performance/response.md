@@ -559,7 +559,7 @@ Based on the example above, that would be `809 (pf) - 722 (wt) = 87ms`.
 
 Contains the data provided in response to the request.
 
-For example, the response body for a GET request for a text file might look similar to the following:
+For example, the response body for a `GET` request for a text file might look similar to the following:
 
 ```
 Hello World!

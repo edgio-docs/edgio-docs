@@ -34,4 +34,4 @@ title: {{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} Version 7
     -   updateUpstreamResponseCookie
     -   updateUpstreamResponseHeader
 
-    We have introduced a new method to Router called `conditional` that allows to use the new JSON syntax and supports conditional logic.
+    We have introduced a new method called `conditional` to Router that uses a new JSON syntax and supports conditional logic.

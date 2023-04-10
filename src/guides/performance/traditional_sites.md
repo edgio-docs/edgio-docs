@@ -219,9 +219,9 @@ Deep fetching is an important technique for {{ PRODUCT_NAME }} projects. By defa
 
 ### Prefetching POSTs {/* prefetching-posts */}
 
-Most assets that need to be prefetched are HTTP GET requests. It is also possible to prefetch POST requests with some additional configuration.
+Most assets that need to be prefetched are HTTP `GET` requests. It is also possible to prefetch `POST` requests with some additional configuration.
 
-When your app prefetches assets, the actual prefetch request is always a GET, so you need to make sure that your router is configured to respond to GET requests for any POST URL. In order to ensure that the response is cached as a POST by the service worker, you need to specify `convertToGet: true` in the cache config for the prefetch route handler, and to also use the `transformMethod` function to properly transform the GET request into a POST on the server:
+When your app prefetches assets, the actual prefetch request is always a `GET`, so you need to make sure that your router is configured to respond to `GET` requests for any `POST` URL. In order to ensure that the response is cached as a `POST` by the service worker, you need to specify `convertToGet: true` in the cache config for the prefetch route handler, and to also use the `transformMethod` function to properly transform the `GET` request into a `POST` on the server:
 
 ```js
 import {transformMethod} from '{{ PACKAGE_NAME }}/core/transform';

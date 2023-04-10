@@ -169,7 +169,7 @@ Common response headers are described below.
 
 -   **{{ HEADER_PREFIX }}-mr:** Indicates one or more matched route(s). 
 
-    **Syntax:** `{{ HEADER_PREFIX }}-mr: <ENVIRONMENT #>:<RULE #>;<ENVIRONMENT #>:<RULE #>;<ENVIRONMENT #>:<RULE #>`
+    **Syntax:** `{{ HEADER_PREFIX }}-mr: <ENVIRONMENT #>:<RULE #>[;<ENVIRONMENT #>:<RULE #>;<ENVIRONMENT #>:<RULE #>]`
 
     **Example:** `{{ HEADER_PREFIX }}-mr: 16:0;16:1;`
 

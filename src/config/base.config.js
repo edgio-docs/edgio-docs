@@ -48,6 +48,7 @@ const SUPPORT_URL = `https://${DOMAIN}/contact-support/?sgId=7bc47c45-c1d6-4189-
 const DOCS_URL = `https://${DOCS_DOMAIN}`;
 const DOCS_PAGES_REPO_URL = `https://${DOCS_PAGES_DOMAIN}`;
 const LOGIN_URL = `${APP_URL}/?sgId=ef4d5169-93f2-4f55-aabb-dc3be4286e1f`;
+const API_DOCS_VERSION = ''; // empty for latest
 
 const PORTAL_LINK = `[${PORTAL}](${LOGIN_URL})`;
 

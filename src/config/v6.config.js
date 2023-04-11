@@ -6,6 +6,7 @@ const APP_DOMAIN = `app.${DOMAIN_LEGACY}`;
 const LINK_DOMAIN = `layer0-limelight.link`;
 const RUM_DOMAIN = `rum.layer0.co`;
 const PACKAGE_VERSION = '^6.0.0';
+const API_DOCS_VERSION = '/v6.x';
 
 const INSTALL_CLI = `## Install the ${base.PRODUCT_NAME} CLI {/*install-the-cli*/}
 

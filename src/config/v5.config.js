@@ -7,6 +7,7 @@ const LINK_DOMAIN = `layer0-limelight.link`;
 const RUM_DOMAIN = `rum.layer0.co`;
 const NODE_VERSION = '14.x';
 const PACKAGE_VERSION = '^5.0.0';
+const API_DOCS_VERSION = '/v5.x';
 
 const SYSTEM_REQUIREMENTS = `## System Requirements {/*system-requirements*/}
 

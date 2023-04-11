@@ -3,7 +3,7 @@
   --colors-black1: #181717;
   --colors-black2: #2c2c30;
   --colors-black3: #58585f;
-  --colors-black4: #0e0e0e;
+  --colors-black4: #0d1013;
   --colors-gray0: #1a1a1a;
   --colors-gray1: #eeeeee;
   --colors-gray2: #f6f9fc;
@@ -47,8 +47,6 @@
   --bg-secondary: #fafbfb;
   --href-hover-primary: #e5e5e5;
   --copy-code-primary: var(--colors-white0);
-  --code-bgColor: #f6f9fc;
-  --code-borderColor: #dce6e9;
   --docs-footer-bg: #f6f6f6;
   --docs-footer-color: var(--colors-black0);
   --homepagehero-bg-image: url('/images/home/LightHeroImg.svg'),
@@ -65,6 +63,15 @@
   --callout-warning: #ffc800;
   --callout-danger: #f45263;
   --table-header-bg: #f0f0f0;
+  --border-primary: var(--hr-primary);
+  --home-card-bg: var(--get-started-card-bg);
+  --home-card-font-color: var(--text-secondary);
+  --nav-header-bg: var(--bg-secondary);
+
+  --code-block-bg: #101820;
+  --code-block-border-color: #3a444d;
+  --inline-code-bg: #f6f9fc;
+  --inline-code-border-color: #dce6e9;
 
   --select-bg: #ffffff;
   --select-border-color: #0094d6;
@@ -92,7 +99,7 @@
 :root.dark {
   color-scheme: dark;
   --text-primary: var(--colors-white0);
-  --text-secondary: #cbcbcb;
+  --text-secondary: #f6f6f7;
   --docs-text-primary: var(--colors-white0);
   --title-primary: var(--colors-white0);
   --subtitle-primary: var(--colors-white0);
@@ -105,9 +112,7 @@
   --bg-secondary: var(--colors-black1);
   --href-hover-primary: #4e4e4e;
   --copy-code-primary: var(--colors-white0);
-  --code-bgColor: var(--colors-black2);
-  --code-borderColor: var(--colors-black3);
-  --docs-footer-bg: var(--colors-black0);
+  --docs-footer-bg: #070a03;
   --docs-footer-color: var(--colors-white0);
   --homepagehero-bg-image: url('/images/home/DarkHeroImg.svg'), #000000;
   --scrollbar-bg: #353535;
@@ -122,6 +127,15 @@
   --callout-warning: #ffc800;
   --callout-danger: #f45263;
   --table-header-bg: var(--colors-black3);
+  --border-primary: #17232e;
+  --home-card-bg: #101820;
+  --home-card-font-color: var(--text-secondary);
+  --nav-header-bg: #0a0d10;
+
+  --code-block-bg: #101820;
+  --code-block-border-color: #3a444d;
+  --inline-code-bg: #003144;
+  --inline-code-border-color: #3a444d;
 
   --select-bg: #0f1216;
   --select-border-color: #0094d6;

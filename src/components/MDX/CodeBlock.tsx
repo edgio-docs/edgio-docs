@@ -90,10 +90,10 @@ export const LineNo = styled.span`
   user-select: none;
   text-align: right;
   display: table-cell;
-  background: #1a1a1a;
+  background: var(--code-block-bg);
   letter-spacing: -1px;
   padding-right: 0.5em;
-  border-right: 1px solid #363636;
+  border-right: 1px solid var(--code-block-border-color);
 `;
 
 export const clsByOperator: StringMap = {

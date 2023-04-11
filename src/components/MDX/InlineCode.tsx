@@ -11,8 +11,8 @@ export const StyledCodeWrap = styled.code`
   text-decoration: none;
   padding: 0 4px;
   border-radius: 4px;
-  background: var(--code-bgColor);
-  border: 1px solid var(--code-borderColor);
+  background: var(--inline-code-bg);
+  border: 1px solid var(--inline-code-border-color);
   font-variant-ligatures: none;
   margin: 0;
   text-align: left;

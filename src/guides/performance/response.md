@@ -169,16 +169,26 @@ Common response headers are described below.
 
 -   **{{ HEADER_PREFIX }}-mr:** Indicates one or more matched route(s). 
 
-    **Syntax (Single Route):** `{{ HEADER_PREFIX }}-mr: <DEPLOYMENT>:<RULE #>`
-
-    **Syntax (Multiple Routes):** `{{ HEADER_PREFIX }}-mr: <DEPLOYMENT>:<RULE #>;<DEPLOYMENT>:<RULE #>;<DEPLOYMENT>:<RULE #>`
+    **Syntax:** `{{ HEADER_PREFIX }}-mr: <ENVIRONMENT #>:<RULE #>[;<ENVIRONMENT #>:<RULE #>;<ENVIRONMENT #>:<RULE #>]`
 
     **Example:** `{{ HEADER_PREFIX }}-mr: 16:0;16:1;`
 
     Definitions for the above terms are provided below.
 
-        -   **DEPLOYMENT:** Indicates the version number of the current deployment.
-        -   **RULE #:** Indicates the index number of the rule or route that was applied to the request.
+        -   **ENVIRONMENT #:** Indicates the environment's version number.
+        -   **RULE #:** Indicates the index number of the rule that was applied to the request. 
+
+        <Callout type="tip">
+
+          Click the **Show Rule Numbers** link at the top of the **Rules** page to display a number next to each rule. 
+
+        </Callout>
+
+        <Callout type="info">
+
+          **CDN-as-Code:** Configurations deployed through the {{ PRODUCT }} CLI are converted into rules. You may view these rules through the **Rules** page.
+
+        </Callout>
 
 -   **{{ HEADER_PREFIX }}-p:** Returns `1` when the client's request includes an `edgio_prefetch` query string parameter. This parameter indicates that the client is requesting [Predictive Prefetching](/guides/performance/prefetching).
 

@@ -98,10 +98,10 @@ function Banner() {
   if (version.selectedVersion === '7') {
     return (
       <StyledBanner future>
-        Get ready for {PRODUCT} {PRODUCT_APPLICATIONS}{' '}
+        Introducing {PRODUCT} {PRODUCT_APPLICATIONS}{' '}
         {version.selectedVersionText}.&nbsp;
         <Link href="/guides/v7/intro" passHref>
-          <a>Learn about this upcoming product release.</a>
+          <a>Find out what&apos;s new.</a>
         </Link>
       </StyledBanner>
     );

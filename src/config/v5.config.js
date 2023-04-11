@@ -53,7 +53,6 @@ const config = {
   SYSTEM_REQUIREMENTS_H3,
   PREREQ,
   PACKAGE_VERSION,
-  API_DOCS_VERSION,
 };
 
 export default config;

@@ -42,7 +42,6 @@ const config = {
   INSTALL_CLI,
   PACKAGE_VERSION,
   PREREQ,
-  API_DOCS_VERSION,
 };
 
 export default config;

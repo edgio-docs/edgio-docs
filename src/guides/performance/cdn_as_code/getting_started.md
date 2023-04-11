@@ -314,9 +314,11 @@ Assess performance and caching behavior from the {{ PORTAL_LINK }}. Fine-tune yo
 
 [Learn more.](/guides/production)
 
-<Condition version="<7">
 
 ## Examples {/*example*/}
+
+<!-- Pre v7 examples -->
+<Condition version="<7">
 
 Use our sample websites to gain hands-on experience on how to set up {{ PRODUCT }} {{ PRODUCT_EDGE }}. Specifically, you can browse our sample websites, view their source code, and even experiment on them by deploying them to {{ PRODUCT }}.
 
@@ -357,6 +359,23 @@ This example demonstrates a full-featured {{ PRODUCT }} configuration that showc
   siteUrl="https://edgio-community-examples-full-featured-performance-live.layer0-limelight.link/"
   repoUrl="https://github.com/edgio-docs/edgio-full-featured-performance-example/"
   deployFromRepo />
+
+</Condition>
+
+<!-- v7 examples -->
+<Condition version="7">
+
+Use our sample website to gain hands-on experience on how to set up {{ PRODUCT }} {{ PRODUCT_EDGE }}. Specifically, you can browse our sample websites, view their source code, and even experiment on them by deploying them to {{ PRODUCT }}.
+
+**Simple Example**
+
+This example demonstrates a basic {{ PRODUCT }} configuration for `publicdomainreview.org`. It contains two routes that cache content according to their file extension.
+
+<ExampleButtons
+  title="Simple"
+  siteUrl="https://edgio-community-examples-v7-simple-performance-live.edgio.link/"
+  repoUrl="https://github.com/edgio-docs/edgio-v7-simple-performance-example/"
+ />
 
 </Condition>
 

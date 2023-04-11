@@ -102,7 +102,7 @@ You are now ready to:
 
     For example, you can enable Server Name Indication (SNI) on an origin configuration or shield it from requests to reduce network bandwith usage and the load on your web servers.
 
--   If you plan on collaborating with other team members, then you should [create a team](/guides/basics/collaboration). After which, you will need to either create a property for that team or [transfer the ownership of your new property](/guides/basics/properties#transfer-ownership) to that team.
+-   If you plan on collaborating with other team members, then you should [create a team](/guides/basics/collaboration). After which, you will need to <!--either -->create a property for that team<!-- or [transfer the ownership of your new property](/guides/basics/properties#transfer-ownership) to that team-->.
 -   [Create environments](/guides/basics/environments) to match your software development workflow. Each environment provides site previews that allow QA testers, code reviewers, and other stakeholders to immediately try out newly introduced changes before they are introduced into your production environment. 
 -   Set up {{ PRODUCT }} [Performance.](/guides/performance/getting_started) Learn how to:
     -   Optimize website performance by defining a [caching policy](/guides/performance/caching), [predictive prefetching](/guides/performance/prefetching), and other edge logic through [Rules](/guides/performance/rules). Alternatively, if you prefer code to UI, then you can take advantage of our [CDN-as-code approach](/guides/performance/cdn_as_code/getting_started) to CDN configuration.

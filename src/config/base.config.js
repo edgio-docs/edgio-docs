@@ -528,6 +528,7 @@ const config = {
   WWW_URL,
   RUM_NS,
   PACKAGE_VERSION,
+  API_DOCS_VERSION,
 };
 
 export default config;

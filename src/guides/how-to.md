@@ -6,6 +6,6 @@ Learn how to perform common tasks.
 
 ## Node.js {/*nodejs*/}
 
-— <a href="/guides/install_nodejs">How to install Node.js</a>
+— [How to install Node.js](/guides/install_nodejs)
 
 ---

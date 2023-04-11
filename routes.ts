@@ -149,38 +149,7 @@ const router = new Router()
   .match('/docs/api/:path*', ({redirect}) => {
     redirect('/docs/api/:path*/');
   })
-  // match latest v4 api docs and redirect
-  .match('/docs/v4.x/:path*', ({cache, compute, redirect}) => {
-    cache(htmlCacheConfig);
-    compute(async () => {
-      // fetch the list of current published versions
-      const versions = await (
-        await fetch('https://docs.edg.io/docs/versions')
-      ).text();
 
-      const targetVersion = semverMaxSatisfying(
-        versions.replace(/\n/g, '').split(','),
-        'v4.x'
-      );
-      redirect(`/docs/${targetVersion}/:path*`);
-    });
-  })
-  // match latest v3 api docs and redirect
-  .match('/docs/v3.x/:path*', ({cache, compute, redirect}) => {
-    cache(htmlCacheConfig);
-    compute(async () => {
-      // fetch the list of current published versions
-      const versions = await (
-        await fetch('https://docs.edg.io/docs/versions')
-      ).text();
-
-      const targetVersion = semverMaxSatisfying(
-        versions.replace(/\n/g, '').split(','),
-        'v3.x'
-      );
-      redirect(`/docs/${targetVersion}/:path*`);
-    });
-  })
   // match versioned api docs with a file extension
   .match(
     '/docs/:version/api/:path*:file(\\.[css|js|html|json|png]+)',
@@ -188,8 +157,29 @@ const router = new Router()
       cache(htmlCacheConfig);
       proxy('api', {path: '/:version/api/:path*:file'});
     }
-  )
-  // match versioned api docs with a terminating /
+  );
+
+// redirects for latest versioned docs
+[3, 4, 5, 6, 7].forEach((v) => {
+  // match versioned api docs and redirect
+  router.match(`/docs/v${v}.x/:path*`, ({cache, compute, redirect}) => {
+    cache(htmlCacheConfig);
+    compute(async () => {
+      // fetch the list of current published versions
+      const versions = await (
+        await fetch('https://docs.edg.io/docs/versions')
+      ).text();
+
+      const targetVersion = semverMaxSatisfying(
+        versions.replace(/\n/g, '').split(','),
+        `v${v}.x`
+      );
+      redirect(`/docs/${targetVersion}/:path*`);
+    });
+  });
+});
+// match versioned api docs with a terminating /
+router
   .match(
     '/docs/:version/api/:path*/',
     ({proxy, cache, setResponseHeader, request}) => {

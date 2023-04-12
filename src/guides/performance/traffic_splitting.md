@@ -14,7 +14,7 @@ By default, a request identifies:
 -   A hostname (e.g., www.example.com) associated with your property. All traffic for this hostname is directed at a single origin configuration (e.g., web).
 -   A relative path (e.g,. /images/bunny.png). 
 
-Traffic splitting allows you to customize how your site traffic is distributed to your origin configurations. It also allows you to rewrite or redirect requests to an alternate path.
+Traffic splitting allows you to distribute a hostname's traffic across multiple origin configurations. It also allows you to rewrite or redirect requests to an alternate path. This flexibility allows you to tailor traffic splitting to fit your implementation. 
 
 ## Quick Start
 

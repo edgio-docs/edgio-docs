@@ -253,7 +253,6 @@ The following procedure indicates how to create a CSR and a private key with Ope
 
 Uploading a TLS certificate requires:
 
--   An Enterprise account.  {{ ACCOUNT_UPGRADE }}
 -   The `Admin` role within your team.
 -   A certificate issued by a CA.
 -   The intermediate certificates (IC) used by the CA, including the CA's signing certificate.
@@ -261,7 +260,10 @@ Uploading a TLS certificate requires:
 
 **To upload your TLS certificate**
 
-1.  From the {{ PORTAL_LINK }}, click **Settings** to load the **Settings** page. Find the **TLS Certificate** section.
+1.  Load the **TLS Certificate** page.
+
+    {{ ENV_NAV }} **TLS Certificate**. 
+
 2.  Clear the **Automatically create an TLS certificate for my custom domains.** option.
 3.  Copy the certificate, intermediate certificates, and the private key into the corresponding options.
 

@@ -6,12 +6,12 @@ Feature variables retrieves request and response metadata. Use this metadata to 
 
 The following features support variables:
 
--   [Rewrite Cache Key (cache_key_rewrite)](#rewrite-cache-key)
--   [Add Response Headers (add_response_headers)](#add-response-headers)
--   [Set Request Headers (set_request_headers)](#set-request-headers)
--   [Set Response Headers (set_response_headers)](#set-response-headers)
--   [URL Redirect (url_redirect)](#url-redirect)
--   [URL Rewrite (url_rewrite)](#url-rewrite)
+-   [Rewrite Cache Key (cache_key_rewrite)](/guides/performance/rules/features#rewrite-cache-key)
+-   [Add Response Headers (add_response_headers)](/guides/performance/rules/features#add-response-headers)
+-   [Set Request Headers (set_request_headers)](/guides/performance/rules/features#set-request-headers)
+-   [Set Response Headers (set_response_headers)](/guides/performance/rules/features#set-response-headers)
+-   [URL Redirect (url_redirect)](/guides/performance/rules/features#url-redirect)
+-   [URL Rewrite (url_rewrite)](/guides/performance/rules/features#url-rewrite)
 
 ## Definitions {/*definitions*/}
 

@@ -2,24 +2,25 @@
 title: Traffic Splitting 
 ---
 
-Traffic splitting allows you to distribute site traffic across various origin configurations for the purpose of:
+Traffic splitting allows you to distribute site traffic for the purpose of:
 
 -   A/B testing (aka split testing).
 -   Iterative site migrations.
 -   Gradual site build-outs.
 -   Improving performance through region-based origin routing.
 
-<Callout type="info">
+By default, a request identifies:
 
-  By default, all traffic for a single hostname (e.g., cdn.example.com) is directed at a single origin configuration (e.g., web). Traffic splitting allows you to customize how your site traffic is distributed to your origin configurations.
+-   A hostname (e.g., www.example.com) associated with your property. All traffic for this hostname is directed at a single origin configuration (e.g., web).
+-   A relative path (e.g,. /images/bunny.png). 
 
-</Callout>
+Traffic splitting allows you to customize how your site traffic is distributed to your origin configurations. It also allows you to rewrite or redirect requests to an alternate path.
 
 ## Quick Start
 
 Setting up traffic spliting involves performing the following steps:
 
-1.  Create a rule or route that identifies a set of requests and how those requests will be handled.
+1.  Create a rule that identifies a set of requests and how those requests will be handled.
 
     The specifics on how to set up this rule vary according to your implementation. For example, the following rule sends half of your site's traffic to a different origin configuration:
 
@@ -27,12 +28,11 @@ Setting up traffic spliting involves performing the following steps:
 
     <Callout type="info">
 
-      In this example, the Random Integer feature is configured to randomly assign each request to `www.example.com` a value of either `0` or `1`. If a request matches `1`, it will override your default origin configuration and send it to a different one.
+      In this example, the Random Integer feature is configured to randomly assign each request to `www.example.com` a value of either `0` or `1`. If a request matches `1`, it will override your default origin configuration and send it to a different one. As a result, your traffic will be  evenly split between two origin configurations.
 
     </Callout>
     
-2.  Repeat the previous step as neeed.
-3.  Deploy your changes.
+2.  Deploy your changes.
 
 <Callout type="important">
 

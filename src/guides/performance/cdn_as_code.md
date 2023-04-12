@@ -327,7 +327,7 @@ router.match({}, {
 })
 ```
 
-For a comprehensive list of variables, see the [Feature Variables](/guides/performance/rules/features#feature-variables) guide.
+For a comprehensive list of variables, see the [Feature Variables](/guides/performance/rules/feature_variables) guide.
 
 ## Blocking Search Engine Crawlers {/*blocking-search-engine-crawlers*/}
 

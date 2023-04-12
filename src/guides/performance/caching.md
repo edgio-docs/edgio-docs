@@ -28,7 +28,7 @@ Define a caching policy through response headers, rules, or the cache function (
 The amount of time that an asset will be cached on our edge servers is determined by the response headers returned by the origin server when a client requests it. By default, our CDN honors the following response headers:
 -   **Cache-Control: private:** Prevents our edge servers from caching the response.
 -   **Cache-Control: no-store:** Prevents our edge servers from caching the response.
--   **Cache-Control: no-cache:**Prevents our edge servers or the client from caching the response.
+-   **Cache-Control: no-cache:** Prevents our edge servers or the client from caching the response.
 -   **Pragma: no-cache:** Prevents our edge servers or the client from caching the response.
 -   **Cache-Control: s-maxage:** Determines the requested content's TTL on our edge servers The length of time that the requested content will be cached on our network.
 

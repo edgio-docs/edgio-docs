@@ -162,6 +162,51 @@ router.match(
 )
 ```
 
+## Negated Route Matching {/*negated-route-matching*/}
+
+Previously, we showed how to mtch requests based on path, method, query parameters, cookies, and request headers. You can also negate these matches by specifying a `not` key in the object passed to your route criteria. For example, to match all requests that are not to `/some-path`:
+
+```js
+router.match({
+  "path": {
+    "not": "/some-path"
+  },
+}, {
+  "response": {
+    "set_response_body": "Matches all requests except for /some-path",
+    "set_done": true
+  }
+})
+```
+
+Similarly, you can negate matches based on method, query parameters, cookies, and request headers:
+
+```js
+router.match({
+  "path": "/some-path",
+  "query": {
+    "page": {
+      "not": /^(1|2|3)$/
+    }
+  },
+  // "method": {
+  //     "not": /POST/i
+  // },
+  // "cookies": { "currency": {
+  //   "not": /^(usd)$/i 
+  // },
+  // "headers": { 
+  //   "x-device": {
+  //     "not": /^desktop$/i 
+  //   }
+}, {
+  "response": {
+    "set_response_body": "Matches all requests to /some-path except for those with query parameter page=1,2,3",
+    "set_done": true
+  }
+})
+```
+
 ## Request Handling {/*request-handling*/}
 
 The second argument to routes is a function that receives a `Features` type and uses it to send a response, such as:

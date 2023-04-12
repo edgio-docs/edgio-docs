@@ -116,7 +116,7 @@ Create a rule that rewrites requests for an alternate UI experience.
     1.  Click **+ Add Feature**.
     2.  Select `Rewrite URL`.
     3.  Set the **Source Path (Optional)** option to `/:path*`.
-    4.  Set the **Destination Path** option to `/newexperience/:path*`.
+    4.  Set the **Destination Path** option to the path where the resources for the new UI experience are located (e.g., `/newexperience/:path*`).
     5.  Click **Add Feature**.
 
     Your rules should now look similar to this:

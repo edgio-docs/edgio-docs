@@ -90,6 +90,7 @@ Identifies requests that originate from a particular IP address.
 
 </edgejs>
 
+<!--
 #### Continent {/*continent*/} <edgejs>location</edgejs>
 
 Identifies requests by the continent from which the request was issued.
@@ -113,6 +114,7 @@ Identifies requests by the continent from which the request was issued.
 **Example:**
 
 </edgejs>
+-->
 
 #### Cookie {/*cookie*/} <edgejs>request</edgejs>
 
@@ -250,6 +252,7 @@ Identifies requests by the filename defined in the URL.
 
 </edgejs>
 
+<!--
 #### HTML Preferred DTD {/*html-preferred-dtd*/} <edgejs>device</edgejs>
 
 Identifies requests by a device's preferred document type definition (DTD) for HTML content (e.g., `html5`).
@@ -259,6 +262,7 @@ Identifies requests by a device's preferred document type definition (DTD) for H
 **Example:**
 
 </edgejs>
+-->
 
 #### Image Inlining {/*image-inlining*/} <edgejs>device</edgejs>
 
@@ -290,6 +294,7 @@ Identifies requests by whether the device that issued the request is a native ap
 
 </edgejs>
 
+<!--
 #### Is Full Desktop {/*is-full-desktop*/} <edgejs>device</edgejs>
 
 Identifies requests by whether the device that issued the request provides a full desktop experience.
@@ -299,6 +304,7 @@ Identifies requests by whether the device that issued the request provides a ful
 **Example:**
 
 </edgejs>
+-->
 
 #### Is iOS {/*is-ios*/} <edgejs>device</edgejs>
 
@@ -600,6 +606,16 @@ Identifies requests by the postal code from which the request was issued.
 
     -   **equals | does not equal:** Delimit each one with a single space.
     -   **matches regular expression | does not match regular expression:** Use regular expression syntax (e.g., `value 1|value 2`).
+
+<edgejs>
+
+**Example:**
+
+</edgejs>
+
+#### Progressive Download {/*progressive-download*/} <edgejs>device</edgejs>
+
+Identifies requests by whether the device that issued the request supports the playback of audio/video while it is still being downloaded.
 
 <edgejs>
 

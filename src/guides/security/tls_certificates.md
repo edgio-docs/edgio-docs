@@ -157,7 +157,10 @@ Once the above requirements are met, you should verify that a TLS certificate fo
 
 **To verify TLS certificate creation**
 
-1.  From the {{ PORTAL_LINK }}, click **Settings** to load the **Settings** page. Find the **TLS Certificate** section.
+1.  Load the **TLS Certificate** page.
+
+    {{ ENV_NAV }} **TLS Certificate**. 
+
 2.  Review the TLS status for each of your hostnames.
 
     ![TLS Certificate section](/images/v7/security/tls-certificate.png)

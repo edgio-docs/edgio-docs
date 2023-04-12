@@ -86,7 +86,7 @@ Each website that will run behind {{ PRODUCT }} requires an {{ PRODUCT }} proper
 
     Once you have successfully deployed your property to {{ PRODUCT }}, our CLI provides an edge URL that allows you to preview your site. Learn how to [get started with CDN-as-code.](/guides/performance/cdn_as_code/getting_started)
 
-## Step 3: Test Your Property
+## Step 3: Test Your Property {/*test-your-property*/}
 
 Once your property is successfully deployed to the {{ PRODUCT }} network, a URL will appear within the **Latest Production Deployment** section. Follow that link to preview your site behind {{ PRODUCT }}.
 

@@ -181,7 +181,7 @@ An operator determines when a request satisfies a condition by defining the rela
 -   **greater than:** Indicates that the value derived from the request must be greater than the value(s) defined within a condition.
 -   **greater than or equal:** Indicates that the value derived from the request must be greater than or equal to the value(s) defined within a condition.
 
-#### Multiple Conditions
+#### Multiple Conditions {/*multiple-conditions*/}
 
 You may add multiple conditions to a rule. By default, a request must satisfy each condition defined within a rule. This is indicated by an `and` label. However, you may configure your rule to only require a single condition by toggling the `and` label to `or`.
 

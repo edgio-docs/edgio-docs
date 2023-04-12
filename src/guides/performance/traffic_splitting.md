@@ -2,159 +2,125 @@
 title: Traffic Splitting 
 ---
 
-<Callout type="info">
+Traffic splitting allows you to distribute site traffic across various origin configurations for the purpose of:
 
-  You can also use traffic splitting for [A/B Testing](/guides/performance/traffic_splitting/a_b_testing).
-
-</Callout>
-
-{{ PRODUCT_NAME }} makes it easy to conduct A/B testing without performance penalties by executing splits at the edge through an easy-to-use yet powerful interface. A/B Testing, also known as split testing, is a marketing experiment wherein you split your audience to test a number of variations of canary deploys, blue-green tests, iterative migration off of a legacy website, personalization, and more.
-
-Iterative site migrations allow you to mitigate risk as you migrate a site. You can recover quickly if there is an error and ensure that you do not experience downtime during the migration.
-
-This guide provides an overview of site migrations and explains how to configure traffic splitting across multiple sites.
-
+-   A/B testing (aka split testing).
+-   Iterative site migrations.
+-   Gradual site build-outs.
+-   Improving performance through region-based origin routing.
 
 <Callout type="info">
 
-  This guide uses the terms <strong>legacy</strong> and <strong>new</strong> to refer to your current and new sites as well as the related {{ PRODUCT }} environments.
+  By default, all traffic for a single hostname (e.g., cdn.example.com) is directed at a single origin configuration (e.g., web). Traffic splitting allows you to customize how your site traffic is distributed to your origin configurations.
 
 </Callout>
 
-## Configurations Entities {/*configurations-entities*/}
+## Quick Start
 
-Traffic splitting requires that you make configurations in your project folder and create traffic splitting rules in the {{ PORTAL }}. The entities in the Console and files in your project folder where various configurations reside are called out. To provide a bigger picture, additional Console entities are included.
+Setting up traffic spliting involves performing the following steps:
 
-![Configuration Entities](/images/traffic-splitting/configuration_entities.png)
+1.  Create a rule or route that identifies a set of requests and how those requests will be handled.
 
-## Types of Site Migrations {/*types-of-site-migrations*/}
+    The specifics on how to set up this rule vary according to your implementation. For example, the following rule sends half of your site's traffic to a different origin configuration:
 
-The two general types of iterative site migrations are _gradual migrations_ and _gradual site build-outs_.
+    ![Traffic Splitting Example](/images/v7/performance/traffic-splitting-50-50.png)
 
-* Gradual migrations: You have a legacy site and a new site with some kind of changes and improvements. You want to gradually move traffic from the legacy site to the new site. This allows you to verify items such as load on the new site, core web vitals, and so on. For example, if you want to begin migration on a Monday and finish on Friday, you could do something like this hypothetical situation:
+    <Callout type="info">
 
-  1. On Monday configure 20% of traffic to the new site and 80% to the legacy (old).
-  2. On Wednesday configure a 50%/50% split.
-  3. On Friday configure 100% of the traffic to the new site and remove all traffic from the legacy site.
+      In this example, the Random Integer feature is configured to randomly assign each request to `www.example.com` a value of either `0` or `1`. If a request matches `1`, it will override your default origin configuration and send it to a different one.
 
-* Gradual site build-outs: You are replacing your legacy site with a new site that you are building/testing/deploying one piece at a time based on domains or routes, and so on. For example, you might have updated a single page or even an image and you want to publish the new item. 
-  
-  You are ready to roll out the first piece.
+    </Callout>
+    
+2.  Repeat the previous step as neeed.
+3.  Deploy your changes.
 
-  1. You shift all traffic for that piece from the legacy site to the new by configuring 0% for the legacy and 100% for the new.
-  2. As new pieces are ready, you do the same for them.
-  3. When all pieces have been deployed you remove traffic from the legacy site. 
+<Callout type="important">
 
-## Migrating Sites - General Steps {/*migrating-sites-general-steps*/}
+  If you are splitting traffic for the purpose of A/B testing, iterative site migrations, or gradual site build outs, then you may need to split traffic based off a cookie to ensure a consistent experience throughout the user's session. 
 
-### Separate Sites {/*separate-sites*/}
+</Callout>
 
-Although there are several ways you might organize your sites for migration, we will focus on a common, simple scenario where the two sites are defined by two distinct environments. One environment is a proxy to the `legacy` site and the other is the `new` site.
+## Traffic Splitting by Session Tutorial
 
-1. [Configure the backends](#step-1-configuring-backends) in the `{{ CONFIG_FILE }}` file.
-2. [Configure destinations](#step-2-configuring-destination-environments) in the `routes.js` file.
-3. [Configure traffic splitting rules](#step-3-configure-traffic-splitting-rules-in-the-developer-console) in the {{ PORTAL }}.
+There are many situations under which you should split traffic for the entire user's session. For example, if you are testing a new UI design, then certain resources (e.g., CSS, JS, and HTML files) should persist throughout a user's session to ensure a consistent experience. One way of ensuring that all traffic for a specific user session is to set a cookie on the initial request. You could then check for that cookie to ensure that only those requests are sent to an alternate path or origin configuration.
 
-### Separate Code Versions {/*separate-code-versions*/}
+### Create a Set Cookie Rule
 
-If you are using two code versions you can use Continuous Integration/Continuous Deployment  (CI/CD) to push changes to your `new` and `legacy` sites. Regardless of whether your versions reside in branches in the same repository or two different repositories, or some other way of separating your code, we recommend that you:
-
-1. Create environments called `new` and `legacy` in the {{ PORTAL }}.
-2. Configure CI/CD to deploy to the `new` or `legacy` site whenever you push changes. Integrate either of these  commands in your deployment script as appropriate:
-`0 deploy –environment=new` 
-`0 deploy –environment=legacy`
-
-1. [Configure the destinations](#step-2-configuring-destination-environments) in the `routes.js` file, 
-2. [Configure traffic splitting rules](#step-3-configure-traffic-splitting-rules-in-the-developer-console) in the {{ PORTAL }}.
-
-### Step 1. Configuring Backends {/*step-1-configuring-backends*/}
-
-If your sites consist of two separate servers use these steps to configure the domain names. Servers are commonly your own origin servers, but can also be third-party servers for which you can use {{ PRODUCT }} to proxy to the domain name, and use the {{ PRODUCT }} router to configure caching and other header manipulation.
+Create a rule that sets a cookie for the desired set of users. In this case, we will create a rule that sets a cookie for 10% of requests to `www.example.com`.
 
 <Callout type="info">
 
-  If your sites are defined by different code versions, this step is not necessary.
+  This tutorial assumes that you have not defined rules for your property.
 
 </Callout>
 
-Configure the backends in the {{ CONFIG_FILE }} file. (See [{{ CONFIG_FILE }}](/guides/basics/edgio_config) for more information.). For example, to split traffic between a new experience hosted on `origin.my-site.com` and a legacy experience hosted on `legacy-origin.my-site.com`:
+1.  Create a rule.
 
-```js filename="{{ CONFIG_FILE }}"
-module.exports = {
-  backends: {
-    legacy: {
-      domainOrIp: 'legacy-origin.my-site.com',
-    },
-    new: {
-      domainOrIp: 'origin.my-site.com',
-    },
-  },
-}
-```
+    1.  Navigate to the **Rules** page for the desired environment.
+    2.  Click **+ Add Rule**.
 
-### Step 2. Configuring Destination Environments {/*step-2-configuring-destination-environments*/}
+2.  Add a condition that identifies requests to your website.
 
-Add a destination for each site or application version to your `routes.js` file. The destinations will appear in the {{ PORTAL }} and you will use them later on when configuring traffic splitting rules.
+    1.  Click **+ Add Condition**.
+    2.  From the **Variable** option, select `Request Header`.
+    3.  Set the **Header Name** option to `host`.
+    4.  Set the **Value** option to the main domain for your website (e.g., `www.example.com`).
+    5.  Click **Add Condition**.
 
-```js filename="routes.js"
-const { Router } = require('{{ PACKAGE_NAME }}/core/router')
-module.exports = new Router()
-  .destination(
-    'legacy_experience', // displayed in the destination dropdown in the traffic splitting section of your environment configuration in the {{ PORTAL }}
-    new Router()
-      // additional routing rules for the legacy experience go here
-      .fallback(({ proxy }) => proxy('legacy')),
-  )
-  .destination(
-    'new_experience', // displayed in the destination dropdown in the traffic splitting section of your environment configuration in the {{ PORTAL }}
-    new Router()
-      // additional routing rules for the new experience go here
-      .fallback(({ proxy }) => proxy('new')),
-  )
-```
-After deploying a router with multiple destinations, all requests will be sent to the first destination until you have defined traffic splitting rules within the {{ PORTAL }}.
+3.  Add a condition that identifies 10% of your traffic.
 
-### Step 3. Configure Traffic Splitting Rules in the {{ PORTAL }} {/*step-3-configure-traffic-splitting-rules-in-the-developer-console*/}
+    1.  Click **+ Add Condition**.
+    2.  From the **Variable** option, select `Random Integer`.
+    3.  Set the **Random Integer Range (from 0 to ?)** option to `9`.
 
-1.  [Log into your account]({{ APP_URL }}/login/), then navigate to the environment in which you want to configure the iterative migration and click Edit:
+        <Callout type="info">
 
-    ![Edit Environment](/images/traffic-splitting/edit_env.png)
+          This configuration requires {{ PRODUCT }} to assign a random integer from 0 to 9 to each request.
 
-2.  Scroll to the **Split Testing** section and click *Add Rule*:
+        </Callout>
 
-    ![Add Split Test Rule](/images/traffic-splitting/add_rule.png)
+    4.  Set the **Value** option to `1`.
 
-3.  Select the amount of traffic to send to each destination or environment:
+        <Callout type="info">
 
-    1.  Click **ADD DESTINATION**.
-    2.  Choose a destination from the drop-down menu and enter a percentage for each destination.
+          This configuration will only be satisfied when the random integer assigned to a request is equal to `1`. This should only happen 10% of the time when requests are randomly assigned 10 different values (i.e., 0 to 9).
 
-        ![Add Split Test Rule Destination](/images/traffic-splitting/rule_config.png)
+        </Callout>
 
-#### Adding Additional Rules {/*adding-additional-rules*/}
+    5.  Click **Add Condition**.
 
-You can add additional rules to the traffic split as well. For example, you can allow testers to access a specific experience all of the time by setting a cookie value. In addition to cookie value, you can split traffic based on header value, path, IP address, URL parameters, device type, browser type, and bot boolean. Here’s an example:
+4.  Add a feature that sets a cookie.
 
-![Add Split Test Additional Rules](/images/traffic-splitting/additional_rules.png)
+    1.  Click **+ Add Feature**.
+    2.  Select `Set Response Headers`.
+    3.  Set the **Header Name** option to `Set-Cookie`.
+    4.  Set the **Value** option to `newExperience=true`.
+    5.  Click **Add Feature**.
 
-#### Rule Ordering {/*rule-ordering*/}
+### Create a URL Rewrite Rule
 
-The order of rules is critical. Rules are matched from top to bottom. When handling a request, the first matching rule will be used for the request. Given the rules setup in the examples above, you would need to move the force-new cookie rule to the top so that it takes precedence over the other rule that splits all traffic without any criteria. Use the "grip" icon to reorder rules by dragging and dropping:
+Create a rule that rewrites requests for an alternate UI experience.
 
-![Split Test Rule Ordering](/images/traffic-splitting/rule_ordering.png)
+1.  Create a rule by clicking **+ Add Rule**.
 
-### Step 4. Complete the Configuration {/*step-4-complete-the-configuration*/}
+2.  Add a condition that identifies requests for the new UI experience.
 
-Click the Activate button at the top of the environment:
+    1.  Click **+ Add Condition**.
+    2.  From the **Variable** option, select `Cookie`.
+    3.  Set the **Cookie Name** option to `newExperience`.
+    4.  Set the **Value** option to `true`.
+    5.  Click **Add Condition**.
 
-![Activate Environment](/images/traffic-splitting/activate_env.png)
+3.  Add a feature that rewrites URLs to a path that contains resources for the new UI experience.
 
-## Common Pitfalls for Site Migrations {/*common-pitfalls-for-site-migrations*/}
+    1.  Click **+ Add Feature**.
+    2.  Select `Rewrite URL`.
+    3.  Set the **Source Path (Optional)** option to `/:path*`.
+    4.  Set the **Destination Path** option to `/newexperience/:path*`.
+    5.  Click **Add Feature**.
 
-* Incomplete routing for static assets, eg.` /images/header.png` only exists on the `legacy` environment but there are no routing rules for that file.
-    * For example, a new page at url `/about-us` is being rolled out. The `new` page has its static image assets at `/images/*` but the `legacy` site also has static images at `/images/*`. As a result, without careful routing rules, the `new` page might try to load missing files from the `legacy` environment.
-    * One way to solve this is to ensure that static assets from the `new` site live at a completely distinct path from where they live at the `legacy` site. In the previous example, the `new` site might be built with static images located at `/img/*` while the `legacy` site has those files at `/images/*`. The router can then proxy the `new` site for all `/img/*` paths and the `legacy` site for all `/images/*` paths.
-    * If the paths are distinct, it is also possible to route the static asset based on the referer url. If the referer url matches a path that is defined as one going to the `new` environment, any static assets should also be loaded from the `new` environment.
-    * If it’s not possible to separate the paths from the two environments, a fallback trick can be used whereby the router first tries to load content from one origin, and if that fails, automatically retries against the second origin.
-* Missing or incorrect host header entries causing content not to load from the `legacy` environment.
-* Links from `new` content pointing to pages that are still in draft in the `new` environment and which do not exist in the `legacy` environment.
+    Your rules should now look similar to this:
+
+    ![Traffic splitting by session rules](/images/v7/performance/traffic-splitting-session-tutorial-complete.png)
+
+5.  Deploy your changes by clicking **Deploy Changes**.

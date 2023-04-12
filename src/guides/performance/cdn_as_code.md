@@ -205,6 +205,31 @@ new Router()
   .use(nextRoutes)
 ```
 
+### Stopping Route Execution {/*stopping-route-execution*/}
+
+As mentioned previously, routes are executed in the order in which they are declared. If you want to stop execution of matched routes, you can use the `response` feature with the `set_done` option. This will prevent any additional routes from being executed.
+
+```js
+import { Router } from "{{ PACKAGE_NAME }}/core";
+
+new Router()
+  // match only /hello-world and stop route execution by immediately sending a response
+  .get('/hello-world', {
+    'response': {
+      'set_response_body': 'Hello, world!',
+      'set_done': true
+    }
+  })
+
+  // match all request paths, including /hello-world
+  .get('/(.*)', {
+    "response": {
+      "set_response_body": "This will never be executed if /hello-world is matched",
+    }
+  })
+  
+```
+
 ## Alter Requests and Responses {/*alter-requests-and-responses*/}
 
 {{ PRODUCT_NAME }} offers APIs to manipulate request and response headers and cookies. The APIs are:

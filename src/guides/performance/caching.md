@@ -80,134 +80,81 @@ Set or override a cache policy through rules. The most commonly used features fo
 
 ### CDN-as-Code
 
-<Condition version="7">
-{{ ROUTEHELPER }}
-</Condition>
-
-Use the [cache](/docs/api/core/classes/_router_responsewriter_.responsewriter.html#cache) function in your route's callback:
+Use the [caching](/guides/performance/rules/features#caching) feature in your route configuration:
 
     ```js
-    import { CustomCacheKey } from '{{ PACKAGE_NAME }}/core/router'
-
-    router.get('/some/path', ({ cache }) => {
-      cache({
-        browser: {
-          // Sets the cache-control: maxage=n header sent to the browser.  To prevent the browser from caching this route
-          // set maxAgeSeconds: 0
-          maxAgeSeconds: 0,
-
-          // Sends a non-standard header `x-sw-cache-control: n` that you can use to control caching your service worker.
-          // Note that service workers do not understand this header by default, so you would need to add code to your service
-          // worker to support it
-          serviceWorkerSeconds: 60 * 60,
-        },
-        edge: {
-          // Sets the TTL for a response in {{ PRODUCT_NAME }}'s edge cache
-          maxAgeSeconds: 60 * 60 * 24,
-
-          // Sets the amount of time a stale response will be served from the cache.  When a stale response is sent, {{ PRODUCT_NAME }}
-          // will simultaneously fetch a new response to serve subsequent requests.
-          // Using stale-while-revalidate helps raise your effective cache hit rate to near 100%.
-          staleWhileRevalidateSeconds: 60 * 60, // serve stale responses for up to 1 hour while fetching a new response
-
-          // And many other options
-        },
-        // Optionally customizes the cache key for both edge and browser
-        key: new CustomCacheKey()
-          .addBrowser() // Split cache by browser type
-          .addCookie('some-cookie'), // Split cache by some-cookie cookie
-      })
+    router.get('/some/path', {
+      "caching": {
+        "max_age": "86400s",
+        "stale_while_revalidate": "3600s",
+        "service_worker_max_age": "3600s",
+        "bypass_client_cache": true
+      },
+      "headers": {
+        "set_response_headers": {
+          "x-sw-cache-control": "max-age=3600"
+        }
+      }
     })
     ```
 
-    The `cache` function can be used in the same route as other functions such as `serveStatic`, `proxy` and `render`, or in a separate route prior to sending the response.
-
 ### Cache Key {/*cache-key*/}
 
-{{ PRODUCT_NAME }} provides you with a default cache key out of the box. It is a broad cache key that ensures general correctness but can be further customized by you. The default cache key consists of:
-
-- Value of `host` request header
-- Complete request URL, including the query parameters (this can be customized)
-- Value of `accept-encoding` request header
-<Condition version="<=6">
-- Name of the destination when [A/B testing](/guides/performance/traffic_splitting/a_b_testing) is in effect
-</Condition>
-
-When [POST and other non-GET/HEAD](#caching-responses-for-post-and-other-non-gethead-requests) methods caching is enabled, {{ PRODUCT_NAME }} automatically adds the following to the cache key:
-
-- Request HTTP method
-- Request body
+{{ PRODUCT_NAME }} provides you with a default cache key out of the box. By default, a request’s cache-key is determined by the request URI’s relative path. For example, a request to `https://example.com/some/path` will have a cache key of `/some/path`. This is sufficient for most sites, but there are some cases where you may want to customize the cache key. For example, if your site has a query parameter that affects the content of the response, you may want to include that query parameter in the cache key.
 
 To ensure that your site is resilient to [cache poisoning attacks](/guides/security/security_suite#cache-poisoning), every request header that influences the rendering of the content must be included in your custom cache key.
 
 #### Customizing the Cache Key {/*customizing-the-cache-key*/}
 
-It is often useful to customize the cache key, either to improve the cache hit ratio or to account for complexities of your site. As seen above, {{ PRODUCT_NAME }} provides an easy way to customize the keys by using the `CustomCacheKey` class. Here we will focus on three common examples:
+It is often useful to customize the cache key, either to improve the cache hit ratio or to account for complexities of your site. As seen above, {{ PRODUCT_NAME }} provides an easy way to customize the keys by using the `cache` feature. Here we will focus on three common examples:
 
 - Increasing the cache hit ratio by excluding all query parameters except those provided from the cache key. This lets only those specified parameters to fragment the cache (so you would add things like page, number per page, filters, variants of a product etc.)
 
 ```js
-import { CustomCacheKey } from '{{ PACKAGE_NAME }}/core/router'
-
-router.get('/some/path', ({ cache }) => {
-  cache({
+router.get('/some/path', {
+  "cache": {
     // Other options...
-    key: new CustomCacheKey().excludeAllQueryParametersExcept('whitelisted-param-1', 'whitelisted-param-2'),
-  })
+    "cache_key_query_string": {
+      "include_all_except": [
+        "allow-param-1",
+        "allow-param-2"
+      ]
+    }
+  }
 })
 ```
 
-We recommend using this method over `excludeQueryParameters` as it's difficult to know all of the query parameters your application might receive and unexpected query parameters can lead to significantly lower cache hit rates. With excludeQueryParameters, it stops the listed query parameters from fragmenting the cache (so you would add things like utm_medium, gclid, or other marketing params you know that don't alter the content on the page)
+- Including other request parameters using `cache_key_rewrite` like `language` and `currency` cookies:
 
 ```js
-import { CustomCacheKey } from '{{ PACKAGE_NAME }}/core/router'
-
-router.get('/some/path', ({ cache }) => {
-  cache({
+router.get('/some/path', {
+  "cache": {
     // Other options...
-    key: new CustomCacheKey().excludeQueryParameters('to-be-excluded-1', 'to-be-excluded-2'),
-  })
-})
-```
-
-This will remove the given query parameters from the URL before it is used in cache. On cache miss, the transformed URL will be passed to your code with the original query strings available to your code in `{{ HEADER_PREFIX }}-original-qs` request header.
-
-- Including other request parameters like cookies:
-
-```js
-import { CustomCacheKey } from '{{ PACKAGE_NAME }}/core/router'
-
-router.get('/some/path', ({ cache }) => {
-  cache({
-    key: new CustomCacheKey().addCookie('language').addCookie('currency'),
-    // Other options...
-  })
+    "cache_key_rewrite": {
+      "source": "^/some/path/(.*)$",
+      "destination": "^/some/path/(.*)-%{cookie_language}-%{cookie_currency}$"
+    }
+  }
 })
 ```
 
 This will take the values of `language` and `currency` cookies from the `cookie` request header and use them in the cache key. This would allow you to cache different content for the same URL by creating different caches dependent on the `language` and `currency` values.
 
-- Splitting the cache based on device type:
+- Splitting the cache based on geo location:
 
 ```js
-import { CustomCacheKey } from '{{ PACKAGE_NAME }}/core/router'
-
-router.get('/some/path', ({ cache }) => {
-  cache({
-    key: new CustomCacheKey().addDevice(),
+router.get('/some/path', {
+  "cache": {
     // Other options...
-  })
+    "cache_key_rewrite": {
+      "source": "^/some/path/(.*)$",
+      "destination": "/some/path/$1-%{geo_country}"
+    }
+  }
 })
 ```
 
-This will take the value of the `{{ HEADER_PREFIX }}-device` request header and split based on the following devices:
-
-- `smartphone`
-- `tablet`
-- `mobile` (feature phones)
-- `desktop`
-
-This allows you to cache different content, depending on the type of device in this example, for the same URL.
+This will take the value of the `%{geo_country}` feature variable and split based on the country code. This would allow you to cache different content for the same URL by creating different caches dependent on the `geo_country` value. See [Feature Variables](/guides/performance/rules/features#feature-variables) for additional reference values you may use to customize your cache key.
 
 Customizing caching keys is a very powerful tool to make your site faster. At the same time, it is easy to apply it too broadly causing a loss of performance due to lower cache hit ratio. The key to correctly using cache customization is to apply it judiciously and narrowly for specific routes.
 
@@ -220,14 +167,10 @@ Customizing caching keys is a very powerful tool to make your site faster. At th
 By default, {{ PRODUCT_NAME }} never caches responses which have the `private` clause in their `cache-control` header. Sometimes though, it's desirable to cache such responses, intended for a single user of your site:
 
 ```js
-router.get('/some/path', ({ cache }) => {
-  cache({
-    // Other options...
-    edge: {
-      // Other options...
-      forcePrivateCaching: true, // Force caching of `private` responses
-    },
-  })
+router.get('/some/path', {
+  "caching": {
+    "ignore_origin_no_cache": true
+  },
 })
 ```
 
@@ -235,21 +178,22 @@ Note that this feature cannot be safely used with caching of `POST` and similar 
 
 ## Achieving 100% Cache Hit Rates {/*achieving-100-cache-hit-rates*/}
 
-The key to really successful cache hit rates is leveraging `staleWhileRevalidate` in conjunction with `maxAge`. There is a very detailed [article](https://web.dev/stale-while-revalidate/) available from web.dev that covers this concept in more detail. The main points to know is this
+The key to really successful cache hit rates is leveraging `stale_while_revalidate` in conjunction with `max_age`. There is a very detailed [article](https://web.dev/stale-while-revalidate/) available from web.dev that covers this concept in more detail. The main points to know is this:
 
-- `maxAge` defines the hard cache limit. An asset will be cached this amount of time regardless.
-- `staleWhileRevalidate` defines an additional cache buffer limit past `maxAge` where cache content will still be returned to a client, but a network request will be issued to origin to check for new content.
-- If `maxAge` + `staleWhileRevalidate` value is exceeded, then a network request to origin is made no matter what.
+- `max_age` defines the hard cache limit. An asset will be cached this amount of time regardless.
+- `stale_while_revalidate` defines an additional cache buffer limit past `max_age` where cache content will still be returned to a client, but a network request will be issued to origin to check for new content.
+- If `max_age` + `stale_while_revalidate` value is exceeded, then a network request to origin is made no matter what.
 
-Set keys using the `edge` key in your cache key
+The following examples shows how to use `stale_while_revalidate` in conjunction with `max_age` to achieve 100% cache hit rates.
 
 ```js
-edge: {
-  // 24 hours
-  maxAgeSeconds: 60 * 60 * 24,
-  // serve stale responses for up to 1 hour while fetching a new response
-  staleWhileRevalidateSeconds: 60 * 60,
-},
+router.get('/some/path', {
+  caching: {
+    max_age: "1d",
+    stale_while_revalidate: "1h"
+  },
+  // Other options...
+})
 ```
 
 With the following header set, the diagram below shows the age of the previously cached response at the time of the next request
@@ -266,20 +210,21 @@ By default, {{ PRODUCT_NAME }} will cache responses that satisfy all of the foll
 
 1. The response must correspond to a `GET` or `HEAD` request. To override this, see the [_POST and other non-GET/HEAD_](#caching-responses-for-post-and-other-non-gethead-requests) section.
 2. The response status must have a status code of 1xx, 2xx or 3xx. You cannot override this.
-3. The response must not not have any `set-cookie` headers. You cannot override this, but you can use `removeUpstreamResponseHeader('set-cookie')` to remove `set-cookie` headers.
+3. The response must not not have any `set-cookie` headers. You cannot override this, but you can [alter the response](/guides/performance/cdn_as_code/common_routing_patterns#altering-the-response) to remove `set-cookie` headers.
 4. The response must have a valid `cache-control` header that includes a positive `max-age` or `s-maxage` and does not include a `private` clause. You can override this by using [router caching](#caching-a-response) and [forcing private responses](#caching-private-responses).
 
 However, sometimes you may not want to cache anything, even if the upstream backend returns a `max-age`. Other times, you might want to [improve the performance](/guides/performance#turn-off-caching-when-not-needed) of pages that can never be cached at edge. In those cases, you can turn off caching:
 
 ```js
-router.get('/some/uncacheable/path', ({ cache, proxy }) => {
-  cache({
-    // Other options...
-    edge: false
-  })
+router.get('/some/uncachable/path', {
+  "caching": {
+    "bypass_cache": true
+  },
   // The route will need to send a response to prevent the request from continuing on to subsequent routes.
   // This example sends the request through to a backend defined as "origin" which will complete the request cycle
-  await proxy('origin')
+  "origin": { 
+    "set_origin": "origin"
+  },
 })
 ```
 
@@ -310,15 +255,13 @@ The response was not cached because the edge caching was explicitly disabled (se
 
 ### no-max-age {/*no-max-age*/}
 
-The response was not cached because there was no `cache-control` response header with a non-zero `max-age` or `s-maxage` value. To cache the response, call `cache` in your route handler with `edge.maxAgeSeconds` set. For example:
+The response was not cached because there was no `cache-control` response header with a non-zero `max-age` or `s-maxage` value. To cache the response, set `max_age` under your `caching` rule. For example:
 
 ```js
-new Router().get('/', ({ cache }) => {
-  cache({
-    edge: {
-      maxAgeSeconds: 60 * 60 * 24,
-    },
-  })
+router.get('/some/path', {
+  "caching": {
+    "max_age": "1d"
+  },
 })
 ```
 
@@ -333,16 +276,14 @@ The response was not cached because the response had a status code >= 400.
 The response was not cached because it contained a `cache-control` header with `private`. To cache the response, use:
 
 ```js
-new Router().get('/', ({ cache }) => {
-  cache({
-    edge: {
-      forcePrivateCaching: true,
-    },
-  })
+router.get('/some/path', {
+  "caching": {
+    "ignore_origin_no_cache": true
+  },
 })
 ```
 
-You can also remove the `private` value from the upstream response's `cache-control` header.
+You can also remove the `private` value from the upstream response's `cache-control` header. See [Altering the Response](/guides/performance/cdn_as_code/common_routing_patterns#altering-the-response) for more information.
 
 ### method {/*method*/}
 
@@ -354,7 +295,25 @@ The response was not cached because the request body was more than 8000 bytes.
 
 ### set-cookie {/*set-cookie*/}
 
-The response was not cached because it contained a `set-cookie` header. To cache the response, use `removeUpstreamResponseHeader('set-cookie')` to remove the set-cookie header.
+The response was not cached because it contained a `set-cookie` header. To cache the response, use `headers` feature to remove the `set-cookie` header:
+
+```js
+router.get('/some/path', {
+  "headers": {
+    // remove `header-name` from the origin response
+    remove_origin_response_headers: [
+      "header-name"
+    ],
+    
+    // remove `header-name` from the response by name
+    remove_response_headers: [
+      "header-name"
+    ]
+  },
+})
+```
+
+See [Altering the Response](/guides/performance/cdn_as_code/common_routing_patterns#altering-the-response) for more information.
 
 ### deployment {/*deployment*/}
 
@@ -384,11 +343,9 @@ By default, caching is turned off during development. This is done to ensure tha
 {{ FULL_CLI_NAME }} dev --cache
 ```
 
-The cache will automatically be cleared when you make changes to your router. A few aspects of caching are not yet supported during local development:
+The cache will automatically be cleared when you make changes to your router.
 
-- `edge.staleWhileRevalidateSeconds` is not yet implemented. Only `edge.maxAgeSeconds` is used to set the cache time to live.
-- `edge.key` is not supported. Cache keys are always based solely on url, method, the `accept-encoding` and `host` headers, and body.
-
+<!-- TODO: determine JSON syntax for serving static permenent assets
 ## Ensuring Versioned Browser Assets are Permanently Available {/*ensuring-versioned-browser-assets-are-permanently-available*/}
 
 In order to ensure that users who are actively browsing your site do not experience issues during a deployment, developers can
@@ -410,4 +367,4 @@ router.get('/scripts/:file', ({ serveStatic }) => {
 You should only make assets permanently available if they have a hash of the content or a version number in the filename, or are accessed via a globally unique URL. For example:
 
 - /assets/main-989b11c4c35bc9b6e505.js
-- /assets/v99/main.js
+- /assets/v99/main.js -->

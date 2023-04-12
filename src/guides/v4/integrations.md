@@ -1,9 +1,0 @@
----
-title: Overview 
----
-
-## Integrations Overview {/*integrations-overview*/}
-
-{{ PRODUCT_NAME }} supports a number of integrations of popular products and platforms as listed below.
-
-<Integrations/>

@@ -164,7 +164,7 @@ router.match(
 
 ## Negated Route Matching {/*negated-route-matching*/}
 
-Previously, we showed how to mtch requests based on path, method, query parameters, cookies, and request headers. You can also negate these matches by specifying a `not` key in the object passed to your route criteria. For example, to match all requests that are not to `/some-path`:
+Previously, we showed how to match requests based on path, method, query parameters, cookies, and request headers. You can also negate these matches by specifying a `not` key in the object passed to your route criteria. For example, the following route matches all requests whose relative path does not match `/some-path`:
 
 ```js
 router.match({

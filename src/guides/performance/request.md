@@ -76,8 +76,8 @@ Our edge servers may also add or overwrite the following reserved request header
 -   X-Midgress
 -   Host
 -   X-Gateway-List
--   X-EC-<NAME>
--   {{ HEADER_PREFIX }}-*`
+-   X-EC-*
+-   {{ HEADER_PREFIX }}-*
 
 <!--
 ### General headers {/*general-headers*/}

@@ -34,6 +34,7 @@ new Router()
       "deny_access": true,
     }
   })
+```
 </edgejs>
 
 **Default Behavior:** false

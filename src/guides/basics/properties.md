@@ -9,7 +9,7 @@ A property instructs {{ PRODUCT }} how to securely process requests for your web
 -   [TLS certificate(s)](/guides/security/tls_certificates). Each hostname associated with an environment requires the installation of a TLS certificate on our network. Manage these TLS certificates through your property's settings. 
 -   [Securing your web applications and API traffic](/guides/security/waf). Secure your web applications and APIs across all environments using a single configuration at the property level.
 
-## Managing Properties
+## Managing Properties {/*managing-properties*/}
 
 You may create, rename, or delete a property. <!--You may even transfer ownership to a different team.-->
 

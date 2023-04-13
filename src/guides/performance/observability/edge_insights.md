@@ -15,7 +15,7 @@ Use Edge Insights to gain historical and near real-time insights into threat pro
 
 </Callout>
 
-## Basic Usage
+## Basic Usage {/*basic-usage*/}
 
 Generating a report consists of performing the following steps:
 
@@ -51,11 +51,11 @@ Generating a report consists of performing the following steps:
         
     3.  Click **Analyze**.
 
-### Common Use Cases
+### Common Use Cases {/*common-use-cases*/}
 
 The following common use cases are provided to demonstrate various ways in which you may use Edge Insights to gain insight into traffic patterns or to troubleshoot issues.
 
-#### Was my software update delivered throughout the United States?
+#### Was my software update delivered throughout the United States? {/*was-my-software-update-delivered-through-the-united-states*/}
 
 1.  From the **Data Source** option, select `Access Logs (Full - last 6 hours)`.
 2.  From the **Time Period** option, define the desired time period.
@@ -84,7 +84,7 @@ The following common use cases are provided to demonstrate various ways in which
 7.  Review the status codes.
 8.  Optional. Dig into a specific status code by clicking on it and then reviewing log entries from the Logs section.
 
-#### Why do I see a spike in 404 Not Found responses?
+#### Why do I see a spike in 404 Not Found responses? {/*why-do-i-see-a-spike-in-404-not-found-responses*/}
 
 1.  From the **Data Source** option, select `Access Logs (Full - last 6 hours)`.
 2.  From the **Top Results** section, select the `HTTP Status Code` field.
@@ -107,7 +107,7 @@ The following common use cases are provided to demonstrate various ways in which
 
 </Callout>
 
-#### Why do I see a traffic spike?
+#### Why do I see a traffic spike? {/*why-do-i-see-a-traffic-spike*/}
 
 1.  From the **Data Source** option, select `Access Logs (Full - last 6 hours)`.
 2.  From the **Time Period** option, define a time period that covers that traffic spike.
@@ -117,7 +117,7 @@ The following common use cases are provided to demonstrate various ways in which
 3.  From the **Top Results** section, select the `URL Path` field.
 4.  Review the top requests for that time period.
 
-#### Why do I see a spike in WAF alerts?
+#### Why do I see a spike in WAF alerts? {/*why-do-i-see-a-spike-in-waf-alerts*/}
 
 1.  From the **Data Source** option, select WAF Alerts.
 2.  From the **Time Period** option, define a time period that covers that spike.
@@ -131,7 +131,7 @@ The following common use cases are provided to demonstrate various ways in which
     
 5.  From the **Logs** section, click on a log entry. Review key fields (e.g., `url` and `user_agent`).
 
-#### Why do I see a spike in rate limited requests?
+#### Why do I see a spike in rate limited requests? {/*why-do-i-see-a-spike-in-rate-limited-requests*/}
 
 1.  From the **Data Source** option, select Rate Limiting Alerts.
 2.  From the **Time Period** option, define a time period that covers that spike.
@@ -142,7 +142,7 @@ The following common use cases are provided to demonstrate various ways in which
 4.  Review the top requests for that time period.
 5.  Optional. If you cannot detect a clear pattern, try selecting a region field (e.g., `City Name`) from within the **Top Results** section.
 
-### Sharing Data
+### Sharing Data {/*sharing-data*/}
 
 You may share an entire report or specific data with other users.
 
@@ -167,7 +167,7 @@ You may share an entire report or specific data with other users.
 
 </Callout>
 
-## Data Downsampling and Retention
+## Data Downsampling and Retention {/*data-downsampling-and-retention*/}
 
 Our policy on downsampling data and the amount of time that we store it varies according to data source.
  
@@ -181,7 +181,7 @@ Our policy on downsampling data and the amount of time that we store it varies a
 |Rate Limiting Alerts|Downsampled to 10%|30 days|
 |WAF Alerts|Full |30 days|
 
-## Time Chart
+## Time Chart {/*time-chart*/}
 
 The time chart (aka line graph) graphs the current report's data over time.
 
@@ -218,7 +218,7 @@ The time chart (aka line graph) graphs the current report's data over time.
     
 -   View the data used to plot this chart by clicking on the <Image inline src="/images/v7/icons/json.png" alt="JSON icon" /> icon. Upon clicking this icon, {{ PRODUCT }} displays this data in JSON format within a new tab.
 
-## Top Results Charts
+## Top Results Charts {/*top-results-charts*/}
 
 The top results charts displays the top results for 2 fields.
 
@@ -302,7 +302,7 @@ Perform the following common tasks from within the **Filters** section in the le
         
     5.  Click **Save**.
 
-## Log Data
+## Log Data {/*log-data*/}
 
 Log data provides contextual information about a request that allows you to gain deeper behavioral insight into threat detection and CDN usage. View the log data associated with the current report from within the Logs section.
 
@@ -319,7 +319,7 @@ Log data provides contextual information about a request that allows you to gain
 
     </Callout>
 
-## Access Logs
+## Access Logs {/*access-logs*/}
 
 Use this data source to analyze CDN traffic. This data provides historical and near real-time visibility into your CDN traffic at a high-level.
 
@@ -399,7 +399,7 @@ Each Access Log field is defined below.
 |Write Time Used|Indicates the length of time, in seconds, that it took an edge server to write the response. This metric measures the duration between when an edge server starts writing the response and when it finishes sending the response to the client. Our servers forward data as it is read. This means that the `read_time` and `write_time` reported for an asset spans over an overlapping time period. This field does not take into account network time. <br />**Example:** `2.9999e-05`|
 |X Midgress|Indicates whether the request was proxied through an additional CDN server (e.g., edge server to Origin Shield server). This field reports `__na__` for requests that did not have midgress traffic.|
 
-## Analytics
+## Analytics {/*analytics*/}
 
 Use this data source to analyze CDN traffic that has been downsampled to 0.1%. This data provides historical and near real-time visibility into your CDN traffic at a high-level.
 
@@ -481,15 +481,15 @@ Each Analytics field is defined below.
 |Write Time Used|Indicates the length of time, in seconds, that it took an edge server to write the response. This metric measures the duration between when an edge server starts writing the response and when it finishes sending the response to the client. Our servers forward data as it is read. This means that the `read_time` and `write_time` reported for an asset spans over an overlapping time period. This field does not take into account network time. <br />**Example:** `2.9999e-05`|
 |X Midgress|Indicates whether the request was proxied through an additional CDN server (e.g., edge server to Origin Shield server). This field reports `__na__` for requests that did not have midgress traffic.|
 
-## Bot Manager Alerts
+## Bot Manager Alerts {/*bot-manager-alerts*/}
 
 Use the Bot Manager Alerts data source for historical and near real-time analysis of recently detected [bot traffic](/guides/security/bot_rules).
 
-## Edge Control
+## Edge Control {/*edge-control*/}
 
 Use this data source to analyze how a new CDN configuration affects content delivery and performance.
 
-## Rate Limiting Alerts
+## Rate Limiting Alerts {/*rate-limiting-alerts*/}
 
 Use the Rate Limiting Alerts data source for historical and near real-time analysis of recently [rate limited requests](/guides/security/rate_rules). For example, use this data to:
 
@@ -556,7 +556,7 @@ Each Rate Limiting field is defined below.
 |User Agent|Indicates the user agent that submitted the request. This value is derived from the request's `User-Agent` header.|
  
 
-## WAF Alerts
+## WAF Alerts {/*waf-alerts*/}
 
 Use the WAF Alerts data source for historical and near real-time analysis of [recent threats to site traffic](/guides/security/waf). For example, use this data to:
 

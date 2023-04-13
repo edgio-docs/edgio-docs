@@ -64,12 +64,22 @@ By default, requests that are proxied through our network to an origin server wi
 
 ## Request Headers {/*request-headers*/}
 
-We return a `400 Bad Request` if a request contains a header that does not comply with the HTTP specification (e.g., HTTP/1.1). For example, we will not accept a request with a header that contains whitespace between its name and the colon.
+By default, {{ PRODUCT }} forwards all request headers to the origin server. However, we return a `400 Bad Request` if a request contains a header that does not comply with the HTTP specification (e.g., HTTP/1.1). For example, we will not accept a request with a header that contains whitespace between its name and the colon.
 
-By default, all request headers may be forwarded to the origin server. Our edge servers may also add or overwrite the following reserved request headers:
+Our edge servers may also add or overwrite the following reserved request headers:
 
-`User-Agent | Via | X-Forwarded-For | X-Forwarded-Proto | X-Host | X-Midgress | Host | X-Gateway-List | X-EC-<NAME> | {{ HEADER_PREFIX }}-*`
+-   User-Agent
+-   Via
+-   X-Forwarded-For
+-   X-Forwarded-Proto
+-   X-Host
+-   X-Midgress
+-   Host
+-   X-Gateway-List
+-   X-EC-*
+-   {{ HEADER_PREFIX }}-*
 
+<!--
 ### General headers {/*general-headers*/}
 
 - `x-request-id`: unique request ID on {{ PRODUCT_NAME }} which may optionally be provided by you when issuing the requests to {{ PRODUCT_NAME }}
@@ -102,6 +112,7 @@ Geolocation headers contain the geographical information about the provenance of
 - `{{ HEADER_PREFIX }}-geo-asn`: the autonomous system number of the network operator from which the request originated
 
 These values are provided as a best effort. {{ PRODUCT_NAME }} cannot guarantee the accuracy of geolocation based on the client's IP address. See also [geolocation](/guides/third_party_cdns#client-ips) behind [third-party CDNs](/guides/third_party_cdns).
+-->
 
 ### Static prerendering headers {/*static-prerendering-headers*/}
 

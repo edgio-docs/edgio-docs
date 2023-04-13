@@ -177,7 +177,7 @@ of `{{ CONFIG_FILE }}`:
 require('dotenv').config()
 ```
 
-## Deleting an Environment
+## Deleting an Environment {/*deleting-an-environment*/}
 
 Perform the following steps to permanently delete an environment:
 

@@ -311,7 +311,7 @@ Renders:
   />
 </ButtonLinksGroup>
 
-## Versioning
+## Versioning {/*versioning*/}
 
 All documentation guides are based on the content files within `src/guides/`. All paths under this directory, with the exception of `src/guides/v*/`, are assumed to represent the most current {{ PRODUCT }} version.
 

@@ -55,7 +55,7 @@ Log data consists a set of log entries. Each entry describes either:
 
 If our service is unable to deliver log data, then we will store it for up to 3 days and deliver it when communication resumes. If we cannot deliver log data within 3 days, then it will be permanently deleted.
 
-## Quick Start
+## Quick Start {/*quick-start*/}
 
 Setting up log delivery consists of the following steps:
 
@@ -63,7 +63,7 @@ Setting up log delivery consists of the following steps:
 2.  If required, gather authentication information for the above destination.
 3.  Create a log delivery profile for the above destination.
 
-## Log Delivery Profiles
+## Log Delivery Profiles {/*log-delivery-profiles*/}
 
 A log delivery profile identifies:
 
@@ -72,7 +72,7 @@ A log delivery profile identifies:
 -   Whether log data will be filtered prior to delivery.
 -   The set of log fields that will be delivered.
 
-### Multiple Profiles
+### Multiple Profiles {/*multiple-profiles*/}
 
 You may create multiple profiles. This allows you to:
 

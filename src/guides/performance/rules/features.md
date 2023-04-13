@@ -44,12 +44,12 @@ Determines whether Token-Based Authentication will be applied to a request.
 
 -   If Token-Based Authentication is enabled, then only requests that provide an encrypted token and comply to the requirements specified by that token will be honored.
 -   Token values will be encrypted and decrypted using your primary and backup encryption key(s).
--   This feature takes precedence over most features with the exception of the [URL Rewrite feature](#url-rewrite).
+-   This feature takes precedence over most features with the exception of the [Rewrite URL feature](#rewrite-url).
 
 <edgejs>
 -   If Token-Based Authentication is enabled, then only requests that provide an encrypted token and comply to the requirements specified by that token will be honored.
 -   Token values will be encrypted and decrypted using your primary and backup encryption key(s).
--   This feature takes precedence over most features with the exception of the URL Rewrite feature.
+-   This feature takes precedence over most features with the exception of the Rewrite URL feature.
 
 **Example:**
 
@@ -65,6 +65,7 @@ new Router()
 
 **Default Behavior:** false
 
+<!--
 #### Token Auth Denial Code {/*token-auth-denial-code*/}
 
 Determines the type of response that will be returned to a user when a request is denied due to Token-Based Authentication.
@@ -118,7 +119,7 @@ Determines the type of response that will be returned to a user when a request i
 </edgejs>
 
 **Default Behavior:** By default, requests denied by Token-Based Authentication return a `403 Forbidden` response.
-
+-->
 
 #### Token Auth Ignore 	URL Case {/*token-auth-ignore-url-case*/}
 
@@ -401,6 +402,7 @@ Include or exclude all query string parameters through the `include_all` propert
     ```
 </edgejs>
 
+<!--
 #### Cacheable Request Body Size {/*cacheable-request-body-size*/}
 
 Restricts caching to requests whose body does not exceed the specified file size.
@@ -461,6 +463,7 @@ new Router()
 </edgejs>
 
 **Default Behavior:** `14kB`
+-->
 
 #### Cacheable Status Codes {/*cacheable-status-codes*/}
 
@@ -614,6 +617,7 @@ new Router()
 
 **Default Behavior:** Overwrite
 
+<!--
 #### Enable H264 encoding {/*enable-h264-encoding*/}
 
 Determines the types of H.264 file formats that may be used when streaming content through HTTP Progressive Download.
@@ -650,6 +654,7 @@ new Router()
 </edgejs>
 
 **Default Behavior:** By default, HTTP Progressive Download supports MP4 and F4V file extensions.
+-->
 
 #### Honor No Cache Request Header {/*honor-no-cache-request-header*/}
 
@@ -752,60 +757,6 @@ new Router()
 
 **Default Behavior:** The default behavior is to honor the `416 Requested Range Not Satisfiable` status code.
 
-#### Max Age{/*max-age*/}
-
-Defines a `max-age` interval for edge server to origin server cache revalidation that overrides the one defined in `Cache-Control` or `Expires` headers generated from an origin server.  This interval defines the amount of time that will pass before an edge server can check whether a cached asset matches the asset stored on the origin server.
-
-**Key information:**
-
--   Define a `max-age` interval for each desired HTTP status code. This caching policy will only be applied when the status code for the cached response matches the specified HTTP status code. 
--   This feature does not affect browser to edge server cache revalidations. These types of revalidations are determined by the `Cache-Control` or `Expires` headers sent to the browser.
--   This feature does not have an observable effect on the response sent to a user. However, it may have an effect on the amount of revalidation traffic sent from our edge servers to the origin server.
-
-<edgejs>
-**Key information:**
-
--   Define this feature either as a string value or an object. 
--   **Object:** Define key-value pair(s) that identify an HTTP status code and its `max-age` interval.
-
-    **Syntax:** `"<STATUS CODE>": "<TIME>[s|m|h|d|w|y]"`
-
-    **Example:**
-
-    ```js filename="./routes.js"
-    new Router()
-      .get('/', {
-        caching: {
-          "max_age": {
-	        "200": "10h",
-	        "301": "5m"
-          },
-        }
-      })
-    ```
-
--   **String:** Use a string value if you only need to define the `max-age` interval for `200 OK` responses.
-
-    **Syntax:** `<TIME>[s|m|h|d|w|y]`
-
-    **Example:**
-
-    ```js filename="./routes.js"
-    new Router()
-      .get('/', {
-        caching: {
-          "max_age": "10h",
-        }
-      })
-    ```
-
--   This feature does not affect browser to edge server cache revalidations. These types of revalidations are determined by the `Cache-Control` or `Expires` headers sent to the browser.
--   This feature does not have an observable effect on the response sent to a user. However, it may have an effect on the amount of revalidation traffic sent from our edge servers to the origin server.
-
-</edgejs>
-
-**Default Behavior:** Disabled. An internal max-age interval will not be assigned to requested assets. <!--If the origin server does not serve a response that contains caching instructions, then the asset will be cached according to the active setting in the Default Internal Max-Age feature.-->
-
 #### Partial Cache Sharing Min Hit Size {/*partial-cache-sharing-min-hit-size*/}
 
 Defines the minimum file size (Kb) for caching partial content. 
@@ -880,60 +831,6 @@ new Router()
 </edgejs>
 
 **Default Behavior:** The default behavior is to serve valid cache assets upon request.
-
-#### Rewrite Cache Key {/*rewrite-cache-key*/}
-
-Rewrites the cache-key associated with a request. Pass the following properties:
-
--   **Source:** Define a regular expression that identifies the cache-key that will be rewritten. This cache-key is a relative path that starts directly after the hostname.
-
-    <Callout type="important">
-
-      Verify that the specified pattern does not conflict with this route's path.
-
-    </Callout>
-
--   **Destination:** Define a replacement pattern that sets a new cache-key. This cache-key is a relative path that starts directly after the hostname. 
-
-    <Callout type="tip">
-
-      Use [feature variables](/guides/performance/rules/feature_variables) to dynamically construct this relative path. However, you may not use response metadata when defining a cache-key.
-
-    </Callout>
-
-<edgejs>
--   **source (*String*):** Define a regular expression that identifies the cache-key that will be rewritten. This cache-key is a relative path that starts directly after the hostname.
-
-    <Callout type="important">
-
-      Verify that the specified pattern does not conflict with this route's path.
-
-    </Callout>
-
--   **destination (*String*):** Define a replacement pattern that sets a new cache-key. This cache-key is a relative path that starts directly after the hostname. 
-
-    <Callout type="tip">
-
-      Use [feature variables](/guides/performance/rules/feature_variables) to dynamically construct this relative path. However, you may not use response metadata (e.g., `%{resp_<RESPONSE HEADER>}`) when defining a cache-key.
-
-    </Callout>
-
-**Example:**
-
-```js filename="./routes.js"
-new Router()
-  .get('/', {
-    caching: {
-      "cache_key_rewrite": {
-		"source": "/marketing/images/(.*)",
-		"destination": "/images/$1"
-      }
-    }
-  })
-```
-</edgejs>
-
-**Default Behavior:** By default, a request's cache-key is determined by the request URI's relative path.
 
 #### Revalidate After Origin Unavailable {/*revalidate-after-origin-unavailable*/}
 
@@ -1036,6 +933,60 @@ new Router()
 
 **Default Behavior:** By default, our CDN will not attempt to connect to your origin server while it is in stale mode.
 
+#### Rewrite Cache Key {/*rewrite-cache-key*/}
+
+Rewrites the cache-key associated with a request. Pass the following properties:
+
+-   **Source:** Define a regular expression that identifies the cache-key that will be rewritten. This cache-key is a relative path that starts directly after the hostname.
+
+    <Callout type="important">
+
+      Verify that the specified pattern does not conflict with this route's path.
+
+    </Callout>
+
+-   **Destination:** Define a replacement pattern that sets a new cache-key. This cache-key is a relative path that starts directly after the hostname. 
+
+    <Callout type="tip">
+
+      Use [feature variables](/guides/performance/rules/feature_variables) to dynamically construct this relative path. However, you may not use response metadata when defining a cache-key.
+
+    </Callout>
+
+<edgejs>
+-   **source (*String*):** Define a regular expression that identifies the cache-key that will be rewritten. This cache-key is a relative path that starts directly after the hostname.
+
+    <Callout type="important">
+
+      Verify that the specified pattern does not conflict with this route's path.
+
+    </Callout>
+
+-   **destination (*String*):** Define a replacement pattern that sets a new cache-key. This cache-key is a relative path that starts directly after the hostname. 
+
+    <Callout type="tip">
+
+      Use [feature variables](/guides/performance/rules/feature_variables) to dynamically construct this relative path. However, you may not use response metadata (e.g., `%{resp_<RESPONSE HEADER>}`) when defining a cache-key.
+
+    </Callout>
+
+**Example:**
+
+```js filename="./routes.js"
+new Router()
+  .get('/', {
+    caching: {
+      "cache_key_rewrite": {
+		"source": "/marketing/images/(.*)",
+		"destination": "/images/$1"
+      }
+    }
+  })
+```
+</edgejs>
+
+**Default Behavior:** By default, a request's cache-key is determined by the request URI's relative path.
+
 #### Set Client Max Age {/*client-max-age*/}
 
 Determines the `max-age` interval for browser to edge server cache revalidation. In other words, the amount of time that will pass before a browser can check for a new version of an asset from an edge server.
@@ -1069,6 +1020,60 @@ new Router()
 </edgejs>
 
 **Default Behavior:** The `Cache-Control` / `Expires` headers cached with the response of the origin server will pass through to the browser.
+
+#### Set Max Age{/*set-max-age*/}
+
+Defines a `max-age` interval for edge server to origin server cache revalidation that overrides the one defined in `Cache-Control` or `Expires` headers generated from an origin server.  This interval defines the amount of time that will pass before an edge server can check whether a cached asset matches the asset stored on the origin server.
+
+**Key information:**
+
+-   Define a `max-age` interval for each desired HTTP status code. This caching policy will only be applied when the status code for the cached response matches the specified HTTP status code. 
+-   This feature does not affect browser to edge server cache revalidations. These types of revalidations are determined by the `Cache-Control` or `Expires` headers sent to the browser.
+-   This feature does not have an observable effect on the response sent to a user. However, it may have an effect on the amount of revalidation traffic sent from our edge servers to the origin server.
+
+<edgejs>
+**Key information:**
+
+-   Define this feature either as a string value or an object. 
+-   **Object:** Define key-value pair(s) that identify an HTTP status code and its `max-age` interval.
+
+    **Syntax:** `"<STATUS CODE>": "<TIME>[s|m|h|d|w|y]"`
+
+    **Example:**
+
+    ```js filename="./routes.js"
+    new Router()
+      .get('/', {
+        caching: {
+          "max_age": {
+	        "200": "10h",
+	        "301": "5m"
+          },
+        }
+      })
+    ```
+
+-   **String:** Use a string value if you only need to define the `max-age` interval for `200 OK` responses.
+
+    **Syntax:** `<TIME>[s|m|h|d|w|y]`
+
+    **Example:**
+
+    ```js filename="./routes.js"
+    new Router()
+      .get('/', {
+        caching: {
+          "max_age": "10h",
+        }
+      })
+    ```
+
+-   This feature does not affect browser to edge server cache revalidations. These types of revalidations are determined by the `Cache-Control` or `Expires` headers sent to the browser.
+-   This feature does not have an observable effect on the response sent to a user. However, it may have an effect on the amount of revalidation traffic sent from our edge servers to the origin server.
+
+</edgejs>
+
+**Default Behavior:** Disabled. An internal max-age interval will not be assigned to requested assets. <!--If the origin server does not serve a response that contains caching instructions, then the asset will be cached according to the active setting in the Default Internal Max-Age feature.-->
 
 #### Set Service Worker Max Age {/*set-service-worker-max-age*/}
 
@@ -1279,6 +1284,94 @@ new Router()
 
 **Default Behavior:** By default, the response excludes debug cache response headers.
 
+#### Remove Origin Response Headers {/*remove-origin-response-headers*/}
+
+Deletes one or more header(s) from the response provided by an origin server.
+
+**Key information:**
+
+-   Set each string value to the exact name of the header that will be removed from the response provided by an origin server. Case is not taken into account for the purpose of identifying a header. 
+-   Use alphanumeric characters, dashes, or underscores when specifying a header name.
+-   Our service adds a set of reserved headers to each response. Although this feature removes a header from the response provided by the origin server, it does not affect whether our service will add a reserved header to the response. 
+
+<edgejs>
+**Key information:**
+
+-   Set each string value to the exact name of the header that will be removed from the response provided by an origin server. Case is not taken into account for the purpose of identifying a header. 
+-   Use alphanumeric characters, dashes, or underscores when specifying a header name.
+-   Our service adds a set of reserved headers to each response. Although this feature removes a header from the response provided by the origin server, it does not affect whether our service will add a reserved header to the response. 
+
+**Example:**
+
+```js filename="./routes.js"
+new Router()
+  .get('/', {
+    headers: {
+      "remove_origin_response_headers": ["city", "state", "zipcode"],
+    }
+  })
+```
+</edgejs>
+
+#### Remove Response Headers {/*remove-response-headers*/}
+
+Deletes one or more header(s) from a response.
+
+**Key information:**
+
+-   Set each string value to the exact name of the header that will be removed from the response. Case is not taken into account for the purpose of identifying a header. 
+    -   Use alphanumeric characters, dashes, or underscores when specifying a header name.
+    -   The following headers are reserved and should not be removed by this feature:
+    -   accept-ranges
+    -   age
+    -   connection
+    -   content-encoding
+    -   content-length
+    -   content-range
+    -   date
+    -   server
+    -   trailer
+    -   transfer-encoding
+    -   upgrade
+    -   vary
+    -   via
+    -   warning 
+    -   All header names that start with `{{ HEADER_PREFIX }}` and `x-ec` are reserved.
+
+<edgejs>
+**Key information:**
+
+-   Set each string value to the exact name of the header that will be removed from the response. Case is not taken into account for the purpose of identifying a header. 
+-   Use alphanumeric characters, dashes, or underscores when specifying a header name.
+-   The following headers are reserved and should not be removed by this feature:
+    -   accept-ranges
+    -   age
+    -   connection
+    -   content-encoding
+    -   content-length
+    -   content-range
+    -   date
+    -   server
+    -   trailer
+    -   transfer-encoding
+    -   upgrade
+    -   vary
+    -   via
+    -   warning 
+    -   All header names that start with `{{ HEADER_PREFIX }}` and `x-ec` are reserved.
+
+**Example:**
+
+```js filename="./routes.js"
+new Router()
+  .get('/', {
+    headers: {
+      "remove_response_headers": ["city", "state", "zipcode"],
+    }
+  })
+```
+</edgejs>
+
 
 #### Server-Timing Header {/*server-timing-header*/}
 
@@ -1298,6 +1391,45 @@ new Router()
 </edgejs>
 
 **Default Behavior:** By default, the response excludes the `server-timing` response header.
+
+#### Set Client IP Custom Header {/*set-client-ip-custom-header*/}
+
+Adds a custom request header that identifies the requesting client by IP address. 
+
+Define the name of the custom request header to which the requesting client's IP address will be logged.
+
+**Key information:**
+
+-   {{ PRODUCT }} includes this custom request header when proxying requests to your web servers. 
+-   The following headers are reserved and cannot be modified by this feature:
+    -   accept-ranges
+    -   age
+    -   connection
+    -   content-encoding
+    -   content-length
+    -   content-range
+    -   date
+    -   server
+    -   trailer
+    -   transfer-encoding
+    -   upgrade
+    -   vary
+    -   via
+    -   warning 
+    -   All header names that start with `{{ HEADER_PREFIX }}` and `x-ec` are reserved.
+
+<edgejs>
+**Example:**
+
+```js filename="./routes.js"
+new Router()
+  .get('/', {
+    headers: {
+      "set_client_ip_custom_header": "client-ip",
+    }
+  })
+```
+</edgejs>
 
 #### Set Request Headers {/*set-request-headers*/}
 
@@ -1438,94 +1570,6 @@ new Router()
 		"sports": "basketball",
 		"+broadcast": " ott"
       },
-    }
-  })
-```
-</edgejs>
-
-#### Remove Origin Response Headers {/*remove-origin-response-headers*/}
-
-Deletes one or more header(s) from the response provided by an origin server.
-
-**Key information:**
-
--   Set each string value to the exact name of the header that will be removed from the response provided by an origin server. Case is not taken into account for the purpose of identifying a header. 
--   Use alphanumeric characters, dashes, or underscores when specifying a header name.
--   Our service adds a set of reserved headers to each response. Although this feature removes a header from the response provided by the origin server, it does not affect whether our service will add a reserved header to the response. 
-
-<edgejs>
-**Key information:**
-
--   Set each string value to the exact name of the header that will be removed from the response provided by an origin server. Case is not taken into account for the purpose of identifying a header. 
--   Use alphanumeric characters, dashes, or underscores when specifying a header name.
--   Our service adds a set of reserved headers to each response. Although this feature removes a header from the response provided by the origin server, it does not affect whether our service will add a reserved header to the response. 
-
-**Example:**
-
-```js filename="./routes.js"
-new Router()
-  .get('/', {
-    headers: {
-      "remove_origin_response_headers": ["city", "state", "zipcode"],
-    }
-  })
-```
-</edgejs>
-
-#### Remove Response Headers {/*remove-response-headers*/}
-
-Deletes one or more header(s) from a response.
-
-**Key information:**
-
--   Set each string value to the exact name of the header that will be removed from the response. Case is not taken into account for the purpose of identifying a header. 
-    -   Use alphanumeric characters, dashes, or underscores when specifying a header name.
-    -   The following headers are reserved and should not be removed by this feature:
-    -   accept-ranges
-    -   age
-    -   connection
-    -   content-encoding
-    -   content-length
-    -   content-range
-    -   date
-    -   server
-    -   trailer
-    -   transfer-encoding
-    -   upgrade
-    -   vary
-    -   via
-    -   warning 
-    -   All header names that start with `{{ HEADER_PREFIX }}` and `x-ec` are reserved.
-
-<edgejs>
-**Key information:**
-
--   Set each string value to the exact name of the header that will be removed from the response. Case is not taken into account for the purpose of identifying a header. 
--   Use alphanumeric characters, dashes, or underscores when specifying a header name.
--   The following headers are reserved and should not be removed by this feature:
-    -   accept-ranges
-    -   age
-    -   connection
-    -   content-encoding
-    -   content-length
-    -   content-range
-    -   date
-    -   server
-    -   trailer
-    -   transfer-encoding
-    -   upgrade
-    -   vary
-    -   via
-    -   warning 
-    -   All header names that start with `{{ HEADER_PREFIX }}` and `x-ec` are reserved.
-
-**Example:**
-
-```js filename="./routes.js"
-new Router()
-  .get('/', {
-    headers: {
-      "remove_response_headers": ["city", "state", "zipcode"],
     }
   })
 ```
@@ -1719,6 +1763,7 @@ new Router()
 
 **Default Behavior:** 10,000 requests
 
+<!--
 #### Proxy Special Headers {/*proxy-special-headers*/}
 
 Defines the set of CDN-specific request headers that will be forwarded from an edge server to an origin server. 
@@ -1748,6 +1793,7 @@ new Router()
 </edgejs>
 
 **Default Behavior:** By default, all CDN-specific request headers are forwarded to the origin server.
+-->
 
 #### Set Origin {/*set-origin*/}
 
@@ -1772,6 +1818,7 @@ new Router()
 
 Response features manipulate the response sent to the client.
 
+<!--
 #### Compress Content Types {/*compress-content-types*/}
 
 Defines the set of media types (aka content type) that are eligible for edge server compression. 
@@ -1800,6 +1847,7 @@ new Router()
   })
 ```
 </edgejs>
+-->
 
 #### Allow Prefetching of Uncached Content {/*allow-prefetching-of-uncached-content*/}
 
@@ -1822,6 +1870,7 @@ new Router()
 
 **Default Behavior:** By default, prefetching is allowed for cache misses.
 
+<!--
 #### Set Done {/*set-done*/}
 
 Determines whether to stop processing the request.
@@ -1904,6 +1953,7 @@ new Router()
 </edgejs>
 
 **Default Behavior:** By default, the HTTP status code indicates how the request was handled. 
+-->
 
 ## Set Variables {/*set-variables*/}
 
@@ -2006,6 +2056,121 @@ new Router()
 ```
 </edgejs>
 
+#### Rewrite URL {/*rewrite-url*/}
+
+Rewrites the request URL.
+
+This feature allows our edge servers to rewrite the URL without performing a traditional redirect. This means that the client will receive the same response code as if the rewritten URL had been requested.
+
+<Callout type="info">
+
+  This feature takes precedence when multiple features will be applied to a request.
+
+</Callout>
+
+-   **Source Path:** Define a relative path that identifies the requests that will be rewritten. This relative path starts directly after the hostname.
+
+    <Callout type="important">
+
+      Verify that the specified pattern does not conflict with this route's path.
+
+    </Callout>
+
+    <Callout type="tip">
+
+      Use the **Match Style** option to determine whether this option is a relative path that supports named parameters (e.g., `:productId`) or a regular expression.
+
+    </Callout>
+
+-   **Destination Path:** Define a replacement pattern that sets a new relative path. This relative path starts directly after the hostname. 
+
+    <Callout type="info">
+
+      You may use up to 9 numbered backreferences for text captured within the `source` property. 
+
+      For example, if the **Source Path** option contains two capture groups (e.g., `/(sales|marketing)/(.*)`, then you may backreference them within the **Destination Path** option (e.g., `/$1/$2`). 
+
+    </Callout>
+
+    <Callout type="info">
+
+      Use [feature variables](/guides/performance/rules/feature_variables) to dynamically construct the above paths. However, you may not use response metadata.
+
+    </Callout>
+
+<edgejs>
+This feature allows our edge servers to rewrite the URL without performing a traditional redirect. This means that the requester will receive the same response code as if the rewritten URL had been requested.
+
+<Callout type="info">
+
+  This feature takes precedence when multiple features will be applied to a request.
+
+</Callout>
+
+-   **source (*String*):** Define a pattern that identifies the requests that will be rewritten by their relative path. This relative path starts directly after the hostname.
+
+    <Callout type="important">
+
+      Verify that the specified pattern does not conflict with this route's path.
+
+    </Callout>
+
+-   **destination (*String*):** Define a replacement pattern that sets a new relative path. This relative path starts directly after the hostname. 
+
+-   **syntax (*String*):** Determines whether the `source` property consists of a regular expression or a path that will be converted into a regular expression. Valid values are:
+
+    -   **regexp:** Treats the `source` property as a regular expression.
+
+        <Callout type="info">
+
+          You may use up to 9 numbered backreferences for text captured within the `source` property. 
+
+          For example, if the `source` property contains two capture groups (e.g., `/(sales|marketing)/(.*)`, then you may backreference them within the `destination` property (e.g., `/$1/$2`). 
+
+        </Callout>
+
+        **Example:**
+
+        ```js filename="./routes.js"
+        new Router()
+          .get('/', {
+            url: {
+              "url_rewrite": [{
+                "source": "/marketing/images/(.*)",
+                "destination": "/images/$1",
+                "syntax": "regexp"
+	          }]
+            }
+          })
+        ```
+
+    -   **path-to-regexp:** Treats both the `source` and `destination` properties as paths that will be converted into regular expressions. This syntax supports named parameters (e.g., `:productId`), which are defined by prefixing the parameter name with a colon. Backereference a named parameter defined within the `syntax` property by specifying it within the `destination` property.
+
+        **Example:**
+
+        ```js filename="./routes.js"
+        new Router()
+          .get('/', {
+            url: {
+              "url_rewrite": [{
+                "source": "/marketing/images/:path",
+                "destination": "/images/:path",
+                "syntax": "path-to-regexp"
+	          }]
+            }
+          })
+        ```
+
+<Callout type="info">
+
+  Use feature variables to dynamically construct the above paths. However, you may not use response metadata (e.g., `%{resp_<RESPONSE HEADER>}`).
+
+</Callout>
+
+</edgejs>
+
+**Default Behavior:** By default, requests are not rewritten.
+
 #### URL Redirect {/*url-redirect*/}
 
 Redirects requests according to the `Location` header. Pass the following properties:
@@ -2101,118 +2266,3 @@ Pass the following properties:
 </edgejs>
     
 **Default Behavior:** By default, requests are not redirected.
-
-#### URL Rewrite {/*url-rewrite*/}
-
-Rewrites the request URL.
-
-This feature allows our edge servers to rewrite the URL without performing a traditional redirect. This means that the client will receive the same response code as if the rewritten URL had been requested.
-
-<Callout type="info">
-
-  This feature takes precedence when multiple features will be applied to a request.
-
-</Callout>
-
--   **Source Path:** Define a relative path that identifies the requests that will be rewritten. This relative path starts directly after the hostname.
-
-    <Callout type="important">
-
-      Verify that the specified pattern does not conflict with this route's path.
-
-    </Callout>
-
-    <Callout type="tip">
-
-      Use the **Match Style** option to determine whether this option is a relative path that supports named parameters (e.g., `:productId`) or a regular expression.
-
-    </Callout>
-
--   **Destination Path:** Define a regular expression that sets a new relative path. This relative path starts directly after the hostname. 
-
-    <Callout type="info">
-
-      You may use up to 9 numbered backreferences for text captured within the `source` property. 
-
-      For example, if the **Source Path** option contains two capture groups (e.g., `/(sales|marketing)/(.*)`, then you may backreference them within the **Destination Path** option (e.g., `/$1/$2`). 
-
-    </Callout>
-
-    <Callout type="info">
-
-      Use [feature variables](/guides/performance/rules/feature_variables) to dynamically construct the above paths. However, you may not use response metadata.
-
-    </Callout>
-
-<edgejs>
-This feature allows our edge servers to rewrite the URL without performing a traditional redirect. This means that the requester will receive the same response code as if the rewritten URL had been requested.
-
-<Callout type="info">
-
-  This feature takes precedence when multiple features will be applied to a request.
-
-</Callout>
-
--   **source (*String*):** Define a pattern that identifies the requests that will be rewritten by their relative path. This relative path starts directly after the hostname.
-
-    <Callout type="important">
-
-      Verify that the specified pattern does not conflict with this route's path.
-
-    </Callout>
-
--   **destination (*String*):** Define a replacement pattern that sets a new relative path. This relative path starts directly after the hostname. 
-
--   **syntax (*String*):** Determines whether the `source` property consists of a regular expression or a path that will be converted into a regular expression. Valid values are:
-
-    -   **regexp:** Treats the `source` property as a regular expression.
-
-        <Callout type="info">
-
-          You may use up to 9 numbered backreferences for text captured within the `source` property. 
-
-          For example, if the `source` property contains two capture groups (e.g., `/(sales|marketing)/(.*)`, then you may backreference them within the `destination` property (e.g., `/$1/$2`). 
-
-        </Callout>
-
-        **Example:**
-
-        ```js filename="./routes.js"
-        new Router()
-          .get('/', {
-            url: {
-              "url_rewrite": [{
-                "source": "/marketing/images/(.*)",
-                "destination": "/images/$1",
-                "syntax": "regexp"
-	          }]
-            }
-          })
-        ```
-
-    -   **path-to-regexp:** Treats both the `source` and `destination` properties as paths that will be converted into regular expressions. This syntax supports named parameters (e.g., `:productId`), which are defined by prefixing the parameter name with a colon. Backereference a named parameter defined within the `syntax` property by specifying it within the `destination` property.
-
-        **Example:**
-
-        ```js filename="./routes.js"
-        new Router()
-          .get('/', {
-            url: {
-              "url_rewrite": [{
-                "source": "/marketing/images/:path",
-                "destination": "/images/:path",
-                "syntax": "path-to-regexp"
-	          }]
-            }
-          })
-        ```
-
-<Callout type="info">
-
-  Use feature variables to dynamically construct the above paths. However, you may not use response metadata (e.g., `%{resp_<RESPONSE HEADER>}`).
-
-</Callout>
-
-</edgejs>
-
-**Default Behavior:** By default, requests are not rewritten.

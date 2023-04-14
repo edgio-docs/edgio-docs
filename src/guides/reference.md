@@ -12,19 +12,19 @@ title: Reference
 ### Configuration
 -   [Conditions](/guides/performance/rules/conditions)
 -   [Features](/guides/performance/rules/features)
--   [Feature Variables](/guides/performance/rules/features_variables)
-
-### Develop
--   [CLI](/guides/develop/cli) 
--   [REST API](/guides/develop/rest_api)
--   EdgeJS API:
-    -   [{{ PACKAGE_NAME }}/core](/docs/api/core)
-    -   [{{ PACKAGE_NAME }}/prefetch](/docs/api/prefetch)
+-   [Feature Variables](/guides/performance/rules/feature_variables)
 
 ### General
 -   [Country Codes](/guides/reference/country_codes)
 -   POPs - TODO
 -   Cache Status Codes - TODO
+
+### Develop
+-   [CLI](/guides/develop/cli#commands)
+-   [REST API](/guides/develop/rest_api)
+-   EdgeJS API:
+    -   [{{ PACKAGE_NAME }}/core](/docs/api/core)
+    -   [{{ PACKAGE_NAME }}/prefetch](/docs/api/prefetch)
 
 ### Log Fields
 

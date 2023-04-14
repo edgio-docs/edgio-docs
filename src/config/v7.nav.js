@@ -590,6 +590,11 @@ const nav = {
         },
       ],
     },
+    {
+      title: 'Reference',
+      path: 'reference',
+      icon: 'stacks-plain',
+    },
   ],
 };
 export default nav;

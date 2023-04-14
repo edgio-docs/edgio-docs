@@ -21,7 +21,7 @@ title: TLS Certificates
 -   [Certificate Authority Authorization:](#certificate-authority-authorization) The Let's Encrypt certificate authority (CA) must be allowed to issue certificates for each registered hostname. 
 -   [Domain Control Validation:](#domain-control-validation) Prove your control over that domain by adding an `_acme-challenge` CNAME record to it.
 
-#### Certificate Authority Authorization
+#### Certificate Authority Authorization {/*certificate-authority-authorization*/}
 
 The Let's Encrypt certificate authority (CA) must be allowed to issue certificates for each registered hostname. It is allowed to issue certificates when either of the following conditions are true:
 
@@ -100,7 +100,7 @@ The Let's Encrypt certificate authority (CA) must be allowed to issue certificat
 
     </Callout>
 
-#### Domain Control Validation
+#### Domain Control Validation {/*domain-control-validation*/}
 
 Before {{ PRODUCT }} may issue a certificate request on your behalf, we require that you validate your control over each of your hostnames by adding a CNAME record.  From your DNS service provider, add the following CNAME DNS entry for each desired hostname:
 
@@ -151,13 +151,16 @@ If you have previously used Let's Encrypt to generate certificates for your host
 
 [Learn more about DNS TXT domain control.](https://letsencrypt.org/docs/challenge-types/#dns-01-challenge)
 
-#### TLS Certificate Verification
+#### TLS Certificate Verification {/*tls-certificate-verification*/}
 
 Once the above requirements are met, you should verify that a TLS certificate for each of your hostnames has been generated.
 
 **To verify TLS certificate creation**
 
-1.  From the {{ PORTAL_LINK }}, click **Settings** to load the **Settings** page. Find the **TLS Certificate** section.
+1.  Load the **TLS Certificate** page.
+
+    {{ ENV_NAV }} **TLS Certificate**. 
+
 2.  Review the TLS status for each of your hostnames.
 
     ![TLS Certificate section](/images/v7/security/tls-certificate.png)
@@ -253,7 +256,6 @@ The following procedure indicates how to create a CSR and a private key with Ope
 
 Uploading a TLS certificate requires:
 
--   An Enterprise account.  {{ ACCOUNT_UPGRADE }}
 -   The `Admin` role within your team.
 -   A certificate issued by a CA.
 -   The intermediate certificates (IC) used by the CA, including the CA's signing certificate.
@@ -261,7 +263,10 @@ Uploading a TLS certificate requires:
 
 **To upload your TLS certificate**
 
-1.  From the {{ PORTAL_LINK }}, click **Settings** to load the **Settings** page. Find the **TLS Certificate** section.
+1.  Load the **TLS Certificate** page.
+
+    {{ ENV_NAV }} **TLS Certificate**. 
+
 2.  Clear the **Automatically create an TLS certificate for my custom domains.** option.
 3.  Copy the certificate, intermediate certificates, and the private key into the corresponding options.
 

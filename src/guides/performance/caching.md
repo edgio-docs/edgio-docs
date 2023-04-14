@@ -8,7 +8,7 @@ This guide introduces the caching capabilities of {{ PRODUCT_NAME }}. While most
 
 Each environment provides a separate edge cache for the most recent deployment. Although older deployments do not support edge caching, you may re-enable it by [rolling back to that version](/guides/basics/deployments#versioning).
 
-## Edge and Shield Caching
+## Edge and Shield Caching {/*edge-and-shield-caching*/}
 
 {{ PRODUCT }} may cache your content on our:
 
@@ -23,7 +23,7 @@ There is very little difference in time to first byte (TTFB) for responses serve
 
 Define a caching policy through response headers, rules, or the cache function (CDN-as-code).
 
-### Response Headers
+### Response Headers {/*response-headers*/}
 
 The amount of time that an asset will be cached on our edge servers is determined by the response headers returned by the origin server when a client requests it. By default, our CDN honors the following response headers:
 -   **Cache-Control: private:** Prevents our edge servers from caching the response.
@@ -68,7 +68,7 @@ The amount of time that an asset will be cached on our edge servers is determine
 -   Please refer to your web server’s documentation for more information on how to configure these settings.
 -   You may create a rule to override a web server's cache policy.
 
-### Rules
+### Rules {/*rules*/}
 
 Set or override a cache policy through rules. The most commonly used features for defining a caching policy are: 
 
@@ -78,7 +78,7 @@ Set or override a cache policy through rules. The most commonly used features fo
 
 [View all caching-related features.](/guides/performance/rules/features#caching)
 
-### CDN-as-Code
+### CDN-as-Code {/*cdn-as-code*/}
 
 <Condition version="7">
 {{ ROUTEHELPER }}

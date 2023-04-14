@@ -198,7 +198,7 @@ On a per environment-basis, define how {{ PRODUCT }} will communicate with your 
     1.  All requests that {{ PRODUCT }} proxies to this origin configuration will be directed to the first origin hostname listed within your origin configuration.
     2.  If a server corresponding to that origin hostname is unavailable, then the request will be sent to the next origin configuration on the list. This step is repeated until a server is able to honor the request. 
 
-#### Unavailable Servers
+#### Unavailable Servers {/*unavailable-servers*/}
 
 A server is considered unavailable when either of the following conditions are true:
 

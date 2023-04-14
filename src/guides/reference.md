@@ -14,11 +14,6 @@ title: Reference
 -   [Features](/guides/performance/rules/features)
 -   [Feature Variables](/guides/performance/rules/feature_variables)
 
-### General
--   [Country Codes](/guides/reference/country_codes)
--   POPs - TODO
--   Cache Status Codes - TODO
-
 ### Develop
 -   [CLI](/guides/develop/cli#commands)
 -   [REST API](/guides/develop/rest_api)
@@ -39,3 +34,8 @@ title: Reference
 -   [RTLD WAF](/guides/logs/rtld/log_fields_rtld_waf)
 -   [RTLD Rate Limiting](/guides/logs/rtld/log_fields_rtld_rate_limiting)
 -   [Serverless Compute Console](/guides/logs/server_logs#serverless-compute-console-and-dri-log-fields)
+
+### General
+-   [Country Codes](/guides/reference/country_codes)
+-   POPs - TODO
+-   Cache Status Codes - TODO

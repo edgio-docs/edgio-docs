@@ -24,11 +24,11 @@ Setting up traffic spliting involves performing the following steps:
 
     The specifics on how to set up this rule vary according to your implementation. For example, the following rule sends half of your site's traffic to a different origin configuration:
 
-    ![Traffic Splitting Example](/images/v7/performance/traffic-splitting-50-50.png?width=450)
+    ![Traffic Splitting Example](/images/v7/performance/traffic-splitting-50-50.png)
 
     <Callout type="info">
 
-      In this example, the Random Integer feature is configured to randomly assign each request that originates within the United States to a random value from 0 to 100. If the value assigned to a request is less than `50`, this rule will override your default origin configuration and send it to a different one. As a result, your traffic will be evenly split between two origin configurations.
+      In this example, the Random Integer feature is configured to randomly assign each request that originates from within the United States to a random value from 0 to 100. If the value assigned to a request is less than `50`, this rule will override your default origin configuration and send it to a different one. As a result, your traffic will be evenly split between two origin configurations.
 
     </Callout>
     
@@ -40,11 +40,11 @@ Setting up traffic spliting involves performing the following steps:
 
 </Callout>
 
-## Traffic Splitting by Session Tutorial
+## Traffic Splitting by Session Tutorial {/*traffic-splitting-by-session-tutorial*/}
 
-There are many situations under which you should split traffic for the entire user's session. For example, if you are testing a new UI design, then certain resources (e.g., CSS, JS, and HTML files) should persist throughout a user's session to ensure a consistent experience. One way of ensuring that all traffic for a specific user session is to set a cookie on the initial request. You could then check for that cookie to ensure that only those requests are sent to an alternate path or origin configuration.
+There are many situations under which you should split traffic for the entire user's session. For example, if you are testing a new UI design, then certain resources (e.g., CSS, JS, and HTML files) should persist throughout a user's session to ensure a consistent experience. One way of accomplishing this is to set a cookie on the initial request. You could then check for that cookie to ensure that only those requests are sent to an alternate path or origin configuration.
 
-### Create a Set Cookie Rule
+### Create a Set Cookie Rule {/*create-a-set-cookie-rule*/}
 
 Create a rule that sets a cookie for the desired set of users. In this case, we will create a rule that sets a cookie for 10% of requests directed to your site's homepage.
 
@@ -97,7 +97,7 @@ Create a rule that sets a cookie for the desired set of users. In this case, we 
     4.  Set the **Value** option to `newExperience=true`.
     5.  Click **Add Feature**.
 
-### Create a URL Rewrite Rule
+### Create a URL Rewrite Rule {/*create-a-url-rewrite-rule*/}
 
 Create a rule that rewrites requests for an alternate UI experience.
 
@@ -124,3 +124,5 @@ Create a rule that rewrites requests for an alternate UI experience.
     ![Traffic splitting by session rules](/images/v7/performance/traffic-splitting-session-tutorial-complete.png)
 
 5.  Deploy your changes by clicking **Deploy Changes**.
+
+Once the deployment completes, approximately 10% of your homepage's traffic will be sent to a different path.

@@ -8,6 +8,7 @@ title: Reference
 -   [Request Headers](/guides/performance/request#request-headers)
 -   [Status Codes](/guides/performance/response#status-codes)
 -   [Response Headers](/guides/performance/response#response-headers)
+-   [Limits](/guides/performance/limits)
 
 ### Configuration
 -   [Conditions](/guides/performance/rules/conditions)
@@ -37,5 +38,7 @@ title: Reference
 
 ### General
 -   [Country Codes](/guides/reference/country_codes)
+<!--
 -   POPs - TODO
 -   Cache Status Codes - TODO
+-->

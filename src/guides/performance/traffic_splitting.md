@@ -24,11 +24,11 @@ Setting up traffic spliting involves performing the following steps:
 
     The specifics on how to set up this rule vary according to your implementation. For example, the following rule sends half of your site's traffic to a different origin configuration:
 
-    ![Traffic Splitting Example](/images/v7/performance/traffic-splitting-50-50.png)
+    ![Traffic Splitting Example](/images/v7/performance/traffic-splitting-50-50.png?width=450)
 
     <Callout type="info">
 
-      In this example, the Random Integer feature is configured to randomly assign each request to `www.example.com` a value of either `0` or `1`. If a request matches `1`, it will override your default origin configuration and send it to a different one. As a result, your traffic will be  evenly split between two origin configurations.
+      In this example, the Random Integer feature is configured to randomly assign each request that originates within the United States to a random value from 0 to 100. If the value assigned to a request is less than `50`, this rule will override your default origin configuration and send it to a different one. As a result, your traffic will be evenly split between two origin configurations.
 
     </Callout>
     
@@ -46,7 +46,7 @@ There are many situations under which you should split traffic for the entire us
 
 ### Create a Set Cookie Rule
 
-Create a rule that sets a cookie for the desired set of users. In this case, we will create a rule that sets a cookie for 10% of requests to `www.example.com`.
+Create a rule that sets a cookie for the desired set of users. In this case, we will create a rule that sets a cookie for 10% of requests directed to your site's homepage.
 
 <Callout type="info">
 
@@ -62,28 +62,28 @@ Create a rule that sets a cookie for the desired set of users. In this case, we 
 2.  Add a condition that identifies requests to your website.
 
     1.  Click **+ Add Condition**.
-    2.  From the **Variable** option, select `Request Header`.
-    3.  Set the **Header Name** option to `host`.
-    4.  Set the **Value** option to the main domain for your website (e.g., `www.example.com`).
-    5.  Click **Add Condition**.
+    2.  From the **Variable** option, select `Path`.
+    3.  Set the **Value** option to `/`.
+    4.  Click **Add Condition**.
 
 3.  Add a condition that identifies 10% of your traffic.
 
     1.  Click **+ Add Condition**.
     2.  From the **Variable** option, select `Random Integer`.
-    3.  Set the **Random Integer Range (from 0 to ?)** option to `9`.
+    3.  Set the **Random Integer Range (from 0 to ?)** option to `100`.
 
         <Callout type="info">
 
-          This configuration requires {{ PRODUCT }} to assign a random integer from 0 to 9 to each request.
+          This configuration requires {{ PRODUCT }} to assign a random integer from 0 to 100 to each request.
 
         </Callout>
 
-    4.  Set the **Value** option to `1`.
+    4.  Set the **Operator** option to `less than`.
+    4.  Set the **Value** option to `10`.
 
         <Callout type="info">
 
-          This configuration will only be satisfied when the random integer assigned to a request is equal to `1`. This should only happen 10% of the time when requests are randomly assigned 10 different values (i.e., 0 to 9).
+          This configuration will only be satisfied when the random integer assigned to a request is less than `10`. This should only happen approximately 10% of the time when requests are randomly assigned 101 different values (i.e., 0 to 100).
 
         </Callout>
 

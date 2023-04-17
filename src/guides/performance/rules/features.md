@@ -941,7 +941,7 @@ Rewrites the default cache-key for a set of requests.
 **Key information:**
 
 -   Our servers use the cache-key to check for a cached version of an asset.
--   A core component of a cache-key is a relative URL path that starts directly after the hostname. This relative URL path is derived from the request whose response is being cached. This feature allows you to define a different default cache key to a set of requests.
+-   A core component of a cache-key is a relative URL path that starts directly after the hostname. This relative URL path is derived from the request whose response is being cached. The Rewrite Cache Key feature allows you to customize the default cache key for a set of requests by modifying this value.
 -   This feature does not affect the cache-key assigned to previously cached content. 
 -   Define the following settings:
 
@@ -981,7 +981,7 @@ We will now add the value assigned to the `Session-Type` request header to the d
 **Key information:**
 
 -   Our servers use the cache-key to check for a cached version of an asset.
--   A core component of a cache-key is a relative URL path that starts directly after the hostname. This relative URL path is derived from the request whose response is being cached. This feature allows you to define a different default cache key to a set of requests.
+-   A core component of a cache-key is a relative URL path that starts directly after the hostname. This relative URL path is derived from the request whose response is being cached. The `cache_key_rewrite` feature allows you to customize the default cache key for a set of requests by modifying this value.
 -   This feature does not affect the cache-key assigned to previously cached content. 
 -   Pass the following properties:
 

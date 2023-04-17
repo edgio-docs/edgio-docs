@@ -961,6 +961,14 @@ Rewrites the default cache-key for a set of requests.
 
         </Callout>
 
+        <Callout type="info">
+
+          You may use up to 9 numbered backreferences for text captured within the `source` property. 
+
+          For example, if the **Source** option contains two capture groups (e.g., `/(sales|marketing)/(.*)`, then you may backreference them within the **Destination** option (e.g., `/$1/$2`). 
+
+        </Callout>
+
 **Example:**
 
 This example demonstrates how to apply a custom default cache-key for requests to the `marketing` folder. Specifically, we will append the value assigned to the `Session-Type` request header to the default cache-key. A sample URL is provided below.
@@ -973,7 +981,7 @@ We will now set the **Source** option to the following pattern to identify reque
 
 The last URL segment is set to `(.*)`. This regular expression syntax matches any number of characters that follow `/conferences/marketing/`. 
 
-We will now add the value assigned to the `Session-Type` request header to the default cache-key by setting the **Destination** option to:
+We will now append a dash followed by the value assigned to the `Session-Type` request header to the default cache-key by setting the **Destination** option to:
 
 `/conferences/marketing/$1-%{http_Session_Type}`
 

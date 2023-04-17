@@ -936,50 +936,84 @@ new Router()
 
 #### Rewrite Cache Key {/*rewrite-cache-key*/}
 
-Rewrites the cache-key associated with a request. Pass the following properties:
+Rewrites the default cache-key for a set of requests. 
 
--   **Source:** Define a regular expression that identifies the cache-key that will be rewritten. This cache-key is a relative path that starts directly after the hostname.
+**Key information:**
 
-    <Callout type="important">
+-   Our servers use the cache-key to check for a cached version of an asset.
+-   A core component of a cache-key is a relative URL path that starts directly after the hostname. This relative URL path is derived from the request whose response is being cached. This feature allows you to define a different default cache key to a set of requests.
+-   This feature does not affect the cache-key assigned to previously cached content. 
+-   Define the following settings:
 
-      Verify that the specified pattern does not conflict with this route's path.
+    -   **Source:** Identify the set of requests that will use a different default cache-key by setting this option to a relative URL path that starts directly after the hostname. This setting supports regular expression syntax.
 
-    </Callout>
+        <Callout type="important">
 
--   **Destination:** Define a replacement pattern that sets a new cache-key. This cache-key is a relative path that starts directly after the hostname. 
+          Verify that the specified relative path does not conflict with any conditions applied to this rule.
 
-    <Callout type="tip">
+        </Callout>
 
-      Use [feature variables](/guides/performance/rules/feature_variables) to dynamically construct this relative path. However, you may not use response metadata when defining a cache-key.
+    -   **Destination:** Define a replacement pattern that sets a new default cache-key. 
 
-    </Callout>
+        <Callout type="tip">
 
-<edgejs>
--   **source (*String*):** Define a regular expression that identifies the cache-key that will be rewritten. This cache-key is a relative path that starts directly after the hostname.
+          Use [feature variables](/guides/performance/rules/feature_variables) to dynamically construct this relative path. However, you may not use response metadata when defining a cache-key.
 
-    <Callout type="important">
-
-      Verify that the specified pattern does not conflict with this route's path.
-
-    </Callout>
-
--   **destination (*String*):** Define a replacement pattern that sets a new cache-key. This cache-key is a relative path that starts directly after the hostname. 
-
-    <Callout type="tip">
-
-      Use [feature variables](/guides/performance/rules/feature_variables) to dynamically construct this relative path. However, you may not use response metadata (e.g., `%{resp_<RESPONSE HEADER>}`) when defining a cache-key.
-
-    </Callout>
+        </Callout>
 
 **Example:**
+
+This example demonstrates how to apply a custom default cache-key for requests to the `marketing` folder. Specifically, we will append the value assigned to the `Session-Type` request header to the default cache-key. A sample URL is provided below.
+
+`https://www.example.com/conferences/marketing/index.htm`
+
+We will now set the **Source** option to the following pattern to identify requests to the `marketing` folder`:
+
+`/conferences/marketing/(.*)`
+
+The last URL segment is set to `(.*)`. This regular expression syntax matches any number of characters that follow `/conferences/marketing/`. 
+
+We will now add the value assigned to the `Session-Type` request header to the default cache-key by setting the **Destination** option to:
+
+`/conferences/marketing/$1-%{http_Session_Type}`
+
+<edgejs>
+**Key information:**
+
+-   Our servers use the cache-key to check for a cached version of an asset.
+-   A core component of a cache-key is a relative URL path that starts directly after the hostname. This relative URL path is derived from the request whose response is being cached. This feature allows you to define a different default cache key to a set of requests.
+-   This feature does not affect the cache-key assigned to previously cached content. 
+-   Pass the following properties:
+
+    -   **source:** Identify the set of requests that will use a different default cache-key by setting this option to a relative URL path that starts directly after the hostname. This property supports regular expression syntax.
+
+        <Callout type="important">
+
+          Verify that the specified relative path does not conflict with any conditions applied to this route.
+
+        </Callout>
+
+    -   **destination:** Define a replacement pattern that sets a new default cache-key. 
+
+        <Callout type="tip">
+
+          Use [feature variables](/guides/performance/rules/feature_variables) to dynamically construct this relative path. However, you may not use response metadata when defining a cache-key.
+
+        </Callout>
+
+**Example:**
+
+This example demonstrates how to apply a custom default cache-key for requests to the `marketing` folder. Specifically, we will append the value assigned to the `Session-Type` request header to the default cache-key. A sample URL is provided below.
+
+`https://www.example.com/conferences/marketing/index.htm`
 
 ```js filename="./routes.js"
 new Router()
   .get('/', {
     caching: {
       "cache_key_rewrite": {
-		"source": "/marketing/images/(.*)",
-		"destination": "/images/$1"
+		"source": "/conferences/marketing/(.*)",
+		"destination": "/conferences/marketing/$1-%{http_Session_Type}"
       }
     }
   })
@@ -1164,13 +1198,14 @@ Header features add, modify, or delete headers from the request or response.
 
 #### Add Response Headers {/*add-response-headers*/}
 
-Adds one or more header(s) to the response. If the header already exists in the response, then the provided value will be appended to the existing response header value.
+Adds one or more header(s) to the response. 
 
 **Key information:**
 
 -   Specify a header name that is an exact match for the desired response header. However, case is not taken into account for the purpose of identifying a header. 
 -   Use alphanumeric characters, dashes, or underscores when specifying a header name.
 -   Use [feature variables](/guides/performance/rules/feature_variables) to dynamically construct header values.
+-   This feature requires {{ PRODUCT }} to add a response header, regardless of whether that header already exists in the response. This may cause the response to include multiple headers with the same name.
 -   The following headers are reserved and cannot be modified by this feature:
     -   accept-ranges
     -   age

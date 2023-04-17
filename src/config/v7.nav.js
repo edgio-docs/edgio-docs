@@ -590,6 +590,17 @@ const nav = {
         },
       ],
     },
+    {
+      title: 'Reference',
+      path: 'reference',
+      icon: 'stacks-plain',
+      routes: [
+        {
+          title: 'Country Codes',
+          path: 'reference/country_codes',
+        },
+      ],
+    },
   ],
 };
 export default nav;

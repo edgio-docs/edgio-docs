@@ -1,10 +1,16 @@
+import Image from 'next/image';
 import {IconType} from 'react-icons';
 import styled from 'styled-components';
+
+import useThemedImageIcon from 'components/Layout/useThemedImageIcon';
 
 function IconBox({
   Icon,
 }: {
-  Icon: React.NamedExoticComponent<React.SVGProps<SVGSVGElement>> | IconType;
+  Icon:
+    | React.NamedExoticComponent<React.SVGProps<SVGSVGElement>>
+    | IconType
+    | (() => JSX.Element);
 }) {
   return (
     <div className="section-icon__box">
@@ -68,7 +74,10 @@ const StyledSectionheader = styled.header`
 `;
 
 interface ISectionHeaderProps {
-  Icon?: React.NamedExoticComponent<React.SVGProps<SVGSVGElement>> | IconType;
+  Icon?:
+    | React.NamedExoticComponent<React.SVGProps<SVGSVGElement>>
+    | IconType
+    | string;
   title: string;
   subtitle?: string;
 }
@@ -78,9 +87,17 @@ export default function SectionHeader({
   title,
   subtitle,
 }: ISectionHeaderProps) {
+  let IconCmp = null;
+
+  if (typeof Icon === 'string') {
+    IconCmp = () => useThemedImageIcon(Icon, {width: 18, height: 18}, false);
+  } else if (Icon) {
+    IconCmp = Icon;
+  }
+
   return (
     <StyledSectionheader>
-      {Icon && <IconBox {...{Icon}} />}
+      {IconCmp && <IconBox Icon={IconCmp} />}
       <div className="section-header__content">
         <SectionHeaderTitle {...{title}} />
         {subtitle && <SectionHeaderSubtitle {...{subtitle}} />}

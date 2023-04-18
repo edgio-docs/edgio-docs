@@ -23,12 +23,11 @@ const StyledHeader = styled.header`
   background-color: var(--nav-header-bg);
   width: 100%;
   height: var(--header-height);
-  box-shadow: inset 0 -1px var(--shadow-primary);
   padding: 0 24px;
   display: grid;
   grid-template-columns: auto auto;
   align-content: center;
-  border-bottom: 2px solid var(--border-primary);
+  border-bottom: 1px solid var(--border-primary);
 
   > [class*='col'] {
     display: flex;

@@ -43,7 +43,7 @@ const StyledMainPage = styled.div`
       background-color: var(--nav-header-bg);
       will-change: transform;
       transition: transform 0.2s;
-      border-right: 2px solid var(--border-primary);
+      border-right: 1px solid var(--border-primary);
 
       &[data-open='true'] {
         position: fixed;

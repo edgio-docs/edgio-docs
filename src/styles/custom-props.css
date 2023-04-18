@@ -24,6 +24,7 @@
   --docsearch-searchbox-height: 36px;
   --docsearch-spacing: 6px;
   --header-height: 48px;
+  --image-icon-fill: #eeeeee;
 
   --select-bg: #0f1216;
   --select-border-color: #0094d6;
@@ -41,7 +42,7 @@
   --toc-text-primary: #606060;
   --toc-text-link: #606060;
   --text-link-primary: var(--toc-text-link);
-  --hr-primary: #d8d8d8;
+  --hr-primary: #ecedee;
   --hr-secondary: #e3e8ee;
   --bg-primary: var(--colors-white0);
   --bg-secondary: #fafbfb;
@@ -66,7 +67,7 @@
   --border-primary: var(--hr-primary);
   --home-card-bg: var(--get-started-card-bg);
   --home-card-font-color: var(--text-secondary);
-  --nav-header-bg: var(--bg-secondary);
+  --nav-header-bg: var(--bg-primary);
 
   --code-block-bg: #101820;
   --code-block-border-color: #3a444d;
@@ -130,7 +131,7 @@
   --border-primary: #17232e;
   --home-card-bg: #101820;
   --home-card-font-color: var(--text-secondary);
-  --nav-header-bg: #0a0d10;
+  --nav-header-bg: var(--bg-primary);
 
   --code-block-bg: #101820;
   --code-block-border-color: #3a444d;

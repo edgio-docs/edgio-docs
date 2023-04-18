@@ -1028,7 +1028,7 @@ new Router()
 ```
 </edgejs>
 
-**Default Behavior:** By default, a request's cache-key is determined by the request URI's relative path.
+**Default Behavior:** By default, {{ PRODUCT }} uses the request URI's relative path when constructing the cache-key.
 
 #### Set Client Max Age {/*client-max-age*/}
 

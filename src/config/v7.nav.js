@@ -71,6 +71,10 @@ const nav = {
               title: 'Features',
               path: 'performance/rules/features',
             },
+            {
+              title: 'Feature Variables',
+              path: 'performance/rules/feature_variables',
+            },
           ],
         },
         {
@@ -574,15 +578,26 @@ const nav = {
           routes: [
             {
               title: '@edgio/core',
-              path: 'https://docs.edg.io/docs/api/core',
+              path: '/docs/api/core',
               external: true,
             },
             {
               title: '@edgio/prefetch',
-              path: 'https://docs.edg.io/docs/api/prefetch',
+              path: '/docs/api/prefetch',
               external: true,
             },
           ],
+        },
+      ],
+    },
+    {
+      title: 'Reference',
+      path: 'reference',
+      icon: 'stacks-plain',
+      routes: [
+        {
+          title: 'Country Codes',
+          path: 'reference/country_codes',
         },
       ],
     },

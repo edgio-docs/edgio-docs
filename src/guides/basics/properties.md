@@ -9,9 +9,9 @@ A property instructs {{ PRODUCT }} how to securely process requests for your web
 -   [TLS certificate(s)](/guides/security/tls_certificates). Each hostname associated with an environment requires the installation of a TLS certificate on our network. Manage these TLS certificates through your property's settings. 
 -   [Securing your web applications and API traffic](/guides/security/waf). Secure your web applications and APIs across all environments using a single configuration at the property level.
 
-## Managing Properties
+## Managing Properties {/*managing-properties*/}
 
-You may create, rename, or delete a property. You may even transfer ownership to a different team. 
+You may create, rename, or delete a property. <!--You may even transfer ownership to a different team.-->
 
 <Callout type="important">
 
@@ -72,6 +72,7 @@ Upon creating a property, it will contain a `production` environment with the fo
 3.  From the **Delete property** section, mark the **Confirm that I want to delete the property "&lt;PROPERTY>".** option. 
 4.  Click **Delete Property**.
 
+<!--
 <a id="transfer-ownership" />
 
 **To transfer ownership to another team**
@@ -79,3 +80,4 @@ Upon creating a property, it will contain a `production` environment with the fo
 2.  Click **Settings**.
 3.  From the **Move property to another team** section, select the desired team.
 4.  Click **Save**.
+-->

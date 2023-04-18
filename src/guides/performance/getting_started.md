@@ -24,11 +24,11 @@ Deploying your web application behind {{ PRODUCT }} optimizes the delivery of yo
 
 ![traffic](/images/starter/traffic.png)
 
-## Creating Rules
+## Creating Rules {/*creating-rules*/}
 
 Rules determine how requests to a specific environment will be processed by {{ PRODUCT }}. 
 
-#### Rule #1: Default Caching Policy
+#### Rule #1: Default Caching Policy {/*default-caching-policy*/}
 
 We will now create a rule that applies a default caching policy to all traffic for the `production` environment.
 
@@ -92,7 +92,7 @@ We will now create a rule that applies a default caching policy to all traffic f
 
         ![Rule with 1 Feature](/images/v7/performance/rules-rule-with-2-features.png)
 
-#### Rule #2: Path-Specific Caching Policy
+#### Rule #2: Path-Specific Caching Policy {/*path-specific-caching-policy*/}
 
 We will now create a rule that applies a different caching policy for requests whose relative path starts with `/news/`. In order to allow this rule to override your default caching policy, it needs to be positioned below your initial rule.
 

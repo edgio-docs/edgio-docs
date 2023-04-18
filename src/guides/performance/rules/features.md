@@ -975,15 +975,17 @@ This example demonstrates how to apply a custom default cache-key for requests t
 
 `https://www.example.com/conferences/marketing/index.htm`
 
-We will now set the **Source** option to the following pattern to identify requests to the `marketing` folder`:
+We will now set the **Source** option to the following pattern to identify requests to the `marketing` folder:
 
 `/conferences/marketing/(.*)`
 
 The last URL segment is set to `(.*)`. This regular expression syntax matches any number of characters that follow `/conferences/marketing/`. 
 
-We will now append a dash followed by the value assigned to the `Session-Type` request header to the default cache-key by setting the **Destination** option to:
+We will now set the default cache-key to the request's relative path followed by a dash and the value assigned to the `Session-Type` request header by setting the **Destination** option to:
 
 `/conferences/marketing/$1-%{http_Session_Type}`
+
+Notice that we are using `$1`, which is a numbered backreference, to reintroduce the value captured by `(.*)` within the **Source** option.
 
 <edgejs>
 **Key information:**

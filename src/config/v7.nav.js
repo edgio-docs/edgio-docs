@@ -40,6 +40,14 @@ const nav = {
           title: 'Account Settings',
           path: 'basics/account_settings',
         },
+        {
+          title: '',
+          path: '',
+        },
+        {
+          title: 'edgio.config.js Configuration',
+          path: 'basics/edgio_config',
+        },
       ],
     },
     {
@@ -76,10 +84,6 @@ const nav = {
             {
               title: 'Getting Started',
               path: 'performance/cdn_as_code/getting_started',
-            },
-            {
-              title: 'edgio.config.js Configuration',
-              path: 'basics/edgio_config',
             },
             {
               title: 'Common Routing Patterns',

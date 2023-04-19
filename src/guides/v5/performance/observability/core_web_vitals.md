@@ -40,7 +40,7 @@ The benefits of using {{ PRODUCT }} instead of Google Search Console to track Co
 - Use {{ PRODUCT_NAME }}'s [Edge-based A/B testing](/guides/performance/traffic_splitting/a_b_testing) to A/B test the impact of performance optimizations on Core Web Vitals.
 </Condition>
 
-## Installation {/*installation*/}
+## Installing Real User Monitoring (RUM) {/*installation*/}
 
 In order to start tracking Core Web Vitals on {{ PRODUCT_NAME }}, you need to add the `{{ PACKAGE_NAME }}/rum` client library to your application. From the {{ PORTAL_LINK }}, navigate to your property and click on **More Details** under the **Core Web Vitals** section. 
 

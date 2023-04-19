@@ -2,9 +2,7 @@
 title: CDN-as-Code ({{ EDGEJS_LABEL }})
 ---
 
-<Condition version="7">
-{{ ROUTEHELPER }}
-</Condition>
+<Condition version="7">{{ROUTEHELPER}}</Condition>
 
 The `{{ PACKAGE_NAME }}/core` package provides a JavaScript API for controlling routing and caching from your code base rather than a CDN web portal. Using this _{{ EDGEJS_LABEL }}_ approach allows this vital routing logic to be properly tested, reviewed, and version controlled, just like the rest of your application code.
 
@@ -16,29 +14,29 @@ Using the Router, you can:
 - Alter request and response headers
 - Send synthetic responses
 
-## Prerequisites {/*prerequisites*/}
+## Prerequisites {/* prerequisites */}
 
-Before proceeding, you will need an {{ PRODUCT }} property. Create one now if you do not already have one. 
+Before proceeding, you will need an {{ PRODUCT }} property. Create one now if you do not already have one.
 
 [Learn how to create a property.](/guides/getting_started)
 
-## Configuration {/*configuration*/}
+## Configuration {/* configuration */}
 
 Define routes within the {{ ROUTES_FILE }} file. This file should export an instance of `{{ PACKAGE_NAME }}/core/router/Router`:
 
 ```js filename="./routes.js"
-import { Router } from "{{ PACKAGE_NAME }}/core";
+import {Router} from '{{ PACKAGE_NAME }}/core';
 
-export default new Router()
+export default new Router();
 ```
 
 <Callout type = "info">
 
-  By default, our CLI automatically creates `routes.js` and `{{ CONFIG_FILE }}` upon initializing a property (`{{ FULL_CLI_NAME }} init`). If your web application supports TypeScript and it uses a framework for which we have a TypeScript implementation, then our CLI will create `routes.ts` instead of `routes.js`.
+By default, our CLI automatically creates `routes.js` and `{{ CONFIG_FILE }}` upon initializing a property (`{{ FULL_CLI_NAME }} init`). If your web application supports TypeScript and it uses a framework for which we have a TypeScript implementation, then our CLI will create `routes.ts` instead of `routes.js`.
 
 </Callout>
 
-## Declare Routes {/*declare-routes*/}
+## Declare Routes {/* declare-routes */}
 
 Declare routes using the method corresponding to the HTTP method you want to match. All HTTP methods are available:
 
@@ -52,100 +50,98 @@ Declare routes using the method corresponding to the HTTP method you want to mat
 To match all methods, use `match`:
 
 ```js filename="./routes.js"
-import { Router } from "{{ PACKAGE_NAME }}/core";
-
-export default new Router().match("/:path*", {});
+router.match('/:path*', {});
 ```
 
-## Route Pattern Syntax {/*route-pattern-syntax*/}
+## Route Pattern Syntax {/* route-pattern-syntax */}
 
 The syntax for route paths is provided by [path-to-regexp](https://github.com/pillarjs/path-to-regexp#path-to-regexp), which is the same library used by [Express](https://expressjs.com/).
 
-### Named Parameters {/*named-parameters*/}
+### Named Parameters {/* named-parameters */}
 
 Named parameters are defined by prefixing a colon to the parameter name (`:foo`).
 
 ```js
-new Router().get('/:foo/:bar', {
+router.get('/:foo/:bar', {
   /* ... */
-})
+});
 ```
 
 **Please note:** Parameter names must use "word characters" (`[A-Za-z0-9_]`).
 
-#### Custom Matching Parameters {/*custom-matching-parameters*/}
+#### Custom Matching Parameters {/* custom-matching-parameters */}
 
 Parameters can have a custom regexp, which overrides the default match (`[^/]+`). For example, you can match digits or names in a path:
 
 ```js
-new Router().get('/icon-:foo(\\d+).png', {
+router.get('/icon-:foo(\\d+).png', {
   /* ... */
-})
+});
 ```
 
 **Tip:** Backslashes need to be escaped with another backslash in JavaScript strings.
 
-#### Custom Prefix and Suffix {/*custom-prefix-and-suffix*/}
+#### Custom Prefix and Suffix {/* custom-prefix-and-suffix */}
 
 Parameters can be wrapped in `{}` to create custom prefixes or suffixes for your segment:
 
 ```js
-new Router().get('/:attr1?{-:attr2}?{-:attr3}?', {
+router.get('/:attr1?{-:attr2}?{-:attr3}?', {
   /* ... */
-})
+});
 ```
 
-### Unnamed Parameters {/*unnamed-parameters*/}
+### Unnamed Parameters {/* unnamed-parameters */}
 
 It is possible to write an unnamed parameter that only consists of a regexp. It works the same the named parameter, except it will be numerically indexed:
 
 ```js
-new Router().get('/:foo/(.*)', {
+router.get('/:foo/(.*)', {
   /* ... */
-})
+});
 ```
 
-### Modifiers {/*modifiers*/}
+### Modifiers {/* modifiers */}
 
 Modifiers must be placed after the parameter (e.g. `/:foo?`, `/(test)?`, `/:foo(test)?`, or `{-:foo(test)}?`).
 
-#### Optional {/*optional*/}
+#### Optional {/* optional */}
 
 Parameters can be suffixed with a question mark (`?`) to make the parameter optional.
 
 ```js
-new Router().get('/:foo/:bar?', {
+router.get('/:foo/:bar?', {
   /* ... */
-})
+});
 ```
 
 **Tip:** The prefix is also optional, escape the prefix `\/` to make it required.
 
-#### Zero or More {/*zero-or-more*/}
+#### Zero or More {/* zero-or-more */}
 
 Parameters can be suffixed with an asterisk (`*`) to denote zero or more parameter matches.
 
 ```js
-new Router().get('/:foo*', {
+router.get('/:foo*', {
   /* ... */
-})
+});
 ```
 
 The captured parameter value will be provided as an array.
 
-#### One or More {/*one-or-more*/}
+#### One or More {/* one-or-more */}
 
 Parameters can be suffixed with a plus sign (`+`) to denote one or more parameter matches.
 
 ```js
-new Router().get('/:foo+', {
+router.get('/:foo+', {
   /*... */
-})
+});
 ```
 
 The captured parameter value will be provided as an array.
 
-## Matching Method, Query Parameters, Cookies, and Headers {/*matching-method-query-parameters-cookies-and-headers*/}
+## Matching Method, Query Parameters, Cookies, and Headers {/* matching-method-query-parameters-cookies-and-headers */}
 
 Match can either take a URL path, or an object which allows you to match based on method, query parameters, cookies, or request headers:
 
@@ -154,26 +150,82 @@ router.match(
   {
     path: '/some-path', // value is route-pattern syntax
     method: /GET|POST/i, // value is a regular expression
-    cookies: { currency: /^(usd)$/i }, // keys are cookie names, values are regular expressions
-    headers: { 'x-moov-device': /^desktop$/i }, // keys are header names, values are regular expressions
-    query: { page: /^(1|2|3)$/ }, // keys are query parameter names, values are regular expressions
+    cookies: {currency: /^(usd)$/i}, // keys are cookie names, values are regular expressions
+    headers: {'x-moov-device': /^desktop$/i}, // keys are header names, values are regular expressions
+    query: {page: /^(1|2|3)$/}, // keys are query parameter names, values are regular expressions
   },
-  { /* ... */ },
-)
+  {
+    /* ... */
+  }
+);
 ```
 
-## Request Handling {/*request-handling*/}
+## Negated Route Matching {/* negated-route-matching */}
+
+Previously, we showed how to match requests based on path, method, query parameters, cookies, and request headers. You can also negate these matches by specifying a `not` key in the object passed to your route criteria. For example, the following route matches all requests whose relative path does not match `/some-path`:
+
+```js
+router.match(
+  {
+    path: {
+      not: '/some-path',
+    },
+  },
+  {
+    caching: {
+      max_age: '1d',
+    },
+  }
+);
+```
+
+Similarly, you can negate matches based on method, query parameters, cookies, and request headers:
+
+```js
+router.match(
+  {
+    path: '/some-path',
+    query: {
+      page: {
+        not: /^(1|2|3)$/,
+      },
+    },
+    method: {
+      not: /POST/i,
+    },
+    cookies: {
+      currency: {
+        not: /^(usd)$/i,
+      },
+    },
+    headers: {
+      'x-device': {
+        not: /^desktop$/i,
+      },
+    },
+  },
+  {
+    caching: {
+      max_age: '1d',
+    },
+  }
+);
+```
+
+This example matches all requests to `/some-path` except for those with query parameter `page=1|2|3`
+
+## Request Handling {/* request-handling */}
 
 The second argument to routes is a function that receives a `Features` type and uses it to send a response, such as:
 
 - Proxy a backend configured in `{{ CONFIG_FILE }}`
 - Serve a static file
 - Send a redirect
-- Send a synthetic response
+<!-- - Send a synthetic response -->
 - Cache the response at edge and in the browser
 - Manipulate request and response headers
 
-For example, to send a synthetic response for requests to `/hello-world`:
+<!-- For example, to send a synthetic response for requests to `/hello-world`:
 
 ```js
 import { Router } from "{{ PACKAGE_NAME }}/core";
@@ -185,32 +237,67 @@ new Router()
       'set_done': true
     }
   })
+``` -->
+
+For example, to cache a response for requests to `/hello-world`:
+
+```js
+router.get('/hello-world', {
+  caching: {
+    max_age: '1d',
+  },
+});
 ```
 
-## Route Execution {/*route-execution*/}
+## Route Execution {/* route-execution */}
 
 When {{ PRODUCT_NAME }} receives a request, it executes **each route that matches the request** in the order in which they are declared until one sends a response.
 
 Multiple routes can therefore be executed for a given request. A common pattern is to add caching with one route and render the response with a later one using middleware. In the following example we cache then render a response with Next.js:
 
 ```js
-import { Router } from "{{ PACKAGE_NAME }}/core";
-import { nextRoutes } from "{{ PACKAGE_NAME }}/next";
+import {Router} from '{{ PACKAGE_NAME }}/core';
+import {nextRoutes} from '{{ PACKAGE_NAME }}/next';
 
 // In this example a request to /products/1 will be cached by the first route, then served by the `nextRoutes` middleware
-new Router()
+export default new Router()
   .get('/products/:id', {
-    caching: { max_age: { 200: "1h" }, stale_while_revalidate: "1h" },
+    caching: {max_age: {200: '1h'}, stale_while_revalidate: '1h'},
   })
-  .use(nextRoutes)
+  .use(nextRoutes);
 ```
 
-## Alter Requests and Responses {/*alter-requests-and-responses*/}
+<!-- ### Stopping Route Execution {/*stopping-route-execution*/}
+
+As mentioned previously, routes are executed in the order in which they are declared. If you want to stop execution of matched routes, you can use the `response` feature with the `set_done` option. This will prevent any additional routes from being executed.
+
+```js
+import { Router } from "{{ PACKAGE_NAME }}/core";
+
+new Router()
+  // match only /hello-world and stop route execution by immediately sending a response
+  .get('/hello-world', {
+    'response': {
+      'set_response_body': 'Hello, world!',
+      'set_done': true
+    }
+  })
+
+  // match all request paths, including /hello-world
+  .get('/(.*)', {
+    "response": {
+      "set_response_body": "This will never be executed if /hello-world is matched",
+    }
+  })
+
+``` -->
+
+## Alter Requests and Responses {/* alter-requests-and-responses */}
 
 {{ PRODUCT_NAME }} offers APIs to manipulate request and response headers and cookies. The APIs are:
 
 | Operation     | Request               | Response sent to Browser                                          |
-|---------------|-----------------------|-------------------------------------------------------------------|
+| ------------- | --------------------- | ----------------------------------------------------------------- |
 | Add header    | `set_request_headers` | `add_response_headers`                                            |
 | Add cookie    | `*`                   | `*`                                                               |
 | Update header | `set_request_headers` | `set_response_headers`                                            |
@@ -220,12 +307,12 @@ new Router()
 
 `*` Adding, updating, or removing request cookies can be achieved with `set_request_headers` applied to `cookie` header. Similarly, adding, updating, or removing response cookies can be achieved with `set_response_headers` applied to `set-cookie` header.
 
-## Request / Response Variables {/*embedded-variables*/}
+## Request / Response Variables {/* embedded-variables */}
 
-You can inject values into the request or response via cache key rewrite, headers, cookies, URL redirect and rewrite as template literals using the `%{<FEATURE VALUE>}` format. 
+You can inject values into the request or response via cache key rewrite, headers, cookies, URL redirect and rewrite as template literals using the `%{<FEATURE VALUE>}` format.
 
 | Feature Variable                  | Description                                                                                                          |
-|-----------------------------------|----------------------------------------------------------------------------------------------------------------------|
+| --------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
 | `%{arg_<QUERY STRING PARAMETER>}` | Returns the value corresponding to the query string parameter identified by the `<QUERY STRING PARAMETER>` term.     |
 | `%{cookie_<COOKIE>}`              | Returns the value corresponding to the cookie identified by the `<COOKIE>` term.                                     |
 | `%{host}`                         | Indicates the host defined in the request URL.                                                                       |
@@ -234,7 +321,7 @@ You can inject values into the request or response via cache key rewrite, header
 | `%{normalized_query}`             | Indicates the normalized query string defined in the request URL.                                                    |
 | `%{normalized_uri}`               | Indicates the normalized relative path and query string for the request submitted to the CDN.                        |
 | `%{path}`                         | Indicates the relative path to the requested content. This relative path reflects URL rewrites due to `url_rewrite`. |
-| `%{query_string}`                 | Indicates the entire query string value defined in the request URL.                                                  |  |
+| `%{query_string}`                 | Indicates the entire query string value defined in the request URL.                                                  |
 | `%{referring_domain}`             | Indicates the domain defined in the `Referer` request header.                                                        |
 | `%{request}`                      | Describes the request.                                                                                               |
 | `%{request_method}`               | Indicates the HTTP request method.                                                                                   |
@@ -243,25 +330,28 @@ You can inject values into the request or response via cache key rewrite, header
 | `%{resp_<RESPONSE HEADER>}`       | Returns the value corresponding to the response header identified by the `<RESPONSE HEADER>` term.                   |
 | `%{status}`                       | Indicates the HTTP status code for the response.                                                                     |
 
-### Example {/*feature-variables-example*/}
+### Example {/* feature-variables-example */}
 
 This example shows how you would add an `original-request-path` response header for all requests whose value is the request path:
 
 ```js
-router.match({}, {
-  'headers': {
-    set_response_header: { 
-      'original-request-path': '%{path}' 
-    }
+router.match(
+  {},
+  {
+    headers: {
+      set_response_header: {
+        'original-request-path': '%{path}',
+      },
+    },
   }
-})
+);
 ```
 
-For a comprehensive list of variables, see the [Feature Variables](/guides/performance/rules/features#feature-variables) guide.
+For a comprehensive list of variables, see the [Feature Variables](/guides/performance/rules/feature_variables) guide.
 
-## Blocking Search Engine Crawlers {/*blocking-search-engine-crawlers*/}
+## Blocking Search Engine Crawlers {/* blocking-search-engine-crawlers */}
 
-If you need to block all search engine bot traffic to specific environments (such as your default or staging environment), the easiest way is to include the `x-robots-tag` header with the same directives you would otherwise set in a `meta` tag. 
+If you need to block all search engine bot traffic to specific environments (such as your default or staging environment), the easiest way is to include the `x-robots-tag` header with the same directives you would otherwise set in a `meta` tag.
 
 <!-- <Callout type="info">
 
@@ -271,7 +361,7 @@ If you need to block all search engine bot traffic to specific environments (suc
   ```js
     new Router({ indexPermalink: true })
   ```
-  
+
   Otherwise, {{ PRODUCT }} will match requests with the `host` header matching `/layer0.link|layer0-perma.link/` and set a response header of `x-robots-tag: noindex`.
 
 </Callout> -->
@@ -279,21 +369,24 @@ If you need to block all search engine bot traffic to specific environments (suc
 Additionally, you can customize this to block traffic to development or staging websites based on the `host` header of the request:
 
 ```js
-router.get({
-  headers: {
-    // Regex to catch multiple hostnames
-    host: /dev.example.com|staging.example.com/,
+router.get(
+  {
+    headers: {
+      // Regex to catch multiple hostnames
+      host: /dev.example.com|staging.example.com/,
+    },
   },
-}, {
-  "headers": {
-    "set_response_headers": {
-      "x-robots-tag": "noindex"
-    }
+  {
+    headers: {
+      set_response_headers: {
+        'x-robots-tag': 'noindex',
+      },
+    },
   }
-})
+);
 ```
 
-## Full Example {/*full-example*/}
+## Full Example {/* full-example */}
 
 This example shows typical usage of `{{ PACKAGE_NAME }}/core`, including serving a service worker, Next.js routes (vanity and conventional routes), and falling back to a legacy backend.
 

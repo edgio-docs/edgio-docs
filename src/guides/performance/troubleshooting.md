@@ -220,7 +220,19 @@ When you run your site on {{ PRODUCT_NAME }}, all requests come in through four 
 
 A typical pattern is that your site works fine for a few days after deploying to {{ PRODUCT_NAME }}, then your server starts interpreting the requests as a DDoS attack.
 
-To prevent this scenario, you must configure your server with allowlisted {{ PRODUCT_NAME }} IP addresses. See [Allow {{ PRODUCT }} IP Addresses](/guides/basics/domains#allowing-ip-addresses).
+To prevent this scenario, you must configure your server with allowlisted {{ PRODUCT_NAME }} IP addresses. 
+
+<Condition version="7">
+
+  [Learn more.](/guides/basics/hostnames_and_origins#firewall-allowing-ip-addresses)
+
+</Condition>
+
+<Condition version="<7">
+
+  [Learn more.](/guides/basics/domains#allowing-ip-addresses)
+
+</Condition>
 
 ### Procedure {/*procedure*/}
 

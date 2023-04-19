@@ -69,7 +69,19 @@ Refer to the [Deployments](/guides/basics/deployments) guide for more informatio
 
 ## Direct Traffic to {{ PRODUCT_PLATFORM }} {/*direct-traffic-to*/}
 
-Once you have confirmed that your deployed {{ PRODUCT }} site is proxying content from your hosted WordPress site, you may go back to your site in the [Developer Console]({{ LOGIN_URL }}) and follow the instructions on configuring your production DNS to point to {{ PRODUCT }}. Refer to the [Custom Domains and SSL guide](/guides/basics/domains) for additional details.
+Once you have confirmed that your deployed {{ PRODUCT }} site is proxying content from your hosted WordPress site, you may go back to your site in the [Developer Console]({{ LOGIN_URL }}) and follow the instructions on configuring your production DNS to point to {{ PRODUCT }}. 
+
+<Condition version="7">
+
+  [Learn more.](/guides/basics/hostnames_and_origins)
+
+</Condition>
+
+<Condition version="<7">
+
+  [Learn more.](/guides/basics/domains)
+
+</Condition>
 
 ## WordPress Plugin {/*wordpress-plugin*/}
 

@@ -55,7 +55,7 @@ npm install # yarn install
 To add {{ PRODUCT }} to the Nuxt3 application, run:
 
 ```bash
-{{ FULL_CLI_NAME }} init
+{{ FULL_CLI_NAME }} init {{ INIT_ARG_EDGIO_VERSION }}
 ```
 
 #### 3. Run the Nuxt3 app locally with {{ PRODUCT }} {/*3-run-the-nuxt3-app-locally-with*/}

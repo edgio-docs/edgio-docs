@@ -27,7 +27,7 @@ This framework has a connector developed for {{ PRODUCT }}. See [Connectors](/gu
 To prepare your Razzle app for deployment on {{ PRODUCT }}, run the following in the root folder of your project:
 
 ```bash
-{{ FULL_CLI_NAME }} init
+{{ FULL_CLI_NAME }} init {{ INIT_ARG_EDGIO_VERSION }}
 ```
 
 This will automatically add all of the required dependencies and files to your project. These include:

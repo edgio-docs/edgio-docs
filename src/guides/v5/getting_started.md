@@ -42,17 +42,19 @@ Replace `<PROPERTY>` with the name for this configuration. If you are also setti
 
 ```bash tabLabel="Origin"
   npx {{ PACKAGE_NAME }}/cli@{{ PACKAGE_VERSION }} init \
-	--name <PROPERTY> \
-	--environment default \
-	--origin <DOMAIN> \
-	--deploy
+    {{ INIT_ARG_EDGIO_VERSION }} \
+  	--name <PROPERTY> \
+  	--environment default \
+  	--origin <DOMAIN> \
+  	--deploy
 ```
 
 ```bash tabLabel="Framework"
   npx {{ PACKAGE_NAME }}/cli@{{ PACKAGE_VERSION }}init \
-        --name <PROPERTY> \
-        --environment default \
-        --deploy
+    {{ INIT_ARG_EDGIO_VERSION }} \
+    --name <PROPERTY> \
+    --environment default \
+    --deploy
 ```
 
 </SnippetGroup>
@@ -139,13 +141,17 @@ Each website that will run behind {{ PRODUCT }} requires an {{ PRODUCT }} proper
     <SnippetGroup>
 
     ```bash tabLabel="Origin"
-      {{ FULL_CLI_NAME }} init --name <PROPERTY> \
+      {{ FULL_CLI_NAME }} init 
+        {{ INIT_ARG_EDGIO_VERSION }} \
+        --name <PROPERTY> \
         --environment production \
         --origin <DOMAIN>
     ```
 
     ```bash tabLabel="Framework"
-      {{ FULL_CLI_NAME }} init --name <PROPERTY> \
+      {{ FULL_CLI_NAME }} init 
+        {{ INIT_ARG_EDGIO_VERSION }} \
+        --name <PROPERTY> \
         --environment production
     ```
 

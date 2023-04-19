@@ -37,7 +37,7 @@ Brotli is supported in the following ways:
 
 ### Enabling Brotli compression {/*enabling-brotli-compression*/}
 
-To enable Brotli (`br`) compression you need to ensure your project uses a version of `{{ PACKAGE_NAME }}` >= `4.11.0`. To upgrade `{{ PACKAGE_NAME }}` to the latest version in your project use `{{ FULL_CLI_NAME }} use latest` and redeploy your project.
+To enable Brotli (`br`) compression you need to ensure your project uses a version of `{{ PACKAGE_NAME }}` >= `4.11.0`. To upgrade `{{ PACKAGE_NAME }}` to the latest version in your project use `{{ FULL_CLI_NAME }} use {{ PACKAGE_VERSION }}` and redeploy your project.
 
 ## What is Compressed? {/*what-is-compressed*/}
 

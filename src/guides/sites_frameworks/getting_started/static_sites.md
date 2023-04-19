@@ -35,7 +35,7 @@ Here are a few examples of common static sites served by {{ PRODUCT }}.
 To prepare your static app for deployment on {{ PRODUCT }}, run the following command in your project's root directory:
 
 ```bash
-{{ FULL_CLI_NAME }} init
+{{ FULL_CLI_NAME }} init {{ INIT_ARG_EDGIO_VERSION }}
 ```
 
 This will automatically add all of the required dependencies and files to your

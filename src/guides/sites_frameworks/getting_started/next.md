@@ -79,7 +79,7 @@ Initialize your project for use with {{ PRODUCT }} by running the following comm
 
 ```bash
 cd my-next-app
-{{ FULL_CLI_NAME }} init
+{{ FULL_CLI_NAME }} init {{ INIT_ARG_EDGIO_VERSION }}
 ```
 
 This will automatically add all of the required dependencies and files to your project. These include:

@@ -42,7 +42,7 @@ yarn
 
 ```bash
 cd site
-{{ FULL_CLI_NAME }} init
+{{ FULL_CLI_NAME }} init {{ INIT_ARG_EDGIO_VERSION }}
 ```
 
 3. Duplicate `.env.template` and name it `.env.local` in the project directory. Add your BigCommerce API keys to it.

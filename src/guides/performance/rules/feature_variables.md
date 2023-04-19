@@ -23,215 +23,45 @@ Feature variables are described below.
 
 </Callout>
 
--   `%{geo_asnum}`**:** Indicates the client's AS number.
-
-    **Sample Value:** `AS15133`
-
--   `%{geo_city}`**:** Indicates the client's city.
-
-    **Sample Value:** `Los Angeles`
-
--   `%{geo_continent}`**:** Indicates the client's continent through its abbreviation. Valid values are:
-    -   **AF:** Africa
-    -   **AS:** Asia
-    -   **EU:** Europe
-    -   **NA:** North America
-    -   **OC:** Oceania
-    -   **SA:** South America
-
-    **Sample Value:** `NA`
-
--   `%{cookie_<COOKIE>}`**:** Returns the value corresponding to the cookie identified by the `<COOKIE>` term. Replace dashes in the cookie name with underscores (e.g., change `preferences-cookie` to `preferences_cookie`).
-
-    **Sample Usage:** `%{cookie__utma}`
-
-    **Sample Value:** `111662281.2.10.1222100123`
-
--   `%{geo_country}`**:** Indicates the country from which the requested originated through its country code.
-
-    **Sample Value:** `US`
-
--   `%{geo_dma_code}`**:** Indicates the client's media market by its region code. This field is only applicable to requests that originate from the United States.
-
-    **Sample Value:** `745`
-
--   `%{request_method}`**:** Indicates the HTTP request method.
-
-    **Sample Value:** `GET`
-
--   `%{status}`**:** Indicates the HTTP status code for the response.
-
-    **Sample Value:** `200`
-
--   `%{virt_dst_addr}`**:** Indicates the client's IP address.
-
-    **Sample Value:** `192.168.1.1`
-
--   `%{geo_latitude}`**:** Indicates the client's latitude.
-
-    **Sample Value:** `34.0995`
-
--   `%{geo_longitude}`**:** Indicates the client's longitude.
-
-    **Sample Value:** `-118.4143`
-
--   `%{geo_metro_code}`**:** Indicates the client's metropolitan area. This field is only applicable to requests that originate from the United States.
-
-    **Sample Value:** `745`
-
--   `%{normalized_path}`**:** Indicates the normalized relative path for the request submitted to the CDN.
-
-    **Key information:**
-
-    -   This relative path excludes the query string.
-    -   This relative path corresponds to the request submitted to the CDN and it does not reflect URL rewrites.
-    -   URL normalization, as defined in [RFC 3986](https://tools.ietf.org/html/rfc3986#page-38), was applied to this value.
-
-    **Sample Value:** `/marketing/images/bunny.png`
-
--   `%{normalized_query}`**:** Indicates the normalized query string defined in the request URL. URL normalization, as defined in [RFC 3986](https://tools.ietf.org/html/rfc3986#page-38), was applied to this value.
-
-    **Original Query String:** `"client=/123?"`
-
-    **Sample Value:** `%22client=/123?%22`
-
--   `%{normalized_uri}`**:** Indicates the normalized relative path and query string for the request submitted to the CDN.
-
-    **Key information:**
-
-    -   This relative path corresponds to the  request submitted to the CDN and it does not reflect URL rewrites.
-    -   URL normalization, as defined in [RFC 3986](https://tools.ietf.org/html/rfc3986#page-38), was applied to this value.
-
-    **Sample Value:** `/dir/foo.js?%22client=/123?%22`
-
--   `%{path}`**:** Indicates the relative path to the requested content. 
-
-    **Key information:**
-
-    -   This relative path excludes the query string.
-    -   This relative path reflects URL rewrites due to `url_rewrite`.
-
-    **Sample Value:** `/rewrittendir/foo.js`
-
--   `%{virt_dst_port}`**:** Indicates the client's ephemeral port. 
-
-    **Sample Value:** `55885`
-
--   `%{geo_postal_code}`**:** Indicates the client's postal code. We only return the first 3 characters for Canadian postal codes and the first 2 - 4 characters for United Kingdom postal codes.
-
-    **Sample Value:** `90210`
-
--   `%{is_args}`**:** The value for this variable varies according to whether the request contains a query string.
-    -   **Query String Found:** ?
-    -   **No Query String:** NULL
-
-    **Sample Value:** `?`
-
--   `%{is_amp}`**:** The value for this variable varies according to whether the request contains at least one query string parameter.
-    -   **Parameter Found:** &
-    -   **No Parameters:** NULL
-
-    **Sample Value:** `&`
-
--   `%{arg_<QUERY STRING PARAMETER>}`**:** Returns the value corresponding to the query string parameter identified by the `<QUERY STRING PARAMETER>` term. 
-
-    **Sample Usage:** `%{arg_language} `
-
-    **Sample Query String Parameter:** `language=en`
-
-    **Sample Value:** `en`
-
--   `%{query_string}`**:** Indicates the entire query string value defined in the request URL.
-
-    **Sample Value:** `key1=val1&key2=val2&key3=val3`
-
--   `%{quic_altsvc_versions}`**:** Indicates the set of QUIC versions supported by our CDN service. This variable identifies QUIC versions using Google's latest specification.
-
-    **Sample Value:** `h3-Q049=":443"; ma=2592000,h3-Q048=":443"; ma=2592000,h3-Q046=":443"; ma=2592000,h3-Q043=":443"; ma=2592000`
-
--   `%{quic_versions}`**:** Indicates the set of QUIC versions supported by our CDN service. This variable identifies QUIC versions using Google's legacy specification.
-
-    **Sample Value:** `43,41,39,35`
-
--   `%{referring_domain}`**:** Indicates the domain defined in the `Referer` request header. 
-
-    **Sample Value:** `www.google.com`
-
--   `%{geo_region}`**:** Indicates the client's region (e.g., state or province) through its alphanumeric abbreviation. 
-
-    **Sample Value:** `CA`
-
--   `%{http_<REQUEST HEADER>}`**:**  Returns the value corresponding to the request header identified by the `<REQUEST HEADER>` term. Replace dashes in the request header name with underscores (e.g., change `User-Agent` to `User_Agent`).
-
-    **Sample Usage:** `%{http_Connection} `
-
-    **Sample Value:** `Keep-Alive`
-
--   `%{host}`**:** Indicates the host defined in the request URL. 
-
-    **Sample Value:** `www.example.com`
-
--   `%{http_x_ec_uuid}`**:** Indicates a request's unique system-defined ID.  A new ID is generated whenever a client (i.e., user agent) submits a request.
-
-    **Sample Value:** `12345678901234567890123456789012345678`
-
--   `%{virt_http_version}`**:** Indicates the version of the client's request protocol.
-
-    **Sample Value:** `2.0`
-
--   `%{request_protocol}`**:** Indicates the request protocol used by an edge server to proxy the request.
-
-    **Sample Value:** `HTTP/1.1`
-
--   `%{scheme}`**:** Indicates the request scheme.
-
-    **Sample Value:** `http`
-
--   `%{request}`**:** Describes the request.
-
-    **Syntax:**
-
-    `<HTTP METHOD> <RELATIVE PATH> <PROTOCOL>`
-
-    -   `<HTTP METHOD>`**:** Indicates the HTTP method that was requested. 
-    -   `RELATIVE PATH>`**:** Indicates the relative path, including query string parameters, defined in the request URI.
-    -   `<PROTOCOL>`**:** Indicates the HTTP protocol and version that was requested.
-
-    **Sample Value:** `GET /marketing/foo.js?loggedin=true HTTP/1.1`
-
--   `%{request_uri}`**:** Indicates the relative path, including the query string, defined in the request URI.
-
-    **Sample Value:** `/marketing/foo.js?loggedin=true`
-
--   `%{resp_<RESPONSE HEADER>}`**:**  Returns the value corresponding to the response header identified by the `<RESPONSE HEADER>` term. Replace dashes in the response header name with underscores (e.g., change `User-Agent` to `User_Agent`).
-
-    <Callout type="info">
-
-      Requests cannot be defined using variables associated with response metadata. For example, this variable cannot be used to define a request header through the `set_request_headers` feature.
-
-    </Callout>
-
-    **Sample Usage:** `%{resp_Content_Length}`
-
-    **Sample Value:** `100`
-
--   `%{http_x_ec_session_id}`**:** Indicates a unique system-defined ID for the request's connection to our servers.
-
-    <Callout type="tip">
-
-      Multiple rapid requests by a single client may result in a single session ID when the connection is reused for those requests. Use `%{http_x_ec_uuid}` if you require a unique ID for each request.
-
-    </Callout>
-
-    **Sample Value:** `12345678901234567890123456789012345678`
-
--   `%{virt_ssl_cipher}`**:** Indicates the name of the cipher suite used to secure a HTTPS connection.
-
-    **Sample Value:** `ECDHE-RSA-AES256-SHA`
-
--   `%{virt_ssl_protocol}`**:** Indicates the SSL/TLS protocol used to secure a HTTPS connection. 
-
-    **Sample Value:** `TLSv1.2`
+| Type | Variable  | Description  |
+|---|---|---|
+|ASN (Client)|`%{geo_asnum}` |  Indicates the client's AS number.<br />**Sample Value:** `AS15133`|
+|City (Client)|`%{geo_city}` |  Indicates the client's city.<br />**Sample Value:** `Los Angeles`|
+|Continent (Client)|`%{geo_continent}` |  Indicates the client's continent through its abbreviation. Valid values are:<ul><li>**AF:** Africa</li><li>**AS:** Asia</li><li>**EU:** Europe</li><li>**NA:** North America</li><li>**OC:** Oceania</li><li>**SA:** South America</li></ul><br />**Sample Value:** `NA`|
+|Cookie Value|`%{cookie_<COOKIE>}` |  Returns the value corresponding to the cookie identified by the `<COOKIE>` term. Replace dashes in the cookie name with underscores (e.g., change `preferences-cookie` to `preferences_cookie`).<br />**Sample Usage:** `%{cookie__utma}`<br />**Sample Value:** `111662281.2.10.1222100123`|
+|Country (Client)|`%{geo_country}` |  Indicates the country from which the requested originated through its country code.<br />**Sample Value:** `US`|
+|Designated Market Area (Client) |`%{geo_dma_code}` |  Indicates the client's media market by its region code. This field is only applicable to requests that originate from the United States.<br />**Sample Value:** `745`|
+|HTTP Method|`%{request_method}` |  Indicates the HTTP request method.<br />**Sample Value:** `GET`|
+|HTTP Status Code|`%{status}` |  Indicates the HTTP status code for the response.<br />**Sample Value:** `200`|
+|IP Address (Client)|`%{virt_dst_addr}` |  Indicates the client's IP address.<br />**Sample Value:** `192.168.1.1`|
+|Latitude (Client)|`%{geo_latitude}` |  Indicates the client's latitude.<br />**Sample Value:** `34.0995`|
+|Longitude (Client)|`%{geo_longitude}` |  Indicates the client's longitude.<br />**Sample Value:** `-118.4143`|
+|Metropolitan Statistical Area (Client)|`%{geo_metro_code}` |  Indicates the client's metropolitan area. This field is only applicable to requests that originate from the United States.<br />**Sample Value:** `745`|
+|Normalized Path|`%{normalized_path}` |  Indicates the normalized relative path for the request submitted to the CDN. <br />**Key information:**<ul><li>This relative path excludes the query string.</li><li>This relative path corresponds to the request submitted to the CDN and it does not reflect URL rewrites.</li><li>URL normalization, as defined in [RFC 3986](https://tools.ietf.org/html/rfc3986#page-38), was applied to this value.</li></ul>**Sample Value:** `/marketing/images/bunny.png`|
+|Normalized Query String|`%{normalized_query}` |  Indicates the normalized query string defined in the request URL. URL normalization, as defined in [RFC 3986](https://tools.ietf.org/html/rfc3986#page-38), was applied to this value. <br />**Original Query String:** `"client=/123?"`<br />**Sample Value:** `%22client=/123?%22`|
+|Normalized URI|`%{normalized_uri}` |  Indicates the normalized relative path and query string for the request submitted to the CDN. <br />**Key information:**<ul><li>This relative path corresponds to the  request submitted to the CDN and it does not reflect URL rewrites.</li><li>URL normalization, as defined in [RFC 3986](https://tools.ietf.org/html/rfc3986#page-38), was applied to this value.</li></ul>**Sample Value:** `/dir/foo.js?%22client=/123?%22`|
+|Path|`%{path}` |  Indicates the relative path to the requested content. <br />**Key information:**<ul><li>This relative path excludes the query string.</li><li>This relative path reflects URL rewrites due to `url_rewrite`.</li></ul><br />**Sample Value:** `/rewrittendir/foo.js`|
+|Port (Client)|`%{virt_dst_port}` |  Indicates the client's ephemeral port. <br />**Sample Value:** `55885`|
+|Postal Code (Client)|`%{geo_postal_code}` |  Indicates the client's postal code. We only return the first 3 characters for Canadian postal codes and the first 2 - 4 characters for United Kingdom postal codes.<br />**Sample Value:** `90210`|
+|Query String Found |`%{is_args}` |  The value for this variable varies according to whether the request contains a query string.<ul><li>**Query String Found:** ?</li><li>**No Query String:** NULL</li></ul>**Sample Value:** `?`|
+|Query String Parameter Found|`%{is_amp}` |  The value for this variable varies according to whether the request contains at least one query string parameter.<ul><li>**Parameter Found:** &</li><li>**No Parameters:** NULL</li></ul>**Sample Value:** `&`|
+|Query String Parameter Value|`%{arg_<QUERY STRING PARAMETER>}` |  Returns the value corresponding to the query string parameter identified by the `<QUERY STRING PARAMETER>` term. <br />**Sample Usage:** `%{arg_language} `<br />**Sample Query String Parameter:** `language=en`<br />**Sample Value:** `en`|
+|Query String Value|`%{query_string}` |  Indicates the entire query string value defined in the request URL.<br />**Sample Value:** `key1=val1&key2=val2&key3=val3`|
+|QUIC Versions|`%{quic_altsvc_versions}` |  Indicates the set of QUIC versions supported by our CDN service. This variable identifies QUIC versions using Google's latest specification.<br />**Sample Value:** `h3-Q049=":443"; ma=2592000,h3-Q048=":443"; ma=2592000,h3-Q046=":443"; ma=2592000,h3-Q043=":443"; ma=2592000`|
+|Referrer Domain|`%{referring_domain}` |  Indicates the domain defined in the `Referer` request header. <br />**Sample Value:** `www.google.com`|
+|Region (Client)|`%{geo_region}` |  Indicates the client's region (e.g., state or province) through its alphanumeric abbreviation. <br />**Sample Value:** `CA`|
+|Request Header Value|`%{http_<REQUEST HEADER>}` |   Returns the value corresponding to the request header identified by the `<REQUEST HEADER>` term. Replace dashes in the request header name with underscores (e.g., change `User-Agent` to `User_Agent`).<br />**Sample Usage:** `%{http_Connection} `<br />**Sample Value:** `Keep-Alive`|
+|Request Host|`%{host}` |  Indicates the host defined in the request URL. <br />**Sample Value:** `www.example.com`|
+|Request ID|`%{http_x_ec_uuid}` |  Indicates a request's unique system-defined ID.  A new ID is generated whenever a client (i.e., user agent) submits a request.<br />**Sample Value:** `12345678901234567890123456789012345678`|
+|Request Protocol (Client)|`%{virt_http_version}` |  Indicates the version of the client's request protocol.<br />**Sample Value:** `2.0`|
+|Request Protocol (Edge Server) |`%{request_protocol}` |  Indicates the request protocol used by an edge server to proxy the request.<br />**Sample Value:** `HTTP/1.1`|
+|Request Scheme|`%{scheme}` |  Indicates the request scheme.<br />**Sample Value:** `http`|
+|Request URI|`%{request}` |  Describes the request. <br />**Syntax:** `<HTTP METHOD> <RELATIVE PATH> <PROTOCOL>` <ul><li>`<HTTP METHOD>`**:** Indicates the HTTP method that was requested. </li><li>`RELATIVE PATH>`**:** Indicates the relative path, including query string parameters, defined in the request URI.</li><li>`<PROTOCOL>`**:** Indicates the HTTP protocol and version that was requested. </li></ul> **Sample Value:** `GET /marketing/foo.js?loggedin=true HTTP/1.1`|
+|Request URI (Relative)|`%{request_uri}` |  Indicates the relative path, including the query string, defined in the request URI.<br />**Sample Value:** `/marketing/foo.js?loggedin=true`|
+|Response Header Value|`%{resp_<RESPONSE HEADER>}` |   Returns the value corresponding to the response header identified by the `<RESPONSE HEADER>` term. Replace dashes in the response header name with underscores (e.g., change `User-Agent` to `User_Agent`). <Callout type="info">  Requests cannot be defined using variables associated with response metadata. For example, this variable cannot be used to define a request header through the `set_request_headers` feature.</Callout>**Sample Usage:** `%{resp_Content_Length}`<br />**Sample Value:** `100`|
+|Session ID|`%{http_x_ec_session_id}` |  Indicates a unique system-defined ID for the request's connection to our servers. <Callout type="tip">  Multiple rapid requests by a single client may result in a single session ID when the connection is reused for those requests. Use `%{http_x_ec_uuid}` if you require a unique ID for each request.</Callout><br />**Sample Value:** `12345678901234567890123456789012345678`|
+|TLS Cipher Suite|`%{virt_ssl_cipher}` |  Indicates the name of the cipher suite used to secure a HTTPS connection.<br />**Sample Value:** `ECDHE-RSA-AES256-SHA`|
+|TLS Protocol|`%{virt_ssl_protocol}` |  Indicates the SSL/TLS protocol used to secure a HTTPS connection. <br />**Sample Value:** `TLSv1.2`|
 
 ## Usage {/*usage*/}
 
@@ -452,4 +282,3 @@ Find and replace syntax is described below.
         `^` indicates that only text that starts with the specified pattern will be captured.
         `$` indicates that only text that ends with the specified pattern will be capture.
 -   Omitting the `/<REWRITE>` value will result in the deletion of the text that matches the pattern.
-

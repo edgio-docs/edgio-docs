@@ -315,11 +315,11 @@ new Router()
 
 #### Cache Key Query String {/*cache-key-query-string*/}
 
-Determines whether the cache-key will include or exclude query string parameters associated with a request. 
+Determines whether the cache key will include or exclude query string parameters associated with a request. 
 
 Include or exclude all query string parameters through the `Include All` or `Exclude All` modes. Alternatively, include or exclude specific query string parameters through the `Include` or `Include All Except` modes.
 
--   **Include All:** Indicates that a unique cache-key will be created for each request to an asset that includes a unique query string.
+-   **Include All:** Indicates that a unique cache key will be created for each request to an asset that includes a unique query string.
 
     <Callout type="info">
 
@@ -327,16 +327,16 @@ Include or exclude all query string parameters through the `Include All` or `Exc
 
     </Callout>
 
--   **Exclude All:** Indicates that all query string parameters will be excluded from the cache-key. 
+-   **Exclude All:** Indicates that all query string parameters will be excluded from the cache key. 
 
--   **Include:** Contains the set of parameter(s) that may be included in the cache-key. A unique cache-key will be generated for each request that contains a unique value for a query string parameter defined in this feature.
+-   **Include:** Contains the set of parameter(s) that may be included in the cache key. A unique cache key will be generated for each request that contains a unique value for a query string parameter defined in this feature.
 
--   **Include All Except:** Contains the set of parameter(s) will be excluded from the cache-key. All other query string parameters will be included in the cache-key.
+-   **Include All Except:** Contains the set of parameter(s) will be excluded from the cache key. All other query string parameters will be included in the cache key.
 
 <edgejs>
 Include or exclude all query string parameters through the `include_all` property or `exclude_all` property. Alternatively, include or exclude specific query string parameters through the `include` property, `exclude` property, or both.
 
--   **include_all (*Boolean*):** Indicates that a unique cache-key will be created for each request to an asset that includes a unique query string.
+-   **include_all (*Boolean*):** Indicates that a unique cache key will be created for each request to an asset that includes a unique query string.
 
     <Callout type="info">
 
@@ -357,7 +357,7 @@ Include or exclude all query string parameters through the `include_all` propert
       })
     ```
 
--   **exclude_all (*Boolean*):** Indicates that all query string parameters will be excluded from the cache-key. 
+-   **exclude_all (*Boolean*):** Indicates that all query string parameters will be excluded from the cache key. 
 
     **Example:**
 
@@ -372,7 +372,7 @@ Include or exclude all query string parameters through the `include_all` propert
       })
     ```
 
--   **include (*Array of string values*):** Contains the set of parameter(s) that may be included in the cache-key. A unique cache-key will be generated for each request that contains a unique value for a query string parameter defined in this feature.
+-   **include (*Array of string values*):** Contains the set of parameter(s) that may be included in the cache key. A unique cache key will be generated for each request that contains a unique value for a query string parameter defined in this feature.
 
     **Example:**
 
@@ -387,7 +387,7 @@ Include or exclude all query string parameters through the `include_all` propert
       })
     ```
 
--   **include_all_except (*Array of string values*):** Contains the set of parameter(s) will be excluded from the cache-key. All other query string parameters will be included in the cache-key.
+-   **include_all_except (*Array of string values*):** Contains the set of parameter(s) will be excluded from the cache key. All other query string parameters will be included in the cache key.
 
     **Example:**
 
@@ -422,7 +422,7 @@ Restricts caching to requests whose body does not exceed the specified file size
 -   The request body is taken into consideration for:
 
     -   `x-www-form-urlencoded` values
-    -   Ensuring a unique cache-key
+    -   Ensuring a unique cache key
 
 -   Defining a large maximum request body size may impact data delivery performance.
 
@@ -444,7 +444,7 @@ Restricts caching to requests whose body does not exceed the specified file size
 -   The request body is taken into consideration for:
 
     -   `x-www-form-urlencoded` values
-    -   Ensuring a unique cache-key
+    -   Ensuring a unique cache key
 
 -   Defining a large maximum request body size may impact data delivery performance.
 
@@ -936,57 +936,101 @@ new Router()
 
 #### Rewrite Cache Key {/*rewrite-cache-key*/}
 
-Rewrites the cache-key associated with a request. Pass the following properties:
+Rewrites the default cache key for a set of requests. 
 
--   **Source:** Define a regular expression that identifies the cache-key that will be rewritten. This cache-key is a relative path that starts directly after the hostname.
+**Key information:**
 
-    <Callout type="important">
+-   Our servers use the cache key to check for a cached version of an asset.
+-   A core component of a cache key is a relative URL path that starts directly after the hostname. This relative URL path is derived from the request whose response is being cached. The Rewrite Cache Key feature allows you to customize the default cache key for a set of requests by modifying this value.
+-   This feature does not affect the cache key assigned to previously cached content. 
+-   Define the following settings:
 
-      Verify that the specified pattern does not conflict with this route's path.
+    -   **Source:** Identify the set of requests that will use a different default cache key by setting this option to a relative URL path that starts directly after the hostname. This setting supports regular expression syntax.
 
-    </Callout>
+        <Callout type="important">
 
--   **Destination:** Define a replacement pattern that sets a new cache-key. This cache-key is a relative path that starts directly after the hostname. 
+          Verify that the specified relative path does not conflict with any conditions applied to this rule.
 
-    <Callout type="tip">
+        </Callout>
 
-      Use [feature variables](/guides/performance/rules/feature_variables) to dynamically construct this relative path. However, you may not use response metadata when defining a cache-key.
+    -   **Destination:** Define a replacement pattern that sets a new default cache key. 
 
-    </Callout>
+        <Callout type="tip">
 
-<edgejs>
--   **source (*String*):** Define a regular expression that identifies the cache-key that will be rewritten. This cache-key is a relative path that starts directly after the hostname.
+          Use [feature variables](/guides/performance/rules/feature_variables) to dynamically construct this relative path. However, you may not use response metadata when defining a cache key.
 
-    <Callout type="important">
+        </Callout>
 
-      Verify that the specified pattern does not conflict with this route's path.
+        <Callout type="info">
 
-    </Callout>
+          You may use up to 9 numbered backreferences for text captured within the `source` property. 
 
--   **destination (*String*):** Define a replacement pattern that sets a new cache-key. This cache-key is a relative path that starts directly after the hostname. 
+          For example, if the **Source** option contains two capture groups (e.g., `/(sales|marketing)/(.*)`, then you may backreference them within the **Destination** option (e.g., `/$1/$2`). 
 
-    <Callout type="tip">
-
-      Use [feature variables](/guides/performance/rules/feature_variables) to dynamically construct this relative path. However, you may not use response metadata (e.g., `%{resp_<RESPONSE HEADER>}`) when defining a cache-key.
-
-    </Callout>
+        </Callout>
 
 **Example:**
+
+This example demonstrates how to apply a custom default cache key for requests to the `marketing` folder. Specifically, we will append the value assigned to the `Session-Type` request header to the default cache key. A sample URL is provided below.
+
+`https://www.example.com/conferences/marketing/index.htm`
+
+We will now set the **Source** option to the following pattern to identify requests to the `marketing` folder:
+
+`/conferences/marketing/(.*)`
+
+The last URL segment is set to `(.*)`. This regular expression syntax matches any number of characters that follow `/conferences/marketing/`. 
+
+We will now set the default cache key to the request's relative path followed by a dash and the value assigned to the `Session-Type` request header by setting the **Destination** option to:
+
+`/conferences/marketing/$1-%{http_Session_Type}`
+
+Notice that we are using `$1`, which is a numbered backreference, to reintroduce the value captured by `(.*)` within the **Source** option.
+
+<edgejs>
+**Key information:**
+
+-   Our servers use the cache key to check for a cached version of an asset.
+-   A core component of a cache key is a relative URL path that starts directly after the hostname. This relative URL path is derived from the request whose response is being cached. The `cache_key_rewrite` feature allows you to customize the default cache key for a set of requests by modifying this value.
+-   This feature does not affect the cache key assigned to previously cached content. 
+-   Pass the following properties:
+
+    -   **source:** Identify the set of requests that will use a different default cache key by setting this option to a relative URL path that starts directly after the hostname. This property supports regular expression syntax.
+
+        <Callout type="important">
+
+          Verify that the specified relative path does not conflict with any conditions applied to this route.
+
+        </Callout>
+
+    -   **destination:** Define a replacement pattern that sets a new default cache key. 
+
+        <Callout type="tip">
+
+          Use [feature variables](/guides/performance/rules/feature_variables) to dynamically construct this relative path. However, you may not use response metadata when defining a cache key.
+
+        </Callout>
+
+**Example:**
+
+This example demonstrates how to apply a custom default cache key for requests to the `marketing` folder. Specifically, we will append the value assigned to the `Session-Type` request header to the default cache key. A sample URL is provided below.
+
+`https://www.example.com/conferences/marketing/index.htm`
 
 ```js filename="./routes.js"
 new Router()
   .get('/', {
     caching: {
       "cache_key_rewrite": {
-		"source": "/marketing/images/(.*)",
-		"destination": "/images/$1"
+		"source": "/conferences/marketing/(.*)",
+		"destination": "/conferences/marketing/$1-%{http_Session_Type}"
       }
     }
   })
 ```
 </edgejs>
 
-**Default Behavior:** By default, a request's cache-key is determined by the request URI's relative path.
+**Default Behavior:** By default, {{ PRODUCT }} uses the request URI's relative path when constructing the cache key.
 
 #### Set Client Max Age {/*client-max-age*/}
 
@@ -1164,13 +1208,14 @@ Header features add, modify, or delete headers from the request or response.
 
 #### Add Response Headers {/*add-response-headers*/}
 
-Adds one or more header(s) to the response. If the header already exists in the response, then the provided value will be appended to the existing response header value.
+Adds one or more header(s) to the response. 
 
 **Key information:**
 
 -   Specify a header name that is an exact match for the desired response header. However, case is not taken into account for the purpose of identifying a header. 
 -   Use alphanumeric characters, dashes, or underscores when specifying a header name.
 -   Use [feature variables](/guides/performance/rules/feature_variables) to dynamically construct header values.
+-   This feature requires {{ PRODUCT }} to add a response header, regardless of whether that header already exists in the response. This may cause the response to include multiple headers with the same name.
 -   The following headers are reserved and cannot be modified by this feature:
     -   accept-ranges
     -   age

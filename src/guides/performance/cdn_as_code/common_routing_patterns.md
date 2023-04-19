@@ -136,7 +136,7 @@ Additional information on the `headers` feature can be found in the [Features](/
 
 You can also write catch-all routes that will alter all responses. One example where this is useful is injecting [Content Security Policy](/guides/security/security_suite#content-security-policy-csp) headers.
 
-Another example is adding response headers for debugging, which is often useful if [{{ PRODUCT_NAME }} is behind another CDN](/guides/performance/traffic_splitting/a_b_testing#third-party-cdns) or if you are troubleshooting your router rules. For example, you could respond with the value of request `x-forwarded-for` into `x-debug-xff` to see the value that {{ PRODUCT_NAME }} is receiving from the CDN:
+Another example is adding response headers for debugging, which is often useful if {{ PRODUCT_NAME }} is behind another CDN or if you are troubleshooting your router rules. For example, you could respond with the value of request `x-forwarded-for` into `x-debug-xff` to see the value that {{ PRODUCT_NAME }} is receiving from the CDN:
 
 ```js
 router.match(

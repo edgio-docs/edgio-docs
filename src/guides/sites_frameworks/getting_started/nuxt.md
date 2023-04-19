@@ -80,7 +80,7 @@ Options:
 2. Run `{{ FULL_CLI_NAME }} init` to configure your project for {{ PRODUCT }}.
 
 ```bash
-{{ FULL_CLI_NAME }} init
+{{ FULL_CLI_NAME }} init {{ INIT_ARG_EDGIO_VERSION }}
 ```
 
 The `{{ FULL_CLI_NAME }} init` command will automatically add all the required dependencies and files to your project. These include:
@@ -468,7 +468,7 @@ This may be because you have a custom server framework (such as Express). Please
 If you get a command not found error such as:
 
 ```bash
-{{ FULL_CLI_NAME }} init
+{{ FULL_CLI_NAME }} init 
 - bash: {{ FULL_CLI_NAME }}: command not found
 ```
 

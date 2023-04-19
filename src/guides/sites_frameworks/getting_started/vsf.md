@@ -56,7 +56,7 @@ npm install
 In the root directory of your project run `{{ FULL_CLI_NAME }} init`:
 
 ```bash
-{{ FULL_CLI_NAME }} init
+{{ FULL_CLI_NAME }} init {{ INIT_ARG_EDGIO_VERSION }}
 ```
 
 The {{ PRODUCT }} init command should have automatically moved all your `modules` to `buildModules` in order to deploy the smallest possible build to {{ PRODUCT }}.

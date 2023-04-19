@@ -93,7 +93,7 @@ Options:
 In the root directory of your project run `{{ FULL_CLI_NAME }} init`:
 
 ```bash
-{{ FULL_CLI_NAME }} init
+{{ FULL_CLI_NAME }} init {{ INIT_ARG_EDGIO_VERSION }}
 ```
 
 The `{{ FULL_CLI_NAME }} init` command will automatically add all the required dependencies and files to your project. These include:

@@ -48,7 +48,7 @@ To prepare your Sapper app for deployment on {{ PRODUCT }}, run the following in
 
 ```bash
 npm i -g {{ PACKAGE_NAME }}/cli@{{ PACKAGE_VERSION }} # yarn global add {{ PACKAGE_NAME }}/cli@{{ PACKAGE_VERSION }}
-{{ FULL_CLI_NAME }} init
+{{ FULL_CLI_NAME }} init {{ INIT_ARG_EDGIO_VERSION }}
 ```
 
 This will automatically add all of the required dependencies and files to your project. These include:

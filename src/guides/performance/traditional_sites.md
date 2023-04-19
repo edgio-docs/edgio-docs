@@ -85,10 +85,11 @@ Create a project through the following command:
 
 ```bash
   npx {{ PACKAGE_NAME }}/cli@{{ PACKAGE_VERSION }} init \
-	--name <DOMAIN> \
-	--environment default \
-	--origin <DOMAIN> \
-	--deploy
+    {{ INIT_ARG_EDGIO_VERSION }} \
+  	--name <DOMAIN> \
+  	--environment default \
+  	--origin <DOMAIN> \
+  	--deploy
 ```
 
 Replace `<DOMAIN>` with your website's domain when running the above command.

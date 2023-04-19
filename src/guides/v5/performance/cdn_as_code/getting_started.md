@@ -30,8 +30,9 @@ Get started with CDN-as-code by:
 
     ```bash
     npx {{ PACKAGE_NAME }}/cli@latest init \
-	--name <PROPERTY> \
-	--deploy
+      {{ INIT_ARG_EDGIO_VERSION }} \
+    	--name <PROPERTY> \
+    	--deploy
     ```
 
 3.  [Define routes](#routes) that determine how {{ PRODUCT }} will handle that traffic.

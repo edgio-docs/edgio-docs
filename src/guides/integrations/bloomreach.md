@@ -293,7 +293,7 @@ Because this example is based off [create-react-app](https://create-react-app.de
 To add the necessary components to {{ PRODUCT }} in order to deploy, run the following:
 
 ```bash
-{{ FULL_CLI_NAME }} init
+{{ FULL_CLI_NAME }} init {{ INIT_ARG_EDGIO_VERSION }}
 ```
 
 From the resulting changes, set your {{ PRODUCT }} `routes.js` file to the following:

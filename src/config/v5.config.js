@@ -7,6 +7,7 @@ const LINK_DOMAIN = `layer0-limelight.link`;
 const RUM_DOMAIN = `rum.layer0.co`;
 const NODE_VERSION = '14.x';
 const PACKAGE_VERSION = '^5.0.0';
+const INIT_ARG_EDGIO_VERSION = `--edgioVersion ${PACKAGE_VERSION}`;
 
 const SYSTEM_REQUIREMENTS = `## System Requirements {/*system-requirements*/}
 
@@ -52,6 +53,7 @@ const config = {
   SYSTEM_REQUIREMENTS_H3,
   PREREQ,
   PACKAGE_VERSION,
+  INIT_ARG_EDGIO_VERSION,
 };
 
 export default config;

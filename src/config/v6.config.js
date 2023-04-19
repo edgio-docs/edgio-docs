@@ -6,6 +6,7 @@ const APP_DOMAIN = `app.${DOMAIN_LEGACY}`;
 const LINK_DOMAIN = `layer0-limelight.link`;
 const RUM_DOMAIN = `rum.layer0.co`;
 const PACKAGE_VERSION = '^6.0.0';
+const INIT_ARG_EDGIO_VERSION = `--edgioVersion ${PACKAGE_VERSION}`;
 
 const INSTALL_CLI = `## Install the ${base.PRODUCT_NAME} CLI {/*install-the-cli*/}
 
@@ -41,6 +42,7 @@ const config = {
   INSTALL_CLI,
   PACKAGE_VERSION,
   PREREQ,
+  INIT_ARG_EDGIO_VERSION,
 };
 
 export default config;

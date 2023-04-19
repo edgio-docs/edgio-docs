@@ -12,7 +12,7 @@ Add your Express app to {{ PRODUCT }} by running the following command in your p
 
 ```bash
 npm i -g {{ PACKAGE_NAME }}/cli@{{ PACKAGE_VERSION }} # yarn global add {{ PACKAGE_NAME }}/cli@{{ PACKAGE_VERSION }}
-{{ FULL_CLI_NAME }} init
+{{ FULL_CLI_NAME }} init {{ INIT_ARG_EDGIO_VERSION }}
 ```
 
 ## Running your app locally {/* running-your-app-locally */}

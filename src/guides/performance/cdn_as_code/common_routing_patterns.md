@@ -10,7 +10,7 @@ This guide gives examples of common routing patterns using {{ PRODUCT_NAME }}.
 
 ### Same Path {/* same-path */}
 
-To forward a request to the same path on one of the backends listed in `{{ CONFIG_FILE }}`, use the `origin` feature:
+To forward a request to the same path on one of the origins listed in `{{ CONFIG_FILE }}`, use the `origin` feature:
 
 ```js
 router.get('/some-path', {
@@ -20,17 +20,24 @@ router.get('/some-path', {
 });
 ```
 
-The first argument corresponds to the name of a backend in `{{ CONFIG_FILE }}`. For example:
+The value of `set_origin` corresponds to the `name` property of an origin in `{{ CONFIG_FILE }}`. For example:
 
 ```js
 module.exports = {
-  backends: {
-    origin: {
-      domainOrIp: 'my-shop.example.com',
-      hostHeader: 'my-shop.example.com',
+  // ... other configurations
+
+  origins: [
+    {
+      name: 'origin',
+      hosts: [
+        {
+          // The domain name or IP address of the origin server
+          location: 'www.my-site.com',
+        },
+      ],
     },
-  },
-};
+  ],
+}
 ```
 
 ### Different Path {/* different-path */}
@@ -475,7 +482,7 @@ router.match(
 
 ### Blocking traffic from specific countries {/* blocking-traffic-from-specific-countries */}
 
-If you need to block all traffic from a specific country or set of countries, you can do so by matching requests by the [country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) geolocation header:
+If you need to block all traffic from a specific country or set of countries, you can do so by matching requests by the [country code](/guides/reference/country_codes) using the `location.country` match condition:
 
 ```js
 router.get({

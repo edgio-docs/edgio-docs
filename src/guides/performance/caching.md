@@ -130,7 +130,7 @@ Use the [cache](/docs/api/core/classes/_router_responsewriter_.responsewriter.ht
 - Complete request URL, including the query parameters (this can be customized)
 - Value of `accept-encoding` request header
 <Condition version="<=6">
-- Name of the destination <Condition version="<=6">when [A/B testing](/guides/performance/traffic_splitting/a_b_testing) is in effect</Condition>
+- Name of the destination when [A/B testing](/guides/performance/traffic_splitting/a_b_testing) is in effect
 </Condition>
 
 When [POST and other non-GET/HEAD](#caching-responses-for-post-and-other-non-gethead-requests) methods caching is enabled, {{ PRODUCT_NAME }} automatically adds the following to the cache key:

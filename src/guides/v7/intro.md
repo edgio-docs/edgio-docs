@@ -30,17 +30,40 @@ title: {{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} Version 7
 
 -   A refreshed UI for [Web Application Firewall (WAF)](/guides/security/waf). You may now apply WAF protection to all of your properties at the team level.
 -   {{ PRODUCT }} {{ PRODUCT_PLATFORM }} now supports Next, Nuxt 2, and Nuxt 3. We plan on introducing support for additional web application frameworks in the near future. <a id="routehelper" />
--   Our CDN-as-code syntax now uses JSON instead of RouteHelper, which has been deprecated in version 7. {{ PRODUCT }} provides limited backward-compatibility for RouteHelper. The following methods are currently unsupported in {{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} v7:
-    -   fallback
-    -   destination
-    -   addUpstreamResponseCookie
-    -   removeUpstreamResponseCookie
-    -   removeUpstreamResponseHeader
-    -   setUpstreamResponseHeader
-    -   updateUpstreamResponseCookie
-    -   updateUpstreamResponseHeader
+-   CDN-as-code has undergone significant changes. Key changes are listed below:
+    -   **{{ CONFIG_FILE }}:** Define `origins` instead of `backends`. Each origin configuration may contain various hosts. Each host identifies a hostname or IP address. Each origin configuration supports an origin shield configuration and TLS settings.
+    -   **{{ CONFIG_FILE }}:** Define the desired environments within this file.
+    -   Routes now support JSON syntax. A sample route that uses this new syntax is shown below.
 
-    We have introduced a new method called `conditional` to Router that uses a new JSON syntax and supports conditional logic.
+        ```
+        new Router()
+          .get('/', {
+            caching: {
+              max_age: '1d' // cache for 1 day at the edge
+            }
+          })
+        ```
+    -   Version 7 provides limited support for legacy syntax. It does not support the `fallback()`, `catch()`, and `destination()` methods. It also does not provide full support for the following `ResponseWriter` methods: 
+        -   updateResponseCookie
+        -   removeResponseCookie
+        -   addUpstreamResponseCookie
+        -   removeUpstreamResponseCookie
+        -   setUpstreamResponseHeader
+        -   updateUpstreamResponseCookie
+    -   All routes that match a request are executed. In previous versions, the following methods return a response and prevent additional routes from being matched:
+        -   proxy
+        -   renderWithApp
+        -   serveStatic
+        -   dir
+        -   static
+        -   send
+        -   compute
+        -   redirect
+        -   appShell
+        -   serviceWorker
+        -   render
+    
+    -   We have introduced a new method called `conditional` to Router that uses a new JSON syntax and supports conditional logic.
 
 ## Try It Out  {/*try-it-out*/}
 

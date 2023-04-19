@@ -6,7 +6,7 @@ title: Reference
 
 | Category  | Type  |
 |---|---|
-| Request / Response   | <ul><li>[Request Headers](/guides/performance/request#request-headers)</li><li>[Status Codes](/guides/performance/response#status-codes)</li><li>[Response Headers](/guides/performance/response#response-headers)</li><li>[Limits](/guides/performance/limits)</li></ul>  |
+| Request / Response   | <ul><li>[Request Headers](/guides/performance/request#request-headers)</li><li>[HTTP Status Codes](/guides/performance/response#status-codes)</li><li>[Response Headers](/guides/performance/response#response-headers)</li><li>[Limits](/guides/performance/limits)</li></ul>  |
 | Rules   | <ul><li>[Match Conditions](/guides/performance/rules/conditions)</li><li>[Features](/guides/performance/rules/features)</li><li>[Feature Variables](/guides/performance/rules/feature_variables)</li></ul>  |
 | CDN-as-Code (EdgeJS)   | <ul><li>[{{ CONFIG_FILE }}](/guides/basics/edgio_config)</li><li>EdgeJS API:</li><ul><li>[{{ PACKAGE_NAME }}/core](/docs/api/core)</li><li>[{{ PACKAGE_NAME }}/prefetch](/docs/api/prefetch)</li></ul><li>[CLI](/guides/develop/cli#commands)</li></ul>
 | REST API   | <ul><li>[Purge (clear-cache)](/guides/develop/rest_api)</li></ul> |

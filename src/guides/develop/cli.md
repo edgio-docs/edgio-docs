@@ -6,11 +6,11 @@ This guide shows you everything you can do with the {{ PRODUCT_NAME }} command l
 
 <Callout type="info">
 
-  By default, {{ PRODUCT }} CLI v5.1.0+ collects usage and error reporting information to help improve our products. However, it omits personally identifiable information. [Learn how to opt-out](#disable-analytics).
+By default, {{ PRODUCT }} CLI v5.1.0+ collects usage and error reporting information to help improve our products. However, it omits personally identifiable information. [Learn how to opt-out](#disable-analytics).
 
 </Callout>
 
-## Installation {/*installation*/}
+## Installation {/* installation */}
 
 To install, or upgrade to the latest, {{ PRODUCT_NAME }} CLI run
 
@@ -24,127 +24,128 @@ Or with yarn
 yarn global add {{ PACKAGE_NAME }}/cli@{{ PACKAGE_VERSION }}
 ```
 
-## Upgrade Project to Latest Version {/*upgrade-project-to-latest-version*/}
+## Upgrade Project to Latest Version {/* upgrade-project-to-latest-version */}
 
 If you already have a project running on {{ PRODUCT_NAME }} and you want to update packages to the most recent release of `{{ PACKAGE_NAME }}`, simply run:
 
 ```bash
-{{ FULL_CLI_NAME }} use latest
+{{ FULL_CLI_NAME }} use {{ PACKAGE_VERSION}}
 ```
 
 Before deploying your site, verify that all functionality, including request/response data, is as expected.
 
-## Commands {/*commands*/}
+## Commands {/* commands */}
 
-### build {/*build*/}
+### build {/* build */}
 
 Creates a build of your app optimized for production.
 
-#### Options {/*options*/}
+#### Options {/* options */}
 
-| Name                         | Description                                                                                                                                                                                                                                                                                                                              |
-| ---------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `--skip-framework`           | Alias: "-s". Skips the framework (Next.js, Vue, Angular, etc..) build and simply rebundles your router                                                                                                                                                                                                                                   |
-| `--disable-permanent-assets` | Set this to true to suppress errors like "Immutable file (...) content was changed" during deployment.                                                                                                                                                                                                                                   |
+| Name                         | Description                                                                                                                                                                                                                                                                                                                |
+| ---------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `--skip-framework`           | Alias: "-s". Skips the framework (Next.js, Vue, Angular, etc..) build and simply rebundles your router                                                                                                                                                                                                                     |
+| `--disable-permanent-assets` | Set this to true to suppress errors like "Immutable file (...) content was changed" during deployment.                                                                                                                                                                                                                     |
 | `--include-sources`          | Includes all non-gitignored source files in the bundle uploaded to {{ PRODUCT_NAME }}. This can be helpful when debugging, especially when working with {{ PRODUCT_NAME }} support. You can limit the files that are uploaded using the [sources](/guides/basics/edgio_config#sources) configuration in {{ CONFIG_FILE }}. |
 
-#### Example {/*example*/}
+#### Example {/* example */}
 
 ```bash
 {{ FULL_CLI_NAME }} build
 ```
 
-### cache-clear {/*cache-clear*/}
+### cache-clear {/* cache-clear */}
 
 Clears the cache. If neither `--path` nor `--surrogate-key` is specified, the entire cache for the
 specified environment will be cleared.
 
-#### Options {/*options*/}
+#### Options {/* options */}
 
 | Name              | Description                                                              |
-|-------------------|--------------------------------------------------------------------------|
+| ----------------- | ------------------------------------------------------------------------ |
 | `--team`          | (Required) The team name                                                 |
 | `--site`          | (Required) The site name                                                 |
 | `--environment`   | (Required) The environment name                                          |
 | `--path`          | A path to clear. Use "\*" as a wildcard                                  |
 | `--surrogate-key` | Clears all responses assigned to the specified surrogate key (cache tag) |
 
-#### Example {/*example*/}
+#### Example {/* example */}
 
 ```bash
 {{ FULL_CLI_NAME }} cache-clear --team=my-team --site=my-site --environment=production --path=/p/*
 ```
 
-### completion {/*completion*/}
+### completion {/* completion */}
 
 Creates a script that provides autocompletion for {{ PRODUCT_NAME }} CLI commands that can be installed in your shell.
 
-#### Example {/*example*/}
+#### Example {/* example */}
 
 ```bash
 {{ FULL_CLI_NAME }} completion
 ```
 
-#### Using ZSH {/*using-zsh*/}
+#### Using ZSH {/* using-zsh */}
 
 ```bash
 {{ FULL_CLI_NAME }} completion >> ~/.zshrc
 ```
 
-#### Using BASH {/*using-bash*/}
+#### Using BASH {/* using-bash */}
 
 ```bash
 {{ FULL_CLI_NAME }} completion >> ~/.bashrc
 ```
 
-### config {/*config*/}
+### config {/* config */}
 
 Sets configuration options for this property.
 
-#### set-analytics {/*set-analytics-command*/}
+#### set-analytics {/* set-analytics-command */}
 
 | Command                                        | Description                                                                                                                      |
-|-------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------|
+| ---------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- |
 | <a id="disable-analytics"></a> `set-analytics` | Set this to `false` to prevent sending usage data. Optionally, you may set the environment variable `EDGIO_DISABLE_ANALYTICS=1`. |
 
-#### Example {/*set-analytics-example*/}
+#### Example {/* set-analytics-example */}
 
 ```bash
 {{ FULL_CLI_NAME }} config set-analytics false
 ```
 
-#### set-backend {/*set-backend-command*/}
+#### set-backend {/* set-backend-command */}
+
 | Command                                          | Description                                                                       |
-|---------------------------------------------------|------------------------------------------------------------------------------------|
+| ------------------------------------------------ | --------------------------------------------------------------------------------- |
 | <a id="set-backend"></a> `set-backend <backend>` | Sets the `--domainOrIp, -d` and/or `--hostHeader, -h` to the existing `<backend>` |
 
 <Callout type="important">
 
-  This command must be called with `<backend>` already existing in the `{{ CONFIG_FILE }}` file. If `<backend>` does not exist, an error will be thrown.
+This command must be called with `<backend>` already existing in the `{{ CONFIG_FILE }}` file. If `<backend>` does not exist, an error will be thrown.
 
 </Callout>
 
-#### Example {/*set-backend-example*/}
+#### Example {/* set-backend-example */}
 
 ```bash
 {{ FULL_CLI_NAME }} config set-backend origin -d docs.edg.io
 ```
 
-### curl {/*curl*/}
+### curl {/* curl */}
 
 Uses `curl` to make a request to the specified URL, highlighting Edgio-specific telemetry information. See [Response](/guides/performance/response) for more information around response headers and telemetry values.
 
-#### Options {/*options*/}
+#### Options {/* options */}
 
 | Name          | Description                                                                                                                                       |
-|----------------|----------------------------------------------------------------------------------------------------------------------------------------------------|
+| ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `--json`      | Outputs the response variables in JSON format, including telemetry data, headers, cookies, and the body (if using `--show-body`) [default: false] |
 | `--debug`     | Run in verbose mode. This has no effect when using with `--json` option.                                                                          |
 | `--save-body` | Writes the response body to a temporary file path which is set in the output. This has no effect when using with `--json` option.                 |
 | `--show-body` | Prints the response body in the output. [default: false]                                                                                          |
 | `--help`      | View help information for options to the curl command.                                                                                            |
 
-#### Example {/*example*/}
+#### Example {/* example */}
 
 ```bash
 ➜  ~ {{ FULL_CLI_NAME }} curl https://docs.edg.io
@@ -202,30 +203,30 @@ Response Body
   Disabled. To enable use EDGIO_CURL_SAVE_BODY=true or EDGIO_CURL_SHOW_BODY=true
 ```
 
-### deploy {/*deploy*/}
+### deploy {/* deploy */}
 
 Builds and deploys your site on {{ PRODUCT_NAME }}.
 
-#### Parameters {/*parameters*/}
+#### Parameters {/* parameters */}
 
 | Name   | Description                                                                                                                          |
 | ------ | ------------------------------------------------------------------------------------------------------------------------------------ |
 | `team` | The name of the team under which the site will be deployed. The site will be deployed to your private space will be used if omitted. |
 
-#### Options {/*options*/}
+#### Options {/* options */}
 
-| Name                         | Description                                                                                                                                                                                                                                                                                                                              |
-| ---------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `--site`                     | The name of the site to deploy. By default the `name` field in `package.json` is used.                                                                                                                                                                                                                                                   |
-| `--environment`              | The environment to deploy to. By default the `default` environment is used.                                                                                                                                                                                                                                                              |
-| `--branch`                   | The name of the source control branch. This is automatically set when using Git.                                                                                                                                                                                                                                                         |
-| `--skip-build`               | Skips the build step                                                                                                                                                                                                                                                                                                                     |
-| `--token`                    | Authenticates using a deploy token rather than your user credentials. Use this option when deploying from CI. Alternatively, you can also specify the deploy token by setting the `EDGIO_DEPLOY_TOKEN` environment variable.                                                                                                            |
-| `--commit-url`               | The URL at which the commit can be viewed in your source control provided. If your package.json provides the repository attribute the commit URL will be derived automatically if you use GitHub, GitLab, or BitBucket.                                                                                                                  |
+| Name                         | Description                                                                                                                                                                                                                                                                                                                |
+| ---------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `--site`                     | The name of the site to deploy. By default the `name` field in `package.json` is used.                                                                                                                                                                                                                                     |
+| `--environment`              | The environment to deploy to. By default the `default` environment is used.                                                                                                                                                                                                                                                |
+| `--branch`                   | The name of the source control branch. This is automatically set when using Git.                                                                                                                                                                                                                                           |
+| `--skip-build`               | Skips the build step                                                                                                                                                                                                                                                                                                       |
+| `--token`                    | Authenticates using a deploy token rather than your user credentials. Use this option when deploying from CI. Alternatively, you can also specify the deploy token by setting the `EDGIO_DEPLOY_TOKEN` environment variable.                                                                                               |
+| `--commit-url`               | The URL at which the commit can be viewed in your source control provided. If your package.json provides the repository attribute the commit URL will be derived automatically if you use GitHub, GitLab, or BitBucket.                                                                                                    |
 | `--include-sources`          | Includes all non-gitignored source files in the bundle uploaded to {{ PRODUCT_NAME }}. This can be helpful when debugging, especially when working with {{ PRODUCT_NAME }} support. You can limit the files that are uploaded using the [sources](/guides/basics/edgio_config#sources) configuration in {{ CONFIG_FILE }}. |
-| `--disable-permanent-assets` | Set this to true to suppress errors like "Immutable file (...) content was changed" during deployment.                                                                                                                                                                                                                                   |
+| `--disable-permanent-assets` | Set this to true to suppress errors like "Immutable file (...) content was changed" during deployment.                                                                                                                                                                                                                     |
 
-#### Getting Information about the Deployment {/*getting-information-about-the-deployment*/}
+#### Getting Information about the Deployment {/* getting-information-about-the-deployment */}
 
 The `deploy` command writes a file called `.edgio/deployment-manifest.json`, which contains the following information:
 
@@ -240,111 +241,110 @@ The `deploy` command writes a file called `.edgio/deployment-manifest.json`, whi
 }
 ```
 
-#### Example {/*example*/}
+#### Example {/* example */}
 
 ```bash
 {{ FULL_CLI_NAME }} deploy my-team --environment=production
 ```
 
-### docs {/*docs*/}
+### docs {/* docs */}
 
 Open the {{ PRODUCT_NAME }} documentation in your browser.
 
-#### Example {/*example*/}
+#### Example {/* example */}
 
 ```bash
 {{ FULL_CLI_NAME }} docs
 ```
 
-### dev {/*dev*/}
+### dev {/* dev */}
 
 Runs your project in development mode, simulating the {{ PRODUCT_NAME }} cloud environment. This command is a simplified version of `{{ FULL_CLI_NAME }} run`, with only the --cache option being supported.
 
-#### Options {/*options*/}
+#### Options {/* options */}
 
 | Name      | Description                                                                                     |
 | --------- | ----------------------------------------------------------------------------------------------- |
 | `--cache` | Enables caching during local development so that you can test the caching logic in your router. |
 
-#### Example {/*example*/}
+#### Example {/* example */}
 
 ```bash
 {{ FULL_CLI_NAME }} dev
 ```
 
-### env {/*env*/}
+### env {/* env */}
 
 Manage deployed property's environments and environment variables.
 
-#### Parameters {/*parameters*/}
+#### Parameters {/* parameters */}
 
-| Name                      | Description                                                                     |
-|----------------------------|----------------------------------------------------------------------------------|
+| Name                      | Description                                                                       |
+| ------------------------- | --------------------------------------------------------------------------------- |
 | `pull <path-to-env-file>` | Copy non-secret environment variables from an environment to a local `.env` file. |
 
-#### Options {/*options*/}
+#### Options {/* options */}
 
 | Name            | Description                                                                          |
-|------------------|---------------------------------------------------------------------------------------|
+| --------------- | ------------------------------------------------------------------------------------ |
 | `--team`        | The name of the team under which the site belongs. Uses private space if omitted.    |
 | `--site`        | Slug of the site to pull variables from. Uses package.json name property if omitted. |
 | `--environment` | Environment to pull variables from. Uses default environment if omitted.             |
 
-
-#### Example {/*example*/}
+#### Example {/* example */}
 
 ```bash
 {{ FULL_CLI_NAME }} env pull .env.local --team my-team --site my-site --environment production
 ```
 
-### init {/*init*/}
+### init {/* init */}
 
 Run in an existing app to add all required packages and files need to publish your app on {{ PRODUCT_NAME }}
 
-#### Example {/*example*/}
+#### Example {/* example */}
 
 ```bash
 {{ FULL_CLI_NAME }} init
 ```
 
-#### Options {/*options*/}
+#### Options {/* options */}
 
-| Name          | Description                                                                                                                                                                                                |
-| ------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Name          | Description                                                                                                                                                                                                         |
+| ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `--connector` | The name of a specific connector package to install, or a path to a directory that implements the [connector interface](/guides/sites_frameworks/connectors#implementing-a-connector-directly-within-your-project). |
 
-### login {/*login*/}
+### login {/* login */}
 
 Logs into {{ PRODUCT_NAME }} via the developer console.
 
-#### Example {/*example*/}
+#### Example {/* example */}
 
 ```bash
 {{ FULL_CLI_NAME }} login
 ```
 
-### logout {/*logout*/}
+### logout {/* logout */}
 
 Logs out of {{ PRODUCT_NAME }}
 
-#### Example {/*example*/}
+#### Example {/* example */}
 
 ```bash
 {{ FULL_CLI_NAME }} logout
 ```
 
-### run {/*run*/}
+### run {/* run */}
 
 Runs your app locally. Uses port 3000 by default. You can change this by setting the `PORT` environment variable. For example: `PORT=5000 {{ FULL_CLI_NAME }} run`.
 
-#### Options {/*options*/}
+#### Options {/* options */}
 
 | Name           | Description                                                                                                                                                                                                                     |
 | -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `--production` | Runs a production build of your app, simulating the cloud environment. This can also be achieved by setting the NODE_ENV environment variable to `true`. You need to run `{{ FULL_CLI_NAME }} build` first.                          |
+| `--production` | Runs a production build of your app, simulating the cloud environment. This can also be achieved by setting the NODE_ENV environment variable to `true`. You need to run `{{ FULL_CLI_NAME }} build` first.                     |
 | `--cache`      | Enables caching during local development so that you can test the caching logic in your router. By default caching is turned off in local development to ensure you don't see stale responses as you make changes to your code. |
 
-#### Example {/*example*/}
+#### Example {/* example */}
 
 ```bash
 {{ FULL_CLI_NAME }} run --production
@@ -358,22 +358,24 @@ Or to run a deployment bundle downloaded from {{ PRODUCT_NAME }} Developer Conso
 
 Production mode is always used when running downloaded bundles.
 
-### use {/*use*/}
+### use {/* use */}
 
 Switches the version of all {{ PACKAGE_NAME }}/\* packages in your project.
 
-#### Example {/*example*/}
+#### Example {/* example */}
 
 To install a particular version:
 
 ```bash
-{{ FULL_CLI_NAME }} use 4.10.1
+{{ FULL_CLI_NAME }} use 6.1.0
 ```
 
-To install the latest stable:
+<a id="latest-stable" />
+
+To install the latest stable version relative to your current version:
 
 ```bash
-{{ FULL_CLI_NAME }} use latest
+{{ FULL_CLI_NAME }} use {{ PACKAGE_VERSION}}
 ```
 
 To install the latest preview:
@@ -382,11 +384,22 @@ To install the latest preview:
 {{ FULL_CLI_NAME }} use next
 ```
 
-## Troubleshooting {/*troubleshooting*/}
+<Condition version="<7">
+<Callout type="warning">
+
+Using `{{ FULL_CLI_NAME }} use latest` or `{{ FULL_CLI_NAME }} use next` will update all `{{ PACKAGE_NAME }}/*` packages in your project to the latest version published in the NPM registry.
+Doing so may update your project to a newer **major** version which may introduce breaking changes.
+
+It is recommended you updating using the [latest stable version](#latest-stable) relative to your current version
+
+</Callout>
+</Condition>
+
+## Troubleshooting {/* troubleshooting */}
 
 ---
 
-### Error: Cannot find module ... on `{{ FULL_CLI_NAME }} init` {/*error-cannot-find-module-on-init*/}
+### Error: Cannot find module ... on `{{ FULL_CLI_NAME }} init` {/* error-cannot-find-module-on-init */}
 
 An uncommon issue when running `{{ FULL_CLI_NAME }} init` can present a similar error:
 

@@ -108,6 +108,10 @@ const nav = {
           path: 'performance/prefetching',
         },
         {
+          title: 'Traffic Splitting',
+          path: 'performance/traffic_splitting',
+        },
+        {
           title: 'Observability',
           path: 'performance/observability',
           routes: [

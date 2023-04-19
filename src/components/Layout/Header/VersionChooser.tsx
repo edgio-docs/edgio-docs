@@ -10,8 +10,8 @@ import {getVersionedConfigs} from 'utils/config';
 import useConditioning from 'utils/hooks/useConditioning';
 
 const linkStyles = {
-  color: 'var(--text-primary)',
-  textDecoration: 'none',
+  'color': 'var(--text-primary)',
+  'textDecoration': 'none',
   '&:visited': {
     color: 'var(--text-primary)',
   },
@@ -34,11 +34,11 @@ const VersionSelect = styled(Select)(() => ({
     color: 'var(--text-primary)',
   },
   '& .MuiSelect-select': {
-    color: 'var(--text-primary)',
-    backgroundColor: 'var(--select-bg)',
-    border: '1px solid var(--sidebar-link-primary)',
-    fontSize: 14,
-    padding: '5px 14px',
+    'color': 'var(--text-primary)',
+    'backgroundColor': 'var(--select-bg)',
+    'border': '1px solid var(--sidebar-link-primary)',
+    'fontSize': 14,
+    'padding': '5px 14px',
     '& a': linkStyles,
   },
   '& .Mui-focused .MuiOutlinedInput-notchedOutline': {

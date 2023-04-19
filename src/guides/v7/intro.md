@@ -4,7 +4,7 @@ title: {{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} Version 7
 
 <Callout type="important">
 
-  If you are an existing customer, we know that you may be excited to try out {{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} v7. However, this major version upgrade may require significant changes to your CDN-as-code configuration as certain core legacy components have limited support. In the near future, we plan on introducing a migration guide to ease this transition. In the meantime, if you have questions, contact your account manager or our [sales department](https://edg.io/contact-us/) at 1 (866) 200 - 5463.
+  If you are an existing customer, we know that you may be excited to try out {{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} v7. However, this major version upgrade may require [significant changes to your CDN-as-code configuration](#cdn-as-code) as certain core legacy components have limited support. In the near future, we plan on introducing a migration guide to ease this transition. In the meantime, if you have questions, contact your account manager or our [sales department](https://edg.io/contact-us/) at 1 (866) 200 - 5463.
 
 </Callout>
 
@@ -29,7 +29,7 @@ title: {{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} Version 7
     ![Edge Insights](/images/v7/performance/edge-insights-example.png)
 
 -   A refreshed UI for [Web Application Firewall (WAF)](/guides/security/waf). You may now apply WAF protection to all of your properties at the team level.
--   {{ PRODUCT }} {{ PRODUCT_PLATFORM }} now supports Next, Nuxt 2, and Nuxt 3. We plan on introducing support for additional web application frameworks in the near future. <a id="routehelper" />
+-   {{ PRODUCT }} {{ PRODUCT_PLATFORM }} now supports Next, Nuxt 2, and Nuxt 3. We plan on introducing support for additional web application frameworks in the near future. <a id="cdn-as-code" />
 -   CDN-as-code has undergone significant changes. Key changes are listed below:
     -   **{{ CONFIG_FILE }}:** Define `origins` instead of `backends`. Each origin configuration may contain various hosts. Each host identifies a hostname or IP address. Each origin configuration supports an origin shield configuration and TLS settings.
     -   **{{ CONFIG_FILE }}:** Define the desired environments within this file.

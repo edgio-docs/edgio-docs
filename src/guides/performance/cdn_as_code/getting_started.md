@@ -16,7 +16,7 @@ Get started with CDN-as-code by performing these steps:
 
     <Callout type="tip">
 
-    Alternatively, you may experiment with our [sample websites](#example) by deploying them to {{ PRODUCT }}.
+    Alternatively, you may experiment with our [sample websites](#examples) by deploying them to {{ PRODUCT }}.
 
     </Callout>
 
@@ -443,7 +443,7 @@ Conditionals define the expectations that must be met, using comparison operator
 | `=~`     | Regular expression match.         |
 | `!~`     | Negated regular expression match. |
 
-### Example
+### Example {/*example*/}
 
 This example shows multiple conditionals that use various comparison operators and rules variables:
 
@@ -568,7 +568,7 @@ Assess performance and caching behavior from the {{ PORTAL_LINK }}. Fine-tune yo
 
 [Learn more.](/guides/production)
 
-## Examples {/* example */}
+## Examples {/* examples */}
 
 Use our sample website to gain hands-on experience on how to set up {{ PRODUCT }} {{ PRODUCT_EDGE }}. Specifically, you can browse our sample websites, view their source code, and even experiment on them by deploying them to {{ PRODUCT }}.
 

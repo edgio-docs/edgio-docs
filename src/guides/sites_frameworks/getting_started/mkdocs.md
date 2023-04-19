@@ -39,7 +39,7 @@ cd my-mkdocs-app
 Then, in the root folder of your project, run:
 
 ```bash
-{{ FULL_CLI_NAME }} init --connector={{ PACKAGE_NAME }}/mkdocs
+{{ FULL_CLI_NAME }} init {{ INIT_ARG_EDGIO_VERSION }} --connector={{ PACKAGE_NAME }}/mkdocs
 ```
 
 This will automatically add all of the required dependencies and files to your project. These include:

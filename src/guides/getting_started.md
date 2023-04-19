@@ -78,6 +78,7 @@ Each website that will run behind {{ PRODUCT }} requires an {{ PRODUCT }} proper
 
     ```bash
     npx {{ PACKAGE_NAME }}/cli@{{ PACKAGE_VERSION }} init \
+      {{ INIT_ARG_EDGIO_VERSION }} \
       --name <PROPERTY> \
       --deploy
     ```

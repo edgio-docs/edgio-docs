@@ -106,7 +106,8 @@ Before we get started, you should familiarize yourself with some of the key file
 
 - `service-worker.ts`: Is run on the browser. The service worker is able to prefetch content (main product image, scripts, fonts, links, etc. as defined here) from within the potential next page’s document. We call this method "deepfetching".
   This file is where deepfetching rules are defined: the selector, how many elements, which attribute to fetch, resource type, and an optional callback function for more complex fetches (as shown in the example). Here's more detailed info about [deepfetching](#deep-fetching).
-- `shoppingFlowRouteFeatures.ts`: Is run on {{ PRODUCT_NAME }}. It’s where the caching rules get implemented, as well as where the modifications to be made to the requests and/or responses to support caching of dynamic content are defined.
+- `shoppingFlowRouteHandler.ts`: Is run on {{ PRODUCT_NAME }}. It’s where the caching rules get implemented, as well as where the modifications to be made to the requests and/or responses to support caching of dynamic content are defined.
+- `cache.ts`: This is where the caching rules are defined for both {{ PRODUCT_NAME }} (edge) and the browser.
 - `routes.ts`: This is where the routes to be cached and prefetched are defined, as well as what to pass through without modification and what to serve up as static content.
 - `browser.ts`: This is the entry point for the `main.js` javascript bundle which is added to the window.
 
@@ -117,34 +118,46 @@ Next we need to configure the caching in our newly created project. To do so, ad
 ```typescript
 // routes.ts
 import {Router} from '{{ PACKAGE_NAME }}/core/router';
-import shoppingFlowRouteFeatures from './shoppingFlowRouteFeatures';
+import shoppingFlowRouteHandler from './shoppingFlowRouteHandler';
 
-export default new Router().get(
-  ['/collections/:path*', '/products/:path*', '/'],
-  shoppingFlowRouteFeatures
-);
+export default new Router()
+  .get('/', shoppingFlowRouteHandler)
+  .get('/collections/*path', shoppingFlowRouteHandler)
+  .get('/products/*path', shoppingFlowRouteHandler);
 ```
 
 ```typescript
-// shoppingFlowRouteFeatures.ts
-const features = {
-  caching: {
-    max_age: '1h',
-    service_worker_max_age: '1h',
-    bypass_client_cache: true,
-  },
-  headers: {
-    set_response_headers: {
-      'x-sw-cache-control': 'max-age=3600',
-    },
-    remove_origin_response_headers: ['set-cookie'],
-  },
-  origin: {
-    set_origin: 'origin',
-  },
+// shoppingFlowRouteHandler.ts
+import {CACHE_PAGES} from './cache';
+import {RouteHandler} from '{{ PACKAGE_NAME }}/core/router/Router';
+
+const handler: RouteHandler = async ({cache, removeResponseHeader, proxy}) => {
+  cache(CACHE_PAGES);
+  removeUpstreamResponseHeader('set-cookie'); // The presence of a set-cookie header would prevent the response from being cached, so ensure set-cookie headers are removed.
+  proxy('origin');
 };
 
 export default handler;
+```
+
+```typescript
+// cache.ts
+const ONE_HOUR = 60 * 60;
+const ONE_DAY = 24 * ONE_HOUR;
+const ONE_YEAR = 365 * ONE_DAY;
+
+/**
+ * The default cache setting for pages in the shopping flow
+ */
+export const CACHE_PAGES = {
+  edge: {
+    maxAgeSeconds: ONE_HOUR,
+  },
+  browser: {
+    maxAgeSeconds: 0,
+    serviceWorkerSeconds: ONE_HOUR,
+  },
+};
 ```
 
 Refer to the guides on [CDN-as-code](/guides/performance/cdn_as_code) and [Caching](/guides/performance/caching) for the full syntax to use in your `routes.js` file.
@@ -153,7 +166,7 @@ In addition to configuring your caching in `routes.ts` as shown above, you may n
 
 ### Understanding Caching and Prefetching {/* understanding-caching-and-prefetching */}
 
-By injecting `main.js` into your app's front-end code, your app will automatically prefetch all visible HTML links with URLs that match a route configured with `caching.max_age` and `caching.service_worker_max_age` (in essence, when you configure a route to be cached, you are also declaring it to be a candidate for prefetching as well). Links that are visible when the page first loads are fetched immediately. Additional links will be fetched when the user scrolls down the page and more links become visible.
+By injecting `main.js` into your app's front-end code, your app will automatically prefetch all visible HTML links with URLs that match a route configured with `edge.maxAgeSeconds` and `browser.serviceWorkerSeconds` (in essence, when you configure a route to be cached, you are also declaring it to be a candidate for prefetching as well). Links that are visible when the page first loads are fetched immediately. Additional links will be fetched when the user scrolls down the page and more links become visible.
 
 Prefetching can generate substantial additional network traffic. {{ PRODUCT_NAME }} automatically shields your origin from this additional traffic by only serving prefetch requests from the edge cache. If a prefetch request cannot be served from the cache, {{ PRODUCT_NAME }} will return an HTTP 412 status and the request will not be proxied to the origin. When this happens, the only effect for the user is that they will not see the speed benefit of prefetching. Therefore, the effectiveness of prefetching ramps up over time as users visit pages throughout your site. When the edge cache is cleared, either through the {{ PORTAL }} or automatically following a deployment, the speed benefit of prefetching is decreased until the cache fills up based on organic traffic.
 
@@ -195,19 +208,19 @@ After you've configured and tested your site on {{ PRODUCT_NAME }}, it's time to
 
 <Callout type="info">
 
-The third step (configuring your DNS) will be the crucial step that effectively transitions your domain to {{ PRODUCT_NAME }} and should be done last.
+  The third step (configuring your DNS) will be the crucial step that effectively transitions your domain to {{ PRODUCT_NAME }} and should be done last.
 
 </Callout>
 
 <Condition version="7">
 
-[Learn more.](/guides/basics/hostnames_and_origins)
+  [Learn more.](/guides/basics/hostnames_and_origins)
 
 </Condition>
 
 <Condition version="<7">
 
-[Learn more.](/guides/basics/domains)
+  [Learn more.](/guides/basics/domains)
 
 </Condition>
 
@@ -221,7 +234,7 @@ An introduction to prefetching is available in the [Prefetching guide](/guides/p
 
 Deep fetching is an important technique for {{ PRODUCT_NAME }} projects. By default, only HTML content is prefetched. In order to achieve truly instant page transitions, all of the assets needed to render the content that appears above the fold needs to be deep fetched. Refer to the [Deep Fetching](/guides/performance/prefetching#deep-fetching) section of the [Prefetching guide](/guides/performance/prefetching) for more details on how to configure deep fetching in your project.
 
-<!-- ### Prefetching POSTs {/* prefetching-posts */}
+### Prefetching POSTs {/* prefetching-posts */}
 
 Most assets that need to be prefetched are HTTP `GET` requests. It is also possible to prefetch `POST` requests with some additional configuration.
 
@@ -254,7 +267,7 @@ export default new Router()
     cache(postCacheConfig);
     proxy('origin');
   });
-``` -->
+```
 
 ### Prefetching based on Element Visibility {/* prefetching-based-on-element-visibility */}
 

@@ -22,7 +22,7 @@ npm i -g {{ PACKAGE_NAME }}/cli@{{ PACKAGE_VERSION }} # yarn global add {{ PACKA
 # Next, create a stub package.json:
 npm init
 # Then, add {{ PRODUCT }} to your Jekyll site:
-{{ FULL_CLI_NAME }} init
+{{ FULL_CLI_NAME }} init {{ INIT_ARG_EDGIO_VERSION }}
 ```
 
 ## Update your {{ PRODUCT }} Router {/*update-your-router*/}

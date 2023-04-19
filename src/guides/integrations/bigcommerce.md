@@ -43,7 +43,7 @@ cd site
 2. Run {{ PRODUCT }} `init` in the project directory:
 
 ```bash
-{{ FULL_CLI_NAME }} init
+{{ FULL_CLI_NAME }} init {{ INIT_ARG_EDGIO_VERSION }}
 ```
 
 ### Update the Example or Generated Project for use with BigCommerce {/*update-the-example-or-generated-project-for-use-with-bigcommerce*/}

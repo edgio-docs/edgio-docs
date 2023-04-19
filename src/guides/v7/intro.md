@@ -31,8 +31,8 @@ title: {{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} Version 7
 -   A refreshed UI for [Web Application Firewall (WAF)](/guides/security/waf). You may now apply WAF protection to all of your properties at the team level.
 -   {{ PRODUCT }} {{ PRODUCT_PLATFORM }} now supports Next, Nuxt 2, and Nuxt 3. We plan on introducing support for additional web application frameworks in the near future. <a id="cdn-as-code" />
 -   CDN-as-code has undergone significant changes. Key changes are listed below:
-    -   **{{ CONFIG_FILE }}:** Define `origins` instead of `backends`. Each origin configuration may contain various hosts. Each host identifies a hostname or IP address. Each origin configuration supports an origin shield configuration and TLS settings.
-    -   **{{ CONFIG_FILE }}:** Define the desired environments within this file.
+    -   The [{{ CONFIG_FILE }}](/guides/basics/edgio_config) now uses `origins` instead of `backends`. Each origin configuration may contain various hosts. Each host identifies a hostname or IP address. Each origin configuration supports an origin shield configuration and TLS settings.
+    -   The {{ CONFIG_FILE }} now supports environments. Define the desired environments within this file.
     -   Routes now support JSON syntax. A sample route that uses this new syntax is shown below.
 
         ```

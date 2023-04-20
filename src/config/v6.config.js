@@ -1,5 +1,6 @@
 import {default as base} from './base.config';
 
+const COMPANY_NAME = 'Edgio';
 const PORTAL = `${COMPANY_NAME} Developer console`;
 const HEADER_PREFIX = 'x-0';
 const DOMAIN_LEGACY = 'layer0.co';
@@ -39,6 +40,7 @@ ${INSTALL_CLI}
   `.trim();
 
 const config = {
+  COMPANY_NAME,
   PORTAL,
   HEADER_PREFIX,
   DOMAIN_LEGACY,

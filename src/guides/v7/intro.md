@@ -2,6 +2,12 @@
 title: {{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} Version 7
 ---
 
+<Callout type="important">
+
+  If you are an existing customer, we know that you may be excited to try out {{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} v7. However, this major version upgrade may require [significant changes to your CDN-as-code configuration](#cdn-as-code) as certain core legacy components have limited support. In the near future, we plan on introducing a migration guide to ease this transition. In the meantime, if you have questions, contact your account manager or our [sales department](https://edg.io/contact-us/) at 1 (866) 200 - 5463.
+
+</Callout>
+
 {{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} version 7 introduces:
 
 -   The capability to define your entire CDN configuration within the {{ PORTAL_LINK }}. If you prefer code to UI, you can still use our CDN-as-code approach to CDN configuration. 
@@ -23,18 +29,41 @@ title: {{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} Version 7
     ![Edge Insights](/images/v7/performance/edge-insights-example.png)
 
 -   A refreshed UI for [Web Application Firewall (WAF)](/guides/security/waf). You may now apply WAF protection to all of your properties at the team level.
--   {{ PRODUCT }} {{ PRODUCT_PLATFORM }} now supports Next, Nuxt 2, and Nuxt 3. We plan on introducing support for additional web application frameworks in the near future. <a id="routehelper" />
--   Our CDN-as-code syntax now uses JSON instead of RouteHelper, which has been deprecated in version 7. {{ PRODUCT }} provides limited backward-compatibility for RouteHelper. The following methods are currently unsupported in {{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} v7:
-    -   fallback
-    -   destination
-    -   addUpstreamResponseCookie
-    -   removeUpstreamResponseCookie
-    -   removeUpstreamResponseHeader
-    -   setUpstreamResponseHeader
-    -   updateUpstreamResponseCookie
-    -   updateUpstreamResponseHeader
+-   {{ PRODUCT }} {{ PRODUCT_PLATFORM }} now supports Next, Nuxt 2, and Nuxt 3. We plan on introducing support for additional web application frameworks in the near future. <a id="cdn-as-code" />
+-   CDN-as-code has undergone significant changes. Key changes are listed below:
+    -   The [{{ CONFIG_FILE }}](/guides/basics/edgio_config) file now uses `origins` instead of `backends`. Each origin configuration may contain various hosts. Each host identifies a hostname or IP address. Each origin configuration supports an origin shield configuration and TLS settings.
+    -   You may now set up environments within the {{ CONFIG_FILE }}. Assign one or more hostnames to each environment. A hostname identifies the domain (e.g., `www.example.com`) through which users access your site.
+    -   Routes now support JSON syntax. A sample route that uses this new syntax is shown below.
 
-    We have introduced a new method called `conditional` to Router that uses a new JSON syntax and supports conditional logic.
+        ```
+        new Router()
+          .get('/', {
+            caching: {
+              max_age: '1d' // cache for 1 day at the edge
+            }
+          })
+        ```
+    -   Version 7 provides limited support for legacy syntax. It does not support the `fallback()`, `catch()`, and `destination()` methods. It also does not provide full support for the following `ResponseWriter` methods: 
+        -   updateResponseCookie
+        -   removeResponseCookie
+        -   addUpstreamResponseCookie
+        -   removeUpstreamResponseCookie
+        -   setUpstreamResponseHeader
+        -   updateUpstreamResponseCookie
+    -   All routes that match a request are executed. In previous versions, the following methods return a response and prevent additional routes from being matched:
+        -   proxy
+        -   renderWithApp
+        -   serveStatic
+        -   dir
+        -   static
+        -   send
+        -   compute
+        -   redirect
+        -   appShell
+        -   serviceWorker
+        -   render
+    
+    -   We have introduced a new method called `conditional` to Router that uses a new JSON syntax and supports conditional logic.
 
 ## Try It Out  {/*try-it-out*/}
 

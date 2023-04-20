@@ -16,6 +16,12 @@ By default, a request identifies:
 
 Traffic splitting allows you to distribute a hostname's traffic across multiple origin configurations. It also allows you to rewrite or redirect requests to an alternate path. This flexibility allows you to tailor traffic splitting to fit your implementation. 
 
+<Callout type="info">
+
+  This article explains how to split a percentage of your traffic through the Random Integer feature. In the near future, we will introduce a streamlined workflow for defining traffic splitting within the {{ PORTAL }}. Upon the introduction of this new workflow, you may choose to update your configuration or continue using the workflow described below. 
+
+</Callout>
+
 ## Quick Start
 
 Setting up traffic spliting involves performing the following steps:

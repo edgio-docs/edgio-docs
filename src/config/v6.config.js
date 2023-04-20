@@ -7,6 +7,10 @@ const LINK_DOMAIN = `layer0-limelight.link`;
 const RUM_DOMAIN = `rum.layer0.co`;
 const PACKAGE_VERSION = '^6.0.0';
 const INIT_ARG_EDGIO_VERSION = `--edgioVersion ${PACKAGE_VERSION}`;
+const APP_URL = `https://${APP_DOMAIN}`;
+const LOGIN_URL = `${APP_URL}/?sgId=ef4d5169-93f2-4f55-aabb-dc3be4286e1f`;
+
+const PORTAL_LINK = `[${PORTAL}](${LOGIN_URL})`;
 
 const INSTALL_CLI = `## Install the ${base.PRODUCT_NAME} CLI {/*install-the-cli*/}
 
@@ -43,6 +47,9 @@ const config = {
   PACKAGE_VERSION,
   PREREQ,
   INIT_ARG_EDGIO_VERSION,
+  APP_URL,
+  LOGIN_URL,
+  PORTAL_LINK,
 };
 
 export default config;

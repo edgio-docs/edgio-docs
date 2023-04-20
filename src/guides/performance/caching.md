@@ -103,7 +103,7 @@ router.get('/some/path', {
 
 {{ PRODUCT_NAME }} provides you with a default cache key out of the box. By default, a request’s cache-key is determined by the request URI’s relative path. For example, a request to `https://example.com/some/path` will have a cache key of `/some/path`. This is sufficient for most sites, but there are some cases where you may want to customize the cache key. For example, if your site has a query parameter that affects the content of the response, you may want to include that query parameter in the cache key.
 
-To ensure that your site is resilient to <Condition version="=7">[cache poisoning attacks](/guides/security/edgejs_security#cache-poisoning)</Condition><Condition version="<=6">[cache poisoning attacks](/guides/security/security_suite#cache-poisoning)</Condition> every request header that influences the rendering of the content must be included in your custom cache key.
+To ensure that your site is resilient to [cache poisoning attacks](/guides/security/edgejs_security#cache-poisoning) every request header that influences the rendering of the content must be included in your custom cache key.
 
 #### Customizing the Cache Key {/* customizing-the-cache-key */}
 

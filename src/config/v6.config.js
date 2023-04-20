@@ -1,5 +1,6 @@
 import {default as base} from './base.config';
 
+const PORTAL = `${COMPANY_NAME} Developer console`;
 const HEADER_PREFIX = 'x-0';
 const DOMAIN_LEGACY = 'layer0.co';
 const APP_DOMAIN = `app.${DOMAIN_LEGACY}`;
@@ -38,6 +39,7 @@ ${INSTALL_CLI}
   `.trim();
 
 const config = {
+  PORTAL,
   HEADER_PREFIX,
   DOMAIN_LEGACY,
   APP_DOMAIN,

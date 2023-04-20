@@ -10,11 +10,7 @@ This guide walks you through some deploy button examples and how you can set up 
 
 [![Deploy with {{ PRODUCT }}](/button.svg)]({{ APP_URL }}/deploy?repo=https://github.com/edgio-docs/edgio-nextjs-example)
 
-An example Deploy Button using the following HTML snippet.
-
-## Snippets {/*snippets*/}
-
-Use the snippets below in your Git repository to enable users to deploy the repository directly to {{ PRODUCT }}.
+The above Deploy Button uses the following HTML code:
 
 ```markdown
 [![Deploy with {{ PRODUCT }}]({{ DOCS_URL }}/button.svg)]({{ APP_URL }}/deploy?repo=https://github.com/edgio-docs/edgio-nextjs-example)

@@ -11,7 +11,11 @@ export default [
   // sidenav updates
   ['/guides/webapp_cdn_getting_started', '/guides/getting_started'],
   ['/guides/deploy_apps', '/guides/basics/deployments'],
-  ['/guides/edgio_config', '/guides/basics/edgio_config'],
+  ['/guides/edgio_config', '/guides/performance/cdn_as_code/edgio_config'],
+  [
+    '/guides//guides/basics/edgio_config',
+    '/guides/performance/cdn_as_code/edgio_config',
+  ],
   ['/guides/environments', '/guides/basics/environments'],
   ['/guides/production', '/guides/basics/domains'],
   ['/guides/teams', '/guides/basics/collaboration'],

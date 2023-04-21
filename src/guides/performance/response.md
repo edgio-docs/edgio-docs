@@ -82,146 +82,40 @@ The response headers generated for content requested through our CDN describe th
 
 Common response headers are described below.
 
--   **Accept-Ranges:** Indicates whether a server can accept range requests.
-
-    **Default value:** bytes
-
-    <Callout type="info">
-
-      The default value indicates that our servers can accept byte-range requests.
-
-    </Callout>
-
--   **Cache-Control: max-age:** Indicates the maximum length of time that a request is considered fresh. An edge server can serve fresh content directly from cache without having to perform a revalidation with the origin server. <!--Default value: 604800 The default value indicates that the max-age for the requested content is 7 days Max-age is defined in seconds. 604800 seconds = 7 days.-->
--   **Content-Encoding:** Indicates that a compressed version of the requested content was served to the client. This response header indicates the asset's compression type (e.g., gzip, deflate, bzip2, etc.).
--   **Content-Length:** Indicates the size of the response body in octets.
--   **Content-Type:** Indicates the media type (aka content type) for the response body.
--   **Date:** Indicates the date and time (GMT) on which the edge server returned a response.
--   **Etag:** Indicates the entity tag (ETag) for the requested content. This ETag allows our edge servers to revalidate stale content. In other words, our edge servers will use ETag when checking with the origin server to see if there is a newer version of the requested content.
--   **Expires:** Indicates the date and time (GMT) at which the response will be considered stale. By default, our edge servers must revalidate requests for stale content.
--   **Last-Modified:** Indicates the date and time (GMT) at which the requested content was last updated.
--   **Server:** Provides information about the server that fulfilled the request.
-
-    -   **Origin Server:** If an origin server provided a response for a cache miss that includes the `Server` response header, then our edge servers will forward it to the client. If it is missing from the response, then the CDN will define this header as indicated below.
-    -   **CDN:** The following syntax applies for responses served from cache or when the `Server` response header is missing from the response provided by an origin server: `ECAcc (<POP>/<ID>)`
-
-        Definitions for the above terms are provided below.
-
-        -   **POP:** Indicates the POP that handled the request.
-        -   **ID:** This field is for internal use only.
-
-        **Example:** `server: ECAcc (lac/55D2)`
-
-    <a id="server-timing-response-header" />
-
--   **Server-Timing:** {{ PRODUCT }} returns this response header when the [Server-Timing Header feature](/guides/performance/rules/features#server-timing-header) has been enabled. The `Server-Timing` response header contains cache status information and information about the POP that served the response. 
-
-    **Syntax:** `server-timing: edgio_cache;desc=<CACHE STATUS CODE>,edgio_pop;desc=<POP>,edgio_country;desc=<COUNTRY>`
-
-    **Example:** `server-timing: edgio_cache;desc=TCP_HIT,edgio_pop;desc=lac,edgio_country;desc=US`
-
-    Definitions for the above terms are provided below.
-
-    -   **CACHE STATUS CODE:** Indicates the cache status code for the response served to the client.
-    -   **POP:** Indicates the POP that served the response.
-    -   **COUNTRY:** Indicates the two-letter code for the POP's country.
-
--   **Vary:** Identifies the variant that defines whether cached content can be served for future requests.
-
-    **Key information:**
-
-    -   Our network only supports a single variant called `Accept-Encoding`. This value indicates that the `Accept-Encoding` request header determines whether cached content will be served.
-    -   By default, our edge servers only return this header when the requested content was previously cached.
-    -   The `Accept-Encoding` request header identifies the type of compression requested by the client. An edge server may deliver the requested content immediately if the cached asset matches the requested compression method.
-
--   **Warning:** This response header is only returned when a stale response is served to the client. A stale response is typically served under the following conditions:
-
-    -   The [Stale While Revalidate feature](/guides/performance/rules/features#stale-while-revalidate) was applied to the request.
-    
-        **Response header value:** `110 - "Response is stale"`
-    
-    -   Revalidation failed and either of the following conditions is true:
-   
-        -   The origin server returned a `5xx` response and the [Stale on Error feature](/guides/performance/rules/features#stale-on-error) was applied to the request.
-        -   The origin server is unresponsive and the stale window, as defined by the [Revalidate After Origin Unavailable feature](/guides/performance/rules/features#revalidate-after-origin-unavailable), is active.
-    
-        **Response header value:** `111 - "Revalidation Failed", 110 - "Response is stale"`
+| Response Header   | Description  |
+|---|---|
+| Accept-Ranges | Indicates whether a server can accept range requests. <br />**Default value:** bytes <Callout type="info">The default value indicates that our servers can accept byte-range requests.</Callout>|
+| Cache-Control: max-age | Indicates the maximum length of time that a request is considered fresh. An edge server can serve fresh content directly from cache without having to perform a revalidation with the origin server. <!--Default value: 604800 The default value indicates that the max-age for the requested content is 7 days Max-age is defined in seconds. 604800 seconds = 7 days.--> |
+| Content-Encoding | Indicates that a compressed version of the requested content was served to the client. This response header indicates the asset's compression type (e.g., gzip, deflate, bzip2, etc.). |
+| Content-Length | Indicates the size of the response body in octets.|
+| Content-Type | Indicates the media type (aka content type) for the response body. |
+| Date | Indicates the date and time (GMT) on which the edge server returned a response. |
+| Etag | Indicates the entity tag (ETag) for the requested content. This ETag allows our edge servers to revalidate stale content. In other words, our edge servers will use ETag when checking with the origin server to see if there is a newer version of the requested content.|
+| Expires | Indicates the date and time (GMT) at which the response will be considered stale. By default, our edge servers must revalidate requests for stale content. |
+| Last-Modified | Indicates the date and time (GMT) at which the requested content was last updated. |
+| Server | Provides information about the server that fulfilled the request. <ul><li>**Origin Server:** If an origin server provided a response for a cache miss that includes the `Server` response header, then our edge servers will forward it to the client. If it is missing from the response, then the CDN will define this header as indicated below.</li><li>**CDN:** The following syntax applies for responses served from cache or when the `Server` response header is missing from the response provided by an origin server: `ECAcc (<POP>/<ID>)` <br />Definitions for the above terms are provided below. <ul><li>**POP:** Indicates the POP that handled the request.</li><li>**ID:** This field is for internal use only.</li></ul> **Example:** `server: ECAcc (lac/55D2)`</li></ul> <a id="server-timing-response-header" /> |
+| Server-Timing | {{ PRODUCT }} returns this response header when the [Server-Timing Header feature](/guides/performance/rules/features#server-timing-header) has been enabled. The `Server-Timing` response header contains cache status information and information about the POP that served the response. <br />**Syntax:** `server-timing: edgio_cache;desc=<CACHE STATUS CODE>,edgio_pop;desc=<POP>,edgio_country;desc=<COUNTRY>` <br />**Example:** `server-timing: edgio_cache;desc=TCP_HIT,edgio_pop;desc=lac,edgio_country;desc=US` <br />Definitions for the above terms are provided below. <ul><li>CACHE STATUS CODE:** Indicates the cache status code for the response served to the client.</li><li>**POP:** Indicates the POP that served the response.</li><li>**COUNTRY:** Indicates the two-letter code for the POP's country.</li></ul> | 
+| Vary | Identifies the variant that defines whether cached content can be served for future requests. <br />**Key information:** <ul><li>Our network only supports a single variant called `Accept-Encoding`. This value indicates that the `Accept-Encoding` request header determines whether cached content will be served.</li><li>By default, our edge servers only return this header when the requested content was previously cached.</li><li>The `Accept-Encoding` request header identifies the type of compression requested by the client. An edge server may deliver the requested content immediately if the cached asset matches the requested compression method.</li></ul> |
+| Warning:** This response header is only returned when a stale response is served to the client. A stale response is typically served under the following conditions: <ul><li>The [Stale While Revalidate feature](/guides/performance/rules/features#stale-while-revalidate) was applied to the request. <br />**Response header value:** `110 - "Response is stale"`</li><li>Revalidation failed and either of the following conditions is true:<ul><li>The origin server returned a `5xx` response and the [Stale on Error feature](/guides/performance/rules/features#stale-on-error) was applied to the request.</li><li>The origin server is unresponsive and the stale window, as defined by the [Revalidate After Origin Unavailable feature](/guides/performance/rules/features#revalidate-after-origin-unavailable), is active.</li></ul> **Response header value:** `111 - "Revalidation Failed", 110 - "Response is stale"`</li></ul> |
 
 ### {{ PRODUCT }}-Specific Headers {/*-specific-headers*/}
 
 {{ PRODUCT }}-specific headers are described below.
 
--   **x-cache: HIT:** Indicates that a cached version of the requested content was served directly to the client by an edge server.
-
-    **Example:** `x-cache: HIT`
-
--  **x-ec-debug:** Contains the requested debug cache metadata when the [Debug Header feature](/guides/performance/rules/features#debug-header) has been enabled. [Learn more.](#requesting-debug-cache-information)
-
--   **{{ HEADER_PREFIX }}-caching-status:** Indicates cache status information. If the response was not cached or served from cache, then it will report the reason why it was not cached.
-
-    **Example:** The following sample response header indicates that caching was explictly disabled for this request: 
-
-    `{{ HEADER_PREFIX }}-caching-status: disabled`
-
-    [Learn more.](/guides/performance/caching#why-is-my-response-not-being-cached)
-
-    <a id="-mr" />
-
--   **{{ HEADER_PREFIX }}-mr:** Indicates one or more matched route(s). 
-
-    **Syntax:** `{{ HEADER_PREFIX }}-mr: <ENVIRONMENT #>:<RULE #>[;<ENVIRONMENT #>:<RULE #>;<ENVIRONMENT #>:<RULE #>]`
-
-    **Example:** `{{ HEADER_PREFIX }}-mr: 16:0;16:1;`
-
-    Definitions for the above terms are provided below.
-
-        -   **ENVIRONMENT #:** Indicates the environment's version number.
-        -   **RULE #:** Indicates the index number of the rule that was applied to the request. 
-
-        <Callout type="tip">
-
-          Click the **Show Rule Numbers** link at the top of the **Rules** page to display a number next to each rule. 
-
-        </Callout>
-
-        <Callout type="info">
-
-          **CDN-as-Code:** Configurations deployed through the {{ PRODUCT }} CLI are converted into rules. You may view these rules through the **Rules** page.
-
-        </Callout>
-
--   **{{ HEADER_PREFIX }}-p:** Returns `1` when the client's request includes an `edgio_prefetch` query string parameter. This parameter indicates that the client is requesting [Predictive Prefetching](/guides/performance/prefetching).
-
-    **Example:** `{{ HEADER_PREFIX }}-p: 1`
-
--   [{{ HEADER_PREFIX }}-t](#-t-response-header): Contains time measurements for each {{ PRODUCT }} component through which a request was routed. It also provides cache status information for edge and global POPs.
--   **{{ HEADER_PREFIX }}-version:** Indicates basic information for your current deployment.
-
-    **Syntax:** `{{ HEADER_PREFIX }}-version: <DEPLOYMENT> <ENVIRONMENT VERSION> <INTERNAL> NA <DEPLOYMENT TIMESTAMP> <ENVIRONMENT ID>`
-
-    **Example:** `{{ HEADER_PREFIX }}-version: 16 16 19 NA 2023-04-02T22:52:30Z ed922fee-185c-427d-8949-83d135108aab`
-
-    Definitions for the above terms are provided below.
-
-    -   **DEPLOYMENT:** Identifies a deployment by its version number.
-    -   **ENVIRONMENT VERSION:** Indicates the environment's version number. 
-    -   **INTERNAL:** Reserved for future use.
-    -   **DEPLOYMENT TIMESTAMP:** Indicates the date and time (UTC; 24-hour clock) at which your site was deployed.
-
-        **Syntax:** `YYYY-MM-DDThh:mm:ss.msZ`
-
-    -   **ENVIRONMENT ID:** Identifies an environment by its system-defined ID.
-
--   [{{ HEADER_PREFIX }}-status](#-status-response-header): Contains a comma-delimited list of HTTP status codes for each POP component that processed the request.
--   **{{ HEADER_PREFIX }}-components:** Indicates the version for each POP component that processed the request and the environment ID. This response header is primarily meant for internal use when troubleshooting issues.
-
-    **Example:** `{{ HEADER_PREFIX }}-components: eh=0.1.6,e=atl,ec=1.1.0,ed=1.0.1,gh=0.1.6,g=hef,gd=1.0.1,p=1.21.10,w=3.11.0,wi=e8ce8753-163d-4be9-a39e-40454ace5146,b=serverless`
-
--   **{{ HEADER_PREFIX }}-hit-request-id:** For responses served from cache, this header indicates the unique ID of the request that was cached on our CDN. 
--   **{{ HEADER_PREFIX }}-request-id:** Indicates the request's unique ID.
--   **{{ HEADER_PREFIX }}-surrogate-key:** Contains a space-delimited list of surrogate keys (cache tags). <!-- surrogate keys can be injected when needed into your backend responses -->
-
-    [Learn more.](/guides/performance/purging#surrogate-keys-cache-tags)
+| Response Header   | Description  |
+|---|---|
+| x-cache: HIT | Indicates that a cached version of the requested content was served directly to the client by an edge server. <br />**Example:** `x-cache: HIT` |
+| x-ec-debug | Contains the requested debug cache metadata when the [Debug Header feature](/guides/performance/rules/features#debug-header) has been enabled. [Learn more.](#requesting-debug-cache-information) |
+| {{ HEADER_PREFIX }}-caching-status | Indicates cache status information. If the response was not cached or served from cache, then it will report the reason why it was not cached. <br />**Example:** The following sample response header indicates that caching was explictly disabled for this request: <br />`{{ HEADER_PREFIX }}-caching-status: disabled` <br />[Learn more.](/guides/performance/caching#why-is-my-response-not-being-cached) <a id="-mr" /> |
+| {{ HEADER_PREFIX }}-components | Indicates the version for each POP component that processed the request and the environment ID. This response header is primarily meant for internal use when troubleshooting issues. <br />**Example:** `{{ HEADER_PREFIX }}-components: eh=0.1.6,e=atl,ec=1.1.0,ed=1.0.1,gh=0.1.6,g=hef,gd=1.0.1,p=1.21.10,w=3.11.0,wi=e8ce8753-163d-4be9-a39e-40454ace5146,b=serverless` |
+| {{ HEADER_PREFIX }}-hit-request-id | For responses served from cache, this header indicates the unique ID of the request that was cached on our CDN. |
+| {{ HEADER_PREFIX }}-mr | Indicates one or more matched route(s). <br />**Syntax:** `{{ HEADER_PREFIX }}-mr: <ENVIRONMENT #>:<RULE #>[;<ENVIRONMENT #>:<RULE #>;<ENVIRONMENT #>:<RULE #>]` <br />**Example:** `{{ HEADER_PREFIX }}-mr: 16:0;16:1;` <br />Definitions for the above terms are provided below. <br /><ul><li>**ENVIRONMENT #:** Indicates the environment's version number.</li><li>**RULE #:** Indicates the index number of the rule that was applied to the request. </li></ul> <Callout type="tip">Click the **Show Rule Numbers** link at the top of the **Rules** page to display a number next to each rule. </Callout> <Callout type="info">**CDN-as-Code:** Configurations deployed through the {{ PRODUCT }} CLI are converted into rules. You may view these rules through the **Rules** page.</Callout> |
+| {{ HEADER_PREFIX }}-request-id | Indicates the request's unique ID.| 
+| {{ HEADER_PREFIX }}-p | Returns `1` when the client's request includes an `edgio_prefetch` query string parameter. This parameter indicates that the client is requesting [Predictive Prefetching](/guides/performance/prefetching). <br /> **Example:** `{{ HEADER_PREFIX }}-p: 1` |
+| [{{ HEADER_PREFIX }}-status](#-status-response-header) | Contains a comma-delimited list of HTTP status codes for each POP component that processed the request. |
+| {{ HEADER_PREFIX }}-surrogate-key | Contains a space-delimited list of surrogate keys (cache tags). <!-- surrogate keys can be injected when needed into your backend responses --> <br />[Learn more.](/guides/performance/purging#surrogate-keys-cache-tags)|
+| [{{ HEADER_PREFIX }}-t](#-t-response-header) | Contains time measurements for each {{ PRODUCT }} component through which a request was routed. It also provides cache status information for edge and global POPs. |
+| {{ HEADER_PREFIX }}-version: | Indicates basic information for your current deployment. <br /> **Syntax:** `{{ HEADER_PREFIX }}-version: <DEPLOYMENT> <ENVIRONMENT VERSION> <INTERNAL> NA <DEPLOYMENT TIMESTAMP> <ENVIRONMENT ID>` <br /> **Example:** `{{ HEADER_PREFIX }}-version: 16 16 19 NA 2023-04-02T22:52:30Z ed922fee-185c-427d-8949-83d135108aab` <br />Definitions for the above terms are provided below. <ul><li>**DEPLOYMENT:** Identifies a deployment by its version number.</li><li>**ENVIRONMENT VERSION:** Indicates the environment's version number. </li><li>**INTERNAL:** Reserved for future use.</li><li>**DEPLOYMENT TIMESTAMP:** Indicates the date and time (UTC; 24-hour clock) at which your site was deployed. <br />**Syntax:** `YYYY-MM-DDThh:mm:ss.msZ`</li><li>**ENVIRONMENT ID:** Identifies an environment by its system-defined ID. |
 
 ### Requesting Debug Cache Information {/*requesting-debug-cache-information*/}
 

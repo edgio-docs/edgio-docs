@@ -89,7 +89,7 @@ The above configuration shows an example of how you can match all requests to th
   A backend identifies a domain or IP address to which {{ PRODUCT }} may proxy requests. In this case, the `origin` backend was defined when you initialized this property using the `edgio init` command.
 <br />
 
-  Add, modify, and remove backends by editing the [{{ CONFIG_FILE }} file](/guides/basics/edgio_config).
+  Add, modify, and remove backends by editing the [{{ CONFIG_FILE }} file](/guides/performance/cdn_as_code/edgio_config).
 
 </Callout> -->
 

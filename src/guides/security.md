@@ -44,4 +44,4 @@ The following diagram highlights how traffic is screened before it is
 processed for delivery. The distributed nature of our worldwide network
 provides an additional layer of protection to origin servers. 
 
-![](/images/security/overview.png)
+![](/images/v7/security/overview.png)

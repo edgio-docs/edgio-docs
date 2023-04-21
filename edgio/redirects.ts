@@ -13,7 +13,7 @@ export default [
   ['/guides/deploy_apps', '/guides/basics/deployments'],
   ['/guides/edgio_config', '/guides/performance/cdn_as_code/edgio_config'],
   [
-    '/guides//guides/basics/edgio_config',
+    '/guides/basics/edgio_config',
     '/guides/performance/cdn_as_code/edgio_config',
   ],
   ['/guides/environments', '/guides/basics/environments'],

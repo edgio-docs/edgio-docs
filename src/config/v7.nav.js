@@ -78,12 +78,16 @@ const nav = {
               path: 'performance/cdn_as_code/getting_started',
             },
             {
-              title: 'edgio.config.js Configuration',
-              path: 'performance/cdn_as_code/edgio_config',
-            },
-            {
               title: 'Common Routing Patterns',
               path: 'performance/cdn_as_code/common_routing_patterns',
+            },
+            {
+              title: '',
+              path: '',
+            },
+            {
+              title: 'edgio.config.js Configuration',
+              path: 'performance/cdn_as_code/edgio_config',
             },
           ],
         },

@@ -26,7 +26,7 @@ The `origins` config is an array of objects whose properties are:
 | `tls_verify.sni_hint_and_strict_san_check` | String   | SNI hint and enforce origin SAN/CN checking.                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
 | `tls_verify.allow_self_signed_certs`       | Boolean  | Whether to allow self-signed certificates. Defaults to `false`.                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
 | `tls_verify.pinned_certs`                  | String[] | An array of SHA256 hashes of pinned certificates.                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
-
+<!--
 ## environments {/* environments */}
 
 The `environments` config allows you to define different deployment environments and hostnames for your app. This is useful for deploying to staging or production environments.
@@ -41,7 +41,9 @@ The `environments` config is an object whose keys define the name of the environ
 | `<ENV_NAME>.hostnames[].default_origin_name` | String   | Optional default origin this hostname should use                                 |
 | `<ENV_NAME>.hostnames[].tls`                 | Object   | Optional [TLS configuration](/docs/api/core/interfaces/types.Hostnames.html#tls) |
 
-<!--| `<ENV_NAME>.hostnames[].report_code` | Number | (unknow use) | -->
+-->
+
+<!--| `<ENV_NAME>.hostnames[].report_code` | Number | (unknown use) | -->
 
 ## connector {/* connector */}
 

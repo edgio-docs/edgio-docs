@@ -47,7 +47,7 @@ Tracking Core Web Vitals on {{ PRODUCT_NAME }} requires adding the `{{ PACKAGE_N
 **To view {{ PACKAGE_NAME }}/rum installation instructions**
 
 1.  Load the **Core Web Vitals** page.
-    1.  {{ ENV_NAV }} **Core Web Vitals**.
+    {{ ENV_NAV }} **Core Web Vitals**.
 
 2.  Click on the tab for the desired installation method. 
 

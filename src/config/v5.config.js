@@ -15,7 +15,6 @@ const LOGIN_URL = `${APP_URL}/?sgId=ef4d5169-93f2-4f55-aabb-dc3be4286e1f`;
 
 const PORTAL_LINK = `[${PORTAL}](${LOGIN_URL})`;
 
-
 const SYSTEM_REQUIREMENTS = `## System Requirements {/*system-requirements*/}
 
 - [Install Node.js 14.19.0](/guides/install_nodejs)`;

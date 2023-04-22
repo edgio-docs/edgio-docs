@@ -4,18 +4,18 @@ title: {{ CONFIG_FILE }} Configuration
 
 The `{{ CONFIG_FILE }}` config file in your app's root directory contains configuration options that control how your app runs on {{ PRODUCT_NAME }}. This file is automatically created when you run `{{ FULL_CLI_NAME }} init`. It should export an object with the following properties:
 
-## origins {/*origins*/}
+## origins {/* origins */}
 
 The `origins` config is an array of objects whose properties are:
 
 | Property                                   | Type     | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
-|--------------------------------------------|----------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| ------------------------------------------ | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `name`                                     | String   | (Required) The origin name refered within the router.                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
 | `override_host_header`                     | String   | The host header sent from the browser when connecting to the origin. This is useful when you want to connect to a backend that is configured to serve content from a different domain than the one that the browser is connecting to. For example, if you want to connect to a backend that is configured to serve content from `example.com` but the browser is connecting to `www.example.com`, you can set `override_host_header` to `example.com` to ensure that the backend receives the correct host header. |
-| `hosts`                                    | Object[] | An array of objects that define how {{ PRODUCT }} will proxy requests for this origin configuration. requests.                                                                                                                                                                                                                                                                                                                                                                                                                                                |
-| `hosts.location`                           | Object   | Contains properties that define the location to which {{ PRODUCT }} will proxy requests for this origin configuration.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
-| `hosts.location.hostname`                  | String   | (Required) The domain name or IP address of the origin server                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
-| `hosts.location.port`                      | Number   | The port on which the backend receives https requests. Defaults to 443 but you can specify any other acceptable port value. Note that specifying `80` has no special meaning as {{ PRODUCT_NAME }} will never send secured requests to unsecured backends. To [enable HTTP traffic](/guides/security/edgejs_security#ssl) on a backend you must have a route matching `http` protocol in your router and serve content from that route. All HTTP traffic assumes port `80` on the backend.                          |
+| `hosts`                                    | Object[] | An array of objects that define how {{ PRODUCT }} will proxy requests for this origin configuration. requests.                                                                                                                                                                                                                                                                                                                                                                                                     |
+| `hosts[].location`                         | Object   | Contains properties that define the location to which {{ PRODUCT }} will proxy requests for this origin configuration.                                                                                                                                                                                                                                                                                                                                                                                             |
+| `hosts[].location.hostname`                | String   | (Required) The domain name or IP address of the origin server                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
+| `hosts[].location.port`                    | Number   | The port on which the backend receives https requests. Defaults to 443 but you can specify any other acceptable port value. Note that specifying `80` has no special meaning as {{ PRODUCT_NAME }} will never send secured requests to unsecured backends. To [enable HTTP traffic](/guides/security/edgejs_security#ssl) on a backend you must have a route matching `http` protocol in your router and serve content from that route. All HTTP traffic assumes port `80` on the backend.                         |
 | `shields`                                  | Object   | Defines how {{ PRODUCT }} will shield your origin configuration.                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
 | `shields.apac`                             | String   | The POP code for the Asia Pacific shield.                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
 | `shields.emea`                             | String   | The POP code for the Europe, Middle East, and Africa shield.                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
@@ -26,8 +26,26 @@ The `origins` config is an array of objects whose properties are:
 | `tls_verify.sni_hint_and_strict_san_check` | String   | SNI hint and enforce origin SAN/CN checking.                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
 | `tls_verify.allow_self_signed_certs`       | Boolean  | Whether to allow self-signed certificates. Defaults to `false`.                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
 | `tls_verify.pinned_certs`                  | String[] | An array of SHA256 hashes of pinned certificates.                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+<!--
+## environments {/* environments */}
 
-## connector {/*connector*/}
+The `environments` config allows you to define different deployment environments and hostnames for your app. This is useful for deploying to staging or production environments.
+
+The `environments` config is an object whose keys define the name of the environment and whose values are objects with the following properties:
+
+| Property                                     | Type     | Description                                                                      |
+| -------------------------------------------- | -------- | -------------------------------------------------------------------------------- |
+| `<ENV_NAME>`                                 | String   | (Required) The name of the environment.                                          |
+| `<ENV_NAME>.hostnames`                       | Object[] | A list of hostnames specific to the environment.                                 |
+| `<ENV_NAME>.hostnames[].hostname`            | String   | (Required) The hostname for the environment.                                     |
+| `<ENV_NAME>.hostnames[].default_origin_name` | String   | Optional default origin this hostname should use                                 |
+| `<ENV_NAME>.hostnames[].tls`                 | Object   | Optional [TLS configuration](/docs/api/core/interfaces/types.Hostnames.html#tls) |
+
+-->
+
+<!--| `<ENV_NAME>.hostnames[].report_code` | Number | (unknown use) | -->
+
+## connector {/* connector */}
 
 The name of the connector package corresponding to the framework your app uses, or the path to a directory that implements the [connector interface](/guides/sites_frameworks/connectors).
 
@@ -46,37 +64,37 @@ To implement a connector directly within your project:
 ```js
 // this directory should have build.js, prod.js, and dev.js
 module.exports = {
-  connector: './path/to/connector/dir'
+  connector: './path/to/connector/dir',
 };
 ```
 
-## routes {/*routes*/}
+## routes {/* routes */}
 
 The path to your routes file relative to the root of your app. Defaults to `routes.js`.
 
-## staticAssets {/*staticassets*/}
+## staticAssets {/* staticassets */}
 
 The `staticAssets` config is an array of objects determining how {{ PRODUCT_NAME }} handles static assets in your app configured with the following properties:
 
 | Property    | Type     | Description                                                                                          |
-|-------------|----------|------------------------------------------------------------------------------------------------------|
+| ----------- | -------- | ---------------------------------------------------------------------------------------------------- |
 | `permanent` | Boolean  | Set to `true` if the file has a hash in path so that it can be considered unique across deployments. |
 | `glob`      | String[] | A list of glob patterns that match or omit files to be included.                                     |
 
-## serverless {/*serverless*/}
+## serverless {/* serverless */}
 
 The `serverless` config Object includes the following properties:
 
 | Property             | Type     | Description                                                                                                                                           |
-|----------------------|----------|-------------------------------------------------------------------------------------------------------------------------------------------------------|
+| -------------------- | -------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `includeNodeModules` | Boolean  | If `true`, the packages listed in the `dependencies` property of `package.json` will be included in the build that is deployed to {{ PRODUCT_NAME }}. |
 | `include`            | String[] | A list of glob patterns that match or omit files to be included in the serverless bundle. Example: `lang/**/*`                                        |
 
-## prerenderConcurrency {/*prerenderconcurrency*/}
+## prerenderConcurrency {/* prerenderconcurrency */}
 
 The maximum number of URLs that will be concurrently prerendered during deployment when [static prerendering](/guides/performance/static_prerendering) is enabled. Defaults to 200, which is the maximum allowed value.
 
-## sources {/*sources*/}
+## sources {/* sources */}
 
 A list of glob patterns identifying which source files should be uploaded when running `{{ FULL_CLI_NAME }} deploy --includeSources`. This option is primary used to share source code with {{ PRODUCT_NAME }} support personnel for the purpose of debugging. If omitted, `{{ FULL_CLI_NAME }} deploy --includeSources` will result in all files which are not gitignored being uploaded to {{ PRODUCT_NAME }}.
 
@@ -86,12 +104,14 @@ Example:
 sources: [
   '**/*', // include all files
   '!(**/secrets/**/*)', // except everything in the secrets directory
-]
+];
 ```
 
 <a id="example-config"></a>
 
-## Example {{ CONFIG_FILE }} {/*example*/}
+## Example {{ CONFIG_FILE }} {/* example */}
+
+See the full API specification for the {{ CONFIG_FILE }} file [here](/docs/api/core/interfaces/config.default.html).
 
 ```js
 // This file was automatically added by edgio init.
@@ -128,6 +148,29 @@ module.exports = {
     },
   ],
 
+  // environments: {
+  //   production: {
+  //     hostnames: [
+  //       {
+  //         hostname: "www.mysite.com",
+  //       },
+  //       {
+  //         hostname: "eu.mysite.com",
+  //       },
+  //     ],
+  //   },
+  //   staging: {
+  //     hostnames: [
+  //       {
+  //         hostname: "staging.www.mysite.com",
+  //       },
+  //       {
+  //         hostname: "staging.eu.mysite.com",
+  //       },
+  //     ],
+  //   },
+  // },
+
   // Options for hosting serverless functions on Edgio
   // serverless: {
   //   // Set to true to include all packages listed in the dependencies property of package.json when deploying to Edgio.
@@ -151,5 +194,5 @@ module.exports = {
   //   '**/*', // include all files
   //   '!(**/secrets/**/*)', // except everything in the secrets directory
   // ],
-}
+};
 ```

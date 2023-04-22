@@ -2,9 +2,7 @@
 title: Serverless Compute
 ---
 
-{{ROUTEHELPER}}
-
-{{ PRODUCT }} makes it easy to develop, test, and deploy serverless functions without a JavaScript framework. Simply declare your routes and use the `compute`, or `proxy` with the `transformResponse` option, methods to compute responses based on your own custom logic.
+{{ PRODUCT }} makes it easy to develop, test, and deploy serverless functions without a JavaScript framework. Simply declare your routes and use the `compute` function or `proxy` with the `transformResponse` option to compute responses based on your own custom logic.
 
 ## Availability {/* availability */}
 
@@ -39,17 +37,15 @@ npx {{ PACKAGE_NAME }}/cli@{{ PACKAGE_VERSION }} init \
   {{ INIT_ARG_EDGIO_VERSION }}
 ```
 
-<!--
 Or you can clone this example repo: [layer0-serverless-example](https://github.com/edgio-docs/edgio-serverless-example), which has some more complex examples of how to use serverless functions:
 
 ```bash
 npx degit https://github.com/edgio-docs/edgio-serverless-example my-serverless-functions
 ```
--->
 
 ## Responding to requests {/* responding-to-requests */}
 
-Use the [compute](/docs/api/core/classes/router.RouteHelper.html#compute) method to generate a synthetic response:
+Use the [compute](/docs/api/core/classes/_router_responsewriter_.responsewriter.html#compute) function to generate a synthetic response:
 
 ```js
 // routes.js
@@ -100,41 +96,29 @@ export default new Router().get('/some-route/:someParam', ({compute}) => {
 });
 ```
 
-See [RouteHelper](/docs/api/core/classes/router.RouteHelper.html) for all of the methods that you can call when responding to a request.
+See [ResponseWriter](/docs/api/core/classes/_router_responsewriter_.responsewriter.html) for all of the functions that you can call when responding to a request.
 
 ## Modifying a response from the origin {/* modifying-a-response-from-the-origin */}
 
-Serverless functions can be used to modify responses from the origin by using the `proxy` method with the `transformResponse` option. First, configure an origin in the `{{ CONFIG_FILE }}` located in the root of your project:
+Serverless functions can be used to modify responses from the origin by using the `proxy` function with the `transformResponse` option. First, configure an origin by adding a `backend` to `{{ CONFIG_FILE }}` in the root of your project:
 
 ```js
 // {{ CONFIG_FILE }}
 module.exports = {
-  // ... other config options
+  backends: {
+    origin: {
+      // The domain name or IP address for the origin server
+      domainOrIp: 'origin.example.com',
 
-  origins: [
-    {
-      // The name of the backend origin
-      name: 'origin',
-
-      // Uncomment the following to override the host header sent from the browser when connecting to the origin
-      // override_host_header: 'example.com',
-
-      // The list of origin hosts to which to connect
-      hosts: [
-        {
-          // The domain name or IP address of the origin server
-          location: 'example.com',
-        },
-      ],
-
-      // Uncomment the following to configure a shield
-      // shields: { us_east: 'DCD' },
+      // Optionally set a host header for {{ PRODUCT }} to send when connecting to the origin.
+      // If omitted, the host header will be forwarded from the browser.
+      hostHeader: 'origin.example.com',
     },
-  ],
+  },
 };
 ```
 
-See [`origins`](/guides/performance/cdn_as_code/edgio_config#origins) for more configuration options.
+See [backends](/guides/edgio_config#backends) for more configuration options.
 
 To forward a request to the origin and modify the response using a serverless function:
 
@@ -220,7 +204,7 @@ export default new Router().get('/', ({cache, compute}) => {
 });
 ```
 
-See the [cache](/docs/api/core/classes/router.RouteHelper.html#cache) method for more options.
+See the [cache](/docs/api/core/classes/_router_responsewriter_.responsewriter.html#cache) function for more options.
 
 ## Running your project locally {/* running-your-project-locally */}
 

@@ -292,9 +292,8 @@ A popular use case is to fallback to a legacy site for any route that your Next.
 import {nextRoutes} from '{{ PACKAGE_NAME }}/next';
 import {Router} from '{{ PACKAGE_NAME }}/core/router';
 
-export default new Router()
-  .use(nextRoutes)
-  match('/:path*', ({proxy}) => proxy('legacy'));
+export default new Router().use(nextRoutes);
+match('/:path*', ({proxy}) => proxy('legacy'));
 ```
 
 To configure the legacy backend, use {{ CONFIG_FILE }}:
@@ -410,7 +409,9 @@ module.exports = with{{ PRODUCT }}(
 )
 ```
 
-Finally, you will need to update your `{{ CONFIG_FILE }}` to [includeFiles](/guides/edgio_config#includefiles) where the locale files are stored. Example using the default of `/public`:
+<Condition version="<7">
+
+Finally, you will need to update your `{{ CONFIG_FILE }}` to [includeFiles](/guides/basics/edgio_config#includefiles) where the locale files are stored. Example using the default of `/public`:
 
 ```js filename='{{ CONFIG_FILE }}' ins="3-5"
 module.exports = {
@@ -420,6 +421,25 @@ module.exports = {
   },
 };
 ```
+
+</Condition>
+
+<Condition version="7">
+
+Finally, you will need to update your `{{ CONFIG_FILE }}` to [includeFiles](/guides/performance/cdn_as_code/edgio_config#serverless) where the locale files are stored. Example using the default of `/public`:
+
+```js filename='{{ CONFIG_FILE }}' ins="3-5"
+module.exports = {
+  connector: '{{ PACKAGE_NAME }}/next',
+  serverless: {
+    includeFiles: {
+      public: true,
+    },
+  },
+};
+```
+
+</Condition>
 
 A working example app can be found [here](https://github.com/edgio-docs/edgio-next-i18n-example).
 

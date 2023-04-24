@@ -13,7 +13,7 @@ const SKIP_LABEL = 'skip-notes';
 const PR_RE = /\(#(\d+)\)/;
 
 const octokit = new Octokit({
-  auth: process.env.GITHUB_API_TOKEN,
+  auth: process.env.GH_API_TOKEN,
 });
 
 const octokitDefaults = {

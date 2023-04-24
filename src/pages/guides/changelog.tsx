@@ -1,7 +1,4 @@
-import {join} from 'path';
-
 import {Octokit} from '@octokit/core';
-import globby from 'globby';
 import _get from 'lodash/get';
 import styled from 'styled-components';
 

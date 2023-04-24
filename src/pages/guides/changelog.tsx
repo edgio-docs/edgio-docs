@@ -1,5 +1,6 @@
 import {Octokit} from '@octokit/core';
 import _get from 'lodash/get';
+import {GetStaticProps, InferGetStaticPropsType} from 'next';
 import styled from 'styled-components';
 
 import {PRODUCT} from '../../../constants';
@@ -8,6 +9,10 @@ import {markdownToHtml} from '../../../plugins/markdownToHtml';
 import {MarkdownPage} from 'components/Layout/MarkdownPage';
 import {Page} from 'components/Layout/Page';
 import JSONRoutes from 'utils/jsonRoutes';
+interface ChangelogProps {
+  version: string;
+  content: string;
+}
 
 const SKIP_LABEL = 'skip-notes';
 const PR_RE = /\(#(\d+)\)/;
@@ -67,9 +72,7 @@ function ChangelogPage({content, version}: {content: string; version: string}) {
   );
 }
 
-export async function getChangelogByVersion(
-  version = `v${process.env.NEXT_PUBLIC_LATEST_VERSION}` as string
-) {
+async function getChangelogByVersion(version: string) {
   /**
    * Checks if the supplied pull request ID contains the skip label
    * @param {String} pullId
@@ -164,16 +167,20 @@ export async function getChangelogByVersion(
  * Gets the changelog for a specific version
  * @param {String} version The version to get the changelog for, specified as `vX`
  */
-export async function getStaticProps() {
+export const getStaticProps: GetStaticProps<
+  ChangelogProps,
+  {version?: string}
+> = async ({params}) => {
   const latestVersion = process.env.NEXT_PUBLIC_LATEST_VERSION as string; // defined in next.config.js
-  const version = `v${latestVersion}`;
+  const version = params?.version ?? `v${latestVersion}`;
 
   return {
     props: {
       content: await getChangelogByVersion(version),
       version,
     },
+    revalidate: 60 * 60 * 24, // 1 day
   };
-}
+};
 
 export default ChangelogPage;

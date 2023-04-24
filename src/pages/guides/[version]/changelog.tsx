@@ -2,7 +2,7 @@ import {join} from 'path';
 
 import globby from 'globby';
 
-import ChangelogPage, {getChangelogByVersion} from '../changelog';
+import ChangelogPage, {getStaticProps} from '../changelog';
 
 export const getStaticPaths = async () => {
   // determine available versions from config files
@@ -26,19 +26,9 @@ export const getStaticPaths = async () => {
         version: `v${version}`,
       },
     })),
-    fallback: false,
+    fallback: 'blocking',
   };
 };
 
-export async function getStaticProps({params}: {params: any}) {
-  const {version}: {version: string} = params;
-
-  return {
-    props: {
-      content: await getChangelogByVersion(version),
-      version,
-    },
-  };
-}
-
 export default ChangelogPage;
+export {getStaticProps};

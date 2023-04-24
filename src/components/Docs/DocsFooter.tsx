@@ -183,7 +183,6 @@ const pryFooterLinks = {
     {
       title: 'Changelog',
       href: '/guides/changelog',
-      versioned: false,
     },
   ],
   community: [

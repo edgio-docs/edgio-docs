@@ -1,4 +1,7 @@
+import {join} from 'path';
+
 import {Octokit} from '@octokit/core';
+import globby from 'globby';
 import _get from 'lodash/get';
 import styled from 'styled-components';
 
@@ -57,17 +60,19 @@ const StyledChangelogContent = styled.div`
   }
 `;
 
-function ChangelogPage({content}: {content: string}) {
+function ChangelogPage({content, version}: {content: string; version: string}) {
   return (
     <Page routeTree={JSONRoutes}>
-      <MarkdownPage meta={{title: 'Changelog'}}>
+      <MarkdownPage meta={{title: `EdgeJS ${version} API Changelog`}}>
         <StyledChangelogContent dangerouslySetInnerHTML={{__html: content}} />
       </MarkdownPage>
     </Page>
   );
 }
 
-export async function getServerSideProps() {
+export async function getChangelogByVersion(
+  version = `v${process.env.NEXT_PUBLIC_LATEST_VERSION}` as string
+) {
   /**
    * Checks if the supplied pull request ID contains the skip label
    * @param {String} pullId
@@ -154,11 +159,24 @@ export async function getServerSideProps() {
   ];
 
   // split the major release versions
-  const [v7, v6, v5] = splitByVersion(/^v7/, /^v6/, /^v5/);
+  const [data] = splitByVersion(new RegExp(`^${version}`));
+  return await markdownToHtml(data);
+}
 
-  const content = await markdownToHtml([v7, v6, v5].join('\n'));
+/**
+ * Gets the changelog for a specific version
+ * @param {String} version The version to get the changelog for, specified as `vX`
+ */
+export async function getStaticProps() {
+  const latestVersion = process.env.NEXT_PUBLIC_LATEST_VERSION as string; // defined in next.config.js
+  const version = `v${latestVersion}`;
 
-  return {props: {content}};
+  return {
+    props: {
+      content: await getChangelogByVersion(version),
+      version,
+    },
+  };
 }
 
 export default ChangelogPage;

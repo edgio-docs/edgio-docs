@@ -4,6 +4,10 @@ on:
     branches:
       - '**'
       - '!main'
+defaults:
+  run:
+    env:
+      GH_API_TOKEN: ${{ secrets.GH_API_TOKEN }}
 jobs:
   deploy:
     runs-on: ubuntu-latest

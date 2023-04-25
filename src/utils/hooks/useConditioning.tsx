@@ -48,7 +48,7 @@ function useConditioning(): IConditioning {
     pathPrefix: !isLatest ? `v${cleanedVersion}` : '',
     packageVersion: `^${cleanedVersion}.0.0`,
     toVersionedPath: (path: string) => {
-      const {route} = router;
+      const {asPath} = router;
 
       // Most links within the docs refer to just the guide name, e.g. "getting-started"
       // but some used the full path, e.g. "/guides/getting-started". We only want to
@@ -58,13 +58,9 @@ function useConditioning(): IConditioning {
         return path;
       }
 
-      // if the route already includes guides, don't add it again
-      const guidesPrefix = route.includes('guides') ? '' : 'guides';
-
       return [
-        versionConfig.pathPrefix.length
-          ? versionConfig.pathPrefix
-          : guidesPrefix,
+        '/guides', // forcing all urls to start with /guides
+        versionConfig.pathPrefix.length ? versionConfig.pathPrefix : null,
         ...path
           .replace('/guides/', '/')
           .replace(`/${versionConfig.pathPrefix}/`, '/')

@@ -103,7 +103,7 @@ export function Toc({
 
   return (
     <StyledToc className="docs-article__toc">
-      {headings && headings.length > 1 && (
+      {headings && headings.length > 0 && (
         <nav role="navigation" className="docs-toc__nav custom-scrollbar">
           <h2 className="docs-toc__heading">On this page</h2>
           <div className="toc">

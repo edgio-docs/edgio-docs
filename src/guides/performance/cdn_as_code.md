@@ -214,6 +214,10 @@ router.match(
 
 This example matches all requests to `/some-path` except for those with query parameter `page=1|2|3`
 
+## Exact, Inclusive, and Regular Expression Matching {/* exact-inclusive-and-regular-expression-matching */}
+
+As described in [Route Pattern Syntax](#route-pattern-syntax), this type of route matching is based on [path-to-regexp](https://github.com/pillarjs/path-to-regexp#path-to-regexp). While this is a rather universal approach to matching requests, 
+
 ## Request Handling {/* request-handling */}
 
 The second argument to routes is a function that receives a `Features` type and uses it to send a response, such as:

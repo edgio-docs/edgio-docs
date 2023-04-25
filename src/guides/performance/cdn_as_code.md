@@ -246,7 +246,7 @@ This matches the path literally, so `/some-path` will match, but `/Some-Path` wi
 
 ### Inclusive Matching {/* inclusive-matching */}
 
-Inclusive matching uses the [`InOperatorValues`](/docs/api/core/types/router_RouteCriteria.InOperatorValues.html) type for matching a generic array of values. To use this, you must specify the argument as a [`RouteCriteria`](/docs/api/core/interfaces/router_RouteCriteria.default.html) type for the `path` you would like to match against. This type of matching is similar to `exact` matching in that is uses strict comparison.
+Inclusive matching uses the [`InOperatorValues`](/docs/api/core/types/router_RouteCriteria.InOperatorValues.html) type for matching a generic array of values. To use this, you must specify the argument as a [`RouteCriteria`](/docs/api/core/interfaces/router_RouteCriteria.default.html) type for the `path` you would like to match against. This type of matching is similar to `exact` matching in that it uses strict comparison.
 
 For example, the following route matches requests to `/some-path` and `/another-path`, but not `/Some-Path` or `/Another-Path`:
 

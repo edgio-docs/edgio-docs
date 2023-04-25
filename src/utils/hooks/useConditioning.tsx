@@ -23,8 +23,14 @@ interface IConditioning {
 
 function useConditioning(): IConditioning {
   const router = useRouter();
-  const {slug} = router.query as RouterQuery;
-  const [version] = slug || [];
+  const {slug, version: paramVersion} = router.query as RouterQuery;
+
+  // `slug` is defined from the `src/pages/[...slug].tsx` route, or it could be
+  // `version` if coming in from a different route, such as changelog
+  let version = slug || paramVersion || [];
+  if (Array.isArray(version)) {
+    version = version[0];
+  }
 
   // clean version from query
   const cleanedVersion =

@@ -32,3 +32,5 @@ jobs:
       - run: yarn --frozen-lockfile
       - name: Deploy to docs.edg.io (prod)
         run: yarn edgio:deploy --branch=$BRANCH_NAME --token=${{secrets.layer0_prod_deploy_token}} --environment=production
+        env:
+          GH_API_TOKEN: ${{ secrets.GH_API_TOKEN }}

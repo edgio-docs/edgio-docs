@@ -214,7 +214,7 @@ router
       async (req) => {
         const {owner, repo, path} = req.params || {};
         const downloader = new GithubDownloader({
-          github: {auth: process.env.GITHUB_API_TOKEN},
+          github: {auth: process.env.GH_API_TOKEN},
         });
 
         const flatPath = (path as string[]).join('/');

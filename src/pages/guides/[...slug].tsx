@@ -1,6 +1,7 @@
 import {readFile} from 'fs/promises';
 import {join} from 'path';
 
+import {isEdgioRunDev} from '@edgio/core/environment';
 import globby from 'globby';
 import {MDXRemote} from 'next-mdx-remote';
 import {serialize} from 'next-mdx-remote/serialize';
@@ -80,6 +81,14 @@ export const getStaticPaths = async () => {
 
   // guides for the latest version
   paths.push(...baseGuides);
+
+  // if in dev mode, only render the latest version guides for faster builds
+  if (isEdgioRunDev()) {
+    return {
+      paths: baseGuides.map((path) => ({params: {slug: path.split('/')}})),
+      fallback: 'blocking',
+    };
+  }
 
   // guides for each version, including the homepage
   paths.push(

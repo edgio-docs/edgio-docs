@@ -185,9 +185,7 @@ match(
 )
 ```
 
-<!-- TODO link to RouteCriteria api docs -->
-
-The first argument `criteria` defines how to match a request. It can be a string (or array of strings), a regular expression, or an object of type `RouteCriteria`. For example, to match requests to the `/api/*` URL path, you could define the criteria as follows:
+The first argument `criteria` defines how to match a request. It can be a string (or array of strings), a regular expression, or an object of type [`RouteCriteria`](/docs/api/core/interfaces/router_RouteCriteria.default.html). For example, to match requests to the `/api/*` URL path, you could define the criteria as follows:
 
 ```js
 // match by named parameter
@@ -213,9 +211,7 @@ router.match(
 
 All of the above examples are equivalent and show the various ways in which you can define the route criteria.
 
-<!-- TODO update to API docs link -->
-
-The second argument `features`, also referred to as the route handler, defines how to handle a request such as how to cache the response, how to proxy the request to the origin, or how to modify the request and response headers. This is an object of type `FeaturesParam` and the full list of supported features can be found in the [Features API reference](/guides/performance/rules/features).
+The second argument `features`, also referred to as the route handler, defines how to handle a request such as how to cache the response, how to proxy the request to the origin, or how to modify the request and response headers. This is an object of type [`Features`](/docs/api/core/interfaces/types.Features.html) and the full list of supported features can be found in the [Features API reference](/guides/performance/rules/features).
 
 We will now define a route by uncommenting the `match()` method in your {{ ROUTES_FILE }} file. It should now look similar to the following configuration:
 

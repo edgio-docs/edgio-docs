@@ -214,9 +214,84 @@ router.match(
 
 This example matches all requests to `/some-path` except for those with query parameter `page=1|2|3`
 
-## Exact, Inclusive, and Regular Expression Matching {/* exact-inclusive-and-regular-expression-matching */}
+## Exact Path, Inclusive, and Regular Expression Matching {/* exact-inclusive-and-regular-expression-path-matching */}
 
-As described in [Route Pattern Syntax](#route-pattern-syntax), this type of route matching is based on [path-to-regexp](https://github.com/pillarjs/path-to-regexp#path-to-regexp). While this is a rather universal approach to matching requests, 
+As described in [Route Pattern Syntax](#route-pattern-syntax), this type of route matching is based on [path-to-regexp](https://github.com/pillarjs/path-to-regexp#path-to-regexp). While this is a rather universal approach to matching requests, {{ PRODUCT }} provides additional options for matching requests.
+
+### Exact Path Matching {/* exact-matching */}
+
+Exact path matching, also known as strict matching, gives you precise control over how requests are matched. Traditionally, you may match `/some-path` with the following route:
+
+```js
+router.match('/some-path', {
+  /* ... */
+});
+```
+
+This will match `/some-path`, `/Some-Path`, and other variations in between that are case-insensitive. However, using `exact` will use strict comparison in matching the request path. The following example shows how to import the `exact` function and use it to match requests to `/some-path`:
+
+```js
+import {Router, exact} from '{{ PACKAGE_NAME }}/core';
+
+const router = new Router();
+
+router.match(exact('/some-path'), {
+  /* ... */
+});
+
+export default router;
+```
+
+This matches the path literally, so `/some-path` will match, but `/Some-Path` will not.
+
+### Inclusive Matching {/* inclusive-matching */}
+
+Inclusive matching uses the [`InOperatorValues`](/docs/api/core/types/router_RouteCriteria.InOperatorValues.html) type for matching a generic array of values. To use this, you must specify the argument as a [`RouteCriteria`](/docs/api/core/interfaces/router_RouteCriteria.default.html) type for the `path` you would like to match against. This type of matching is similar to `exact` matching in that is uses strict comparison.
+
+For example, the following route matches requests to `/some-path` and `/another-path`, but not `/Some-Path` or `/Another-Path`:
+
+```js
+router.match(
+  {
+    path: ['/some-path', '/another-path'],
+  },
+  {
+    /* ... */
+  }
+);
+```
+
+### Regular Expression Matching {/* regular-expression-matching */}
+
+For complex routes that cannot be easily matched using `path-to-regexp`, you can use regular expressions to match requests. For example, the following route matches requests to `/some-path` and `/another-path`, but not `/Some-Path` or `/Another-Path`:
+
+```js
+router.match(
+  {
+    path: /^(\/some-path|\/another-path)$/i,
+  },
+  {
+    /* ... */
+  }
+);
+```
+
+You may also use [Negated Route Matching](#negated-route-matching) with regular expressions:
+
+```js
+router.match(
+  {
+    path: {
+      not: /^(\/some-path|\/another-path)$/i,
+    },
+  },
+  {
+    /* ... */
+  }
+);
+```
+
+Regular expression matching is also available for matching query parameters, cookies, and request headers, and more. Any property of [`RouteCriteria`](/docs/api/core/interfaces/router_RouteCriteria.default.html) that accepts [`CriteriaValue`](/docs/api/core/types/router_RouteCriteria.CriteriaValue.html) or [`OptionalCriteriaValue`](/docs/api/core/types/router_RouteCriteria.OptionalCriteriaValue.html) types can use a regular expression and negation.
 
 ## Request Handling {/* request-handling */}
 

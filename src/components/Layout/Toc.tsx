@@ -98,9 +98,12 @@ export function Toc({
   const {currentIndex} = useTocHighlight();
   const selectedIndex = Math.min(currentIndex, headings.length - 1);
 
+  // filter out headings with a depth >= 4
+  headings = headings.filter((h) => h.depth && h.depth < 4);
+
   return (
     <StyledToc className="docs-article__toc">
-      {headings && headings.length > 0 && (
+      {headings && headings.length > 1 && (
         <nav role="navigation" className="docs-toc__nav custom-scrollbar">
           <h2 className="docs-toc__heading">On this page</h2>
           <div className="toc">
@@ -116,7 +119,7 @@ export function Toc({
                   <li
                     key={`heading-${h.url}-${i}`}
                     data-selected={i === selectedIndex}
-                    data-depth={h.depth && h.depth < 4 ? h.depth : -1}
+                    data-depth={h.depth || -1}
                     className="docs-toc__listItem">
                     <Link href={toVersionedPath(path)}>
                       <a>{h.text}</a>

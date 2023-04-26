@@ -72,7 +72,7 @@ const StyledGetStarted = styled.div`
   }
 
   .card {
-    background: var(--get-started-card-bg);
+    background: var(--home-card-bg);
     box-shadow: 0px 2px 7px rgba(0, 0, 0, 0.15);
     border-radius: 2px;
     padding: 17px;
@@ -80,7 +80,7 @@ const StyledGetStarted = styled.div`
     grid-template-rows: auto 1fr auto;
     text-decoration: none;
     transition: transform 0.1s;
-    color: var(--text-primary);
+    color: var(--home-card-font-color);
 
     :hover {
       transform: scale(1.01);

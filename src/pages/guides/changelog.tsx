@@ -174,15 +174,6 @@ export const getStaticProps: GetStaticProps<
   const latestVersion = process.env.NEXT_PUBLIC_LATEST_VERSION as string; // defined in next.config.js
   const version = params?.version ?? `v${latestVersion}`;
 
-  if (!params?.version) {
-    return {
-      redirect: {
-        destination: `/guides/v${latestVersion}/changelog`,
-        permanent: true,
-      },
-    };
-  }
-
   return {
     props: {
       content: await getChangelogByVersion(version),

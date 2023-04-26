@@ -80,12 +80,13 @@ export const getStaticPaths = async () => {
   // /guides/[version]/[guide] => guide for the version
 
   // guides for the latest version
-  paths.push(...baseGuides);
+  // paths.push(...baseGuides);
 
-  // if in dev mode, only render the latest version guides for faster builds
+  // in dev mode, don't prerender any pages and fallback to SSR for
+  // faster page loads
   if (isEdgioRunDev()) {
     return {
-      paths: baseGuides.map((path) => ({params: {slug: path.split('/')}})),
+      paths: [],
       fallback: 'blocking',
     };
   }
@@ -106,7 +107,6 @@ export const getStaticPaths = async () => {
   routes.push(
     ...[...new Set(paths)].map((path) => ({params: {slug: path.split('/')}}))
   );
-
   return {
     paths: routes,
     fallback: false,

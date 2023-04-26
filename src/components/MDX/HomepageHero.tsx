@@ -66,7 +66,7 @@ function HomepageHero() {
         <div className="copy">
           <div id="dark-theme">
             <Image
-              src="/images/home/edgio-logo-dark.png"
+              src="/images/home/edgio-logo-light.png"
               alt="Edgio Applications"
               width={296}
               height={142}

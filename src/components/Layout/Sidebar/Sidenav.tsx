@@ -227,7 +227,7 @@ const StyledSideNav = styled.div`
       + hr {
         height: 1px;
         border: none;
-        background: var(--hr-primary);
+        background: var(--border-primary);
       }
     }
   }

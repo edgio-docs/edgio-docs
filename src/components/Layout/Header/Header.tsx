@@ -4,7 +4,6 @@ import Link from 'next/link';
 import styled from 'styled-components';
 
 import EdgioDark from '../../../../public/images/home/edgio-dark.webp';
-import EdgioLight from '../../../../public/images/home/edgio-light.webp';
 import NoSSRWrapper from '../NoSSRWrapper';
 
 import VersionChooser from './VersionChooser';
@@ -21,14 +20,14 @@ const StyledHeader = styled.header`
   position: sticky;
   top: 0;
   z-index: 1000;
-  background-color: var(--bg-secondary);
+  background-color: var(--nav-header-bg);
   width: 100%;
   height: var(--header-height);
-  box-shadow: inset 0 -1px var(--shadow-primary);
   padding: 0 24px;
   display: grid;
   grid-template-columns: auto auto;
   align-content: center;
+  border-bottom: 1px solid var(--border-primary);
 
   > [class*='col'] {
     display: flex;
@@ -236,7 +235,7 @@ export default function Header({
               </div>
               <div className="logo-box" id="dark-theme">
                 <Image
-                  src={EdgioLight}
+                  src={EdgioDark}
                   width="66"
                   height="26"
                   alt="Edgio"

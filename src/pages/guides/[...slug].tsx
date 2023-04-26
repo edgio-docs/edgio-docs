@@ -119,11 +119,20 @@ export async function getStaticProps({params}: {params: any}) {
   const versionRE = /^v(\d+)$/;
   let [version, ...guide] = slug;
   let isHomepage = false;
+  const isVersionSpecifiedInSlug = versionRE.test(version);
 
-  if (!versionRE.test(version)) {
+  if (!isVersionSpecifiedInSlug) {
     // no version specified so use the latest
-    version = `v${latestVersion}`;
-    guide = slug;
+    // version = `v${latestVersion}`;
+    // guide = slug;
+
+    // no version specified in the path, so redirect to the latest version path
+    return {
+      redirect: {
+        destination: `/guides/v${latestVersion}/${slug.join('/')}`,
+        permanent: true,
+      },
+    };
   } else if (!guide || !guide.length) {
     // version with no remainig guide path so use as homepage
     isHomepage = true;

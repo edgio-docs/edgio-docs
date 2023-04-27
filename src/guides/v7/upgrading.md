@@ -208,13 +208,18 @@ edgio use ^7.0.0
 
 ## Step 5: Update your CDN-as-code configuration {/*update-your-cdn-as-code-configuration*/} 
 
-Updating your CDN-as-code configuration involves:
+Updating your CDN-as-code configuration to be compatible with version 7 involves:
 
--   {{ CONFIG_FILE }} settings
--   Routes
--   FINDME 
+-   [{{ CONFIG_FILE }} settings](#config-js-settings)
+-   [Routes](/*routes*/)
+-   [Cache Key Customization](#cache-key-customization]
+-   [Matching Behavior](#matching-behavior]
+-   [Redirects](#redirects]
+-   [Geolocation](#geolocation]
+-   [Device Classification](#device-classification]
+-   [Response Headers](#response-headers]
 
-### {{ CONFIG_FILE }} Settings
+### {{ CONFIG_FILE }} Settings {/*config-js-settings*/}
 
 Update each property's {{ CONFIG_FILE }} as indicated below.
 
@@ -269,6 +274,15 @@ Update each property's {{ CONFIG_FILE }} as indicated below.
             ],
           },
         ],
+
+        // In version 7, you may enable Server Name Indication (SNI) and define a SNI hint. 
+        // This configuration is essential when using multiple domains, since it allows us to
+        // present to the browser a certificate with the correct name during the TLS handshake.
+
+        tls_verify: {
+          use_sni: true,
+          sni_hint_and_strict_san_check: 'www.mysite.com',
+        },
 
         // In version 7, the location of the shield (formerly referred to as the “global” PoP) is
         // configured in edgio.config.js instead of the {{ PORTAL }} 
@@ -347,7 +361,7 @@ Update each property's {{ CONFIG_FILE }} as indicated below.
     },
     ```
 
-### Routes
+### Routes {/*routes*/}
 
 {{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} version 7 introduces a new JSON syntax for defining the set of features that will be applied to a route.
 
@@ -419,7 +433,7 @@ new Router()
 The limitation is you can only do one of these per request
 -->
 
-### Cache Key Customization
+### Cache Key Customization {/*cache-key-customization*/}
 
 Customize the cache key through `cache_key_rewrite` instead of `CustomCacheKey`. Additionally, there are some subtle differences in our device classification implementation.
 
@@ -430,7 +444,7 @@ Customize the cache key through `cache_key_rewrite` instead of `CustomCacheKey`.
 | addBrowser  | Use `%{wurfl_cap_mobile_browser}` instead.  |
 | addDevice  | Use `%{wurfl_vcap_is_smartphone}` and `%{wurfl_cap_is_tablet}` instead. These variables return `true | false` instead of `0 | 1`.  |
 
-### Matching Behavior
+### Matching Behavior {/*matching-behavior*/}
 
 {{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} version 6 and earlier returns an immediate response upon encountering one of the following methods:
 -   proxy
@@ -467,7 +481,7 @@ new Router()
   .get(‘/’, ({ proxy }) => proxy(‘web’))
 ```
 
-### Redirects
+### Redirects {/*redirects*/}
 
 {{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} version 6 and earlier allows you to set redirects by uploading a CSV file. This capability is unsupported in version 7. However, you may define redirects within your routes through the `url_redirect` feature. 
 
@@ -491,7 +505,7 @@ new Router()
   });
 ```
 
-### Geolocation
+### Geolocation {/*geolocation*/}
 
 {{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} version 6 and earlier adds the following geo-location request headers to all requests sent to the origin:
 
@@ -517,7 +531,7 @@ new Router().match("/:path", {
 });
 ```
 
-### Device Classification
+### Device Classification {/*device-classification*/}
 
 {{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} version 6 and earlier adds the following device classification headers to all requests sent to the origin:
 
@@ -551,7 +565,7 @@ new Router().match("/:path", {
 });
 ```
 
-### Response Headers
+### Response Headers {/*response-headers*/}
 
 {{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} version 6 and adds the following headers with each response:
 
@@ -620,7 +634,7 @@ If you encounter a build issue as a result of upgrading Node.js, then you should
 
 Congratulations on successfully migrating {{ PRODUCT }} to version 7!
 
-## Additional Considerations
+## Additional Considerations {/*additional-considerations*/}
 
 Review the following changes and revise your configuration as needed:
 -   [JWT Access Control End-of-Life](#jwt-access-control-end-of-life)

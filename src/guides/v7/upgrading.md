@@ -41,7 +41,7 @@ Perform the following steps for each of your properties:
 
         For example, the following excerpt from a `package.json` file references several `@layer0` packages:
 
-        ```json filename="package.json" version 4 and earlier
+        ```json filename="package.json version 4 and earlier"
         ...
           "dependencies": {
             "@layer0/rum": "4.18.1",
@@ -55,7 +55,7 @@ Perform the following steps for each of your properties:
        
         You should update all of these references as shown below.
 
-        ```json filename="package.json" version 7
+        ```json filename="package.json version 7"
         ...  
           "dependencies": {
             "{{ PACKAGE_NAME }}/rum": "^7.0.0",
@@ -77,7 +77,7 @@ Perform the following steps for each of your properties:
 
         For example, the following excerpt from a `routes.ts` file imports various `@layer0` packages:
 
-        ```javascript filename="routes.ts" version 4 and earlier
+        ```js filename="routes.ts version 4 and earlier"
         import {isProductionBuild} from '@layer0/core/environment';
         import {Router, CustomCacheKey} from '@layer0/core/router';
         import {nextRoutes} from '@layer0/next';
@@ -86,7 +86,7 @@ Perform the following steps for each of your properties:
 
         You should update all of these `import` statements as shown below.
 
-        ```javascript filename="routes.ts" version 7
+        ```js filename="routes.ts version 7"
         import {isProductionBuild} from '{{ PACKAGE_NAME }}/core/environment';
         import {Router, CustomCacheKey} from '{{ PACKAGE_NAME }}/core/router';
         import {nextRoutes} from '{{ PACKAGE_NAME }}/next';
@@ -101,7 +101,7 @@ Perform the following steps for each of your properties:
 
         For example, the following excerpt from a `next.config.js` file contains several `@layer0` references:
 
-        ```javascript filename="next.config.js" version 4 and earlier
+        ```js filename="next.config.js version 4 and earlier"
         const { withServiceWorker } = require('@layer0/next/sw')
         const withLayer0 = require('@layer0/next/withLayer0')
         module.exports = withLayer0(
@@ -110,7 +110,7 @@ Perform the following steps for each of your properties:
 
         You should update all of these references as shown below.
 
-        ```javascript filename="next.config.js" version 7
+        ```js filename="next.config.js version 7"
         const { withServiceWorker } = require('@edgio/next/sw')
         const withEdgio = require('@edgio/next/withEdgio')
         module.exports = withEdgio(
@@ -212,13 +212,7 @@ Updating your CDN-as-code configuration involves:
 
 -   {{ CONFIG_FILE }} settings
 -   Routes
-
-
-
-
-
-
-
+-   FINDME 
 
 ### {{ CONFIG_FILE }} Settings
 
@@ -228,7 +222,7 @@ Update each property's {{ CONFIG_FILE }} as indicated below.
 
     For example, we will assume that your `backends` property is configured as follows:
 
-    ```javascript filename="{{ CONFIG_FILE }} version 6 and earlier"
+    ```js filename="{{ CONFIG_FILE }} version 6 and earlier"
     backends: {
       origin: {
         // The domain name or IP address of the origin server
@@ -250,7 +244,7 @@ Update each property's {{ CONFIG_FILE }} as indicated below.
 
     The equivalent configuration in version 7 is:
 
-    ```javascript filename="{{ CONFIG_FILE }} version 7"
+    ```js filename="{{ CONFIG_FILE }} version 7"
     origins: [
       {
         // the key in backends
@@ -296,7 +290,7 @@ Update each property's {{ CONFIG_FILE }} as indicated below.
 
 -   **Hostnames:** In {{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} version 6 and earlier, custom domains are defined on a per environment basis within the {{ PORTAL }}. In version 7, if you are using CDN-as-code, we recommend that you define them through the `environments` property.
 
-    ```javascript filename="{{ CONFIG_FILE }} version 7"
+    ```js filename="{{ CONFIG_FILE }} version 7"
     environments: {
       // Each key is the name of an environment in the {{ PORTAL }} 
       production: {
@@ -324,7 +318,7 @@ Update each property's {{ CONFIG_FILE }} as indicated below.
 
 -   **includeNodeModules:** If you previously set `includeNodeModules: true`, then you should define it within a `serverless` property: 
 
-    ```javascript filename="{{ CONFIG_FILE }} version 7"
+    ```js filename="{{ CONFIG_FILE }} version 7"
     serverless: {
       includeNodeModules: true,
     },
@@ -332,14 +326,14 @@ Update each property's {{ CONFIG_FILE }} as indicated below.
 
 -   **includeFiles:** If you previously set `includeFiles`, then you should define it within a `serverless` property:
 
-    ```javascript filename="{{ CONFIG_FILE }} version 6 and earlier"
+    ```js filename="{{ CONFIG_FILE }} version 6 and earlier"
     includeFiles: {
       'lang/**/*': true,  
       ‘public/**/*’: true
     }
     ```
 
-    ```javascript filename="{{ CONFIG_FILE }} version 7"
+    ```js filename="{{ CONFIG_FILE }} version 7"
     serverless: {
       include: ["lang/**/*", "public/**/*"]
     }
@@ -347,7 +341,7 @@ Update each property's {{ CONFIG_FILE }} as indicated below.
 
     Versions 6 and earlier supports mapping an input path to a different output path. Version 7 does not support this capability. For example, the following configuration is unsupported:
 
-    ```javascript filename="{{ CONFIG_FILE }} version 6 and earlier"
+    ```js filename="{{ CONFIG_FILE }} version 6 and earlier"
     includeFiles: {
       'lang/**/*': 'another/dir/in/layer0/lambda',
     },
@@ -359,7 +353,7 @@ Update each property's {{ CONFIG_FILE }} as indicated below.
 
 For example, the following route sets a CDN caching policy:
 
-```javascript filename="{{ CONFIG_FILE }} version 7"
+```js filename="{{ CONFIG_FILE }} version 7"
 new Router()
   .get('/', {
     caching: {
@@ -370,7 +364,7 @@ new Router()
 
 The equivalent route in version 6 and earlier is:
 
-```javascript filename="{{ CONFIG_FILE }} version 6 and earlier"
+```js filename="{{ CONFIG_FILE }} version 6 and earlier"
 new Router()
   .get('/', ({ cache }) => {
     cache({ edge: { maxAgeSeconds: 60 * 60 * 24 }})
@@ -381,7 +375,7 @@ In order to ease the transition to version 7, we provide limited support for the
 
 -   **fallback():** The `fallback()` method executes when no other route is matched. This is unsupported in version 7. If you are trying to proxy a request to a legacy origin, then you may do so by setting the `default_origin` on the desired hostname configuration within the {{ CONFIG_FILE }}.
 
-```javascript filename="{{ CONFIG_FILE }} version 7"
+```js filename="{{ CONFIG_FILE }} version 7"
 environments: {
   // Each key is the name of an environment in the {{ PORTAL }} 
   production: {
@@ -431,9 +425,9 @@ Customize the cache key through `cache_key_rewrite` instead of `CustomCacheKey`.
 
 | Method (Version 6 and Earlier) | Variable (Version 7)   |
 |---|---|
-| addIsBot  | Use %{wurfl_vcap_is_robot} instead. This variable returns `true | false` instead of `0 | 1`. |
-| addVendor  | Use  %{wurfl_vcap_is_ios} and %{wurfl_vcap_is_android} instead. This variable returns `true | false` instead of `apple | android | generic`.   |
-| addBrowser  | Use %{wurfl_cap_mobile_browser} instead.  |
+| addIsBot  | Use `%{wurfl_vcap_is_robot}` instead. This variable returns `true | false` instead of `0 | 1`. |
+| addVendor  | Use `%{wurfl_vcap_is_ios}` and `%{wurfl_vcap_is_android}` instead. This variable returns `true | false` instead of `apple | android | generic`.   |
+| addBrowser  | Use `%{wurfl_cap_mobile_browser}` instead.  |
 | addDevice  | Use `%{wurfl_vcap_is_smartphone}` and `%{wurfl_cap_is_tablet}` instead. These variables return `true | false` instead of `0 | 1`.  |
 
 ### Matching Behavior
@@ -455,7 +449,7 @@ In version 7, all routes that match the request are executed. This may cause une
 
 We will now examine how the following routes are handled by different versions of {{ PRODUCT }} {{ PRODUCT_APPLICATIONS }}.
 
-```javascript filename="routes.js"
+```js filename="routes.js"
 new Router()
   .get(‘/’, ({ proxy }) => proxy(‘web’))
   .get(‘/:path*’, ({ proxy }) => proxy(‘legacy’))
@@ -467,7 +461,7 @@ Therefore, the origin in which routes are defined is important. We recommend pla
 
 For example, reversing the order of the routes ensures that requests to `/` are served from the `web` origin.
 
-```javascript filename="routes.js"
+```js filename="routes.js"
 new Router()
   .get(‘/:path*’, ({ proxy }) => proxy(‘legacy’))
   .get(‘/’, ({ proxy }) => proxy(‘web’))
@@ -477,7 +471,7 @@ new Router()
 
 {{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} version 6 and earlier allows you to set redirects by uploading a CSV file. This capability is unsupported in version 7. However, you may define redirects within your routes through the `url_redirect` feature. 
 
-```javascript filename="routes.js"
+```js filename="routes.js"
 new Router()
   .get("/home", { // simple example with a static URL
     url: {
@@ -509,7 +503,7 @@ new Router()
 
 In version 7, geolocation headers are not included by default. However, you may define them through HTTP variables as demonstrated below.
 
-```javascript filename="routes.js"
+```js filename="routes.js"
 new Router().match("/:path", {
   headers: {
     set_request_headers: {
@@ -536,14 +530,14 @@ In version 7, device classification headers are not included by default. However
 
 | Header (Version 6 and Earlier) | Variable (Version 7)   |
 |---|---|
-| x-0-device-is-bot | Use %{wurfl_vcap_is_robot} instead. This variable returns `true | false` instead of `0 | 1`. |
-| x-0-vendor | Use  %{wurfl_vcap_is_ios} and %{wurfl_vcap_is_android} instead. This variable returns `true | false` instead of `apple | android | generic`.   |
-| x-0-browser | Use %{wurfl_cap_mobile_browser} instead. | 
+| x-0-device-is-bot | Use `%{wurfl_vcap_is_robot}` instead. This variable returns `true | false` instead of `0 | 1`. |
+| x-0-vendor | Use `%{wurfl_vcap_is_ios}` and `%{wurfl_vcap_is_android}` instead. This variable returns `true | false` instead of `apple | android | generic`.   |
+| x-0-browser | Use `%{wurfl_cap_mobile_browser}` instead. | 
 | x-0-device | Use `%{wurfl_vcap_is_smartphone}` and `%{wurfl_cap_is_tablet}` instead. These variables return `true | false` instead of `smartphone | tablet | mobile | desktop`. | 
 
 **Example:**
 
-```javascript filename="routes.js"
+```js filename="routes.js"
 new Router().match("/:path", {
   headers: {
     set_request_headers: {
@@ -563,17 +557,28 @@ new Router().match("/:path", {
 
 | Header (Version 6 and Earlier)  | Header (Version 7)  |
 |---|---|
-| x-0-caching-status  | View additional information about the cache policy applied to the requested content through debug cache response headers.  [Learn more.](/guides/performance/response#requesting-debug-cache-information) <br />The following sample code shows how to enable debug cache response headers: <br />```javascript filename="routes.js"
-new Router().match("/:path", {
-  headers: {
-    debug_header:true,
-  },
-});
-``` <br />Send the following header with each request: `x-ec-debug:x-ec-cache,x-ec-cache-remote,x-ec-check-cacheable,x-ec-cache-key,x-ec-cache-state` |
+| x-0-caching-status  | View additional information about the cache policy applied to the requested content through debug cache response headers. Information on how to enable debug cache response headers is provided below. | 
 | x-0-components  | No equivalent header.  |
 | x-0-status  |  No equivalent header.  |
 | x-0-t  |  No equivalent header.  |
 | x-0-version  | x-edg-version  |
+
+**To enable debug cache response headers**
+
+1.  Add a route that enables debug cache response headers. A sample route is provided below.
+
+    ```js filename="routes.js"
+    new Router().match("/:path", {
+      headers: {
+        debug_header:true,
+      },
+    }); 
+    ```
+
+2.  Send the following header with each request: 
+    `x-ec-debug:x-ec-cache,x-ec-cache-remote,x-ec-check-cacheable,x-ec-cache-key,x-ec-cache-state`
+
+    [Learn more.](/guides/performance/response#requesting-debug-cache-information)
 
 ## Step 6: Build your {{ PRODUCT }} Properties {/*build-your-properties*/}
 

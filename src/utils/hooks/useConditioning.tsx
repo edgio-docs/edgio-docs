@@ -45,12 +45,7 @@ function useConditioning(): IConditioning {
     latestVersion: latestVersion,
     latestVersionText: `v${latestVersion}`,
     isLatest,
-    // doesn't include version in the path for the latest guides
-    // pathPrefix: !isLatest ? `v${cleanedVersion}` : '',
-
-    // does include version in the path for the latest guides
-    pathPrefix: `v${cleanedVersion}`,
-
+    pathPrefix: !isLatest ? `v${cleanedVersion}` : '',
     packageVersion: `^${cleanedVersion}.0.0`,
     toVersionedPath: (path: string) => {
       const {asPath} = router;

@@ -80,13 +80,12 @@ export const getStaticPaths = async () => {
   // /guides/[version]/[guide] => guide for the version
 
   // guides for the latest version
-  // paths.push(...baseGuides);
+  paths.push(...baseGuides);
 
-  // in dev mode, don't prerender any pages and fallback to SSR for
-  // faster page loads
+  // if in dev mode, only render the latest version guides for faster builds
   if (isEdgioRunDev()) {
     return {
-      paths: [],
+      paths: baseGuides.map((path) => ({params: {slug: path.split('/')}})),
       fallback: 'blocking',
     };
   }
@@ -107,6 +106,7 @@ export const getStaticPaths = async () => {
   routes.push(
     ...[...new Set(paths)].map((path) => ({params: {slug: path.split('/')}}))
   );
+
   return {
     paths: routes,
     fallback: false,
@@ -119,20 +119,11 @@ export async function getStaticProps({params}: {params: any}) {
   const versionRE = /^v(\d+)$/;
   let [version, ...guide] = slug;
   let isHomepage = false;
-  const isVersionSpecifiedInSlug = versionRE.test(version);
 
-  if (!isVersionSpecifiedInSlug) {
+  if (!versionRE.test(version)) {
     // no version specified so use the latest
-    // version = `v${latestVersion}`;
-    // guide = slug;
-
-    // no version specified in the path, so redirect to the latest version path
-    return {
-      redirect: {
-        destination: `/guides/v${latestVersion}/${slug.join('/')}`,
-        permanent: true,
-      },
-    };
+    version = `v${latestVersion}`;
+    guide = slug;
   } else if (!guide || !guide.length) {
     // version with no remainig guide path so use as homepage
     isHomepage = true;

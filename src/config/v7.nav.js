@@ -605,6 +605,11 @@ const nav = {
         },
       ],
     },
+    {
+      title: 'Upgrading',
+      path: 'v7/upgrading',
+      icon: 'stacks-plain',
+    },
   ],
 };
 export default nav;

@@ -40,9 +40,10 @@ const StyledMainPage = styled.div`
       user-select: none;
       padding: calc(var(--header-height) / 2) 0;
       z-index: 2;
-      background-color: var(--bg-secondary);
+      background-color: var(--nav-header-bg);
       will-change: transform;
       transition: transform 0.2s;
+      border-right: 1px solid var(--border-primary);
 
       &[data-open='true'] {
         position: fixed;

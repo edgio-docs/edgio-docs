@@ -236,11 +236,11 @@ The debug cache response headers provide additional information about the cache 
 
 Valid values for the `x-ec-debug` request header are provided below.
 
--   **x-ec-cache:** [Cache status code](#cache-status-code)
--   **x-ec-cache-remote:** [Cache status code](#cache-status-code)
--   **x-ec-check-cacheable:** [Cacheable](#cacheable)
--   **x-ec-cache-key:** [Cache-key](#cache-key)
--   **x-ec-cache-state:** [Cache state](#cache-state)
+-   **x-ec-cache:** [Cache status code](#cache-status-code-information)
+-   **x-ec-cache-remote:** [Cache status code](#cache-status-code-information)
+-   **x-ec-check-cacheable:** [Cacheable](#cacheable-response-header)
+-   **x-ec-cache-key:** [Cache key](#cache-key-response-header)
+-   **x-ec-cache-state:** [Cache state](#cache-state-response-header)
 
 #### Cache Status Code Information {/*cache-status-code-information*/}
 
@@ -296,15 +296,13 @@ The term `CACHEABLE` indicates whether the requested content could have been cac
 
 #### Cache-Key Response Header {/*cache-key-response-header*/}
 
-The `x-ec-cache-key` response header indicates the physical cache-key associated with the requested content. A physical cache-key consists of a path that identifies an asset for the purposes of caching. In other words, our servers will check for a cached version of an asset according to its path as defined by its cache-key.
+The `x-ec-cache-key` response header indicates the cache key associated with the requested content. A cache key identifies an asset for the purposes of caching. In other words, our servers will check for a cached version of an asset according to its cache key.
 
-This physical cache-key starts with a double forward slash (i.e., //) followed by the protocol used to request the content (i.e., http or https). This protocol is followed by the relative path to the requested asset. This relative path starts with the content access point (e.g., /000001/).
-
-By default, query strings are ignored by the caching mechanism and therefore they will be excluded from the cache-key.
+A core component of a cache key is the relative path to the requested content. This relative path starts directly after the hostname. By default, query strings are ignored by the caching mechanism and therefore they will be excluded from the cache key.
 
 <Callout type ="info">
 
-  If a query string is recorded in the cache-key, it will be converted to its hash equivalent. After which, it will be inserted between the name of the requested asset and its file extension (e.g., asset**HashValue**.html).
+  If a query string is recorded in the cache key, it will be converted to its hash equivalent. After which, it will be inserted between the name of the requested asset and its file extension (e.g., asset**HashValue**.html).
 
 </Callout>
 

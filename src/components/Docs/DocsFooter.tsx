@@ -39,16 +39,12 @@ const StyledDocsFooter = styled.footer`
   width: 100%;
 
   .footer-start {
-    background-color: var(--bg-secondary);
+    background-color: var(--docs-footer-bg);
+    border-bottom: 2px solid var(--border-primary);
   }
 
   .footer-end {
     background-color: var(--docs-footer-bg);
-  }
-
-  .footer-start,
-  .footer-end {
-    border-radius: 4px;
   }
 
   .footer-start__nav {

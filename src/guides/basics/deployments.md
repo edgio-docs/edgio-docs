@@ -2,44 +2,45 @@
 title: Deployments
 ---
 
-A deployment is required to apply changes to your code or configuration to an environment. 
+A deployment is required to apply changes to your code or configuration to an environment.
 
-## Deploying 
+## Deploying
 
 Deploy to an environment using either of the following methods:
 
--   **{{ PORTAL }}:** Use this method to deploy changes made within the {{ PORTAL }}. 
-    1.  Load the desired environment.
+- **{{ PORTAL }}:** Use this method to deploy changes made within the {{ PORTAL }}.
 
-        1.  From the {{ PORTAL_LINK }}, select the desired private or team space.
-        2.  Select the desired property.
-        3.  From the left-hand pane, select the desired environment from under the **Environments** section.
+  1.  Load the desired environment.
 
-    2.  Update your hostname, origin, or rule configuration. 
+      1.  From the {{ PORTAL_LINK }}, select the desired private or team space.
+      2.  Select the desired property.
+      3.  From the left-hand pane, select the desired environment from under the **Environments** section.
 
-    3.  From the notification bar at the top of the page, click **Deploy Changes**.
+  2.  Update your hostname, origin, or rule configuration.
 
-        ![Deploy Changes](/images/v7/performance/rules-deploy-changes.png?width=450)
+  3.  From the notification bar at the top of the page, click **Deploy Changes**.
 
--   **{{ PRODUCT }} CLI:** Use this method to deploy changes from your local machine (e.g., changes to {{ CONFIG_FILE }} or {{ ROUTES_FILE }}).
+      ![Deploy Changes](/images/v7/performance/rules-deploy-changes.png?width=450)
 
-    ```bash
-    {{ FULL_CLI_NAME }} deploy [<TEAM>] [--environment=<ENVIRONMENT>]
-    ```
-    <Callout type="info">
+- **{{ PRODUCT }} CLI:** Use this method to deploy changes from your local machine (e.g., changes to {{ CONFIG_FILE }} or {{ ROUTES_FILE }}).
 
-      If you omit the `environment` argument, then the deployment will be applied to the `production` environment.
+  ```bash
+  {{ FULL_CLI_NAME }} deploy [<TEAM>] [--environment=<ENVIRONMENT>]
+  ```
 
-    </Callout>
+  <Callout type="info">
 
-    The CLI will automatically detect your property's framework, create an optimized production build, and upload it to {{ PRODUCT }}. This takes about a minute for most applications.
+  If you omit the `environment` argument, then the deployment will be applied to the `production` environment.
 
-    Once the deployment is complete, the CLI will output the URL for your site. The site name is automatically derived from the `name` field in `package.json`. This can be overridden by using `--site` option when running `{{ FULL_CLI_NAME }} deploy`.
+  </Callout>
 
+  The CLI will automatically detect your property's framework, create an optimized production build, and upload it to {{ PRODUCT }}. This takes about a minute for most applications.
 
-## Versioning {/*versioning*/}
+  Once the deployment is complete, the CLI will output the URL for your site. The site name is automatically derived from the `name` field in `package.json`. This can be overridden by using `--site` option when running `{{ FULL_CLI_NAME }} deploy`.
 
-Deployments are versioned. Each deployment is assigned a unique version number. This allows you to quickly roll back to a previous version when a breaking change is introduced into an environment. 
+## Versioning {/* versioning */}
+
+Deployments are versioned. Each deployment is assigned a unique version number. This allows you to quickly roll back to a previous version when a breaking change is introduced into an environment.
 
 **To roll back to a previous version**
 
@@ -53,7 +54,7 @@ Deployments are versioned. Each deployment is assigned a unique version number. 
 
 3.  When prompted, click **Promote to production** to confirm that a previous deployment will be applied to this environment.
 
-## Branches and Deployments {/*branches-and-deployments*/}
+## Branches and Deployments {/* branches-and-deployments */}
 
 Each time you deploy your site to {{ PRODUCT }} a deployment is created and given a unique and permanent URL based on the team name, site name, branch name in source control, and an incrementing deployment number. If you use Git, the branch name is set by the default. If not, you can specify the `--branch` option when running `{{ FULL_CLI_NAME }} deploy`.
 
@@ -61,12 +62,12 @@ Each time you deploy your site to {{ PRODUCT }} a deployment is created and give
 
 Having each deployment be simultaneously and permanently accessible makes it easy to preview other developers' work before merging a pull request and enables you to "go back in time" to find where a bug or change in behavior originated. We recommend configuring your CI environment to deploy every push to {{ PRODUCT }}.
 
-## Deploy from CI {/*deploy-from-ci*/}
+## Deploy from CI {/* deploy-from-ci */}
 
 When configuring CI, we recommend:
 
--   Automatically deploying to your staging environment when a PR is merged to the master branch of your repo.
--   Manually promoting deployments to production using the {{ PORTAL }} to prevent unwanted builds from being published by misconfigured CI workflows.
+- Automatically deploying to your staging environment when a PR is merged to the master branch of your repo.
+- Manually promoting deployments to production using the {{ PORTAL }} to prevent unwanted builds from being published by misconfigured CI workflows.
 
 A deploy token is required to deploy from your CI environment. Create one from the **Settings** page in the {{ PORTAL }}.
 
@@ -80,7 +81,7 @@ Use the `--token` option when deploying from your CI script:
 
 You should always store your deploy token using your CI environment's secrets manager. Never commit your deploy token to source control.
 
-## GitHub Actions {/*github-actions*/}
+## GitHub Actions Workflow {/* github-actions-workflow */}
 
 You need to configure the following items in order to get a GitHub action set up.
 
@@ -99,7 +100,7 @@ For this action to work
 
 Read the comments at the top to understand how this action is configured.
 
-### Template {/*template*/}
+### Template {/* template */}
 
 ```yml
 # Add this file to your project at .github/workflows/edgio.yml
@@ -109,23 +110,17 @@ Read the comments at the top to understand how this action is configured.
 # The site is deployed each time commits are pushed. The environment to which the changes are deployed
 # is based on the following rules:
 #
-# 1.) When pushing to master or main, changes will be deployed to the "default" environment. This environment exists
+# 1.) When pushing to `master` or `main`, changes will be deployed to the "production" environment. This environment exists
 #     by default. Additional environments must be created at {{ APP_URL }}.
 #
-# 2.) When pushing to any other branch, changes are deployed to a staging environment when a pull request is opened.
-#     A unique URL is created based on the branch and deployment number. This environment does not exist by default,
-#     you must create it using {{ APP_URL }}.
+# 2.) When pushing to any other branch, changes are deployed to the "default" environment when a pull request is opened. A unique URL is created based on the branch and deployment number.
 #
-# 3.) When you publish a release in GitHub, the associated tag will be deployed to the production
-#     environment. You can push to production by creating a GitHub release, or by using the "Promote to Environment"
-#     menu when viewing a deployment in {{ APP_URL }}. This environment does not exist by default,
-#     you must create it using {{ APP_URL }}.
 #
-# ** In order for this action to deploy your site, you must create a deploy token from the site settings page
-# ** In order for this action to deploy your site, you must create a `deploy` command in your package.json scripts (an example is at https://github.com/layer0-docs/layer0-docs/blob/master/package.json#L11).
-# ** Additionally, you will need to generate a deploy token from your site settings in {{ APP_URL }} and configure it as a secret called "EDGIO_DEPLOY_TOKEN" in your repo on GitHub.
+# In order for this action to deploy your site, you must:
+#  - Create a deploy token from your propery's settings page. Copy the deploy token and add it as a secret in your repository called "EDGIO_DEPLOY_TOKEN".
+#  - Create an `edgio:deploy` command in your package.json scripts (an example is at https://github.com/edgio-docs/edgio-v7-simple-performance-example/blob/main/package.json#L10).
+#  - Your project code must be configured to use NPM or YARN. This action will install dependencies using the `npm ci` or `yarn install` command.
 #
-# ** Depending on your use of NPM or YARN, adjust the "Install packages" step
 
 name: Deploy branch to {{ PRODUCT }}
 
@@ -133,14 +128,10 @@ on:
   push:
     branches: [master, main]
   pull_request:
-  release:
-    types: [published]
 
 jobs:
   deploy-to-edgio:
     name: Deploy to Edgio
-    # cancels the deployment for the automatic merge push created when tagging a release
-    if: contains(github.ref, 'refs/tags') == false || github.event_name == 'release'
     runs-on: ubuntu-latest
     env:
       deploy_token: ${{secrets.EDGIO_DEPLOY_TOKEN}}
@@ -153,39 +144,57 @@ jobs:
       - name: Extract branch name
         shell: bash
         run: echo "BRANCH_NAME=$(echo ${GITHUB_REF#refs/heads/} | sed 's/\//_/g')" >> $GITHUB_ENV
-      - uses: actions/checkout@v1
-      - uses: actions/setup-node@v1
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
         with:
-          node-version: 14
+          node-version: {{ NODE_VERSION }}
       - name: Cache node modules
-        uses: actions/cache@v1
-        env:
-          cache-name: cache-node-modules
+        uses: actions/cache@v2
+        id: cache-node-modules
         with:
           path: ~/.npm # npm cache files are stored in `~/.npm` on Linux/macOS
-          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
+          key: ${{ runner.os }}-build-${{ hashFiles('**/package-lock.json') }}-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
-            ${{ runner.os }}-build-${{ env.cache-name }}-
+            ${{ runner.os }}-build-${{ hashFiles('**/package-lock.json') }}-
+            ${{ runner.os }}-build-${{ hashFiles('**/yarn.lock') }}-
             ${{ runner.os }}-build-
             ${{ runner.os }}-
-      - name: Install packages
-        run: npm ci # if using npm for your project
-        #  run: rm -rf node_modules && yarn install --frozen-lockfile # if using yarn for your project
+      - name: Install dependencies
+        run: |
+          npm i -g @edgio/cli
+          # Check if package-lock.json file exists
+          if [ -f "package-lock.json" ]; then
+            # Use npm
+            npm ci --legacy-peer-deps
+          else
+            # Check if yarn.lock file exists
+            if [ -f "yarn.lock" ]; then
+              # Use yarn
+              yarn install --immutable
+            else
+              # No lock file found
+              echo "No lock file found. Please run 'npm ci' or 'yarn install --frozen-lockfile' to install dependencies."
+              exit 1
+            fi
+          fi
       - name: Deploy to {{ PRODUCT }}
         run: |
-          npm run deploy -- ${{'--branch=$BRANCH_NAME' || ''}} --token=$deploy_token  \
-          ${{github.event_name == 'push' && '--environment=default' || ''}} \
-          ${{github.event_name == 'pull_request' && '--environment=staging' || ''}} \
-          ${{github.event_name == 'release' && '--environment=production' || ''}}
-        env:
-          deploy_token: ${{secrets.EDGIO_DEPLOY_TOKEN}}
+          # Use "production" environment for master/main branches, otherwise use "default" environment
+          if [ "${{ github.ref }}" = "refs/heads/master" ] || [ "${{ github.ref }}" = "refs/heads/main" ]; then
+            environment="production"
+          else
+            environment="default"
+          fi
+
+          npm run edgio:deploy -- --branch="${{ BRANCH_NAME }}" --environment="${{ environment }}" --token="${{ secrets.EDGIO_DEPLOY_TOKEN }}"
+
 ```
 
-### Screencast Tutorial {/*screencast-tutorial*/}
+### Screencast Tutorial {/* screencast-tutorial */}
 
-<Video src="https://player.vimeo.com/video/691593915"/>
+<Video src="https://player.vimeo.com/video/691593915" />
 
-## Jenkins Pipeline {/*jenkins-pipeline*/}
+## Jenkins Pipeline {/* jenkins-pipeline */}
 
 Here is an example Jenkins pipeline that deploys your site to {{ PRODUCT }}:
 
@@ -259,7 +268,7 @@ pipeline {
 }
 ```
 
-## GitLab CI/CD {/*gitlab-cicd*/}
+## GitLab CI/CD {/* gitlab-cicd */}
 
 Here is an example GitLab CI/CD configuration that deploys your site to {{ PRODUCT }}:
 

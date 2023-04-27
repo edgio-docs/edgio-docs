@@ -10,7 +10,7 @@ See [NPM Packages Changelog](/guides/changelog) for release notes related to the
 
 </Callout>
 
-#### Edgio Console - April 20, 2023
+#### {{ PORTAL }} - April 20, 2023
 
 ##### Rules UI Updates
 

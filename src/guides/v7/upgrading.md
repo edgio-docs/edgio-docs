@@ -469,7 +469,7 @@ new Router()
 
 ### Redirects
 
-{{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} version 6 and earlier allows you to set redirects by uploading a CSV file. This capability is unsupported in version 7. However, you may define redirects within your routes through the `url_redirect` feature. 
+{{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} version 6 and earlier allows you to set redirects by uploading a CSV file within the {{ PORTAL }}. This capability is unsupported in version 7. However, you may define redirects within your routes through the `url_redirect` feature. 
 
 ```js filename="routes.js"
 new Router()

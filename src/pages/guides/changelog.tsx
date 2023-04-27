@@ -81,9 +81,7 @@ function ChangelogPage({content, version}: {content: string; version: string}) {
           <p>
             See <Link href="/guides/release_notes">Release Notes </Link> for
             changes related to the{' '}
-            <Link href={config.APP_URL}>
-              {config.PRODUCT} Developer Console
-            </Link>
+            <Link href={config.APP_URL}>{config.PORTAL}</Link>
           </p>
         </Callout>
         <StyledChangelogContent dangerouslySetInnerHTML={{__html: content}} />

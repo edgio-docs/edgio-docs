@@ -55,24 +55,24 @@ RTLD may automatically deliver compressed log data to an AWS S3 bucket by submit
     ```AWS-S3-Bucket-Policy
     {
     	"Version": "2012-10-17",
-    	"Statement": \[{
+    	"Statement": [{
     			"Sid": "CDNRealTimeLogDelivery",
     			"Effect": "Allow",
     			"Principal": {
     				"AWS": "arn:aws:iam::638349102478:user/real-time-log-delivery"
     			},
-    			"Action": \[
+    			"Action": [
     				"s3:PutObject",
     				"s3:GetBucketLocation",
     				"s3:PutObjectTagging",
     				"s3:PutObjectACL"
-    			\],
-    			"Resource": \[
+    			],
+    			"Resource": [
     				"arn:aws:s3:::BUCKET-NAME",
     				"arn:aws:s3:::BUCKET-NAME/\*"
-    			\]
+    			]
     		}
-    	\]
+    	]
     }
     ```
 

@@ -99,7 +99,7 @@ Sample log data that contains two log entries is provided below for all three lo
 	"account_number": "0001",
 	"profile_id": 1,
 	"datestamp": "20210812",
-	"logs": \[{
+	"logs": [{
 			"timestamp": 1628804857.1012251,
 			"account_number": "0001",
 			"user_agent": "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:59.0) Gecko/20100101 Firefox/59.0",
@@ -138,7 +138,7 @@ Sample log data that contains two log entries is provided below for all three lo
 			"scope_id": "dJR9RX4S",
 			"scope_name": "SAM"
 		}
-	\]
+	]
 }
 ```
 

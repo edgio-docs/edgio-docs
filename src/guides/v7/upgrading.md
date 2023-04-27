@@ -389,19 +389,19 @@ In order to ease the transition to version 7, we provide limited support for the
 
 -   **fallback():** The `fallback()` method executes when no other route is matched. This is unsupported in version 7. If you are trying to proxy a request to a legacy origin, then you may do so by setting the `default_origin` on the desired hostname configuration within the {{ CONFIG_FILE }}.
 
-```js filename="{{ CONFIG_FILE }} version 7"
-environments: {
-  // Each key is the name of an environment in the {{ PORTAL }} 
-  production: {
-    hostnames: [
-      {
-        hostname: "www.mysite.com",
-        default_origin: "legacy"
+    ```js filename="{{ CONFIG_FILE }} version 7"
+    environments: {
+      // Each key is the name of an environment in the {{ PORTAL }} 
+      production: {
+        hostnames: [
+          {
+            hostname: "www.mysite.com",
+            default_origin: "legacy"
+          },
+        ],
       },
-    ],
-  },
-}
-```
+    }
+    ```
 
 -   **catch():** The `catch()` method allows the user to alter responses that have returned an error code. This is unsupported in version 7.
 -   **destination():** The `destination()` method is unsupported in version 7 at this time. However, you may assign an origin to requests through `set_origin` and redirect requests through `url_redirect`. A future release will provide a streamlined version of traffic splitting through the {{ PORTAL }}. 
@@ -439,10 +439,10 @@ Customize the cache key through `cache_key_rewrite` instead of `CustomCacheKey`.
 
 | Method (Version 6 and Earlier) | Variable (Version 7)   |
 |---|---|
-| addIsBot  | Use `%{wurfl_vcap_is_robot}` instead. This variable returns `true | false` instead of `0 | 1`. |
-| addVendor  | Use `%{wurfl_vcap_is_ios}` and `%{wurfl_vcap_is_android}` instead. This variable returns `true | false` instead of `apple | android | generic`.   |
+| addIsBot  | Use `%{wurfl_vcap_is_robot}` instead. This variable returns `true \| false` instead of `0 \| 1`. |
+| addVendor  | Use `%{wurfl_vcap_is_ios}` and `%{wurfl_vcap_is_android}` instead. This variable returns `true \| false` instead of `apple \| android \| generic`.   |
 | addBrowser  | Use `%{wurfl_cap_mobile_browser}` instead.  |
-| addDevice  | Use `%{wurfl_vcap_is_smartphone}` and `%{wurfl_cap_is_tablet}` instead. These variables return `true | false` instead of `0 | 1`.  |
+| addDevice  | Use `%{wurfl_vcap_is_smartphone}` and `%{wurfl_cap_is_tablet}` instead. These variables return `true \| false` instead of `0 \| 1`.  |
 
 ### Matching Behavior {/*matching-behavior*/}
 
@@ -469,7 +469,7 @@ new Router()
   .get(‘/:path*’, ({ proxy }) => proxy(‘legacy’))
 ```
 
-Version 6 and earlier will serve requests to `/` from the `web` origin. The second route will not take effect because the request satisfied the first `proxy` method. Version 7, on the other hand, requests to `/` will match both routes. The first route sets the origin to `web`, while the second route immediately overrides to `legacy`. As a result, all requests will be sent to the `legacy` origin.
+Version 6 and earlier will serve requests to `/` from the `web` origin. The second route will not take effect because the request satisfied the first `proxy` method. Version 7, on the other hand, matches both routes for requests to `/`. The first route sets the origin to `web`, while the second route immediately overrides the first route and sets the origin to `legacy`. As a result, all requests will be sent to the `legacy` origin.
 
 Therefore, the origin in which routes are defined is important. We recommend placing routes with general criteria before routes with more detailed criteria. 
 
@@ -544,10 +544,10 @@ In version 7, device classification headers are not included by default. However
 
 | Header (Version 6 and Earlier) | Variable (Version 7)   |
 |---|---|
-| x-0-device-is-bot | Use `%{wurfl_vcap_is_robot}` instead. This variable returns `true | false` instead of `0 | 1`. |
-| x-0-vendor | Use `%{wurfl_vcap_is_ios}` and `%{wurfl_vcap_is_android}` instead. This variable returns `true | false` instead of `apple | android | generic`.   |
+| x-0-device-is-bot | Use `%{wurfl_vcap_is_robot}` instead. This variable returns `true \| false` instead of `0 \| 1`. |
+| x-0-vendor | Use `%{wurfl_vcap_is_ios}` and `%{wurfl_vcap_is_android}` instead. This variable returns `true \| false` instead of `apple \| android \| generic`.   |
 | x-0-browser | Use `%{wurfl_cap_mobile_browser}` instead. | 
-| x-0-device | Use `%{wurfl_vcap_is_smartphone}` and `%{wurfl_cap_is_tablet}` instead. These variables return `true | false` instead of `smartphone | tablet | mobile | desktop`. | 
+| x-0-device | Use `%{wurfl_vcap_is_smartphone}` and `%{wurfl_cap_is_tablet}` instead. These variables return `true \| false` instead of `smartphone \| tablet \| mobile \| desktop`. | 
 
 **Example:**
 

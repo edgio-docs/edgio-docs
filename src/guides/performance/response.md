@@ -157,6 +157,7 @@ Common response headers are described below.
 
 -  **x-ec-debug:** Contains the requested debug cache metadata when the [Debug Header feature](/guides/performance/rules/features#debug-header) has been enabled. [Learn more.](#requesting-debug-cache-information)
 
+<!--
 -   **{{ HEADER_PREFIX }}-caching-status:** Indicates cache status information. If the response was not cached or served from cache, then it will report the reason why it was not cached.
 
     **Example:** The following sample response header indicates that caching was explictly disabled for this request: 
@@ -164,7 +165,7 @@ Common response headers are described below.
     `{{ HEADER_PREFIX }}-caching-status: disabled`
 
     [Learn more.](/guides/performance/caching#why-is-my-response-not-being-cached)
-
+-->
     <a id="-mr" />
 
 -   **{{ HEADER_PREFIX }}-mr:** Indicates one or more matched route(s). 
@@ -190,11 +191,20 @@ Common response headers are described below.
 
         </Callout>
 
+-   **{{ HEADER_PREFIX }}-hit-request-id:** For responses served from cache, this header indicates the unique ID of the request that was cached on our CDN.
+
 -   **{{ HEADER_PREFIX }}-p:** Returns `1` when the client's request includes an `edgio_prefetch` query string parameter. This parameter indicates that the client is requesting [Predictive Prefetching](/guides/performance/prefetching).
 
     **Example:** `{{ HEADER_PREFIX }}-p: 1`
 
+-   **{{ HEADER_PREFIX }}-request-id:** Indicates the request's unique ID.
+-   **{{ HEADER_PREFIX }}-surrogate-key:** Contains a space-delimited list of surrogate keys (cache tags). <!-- surrogate keys can be injected when needed into your backend responses -->
+
+    [Learn more.](/guides/performance/purging#surrogate-keys-cache-tags)
+
+<!--
 -   [{{ HEADER_PREFIX }}-t](#-t-response-header): Contains time measurements for each {{ PRODUCT }} component through which a request was routed. It also provides cache status information for edge and global POPs.
+-->
 -   **{{ HEADER_PREFIX }}-version:** Indicates basic information for your current deployment.
 
     **Syntax:** `{{ HEADER_PREFIX }}-version: <DEPLOYMENT> <ENVIRONMENT VERSION> <INTERNAL> NA <DEPLOYMENT TIMESTAMP> <ENVIRONMENT ID>`
@@ -212,16 +222,12 @@ Common response headers are described below.
 
     -   **ENVIRONMENT ID:** Identifies an environment by its system-defined ID.
 
+<!--
 -   [{{ HEADER_PREFIX }}-status](#-status-response-header): Contains a comma-delimited list of HTTP status codes for each POP component that processed the request.
 -   **{{ HEADER_PREFIX }}-components:** Indicates the version for each POP component that processed the request and the environment ID. This response header is primarily meant for internal use when troubleshooting issues.
 
     **Example:** `{{ HEADER_PREFIX }}-components: eh=0.1.6,e=atl,ec=1.1.0,ed=1.0.1,gh=0.1.6,g=hef,gd=1.0.1,p=1.21.10,w=3.11.0,wi=e8ce8753-163d-4be9-a39e-40454ace5146,b=serverless`
-
--   **{{ HEADER_PREFIX }}-hit-request-id:** For responses served from cache, this header indicates the unique ID of the request that was cached on our CDN. 
--   **{{ HEADER_PREFIX }}-request-id:** Indicates the request's unique ID.
--   **{{ HEADER_PREFIX }}-surrogate-key:** Contains a space-delimited list of surrogate keys (cache tags). <!-- surrogate keys can be injected when needed into your backend responses -->
-
-    [Learn more.](/guides/performance/purging#surrogate-keys-cache-tags)
+-->
 
 ### Requesting Debug Cache Information {/*requesting-debug-cache-information*/}
 
@@ -348,6 +354,7 @@ The following abbreviations are used for time units:
 -   **m:** Month(s)
 -   **y:** Year(s)
 
+<!--
 ### {{ HEADER_PREFIX }}-status Response Header {/*-status-response-header*/}
 
 The `{{ HEADER_PREFIX }}-status` response header contains an HTTP status code for each POP component that processed the request. This comma-delimited list is presented sequentially according to the order in which POP components processed the request.
@@ -359,7 +366,6 @@ A POP component is identified through the following two abbreviations:
 -    [Who handled the request.](#request-element)
 -    [POP component.](#pop-component)
 
-<!--
 **Standard Traffic Example:**
 The following sample response header indicates that the following POP components returned a `200 OK`: Edge POP's HAProxy, Edge POP's DPS, Global POP's HAProxy, and Global POP's DPS.
 
@@ -369,7 +375,6 @@ The following sample response header indicates that the following POP components
 The following sample response header indicates that the following POP components returned a `200 OK`: Edge POP's HAProxy, Edge POP's DPS, Global POP's HAProxy, Global POP's DPS, Serverless Compute (load balancer), and Serverless Compute (worker).
 
 `{{ HEADER_PREFIX }}-status: eh=200,ed=200,gh=200,gd=200,p=200,w=200` <a id="structure-of--header_prefix--t"></a>
--->
 
 ### {{ HEADER_PREFIX }}-t Response Header {/*-t-response-header*/}
 
@@ -377,13 +382,11 @@ The `{{ HEADER_PREFIX }}-t` response header contains time measurements for each 
 
 [Learn how {{ PRODUCT }} routes requests.](/guides/performance/request#request-flow)
 
-<!--
 <Callout type="info">
 
   When a request is reentrant, telemetry information is not duplicated; instead, each request logs its own telemetry but does not return it to the downstream {{ PRODUCT_NAME }} request. As a result, duplicate entries are not possible.
 
 </Callout>
--->
 
 **Syntax:**
 
@@ -408,11 +411,8 @@ Each metric is defined through a set of abbreviations. These abbreviations ident
     -   **w**: Serverless Compute (worker) <a id="pop-component"></a>
 
 -   The POP component that processed the request:
-<!--
     -   **h:** HAProxy (load balancer)
     -   **c:** Varnish (cache)
--->
-
     -   **d:** Dynamic Proxy Service (DPS)
     -   **b:** Billing
     -   **k:** Kolben
@@ -479,11 +479,8 @@ Each metric is defined through a set of abbreviations. These abbreviations ident
 #### Exceptions {/*exceptions*/}
 
 Most metrics follow the above convention. However, there are some metrics that use a different convention. Here are a few common exceptions to the above convention:
-<!--
 -   **eh:** Identifies the total time, in milliseconds, as measured by an edge POP's HAProxy.
 -   **gh:** Identifies the total time, in milliseconds, as measured by a global POP's HAProxy.
--->
-
 -   **dgpop:** Identifies the global POP to which an edge POP forwarded a request.
 -   **wa:** Indicates the `transformRequest` time, in milliseconds, as measured by a Serverless Compute (worker).
 -   **wp:** Indicates the fetch or proxy time, in milliseconds, as measured by a Serverless Compute (worker).
@@ -494,7 +491,6 @@ Most metrics follow the above convention. However, there are some metrics that u
     -   **transformResponse:** If the route uses `transformResponse`, then this metric measures the `transformResponse` time in milliseconds.
     -   **Image Optimization:** If the route contains an image optimization tag, such as Next [Image](https://nextjs.org/docs/api-reference/next/image) or Nuxt [nuxt-img](https://image.nuxtjs.org/components/nuxt-img/),  instead of `transformResponse`, then this metric measures processing time in milliseconds.
 
-<!--
 #### Sample {{ HEADER_PREFIX }}-t Response Headers {/*sample-t-response-headers*/}
 
 Sample response headers for both standard traffic and Serverless Compute are explained below.
@@ -555,7 +551,6 @@ We will now examine each metric defined within the above sample response header:
 | `wa=1`     | Indicates the `transformRequest` time as measured by a Serverless Compute (worker) was 1 millisecond. |
 | `wz=1`     | Indicates either a `transformResponse` time or processing time in milliseconds. [Learn more.](#wz)
 -->
-
 
 ## Serverless Compute - Cold Start Timing {/*serverless-compute-cold-start-timing*/}
 

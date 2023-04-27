@@ -458,7 +458,7 @@ router.match(
     url: {
       url_redirect: {
         code: 302,
-        destination: 'https://www.mydomain.com${path}',
+        destination: 'https://www.mydomain.com%{request_uri}',
       },
     },
   }
@@ -471,7 +471,7 @@ router.match(
     url: {
       url_redirect: {
         code: 302,
-        destination: 'https://domain.com${path}',
+        destination: 'https://domain.com%{request_uri}',
       },
     },
   }

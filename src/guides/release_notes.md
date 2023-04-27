@@ -2,6 +2,14 @@
 title: {{ PRODUCT }} Release Notes
 ---
 
+<Callout type="info">
+
+This page contains release notes related to the [{{ PRODUCT }} Developer Console]({{ APP_URL }}).
+
+See [NPM Packages Changelog](/guides/changelog) for release notes related to the  {{ PRODUCT }} CLI packages and connectors.
+
+</Callout>
+
 #### Edgio Console - April 20, 2023
 
 ##### Rules UI Updates

@@ -211,13 +211,13 @@ edgio use ^7.0.0
 Updating your CDN-as-code configuration to be compatible with version 7 involves:
 
 -   [{{ CONFIG_FILE }} settings](#config-js-settings)
--   [Routes](/*routes*/)
--   [Cache Key Customization](#cache-key-customization]
--   [Matching Behavior](#matching-behavior]
--   [Redirects](#redirects]
--   [Geolocation](#geolocation]
--   [Device Classification](#device-classification]
--   [Response Headers](#response-headers]
+-   [Routes](#routes)
+-   [Cache key customization](#cache-key-customization)
+-   [Matching behavior](#matching-behavior)
+-   [Redirects](#redirects)
+-   [Geolocation](#geolocation)
+-   [Device classification](#device-classification)
+-   [Response headers](#response-headers)
 
 ### {{ CONFIG_FILE }} Settings {/*config-js-settings*/}
 
@@ -247,7 +247,7 @@ Update each property's {{ CONFIG_FILE }} as indicated below.
     }
     ```
 
-    The equivalent configuration in version 7 is:
+    The equivalent configuration in version 7 is shown below.
 
     ```js filename="{{ CONFIG_FILE }} version 7"
     origins: [

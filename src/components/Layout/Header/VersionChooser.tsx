@@ -73,13 +73,8 @@ export default function VersionChooser() {
   const versions = Object.keys(getVersionedConfigs())
     .map((v) => ({
       version: v,
+      href: v === prefixedLatestVersion ? `/` : `/guides/${v}`,
       label: `Applications ${v}`,
-
-      // doesn't include version in the href for the latest version
-      // href: v === prefixedLatestVersion ? `/` : `/guides/${v}`,
-
-      // does include version in the href for the latest version
-      href: `/guides/${v}`,
     }))
     .reverse();
 

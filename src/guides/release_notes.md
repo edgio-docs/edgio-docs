@@ -4,7 +4,7 @@ title: {{ PRODUCT }} Release Notes
 
 <Callout type="info">
 
-This page contains release notes related to the [{{ PRODUCT }} Developer Console]({{ APP_URL }}).
+This page contains release notes related to the {{ PORTAL_LINK }}.
 
 See [NPM Packages Changelog](/guides/changelog) for release notes related to the  {{ PRODUCT }} CLI packages and connectors.
 

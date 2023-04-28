@@ -44,19 +44,19 @@ export const getStaticPaths = async () => {
   const paths = [];
 
   // determine available versions from config files
-  const versions = (
-    await globby('config/v*.config.js', {
-      cwd: join(process.cwd(), 'src'),
-    })
-  ).map(async (file: string) => {
-    const v = (file.match(/v(\d+)\.config\.js/) || [])[1];
+  // const versions = (
+  //   await globby('config/v*.config.js', {
+  //     cwd: join(process.cwd(), 'src'),
+  //   })
+  // ).map(async (file: string) => {
+  //   const v = (file.match(/v(\d+)\.config\.js/) || [])[1];
 
-    return {
-      version: v,
-    };
-  });
+  //   return {
+  //     version: v,
+  //   };
+  // });
 
-  const versionObjects = await Promise.all(versions);
+  // const versionObjects = await Promise.all(versions);
 
   // determine available guides from filesystem
   const allGuides = (
@@ -92,24 +92,36 @@ export const getStaticPaths = async () => {
   }
 
   // guides for each version, including the homepage
+  // paths.push(
+  //   ...versionObjects.flatMap(({version}) => {
+  //     version = `v${version}`;
+  //     return [
+  //       version, // version homepage
+  //       ...baseGuides.map((path) => join(version, path)), // versioned base guides
+  //       ...allGuides.filter((path) => path.startsWith(version)), // versioned overrides
+  //     ];
+  //   })
+  // );
+
+  // prerender guides for the latest version only; previous versions will
+  // fallback to SSR
+  const version = `v${process.env.NEXT_PUBLIC_LATEST_VERSION}`;
   paths.push(
-    ...versionObjects.flatMap(({version}) => {
-      version = `v${version}`;
-      return [
-        version, // version homepage
-        ...baseGuides.map((path) => join(version, path)), // versioned base guides
-        ...allGuides.filter((path) => path.startsWith(version)), // versioned overrides
-      ];
-    })
+    ...[
+      version, // version homepage
+      ...baseGuides.map((path) => join(version, path)), // versioned base guides
+      ...allGuides.filter((path) => path.startsWith(version)), // versioned overrides
+    ]
   );
 
   // convert paths to routes
   routes.push(
     ...[...new Set(paths)].map((path) => ({params: {slug: path.split('/')}}))
   );
+
   return {
     paths: routes,
-    fallback: false,
+    fallback: 'blocking',
   };
 };
 

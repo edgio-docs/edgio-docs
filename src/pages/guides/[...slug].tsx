@@ -151,28 +151,21 @@ export async function getStaticProps({params}: {params: any}) {
 
   const slugAsString = guide.join('/');
 
-  const homepageGlobs = ['md', 'mdx'].flatMap((ext) => [
-    `${guidesPath}/${version}/${slugAsString}.${ext}`,
-    `${pagesPath}/${slugAsString}.${ext}`,
-  ]);
-
   const guideGlobs = ['md', 'mdx'].flatMap((ext) => [
     `${guidesPath}/${version}/${slugAsString}.${ext}`,
     `${guidesPath}/${slugAsString}.${ext}`,
   ]);
 
-  const files = (await globby(isHomepage ? homepageGlobs : guideGlobs)).sort(
-    (a, b) => {
-      // prioritize versioned files over non-versioned files
-      if (a.match(versionRE) && !b.match(versionRE)) {
-        return -1;
-      }
-      if (!a.match(versionRE) && b.match(versionRE)) {
-        return 1;
-      }
-      return 0;
+  const files = (await globby(guideGlobs)).sort((a, b) => {
+    // prioritize versioned files over non-versioned files
+    if (a.match(versionRE) && !b.match(versionRE)) {
+      return -1;
     }
-  );
+    if (!a.match(versionRE) && b.match(versionRE)) {
+      return 1;
+    }
+    return 0;
+  });
 
   const [file] = files;
   if (!file) {

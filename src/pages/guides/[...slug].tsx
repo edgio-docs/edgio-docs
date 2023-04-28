@@ -119,6 +119,8 @@ export const getStaticPaths = async () => {
     ...[...new Set(paths)].map((path) => ({params: {slug: path.split('/')}}))
   );
 
+  // in the end, only routes matching `/guides/v7/*` will be prerendered
+  // and the rest (eg. /guides/v6/*) will fallback to SSR
   return {
     paths: routes,
     fallback: 'blocking',
@@ -134,10 +136,6 @@ export async function getStaticProps({params}: {params: any}) {
   const isVersionSpecifiedInSlug = versionRE.test(version);
 
   if (!isVersionSpecifiedInSlug) {
-    // no version specified so use the latest
-    // version = `v${latestVersion}`;
-    // guide = slug;
-
     // no version specified in the path, so redirect to the latest version path
     return {
       redirect: {

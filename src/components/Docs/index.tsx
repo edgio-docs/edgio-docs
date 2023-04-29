@@ -64,7 +64,7 @@ const StyledDocs = styled.div`
 
     .article-ul__list,
     .article-ol__list {
-      padding-left: 24px;
+      padding-left: 27px;
       list-style: square;
       margin-bottom: 0.8rem;
       overflow: hidden;

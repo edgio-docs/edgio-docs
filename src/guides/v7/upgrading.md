@@ -17,7 +17,7 @@ Upgrading to {{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} to version 7 involves the 
 5.  [Create a property.](#create-property)
 6.  [Define environments.](#define-environments)
 7.  [Upgrade the {{ PRODUCT }} CLI.](#upgrade-the-cli)
-8.  [Upgrade your {{ PRODUCT }} packages to version 7.](#upgrade-packages-to-version-7)
+8.  [Upgrade {{ PRODUCT }} packages.](#upgrade-packages)
 9.  [Update your CDN-as-code configuration](#update-your-cdn-as-code-configuration) to reflect changes introduced in version 7.
 10. [Build your {{ PRODUCT }} properties.](#build-your-properties)
 11. [Deploy to {{ PRODUCT }}](#deploy-to)
@@ -158,7 +158,7 @@ Perform the following steps for each of your properties:
 
 <Callout type="info">
 
-  This section only applies to {{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} version 5.x and earlier. If you are using version 6.x, proceed to the [Upgrade the {{ PRODUCT }} CLI step](#upgrade-the-cli).
+  This section only applies to {{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} version 5.x and earlier. If you are using version 6.x, proceed to the [Create an {{ PRODUCT }} account step](#create-account).
 
 </Callout>
 
@@ -178,11 +178,11 @@ Once you are using Node.js v16, update your application code to be compatible wi
 
 ## Step 3: Create an {{ PRODUCT }} Account {/*create-account*/}
 
-Although you already have a version 6 account through `app.layer0.co`, you will need to [sign up for a new version 7 account through `{{ APP_DOMAIN }}`]({{ APP_URL }}/signup} using the same email address, Google account, or Github account.
+Although you already have an existing account through `app.layer0.co`, you will need to [sign up for a new account through {{ APP_DOMAIN }}]({{ APP_URL }}/signup) using the same email address, Google account, or Github account.
 
 ## Step 4: Create a Team {/*create-team*/}
 
-If the property that you are currently migrating is in a team space, then you will need to recreate that team within {{ APP_DOMAIN }}.
+If the property being migrated belongs to a team space, then you will need to recreate that team within {{ APP_DOMAIN }}.
 
 1.  From the {{ PORTAL_LINK }}, click on the <Image inline src="/images/v7/icons/menu-up-down.png" alt="Menu" /> icon next to your name and then click on **Create a team**. 
 
@@ -211,11 +211,17 @@ You now need to create your property within the {{ PORTAL }}.
     2.  Type the desired hostname (e.g., `www.example.com`).
     3.  Repeat steps 1 and 2 as needed.
 
-5.  Delete the default origin configuration (aka backend) by clicking the <Image inline src="/images/v7/icons/delete-2.png" alt="Delete" /> icon that appears on the right-hand side of the `Origin: web` bar. We will define your origin configuration(s) within the {{ CONFIG_FILE }} file within the **Update your CDN-as-code configuration** step.
+5.  Delete the default origin configuration (aka backend) by clicking the <Image inline src="/images/v7/icons/delete-2.png" alt="Delete" /> icon that appears on the right-hand side of the `Origin: web` bar. 
+
+    <Callout type="info">
+
+      Since you are taking advantage of CDN-as-code, you should define your origin configuration(s) within the {{ CONFIG_FILE }} file instead of the {{ PORTAL }}. Information on how to define origin configurations is provided within the **Update your CDN-as-code configuration** step.
+
+    </Callout>
 
 6.  Click **Create Property**.
 
-## Step 6: Define Environments (/**define-environments/)
+## Step 6: Define Environments {/*define-environments*/}
 
 If the property being migrated uses multiple environments in version 6, then you should recreate those environments within your new property.
 
@@ -262,7 +268,7 @@ yarn global add @edgio/cli
 
 </SnippetGroup>
 
-## Step 8: Upgrade {{ PRODUCT }} Packages to Version 7 {/*upgrade-packages-to-version-7*/}
+## Step 8: Upgrade {{ PRODUCT }} Packages {/*upgrade-packages*/}
 
 Update all {{ PRODUCT }} packages to version 7 using the CLI.
 
@@ -276,7 +282,7 @@ edgio use ^7.0.0
 
 </Callout>
 
-## Step 9: Update your CDN-as-code configuration {/*update-your-cdn-as-code-configuration*/} 
+## Step 9: Update your CDN-as-Code Configuration {/*update-your-cdn-as-code-configuration*/} 
 
 Updating your CDN-as-code configuration to be compatible with version 7 involves:
 
@@ -456,20 +462,26 @@ new Router()
   })
 ```
 
-In order to ease the transition to version 7, we provide limited support for the legacy syntax. However, the following syntax is unsupported:
+In order to ease the transition to version 7, we provide limited support for legacy syntax. However, the following syntax is unsupported:
 
--   **fallback():** The `fallback()` method executes when no other route is matched. This is unsupported in version 7. If you are trying to proxy a request to a legacy origin, then you may do so by mapping the desired hostname to an origin configuration from within the {{ PORTAL }}. Deploying to {{ PRODUCT }} automatically generates origin configurations from those defined within the {{ CONFIG_FILE }}. For this reason, we recommend that you map your hostnames to origins once you have deployed your property to {{ PRODUCT }}.
+-   **fallback():** The `fallback()` method, which is unsupported in version 7, executes when no other route is matched. If you are trying to proxy a request to a legacy origin, then you may do so by mapping the desired hostname to an origin configuration from within the {{ PORTAL }}. 
+
+    <Callout type="tip">
+
+      Deploying to {{ PRODUCT }} automatically generates origin configurations from those defined within the {{ CONFIG_FILE }} file. For this reason, we recommend that you map your hostnames to origins once you have deployed your property to {{ PRODUCT }}. [Learn more.](/guides/basics/hostnames_and_origins#add-modify-delete-hostname)
+
+    </Callout>
 
     You may also manually assign an origin configuration within a route through `set_origin`. If you want this route to act as a catch-all, then we recommend that you position it above your other routes. 
 
-    ```
+    ```js
     router.get('/', {
         origin: {
           set_origin: 'myorigin',
           }
       })
     ```
--   **catch():** The `catch()` method allows the user to alter responses that have returned an error code. This is unsupported in version 7.
+-   **catch():** The `catch()` method, which is unsupported in version 7, allows the user to alter responses that have returned an error code. 
 -   **destination():** The `destination()` method is unsupported in version 7 at this time. However, you may assign an origin to requests through `set_origin` and redirect requests through `url_redirect`. A future release will provide a streamlined version of traffic splitting through the {{ PORTAL }}. 
 
 -   **ResponseWriter Methods:** The following `ResponseWriter` methods are not fully supported in version 7:
@@ -697,16 +709,16 @@ If you encounter a build issue as a result of upgrading Node.js, then you should
     Run `{{ FULL_CLI_NAME }} build` to rebuild your {{ PRODUCT }} property.
 
 
-## Step 11: Deploy to {{ PRODUCT }} (/**deploy-to-/)
+## Step 11: Deploy to {{ PRODUCT }} {/*deploy-to-*/}
 
-Once your successfully built your property, run the following command to deploy your property to {{ PRODUCT }}:
+Once you have successfully built your property, run the following command to deploy your property to {{ PRODUCT }}:
 
 ```bash
 edgio deploy --site=<PROPERTY> --team=<TEAM>
 ```
 
 **Key information:**
--   Replace the placeholders: 
+-   Replace the following placeholders: 
     -   `<PROPERTY>`: Replace this placeholder with the name of the property created in step 5.
     -   `<TEAM>`: Replace this placeholder with the name of the team created in step 4. If you are deploying to a property in a private space, then you should omit `--team=<TEAM>` from this command.
 

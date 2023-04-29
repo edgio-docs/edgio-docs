@@ -33,7 +33,7 @@ This section only applies to {{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} 4 and earl
 
 Perform the following steps for each of your properties:
 
-1.  Rename `layer0.config.js` to `edgio.config.js`. 
+1.  Rename `layer0.config.js` to `{{ CONFIG_FILE }}`. 
 
     <Callout type="important"> 
  
@@ -101,7 +101,7 @@ Perform the following steps for each of your properties:
 
     -   **{{ CONFIG_FILE }}:** If you are using an {{ PRODUCT }} connector, then you should also rename the connector defined in the `connector` property.
 
-        For example, you should update `connector: '@layer0/next'` to `connector: '@edgio/next'`.
+        For example, you should update `connector: '@layer0/next'` to `connector: '{{ PACKAGE_NAME }}/next'`.
 
     -   **Next app:** Rename all {{ PRODUCT }} references within your `next.config.js` from `@layer0` to `{{ PACKAGE_NAME }}`.
 
@@ -117,8 +117,8 @@ Perform the following steps for each of your properties:
         You should update all of these references as shown below.
 
         ```js filename="next.config.js version 7"
-        const { withServiceWorker } = require('@edgio/next/sw')
-        const withEdgio = require('@edgio/next/withEdgio')
+        const { withServiceWorker } = require('{{ PACKAGE_NAME }}/next/sw')
+        const withEdgio = require('{{ PACKAGE_NAME }}/next/withEdgio')
         module.exports = withEdgio(
         ...
         ```
@@ -149,8 +149,8 @@ Perform the following steps for each of your properties:
 
     ```bash filename=".gitignore"
     ...
-    # Edgio generated build directory
-    .edgio
+    # {{ PRODUCT }} generated build directory
+    .{{ PRODUCT_NAME_LOWER }}
     ```
 <!-- List additional 4.x considerations here and link them to more info -->
 
@@ -193,6 +193,12 @@ If the property being migrated belongs to a team space, then you will need to re
     ![Add a Team](/images/v7/basics/team-create-2.png)
 
 3.  Invite the desired team members. [Learn more.](/guides/basics/collaboration#managing-team-members)
+
+<Callout type="important">
+
+  If you are an enterprise customer, contact your account manager or our [sales department](https://edg.io/contact-us/) at 1 (866) 200 - 5463 to upgrade your newly created team.
+
+</Callout>
 
 ## Step 5: Create a Property {/*create-property*/}
 
@@ -259,11 +265,11 @@ Install the latest version of our CLI.
 <SnippetGroup>
 
 ```bash tabLabel="npm"
-npm install -g @edgio/cli
+npm install -g @{{ FULL_CLI_NAME }}/cli
 ```
 
 ```bash tabLabel="Yarn 1 (Classic)"
-yarn global add @edgio/cli
+yarn global add @{{ FULL_CLI_NAME }}/cli
 ```
 
 </SnippetGroup>
@@ -273,7 +279,7 @@ yarn global add @edgio/cli
 Update all {{ PRODUCT }} packages to version 7 using the CLI.
 
 ```bash 
-edgio use ^7.0.0
+{{ FULL_CLI_NAME }} use ^7.0.0
 ```   
   
 <Callout type="info">
@@ -361,7 +367,7 @@ Update each property's {{ CONFIG_FILE }} as indicated below.
         },
 
         // In version 7, the location of the shield (formerly referred to as the “global” PoP) is
-        // configured in edgio.config.js instead of the {{ PORTAL }} 
+        // configured in {{ CONFIG_FILE }} instead of the {{ PORTAL }} 
         // Previous versions only supported a single shield in a single region.
 
         // If your serverless region is US East, use:
@@ -714,7 +720,7 @@ If you encounter a build issue as a result of upgrading Node.js, then you should
 Once you have successfully built your property, run the following command to deploy your property to {{ PRODUCT }}:
 
 ```bash
-edgio deploy --site=<PROPERTY> --team=<TEAM>
+{{ FULL_CLI_NAME }} deploy --site=<PROPERTY> --team=<TEAM>
 ```
 
 **Key information:**
@@ -734,12 +740,18 @@ edgio deploy --site=<PROPERTY> --team=<TEAM>
 
         </Callout>
 
--   The above syntax is only required for your first deployment. After which, you may deploy by running: `edgio deploy`
+-   The above syntax is only required for your first deployment. After which, you may deploy by running: `{{ FULL_CLI_NAME }} deploy`
 
 
 ## Step 12: Update your DNS {/*update-your-dns*/}
 
-Once you are ready to serve traffic through Edgio, you will need to update the DNS for each of your hostname(s). Specifically, version 7 requires a CNAME record that points to a service domain that is either specific to your property’s:
+<Callout type="important">
+
+  If you are an enterprise customer and have not already reached out to your account manager to upgrade your team, please do so before serving traffic through {{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} version 7. You may contact our [sales department](https://edg.io/contact-us/) at 1 (866) 200 - 5463.
+
+</Callout>
+
+Once you are ready to serve traffic through {{ PRODUCT }}, you will need to update the DNS for each of your hostname(s). Specifically, version 7 requires a CNAME record that points to a service domain that is either specific to your property’s:
 
 -   [Environment](/guides/basics/hostnames_and_origins#environment-specific-service-domain)
 -   [Team Space](/guides/basics/hostnames_and_origins#space-specific-service-domain).

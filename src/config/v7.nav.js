@@ -605,6 +605,11 @@ const nav = {
         },
       ],
     },
+    {
+      title: 'Upgrading',
+      path: 'v7/upgrading',
+      icon: 'add-circle',
+    },
   ],
 };
 export default nav;

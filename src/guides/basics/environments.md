@@ -44,7 +44,7 @@ Perform the following steps to create an environment:
 
     1.  From the {{ PORTAL_LINK }}, select the desired private or team space.
     2.  Select the desired property.
-    3.  From the left-hand pane, select the desired environment from under the **Environments** section.
+    3.  From the left-hand pane, click **Environments**.
 
 2.  Click **+ New Environment**.
 

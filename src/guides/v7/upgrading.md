@@ -21,7 +21,8 @@ Upgrading to {{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} to version 7 involves the 
 9.  [Update your CDN-as-code configuration](#update-your-cdn-as-code-configuration) to reflect changes introduced in version 7.
 10. [Build your {{ PRODUCT }} properties.](#build-your-properties)
 11. [Deploy to {{ PRODUCT }}](#deploy-to)
-12. [Update your DNS](#update-your-dns)
+12. [Configure your Firewall](#configure-your-firewall)
+13. [Update your DNS](#update-your-dns)
 
 ## Step 1: Rename layer0 Components {/*rename-layer0-components*/}
 
@@ -117,11 +118,16 @@ Perform the following steps for each of your properties:
         You should update all of these references as shown below.
 
         ```js filename="next.config.js version 7"
-        const { withServiceWorker } = require('{{ PACKAGE_NAME }}/next/sw')
         const withEdgio = require('{{ PACKAGE_NAME }}/next/withEdgio')
         module.exports = withEdgio(
         ...
         ```
+
+        <Callout type="info">
+
+          Version 7 no longer requires the `withServiceWorker` function to be explicitly defined within the `next.config.js` file and therefore it may be safely removed. 
+
+        </Callout>
 
 3.  Install the dependencies defined in the previous step. 
 
@@ -742,8 +748,18 @@ Once you have successfully built your property, run the following command to dep
 
 -   The above syntax is only required for your first deployment. After which, you may deploy by running: `{{ FULL_CLI_NAME }} deploy`
 
+## Step 12: Configure your Firewall {/*configure-your-firewall*/}
 
-## Step 12: Update your DNS {/*update-your-dns*/}
+{{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} version 7 uses a different set of IP blocks than previous versions. This means you need to update your firewall to allow:
+
+-   **API Domain:** You must allow traffic from the following domain: `api.{{ PRODUCT_NAME_LOWER }}.app`. If you plan on deploying to a development or CI/CD environment, then you will also need to allow this domain for the firewall for those environments.
+-   **IP Blocks:** You must allow traffic from {{ PRODUCT }} IP blocks if you plan on using origin configuration(s) (aka backends). 
+
+View our IP blocks by clicking **Instructions** from the **Origins** page.
+
+[Learn more.](/guides/basics/hostnames_and_origins#firewall-allowing-ip-addresses)
+
+## Step 13: Update your DNS {/*update-your-dns*/}
 
 <Callout type="important">
 

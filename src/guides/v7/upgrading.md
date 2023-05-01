@@ -85,7 +85,7 @@ Perform the following steps for each of your properties:
 
         ```js filename="routes.ts version 4 and earlier"
         import {isProductionBuild} from '@layer0/core/environment';
-        import {Router, CustomCacheKey} from '@layer0/core/router';
+        import {Router} from '@layer0/core/router';
         import {nextRoutes} from '@layer0/next';
         ...
         ```
@@ -94,7 +94,7 @@ Perform the following steps for each of your properties:
 
         ```js filename="routes.ts version 7"
         import {isProductionBuild} from '{{ PACKAGE_NAME }}/core/environment';
-        import {Router, CustomCacheKey} from '{{ PACKAGE_NAME }}/core/router';
+        import {Router} from '{{ PACKAGE_NAME }}/core/router';
         import {nextRoutes} from '{{ PACKAGE_NAME }}/next';
         ...
         ```
@@ -629,7 +629,7 @@ In version 7, device classification headers are not included by default. However
 | Header (Version 6 and Earlier) | Variable (Version 7)   |
 |---|---|
 | x-0-device-is-bot | Use `%{wurfl_vcap_is_robot}` instead. This variable returns `true \| false` instead of `0 \| 1`. |
-| x-0-vendor | Use `%{wurfl_vcap_is_ios}` and `%{wurfl_vcap_is_android}` instead. This variable returns `true \| false` instead of `apple \| android \| generic`.   |
+| x-0-vendor | Use `%{wurfl_vcap_is_ios}` and `%{wurfl_vcap_is_android}` instead. These variables return `true \| false` instead of `apple \| android \| generic`.   |
 | x-0-browser | Use `%{wurfl_cap_mobile_browser}` instead. | 
 | x-0-device | Use `%{wurfl_vcap_is_smartphone}` and `%{wurfl_cap_is_tablet}` instead. These variables return `true \| false` instead of `smartphone \| tablet \| mobile \| desktop`. | 
 

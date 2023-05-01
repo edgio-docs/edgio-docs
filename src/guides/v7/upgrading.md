@@ -750,7 +750,7 @@ Once you have successfully built your property, run the following command to dep
 
 ## Step 12: Configure your Firewall {/*configure-your-firewall*/}
 
-{{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} version 7 uses a different set of IP blocks than previous versions. This means you need to update your firewall to allow:
+{{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} version 7 uses a different set of IP blocks than previous versions. This means that you need to update your firewall to allow:
 
 -   **API Domain:** You must allow traffic from the following domain: `api.{{ PRODUCT_NAME_LOWER }}.app`. If you plan on deploying to a development or CI/CD environment, then you will also need to allow this domain for the firewall for those environments.
 -   **IP Blocks:** You must allow traffic from {{ PRODUCT }} IP blocks if you plan on using origin configuration(s) (aka backends). 

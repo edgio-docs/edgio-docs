@@ -304,20 +304,24 @@ The term `CACHEABLE` indicates whether the requested content could have been cac
 
 The `x-ec-cache-key` response header indicates the cache key associated with the requested content. A cache key identifies an asset for the purposes of caching. In other words, our servers will check for a cached version of an asset according to its cache key.
 
-**Default syntax:** `//http/80<ACCOUNT ID>/<ENVIRONMENT VERSION>/<RELATIVE PATH>://<URI HASH>`
+**Default syntax:** `//http/80<ACCOUNT ID>/<ORIGIN CONFIGURATION>/<ENVIRONMENT VERSION>/<RELATIVE PATH>:/hs-<URI HASH>`
+
+x-ec-cache-key: //http/801B28FC/web/21/gaming/:/hs-5041808438894094098
+
 
 Definitions for the above placeholder values are provided below.
 
 | Placeholder  | Description  |
 |---|---|
 | `<ACCOUNT ID>`  | Indicates your unique customer account ID.   |
+| `<ORIGIN CONFIGURATION>` | Indicates the name of the origin configuration associated with the request. Returns `origin` for Serverless Compute requests. |
 | `<ENVIRONMENT VERSION>`  | Indicates the version of the environment responsible for serving this request. |
 | `<RELATIVE PATH>`  | Indicates the relative path to the requested content. This relative path starts directly after the hostname. By default, query strings are ignored by the caching mechanism and therefore they will be excluded from the cache key. <Callout type ="info">If a query string is recorded in the cache key, it will be converted to its hash equivalent. After which, it will be inserted between the name of the requested asset and its file extension (e.g., asset**HashValue**.html).</Callout> |
 | `<URI HASH>`  | Indicates a hash of the request URI. |
 
 **Syntax:** `x-ec-cache-key: <CACHE KEY>`
 
-**Example:** `x-ec-cache-key: //http/800001/origin/images/foo.jpg`
+**Example:** `x-ec-cache-key: //http/800001/web/21/images/foo.jpg:/hs-5041808438894094098`
 
 #### Cache State Response Header {/*cache-state-response-header*/}
 

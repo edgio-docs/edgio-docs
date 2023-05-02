@@ -318,7 +318,9 @@ Manage deployed property's environments and environment variables.
 
 ### init {/* init */}
 
-Run in an existing app to add all required packages and files need to publish your app on {{ PRODUCT_NAME }}
+Run in a new or existing app to add all required packages and files need to deploy your app on {{ PRODUCT_NAME }}.
+
+It is recommended you specify the `{{ INIT_ARG_EDGIO_VERSION }}` option to ensure you are using the correct version of {{ PRODUCT_NAME }}.
 
 #### Example {/* example */}
 
@@ -328,9 +330,10 @@ Run in an existing app to add all required packages and files need to publish yo
 
 #### Options {/* options */}
 
-| Name          | Description                                                                                                                                                                                                         |
-| ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `--connector` | The name of a specific connector package to install, or a path to a directory that implements the [connector interface](/guides/sites_frameworks/connectors#implementing-a-connector-directly-within-your-project). |
+| Name                              | Description                                                                                                                                                                                                         |
+| --------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `--connector`                     | The name of a specific connector package to install, or a path to a directory that implements the [connector interface](/guides/sites_frameworks/connectors#implementing-a-connector-directly-within-your-project). |
+| `--{{PRODUCT_NAME_LOWER}}Version` | The version of {{ PRODUCT_NAME }} to install. Defaults to `latest`.                                                                                                                                                 |
 
 ### login {/* login */}
 

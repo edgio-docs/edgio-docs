@@ -19,10 +19,11 @@ Upgrading to {{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} to version 7 involves the 
 7.  [Upgrade the {{ PRODUCT }} CLI.](#upgrade-the-cli)
 8.  [Upgrade {{ PRODUCT }} packages.](#upgrade-packages)
 9.  [Update your CDN-as-code configuration](#update-your-cdn-as-code-configuration) to reflect changes introduced in version 7.
-10. [Build your {{ PRODUCT }} properties.](#build-your-properties)
-11. [Deploy to {{ PRODUCT }}](#deploy-to)
-12. [Configure your Firewall](#configure-your-firewall)
-13. [Update your DNS](#update-your-dns)
+10. [Real User Monitoring (RUM) Token](#real-user-monitoring-rum-token)
+11. [Build your {{ PRODUCT }} properties.](#build-your-properties)
+12. [Deploy to {{ PRODUCT }}](#deploy-to)
+13. [Configure your Firewall](#configure-your-firewall)
+14. [Update your DNS](#update-your-dns)
 
 ## Step 1: Rename layer0 Components {/*rename-layer0-components*/}
 
@@ -684,7 +685,22 @@ new Router().match("/:path", {
 
     [Learn more.](/guides/performance/response#requesting-debug-cache-information)
 
-## Step 10: Build your {{ PRODUCT }} Properties {/*build-your-properties*/}
+## Step 10: Real User Monitoring (RUM) Token {/*real-user-monitoring-rum-token*/}
+
+If you are tracking Core Web Vitals through RUM, then you will need to update the `initEdgioRum` script to use your version 7 token. Your version 7 token is provided on the **Core Web Vitals** page.
+
+```html
+<script defer>
+  function initEdgioRum() {
+    new Edgio.Metrics({
+      token: 'ab1234c5-d6ef-789a-12c0-bb48102c2023' //version 7 token
+    }).collect()
+  }
+</script>
+<script src="https://rum.layer0.co/latest.js" defer onload="initEdgioRum()"></script>
+```
+
+## Step 11: Build your {{ PRODUCT }} Properties {/*build-your-properties*/}
 
 Build each of your {{ PRODUCT }} properties by running the following command in its root directory:
 
@@ -721,7 +737,7 @@ If you encounter a build issue as a result of upgrading Node.js, then you should
     Run `{{ FULL_CLI_NAME }} build` to rebuild your {{ PRODUCT }} property.
 
 
-## Step 11: Deploy to {{ PRODUCT }} {/*deploy-to-*/}
+## Step 12: Deploy to {{ PRODUCT }} {/*deploy-to-*/}
 
 Once you have successfully built your property, run the following command to deploy your property to {{ PRODUCT }}:
 
@@ -748,7 +764,7 @@ Once you have successfully built your property, run the following command to dep
 
 -   The above syntax is only required for your first deployment. After which, you may deploy by running: `{{ FULL_CLI_NAME }} deploy`
 
-## Step 12: Configure your Firewall {/*configure-your-firewall*/}
+## Step 13: Configure your Firewall {/*configure-your-firewall*/}
 
 {{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} version 7 uses a different set of IP blocks than previous versions. This means that you need to update your firewall to allow:
 
@@ -759,7 +775,7 @@ View our IP blocks by clicking **Instructions** from the **Origins** page.
 
 [Learn more.](/guides/basics/hostnames_and_origins#firewall-allowing-ip-addresses)
 
-## Step 13: Update your DNS {/*update-your-dns*/}
+## Step 14: Update your DNS {/*update-your-dns*/}
 
 <Callout type="important">
 
@@ -785,10 +801,15 @@ Congratulations on successfully migrating {{ PRODUCT }} to version 7!
 ## Additional Considerations {/*additional-considerations*/}
 
 Review the following changes and revise your configuration as needed:
+-   [Cache-manifest.js File](#cache-manifest-js-file)
 -   [JWT Access Control End-of-Life](#jwt-access-control-end-of-life)
 -   [Permalink Indexing](#permalink-indexing)
 -   [GraphQL Caching End-of-Life](#graphql-caching-eol)
 -   [Duplicate Query String Parameters](#duplicate-query-string-parameters)
+
+### Cache-manifest.js File {/*cache-manifest-js-file*/}
+
+Version 7 no longer generates or uses the `cache-manifest.js` file. Requesting this file returns a `404 Not Found`. Therefore, we recommend removing all requests for this file from your code. 
 
 ### JWT Access Control End-of-Life {/*jwt-access-control-end-of-life*/}
 

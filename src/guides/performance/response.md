@@ -306,9 +306,6 @@ The `x-ec-cache-key` response header indicates the cache key associated with the
 
 **Default syntax:** `//http/80<ACCOUNT ID>/<ORIGIN CONFIGURATION>/<ENVIRONMENT VERSION>/<RELATIVE PATH>:/hs-<URI HASH>`
 
-x-ec-cache-key: //http/801B28FC/web/21/gaming/:/hs-5041808438894094098
-
-
 Definitions for the above placeholder values are provided below.
 
 | Placeholder  | Description  |

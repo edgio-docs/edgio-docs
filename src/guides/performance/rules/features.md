@@ -1224,6 +1224,13 @@ Adds one or more header(s) to the response.
 -   Use alphanumeric characters, dashes, or underscores when specifying a header name.
 -   Use [feature variables](/guides/performance/rules/feature_variables) to dynamically construct header values.
 -   This feature requires {{ PRODUCT }} to add a response header, regardless of whether that header already exists in the response. This may cause the response to include multiple headers with the same name.
+
+    <Callout type="tip">
+
+      Use the [Set Response Headers feature](#set-request-headers) if you prefer to overwrite or append to a header when it already exists in the response.
+
+    </Callout>
+
 -   The following headers are reserved and cannot be modified by this feature:
     -   accept-ranges
     -   age

@@ -2,15 +2,21 @@
 title: Upgrading to {{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} Version 7
 ---
 
-<Callout type="important">
+The {{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} platform consists of the following products:
 
-  {{ PRODUCT }} {{ PRODUCT_PLATFORM }} version 7 currently only supports Next, Nuxt, and Nuxt 3. We plan on introducing support for a wide variety of web application frameworks in the near future. If your property is a traditional website, uses a supported framework, or if you have not integrated your web application framework through {{ PRODUCT }} {{ PRODUCT_PLATFORM }}, then you may proceed to upgrade to version 7. 
+-   {{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} improves your site’s performance through caching, predictive prefetching, and serverless computing. 
+-   {{ PRODUCT }} {{ PRODUCT_SECURITY }} provides robust, multi-layered Web Application and API Protection.
+-   {{ PRODUCT }} {{ PRODUCT_PLATFORM }} provides optimal performance and development efficiency to your headless Jamstack applications. 
 
-</Callout>
+    <Callout type="important">
+
+      {{ PRODUCT }} {{ PRODUCT_PLATFORM }} version 7 currently only supports Next, Nuxt, and Nuxt 3. We plan on introducing support for a wide variety of web application frameworks in the near future. If your property is a traditional website, uses a supported framework, or if you have not integrated your web application framework through {{ PRODUCT }} {{ PRODUCT_PLATFORM }}, then you may proceed to upgrade to version 7. 
+
+    </Callout>
 
 Upgrading to {{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} to version 7 involves the following steps:
 
-1.  **Version 4 and Earlier:** [Rename layer0.config.js and {{ PRODUCT }} packages.](#rename-layer0-components)
+1.  **{{ PRODUCT_LEGACY }} (Version 4 and Earlier):** [Rename layer0.config.js and {{ PRODUCT }} packages.](#rename-layer0-components)
 2.  **Version 5 and Earlier:** [Upgrade Node.js](#upgrade-to-node-js-16-x) to version 16.x and update your application to be compatible with Node.js 16.x.
 3.  [Create an {{ PRODUCT }} account.](#create-account)
 4.  [Create a team.](#create-team)
@@ -809,7 +815,10 @@ Review the following changes and revise your configuration as needed:
 
 ### Cache-manifest.js File {/*cache-manifest-js-file*/}
 
-Version 7 no longer generates or uses the `cache-manifest.js` file. Requesting this file returns a `404 Not Found`. Therefore, we recommend removing all requests for this file from your code. 
+Version 7 no longer generates or uses the `cache-manifest.js` file. If you detect `404 Not Found` requests for `cache-manifest.js` after upgrading to version 7, verify that:
+
+-   You have upgraded the `{{ PACKAGE_NAME }}/prefetch` library to version 7.
+-   Your application no longer references the `@layer0/prefetch` library.
 
 ### JWT Access Control End-of-Life {/*jwt-access-control-end-of-life*/}
 

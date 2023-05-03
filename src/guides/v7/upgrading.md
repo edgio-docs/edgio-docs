@@ -4,9 +4,9 @@ title: Upgrading to {{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} Version 7
 
 The {{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} platform consists of the following products:
 
--   {{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} improves your site’s performance through caching, predictive prefetching, and serverless computing. 
--   {{ PRODUCT }} {{ PRODUCT_SECURITY }} provides robust, multi-layered Web Application and API Protection.
--   {{ PRODUCT }} {{ PRODUCT_PLATFORM }} provides optimal performance and development efficiency to your headless Jamstack applications. 
+-   {{ PRODUCT }} {{ PRODUCT_EDGE }} improves your site’s performance and speeds up your development lifecycle. [Learn more.](/guides/performance)
+-   {{ PRODUCT }} {{ PRODUCT_SECURITY }} provides robust, multi-layered Web Application and API Protection. [Learn more.](/guides/security)
+-   {{ PRODUCT }} {{ PRODUCT_PLATFORM }} provides optimal performance and development efficiency to your headless Jamstack applications. [Learn more.](/guides/sites_frameworks)
 
     <Callout type="important">
 

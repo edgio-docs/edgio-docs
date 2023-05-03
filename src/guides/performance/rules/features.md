@@ -1227,7 +1227,7 @@ Adds one or more header(s) to the response.
 
     <Callout type="tip">
 
-      Use the [Set Response Headers feature](#set-request-headers) if you prefer to overwrite or append to a header when it already exists in the response.
+      Use the [Set Response Headers feature](#set-response-headers) if you prefer to overwrite or append to a header when it already exists in the response.
 
     </Callout>
 

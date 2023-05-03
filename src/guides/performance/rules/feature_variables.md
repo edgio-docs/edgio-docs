@@ -26,23 +26,48 @@ Feature variables are described below.
 | Type | Variable  | Description  |
 |---|---|---|
 |ASN (Client)|`%{geo_asnum}` |  Indicates the client's AS number.<br />**Sample Value:** `AS15133`|
+|Brand Name|`%{wurfl_cap_brand_name}`|A string that indicates the brand name of the device.<br />**Sample Value:** `Samsung`|
 |City (Client)|`%{geo_city}` |  Indicates the client's city.<br />**Sample Value:** `Los Angeles`|
 |Continent (Client)|`%{geo_continent}` |  Indicates the client's continent through its abbreviation. Valid values are:<ul><li>**AF:** Africa</li><li>**AS:** Asia</li><li>**EU:** Europe</li><li>**NA:** North America</li><li>**OC:** Oceania</li><li>**SA:** South America</li></ul><br />**Sample Value:** `NA`|
 |Cookie Value|`%{cookie_<COOKIE>}` |  Returns the value corresponding to the cookie identified by the `<COOKIE>` term. Replace dashes in the cookie name with underscores (e.g., change `preferences-cookie` to `preferences_cookie`).<br />**Sample Usage:** `%{cookie__utma}`<br />**Sample Value:** `111662281.2.10.1222100123`|
 |Country (Client)|`%{geo_country}` |  Indicates the country from which the requested originated through its country code.<br />**Sample Value:** `US`|
 |Designated Market Area (Client) |`%{geo_dma_code}` |  Indicates the client's media market by its region code. This field is only applicable to requests that originate from the United States.<br />**Sample Value:** `745`|
+|Device OS|`%{wurfl_cap_device_os}`|A string that indicates the operating system installed on the device.<br />**Sample Value:** `IOS`|
+|Device OS Version|`%{wurfl_cap_device_os_version}`|A string that indicates the version number of the OS installed on the device.<br />**Sample Value:** `1.0.1`|
+|Dual Orientation|`%{wurfl_cap_dual_orientation}`|A Boolean that indicates whether the device supports dual orientation.<br />**Sample Value:** `true`|
 |HTTP Method|`%{request_method}` |  Indicates the HTTP request method.<br />**Sample Value:** `GET`|
+|HTML Preferred DTD|`%{wurfl_cap_html_preferred_dtd}`|A string that indicates the mobile device's preferred document type definition (DTD) for HTML content. <br />**Sample Value:** `html5` |
 |HTTP Status Code|`%{status}` |  Indicates the HTTP status code for the response.<br />**Sample Value:** `200`|
+|Image Inlining|`%{wurfl_cap_image_inlining}`|A Boolean that indicates whether the device supports Base64 encoded images.<br />**Sample Value:** `false`|
 |IP Address (Client)|`%{virt_dst_addr}` |  Indicates the client's IP address.<br />**Sample Value:** `192.168.1.1`|
+|Is Android|`%{wurfl_vcap_is_android}`|A Boolean that indicates whether the device uses the Android OS.<br />**Sample Value:** `true`|
+|Is App|`%{wurfl_vcap_is_app}`| A Boolean that indicates whether a native application requested content.<br />**Sample Value:** `true`|
+|Is Full Desktop|`%{wurfl_vcap_is_full_desktop}`|A Boolean that indicates whether the device provides a full desktop experience.<br />**Sample Value:** `true`|
+|Is IOS|`%{wurfl_vcap_is_ios}`| A Boolean that indicates whether the device uses iOS.<br />**Sample Value:** `false`|
+|Is Robot|`%{wurfl_vcap_is_robot}`| A Boolean that indicates whether the device is considered to be an automated HTTP client (e.g., a robot crawler).<br />**Sample Value:** `true`|
+|Is Smart TV|`%{wurfl_cap_is_smarttv}`|A Boolean that indicates whether the device is a smart TV.<br />**Sample Value:** `false`|
+|Is Smartphone|`%{wurfl_vcap_is_smartphone}`|A Boolean that indicates whether the device is a smartphone.<br />**Sample Value:** `true`|
+|Is Tablet|`%{wurfl_cap_is_tablet}`|A Boolean that indicates whether the device is a tablet. This is an OS-independent description.<br />**Sample Value:** `true`|
+|Is Touchscreen|`%{wurfl_vcap_is_touchscreen}`|A Boolean that indicates whether the device's primary pointing device is a touchscreen.<br />**Sample Value:** `true`|
+|Is Windows Phone|`%{wurfl_vcap_is_windows_phone}`|A Boolean that indicates whether the device is a a Windows Mobile 6.5/Windows Phone 7 or higher.<br />**Sample Value:** `true`|
+|Is Wireless Device|`%{wurfl_cap_is_wireless_device}`|A Boolean that indicates whether the device is considered a wireless device For the purposes of this capability, PCs and laptops are not considered to be mobile devices.<br />**Sample Value:** `true`|
 |Latitude (Client)|`%{geo_latitude}` |  Indicates the client's latitude.<br />**Sample Value:** `34.0995`|
 |Longitude (Client)|`%{geo_longitude}` |  Indicates the client's longitude.<br />**Sample Value:** `-118.4143`|
+|Marketing Name|`%{wurfl_cap_marketing_name}`|A string that indicates the device's marketing name.<br />**Sample Value:** `BlackBerry 8100 Pearl`|
 |Metropolitan Statistical Area (Client)|`%{geo_metro_code}` |  Indicates the client's metropolitan area. This field is only applicable to requests that originate from the United States.<br />**Sample Value:** `745`|
+|Mobile Browser|`%{wurfl_cap_mobile_browser}`|A string that indicates the browser used to request content from the device.<br />**Sample Value:** `Chrome`|
+|Mobile Browser Version|`%{wurfl_cap_mobile_browser_version}`|A string that indicates the version of the browser used to request content from the device.<br />**Sample Value:** `31`|
+|Model Name|`%{wurfl_cap_model_name}`|A string that indicates the device's model name.<br />**Sample Value:** `s10`|
 |Normalized Path|`%{normalized_path}` |  Indicates the normalized relative path for the request submitted to the CDN. <br />**Key information:**<ul><li>This relative path excludes the query string.</li><li>This relative path corresponds to the request submitted to the CDN and it does not reflect URL rewrites.</li><li>URL normalization, as defined in [RFC 3986](https://tools.ietf.org/html/rfc3986#page-38), was applied to this value.</li></ul>**Sample Value:** `/marketing/images/bunny.png`|
 |Normalized Query String|`%{normalized_query}` |  Indicates the normalized query string defined in the request URL. URL normalization, as defined in [RFC 3986](https://tools.ietf.org/html/rfc3986#page-38), was applied to this value. <br />**Original Query String:** `"client=/123?"`<br />**Sample Value:** `%22client=/123?%22`|
 |Normalized URI|`%{normalized_uri}` |  Indicates the normalized relative path and query string for the request submitted to the CDN. <br />**Key information:**<ul><li>This relative path corresponds to the  request submitted to the CDN and it does not reflect URL rewrites.</li><li>URL normalization, as defined in [RFC 3986](https://tools.ietf.org/html/rfc3986#page-38), was applied to this value.</li></ul>**Sample Value:** `/dir/foo.js?%22client=/123?%22`|
 |Path|`%{path}` |  Indicates the relative path to the requested content. <br />**Key information:**<ul><li>This relative path excludes the query string.</li><li>This relative path reflects URL rewrites due to `url_rewrite`.</li></ul><br />**Sample Value:** `/rewrittendir/foo.js`|
 |Port (Client)|`%{virt_dst_port}` |  Indicates the client's ephemeral port. <br />**Sample Value:** `55885`|
 |Postal Code (Client)|`%{geo_postal_code}` |  Indicates the client's postal code. We only return the first 3 characters for Canadian postal codes and the first 2 - 4 characters for United Kingdom postal codes.<br />**Sample Value:** `90210`|
+|Progressive Download|`%{wurfl_cap_progressive_download}`|A Boolean that indicates whether the device supports the playback of audio/video while it is still being downloaded.<br />**Sample Value:** `true`|
+|Release Date|`%{wurfl_cap_release_date}`|A string that indicates the year and month on which the device was added to the WURFL database. <br />**Format:** `yyyy_mm` <br />**Sample Value:** `2022_december`|
+|Resolution Height|`%{wurfl_cap_resolution_height}`|An integer that indicates the device's height in pixels.<br />**Sample Value:** `768`|
+|Resolution Width|`%{wurfl_cap_resolution_width}`|An integer that indicates the device's width in pixels.<br />**Sample Value:** `1024`|
 |Query String Found |`%{is_args}` |  The value for this variable varies according to whether the request contains a query string.<ul><li>**Query String Found:** ?</li><li>**No Query String:** NULL</li></ul>**Sample Value:** `?`|
 |Query String Parameter Found|`%{is_amp}` |  The value for this variable varies according to whether the request contains at least one query string parameter.<ul><li>**Parameter Found:** &</li><li>**No Parameters:** NULL</li></ul>**Sample Value:** `&`|
 |Query String Parameter Value|`%{arg_<QUERY STRING PARAMETER>}` |  Returns the value corresponding to the query string parameter identified by the `<QUERY STRING PARAMETER>` term. <br />**Sample Usage:** `%{arg_language} `<br />**Sample Query String Parameter:** `language=en`<br />**Sample Value:** `en`|

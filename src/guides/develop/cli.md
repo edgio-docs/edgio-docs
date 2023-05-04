@@ -320,7 +320,11 @@ Manage deployed property's environments and environment variables.
 
 Run this command from the root directory of your web application or website to add all packages and files required to deploy your app on {{ PRODUCT_NAME }}.
 
-It is recommended you specify the `{{ INIT_ARG_EDGIO_VERSION }}` option to ensure you are using the correct version of {{ PRODUCT_NAME }}.
+<Callout type="tip">
+
+  If you are not using the latest version of {{ PRODUCT }}, then you must specify the `{{ INIT_ARG_EDGIO_VERSION }}` option when running this command.
+
+</Callout>
 
 #### Example {/* example */}
 

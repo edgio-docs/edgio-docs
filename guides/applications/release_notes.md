@@ -10,6 +10,14 @@ See [NPM Packages Changelog](/guides/changelog) for release notes related to the
 
 </Callout>
 
+#### {{ PORTAL }} - April 27, 2023
+
+##### Security Updates 
+- Console Security UI: Add reCAPTCHA
+
+##### General Updates
+- Allow team admin to set up a list of allowed IPs for console access.
+
 #### {{ PORTAL }} - April 20, 2023
 
 ##### Rules UI Updates

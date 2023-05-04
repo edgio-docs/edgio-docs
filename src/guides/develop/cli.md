@@ -318,7 +318,7 @@ Manage deployed property's environments and environment variables.
 
 ### init {/* init */}
 
-Run in a new or existing app to add all required packages and files need to deploy your app on {{ PRODUCT_NAME }}.
+Run this command from the root directory of your web application or website to add all packages and files required to deploy your app on {{ PRODUCT_NAME }}.
 
 It is recommended you specify the `{{ INIT_ARG_EDGIO_VERSION }}` option to ensure you are using the correct version of {{ PRODUCT_NAME }}.
 

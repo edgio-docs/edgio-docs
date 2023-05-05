@@ -48,15 +48,6 @@ const _preEdgioExport = {
       );
     }
 
-    // Only exclude modules from the client-side bundle
-    if (!isServer) {
-      config.externals = {
-        // Add any modules you want to exclude here
-        globby: 'commonjs globby',
-        'fs/promises': 'commonjs fs/promises',
-      };
-    }
-
     return config;
   },
 };

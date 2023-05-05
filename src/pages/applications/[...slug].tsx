@@ -19,7 +19,7 @@ import templateReplace from 'utils/templateReplace';
 import {MDHeadingsList} from 'utils/Types';
 
 // location of guide markdown files
-const guidePath = 'guides/open_edge';
+const guidePath = 'guides/applications';
 const basePath = basename(dirname(__dirname));
 
 export default function Guide({
@@ -57,7 +57,8 @@ export async function getStaticPaths() {
         .replace(/.mdx?/, '') // remove extension
   );
 
-  console.log('allGuides: ', allGuides);
+  // guides without version-specific override
+  const baseGuides = allGuides.filter((path: string) => !path.match(/^v\d+/));
 
   // if in dev mode, fallback to SSR for faster builds
   if (isEdgioRunDev()) {
@@ -67,9 +68,16 @@ export async function getStaticPaths() {
     };
   }
 
-  // add all guides to paths
-  paths.push(...[...allGuides]);
-
+  // prerender guides for the latest version only; previous versions will
+  // fallback to SSR
+  const version = `v${process.env.NEXT_PUBLIC_LATEST_VERSION}`;
+  paths.push(
+    ...[
+      version, // version homepage
+      ...baseGuides.map((path) => join(version, path)), // versioned base guides
+      ...allGuides.filter((path) => path.startsWith(version)), // versioned overrides
+    ]
+  );
   // convert paths to routes
   routes.push(
     ...[...new Set(paths)].map((path) => ({params: {slug: path.split('/')}}))
@@ -82,24 +90,40 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({params}: {params: any}) {
-  console.log('params: ', params);
   const {slug}: {slug: string[]} = params;
-  const indexRE = /index.mdx?$/;
-  let guide = (slug && [...slug]) ?? [];
+  const latestVersion = process.env.NEXT_PUBLIC_LATEST_VERSION as string; // defined in next.config.js
+  const versionRE = /^v(\d+)$/;
+  let [version, ...guide] = slug ?? [];
+  let isHomepage = false;
+  const isVersionSpecifiedInSlug = versionRE.test(version);
+
+  if (!isVersionSpecifiedInSlug) {
+    // no version specified in the path, so redirect to the latest version path
+    return {
+      redirect: {
+        destination: `/${basePath}/v${latestVersion}/${slug.join('/')}`,
+        permanent: true,
+      },
+    };
+  } else if (!guide || !guide.length) {
+    // version with no remainig guide path so use as homepage
+    isHomepage = true;
+    guide = ['index'];
+  }
 
   const slugAsString = guide.join('/');
 
   const guideGlobs = ['md', 'mdx'].flatMap((ext) => [
-    `${guidePath}/${slugAsString}/index.${ext}`,
+    `${guidePath}/${version}/${slugAsString}.${ext}`,
     `${guidePath}/${slugAsString}.${ext}`,
   ]);
 
   const files = (await globby(guideGlobs)).sort((a, b) => {
-    // prioritize index files over guide files
-    if (a.match(indexRE) && !b.match(indexRE)) {
+    // prioritize versioned files over non-versioned files
+    if (a.match(versionRE) && !b.match(versionRE)) {
       return -1;
     }
-    if (!a.match(indexRE) && b.match(indexRE)) {
+    if (!a.match(versionRE) && b.match(versionRE)) {
       return 1;
     }
     return 0;
@@ -119,7 +143,7 @@ export async function getStaticProps({params}: {params: any}) {
   let content = await readFile(join(process.cwd(), file), 'utf8');
 
   // update template with versioned constants
-  content = templateReplace(content, getBaseConfig());
+  content = templateReplace(content, getVersionedConfig(version));
 
   // remove any html comments (<!-- -->) as these will not parse correctly
   content = content.replace(/<!--([\s\S]*?)-->/g, '');
@@ -144,5 +168,5 @@ export async function getStaticProps({params}: {params: any}) {
     },
   });
 
-  return {props: {source: mdxSource, headings, version: null}};
+  return {props: {source: mdxSource, headings, version: version ?? null}};
 }

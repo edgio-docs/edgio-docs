@@ -78,7 +78,7 @@ If you are using Bot Manager Standard, then you may only apply a browser challen
 
         <Callout type="info">
 
-          Define the duration for this cookie through the **Valid for (in minutes)** option.
+          Define the duration for this cookie through the **Valid for (in seconds)** option.
 
         </Callout>
 
@@ -168,11 +168,50 @@ If you are using Bot Manager Standard, then you may only apply a browser challen
 
         </Callout>
 
+-   **reCAPTCHA:** Performs an automated assessment of a client's interaction with your site. This assessment, which is performed without user interaction, requires [Google reCAPTCHA v3](https://www.google.com/recaptcha/about/).
+
+    **Response:** The results of the above reCAPTCHA determines what happens next.
+
+    -   **Acceptable:** If the client's reCAPTCHA score is acceptable, then our CDN serves the requested content. Additionally, a cookie will be added to the user's session. This cookie instructs our CDN to serve content to the user without performing an additional reCAPTCHA assessment. Once the cookie expires, new requests for content protected by Bot Manager will require the client's interactions with your site to be reassessed.
+
+        <Callout type="info">
+
+          Define the duration for this cookie through the **Valid for (in seconds)** option.
+
+        </Callout>
+
+    -   **Unacceptable:** If the client's reCAPTCHA score is unacceptable, then the response from the CDN is determined by the enforcement action defined within the reCAPTCHA's **Rule Action** option. You may set this option to any enforcement action, with the exception of Browser Challenge, that has been enabled within this bot rule set.
+
+    **Key information:**
+
+    -   Google reCAPTCHA v3 is a score-based system that learns through real traffic. For this reason, we recommend that you avoid applying reCAPTCHA to machine-to-machine interactions.
+
+    -   Setting up reCAPTCHA requires:
+
+        1.  [Adding reCAPTCHA v3 to your site](https://www.google.com/recaptcha/admin/create) through Google. Upon adding reCAPTCHA to your site, Google will provide a reCAPTCHA site key and secret key. 
+        2.  Configure a reCAPTCHA action within the desired bot rule set. 
+        3.  From the **Bot Rules** tab, find the desired bot rule(s) and set the **Rule Action** option to `reCAPTCHA`. Save your changes.
+        4.  From the desired Security Application configuration:
+
+            1.  Verify that the **Production Bot Manager** option is set to the above bot rule set. 
+            2.  Toggle the **reCAPTCHA off** option to **reCAPTCHA on**.
+            3.  Set the **reCAPTCHA Site Key** option to the site key provided by Google in step 1.
+            4.  Set the **reCAPTCHA Secret Key** option to the secret key provided by Google in step 1.
+            5.  Save your changes.
+
+    -   The **Action Status** option determines the HTTP status code for the response provided to clients that are being assessed through reCAPTCHA.
+
+        <Callout type="info">
+
+          Setting this option to certain status codes (e.g., `204`) may prevent clients from properly displaying your site.
+
+        </Callout>
+
 -   **Redirect:** Redirects requests to the specified URL.
 
     **Key information:**
 
-    -   The HTTP status code for this response will be a 302 Found.
+    -   The HTTP status code for this response will be a `302 Found`.
     -   Set the **URL** option to the full URL to which requests will be redirected.
     
         **Example:** `http://cdn.mydomain.com/marketing/busy.html`
@@ -462,16 +501,18 @@ You may create, modify, and delete Bot Manager configurations.
 
             </Callout>
 
-        2.  From the **Valid for (in minutes)** option, type the number of minutes for which our CDN will serve content to a client that solves a browser challenge without requiring an additional browser challenge to be solved. Specify a value between 1 and 1,440 minutes.
+        2.  From the **Valid for (in seconds)** option, type the number of seconds for which our CDN will serve content to a client that solves a browser challenge without requiring an additional browser challenge to be solved. Specify a value between 1 and 1,000,000 seconds.
         3.  Serve a custom browser challenge by enabling the **Custom Browser Challenge Page** option and then setting the **Browser Challenge Page Template** option to the desired payload.
 
     -   **Bot Manager Advanced:** Set up a browser challenge (see above), custom response, or redirect that can be applied to known bots, spoofed bots, and bots detected through rules.
 
         <Callout type="info">
 
-          Unlike other actions, alert and block actions do not require configuration before they can be applied to bot traffic.
+          Unlike other actions, alert actions do not require configuration before they can be applied to bot traffic.
 
         </Callout>
+
+        -   **Block:** From the **Actions** section, select **Block** and then toggle it to the on position.
 
         -   **Custom Response:** Perform the following steps:
 
@@ -481,6 +522,25 @@ You may create, modify, and delete Bot Manager configurations.
             4.  From the **Response Headers** option, define each desired [custom response header](#custom-response) on a separate line.
                 
                 **Example:** `MyCustomHeader: True`
+
+        -   **reCAPTCHA:** Perform the following steps to set up a reCAPTCHA:
+
+            1.  Set the **Rule Action** option to the enforcement action that will be applied when a client's reCAPTCHA score falls below an acceptable level.
+            2.  From the **Action Status** option, determine the HTTP status code for the response provided to clients that are being served the reCAPTCHA.
+
+                <Callout type="info">
+
+                  Setting this option to certain status codes (e.g., `204`) may prevent clients from properly displaying your site.
+
+                </Callout>
+
+            3.  From the **Valid for (in seconds)** option, type the number of seconds for which our CDN will serve content to a client with an acceptable reCAPTCHA score without reassessment. Specify a value between 1 and 1,000,000 seconds.
+
+            <Callout type="important">
+
+              You must enable reCAPTCHA within a Security Application configuration and provide your Google reCAPTCHA site and secret keys.
+
+            </Callout>
 
         -   **Redirect:** Set the **URL** option to the full URL to which requests will be redirected.
 

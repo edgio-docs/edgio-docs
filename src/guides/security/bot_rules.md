@@ -168,7 +168,7 @@ If you are using Bot Manager Standard, then you may only apply a browser challen
 
         </Callout>
 
--   **reCAPTCHA:** Performs an automated assessment of a client's interaction with your site. This assessment, which is performed without user interaction, requires [Google reCAPTCHA v3](https://developers.google.com/recaptcha).
+-   **reCAPTCHA:** Performs an automated assessment of a client's interaction with your site. This assessment, which is performed without user interaction, requires [Google reCAPTCHA v3](https://www.google.com/recaptcha/about/).
 
     **Response:** The results of the above reCAPTCHA determines what happens next.
 

@@ -78,7 +78,7 @@ If you are using Bot Manager Standard, then you may only apply a browser challen
 
         <Callout type="info">
 
-          Define the duration for this cookie through the **Valid for (in minutes)** option.
+          Define the duration for this cookie through the **Valid for (in seconds)** option.
 
         </Callout>
 
@@ -501,7 +501,7 @@ You may create, modify, and delete Bot Manager configurations.
 
             </Callout>
 
-        2.  From the **Valid for (in minutes)** option, type the number of minutes for which our CDN will serve content to a client that solves a browser challenge without requiring an additional browser challenge to be solved. Specify a value between 1 and 1,440 minutes.
+        2.  From the **Valid for (in seconds)** option, type the number of seconds for which our CDN will serve content to a client that solves a browser challenge without requiring an additional browser challenge to be solved. Specify a value between 1 and 1,000,000 seconds.
         3.  Serve a custom browser challenge by enabling the **Custom Browser Challenge Page** option and then setting the **Browser Challenge Page Template** option to the desired payload.
 
     -   **Bot Manager Advanced:** Set up a browser challenge (see above), custom response, or redirect that can be applied to known bots, spoofed bots, and bots detected through rules.

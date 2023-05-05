@@ -203,7 +203,7 @@ If you are using Bot Manager Standard, then you may only apply a browser challen
 
         <Callout type="info">
 
-          Setting this option to certain status codes (e.g., `204`) may prevent clients that successfully solve a reCAPTCHA from properly displaying your site.
+          Setting this option to certain status codes (e.g., `204`) may prevent clients from properly displaying your site.
 
         </Callout>
 

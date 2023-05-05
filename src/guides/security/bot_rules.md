@@ -194,7 +194,7 @@ If you are using Bot Manager Standard, then you may only apply a browser challen
         4.  From the desired Security Application configuration:
 
             1.  Verify that the **Production Bot Manager** option is set to the above bot rule set. 
-            2.  Toggle the **reCAPTCHA off` option to `reCAPTCHA on`.
+            2.  Toggle the **reCAPTCHA off** option to **reCAPTCHA on**.
             3.  Set the **reCAPTCHA Site Key** option to the site key provided by Google in step 1.
             4.  Set the **reCAPTCHA Secret Key** option to the secret key provided by Google in step 1.
             5.  Save your changes.
@@ -523,7 +523,7 @@ You may create, modify, and delete Bot Manager configurations.
                 
                 **Example:** `MyCustomHeader: True`
 
-        -   Perform the following steps to set up a reCAPTCHA:
+        -   **reCAPTCHA:** Perform the following steps to set up a reCAPTCHA:
 
             1.  Set the **Rule Action** option to the enforcement action that will be applied when a client's reCAPTCHA score falls below an acceptable level.
             2.  From the **Action Status** option, determine the HTTP status code for the response provided to clients that are being served the reCAPTCHA.

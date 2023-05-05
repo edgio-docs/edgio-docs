@@ -270,7 +270,14 @@ Application configuration:
       limit.
 
     </Callout>
--   **Bot Manager:** A [bot manager configuration](/guides/security/bot_rules) is designed to mitigate undesired bot traffic and prevent them from performing undesired or malicious activity, such as scraping your site, carding, taking over accounts through credential stuffing, spamming your forms, launching DDoS attacks, and committing ad fraud.
+-   **Bot Manager:** A [bot manager configuration](/guides/security/bot_rules) determines how bot traffic will be detected and the enforcement action that will be applied to bot traffic.
+
+    <Callout type="info">
+
+      Bot Manager Standard is restricted to serving browser challenges. 
+
+    </Callout> 
+
 -   **Custom Rules:** A [custom rule](/guides/security/custom_rules) identifies
     threats using custom criteria that takes into account your site's
     traffic profile to avoid false positives.
@@ -657,9 +664,10 @@ configurations.
     2.  From the **Production Bot Rule** option, select the desired bot manager configuration.
     3.  Perform the following steps if the selected bot manager configuration uses reCAPTCHA:
 
-            1.  Toggle the **reCAPTCHA off` option to `reCAPTCHA on`.
-            2.  Set the **reCAPTCHA Site Key** option to the site key provided by Google.  in step 1.
-            3.  Set the **reCAPTCHA Secret Key** option to the secret key provided by Google in step 1.
+            1.  Toggle the **reCAPTCHA off** option to **reCAPTCHA on**.
+            2.  If you have not already added Google reCAPTCHA v3 to your site, [add it now](https://www.google.com/recaptcha/admin/create).
+            3.  Set the **reCAPTCHA Site Key** option to the site key provided by Google. 
+            4.  Set the **reCAPTCHA Secret Key** option to the secret key provided by Google.
 
 9.  Optional. Select a custom rule through which production traffic will
     be screened and determine how threats identified by it are handled.

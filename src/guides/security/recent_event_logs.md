@@ -157,6 +157,7 @@ A brief description for each field used to describe/categorize bot traffic is pr
 
 -   **Bot Rules Name:** Indicates the name of the bot rule set that triggered the browser challenge.
 -   **Browser Challenge Status:** Indicates the reason why a browser challenge was served. Valid values are:  
+    -   **CHAL_STATUS_NONE:** Indicates that a browser challenge was not issued.
     -   **CHAL_STATUS_IP_MISMATCH:** Indicates that a browser challenge was served due to an invalid token. This status is typically reported when a token is shared or the user's IP address is modified after the initial token was generated.  
     -   **CHAL_STATUS_NO_TOKEN:** Indicates that a browser challenge was served for a new session.  
     - **CHAL_STATUS_TOKEN_CORRUPTED:** Indicates that a browser challenge was served due to an invalid token. This status is typically reported when a user agent submits a request that includes a token that our service cannot decrypt.  

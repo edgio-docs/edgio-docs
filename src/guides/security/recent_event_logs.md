@@ -77,7 +77,7 @@ for the header bar associated with each sub event is described below.
 
 Each sub event contains the following fields:
 
--   **Matched On:** Indicates a [variable](matched_on_variables) that identifies where the violation was found.
+-   **Matched On:** Indicates a [variable](/guides/security/matched_on_variables) that identifies where the violation was found.
 -   **Matched Value:** Indicates the value of the variable defined by the **Matched On** field.  
 
 <Callout type="info">
@@ -165,7 +165,7 @@ A brief description for each field used to describe/categorize bot traffic is pr
 
         <Callout type="tip">
 
-          You may configure the duration for which our CDN will serve content to a client that solves a browser challenge without requiring an additional browser challenge through the [Security Application](security_applications#bot-rule-configuration)'s **Valid for (in minutes)** option.  
+          You may configure the duration for which our CDN will serve content to a client that solves a browser challenge without requiring an additional browser challenge through the [Security Application](/guides/security/security_applications#bot-rule-configuration)'s **Valid for (in minutes)** option.  
 
         </Callout>
 
@@ -173,7 +173,7 @@ A brief description for each field used to describe/categorize bot traffic is pr
     -   **CHAL_STATUS_WRONG_ANSWER:** Indicates that a browser challenge was served because the user was unable to solve the previous browser challenge. This status may also be reported when the user agent (e.g., web browser) submits a tampered token.
 -   **Client IP:** Identifies the IP address (IPv4) of the client from which the request originated.
 -   **Country Name:** Identifies the country from which the request originated.
--   **Matched On:** Indicates a [variable](matched_on_variables) that identifies where the violation was found.
+-   **Matched On:** Indicates a [variable](/guides/security/matched_on_variables) that identifies where the violation was found.
 -   **Matched Value:** Indicates the value of the variable defined by the **Matched On** field.  
 
     <Callout type="info">

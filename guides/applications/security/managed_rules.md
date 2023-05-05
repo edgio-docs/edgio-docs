@@ -76,7 +76,7 @@ for valid requests.
 
       Define the maximum file size for all other requests through an access rule. 
 
-      [Learn more](access_rules#file-size).
+      [Learn more](/guides/security/access_rules#file-size).
 
     </Callout>
 
@@ -95,7 +95,7 @@ variety of unknown vulnerabilities. This rule set does not solely rely
 on signatures to check for known vulnerabilities. Rather, it analyzes
 all HTTP data for malicious payloads.
 
-In addition to defining a [threshold](basic_setup#managed-rule-violations), this
+In addition to defining a [threshold](/guides/security/basic_setup#managed-rule-violations), this
 rule set allows you to balance protection against false positives through
 the **Paranoia Level** option. Paranoia levels are explained
 below.
@@ -295,7 +295,7 @@ You may create, modify, and delete managed rules.
 **Key information:**
 -   Administer managed rules from the **Manage Rules** page.    
 -   Apply a managed rule to production traffic by adding it to a
-    [Security Application configuration](security_applications) and then
+    [Security Application configuration](/guides/security/security_applications) and then
     determining how it will be enforced. Multiple Security Application
     configurations may use the same managed rule. Leverage this
     capability to tailor security screening by application or traffic
@@ -352,7 +352,7 @@ You may create, modify, and delete managed rules.
         at or higher than the specified value will be identified as
         malicious traffic.
 
-        [Learn more.](basic_setup#managed-rule-violations)
+        [Learn more.](/guides/security/basic_setup#managed-rule-violations)
 
         <Callout type="info">
 
@@ -372,7 +372,7 @@ You may create, modify, and delete managed rules.
 
         </Callout>
 
-         [Learn more.](basic_setup#managed-rule-violations)
+         [Learn more.](/guides/security/basic_setup#managed-rule-violations)
     4.  Review all enabled policies and rules to ensure that the
         legitimate traffic is not targeted by mistake.
 

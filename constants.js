@@ -71,11 +71,11 @@ const EXAMPLES_REPOS = {
 
 const SYSTEM_REQUIREMENTS = `## System Requirements {/*system-requirements*/}
 
-- [Install Node.js 16.16.0](/guides/install_nodejs)`;
+- [Install Node.js 16.16.0](/applications/install_nodejs)`;
 
 const SYSTEM_REQUIREMENTS_H3 = `### System Requirements {/*system-requirements*/}
 
-- [Install Node.js 16.16.0](/guides/install_nodejs)`;
+- [Install Node.js 16.16.0](/applications/install_nodejs)`;
 
 const SIGN_UP = `## Sign up for ${PRODUCT} {/*sign-up*/}
 
@@ -83,7 +83,7 @@ Deploying requires an account on ${PRODUCT}. <a href="${APP_URL}/signup">Sign up
 
 const INSTALL_CLI = `## Install the ${PRODUCT_NAME} CLI {/*install-the-cli*/}
 
-If you have not already done so, install the [${PRODUCT_NAME} CLI](/guides/develop/cli).
+If you have not already done so, install the [${PRODUCT_NAME} CLI](/applications/develop/cli).
 
 <SnippetGroup>
 
@@ -131,7 +131,7 @@ ${INSTALL_CLI}
 
 const INSTALL_CLI_STEP = `Install the ${PRODUCT_NAME} CLI
 
-If you have not already done so, install the [${PRODUCT_NAME} CLI](/guides/develop/cli).
+If you have not already done so, install the [${PRODUCT_NAME} CLI](/applications/develop/cli).
 
 <SnippetGroup>
 
@@ -173,7 +173,7 @@ const RTLD_PROFILE_SETUP_1 = `**To set up a log delivery profile**
 
 const RTLD_PROFILE_SETUP_2 = `5.  From the **Log Format** option, select whether to format log data using our standard JSON format, as a JSON array, as JSON lines, or as a CSV (RTLD CDN only).
     
-    Learn more: [RTLD CDN](/guides/logs/rtld/log_fields_rtld_cdn) | [RTLD Rate Limiting](/guides/logs/rtld/log_fields_rtld_rate_limiting) | [RTLD WAF](/guides/logs/rtld/log_fields_rtld_waf)
+    Learn more: [RTLD CDN](/applications/logs/rtld/log_fields_rtld_cdn) | [RTLD Rate Limiting](/applications/logs/rtld/log_fields_rtld_rate_limiting) | [RTLD WAF](/applications/logs/rtld/log_fields_rtld_waf)
 
     <a id="downsampling" />
 
@@ -198,7 +198,7 @@ const RTLD_PROFILE_SETUP_2 = `5.  From the **Log Format** option, select whether
 
     -   [RTLD CDN](#filtering-log-data)
 
-8.  By default, all [log fields](/guides/logs/rtld/log_fields_rtld_cdn#logs-array) are enabled on a new log delivery profile. Clear each field for which log data should not be reported. Adjust the set of log fields that will be included within this log delivery profile from within the **Fields** section.
+8.  By default, all [log fields](/applications/logs/rtld/log_fields_rtld_cdn#logs-array) are enabled on a new log delivery profile. Clear each field for which log data should not be reported. Adjust the set of log fields that will be included within this log delivery profile from within the **Fields** section.
 
     Log fields are categorized. You may add or remove individual fields by expanding a category and then marking or clearing specific log fields. Alternatively, add or remove all of the log fields associated with a category by marking or clearing the desired category.
 

@@ -16,7 +16,7 @@ const PORTAL_LINK = `[${PORTAL}](${LOGIN_URL})`;
 
 const INSTALL_CLI = `## Install the ${base.PRODUCT_NAME} CLI {/*install-the-cli*/}
 
-If you have not already done so, install the [${base.PRODUCT_NAME} CLI](/guides/develop/cli).
+If you have not already done so, install the [${base.PRODUCT_NAME} CLI](/applications/develop/cli).
 
 <SnippetGroup>
 

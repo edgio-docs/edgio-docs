@@ -17,15 +17,15 @@ const PORTAL_LINK = `[${PORTAL}](${LOGIN_URL})`;
 
 const SYSTEM_REQUIREMENTS = `## System Requirements {/*system-requirements*/}
 
-- [Install Node.js 14.19.0](/guides/install_nodejs)`;
+- [Install Node.js 14.19.0](/applications/install_nodejs)`;
 
 const SYSTEM_REQUIREMENTS_H3 = `### System Requirements {/*system-requirements*/}
 
-- [Install Node.js 14.19.0](/guides/install_nodejs)`;
+- [Install Node.js 14.19.0](/applications/install_nodejs)`;
 
 const INSTALL_CLI = `## Install the ${base.PRODUCT_NAME} CLI {/*install-the-cli*/}
 
-If you have not already done so, install the [${base.PRODUCT_NAME} CLI](/guides/develop/cli).
+If you have not already done so, install the [${base.PRODUCT_NAME} CLI](/applications/develop/cli).
 
 <SnippetGroup>
 

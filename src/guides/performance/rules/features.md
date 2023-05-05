@@ -317,6 +317,8 @@ new Router()
 
 Determines whether the cache key will include or exclude query string parameters associated with a request. 
 
+[Learn more about cache keys.](/guides/performance/response#cache-key-response-header)
+
 Include or exclude all query string parameters through the `Include All` or `Exclude All` modes. Alternatively, include or exclude specific query string parameters through the `Include` or `Include All Except` modes.
 
 -   **Include All:** Indicates that a unique cache key will be created for each request to an asset that includes a unique query string.
@@ -334,6 +336,8 @@ Include or exclude all query string parameters through the `Include All` or `Exc
 -   **Include All Except:** Contains the set of parameter(s) will be excluded from the cache key. All other query string parameters will be included in the cache key.
 
 <edgejs>
+[Learn more about cache keys.](/guides/performance/response#cache-key-response-header)
+
 Include or exclude all query string parameters through the `include_all` property or `exclude_all` property. Alternatively, include or exclude specific query string parameters through the `include` property, `exclude` property, or both.
 
 -   **include_all (*Boolean*):** Indicates that a unique cache key will be created for each request to an asset that includes a unique query string.
@@ -938,6 +942,8 @@ new Router()
 
 Rewrites the default cache key for a set of requests. 
 
+[Learn more about cache keys.](/guides/performance/response#cache-key-response-header)
+
 **Key information:**
 
 -   Our servers use the cache key to check for a cached version of an asset.
@@ -988,6 +994,8 @@ We will now set the default cache key to the request's relative path followed by
 Notice that we are using `$1`, which is a numbered backreference, to reintroduce the value captured by `(.*)` within the **Source** option.
 
 <edgejs>
+[Learn more about cache keys.](/guides/performance/response#cache-key-response-header)
+
 **Key information:**
 
 -   Our servers use the cache key to check for a cached version of an asset.
@@ -1216,6 +1224,13 @@ Adds one or more header(s) to the response.
 -   Use alphanumeric characters, dashes, or underscores when specifying a header name.
 -   Use [feature variables](/guides/performance/rules/feature_variables) to dynamically construct header values.
 -   This feature requires {{ PRODUCT }} to add a response header, regardless of whether that header already exists in the response. This may cause the response to include multiple headers with the same name.
+
+    <Callout type="tip">
+
+      Use the [Set Response Headers feature](#set-response-headers) if you prefer to overwrite or append to a header when it already exists in the response.
+
+    </Callout>
+
 -   The following headers are reserved and cannot be modified by this feature:
     -   accept-ranges
     -   age

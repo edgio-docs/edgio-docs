@@ -177,7 +177,12 @@ const pryFooterLinks = {
       href: '/guides/how-to',
     },
     {
-      title: 'Changelog',
+      title: 'Release Notes',
+      href: '/guides/release_notes',
+      versioned: false,
+    },
+    {
+      title: 'NPM Package Changelog',
       href: '/guides/changelog',
     },
   ],

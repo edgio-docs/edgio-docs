@@ -15,7 +15,7 @@ const PRODUCT_SECURITY = 'Security';
 const PRODUCT_NAME_LOWER = PRODUCT.toLowerCase();
 const PRODUCT_NAME_UPPER = PRODUCT.toUpperCase();
 const PRODUCT_LEGACY_LOWER = PRODUCT_LEGACY.toLowerCase();
-const PORTAL = `${COMPANY_NAME} Developer console`;
+const PORTAL = `${COMPANY_NAME} Developer Console`;
 
 const CLI_NAME = 'edg';
 const FULL_CLI_NAME = 'edgio';

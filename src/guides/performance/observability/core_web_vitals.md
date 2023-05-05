@@ -249,7 +249,6 @@ new {{ RUM_NS }}.Metrics({
   // When running a split test, use this field to specify which variant is active.
   // This is automatically set for sites that are deployed on {{ PRODUCT_NAME }}.
   splitTestVariant: 'name-of-variant',
--->
 
 ## Custom cache TTL {/*custom-cache-ttl*/}
 
@@ -262,3 +261,4 @@ new Metrics({
       cacheManifestTTL: 300 // 5 minutes
 }).collect()
 ```
+-->

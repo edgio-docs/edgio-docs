@@ -132,7 +132,7 @@ If you are using Bot Manager Standard, then you may only apply a browser challen
 
         <Callout type="tip">
 
-          This option supports the use of [event variables](/guides/security/security_applications#event-variables) to customize the response.
+          This option supports the use of [event variables](/applications/security/security_applications#event-variables) to customize the response.
 
         </Callout>
 
@@ -158,7 +158,7 @@ If you are using Bot Manager Standard, then you may only apply a browser challen
 
         <Callout type="info">
 
-          This option supports the use of [event variables](/guides/security/security_applications#event-variables) to customize the response.
+          This option supports the use of [event variables](/applications/security/security_applications#event-variables) to customize the response.
 
         </Callout>
 
@@ -313,7 +313,7 @@ A variable identifies the request element that {{ PRODUCT }} {{ PRODUCT_SECURITY
 
     <a id="country" />
 
--   **Country:** Identifies requests by the country from which the request originated. Specify the desired country using a [country code](/guides/reference/country_codes).
+-   **Country:** Identifies requests by the country from which the request originated. Specify the desired country using a [country code](/applications/reference/country_codes).
 
     <Callout type="tip">
 
@@ -475,7 +475,7 @@ You may create, modify, and delete Bot Manager configurations.
 
 **Key information:**
 -   Administer Bot Manager configurations from the **Bot Manager** page.
--   Apply a Bot Manager configuration to production traffic by adding it to a [Security Application configuration](/guides/security/security_applications). Multiple Security Application Manager configurations may use the same Bot Manager configuration.
+-   Apply a Bot Manager configuration to production traffic by adding it to a [Security Application configuration](/applications/security/security_applications). Multiple Security Application Manager configurations may use the same Bot Manager configuration.
 -   It typically takes less than a minute to apply Bot Manager configuration changes across our entire network.
 
 **To create a Bot Manager configuration**

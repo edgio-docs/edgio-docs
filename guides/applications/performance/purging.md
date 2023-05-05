@@ -94,7 +94,7 @@ Use the {{ PORTAL }} to purge cached content within a specific environment.
 
 ## {{ PRODUCT }} CLI {/*cli*/}
 
-Purge cached content through the {{ PRODUCT }} CLI by passing the [cache-clear argument](/guides/cli#cache-clear). You may purge:
+Purge cached content through the {{ PRODUCT }} CLI by passing the [cache-clear argument](/applications/cli#cache-clear). You may purge:
 
 -   **All content:** Exclude the `--path` and `--surrogate-key` options.
 -   **By relative path:** Pass the `--path` option. You may use an `*` to represent zero or more characters.
@@ -110,7 +110,7 @@ Run the following command to purge the `basketball` surrogate key from the `prod
 
 ## REST API {/*rest-api*/}
 
-Purge cached content through the {{ PRODUCT }} REST API through the [clear-cache endpoint](/guides/develop/rest_api#clear-cache). You may purge:
+Purge cached content through the {{ PRODUCT }} REST API through the [clear-cache endpoint](/applications/develop/rest_api#clear-cache). You may purge:
 
 -   **All content:** Exclude the `paths` and `surrogateKeys` properties.
 -   **By relative path:** Pass the `paths` array of string values. You may use an `*` to represent zero or more characters.
@@ -128,7 +128,7 @@ By default, all cached responses are purged from an environment when you deploy 
 
 ## Static prerendering after clearing the cache {/*static-prerendering-after-clearing-the-cache*/}
 
-If you have enabled [static prerendering](/guides/performance/static_prerendering), the cache will automatically be repopulated when you clear all entries from the cache (such as when you select _Purge all entries_ in the {{ PRODUCT_NAME }} Developer Console or run `{{ FULL_CLI_NAME }} cache-clear` without providing `--path` or `--surrogate-key`). You can view the prerendering progress by clicking on the active deployment for the environment that was cleared.
+If you have enabled [static prerendering](/applications/performance/static_prerendering), the cache will automatically be repopulated when you clear all entries from the cache (such as when you select _Purge all entries_ in the {{ PRODUCT_NAME }} Developer Console or run `{{ FULL_CLI_NAME }} cache-clear` without providing `--path` or `--surrogate-key`). You can view the prerendering progress by clicking on the active deployment for the environment that was cleared.
 
 ## Automated Purging {/*automated-purging*/}
 

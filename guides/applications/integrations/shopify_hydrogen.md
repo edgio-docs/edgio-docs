@@ -22,7 +22,7 @@ You’ve installed the following dependencies:
 
 <Callout type="info">
 
-  If you are using {{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} version 5, then the deployed version of your application will run on Node.js version 14.19.0. Building your application using a higher version of Node.js than the deployed version may cause unexpected behavior. We strongly recommend [upgrading to {{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} version 6](/guides/upgrading/v6_migration) which supports Node.js version 16.18.0. 
+  If you are using {{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} version 5, then the deployed version of your application will run on Node.js version 14.19.0. Building your application using a higher version of Node.js than the deployed version may cause unexpected behavior. We strongly recommend [upgrading to {{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} version 6](/applications/upgrading/v6_migration) which supports Node.js version 16.18.0. 
 
 </Callout>
 
@@ -260,7 +260,7 @@ module.exports = new Router()
   .fallback(({ renderWithApp }) => renderWithApp())
 ```
 
-Refer to the [CDN-as-code](/guides/performance/cdn_as_code) guide for the full syntax of the `routes.js` file and how to configure it for your use case.
+Refer to the [CDN-as-code](/applications/performance/cdn_as_code) guide for the full syntax of the `routes.js` file and how to configure it for your use case.
 
 <a id="run-the-shopify-hydrogen-app-locally"></a>
 
@@ -294,4 +294,4 @@ Next, deploy the build to {{ PRODUCT_NAME }} by running the `{{ FULL_CLI_NAME }}
 {{ FULL_CLI_NAME }} deploy
 ```
 
-Refer to the [Deployments](/guides/basics/deployments) guide for more information on the `deploy` command and its options.
+Refer to the [Deployments](/applications/basics/deployments) guide for more information on the `deploy` command and its options.

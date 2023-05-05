@@ -34,7 +34,7 @@ Log data is reported as a JSON document. Log format determines whether log data 
 
 <Callout type="important">
 
-  If log data uses either the CSV, JSON Array, or JSON Lines log format, then it will not contain information that uniquely identifies a set of log data. If log data using one of these formats is delivered to a destination other than AWS S3, Azure Blob Storage, or Google Cloud Storage, then there is no way to check for gaps in sequence numbers when attempting to [identify missing log data](/guides/logs/rtld/log_data_verification#checking-for-sequence-number-gaps).
+  If log data uses either the CSV, JSON Array, or JSON Lines log format, then it will not contain information that uniquely identifies a set of log data. If log data using one of these formats is delivered to a destination other than AWS S3, Azure Blob Storage, or Google Cloud Storage, then there is no way to check for gaps in sequence numbers when attempting to [identify missing log data](/applications/logs/rtld/log_data_verification#checking-for-sequence-number-gaps).
 
 </Callout>
 
@@ -141,7 +141,7 @@ The `logs` array contains an object for each log entry associated with the curre
 
     `"cookie_sessionId": "abc123def",`
 
--   **custom_field (*String*):** Custom Field. (Category: General) Indicates the data defined by the [Custom Log Field feature](/guides/performance/rules/features#custom-log-field).
+-   **custom_field (*String*):** Custom Field. (Category: General) Indicates the data defined by the [Custom Log Field feature](/applications/performance/rules/features#custom-log-field).
 
     <Callout type="info">
 
@@ -167,7 +167,7 @@ The `logs` array contains an object for each log entry associated with the curre
 
     What is the difference between `path` and `rewritten_path`?
 
-    The `path` field always reports the requested URL's relative path, while `rewritten_path` reports the relative path after the [URL has been rewritten](/guides/performance/rules/features#url-rewrite).
+    The `path` field always reports the requested URL's relative path, while `rewritten_path` reports the relative path after the [URL has been rewritten](/applications/performance/rules/features#url-rewrite).
 
 -   **platform (*String*):** Platform. (Category: Network) Returns `wpc`.
 -   **pop (*String*):** POP. (Category: Network) Identifies the POP that handled the client's request by its three-letter abbreviation.
@@ -225,7 +225,7 @@ The `logs` array contains an object for each log entry associated with the curre
 
     What is the difference between `path` and `rewritten_path`?
 
-    The `path` field always reports the requested URL's relative path, while `rewritten_path` reports the relative path after the [URL has been rewritten](/guides/performance/rules/features#url-rewrite).
+    The `path` field always reports the requested URL's relative path, while `rewritten_path` reports the relative path after the [URL has been rewritten](/applications/performance/rules/features#url-rewrite).
 
 -   **scheme (*String*):** Scheme. (Category: Request) Indicates the request's scheme. Valid values are: `http | https`
 -   **server_ip (*String*):** Edge Server IP Address. (Category: Network) Indicates the IP address for the edge server that processed the request.

@@ -6,13 +6,13 @@ Get started with {{ PRODUCT_EDGE }} by performing these steps:
 
 1.  Create a property. If you have already performed this step, proceed to the next step.
 
-    [Learn more.](/guides/getting_started)
+    [Learn more.](/applications/getting_started)
 
 2.  Create rules that define how {{ PRODUCT }} handles your traffic.
 
     <Callout type="info">
 
-      If you prefer code to UI, then try our [CDN-as-code approach](/guides/performance/cdn_as_code/getting_started) to configuration instead. 
+      If you prefer code to UI, then try our [CDN-as-code approach](/applications/performance/cdn_as_code/getting_started) to configuration instead. 
 
     </Callout>
 
@@ -153,8 +153,8 @@ Congratulations on deploying a caching policy to {{ PRODUCT }}!
 
 You are now ready to:
 
--   Assess performance and caching behavior through [Edge Insights](/guides/performance/observability/edge_insights)  and [Core Web Vitals](/guides/performance/observability/core_web_vitals). 
+-   Assess performance and caching behavior through [Edge Insights](/applications/performance/observability/edge_insights)  and [Core Web Vitals](/applications/performance/observability/core_web_vitals). 
 -   Fine-tune your configuration by adding rules and then redeploying your property. 
 -   Once you are ready to serve production traffic through {{ PRODUCT }}, update your site's DNS to point to our service.
 
-    [Learn more.](/guides/basics/hostnames_and_origins#serving-traffic-through)
+    [Learn more.](/applications/basics/hostnames_and_origins#serving-traffic-through)

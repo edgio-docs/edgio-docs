@@ -6,10 +6,10 @@ RTLD may automatically deliver compressed log data to an AWS S3 bucket by submit
 
 **Key information:**
 
--   The set of available log fields varies by RTLD module: [RTLD CDN](/guides/logs/rtld/log_fields_rtld_cdn) | [RTLD Rate Limiting](/guides/logs/rtld/log_fields_rtld_rate_limiting) | [RTLD WAF](/guides/logs/rtld/log_fields_rtld_waf)
+-   The set of available log fields varies by RTLD module: [RTLD CDN](/applications/logs/rtld/log_fields_rtld_cdn) | [RTLD Rate Limiting](/applications/logs/rtld/log_fields_rtld_rate_limiting) | [RTLD WAF](/applications/logs/rtld/log_fields_rtld_waf)
 -   RTLD applies gzip compression to log data. AWS S3 stores compressed log data as an object with a `gz` file extension.
     
-    [Learn more.](/guides/logs/rtld/log_file_naming_convention)
+    [Learn more.](/applications/logs/rtld/log_file_naming_convention)
     
 -   AWS S3 may automatically decompress files downloaded via the S3 Management Console into JSON or CSV files. No additional decompression is required to process this data.
 -   RTLD requires a [bucket policy](#bucket-policy) that authorizes our service to upload content to your bucket.

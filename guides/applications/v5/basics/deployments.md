@@ -52,7 +52,7 @@ For this action to work
 
 - By default, new {{ PRODUCT }} sites are created with a `default` environment. The action below will create a new build for every push on the default environment.
 - To leverage the GitHub release workflow part of the action below, you need to **create an environment** `production`.
-- You need to have created a deploy key for your site (see above) and added it as a secret in your repo called "edgio_deploy_token". Read more on [accessing environment variables](/guides/basics/environments#accessing-environment-variables) which might be essential for your app during the build time and for server-side requests (including SSG/SSR).
+- You need to have created a deploy key for your site (see above) and added it as a secret in your repo called "edgio_deploy_token". Read more on [accessing environment variables](/applications/basics/environments#accessing-environment-variables) which might be essential for your app during the build time and for server-side requests (including SSG/SSR).
 - Depending on your use of NPM or YARN, adjust the "Install packages" step
 
 Read the comments at the top to understand how this action is configured.

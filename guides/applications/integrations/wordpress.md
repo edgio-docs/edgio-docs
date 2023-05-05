@@ -22,7 +22,7 @@ If you don't already have a WordPress site, create one by following the [officia
 
 ![New Site button](/images/app-edge/new-site-button.png)
 
-2. Next, enter your WordPress site's domain name. This will eventually become the origin backend that you will [proxy to](/guides/performance/cdn_as_code/common_routing_patterns#proxying-an-origin) once your site is setup.
+2. Next, enter your WordPress site's domain name. This will eventually become the origin backend that you will [proxy to](/applications/performance/cdn_as_code/common_routing_patterns#proxying-an-origin) once your site is setup.
 
 ![Add New Site dialog](/images/app-edge/add-new-site-dialog.png)
 
@@ -66,7 +66,7 @@ Deploy your app to the {{ PRODUCT_PLATFORM }} by running the following command i
 {{ FULL_CLI_NAME }} deploy
 ```
 
-Refer to the [Deployments](/guides/basics/deployments) guide for more information on the `deploy` command and its options.
+Refer to the [Deployments](/applications/basics/deployments) guide for more information on the `deploy` command and its options.
 
 ## Direct Traffic to {{ PRODUCT_PLATFORM }} {/*direct-traffic-to*/}
 
@@ -74,13 +74,13 @@ Once you have confirmed that your deployed {{ PRODUCT }} site is proxying conten
 
 <Condition version="7">
 
-  [Learn more.](/guides/basics/hostnames_and_origins)
+  [Learn more.](/applications/basics/hostnames_and_origins)
 
 </Condition>
 
 <Condition version="<7">
 
-  [Learn more.](/guides/basics/domains)
+  [Learn more.](/applications/basics/domains)
 
 </Condition>
 
@@ -120,7 +120,7 @@ In order for the plugin to be able to interact with the {{ PRODUCT_PLATFORM }}, 
 
 To obtain the **API Key**, go to your site within the [{{ PORTAL }}]({{ LOGIN_URL }}). Click **Settings > Create new Deploy Token** and enter in a name for the token.
 
-For information on the **Browser Cache TTL**, **Edge Cache TTL**, and **Cache Stale-While-Revalidate** fields, refer to the [Caching guide](/guides/performance/caching).
+For information on the **Browser Cache TTL**, **Edge Cache TTL**, and **Cache Stale-While-Revalidate** fields, refer to the [Caching guide](/applications/performance/caching).
 
 ![plugin fields](/images/wordpress/deploy_token.png)
 

@@ -9,7 +9,7 @@ RTLD may automatically deliver compressed log data to your New Relic account by 
 -   The format for log data delivered to New Relic is JSON Array. This log format does not provide information that uniquely identifies a set of log data. As a result, there is no way to check for gaps in sequence numbers when attempting to identify missing log data.
 -   You must define an event type when setting up a log delivery profile. Query delivered log data by constructing a NRQL that selects data using this event type label (e.g., `SELECT \* FROM Event Type`).
 -   RTLD authorizes requests to New Relic through an Inserts insight API key. Due to security best practices, we recommend using a dedicated API key for RTLD requests.
--   The set of available log fields varies by RTLD module: [RTLD CDN](/guides/logs/rtld/log_fields_rtld_cdn) | [RTLD Rate Limiting](/guides/logs/rtld/log_fields_rtld_rate_limiting) | [RTLD WAF](/guides/logs/rtld/log_fields_rtld_waf)
+-   The set of available log fields varies by RTLD module: [RTLD CDN](/applications/logs/rtld/log_fields_rtld_cdn) | [RTLD Rate Limiting](/applications/logs/rtld/log_fields_rtld_rate_limiting) | [RTLD WAF](/applications/logs/rtld/log_fields_rtld_waf)
 -   RTLD CDN and RTLD Rate Limiting support delivery to the New Relic destination.
 
 **To set up New Relic log delivery**

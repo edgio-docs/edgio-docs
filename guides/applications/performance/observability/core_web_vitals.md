@@ -37,7 +37,7 @@ The benefits of using {{ PRODUCT }} instead of Google Search Console to track Co
 - Analyze score across a number of dimensions such as country, device, and connection type
 - Identify which pages are most negatively impacting your search ranking.
 <Condition version="<=6">
-- Use {{ PRODUCT_NAME }}'s [Edge-based A/B testing](/guides/performance/traffic_splitting/a_b_testing) to A/B test the impact of performance optimizations on Core Web Vitals.
+- Use {{ PRODUCT_NAME }}'s [Edge-based A/B testing](/applications/performance/traffic_splitting/a_b_testing) to A/B test the impact of performance optimizations on Core Web Vitals.
 </Condition>
 
 ## Installing Real User Monitoring (RUM) {/*installation*/}
@@ -199,7 +199,7 @@ new Metrics({
 
 </SnippetGroup>
 
-[Learn more about route syntax.](/guides/routing#route-pattern-syntax)
+[Learn more about route syntax.](/applications/routing#route-pattern-syntax)
 
 For non single page applications (e.g. traditional "multi-page apps"), you can also explicitly set the page label by passing a `pageLabel` property during initialization. An example is shown below where the `pageLabel` is pulled from `document.title`:
 

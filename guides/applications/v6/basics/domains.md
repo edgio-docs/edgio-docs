@@ -8,7 +8,7 @@ Creating custom domains is always done in the context of creating or updating an
 
 ## Configuration Overview {/* configuration-overview */}
 
-1. If needed, create an environment using instructions in [Environments](/guides/basics/environments).
+1. If needed, create an environment using instructions in [Environments](/applications/basics/environments).
 
 2. Create the [Custom Domain](#custom-domains).
 
@@ -24,7 +24,7 @@ Before going live, you must create a production environment and configure your d
 
 To configure your custom domains:
 
-1. Navigate to a site, then open an existing environment or create a new environment. (To create an environment, use instructions in [Environments](/guides/basics/environments).)
+1. Navigate to a site, then open an existing environment or create a new environment. (To create an environment, use instructions in [Environments](/applications/basics/environments).)
 
    - For an existing environment, select the _ENVIRONMENTS_ tab header, then click an environment name in the list of environments. Continue with the numbered steps below.
    - For a new environment, the _DEPLOYMENTS_ tab is displayed. Continue with the following steps.

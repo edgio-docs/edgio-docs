@@ -5,9 +5,9 @@ title: Properties
 A property instructs {{ PRODUCT }} how to securely process requests for your website. Setting up a property typically involves:
 
 -   Determining whether it will belong to a team space that allows collaboration with other team members or a private space with access restricted to your account.
--   [Environment(s)](/guides/basics/environments). An environment allows you to serve your site on different domains.
--   [TLS certificate(s)](/guides/security/tls_certificates). Each hostname associated with an environment requires the installation of a TLS certificate on our network. Manage these TLS certificates through your property's settings. 
--   [Securing your web applications and API traffic](/guides/security/waf). Secure your web applications and APIs across all environments using a single configuration at the property level.
+-   [Environment(s)](/applications/basics/environments). An environment allows you to serve your site on different domains.
+-   [TLS certificate(s)](/applications/security/tls_certificates). Each hostname associated with an environment requires the installation of a TLS certificate on our network. Manage these TLS certificates through your property's settings. 
+-   [Securing your web applications and API traffic](/applications/security/waf). Secure your web applications and APIs across all environments using a single configuration at the property level.
 
 ## Managing Properties {/*managing-properties*/}
 
@@ -55,7 +55,7 @@ Upon creating a property, it will contain a `production` environment with the fo
     5.  Optional. By default, the request determines the value assigned to the `Host` request header. You may override the value assigned to this request header through the **Override Host Header** option.
     6.  Optional. Define the TLS requirements when communicating with your web servers through the **Origin TLS Settings** section. 
 
-        [Learn more.](/guides/basics/hostnames_and_origins#origin)
+        [Learn more.](/applications/basics/hostnames_and_origins#origin)
     7.  Add more origin configurations as needed by clicking **+ Add Origin** and then repeating the above steps.
 
 6.  Click **Create Property**.

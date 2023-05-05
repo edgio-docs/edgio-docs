@@ -4,7 +4,7 @@ title: {{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} Version 5 Migration Guide
 
 <Callout type="important">
 
-  If you are using {{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} version 3.x or earlier, you should review the [v4 Migration Guide](/guides/upgrading/layer0_migration) before migrating to version 5.
+  If you are using {{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} version 3.x or earlier, you should review the [v4 Migration Guide](/applications/upgrading/layer0_migration) before migrating to version 5.
 
 </Callout>
 
@@ -48,7 +48,7 @@ We have renamed the {{ PRODUCT }} CLI from `0 | layer0` to `{{ CLI_NAME }} | {{ 
 
 <Callout type="info">
 
-  By default, {{ PRODUCT }} CLI v5.1.0+ collects usage and error reporting information to help improve our products. However, it omits personally identifiable information. [Learn how to opt-out](/guides/develop/cli#disable-analytics).
+  By default, {{ PRODUCT }} CLI v5.1.0+ collects usage and error reporting information to help improve our products. However, it omits personally identifiable information. [Learn how to opt-out](/applications/develop/cli#disable-analytics).
 
 </Callout>
 
@@ -224,4 +224,4 @@ new Router({ indexPermalink: true })
 
 ## Migration Complete {/*migration-complete*/}
 
-Congratulations on successfully migrating {{ PRODUCT }} to version 5! Once you are ready to make your application compatible with Node.js version 16, you should migrate to [{{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} version 6](/guides/upgrading/v6_migration).
+Congratulations on successfully migrating {{ PRODUCT }} to version 5! Once you are ready to make your application compatible with Node.js version 16, you should migrate to [{{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} version 6](/applications/upgrading/v6_migration).

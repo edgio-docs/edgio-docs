@@ -4,9 +4,9 @@ title: Log File Naming Convention
 
 RTLD assigns a name to log data stored as an object. Log data is stored as individual objects for the following destinations:
  
--   [AWS S3](/guides/logs/rtld/aws_s3_log_delivery)
--   [Azure Blob Storage](/guides/logs/rtld/azure_blob_storage_log_delivery)
--   [Google Cloud Storage](/guides/logs/rtld/google_cloud_storage_log_delivery)
+-   [AWS S3](/applications/logs/rtld/aws_s3_log_delivery)
+-   [Azure Blob Storage](/applications/logs/rtld/azure_blob_storage_log_delivery)
+-   [Google Cloud Storage](/applications/logs/rtld/google_cloud_storage_log_delivery)
 
 Log data stored within an object is compressed using gzip. Each object follows this naming convention:
 
@@ -64,7 +64,7 @@ Each of the above variables are described below.
 
     Each software agent assigns a sequential number to the log files that it generates. A gap between log files generated on the same day by the same software agent indicates missing log data.  
 
-    [Learn more.](/guides/logs/rtld/log_data_verification)
+    [Learn more.](/applications/logs/rtld/log_data_verification)
 
     **Key information:**
 

@@ -293,7 +293,7 @@ via the **Allowed Request Content Types** option.
             defined by this option, then {{ PRODUCT_SECURITY }} will consider this a
             violation of this access rule and enforce the security
             policy (e.g., alert or block) defined within your [security application 
-            configuration](/guides/security/security_applications#enforcement-mode).
+            configuration](/applications/security/security_applications#enforcement-mode).
 -   List each desired media type on a separate line.
 -   Media types are case-insensitive.
 
@@ -350,7 +350,7 @@ The recommended maximum value is 6,291,456 bytes.
 Define the maximum file size for a request that is part of a multipart
 message through a managed rule.
 
-[Learn more](/guides/security/managed_rules#file-size-and-query-string-limits-advanced).
+[Learn more](/applications/security/managed_rules#file-size-and-query-string-limits-advanced).
 
 </Callout>
 
@@ -376,7 +376,7 @@ You may create, modify, and delete access rules.
 -   Administer access rules from the **Access Rules**
     page.
 -   Apply an access rule to production traffic by adding it to a
-    [Security Application configuration](/guides/security/security_appplications) and then
+    [Security Application configuration](/applications/security/security_appplications) and then
     determining how it will be enforced. Multiple Security Application
     configurations may use the same access rule. Leverage this
     capability to tailor security screening by application or traffic

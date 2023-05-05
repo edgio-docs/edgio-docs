@@ -27,7 +27,7 @@ A request commonly contains the following components:
 
     ![](/images/overview/request-flow-edge-global.png)    
 
--   **Serverless Compute:** {{ PRODUCT }} routes Serverless Compute requests similar to standard traffic. However, cache misses are forwarded to a [Serverless Compute](/guides/performance/serverless_compute) load balancer which distributes requests to a Serverless Compute worker.
+-   **Serverless Compute:** {{ PRODUCT }} routes Serverless Compute requests similar to standard traffic. However, cache misses are forwarded to a [Serverless Compute](/applications/performance/serverless_compute) load balancer which distributes requests to a Serverless Compute worker.
 
     ![](/images/overview/request-flow-serverless-compute.png)
 
@@ -83,12 +83,12 @@ Our edge servers may also add or overwrite the following reserved request header
 ### General headers {/*general-headers*/}
 
 - `x-request-id`: unique request ID on {{ PRODUCT_NAME }} which may optionally be provided by you when issuing the requests to {{ PRODUCT_NAME }}
-- `{{ HEADER_PREFIX }}-client-ip`: the client IP address from which the request to {{ PRODUCT_NAME }} edge components originated; cannot be used for user agent IP identification when [{{ PRODUCT_NAME }} is behind another CDN](/guides/performance/third_party_cdns)).
+- `{{ HEADER_PREFIX }}-client-ip`: the client IP address from which the request to {{ PRODUCT_NAME }} edge components originated; cannot be used for user agent IP identification when [{{ PRODUCT_NAME }} is behind another CDN](/applications/performance/third_party_cdns)).
 - `{{ HEADER_PREFIX }}-destination`: the routing destination as determined by traffic splitting rules if any; the name of the destinations are taken from {{ PRODUCT_NAME }} router code and if not specified then default is `default`
-- `{{ HEADER_PREFIX }}-original-qs`: contains the original query string if [custom caching](/guides/performance/caching#customizing-the-cache-key) rules exclude query strings for the matching route; otherwise not set
+- `{{ HEADER_PREFIX }}-original-qs`: contains the original query string if [custom caching](/applications/performance/caching#customizing-the-cache-key) rules exclude query strings for the matching route; otherwise not set
 - `{{ HEADER_PREFIX }}-protocol`: the protocol on which the connection to your site has been established; it can either be `https` or `http`; 
 
-  [Learn more.](/guides/security/edgejs_security#ssl)
+  [Learn more.](/applications/security/edgejs_security#ssl)
 
 ### User agent headers {/*user-agent-headers*/}
 
@@ -113,12 +113,12 @@ Geolocation headers contain the geographical information about the provenance of
 - `{{ HEADER_PREFIX }}-geo-longitude`: the geographical longitude from which the request originated
 - `{{ HEADER_PREFIX }}-geo-asn`: the autonomous system number of the network operator from which the request originated
 
-These values are provided as a best effort. {{ PRODUCT_NAME }} cannot guarantee the accuracy of geolocation based on the client's IP address. See also [geolocation](/guides/third_party_cdns#client-ips) behind [third-party CDNs](/guides/third_party_cdns).
+These values are provided as a best effort. {{ PRODUCT_NAME }} cannot guarantee the accuracy of geolocation based on the client's IP address. See also [geolocation](/applications/third_party_cdns#client-ips) behind [third-party CDNs](/applications/third_party_cdns).
 -->
 
 ### Static prerendering headers {/*static-prerendering-headers*/}
 
-- `{{ HEADER_PREFIX }}-preload`: Will be "1" if the request originated from [Static Prerendering](/guides/static_prerendering). Otherwise this header will not be present.
+- `{{ HEADER_PREFIX }}-preload`: Will be "1" if the request originated from [Static Prerendering](/applications/static_prerendering). Otherwise this header will not be present.
 
 ## Request Body {/*request-body*/}
 

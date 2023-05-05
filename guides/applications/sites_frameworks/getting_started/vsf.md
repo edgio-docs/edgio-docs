@@ -4,7 +4,7 @@ title: Vue Storefront Next
 
 Follow these steps to deploy a Vue Storefront Next app on {{ PRODUCT_NAME }}. As of now {{ PRODUCT_NAME }} is only compatible with the [Vue Storefront Next CLI tool](https://docs.vuestorefront.io/v2/getting-started/installation.html).
 
-For adding {{ PRODUCT }} to Vue Storefront 1 app follow this [guide](/guides/vsf1).
+For adding {{ PRODUCT }} to Vue Storefront 1 app follow this [guide](/applications/vsf1).
 
 ## Example {/*example*/}
 

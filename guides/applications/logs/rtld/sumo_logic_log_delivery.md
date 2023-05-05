@@ -7,7 +7,7 @@ RTLD may automatically deliver compressed log data to Sumo Logic by submitting H
 **Key information:**
 
 -   The format for log data delivered to Sumo Logic is JSON Lines. This log format does not provide information that uniquely identifies a set of log data. As a result, there is no way to check for gaps in sequence numbers when attempting to identify missing log data.
--   The set of available log fields varies by RTLD module: [RTLD CDN](/guides/logs/rtld/log_fields_rtld_cdn) | [RTLD Rate Limiting](/guides/logs/rtld/log_fields_rtld_rate_limiting) | [RTLD WAF](/guides/logs/rtld/log_fields_rtld_waf)
+-   The set of available log fields varies by RTLD module: [RTLD CDN](/applications/logs/rtld/log_fields_rtld_cdn) | [RTLD Rate Limiting](/applications/logs/rtld/log_fields_rtld_rate_limiting) | [RTLD WAF](/applications/logs/rtld/log_fields_rtld_waf)
 
 **To set up Sumo Logic log delivery**
 

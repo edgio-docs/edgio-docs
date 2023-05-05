@@ -30,7 +30,7 @@ Enter a name in the *Add a Team* dialog and click *CREATE A TEAM*.
 
 ![create dialog](/images/teams/create_dialog.png)
 
-The name you choose also determines the default URL from which your site will be accessible. To configure custom domains, see [Environments](/guides/basics/environments).
+The name you choose also determines the default URL from which your site will be accessible. To configure custom domains, see [Environments](/applications/basics/environments).
 
 ## Adding Your Website to the Team {/*adding-your-website-to-the-team*/}
 
@@ -60,4 +60,4 @@ After you add the team member, select a role:
 | Admin       | Users in the _Admin_ role have full control over all team and site settings, but cannot add, remove, promote or demote other _Admin_ or _Super Admin_ roles.                             |
 | Super Admin | Users in the _Super Admin_ role have full control over all team and site settings. They are the only ones to add, remove, promote or demote other _Admin_ or _Super Admin_ roles.        |
 
-See [Creating an Environment](/guides/basics/environments#creating-an-environment) for more information.
+See [Creating an Environment](/applications/basics/environments#creating-an-environment) for more information.

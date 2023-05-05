@@ -6,7 +6,7 @@ title: {{ PRODUCT }} Release Notes
 
 This page contains release notes related to the {{ PORTAL_LINK }}.
 
-See [NPM Packages Changelog](/guides/changelog) for release notes related to the  {{ PRODUCT }} CLI packages and connectors.
+See [NPM Packages Changelog](/applications/changelog) for release notes related to the  {{ PRODUCT }} CLI packages and connectors.
 
 </Callout>
 

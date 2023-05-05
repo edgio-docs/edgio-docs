@@ -4,9 +4,9 @@ title: Upgrading to {{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} Version 7
 
 The {{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} platform consists of the following products:
 
--   {{ PRODUCT }} {{ PRODUCT_EDGE }} improves your site’s performance and speeds up your development lifecycle. [Learn more.](/guides/performance)
--   {{ PRODUCT }} {{ PRODUCT_SECURITY }} provides robust, multi-layered Web Application and API Protection. [Learn more.](/guides/security)
--   {{ PRODUCT }} {{ PRODUCT_PLATFORM }} provides optimal performance and development efficiency to your headless Jamstack applications. [Learn more.](/guides/sites_frameworks)
+-   {{ PRODUCT }} {{ PRODUCT_EDGE }} improves your site’s performance and speeds up your development lifecycle. [Learn more.](/applications/performance)
+-   {{ PRODUCT }} {{ PRODUCT_SECURITY }} provides robust, multi-layered Web Application and API Protection. [Learn more.](/applications/security)
+-   {{ PRODUCT }} {{ PRODUCT_PLATFORM }} provides optimal performance and development efficiency to your headless Jamstack applications. [Learn more.](/applications/sites_frameworks)
 
     <Callout type="important">
 
@@ -177,7 +177,7 @@ Perform the following steps for each of your properties:
 
 {{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} version 6+ runs your apps in Node.js v16. Therefore, we strongly recommend that you use Node.js v16.x when developing your web application. 
 
-[Learn how to use nvm to install Node.js v16.x.](/guides/install_nodejs)
+[Learn how to use nvm to install Node.js v16.x.](/applications/install_nodejs)
 
 Once you are using Node.js v16, update your application code to be compatible with Node.js v16.
 
@@ -205,7 +205,7 @@ If the property being migrated belongs to a team space, then you will need to re
 
     ![Add a Team](/images/v7/basics/team-create-2.png)
 
-3.  Invite the desired team members. [Learn more.](/guides/basics/collaboration#managing-team-members)
+3.  Invite the desired team members. [Learn more.](/applications/basics/collaboration#managing-team-members)
 
 <Callout type="important">
 
@@ -271,7 +271,7 @@ Install the latest version of our CLI.
 
 <Callout type="info">
 
-  By default, {{ PRODUCT }} CLI v5.1+ collects usage and error reporting information to help improve our products. However, it omits personally identifiable information. [Learn how to opt-out](/guides/develop/cli#disable-analytics).
+  By default, {{ PRODUCT }} CLI v5.1+ collects usage and error reporting information to help improve our products. However, it omits personally identifiable information. [Learn how to opt-out](/applications/develop/cli#disable-analytics).
 
 </Callout>
 
@@ -487,7 +487,7 @@ In order to ease the transition to version 7, we provide limited support for leg
 
     <Callout type="tip">
 
-      Deploying to {{ PRODUCT }} automatically generates origin configurations from those defined within the {{ CONFIG_FILE }} file. For this reason, we recommend that you map your hostnames to origins once you have deployed your property to {{ PRODUCT }}. [Learn more.](/guides/basics/hostnames_and_origins#add-modify-delete-hostname)
+      Deploying to {{ PRODUCT }} automatically generates origin configurations from those defined within the {{ CONFIG_FILE }} file. For this reason, we recommend that you map your hostnames to origins once you have deployed your property to {{ PRODUCT }}. [Learn more.](/applications/basics/hostnames_and_origins#add-modify-delete-hostname)
 
     </Callout>
 
@@ -689,7 +689,7 @@ new Router().match("/:path", {
 2.  Send the following header with each request: 
     `x-ec-debug:x-ec-cache,x-ec-cache-remote,x-ec-check-cacheable,x-ec-cache-key,x-ec-cache-state`
 
-    [Learn more.](/guides/performance/response#requesting-debug-cache-information)
+    [Learn more.](/applications/performance/response#requesting-debug-cache-information)
 
 ## Step 10: Real User Monitoring (RUM) Token {/*real-user-monitoring-rum-token*/}
 
@@ -779,7 +779,7 @@ Once you have successfully built your property, run the following command to dep
 
 View our IP blocks by clicking **Instructions** from the **Origins** page.
 
-[Learn more.](/guides/basics/hostnames_and_origins#firewall-allowing-ip-addresses)
+[Learn more.](/applications/basics/hostnames_and_origins#firewall-allowing-ip-addresses)
 
 ## Step 14: Update your DNS {/*update-your-dns*/}
 
@@ -791,8 +791,8 @@ View our IP blocks by clicking **Instructions** from the **Origins** page.
 
 Once you are ready to serve traffic through {{ PRODUCT }}, you will need to update the DNS for each of your hostname(s). Specifically, version 7 requires a CNAME record that points to a service domain that is either specific to your property’s:
 
--   [Environment](/guides/basics/hostnames_and_origins#environment-specific-service-domain)
--   [Team Space](/guides/basics/hostnames_and_origins#space-specific-service-domain).
+-   [Environment](/applications/basics/hostnames_and_origins#environment-specific-service-domain)
+-   [Team Space](/applications/basics/hostnames_and_origins#space-specific-service-domain).
 
 <Callout type="info">
 

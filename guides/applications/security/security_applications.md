@@ -242,9 +242,9 @@ pattern defined in a regular expression.
 
 Identify threats by adding the following rule(s) to your Security
 Application configuration:
--   **Access Rules:** An [access rule](/guides/security/access_rules) identifies
+-   **Access Rules:** An [access rule](/applications/security/access_rules) identifies
     legitimate traffic and threats through access control lists.
--   **Rate Rules:** A [rate rule](/guides/security/rate_rules) identifies
+-   **Rate Rules:** A [rate rule](/applications/security/rate_rules) identifies
     malicious or unnecessary traffic through traffic patterns.
 
     <Callout type="info">
@@ -270,7 +270,7 @@ Application configuration:
       limit.
 
     </Callout>
--   **Bot Manager:** A [bot manager configuration](/guides/security/bot_rules) determines how bot traffic will be detected and the enforcement action that will be applied to bot traffic.
+-   **Bot Manager:** A [bot manager configuration](/applications/security/bot_rules) determines how bot traffic will be detected and the enforcement action that will be applied to bot traffic.
 
     <Callout type="info">
 
@@ -278,10 +278,10 @@ Application configuration:
 
     </Callout> 
 
--   **Custom Rules:** A [custom rule](/guides/security/custom_rules) identifies
+-   **Custom Rules:** A [custom rule](/applications/security/custom_rules) identifies
     threats using custom criteria that takes into account your site's
     traffic profile to avoid false positives.
--   **Managed Rules:** A [managed rule](/guides/security/managed_rules)
+-   **Managed Rules:** A [managed rule](/applications/security/managed_rules)
     identifies threats through threat detection policies.
 
 <a id="enforcement-mode"></a>
@@ -345,7 +345,7 @@ The available enforcement actions are described below.
 
     <Callout type="info">
 
-      {{ PRODUCT_SECURITY }} applies a single enforcement action per mode (i.e., [production or audit](#enforcement-mode)). Once enforcement is triggered for that mode, {{ PRODUCT_SECURITY }} does not perform further [evaluation of that request](/guides/security/waf#threat-detection). If you are setting up a rule in production mode, we recommend that you limit your use of the `Alert Only` enforcement to the shortest amount of time necessary to validate changes to your configuration.  
+      {{ PRODUCT_SECURITY }} applies a single enforcement action per mode (i.e., [production or audit](#enforcement-mode)). Once enforcement is triggered for that mode, {{ PRODUCT_SECURITY }} does not perform further [evaluation of that request](/applications/security/waf#threat-detection). If you are setting up a rule in production mode, we recommend that you limit your use of the `Alert Only` enforcement to the shortest amount of time necessary to validate changes to your configuration.  
 
     </Callout>
 -   **Block Request:** Detected threats will be dropped and the client will receive a `403 Forbidden` response.
@@ -466,9 +466,9 @@ configurations.
       delivery.
 
     </Callout>
--   Apply [access rules](/guides/security/access_rules), [rate
-    rules](/guides/security/rate_rules), [bot manager configurations](/guides/security/bot_rules), [custom
-    rules](/guides/security/custom_rules), and [managed rules](/guides/security/managed_rules) to
+-   Apply [access rules](/applications/security/access_rules), [rate
+    rules](/applications/security/rate_rules), [bot manager configurations](/applications/security/bot_rules), [custom
+    rules](/applications/security/custom_rules), and [managed rules](/applications/security/managed_rules) to
     production traffic by adding it to a Security Application
     configuration and then determining how it will be enforced.
 
@@ -533,7 +533,7 @@ configurations.
 
       If you have not already created the desired access rule, you can
       save your Security Application configuration, [create an
-      access rule](/guides/security/access_rules#access-rule-administration), edit your
+      access rule](/applications/security/access_rules#access-rule-administration), edit your
       Security Application configuration, and then resume this
       procedure.
 
@@ -577,7 +577,7 @@ configurations.
 
       If you have not already created the desired rate rule, you can save
       your Security Application configuration, [create a rate
-      rule](/guides/security/rate_rules#rate-rule-administration), edit your Security
+      rule](/applications/security/rate_rules#rate-rule-administration), edit your Security
       Application configuration, and then resume this procedure.
 
     </Callout>
@@ -608,7 +608,7 @@ configurations.
         <Callout type="important">
 
           {{ PRODUCT_SECURITY }} does not perform further [evaluation of a
-          request](/guides/security/waf#threat-detection) once enforcement is
+          request](/applications/security/waf#threat-detection) once enforcement is
           triggered. For this reason, we recommend that you limit your use
           of the `Alert Only` enforcement to the shortest amount
           of time necessary to validate changes to your configuration.
@@ -644,7 +644,7 @@ configurations.
           configurations. If you assign multiple rate rules to a single
           Security Application configuration, then each rate rule
           should contain one or more [condition
-          group(s)](/guides/security/rate_rules#condition-group).
+          group(s)](/applications/security/rate_rules#condition-group).
 
         </Callout>
 
@@ -655,7 +655,7 @@ configurations.
     <Callout type="info">
 
       If you have not already created the desired bot manager configuration, you can save
-      your Security Application configuration, [create a bot manager configuration](/guides/security/bot_rules#bot-rule-administration), edit your Security
+      your Security Application configuration, [create a bot manager configuration](/applications/security/bot_rules#bot-rule-administration), edit your Security
       Application configuration, and then resume this procedure.
 
     </Callout>
@@ -676,7 +676,7 @@ configurations.
 
       If you have not already created the desired custom rule, you can
       save your Security Application configuration, [create a
-      custom rule](/guides/security/custom_rules#custom-rule-administration), edit your
+      custom rule](/applications/security/custom_rules#custom-rule-administration), edit your
       Security Application configuration, and then resume this
       procedure.
 
@@ -721,7 +721,7 @@ configurations.
 
       If you have not already created the desired manged rule, you can
       save your Security Application configuration, [create a
-      managed rule](/guides/security/managed_rules#managedruleadministration), edit
+      managed rule](/applications/security/managed_rules#managedruleadministration), edit
       your Security Application configuration, and then resume
       this procedure.
 

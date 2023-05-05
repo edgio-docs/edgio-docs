@@ -12,7 +12,7 @@ Real-Time Log Delivery (RTLD) delivers log data in near real-time to a variety o
 
     </Callout>
 
--   **Real-Time Log Delivery Rate Limiting (RTLD Rate Limiting):** Delivers log data that describes requests for which [Web Application Firewall (WAF)](/guides/security/waf) enforced a rate limit as defined through a rate rule.
+-   **Real-Time Log Delivery Rate Limiting (RTLD Rate Limiting):** Delivers log data that describes requests for which [Web Application Firewall (WAF)](/applications/security/waf) enforced a rate limit as defined through a rate rule.
 
     <Callout type="info">
 
@@ -20,7 +20,7 @@ Real-Time Log Delivery (RTLD) delivers log data in near real-time to a variety o
 
     </Callout>
 
--   **Real-Time Log Delivery WAF (RTLD WAF):** Delivers log data that describes requests identified as threats by [Web Application Firewall (WAF)](/guides/security/waf).
+-   **Real-Time Log Delivery WAF (RTLD WAF):** Delivers log data that describes requests identified as threats by [Web Application Firewall (WAF)](/applications/security/waf).
 
     <Callout type="info">
 
@@ -36,14 +36,14 @@ Real-Time Log Delivery (RTLD) delivers log data in near real-time to a variety o
 
 RTLD delivers compressed log data to one or more of the following destination(s):
 
--   Your [web server](/guides/logs/rtld/web_server_log_delivery).
--   An [AWS S3 bucket](/guides/logs/rtld/aws_s3_log_delivery).
--   An [Azure Block Blob](/guides/logs/rtld/azure_log_delivery).
--   [Datadog](/guides/logs/rtld/datadog_log_delivery).
--   A [Google Cloud Storage bucket](/guides/logs/rtld/google_cloud_storage_log_delivery).
--   [New Relic (RTLD CDN and RTLD Rate Limiting)](/guides/logs/rtld/new_relic_log_delivery).
--   [Splunk Enterprise](/guides/logs/rtld/splunk_log_delivery).
--   [Sumo Logic](/guides/logs/rtld/sumo_logic_log_delivery).
+-   Your [web server](/applications/logs/rtld/web_server_log_delivery).
+-   An [AWS S3 bucket](/applications/logs/rtld/aws_s3_log_delivery).
+-   An [Azure Block Blob](/applications/logs/rtld/azure_log_delivery).
+-   [Datadog](/applications/logs/rtld/datadog_log_delivery).
+-   A [Google Cloud Storage bucket](/applications/logs/rtld/google_cloud_storage_log_delivery).
+-   [New Relic (RTLD CDN and RTLD Rate Limiting)](/applications/logs/rtld/new_relic_log_delivery).
+-   [Splunk Enterprise](/applications/logs/rtld/splunk_log_delivery).
+-   [Sumo Logic](/applications/logs/rtld/sumo_logic_log_delivery).
 
 ![RTLD Workflow](/images/v7/logs/rtld-workflow.png)
 
@@ -86,11 +86,11 @@ You may create multiple profiles. This allows you to:
     
 -   Log fields vary by RTLD module.
     
-    Learn more about log fields: [RTLD CDN](/guides/logs/rtld/log_fields_rtld_cdn) | [RTLD Rate Limiting](/guides/logs/rtld/log_fields_rtld_rate_limiting) | [RTLD WAF](/guides/logs/rtld/log_fields_rtld_waf)
+    Learn more about log fields: [RTLD CDN](/applications/logs/rtld/log_fields_rtld_cdn) | [RTLD Rate Limiting](/applications/logs/rtld/log_fields_rtld_rate_limiting) | [RTLD WAF](/applications/logs/rtld/log_fields_rtld_waf)
     
 -   Log data will only be delivered when a profile's status is enabled.
 -   The procedure for creating and modifying profiles varies by the destination to which log files will be delivered. Learn more about delivering to:
     
-    [Your web server(s)](/guides/logs/rtld/web_server_log_delivery) | [An AWS S3 Bucket](/guides/logs/rtld/aws_s3_log_delivery)| [An Azure Block Blob container](/guides/logs/rtld/azure_log_delivery) | [Splunk Enterprise](/guides/logs/rtld/splunk_log_delivery) | [Sumo Logic](/guides/logs/rtld/sumo_logic_log_delivery) | [Datadog](/guides/logs/rtld/datadog_log_delivery) | [Google Cloud Storage](/guides/logs/rtld/google_cloud_storage_log_delivery) | [New Relic (RTLD CDN and RTLD Rate Limiting)](/guides/logs/rtld/new_relic_log_delivery)
+    [Your web server(s)](/applications/logs/rtld/web_server_log_delivery) | [An AWS S3 Bucket](/applications/logs/rtld/aws_s3_log_delivery)| [An Azure Block Blob container](/applications/logs/rtld/azure_log_delivery) | [Splunk Enterprise](/applications/logs/rtld/splunk_log_delivery) | [Sumo Logic](/applications/logs/rtld/sumo_logic_log_delivery) | [Datadog](/applications/logs/rtld/datadog_log_delivery) | [Google Cloud Storage](/applications/logs/rtld/google_cloud_storage_log_delivery) | [New Relic (RTLD CDN and RTLD Rate Limiting)](/applications/logs/rtld/new_relic_log_delivery)
     
 -   Delete a profile by clicking the corresponding <Image inline src="/images/v7/icons/delete-2.png" alt="Delete" /> icon. When prompted, confirm the deletion.

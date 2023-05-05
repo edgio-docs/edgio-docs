@@ -39,7 +39,7 @@ Each website that will run behind {{ PRODUCT }} requires an {{ PRODUCT }} proper
 
     <Callout type="info">
 
-      If you are integrating a JavaScript framework with {{ PRODUCT }} {{ PRODUCT_PLATFORM }}, then you will take advantage of our CDN-as-code approach to configuration. This approach allows you to define your CDN configuration, including backends, within your code. Additionally, it allows you to fulfill requests through [Serverless Compute](/guides/performance/serverless_compute). As a result, you are not required to define an origin configuration.
+      If you are integrating a JavaScript framework with {{ PRODUCT }} {{ PRODUCT_PLATFORM }}, then you will take advantage of our CDN-as-code approach to configuration. This approach allows you to define your CDN configuration, including backends, within your code. Additionally, it allows you to fulfill requests through [Serverless Compute](/applications/performance/serverless_compute). As a result, you are not required to define an origin configuration.
 
     </Callout>
 
@@ -49,7 +49,7 @@ Each website that will run behind {{ PRODUCT }} requires an {{ PRODUCT }} proper
 
         <Callout type="info">
 
-          You may safely ignore the other origin settings until you are ready to fine-tune your setup. [Learn more about origins.](/guides/basics/hostnames_and_origins#origin)
+          You may safely ignore the other origin settings until you are ready to fine-tune your setup. [Learn more about origins.](/applications/basics/hostnames_and_origins#origin)
 
         </Callout>
 
@@ -70,7 +70,7 @@ Each website that will run behind {{ PRODUCT }} requires an {{ PRODUCT }} proper
 
     <Callout type="info">
 
-      This step requires [Node.js v{{ NODE_VERSION }}](/guides/install_nodejs). 
+      This step requires [Node.js v{{ NODE_VERSION }}](/applications/install_nodejs). 
 
     </Callout>
 
@@ -85,7 +85,7 @@ Each website that will run behind {{ PRODUCT }} requires an {{ PRODUCT }} proper
 
     Replace `<PROPERTY>` with the name of the property defined in step 2. You should only use lower-case characters and replace spaces with dashes (e.g., `my-property`). 
 
-    Once you have successfully deployed your property to {{ PRODUCT }}, our CLI provides an edge URL that allows you to preview your site. Learn how to [get started with CDN-as-code.](/guides/performance/cdn_as_code/getting_started)
+    Once you have successfully deployed your property to {{ PRODUCT }}, our CLI provides an edge URL that allows you to preview your site. Learn how to [get started with CDN-as-code.](/applications/performance/cdn_as_code/getting_started)
 
 ## Step 3: Test Your Property {/*test-your-property*/}
 
@@ -99,15 +99,15 @@ Congratulations on setting up a basic property on {{ PRODUCT }}!
 
 You are now ready to:
 
--   Fine-tune your [origin configuration](/guides/basics/hostnames_and_origins#origin).
+-   Fine-tune your [origin configuration](/applications/basics/hostnames_and_origins#origin).
 
     For example, you can enable Server Name Indication (SNI) on an origin configuration or shield it from requests to reduce network bandwith usage and the load on your web servers.
 
--   If you plan on collaborating with other team members, then you should [create a team](/guides/basics/collaboration). After which, you will need to <!--either -->create a property for that team<!-- or [transfer the ownership of your new property](/guides/basics/properties#transfer-ownership) to that team-->.
--   [Create environments](/guides/basics/environments) to match your software development workflow. Each environment provides site previews that allow QA testers, code reviewers, and other stakeholders to immediately try out newly introduced changes before they are introduced into your production environment. 
--   Set up {{ PRODUCT }} [Performance.](/guides/performance/getting_started) Learn how to:
-    -   Optimize website performance by defining a [caching policy](/guides/performance/caching), [predictive prefetching](/guides/performance/prefetching), and other edge logic through [Rules](/guides/performance/rules). Alternatively, if you prefer code to UI, then you can take advantage of our [CDN-as-code approach](/guides/performance/cdn_as_code/getting_started) to CDN configuration.
-    -   Gain performance insights through which you can fine-tune your configuration through our [Observability](/guides/performance/observability/core_web_vitals) solution.
-    -   Speed up development by quickly iterating through different variations of your site through our [Traffic Splitting](/guides/performance/traffic_splitting) solution.
--   Set up {{ PRODUCT }} [Security.](/guides/security) We automatically provide distributed denial-of-service (DDOS) protection to traffic that runs behind {{ PRODUCT }}. Apply additional protection to your web applications and APIs through our [Web Application Firewall solution](/guides/security/waf). {{ ACCOUNT_UPGRADE }}
--   Set up {{ PRODUCT }} [Sites.](/guides/sites_frameworks/getting_started) If you are currently using a JavaScript framework, then you can improve your website's performance by using our serverless workers to quickly render server-side content in a scalable manner.
+-   If you plan on collaborating with other team members, then you should [create a team](/applications/basics/collaboration). After which, you will need to <!--either -->create a property for that team<!-- or [transfer the ownership of your new property](/applications/basics/properties#transfer-ownership) to that team-->.
+-   [Create environments](/applications/basics/environments) to match your software development workflow. Each environment provides site previews that allow QA testers, code reviewers, and other stakeholders to immediately try out newly introduced changes before they are introduced into your production environment. 
+-   Set up {{ PRODUCT }} [Performance.](/applications/performance/getting_started) Learn how to:
+    -   Optimize website performance by defining a [caching policy](/applications/performance/caching), [predictive prefetching](/applications/performance/prefetching), and other edge logic through [Rules](/applications/performance/rules). Alternatively, if you prefer code to UI, then you can take advantage of our [CDN-as-code approach](/applications/performance/cdn_as_code/getting_started) to CDN configuration.
+    -   Gain performance insights through which you can fine-tune your configuration through our [Observability](/applications/performance/observability/core_web_vitals) solution.
+    -   Speed up development by quickly iterating through different variations of your site through our [Traffic Splitting](/applications/performance/traffic_splitting) solution.
+-   Set up {{ PRODUCT }} [Security.](/applications/security) We automatically provide distributed denial-of-service (DDOS) protection to traffic that runs behind {{ PRODUCT }}. Apply additional protection to your web applications and APIs through our [Web Application Firewall solution](/applications/security/waf). {{ ACCOUNT_UPGRADE }}
+-   Set up {{ PRODUCT }} [Sites.](/applications/sites_frameworks/getting_started) If you are currently using a JavaScript framework, then you can improve your website's performance by using our serverless workers to quickly render server-side content in a scalable manner.

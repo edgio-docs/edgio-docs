@@ -18,7 +18,7 @@ Using the Router, you can:
 
 Before proceeding, you will need an {{ PRODUCT }} property. Create one now if you do not already have one.
 
-[Learn how to create a property.](/guides/getting_started)
+[Learn how to create a property.](/applications/getting_started)
 
 ## Configuration {/* configuration */}
 
@@ -426,7 +426,7 @@ router.match(
 );
 ```
 
-For a comprehensive list of variables, see the [Feature Variables](/guides/performance/rules/feature_variables) guide.
+For a comprehensive list of variables, see the [Feature Variables](/applications/performance/rules/feature_variables) guide.
 
 ## Blocking Search Engine Crawlers {/* blocking-search-engine-crawlers */}
 

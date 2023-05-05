@@ -16,6 +16,6 @@ Upgrading {{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} involves updating:
 </Callout>
 
 Learn how to:
--   [Migrate to {{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} version 4.](/guides/upgrading/layer0_migration)
--   [Migrate from version 4 to version 5.](/guides/upgrading/v5_migration)
--   [Migrate from version 5 to version 6.](/guides/upgrading/v6_migration)
+-   [Migrate to {{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} version 4.](/applications/upgrading/layer0_migration)
+-   [Migrate from version 4 to version 5.](/applications/upgrading/v5_migration)
+-   [Migrate from version 5 to version 6.](/applications/upgrading/v6_migration)

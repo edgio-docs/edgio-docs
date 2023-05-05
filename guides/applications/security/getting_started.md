@@ -40,7 +40,7 @@ and managed rule are provided below.
 
 <Callout type="tip">
 
-  This tutorial covers how to set up basic application layer protection. However, our Business and Premier customers may use a [custom rule](/guides/security/custom_rules) to identify
+  This tutorial covers how to set up basic application layer protection. However, our Business and Premier customers may use a [custom rule](/applications/security/custom_rules) to identify
   threats using custom criteria that takes into account your site's
   traffic profile to identify specific threats and to avoid false positives.
 
@@ -160,7 +160,7 @@ Ensure that {{ PRODUCT_SECURITY }} is correctly identifying threats by viewing d
         -   Our recommendation is that all of the following conditions be met before disabling a rule:
 
             -   Your application cannot be updated to reduce false positives.
-            -   A [rule exception](/guides/security/managed_rules#rule-exceptions) cannot be created to eliminate false positives.
+            -   A [rule exception](/applications/security/managed_rules#rule-exceptions) cannot be created to eliminate false positives.
             -   A significant number of requests will be impacted by this rule.
 
             <Callout type="info">

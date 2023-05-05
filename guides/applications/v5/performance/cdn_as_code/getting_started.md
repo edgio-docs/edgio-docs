@@ -10,7 +10,7 @@ Get started with CDN-as-code by:
 
 1.  Creating and deploying a property to {{ PRODUCT }}.
 
-    [Learn more.](/guides/getting_started)
+    [Learn more.](/applications/getting_started)
 
     <Callout type="tip">
 
@@ -22,7 +22,7 @@ Get started with CDN-as-code by:
 
     <Callout type="info">
 
-      This step requires [Node.js v{{ NODE_VERSION }}](/guides/install_nodejs). 
+      This step requires [Node.js v{{ NODE_VERSION }}](/applications/install_nodejs). 
 
     </Callout>
 
@@ -92,7 +92,7 @@ The above configuration proxies all requests that do not match a route to the `o
   A backend identifies a domain or IP address to which {{ PRODUCT }} may proxy requests. In this case, the `origin` backend was defined when you initialized this property using the `edgio init` command. 
 <br /> 
 
-  Add, modify, and remove backends by editing the [{{ CONFIG_FILE }} file](/guides/basics/edgio_config).
+  Add, modify, and remove backends by editing the [{{ CONFIG_FILE }} file](/applications/basics/edgio_config).
 
 </Callout>
 
@@ -150,7 +150,7 @@ Once you have identified a set of requests, you need to define how {{ PRODUCT }}
     })
     ```
 
-[View additional examples.](/guides/performance/cdn_as_code/common_routing_patterns)
+[View additional examples.](/applications/performance/cdn_as_code/common_routing_patterns)
 
 ### Defining Routes {/*defining-a-route*/}
 
@@ -309,7 +309,7 @@ Evaluate site performance and QA functionality by deploying your property to {{ 
 
 Assess performance and caching behavior from the {{ PORTAL_LINK }}. Fine-tune your configuration by adding routes and then redeploying your property. Once you are ready to serve production traffic through {{ PRODUCT }}, update your site's DNS to point to our service.
 
-[Learn more.](/guides/production)
+[Learn more.](/applications/production)
 
 ## Examples {/*example*/}
 
@@ -329,10 +329,10 @@ This example demonstrates a basic {{ PRODUCT }} configuration for `publicdomainr
 
 This example demonstrates a full-featured {{ PRODUCT }} configuration that showcases the following functionality:
 
--   [Proxying requests](/guides/performance/cdn_as_code/common_routing_patterns#proxying-an-origin) to multiple origins
--   Increasing the cache buffer during revalidation through [StaleWhileRevalidate](/guides/performance/caching#achieving-100-cache-hit-rates)
--   [Prerendering](/guides/performance/static_prerendering) pages and caching them to improve performance.
--   Instructing the browser to [prefetch](/guides/performance/prefetching) and [deep fetch](/guides/performance/prefetching#deep-fetching) cached content to improve performance.
+-   [Proxying requests](/applications/performance/cdn_as_code/common_routing_patterns#proxying-an-origin) to multiple origins
+-   Increasing the cache buffer during revalidation through [StaleWhileRevalidate](/applications/performance/caching#achieving-100-cache-hit-rates)
+-   [Prerendering](/applications/performance/static_prerendering) pages and caching them to improve performance.
+-   Instructing the browser to [prefetch](/applications/performance/prefetching) and [deep fetch](/applications/performance/prefetching#deep-fetching) cached content to improve performance.
 
     <Callout type="info">
 
@@ -340,12 +340,12 @@ This example demonstrates a full-featured {{ PRODUCT }} configuration that showc
 
     </Callout>
 
--   [Transforming and optimizing images](/guides/performance/image_optimization)
--   Transforming the response through [Serverless Compute](/guides/performance/serverless_compute)
--   [Removing response headers](/guides/performance/cdn_as_code#alter-requests-and-responses)
--   [Normalizing the cache key](/guides/performance/caching#customizing-the-cache-key)
--   Generating performance insights through [DevTools](/guides/performance/observability/devtools)
--   Tracking [Core Web Vitals](/guides/performance/observability/core_web_vitals) through real user monitoring (RUM).
+-   [Transforming and optimizing images](/applications/performance/image_optimization)
+-   Transforming the response through [Serverless Compute](/applications/performance/serverless_compute)
+-   [Removing response headers](/applications/performance/cdn_as_code#alter-requests-and-responses)
+-   [Normalizing the cache key](/applications/performance/caching#customizing-the-cache-key)
+-   Generating performance insights through [DevTools](/applications/performance/observability/devtools)
+-   Tracking [Core Web Vitals](/applications/performance/observability/core_web_vitals) through real user monitoring (RUM).
 
 <ExampleButtons
   title="Full-Featured"

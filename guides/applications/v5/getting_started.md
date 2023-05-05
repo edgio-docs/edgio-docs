@@ -13,7 +13,7 @@ Get started with {{ PRODUCT }} by satisfying our [prerequisites](#prerequisites)
 
 ## Quick Start {/* quick-start */}
 
-If you already have [Node.js v{{ NODE_VERSION }}](/guides/install_nodejs) and an [{{ PRODUCT }} account](#account-creation), then you can use a single command to:
+If you already have [Node.js v{{ NODE_VERSION }}](/applications/install_nodejs) and an [{{ PRODUCT }} account](#account-creation), then you can use a single command to:
 
 - Install the {{ PRODUCT }} CLI.
 - Create an {{ PRODUCT }} property for your website.
@@ -66,7 +66,7 @@ You are now ready to optimize and secure the delivery of your website.
 
 {{ PRODUCT }} requires:
 
-- [Node.js v{{ NODE_VERSION }}](/guides/install_nodejs)
+- [Node.js v{{ NODE_VERSION }}](/applications/install_nodejs)
 - npm or yarn package manager
 
   <Callout type="info">
@@ -80,7 +80,7 @@ You are now ready to optimize and secure the delivery of your website.
 
 ### {{ PRODUCT }} CLI Installation {/* cli-installation */}
 
-Use the [{{ PRODUCT }} CLI](/guides/develop/cli) to build, test, and deploy your website to {{ PRODUCT }}. Install it through either npm or yarn.
+Use the [{{ PRODUCT }} CLI](/applications/develop/cli) to build, test, and deploy your website to {{ PRODUCT }}. Install it through either npm or yarn.
 
 <SnippetGroup>
 
@@ -182,13 +182,13 @@ Once you have successfully deployed your property to {{ PRODUCT }}, our CLI prov
 - **{{ PRODUCT }} Developer Console:** View detailed information about this deployment, including its edge link and permalink, from within the {{ PORTAL }}.
 - **Permalink:** Preview your website behind {{ PRODUCT }} without edge caching. Bypassing our cache will affect performance.
 
-- **Edge:** Preview your website behind {{ PRODUCT }} and gain performance insights through our [DevTools](/guides/performance/observability/devtools).
+- **Edge:** Preview your website behind {{ PRODUCT }} and gain performance insights through our [DevTools](/applications/performance/observability/devtools).
 
 You are now ready to set up:
 
-- [Performance.](/guides/performance/getting_started) Learn how to:
-  - Optimize website performance through our CDN-as-code approach to [caching](/guides/performance/getting_started#configure-caching), [routing](/guides/performance/cdn_as_code) your content, and [predictive prefetching](/guides/performance/prefetching).
-  - Gain performance insights through which you can fine-tune your configuration through our [Observability](/guides/performance/observability/core_web_vitals) solution.
-  - Speed up development by quickly iterating through different variations of your site through our [Traffic Splitting](/guides/performance/traffic_splitting) solution.
-- [Security.](/guides/security) We automatically provide distributed denial-of-service (DDOS) protection to traffic that runs behind {{ PRODUCT }}. Apply additional protection to your web applications and APIs through our Web Application Firewall solution. {{ ACCOUNT_UPGRADE }}
-- [Sites.](/guides/sites_frameworks/getting_started) If you are currently using a JavaScript framework, then you can improve your website's performance by using our serverless workers to quickly render server-side content in a scalable manner.
+- [Performance.](/applications/performance/getting_started) Learn how to:
+  - Optimize website performance through our CDN-as-code approach to [caching](/applications/performance/getting_started#configure-caching), [routing](/applications/performance/cdn_as_code) your content, and [predictive prefetching](/applications/performance/prefetching).
+  - Gain performance insights through which you can fine-tune your configuration through our [Observability](/applications/performance/observability/core_web_vitals) solution.
+  - Speed up development by quickly iterating through different variations of your site through our [Traffic Splitting](/applications/performance/traffic_splitting) solution.
+- [Security.](/applications/security) We automatically provide distributed denial-of-service (DDOS) protection to traffic that runs behind {{ PRODUCT }}. Apply additional protection to your web applications and APIs through our Web Application Firewall solution. {{ ACCOUNT_UPGRADE }}
+- [Sites.](/applications/sites_frameworks/getting_started) If you are currently using a JavaScript framework, then you can improve your website's performance by using our serverless workers to quickly render server-side content in a scalable manner.

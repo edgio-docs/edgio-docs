@@ -137,11 +137,11 @@ router.get('/products/:productId', {
 });
 ```
 
-Additional information on the `headers` feature can be found in the [Features](/guides/performance/rules/features#headers) guide.
+Additional information on the `headers` feature can be found in the [Features](/applications/performance/rules/features#headers) guide.
 
 #### Altering All Responses {/* altering-all-responses */}
 
-You can also write catch-all routes that will alter all responses. One example where this is useful is injecting [Content Security Policy](/guides/security/edgejs_security#content-security-policy-csp) headers.
+You can also write catch-all routes that will alter all responses. One example where this is useful is injecting [Content Security Policy](/applications/security/edgejs_security#content-security-policy-csp) headers.
 
 Another example is adding response headers for debugging, which is often useful if {{ PRODUCT_NAME }} is behind another CDN or if you are troubleshooting your router rules. For example, you could respond with the value of request `x-forwarded-for` into `x-debug-xff` to see the value that {{ PRODUCT_NAME }} is receiving from the CDN:
 
@@ -163,8 +163,8 @@ router.match(
 );
 ```
 
-The rules for interpolating the values of request and response objects can be found in the [routing](/guides/performance/cdn_as_code#embedded-values) guide.
-Note that catch-all routes that alter headers, cookies, or caching can be placed at the start of your router while allowing subsequent routes to run because they alter the request or the response without actually sending a response. See [route execution](/guides/routing#route-execution) for more information on route execution order and sending responses.
+The rules for interpolating the values of request and response objects can be found in the [routing](/applications/performance/cdn_as_code#embedded-values) guide.
+Note that catch-all routes that alter headers, cookies, or caching can be placed at the start of your router while allowing subsequent routes to run because they alter the request or the response without actually sending a response. See [route execution](/applications/routing#route-execution) for more information on route execution order and sending responses.
 
 ### Manipulating Cookies {/* manipulating-cookies */}
 
@@ -482,7 +482,7 @@ router.match(
 
 ### Blocking traffic from specific countries {/* blocking-traffic-from-specific-countries */}
 
-If you need to block all traffic from a specific country or set of countries, you can do so by matching requests by the [country code](/guides/reference/country_codes) using the `location.country` match condition:
+If you need to block all traffic from a specific country or set of countries, you can do so by matching requests by the [country code](/applications/reference/country_codes) using the `location.country` match condition:
 
 ```js
 router.get({
@@ -528,12 +528,12 @@ router.get({
 });
 ```
 
-You can find more about geolocation headers [here](/guides/performance/request#request-headers).
+You can find more about geolocation headers [here](/applications/performance/request#request-headers).
 
 <!-- TODO need support for regex client IP matching
 ### Allowing Specific IPs {/*allowing-specific-ips*/}
 
-If you need to block all traffic except requests that originate from specific IP addresses, you can do so by matching requests by the [{{ HEADER_PREFIX }}-client-ip](/guides/request_headers#general-headers) header:
+If you need to block all traffic except requests that originate from specific IP addresses, you can do so by matching requests by the [{{ HEADER_PREFIX }}-client-ip](/applications/request_headers#general-headers) header:
 
 ```js
 router.get(

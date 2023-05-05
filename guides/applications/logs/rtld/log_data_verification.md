@@ -64,25 +64,25 @@ Use the following information when assessing whether there is a gap in the seque
 
 -   A software agent's unique ID is reported within the:
     
-    -   [Log file name (AgentID)](/guides/logs/rtld/log_file_naming_convention) - AWS S3, Azure Blob Storage, and Google Cloud Storage only
+    -   [Log file name (AgentID)](/applications/logs/rtld/log_file_naming_convention) - AWS S3, Azure Blob Storage, and Google Cloud Storage only
         
-    -   [JSON payload (agent-id)](/guides/logs/rtld/log_fields_rtld_cdn#agent-id)
+    -   [JSON payload (agent-id)](/applications/logs/rtld/log_fields_rtld_cdn#agent-id)
 
 -   A software agent's sequence number is reported within the:
     
-    -   [Log file name (SequenceNumber)](/guides/logs/rtld/log_file_naming_convention) - AWS S3, Azure Blob Storage, and Google Cloud Storage only
+    -   [Log file name (SequenceNumber)](/applications/logs/rtld/log_file_naming_convention) - AWS S3, Azure Blob Storage, and Google Cloud Storage only
         
-    -   [JSON payload (seq-num)](/guides/logs/rtld/log_fields_rtld_cdn#sequence-number)
+    -   [JSON payload (seq-num)](/applications/logs/rtld/log_fields_rtld_cdn#sequence-number)
 -   The sequential number reported for each software agent starts at 0.
 -   This sequential number resets to 0 at the start of a new day (UTC). The date on which log data was generated is reported within the:
     
-    -   [Log file name (DateStamp)](/guides/logs/rtld/log_file_naming_convention) - AWS S3, Azure Blob Storage, and Google Cloud Storage only
-    -   [JSON payload (date-stamp)](/guides/logs/rtld/log_fields_rtld_cdn#datestamp)
+    -   [Log file name (DateStamp)](/applications/logs/rtld/log_file_naming_convention) - AWS S3, Azure Blob Storage, and Google Cloud Storage only
+    -   [JSON payload (date-stamp)](/applications/logs/rtld/log_fields_rtld_cdn#datestamp)
 -   If a software agent stops running, then it will be assigned a new unique ID.
 
 <Callout type="important">
 
-  If log data uses either the CSV, JSON Array, or JSON Lines log format, then it will not contain information that uniquely identifies a set of log data. If log data using one of these formats is delivered to a destination other than AWS S3, Azure Blob Storage, or Google Cloud Storage, then there is no way to check for gaps in sequence numbers when attempting to [identify missing log data](/guides/logs/rtld/log_data_verification#checking-for-sequence-number-gaps).
+  If log data uses either the CSV, JSON Array, or JSON Lines log format, then it will not contain information that uniquely identifies a set of log data. If log data using one of these formats is delivered to a destination other than AWS S3, Azure Blob Storage, or Google Cloud Storage, then there is no way to check for gaps in sequence numbers when attempting to [identify missing log data](/applications/logs/rtld/log_data_verification#checking-for-sequence-number-gaps).
 
 </Callout>
 

@@ -2,7 +2,7 @@
 title: Hostnames and Origins
 ---
 
-Setting up the delivery of your site through {{ PRODUCT }} requires the following configuration for each desired [environment](/guides/basics/environments):
+Setting up the delivery of your site through {{ PRODUCT }} requires the following configuration for each desired [environment](/applications/basics/environments):
 
 -   **Hostname:** Identifies a domain (e.g., `cdn.example.com`) through which your site will be served.
 -   **Origin:** Defines how our service will communicate with your web servers.
@@ -11,7 +11,7 @@ Control how {{ PRODUCT }} communicates with your web servers by mapping hostname
 
 ![Hostname and Origin Workflow](/images/v7/basics/hostnames-origins.png?width=781)
 
-You may also serve your site through [Serverless Compute](/guides/performance/serverless_compute). You may serve all of your site traffic through Serverless Compute, your origin server(s), or any combination of both.
+You may also serve your site through [Serverless Compute](/applications/performance/serverless_compute). You may serve all of your site traffic through Serverless Compute, your origin server(s), or any combination of both.
 
 ![Hostname, Origin, and Serverless Compute Workflow](/images/v7/basics/hostnames-origins-serverless-compute.png)
 
@@ -22,10 +22,10 @@ Set up your hostnames and origins through the following steps:
 1.  [Define each hostname](#add-modify-delete-hostname) through which your site's content will be delivered. 
 2.  [Create an origin configuration](#add-an-origin-configuration) that defines how {{ PRODUCT }} communicates with your web server(s). 
 3.  [Configure your firewall](#firewall-allowing-ip-addresses)  to accept traffic from our network.
-4.  {{ PRODUCT }} requires a TLS certificate hosted on our network to serve HTTPS traffic. You may either [upload your own TLS certificate](/guides/security/tls_certificates#uploading-your-certificate) or you may allow {{ PRODUCT }} to autogenerate it for each hostname defined in step 1 by performing the following steps:
+4.  {{ PRODUCT }} requires a TLS certificate hosted on our network to serve HTTPS traffic. You may either [upload your own TLS certificate](/applications/security/tls_certificates#uploading-your-certificate) or you may allow {{ PRODUCT }} to autogenerate it for each hostname defined in step 1 by performing the following steps:
 
     1.  Check for CAA records and verify that the Let's Encrypt certificate authority is allowed to issue certificates for that hostname.
-    2.  [Add an _acme-challenge CNAME record](/guides/security/tls_certificates#domain-control-validation) that proves your control over that hostname. 
+    2.  [Add an _acme-challenge CNAME record](/applications/security/tls_certificates#domain-control-validation) that proves your control over that hostname. 
 
         **Example:** `_acme-challenge.cdn.example.com. CNAME _acme-challenge.xdn-validation.com.`
 
@@ -42,8 +42,8 @@ On a per environment-basis, define each hostname that will be served through {{ 
 
     For example, if you have defined `www.example.com` within the `production` environment, then you cannot define it within any other environment until you delete it from the `production` environment.
 
--   Each hostname is mapped to an origin configuration. By default, {{ PRODUCT }} proxies cache misses for that hostname to that origin configuration. You may override this mapping through the [Set Origin feature](/guides/performance/rules/features#set-origin) or your [CDN-as-code configuration (set_origin)](/guides/performance/cdn_as_code).
--   Each hostname requires the installation of a [TLS certificate](/guides/security/tls_certificates) on our network. {{ PRODUCT }} can automatically generate and install this TLS certificate when both of the following requirements are met:
+-   Each hostname is mapped to an origin configuration. By default, {{ PRODUCT }} proxies cache misses for that hostname to that origin configuration. You may override this mapping through the [Set Origin feature](/applications/performance/rules/features#set-origin) or your [CDN-as-code configuration (set_origin)](/applications/performance/cdn_as_code).
+-   Each hostname requires the installation of a [TLS certificate](/applications/security/tls_certificates) on our network. {{ PRODUCT }} can automatically generate and install this TLS certificate when both of the following requirements are met:
 
     -   **Certificate Authority Authorization:** The Let's Encrypt certificate authority (CA) must be allowed to issue certificates for that hostname. It is allowed to issue certificates when either of the following conditions are true:
 
@@ -60,7 +60,7 @@ On a per environment-basis, define each hostname that will be served through {{ 
 
     <Callout type="info">
 
-      Alternatively, you may [upload your own TLS certificate](/guides/security/tls_certificates#uploading-your-certificate).
+      Alternatively, you may [upload your own TLS certificate](/applications/security/tls_certificates#uploading-your-certificate).
 
     </Callout>
 
@@ -169,7 +169,7 @@ On a per environment-basis, define how {{ PRODUCT }} will communicate with your 
         2.  Paste the SHA-256 digest for the public key of your leaf certificate.
         3.  Repeat steps 1 and 2 as needed.
 
-6.  Optional. Protect your origin by defining one or more [shield POP(s)](/guides/security/origin_shield). Click on the **Shields** section to expand it.
+6.  Optional. Protect your origin by defining one or more [shield POP(s)](/applications/security/origin_shield). Click on the **Shields** section to expand it.
 
     1.  Assign a POP location to the region closest to your web server(s).
 

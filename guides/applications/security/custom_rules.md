@@ -181,7 +181,7 @@ support the following request elements:
     <Callout type="info">
 
       {{ PRODUCT_SECURITY }} only inspects the first 8 KB of the request body. You may
-      [restrict the request body](/guides/security/managed_rules#file-size-and-query-string-limits-advanced)
+      [restrict the request body](/applications/security/managed_rules#file-size-and-query-string-limits-advanced)
       for valid requests to 8 KB (8,192 bytes) through a managed rule.
 
     </Callout>
@@ -208,7 +208,7 @@ support the following request elements:
     <Callout type="info">
 
       {{ PRODUCT_SECURITY }} only inspects the first 8 KB of the request body. You may
-      [restrict the request body](/guides/security/managed_rules#file-size-and-query-string-limits-advanced)
+      [restrict the request body](/applications/security/managed_rules#file-size-and-query-string-limits-advanced)
       for valid requests to 8 KB (8,192 bytes) through a managed rule.
 
     </Callout>
@@ -420,7 +420,7 @@ You may create, modify, and delete custom rule sets.
 **Key information:**
 -   Administer custom rule sets from the **Custom Rules** page.
 -   Apply a custom rule set to production traffic by adding it to a
-    [Security Application configuration](/guides/security/security_applications) and then
+    [Security Application configuration](/applications/security/security_applications) and then
     determining how it will be enforced. Multiple Security Application
     configurations may use the same custom rule set. Leverage
     this capability to tailor security screening by application or

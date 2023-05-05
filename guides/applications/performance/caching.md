@@ -6,7 +6,7 @@ This guide introduces the caching capabilities of {{ PRODUCT_NAME }}. While most
 
 ## Environments and Caching {/* environments-and-caching */}
 
-Each environment provides a separate edge cache for the most recent deployment. Although older deployments do not support edge caching, you may re-enable it by [rolling back to that version](/guides/basics/deployments#versioning).
+Each environment provides a separate edge cache for the most recent deployment. Although older deployments do not support edge caching, you may re-enable it by [rolling back to that version](/applications/basics/deployments#versioning).
 
 ## Edge and Shield Caching {/* edge-and-shield-caching */}
 
@@ -17,7 +17,7 @@ Each environment provides a separate edge cache for the most recent deployment. 
 
 There is very little difference in time to first byte (TTFB) for responses served from an edge or shield POP. In either case, the response is served nearly instantly (typically 25-100ms). Concurrent requests for the same URL on different POPs that result in a cache miss will be coalesced at the shield POP. If you have configured your origin to only use a shield POP, then it will only submit a single request at a time to your origin servers for each cacheable URL.
 
-[Learn more about Origin Shield.](/guides/security/origin_shield)
+[Learn more about Origin Shield.](/applications/security/origin_shield)
 
 ## Caching a Response {/* caching-a-response */}
 
@@ -64,7 +64,7 @@ The amount of time that an asset will be cached on our edge servers is determine
 **Key information:**
 
 - By default, content will only be cached after a POP receives two `GET` requests that result in a 200 OK response.
-- By default, {{ PRODUCT }} honors an origin server's cache directives. Allow {{ PRODUCT }} to override those directives by creating a rule with the [Ignore Origin No Cache](/guides/performance/rules/features#ignore-origin-no-cache) feature enabled for the desired status code (e.g., `200 OK`).
+- By default, {{ PRODUCT }} honors an origin server's cache directives. Allow {{ PRODUCT }} to override those directives by creating a rule with the [Ignore Origin No Cache](/applications/performance/rules/features#ignore-origin-no-cache) feature enabled for the desired status code (e.g., `200 OK`).
 - The above directives are ordered according to precedence. Higher directives take precedence over lower directives. In other words, if an asset contains both a `Cache-Control` and an `Expires` header, then the `Cache-Control` header will take precedence.
 - Please refer to your web server’s documentation for more information on how to configure these settings.
 - You may create a rule to override a web server's cache policy.
@@ -73,15 +73,15 @@ The amount of time that an asset will be cached on our edge servers is determine
 
 Set or override a cache policy through rules. The most commonly used features for defining a caching policy are:
 
-    -   [Bypass Cache](/guides/performance/rules/features#bypass-cache)
-    -   [Cache-Control Header Treatment](/guides/performance/rules/features#cache-control-header-treatment)
-    -   [Set Client Max-Age](/guides/performance/rules/features#set-client-max-age)
+    -   [Bypass Cache](/applications/performance/rules/features#bypass-cache)
+    -   [Cache-Control Header Treatment](/applications/performance/rules/features#cache-control-header-treatment)
+    -   [Set Client Max-Age](/applications/performance/rules/features#set-client-max-age)
 
-[View all caching-related features.](/guides/performance/rules/features#caching)
+[View all caching-related features.](/applications/performance/rules/features#caching)
 
 ### CDN-as-Code {/* cdn-as-code */}
 
-Use the [caching](/guides/performance/rules/features#caching) feature in your route configuration:
+Use the [caching](/applications/performance/rules/features#caching) feature in your route configuration:
 
 ```js
 router.get('/some/path', {
@@ -103,7 +103,7 @@ router.get('/some/path', {
 
 {{ PRODUCT_NAME }} provides you with a default cache key out of the box. By default, a request’s cache-key is determined by the request URI’s relative path. For example, a request to `https://example.com/some/path` will have a cache key of `/some/path`. This is sufficient for most sites, but there are some cases where you may want to customize the cache key. For example, if your site has a query parameter that affects the content of the response, you may want to include that query parameter in the cache key.
 
-To ensure that your site is resilient to [cache poisoning attacks](/guides/security/edgejs_security#cache-poisoning) every request header that influences the rendering of the content must be included in your custom cache key.
+To ensure that your site is resilient to [cache poisoning attacks](/applications/security/edgejs_security#cache-poisoning) every request header that influences the rendering of the content must be included in your custom cache key.
 
 #### Customizing the Cache Key {/* customizing-the-cache-key */}
 
@@ -152,7 +152,7 @@ router.get('/some/path', {
 });
 ```
 
-This will take the value of the `%{geo_country}` feature variable and split based on the country code. This would allow you to cache different content for the same URL by creating different caches dependent on the `geo_country` value. See [Feature Variables](/guides/performance/rules/features#feature-variables) for additional reference values you may use to customize your cache key.
+This will take the value of the `%{geo_country}` feature variable and split based on the country code. This would allow you to cache different content for the same URL by creating different caches dependent on the `geo_country` value. See [Feature Variables](/applications/performance/rules/features#feature-variables) for additional reference values you may use to customize your cache key.
 
 Customizing caching keys is a very powerful tool to make your site faster. At the same time, it is easy to apply it too broadly causing a loss of performance due to lower cache hit ratio. The key to correctly using cache customization is to apply it judiciously and narrowly for specific routes.
 
@@ -208,10 +208,10 @@ By default, {{ PRODUCT_NAME }} will cache responses that satisfy all of the foll
 
 1. The response must correspond to a `GET` or `HEAD` request. To override this, see the [_POST and other non-GET/HEAD_](#caching-responses-for-post-and-other-non-gethead-requests) section.
 2. The response status must have a status code of 1xx, 2xx or 3xx. You cannot override this.
-3. The response must not not have any `set-cookie` headers. You cannot override this, but you can [alter the response](/guides/performance/cdn_as_code/common_routing_patterns#altering-the-response) to remove `set-cookie` headers.
+3. The response must not not have any `set-cookie` headers. You cannot override this, but you can [alter the response](/applications/performance/cdn_as_code/common_routing_patterns#altering-the-response) to remove `set-cookie` headers.
 4. The response must have a valid `cache-control` header that includes a positive `max-age` or `s-maxage` and does not include a `private` clause. You can override this by using [router caching](#caching-a-response) and [forcing private responses](#caching-private-responses).
 
-However, sometimes you may not want to cache anything, even if the upstream backend returns a `max-age`. Other times, you might want to [improve the performance](/guides/performance#turn-off-caching-when-not-needed) of pages that can never be cached at edge. In those cases, you can turn off caching:
+However, sometimes you may not want to cache anything, even if the upstream backend returns a `max-age`. Other times, you might want to [improve the performance](/applications/performance#turn-off-caching-when-not-needed) of pages that can never be cached at edge. In those cases, you can turn off caching:
 
 ```js
 router.get('/some/uncachable/path', {
@@ -281,7 +281,7 @@ router.get('/some/path', {
 });
 ```
 
-You can also remove the `private` value from the upstream response's `cache-control` header. See [Altering the Response](/guides/performance/cdn_as_code/common_routing_patterns#altering-the-response) for more information.
+You can also remove the `private` value from the upstream response's `cache-control` header. See [Altering the Response](/applications/performance/cdn_as_code/common_routing_patterns#altering-the-response) for more information.
 
 ### method {/* method */}
 
@@ -307,7 +307,7 @@ router.get('/some/path', {
 });
 ```
 
-See [Altering the Response](/guides/performance/cdn_as_code/common_routing_patterns#altering-the-response) for more information.
+See [Altering the Response](/applications/performance/cdn_as_code/common_routing_patterns#altering-the-response) for more information.
 
 ### deployment {/* deployment */}
 
@@ -325,7 +325,7 @@ If the "pass" is intermittent on an otherwise cacheable resource, you may want t
 
 "Hit-for-pass" can happen when system remembers for a brief time that a typically cacheable resource was not cacheable as anticipated (such as a `Set-Cookie` header, or an HTTP error response code). The system will cache, typically for a couple of minutes that the resource was not cacheable, and will not coalesce requests.
 
-Hit-for-pass disables the usual request coalescing behavior temporarily, when the resource is known not to be cacheable, clients can avoid being put in a waiting queue. Usually request coalescing (see [L2 Shield Cache](/guides/overview#l2-shield-cache)) speeds up client requests by enqueueing all but the first request, anticipating that the first request will populate the cache and allow instant delivery of the already-cached object to the waiting clients.
+Hit-for-pass disables the usual request coalescing behavior temporarily, when the resource is known not to be cacheable, clients can avoid being put in a waiting queue. Usually request coalescing (see [L2 Shield Cache](/applications/overview#l2-shield-cache)) speeds up client requests by enqueueing all but the first request, anticipating that the first request will populate the cache and allow instant delivery of the already-cached object to the waiting clients.
 
 Disabling this, such as when the upstream resource is serving errors can help alleviate pressure at all stages of the request lifecycle.
 

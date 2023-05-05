@@ -27,7 +27,7 @@ Set up your rules through the following steps:
 There are two workflows for defining your CDN configuration:
 
 -   Generate and deploy rules through the {{ PORTAL_LINK }}.
--   Define a [CDN-as-Code configuration](/guides/performance/cdn_as_code) and then deploy it through the {{ PRODUCT }} CLI. 
+-   Define a [CDN-as-Code configuration](/applications/performance/cdn_as_code) and then deploy it through the {{ PRODUCT }} CLI. 
 
 ![Rules and CDN-as-Code](/images/v7/performance/rules-cdn-as-code.png)
 
@@ -65,7 +65,7 @@ For example, the following rule applies a caching policy to all `GET` requests w
 
 A condition identifies a set of requests. Setting up a condition requires:
 
-1.  Selecting the [type of condition](/guides/performance/rules/conditions).
+1.  Selecting the [type of condition](/applications/performance/rules/conditions).
 
     For example, you may identify requests by HTTP method, path, or request headers.
 
@@ -78,7 +78,7 @@ Identify all `GET` requests through the following condition:
 -   **Operator:** Equals
 -   **Match Value:** GET
 
-[Learn more about types of conditions.](/guides/performance/rules/conditions)
+[Learn more about types of conditions.](/applications/performance/rules/conditions)
 
 #### Operators {/*operators*/}
 
@@ -104,7 +104,7 @@ An operator determines when a request satisfies a condition by defining the rela
 
     `http://cdn.example.com?type=media\video`
 
--   **matches (simple):** Indicates that the value derived from the request must match the pattern defined within a condition. You may define a pattern using our [route path syntax](/guides/performance/cdn_as_code#route-pattern-syntax).
+-   **matches (simple):** Indicates that the value derived from the request must match the pattern defined within a condition. You may define a pattern using our [route path syntax](/applications/performance/cdn_as_code#route-pattern-syntax).
 
     <Callout type="info">
 
@@ -210,16 +210,16 @@ You may add multiple conditions to a rule. By default, a request must satisfy ea
 
 A feature determines how requests will be processed. They are categorized as follows:
 
--   [Access](/guides/performance/rules/features#access): Controls access to content.
--   [Caching](/guides/performance/rules/features#caching): Customizes when and how content is cached.
--   [Client](/guides/performance/rules/features#client): Controls how the client communicates with our CDN.
+-   [Access](/applications/performance/rules/features#access): Controls access to content.
+-   [Caching](/applications/performance/rules/features#caching): Customizes when and how content is cached.
+-   [Client](/applications/performance/rules/features#client): Controls how the client communicates with our CDN.
 -   **Comment:** Adds a note or metadata to your configuration. This feature is solely informational and does not affect your configuration.
--   [Headers](/guides/performance/rules/features#headers): Adds, modifies, or deletes headers from the request or response.
--   [Logs](/guides/performance/rules/features#logs): Customizes how log data is stored.
--   [Origin](/guides/performance/rules/features#origin): Controls how the CDN communicates with an origin server.
--   [Response](/guides/performance/rules/features#response): Customizes the response sent to the client and determines whether we will allow prefetching instructions to be sent to the client.
--   [Set Variables](/guides/performance/rules/features#set-variables): Assigns a value to one or more user-defined variable(s) that are  passed to your bespoke traffic processing solution.
--   [URL](/guides/performance/rules/features#url): Redirects or rewrites requests to a different URL.
+-   [Headers](/applications/performance/rules/features#headers): Adds, modifies, or deletes headers from the request or response.
+-   [Logs](/applications/performance/rules/features#logs): Customizes how log data is stored.
+-   [Origin](/applications/performance/rules/features#origin): Controls how the CDN communicates with an origin server.
+-   [Response](/applications/performance/rules/features#response): Customizes the response sent to the client and determines whether we will allow prefetching instructions to be sent to the client.
+-   [Set Variables](/applications/performance/rules/features#set-variables): Assigns a value to one or more user-defined variable(s) that are  passed to your bespoke traffic processing solution.
+-   [URL](/applications/performance/rules/features#url): Redirects or rewrites requests to a different URL.
 
 ##  Rule Precedence {/*rule-precedence*/}
 
@@ -257,7 +257,7 @@ The following cases are exceptions to the order-based rule precedence stated abo
 
 ### Fine-Tuning Your Rules {/*fine-tuning-your-rules*/}
 
-If the response provided by {{ PRODUCT }} does not match your expectations, you can check the [{{ HEADER_PREFIX }}-mr response header](/guides/performance/response#-mr) to find out which rules were applied to a request. This response header identifies each rule that was applied to a request by its number. Display rule numbers by clicking **Show Rule Numbers**.
+If the response provided by {{ PRODUCT }} does not match your expectations, you can check the [{{ HEADER_PREFIX }}-mr response header](/applications/performance/response#-mr) to find out which rules were applied to a request. This response header identifies each rule that was applied to a request by its number. Display rule numbers by clicking **Show Rule Numbers**.
 
 ![Show Rule Numbers](/images/v7/performance/rules-show-rule-numbers.png)
 
@@ -297,7 +297,7 @@ You may create, modify, and delete rules.
 
 -   Apply your changes to the current environment by clicking **Deploy Changes**.
 -   Add a comment or a note to a rule by clicking **Add Comments** and then typing the desired message. Comments or notes are  informational and do not affect your configuration. 
--   An alternative method for setting up your configuration is [CDN-as-code](/guides/performance/cdn_as_code). CDN-as-code is a developer-oriented solution that provides more flexibility during CDN setup. You may create a base CDN-as-code configuration by setting up your rules through the {{ PORTAL_LINK }}, [exporting them as {{ EDGEJS_LABEL }} code](#export-rules-edgejs), and then pasting that code into your {{ ROUTES_FILE }} file. 
+-   An alternative method for setting up your configuration is [CDN-as-code](/applications/performance/cdn_as_code). CDN-as-code is a developer-oriented solution that provides more flexibility during CDN setup. You may create a base CDN-as-code configuration by setting up your rules through the {{ PORTAL_LINK }}, [exporting them as {{ EDGEJS_LABEL }} code](#export-rules-edgejs), and then pasting that code into your {{ ROUTES_FILE }} file. 
 
     <Callout type="info">
 

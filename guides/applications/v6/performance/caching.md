@@ -6,7 +6,7 @@ This guide introduces the caching capabilities of {{ PRODUCT_NAME }}. While most
 
 ## Environments and Caching {/*environments-and-caching*/}
 
-To begin caching responses, you need to create an [environment](/guides/basics/environments). Each environment provides a separate edge cache for the most recent deployment. Older deployments will no longer have edge caching, but can always be [redeployed](/guides/basics/deployments#branches-and-deployments) to re-enable caching.
+To begin caching responses, you need to create an [environment](/applications/basics/environments). Each environment provides a separate edge cache for the most recent deployment. Older deployments will no longer have edge caching, but can always be [redeployed](/applications/basics/deployments#branches-and-deployments) to re-enable caching.
 
 ## L1 and L2 Caches {/*l1-and-l2-caches*/}
 
@@ -59,14 +59,14 @@ The `cache` function can be used in the same route as other functions such as `s
 - Value of `host` request header
 - Complete request URL, including the query parameters (this can be customized)
 - Value of `accept-encoding` request header
-- Name of the destination when [A/B testing](/guides/performance/traffic_splitting/a_b_testing) is in effect
+- Name of the destination when [A/B testing](/applications/performance/traffic_splitting/a_b_testing) is in effect
 
 When [POST and other non-GET/HEAD](#caching-responses-for-post-and-other-non-gethead-requests) methods caching is enabled, {{ PRODUCT_NAME }} automatically adds the following to the cache key:
 
 - Request HTTP method
 - Request body
 
-To ensure that your site is resilient to [cache poisoning attacks](/guides/security/security_suite#cache-poisoning), every request header that influences the rendering of the content must be included in your custom cache key.
+To ensure that your site is resilient to [cache poisoning attacks](/applications/security/security_suite#cache-poisoning), every request header that influences the rendering of the content must be included in your custom cache key.
 
 #### Customizing the Cache Key {/*customizing-the-cache-key*/}
 
@@ -197,7 +197,7 @@ By default, {{ PRODUCT_NAME }} will cache responses that satisfy all of the foll
 3. The response must not not have any `set-cookie` headers. You cannot override this, but you can use `removeUpstreamResponseHeader('set-cookie')` to remove `set-cookie` headers.
 4. The response must have a valid `cache-control` header that includes a positive `max-age` or `s-maxage` and does not include a `private` clause. You can override this by using [router caching](#caching-a-response) and [forcing private responses](#caching-private-responses).
 
-However, sometimes you may not want to cache anything, even if the upstream backend returns a `max-age`. Other times, you might want to [improve the performance](/guides/performance#turn-off-caching-when-not-needed) of pages that can never be cached at edge. In those cases, you can turn off caching:
+However, sometimes you may not want to cache anything, even if the upstream backend returns a `max-age`. Other times, you might want to [improve the performance](/applications/performance#turn-off-caching-when-not-needed) of pages that can never be cached at edge. In those cases, you can turn off caching:
 
 ```js
 router.get('/some/uncacheable/path', ({ cache, proxy }) => {
@@ -300,7 +300,7 @@ If the "pass" is intermittent on an otherwise cacheable resource, you may want t
 
 "Hit-for-pass" can happen when system remembers for a brief time that a typically cacheable resource was not cacheable as anticipated (such as a `Set-Cookie` header, or an HTTP error response code). The system will cache, typically for a couple of minutes that the resource was not cacheable, and will not coalesce requests.
 
-Hit-for-pass disables the usual request coalescing behavior temporarily, when the resource is known not to be cacheable, clients can avoid being put in a waiting queue. Usually request coalescing (see [L2 Shield Cache](/guides/overview#l2-shield-cache)) speeds up client requests by enqueueing all but the first request, anticipating that the first request will populate the cache and allow instant delivery of the already-cached object to the waiting clients.
+Hit-for-pass disables the usual request coalescing behavior temporarily, when the resource is known not to be cacheable, clients can avoid being put in a waiting queue. Usually request coalescing (see [L2 Shield Cache](/applications/overview#l2-shield-cache)) speeds up client requests by enqueueing all but the first request, anticipating that the first request will populate the cache and allow instant delivery of the already-cached object to the waiting clients.
 
 Disabling this, such as when the upstream resource is serving errors can help alleviate pressure at all stages of the request lifecycle.
 

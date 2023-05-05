@@ -315,7 +315,7 @@ Log data provides contextual information about a request that allows you to gain
 
     <Callout type="info">
 
-      Edge Insights is not meant to be used as a log retrieval or log archival tool. Use [Real-Time Log Delivery](/guides/logs/rtld) to automatically archive log data to one or more destinations.
+      Edge Insights is not meant to be used as a log retrieval or log archival tool. Use [Real-Time Log Delivery](/applications/logs/rtld) to automatically archive log data to one or more destinations.
 
     </Callout>
 
@@ -483,7 +483,7 @@ Each Analytics field is defined below.
 
 ## Bot Manager Alerts {/*bot-manager-alerts*/}
 
-Use the Bot Manager Alerts data source for historical and near real-time analysis of recently detected [bot traffic](/guides/security/bot_rules).
+Use the Bot Manager Alerts data source for historical and near real-time analysis of recently detected [bot traffic](/applications/security/bot_rules).
 
 ## Edge Control {/*edge-control*/}
 
@@ -491,7 +491,7 @@ Use this data source to analyze how a new CDN configuration affects content deli
 
 ## Rate Limiting Alerts {/*rate-limiting-alerts*/}
 
-Use the Rate Limiting Alerts data source for historical and near real-time analysis of recently [rate limited requests](/guides/security/rate_rules). For example, use this data to:
+Use the Rate Limiting Alerts data source for historical and near real-time analysis of recently [rate limited requests](/applications/security/rate_rules). For example, use this data to:
 
 -   Understand the severity of rate limited requests.
 -   Identify the countries from which rate limited traffic originated.
@@ -558,7 +558,7 @@ Each Rate Limiting field is defined below.
 
 ## WAF Alerts {/*waf-alerts*/}
 
-Use the WAF Alerts data source for historical and near real-time analysis of [recent threats to site traffic](/guides/security/waf). For example, use this data to:
+Use the WAF Alerts data source for historical and near real-time analysis of [recent threats to site traffic](/applications/security/waf). For example, use this data to:
 
 -   Visualize the time periods during which site traffic is most heavily targeted.
 -   Understand the variety, frequency, and severity of illegitimate traffic.

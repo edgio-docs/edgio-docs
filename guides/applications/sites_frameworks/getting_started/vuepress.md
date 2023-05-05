@@ -70,7 +70,7 @@ export default new Router()
   .static('public');
 ```
 
-Refer to the [CDN-as-code](/guides/performance/cdn_as_code) guide for the full syntax of the `routes.js` file and how to configure it for your use case.
+Refer to the [CDN-as-code](/applications/performance/cdn_as_code) guide for the full syntax of the `routes.js` file and how to configure it for your use case.
 
 ### Run the VuePress app locally on {{ PRODUCT }} {/* run-the-vuepress-app-locally-on */}
 
@@ -102,4 +102,4 @@ Deploy your app to the {{ PRODUCT_PLATFORM }} by running the following command i
 {{ FULL_CLI_NAME }} deploy
 ```
 
-Refer to the [Deployments](/guides/basics/deployments) guide for more information on the `deploy` command and its options.
+Refer to the [Deployments](/applications/basics/deployments) guide for more information on the `deploy` command and its options.

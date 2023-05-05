@@ -520,7 +520,7 @@ Identifies requests by the request URL's relative path. This relative path compa
 
 **Key information:**
 
--   This relative path comparison is performed after {{ PRODUCT }} rewrites or redirects the request. Rewrite or redirect a URL through the [URL Rewrite](/guides/performance/rules/features#url-rewrite) and [URL Redirect](/guides/performance/rules/features#url-redirect) features, respectively. Use the [Path](#path) to match on the original relative path submitted by the client.
+-   This relative path comparison is performed after {{ PRODUCT }} rewrites or redirects the request. Rewrite or redirect a URL through the [URL Rewrite](/applications/performance/rules/features#url-rewrite) and [URL Redirect](/applications/performance/rules/features#url-redirect) features, respectively. Use the [Path](#path) to match on the original relative path submitted by the client.
 -   This relative path starts directly after the hostname.
 -   For the purpose of satisfying this condition, query strings in the URL are ignored.
 -   Certain characters require URL encoding. Use the percentage symbol to URL encode the following characters:
@@ -705,7 +705,7 @@ Identifies requests by the query string of the requested URL. This query string 
 
 **Key information:**
 
--   This query string comparison is performed after {{ PRODUCT }} rewrites or redirects the request. Rewrite or redirect a URL through the [URL Rewrite](/guides/performance/rules/features#url-rewrite) and [URL Redirect](/guides/performance/rules/features#url-redirect) features, respectively. Use the [Query](#query) to match on the original query string submitted by the client.
+-   This query string comparison is performed after {{ PRODUCT }} rewrites or redirects the request. Rewrite or redirect a URL through the [URL Rewrite](/applications/performance/rules/features#url-rewrite) and [URL Redirect](/applications/performance/rules/features#url-redirect) features, respectively. Use the [Query](#query) to match on the original query string submitted by the client.
 -   The value associated with this match condition will be compared against the entire request's query string.
 -   For the purposes of this option, a query string starts with the first character after the question mark (?) delimiter for the query string. Therefore, the text specified in the **Value** option should not include a leading question mark (?).
 -   Certain characters require URL encoding. Use the percentage symbol to URL encode the following characters:

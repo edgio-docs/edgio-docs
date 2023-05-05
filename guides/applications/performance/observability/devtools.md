@@ -63,7 +63,7 @@ Alternatively, you can add the following `script` tag to your app's HTML:
 
 ### Service Worker {/*service-worker*/}
 
-Then, if you haven't already, enable `{{ PACKAGE_NAME }}/prefetch` in your service worker. See [Prefetching](/guides/performance/prefetching) for more information on enabling `{{ PACKAGE_NAME }}/prefetch`.
+Then, if you haven't already, enable `{{ PACKAGE_NAME }}/prefetch` in your service worker. See [Prefetching](/applications/performance/prefetching) for more information on enabling `{{ PACKAGE_NAME }}/prefetch`.
 
 ## Enabling or Disabling the Devtools {/*enabling-or-disabling-the-devtools*/}
 

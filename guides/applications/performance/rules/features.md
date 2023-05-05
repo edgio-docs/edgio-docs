@@ -317,7 +317,7 @@ new Router()
 
 Determines whether the cache key will include or exclude query string parameters associated with a request. 
 
-[Learn more about cache keys.](/guides/performance/response#cache-key-response-header)
+[Learn more about cache keys.](/applications/performance/response#cache-key-response-header)
 
 Include or exclude all query string parameters through the `Include All` or `Exclude All` modes. Alternatively, include or exclude specific query string parameters through the `Include` or `Include All Except` modes.
 
@@ -336,7 +336,7 @@ Include or exclude all query string parameters through the `Include All` or `Exc
 -   **Include All Except:** Contains the set of parameter(s) will be excluded from the cache key. All other query string parameters will be included in the cache key.
 
 <edgejs>
-[Learn more about cache keys.](/guides/performance/response#cache-key-response-header)
+[Learn more about cache keys.](/applications/performance/response#cache-key-response-header)
 
 Include or exclude all query string parameters through the `include_all` property or `exclude_all` property. Alternatively, include or exclude specific query string parameters through the `include` property, `exclude` property, or both.
 
@@ -942,7 +942,7 @@ new Router()
 
 Rewrites the default cache key for a set of requests. 
 
-[Learn more about cache keys.](/guides/performance/response#cache-key-response-header)
+[Learn more about cache keys.](/applications/performance/response#cache-key-response-header)
 
 **Key information:**
 
@@ -963,7 +963,7 @@ Rewrites the default cache key for a set of requests.
 
         <Callout type="tip">
 
-          Use [feature variables](/guides/performance/rules/feature_variables) to dynamically construct this relative path. However, you may not use response metadata when defining a cache key.
+          Use [feature variables](/applications/performance/rules/feature_variables) to dynamically construct this relative path. However, you may not use response metadata when defining a cache key.
 
         </Callout>
 
@@ -994,7 +994,7 @@ We will now set the default cache key to the request's relative path followed by
 Notice that we are using `$1`, which is a numbered backreference, to reintroduce the value captured by `(.*)` within the **Source** option.
 
 <edgejs>
-[Learn more about cache keys.](/guides/performance/response#cache-key-response-header)
+[Learn more about cache keys.](/applications/performance/response#cache-key-response-header)
 
 **Key information:**
 
@@ -1015,7 +1015,7 @@ Notice that we are using `$1`, which is a numbered backreference, to reintroduce
 
         <Callout type="tip">
 
-          Use [feature variables](/guides/performance/rules/feature_variables) to dynamically construct this relative path. However, you may not use response metadata when defining a cache key.
+          Use [feature variables](/applications/performance/rules/feature_variables) to dynamically construct this relative path. However, you may not use response metadata when defining a cache key.
 
         </Callout>
 
@@ -1130,7 +1130,7 @@ Defines a `max-age` interval for edge server to origin server cache revalidation
 
 #### Set Service Worker Max Age {/*set-service-worker-max-age*/}
 
-Set the amount of time that must pass before a browser can check for a new version of a prefetched request. Specifically, it determines the `max-age` interval for the [Prefetch service worker](/guides/performance/prefetching) to edge server cache revalidation. 
+Set the amount of time that must pass before a browser can check for a new version of a prefetched request. Specifically, it determines the `max-age` interval for the [Prefetch service worker](/applications/performance/prefetching) to edge server cache revalidation. 
 
 **Key information:**
 -   This configuration does not affect edge server to origin server cache revalidations. These types of revalidations are determined by the `Cache-Control` / `Expires` headers received from the origin server, and can be customized with <!--the Default Internal Max-Age and -->the `max_age` features.
@@ -1222,7 +1222,7 @@ Adds one or more header(s) to the response.
 
 -   Specify a header name that is an exact match for the desired response header. However, case is not taken into account for the purpose of identifying a header. 
 -   Use alphanumeric characters, dashes, or underscores when specifying a header name.
--   Use [feature variables](/guides/performance/rules/feature_variables) to dynamically construct header values.
+-   Use [feature variables](/applications/performance/rules/feature_variables) to dynamically construct header values.
 -   This feature requires {{ PRODUCT }} to add a response header, regardless of whether that header already exists in the response. This may cause the response to include multiple headers with the same name.
 
     <Callout type="tip">
@@ -1314,7 +1314,7 @@ Our CDN returns debug cache response headers when both of the following are true
 
     `X-EC-Debug: x-ec-cache,x-ec-check-cacheable,x-ec-cache-key,x-ec-cache-state`
 
-    [Learn more.](/guides/performance/response#requesting-debug-cache-information)
+    [Learn more.](/applications/performance/response#requesting-debug-cache-information)
 
 <edgejs>
 Our CDN returns debug cache response headers when both of the following are true:
@@ -1329,7 +1329,7 @@ Our CDN returns debug cache response headers when both of the following are true
 
     `X-EC-Debug: x-ec-cache,x-ec-check-cacheable,x-ec-cache-key,x-ec-cache-state`
 
-    [Learn more.](/guides/performance/response#requesting-debug-cache-information)
+    [Learn more.](/applications/performance/response#requesting-debug-cache-information)
 
 **Example:**
 
@@ -1436,7 +1436,7 @@ new Router()
 
 #### Server-Timing Header {/*server-timing-header*/}
 
-Determines whether to include the [Server-Timing header](/guides/performance/response#server-timing-response-header) in the response. The `Server-Timing` response header contains cache status information and information about the POP that served the response. 
+Determines whether to include the [Server-Timing header](/applications/performance/response#server-timing-response-header) in the response. The `Server-Timing` response header contains cache status information and information about the POP that served the response. 
 
 <edgejs>
 **Example:**
@@ -1506,7 +1506,7 @@ Set, overwrite, append, or delete one or more header(s) from the request.
 
         **Example:** Append a value to the `broadcast` request header by specifying `+broadcast`. If the request does not contain the `broadcast` header, then it will be set to the value defined in this feature (e.g., `network`). On the other hand, if it is already set to `ott`, then it will append the value defined in this feature (e.g., `broadast: ottnetwork`).
     -   **Delete:** Set the header value to a blank value. Deleting a header will prevent it from being forwarded to an origin server by our edge servers.
--   Use [feature variables](/guides/performance/rules/feature_variables) to dynamically construct header values.
+-   Use [feature variables](/applications/performance/rules/feature_variables) to dynamically construct header values.
 -   The following headers are reserved and cannot be modified by this feature:
     -   forwarded-for
     -   host
@@ -1569,7 +1569,7 @@ Set, overwrite, append, or delete one or more header(s) from the response.
 
         **Example:** Append a value to the `broadcast` response header by specifying `+broadcast`. If the response does not contain the `broadcast` header, then it will be set to the value defined in this feature (e.g., `network`). On the other hand, if it is already set to `ott`, then it will append the value defined in this feature (e.g., `broadast: ottnetwork`).
     -   **Delete:** Set it to a blank value. Deleting a header will prevent it from being included in the response to the client.
--   Use [feature variables](/guides/performance/rules/feature_variables) to dynamically construct header values.
+-   Use [feature variables](/applications/performance/rules/feature_variables) to dynamically construct header values.
 -   The following headers are reserved and cannot be modified by this feature:
     -   accept-ranges
     -   age
@@ -1858,7 +1858,7 @@ new Router()
 
 #### Set Origin {/*set-origin*/}
 
-Defines the [origin configuration](/guides/basics/hostnames_and_origins#origin) to which requests will be forwarded when they cannot be served from cache.
+Defines the [origin configuration](/applications/basics/hostnames_and_origins#origin) to which requests will be forwarded when they cannot be served from cache.
 
 <edgejs>
 **Example:**
@@ -1971,7 +1971,7 @@ Defines a custom response body.
 
 **Key information:**
 
--   Use [feature variables](/guides/performance/rules/feature_variables) to dynamically construct this response body.
+-   Use [feature variables](/applications/performance/rules/feature_variables) to dynamically construct this response body.
 -   This response body is always sent instead of a cached response or the response provided by an origin server.
 -   Prevent requests from being forwarded to an origin server by also passing the `set_done` feature.
 
@@ -2155,7 +2155,7 @@ This feature allows our edge servers to rewrite the URL without performing a tra
 
     <Callout type="info">
 
-      Use [feature variables](/guides/performance/rules/feature_variables) to dynamically construct the above paths. However, you may not use response metadata.
+      Use [feature variables](/applications/performance/rules/feature_variables) to dynamically construct the above paths. However, you may not use response metadata.
 
     </Callout>
 
@@ -2249,7 +2249,7 @@ Redirects requests according to the `Location` header. Pass the following proper
 
     <Callout type="info">
 
-      Use [feature variables](/guides/performance/rules/feature_variables) to dynamically construct the above paths. However, you may not use response metadata.
+      Use [feature variables](/applications/performance/rules/feature_variables) to dynamically construct the above paths. However, you may not use response metadata.
 
     </Callout>
 

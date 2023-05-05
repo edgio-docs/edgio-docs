@@ -7,9 +7,9 @@ title: Limits
 - You may need to [manually include NodeJS addons (aka native extensions).](#nodejs-native-extensions)
 - Your code will only be granted [read-only access to the file system.](#readonly-filesystem-in-serverless-runtime)
 - [Your project's bundle size](#serverless-bundle-size-limitation) cannot exceed 50 MB compressed or 250 MB uncompressed.
-- Our serverless functions have a maximum runtime of 20 seconds per request. The response for a function that exceeds this limit is a [539 Project Timeout](/guides/performance/response#exclusive-status-codes).
+- Our serverless functions have a maximum runtime of 20 seconds per request. The response for a function that exceeds this limit is a [539 Project Timeout](/applications/performance/response#exclusive-status-codes).
 - Our Serverless Compute workers are allowed to generate a response body with a maximum file size of 6 MB.
-- Your project must comply with all applicable [{{ PRODUCT }} {{ PRODUCT_EDGE }} limitations.](/guides/performance/limits)
+- Your project must comply with all applicable [{{ PRODUCT }} {{ PRODUCT_EDGE }} limitations.](/applications/performance/limits)
 
 ## NodeJS native extensions {/* nodejs-native-extensions */}
 
@@ -41,7 +41,7 @@ at Object.<anonymous> (/var/task/node_modules/broadcast-channel/dist/es5node/met
 <Condition version="<7">
 
 To fix this issue, you need to instruct {{ PRODUCT_NAME }} to include the binary files that your application requires.
-This can be done by using the [`includeFiles` property in `{{ CONFIG_FILE }}`](/guides/basics/edgio_config#includefiles) like so:
+This can be done by using the [`includeFiles` property in `{{ CONFIG_FILE }}`](/applications/basics/edgio_config#includefiles) like so:
 
 ```js
 includeFiles: {
@@ -50,14 +50,14 @@ includeFiles: {
 ```
 
 Or you could choose to bundle everything in the packages listed in the `dependencies` property of `package.json` by using
-[`includeNodeModules` property](/guides/basics/edgio_config#includenodemodules).
+[`includeNodeModules` property](/applications/basics/edgio_config#includenodemodules).
 
 </Condition>
 
 <Condition version="7">
 
 To fix this issue, you need to instruct {{ PRODUCT_NAME }} to include the binary files that your application requires.
-This can be done by using the [`serverless.includeFiles` property in `{{ CONFIG_FILE }}`](/guides/performance/cdn_as_code/edgio_config#serverless) like so:
+This can be done by using the [`serverless.includeFiles` property in `{{ CONFIG_FILE }}`](/applications/performance/cdn_as_code/edgio_config#serverless) like so:
 
 ```js
 serverless: {includeFiles: {
@@ -66,7 +66,7 @@ serverless: {includeFiles: {
 ```
 
 Or you could choose to bundle everything in the packages listed in the `dependencies` property of `package.json` by using
-[`serverless.includeNodeModules` property](/guides/performance/cdn_as_code/edgio_config#serverless).
+[`serverless.includeNodeModules` property](/applications/performance/cdn_as_code/edgio_config#serverless).
 
 </Condition>
 

@@ -4,7 +4,7 @@ title: Traffic Splitting
 
 <Callout type="info">
 
-  You can also use traffic splitting for [A/B Testing](/guides/performance/traffic_splitting/a_b_testing).
+  You can also use traffic splitting for [A/B Testing](/applications/performance/traffic_splitting/a_b_testing).
 
 </Callout>
 
@@ -77,7 +77,7 @@ If your sites consist of two separate servers use these steps to configure the d
 
 </Callout>
 
-Configure the backends in the {{ CONFIG_FILE }} file. (See [{{ CONFIG_FILE }}](/guides/basics/edgio_config) for more information.). For example, to split traffic between a new experience hosted on `origin.my-site.com` and a legacy experience hosted on `legacy-origin.my-site.com`:
+Configure the backends in the {{ CONFIG_FILE }} file. (See [{{ CONFIG_FILE }}](/applications/basics/edgio_config) for more information.). For example, to split traffic between a new experience hosted on `origin.my-site.com` and a legacy experience hosted on `legacy-origin.my-site.com`:
 
 ```js filename="{{ CONFIG_FILE }}"
 module.exports = {

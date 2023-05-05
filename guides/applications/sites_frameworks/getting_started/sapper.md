@@ -18,7 +18,7 @@ This Sapper example app uses server-side rendering and prefetching to provide li
 
 ## Connector {/*connector*/}
 
-This framework has a connector developed for {{ PRODUCT }}. See [Connectors](/guides/sites_frameworks/connectors) for more information.
+This framework has a connector developed for {{ PRODUCT }}. See [Connectors](/applications/sites_frameworks/connectors) for more information.
 
 <ButtonLink variant="stroke" type="code" withIcon={true} href="https://github.com/edgio-docs/edgio-connectors/tree/main/edgio-sapper-connector">
   View the Connector Code
@@ -124,7 +124,7 @@ Deploy your app to the {{ PRODUCT_PLATFORM }} by running the following command i
 {{ FULL_CLI_NAME }} deploy
 ```
 
-See [Deployments](/guides/basics/deployments) for more information.
+See [Deployments](/applications/basics/deployments) for more information.
 
 ## Prefetching {/*prefetching*/}
 
@@ -165,4 +165,4 @@ Note that the behavior of the `Prefetch` component is different from Sapper's bu
 - `rel="prefetch"` only prefetches data when the user hovers over the link. The `Prefetch` component will prefetch data when the link becomes visible, or, if the `immediately` prop is present, as soon as the page loads.
 - `Prefetch` will only prefetch from the {{ PRODUCT_EDGE }} cache, which means that additional traffic due to prefetching will never reach your API servers.
 
-See [Prefetching](/guides/prefetching) for more information.
+See [Prefetching](/applications/prefetching) for more information.

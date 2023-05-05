@@ -21,13 +21,13 @@ This guide shows you how to deploy a [Next.js](https://nextjs.org/) application 
 
 ## Next.js Commerce {/* nextjs-commerce */}
 
-For details on using the Next.js Commerce template with {{ PRODUCT }}, refer to our [Next.js Commerce Guide](/guides/sites_frameworks/getting_started/next_commerce).
+For details on using the Next.js Commerce template with {{ PRODUCT }}, refer to our [Next.js Commerce Guide](/applications/sites_frameworks/getting_started/next_commerce).
 
 <Condition version="<7">
 
 ## Connector {/* connector */}
 
-{{ PRODUCT }} provides a connector for this framework. [Learn more.](/guides/sites_frameworks/connectors)
+{{ PRODUCT }} provides a connector for this framework. [Learn more.](/applications/sites_frameworks/connectors)
 
 <ButtonLink
   variant="stroke"
@@ -130,11 +130,11 @@ This document will be updated once the problem is fully resolved.
 
 ### withServiceWorker {/* withserviceworker */}
 
-The `withServiceWorker` plugin builds a service worker from `sw/service-worker.js` that prefetches and caches all static JS assets and enables {{ PRODUCT }}'s [prefetching](/guides/next#prefetching) functionality.
+The `withServiceWorker` plugin builds a service worker from `sw/service-worker.js` that prefetches and caches all static JS assets and enables {{ PRODUCT }}'s [prefetching](/applications/next#prefetching) functionality.
 
 ## {{ PRODUCT_NAME }} Devtools {/* devtools */}
 
-By default, [Devtools](/guides/devtools) are enabled on production builds of Next.js with {{ PRODUCT }}. To disable devtools in production, add the `disableEdgioDevTools` flag:
+By default, [Devtools](/applications/devtools) are enabled on production builds of Next.js with {{ PRODUCT }}. To disable devtools in production, add the `disableEdgioDevTools` flag:
 
 ```js filename='next.config.js' highlight="10"
 const { with{{ PRODUCT }}, withServiceWorker } = require('{{ PACKAGE_NAME }}/next/config')
@@ -167,7 +167,7 @@ Deploy your app to the {{ PRODUCT_PLATFORM }} by running the following command i
 {{ FULL_CLI_NAME }} deploy
 ```
 
-See [Deployments](/guides/basics/deployments) for more information.
+See [Deployments](/applications/basics/deployments) for more information.
 
 ## Prefetching {/* prefetching */}
 
@@ -411,7 +411,7 @@ module.exports = with{{ PRODUCT }}(
 
 <Condition version="<7">
 
-Finally, you will need to update your `{{ CONFIG_FILE }}` to [includeFiles](/guides/basics/edgio_config#includefiles) where the locale files are stored. Example using the default of `/public`:
+Finally, you will need to update your `{{ CONFIG_FILE }}` to [includeFiles](/applications/basics/edgio_config#includefiles) where the locale files are stored. Example using the default of `/public`:
 
 ```js filename='{{ CONFIG_FILE }}' ins="3-5"
 module.exports = {
@@ -426,7 +426,7 @@ module.exports = {
 
 <Condition version="7">
 
-Finally, you will need to update your `{{ CONFIG_FILE }}` to [includeFiles](/guides/performance/cdn_as_code/edgio_config#serverless) where the locale files are stored. Example using the default of `/public`:
+Finally, you will need to update your `{{ CONFIG_FILE }}` to [includeFiles](/applications/performance/cdn_as_code/edgio_config#serverless) where the locale files are stored. Example using the default of `/public`:
 
 ```js filename='{{ CONFIG_FILE }}' ins="3-5"
 module.exports = {

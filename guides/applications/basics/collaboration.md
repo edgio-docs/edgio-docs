@@ -30,7 +30,7 @@ Team management consists of:
 
 -   Creating a team.
 -   Managing the [team's membership](#managing-team-members).
--   [Setting up security](/guides/security) for your web applications and API.
+-   [Setting up security](/applications/security) for your web applications and API.
 
 **To create a team**
 

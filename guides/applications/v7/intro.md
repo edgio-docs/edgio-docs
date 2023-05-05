@@ -10,24 +10,24 @@ title: {{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} Version 7
 
     ![Add Origin](/images/v7/basics/origins-add-origin.png)
 
--   [Rules](/guides/performance/rules) that identify a set of traffic and how {{ PRODUCT }} will process those requests. 
+-   [Rules](/applications/performance/rules) that identify a set of traffic and how {{ PRODUCT }} will process those requests. 
 
     ![Rule Example](/images/v7/performance/rule-condition-feature-example.png)
 
--   [Real-Time Log Delivery (RTLD)](/guides/logs/rtld). RTLD allows you to deliver CDN, WAF, and Rate Limiting log data to a variety of destinations in near real-time. RTLD provides complete control over the type of traffic and the type of log data that will be delivered. 
+-   [Real-Time Log Delivery (RTLD)](/applications/logs/rtld). RTLD allows you to deliver CDN, WAF, and Rate Limiting log data to a variety of destinations in near real-time. RTLD provides complete control over the type of traffic and the type of log data that will be delivered. 
 
     For example, you may choose to only deliver log data for `2xx` responses to `cdn.example.com` to Splunk Enterprise.
 
     ![RTLD Workflow](/images/v7/logs/rtld-workflow.png)
 
--   [Edge Insights](/guides/performance/observability/edge_insights). Edge Insights allows you to gain historical and near real-time insights into threat profiles, performance, and CDN usage.
+-   [Edge Insights](/applications/performance/observability/edge_insights). Edge Insights allows you to gain historical and near real-time insights into threat profiles, performance, and CDN usage.
 
     ![Edge Insights](/images/v7/performance/edge-insights-example.png)
 
--   A refreshed UI for [Web Application Firewall (WAF)](/guides/security/waf). You may now apply WAF protection to all of your properties at the team level.
+-   A refreshed UI for [Web Application Firewall (WAF)](/applications/security/waf). You may now apply WAF protection to all of your properties at the team level.
 -   {{ PRODUCT }} {{ PRODUCT_PLATFORM }} now supports Next, Nuxt 2, and Nuxt 3. We plan on introducing support for additional web application frameworks in the near future. <a id="cdn-as-code" />
 -   CDN-as-code has undergone significant changes. Key changes are listed below:
-    -   The [{{ CONFIG_FILE }}](/guides/basics/edgio_config) file now uses `origins` instead of `backends`. Each origin configuration may contain various hosts. Each host identifies a hostname or IP address. Each origin configuration supports an origin shield configuration and TLS settings.
+    -   The [{{ CONFIG_FILE }}](/applications/basics/edgio_config) file now uses `origins` instead of `backends`. Each origin configuration may contain various hosts. Each host identifies a hostname or IP address. Each origin configuration supports an origin shield configuration and TLS settings.
     -   You may now set up environments within the {{ CONFIG_FILE }}. Assign one or more hostnames to each environment. A hostname identifies the domain (e.g., `www.example.com`) through which users access your site.
     -   Routes now support JSON syntax. A sample route that uses this new syntax is shown below.
 
@@ -65,4 +65,4 @@ title: {{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} Version 7
 
 Try {{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} version 7 by creating an account at [{{ APP_DOMAIN }}](https://{{ APP_DOMAIN }}). 
 
-[Learn how to get started.](/guides/getting_started)
+[Learn how to get started.](/applications/getting_started)

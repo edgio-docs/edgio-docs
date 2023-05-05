@@ -116,7 +116,7 @@ See the full API specification for the {{ CONFIG_FILE }} file [here](/docs/api/c
 ```js
 // This file was automatically added by edgio init.
 // You should commit this file to source control.
-// Learn more about this file at https://docs.edg.io/guides/edgio_config
+// Learn more about this file at {{ DOCS_URL }}/guides/performance/cdn_as_code/edgio_config
 module.exports = {
   // The name of the site in Edgio to which this app should be deployed.
   // name: 'my-site-name',

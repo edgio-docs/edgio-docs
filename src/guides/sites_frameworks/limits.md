@@ -41,7 +41,7 @@ at Object.<anonymous> (/var/task/node_modules/broadcast-channel/dist/es5node/met
 <Condition version="<7">
 
 To fix this issue, you need to instruct {{ PRODUCT_NAME }} to include the binary files that your application requires.
-This can be done by using the [`includeFiles` property in `{{ CONFIG_FILE }}`](/guides/basics/edgio_config#includefiles) like so:
+This can be done by using the [`includeFiles` property in `{{ CONFIG_FILE }}`](/guides/performance/cdn_as_code/edgio_config#includefiles) like so:
 
 ```js
 includeFiles: {
@@ -50,7 +50,7 @@ includeFiles: {
 ```
 
 Or you could choose to bundle everything in the packages listed in the `dependencies` property of `package.json` by using
-[`includeNodeModules` property](/guides/basics/edgio_config#includenodemodules).
+[`includeNodeModules` property](/guides/performance/cdn_as_code/edgio_config#includenodemodules).
 
 </Condition>
 
@@ -222,7 +222,7 @@ Step 4. Change your `{{ CONFIG_FILE }}` to have:
 <Condition version="<7">
 
 ```js
-// {{ DOCS_URL }}/guides/basics/edgio_config
+// {{ DOCS_URL }}/guides/performance/cdn_as_code/edgio_config
 module.exports = {
   includeFiles: require('./getNodeModules'),
 };

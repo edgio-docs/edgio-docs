@@ -130,19 +130,40 @@ const router = new Router()
   // match current api docs with a file extension
   .match(
     '/docs/api/:path*:file(\\.[css|js|html|json|png]+)',
-    ({proxy, cache, request}) => {
+    ({proxy, cache, compute, redirect}) => {
       cache(htmlCacheConfig);
-      proxy('api', {path: '/current/api/:path*:file'});
+      compute(async () => {
+        // fetch the list of current published versions
+        const versions = await (
+          await fetch('https://docs.edg.io/docs/versions')
+        ).text();
+
+        const targetVersion = semverMaxSatisfying(
+          versions.replace(/\n/g, '').split(','),
+          `v*`
+        );
+
+        redirect(`/docs/${targetVersion}/api/:path*`);
+      });
     }
   )
   // match current api docs with a terminating /
-  .match('/docs/api/:path*/', ({proxy, cache, setResponseHeader, request}) => {
+  .match('/docs/api/:path*/', ({cache, redirect, compute}) => {
     cache(htmlCacheConfig);
-    proxy('api', {path: '/current/api/:path*/index.html'});
-    setResponseHeader(
-      'Link',
-      `<https://docs.edg.io${request.url}index.html>; rel="canonical"`
-    );
+
+    compute(async () => {
+      // fetch the list of current published versions
+      const versions = await (
+        await fetch('https://docs.edg.io/docs/versions')
+      ).text();
+
+      const targetVersion = semverMaxSatisfying(
+        versions.replace(/\n/g, '').split(','),
+        `v*`
+      );
+
+      redirect(`/docs/${targetVersion}/api/:path*`);
+    });
   })
   // match current api docs without terminating /,
   // gets redirected to :path*/ to satisfy relative asset paths

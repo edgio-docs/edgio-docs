@@ -5,7 +5,7 @@ export default {
     {
       title: 'Getting Started',
       icon: 'spark',
-      path: '',
+      path: 'v4_getting_started',
       routes: [
         {
           title: 'Performance',
@@ -28,7 +28,7 @@ export default {
     {
       title: 'Performance',
       icon: 'server',
-      path: '',
+      path: 'v4_performance',
       routes: [
         {
           title: 'Routing with EdgeJS',
@@ -131,7 +131,7 @@ export default {
     {
       title: 'Sites',
       icon: 'book',
-      path: '',
+      path: 'v4_sites',
       routes: [
         {
           title: 'Connectors',
@@ -334,7 +334,7 @@ export default {
     {
       title: 'Security',
       icon: 'security',
-      path: '',
+      path: 'v4_security',
       routes: [
         {
           title: 'Security Suite',
@@ -349,7 +349,7 @@ export default {
     {
       title: 'Environments',
       icon: 'leaf',
-      path: '',
+      path: 'v4_environments',
       routes: [
         {
           title: 'Environments',
@@ -359,7 +359,7 @@ export default {
     },
     {
       title: 'Integrations',
-      path: '',
+      path: 'v4_integrations',
       routes: [
         {
           title: 'Overview',
@@ -390,7 +390,7 @@ export default {
     {
       title: 'Accounts & Teams',
       icon: 'user',
-      path: '',
+      path: 'v4_accounts_teams',
       routes: [
         {
           title: 'Alerts',
@@ -409,7 +409,7 @@ export default {
     {
       title: 'Developer Tools',
       icon: 'code',
-      path: '',
+      path: 'v4_developer_tools',
       routes: [
         {
           title: 'CLI',
@@ -436,7 +436,7 @@ export default {
     {
       title: 'APIs',
       icon: 'folder',
-      path: '',
+      path: 'v4_apis',
       routes: [
         {
           title: 'REST API',
@@ -467,7 +467,7 @@ export default {
     {
       title: 'Reference',
       icon: 'stacks',
-      path: '',
+      path: 'v4_reference',
       routes: [
         {
           title: 'Limits & Caveats',

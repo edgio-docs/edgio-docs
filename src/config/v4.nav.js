@@ -130,7 +130,7 @@ const nav = {
     },
     {
       title: 'Sites',
-      icon: 'book',
+      icon: 'book-plain',
       path: 'v4_sites',
       routes: [
         {
@@ -333,7 +333,7 @@ const nav = {
     },
     {
       title: 'Security',
-      icon: 'security',
+      icon: 'shield',
       path: 'v4_security',
       routes: [
         {
@@ -359,6 +359,7 @@ const nav = {
     },
     {
       title: 'Integrations',
+      icon: 'gear',
       path: 'v4_integrations',
       routes: [
         {
@@ -408,7 +409,7 @@ const nav = {
     },
     {
       title: 'Developer Tools',
-      icon: 'code',
+      icon: 'code-plain',
       path: 'v4_developer_tools',
       routes: [
         {
@@ -435,7 +436,7 @@ const nav = {
     },
     {
       title: 'APIs',
-      icon: 'folder',
+      icon: 'code-plain',
       path: 'v4_apis',
       routes: [
         {
@@ -466,7 +467,7 @@ const nav = {
     },
     {
       title: 'Reference',
-      icon: 'stacks',
+      icon: 'stacks-plain',
       path: 'v4_reference',
       routes: [
         {

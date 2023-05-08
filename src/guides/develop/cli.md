@@ -318,7 +318,13 @@ Manage deployed property's environments and environment variables.
 
 ### init {/* init */}
 
-Run in an existing app to add all required packages and files need to publish your app on {{ PRODUCT_NAME }}
+Run this command from the root directory of your web application or website to add all packages and files required to deploy your app on {{ PRODUCT_NAME }}.
+
+<Callout type="tip">
+
+  If you are not using the latest version of {{ PRODUCT }}, then you must specify the `{{ INIT_ARG_EDGIO_VERSION }}` option when running this command.
+
+</Callout>
 
 #### Example {/* example */}
 
@@ -328,9 +334,10 @@ Run in an existing app to add all required packages and files need to publish yo
 
 #### Options {/* options */}
 
-| Name          | Description                                                                                                                                                                                                         |
-| ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `--connector` | The name of a specific connector package to install, or a path to a directory that implements the [connector interface](/guides/sites_frameworks/connectors#implementing-a-connector-directly-within-your-project). |
+| Name                              | Description                                                                                                                                                                                                         |
+| --------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `--connector`                     | The name of a specific connector package to install, or a path to a directory that implements the [connector interface](/guides/sites_frameworks/connectors#implementing-a-connector-directly-within-your-project). |
+| `--{{PRODUCT_NAME_LOWER}}Version` | The version of {{ PRODUCT_NAME }} to install. Defaults to `latest`.                                                                                                                                                 |
 
 ### login {/* login */}
 

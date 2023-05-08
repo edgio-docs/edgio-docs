@@ -151,7 +151,7 @@ function validateLinks(headingLinksByPage) {
  * @param {Array<string>} paths
  */
 async function main(paths) {
-  paths = paths.length === 0 ? ['src/pages/guides'] : paths;
+  paths = paths.length === 0 ? ['guides/'] : paths;
   const files = paths.map((path) => [...walk(path)]).flat();
 
   const headingLinksByPage = {};

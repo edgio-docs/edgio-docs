@@ -67,6 +67,7 @@ const StyledEditIcon = styled.div`
 
 const baseURL = `https://github.com/${DOCS_REPO}/edit/main/src/pages`;
 const title = 'Edit this guide on GitHub';
+// TODO COMSUP-21
 const IGNORE_PAGES = ['/guides/changelog'];
 
 export default function EditPage({as = 'link'}: {as?: 'icon' | 'link'}) {

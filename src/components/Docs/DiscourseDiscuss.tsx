@@ -67,6 +67,7 @@ const StyledIcon = styled.div`
 `;
 
 const title = 'Discuss this guide on our forums';
+// TODO COMSUP-21
 const IGNORE_PAGES = ['/guides/changelog'];
 
 function createLink({

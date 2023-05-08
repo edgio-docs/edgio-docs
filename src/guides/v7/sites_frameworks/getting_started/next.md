@@ -398,7 +398,7 @@ Note that Next.js apps built in serverless mode don't include a Next.js image op
 
 ## Serverless Bundling {/* serverless-bundling */}
 
-Next.js has continued to improve how it bundles production builds for deployment on serverless architectures. {{ PRODUCT_NAME }} takes advantage of these improvementsby applying different configuration options depending on the version of Next.js being used:
+Next.js has continued to improve how it bundles production builds for deployment on serverless architectures. {{ PRODUCT_NAME }} takes advantage of these improvements by applying different configuration options depending on the version of Next.js being used:
 
 | Version           | Next.js configs applied                   |
 | ----------------- | ----------------------------------------- |

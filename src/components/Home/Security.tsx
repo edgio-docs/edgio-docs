@@ -14,9 +14,16 @@ const StyledComp = styled(StyledFeatureSection)``;
 
 export default function Security() {
   const {
-    version: {toVersionedPath},
+    version: {toVersionedPath, selectedVersion},
   } = useConditioning();
-  const parentPath = 'security';
+
+  let parentPath;
+
+  if (selectedVersion === '4') {
+    parentPath = `v4-security`;
+  } else {
+    parentPath = `security`;
+  }
   const allRoutes = getChildrenRoutesFromSidebarMenuItems(parentPath);
   const allRoutesSorted = sortBy(allRoutes, 'title');
 

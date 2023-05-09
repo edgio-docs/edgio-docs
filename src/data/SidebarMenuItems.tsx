@@ -169,6 +169,107 @@ const SidebarMenuItems: ISidebarMenuItems = [
       title: PRODUCT_EDGE,
       icon: <IconServerSmall />,
       iconDark: <IconServerSmallDark />,
+      path: 'v4-cdn',
+      sortRoutes: false,
+      routes: [
+        {
+          title: 'Routing with EdgeJS',
+          path: '/guides/routing',
+        },
+        {
+          title: 'Common Routing Patterns',
+          path: '/guides/cookbook',
+        },
+        {
+          title: 'Custom Domains & SSL',
+          path: '/guides/production',
+        },
+        {
+          title: 'Caching',
+          path: '/guides/caching',
+        },
+        {
+          title: 'Purging',
+          path: '/guides/purging',
+        },
+        {
+          title: 'Static Prerendering',
+          path: '/guides/static_prerendering',
+        },
+        {
+          title: 'Predictive Prefetch',
+          path: '/guides/prefetching',
+        },
+        {
+          title: 'Traditional Sites',
+          path: '/guides/traditional_sites',
+        },
+        {
+          title: 'Split Testing',
+          path: '/guides/split_testing',
+        },
+        {
+          title: 'Traffic Splitting',
+          path: '/guides/traffic_splitting',
+        },
+        {
+          title: 'Observability',
+          path: '/guides/core_web_vitals',
+        },
+        {
+          title: 'Performance',
+          path: '/guides/performance',
+        },
+        {
+          title: 'Serverless Compute',
+          path: '/guides/serverless_functions',
+          icon: <IconServerlessFunctions />,
+          iconDark: <IconServerlessFunctions />,
+        },
+        {
+          title: 'Third-Party CDNs',
+          path: '/guides/third_party_cdns',
+        },
+        {
+          title: 'Image Optimization',
+          path: '/guides/image_optimization',
+          separator: true,
+        },
+        {
+          title: 'Compression',
+          path: '/guides/compression',
+        },
+        {
+          title: 'Request',
+          path: '/guides/request_headers',
+        },
+        {
+          title: 'Response Headers',
+          path: '/guides/response_headers',
+        },
+        {
+          title: 'Status Codes',
+          path: '/guides/status_codes',
+        },
+        {
+          title: 'Cookies',
+          path: '/guides/cookies',
+        },
+        {
+          title: 'Regions',
+          path: '/guides/regions',
+          separator: true,
+        },
+        {
+          title: 'Troubleshooting',
+          path: '/guides/troubleshooting',
+        },
+      ],
+    },
+    {
+      title: PRODUCT_EDGE,
+      icon: <IconServerSmall />,
+      iconDark: <IconServerSmallDark />,
       path: 'cdn',
       sortRoutes: false,
       routes: [
@@ -865,6 +966,23 @@ const SidebarMenuItems: ISidebarMenuItems = [
       title: PRODUCT_SECURITY,
       icon: <IconSecurityPlain />,
       iconDark: <IconSecurityPlainDark />,
+      path: 'v4-security',
+      sortRoutes: true,
+      routes: [
+        {
+          title: 'Security Suite',
+          path: '/guides/security',
+        },
+        {
+          title: 'Managed Rule Groups',
+          path: '/guides/managed_rule_groups',
+        },
+      ],
+    },
+    {
+      title: PRODUCT_SECURITY,
+      icon: <IconSecurityPlain />,
+      iconDark: <IconSecurityPlainDark />,
       path: 'security',
       sortRoutes: false,
       routes: [
@@ -986,6 +1104,27 @@ const SidebarMenuItems: ISidebarMenuItems = [
       title: 'Accounts & Teams',
       icon: <IconUserPlain />,
       iconDark: <IconUserPlainDark />,
+      path: 'v4-accounts-teams',
+      sortRoutes: true,
+      routes: [
+        {
+          title: 'Alerts',
+          path: '/guides/alerts',
+        },
+        {
+          title: 'Teams',
+          path: '/guides/teams',
+        },
+        {
+          title: 'SAML Single Sign On',
+          path: '/guides/saml',
+        },
+      ],
+    },
+    {
+      title: 'Accounts & Teams',
+      icon: <IconUserPlain />,
+      iconDark: <IconUserPlainDark />,
       path: 'accounts-teams',
       sortRoutes: true,
       routes: [
@@ -996,6 +1135,35 @@ const SidebarMenuItems: ISidebarMenuItems = [
         {
           title: 'Teams',
           path: '/guides/basics/collaboration',
+        },
+      ],
+    },
+    {
+      title: 'Developer Tools',
+      icon: <IconCodePlain />,
+      iconDark: <IconCodePlainDark />,
+      path: 'v4-dev-tools',
+      sortRoutes: true,
+      routes: [
+        {
+          title: 'CLI',
+          path: '/guides/cli',
+        },
+        {
+          title: 'Devtools',
+          path: '/guides/devtools',
+        },
+        {
+          title: 'EdgeJS Unit Testing',
+          path: '/guides/edgejs_testing',
+        },
+        {
+          title: 'Logs',
+          path: '/guides/logs',
+        },
+        {
+          title: `Deploy to ${PRODUCT} Button`,
+          path: '/guides/deploy_to_layer0',
         },
       ],
     },
@@ -1064,6 +1232,40 @@ const SidebarMenuItems: ISidebarMenuItems = [
           title: `@${PRODUCT_LEGACY_LOWER}/prefetch (v3.x) Package`,
           path: '/docs/v3.x/api/prefetch/',
           external: true,
+        },
+      ],
+    },
+    {
+      title: 'Reference',
+      icon: <IconStacksPlain />,
+      iconDark: <IconStacksPlainDark />,
+      path: 'v4-reference',
+      sortRoutes: true,
+      routes: [
+        {
+          title: 'Limits & Caveats',
+          path: '/guides/limits',
+        },
+        {
+          title: 'v4 Migration Guide',
+          path: '/guides/layer0_migration',
+        },
+        {
+          title: CONFIG_FILE,
+          path: '/guides/layer0_config',
+        },
+      ],
+    },
+    {
+      title: 'Reference',
+      icon: <IconStacksPlain />,
+      iconDark: <IconStacksPlainDark />,
+      path: 'v7-reference',
+      sortRoutes: true,
+      routes: [
+        {
+          title: 'Reference',
+          path: '/guides/reference',
         },
       ],
     },

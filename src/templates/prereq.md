@@ -1,4 +1,4 @@
-## Prerequsites {/* prerequesites */}
+## Prerequisites {/* prerequisites */}
 
 #{{SYSTEM_REQUIREMENTS.md}}
 

@@ -167,10 +167,9 @@ export async function getStaticProps({params}: {params: any}) {
   );
 
   // update template with versioned constants
-  let content = templateReplace(
-    join(process.cwd(), file),
-    getVersionedConfig(version)
-  );
+  let content =
+    templateReplace(join(process.cwd(), file), getVersionedConfig(version)) ??
+    `Invalid template file: ${file}`;
 
   // remove any html comments (<!-- -->) as these will not parse correctly
   content = content.replace(/<!--([\s\S]*?)-->/g, '');

@@ -8,17 +8,21 @@ Our CDN-as-code approach to configuration allows you to configure CDN behavior u
 
 ## Quick Start {/* quick-start */}
 
-Get started with CDN-as-code by performing these steps:
+Get started with CDN-as-code by either experimenting with:
+-   Our [sample websites](#examples):
+
+    <ExampleButtons
+      title="Simple"
+      siteUrl="https://edgio-community-examples-v7-simple-performance-live.edgio.link/"
+      repoUrl="https://github.com/edgio-docs/edgio-v7-simple-performance-example/"
+    />
+-   Your web application or website.
+
+Perform the following steps to use {{ PRODUCT }} to improve the performance of your web application or website:
 
 1.  Create a property. If you have already performed this step, proceed to the next step.
 
     [Learn more.](/guides/getting_started)
-
-    <Callout type="tip">
-
-    Alternatively, you may experiment with our [sample websites](#examples) by deploying them to {{ PRODUCT }}.
-
-    </Callout>
 
 2.  Use the {{ PRODUCT }} CLI to initialize your property. If you have already performed this step, proceed to the next step.
 

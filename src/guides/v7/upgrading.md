@@ -703,7 +703,7 @@ If you are tracking Core Web Vitals through RUM, then you will need to update th
     }).collect()
   }
 </script>
-<script src="https://rum.edgio.net/latest.js" defer onload="initEdgioRum()"></script>
+<script src="https://{{ RUM_DOMAIN }}/latest.js" defer onload="initEdgioRum()"></script>
 ```
 
 ## Step 11: Build your {{ PRODUCT }} Properties {/*build-your-properties*/}

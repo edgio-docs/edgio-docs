@@ -5,9 +5,12 @@ import styled from 'styled-components';
 
 import {PRODUCT} from '../../../constants';
 import {markdownToHtml} from '../../../plugins/markdownToHtml';
+import {getVersionedConfig} from '../../utils/config';
 
 import {MarkdownPage} from 'components/Layout/MarkdownPage';
 import {Page} from 'components/Layout/Page';
+import Callout from 'components/MDX/Callout';
+import Link from 'components/MDX/Link';
 import JSONRoutes from 'utils/jsonRoutes';
 interface ChangelogProps {
   version: string;
@@ -63,9 +66,24 @@ const StyledChangelogContent = styled.div`
 `;
 
 function ChangelogPage({content, version}: {content: string; version: string}) {
+  const config = getVersionedConfig(version);
+
   return (
     <Page routeTree={JSONRoutes}>
-      <MarkdownPage meta={{title: `EdgeJS ${version} API Changelog`}}>
+      <MarkdownPage
+        meta={{title: `${config.PRODUCT} ${version} Packages Changelog`}}>
+        <Callout type="info">
+          <p>
+            This page contains release notes related to the {config.PRODUCT} CLI
+            packages and connectors.
+          </p>
+
+          <p>
+            See <Link href="/guides/release_notes">Release Notes </Link> for
+            changes related to the{' '}
+            <Link href={config.APP_URL}>{config.PORTAL}</Link>
+          </p>
+        </Callout>
         <StyledChangelogContent dangerouslySetInnerHTML={{__html: content}} />
       </MarkdownPage>
     </Page>

@@ -26,7 +26,7 @@ honored.
     unique user agents.
 
     ![](/images/v7/security/rate_rules_source_scope.png)
--   A [Security Application](security_applications) configuration determines
+-   A [Security Application](/guides/security/security_applications) configuration determines
     the set of requests to which this rate rule will be applied. Use
     condition groups to define one or more additional prerequisites
     (e.g., URL or user agent) that a request must meet before it will
@@ -43,7 +43,7 @@ honored.
     requested from an origin server or if a cached version may be served
     directly from our network.
 -   A rate rule always runs in [production
-    mode](security_applications#enforcement-mode). Although you may not run it in audit mode, you may configure your security application configuration to only generate alerts when a rate limit is exceeded.
+    mode](/guides/security/security_applications#enforcement-mode). Although you may not run it in audit mode, you may configure your security application configuration to only generate alerts when a rate limit is exceeded.
 -   A rate rule is enforced by each edge server according to the
     approximate number of requests that it receives over the specified
     time interval (e.g., 1 second, 10 seconds, or 1 minute).
@@ -56,7 +56,7 @@ honored.
     </Callout>
 
 -   {{ PRODUCT_SECURITY }} does not perform further [evaluation of a
-    request](basic_setup#threat-detection) once enforcement is triggered.
+    request](/guides/security/basic_setup#threat-detection) once enforcement is triggered.
 
     <Callout type="tip">
 
@@ -84,11 +84,11 @@ Setting up a rate rule involves defining a rate limit and determining how that r
         </Callout>
 
 -   **[Condition Group:](#condition-group)** A request counts towards a rate limit when it satisfies all of the following criteria:
-    -   A [Security Application configuration's](security_applications#traffic-identification) hostname and URL path match conditions. 
+    -   A [Security Application configuration's](/guides/security/security_applications#traffic-identification) hostname and URL path match conditions. 
     -   If one or more condition group(s) have been defined, then the request must also satisfy all of the conditions defined within at least one condition group.  
 
     Each condition identifies the type of requests that are eligible for rate limiting by URL path, request headers, IP address, file extension, and/or request method.
--   **Action:** A [Security Application configuration](security_applications#enforcement) determines the type of action that will be applied to requests that exceed the above rate limit.
+-   **Action:** A [Security Application configuration](/guides/security/security_applications#enforcement) determines the type of action that will be applied to requests that exceed the above rate limit.
 
 ### Source {/*source*/}
 
@@ -348,7 +348,7 @@ The types of prerequisites that may be defined are described below.
 ## Multiple Rate Rules {/*multiple-rate-rules*/}
 
 You may define multiple rate rules within a [Security Application
-configuration](security_applications). This type of setup provides greater
+configuration](/guides/security/security_applications). This type of setup provides greater
 control when determining how requests will be rate limited.
 
 Common use cases for multiple rules:
@@ -396,7 +396,7 @@ You may create, modify, and delete rate rules.
 
 -   Administer rate rules from the **Rate Rules** page.
 -   Apply a rate rule to production traffic by adding it to a [Security
-    Application configuration](security_applications) and then determining how
+    Application configuration](/guides/security/security_applications) and then determining how
     it will be enforced. Multiple Security Application
     configurations may use the same rate rule. Leverage this capability
     to tailor security screening by application or traffic profile.

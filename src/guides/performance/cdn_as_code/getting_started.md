@@ -14,12 +14,6 @@ Get started with CDN-as-code by performing these steps:
 
     [Learn more.](/guides/getting_started)
 
-    <Callout type="tip">
-
-    Alternatively, you may experiment with our [sample websites](#examples) by deploying them to {{ PRODUCT }}.
-
-    </Callout>
-
 2.  Use the {{ PRODUCT }} CLI to initialize your property. If you have already performed this step, proceed to the next step.
 
     <Callout type="info">
@@ -44,6 +38,14 @@ Get started with CDN-as-code by performing these steps:
 4.  [Test your changes locally.](#deploy-locally)
 
 5.  [Deploy your property](#deploy-to) to the {{ PRODUCT }} network.
+
+Alternatively, you may experiment with our [sample websites](#examples) by deploying them to {{ PRODUCT }}.
+
+<ExampleButtons
+  title="Simple"
+  siteUrl="https://edgio-community-examples-v7-simple-performance-live.edgio.link/"
+  repoUrl="https://github.com/edgio-docs/edgio-v7-simple-performance-example/"
+/>
 
 ## Routes File {/* routes-file */}
 

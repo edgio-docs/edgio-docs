@@ -266,6 +266,8 @@ module.exports = {
 };
 ```
 
+{{ origins_config_warning.md }}
+
 ### Caching {/* caching */}
 
 The easiest way to add edge caching to your nuxt.js app is to add caching routes before the middleware. For example,
@@ -500,6 +502,8 @@ Deploy your app to the {{ PRODUCT_PLATFORM }} by running the following command i
 ```
 
 See [Deployments](/guides/basics/deployments) for more information.
+
+{{ related_resources.md }}
 
 ## Troubleshooting {/* troubleshooting */}
 

@@ -55,12 +55,6 @@ For details on using the Next.js Commerce template with {{ PRODUCT }}, refer to 
 
 {{ PREREQ.md }}
 
-<Callout type="info">
-  If you run into permission issues while attempting to install the {{PRODUCT}}{' '}
-  CLI globally on your local development machine, these may be fixed by using
-  [nvm](https://github.com/nvm-sh/nvm) to manage Node and NPM.
-</Callout>
-
 ## Getting Started {/* getting-started */}
 
 ### Create a Next.js Application {/* create-a-nextjs-application */}
@@ -261,6 +255,8 @@ module.exports = {
 };
 ```
 
+{{ origins_config_warning.md }}
+
 ### rewrites and redirects {/* rewrites-and-redirects */}
 
 The `nextRoutes` plugin automatically adds routes for [rewrites](https://nextjs.org/docs/api-reference/next.config.js/rewrites) and [redirects](https://nextjs.org/docs/api-reference/next.config.js/redirects) specified in `next.config.js`. Redirects are served directly from the network edge to maximize performance.
@@ -441,3 +437,5 @@ nextRoutes.setEnforceTrailingSlash(true);
 
 export default new Router().use(nextRoutes);
 ```
+
+{{ related_resources.md }}

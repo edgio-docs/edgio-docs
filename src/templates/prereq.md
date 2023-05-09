@@ -1,5 +1,7 @@
-{{SYSTEM_REQUIREMENTS.md}}
+## Prerequsites {/* prerequesites */}
 
-{{SIGN_UP}}
+#{{SYSTEM_REQUIREMENTS.md}}
 
-{{INSTALL_CLI.md}}
+#{{SIGN_UP}}
+
+#{{INSTALL_CLI.md}}

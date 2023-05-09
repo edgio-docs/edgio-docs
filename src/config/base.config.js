@@ -81,7 +81,7 @@ const EXAMPLES_REPOS = {
 
 const SIGN_UP = `## Sign up for ${PRODUCT} {/*sign-up*/}
 
-Deploying requires an account on ${PRODUCT}. <a href="${APP_URL}/signup">Sign up here for free.</a>`;
+Deploying requires an account on ${PRODUCT}. [Sign up here for free.](${APP_URL}/signup)`;
 
 const PREFETCH_TIER1_INTRO = `
 The \`${FULL_CLI_NAME} init\` command adds a service worker based on [Workbox](https://developers.google.com/web/tools/workbox) at \`sw/service-worker.js\`. 

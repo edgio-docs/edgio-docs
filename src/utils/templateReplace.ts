@@ -10,7 +10,7 @@ import {StringMap} from './Types';
 const variableRe = /{{\s*(\w+)\s*}}/gi;
 const fileRe = /{{\s*(\w+(?:\.md))\s*}}/gi;
 const templatePath = join(process.cwd(), 'src', 'templates');
-const templatesRead: StringMap = {};
+let templatesRead: StringMap;
 
 function readTemplateFile(filePath: string, depth: number): string | undefined {
   const templateReadDepth = templatesRead[filePath];
@@ -18,7 +18,9 @@ function readTemplateFile(filePath: string, depth: number): string | undefined {
   if (typeof templateReadDepth !== 'number') {
     templatesRead[filePath] = depth;
   } else if (templateReadDepth < depth) {
-    const msg = `Circular reference detected in template file '${filePath}'`;
+    const msg = `
+      Circular reference detected to template file '${filePath}'.
+      Check that two or more templates do not reference each other.`;
     // possible circular reference
     logDev(msg);
     if (isProductionBuild()) {
@@ -53,6 +55,7 @@ function replaceTemplateReferences(template: string, depth = 0): string {
 }
 
 export default function templateReplace(file: string, data: StringMap) {
+  templatesRead = {};
   let template = readTemplateFile(file, 0);
 
   if (!template) {

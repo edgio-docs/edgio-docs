@@ -1,5 +1,5 @@
-const PACKAGE_VERSION = 'latest';
-
-export default {
-  PACKAGE_VERSION,
+const config = {
+  PACKAGE_VERSION: 'latest',
 };
+
+export default config;

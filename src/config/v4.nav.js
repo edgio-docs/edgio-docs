@@ -349,27 +349,13 @@ const nav = {
     {
       title: 'Environments',
       icon: 'leaf',
-      path: 'v4_environments',
-      routes: [
-        {
-          title: 'Environments',
-          path: 'environments',
-        },
-      ],
+      path: 'environments',
     },
     {
       title: 'Integrations',
       icon: 'gear',
-      path: 'v4_integrations',
+      path: 'integrations',
       routes: [
-        {
-          title: 'Overview',
-          path: 'integrations',
-        },
-        {
-          title: '',
-          path: '',
-        },
         {
           title: 'BigCommerce',
           path: 'bigcommerce',

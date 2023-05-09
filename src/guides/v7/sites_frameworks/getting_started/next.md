@@ -53,7 +53,7 @@ For details on using the Next.js Commerce template with {{ PRODUCT }}, refer to 
 - [`getServerSideProps`](https://nextjs.org/docs/basic-features/data-fetching/get-server-side-props)
 - [`getInitialProps`](https://nextjs.org/docs/api-reference/data-fetching/get-initial-props)
 
-{{ PREREQ }}
+{{ PREREQ.md }}
 
 <Callout type="info">
   If you run into permission issues while attempting to install the {{PRODUCT}}{' '}
@@ -82,11 +82,11 @@ cd my-next-app
 
 This will automatically add all of the required dependencies and files to your project. These include:
 
-{{ INIT_DEFAULT_PACKAGES }}
+{{ INIT_DEFAULT_PACKAGES.md }}
 
 - The `{{ PACKAGE_NAME }}/next` package - Provides router middleware that automatically adds Next.js pages and api routes to the {{ PRODUCT }} router.
 - The `{{ PACKAGE_NAME }}/react` package - Provides a `Prefetch` component for prefetching pages.
-  {{ INIT_DEFAULT_FILES }}
+  {{ INIT_DEFAULT_FILES.md }}
 
 ## Config Options {/* config-options */}
 

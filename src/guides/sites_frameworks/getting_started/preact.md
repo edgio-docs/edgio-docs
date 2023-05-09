@@ -12,7 +12,7 @@ This guide shows you how to deploy a [Preact](https://preactjs.com/) application
   repoUrl="https://github.com/edgio-docs/edgio-preact-example" 
   deployFromRepo />
 
-{{ PREREQ }}
+{{ PREREQ.md }}
 
 ## Create a new Preact app {/*create-a-new-preact-app*/}
 

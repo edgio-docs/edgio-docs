@@ -42,7 +42,7 @@ This framework has a connector developed for {{ PRODUCT }}. See [Connectors](/gu
 
 </Condition>
 
-{{ PREREQ }}
+{{ PREREQ.md }}
 
 ## Creating a new Nuxt app {/* creating-a-new-nuxt-app */}
 

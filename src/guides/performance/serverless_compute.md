@@ -28,7 +28,7 @@ Enterprise customers may choose the region where their workloads will run. Alter
 - Load balancing computing requests between redundant processes.
 - Applying an Origin Shield to our Serverless Compute workers. If your compute requests are cacheable, then this allows more requests to be served from cache.
 
-{{ PREREQ }}
+{{ PREREQ.md }}
 
 ## Getting Started {/* getting-started */}
 

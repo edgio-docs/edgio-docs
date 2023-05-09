@@ -79,47 +79,9 @@ const EXAMPLES_REPOS = {
   'static-vue': 'https://github.com/edgio-docs/edgio-static-vuejs-example',
 };
 
-const SYSTEM_REQUIREMENTS = `## System Requirements {/*system-requirements*/}
-
-- [Install Node.js 16.16.0](/guides/install_nodejs)`;
-
-const SYSTEM_REQUIREMENTS_H3 = `### System Requirements {/*system-requirements*/}
-
-- [Install Node.js 16.16.0](/guides/install_nodejs)`;
-
 const SIGN_UP = `## Sign up for ${PRODUCT} {/*sign-up*/}
 
 Deploying requires an account on ${PRODUCT}. <a href="${APP_URL}/signup">Sign up here for free.</a>`;
-
-const INSTALL_CLI = `## Install the ${PRODUCT_NAME} CLI {/*install-the-cli*/}
-
-If you have not already done so, install the [${PRODUCT_NAME} CLI](/guides/develop/cli).
-
-<SnippetGroup>
-
-\`\`\`bash tabLabel="npm"
-npm i -g ${PACKAGE_NAME}/cli
-\`\`\`
-
-\`\`\`bash tabLabel="Yarn"
-yarn global add ${PACKAGE_NAME}/cli
-\`\`\`
-
-</SnippetGroup>
-`;
-
-const INIT_DEFAULT_PACKAGES = `
-- The \`${PACKAGE_NAME}/cli\` package - Allows you to control ${PRODUCT} through project-local CLI.
-- The \`${PACKAGE_NAME}/core\` package - Allows you to declare routes and deploy your application to ${PRODUCT}.
-- The \`${PACKAGE_NAME}/prefetch\` package - Allows you to configure a service worker to prefetch and cache pages to improve browsing speed.
-- The \`${PACKAGE_NAME}/devtools\` package - Allows you to monitor the caching and prefetching functionality.
-`;
-
-const INIT_DEFAULT_FILES = `
-- \`${CONFIG_FILE}\` - Contains various configuration options for ${PRODUCT}.
-- \`routes.js\` - A default routes file that proxies all requests to the server. Update this file to add caching or proxy some URLs to a different origin.
-- \`sw/service-worker.js\` - A service worker implemented using Workbox.
-`;
 
 const PREFETCH_TIER1_INTRO = `
 The \`${FULL_CLI_NAME} init\` command adds a service worker based on [Workbox](https://developers.google.com/web/tools/workbox) at \`sw/service-worker.js\`. 
@@ -130,14 +92,6 @@ import { Prefetcher } from '${PACKAGE_NAME}/prefetch/sw';
 
 new Prefetcher().route();
 \`\`\``;
-
-const PREREQ = `
-${SYSTEM_REQUIREMENTS}
-
-${SIGN_UP}
-
-${INSTALL_CLI}
-`.trim();
 
 const INSTALL_CLI_STEP = `Install the ${PRODUCT_NAME} CLI
 
@@ -499,17 +453,13 @@ const config = {
   FULL_CLI_NAME,
   HEADER_PREFIX,
   HELP_URL,
-  INSTALL_CLI,
   LINK_DOMAIN,
   PERMALINK_DOMAIN,
   RUM_DOMAIN,
   LOGIN_URL,
   PORTAL,
   PORTAL_LINK,
-  PREREQ,
   INSTALL_CLI_STEP,
-  INIT_DEFAULT_PACKAGES,
-  INIT_DEFAULT_FILES,
   PREFETCH_TIER1_INTRO,
   NODE_VERSION,
   PACKAGE_NAME,
@@ -522,8 +472,6 @@ const config = {
   STARTER_NAME,
   STATUS_URL,
   SUPPORT_URL,
-  SYSTEM_REQUIREMENTS_H3,
-  SYSTEM_REQUIREMENTS,
   YEAR,
   WWW_URL,
   RUM_NS,

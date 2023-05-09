@@ -49,7 +49,7 @@ For details on using the Next.js Commerce template with {{ PRODUCT }}, refer to 
 - [`getServerSideProps`](https://nextjs.org/docs/basic-features/data-fetching/get-server-side-props)
 - [`getInitialProps`](https://nextjs.org/docs/api-reference/data-fetching/get-initial-props)
 
-{{ PREREQ }}
+{{ PREREQ.md }}
 
 When installing the {{ PRODUCT }} CLI globally in a virtual environment that has Node and NPM installed globally, you [may run into permission issues]({{ FORUM_URL }}/t/xdn-cli-npm-install-error/83). In that case, you can install the {{ PRODUCT }} CLI locally within your app using `npm i -D {{ PACKAGE_NAME }}/cli` and running commands using `./node_modules/{{ PACKAGE_NAME }}/cli` instead of `{{ FULL_CLI_NAME }}`.
 
@@ -76,11 +76,11 @@ cd my-next-app
 
 This will automatically add all of the required dependencies and files to your project. These include:
 
-{{ INIT_DEFAULT_PACKAGES }}
+{{ INIT_DEFAULT_PACKAGES.md }}
 
 - The `{{ PACKAGE_NAME }}/next` package - Provides router middleware that automatically adds Next.js pages and api routes to the {{ PRODUCT }} router.
 - The `{{ PACKAGE_NAME }}/react` package - Provides a `Prefetch` component for prefetching pages.
-  {{ INIT_DEFAULT_FILES }}
+  {{ INIT_DEFAULT_FILES.md }}
 
 ## Next.js Config Plugins {/* nextjs-config-plugins */}
 

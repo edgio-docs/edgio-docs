@@ -12,7 +12,7 @@ This guide shows you how to deploy a [Eleventy](https://www.11ty.dev/) applicati
   repoUrl="https://github.com/edgio-docs/edgio-eleventy-example" 
   deployFromRepo />
 
-{{ PREREQ }}
+{{ PREREQ.md }}
 
 ## Create a new Eleventy app {/*create-a-new-eleventy-app*/}
 

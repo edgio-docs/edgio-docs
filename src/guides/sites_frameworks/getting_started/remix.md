@@ -12,7 +12,7 @@ This guide shows you how to deploy a [Remix](https://remix.run/) application to 
   repoUrl="https://github.com/edgio-docs/edgio-remix-express-example" 
   deployFromRepo />
 
-{{ PREREQ }}
+{{ PREREQ.md }}
 
 ## Create a new Remix app {/*create-a-new-remix-app*/}
 

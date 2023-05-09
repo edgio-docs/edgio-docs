@@ -20,7 +20,7 @@ This framework has a connector developed for {{ PRODUCT }}. See [Connectors](/gu
  View the Connector Code
 </ButtonLink>
 
-{{ SYSTEM_REQUIREMENTS }}
+{{ SYSTEM_REQUIREMENTS.md }}
 
 {{ SIGN_UP }}
 

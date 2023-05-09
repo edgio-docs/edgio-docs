@@ -12,7 +12,7 @@ This guide shows you how to deploy an [Ember.js](https://emberjs.com/) applicati
   repoUrl="https://github.com/edgio-docs/edgio-emberjs-example" 
   deployFromRepo />
 
-{{ PREREQ }}
+{{ PREREQ.md }}
 
 ## Create a new Ember.js app {/*create-a-new-emberjs-app*/}
 

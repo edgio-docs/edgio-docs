@@ -18,7 +18,7 @@ A Swell powered ecommerce backend and a Nuxt.js app for the framework.
   repoUrl="https://github.com/edgio-docs/edgio-swell-example" 
   deployFromRepo />
 
-{{ PREREQ }}
+{{ PREREQ.md }}
 
 ## Create a new Swell app {/*create-a-new-swell-app*/}
 

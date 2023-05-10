@@ -18,7 +18,7 @@ This example is a Next.js app powered by a BigCommerce backend.
   repoUrl="https://github.com/edgio-docs/edgio-nextjs-commerce-example"
   deployFromRepo />
 
-{{ PREREQ }}
+{{ PREREQ.md }}
 
 ## Setting up a BigCommerce Headless Example {/*setting-up-a-bigcommerce-headless-example*/}
 

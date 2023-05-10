@@ -13,7 +13,7 @@ title: Scully
   deployFromRepo
 />
 
-{{ PREREQ }}
+{{ PREREQ.md }}
 
 ## Create your Scully site {/*create-your-scully-site*/}
 

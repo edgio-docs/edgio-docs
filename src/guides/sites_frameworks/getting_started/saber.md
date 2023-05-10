@@ -12,7 +12,7 @@ This guide shows you how to deploy a [Saber](https://saber.egoist.dev) applicati
   repoUrl="https://github.com/edgio-docs/edgio-saber-example" 
   deployFromRepo />
 
-{{ PREREQ }}
+{{ PREREQ.md }}
 
 ## Create a new Saber app {/*create-a-new-saber-app*/}
 

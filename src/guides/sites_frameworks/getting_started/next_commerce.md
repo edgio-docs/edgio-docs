@@ -18,7 +18,7 @@ Here is an example of the [Next.js Commerce](https://nextjs.org/commerce) templa
   <ButtonLink variant="stroke" type="deploy" withIcon={true} href="{{ APP_URL }}/deploy?button&deploy&repo=https%3A%2F%2Fgithub.com%2Fedgio-docs%2Fedgio-nextjs-commerce-example" />
 </ButtonLinksGroup>
 
-{{ PREREQ }}
+{{ PREREQ.md }}
 
 ## Deploy the Example {/*deploy-the-example*/}
 

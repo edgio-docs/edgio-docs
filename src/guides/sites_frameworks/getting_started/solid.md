@@ -12,7 +12,7 @@ This guide shows you how to deploy a [SolidJS](https://solidjs.com) application 
   repoUrl="https://github.com/edgio-docs/edgio-solidjs-example" 
   deployFromRepo />
 
-{{ PREREQ }}
+{{ PREREQ.md }}
 
 ## Create a new SolidJS app {/*create-a-new-solidjs-app*/}
 

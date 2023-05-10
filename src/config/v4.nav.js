@@ -431,12 +431,12 @@ const nav = {
         },
         {
           title: `@layer0/core Package`,
-          path: '/docs/api/core/',
+          path: '/docs/v4.x/api/core/',
           external: true,
         },
         {
           title: `@layer0/prefetch Package`,
-          path: '/docs/api/prefetch/',
+          path: '/docs/v4.x/api/prefetch/',
           external: true,
         },
         {

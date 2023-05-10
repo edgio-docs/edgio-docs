@@ -206,5 +206,14 @@ export async function getStaticProps({params}: {params: any}) {
     },
   });
 
+  if (mdxSource.frontmatter?.redirect) {
+    return {
+      redirect: {
+        destination: mdxSource.frontmatter.redirect,
+        permanent: false,
+      },
+    };
+  }
+
   return {props: {source: mdxSource, headings, version}};
 }

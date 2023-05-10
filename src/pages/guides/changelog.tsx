@@ -161,20 +161,22 @@ async function getChangelogByVersion(version: string) {
     return notes;
   }
 
-  let [releases, pullRequests] = [
-    (
-      await octokit.request(
-        'GET /repos/{owner}/{repo}/releases',
-        octokitDefaults
-      )
-    ).data.filter((v) => !v.draft),
-    (
-      await octokit.request('GET /repos/{owner}/{repo}/pulls', {
-        ...octokitDefaults,
-        state: 'closed',
-      })
-    ).data.reduce((acc, pull) => ({...acc, [pull.number]: pull}), {}),
-  ];
+  let [releases, pullRequests] = process.env.GH_API_TOKEN
+    ? [
+        (
+          await octokit.request(
+            'GET /repos/{owner}/{repo}/releases',
+            octokitDefaults
+          )
+        ).data.filter((v) => !v.draft),
+        (
+          await octokit.request('GET /repos/{owner}/{repo}/pulls', {
+            ...octokitDefaults,
+            state: 'closed',
+          })
+        ).data.reduce((acc, pull) => ({...acc, [pull.number]: pull}), {}),
+      ]
+    : [[], {}];
 
   // split the major release versions
   const [data] = splitByVersion(new RegExp(`^${version}`));

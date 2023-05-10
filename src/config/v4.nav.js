@@ -28,7 +28,7 @@ const nav = {
     {
       title: 'Performance',
       icon: 'server',
-      path: 'performance',
+      path: 'v4_performance',
       routes: [
         {
           title: 'Routing with EdgeJS',
@@ -131,7 +131,7 @@ const nav = {
     {
       title: 'Sites',
       icon: 'book-plain',
-      path: 'sites',
+      path: 'v4_sites',
       routes: [
         {
           title: 'Connectors',
@@ -334,8 +334,12 @@ const nav = {
     {
       title: 'Security',
       icon: 'shield',
-      path: 'security',
+      path: 'v4_security',
       routes: [
+        {
+          title: 'Security Suite',
+          path: 'security',
+        },
         {
           title: 'Managed Rule Groups',
           path: 'managed_rule_groups',
@@ -373,7 +377,7 @@ const nav = {
     {
       title: 'Accounts & Teams',
       icon: 'user',
-      path: 'accounts_teams',
+      path: 'v4_accounts_teams',
       routes: [
         {
           title: 'Alerts',
@@ -392,7 +396,7 @@ const nav = {
     {
       title: 'Developer Tools',
       icon: 'code-plain',
-      path: 'developer_tools',
+      path: 'v4_developer_tools',
       routes: [
         {
           title: 'CLI',
@@ -419,7 +423,7 @@ const nav = {
     {
       title: 'APIs',
       icon: 'code-plain',
-      path: 'apis',
+      path: 'v4_apis',
       routes: [
         {
           title: 'REST API',
@@ -427,12 +431,12 @@ const nav = {
         },
         {
           title: `@layer0/core Package`,
-          path: '/docs/v4.x/api/core/',
+          path: '/docs/api/core/',
           external: true,
         },
         {
           title: `@layer0/prefetch Package`,
-          path: '/docs/v4.x/api/prefetch/',
+          path: '/docs/api/prefetch/',
           external: true,
         },
         {
@@ -450,7 +454,7 @@ const nav = {
     {
       title: 'Reference',
       icon: 'stacks-plain',
-      path: 'reference',
+      path: 'v4_reference',
       routes: [
         {
           title: 'Limits & Caveats',

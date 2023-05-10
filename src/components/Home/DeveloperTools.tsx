@@ -15,9 +15,17 @@ const StyledComp = styled(StyledFeatureSection)``;
 
 export default function DeveloperTools() {
   const {
-    version: {toVersionedPath},
+    version: {toVersionedPath, selectedVersion},
   } = useConditioning();
-  const parentPath = 'dev-tools';
+
+  let parentPath;
+
+  if (selectedVersion === '4') {
+    parentPath = `v4-dev-tools`;
+  } else {
+    parentPath = `dev-tools`;
+  }
+
   const allRoutes = getChildrenRoutesFromSidebarMenuItems(parentPath);
   const allRoutesSorted = sortBy(allRoutes, 'title');
 

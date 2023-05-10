@@ -13,12 +13,19 @@ import useConditioning from 'utils/hooks/useConditioning';
 const StyledComp = styled(StyledFeatureSection)``;
 
 export default function AccountsandTeams() {
-  const parentPath = 'accounts-teams';
+  const {
+    version: {toVersionedPath, selectedVersion},
+  } = useConditioning();
+
+  let parentPath;
+
+  if (selectedVersion === '4') {
+    parentPath = `v4-accounts-teams`;
+  } else {
+    parentPath = `accounts-teams`;
+  }
   const allRoutes = getChildrenRoutesFromSidebarMenuItems(parentPath);
   const allRoutesSorted = sortBy(allRoutes, 'title');
-  const {
-    version: {toVersionedPath},
-  } = useConditioning();
 
   const routesByColumns = [allRoutesSorted];
 

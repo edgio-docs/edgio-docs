@@ -125,7 +125,7 @@ Before going live, ensure that all {{ PRODUCT_NAME }} IP addresses are allowed i
 
 All data transmitted to and from your {{ PRODUCT_NAME }} site must be secured with TLS (Transport Layer Security). TLS, also known as SSL (Secure Sockets Layer), is a cryptographic protocol to communicate securely over the Internet. TLS provides end-to-end data encryption and data integrity for all web requests.
 
-{{ PRODUCT_NAME }} provides a wildcard TLS certificate that covers the auto-generated domains that it assigns to your site (e.g {team}-{site}-{branch}-{version}.layer0-limelight.link). You need to provide your own certificate for your site's custom domains.
+{{ PRODUCT_NAME }} provides a wildcard TLS certificate that covers the auto-generated domains that it assigns to your site (e.g., `{team}-{site}-{branch}-{version}.layer0-limelight.link)`. You need to provide your own certificate for your site's custom domains.
 
 <Callout type="info">
 

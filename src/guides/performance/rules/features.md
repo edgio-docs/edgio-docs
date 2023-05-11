@@ -43,12 +43,12 @@ new Router()
 
 Determines whether Token-Based Authentication will be applied to a request.
 
--   If Token-Based Authentication is enabled, then only requests that provide an encrypted token and comply to the requirements specified by that token will be honored.
+-   If Token-Based Authentication is enabled, then only requests that provide an encrypted token and satisfy the requirements specified by that token will be honored.
 -   Token values will be encrypted and decrypted using your primary and backup encryption key(s).
 -   This feature takes precedence over most features with the exception of the [Rewrite URL feature](#rewrite-url).
 
 <edgejs>
--   If Token-Based Authentication is enabled, then only requests that provide an encrypted token and comply to the requirements specified by that token will be honored.
+-   If Token-Based Authentication is enabled, then only requests that provide an encrypted token and satisfy the requirements specified by that token will be honored.
 -   Token values will be encrypted and decrypted using your primary and backup encryption key(s).
 -   This feature takes precedence over most features with the exception of the Rewrite URL feature.
 

@@ -12,7 +12,7 @@ This guide shows you how to deploy a [Svelte](https://svelte.dev/) application t
   repoUrl="https://github.com/layer0-docs/layer0-svelte-example" 
   deployFromRepo />
 
-{{ PREREQ }}
+{{ PREREQ.md }}
 
 ## Create a new Svelte app {/*create-a-new-svelte-app*/}
 

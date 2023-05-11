@@ -22,7 +22,7 @@ This Astro example app uses server-side rendering.
   repoUrl="https://github.com/layer0-docs/layer0-astro-ssr-example" 
   deployFromRepo />
 
-{{ PREREQ }}
+{{ PREREQ.md }}
 
 ## Create your Astro site {/*create-your-astro-site*/}
 

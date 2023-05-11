@@ -28,7 +28,7 @@ Requests for your site will now pass through {{ PRODUCT }}'s globally distribute
 
 A full production deployment requires changing your site's DNS to allow requests to come to {{ PRODUCT }} first. View our [production guide](/guides/production) for that process.
 
-{{ PREREQ }}
+{{ PREREQ.md }}
 
 ## Create your project {/*create-your-project*/}
 

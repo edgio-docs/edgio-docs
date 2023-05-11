@@ -67,6 +67,10 @@ const nav = {
               title: 'Feature Variables',
               path: 'performance/rules/feature_variables',
             },
+            {
+              title: 'Operators',
+              path: 'performance/rules/operators',
+            },
           ],
         },
         {

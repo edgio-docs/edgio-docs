@@ -2,7 +2,11 @@
 title: Country Codes
 ---
 
-{{ PRODUCT_SECURITY }} supports the following ISO 3166 country codes:
+ISO 3166 country codes are supported by:
+
+-   **Rules:** [Country match condition](/guides/performance/rules/conditions#country)
+-   **CDN-as-code:** [location.country condition](/docs/api/core/interfaces/types.RulesVariables.html#location)
+-   **Web Application Firewall:** [Access Rules](/guides/security/access_rules), [Rate Rules](/guides/security/rate_rules), [Bot Manager](/guides/security/bot_rules), [Custom Rules](/guides/rules/custom_rules), [Dashboard](/guides/security/dashboard), and [Event Log](/guides/security/recent_event_logs)
 
 <Callout type="info">
 
@@ -260,4 +264,4 @@ title: Country Codes
 
 ## Regions {/*regions*/}
 
-{{ PRODUCT_SECURITY }} identifies the location from which a client requests your content through the client's IP address. However, certain IP addresses are not specific to a particular country, rather they are spread out over an entire region (i.e., Europe or Asia/Pacific). Requests that originate from these types of IP addresses are identified by a region-specific code instead of a country code. Region-specific codes identify requests for which a country of origin is unknown. Additionally, these codes represent a small subset of IP addresses in that region.
+{{ PRODUCT }} identifies the location from which a client requests your content through the client's IP address. However, certain IP addresses are not specific to a particular country, rather they are spread out over an entire region (i.e., Europe or Asia/Pacific). Requests that originate from these types of IP addresses are identified by a region-specific code instead of a country code. Region-specific codes identify requests for which a country of origin is unknown. Additionally, these codes represent a small subset of IP addresses in that region.

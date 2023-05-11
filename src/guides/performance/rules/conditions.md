@@ -7,8 +7,8 @@ A match condition identifies the set of requests to which one or more feature(s)
 | Category  | Match Conditions  |
 |---|---|
 | Location  | <ul><li>[ASN](#asn)</li><li>[City](#city)</li><li hidden>[Continent](#continent)</li><li>[Country](#country)</li><li>[DMA Code](#dma-code)</li><li>[Latitude](#latitude)</li><li>[Longitude](#longitude)</li><li>[Postal Code](#postal-code)</li><li>[Region Code](#region-code)</li></ul> |
-| Device  | <ul><li>[Brand Name](#brand-name)</li><li hidden>[Device Operating System](#device-operating-system)</li><li>[Dual Orientation](#dual-orientation)</li><li hidden>[HTML Preferred DTD](#html-preferred-dtd)</li><li>[Image Inlining](#image-inlining)</li><li>[Is Android](#is-android)</li><li>[Is App](#is-app)</li><li hidden>[Is Full Desktop](#is-full-desktop)</li><li>[Is iOS](#is-ios)</li><li>[Is Robot](#is-robot)</li><li>[Is Smartphone](#is-smartphone)</li><li>[Is SmartTV](#is-smarttv)</li><li>[Is Tablet](#is-tablet)</li><li>[Is Touchscreen](#is-touchscreen)</li><li>[Is Windows Phone](#is-windows-phone)</li><li>[Is Wireless Device](#is-wireless-device)</li><li>[Marketing Name](#marketing-name)</li><li>[Mobile Browser](#mobile-browser)</li><li>[Model Name](#model-name)</li><li>[Progressive Download](#progressive-download)</li><li>[Release Date](#release-date)</li><li>[Resolution Height](#resolution-height)</li><li>[Resolution Width](#resolution-width)</li></ul>  |
 | Request  | <ul><li>[Client IP](#client-ip)</li><li>[Cookie](#cookie)</li><li hidden>[Directory](#directory)</li><li hidden>[Extensions](#extensions)</li><li>[Filename](#filename)</li><li>[Method](#method)</li><li>[Origin Path](#origin-path)</li><li>[Path](#path)</li><li>[POP Code](#pop-code)</li><li>[Query](#query)</li><li>[Query Parameter](#query-parameter)</li><li>[Query String](#query-string)</li><li>[Referring Domain](#referring-domain)</li><li>[Request Header](#request-header)</li><li>[Scheme](#scheme)</li></ul>  |
+| Device  | <ul><li>[Brand Name](#brand-name)</li><li hidden>[Device Operating System](#device-operating-system)</li><li>[Dual Orientation](#dual-orientation)</li><li hidden>[HTML Preferred DTD](#html-preferred-dtd)</li><li>[Image Inlining](#image-inlining)</li><li>[Is Android](#is-android)</li><li>[Is App](#is-app)</li><li hidden>[Is Full Desktop](#is-full-desktop)</li><li>[Is iOS](#is-ios)</li><li>[Is Robot](#is-robot)</li><li>[Is Smartphone](#is-smartphone)</li><li>[Is SmartTV](#is-smarttv)</li><li>[Is Tablet](#is-tablet)</li><li>[Is Touchscreen](#is-touchscreen)</li><li>[Is Windows Phone](#is-windows-phone)</li><li>[Is Wireless Device](#is-wireless-device)</li><li>[Marketing Name](#marketing-name)</li><li>[Mobile Browser](#mobile-browser)</li><li>[Model Name](#model-name)</li><li>[Progressive Download](#progressive-download)</li><li>[Release Date](#release-date)</li><li>[Resolution Height](#resolution-height)</li><li>[Resolution Width](#resolution-width)</li></ul>  |
 | Miscellaneous  | <ul><li>[Random Integer](#random-integer)</li></ul>  |
 
 #### ASN {/*asn*/} <edgejs>location</edgejs>
@@ -299,7 +299,10 @@ Identifies requests by the country from which the request was issued.
 
 -   Specify a country through its [country code](/guides/reference/country_codes).
 -   Specify multiple country codes by delimiting each one with a single space.
--   The `EU` and `AP` country codes do not encompass all IP addresses in those regions.
+-   The `EU` and `AP` country codes do not encompass all IP addresses in those regions. 
+
+    [Learn more.](/reference/country_codes#regions)
+
 -   Certain requests may not return a valid country code. A question mark (i.e., ?) will match requests for which a valid country code could not be determined.
 -   Country codes are case-sensitive.
 
@@ -310,6 +313,9 @@ Identifies requests by the country from which the request was issued.
 -   Specify a country through its [country code](/guides/reference/country_codes).
 -   Specify multiple country codes by delimiting each one with a single space.
 -   The `EU` and `AP` country codes do not encompass all IP addresses in those regions.
+
+    [Learn more.](/reference/country_codes#regions)
+
 -   Certain requests may not return a valid country code. A question mark (i.e., ?) will match requests for which a valid country code could not be determined.
 -   Country codes are case-sensitive.
 -   **Supported operators:** `=== | !==`
@@ -377,6 +383,7 @@ Identifies requests by the metro code (Designated Market Area - DMA) from which 
 
 -   Specify a metro code as an integer value.
 -   Request DMA codes from Nielsen.
+-   Specify multiple metro codes by delimiting each one with a single space.
 -   Metro codes are only applicable for traffic from the United States.
 -   Certain requests may not return a valid metro code. A question mark (i.e., `?`) will match requests for which a valid metro code could not be determined.
 
@@ -385,6 +392,7 @@ Identifies requests by the metro code (Designated Market Area - DMA) from which 
 
 -   Specify a metro code as an integer value.
 -   Request DMA codes from Nielsen.
+-   Specify multiple metro codes by delimiting each one with a single space.
 -   Metro codes are only applicable for traffic from the United States.
 -   Certain requests may not return a valid metro code. A question mark (i.e., `?`) will match requests for which a valid metro code could not be determined.
 -   **Supported operators:** `=== | !==`
@@ -462,7 +470,7 @@ Identifies requests by the filename defined in the URL.
 
 **Key information:**
 
--   For the purposes of this match condition, a filename consists of the name of the requested asset, a period, and the file extension (e.g., index.html). 
+-   For the purposes of this match condition, a filename consists of the name of the requested asset, a period, and the file extension (e.g., `index.html`). 
 -   The method for specifying multiple values varies by operator:
 
     -   **equals | does not equal:** Delimit each one with a single space.
@@ -479,7 +487,7 @@ Identifies requests by the filename defined in the URL.
 
 **Key information:**
 
--   For the purposes of this match condition, a filename consists of the name of the requested asset, a period, and the file extension (e.g., index.html). 
+-   For the purposes of this match condition, a filename consists of the name of the requested asset, a period, and the file extension (e.g., `index.html`).
 -   The method for specifying multiple values varies by operator:
 
     -   `=== | !==`**:** Delimit each one with a single space.
@@ -983,7 +991,7 @@ Identifies requests by their HTTP method. Only assets that are requested using t
 The available HTTP methods are: `GET | POST | PUT | DELETE | PATCH | HEAD | OPTIONS`
 
 <!---
-PATCH?
+src for PATCH: UI
 --->
 
 <edgejs>
@@ -1128,7 +1136,7 @@ Identifies requests by the request URL's relative path. This relative path compa
 
 **Key information:**
 
--   This relative path comparison is performed after {{ PRODUCT }} rewrites or redirects the request. Rewrite or redirect a URL through the [URL Rewrite](/guides/performance/rules/features#url-rewrite) and [URL Redirect](/guides/performance/rules/features#url-redirect) features, respectively. Use the [Path](#path) to match on the original relative path submitted by the client.
+-   This relative path comparison is performed after {{ PRODUCT }} rewrites or redirects the request. Rewrite or redirect a URL through the [URL Rewrite](/guides/performance/rules/features#url-rewrite) and [URL Redirect](/guides/performance/rules/features#url-redirect) features, respectively. Use the [Path](#path) match condition to match on the original relative path submitted by the client.
 -   This relative path starts directly after the hostname.
 -   For the purpose of satisfying this condition, query strings in the URL are ignored.
 -   Certain characters require URL encoding. Use the percentage symbol to URL encode the following characters:
@@ -1148,14 +1156,14 @@ Identifies requests by the request URL's relative path. This relative path compa
 
         <Callout type="tip">
 
-          Curl does not encode non-US-ASCII characters. If you would like to test this match condition using curl, then you will need to create a mutually exclusive match section (i.e., IF / ELSE IF). Each conditional expression within that statement should contain this match condition with the Encoded option set to different values.
+          Curl does not encode non-US-ASCII characters. <!-- If you would like to test this match condition using curl, then you will need to create a mutually exclusive match section (i.e., IF / ELSE IF). Each conditional expression within that statement should contain this match condition with the Encoded option set to different values. -->
 
         </Callout>
 
 <edgejs>
 **Key information:**
 
--   This relative path comparison is performed after {{ PRODUCT }} rewrites or redirects the request. Rewrite or redirect a URL through the [URL Rewrite](/guides/performance/rules/features#url-rewrite) and [URL Redirect](/guides/performance/rules/features#url-redirect) features, respectively. Use the [Path](#path) to match on the original relative path submitted by the client.
+-   This relative path comparison is performed after {{ PRODUCT }} rewrites or redirects the request. Rewrite or redirect a URL through the [URL Rewrite](/guides/performance/rules/features#url-rewrite) and [URL Redirect](/guides/performance/rules/features#url-redirect) features, respectively. Use the [Path](#path) match condition to match on the original relative path submitted by the client.
 -   This relative path starts directly after the hostname.
 -   For the purpose of satisfying this condition, query strings in the URL are ignored.
 -   Certain characters require URL encoding. Use the percentage symbol to URL encode the following characters:
@@ -1175,7 +1183,7 @@ Identifies requests by the request URL's relative path. This relative path compa
 
         <Callout type="tip">
 
-          Curl does not encode non-US-ASCII characters. If you would like to test this match condition using curl, then you will need to create a mutually exclusive match section (i.e., IF / ELSE IF). Each conditional expression within that statement should contain this match condition with the Encoded option set to different values.
+          Curl does not encode non-US-ASCII characters. <!-- If you would like to test this match condition using curl, then you will need to create a mutually exclusive match section (i.e., IF / ELSE IF). Each conditional expression within that statement should contain this match condition with the Encoded option set to different values. -->
 
         </Callout>
 -   **Supported operators:** `== | != | =~ | !~`
@@ -1207,7 +1215,7 @@ Identifies requests by the relative path of the request URL submitted by the cli
 
 **Key information:**
 
--   Although you may configure {{ PRODUCT }} to rewrite or redirect a URL, this relative path comparision will always be performed against the  request URL submitted by the client. Use the [Origin Path](#origin-path) feature to match on a rewritten or redirected URL.
+-   Although you may configure {{ PRODUCT }} to rewrite or redirect a URL, this relative path comparision will always be performed against the  request URL submitted by the client. Use the [Origin Path](#origin-path) match condition to match on a rewritten or redirected URL.
 -   This relative path starts directly after the hostname.
 -   For the purpose of satisfying this condition, query strings in the URL are ignored.
 -   Certain characters require URL encoding. Use the percentage symbol to URL encode the following characters:
@@ -1227,14 +1235,14 @@ Identifies requests by the relative path of the request URL submitted by the cli
 
         <Callout type="tip">
 
-          Curl does not encode non-US-ASCII characters. If you would like to test this match condition using curl, then you will need to create a mutually exclusive match section (i.e., IF / ELSE IF). Each conditional expression within that statement should contain this match condition with the Encoded option set to different values.
+          Curl does not encode non-US-ASCII characters. <!-- If you would like to test this match condition using curl, then you will need to create a mutually exclusive match section (i.e., IF / ELSE IF). Each conditional expression within that statement should contain this match condition with the Encoded option set to different values. -->
 
         </Callout>
 
 <edgejs>
 **Key information:**
 
--   Although you may configure {{ PRODUCT }} to rewrite or redirect a URL, this relative path comparision will always be performed against the  request URL submitted by the client. Use the [Origin Path](#origin-path) feature to match on a rewritten or redirected URL.
+-   Although you may configure {{ PRODUCT }} to rewrite or redirect a URL, this relative path comparision will always be performed against the  request URL submitted by the client. Use the [Origin Path](#origin-path) match condition to match on a rewritten or redirected URL.
 -   This relative path starts directly after the hostname.
 -   For the purpose of satisfying this condition, query strings in the URL are ignored.
 -   Certain characters require URL encoding. Use the percentage symbol to URL encode the following characters:
@@ -1254,7 +1262,7 @@ Identifies requests by the relative path of the request URL submitted by the cli
 
         <Callout type="tip">
 
-          Curl does not encode non-US-ASCII characters. If you would like to test this match condition using curl, then you will need to create a mutually exclusive match section (i.e., IF / ELSE IF). Each conditional expression within that statement should contain this match condition with the Encoded option set to different values.
+          Curl does not encode non-US-ASCII characters. <!-- If you would like to test this match condition using curl, then you will need to create a mutually exclusive match section (i.e., IF / ELSE IF). Each conditional expression within that statement should contain this match condition with the Encoded option set to different values. -->
 
         </Callout>
 -   **Supported operators:** `=== | !== | == | != | =~ | !~ | in | not_in`
@@ -1282,7 +1290,7 @@ router.conditional({
 
 #### POP Code {/*pop-code*/} <edgejs>request</edgejs>
 
-Identifies requests by the POP that processed the request.
+Identifies requests by the point-of-presence (POP) that processed the request. Set this match condition to the three-letter code for the desired POP.
 
 <edgejs>
 **Key information:**
@@ -1315,7 +1323,10 @@ router.conditional({
 Identifies requests by the postal code from which the request was issued.
 
 **Key information:**
-
+-   Specify a postal code as an integer value.
+-   A comparison will only be performed against the first 3 characters for Canadian postal codes.
+-   A comparison will only be performed against the first 2 - 4 characters for United Kingdom postal codes.
+-   Certain requests may not return a valid postal code. A question mark (i.e., `?`) will match requests for which a valid postal code could not be determined.
 -   The method for specifying multiple values varies by operator:
 
     -   **equals | does not equal:** Delimit each one with a single space.
@@ -1323,7 +1334,9 @@ Identifies requests by the postal code from which the request was issued.
 
 <edgejs>
 **Key information:**
-
+-   Specify a postal code as an integer value.
+-   A comparison will only be performed against the first 3 characters for Canadian postal codes.
+-   A comparison will only be performed against the first 2 - 4 characters for United Kingdom postal codes.
 -   The method for specifying multiple values varies by operator:
 
     -   `=== | !==`**:** Delimit each one with a single space.
@@ -1383,7 +1396,7 @@ Identifies requests by the query string of the request URL submitted by the clie
 
 **Key information:**
 
--   Although you may configure {{ PRODUCT }} to rewrite or redirect a URL, this query string comparision will always be performed against the  request URL submitted by the client. Use the [Query String](#query-string) feature to match on a rewritten or redirected URL.
+-   Although you may configure {{ PRODUCT }} to rewrite or redirect a URL, this query string comparision will always be performed against the  request URL submitted by the client. Use the [Query String](#query-string) match condition to match on a rewritten or redirected URL.
 -   The value associated with this match condition will be compared against the entire request's query string.
 -   For the purposes of this option, a query string starts with the first character after the question mark (?) delimiter for the query string. Therefore, the text specified in the **Value** option should not include a leading question mark (?).
 -   Certain characters require URL encoding. Use the percentage symbol to URL encode the following characters:
@@ -1403,14 +1416,14 @@ Identifies requests by the query string of the request URL submitted by the clie
 
         <Callout type="tip">
 
-          Curl does not encode non-US-ASCII characters. If you would like to test this match condition using curl, then you will need to create a mutually exclusive match section (i.e., IF / ELSE IF). Each conditional expression within that statement should contain this match condition with the Encoded option set to different values.
+          Curl does not encode non-US-ASCII characters. <!--If you would like to test this match condition using curl, then you will need to create a mutually exclusive match section (i.e., IF / ELSE IF). Each conditional expression within that statement should contain this match condition with the Encoded option set to different values.-->
 
         </Callout>
 
 <edgejs>
 **Key information:**
 
--   Although you may configure {{ PRODUCT }} to rewrite or redirect a URL, this query string comparision will always be performed against the  request URL submitted by the client. Use the [Query String](#query-string) feature to match on a rewritten or redirected URL.
+-   Although you may configure {{ PRODUCT }} to rewrite or redirect a URL, this query string comparision will always be performed against the  request URL submitted by the client. Use the [Query String](#query-string) match condition to match on a rewritten or redirected URL.
 -   The value associated with this match condition will be compared against the entire request's query string.
 -   For the purposes of this match condition, a query string starts with the first character after the question mark (?) delimiter for the query string. Therefore, do not include a leading question mark (?) when defining this match condition.
 -   Certain characters require URL encoding. Use the percentage symbol to URL encode the following characters:
@@ -1430,7 +1443,7 @@ Identifies requests by the query string of the request URL submitted by the clie
 
         <Callout type="tip">
 
-          Curl does not encode non-US-ASCII characters. If you would like to test this match condition using curl, then you will need to create a mutually exclusive match section (i.e., IF / ELSE IF). Each conditional expression within that statement should contain this match condition with the Encoded option set to different values.
+          Curl does not encode non-US-ASCII characters. <!--If you would like to test this match condition using curl, then you will need to create a mutually exclusive match section (i.e., IF / ELSE IF). Each conditional expression within that statement should contain this match condition with the Encoded option set to different values.-->
 
         </Callout>
 -   **Supported operators:** `=== | !== | =~ | !~`
@@ -1468,7 +1481,7 @@ Identifies requests by the value assigned to a query string parameter in the req
     -   Replace spaces in the parameter name with %20.
     -   Only query parameters whose name is an exact match to the specified value may satisfy this condition.
 
--   Parameter value:
+-   **Parameter value:**
     -   Certain characters require URL encoding. Use the percentage symbol to URL encode the following characters:
 
         -   **SPACE:** %20
@@ -1541,7 +1554,7 @@ Identifies requests by the query string of the requested URL. This query string 
 
 **Key information:**
 
--   This query string comparison is performed after {{ PRODUCT }} rewrites or redirects the request. Rewrite or redirect a URL through the [URL Rewrite](/guides/performance/rules/features#url-rewrite) and [URL Redirect](/guides/performance/rules/features#url-redirect) features, respectively. Use the [Query](#query) to match on the original query string submitted by the client.
+-   This query string comparison is performed after {{ PRODUCT }} rewrites or redirects the request. Rewrite or redirect a URL through the [URL Rewrite](/guides/performance/rules/features#url-rewrite) and [URL Redirect](/guides/performance/rules/features#url-redirect) features, respectively. Use the [Query](#query) match condition to match on the original query string submitted by the client.
 -   The value associated with this match condition will be compared against the entire request's query string.
 -   For the purposes of this option, a query string starts with the first character after the question mark (?) delimiter for the query string. Therefore, the text specified in the **Value** option should not include a leading question mark (?).
 -   Certain characters require URL encoding. Use the percentage symbol to URL encode the following characters:
@@ -1568,7 +1581,7 @@ Identifies requests by the query string of the requested URL. This query string 
 <edgejs>
 **Key information:**
 
--   This query string comparison is performed after {{ PRODUCT }} rewrites or redirects the request. Rewrite or redirect a URL through the [URL Rewrite](/guides/performance/rules/features#url-rewrite) and [URL Redirect](/guides/performance/rules/features#url-redirect) features, respectively. Use the [Query](#query) to match on the original query string submitted by the client.
+-   This query string comparison is performed after {{ PRODUCT }} rewrites or redirects the request. Rewrite or redirect a URL through the [URL Rewrite](/guides/performance/rules/features#url-rewrite) and [URL Redirect](/guides/performance/rules/features#url-redirect) features, respectively. Use the [Query](#query) match condition to match on the original query string submitted by the client.
 -   The value associated with this match condition will be compared against the entire request's query string.
 -   For the purposes of this option, a query string starts with the first character after the question mark (?) delimiter for the query string. Therefore, do not include a leading question mark (?).
 -   Certain characters require URL encoding. Use the percentage symbol to URL encode the following characters:
@@ -1622,7 +1635,7 @@ Identifies requests by performing a comparison against a random integer.
 
   This condition is useful for applying an action to a random set of requests.
 
-  For example, if you set the maximum value to 2, then {{ PRODUCT }} will randomly apply 0, 1, and 2 to each request. If you configure this condition to match when the value equals `1`, then you can apply a set of actions to approximately a third of your requests. 
+  For example, if you set the maximum value to 2, then {{ PRODUCT }} will randomly apply 0, 1, and 2 to each request. If you configure this condition to match when the value is greater than `1`, then you can apply a set of actions to approximately a third of your requests. 
 
 </Callout>
 
@@ -1636,7 +1649,7 @@ Identifies requests by performing a comparison against a random integer.
 
   This condition is useful for applying an action to a random set of requests.
 
-  For example, if you set the maximum value to 2, then {{ PRODUCT }} will randomly apply 0, 1, and 2 to each request. If you configure this condition to match when the value equals `1`, then you can apply a set of actions to approximately a third of your requests. 
+  For example, if you set the maximum value to 2, then {{ PRODUCT }} will randomly apply 0, 1, and 2 to each request. If you configure this condition to match when the value is greater than `1`, then you can apply a set of actions to approximately a third of your requests. 
 
 </Callout>
 
@@ -1730,7 +1743,7 @@ Identifies requests by the code for the region (e.g., state or province) from wh
 
     A request that originates from the Devon (aka Devonshire) county of England, which is part of the United Kingdom (`UK`), has the following subdivisions: `GB` and `DEV`. Requests from this county will be matched against `DEV`.
 
--   Region codes are only unique within a country. In order to prevent false positives, we strongly recommend that you also add the Country match condition to your rule.
+-   Region codes are only unique within a country. In order to prevent false positives, we strongly recommend that you also add the [Country match condition](#country) to your rule.
 
     **Example:**
 

@@ -17,15 +17,15 @@ Open Edge is powered by Edgio Edge Cache, a "plug and play" service that lets yo
 
 ## Open Edge Benefits
 - Significantly Reduce Backhaul Cost:
-<br> Reduce operational costs associated with retrieving content from the origin by caching content within your network.<br /> 
+<br />Reduce operational costs associated with retrieving content from the origin by caching content within your network. 
 - Improve Quality of Experience (QoE):
-<br> Improve overall QoE for your users with higher average video bitrates, faster start times, and lower rebuffer rates.<br /> 
+<br />Improve overall QoE for your users with higher average video bitrates, faster start times, and lower rebuffer rates. 
 - Open the Door to Revenue Opportunities:
-<br> You can offer local content providers high-performance, in-region content delivery, and capture revenue from the traffic that content providers deliver through your network.<br /> 
+<br />You can offer local content providers high-performance, in-region content delivery, and capture revenue from the traffic that content providers deliver through your network.
 - Grow With Minimal Additional Overhead:
-<br> Focus on building your business while Edgio manages and operates your CDN infrastructure.<br /> 
+<br />Focus on building your business while Edgio manages and operates your CDN infrastructure.
 - Get Support When You Need It:
-<br> Get help quickly with our technology experts available through unrestricted 24/7/365 live support from Edgio’s Global Network Operations Center.<br /> 
+<br />Get help quickly with our technology experts available through unrestricted 24/7/365 live support from Edgio’s Global Network Operations Center.
 
 # For Service Providers
 The Edgio Control Portal allows you to view data about your traffic and create additional users for your organization.
@@ -48,10 +48,10 @@ To access the report after logging into Control:
 |  Specification    | Details  |
 | ----------- | ----------- |
 | Latency | Five minutes |
-| Granularity | Five minutes: <br>-Today<br />  <br>-Last 24 (days)<br />  <br> -Last 7 (days)<br />  |
-|   | Hourly: <br>-Last month<br />  <br>-Last 30 (days)<br />  |
-|  | Daily: <br>-Last 90 (days)<br />   <br>-Any custom date range > 90 days<br />  |
-| Dimensions | -Date/time <br>-In,  Out<br />  <br>-Edgio content provider aggregate<br />  <br>-POP Service provider account<br />  <br>-Service (HTTP, HTTPS)<br />  <br>-Service provider's content providers<br />  |
+| Granularity | Five minutes: <br />-Today <br />-Last 24 (days) <br />-Last 7 (days)  |
+|   | Hourly: <br />-Last month <br />-Last 30 (days)  |
+|  | Daily: <br />-Last 90 (days) <br />-Any custom date range > 90 days<br />  |
+| Dimensions | -Date/time <br />-In,  Out <br />-Edgio content provider aggregate <br />-POP Service provider account <br />-Service (HTTP, HTTPS) <br />-Service provider's content providers  |
 | Metrics | Average, Peak, and Low values for Bandwidth, Volume (data transferred), and Requests |
 | Delivery Mechanism | EdgeQuery |
 

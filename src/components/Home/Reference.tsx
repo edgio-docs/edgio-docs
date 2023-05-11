@@ -15,9 +15,19 @@ const StyledComp = styled(StyledFeatureSection)``;
 
 export default function Reference() {
   const {
-    version: {toVersionedPath},
+    version: {toVersionedPath, selectedVersion},
   } = useConditioning();
-  const parentPath = 'reference';
+
+  let parentPath;
+
+  if (selectedVersion === '4') {
+    parentPath = `v4-reference`;
+  } else if (selectedVersion === '7') {
+    parentPath = `v7-reference`;
+  } else {
+    parentPath = `reference`;
+  }
+
   const allRoutes = getChildrenRoutesFromSidebarMenuItems(parentPath);
   const allRoutesSorted = sortBy(allRoutes, 'title');
 

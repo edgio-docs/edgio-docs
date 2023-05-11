@@ -1,11 +1,11 @@
-export default {
+const nav = {
   title: 'guides',
   path: '/guides',
   routes: [
     {
       title: 'Getting Started',
       icon: 'spark',
-      path: '',
+      path: 'v4_getting_started',
       routes: [
         {
           title: 'Performance',
@@ -28,7 +28,7 @@ export default {
     {
       title: 'Performance',
       icon: 'server',
-      path: '',
+      path: 'v4_performance',
       routes: [
         {
           title: 'Routing with EdgeJS',
@@ -130,8 +130,8 @@ export default {
     },
     {
       title: 'Sites',
-      icon: 'book',
-      path: '',
+      icon: 'book-plain',
+      path: 'v4_sites',
       routes: [
         {
           title: 'Connectors',
@@ -333,8 +333,8 @@ export default {
     },
     {
       title: 'Security',
-      icon: 'security',
-      path: '',
+      icon: 'shield',
+      path: 'v4_security',
       routes: [
         {
           title: 'Security Suite',
@@ -349,26 +349,13 @@ export default {
     {
       title: 'Environments',
       icon: 'leaf',
-      path: '',
-      routes: [
-        {
-          title: 'Environments',
-          path: 'environments',
-        },
-      ],
+      path: 'environments',
     },
     {
       title: 'Integrations',
-      path: '',
+      icon: 'gear',
+      path: 'integrations',
       routes: [
-        {
-          title: 'Overview',
-          path: 'integrations',
-        },
-        {
-          title: '',
-          path: '',
-        },
         {
           title: 'BigCommerce',
           path: 'bigcommerce',
@@ -390,7 +377,7 @@ export default {
     {
       title: 'Accounts & Teams',
       icon: 'user',
-      path: '',
+      path: 'v4_accounts_teams',
       routes: [
         {
           title: 'Alerts',
@@ -408,8 +395,8 @@ export default {
     },
     {
       title: 'Developer Tools',
-      icon: 'code',
-      path: '',
+      icon: 'code-plain',
+      path: 'v4_developer_tools',
       routes: [
         {
           title: 'CLI',
@@ -435,8 +422,8 @@ export default {
     },
     {
       title: 'APIs',
-      icon: 'folder',
-      path: '',
+      icon: 'code-plain',
+      path: 'v4_apis',
       routes: [
         {
           title: 'REST API',
@@ -444,12 +431,12 @@ export default {
         },
         {
           title: `@layer0/core Package`,
-          path: '/docs/api/core/',
+          path: '/docs/v4.x/api/core/',
           external: true,
         },
         {
           title: `@layer0/prefetch Package`,
-          path: '/docs/api/prefetch/',
+          path: '/docs/v4.x/api/prefetch/',
           external: true,
         },
         {
@@ -466,8 +453,8 @@ export default {
     },
     {
       title: 'Reference',
-      icon: 'stacks',
-      path: '',
+      icon: 'stacks-plain',
+      path: 'v4_reference',
       routes: [
         {
           title: 'Limits & Caveats',
@@ -485,3 +472,4 @@ export default {
     },
   ],
 };
+export default nav;

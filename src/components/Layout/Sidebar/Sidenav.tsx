@@ -38,13 +38,14 @@ function Accordion({
   depth: number;
   currentRoutePath: string;
 }) {
+  const {
+    version: {toVersionedPath, selectedVersion},
+  } = useConditioning();
+
   const {getCollapseProps, getToggleProps} = useCollapse({
-    isExpanded: isActive,
+    isExpanded: selectedVersion === '4' || isActive,
   });
 
-  const {
-    version: {toVersionedPath},
-  } = useConditioning();
   const isActiveLink = route.path.length > 0;
   const childElement = (
     <a
@@ -87,7 +88,10 @@ function Accordion({
   );
 
   return (
-    <li className="sidenav-item" data-comp="accordion" data-expanded={isActive}>
+    <li
+      className="sidenav-item"
+      data-comp="accordion"
+      data-expanded={selectedVersion === '4' || isActive}>
       <div className="sidenav-menu__container">
         {/* Toggle */}
         {route.external ? (

@@ -19,6 +19,7 @@ const PORTAL = `${COMPANY_NAME} Developer Console`;
 
 const CLI_NAME = 'edg';
 const FULL_CLI_NAME = 'edgio';
+const CLI_CMD = (cmd) => `${FULL_CLI_NAME} ${cmd}`;
 const PACKAGE_NAME = '@edgio';
 const PACKAGE_VERSION = 'latest';
 const INIT_ARG_EDGIO_VERSION = `--edgioVersion ${PACKAGE_VERSION}`;
@@ -108,13 +109,6 @@ yarn global add ${PACKAGE_NAME}/cli
 \`\`\`
 
 </SnippetGroup>
-`;
-
-const ROUTEHELPER = `<Callout type="important">
-
-  If you are an existing customer, we know that you may be excited to try out ${PRODUCT} ${PRODUCT_APPLICATIONS} v7. However, this major version upgrade may require [significant changes to your CDN-as-code configuration](/guides/v7/intro#cdn-as-code) as certain core legacy components have limited support. In the near future, we plan on introducing a migration guide to ease this transition. In the meantime, if you have questions, contact your account manager or our [sales department](https://edg.io/contact-us/) at 1 (866) 200 - 5463.
-
-</Callout>
 `;
 
 const SECURITY_NAV = `1.  From the ${PORTAL_LINK}, select the desired team space. 
@@ -433,6 +427,7 @@ const config = {
   PRODUCT_LEGACY_LOWER,
   APP_DOMAIN,
   APP_URL,
+  CLI_CMD,
   CLI_NAME,
   CONFIG_FILE,
   ROUTES_FILE,
@@ -464,7 +459,6 @@ const config = {
   NODE_VERSION,
   PACKAGE_NAME,
   PARTNERS_CONTACT,
-  ROUTEHELPER,
   RTLD_PROFILE_SETUP_1,
   RTLD_PROFILE_SETUP_2,
   SECURITY_NAV,

@@ -7,7 +7,7 @@ import {encode} from 'html-entities';
 import {logDev} from './logging';
 import {StringMap} from './Types';
 
-const variableRe = /{{\s*(\w+)\s*}}/gi;
+const variableRe = /{{\s*(\w+)(\(([^)]*)\))?\s*}}/gi;
 const fileRe = /{{\s*(\w+(?:\.md))\s*}}/gi;
 const templatePath = join(process.cwd(), 'src', 'templates');
 let templatesRead: StringMap;
@@ -71,10 +71,14 @@ export default function templateReplace(file: string, data: StringMap) {
   // updated first
   template = replaceTemplateReferences(template);
 
-  return template.replaceAll(variableRe, (match, key) => {
-    const defValue = encode(match);
+  return template.replaceAll(variableRe, (match, key, ...args) => {
+    const defValue = encode(match, {mode: 'extensive'});
     const msg = `No constant found for template variable '${match}' in '${file}'. This will render as ${defValue}.\n`;
     let value = data[key];
+
+    if (typeof value === 'function') {
+      value = value(args[1]);
+    }
 
     if (!value) {
       console.warn(msg);

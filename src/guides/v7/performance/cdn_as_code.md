@@ -1,26 +1,36 @@
 ---
-title: Getting Started with CDN-As-Code
+title: Getting Started with CDN-As-Code ({{ EDGEJS_LABEL}})
 ---
 
-{{ROUTEHELPER}}
+{{ROUTEHELPER.md}}
 
-Our CDN-as-code approach to configuration allows you to configure CDN behavior using {{ EDGEJS_LABEL }} within a file ({{ ROUTES_FILE }}) stored alongside your code. This allows you to leverage the power of source control for collaboration and to link your CDN configurations with specific versions of your web application.
+{{ PRODUCT }} provides a CDN-as-code platform that allows you to configure CDN behavior using {{ EDGEJS_LABEL }} within a file ({{ ROUTES_FILE }}) stored alongside your code. This allows you to leverage the power of source control for collaboration and to link your CDN configurations with specific versions of your web application.
 
 ## Quick Start {/* quick-start */}
 
-Get started with CDN-as-code by performing these steps:
+Get started with CDN-as-code by either experimenting with:
 
-1.  Create a property. If you have already performed this step, proceed to the next step.
+- Our [sample websites](#examples):
+
+  <ExampleButtons
+    title="Simple"
+    siteUrl="https://edgio-community-examples-v7-simple-performance-live.edgio.link/"
+    repoUrl="https://github.com/edgio-docs/edgio-v7-simple-performance-example/"
+  />
+
+- Your web application or website.
+
+Perform the following steps to use {{ PRODUCT }} to improve the performance of your web application or website:
+
+### Create a Property {/* create-property */}
+
+Create a property. If you have already performed this step, proceed to the next step.
 
     [Learn more.](/guides/getting_started)
 
-    <Callout type="tip">
+### Initialize Your Property {/* initialize-property */}
 
-    Alternatively, you may experiment with our [sample websites](#examples) by deploying them to {{ PRODUCT }}.
-
-    </Callout>
-
-2.  Use the {{ PRODUCT }} CLI to initialize your property. If you have already performed this step, proceed to the next step.
+Use the {{ PRODUCT }} CLI to initialize your property. If you have already performed this step, proceed to the next step.
 
     <Callout type="info">
 
@@ -38,6 +48,229 @@ Get started with CDN-as-code by performing these steps:
     ```
 
     Replace `<PROPERTY>` with the name of the property defined in step 1. You should only use lower-case characters and replace spaces with dashes (e.g., `my-property`).
+
+    When you run the above command, the CLI will prompt you with the following questions to set up your property:
+
+    ```text
+      🚀 Let's get started with Edgio!
+
+      ✔ What is the hostname or IP address of the origin site that you will host on Edgio? … my-custom-property.com
+      ✔ Should we create a new directory for your Edgio app or use the current directory? › Create a new directory
+      ✔ Which package manager would you like to use? › npm
+      ✔ installing @edgio/core, @edgio/cli, @edgio/prefetch, @edgio/devtools... done.
+      > edgio.config.js not found, creating...
+      > routes.js not found, creating...
+      🔑 You are not logged in.
+
+      ? To log you in we're going to open your browser and visit Edgio Developer Console. › - Use arrow-keys. Return to submit.
+      ❯   Continue
+          Cancel
+    ```
+
+    First, you will be prompted to enter the hostname or IP address of the origin site that you will host on {{ PRODUCT }}. This is the site that {{ PRODUCT }} will fetch content from. For example, if you are using {{ PRODUCT }} to improve the performance of `my-custom-property.com`, then you would enter `my-custom-property.com` here.
+
+    Next, you will be prompted to choose whether to create a new directory for your {{ PRODUCT }} property or use the current directory. If you are currently in the root directory of your project code, then choose `Use the current directory`.
+
+    Finally, you will be prompted to choose which package manager to use, either `npm` or `yarn`.
+
+    If this is your first time using the {{ PRODUCT }} CLI to deploy, then you will be prompted to log in to the {{ PORTAL_LINK }}. To log in, select `Continue`. This will open a browser window where you may log in by creating a new account, or authenticating with a third-party provider such as Google or GitHub. Once you log in, you'll be prompted to authorize creating a local access token:
+
+    ![Local Access Token](/images/v7/performance/cli-auth-token.png)
+
+    After clicking **Create access token**, you may return back to the CLI and continue with the deployment.
+
+    <Callout type="important">
+      This step is necessary to deploy your property to {{ PRODUCT }}, but not necessary to run and build your property locally. It is recommended you authenticate during this step otherwise your first deployment will fail.
+    </Callout>
+
+    Once your deployment completes, you should see an output similar to the following:
+
+    ```text
+      🚀 Let's get started with Edgio!
+
+      ✔ What is the hostname or IP address of the origin site that you will host on Edgio? … my-custom-property.com
+      ✔ Should we create a new directory for your Edgio app or use the current directory? › Create a new directory
+      ✔ Which package manager would you like to use? › npm
+      ✔ installing @edgio/core, @edgio/cli, @edgio/prefetch, @edgio/devtools... done.
+      > edgio.config.js not found, creating...
+      > routes.js not found, creating...
+      🔑 You are not logged in.
+
+      ✔ To log you in we're going to open your browser and visit Edgio Developer Console. › Continue
+      Authenticating user!
+      Please visit this URL from any device and click on "Create access token" to authorize this device:
+      https://api.edgio.app/account/cli?name=CLI+Api+Key&sid=<ID>&action=deploy
+
+      Waiting for authentication...
+      🔑 You are now logged in as "xxx@yyy.zzz"
+
+      📋 Deploying to:
+      > Team: Private space
+      > Site: my-custom-property.com
+      > Environment: default
+      > Edgio version: 7.0.12
+      > Deployment #1
+
+      🛠️  Building your app for deployment on Edgio
+      > Bundling router... done.
+      > Bundling edge functions... done.
+      > Writing static asset aliases... done.
+      done 277ms
+
+      📦 Packaging...
+      > Zipping project folder
+      > Size: 674.22 KB
+      done 177ms
+
+      📡️ Uploading...
+      done 1s
+
+      ⌛ Deploying...
+      done 56s
+
+      ***** Deployment Complete *****************************************************
+      *                                                                             *
+      *  🖥  Edgio Developer Console:                                                *
+      *  https://edgio.app/<YOUR-TEAM>/my-custom-property.com/env/default/builds/1  *
+      *                                                                             *
+      *  🔗 Permalink:                                                              *
+      *  https://<YOUR-TEAM>-my-custom-property-com-1.free.edgio-perma.link         *
+      *                                                                             *
+      *  🌎 Edge:                                                                   *
+      *  https://<YOUR-TEAM>-my-custom-property-com-default.edgio.link              *
+      *                                                                             *
+      *******************************************************************************
+
+      To change directories to your new Edgio app:
+
+          cd my-custom-property.com
+
+      To run your app locally:
+
+          edg dev
+
+      To redeploy your app:
+
+          edg deploy
+    ```
+
+### {{ PRODUCT }} Files {/* product-files */}
+
+During the initialization process, the {{ PRODUCT }} CLI creates the following files:
+
+- `{{ CONFIG_FILE }}`: This file contains the configuration for your {{ PRODUCT }} property. You can use this file to configure your property's name, environments, origins, and other settings. [Learn more](/guides/performance/cdn_as_code/edgio_config.md).
+- {{ ROUTES_FILE }}: This file contains the router rules for your {{ PRODUCT }} property. You can use this file to define how {{ PRODUCT }} will handle requests to your property.
+
+## Config File {/* config-file */}
+
+The `{{ CONFIG_FILE }}` file contains some configurations the router may reference for handling requests along with other components such as [connectors](/guides/sites_frameworks/connectors.md).
+
+The default `{{ CONFIG_FILE }}` file contains the following configuration based on the input from out initialization process:
+
+```js
+// This file was automatically added by edgio init.
+// You should commit this file to source control.
+// Learn more about this file at https://docs.edg.io/guides/edgio_config
+module.exports = {
+  // The name of the site in Edgio to which this app should be deployed.
+  name: 'my-custom-property.com',
+
+  // The name of the team in Edgio to which this app should be deployed.
+  // team: 'my-team-name',
+
+  // Overrides the default path to the routes file. The path should be relative to the root of your app.
+  // routes: 'routes.js',
+
+  origins: [
+    {
+      // The name of the backend origin
+      name: 'origin',
+
+      // Uncomment the following to override the host header sent from the browser when connecting to the origin
+      // override_host_header: 'example.com',
+
+      // The list of origin hosts to which to connect
+      hosts: [
+        {
+          // The domain name or IP address of the origin serve r
+          location: 'my-custom-property.com',
+        },
+      ],
+
+      // Uncomment the following to configure a shield
+      // shields: { us_east: 'DCD' },
+    },
+  ],
+
+  // Options for hosting serverless functions on Edgio
+  // serverless: {
+  //   // Set to true to include all packages listed in the dependencies property of package.json when deploying to Edgio.
+  //   // This option generally isn't needed as Edgio automatically includes all modules imported by your code in the bundle that
+  //   // is uploaded during deployment
+  //   includeNodeModules: true,
+  //
+  //   // Include additional paths that are dynamically loaded by your app at runtime here when building the serverless bundle.
+  //   include: ['views/**/*'],
+  // },
+
+  // The maximum number of URLs that will be concurrently prerendered during deployment when static prerendering is enabled.
+  // Defaults to 200, which is the maximum allowed value.
+  // prerenderConcurrency: 200,
+
+  // A list of glob patterns identifying which source files should be uploaded when running edgio deploy --includeSources.
+  // This option is primarily used to share source code with Edgio support personnel for the purpose of debugging. If omitted,
+  // edgio deploy --includeSources will result in all files which are not gitignored being uploaded to Edgio.
+  //
+  // sources : [
+  //   '**/*', // include all files
+  //   '!(**/secrets/**/*)', // except everything in the secrets directory
+  // ],
+};
+```
+
+The relevant configuration options generated include the `name` and `origins` properties that will be used later. 
+- The `name` property is used to identify your {{ PRODUCT }} property in the {{ PORTAL_LINK }}
+- The `origins` property is used to configure the origins to which the router will connect when handling requests. 
+
+More information about the `{{ CONFIG_FILE }}` file can be found in the [`{{ CONFIG_FILE }}` reference](/guides/performance/cdn_as_code/edgio_config.md).
+
+## Routes File {/* routes-file */}
+
+The `{{ PACKAGE_NAME }}/core` package provides a JavaScript API for controlling routing and caching from your code base rather than a CDN web portal. Using this _{{ EDGEJS_LABEL }}_ approach allows this vital routing logic to be properly tested, reviewed, and version controlled, just like the rest of your application code.
+
+Using the router, you can:
+
+- Proxy requests to upstream sites
+- Send redirects from the network edge
+- Render responses on the server using Next.js and Nuxt.js, or any other framework that supports server side rendering.
+- Alter request and response headers
+- Send synthetic responses
+
+As mentioned above, the `{{ ROUTES_FILE }}` file is created during the initialization process.
+
+{{ ROUTESJS_CALLOUT.md }}
+
+The default `{{ ROUTES_FILE }}` file contains the following configuration:
+
+```js
+// This file was added by edgio init.
+// You should commit this file to source control.
+import {Router, edgioRoutes} from '@edgio/core';
+
+export default new Router()
+  // Here is an example where we cache api/* at the edge but prevent caching in the browser
+  // .match('/api/:path*', {
+  //   caching: {
+  //     max_age: '1d',
+  //     stale_while_revalidate: '1h',
+  //     bypass_client_cache: true,
+  //     service_worker_max_age: '1d',
+  //   },
+  // })
+
+  // plugin enabling basic Edgio functionality
+  .use(edgioRoutes);
+```
 
 3.  [Define routes](#routes) that determine how {{ PRODUCT }} will handle that traffic.
 
@@ -439,7 +672,7 @@ Conditionals define the expectations that must be met, using comparison operator
 | `=~`     | Regular expression match.         |
 | `!~`     | Negated regular expression match. |
 
-### Example {/*example*/}
+### Example {/* example */}
 
 This example shows multiple conditionals that use various comparison operators and rules variables:
 

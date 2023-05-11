@@ -1,34 +1,165 @@
 ---
-title: CDN-as-Code ({{ EDGEJS_LABEL }})
+title: Getting Started with CDN-As-Code ({{ EDGEJS_LABEL}})
 ---
 
-<Condition version="7">{{ROUTEHELPER}}</Condition>
+{{ROUTEHELPER.md}}
 
-The `{{ PACKAGE_NAME }}/core` package provides a JavaScript API for controlling routing and caching from your code base rather than a CDN web portal. Using this _{{ EDGEJS_LABEL }}_ approach allows this vital routing logic to be properly tested, reviewed, and version controlled, just like the rest of your application code.
+{{ PRODUCT }} provides a CDN-as-code platform that allows you to configure CDN behavior using {{ EDGEJS_LABEL }} within a file ({{ ROUTES_FILE }}) stored alongside your code. This allows you to leverage the power of source control for collaboration and to link your CDN configurations with specific versions of your web application.
 
-Using the Router, you can:
+## Quick Start {/* quick-start */}
 
-- Proxy requests to upstream sites
-- Send redirects from the network edge
-- Render responses on the server using Next.js and Nuxt.js <!--, Angular, or any other framework that supports server side rendering. -->
-- Alter request and response headers
-- Send synthetic responses
+Get started with CDN-as-code by either experimenting with:
+-   Our [sample websites](#examples):
 
-## Prerequisites {/* prerequisites */}
+    <ExampleButtons
+      title="Simple"
+      siteUrl="https://edgio-community-examples-v7-simple-performance-live.edgio.link/"
+      repoUrl="https://github.com/edgio-docs/edgio-v7-simple-performance-example/"
+    />
+-   Your web application or website.
 
-Before proceeding, you will need an {{ PRODUCT }} property. Create one now if you do not already have one.
+Perform the following steps to use {{ PRODUCT }} to improve the performance of your web application or website:
 
-[Learn how to create a property.](/guides/getting_started)
+1.  Create a property. If you have already performed this step, proceed to the next step.
 
-## Configuration {/* configuration */}
+    [Learn more.](/guides/getting_started)
 
-Define routes within the {{ ROUTES_FILE }} file. This file should export an instance of `{{ PACKAGE_NAME }}/core/router/Router`:
+2.  Use the {{ PRODUCT }} CLI to initialize your property. If you have already performed this step, proceed to the next step.
 
-```js filename="./routes.js"
-import {Router} from '{{ PACKAGE_NAME }}/core';
+    <Callout type="info">
 
-export default new Router();
-```
+    This step requires [Node.js v{{ NODE_VERSION }}](/guides/install_nodejs).
+
+    </Callout>
+
+    Install the {{ PRODUCT }} CLI, initialize your property, and then deploy it by running the following command from the root directory of your web application or website:
+
+    ```bash
+    npx {{ PACKAGE_NAME }}/cli@{{ PACKAGE_VERSION }} init \
+      {{ INIT_ARG_EDGIO_VERSION }} \
+      --name <PROPERTY> \
+      --deploy
+    ```
+
+    Replace `<PROPERTY>` with the name of the property defined in step 1. You should only use lower-case characters and replace spaces with dashes (e.g., `my-property`).
+
+    When you run the above command, the CLI will prompt you with the following questions to set up your property:
+
+    ```bash
+      🚀 Let's get started with Edgio!
+      
+      ✔ What is the hostname or IP address of the origin site that you will host on Edgio? … my-custom-property.com
+      ✔ Should we create a new directory for your Edgio app or use the current directory? › Create a new directory
+      ✔ Which package manager would you like to use? › npm
+      ✔ installing @edgio/core, @edgio/cli, @edgio/prefetch, @edgio/devtools... done.
+      > edgio.config.js not found, creating...
+      > routes.js not found, creating...
+      🔑 You are not logged in.
+      
+      ? To log you in we're going to open your browser and visit Edgio Developer Console. › - Use arrow-keys. Return to submit.
+      ❯   Continue
+          Cancel
+    ```
+    
+    First, you will be prompted to enter the hostname or IP address of the origin site that you will host on {{ PRODUCT }}. This is the site that {{ PRODUCT }} will fetch content from. For example, if you are using {{ PRODUCT }} to improve the performance of `my-custom-property.com`, then you would enter `my-custom-property.com` here.
+
+    Next, you will be prompted to choose whether to create a new directory for your {{ PRODUCT }} property or use the current directory. If you choose to create a new directory, then the CLI will create a new directory with the same name as your property. For example, if you enter `my-custom-property.com` as the name of your property, then the CLI will create a new directory named `my-custom-property.com` and initialize your property within that directory. If you choose to use the current directory, then the CLI will initialize your property within the current directory.
+
+    Finally, you will be prompted to choose which package manager to use. If you choose `npm`, then the CLI will use `npm` to install the {{ PRODUCT }} packages required to initialize your property. If you choose `yarn`, then the CLI will use `yarn` to install the {{ PRODUCT }} packages required to initialize your property.
+
+    If this is your first time using the {{ PRODUCT }} CLI to deploy, then you will be prompted to log in to the {{ PORTAL_URL }}. To log in, select `Continue`. This will open a browser window and take you to the {{ PORTAL_URL }}. Log in to the {{ PORTAL_URL }} by creating a new account, or authenticating with a third-party provider such as Google or GitHub. Once you login, you'll be prompted to authorize creating a local access token:
+
+    ![Local Access Token](/images/cli/cli_access_token.png)
+
+    After clicking **Create access token**, you may return back to the CLI and continue with the deployment.
+
+    <Callout type="">
+      This step is necessary to deploy your property to {{ PRODUCT }}, but not necessary to run and build your property locally. It is recommended you authenticate during this step otherwise your first deployment will fail.
+    </Callout>
+
+    Once your deployment completes, you should see an output similar to the following:
+
+    ```bash
+      🚀 Let's get started with Edgio!
+      
+      ✔ What is the hostname or IP address of the origin site that you will host on Edgio? … my-custom-property.com
+      ✔ Should we create a new directory for your Edgio app or use the current directory? › Create a new directory
+      ✔ Which package manager would you like to use? › npm
+      ✔ installing @edgio/core, @edgio/cli, @edgio/prefetch, @edgio/devtools... done.
+      > edgio.config.js not found, creating...
+      > routes.js not found, creating...
+      🔑 You are not logged in.
+      
+      ✔ To log you in we're going to open your browser and visit Edgio Developer Console. › Continue
+      Authenticating user!
+      Please visit this URL from any device and click on "Create access token" to authorize this device:
+      https://api.edgio.app/account/cli?name=CLI+Api+Key&sid=<ID>&action=deploy
+      
+      Waiting for authentication...
+      🔑 You are now logged in as "xxx@yyy.zzz"
+      
+      📋 Deploying to:
+      > Team: Private space
+      > Site: my-custom-property.com
+      > Environment: default
+      > Edgio version: 7.0.12
+      > Deployment #1
+      
+      🛠️  Building your app for deployment on Edgio
+      > Bundling router... done.
+      > Bundling edge functions... done.
+      > Writing static asset aliases... done.
+      done 277ms
+      
+      📦 Packaging...
+      > Zipping project folder
+      > Size: 674.22 KB
+      done 177ms
+      
+      📡️ Uploading...
+      done 1s
+      
+      ⌛ Deploying...
+      done 56s
+      
+      ***** Deployment Complete *****************************************************
+      *                                                                             *
+      *  🖥  Edgio Developer Console:                                                *
+      *  https://edgio.app/<YOUR-TEAM>/my-custom-property.com/env/default/builds/1  *
+      *                                                                             *
+      *  🔗 Permalink:                                                              *
+      *  https://<YOUR-TEAM>-my-custom-property-com-1.free.edgio-perma.link         *
+      *                                                                             *
+      *  🌎 Edge:                                                                   *
+      *  https://<YOUR-TEAM>-my-custom-property-com-default.edgio.link              *
+      *                                                                             *
+      *******************************************************************************
+      
+      To change directories to your new Edgio app:
+      
+          cd my-custom-property.com
+      
+      To run your app locally:
+      
+          edg dev
+      
+      To redeploy your app:
+      
+          edg deploy
+    ```
+
+3.  [Define routes](#routes) that determine how {{ PRODUCT }} will handle that traffic.
+
+4.  [Test your changes locally.](#deploy-locally)
+
+5.  [Deploy your property](#deploy-to) to the {{ PRODUCT }} network.
+
+## Routes File {/* routes-file */}
+
+The {{ ROUTES_FILE }} file defines a set of routes. A route:
+
+- Identifies a set of requests by HTTP method, URL path, query string parameters, cookies, and request headers.
+- Determines how our CDN will handle the above requests. For example, you may configure those requests to be cached, prefetched, passed through without modification, or served as static content.
 
 <Callout type = "info">
 
@@ -36,592 +167,557 @@ By default, our CLI automatically creates `routes.js` and `{{ CONFIG_FILE }}` up
 
 </Callout>
 
-## Declare Routes {/* declare-routes */}
+### Default Route Configuration {/* default-route-configuration */}
 
-Declare routes using the method corresponding to the HTTP method you want to match. All HTTP methods are available:
-
-- get
-- put
-- post
-- patch
-- delete
-- head
-
-To match all methods, use `match`:
+By default, your {{ ROUTES_FILE }} contains the following configuration:
 
 ```js filename="./routes.js"
-router.match('/:path*', {});
-```
+// This file was added by edgio init.
+// You should commit this file to source control.
+import {Router, edgioRoutes} from '{{ PACKAGE_NAME }}/core';
 
-## Route Pattern Syntax {/* route-pattern-syntax */}
-
-The syntax for route paths is provided by [path-to-regexp](https://github.com/pillarjs/path-to-regexp#path-to-regexp), which is the same library used by [Express](https://expressjs.com/).
-
-### Named Parameters {/* named-parameters */}
-
-Named parameters are defined by prefixing a colon to the parameter name (`:foo`).
-
-```js
-router.get('/:foo/:bar', {
-  /* ... */
-});
-```
-
-**Please note:** Parameter names must use "word characters" (`[A-Za-z0-9_]`).
-
-#### Custom Matching Parameters {/* custom-matching-parameters */}
-
-Parameters can have a custom regexp, which overrides the default match (`[^/]+`). For example, you can match digits or names in a path:
-
-```js
-router.get('/icon-:foo(\\d+).png', {
-  /* ... */
-});
-```
-
-**Tip:** Backslashes need to be escaped with another backslash in JavaScript strings.
-
-#### Custom Prefix and Suffix {/* custom-prefix-and-suffix */}
-
-Parameters can be wrapped in `{}` to create custom prefixes or suffixes for your segment:
-
-```js
-router.get('/:attr1?{-:attr2}?{-:attr3}?', {
-  /* ... */
-});
-```
-
-### Unnamed Parameters {/* unnamed-parameters */}
-
-It is possible to write an unnamed parameter that only consists of a regexp. It works the same the named parameter, except it will be numerically indexed:
-
-```js
-router.get('/:foo/(.*)', {
-  /* ... */
-});
-```
-
-### Modifiers {/* modifiers */}
-
-Modifiers must be placed after the parameter (e.g. `/:foo?`, `/(test)?`, `/:foo(test)?`, or `{-:foo(test)}?`).
-
-#### Optional {/* optional */}
-
-Parameters can be suffixed with a question mark (`?`) to make the parameter optional.
-
-```js
-router.get('/:foo/:bar?', {
-  /* ... */
-});
-```
-
-**Tip:** The prefix is also optional, escape the prefix `\/` to make it required.
-
-#### Zero or More {/* zero-or-more */}
-
-Parameters can be suffixed with an asterisk (`*`) to denote zero or more parameter matches.
-
-```js
-router.get('/:foo*', {
-  /* ... */
-});
-```
-
-The captured parameter value will be provided as an array.
-
-#### One or More {/* one-or-more */}
-
-Parameters can be suffixed with a plus sign (`+`) to denote one or more parameter matches.
-
-```js
-router.get('/:foo+', {
-  /*... */
-});
-```
-
-The captured parameter value will be provided as an array.
-
-## Matching Method, Query Parameters, Cookies, and Headers {/* matching-method-query-parameters-cookies-and-headers */}
-
-Match can either take a URL path, or an object which allows you to match based on method, query parameters, cookies, or request headers:
-
-```js
-router.match(
-  {
-    path: '/some-path', // value is route-pattern syntax
-    method: /GET|POST/i, // value is a regular expression
-    cookies: {currency: /^(usd)$/i}, // keys are cookie names, values are regular expressions
-    headers: {'x-moov-device': /^desktop$/i}, // keys are header names, values are regular expressions
-    query: {page: /^(1|2|3)$/}, // keys are query parameter names, values are regular expressions
-  },
-  {
-    /* ... */
-  }
-);
-```
-
-## Negated Route Matching {/* negated-route-matching */}
-
-Previously, we showed how to match requests based on path, method, query parameters, cookies, and request headers. You can also negate these matches by specifying a `not` key in the object passed to your route criteria. For example, the following route matches all requests whose relative path does not match `/some-path`:
-
-```js
-router.match(
-  {
-    path: {
-      not: '/some-path',
-    },
-  },
-  {
-    caching: {
-      max_age: '1d',
-    },
-  }
-);
-```
-
-Similarly, you can negate matches based on method, query parameters, cookies, and request headers:
-
-```js
-router.match(
-  {
-    path: '/some-path',
-    query: {
-      page: {
-        not: /^(1|2|3)$/,
-      },
-    },
-    method: {
-      not: /POST/i,
-    },
-    cookies: {
-      currency: {
-        not: /^(usd)$/i,
-      },
-    },
-    headers: {
-      'x-device': {
-        not: /^desktop$/i,
-      },
-    },
-  },
-  {
-    caching: {
-      max_age: '1d',
-    },
-  }
-);
-```
-
-This example matches all requests to `/some-path` except for those with query parameter `page=1|2|3`
-
-## Exact Path, Inclusive, and Regular Expression Matching {/* exact-inclusive-and-regular-expression-path-matching */}
-
-As described in [Route Pattern Syntax](#route-pattern-syntax), this type of route matching is based on [path-to-regexp](https://github.com/pillarjs/path-to-regexp#path-to-regexp). While this is a rather universal approach to matching requests, {{ PRODUCT }} provides additional options for matching requests.
-
-### Exact Path Matching {/* exact-matching */}
-
-Exact path matching, also known as strict matching, gives you precise control over how requests are matched. Traditionally, you may match `/some-path` with the following route:
-
-```js
-router.match('/some-path', {
-  /* ... */
-});
-```
-
-This will match `/some-path`, `/Some-Path`, and other variations in between that are case-insensitive. However, using `exact` will use strict comparison in matching the request path. The following example shows how to import the `exact` function and use it to match requests to `/some-path`:
-
-```js
-import {Router, exact} from '{{ PACKAGE_NAME }}/core';
-
-const router = new Router();
-
-router.match(exact('/some-path'), {
-  /* ... */
-});
-
-export default router;
-```
-
-This matches the path literally, so `/some-path` will match, but `/Some-Path` will not.
-
-### Inclusive Matching {/* inclusive-matching */}
-
-Inclusive matching uses the [`InOperatorValues`](/docs/api/core/types/router_RouteCriteria.InOperatorValues.html) type for matching a generic array of values. To use this, you must specify the argument as a [`RouteCriteria`](/docs/api/core/interfaces/router_RouteCriteria.default.html) type for the `path` you would like to match against. This type of matching is similar to `exact` matching in that it uses strict comparison.
-
-For example, the following route matches requests to `/some-path` and `/another-path`, but not `/Some-Path` or `/Another-Path`:
-
-```js
-router.match(
-  {
-    path: ['/some-path', '/another-path'],
-  },
-  {
-    /* ... */
-  }
-);
-```
-
-### Regular Expression Matching {/* regular-expression-matching */}
-
-For complex routes that cannot be easily matched using `path-to-regexp`, you can use regular expressions to match requests. For example, the following route matches requests to `/some-path` and `/another-path`, but not `/Some-Path` or `/Another-Path`:
-
-```js
-router.match(
-  {
-    path: /^(\/some-path|\/another-path)$/i,
-  },
-  {
-    /* ... */
-  }
-);
-```
-
-You may also use [Negated Route Matching](#negated-route-matching) with regular expressions:
-
-```js
-router.match(
-  {
-    path: {
-      not: /^(\/some-path|\/another-path)$/i,
-    },
-  },
-  {
-    /* ... */
-  }
-);
-```
-
-Regular expression matching is also available for matching query parameters, cookies, and request headers, and more. Any property of [`RouteCriteria`](/docs/api/core/interfaces/router_RouteCriteria.default.html) that accepts [`CriteriaValue`](/docs/api/core/types/router_RouteCriteria.CriteriaValue.html) or [`OptionalCriteriaValue`](/docs/api/core/types/router_RouteCriteria.OptionalCriteriaValue.html) types can use a regular expression and negation.
-
-## Request Handling {/* request-handling */}
-
-The second argument to routes is a function that receives a `Features` type and uses it to send a response, such as:
-
-- Proxy a backend configured in `{{ CONFIG_FILE }}`
-- Serve a static file
-- Send a redirect
-<!-- - Send a synthetic response -->
-- Cache the response at edge and in the browser
-- Manipulate request and response headers
-
-<!-- For example, to send a synthetic response for requests to `/hello-world`:
-
-```js
-import { Router } from "{{ PACKAGE_NAME }}/core";
-
-new Router()
-  .get('/hello-world', {
-    'response': {
-      'set_response_body': 'Hello, world!',
-      'set_done': true
-    }
-  })
-``` -->
-
-For example, to cache a response for requests to `/hello-world`:
-
-```js
-router.get('/hello-world', {
-  caching: {
-    max_age: '1d',
-  },
-});
-```
-
-## Route Execution {/* route-execution */}
-
-When {{ PRODUCT_NAME }} receives a request, it executes **each route that matches the request** in the order in which they are declared until one sends a response.
-
-Multiple routes can therefore be executed for a given request. A common pattern is to add caching with one route and render the response with a later one using middleware. In the following example we cache then render a response with Next.js:
-
-```js
-import {Router} from '{{ PACKAGE_NAME }}/core';
-import {nextRoutes} from '{{ PACKAGE_NAME }}/next';
-
-// In this example a request to /products/1 will be cached by the first route, then served by the `nextRoutes` middleware
 export default new Router()
-  .get('/products/:id', {
-    caching: {max_age: {200: '1h'}, stale_while_revalidate: '1h'},
-  })
-  .use(nextRoutes);
+  // Here is an example where we cache api/* at the edge but prevent caching in the browser
+  // .match('/api/:path*', {
+  //   caching: {
+  //     max_age: '1d',
+  //     stale_while_revalidate: '1h',
+  //     bypass_client_cache: true,
+  //     service_worker_max_age: '1d',
+  //   },
+  // })
+
+  // plugin enabling basic Edgio functionality
+  .use(edgioRoutes);
 ```
 
-<!-- ### Stopping Route Execution {/*stopping-route-execution*/}
-
-As mentioned previously, routes are executed in the order in which they are declared. If you want to stop execution of matched routes, you can use the `response` feature with the `set_done` option. This will prevent any additional routes from being executed.
-
-```js
-import { Router } from "{{ PACKAGE_NAME }}/core";
-
-new Router()
-  // match only /hello-world and stop route execution by immediately sending a response
-  .get('/hello-world', {
-    'response': {
-      'set_response_body': 'Hello, world!',
-      'set_done': true
-    }
-  })
-
-  // match all request paths, including /hello-world
-  .get('/(.*)', {
-    "response": {
-      "set_response_body": "This will never be executed if /hello-world is matched",
-    }
-  })
-
-``` -->
-
-## Alter Requests and Responses {/* alter-requests-and-responses */}
-
-{{ PRODUCT_NAME }} offers APIs to manipulate request and response headers and cookies. The APIs are:
-
-| Operation     | Request               | Response sent to Browser                                          |
-| ------------- | --------------------- | ----------------------------------------------------------------- |
-| Add header    | `set_request_headers` | `add_response_headers`                                            |
-| Add cookie    | `*`                   | `*`                                                               |
-| Update header | `set_request_headers` | `set_response_headers`                                            |
-| Update cookie | `*`                   | `*`                                                               |
-| Remove header | `set_request_headers` | `remove_response_headers` <br /> `remove_origin_response_headers` |
-| Remove cookie | `*`                   | `*`                                                               |
-
-`*` Adding, updating, or removing request cookies can be achieved with `set_request_headers` applied to `cookie` header. Similarly, adding, updating, or removing response cookies can be achieved with `set_response_headers` applied to `set-cookie` header.
-
-## Request / Response Variables {/* embedded-variables */}
-
-You can inject values into the request or response via cache key rewrite, headers, cookies, URL redirect and rewrite as template literals using the `%{<FEATURE VALUE>}` format.
-
-| Feature Variable                  | Description                                                                                                          |
-| --------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
-| `%{arg_<QUERY STRING PARAMETER>}` | Returns the value corresponding to the query string parameter identified by the `<QUERY STRING PARAMETER>` term.     |
-| `%{cookie_<COOKIE>}`              | Returns the value corresponding to the cookie identified by the `<COOKIE>` term.                                     |
-| `%{host}`                         | Indicates the host defined in the request URL.                                                                       |
-| `%{http_<REQUEST HEADER>}`        | Returns the value corresponding to the request header identified by the `<REQUEST HEADER>` term.                     |
-| `%{normalized_path}`              | Indicates the normalized relative path for the request submitted to the CDN.                                         |
-| `%{normalized_query}`             | Indicates the normalized query string defined in the request URL.                                                    |
-| `%{normalized_uri}`               | Indicates the normalized relative path and query string for the request submitted to the CDN.                        |
-| `%{path}`                         | Indicates the relative path to the requested content. This relative path reflects URL rewrites due to `url_rewrite`. |
-| `%{query_string}`                 | Indicates the entire query string value defined in the request URL.                                                  |
-| `%{referring_domain}`             | Indicates the domain defined in the `Referer` request header.                                                        |
-| `%{request}`                      | Describes the request.                                                                                               |
-| `%{request_method}`               | Indicates the HTTP request method.                                                                                   |
-| `%{request_protocol}`             | Indicates the request protocol used by an edge server to proxy the request.                                          |
-| `%{request_uri}`                  | Indicates the relative path, including the query string, defined in the request URI.                                 |
-| `%{resp_<RESPONSE HEADER>}`       | Returns the value corresponding to the response header identified by the `<RESPONSE HEADER>` term.                   |
-| `%{status}`                       | Indicates the HTTP status code for the response.                                                                     |
-
-### Example {/* feature-variables-example */}
-
-This example shows how you would add an `original-request-path` response header for all requests whose value is the request path:
-
-```js
-router.match(
-  {},
-  {
-    headers: {
-      set_response_header: {
-        'original-request-path': '%{path}',
-      },
-    },
-  }
-);
-```
-
-For a comprehensive list of variables, see the [Feature Variables](/guides/performance/rules/feature_variables) guide.
-
-## Blocking Search Engine Crawlers {/* blocking-search-engine-crawlers */}
-
-If you need to block all search engine bot traffic to specific environments (such as your default or staging environment), the easiest way is to include the `x-robots-tag` header with the same directives you would otherwise set in a `meta` tag.
+The above configuration shows an example of how you can match all requests to the `/api/` URL path and cache them at the edge for 1 day.
 
 <!-- <Callout type="info">
 
-  The search engine traffic is automatically blocked on {{ PRODUCT }} edge links and permalinks as of {{ PRODUCT }} v6.
+  A backend identifies a domain or IP address to which {{ PRODUCT }} may proxy requests. In this case, the `origin` backend was defined when you initialized this property using the `edgio init` command.
+<br />
 
-  If you would like to enable indexing on those links, you need to pass `{ indexPermalink: true }` into the Router constructor in `routes.js` file:
-  ```js
-    new Router({ indexPermalink: true })
-  ```
-
-  Otherwise, {{ PRODUCT }} will match requests with the `host` header matching `/layer0.link|layer0-perma.link/` and set a response header of `x-robots-tag: noindex`.
+  Add, modify, and remove backends by editing the [{{ CONFIG_FILE }} file](/guides/performance/cdn_as_code/edgio_config).
 
 </Callout> -->
 
-Additionally, you can customize this to block traffic to development or staging websites based on the `host` header of the request:
+## Routes {/* routes */}
 
-```js
-router.get(
-  {
-    headers: {
-      // Regex to catch multiple hostnames
-      host: /dev.example.com|staging.example.com/,
+A route identifies a set of requests through any combination of URL path, HTTP method, cookies, request headers, and query string parameters. The following routes show various ways for identifying requests.
+
+- Match all requests:
+
+  ```js
+  router.match('/:path*', {
+    // route handler goes here
+  });
+  ```
+
+- Match all `GET` requests whose URL path starts with `/marketing/images/`:
+
+  ```js
+  router.get('/marketing/images/:path*', {
+    // route handler goes here
+  });
+  ```
+
+- Match all `GET` and `POST` requests whose URL path starts with `/marketing/images/` and contain the `sport` request header set to `basketball`:
+
+  ```js
+  router.match(
+    {
+      path: '/marketing/images/:path*',
+      method: /GET|POST/i, // regular expression
+      headers: {sport: /^basketball$/i}, // keys are header names; values are regular expressions
     },
-  },
-  {
+    {
+      // route features goes here
+    }
+  );
+  ```
+
+Once you have identified a set of requests, you need to define how {{ PRODUCT }} will handle those requests. The following routes show various ways in which requests can be processed.
+
+- Apply a caching policy to all requests and proxy cache misses to the `origin` backend:
+  ```js
+  router.match('/:path*', {
+    {
+      caching: {
+        max_age: "1h"
+      },
+      origin: {
+        set_origin: "origin"
+      }
+    }
+  })
+  ```
+- Set the `images` response header and proxy cache misses to the `origin` backend for all `GET` requests whose URL path starts with `/marketing/images/`:
+  ```js
+  router.get('/marketing/images/:path*', {
     headers: {
       set_response_headers: {
-        'x-robots-tag': 'noindex',
+        images: 'true',
       },
     },
+    origin: {
+      set_origin: 'origin',
+    },
+  });
+  ```
+
+[View additional examples.](/guides/performance/cdn_as_code/common_routing_patterns)
+
+### Defining Routes {/* defining-a-route */}
+
+Routes are defined by calling a function on the `Router` object based on the HTTP method you intend to match. For example, you can handle a `GET` request a specific path or pattern using the `Router.get(...)` function. The router contains methods for all the supported HTTP methods. The following methods are available:
+
+- `delete`
+- `get`
+- `head`
+- `match` (matches any HTTP method)
+- `options`
+- `patch`
+- `post`
+- `put`
+
+A full list of supported functions can be found in the [Router API documentation](/docs/api/core/classes/index.Router.html).
+
+### Route Method Signature {/* route-fumethodnction-signature */}
+
+Using `.match()` as an example, the method signature is as follows:
+
+```ts
+match(
+  criteria: RouteCriteria | string | string[] | RegExp,
+  features: FeaturesParam
+)
+```
+
+The first argument `criteria` defines how to match a request. It can be a string (or array of strings), a regular expression, or an object of type [`RouteCriteria`](/docs/api/core/interfaces/router_RouteCriteria.default.html). For example, to match requests to the `/api/*` URL path, you could define the criteria as follows:
+
+```js
+// match by named parameter
+router.match('/api/:path*', {
+  // route features goes here
+});
+
+// match by regular expression
+router.match(/^\/api\/(.*)$/, {
+  // route features goes here
+});
+
+// match by `path` property
+router.match(
+  {
+    path: '/api/:path*',
+  },
+  {
+    // route features goes here
   }
 );
 ```
 
-## Full Example {/* full-example */}
+All of the above examples are equivalent and show the various ways in which you can define the route criteria.
 
-This example shows typical usage of `{{ PACKAGE_NAME }}/core`, including serving a service worker, Next.js routes (vanity and conventional routes), and falling back to a legacy backend.
+The second argument `features`, also referred to as the route handler, defines how to handle a request such as how to cache the response, how to proxy the request to the origin, or how to modify the request and response headers. This is an object of type [`Features`](/docs/api/core/interfaces/types.Features.html) and the full list of supported features can be found in the [Features API reference](/guides/performance/rules/features).
 
-<RawEdgeJS>
+We will now define a route by uncommenting the `match()` method in your {{ ROUTES_FILE }} file. It should now look similar to the following configuration:
+
+```js filename="./routes.js"
+export default new Router()
+  // Here is an example where we cache api/* at the edge but prevent caching in the browser
+  .match('/api/:path*', {
+    caching: {
+      max_age: '1d',
+      stale_while_revalidate: '1h',
+      bypass_client_cache: true,
+      service_worker_max_age: '1d',
+    },
+  })
+
+  // plugin enabling basic Edgio functionality
+  .use(edgioRoutes);
 ```
-[
-  {
-    "if": [
-      {
-        "and": [
-          {
-            "==": [
-              {
-                "request": "path"
-              },
-              "/service-worker.js"
-            ]
-          },
-          {
-            "===": [
-              {
-                "request": "method"
-              },
-              "GET"
-            ]
-          }
-        ]
+
+<a id="caching-policy" />{' '}
+
+The above route matches all requests that start with `/api/` and instructs {{ PRODUCT }} to:
+
+- Cache those requests on our network for one day.
+- Allow us to serve stale content for one hour.
+- Instruct the browser to treat the response as immediately stale.
+- Allow prefetched requests to be served from cache for one day.
+- Proxy those requests to your `origin` backend when we cannot serve them from cache.
+
+We will now add a route that applies the same caching policy to all JavaScript (i.e., `.js` and `.mjs`) and CSS files.
+
+```js filename="./routes.js"
+// Cache stylesheets and scripts, but prevent browser caching
+router.match('/:path*/:file.:ext(js|mjs|css)', {
+  caching: {
+    max_age: '1d',
+    stale_while_revalidate: '1h',
+    service_worker_max_age: '1d',
+    bypass_client_cache: true,
+  },
+  headers: {
+    set_response_headers: {
+      'cache-control': 'public, max-age=86400',
+    },
+    remove_origin_response_headers: ['set-cookie'],
+  },
+  origin: {
+    set_origin: 'origin',
+  },
+});
+```
+
+The above route instructs {{ PRODUCT }} to perform the following actions for all requests whose file extension matches `js`, `mjs`, or `css`:
+
+- Set the `cache-control` response header to: `cache-control: public, max-age=86400`
+- Remove the `set-cookie` response header. {{ PRODUCT }} will not cache a response when the `set-cookie` response header is present.
+- Apply the [caching policy](#caching-policy).
+- Proxy these requests to your `origin` backend when we cannot serve them from cache.
+
+Your {{ ROUTES_FILE }} should now look similar to the following:
+
+```js filename="./routes.js"
+import {Router} from '@edgio/core/router';
+
+export default new Router()
+  .match('/api/:path*', {
+    caching: {
+      max_age: '1d',
+      stale_while_revalidate: '1h',
+      service_worker_max_age: '1d',
+      bypass_client_cache: true,
+    },
+    origin: {
+      set_origin: 'origin',
+    },
+  })
+
+  // Cache stylesheets and scripts, but prevent browser caching
+  .match('/:path*/:file.:ext(js|mjs|css)', {
+    caching: {
+      max_age: '1d',
+      stale_while_revalidate: '1h',
+      service_worker_max_age: '1d',
+      bypass_client_cache: true,
+    },
+    headers: {
+      set_response_headers: {
+        'cache-control': 'public, max-age=86400',
       },
-      {
-        "caching": {
-          "max_age": "30758400s",
-          "bypass_client_cache": true
-        },
-        "url": {
-          "url_rewrite": [
+      remove_origin_response_headers: ['set-cookie'],
+    },
+    origin: {
+      set_origin: 'origin',
+    },
+  })
+
+  // plugin enabling basic Edgio functionality
+  .use(edgioRoutes);
+```
+
+## Conditional Routes {/* conditional-routes */}
+
+Conditional routes allow you to apply [rules](/guides/performance/rules) to a request using advanced if/then logic by the means of logical and comparison operators.
+
+### Using the `.conditional()` method {/* using-the-conditional-method */}
+
+Using the previous example above for caching the `/api/*` path, we can rewrite the same route using the [`conditional()`](/docs/core/classes/index.Router.html#conditional) method. This method accepts a single argument of type `Matches`. You can see the full specification of the `Matches` type in the [API reference](/docs/core/interfaces/types.Matches.html).
+
+```js filename="./routes.js"
+import {Router} from '@edgio/core/router';
+
+export default new Router().conditional({
+  if: [
+    {
+      and: [
+        {
+          '===': [
             {
-              "source": "/service-worker.js",
-              "syntax": "path-to-regexp",
-              "destination": "/dist/service-worker.js"
-            }
-          ]
+              request: 'method',
+            },
+            'GET',
+          ],
         },
-        "headers": {
-          "set_request_headers": {
-            "x-edg-serverless-hint": ""
-          }
+        {
+          '==': [
+            {
+              request: 'path',
+            },
+            '/api/:path*',
+          ],
         },
-        "origin": {
-          "set_origin": "edgio_static"
-        }
-      }
-    ]
-  },
-  {
-    "if": [
-      {
-        "and": [
-          {
-            "==": [
-              {
-                "request": "path"
-              },
-              "/p/:productId"
-            ]
-          },
-          {
-            "===": [
-              {
-                "request": "method"
-              },
-              "GET"
-            ]
-          }
-        ]
+      ],
+    },
+    {
+      caching: {
+        max_age: '1d',
+        stale_while_revalidate: '1h',
+        service_worker_max_age: '1d',
+        bypass_client_cache: true,
       },
-      {
-        "caching": {
-          "max_age": "3600s",
-          "stale_while_revalidate": "3600s",
-          "service_worker_max_age": 3600,
-          "bypass_client_cache": true
-        },
-        "headers": {
-          "set_response_headers": {
-            "x-sw-cache-control": "max-age=3600"
-          }
-        },
-        "origin": {
-          "set_origin": "origin"
-        }
-      }
-    ]
-  },
-  {
-    "if": [
-      {
-        "==": [
-          {
-            "request": "path"
-          },
-          "/:path*"
-        ]
+      origin: {
+        set_origin: 'origin',
       },
-      {
-        "origin": {
-          "set_origin": "origin"
-        }
-      }
-    ]
-  }
-]
+    },
+  ],
+});
 ```
-</RawEdgeJS>
 
-<!-- ## Errors Handling {/*errors-handling*/}
+This is equivalent to the previous example. Broken down by line:
 
-You can use the router's `catch` method to return specific content when the request results in an error status (For example, a status code of 537). Using `catch`, you can also alter the `statusCode` and `response` on the edge before issuing a response to the user.
+- The `if` array contains two objects. The first object defines an array of conditions that must be met using the `and` logic operator. The second object defines the features to apply if all conditions are met.
+  - The `and` array requires all the following conditions to be satisfied:
+    - the HTTP request method strictly equals (`===`) `GET`
+    - the request path is a simple match (`==`) `/api/:path*`. (eg. `/api/foo` or `/api/foo/bar`)
+  - Assuming all conditions are met, the following features will be applied:
+    - the request will be cached at the edge for one day.
+    - the request will be forwarded to the origin when the cache is stale, and then cached for one day.
+
+### Types of Operators and Conditionals {/* types-of-operators-and-conditionals */}
+
+#### Operators {/* operators */}
+
+The [`Boolean`](/docs/core/interfaces/types.Boolean.html) type is used as a logical operator in the `if` array. You may specify an `and` or `or` operator. The `and` operator requires all conditions to be met. The `or` operator requires only one condition to be met.
+
+<Callout type="warning">
+
+Currently, only a single `and/or` operator is supported. The following would be an invalid use of multiple operators:
 
 ```js
-router.catch(RegExp | string | number, (routeHandler: Function))
-``` -->
-
-<!-- ### Examples {/*examples*/}
-
-For example, to issue a custom error page when the origin returns any 5xx status code:
-
-```js filename="routes.js"
-
-const { Router } = require('{{ PACKAGE_NAME }}/core/router')
-
-module.exports = new Router()
-  // Example route that returns with a 5xx error status code
-  .get('/failing-route', ({ proxy }) => {
-    proxy('broken-origin')
-  })
-  // So let's assume that the route above returns 5xx, so instead of rendering
-  // the broken-origin response we can alter that by specifing .catch
-  .catch(/5[0-9][0-9]/, ({ serveStatic }) => {
-    // The file below is present at the root of the directory
-    serveStatic('customized-error-page.html', { statusCode: 502 })
-  })
+{
+  if: [
+    {
+      and: [
+        {
+          // conition
+        },
+        {
+          // condition
+        },
+      ],
+      or: [
+        {
+          // condition
+        },
+      ],
+    },
+    {
+      // features
+    },
+  ],
+}
 ```
 
-The `.catch` method allows the edge router to render a response based on the result preceeding routes. So in the example above whenever we receive a 5xx, we respond with `customized-error-page.html` from the application's root directory, and change the status code to 502.
+</Callout>
 
-- Your catch callback is provided a [ResponseWriter](/docs/api/core/classes/_router_responsewriter_.responsewriter.html) instance. You can use any ResponseWriter method except `proxy` inside `.catch`.
-- We highly recommend keeping `catch` routes simple. Serve responses using `serveStatic` instead of `send` to minimize the size of the edge bundle. -->
+#### Conditionals {/* conditionals */}
 
-<!-- ## Environment Edge Redirects {/*environment-edge-redirects*/}
+Conditionals define the expectations that must be met, using comparison operators, for the features to be applied to the request. This example of a single conditional identifies the type of comparison to take against the [`RulesVariables`](/docs/core/interfaces/types.RulesVariables.html) and the expected value:
 
-In addition to sending redirects at the edge within the router configuration, this can also be configured at the environment level within the {{ PORTAL }}.
+```js
+{
+  '===': [ // comparison operator
+    {
+      request: 'method', // rules variable
+    },
+    'GET', // expected value
+  ],
+}
+```
 
-Under _Environments &#8594; &lt;Your Environment&gt;_, click _Rules_ then _Add Rule_ to draft a new rule configuration. Choose _URL Redirect_ from the dropdown menu:
-![redirects](/images/environments/redirects.png)
+#### Comparison Operators {/* comparison-operators */}
 
-Click _Add A Redirect_ to configure the path or host you wish to redirect to:
-![add redirect](/images/environments/add_redirects.png)
+| Operator | Description                       |
+| -------- | --------------------------------- |
+| `==`     | Simple match.                     |
+| `!=`     | Negated simple match.             |
+| `===`    | Strict match.                     |
+| `!==`    | Negated strict match.             |
+| `<`      | Less than.                        |
+| `<=`     | Less than or equal to.            |
+| `>`      | Greater than.                     |
+| `>=`     | Greater than or equal to.         |
+| `in`     | Value is in the array.            |
+| `not_in` | Value is not in the array.        |
+| `=~`     | Regular expression match.         |
+| `!~`     | Negated regular expression match. |
 
-**Note:** you will need to activate and redeploy your site for this change to take effect. -->
+### Example {/*example*/}
+
+This example shows multiple conditionals that use various comparison operators and rules variables:
+
+```js filename="./routes.js"
+import {Router} from '@edgio/core/router';
+
+export default new Router().conditional({
+  if: [
+    {
+      and: [
+        {
+          '=~': [
+            {
+              'request.header': 'x-test',
+            },
+            '^foo$',
+          ],
+        },
+        {
+          and: [
+            {
+              '!==': [
+                {
+                  request: 'method',
+                },
+                'DELETE',
+              ],
+            },
+            {
+              and: [
+                {
+                  '==': [
+                    {
+                      request: 'path',
+                    },
+                    '/api/v:version/:path*',
+                  ],
+                },
+                {
+                  and: [
+                    {
+                      not_in: [
+                        {
+                          request: 'path',
+                        },
+                        ['/api/v1', '/api/v2'],
+                      ],
+                    },
+                    {
+                      and: [
+                        {
+                          '!~': [
+                            {
+                              'request.cookie': 'user_level',
+                            },
+                            '^level_(1|2)$',
+                          ],
+                        },
+                        {
+                          and: [
+                            {
+                              '===': [
+                                {
+                                  device: 'is_robot',
+                                },
+                                true,
+                              ],
+                            },
+                            {
+                              '>=': [
+                                {
+                                  device: 'resolution_height',
+                                },
+                                800,
+                              ],
+                            },
+                          ],
+                        },
+                      ],
+                    },
+                  ],
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+    {
+      caching: {
+        bypass_client_cache: true,
+        service_worker_max_age: '1d',
+        max_age: {
+          200: '1d',
+        },
+        stale_while_revalidate: '1h',
+      },
+      origin: {
+        set_origin: 'origin',
+      },
+    },
+  ],
+});
+```
+
+## Testing Locally {/* deploy-locally */}
+
+You may run {{ PRODUCT }} in local development mode to preview your website on your local machine prior to deployment. Local development mode allows for rapid development by allowing you to quickly test changes prior to deployment.
+
+1.  From the command line or terminal, type `{{ FULL_CLI_NAME }} dev`.
+2.  Preview your website by loading `https://127.0.0.1:3000` from within your preferred web browser.
+
+## Deploying Your Property {/* deploy-to */}
+
+Evaluate site performance and QA functionality by deploying your property to {{ PRODUCT }}. Run the following command from your property's root directory:
+
+```bash
+{{ FULL_CLI_NAME }} deploy
+```
+
+Assess performance and caching behavior from the {{ PORTAL_LINK }}. Fine-tune your configuration by adding routes and then redeploying your property. Once you are ready to serve production traffic through {{ PRODUCT }}, update your site's DNS to point to our service.
+
+[Learn more.](/guides/production)
+
+## Examples {/* examples */}
+
+Use our sample website to gain hands-on experience on how to set up {{ PRODUCT }} {{ PRODUCT_EDGE }}. Specifically, you can browse our sample websites, view their source code, and even experiment on them by deploying them to {{ PRODUCT }}.
+
+**Simple Example**
+
+This example demonstrates a basic {{ PRODUCT }} configuration for `publicdomainreview.org`. It contains two routes that cache content according to their file extension.
+
+<ExampleButtons
+  title="Simple"
+  siteUrl="https://edgio-community-examples-v7-simple-performance-live.edgio.link/"
+  repoUrl="https://github.com/edgio-docs/edgio-v7-simple-performance-example/"
+/>
+
+<!-- TODO: update example to work on v7
+**Full-Featured Example**
+
+This example demonstrates a full-featured {{ PRODUCT }} configuration that showcases the following functionality:
+
+- [Proxying requests](/guides/performance/cdn_as_code/common_routing_patterns#proxying-an-origin) to multiple origins
+- Increasing the cache buffer during revalidation through [StaleWhileRevalidate](/guides/performance/caching#achieving-100-cache-hit-rates)
+- [Prerendering](/guides/performance/static_prerendering) pages and caching them to improve performance.
+- Instructing the browser to [prefetch](/guides/performance/prefetching) and [deep fetch](/guides/performance/prefetching#deep-fetching) cached content to improve performance.
+
+  <Callout type="info">
+
+  Prefetching only improves performance for cached content. {{ PRODUCT }} returns `412 Precondition Failed` when prefetching a cache miss. This status code means that the prefetching did not occur for that request.
+
+  </Callout>
+
+- [Transforming and optimizing images](/guides/performance/image_optimization)
+- Transforming the response through [Serverless Compute](/guides/performance/serverless_compute)
+- [Removing response headers](/guides/performance/cdn_as_code#alter-requests-and-responses)
+- [Normalizing the cache key](/guides/performance/caching#customizing-the-cache-key)
+- Generating performance insights through [DevTools](/guides/performance/observability/devtools)
+- Tracking [Core Web Vitals](/guides/performance/observability/core_web_vitals) through real user monitoring (RUM).
+
+<ExampleButtons
+  title="Full-Featured"
+  siteUrl="https://edgio-community-examples-full-featured-performance-live.layer0-limelight.link/"
+  repoUrl="https://github.com/edgio-docs/edgio-full-featured-performance-example/"
+  deployFromRepo
+/>
+-->
+
+## Issues? {/* issues */}
+
+If you have any issues during this process, check our [forums]({{ FORUM_URL }}) for assistance.

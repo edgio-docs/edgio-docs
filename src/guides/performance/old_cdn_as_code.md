@@ -2,7 +2,7 @@
 title: CDN-as-Code ({{ EDGEJS_LABEL }})
 ---
 
-<Condition version="7">{{ROUTEHELPER}}</Condition>
+<Condition version="7">{{ROUTEHELPER.md}}</Condition>
 
 The `{{ PACKAGE_NAME }}/core` package provides a JavaScript API for controlling routing and caching from your code base rather than a CDN web portal. Using this _{{ EDGEJS_LABEL }}_ approach allows this vital routing logic to be properly tested, reviewed, and version controlled, just like the rest of your application code.
 
@@ -30,11 +30,7 @@ import {Router} from '{{ PACKAGE_NAME }}/core';
 export default new Router();
 ```
 
-<Callout type = "info">
 
-By default, our CLI automatically creates `routes.js` and `{{ CONFIG_FILE }}` upon initializing a property (`{{ FULL_CLI_NAME }} init`). If your web application supports TypeScript and it uses a framework for which we have a TypeScript implementation, then our CLI will create `routes.ts` instead of `routes.js`.
-
-</Callout>
 
 ## Declare Routes {/* declare-routes */}
 

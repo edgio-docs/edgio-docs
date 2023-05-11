@@ -25,7 +25,7 @@ Open Edge is powered by Edgio Edge Cache, a "plug and play" service that lets yo
 traffic that content providers deliver through your network.
 - Grow With Minimal Additional Overhead:
 <br> Focus on building your business while Edgio manages and operates your CDN infrastructure.
-- Get Support When You Need It
+- Get Support When You Need It:
 <br> Get help quickly with our technology experts available through unrestricted 24/7/365 live support from Edgio’s Global Network Operations Center.
 
 # For Service Providers

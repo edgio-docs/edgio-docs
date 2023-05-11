@@ -4,6 +4,7 @@ import {
   FaExclamationTriangle,
   FaMinusCircle,
   FaExclamationCircle,
+  FaQuestionCircle,
 } from 'react-icons/fa';
 import styled, {css} from 'styled-components';
 
@@ -27,6 +28,9 @@ const types = {
   },
   danger: {
     icon: FaMinusCircle,
+  },
+  invalid: {
+    icon: FaQuestionCircle,
   },
 };
 
@@ -75,6 +79,12 @@ export default function Callout({
   type: 'info' | 'tip' | 'important' | 'warning' | 'danger';
   children: React.ReactNode;
 }) {
+  if (!types[type]) {
+    console.error(`Invalid callout type: ${type}`);
+    /* @ts-ignore */
+    type = 'invalid';
+  }
+
   const Icon = types[type].icon;
 
   return (

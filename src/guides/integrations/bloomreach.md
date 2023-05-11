@@ -34,7 +34,7 @@ This example is a React app powered by Bloomreach Content. The following is base
   />
 </ButtonLinksGroup>
 
-{{ PREREQ }} 
+{{ PREREQ.md }} 
 
 <a id="launch-the-example-application"></a>
 

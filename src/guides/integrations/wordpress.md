@@ -8,7 +8,7 @@ Optimize your [WordPress](https://www.wordpress.com) website's performance and s
 
 WordPress is a content management system (CMS) that allows you to host and build websites. WordPress contains plugin architecture and a template system, so you can customize any website to fit your business, blog, portfolio, or online store.
 
-{{ PREREQ }}
+{{ PREREQ.md }}
 
 ## Getting Started {/*getting-started*/}
 

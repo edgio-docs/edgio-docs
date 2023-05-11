@@ -20,7 +20,7 @@ This framework has a connector developed for {{ PRODUCT }}. See [Connectors](/gu
  View the Connector Code
 </ButtonLink>
 
-{{ PREREQ }}
+{{ PREREQ.md }}
   
 ## Create your MkDocs site {/*create-your-mkdocs-site*/}
 

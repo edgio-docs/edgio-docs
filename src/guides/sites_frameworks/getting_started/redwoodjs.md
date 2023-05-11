@@ -14,7 +14,7 @@ This guide shows you how to deploy a [RedwoodJS](https://redwoodjs.com/) applica
 
 ## Connector {/*connector*/}
 
-{{ PREREQ }}
+{{ PREREQ.md }}
 
 ## Getting Started {/*getting-started*/}
 

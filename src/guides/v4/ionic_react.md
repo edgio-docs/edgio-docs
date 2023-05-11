@@ -12,7 +12,7 @@ This guide shows you how to deploy a [Ionic React](https://ionicframework.com/do
   repoUrl="https://github.com/layer0-docs/layer0-ionic-react-example" 
   deployFromRepo />
 
-{{ PREREQ }}
+{{ PREREQ.md }}
 
 ## Create a new Ionic React app {/*create-a-new-ionic-react-app*/}
 

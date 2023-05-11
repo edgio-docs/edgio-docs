@@ -14,7 +14,7 @@ Here's an example React app running on {{ PRODUCT }}:
   repoUrl="https://github.com/layer0-docs/static-react-example" 
   deployFromRepo />
 
-{{ PREREQ }}
+{{ PREREQ.md }}
 
 ### New project {/*new-project*/}
 

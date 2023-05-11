@@ -12,7 +12,7 @@ This guide shows you how to deploy a [Dojo](https://dojo.io/) application to {{ 
   repoUrl="https://github.com/layer0-docs/layer0-dojo-example" 
   deployFromRepo />
 
-{{ PREREQ }}
+{{ PREREQ.md }}
 
 ## Create a new Dojo app {/*create-a-new-dojo-app*/}
 

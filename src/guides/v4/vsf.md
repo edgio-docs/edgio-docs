@@ -16,7 +16,7 @@ Here's an example Vue Storefront 2 app running on {{ PRODUCT }}:
   repoUrl="https://github.com/layer0-docs/layer0-vue-storefront-commercetools-example" 
   deployFromRepo />
 
-{{ PREREQ }}
+{{ PREREQ.md }}
 
 ## Run the VSF CLI {/*run-the-vsf-cli*/}
 

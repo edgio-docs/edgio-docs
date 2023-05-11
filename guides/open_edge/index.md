@@ -15,7 +15,7 @@ Open Edge offers you a fully-managed CDN service embedded within your network. T
 ## Edgio Edge Cache
 Open Edge is powered by Edgio Edge Cache, a "plug and play" service that lets you directly serve content from your infrastructure. Edge Cache servers are secure, high-performance CDN caching and distribution systems worldwide to drive Edgio global network delivery. By embedding this power within your network with dedicated connections to your routing systems, you turbocharge your delivery. Instead of repeated costly network calls to a distant origin, you can serve cached content directly from local on-net systems. For the lowest latency and maximum reliability, Edge Cache servers use high-speed solid-state devices for caching content.
 
-## Open Edge Benefits
+## Benefits
 - Significantly Reduce Backhaul Cost:
 <br />Reduce operational costs associated with retrieving content from the origin by caching content within your network. 
 - Improve Quality of Experience (QoE):

@@ -74,12 +74,16 @@ const nav = {
           path: 'performance/cdn_as_code',
           routes: [
             {
-              title: 'Getting Started',
-              path: 'performance/cdn_as_code/getting_started',
+              title: 'Route Criteria and Conditions',
+              path: 'performance/cdn_as_code/route_criteria',
             },
             {
-              title: 'Common Routing Patterns',
-              path: 'performance/cdn_as_code/common_routing_patterns',
+              title: 'Route Features',
+              path: 'performance/cdn_as_code/route_features',
+            },
+            {
+              title: 'Edge Functions',
+              path: 'performance/cdn_as_code/edge_functions',
             },
             {
               title: '',

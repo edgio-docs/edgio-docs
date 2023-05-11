@@ -280,7 +280,13 @@ export default new Router()
   .use(edgioRoutes);
 ```
 
-The above configuration shows an example of how you can match all requests to the `/api/` URL path and cache them at the edge for 1 day.
+The above route matches all requests that start with `/api/` and instructs {{ PRODUCT }} to:
+
+- Cache those requests on our network for one day.
+- Allow us to serve stale content for one hour.
+- Instruct the browser to treat the response as immediately stale.
+- Allow prefetched requests to be served from cache for one day.
+- Proxy those requests to your `origin` backend when we cannot serve them from cache.
 
 ## Routes {/* routes */}
 
@@ -398,6 +404,26 @@ Routes are defined by calling a method on the `Router` class based on the HTTP m
 - `put`
 
 A full list of supported functions can be found in the [Router API documentation](/docs/api/core/classes/index.Router.html).
+
+## Route Execution {/* route-execution */}
+
+When {{ PRODUCT_NAME }} receives a request, it executes **each route that matches the request** in the order in which they are declared until one sends a response.
+
+Multiple routes can therefore be executed for a given request. A common pattern is to render the response with middleware such as `nextRoutes` while adding caching for a route that may also be handled by the middleware. In the following example we render a response with Next.js and cache it at the edge for 1 hour:
+
+```js
+import {Router} from '{{ PACKAGE_NAME }}/core';
+import {nextRoutes} from '{{ PACKAGE_NAME }}/next';
+
+export default new Router()
+  // Send requests to serverless and render the response with Next.js
+  .use(nextRoutes)
+
+  // Cache all requests to /products/:id for 1 hour
+  .get('/products/:id', {
+    caching: {max_age: {200: '1h'}, stale_while_revalidate: '1h'},
+  });
+```
 
 ## Testing Locally {/* deploy-locally */}
 

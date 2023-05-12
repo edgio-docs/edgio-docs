@@ -14,8 +14,8 @@ import {getVersionedConfig} from '../../utils/config';
 import {MarkdownPage} from 'components/Layout/MarkdownPage';
 import {Page} from 'components/Layout/Page';
 import JSONRoutes from 'utils/jsonRoutes';
-import {logDev} from 'utils/logging';
-import templateReplace, {TEMPLATE_MATCHER} from 'utils/templateReplace';
+import logger from 'utils/logging';
+import templateReplace from 'utils/templateReplace';
 import {MDHeadingsList} from 'utils/Types';
 
 const guidesPath = 'src/guides';
@@ -169,11 +169,11 @@ export async function getStaticProps({params}: {params: any}) {
 
   const [file] = files;
   if (!file) {
-    logDev(`No matching files for route '${slugAsString}'`);
+    logger.warn(`No matching files for route '${slugAsString}'`);
     return {notFound: true};
   }
 
-  logDev(
+  logger.dev(
     `Using '${file}' for route '${slugAsString}'. Available files:`,
     files
   );

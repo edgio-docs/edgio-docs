@@ -748,7 +748,7 @@ If you encounter a build issue as a result of upgrading Node.js, then you should
 Once you have successfully built your property, run the following command to deploy your property to {{ PRODUCT }}:
 
 ```bash
-{{ FULL_CLI_NAME }} deploy --site=<PROPERTY> --team=<TEAM>
+{{ FULL_CLI_NAME }} deploy --property=<PROPERTY> --team=<TEAM>
 ```
 
 **Key information:**

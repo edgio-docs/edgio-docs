@@ -12,7 +12,7 @@ This guide shows you how to deploy a [Vue.js](https://vuejs.org/) application to
   repoUrl="https://github.com/layer0-docs/layer0-static-vuejs-example" 
   deployFromRepo />
 
-{{ PREREQ }}
+{{ PREREQ.md }}
 
 ## Create a new Vue.js app {/*create-a-new-vuejs-app*/}
 

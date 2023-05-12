@@ -15,7 +15,7 @@ title: Lit
 
 ## Create your Lit site {/*create-your-lit-site*/}
 
-{{ PREREQ }}
+{{ PREREQ.md }}
 
 Clone this starter example and install dependencies:
 

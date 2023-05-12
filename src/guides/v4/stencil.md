@@ -12,7 +12,7 @@ This guide shows you how to deploy a [Stencil](https://stenciljs.com/) applicati
   repoUrl="https://github.com/layer0-docs/layer0-stencil-example" 
   deployFromRepo />
 
-{{ PREREQ }}
+{{ PREREQ.md }}
 
 ## Create a new Stencil app {/*create-a-new-stencil-app*/}
 

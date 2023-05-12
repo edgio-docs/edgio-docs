@@ -12,7 +12,7 @@ This guide shows you how to deploy a [Brunch](https://brunch.io/) application to
   repoUrl="https://github.com/layer0-docs/layer0-brunch-example" 
   deployFromRepo />
 
-{{ PREREQ }}
+{{ PREREQ.md }}
 
 ## Create a new Brunch app {/*create-a-new-brunch-app*/}
 

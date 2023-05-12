@@ -8,7 +8,7 @@ This guide shows you how to deploy a [Zola](https://www.getzola.org/) applicatio
 
 <ExampleButtons repoUrl="https://github.com/layer0-docs/layer0-zola-example" />
 
-{{ PREREQ }}
+{{ PREREQ.md }}
 
 ## Create a new Zola app {/*create-a-new-zola-app*/}
 

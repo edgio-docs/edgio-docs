@@ -14,7 +14,7 @@ Sanity Studio is a single page app (SPA) written in React, where you can configu
   repoUrl="https://github.com/layer0-docs/layer0-sanity-studio-example" 
   deployFromRepo />
 
-{{ PREREQ }}
+{{ PREREQ.md }}
 
 ## Create a new Sanity Studio app {/*create-a-new-sanity-studio-app*/}
 

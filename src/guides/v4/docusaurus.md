@@ -12,7 +12,7 @@ This guide shows you how to deploy a [Docusaurus](https://docusaurus.io/) applic
   repoUrl="https://github.com/layer0-docs/layer0-docusaurus-example" 
   deployFromRepo />
 
-{{ PREREQ }}
+{{ PREREQ.md }}
 
 ## Create a new Docusaurus app {/*create-a-new-docusaurus-app*/}
 

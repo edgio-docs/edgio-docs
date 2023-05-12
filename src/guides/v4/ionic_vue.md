@@ -12,7 +12,7 @@ This guide shows you how to deploy a [Ionic Vue](https://ionicframework.com/docs
   repoUrl="https://github.com/layer0-docs/layer0-ionic-vue-example" 
   deployFromRepo />
 
-{{ PREREQ }}
+{{ PREREQ.md }}
 
 ## Create a new Ionic Vue app {/*create-a-new-ionic-vue-app*/}
 

@@ -109,14 +109,24 @@ On a per environment-basis, define how {{ PRODUCT }} will communicate with your 
 -   Each origin configuration identifies a set of web server(s) by hostname or IP address.  
 -   An origin configuration may identify up to 4 hostnames or IP addresses. 
 -   {{ PRODUCT }} applies [primary/failover load balancing](#primary-failover-load-balancing) for traffic directed to an origin configuration that contains multiple origin hostnames. 
--   The maximum number of origin configurations per environment is 100.
--   It is strongly recommended to cloak your origin to protect it against attacks that directly target your web servers and thereby bypass the security provided by our service.
--   You may configure an origin configuration to always serve traffic to your hosts over HTTP, HTTPS, or to match the client's scheme. Matching a client's scheme means that our network will serve HTTP traffic to your web servers over port 80, while HTTPS traffic will be served over port 443.
+-   The maximum number of origin configurations per environment is 100. <a id="override-host-header" />
+-   By default, our CDN forwards the `Host` header provided by the client when proxying requests to your origin server(s). You may override the client's `Host` header by setting the **Override Host Header** option to the desired hostname. This forces our CDN to set the `Host` header to the specified hostname whenever it proxies traffic to the origin server(s) associated with this origin configuration.
+
+    <Callout type="tip">
+
+      Overriding the `Host` header is useful when your origin implementation uses multiple virtual hosts or a virtual host with multiple aliases. <!--
+
+      You should also define this setting if you are using [CDN-as-code](/guides/performance/cdn_as_code) and your configuration proxies traffic to an origin configuration. You will be unable to test your configuration on your local machine until you define this setting within your property's {{ CONFIG_FILE }} file. -->
+
+    </Callout>
+ 
+-   You may configure an origin configuration to always serve traffic to your hosts over HTTP, HTTPS, or to match the client's scheme. Matching a client's scheme means that our network will serve HTTP traffic to your web servers over port 80, while HTTPS traffic will be served over port 443. <a id="sni" />
 -   You may enable Server Name Indication (SNI) on an origin configuration to allow {{ PRODUCT }} to use it during the TLS handshake. If the SNI hint is not found, then your origin server's implementation determines the TLS certificate that will be returned.
 
-    Additionally, our service will compare the hostname used for the SNI hint to the certificate's Subject Alternative Name (SAN) or Common Name (CN) during the TLS handshake. If the hostname does not match, then we will respond with a `502 Bad Gateway` response.
--   By default, our network disables delivery when we detect a self-signed certificate from the origin server during the TLS handshake. Enable the **Allow Self-Signed Certs** option to require our edge servers to respond with a `502 Bad Gateway` response upon detecting a self-signed certificate from the origin server during the TLS handshake.
+    Additionally, our service will compare the hostname used for the SNI hint to the certificate's Subject Alternative Name (SAN) or Common Name (CN) during the TLS handshake. If the hostname does not match, then we will respond with a `502 Bad Gateway` response. <a id="self-signed-certificates" />
+-   By default, our network disables delivery when we detect a self-signed certificate from the origin server during the TLS handshake. Enable the **Allow Self-Signed Certs** option to require our edge servers to respond with a `502 Bad Gateway` response upon detecting a self-signed certificate from the origin server during the TLS handshake. <a id="certificate-pinning" />
 -   Register the SHA-256 digest for the public key of your end-entity (i.e., leaf) certificate within the **Pinned Cert(s)** option. After which, our edge servers will respond with a `502 Bad Gateway` response when the SHA-256 digest for the public key detected from the origin server does not match one of the pinned certificates.
+-   Malicious actors may bypass the security provided by our service by directly targeting your origin server(s). We strongly recommend that you set up your firewall to only allow traffic from trusted sources (e.g., our network) and to obfuscate your origin.
 
 **To add an origin configuration** <a id="add-origin-configuration"></a>
 
@@ -143,14 +153,7 @@ On a per environment-basis, define how {{ PRODUCT }} will communicate with your 
     1.  In the **Origin Hostname** option, type a hostname or IP address that points to your web server(s).
     2.  Optional. Set the **Port** option to the port over which our network will serve traffic to the above hostname or IP address.
     3.  Set the **Scheme** option to always serve traffic to your hosts over HTTPS, HTTP, or to match the client's scheme.
-    4.  Optional. Override the client's `Host` header by setting the **Override Host Header** option to the desired hostname. 
-
-    <Callout type="info">
-
-      This option forces our CDN to set the `Host` header to the specified hostname whenever it proxies traffic to this origin configuration.
-
-    </Callout>
-
+    4.  Optional. [Override the client's Host header](#override-host-header) by setting the **Override Host Header** option to the desired hostname. 
     5.  Optional. Add another host to this origin configuration by clicking **+ Add Host** and then performing steps 4.1 - 4.4. 
 5.  Optional. Define TLS settings for this origin configuration. Click on the **Origin TLS Settings** section to expand it.
 
@@ -163,7 +166,7 @@ On a per environment-basis, define how {{ PRODUCT }} will communicate with your 
     </Callout>
 
     2.  If your origin servers use a self-signed certificate, then you should toggle the **Allow Self Signed Certs** option to the on position (<Image inline src="/images/v7/icons/toggle-on.png" alt="Toggle on" />).
-    3.  Set up certificate pinning by adding one or more public keys.
+    3.  Set up [certificate pinning](#certificate-pinning) by adding one or more public keys.
 
         1.  Click **+ Add Pin**.
         2.  Paste the SHA-256 digest for the public key of your leaf certificate.

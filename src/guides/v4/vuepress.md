@@ -12,7 +12,7 @@ This guide shows you how to deploy a [VuePress](https://vuepress.vuejs.org/) app
   repoUrl="https://github.com/layer0-docs/layer0-vuepress-example" 
   deployFromRepo />
 
-{{ PREREQ }}
+{{ PREREQ.md }}
 
 ## Create a new VuePress app {/*create-a-new-vuepress-app*/}
 

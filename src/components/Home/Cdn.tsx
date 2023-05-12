@@ -21,6 +21,8 @@ export default function Cdn() {
 
   if (selectedVersion === '4') {
     parentPath = `v4-cdn`;
+  } else if (selectedVersion === '7') {
+    parentPath = `v7-cdn`;
   } else {
     parentPath = `cdn`;
   }

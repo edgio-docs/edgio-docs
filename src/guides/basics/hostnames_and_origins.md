@@ -114,9 +114,9 @@ On a per environment-basis, define how {{ PRODUCT }} will communicate with your 
 
     <Callout type="tip">
 
-      Overriding the `Host` header is useful when your origin implementation uses multiple virtual hosts or a virtual host with multiple aliases. 
+      Overriding the `Host` header is useful when your origin implementation uses multiple virtual hosts or a virtual host with multiple aliases. <!--
 
-      You should also define this setting if you are using [CDN-as-code](/guides/performance/cdn_as_code) and your configuration proxies traffic to an origin configuration. You will be unable to test your configuration on your local machine until you define this setting within your property's {{ CONFIG_FILE }} file.
+      You should also define this setting if you are using [CDN-as-code](/guides/performance/cdn_as_code) and your configuration proxies traffic to an origin configuration. You will be unable to test your configuration on your local machine until you define this setting within your property's {{ CONFIG_FILE }} file. -->
 
     </Callout>
  

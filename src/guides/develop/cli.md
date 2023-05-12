@@ -32,7 +32,7 @@ If you already have a project running on {{ PRODUCT_NAME }} and you want to upda
 {{ FULL_CLI_NAME }} use {{ PACKAGE_VERSION}}
 ```
 
-Before deploying your site, verify that all functionality, including request/response data, is as expected.
+Before deploying your property, verify that all functionality, including request/response data, is as expected.
 
 ## Commands {/* commands */}
 
@@ -64,7 +64,7 @@ specified environment will be cleared.
 | Name              | Description                                                              |
 | ----------------- | ------------------------------------------------------------------------ |
 | `--team`          | (Required) The team name                                                 |
-| `--property`      | (Required) The site name                                                 |
+| `--property`      | (Required) The property name                                                 |
 | `--environment`   | (Required) The environment name                                          |
 | `--path`          | A path to clear. Use "\*" as a wildcard                                  |
 | `--surrogate-key` | Clears all responses assigned to the specified surrogate key (cache tag) |
@@ -72,7 +72,7 @@ specified environment will be cleared.
 #### Example {/* example */}
 
 ```bash
-{{ FULL_CLI_NAME }} cache-clear --team=my-team --property=my-site --environment=production --path=/p/*
+{{ FULL_CLI_NAME }} cache-clear --team=my-team --property=my-property --environment=production --path=/p/*
 ```
 
 ### completion {/* completion */}
@@ -205,13 +205,13 @@ Response Body
 
 ### deploy {/* deploy */}
 
-Builds and deploys your site on {{ PRODUCT_NAME }}.
+Builds and deploys your property on {{ PRODUCT_NAME }}.
 
 #### Parameters {/* parameters */}
 
 | Name   | Description                                                                                                                          |
 | ------ | ------------------------------------------------------------------------------------------------------------------------------------ |
-| `team` | The name of the team under which the site will be deployed. The site will be deployed to your private space will be used if omitted. |
+| `team` | The name of the team under which the property will be deployed. The property will be deployed to your private space will be used if omitted. |
 
 #### Options {/* options */}
 
@@ -234,7 +234,7 @@ Builds and deploys your site on {{ PRODUCT_NAME }}.
 
 | Name                         | Description                                                                                                                                                                                                                                                                                                                                 |
 | ---------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `--property`                     | The name of the site to deploy. By default the `name` field in `package.json` is used.                                                                                                                                                                                                                                                      |
+| `--property`                     | The name of the property to deploy. By default the `name` field in `package.json` is used.                                                                                                                                                                                                                                                      |
 | `--environment`              | The environment to deploy to. By default the `default` environment is used.                                                                                                                                                                                                                                                                 |
 | `--branch`                   | The name of the source control branch. This is automatically set when using Git.                                                                                                                                                                                                                                                            |
 | `--skip-build`               | Skips the build step                                                                                                                                                                                                                                                                                                                        |
@@ -306,14 +306,14 @@ Manage deployed property's environments and environment variables.
 
 | Name            | Description                                                                          |
 | --------------- | ------------------------------------------------------------------------------------ |
-| `--team`        | The name of the team under which the site belongs. Uses private space if omitted.    |
-| `--property`        | Slug of the site to pull variables from. Uses package.json name property if omitted. |
+| `--team`        | The name of the team under which the property belongs. Uses private space if omitted.    |
+| `--property`        | The property to pull variables from. Uses package.json name property if omitted. |
 | `--environment` | Environment to pull variables from. Uses default environment if omitted.             |
 
 #### Example {/* example */}
 
 ```bash
-{{ FULL_CLI_NAME }} env pull .env.local --team my-team --property my-site --environment production
+{{ FULL_CLI_NAME }} env pull .env.local --team my-team --property my-property --environment production
 ```
 
 ### init {/* init */}

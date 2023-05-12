@@ -34,7 +34,7 @@ Deploy to an environment using either of the following methods:
 
     The CLI will automatically detect your property's framework, create an optimized production build, and upload it to {{ PRODUCT }}. This takes about a minute for most applications.
 
-    Once the deployment is complete, the CLI will output the URL for your site. The site name is automatically derived from the `name` field in `package.json`. This can be overridden by using `--property` option when running `{{ FULL_CLI_NAME }} deploy`.
+    Once the deployment is complete, the CLI will output the URL for your site. Your property's name is automatically derived from the `name` field in `package.json`. This can be overridden by using `--property` option when running `{{ FULL_CLI_NAME }} deploy`.
 
 
 ## Versioning {/*versioning*/}

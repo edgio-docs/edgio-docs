@@ -65,13 +65,32 @@ const StyledDocs = styled.div`
     .article-ul__list,
     .article-ol__list {
       padding-left: 27px;
-      list-style: square;
       margin-bottom: 0.8rem;
       overflow: hidden;
     }
 
+    .article-ul__list {
+      list-style: disc;
+    }
+
+    .article-ul__list > li > .article-ul__list {
+      list-style: square;
+    }
+
+    .article-ul__list > li > .article-ul__list > li > .article-ul__list {
+      list-style: circle;
+    }
+
     .article-ol__list {
       list-style: decimal;
+    }
+
+    .article-ol__list > li > .article-ol__list {
+      list-style: lower-roman;
+    }
+
+    .article-ol__list > li > .article-ol__list > li > .article-ol__list {
+      list-style: lower-alpha;
     }
 
     .list-item {

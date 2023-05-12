@@ -243,11 +243,11 @@ new Router()
 
 #### Cache Control Header Treatment {/*cache-control-header-treatment*/}
 
-Controls the generation of `Cache-Control` headers by an edge server when the `Set Client Max Age` feature is active.
+Controls the generation of `Cache-Control` headers by an edge server when the [Set Client Max Age feature](#set-client-max-age) is active.
 
 <Callout type="tip">
 
-  The recommended method for setting up this feature is to add both `Set Client Max Age` and `Cache Control Header Treatment` within the same rule.
+  The recommended method for setting up this feature is to add both `Set Client Max Age` and `Cache Control Header Treatment` features within the same rule.
 
 </Callout>
 
@@ -306,6 +306,7 @@ new Router()
   .get('/', {
     caching: {
       "cache_control_header_treatment": "pass",
+      "client_max_age": "10h",
     }
   })
 ```
@@ -476,7 +477,7 @@ Defines the set of status codes that can result in cached content.
 
 **Key information:**
 
--   Caching non-`200 OK` response also requires enabling the `Ignore Origin No Cache` feature. 
+-   Caching non-`200 OK` response also requires enabling the [Ignore Origin No Cache feature](#ignore-origin-no-cache). 
 -   This feature cannot be used to disable caching for responses that generate a `200 OK` status code.
 
 <edgejs>
@@ -497,6 +498,7 @@ new Router()
   .get('/', {
     caching: {
       "cacheable_status_codes": [300, 301, 302],
+      "ignore_origin_no_cache": [200, 300, 301, 302],
     }
   })
 ```
@@ -1040,7 +1042,7 @@ new Router()
 
 **Default Behavior:** By default, {{ PRODUCT }} uses the request URI's relative path when constructing the cache key.
 
-#### Set Client Max Age {/*client-max-age*/}
+#### Set Client Max Age {/*set-client-max-age*/}
 
 Determines the `max-age` interval for browser to edge server cache revalidation. In other words, the amount of time that will pass before a browser can check for a new version of an asset from an edge server.
 

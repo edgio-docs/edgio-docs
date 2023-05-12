@@ -64,7 +64,7 @@ specified environment will be cleared.
 | Name              | Description                                                              |
 | ----------------- | ------------------------------------------------------------------------ |
 | `--team`          | (Required) The team name                                                 |
-| `--site`          | (Required) The site name                                                 |
+| `--property`      | (Required) The site name                                                 |
 | `--environment`   | (Required) The environment name                                          |
 | `--path`          | A path to clear. Use "\*" as a wildcard                                  |
 | `--surrogate-key` | Clears all responses assigned to the specified surrogate key (cache tag) |
@@ -72,7 +72,7 @@ specified environment will be cleared.
 #### Example {/* example */}
 
 ```bash
-{{ FULL_CLI_NAME }} cache-clear --team=my-team --site=my-site --environment=production --path=/p/*
+{{ FULL_CLI_NAME }} cache-clear --team=my-team --property=my-site --environment=production --path=/p/*
 ```
 
 ### completion {/* completion */}
@@ -234,7 +234,7 @@ Builds and deploys your site on {{ PRODUCT_NAME }}.
 
 | Name                         | Description                                                                                                                                                                                                                                                                                                                                 |
 | ---------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `--site`                     | The name of the site to deploy. By default the `name` field in `package.json` is used.                                                                                                                                                                                                                                                      |
+| `--property`                     | The name of the site to deploy. By default the `name` field in `package.json` is used.                                                                                                                                                                                                                                                      |
 | `--environment`              | The environment to deploy to. By default the `default` environment is used.                                                                                                                                                                                                                                                                 |
 | `--branch`                   | The name of the source control branch. This is automatically set when using Git.                                                                                                                                                                                                                                                            |
 | `--skip-build`               | Skips the build step                                                                                                                                                                                                                                                                                                                        |
@@ -307,13 +307,13 @@ Manage deployed property's environments and environment variables.
 | Name            | Description                                                                          |
 | --------------- | ------------------------------------------------------------------------------------ |
 | `--team`        | The name of the team under which the site belongs. Uses private space if omitted.    |
-| `--site`        | Slug of the site to pull variables from. Uses package.json name property if omitted. |
+| `--property`        | Slug of the site to pull variables from. Uses package.json name property if omitted. |
 | `--environment` | Environment to pull variables from. Uses default environment if omitted.             |
 
 #### Example {/* example */}
 
 ```bash
-{{ FULL_CLI_NAME }} env pull .env.local --team my-team --site my-site --environment production
+{{ FULL_CLI_NAME }} env pull .env.local --team my-team --property my-site --environment production
 ```
 
 ### init {/* init */}

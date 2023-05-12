@@ -105,7 +105,7 @@ Purge cached content through the {{ PRODUCT }} CLI by passing the [cache-clear a
 Run the following command to purge the `basketball` surrogate key from the `production` environment from the `my-videos` property:
 
 ```bash
-{{ FULL_CLI_NAME }} cache-clear --team=my-team --site=my-videos --environment=production --surrogate-key=basketball
+{{ FULL_CLI_NAME }} cache-clear --team=my-team --property=my-videos --environment=production --surrogate-key=basketball
 ```
 
 ## REST API {/*rest-api*/}
@@ -143,11 +143,11 @@ These scripts assume that you have created environments called "production", "st
 ```js
   "scripts": {
     ...
-    "clearcache:dev": "{{ FULL_CLI_NAME }} cache-clear --team=myTeam --site=my{{ PRODUCT_NAME }}App --environment=development --token=${{ PRODUCT_NAME_LOWER }}_deploy_token",
-    "clearcache:stage": "{{ FULL_CLI_NAME }} cache-clear --team=myTeam --site=my{{ PRODUCT_NAME }}App --environment=staging --token=${{ PRODUCT_NAME_LOWER }}_deploy_token",
-    "clearcache:prod": "{{ FULL_CLI_NAME }} cache-clear --team=myTeam --site=my{{ PRODUCT_NAME }}App --environment=production --token=${{ PRODUCT_NAME_LOWER }}_deploy_token",
-    "clearcache:prod:pdps": "{{ FULL_CLI_NAME }} cache-clear --team=myTeam --site=my{{ PRODUCT_NAME }}App --environment=production --surrogate-key=pdp --token=${{ PRODUCT_NAME_LOWER }}_deploy_token",
-    "clearcache:prod:plps": "{{ FULL_CLI_NAME }} cache-clear --team=myTeam --site=my{{ PRODUCT_NAME }}App --environment=production --surrogate-key=plp --token=${{ PRODUCT_NAME_LOWER }}_deploy_token",
+    "clearcache:dev": "{{ FULL_CLI_NAME }} cache-clear --team=myTeam --property=my{{ PRODUCT_NAME }}App --environment=development --token=${{ PRODUCT_NAME_LOWER }}_deploy_token",
+    "clearcache:stage": "{{ FULL_CLI_NAME }} cache-clear --team=myTeam --property=my{{ PRODUCT_NAME }}App --environment=staging --token=${{ PRODUCT_NAME_LOWER }}_deploy_token",
+    "clearcache:prod": "{{ FULL_CLI_NAME }} cache-clear --team=myTeam --property=my{{ PRODUCT_NAME }}App --environment=production --token=${{ PRODUCT_NAME_LOWER }}_deploy_token",
+    "clearcache:prod:pdps": "{{ FULL_CLI_NAME }} cache-clear --team=myTeam --property=my{{ PRODUCT_NAME }}App --environment=production --surrogate-key=pdp --token=${{ PRODUCT_NAME_LOWER }}_deploy_token",
+    "clearcache:prod:plps": "{{ FULL_CLI_NAME }} cache-clear --team=myTeam --property=my{{ PRODUCT_NAME }}App --environment=production --surrogate-key=plp --token=${{ PRODUCT_NAME_LOWER }}_deploy_token",
     ...
   },
 ```

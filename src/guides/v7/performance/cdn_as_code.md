@@ -20,13 +20,9 @@ Get started with CDN-as-code by either experimenting with:
 
 - Your web application or website.
 
-Perform the following steps to use {{ PRODUCT }} to improve the performance of your web application or website:
-
 ### Create a Property {/* create-property */}
 
-Create a property. If you have already performed this step, proceed to the next step.
-
-    [Learn more.](/guides/getting_started)
+Create a property. If you have already performed this step, proceed to the next step. [Learn more.](/guides/getting_started)
 
 ### Initialize Your Property {/* initialize-property */}
 
@@ -156,7 +152,7 @@ Use the {{ PRODUCT }} CLI to initialize your property. If you have already perfo
 
 ### {{ PRODUCT }} Files {/* product-files */}
 
-During the initialization process, the {{ PRODUCT }} CLI creates the following files:
+During the initialization process, the {{ PRODUCT }} CLI created the following files:
 
 - `{{ CONFIG_FILE }}`: This file contains the configuration for your {{ PRODUCT }} property. You can use this file to configure your property's name, environments, origins, and other settings. [Learn more](/guides/performance/cdn_as_code/edgio_config.md).
 - {{ ROUTES_FILE }}: This file contains the router rules for your {{ PRODUCT }} property. You can use this file to define how {{ PRODUCT }} will handle requests to your property.
@@ -233,7 +229,7 @@ The relevant configuration options generated include the `name` and `origins` pr
 - The `name` property is used to identify your {{ PRODUCT }} property in the {{ PORTAL_LINK }}
 - The `origins` property is used to configure the origins to which the router will connect when handling requests.
 
-More information about the `{{ CONFIG_FILE }}` file can be found in the [`{{ CONFIG_FILE }}` reference](/guides/performance/cdn_as_code/edgio_config.md).
+[Learn more](/guides/performance/cdn_as_code/edgio_config.md) about the `{{ CONFIG_FILE }}` file and all the configuration options it supports.
 
 ## Routes File {/* routes-file */}
 
@@ -254,7 +250,7 @@ As mentioned above, the `{{ ROUTES_FILE }}` file is created during the initializ
 The routes file contains [Rules](/guides/performance/rules) that:
 
 - Identifies requests by HTTP method, URL path, query string parameters, cookies, and request headers.
-- Determines how our CDN will handle the above requests. For example, you may configure those requests to be cached, prefetched, passed through without modification, or served as static content.
+- Determines how our CDN will handle the above requests. For example, you may configure those requests to be cached, prefetched, passed through without modification, served as static content, and more.
 
 ### Default Route Configuration {/* default-route-configuration */}
 

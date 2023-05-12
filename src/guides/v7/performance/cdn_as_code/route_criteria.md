@@ -2,6 +2,8 @@
 title: Route Criteria and Conditions
 ---
 
+[ intro for route rules and criteria]
+
 ## Simple Path Matching {/* simple-path-matching */}
 
 The syntax for route paths utilizing simple matching is provided by [path-to-regexp](https://github.com/pillarjs/path-to-regexp#path-to-regexp), which is the same library used by [Express](https://expressjs.com/).

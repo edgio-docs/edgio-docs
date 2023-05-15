@@ -15,7 +15,7 @@ The first option is configured in EdgeJS within the project, the second option i
 
 ## A/B Testing Multiple Implementations {/*ab-testing-multiple-implementations*/}
 
-To A/B test multiple implementations of the same site, simply deploy each implementation to a separate [environment](/guides/basics/environments); then [configure the rules for splitting traffic using the {{ PRODUCT_NAME }} Developer Console](#configuring-the-split-test).
+To A/B test multiple implementations of the same site, simply deploy each implementation to a separate [environment](/guides/basics/environments); then [configure the rules for splitting traffic using the {{ PORTAL }}](#configuring-the-split-test).
 
 To use Continuous Integration (CI) to deploy A/B tests we recommend that you:
 
@@ -167,7 +167,7 @@ This example Next.js application showcases how you can use Google Analytics to t
   repoUrl="https://github.com/edgio-docs/edgio-analytics-variant-example"
   siteUrl="https://edgio-community-examples-analytics-variant-live.layer0-limelight.link/" />
 
-This example site has a configured A/B test in the Edgio Developer Console to split 50% of desktop traffic between the `default` (production) and the `split_test` environments.
+This example site has a configured A/B test in the {{ PORTAL }} to split 50% of desktop traffic between the `default` (production) and the `split_test` environments.
 
 ![Analytics Variant A/B Test](/images/split-testing/analytics-split-test.png)
 

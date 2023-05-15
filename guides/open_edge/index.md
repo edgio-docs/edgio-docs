@@ -7,10 +7,10 @@ For service providers, video streaming and online gaming are key drivers of reve
 The goal of this content is to help Edgio's Open Edge partners
 - Become familiar with Edgio's Open Edge
 - Learn about the Edgio Edge Cache
-- Gain an understanding of the Control Portal and the Service Provider Traffic Report
+- Gain an understanding of the Control portal and the Service Provider Traffic Report
 
 ## Edge Cache
-Open Edge is powered by Edgio Edge Cache, a `plug and play` service that lets you directly serve content from your infrastructure. Edge Cache servers are secure, high-performance CDN caching and distribution systems worldwide to drive Edgio global network delivery. By embedding this power within your network with dedicated connections to your routing systems, you turbocharge your delivery. Instead of repeated costly network calls to a distant origin, you can serve cached content directly from local on-net systems. For the lowest latency and maximum reliability, Edge Cache servers use high-speed, solid-state devices for caching content.
+Open Edge is powered by Edgio Edge Cache, a plug-and-play service that lets you directly serve content from your infrastructure. Edge Cache servers are secure, high-performance CDN caching and distribution systems worldwide to drive Edgio global network delivery. By embedding this power within your network with dedicated connections to your routing systems, you turbocharge your delivery. Instead of repeated costly network calls to a distant origin, you can serve cached content directly from local on-net systems. For the lowest latency and maximum reliability, Edge Cache servers use high-speed, solid-state devices for caching content.
 
 ## Benefits
 |  Benefit    | Details  |
@@ -22,10 +22,10 @@ Open Edge is powered by Edgio Edge Cache, a `plug and play` service that lets yo
 
 ## Portal for Service Providers
 The Edgio Portal allows you to view data about your traffic and create additional users for your organization.
-To log into Control:
+To log into the Control portal:
 1. Go to https://control.llnw.com/acontrol/#/login.
 2. Enter the user and password that were provided to you in your Welcome Letter. The Dashboard is displayed, which is the initial view.
-3. Select the 'Service Provider' report from the Reporting section.
+3. Select the **Service Provider** report from the Reporting section.
 
 ## Service Provider Traffic Report
 The Service Provider Traffic Report provides metrics and trends that allow service providers to
@@ -41,7 +41,7 @@ To access the report after logging into Control:
 |  Specification    | Details  |
 | ----------- | ----------- |
 | Latency | Five minutes |
-| Granularity | **Five minutes** <br />- Today <br />- Last 24 (days) <br />- Last 7 (days)<br /><br />**Hourly** <br />- Last month <br />- Last 30 (days)  <br /><br /> **Daily** <br />- Last 90 (days) <br />- Any custom date range > 90 days<br />  |
+| Granularity | **Five minutes** <br /><ul> <li>Today</li> <li>Last 24 (days)</li> <li>Last 7 (days)<br /></ul>**Hourly**<ul><li>Last month</li> <li>Last 30 (days)</ul> **Daily** <br /><ul><li>Last 90 (days) </li><li>Any custom date range > 90 days<br />  |
 | Dimensions | Date/time <br />In,  Out <br />Edgio content provider aggregate <br />POP Service provider account <br />Service (HTTP, HTTPS) <br />Service provider's content providers  |
 | Metrics | Average, Peak, and Low values for Bandwidth, Volume (data transferred), and Requests |
 | Delivery Mechanism | EdgeQuery |
@@ -50,7 +50,7 @@ To access the report after logging into Control:
 The top right part of the report contains controls for selecting services, a time frame, and a timezone.
 - Choose a service: HTTP, HTTPS, or All (HTTP and HTTPS).
 - Choose from pre-set time frames or choose custom date ranges in the drop-down menu. Click the **Apply** button on custom ranges.
-- Choose a timezone. The top five most commonly used timezones in Control are at the top of the drop-down menu. Scroll down for additional time zones.
+- Choose a timezone. The top five most commonly used timezones in the Control portal are at the top of the drop-down menu. Scroll down for additional time zones.
 
 The data in the tabs changes to reflect your choices.
 
@@ -96,9 +96,9 @@ The chart area provides a graphical representation of the measurement represente
 
 The line chart shows In and Out values for the measurement represented in the tab.
 
-- **In**: Any traffic coming into the PoP from other PoPs or customer origins
+- `In`: Any traffic coming into the PoP from other PoPs or customer origins
 
-- **Out**: Any traffic leaving the PoP from the edge to requesting clients
+- `Out`: Any traffic leaving the PoP from the edge to requesting clients
 
 The `In` and `Out` values are a function of the selected time frame. For example, a time frame of 24 hours shows hours on the X-axis.
 
@@ -154,7 +154,7 @@ Data is shown in percentages, where higher values indicate higher efficiency.
 </Callout>
 
 ### Exporting Data
-To export chart data to a PowerPoint (.ppt) file that contains a screenshot of the chart, click the **Export** drop-down menu on the right above the chart; then select **PowerPoint**. Control creates and downloads the report.
+To export chart data to a PowerPoint (.ppt) file that contains a screenshot of the chart, click the **Export** drop-down menu on the right above the chart; then select **PowerPoint**. The Control portal creates and downloads the report.
 
 ## Creating Additional Users
  
@@ -164,7 +164,7 @@ You might want to create additional users for other personnel in your organizati
 
 2. Click the **+ new** button at the top of the page.
 
-3. For extensive information on creating users, please see `Managing Users` in the Control User Guide.
+3. For extensive information on creating users, please see `Managing Users` in the [Control Portal User Guide](https://support.limelight.com/public/en/Default.htm#Control/Control%20Portal%20-%20User%20Guide/User%20Guide%20Pages/Control%20Portal%20User%20Guide.htm?TocPath=Control%257CUser%2520Guide%257C_____0).
 
 ## FAQs
 |  Question |  Response |
@@ -179,7 +179,7 @@ You might want to create additional users for other personnel in your organizati
 | What is the software-update process? | Edgio operates an Agile software-development process with a goal of ten monthly releases per annual cycle. A monthly release is not planned during the December holiday blackout period, nor is a monthly release planned during anticipated additional software-development load due to failed QA or unplanned work. Each monthly release is tested in Edgio’s QA environment, followed by a carefully monitored production burn-in environment. After acceptance of all stages, Edgio’s entire network is upgraded across a 72-hour upgrade window. |
 | How is a PoP failover handled? | The default policy of Edgio traffic management is to failover or spillover traffic from any of our Service Provider partners into sites owned and operated by Edgio. This practice prevents stampede failure because the Edgio core PoPs are generally 10x the size of our Partner Network locations. Once health and traffic levels have returned to normal, Edgio’s standard traffic-engineering processes return traffic to the affected sites. |
 | What is the power consumption in watts of our PoP? | Each rack consumes up to 5KW of power when fully loaded. A 50G-200G single-rack system consumes up to 5KW; however, it is likely to be less on the smaller sizes. A dual-rack 200G-400G PoP consumes up to 10KW of power. |
-| Does the hardware include a warranty? | If the Service Provider owns the hardware, the manufacturer warranty transfers to the Service Provider. Current warranty lengths for major components are: <br />-Arista (direct) - 1 year <br />-Dell (direct) - 3 years <br /> -Super Micro (direct) - 3 years <br /> -Cisco (via OSI) - Lifetime (shipped to Edgio) <br /> -Aruba (via OSI) - Lifetime (shipped to Edgio) <br /> - Raritan (via OSI) -Lifetime (shipped to Edgio) |
+| Does the hardware include a warranty? | If the Service Provider owns the hardware, the manufacturer warranty transfers to the Service Provider. Current warranty lengths for major components are: <br /><ul><li>Arista (direct) - 1 year</li> <li>Dell (direct) - 3 years</li> <li>Super Micro (direct) - 3 years </li> <li>Cisco (via OSI) - Lifetime (shipped to Edgio) </li> <li>Aruba (via OSI) - Lifetime (shipped to Edgio)</li> <li>Raritan (via OSI) -Lifetime (shipped to Edgio)</li></ul> |
 
 
 

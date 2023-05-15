@@ -341,7 +341,7 @@ Run this command from the root directory of your web application or website to a
 
 ### login {/* login */}
 
-Logs into {{ PRODUCT_NAME }} via the developer console.
+Logs in to {{ PRODUCT_NAME }} through the {{ PORTAL }}.
 
 #### Example {/* example */}
 
@@ -376,7 +376,7 @@ Runs your app locally. Uses port 3000 by default. You can change this by setting
 {{ FULL_CLI_NAME }} run --production
 ```
 
-Or to run a deployment bundle downloaded from {{ PRODUCT_NAME }} Developer Console, use:
+Or to run a deployment bundle downloaded from {{ PORTAL }}, use:
 
 ```bash
 {{ FULL_CLI_NAME }} run /path/to/bundle.zip

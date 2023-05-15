@@ -68,7 +68,7 @@ For example, the following response header applies three surrogate keys to the c
 
 `Surrogate-Key: sports basketball march-tournament`
 
-## {{ PRODUCT }} Developer Console {/*developer-console*/}
+## {{ PORTAL }} {/*console*/}
 
 Use the {{ PORTAL }} to purge cached content within a specific environment. 
 
@@ -128,7 +128,7 @@ By default, all cached responses are purged from an environment when you deploy 
 
 ## Static prerendering after clearing the cache {/*static-prerendering-after-clearing-the-cache*/}
 
-If you have enabled [static prerendering](/guides/performance/static_prerendering), the cache will automatically be repopulated when you clear all entries from the cache (such as when you select _Purge all entries_ in the {{ PRODUCT_NAME }} Developer Console or run `{{ FULL_CLI_NAME }} cache-clear` without providing `--path` or `--surrogate-key`). You can view the prerendering progress by clicking on the active deployment for the environment that was cleared.
+If you have enabled [static prerendering](/guides/performance/static_prerendering), the cache will automatically be repopulated when you clear all entries from the cache (such as when you select _Purge all entries_ in the {{ PORTAL }} or run `{{ FULL_CLI_NAME }} cache-clear` without providing `--path` or `--surrogate-key`). You can view the prerendering progress by clicking on the active deployment for the environment that was cleared.
 
 ## Automated Purging {/*automated-purging*/}
 

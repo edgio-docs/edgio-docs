@@ -13,4 +13,3 @@ yarn global add {{ PACKAGE_NAME }}/cli@{{ PACKAGE_VERSION }}
 ```
 
 </SnippetGroup>
-`

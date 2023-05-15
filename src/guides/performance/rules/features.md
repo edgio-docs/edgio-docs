@@ -845,7 +845,7 @@ new Router()
 Defines the length of time that {{ PRODUCT }} will be allowed to serve an expired cached asset when an edge server is unable to revalidate that asset with the origin server.
 
 Normally, when an asset's max-age time expires, the edge server will send a revalidation request to the origin server. The origin server will then respond with either of the following status codes:
--   `304 Not Modified`: This type of response gives the edge server a fresh lease on the cached asset.
+-   `304 Not Modified`**:** This type of response gives the edge server a fresh lease on the cached asset.
 -   `200 OK`**:** This type of response provides the edge server with an updated version of the cached asset.
 
 If the edge server is unable to establish a connection with the origin server while attempting such a revalidation, then this feature controls whether, and for how long, the edge server may continue to serve the now-stale asset.
@@ -864,7 +864,7 @@ Any value configured for this feature is superseded by `Cache-Control:must-reval
 
 <edgejs>
 Normally, when an asset's max-age time expires, the edge server will send a revalidation request to the origin server. The origin server will then respond with either of the following status codes:
--   `304 Not Modified`: This type of response gives the edge server a fresh lease on the cached asset.
+-   `304 Not Modified`**:** This type of response gives the edge server a fresh lease on the cached asset.
 -   `200 OK`**:** This type of response provides the edge server with an updated version of the cached asset.
 
 If the edge server is unable to establish a connection with the origin server while attempting such a revalidation, then this feature controls whether, and for how long, the edge server may continue to serve the now-stale asset.

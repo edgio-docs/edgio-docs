@@ -35,13 +35,13 @@ The Service Provider Traffic Report provides metrics and trends that allow servi
 To access the report after logging into Control:
 1. Hover the mouse pointer over the left navigation menu.
 2. Expand the **Reports** menu.
-3. Select **Service Provider Traffic** to dispaly the Service Provider Traffic Report.
+3. Select **Service Provider Traffic** to display the Service Provider Traffic Report.
 
 ### Report Specifications
 |  Specification    | Details  |
 | ----------- | ----------- |
 | Latency | Five minutes |
-| Granularity | **Five minutes** <br />-Today <br />-Last 24 (days) <br />-Last 7 (days)<br /><br />**Hourly** <br />-Last month <br />-Last 30 (days)  <br /><br /> **Daily** <br />-Last 90 (days) <br />-Any custom date range > 90 days<br />  |
+| Granularity | **Five minutes** <br />- Today <br />- Last 24 (days) <br />- Last 7 (days)<br /><br />**Hourly** <br />- Last month <br />- Last 30 (days)  <br /><br /> **Daily** <br />- Last 90 (days) <br />- Any custom date range > 90 days<br />  |
 | Dimensions | Date/time <br />In,  Out <br />Edgio content provider aggregate <br />POP Service provider account <br />Service (HTTP, HTTPS) <br />Service provider's content providers  |
 | Metrics | Average, Peak, and Low values for Bandwidth, Volume (data transferred), and Requests |
 | Delivery Mechanism | EdgeQuery |
@@ -156,7 +156,7 @@ Data is shown in percentages, where higher values indicate higher efficiency.
 ### Exporting Data
 To export chart data to a PowerPoint (.ppt) file that contains a screenshot of the chart, click the **Export** drop-down menu on the right above the chart; then select **PowerPoint**. Control creates and downloads the report.
 
-### Creating Additional Users
+## Creating Additional Users
  
 You might want to create additional users for other personnel in your organization.
 
@@ -176,10 +176,10 @@ You might want to create additional users for other personnel in your organizati
 |Does Edgio provide racks for the severs? | The standard configuration does not include racks; however, racks can be included upon request. |
 | What is required for remote-hands support? | Edgio requires the Service Provider to be available for any physical activity related to the PoP, including installation, reboot as required, visual inspection, and hardware replacement if necessary. |
 | Who is responsible in the event of hardware failure? | If the Service Provider owns the hardware and is receiving revenue share (typically 40%), the Service Provider is financially responsible to purchase replacement hardware. Edgio assists in providing any necessary information and in coordinating the replacement. The Service Provider may purchase the replacement hardware from Edgio. Any replacement hardware must meet the specifications of Edgio. Edgio does not get involved in minor items such as cable replacement. If Edgio owns the hardware, Edgio is financially responsible to replace hardware during the term of the contract. |
-| What is the software-update process? | Edgio operates an Agile software-development process with a goal of ten monthly releases per annual cycle. A monthly release is not planned during the December holiday blackout period, nor is a monthly release is planned during anticipated additional software-development load due to failed QA or unplanned work. Each monthly release is tested in Edgio’s QA environment, followed by a carefully monitored production burn-in environment. After acceptance of all stages, Edgio’s entire network is upgraded across a 72-hour upgrade window. |
+| What is the software-update process? | Edgio operates an Agile software-development process with a goal of ten monthly releases per annual cycle. A monthly release is not planned during the December holiday blackout period, nor is a monthly release planned during anticipated additional software-development load due to failed QA or unplanned work. Each monthly release is tested in Edgio’s QA environment, followed by a carefully monitored production burn-in environment. After acceptance of all stages, Edgio’s entire network is upgraded across a 72-hour upgrade window. |
 | How is a PoP failover handled? | The default policy of Edgio traffic management is to failover or spillover traffic from any of our Service Provider partners into sites owned and operated by Edgio. This practice prevents stampede failure because the Edgio core PoPs are generally 10x the size of our Partner Network locations. Once health and traffic levels have returned to normal, Edgio’s standard traffic-engineering processes return traffic to the affected sites. |
 | What is the power consumption in watts of our PoP? | Each rack consumes up to 5KW of power when fully loaded. A 50G-200G single-rack system consumes up to 5KW; however, it is likely to be less on the smaller sizes. A dual-rack 200G-400G PoP consumes up to 10KW of power. |
-| Does the hardware include a warranty? | If the Service Provider owns the hardware, all manufacturer warranty transfer to the service provider. Current warranty lengths for major components are: <br />-Arista (direct) - 1 year <br />-Dell (direct) - 3 years <br /> -Super Micro (direct) - 3 years <br /> -Cisco (via OSI) - Lifetime (shipped to Edgio) <br /> -Aruba (via OSI) - Lifetime (shipped to Edgio) <br /> - Raritan (via OSI) - Lifetime (shipped to Edgio) |
+| Does the hardware include a warranty? | If the Service Provider owns the hardware, the manufacturer warranty transfers to the Service Provider. Current warranty lengths for major components are: <br />-Arista (direct) - 1 year <br />-Dell (direct) - 3 years <br /> -Super Micro (direct) - 3 years <br /> -Cisco (via OSI) - Lifetime (shipped to Edgio) <br /> -Aruba (via OSI) - Lifetime (shipped to Edgio) <br /> - Raritan (via OSI) - Lifetime (shipped to Edgio) |
 
 
 

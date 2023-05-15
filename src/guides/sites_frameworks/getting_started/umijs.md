@@ -12,7 +12,7 @@ This guide shows you how to deploy a [UmiJS](https://umijs.org/) application to 
   repoUrl="https://github.com/edgio-docs/edgio-umijs-example"
   deployFromRepo />
 
-{{ PREREQ }}
+{{ PREREQ.md }}
 
 ## Create a new UmiJS app {/*create-a-new-umijs-app*/}
 

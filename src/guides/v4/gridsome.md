@@ -12,7 +12,7 @@ This guide shows you how to deploy a [Gridsome](https://gridsome.org/) applicati
   repoUrl="https://github.com/layer0-docs/layer0-gridsome-example" 
   deployFromRepo />
 
-{{ PREREQ }}
+{{ PREREQ.md }}
 
 ## Create a new Gridsome app {/*create-a-new-gridsome-app*/}
 

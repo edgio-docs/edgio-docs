@@ -55,7 +55,8 @@ function Accordion({
       }
       {...getToggleProps({
         onClick: onSelect,
-      })}>
+      })}
+      data-v4={selectedVersion === '4'}>
       {depth === 0 && (
         <div className="icons">
           <div id="dark-theme">
@@ -215,7 +216,7 @@ const StyledSideNav = styled.div`
     }
   }
 
-  [data-is-highlighted='true'] {
+  [data-is-highlighted='true'][data-v4='false'] {
     font-weight: 700 !important;
     color: var(--colors-blue0) !important;
   }

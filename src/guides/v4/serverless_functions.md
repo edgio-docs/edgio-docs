@@ -4,7 +4,7 @@ title: Serverless Compute
 
 {{ PRODUCT }} makes it easy to develop, test, and deploy serverless functions without a JavaScript framework. Simply declare your routes and use the `compute` function or `proxy` with the `transformResponse` option to compute responses based on your own custom logic.
 
-{{ PREREQ }}
+{{ PREREQ.md }}
 
 ## Getting Started {/*getting-started*/}
 

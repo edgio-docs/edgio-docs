@@ -12,7 +12,7 @@ This guide shows you how to deploy a [Hexo](https://hexo.io/) application to {{ 
   repoUrl="https://github.com/layer0-docs/layer0-hexo-example" 
   deployFromRepo />
 
-{{ PREREQ }}
+{{ PREREQ.md }}
 
 ## Create a new Hexo app {/*create-a-new-hexo-app*/}
 

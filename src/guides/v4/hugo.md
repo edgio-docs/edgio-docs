@@ -10,7 +10,7 @@ This guide shows you how to deploy a [Hugo](https://gohugo.io) application to {{
   repoUrl="https://github.com/layer0-docs/layer0-hugo-example" 
    />
 
-{{ PREREQ }}
+{{ PREREQ.md }}
 
 ## Create a new Hugo app {/*create-a-new-hugo-app*/}
 

@@ -28,7 +28,7 @@ Here are a few examples of common static sites served by {{ PRODUCT }}.
   repoUrl="https://github.com/edgio-docs/edgio-vue3-example" 
   deployFromRepo />
 
-{{ PREREQ }}
+{{ PREREQ.md }}
 
 ## Getting Started {/*getting-started*/}
 

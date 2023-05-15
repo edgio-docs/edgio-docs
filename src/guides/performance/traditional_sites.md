@@ -77,7 +77,7 @@ This framework has a connector developed for {{ PRODUCT_NAME }}. See [Connectors
   View the Connector Code
 </ButtonLink>
 
-{{ PREREQ }}
+{{ PREREQ.md }}
 
 ## Setup a Project {/* setup-a-project */}
 

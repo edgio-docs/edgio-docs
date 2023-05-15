@@ -48,7 +48,7 @@ This framework has a connector developed for {{ PRODUCT }}. See [Connectors](con
 - `getServerSideProps`
 - `getInitialProps`
 
-{{ PREREQ }}
+{{ PREREQ.md }}
 
 When installing the {{ PRODUCT }} CLI globally in a virtual environment that has Node and NPM installed globally, you [may run into permission issues]({{ FORUM_URL }}/t/xdn-cli-npm-install-error/83). In that case, you can install the {{ PRODUCT }} CLI locally within your app using `npm i -D {{ PACKAGE_NAME }}/cli` and running commands using `./node_modules/{{ PACKAGE_NAME }}/cli` instead of `{{ CLI_NAME }}`.
 

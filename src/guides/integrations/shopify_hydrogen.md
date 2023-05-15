@@ -28,7 +28,7 @@ You’ve installed the following dependencies:
 
 {{ SIGN_UP }}
 
-{{ INSTALL_CLI }}
+{{ INSTALL_CLI.md }}
 
 ## Create a new Shopify Hydrogen app {/*create-a-new-shopify-hydrogen-app*/}
 

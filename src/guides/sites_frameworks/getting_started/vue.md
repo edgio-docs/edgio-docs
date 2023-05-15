@@ -23,7 +23,7 @@ Edgio supports both Vue 2 and Vue 3, using both CLIs - `@vue/cli` and `vite`.
  View the Connector Code
 </ButtonLink>
 
-{{ PREREQ }}
+{{ PREREQ.md }}
 
 ## Create your Vue site {/*create-your-vue-site*/}
 
@@ -50,10 +50,10 @@ npm i && {{ FULL_CLI_NAME }} init {{ INIT_ARG_EDGIO_VERSION }}
 
 This will automatically add all of the required dependencies and files to your project. These include:
 
-{{ INIT_DEFAULT_PACKAGES }}
+{{ INIT_DEFAULT_PACKAGES.md }}
 - The `{{ PACKAGE_NAME }}/vue` package - Provides a `Prefetch` component for prefetching pages.
 - The `{{ PACKAGE_NAME }}/vue-cva` package - Provides build and routing mechanisms for Vue projects.
-{{ INIT_DEFAULT_FILES }}
+{{ INIT_DEFAULT_FILES.md }}
 
 
 ## Prefetching {/*prefetching*/}

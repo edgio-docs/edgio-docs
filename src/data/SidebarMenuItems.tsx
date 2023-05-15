@@ -270,6 +270,94 @@ const SidebarMenuItems: ISidebarMenuItems = [
       title: PRODUCT_EDGE,
       icon: <IconServerSmall />,
       iconDark: <IconServerSmallDark />,
+      path: 'v7-cdn',
+      sortRoutes: false,
+      routes: [
+        {
+          title: 'Getting Started',
+          path: '/guides/performance/getting_started',
+        },
+        {
+          title: 'Rules',
+          path: '/guides/performance/rules',
+        },
+        {
+          title: 'CDN-as-Code (EdgeJS)',
+          path: '/guides/performance/cdn_as_code',
+        },
+        {
+          title: 'Caching',
+          path: '/guides/performance/caching',
+        },
+        {
+          title: 'Purging',
+          path: '/guides/performance/purging',
+        },
+        {
+          title: 'Static Prerendering',
+          path: '/guides/performance/static_prerendering',
+        },
+        {
+          title: 'Predictive Prefetch',
+          path: '/guides/performance/prefetching',
+        },
+        {
+          title: 'Traffic Splitting',
+          path: '/guides/performance/traffic_splitting',
+        },
+        {
+          title: 'Observability',
+          path: '/guides/performance/observability',
+        },
+        {
+          title: 'Serverless Compute',
+          path: '/guides/performance/serverless_compute',
+          icon: <IconServerlessFunctions />,
+          iconDark: <IconServerlessFunctions />,
+        },
+        {
+          title: 'EdgeJS Unit Testing',
+          path: '/guides/performance/unit_testing_edgejs',
+        },
+        {
+          title: 'Image Optimization',
+          path: '/guides/performance/image_optimization',
+          separator: true,
+        },
+        {
+          title: 'Traditional Sites',
+          path: '/guides/performance/traditional_sites',
+        },
+        {
+          title: 'Third-Party CDNs',
+          path: '/guides/performance/third_party_cdns',
+        },
+        {
+          title: 'Compression',
+          path: '/guides/performance/compression',
+        },
+        {
+          title: 'Request',
+          path: '/guides/performance/request',
+        },
+        {
+          title: 'Response',
+          path: '/guides/performance/response',
+        },
+        {
+          title: 'Troubleshooting',
+          path: '/guides/performance/troubleshooting',
+        },
+        {
+          title: 'Limits',
+          path: '/guides/performance/limits',
+        },
+      ],
+    },
+    {
+      title: PRODUCT_EDGE,
+      icon: <IconServerSmall />,
+      iconDark: <IconServerSmallDark />,
       path: 'cdn',
       sortRoutes: false,
       routes: [

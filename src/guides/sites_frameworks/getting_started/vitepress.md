@@ -12,7 +12,7 @@ This guide shows you how to deploy a [VitePress](https://vitepress.vuejs.org/) a
   repoUrl="https://github.com/edgio-docs/edgio-vitepress-example" 
   deployFromRepo />
 
-{{ PREREQ }}
+{{ PREREQ.md }}
 
 ## Create a new VitePress app {/*create-a-new-vitepress-app*/}
 

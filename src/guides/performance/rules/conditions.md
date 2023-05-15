@@ -293,11 +293,10 @@ router.conditional({
 
 #### Country {/*country*/} <edgejs>location</edgejs>
 
-Identifies requests by the country from which the request was issued.
+Identifies requests by the country from which the request was issued. Specify each desired country through its [country code](/guides/reference/country_codes).
 
 **Key information:**
 
--   Specify a country through its [country code](/guides/reference/country_codes).
 -   Specify multiple country codes by delimiting each one with a single space.
 -   The `EU` and `AP` country codes do not encompass all IP addresses in those regions. 
 
@@ -310,7 +309,6 @@ Identifies requests by the country from which the request was issued.
 
 **Key information:**
 
--   Specify a country through its [country code](/guides/reference/country_codes).
 -   Specify multiple country codes by delimiting each one with a single space.
 -   The `EU` and `AP` country codes do not encompass all IP addresses in those regions.
 

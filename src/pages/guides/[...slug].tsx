@@ -1,7 +1,7 @@
 import {readFile} from 'fs/promises';
 import {join} from 'path';
 
-import {isEdgioRunDev} from '@edgio/core/environment';
+import {isEdgioRunDev, isProductionBuild} from '@edgio/core/environment';
 import globby from 'globby';
 import {MDXRemote} from 'next-mdx-remote';
 import {serialize} from 'next-mdx-remote/serialize';
@@ -118,6 +118,10 @@ export const getStaticPaths = async () => {
   routes.push(
     ...[...new Set(paths)].map((path) => ({params: {slug: path.split('/')}}))
   );
+
+  if (isProductionBuild()) {
+    logger.prod(JSON.stringify(paths));
+  }
 
   // in the end, only routes matching `/guides/v7/*` will be prerendered
   // and the rest (eg. /guides/v6/*) will fallback to SSR

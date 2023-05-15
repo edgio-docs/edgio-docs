@@ -10,6 +10,11 @@ interface CustomLogger extends Logger {
    * Logs a message in development environment only.
    */
   dev(...message: any[]): void;
+
+  /**
+   * Logs a message in production environment only.
+   */
+  prod(...message: any[]): void;
 }
 
 const customLevels = {
@@ -42,6 +47,12 @@ logger.exception = function (message: string) {
 
 logger.dev = function (...message) {
   if (process.env.NODE_ENV === 'development') {
+    logger.info(message);
+  }
+};
+
+logger.prod = function (...message) {
+  if (process.env.NODE_ENV === 'production') {
     logger.info(message);
   }
 };

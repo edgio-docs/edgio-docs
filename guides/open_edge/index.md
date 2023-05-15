@@ -162,7 +162,7 @@ You might want to create additional users for other personnel in your organizati
 
 1. After logging in, click **Manage** in the left navigation menu, then select **Users**.
 
-2. Click the *+ new* button at the top of the page.
+2. Click the **+ new** button at the top of the page.
 
 3. For extensive information on creating users, please see `Managing Users` in the Control User Guide.
 
@@ -179,7 +179,7 @@ You might want to create additional users for other personnel in your organizati
 | What is the software-update process? | Edgio operates an Agile software-development process with a goal of ten monthly releases per annual cycle. A monthly release is not planned during the December holiday blackout period, nor is a monthly release planned during anticipated additional software-development load due to failed QA or unplanned work. Each monthly release is tested in Edgio’s QA environment, followed by a carefully monitored production burn-in environment. After acceptance of all stages, Edgio’s entire network is upgraded across a 72-hour upgrade window. |
 | How is a PoP failover handled? | The default policy of Edgio traffic management is to failover or spillover traffic from any of our Service Provider partners into sites owned and operated by Edgio. This practice prevents stampede failure because the Edgio core PoPs are generally 10x the size of our Partner Network locations. Once health and traffic levels have returned to normal, Edgio’s standard traffic-engineering processes return traffic to the affected sites. |
 | What is the power consumption in watts of our PoP? | Each rack consumes up to 5KW of power when fully loaded. A 50G-200G single-rack system consumes up to 5KW; however, it is likely to be less on the smaller sizes. A dual-rack 200G-400G PoP consumes up to 10KW of power. |
-| Does the hardware include a warranty? | If the Service Provider owns the hardware, the manufacturer warranty transfers to the Service Provider. Current warranty lengths for major components are: <br />-Arista (direct) - 1 year <br />-Dell (direct) - 3 years <br /> -Super Micro (direct) - 3 years <br /> -Cisco (via OSI) - Lifetime (shipped to Edgio) <br /> -Aruba (via OSI) - Lifetime (shipped to Edgio) <br /> - Raritan (via OSI) - Lifetime (shipped to Edgio) |
+| Does the hardware include a warranty? | If the Service Provider owns the hardware, the manufacturer warranty transfers to the Service Provider. Current warranty lengths for major components are: <br />-Arista (direct) - 1 year <br />-Dell (direct) - 3 years <br /> -Super Micro (direct) - 3 years <br /> -Cisco (via OSI) - Lifetime (shipped to Edgio) <br /> -Aruba (via OSI) - Lifetime (shipped to Edgio) <br /> - Raritan (via OSI) -Lifetime (shipped to Edgio) |
 
 
 

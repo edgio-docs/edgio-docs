@@ -94,8 +94,8 @@ In the generated `{{ CONFIG_FILE }}` file, you can customize how {{ PRODUCT }} b
 | `disableServiceWorker`  | Disables the build of the service worker.                                                                                                                                                                    | `false` |
 | `forceServerBuild`      | Forces the `{{ PACKAGE_NAME }}/next` connector to use the server build. This config option replaces the NEXT_FORCE_SERVER_BUILD env variable.                                                                | `false` |
 | `optimizeServerBuild`   | Optimizes the server build by bundling all server assets and decreasing the overall startup time. This option has no effect on apps with serverless build. This option is set to `false` for Next 13.x apps. | `true`  |
-| `proxyToServerlessByDefault` | Reduces the number of generated rules by adding the default catch-all rule that proxies all requests to Next.js in serverless. Set this option to false if you want to proxy all unmatched pages to a different origin. | `true` |
-| `enforceTrailingSlash` | Adds rules with Next's internal redirects that either add or remove a trailing slash. When set to false, the redirect is performed only by the Next.js server itself and doesn't affect other origins. | `true` |
+| `proxyToServerlessByDefault` | Reduces the number of generated rules by adding the default catch-all rule that proxies all requests to Next.js in serverless. Set this option to `false` if you want to proxy all unmatched pages to a different origin. | `true` |
+| `enforceTrailingSlash` | Adds rules with Next's internal redirects that either add or remove a trailing slash. When set to `false`, the redirect is performed only by the Next.js server itself and doesn't affect other origins. | `true` |
 
 ## {{ PRODUCT }} Next.js Plugin {/* next-plugin */}
 

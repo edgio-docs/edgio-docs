@@ -8,7 +8,7 @@ Optimize your [WordPress](https://www.wordpress.com) website's performance and s
 
 WordPress is a content management system (CMS) that allows you to host and build websites. WordPress contains plugin architecture and a template system, so you can customize any website to fit your business, blog, portfolio, or online store.
 
-{{ PREREQ }}
+{{ PREREQ.md }}
 
 ## Getting Started {/*getting-started*/}
 
@@ -18,7 +18,7 @@ If you don't already have a WordPress site, create one by following the [officia
 
 ### Create via {{ PORTAL }} {/*create-via-developer-console*/}
 
-1. First, [login to the Developer Console]({{ LOGIN_URL }}) and locate the **New Site** button.
+1. First, [log in to the {{ PORTAL }}]({{ LOGIN_URL }}) and locate the **New Site** button.
 
 ![New Site button](/images/app-edge/new-site-button.png)
 
@@ -70,7 +70,7 @@ Refer to the [Deployments](/guides/basics/deployments) guide for more informatio
 
 ## Direct Traffic to {{ PRODUCT_PLATFORM }} {/*direct-traffic-to*/}
 
-Once you have confirmed that your deployed {{ PRODUCT }} site is proxying content from your hosted WordPress site, you may go back to your site in the [Developer Console]({{ LOGIN_URL }}) and follow the instructions on configuring your production DNS to point to {{ PRODUCT }}. 
+Once you have confirmed that your deployed {{ PRODUCT }} site is proxying content from your hosted WordPress site, you may go back to your site in the {{ PORTAL_LINK }} and follow the instructions on configuring your production DNS to point to {{ PRODUCT }}. 
 
 <Condition version="7">
 
@@ -116,7 +116,7 @@ In order for the plugin to be able to interact with the {{ PRODUCT_PLATFORM }}, 
 
 ![plugin fields](/images/wordpress/plugin_fields.png)
 
-**Environment Name** refers to the {{ PRODUCT }} environment as defined in the [Developer Console]({{ LOGIN_URL }}) for your site. This value will typically be `default` or `production` depending on how your site is setup, but can be any valid environment that you have created.
+**Environment Name** refers to the {{ PRODUCT }} environment as defined in the {{ PORTAL_LINK }} for your site. This value will typically be `default` or `production` depending on how your site is setup, but can be any valid environment that you have created.
 
 To obtain the **API Key**, go to your site within the [{{ PORTAL }}]({{ LOGIN_URL }}). Click **Settings > Create new Deploy Token** and enter in a name for the token.
 

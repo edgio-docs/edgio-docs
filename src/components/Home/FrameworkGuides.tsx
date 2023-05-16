@@ -12,6 +12,7 @@ import {
   IconNextJSCommerce,
   IconNextJSCommerceDark,
 } from '../Icon/IconNextJSCommerce';
+import {IconNuxt} from '../Icon/IconNuxt';
 import {IconPreact} from '../Icon/IconPreact';
 import {IconReact} from '../Icon/IconReact';
 import {IconReactStatic} from '../Icon/IconReactStatic';
@@ -207,10 +208,55 @@ export default function FrameworkGuides() {
       },
     },
   ];
-  const routes = [routesCol1, routesCol2, routesCol3];
+
+  const routesColv7: Array<IRoutesProps> = [
+    {
+      title: 'Next.js',
+      path: 'next',
+      icon: {
+        light: <IconNextJS />,
+        dark: <IconNextJSDark />,
+      },
+    },
+    {
+      title: 'Nuxt.js',
+      path: 'nuxt',
+      icon: {
+        light: <IconNuxt />,
+        dark: <IconNuxt />,
+      },
+    },
+    {
+      title: 'Nuxt3',
+      path: 'nuxt3',
+      icon: {
+        light: <IconNuxt />,
+        dark: <IconNuxt />,
+      },
+    },
+  ];
+
   const {
-    version: {toVersionedPath},
+    version: {toVersionedPath, selectedVersion},
   } = useConditioning();
+
+  let routes: Array<Array<IRoutesProps>> = [];
+  if (selectedVersion === '7') {
+    routes = [routesColv7];
+  } else {
+    routes = [routesCol1, routesCol2, routesCol3];
+  }
+
+  let versionPath;
+  let sitesGettingStarted;
+
+  if (selectedVersion === '4') {
+    versionPath = ``;
+    sitesGettingStarted = `jamstack_getting_started`;
+  } else {
+    versionPath = `sites_frameworks/getting_started/`;
+    sitesGettingStarted = `sites_frameworks/getting_started/`;
+  }
 
   return (
     <StyledComp>
@@ -238,10 +284,7 @@ export default function FrameworkGuides() {
                   ) : (
                     <div className="dot" />
                   )}
-                  <Link
-                    href={toVersionedPath(
-                      `sites_frameworks/getting_started/${path}`
-                    )}>
+                  <Link href={toVersionedPath(`${versionPath}${path}`)}>
                     {title}
                   </Link>
                 </li>
@@ -249,7 +292,7 @@ export default function FrameworkGuides() {
               {index === 2 && (
                 <li className="route-list__item">
                   <Link
-                    href="/guides/sites_frameworks/getting_started"
+                    href={toVersionedPath(`${sitesGettingStarted}`)}
                     passHref>
                     <a>
                       <div className="dot" />

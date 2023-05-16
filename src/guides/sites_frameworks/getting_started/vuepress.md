@@ -13,7 +13,7 @@ This guide shows you how to deploy a [VuePress](https://vuepress.vuejs.org/) app
   deployFromRepo
 />
 
-{{ PREREQ }}
+{{ PREREQ.md }}
 
 ## Create a new VuePress app {/* create-a-new-vuepress-app */}
 

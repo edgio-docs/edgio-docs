@@ -12,7 +12,7 @@ This guide shows you how to deploy a [React Static](https://github.com/react-sta
   repoUrl="https://github.com/edgio-docs/edgio-react-static-example" 
   deployFromRepo />
 
-{{ PREREQ }}
+{{ PREREQ.md }}
 
 ## Create a new React Static app {/*create-a-new-react-static-app*/}
 

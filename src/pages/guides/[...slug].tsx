@@ -15,7 +15,7 @@ import {MarkdownPage} from 'components/Layout/MarkdownPage';
 import {Page} from 'components/Layout/Page';
 import JSONRoutes from 'utils/jsonRoutes';
 import {logDev} from 'utils/logging';
-import templateReplace from 'utils/templateReplace';
+import templateReplace, {TEMPLATE_MATCHER} from 'utils/templateReplace';
 import {MDHeadingsList} from 'utils/Types';
 
 const guidesPath = 'src/guides';
@@ -178,23 +178,16 @@ export async function getStaticProps({params}: {params: any}) {
     files
   );
 
-  let content = await readFile(join(process.cwd(), file), 'utf8');
-
   // update template with versioned constants
-  content = templateReplace(content, getVersionedConfig(version));
+  let content =
+    templateReplace(join(process.cwd(), file), getVersionedConfig(version)) ??
+    `Invalid template file: ${file}`;
 
   // remove any html comments (<!-- -->) as these will not parse correctly
   content = content.replace(/<!--([\s\S]*?)-->/g, '');
 
   // <edgejs> tags are used for external documentation and should be removed
   content = content.replace(/<edgejs([\s\S]*?)edgejs>/g, '');
-
-  // Any {{ VALUE }} that was not replaced in the above step
-  // should be replaced with only 1 set of [] brackets. Keeping them as
-  // {{ }} double braces will cause the MDX parser to throw an error.
-  content = content.replace(/{{\s*(\w+)\s*}}/g, (match, p1) => {
-    return `[${p1}]`;
-  });
 
   const headings: MDHeadingsList = [];
   const mdxSource = await serialize(content, {
@@ -205,6 +198,15 @@ export async function getStaticProps({params}: {params: any}) {
       format: 'mdx',
     },
   });
+
+  if (mdxSource.frontmatter?.redirect) {
+    return {
+      redirect: {
+        destination: mdxSource.frontmatter.redirect,
+        permanent: false,
+      },
+    };
+  }
 
   return {props: {source: mdxSource, headings, version}};
 }

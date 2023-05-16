@@ -68,7 +68,7 @@ For example, the following response header applies three surrogate keys to the c
 
 `Surrogate-Key: sports basketball march-tournament`
 
-## {{ PRODUCT }} Developer Console {/*developer-console*/}
+## {{ PORTAL }} {/*console*/}
 
 Use the {{ PORTAL }} to purge cached content within a specific environment. 
 
@@ -105,7 +105,7 @@ Purge cached content through the {{ PRODUCT }} CLI by passing the [cache-clear a
 Run the following command to purge the `basketball` surrogate key from the `production` environment from the `my-videos` property:
 
 ```bash
-{{ FULL_CLI_NAME }} cache-clear --team=my-team --site=my-videos --environment=production --surrogate-key=basketball
+{{ FULL_CLI_NAME }} cache-clear --team=my-team --property=my-videos --environment=production --surrogate-key=basketball
 ```
 
 ## REST API {/*rest-api*/}
@@ -128,7 +128,7 @@ By default, all cached responses are purged from an environment when you deploy 
 
 ## Static prerendering after clearing the cache {/*static-prerendering-after-clearing-the-cache*/}
 
-If you have enabled [static prerendering](/guides/performance/static_prerendering), the cache will automatically be repopulated when you clear all entries from the cache (such as when you select _Purge all entries_ in the {{ PRODUCT_NAME }} Developer Console or run `{{ FULL_CLI_NAME }} cache-clear` without providing `--path` or `--surrogate-key`). You can view the prerendering progress by clicking on the active deployment for the environment that was cleared.
+If you have enabled [static prerendering](/guides/performance/static_prerendering), the cache will automatically be repopulated when you clear all entries from the cache (such as when you select _Purge all entries_ in the {{ PORTAL }} or run `{{ FULL_CLI_NAME }} cache-clear` without providing `--path` or `--surrogate-key`). You can view the prerendering progress by clicking on the active deployment for the environment that was cleared.
 
 ## Automated Purging {/*automated-purging*/}
 
@@ -143,11 +143,11 @@ These scripts assume that you have created environments called "production", "st
 ```js
   "scripts": {
     ...
-    "clearcache:dev": "{{ FULL_CLI_NAME }} cache-clear --team=myTeam --site=my{{ PRODUCT_NAME }}App --environment=development --token=${{ PRODUCT_NAME_LOWER }}_deploy_token",
-    "clearcache:stage": "{{ FULL_CLI_NAME }} cache-clear --team=myTeam --site=my{{ PRODUCT_NAME }}App --environment=staging --token=${{ PRODUCT_NAME_LOWER }}_deploy_token",
-    "clearcache:prod": "{{ FULL_CLI_NAME }} cache-clear --team=myTeam --site=my{{ PRODUCT_NAME }}App --environment=production --token=${{ PRODUCT_NAME_LOWER }}_deploy_token",
-    "clearcache:prod:pdps": "{{ FULL_CLI_NAME }} cache-clear --team=myTeam --site=my{{ PRODUCT_NAME }}App --environment=production --surrogate-key=pdp --token=${{ PRODUCT_NAME_LOWER }}_deploy_token",
-    "clearcache:prod:plps": "{{ FULL_CLI_NAME }} cache-clear --team=myTeam --site=my{{ PRODUCT_NAME }}App --environment=production --surrogate-key=plp --token=${{ PRODUCT_NAME_LOWER }}_deploy_token",
+    "clearcache:dev": "{{ FULL_CLI_NAME }} cache-clear --team=myTeam --property=my{{ PRODUCT_NAME }}App --environment=development --token=${{ PRODUCT_NAME_LOWER }}_deploy_token",
+    "clearcache:stage": "{{ FULL_CLI_NAME }} cache-clear --team=myTeam --property=my{{ PRODUCT_NAME }}App --environment=staging --token=${{ PRODUCT_NAME_LOWER }}_deploy_token",
+    "clearcache:prod": "{{ FULL_CLI_NAME }} cache-clear --team=myTeam --property=my{{ PRODUCT_NAME }}App --environment=production --token=${{ PRODUCT_NAME_LOWER }}_deploy_token",
+    "clearcache:prod:pdps": "{{ FULL_CLI_NAME }} cache-clear --team=myTeam --property=my{{ PRODUCT_NAME }}App --environment=production --surrogate-key=pdp --token=${{ PRODUCT_NAME_LOWER }}_deploy_token",
+    "clearcache:prod:plps": "{{ FULL_CLI_NAME }} cache-clear --team=myTeam --property=my{{ PRODUCT_NAME }}App --environment=production --surrogate-key=plp --token=${{ PRODUCT_NAME_LOWER }}_deploy_token",
     ...
   },
 ```

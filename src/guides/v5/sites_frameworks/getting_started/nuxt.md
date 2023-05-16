@@ -4,8 +4,6 @@ title: Nuxt.js
 
 This guide shows you how to deploy a Nuxt.js application to {{ PRODUCT }}. If you run into any issues please consult the [Troubleshooting](#troubleshooting) section.
 
-<Condition version="<7">
-
 ## Example SSR Site {/* example-ssr-site */}
 
 This Nuxt.js example app uses server-side rendering and prefetching to provide lightening-fast transitions between pages.
@@ -40,9 +38,7 @@ This framework has a connector developed for {{ PRODUCT }}. See [Connectors](/gu
   View the Connector Code
 </ButtonLink>
 
-</Condition>
-
-{{ PREREQ }}
+{{ PREREQ.md }}
 
 ## Creating a new Nuxt app {/* creating-a-new-nuxt-app */}
 
@@ -374,8 +370,6 @@ If you set the `fallback` property in the [generate](https://nuxtjs.org/docs/2.x
 
 ## includeFiles {/* includefiles */}
 
-<Condition version="<7">
-
 Nuxt requires that certain resources are included in a build and deploy to have access to them. As such, at times this will require additional configuration. To include additional resources for server side rendering, API calls, etc., use the `includeFiles` option in your `{{ CONFIG_FILE }}` file. [Read more](/guides/basics/edgio_config#includefiles)
 
 In this example, we would have an `api` folder that we want to include all items from.
@@ -397,38 +391,6 @@ module.exports = {
   },
 };
 ```
-
-</Condition>
-
-<Condition version="7">
-
-Nuxt requires that certain resources are included in a build and deploy to have access to them. As such, at times this will require additional configuration. To include additional resources for server side rendering, API calls, etc., use the `includeFiles` option in your `{{ CONFIG_FILE }}` file. [Read more](/guides/performance/cdn_as_code/edgio_config#includefiles)
-
-In this example, we would have an `api` folder that we want to include all items from.
-
-```js
-module.exports = {
-  serverless: {
-    includeFiles: {
-      'api/**/*': true,
-    },
-  },
-};
-```
-
-In addition, if `includeNodeModules` does not copy over the necessary package that may be needed in production, it can be included via this key as well. For instance,
-
-```js
-module.exports = {
-  serverless: {
-    includeFiles: {
-      'node_modules/some_package/**/*': true,
-    },
-  },
-};
-```
-
-</Condition>
 
 ## Nitro {/* nitro */}
 

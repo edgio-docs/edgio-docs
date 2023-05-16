@@ -703,7 +703,7 @@ If you are tracking Core Web Vitals through RUM, then you will need to update th
     }).collect()
   }
 </script>
-<script src="https://rum.layer0.co/latest.js" defer onload="initEdgioRum()"></script>
+<script src="https://{{ RUM_DOMAIN }}/latest.js" defer onload="initEdgioRum()"></script>
 ```
 
 ## Step 11: Build your {{ PRODUCT }} Properties {/*build-your-properties*/}
@@ -748,7 +748,7 @@ If you encounter a build issue as a result of upgrading Node.js, then you should
 Once you have successfully built your property, run the following command to deploy your property to {{ PRODUCT }}:
 
 ```bash
-{{ FULL_CLI_NAME }} deploy --site=<PROPERTY> --team=<TEAM>
+{{ FULL_CLI_NAME }} deploy --property=<PROPERTY> --team=<TEAM>
 ```
 
 **Key information:**

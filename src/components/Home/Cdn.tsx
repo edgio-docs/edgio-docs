@@ -14,9 +14,19 @@ import useConditioning from 'utils/hooks/useConditioning';
 const StyledComp = styled(StyledFeatureSection)``;
 export default function Cdn() {
   const {
-    version: {toVersionedPath},
+    version: {toVersionedPath, selectedVersion},
   } = useConditioning();
-  const parentPath = 'cdn';
+
+  let parentPath;
+
+  if (selectedVersion === '4') {
+    parentPath = `v4-cdn`;
+  } else if (selectedVersion === '7') {
+    parentPath = `v7-cdn`;
+  } else {
+    parentPath = `cdn`;
+  }
+
   const allRoutes = getChildrenRoutesFromSidebarMenuItems(parentPath);
   const allRoutesSorted = sortBy(allRoutes, 'title');
 

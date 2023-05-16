@@ -59,40 +59,9 @@ const EXAMPLES_REPOS = {
   'static-vue': 'https://github.com/layer0-docs/layer0-static-vuejs-example',
 };
 
-const SYSTEM_REQUIREMENTS = `## System Requirements {/*system-requirements*/}
-
-- [Install Node.js 14.19.0](/guides/install_nodejs)`;
-
-const SYSTEM_REQUIREMENTS_H3 = `### System Requirements {/*system-requirements*/}
-
-- [Install Node.js 14.19.0](/guides/install_nodejs)`;
-
 const SIGN_UP = `## Sign up for ${PRODUCT} {/*sign-up*/}
 
 Deploying requires an account on ${PRODUCT}. <a href="${APP_URL}/signup">Sign up here for free.</a>`;
-
-const INSTALL_CLI = `## Install the ${PRODUCT_NAME} CLI {/*install-the-cli*/}
-
-If you have not already done so, install the [${PRODUCT_NAME} CLI](cli).
-
-With \`npm\`: 
-\`\`\`bash
-npm i -g ${PACKAGE_NAME}/cli
-\`\`\`
-
-With \`yarn\`:
-\`\`\`bash
-yarn global add ${PACKAGE_NAME}/cli
-\`\`\`
-`;
-
-const PREREQ = `
-${SYSTEM_REQUIREMENTS}
-
-${SIGN_UP}
-
-${INSTALL_CLI}
-`.trim();
 
 const INSTALL_CLI_STEP = `Install the ${PRODUCT_NAME} CLI
 
@@ -140,9 +109,7 @@ const config = {
   FULL_CLI_NAME,
   HEADER_PREFIX,
   HELP_URL,
-  INSTALL_CLI,
   LOGIN_URL,
-  PREREQ,
   INSTALL_CLI_STEP,
   NODE_VERSION,
   PACKAGE_NAME,
@@ -151,8 +118,6 @@ const config = {
   STARTER_NAME,
   STATUS_URL,
   SUPPORT_URL,
-  SYSTEM_REQUIREMENTS_H3,
-  SYSTEM_REQUIREMENTS,
   WWW_URL,
   RUM_NS,
 };

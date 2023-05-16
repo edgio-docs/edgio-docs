@@ -6,8 +6,6 @@ This guide shows you how to deploy a [Next.js](https://nextjs.org/) application 
 
 <Video src="https://www.youtube.com/watch?v=ZN5oYSSpnmc" />
 
-<Condition version="<7">
-
 ## Example {/* example */}
 
 <ExampleButtons
@@ -17,13 +15,9 @@ This guide shows you how to deploy a [Next.js](https://nextjs.org/) application 
   deployFromRepo
 />
 
-</Condition>
-
 ## Next.js Commerce {/* nextjs-commerce */}
 
 For details on using the Next.js Commerce template with {{ PRODUCT }}, refer to our [Next.js Commerce Guide](/guides/sites_frameworks/getting_started/next_commerce).
-
-<Condition version="<7">
 
 ## Connector {/* connector */}
 
@@ -36,8 +30,6 @@ For details on using the Next.js Commerce template with {{ PRODUCT }}, refer to 
   href="https://github.com/edgio-docs/edgio-connectors/tree/main/edgio-next-connector">
   View the Connector Code
 </ButtonLink>
-
-</Condition>
 
 ## Supported Versions {/* supported-versions */}
 
@@ -57,7 +49,7 @@ For details on using the Next.js Commerce template with {{ PRODUCT }}, refer to 
 - [`getServerSideProps`](https://nextjs.org/docs/basic-features/data-fetching/get-server-side-props)
 - [`getInitialProps`](https://nextjs.org/docs/api-reference/data-fetching/get-initial-props)
 
-{{ PREREQ }}
+{{ PREREQ.md }}
 
 When installing the {{ PRODUCT }} CLI globally in a virtual environment that has Node and NPM installed globally, you [may run into permission issues]({{ FORUM_URL }}/t/xdn-cli-npm-install-error/83). In that case, you can install the {{ PRODUCT }} CLI locally within your app using `npm i -D {{ PACKAGE_NAME }}/cli` and running commands using `./node_modules/{{ PACKAGE_NAME }}/cli` instead of `{{ FULL_CLI_NAME }}`.
 
@@ -84,11 +76,11 @@ cd my-next-app
 
 This will automatically add all of the required dependencies and files to your project. These include:
 
-{{ INIT_DEFAULT_PACKAGES }}
+{{ INIT_DEFAULT_PACKAGES.md }}
 
 - The `{{ PACKAGE_NAME }}/next` package - Provides router middleware that automatically adds Next.js pages and api routes to the {{ PRODUCT }} router.
 - The `{{ PACKAGE_NAME }}/react` package - Provides a `Prefetch` component for prefetching pages.
-  {{ INIT_DEFAULT_FILES }}
+  {{ INIT_DEFAULT_FILES.md }}
 
 ## Next.js Config Plugins {/* nextjs-config-plugins */}
 
@@ -396,8 +388,6 @@ module.exports = with{{ PRODUCT }}({
 })
 ```
 
-<Condition version="<7">
-
 Finally, you will need to update your `{{ CONFIG_FILE }}` to [includeFiles](/guides/basics/edgio_config#includefiles) where the locale files are stored. Example using the default of `/public`:
 
 ```js filename='{{ CONFIG_FILE }}' ins="3-5"
@@ -409,6 +399,7 @@ module.exports = {
 };
 ```
 
+<<<<<<< HEAD:src/guides/sites_frameworks/getting_started/next.md
 </Condition>
 
 <Condition version="7">
@@ -426,6 +417,8 @@ module.exports = {
 
 </Condition>
 
+=======
+>>>>>>> main:src/guides/v6/sites_frameworks/getting_started/next.md
 A working example app can be found [here](https://github.com/edgio-docs/edgio-next-i18n-example).
 
 ## Image optimizer {/* image-optimizer */}
@@ -478,8 +471,6 @@ Next.js Runtime Configuration requires {{ PRODUCT }} 6.0.5+. See <a href="/guide
 </Callout>
 
 {{ PRODUCT }} supports runtime variables in `serverRuntimeConfig` and `publicRuntimeConfig` properties of `next.config.js`. For more information, visit the [Next.js Runtime Configuration](https://nextjs.org/docs/api-reference/next.config.js/runtime-configuration) documentation.
-
-<Condition version="<7">
 
 ## Additional Route Handling Options {/* additional-route-handling-options */}
 
@@ -540,5 +531,3 @@ export default new Router().use(nextRoutes);
 This option has no effect on Next.js apps with Next.js 12 and newer, which are built in server mode.
 
 </Callout>
-
-</Condition>

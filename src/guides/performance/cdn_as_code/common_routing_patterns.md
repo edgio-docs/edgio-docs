@@ -584,7 +584,7 @@ router.get(
   {
     headers: {
       set_response_headers: {
-        'x-robots-tag': 'noindex',
+        'x-robots-tag': 'noindex, nofollow',
       },
     },
   }

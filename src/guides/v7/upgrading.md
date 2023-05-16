@@ -826,7 +826,7 @@ Version 7 no longer generates or uses the `cache-manifest.js` file. If you detec
 
 ### Permalink Indexing {/*permalink-indexing*/}
 
-{{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} version 5.1+ automatically adds the `x-robots-tag: noindex` header all responses being served from edge links and permalinks. This prevents search engines from indexing those links. By default, this header will not be added to any responses served from a custom domain. Prior to version 5.1, the `.noIndexPermalink()` function was an opt-in solution to achieve the same effect.
+{{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} version 5.1+ automatically adds the `x-robots-tag: noindex, nofollow` header all responses being served from edge links and permalinks. This prevents search engines from indexing those links. By default, this header will not be added to any responses served from a custom domain. Prior to version 5.1, the `.noIndexPermalink()` function was an opt-in solution to achieve the same effect.
 
 As a result, the `.noIndexPermalink()` router function is now deprecated and serves no purpose. We recommend that you remove this function from your {{ ROUTES_FILE }} file.
 

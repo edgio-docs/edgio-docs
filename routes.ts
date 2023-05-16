@@ -143,7 +143,7 @@ const router = new Router()
           `v*`
         );
 
-        redirect(`/docs/${targetVersion}/api/:path*`);
+        redirect(`/docs/${targetVersion}/api/:path*:file`);
       });
     }
   )
@@ -162,7 +162,7 @@ const router = new Router()
         `v*`
       );
 
-      redirect(`/docs/${targetVersion}/api/:path*`);
+      redirect(`/docs/${targetVersion}/api/:path*:file`);
     });
   })
   // match current api docs without terminating /,

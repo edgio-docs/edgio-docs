@@ -41,7 +41,7 @@ To access the report after logging into Control:
 |  Specification    | Details  |
 | ----------- | ----------- |
 | Latency | Five minutes |
-| Granularity | **Five minutes** <br /><ul> <li>Today</li> <li>Last 24 (days)</li> <li>Last 7 (days)</li></ul>**Hourly**<ul><li>Last month</li> <li>Last 30 (days)</li></ul> **Daily** <br /><ul><li>Last 90 (days) </li><li>Any custom date range > 90 days</li> |
+| Granularity | **Five minutes** <ul> <li>Today</li> <li>Last 24 (days)</li> <li>Last 7 (days)</li></ul>**Hourly**<ul><li>Last month</li> <li>Last 30 (days)</li></ul> **Daily** <ul><li>Last 90 (days) </li><li>Any custom date range > 90 days</li></ul> |
 | Dimensions | Date/time <br />In,  Out <br />Edgio content provider aggregate <br />POP Service provider account <br />Service (HTTP, HTTPS) <br />Service provider's content providers  |
 | Metrics | Average, Peak, and Low values for Bandwidth, Volume (data transferred), and Requests |
 | Delivery Mechanism | EdgeQuery |

@@ -292,7 +292,6 @@ export default new Router()
 
 ### Rewrites and Redirects {/* rewrites-and-redirects */}
 
-
 The `nextRoutes` plugin automatically adds routes for [rewrites](https://nextjs.org/docs/api-reference/next.config.js/rewrites) and [redirects](https://nextjs.org/docs/api-reference/next.config.js/redirects) specified in `next.config.js`. Redirects are served directly from the network edge to maximize performance.
 
 ### Caching {/* caching */}
@@ -302,6 +301,7 @@ imagine you have `/pages/p/[productId].js`. Here's how you can SSR responses as 
 
 ```js filename="routes.js"
 export default new Router()
+  .use(nextRoutes)
   // Products - SSR
   .get('/p/:productId', {
     caching: {
@@ -330,7 +330,6 @@ export default new Router()
       service_worker_max_age: '1h'
     },
   })
-  .use(nextRoutes);
 ```
 
 ### Preventing Next.js pages from being cached by other CDNs {/* preventing-nextjs-pages-from-being-cached-by-other-cdns */}

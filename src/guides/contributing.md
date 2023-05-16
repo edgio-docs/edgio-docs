@@ -37,15 +37,9 @@ Once you have performed the above steps, you will be able to view a local instan
 
 You may contribute to our documentation by either:
 
-- Modifying an existing article.
+- Modifying an existing article. You should edit the Markdown file in the `src/guides` directory.
 
-  <Callout type="tip">
-
-  Use the `src/data/SidebarMenuItems.tsx` file to locate the corresponding Markdown file.
-
-  </Callout>
-
-- Creating an article to explain a new concept. You should create a Markdown file in the `guides` folder and add a reference to it in `src/data/SidebarMenuItems.tsx`.
+- Creating an article to explain a new concept. You should create a Markdown file in the `src/guides` directory.
 
 We recommend the following process for submitting a change:
 

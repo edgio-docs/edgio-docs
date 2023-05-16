@@ -1,41 +1,64 @@
-import sortBy from 'lodash/sortBy';
 import Link from 'next/link';
 import styled from 'styled-components';
 
-import {PRODUCT} from '../../../constants';
-import {getChildrenRoutesFromSidebarMenuItems} from '../../utils/getChildrenRoutesFromSidebarMenuItems';
+import {CONFIG_FILE, PRODUCT} from '../../../constants';
 import {IconStacks} from '../Icon/IconStacks';
 
 import {StyledFeatureSection} from './FeatureSection';
 import SectionHeader from './SectionHeader';
 
 import useConditioning from 'utils/hooks/useConditioning';
+import itemsByColumn from 'utils/itemsByColumn';
 
 const StyledComp = styled(StyledFeatureSection)``;
+const items = {
+  '4': [
+    {
+      title: 'Limits & Caveats',
+      path: '/guides/limits',
+    },
+    {
+      title: 'v4 Migration Guide',
+      path: '/guides/layer0_migration',
+    },
+    {
+      title: CONFIG_FILE,
+      path: '/guides/layer0_config',
+    },
+  ],
+  '7': [
+    {
+      title: 'Reference',
+      path: '/guides/reference',
+    },
+  ],
+  default: [
+    {
+      title: 'v6 Migration Guide',
+      path: '/guides/upgrading/v6_migration',
+    },
+    {
+      title: 'v5 Migration Guide',
+      path: '/guides/upgrading/v5_migration',
+    },
+    {
+      title: 'v4 Migration Guide',
+      path: '/guides/upgrading/layer0_migration',
+    },
+    {
+      title: CONFIG_FILE,
+      path: '/guides/performance/cdn_as_code/edgio_config',
+    },
+  ],
+};
 
 export default function Reference() {
   const {
-    version: {toVersionedPath, selectedVersion},
+    version,
+    version: {toVersionedPath},
   } = useConditioning();
 
-  let parentPath;
-
-  if (selectedVersion === '4') {
-    parentPath = `v4-reference`;
-  } else if (selectedVersion === '7') {
-    parentPath = `v7-reference`;
-  } else {
-    parentPath = `reference`;
-  }
-
-  const allRoutes = getChildrenRoutesFromSidebarMenuItems(parentPath);
-  const allRoutesSorted = sortBy(allRoutes, 'title');
-
-  const routesByColumns = [
-    allRoutesSorted?.slice(0, 6),
-    allRoutesSorted?.slice(6, 12),
-    allRoutesSorted?.slice(12),
-  ];
+  const routesByColumns = itemsByColumn(items, version, 'title', 6);
 
   return (
     <StyledComp>

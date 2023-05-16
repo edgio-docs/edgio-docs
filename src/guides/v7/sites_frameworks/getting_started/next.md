@@ -86,16 +86,16 @@ This will automatically add all of the required dependencies and files to your p
 
 In the generated `{{ CONFIG_FILE }}` file, you can customize how {{ PRODUCT }} builds and runs your Next.js application. Using the `next` key, you can configure the following options:
 
-| Option                  | Description                                                                                                                                                                                                  | Default |
-| ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------- |
-| `generateSourceMaps`    | Output sourcemaps so that stack traces have original source filenames and line numbers when tailing the logs in the {{ PORTAL }}.                                                                            | `true`  |
-| `disableImageOptimizer` | Disables the {{ PRODUCT }} image optimizer and allows to use the Next's built in image optimizer. <a id="disableImageOptimizer"></a>                                                                         | `false` |
-| `disableDevtools`       | Disables the {{ PRODUCT }} development tools widget on the site. <a id="disableDevtools"></a>                                                                                                                | `false` |
-| `disableServiceWorker`  | Disables the build of the service worker.                                                                                                                                                                    | `false` |
-| `forceServerBuild`      | Forces the `{{ PACKAGE_NAME }}/next` connector to use the server build. This config option replaces the NEXT_FORCE_SERVER_BUILD env variable.                                                                | `false` |
-| `optimizeServerBuild`   | Optimizes the server build by bundling all server assets and decreasing the overall startup time. This option has no effect on apps with serverless build. This option is set to `false` for Next 13.x apps. | `true`  |
-| `proxyToServerlessByDefault` | Reduces the number of generated rules by adding the default catch-all rule that proxies all requests to Next.js in serverless. Set this option to `false` if you want to proxy all unmatched pages to a different origin. | `true` |
-| `enforceTrailingSlash` | Adds rules with Next's internal redirects that either add or remove a trailing slash. When set to `false`, the redirect is performed only by the Next.js server itself and doesn't affect other origins. | `true` |
+| Option                       | Description                                                                                                                                                                                                               | Default |
+| ---------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------- |
+| `generateSourceMaps`         | Output sourcemaps so that stack traces have original source filenames and line numbers when tailing the logs in the {{ PORTAL }}.                                                                                         | `true`  |
+| `disableImageOptimizer`      | Disables the {{ PRODUCT }} image optimizer and allows to use the Next's built in image optimizer. <a id="disableImageOptimizer"></a>                                                                                      | `false` |
+| `disableDevtools`            | Disables the {{ PRODUCT }} development tools widget on the site. <a id="disableDevtools"></a>                                                                                                                             | `false` |
+| `disableServiceWorker`       | Disables the build of the service worker.                                                                                                                                                                                 | `false` |
+| `forceServerBuild`           | Forces the `{{ PACKAGE_NAME }}/next` connector to use the server build. This config option replaces the NEXT_FORCE_SERVER_BUILD env variable.                                                                             | `false` |
+| `optimizeServerBuild`        | Optimizes the server build by bundling all server assets and decreasing the overall startup time. This option has no effect on apps with serverless build. This option is set to `false` for Next 13.x apps.              | `true`  |
+| `proxyToServerlessByDefault` | Reduces the number of generated rules by adding the default catch-all rule that proxies all requests to Next.js in serverless. Set this option to `false` if you want to proxy all unmatched pages to a different origin. | `true`  |
+| `enforceTrailingSlash`       | Adds rules with Next's internal redirects that either add or remove a trailing slash. When set to `false`, the redirect is performed only by the Next.js server itself and doesn't affect other origins.                  | `true`  |
 
 ## {{ PRODUCT }} Next.js Plugin {/* next-plugin */}
 
@@ -195,61 +195,52 @@ export async function getServerSideProps({params: {id}}) {
 
 The `Prefetch` component fetches data for the linked page from {{ PRODUCT }}'s edge cache and adds it to the service worker's cache when the link becomes visible in the viewport. When the user taps on the link, the page transition will be instantaneous because the browser won't need to fetch data from the network.
 
+### Registering the Service Worker {/* registering-the-service-worker */}
+
+To enable prefetching, you need to register the service worker in your app. You can skip this step if your app is already using a service worker. If not, add the following code to your `pages/_app.js` file:
+
+```js filename='_app.js'
+import {useServiceWorker} from '@edgio/react';
+const MyApp = ({Component, pageProps}) => {
+  useServiceWorker({
+    // set to `true` to install the service worker in development mode
+    dev: false,
+  });
+  // ... rest of your _app.js code
+};
+```
+
 ## Routing {/* routing */}
 
-{{ PRODUCT }} supports Next.js's built-in routing scheme for both page and API routes, including Next.js clean dynamic routes. The default {{ ROUTES_FILE }} file created by `{{ FULL_CLI_NAME }} init` sends all requests to Next.js via the `nextRoutes` router plugin:
+{{ PRODUCT }} supports Next.js's built-in routing scheme. The default `routes.js` file created by `{{ FULL_CLI_NAME }} init` sends all requests to Next.js:
 
 ```js filename='routes.js'
 import {nextRoutes} from '{{ PACKAGE_NAME }}/next';
 import {Router} from '{{ PACKAGE_NAME }}/core/router';
 
 export default new Router()
-  // NextRoutes automatically adds routes for all Next.js pages and their assets
+  // By default send all requests to the Next.js app
   .use(nextRoutes);
 ```
 
-### nextRoutes {/* nextroutes */}
+### Routing Requests to Other Origins {/* routing-requests-to-other-origins */}
 
-In the above code, `nextRoutes` adds all Next.js routes to the router based on the `/pages` directory. You can add additional routes before and after `nextRoutes`. For example, you can choose to send some URLs to an alternate backend origin. This is useful for gradually replacing an existing site with a new Next.js app. See [`{{ CONFIG_FILE }}`](/guides/performance/cdn_as_code/edgio_config#origins) for defining origins and [Proxying an Origin](/guides/performance/cdn_as_code/common_routing_patterns#proxying-an-origin) for more information on proxying requests.
+To route certain requests to an origin other than your Next.js app, first add the origin to `edgio.config.js`:
 
-A popular use case is to fallback to a legacy site for any route that your Next.js app isn't configured to handle.
-
-```js filename="routes.js"
-import {nextRoutes} from '{{ PACKAGE_NAME }}/next';
-import {Router} from '{{ PACKAGE_NAME }}/core/router';
-
-export default new Router()
-  .use(nextRoutes)
-
-  // Proxy non-Next.js routes to your origin site
-  .match('/some-legacy-path', {
-    origin: {
-      set_origin: 'origin',
-    },
-  });
-```
-
-To configure the origin backend, use {{ CONFIG_FILE }}:
-
-```js filename="{{ CONFIG_FILE }}"
+```js filename='{{CONFIG_FILE}}' ins="3-17"
 module.exports = {
-  // Other config options...
-
-  // If you need to proxy some URLs to an origin instead of your Next.js app, you can configure the origins here:
+  connector: '@edgio/next',
   origins: [
     {
-      // The name of the backend origin
-      name: 'origin',
-
-      // When provided, the following value will be sent as the host header when connecting to the origin.
-      // If omitted, the host header from the browser will be forwarded to the origin.
-      override_host_header: 'example.com',
-
-      // The list of backend hosts
+      name: 'api',
       hosts: [
         {
-          // The domain name or IP address of the origin server
-          location: 'example.com',
+          scheme: 'match',
+          location: [
+            {
+              hostname: 'api-origin.myapp.com',
+            },
+          ],
         },
       ],
     },
@@ -257,9 +248,50 @@ module.exports = {
 };
 ```
 
-{{ origins_config_warning.md }}
+Then use the `match` method to define a route and specify the `origin` option:
 
-### rewrites and redirects {/* rewrites-and-redirects */}
+```js filename='routes.js' ins='5-9'
+export default new Router()
+  // By default send all requests to the Next.js app
+  .use(nextRoutes)
+  // Override the default behavior to route requests to /api/* to the api origin
+  .match('/api/:path*', {
+    origin: {
+      set_origin: 'api',
+    },
+  });
+```
+
+### Preview Mode {/* preview-mode */}
+
+To be able to use [Preview Mode](https://nextjs.org/docs/advanced-features/preview-mode) while being able to cache the respective pages, update your routes to match the requests that contain the two cookies `__prerender_bypass` & `__next_preview_data`, and send those to serverless for rendering.
+
+```js filename="routes.js" ins="8-21"
+import {Router} from '{{ PACKAGE_NAME }}/core/router';
+import {nextRoutes} from '{{ PACKAGE_NAME }}/next';
+
+export default new Router()
+  // By default send all requests to the Next.js app
+  .use(nextRoutes)
+  // Disable caching for preview mode
+  .match(
+    {
+      cookies: {
+        __prerender_bypass: /.*/g,
+        __next_preview_data: /.*/g,
+      },
+    },
+    {
+      caching: {
+        bypass_cache: true,
+        bypass_client_cache: true,
+      },
+    }
+  );
+```
+
+### Rewrites and Redirects {/* rewrites-and-redirects */}
+
 
 The `nextRoutes` plugin automatically adds routes for [rewrites](https://nextjs.org/docs/api-reference/next.config.js/rewrites) and [redirects](https://nextjs.org/docs/api-reference/next.config.js/redirects) specified in `next.config.js`. Redirects are served directly from the network edge to maximize performance.
 
@@ -268,50 +300,54 @@ The `nextRoutes` plugin automatically adds routes for [rewrites](https://nextjs.
 The easiest way to add edge caching to your Next.js app is to add caching routes after `nextRoutes`. For example,
 imagine you have `/pages/p/[productId].js`. Here's how you can SSR responses as well as cache calls to `getServerSideProps`:
 
-```js filename="routes.js" ins="6-14,16-28"
+```js filename="routes.js"
 export default new Router()
-  .use(nextRoutes)
-
   // Products - SSR
   .get('/p/:productId', {
     caching: {
+      // Ignore the cache-control header generated by Next.js
+      ignore_origin_no_cache: [200],
+      // cache at the edge for one day
       max_age: '1d',
+      // continue to serve stale responses for up to one hour while revalidating
       stale_while_revalidate: '1h',
+      // don't cache the response in the browser
+      bypass_client_cache: true
     },
   })
-
   // Products - getServerSideProps
   .get('/_next/data/:version/p/:productId.json', {
-    // Allowing service worker (if present) to serve the cached responses from the browser itself
     caching: {
+      // Ignore the cache-control header generated by Next.js
+      ignore_origin_no_cache: [200],
+      // cache at the edge for one day
       max_age: '1d',
+      // continue to serve stale responses for up to one hour while revalidating
       stale_while_revalidate: '1h',
-      service_worker_max_age: '86400s',
-      bypass_client_cache: true,
+      // disable caching in the browser's http cache
+      bypass_client_cache: true
+      // instead cache in the browser using the service worker for one hour - this allows us to prefetch API calls
+      service_worker_max_age: '1h'
     },
-    headers: {
-      set_response_headers: {
-        'x-sw-cache-control': 'max-age=86400',
-      },
-    },
-  });
+  })
+  .use(nextRoutes);
 ```
 
 ### Preventing Next.js pages from being cached by other CDNs {/* preventing-nextjs-pages-from-being-cached-by-other-cdns */}
 
-By default, Next.js adds a `cache-control: private, no-cache, no-store, must-revalidate` header to all responses from `getServerSideProps`. The presence of `private` would prevent {{ PRODUCT_NAME }} from caching the response, so `nextRoutes` from `{{ PACKAGE_NAME }}/next` automatically removes the `private` portion of the header to enable caching at the edge. If you want your responses to be private, you need to specify a `cache-control` header using the router:
+If you are using a CDN in front of {{ PRODUCT_NAME }} and you want to prevent it from caching Next.js pages, you can do so by setting the `bypass_client_cache` option to `true`:
 
-```js filename='routes.js'
-export default new Router().use(nextRoutes).get('/my-private-page', {
-  headers: {
-    set_response_headers: {
-      'cache-control': 'private, no-cache, no-store, must-revalidate',
+```js filename='routes.js' ins='5-9'
+new Router()
+  // By default send all requests to the Next.js app
+  .use(nextRoutes)
+  // Disable caching in downstream CDNs for a specific page
+  .get('/my-private-page', {
+    caching: {
+      bypass_client_cache: true, // this will prevent downstream CDNs from caching the response
     },
-  },
-});
+  });
 ```
-
-Doing so will prevent other CDNs running in front of {{ PRODUCT_NAME }} from caching the response.
 
 ## Using next-i18next {/* using-next-i18next */}
 
@@ -346,7 +382,7 @@ export async function getStaticProps({locale}) {
 
 Make sure you also import the config correctly with the new name into your `next.config.js`:
 
-```js filename="next.config.js" ins="6"
+```js filename="next.config.js" ins="5"
 const { with{{ PRODUCT }} } = require('{{ PACKAGE_NAME }}/next/config')
 const { i18n } = require('./i18next.config')
 
@@ -355,19 +391,13 @@ module.exports = with{{ PRODUCT }}({
   });
 ```
 
-Finally, you will need to update your `{{ CONFIG_FILE }}` to [includeFiles](/guides/performance/cdn_as_code/edgio_config#serverless) where the locale files are stored. Example using the default of `/public`:
+Finally, you will need to update your `{{ CONFIG_FILE }}` to [include](/guides/performance/cdn_as_code/edgio_config#serverless) where the locale files are stored. Here is an using the default location `/public`:
 
 ```js filename='{{ CONFIG_FILE }}' ins="13"
 module.exports = {
   connector: '{{ PACKAGE_NAME }}/next',
 
   serverless: {
-    // Set to true to include all packages listed in the dependencies property of package.json when deploying to Edgio.
-    // This option generally isn't needed as Edgio automatically includes all modules imported by your code in the bundle that
-    // is uploaded during deployment
-    // includeNodeModules: true,
-
-    // Include additional paths that are dynamically loaded by your app at runtime here when building the serverless bundle.
     include: ['public/**/*'],
   },
 };
@@ -377,11 +407,10 @@ module.exports = {
 
 ## Image optimizer {/* image-optimizer */}
 
-By default, Next.js image optimizer is replaced by our image optimizer, which is available in all build modes. You can disable it and use the built-in Next.js image optimizer instead by adding `disableImageOptimizer: true` to the `{{ CONFIG_FILE }}` file. see [Config Options](#disableImageOptimizer) for more on the `disableImageOptimizer` flag.
+By default, Next.js image optimizer is replaced by our image optimizer, which is available in all build modes. You can disable it and use the built-in Next.js image optimizer instead by adding `disableImageOptimizer: true` to the `next` config in the `{{ CONFIG_FILE }}` file.
 
 ```js filename='{{ CONFIG_FILE }}' ins="3"
 module.exports = {
-  /* ... */
   next: {
     disableImageOptimizer: true,
   },

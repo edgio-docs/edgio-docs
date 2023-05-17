@@ -4,24 +4,24 @@ title: Open Edge
 For service providers, video streaming and online gaming are key drivers of revenue and growth, but they are bandwidth-intensive, putting pressure on cost and infrastructure. With growing demand compounded by file downloads and webpage delivery, the pressure continues to mount. The solution? Embed Content Delivery Network technology (CDN) on-net, reducing backhaul cost and improving performance while opening potential revenue opportunities.
 
 ## Purpose
-The goal of this content is to help Edgio's Open Edge partners
-- Become familiar with Edgio's Open Edge
-- Learn about the Edgio Edge Cache
+The goal of this content is to help {{ COMPANY_NAME }}'s Open Edge partners
+- Become familiar with {{ COMPANY_NAME }}'s Open Edge
+- Learn about the {{ COMPANY_NAME }} Edge Cache
 - Gain an understanding of the Control portal and the Service Provider Traffic Report
 
 ## Edge Cache
-Open Edge is powered by Edgio Edge Cache, a plug-and-play service that lets you directly serve content from your infrastructure. Edge Cache servers are secure, high-performance CDN caching and distribution systems worldwide to drive Edgio global network delivery. By embedding this power within your network with dedicated connections to your routing systems, you turbocharge your delivery. Instead of repeated costly network calls to a distant origin, you can serve cached content directly from local on-net systems. For the lowest latency and maximum reliability, Edge Cache servers use high-speed, solid-state devices for caching content.
+Open Edge is powered by {{ COMPANY_NAME }} Edge Cache, a plug-and-play service that lets you directly serve content from your infrastructure. Edge Cache servers are secure, high-performance CDN caching and distribution systems worldwide to drive {{ COMPANY_NAME }} global network delivery. By embedding this power within your network with dedicated connections to your routing systems, you turbocharge your delivery. Instead of repeated costly network calls to a distant origin, you can serve cached content directly from local on-net systems. For the lowest latency and maximum reliability, Edge Cache servers use high-speed, solid-state devices for caching content.
 
 ## Benefits
 |  Benefit    | Details  |
 | ----------- | ----------- |
 | Significantly Reduce Backhaul Cost | Reduce operational costs associated with retrieving content from the origin by caching content within your network. |
 | Improve Quality of Experience (QoE) | Improve overall QoE for your users with higher average video bitrates, faster start times, and lower rebuffer rates. |
-| Open the Door to Revenue Opportunities | You can offer local content providers high-performance, in-region content delivery and capture revenue from the traffic that content providers deliver through your network. | Focus on building your business while Edgio manages and operates your CDN infrastructure. |
-| Get Support When You Need It | Get help quickly with our technology experts available through unrestricted 24/7/365 live support from Edgio’s Global Network Operations Center. |
+| Open the Door to Revenue Opportunities | You can offer local content providers high-performance, in-region content delivery and capture revenue from the traffic that content providers deliver through your network. | Focus on building your business while {{ COMPANY_NAME }} manages and operates your CDN infrastructure. |
+| Get Support When You Need It | Get help quickly with our technology experts available through unrestricted 24/7/365 live support from {{ COMPANY_NAME }}’s Global Network Operations Center. |
 
 ## Portal for Service Providers
-The Edgio Portal allows you to view data about your traffic and create additional users for your organization.
+The Control portal allows you to view data about your traffic and create additional users for your organization.
 To log into the Control portal:
 1. Go to https://control.llnw.com/acontrol/#/login.
 2. Enter the user and password that were provided to you in your Welcome Letter. The Dashboard is displayed, which is the initial view.
@@ -29,8 +29,8 @@ To log into the Control portal:
 
 ## Service Provider Traffic Report
 The Service Provider Traffic Report provides metrics and trends that allow service providers to
-- Identify, isolate, and resolve performance-related issues to maintain a superior end-user experience and potential revenue share from Edgio.
-- Proactively identify potential issues and take corrective actions or escalate to Edgio Operations for further troubleshooting from a software perspective.
+- Identify, isolate, and resolve performance-related issues to maintain a superior end-user experience and potential revenue share from {{ COMPANY_NAME }}.
+- Proactively identify potential issues and take corrective actions or escalate to {{ COMPANY_NAME }} Operations for further troubleshooting from a software perspective.
 
 To access the report after logging into Control:
 1. Hover the mouse pointer over the left navigation menu.
@@ -42,7 +42,7 @@ To access the report after logging into Control:
 | ----------- | ----------- |
 | Latency | Five minutes |
 | Granularity | **Five minutes** <ul> <li>Today</li> <li>Last 24 (days)</li> <li>Last 7 (days)</li></ul>**Hourly**<ul><li>Last month</li> <li>Last 30 (days)</li></ul> **Daily** <ul><li>Last 90 (days) </li><li>Any custom date range > 90 days</li></ul> |
-| Dimensions | Date/time <br />In,  Out <br />Edgio content provider aggregate <br />POP Service provider account <br />Service (HTTP, HTTPS) <br />Service provider's content providers  |
+| Dimensions | Date/time <br />In,  Out <br />{{ COMPANY_NAME }} content provider aggregate <br />POP Service provider account <br />Service (HTTP, HTTPS) <br />Service provider's content providers  |
 | Metrics | Average, Peak, and Low values for Bandwidth, Volume (data transferred), and Requests |
 | Delivery Mechanism | EdgeQuery |
 
@@ -169,17 +169,17 @@ You might want to create additional users for other personnel in your organizati
 ## FAQs
 |  Question |  Response |
 | ----------- | ----------- |
-| How is traffic directed to an Open Edge PoP? | Edgio uses Anycast Border Gateway Protocol (BGP) announcements to direct clients towards the nearest DNS servers. The primary method of controlling which Point of Presence (PoP) clients are delivered from is through DNS. In the event of a PoP failure that results in BGP communication issues between Edgio and our providers, traffic is automatically routed to the next logically close location where IP announcements are being advertised. Edgio's DNS systems have the capability to selectively move traffic based on various metrics and data inputs. This process is primarily automated, with manual controls and overrides in place. During planned maintenance, Edgio has the ability to proactively shift traffic to selected locations and adhere to best practices by utilizing the best known connected location with the nearest proximity to the location undergoing maintenance. |
-|How do I know that the revenue share is accurate? | Edgio has a Service Provider portal that displays traffic activity; however, we cannot share customer-specific details on volume or pricing as it is forbidden in most content contracts. As a publicly traded company, Edgio follows industry-standard accounting practices. On a monthly basis, the CFO certifies the accuracy of the reported results and delivers a sworn statement. |
-| Why does Edgio request me to provision more egress than the rated server size? | Edgio Service Provider PoPs have an `N+1` hardware configuration to ensure that the rated capacity remains true. For example, a 100G PoP includes 100G of CDS capacity + 25G server for good measure. |
-| Can I provision egress capacity on an as-needed basis? | Edgio requires the egress to meet or exceed the PoP rating. The egress needs to be in place so that Edgio can sell into the capacity as well as be available for live events that might exceed the typical daily usage. This is an important consideration for providing the revenue share. |
-|Does Edgio provide racks for the severs? | The standard configuration does not include racks; however, racks can be included upon request. |
-| What is required for remote-hands support? | Edgio requires the Service Provider to be available for any physical activity related to the PoP, including installation, reboot as required, visual inspection, and hardware replacement if necessary. |
-| Who is responsible in the event of hardware failure? | If the Service Provider owns the hardware and is receiving revenue share (typically 40%), the Service Provider is financially responsible to purchase replacement hardware. Edgio assists in providing any necessary information and in coordinating the replacement. The Service Provider may purchase the replacement hardware from Edgio. Any replacement hardware must meet the specifications of Edgio. Edgio does not get involved in minor items such as cable replacement. If Edgio owns the hardware, Edgio is financially responsible to replace hardware during the term of the contract. |
-| What is the software-update process? | Edgio operates an Agile software-development process with a goal of ten monthly releases per annual cycle. A monthly release is not planned during the December holiday blackout period, nor is a monthly release planned during anticipated additional software-development load due to failed QA or unplanned work. Each monthly release is tested in Edgio’s QA environment, followed by a carefully monitored production burn-in environment. After acceptance of all stages, Edgio’s entire network is upgraded across a 72-hour upgrade window. |
-| How is a PoP failover handled? | The default policy of Edgio traffic management is to failover or spillover traffic from any of our Service Provider partners into sites owned and operated by Edgio. This practice prevents stampede failure because the Edgio core PoPs are generally 10x the size of our Partner Network locations. Once health and traffic levels have returned to normal, Edgio’s standard traffic-engineering processes return traffic to the affected sites. |
+| How is traffic directed to an Open Edge PoP? | {{ COMPANY_NAME }} uses Anycast Border Gateway Protocol (BGP) announcements to direct clients towards the nearest DNS servers. The primary method of controlling which Point of Presence (PoP) clients are delivered from is through DNS. In the event of a PoP failure that results in BGP communication issues between {{ COMPANY_NAME }} and our providers, traffic is automatically routed to the next logically close location where IP announcements are being advertised. {{ COMPANY_NAME }}'s DNS systems have the capability to selectively move traffic based on various metrics and data inputs. This process is primarily automated, with manual controls and overrides in place. During planned maintenance, {{ COMPANY_NAME }} has the ability to proactively shift traffic to selected locations and adhere to best practices by utilizing the best known connected location with the nearest proximity to the location undergoing maintenance. |
+|How do I know that the revenue share is accurate? | {{ COMPANY_NAME }} has a Service Provider portal that displays traffic activity; however, we cannot share customer-specific details on volume or pricing as it is forbidden in most content contracts. As a publicly traded company, {{ COMPANY_NAME }} follows industry-standard accounting practices. On a monthly basis, the CFO certifies the accuracy of the reported results and delivers a sworn statement. |
+| Why does {{ COMPANY_NAME }} request me to provision more egress than the rated server size? | {{ COMPANY_NAME }} Service Provider PoPs have an `N+1` hardware configuration to ensure that the rated capacity remains true. For example, a 100G PoP includes 100G of CDS capacity + 25G server for good measure. |
+| Can I provision egress capacity on an as-needed basis? | {{ COMPANY_NAME }} requires the egress to meet or exceed the PoP rating. The egress needs to be in place so that {{ COMPANY_NAME }} can sell into the capacity as well as be available for live events that might exceed the typical daily usage. This is an important consideration for providing the revenue share. |
+|Does {{ COMPANY_NAME }} provide racks for the severs? | The standard configuration does not include racks; however, racks can be included upon request. |
+| What is required for remote-hands support? | {{ COMPANY_NAME }} requires the Service Provider to be available for any physical activity related to the PoP, including installation, reboot as required, visual inspection, and hardware replacement if necessary. |
+| Who is responsible in the event of hardware failure? | If the Service Provider owns the hardware and is receiving revenue share (typically 40%), the Service Provider is financially responsible to purchase replacement hardware. {{ COMPANY_NAME }} assists in providing any necessary information and in coordinating the replacement. The Service Provider may purchase the replacement hardware from {{ COMPANY_NAME }}. Any replacement hardware must meet the specifications of {{ COMPANY_NAME }}. {{ COMPANY_NAME }} does not get involved in minor items such as cable replacement. If {{ COMPANY_NAME }} owns the hardware, {{ COMPANY_NAME }} is financially responsible to replace hardware during the term of the contract. |
+| What is the software-update process? | {{ COMPANY_NAME }} operates an Agile software-development process with a goal of ten monthly releases per annual cycle. A monthly release is not planned during the December holiday blackout period, nor is a monthly release planned during anticipated additional software-development load due to failed QA or unplanned work. Each monthly release is tested in {{ COMPANY_NAME }}’s QA environment, followed by a carefully monitored production burn-in environment. After acceptance of all stages, {{ COMPANY_NAME }}’s entire network is upgraded across a 72-hour upgrade window. |
+| How is a PoP failover handled? | The default policy of {{ COMPANY_NAME }} traffic management is to failover or spillover traffic from any of our Service Provider partners into sites owned and operated by {{ COMPANY_NAME }}. This practice prevents stampede failure because the {{ COMPANY_NAME }} core PoPs are generally 10x the size of our Partner Network locations. Once health and traffic levels have returned to normal, {{ COMPANY_NAME }}’s standard traffic-engineering processes return traffic to the affected sites. |
 | What is the power consumption in watts of our PoP? | Each rack consumes up to 5KW of power when fully loaded. A 50G-200G single-rack system consumes up to 5KW; however, it is likely to be less on the smaller sizes. A dual-rack 200G-400G PoP consumes up to 10KW of power. |
-| Does the hardware include a warranty? | If the Service Provider owns the hardware, the manufacturer warranty transfers to the Service Provider. Current warranty lengths for major components are: <br /><ul><li>Arista (direct) - 1 year</li> <li>Dell (direct) - 3 years</li> <li>Super Micro (direct) - 3 years </li> <li>Cisco (via OSI) - Lifetime (shipped to Edgio) </li> <li>Aruba (via OSI) - Lifetime (shipped to Edgio)</li> <li>Raritan (via OSI) -Lifetime (shipped to Edgio)</li></ul> |
+| Does the hardware include a warranty? | If the Service Provider owns the hardware, the manufacturer warranty transfers to the Service Provider. Current warranty lengths for major components are: <br /><ul><li>Arista (direct) - 1 year</li> <li>Dell (direct) - 3 years</li> <li>Super Micro (direct) - 3 years </li> <li>Cisco (via OSI) - Lifetime (shipped to {{ COMPANY_NAME }}) </li> <li>Aruba (via OSI) - Lifetime (shipped to {{ COMPANY_NAME }})</li> <li>Raritan (via OSI) -Lifetime (shipped to {{ COMPANY_NAME }})</li></ul> |
 
 
 

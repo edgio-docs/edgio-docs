@@ -1,16 +1,16 @@
 ---
-title: Open Edge
+title: {{ PRODUCT_OPEN_EDGE }}
 ---
 For service providers, video streaming and online gaming are key drivers of revenue and growth, but they are bandwidth-intensive, putting pressure on cost and infrastructure. With growing demand compounded by file downloads and webpage delivery, the pressure continues to mount. The solution? Embed Content Delivery Network technology (CDN) on-net, reducing backhaul cost and improving performance while opening potential revenue opportunities.
 
 ## Purpose
-The goal of this content is to help {{ COMPANY_NAME }}'s Open Edge partners
-- Become familiar with {{ COMPANY_NAME }}'s Open Edge
+The goal of this content is to help {{ COMPANY_NAME }}'s {{ PRODUCT_OPEN_EDGE }} partners
+- Become familiar with {{ COMPANY_NAME }}'s {{ PRODUCT_OPEN_EDGE }}
 - Learn about the {{ COMPANY_NAME }} Edge Cache
-- Gain an understanding of the Control portal and the Service Provider Traffic Report
+- Gain an understanding of  {{ PORTAL_CONTROL }} and the Service Provider Traffic Report
 
 ## Edge Cache
-Open Edge is powered by {{ COMPANY_NAME }} Edge Cache, a plug-and-play service that lets you directly serve content from your infrastructure. Edge Cache servers are secure, high-performance CDN caching and distribution systems worldwide to drive {{ COMPANY_NAME }} global network delivery. By embedding this power within your network with dedicated connections to your routing systems, you turbocharge your delivery. Instead of repeated costly network calls to a distant origin, you can serve cached content directly from local on-net systems. For the lowest latency and maximum reliability, Edge Cache servers use high-speed, solid-state devices for caching content.
+{{ PRODUCT_OPEN_EDGE }} is powered by {{ COMPANY_NAME }} Edge Cache, a plug-and-play service that lets you directly serve content from your infrastructure. Edge Cache servers are secure, high-performance CDN caching and distribution systems worldwide to drive {{ COMPANY_NAME }} global network delivery. By embedding this power within your network with dedicated connections to your routing systems, you turbocharge your delivery. Instead of repeated costly network calls to a distant origin, you can serve cached content directly from local on-net systems. For the lowest latency and maximum reliability, Edge Cache servers use high-speed, solid-state devices for caching content.
 
 ## Benefits
 |  Benefit    | Details  |
@@ -21,8 +21,8 @@ Open Edge is powered by {{ COMPANY_NAME }} Edge Cache, a plug-and-play service t
 | Get Support When You Need It | Get help quickly with our technology experts available through unrestricted 24/7/365 live support from {{ COMPANY_NAME }}’s Global Network Operations Center. |
 
 ## Portal for Service Providers
-The Control portal allows you to view data about your traffic and create additional users for your organization.
-To log into the Control portal:
+The {{ PORTAL_CONTROL }} allows you to view data about your traffic and create additional users for your organization.
+To log into the {{ PORTAL_CONTROL }}:
 1. Go to https://control.llnw.com/acontrol/#/login.
 2. Enter the user and password that were provided to you in your Welcome Letter. The Dashboard is displayed, which is the initial view.
 3. Select the **Service Provider** report from the Reporting section.
@@ -32,7 +32,7 @@ The Service Provider Traffic Report provides metrics and trends that allow servi
 - Identify, isolate, and resolve performance-related issues to maintain a superior end-user experience and potential revenue share from {{ COMPANY_NAME }}.
 - Proactively identify potential issues and take corrective actions or escalate to {{ COMPANY_NAME }} Operations for further troubleshooting from a software perspective.
 
-To access the report after logging into Control:
+To access the report after logging into the {{ PORTAL_CONTROL }}:
 1. Hover the mouse pointer over the left navigation menu.
 2. Expand the **Reports** menu.
 3. Select **Service Provider Traffic** to display the Service Provider Traffic Report.
@@ -50,7 +50,7 @@ To access the report after logging into Control:
 The top right part of the report contains controls for selecting services, a time frame, and a timezone.
 - Choose a service: HTTP, HTTPS, or All (HTTP and HTTPS).
 - Choose from pre-set time frames or choose custom date ranges in the drop-down menu. Click the **Apply** button on custom ranges.
-- Choose a timezone. The top five most commonly used timezones in the Control portal are at the top of the drop-down menu. Scroll down for additional time zones.
+- Choose a timezone. The top five most commonly used timezones in the {{ PORTAL_CONTROL }} are at the top of the drop-down menu. Scroll down for additional time zones.
 
 The data in the tabs changes to reflect your choices.
 
@@ -154,7 +154,7 @@ Data is shown in percentages, where higher values indicate higher efficiency.
 </Callout>
 
 ### Exporting Data
-To export chart data to a PowerPoint (.ppt) file that contains a screenshot of the chart, click the **Export** drop-down menu on the right above the chart; then select **PowerPoint**. The Control portal creates and downloads the report.
+To export chart data to a PowerPoint (.ppt) file that contains a screenshot of the chart, click the **Export** drop-down menu on the right above the chart; then select **PowerPoint**. The {{ PORTAL_CONTROL }} creates and downloads the report.
 
 ## Creating Additional Users
  
@@ -164,12 +164,12 @@ You might want to create additional users for other personnel in your organizati
 
 2. Click the **+ new** button at the top of the page.
 
-3. For extensive information on creating users, please see `Managing Users` in the [Control Portal User Guide](https://support.limelight.com/public/en/Default.htm#Control/Control%20Portal%20-%20User%20Guide/User%20Guide%20Pages/Control%20Portal%20User%20Guide.htm?TocPath=Control%257CUser%2520Guide%257C_____0).
+3. For extensive information on creating users, please see `Managing Users` in the [{{ PORTAL_CONTROL }}  User Guide](https://support.limelight.com/public/en/Default.htm#Control/Control%20Portal%20-%20User%20Guide/User%20Guide%20Pages/Control%20Portal%20User%20Guide.htm?TocPath=Control%257CUser%2520Guide%257C_____0).
 
 ## FAQs
 |  Question |  Response |
 | ----------- | ----------- |
-| How is traffic directed to an Open Edge PoP? | {{ COMPANY_NAME }} uses Anycast Border Gateway Protocol (BGP) announcements to direct clients towards the nearest DNS servers. The primary method of controlling which Point of Presence (PoP) clients are delivered from is through DNS. In the event of a PoP failure that results in BGP communication issues between {{ COMPANY_NAME }} and our providers, traffic is automatically routed to the next logically close location where IP announcements are being advertised. {{ COMPANY_NAME }}'s DNS systems have the capability to selectively move traffic based on various metrics and data inputs. This process is primarily automated, with manual controls and overrides in place. During planned maintenance, {{ COMPANY_NAME }} has the ability to proactively shift traffic to selected locations and adhere to best practices by utilizing the best known connected location with the nearest proximity to the location undergoing maintenance. |
+| How is traffic directed to an {{ PRODUCT_OPEN_EDGE }} PoP? | {{ COMPANY_NAME }} uses Anycast Border Gateway Protocol (BGP) announcements to direct clients towards the nearest DNS servers. The primary method of controlling which Point of Presence (PoP) clients are delivered from is through DNS. In the event of a PoP failure that results in BGP communication issues between {{ COMPANY_NAME }} and our providers, traffic is automatically routed to the next logically close location where IP announcements are being advertised. {{ COMPANY_NAME }}'s DNS systems have the capability to selectively move traffic based on various metrics and data inputs. This process is primarily automated, with manual controls and overrides in place. During planned maintenance, {{ COMPANY_NAME }} has the ability to proactively shift traffic to selected locations and adhere to best practices by utilizing the best known connected location with the nearest proximity to the location undergoing maintenance. |
 |How do I know that the revenue share is accurate? | {{ COMPANY_NAME }} has a Service Provider portal that displays traffic activity; however, we cannot share customer-specific details on volume or pricing as it is forbidden in most content contracts. As a publicly traded company, {{ COMPANY_NAME }} follows industry-standard accounting practices. On a monthly basis, the CFO certifies the accuracy of the reported results and delivers a sworn statement. |
 | Why does {{ COMPANY_NAME }} request me to provision more egress than the rated server size? | {{ COMPANY_NAME }} Service Provider PoPs have an `N+1` hardware configuration to ensure that the rated capacity remains true. For example, a 100G PoP includes 100G of CDS capacity + 25G server for good measure. |
 | Can I provision egress capacity on an as-needed basis? | {{ COMPANY_NAME }} requires the egress to meet or exceed the PoP rating. The egress needs to be in place so that {{ COMPANY_NAME }} can sell into the capacity as well as be available for live events that might exceed the typical daily usage. This is an important consideration for providing the revenue share. |

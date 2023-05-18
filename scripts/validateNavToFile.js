@@ -35,6 +35,8 @@ function checkPathsExistence(paths) {
   paths.forEach((path) => {
     const fullPath = join('src', `${path}.md`);
     const exists = fs.existsSync(fullPath);
-    console.log(`${path} exists: ${exists}`);
+    if (!exists) {
+      console.log(`${path} exists: ${exists}`);
+    }
   });
 }

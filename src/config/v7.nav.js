@@ -611,7 +611,7 @@ const nav = {
     },
     {
       title: 'Upgrading',
-      path: 'v7/upgrading',
+      path: 'upgrading',
       icon: 'add-circle',
     },
   ],

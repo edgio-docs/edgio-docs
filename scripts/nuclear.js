@@ -28,17 +28,17 @@ function copyFiles(sourceDir, destDirs) {
           destDir,
           path.relative(sourceDir, sourcePath)
         );
-        if (!fs.existsSync(destPath)) {
-          promises.push(
-            mkdir(destPath, {recursive: true}).then(() =>
-              copyFiles(sourcePath, [destPath])
-            )
-          );
-        } else {
-          console.log(
-            `Skipped file (already exists): ${sourcePath} -> ${destPath}`
-          );
-        }
+        // if (!fs.existsSync(destPath)) {
+        promises.push(
+          mkdir(destPath, {recursive: true}).then(() =>
+            copyFiles(sourcePath, [destPath])
+          )
+        );
+        // } else {
+        //   console.log(
+        //     `Skipped file (already exists): ${sourcePath} -> ${destPath}`
+        //   );
+        // }
       });
     } else if (entry.isFile() && entry.name.endsWith(fileExtension)) {
       destDirs.forEach((destDir) => {

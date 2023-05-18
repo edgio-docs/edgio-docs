@@ -30,8 +30,8 @@ function copyFiles(sourceDir, destDirs) {
         );
         if (!fs.existsSync(destPath)) {
           promises.push(
-            mkdir(path.dirname(destPath), {recursive: true}).then(() =>
-              copyFiles(sourcePath, [destDir])
+            mkdir(destPath, {recursive: true}).then(() =>
+              copyFiles(sourcePath, [destPath])
             )
           );
         } else {
@@ -42,10 +42,8 @@ function copyFiles(sourceDir, destDirs) {
       });
     } else if (entry.isFile() && entry.name.endsWith(fileExtension)) {
       destDirs.forEach((destDir) => {
-        const destPath = path.join(
-          destDir,
-          path.relative(sourceDir, sourcePath)
-        );
+        const relativeDir = path.dirname(path.relative(sourceDir, sourcePath));
+        const destPath = path.join(destDir, relativeDir, entry.name);
         if (!fs.existsSync(destPath)) {
           promises.push(
             mkdir(path.dirname(destPath), {recursive: true})

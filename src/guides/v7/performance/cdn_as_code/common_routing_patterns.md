@@ -2,7 +2,7 @@
 title: Common Routing Patterns
 ---
 
-<Condition version="7">{{ROUTEHELPER}}</Condition>
+{{ROUTEHELPER}}
 
 This guide gives examples of common routing patterns using {{ PRODUCT_NAME }}.
 

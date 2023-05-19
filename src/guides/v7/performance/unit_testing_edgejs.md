@@ -102,40 +102,6 @@ If the route being tested has an upstream request or serves a static file, you w
 
 These functions reference the backend entries defined in your `{{ CONFIG_FILE }}` file.
 
-<Condition version="<=6">
-#### Mocking _appHost_ Example {/*mocking-apphost-example*/}
-
-If your route sends a response from your application, such as `renderWithApp` or using `NextRoutes`, `NuxtRoutes`, etc., use `appHost()` to reference the host and port for mocking the request and response.
-
-```js
-// src/router.ts
-...
-export default new Router()
-  .get('/collections/:path*', ({ cache }) => {
-    cache({
-      edge: {
-        maxAgeSeconds: 60 * 60
-      }
-    })
-  })
-  .fallback(({ renderWithApp }) => renderWithApp())
-```
-
-...
-
-```js
-// routes.test.ts
-it('should cache the collections page at the edge for 1 hour', async () => {
-  nock(`http://${appHost()}`)
-    .get('/collections/c1')
-    .reply(200, '')
-
-  const result = await runRoute(routes, '/collections/c1')
-  expect(result).toBeCachedByTheEdgeFor(60 * 60)
-})
-```
-</Condition>
-
 #### Mocking _backendHost_ Example {/*mocking-backendhost-example*/}
 
 Routes that use `proxy` to fetch from a backend can be mocked using `backendHost(name)`, where `name` is the key used for the backend defined in `{{ CONFIG_FILE }}`.

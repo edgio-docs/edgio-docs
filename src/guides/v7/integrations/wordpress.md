@@ -4,19 +4,19 @@ title: WordPress Integration
 
 Optimize your [WordPress](https://www.wordpress.com) website's performance and security with {{ PRODUCT }}. Proxying traffic through our global network reduces latency and enhances the delivery of your website content. With our free WordPress plugin, you can manage cached website content directly from your control panel. Additionally, {{ PRODUCT }} offers advanced performance enhancements such as Predictive Prefetching for an even better user experience. Upgrade your website's performance today with {{ PRODUCT }}!
 
-## What is WordPress? {/*what-is-wordpresss*/}
+## What is WordPress? {/* what-is-wordpresss */}
 
 WordPress is a content management system (CMS) that allows you to host and build websites. WordPress contains plugin architecture and a template system, so you can customize any website to fit your business, blog, portfolio, or online store.
 
 {{ PREREQ.md }}
 
-## Getting Started {/*getting-started*/}
+## Getting Started {/* getting-started */}
 
-### Create a new WordPress site {/*create-a-new-wordpress-site*/}
+### Create a new WordPress site {/* create-a-new-wordpress-site */}
 
 If you don't already have a WordPress site, create one by following the [official WordPress.com guide](https://wordpress.com/support/start/). You may also use other WordPress providers, but setup instructions may differ.
 
-### Create via {{ PORTAL }} {/*create-via-developer-console*/}
+### Create via {{ PORTAL }} {/* create-via-developer-console */}
 
 1. First, [log in to the {{ PORTAL }}]({{ LOGIN_URL }}) and locate the **New Site** button.
 
@@ -31,6 +31,7 @@ If you don't already have a WordPress site, create one by following the [officia
 ![Quick Start Deploy Command](/images/app-edge/quickstart-deploy-command.png)
 
 An example command for **www.yourdomain.com**:
+
 ```bash
   npx {{ PACKAGE_NAME }}/cli@{{ PACKAGE_VERSION }} init \
     {{ INIT_ARG_EDGIO_VERSION }} \
@@ -42,7 +43,7 @@ An example command for **www.yourdomain.com**:
 
 4. Finally, you can start to update your {{ PRODUCT }} router (`routes.js`) and configuration file (`{{ CONFIG_FILE }}`) to [proxy your origin](#configure-backend-to-proxy) and [setup caching rules](#configure-caching).
 
-### Run the WordPress app locally on {{ PRODUCT }} {/*run-the-wordpress-app-locally-on*/}
+### Run the WordPress app locally on {{ PRODUCT }} {/* run-the-wordpress-app-locally-on */}
 
 Test your app with the {{ PRODUCT_PLATFORM }} on your local machine by running the following command in your project's root directory:
 
@@ -52,7 +53,7 @@ Test your app with the {{ PRODUCT_PLATFORM }} on your local machine by running t
 
 Load the site http://127.0.0.1:3000
 
-## Deploying {/*deploying*/}
+## Deploying {/* deploying */}
 
 Create a production build of your app by running the following in your project's root directory:
 
@@ -68,23 +69,13 @@ Deploy your app to the {{ PRODUCT_PLATFORM }} by running the following command i
 
 Refer to the [Deployments](/guides/basics/deployments) guide for more information on the `deploy` command and its options.
 
-## Direct Traffic to {{ PRODUCT_PLATFORM }} {/*direct-traffic-to*/}
+## Direct Traffic to {{ PRODUCT_PLATFORM }} {/* direct-traffic-to */}
 
-Once you have confirmed that your deployed {{ PRODUCT }} site is proxying content from your hosted WordPress site, you may go back to your site in the {{ PORTAL_LINK }} and follow the instructions on configuring your production DNS to point to {{ PRODUCT }}. 
+Once you have confirmed that your deployed {{ PRODUCT }} site is proxying content from your hosted WordPress site, you may go back to your site in the {{ PORTAL_LINK }} and follow the instructions on configuring your production DNS to point to {{ PRODUCT }}.
 
-<Condition version="7">
+[Learn more.](/guides/basics/hostnames_and_origins)
 
-  [Learn more.](/guides/basics/hostnames_and_origins)
-
-</Condition>
-
-<Condition version="<7">
-
-  [Learn more.](/guides/basics/domains)
-
-</Condition>
-
-## WordPress Plugin {/*wordpress-plugin*/}
+## WordPress Plugin {/* wordpress-plugin */}
 
 {{ PRODUCT }} provides a WordPress plugin you may leverage to set cache TTL and automatically clear the {{ PRODUCT }} cache when a change is made to your site.
 
@@ -102,7 +93,7 @@ Once the plugin has been uploaded, click **Manage Plugin**.
 
 ![manage plugin](/images/wordpress/manage_plugin.png)
 
-Navigate to **Settings > {{ PRODUCT }}** to pull up the form for the required information. You may see errors indicating that the {{ PRODUCT }} plugin is missing information. 
+Navigate to **Settings > {{ PRODUCT }}** to pull up the form for the required information. You may see errors indicating that the {{ PRODUCT }} plugin is missing information.
 
 ![plugin settings](/images/wordpress/plugin_settings.png)
 
@@ -124,7 +115,7 @@ For information on the **Browser Cache TTL**, **Edge Cache TTL**, and **Cache St
 
 ![plugin fields](/images/wordpress/deploy_token.png)
 
-Once created, copy the token to the **API Key** field of the WordPress plugin. After you've completed all the fields, click **Save Changes**. 
+Once created, copy the token to the **API Key** field of the WordPress plugin. After you've completed all the fields, click **Save Changes**.
 
 Lastly, test the behavior by clicking **Clear Cache**. You can validate the cache clearing was successful by checking the **Activity** tab of your site:
 

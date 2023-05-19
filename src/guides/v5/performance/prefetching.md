@@ -319,10 +319,9 @@ import install from '{{ PACKAGE_NAME }}/prefetch/window/install';
 // aren't available in the edge cache:
 install({includeCacheMisses: true});
 ```
-<Condition version="<7">
+
 ## The cache-manifest.js File {/*the-cache-manifestjs-file*/}
 
 This file is generated at runtime and is used by the `Prefetcher` class from `{{ PACKAGE_NAME }}/prefetch` to add routes to the [service worker](#service-worker). The routes ensure that custom cache keys and the `serviceWorkerSeconds` properties from the `cache()` settings in your router are propagated to the service worker.
 
 For more information on `Prefetcher`, `serviceWorkerSeconds`, and `cache()`, see [Class Prefetcher](/docs/api/prefetch/classes/_sw_prefetcher_.prefetcher.html).
-</Condition>

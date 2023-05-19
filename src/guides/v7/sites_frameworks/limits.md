@@ -38,24 +38,6 @@ at require (internal/modules/cjs/helpers.js:101:18)
 at Object.<anonymous> (/var/task/node_modules/broadcast-channel/dist/es5node/methods/node.js:57:41)
 ```
 
-<Condition version="<7">
-
-To fix this issue, you need to instruct {{ PRODUCT_NAME }} to include the binary files that your application requires.
-This can be done by using the [`includeFiles` property in `{{ CONFIG_FILE }}`](/guides/basics/edgio_config#includefiles) like so:
-
-```js
-includeFiles: {
-  'node_modules/microtime/**/*': true,
-}
-```
-
-Or you could choose to bundle everything in the packages listed in the `dependencies` property of `package.json` by using
-[`includeNodeModules` property](/guides/basics/edgio_config#includenodemodules).
-
-</Condition>
-
-<Condition version="7">
-
 To fix this issue, you need to instruct {{ PRODUCT_NAME }} to include the binary files that your application requires.
 This can be done by using the [`serverless.includeFiles` property in `{{ CONFIG_FILE }}`](/guides/performance/cdn_as_code/edgio_config#serverless) like so:
 
@@ -67,8 +49,6 @@ serverless: {includeFiles: {
 
 Or you could choose to bundle everything in the packages listed in the `dependencies` property of `package.json` by using
 [`serverless.includeNodeModules` property](/guides/performance/cdn_as_code/edgio_config#serverless).
-
-</Condition>
 
 ## Readonly filesystem in serverless runtime {/* readonly-filesystem-in-serverless-runtime */}
 
@@ -219,19 +199,6 @@ Step 3. Change your existing `package.json` to have `node setNodeModules.js` bef
 
 Step 4. Change your `{{ CONFIG_FILE }}` to have:
 
-<Condition version="<7">
-
-```js
-// {{ DOCS_URL }}/guides/basics/edgio_config
-module.exports = {
-  includeFiles: require('./getNodeModules'),
-};
-```
-
-</Condition>
-
-<Condition version="7">
-
 ```js
 // {{ DOCS_URL }}/guides/performance/cdn_as_code/edgio_config
 module.exports = {
@@ -240,5 +207,3 @@ module.exports = {
   },
 };
 ```
-
-</Condition>

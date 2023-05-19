@@ -1,18 +1,18 @@
 ---
-title: Core Web Vitals 
+title: Core Web Vitals
 ---
 
 This guide shows you how to track your website's [Core Web Vitals](https://web.dev/vitals/) on {{ PRODUCT_NAME }} in real time using real user monitoring (RUM).
 
 <Callout type="info">
 
-  {{ PRODUCT }} tracks Core Web Vitals for Chromium-based browsers and Firefox.
+{{ PRODUCT }} tracks Core Web Vitals for Chromium-based browsers and Firefox.
 
 </Callout>
 
-<Video src="https://player.vimeo.com/video/691615391"/>
+<Video src="https://player.vimeo.com/video/691615391" />
 
-## What are Core Web Vitals? {/*what-are-core-web-vitals*/}
+## What are Core Web Vitals? {/* what-are-core-web-vitals */}
 
 In [May of 2021](https://developers.google.com/search/blog/2020/11/timing-for-page-experience), Google began ranking websites based on a
 set of performance metrics called [Core Web Vitals](https://web.dev/vitals/). This change effectively made site performance an SEO ranking factor.
@@ -23,12 +23,10 @@ be tracked via [Google Search Console](https://search.google.com/search-console/
 
 - It can take days to weeks to see the effect of changes to your site on Core Web Vitals.
 - It's hard to diagnose Core Web Vitals by page type or URL.
-<Condition version="<=6">
-- It's impossible to A/B test the impact of site optimizations on Core Web Vitals. Note that to effectively A/B test performance optimizations you need both a RUM measurement tool and split testing at the edge, both of which {{ PRODUCT_NAME }} provides. 
-</Condition>
+
 <a id="why-use-layer0-to-track-core-web-vitals"></a>
 
-## Why use {{ PRODUCT_NAME }} to track Core Web Vitals? {/*why-use-to-track-core-web-vitals*/}
+## Why use {{ PRODUCT_NAME }} to track Core Web Vitals? {/* why-use-to-track-core-web-vitals */}
 
 The benefits of using {{ PRODUCT }} instead of Google Search Console to track Core Web Vitals are that it allows you to:
 
@@ -36,30 +34,27 @@ The benefits of using {{ PRODUCT }} instead of Google Search Console to track Co
 - Correlate web vitals to your application's routes
 - Analyze score across a number of dimensions such as country, device, and connection type
 - Identify which pages are most negatively impacting your search ranking.
-<Condition version="<=6">
-- Use {{ PRODUCT_NAME }}'s [Edge-based A/B testing](/guides/performance/traffic_splitting/a_b_testing) to A/B test the impact of performance optimizations on Core Web Vitals.
-</Condition>
 
-## Installing Real User Monitoring (RUM) {/*installation*/}
+## Installing Real User Monitoring (RUM) {/* installation */}
 
-Tracking Core Web Vitals on {{ PRODUCT_NAME }} requires adding the `{{ PACKAGE_NAME }}/rum` client library to your application. The {{ PORTAL_LINK }} provides information on how to install this library using a script tag, Google tag manager, npm, and yarn. 
+Tracking Core Web Vitals on {{ PRODUCT_NAME }} requires adding the `{{ PACKAGE_NAME }}/rum` client library to your application. The {{ PORTAL_LINK }} provides information on how to install this library using a script tag, Google tag manager, npm, and yarn.
 
 **To view {{ PACKAGE_NAME }}/rum installation instructions**
 
 1.  Load the **Core Web Vitals** page.
     {{ ENV_NAV }} **Core Web Vitals**.
 
-2.  Click on the tab for the desired installation method. 
+2.  Click on the tab for the desired installation method.
 
     ![RUM Package Installation](/images/v7/performance/cwv-configuration-guide.png?width=450)
 
     <Callout type="info">
 
-      The {{ PORTAL }} provides installation instructions that contain a token that is specific to your property. 
+    The {{ PORTAL }} provides installation instructions that contain a token that is specific to your property.
 
     </Callout>
 
-### Script Tag and Google Tag Manager {/*google-tag-manager*/}
+### Script Tag and Google Tag Manager {/* google-tag-manager */}
 
 Add Core Web Vitals tracking by adding the following code to each page in your application:
 
@@ -94,7 +89,7 @@ Add Core Web Vitals tracking by adding the following code to each page in your a
 
 </SnippetGroup>
 
-### NPM or Yarn {/*npm-or-yarn*/}
+### NPM or Yarn {/* npm-or-yarn */}
 
 Install the Core Web Vitals library using npm or yarn by running the following command:
 
@@ -113,14 +108,14 @@ yarn add {{ PACKAGE_NAME }}/rum
 Add the following code to your application's browser bundle:
 
 ```js
-import { Metrics } from '@edgio/rum'
+import {Metrics} from '@edgio/rum';
 
 new Metrics({
-  token: '<TOKEN>' // Get your token from the {{ PORTAL }}
-}).collect()
+  token: '<TOKEN>', // Get your token from the {{ PORTAL }}
+}).collect();
 ```
 
-## Tie URLs to Page Templates {/*tie-urls-to-page-templates*/}
+## Tie URLs to Page Templates {/* tie-urls-to-page-templates */}
 
 Tie URLs to page templates by passing an optional `router` parameter to `Metrics`.
 
@@ -220,7 +215,7 @@ For non single page applications (e.g. traditional "multi-page apps"), you can a
 </script>
 ```
 
-## Track Additional Data {/*track-additional-data*/}
+## Track Additional Data {/* track-additional-data */}
 
 You can tie the following data to Core Web Vitals:
 

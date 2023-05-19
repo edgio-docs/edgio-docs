@@ -64,7 +64,7 @@ specified environment will be cleared.
 | Name              | Description                                                              |
 | ----------------- | ------------------------------------------------------------------------ |
 | `--team`          | (Required) The team name                                                 |
-| `--property`      | (Required) The property name                                                 |
+| `--property`      | (Required) The property name                                             |
 | `--environment`   | (Required) The environment name                                          |
 | `--path`          | A path to clear. Use "\*" as a wildcard                                  |
 | `--surrogate-key` | Clears all responses assigned to the specified surrogate key (cache tag) |
@@ -209,32 +209,15 @@ Builds and deploys your property on {{ PRODUCT_NAME }}.
 
 #### Parameters {/* parameters */}
 
-| Name   | Description                                                                                                                          |
-| ------ | ------------------------------------------------------------------------------------------------------------------------------------ |
+| Name   | Description                                                                                                                                  |
+| ------ | -------------------------------------------------------------------------------------------------------------------------------------------- |
 | `team` | The name of the team under which the property will be deployed. The property will be deployed to your private space will be used if omitted. |
 
 #### Options {/* options */}
 
-<Condition version="<7">
-
-| Name                         | Description                                                                                                                                                                                                                                                                                                                |
-| ---------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `--site`                     | The name of the site to deploy. By default the `name` field in `package.json` is used.                                                                                                                                                                                                                                     |
-| `--environment`              | The environment to deploy to. By default the `default` environment is used.                                                                                                                                                                                                                                                |
-| `--branch`                   | The name of the source control branch. This is automatically set when using Git.                                                                                                                                                                                                                                           |
-| `--skip-build`               | Skips the build step                                                                                                                                                                                                                                                                                                       |
-| `--token`                    | Authenticates using a deploy token rather than your user credentials. Use this option when deploying from CI. Alternatively, you can also specify the deploy token by setting the `EDGIO_DEPLOY_TOKEN` environment variable.                                                                                               |
-| `--commit-url`               | The URL at which the commit can be viewed in your source control provided. If your package.json provides the repository attribute the commit URL will be derived automatically if you use GitHub, GitLab, or BitBucket.                                                                                                    |
-| `--include-sources`          | Includes all non-gitignored source files in the bundle uploaded to {{ PRODUCT_NAME }}. This can be helpful when debugging, especially when working with {{ PRODUCT_NAME }} support. You can limit the files that are uploaded using the [sources](/guides/basics/edgio_config#sources) configuration in {{ CONFIG_FILE }}. |
-| `--disable-permanent-assets` | Set this to true to suppress errors like "Immutable file (...) content was changed" during deployment.                                                                                                                                                                                                                     |
-
-</Condition>
-
-<Condition version="7">
-
 | Name                         | Description                                                                                                                                                                                                                                                                                                                                 |
 | ---------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `--property`                     | The name of the property to deploy. By default the `name` field in `package.json` is used.                                                                                                                                                                                                                                                      |
+| `--property`                 | The name of the property to deploy. By default the `name` field in `package.json` is used.                                                                                                                                                                                                                                                  |
 | `--environment`              | The environment to deploy to. By default the `default` environment is used.                                                                                                                                                                                                                                                                 |
 | `--branch`                   | The name of the source control branch. This is automatically set when using Git.                                                                                                                                                                                                                                                            |
 | `--skip-build`               | Skips the build step                                                                                                                                                                                                                                                                                                                        |
@@ -242,8 +225,6 @@ Builds and deploys your property on {{ PRODUCT_NAME }}.
 | `--commit-url`               | The URL at which the commit can be viewed in your source control provided. If your package.json provides the repository attribute the commit URL will be derived automatically if you use GitHub, GitLab, or BitBucket.                                                                                                                     |
 | `--include-sources`          | Includes all non-gitignored source files in the bundle uploaded to {{ PRODUCT_NAME }}. This can be helpful when debugging, especially when working with {{ PRODUCT_NAME }} support. You can limit the files that are uploaded using the [sources](/guides/performance/cdn_as_code/edgio_config#sources) configuration in {{ CONFIG_FILE }}. |
 | `--disable-permanent-assets` | Set this to true to suppress errors like "Immutable file (...) content was changed" during deployment.                                                                                                                                                                                                                                      |
-
-</Condition>
 
 #### Getting Information about the Deployment {/* getting-information-about-the-deployment */}
 
@@ -304,11 +285,11 @@ Manage deployed property's environments and environment variables.
 
 #### Options {/* options */}
 
-| Name            | Description                                                                          |
-| --------------- | ------------------------------------------------------------------------------------ |
-| `--team`        | The name of the team under which the property belongs. Uses private space if omitted.    |
-| `--property`        | The property to pull variables from. Uses package.json name property if omitted. |
-| `--environment` | Environment to pull variables from. Uses default environment if omitted.             |
+| Name            | Description                                                                           |
+| --------------- | ------------------------------------------------------------------------------------- |
+| `--team`        | The name of the team under which the property belongs. Uses private space if omitted. |
+| `--property`    | The property to pull variables from. Uses package.json name property if omitted.      |
+| `--environment` | Environment to pull variables from. Uses default environment if omitted.              |
 
 #### Example {/* example */}
 
@@ -322,7 +303,7 @@ Run this command from the root directory of your web application or website to a
 
 <Callout type="tip">
 
-  If you are not using the latest version of {{ PRODUCT }}, then you must specify the `{{ INIT_ARG_EDGIO_VERSION }}` option when running this command.
+If you are not using the latest version of {{ PRODUCT }}, then you must specify the `{{ INIT_ARG_EDGIO_VERSION }}` option when running this command.
 
 </Callout>
 
@@ -409,17 +390,6 @@ To install the latest preview:
 ```bash
 {{ FULL_CLI_NAME }} use next
 ```
-
-<Condition version="<7">
-<Callout type="warning">
-
-Using `{{ FULL_CLI_NAME }} use latest` or `{{ FULL_CLI_NAME }} use next` will update all `{{ PACKAGE_NAME }}/*` packages in your project to the latest version published in the NPM registry.
-Doing so may update your project to a newer **major** version which may introduce breaking changes.
-
-It is recommended you updating using the [latest stable version](#latest-stable) relative to your current version
-
-</Callout>
-</Condition>
 
 ## Troubleshooting {/* troubleshooting */}
 

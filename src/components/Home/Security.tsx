@@ -21,6 +21,17 @@ const items = {
       path: '/guides/managed_rule_groups',
     },
   ],
+  '5,6': [
+    {
+      title: 'Security Suite',
+      path: '/guides/security/security_suite',
+    },
+    {
+      title: 'Managed Rule Groups',
+      path: '/guides/security/managed_rule_groups',
+    },
+  ],
+
   default: [
     {
       title: 'Website Security (EdgeJS)',

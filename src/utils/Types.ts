@@ -1,8 +1,8 @@
-export type ItemsByVersion = StringMap & {
-  '4'?: SimpleRouteItem[];
-  '5'?: SimpleRouteItem[];
-  '6'?: SimpleRouteItem[];
-  '7'?: SimpleRouteItem[];
+type Version = '4' | '5' | '6' | '7';
+
+export type ItemsByVersion = {
+  [key: string]: SimpleRouteItem[];
+} & {
   default: SimpleRouteItem[];
 };
 
@@ -22,7 +22,7 @@ export interface Route {
   routes?: Route[];
 }
 
-export type SimpleRouteItem = {
+export type SimpleRouteItem = StringMap & {
   title: string;
   path: string;
 };

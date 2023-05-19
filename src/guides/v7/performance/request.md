@@ -118,7 +118,7 @@ These values are provided as a best effort. {{ PRODUCT_NAME }} cannot guarantee 
 
 ### Static prerendering headers {/*static-prerendering-headers*/}
 
-- `{{ HEADER_PREFIX }}-preload`: Will be "1" if the request originated from [Static Prerendering](/guides/static_prerendering). Otherwise this header will not be present.
+- `{{ HEADER_PREFIX }}-preload`: Will be "1" if the request originated from [Static Prerendering](/guides/performance/static_prerendering). Otherwise this header will not be present.
 
 ## Request Body {/*request-body*/}
 

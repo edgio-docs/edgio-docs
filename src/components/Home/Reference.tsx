@@ -26,6 +26,24 @@ const items = {
       path: '/guides/layer0_config',
     },
   ],
+  '5,6': [
+    {
+      title: 'v6 Migration Guide',
+      path: '/guides/upgrading/v6_migration',
+    },
+    {
+      title: 'v5 Migration Guide',
+      path: '/guides/upgrading/v5_migration',
+    },
+    {
+      title: 'v4 Migration Guide',
+      path: '/guides/upgrading/layer0_migration',
+    },
+    {
+      title: CONFIG_FILE,
+      path: '/guides/basics/edgio_config',
+    },
+  ],
   '7': [
     {
       title: 'Reference',

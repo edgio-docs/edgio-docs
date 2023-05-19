@@ -90,7 +90,7 @@ Or from within `site` directory
 
 <Callout type="info">
 
-  For more details on using Next.js on {{ PRODUCT }} refer to the <a href="/guides/next">Next.js guide</a>.
+  For more details on using Next.js on {{ PRODUCT }} refer to the <a href="/guides/sites_frameworks/getting_started/next">Next.js guide</a>.
 
 </Callout>
 

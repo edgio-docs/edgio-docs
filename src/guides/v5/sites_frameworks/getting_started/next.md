@@ -122,7 +122,7 @@ This document will be updated once the problem is fully resolved.
 
 ### withServiceWorker {/* withserviceworker */}
 
-The `withServiceWorker` plugin builds a service worker from `sw/service-worker.js` that prefetches and caches all static JS assets and enables {{ PRODUCT }}'s [prefetching](/guides/next#prefetching) functionality.
+The `withServiceWorker` plugin builds a service worker from `sw/service-worker.js` that prefetches and caches all static JS assets and enables {{ PRODUCT }}'s [prefetching](#prefetching) functionality.
 
 ## {{ PRODUCT_NAME }} Devtools {/* devtools */}
 

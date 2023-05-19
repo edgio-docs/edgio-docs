@@ -10,8 +10,11 @@ export default function itemsByColumn(
   sortByKey?: string,
   columnCount?: number
 ): SimpleRouteItem[][] {
+  const defaultItems = items.default;
   const itemsByVersion: SimpleRouteItem[] =
-    items[version.selectedVersion] || items.default;
+    Object.entries(items).find(([key]) =>
+      key.split(',').includes(version.selectedVersion)
+    )?.[1] ?? defaultItems;
 
   let sortedItems = itemsByVersion;
   if (sortByKey) {

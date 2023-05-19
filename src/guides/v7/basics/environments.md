@@ -8,7 +8,7 @@ An environment defines how traffic will be served through {{ PRODUCT }}. Each en
 -   [Origins:](/guides/basics/hostnames_and_origins) An origin configuration defines how our service will communicate with your web servers.
 -   [Rules:](/guides/performance/rules) A rule determines how requests for a specific environment will be processed.
 -   [Core Web Vitals:](/guides/performance/observability/core_web_vitals) Review and analyze performance metrics collected through the measurement of actual Chrome users. 
--   [Caching:](/guides/performance/caching) By default, deploying to an environment also clears that environment's cached content. You may manually [purge content](/guides/caching) from the **Caching** page, the [{{ PRODUCT }} CLI](/guides/cli#cache-clear), or our [REST API](/guides/develop/rest_api#clear-cache). 
+-   [Caching:](/guides/performance/caching) By default, deploying to an environment also clears that environment's cached content. You may manually [purge content](/guides/performance/caching) from the **Caching** page, the [{{ PRODUCT }} CLI](/guides/develop/cli#cache-clear), or our [REST API](/guides/develop/rest_api#clear-cache). 
 -   [Environment Variables:](#environment-variables) An environment variable is a placeholder for sensitive information (e.g., API keys and passwords) that should not be checked into source control. 
 -   **Traffic (Analytics):** Contains real-time statistics for this environment's traffic. You may also view a breakdown of traffic by specific routes.
 -   [Real-Time Log Delivery:](/guides/logs/rtld) Delivers log data in near real-time to a variety of destinations. 

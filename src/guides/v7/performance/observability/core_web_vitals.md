@@ -199,7 +199,7 @@ new Metrics({
 
 </SnippetGroup>
 
-[Learn more about route syntax.](/guides/routing#route-pattern-syntax)
+[Learn more about route syntax.](/guides/performance/cdn_as_code#route-pattern-syntax)
 
 For non single page applications (e.g. traditional "multi-page apps"), you can also explicitly set the page label by passing a `pageLabel` property during initialization. An example is shown below where the `pageLabel` is pulled from `document.title`:
 

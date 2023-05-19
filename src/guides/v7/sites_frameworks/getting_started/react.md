@@ -90,7 +90,7 @@ See [Deployments](/guides/basics/deployments) for more information.
 
 ## Prefetching {/*prefetching*/}
 
-Install the `{{ PACKAGE_NAME }}/react` to enable [prefetching](/guides/prefetching).
+Install the `{{ PACKAGE_NAME }}/react` to enable [prefetching](/guides/performance/prefetching).
 
 ```bash
 npm i -D {{ PACKAGE_NAME }}/react

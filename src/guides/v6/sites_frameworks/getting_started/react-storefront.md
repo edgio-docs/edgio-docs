@@ -38,4 +38,4 @@ Deploy your app to the {{ PRODUCT_PLATFORM }} by running the following command i
 
 ## Prefetching {/*prefetching*/}
 
-See the [Prefetching Guide](https://docs.reactstorefront.io/guides/prefetching) in the React Storefront documentation.
+See the [Prefetching Guide](https://docs.reactstorefront.io/guides/performance/prefetching) in the React Storefront documentation.

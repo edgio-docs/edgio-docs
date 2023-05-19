@@ -5,7 +5,7 @@ title: Observability
 Use Observability to monitor the performance of an application running on {{ PRODUCT }}. Key tools and methods for tracking performance are described below.
 -   Use our Real User Monitoring (RUM) library ({{ PACKAGE_NAME }}/rum) to track [Core Web Vitals](/guides/performance/observability/core_web_vitals) and identify areas for improvement. 
 -   <Condition version="7">If you are using our CDN-as-code approach to CDN configuration, then you may use</Condition><Condition version="<=6">Use</Condition> our [DevTools](/guides/performance/observability/devtools) to monitor the impact of your caching and predictive prefetching configurations on your site in real time. This allows use to identify and remediate issues.
--   Analyze the performance for specific requests through the [{{ HEADER_PREFIX }}-t](/guides/response_headers#-t-response-header). This response header contains the time the request spent at each layer of the {{ PRODUCT }} stack.
+-   Analyze the performance for specific requests through the [{{ HEADER_PREFIX }}-t](/guides/performance/response#-t-response-header). This response header contains the time the request spent at each layer of the {{ PRODUCT }} stack.
 -   Track code execution time through our `{{ PACKAGE_NAME }}/core/timing` module.
 
 ## Tracking your Own Timings {/*tracking-your-own-timings*/}

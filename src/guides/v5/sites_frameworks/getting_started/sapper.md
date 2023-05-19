@@ -165,4 +165,4 @@ Note that the behavior of the `Prefetch` component is different from Sapper's bu
 - `rel="prefetch"` only prefetches data when the user hovers over the link. The `Prefetch` component will prefetch data when the link becomes visible, or, if the `immediately` prop is present, as soon as the page loads.
 - `Prefetch` will only prefetch from the {{ PRODUCT_EDGE }} cache, which means that additional traffic due to prefetching will never reach your API servers.
 
-See [Prefetching](/guides/prefetching) for more information.
+See [Prefetching](/guides/performance/prefetching) for more information.

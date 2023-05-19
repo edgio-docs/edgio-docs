@@ -191,7 +191,7 @@ By default, {{ PRODUCT_NAME }} prerenders a maximum of 200 URLs at a time. This 
 
 <Condition version="7">
 
-By default, {{ PRODUCT_NAME }} prerenders a maximum of 200 URLs at a time. This can create significant additional load on your APIs at the time of deployment. You can lower this limit by setting the [prerenderConcurrency](/guides/performance/cdn_as_code/edgio_config#prerenderconcurrency) property in `{{ CONFIG_FILE }}`. {{ PRODUCT_NAME }} imposes the following limits on prerendering:
+By default, {{ PRODUCT_NAME }} prerenders a maximum of 200 URLs at a time. This can create significant additional load on your APIs at the time of deployment. You can lower this limit by setting the [prerenderConcurrency](/guides/basics/edgio_config#prerenderconcurrency) property in `{{ CONFIG_FILE }}`. {{ PRODUCT_NAME }} imposes the following limits on prerendering:
 
 </Condition>
 

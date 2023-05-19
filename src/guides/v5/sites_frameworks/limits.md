@@ -57,7 +57,7 @@ Or you could choose to bundle everything in the packages listed in the `dependen
 <Condition version="7">
 
 To fix this issue, you need to instruct {{ PRODUCT_NAME }} to include the binary files that your application requires.
-This can be done by using the [`serverless.includeFiles` property in `{{ CONFIG_FILE }}`](/guides/performance/cdn_as_code/edgio_config#serverless) like so:
+This can be done by using the [`serverless.includeFiles` property in `{{ CONFIG_FILE }}`](/guides/basics/edgio_config#serverless) like so:
 
 ```js
 serverless: {includeFiles: {
@@ -66,7 +66,7 @@ serverless: {includeFiles: {
 ```
 
 Or you could choose to bundle everything in the packages listed in the `dependencies` property of `package.json` by using
-[`serverless.includeNodeModules` property](/guides/performance/cdn_as_code/edgio_config#serverless).
+[`serverless.includeNodeModules` property](/guides/basics/edgio_config#serverless).
 
 </Condition>
 
@@ -233,7 +233,7 @@ module.exports = {
 <Condition version="7">
 
 ```js
-// {{ DOCS_URL }}/guides/performance/cdn_as_code/edgio_config
+// {{ DOCS_URL }}/guides/basics/edgio_config
 module.exports = {
   serverless: {
     includeFiles: require('./getNodeModules'),

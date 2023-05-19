@@ -119,7 +119,7 @@ module.exports = with{{ PRODUCT }}({
 
 ## {{ PRODUCT_NAME }} Devtools {/* devtools */}
 
-By default, [Devtools](/guides/devtools) are enabled on production builds of Next.js with {{ PRODUCT }}. To disable devtools in production, see [Config Options](#disableDevtools) for setting the `disableEdgioDevTools` flag.
+By default, [Devtools](/guides/performance/observability/devtools) are enabled on production builds of Next.js with {{ PRODUCT }}. To disable devtools in production, see [Config Options](#disableDevtools) for setting the `disableEdgioDevTools` flag.
 
 ## Running Locally {/* running-locally */}
 

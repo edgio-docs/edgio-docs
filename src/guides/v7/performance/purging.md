@@ -94,7 +94,7 @@ Use the {{ PORTAL }} to purge cached content within a specific environment.
 
 ## {{ PRODUCT }} CLI {/*cli*/}
 
-Purge cached content through the {{ PRODUCT }} CLI by passing the [cache-clear argument](/guides/cli#cache-clear). You may purge:
+Purge cached content through the {{ PRODUCT }} CLI by passing the [cache-clear argument](/guides/develop/cli#cache-clear). You may purge:
 
 -   **All content:** Exclude the `--path` and `--surrogate-key` options.
 -   **By relative path:** Pass the `--path` option. You may use an `*` to represent zero or more characters.

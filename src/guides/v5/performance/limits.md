@@ -50,5 +50,5 @@ The following headers are served for use by {{ PRODUCT }}. You may not modify th
 
 | Value | Limit     | Description                                                                                         |
 | ----- | --------- | --------------------------------------------------------------------------------------------------- |
-| Size  | Unlimited | All access logs will always be [logged](/guides/logs/access_logs).                          |
+| Size  | Unlimited | All access logs will always be [logged](/guides/develop/logs#access-logs).                          |
 | Time  | 2 hours   | The minimum time that {{ PRODUCT }} guarantees that access logs will be available for reading. |

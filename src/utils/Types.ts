@@ -1,9 +1,7 @@
-type Version = '4' | '5' | '6' | '7';
-
 export type ItemsByVersion = {
   [key: string]: SimpleRouteItem[];
 } & {
-  default: SimpleRouteItem[];
+  default?: SimpleRouteItem[];
 };
 
 export interface MDHeading {

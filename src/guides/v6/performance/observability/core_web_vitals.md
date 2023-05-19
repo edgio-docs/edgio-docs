@@ -144,7 +144,7 @@ new Metrics({
 }).collect()
 ```
 
-The router supports the same pattern syntax as Express. Here's more information on [routing syntax](/guides/routing#route-pattern-syntax).
+The router supports the same pattern syntax as Express. Here's more information on [routing syntax](/guides/performance/cdn_as_code#route-pattern-syntax).
 
 For non single page applications (e.g. traditional "multi-page apps"), you can also explicitly set the page label by passing a `pageLabel` property during initialization. An example is shown below where the `pageLabel` is pulled from `document.title`:
 

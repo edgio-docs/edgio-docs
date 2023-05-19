@@ -404,11 +404,11 @@ router.get(
 )
 ```
 
-You can find more about geolocation headers [here](/guides/request_headers).
+You can find more about geolocation headers [here](/guides/performance/request).
 
 ### Allowing Specific IPs {/*allowing-specific-ips*/}
 
-If you need to block all traffic except requests that originate from specific IP addresses, you can do so by matching requests by the [{{ HEADER_PREFIX }}-client-ip](/guides/request_headers#general-headers) header:
+If you need to block all traffic except requests that originate from specific IP addresses, you can do so by matching requests by the [{{ HEADER_PREFIX }}-client-ip](/guides/performance/request#general-headers) header:
 
 ```js
 router.get(

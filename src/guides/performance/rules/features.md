@@ -323,7 +323,7 @@ new Router()
 
 Determines whether the cache key will include or exclude query string parameters associated with a request. 
 
-[Learn more about cache keys.](/guides/performance/response#cache-key-response-header)
+[Learn more about cache keys.](/guides/performance/caching#cache-key)
 
 Include or exclude all query string parameters through the `Include All` or `Exclude All` modes. Alternatively, include or exclude specific query string parameters through the `Include` or `Include All Except` modes.
 

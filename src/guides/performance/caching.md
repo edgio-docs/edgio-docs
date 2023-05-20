@@ -90,7 +90,7 @@ Set or override a cache policy by creating a rule that identifies the desired se
 
 ### CDN-as-Code {/* cdn-as-code */}
 
-Use the [caching](/guides/performance/rules/features#caching) feature in your route configuration:
+Add the [caching](/docs/api/core/interfaces/types.Caching.html) feature to your route:
 
 ```js
 router.get('/some/path', {
@@ -138,7 +138,7 @@ If your web application relies on query string parameter(s), request header(s), 
 
 -   Customize the cache key for a specific set of requests by implementing either of the following features within a rule or route:
 
-    -   (Cache Key Query String:)[/guides/performance/rules/features#cache-key-query-string] Use this feature if you need to include one or more query string parameters in the cache key.
+    -   [Cache Key Query String:](/guides/performance/rules/features#cache-key-query-string) Use this feature if you need to include one or more query string parameters in the cache key.
 
         **CDN-as-code:** [cache_key_query_string](/docs/api/core/interfaces/types.Caching.html#cache_key_query_string) 
 
@@ -157,7 +157,7 @@ If your web application relies on query string parameter(s), request header(s), 
 Examples of how to customize the cache key are provided below.
 
 -   Add the `page` and `filters` query string parameters to the cache key using either of the following methods:
-    -   **Rules:** Create a rule that sets the (Cache Key Query String feature)[/guides/performance/rules/features#cache-key-query-string] to `Include` the `page` and `filters` query string parameters.
+    -   **Rules:** Create a rule that sets the [Cache Key Query String feature](/guides/performance/rules/features#cache-key-query-string) to `Include` the `page` and `filters` query string parameters.
 
     <Callout type="tip">
 
@@ -178,7 +178,7 @@ Examples of how to customize the cache key are provided below.
         });
         ```
 -   Add the `language` and `currency` cookies to the cache key using either of the following methods:
-    -   **Rules:** Create a rule that defines the (Rewrite Cache Key feature)[/guides/performance/rules/features#rewrite-cache-key] as indicated below:
+    -   **Rules:** Create a rule that defines the [Rewrite Cache Key feature](/guides/performance/rules/features#rewrite-cache-key) as indicated below:
         -   **Source:** Set this to option to the relative path for the set of requests whose cache key will be rewritten.
             `/some/path/(.*)`
         -   **Destination:** Set this option to the cache key's replacement pattern.
@@ -199,7 +199,7 @@ Examples of how to customize the cache key are provided below.
         ```
 
 -   Customize the cache key by the country from which the request originated.
-    -   **Rules:** Create a rule that defines the (Rewrite Cache Key feature)[/guides/performance/rules/features#rewrite-cache-key] as indicated below:
+    -   **Rules:** Create a rule that defines the [Rewrite Cache Key feature](/guides/performance/rules/features#rewrite-cache-key) as indicated below:
         -   **Source:** Set this to option to the relative path for the set of requests whose cache key will be rewritten.
             `/some/path/(.*)`
         -   **Destination:** Set this option to the cache key's replacement pattern.
@@ -229,7 +229,7 @@ Examples of how to customize the cache key are provided below.
 
 By default, {{ PRODUCT }} only caches responses for `GET` requests. Cache the response for `POST`, `PUT`, or both HTTP methods using either of the following methods:
 
--   **Rules:** Create a rule that sets the (Enable Caching for Methods feature)[/guides/performance/rules/features#enable-caching-for-methods] to `POST`, `PUT`, or both HTTP methods.
+-   **Rules:** Create a rule that sets the [Enable Caching for Methods feature](/guides/performance/rules/features#enable-caching-for-methods) to `POST`, `PUT`, or both HTTP methods.
 -   **CDN-as-Code:** 
     ```js filename="./routes.js"
     router.get('/some/path', {
@@ -243,7 +243,7 @@ By default, {{ PRODUCT }} only caches responses for `GET` requests. Cache the re
 
 By default, {{ PRODUCT }} does not cache the response when it contains [certain cache directives](#response-headers) (e.g., `Cache-Control: private`). Instruct our CDN to ignore these cache directives through either of the following methods:
 
--   **Rules:** Create a rule that enables the (Ignore Origin No Cache feature)[/guides/performance/rules/features#ignore-origin-no-cache].
+-   **Rules:** Create a rule that enables the [Ignore Origin No Cache feature](/guides/performance/rules/features#ignore-origin-no-cache).
 -   **CDN-as-Code:** 
     ```js
     router.get('/some/path', {
@@ -310,7 +310,7 @@ There are many factors that influence cache hit ratio, such as:
 
     Set up this feature using one of the following methods:
 
-    -   **Rules:** Create a rule that configures the (Stale While Revalidate feature)[/guides/performance/rules/features#stale-while-revalidate] to extend the amount of time that an edge server may serve stale content past the expiration of an asset's TTL.
+    -   **Rules:** Create a rule that configures the [Stale While Revalidate feature](/guides/performance/rules/features#stale-while-revalidate) to extend the amount of time that an edge server may serve stale content past the expiration of an asset's TTL.
 -   **CDN-as-Code:** 
     ```js filename="./routes.js"
     new Router()

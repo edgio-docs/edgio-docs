@@ -36,7 +36,7 @@ The amount of time that an asset will be cached on our edge servers is determine
 - **Cache-Control: private:** Prevents our edge servers from caching the response.
 - **Cache-Control: no-store:** Prevents our edge servers from caching the response.
 - **Cache-Control: no-cache:** Requires our edge servers or the client to revalidate cached content.
-- **Pragma: no-cache:** Prevents our edge servers or the client from caching the response.
+- **Pragma: no-cache:** Requires our edge servers or the client to revalidate cached content.
 - **Cache-Control: s-maxage:** Determines the requested content's time-to-live (TTL) on our edge servers. TTL identifies the amount of time that cached content can be served without revalidation.
 
   <Callout type="info">

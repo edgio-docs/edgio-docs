@@ -56,7 +56,7 @@ honored.
     </Callout>
 
 -   {{ PRODUCT_SECURITY }} does not perform further [evaluation of a
-    request](/guides/security/basic_setup#threat-detection) once enforcement is triggered.
+    request](/guides/security/waf#threat-detection) once enforcement is triggered.
 
     <Callout type="tip">
 

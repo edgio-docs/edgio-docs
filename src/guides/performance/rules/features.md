@@ -194,10 +194,15 @@ Determines whether our CDN will honor your caching policy when determining wheth
 
 ```js filename="./routes.js"
 new Router()
-  .get('/', {
+  .get('/random-numbers', {
     caching: {
       "bypass_cache": true,
-    }
+    },
+    // The route will need to send a response to prevent the request from continuing on to subsequent routes.
+    // This example sends the request through to a backend defined as "origin" which will complete the request cycle
+    origin: {
+      set_origin: 'origin',
+    },
   })
 ```
 </edgejs>
@@ -488,7 +493,7 @@ Defines the set of status codes that can result in cached content.
 
 <!--
 -   The set of valid status codes for this feature are:
-`200 | 203 | 300 | 301 | 302 | 305 | 307 | 400 | 401 | 402 | 403 | 404 | 405 | 406 | 407 | 408 | 409 | 410 | 411 | 412 | 413 | 414 | 415 | 416 | 417 | 429 | 451 | 500 | 501 | 502 | 503 | 504 | 505`
+`100 | 101 | 102 | 103 | 200 | 201 | 202 | 203 | 204 | 205 | 206 | 207 | 208 | 226 | 300 | 301 | 302 | 303 | 304 | 305 | 306 | 307 | 308 | 400 | 401 | 402 | 403 | 404 | 405 | 406 | 407 | 408 | 409 | 410 | 411 | 412 | 413 | 414 | 415 | 416 | 417 | 418 | 421 | 422 | 423 | 424 | 425 | 426 | 428 | 429 | 431 | 440 | 444 | 451 | 499 | 500 | 501 | 502 | 503 | 504 | 505 | 506 | 507 | 508 | 509 | 510 | 511 | 530 | 531 | 532 | 533 | 534 | 535 | 536 | 537 | 538 | 539 | 540 | 541 | 542 | 543 | 544 | 545 | 546 | 547 | 548 | 549 | 888 | 893`
 -->
 
 **Example:**
@@ -1200,6 +1205,10 @@ Improves performance by allowing our edge servers to serve stale content while r
 
 Configure this feature by specifying an integer value and then selecting the desired time unit (i.e., seconds, minutes, hours, etc.). This value defines the length of time past TTL expiration during which stale content may be delivered.
 
+The following formula indicates the length of time during which stale content may be delivered:
+
+`<TTL> + <STALE WHILE REVALIDATE TIME>`
+
 <Callout type="info">
 
   Each stale response includes a `Warning` response header.
@@ -1208,6 +1217,10 @@ Configure this feature by specifying an integer value and then selecting the des
 
 <edgejs>
 Configure this feature by specifying an integer value and a time unit. This value defines the length of time past TTL expiration during which stale content may be delivered.
+
+The following formula indicates the length of time during which stale content may be delivered:
+
+`<TTL> + <STALE WHILE REVALIDATE TIME>`
 
 <Callout type="info">
 
@@ -1974,6 +1987,11 @@ This feature is typically combined with the `set_status_code` and `set_response_
 Omitting this feature allows:
 -   The request to be forwarded to an origin server.
 -   The response to be cached. 
+
+<!--
+-   The set of valid status codes for this feature are:
+`100 | 101 | 102 | 103 | 200 | 201 | 202 | 203 | 204 | 205 | 206 | 207 | 208 | 226 | 300 | 301 | 302 | 303 | 304 | 305 | 306 | 307 | 308 | 400 | 401 | 402 | 403 | 404 | 405 | 406 | 407 | 408 | 409 | 410 | 411 | 412 | 413 | 414 | 415 | 416 | 417 | 418 | 421 | 422 | 423 | 424 | 425 | 426 | 428 | 429 | 431 | 440 | 444 | 451 | 499 | 500 | 501 | 502 | 503 | 504 | 505 | 506 | 507 | 508 | 509 | 510 | 511 | 530 | 531 | 532 | 533 | 534 | 535 | 536 | 537 | 538 | 539 | 540 | 541 | 542 | 543 | 544 | 545 | 546 | 547 | 548 | 549 | 888 | 893`
+-->
 
 **Example:**
 

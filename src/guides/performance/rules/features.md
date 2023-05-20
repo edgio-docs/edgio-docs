@@ -342,7 +342,7 @@ Include or exclude all query string parameters through the `Include All` or `Exc
 -   **Include All Except:** Contains the set of parameter(s) will be excluded from the cache key. All other query string parameters will be included in the cache key.
 
 <edgejs>
-[Learn more about cache keys.](/guides/performance/response#cache-key-response-header)
+[Learn more about cache keys.](/guides/performance/caching#cache-key)
 
 Include or exclude all query string parameters through the `include_all` property or `exclude_all` property. Alternatively, include or exclude specific query string parameters through the `include` property, `exclude` property, or both.
 
@@ -952,7 +952,7 @@ new Router()
 
 Rewrites the default cache key for a set of requests. 
 
-[Learn more about cache keys.](/guides/performance/response#cache-key-response-header)
+[Learn more about cache keys.](/guides/performance/caching#cache-key)
 
 **Key information:**
 
@@ -1004,7 +1004,7 @@ We will now set the default cache key to the request's relative path followed by
 Notice that we are using `$1`, which is a numbered backreference, to reintroduce the value captured by `(.*)` within the **Source** option.
 
 <edgejs>
-[Learn more about cache keys.](/guides/performance/response#cache-key-response-header)
+[Learn more about cache keys.](/guides/performance/caching#cache-key)
 
 **Key information:**
 

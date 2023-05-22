@@ -6,7 +6,11 @@ interface RouterQuery {
   [key: string]: any;
 }
 
-interface IVersion {
+export interface IConditioning {
+  version: IVersion;
+}
+
+export interface IVersion {
   selectedVersion: string;
   selectedVersionText: string;
   latestVersion: string;
@@ -15,10 +19,7 @@ interface IVersion {
   pathPrefix: string;
   packageVersion: string;
   toVersionedPath: (path: string) => string;
-}
-
-interface IConditioning {
-  version: IVersion;
+  isVersion: (version: string | number) => boolean;
 }
 
 function useConditioning(): IConditioning {
@@ -73,6 +74,9 @@ function useConditioning(): IConditioning {
       ]
         .filter(Boolean)
         .join('/');
+    },
+    isVersion: (version: string | number) => {
+      return cleanedVersion === version.toString();
     },
   };
 

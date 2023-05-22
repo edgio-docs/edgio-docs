@@ -1,35 +1,66 @@
-import sortBy from 'lodash/sortBy';
 import Link from 'next/link';
 import styled from 'styled-components';
 
 import {PRODUCT} from '../../../constants';
-import {getChildrenRoutesFromSidebarMenuItems} from '../../utils/getChildrenRoutesFromSidebarMenuItems';
 import {IconCode} from '../Icon/IconCode';
 
 import {StyledFeatureSection} from './FeatureSection';
 import SectionHeader from './SectionHeader';
 
 import useConditioning from 'utils/hooks/useConditioning';
+import itemsByColumn from 'utils/itemsByColumn';
 
 const StyledComp = styled(StyledFeatureSection)``;
+const items = {
+  '4': [
+    {
+      title: 'CLI',
+      path: '/guides/cli',
+    },
+    {
+      title: 'Devtools',
+      path: '/guides/devtools',
+    },
+    {
+      title: 'EdgeJS Unit Testing',
+      path: '/guides/edgejs_testing',
+    },
+    {
+      title: 'Logs',
+      path: '/guides/logs',
+    },
+    {
+      title: `Deploy to ${PRODUCT} Button`,
+      path: '/guides/deploy_to_layer0',
+    },
+  ],
+  default: [
+    {
+      title: 'CLI',
+      path: '/guides/develop/cli',
+    },
+    {
+      title: 'Devtools',
+      path: '/guides/performance/observability/devtools',
+    },
+    {
+      title: 'EdgeJS Unit Testing',
+      path: '/guides/performance/unit_testing_edgejs',
+    },
+    {
+      title: `Deploy to ${PRODUCT} Button`,
+      path: '/guides/develop/deploy_to_edgio',
+    },
+  ],
+};
 
 export default function DeveloperTools() {
   const {
-    version: {toVersionedPath, selectedVersion},
+    version,
+    version: {toVersionedPath},
   } = useConditioning();
 
-  let parentPath;
-
-  if (selectedVersion === '4') {
-    parentPath = `v4-dev-tools`;
-  } else {
-    parentPath = `dev-tools`;
-  }
-
-  const allRoutes = getChildrenRoutesFromSidebarMenuItems(parentPath);
-  const allRoutesSorted = sortBy(allRoutes, 'title');
-
-  const routesByColumns = [allRoutesSorted];
+  const routesByColumns = itemsByColumn(items, version, 'title');
 
   return (
     <StyledComp>

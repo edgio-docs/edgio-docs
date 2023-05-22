@@ -4,13 +4,13 @@ title: React
 
 This guide shows you how to serve a [React](https://reactjs.org/) application to {{ PRODUCT }}. If you're using Next.js specifically, we suggest using the [Next.js guide](/guides/sites_frameworks/getting_started/next).
 
-## Example {/*example*/}
+<!-- ## Example {/*example*/}
 
 <ExampleButtons
   title="React"
   siteUrl="https://edgio-community-examples-static-react-live.layer0-limelight.link/"
   repoUrl="https://github.com/edgio-docs/edgio-static-react-example" 
-  deployFromRepo />
+  deployFromRepo /> -->
 
 ## Connector {/*connector*/}
 
@@ -55,11 +55,10 @@ The default `routes.js` file created by `{{ FULL_CLI_NAME }} init` sends all req
 ```js
 // This file was added by {{ FULL_CLI_NAME }} init.
 // You should commit this file to source control.
+import { Router } from '@edgio/core'
+import { reactCRARoutes } from '@edgio/react-cra'
 
-const { Router } = require('{{ PACKAGE_NAME }}/core/router')
-const { reactCRARoutes } = require('{{ PACKAGE_NAME }}/react-cra')
-
-module.exports = new Router().use(reactCRARoutes)
+export default new Router().use(reactCRARoutes)
 ```
 
 ## Running Locally {/*running-locally*/}

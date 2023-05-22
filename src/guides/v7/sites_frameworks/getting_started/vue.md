@@ -7,13 +7,13 @@ title: Vue.js
 Edgio supports both Vue 2 and Vue 3, using both CLIs - `@vue/cli` and `vite`.
 
 
-## Example {/*example*/}
+<!-- ## Example {/*example*/}
 
 <ExampleButtons
   title="Vue.js"
   siteUrl="https://edgio-community-examples-vue3-live.layer0-limelight.link"
   repoUrl="https://github.com/edgio-docs/edgio-vue3-example" 
-  deployFromRepo />
+  deployFromRepo /> -->
 
 ## Connector {/*connector*/}
 
@@ -45,7 +45,8 @@ If you need help with Vue initialization, please follow the [create-vue project'
 Initialize your project for use with {{ PRODUCT }} by running the following command in your project's root directory:
 
 ```bash
-npm i && {{ FULL_CLI_NAME }} init {{ INIT_ARG_EDGIO_VERSION }}
+npm i
+{{ FULL_CLI_NAME }} init {{ INIT_ARG_EDGIO_VERSION }}
 ```
 
 This will automatically add all of the required dependencies and files to your project. These include:
@@ -55,6 +56,47 @@ This will automatically add all of the required dependencies and files to your p
 - The `{{ PACKAGE_NAME }}/vue-cva` package - Provides build and routing mechanisms for Vue projects.
 {{ INIT_DEFAULT_FILES.md }}
 
+## Routing {/*routing*/}
+
+The default `routes.js` file created by `{{ FULL_CLI_NAME }} init` sends all requests to Vue server via a fallback route.
+
+```js
+// This file was added by {{ FULL_CLI_NAME }} init.
+// You should commit this file to source control.
+
+import { Router } from '@edgio/core'
+import { vueRoutes } from '@edgio/vue-cva'
+
+export default new Router().use(vueRoutes)
+```
+
+Refer to the [CDN-as-code](/guides/performance/cdn_as_code) guide for the full syntax of the `routes.js` file and how to configure it for your use case.
+
+## Running Locally {/*running-locally*/}
+
+To test your app locally, run:
+
+```bash
+{{ FULL_CLI_NAME }} dev
+```
+
+You can do a production build of your app and test it locally using:
+
+```bash
+{{ FULL_CLI_NAME }} build && {{ FULL_CLI_NAME }} run --production
+```
+
+Setting `--production` runs your app exactly as it will be when deployed to the {{ PRODUCT }} cloud.
+
+## Deploy to {{ PRODUCT }} {/*deploy-to*/}
+
+Deploy your app to the {{ PRODUCT_PLATFORM }} by running the following command in your project's root directory:
+
+```bash
+{{ FULL_CLI_NAME }} deploy
+```
+
+Refer to the [Deployments](/guides/basics/deployments) guide for more information on the `deploy` command and its options.
 
 ## Prefetching {/*prefetching*/}
 
@@ -97,48 +139,6 @@ By default, `Prefetch` waits until the link appears in the viewport before prefe
 ```
 
 Refer to the [Predictive Prefetch](/guides/performance/prefetching) for more examples of prefetch functionality.
-
-## Routing {/*routing*/}
-
-The default `routes.js` file created by `{{ FULL_CLI_NAME }} init` sends all requests to Vue server via a fallback route.
-
-```js
-// This file was added by {{ FULL_CLI_NAME }} init.
-// You should commit this file to source control.
-
-const { Router } = require('{{ PACKAGE_NAME }}/core/router')
-const { vueRoutes } = require('{{ PACKAGE_NAME }}/vue-cva')
-
-export default new Router().use(vueRoutes)
-```
-
-Refer to the [CDN-as-code](/guides/performance/cdn_as_code) guide for the full syntax of the `routes.js` file and how to configure it for your use case.
-
-## Running Locally {/*running-locally*/}
-
-To test your app locally, run:
-
-```bash
-{{ FULL_CLI_NAME }} dev
-```
-
-You can do a production build of your app and test it locally using:
-
-```bash
-{{ FULL_CLI_NAME }} build && {{ FULL_CLI_NAME }} run --production
-```
-
-Setting `--production` runs your app exactly as it will be when deployed to the {{ PRODUCT }} cloud.
-
-## Deploy to {{ PRODUCT }} {/*deploy-to*/}
-
-Deploy your app to the {{ PRODUCT_PLATFORM }} by running the following command in your project's root directory:
-
-```bash
-{{ FULL_CLI_NAME }} deploy
-```
-
-Refer to the [Deployments](/guides/basics/deployments) guide for more information on the `deploy` command and its options.
 
 ## Server Side Rendering {/*server-side-rendering*/}
 

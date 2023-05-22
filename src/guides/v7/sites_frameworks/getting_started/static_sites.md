@@ -6,7 +6,7 @@ This guide shows you how to serve generic static sites to {{ PRODUCT }}.
 
 <Video src="https://player.vimeo.com/video/691615425"/>
 
-## Example Static Sites {/*example-static-sites*/}
+<!-- ## Example Static Sites {/*example-static-sites*/}
 
 Here are a few examples of common static sites served by {{ PRODUCT }}.
 
@@ -26,7 +26,7 @@ Here are a few examples of common static sites served by {{ PRODUCT }}.
   title="(Static) Vue.js"
   siteUrl="https://edgio-community-examples-vue3-live.layer0-limelight.link/"
   repoUrl="https://github.com/edgio-docs/edgio-vue3-example" 
-  deployFromRepo />
+  deployFromRepo /> -->
 
 {{ PREREQ.md }}
 
@@ -63,49 +63,27 @@ The {{ PRODUCT }} router is used for configuring where the static resources resi
 
 You can use the router's `static` method to serve everything in the `build` directory:
 
-```js
-// routes.js
+```js filename="routes.js"
+import { Router } from '{{ PACKAGE_NAME }}/core/router';
 
-const { Router } = require('{{ PACKAGE_NAME }}/core/router')
-
-module.exports = new Router().static('build')
+export default new Router().static('build')
 ```
 
 If your site does not use a bundler for generating a build output, you can still serve the assets using `serveStatic` and reference the relative path to the resources. Any resource referenced using `serveStatic` or `appShell` will automatically be included in the {{ PRODUCT }} deployment. An example of serving assets from your `src` directory:
 
-```js
-// routes.js
+```js filename="routes.js"
+import { Router } from '{{ PACKAGE_NAME }}/core/router';
 
-const { Router } = require('{{ PACKAGE_NAME }}/core/router')
-
-const ONE_YEAR = 365 * 24 * 60 * 60
-
-const edgeOnly = {
-  browser: false,
-  edge: { maxAgeSeconds: ONE_YEAR },
-}
-
-const edgeAndBrowser = {
-  browser: { maxAgeSeconds: ONE_YEAR },
-  edge: { maxAgeSeconds: ONE_YEAR },
-}
-
-const handler = ({ cache, serveStatic }, cacheConfig, path) => {
-  cache(cacheConfig)
-  serveStatic(path)
-}
-
-module.exports = new Router()
-
+export defaultnew Router()
   // Assets (Hashed and Cached on Edge and in the Browser)
-  .get('/css/:path*', res => handler(res, edgeAndBrowser, 'src/css/:path*')) 
-  .get('/js/:path*', res => handler(res, edgeAndBrowser, 'src/js/:path*')) 
+  .get('/css/:path*', ({ serveStatic }) => serveStatic('assets/css/:path*'))
+  .get('/js/:path*', ({ serveStatic }) => serveStatic('assets/js/:path*'))
   
   // Path(s) that do not have a "." as well as "/" to serve the fallback page
-  .get('/:path*/:file([^\\.]+|)', res => handler(res, edgeOnly, 'src/index.html')) 
+  .get('/:path*/:file([^\\.]+|)', ({ serveStatic }) => serveStatic('index.html'))
   
   // All other paths to be served from the src directory
-  .get('/:path*', res => handler(res, edgeOnly, 'src/:path*'))
+  .get('/:path*', ({ serveStatic }) => serveStatic('src/:path*'))
 ```
 
 ## Deploying {/*deploying*/}

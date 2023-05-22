@@ -85,6 +85,9 @@ const connectSrcDomains = [
 const router = new Router()
   .prerender(prerenderRequests)
   .noIndexPermalink()
+  .match('/guides/:path*', ({redirect}) => {
+    redirect('https://docs.edg.io/guides/v4/:path*', 301);
+  })
   .match('/__xdn__/:path*', ({redirect}) => redirect('/__layer0__/:path*'))
   .match({}, ({setResponseHeader, removeUpstreamResponseHeader}) => {
     if (isProductionBuild()) {

@@ -304,21 +304,7 @@ The term `CACHEABLE` indicates whether the requested content could have been cac
 
 The `x-ec-cache-key` response header indicates the cache key associated with the requested content. A cache key identifies an asset for the purposes of caching. In other words, our servers will check for a cached version of an asset according to its cache key.
 
-**Default syntax:** `//http/80<ACCOUNT ID>/<ORIGIN CONFIGURATION>/<DEPLOYMENT VERSION>/<RELATIVE PATH>:/hs-<URI HASH>`
-
-Definitions for the above placeholder values are provided below.
-
-| Placeholder  | Description  |
-|---|---|
-| `<ACCOUNT ID>`  | Indicates your unique customer account ID.   |
-| `<ORIGIN CONFIGURATION>` | Indicates the name of the origin configuration associated with the request. <Callout type="info">Deploying a CDN-as-code configuration automatically generates the following system-defined origin configurations: `edgio_static`, `edgio_permanent_static`, `edgio_serverless`, and `edgio_image_optimizer`. Your CDN-as-code configuration  determines the origin configuration that will be applied to the cache key. View how {{ PRODUCT }} maps your code to these origin configurations from the **Rules** page. Returns `origin` when an origin configuration is inapplicable to a request.</Callout> |
-| `<DEPLOYMENT VERSION>`  | Indicates the version of the deployment for the configuration that served the request whose response was cached. |
-| `<RELATIVE PATH>`  | Indicates the relative path to the requested content. This relative path starts directly after the hostname. By default, query strings are ignored by the caching mechanism and therefore they will be excluded from the cache key. <Callout type ="info">If a query string is recorded in the cache key, it will be converted to its hash equivalent. After which, it will be inserted between the name of the requested asset and its file extension (e.g., asset**HashValue**.html).</Callout> |
-| `<URI HASH>`  | Indicates a hash of the request URI. |
-
-**Syntax:** `x-ec-cache-key: <CACHE KEY>`
-
-**Example:** `x-ec-cache-key: //http/800001/web/21/images/foo.jpg:/hs-5041808438894094098`
+[Learn more about cache keys.](/guides/performance/caching#cache-key)
 
 #### Cache State Response Header {/*cache-state-response-header*/}
 

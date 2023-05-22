@@ -276,18 +276,10 @@ Uploading a TLS certificate requires:
 
     </Callout>
 
-5.  Click **Changes Saved**.
-
-    After which, the status of the TLS certificate will update to *Activating*.
-
-    ![in-progress-certificate](/images/production/in-progress-certificate.png)
-
-    After the certificate is activated, its status becomes **Active**.
-
-    ![activated-certificate](/images/production/activated-certificate.png)
+5.  Click **Changes Saved**. Certificate activation typically takes a few minutes. 
 
     <Callout type="info">
 
-      Certificate activation should take a few minutes. Contact technical customer support if the status does not become *Active* within an hour.
+      Contact technical customer support if the status does not become *Active* within an hour.
 
     </Callout>

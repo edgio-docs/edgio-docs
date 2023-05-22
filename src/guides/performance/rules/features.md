@@ -194,10 +194,10 @@ Determines whether our CDN will honor your caching policy when determining wheth
 
 ```js filename="./routes.js"
 new Router()
-  .get('/', {
+  .get('/random-numbers', {
     caching: {
       "bypass_cache": true,
-    }
+    },
   })
 ```
 </edgejs>
@@ -318,7 +318,7 @@ new Router()
 
 Determines whether the cache key will include or exclude query string parameters associated with a request. 
 
-[Learn more about cache keys.](/guides/performance/response#cache-key-response-header)
+[Learn more about cache keys.](/guides/performance/caching#cache-key)
 
 Include or exclude all query string parameters through the `Include All` or `Exclude All` modes. Alternatively, include or exclude specific query string parameters through the `Include` or `Include All Except` modes.
 
@@ -337,7 +337,7 @@ Include or exclude all query string parameters through the `Include All` or `Exc
 -   **Include All Except:** Contains the set of parameter(s) will be excluded from the cache key. All other query string parameters will be included in the cache key.
 
 <edgejs>
-[Learn more about cache keys.](/guides/performance/response#cache-key-response-header)
+[Learn more about cache keys.](/guides/performance/caching#cache-key)
 
 Include or exclude all query string parameters through the `include_all` property or `exclude_all` property. Alternatively, include or exclude specific query string parameters through the `include` property, `exclude` property, or both.
 
@@ -488,7 +488,7 @@ Defines the set of status codes that can result in cached content.
 
 <!--
 -   The set of valid status codes for this feature are:
-`200 | 203 | 300 | 301 | 302 | 305 | 307 | 400 | 401 | 402 | 403 | 404 | 405 | 406 | 407 | 408 | 409 | 410 | 411 | 412 | 413 | 414 | 415 | 416 | 417 | 429 | 451 | 500 | 501 | 502 | 503 | 504 | 505`
+`100 | 101 | 102 | 103 | 200 | 201 | 202 | 203 | 204 | 205 | 206 | 207 | 208 | 226 | 300 | 301 | 302 | 303 | 304 | 305 | 306 | 307 | 308 | 400 | 401 | 402 | 403 | 404 | 405 | 406 | 407 | 408 | 409 | 410 | 411 | 412 | 413 | 414 | 415 | 416 | 417 | 418 | 421 | 422 | 423 | 424 | 425 | 426 | 428 | 429 | 431 | 440 | 444 | 451 | 499 | 500 | 501 | 502 | 503 | 504 | 505 | 506 | 507 | 508 | 509 | 510 | 511 | 530 | 531 | 532 | 533 | 534 | 535 | 536 | 537 | 538 | 539 | 540 | 541 | 542 | 543 | 544 | 545 | 546 | 547 | 548 | 549 | 888 | 893`
 -->
 
 **Example:**
@@ -947,7 +947,7 @@ new Router()
 
 Rewrites the default cache key for a set of requests. 
 
-[Learn more about cache keys.](/guides/performance/response#cache-key-response-header)
+[Learn more about cache keys.](/guides/performance/caching#cache-key)
 
 **Key information:**
 
@@ -999,7 +999,7 @@ We will now set the default cache key to the request's relative path followed by
 Notice that we are using `$1`, which is a numbered backreference, to reintroduce the value captured by `(.*)` within the **Source** option.
 
 <edgejs>
-[Learn more about cache keys.](/guides/performance/response#cache-key-response-header)
+[Learn more about cache keys.](/guides/performance/caching#cache-key)
 
 **Key information:**
 
@@ -1200,6 +1200,10 @@ Improves performance by allowing our edge servers to serve stale content while r
 
 Configure this feature by specifying an integer value and then selecting the desired time unit (i.e., seconds, minutes, hours, etc.). This value defines the length of time past TTL expiration during which stale content may be delivered.
 
+The following formula indicates the length of time during which stale content may be delivered:
+
+`<TTL> + <STALE WHILE REVALIDATE TIME>`
+
 <Callout type="info">
 
   Each stale response includes a `Warning` response header.
@@ -1208,6 +1212,10 @@ Configure this feature by specifying an integer value and then selecting the des
 
 <edgejs>
 Configure this feature by specifying an integer value and a time unit. This value defines the length of time past TTL expiration during which stale content may be delivered.
+
+The following formula indicates the length of time during which stale content may be delivered:
+
+`<TTL> + <STALE WHILE REVALIDATE TIME>`
 
 <Callout type="info">
 

@@ -95,7 +95,7 @@ variety of unknown vulnerabilities. This rule set does not solely rely
 on signatures to check for known vulnerabilities. Rather, it analyzes
 all HTTP data for malicious payloads.
 
-In addition to defining a [threshold](/guides/security/basic_setup#managed-rule-violations), this
+In addition to defining a [threshold](/guides/security/waf#managed-rule-violations), this
 rule set allows you to balance protection against false positives through
 the **Paranoia Level** option. Paranoia levels are explained
 below.
@@ -352,7 +352,7 @@ You may create, modify, and delete managed rules.
         at or higher than the specified value will be identified as
         malicious traffic.
 
-        [Learn more.](/guides/security/basic_setup#managed-rule-violations)
+        [Learn more.](/guides/security/waf#managed-rule-violations)
 
         <Callout type="info">
 
@@ -372,7 +372,7 @@ You may create, modify, and delete managed rules.
 
         </Callout>
 
-         [Learn more.](/guides/security/basic_setup#managed-rule-violations)
+         [Learn more.](/guides/security/waf#managed-rule-violations)
     4.  Review all enabled policies and rules to ensure that the
         legitimate traffic is not targeted by mistake.
 

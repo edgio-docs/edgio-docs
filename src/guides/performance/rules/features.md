@@ -1913,6 +1913,28 @@ new Router()
 
 Response features manipulate the response sent to the client.
 
+#### Allow Prefetching of Uncached Content {/*allow-prefetching-of-uncached-content*/}
+
+Determines whether prefetching will be allowed for cache misses.
+
+<edgejs>
+Determines whether prefetching will be disabled for cache misses.
+
+**Example:**
+
+```js filename="./routes.js"
+new Router()
+  .get('/', {
+    response: {
+      "allow_prefetching_uncached_content": true,
+    }
+  })
+```
+</edgejs>
+
+**Default Behavior:** By default, prefetching is allowed for cache misses.
+
+
 <!--
 #### Compress Content Types {/*compress-content-types*/}
 
@@ -1944,26 +1966,28 @@ new Router()
 </edgejs>
 -->
 
-#### Allow Prefetching of Uncached Content {/*allow-prefetching-of-uncached-content*/}
+#### Optimize Images {/*optimize-images*/}
 
-Determines whether prefetching will be allowed for cache misses.
+Determines whether [Edge Image Optimizer](/guides/performance/edge_image_optimizer) will be allowed to process or generate an image for eligible requests. 
+
+<Callout type="info">
+
+  Upon enabling this feature on the desired set of requests, Edge Image Optimizer will look for client hints and check the query string to determine the set of optimizations that will be applied to an image. 
+
+</Callout>
 
 <edgejs>
-Determines whether prefetching will be disabled for cache misses.
-
 **Example:**
 
 ```js filename="./routes.js"
 new Router()
-  .get('/', {
+  .match('/:path*/:file.:ext(jpg|jpeg|png)', {
     response: {
-      "allow_prefetching_uncached_content": true,
+      "optimize_images": true,
     }
   })
 ```
 </edgejs>
-
-**Default Behavior:** By default, prefetching is allowed for cache misses.
 
 <!--
 #### Set Done {/*set-done*/}

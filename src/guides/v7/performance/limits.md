@@ -36,15 +36,21 @@ Data storage units are defined below.
 
 The following headers are served for use by {{ PRODUCT }}. You may not modify these request headers. 
 
-* `{{ HEADER_PREFIX }}-platform`
-* `{{ HEADER_PREFIX }}-version`
-* `{{ HEADER_PREFIX }}-t`
-* `{{ HEADER_PREFIX }}-components`
-* `{{ HEADER_PREFIX }}-status`
-* `host`
-* `x-request-id`
-* `content-length`
-* `via`
+-   accept-ranges
+-   age
+-   connection
+-   content-encoding
+-   content-length
+-   content-range
+-   date
+-   server
+-   trailer
+-   transfer-encoding
+-   upgrade
+-   vary
+-   via
+-   warning 
+-   All header names that start with `{{ HEADER_PREFIX }}` and `x-ec` are reserved.
 
 ### Access Logs {/*access-logs*/}
 

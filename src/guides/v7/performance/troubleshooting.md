@@ -126,10 +126,6 @@ The edge link will route through the edge.
 
 You can find both links on the detail page of a deployment.
 
-## Cache Reasons {/* cache-reasons */}
-
-We provide a header, `{{ HEADER_PREFIX }}-caching-status` to best understand why something is being cached. There is a [detailed guide](/guides/performance/caching#why-is-my-response-not-being-cached) available on deciphering those reasons.
-
 ## Source Maps {/* source-maps */}
 
 {{ PRODUCT }} automatically produces a source map for your router file so that all runtime errors that occur during routing will have a stacktrace that references the original source file. If your application build produces source maps for the server bundle, these will also be used when reporting errors. {{ PRODUCT }} provides a convenient way to enable source maps when using Next and Nuxt:

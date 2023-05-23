@@ -376,7 +376,7 @@ You may create, modify, and delete access rules.
 -   Administer access rules from the **Access Rules**
     page.
 -   Apply an access rule to production traffic by adding it to a
-    [Security Application configuration](/guides/security/security_appplications) and then
+    [Security Application configuration](/guides/security/security_applications) and then
     determining how it will be enforced. Multiple Security Application
     configurations may use the same access rule. Leverage this
     capability to tailor security screening by application or traffic

@@ -6,7 +6,7 @@ ISO 3166 country codes are supported by:
 
 -   **Rules:** [Country match condition](/guides/performance/rules/conditions#country)
 -   **CDN-as-code:** [location.country condition](/docs/api/core/interfaces/types.RulesVariables.html#location)
--   **Web Application Firewall:** [Access Rules](/guides/security/access_rules), [Rate Rules](/guides/security/rate_rules), [Bot Manager](/guides/security/bot_rules), [Custom Rules](/guides/rules/custom_rules), [Dashboard](/guides/security/dashboard), and [Event Log](/guides/security/recent_event_logs)
+-   **Web Application Firewall:** [Access Rules](/guides/security/access_rules), [Rate Rules](/guides/security/rate_rules), [Bot Manager](/guides/security/bot_rules), [Custom Rules](/guides/security/custom_rules), [Dashboard](/guides/security/dashboard), and [Event Log](/guides/security/recent_event_logs)
 
 <Callout type="info">
 

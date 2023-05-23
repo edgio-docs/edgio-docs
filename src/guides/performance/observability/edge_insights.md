@@ -325,7 +325,7 @@ Use this data source to analyze CDN traffic. This data provides historical and n
 
 Each Access Log field is defined below.
 
-{{ table_access_logs }}
+{{ table_access_logs.md }}
 
 ## Analytics {/*analytics*/}
 
@@ -335,7 +335,7 @@ Calculate an approximation of your actual total events by multiplying your total
 
 Each Analytics field is defined below.
 
-{{ table_analytics }}
+{{ table_analytics.md }}
 
 ## Bot Manager Alerts {/*bot-manager-alerts*/}
 
@@ -366,7 +366,7 @@ Calculate an approximation of your actual total events by multiplying your total
 
 Each Rate Limiting field is defined below.
 
-{{ table_rate_limiting_alerts }}
+{{ table_rate_limiting_alerts.md }}
 
 ## WAF Alerts {/*waf-alerts*/}
 
@@ -380,4 +380,4 @@ Use the WAF Alerts data source for historical and near real-time analysis of [re
 
 Each WAF field is defined below.
 
-{{ table_waf_alerts }}
+{{ table_waf_alerts.md }}

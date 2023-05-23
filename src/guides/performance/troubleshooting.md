@@ -128,9 +128,11 @@ The edge link will route through the edge.
 
 You can find both links on the detail page of a deployment.
 
+<Condition version="<=6">
 ## Cache Reasons {/*cache-reasons*/}
 
 We provide a header, `{{ HEADER_PREFIX }}-caching-status` to best understand why something is being cached. There is a [detailed guide](/guides/performance/caching#why-is-my-response-not-being-cached) available on deciphering those reasons.
+</Condition>
 
 ## Source Maps {/*source-maps*/}
 

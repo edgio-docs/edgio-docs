@@ -35,7 +35,7 @@ An access log file may contain the following fields:
 -   **ckh (*String*):** <a id="ckh" /> Indicates the cache key hash. 
 -   **clv (*Number*):** <a id="clv" /> Indicates the level at which the request was served from cache. Returns `0` for a cache miss, `1` for a cache hit on an edge POP (L1), and `2` for a cache hit on a global POP (L2). 
 -   **code (*String*):** <a id="code" /> Indicates the HTTP status code for the response. 
--   **cs (*String*):** <a id="cs" /> Indicates whether the response was cached or the reason why it was not cached.  [Learn more.](/guides/performance/caching#why-is-my-response-not-being-cached)
+-   **cs (*String*):** <a id="cs" /> Indicates whether the response was cached or the reason why it was not cached. <Condition version="<=6">[Learn more.](/guides/performance/caching#why-is-my-response-not-being-cached)</Condition>
 -   **ct (*String*):** <a id="ct" /> Indicates the response's media type (aka content type). 
 -   **cv (*String*):** <a id="cv" /> Indicates the version of the {{ PRODUCT }} edge compiler (e.g., `1.7.3`).
 -   **cy (*String*):** <a id="cy" /> Indicates the name of the city from which the request originated (e.g., `new york`).
@@ -80,7 +80,7 @@ An access log file may contain the following fields:
 -   **wafv (*String*):** <a id="wafv" /> Indicates the WAF version (e.g., `WAF-1,2`) that screened the request.
 -   **xff (*String*):** <a id="xff" /> Indicates the value for the `x-forwarded-for` request header.
 -   **xmr (*String*):** <a id="xmr" /> Indicates the value for the `{{ HEADER_PREFIX }}-matched-routes` request header. The `{{ HEADER_PREFIX }}-matched-routes` request header identifies all matched routes. 
--   **xms (*String*):** <a id="xms" /> Indicates the value for the `{{ HEADER_PREFIX }}-status` response header (e.g., `eh=200,ed=200,gh=200,gd=200,p=200,w=200`). The `{{ HEADER_PREFIX }}-status` response header indicates the status codes for key [POP components](/guides/performance/response#-t-response-header). 
+-   **xms (*String*):** <a id="xms" /> Indicates the status codes for key POP components. 
 -   **xmt (*String*):** <a id="xmt" /> Indicates the value for the [{{ HEADER_PREFIX }}-t](/guides/performance/response#-t-response-header) response header (e.g., `eh=4,ect=2,ecc=hit`). The `{{ HEADER_PREFIX }}-t` response header contains time measurements for each Edgio POP component through which a request was routed. 
 -   **xut (*String*):** <a id="xut" /> Indicates the value for the `{{ HEADER_PREFIX }}-user-t` response header (e.g., `fetch:/path=123`). The `{{ HEADER_PREFIX }}-user-t` response header contains [performance](/guides/performance) metrics. 
 -   **zip (*String*):** <a id="zip" /> Indicates whether the response was compressed. Returns `1` for compressed responses and `0` for uncompressed responses.

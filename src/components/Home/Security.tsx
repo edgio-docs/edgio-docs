@@ -96,7 +96,7 @@ export default function Security() {
     version: {toVersionedPath},
   } = useConditioning();
 
-  const routesByColumns = itemsByColumn(items, version, 'title', 8);
+  const routesByColumns = [...itemsByColumn(items, version, 'title', 8), []];
 
   return (
     <StyledComp>

@@ -28,15 +28,13 @@ jobs:
           echo "skip_deploy=$(echo $COMMIT_MSG | grep -iq 'skip-deploy' && echo true || echo false)" >> $GITHUB_OUTPUT
         continue-on-error: true
 
-      - name: Exit if skip-deploy
-        if: steps.check_commit_message.outputs.skip_deploy == 'true'
-        uses: andymckay/cancel-action@0.3
-
       - uses: actions/setup-node@v3
+        if: steps.check_commit_message.outputs.skip_deploy != 'true'
         with:
           node-version: 16
 
       - name: Cache node modules
+        if: steps.check_commit_message.outputs.skip_deploy != 'true'
         uses: actions/cache@v3
         env:
           cache-name: cache-node-modules
@@ -48,9 +46,12 @@ jobs:
             ${{ runner.os }}-build-
             ${{ runner.os }}-
 
-      - run: yarn --frozen-lockfile
+      - name: Install dependencies
+        if: steps.check_commit_message.outputs.skip_deploy != 'true'
+        run: yarn --frozen-lockfile
 
       - name: Deploy to docs.edg.io (prod)
+        if: steps.check_commit_message.outputs.skip_deploy != 'true'
         run: yarn edgio:deploy --branch=$BRANCH_NAME --token=${{ secrets.layer0_prod_deploy_token }} --environment=production
         env:
           GH_API_TOKEN: ${{ secrets.GH_API_TOKEN }}

@@ -10,12 +10,19 @@ def markdown_table_to_json(md_table):
     for line in lines[2:]:
         values = re.split(r'\s*\|\s*', line)
         if len(values) == len(header):
-            url_value = values[1].lower().replace(' ', '-')
+            cleaned_value = re.sub(r' <.*?>', '', values[1])
+            url_value = cleaned_value.lower().replace(' ', '-')
+
+            # Check if an anchor tag exists and extract the ID
+            anchor_match = re.search(r'<a id="(.*?)"', values[1])
+            if anchor_match:
+                url_value = anchor_match.group(1)
+
             row_data = {
                 'description': values[2],
                 'url': 'https://docs.edg.io/guides/performance/observability/edge_insights#' + url_value
             }
-            rows[values[1]] = row_data
+            rows[cleaned_value] = row_data
 
     return json.dumps(rows)
 

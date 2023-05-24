@@ -118,7 +118,7 @@ module.exports = {
 };
 ```
 
-See [backends](/guides/edgio_config#backends) for more configuration options.
+See [backends](/guides/basics/edgio_config#backends) for more configuration options.
 
 To forward a request to the origin and modify the response using a serverless function:
 

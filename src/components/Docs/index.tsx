@@ -2,8 +2,8 @@ import styled from 'styled-components';
 
 import {Toc} from '../Layout/Toc';
 
-import DiscourseDiscuss from './DiscourseDiscuss';
-import EditPage from './EditPage';
+// import DiscourseDiscuss from './DiscourseDiscuss';
+// import EditPage from './EditPage';
 
 import {siteConfig} from 'config/appConfig';
 

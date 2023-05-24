@@ -48,7 +48,7 @@ function Link({
   }
 
   let hrefType = 'internal';
-  if (href.startsWith('http')) {
+  if (href.startsWith('http') || href.startsWith('mailto')) {
     hrefType = 'external';
   } else if (href.startsWith('#')) {
     hrefType = 'anchor';

@@ -110,13 +110,6 @@ yarn global add ${PACKAGE_NAME}/cli
 </SnippetGroup>
 `;
 
-const ROUTEHELPER = `<Callout type="important">
-
-  Upgrading from ${ PRODUCT } ${PRODUCT_APPLICATIONS} version 6 or earlier may require significant changes to your CDN-as-code configuration as certain core legacy components have limited support. [View our upgrading guide.](/guides/v7/upgrading)
-
-</Callout>
-`;
-
 const SECURITY_NAV = `1.  From the ${PORTAL_LINK}, select the desired team space. 
     2.  From the **Security** section, click `;
 
@@ -464,7 +457,6 @@ const config = {
   NODE_VERSION,
   PACKAGE_NAME,
   PARTNERS_CONTACT,
-  ROUTEHELPER,
   RTLD_PROFILE_SETUP_1,
   RTLD_PROFILE_SETUP_2,
   SECURITY_NAV,

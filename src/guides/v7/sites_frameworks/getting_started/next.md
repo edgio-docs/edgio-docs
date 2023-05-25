@@ -4,17 +4,15 @@ title: Next.js
 
 This guide shows you how to deploy a [Next.js](https://nextjs.org/) application to {{ PRODUCT }}.
 
-<!--
 ## Example {/* example */}
 
 <ExampleButtons
   title="Next.js SSR"
-  siteUrl="https://edgio-community-examples-nextjs-live.layer0-limelight.link/"
-  repoUrl="https://github.com/edgio-docs/edgio-nextjs-example"
-  deployFromRepo
+  siteUrl="https://edgio-community-examples-v7-nextjs-live.edgio.link/"
+  repoUrl="https://github.com/edgio-docs/edgio-v7-nextjs-example"
 />
 
-## Next.js Commerce {/* nextjs-commerce */}
+<!-- ## Next.js Commerce {/* nextjs-commerce */}
 
 For details on using the Next.js Commerce template with {{ PRODUCT }}, refer to our [Next.js Commerce Guide](/guides/sites_frameworks/getting_started/next_commerce).
 
@@ -37,6 +35,14 @@ For details on using the Next.js Commerce template with {{ PRODUCT }}, refer to 
 - [`getStaticProps`](https://nextjs.org/docs/basic-features/data-fetching/get-static-props) (including `revalidate`)
 - [`getServerSideProps`](https://nextjs.org/docs/basic-features/data-fetching/get-server-side-props)
 - [`getInitialProps`](https://nextjs.org/docs/api-reference/data-fetching/get-initial-props)
+
+## Connector {/*connector*/}
+
+This framework has a connector developed for {{ PRODUCT }}. See [Connectors](/guides/sites_frameworks/connectors) for more information.
+
+<ButtonLink variant="stroke" type="code" withIcon={true} href="https://github.com/edgio-docs/edgio-connectors/tree/main/edgio-next-connector">
+  View the Connector Code
+</ButtonLink>
 
 {{ PREREQ.md }}
 

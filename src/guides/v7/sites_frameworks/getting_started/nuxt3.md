@@ -4,15 +4,12 @@ title: Nuxt3
 
 This guide shows you how to deploy a [Nuxt3](https://v3.nuxtjs.org) application to {{ PRODUCT }}.
 
-<!-- 
-<Video src="https://www.youtube.com/watch?v=Rliu4WTJ6SI" />
-
 ## Example {/*example*/}
 
 <ExampleButtons
   title="Nuxt3"
-  siteUrl="https://edgio-community-examples-nuxt3-live.layer0-limelight.link/"
-  repoUrl="https://github.com/edgio-docs/edgio-nuxt3-example" 
+  siteUrl="https://edgio-community-examples-v7-nuxt3-live.edgio.link/"
+  repoUrl="https://github.com/edgio-docs/edgio-v7-nuxt3-example" 
   deployFromRepo />
 
 ## Connector {/*connector*/}
@@ -21,7 +18,7 @@ This framework has a connector developed for {{ PRODUCT }}. See [Connectors](/gu
 
 <ButtonLink variant="stroke" type="code" withIcon={true} href="https://github.com/edgio-docs/edgio-connectors/tree/main/edgio-nuxt-nitro-connector">
   View the Connector Code
-</ButtonLink> -->
+</ButtonLink>
 
 {{ PREREQ.md }}
 

@@ -1,3 +1,9 @@
+export type ItemsByVersion = {
+  [key: string]: SimpleRouteItem[];
+} & {
+  default?: SimpleRouteItem[];
+};
+
 export interface MDHeading {
   rank: number;
   title: string;
@@ -13,6 +19,11 @@ export interface Route {
   external?: boolean;
   routes?: Route[];
 }
+
+export type SimpleRouteItem = StringMap & {
+  title: string;
+  path: string;
+};
 
 export interface StringMap {
   [key: string]: any;

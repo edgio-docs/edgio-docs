@@ -67,6 +67,10 @@ const nav = {
               title: 'Feature Variables',
               path: 'performance/rules/feature_variables',
             },
+            {
+              title: 'Operators',
+              path: 'performance/rules/operators',
+            },
           ],
         },
         {
@@ -355,10 +359,10 @@ const nav = {
             //   title: 'Razzle',
             //   path: 'sites_frameworks/getting_started/razzle',
             // },
-            // {
-            //   title: 'React',
-            //   path: 'sites_frameworks/getting_started/react',
-            // },
+            {
+              title: 'React',
+              path: 'sites_frameworks/getting_started/react',
+            },
             // {
             //   title: 'React Static',
             //   path: 'sites_frameworks/getting_started/react_static',
@@ -399,10 +403,10 @@ const nav = {
             //   title: 'Spartacus',
             //   path: 'sites_frameworks/getting_started/spartacus',
             // },
-            // {
-            //   title: 'Static HTML/JS',
-            //   path: 'sites_frameworks/getting_started/static_sites',
-            // },
+            {
+              title: 'Static HTML/JS',
+              path: 'sites_frameworks/getting_started/static_sites',
+            },
             // {
             //   title: 'Stencil',
             //   path: 'sites_frameworks/getting_started/stencil',
@@ -423,10 +427,10 @@ const nav = {
             //   title: 'Vue Storefront',
             //   path: 'sites_frameworks/getting_started/vsf',
             // },
-            // {
-            //   title: 'Vue.js',
-            //   path: 'sites_frameworks/getting_started/vue',
-            // },
+            {
+              title: 'Vue.js',
+              path: 'sites_frameworks/getting_started/vue',
+            },
             // {
             //   title: 'VuePress',
             //   path: 'sites_frameworks/getting_started/vuepress',
@@ -611,7 +615,7 @@ const nav = {
     },
     {
       title: 'Upgrading',
-      path: 'v7/upgrading',
+      path: 'upgrading',
       icon: 'add-circle',
     },
   ],

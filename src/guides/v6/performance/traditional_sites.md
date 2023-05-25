@@ -208,21 +208,11 @@ After you've configured and tested your site on {{ PRODUCT_NAME }}, it's time to
 
 <Callout type="info">
 
-  The third step (configuring your DNS) will be the crucial step that effectively transitions your domain to {{ PRODUCT_NAME }} and should be done last.
+The third step (configuring your DNS) will be the crucial step that effectively transitions your domain to {{ PRODUCT_NAME }} and should be done last.
 
 </Callout>
 
-<Condition version="7">
-
-  [Learn more.](/guides/basics/hostnames_and_origins)
-
-</Condition>
-
-<Condition version="<7">
-
-  [Learn more.](/guides/basics/domains)
-
-</Condition>
+[Learn more.](/guides/basics/domains)
 
 Before going live, you should use the [{{ PRODUCT_NAME }} Onboarding Discovery Worksheet](https://docs.google.com/spreadsheets/d/11T-Dqcv5a_bS6mVj-t9-qrTn5o-Qdn9CjXO3yEHS4zY/) to help you think through common use cases and concerns and ensure a smooth launch.
 
@@ -303,5 +293,5 @@ document.addEventListener('DOMContentLoaded', function () {
 For the most part maintenance for traditional sites running on {{ PRODUCT_NAME }} is minimal. However, the typical scenarios that require changes are:
 
 - If you add personalized or user-specific content to the page you will need to make sure it is late loaded as described in the [Make sure your pages are cacheable](#make-sure-your-pages-are-cacheable) section.
-- If you introduce a new segmentation of content (e.g. support a new language or currency), you may need to update your [custom cache key](/guides/caching#customizing-the-cache-key).
+- If you introduce a new segmentation of content (e.g. support a new language or currency), you may need to update your [custom cache key](/guides/performance/caching#customizing-the-cache-key).
 - If you change the layout of the page (especially above the _fold_), it may alter the assets you need to prefetch or [deepfetch](#deep-fetching) to achieve the best performance.

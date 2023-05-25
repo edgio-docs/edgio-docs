@@ -4,7 +4,6 @@ import styled from 'styled-components';
 import {FORUM_URL, DOCS_URL} from '../../../constants';
 
 import {IconForum} from 'components/Icon';
-import {findGuideBy} from 'utils/getChildrenRoutesFromSidebarMenuItems';
 
 const StyledLink = styled.div`
   margin-top: 50px;
@@ -93,34 +92,35 @@ export default function DiscourseDiscuss({
 }: {
   as?: 'icon' | 'link';
 }) {
-  const router = useRouter();
-  const guide = findGuideBy(router.route, 'route');
+  return null;
+  // const router = useRouter();
+  // const guide = findGuideBy(router.route, 'route');
 
-  if (IGNORE_PAGES.includes(router.route) || !guide) {
-    return null;
-  }
+  // if (IGNORE_PAGES.includes(router.route) || !guide) {
+  //   return null;
+  // }
 
-  const href = createLink({
-    title: `Feedback on '${guide.title}' guide`,
-    body: `I have a question/issue with the '[${guide.title}](${DOCS_URL}${router.route})' guide:\n\n`,
-  });
+  // const href = createLink({
+  //   title: `Feedback on '${guide.title}' guide`,
+  //   body: `I have a question/issue with the '[${guide.title}](${DOCS_URL}${router.route})' guide:\n\n`,
+  // });
 
-  if (as === 'icon') {
-    return (
-      <StyledIcon>
-        <a target="_blank" href={href} rel="noreferrer" title={title}>
-          <IconForum />
-        </a>
-      </StyledIcon>
-    );
-  }
+  // if (as === 'icon') {
+  //   return (
+  //     <StyledIcon>
+  //       <a target="_blank" href={href} rel="noreferrer" title={title}>
+  //         <IconForum />
+  //       </a>
+  //     </StyledIcon>
+  //   );
+  // }
 
-  return (
-    <StyledLink>
-      <a target="_blank" href={href} rel="noreferrer">
-        <IconForum />
-        {title}
-      </a>
-    </StyledLink>
-  );
+  // return (
+  //   <StyledLink>
+  //     <a target="_blank" href={href} rel="noreferrer">
+  //       <IconForum />
+  //       {title}
+  //     </a>
+  //   </StyledLink>
+  // );
 }

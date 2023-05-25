@@ -13,9 +13,8 @@ import {getVersionedConfig} from '../../utils/config';
 
 import {MarkdownPage} from 'components/Layout/MarkdownPage';
 import {Page} from 'components/Layout/Page';
-import JSONRoutes from 'utils/jsonRoutes';
 import {logDev} from 'utils/logging';
-import templateReplace, {TEMPLATE_MATCHER} from 'utils/templateReplace';
+import templateReplace from 'utils/templateReplace';
 import {MDHeadingsList} from 'utils/Types';
 
 const guidesPath = 'src/guides';
@@ -31,7 +30,7 @@ export default function VersionedGuide({
   version: string;
 }) {
   return (
-    <Page routeTree={JSONRoutes}>
+    <Page>
       <MarkdownPage meta={{...source.frontmatter, version}} headings={headings}>
         <MDXRemote {...source} components={MDXComponents} />
       </MarkdownPage>

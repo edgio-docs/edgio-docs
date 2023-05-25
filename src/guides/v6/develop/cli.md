@@ -42,11 +42,11 @@ Creates a build of your app optimized for production.
 
 #### Options {/* options */}
 
-| Name                         | Description                                                                                                                                                                                                                                                                                                                                 |
-| ---------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `--skip-framework`           | Alias: "-s". Skips the framework (Next.js, Vue, Angular, etc..) build and simply rebundles your router                                                                                                                                                                                                                                      |
-| `--disable-permanent-assets` | Set this to true to suppress errors like "Immutable file (...) content was changed" during deployment.                                                                                                                                                                                                                                      |
-| `--include-sources`          | Includes all non-gitignored source files in the bundle uploaded to {{ PRODUCT_NAME }}. This can be helpful when debugging, especially when working with {{ PRODUCT_NAME }} support. You can limit the files that are uploaded using the [sources](/guides/performance/cdn_as_code/edgio_config#sources) configuration in {{ CONFIG_FILE }}. |
+| Name                         | Description                                                                                                                                                                                                                                                                                                                |
+| ---------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `--skip-framework`           | Alias: "-s". Skips the framework (Next.js, Vue, Angular, etc..) build and simply rebundles your router                                                                                                                                                                                                                     |
+| `--disable-permanent-assets` | Set this to true to suppress errors like "Immutable file (...) content was changed" during deployment.                                                                                                                                                                                                                     |
+| `--include-sources`          | Includes all non-gitignored source files in the bundle uploaded to {{ PRODUCT_NAME }}. This can be helpful when debugging, especially when working with {{ PRODUCT_NAME }} support. You can limit the files that are uploaded using the [sources](/guides/basics/edgio_config#sources) configuration in {{ CONFIG_FILE }}. |
 
 #### Example {/* example */}
 
@@ -215,8 +215,6 @@ Builds and deploys your site on {{ PRODUCT_NAME }}.
 
 #### Options {/* options */}
 
-<Condition version="<7">
-
 | Name                         | Description                                                                                                                                                                                                                                                                                                                |
 | ---------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `--site`                     | The name of the site to deploy. By default the `name` field in `package.json` is used.                                                                                                                                                                                                                                     |
@@ -227,23 +225,6 @@ Builds and deploys your site on {{ PRODUCT_NAME }}.
 | `--commit-url`               | The URL at which the commit can be viewed in your source control provided. If your package.json provides the repository attribute the commit URL will be derived automatically if you use GitHub, GitLab, or BitBucket.                                                                                                    |
 | `--include-sources`          | Includes all non-gitignored source files in the bundle uploaded to {{ PRODUCT_NAME }}. This can be helpful when debugging, especially when working with {{ PRODUCT_NAME }} support. You can limit the files that are uploaded using the [sources](/guides/basics/edgio_config#sources) configuration in {{ CONFIG_FILE }}. |
 | `--disable-permanent-assets` | Set this to true to suppress errors like "Immutable file (...) content was changed" during deployment.                                                                                                                                                                                                                     |
-
-</Condition>
-
-<Condition version="7">
-
-| Name                         | Description                                                                                                                                                                                                                                                                                                                                 |
-| ---------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `--site`                     | The name of the site to deploy. By default the `name` field in `package.json` is used.                                                                                                                                                                                                                                                      |
-| `--environment`              | The environment to deploy to. By default the `default` environment is used.                                                                                                                                                                                                                                                                 |
-| `--branch`                   | The name of the source control branch. This is automatically set when using Git.                                                                                                                                                                                                                                                            |
-| `--skip-build`               | Skips the build step                                                                                                                                                                                                                                                                                                                        |
-| `--token`                    | Authenticates using a deploy token rather than your user credentials. Use this option when deploying from CI. Alternatively, you can also specify the deploy token by setting the `EDGIO_DEPLOY_TOKEN` environment variable.                                                                                                                |
-| `--commit-url`               | The URL at which the commit can be viewed in your source control provided. If your package.json provides the repository attribute the commit URL will be derived automatically if you use GitHub, GitLab, or BitBucket.                                                                                                                     |
-| `--include-sources`          | Includes all non-gitignored source files in the bundle uploaded to {{ PRODUCT_NAME }}. This can be helpful when debugging, especially when working with {{ PRODUCT_NAME }} support. You can limit the files that are uploaded using the [sources](/guides/performance/cdn_as_code/edgio_config#sources) configuration in {{ CONFIG_FILE }}. |
-| `--disable-permanent-assets` | Set this to true to suppress errors like "Immutable file (...) content was changed" during deployment.                                                                                                                                                                                                                                      |
-
-</Condition>
 
 #### Getting Information about the Deployment {/* getting-information-about-the-deployment */}
 
@@ -322,7 +303,7 @@ Run this command from the root directory of your web application or website to a
 
 <Callout type="tip">
 
-  If you are not using the latest version of {{ PRODUCT }}, then you must specify the `{{ INIT_ARG_EDGIO_VERSION }}` option when running this command.
+If you are not using the latest version of {{ PRODUCT }}, then you must specify the `{{ INIT_ARG_EDGIO_VERSION }}` option when running this command.
 
 </Callout>
 
@@ -410,7 +391,6 @@ To install the latest preview:
 {{ FULL_CLI_NAME }} use next
 ```
 
-<Condition version="<7">
 <Callout type="warning">
 
 Using `{{ FULL_CLI_NAME }} use latest` or `{{ FULL_CLI_NAME }} use next` will update all `{{ PACKAGE_NAME }}/*` packages in your project to the latest version published in the NPM registry.
@@ -419,7 +399,6 @@ Doing so may update your project to a newer **major** version which may introduc
 It is recommended you updating using the [latest stable version](#latest-stable) relative to your current version
 
 </Callout>
-</Condition>
 
 ## Troubleshooting {/* troubleshooting */}
 

@@ -2,7 +2,7 @@
 title: Serverless Compute
 ---
 
-{{ROUTEHELPER}}
+{{ROUTEHELPER.md}}
 
 {{ PRODUCT }} makes it easy to develop, test, and deploy serverless functions without a JavaScript framework. Simply declare your routes and use the `compute`, or `proxy` with the `transformResponse` option, methods to compute responses based on your own custom logic.
 

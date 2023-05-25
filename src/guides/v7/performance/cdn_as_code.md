@@ -2,7 +2,7 @@
 title: CDN-as-Code ({{ EDGEJS_LABEL }})
 ---
 
-{{ROUTEHELPER}}
+{{ROUTEHELPER.md}}
 
 The `{{ PACKAGE_NAME }}/core` package provides a JavaScript API for controlling routing and caching from your code base rather than a CDN web portal. Using this _{{ EDGEJS_LABEL }}_ approach allows this vital routing logic to be properly tested, reviewed, and version controlled, just like the rest of your application code.
 

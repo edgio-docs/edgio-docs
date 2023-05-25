@@ -47,26 +47,6 @@ const StyledFrameworks = styled.div`
 `;
 
 const items = {
-  '7': [
-    {
-      title: 'Next.js',
-      path: '/guides/sites_frameworks/getting_started/next',
-      icon: <IconNextJS />,
-      iconDark: <IconNextJSDark />,
-    },
-    {
-      title: 'Nuxt3',
-      path: '/guides/sites_frameworks/getting_started/nuxt3',
-      icon: <IconNuxt />,
-      iconDark: <IconNuxt />,
-    },
-    {
-      title: 'Nuxt.js',
-      path: '/guides/sites_frameworks/getting_started/nuxt',
-      icon: <IconNuxt />,
-      iconDark: <IconNuxt />,
-    },
-  ],
   default: [
     {
       title: 'Next.js',

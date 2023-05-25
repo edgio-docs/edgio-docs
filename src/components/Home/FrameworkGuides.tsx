@@ -332,6 +332,22 @@ const items = {
         dark: <IconNuxt />,
       },
     },
+    {
+      title: 'React',
+      path: '/guides/sites_frameworks/getting_started/react',
+      icon: {
+        light: <IconReact />,
+        dark: <IconReact />,
+      },
+    },
+    {
+      title: 'Vue.js',
+      path: '/guides/sites_frameworks/getting_started/vue',
+      icon: {
+        light: <IconVue />,
+        dark: <IconVue />,
+      },
+    },
   ],
 };
 
@@ -365,13 +381,20 @@ const StyledComp = styled(StyledFeatureSection)`
 export default function FrameworkGuides() {
   const {
     version,
-    version: {toVersionedPath, selectedVersion},
+    version: {toVersionedPath, isVersion},
   } = useConditioning();
 
-  const routesByColumns = itemsByColumn(items, version, null, 6);
+  const isV7 = isVersion(7);
+  const isV4 = isVersion(4);
+
+  let routesByColumns = itemsByColumn(items, version, null, isV7 ? 3 : 6);
+
+  if (isV7) {
+    routesByColumns = [...routesByColumns, []];
+  }
 
   let sitesGettingStarted = '/guides/sites_frameworks/getting_started/';
-  if (selectedVersion === '4') {
+  if (isV4) {
     sitesGettingStarted = `/guides/jamstack_getting_started`;
   }
 

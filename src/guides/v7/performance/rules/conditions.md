@@ -1469,7 +1469,7 @@ router.conditional({
 
 #### Query Parameter {/*query-parameter*/} <edgejs>request.origin_query</edgejs>
 
-Identifies requests by the value assigned to a query string parameter in the request URL.
+Identifies requests by the value assigned to a query string parameter in the request URL. This comparison is performed on rewritten or redirected URLs.
 
 **Key information:**
 

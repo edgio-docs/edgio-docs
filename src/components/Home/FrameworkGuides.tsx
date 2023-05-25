@@ -404,17 +404,18 @@ export default function FrameworkGuides() {
                   <Link href={toVersionedPath(path)}>{title}</Link>
                 </li>
               ))}
-              {index === routesByColumns.length - 1 && (
-                <li className="route-list__item">
-                  <Link href={toVersionedPath(sitesGettingStarted)} passHref>
-                    <a>
-                      <div className="dot" />
-                      <span>View all supported</span>
-                      <IconArrow displayDirection="right" />
-                    </a>
-                  </Link>
-                </li>
-              )}
+              {index === routesByColumns.length - 1 &&
+                routesByColumns.length > 2 && (
+                  <li className="route-list__item">
+                    <Link href={toVersionedPath(sitesGettingStarted)} passHref>
+                      <a>
+                        <div className="dot" />
+                        <span>View all supported</span>
+                        <IconArrow displayDirection="right" />
+                      </a>
+                    </Link>
+                  </li>
+                )}
             </ul>
           </div>
         ))}

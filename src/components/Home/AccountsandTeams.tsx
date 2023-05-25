@@ -45,7 +45,7 @@ export default function AccountsandTeams() {
     version: {toVersionedPath},
   } = useConditioning();
 
-  const routesByColumns = itemsByColumn(items, version, 'title');
+  const routesByColumns = itemsByColumn(items, version, 'title', 5);
 
   return (
     <StyledComp>

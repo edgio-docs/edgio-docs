@@ -8,7 +8,7 @@ export default function itemsByColumn(
   items: ItemsByVersion,
   version: IVersion,
   sortByKey?: string | null,
-  columnCount?: number
+  columnCount: number = 5
 ): SimpleRouteItem[][] {
   const defaultItems = items.default || [];
   const itemsByVersion: SimpleRouteItem[] =

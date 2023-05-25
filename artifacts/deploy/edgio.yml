@@ -1,0 +1,108 @@
+name: Deploy branch to Edgio
+on:
+  push:
+    branches: [master, main]
+  pull_request:
+  workflow_dispatch:
+jobs:
+  setup-edgio:
+    name: Setup Edgio
+    if: github.event_name == 'workflow_dispatch' || github.event_name == 'repository_dispatch' && !contains(github.event.head_commit.message, 'skip-ci')
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+      - name: Check for file existence
+        id: check-for-file
+        run: |
+          if git ls-files --error-unmatch "edgio.config.js" >/dev/null 2>&1; then
+            echo "Edgio config file exists. Skipping setup"
+            echo "SUCCESS=true" >> $GITHUB_ENV
+          else
+            echo "Edgio config file not found. Starting setup..."
+            echo "SUCCESS=false" >> $GITHUB_ENV
+          fi
+      - name: Install dependencies
+        if: env.SUCCESS == 'false'
+        run: npm i -g @edgio/cli@latest
+      - name: Initialize Edgio
+        if: env.SUCCESS == 'false'
+        run: |
+          edgio init
+          git config --global user.name "Edgio Bot"
+          git add .
+          git commit -m "updated files"
+          git fetch origin ${{ github.ref }}
+          git push origin ${{ github.ref }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  deploy-to-edgio:
+    name: Deploy to Edgio
+    if: ${{ always() && !contains(github.event.head_commit.message, 'skip-ci') }}
+    needs: setup-edgio
+    runs-on: ubuntu-latest
+    env:
+      deploy_token: ${{secrets.EDGIO_DEPLOY_TOKEN}}
+    steps:
+      - name: Check for deploy token secret
+        if: env.deploy_token == ''
+        run: |
+          echo You must define the "EDGIO_DEPLOY_TOKEN" secret in GitHub project settings
+          exit 1
+      - name: Extract branch name
+        shell: bash
+        run: echo "BRANCH_NAME=$(echo ${GITHUB_REF#refs/heads/} | sed 's///_/g')" >> $GITHUB_ENV
+      - uses: actions/checkout@v2
+        with:
+          ref: '${{ github.ref }}'
+      - uses: actions/setup-node@v2
+        with:
+          node-version: 16
+      - name: Display file contents
+        run: |
+          cd ${{ github.workspace }}
+          ls -al  # Display the list of files in the workspace directory
+      - name: Cache node modules
+        uses: actions/cache@v2
+        id: cache-node-modules
+        with:
+          path: ~/.npm # npm cache files are stored in `~/.npm` on Linux/macOS
+          key: ${{ runner.os }}-build-${{ hashFiles('**/package-lock.json') }}-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-build-${{ hashFiles('**/package-lock.json') }}-
+            ${{ runner.os }}-build-${{ hashFiles('**/yarn.lock') }}-
+            ${{ runner.os }}-build-
+            ${{ runner.os }}-
+      - name: Install dependencies
+        run: |
+          npm i -g @edgio/cli
+          # Check if package-lock.json file exists
+          if [ -f "package-lock.json" ]; then
+            # Use npm
+            npm ci --legacy-peer-deps
+          else
+            # Check if yarn.lock file exists
+            if [ -f "yarn.lock" ]; then
+              # Use yarn
+              yarn install --immutable
+            else
+              # No lock file found
+              echo "No lock file found. Please run 'npm ci' or 'yarn install --frozen-lockfile' to install dependencies."
+              exit 1
+            fi
+          fi
+      - name: Deploy
+        run: |
+          # Use "production" environment for master/main branches, otherwise use "default" environment
+          if [ "${{ github.ref }}" = "refs/heads/master" ] || [ "${{ github.ref }}" = "refs/heads/main" ]; then
+            environment="production"
+          else
+            environment="default"
+          fi
+
+          npm run edgio:deploy -- --branch="$BRANCH_NAME" --environment="$environment" --token="${{ secrets.EDGIO_DEPLOY_TOKEN }}" --ignore-error="CONFIG_SOURCE_SWITCH"

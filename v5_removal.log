@@ -1,0 +1,267 @@
+➜  layer0-docs git:(COMSUP-8_remove_sidebardata_dep) ✗ node scripts/validateFileToNav.js
+[
+  '/guides/getting_started',
+  '/guides/basics',
+  '/guides/basics/environments',
+  '/guides/basics/domains',
+  '/guides/basics/deployments',
+  '/guides/basics/collaboration',
+  '/guides/basics/collaboration/sso',
+  '/guides/basics/alerts',
+  '/guides/basics/edgio_config',
+  '/guides/performance',
+  '/guides/performance/getting_started',
+  '/guides/performance/cdn_as_code',
+  '/guides/performance/cdn_as_code/common_routing_patterns',
+  '/guides/performance/caching',
+  '/guides/performance/purging',
+  '/guides/performance/static_prerendering',
+  '/guides/performance/prefetching',
+  '/guides/performance/traffic_splitting',
+  '/guides/performance/traffic_splitting/a_b_testing',
+  '/guides/performance/observability',
+  '/guides/performance/observability/core_web_vitals',
+  '/guides/performance/observability/devtools',
+  '/guides/performance/serverless_compute',
+  '/guides/performance/unit_testing_edgejs',
+  '/guides/performance/image_optimization',
+  '/guides/performance/traditional_sites',
+  '/guides/performance/third_party_cdns',
+  '/guides/performance/compression',
+  '/guides/performance/request',
+  '/guides/performance/response',
+  '/guides/performance/troubleshooting',
+  '/guides/performance/limits',
+  '/guides/security',
+  '/guides/security/managed_rule_groups',
+  '/guides/security/security_suite',
+  '/guides/sites_frameworks',
+  '/guides/sites_frameworks/getting_started',
+  '/guides/sites_frameworks/getting_started/angular',
+  '/guides/sites_frameworks/getting_started/astro',
+  '/guides/sites_frameworks/getting_started/brunch',
+  '/guides/sites_frameworks/getting_started/docusaurus',
+  '/guides/sites_frameworks/getting_started/dojo',
+  '/guides/sites_frameworks/getting_started/eleventy',
+  '/guides/sites_frameworks/getting_started/ember',
+  '/guides/sites_frameworks/getting_started/ember_fastboot',
+  '/guides/sites_frameworks/getting_started/express',
+  '/guides/sites_frameworks/getting_started/frontity',
+  '/guides/sites_frameworks/getting_started/gatsby',
+  '/guides/sites_frameworks/getting_started/gridsome',
+  '/guides/sites_frameworks/getting_started/hexo',
+  '/guides/sites_frameworks/getting_started/hugo',
+  '/guides/sites_frameworks/getting_started/ionic_react',
+  '/guides/sites_frameworks/getting_started/ionic_vue',
+  '/guides/sites_frameworks/getting_started/jekyll',
+  '/guides/sites_frameworks/getting_started/lit',
+  '/guides/sites_frameworks/getting_started/mkdocs',
+  '/guides/sites_frameworks/getting_started/next',
+  '/guides/sites_frameworks/getting_started/next_commerce',
+  '/guides/sites_frameworks/getting_started/nuxt',
+  '/guides/sites_frameworks/getting_started/nuxt3',
+  '/guides/sites_frameworks/getting_started/preact',
+  '/guides/sites_frameworks/getting_started/razzle',
+  '/guides/sites_frameworks/getting_started/react',
+  '/guides/sites_frameworks/getting_started/react_static',
+  '/guides/sites_frameworks/getting_started/react-storefront',
+  '/guides/sites_frameworks/getting_started/redwoodjs',
+  '/guides/sites_frameworks/getting_started/remix',
+  '/guides/sites_frameworks/getting_started/saber',
+  '/guides/sites_frameworks/getting_started/sanity',
+  '/guides/sites_frameworks/getting_started/sapper',
+  '/guides/sites_frameworks/getting_started/scully',
+  '/guides/sites_frameworks/getting_started/solid',
+  '/guides/sites_frameworks/getting_started/spartacus',
+  '/guides/sites_frameworks/getting_started/static_sites',
+  '/guides/sites_frameworks/getting_started/stencil',
+  '/guides/sites_frameworks/getting_started/svelte',
+  '/guides/sites_frameworks/getting_started/umijs',
+  '/guides/sites_frameworks/getting_started/vitepress',
+  '/guides/sites_frameworks/getting_started/vsf',
+  '/guides/sites_frameworks/getting_started/vue',
+  '/guides/sites_frameworks/getting_started/vuepress',
+  '/guides/sites_frameworks/getting_started/zola',
+  '/guides/sites_frameworks/connectors',
+  '/guides/sites_frameworks/isg',
+  '/guides/sites_frameworks/limits',
+  '/guides/integrations',
+  '/guides/integrations/bigcommerce',
+  '/guides/integrations/bloomreach',
+  '/guides/integrations/shopify_hydrogen',
+  '/guides/integrations/swell',
+  '/guides/integrations/wordpress',
+  '/guides/develop',
+  '/guides/develop/cli',
+  '/guides/develop/rest_api',
+  '/guides/develop/logs',
+  '/guides/develop/deploy_to_edgio',
+  '/guides/develop/packages',
+  '/guides//docs/v5.x/api/core',
+  '/guides//docs/v5.x/api/prefetch',
+  '/guides/upgrading',
+  ... 3 more items
+]
+The path /guides/basics/account_settings does not exist for file src/guides/v5/basics/account_settings.md.
+✔ The path /guides/basics/account_settings does not exist for file src/guides/v5/basics/account_settings.md. Do you want to remove this file? … yes
+File src/guides/v5/basics/account_settings.md has been removed.
+The path /guides/basics/hostnames_and_origins does not exist for file src/guides/v5/basics/hostnames_and_origins.md.
+✔ The path /guides/basics/hostnames_and_origins does not exist for file src/guides/v5/basics/hostnames_and_origins.md. Do you want to remove this file? … yes
+File src/guides/v5/basics/hostnames_and_origins.md has been removed.
+The path /guides/basics/properties does not exist for file src/guides/v5/basics/properties.md.
+✔ The path /guides/basics/properties does not exist for file src/guides/v5/basics/properties.md. Do you want to remove this file? … yes
+File src/guides/v5/basics/properties.md has been removed.
+The path /guides/contributing does not exist for file src/guides/v5/contributing.md.
+✔ The path /guides/contributing does not exist for file src/guides/v5/contributing.md. Do you want to remove this file? … no
+File src/guides/v5/contributing.md has not been removed.
+The path /guides/how-to does not exist for file src/guides/v5/how-to.md.
+✔ The path /guides/how-to does not exist for file src/guides/v5/how-to.md. Do you want to remove this file? … no
+File src/guides/v5/how-to.md has not been removed.
+The path /guides/index does not exist for file src/guides/v5/index.md.
+✔ The path /guides/index does not exist for file src/guides/v5/index.md. Do you want to remove this file? … no
+File src/guides/v5/index.md has not been removed.
+The path /guides/install_nodejs does not exist for file src/guides/v5/install_nodejs.md.
+✔ The path /guides/install_nodejs does not exist for file src/guides/v5/install_nodejs.md. Do you want to remove this file? … no
+File src/guides/v5/install_nodejs.md has not been removed.
+The path /guides/learning does not exist for file src/guides/v5/learning.md.
+✔ The path /guides/learning does not exist for file src/guides/v5/learning.md. Do you want to remove this file? … no
+File src/guides/v5/learning.md has not been removed.
+The path /guides/logs/access_logs does not exist for file src/guides/v5/logs/access_logs.md.
+✔ The path /guides/logs/access_logs does not exist for file src/guides/v5/logs/access_logs.md. Do you want to remove this file? … yes
+File src/guides/v5/logs/access_logs.md has been removed.
+The path /guides/logs/build_logs does not exist for file src/guides/v5/logs/build_logs.md.
+✔ The path /guides/logs/build_logs does not exist for file src/guides/v5/logs/build_logs.md. Do you want to remove this file? … yes
+File src/guides/v5/logs/build_logs.md has been removed.
+The path /guides/logs/rtld/aws_s3_log_delivery does not exist for file src/guides/v5/logs/rtld/aws_s3_log_delivery.md.
+✔ The path /guides/logs/rtld/aws_s3_log_delivery does not exist for file src/guides/v5/logs/rtld/aws_s3_log_delivery.md. Do you want to remove this file? … yes
+File src/guides/v5/logs/rtld/aws_s3_log_delivery.md has been removed.
+The path /guides/logs/rtld/azure_blob_storage_log_delivery does not exist for file src/guides/v5/logs/rtld/azure_blob_storage_log_delivery.md.
+✔ The path /guides/logs/rtld/azure_blob_storage_log_delivery does not exist for file src/guides/v5/logs/rtld/azure_blob_storage_log_delivery.md. Do you want to remove this file? … yes
+File src/guides/v5/logs/rtld/azure_blob_storage_log_delivery.md has been removed.
+The path /guides/logs/rtld/datadog_log_delivery does not exist for file src/guides/v5/logs/rtld/datadog_log_delivery.md.
+✔ The path /guides/logs/rtld/datadog_log_delivery does not exist for file src/guides/v5/logs/rtld/datadog_log_delivery.md. Do you want to remove this file? … yes
+File src/guides/v5/logs/rtld/datadog_log_delivery.md has been removed.
+The path /guides/logs/rtld/google_cloud_storage_log_delivery does not exist for file src/guides/v5/logs/rtld/google_cloud_storage_log_delivery.md.
+✔ The path /guides/logs/rtld/google_cloud_storage_log_delivery does not exist for file src/guides/v5/logs/rtld/google_cloud_storage_log_delivery.md. Do you want to remove this file? … yes
+File src/guides/v5/logs/rtld/google_cloud_storage_log_delivery.md has been removed.
+The path /guides/logs/rtld/log_data_verification does not exist for file src/guides/v5/logs/rtld/log_data_verification.md.
+✔ The path /guides/logs/rtld/log_data_verification does not exist for file src/guides/v5/logs/rtld/log_data_verification.md. Do you want to remove this file? … yes
+File src/guides/v5/logs/rtld/log_data_verification.md has been removed.
+The path /guides/logs/rtld/log_fields_rtld_cdn does not exist for file src/guides/v5/logs/rtld/log_fields_rtld_cdn.md.
+✔ The path /guides/logs/rtld/log_fields_rtld_cdn does not exist for file src/guides/v5/logs/rtld/log_fields_rtld_cdn.md. Do you want to remove this file? … yes
+File src/guides/v5/logs/rtld/log_fields_rtld_cdn.md has been removed.
+The path /guides/logs/rtld/log_fields_rtld_rate_limiting does not exist for file src/guides/v5/logs/rtld/log_fields_rtld_rate_limiting.md.
+✔ The path /guides/logs/rtld/log_fields_rtld_rate_limiting does not exist for file src/guides/v5/logs/rtld/log_fields_rtld_rate_limiting.md. Do you want to remove this file? … yes
+File src/guides/v5/logs/rtld/log_fields_rtld_rate_limiting.md has been removed.
+The path /guides/logs/rtld/log_fields_rtld_waf does not exist for file src/guides/v5/logs/rtld/log_fields_rtld_waf.md.
+✔ The path /guides/logs/rtld/log_fields_rtld_waf does not exist for file src/guides/v5/logs/rtld/log_fields_rtld_waf.md. Do you want to remove this file? … yes
+File src/guides/v5/logs/rtld/log_fields_rtld_waf.md has been removed.
+The path /guides/logs/rtld/log_file_naming_convention does not exist for file src/guides/v5/logs/rtld/log_file_naming_convention.md.
+✔ The path /guides/logs/rtld/log_file_naming_convention does not exist for file src/guides/v5/logs/rtld/log_file_naming_convention.md. Do you want to remove this file? … yes
+File src/guides/v5/logs/rtld/log_file_naming_convention.md has been removed.
+The path /guides/logs/rtld/new_relic_log_delivery does not exist for file src/guides/v5/logs/rtld/new_relic_log_delivery.md.
+✔ The path /guides/logs/rtld/new_relic_log_delivery does not exist for file src/guides/v5/logs/rtld/new_relic_log_delivery.md. Do you want to remove this file? … yes
+File src/guides/v5/logs/rtld/new_relic_log_delivery.md has been removed.
+The path /guides/logs/rtld/splunk_enterprise_log_delivery does not exist for file src/guides/v5/logs/rtld/splunk_enterprise_log_delivery.md.
+✔ The path /guides/logs/rtld/splunk_enterprise_log_delivery does not exist for file src/guides/v5/logs/rtld/splunk_enterprise_log_delivery.md. Do you want to remove this file? … yes
+File src/guides/v5/logs/rtld/splunk_enterprise_log_delivery.md has been removed.
+The path /guides/logs/rtld/sumo_logic_log_delivery does not exist for file src/guides/v5/logs/rtld/sumo_logic_log_delivery.md.
+✔ The path /guides/logs/rtld/sumo_logic_log_delivery does not exist for file src/guides/v5/logs/rtld/sumo_logic_log_delivery.md. Do you want to remove this file? … yes
+File src/guides/v5/logs/rtld/sumo_logic_log_delivery.md has been removed.
+The path /guides/logs/rtld/web_server_log_delivery does not exist for file src/guides/v5/logs/rtld/web_server_log_delivery.md.
+✔ The path /guides/logs/rtld/web_server_log_delivery does not exist for file src/guides/v5/logs/rtld/web_server_log_delivery.md. Do you want to remove this file? … yes
+File src/guides/v5/logs/rtld/web_server_log_delivery.md has been removed.
+The path /guides/logs/rtld does not exist for file src/guides/v5/logs/rtld.md.
+✔ The path /guides/logs/rtld does not exist for file src/guides/v5/logs/rtld.md. Do you want to remove this file? … yes
+File src/guides/v5/logs/rtld.md has been removed.
+The path /guides/logs/server_logs does not exist for file src/guides/v5/logs/server_logs.md.
+✔ The path /guides/logs/server_logs does not exist for file src/guides/v5/logs/server_logs.md. Do you want to remove this file? … yes
+File src/guides/v5/logs/server_logs.md has been removed.
+The path /guides/logs does not exist for file src/guides/v5/logs.md.
+✔ The path /guides/logs does not exist for file src/guides/v5/logs.md. Do you want to remove this file? … yes
+File src/guides/v5/logs.md has been removed.
+The path /guides/performance/cdn_as_code/edgio_config does not exist for file src/guides/v5/performance/cdn_as_code/edgio_config.md.
+✔ The path /guides/performance/cdn_as_code/edgio_config does not exist for file src/guides/v5/performance/cdn_as_code/edgio_config.md. Do you want to remove this file? … yes
+File src/guides/v5/performance/cdn_as_code/edgio_config.md has been removed.
+The path /guides/performance/cdn_as_code/getting_started does not exist for file src/guides/v5/performance/cdn_as_code/getting_started.md.
+✔ The path /guides/performance/cdn_as_code/getting_started does not exist for file src/guides/v5/performance/cdn_as_code/getting_started.md. Do you want to remove this file? … yes
+File src/guides/v5/performance/cdn_as_code/getting_started.md has been removed.
+The path /guides/performance/observability/edge_insights does not exist for file src/guides/v5/performance/observability/edge_insights.md.
+✔ The path /guides/performance/observability/edge_insights does not exist for file src/guides/v5/performance/observability/edge_insights.md. Do you want to remove this file? … yes
+File src/guides/v5/performance/observability/edge_insights.md has been removed.
+The path /guides/performance/rules/conditions does not exist for file src/guides/v5/performance/rules/conditions.md.
+✔ The path /guides/performance/rules/conditions does not exist for file src/guides/v5/performance/rules/conditions.md. Do you want to remove this file? … yes
+File src/guides/v5/performance/rules/conditions.md has been removed.
+The path /guides/performance/rules/feature_variables does not exist for file src/guides/v5/performance/rules/feature_variables.md.
+✔ The path /guides/performance/rules/feature_variables does not exist for file src/guides/v5/performance/rules/feature_variables.md. Do you want to remove this file? … yes
+File src/guides/v5/performance/rules/feature_variables.md has been removed.
+The path /guides/performance/rules/features does not exist for file src/guides/v5/performance/rules/features.md.
+✔ The path /guides/performance/rules/features does not exist for file src/guides/v5/performance/rules/features.md. Do you want to remove this file? … yes
+File src/guides/v5/performance/rules/features.md has been removed.
+The path /guides/performance/rules/operators does not exist for file src/guides/v5/performance/rules/operators.md.
+✔ The path /guides/performance/rules/operators does not exist for file src/guides/v5/performance/rules/operators.md. Do you want to remove this file? … yes
+File src/guides/v5/performance/rules/operators.md has been removed.
+The path /guides/performance/rules does not exist for file src/guides/v5/performance/rules.md.
+✔ The path /guides/performance/rules does not exist for file src/guides/v5/performance/rules.md. Do you want to remove this file? … yes
+File src/guides/v5/performance/rules.md has been removed.
+The path /guides/reference/country_codes does not exist for file src/guides/v5/reference/country_codes.md.
+✔ The path /guides/reference/country_codes does not exist for file src/guides/v5/reference/country_codes.md. Do you want to remove this file? … yes
+File src/guides/v5/reference/country_codes.md has been removed.
+The path /guides/reference does not exist for file src/guides/v5/reference.md.
+✔ The path /guides/reference does not exist for file src/guides/v5/reference.md. Do you want to remove this file? … yes
+File src/guides/v5/reference.md has been removed.
+The path /guides/release_notes does not exist for file src/guides/v5/release_notes.md.
+✔ The path /guides/release_notes does not exist for file src/guides/v5/release_notes.md. Do you want to remove this file? … yes
+File src/guides/v5/release_notes.md has been removed.
+The path /guides/security/access_rules does not exist for file src/guides/v5/security/access_rules.md.
+✔ The path /guides/security/access_rules does not exist for file src/guides/v5/security/access_rules.md. Do you want to remove this file? … yes
+File src/guides/v5/security/access_rules.md has been removed.
+The path /guides/security/bot_rules does not exist for file src/guides/v5/security/bot_rules.md.
+✔ The path /guides/security/bot_rules does not exist for file src/guides/v5/security/bot_rules.md. Do you want to remove this file? … yes
+File src/guides/v5/security/bot_rules.md has been removed.
+The path /guides/security/custom_rules does not exist for file src/guides/v5/security/custom_rules.md.
+✔ The path /guides/security/custom_rules does not exist for file src/guides/v5/security/custom_rules.md. Do you want to remove this file? … yes
+File src/guides/v5/security/custom_rules.md has been removed.
+The path /guides/security/dashboard does not exist for file src/guides/v5/security/dashboard.md.
+✔ The path /guides/security/dashboard does not exist for file src/guides/v5/security/dashboard.md. Do you want to remove this file? … yes
+File src/guides/v5/security/dashboard.md has been removed.
+The path /guides/security/edgejs_security does not exist for file src/guides/v5/security/edgejs_security.md.
+✔ The path /guides/security/edgejs_security does not exist for file src/guides/v5/security/edgejs_security.md. Do you want to remove this file? … yes
+File src/guides/v5/security/edgejs_security.md has been removed.
+The path /guides/security/getting_started does not exist for file src/guides/v5/security/getting_started.md.
+✔ The path /guides/security/getting_started does not exist for file src/guides/v5/security/getting_started.md. Do you want to remove this file? … yes
+File src/guides/v5/security/getting_started.md has been removed.
+The path /guides/security/introduction does not exist for file src/guides/v5/security/introduction.md.
+✔ The path /guides/security/introduction does not exist for file src/guides/v5/security/introduction.md. Do you want to remove this file? … yes
+File src/guides/v5/security/introduction.md has been removed.
+The path /guides/security/managed_rules does not exist for file src/guides/v5/security/managed_rules.md.
+✔ The path /guides/security/managed_rules does not exist for file src/guides/v5/security/managed_rules.md. Do you want to remove this file? … yes
+File src/guides/v5/security/managed_rules.md has been removed.
+The path /guides/security/matched_on_variables does not exist for file src/guides/v5/security/matched_on_variables.md.
+✔ The path /guides/security/matched_on_variables does not exist for file src/guides/v5/security/matched_on_variables.md. Do you want to remove this file? … yes
+File src/guides/v5/security/matched_on_variables.md has been removed.
+The path /guides/security/origin_shield does not exist for file src/guides/v5/security/origin_shield.md.
+✔ The path /guides/security/origin_shield does not exist for file src/guides/v5/security/origin_shield.md. Do you want to remove this file? … yes
+File src/guides/v5/security/origin_shield.md has been removed.
+The path /guides/security/rate_rules does not exist for file src/guides/v5/security/rate_rules.md.
+✔ The path /guides/security/rate_rules does not exist for file src/guides/v5/security/rate_rules.md. Do you want to remove this file? … yes
+File src/guides/v5/security/rate_rules.md has been removed.
+The path /guides/security/recent_event_logs does not exist for file src/guides/v5/security/recent_event_logs.md.
+✔ The path /guides/security/recent_event_logs does not exist for file src/guides/v5/security/recent_event_logs.md. Do you want to remove this file? … yes
+File src/guides/v5/security/recent_event_logs.md has been removed.
+The path /guides/security/response_to_client does not exist for file src/guides/v5/security/response_to_client.md.
+✔ The path /guides/security/response_to_client does not exist for file src/guides/v5/security/response_to_client.md. Do you want to remove this file? … yes
+File src/guides/v5/security/response_to_client.md has been removed.
+The path /guides/security/security_applications does not exist for file src/guides/v5/security/security_applications.md.
+✔ The path /guides/security/security_applications does not exist for file src/guides/v5/security/security_applications.md. Do you want to remove this file? … yes
+File src/guides/v5/security/security_applications.md has been removed.
+The path /guides/security/tls_certificates does not exist for file src/guides/v5/security/tls_certificates.md.
+✔ The path /guides/security/tls_certificates does not exist for file src/guides/v5/security/tls_certificates.md. Do you want to remove this file? … yes
+File src/guides/v5/security/tls_certificates.md has been removed.
+The path /guides/security/waf does not exist for file src/guides/v5/security/waf.md.
+✔ The path /guides/security/waf does not exist for file src/guides/v5/security/waf.md. Do you want to remove this file? … yes
+File src/guides/v5/security/waf.md has been removed.
+The path /guides/what_is_graphql does not exist for file src/guides/v5/what_is_graphql.md.
+✔ The path /guides/what_is_graphql does not exist for file src/guides/v5/what_is_graphql.md. Do you want to remove this file? … no
+File src/guides/v5/what_is_graphql.md has not been removed.
+➜  layer0-docs git:(COMSUP-8_remove_sidebardata_dep) ✗

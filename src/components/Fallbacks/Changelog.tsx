@@ -3,7 +3,6 @@ import styled from 'styled-components';
 
 import Docs from 'components/Docs';
 import {Page} from 'components/Layout/Page';
-import JSONRoutes from 'utils/jsonRoutes';
 
 const StyledChangelogFallbackContent = styled.div`
   display: contents;
@@ -42,7 +41,7 @@ function ChangeLogFallBackPage() {
     document.body.scrollTop = document.documentElement.scrollTop = 0;
   }, []);
   return (
-    <Page routeTree={JSONRoutes}>
+    <Page>
       <Docs title="Changelog" tocHeadings={[]}>
         <StyledChangelogFallbackContent>
           <h3 className="animate-pulse bg-black-50 px-10">&nbsp;</h3>

@@ -122,11 +122,11 @@ This document will be updated once the problem is fully resolved.
 
 ### withServiceWorker {/* withserviceworker */}
 
-The `withServiceWorker` plugin builds a service worker from `sw/service-worker.js` that prefetches and caches all static JS assets and enables {{ PRODUCT }}'s [prefetching](/guides/next#prefetching) functionality.
+The `withServiceWorker` plugin builds a service worker from `sw/service-worker.js` that prefetches and caches all static JS assets and enables {{ PRODUCT }}'s [prefetching](#prefetching) functionality.
 
 ## {{ PRODUCT_NAME }} Devtools {/* devtools */}
 
-By default, [Devtools](/guides/devtools) are enabled on production builds of Next.js with {{ PRODUCT }}. To disable devtools in production, add the `disableEdgioDevTools` flag:
+By default, [Devtools](/guides/performance/observability/devtools) are enabled on production builds of Next.js with {{ PRODUCT }}. To disable devtools in production, add the `disableEdgioDevTools` flag:
 
 ```js filename='next.config.js' highlight="10"
 const { with{{ PRODUCT }}, withServiceWorker } = require('{{ PACKAGE_NAME }}/next/config')
@@ -137,7 +137,7 @@ module.exports = with{{ PRODUCT }}(
     // the logs in the {{ PORTAL }}.
     {{ FULL_CLI_NAME }}SourceMaps: true,
     // Don't include {{ PRODUCT_NAME }} Devtools in production
-    // More on {{ PRODUCT_NAME }} Devtools at {{ DOCS_URL }}/guides/devtools
+    // More on {{ PRODUCT_NAME }} Devtools at {{ DOCS_URL }}/guides/performance/observability/devtools
     disableEdgioDevTools: true,
   })
 )

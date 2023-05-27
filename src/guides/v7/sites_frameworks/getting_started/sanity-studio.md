@@ -58,7 +58,7 @@ The default `routes.js` file created by `{{ FULL_CLI_NAME }} init` sends all req
 const { Router } = require('{{ PACKAGE_NAME }}/core/router')
 const { sanityRoutes } = require('{{ PACKAGE_NAME }}/sanity-studio')
 
-export default new Router({ indexPermalink: false }).use(sanityRoutes)
+export default new Router().use(sanityRoutes)
 ```
 
 ## Running Locally {/*running-locally*/}

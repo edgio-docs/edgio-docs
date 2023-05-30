@@ -53,28 +53,43 @@ function useConditioning(): IConditioning {
     pathPrefix: `v${cleanedVersion}`,
 
     packageVersion: `^${cleanedVersion}.0.0`,
-    toVersionedPath: (path: string) => {
-      const {asPath} = router;
+    toVersionedPath: (path: string): string => {
+      const versionedPaths: Array<[RegExp, () => string[]]> = [
+        [
+          // matches anything starting with /docs
+          /^\/docs/,
+          () => [
+            '/docs', // forcing all urls to start with /docs
+            `${versionConfig.pathPrefix}.x`,
+            ...path
+              .replace('/docs/', '/')
+              .replace(`/${versionConfig.pathPrefix}/`, '/')
+              .split('/'),
+          ],
+        ],
+        [
+          // matches anything starting with /guides or a guide name w/o the preceding /
+          /^(\/guides|\w+)/,
+          () => [
+            '/guides', // forcing all urls to start with /guides
+            versionConfig.pathPrefix,
+            ...path
+              .replace('/guides/', '/')
+              .replace(`/${versionConfig.pathPrefix}/`, '/')
+              .split('/'),
+          ],
+        ],
+      ];
 
-      // Most links within the docs refer to just the guide name, e.g. "getting-started"
-      // but some used the full path, e.g. "/guides/getting-started". We only want to
-      // modify the path if it is linking to a guide. If it is linking to a page outside
-      // of the guides (e.g "/docs/api/..."), we don't want to modify the path.
-      if (path.startsWith('/') && !path.startsWith('/guides')) {
-        return path;
+      for (const [regex, fn] of versionedPaths) {
+        if (path.match(regex)) {
+          return fn().filter(Boolean).join('/');
+        }
       }
 
-      return [
-        '/guides', // forcing all urls to start with /guides
-        versionConfig.pathPrefix.length ? versionConfig.pathPrefix : null,
-        ...path
-          .replace('/guides/', '/')
-          .replace(`/${versionConfig.pathPrefix}/`, '/')
-          .split('/'),
-      ]
-        .filter(Boolean)
-        .join('/');
+      return path;
     },
+
     isVersion: (version: string | number) => {
       return cleanedVersion === version.toString();
     },

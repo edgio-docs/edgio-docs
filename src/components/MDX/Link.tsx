@@ -48,10 +48,14 @@ function Link({
   }
 
   let hrefType = 'internal';
-  if (href.startsWith('http') || href.startsWith('mailto')) {
+  if (/^(http|mailto|tel|\/docs\/)/.test(href)) {
     hrefType = 'external';
   } else if (href.startsWith('#')) {
     hrefType = 'anchor';
+  }
+
+  if (versioned) {
+    href = version.toVersionedPath(href);
   }
 
   switch (hrefType) {
@@ -68,11 +72,6 @@ function Link({
           {modifiedChildren}
         </a>
       );
-  }
-
-  // internal link
-  if (versioned) {
-    href = version.toVersionedPath(href);
   }
 
   return (

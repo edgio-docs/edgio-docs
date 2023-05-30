@@ -339,6 +339,7 @@ router.conditional({
 ```
 
 </edgejs>
+
 <!--
 #### Device Operating System {/*device-operating-system*/} <edgejs>device</edgejs>
 
@@ -351,7 +352,6 @@ Identifies requests by the operating system (e.g., IOS) of the device that issue
 </edgejs>
 -->
 
-<!--
 #### Directory {/*directory*/} <edgejs>request.path</edgejs>
 
 Identifies requests by the request URL's relative path. This relative path excludes the filename of the requested asset.
@@ -371,7 +371,7 @@ Identifies requests by the request URL's relative path. This relative path exclu
 **Example:**
 
 </edgejs>
--->
+
 
 #### DMA Code {/*dma-code*/} <edgejs>location</edgejs>
 
@@ -444,7 +444,7 @@ router.conditional({
 
 </edgejs>
 
-<!--
+
 #### Extensions {/*extensions*/} <edgejs>request.path</edgejs>
 
 Identifies requests by the file extension defined in the URL.
@@ -460,7 +460,7 @@ This match condition looks for a URL that ends with a period (`.`) and the speci
 **Example:**
 
 </edgejs>
--->
+
 
 #### Filename {/*filename*/} <edgejs>request.path</edgejs>
 

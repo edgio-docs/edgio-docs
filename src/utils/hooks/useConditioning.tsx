@@ -54,36 +54,44 @@ function useConditioning(): IConditioning {
 
     packageVersion: `^${cleanedVersion}.0.0`,
     toVersionedPath: (path: string): string => {
-      const versionedPaths: Array<[RegExp, () => string[]]> = [
+      const versionedPaths: Array<[RegExp, () => string]> = [
+        // matches anything starting with http, https, mailto, or tel, and returns the path as-is
+        [/^(https?:\/\/|mailto:|tel:)/, () => path],
         [
           // matches anything starting with /docs
           /^\/docs/,
-          () => [
-            '/docs', // forcing all urls to start with /docs
-            `${versionConfig.pathPrefix}.x`,
-            ...path
-              .replace('/docs/', '/')
-              .replace(`/${versionConfig.pathPrefix}/`, '/')
-              .split('/'),
-          ],
+          () =>
+            [
+              '/docs', // forcing all urls to start with /docs
+              `${versionConfig.pathPrefix}.x`,
+              ...path
+                .replace('/docs/', '/')
+                .replace(`/${versionConfig.pathPrefix}/`, '/')
+                .split('/'),
+            ]
+              .filter(Boolean)
+              .join('/'),
         ],
         [
           // matches anything starting with /guides or a guide name w/o the preceding /
           /^(\/guides|\w+)/,
-          () => [
-            '/guides', // forcing all urls to start with /guides
-            versionConfig.pathPrefix,
-            ...path
-              .replace('/guides/', '/')
-              .replace(`/${versionConfig.pathPrefix}/`, '/')
-              .split('/'),
-          ],
+          () =>
+            [
+              '/guides', // forcing all urls to start with /guides
+              versionConfig.pathPrefix,
+              ...path
+                .replace('/guides/', '/')
+                .replace(`/${versionConfig.pathPrefix}/`, '/')
+                .split('/'),
+            ]
+              .filter(Boolean)
+              .join('/'),
         ],
       ];
 
       for (const [regex, fn] of versionedPaths) {
         if (path.match(regex)) {
-          return fn().filter(Boolean).join('/');
+          return fn();
         }
       }
 

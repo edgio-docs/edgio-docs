@@ -47,21 +47,21 @@ import {Router} from '{{ PACKAGE_NAME }}/core';
 
 export default new Router()
   // Here we configure a route for the product API.
-  .get('/api/products/:id.json', ({cache, proxy}) => {
-    // In order to prefetch product data, we must cache responses at the edge and in the service worker.
-    cache({
-      edge: {
-        maxAgeSeconds: 60 * 60, // cache at the edge for one hour
-        staleWhileRevalidateSeconds: 60 * 60 * 24 * 365, // optionally serve stale while retreiving a fresh version from the origin
+  .get('/api/products/:id.json', {
+    caching: {
+      max_age: '1h',
+      stale_while_revalidate: '1d',
+      service_worker_max_age: '1h',
+    },
+    headers: {
+      set_response_headers: {
+        'x-sw-cache-control': 'max-age=3600',
       },
-      browser: {
-        serviceWorkerSeconds: 60 * 60, // cache in the browser using the service worker for one hour
-      },
-    });
+    },
   });
 ```
 
-Note that if you prefetch a URL without setting `browser.serviceWorkerSeconds` as shown above, the response will still be prefetched and cached by the service worker with a short TTL (2 minutes by default). You can change the default TTL by setting `defaultMaxAgeSeconds` when initializing the Prefetcher instance in your service worker:
+Note that if you prefetch a URL without setting `caching.service_worker_max_age` as shown above, the response will still be prefetched and cached by the service worker with a short TTL (2 minutes by default). You can change the default TTL by setting `defaultMaxAgeSeconds` when initializing the Prefetcher instance in your service worker:
 
 ```js
 const prefetcher = new Prefetcher({defaultMaxAgeSeconds: 60 * 10}); // set the default TTL to 10 minutes
@@ -297,20 +297,24 @@ function deepFetchResponsiveImages({$el, el, $}: DeepFetchCallbackParam) {
 By default, {{ PRODUCT_NAME }} will only serve prefetch requests from the edge cache. If a request cannot be served from the cache, a 412 status is returned. This protects your origin servers from additional traffic associated with prefetching. If you're seeing a surprisingly high number of 412s in your logs:
 
 1. Ensure that the URLs you're prefetching match exactly those that are fetched during page navigation. Prefetch URLs will have `?{{ COOKIE_PREFIX }}_prefetch=1` whereas the URLs associated with page navigation won't. That's okay. The `{{ COOKIE_PREFIX }}_*` query parameters are automatically excluded from the cache key. Just ensure that there are no other differences.
-2. Ensure that `cache` settings have stale-while-revalidate enabled. For example:
+2. Ensure that `caching` settings have stale-while-revalidate enabled. For example:
 
 ```js
-router.get('/p/:productId', ({cache}) => {
-  cache({
-    edge: {
-      maxAgeSeconds: 60 * 60,
-      staleWhileRevalidateSeconds: 60 * 60 * 24, // this way stale items can still be prefetched
+router.get('/p/:productId', {
+  caching: {
+    max_age: '1h',
+    service_worker_max_age: '1h',
+    stale_while_revalidate: '1d', // this way stale items can still be prefetched
+  },
+  headers: {
+    set_response_headers: {
+      'x-sw-cache-control': 'max-age=3600',
     },
-  });
+  },
 });
 ```
 
-3. Consider increasing `edge.maxAgeSeconds`. The shorter the cache time to live is, the more prefetches will fail.
+3. Consider increasing `caching.max_age`. The shorter the cache time to live is, the more prefetches will fail.
 4. Set the `includeCacheMisses` install option to `true`. This should be used with caution and is not recommended for use in production because it will significantly increase the traffic to your origin or API servers.
 
 ```js

@@ -2,7 +2,9 @@
 title: Route Criteria and Conditions
 ---
 
-[ intro for route rules and criteria]
+Route conditions allow you to match requests based on the request path, method, query parameters, cookies, and request headers. You can also use route conditions to match requests based on regular expressions and negation.
+
+As outlined in the [Route Criteria](/guides/performance/cdn_as_code#route-criteria) section of the CDN-as-Code guide, route criteria are defined as the first argument to the `Router` method being called in the `routes.js` file, such as `.match()`, `.get()`, `.post()`, etc.
 
 ## Simple Path Matching {/* simple-path-matching */}
 
@@ -94,7 +96,7 @@ The captured parameter value will be provided as an array.
 
 ## Matching Method, Query Parameters, Cookies, and Headers {/* matching-method-query-parameters-cookies-and-headers */}
 
-Match can either take a URL path, or an object which allows you to match based on method, query parameters, cookies, or request headers:
+`.match()` can either take a URL path, or an object which allows you to match based on method, query parameters, cookies, or request headers:
 
 ```js
 router.match(
@@ -102,7 +104,7 @@ router.match(
     path: '/some-path', // value is route-pattern syntax
     method: /GET|POST/i, // value is a regular expression
     cookies: {currency: /^(usd)$/i}, // keys are cookie names, values are regular expressions
-    headers: {'x-moov-device': /^desktop$/i}, // keys are header names, values are regular expressions
+    headers: {'some-header': /^some-value$/i}, // keys are header names, values are regular expressions
     query: {page: /^(1|2|3)$/}, // keys are query parameter names, values are regular expressions
   },
   {
@@ -123,9 +125,7 @@ router.match(
     },
   },
   {
-    caching: {
-      max_age: '1d',
-    },
+    /* ... */
   }
 );
 ```
@@ -156,9 +156,7 @@ router.match(
     },
   },
   {
-    caching: {
-      max_age: '1d',
-    },
+    /* ... */
   }
 );
 ```
@@ -177,7 +175,7 @@ router.match('/some-path', {
 });
 ```
 
-This will match `/some-path`, `/Some-Path`, and other variations in between that are case-insensitive. However, using `exact` will use strict comparison in matching the request path. The following example shows how to import the `exact` function and use it to match requests to `/some-path`:
+This will match `/some-path`, `/Some-Path`, and other variations in between that are case-insensitive. However, using the `exact` function will use strict comparison in matching the request path. The following example shows how to import the `exact` function and use it to match requests to `/some-path`:
 
 ```js
 import {Router, exact} from '{{ PACKAGE_NAME }}/core';
@@ -391,7 +389,7 @@ Conditionals define the expectations that must be met, using comparison operator
 | `=~`     | Regular expression match.         |
 | `!~`     | Negated regular expression match. |
 
-### Example {/*example*/}
+### Example {/* example */}
 
 This example shows multiple conditionals that use various comparison operators and rules variables:
 

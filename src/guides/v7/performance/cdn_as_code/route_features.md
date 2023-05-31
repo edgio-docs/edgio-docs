@@ -17,7 +17,7 @@ See [Features Reference](/guides/performance/rules/features) for a complete list
 
 As outlined in the [Route Features](/guides/performance/cdn_as_code#route-features) section of the CDN-as-Code guide, route features are defined as the second argument to the `Router` method being called in the `routes.js` file, such as `.match()`, `.get()`, `.post()`, etc.
 
-The argument is an Object that supports features outline in the [Features Reference](/guides/performance/rules/features). The following example shows how to define a route feature that proxies a request, sending it to the origin host and caching it for 1 hour:
+The argument is an Object that supports features outlined in the [Features Reference](/guides/performance/rules/features). The following example shows how to define a route feature that proxies a request, sending it to the origin host and caching it for 1 hour:
 
 ```js
  router.match('/:path*', {
@@ -36,9 +36,100 @@ The argument is an Object that supports features outline in the [Features Refere
 
 The following sections describe common routing features and how to use them.
 
-### Proxying an Origin {/* proxying-an-origin */}
+## Debug Mode {/* debug-mode */}
 
-#### Same Path {/* same-path */}
+The debug cache response headers provide additional information about the cache policy applied to the requested asset. [Learn more.](/guides/performance/response#requesting-debug-cache-information)
+
+To enable debug mode, you need to set the [`debug_header` feature](/guides/performance/rules/features#debug-header). In your `routes.js` file, add the following:
+
+```js
+import {Router, edgioRoutes} from '@edgio/core/router';
+
+export default new Router()
+  .use(edgioRoutes)
+  .get('/some-path', {
+  /* ... */
+});
+```
+
+Including `edgioRoutes` in your router will automatically enable the debug feature for all routes. You can also enable debug mode for a specific route by adding the `debug_header` feature to the route:
+
+```js
+router.match('/some-path', {
+  headers: {
+    debug_header: true,
+  },
+  /* ... */
+});
+```
+
+To see the debug headers in the response, you will need to specify the `x-ec-debug` header in your request. This request header should list the values of the debug headers you want to see in the response as defined under [Requesting Debug Cache Information](/guides/performance/response#requesting-debug-cache-information).
+
+For example, you can use the [`{{ CLI_CMD(curl) }}`](/guides/develop/cli#curl) command to request the `x-ec-cache` and `x-ec-cache-state` headers:
+
+```bash
+{{ CLI_CMD(curl) }} https://your-site.com/some-path -H "x-ec-debug:x-ec-cache,x-ec-cache-state"
+```
+
+See an example of the response headers using our Simple Performance example site:
+
+```bash
+# with {{ CLI_CMD(curl) }}
+{{ CLI_CMD(curl) }} https://edgio-community-examples-v7-simple-performance-live.edgio.link/ -H "x-ec-debug:x-ec-cache,x-ec-check-cacheable,x-ec-cache-key,x-ec-cache-state,x-ec-cache-remote"
+
+# with curl
+curl -I -H "x-ec-debug: x-ec-cache,x-ec-check-cacheable,x-ec-cache-key,x-ec-cache-state,x-ec-cache-remote" https://edgio-community-examples-v7-simple-performance-live.edgio.link/
+
+```
+
+In the following output, you will see the debug headers that were available in the response:
+
+```diff
+➜  ~ {{ CLI_CMD(curl) }} https://edgio-community-examples-v7-simple-performance-live.edgio.link/ -H "x-ec-debug:x-ec-cache,x-ec-check-cacheable,x-ec-cache-key,x-ec-cache-state,x-ec-cache-remote"
+
+URL :  https://edgio-community-examples-v7-simple-performance-live.edgio.link/ 🔗
+From:  192.168.50.150:51204 🖥️
+To  :  64.12.0.33:443 🌎
+
+HTTP/2 200
+Response Headers
+  accept-ranges: bytes
+  cache-control: public, max-age=0, must-revalidate
+  content-length: 417115
+  content-type: text/html; charset=UTF-8
+  date: Wed, 31 May 2023 14:50:30 GMT
+  etag: "665423646ec1a20bb8e43f8a71a132ba-ssl"
+  last-modified: Wed, 31 May 2023 14:36:48 GMT
+  server: Netlify
+  server-timing: edgio_cache;desc=TCP_EXPIRED_HIT,edgio_pop;desc=dcd,edgio_country;desc=US
+  strict-transport-security: max-age=31536000
++  x-ec-cache: TCP_EXPIRED_HIT from ECAcc (dcd/7D26)
++  x-ec-cache-key: //http/801B1A5C/origin/53/:/hs-4718288209145817659
++  x-ec-cache-state: max-age=0 (0s); must-revalidate; cache-ts=1685544630 (Wed, 31 May 2023 14:50:30 GMT); cache-age=0 (0s); remaining-ttl=0 (0s); expires-delta=none
++  x-ec-check-cacheable: YES
+  x-edg-mr: 7:3;
+  x-edg-version: 53 7 4 7.0.7 2023-05-31T14:32:16Z be36ceec-4cfd-4d56-aa41-ced08cd5352c
+  x-nf-request-id: 01H1S4KY3H6QM7BZ0MRJC2C3MQ
+
+
+   DNS Lookup   TCP Connection   TLS Handshake   Server Processing   Content Transfer
+[     5ms     |      204ms     |     69ms      |       87ms        |       85ms       ]
+              |                |               |                   |                  |
+    namelookup:5ms             |               |                   |                  |
+                        connect:209ms          |                   |                  |
+                                    pretransfer:278ms              |                  |
+                                                      starttransfer:365ms             |
+                                                                                  total:450ms
+
+Response Body
+  Disabled. To enable use EDGIO_CURL_SAVE_BODY=true or EDGIO_CURL_SHOW_BODY=true
+
+➜  ~
+```
+
+## Proxying an Origin {/* proxying-an-origin */}
+
+### Same Path {/* same-path */}
 
 To forward a request to the same path on one of the origins listed in `{{ CONFIG_FILE }}`, use the `origin` feature:
 
@@ -67,10 +158,10 @@ module.exports = {
       ],
     },
   ],
-}
+};
 ```
 
-#### Different Path {/* different-path */}
+### Different Path {/* different-path */}
 
 To forward the request to a different path, use the `url.url_rewrite` feature:
 
@@ -91,7 +182,7 @@ router.get('/products/:productId', {
 });
 ```
 
-#### Adding Caching {/* adding-caching */}
+### Adding Caching {/* adding-caching */}
 
 To cache proxied requests at the edge, use the `caching` feature:
 
@@ -107,7 +198,7 @@ router.get('/products/:productId', {
 });
 ```
 
-#### Altering the Request {/* altering-the-request */}
+### Altering the Request {/* altering-the-request */}
 
 You can alter request headers when forwarding a request to a backend:
 
@@ -126,7 +217,7 @@ router.get('/products/:productId', {
 
 The above example makes use of the `headers.set_request_headers` feature.
 
-#### Altering the Response {/* altering-the-response */}
+### Altering the Response {/* altering-the-response */}
 
 You can also alter the response before and after the cache:
 
@@ -169,7 +260,7 @@ router.get('/products/:productId', {
 
 Additional information on the `headers` feature can be found in the [Features](/guides/performance/rules/features#headers) guide.
 
-#### Altering All Responses {/* altering-all-responses */}
+### Altering All Responses {/* altering-all-responses */}
 
 You can also write catch-all routes that will alter all responses. One example where this is useful is injecting [Content Security Policy](/guides/security/edgejs_security#content-security-policy-csp) headers.
 
@@ -196,7 +287,7 @@ router.match(
 The rules for interpolating the values of request and response objects can be found in the [routing](/guides/performance/cdn_as_code#embedded-values) guide.
 Note that catch-all routes that alter headers, cookies, or caching can be placed at the start of your router while allowing subsequent routes to run because they alter the request or the response without actually sending a response. See [route execution](/guides/routing#route-execution) for more information on route execution order and sending responses.
 
-### Manipulating Cookies {/* manipulating-cookies */}
+## Manipulating Cookies {/* manipulating-cookies */}
 
 You can manipulate cookies before they are sent to the browser using `headers.set_response_headers`:
 
@@ -243,7 +334,7 @@ router.get('/products/:productId', {
 });
 ```
 
-### Proxying to Different Backends Based on Different Host Names {/* proxying-to-different-backends-based-on-different-host-names */}
+## Proxying to Different Backends Based on Different Host Names {/* proxying-to-different-backends-based-on-different-host-names */}
 
 To proxy to different backends by matching the `host` header (e.g. different backends for different international sites):
 
@@ -399,19 +490,19 @@ router.get('/products/:id', ({ serveStatic, cache }) => {
 })
 ``` -->
 
-<!-- ## Responding with a String Response Body {/*responding-with-a-string-response-body*/}
+## Responding with a String Response Body {/* responding-with-a-string-response-body */}
 
-To respond with a simple, constant string as the response body use the `response.set_response_body` feature:
+To respond with a simple, constant string as the response body use the `response.set_response_body` and `response.set_done` features:
 
 ```js
 router.get('/some-path', {
   caching: {
-    max_age: "1d"
+    max_age: '1d',
   },
   headers: {
     set_response_headers: {
-      "Content-Type": "text/html"
-    }
+      'Content-Type': 'text/html',
+    },
   },
   response: {
     set_done: true,
@@ -419,33 +510,41 @@ router.get('/some-path', {
       <!doctype html>
       <html>
         <body>Hello World</body>
-      </html>`
-  }
-})
-``` -->
+      </html>`,
+  },
+});
+```
 
-<!-- To compute a dynamic response use the [`compute`](/docs/api/core/classes/_router_responsewriter_.responsewriter.html#compute) method:
+<Callout type="important">
+
+When using `response.set_response_body` to send a response, or to stop processing a request from potentially matching subsequent routes, you must also set `response.set_done` to `true`.
+
+</Callout>
+
+To compute a dynamic response, use the [`compute`](/docs/api/core/classes/router.RouteHelper.html#compute) method.
+
+{{ routehelper_usage.md}}
 
 ```js
-router.get('/hello/:name', ({ cache, setResponseHeader, compute, send }) => {
+router.get('/hello/:name', ({cache, setResponseHeader, compute, send}) => {
   cache({
     edge: {
       maxAgeSeconds: 60 * 60 * 24, // cache for 24 hours
     },
-  })
-  setResponseHeader('Content-Type', 'text/html')
+  });
+  setResponseHeader('Content-Type', 'text/html');
   compute((request, response) => {
     send(`
       <!doctype html>
       <html>
         <body>Hello ${request.params.name}</body>
       </html>
-    `)
-  })
-})
-``` -->
+    `);
+  });
+});
+```
 
-## Redirecting {/* redirecting */}
+### Redirecting {/* redirecting */}
 
 To redirect the browser to a different URL, use the `url.url_redirect` feature, optionally specifying the HTTP status code:
 
@@ -462,21 +561,23 @@ router.get('/p/:productId', {
 });
 ```
 
-<!-- If you need to compute the destination with sophisticated logic:
+To compute the destination URL, use the [`compute`](/docs/api/core/classes/router.RouteHelper.html#compute) method.
+
+{{ routehelper_usage.md}}
 
 ```js
-router.get('/p/:productId', ({ redirect, compute, cache }) => {
+router.get('/p/:productId', ({redirect, compute, cache}) => {
   cache({
     edge: {
       maxAgeSeconds: 60 * 60 * 24, // cache for 24 hours
     },
-  })
-  compute(async request => {
-    const destination = await getDestinationFromMyAPI(request.params.productId)
-    redirect(destination)
-  })
-})
-``` -->
+  });
+  compute(async (request) => {
+    const destination = await getDestinationFromMyAPI(request.params.productId);
+    redirect(destination);
+  });
+});
+```
 
 ### Redirecting All Traffic to a Different Domain {/* redirecting-all-traffic-to-a-different-domain */}
 
@@ -586,20 +687,19 @@ router.get(
 
 If you need to block all search engine bot traffic to specific environments (such as your default or staging environment), the easiest way is to include the `x-robots-tag` header with the same directives you would otherwise set in a `meta` tag.
 
-<!--
 <Callout type="info">
 
-  The search engine traffic is automatically blocked on {{ PRODUCT }} edge links and permalinks as of {{ PRODUCT }} v6.
+The search engine traffic is automatically blocked on {{ PRODUCT }} edge links and permalinks as of {{ PRODUCT }} v6.
 
-  If you would like to enable indexing on those links, you need to pass `{ indexPermalink: true }` into the Router constructor in `routes.js` file:
-  ```js
-    new Router({ indexPermalink: true })
-  ```
+If you would like to enable indexing on those links, you need to pass `{ indexPermalink: true }` into the Router constructor in `routes.js` file:
 
-  Otherwise, {{ PRODUCT }} will match requests with the `host` header matching `/{{ LINK_DOMAIN }}|{{ PERMALINK_DOMAIN }}/` and set a response header of `x-robots-tag: noindex`.
+```js
+new Router({indexPermalink: true});
+```
 
+Otherwise, {{ PRODUCT }} will match requests with the `host` header matching `/{{ LINK_DOMAIN }}|{{ PERMALINK_DOMAIN }}/` and set a response header of `x-robots-tag: noindex`.
 
-</Callout> -->
+</Callout>
 
 Additionally, you can customize this to block traffic to development or staging websites based on the `host` header of the request:
 

@@ -403,7 +403,7 @@ A full list of supported functions can be found in the [Router API documentation
 
 ## Route Execution {/* route-execution */}
 
-When {{ PRODUCT_NAME }} receives a request, it executes **each route that matches the request** in the order in which they are declared until one sends a response.
+When {{ PRODUCT_NAME }} receives a request, it executes **each route that matches the request** in the order in which they are declared.
 
 Multiple routes can therefore be executed for a given request. A common pattern is to render the response with middleware such as `nextRoutes` while adding caching for a route that may also be handled by the middleware. In the following example we render a response with Next.js and cache it at the edge for 1 hour:
 

@@ -3,7 +3,13 @@ on:
   push:
     branches: [master, main]
   pull_request:
+  release:
+    types: [published]
   workflow_dispatch:
+    inputs:
+      branch_name:
+        description: 'Branch Name'
+        required: false
 jobs:
   setup-edgio:
     name: Setup Edgio
@@ -56,7 +62,17 @@ jobs:
           exit 1
       - name: Extract branch name
         shell: bash
-        run: echo "BRANCH_NAME=$(echo ${GITHUB_REF#refs/heads/} | sed 's///_/g')" >> $GITHUB_ENV
+        run: |
+          if [[ -n "${{ github.event.inputs.branch_name }}" ]]; then
+            BRANCH_NAME="${{ github.event.inputs.branch_name }}"
+          else
+            if [[ "${{ github.ref }}" == "refs/pull/"* ]]; then
+              BRANCH_NAME=$(echo "${{ github.head_ref }}" | sed 's/\//_/g')
+            else
+              BRANCH_NAME=$(echo "${{ github.ref }}" | sed 's/refs\/heads\///g' | sed 's/\//_/g')
+            fi
+          fi
+          echo "BRANCH_NAME=$BRANCH_NAME" >> $GITHUB_ENV
       - uses: actions/checkout@v2
         with:
           ref: '${{ github.ref }}'
@@ -99,10 +115,6 @@ jobs:
       - name: Deploy
         run: |
           # Use "production" environment for master/main branches, otherwise use "default" environment
-          if [ "${{ github.ref }}" = "refs/heads/master" ] || [ "${{ github.ref }}" = "refs/heads/main" ]; then
-            environment="production"
-          else
-            environment="default"
-          fi
-
-          npm run edgio:deploy -- --branch="$BRANCH_NAME" --environment="$environment" --token="${{ secrets.EDGIO_DEPLOY_TOKEN }}" --ignore-error="CONFIG_SOURCE_SWITCH"
+          npm run edgio:deploy -- --branch="$BRANCH_NAME"  ${{github.event_name == 'push' && '--environment=default' || ''}} \
+          ${{github.event_name == 'pull_request' && '--environment=staging' || ''}} \
+          ${{github.event_name == 'release' && '--environment=production' || ''}} --token="${{ secrets.EDGIO_DEPLOY_TOKEN }}" --non-interactive --ignore-error="CONFIG_SOURCE_SWITCH"

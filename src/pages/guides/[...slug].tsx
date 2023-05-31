@@ -90,44 +90,40 @@ export const getStaticPaths = async () => {
     };
   }
 
-  // guides for each version, including the homepage
-  // paths.push(
-  //   ...versionObjects.flatMap(({version}) => {
-  //     version = `v${version}`;
-  //     return [
-  //       version, // version homepage
-  //       ...baseGuides.map((path) => join(version, path)), // versioned base guides
-  //       ...allGuides.filter((path) => path.startsWith(version)), // versioned overrides
-  //     ];
-  //   })
-  // );
+  // Prerendered page logic below. However, because some of the guides define
+  // redirects, redirects cannot be prerendered and must be handled by SSR.
+  // Therefore, we disable prerendering for now and fallback to SSR for all.
+  return {
+    paths: [],
+    fallback: 'blocking',
+  };
 
   // prerender guides for the latest version only; previous versions will
   // fallback to SSR
-  const version = `v${process.env.NEXT_PUBLIC_LATEST_VERSION}`;
-  paths.push(
-    ...[
-      version, // version homepage
-      ...baseGuides.map((path) => join(version, path)), // versioned base guides
-      ...allGuides.filter((path) => path.startsWith(version)), // versioned overrides
-    ]
-  );
+  // const version = `v${process.env.NEXT_PUBLIC_LATEST_VERSION}`;
+  // paths.push(
+  //   ...[
+  //     version, // version homepage
+  //     ...baseGuides.map((path) => join(version, path)), // versioned base guides
+  //     ...allGuides.filter((path) => path.startsWith(version)), // versioned overrides
+  //   ]
+  // );
 
-  // convert paths to routes
-  routes.push(
-    ...[...new Set(paths)].map((path) => ({params: {slug: path.split('/')}}))
-  );
+  // // convert paths to routes
+  // routes.push(
+  //   ...[...new Set(paths)].map((path) => ({params: {slug: path.split('/')}}))
+  // );
 
-  if (isProductionBuild()) {
-    logger.prod(JSON.stringify(paths));
-  }
+  // if (isProductionBuild()) {
+  //   logger.prod(JSON.stringify(paths));
+  // }
 
-  // in the end, only routes matching `/guides/v7/*` will be prerendered
-  // and the rest (eg. /guides/v6/*) will fallback to SSR
-  return {
-    paths: routes,
-    fallback: 'blocking',
-  };
+  // // in the end, only routes matching `/guides/v7/*` will be prerendered
+  // // and the rest (eg. /guides/v6/*) will fallback to SSR
+  // return {
+  //   paths: routes,
+  //   fallback: 'blocking',
+  // };
 };
 
 export async function getStaticProps({params}: {params: any}) {

@@ -38,6 +38,35 @@ import install from '{{ PACKAGE_NAME }}/prefetch/window/install';
 install();
 ```
 
+## Serving the Service Worker {/* serving-the-service-worker */}
+
+After you have created a service worker, your router will need to be configued to serve the file. The following code will vary depending on the location of your service worker file. In this example, we will define a route that serves requests for `/service-worker.js`:
+
+```js filename="routes.js"
+import {Router} from '{{ PACKAGE_NAME }}/core';
+
+export default new Router()
+  // Here we configure a route for the service worker.
+  .match('/service-worker.js', {
+    caching: {
+      max_age: '1d',
+      bypass_client_cache: true,
+    },
+    origin: {
+      set_origin: 'edgio_static',
+    },
+    url: {
+      url_rewrite: [
+        {
+          source: '/service-worker.js',
+          syntax: 'path-to-regexp',
+          destination: '/dist/service-worker.js', // the location of your service worker file
+        },
+      ],
+    },
+  });
+```
+
 ## Configuring Routes for Prefetching {/* configuring-routes-for-prefetching */}
 
 To ensure that excessive prefetch traffic isn't passed on to your origin, {{ PRODUCT_NAME }} will serve prefetch requests when a cached response is available at the edge. By default, all prefetch requests will be cached at the edge for 2 minutes (see [`DEFAULT_MAX_AGE_SECONDS`](/docs/api/prefetch/modules/_sw_prefetcher_.html#default_max_age_seconds)). Additionally, you may configure a route that caches responses at the edge and in the service worker within your router, optionally giving it longer cache time for greater performance. In this example we define a route that caches product API calls for one hour:
@@ -46,6 +75,26 @@ To ensure that excessive prefetch traffic isn't passed on to your origin, {{ PRO
 import {Router} from '{{ PACKAGE_NAME }}/core';
 
 export default new Router()
+  // Here we configure a route for the service worker.
+  .match('/service-worker.js', {
+    caching: {
+      max_age: '1d',
+      bypass_client_cache: true,
+    },
+    origin: {
+      set_origin: 'edgio_static',
+    },
+    url: {
+      url_rewrite: [
+        {
+          source: '/service-worker.js',
+          syntax: 'path-to-regexp',
+          destination: '/dist/service-worker.js', // the location of your service worker file
+        },
+      ],
+    },
+  })
+
   // Here we configure a route for the product API.
   .get('/api/products/:id.json', {
     caching: {

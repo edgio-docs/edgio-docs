@@ -45,9 +45,7 @@ To enable debug mode, you need to set the [`debug_header` feature](/guides/perfo
 ```js
 import {Router, edgioRoutes} from '@edgio/core/router';
 
-export default new Router()
-  .use(edgioRoutes)
-  .get('/some-path', {
+export default new Router().use(edgioRoutes).get('/some-path', {
   /* ... */
 });
 ```
@@ -422,6 +420,31 @@ router.get('/:path*', {
         source: '/:path*',
         syntax: 'path-to-regexp',
         destination: '/public/:path*',
+      },
+    ],
+  },
+});
+```
+
+## Serving the Service Worker {/* serving-the-service-worker */}
+
+Similar to the above example, you can serve the service worker from its directory (e.g. `/dist/service-worker.js`):
+
+```js
+router.match('/service-worker.js', {
+  caching: {
+    max_age: '1d',
+    bypass_client_cache: true,
+  },
+  origin: {
+    set_origin: 'edgio_static',
+  },
+  url: {
+    url_rewrite: [
+      {
+        source: '/service-worker.js',
+        syntax: 'path-to-regexp',
+        destination: '/dist/service-worker.js',
       },
     ],
   },

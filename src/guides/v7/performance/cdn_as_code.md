@@ -286,7 +286,7 @@ The above route matches all requests that start with `/api/` and instructs {{ PR
 
 ## Routes {/* routes */}
 
-A route identifies a set of requests through any combination of URL path, HTTP method, cookies, request headers, and query string parameters. The following routes show various ways for identifying requests.
+A route identifies a set of requests through any combination of URL path, HTTP method, cookies, request headers, query string parameters and more (see [Conditions](/guides/performance/rules/conditions)). The following routes show various ways for identifying requests.
 
 ### Parts of a Route {/* parts-of-a-route */}
 

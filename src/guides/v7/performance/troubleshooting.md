@@ -164,7 +164,9 @@ module.exports = {
 }
 ```
 
-**Note:** The reason that application level source maps are not enabled by default is that they can be quite large and cause the serverless bundle to be larger than the 50MB limit.
+<Callout type="important">
+  Application-level source maps are not enabled by default as they can be quite large and cause the serverless bundle to be larger than the 50MB limit.
+</Callout>
 
 ## Troubleshooting 539 Status Codes {/* troubleshooting-539-status-codes */}
 

@@ -36,11 +36,15 @@ For details on using the Next.js Commerce template with {{ PRODUCT }}, refer to 
 - [`getServerSideProps`](https://nextjs.org/docs/basic-features/data-fetching/get-server-side-props)
 - [`getInitialProps`](https://nextjs.org/docs/api-reference/data-fetching/get-initial-props)
 
-## Connector {/*connector*/}
+## Connector {/* connector */}
 
 This framework has a connector developed for {{ PRODUCT }}. See [Connectors](/guides/sites_frameworks/connectors) for more information.
 
-<ButtonLink variant="stroke" type="code" withIcon={true} href="https://github.com/edgio-docs/edgio-connectors/tree/main/edgio-next-connector">
+<ButtonLink
+  variant="stroke"
+  type="code"
+  withIcon={true}
+  href="https://github.com/edgio-docs/edgio-connectors/tree/main/edgio-next-connector">
   View the Connector Code
 </ButtonLink>
 
@@ -110,7 +114,16 @@ module.exports = with{{ PRODUCT }}({
 
 ## {{ PRODUCT_NAME }} Devtools {/* devtools */}
 
-By default, [Devtools](/guides/performance/observability/devtools) are enabled on production builds of Next.js with {{ PRODUCT }}. To disable devtools in production, see [Config Options](#disableDevtools) for setting the `disableEdgioDevTools` flag.
+To understand better the caching mechanism, you can add {{ PRODUCT }} Devtools to see the caching metrics. Add the following code to your `_app.tsx` file:
+
+```js filename='_app.tsx'
+import {useDevtools} from '@edgio/react';
+
+const MyApp = ({Component, pageProps}) => {
+  useDevtools();
+  // ... rest of your _app.tsx code
+};
+```
 
 ## Running Locally {/* running-locally */}
 
@@ -200,6 +213,12 @@ const MyApp = ({Component, pageProps}) => {
   // ... rest of your _app.js code
 };
 ```
+
+<Callout type="info">
+
+Starting with Next.js 13, when the `app` directory is used, adding `useServiceWorker` hook may break the build, as all pages in the `app` directory are by default server components. In order to avoid this, hooks must be placed in a client-only component. To do this, add [`use client` directive](https://nextjs.org/docs/getting-started/react-essentials#the-use-client-directive) at the top of the component.
+
+</Callout>
 
 ## Routing {/* routing */}
 

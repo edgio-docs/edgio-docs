@@ -110,7 +110,17 @@ module.exports = with{{ PRODUCT }}({
 
 ## {{ PRODUCT_NAME }} Devtools {/* devtools */}
 
-By default, [Devtools](/guides/performance/observability/devtools) are enabled on production builds of Next.js with {{ PRODUCT }}. To disable devtools in production, see [Config Options](#disableDevtools) for setting the `disableEdgioDevTools` flag.
+To understand better the caching mechanism, you can add {{ PRODUCT }} devtools to see the caching metrics. Add the following code to your _app.tsx file:
+```js filename='_app.js'
+
+import {useDevtools} from '@edgio/react';
+const MyApp = ({Component, pageProps}) => {
+  useDevtools();
+  // ... rest of your _app.js code
+};
+```
+
+You can control how devtools are displayed in production with {{ PRODUCT }} config, see [Config Options](#disableDevtools) for setting the `disableEdgioDevTools` flag.
 
 ## Running Locally {/* running-locally */}
 
@@ -200,6 +210,12 @@ const MyApp = ({Component, pageProps}) => {
   // ... rest of your _app.js code
 };
 ```
+
+<Callout type="info">
+
+From Next 13 when `app` folder is used, adding `useServiceWorker` hook may break the build, as all pages in `app` folder are by default server components. In order to avoid this, hooks must be placed in client components only. To do this, add `use client` directive at the top of the component.
+
+</Callout>
 
 ## Routing {/* routing */}
 

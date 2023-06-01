@@ -110,17 +110,14 @@ module.exports = with{{ PRODUCT }}({
 
 ## {{ PRODUCT_NAME }} Devtools {/* devtools */}
 
-To understand better the caching mechanism, you can add {{ PRODUCT }} devtools to see the caching metrics. Add the following code to your _app.tsx file:
-```js filename='_app.js'
+To understand better the caching mechanism, you can add {{ PRODUCT }} Devtools to see the caching metrics. Add the following code to your `_app.tsx` file:
 
+```js filename='_app.tsx'
 import {useDevtools} from '@edgio/react';
 const MyApp = ({Component, pageProps}) => {
   useDevtools();
   // ... rest of your _app.js code
 };
-```
-
-You can control how devtools are displayed in production with {{ PRODUCT }} config, see [Config Options](#disableDevtools) for setting the `disableEdgioDevTools` flag.
 
 ## Running Locally {/* running-locally */}
 

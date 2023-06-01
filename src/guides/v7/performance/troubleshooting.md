@@ -164,7 +164,7 @@ module.exports = {
 }
 ```
 
-<Callout type="tip">
+<Callout type="important">
   Application-level source maps are not enabled by default as they can be quite large and cause the serverless bundle to be larger than the 50MB limit.
 </Callout>
 

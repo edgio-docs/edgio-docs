@@ -132,40 +132,44 @@ module.exports = {
       // The name of the backend origin
       name: 'origin',
 
-      // Uncomment the following to override the host header sent from the browser when connecting to the origin
-      // override_host_header: 'example.com',
+      // Use the following to override the host header sent from the browser when connecting to the origin
+      override_host_header: 'origin.my-site.com',
 
       // The list of origin hosts to which to connect
       hosts: [
         {
           // The domain name or IP address of the origin server
-          location: 'example.com',
+          location: 'origin.my-site.com',
         },
       ],
+
+      tls_verify: {
+        use_sni: true,
+        sni_hint_and_strict_san_check: 'origin.my-site.com',
+      },
 
       // Uncomment the following to configure a shield
       // shields: { us_east: 'DCD' },
     },
   ],
 
+  // Uncomment the following to specify environment specific configs
   // environments: {
   //   production: {
-  //     hostnames: [
-  //       {
-  //         hostname: "www.mysite.com",
-  //       },
-  //       {
-  //         hostname: "eu.mysite.com",
-  //       },
-  //     ],
+  //     hostnames: [{ hostname: 'www.mysite.com' }],
   //   },
   //   staging: {
-  //     hostnames: [
+  //     hostnames: [{ hostname: 'staging.mysite.com' }],
+  //     origins: [
   //       {
-  //         hostname: "staging.www.mysite.com",
-  //       },
-  //       {
-  //         hostname: "staging.eu.mysite.com",
+  //         name: 'origin',
+  //         hosts: [{ location: 'staging-origin.mysite.com' }],
+  //         override_host_header: 'staging-origin.mysite.com',
+  //         tls_verify: {
+  //           use_sni: true,
+  //           sni_hint_and_strict_san_check: 'staging-origin.mysite.com',
+  //         },
+  //         shields: { us_east: 'DCD' },
   //       },
   //     ],
   //   },

@@ -1,7 +1,7 @@
 import {readFile} from 'fs/promises';
 import {join} from 'path';
 
-import {isEdgioRunDev} from '@edgio/core/environment';
+import {isEdgioRunDev, isProductionBuild} from '@edgio/core/environment';
 import globby from 'globby';
 import {MDXRemote} from 'next-mdx-remote';
 import {serialize} from 'next-mdx-remote/serialize';
@@ -13,7 +13,7 @@ import {getVersionedConfig} from '../../utils/config';
 
 import {MarkdownPage} from 'components/Layout/MarkdownPage';
 import {Page} from 'components/Layout/Page';
-import {logDev} from 'utils/logging';
+import logger from 'utils/logging';
 import templateReplace from 'utils/templateReplace';
 import {MDHeadingsList} from 'utils/Types';
 
@@ -90,40 +90,40 @@ export const getStaticPaths = async () => {
     };
   }
 
-  // guides for each version, including the homepage
-  // paths.push(
-  //   ...versionObjects.flatMap(({version}) => {
-  //     version = `v${version}`;
-  //     return [
-  //       version, // version homepage
-  //       ...baseGuides.map((path) => join(version, path)), // versioned base guides
-  //       ...allGuides.filter((path) => path.startsWith(version)), // versioned overrides
-  //     ];
-  //   })
-  // );
+  // Prerendered page logic below. However, because some of the guides define
+  // redirects, redirects cannot be prerendered and must be handled by SSR.
+  // Therefore, we disable prerendering for now and fallback to SSR for all.
+  return {
+    paths: [],
+    fallback: 'blocking',
+  };
 
   // prerender guides for the latest version only; previous versions will
   // fallback to SSR
-  const version = `v${process.env.NEXT_PUBLIC_LATEST_VERSION}`;
-  paths.push(
-    ...[
-      version, // version homepage
-      ...baseGuides.map((path) => join(version, path)), // versioned base guides
-      ...allGuides.filter((path) => path.startsWith(version)), // versioned overrides
-    ]
-  );
+  // const version = `v${process.env.NEXT_PUBLIC_LATEST_VERSION}`;
+  // paths.push(
+  //   ...[
+  //     version, // version homepage
+  //     ...baseGuides.map((path) => join(version, path)), // versioned base guides
+  //     ...allGuides.filter((path) => path.startsWith(version)), // versioned overrides
+  //   ]
+  // );
 
-  // convert paths to routes
-  routes.push(
-    ...[...new Set(paths)].map((path) => ({params: {slug: path.split('/')}}))
-  );
+  // // convert paths to routes
+  // routes.push(
+  //   ...[...new Set(paths)].map((path) => ({params: {slug: path.split('/')}}))
+  // );
 
-  // in the end, only routes matching `/guides/v7/*` will be prerendered
-  // and the rest (eg. /guides/v6/*) will fallback to SSR
-  return {
-    paths: routes,
-    fallback: 'blocking',
-  };
+  // if (isProductionBuild()) {
+  //   logger.prod(JSON.stringify(paths));
+  // }
+
+  // // in the end, only routes matching `/guides/v7/*` will be prerendered
+  // // and the rest (eg. /guides/v6/*) will fallback to SSR
+  // return {
+  //   paths: routes,
+  //   fallback: 'blocking',
+  // };
 };
 
 export async function getStaticProps({params}: {params: any}) {
@@ -168,11 +168,11 @@ export async function getStaticProps({params}: {params: any}) {
 
   const [file] = files;
   if (!file) {
-    logDev(`No matching files for route '${slugAsString}'`);
+    logger.warn(`No matching files for route '${slugAsString}'`);
     return {notFound: true};
   }
 
-  logDev(
+  logger.dev(
     `Using '${file}' for route '${slugAsString}'. Available files:`,
     files
   );

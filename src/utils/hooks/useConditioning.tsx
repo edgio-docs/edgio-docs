@@ -6,16 +6,32 @@ interface RouterQuery {
   [key: string]: any;
 }
 
-export interface IConditioning {
-  version: IVersion;
-}
-
-export interface IVersion {
+interface IVersion {
+  /**
+   * The version that is currently selected, e.g. "7"
+   */
   selectedVersion: string;
+
+  /**
+   * The version that is currently selected prefixed with "v", e.g. "v7"
+   */
   selectedVersionText: string;
+
+  /**
+   * The latest version, e.g. "7"
+   */
   latestVersion: string;
+
+  /**
+   * The latest version prefixed with "v", e.g. "v7"
+   */
   latestVersionText: string;
+
+  /**
+   * Whether the selected version is the latest version
+   */
   isLatest: boolean;
+
   pathPrefix: string;
   packageVersion: string;
   toVersionedPath: (path: string) => string;

@@ -19,6 +19,7 @@ const PORTAL = `${COMPANY_NAME} Console`;
 
 const CLI_NAME = 'edg';
 const FULL_CLI_NAME = 'edgio';
+const CLI_CMD = (cmd) => `${FULL_CLI_NAME} ${cmd}`;
 const PACKAGE_NAME = '@edgio';
 const PACKAGE_VERSION = 'latest';
 const INIT_ARG_EDGIO_VERSION = `--edgioVersion ${PACKAGE_VERSION}`;
@@ -426,6 +427,7 @@ const config = {
   PRODUCT_LEGACY_LOWER,
   APP_DOMAIN,
   APP_URL,
+  CLI_CMD,
   CLI_NAME,
   CONFIG_FILE,
   ROUTES_FILE,

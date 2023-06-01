@@ -210,7 +210,7 @@ const MyApp = ({Component, pageProps}) => {
 
 <Callout type="info">
 
-From Next 13 when `app` folder is used, adding `useServiceWorker` hook may break the build, as all pages in `app` folder are by default server components. In order to avoid this, hooks must be placed in client components only. To do this, add `use client` directive at the top of the component.
+Starting with Next.js 13, when the `app` directory is used, adding `useServiceWorker` hook may break the build, as all pages in the `app` directory are by default server components. In order to avoid this, hooks must be placed in a client-only component. To do this, add [`use client` directive](https://nextjs.org/docs/getting-started/react-essentials#the-use-client-directive) at the top of the component.
 
 </Callout>
 

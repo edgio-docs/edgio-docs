@@ -275,5 +275,5 @@ layer0_deploy:
   before_script:
     - npm ci --cache .npm --prefer-offline
   script:
-    - npm run {{ FULL_CLI_NAME }}:deploy -- --token="$LAYER0_DEPLOY_TOKEN" --non-interactive --branch="$CI_COMMIT_BRANCH$EDGIO_DEPLOY_PARAM"
+    - npm run {{ FULL_CLI_NAME }}:deploy -- --token="$LAYER0_DEPLOY_TOKEN" --non-interactive --branch="$CI_COMMIT_BRANCH$LAYER0_DEPLOY_PARAM"
 ```

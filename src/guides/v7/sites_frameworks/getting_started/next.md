@@ -36,11 +36,15 @@ For details on using the Next.js Commerce template with {{ PRODUCT }}, refer to 
 - [`getServerSideProps`](https://nextjs.org/docs/basic-features/data-fetching/get-server-side-props)
 - [`getInitialProps`](https://nextjs.org/docs/api-reference/data-fetching/get-initial-props)
 
-## Connector {/*connector*/}
+## Connector {/* connector */}
 
 This framework has a connector developed for {{ PRODUCT }}. See [Connectors](/guides/sites_frameworks/connectors) for more information.
 
-<ButtonLink variant="stroke" type="code" withIcon={true} href="https://github.com/edgio-docs/edgio-connectors/tree/main/edgio-next-connector">
+<ButtonLink
+  variant="stroke"
+  type="code"
+  withIcon={true}
+  href="https://github.com/edgio-docs/edgio-connectors/tree/main/edgio-next-connector">
   View the Connector Code
 </ButtonLink>
 
@@ -114,10 +118,12 @@ To understand better the caching mechanism, you can add {{ PRODUCT }} Devtools t
 
 ```js filename='_app.tsx'
 import {useDevtools} from '@edgio/react';
+
 const MyApp = ({Component, pageProps}) => {
   useDevtools();
-  // ... rest of your _app.js code
+  // ... rest of your _app.tsx code
 };
+```
 
 ## Running Locally {/* running-locally */}
 

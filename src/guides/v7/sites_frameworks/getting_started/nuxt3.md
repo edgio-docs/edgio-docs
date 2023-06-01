@@ -76,8 +76,6 @@ To run the Nuxt3 app in local production mode with {{ PRODUCT }}, run:
 
 #### 5. Deploy the Nuxt3 app to {{ PRODUCT }} {/*5-deploy-the-nuxt3-app-to*/}
 
-Note: Add or update the `name` field in the `package.json` file.
-
 Deploy your app to {{ PRODUCT }} by running the following command in your project's root directory:
 
 ```bash

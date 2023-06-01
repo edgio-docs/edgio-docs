@@ -20,7 +20,9 @@ router.get('/:foo/:bar', {
 });
 ```
 
-**Please note:** Parameter names must use "word characters" (`[A-Za-z0-9_]`).
+<Callout type="important">
+  Parameter names must use "word characters" (`[A-Za-z0-9_]`).
+</Callout>
 
 #### Custom Matching Parameters {/* custom-matching-parameters */}
 

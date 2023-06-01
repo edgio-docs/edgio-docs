@@ -45,7 +45,6 @@ If you need help with Vue initialization, please follow the [create-vue project'
 Initialize your project for use with {{ PRODUCT }} by running the following command in your project's root directory:
 
 ```bash
-npm i
 {{ FULL_CLI_NAME }} init {{ INIT_ARG_EDGIO_VERSION }}
 ```
 

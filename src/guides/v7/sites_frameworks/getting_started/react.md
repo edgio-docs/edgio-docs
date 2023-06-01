@@ -24,7 +24,7 @@ This framework has a connector developed for {{ PRODUCT }}. See [Connectors](/gu
 
 ## Create React App {/*create-react-app*/}
 
-<Video src="https://www.youtube.com/watch?v=O-7YqHqAIJA" />
+<!-- <Video src="https://www.youtube.com/watch?v=O-7YqHqAIJA" /> -->
 
 This guide will use [Create React App](https://create-react-app.dev/) to generate a project.
 

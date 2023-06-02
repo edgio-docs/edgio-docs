@@ -112,17 +112,40 @@ const router = new Router()
     cache(htmlCacheConfig);
     send('google-site-verification: googlea13e5ef2a6ea3f29.html');
   })
-  .match('/sitemap.xml', ({serveStatic}) => serveStatic('sitemap.xml'))
+  // .match('/sitemap.xml', ({serveStatic}) => serveStatic('sitemap.xml'))
   .match('/service-worker.js', ({serviceWorker}) => {
     return serviceWorker('.next/static/service-worker.js');
   })
   .get('/images/:path*', ({cache}) => {
     cache(staticCacheConfig);
-  })
+  });
 
-  // API docs
+// API docs
 
-  // list of versions
+// redirects for latest versioned docs
+[3, 4, 5, 6, 7].forEach((v) => {
+  // match versioned api docs and redirect
+  router.match(`/docs/v${v}.x/:path*`, ({cache, compute, redirect}) => {
+    cache(htmlCacheConfig);
+    compute(async () => {
+      // fetch the list of current published versions
+      const versions = await (
+        await fetch('https://docs.edg.io/docs/versions')
+      ).text();
+
+      console.log(versions);
+
+      const targetVersion = semverMaxSatisfying(
+        versions.replace(/\n/g, '').split(','),
+        `v${v}.x`
+      );
+      redirect(`/docs/${targetVersion}/:path*`);
+    });
+  });
+});
+
+// list of versions
+router
   .match('/docs/versions', ({cache, proxy}) => {
     cache(htmlCacheConfig);
     proxy('api', {path: '/versions.csv'});
@@ -143,7 +166,7 @@ const router = new Router()
           `v*`
         );
 
-        redirect(`/docs/${targetVersion}/api/:path*`);
+        redirect(`/docs/${targetVersion}/api/:path*:file`);
       });
     }
   )

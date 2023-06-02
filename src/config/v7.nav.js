@@ -67,6 +67,10 @@ const nav = {
               title: 'Feature Variables',
               path: 'performance/rules/feature_variables',
             },
+            {
+              title: 'Operators',
+              path: 'performance/rules/operators',
+            },
           ],
         },
         {
@@ -74,13 +78,17 @@ const nav = {
           path: 'performance/cdn_as_code',
           routes: [
             {
-              title: 'Getting Started',
-              path: 'performance/cdn_as_code/getting_started',
+              title: 'Route Criteria and Conditions',
+              path: 'performance/cdn_as_code/route_criteria',
             },
             {
-              title: 'Common Routing Patterns',
-              path: 'performance/cdn_as_code/common_routing_patterns',
+              title: 'Route Features',
+              path: 'performance/cdn_as_code/route_features',
             },
+            // {
+            //   title: 'Edge Functions',
+            //   path: 'performance/cdn_as_code/edge_functions',
+            // },
             {
               title: '',
               path: '',
@@ -251,82 +259,82 @@ const nav = {
           title: 'Frameworks',
           path: 'sites_frameworks/getting_started',
           routes: [
-            // {
-            //   title: 'Angular',
-            //   path: 'sites_frameworks/getting_started/angular',
-            // },
-            // {
-            //   title: 'Astro',
-            //   path: 'sites_frameworks/getting_started/astro',
-            // },
-            // {
-            //   title: 'Brunch',
-            //   path: 'sites_frameworks/getting_started/brunch',
-            // },
-            // {
-            //   title: 'Docusaurus',
-            //   path: 'sites_frameworks/getting_started/docusaurus',
-            // },
-            // {
-            //   title: 'Dojo',
-            //   path: 'sites_frameworks/getting_started/dojo',
-            // },
-            // {
-            //   title: 'Eleventy',
-            //   path: 'sites_frameworks/getting_started/eleventy',
-            // },
-            // {
-            //   title: 'Ember.js',
-            //   path: 'sites_frameworks/getting_started/ember',
-            // },
-            // {
-            //   title: 'Ember Fastboot',
-            //   path: 'sites_frameworks/getting_started/ember_fastboot',
-            // },
-            // {
-            //   title: 'Express',
-            //   path: 'sites_frameworks/getting_started/express',
-            // },
-            // {
-            //   title: 'Frontity',
-            //   path: 'sites_frameworks/getting_started/frontity',
-            // },
-            // {
-            //   title: 'Gatsby',
-            //   path: 'sites_frameworks/getting_started/gatsby',
-            // },
-            // {
-            //   title: 'Gridsome',
-            //   path: 'sites_frameworks/getting_started/gridsome',
-            // },
-            // {
-            //   title: 'Hexo',
-            //   path: 'sites_frameworks/getting_started/hexo',
-            // },
-            // {
-            //   title: 'Hugo',
-            //   path: 'sites_frameworks/getting_started/hugo',
-            // },
-            // {
-            //   title: 'Ionic React',
-            //   path: 'sites_frameworks/getting_started/ionic_react',
-            // },
-            // {
-            //   title: 'Ionic Vue',
-            //   path: 'sites_frameworks/getting_started/ionic_vue',
-            // },
-            // {
-            //   title: 'Jekyll',
-            //   path: 'sites_frameworks/getting_started/jekyll',
-            // },
+            {
+              title: 'Angular',
+              path: 'sites_frameworks/getting_started/angular',
+            },
+            {
+              title: 'Astro',
+              path: 'sites_frameworks/getting_started/astro',
+            },
+            {
+              title: 'Brunch',
+              path: 'sites_frameworks/getting_started/brunch',
+            },
+            {
+              title: 'Docusaurus',
+              path: 'sites_frameworks/getting_started/docusaurus',
+            },
+            {
+              title: 'Dojo',
+              path: 'sites_frameworks/getting_started/dojo',
+            },
+            {
+              title: 'Eleventy',
+              path: 'sites_frameworks/getting_started/eleventy',
+            },
+            {
+              title: 'Ember.js',
+              path: 'sites_frameworks/getting_started/ember',
+            },
+            {
+              title: 'Ember Fastboot',
+              path: 'sites_frameworks/getting_started/ember_fastboot',
+            },
+            {
+              title: 'Express',
+              path: 'sites_frameworks/getting_started/express',
+            },
+            {
+              title: 'Frontity',
+              path: 'sites_frameworks/getting_started/frontity',
+            },
+            {
+              title: 'Gatsby',
+              path: 'sites_frameworks/getting_started/gatsby',
+            },
+            {
+              title: 'Gridsome',
+              path: 'sites_frameworks/getting_started/gridsome',
+            },
+            {
+              title: 'Hexo',
+              path: 'sites_frameworks/getting_started/hexo',
+            },
+            {
+              title: 'Hugo',
+              path: 'sites_frameworks/getting_started/hugo',
+            },
+            {
+              title: 'Ionic React',
+              path: 'sites_frameworks/getting_started/ionic_react',
+            },
+            {
+              title: 'Ionic Vue',
+              path: 'sites_frameworks/getting_started/ionic_vue',
+            },
+            {
+              title: 'Jekyll',
+              path: 'sites_frameworks/getting_started/jekyll',
+            },
             // {
             //   title: 'Lit',
             //   path: 'sites_frameworks/getting_started/lit',
             // },
-            // {
-            //   title: 'MkDocs',
-            //   path: 'sites_frameworks/getting_started/mkdocs',
-            // },
+            {
+              title: 'MkDocs',
+              path: 'sites_frameworks/getting_started/mkdocs',
+            },
             {
               title: 'Next.js',
               path: 'sites_frameworks/getting_started/next',
@@ -343,22 +351,22 @@ const nav = {
               title: 'Nuxt3',
               path: 'sites_frameworks/getting_started/nuxt3',
             },
-            // {
-            //   title: 'Preact',
-            //   path: 'sites_frameworks/getting_started/preact',
-            // },
-            // {
-            //   title: 'Razzle',
-            //   path: 'sites_frameworks/getting_started/razzle',
-            // },
-            // {
-            //   title: 'React',
-            //   path: 'sites_frameworks/getting_started/react',
-            // },
-            // {
-            //   title: 'React Static',
-            //   path: 'sites_frameworks/getting_started/react_static',
-            // },
+            {
+              title: 'Preact',
+              path: 'sites_frameworks/getting_started/preact',
+            },
+            {
+              title: 'Razzle',
+              path: 'sites_frameworks/getting_started/razzle',
+            },
+            {
+              title: 'React',
+              path: 'sites_frameworks/getting_started/react',
+            },
+            {
+              title: 'React Static',
+              path: 'sites_frameworks/getting_started/react_static',
+            },
             // {
             //   title: 'React Storefront',
             //   path: 'sites_frameworks/getting_started/react-storefront',
@@ -367,18 +375,18 @@ const nav = {
             //   title: 'RedwoodJS',
             //   path: 'sites_frameworks/getting_started/redwoodjs',
             // },
-            // {
-            //   title: 'Remix',
-            //   path: 'sites_frameworks/getting_started/remix',
-            // },
-            // {
-            //   title: 'Saber',
-            //   path: 'sites_frameworks/getting_started/saber',
-            // },
-            // {
-            //   title: 'Sanity',
-            //   path: 'sites_frameworks/getting_started/sanity',
-            // },
+            {
+              title: 'Remix',
+              path: 'sites_frameworks/getting_started/remix',
+            },
+            {
+              title: 'Saber',
+              path: 'sites_frameworks/getting_started/saber',
+            },
+            {
+              title: 'Sanity',
+              path: 'sites_frameworks/getting_started/sanity',
+            },
             // {
             //   title: 'Sapper',
             //   path: 'sites_frameworks/getting_started/sapper',
@@ -387,22 +395,22 @@ const nav = {
             //   title: 'Scully',
             //   path: 'sites_frameworks/getting_started/scully',
             // },
-            // {
-            //   title: 'SolidJS',
-            //   path: 'sites_frameworks/getting_started/solid',
-            // },
+            {
+              title: 'SolidJS',
+              path: 'sites_frameworks/getting_started/solid',
+            },
             // {
             //   title: 'Spartacus',
             //   path: 'sites_frameworks/getting_started/spartacus',
             // },
-            // {
-            //   title: 'Static HTML/JS',
-            //   path: 'sites_frameworks/getting_started/static_sites',
-            // },
-            // {
-            //   title: 'Stencil',
-            //   path: 'sites_frameworks/getting_started/stencil',
-            // },
+            {
+              title: 'Static HTML/JS',
+              path: 'sites_frameworks/getting_started/static_sites',
+            },
+            {
+              title: 'Stencil',
+              path: 'sites_frameworks/getting_started/stencil',
+            },
             // {
             //   title: 'Svelte',
             //   path: 'sites_frameworks/getting_started/svelte',
@@ -411,26 +419,26 @@ const nav = {
             //   title: 'UmiJS',
             //   path: 'sites_frameworks/getting_started/umijs',
             // },
-            // {
-            //   title: 'VitePress',
-            //   path: 'sites_frameworks/getting_started/vitepress',
-            // },
+            {
+              title: 'VitePress',
+              path: 'sites_frameworks/getting_started/vitepress',
+            },
             // {
             //   title: 'Vue Storefront',
             //   path: 'sites_frameworks/getting_started/vsf',
             // },
-            // {
-            //   title: 'Vue.js',
-            //   path: 'sites_frameworks/getting_started/vue',
-            // },
-            // {
-            //   title: 'VuePress',
-            //   path: 'sites_frameworks/getting_started/vuepress',
-            // },
-            // {
-            //   title: 'Zola',
-            //   path: 'sites_frameworks/getting_started/zola',
-            // },
+            {
+              title: 'Vue.js',
+              path: 'sites_frameworks/getting_started/vue',
+            },
+            {
+              title: 'VuePress',
+              path: 'sites_frameworks/getting_started/vuepress',
+            },
+            {
+              title: 'Zola',
+              path: 'sites_frameworks/getting_started/zola',
+            },
           ],
         },
         {
@@ -607,7 +615,7 @@ const nav = {
     },
     {
       title: 'Upgrading',
-      path: 'v7/upgrading',
+      path: 'upgrading',
       icon: 'add-circle',
     },
   ],

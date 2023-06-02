@@ -1,5 +1,4 @@
-import {readFile} from 'fs/promises';
-import {basename, dirname, join} from 'path';
+import {join} from 'path';
 
 import {isEdgioRunDev} from '@edgio/core/environment';
 import globby from 'globby';
@@ -8,19 +7,17 @@ import {serialize} from 'next-mdx-remote/serialize';
 
 import {remarkPlugins} from '../../../plugins/markdownToHtml';
 import rehypeExtractHeadings from '../../../plugins/rehype-extract-headings';
-import {getVersionedConfig, getBaseConfig} from '../../utils/config';
+import {MDXComponents} from '../../components/MDX/MDXComponents';
+import openEdgeConfig from '../../config/open_edge.config';
 
 import {MarkdownPage} from 'components/Layout/MarkdownPage';
 import {Page} from 'components/Layout/Page';
-import {MDXComponents} from 'components/MDX/MDXComponents';
-import JSONRoutes from 'utils/jsonRoutes';
-import {logDev} from 'utils/logging';
+import logger from 'utils/logging';
 import templateReplace from 'utils/templateReplace';
 import {MDHeadingsList} from 'utils/Types';
 
-// location of guide markdown files
-const guidePath = 'guides/open_edge';
-const basePath = basename(dirname(__dirname));
+const guidesPath = 'guides/open_edge';
+const urlStartPath = __dirname.split('/pages').reverse()[0];
 
 export default function Guide({
   source,
@@ -32,7 +29,7 @@ export default function Guide({
   version: string;
 }) {
   return (
-    <Page routeTree={JSONRoutes}>
+    <Page>
       <MarkdownPage meta={{...source.frontmatter, version}} headings={headings}>
         <MDXRemote {...source} components={MDXComponents} />
       </MarkdownPage>
@@ -40,49 +37,17 @@ export default function Guide({
   );
 }
 
-export async function getStaticPaths() {
-  const routes = [];
-  const paths = [];
-  const [root, mdPath] = guidePath.split('/');
-
-  // determine available guides from filesystem
-  const allGuides = (
-    await globby([`${mdPath}/**/*.{md,mdx}`], {
-      cwd: join(process.cwd(), root),
-    })
-  ).map(
-    (path: string) =>
-      path
-        .replace(`${mdPath}/`, '') // remove path prefix
-        .replace(/.mdx?/, '') // remove extension
-  );
-
-  console.log('allGuides: ', allGuides);
-
-  // if in dev mode, fallback to SSR for faster builds
-  if (isEdgioRunDev()) {
-    return {
-      paths: [],
-      fallback: 'blocking',
-    };
-  }
-
-  // add all guides to paths
-  paths.push(...[...allGuides]);
-
-  // convert paths to routes
-  routes.push(
-    ...[...new Set(paths)].map((path) => ({params: {slug: path.split('/')}}))
-  );
-
+export const getStaticPaths = async () => {
+  // Because some of the guides define redirects, redirects cannot be prerendered
+  // and must be handled by SSR.
+  // Therefore, we disable prerendering for now and fallback to SSR for all.
   return {
-    paths: routes,
-    fallback: false,
+    paths: [],
+    fallback: 'blocking',
   };
-}
+};
 
 export async function getStaticProps({params}: {params: any}) {
-  console.log('params: ', params);
   const {slug}: {slug: string[]} = params;
   const indexRE = /index.mdx?$/;
   let guide = (slug && [...slug]) ?? [];
@@ -90,8 +55,8 @@ export async function getStaticProps({params}: {params: any}) {
   const slugAsString = guide.join('/');
 
   const guideGlobs = ['md', 'mdx'].flatMap((ext) => [
-    `${guidePath}/${slugAsString}/index.${ext}`,
-    `${guidePath}/${slugAsString}.${ext}`,
+    `${guidesPath}/${slugAsString}/index.${ext}`,
+    `${guidesPath}/${slugAsString}.${ext}`,
   ]);
 
   const files = (await globby(guideGlobs)).sort((a, b) => {
@@ -107,32 +72,25 @@ export async function getStaticProps({params}: {params: any}) {
 
   const [file] = files;
   if (!file) {
-    logDev(`No matching files for route '${slugAsString}'`);
+    logger.warn(`No matching files for route '${slugAsString}'`);
     return {notFound: true};
   }
 
-  logDev(
+  logger.dev(
     `Using '${file}' for route '${slugAsString}'. Available files:`,
     files
   );
 
-  let content = await readFile(join(process.cwd(), file), 'utf8');
-
   // update template with versioned constants
-  content = templateReplace(content, getBaseConfig());
+  let content =
+    templateReplace(join(process.cwd(), file), openEdgeConfig) ??
+    `Invalid template file: ${file}`;
 
   // remove any html comments (<!-- -->) as these will not parse correctly
   content = content.replace(/<!--([\s\S]*?)-->/g, '');
 
   // <edgejs> tags are used for external documentation and should be removed
   content = content.replace(/<edgejs([\s\S]*?)edgejs>/g, '');
-
-  // Any {{ VALUE }} that was not replaced in the above step
-  // should be replaced with only 1 set of [] brackets. Keeping them as
-  // {{ }} double braces will cause the MDX parser to throw an error.
-  content = content.replace(/{{\s*(\w+)\s*}}/g, (match, p1) => {
-    return `[${p1}]`;
-  });
 
   const headings: MDHeadingsList = [];
   const mdxSource = await serialize(content, {
@@ -143,6 +101,15 @@ export async function getStaticProps({params}: {params: any}) {
       format: 'mdx',
     },
   });
+
+  if (mdxSource.frontmatter?.redirect) {
+    return {
+      redirect: {
+        destination: mdxSource.frontmatter.redirect,
+        permanent: false,
+      },
+    };
+  }
 
   return {props: {source: mdxSource, headings, version: null}};
 }

@@ -2,25 +2,50 @@ import sortBy from 'lodash/sortBy';
 import Link from 'next/link';
 import styled from 'styled-components';
 
-import {getChildrenRoutesFromSidebarMenuItems} from '../../utils/getChildrenRoutesFromSidebarMenuItems';
 import {IconUser} from '../Icon/IconUser';
 
 import {StyledFeatureSection} from './FeatureSection';
 import SectionHeader from './SectionHeader';
 
 import useConditioning from 'utils/hooks/useConditioning';
+import itemsByColumn from 'utils/itemsByColumn';
 
 const StyledComp = styled(StyledFeatureSection)``;
 
+const items = {
+  '4': [
+    {
+      title: 'Alerts',
+      path: '/guides/alerts',
+    },
+    {
+      title: 'Teams',
+      path: '/guides/teams',
+    },
+    {
+      title: 'SAML Single Sign On',
+      path: '/guides/saml',
+    },
+  ],
+  default: [
+    {
+      title: 'Alerts',
+      path: '/guides/basics/alerts',
+    },
+    {
+      title: 'Teams',
+      path: '/guides/basics/collaboration',
+    },
+  ],
+};
+
 export default function AccountsandTeams() {
-  const parentPath = 'accounts-teams';
-  const allRoutes = getChildrenRoutesFromSidebarMenuItems(parentPath);
-  const allRoutesSorted = sortBy(allRoutes, 'title');
   const {
+    version,
     version: {toVersionedPath},
   } = useConditioning();
 
-  const routesByColumns = [allRoutesSorted];
+  const routesByColumns = itemsByColumn(items, version, 'title', 5);
 
   return (
     <StyledComp>

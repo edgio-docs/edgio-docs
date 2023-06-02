@@ -15,10 +15,11 @@ const PRODUCT_SECURITY = 'Security';
 const PRODUCT_NAME_LOWER = PRODUCT.toLowerCase();
 const PRODUCT_NAME_UPPER = PRODUCT.toUpperCase();
 const PRODUCT_LEGACY_LOWER = PRODUCT_LEGACY.toLowerCase();
-const PORTAL = `${COMPANY_NAME} Developer Console`;
+const PORTAL = `${COMPANY_NAME} Console`;
 
 const CLI_NAME = 'edg';
 const FULL_CLI_NAME = 'edgio';
+const CLI_CMD = (cmd) => `${FULL_CLI_NAME} ${cmd}`;
 const PACKAGE_NAME = '@edgio';
 const PACKAGE_VERSION = 'latest';
 const INIT_ARG_EDGIO_VERSION = `--edgioVersion ${PACKAGE_VERSION}`;
@@ -33,7 +34,7 @@ const DOMAIN_LEGACY = 'layer0.co';
 const APP_DOMAIN = `edgio.app`;
 const LINK_DOMAIN = `edgio.link`;
 const PERMALINK_DOMAIN = `edgio-perma.link`;
-const RUM_DOMAIN = `rum.layer0.co`;
+const RUM_DOMAIN = `rum.edgio.net`;
 const DOCS_DOMAIN = `docs.${DOMAIN}`;
 const DOCS_PAGES_DOMAIN = 'layer0-docs.s3.amazonaws.com';
 const DOCS_REPO = 'edgio-docs/edgio-docs';
@@ -79,47 +80,9 @@ const EXAMPLES_REPOS = {
   'static-vue': 'https://github.com/edgio-docs/edgio-static-vuejs-example',
 };
 
-const SYSTEM_REQUIREMENTS = `## System Requirements {/*system-requirements*/}
-
-- [Install Node.js 16.16.0](/applications/install_nodejs)`;
-
-const SYSTEM_REQUIREMENTS_H3 = `### System Requirements {/*system-requirements*/}
-
-- [Install Node.js 16.16.0](/applications/install_nodejs)`;
-
 const SIGN_UP = `## Sign up for ${PRODUCT} {/*sign-up*/}
 
-Deploying requires an account on ${PRODUCT}. <a href="${APP_URL}/signup">Sign up here for free.</a>`;
-
-const INSTALL_CLI = `## Install the ${PRODUCT_NAME} CLI {/*install-the-cli*/}
-
-If you have not already done so, install the [${PRODUCT_NAME} CLI](/applications/develop/cli).
-
-<SnippetGroup>
-
-\`\`\`bash tabLabel="npm"
-npm i -g ${PACKAGE_NAME}/cli
-\`\`\`
-
-\`\`\`bash tabLabel="Yarn"
-yarn global add ${PACKAGE_NAME}/cli
-\`\`\`
-
-</SnippetGroup>
-`;
-
-const INIT_DEFAULT_PACKAGES = `
-- The \`${PACKAGE_NAME}/cli\` package - Allows you to control ${PRODUCT} through project-local CLI.
-- The \`${PACKAGE_NAME}/core\` package - Allows you to declare routes and deploy your application to ${PRODUCT}.
-- The \`${PACKAGE_NAME}/prefetch\` package - Allows you to configure a service worker to prefetch and cache pages to improve browsing speed.
-- The \`${PACKAGE_NAME}/devtools\` package - Allows you to monitor the caching and prefetching functionality.
-`;
-
-const INIT_DEFAULT_FILES = `
-- \`${CONFIG_FILE}\` - Contains various configuration options for ${PRODUCT}.
-- \`routes.js\` - A default routes file that proxies all requests to the server. Update this file to add caching or proxy some URLs to a different origin.
-- \`sw/service-worker.js\` - A service worker implemented using Workbox.
-`;
+Deploying requires an account on ${PRODUCT}. [Sign up here for free.](${APP_URL}/signup)`;
 
 const PREFETCH_TIER1_INTRO = `
 The \`${FULL_CLI_NAME} init\` command adds a service worker based on [Workbox](https://developers.google.com/web/tools/workbox) at \`sw/service-worker.js\`. 
@@ -130,14 +93,6 @@ import { Prefetcher } from '${PACKAGE_NAME}/prefetch/sw';
 
 new Prefetcher().route();
 \`\`\``;
-
-const PREREQ = `
-${SYSTEM_REQUIREMENTS}
-
-${SIGN_UP}
-
-${INSTALL_CLI}
-`.trim();
 
 const INSTALL_CLI_STEP = `Install the ${PRODUCT_NAME} CLI
 
@@ -154,13 +109,6 @@ yarn global add ${PACKAGE_NAME}/cli
 \`\`\`
 
 </SnippetGroup>
-`;
-
-const ROUTEHELPER = `<Callout type="important">
-
-  If you are an existing customer, we know that you may be excited to try out ${PRODUCT} ${PRODUCT_APPLICATIONS} v7. However, this major version upgrade may require [significant changes to your CDN-as-code configuration](/applications/v7/intro#cdn-as-code) as certain core legacy components have limited support. In the near future, we plan on introducing a migration guide to ease this transition. In the meantime, if you have questions, contact your account manager or our [sales department](https://edg.io/contact-us/) at 1 (866) 200 - 5463.
-
-</Callout>
 `;
 
 const SECURITY_NAV = `1.  From the ${PORTAL_LINK}, select the desired team space. 
@@ -479,6 +427,7 @@ const config = {
   PRODUCT_LEGACY_LOWER,
   APP_DOMAIN,
   APP_URL,
+  CLI_CMD,
   CLI_NAME,
   CONFIG_FILE,
   ROUTES_FILE,
@@ -499,22 +448,17 @@ const config = {
   FULL_CLI_NAME,
   HEADER_PREFIX,
   HELP_URL,
-  INSTALL_CLI,
   LINK_DOMAIN,
   PERMALINK_DOMAIN,
   RUM_DOMAIN,
   LOGIN_URL,
   PORTAL,
   PORTAL_LINK,
-  PREREQ,
   INSTALL_CLI_STEP,
-  INIT_DEFAULT_PACKAGES,
-  INIT_DEFAULT_FILES,
   PREFETCH_TIER1_INTRO,
   NODE_VERSION,
   PACKAGE_NAME,
   PARTNERS_CONTACT,
-  ROUTEHELPER,
   RTLD_PROFILE_SETUP_1,
   RTLD_PROFILE_SETUP_2,
   SECURITY_NAV,
@@ -522,8 +466,6 @@ const config = {
   STARTER_NAME,
   STATUS_URL,
   SUPPORT_URL,
-  SYSTEM_REQUIREMENTS_H3,
-  SYSTEM_REQUIREMENTS,
   YEAR,
   WWW_URL,
   RUM_NS,

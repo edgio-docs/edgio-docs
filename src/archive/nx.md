@@ -23,7 +23,7 @@ Here we use [Next.js](https://nextjs.org/) for the example Nx project.
   repoUrl="https://github.com/edgio-docs/edgio-nx-example" 
   deployFromRepo />
 
-{{ PREREQ }}
+{{ PREREQ.md }}
 
 ## Start a Nx project from scratch {/*start-a-nx-project-from-scratch*/}
 

@@ -10,6 +10,15 @@ See [NPM Packages Changelog](/guides/changelog) for release notes related to the
 
 </Callout>
 
+#### {{ DOCS_NAME }} - June 2, 2023
+
+- Added support for an additional 30+ [Sites frameworks](/guides/v7/sites_frameworks/getting_started#supported-frameworks)
+- Layer0 documentation (https://docs.layer0.co) migrated to {{ DOCS_NAME }} (https://docs.edg.io/guides/v4)
+- Example Next.js and Nuxt 3 sites added to their respective framework guides
+- Updated CDN-as-Code (EdgeJS) guides to expand on Rule Conditions and Features
+- Fixed search indexing to prevent unrelated results from appearing in search
+- Add documentation for Rules `Directory` and `Extension` conditions
+
 #### {{ PORTAL }} - May 25, 2023
 
 ##### Rules UI Updates

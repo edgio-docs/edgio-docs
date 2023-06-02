@@ -16,6 +16,7 @@ const PRODUCT_NAME_LOWER = PRODUCT.toLowerCase();
 const PRODUCT_NAME_UPPER = PRODUCT.toUpperCase();
 const PRODUCT_LEGACY_LOWER = PRODUCT_LEGACY.toLowerCase();
 const PORTAL = `${COMPANY_NAME} Console`;
+const DOCS_NAME = `${COMPANY_NAME} Docs`;
 
 const CLI_NAME = 'edg';
 const FULL_CLI_NAME = 'edgio';
@@ -471,6 +472,7 @@ const config = {
   RUM_NS,
   PACKAGE_VERSION,
   INIT_ARG_EDGIO_VERSION,
+  DOCS_NAME,
 };
 
 export default config;

@@ -96,7 +96,7 @@ new Prefetcher().route();
 
 const INSTALL_CLI_STEP = `Install the ${PRODUCT_NAME} CLI
 
-If you have not already done so, install the [${PRODUCT_NAME} CLI](/guides/develop/cli).
+If you have not already done so, install the [${PRODUCT_NAME} CLI](/applications/develop/cli).
 
 <SnippetGroup>
 
@@ -139,7 +139,7 @@ const RTLD_PROFILE_SETUP_1 = `**To set up a log delivery profile**
 
 const RTLD_PROFILE_SETUP_2 = `5.  From the **Log Format** option, select whether to format log data using our standard JSON format, as a JSON array, as JSON lines, or as a CSV (RTLD CDN only).
     
-    Learn more about these formats: [RTLD CDN](/guides/logs/rtld/log_fields_rtld_cdn) | [RTLD Rate Limiting](/guides/logs/rtld/log_fields_rtld_rate_limiting) | [RTLD WAF](/guides/logs/rtld/log_fields_rtld_waf)
+    Learn more about these formats: [RTLD CDN](/applications/logs/rtld/log_fields_rtld_cdn) | [RTLD Rate Limiting](/applications/logs/rtld/log_fields_rtld_rate_limiting) | [RTLD WAF](/applications/logs/rtld/log_fields_rtld_waf)
 
     <a id="downsampling" />
 
@@ -178,7 +178,7 @@ const RTLD_PROFILE_SETUP_2 = `5.  From the **Log Format** option, select whether
 
     </Callout>
 
-    Learn more about log fields: [RTLD CDN](/guides/logs/rtld/log_fields_rtld_cdn#logs-array) | [RTLD Rate Limiting](/guides/logs/rtld/log_fields_rtld_rate_limiting#logs-array) | [RTLD WAF](/guides/logs/rtld/log_fields_rtld_waf#logs-array)
+    Learn more about log fields: [RTLD CDN](/applications/logs/rtld/log_fields_rtld_cdn#logs-array) | [RTLD Rate Limiting](/applications/logs/rtld/log_fields_rtld_rate_limiting#logs-array) | [RTLD WAF](/applications/logs/rtld/log_fields_rtld_waf#logs-array)
 
 9.  Click **Create Log Delivery Profile**.
 

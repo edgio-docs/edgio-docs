@@ -11,6 +11,6 @@ module.exports = {
 
   // include the raw markdown files in the build for SSR
   includeFiles: {
-    'src/guides/**/*': true,
+    'guides/**/*': true,
   },
 };

@@ -55,6 +55,8 @@ const Seo = withRouter(
 
       {/* OPEN GRAPH */}
       <meta property="og:type" key="og:type" content="website" />
+
+      {/* TODO COMSUP-21 */}
       <meta
         property="og:url"
         key="og:url"

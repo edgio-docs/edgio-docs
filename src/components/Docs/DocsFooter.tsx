@@ -173,17 +173,17 @@ const pryFooterLinks = {
       href: 'https://edg.io/contact-support/?sgId=7bc47c45-c1d6-4189-b416-552581d86006',
     },
     {
-      title: 'How-to guides',
-      href: '/guides/how-to',
+      title: 'How-to /applications',
+      href: '/applicationss/how-to',
     },
     {
       title: 'Release Notes',
-      href: '/guides/release_notes',
+      href: '/applicationss/release_notes',
       versioned: false,
     },
     {
       title: 'NPM Package Changelog',
-      href: '/guides/changelog',
+      href: '/applicationss/changelog',
     },
   ],
   community: [
@@ -201,15 +201,15 @@ const pryFooterLinks = {
     },
     {
       title: 'Learning resources',
-      href: '/guides/learning',
+      href: '/applicationss/learning',
     },
     // {
     //   title: 'Glossary',
-    //   href: '/guides/glossary',
+    //   href: '/applicationss/glossary',
     // },
     {
       title: 'Contributing',
-      href: '/guides/contributing',
+      href: '/applicationss/contributing',
     },
   ],
   social: [

@@ -1,5 +1,6 @@
 import {join} from 'path';
 
+import {isEdgioRunDev} from '@edgio/core/environment';
 import globby from 'globby';
 import {MDXRemote} from 'next-mdx-remote';
 import {serialize} from 'next-mdx-remote/serialize';
@@ -7,7 +8,7 @@ import {serialize} from 'next-mdx-remote/serialize';
 import {remarkPlugins} from '../../../plugins/markdownToHtml';
 import rehypeExtractHeadings from '../../../plugins/rehype-extract-headings';
 import {MDXComponents} from '../../components/MDX/MDXComponents';
-import {getVersionedConfig} from '../../utils/config';
+import openEdgeConfig from '../../config/open_edge.config';
 
 import {MarkdownPage} from 'components/Layout/MarkdownPage';
 import {Page} from 'components/Layout/Page';
@@ -15,7 +16,7 @@ import logger from 'utils/logging';
 import templateReplace from 'utils/templateReplace';
 import {MDHeadingsList} from 'utils/Types';
 
-const guidesPath = 'guides/applications';
+const guidesPath = 'guides/open_edge';
 const urlStartPath = __dirname.split('/pages').reverse()[0];
 
 export default function Guide({
@@ -48,39 +49,22 @@ export const getStaticPaths = async () => {
 
 export async function getStaticProps({params}: {params: any}) {
   const {slug}: {slug: string[]} = params;
-  const latestVersion = process.env.NEXT_PUBLIC_LATEST_VERSION as string; // defined in next.config.js
-  const versionRE = /^v(\d+)$/;
-  let [version, ...guide] = slug;
-  let isHomepage = false;
-  const isVersionSpecifiedInSlug = versionRE.test(version);
-
-  if (!isVersionSpecifiedInSlug) {
-    // no version specified in the path, so redirect to the latest version path
-    return {
-      redirect: {
-        destination: `${urlStartPath}/v${latestVersion}/${slug.join('/')}`,
-        permanent: true,
-      },
-    };
-  } else if (!guide || !guide.length) {
-    // version with no remainig guide path so use as homepage
-    isHomepage = true;
-    guide = ['index'];
-  }
+  const indexRE = /index.mdx?$/;
+  let guide = (slug && [...slug]) ?? [];
 
   const slugAsString = guide.join('/');
 
   const guideGlobs = ['md', 'mdx'].flatMap((ext) => [
-    `${guidesPath}/${version}/${slugAsString}.${ext}`,
+    `${guidesPath}/${slugAsString}/index.${ext}`,
     `${guidesPath}/${slugAsString}.${ext}`,
   ]);
 
   const files = (await globby(guideGlobs)).sort((a, b) => {
-    // prioritize versioned files over non-versioned files
-    if (a.match(versionRE) && !b.match(versionRE)) {
+    // prioritize index files over guide files
+    if (a.match(indexRE) && !b.match(indexRE)) {
       return -1;
     }
-    if (!a.match(versionRE) && b.match(versionRE)) {
+    if (!a.match(indexRE) && b.match(indexRE)) {
       return 1;
     }
     return 0;
@@ -99,7 +83,7 @@ export async function getStaticProps({params}: {params: any}) {
 
   // update template with versioned constants
   let content =
-    templateReplace(join(process.cwd(), file), getVersionedConfig(version)) ??
+    templateReplace(join(process.cwd(), file), openEdgeConfig) ??
     `Invalid template file: ${file}`;
 
   // remove any html comments (<!-- -->) as these will not parse correctly
@@ -127,5 +111,5 @@ export async function getStaticProps({params}: {params: any}) {
     };
   }
 
-  return {props: {source: mdxSource, headings, version}};
+  return {props: {source: mdxSource, headings, version: null}};
 }

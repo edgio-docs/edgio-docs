@@ -11,7 +11,6 @@ import {MarkdownPage} from 'components/Layout/MarkdownPage';
 import {Page} from 'components/Layout/Page';
 import Callout from 'components/MDX/Callout';
 import Link from 'components/MDX/Link';
-import JSONRoutes from 'utils/jsonRoutes';
 interface ChangelogProps {
   version: string;
   content: string;
@@ -69,7 +68,7 @@ function ChangelogPage({content, version}: {content: string; version: string}) {
   const config = getVersionedConfig(version);
 
   return (
-    <Page routeTree={JSONRoutes}>
+    <Page>
       <MarkdownPage
         meta={{title: `${config.PRODUCT} ${version} Packages Changelog`}}>
         <Callout type="info">

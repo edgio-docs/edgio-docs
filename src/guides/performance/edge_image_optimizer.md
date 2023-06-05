@@ -1,4 +1,0 @@
----
-title: Edge Image Optimizer
----
-

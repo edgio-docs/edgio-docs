@@ -2,7 +2,7 @@
 title: {{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} Version 7
 ---
 
-{{ ROUTEHELPER }}
+{{ ROUTEHELPER.md }}
 
 {{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} version 7 introduces:
 

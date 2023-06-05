@@ -56,7 +56,8 @@
     "semver": "^7.3.7",
     "styled-button-component": "^4.0.0",
     "styled-components": "^5.3.3",
-    "styled-dropdown-component": "^4.0.0"
+    "styled-dropdown-component": "^4.0.0",
+    "winston": "^3.8.2"
   },
   "devDependencies": {
     "@edgio/cli": "^6.0.5",

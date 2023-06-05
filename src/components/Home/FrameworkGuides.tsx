@@ -28,6 +28,328 @@ import SectionHeader from './SectionHeader';
 
 import {IconArrow} from 'components/Icon/IconArrow';
 import useConditioning from 'utils/hooks/useConditioning';
+import itemsByColumn from 'utils/itemsByColumn';
+
+const items = {
+  '4': [
+    {
+      title: 'Next.js',
+      path: '/guides/next',
+      icon: {
+        light: <IconNextJS />,
+        dark: <IconNextJSDark />,
+      },
+    },
+    {
+      title: 'React',
+      path: '/guides/react',
+      icon: {
+        light: <IconReact />,
+        dark: <IconReact />,
+      },
+    },
+    {
+      title: 'Vue Storefront',
+      path: '/guides/vsf',
+      icon: {
+        light: <IconVue />,
+        dark: <IconVue />,
+      },
+    },
+    {
+      title: 'Gatsby',
+      path: '/guides/gatsby',
+      icon: {
+        light: <IconGatsby />,
+        dark: <IconGatsby />,
+      },
+    },
+    {
+      title: 'Vue.js',
+      path: '/guides/vue',
+      icon: {
+        light: <IconVue />,
+        dark: <IconVue />,
+      },
+    },
+    {
+      title: 'Angular',
+      path: '/guides/angular',
+      icon: {
+        light: <IconAngular />,
+        dark: <IconAngular />,
+      },
+    },
+    {
+      title: 'Serverless Compute',
+      path: '/guides/serverless_functions',
+      icon: {
+        light: <IconServerlessFunctions />,
+        dark: <IconServerlessFunctions />,
+      },
+    },
+    {
+      title: 'Remix',
+      path: '/guides/remix',
+      icon: {
+        light: <IconRemix />,
+        dark: <IconRemixDark />,
+      },
+    },
+    {
+      title: 'Next.js Commerce',
+      path: '/guides/next_commerce',
+      icon: {
+        light: <IconNextJSCommerce />,
+        dark: <IconNextJSCommerceDark />,
+      },
+    },
+    {
+      title: 'Svelte',
+      path: '/guides/svelte',
+      icon: {
+        light: <IconSvelte />,
+        dark: <IconSvelte />,
+      },
+    },
+    {
+      title: 'SolidJS',
+      path: '/guides/solid',
+      icon: {
+        light: <IconSolidJS />,
+        dark: <IconSolidJS />,
+      },
+    },
+    {
+      title: 'React Static',
+      path: '/guides/react_static',
+      icon: {
+        light: <IconReactStatic />,
+        dark: <IconReactStatic />,
+      },
+    },
+    {
+      title: 'Ionic Vue',
+      path: '/guides/ionic_vue',
+      icon: {
+        light: <IconVue />,
+        dark: <IconVue />,
+      },
+    },
+    {
+      title: 'RedwoodJS',
+      path: '/guides/redwoodjs',
+      icon: {
+        light: <IconRedwood />,
+        dark: <IconRedwood />,
+      },
+    },
+    {
+      title: 'Preact',
+      path: '/guides/preact',
+      icon: {
+        light: <IconPreact />,
+        dark: <IconPreact />,
+      },
+    },
+    {
+      title: 'Ember.js',
+      path: '/guides/ember',
+      icon: {
+        light: <IconEmberJS />,
+        dark: <IconEmberJS />,
+      },
+    },
+    {
+      title: 'Astro',
+      path: '/guides/astro',
+      icon: {
+        light: <IconAstro />,
+        dark: <IconAstroDark />,
+      },
+    },
+  ],
+  '5,6': [
+    {
+      title: 'Next.js',
+      path: '/guides/sites_frameworks/getting_started/next',
+      icon: {
+        light: <IconNextJS />,
+        dark: <IconNextJSDark />,
+      },
+    },
+    {
+      title: 'React',
+      path: '/guides/sites_frameworks/getting_started/react',
+      icon: {
+        light: <IconReact />,
+        dark: <IconReact />,
+      },
+    },
+    {
+      title: 'Vue Storefront',
+      path: '/guides/sites_frameworks/getting_started/vsf',
+      icon: {
+        light: <IconVue />,
+        dark: <IconVue />,
+      },
+    },
+    {
+      title: 'Gatsby',
+      path: '/guides/sites_frameworks/getting_started/gatsby',
+      icon: {
+        light: <IconGatsby />,
+        dark: <IconGatsby />,
+      },
+    },
+    {
+      title: 'Vue.js',
+      path: '/guides/sites_frameworks/getting_started/vue',
+      icon: {
+        light: <IconVue />,
+        dark: <IconVue />,
+      },
+    },
+    {
+      title: 'Angular',
+      path: '/guides/sites_frameworks/getting_started/angular',
+      icon: {
+        light: <IconAngular />,
+        dark: <IconAngular />,
+      },
+    },
+    {
+      title: 'Serverless Compute',
+      path: '/guides/performance/serverless_compute',
+      icon: {
+        light: <IconServerlessFunctions />,
+        dark: <IconServerlessFunctions />,
+      },
+    },
+    {
+      title: 'Remix',
+      path: '/guides/sites_frameworks/getting_started/remix',
+      icon: {
+        light: <IconRemix />,
+        dark: <IconRemixDark />,
+      },
+    },
+    {
+      title: 'Next.js Commerce',
+      path: '/guides/sites_frameworks/getting_started/next_commerce',
+      icon: {
+        light: <IconNextJSCommerce />,
+        dark: <IconNextJSCommerceDark />,
+      },
+    },
+    {
+      title: 'Svelte',
+      path: '/guides/sites_frameworks/getting_started/svelte',
+      icon: {
+        light: <IconSvelte />,
+        dark: <IconSvelte />,
+      },
+    },
+    {
+      title: 'SolidJS',
+      path: '/guides/sites_frameworks/getting_started/solid',
+      icon: {
+        light: <IconSolidJS />,
+        dark: <IconSolidJS />,
+      },
+    },
+    {
+      title: 'React Static',
+      path: '/guides/sites_frameworks/getting_started/react_static',
+      icon: {
+        light: <IconReactStatic />,
+        dark: <IconReactStatic />,
+      },
+    },
+    {
+      title: 'Ionic Vue',
+      path: '/guides/sites_frameworks/getting_started/ionic_vue',
+      icon: {
+        light: <IconVue />,
+        dark: <IconVue />,
+      },
+    },
+    {
+      title: 'RedwoodJS',
+      path: '/guides/sites_frameworks/getting_started/redwoodjs',
+      icon: {
+        light: <IconRedwood />,
+        dark: <IconRedwood />,
+      },
+    },
+    {
+      title: 'Preact',
+      path: '/guides/sites_frameworks/getting_started/preact',
+      icon: {
+        light: <IconPreact />,
+        dark: <IconPreact />,
+      },
+    },
+    {
+      title: 'Ember.js',
+      path: '/guides/sites_frameworks/getting_started/ember',
+      icon: {
+        light: <IconEmberJS />,
+        dark: <IconEmberJS />,
+      },
+    },
+    {
+      title: 'Astro',
+      path: '/guides/sites_frameworks/getting_started/astro',
+      icon: {
+        light: <IconAstro />,
+        dark: <IconAstroDark />,
+      },
+    },
+  ],
+  '7': [
+    {
+      title: 'Next.js',
+      path: '/guides/sites_frameworks/getting_started/next',
+      icon: {
+        light: <IconNextJS />,
+        dark: <IconNextJSDark />,
+      },
+    },
+    {
+      title: 'Nuxt.js',
+      path: '/guides/sites_frameworks/getting_started/nuxt',
+      icon: {
+        light: <IconNuxt />,
+        dark: <IconNuxt />,
+      },
+    },
+    {
+      title: 'Nuxt3',
+      path: '/guides/sites_frameworks/getting_started/nuxt3',
+      icon: {
+        light: <IconNuxt />,
+        dark: <IconNuxt />,
+      },
+    },
+    {
+      title: 'React',
+      path: '/guides/sites_frameworks/getting_started/react',
+      icon: {
+        light: <IconReact />,
+        dark: <IconReact />,
+      },
+    },
+    {
+      title: 'Vue.js',
+      path: '/guides/sites_frameworks/getting_started/vue',
+      icon: {
+        light: <IconVue />,
+        dark: <IconVue />,
+      },
+    },
+  ],
+};
 
 const StyledComp = styled(StyledFeatureSection)`
   .icon {
@@ -56,206 +378,24 @@ const StyledComp = styled(StyledFeatureSection)`
   }
 `;
 
-interface IRoutesProps {
-  title: string;
-  path: string;
-  icon?: {
-    light: JSX.IntrinsicElements['svg'];
-    dark: JSX.IntrinsicElements['svg'];
-  };
-}
-
 export default function FrameworkGuides() {
-  const routesCol1: Array<IRoutesProps> = [
-    {
-      title: 'Next.js',
-      path: 'next',
-      icon: {
-        light: <IconNextJS />,
-        dark: <IconNextJSDark />,
-      },
-    },
-    {
-      title: 'React',
-      path: 'react',
-      icon: {
-        light: <IconReact />,
-        dark: <IconReact />,
-      },
-    },
-    {
-      title: 'Vue Storefront',
-      path: 'vsf',
-      icon: {
-        light: <IconVue />,
-        dark: <IconVue />,
-      },
-    },
-    {
-      title: 'Gatsby',
-      path: 'gatsby',
-      icon: {
-        light: <IconGatsby />,
-        dark: <IconGatsby />,
-      },
-    },
-    {
-      title: 'Vue.js',
-      path: 'vue',
-      icon: {
-        light: <IconVue />,
-        dark: <IconVue />,
-      },
-    },
-    {
-      title: 'Angular',
-      path: 'angular',
-      icon: {
-        light: <IconAngular />,
-        dark: <IconAngular />,
-      },
-    },
-  ];
-  const routesCol2: Array<IRoutesProps> = [
-    {
-      title: 'Serverless Compute',
-      path: 'serverless_functions',
-      icon: {
-        light: <IconServerlessFunctions />,
-        dark: <IconServerlessFunctions />,
-      },
-    },
-    {
-      title: 'Remix',
-      path: 'remix',
-      icon: {
-        light: <IconRemix />,
-        dark: <IconRemixDark />,
-      },
-    },
-    {
-      title: 'Next.js Commerce',
-      path: 'next_commerce',
-      icon: {
-        light: <IconNextJSCommerce />,
-        dark: <IconNextJSCommerceDark />,
-      },
-    },
-    {
-      title: 'Svelte',
-      path: 'svelte',
-      icon: {
-        light: <IconSvelte />,
-        dark: <IconSvelte />,
-      },
-    },
-    {
-      title: 'SolidJS',
-      path: 'solid',
-      icon: {
-        light: <IconSolidJS />,
-        dark: <IconSolidJS />,
-      },
-    },
-    {
-      title: 'React Static',
-      path: 'react_static',
-      icon: {
-        light: <IconReactStatic />,
-        dark: <IconReactStatic />,
-      },
-    },
-  ];
-  const routesCol3: Array<IRoutesProps> = [
-    {
-      title: 'Ionic Vue',
-      path: 'ionic_vue',
-      icon: {
-        light: <IconVue />,
-        dark: <IconVue />,
-      },
-    },
-    {
-      title: 'RedwoodJS',
-      path: 'redwoodjs',
-      icon: {
-        light: <IconRedwood />,
-        dark: <IconRedwood />,
-      },
-    },
-    {
-      title: 'Preact',
-      path: 'preact',
-      icon: {
-        light: <IconPreact />,
-        dark: <IconPreact />,
-      },
-    },
-    {
-      title: 'Ember.js',
-      path: 'ember',
-      icon: {
-        light: <IconEmberJS />,
-        dark: <IconEmberJS />,
-      },
-    },
-    {
-      title: 'Astro',
-      path: 'astro',
-      icon: {
-        light: <IconAstro />,
-        dark: <IconAstroDark />,
-      },
-    },
-  ];
-
-  const routesColv7: Array<IRoutesProps> = [
-    {
-      title: 'Next.js',
-      path: 'next',
-      icon: {
-        light: <IconNextJS />,
-        dark: <IconNextJSDark />,
-      },
-    },
-    {
-      title: 'Nuxt.js',
-      path: 'nuxt',
-      icon: {
-        light: <IconNuxt />,
-        dark: <IconNuxt />,
-      },
-    },
-    {
-      title: 'Nuxt3',
-      path: 'nuxt3',
-      icon: {
-        light: <IconNuxt />,
-        dark: <IconNuxt />,
-      },
-    },
-  ];
-
   const {
-    version: {toVersionedPath, selectedVersion},
+    version,
+    version: {toVersionedPath, isVersion},
   } = useConditioning();
 
-  let routes: Array<Array<IRoutesProps>> = [];
-  if (selectedVersion === '7') {
-    routes = [routesColv7];
-  } else {
-    routes = [routesCol1, routesCol2, routesCol3];
+  const isV7 = isVersion(7);
+  const isV4 = isVersion(4);
+
+  let routesByColumns = itemsByColumn(items, version, null, isV7 ? 3 : 6);
+
+  if (isV7) {
+    routesByColumns = [...routesByColumns, []];
   }
 
-  let versionPath;
-  let sitesGettingStarted;
-
-  if (selectedVersion === '4') {
-    versionPath = ``;
-    sitesGettingStarted = `jamstack_getting_started`;
-  } else {
-    versionPath = `sites_frameworks/getting_started/`;
-    sitesGettingStarted = `sites_frameworks/getting_started/`;
+  let sitesGettingStarted = '/guides/sites_frameworks/getting_started/';
+  if (isV4) {
+    sitesGettingStarted = `/guides/jamstack_getting_started`;
   }
 
   return (
@@ -267,7 +407,7 @@ export default function FrameworkGuides() {
       />
 
       <div className="route-items">
-        {routes.map((route, index) => (
+        {routesByColumns.map((route, index) => (
           <div className={`route-items__col${index + 1}`} key={index}>
             <ul className="route-list__items">
               {route.map(({path, title, icon}) => (
@@ -284,24 +424,21 @@ export default function FrameworkGuides() {
                   ) : (
                     <div className="dot" />
                   )}
-                  <Link href={toVersionedPath(`${versionPath}${path}`)}>
-                    {title}
-                  </Link>
+                  <Link href={toVersionedPath(path)}>{title}</Link>
                 </li>
               ))}
-              {index === 2 && (
-                <li className="route-list__item">
-                  <Link
-                    href={toVersionedPath(`${sitesGettingStarted}`)}
-                    passHref>
-                    <a>
-                      <div className="dot" />
-                      <span>View all supported</span>
-                      <IconArrow displayDirection="right" />
-                    </a>
-                  </Link>
-                </li>
-              )}
+              {index === routesByColumns.length - 1 &&
+                routesByColumns.length > 2 && (
+                  <li className="route-list__item">
+                    <Link href={toVersionedPath(sitesGettingStarted)} passHref>
+                      <a>
+                        <div className="dot" />
+                        <span>View all supported</span>
+                        <IconArrow displayDirection="right" />
+                      </a>
+                    </Link>
+                  </li>
+                )}
             </ul>
           </div>
         ))}

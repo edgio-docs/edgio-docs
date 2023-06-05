@@ -9,12 +9,10 @@ import {PRODUCT_APPLICATIONS} from '../../../constants';
 import Header from './Header/Header';
 import SideNav from './Sidebar/Sidenav';
 import {useIsMobile} from './useMediaQuery';
-import {RouteItem, SidebarContext} from './useRouteMeta';
 
 import useConditioning from 'utils/hooks/useConditioning';
 
 interface PageProps {
-  routeTree: RouteItem;
   children: React.ReactNode;
 }
 
@@ -133,7 +131,7 @@ function Banner() {
   );
 }
 
-export function Page({routeTree, children}: PageProps) {
+export function Page({children}: PageProps) {
   const isMobile = useIsMobile(850);
   const [showSidebar, setShowSidebar] = React.useState(isMobile);
   const router = useRouter();
@@ -147,16 +145,14 @@ export function Page({routeTree, children}: PageProps) {
     <StyledMainPage>
       {showBanner && <Banner />}
       <Header {...{showSidebar, setShowSidebar}} />
-      <SidebarContext.Provider value={routeTree}>
-        <main className="docs-content">
-          <div
-            className="docs-side__nav custom-scrollbar"
-            data-open={isMobile && showSidebar}>
-            <SideNav />
-          </div>
-          <div className="docs-content__inner">{children}</div>
-        </main>
-      </SidebarContext.Provider>
+      <main className="docs-content">
+        <div
+          className="docs-side__nav custom-scrollbar"
+          data-open={isMobile && showSidebar}>
+          <SideNav />
+        </div>
+        <div className="docs-content__inner">{children}</div>
+      </main>
     </StyledMainPage>
   );
 }

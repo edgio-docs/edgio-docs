@@ -7,7 +7,6 @@ import {markdownToHtml} from '../../../plugins/markdownToHtml';
 
 import {MarkdownPage} from 'components/Layout/MarkdownPage';
 import {Page} from 'components/Layout/Page';
-import JSONRoutes from 'utils/jsonRoutes';
 
 const SKIP_LABEL = 'skip-notes';
 const PR_RE = /\(#(\d+)\)/;
@@ -59,7 +58,7 @@ const StyledChangelogContent = styled.div`
 
 function ChangelogPage({content}: {content: string}) {
   return (
-    <Page routeTree={JSONRoutes}>
+    <Page>
       <MarkdownPage meta={{title: 'Changelog'}}>
         <StyledChangelogContent dangerouslySetInnerHTML={{__html: content}} />
       </MarkdownPage>

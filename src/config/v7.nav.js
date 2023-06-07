@@ -590,12 +590,12 @@ const nav = {
           routes: [
             {
               title: '@edgio/core',
-              path: '/docs/api/core',
+              path: '/docs/api/core/',
               external: true,
             },
             {
               title: '@edgio/prefetch',
-              path: '/docs/api/prefetch',
+              path: '/docs/api/prefetch/',
               external: true,
             },
           ],

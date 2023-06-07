@@ -1,6 +1,7 @@
 import {isProductionBuild} from '@edgio/core/environment';
 import {Router, CustomCacheKey} from '@edgio/core/router';
 import {nextRoutes} from '@edgio/next';
+import {load} from 'cheerio';
 import {Downloader as GithubDownloader} from 'github-download-directory';
 import semverMaxSatisfying from 'semver/ranges/max-satisfying';
 
@@ -125,21 +126,45 @@ const router = new Router()
 // redirects for latest versioned docs
 [3, 4, 5, 6, 7].forEach((v) => {
   // match versioned api docs and redirect
-  router.match(`/docs/v${v}.x/:path*`, ({cache, compute, redirect}) => {
+  router.match(`/docs/v${v}.x/:path*`, ({cache, compute, proxy}) => {
     cache(htmlCacheConfig);
-    compute(async () => {
+    compute(async (req) => {
       // fetch the list of current published versions
       const versions = await (
         await fetch('https://docs.edg.io/docs/versions')
       ).text();
 
-      console.log(versions);
-
       const targetVersion = semverMaxSatisfying(
         versions.replace(/\n/g, '').split(','),
         `v${v}.x`
       );
-      redirect(`/docs/${targetVersion}/:path*`);
+
+      let path = `/${targetVersion}/:path*`;
+
+      const lastPathSegment = req.path.split('/').reverse()[0];
+      const hasTrailingSlash = req.path.endsWith('/');
+      const hasFileExtension = lastPathSegment.includes('.');
+
+      // set path to index.html if it doesn't end with a file extension or a trailing slash
+      if (hasTrailingSlash || !hasFileExtension) {
+        path = `/${targetVersion}/:path*/index.html`;
+      }
+
+      await proxy('api', {
+        path,
+        transformResponse: (res) => {
+          // due to relative asset paths in the response, if the path doesn't end with a trailing
+          // slash (eg. /api/core), then assets will be requested from the wrong path (eg. /api/assets/...)
+          // so we need to rewrite the asset paths to include the last path segment
+          if (!hasTrailingSlash && !hasFileExtension) {
+            const $ = load(res.body ?? '');
+            res.body = $.html().replace(
+              /assets\//g,
+              `${lastPathSegment}/assets/`
+            );
+          }
+        },
+      });
     });
   });
 });
@@ -203,25 +228,6 @@ router
     }
   );
 
-// redirects for latest versioned docs
-[3, 4, 5, 6, 7].forEach((v) => {
-  // match versioned api docs and redirect
-  router.match(`/docs/v${v}.x/:path*`, ({cache, compute, redirect}) => {
-    cache(htmlCacheConfig);
-    compute(async () => {
-      // fetch the list of current published versions
-      const versions = await (
-        await fetch('https://docs.edg.io/docs/versions')
-      ).text();
-
-      const targetVersion = semverMaxSatisfying(
-        versions.replace(/\n/g, '').split(','),
-        `v${v}.x`
-      );
-      redirect(`/docs/${targetVersion}/:path*`);
-    });
-  });
-});
 // match versioned api docs with a terminating /
 router
   .match(

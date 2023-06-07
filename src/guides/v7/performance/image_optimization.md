@@ -254,7 +254,7 @@ Determines the size of the image's canvas and the position of the optimized imag
         
 -   This parameter overrides the [pad parameter](#pad). You may not pad an image through the `pad` parameter when you define canvas size.
 
-**Default value:** By default, the size of the optimized image's canvas is determined by the source image's dimensions and the height, width, pad, and trim parameters. Additionally, a default offset is not applied to the optimized image.
+**Default value:** By default, the size of the optimized image's canvas is determined by the source image's dimensions and the `height`, `width`, `pad`, and `trim` parameters. Additionally, a default offset is not applied to the optimized image.
 
 **Examples:**
 
@@ -295,7 +295,9 @@ Device Pixel Ratio (DPR). Scales an image with the intent of matching a device's
 
 	</Callout>
 
--   {{ PRODUCT }} does not upscale images. If the requested optimization results in an image that exceeds the dimensions of the source image, then {{ PRODUCT }} will not resize it. However, it will still perform any other requested optimizations.
+-   {{ PRODUCT }} does not upscale images. 
+
+    [Learn more.](#upscaling-images)
 
 **Example:** Pass the following query string to resize a 3520 x 2347 image to 320 x 213 and then set a 2:1 DPR:
 
@@ -307,7 +309,7 @@ The response is a 640 x 427 image.
 
 ### Fit {/*fit*/}
 
-Determines the method through which the image will be resized to the dimensions defined by the height and width parameters. Valid values are:
+Determines the method through which the image will be resized to the dimensions defined by the `height` and `width` parameters. Valid values are:
 
 -   **crop:** Centers, resizes, and then crops the image through the following workflow:
 
@@ -361,13 +363,15 @@ Sets the height, in pixels, for the optimized image. Valid values are from 1 to 
 
 <Callout type="info">
 
-  Maintain the source image's aspect ratio when resizing an image by specifying either the [width](#width) or height parameter. Specifying both parameters may cause the optimized image to differ in aspect ratio.
+  Maintain the source image's aspect ratio when resizing an image by specifying either the [width](#width) or `height` parameter. Specifying both parameters may cause the optimized image to differ in aspect ratio.
   
 </Callout>
 
 <Callout type="info">
 
-  {{ PRODUCT }} does not upscale images. If the requested optimization results in an image that exceeds the dimensions of the source image, then {{ PRODUCT }} will not resize it. However, it will still perform any other requested optimizations.
+  {{ PRODUCT }} does not upscale images. 
+  
+  [Learn more.](#upscaling-images)
   
 </Callout>
 
@@ -496,7 +500,9 @@ Sets the width, in pixels, for the optimized image. Valid values are from 1 to 4
 
 <Callout type="info">
 
-  {{ PRODUCT }} does not upscale images. If the requested optimization results in an image that exceeds the dimensions of the source image, then {{ PRODUCT }} will not resize it. However, it will still perform any other requested optimizations.
+  {{ PRODUCT }} does not upscale images. 
+  
+  [Learn more.](#upscaling-images)
   
 </Callout>
 
@@ -530,7 +536,7 @@ Set to `1` to automatically define a default width based off what your mobile de
 
 Image optimizations can be tailored according to information that the client advertises about the user's device and network conditions.
 
-### Setup {/*setup*/}
+#### Setup {/*setup*/}
 
 Perform the following steps to set up client-driven image optimizations:
 
@@ -538,16 +544,16 @@ Perform the following steps to set up client-driven image optimizations:
     
     **Key information:**
     
-    -   Client hints inform the client that it may advertise the corresponding data to the server.
+    -   Client hints inform the client as to the type of client data that the server will accept. 
     -   Include an `Accept-CH-Lifetime` header or `<meta>` tag to indicate the length of time that the client should remember the supported set of client hints.
-    -   Use a rule to automatically set the `Accept-CH` response header through the [Set Response Headers feature (set_response_headers)](/guides/performance/rules/features#set-response-headers). Set the **Header Name** option to `Accept-CH`. Set the **Value** option to `DPR, Width, Viewport-Width`.
+    -   Use a rule to automatically set the `Accept-CH` response header through the [Set Response Headers feature (set_response_headers)](/guides/performance/rules/features#set-response-headers). Set the **Header Name** option to `Accept-CH` and the **Value** option to the desired client hints (e.g., `DPR, Width, Viewport-Width`).
 
     **Response header example:**
 
     `Accept-CH: DPR, Viewport-Width, Width, ECT, Downlink`
     `Accept-CH-Lifetime: 86400`
     
-    `<meta>` **tag example:**
+    **&lt;meta> tag example:**
     
     `<meta http-equiv="Accept-CH" content="DPR, Viewport-Width, Width, ECT, Downlink">`
     `<meta http-equiv="Accept-CH-Lifetime" content="86400">`
@@ -573,7 +579,7 @@ The web browser will interpret this as a request for its device pixel ratio and 
 
 {{ PRODUCT }} will then use this information to optimize the requested image. In this case, it will double the resolution of the source image and reduce image quality by 65%. {{ PRODUCT }} will also apply any optimizations defined within the request's query string.
 
-### Request Headers for Client Hints {/*request-headers-for-client-hints*/}
+#### Request Headers for Client Hints {/*request-headers-for-client-hints*/}
 
 A client advertises device information and network conditions through request headers. The manner in which {{ PRODUCT }} will interpret this data is described below.
 
@@ -601,7 +607,9 @@ A client advertises device information and network conditions through request he
 	
     <Callout type="info">
 
-      {{ PRODUCT }} does not upscale images. If the requested optimization results in an image that exceeds the dimensions of the source image, then {{ PRODUCT }} will not resize it. However, it will still perform any other requested optimizations.
+      {{ PRODUCT }} does not upscale images. 
+	  
+	  [Learn more.](#upscaling-images)
       
     </Callout>
 
@@ -663,7 +671,9 @@ A client advertises device information and network conditions through request he
 	
     <Callout type="info">
 
-      {{ PRODUCT }} does not upscale images. If the requested optimization results in an image that exceeds the dimensions of the source image, then {{ PRODUCT }} will not resize it. However, it will still perform any other requested optimizations.
+      {{ PRODUCT }} does not upscale images. 
+	  
+	  [Learn more.](#upscaling-images)
       
     </Callout>
 
@@ -674,22 +684,26 @@ A client advertises device information and network conditions through request he
     -   **Request Headers:**
         
         `DPR: 2`
-        `Viewport-Width: 75vw`
+
+		`Viewport-Width: 75vw`
         
-    -   `<img>` **tag:**
+    -   **&lt;img> tag:**
         
         `<img src="img_bunny.jpg" alt="bunny hopping in a garden" width="380" height="456">`
         
     {{ PRODUCT }} will use this information to resize the image. Specifically, it will calculate the image's width by doubling the device's width and then reducing it by 75% to fit within the viewport's width. In order to maintain aspect ratio, it will apply the same transformations to the image's height. The dimensions for the resulting image are 570 x 684..
     
-    `0.75 \* (380 \* 2) = 570`
-    `0.75 \* (456 \* 2) = 684`
+    `0.75 * (380 * 2) = 570`
+
+    `0.75 * (456 * 2) = 684`
     
 -   **Width:** Resizes an image to fit within the width defined within an `<img>` or `<source>` tag.
 
     <Callout type="info">
 
-      {{ PRODUCT }} does not upscale images. If the requested optimization results in an image that exceeds the dimensions of the source image, then {{ PRODUCT }} will not resize it. However, it will still perform any other requested optimizations.
+      {{ PRODUCT }} does not upscale images. 
+	  
+	  [Learn more.](#upscaling-images)
       
     </Callout>    
 
@@ -729,7 +743,7 @@ Our CDN caches each unique optimized image. Our CDN builds the optimized image's
 
 -   For the purposes of caching an optimized image, our CDN translates the `auto` query string parameter to reflect the optimizations that will be applied to the image.
     
-    **Example:** This sample request contains the following query string:
+    **Example:** This example assumes that the request contains the following query string:
     
     `?auto=webp`
     
@@ -742,9 +756,10 @@ Our CDN caches each unique optimized image. Our CDN builds the optimized image's
     **Example:** A sample request for a 640 x 480 image contains the following headers:
     
     `DPR: 2`
+
     `Width: 320`
     
-    We will expand the width of the image to 640 pixels and cache it with the following query string:
+    These headers instruct {{ PRODUCT }} to expand the width of the image to 640 pixels and cache it with the following query string:
     
     `?width=640`
     
@@ -752,8 +767,9 @@ Our CDN caches each unique optimized image. Our CDN builds the optimized image's
     
     **Example:** {{ PRODUCT }} will generate the same cache key for both of the following requests:
     
-    https://cdn.example.com/image.jpg?width=640&blur=50    
-    https://cdn.example.com/image.jpg?blur=50&width=640
+    `https://cdn.example.com/image.jpg?width=640&blur=50`
+
+    `https://cdn.example.com/image.jpg?blur=50&width=640`
     
 -   As a result of the above optimizations and cache key normalization, the default cache key generated by {{ PRODUCT }} should provide optimal cache performance. 
     
@@ -761,24 +777,25 @@ Our CDN caches each unique optimized image. Our CDN builds the optimized image's
 
 The response from our CDN varies according to results for the request to optimize an image.
 
-|Result|HTTP Status Code|Description|
+|Response|HTTP Status Code|Description|
 |--- |--- |--- |
-|Optimized Image|200 OK|{{ PRODUCT }} optimized the requested image. The response will include the following header: <br />`X-EdgeIO-Status: OK`|
-|Partially Optimized Image|200 OK|{{ PRODUCT }} only performed some of the requested optimizations. It skipped one or more optimizations since it would have caused the image to be upscaled. The response will include the following headers: <br />`X-EdgeIO-Status: OK` <br />`X-EdgeIO-Warning: Images cannot be upscaled. Requested dimensions: <WIDTH> x <HEIGHT>`|
-|Source Image|200 OK|{{ PRODUCT }} was unable to optimize the requested image due to one of the following reasons: <ul><li>The optimized image exceeds our limits.</li><li>The request contains an unsupported query string parameter or value. Check the request URL and try again.</li></ul> The response will include the following headers:<br />`X-EdgeIO-Status: ERROR`<br />`X-EdgeIO-Error: Error Message`<br /><br />Check the `X-EdgeIO-Error` response header for additional information on why the request failed.|
+|Optimized Image|200 OK|{{ PRODUCT }} optimized the requested image. The response will include the following header: <br />`x-edgeio-status: OK`|
+|Partially Optimized Image|200 OK|{{ PRODUCT }} only performed some of the requested optimizations. It skipped one or more optimizations since it would have caused the image to be [upscaled](#upscaling-images). The response will include the following headers: <br />`x-edgeio-status: OK` <br />`x-edgeio-warning: Images cannot be upscaled. Requested dimensions: <WIDTH> x <HEIGHT>`|
+|Source Image|200 OK|{{ PRODUCT }} was unable to optimize the requested image because the optimized image exceeds our limits. Check the request URL and try again.</li></ul> The response will include the following headers:<br />`x-edgeio-status: ERROR`<br />`x-edgeio-error: Error Message`<br /><br />Check the `x-edgeio-error` response header for additional information on why the request failed.|
+|No Image|400 Bad Request|{{ PRODUCT }} was unable to optimize the requested image due to an unsupported query string parameter or value. Check the request URL and try again. The response will include the following headers:<br />`x-edgeio-status: ERROR`<br />`x-edgeio-error: Error Message`<br /><br />Check the `x-edgeio-error` response header for additional information on why the request failed.|
 |No Image|5xx|{{ PRODUCT }} was unable to communicate with your origin server and both the source and optimized image were not previously cached.|
 
 ## Bypassing {{ PRODUCT }} Image Optimization {/*bypassing-image-optimization*/}
 
 Prevent {{ PRODUCT }} from transforming an image by including the following header in the request:
 
-`X-EC-EdgeIO-Disable:1`
+`x-ec-edgeio-disable:1`
 
 This configuration allows our CDN to deliver the source image to the client.
 
 ## Troubleshooting {/*troubleshooting*/}
 
-Perform basic troubleshooting by examining basic properties for the source and transformed image. Include this information in the response by setting the `X-EC-EdgeIO-Debug` request header to `info`.
+Perform basic troubleshooting by examining basic properties for the source and transformed image. Include this information in the response by setting the `x-ec-edgeio-debug` request header to `info`.
 
 **Request header syntax:** `x-ec-edgeio-debug: info`
 
@@ -798,6 +815,10 @@ The keys defined within the `x-edgeio-info` response header are described below.
 |ofmt | File Format (Output). Indicates the output image's file format.|
 |oq | Quality (Output). Indicates the output image's file quality level. Valid values are from 1 to 100.|
 |ms | Milliseconds. Indicates the number of milliseconds it took to transform the image.|
+
+#### Upscaling Images {/*upscaling-images*/}
+
+{{ PRODUCT }} does not upscale images. If the requested optimization results in an image that exceeds the dimensions of the source image, then {{ PRODUCT }} will not resize it. However, it will still perform any other requested optimizations.
 
 ## Image Resizing Examples {/*image-resizing-examples*/}
 
@@ -821,7 +842,7 @@ Applying crop mode will proportionately crop the width from both sides of the im
 
 #### Cover
 
-Applying `cover` mode resizes the image's height to 500 pixels. However, the image's width will extend beyond the width parameter in order to maintain the source image's original aspect ratio.
+Applying `cover` mode resizes the image's height to 500 pixels. However, the image's width will extend beyond the `width` parameter in order to maintain the source image's original aspect ratio.
 
 **Query string:** `?width=500&height=500&fit=cover`
 
@@ -831,7 +852,7 @@ Applying `cover` mode resizes the image's height to 500 pixels. However, the ima
 
 #### Bounds
 
-Applying bounds mode resizes the image's height to 500 pixels. However, the image's width will fall short of the width parameter in order to maintain the source image's original aspect ratio while ensuring that the image fits within the specified region.
+Applying bounds mode resizes the image's height to 500 pixels. However, the image's width will fall short of the `width` parameter in order to maintain the source image's original aspect ratio while ensuring that the image fits within the specified region.
 
 **Query string:** `?width=500&height=500&fit=bounds`
 

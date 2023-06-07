@@ -2,7 +2,7 @@
 title: Image Optimization
 ---
 
-{{ PRODUCT }} Image Optimization dynamically transforms your images to tailor them to your site's:
+{{ PRODUCT }} can dynamically transforms your images to tailor them to your site's:
 
 -   Design. You can apply multiple transformations (e.g., resize, blur, crop, and rotate) to a single source image according to how it should be displayed within your site's design.
 -   Experience. For example, if your site has a paywall, you can effortlessly apply a blur effect to requests for images once a site visitor has met or exceeded their allotment of free access.
@@ -44,13 +44,13 @@ A client's request URL determines the set of transformations that will be applie
 
 Upon receiving a request for an optimized image, our CDN will check whether an image with the requested set of optimizations has been cached. If the optimized image has been cached, then it will be delivered immediately to the client. Otherwise, our CDN will apply the requested set of optimizations to the source image, deliver it to the client, and then cache both the source and optimized image. This workflow is illustrated below.
 
-![How does it work?](/v7/performance/image-optimization-hdiw.png)
+![How does it work?](/images/v7/performance/image-optimization-hdiw.png)
 
 ## Image Requirements{/*image-requirements*/}
 
 Restrictions vary according to whether {{ PRODUCT }} Image Optimization will process or generate an image.
 
-### Source Image Requirements {/*source-image-requirements*/}
+#### Source Image Requirements {/*source-image-requirements*/}
 
 Images that meet the following requirements are eligible for processing:
 
@@ -73,7 +73,7 @@ Images that meet the following requirements are eligible for processing:
   
 </Callout>
 
-### Optimized Image Limits {/*optimized-image-limits*/}
+#### Optimized Image Limits {/*optimized-image-limits*/}
 
 An optimized image must comply with the following limits:
 
@@ -102,12 +102,12 @@ An optimized image must comply with the following limits:
       
     </Callout>
 
-    How do I check my query string caching configuration?
+    **How do I check my query string caching configuration?**
     
     Check your query string caching configuration by reviewing your rules to check whether the:
 
-    -   [Cache Key Query String feature (cache_key_query_string)](/guides/performance/rules/features#cache-key-query-string) has been defined. It should not be set to `Exclude All` or include any image optimization query string parameter. 
-    -   [Rewrite Cache Key feature's (cache_key_rewrite)](/guides/performance/rules/features#rewrite-cache-key) destination includes image optimization query string parameter(s).
+    -   [Cache Key Query String feature (cache_key_query_string)](/guides/performance/rules/features#cache-key-query-string) has been defined. It should not be set to `Exclude All` or include [image optimization query string parameter(s)](#query-string-parameters). 
+    -   [Rewrite Cache Key feature (cache_key_rewrite)](/guides/performance/rules/features#rewrite-cache-key) has been defined. The destination for this feature should not include image optimization query string parameter(s).
     
 2.  Create or modify a rule that identifies the set of images that will be optimized.
 
@@ -115,13 +115,19 @@ An optimized image must comply with the following limits:
 	
       {{ PRODUCT }} removes the `Accept-Encoding` header from all requests that it processes. If you use this header to compress content, then it is important that you configure this rule to only apply to images that will be processed by {{ PRODUCT }}.
 	  
-	</Callout>
+    </Callout>
+
+    <Callout type="info">
+
+      Create a rule through either [Rules](/guides/v7/performance/rules) or a [CDN-as-code configuration](/guides/v7/performance/cdn_as_code).
     
+    </Callout>
+
     **Example:**
     
     You can create a rule that targets images through the [Extension match condition (extension)](/guides/performance/rules/conditions#extension).
     
-    ![Extension match condition](/public/v7/performance/image-optimization-extension-match-condition.png)
+    ![Extension match condition](/images/v7/performance/image-optimization-extension-match-condition.png)
     
     If your images do not have file extensions, then consider using the [Request Header match condition (request.header)](/guides/performance/rules/conditions#request-header) to target images through the [Content-Type header](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types#image_types).
     
@@ -146,6 +152,18 @@ Use the following query string parameters to define the set of optimizations tha
 -   [trim](#trim)
 -   [width](#width)
 -   [wurfl](#wurfl)
+
+#### Order of Operations {/*order-of-operations*/}
+
+{{ PRODUCT }} applies the above transformations in the following order:
+
+`Trim > Rotate > Resize (Width, Height, DPR, and Fit) > Background Color > Canvas > Pad > Blur > Image Generation (Quality, Strip, and Format)`
+
+<Callout type="info">
+
+  The above order of operations is only provided to help you gain a deeper understanding of how optimizations interact with each other.
+  
+</Callout>
 
 ### Auto {/*auto*/}
 
@@ -177,14 +195,14 @@ Use a comma to separate multiple values.
 
 ### Bg-color {/*bg-color*/}
 
-Sets the background color (hex color code) for transparent content and padding added by [pad](#pad) and [canvas](#canvas).
+Sets the background color for transparent content and padding added by [pad](#pad) and [canvas](#canvas).
 
 **Syntax:** 
 
 -   `?bg-color=<COLOR HEX CODE>`
 -   `?bg-color=<RED>,<GREEN>,<BLUE>[,<ALPHA CHANNEL>]`
 
-    <ALPHA CHANNEL> determines the opacity for the background color. Specify a decimal value from 0.0 (transparent) to 1.0 (opaque).
+    `<ALPHA CHANNEL>` determines the opacity for the background color. Specify a decimal value from 0.0 (transparent) to 1.0 (opaque).
 
 **Default value:** The default background color is white with an alpha channel of 1.0.
 
@@ -193,7 +211,7 @@ Sets the background color (hex color code) for transparent content and padding a
 -   `?bg-color=4C4C4C`
 -   `?bg-color=76,76,76`
 
-![](https://edgeio.whitecdn.com/demo.jpg?width=360&pad=50&bg-color=4C4C4C?width=360&pad=50&bg-color=4C4C4C)
+![](https://edgeio.whitecdn.com/demo.jpg?width=360&pad=50&bg-color=4C4C4C)
 
 [Try now.](https://edgeio.whitecdn.com/demo.jpg?width=360&pad=50&bg-color=4C4C4C)
 
@@ -201,11 +219,11 @@ Sets the background color (hex color code) for transparent content and padding a
 
 Determines the intensity at which edges within an image will be smoothed. This transformation reduces the level of detail within the image. Valid values are from 1 to 100.
 
-**Example:** `?blur=50`
+**Example:** `?blur=20`
 
-![](https://edgeio.whitecdn.com/demo.jpg?width=460&fit=bounds&blur=10?width=460&fit=bounds&blur=10)
+![](https://edgeio.whitecdn.com/demo.jpg?width=460&fit=bounds&blur=20)
 
-[Try now.](https://edgeio.whitecdn.com/demo.jpg?blur=50)
+[Try now.](https://edgeio.whitecdn.com/demo.jpg?blur=20)
 
 ### Canvas {/*canvas*/}
 
@@ -215,7 +233,7 @@ Determines the size of the image's canvas and the position of the optimized imag
 
 **Key information:**
 
--   You must specify <CANVAS WIDTH> and <CANVAS HEIGHT> when passing this parameter. However, you may omit offset position information.
+-   You must specify `<CANVAS WIDTH>` and `<CANVAS HEIGHT>` when passing this parameter. However, you may omit offset position information.
 -   Use this parameter to expand or shrink the optimized image's canvas.
     
     -   Expand: Specify a dimension that is larger than the source image to pad it. Padding is distributed evenly on opposite sides of the image.
@@ -307,7 +325,7 @@ Determines the method through which the image will be resized to the dimensions 
 
 -   **bounds:** Resizes the image to fit within the specified region.
 
-    <Callout type="note">
+    <Callout type="info">
 
       If the specified region's aspect ratio doesn't match the source image, then the optimized image will fall short of one of the specified dimensions.
       
@@ -327,7 +345,7 @@ Encodes the image to the specified format. Valid values are:
 
 `jpg | jpeg | pjpg | pjpeg | png | ppng | webp | tiff | tif`
 
-<Callout type="note">
+<Callout type="info">
 
   Use `pjpg`, `pjpeg`, or `ppng` to encode a progressive JPEG or PNG image.
   
@@ -341,13 +359,13 @@ Encodes the image to the specified format. Valid values are:
 
 Sets the height, in pixels, for the optimized image. Valid values are from 1 to 4096.
 
-<Callout type="note">
+<Callout type="info">
 
   Maintain the source image's aspect ratio when resizing an image by specifying either the [width](#width) or height parameter. Specifying both parameters may cause the optimized image to differ in aspect ratio.
   
 </Callout>
 
-<Callout type="note">
+<Callout type="info">
 
   {{ PRODUCT }} does not upscale images. If the requested optimization results in an image that exceeds the dimensions of the source image, then {{ PRODUCT }} will not resize it. However, it will still perform any other requested optimizations.
   
@@ -355,7 +373,7 @@ Sets the height, in pixels, for the optimized image. Valid values are from 1 to 
 
 **Example:** `?height=313`
 
-![](https://edgeio.whitecdn.com/demo.jpg?height=313?height=313)
+![](https://edgeio.whitecdn.com/demo.jpg?height=313)
 
 [Try now](https://edgeio.whitecdn.com/demo.jpg?height=313).
 
@@ -388,7 +406,7 @@ Alternatively, pass the following query string to specify the same padding in pi
 
 `?width=420&pad=14,21`
 
-![](https://edgeio.whitecdn.com/demo.jpg?width=420&pad=14,21?width=420&pad=14,21)
+![](https://edgeio.whitecdn.com/demo.jpg?width=420&pad=14,21)
 
 [Try now.](https://edgeio.whitecdn.com/demo.jpg?width=420&pad=14,21)
 
@@ -420,7 +438,7 @@ Rotates the image clockwise by the specified degrees. Valid values are from 1 to
 
 **Example:** `?rotate=90`
 
-![](https://edgeio.whitecdn.com/demo.jpg?width=320&fit=bounds&rotate=90?width=320&fit=bounds&rotate=90)
+![](https://edgeio.whitecdn.com/demo.jpg?width=320&fit=bounds&rotate=90)
 
 [Try now](https://edgeio.whitecdn.com/demo.jpg?rotate=90).
 
@@ -462,7 +480,7 @@ Alternatively, pass the following query string to specify the same trim effect i
 
 `?width=460&trim=28,41`
 
-![](https://edgeio.whitecdn.com/demo.jpg?width=460&trim=28,41?width=460&trim=28,41)
+![](https://edgeio.whitecdn.com/demo.jpg?width=460&trim=28,41)
 
 [Try now.](https://edgeio.whitecdn.com/demo.jpg?width=460&trim=28,41)
 
@@ -490,7 +508,7 @@ Sets the width, in pixels, for the optimized image. Valid values are from 1 to 4
 
 **Example:** `?width=460`
 
-![](https://edgeio.whitecdn.com/demo.jpg?width=460?width=460)
+![](https://edgeio.whitecdn.com/demo.jpg?width=460)
 
 [Try now.](https://edgeio.whitecdn.com/demo.jpg?width=460)
 
@@ -507,18 +525,6 @@ Set to `1` to automatically define a default width based off what your mobile de
 **Example:** `?wurfl=1`
 
 [Try now.](https://edgeio.whitecdn.com/demo.jpg?wurfl=1)
-
-### Order of Operations {/*order-of-operations*/}
-
-{{ PRODUCT }} applies the above transformations in the following order:
-
-`Trim > Rotate > Resize (Width, Height, DPR, and Fit) > Background Color > Canvas > Pad > Blur > Image Generation (Quality, Strip, and Format)`
-
-<Callout type="info">
-
-  The above order of operations is only provided to help you gain a deeper understanding of how optimizations interact with each other.
-  
-</Callout>
 
 ## Client-Driven Image Optimizations (Client Hints) {/*client-driven-image-optimizations-client-hints*/}
 
@@ -541,7 +547,7 @@ Perform the following steps to set up client-driven image optimizations:
     `Accept-CH: DPR, Viewport-Width, Width, ECT, Downlink`
     `Accept-CH-Lifetime: 86400`
     
-    **Meta tag example:**
+    `<meta>` **tag example:**
     
     `<meta http-equiv="Accept-CH" content="DPR, Viewport-Width, Width, ECT, Downlink">`
     `<meta http-equiv="Accept-CH-Lifetime" content="86400">`
@@ -670,7 +676,7 @@ A client advertises device information and network conditions through request he
         `DPR: 2`
         `Viewport-Width: 75vw`
         
-    -   **<img> tag:**
+    -   `<img>` **tag:**
         
         `<img src="img_bunny.jpg" alt="bunny hopping in a garden" width="380" height="456">`
         
@@ -799,46 +805,46 @@ We will apply different fit modes to a source image (3520 x 2347 pixels) that ha
 
 `?width=500&height=500`
 
-![](https://edgeio.whitecdn.com/demo.jpg?width=500&height=500?width=500&height=500)
+![](https://edgeio.whitecdn.com/demo.jpg?width=500&height=500)
 
 [Try now.](https://edgeio.whitecdn.com/demo.jpg?width=500&height=500)
 
-###### Crop
+#### Crop
 
 Applying crop mode will proportionately crop the width from both sides of the image. This occurs because the source image's aspect ratio is different than the specified region.
 
 **Query string:** `?width=500&height=500&fit=crop`
 
-![](https://edgeio.whitecdn.com/demo.jpg?width=500&height=500&fit=crop?width=500&height=500&fit=crop)
+![](https://edgeio.whitecdn.com/demo.jpg?width=500&height=500&fit=crop)
 
 [Try now.](https://edgeio.whitecdn.com/demo.jpg?width=500&height=500&fit=crop)
 
-###### Cover
+#### Cover
 
 Applying `cover` mode resizes the image's height to 500 pixels. However, the image's width will extend beyond the width parameter in order to maintain the source image's original aspect ratio.
 
 **Query string:** `?width=500&height=500&fit=cover`
 
-![](https://edgeio.whitecdn.com/demo.jpg?width=500&height=500&fit=cover?width=500&height=500&fit=cover)
+![](https://edgeio.whitecdn.com/demo.jpg?width=500&height=500&fit=cover)
 
 [Try now.](https://edgeio.whitecdn.com/demo.jpg?width=500&height=500&fit=cover)
 
-###### Bounds
+#### Bounds
 
 Applying bounds mode resizes the image's height to 500 pixels. However, the image's width will fall short of the width parameter in order to maintain the source image's original aspect ratio while ensuring that the image fits within the specified region.
 
 **Query string:** `?width=500&height=500&fit=bounds`
 
-![](https://edgeio.whitecdn.com/demo.jpg?width=500&height=500&fit=bounds?width=500&height=500&fit=bounds)
+![](https://edgeio.whitecdn.com/demo.jpg?width=500&height=500&fit=bounds)
 
 [Try now.](https://edgeio.whitecdn.com/demo.jpg?width=500&height=500&fit=bounds)
 
-###### Smart
+#### Smart
 
 Applying smart mode centers the image on its subject matter and then proportionally crops the width from both sides of the image. This occurs because the source image's aspect ratio is different than the specified region.
 
 **Query string:** `?width=500&height=500&fit=smart`
 
-![](https://edgeio.whitecdn.com/demo.jpg?width=500&height=500&fit=smart?width=500&height=500&fit=smart)
+![](https://edgeio.whitecdn.com/demo.jpg?width=500&height=500&fit=smart)
 
 [Try now.](https://edgeio.whitecdn.com/demo.jpg?width=500&height=500&fit=smart)

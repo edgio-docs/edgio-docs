@@ -145,8 +145,8 @@ const router = new Router()
       const hasTrailingSlash = req.path.endsWith('/');
       const hasFileExtension = lastPathSegment.includes('.');
 
-      // set path to index.html if it doesn't end with a file extension or a trailing slash
-      if (hasTrailingSlash || !hasFileExtension) {
+      // set path to index.html if it doesn't end with a file extension
+      if (!hasFileExtension) {
         path = `/${targetVersion}/:path*/index.html`;
       }
 

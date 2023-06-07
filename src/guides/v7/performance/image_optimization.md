@@ -90,7 +90,7 @@ An optimized image must comply with the following limits:
 -   One or more transformation(s) have been requested through either:
     
     -   [Query string parameters](#query-string-parameters).
-    -   [Request headers](#client-driven-image-optimizations-client-hints)
+    -   [Client hints (request headers)](#client-driven-image-optimizations-client-hints)
 
 **To enable image optimization**
 
@@ -106,14 +106,14 @@ An optimized image must comply with the following limits:
     
     Check your query string caching configuration by reviewing your rules to check whether the:
 
-    -   [Cache Key Query String feature (cache_key_query_string)](/guides/performance/rules/features#cache-key-query-string) has been defined. It should not be set to `Exclude All` or include [image optimization query string parameter(s)](#query-string-parameters). 
+    -   [Cache Key Query String feature (cache_key_query_string)](/guides/performance/rules/features#cache-key-query-string) has been defined. It should not include [image optimization query string parameter(s)](#query-string-parameters) or be set to `Exclude All`. 
     -   [Rewrite Cache Key feature (cache_key_rewrite)](/guides/performance/rules/features#rewrite-cache-key) has been defined. The destination for this feature should not include image optimization query string parameter(s).
     
-2.  Create or modify a rule that identifies the set of images that will be optimized.
+2.  Create or modify a rule that enables the [Optimize Images feature (optimize_images)](/guides/performance/rules/features#optimize-images) for the desired images.
 
     <Callout type="info">
 	
-      {{ PRODUCT }} removes the `Accept-Encoding` header from all requests that it processes. If you use this header to compress content, then it is important that you configure this rule to only apply to images that will be processed by {{ PRODUCT }}.
+      {{ PRODUCT }} removes the `Accept-Encoding` header from all requests that it processes. If you use this header to compress content, then it is critical that you configure this rule to only apply to images that will be processed by {{ PRODUCT }}.
 	  
     </Callout>
 
@@ -128,8 +128,12 @@ An optimized image must comply with the following limits:
     You can create a rule that targets images through the [Extension match condition (extension)](/guides/performance/rules/conditions#extension).
     
     ![Extension match condition](/images/v7/performance/image-optimization-extension-match-condition.png)
-    
-    If your images do not have file extensions, then consider using the [Request Header match condition (request.header)](/guides/performance/rules/conditions#request-header) to target images through the [Content-Type header](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types#image_types).
+	
+    <Callout type="tip">
+
+      If your images do not have file extensions, then consider using the [Request Header match condition (request.header)](/guides/performance/rules/conditions#request-header) to target images through the [Content-Type header](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types#image_types).
+	  
+	</Callout>
     
 3.  Deploy your changes.
 
@@ -386,7 +390,7 @@ Sets the height, in pixels, for the optimized image. Valid values are from 1 to 
 Adds pixels between the edge of the image and its outer border. Specify `pad` using either of the following units:
 
 -   Pixels
--   Percentage of an optimized image's dimension. Specify this percentage as a decimal value (e.g., 0.). For example, setting a value of 0.1 for the top position adds a 10% pad.
+-   Percentage of an optimized image's dimension. Specify this percentage as a decimal value (e.g., `0.2`). For example, setting a value of 0.1 for the top position adds a 10% pad.
 
 **Syntax:** 
 
@@ -402,7 +406,7 @@ Pass the following query string to resize a 3520 x 2347 image to 420 x 280 and t
 
 `?width=420&pad=0.05`
 
-Our service will disproportionately pad 14 pixels (280 x 0.05) will be added to the top and bottom of the image, while 21 pixels (420 x 0.05) will be added to the left and right of the image. the image since its width is larger than its height.
+Our service will disproportionately pad the image since its width is larger than its height. 14 pixels (280 x 0.05) will be added to the top and bottom of the image, while 21 pixels (420 x 0.05) will be added to the left and right of the image. 
 
 [Try now.](https://edgeio.whitecdn.com/demo.jpg?width=420&pad=0.05)
 
@@ -459,7 +463,7 @@ Set to `1` to remove metadata (i.e., EXIF, IPTC-IIM, and XMP) from the image.
 Removes the image's outer pixels. Specify `trim` using either of the following units:
 
 -   Pixels
--   Percentage of a source image's dimension. Specify this percentage as a decimal value (e.g., 0.). For example, setting a value of 0.1 for the top position removes 10% from the top of the optimized image.
+-   Percentage of a source image's dimension. Specify this percentage as a decimal value (e.g., `0.2`). For example, setting a value of 0.1 for the top position removes 10% from the top of the optimized image.
     
 **Syntax:** 
 
@@ -551,11 +555,13 @@ Perform the following steps to set up client-driven image optimizations:
     **Response header example:**
 
     `Accept-CH: DPR, Viewport-Width, Width, ECT, Downlink`
+
     `Accept-CH-Lifetime: 86400`
     
     **&lt;meta> tag example:**
     
     `<meta http-equiv="Accept-CH" content="DPR, Viewport-Width, Width, ECT, Downlink">`
+
     `<meta http-equiv="Accept-CH-Lifetime" content="86400">`
     
 2.  Verify that your client advertises the desired data.
@@ -575,6 +581,7 @@ In this scenario, a web browser receives a response with the following header:
 The web browser will interpret this as a request for its device pixel ratio and connection type. As a result, it should submit a request that contains `DPR` and `ECT` headers. Sample request headers are shown below.
 
 `DPR: 2`
+
 `ECT: 2g`
 
 {{ PRODUCT }} will then use this information to optimize the requested image. In this case, it will double the resolution of the source image and reduce image quality by 65%. {{ PRODUCT }} will also apply any optimizations defined within the request's query string.

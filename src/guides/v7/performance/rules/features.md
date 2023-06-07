@@ -1968,11 +1968,11 @@ new Router()
 
 #### Optimize Images {/*optimize-images*/}
 
-Determines whether [Edge Image Optimizer](/guides/performance/edge_image_optimizer) will be allowed to process or generate an image for eligible requests. 
+Determines whether {{ PRODUCT }} will be allowed to [process or generate an image](/guides/performance/image_optimization) for eligible requests. 
 
 <Callout type="info">
 
-  Upon enabling this feature on the desired set of requests, Edge Image Optimizer will look for client hints and check the query string to determine the set of optimizations that will be applied to an image. 
+  Upon enabling this feature on the desired set of requests, {{ PRODUCT }} will look for client hints and check the query string to determine the set of optimizations that will be applied to an image. 
 
 </Callout>
 

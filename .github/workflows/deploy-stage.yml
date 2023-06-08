@@ -32,7 +32,14 @@ jobs:
             ${{ runner.os }}-
       - run: yarn --frozen-lockfile
       - name: Deploy to docs.edg.io (stage)
-        run: yarn edgio:deploy --branch=$BRANCH_NAME --token=${{secrets.layer0_prod_deploy_token}} --environment=default
+        id: deploy
+        run: |
+          DEPLOY=$(yarn edgio:deploy --branch=$BRANCH_NAME --token=${{secrets.layer0_prod_deploy_token}} --environment=default 2>&1) || true
+          echo "$DEPLOY"
+
+          # Save the result of the command to the output variable
+          DEPLOY_BLOCK=$(echo "$DEPLOY" | awk '/\*\*\*\*\* /,/Done/{if (!/Done/) { print }}')
+          echo "DEPLOY_BLOCK=$DEPLOY_BLOCK" >> $GITHUB_OUTPUT
         env:
           GH_API_TOKEN: ${{ secrets.GH_API_TOKEN }}
       - uses: jwalton/gh-find-current-pr@v1
@@ -43,9 +50,7 @@ jobs:
           number: ${{ steps.finder.outputs.pr }}
           header: preview
           message: |
-            🏛  Permalink:
-
-            https://edgio-community-docs-${{env.BRANCH_NAME}}.alt.layer0-docs.layer0-perma.link/
+            ${{ steps.deploy.outputs.DEPLOY_BLOCK }}
       - name: Validate Guide Example Links
         shell: bash
         run: node ./scripts/validateExampleLinks.js

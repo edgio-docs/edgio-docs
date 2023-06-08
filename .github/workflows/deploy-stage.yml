@@ -41,7 +41,7 @@ jobs:
           DEPLOY_BLOCK=$(echo "$DEPLOY" | awk -F '  ' '/^\* /{ gsub(/^\* |\*$/, ""); print }')
 
           echo "$DEPLOY_BLOCK"
-          echo "DEPLOY_BLOCK=$DEPLOY_BLOCK" >> $GITHUB_OUTPUT
+          echo DEPLOY_BLOCK=$DEPLOY_BLOCK >> $GITHUB_OUTPUT
         env:
           GH_API_TOKEN: ${{ secrets.GH_API_TOKEN }}
       - uses: jwalton/gh-find-current-pr@v1

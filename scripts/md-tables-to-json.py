@@ -27,10 +27,10 @@ def markdown_table_to_json(md_table):
     return json.dumps(rows)
 
 # Define the source folder path
-source_folder = '../src/templates'
+source_folder = 'src/templates'
 
 # Define the output folder path
-output_folder = '../artifacts/json'
+output_folder = 'artifacts/json'
 os.makedirs(output_folder, exist_ok=True)
 
 # Iterate over files in the source folder
@@ -52,4 +52,3 @@ for filename in os.listdir(source_folder):
             f.write(json_output)
 
         print("Output JSON file created:", output_file)
-

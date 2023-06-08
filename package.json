@@ -20,7 +20,8 @@
     "start": "next start",
     "postinstall": "is-ci || (husky install .husky)",
     "check-all": "npm-run-all prettier lint:fix tsc",
-    "clean": "rimraf node_modules && yarn"
+    "clean": "rimraf node_modules && yarn",
+    "update-template-tables": "python scripts/md-tables-to-json.py"
   },
   "name": "docs",
   "version": "2.0.0",
@@ -152,9 +153,8 @@
       "eslint --fix --cache --cache-location .next/cache/eslint/",
       "yarn prettier"
     ],
-    "_src/**/*.md": [
-      "yarn fix-callouts",
-      "yarn fix-headings"
+    "src/templates/table_*.md": [
+      "yarn update-template-tables"
     ]
   }
 }

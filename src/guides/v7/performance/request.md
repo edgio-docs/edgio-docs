@@ -42,7 +42,7 @@ Every HTTP request must include instructions on how the request should be handle
 
 **Key information:**
 
--   By default, only `GET` requests are eligible for caching. Use the Enable Caching for Methods feature to allow caching for `POST` and/or `PUT` requests. Although you may enable caching for `POST` and `PUT` requests, purge is only supported for `GET` requests.
+-   By default, only `GET` requests are eligible for caching. Use the [Enable Caching for Methods feature (enable_caching_for_methods)](/guides/performance/rules/features#enable-caching-for-methods) to allow caching for `POST` and/or `PUT` requests. Although you may enable caching for `POST` and `PUT` requests, purge is only supported for `GET` requests.
 -   A request body should not be included when submitting a `GET` request.
 -   The file size limit for the response provided by the CDN is determined by the client's operating system. 
 -   Your CDN setup, including security measures, may place further restrictions on when content will be cached or proxied. 

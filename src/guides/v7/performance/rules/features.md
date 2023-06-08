@@ -1970,18 +1970,30 @@ new Router()
 
 Determines whether {{ PRODUCT }} will be allowed to [process or generate an image](/guides/performance/image_optimization) for eligible requests. 
 
-**Key information:**
+<Callout type="important">
 
--   This feature should only be enabled for images that will be transformed by {{ PRODUCT }}. 
--   {{ PRODUCT }} removes the `Accept-Encoding` header from all requests that it processes. If you use this header to compress content, then it is critical that you restrict all rules that enable this feature to only apply to images that will be processed by {{ PRODUCT }}.
--   Upon enabling this feature on the desired set of requests, {{ PRODUCT }} will look for client hints and check the query string to determine the set of optimizations that will be applied to an image. 
+  This feature should only be enabled for images that will be transformed by {{ PRODUCT }}. This is critical if you use the `Accept-Encoding` header to compress content, since {{ PRODUCT }} removes this header from all requests that it processes.
+
+</Callout>
+
+<Callout type="info">
+
+  Upon enabling this feature on the desired set of requests, {{ PRODUCT }} will look for client hints and check the query string to determine the set of optimizations that will be applied to an image. 
+
+</Callout>
 
 <edgejs>
-**Key information:**
+<Callout type="important">
 
--   This feature should only be enabled for images that will be transformed by {{ PRODUCT }}. 
--   {{ PRODUCT }} removes the `Accept-Encoding` header from all requests that it processes. If you use this header to compress content, then it is critical that you restrict all rules that enable this feature to only apply to images that will be processed by {{ PRODUCT }}.
--   Upon enabling this feature on the desired set of requests, {{ PRODUCT }} will look for client hints and check the query string to determine the set of optimizations that will be applied to an image. 
+  This feature should only be enabled for images that will be transformed by {{ PRODUCT }}. This is critical if you use the `Accept-Encoding` header to compress content, since {{ PRODUCT }} removes this header from all requests that it processes.
+
+</Callout>
+
+<Callout type="info">
+
+  Upon enabling this feature on the desired set of requests, {{ PRODUCT }} will look for client hints and check the query string to determine the set of optimizations that will be applied to an image. 
+
+</Callout>
 
 **Example:**
 

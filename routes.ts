@@ -153,15 +153,28 @@ const router = new Router()
       await proxy('api', {
         path,
         transformResponse: (res) => {
-          // due to relative asset paths in the response, if the path doesn't end with a trailing
+          // due to relative paths in the response, if the path doesn't end with a trailing
           // slash (eg. /api/core), then assets will be requested from the wrong path (eg. /api/assets/...)
-          // so we need to rewrite the asset paths to include the last path segment
+          // so we need to rewrite the paths to include the last path segment
           if (!hasTrailingSlash && !hasFileExtension) {
             const $ = load(res.body ?? '');
-            res.body = $.html().replace(
-              /assets\//g,
-              `${lastPathSegment}/assets/`
-            );
+
+            // prepend ${lastPathSegment} to all elements with an href or src attribute
+            $('*[href], *[src]').each((i, el) => {
+              const $el = $(el);
+              const href = $el.attr('href');
+              const src = $el.attr('src');
+
+              if (href) {
+                $el.attr('href', `${lastPathSegment}/${href}`);
+              }
+
+              if (src) {
+                $el.attr('src', `${lastPathSegment}/${src}`);
+              }
+            });
+
+            res.body = $.html();
           }
         },
       });

@@ -1,6 +1,6 @@
 |Field|Description|
 |---|--- |
-|ASN <a id="access-logs-asn" />|Indicates the autonomous system number (ASN) for the autonomous system (AS) from which the request originated.|
+|ASN_FOO <a id="access-logs-asn" />|Indicates the autonomous system number (ASN) for the autonomous system (AS) from which the request originated.|
 |Bytes In <a id="access-logs-bytes-in" />|Indicates the sum of the number of bytes read from both the requesting client and the origin server. Returns `0` for blocked requests.|
 |Bytes Out <a id="access-logs-bytes-out" />|Indicates the number of bytes in the response sent from the edge server to the client. Returns `0` for blocked requests.|
 |Bytes Out without Header <a id="access-logs-bytes-out-without-header" />|Indicates the number of bytes in the payload sent from the edge server to the client. Returns `0` for blocked requests.|

@@ -85,7 +85,7 @@ Add Core Web Vitals tracking by adding the following code to each page in your a
 
 ### NPM or Yarn {/* npm-or-yarn */}
 
-Install the Core Web Vitals library by running a npm or yarn command:
+Install the Core Web Vitals library by running the following npm or yarn command:
 
 <SnippetGroup>
 

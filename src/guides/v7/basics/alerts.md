@@ -17,24 +17,24 @@ You may create, modify, delete, disable, and re-enable alert configurations.
 
 1. Navigate to your property's **Settings** page and find the **Alerts** section.
 
-   ![Property Settings page](/images/v7/basics/alerts-nav.png?width=450)
+   ![Property Settings page](/images/v7/basics/alerts-nav.png?width=550)
 
 2. Click **Create new Alert.**
 
-   ![Create Alert](/images/v7/basics/create-alert.png?width=450)
+   ![Create Alert](/images/v7/basics/create-alert.png?width=550)
 3. Define the conditions under which alert notifications will be delivered.
 4. Click **Create Alert** to save your configuration.
 
    The **Alerts** section should now look similar to this:
    
-   ![Alerts](/images/v7/basics/alerts.png?width=450)
+   ![Alerts](/images/v7/basics/alerts.png?width=550)
 
 **To modify an alert**
 
 1. Navigate to your property's **Settings** page and find the **Alerts** section.
 2. Click on the desired alert. 
 
-   ![Modify alert](/images/v7/basics/modify-alert.png?width=450)
+   ![Modify alert](/images/v7/basics/modify-alert.png?width=550)
    
 3. Make the desired changes.
 4. Click **Save Changes.**
@@ -44,7 +44,7 @@ You may create, modify, delete, disable, and re-enable alert configurations.
 1. Navigate to your property's **Settings** page and find the **Alerts** section.
 2. Click on the <GoKebabVertical className="inline-icon"/> icon under the **ACTIONS** column.
 
-   ![Disable an alert](/images/v7/basics/disable-alert.png?width=450)
+   ![Disable an alert](/images/v7/basics/disable-alert.png?width=550)
    
 3. Click on **Disable**.
 
@@ -54,13 +54,13 @@ You may create, modify, delete, disable, and re-enable alert configurations.
 2. Click on the <GoKebabVertical className="inline-icon"/> icon under the **ACTIONS** column.
 3. Click on **Enable.**
 
-![Enable a disabled alert](/images/v7/basics/enable-alert.png?width=450)
+![Enable a disabled alert](/images/v7/basics/enable-alert.png?width=550)
 
 **To delete an alert**
 
 1. Navigate to your property's **Settings** page and find the **Alerts** section.
 2. Click on the <GoKebabVertical className="inline-icon"/> icon under the **ACTIONS** column.
 
-   ![Delete an alert](/images/v7/basics/delete-alert.png?width=450)
+   ![Delete an alert](/images/v7/basics/delete-alert.png?width=550)
    
 3. Click on **Delete.**

@@ -38,7 +38,7 @@ jobs:
           echo "$DEPLOY"
 
           # Save the result of the command to the output variable
-          DEPLOY_BLOCK=$(echo "$DEPLOY" | awk -F '  ' '/^\* /{ gsub(/^\* |\*$/, ""); print }')
+          DEPLOY_BLOCK=$(echo "$DEPLOY" | awk '/\*\*\*\*\* /,/Done/')
 
           echo "$DEPLOY_BLOCK"
           echo DEPLOY_BLOCK=$DEPLOY_BLOCK >> $GITHUB_OUTPUT

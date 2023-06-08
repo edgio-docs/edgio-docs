@@ -1,14 +1,8 @@
 ---
-title: Core Web Vitals
+title: Real User Monitoring (RUM)
 ---
 
-This guide shows you how to track your website's [Core Web Vitals](https://web.dev/vitals/) on {{ PRODUCT_NAME }} in real time using real user monitoring (RUM).
-
-<Callout type="info">
-
-{{ PRODUCT }} tracks Core Web Vitals for Chromium-based browsers and Firefox.
-
-</Callout>
+Our real user monitoring (RUM) library allows real-time tracking of your website's [Core Web Vitals](https://web.dev/vitals/) for Chromium-based browsers and Firefox.
 
 <Video src="https://player.vimeo.com/video/691615391" />
 
@@ -91,7 +85,7 @@ Add Core Web Vitals tracking by adding the following code to each page in your a
 
 ### NPM or Yarn {/* npm-or-yarn */}
 
-Install the Core Web Vitals library using npm or yarn by running the following command:
+Install the Core Web Vitals library by running a npm or yarn command:
 
 <SnippetGroup>
 

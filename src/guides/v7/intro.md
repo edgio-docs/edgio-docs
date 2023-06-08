@@ -2,6 +2,8 @@
 title: {{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} Version 7
 ---
 
+Learn about the benefits of upgrading to {{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} version 7 by reviewing our [Benefits For Layer0 Customers: Edgio Applications v7 article](https://edg.io/resources/blog/benefits-for-layer0-customers-edgio-applications-v7/).
+
 {{ ROUTEHELPER.md }}
 
 {{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} version 7 introduces:

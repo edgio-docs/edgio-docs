@@ -21,7 +21,7 @@
     "postinstall": "is-ci || (husky install .husky)",
     "check-all": "npm-run-all prettier lint:fix tsc",
     "clean": "rimraf node_modules && yarn",
-    "update-template-tables": "python scripts/md-tables-to-json.py"
+    "update-template-tables": "python3 scripts/md-tables-to-json.py"
   },
   "name": "docs",
   "version": "2.0.0",

@@ -138,7 +138,7 @@ prefetch('/api/products/1.json', 'fetch', {
 });
 ```
 
-All prefetch function options can be found in its API Documentation [here](/docs/api/prefetch/modules/_window_prefetch_.html#prefetchconfiguration).
+All prefetch function options can be found in its API Documentation [here](/docs/api/prefetch/types/window_prefetch.PrefetchConfiguration.html).
 
 ## React {/* react */}
 

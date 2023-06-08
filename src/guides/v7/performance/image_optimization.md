@@ -15,7 +15,7 @@ title: Image Optimization
 Optimize images through the following steps:
 
 1.  Analyze your site to identify the images that require optimization.
-2.  [Enable Image Optimization](#enabling-image-optimization) for all of the images identified in the previous step.
+2.  [Enable the Optimize Images feature (optimize_images)](#enabling-image-optimization) for all of the images identified in the previous step.
 3.  Define the set of optimizations that will be applied to your images by:
     
     -   Including [query string parameters](#query-string-parameters) within the request URL.
@@ -86,7 +86,7 @@ An optimized image must comply with the following limits:
 
 {{ PRODUCT }} transforms images when the following conditions are met:
 
--   Image optimization has been enabled on the request through a rule.
+-   The Optimize Images feature (optimize_images) has been enabled on the request through a rule.
 -   One or more transformation(s) have been requested through either:
     
     -   [Query string parameters](#query-string-parameters).

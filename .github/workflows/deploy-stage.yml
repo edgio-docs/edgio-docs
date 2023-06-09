@@ -85,7 +85,6 @@ jobs:
           header: preview
           message: |
             ##### Deployment: ${{ steps.deploy.outputs.status }}
-            - Build: ${{ steps.deploy.outputs.buildlink }}
             - Permalink: ${{ steps.deploy.outputs.permalink }}
             - Edge: ${{ steps.deploy.outputs.edge }}
       - name: Validate Guide Example Links

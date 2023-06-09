@@ -37,11 +37,41 @@ jobs:
           DEPLOY=$(yarn edgio:deploy --branch=$BRANCH_NAME --token=${{secrets.layer0_prod_deploy_token}} --environment=default 2>&1) || true
           echo "$DEPLOY"
 
-          # Save the result of the command to the output variable
-          DEPLOY_BLOCK=$(echo "$DEPLOY" | awk '/\*\*\*\*\* /,/Done/')
+          # Get the build link from the output of the command
+          echo "$DEPLOY" |
+            sed -n 's/.*\(https:\/\/\(app\.layer0\.co\|edgio\.app\)\).*/\1/p' |
+            {
+              read buildlink || buildlink=""
+              if [[ -n $buildlink ]]; then
+                echo "buildlink=$buildlink" >> $GITHUB_OUTPUT
+              else
+                echo "buildlink=" >> $GITHUB_OUTPUT
+              fi
+            }
 
-          echo "$DEPLOY_BLOCK"
-          echo DEPLOY_BLOCK=$DEPLOY_BLOCK >> $GITHUB_OUTPUT
+          # Get the permalink link from the output of the command
+          echo "$DEPLOY" |
+            sed -n 's/.*\(https.*-perma\.link\).*/\1/p' |
+            {
+              read permalink || permalink=""
+              if [[ -n $permalink ]]; then
+                echo "permalink=$permalink" >> $GITHUB_OUTPUT
+              else
+                echo "permalink=" >> $GITHUB_OUTPUT
+              fi
+            }
+            
+          # Get the edge link from the output of the command
+          echo "$DEPLOY" |
+            sed -n 's/.*\(https.*\(-limelight\|\.edgio\)\.link\).*/\1/p' |
+            {
+              read edge || edge=""
+              if [[ -n $edge ]]; then
+                echo "edge=$edge" >> $GITHUB_OUTPUT
+              else
+                echo "edge=" >> $GITHUB_OUTPUT
+              fi
+            }
         env:
           GH_API_TOKEN: ${{ secrets.GH_API_TOKEN }}
       - uses: jwalton/gh-find-current-pr@v1
@@ -52,7 +82,9 @@ jobs:
           number: ${{ steps.finder.outputs.pr }}
           header: preview
           message: |
-            ${{ steps.deploy.outputs.DEPLOY_BLOCK }}
+            Build: ${{ steps.deploy.outputs.buildlink }}
+            Permalink: ${{ steps.deploy.outputs.permalink }}
+            Edge: ${{ steps.deploy.outputs.edge }}
       - name: Validate Guide Example Links
         shell: bash
         run: node ./scripts/validateExampleLinks.js

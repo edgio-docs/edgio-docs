@@ -118,17 +118,49 @@ const prefetcher = new Prefetcher({defaultMaxAgeSeconds: 60 * 10}); // set the d
 
 ## Prefetching a URL {/* prefetching-a-url */}
 
+To setup prefetching, we'll create a `browser.js` file that should be included in your client-side bundle. This file will be responsible for installing the service worker and prefetching URLs.
+
+<Callout type="tip">
+
+  If you're using a front-end framework, you may need to configure your build to include the `browser.js` file in your client-side bundle. Optionally, you may include this code directly in a client-side component instead of a separate `browser.js` file. For example, if you're using React, you may want to include this code in your `App.js` file.
+
+</Callout>
+
 To prefetch a URL, call the `prefetch` function from `{{ PACKAGE_NAME }}/prefetch/window`. Here we prefetch data for a product page using the route we configured in the previous example.
 
-```js
-import {prefetch} from '{{ PACKAGE_NAME }}/prefetch/window';
+```js filename="browser.js"
+import install from '{{ PACKAGE_NAME }}/prefetch/window/install'
+import { prefetch } from '{{ PACKAGE_NAME }}/prefetch/window/prefetch'
 
-prefetch('/api/products/1.json');
+document.addEventListener('DOMContentLoaded', () => {
+  install({
+    watch: [
+      {
+        selector: 'a[href^="/"]',
+        callback: (el) => {
+          const href = el.getAttribute('href')
+          if (href) prefetch(href)
+        },
+      },
+    ],
+  })
+
+  // Prefetch the product API for the product page.
+  prefetch('/api/products/1.json');
+})
 ```
+
+In this example, the service worker is installed when the DOM is ready. The `install` function takes an optional [`watch`](/docs/api/prefetch/interfaces/window_InstallOptions.default.html#watch) option that allows you to configure the service worker to prefetch URLs when they become visible in the viewport. In this example, we prefetch URLs for all links that start with `/` when they become visible in the viewport.
+
+<Callout type="important">
+
+  Note that in versions prior to {{ PRODUCT }} v7, prefetching was automatic based on routes defined with a caching rule utilizing the `cache-manifest.js` file. This is no longer the case in {{ PRODUCT }} v7. You must now explicitly prefetch URLs using the `prefetch` function, utilizing the `watch` option to prefetch URLs when they become visible in the viewport. 
+
+</Callout>
 
 Prefetch requests are given the lowest priority. This ensures that they do not block more critical requests like API calls, images, scripts, and navigation.
 
-Optionally is possible to override default TTL or the value of `serviceWorkerSeconds` defined in `routes.js` by providing the `maxAgeSeconds` option to `prefetch` function call. This option is applied only to that function call and doesn't affect any other calls made later.
+Optionally is possible to override default TTL or the value of `service_worker_max_age` defined in `routes.js` by providing the `maxAgeSeconds` option to `prefetch` function call. This option is applied only to that function call and doesn't affect any other calls made later.
 
 ```js
 import {prefetch} from '{{ PACKAGE_NAME }}/prefetch/window';

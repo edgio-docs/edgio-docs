@@ -474,7 +474,7 @@ This example demonstrates a full-featured {{ PRODUCT }} configuration that showc
 
   </Callout>
 
-- [Image Optimization](/guides/performance/image_optimization)
+- [Transforming and optimizing images](/guides/performance/image_optimization)
 - [Response Transformation with Serverless Compute](/guides/performance/serverless_compute)
 - [Header Manipulation](/guides/performance/cdn_as_code/route_features#altering-the-response)
 - [Cache Key Normalization](/guides/performance/caching#customizing-the-cache-key)

@@ -336,7 +336,7 @@ This example demonstrates a full-featured {{ PRODUCT }} configuration that showc
 - [Removing response headers](/guides/performance/cdn_as_code#alter-requests-and-responses)
 - [Normalizing the cache key](/guides/performance/caching#customizing-the-cache-key)
 - Generating performance insights through [DevTools](/guides/performance/observability/devtools)
-- Tracking [Core Web Vitals](/guides/performance/observability/real_user_monitoring) through real user monitoring (RUM).
+- Tracking [Core Web Vitals](/guides/performance/observability/core_web_vitals) through real user monitoring (RUM).
 
 <ExampleButtons
   title="Full-Featured"

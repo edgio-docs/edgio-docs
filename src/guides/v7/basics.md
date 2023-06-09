@@ -2,14 +2,9 @@
 title: Basics
 ---
 
-The {{ PRODUCT }} Applications platform consists of the following products:
--   {{ PRODUCT }} {{ PRODUCT_EDGE }} improves your site's performance through caching, predictive prefetching, and serverless computing. Set up rules that identify traffic segments and how they will be handled by {{ PRODUCT }}. Or, if you prefer code to UI, then you can integrate your CDN configuration into your development workflow through our CDN-as-code approach to configuration. We also provide performance insights and site previews to speed up software development and improve collaboration between your teams.
--   {{ PRODUCT }} {{ PRODUCT_SECURITY }} protects your web infrastructure through:
-    -   Distributed Denial-of-Service (DDoS) protection for all traffic served through our network.
-    -   An Origin Shield that reduces traffic to your origin servers through an additional caching layer.
-    -   A Web Application Firewall through which you can monitor, detect, and prevent application layer attacks.
-    -   Basic website security, such as a Content Security Policy (CSP), a TLS certificate, Basic Authentication enforcement, environment variables for sensitive data (e.g., API keys), and protection against cache poisoning. 
--   {{ PRODUCT }} {{ PRODUCT_PLATFORM }} provides optimal performance and development efficiency to your headless Jamstack applications. In addition to allowing you to define performance configurations within your application code, it supports server-side rendering and static page generation.
+The {{ PRODUCT }} Applications platform consists of {{ PRODUCT }} {{ PRODUCT_EDGE }}, {{ PRODUCT }} {{ PRODUCT_SECURITY }}, and {{ PRODUCT }} {{ PRODUCT_PLATFORM }}.
+
+![{{ PRODUCT }} Applications platform](/images/v7/basics/applications.png)
 
 Combine the above solutions to ensure the secure delivery of your website while drastically improving performance.
 
@@ -34,6 +29,11 @@ Once you have set up a basic configuration, you are ready to take full advantage
         -   Determine how your content is routed through our network.
         -   Define when web browsers should use [predictive prefetching](/guides/performance/prefetching) and the content that will be delivered before it is requested by your users.
     -   Gain performance insights through which you can fine-tune your configuration through our [Observability](/guides/performance/observability) solution.
-    -   Speed up development by quickly iterating through different variations of your site through our [Traffic Splitting](/guides/performance/traffic_splitting) solution.
--   [{{ PRODUCT_SECURITY }}.](/guides/security) We automatically provide distributed denial-of-service (DDOS) protection to traffic that runs behind {{ PRODUCT }}. Apply additional protection to your web applications and APIs through our [Web Application Firewall solution](/guides/security/waf).
+    -   Speed up development and improve collaboration between your teams through:
+	    -   Site previews for each deployment which allow your team to quickly review changes and identify issues. 
+	    -   Our [Traffic Splitting](/guides/performance/traffic_splitting) solution which allow your team to quickly iterate through different variations of your site.
+-   [{{ PRODUCT_SECURITY }}.](/guides/security) We automatically provide distributed denial-of-service (DDOS) protection to traffic that runs behind {{ PRODUCT }}. Apply additional protection to your web applications and APIs through:
+    -   A [Web Application Firewall solution](/guides/security/waf) through which you can monitor, detect, and prevent application layer attacks.
+	-   Basic [website security](/guides/security/edgejs_security), such as a Content Security Policy (CSP), a TLS certificate, Basic Authentication enforcement, environment variables for sensitive data (e.g., API keys), and protection against cache poisoning. 
+	-   An [Origin shield](/guides/security/origin_shield) that reduces traffic to your origin servers through an additional caching layer.
 -   [{{ PRODUCT_PLATFORM }}.](/guides/sites_frameworks/getting_started) If you are currently using a JavaScript framework, then you can improve your website's performance by using our serverless workers to quickly render server-side content in a scalable manner.

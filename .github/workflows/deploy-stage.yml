@@ -38,12 +38,12 @@ jobs:
           echo "$DEPLOY"
 
           # Get the build link from the output of the command
-          echo "$DEPLOY" |
-            sed -n 's/.*\(https:\/\/\(app\.layer0\.co\|edgio\.app\)\).*/\1/p' |
+          echo "$deploy_output" |
+            sed -n 's/.*\(https:\/\/\(app\.layer0\.co\|edgio\.app\).*\)/\1/p' |
             {
               read buildlink || buildlink=""
               if [[ -n $buildlink ]]; then
-                echo "buildlink=$buildlink" >> $GITHUB_OUTPUT
+                echo "$buildlink=$buildlink" >> $GITHUB_OUTPUT
               else
                 echo "buildlink=" >> $GITHUB_OUTPUT
               fi
@@ -68,8 +68,10 @@ jobs:
               read edge || edge=""
               if [[ -n $edge ]]; then
                 echo "edge=$edge" >> $GITHUB_OUTPUT
+                echo "status=✅ Successful!" >> $GITHUB_OUTPUT
               else
                 echo "edge=" >> $GITHUB_OUTPUT
+                echo "status=❌ See status check" >> $GITHUB_OUTPUT
               fi
             }
         env:
@@ -82,9 +84,10 @@ jobs:
           number: ${{ steps.finder.outputs.pr }}
           header: preview
           message: |
-            Build: ${{ steps.deploy.outputs.buildlink }}
-            Permalink: ${{ steps.deploy.outputs.permalink }}
-            Edge: ${{ steps.deploy.outputs.edge }}
+            ##### Deployment: ${{ steps.deploy.outputs.status }}
+            - Build: ${{ steps.deploy.outputs.buildlink }}
+            - Permalink: ${{ steps.deploy.outputs.permalink }}
+            - Edge: ${{ steps.deploy.outputs.edge }}
       - name: Validate Guide Example Links
         shell: bash
         run: node ./scripts/validateExampleLinks.js

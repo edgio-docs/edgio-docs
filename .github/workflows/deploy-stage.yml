@@ -38,7 +38,7 @@ jobs:
           echo "$DEPLOY"
 
           # Get the build link from the output of the command
-          echo "$deploy_output" |
+          echo "$DEPLOY" |
             sed -n 's/.*\(https:\/\/app\.layer0\.co\/[^ ]*\).*/\1/p' |
             {
               read buildlink || buildlink=""

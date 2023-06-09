@@ -464,7 +464,7 @@ This example demonstrates a basic {{ PRODUCT }} configuration for `publicdomainr
 
 This example demonstrates a full-featured {{ PRODUCT }} configuration that showcases the following functionality:
 
-- [Multiple origins proxying](/guides/performance/cdn_as_code/route_features#proxying-an-origin)
+- [Proxying multiple origins](/guides/performance/cdn_as_code/route_features#proxying-an-origin)
 - [StaleWhileRevalidate](/guides/performance/caching#cache-hit-ratio-optimization) to increasing the cache buffer during revalidation
 - [Prefetching](/guides/performance/prefetching) and [Deepfetching](/guides/performance/prefetching#deep-fetching) cached content to improve performance.
 

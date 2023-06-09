@@ -93,7 +93,7 @@ Install the Core Web Vitals library by running the following npm or yarn command
 npm install --save {{ PACKAGE_NAME }}/rum
 ```
 
-```bash tabLabel="Yarn"
+```bash tabLabel="Yarn 1 (Classic)"
 yarn add {{ PACKAGE_NAME }}/rum
 ```
 
@@ -171,7 +171,7 @@ new Metrics({
 }).collect()
 ```
 
-```bash tabLabel="Yarn"
+```bash tabLabel="Yarn 1 (Classic)"
 import Router from '@edgio/rum/Router'
 import { Metrics } from '@edgio/rum'
 

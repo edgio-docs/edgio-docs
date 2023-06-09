@@ -39,10 +39,6 @@ export default [
     '/guides/core_web_vitals',
     '/guides/performance/observability/core_web_vitals',
   ],
-  [
-    '/guides/v7/performance/observability/core_web_vitals',
-    '/guides/v7/performance/observability/real_user_monitoring',
-  ],  
   ['/guides/devtools', '/guides/performance/observability/devtools'],
   ['/guides/prefetching', '/guides/performance/prefetching'],
   ['/guides/purging', '/guides/performance/purging'],

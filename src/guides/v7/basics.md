@@ -2,7 +2,7 @@
 title: Basics
 ---
 
-The {{ PRODUCT }} Applications platform consists of {{ PRODUCT }} {{ PRODUCT_EDGE }}, {{ PRODUCT }} {{ PRODUCT_SECURITY }}, and {{ PRODUCT }} {{ PRODUCT_PLATFORM }}.
+The {{ PRODUCT }} Applications platform consists of our {{ PRODUCT_EDGE }}, {{ PRODUCT_SECURITY }}, and {{ PRODUCT_PLATFORM }} products.
 
 ![{{ PRODUCT }} Applications platform](/images/v7/basics/applications.png)
 

@@ -116,41 +116,52 @@ Note that if you prefetch a URL without setting `caching.service_worker_max_age`
 const prefetcher = new Prefetcher({defaultMaxAgeSeconds: 60 * 10}); // set the default TTL to 10 minutes
 ```
 
-## Prefetching a URL {/* prefetching-a-url */}
+## Implementing Prefetching {/* implementing-prefetching */}
 
-To setup prefetching, we'll create a `browser.js` file that should be included in your client-side bundle. This file will be responsible for installing the service worker and prefetching URLs.
+To setup prefetching, we need to include code in our client-side bundle that will install the service worker and prefetch URLs. Implementation will vary depending on whether you are using a front-end framework or a [Traditional Site](/guides/performance/traditional_sites).
 
-<Callout type="tip">
+- Traditional Sites:
 
-  If you're using a front-end framework, you may need to configure your build to include the `browser.js` file in your client-side bundle. Optionally, you may include this code directly in a client-side component instead of a separate `browser.js` file. For example, if you're using React, you may want to include this code in your `App.js` file.
+  To setup prefetching, we'll create a `browser.js` file that should be included in your client-side bundle. This file will be responsible for installing the service worker and prefetching URLs. To prefetch a URL, call the `prefetch` function from `{{ PACKAGE_NAME }}/prefetch/window`. Here we prefetch data for a product page using the route we configured in the previous example while also 
 
-</Callout>
+  <a id="clientPrefetchCode"></a>
+  ```js filename="browser.js"
+  import install from '{{ PACKAGE_NAME }}/prefetch/window/install'
+  import { prefetch } from '{{ PACKAGE_NAME }}/prefetch/window/prefetch'
 
-To prefetch a URL, call the `prefetch` function from `{{ PACKAGE_NAME }}/prefetch/window`. Here we prefetch data for a product page using the route we configured in the previous example.
-
-```js filename="browser.js"
-import install from '{{ PACKAGE_NAME }}/prefetch/window/install'
-import { prefetch } from '{{ PACKAGE_NAME }}/prefetch/window/prefetch'
-
-document.addEventListener('DOMContentLoaded', () => {
-  install({
-    watch: [
-      {
-        selector: 'a[href^="/"]',
-        callback: (el) => {
-          const href = el.getAttribute('href')
-          if (href) prefetch(href)
+  document.addEventListener('DOMContentLoaded', () => {
+    install({
+      watch: [
+        {
+          selector: 'a[href^="/"]',
+          callback: (el) => {
+            const href = el.getAttribute('href')
+            if (href) prefetch(href)
+          },
         },
-      },
-    ],
+      ],
+    })
+
+    // Prefetch the product API for the product page.
+    prefetch('/api/products/1.json');
   })
+  ```
 
-  // Prefetch the product API for the product page.
-  prefetch('/api/products/1.json');
-})
-```
+- Frameworks:
 
-In this example, the service worker is installed when the DOM is ready. The `install` function takes an optional [`watch`](/docs/api/prefetch/interfaces/window_InstallOptions.default.html#watch) option that allows you to configure the service worker to prefetch URLs when they become visible in the viewport. In this example, we prefetch URLs for all links that start with `/` when they become visible in the viewport.
+  {{ PRODUCT }} provides prefetching integration for a few of the following front-end frameworks:
+
+  - [Next.js](#nextjs)
+  - [React](#react)
+  - [Vue.js](#vuejs)
+  
+  If you are using a framework not listed above, you can still install the service worker and use the `prefetch` function from `{{ PACKAGE_NAME }}/prefetch/window/prefetch` to prefetch URLs. Using the [example code](#clientPrefetchCode) above, you must include that code in your client-side bundle. How you do this will vary depending on your framework, however, common filenames may include `app.js`, `main.js`, or `index.js`.
+
+Depending on your method of implementation, the above code will do the following:
+
+- Install the service worker when the DOM is ready.
+- Prefetch all links that start with `/` when they become visible in the viewport. This configuration is defined through an optional [`watch`](/docs/api/prefetch/interfaces/window_InstallOptions.default.html#watch) option.
+- Prefetch `/api/products/1.json` through the `prefetch` function call. Use the `prefetch` function call to prefetch URLs that are always used by your site.
 
 <Callout type="important">
 
@@ -160,7 +171,7 @@ In this example, the service worker is installed when the DOM is ready. The `ins
 
 Prefetch requests are given the lowest priority. This ensures that they do not block more critical requests like API calls, images, scripts, and navigation.
 
-Optionally is possible to override default TTL or the value of `service_worker_max_age` defined in `routes.js` by providing the `maxAgeSeconds` option to `prefetch` function call. This option is applied only to that function call and doesn't affect any other calls made later.
+You may also override the default TTL or the value of `service_worker_max_age` defined in `routes.js` by providing the `maxAgeSeconds` option to `prefetch` function call. This option is applied only to that function call and doesn't affect any other calls made later.
 
 ```js
 import {prefetch} from '{{ PACKAGE_NAME }}/prefetch/window';
@@ -172,7 +183,10 @@ prefetch('/api/products/1.json', 'fetch', {
 
 All prefetch function options can be found in its API Documentation [here](/docs/api/prefetch/types/window_prefetch.PrefetchConfiguration.html).
 
-## React {/* react */}
+## Frameworks {/* frameworks */}
+
+{{ PRODUCT }} provides prefetching integration for a few of the following front-end frameworks:
+### React {/* react */}
 
 The `{{ PACKAGE_NAME }}/react` package provides a `Prefetch` component that you can wrap around any link to prefetch the link when it becomes visible in the viewport:
 
@@ -190,7 +204,7 @@ function ProductLink({product}) {
 
 By default, `Prefetch` will fetch and cache the URL in the link's `href` attribute. If you have a single page app, you most likely want to prefetch the corresponding API call for the page rather than the page's HTML. The example above shows you how to set the `url` property to control which URL is prefetched.
 
-## Next.js {/* nextjs */}
+### Next.js {/* nextjs */}
 
 If you're using Next.js with `getServerSideProps`, use `createNextDataURL` from `{{ PACKAGE_NAME }}/next/client` to prefetch the data for the linked page.
 
@@ -242,7 +256,7 @@ export async function getServerSideProps({params: {id}}) {
 }
 ```
 
-## Vue {/* vue */}
+### Vue.js {/* vuejs */}
 
 The `{{ PACKAGE_NAME }}/vue` package provides a `Prefetch` component that you can wrap around any link to prefetch the link when it becomes visible in the viewport:
 

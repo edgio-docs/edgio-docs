@@ -43,3 +43,5 @@ Protect your external web infrastructure against these threats through the follo
 {{ PRODUCT }} intercepts and filters out DDoS traffic before it reaches our security servers. This allows our security solution to focus on securing your web applications and API through the application layer. The following diagram shows how requests flow through our network.
 
 ![Traffic workflow](/images/v7/security/traffic-order-of-operations.png)
+
+[Learn how requests flow through WAF.]{/guides/v7/security/waf#threat-detection}

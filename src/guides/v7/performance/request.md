@@ -31,6 +31,8 @@ A request commonly contains the following components:
 
     ![](/images/overview/request-flow-serverless-compute.png)
 
+[Learn the order of operations in which we will process each request.](/guides/v7/security#how-does-it-work)
+
 ## Request Method {/*request-method*/}
 
 Every HTTP request must include instructions on how the request should be handled. This is known as an HTTP request method. The default manner in which our CDN service handles these request methods is described below.

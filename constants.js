@@ -67,7 +67,7 @@ const EXAMPLES_REPOS = {
   'static-backbone': 'https://github.com/edgio-docs/static-backbonejs-example',
   'static-react': 'https://github.com/edgio-docs/edgio-static-react-example',
   'static-vue': 'https://github.com/edgio-docs/edgio-static-vuejs-example',
-};
+}; 
 
 const SYSTEM_REQUIREMENTS = `## System Requirements {/*system-requirements*/}
 

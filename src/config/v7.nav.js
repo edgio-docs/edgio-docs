@@ -128,8 +128,8 @@ const nav = {
               path: 'performance/observability/edge_insights',
             },
             {
-              title: 'Core Web Vitals',
-              path: 'performance/observability/core_web_vitals',
+              title: 'Real User Monitoring (RUM)',
+              path: 'performance/observability/real_user_monitoring',
             },
             {
               title: 'Devtools',

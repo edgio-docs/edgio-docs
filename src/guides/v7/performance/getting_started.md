@@ -153,7 +153,7 @@ Congratulations on deploying a caching policy to {{ PRODUCT }}!
 
 You are now ready to:
 
--   Assess performance and caching behavior through [Edge Insights](/guides/performance/observability/edge_insights)  and [Core Web Vitals](/guides/performance/observability/core_web_vitals). 
+-   Assess performance and caching behavior through [Edge Insights](/guides/performance/observability/edge_insights)  and [Core Web Vitals](/guides/performance/observability/real_user_monitoring). 
 -   Fine-tune your configuration by adding rules and then redeploying your property. 
 -   Once you are ready to serve production traffic through {{ PRODUCT }}, update your site's DNS to point to our service.
 

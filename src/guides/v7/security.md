@@ -44,4 +44,4 @@ Protect your external web infrastructure against these threats through the follo
 
 ![Traffic workflow](/images/v7/security/traffic-order-of-operations.png)
 
-[Learn how requests flow through WAF.]{/guides/v7/security/waf#threat-detection}
+[Learn how requests flow through WAF.](/guides/v7/security/waf#threat-detection)

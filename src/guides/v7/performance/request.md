@@ -31,7 +31,7 @@ A request commonly contains the following components:
 
     ![](/images/overview/request-flow-serverless-compute.png)
 
-[Learn the order of operations in which we will process each request.](/guides/v7/security#how-does-it-work)
+[View the order of operations in which we will process each request.](/guides/v7/security#how-does-it-work)
 
 ## Request Method {/*request-method*/}
 

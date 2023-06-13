@@ -6,7 +6,7 @@ A match condition identifies the set of requests to which one or more feature(s)
 
 | Category  | Match Conditions  |
 |---|---|
-| Location  | <ul><li>[ASN](#asn)</li><li>[City](#city)</li><li hidden>[Continent](#continent)</li><li>[Country](#country)</li><li>[DMA Code](#dma-code)</li><li>[Latitude](#latitude)</li><li>[Longitude](#longitude)</li><li>[Postal Code](#postal-code)</li><li>[Region Code](#region-code)</li></ul> |
+| Location  | <ul><li>[ASN](#asn)</li><li>[City](#city)</li><li>[Continent](#continent)</li><li>[Country](#country)</li><li>[DMA Code](#dma-code)</li><li>[Latitude](#latitude)</li><li>[Longitude](#longitude)</li><li>[Postal Code](#postal-code)</li><li>[Region Code](#region-code)</li></ul> |
 | Request  | <ul><li>[Client IP](#client-ip)</li><li>[Cookie](#cookie)</li><li>[Directory](#directory)</li><li>[Extension](#extension)</li><li>[Filename](#filename)</li><li>[Method](#method)</li><li>[Origin Path](#origin-path)</li><li>[Path](#path)</li><li>[POP Code](#pop-code)</li><li>[Query](#query)</li><li>[Query Parameter](#query-parameter)</li><li>[Query String](#query-string)</li><li>[Referring Domain](#referring-domain)</li><li>[Request Header](#request-header)</li><li>[Scheme](#scheme)</li></ul>  |
 | Device  | <ul><li>[Brand Name](#brand-name)</li><li hidden>[Device Operating System](#device-operating-system)</li><li>[Dual Orientation](#dual-orientation)</li><li hidden>[HTML Preferred DTD](#html-preferred-dtd)</li><li>[Image Inlining](#image-inlining)</li><li>[Is Android](#is-android)</li><li>[Is App](#is-app)</li><li hidden>[Is Full Desktop](#is-full-desktop)</li><li>[Is iOS](#is-ios)</li><li>[Is Robot](#is-robot)</li><li>[Is Smartphone](#is-smartphone)</li><li>[Is SmartTV](#is-smarttv)</li><li>[Is Tablet](#is-tablet)</li><li>[Is Touchscreen](#is-touchscreen)</li><li>[Is Windows Phone](#is-windows-phone)</li><li>[Is Wireless Device](#is-wireless-device)</li><li>[Marketing Name](#marketing-name)</li><li>[Mobile Browser](#mobile-browser)</li><li>[Model Name](#model-name)</li><li>[Progressive Download](#progressive-download)</li><li>[Release Date](#release-date)</li><li>[Resolution Height](#resolution-height)</li><li>[Resolution Width](#resolution-width)</li></ul>  |
 | Miscellaneous  | <ul><li>[Random Integer](#random-integer)</li></ul>  |
@@ -216,7 +216,6 @@ router.conditional({
 
 </edgejs>
 
-<!--
 #### Continent {/*continent*/} <edgejs>location</edgejs>
 
 Identifies requests by the continent from which the request was issued.
@@ -236,11 +235,42 @@ Identifies requests by the continent from which the request was issued.
 -   Continent codes are case-sensitive.
 
 <edgejs>
+**Key information:**
+
+-   Specify one or more continents using the following codes:
+    -   **AF:** Africa
+    -   **AS:** Asia
+    -   **EU:** Europe
+    -   **NA:** North America
+    -   **OC:** Oceania
+    -   **SA:** South and Central America
+    -   **?:** Unknown continent
+
+-   Certain requests may not return a valid continent code. A question mark (i.e., ?) will match requests for which a valid continent code could not be determined.
+-   Continent codes are case-sensitive.
+-   Specify multiple continents by delimiting each one with a single space.
 
 **Example:**
 
+```
+router.conditional({
+  if: [{
+      and: [{
+          '===': [{
+              location: 'continent',
+            },
+            'NA EU AS',
+          ],
+        },        
+      ],
+    }, {
+         // Features 
+    },
+  ],
+});
+```
+
 </edgejs>
--->
 
 #### Cookie {/*cookie*/} <edgejs>request</edgejs>
 

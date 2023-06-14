@@ -33,7 +33,7 @@ There is very little difference in time to first byte (TTFB) for responses serve
 
 -   **Serverless:** {{ PRODUCT }} routes requests to [Serverless Compute](/guides/performance/serverless_compute) and [{{ PRODUCT }} {{ PRODUCT_PLATFORM }}](/guides/sites_frameworks) similar to standard traffic. However, cache misses are forwarded to a Serverless load balancer which distributes requests to a Serverless worker.
 
-    ![](/images/overview/request-flow-serverless-compute.png)
+    ![](/images/v7/performance/request-flow-serverless.png)
 
 ## Default Caching Policy {/*default-caching-policy*/}
 

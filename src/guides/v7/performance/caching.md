@@ -8,16 +8,32 @@ Caching creates a copy of the requested content on our edge servers. This dramat
 
 Each environment provides a separate edge cache for the most recent deployment. Although older deployments do not support edge caching, you may re-enable it by [rolling back to that version](/guides/basics/deployments#versioning).
 
-## Edge and Shield Caching {/* edge-and-shield-caching */}
+## Edge and Origin Shield Caching {/*edge-and-shield-caching*/}
 
 {{ PRODUCT }} may cache your content on our:
 
 - **Edge Points-of-Presence (POP):** An edge POP handles receives and responds to requests for your content.
-- **Shield POP:** A shield POP reduces your network bandwidth and the load on your origin server by providing an intermediate caching layer between the edge of our network (aka edge POPs) and your web servers. This means that if a request cannot be served from cache by an edge POP, then it will be forwarded to a shield POP. Funneling requests to a shield POP maximizes your cache hit ratio.
+- **Origin Shield POP:** A shield POP reduces your network bandwidth and the load on your origin server by providing an intermediate caching layer between the edge of our network (aka edge POPs) and your web servers. This means that if a request cannot be served from cache by an edge POP, then it will be forwarded to a shield POP. Funneling requests to a shield POP maximizes your cache hit ratio.
 
 There is very little difference in time to first byte (TTFB) for responses served from an edge or shield POP. In either case, the response is served nearly instantly (typically 25-100ms). Concurrent requests for the same URL on different POPs that result in a cache miss will be coalesced at the shield POP. If you have configured your origin to only use a shield POP, then it will only submit a single request at a time to your origin servers for each cacheable URL.
 
 [Learn more about Origin Shield.](/guides/security/origin_shield)
+
+### Request Flow {/*request-flow*/}
+
+{{ PRODUCT }} routes requests according to traffic type and whether the request is eligible for caching.
+
+-   **Standard Traffic:** By default, requests are routed to your web servers through an edge POP.
+
+    ![](/images/v7/performance/request-flow-edge-origin.png)
+
+    You can shield your web servers to improve cache efficiency, reduce the load on your servers, and reduce network bandwidth. If you have assigned at least one shield POP to your origin configuration, our edge POPs can funnel cache misses through a shield POP.
+
+    ![](/images/overview/request-flow-edge-global.png)    
+
+-   **Serverless:** {{ PRODUCT }} routes requests to [Serverless Compute](/guides/performance/serverless_compute) and [{{ PRODUCT }} {{ PRODUCT_PLATFORM }}](/guides/sites_frameworks) similar to standard traffic. However, cache misses are forwarded to a Serverless load balancer which distributes requests to a Serverless worker.
+
+    ![](/images/overview/request-flow-serverless-compute.png)
 
 ## Default Caching Policy {/*default-caching-policy*/}
 

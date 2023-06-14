@@ -266,7 +266,7 @@ The following response headers identify a server and how it handled the response
 
 The terms used in the above response header syntax are defined below:
 
--   **STATUS CODE:** Indicates how the requested content was handled by the CDN. This is represented through a cache status code.
+-   **CACHE STATUS CODE:** Indicates how the requested content was handled by the CDN. This is represented through a cache status code.
 
     <Callout type="info">
 

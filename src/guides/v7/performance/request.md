@@ -15,23 +15,16 @@ A request commonly contains the following components:
 -   By default, our edge servers will typically forward the entire request to your origin configuration. However, a rule or your CDN-as-code configuration can override the default CDN behavior.
 -   Our CDN only accepts requests that comply with the HTTP specification (e.g., HTTP/1.1). We return a `400 Bad Request` for non-compliant requests.
 
-## Request Flow {/*request-flow*/}
+## Order of Operations
 
-{{ PRODUCT }} routes requests according to traffic type and whether the request is eligible for caching.
+{{ PRODUCT }} processes each request in the following order:
 
--   **Standard Traffic:** By default, requests are routed to your web servers through an edge POP.
+![Traffic workflow](/images/v7/security/traffic-order-of-operations.png)
 
-    ![](/images/v7/performance/request-flow-edge-origin.png)
+Learn how:
 
-    You can shield your web servers to improve cache efficiency, reduce the load on your servers, and reduce network bandwidth. If you have assigned at least one shield POP to your origin configuration, our edge POPs can funnel cache misses through a shield POP.
-
-    ![](/images/overview/request-flow-edge-global.png)    
-
--   **Serverless Compute:** {{ PRODUCT }} routes Serverless Compute requests similar to standard traffic. However, cache misses are forwarded to a [Serverless Compute](/guides/performance/serverless_compute) load balancer which distributes requests to a Serverless Compute worker.
-
-    ![](/images/overview/request-flow-serverless-compute.png)
-
-[View the order of operations in which we will process each request.](/guides/v7/security#how-does-it-work)
+-   [Requests flow through WAF.](/guides/security/waf#threat-detection)
+-   [Content is cached on our network.](/guides/performance/caching#default-caching-policy)
 
 ## Request Method {/*request-method*/}
 

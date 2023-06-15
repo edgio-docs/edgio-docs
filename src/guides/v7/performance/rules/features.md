@@ -1344,7 +1344,7 @@ Our CDN returns debug cache response headers when both of the following are true
 
     `X-EC-Debug: x-ec-cache,x-ec-check-cacheable,x-ec-cache-key,x-ec-cache-state`
 
-    [Learn more.](/guides/performance/response#requesting-debug-cache-information)
+    [Learn how to request debug cache information.](/guides/performance/response#requesting-debug-cache-information)
 
 <edgejs>
 Our CDN returns debug cache response headers when both of the following are true:
@@ -1359,7 +1359,7 @@ Our CDN returns debug cache response headers when both of the following are true
 
     `X-EC-Debug: x-ec-cache,x-ec-check-cacheable,x-ec-cache-key,x-ec-cache-state`
 
-    [Learn more.](/guides/performance/response#requesting-debug-cache-information)
+    [Learn how to request debug cache information.](/guides/performance/response#requesting-debug-cache-information)
 
 **Example:**
 

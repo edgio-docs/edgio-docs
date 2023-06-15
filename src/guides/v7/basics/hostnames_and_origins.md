@@ -121,10 +121,18 @@ On a per environment-basis, define how {{ PRODUCT }} will communicate with your 
     </Callout>
  
 -   You may configure an origin configuration to always serve traffic to your hosts over HTTP, HTTPS, or to match the client's scheme. Matching a client's scheme means that our network will serve HTTP traffic to your web servers over port 80, while HTTPS traffic will be served over port 443. <a id="sni" />
--   You may enable Server Name Indication (SNI) on an origin configuration to allow {{ PRODUCT }} to use it during the TLS handshake. If the SNI hint is not found, then your origin server's implementation determines the TLS certificate that will be returned.
+-   By default, {{ PRODUCT }} does not provide a Server Name Indication (SNI) hint to your origin server. This allows your origin server to determine the TLS certificate that will be returned. Enable the **Use SNI** option on an origin configuration to allow {{ PRODUCT }} to:
 
-    Additionally, our service will compare the hostname used for the SNI hint to the certificate's Subject Alternative Name (SAN) or Common Name (CN) during the TLS handshake. If the hostname does not match, then we will respond with a `502 Bad Gateway` response. <a id="self-signed-certificates" />
--   By default, our network disables delivery when we detect a self-signed certificate from the origin server during the TLS handshake. Enable the **Allow Self-Signed Certs** option to require our edge servers to respond with a `502 Bad Gateway` response upon detecting a self-signed certificate from the origin server during the TLS handshake. <a id="certificate-pinning" />
+    -   Provide a SNI hint during the TLS handshake. 
+    -   Compare the hostname defined within the SNI hint to the certificate's Subject Alternative Name (SAN) or Common Name (CN) during the TLS handshake. If the hostname does not match, then we will respond with a `502 Bad Gateway` response.
+
+    <Callout type="important">
+	
+	  If your origin server requires SNI, then you must enable the **Use SNI** option and define a SNI hint. Otherwise, your web server will reject the request and our edge servers will respond with a `502 Bad Gateway` response. <a id="self-signed-certificates" />
+	
+	</Callout>
+
+-   By default, our network disables delivery when we detect a self-signed certificate from the origin server during the TLS handshake. Specifically, our edge servers respond with a `502 Bad Gateway` response upon detecting a self-signed certificate from the origin server during the TLS handshake. Allow {{ PRODUCT }} to serve traffic when it detects a self-signed certificate by enabling the **Allow Self-Signed Certs** option. <a id="certificate-pinning" />
 -   Register the SHA-256 digest for the public key of your end-entity (i.e., leaf) certificate within the **Pinned Cert(s)** option. After which, our edge servers will respond with a `502 Bad Gateway` response when the SHA-256 digest for the public key detected from the origin server does not match one of the pinned certificates.
 -   Malicious actors may bypass the security provided by our service by directly targeting your origin server(s). We strongly recommend that you set up your firewall to only allow traffic from trusted sources (e.g., our network) and to obfuscate your origin.
 

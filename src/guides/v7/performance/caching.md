@@ -2,7 +2,7 @@
 title: Caching
 ---
 
-Caching creates a copy of the requested content within our edge and Origin Shield POPs. This improves your site's performance by allowing clients to retrieve your content from the POP closest to them. 
+Caching creates a copy of the requested content within our edge and Origin Shield POPs. This improves your site's performance by allowing clients to retrieve your content from the POP closest to them instead of your origin servers. 
 
 ## Environments and Caching {/* environments-and-caching */}
 
@@ -25,7 +25,7 @@ By default, only `GET` requests that result in a `200 OK` response are eligible 
 
 ### Origin Server
 
-Once the asset has been cached on a POP, all future requests from the region served by that POP will be served directly from that POP while the cached content's TTL has not expired. Once the TTL has expired, an edge server from that POP may [revalidate](#revalidation) the asset with either an Origin Shield POP or the origin server. The request flow for an origin that does not have Origin Shield is illustrated below.
+Once the asset has been cached on a POP, all future requests from the region served by that POP will be served directly from that POP while the cached content's TTL has not expired. Once the TTL has expired, an edge server from that POP may [revalidate](#revalidation) the asset with either an Origin Shield POP or the origin server. The request flow for an origin configuration on which Origin Shield has not been enabled is illustrated below.
 
 ![](/images/v7/performance/request-flow-edge-origin.png)
 

@@ -371,14 +371,16 @@ router.conditional({
 ```
 </edgejs>
 
-
 #### DMA Code {/*dma-code*/} <edgejs>location</edgejs>
 
 Identifies requests by the metro code (Designated Market Area - DMA) from which the request was issued.
 
 **Key information:**
 
--   Specify a metro code as an integer value.
+-   Should I use the Metro Code or DMA Code match condition?
+
+    Both of these match conditions provide the same capability. However, we recommend the use of the [Metro Code match condition](#metro-code) to identify requests by DMA.
+
 -   Request DMA codes from Nielsen.
 -   Metro codes are only applicable for traffic from the United States.
 -   Certain requests may not return a valid metro code. A question mark (i.e., `?`) will match requests for which a valid metro code could not be determined.
@@ -386,7 +388,10 @@ Identifies requests by the metro code (Designated Market Area - DMA) from which 
 <edgejs>
 **Key information:**
 
--   Specify a metro code as an integer value.
+-   Should I use the `dma_code` or `metro_code` match condition?
+
+    Both of these match conditions provide the same capability. However, we recommend the use of the [metro_code match condition](#metro-code) to identify requests by DMA.
+
 -   Request DMA codes from Nielsen.
 -   Metro codes are only applicable for traffic from the United States.
 -   Certain requests may not return a valid metro code. A question mark (i.e., `?`) will match requests for which a valid metro code could not be determined.
@@ -410,7 +415,6 @@ router.conditional({
     ],
 });
 ```
-
 </edgejs>
 
 #### Dual Orientation {/*dual-orientation*/} <edgejs>device</edgejs>
@@ -964,6 +968,52 @@ router.conditional({
                     request: 'method',
                 },
                 'GET',
+            ],
+        }, {
+            // Features
+            },
+        },
+    ],
+});
+```
+</edgejs>
+
+#### Metro Code {/*metro-code*/} <edgejs>location</edgejs>
+
+Identifies requests by the metro code (Designated Market Area - DMA) from which the request was issued.
+
+**Key information:**
+
+-   Should I use the Metro Code or DMA Code match condition?
+
+    Both of these match conditions provide the same capability. However, we recommend the use of the Metro Code match condition to identify requests by DMA.
+
+-   Request DMA codes from Nielsen.
+-   Metro codes are only applicable for traffic from the United States.
+-   Certain requests may not return a valid metro code. A question mark (i.e., `?`) will match requests for which a valid metro code could not be determined.
+
+<edgejs>
+**Key information:**
+
+-   Should I use the `dma_code` or `metro_code` match condition?
+
+    Both of these match conditions provide the same capability. However, we recommend the use of the `metro_code` match condition to identify requests by DMA.
+
+-   Request DMA codes from Nielsen.
+-   Metro codes are only applicable for traffic from the United States.
+-   Certain requests may not return a valid metro code. A question mark (i.e., `?`) will match requests for which a valid metro code could not be determined.
+-   Specify multiples values through the `in` and `not_in` operators.
+-   **Supported operators:** `=== | !== | in | not_in`
+
+**Example:**
+
+```
+router.conditional({
+    if: [{
+            in: [{
+                    location: 'metro_code',
+                },
+                ['803'],
             ],
         }, {
             // Features

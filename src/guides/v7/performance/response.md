@@ -238,7 +238,7 @@ The debug cache response headers provide additional information about the cache 
 
 **Syntax:** `x-ec-debug: <DEBUG CACHE HEADER>[,<DEBUG CACHE HEADER>,<DEBUG CACHE HEADER>]`
 
-**Example:** `x-ec-debug: x-ec-cache,x-ec-check-cacheable,x-ec-cache-key,x-ec-cache-state`
+**Example:** `x-ec-debug: x-ec-cache,x-ec-cache-remote,x-ec-check-cacheable,x-ec-cache-key,x-ec-cache-state`
 
 Valid values for the `x-ec-debug` request header are provided below.
 

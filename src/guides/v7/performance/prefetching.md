@@ -118,13 +118,14 @@ const prefetcher = new Prefetcher({defaultMaxAgeSeconds: 60 * 10}); // set the d
 
 ## Implementing Prefetching {/* implementing-prefetching */}
 
-To setup prefetching, we need to include code in our client-side bundle that will install the service worker and prefetch URLs. Implementation will vary depending on whether you are using a front-end framework or a [Traditional Site](/guides/performance/traditional_sites).
+To implement prefetching, we need to include code in our client-side bundle that will install the service worker and prefetch URLs. Implementation will vary depending on whether you are using a front-end framework or a [Traditional Site](/guides/performance/traditional_sites).
 
 - Traditional Sites:
 
-  To setup prefetching, we'll create a `browser.js` file that should be included in your client-side bundle. This file will be responsible for installing the service worker and prefetching URLs. To prefetch a URL, call the `prefetch` function from `{{ PACKAGE_NAME }}/prefetch/window`. Here we prefetch data for a product page using the route we configured in the previous example while also 
+  For implementation on a [traditional site](/guides/performance/traditional_sites), we'll create a `browser.js` file that should be included in your client-side bundle. This file will be responsible for installing the service worker and prefetching URLs. To prefetch a URL, call the `prefetch` function from `{{ PACKAGE_NAME }}/prefetch/window`.
 
   <a id="clientPrefetchCode"></a>
+
   ```js filename="browser.js"
   import install from '{{ PACKAGE_NAME }}/prefetch/window/install'
   import { prefetch } from '{{ PACKAGE_NAME }}/prefetch/window/prefetch'

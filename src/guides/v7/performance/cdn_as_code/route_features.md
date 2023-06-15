@@ -36,7 +36,7 @@ The argument is an Object that supports features outlined in the [Features Refer
 
 The following sections describe common routing features and how to use them.
 
-## Debug Mode {/* debug-mode */}
+## Debug Cache Headers {/* debug-cache-headers */}
 
 The debug cache response headers provide additional information about the cache policy applied to the requested asset. [Learn more.](/guides/performance/response#requesting-debug-cache-information)
 

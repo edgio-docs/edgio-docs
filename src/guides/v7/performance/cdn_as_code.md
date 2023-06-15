@@ -475,11 +475,11 @@ This example demonstrates a full-featured {{ PRODUCT }} configuration that showc
   </Callout>
 
 - [Transforming and optimizing images](/guides/performance/image_optimization)
-- [Response Transformation with Serverless Compute](/guides/performance/serverless_compute)
-- [Header Manipulation](/guides/performance/cdn_as_code/route_features#altering-the-response)
-- [Cache Key Normalization](/guides/performance/caching#customizing-the-cache-key)
-- [DevTools](/guides/performance/observability/devtools) to generate performance insights
-- [Core Web Vitals](/guides/performance/observability/core_web_vitals) tracking through real user monitoring (RUM).
+- Transforming the response through [Serverless Compute](/guides/performance/serverless_compute)
+- [Removing response headers](/guides/performance/cdn_as_code/route_features#altering-the-response)
+- [Normalizing the cache key](/guides/performance/caching#customizing-the-cache-key)
+- Generating performance insights through [DevTools](/guides/performance/observability/devtools)
+- Tracking [Core Web Vitals](/guides/performance/observability/real_user_monitoring) through real user monitoring (RUM).
 
 <ExampleButtons
   title="Full-Featured"

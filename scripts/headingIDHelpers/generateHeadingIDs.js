@@ -85,7 +85,7 @@ function addHeaderID(line, slugger) {
     );
   }
 
-  return match[1] + match[2] + ' {/*' + id.trim() + '*/}';
+  return match[1] + match[2] + ' {/* ' + id.trim() + ' */}';
 }
 
 function addHeaderIDs(lines) {
@@ -119,7 +119,7 @@ async function main(paths) {
     import('remark-parse'),
     import('remark-slug'),
   ]);
-  const unified = unifiedMod;
+  const unified = unifiedMod.unified;
   const remarkParse = remarkParseMod.default;
   const remarkSlug = remarkSlugMod.default;
   modules = {unified, remarkParse, remarkSlug};

@@ -21,13 +21,11 @@ The argument is an Object that supports features outlined in the [Features Refer
 
 ```js
  router.match('/:path*', {
-   {
-     caching: {
-       max_age: "1h"
-     },
-     origin: {
-       set_origin: "origin"
-     }
+   caching: {
+     max_age: "1h"
+   },
+   origin: {
+     set_origin: "origin"
    }
  })
 ```

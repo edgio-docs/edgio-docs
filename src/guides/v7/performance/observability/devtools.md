@@ -28,7 +28,7 @@ In order to enable {{ PRODUCT }} Devtools, first ensure that the `{{ PACKAGE_NAM
 npm i -D {{ PACKAGE_NAME }}/devtools {{ PACKAGE_NAME }}/prefetch
 ```
 
-```bash tabLabel="Yarn"
+```bash tabLabel="Yarn 1 (Classic)"
 yarn add --dev {{ PACKAGE_NAME }}/devtools {{ PACKAGE_NAME }}/prefetch
 ```
 

@@ -88,7 +88,7 @@ Use the [{{ PRODUCT }} CLI](/guides/develop/cli) to build, test, and deploy your
 npm i -g {{ PACKAGE_NAME }}/cli@{{ PACKAGE_VERSION }}
 ```
 
-```bash tabLabel="Yarn"
+```bash tabLabel="Yarn 1 (Classic)"
 yarn global add {{ PACKAGE_NAME }}/cli@{{ PACKAGE_VERSION }}
 ```
 

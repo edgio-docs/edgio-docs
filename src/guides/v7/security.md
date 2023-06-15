@@ -40,8 +40,8 @@ Protect your external web infrastructure against these threats through the follo
 
 ## How Does It Work? {/*how-does-it-work*/}
 
-The following diagram highlights how traffic is screened before it is
-processed for delivery. The distributed nature of our worldwide network
-provides an additional layer of protection to origin servers. 
+{{ PRODUCT }} intercepts and filters out DDoS traffic before it reaches our security servers. This allows our security solution to focus on securing your web applications and API through the application layer. The following diagram shows how requests flow through our network.
 
-![](/images/v7/security/overview.png)
+![Traffic workflow](/images/v7/security/traffic-order-of-operations.png)
+
+[Learn how requests flow through WAF.](/guides/v7/security/waf#threat-detection)

@@ -128,8 +128,8 @@ const nav = {
               path: 'performance/observability/edge_insights',
             },
             {
-              title: 'Core Web Vitals',
-              path: 'performance/observability/core_web_vitals',
+              title: 'Real User Monitoring (RUM)',
+              path: 'performance/observability/real_user_monitoring',
             },
             {
               title: 'Devtools',
@@ -590,12 +590,12 @@ const nav = {
           routes: [
             {
               title: '@edgio/core',
-              path: '/docs/api/core',
+              path: '/docs/v7.x/api/core/',
               external: true,
             },
             {
               title: '@edgio/prefetch',
-              path: '/docs/api/prefetch',
+              path: '/docs/v7.x/api/prefetch/',
               external: true,
             },
           ],

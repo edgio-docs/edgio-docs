@@ -18,10 +18,7 @@ Identifies requests by the network from which the request was issued. A network 
 **Key information:**
 
 -   Certain requests may not return a valid AS number. A question mark (i.e., `?`) will match requests for which a valid AS number could not be determined.
--   Specify a value that matches the entire AS number for the desired network.
--   Specify multiple AS numbers by delimiting each one with a single space.
-
-    **Example:** A value of `64514 64515` matches requests arriving from either `64514` or `64515`.
+-   Specify a value that matches the entire AS number for the desired network (e.g., `64514` and `64515`).
 
 <edgejs>
 
@@ -29,27 +26,25 @@ Identifies requests by the network from which the request was issued. A network 
 
 -   Certain requests may not return a valid AS number. A question mark (i.e., `?`) will match requests for which a valid AS number could not be determined.
 -   Specify a value that matches the entire AS number for the desired network.
--   Specify multiple AS numbers by delimiting each one with a single space.
--   **Supported operators:** `=== | !==`
+-   Specify multiples values through the `in` and `not_in` operators.
+-   **Supported operators:** `=== | !== | in | not_in`
 
 **Example:**
 The following configuration matches requests arriving from either `64514` or `64515`:
 
 ```
 router.conditional({
-  if: [{
-      and: [{
-          '===': [{
-              location: 'asn',
+    if: [{
+            in: [{
+                    location: 'asn',
+                },
+                ['64514', '64515'],
+            ],
+        }, {
+            // Features
             },
-            '64514 64515',
-          ],
-        },        
-      ],
-    }, {
-         // Features 
-    },
-  ],
+        },
+    ],
 });
 ```
 
@@ -62,55 +57,32 @@ Identifies requests by the manufacturer (e.g., Samsung) of the device that issue
 **Key information:**
 
 -   Specify a value using any combination of numbers, letters, or symbols.
--   The method for specifying multiple values varies by operator:
-
-    -   **equals | does not equal:** Delimit each one with a single space  (e.g., `value1 value2`).
-
-        <Callout type="info">
-
-          Replace spaces in the brand name with `%20`.
-
-        </Callout>
-
-    -   **matches regular expression | does not match regular expression:** Use regular expression syntax (e.g., `value 1|value 2`).
+-   Use a regular expression to specify multiple values (e.g., `value 1|value 2`).
 
 <edgejs>
 **Key information:**
 
 -   Specify a value using any combination of numbers, letters, or symbols.
--   The method for specifying multiple values varies by operator:
-
-    -   `=== | !===`**:** Delimit each one with a single space  (e.g., `value1 value2`).
-
-        <Callout type="info">
-
-          Replace spaces in the brand name with `%20`.
-
-        </Callout>
-
-    -   `=~ | !~`**:** Use regular expression syntax (e.g., `value 1|value 2`).
+-   Use a regular expression to specify multiple values (e.g., 'value 1|value 2').
 -   **Supported operators:** `=== | !== | =~ | !~`
 
 **Example:**
 
 ```
 router.conditional({
-  if: [{
-      and: [{
-          '=~': [{
-              device: 'brand_name',
+    if: [{
+            '=~': [{
+                    device: 'brand_name',
+                },
+                'Samsung|Apple',
+            ],
+        }, {
+            // Features
             },
-            'Samsung|Apple',
-          ],
-        },        
-      ],
-    }, {
-         // Features 
-    },
-  ],
+        },
+    ],
 });
 ```
-
 </edgejs>
 
 #### City {/*city*/} <edgejs>location</edgejs>
@@ -125,25 +97,24 @@ Identifies requests by the city from which they originated.
 **Key information:**
 
 -   Certain requests may not return a valid city name. A question mark (i.e., `?`) will match requests for which a valid city name could not be determined.
--   **Supported operators:** `=== | !== | =~ | !~`
+-   Specify multiples values through the `in`/`not_in` operators or a regular expression (e.g., `value 1|value 2`).
+-   **Supported operators:** `=== | !== | =~ | !~ | in | not_in`
 
 **Example:**
 
 ```
 router.conditional({
-  if: [{
-      and: [{
-          '===': [{
-              location: 'city',
+    if: [{
+            '===': [{
+                    location: 'city',
+                },
+                'Miami',
+            ],
+        }, {
+            // Features
             },
-            'Miami',
-          ],
-        },        
-      ],
-    }, {
-         // Features 
-    },
-  ],
+        },
+    ],
 });
 ```
 
@@ -156,11 +127,11 @@ Identifies requests that originate from a particular IP address.
 **Key information:**
 
 -   Use CIDR notation.
--   Specify multiple IP addresses and/or IP address blocks by delimiting each one with a single space.
+<!-- -   Specify multiple IP addresses and/or IP address blocks by delimiting each one with a single space.
 
     -   **IPv4 Example:** `1.2.3.4 10.20.30.40` matches any requests arriving from either `1.2.3.4` or `10.20.30.40`.
     -   **IPv6 Example:** `1:2:3:4:5:6:7:8 10:20:30:40:50:60:70:80` matches any requests arriving from either `1:2:3:4:5:6:7:8` or `10:20:30:40:50:60:70:80`.
-
+-->
 -   The syntax for an IP address block is the base IP address followed by a forward slash and the prefix size.
 
     -   **IPv4 Example:** `5.5.5.64/26` matches any requests arriving from `5.5.5.64` through `5.5.5.127`.
@@ -177,11 +148,11 @@ Identifies requests that originate from a particular IP address.
 **Key information:**
 
 -   Use CIDR notation.
--   Specify multiple IP addresses and/or IP address blocks by delimiting each one with a single space.
+<!-- -   Specify multiple IP addresses and/or IP address blocks by delimiting each one with a single space.
 
     -   **IPv4 Example:** `1.2.3.4 10.20.30.40` matches any requests arriving from either `1.2.3.4` or `10.20.30.40`.
     -   **IPv6 Example:** `1:2:3:4:5:6:7:8 10:20:30:40:50:60:70:80` matches any requests arriving from either `1:2:3:4:5:6:7:8` or `10:20:30:40:50:60:70:80`.
-
+-->
 -   The syntax for an IP address block is the base IP address followed by a forward slash and the prefix size.
 
     -   **IPv4 Example:** `5.5.5.64/26` matches any requests arriving from `5.5.5.64` through `5.5.5.127`.
@@ -198,22 +169,19 @@ Identifies requests that originate from a particular IP address.
 
 ```
 router.conditional({
-  if: [{
-      and: [{
-          '===': [{
-              request: 'client_ip',
+    if: [{
+            '===': [{
+                    request: 'client_ip',
+                },
+                '5.5.5.64/26',
+            ],
+        }, {
+            // Features
             },
-            '5.5.5.64/26',
-          ],
-        },        
-      ],
-    }, {
-         // Features 
-    },
-  ],
+        },
+    ],
 });
 ```
-
 </edgejs>
 
 #### Continent {/*continent*/} <edgejs>location</edgejs>
@@ -248,25 +216,24 @@ Identifies requests by the continent from which the request was issued.
 
 -   Certain requests may not return a valid continent code. A question mark (i.e., ?) will match requests for which a valid continent code could not be determined.
 -   Continent codes are case-sensitive.
--   Specify multiple continents by delimiting each one with a single space.
+-   Specify multiples values through the `in` and `not_in` operators.
+-   **Supported operators:** `=== | !== | in | not_in`
 
 **Example:**
 
 ```
 router.conditional({
-  if: [{
-      and: [{
-          '===': [{
-              location: 'continent',
+    if: [{
+            in: [{
+                    location: 'continent',
+                },
+                ['NA', 'EU', 'AS'],
+            ],
+        }, {
+            // Features
             },
-            'NA EU AS',
-          ],
-        },        
-      ],
-    }, {
-         // Features 
-    },
-  ],
+        },
+    ],
 });
 ```
 
@@ -281,10 +248,7 @@ Identifies requests by a cookie's value.
 -   Set the **Cookie Name** option to the exact name of the desired cookie. You may not use special characters, including an asterisk, or a regular expression.
 -   Only a single cookie name may be specified per instance of this match condition.
 -   Cookie name comparisons are case-insensitive.
--   The method for specifying multiple cookie values varies by operator:
-
-    -   **equals | does not equal:** Delimit each one with a single space.
-    -   **matches regular expression | does not match regular expression:** Use regular expression syntax (e.g., `value 1|value 2`).
+-   Use a regular expression (e.g., `value 1|value 2`) to specify multiple cookie values.
 
 <edgejs>
 
@@ -293,32 +257,26 @@ Identifies requests by a cookie's value.
 -   Set `request.cookie` to the exact name of the desired cookie. You may not use special characters, including an asterisk, or a regular expression.
 -   Only a single cookie name may be specified per instance of this match condition.
 -   Cookie name comparisons are case-insensitive.
--   The method for specifying multiple cookie values varies by operator:
-
-    -   `=== | !===`**:** Delimit each one with a single space  (e.g., `value1 value2`).
-    -   `=~ | !~`**:** Use regular expression syntax (e.g., `value 1|value 2`).
+-   Use a regular expression (e.g., `value 1|value 2`) to specify multiple cookie values.
 -   **Supported operators:** `=== | !== | =~ | !~`
 
 **Example:**
 
 ```
 router.conditional({
-  if: [{
-      and: [{
-          '=~': [{
-              request.cookie: 'type',
+    if: [{
+            '=~': [{
+                    request.cookie: 'type',
+                },
+                'chocolate|oatmeal',
+            ],
+        }, {
+            // Features
             },
-            'chocolate|oatmeal',
-          ],
-        },        
-      ],
-    }, {
-         // Features 
-    },
-  ],
+        },
+    ],
 });
 ```
-
 </edgejs>
 
 #### Country {/*country*/} <edgejs>location</edgejs>
@@ -327,7 +285,6 @@ Identifies requests by the country from which the request was issued. Specify ea
 
 **Key information:**
 
--   Specify multiple country codes by delimiting each one with a single space.
 -   The `EU` and `AP` country codes do not encompass all IP addresses in those regions. 
 
     [Learn more.](/reference/country_codes#regions)
@@ -339,35 +296,32 @@ Identifies requests by the country from which the request was issued. Specify ea
 
 **Key information:**
 
--   Specify multiple country codes by delimiting each one with a single space.
 -   The `EU` and `AP` country codes do not encompass all IP addresses in those regions.
 
     [Learn more.](/reference/country_codes#regions)
 
 -   Certain requests may not return a valid country code. A question mark (i.e., ?) will match requests for which a valid country code could not be determined.
 -   Country codes are case-sensitive.
--   **Supported operators:** `=== | !==`
+-   Specify multiples values through the `in` and `not_in` operators.
+-   **Supported operators:** `=== | !== | in | not_in`
 
 **Example:**
 
 ```
 router.conditional({
-  if: [{
-      and: [{
-          '===': [{
-              location: 'country',
+    if: [{
+            in: [{
+                    location: 'country',
+                },
+                ['US', 'MX', 'CA'],
+            ],
+        }, {
+            // Features
             },
-            'US MX CA',
-          ],
-        },        
-      ],
-    }, {
-         // Features 
-    },
-  ],
+        },
+    ],
 });
 ```
-
 </edgejs>
 
 <!--
@@ -402,19 +356,17 @@ Identifies requests by the request URL's relative path. This relative path exclu
 
 ```
 router.conditional({
-  if: [{
-      and: [{
-          '===': [{
-              request.path: 'directory',
+    if: [{
+            '===': [{
+                    request.path: 'directory',
+                },
+                '/marketing/conferences/',
+            ],
+        }, {
+            // Features
             },
-            '/marketing/conferences/',
-          ],
-        },        
-      ],
-    }, {
-         // Features 
-    },
-  ],
+        },
+    ],
 });
 ```
 </edgejs>
@@ -428,7 +380,6 @@ Identifies requests by the metro code (Designated Market Area - DMA) from which 
 
 -   Specify a metro code as an integer value.
 -   Request DMA codes from Nielsen.
--   Specify multiple metro codes by delimiting each one with a single space.
 -   Metro codes are only applicable for traffic from the United States.
 -   Certain requests may not return a valid metro code. A question mark (i.e., `?`) will match requests for which a valid metro code could not be determined.
 
@@ -437,28 +388,26 @@ Identifies requests by the metro code (Designated Market Area - DMA) from which 
 
 -   Specify a metro code as an integer value.
 -   Request DMA codes from Nielsen.
--   Specify multiple metro codes by delimiting each one with a single space.
 -   Metro codes are only applicable for traffic from the United States.
 -   Certain requests may not return a valid metro code. A question mark (i.e., `?`) will match requests for which a valid metro code could not be determined.
--   **Supported operators:** `=== | !==`
+-   Specify multiples values through the `in` and `not_in` operators.
+-   **Supported operators:** `=== | !== | in | not_in`
 
 **Example:**
 
 ```
 router.conditional({
-  if: [{
-      and: [{
-          '===': [{
-              location: 'dma_code',
+    if: [{
+            in: [{
+                    location: 'dma_code',
+                },
+                ['803'],
+            ],
+        }, {
+            // Features
             },
-            '803',
-          ],
-        },        
-      ],
-    }, {
-         // Features 
-    },
-  ],
+        },
+    ],
 });
 ```
 
@@ -473,24 +422,20 @@ Identifies requests by whether the device that issued the request supports dual 
 
 ```
 router.conditional({
-  if: [{
-      and: [{
-          '===': [{
-              device: 'dual_orientation',
+    if: [{
+            '===': [{
+                    device: 'dual_orientation',
+                },
+                true,
+            ],
+        }, {
+            // Features
             },
-            true,
-          ],
-        },        
-      ],
-    }, {
-         // Features 
-    },
-  ],
+        },
+    ],
 });
 ```
-
 </edgejs>
-
 
 #### Extension {/*extension*/} <edgejs>request.path</edgejs>
 
@@ -503,28 +448,32 @@ This match condition looks for a URL that ends with a period (`.`) and the speci
 **Incorrect:** `.htm`
 
 <edgejs>
+**Key information:**
+
+-   This match condition looks for a URL that ends with a period (`.`) and the specified file extension. Therefore, make sure that any file extensions specified in the **Value** option do not contain a leading period.
+
+    **Correct:** `htm`
+
+    **Incorrect:** `.htm`
+-   **Supported operators:** `=== | !== | in | not_in`
 
 **Example:**
 
-
 ```
 router.conditional({
-  if: [{
-      and: [{
-          '===': [{
-              request.path: 'extension',
+    if: [{
+            in: [{
+                    request.path: 'extension',
+                },
+                ['png', 'jpg', 'jpeg'],
+            ],
+        }, {
+            // Features
             },
-            'png jpg jpeg',
-          ],
-        },        
-      ],
-    }, {
-         // Features 
-    },
-  ],
+        },
+    ],
 });
 ```
-
 </edgejs>
 
 
@@ -535,56 +484,33 @@ Identifies requests by the filename defined in the URL.
 **Key information:**
 
 -   For the purposes of this match condition, a filename consists of the name of the requested asset, a period, and the file extension (e.g., `index.html`). 
--   The method for specifying multiple values varies by operator:
-
-    -   **equals | does not equal:** Delimit each one with a single space.
-
-        <Callout type="info">
-
-          Replace spaces in the filename with `%20`.
-
-        </Callout>
-
-    -   **matches regular expression | does not match regular expression:** Use regular expression syntax (e.g., `value 1|value 2`).
+-   Use a regular expression to specify multiples values (e.g., `value 1|value 2`).
 
 <edgejs>
 
 **Key information:**
 
 -   For the purposes of this match condition, a filename consists of the name of the requested asset, a period, and the file extension (e.g., `index.html`).
--   The method for specifying multiple values varies by operator:
-
-    -   `=== | !==`**:** Delimit each one with a single space.
-
-        <Callout type="info">
-
-          Replace spaces in the filename with `%20`.
-
-        </Callout>
-
-    -   `=~ | !~`**:** Use regular expression syntax (e.g., `value 1|value 2`).
+-   Use a regular expression to specify multiples values (e.g., `value 1|value 2`).
 -   **Supported operators:** `=== | !== | =~ | !~`
 
 **Example:**
 
 ```
 router.conditional({
-  if: [{
-      and: [{
-          '===': [{
-              request.path: 'filename',
+    if: [{
+            '===': [{
+                    request.path: 'filename',
+                },
+                'basketball.mp4',
+            ],
+        }, {
+            // Features
             },
-            'basketball.mp4',
-          ],
-        },        
-      ],
-    }, {
-         // Features 
-    },
-  ],
+        },
+    ],
 });
 ```
-
 </edgejs>
 
 <!--
@@ -609,19 +535,17 @@ Identifies requests by whether the device that issued the request supports Base6
 
 ```
 router.conditional({
-  if: [{
-      and: [{
-          '===': [{
-              device: 'image_inlining',
+    if: [{
+            '===': [{
+                    device: 'image_inlining',
+                },
+                true,
+            ],
+        }, {
+            // Features
             },
-            true,
-          ],
-        },        
-      ],
-    }, {
-         // Features 
-    },
-  ],
+        },
+    ],
 });
 ```
 </edgejs>
@@ -636,19 +560,17 @@ Identifies requests by whether the operating system of the device that issued th
 
 ```
 router.conditional({
-  if: [{
-      and: [{
-          '===': [{
-              device: 'is_android',
+    if: [{
+            '===': [{
+                    device: 'is_android',
+                },
+                true,
+            ],
+        }, {
+            // Features
             },
-            true,
-          ],
-        },        
-      ],
-    }, {
-         // Features 
-    },
-  ],
+        },
+    ],
 });
 ```
 </edgejs>
@@ -658,24 +580,21 @@ router.conditional({
 Identifies requests by whether the device that issued the request is a native application. 
 
 <edgejs>
-
 **Example:**
 
 ```
 router.conditional({
-  if: [{
-      and: [{
-          '===': [{
-              device: 'is_app',
+    if: [{
+            '===': [{
+                    device: 'is_app',
+                },
+                true,
+            ],
+        }, {
+            // Features
             },
-            true,
-          ],
-        },        
-      ],
-    }, {
-         // Features 
-    },
-  ],
+        },
+    ],
 });
 ```
 </edgejs>
@@ -688,6 +607,21 @@ Identifies requests by whether the device that issued the request provides a ful
 <edgejs>
 
 **Example:**
+```
+router.conditional({
+    if: [{
+            '===': [{
+                    device: 'REPLACE',
+                },
+                true,
+            ],
+        }, {
+            // Features
+            },
+        },
+    ],
+});
+```
 
 </edgejs>
 -->
@@ -702,19 +636,17 @@ Identifies requests by whether the operating system of the device that issued th
 
 ```
 router.conditional({
-  if: [{
-      and: [{
-          '===': [{
-              device: 'is_ios',
+    if: [{
+            '===': [{
+                    device: 'is_ios',
+                },
+                true,
+            ],
+        }, {
+            // Features
             },
-            true,
-          ],
-        },        
-      ],
-    }, {
-         // Features 
-    },
-  ],
+        },
+    ],
 });
 ```
 </edgejs>
@@ -729,19 +661,17 @@ Identifies requests by whether the device that issued the request is considered 
 
 ```
 router.conditional({
-  if: [{
-      and: [{
-          '===': [{
-              device: 'is_robot',
+    if: [{
+            '===': [{
+                    device: 'is_robot',
+                },
+                true,
+            ],
+        }, {
+            // Features
             },
-            true,
-          ],
-        },        
-      ],
-    }, {
-         // Features 
-    },
-  ],
+        },
+    ],
 });
 ```
 </edgejs>
@@ -756,19 +686,17 @@ Identifies requests by whether the device that issued the request is a smartphon
 
 ```
 router.conditional({
-  if: [{
-      and: [{
-          '===': [{
-              device: 'is_smartphone',
+    if: [{
+            '===': [{
+                    device: 'is_smartphone',
+                },
+                true,
+            ],
+        }, {
+            // Features
             },
-            true,
-          ],
-        },        
-      ],
-    }, {
-         // Features 
-    },
-  ],
+        },
+    ],
 });
 ```
 </edgejs>
@@ -783,19 +711,17 @@ Identifies requests by whether the device that issued the request is a smart TV.
 
 ```
 router.conditional({
-  if: [{
-      and: [{
-          '===': [{
-              device: 'is_smarttv',
+    if: [{
+            '===': [{
+                    device: 'is_smarttv',
+                },
+                true,
+            ],
+        }, {
+            // Features
             },
-            true,
-          ],
-        },        
-      ],
-    }, {
-         // Features 
-    },
-  ],
+        },
+    ],
 });
 ```
 </edgejs>
@@ -810,19 +736,17 @@ Identifies requests by whether the device that issued the request is a tablet. T
 
 ```
 router.conditional({
-  if: [{
-      and: [{
-          '===': [{
-              device: 'is_tablet',
+    if: [{
+            '===': [{
+                    device: 'is_tablet',
+                },
+                true,
+            ],
+        }, {
+            // Features
             },
-            true,
-          ],
-        },        
-      ],
-    }, {
-         // Features 
-    },
-  ],
+        },
+    ],
 });
 ```
 </edgejs>
@@ -837,19 +761,17 @@ Identifies requests by whether the device that issued the request uses a touchsc
 
 ```
 router.conditional({
-  if: [{
-      and: [{
-          '===': [{
-              device: 'is_touchscreen',
+    if: [{
+            '===': [{
+                    device: 'is_touchscreen',
+                },
+                true,
+            ],
+        }, {
+            // Features
             },
-            true,
-          ],
-        },        
-      ],
-    }, {
-         // Features 
-    },
-  ],
+        },
+    ],
 });
 ```
 </edgejs>
@@ -864,19 +786,17 @@ Identifies requests by whether the device that issued the request is a Windows M
 
 ```
 router.conditional({
-  if: [{
-      and: [{
-          '===': [{
-              device: 'is_windows_phone',
+    if: [{
+            '===': [{
+                    device: 'is_windows_phone',
+                },
+                true,
+            ],
+        }, {
+            // Features
             },
-            true,
-          ],
-        },        
-      ],
-    }, {
-         // Features 
-    },
-  ],
+        },
+    ],
 });
 ```
 </edgejs>
@@ -891,19 +811,17 @@ Identifies requests by whether the device that issued the request is a wireless 
 
 ```
 router.conditional({
-  if: [{
-      and: [{
-          '===': [{
-              device: 'is_wireless_device',
+    if: [{
+            '===': [{
+                    device: 'is_wireless_device',
+                },
+                true,
+            ],
+        }, {
+            // Features
             },
-            true,
-          ],
-        },        
-      ],
-    }, {
-         // Features 
-    },
-  ],
+        },
+    ],
 });
 ```
 </edgejs>
@@ -933,19 +851,17 @@ Identifies requests by the latitude from which the request was issued.
 
 ```
 router.conditional({
-  if: [{
-      and: [{
-          '===': [{
-              location: 'latitude',
+    if: [{
+            '===': [{
+                    location: 'latitude',
+                },
+                '33.9705',
+            ],
+        }, {
+            // Features
             },
-            '33.9705',
-          ],
-        },        
-      ],
-    }, {
-         // Features 
-    },
-  ],
+        },
+    ],
 });
 ```
 </edgejs>
@@ -975,19 +891,17 @@ Identifies requests by the longitude from which the request was issued.
 
 ```
 router.conditional({
-  if: [{
-      and: [{
-          '===': [{
-              location: 'longitude',
+    if: [{
+            '===': [{
+                    location: 'longitude',
+                },
+                '-118.4308',
+            ],
+        }, {
+            // Features
             },
-            '-118.4308',
-          ],
-        },        
-      ],
-    }, {
-         // Features 
-    },
-  ],
+        },
+    ],
 });
 ```
 </edgejs>
@@ -998,52 +912,29 @@ Identifies requests by the marketing name (e.g., `BlackBerry 8100 Pearl`) of the
 
 **Key information:**
 
--   The method for specifying multiple values varies by operator:
-
-    -   **equals | does not equal:** Delimit each one with a single space.
-
-        <Callout type="info">
-
-          Replace spaces in the name with `%20`.
-
-        </Callout>
-
-    -   **matches regular expression | does not match regular expression:** Use regular expression syntax (e.g., `value 1|value 2`).
-
+-   Use a regular expression to specify multiples values (e.g., `value 1|value 2`).
 
 <edgejs>
 **Key information:**
 
--   The method for specifying multiple values varies by operator:
-
-    -   `=== | !==`**:** Delimit each one with a single space.
-
-        <Callout type="info">
-
-          Replace spaces in the name with `%20`.
-
-        </Callout>
-
-    -   `=~ | !~`**:** Use regular expression syntax (e.g., `value 1|value 2`).
+-   Use a regular expression to specify multiples values (e.g., `value 1|value 2`).
 -   **Supported operators:** `=== | !== | =~ | !~`
 
 **Example:**
 
 ```
 router.conditional({
-  if: [{
-      and: [{
-          '=~': [{
-              device: 'marketing_name',
+    if: [{
+            '=~': [{
+                    device: 'marketing_name',
+                },
+                'Galaxy(.*)',
+            ],
+        }, {
+            // Features
             },
-            'Galaxy(.*)',
-          ],
-        },        
-      ],
-    }, {
-         // Features 
-    },
-  ],
+        },
+    ],
 });
 ```
 </edgejs>
@@ -1065,21 +956,20 @@ src for PATCH: UI
 -   **Supported operators:** `=== | !==`
 
 **Example:**
+
 ```
 router.conditional({
-  if: [{
-      and: [{
-          '===': [{
-              request: 'method',
+    if: [{
+            '===': [{
+                    request: 'method',
+                },
+                'GET',
+            ],
+        }, {
+            // Features
             },
-            'GET',
-          ],
-        },        
-      ],
-    }, {
-         // Features 
-    },
-  ],
+        },
+    ],
 });
 ```
 </edgejs>
@@ -1090,51 +980,29 @@ Identifies requests by the name of the browser (e.g., Chrome) that issued the re
 
 **Key information:**
 
--   The method for specifying multiple values varies by operator:
-
-    -   **equals | does not equal:** Delimit each one with a single space.
-
-        <Callout type="info">
-
-          Replace spaces in the browser name with `%20`.
-
-        </Callout>
-
-    -   **matches regular expression | does not match regular expression:** Use regular expression syntax (e.g., `value 1|value 2`).
+-   Use a regular expression to specify multiples values (e.g., `value 1|value 2`).
 
 <edgejs>
 **Key information:**
 
--   The method for specifying multiple values varies by operator:
-
-    -   `=== | !==`**:** Delimit each one with a single space.
-
-        <Callout type="info">
-
-          Replace spaces in the browser name with `%20`.
-
-        </Callout>
-
-    -   `=~ | !~`**:** Use regular expression syntax (e.g., `value 1|value 2`).
+-   Use a regular expression to specify multiples values (e.g., `value 1|value 2`).
 -   **Supported operators:** `=== | !== | =~ | !~`
 
 **Example:**
 
 ```
 router.conditional({
-  if: [{
-      and: [{
-          '===': [{
-              device: 'mobile_browser',
+    if: [{
+            '===': [{
+                    device: 'mobile_browser',
+                },
+                'Chrome',
+            ],
+        }, {
+            // Features
             },
-            'Chrome',
-          ],
-        },        
-      ],
-    }, {
-         // Features 
-    },
-  ],
+        },
+    ],
 });
 ```
 </edgejs>
@@ -1145,51 +1013,29 @@ Identifies requests by the model name (e.g., s10) of the device that issued the 
 
 **Key information:**
 
--   The method for specifying multiple values varies by operator:
-
-    -   **equals | does not equal:** Delimit each one with a single space.
-
-        <Callout type="info">
-
-          Replace spaces in the model name with `%20`.
-
-        </Callout>
-
-    -   **matches regular expression | does not match regular expression:** Use regular expression syntax (e.g., `value 1|value 2`).
+-   Use a regular expression to specify multiples values (e.g., `value 1|value 2`).
 
 <edgejs>
 **Key information:**
 
--   The method for specifying multiple values varies by operator:
-
-    -   `=== | !==`**:** Delimit each one with a single space.
-
-        <Callout type="info">
-
-          Replace spaces in the model name with `%20`.
-
-        </Callout>
-
-    -   `=~ | !~`**:** Use regular expression syntax (e.g., `value 1|value 2`).
+-   Use a regular expression to specify multiples values (e.g., `value 1|value 2`).
 -   **Supported operators:** `=== | !== | =~ | !~`
 
 **Example:**
 
 ```
 router.conditional({
-  if: [{
-      and: [{
-          '===': [{
-              device: 'model_name',
+    if: [{
+            '===': [{
+                    device: 'model_name',
+                },
+                's17',
+            ],
+        }, {
+            // Features
             },
-            's10',
-          ],
-        },        
-      ],
-    }, {
-         // Features 
-    },
-  ],
+        },
+    ],
 });
 ```
 </edgejs>
@@ -1256,19 +1102,17 @@ Identifies requests by the request URL's relative path. This relative path compa
 
 ```
 router.conditional({
-  if: [{
-      and: [{
-          '==': [{
-              request: 'origin_path',
+    if: [{
+            '==': [{
+                    request: 'origin_path',
+                },
+                '/marketing/conferences/:path*',
+            ],
+        }, {
+            // Features
             },
-            '/marketing/conferences/:path*',
-          ],
-        },        
-      ],
-    }, {
-         // Features 
-    },
-  ],
+        },
+    ],
 });
 ```
 </edgejs>
@@ -1333,21 +1177,20 @@ Identifies requests by the relative path of the request URL submitted by the cli
 
 **Example:**
 
+
 ```
 router.conditional({
-  if: [{
-      and: [{
-          '==': [{
-              request: 'path',
+    if: [{
+            '==': [{
+                    request: 'path',
+                },
+                '/marketing/conferences/:path*',
+            ],
+        }, {
+            // Features
             },
-            '/marketing/conferences/:path*',
-          ],
-        },        
-      ],
-    }, {
-         // Features 
-    },
-  ],
+        },
+    ],
 });
 ```
 </edgejs>
@@ -1358,26 +1201,24 @@ Identifies requests by the point-of-presence (POP) that processed the request. S
 
 <edgejs>
 **Key information:**
-
+-   Specify multiples values through a regular expression (e.g., `value 1|value 2`).
 -   **Supported operators:** `=== | !== | =~ | !~`
 
 **Example:**
 
 ```
 router.conditional({
-  if: [{
-      and: [{
-          '===': [{
-              request: 'pop_code',
+    if: [{
+            '===': [{
+                    request: 'pop_code',
+                },
+                'lac',
+            ],
+        }, {
+            // Features
             },
-            'lac',
-          ],
-        },        
-      ],
-    }, {
-         // Features 
-    },
-  ],
+        },
+    ],
 });
 ```
 </edgejs>
@@ -1391,39 +1232,30 @@ Identifies requests by the postal code from which the request was issued.
 -   A comparison will only be performed against the first 3 characters for Canadian postal codes.
 -   A comparison will only be performed against the first 2 - 4 characters for United Kingdom postal codes.
 -   Certain requests may not return a valid postal code. A question mark (i.e., `?`) will match requests for which a valid postal code could not be determined.
--   The method for specifying multiple values varies by operator:
-
-    -   **equals | does not equal:** Delimit each one with a single space.
-    -   **matches regular expression | does not match regular expression:** Use regular expression syntax (e.g., `value 1|value 2`).
 
 <edgejs>
 **Key information:**
 -   Specify a postal code as an integer value.
 -   A comparison will only be performed against the first 3 characters for Canadian postal codes.
 -   A comparison will only be performed against the first 2 - 4 characters for United Kingdom postal codes.
--   The method for specifying multiple values varies by operator:
-
-    -   `=== | !==`**:** Delimit each one with a single space.
-    -   `=~ | !~`**:** Use regular expression syntax (e.g., `value 1|value 2`).
--   **Supported operators:** `=== | !== | =~ | !~`
+-   Specify multiples values through the `in`/`not_in` operators or a regular expression (e.g., `value 1|value 2`).
+-   **Supported operators:** `=== | !== | =~ | !~ | in | not_in`
 
 **Example:**
 
 ```
 router.conditional({
-  if: [{
-      and: [{
-          '===': [{
-              location: 'postal_code',
+    if: [{
+            '===': [{
+                    location: 'postal_code',
+                },
+                '90405',
+            ],
+        }, {
+            // Features
             },
-            '90405',
-          ],
         },
-      ],
-    }, {
-         // Features 
-    },
-  ],
+    ],
 });
 ```
 </edgejs>
@@ -1437,19 +1269,17 @@ Identifies requests by whether the device that issued the request supports the p
 
 ```
 router.conditional({
-  if: [{
-      and: [{
-          '===': [{
-              device: 'progressive_download',
+    if: [{
+            '===': [{
+                    device: 'progressive_download',
+                },
+                true,
+            ],
+        }, {
+            // Features
             },
-            true,
-          ],
-        },        
-      ],
-    }, {
-         // Features 
-    },
-  ],
+        },
+    ],
 });
 ```
 </edgejs>
@@ -1516,19 +1346,17 @@ Identifies requests by the query string of the request URL submitted by the clie
 
 ```
 router.conditional({
-  if: [{
-      and: [{
-          '===': [{
-              request: 'query',
+    if: [{
+            '===': [{
+                    request: 'query',
+                },
+                'country=france',
+            ],
+        }, {
+            // Features
             },
-            'country=france',
-          ],
-        },        
-      ],
-    }, {
-         // Features 
-    },
-  ],
+        },
+    ],
 });
 ```
 </edgejs>
@@ -1551,17 +1379,7 @@ Identifies requests by the value assigned to a query string parameter in the req
         -   **SPACE:** %20
         -   **&:** %26
         -   **%:** %25
-    -   The method for specifying multiple values varies by operator:
-
-        -   **equals | does not equal:** Delimit each one with a single space.
-
-            <Callout type="info">
-
-              Replace spaces in the value with `%20`.
-
-            </Callout>
-
-        -   **matches regular expression | does not match regular expression:** Use regular expression syntax (e.g., `value 1|value 2`).
+    -   Specify multiples values through a regular expression (e.g., `value 1|value 2`).
 
 <edgejs>
 **Key information:**
@@ -1578,36 +1396,24 @@ Identifies requests by the value assigned to a query string parameter in the req
         -   **SPACE:** %20
         -   **&:** %26
         -   **%:** %25
-    -   The method for specifying multiple values varies by operator:
-
-        -   `=== | !==`**:** Delimit each one with a single space.
-
-            <Callout type="info">
-
-              Replace spaces in the value with `%20`.
-
-            </Callout>
-
-        -   `=~ | !~`**:** Use regular expression syntax (e.g., `value 1|value 2`).
+    -   Specify multiples values through a regular expression (e.g., `value 1|value 2`).
 -   **Supported operators:** `=== | !== | =~ | !~`
 
 **Example:**
 
 ```
 router.conditional({
-  if: [{
-      and: [{
-          '===': [{
-              request.origin_query: 'country',
+    if: [{
+            '===': [{
+                    request.origin_query: 'country',
+                },
+                'france',
+            ],
+        }, {
+            // Features
             },
-            'france',
-          ],
-        },        
-      ],
-    }, {
-         // Features 
-    },
-  ],
+        },
+    ],
 });
 ```
 </edgejs>
@@ -1674,19 +1480,17 @@ Identifies requests by the query string of the requested URL. This query string 
 
 ```
 router.conditional({
-  if: [{
-      and: [{
-          '===': [{
-              request: 'origin_query_string',
+    if: [{
+            '===': [{
+                    request: 'origin_query_string',
+                },
+                'country=france',
+            ],
+        }, {
+            // Features
             },
-            'country=france',
-          ],
-        },        
-      ],
-    }, {
-         // Features 
-    },
-  ],
+        },
+    ],
 });
 ```
 </edgejs>
@@ -1724,22 +1528,20 @@ Identifies requests by performing a comparison against a random integer.
 -   **Supported operators:** `< | <= | > | >=`
 
 **Example:** The following route is satisfied when a request is randomly assigned 6, 7, 8, 9, or 10:
-
+	  
 ```
 router.conditional({
-  if: [{
-      and: [{
-          '>': [{
-              random: 10,
+    if: [{
+            '>': [{
+                    random: 10,
+                },
+                5,
+            ],
+        }, {
+            // Features
             },
-            5,
-          ],
-        },        
-      ],
-    }, {
-         // Features 
-    },
-  ],
+        },
+    ],
 });
 ```
 </edgejs>
@@ -1750,37 +1552,29 @@ Identifies requests by the referrer's hostname. A referrer's hostname is determi
 
 **Key information:**
 
--   The method for specifying multiple values varies by operator:
-
-    -   **equals | does not equal:** Delimit each one with a single space.
-    -   **matches regular expression | does not match regular expression:** Use regular expression syntax (e.g., `value 1|value 2`).
+-   Specify multiples values through a regular expression (e.g., `value 1|value 2`).
 
 <edgejs>
 **Key information:**
 
--   The method for specifying multiple values varies by operator:
-
-    -   `=== | !==`**:** Delimit each one with a single space.
-    -   `=~ | !~`**:** Use regular expression syntax (e.g., `value 1|value 2`).
+-   Specify multiples values through a regular expression (e.g., `value 1|value 2`).
 -   **Supported operators:** `=== | !== | =~ | !~`
 
 **Example:**
 
 ```
 router.conditional({
-  if: [{
-      and: [{
-          '===': [{
-              request: 'referring_domain',
+    if: [{
+            '===': [{
+                    request: 'referring_domain',
+                },
+                'www.example.com',
+            ],
+        }, {
+            // Features
             },
-            'www.example.com',
-          ],
-        },        
-      ],
-    }, {
-         // Features 
-    },
-  ],
+        },
+    ],
 });
 ```
 </edgejs>
@@ -1818,10 +1612,6 @@ Identifies requests by the code for the region (e.g., state or province) from wh
     -   Sandy Point, Bahamas (`BS-SP`)
 
 -   Certain requests may not return a valid region code. A question mark (i.e., `?`) will match requests for which a valid region code could not be determined.
--   The method for specifying multiple values varies by operator:
-
-    -   **equals | does not equal:** Delimit each one with a single space.
-    -   **matches regular expression | does not match regular expression:** Use regular expression syntax (e.g., `value 1|value 2`).
 
 <edgejs>
 **Key information:**
@@ -1853,29 +1643,24 @@ Identifies requests by the code for the region (e.g., state or province) from wh
     -   Sandy Point, Bahamas (`BS-SP`)
 
 -   Certain requests may not return a valid region code. A question mark (i.e., `?`) will match requests for which a valid region code could not be determined.
--   The method for specifying multiple values varies by operator:
-
-    -   `=== | !==`**:** Delimit each one with a single space.
-    -   `=~ | !~`**:** Use regular expression syntax (e.g., `value 1|value 2`).
--   **Supported operators:** `=== | !== | =~ | !~`
+-   Specify multiples values through the `in`/`not_in` operators or a regular expression (e.g., `value 1|value 2`).
+-   **Supported operators:** `=== | !== | =~ | !~ | in | not_in`
 
 **Example:**
 
 ```
 router.conditional({
-  if: [{
-      and: [{
-          '===': [{
-              location: 'region_code',
+    if: [{
+            '===': [{
+                    location: 'region_code',
+                },
+                'CA',
+            ],
+        }, {
+            // Features
             },
-            'CA',
-          ],
-        },        
-      ],
-    }, {
-         // Features 
-    },
-  ],
+        },
+    ],
 });
 ```
 </edgejs>
@@ -1899,19 +1684,17 @@ Identifies requests by the date on which the device that issued the request was 
 
 ```
 router.conditional({
-  if: [{
-      and: [{
-          '===': [{
-              device: 'release_date',
+    if: [{
+            '===': [{
+                    device: 'release_date',
+                },
+                '2022_december',
+            ],
+        }, {
+            // Features
             },
-            '2022_december',
-          ],
-        },        
-      ],
-    }, {
-         // Features 
-    },
-  ],
+        },
+    ],
 });
 ```
 </edgejs>
@@ -1929,17 +1712,7 @@ Identifies requests by request header value.
     -   Only request headers whose name is an exact match to the specified value may satisfy this condition.
 
 -   **Header value:**
-    -   The method for specifying multiple values varies by operator:
-
-        -   **equals | does not equal:** Delimit each one with a single space.
-
-            <Callout type="info">
-
-              Replace spaces in the value with `%20`.
-
-            </Callout>
-
-        -   **matches regular expression | does not match regular expression:** Use regular expression syntax (e.g., `value 1|value 2`).
+    -   Specify multiples values through a regular expression (e.g., `value 1|value 2`).
 
 <edgejs>
 **Key information:**
@@ -1952,36 +1725,24 @@ Identifies requests by request header value.
 
 -   **Header value:**
     -   Set the second element of the array to the desired request header value (string). 
-    -   The method for specifying multiple values varies by operator:
-
-        -   `=== | !==`**:** Delimit each one with a single space.
-
-            <Callout type="info">
-
-              Replace spaces in the value with `%20`.
-
-            </Callout>
-
-        -   `=~ | !~`**:** Use regular expression syntax (e.g., `value 1|value 2`).
+    -   Specify multiples values through a regular expression (e.g., `value 1|value 2`).
 -   **Supported operators:** `=== | !== | =~ | !~`
 
 **Example:**
 
 ```
 router.conditional({
-  if: [{
-      and: [{
-          '=~': [{
-              request.header: 'type',
+    if: [{
+            '=~': [{
+                    request.header: 'type',
+                },
+                'chocolate|oatmeal',
+            ],
+        }, {
+            // Features
             },
-            'chocolate|oatmeal',
-          ],
-        },        
-      ],
-    }, {
-         // Features 
-    },
-  ],
+        },
+    ],
 });
 ```
 </edgejs>
@@ -1998,7 +1759,7 @@ Identifies requests by the height, in pixels, of the device that issued the requ
 <edgejs>
 **Key information:**
 
--   Specify height, in pixels, as a string value.
+-   Specify height, in pixels, as an integer.
 -   You may not specify a decimal value.
 -   **Supported operators:** `=== | !== | < | <= | >= | >`
 
@@ -2006,19 +1767,17 @@ Identifies requests by the height, in pixels, of the device that issued the requ
 
 ```
 router.conditional({
-  if: [{
-      and: [{
-          '>=': [{
-              device: 'resolution_height',
+    if: [{
+            '>=': [{
+                    device: 'resolution_height',
+                },
+                1080,
+            ],
+        }, {
+            // Features
             },
-            "1080",
-          ],
-        },        
-      ],
-    }, {
-         // Features 
-    },
-  ],
+        },
+    ],
 });
 ```
 </edgejs>
@@ -2035,7 +1794,7 @@ Identifies requests by the width, in pixels, of the device that issued the reque
 <edgejs>
 **Key information:**
 
--   Specify width, in pixels, as a string value.
+-   Specify width, in pixels, as an integer.
 -   You may not specify a decimal value.
 -   **Supported operators:** `=== | !== | < | <= | >= | >`
 
@@ -2043,19 +1802,17 @@ Identifies requests by the width, in pixels, of the device that issued the reque
 
 ```
 router.conditional({
-  if: [{
-      and: [{
-          '>=': [{
-              device: 'resolution_width',
+    if: [{
+            '>=': [{
+                    device: 'resolution_width',
+                },
+                1920,
+            ],
+        }, {
+            // Features
             },
-            "1920",
-          ],
-        },        
-      ],
-    }, {
-         // Features 
-    },
-  ],
+        },
+    ],
 });
 ```
 </edgejs>
@@ -2072,19 +1829,17 @@ Identifies requests by their HTTP protocol: HTTP or HTTPS.
 
 ```
 router.conditional({
-  if: [{
-      and: [{
-          '===': [{
-              request: 'scheme',
+    if: [{
+            '===': [{
+                    request: 'scheme',
+                },
+                'HTTP',
+            ],
+        }, {
+            // Features
             },
-            'HTTP',
-          ],
-        },        
-      ],
-    }, {
-         // Features 
-    },
-  ],
+        },
+    ],
 });
 ```
 </edgejs>

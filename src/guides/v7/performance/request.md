@@ -24,7 +24,7 @@ A request commonly contains the following components:
 Learn how:
 
 -   [Requests flow through WAF.](/guides/security/waf#threat-detection)
--   [Content is cached on our network.](/guides/performance/caching#request-flow)
+-   [Content is cached on our network.](/guides/performance/caching#default-caching-policy)
 
 ## Request Method {/*request-method*/}
 

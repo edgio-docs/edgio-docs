@@ -2,7 +2,7 @@
 title: Caching
 ---
 
-Caching creates a copy of the requested content on our edge servers. This dramatically reduces the distance that the data has to travel to fulfill all future requests. 
+Caching creates a copy of the requested content within our edge and Origin Shield POPs. This improves your site's performance by allowing clients to retrieve your content from the POP closest to them. 
 
 ## Environments and Caching {/* environments-and-caching */}
 
@@ -15,7 +15,7 @@ Each environment provides a separate edge cache for the most recent deployment. 
 - **Edge Points-of-Presence (POP):** An edge POP handles receives and responds to requests for your content.
 - **Origin Shield POP:** An Origin Shield POP improves cache efficiency, reduces the load on your servers, and reduces network bandwidth. If you have assigned at least one Origin Shield POP to your origin configuration, our edge POPs can funnel cache misses through an Origin Shield POP.
 
-There is very little difference in time to first byte (TTFB) for responses served from an edge or Origin Shield POP. In either case, the response is served nearly instantly (typically 25-100ms). Concurrent requests for the same URL on different POPs that result in a cache miss will be coalesced at the Origin Shield POP. If you have configured your origin to only use an Origin Shield POP, then it will only submit a single request at a time to your origin servers for each cacheable URL.
+There is very little difference in time to first byte (TTFB) for responses served from an edge or Origin Shield POP. In either case, the response is served nearly instantly (typically 25-100ms). Concurrent requests for the same URL on different POPs that result in a cache miss will be coalesced at the Origin Shield POP. An Origin Shield server only submits a single request at a time to your origin servers for each cacheable URL.
 
 [Learn more about Origin Shield.](/guides/security/origin_shield)
 
@@ -35,7 +35,7 @@ If Origin Shield has been enabled on your origin, then the edge server may reval
 
 ### Serverless
 
-{{ PRODUCT }} routes [Serverless Compute](/guides/performance/serverless_compute) and [{{ PRODUCT }} {{ PRODUCT_PLATFORM }}](/guides/sites_frameworks) requests similar to standard traffic. However, cache misses are forwarded to a Serverless load balancer which distributes requests to a Serverless worker.
+{{ PRODUCT }} routes [Serverless Compute](/guides/performance/serverless_compute) and [{{ PRODUCT }} {{ PRODUCT_PLATFORM }}](/guides/sites_frameworks) requests similar to traffic sent to your origin servers. However, cache misses are forwarded to a Serverless load balancer which distributes requests to a Serverless worker.
 
 ![](/images/v7/performance/request-flow-serverless.png)
 

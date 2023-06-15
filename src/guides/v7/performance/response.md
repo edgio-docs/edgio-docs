@@ -236,17 +236,23 @@ The debug cache response headers provide additional information about the cache 
 -   The [Debug Header feature](/guides/performance/rules/features#debug-header) has been enabled on the desired request.
 -   The request sets a `x-ec-debug` header to the set of debug cache headers that will be included in the response.
 
-**Syntax:** `x-ec-debug: <DEBUG CACHE HEADER>[,<DEBUG CACHE HEADER>,<DEBUG CACHE HEADER>]`
+    **Syntax:** `x-ec-debug: <DEBUG CACHE HEADER>[,<DEBUG CACHE HEADER>,<DEBUG CACHE HEADER>]`
 
-**Example:** `x-ec-debug: x-ec-cache,x-ec-cache-remote,x-ec-check-cacheable,x-ec-cache-key,x-ec-cache-state`
+    **Example:** `x-ec-debug: x-ec-cache,x-ec-cache-remote,x-ec-check-cacheable,x-ec-cache-key,x-ec-cache-state`
 
-Valid values for the `x-ec-debug` request header are provided below.
+    Valid values for the `x-ec-debug` request header are provided below.
 
--   **x-ec-cache:** [Cache status code](#cache-status-code-information)
--   **x-ec-cache-remote:** [Cache status code](#cache-status-code-information)
--   **x-ec-check-cacheable:** [Cacheable](#cacheable-response-header)
--   **x-ec-cache-key:** [Cache key](#cache-key-response-header)
--   **x-ec-cache-state:** [Cache state](#cache-state-response-header)
+    -   **x-ec-cache:** [Cache status code](#cache-status-code-information)
+    -   **x-ec-cache-remote:** [Cache status code](#cache-status-code-information)
+    -   **x-ec-check-cacheable:** [Cacheable](#cacheable-response-header)
+    -   **x-ec-cache-key:** [Cache key](#cache-key-response-header)
+    -   **x-ec-cache-state:** [Cache state](#cache-state-response-header)
+	
+    <Callout type="tip">
+
+      Use the [ModHeader - Modify HTTP headers Chrome extension](https://chrome.google.com/webstore/detail/modheader-modify-http-hea/idgpnmonknjnojddfkpgkljpfnnfcklj?hl=en) to always pass the `x-ec-debug` request header. 
+
+    </Callout>
 
 #### Cache Status Code Information {/*cache-status-code-information*/}
 

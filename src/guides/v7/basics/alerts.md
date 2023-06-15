@@ -2,72 +2,65 @@
 title: Alerts
 ---
 
-Alerts are a way to get notified of certain activities in your project.
-This gives you the opportunity to act on issues or errors, or keep up to date with the ongoings in your project.
+Receive daily or weekly notifications for the following type of events:
 
-There are certain [alert types](#alert-types-and-fields) that can be configured with their corresponding fields.
+-   All or failed deployments for one or more environment(s). 
+-   Core web vitals for one or more domain(s).
+-   Cache hit ratio for one or more environment(s). You may restrict this notification to only report when the cache hit ratio falls below a specific threshold.
+-   Purged content for one or more environment(s).
 
-## Alert Types and Fields {/*alert-types-and-fields*/}
+## Alert Administration
 
-![Types of alerts](/images/alerts/alert-types-fields.png)
+You may create, modify, delete, disable, and re-enable alert configurations. 
 
-| Field Name        | Description |
-| ----------------- | ----------- |
-| Alert Type        | **Deployments**: Get notified when deployments succeed or fail. <br/> **Core Web Vitals**: Select a list of domains to receive alerts for their Core Web Vital status. <br/> **Cache Hit Rate**: Receive alerts on the general percentage of your project's Cache Hit Rate or optionally when it falls below a certain percentage threshold. <br/> **Cache Purges**: Be alerted when resources are removed from the cache. |
-| Frequency         | The time interval or how often to notify the selected recipient(s) |
-| Environments      | The environment(s) to receive alerts for. This option only apply to the Deployments, Cache Hit Rate, and Cache Purges alert types. |
-| Recipients        | The recipient(s) of the alert. At least one recipient needs to be selected. |
-| Domains           | Core Web Vitals alert type that describes the domain(s) to receive alerts for. |
-| Maximum Threshold | The Cache Hit Rate alert type that specifies the maximum threshold to receive alerts for.|
+**To create an alert**
 
-## Create an alert {/*create-an-alert*/}
+1. Navigate to your property's **Settings** page and find the **Alerts** section.
 
-To create an alert:
+   ![Property Settings page](/images/v7/basics/alerts-nav.png?width=550)
 
-1. Go to the alerts section of your site's settings.
 2. Click **Create new Alert.**
-3. Fill the form fields to configure the alert.
+
+   ![Create Alert](/images/v7/basics/create-alert.png?width=550)
+3. Define the conditions under which alert notifications will be delivered.
 4. Click **Create Alert** to save your configuration.
 
-![Create an alert](/images/alerts/create-alert.png)
+   The **Alerts** section should now look similar to this:
+   
+   ![Alerts](/images/v7/basics/alerts.png?width=550)
 
-## Edit an alert {/*edit-an-alert*/}
+**To modify an alert**
 
-To edit an alert:
+1. Navigate to your property's **Settings** page and find the **Alerts** section.
+2. Click on the desired alert. 
 
-1. Go to the alerts section of your site's settings.
-2. Find the alert you want to edit then click on it to edit.
-3. Make your desired changes to the alert.
+   ![Modify alert](/images/v7/basics/modify-alert.png?width=550)
+   
+3. Make the desired changes.
 4. Click **Save Changes.**
 
-![Edit an alert](/images/alerts/edit-alert.png)
+**To disable an alert**
 
-## Disable an alert {/*disable-an-alert*/}
+1. Navigate to your property's **Settings** page and find the **Alerts** section.
+2. Click on the <GoKebabVertical className="inline-icon"/> icon under the **ACTIONS** column.
 
-To disable an alert:
-
-1. Go to the alerts section of your site's settings.
-2. Click on the <GoKebabVertical className="inline-icon"/> icon in the ACTIONS column.
+   ![Disable an alert](/images/v7/basics/disable-alert.png?width=550)
+   
 3. Click on **Disable**.
 
-![Disable an alert](/images/alerts/disable-delete-alert.png)
+**To re-enable an alert**
 
-## Delete an alert {/*delete-an-alert*/}
-
-To delete an alert:
-
-1. Go to the alerts section of your site's settings.
-2. Click on the <GoKebabVertical className="inline-icon"/> icon in the ACTIONS column.
-3. Click on **Delete.**
-
-![Delete an alert](/images/alerts/disable-delete-alert.png)
-
-## Enable a disabled alert {/*enable-a-disabled-alert*/}
-
-To enable a disabled alert:
-
-1. Go to the alerts section of your site's settings.
-2. Click on the <GoKebabVertical className="inline-icon"/> icon in the ACTIONS column.
+1. Navigate to your property's **Settings** page and find the **Alerts** section.
+2. Click on the <GoKebabVertical className="inline-icon"/> icon under the **ACTIONS** column.
 3. Click on **Enable.**
 
-![Enable a disabled alert](/images/alerts/enable-alert.png)
+![Enable a disabled alert](/images/v7/basics/enable-alert.png?width=550)
+
+**To delete an alert**
+
+1. Navigate to your property's **Settings** page and find the **Alerts** section.
+2. Click on the <GoKebabVertical className="inline-icon"/> icon under the **ACTIONS** column.
+
+   ![Delete an alert](/images/v7/basics/delete-alert.png?width=550)
+   
+3. Click on **Delete.**

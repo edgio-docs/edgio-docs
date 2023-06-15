@@ -1344,7 +1344,7 @@ Our CDN returns debug cache response headers when both of the following are true
 
     `X-EC-Debug: x-ec-cache,x-ec-check-cacheable,x-ec-cache-key,x-ec-cache-state`
 
-    [Learn more.](/guides/performance/response#requesting-debug-cache-information)
+    [Learn how to request debug cache information.](/guides/performance/response#requesting-debug-cache-information)
 
 <edgejs>
 Our CDN returns debug cache response headers when both of the following are true:
@@ -1359,7 +1359,7 @@ Our CDN returns debug cache response headers when both of the following are true
 
     `X-EC-Debug: x-ec-cache,x-ec-check-cacheable,x-ec-cache-key,x-ec-cache-state`
 
-    [Learn more.](/guides/performance/response#requesting-debug-cache-information)
+    [Learn how to request debug cache information.](/guides/performance/response#requesting-debug-cache-information)
 
 **Example:**
 
@@ -1970,6 +1970,12 @@ new Router()
 
 Determines whether {{ PRODUCT }} will be allowed to [process or generate an image](/guides/performance/image_optimization) for eligible requests. 
 
+<Callout type="important">
+
+  This feature should only be enabled for images that will be transformed by {{ PRODUCT }}. This is critical if you use the `Accept-Encoding` header to compress content, since {{ PRODUCT }} removes this header from all requests that it processes.
+
+</Callout>
+
 <Callout type="info">
 
   Upon enabling this feature on the desired set of requests, {{ PRODUCT }} will look for client hints and check the query string to determine the set of optimizations that will be applied to an image. 
@@ -1977,6 +1983,18 @@ Determines whether {{ PRODUCT }} will be allowed to [process or generate an imag
 </Callout>
 
 <edgejs>
+<Callout type="important">
+
+  This feature should only be enabled for images that will be transformed by {{ PRODUCT }}. This is critical if you use the `Accept-Encoding` header to compress content, since {{ PRODUCT }} removes this header from all requests that it processes.
+
+</Callout>
+
+<Callout type="info">
+
+  Upon enabling this feature on the desired set of requests, {{ PRODUCT }} will look for client hints and check the query string to determine the set of optimizations that will be applied to an image. 
+
+</Callout>
+
 **Example:**
 
 ```js filename="./routes.js"

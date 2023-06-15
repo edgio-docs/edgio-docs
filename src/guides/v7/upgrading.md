@@ -618,7 +618,7 @@ In version 7, geolocation headers are not included by default. However, you may 
 new Router().match("/:path", {
   headers: {
     set_request_headers: {
-      "x-0-geo-country": "%{geo_country}",
+      "x-0-geo-country-code": "%{geo_country}",
       "x-0-geo-city": "%{geo_city}",
       "x-0-geo-latitude": "%{geo_latitude}",
       "x-0-geo-longitude": "%{geo_longitude}",

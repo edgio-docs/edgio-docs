@@ -2,28 +2,42 @@
 title: Caching
 ---
 
-Caching creates a copy of the requested content on our edge servers. This dramatically reduces the distance that the data has to travel to fulfill all future requests. 
+Caching creates a copy of the requested content within our edge and Origin Shield POPs. This improves your site's performance by allowing clients to retrieve your content from the POP closest to them instead of your origin servers. 
 
 ## Environments and Caching {/* environments-and-caching */}
 
 Each environment provides a separate edge cache for the most recent deployment. Although older deployments do not support edge caching, you may re-enable it by [rolling back to that version](/guides/basics/deployments#versioning).
 
-## Edge and Shield Caching {/* edge-and-shield-caching */}
+## Edge and Origin Shield Caching {/*edge-and-shield-caching*/}
 
 {{ PRODUCT }} may cache your content on our:
 
 - **Edge Points-of-Presence (POP):** An edge POP handles receives and responds to requests for your content.
-- **Shield POP:** A shield POP reduces your network bandwidth and the load on your origin server by providing an intermediate caching layer between the edge of our network (aka edge POPs) and your web servers. This means that if a request cannot be served from cache by an edge POP, then it will be forwarded to a shield POP. Funneling requests to a shield POP maximizes your cache hit ratio.
+- **Origin Shield POP:** An Origin Shield POP improves cache efficiency, reduces the load on your servers, and reduces network bandwidth. If you have assigned at least one Origin Shield POP to your origin configuration, our edge POPs can funnel cache misses through an Origin Shield POP.
 
-There is very little difference in time to first byte (TTFB) for responses served from an edge or shield POP. In either case, the response is served nearly instantly (typically 25-100ms). Concurrent requests for the same URL on different POPs that result in a cache miss will be coalesced at the shield POP. If you have configured your origin to only use a shield POP, then it will only submit a single request at a time to your origin servers for each cacheable URL.
+There is very little difference in time to first byte (TTFB) for responses served from an edge or Origin Shield POP. In either case, the response is served nearly instantly (typically 25-100ms). Concurrent requests for the same URL on different POPs that result in a cache miss will be coalesced at the Origin Shield POP. An Origin Shield server only submits a single request at a time to your origin servers for each cacheable URL.
 
 [Learn more about Origin Shield.](/guides/security/origin_shield)
 
 ## Default Caching Policy {/*default-caching-policy*/}
 
-By default, only `GET` requests that result in a `200 OK` response are eligible to be cached. For these requests, our edge servers cache content according to the cache instructions (aka cache directives) provided by the origin server. If an origin  server does not provide cache directives, then it will be assigned a time to live (TTL) of 7 days (i.e., `Cache-Control: max-age=604800`). Content is considered fresh until its TTL has expired.
+By default, only `GET` requests that result in a `200 OK` response are eligible to be cached. For these requests, {{ PRODUCT }} caches content according to the cache instructions (aka cache directives) provided by the origin server. If an origin server does not provide cache directives, then it will be assigned a time to live (TTL) of 7 days (i.e., `Cache-Control: max-age=604800`). Content is considered fresh until its TTL has expired.
 
-Once the asset has been cached on a POP, all future requests from the region served by that POP will be served directly from that POP while the cached content's TTL has not expired. Once the TTL has expired, an edge server from that POP may [revalidate](#revalidation) the asset with the origin server. If the asset has not been modified, then the cached content's TTL on that edge server will be updated to reflect the origin's cache instructions or a default TTL of 7 days. Otherwise, a new version of the asset will be retrieved and cached on the edge server.
+### Origin Server
+
+Once the asset has been cached on a POP, all future requests from the region served by that POP will be served directly from that POP while the cached content's TTL has not expired. Once the TTL has expired, an edge server from that POP may [revalidate](#revalidation) the asset with either an Origin Shield POP or the origin server. The request flow for an origin configuration on which Origin Shield has not been enabled is illustrated below.
+
+![](/images/v7/performance/request-flow-edge-origin.png)
+
+If Origin Shield has been enabled on your origin, then the edge server may revalidate with an Origin Shield server. If the TTL for the asset cached on the Origin Shield server has not expired, then the edge server will use the `Age` header to extend its cached asset's TTL. 
+
+![](/images/v7/performance/request-flow-edge-origin-shield-origin.png)
+
+### Serverless
+
+{{ PRODUCT }} routes [Serverless Compute](/guides/performance/serverless_compute) and [{{ PRODUCT }} {{ PRODUCT_PLATFORM }}](/guides/sites_frameworks) requests similar to traffic sent to your origin servers. However, cache misses are forwarded to a Serverless load balancer which distributes requests to a Serverless worker.
+
+![](/images/v7/performance/request-flow-serverless.png)
 
 ## Caching a Response {/* caching-a-response */}
 
@@ -69,7 +83,7 @@ The amount of time that an asset will be cached on our edge servers is determine
 
 **Key information:**
 
--   By default, content will only be cached after a POP receives two `GET` requests that result in a 200 OK response.
+-   By default, content will only be cached after a POP receives two `GET` requests that result in a `200 OK` response.
 -   By default, {{ PRODUCT }} honors an origin server's cache directives. Allow {{ PRODUCT }} to override those directives by creating a rule with the [Ignore Origin No Cache](/guides/performance/rules/features#ignore-origin-no-cache) feature enabled for the desired status code (e.g., `200 OK`).
 -   The above directives are ordered according to precedence. Higher directives take precedence over lower directives. In other words, if an asset contains both a `Cache-Control` and an `Expires` header, then the `Cache-Control` header will take precedence.
 -   Please refer to your web server’s documentation for more information on how to configure these settings.

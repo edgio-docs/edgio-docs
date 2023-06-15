@@ -69,7 +69,7 @@ Additional information on each of the above steps is provided below.
 -   **Step 1 - Create Security Rules:** Create modular rules (i.e., Access Rules, Rate Rules, Bot Rules, Custom Rules, and Managed Rules) through which you may define security policies for inbound HTTP/HTTPS traffic. These rules identify legitimate traffic or threats through:
     - Access controls (e.g., IP address, country, URL, etc.).
     - Rate limits.
-    - Browser challenges.
+    - Bot detection
     - Custom threat detection rules. 
     - Threat detection policies.
 -   **Step 2 - Create a Security Application Configuration:** Create a Security Application Configuration that identifies the type of traffic to which your security rules will be applied and how threats will be handled. You may also use it to test new security rules through an audit mode that generates alerts on flagged traffic.
@@ -138,7 +138,7 @@ below.
 4.  Has the rate limit been exceeded? If so, then the request is
     identified as a threat and no further checks will be performed.
 
-5.  Was the client able to solve a browser challenge? If not, then the
+5.  Was the client identified as a bot? If so, then the
     request is identified as a threat and no further checks will be
     performed.
 

@@ -128,7 +128,7 @@ Our edge servers use cache keys to determine whether a cached response exists fo
 
 By default, our edge servers use the following syntax when calculating a cache key:
 
-`//http/80<ACCOUNT ID>/<ORIGIN CONFIGURATION>/<DEPLOYMENT VERSION>/<RELATIVE PATH>:/hs-<URI HASH>`
+`//http/80<ACCOUNT ID>/<ORIGIN CONFIGURATION>/<DEPLOYMENT VERSION>/<RELATIVE PATH>:/[q-<QUERY STRING HASH>_]hs-<URI HASH>`
 
 Definitions for the above placeholder values are provided below.
 
@@ -139,6 +139,7 @@ Definitions for the above placeholder values are provided below.
 | `<DEPLOYMENT VERSION>`   | Indicates the version of the deployment for the configuration that served the request whose response was cached. |
 | `<RELATIVE PATH>`        | Indicates the relative path to the requested content. This relative path starts directly after the hostname. By default, query strings are ignored by the caching mechanism and therefore they will be excluded from the cache key. <Callout type ="info">If a query string is recorded in the cache key, it will be converted to its hash equivalent. After which, it will be inserted between the name of the requested asset and its file extension (e.g., asset**HashValue**.html).</Callout> |
 | `<URI HASH>`             | Indicates a hash of the request URI. |
+| `<QUERY STRING HASH>`    | Indicates a hash of the request's query string. If the request does not contain a query string, then the cache key will exclude `q-<QUERY STRING HASH>_`. <Callout type="tip">Exclude the query string from the cache key through the [Cache Key Query String feature (cache_key_query_string)](/guides/performance/rules/features#cache-key-query-string) or by defining a custom cache key through the [Rewrite Cache Key feature (cache_key_rewrite)](/guides/performance/rules/features#rewrite-cache-key).</Callout> |
 
 **Syntax:** `x-ec-cache-key: <CACHE KEY>`
 

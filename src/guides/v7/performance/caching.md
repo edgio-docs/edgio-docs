@@ -29,7 +29,7 @@ Once the asset has been cached on a POP, all future requests from the region ser
 
 ![](/images/v7/performance/request-flow-edge-origin.png)
 
-If Origin Shield has been enabled on your origin, then the edge server may revalidate with an Origin Shield server. If the TTL for the cached version on the Origin Shield server has not expired, then the edge server will use the `Age` header to extend its cached asset's TTL. 
+If Origin Shield has been enabled on your origin, then the edge server may revalidate with an Origin Shield server. If the TTL for the asset cached on the Origin Shield server has not expired, then the edge server will use the `Age` header to extend its cached asset's TTL. 
 
 ![](/images/v7/performance/request-flow-edge-origin-shield-origin.png)
 

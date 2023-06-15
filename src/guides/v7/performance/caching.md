@@ -142,9 +142,13 @@ Definitions for the above placeholder values are provided below.
 | `<URI HASH>`             | Indicates a hash of the request URI. |
 | `<FILE EXTENSION>`       | Indicates the request's file extension (e.g., `.html`). It is excluded from the cache key when the request URL does not contain a file extension.|
 
+View a request's cache key through the `x-ec-cache-key` response header. By default, this header is excluded from the response. 
+
 **Syntax:** `x-ec-cache-key: <CACHE KEY>`
 
-**Example:** `x-ec-cache-key: //http/800001/web/21/images/foo.jpg:/hs-5041808438894094098`
+**Example:** `x-ec-cache-key: //http/800001/web/21/images/foo.jpg:/hs-5041808438894094098.jpg`
+
+[Learn how to generate this response header.](/guides/performance/response#requesting-debug-cache-information)
 
 #### Customizing the Cache Key {/* customizing-the-cache-key */}
 

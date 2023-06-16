@@ -31,16 +31,16 @@ If the error is generated in {{ PRODUCT_NAME }} itself, the platform generates a
 | <a id="536"></a> 536  | Project HTTP Response Timeout          | {{ PRODUCT_NAME }} did not receive an HTTP response from the upstream. Common causes are the upstream dropped the connection prematurely, the upstream application threw an exception, and the upstream took too long to respond.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
 | 537  | Project DNS Resolution Error           | Failed to resolve the host name through DNS, which might indicate a problem with your DNS provider or incorrectly configured domain name.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
 | 538  | Project Request Loop                   | The {{ PRODUCT_NAME }} project exceeded the maximum level (3) of nested {{ PRODUCT_NAME }} requests. "Nested" means an {{ PRODUCT_NAME }} site is the upstream of itself or of another {{ PRODUCT_NAME }} site.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
-| 539  | Project Timeout                        | The 539 status code is primarily caused by timeouts, but can also be caused by lack of allow lists (white lists) configured on your backend server. **Timeouts:** Your project's serverless code did not respond on time, either due to slow or blocking upstream or to badly handled asynchronous requests in code (e.g. missing `await` or call to `callback`). **Troubleshooting:** You can view the timings and status codes of the components in the stack in the [{{ HEADER_PREFIX }}-t header](#-t-response-header) Use [server logs](/guides/logs/server_logs) and [performance profiling](/guides/performance) to debug. You can also debug using information in [Troubleshooting 539 Status Codes](/guides/performance/troubleshooting#troubleshooting-539-status-codes), which includes information about detecting allow list errors. |
+| 539  | Project Timeout                        | The 539 status code is primarily caused by timeouts, but can also be caused by lack of allow lists (white lists) configured on your backend server. **Timeouts:** Your project's serverless code did not respond on time, either due to slow or blocking upstream or to badly handled asynchronous requests in code (e.g. missing `await` or call to `callback`). **Troubleshooting:** You can view the timings and status codes of the components in the stack in the [{{ HEADER_PREFIX }}-t header](#-t-response-header). Use [server logs](/guides/logs/server_logs) and [performance profiling](/guides/performance/observability#tracking-your-own-timings) to debug. You can also debug using information in [Troubleshooting 539 Status Codes](/guides/performance/troubleshooting#troubleshooting-539-status-codes), which includes information about detecting allow list errors. |
 | 540  | Out of Memory                          | Your project's serverless code caused an out-of-memory situation. Use [server logs](/guides/logs/server_logs) to debug and lower the memory use.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
 | 541  | {{ PRODUCT_NAME }} Out of Workers      | The traffic was so high that the request could not be scheduled for processing within the scheduling timeout. Please contact [support]({{ SUPPORT_URL }}) to upgrade your account.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
 | 542  | Project Header Overflow                | The {{ PRODUCT_NAME }} project's request or response had too many HTTP headers. See [limits](/guides/performance/limits)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
-| 543  | Global Upstream Timeout                | The request failed to propagate between {{ PRODUCT_NAME }} edge and the global POP. Please contact [support]({{ HELP_URL }}).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
+| 543  | Global Upstream Timeout                | The request failed to propagate between {{ PRODUCT_NAME }} edge and the Origin Shield POP. Please contact [support]({{ HELP_URL }}).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
 | 544  | Invalid Host Header                    | The {{ PRODUCT_NAME }} received a value in `host` header that is not a valid domain name.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
 | 545  | {{ PRODUCT_NAME }} Component Not Ready | An unprepared {{ PRODUCT_NAME }} component received traffic. Please contact [support]({{ HELP_URL }}) immediately.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
-| 546  | {{ PRODUCT_NAME }} Global POP TLS Error | The was an error negotiating a secure TLS connection with the {{ PRODUCT_NAME }} global POP. Please contact [support]({{ HELP_URL }}) immediately. |
-| 547  | {{ PRODUCT_NAME }} Global POP No HTTP Response | {{ PRODUCT_NAME }} did not receive an HTTP response from the global POP. Please contact [support]({{ HELP_URL }}) immediately. |
-| 548  | {{ PRODUCT_NAME }} Global POP DNS Resolution Error | {{ PRODUCT_NAME }} failed to resolve the global POP's host name through DNS. Please contact [support]({{ HELP_URL }}) immediately. |
+| 546  | {{ PRODUCT_NAME }} Origin Shield POP TLS Error | The was an error negotiating a secure TLS connection with the {{ PRODUCT_NAME }} Origin Shield POP. Please contact [support]({{ HELP_URL }}) immediately. |
+| 547  | {{ PRODUCT_NAME }} Origin Shield POP No HTTP Response | {{ PRODUCT_NAME }} did not receive an HTTP response from the Origin Shield POP. Please contact [support]({{ HELP_URL }}) immediately. |
+| 548  | {{ PRODUCT_NAME }} Origin Shield POP DNS Resolution Error | {{ PRODUCT_NAME }} failed to resolve the Origin Shield POP's host name through DNS. Please contact [support]({{ HELP_URL }}) immediately. |
 
 <!--
 | 549 | {{ PRODUCT_NAME }} Captcha Served | Indicates that {{ PRODUCT_SECURITY_ADVANCED_BOT }} flagged a request as potential bot traffic. As a result, {{ PRODUCT }} served a CAPTCHA challenge instead of your site. Only visitors that can solve this challenge will be allowed to proceed to your site. |
@@ -202,9 +202,9 @@ Common response headers are described below.
 
     [Learn more.](/guides/performance/purging#surrogate-keys-cache-tags)
 
-<!--
--   [{{ HEADER_PREFIX }}-t](#-t-response-header): Contains time measurements for each {{ PRODUCT }} component through which a request was routed. It also provides cache status information for edge and global POPs.
--->
+
+-   [{{ HEADER_PREFIX }}-t](#-t-response-header): Contains time measurements and cache status information for Serverless requests ({{ PRODUCT }} {{ PLATFORM }} and Serverless Compute).
+
 -   **{{ HEADER_PREFIX }}-version:** Indicates basic information for your current deployment.
 
     **Syntax:** `{{ HEADER_PREFIX }}-version: <DEPLOYMENT> <ENVIRONMENT VERSION> <INTERNAL> NA <DEPLOYMENT TIMESTAMP> <ENVIRONMENT ID>`
@@ -363,20 +363,20 @@ A POP component is identified through the following two abbreviations:
 -    [POP component.](#pop-component)
 
 **Standard Traffic Example:**
-The following sample response header indicates that the following POP components returned a `200 OK`: Edge POP's HAProxy, Edge POP's DPS, Global POP's HAProxy, and Global POP's DPS.
+The following sample response header indicates that the following POP components returned a `200 OK`: Edge POP's HAProxy, Edge POP's DPS, Origin Shield POP's HAProxy, and Origin Shield POP's DPS.
 
 `{{ HEADER_PREFIX }}-status: eh=200,ed=200,gh=200,gd=200`
 
 **Serverless Compute Example:**
-The following sample response header indicates that the following POP components returned a `200 OK`: Edge POP's HAProxy, Edge POP's DPS, Global POP's HAProxy, Global POP's DPS, Serverless Compute (load balancer), and Serverless Compute (worker).
+The following sample response header indicates that the following POP components returned a `200 OK`: Edge POP's HAProxy, Edge POP's DPS, Origin Shield POP's HAProxy, Origin Shield POP's DPS, Serverless (load balancer), and Serverless (worker).
 
 `{{ HEADER_PREFIX }}-status: eh=200,ed=200,gh=200,gd=200,p=200,w=200` <a id="structure-of--header_prefix--t"></a>
-
+-->
 ### {{ HEADER_PREFIX }}-t Response Header {/*-t-response-header*/}
 
-The `{{ HEADER_PREFIX }}-t` response header contains time measurements for each {{ PRODUCT }} POP component through which a request was routed. It also provides cache status information for edge and global POPs. This data is presented sequentially according to the order in which POP components processed the request.
+The {{ HEADER_PREFIX }}-t response header is solely returned for Serverless requests ({{ PRODUCT }} {{ PLATFORM }} and Serverless Compute). It contains time measurements for each POP component through which a request was routed. It also provides cache status information for edge and Origin Shield POPs. This data is presented sequentially according to the order in which POP components processed the request.
 
-[Learn how {{ PRODUCT }} routes requests.](/guides/performance/request#request-flow)
+[Learn how {{ PRODUCT }} routes requests.](/guides/performance/caching#default-caching-policy)
 
 <Callout type="info">
 
@@ -393,26 +393,27 @@ Each metric is defined through a set of abbreviations. These abbreviations ident
 -   Who handled the request:
 
     -   **e**: Edge POP
-    -   **g**: Global POP
-
+    -   **g**: Origin Shield POP
+<!--
     <Callout type="info">
 
-      If a global POP is the closest POP to the client, then it will act as both an edge and global POP. However, it will be assigned the `e` abbrevation instead of `g`.
+      If an Origin Shield POP is the closest POP to the client, then it will act as both an edge and Origin Shield POP. However, it will be assigned the `e` abbrevation instead of `g`.
 
-      For example, you may typically measure an origin server's response time through `gdf` (Global POP's DPS Fetch Time). However, if a global POP is the closest POP to the client, then you should use `edf` instead since {{ PRODUCT }} will not return `gdf`.
+      For example, you may typically measure an origin server's response time through `gdf` (Origin Shield POP's DPS Fetch Time). However, if an Origin Shield POP is the closest POP to the client, then you should use `edf` instead since {{ PRODUCT }} will not return `gdf`.
 
     </Callout>
+-->
+    -   **p**: Serverless (load balancer)
+    -   **w**: Serverless (worker) <a id="pop-component"></a>
 
-    -   **p**: Serverless Compute (load balancer)
-    -   **w**: Serverless Compute (worker) <a id="pop-component"></a>
-
+<!--
 -   The POP component that processed the request:
     -   **h:** HAProxy (load balancer)
     -   **c:** Varnish (cache)
     -   **d:** Dynamic Proxy Service (DPS)
-    -   **b:** Billing
     -   **k:** Kolben
-
+-->
+-   Optional. Billing measurements are represented by `b`. 
 -   The type of metric being measured:
 
     -   **c:** This abbreviation represents either of the following metrics:
@@ -424,11 +425,11 @@ Each metric is defined through a set of abbreviations. These abbreviations ident
             -   **cached:** The response was cached as a result of this request.
             -   **pass:** The route corresponding to this request or cache-specific response headers prohibit caching.
 
-            For example, `gcc=miss` identifies a cache miss on a global POP. A global POP forwards requests that result in cache misses to either an origin server or Serverless Compute.
+            For example, `gcc=miss` identifies a cache miss on an Origin Shield POP. An Origin Shield POP forwards requests that result in cache misses to either an origin server or to Serverless (load balancer).
 
         -   Request count.
 
-            For example, `pc=1` indicates the number of requests generated by the Serverless Compute (load balancer). A value greater than 1 indicates that the load balancer had to scale the request by adding it to a queue and then resubmitting it. Another example is `wc=19` which indicates that a Serverless Compute (worker) was invoked 19 times by this request.
+            For example, `pc=1` indicates the number of requests generated by the Serverless load balancer. A value greater than `1` indicates that the load balancer had to scale the request by adding it to a queue and then resubmitting it. Another example is `wc=19` which indicates that a Serverless worker was invoked 19 times by this request.
 
     -   **d:** DNS lookup time in milliseconds.
 
@@ -442,44 +443,44 @@ Each metric is defined through a set of abbreviations. These abbreviations ident
 
     -   **f:** Fetch time in milliseconds. This metric measures the amount of time between when a POP component forwards a request and when it receives a response.
 
-        For example, `gdf` indicates the amount of time between when a global POP's DPS forwarded a request to an origin server or Serverless Compute and when it started receiving a response.
+        For example, `gdf` indicates the amount of time between when an Origin Shield POP's DPS forwarded a request to an origin server or to a Serverless load balancer and when it started receiving a response.
 
     -   **g:** Age in seconds.
 
-        For example, `wg=746940` indicates that the instance of the Serverless Compute (worker) that processed the request has been running for approximately 747 seconds.
+        For example, `wg=746940` indicates that the instance of the Serverless worker that processed the request has been running for approximately 747 seconds.
 
     -   **l:** Sum of time in milliseconds.
 
-        For example, `wl=30896` indicates the total processing time for all Serverless Compute (workers) for all requests is 30.8 seconds.
+        For example, `wl=30896` indicates the total processing time for all Serverless workers for all requests is 30.8 seconds.
 
     -   **m:** Memory usage in Megabytes.
 
-        For example, `wm=317` indicates that Serverless Compute (worker) used 317 Megabytes of memory for this request.
+        For example, `wm=317` indicates that Serverless worker used 317 Megabytes of memory for this request.
 
     -   **r:** Route evaluation in milliseconds.
 
-        For example, `wr=1` indicates that Serverless Compute (worker) spent 1 millisecond evaluating the route through which this request will be processed.
+        For example, `wr=1` indicates that Serverless worker spent 1 millisecond evaluating the route through which this request will be processed.
 
     -   **t:** Total time in milliseconds. This metric measures the amount of time between the moment when the request was received to when a response was sent to the client.
 
-        For example, `wbt` indicates billed time as measured by a Serverless Compute load balancer. This measurement includes Serverless Compute workload time and time spent capturing Serverless Compute log data.
+        For example, `wbt` indicates billed time as measured by a Serverless load balancer. This measurement includes Serverless workload time and time spent capturing Serverless log data.
 
     -   **u:** Upstream fetch time in milliseconds.
 
-        For example, `pu` identifies the total time between when a Serverless Compute load balancer submitted a request defined within your application's code (e.g., fetch) and when it received a response.
+        For example, `pu` identifies the total time between when a Serverless load balancer submitted a request defined within your application's code (e.g., fetch) and when it received a response.
 
     -   **cw:** Wait in the request coalescing queue.
 
-        For example, `ecwt` identifies the total time the request spent waiting in the request coalescing queue on the edge POP. The analogue for the global POP is `gcwt`. These are useful to check when apparent cache hits have high total time. Those cases are actually due to request coalescing resulting in a cache hit.
+        For example, `ecwt` identifies the total time the request spent waiting in the request coalescing queue on the edge POP. The analogue for the Origin Shield POP is `gcwt`. These are useful to check when apparent cache hits have high total time. Those cases are actually due to request coalescing resulting in a cache hit.
 
 #### Exceptions {/*exceptions*/}
 
 Most metrics follow the above convention. However, there are some metrics that use a different convention. Here are a few common exceptions to the above convention:
 -   **eh:** Identifies the total time, in milliseconds, as measured by an edge POP's HAProxy.
--   **gh:** Identifies the total time, in milliseconds, as measured by a global POP's HAProxy.
--   **dgpop:** Identifies the global POP to which an edge POP forwarded a request.
--   **wa:** Indicates the `transformRequest` time, in milliseconds, as measured by a Serverless Compute (worker).
--   **wp:** Indicates the fetch or proxy time, in milliseconds, as measured by a Serverless Compute (worker).
+-   **gh:** Identifies the total time, in milliseconds, as measured by an Origin Shield POP's HAProxy.
+-   **dgpop:** Identifies the Origin Shield POP to which an edge POP forwarded a request.
+-   **wa:** Indicates the `transformRequest` time, in milliseconds, as measured by a Serverless worker.
+-   **wp:** Indicates the fetch or proxy time, in milliseconds, as measured by a Serverless worker.
 
     <a id="wz"></a>
 -   **wz:** Indicates either:
@@ -489,10 +490,9 @@ Most metrics follow the above convention. However, there are some metrics that u
 
 #### Sample {{ HEADER_PREFIX }}-t Response Headers {/*sample-t-response-headers*/}
 
-Sample response headers for both standard traffic and Serverless Compute are explained below.
-
+<!--
 ##### Standard Traffic {/*standard-traffic*/}
-The following sample {{ HEADER_PREFIX }}-t response header is for a request that was routed through an edge POP to a global POP:
+The following sample {{ HEADER_PREFIX }}-t response header is for a request that was routed through an edge POP to an Origin Shield POP:
 
 `{{ HEADER_PREFIX }}-t: eh=325,ect=322,ecc=cached,edt=316,edd=0,edf=316,dgpop=hef,gh=7,gct=5,gcc=hit`
 
@@ -506,14 +506,13 @@ We will now examine each metric defined within the above sample response header:
 | `edt=316`    | Indicates the total time from an edge POP's DPS was 316 milliseconds.                                    |
 | `edd=0`      | Indicates the DNS lookup time for an edge POP's DPS was 0 milliseconds. This typically means that DPS used DNS caching.   |
 | `edf=316`    | Indicates the fetch time from an edge POP's DPS was 316 milliseconds.                                    |
-| `dgpop=hef`  | Indicates that the edge POP forwarded the request to the HEF global POP.                                 |
-| `gh=7`       | Indicates the total time from a global POP's HAProxy was 7 milliseconds.                                 |
-| `gct=5`      | Indicates the total time from a global POP's Varnish (cache) was 5 milliseconds.                         |
-| `gcc=hit`    | Indicates that the global POP's Varnish (cache) served the response from cache.                          |
+| `dgpop=hef`  | Indicates that the edge POP forwarded the request to the HEF Origin Shield POP.                                 |
+| `gh=7`       | Indicates the total time from an Origin Shield POP's HAProxy was 7 milliseconds.                                 |
+| `gct=5`      | Indicates the total time from an Origin Shield POP's Varnish (cache) was 5 milliseconds.                         |
+| `gcc=hit`    | Indicates that the Origin Shield POP's Varnish (cache) served the response from cache.                          |
 
-##### Serverless Compute {/*serverless-compute*/}
-
-The following sample {{ HEADER_PREFIX }}-t response header is for a Serverless Compute request. A Serverless Compute request is routed through an edge POP, global POP, and then to our Serverless Compute service. This request flow ensures optimal performance by serving requests from cache whenever possible.
+-->
+The following sample {{ HEADER_PREFIX }}-t response header is for a Serverless Compute request. A Serverless Compute request is routed through an edge POP, Origin Shield POP, and then to our Serverless Compute service. This request flow ensures optimal performance by serving requests from cache whenever possible.
 
 `{{ HEADER_PREFIX }}-t: eh=1160,ect=1158,ecc=miss,edt=1152,edd=0,edf=1152,gh=869,gct=866,gcc=miss,gdt=853,gdd=0,gdf=853,pt=811,pc=1,pf=809,wbt=723,wm=317,wt=722,wc=19,wg=746940,wl=30896,wr=1,wp=705,wa=1,wz=1`
 
@@ -523,34 +522,35 @@ We will now examine each metric defined within the above sample response header:
 | -------------- | -------------- |
 | `eh=1160`  | Indicates the total time from an edge POP's HAProxy was 1160 milliseconds.|
 | `ect=1158` | Indicates the total time from an edge POP's Varnish (cache) was 1158 milliseconds.  |
-| `ecc=miss` | Indicates a cache miss on the edge POP's Varnish (cache). Requests that cannot be served from cached are forwarded to the global POP.  |
+| `ecc=miss` | Indicates a cache miss on the edge POP's Varnish (cache). Requests that cannot be served from cached are forwarded to the Origin Shield POP.  |
 | `edt=1152` | Indicates the total time from an edge POP's DPS was 1152 milliseconds.                                    |
 | `edd=0`    | Indicates the DNS lookup time for an edge POP's DPS was 0 milliseconds. This typically means that DPS used DNS caching.   |
 | `edf=1152` | Indicates the fetch time from an edge POP's DPS was 1152 milliseconds.                                    |
-| `gh=869`   | Indicates the total time from a global POP's HAProxy was 869 milliseconds.                                 |
-| `gct=866`  | Indicates the total time from a global POP's Varnish (cache) was 866 milliseconds.                         |
-| `gcc=miss` | Indicates that a cache miss on the global POP's Varnish (cache). Requests that cannot be served from cached are forwarded to Serverless Compute. |
-| `gdt=853`  | Indicates the total time from a global POP's Varnish (cache) was 853 milliseconds.                          |
-| `gdd=0`    | Indicates the DNS lookup time for a global POP's DPS was 0 milliseconds. This typically means that DPS used DNS caching.   |
-| `gdf=853`  | Indicates the fetch time from a global POP's DPS was 853 milliseconds.                                    |
-| `pt=811`   | Indicates the total time from a Serverless Compute (load balancer) was 811 milliseconds.                    |
-| `pc=1`     | Indicates the request count for a Serverless Compute (load balancer) was 1.                                 |
-| `pf=809`   | Indicates the fetch time from a Serverless Compute (load balancer) was 809 milliseconds.                 |
-| `wbt=723`  | Indicates that billed time for Serverless Compute was 723 milliseconds.                                |
-| `wm=317`   | Indicates that memory usage for a Serverless Compute (worker) was 317 MB. |
-| `wt=722`   | Indicates that the workload time for a Serverless Compute (worker) was 722 milliseconds.          |
-| `wc=19`    | Indicates that this instance of Serverless Compute was invoked 19 times.                    |
-| `wg=746940`| Indicates that this instance of Serverless Compute has been running for 747 seconds.                         |
-| `wl=30896` | Indicates that the  total processing time for all Serverless Compute (workers) for all requests is 30.8 seconds. |
-| `wr=1`     | Indicates that Serverless Compute (worker) spent 1 millisecond evaluating the route through which this request will be processed. |
-| `wp=705`   | Indicates the fetch or proxy time as measured by a Serverless Compute (worker) was 705 milliseconds.  |
-| `wa=1`     | Indicates the `transformRequest` time as measured by a Serverless Compute (worker) was 1 millisecond. |
+| `gh=869`   | Indicates the total time from an Origin Shield POP's HAProxy was 869 milliseconds.                                 |
+| `gct=866`  | Indicates the total time from an Origin Shield POP's Varnish (cache) was 866 milliseconds.                         |
+| `gcc=miss` | Indicates that a cache miss on the Origin Shield POP's Varnish (cache). Requests that cannot be served from cached are forwarded to a Serverless load balancer. |
+| `gdt=853`  | Indicates the total time from an Origin Shield POP's Varnish (cache) was 853 milliseconds.                          |
+| `gdd=0`    | Indicates the DNS lookup time for an Origin Shield POP's DPS was 0 milliseconds. This typically means that DPS used DNS caching.   |
+| `gdf=853`  | Indicates the fetch time from an Origin Shield POP's DPS was 853 milliseconds.                                    |
+| `pt=811`   | Indicates the total time from a Serverless load balancer was 811 milliseconds.                    |
+| `pc=1`     | Indicates the request count for a Serverless load balancer was 1.                                 |
+| `pf=809`   | Indicates the fetch time from a Serverless load balancer was 809 milliseconds.                 |
+| `wbt=723`  | Indicates that billed time for Serverless was 723 milliseconds.                                |
+| `wm=317`   | Indicates that memory usage for a Serverless worker was 317 MB. |
+| `wt=722`   | Indicates that the workload time for a Serverless worker was 722 milliseconds.          |
+| `wc=19`    | Indicates that this instance of Serverless was invoked 19 times.                    |
+| `wg=746940`| Indicates that this instance of Serverless has been running for 747 seconds.                         |
+| `wl=30896` | Indicates that the  total processing time for all Serverless workers for all requests is 30.8 seconds. |
+| `wr=1`     | Indicates that Serverless worker spent 1 millisecond evaluating the route through which this request will be processed. |
+| `wp=705`   | Indicates the fetch or proxy time as measured by a Serverless worker was 705 milliseconds.  |
+| `wa=1`     | Indicates the `transformRequest` time as measured by a Serverless worker was 1 millisecond. |
 | `wz=1`     | Indicates either a `transformResponse` time or processing time in milliseconds. [Learn more.](#wz)
--->
 
-## Serverless Compute - Cold Start Timing {/*serverless-compute-cold-start-timing*/}
+<a id="serverless-compute-cold-start-timing"></a>
 
-To calculate the Serverless cold start timing you must take the difference between `pf` and `wt` in the `{{ HEADER_PREFIX }}-t` header. `wt` is time taken for the Serverless Compute worker to execute after it has started, this is can be read as the time is takes the project code to execute. If that seems large, evaluate the code within your project to see why this might be. To [track timings](/guides/performance#tracking-your-own-timings) for a function, it is possible to add specific code to do that.
+## Serverless  - Cold Start Timing {/*serverless-cold-start-timing*/}
+
+To calculate the Serverless cold start timing you must take the difference between `pf` and `wt` in the `{{ HEADER_PREFIX }}-t` header. `wt` is time taken for the Serverless worker to execute after it has started, this is can be read as the time is takes the project code to execute. If that seems large, evaluate the code within your project to see why this might be. To [track timings](/guides/performance#tracking-your-own-timings) for a function, it is possible to add specific code to do that.
 
 Based on the example above, that would be `809 (pf) - 722 (wt) = 87ms`.
 

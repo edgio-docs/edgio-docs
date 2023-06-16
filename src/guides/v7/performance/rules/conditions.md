@@ -1870,11 +1870,40 @@ router.conditional({
 
 #### Response Status Code {/*response-status-code*/} <edgejs>response</edgejs>
 
-Identifies requests by the HTTP status code generated from the response. 
+Identifies requests whose response matches a HTTP status code. 
+
+**Key information:**
+
+-   You may use this match condition to apply features that affect the response provided to the client. For example, you may set response headers or a response body.
+
+    <Callout type="tip">
+	
+	  You may use this match condition to instruct the client to redirect requests by setting a `Location` response header to the desired URL and the response status code to a `3xx` (redirection) status code (e.g., `301` and `302`).
+
+	</Callout>
+
+    <Callout type="info">
+	
+	  {{ PRODUCT }} checks for this match condition upon receiving a response. At this point in the request flow, all features that correspond to the request or cache have already been applied. 
+
+	</Callout>
 
 <edgejs>
 **Key information:**
 
+-   You may use this match condition to apply features that affect the response provided to the client. For example, you may set response headers, a response body, or HTTP status code.
+
+    <Callout type="tip">
+	
+	  You may use this match condition to instruct the client to redirect requests by setting a `Location` response header to the desired URL and the response status code to a `3xx` (redirection) status code (e.g., `301` and `302`).
+
+	</Callout>
+
+    <Callout type="info">
+	
+	  {{ PRODUCT }} checks for this match condition upon receiving a response. At this point in the request flow, all features that correspond to the request or cache have already been applied. 
+
+	</Callout>
 -   **Supported operators:** `=== | !== | =~ | !~ | in | not_in`
 
 **Example:**

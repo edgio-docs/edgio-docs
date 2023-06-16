@@ -2007,23 +2007,24 @@ new Router()
 ```
 </edgejs>
 
-<!--
 #### Set Done {/*set-done*/}
 
 Determines whether to stop processing the request.
 
-This feature is typically combined with the `Set Status Code` and `Set Response Body` features to send a custom response. 
+**Key information:**
 
-Omitting this feature allows:
--   The request to be forwarded to an origin server.
--   The response to be cached. 
+-   Combine this feature with the `Set Status Code` and `Set Response Body` features to optimize performance for custom responses. 
+-   Omitting this feature allows:
+    -   The request to be forwarded to an origin server.
+    -   The response to be cached. 
 
 <edgejs>
-This feature is typically combined with the `set_status_code` and `set_response_body` features to send a custom response. 
+**Key information:**
 
-Omitting this feature allows:
--   The request to be forwarded to an origin server.
--   The response to be cached. 
+-   Combine this feature with the `set_status_code` and `set_response_body` features to optimize performance for custom responses. 
+-   Omitting this feature allows:
+    -   The request to be forwarded to an origin server.
+    -   The response to be cached. 
 
 **Example:**
 
@@ -2039,7 +2040,7 @@ new Router()
 ```
 </edgejs>
 
-**Default Behavior:** By default, cache misses are forwarded to an origin server or to Serverless Compute. Additionally, responses are cached according to your caching policy.
+**Default Behavior:** By default, cache misses are forwarded to an origin server or to the Serverless layer. Additionally, responses are cached according to your caching policy.
 
 #### Set Response Body {/*set-response-body*/}
 
@@ -2049,12 +2050,13 @@ Defines a custom response body.
 
 -   Use [feature variables](/guides/performance/rules/feature_variables) to dynamically construct this response body.
 -   This response body is always sent instead of a cached response or the response provided by an origin server.
--   Prevent requests from being forwarded to an origin server by also passing the `set_done` feature.
+-   Prevent requests from being forwarded to an origin server by also passing the `Set Done` feature.
 
 <edgejs>
 **Key information:**
 
--   Use feature variables to dynamically construct this response body.
+-   Set this feature to a Base64-encoded value.
+-   Use [feature variables](/guides/performance/rules/feature_variables) to dynamically construct this response body.
 -   This response body is always sent instead of a cached response or the response provided by an origin server.
 -   Prevent requests from being forwarded to an origin server by also passing the `set_done` feature.
 
@@ -2064,7 +2066,7 @@ Defines a custom response body.
 new Router()
   .get('/', {
     response: {
-      "set_response_body": "<!DOCTYPE html><title>hi</title>",
+      "set_response_body": "PCFET0NUWVBFIGh0bWw+PHRpdGxlPmhpPC90aXRsZT4=",
     }
   })
 ```
@@ -2090,7 +2092,6 @@ new Router()
 </edgejs>
 
 **Default Behavior:** By default, the HTTP status code indicates how the request was handled. 
--->
 
 ## Set Variables {/*set-variables*/}
 

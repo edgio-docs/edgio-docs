@@ -166,9 +166,9 @@ If your web application relies on query string parameter(s), request header(s), 
 
         **CDN-as-code:** [cache_key_rewrite](/docs/api/core/interfaces/types.Caching.html#cache_key_rewrite) 
 
-    <Callout type="note">
+    <Callout type="tip">
 	
-	  Both of the above features customize the cache key. The results may be hard to predict if you apply both features within the same rule. 
+	  We recommend only using one of the above features per rule, since the Rewrite Cache Key feature overwrites the relative path and the query string defined within the cache key. The results may be hard to predict if you apply both features within the same rule. However, the Rewrite Cache Key feature will be applied first.
 	
 	</Callout>
 

@@ -2014,17 +2014,17 @@ Determines whether to stop processing the request.
 **Key information:**
 
 -   Combine this feature with the `Set Status Code` and `Set Response Body` features to optimize performance for custom responses. 
--   Omitting this feature allows:
-    -   The request to be forwarded to an origin server.
-    -   The response to be cached. 
+-   This feature prevents:
+    -   The request from being forwarded to an origin server or the Serverless layer.
+    -   The response from being cached. 
 
 <edgejs>
 **Key information:**
 
 -   Combine this feature with the `set_status_code` and `set_response_body` features to optimize performance for custom responses. 
--   Omitting this feature allows:
-    -   The request to be forwarded to an origin server.
-    -   The response to be cached. 
+-   This feature prevents:
+    -   The request from being forwarded to an origin server or the Serverless layer.
+    -   The response from being cached. 
 
 **Example:**
 

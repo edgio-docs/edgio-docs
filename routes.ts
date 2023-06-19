@@ -19,36 +19,33 @@ const defaultFeatures: Features = {
 };
 
 const router = new Router()
-  .match(
-    {},
-    {
-      ...defaultFeatures,
-      headers: isProductionBuild()
-        ? {
-            set_response_headers: {
-              'Strict-Transport-Security':
-                'max-age=31536000; includeSubDomains; preload',
-              'Content-Security-Policy': [
-                `default-src 'self'`,
-                `style-src 'unsafe-inline' 'self' fonts.googleapis.com cdn.jsdelivr.net`,
-                `font-src fonts.gstatic.com`,
-                `img-src 'self' www.google-analytics.com analytics.twitter.com www.facebook.com px.ads.linkedin.com *.intercomcdn.com tr.lfeeder.com data: *.moovweb.net edgeio.whitecdn.com`,
-                `frame-src www.youtube.com youtu.be player.vimeo.com`,
-                `script-src 'unsafe-inline' 'self' 'unsafe-eval' ${scriptSrcDomains.join(
-                  ' '
-                )}`,
-                `base-uri 'self'`,
-                `frame-ancestors 'self'`,
-                `media-src www.youtube.com`,
-                `connect-src ${connectSrcDomains.join(' ')}`,
-              ].join('; '),
-              'X-XSS-Protection': '1; mode=block',
-            },
-            remove_origin_response_headers: ['cache-control'],
-          }
-        : {},
-    }
-  )
+  .match('/(.*)', {
+    ...defaultFeatures,
+    headers: isProductionBuild()
+      ? {
+          set_response_headers: {
+            'Strict-Transport-Security':
+              'max-age=31536000; includeSubDomains; preload',
+            'Content-Security-Policy': [
+              `default-src 'self'`,
+              `style-src 'unsafe-inline' 'self' fonts.googleapis.com cdn.jsdelivr.net`,
+              `font-src fonts.gstatic.com`,
+              `img-src 'self' www.google-analytics.com analytics.twitter.com www.facebook.com px.ads.linkedin.com *.intercomcdn.com tr.lfeeder.com data: *.moovweb.net edgeio.whitecdn.com`,
+              `frame-src www.youtube.com youtu.be player.vimeo.com`,
+              `script-src 'unsafe-inline' 'self' 'unsafe-eval' ${scriptSrcDomains.join(
+                ' '
+              )}`,
+              `base-uri 'self'`,
+              `frame-ancestors 'self'`,
+              `media-src www.youtube.com`,
+              `connect-src ${connectSrcDomains.join(' ')}`,
+            ].join('; '),
+            'X-XSS-Protection': '1; mode=block',
+          },
+          remove_origin_response_headers: ['cache-control'],
+        }
+      : {},
+  })
 
   // google verification
   .match('/googlea13e5ef2a6ea3f29.html', {

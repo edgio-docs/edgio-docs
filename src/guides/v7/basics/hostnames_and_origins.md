@@ -108,7 +108,7 @@ On a per environment-basis, define how {{ PRODUCT }} will communicate with your 
 
 -   Each origin configuration identifies a set of web server(s) by hostname or IP address.  
 -   An origin configuration may identify up to 4 hostnames or IP addresses. 
--   {{ PRODUCT }} applies [primary/failover load balancing](#primary-failover-load-balancing) for traffic directed to an origin configuration that contains multiple origin hostnames. 
+-   {{ PRODUCT }} applies [primary/failover](#primary-failover-load-balancing) or [round-robin](#round-robin-load-balancing) for traffic directed to an origin configuration that contains multiple origin hostnames. 
 -   The maximum number of origin configurations per environment is 100. <a id="override-host-header" />
 -   By default, our CDN forwards the `Host` header provided by the client when proxying requests to your origin server(s). You may override the client's `Host` header by setting the **Override Host Header** option to the desired hostname. This forces our CDN to set the `Host` header to the specified hostname whenever it proxies traffic to the origin server(s) associated with this origin configuration.
 
@@ -208,6 +208,10 @@ On a per environment-basis, define how {{ PRODUCT }} will communicate with your 
 
     1.  All requests that {{ PRODUCT }} proxies to this origin configuration will be directed to the first origin hostname listed within your origin configuration.
     2.  If a server corresponding to that origin hostname is unavailable, then the request will be sent to the next origin configuration on the list. This step is repeated until a server is able to honor the request. 
+
+### Round-robin Load Balancing {/*round-robin-load-balancing*/}
+
+This mode distributes requests evenly across all hostnames listed within your origin configuration. If a server is unavailable, then the request will be sent to the next hostname on the list. 
 
 #### Unavailable Servers {/*unavailable-servers*/}
 

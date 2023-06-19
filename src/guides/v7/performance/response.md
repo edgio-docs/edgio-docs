@@ -199,7 +199,7 @@ Common response headers are described below.
 
 -   **{{ HEADER_PREFIX }}-platform-aws-account:** Identifies the AWS account corresponding to the Serverless worker that processed a request.
 -   **{{ HEADER_PREFIX }}-request-id:** Indicates the request's unique ID.
--   [{{ HEADER_PREFIX }}-status](#-status-response-header): Contains a comma-delimited list of HTTP status codes for each Serverless component that processed the request.
+-   **{{ HEADER_PREFIX }}-status]:** Contains a comma-delimited list of HTTP status codes for each Serverless component that processed the request.
     -   **p**: Serverless load balancer
     -   **w**: Serverless worker
 

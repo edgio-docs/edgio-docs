@@ -51,8 +51,9 @@ const router = new Router()
   .match('/googlea13e5ef2a6ea3f29.html', {
     ...defaultFeatures,
     response: {
-      set_response_body:
-        'google-site-verification: googlea13e5ef2a6ea3f29.html',
+      set_response_body: btoa(
+        'google-site-verification: googlea13e5ef2a6ea3f29.html'
+      ),
       set_done: true,
     },
   });

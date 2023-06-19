@@ -77,7 +77,7 @@ Use the {{ PRODUCT }} CLI to initialize your property. If you have already perfo
 
     If this is your first time using the {{ PRODUCT }} CLI to deploy, then you will be prompted to log in to the {{ PORTAL_LINK }}. To log in, select `Continue`. This will open a browser window where you may log in by creating a new account, or authenticating with a third-party provider such as Google or GitHub. Once you log in, you'll be prompted to authorize creating a local access token:
 
-    ![Local Access Token](/images/v7/performance/cli-auth-token.png)
+    ![Local Access Token](/images/v7/performance/cli-auth-token.png?width=500)
 
     After clicking **Create access token**, you may return back to the CLI and continue with the deployment.
 

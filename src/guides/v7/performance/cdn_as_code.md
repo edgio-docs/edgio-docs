@@ -18,6 +18,12 @@ Get started with CDN-as-code by either experimenting with:
     repoUrl="https://github.com/edgio-docs/edgio-v7-simple-performance-example/"
   />
 
+  <ExampleButtons
+    title="Full-Featured"
+    siteUrl="https://edgio-community-examples-v7-full-featured-perfor-f74158.edgio.link/"
+    repoUrl="https://github.com/edgio-docs/edgio-v7-full-featured-performance-example"
+  />
+
 - Your web application or website.
 
 ### Create a Property {/* create-property */}
@@ -454,15 +460,13 @@ This example demonstrates a basic {{ PRODUCT }} configuration for `publicdomainr
   repoUrl="https://github.com/edgio-docs/edgio-v7-simple-performance-example/"
 />
 
-<!-- TODO: update example to work on v7
 **Full-Featured Example**
 
 This example demonstrates a full-featured {{ PRODUCT }} configuration that showcases the following functionality:
 
-- [Proxying requests](/guides/performance/cdn_as_code/common_routing_patterns#proxying-an-origin) to multiple origins
-- Increasing the cache buffer during revalidation through [StaleWhileRevalidate](/guides/performance/caching#achieving-100-cache-hit-rates)
-- [Prerendering](/guides/performance/static_prerendering) pages and caching them to improve performance.
-- Instructing the browser to [prefetch](/guides/performance/prefetching) and [deep fetch](/guides/performance/prefetching#deep-fetching) cached content to improve performance.
+- [Proxying multiple origins](/guides/performance/cdn_as_code/route_features#proxying-an-origin)
+- Increasing the cache buffer during revalidation through [StaleWhileRevalidate](/guides/performance/caching#cache-hit-ratio-optimization)
+- [Prefetching](/guides/performance/prefetching) and [Deepfetching](/guides/performance/prefetching#deep-fetching) cached content to improve performance.
 
   <Callout type="info">
 
@@ -472,18 +476,16 @@ This example demonstrates a full-featured {{ PRODUCT }} configuration that showc
 
 - [Transforming and optimizing images](/guides/performance/image_optimization)
 - Transforming the response through [Serverless Compute](/guides/performance/serverless_compute)
-- [Removing response headers](/guides/performance/cdn_as_code#alter-requests-and-responses)
+- [Removing response headers](/guides/performance/cdn_as_code/route_features#altering-the-response)
 - [Normalizing the cache key](/guides/performance/caching#customizing-the-cache-key)
 - Generating performance insights through [DevTools](/guides/performance/observability/devtools)
 - Tracking [Core Web Vitals](/guides/performance/observability/real_user_monitoring) through real user monitoring (RUM).
 
 <ExampleButtons
   title="Full-Featured"
-  siteUrl="https://edgio-community-examples-full-featured-performance-live.layer0-limelight.link/"
-  repoUrl="https://github.com/edgio-docs/edgio-full-featured-performance-example/"
-  deployFromRepo
+  siteUrl="https://edgio-community-examples-v7-full-featured-perfor-f74158.edgio.link/"
+  repoUrl="https://github.com/edgio-docs/edgio-v7-full-featured-performance-example"
 />
--->
 
 ## Issues? {/* issues */}
 

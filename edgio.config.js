@@ -23,7 +23,7 @@ module.exports = {
         use_sni: true,
         sni_hint_and_strict_san_check: DOCS_PAGES_DOMAIN,
       },
-      shields: {us_east: 'DCD'},
+      //shields: {us_east: 'DCD'},
       // tls_verify: {
       //   allow_self_signed_certs: true,
       // },

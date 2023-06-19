@@ -1,4 +1,4 @@
-import {isProductionBuild} from '@edgio/core/environment';
+import {isLocal} from '@edgio/core/environment';
 import {Router} from '@edgio/core/router';
 import {Features} from '@edgio/core/types';
 import {nextRoutes} from '@edgio/next';
@@ -21,7 +21,7 @@ const defaultFeatures: Features = {
 const router = new Router()
   .match('/(.*)', {
     ...defaultFeatures,
-    headers: isProductionBuild()
+    headers: !isLocal()
       ? {
           set_response_headers: {
             'Strict-Transport-Security':

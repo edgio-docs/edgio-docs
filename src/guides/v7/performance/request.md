@@ -15,7 +15,7 @@ A request commonly contains the following components:
 -   By default, our edge servers will typically forward the entire request to your origin configuration. However, a rule or your CDN-as-code configuration can override the default CDN behavior.
 -   Our CDN only accepts requests that comply with the HTTP specification (e.g., HTTP/1.1). We return a `400 Bad Request` for non-compliant requests.
 
-## Order of Operations
+## Order of Operations {/*order-of-operations*/}
 
 {{ PRODUCT }} processes each request in the following order:
 

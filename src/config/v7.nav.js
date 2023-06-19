@@ -90,6 +90,10 @@ const nav = {
             //   path: 'performance/cdn_as_code/edge_functions',
             // },
             {
+              title: 'Error Handling',
+              path: 'performance/cdn_as_code/error_handling',
+            },
+            {
               title: '',
               path: '',
             },

@@ -122,31 +122,7 @@ To implement prefetching, we need to include code in our client-side bundle that
 
 - Traditional Sites:
 
-  For implementation on a [traditional site](/guides/performance/traditional_sites), we'll create a `browser.js` file that should be included in your client-side bundle. This file will be responsible for installing the service worker and prefetching URLs. To prefetch a URL, call the `prefetch` function from `{{ PACKAGE_NAME }}/prefetch/window`.
-
-  <a id="clientPrefetchCode"></a>
-
-  ```js filename="browser.js"
-  import install from '{{ PACKAGE_NAME }}/prefetch/window/install'
-  import { prefetch } from '{{ PACKAGE_NAME }}/prefetch/window/prefetch'
-
-  document.addEventListener('DOMContentLoaded', () => {
-    install({
-      watch: [
-        {
-          selector: 'a[href^="/"]',
-          callback: (el) => {
-            const href = el.getAttribute('href')
-            if (href) prefetch(href)
-          },
-        },
-      ],
-    })
-
-    // Prefetch the product API for the product page.
-    prefetch('/api/products/1.json');
-  })
-  ```
+  For implementation on a traditional site, we recommend following the steps outlined in the [Configure Caching and Prefetching](guides/performance/traditional_sites#configure-caching-and-prefetching) section.
 
 - Frameworks:
 
@@ -156,7 +132,7 @@ To implement prefetching, we need to include code in our client-side bundle that
   - [React](#react)
   - [Vue.js](#vuejs)
   
-  If you are using a framework not listed above, you can still install the service worker and use the `prefetch` function from `{{ PACKAGE_NAME }}/prefetch/window/prefetch` to prefetch URLs. Using the [example code](#clientPrefetchCode) above, you must include that code in your client-side bundle. How you do this will vary depending on your framework, however, common filenames may include `app.js`, `main.js`, or `index.js`.
+  If you are using a different framework, you can still install the service worker and use the `prefetch` function from `{{ PACKAGE_NAME }}/prefetch/window/prefetch` to prefetch URLs. Using the following [sample code](#clientPrefetchCode), you must include that code in your client-side bundle. How you do this will vary depending on your framework, however, common filenames may include `app.js`, `main.js`, or `index.js`.
 
 Depending on your method of implementation, the above code will do the following:
 
@@ -186,7 +162,7 @@ All prefetch function options can be found in its API Documentation [here](/docs
 
 ## Frameworks {/* frameworks */}
 
-{{ PRODUCT }} provides prefetching integration for a few of the following front-end frameworks:
+{{ PRODUCT }} provides prefetching integration for the following front-end frameworks:
 ### React {/* react */}
 
 The `{{ PACKAGE_NAME }}/react` package provides a `Prefetch` component that you can wrap around any link to prefetch the link when it becomes visible in the viewport:

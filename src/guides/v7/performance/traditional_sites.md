@@ -106,7 +106,7 @@ Once your project has been initialized, change into the directory of your projec
 npm i -D {{ PACKAGE_NAME }}/starter@{{ PACKAGE_VERSION }}
 ```
 
-```bash tabLabel="Yarn"
+```bash tabLabel="Yarn 1 Classic"
 yarn add --dev {{ PACKAGE_NAME }}/starter@{{ PACKAGE_VERSION }}
 ```
 

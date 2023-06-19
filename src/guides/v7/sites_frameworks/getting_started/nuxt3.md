@@ -12,14 +12,6 @@ This guide shows you how to deploy a [Nuxt3](https://v3.nuxtjs.org) application 
   repoUrl="https://github.com/edgio-docs/edgio-v7-nuxt3-example" 
   deployFromRepo />
 
-## Connector {/*connector*/}
-
-This framework has a connector developed for {{ PRODUCT }}. See [Connectors](/guides/sites_frameworks/connectors) for more information.
-
-<ButtonLink variant="stroke" type="code" withIcon={true} href="https://github.com/edgio-docs/edgio-connectors/tree/main/edgio-nuxt-nitro-connector">
-  View the Connector Code
-</ButtonLink>
-
 {{ PREREQ.md }}
 
 ## Getting Started {/*getting-started*/}

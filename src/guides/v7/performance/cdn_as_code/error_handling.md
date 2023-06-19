@@ -4,7 +4,7 @@ title: Error Handling
 
 This guide covers how to handle origin errors at the edge to display custom error pages or retry requests from a different origin.
 
-The examples found in this guide can be found in the [edgio-error-handling-example](https://github.com/edgio-docs/edgio-error-handling-example) repository.
+The examples found in this guide can be found in the [edgio-v7-error-handling-example](https://github.com/edgio-docs/edgio-v7-error-handling-example) repository.
 
 ## The `catch` method {/* the-catch-method */}
 

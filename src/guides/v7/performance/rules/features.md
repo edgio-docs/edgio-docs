@@ -2055,7 +2055,6 @@ Defines a custom response body.
 <edgejs>
 **Key information:**
 
--   Set this feature to a Base64-encoded value.
 -   Use [feature variables](/guides/performance/rules/feature_variables) to dynamically construct this response body.
 -   This response body is always sent instead of a cached response or the response provided by an origin server.
 -   Prevent requests from being forwarded to an origin server by also passing the `set_done` feature.

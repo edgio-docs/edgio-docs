@@ -1,4 +1,5 @@
 export const connectSrcDomains = [
+  '*.layer0.co',
   '*.edg.io',
   '*.edgio.link',
   '*.edgio-perma.link',
@@ -17,6 +18,8 @@ export const connectSrcDomains = [
   '*.vimeo.com',
   'vimeo.com',
   '*.clarity.ms',
+  '*.ecdns.net',
+  '*.doubleclick.net',
 ].sort();
 
 export const scriptSrcDomains = [

@@ -108,7 +108,7 @@ On a per environment-basis, define how {{ PRODUCT }} will communicate with your 
 
 -   Each origin configuration identifies a set of web server(s) by hostname or IP address.  
 -   An origin configuration may identify up to 4 hostnames or IP addresses. 
--   {{ PRODUCT }} applies [primary/failover](#primary-failover-load-balancing) or [round-robin](#round-robin-load-balancing) for traffic directed to an origin configuration that contains multiple origin hostnames. 
+-   [Load balance](#load-balancing) requests to the web servers associated with an origin configuration using either primary/failover or round-robin mode.
 -   The maximum number of origin configurations per environment is 100. <a id="override-host-header" />
 -   By default, our CDN forwards the `Host` header provided by the client when proxying requests to your origin server(s). You may override the client's `Host` header by setting the **Override Host Header** option to the desired hostname. This forces our CDN to set the `Host` header to the specified hostname whenever it proxies traffic to the origin server(s) associated with this origin configuration.
 
@@ -163,6 +163,7 @@ On a per environment-basis, define how {{ PRODUCT }} will communicate with your 
     3.  Set the **Scheme** option to always serve traffic to your hosts over HTTPS, HTTP, or to match the client's scheme.
     4.  Optional. [Override the client's Host header](#override-host-header) by setting the **Override Host Header** option to the desired hostname. 
     5.  Optional. Add another host to this origin configuration by clicking **+ Add Host** and then performing steps 4.1 - 4.4. 
+	6.  Optional. Set the **Balancer type** option to the desired load balancing mode for requests proxied to your web servers. 
 5.  Optional. Define TLS settings for this origin configuration. Click on the **Origin TLS Settings** section to expand it.
 
     1.  Enable SNI by toggling the **Use SNI** option to the on position (<Image inline src="/images/v7/icons/toggle-on.png" alt="Toggle on" />) and then defining the hostname that will be sent as a SNI hint during the TLS handshake. 
@@ -202,16 +203,26 @@ On a per environment-basis, define how {{ PRODUCT }} will communicate with your 
 
 7. If you are finished making changes to this environment, click **Deploy Changes**.
 
-### Primary/Failover Load Balancing {/*primary-failover-load-balancing*/}
+### Load Balancing {/*load-balancing*/}
 
-{{ PRODUCT }} determines how to load balance traffic directed at your origin configuration as follows:
+{{ PRODUCT }} load balances traffic proxied from our network to the web servers associated with an origin configuration using either primary/failover or round-robin mode. 
 
-    1.  All requests that {{ PRODUCT }} proxies to this origin configuration will be directed to the first origin hostname listed within your origin configuration.
-    2.  If a server corresponding to that origin hostname is unavailable, then the request will be sent to the next origin configuration on the list. This step is repeated until a server is able to honor the request. 
+**Key information:**
 
-### Round-robin Load Balancing {/*round-robin-load-balancing*/}
-
-This mode distributes requests evenly across all hostnames listed within your origin configuration. If a server is unavailable, then the request will be sent to the next hostname on the list. 
+-   {{ PRODUCT }} generates a list of IP addresses by resolving the hostnames associated with an origin configuration in the order in which they are listed.
+-   If an origin configuration allows {{ PRODUCT }} to proxy requests using both HTTP and HTTPS, then {{ PRODUCT }} will generate an ordered list of IP addresses for each HTTP scheme.
+-   The available load balancing options are:
+    -   **Primary/Failover:** This load balancing mode requires {{ PRODUCT }} to:
+	
+	    1.  Proxy all traffic to the first IP address in the list. 
+		2.  If the current server is [unavailable](#unavailable-servers), then {{ PRODUCT }} will issue another request to the next IP address on the list. This step is repeated until a server is able to honor the request. 
+	
+	    Set up primary/failover load balancing by selecting `Primary failover` from the **Balancer type** option. 
+		
+    -   **Round-robin:** This mode distributes requests evenly across all IP addresses. If a server is [unavailable](#unavailable-servers), then the request will be sent to the next IP address on the list. 
+	
+	    Set up round-robin load balancing by selecting `Round robin` from the **Balancer type** option. 
+-   The above load-balancing options are completely independent from any load balancing configuration that may already distribute traffic to your web servers. For instance, traffic for a single IP address might be load balanced across several physical servers.
 
 #### Unavailable Servers {/*unavailable-servers*/}
 

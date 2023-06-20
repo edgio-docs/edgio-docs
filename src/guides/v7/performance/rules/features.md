@@ -2065,7 +2065,7 @@ Defines a custom response body.
 new Router()
   .get('/', {
     response: {
-      "set_response_body": "PCFET0NUWVBFIGh0bWw+PHRpdGxlPmhpPC90aXRsZT4=",
+      "set_response_body": "<!DOCTYPE html><title>hi</title>",
     }
   })
 ```

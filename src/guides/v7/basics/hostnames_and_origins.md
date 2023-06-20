@@ -202,6 +202,7 @@ On a per environment-basis, define how {{ PRODUCT }} will communicate with your 
     4.  Optional. Configure cache misses from a specific region to always be proxied to your origin by selecting `Bypass`.
 
 7. If you are finished making changes to this environment, click **Deploy Changes**.
+<a id="primary-failover-load-balancing" />
 
 ### Load Balancing {/*load-balancing*/}
 

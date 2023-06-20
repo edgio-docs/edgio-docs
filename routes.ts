@@ -1,5 +1,5 @@
 import {isLocal} from '@edgio/core/environment';
-import {Router} from '@edgio/core/router';
+import {Router, edgioRoutes} from '@edgio/core/router';
 import {Features} from '@edgio/core/types';
 import {nextRoutes} from '@edgio/next';
 import {load} from 'cheerio';
@@ -189,7 +189,8 @@ router
   //     }
   //   )
   // )
-  .use(nextRoutes);
+  .use(nextRoutes)
+  .use(edgioRoutes);
 
 // error handling
 // router.catch(/^4.*/, {

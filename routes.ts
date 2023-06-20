@@ -65,6 +65,10 @@ const router = new Router()
     },
   });
 
+// plugins
+
+router.use(nextRoutes);
+
 //  -- API docs --
 
 // proxy /docs/versions to the version list
@@ -169,27 +173,26 @@ redirects.forEach(([from, to, statusCode]) => {
 });
 
 // plugins
-router
-  // .use(
-  //   archiveRoutes.addRoute(
-  //     '/archive/github/:owner/:repo/:path*',
-  //     async (req) => {
-  //       const {owner, repo, path} = req.params || {};
-  //       const downloader = new GithubDownloader({
-  //         github: {auth: process.env.GH_API_TOKEN},
-  //       });
+router;
+// .use(
+//   archiveRoutes.addRoute(
+//     '/archive/github/:owner/:repo/:path*',
+//     async (req) => {
+//       const {owner, repo, path} = req.params || {};
+//       const downloader = new GithubDownloader({
+//         github: {auth: process.env.GH_API_TOKEN},
+//       });
 
-  //       const flatPath = (path as string[]).join('/');
-  //       const result = await downloader.fetchFiles(owner, repo, flatPath);
+//       const flatPath = (path as string[]).join('/');
+//       const result = await downloader.fetchFiles(owner, repo, flatPath);
 
-  //       return result.map(({path, contents}) => ({
-  //         path: path.split(flatPath)[1],
-  //         data: contents,
-  //       }));
-  //     }
-  //   )
-  // )
-  .use(nextRoutes);
+//       return result.map(({path, contents}) => ({
+//         path: path.split(flatPath)[1],
+//         data: contents,
+//       }));
+//     }
+//   )
+// )
 
 // error handling
 // router.catch(/^4.*/, {

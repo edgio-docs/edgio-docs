@@ -8,7 +8,7 @@ A match condition identifies the set of requests to which one or more feature(s)
 |---|---|
 | Location  | <ul><li>[ASN](#asn)</li><li>[City](#city)</li><li>[Continent](#continent)</li><li>[Country](#country)</li><li>[DMA Code](#dma-code)</li><li>[Latitude](#latitude)</li><li>[Longitude](#longitude)</li><li>[Postal Code](#postal-code)</li><li>[Region Code](#region-code)</li></ul> |
 | Request  | <ul><li>[Client IP](#client-ip)</li><li>[Cookie](#cookie)</li><li>[Directory](#directory)</li><li>[Extension](#extension)</li><li>[Filename](#filename)</li><li>[Method](#method)</li><li>[Origin Path](#origin-path)</li><li>[Path](#path)</li><li>[POP Code](#pop-code)</li><li>[Query](#query)</li><li>[Query Parameter](#query-parameter)</li><li>[Query String](#query-string)</li><li>[Referring Domain](#referring-domain)</li><li>[Request Header](#request-header)</li><li>[Scheme](#scheme)</li></ul>  |
-| Device  | <ul><li>[Brand Name](#brand-name)</li><li hidden>[Device Operating System](#device-operating-system)</li><li>[Dual Orientation](#dual-orientation)</li><li hidden>[HTML Preferred DTD](#html-preferred-dtd)</li><li>[Image Inlining](#image-inlining)</li><li>[Is Android](#is-android)</li><li>[Is App](#is-app)</li><li hidden>[Is Full Desktop](#is-full-desktop)</li><li>[Is iOS](#is-ios)</li><li>[Is Robot](#is-robot)</li><li>[Is Smartphone](#is-smartphone)</li><li>[Is SmartTV](#is-smarttv)</li><li>[Is Tablet](#is-tablet)</li><li>[Is Touchscreen](#is-touchscreen)</li><li>[Is Windows Phone](#is-windows-phone)</li><li>[Is Wireless Device](#is-wireless-device)</li><li>[Marketing Name](#marketing-name)</li><li>[Mobile Browser](#mobile-browser)</li><li>[Model Name](#model-name)</li><li>[Progressive Download](#progressive-download)</li><li>[Release Date](#release-date)</li><li>[Resolution Height](#resolution-height)</li><li>[Resolution Width](#resolution-width)</li></ul>  |
+| Device  | <ul><li>[Brand Name](#brand-name)</li><li hidden>[Device Operating System](#device-operating-system)</li><li>[Dual Orientation](#dual-orientation)</li><li>[HTML Preferred DTD](#html-preferred-dtd)</li><li>[Image Inlining](#image-inlining)</li><li>[Is Android](#is-android)</li><li>[Is App](#is-app)</li><li hidden>[Is Full Desktop](#is-full-desktop)</li><li>[Is iOS](#is-ios)</li><li>[Is Robot](#is-robot)</li><li>[Is Smartphone](#is-smartphone)</li><li>[Is SmartTV](#is-smarttv)</li><li>[Is Tablet](#is-tablet)</li><li>[Is Touchscreen](#is-touchscreen)</li><li>[Is Windows Phone](#is-windows-phone)</li><li>[Is Wireless Device](#is-wireless-device)</li><li>[Marketing Name](#marketing-name)</li><li>[Mobile Browser](#mobile-browser)</li><li>[Model Name](#model-name)</li><li>[Progressive Download](#progressive-download)</li><li>[Release Date](#release-date)</li><li>[Resolution Height](#resolution-height)</li><li>[Resolution Width](#resolution-width)</li></ul>  |
 | Miscellaneous  | <ul><li>[Random Integer](#random-integer)</li></ul>  |
 
 #### ASN {/*asn*/} <edgejs>location</edgejs>
@@ -517,17 +517,31 @@ router.conditional({
 ```
 </edgejs>
 
-<!--
 #### HTML Preferred DTD {/*html-preferred-dtd*/} <edgejs>device</edgejs>
 
-Identifies requests by a device's preferred document type definition (DTD) for HTML content (e.g., `html5`).
+Identifies requests by a device's preferred document type definition (DTD) for HTML content (e.g., `html4`).
 
 <edgejs>
 
 **Example:**
 
+```
+router.conditional({
+    if: [{
+            '===': [{
+                    device: 'html_preferred_dtd',
+                },
+                "html4",
+            ],
+        }, {
+            // Features
+            },
+        },
+    ],
+});
+```
+
 </edgejs>
--->
 
 #### Image Inlining {/*image-inlining*/} <edgejs>device</edgejs>
 

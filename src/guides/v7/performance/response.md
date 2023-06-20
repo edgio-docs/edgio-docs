@@ -166,11 +166,11 @@ Common response headers are described below.
 
     [Learn more.](/guides/performance/caching#why-is-my-response-not-being-cached)
 -->
-    <a id="-mr" />
 
 -   **{{ HEADER_PREFIX }}-hit-request-id:** For responses served from cache, this header indicates the unique ID of the request that was cached on our CDN.
-
--   **{{ HEADER_PREFIX }}-mr:** Indicates one or more matched route(s). 
+    <a id="-mr" />
+	
+-   **{{ HEADER_PREFIX }}-mr:** Identifies each rule that was applied to a request. 
 
     **Syntax:** `{{ HEADER_PREFIX }}-mr: <ENVIRONMENT #>:<RULE #>[;<ENVIRONMENT #>:<RULE #>;<ENVIRONMENT #>:<RULE #>]`
 

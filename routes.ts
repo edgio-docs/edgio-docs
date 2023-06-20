@@ -26,48 +26,62 @@ const defaultFeatures: Features = {
   },
 };
 
-const router = new Router();
-// .match('/(.*)', {
-//   ...defaultFeatures,
-//   headers: !isLocal()
-//     ? {
-//         set_response_headers: {
-//           'Strict-Transport-Security':
-//             'max-age=31536000; includeSubDomains; preload',
-//           'Content-Security-Policy': [
-//             `default-src 'self'`,
-//             `style-src 'unsafe-inline' 'self' ${styleSrcDomains.join(' ')}`,
-//             `font-src ${fontSrcDomains.join(' ')}`,
-//             `img-src 'self' ${imgSrcDomains.join(' ')}`,
-//             `frame-src ${frameSrcDomains.join(' ')}`,
-//             `script-src 'unsafe-inline' 'self' 'unsafe-eval' ${scriptSrcDomains.join(
-//               ' '
-//             )}`,
-//             `base-uri 'self'`,
-//             `frame-ancestors 'self'`,
-//             `media-src ${mediaSrcDomains.join(' ')}`,
-//             `connect-src ${connectSrcDomains.join(' ')}`,
-//           ].join('; '),
-//           'X-XSS-Protection': '1; mode=block',
-//         },
-//         remove_origin_response_headers: ['cache-control'],
-//       }
-//     : {},
-// })
+const router = new Router()
+  .match('/(.*)', {
+    ...defaultFeatures,
+    headers: !isLocal()
+      ? {
+          set_response_headers: {
+            'Strict-Transport-Security':
+              'max-age=31536000; includeSubDomains; preload',
+            'Content-Security-Policy': [
+              `default-src 'self'`,
+              `style-src 'unsafe-inline' 'self' ${styleSrcDomains.join(' ')}`,
+              `font-src ${fontSrcDomains.join(' ')}`,
+              `img-src 'self' ${imgSrcDomains.join(' ')}`,
+              `frame-src ${frameSrcDomains.join(' ')}`,
+              `script-src 'unsafe-inline' 'self' 'unsafe-eval' ${scriptSrcDomains.join(
+                ' '
+              )}`,
+              `base-uri 'self'`,
+              `frame-ancestors 'self'`,
+              `media-src ${mediaSrcDomains.join(' ')}`,
+              `connect-src ${connectSrcDomains.join(' ')}`,
+            ].join('; '),
+            'X-XSS-Protection': '1; mode=block',
+          },
+          remove_origin_response_headers: ['cache-control'],
+        }
+      : {},
+  })
 
-// // google verification
-// .match('/googlea13e5ef2a6ea3f29.html', {
-//   ...defaultFeatures,
-//   response: {
-//     set_response_body:
-//       'google-site-verification: googlea13e5ef2a6ea3f29.html',
-//     set_done: true,
-//   },
-// });
+  // google verification
+  .match('/googlea13e5ef2a6ea3f29.html', {
+    ...defaultFeatures,
+    response: {
+      set_response_body:
+        'google-site-verification: googlea13e5ef2a6ea3f29.html',
+      set_done: true,
+    },
+  });
 
 // plugins
+router.use(nextRoutes).use(
+  archiveRoutes.addRoute('/archive/github/:owner/:repo/:path*', async (req) => {
+    const {owner, repo, path} = req.params || {};
+    const downloader = new GithubDownloader({
+      github: {auth: process.env.GH_API_TOKEN},
+    });
 
-//router.use(nextRoutes);
+    const flatPath = (path as string[]).join('/');
+    const result = await downloader.fetchFiles(owner, repo, flatPath);
+
+    return result.map(({path, contents}) => ({
+      path: path.split(flatPath)[1],
+      data: contents,
+    }));
+  })
+);
 
 //  -- API docs --
 
@@ -171,27 +185,6 @@ router.match('/docs/versions', {
 //     redirect(to, {statusCode: Number(statusCode || 301)})
 //   );
 // });
-
-// plugins
-// .use(
-//   archiveRoutes.addRoute(
-//     '/archive/github/:owner/:repo/:path*',
-//     async (req) => {
-//       const {owner, repo, path} = req.params || {};
-//       const downloader = new GithubDownloader({
-//         github: {auth: process.env.GH_API_TOKEN},
-//       });
-
-//       const flatPath = (path as string[]).join('/');
-//       const result = await downloader.fetchFiles(owner, repo, flatPath);
-
-//       return result.map(({path, contents}) => ({
-//         path: path.split(flatPath)[1],
-//         data: contents,
-//       }));
-//     }
-//   )
-// )
 
 // error handling
 // router.catch(/^4.*/, {

@@ -215,7 +215,7 @@ On a per environment-basis, define how {{ PRODUCT }} will communicate with your 
     -   **Primary/Failover:** This load balancing mode requires {{ PRODUCT }} to:
 	
 	    1.  Proxy all traffic to the first IP address in the list. 
-		2.  If the current server is [unavailable](#unavailable-servers), then {{ PRODUCT }} will issue another request to the next IP address on the list. This step is repeated until a server is able to honor the request. 
+	    2.  If the current server is [unavailable](#unavailable-servers), then {{ PRODUCT }} will issue another request to the next IP address on the list. This step is repeated until a server is able to honor the request. 
 	
 	    Set up primary/failover load balancing by selecting `Primary failover` from the **Balancer type** option. 
 		

@@ -6,7 +6,15 @@ import {load} from 'cheerio';
 import {Downloader as GithubDownloader} from 'github-download-directory';
 import semverMaxSatisfying from 'semver/ranges/max-satisfying';
 
-import {scriptSrcDomains, connectSrcDomains} from './edgio/domains';
+import {
+  scriptSrcDomains,
+  connectSrcDomains,
+  imgSrcDomains,
+  frameSrcDomains,
+  styleSrcDomains,
+  fontSrcDomains,
+  mediaSrcDomains,
+} from './edgio/cspDomains';
 import {archiveRoutes} from './edgio/plugins/ArchiveRoutes';
 import redirects from './edgio/redirects';
 
@@ -28,16 +36,16 @@ const router = new Router()
               'max-age=31536000; includeSubDomains; preload',
             'Content-Security-Policy': [
               `default-src 'self'`,
-              `style-src 'unsafe-inline' 'self' fonts.googleapis.com cdn.jsdelivr.net`,
-              `font-src fonts.gstatic.com`,
-              `img-src 'self' www.google-analytics.com analytics.twitter.com www.facebook.com px.ads.linkedin.com *.intercomcdn.com tr.lfeeder.com data: *.moovweb.net edgeio.whitecdn.com`,
-              `frame-src www.youtube.com youtu.be player.vimeo.com`,
+              `style-src 'unsafe-inline' 'self' ${styleSrcDomains.join(' ')}}`,
+              `font-src ${fontSrcDomains.join(' ')}`,
+              `img-src 'self' ${imgSrcDomains.join(' ')}`,
+              `frame-src ${frameSrcDomains.join(' ')}}`,
               `script-src 'unsafe-inline' 'self' 'unsafe-eval' ${scriptSrcDomains.join(
                 ' '
               )}`,
               `base-uri 'self'`,
               `frame-ancestors 'self'`,
-              `media-src www.youtube.com`,
+              `media-src ${mediaSrcDomains.join(' ')}`,
               `connect-src ${connectSrcDomains.join(' ')}`,
             ].join('; '),
             'X-XSS-Protection': '1; mode=block',
@@ -162,25 +170,25 @@ redirects.forEach(([from, to, statusCode]) => {
 
 // plugins
 router
-  .use(
-    archiveRoutes.addRoute(
-      '/archive/github/:owner/:repo/:path*',
-      async (req) => {
-        const {owner, repo, path} = req.params || {};
-        const downloader = new GithubDownloader({
-          github: {auth: process.env.GH_API_TOKEN},
-        });
+  // .use(
+  //   archiveRoutes.addRoute(
+  //     '/archive/github/:owner/:repo/:path*',
+  //     async (req) => {
+  //       const {owner, repo, path} = req.params || {};
+  //       const downloader = new GithubDownloader({
+  //         github: {auth: process.env.GH_API_TOKEN},
+  //       });
 
-        const flatPath = (path as string[]).join('/');
-        const result = await downloader.fetchFiles(owner, repo, flatPath);
+  //       const flatPath = (path as string[]).join('/');
+  //       const result = await downloader.fetchFiles(owner, repo, flatPath);
 
-        return result.map(({path, contents}) => ({
-          path: path.split(flatPath)[1],
-          data: contents,
-        }));
-      }
-    )
-  )
+  //       return result.map(({path, contents}) => ({
+  //         path: path.split(flatPath)[1],
+  //         data: contents,
+  //       }));
+  //     }
+  //   )
+  // )
   .use(nextRoutes);
 
 // error handling

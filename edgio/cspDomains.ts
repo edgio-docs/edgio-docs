@@ -22,6 +22,29 @@ export const connectSrcDomains = [
   '*.doubleclick.net',
 ].sort();
 
+export const fontSrcDomains = ['fonts.gstatic.com'];
+
+export const frameSrcDomains = [
+  'www.youtube.com',
+  'youtu.be',
+  'player.vimeo.com',
+];
+
+export const imgSrcDomains = [
+  'www.google-analytics.com',
+  'www.google.com',
+  'analytics.twitter.com',
+  'www.facebook.com',
+  'px.ads.linkedin.com',
+  '*.intercomcdn.com',
+  'tr.lfeeder.com',
+  'data:',
+  '*.moovweb.net',
+  'edgeio.whitecdn.com',
+];
+
+export const mediaSrcDomains = ['www.youtube.com'];
+
 export const scriptSrcDomains = [
   'player.vimeo.com',
   'cdn.jsdelivr.net',
@@ -43,3 +66,5 @@ export const scriptSrcDomains = [
   'googletagmanager.com',
   '*.clarity.ms',
 ].sort();
+
+export const styleSrcDomains = ['fonts.googleapis.com', 'cdn.jsdelivr.net'];

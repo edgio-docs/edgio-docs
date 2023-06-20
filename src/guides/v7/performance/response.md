@@ -169,8 +169,8 @@ Common response headers are described below.
 -   **{{ HEADER_PREFIX }}-components:** Contains Serverless information that is primarily meant for internal use when troubleshooting issues.
 -   **{{ HEADER_PREFIX }}-hit-request-id:** For responses served from cache, this header indicates the unique ID of the request that was cached on our CDN.
     <a id="-mr" />
-
--   **{{ HEADER_PREFIX }}-mr:** Indicates one or more matched route(s). 
+	
+-   **{{ HEADER_PREFIX }}-mr:** Identifies each rule that was applied to a request. 
 
     **Syntax:** `{{ HEADER_PREFIX }}-mr: <ENVIRONMENT #>:<RULE #>[;<ENVIRONMENT #>:<RULE #>;<ENVIRONMENT #>:<RULE #>]`
 

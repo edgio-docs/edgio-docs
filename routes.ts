@@ -36,10 +36,10 @@ const router = new Router()
               'max-age=31536000; includeSubDomains; preload',
             'Content-Security-Policy': [
               `default-src 'self'`,
-              `style-src 'unsafe-inline' 'self' ${styleSrcDomains.join(' ')}}`,
+              `style-src 'unsafe-inline' 'self' ${styleSrcDomains.join(' ')}`,
               `font-src ${fontSrcDomains.join(' ')}`,
               `img-src 'self' ${imgSrcDomains.join(' ')}`,
-              `frame-src ${frameSrcDomains.join(' ')}}`,
+              `frame-src ${frameSrcDomains.join(' ')}`,
               `script-src 'unsafe-inline' 'self' 'unsafe-eval' ${scriptSrcDomains.join(
                 ' '
               )}`,

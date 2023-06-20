@@ -189,8 +189,8 @@ router
   //     }
   //   )
   // )
-  .use(nextRoutes)
-  .use(edgioRoutes);
+  .use(nextRoutes);
+//.use(edgioRoutes);
 
 // error handling
 // router.catch(/^4.*/, {

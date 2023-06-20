@@ -209,7 +209,7 @@ On a per environment-basis, define how {{ PRODUCT }} will communicate with your 
 
 **Key information:**
 
--   {{ PRODUCT }} generates a list of IP addresses by resolving the hostnames associated with an origin configuration in the order in which they are listed.
+-   {{ PRODUCT }} generates a list of IP addresses by resolving the hostnames associated with an origin configuration. These IP addresses are listed according to the order in which the corresponding hosts are listed within your origin configuration.
 -   If an origin configuration allows {{ PRODUCT }} to proxy requests using both HTTP and HTTPS, then {{ PRODUCT }} will generate an ordered list of IP addresses for each HTTP scheme.
 -   The available load balancing options are:
     -   **Primary/Failover:** This load balancing mode requires {{ PRODUCT }} to:

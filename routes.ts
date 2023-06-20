@@ -192,18 +192,18 @@ router
   .use(nextRoutes);
 
 // error handling
-router.catch(/^4.*/, {
-  response: {
-    set_status_code: 302,
-  },
-  headers: {
-    set_response_headers: {
-      location: '%{scheme}://%{host}/',
-    },
-  },
-  url: {
-    follow_redirects: true,
-  },
-});
+// router.catch(/^4.*/, {
+//   response: {
+//     set_status_code: 302,
+//   },
+//   headers: {
+//     set_response_headers: {
+//       location: '%{scheme}://%{host}/',
+//     },
+//   },
+//   url: {
+//     follow_redirects: true,
+//   },
+// });
 
 export default router;

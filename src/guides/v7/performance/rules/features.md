@@ -2015,22 +2015,16 @@ new Router()
 
 #### Set Done {/*set-done*/}
 
-Determines whether to stop processing the request.
+Determines whether to prevent the request from being proxied from our network to an origin server or the Serverless layer.
 
 **Key information:**
 
 -   Combine this feature with the `Set Status Code` and `Set Response Body` features to optimize performance for custom responses. 
--   This feature prevents:
-    -   The request from being forwarded to an origin server or the Serverless layer.
-    -   The response from being cached. 
 
 <edgejs>
 **Key information:**
 
 -   Combine this feature with the `set_status_code` and `set_response_body` features to optimize performance for custom responses. 
--   This feature prevents:
-    -   The request from being forwarded to an origin server or the Serverless layer.
-    -   The response from being cached. 
 
 **Example:**
 
@@ -2046,7 +2040,7 @@ new Router()
 ```
 </edgejs>
 
-**Default Behavior:** By default, cache misses are forwarded to an origin server or to the Serverless layer. Additionally, responses are cached according to your caching policy.
+**Default Behavior:** By default, cache misses are forwarded to an origin server or to the Serverless layer. 
 
 #### Set Response Body {/*set-response-body*/}
 
@@ -2056,14 +2050,14 @@ Defines a custom response body.
 
 -   Use [feature variables](/guides/performance/rules/feature_variables) to dynamically construct this response body.
 -   This response body is always sent instead of a cached response or the response provided by an origin server.
--   Prevent requests from being forwarded to an origin server by also passing the `Set Done` feature.
+-   Prevent requests from being forwarded to an origin server or the Serverless layer by also passing the `Set Done` feature.
 
 <edgejs>
 **Key information:**
 
 -   Use [feature variables](/guides/performance/rules/feature_variables) to dynamically construct this response body.
 -   This response body is always sent instead of a cached response or the response provided by an origin server.
--   Prevent requests from being forwarded to an origin server by also passing the `set_done` feature.
+-   Prevent requests from being forwarded to an origin server or the Serverless layer by also passing the `set_done` feature.
 
 **Example:**
 

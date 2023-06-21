@@ -1940,8 +1940,6 @@ new Router()
 
 **Default Behavior:** By default, prefetching is allowed for cache misses.
 
-
-<!--
 #### Compress Content Types {/*compress-content-types*/}
 
 Defines the set of media types (aka content type) that are eligible for edge server compression. 
@@ -1970,7 +1968,6 @@ new Router()
   })
 ```
 </edgejs>
--->
 
 #### Optimize Images {/*optimize-images*/}
 

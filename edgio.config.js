@@ -4,6 +4,9 @@ module.exports = {
   team: 'edgio-community',
   name: 'docs.edg.io',
   connector: '@edgio/next',
+  next: {
+    enforeceTrailingSlash: false,
+  },
   origins: [
     {
       name: 'api',

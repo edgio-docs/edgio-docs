@@ -161,13 +161,6 @@ router.match('/docs/versions', {
     });
 });
 
-// any request to /docs/* should not process any further routes
-router.match('/docs/(.*)', {
-  response: {
-    set_done: true,
-  },
-});
-
 // redirects
 // redirects.forEach(([from, to, statusCode]) => {
 //   router.match(from, ({redirect}) =>

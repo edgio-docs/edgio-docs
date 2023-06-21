@@ -66,24 +66,6 @@ const router = new Router()
     },
   });
 
-// plugins
-router.use(nextRoutes).use(
-  archiveRoutes.addRoute('/archive/github/:owner/:repo/:path*', async (req) => {
-    const {owner, repo, path} = req.params || {};
-    const downloader = new GithubDownloader({
-      github: {auth: process.env.GH_API_TOKEN},
-    });
-
-    const flatPath = (path as string[]).join('/');
-    const result = await downloader.fetchFiles(owner, repo, flatPath);
-
-    return result.map(({path, contents}) => ({
-      path: path.split(flatPath)[1],
-      data: contents,
-    }));
-  })
-);
-
 //  -- API docs --
 
 // proxy /docs/versions to the version list
@@ -181,12 +163,37 @@ router.match('/docs/versions', {
     });
 });
 
+router.match('/docs/:path*', {
+  response: {
+    set_done: true,
+  },
+});
+
 // redirects
 // redirects.forEach(([from, to, statusCode]) => {
 //   router.match(from, ({redirect}) =>
 //     redirect(to, {statusCode: Number(statusCode || 301)})
 //   );
 // });
+
+// plugins
+// Note: nextRoutes must be near the end since it adds a 308 redirect for trailing slashes
+router.use(nextRoutes).use(
+  archiveRoutes.addRoute('/archive/github/:owner/:repo/:path*', async (req) => {
+    const {owner, repo, path} = req.params || {};
+    const downloader = new GithubDownloader({
+      github: {auth: process.env.GH_API_TOKEN},
+    });
+
+    const flatPath = (path as string[]).join('/');
+    const result = await downloader.fetchFiles(owner, repo, flatPath);
+
+    return result.map(({path, contents}) => ({
+      path: path.split(flatPath)[1],
+      data: contents,
+    }));
+  })
+);
 
 // error handling
 // router.catch(/^4.*/, {

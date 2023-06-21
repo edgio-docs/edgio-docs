@@ -107,7 +107,7 @@ router.match('/docs/versions', {
 [3, 4, 5, 6, 7].forEach((v) => {
   // proxy /docs/v?.x to the latest version
   router
-    .match(`/docs/v${v}.x/:path*`, ({compute}) => {
+    .match(`/docs/v${v}.x/:path*`, ({compute, send}) => {
       compute(async (req, res) => {
         // fetch the list of current published versions
         console.log('computing', req.path);
@@ -135,16 +135,17 @@ router.match('/docs/versions', {
           'fetching doc asset',
           `https://${DOCS_PAGES_DOMAIN}${targetPath}`
         );
-        const resBody = await (
-          await fetch(`https://${DOCS_PAGES_DOMAIN}${targetPath}`)
-        ).text();
+        const upstreamRes = await fetch(
+          `https://${DOCS_PAGES_DOMAIN}${targetPath}`
+        );
+        const upstreamResBody = await upstreamRes.text();
 
         console.log('transforming response');
         // due to relative paths in the response, if the path doesn't end with a trailing
         // slash (eg. /api/core), then assets will be requested from the wrong path (eg. /api/assets/...)
         // so we need to rewrite the paths to include the last path segment
         if (!hasTrailingSlash && !hasFileExtension) {
-          const $ = load(resBody ?? '');
+          const $ = load(upstreamResBody ?? '');
 
           // prepend ${lastPathSegment} to all elements with an href or src attribute
           $('*[href], *[src]').each((i, el) => {

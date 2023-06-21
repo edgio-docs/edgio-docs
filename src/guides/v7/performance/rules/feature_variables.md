@@ -38,7 +38,7 @@ Feature variables are described below.
 |HTTP Method|`%{request_method}` |  Indicates the HTTP request method.<br />**Sample Value:** `GET`|
 |HTML Preferred DTD|`%{wurfl_cap_html_preferred_dtd}`| Indicates the mobile device's preferred document type definition (DTD) for HTML content. <br />**Sample Value:** `html5` |
 |HTTP Status Code|`%{status}` |  Indicates the HTTP status code for the response.<br />**Sample Value:** `200`|
-|Image Inlining|`%{wurfl_cap_image_inlining}`| Indicates whether the device supports Base64 encoded images.<br />**Sample Value:** `false`|
+|Image Inlining|`%{wurfl_cap_image_inlining}`| Indicates whether the device supports Base64-encoded images.<br />**Sample Value:** `false`|
 |IP Address (Client)|`%{virt_dst_addr}` |  Indicates the client's IP address.<br />**Sample Value:** `192.168.1.1`|
 |Is Android|`%{wurfl_vcap_is_android}`| Indicates whether the device uses the Android OS.<br />**Sample Value:** `true`|
 |Is App|`%{wurfl_vcap_is_app}`|  Indicates whether a native application requested content.<br />**Sample Value:** `true`|

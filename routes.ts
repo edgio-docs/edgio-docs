@@ -6,6 +6,7 @@ import {load} from 'cheerio';
 import {Downloader as GithubDownloader} from 'github-download-directory';
 import semverMaxSatisfying from 'semver/ranges/max-satisfying';
 
+import {DOCS_PAGES_DOMAIN} from './constants';
 import {
   scriptSrcDomains,
   connectSrcDomains,
@@ -86,10 +87,10 @@ router.match('/docs/versions', {
 [3, 4, 5, 6, 7].forEach((v) => {
   // proxy /docs/v?.x to the latest version
   router
-    .match(`/docs/v${v}.x/:path*`, ({compute, proxy}) => {
-      compute(async (req) => {
+    .match(`/docs/v${v}.x/:path*`, ({compute}) => {
+      compute(async (req, res) => {
         // fetch the list of current published versions
-        console.log('computing', req);
+        console.log('computing', req.path);
         const versions = await (
           await fetch('https://docs.edg.io/docs/versions')
         ).text();
@@ -99,48 +100,49 @@ router.match('/docs/versions', {
           `v${v}.x`
         );
 
-        let path = `/${targetVersion}/:path*`;
-
-        const lastPathSegment = req.path.split('/').reverse()[0];
-        const hasTrailingSlash = req.path.endsWith('/');
+        let targetPath = req.path.replace(`/docs/v${v}.x`, `/${targetVersion}`);
+        const lastPathSegment = targetPath.split('/').reverse()[0];
+        const hasTrailingSlash = targetPath.endsWith('/');
         const hasFileExtension = lastPathSegment.includes('.');
+        const slashSeparator = hasTrailingSlash ? '' : '/';
 
         // set path to index.html if it doesn't end with a file extension
         if (!hasFileExtension) {
-          path = `/${targetVersion}/:path*/index.html`;
+          targetPath = targetPath + slashSeparator + 'index.html';
         }
 
-        console.log('proxying to', path);
+        console.log(
+          'fetching doc asset',
+          `https://${DOCS_PAGES_DOMAIN}${targetPath}`
+        );
+        const resBody = await (
+          await fetch(`https://${DOCS_PAGES_DOMAIN}${targetPath}`)
+        ).text();
 
-        await proxy('api', {
-          path,
-          transformResponse: (res) => {
-            console.log('transforming response');
-            // due to relative paths in the response, if the path doesn't end with a trailing
-            // slash (eg. /api/core), then assets will be requested from the wrong path (eg. /api/assets/...)
-            // so we need to rewrite the paths to include the last path segment
-            if (!hasTrailingSlash && !hasFileExtension) {
-              const $ = load(res.body ?? '');
+        console.log('transforming response');
+        // due to relative paths in the response, if the path doesn't end with a trailing
+        // slash (eg. /api/core), then assets will be requested from the wrong path (eg. /api/assets/...)
+        // so we need to rewrite the paths to include the last path segment
+        if (!hasTrailingSlash && !hasFileExtension) {
+          const $ = load(resBody ?? '');
 
-              // prepend ${lastPathSegment} to all elements with an href or src attribute
-              $('*[href], *[src]').each((i, el) => {
-                const $el = $(el);
-                const href = $el.attr('href');
-                const src = $el.attr('src');
+          // prepend ${lastPathSegment} to all elements with an href or src attribute
+          $('*[href], *[src]').each((i, el) => {
+            const $el = $(el);
+            const href = $el.attr('href');
+            const src = $el.attr('src');
 
-                if (href) {
-                  $el.attr('href', `${lastPathSegment}/${href}`);
-                }
-
-                if (src) {
-                  $el.attr('src', `${lastPathSegment}/${src}`);
-                }
-              });
-
-              res.body = $.html();
+            if (href) {
+              $el.attr('href', `${lastPathSegment}/${href}`);
             }
-          },
-        });
+
+            if (src) {
+              $el.attr('src', `${lastPathSegment}/${src}`);
+            }
+          });
+
+          res.body = $.html();
+        }
       });
     })
 

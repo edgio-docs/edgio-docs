@@ -5,7 +5,7 @@ module.exports = {
   name: 'docs.edg.io',
   connector: '@edgio/next',
   next: {
-    enforeceTrailingSlash: false,
+    enforceTrailingSlash: false,
   },
   origins: [
     {

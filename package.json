@@ -62,12 +62,12 @@
     "winston": "^3.8.2"
   },
   "devDependencies": {
-    "@edgio/cli": "7.0.10",
-    "@edgio/core": "7.0.10",
-    "@edgio/devtools": "7.0.10",
-    "@edgio/next": "7.0.10",
-    "@edgio/prefetch": "7.0.10",
-    "@edgio/react": "7.0.10",
+    "@edgio/cli": "^7.0.21",
+    "@edgio/core": "^7.0.21",
+    "@edgio/devtools": "^7.0.21",
+    "@edgio/next": "^7.0.21",
+    "@edgio/prefetch": "^7.0.21",
+    "@edgio/react": "^7.0.21",
     "@mdx-js/loader": "^1.6.16",
     "@types/body-scroll-lock": "^2.6.1",
     "@types/classnames": "^2.3.1",

@@ -2012,7 +2012,7 @@ new Router()
 
 #### Set Done {/*set-done*/}
 
-Determines whether to prevent the request from being proxied from our network to an origin server or the Serverless layer.
+Determines whether to prevent the request from being proxied from our network to an origin server.
 
 **Key information:**
 
@@ -2037,7 +2037,7 @@ new Router()
 ```
 </edgejs>
 
-**Default Behavior:** By default, cache misses are forwarded to an origin server or to the Serverless layer. 
+**Default Behavior:** By default, cache misses are forwarded to an origin server. 
 
 #### Set Response Body {/*set-response-body*/}
 

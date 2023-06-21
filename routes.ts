@@ -110,7 +110,6 @@ router.match('/docs/versions', {
     .match(`/docs/v${v}.x/:path*`, ({compute, send}) => {
       compute(async (req, res) => {
         // fetch the list of current published versions
-        console.log('computing', req.path);
         const versions = await (
           await fetch('https://docs.edg.io/docs/versions')
         ).text();
@@ -131,16 +130,12 @@ router.match('/docs/versions', {
           targetPath = targetPath + slashSeparator + 'index.html';
         }
 
-        console.log(
-          'fetching doc asset',
-          `https://${DOCS_PAGES_DOMAIN}${targetPath}`
-        );
         const upstreamRes = await fetch(
           `https://${DOCS_PAGES_DOMAIN}${targetPath}`
         );
         const upstreamResBody = await upstreamRes.text();
+        res.body = upstreamResBody;
 
-        console.log('transforming response');
         // due to relative paths in the response, if the path doesn't end with a trailing
         // slash (eg. /api/core), then assets will be requested from the wrong path (eg. /api/assets/...)
         // so we need to rewrite the paths to include the last path segment
@@ -161,8 +156,6 @@ router.match('/docs/versions', {
               $el.attr('src', `${lastPathSegment}/${src}`);
             }
           });
-
-          console.log('response body set to', $.html());
 
           res.body = $.html();
         }

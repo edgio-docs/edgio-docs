@@ -133,6 +133,7 @@ router.match('/docs/versions', {
         `https://${DOCS_PAGES_DOMAIN}${targetPath}`
       );
       const upstreamResBody = await upstreamRes.text();
+      res.setHeader('content-type', upstreamRes.headers.get('content-type'));
       res.body = upstreamResBody;
 
       // due to relative paths in the response, if the path doesn't end with a trailing

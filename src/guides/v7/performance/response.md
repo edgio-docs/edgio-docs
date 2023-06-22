@@ -249,7 +249,7 @@ The debug cache response headers provide additional information about the cache 
 	
     <Callout type="tip">
 
-      Once you have enabled the `Debug Header` feature,  use the [Edgio Developer Tools Chrome extension](https://chrome.google.com/webstore/detail/edgio-developer-tools/ieehikdcdpeailgpfdbafhnbfhpdgefm) to automatically add all debug cache response headers for traffic served by {{ PRODUCT }}. View these response headers by inspecting network activity through [Chrome DevTools](https://developer.chrome.com/docs/devtools/).
+      Once you have enabled the `Debug Header` feature,  use the [Edgio Developer Tools Chrome extension](https://chrome.google.com/webstore/detail/edgio-developer-tools/ieehikdcdpeailgpfdbafhnbfhpdgefm) to automatically add all debug cache response headers to traffic served by {{ PRODUCT }}. View these response headers by inspecting network activity through [Chrome DevTools](https://developer.chrome.com/docs/devtools/).
 	  
 	  Alternatively, if you are using the latest version of the {{ PRODUCT }} CLI (v7.0.22+), then [{{ FULL_CLI_NAME }} curl](/guides/develop/cli#curl) will also automatically add all debug cache headers to the response.
 

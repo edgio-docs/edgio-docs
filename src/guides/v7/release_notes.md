@@ -10,6 +10,12 @@ See [NPM Packages Changelog](/guides/changelog) for release notes related to the
 
 </Callout>
 
+#### {{ PORTAL }} - June 19, 2023
+
+##### Rules
+- Added [round-robin load balancing mode](/guides/basics/hostnames_and_origins#load-balancing) for hosts defined within an origin configuration.
+- Added the [HTML Preferred DTD (html_preferred_dtd) match condition](/guides/performance/rules/conditions#html-preferred-dtd). 
+
 #### {{ DOCS_NAME }} - June 2, 2023
 
 - Added support for an additional 30+ [Sites frameworks](/guides/v7/sites_frameworks/getting_started#supported-frameworks)

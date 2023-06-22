@@ -12,8 +12,10 @@ See [NPM Packages Changelog](/guides/changelog) for release notes related to the
 
 #### {{ PORTAL }} - June 19, 2023
 
-##### Rules
+##### Origins
 - Added [round-robin load balancing mode](/guides/basics/hostnames_and_origins#load-balancing) for hosts defined within an origin configuration.
+
+##### Rules
 - Added the [HTML Preferred DTD (html_preferred_dtd) match condition](/guides/performance/rules/conditions#html-preferred-dtd). 
 
 #### {{ DOCS_NAME }} - June 2, 2023

@@ -1913,7 +1913,7 @@ new Router()
 ```
 </edgejs>
 
-**Default Behavior:** By default, requests that are not served from cache are served through either Serverless Compute or the origin configuration mapped to the request's hostname. 
+**Default Behavior:** By default, requests that are not served from cache are served through either Serverless layer or the origin configuration mapped to the request's hostname. 
 
 ## Response {/*response*/}
 
@@ -2047,14 +2047,14 @@ Defines a custom response body.
 
 -   Use [feature variables](/guides/performance/rules/feature_variables) to dynamically construct this response body.
 -   This response body is always sent instead of a cached response or the response provided by an origin server.
--   Prevent requests from being forwarded to an origin server or the Serverless layer by also passing the `Set Done` feature.
+-   Prevent requests from being forwarded to an origin server by also passing the `Set Done` feature.
 
 <edgejs>
 **Key information:**
 
 -   Use [feature variables](/guides/performance/rules/feature_variables) to dynamically construct this response body.
 -   This response body is always sent instead of a cached response or the response provided by an origin server.
--   Prevent requests from being forwarded to an origin server or the Serverless layer by also passing the `set_done` feature.
+-   Prevent requests from being forwarded to an origin server by also passing the `set_done` feature.
 
 **Example:**
 

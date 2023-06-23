@@ -4,15 +4,9 @@ title: Upgrading to {{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} Version 7
 
 The {{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} platform consists of the following products:
 
-- {{ PRODUCT }} {{ PRODUCT_EDGE }} improves your site’s performance and speeds up your development lifecycle. [Learn more.](/guides/performance)
-- {{ PRODUCT }} {{ PRODUCT_SECURITY }} provides robust, multi-layered Web Application and API Protection. [Learn more.](/guides/security)
-- {{ PRODUCT }} {{ PRODUCT_PLATFORM }} provides optimal performance and development efficiency to your headless Jamstack applications. [Learn more.](/guides/sites_frameworks)
-
-  <Callout type="important">
-
-  {{ PRODUCT }} {{ PRODUCT_PLATFORM }} version 7 currently only supports Next, Nuxt, and Nuxt 3. We plan on introducing support for a wide variety of web application frameworks in the near future. If your property is a traditional website, uses a supported framework, or if you have not integrated your web application framework through {{ PRODUCT }} {{ PRODUCT_PLATFORM }}, then you may proceed to upgrade to version 7.
-
-  </Callout>
+- [{{ PRODUCT }} {{ PRODUCT_EDGE }}](/guides/performance) improves your site’s performance and speeds up your development lifecycle.
+- [{{ PRODUCT }} {{ PRODUCT_SECURITY }}](/guides/security) provides robust, multi-layered Web Application and API Protection. 
+- [{{ PRODUCT }} {{ PRODUCT_PLATFORM }}](/guides/sites_frameworks) provides optimal performance and development efficiency to your headless Jamstack applications. 
 
 Upgrading to {{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} to version 7 involves the following steps:
 

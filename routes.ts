@@ -118,50 +118,64 @@ router.match('/docs/versions', {
         `v${v}.x`
       );
 
-      let targetPath = req.path.replace(`/docs/v${v}.x`, `/${targetVersion}`);
-      const lastPathSegment = targetPath.split('/').reverse()[0];
-      const hasTrailingSlash = targetPath.endsWith('/');
+      let path = `/${targetVersion}/:path*`;
+
+      const lastPathSegment = req.path.split('/').reverse()[0];
+      const hasTrailingSlash = req.path.endsWith('/');
       const hasFileExtension = lastPathSegment.includes('.');
-      const slashSeparator = hasTrailingSlash ? '' : '/';
 
       // set path to index.html if it doesn't end with a file extension
       if (!hasFileExtension) {
-        targetPath = targetPath + slashSeparator + 'index.html';
+        path = `/${targetVersion}/:path*/index.html`;
       }
 
-      const upstreamRes = await fetch(
-        `https://${DOCS_PAGES_DOMAIN}${targetPath}`
-      );
-      const upstreamResBody = await upstreamRes.text();
-      res.setHeader('content-type', upstreamRes.headers.get('content-type'));
-      res.body = upstreamResBody;
+      await proxy('api', {
+        path,
+        transformResponse: (res) => {
+          // due to relative paths in the response, if the path doesn't end with a trailing
+          // slash (eg. /api/core), then assets will be requested from the wrong path (eg. /api/assets/...)
+          // so we need to rewrite the paths to include the last path segment
+          if (!hasTrailingSlash && !hasFileExtension) {
+            const $ = load(res.body ?? '');
 
-      // due to relative paths in the response, if the path doesn't end with a trailing
-      // slash (eg. /api/core), then assets will be requested from the wrong path (eg. /api/assets/...)
-      // so we need to rewrite the paths to include the last path segment
-      if (!hasTrailingSlash && !hasFileExtension) {
-        const $ = load(upstreamResBody ?? '');
+            // prepend ${lastPathSegment} to all elements with an href or src attribute
+            $('*[href], *[src]').each((i, el) => {
+              const $el = $(el);
+              const href = $el.attr('href');
+              const src = $el.attr('src');
 
-        // prepend ${lastPathSegment} to all elements with an href or src attribute
-        $('*[href], *[src]').each((i, el) => {
-          const $el = $(el);
-          const href = $el.attr('href');
-          const src = $el.attr('src');
+              if (href) {
+                $el.attr('href', `${lastPathSegment}/${href}`);
+              }
 
-          if (href) {
-            $el.attr('href', `${lastPathSegment}/${href}`);
+              if (src) {
+                $el.attr('src', `${lastPathSegment}/${src}`);
+              }
+            });
+
+            res.body = $.html();
           }
-
-          if (src) {
-            $el.attr('src', `${lastPathSegment}/${src}`);
-          }
-        });
-
-        res.body = $.html();
-      }
-    });
+        },
+      });
+    }, true);
   });
 });
+
+// proxy api docs assets
+// .match('/docs/:version/api/:path*:file(\\.[css|js|html|json|png]+)', {
+//   origin: {
+//     set_origin: 'api',
+//   },
+//   url: {
+//     url_rewrite: [
+//       {
+//         source: '/docs/:version/api/:path*:file',
+//         destination: '/:version/api/:path*:file',
+//         syntax: 'path-to-regexp',
+//       },
+//     ],
+//   },
+// });
 
 // redirects
 redirects.forEach(([from, to, statusCode]) => {

@@ -1,4 +1,4 @@
-name: Daily Validation
+name: Validate v7 Guide Links
 
 on:
   schedule:

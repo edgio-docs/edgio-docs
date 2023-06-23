@@ -72,7 +72,7 @@ If you want the route to match both `http` and `https` protocols you can match o
 
 Additionally:
 
-- A request's protocol can be determined by reading the [`{{ HEADER_PREFIX }}-protocol`](/guides/performance/request#request-headers) request header or the [`request.secure`](/docs/api/core/interfaces/_router_request_.request.html#secure) property.
+- A request's protocol can be determined by reading the [`{{ HEADER_PREFIX }}-protocol`](/guides/performance/request#request-headers) request header.
 - During local development all requests will appear secure by default. To test your router for `http` protocol matching you must either set the `local_{{ COOKIE_PREFIX }}_emulate_http_protocol` cookie to `true` (if using a browser) or send an `{{ HEADER_PREFIX }}-protocol` request header set to `http`.
 
 **What is the minimum level of encryption?** 

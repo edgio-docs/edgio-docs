@@ -106,7 +106,7 @@ router.match('/docs/versions', {
 // proxy v?.x api docs to the latest version
 [3, 4, 5, 6, 7].forEach((v) => {
   // proxy /docs/v?.x to the latest version
-  router.match(`/docs/v${v}.x/:path*`, ({compute, send}) => {
+  router.match(`/docs/v${v}.x/:path*`, ({compute}) => {
     compute(async (req, res) => {
       // fetch the list of current published versions
       const versions = await (
@@ -161,30 +161,14 @@ router.match('/docs/versions', {
       }
     });
   });
-
-  // proxy api docs assets
-  // .match('/docs/:version/api/:path*:file(\\.[css|js|html|json|png]+)', {
-  //   origin: {
-  //     set_origin: 'api',
-  //   },
-  //   url: {
-  //     url_rewrite: [
-  //       {
-  //         source: '/docs/:version/api/:path*:file',
-  //         destination: '/:version/api/:path*:file',
-  //         syntax: 'path-to-regexp',
-  //       },
-  //     ],
-  //   },
-  // });
 });
 
 // redirects
-// redirects.forEach(([from, to, statusCode]) => {
-//   router.match(from, ({redirect}) =>
-//     redirect(to, {statusCode: Number(statusCode || 301)})
-//   );
-// });
+redirects.forEach(([from, to, statusCode]) => {
+  router.match(from, ({redirect}) =>
+    redirect(to, {statusCode: Number(statusCode || 301)})
+  );
+});
 
 // error handling
 // router.catch(/^4.*/, {

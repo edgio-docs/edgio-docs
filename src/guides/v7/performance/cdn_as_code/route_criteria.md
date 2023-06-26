@@ -270,7 +270,7 @@ export default new Router()
   .use(edgioRoutes);
 ```
 
-Using the example above for caching the `/api/*` path, we can rewrite the same route using the [`conditional()`](/docs/core/classes/index.Router.html#conditional) method. This method accepts a single argument of type `Matches`. You can see the full specification of the `Matches` type in the [API reference](/docs/core/interfaces/types.Matches.html).
+Using the example above for caching the `/api/*` path, we can rewrite the same route using the [`conditional()`](/docs/api/core/classes/router_Router.default.html#conditional) method. This method accepts a single argument of type `Matches`. You can see the full specification of the `Matches` type in the [API reference](/docs/api/core/interfaces/types.Matches.html).
 
 ```js filename="./routes.js"
 import {Router} from '@edgio/core/router';
@@ -326,7 +326,7 @@ This is equivalent to the previous example. Broken down by line:
 
 #### Operators {/* operators */}
 
-The [`Boolean`](/docs/core/interfaces/types.Boolean.html) type is used as a logical operator in the `if` array. You may specify an `and` or `or` operator. The `and` operator requires all conditions to be met. The `or` operator requires only one condition to be met.
+The [`Boolean`](/docs/api/core/interfaces/types.Boolean.html) type is used as a logical operator in the `if` array. You may specify an `and` or `or` operator. The `and` operator requires all conditions to be met. The `or` operator requires only one condition to be met.
 
 <Callout type="warning">
 
@@ -361,7 +361,7 @@ Currently, only a single `and/or` operator is supported. The following would be 
 
 #### Conditionals {/* conditionals */}
 
-Conditionals define the expectations that must be met, using comparison operators, for the features to be applied to the request. This example of a single conditional identifies the type of comparison to take against the [`RulesVariables`](/docs/core/interfaces/types.RulesVariables.html) and the expected value:
+Conditionals define the expectations that must be met, using comparison operators, for the features to be applied to the request. This example of a single conditional identifies the type of comparison to take against the [`RulesVariables`](/docs/api/core/interfaces/types.RulesVariables.html) and the expected value:
 
 ```js
 {

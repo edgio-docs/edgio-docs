@@ -408,6 +408,8 @@ Include or exclude all query string parameters through the `include_all` propert
     ```
 </edgejs>
 
+**Default Behavior:** By default, {{ PRODUCT }} includes all query string parameters when constructing the cache key.
+
 <!--
 #### Cacheable Request Body Size {/*cacheable-request-body-size*/}
 
@@ -952,7 +954,9 @@ Rewrites the default cache key for a set of requests.
 **Key information:**
 
 -   Our servers use the cache key to check for a cached version of an asset.
--   A core component of a cache key is a relative URL path that starts directly after the hostname. This relative URL path is derived from the request whose response is being cached. This feature allows you to customize the default cache key for a set of requests by modifying this value.
+-   This feature allows you to customize the default cache key for a set of requests by replacing the following elements from the cache key:
+    -   **Relative Path:** This relative URL path, which starts directly after the hostname, is derived from the request whose response is being cached. 
+    -   **Query String:** This query string is derived from the request whose response is being cached. 
 -   This feature does not affect the cache key assigned to previously cached content. 
 -   Define the following settings:
 
@@ -1004,7 +1008,9 @@ Notice that we are using `$1`, which is a numbered backreference, to reintroduce
 **Key information:**
 
 -   Our servers use the cache key to check for a cached version of an asset.
--   A core component of a cache key is a relative URL path that starts directly after the hostname. This relative URL path is derived from the request whose response is being cached. The `cache_key_rewrite` feature allows you to customize the default cache key for a set of requests by modifying this value.
+-   This feature allows you to customize the default cache key for a set of requests by replacing the following elements from the cache key:
+    -   **Relative Path:** This relative URL path, which starts directly after the hostname, is derived from the request whose response is being cached. 
+    -   **Query String:** This query string is derived from the request whose response is being cached. 
 -   This feature does not affect the cache key assigned to previously cached content. 
 -   Pass the following properties:
 
@@ -1043,7 +1049,7 @@ new Router()
 ```
 </edgejs>
 
-**Default Behavior:** By default, {{ PRODUCT }} uses the request URI's relative path when constructing the cache key.
+**Default Behavior:** By default, {{ PRODUCT }} uses the request URI's relative path and query string, if present, when constructing the cache key.
 
 #### Set Client Max Age {/*set-client-max-age*/}
 
@@ -1907,7 +1913,7 @@ new Router()
 ```
 </edgejs>
 
-**Default Behavior:** By default, requests that are not served from cache are served through either Serverless Compute or the origin configuration mapped to the request's hostname. 
+**Default Behavior:** By default, requests that are not served from cache are served through either Serverless layer or the origin configuration mapped to the request's hostname. 
 
 ## Response {/*response*/}
 
@@ -1934,8 +1940,6 @@ new Router()
 
 **Default Behavior:** By default, prefetching is allowed for cache misses.
 
-
-<!--
 #### Compress Content Types {/*compress-content-types*/}
 
 Defines the set of media types (aka content type) that are eligible for edge server compression. 
@@ -1964,7 +1968,6 @@ new Router()
   })
 ```
 </edgejs>
--->
 
 #### Optimize Images {/*optimize-images*/}
 
@@ -2007,23 +2010,18 @@ new Router()
 ```
 </edgejs>
 
-<!--
 #### Set Done {/*set-done*/}
 
-Determines whether to stop processing the request.
+Determines whether to prevent the request from being proxied from our network to an origin server.
 
-This feature is typically combined with the `Set Status Code` and `Set Response Body` features to send a custom response. 
+**Key information:**
 
-Omitting this feature allows:
--   The request to be forwarded to an origin server.
--   The response to be cached. 
+-   Combine this feature with the `Set Status Code` and `Set Response Body` features to optimize performance for custom responses. 
 
 <edgejs>
-This feature is typically combined with the `set_status_code` and `set_response_body` features to send a custom response. 
+**Key information:**
 
-Omitting this feature allows:
--   The request to be forwarded to an origin server.
--   The response to be cached. 
+-   Combine this feature with the `set_status_code` and `set_response_body` features to optimize performance for custom responses. 
 
 **Example:**
 
@@ -2039,7 +2037,7 @@ new Router()
 ```
 </edgejs>
 
-**Default Behavior:** By default, cache misses are forwarded to an origin server or to Serverless Compute. Additionally, responses are cached according to your caching policy.
+**Default Behavior:** By default, cache misses are forwarded to an origin server. 
 
 #### Set Response Body {/*set-response-body*/}
 
@@ -2049,12 +2047,12 @@ Defines a custom response body.
 
 -   Use [feature variables](/guides/performance/rules/feature_variables) to dynamically construct this response body.
 -   This response body is always sent instead of a cached response or the response provided by an origin server.
--   Prevent requests from being forwarded to an origin server by also passing the `set_done` feature.
+-   Prevent requests from being forwarded to an origin server by also passing the `Set Done` feature.
 
 <edgejs>
 **Key information:**
 
--   Use feature variables to dynamically construct this response body.
+-   Use [feature variables](/guides/performance/rules/feature_variables) to dynamically construct this response body.
 -   This response body is always sent instead of a cached response or the response provided by an origin server.
 -   Prevent requests from being forwarded to an origin server by also passing the `set_done` feature.
 
@@ -2090,7 +2088,6 @@ new Router()
 </edgejs>
 
 **Default Behavior:** By default, the HTTP status code indicates how the request was handled. 
--->
 
 ## Set Variables {/*set-variables*/}
 

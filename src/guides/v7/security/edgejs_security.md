@@ -72,7 +72,7 @@ If you want the route to match both `http` and `https` protocols you can match o
 
 Additionally:
 
-- A request's protocol can be determined by reading the [`{{ HEADER_PREFIX }}-protocol`](/guides/performance/request#request-headers) request header or the [`request.secure`](/docs/api/core/interfaces/_router_request_.request.html#secure) property.
+- A request's protocol can be determined by reading the [`{{ HEADER_PREFIX }}-protocol`](/guides/performance/request#request-headers) request header.
 - During local development all requests will appear secure by default. To test your router for `http` protocol matching you must either set the `local_{{ COOKIE_PREFIX }}_emulate_http_protocol` cookie to `true` (if using a browser) or send an `{{ HEADER_PREFIX }}-protocol` request header set to `http`.
 
 **What is the minimum level of encryption?** 
@@ -146,7 +146,7 @@ The following table list the user agents that {{ PRODUCT_NAME }} examines and de
 | xing-contenttabreceiver | Xing social network crawler bot that indexes content for the Xing social network.                                                                                                                                                               |
 | yahoo                   | Another Yahoo Search robot for crawling and indexing web page information.                                                                                                                                                                      |
 
-If the set of bots detected by {{ PRODUCT_NAME }} is not sufficient for your needs, you can easily add your own bot detection through [EdgeJS](/guides/performance/cdn_as_code) and its [`match`](/docs/api/core/classes/_router_router_.router.html#match) and [`setRequestHeader`](/docs/api/core/classes/_router_responsewriter_.responsewriter.html#setrequestheader) APIs:
+If the set of bots detected by {{ PRODUCT_NAME }} is not sufficient for your needs, you can easily add your own bot detection through [EdgeJS](/guides/performance/cdn_as_code) and its [`match`](/docs/api/core/classes/router_Router.default.html#match) and [`setRequestHeader`](/docs/api/core/classes/router_RouteHelper.default.html#setRequestHeader) APIs:
 
 ```js
 router.match(

@@ -34,7 +34,7 @@ An access log file may contain the following fields:
 - **cc (_String_):** <a id="cc" /> Indicates the code for the country from which the request originated.
 - **ce (_String_):** <a id="ce" /> Indicates the value for the `Content-Encoding` response header (e.g., `gzip`).
 - **ckh (_String_):** <a id="ckh" /> Indicates the cache key hash.
-- **clv (_Number_):** <a id="clv" /> Indicates the level at which the request was served from cache. Returns `0` for a cache miss, `1` for a cache hit on an edge POP (L1), and `2` for a cache hit on a global POP (L2).
+- **clv (_Number_):** <a id="clv" /> Indicates the level at which the request was served from cache. Returns `0` for a cache miss, `1` for a cache hit on an edge POP (L1), and `2` for a cache hit on an Origin Shield POP (L2).
 - **code (_String_):** <a id="code" /> Indicates the HTTP status code for the response.
 - **cs (_String_):** <a id="cs" /> Indicates whether the response was cached or the reason why it was not cached. <Condition version="<=6">[Learn more.](/guides/performance/caching#why-is-my-response-not-being-cached)</Condition>
 - **ct (_String_):** <a id="ct" /> Indicates the response's media type (aka content type).
@@ -67,7 +67,7 @@ An access log file may contain the following fields:
 - **s_rs (_Number_):** <a id="s_rs" /> Indicates the size, in bytes, of the response.
 - **sc (_String_):** <a id="sc" /> Indicates the code of the state from which the request originated (e.g., `NY`).
 - **sec (_String_):** <a id="sec" /> Returns `ip_block_list` for requests blocked by IP address and `country_block_list` for requests blocked by country.
-- **sh (_Number_):** <a id="sh" /> Returns `1` for requests that were shielded by a global POP and `0` for all other requests.
+- **sh (_Number_):** <a id="sh" /> Returns `1` for requests that were shielded by an Origin Shield POP and `0` for all other requests.
 - **ssl (_Number_):** <a id="ssl" /> Indicates whether the request was served using the HTTPS protocol. Returns `1` for HTTPS requests and `0` for HTTP requests.
 - **stl (_Number_):** <a id="stl" /> Indicates whether a cached response was stale. Returns `1` when the Time-To-Live (TTL) for the cached response has expired and `0` for all other responses.
 - **t (_String_):** <a id="t" /> Returns the same value as the [xmt access log field](#xmt).

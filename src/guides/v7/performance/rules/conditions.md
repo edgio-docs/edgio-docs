@@ -8,8 +8,9 @@ A match condition identifies the set of requests to which one or more feature(s)
 |---|---|
 | Location  | <ul><li>[ASN](#asn)</li><li>[City](#city)</li><li>[Continent](#continent)</li><li>[Country](#country)</li><li>[DMA Code](#dma-code)</li><li>[Latitude](#latitude)</li><li>[Longitude](#longitude)</li><li>[Postal Code](#postal-code)</li><li>[Region Code](#region-code)</li></ul> |
 | Request  | <ul><li>[Client IP](#client-ip)</li><li>[Cookie](#cookie)</li><li>[Directory](#directory)</li><li>[Extension](#extension)</li><li>[Filename](#filename)</li><li>[Method](#method)</li><li>[Origin Path](#origin-path)</li><li>[Path](#path)</li><li>[POP Code](#pop-code)</li><li>[Query](#query)</li><li>[Query Parameter](#query-parameter)</li><li>[Query String](#query-string)</li><li>[Referring Domain](#referring-domain)</li><li>[Request Header](#request-header)</li><li>[Scheme](#scheme)</li></ul>  |
-| Device  | <ul><li>[Brand Name](#brand-name)</li><li hidden>[Device Operating System](#device-operating-system)</li><li>[Dual Orientation](#dual-orientation)</li><li hidden>[HTML Preferred DTD](#html-preferred-dtd)</li><li>[Image Inlining](#image-inlining)</li><li>[Is Android](#is-android)</li><li>[Is App](#is-app)</li><li hidden>[Is Full Desktop](#is-full-desktop)</li><li>[Is iOS](#is-ios)</li><li>[Is Robot](#is-robot)</li><li>[Is Smartphone](#is-smartphone)</li><li>[Is SmartTV](#is-smarttv)</li><li>[Is Tablet](#is-tablet)</li><li>[Is Touchscreen](#is-touchscreen)</li><li>[Is Windows Phone](#is-windows-phone)</li><li>[Is Wireless Device](#is-wireless-device)</li><li>[Marketing Name](#marketing-name)</li><li>[Mobile Browser](#mobile-browser)</li><li>[Model Name](#model-name)</li><li>[Progressive Download](#progressive-download)</li><li>[Release Date](#release-date)</li><li>[Resolution Height](#resolution-height)</li><li>[Resolution Width](#resolution-width)</li></ul>  |
+| Device  | <ul><li>[Brand Name](#brand-name)</li><li hidden>[Device Operating System](#device-operating-system)</li><li>[Dual Orientation](#dual-orientation)</li><li>[HTML Preferred DTD](#html-preferred-dtd)</li><li>[Image Inlining](#image-inlining)</li><li>[Is Android](#is-android)</li><li>[Is App](#is-app)</li><li hidden>[Is Full Desktop](#is-full-desktop)</li><li>[Is iOS](#is-ios)</li><li>[Is Robot](#is-robot)</li><li>[Is Smartphone](#is-smartphone)</li><li>[Is SmartTV](#is-smarttv)</li><li>[Is Tablet](#is-tablet)</li><li>[Is Touchscreen](#is-touchscreen)</li><li>[Is Windows Phone](#is-windows-phone)</li><li>[Is Wireless Device](#is-wireless-device)</li><li>[Marketing Name](#marketing-name)</li><li>[Mobile Browser](#mobile-browser)</li><li>[Model Name](#model-name)</li><li>[Progressive Download](#progressive-download)</li><li>[Release Date](#release-date)</li><li>[Resolution Height](#resolution-height)</li><li>[Resolution Width](#resolution-width)</li></ul>  |
 | Miscellaneous  | <ul><li>[Random Integer](#random-integer)</li></ul>  |
+| Response  | <ul><li>[Response Status Code](#response-status-code)</li></ul>  |
 
 #### ASN {/*asn*/} <edgejs>location</edgejs>
 
@@ -517,17 +518,31 @@ router.conditional({
 ```
 </edgejs>
 
-<!--
 #### HTML Preferred DTD {/*html-preferred-dtd*/} <edgejs>device</edgejs>
 
-Identifies requests by a device's preferred document type definition (DTD) for HTML content (e.g., `html5`).
+Identifies requests by a device's preferred document type definition (DTD) for HTML content (e.g., `html4`).
 
 <edgejs>
 
 **Example:**
 
+```
+router.conditional({
+    if: [{
+            '===': [{
+                    device: 'html_preferred_dtd',
+                },
+                "html4",
+            ],
+        }, {
+            // Features
+            },
+        },
+    ],
+});
+```
+
 </edgejs>
--->
 
 #### Image Inlining {/*image-inlining*/} <edgejs>device</edgejs>
 
@@ -1857,6 +1872,63 @@ router.conditional({
                     device: 'resolution_width',
                 },
                 1920,
+            ],
+        }, {
+            // Features
+            },
+        },
+    ],
+});
+```
+</edgejs>
+
+#### Response Status Code {/*response-status-code*/} <edgejs>response</edgejs>
+
+Identifies requests whose response matches a HTTP status code. 
+
+**Key information:**
+
+-   You may use this match condition to apply features that affect the response provided to the client. For example, you may set response headers, a response body, or HTTP status code for all requests whose HTTP status code is `404 Not Found`.
+
+    <Callout type="tip">
+	
+	  You may use this match condition to instruct the client to redirect requests by setting a `Location` response header to the desired URL and the response status code to a `3xx` (redirection) status code (e.g., `301` and `302`).
+
+    </Callout>
+
+    <Callout type="info">
+	
+	  {{ PRODUCT }} checks for this match condition upon receiving a response. At this point in the request flow, all features that correspond to the request or cache have already been applied. 
+
+    </Callout>
+
+<edgejs>
+**Key information:**
+
+-   You may use this match condition to apply features that affect the response provided to the client. For example, you may set response headers, a response body, or HTTP status code for all requests whose HTTP status code is `404 Not Found`.
+
+    <Callout type="tip">
+	
+	  You may use this match condition to instruct the client to redirect requests by setting a `Location` response header to the desired URL and the response status code to a `3xx` (redirection) status code (e.g., `301` and `302`).
+
+    </Callout>
+
+    <Callout type="info">
+	
+	  {{ PRODUCT }} checks for this match condition upon receiving a response. At this point in the request flow, all features that correspond to the request or cache have already been applied. 
+
+    </Callout>
+-   **Supported operators:** `=== | !== | =~ | !~ | in | not_in`
+
+**Example:**
+
+```
+router.conditional({
+    if: [{
+            in: [{
+                    response: 'status_code',
+                },
+                ["400", "403", "404", "500", "502"],
             ],
         }, {
             // Features

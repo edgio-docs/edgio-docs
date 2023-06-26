@@ -39,7 +39,7 @@
     "@mdx-js/react": "^1.6.16",
     "@mui/icons-material": "^5.11.11",
     "@mui/material": "^5.11.13",
-    "@octokit/core": "^4.0.5",
+    "@octokit/core": "^4.2.4",
     "cheerio": "^1.0.0-rc.12",
     "classnames": "^2.2.6",
     "github-download-directory": "^3.0.0",

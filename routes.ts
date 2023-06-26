@@ -72,14 +72,21 @@ const router = new Router()
 // already attempted to be computed
 router.use(nextRoutes).use(
   archiveRoutes.addRoute('/archive/github/:owner/:repo/:path*', async (req) => {
+    console.log('archiveRoutes', req);
     const {owner, repo, path} = req.params || {};
     const downloader = new GithubDownloader({
       github: {auth: process.env.GH_API_TOKEN},
     });
 
     const flatPath = (path as string[]).join('/');
-    const result = await downloader.fetchFiles(owner, repo, flatPath);
-
+    console.log('flatPath', flatPath);
+    let result = [] as any;
+    try {
+      result = await downloader.fetchFiles(owner, repo, flatPath);
+    } catch (e) {
+      console.log('error', e);
+    }
+    console.log(result);
     return result.map(({path, contents}) => ({
       path: path.split(flatPath)[1],
       data: contents,
@@ -103,6 +110,11 @@ router.match('/docs/versions', {
   },
 });
 
+// API docs caching
+router.match('/docs/:path*', {
+  ...defaultFeatures,
+});
+
 // proxy v?.x api docs to the latest version
 [3, 4, 5, 6, 7].forEach((v) => {
   // proxy /docs/v?.x to the latest version
@@ -118,64 +130,50 @@ router.match('/docs/versions', {
         `v${v}.x`
       );
 
-      let path = `/${targetVersion}/:path*`;
-
-      const lastPathSegment = req.path.split('/').reverse()[0];
-      const hasTrailingSlash = req.path.endsWith('/');
+      let targetPath = req.path.replace(`/docs/v${v}.x`, `/${targetVersion}`);
+      const lastPathSegment = targetPath.split('/').reverse()[0];
+      const hasTrailingSlash = targetPath.endsWith('/');
       const hasFileExtension = lastPathSegment.includes('.');
+      const slashSeparator = hasTrailingSlash ? '' : '/';
 
       // set path to index.html if it doesn't end with a file extension
       if (!hasFileExtension) {
-        path = `/${targetVersion}/:path*/index.html`;
+        targetPath = targetPath + slashSeparator + 'index.html';
       }
 
-      await proxy('api', {
-        path,
-        transformResponse: (res) => {
-          // due to relative paths in the response, if the path doesn't end with a trailing
-          // slash (eg. /api/core), then assets will be requested from the wrong path (eg. /api/assets/...)
-          // so we need to rewrite the paths to include the last path segment
-          if (!hasTrailingSlash && !hasFileExtension) {
-            const $ = load(res.body ?? '');
+      const upstreamRes = await fetch(
+        `https://${DOCS_PAGES_DOMAIN}${targetPath}`
+      );
+      const upstreamResBody = await upstreamRes.text();
+      res.setHeader('content-type', upstreamRes.headers.get('content-type'));
+      res.body = upstreamResBody;
 
-            // prepend ${lastPathSegment} to all elements with an href or src attribute
-            $('*[href], *[src]').each((i, el) => {
-              const $el = $(el);
-              const href = $el.attr('href');
-              const src = $el.attr('src');
+      // due to relative paths in the response, if the path doesn't end with a trailing
+      // slash (eg. /api/core), then assets will be requested from the wrong path (eg. /api/assets/...)
+      // so we need to rewrite the paths to include the last path segment
+      if (!hasTrailingSlash && !hasFileExtension) {
+        const $ = load(upstreamResBody ?? '');
 
-              if (href) {
-                $el.attr('href', `${lastPathSegment}/${href}`);
-              }
+        // prepend ${lastPathSegment} to all elements with an href or src attribute
+        $('*[href], *[src]').each((i, el) => {
+          const $el = $(el);
+          const href = $el.attr('href');
+          const src = $el.attr('src');
 
-              if (src) {
-                $el.attr('src', `${lastPathSegment}/${src}`);
-              }
-            });
-
-            res.body = $.html();
+          if (href) {
+            $el.attr('href', `${lastPathSegment}/${href}`);
           }
-        },
-      });
-    }, true);
+
+          if (src) {
+            $el.attr('src', `${lastPathSegment}/${src}`);
+          }
+        });
+
+        res.body = $.html();
+      }
+    });
   });
 });
-
-// proxy api docs assets
-// .match('/docs/:version/api/:path*:file(\\.[css|js|html|json|png]+)', {
-//   origin: {
-//     set_origin: 'api',
-//   },
-//   url: {
-//     url_rewrite: [
-//       {
-//         source: '/docs/:version/api/:path*:file',
-//         destination: '/:version/api/:path*:file',
-//         syntax: 'path-to-regexp',
-//       },
-//     ],
-//   },
-// });
 
 // redirects
 redirects.forEach(([from, to, statusCode]) => {

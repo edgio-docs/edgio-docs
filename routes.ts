@@ -70,29 +70,36 @@ const router = new Router()
 // Note: nextRoutes needs to be before compute since both go to the serverless
 // origin. Otherwise the catch-all route in nextRoutes will override what was
 // already attempted to be computed
-router.use(nextRoutes).use(
-  archiveRoutes.addRoute('/archive/github/:owner/:repo/:path*', async (req) => {
-    console.log('archiveRoutes', req);
-    const {owner, repo, path} = req.params || {};
-    const downloader = new GithubDownloader({
-      github: {auth: process.env.GH_API_TOKEN},
-    });
+router
+  .use(nextRoutes)
 
-    const flatPath = (path as string[]).join('/');
-    console.log('flatPath', flatPath);
-    let result = [] as any;
-    try {
-      result = await downloader.fetchFiles(owner, repo, flatPath);
-    } catch (e) {
-      console.log('error', e);
-    }
-    console.log(result);
-    return result.map(({path, contents}) => ({
-      path: path.split(flatPath)[1],
-      data: contents,
-    }));
-  })
-);
+  .use(
+    archiveRoutes.addRoute(
+      '/archive/github/:owner/:repo/:path*',
+      async (req: any) => {
+        const {owner, repo, path} = req.params || {};
+        const downloader = new GithubDownloader({
+          github: {auth: process.env.GH_API_TOKEN},
+        });
+
+        const flatPath = (path as string[]).join('/');
+        // TODO: something has changed between v6 and v7 (or a related dependency)
+        // that causes the path to be incorrectly encoded when making the GitHub API request.
+        // (eg. https://api.github.com/repos/edgio/edgiowordpress/contents/wp-content%2Fplugins%2Fedgio)
+        // For now, this feature will not work for the WordPress plugin download.
+        try {
+          const result = await downloader.fetchFiles(owner, repo, flatPath);
+          return result.map(({path, contents}) => ({
+            path: path.split(flatPath)[1],
+            data: contents,
+          }));
+        } catch (e) {
+          console.error(e);
+          return [];
+        }
+      }
+    )
+  );
 
 //  -- API docs --
 // proxy /docs/versions to the version list

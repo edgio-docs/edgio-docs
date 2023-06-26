@@ -26,7 +26,7 @@ In this way, you simply build your app to implement server-side rendering and ge
 
 ## Specifying the URLs to Prerender {/* specifying-the-urls-to-prerender */}
 
-To specify which URLs should be prerendered, use the Router's [prerender]({{ DOCS_URL }}/docs/api/core/classes/_router_router_.router.html#prerender) function. The `prerender` function accepts an array of [PrerenderRequest] objects or an async function that returns the same:
+To specify which URLs should be prerendered, use the Router's [prerender](/docs/api/core/classes/router_Router.default.html#prerender) function. The `prerender` function accepts an array of [PrerenderRequest] objects or an async function that returns the same:
 
 ### Example: Hardcoded Paths {/* example-hardcoded-paths */}
 

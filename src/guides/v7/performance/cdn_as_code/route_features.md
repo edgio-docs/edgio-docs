@@ -542,7 +542,7 @@ When using `response.set_response_body` to send a response, or to stop processin
 
 </Callout>
 
-To compute a dynamic response, use the [`compute`](/docs/api/core/classes/router.RouteHelper.html#compute) method.
+To compute a dynamic response, use the [`compute`](/docs/api/core/classes/router_RouteHelper.default.html#compute) method.
 
 {{ routehelper_usage.md}}
 
@@ -582,7 +582,7 @@ router.get('/p/:productId', {
 });
 ```
 
-To compute the destination URL, use the [`compute`](/docs/api/core/classes/router.RouteHelper.html#compute) method.
+To compute the destination URL, use the [`compute`](/docs/api/core/classes/router_RouteHelper.default.html#compute) method.
 
 {{ routehelper_usage.md}}
 

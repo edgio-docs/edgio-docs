@@ -27,16 +27,50 @@ Origin server compression occurs when a web server associated with your origin c
 
 Edge server compression occurs when an edge server compresses cached content and provides this compressed response to the client. It requires:
 
-1.  The [accept-encoding request header](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Accept-Encoding) set to one of the following values:
+| Requirement  | Description  |
+|--------------|--------------|
+| `Accept-encoding` request header  | The [accept-encoding request header](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Accept-Encoding) must be present and set to one of the following values: <br /><br />`gzip | deflate | bzip2` |
+| Content type enablement | Enabling compression for each desired content type (aka MIME type or media type) through the [Compress Content Types feature (compress_content_types)](/guides/performance/rules/features#compress-content-types).   |
+| Cached content  | An uncompressed version of the requested content must already be cached on the POP closest to the client that requested it.  |
+| Eligible file size  | The file size of the requested content must fall within the following range: <ul><li>Greater than approximately 128 bytes (`content-length: 128`)</li><li>Less than approximately 3 MB</li></ul> |
 
-    `gzip | deflate | bzip2`
+### Enabling Edge Server Compression
 
-2.   Enabling compression for each desired content type (aka MIME type or media type) through the [Compress Content Types feature (compress_content_types)](/guides/performance/rules/features#compress-content-types). 
-3.   Cached content. An uncompressed version of the requested content must already be cached on the POP closest to the client that requested it.
-4.   An eligible file size. The file size of the requested content must fall within the following range:
+Edge server compression requires enabling compression for the desired content types (aka MIME type or media type). Sample content types are provided below.
 
-    -   Greater than approximately 128 bytes (`content-length: 128`)
-    -   Less than approximately 3 MB
+| Content Type    | File Type                     |
+|-----------------|-------------------------------|
+| text/plain      | Text files                    |
+| text/html       | HTML files                    |
+| text/css        | Cascading Style Sheets (CSS)  |
+| text/javascript | JavaScript                    |
+
+Enable compression for each desired content type through the following steps:
+
+1.  Create or modify a rule that identifies the set of requests on which compression will be enabled. 
+2.  Add the [Compress Content Types feature (compress_content_types)](/guides/performance/rules/features#compress-content-types) to it. Set it to the desired set of content types.
+
+    -   **Rules:** The following configuration enables edge server compression for the 4 sample content types described above.
+
+        ![Compress Content Types Feature](/images/v7/performance/compress-content-types.png?width=450)
+
+    -   **CDN-as-Code:** The following sample rule enables edge server compression for the 4 sample content types described above.
+
+        ```js filename="./routes.js"
+        export default new Router().match(
+          {},
+          {
+            response: {
+              compress_content_types: [
+                "text/plain",
+                "text/html",
+                "text/css",
+                "text/javascript",
+              ],
+            },
+          }
+        );
+        ```
 
 ## Cache Implications {/*implications-on-caching*/}
 

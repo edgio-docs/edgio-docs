@@ -9,17 +9,19 @@ Compress content through:
 
 ## Origin Server Compression {/*origin-server-compression*/}
 
-Origin server compression occurs when a web server associated with your origin configuration compresses the response it provides to {{ PRODUCT }}. It requires: 
+Origin server compression occurs when a web server associated with your origin configuration compresses the response it provides to {{ PRODUCT }}. This type of compression requires both of the following conditions to be met:
 
-1.  The [accept-encoding request header](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Accept-Encoding) set to one of the following values:
+1.  The client's request must contain an [Accept-Encoding request header](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Accept-Encoding) set to one or more of the following values:
 
     `gzip | deflate | bzip2 | br`
+	
+	**Example:** `Accept-Encoding: gzip, deflate, br`
 
-2.  The web server(s) associated with your origin configuration must support the compression method defined within the `accept-encoding` request header.
+2.  The web server(s) associated with your origin configuration must support the compression method defined within the `Accept-Encoding` request header.
 
 <Callout type="info">
 
-  The `accept-encoding` header allows the user agent (e.g., a web browser) to indicate which compression methods it supports to the origin server. 
+  The `Accept-Encoding` header allows the user agent (e.g., a web browser) to indicate which compression methods it supports to the origin server. 
 
 </Callout>
 
@@ -29,9 +31,9 @@ Edge server compression occurs when an edge server compresses cached content and
 
 | Requirement  | Description  |
 |--------------|--------------|
-| `Accept-encoding` request header  | The [accept-encoding request header](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Accept-Encoding) must be present and set to one of the following values: <br /><br />`gzip \| deflate \| bzip2` |
-| Content type enablement | Enabling compression for each desired content type (aka MIME type or media type) through the [Compress Content Types feature (compress_content_types)](/guides/performance/rules/features#compress-content-types).   |
-| Cached content  | An uncompressed version of the requested content must already be cached on the POP closest to the client that requested it.  |
+| `Accept-encoding` request header  | The client's request must contain an [Accept-Encoding request header](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Accept-Encoding) set to one or more of the following values: <br />`gzip \| deflate \| bzip2` <br /><br />**Example:** `Accept-Encoding: gzip, deflate` |
+| Content type enablement | Enable compression for each desired content type (aka MIME type or media type) through the [Compress Content Types feature (compress_content_types)](/guides/performance/rules/features#compress-content-types).   |
+| Cached content  | An uncompressed version of the requested content must already be cached on the POP closest to the client that requested it. <Callout type="info">By default, {{ PRODUCT }} caches the response as provided by an origin server or the Serverless layer. Specifically, if the response is uncompressed and eligible to be cached, then {{ PRODUCT }} will cache the uncompressed response. </Callout> |
 | Eligible file size  | The file size of the requested content must fall within the following range: <ul><li>Greater than approximately 128 bytes (`content-length: 128`)</li><li>Less than approximately 3 MB</li></ul> |
 
 ### Enabling Edge Server Compression {/*enabling-edge-server-compression*/}
@@ -47,30 +49,42 @@ Edge server compression requires enabling compression for the desired content ty
 
 Enable compression for each desired content type through the following steps:
 
-1.  Create or modify a rule that identifies the set of requests on which compression will be enabled. 
+1.  Create or modify a rule through that identifies the set of requests on which compression will be enabled. 
 2.  Add the [Compress Content Types feature (compress_content_types)](/guides/performance/rules/features#compress-content-types) to it. Set it to the desired set of content types.
 
-    -   **Rules:** The following configuration enables edge server compression for the 4 sample content types described above.
+The following examples demonstrate how to enable edge server compression using:
 
-        ![Compress Content Types Feature](/images/v7/performance/compress-content-types.png?width=450)
+-   [{{ PORTAL }}:](/guides/performance/rules#managing-rules)
 
-    -   **CDN-as-Code:** The following sample rule enables edge server compression for the 4 sample content types described above.
+    The following configuration enables edge server compression for the 4 sample content types described above.
 
-        ```js filename="./routes.js"
-        export default new Router().match(
-          {},
-          {
-            response: {
-              compress_content_types: [
-                "text/plain",
-                "text/html",
-                "text/css",
-                "text/javascript",
-              ],
-            },
-          }
-        );
-        ```
+    ![Compress Content Types Feature](/images/v7/performance/compress-content-types.png?width=450)
+
+-   [CDN-as-Code:](/guides/performance/cdn_as_code)
+
+    The following sample rule enables edge server compression across all requests for the 4 sample content types described above.
+
+    ```js filename="./routes.js"
+    export default new Router().match(
+      {},
+      {
+        response: {
+          compress_content_types: [
+            "text/plain",
+            "text/html",
+            "text/css",
+            "text/javascript",
+          ],
+        },
+      }
+    );
+    ```
+
+<Callout type="info">
+
+  Once you have enabled edge server compression on the desired content types, {{ PRODUCT }} will compress content when all of the [required conditions](#edge-server-compression) have been met. If one or more conditions have not been met, then {{ PRODUCT }} will serve either uncompressed cached content or the response provided by the origin server or Serverless layer. 
+
+</Callout>
 
 ## Cache Implications {/*implications-on-caching*/}
 
@@ -82,7 +96,7 @@ For example, if {{ PRODUCT }} serves an uncompressed, a Gzip, and DEFLATE versio
 
 The process through which requested content is compressed is outlined below. 
 
-1.  Does the request contain an `accept-encoding` header?
+1.  Does the request contain an `Accept-Encoding` header?
 
     -   **Yes (Supported Compression Method):** Proceed to step 2.
     -   **Yes (Unsupported Compression Method):** Our edge servers will treat the request as a cache miss and retrieve it from your origin configuration or the Serverless layer.
@@ -126,7 +140,7 @@ const BROTLI_ENCODING_REGEX = /\bbr\b/
 // You can of course optimize this to first check the downstream compatibility
 // before even considering other criteria.
 const sendBrotliEncoded = (req, res, body) => {
-  const acceptEncoding = req.getHeader('accept-encoding')
+  const acceptEncoding = req.getHeader('Accept-Encoding')
   const acceptBrotliEncoding = BROTLI_ENCODING_REGEX.test(acceptEncoding)
   if (!acceptBrotliEncoding) {
     return false

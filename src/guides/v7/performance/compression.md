@@ -29,7 +29,7 @@ Edge server compression occurs when an edge server compresses cached content and
 
 | Requirement  | Description  |
 |--------------|--------------|
-| `Accept-encoding` request header  | The [accept-encoding request header](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Accept-Encoding) must be present and set to one of the following values: <br /><br />`gzip &#124; deflate &#124; bzip2` |
+| `Accept-encoding` request header  | The [accept-encoding request header](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Accept-Encoding) must be present and set to one of the following values: <br /><br />`gzip \| deflate \| bzip2` |
 | Content type enablement | Enabling compression for each desired content type (aka MIME type or media type) through the [Compress Content Types feature (compress_content_types)](/guides/performance/rules/features#compress-content-types).   |
 | Cached content  | An uncompressed version of the requested content must already be cached on the POP closest to the client that requested it.  |
 | Eligible file size  | The file size of the requested content must fall within the following range: <ul><li>Greater than approximately 128 bytes (`content-length: 128`)</li><li>Less than approximately 3 MB</li></ul> |

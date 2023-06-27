@@ -1197,10 +1197,10 @@
     "@docsearch/css" "3.0.0-alpha.41"
     algoliasearch "^4.0.0"
 
-"@edgio/cli@^7.0.23-next-1687374315-3e493b0.0":
-  version "7.0.23-next-1687374315-3e493b0.0"
-  resolved "https://registry.yarnpkg.com/@edgio/cli/-/cli-7.0.23-next-1687374315-3e493b0.0.tgz#a15d00b6de086922c7536a9ac93c05bc52c61a5d"
-  integrity sha512-lMWXaXH/l23E6rmIz8CslYBfb0yWXmDycgMCj5VGV0FIGwpJFFaDjxIWdbGuGFQq1lCHWMwiZurjO6yaxoiYHA==
+"@edgio/cli@^7.0.23":
+  version "7.0.23"
+  resolved "https://registry.yarnpkg.com/@edgio/cli/-/cli-7.0.23.tgz#cdd8e4e1b9285735b3c8eede8423060628fa1f94"
+  integrity sha512-TPbIJEov+wnCvd7VGnq8LOU7tGYNoU+zKj3zu3E2+rNV3W52Hlin+rsvQO1l5Tj8SrCa4iULc0G4NkMhalz4lA==
   dependencies:
     axios "^0.21.2"
     chalk "^4.1.2"
@@ -1244,10 +1244,10 @@
     yauzl "^2.10.0"
     yazl "^2.5.1"
 
-"@edgio/core@^7.0.23-next-1687374315-3e493b0.0":
-  version "7.0.23-next-1687374315-3e493b0.0"
-  resolved "https://registry.yarnpkg.com/@edgio/core/-/core-7.0.23-next-1687374315-3e493b0.0.tgz#78a642c35d38c4d2fd9c1ed62cbdd80c4cdd225b"
-  integrity sha512-8VBk9W+I16ptM+Q7whyEFCHcqJZmH0nyN3wLtUR10WlqVOqCXc/O1bpEyuscRH+Tt2j8dMW2nTK590BPY3tDJg==
+"@edgio/core@^7.0.23":
+  version "7.0.23"
+  resolved "https://registry.yarnpkg.com/@edgio/core/-/core-7.0.23.tgz#b914f98ef15179054fe2b59bcb8c4f6c233dbca5"
+  integrity sha512-zbGVsmfgrXXWGR2uuUhum1l86rYh+EibHiG++sNEt0xetyBZLYUQxTthHPDlbH+yUslSGnrAgtv92oLVEh4Wdw==
   dependencies:
     "@babel/parser" "^7.18.9"
     "@babel/traverse" "^7.18.9"
@@ -1257,6 +1257,7 @@
     babel-loader "^8.2.2"
     buffer "^6.0.3"
     cache-control-parser "^2.0.2"
+    chai-as-promised "^7.1.1"
     chalk "^4.1.2"
     chardet "^1.4.0"
     chokidar "^3.5.1"
@@ -1293,19 +1294,19 @@
     workbox-build "^6.5.4"
     yaml-validator "^4.0.0"
 
-"@edgio/devtools@^7.0.23-next-1687374315-3e493b0.0":
-  version "7.0.23-next-1687374315-3e493b0.0"
-  resolved "https://registry.yarnpkg.com/@edgio/devtools/-/devtools-7.0.23-next-1687374315-3e493b0.0.tgz#35cc96ae1019a9883c6ffead1a91ab4e51b96747"
-  integrity sha512-EPPfJmkhs+phRGhvdC/gcQ+Q0fUchauW6Gmfggnbj/2fPty3SJ0exyRkh65ZMXvEjBvSFHmHOBNvzlMujBs66A==
+"@edgio/devtools@^7.0.23":
+  version "7.0.23"
+  resolved "https://registry.yarnpkg.com/@edgio/devtools/-/devtools-7.0.23.tgz#0ed7970e820349a1ee4439604eeff141c48d1cc8"
+  integrity sha512-v2qmhYRFSoSLTOn9CE1Am7qb3oJdS/4o0FdIodLS64DaRI2/Wj3n7y0wfdpHAUwbSBxfOsnXUTZSPkHYSy5wpg==
   dependencies:
     clsx "^1.1.1"
     lodash "^4.17.20"
     sirv-cli "^1.0.0"
 
-"@edgio/next@^7.0.23-next-1687374315-3e493b0.0":
-  version "7.0.23-next-1687374315-3e493b0.0"
-  resolved "https://registry.yarnpkg.com/@edgio/next/-/next-7.0.23-next-1687374315-3e493b0.0.tgz#94af05d81a831d215864699e9f2106dff88312cb"
-  integrity sha512-R5k6rMc5fIbB0HeYEIyipuN6f3mqdpLLZ8lhJZ2JXVo+CUEvLw9BbUzsoicG0HP7kT4M8Zf+qEGgubU9ademug==
+"@edgio/next@^7.0.23":
+  version "7.0.23"
+  resolved "https://registry.yarnpkg.com/@edgio/next/-/next-7.0.23.tgz#10dce1189bb9d9fff773ca6c7ef223ee775b3269"
+  integrity sha512-FLRzLNYZ9xP4fuhsEpRzKDXPlBTE5nv9ZdsUDky6DLa5sW2TOI98lwKHFlX74zD5xVD/jmRgF+PT1kVdZ3MWAg==
   dependencies:
     "@vercel/nft" "^0.13.1"
     chalk "^4.1.2"
@@ -1323,12 +1324,12 @@
     webpack "^4.0.0"
     webpack-sources "^2.2.0"
 
-"@edgio/prefetch@^7.0.23-next-1687374315-3e493b0.0":
-  version "7.0.23-next-1687374315-3e493b0.0"
-  resolved "https://registry.yarnpkg.com/@edgio/prefetch/-/prefetch-7.0.23-next-1687374315-3e493b0.0.tgz#de525b13678ae7e6596c6cb5ebaf5bcdeafdbb0c"
-  integrity sha512-jN6QuAkuJ1Dh8eX1LIjC1AEwhHt1ZIrn+FOtNeNXIOx0Lp4By4cBwIzVvxwjGB5eRjd++IESlBiPtTwntZzylw==
+"@edgio/prefetch@^7.0.23":
+  version "7.0.23"
+  resolved "https://registry.yarnpkg.com/@edgio/prefetch/-/prefetch-7.0.23.tgz#58e129dfe96d195cc4bf390f778cdcfc9647bf98"
+  integrity sha512-ueKzLVJT6HE0OqFUUQOtJu1kgX7awTOGEBESQYs0vzNT7YRbFXGdN1ykdW9yy8YwriBTet3vUCD7Bfz5gPWizw==
   dependencies:
-    "@edgio/core" "^7.0.23-next-1687374315-3e493b0.0"
+    "@edgio/core" "^7.0.23"
     cheerio "^1.0.0-rc.3"
     json-query "^2.2.2"
     workbox-cacheable-response "^5.1.2"
@@ -1338,10 +1339,10 @@
     workbox-routing "^5.1.2"
     workbox-strategies "^5.1.2"
 
-"@edgio/react@^7.0.23-next-1687374315-3e493b0.0":
-  version "7.0.23-next-1687374315-3e493b0.0"
-  resolved "https://registry.yarnpkg.com/@edgio/react/-/react-7.0.23-next-1687374315-3e493b0.0.tgz#777dc7303f204dbdc1b175dbbeda056ad24f7044"
-  integrity sha512-QHwwof5j1yna67wyR91LJZIb8Bhd/Ki+7HTWtWqF0qRfNw0elyuqo+1k3gdotvpyIPcV6sSN+sH704CkS8toCA==
+"@edgio/react@^7.0.23":
+  version "7.0.23"
+  resolved "https://registry.yarnpkg.com/@edgio/react/-/react-7.0.23.tgz#9d19cd002f6a93326c93d0cf7738cbc07e4e4e1a"
+  integrity sha512-1KroxO09OgDfrnoZ6VdacMxeM1CP261HhdkPTheHKbANv6Y8uW1Ud2ZHVh7g7qaEnAku0efUAj9aCcPXMYj7ow==
   dependencies:
     prop-types "^15.8.1"
     react-merge-refs "^1.1.0"
@@ -3617,6 +3618,13 @@ ccount@^2.0.0:
   resolved "https://registry.yarnpkg.com/ccount/-/ccount-2.0.1.tgz#17a3bf82302e0870d6da43a01311a8bc02a3ecf5"
   integrity sha512-eyrF0jiFpY+3drT6383f1qhkbGsLSifNAjA61IUjZjmLCWjItY6LB9ft9YhoDgwfmclB2zhu51Lc7+95b8NRAg==
 
+chai-as-promised@^7.1.1:
+  version "7.1.1"
+  resolved "https://registry.yarnpkg.com/chai-as-promised/-/chai-as-promised-7.1.1.tgz#08645d825deb8696ee61725dbf590c012eb00ca0"
+  integrity sha512-azL6xMoi+uxu6z4rhWQ1jbdUhOMhis2PvscD/xjLqNMkv3BPPp2JyyuTHOrf9BOosGpNQ11v6BKv/g57RXbiaA==
+  dependencies:
+    check-error "^1.0.2"
+
 chalk@^2.0.0, chalk@^2.4.1, chalk@^2.4.2:
   version "2.4.2"
   resolved "https://registry.yarnpkg.com/chalk/-/chalk-2.4.2.tgz#cd42541677a54333cf541a49108c1432b44c9424"
@@ -3686,6 +3694,11 @@ chardet@^1.4.0:
   version "1.5.1"
   resolved "https://registry.yarnpkg.com/chardet/-/chardet-1.5.1.tgz#2a15770a46ce15e25a99f2741c949f43f9925dd5"
   integrity sha512-0XMOtA52igKDOIfvJZJ6v0+J9yMF3IuYyEa5oFUxBXA01G6mwCNKpul3bgbFf7lmZuqwN/oyg/zQ1cGS7NyJkQ==
+
+check-error@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/check-error/-/check-error-1.0.2.tgz#574d312edd88bb5dd8912e9286dd6c0aed4aac82"
+  integrity sha512-BrgHpW9NURQgzoNyjfq0Wu6VFO6D7IZEmJNdtgNqpzGG8RuNFHt2jQxWlAs4HMe119chBnv+34syEZtc6IhLtA==
 
 check-node-version@^4.2.1:
   version "4.2.1"

@@ -149,7 +149,7 @@ const sendBrotliEncoded = (req, res, body) => {
 You would need to invoke the above just prior to sending back the response, similar to this:
 
 ```js
-  const useBrotliEncoding = /    -   Evaluate all the custom criteria that you would like to apply */;
+  const useBrotliEncoding = /* Evaluate all the custom criteria that you would like to apply */;
   if (!useBrotliEncoding || !sendBrotliEncoded(req, res, body)) {
     res.send(body)
   }

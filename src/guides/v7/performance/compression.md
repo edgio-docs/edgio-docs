@@ -27,7 +27,7 @@ Origin server compression occurs when a web server associated with your origin c
 
 ## Edge Server Compression {/*edge-server-compression*/}
 
-Edge server compression occurs when an edge server compresses cached content and provides this compressed response to the client. It requires:
+Edge server compression occurs when an edge server compresses cached content and provides this compressed response to the client. It requires all of the following conditions to be met:
 
 | Requirement  | Description  |
 |--------------|--------------|
@@ -116,7 +116,7 @@ The process through which requested content is compressed is outlined below.
 
 ## Applying Brotli Compression through Serverless {/*applying-brotli-compression-in-serverless*/}
 
-The Serverless layer supports Brotli encoding if the web browser accepts Brotli and the response is considered [eligible for compression](#compressible-types). Apply Brotli compression to these requests through `brotliCompressSync`.
+The Serverless layer supports Brotli encoding if the web browser accepts Brotli and the response is considered [eligible for compression](#compressible-types). Apply Brotli compression under these conditions through `brotliCompressSync`.
 
 ```js
 import { brotliCompressSync } from 'zlib'

@@ -103,7 +103,7 @@ RTLD may automatically deliver compressed log data to an AWS S3 bucket by submit
 
     2.  Optional. Set the **Prefix** option to the desired prefix that defines a virtual log file storage location and/or a prefix that will be added to each object added to your bucket.
 
-        [Learn more.](#log-file-prefix)
+        [Learn more about prefixes.](#log-file-prefix)
 
     3.  From the **AWS Region** option, select the region assigned to the AWS S3 bucket.
 

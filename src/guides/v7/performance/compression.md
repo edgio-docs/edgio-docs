@@ -7,7 +7,7 @@ Compress content through:
 -   Our edge servers. This is known as edge server compression.
 -   Our Serverless layer.
 
-## Origin Server Compression
+## Origin Server Compression {/*origin-server-compression*/}
 
 Origin server compression occurs when a web server associated with your origin configuration compresses the response it provides to {{ PRODUCT }}. It requires: 
 
@@ -23,18 +23,18 @@ Origin server compression occurs when a web server associated with your origin c
 
 </Callout>
 
-## Edge Server Compression
+## Edge Server Compression {/*edge-server-compression*/}
 
 Edge server compression occurs when an edge server compresses cached content and provides this compressed response to the client. It requires:
 
 | Requirement  | Description  |
 |--------------|--------------|
-| `Accept-encoding` request header  | The [accept-encoding request header](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Accept-Encoding) must be present and set to one of the following values: <br /><br />`gzip | deflate | bzip2` |
+| `Accept-encoding` request header  | The [accept-encoding request header](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Accept-Encoding) must be present and set to one of the following values: <br /><br />`gzip &#124; deflate &#124; bzip2` |
 | Content type enablement | Enabling compression for each desired content type (aka MIME type or media type) through the [Compress Content Types feature (compress_content_types)](/guides/performance/rules/features#compress-content-types).   |
 | Cached content  | An uncompressed version of the requested content must already be cached on the POP closest to the client that requested it.  |
 | Eligible file size  | The file size of the requested content must fall within the following range: <ul><li>Greater than approximately 128 bytes (`content-length: 128`)</li><li>Less than approximately 3 MB</li></ul> |
 
-### Enabling Edge Server Compression
+### Enabling Edge Server Compression {/*enabling-edge-server-compression*/}
 
 Edge server compression requires enabling compression for the desired content types (aka MIME type or media type). Sample content types are provided below.
 
@@ -78,7 +78,7 @@ If your caching policy allows the requested content to be cached, then {{ PRODUC
 
 For example, if {{ PRODUCT }} serves an uncompressed, a Gzip, and DEFLATE version of the requested content, then it can potentially cache 3 different versions of that content on our network.
 
-## How Does Compression Work?
+## How Does Compression Work? {/*how-does-compression-work*/}
 
 The process through which requested content is compressed is outlined below. 
 
@@ -106,7 +106,7 @@ The process through which requested content is compressed is outlined below.
     -   If the request is eligible for compression by origin server compression, but ineligible by edge server compression, then the origin server will serve compressed content to {{ PRODUCT }}. {{ PRODUCT }} will serve the compressed asset to the client. However, it will not cache it. 
     -   If the request is ineligible for compression by both origin server compression and edge server compresssion, then the origin server will serve an uncompressed asset to {{ PRODUCT }}. {{ PRODUCT }}  will serve the uncompressed asset to the client. However, it will not cache it.
 
-## Applying Brotli compression in serverless {/*applying-brotli-compression-in-serverless*/}
+## Applying Brotli Compression through Serverless {/*applying-brotli-compression-in-serverless*/}
 
 {{ PRODUCT_NAME }} serverless supports Brotli encoding starting with version `4.14.0` but, as described above, only for the [content types](#compressible-types) recognized as compressible by the platform and if the browsers *only* accepts Brotli.
 

@@ -2,97 +2,75 @@
 title: Compression
 ---
 
-This guide covers the {{ PRODUCT_NAME }} response compression support.
+Compress content through:
+-   Your origin server(s). This is known as origin server compression.
+-   Our edge servers. This is known as edge server compression.
+-   Our Serverless layer.
 
-## Accept-Encoding {/*accept-encoding*/}
+## Origin Server Compression
 
-When requesting data via HTTP from the {{ PRODUCT_NAME }} servers, browsers include the `accept-encoding` header to indicate which data compression formats the browser supports. Modern browsers accept multiple compression formats, [Accept-Encoding Header Details are here.](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Accept-Encoding) This header is required by {{ PRODUCT_NAME }} to trigger compression of responses. 
+Origin server compression occurs when a web server associated with your origin configuration compresses the response it provides to {{ PRODUCT }}. It requires: 
 
-<a id="supports"></a>
+1.  The [accept-encoding request header](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Accept-Encoding) set to one of the following values:
 
-## Compression Support {/*compression-support*/}
+    `gzip | deflate | bzip2 | br`
 
-{{ PRODUCT }} supports:
+2.  The web server(s) associated with your origin configuration must support the compression method defined within the `accept-encoding` request header.
 
-* `gzip` for all versions
-* `br` (Brotli) for versions >= `4.11.0`
+<Callout type="info">
 
-### Implications on Caching {/*implications-on-caching*/}
+  The `accept-encoding` header allows the user agent (e.g., a web browser) to indicate which compression methods it supports to the origin server. 
 
-`accept-encoding` header is taken into account for splitting the cache by default. Expect different cache(s) for different accept-encoding header(s) for otherwise an identical request.
+</Callout>
 
-### Gzip compression support {/*gzip-compression-support*/}
+## Edge Server Compression
 
-Gzip is supported in the following ways:
+Edge server compression occurs when an edge server compresses cached content and provides this compressed response to the client. It requires:
 
-* Pass-through of upstream Gzip responses if the browser accepts Gzip.
-* Encoding of upstream non-encoded responses if the browsers accepts Gzip or Gzip and Brotli.
+1.  The [accept-encoding request header](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Accept-Encoding) set to one of the following values:
 
-### Brotli compression support {/*brotli-compression-support*/}
+    `gzip | deflate | bzip2`
 
-Brotli is supported in the following ways:
+2.   Enabling compression for each desired content type (aka MIME type or media type) through the [Compress Content Types feature (compress_content_types)](/guides/performance/rules/features#compress-content-types). 
+3.   Cached content. An uncompressed version of the requested content must already be cached on the POP closest to the client that requested it.
+4.   An eligible file size. The file size of the requested content must fall within the following range:
 
-* Pass-through of upstream Brotli responses if the browser accepts Brotli.
-* Encoding of upstream non-encoded responses if the browsers *only* accepts Brotli.
+    -   Greater than approximately 128 bytes (`content-length: 128`)
+    -   Less than approximately 3 MB
 
-### Enabling Brotli compression {/*enabling-brotli-compression*/}
+## Cache Implications {/*implications-on-caching*/}
 
-To enable Brotli (`br`) compression you need to ensure your project uses a version of `{{ PACKAGE_NAME }}` >= `4.11.0`. To upgrade `{{ PACKAGE_NAME }}` to the latest version in your project use `{{ FULL_CLI_NAME }} use {{ PACKAGE_VERSION }}` and redeploy your project.
+If your caching policy allows the requested content to be cached, then {{ PRODUCT }} can cache each version of the requested content that it serves. 
 
-## What is Compressed? {/*what-is-compressed*/}
+For example, if {{ PRODUCT }} serves an uncompressed, a Gzip, and DEFLATE version of the requested content, then it can potentially cache 3 different versions of that content on our network.
 
-When {{ PRODUCT_NAME }} servers receive a request they inspect the `accept-encoding` header. The following logic is used to determine response compression:
+## How Does Compression Work?
 
-* If the response is not a [compressible type](#compressible-types), return uncompressed.
-* Else if no compression is accepted, then request no accepted encoding upstream and pass-through uncompressed upstream response.
-* Else if Brotli is supported (`{{ PACKAGE_NAME }}` >= `4.11.0`) then:
-    * If `br` and `gzip` are both accepted, then request `br, gzip` upstream and then:
-        * If upstream returned uncompressed response, compress with `gzip`.
-        * Pass-through the upstream response in all other cases.
-    * Else if only `br` is accepted, then request `br` upstream and then:
-        * If upstream returned uncompressed response, compress with `br`.
-        * Pass-through the upstream `br` upstream response.
-    * Else (only `gzip` is accepted), then request `gzip` upstream and then:
-        * If upstream returned uncompressed response, compress with `gzip`.
-        * Pass-through the upstream `gzip` upstream response.
-* Else (only `gzip` is accepted, no Brotli support), then:
-    * If upstream returned uncompressed response, compress with `gzip`.
-    * Pass-through the upstream `gzip` upstream response.
+The process through which requested content is compressed is outlined below. 
 
-## Compressible Types {/*compressible-types*/}
+1.  Does the request contain an `accept-encoding` header?
 
-A response is considered compressible if the `content-type` contains one of these strings:
+    -   **Yes (Supported Compression Method):** Proceed to step 2.
+    -   **Yes (Unsupported Compression Method):** Our edge servers will treat the request as a cache miss and retrieve it from your origin configuration or the Serverless layer.
+    -   **No (Missing):** This type of request will be served in an uncompressed format as described by either the **Cache Miss** or the **Uncompressed Cache Hit (Ineligible)** bullet item in step 2.
 
-* `text/html`
-* `application/x-javascript`
-* `text/css`
-* `application/javascript`
-* `text/javascript`
-* `application/json`
-* `application/vnd.ms-fontobject`
-* `application/x-font-opentype`
-* `application/x-font-truetype`
-* `application/x-font-ttf`
-* `application/xml`
-* `font/eot`
-* `font/opentype`
-* `font/otf`
-* `image/svg+xml`
-* `image/vnd.microsoft.icon`
-* `text/plain`
-* `text/xml`
+2.  An edge server on the POP closest to the client will check to see if the requested content has been cached and if it still has a valid TTL. 
 
-or the url ends in one of these file extensions:
+    -   **Cache Miss:** If a cached version of the requested content is not found, then the request will be forwarded to an origin server. Proceed to step 3.
+    -   **Cache Hit & Matching Compression Method:** An edge server will immediately deliver the compressed content to the client.
+    -   **Cache Hit & Different Compression Method:** If the client requests a supported compression method that is different from the one used by the initial request and the request is eligible for edge server compression, then an edge server will transcode the asset to the requested compression method and deliver it.
+    -   **Uncompressed Cache Hit:** If the initial request caused the asset to be cached in an uncompressed format, then a check will be performed to see whether the request is eligible for edge server compression.
+        -   **Eligible:** An edge server will serve the uncompressed content to the client. After which, if the request is eligible for caching, an edge server may compress the requested content and then cache the compressed version. Your caching policy dictates whether the compressed asset is eligible to be cached.
+        -   **Ineligible:** An edge server will immediately deliver the uncompressed content to the client.
 
-* `.css`
-* `.js`
-* `.html`
-* `.eot`
-* `.ico`
-* `.otf`
-* `.ttf`
-* `.json`
-* `.svg`
+3.  The request will be forwarded to an origin server. The response from the origin server will be one of the following:
+
+    -   If the request is eligible for compression by both origin server compression and edge server compression, then the origin server will provide a compressed response to {{ PRODUCT }}. {{ PRODUCT }} will then provide this compressed response to the client. Your caching policy dictates whether the compressed asset is eligible to be cached. 
+    -   If the request is ineligible for compression by origin server compression, but eligible by edge server compression, then the origin server will provide an uncompressed response to {{ PRODUCT }}. {{ PRODUCT }} will then provide this uncompressed response to the client and then check whether the request is eligible for edge server compression.
+	    -   **Eligible:** The requested content will be compressed and then delivered to the client. Your caching policy dictates whether the compressed asset is eligible to be cached.
+	    -   **Ineligible:** An edge server will immediately deliver the uncompressed content to the client. Your caching policy dictates whether the uncompressed asset is eligible to be cached.
+    -   If the request is eligible for compression by origin server compression, but ineligible by edge server compression, then the origin server will serve compressed content to {{ PRODUCT }}. {{ PRODUCT }} will serve the compressed asset to the client. However, it will not cache it. 
+    -   If the request is ineligible for compression by both origin server compression and edge server compresssion, then the origin server will serve an uncompressed asset to {{ PRODUCT }}. {{ PRODUCT }}  will serve the uncompressed asset to the client. However, it will not cache it.
 
 ## Applying Brotli compression in serverless {/*applying-brotli-compression-in-serverless*/}
 

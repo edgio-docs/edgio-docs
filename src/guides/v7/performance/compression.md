@@ -32,9 +32,9 @@ Edge server compression occurs when an edge server compresses cached content and
 | Requirement  | Description  |
 |--------------|--------------|
 | `Accept-encoding` request header  | The client's request must contain an [Accept-Encoding request header](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Accept-Encoding) set to one or more of the following values: <br />`gzip \| deflate \| bzip2` <br /><br />**Example:** `Accept-Encoding: gzip, deflate` |
-| Content type enablement | Enable compression for each desired content type (aka MIME type or media type) through the [Compress Content Types feature (compress_content_types)](/guides/performance/rules/features#compress-content-types).   |
+| Content type enablement | [Compression must be enabled](#enabling-edge-server-compression) for the requested content type (aka MIME type or media type).   |
 | Cached content  | An uncompressed version of the requested content must already be cached on the POP closest to the client that requested it. <Callout type="info">By default, {{ PRODUCT }} caches the response as provided by an origin server or the Serverless layer. Specifically, if the response is uncompressed and eligible to be cached, then {{ PRODUCT }} will cache the uncompressed response. </Callout> |
-| Eligible file size  | The file size of the requested content must fall within the following range: <ul><li>Greater than approximately 128 bytes (`content-length: 128`)</li><li>Less than approximately 3 MB</li></ul> |
+| Eligible file size  | The file size of the requested content must fall within the following range: <ul><li>Greater than approximately 128 bytes (`Content-Length: 128`)</li><li>Less than approximately 3 MB</li></ul> |
 
 ### Enabling Edge Server Compression {/*enabling-edge-server-compression*/}
 
@@ -49,12 +49,12 @@ Edge server compression requires enabling compression for the desired content ty
 
 Enable compression for each desired content type through the following steps:
 
-1.  Create or modify a rule through that identifies the set of requests on which compression will be enabled. 
+1.  Create or modify a rule that identifies the set of requests on which compression will be enabled. 
 2.  Add the [Compress Content Types feature (compress_content_types)](/guides/performance/rules/features#compress-content-types) to it. Set it to the desired set of content types.
 
 The following examples demonstrate how to enable edge server compression using:
 
--   [{{ PORTAL }}:](/guides/performance/rules#managing-rules)
+-   [Rules:](/guides/performance/rules#managing-rules)
 
     The following configuration enables edge server compression for the 4 sample content types described above.
 
@@ -90,7 +90,7 @@ The following examples demonstrate how to enable edge server compression using:
 
 If your caching policy allows the requested content to be cached, then {{ PRODUCT }} can cache each version of the requested content that it serves. 
 
-For example, if {{ PRODUCT }} serves an uncompressed, a Gzip, and DEFLATE version of the requested content, then it can potentially cache 3 different versions of that content on our network.
+For example, if {{ PRODUCT }} serves a Gzip, DEFLATE, and an uncompressed version of the requested content, then it can potentially cache 3 different versions of that content on our network.
 
 ## How Does Compression Work? {/*how-does-compression-work*/}
 
@@ -98,33 +98,25 @@ The process through which requested content is compressed is outlined below.
 
 1.  Does the request contain an `Accept-Encoding` header?
 
-    -   **Yes (Supported Compression Method):** Proceed to step 2.
-    -   **Yes (Unsupported Compression Method):** Our edge servers will treat the request as a cache miss and retrieve it from your origin configuration or the Serverless layer.
-    -   **No (Missing):** This type of request will be served in an uncompressed format as described by either the **Cache Miss** or the **Uncompressed Cache Hit (Ineligible)** bullet item in step 2.
+    -   **Yes:** Does it contain a supported compression method?
+        -   **Yes:** Proceed to step 2.
+        -   **No:** Our edge servers will check whether an asset compressed using that method has been cached. If this check results in a cache hit, then our edge servers will serve it immediately. Otherwise, it is a cache miss and our edge servers will retrieve it from your origin configuration or the Serverless layer. Skip to step 3.
+    -   **No:** Requests that are missing the `Accept-Encoding` header are served in an uncompressed format. This response is derived from either an origin server, the Serverless layer, or cache.
 
 2.  An edge server on the POP closest to the client will check to see if the requested content has been cached and if it still has a valid TTL. 
 
-    -   **Cache Miss:** If a cached version of the requested content is not found, then the request will be forwarded to an origin server. Proceed to step 3.
+    -   **Cache Miss:** If a cached version of the requested content is not found, then the request will be forwarded to an origin server or the Serverless layer. Proceed to step 3.
     -   **Cache Hit & Matching Compression Method:** An edge server will immediately deliver the compressed content to the client.
-    -   **Cache Hit & Different Compression Method:** If the client requests a supported compression method that is different from the one used by the initial request and the request is eligible for edge server compression, then an edge server will transcode the asset to the requested compression method and deliver it.
+    -   **Cache Hit & Different Compression Method:** If the client requests a supported compression method that is different from the cached content's compression method and the request is eligible for edge server compression, then an edge server will transcode the asset to the requested compression method and deliver it.
     -   **Uncompressed Cache Hit:** If the initial request caused the asset to be cached in an uncompressed format, then a check will be performed to see whether the request is eligible for edge server compression.
         -   **Eligible:** An edge server will serve the uncompressed content to the client. After which, if the request is eligible for caching, an edge server may compress the requested content and then cache the compressed version. Your caching policy dictates whether the compressed asset is eligible to be cached.
         -   **Ineligible:** An edge server will immediately deliver the uncompressed content to the client.
 
-3.  The request will be forwarded to an origin server. The response from the origin server will be one of the following:
-
-    -   If the request is eligible for compression by both origin server compression and edge server compression, then the origin server will provide a compressed response to {{ PRODUCT }}. {{ PRODUCT }} will then provide this compressed response to the client. Your caching policy dictates whether the compressed asset is eligible to be cached. 
-    -   If the request is ineligible for compression by origin server compression, but eligible by edge server compression, then the origin server will provide an uncompressed response to {{ PRODUCT }}. {{ PRODUCT }} will then provide this uncompressed response to the client and then check whether the request is eligible for edge server compression.
-	    -   **Eligible:** The requested content will be compressed and then delivered to the client. Your caching policy dictates whether the compressed asset is eligible to be cached.
-	    -   **Ineligible:** An edge server will immediately deliver the uncompressed content to the client. Your caching policy dictates whether the uncompressed asset is eligible to be cached.
-    -   If the request is eligible for compression by origin server compression, but ineligible by edge server compression, then the origin server will serve compressed content to {{ PRODUCT }}. {{ PRODUCT }} will serve the compressed asset to the client. However, it will not cache it. 
-    -   If the request is ineligible for compression by both origin server compression and edge server compresssion, then the origin server will serve an uncompressed asset to {{ PRODUCT }}. {{ PRODUCT }}  will serve the uncompressed asset to the client. However, it will not cache it.
+3.  The request will be forwarded to either an origin server or the Serverless layer. Either entity will provide a compressed or uncompressed response according to whether it can apply compression. {{ PRODUCT }} will serve the response to the client. Your caching policy dictates whether the response will be cached.
 
 ## Applying Brotli Compression through Serverless {/*applying-brotli-compression-in-serverless*/}
 
-{{ PRODUCT_NAME }} serverless supports Brotli encoding starting with version `4.14.0` but, as described above, only for the [content types](#compressible-types) recognized as compressible by the platform and if the browsers *only* accepts Brotli.
-
-If you wish to implement a custom criteria to apply the Brotli compression yourself, you can do this by leveraging the built-in `brotliCompressSync`.
+The Serverless layer supports Brotli encoding if the web browser accepts Brotli and the response is considered [eligible for compression](#compressible-types). Apply Brotli compression to these requests through `brotliCompressSync`.
 
 ```js
 import { brotliCompressSync } from 'zlib'
@@ -157,8 +149,45 @@ const sendBrotliEncoded = (req, res, body) => {
 You would need to invoke the above just prior to sending back the response, similar to this:
 
 ```js
-  const useBrotliEncoding = /* Evaluate all the custom criteria that you would like to apply */;
+  const useBrotliEncoding = /    -   Evaluate all the custom criteria that you would like to apply */;
   if (!useBrotliEncoding || !sendBrotliEncoded(req, res, body)) {
     res.send(body)
   }
 ```
+
+### Compressible Types {/*compressible-types*/}
+
+The Serverless layer considers a response eligible for compression when either of the following conditions are satisfied:
+
+-   The `Content-Type` header contains any of the following values:
+
+    -   `text/html`
+    -   `application/x-javascript`
+    -   `text/css`
+    -   `application/javascript`
+    -   `text/javascript`
+    -   `application/json`
+    -   `application/vnd.ms-fontobject`
+    -   `application/x-font-opentype`
+    -   `application/x-font-truetype`
+    -   `application/x-font-ttf`
+    -   `application/xml`
+    -   `font/eot`
+    -   `font/opentype`
+    -   `font/otf`
+    -   `image/svg+xml`
+    -   `image/vnd.microsoft.icon`
+    -   `text/plain`
+    -   `text/xml`
+
+-   The URL ends with one of these file extensions:
+
+    -   `.css`
+    -   `.js`
+    -   `.html`
+    -   `.eot`
+    -   `.ico`
+    -   `.otf`
+    -   `.ttf`
+    -   `.json`
+    -   `.svg`

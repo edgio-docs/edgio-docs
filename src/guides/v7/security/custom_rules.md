@@ -119,7 +119,7 @@ support the following request elements:
 
 -   **Country:** Identifies requests by the country
     from which the request originated. Specify the desired country using
-    a [country code](/reference/country_codes).
+    a [country code](/guides/reference/country_codes).
 
     <Callout type="tip">
 

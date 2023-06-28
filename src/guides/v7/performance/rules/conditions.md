@@ -288,7 +288,7 @@ Identifies requests by the country from which the request was issued. Specify ea
 
 -   The `EU` and `AP` country codes do not encompass all IP addresses in those regions. 
 
-    [Learn more.](/reference/country_codes#regions)
+    [Learn more.](/guides/reference/country_codes#regions)
 
 -   Certain requests may not return a valid country code. A question mark (i.e., ?) will match requests for which a valid country code could not be determined.
 -   Country codes are case-sensitive.
@@ -299,7 +299,7 @@ Identifies requests by the country from which the request was issued. Specify ea
 
 -   The `EU` and `AP` country codes do not encompass all IP addresses in those regions.
 
-    [Learn more.](/reference/country_codes#regions)
+    [Learn more.](/guides/reference/country_codes#regions)
 
 -   Certain requests may not return a valid country code. A question mark (i.e., ?) will match requests for which a valid country code could not be determined.
 -   Country codes are case-sensitive.

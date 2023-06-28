@@ -109,7 +109,7 @@ const nav = {
           routes: [
             {
               title: 'Purging Cached Content',
-              path: 'performance/purging',
+              path: 'performance/caching/purging',
             },
             {
               title: 'Cache Request Flow',

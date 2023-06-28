@@ -108,6 +108,10 @@ const nav = {
           path: 'performance/caching',
           routes: [
             {
+              title: 'Purging Cached Content',
+              path: 'performance/purging',
+            },
+            {
               title: 'Cache Request Flow',
               path: 'performance/caching/cache-request-flow',
             },
@@ -120,10 +124,6 @@ const nav = {
               path: 'performance/caching/cache-key',
             },
           ],
-        },
-        {
-          title: 'Purging',
-          path: 'performance/purging',
         },
         {
           title: 'Static Prerendering',

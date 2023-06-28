@@ -106,6 +106,20 @@ const nav = {
         {
           title: 'Caching',
           path: 'performance/caching',
+          routes: [
+            {
+              title: 'Cache Request Flow',
+              path: 'performance/caching/cache-request-flow',
+            },
+            {
+              title: 'Cache Hit Ratio Optimization',
+              path: 'performance/caching/cache-hit-ratio-optimization',
+            },
+            {
+              title: 'Cache Key',
+              path: 'performance/caching/cache-key',
+            },
+          ],
         },
         {
           title: 'Purging',

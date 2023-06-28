@@ -73,12 +73,14 @@ This example demonstrates how to apply a custom default cache key for requests t
 Specifically, we will append the `language` and `currency` cookies to the cache key using either of the following methods:
 
 -   **Rules:** Create a rule that defines the [Rewrite Cache Key feature](/guides/performance/rules/features#rewrite-cache-key) as indicated below:
-    -   **Source:** Set this to option to the relative path for the set of requests whose cache key will be rewritten. In this case, we will set it to the following pattern to identify requests whose relative path starts with `/conferences/marketing`:
+    -   **Source:** Set this to option to the relative path for the set of requests whose cache key will be rewritten. In this case, we will set it to the following pattern to identify requests for the `marketing` folder:
+	
         `/conferences/marketing/(.*)`
 		
 		The last URL segment is set to `(.*)`. This regular expression syntax matches any number of characters that follow `/conferences/marketing/`. 
 
     -   **Destination:** Set this option to the cache key's replacement pattern. In this case, we will set the default cache key to the request's relative path followed by a dash and the value assigned to the `language` and `currency` cookies:
+	
         `/conferences/marketing/$1-%{cookie_language}-%{cookie_currency}`
 
         Notice that we are using `$1`, which is a numbered backreference, to reintroduce the value captured by `(.*)` within the **Source** option.
@@ -108,8 +110,10 @@ Specifically, we will add the country from which the request originated to the c
 
 -   **Rules:** Create a rule that defines the [Rewrite Cache Key feature](/guides/performance/rules/features#rewrite-cache-key) as indicated below:
     -   **Source:** Set this to option to the relative path for the set of requests whose cache key will be rewritten.
+	
         `/marketing/images/(.*)`
     -   **Destination:** Set this option to the cache key's replacement pattern.
+	
         `%{path}-%{geo_country}`
 		
 		Notice that we are using the `%{path}` [feature variable](/guides/performance/rules/feature_variables) to reintroduce the relative path into the cache key. Alternatively, we could have used a backreference as demonstrated in the [cookie example](#cookie-example)

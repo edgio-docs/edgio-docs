@@ -2,7 +2,7 @@
 title: Cache Request Flow
 ---
 
-{{ PRODUCT }} can cache the response provided by an origin server or the Serverless layer on either an edge POP or an Origin Shield POP. The request flows for determining whether a response is served from cache for each of these components are illustrated below.
+{{ PRODUCT }} can cache the response provided by an origin server or the Serverless layer on either an edge POP or an Origin Shield POP. The following diagrams demonstrate how we determine whether a response is served from cache for each of these components.
 
 ## Origin Server
 

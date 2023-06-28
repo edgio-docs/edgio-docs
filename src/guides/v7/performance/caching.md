@@ -41,14 +41,14 @@ Define a caching policy through:
 
 ### Cache Directives (Response Headers) {/* response-headers */}
 
-The amount of time that an asset will be cached on our edge servers is determined by the response headers returned by the origin server when a client requests it. By default, our CDN honors the following response headers:
+An origin server or the Serverless layer may include headers in the response that contain cache directives. These cache directives may determine how long our servers will cache that response. By default, our servers honor the following response headers:
 
-- **Cache-Control: private:** Prevents our edge servers from caching the response.
-- **Cache-Control: no-store:** Prevents our edge servers from caching the response.
-- **Cache-Control: no-cache:** Requires our edge servers or the client to revalidate cached content.
-- **Pragma: no-cache:** Requires our edge servers or the client to revalidate cached content.
-- **Cache-Control: s-maxage:** Determines the requested content's time-to-live (TTL) on our edge servers. TTL identifies the amount of time that cached content can be served without revalidation.
-- **Cache-Control: max-age:** Determines the requested content's TTL on the user agent and our edge servers.
+- **Cache-Control: private:** Prevents our servers from caching the response.
+- **Cache-Control: no-store:** Prevents our servers from caching the response.
+- **Cache-Control: no-cache:** Requires our servers or the client to revalidate cached content.
+- **Pragma: no-cache:** Requires our servers or the client to revalidate cached content.
+- **Cache-Control: s-maxage:** Determines the requested content's time-to-live (TTL) on our servers. TTL identifies the amount of time that cached content can be served without revalidation.
+- **Cache-Control: max-age:** Determines the requested content's TTL on the user agent and our servers.
 - **Expires:** Defines an expiration date for the requested content's TTL. The requested content will be considered stale after the specified date/time.
 
   <Callout type="info">
@@ -63,13 +63,13 @@ The amount of time that an asset will be cached on our edge servers is determine
 -   Refer to your web server’s documentation to learn how to define response headers.
 -   You may override a web server's cache policy by creating a rule or route.
 
-### Rules {/* rules */}
+### Defining a Caching Policy through Rules {/* rules */}
 
 Set or override a cache policy by creating a rule that identifies the desired set of requests and the caching policy that will be applied to them. 
 
 <Callout type="important">
 
-  By default, {{ PRODUCT }} honors an origin server's `no-cache` directives. Allow {{ PRODUCT }} to override those directives by creating a rule with the [Ignore Origin No Cache](/guides/performance/rules/features#ignore-origin-no-cache) feature enabled for the desired status code (e.g., `200 OK`).
+  By default, certain cache directives take precedence over a cache policy defined within a rule. Allow {{ PRODUCT }} to override those directives by also enabling the [Ignore Origin No Cache feature (ignore_origin_no_cache)](/guides/performance/rules/features#ignore-origin-no-cache) for the desired status code (e.g., `200 OK`) within that rule.
 
 </Callout>
 
@@ -80,12 +80,12 @@ Commonly used features for defining a caching policy are listed below.
 | [Bypass Cache (bypass_cache)](/guides/performance/rules/features#bypass-cache)                               | Use this feature to disable caching on our network.                                                              |
 | [Bypass Client Cache (bypass_client_cache)](/guides/performance/rules/features#bypass-client-cache)          | Use this feature to instruct the client to bypass cache.                                                         |
 | [Ignore Origin No Cache (ignore_origin_no_cache)](/guides/performance/rules/features#ignore-origin-no-cache) | Use this feature to allow {{ PRODUCT }} to override `no-cache` directives.                                       |
-| [Set Client Max-Age (client_max_age)](/guides/performance/rules/features#set-client-max-age)                 | Use this feature to define how long a client must wait before revalidating cached content with our edge servers. |
+| [Set Client Max-Age (client_max_age)](/guides/performance/rules/features#set-client-max-age)                 | Use this feature to define how long a client must wait before revalidating cached content with our servers.      |
 | [Set Max-Age (max_age)](/guides/performance/rules/features#set-max-age)                                      | Use this feature to define how long an edge server must wait before revalidating cached content with the origin. |
 
 [View all caching-related features.](/guides/performance/rules/features#caching)
 
-#### CDN-as-Code {/* cdn-as-code */}
+#### Defining a Caching Policy through CDN-as-Code {/* cdn-as-code */}
 
 Add the [caching](/docs/api/core/interfaces/types.Caching.html) feature to your route:
 
@@ -107,7 +107,7 @@ router.get('/some/path', {
 
 ### Cache Key {/* cache-key */}
 
-Our edge servers use cache keys to determine whether a cached response exists for a specific request. Specifically, they calculate a cache key for each request. They then use this cache key to check for a cached response. 
+Our servers use cache keys to determine whether a cached response exists for a specific request. Specifically, they calculate a cache key for each request. They then use this cache key to check for a cached response. 
 
 [Learn more about cache keys.](/guides/performance/caching/cache_key)
 
@@ -154,9 +154,9 @@ Content can be cached on our network or the client's machine. Define how long co
 
 ## Revalidation {/*revalidation*/}
 
-Revalidation is the process through which an edge server checks the origin to find out whether a newer version of the requested cached content exists. If the origin indicates that the requested content has not changed, then our edge servers will serve cached content to the client and then update its TTL according to the provided cache instructions.
+Revalidation is the process through which an edge server checks the origin to find out whether a newer version of the requested cached content exists. If the origin indicates that the requested content has not changed, then our servers will serve cached content to the client and then update its TTL according to the provided cache instructions.
 
-Our edge servers can only perform a revalidation when the following conditions are true:
+Our servers can only perform a revalidation when the following conditions are true:
 
 -   The requested content is stale.
 -   The cached response contains one of the following headers:
@@ -165,7 +165,7 @@ Our edge servers can only perform a revalidation when the following conditions a
 
     <Callout type="info">
 
-      If either response header is not found, then our edge servers will perform an unconditional `GET` request to the origin.
+      If either response header is not found, then our servers will perform an unconditional `GET` request to the origin.
 
     </Callout>
 

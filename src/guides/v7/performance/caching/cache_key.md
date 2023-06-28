@@ -6,7 +6,7 @@ Our edge servers use cache keys to determine whether a cached response exists fo
 
 View a request's cache key through the `x-ec-cache-key` response header. By default, this header is excluded from the response. 
 
-**Syntax:** `x-ec-cache-key:` [<CACHE KEY>](#cache-key-reference)
+**Syntax:** `x-ec-cache-key:` [&lt;CACHE KEY>](#cache-key-reference)
 
 **Example:** `x-ec-cache-key: //http/800001/web/21/images/foo.jpg:/hs-5041808438894094098.jpg`
 
@@ -49,7 +49,7 @@ Examples of how to customize the cache key are provided below.
 Add the `page` and `filters` query string parameters to the cache key using either of the following methods:
 -   **Rules:** Create a rule that sets the [Cache Key Query String feature](/guides/performance/rules/features#cache-key-query-string) to `Include` the `page` and `filters` query string parameters.
 
-    ![Cache Key Query String feature example](/images/v7/performance/cache-key-query-string-example?width=450)
+    ![Cache Key Query String feature example](/images/v7/performance/cache-key-query-string-example.png?width=450)
 
 -   **CDN-as-Code:** 
 
@@ -83,7 +83,7 @@ Specifically, we will append the `language` and `currency` cookies to the cache 
 
         Notice that we are using `$1`, which is a numbered backreference, to reintroduce the value captured by `(.*)` within the **Source** option.
 		
-    ![Rewrite Cache Key feature example](/images/v7/performance/rewrite-cache-key-example?width=450)
+        ![Rewrite Cache Key feature example](/images/v7/performance/rewrite-cache-key-example.png?width=450)
 
 -   **CDN-as-Code:** 
 

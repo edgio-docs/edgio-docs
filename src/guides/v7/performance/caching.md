@@ -31,7 +31,7 @@ By default, a response is eligible for caching when it satisifes all of the foll
 
 For requests that satisfy the above conditions, {{ PRODUCT }} caches the response according to the cache instructions (aka cache directives) provided by the origin server. If an origin server does not provide cache directives, then it will be assigned a time to live (TTL) of 7 days (i.e., `Cache-Control: max-age=604800`). {{ PRODUCT }} can serve cached content until its TTL expires. After which, it will need to revalidate to find out whether the response has changed.
 
-[View the request flow for determining whether to serve a response from cache.](/guides/performance/caching/cache-request-flow)
+[View the request flow for determining whether to serve a response from cache.](/guides/performance/caching/cache_request_flow)
 
 ## Caching a Response {/* caching-a-response */}
 
@@ -109,7 +109,7 @@ router.get('/some/path', {
 
 Our edge servers use cache keys to determine whether a cached response exists for a specific request. Specifically, they calculate a cache key for each request. They then use this cache key to check for a cached response. 
 
-[Learn more about cache keys.](/guides/performance/caching/cache-key)
+[Learn more about cache keys.](/guides/performance/caching/cache_key)
 
 ### Caching Responses for POST and PUT Requests {/* caching-responses-for-post-and-put-requests */}
 

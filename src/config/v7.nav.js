@@ -113,15 +113,15 @@ const nav = {
             },
             {
               title: 'Cache Request Flow',
-              path: 'performance/caching/cache-request-flow',
+              path: 'performance/caching/cache_request_flow',
             },
             {
               title: 'Cache Hit Ratio Optimization',
-              path: 'performance/caching/cache-hit-ratio-optimization',
+              path: 'performance/caching/cache_hit_ratio_optimization',
             },
             {
               title: 'Cache Key',
-              path: 'performance/caching/cache-key',
+              path: 'performance/caching/cache_key',
             },
           ],
         },

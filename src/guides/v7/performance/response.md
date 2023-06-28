@@ -207,7 +207,7 @@ Common response headers are described below.
 	
 -   **{{ HEADER_PREFIX }}-surrogate-key:** Contains a space-delimited list of surrogate keys (cache tags). <!-- surrogate keys can be injected when needed into your backend responses -->
 
-    [Learn more.](/guides/performance/purging#surrogate-keys-cache-tags)
+    [Learn more.](/guides/performance/caching/purging#surrogate-keys-cache-tags)
 
 -   [{{ HEADER_PREFIX }}-t](#-t-response-header): Contains time measurements and cache status information for Serverless requests ({{ PRODUCT }} {{ PLATFORM }} and Serverless Compute).
 
@@ -311,7 +311,7 @@ The term `CACHEABLE` indicates whether the requested content could have been cac
 
 The `x-ec-cache-key` response header indicates the cache key associated with the requested content. A cache key identifies an asset for the purposes of caching. In other words, our servers will check for a cached version of an asset according to its cache key.
 
-[Learn more about cache keys.](/guides/performance/caching#cache-key)
+[Learn more about cache keys.](/guides/performance/caching/cache_key)
 
 #### Cache State Response Header {/*cache-state-response-header*/}
 

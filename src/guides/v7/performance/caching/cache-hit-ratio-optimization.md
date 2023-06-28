@@ -21,7 +21,7 @@ There are many factors that influence cache hit ratio, such as:
 
 -   Geographic distribution of your users. Clusters of users within the same geographic region typically result in a higher cache hit ratio than users distributed throughout the world. 
 
--   Cache invalidation (purging). Purging your content affects your cache hit ratio, since new requests will result in cache misses until that content is cached. If related content is updated at the same cadence, then it may make sense to use [surrogate keys (aka cache tags)](/guides/performance/purging#surrogate-key) to selectively target cached content when purging. 
+-   Cache invalidation (purging). Purging your content affects your cache hit ratio, since new requests will result in cache misses until that content is cached. If related content is updated at the same cadence, then it may make sense to use [surrogate keys (aka cache tags)](/guides/performance/caching/purging#surrogate-key) to selectively target cached content when purging. 
 
 -   Serving stale content during revalidation. Once configured, our edge servers can immediately respond to stale content with cached content instead of waiting for revalidation to complete. After our edge servers revalidate cached content, they will respond to new requests with an up-to-date version of your cached content. This feature balances performance with the need to serve the latest version of your content.
 

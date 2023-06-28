@@ -21,7 +21,15 @@ There is very little difference in time to first byte (TTFB) for responses serve
 
 ## Default Caching Policy {/*default-caching-policy*/}
 
-By default, only `GET` requests that result in a `200 OK` response are eligible to be cached. For these requests, {{ PRODUCT }} caches content according to the cache instructions (aka cache directives) provided by the origin server. If an origin server does not provide cache directives, then it will be assigned a time to live (TTL) of 7 days (i.e., `Cache-Control: max-age=604800`). Content is considered fresh until its TTL has expired.
+By default, a response is eligible for caching when it meets the following requirements:
+
+| Requirement        | Description                                                                                                                                                                                                                                                                                                                                                                 |
+| ------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| HTTP Method        | `GET`                                                                                                                                                                                                                                                                                                                                                                       |
+| HTTP Status Code   | `200 OK`                                                                                                                                                                                                                                                                                                                                                                    |
+| Number of Requests | The following content types are eligible to be cached after a POP receives a single request: <ul><li>text/html</li><li>text/css</li><li>text/xml</li><li>application/json</li><li>application/javascript</li><li>application/xml</li></ul>A POP will only cache requests for all other content types after it receives 2 `GET` requests that result in a `200 OK` response. |
+
+For these requests, {{ PRODUCT }} caches content according to the cache instructions (aka cache directives) provided by the origin server. If an origin server does not provide cache directives, then it will be assigned a time to live (TTL) of 7 days (i.e., `Cache-Control: max-age=604800`). Content is considered fresh until its TTL has expired.
 
 ### Origin Server
 
@@ -41,7 +49,9 @@ If Origin Shield has been enabled on your origin, then the edge server may reval
 
 ## Caching a Response {/* caching-a-response */}
 
-Define a caching policy through response headers or by setting up a rule or route with caching features. 
+Define a caching policy through:
+-   **Response headers:** Define cache directives within response headers. Set these response headers through your web server's configuration or by defining a rule with header features (e.g., [Set Response Headers feature](/guides/performance/rules/features#set-response-headers).
+-   **Rules:** Define a [rule with caching features](#rules). 
 
 ### Cache Directives (Response Headers) {/* response-headers */}
 
@@ -83,26 +93,33 @@ The amount of time that an asset will be cached on our edge servers is determine
 
 **Key information:**
 
--   By default, content will only be cached after a POP receives two `GET` requests that result in a `200 OK` response.
--   By default, {{ PRODUCT }} honors an origin server's cache directives. Allow {{ PRODUCT }} to override those directives by creating a rule with the [Ignore Origin No Cache](/guides/performance/rules/features#ignore-origin-no-cache) feature enabled for the desired status code (e.g., `200 OK`).
 -   The above directives are ordered according to precedence. Higher directives take precedence over lower directives. In other words, if an asset contains both a `Cache-Control` and an `Expires` header, then the `Cache-Control` header will take precedence.
--   Please refer to your web server’s documentation for more information on how to configure these settings.
+-   Refer to your web server’s documentation to learn how to define response headers.
 -   You may override a web server's cache policy by creating a rule or route.
 
 ### Rules {/* rules */}
 
-Set or override a cache policy by creating a rule that identifies the desired set of requests and the caching policy that will be applied to them. Commonly used features for defining a caching policy are listed below.
+Set or override a cache policy by creating a rule that identifies the desired set of requests and the caching policy that will be applied to them. 
 
-| Feature  | Usage  |
-|---|---|
-| [Bypass Cache](/guides/performance/rules/features#bypass-cache)  | Use this feature to disable caching on our network.  |
-| [Bypass Client Cache](/guides/performance/rules/features#bypass-client-cache)  | Use this feature to instruct the client to bypass cache.   |
-| [Set Client Max-Age](/guides/performance/rules/features#set-client-max-age)  | Use this feature to define how long a client must wait before revalidating cached content with our edge servers. |
-| [Set Max-Age](/guides/performance/rules/features#set-max-age)  | Use this feature to define how long an edge server must wait before revalidating cached content with the origin.  |
+<Callout type="important">
+
+  By default, {{ PRODUCT }} honors an origin server's `no-cache` directives. Allow {{ PRODUCT }} to override those directives by creating a rule with the [Ignore Origin No Cache](/guides/performance/rules/features#ignore-origin-no-cache) feature enabled for the desired status code (e.g., `200 OK`).
+
+</Callout>
+
+Commonly used features for defining a caching policy are listed below.
+
+| Feature                                                                                                      | Usage                                                                                                            |
+| ------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------- |
+| [Bypass Cache (bypass_cache)](/guides/performance/rules/features#bypass-cache)                               | Use this feature to disable caching on our network.                                                              |
+| [Bypass Client Cache (bypass_client_cache)](/guides/performance/rules/features#bypass-client-cache)          | Use this feature to instruct the client to bypass cache.                                                         |
+| [Ignore Origin No Cache (ignore_origin_no_cache)](/guides/performance/rules/features#ignore-origin-no-cache) | Use this feature to allow {{ PRODUCT }} to override `no-cache` directives.                                       |
+| [Set Client Max-Age (client_max_age)](/guides/performance/rules/features#set-client-max-age)                 | Use this feature to define how long a client must wait before revalidating cached content with our edge servers. |
+| [Set Max-Age (max_age)](/guides/performance/rules/features#set-max-age)                                      | Use this feature to define how long an edge server must wait before revalidating cached content with the origin. |
 
 [View all caching-related features.](/guides/performance/rules/features#caching)
 
-### CDN-as-Code {/* cdn-as-code */}
+#### CDN-as-Code {/* cdn-as-code */}
 
 Add the [caching](/docs/api/core/interfaces/types.Caching.html) feature to your route:
 
@@ -132,15 +149,15 @@ By default, our edge servers use the following syntax when calculating a cache k
 
 Definitions for the above placeholder values are provided below.
 
-| Placeholder  | Description  |
-|--------------|--------------|
-| `<ACCOUNT ID>`           | Indicates your unique customer account ID.   |
+| Placeholder              | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+| ------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `<ACCOUNT ID>`           | Indicates your unique customer account ID.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
 | `<ORIGIN CONFIGURATION>` | Indicates the name of the origin configuration associated with the request. <Callout type="info">Deploying a CDN-as-code configuration automatically generates the following system-defined origin configurations: `edgio_static`, `edgio_permanent_static`, `edgio_serverless`, and `edgio_image_optimizer`. Your CDN-as-code configuration  determines the origin configuration that will be applied to the cache key. View how {{ PRODUCT }} maps your code to these origin configurations from the **Rules** page. Returns `origin` when an origin configuration is inapplicable to a request.</Callout> |
-| `<DEPLOYMENT VERSION>`   | Indicates the version of the deployment for the configuration that served the request whose response was cached. |
-| `<RELATIVE PATH>`        | Indicates the relative path to the requested content. This relative path starts directly after the hostname. By default, query strings are ignored by the caching mechanism and therefore they will be excluded from the cache key. <Callout type ="info">If a query string is recorded in the cache key, it will be converted to its hash equivalent. After which, it will be inserted between the name of the requested asset and its file extension (e.g., asset**HashValue**.html).</Callout> |
-| `<QUERY STRING HASH>`    | Indicates a hash of the request's query string. If the request URL does not contain a query string, then the cache key will exclude `q-<QUERY STRING HASH>_`. <Callout type="tip">Exclude the query string from the cache key through the [Cache Key Query String feature (cache_key_query_string)](/guides/performance/rules/features#cache-key-query-string) or by defining a custom cache key through the [Rewrite Cache Key feature (cache_key_rewrite)](/guides/performance/rules/features#rewrite-cache-key).</Callout> |
-| `<URI HASH>`             | Indicates a hash of the request URI. |
-| `<FILE EXTENSION>`       | Indicates the request's file extension (e.g., `.html`). It is excluded from the cache key when the request URL does not contain a file extension.|
+| `<DEPLOYMENT VERSION>`   | Indicates the version of the deployment for the configuration that served the request whose response was cached.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
+| `<RELATIVE PATH>`        | Indicates the relative path to the requested content. This relative path starts directly after the hostname. By default, query strings are ignored by the caching mechanism and therefore they will be excluded from the cache key. <Callout type ="info">If a query string is recorded in the cache key, it will be converted to its hash equivalent. After which, it will be inserted between the name of the requested asset and its file extension (e.g., asset**HashValue**.html).</Callout>                                                                                                            |
+| `<QUERY STRING HASH>`    | Indicates a hash of the request's query string. If the request URL does not contain a query string, then the cache key will exclude `q-<QUERY STRING HASH>_`. <Callout type="tip">Exclude the query string from the cache key through the [Cache Key Query String feature (cache_key_query_string)](/guides/performance/rules/features#cache-key-query-string) or by defining a custom cache key through the [Rewrite Cache Key feature (cache_key_rewrite)](/guides/performance/rules/features#rewrite-cache-key).</Callout>                                                                                |
+| `<URI HASH>`             | Indicates a hash of the request URI.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
+| `<FILE EXTENSION>`       | Indicates the request's file extension (e.g., `.html`). It is excluded from the cache key when the request URL does not contain a file extension.                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
 
 View a request's cache key through the `x-ec-cache-key` response header. By default, this header is excluded from the response. 
 

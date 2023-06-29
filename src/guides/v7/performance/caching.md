@@ -8,7 +8,7 @@ Managing your caching policy and cached content is critical for achieving optima
 
 -   [Default caching policy](#default-caching-policy)
 -   [Defining a caching policy.](#caching-a-response)
--   [Caching content by query string, request headers, or another custom criteria](/guides/performance/caching/cache_key#customizing-the-cache-key)
+-   [Caching content by query string, request headers, or additional custom criteria](/guides/performance/caching/cache_key#customizing-the-cache-key)
 -   [Purging content.](/guides/performance/caching/purging)
 
 ## Caching {/*caching*/}

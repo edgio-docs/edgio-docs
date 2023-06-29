@@ -53,7 +53,7 @@ When initialization process is finished, {{ PRODUCT }} will automatically add al
 - The `{{ PACKAGE_NAME }}/cli` package
 - The `{{ PACKAGE_NAME }}/custom-connector` package
 - `{{ CONFIG_FILE }}` - Contains various configuration options for {{ PRODUCT }} including the connector [configuration](#custom-connector-configuration).
-- `routes.js` - A default routes file that sends all requests to the Astro. Update this file to add caching or proxy some URLs to a different origin.
+- `routes.js` - A default routes file that sends all requests to the underlaying framework. Update this file to add caching or proxy some URLs to a different origin.
 
 ## Routing {/* routing */}
 
@@ -121,4 +121,4 @@ In the `customConnector` object you can configure the following options:
 - `envPort` - The environment variable name for port (if it is available). Default value is `PORT`. Note: many frameworks use `PORT` as the default environment variable name for port. {{ PRODUCT }} will pass the port value to your app via the environment variable specified here
 - `buildCommand` - The build command of your app. Default value is empty string. Build command is used when you run `{{ FULL_CLI_NAME }} build` command.
 - `devCommand` - The dev command of your app. Default value is empty string. Dev command is used when you run `{{ FULL_CLI_NAME }} dev` command.
-- `devReadyMessageOrTimeout` - The dev ready message or timeout value in seconds to wait. Default value is `0`.
+- `devReadyMessageOrTimeout` - A message to be printed when dev server is ready or timeout value in seconds to wait. Default value is `0`.

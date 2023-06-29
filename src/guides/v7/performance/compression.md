@@ -66,7 +66,7 @@ The following examples demonstrate how to enable edge server compression using:
 
     ```js filename="./routes.js"
     export default new Router().match(
-      {},
+      '/(.*)',
       {
         response: {
           compress_content_types: [

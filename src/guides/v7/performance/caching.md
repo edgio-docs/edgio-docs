@@ -8,8 +8,8 @@ Managing your caching policy and cached content is critical for achieving optima
 
 -   [Default caching policy](#default-caching-policy)
 -   [Defining a caching policy.](#caching-a-response)
--   [Purging content.](/guides/performance/caching/purging)
 -   [Caching content by query string, request headers, or another custom criteria](/guides/performance/caching/cache_key#customizing-the-cache-key)
+-   [Purging content.](/guides/performance/caching/purging)
 
 ## Caching {/*caching*/}
 Caching creates a copy of the requested content within our edge and Origin Shield POPs. This improves your site's performance by allowing clients to retrieve your content from the POP closest to them instead of your origin servers. 
@@ -128,7 +128,7 @@ By default, {{ PRODUCT }} only caches responses for `GET` requests. Cache the re
 -   **Rules:** Create a rule that sets the [Enable Caching for Methods feature](/guides/performance/rules/features#enable-caching-for-methods) to `POST`, `PUT`, or both HTTP methods.
 -   **CDN-as-Code:** 
     ```js filename="./routes.js"
-    router.get('/some/path', {
+    router.match('/some/path', {
       caching: {
           "enable_caching_for_methods": ["POST", "PUT"],
         }

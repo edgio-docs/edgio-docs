@@ -1,7 +1,17 @@
 ---
-title: Caching
+title: Cache Management
 ---
 
+Managing your caching policy and cached content is critical for achieving optimal website performance. 
+
+**Key concepts and procedures:**
+
+-   [Default caching policy](#default-caching-policy)
+-   [Defining a caching policy.](#caching-a-response)
+-   [Purging content.](/guides/performance/caching/purging)
+-   [Caching content by query string, request headers, or another custom criteria](/guides/performance/caching/cache_key#customizing-the-cache-key)
+
+## Caching {/*caching*/}
 Caching creates a copy of the requested content within our edge and Origin Shield POPs. This improves your site's performance by allowing clients to retrieve your content from the POP closest to them instead of your origin servers. 
 
 ## Environments and Caching {/* environments-and-caching */}

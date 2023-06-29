@@ -104,7 +104,7 @@ const nav = {
           ],
         },
         {
-          title: 'Caching',
+          title: 'Cache Management',
           path: 'performance/caching',
           routes: [
             {

@@ -7,6 +7,11 @@ module.exports = {
   next: {
     enforceTrailingSlash: false,
   },
+  environments: {
+    production: {
+      hostnames: [{hostname: 'docs.edg.io'}],
+    },
+  },
   origins: [
     {
       name: 'api',

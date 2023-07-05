@@ -17,7 +17,7 @@ This guide shows you how to deploy a [Next.js](https://nextjs.org/) application 
 
 For details on using the Next.js Commerce template with {{ PRODUCT }}, refer to our [Next.js Commerce Guide](next_commerce).
 
-## Connector {/*connector*/}
+<!--## Connector {/*connector*/}
 
 This framework has a connector developed for {{ PRODUCT }}. See [Connectors](connectors) for more information.
 
@@ -28,7 +28,7 @@ This framework has a connector developed for {{ PRODUCT }}. See [Connectors](con
   href="https://github.com/layer0-docs/layer0-connectors/tree/main/layer0-next-connector">
   View the Connector Code
 </ButtonLink>
-
+-->
 ## Supported Versions {/*supported-versions*/}
 
 {{ PRODUCT_NAME }} supports Next.js version 9 through 12.

@@ -16,14 +16,14 @@ This Sapper example app uses server-side rendering and prefetching to provide li
   repoUrl="https://github.com/layer0-docs/layer0-sapper-example" 
   deployFromRepo />
 
-## Connector {/*connector*/}
+<!--## Connector {/*connector*/}
 
 This framework has a connector developed for {{ PRODUCT }}. See [Connectors](connectors) for more information.
 
 <ButtonLink variant="stroke" type="code" withIcon={true} href="https://github.com/layer0-docs/layer0-connectors/tree/main/layer0-sapper-connector">
   View the Connector Code
 </ButtonLink>
-
+-->
 {{ SYSTEM_REQUIREMENTS.md }}
 
 {{ SIGN_UP }}

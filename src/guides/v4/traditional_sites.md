@@ -65,14 +65,14 @@ Use this worksheet when auditing your site for personalized content to inventory
 
 [{{ PRODUCT_NAME }} Origin Content Changes Worksheet](https://docs.google.com/spreadsheets/d/1vFQl6Eh8vF9CbDpuu9cRYYzPyqBfLcNrRRU_0QwqAMM/edit?usp=sharing)
 
-## Connector {/*connector*/}
+<!--## Connector {/*connector*/}
 
 This framework has a connector developed for {{ PRODUCT_NAME }}. See [Connectors](connectors) for more information.
 
 <ButtonLink variant="stroke" type="code" withIcon={true} href="https://github.com/layer0-docs/layer0-connectors/tree/main/layer0-starter-connector">
   View the Connector Code
 </ButtonLink>
-
+-->
 {{ PREREQ.md }}
 
 ## Setup a Project {/*setup-a-project*/}

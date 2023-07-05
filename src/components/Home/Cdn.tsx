@@ -32,7 +32,7 @@ const items = {
     },
     {
       title: 'Purging',
-      path: '/guides/purging',
+      path: '/guides/performance/caching/purging',
     },
     {
       title: 'Static Prerendering',

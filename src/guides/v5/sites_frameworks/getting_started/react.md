@@ -2,7 +2,7 @@
 title: React
 ---
 
-This guide shows you how to serve a [React](https://reactjs.org/) application to {{ PRODUCT }}. If you're using Next.js specifically, we suggest using the [Next.js guide](/guides/next).
+This guide shows you how to serve a [React](https://reactjs.org/) application to {{ PRODUCT }}. If you're using Next.js specifically, we suggest using the [Next.js guide](/guides/sites_frameworks/getting_started/next).
 
 ## Example {/*example*/}
 

@@ -6,7 +6,7 @@ const baseUrl = 'https://docs.edg.io'; // Replace with your desired base URL
 
 const visitedUrls = new Set();
 const errorUrls = [];
-const allowedUrlPatterns = [/\/guides\/v7\//, /\/docs\/v7.x\//];
+const allowedUrlPatterns = [/(.*)/];
 
 const timer = setInterval(() => {
   console.log('Visited URLs:', visitedUrls.size);

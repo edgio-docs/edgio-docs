@@ -450,43 +450,12 @@ const nav = {
           ],
         },
         {
-          title: 'Connectors',
-          path: 'sites_frameworks/connectors',
-        },
-        {
           title: 'Incremental Static Regeneration',
           path: 'sites_frameworks/isg',
         },
         {
           title: 'Limits',
           path: 'sites_frameworks/limits',
-        },
-      ],
-    },
-    {
-      title: 'Third-Party Integrations',
-      path: 'integrations',
-      icon: 'gear',
-      routes: [
-        {
-          title: 'BigCommerce',
-          path: 'integrations/bigcommerce',
-        },
-        {
-          title: 'Bloomreach',
-          path: 'integrations/bloomreach',
-        },
-        {
-          title: 'Shopify Hydrogen',
-          path: 'integrations/shopify_hydrogen',
-        },
-        {
-          title: 'Swell',
-          path: 'integrations/swell',
-        },
-        {
-          title: 'WordPress',
-          path: 'integrations/wordpress',
         },
       ],
     },
@@ -587,10 +556,6 @@ const nav = {
         {
           title: 'REST API',
           path: 'develop/rest_api',
-        },
-        {
-          title: 'Deploy to Edgio Button',
-          path: 'develop/deploy_to_edgio',
         },
         {
           title: 'EdgeJS API Reference',

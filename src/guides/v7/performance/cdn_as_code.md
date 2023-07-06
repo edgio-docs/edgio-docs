@@ -235,7 +235,7 @@ The relevant configuration options generated include the `name` and `origins` pr
 - The `name` property is used to identify your {{ PRODUCT }} property in the {{ PORTAL_LINK }}
 - The `origins` property is used to configure the origins to which the router will connect when handling requests.
 
-[Learn more](/guides/performance/cdn_as_code/edgio_config.md) about the `{{ CONFIG_FILE }}` file and all the configuration options it supports.
+[Learn more](/guides/performance/cdn_as_code/edgio_config) about the `{{ CONFIG_FILE }}` file and all the configuration options it supports.
 
 ## Routes File {/* routes-file */}
 
@@ -444,7 +444,7 @@ Evaluate site performance and QA functionality by deploying your property to {{ 
 
 Assess performance and caching behavior from the {{ PORTAL_LINK }}. Fine-tune your configuration by adding routes and then redeploying your property. Once you are ready to serve production traffic through {{ PRODUCT }}, update your site's DNS to point to our service.
 
-[Learn more.](/guides/production)
+[Learn more.](/guides/basics/hostnames_and_origins#serving-traffic-through)
 
 ## Examples {/* examples */}
 
@@ -465,7 +465,7 @@ This example demonstrates a basic {{ PRODUCT }} configuration for `publicdomainr
 This example demonstrates a full-featured {{ PRODUCT }} configuration that showcases the following functionality:
 
 - [Proxying multiple origins](/guides/performance/cdn_as_code/route_features#proxying-an-origin)
-- Increasing the cache buffer during revalidation through [StaleWhileRevalidate](/guides/performance/caching#cache-hit-ratio-optimization)
+- Increasing the cache buffer during revalidation through [StaleWhileRevalidate](/guides/performance/caching#cache_hit_ratio_optimization)
 - [Prefetching](/guides/performance/prefetching) and [Deepfetching](/guides/performance/prefetching#deep-fetching) cached content to improve performance.
 
   <Callout type="info">

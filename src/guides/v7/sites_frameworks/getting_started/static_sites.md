@@ -94,4 +94,4 @@ Deploy your app to the {{ PRODUCT_PLATFORM }} by running the following command i
 {{ FULL_CLI_NAME }} deploy
 ```
 
-For more on deploying, see [Deploying](/guides/deploy_apps).
+[Learn more about deployments.](/guides/basics/deployments)

@@ -21,13 +21,11 @@ The argument is an Object that supports features outlined in the [Features Refer
 
 ```js
  router.match('/:path*', {
-   {
-     caching: {
-       max_age: "1h"
-     },
-     origin: {
-       set_origin: "origin"
-     }
+   caching: {
+     max_age: "1h"
+   },
+   origin: {
+     set_origin: "origin"
    }
  })
 ```
@@ -283,7 +281,7 @@ router.match(
 ```
 
 The rules for interpolating the values of request and response objects can be found in the [routing](/guides/performance/cdn_as_code#embedded-values) guide.
-Note that catch-all routes that alter headers, cookies, or caching can be placed at the start of your router while allowing subsequent routes to run because they alter the request or the response without actually sending a response. See [route execution](/guides/routing#route-execution) for more information on route execution order and sending responses.
+Note that catch-all routes that alter headers, cookies, or caching can be placed at the start of your router while allowing subsequent routes to run because they alter the request or the response without actually sending a response. See [route execution](/guides/performance/cdn_as_code#route-execution) for more information on route execution order and sending responses.
 
 ## Manipulating Cookies {/* manipulating-cookies */}
 
@@ -544,7 +542,7 @@ When using `response.set_response_body` to send a response, or to stop processin
 
 </Callout>
 
-To compute a dynamic response, use the [`compute`](/docs/api/core/classes/router.RouteHelper.html#compute) method.
+To compute a dynamic response, use the [`compute`](/docs/api/core/classes/router_RouteHelper.default.html#compute) method.
 
 {{ routehelper_usage.md}}
 
@@ -584,7 +582,7 @@ router.get('/p/:productId', {
 });
 ```
 
-To compute the destination URL, use the [`compute`](/docs/api/core/classes/router.RouteHelper.html#compute) method.
+To compute the destination URL, use the [`compute`](/docs/api/core/classes/router_RouteHelper.default.html#compute) method.
 
 {{ routehelper_usage.md}}
 

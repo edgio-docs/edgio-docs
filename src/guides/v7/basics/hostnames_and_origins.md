@@ -108,7 +108,7 @@ On a per environment-basis, define how {{ PRODUCT }} will communicate with your 
 
 -   Each origin configuration identifies a set of web server(s) by hostname or IP address.  
 -   An origin configuration may identify up to 4 hostnames or IP addresses. 
--   {{ PRODUCT }} applies [primary/failover load balancing](#primary-failover-load-balancing) for traffic directed to an origin configuration that contains multiple origin hostnames. 
+-   [Load balance](#load-balancing) requests to the web servers associated with an origin configuration using either primary/failover or round-robin mode.
 -   The maximum number of origin configurations per environment is 100. <a id="override-host-header" />
 -   By default, our CDN forwards the `Host` header provided by the client when proxying requests to your origin server(s). You may override the client's `Host` header by setting the **Override Host Header** option to the desired hostname. This forces our CDN to set the `Host` header to the specified hostname whenever it proxies traffic to the origin server(s) associated with this origin configuration.
 
@@ -121,10 +121,18 @@ On a per environment-basis, define how {{ PRODUCT }} will communicate with your 
     </Callout>
  
 -   You may configure an origin configuration to always serve traffic to your hosts over HTTP, HTTPS, or to match the client's scheme. Matching a client's scheme means that our network will serve HTTP traffic to your web servers over port 80, while HTTPS traffic will be served over port 443. <a id="sni" />
--   You may enable Server Name Indication (SNI) on an origin configuration to allow {{ PRODUCT }} to use it during the TLS handshake. If the SNI hint is not found, then your origin server's implementation determines the TLS certificate that will be returned.
+-   By default, {{ PRODUCT }} does not provide a Server Name Indication (SNI) hint to your origin server. This allows your origin server to determine the TLS certificate that will be returned. Enable the **Use SNI** option on an origin configuration to allow {{ PRODUCT }} to:
 
-    Additionally, our service will compare the hostname used for the SNI hint to the certificate's Subject Alternative Name (SAN) or Common Name (CN) during the TLS handshake. If the hostname does not match, then we will respond with a `502 Bad Gateway` response. <a id="self-signed-certificates" />
--   By default, our network disables delivery when we detect a self-signed certificate from the origin server during the TLS handshake. Enable the **Allow Self-Signed Certs** option to require our edge servers to respond with a `502 Bad Gateway` response upon detecting a self-signed certificate from the origin server during the TLS handshake. <a id="certificate-pinning" />
+    -   Provide a SNI hint during the TLS handshake. 
+    -   Compare the hostname defined within the SNI hint to the certificate's Subject Alternative Name (SAN) or Common Name (CN) during the TLS handshake. If the hostname does not match, then we will respond with a `502 Bad Gateway` response.
+
+    <Callout type="important">
+	
+	  If your origin server requires SNI, then you must enable the **Use SNI** option and define a SNI hint. Otherwise, your web server will reject the request and our edge servers will respond with a `502 Bad Gateway` response. <a id="self-signed-certificates" />
+	
+	</Callout>
+
+-   By default, our network disables delivery when we detect a self-signed certificate from the origin server during the TLS handshake. Specifically, our edge servers respond with a `502 Bad Gateway` response upon detecting a self-signed certificate from the origin server during the TLS handshake. Allow {{ PRODUCT }} to serve traffic when it detects a self-signed certificate by enabling the **Allow Self-Signed Certs** option. <a id="certificate-pinning" />
 -   Register the SHA-256 digest for the public key of your end-entity (i.e., leaf) certificate within the **Pinned Cert(s)** option. After which, our edge servers will respond with a `502 Bad Gateway` response when the SHA-256 digest for the public key detected from the origin server does not match one of the pinned certificates.
 -   Malicious actors may bypass the security provided by our service by directly targeting your origin server(s). We strongly recommend that you set up your firewall to only allow traffic from trusted sources (e.g., our network) and to obfuscate your origin.
 
@@ -155,6 +163,7 @@ On a per environment-basis, define how {{ PRODUCT }} will communicate with your 
     3.  Set the **Scheme** option to always serve traffic to your hosts over HTTPS, HTTP, or to match the client's scheme.
     4.  Optional. [Override the client's Host header](#override-host-header) by setting the **Override Host Header** option to the desired hostname. 
     5.  Optional. Add another host to this origin configuration by clicking **+ Add Host** and then performing steps 4.1 - 4.4. 
+	6.  Optional. Set the **Balancer type** option to the desired load balancing mode for requests proxied to your web servers. 
 5.  Optional. Define TLS settings for this origin configuration. Click on the **Origin TLS Settings** section to expand it.
 
     1.  Enable SNI by toggling the **Use SNI** option to the on position (<Image inline src="/images/v7/icons/toggle-on.png" alt="Toggle on" />) and then defining the hostname that will be sent as a SNI hint during the TLS handshake. 
@@ -193,13 +202,28 @@ On a per environment-basis, define how {{ PRODUCT }} will communicate with your 
     4.  Optional. Configure cache misses from a specific region to always be proxied to your origin by selecting `Bypass`.
 
 7. If you are finished making changes to this environment, click **Deploy Changes**.
+<a id="primary-failover-load-balancing" />
 
-### Primary/Failover Load Balancing {/*primary-failover-load-balancing*/}
+### Load Balancing {/*load-balancing*/}
 
-{{ PRODUCT }} determines how to load balance traffic directed at your origin configuration as follows:
+{{ PRODUCT }} load balances traffic proxied from our network to the web servers associated with an origin configuration using either primary/failover or round-robin mode. 
 
-    1.  All requests that {{ PRODUCT }} proxies to this origin configuration will be directed to the first origin hostname listed within your origin configuration.
-    2.  If a server corresponding to that origin hostname is unavailable, then the request will be sent to the next origin configuration on the list. This step is repeated until a server is able to honor the request. 
+**Key information:**
+
+-   {{ PRODUCT }} generates a list of IP addresses by resolving the hostnames associated with an origin configuration. These IP addresses are listed according to the order in which the corresponding hosts are listed within your origin configuration.
+-   If an origin configuration allows {{ PRODUCT }} to proxy requests using both HTTP and HTTPS, then {{ PRODUCT }} will generate an ordered list of IP addresses for each HTTP scheme.
+-   The available load balancing options are:
+    -   **Primary/Failover:** This load balancing mode requires {{ PRODUCT }} to:
+	
+	    1.  Proxy all traffic to the first IP address in the list. 
+	    2.  If the current server is [unavailable](#unavailable-servers), then {{ PRODUCT }} will issue another request to the next IP address on the list. This step is repeated until a server is able to honor the request. 
+	
+	    Set up primary/failover load balancing by selecting `Primary failover` from the **Balancer type** option. 
+		
+    -   **Round-robin:** This mode distributes requests evenly across all IP addresses. If a server is [unavailable](#unavailable-servers), then the request will be sent to the next IP address on the list. 
+	
+	    Set up round-robin load balancing by selecting `Round robin` from the **Balancer type** option. 
+-   The above load-balancing options are completely independent from any load balancing configuration that may already distribute traffic to your web servers. For instance, traffic for a single IP address might be load balanced across several physical servers.
 
 #### Unavailable Servers {/*unavailable-servers*/}
 

@@ -12,7 +12,7 @@ This guide shows you how to deploy a [RedwoodJS](https://redwoodjs.com/) applica
   repoUrl="https://github.com/layer0-docs/layer0-redwoodjs-example" 
   deployFromRepo />
 
-## Connector {/*connector*/}
+<!--## Connector {/*connector*/}-->
 
 {{ PREREQ.md }}
 

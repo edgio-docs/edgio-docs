@@ -21,7 +21,7 @@ The {{ PRODUCT_SECURITY }} dashboard provides the means through which you may pe
     1.  From the {{ PORTAL_LINK }}, select the desired team space.    
     2.  Click **Security**.
     
-    By default, the dashboard displays recent [threats](#threats) (i.e., access rule, custom rule, and managed rule violations).
+    By default, the dashboard displays recent [threats](#threats-view) (i.e., access rule, custom rule, and managed rule violations).
 
 2.  Optional. Click on the [Browser Challenges](#bot), [Rates](#rate-limit), or [Rate Enforcement](#rate-enforcement) tab to view bot traffic or rate limiting trends.
 

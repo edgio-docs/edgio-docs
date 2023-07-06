@@ -130,7 +130,7 @@ From within the `site` directory, run
 
 For this next step you will need the store hash (available in the URL bar) and the API token you just created.
 
-1. To create a channel we need to issue a `curl` request to the BigCommerce API. Open the API [doc](https://developer.bigcommerce.com/api-reference/b3A6MzU5MDQ0NDc-create-a-channel) for additional information. Use the `curl` below, substituting values where needed.
+1. To create a channel we need to issue a `curl` request to the BigCommerce API. Learn more at the [BigCommerce Developer Portal](https://developer.bigcommerce.com/docs/rest-management/channels#create-a-channel). Use the `curl` below, substituting values where needed.
 
 ```bash
  curl --request POST \
@@ -154,7 +154,7 @@ For this next step you will need the store hash (available in the URL bar) and t
 
 ![](/images/bigcommerce/routes.png?width=600)
 
-4. With a channel and routes created, the last item to use the BigCommerce API for is generating an Auth token for use with the GraphQL API. You will have to revisit this once you have deployed your application for the first time to add the allowed domain. Open the API [doc](https://developer.bigcommerce.com/api-reference/b3A6MzU5MDUxNTI-create-a-token#requestrunner) for additional information.
+4. With a channel and routes created, the last item to use the BigCommerce API for is generating an Auth token for use with the GraphQL API. You will have to revisit this once you have deployed your application for the first time to add the allowed domain. Learn more at the [BigCommerce Developer Portal](https://developer.bigcommerce.com/docs/rest-management/channels#create-a-channel).
 
 ```bash
 curl --request POST \

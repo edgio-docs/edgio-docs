@@ -4,13 +4,13 @@ title: Frontity
 
 This guide shows you how to deploy a [Frontity](https://frontity.org/) application to {{ PRODUCT }}.
 
-## Example {/*example*/}
+<!-- ## Example {/*example*/}
 
 <ExampleButtons
   title="Frontity"
   siteUrl="https://edgio-community-examples-frontity-live.layer0-limelight.link/"
   repoUrl="https://github.com/edgio-docs/edgio-frontity-example" 
-  deployFromRepo />
+  deployFromRepo /> -->
 
 ## Connector {/*connector*/}
 

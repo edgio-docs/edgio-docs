@@ -151,7 +151,7 @@ function validateLinks(headingLinksByPage) {
  * @param {Array<string>} paths
  */
 async function main(paths) {
-  paths = paths.length === 0 ? ['src/pages/guides'] : paths;
+  paths = paths.length === 0 ? ['src/guides'] : paths;
   const files = paths.map((path) => [...walk(path)]).flat();
 
   const headingLinksByPage = {};
@@ -161,7 +161,7 @@ async function main(paths) {
   const reLink = /\[.+?\]\((.*?)(?:\s.*)?\)/gm;
 
   for (const file of files) {
-    const [, fullPath] = file.match(/^.+(applications\/(\w+)).mdx?$/) || [];
+    const [, fullPath] = file.match(/^.+(guides\/(.+)).mdx?$/) || [];
     if (!fullPath) continue;
 
     headingLinksByPage[fullPath] = {
@@ -189,10 +189,10 @@ async function main(paths) {
     }
 
     const lines = content.split('\n');
-    // validateHeaderIds(lines);
+    validateHeaderIds(lines);
   }
 
-  validateLinks(headingLinksByPage);
+  // validateLinks(headingLinksByPage);
   exit();
 }
 

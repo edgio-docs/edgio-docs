@@ -1,58 +1,64 @@
 ---
-title: Caching
+title: Cache Management
 ---
 
-Caching creates a copy of the requested content on our edge servers. This dramatically reduces the distance that the data has to travel to fulfill all future requests. 
+Managing your caching policy and cached content is critical for achieving optimal website performance. 
+
+**Key concepts and procedures:**
+
+-   [Default caching policy](#default-caching-policy)
+-   [Defining a caching policy.](#caching-a-response)
+-   [Caching content by query string, request headers, or additional custom criteria](/guides/performance/caching/cache_key#customizing-the-cache-key)
+-   [Purging content.](/guides/performance/caching/purging)
+
+## Caching {/*caching*/}
+Caching creates a copy of the requested content within our edge and Origin Shield POPs. This improves your site's performance by allowing clients to retrieve your content from the POP closest to them instead of your origin servers. 
 
 ## Environments and Caching {/* environments-and-caching */}
 
 Each environment provides a separate edge cache for the most recent deployment. Although older deployments do not support edge caching, you may re-enable it by [rolling back to that version](/guides/basics/deployments#versioning).
 
-## Edge and Shield Caching {/* edge-and-shield-caching */}
+## Edge and Origin Shield Caching {/*edge-and-shield-caching*/}
 
 {{ PRODUCT }} may cache your content on our:
 
 - **Edge Points-of-Presence (POP):** An edge POP handles receives and responds to requests for your content.
-- **Shield POP:** A shield POP reduces your network bandwidth and the load on your origin server by providing an intermediate caching layer between the edge of our network (aka edge POPs) and your web servers. This means that if a request cannot be served from cache by an edge POP, then it will be forwarded to a shield POP. Funneling requests to a shield POP maximizes your cache hit ratio.
+- **Origin Shield POP:** An Origin Shield POP improves cache efficiency, reduces the load on your servers, and reduces network bandwidth. If you have assigned at least one Origin Shield POP to your origin configuration, our edge POPs can funnel cache misses through an Origin Shield POP.
 
-There is very little difference in time to first byte (TTFB) for responses served from an edge or shield POP. In either case, the response is served nearly instantly (typically 25-100ms). Concurrent requests for the same URL on different POPs that result in a cache miss will be coalesced at the shield POP. If you have configured your origin to only use a shield POP, then it will only submit a single request at a time to your origin servers for each cacheable URL.
+There is very little difference in time to first byte (TTFB) for responses served from an edge or Origin Shield POP. In either case, the response is served nearly instantly (typically 25-100ms). Concurrent requests for the same URL on different POPs that result in a cache miss will be coalesced at the Origin Shield POP. An Origin Shield server only submits a single request at a time to your origin servers for each cacheable URL.
 
 [Learn more about Origin Shield.](/guides/security/origin_shield)
 
 ## Default Caching Policy {/*default-caching-policy*/}
 
-By default, only `GET` requests that result in a `200 OK` response are eligible to be cached. For these requests, our edge servers cache content according to the cache instructions (aka cache directives) provided by the origin server. If an origin  server does not provide cache directives, then it will be assigned a time to live (TTL) of 7 days (i.e., `Cache-Control: max-age=604800`). Content is considered fresh until its TTL has expired.
+By default, a response is eligible for caching when it satisifes all of the following requirements:
 
-Once the asset has been cached on a POP, all future requests from the region served by that POP will be served directly from that POP while the cached content's TTL has not expired. Once the TTL has expired, an edge server from that POP may [revalidate](#revalidation) the asset with the origin server. If the asset has not been modified, then the cached content's TTL on that edge server will be updated to reflect the origin's cache instructions or a default TTL of 7 days. Otherwise, a new version of the asset will be retrieved and cached on the edge server.
+| Requirement        | Description                                                                                                                                                                                                                                                                                                                                 |
+| ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| HTTP Method        | `GET`                                                                                                                                                                                                                                                                                                                                       |
+| HTTP Status Code   | `200 OK`                                                                                                                                                                                                                                                                                                                                    |
+| Number of Requests | Varies by content type. <br /><br />A POP considers requests for the following content types eligible for caching after a single request: <ul><li>text/html</li><li>text/css</li><li>text/xml</li><li>application/json</li><li>application/javascript</li><li>application/xml</li></ul> It requires 2 requests for all other content types. |
+
+For requests that satisfy the above conditions, {{ PRODUCT }} caches the response according to the cache instructions (aka cache directives) provided by the origin server. If an origin server does not provide cache directives, then it will be assigned a time to live (TTL) of 7 days (i.e., `Cache-Control: max-age=604800`). {{ PRODUCT }} can serve cached content until its TTL expires. After which, it will need to revalidate to find out whether the response has changed.
+
+[View the request flow for determining whether to serve a response from cache.](/guides/performance/caching/cache_request_flow)
 
 ## Caching a Response {/* caching-a-response */}
 
-Define a caching policy through response headers or by setting up a rule or route with caching features. 
+Define a caching policy through:
+-   **Response headers:** Define cache directives within response headers. Set these response headers through your web server's configuration or by defining a rule with header features (e.g., [Set Response Headers feature](/guides/performance/rules/features#set-response-headers)).
+-   **Rules:** Define a [rule with caching features](#rules). 
 
 ### Cache Directives (Response Headers) {/* response-headers */}
 
-The amount of time that an asset will be cached on our edge servers is determined by the response headers returned by the origin server when a client requests it. By default, our CDN honors the following response headers:
+An origin server or the Serverless layer may include headers in the response that contain cache directives. These cache directives may determine how long our servers will cache that response. By default, our servers honor the following response headers:
 
-- **Cache-Control: private:** Prevents our edge servers from caching the response.
-- **Cache-Control: no-store:** Prevents our edge servers from caching the response.
-- **Cache-Control: no-cache:** Requires our edge servers or the client to revalidate cached content.
-- **Pragma: no-cache:** Requires our edge servers or the client to revalidate cached content.
-- **Cache-Control: s-maxage:** Determines the requested content's time-to-live (TTL) on our edge servers. TTL identifies the amount of time that cached content can be served without revalidation.
-
-  <Callout type="info">
-
-  This response header is ignored if the response contains any of the above response headers.
-
-  </Callout>
-
-- **Cache-Control: max-age:** Determines the requested content's TTL on the user agent and our edge servers.
-
-  <Callout type="info">
-
-  This response header is ignored if the response contains any of the above response headers.
-
-  </Callout>
-
+- **Cache-Control: private:** Prevents our servers from caching the response.
+- **Cache-Control: no-store:** Prevents our servers from caching the response.
+- **Cache-Control: no-cache:** Requires our servers or the client to revalidate cached content.
+- **Pragma: no-cache:** Requires our servers or the client to revalidate cached content.
+- **Cache-Control: s-maxage:** Determines the requested content's time-to-live (TTL) on our servers. TTL identifies the amount of time that cached content can be served without revalidation.
+- **Cache-Control: max-age:** Determines the requested content's TTL on the user agent and our servers.
 - **Expires:** Defines an expiration date for the requested content's TTL. The requested content will be considered stale after the specified date/time.
 
   <Callout type="info">
@@ -61,34 +67,35 @@ The amount of time that an asset will be cached on our edge servers is determine
 
   </Callout>
 
-  <Callout type="info">
-
-  This response header is ignored if the response contains any of the above response headers.
-
-  </Callout>
-
 **Key information:**
 
--   By default, content will only be cached after a POP receives two `GET` requests that result in a 200 OK response.
--   By default, {{ PRODUCT }} honors an origin server's cache directives. Allow {{ PRODUCT }} to override those directives by creating a rule with the [Ignore Origin No Cache](/guides/performance/rules/features#ignore-origin-no-cache) feature enabled for the desired status code (e.g., `200 OK`).
--   The above directives are ordered according to precedence. Higher directives take precedence over lower directives. In other words, if an asset contains both a `Cache-Control` and an `Expires` header, then the `Cache-Control` header will take precedence.
--   Please refer to your web server’s documentation for more information on how to configure these settings.
+-   The above directives are ordered according to precedence. Directives that appear higher in the list take precedence over lower ones. In other words, if an asset contains both a `Cache-Control` and an `Expires` header, then the `Cache-Control` header will take precedence.
+-   Refer to your web server’s documentation to learn how to define response headers.
 -   You may override a web server's cache policy by creating a rule or route.
 
-### Rules {/* rules */}
+### Defining a Caching Policy through Rules {/* rules */}
 
-Set or override a cache policy by creating a rule that identifies the desired set of requests and the caching policy that will be applied to them. Commonly used features for defining a caching policy are listed below.
+Set or override a cache policy by creating a rule that identifies the desired set of requests and the caching policy that will be applied to them. 
 
-| Feature  | Usage  |
-|---|---|
-| [Bypass Cache](/guides/performance/rules/features#bypass-cache)  | Use this feature to disable caching on our network.  |
-| [Bypass Client Cache](/guides/performance/rules/features#bypass-client-cache)  | Use this feature to instruct the client to bypass cache.   |
-| [Set Client Max-Age](/guides/performance/rules/features#set-client-max-age)  | Use this feature to define how long a client must wait before revalidating cached content with our edge servers. |
-| [Set Max-Age](/guides/performance/rules/features#set-max-age)  | Use this feature to define how long an edge server must wait before revalidating cached content with the origin.  |
+<Callout type="important">
+
+  By default, certain cache directives take precedence over a cache policy defined within a rule. Allow {{ PRODUCT }} to override those directives by also enabling the [Ignore Origin No Cache feature (ignore_origin_no_cache)](/guides/performance/rules/features#ignore-origin-no-cache) for the desired status code (e.g., `200 OK`) within that rule.
+
+</Callout>
+
+Commonly used features for defining a caching policy are listed below.
+
+| Feature                                                                                                      | Usage                                                                                                            |
+| ------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------- |
+| [Bypass Cache (bypass_cache)](/guides/performance/rules/features#bypass-cache)                               | Use this feature to disable caching on our network.                                                              |
+| [Bypass Client Cache (bypass_client_cache)](/guides/performance/rules/features#bypass-client-cache)          | Use this feature to instruct the client to bypass cache.                                                         |
+| [Ignore Origin No Cache (ignore_origin_no_cache)](/guides/performance/rules/features#ignore-origin-no-cache) | Use this feature to allow {{ PRODUCT }} to override `no-cache` directives.                                       |
+| [Set Client Max-Age (client_max_age)](/guides/performance/rules/features#set-client-max-age)                 | Use this feature to define how long a client must wait before revalidating cached content with our servers.      |
+| [Set Max-Age (max_age)](/guides/performance/rules/features#set-max-age)                                      | Use this feature to define how long an edge server must wait before revalidating cached content with the origin. |
 
 [View all caching-related features.](/guides/performance/rules/features#caching)
 
-### CDN-as-Code {/* cdn-as-code */}
+#### Defining a Caching Policy through CDN-as-Code {/* cdn-as-code */}
 
 Add the [caching](/docs/api/core/interfaces/types.Caching.html) feature to your route:
 
@@ -110,120 +117,9 @@ router.get('/some/path', {
 
 ### Cache Key {/* cache-key */}
 
-Our edge servers use cache keys to determine whether a cached response exists for a specific request. Specifically, they calculate a cache key for each request. They then use this cache key to check for a cached response. 
+Our servers use cache keys to determine whether a cached response exists for a specific request. Specifically, they calculate a cache key for each request. They then use this cache key to check for a cached response. 
 
-By default, our edge servers use the following syntax when calculating a cache key:
-
-`//http/80<ACCOUNT ID>/<ORIGIN CONFIGURATION>/<DEPLOYMENT VERSION>/<RELATIVE PATH>:/hs-<URI HASH>`
-
-Definitions for the above placeholder values are provided below.
-
-| Placeholder  | Description  |
-|--------------|--------------|
-| `<ACCOUNT ID>`           | Indicates your unique customer account ID.   |
-| `<ORIGIN CONFIGURATION>` | Indicates the name of the origin configuration associated with the request. <Callout type="info">Deploying a CDN-as-code configuration automatically generates the following system-defined origin configurations: `edgio_static`, `edgio_permanent_static`, `edgio_serverless`, and `edgio_image_optimizer`. Your CDN-as-code configuration  determines the origin configuration that will be applied to the cache key. View how {{ PRODUCT }} maps your code to these origin configurations from the **Rules** page. Returns `origin` when an origin configuration is inapplicable to a request.</Callout> |
-| `<DEPLOYMENT VERSION>`   | Indicates the version of the deployment for the configuration that served the request whose response was cached. |
-| `<RELATIVE PATH>`        | Indicates the relative path to the requested content. This relative path starts directly after the hostname. By default, query strings are ignored by the caching mechanism and therefore they will be excluded from the cache key. <Callout type ="info">If a query string is recorded in the cache key, it will be converted to its hash equivalent. After which, it will be inserted between the name of the requested asset and its file extension (e.g., asset**HashValue**.html).</Callout> |
-| `<URI HASH>`             | Indicates a hash of the request URI. |
-
-**Syntax:** `x-ec-cache-key: <CACHE KEY>`
-
-**Example:** `x-ec-cache-key: //http/800001/web/21/images/foo.jpg:/hs-5041808438894094098`
-
-#### Customizing the Cache Key {/* customizing-the-cache-key */}
-
-If your web application relies on query string parameter(s), request header(s), or cookie(s) when generating a response, then you should customize the cache key to include those elements. 
-
-**Key information:**
-
--   Customize the cache key for a specific set of requests by implementing either of the following features within a rule or route:
-
-    -   [Cache Key Query String:](/guides/performance/rules/features#cache-key-query-string) Use this feature if you need to include one or more query string parameters in the cache key.
-
-        **CDN-as-code:** [cache_key_query_string](/docs/api/core/interfaces/types.Caching.html#cache_key_query_string) 
-
-    -   [Rewrite Cache Key:](/guides/performance/rules/features#rewrite-cache-key) Use this feature if you require additional control over how a cache key is calculated.
-
-        **CDN-as-code:** [cache_key_rewrite](/docs/api/core/interfaces/types.Caching.html#cache_key_rewrite) 
-
--   Defining custom cache keys too broadly impacts performance and lowers your cache hit ratio. 
-
-    We strongly recommend that you restrict this customization to a specific set of traffic (e.g., dynamic responses) and only add the specific critieria that influence the response provided to the client.
-
-    For example, if the response varies according to a single query string parameter, then you should only add that query string parameter to your cache key. Adding additional query string parameters may cause too much segmentation for your cached content and thus reduce your cache hit ratio.
-
-##### Sample Custom Cache Key Implementations
-
-Examples of how to customize the cache key are provided below.
-
--   Add the `page` and `filters` query string parameters to the cache key using either of the following methods:
-    -   **Rules:** Create a rule that sets the [Cache Key Query String feature](/guides/performance/rules/features#cache-key-query-string) to `Include` the `page` and `filters` query string parameters.
-
-    <Callout type="tip">
-
-      Add a query string parameter by typing its name and pressing `ENTER`.
-
-    </Callout>
-
-    -   **CDN-as-Code:** 
-
-        ```js filename="./routes.js"
-        router.get('/some/path', {
-          caching: {
-            // Other options...
-            cache_key_query_string: {
-              include: ['page', 'filters'],
-            },
-          },
-        });
-        ```
--   Add the `language` and `currency` cookies to the cache key using either of the following methods:
-    -   **Rules:** Create a rule that defines the [Rewrite Cache Key feature](/guides/performance/rules/features#rewrite-cache-key) as indicated below:
-        -   **Source:** Set this to option to the relative path for the set of requests whose cache key will be rewritten.
-            `/some/path/(.*)`
-        -   **Destination:** Set this option to the cache key's replacement pattern.
-            `/some/path/$1-%{cookie_language}-%{cookie_currency}`
-
-    -   **CDN-as-Code:** 
-
-        ```js filename="./routes.js"
-        router.get('/some/path', {
-          caching: {
-            // Other options...
-            cache_key_rewrite: {
-              source: '^/some/path/(.*)$',
-              destination: '^/some/path/(.*)-%{cookie_language}-%{cookie_currency}$',
-            },
-          },
-        });
-        ```
-
--   Customize the cache key by the country from which the request originated.
-    -   **Rules:** Create a rule that defines the [Rewrite Cache Key feature](/guides/performance/rules/features#rewrite-cache-key) as indicated below:
-        -   **Source:** Set this to option to the relative path for the set of requests whose cache key will be rewritten.
-            `/some/path/(.*)`
-        -   **Destination:** Set this option to the cache key's replacement pattern.
-            `/some/path/$1-%{geo_country}`
-
-    -   **CDN-as-Code:** 
-
-        ```js filename="./routes.js"
-        router.get('/some/path', {
-          caching: {
-            // Other options...
-            cache_key_rewrite: {
-              source: '^/some/path/(.*)$',
-              destination: '/some/path/$1-%{geo_country}',
-            },
-          },
-        });
-        ```
-
-<Callout type="tip">
-
-  Use [feature variables](/guides/performance/rules/feature_variables) to dynamically construct the cache key's replacement pattern. However, you may not use response metadata when defining a cache key.
-
-</Callout>
+[Learn more about cache keys.](/guides/performance/caching/cache_key)
 
 ### Caching Responses for POST and PUT Requests {/* caching-responses-for-post-and-put-requests */}
 
@@ -232,7 +128,7 @@ By default, {{ PRODUCT }} only caches responses for `GET` requests. Cache the re
 -   **Rules:** Create a rule that sets the [Enable Caching for Methods feature](/guides/performance/rules/features#enable-caching-for-methods) to `POST`, `PUT`, or both HTTP methods.
 -   **CDN-as-Code:** 
     ```js filename="./routes.js"
-    router.get('/some/path', {
+    router.match('/some/path', {
       caching: {
           "enable_caching_for_methods": ["POST", "PUT"],
         }
@@ -268,9 +164,9 @@ Content can be cached on our network or the client's machine. Define how long co
 
 ## Revalidation {/*revalidation*/}
 
-Revalidation is the process through which an edge server checks the origin to find out whether a newer version of the requested cached content exists. If the origin indicates that the requested content has not changed, then our edge servers will serve cached content to the client and then update its TTL according to the provided cache instructions.
+Revalidation is the process through which an edge server checks the origin to find out whether a newer version of the requested cached content exists. If the origin indicates that the requested content has not changed, then our servers will serve cached content to the client and then update its TTL according to the provided cache instructions.
 
-Our edge servers can only perform a revalidation when the following conditions are true:
+Our servers can only perform a revalidation when the following conditions are true:
 
 -   The requested content is stale.
 -   The cached response contains one of the following headers:
@@ -279,66 +175,9 @@ Our edge servers can only perform a revalidation when the following conditions a
 
     <Callout type="info">
 
-      If either response header is not found, then our edge servers will perform an unconditional `GET` request to the origin.
+      If either response header is not found, then our servers will perform an unconditional `GET` request to the origin.
 
     </Callout>
-
-## Cache Hit Ratio Optimization {/* cache-hit-ratio-optimization */}
-
-There are many factors that influence cache hit ratio, such as:
-
--   Your caching policy. You need to identify the set of content that should be cached and how long it should be cached. 
-
-    <Callout type="tip">
-
-      The length of time that content should be cached is known as time to live (TTL). TTL should vary according to how often your content is updated. Setting a short TTL leads to more cache revalidations, while a long TTL could lead to stale content being served.
-
-    </Callout>
--   Dynamic responses. If the response varies by query string parameter(s), request header(s), or cookies, then you will need to [customize your cache key](#cache-key) to include the criteria that influences the response provided to the client.
-
-    <Callout type="important">
-
-      We strongly recommend that you restrict this customization to a specific set of traffic (e.g., dynamic responses) and only add the specific critieria that influence the response provided to the client.
-
-    </Callout>
-
--   Geographic distribution of your users. Clusters of users within the same geographic region typically result in a higher cache hit ratio than users distributed throughout the world. 
-
--   Cache invalidation (purging). Purging your content affects your cache hit ratio, since new requests will result in cache misses until that content is cached. If related content is updated at the same cadence, then it may make sense to use [surrogate keys (aka cache tags)](/guides/performance/purging#surrogate-key) to selectively target cached content when purging. 
-
--   Serving stale content during revalidation. Once configured, our edge servers can immediately respond to stale content with cached content instead of waiting for revalidation to complete. After our edge servers revalidate cached content, they will respond to new requests with an up-to-date version of your cached content. This feature balances performance with the need to serve the latest version of your content.
-
-    Set up this feature using one of the following methods:
-
-    -   **Rules:** Create a rule that configures the [Stale While Revalidate feature](/guides/performance/rules/features#stale-while-revalidate) to extend the amount of time that an edge server may serve stale content past the expiration of an asset's TTL.
-    -   **CDN-as-Code:** 
-        ```js filename="./routes.js"
-        new Router()
-          .get('/', {
-            caching: {
-              "max_age": "10h",
-              "stale_while_revalidate": "10m",
-            }
-          })
-        ```
-
-        <Callout type="info">
-
-          Once both TTL and the Stale While Revalidate time has been exceeded, our edge servers must wait for revalidation to complete before providing a response to the client. 
-
-          For example, if the `max-age` interval is set to 10 hours and Stale While Revalidate feature is set to 10 minutes, then cached content older than 10 hours and 10 minutes must be revalidated before an edge server may provide a response.
-
-        </Callout>
-
-<!--
-With the following header set, the diagram below shows the age of the previously cached response at the time of the next request
-
-```
-Cache-Control: max-age=1, stale-while-revalidate=59
-```
-
-![maxAge staleWhileRevalidate diagram](/images/caching/stale-max-age.png)
--->
 
 ## Preventing a Response from being Cached {/* preventing-a-response-from-being-cached */}
 

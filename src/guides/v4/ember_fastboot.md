@@ -12,14 +12,14 @@ This guide shows you how to deploy an [Ember Fastboot](https://ember-fastboot.co
   repoUrl="https://github.com/layer0-docs/layer0-ember-fastboot-example" 
   deployFromRepo />
 
-## Connector {/*connector*/}
+<!--## Connector {/*connector*/}
 
 This framework has a connector developed for {{ PRODUCT }}. See [Connectors](connectors) for more information.
 
 <ButtonLink variant="stroke" type="code" withIcon={true} href="https://github.com/layer0-docs/layer0-connectors/tree/main/layer0-fastboot-connector">
   View the Connector Code
 </ButtonLink>
-
+-->
 {{ SYSTEM_REQUIREMENTS.md }}
 
 {{ SIGN_UP }}

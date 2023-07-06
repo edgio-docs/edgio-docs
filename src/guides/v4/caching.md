@@ -6,7 +6,7 @@ This guide introduces the caching capabilities of {{ PRODUCT_NAME }}. While most
 
 ## Environments and Caching {/*environments-and-caching*/}
 
-To begin caching responses, you need to create an [environment](environments). Each environment provides a separate edge cache for the most recent deployment. Older deployments will no longer have edge caching, but can always be [redeployed](deploying#section_branches_and_deployments) to re-enable caching.
+To begin caching responses, you need to create an [environment](environments). Each environment provides a separate edge cache for the most recent deployment. Older deployments will no longer have edge caching, but can always be [redeployed](deploy_apps#branches-and-deployments) to re-enable caching.
 
 ## L1 and L2 Caches {/*l1-and-l2-caches*/}
 
@@ -59,7 +59,7 @@ The `cache` function can be used in the same route as other functions such as `s
 - Value of `host` request header
 - Complete request URL, including the query parameters (this can be customized)
 - Value of `accept-encoding` request header
-- Name of the destination when [split testing](./split_testing) is in effect
+- Name of the destination when [split testing](split_testing) is in effect
 
 When [POST and other non-GET/HEAD](#section_caching_responses_for_post_and_other_non_get_head_requests) methods caching is enabled, {{ PRODUCT_NAME }} automatically adds the following to the cache key:
 

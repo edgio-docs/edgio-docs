@@ -194,7 +194,7 @@ The types of prerequisites that may be defined are described below.
 
     <a id="country"></a>
 
--   **Country:** A request will count towards the rate limit when it originates from a country whose [code](/reference/country_codes) matches a value defined in the **Value(s)** option.
+-   **Country:** A request will count towards the rate limit when it originates from a country whose [code](/guides/reference/country_codes) matches a value defined in the **Value(s)** option.
 
     <a id="file-extension"></a>
 

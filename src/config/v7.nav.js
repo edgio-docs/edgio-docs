@@ -90,6 +90,10 @@ const nav = {
             //   path: 'performance/cdn_as_code/edge_functions',
             // },
             {
+              title: 'Error Handling',
+              path: 'performance/cdn_as_code/error_handling',
+            },
+            {
               title: '',
               path: '',
             },
@@ -100,12 +104,26 @@ const nav = {
           ],
         },
         {
-          title: 'Caching',
+          title: 'Cache Management',
           path: 'performance/caching',
-        },
-        {
-          title: 'Purging',
-          path: 'performance/purging',
+          routes: [
+            {
+              title: 'Purging Cached Content',
+              path: 'performance/caching/purging',
+            },
+            {
+              title: 'Cache Request Flow',
+              path: 'performance/caching/cache_request_flow',
+            },
+            {
+              title: 'Cache Hit Ratio Optimization',
+              path: 'performance/caching/cache_hit_ratio_optimization',
+            },
+            {
+              title: 'Cache Key',
+              path: 'performance/caching/cache_key',
+            },
+          ],
         },
         {
           title: 'Static Prerendering',

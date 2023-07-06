@@ -6,7 +6,7 @@ Get started with {{ PRODUCT }} by performing these steps:
 
 1.  [Create an {{ PRODUCT }} account.](#create-account)
 2.  [Create an {{ PRODUCT }} property.](#create-property)
-3.  [Test your property.](#testing)
+3.  [Test your property.](#test-your-property)
 4.  [Next steps.](#next-steps)
 
 ## Step 1: Create an {{ PRODUCT }} Account {/*create-account*/}

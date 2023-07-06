@@ -12,14 +12,6 @@ This guide shows you how to deploy a [Nuxt3](https://v3.nuxtjs.org) application 
   repoUrl="https://github.com/edgio-docs/edgio-v7-nuxt3-example" 
   deployFromRepo />
 
-## Connector {/*connector*/}
-
-This framework has a connector developed for {{ PRODUCT }}. See [Connectors](/guides/sites_frameworks/connectors) for more information.
-
-<ButtonLink variant="stroke" type="code" withIcon={true} href="https://github.com/edgio-docs/edgio-connectors/tree/main/edgio-nuxt-nitro-connector">
-  View the Connector Code
-</ButtonLink>
-
 {{ PREREQ.md }}
 
 ## Getting Started {/*getting-started*/}
@@ -34,7 +26,7 @@ To create a new Nuxt3 application, run:
 npx nuxi init <app-name>
 ```
 
-Learn more about [npx](https://nodejs.dev/learn/the-npx-nodejs-package-runner) and [Creating a new Nuxt3 project](https://v3.nuxtjs.org/getting-started/installation#new-project).
+Learn more about [npx](https://docs.npmjs.com/cli/v9/commands/npx) and [Creating a new Nuxt3 project](https://v3.nuxtjs.org/getting-started/installation#new-project).
 
 After the installation is complete, change directory to the new project:
 

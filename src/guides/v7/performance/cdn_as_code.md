@@ -18,6 +18,12 @@ Get started with CDN-as-code by either experimenting with:
     repoUrl="https://github.com/edgio-docs/edgio-v7-simple-performance-example/"
   />
 
+  <ExampleButtons
+    title="Full-Featured"
+    siteUrl="https://edgio-community-examples-v7-full-featured-perfor-f74158.edgio.link/"
+    repoUrl="https://github.com/edgio-docs/edgio-v7-full-featured-performance-example"
+  />
+
 - Your web application or website.
 
 ### Create a Property {/* create-property */}
@@ -229,7 +235,7 @@ The relevant configuration options generated include the `name` and `origins` pr
 - The `name` property is used to identify your {{ PRODUCT }} property in the {{ PORTAL_LINK }}
 - The `origins` property is used to configure the origins to which the router will connect when handling requests.
 
-[Learn more](/guides/performance/cdn_as_code/edgio_config.md) about the `{{ CONFIG_FILE }}` file and all the configuration options it supports.
+[Learn more](/guides/performance/cdn_as_code/edgio_config) about the `{{ CONFIG_FILE }}` file and all the configuration options it supports.
 
 ## Routes File {/* routes-file */}
 
@@ -294,7 +300,7 @@ Routes define a set of [Rules](/guides/performance/rules) that determine how req
 
 In {{ EDGEJS_LABEL }}, this is broken down into two parts when calling a router function. We'll dive deeper into the different available methods below, but for now, will use the `.match()` method as an example.
 
-The `.match()` takes two arguments: `.match(criteria, features)`. The [`.match()` API documentation](/docs/api/core/classes/index.Router.html#match) will provide you with the specific type definitions, but we'll refer to them as `criteria` and `features` throughout this guide.
+The `.match()` takes two arguments: `.match(criteria, features)`. The [`.match()` API documentation](/docs/api/core/classes/router_Router.default.html#match) will provide you with the specific type definitions, but we'll refer to them as `criteria` and `features` throughout this guide.
 
 - `criteria` can be a String for a simple path matching, or an Object that defines more specific criteria for matching requests such as HTTP method, headers, cookies, and query string parameters.
 - `features` is an Object that defines how {{ PRODUCT }} will handle the requests that match the criteria, such as caching, redirects, proxying to an origin server, and more.
@@ -399,7 +405,7 @@ Routes are defined by calling a method on the `Router` class based on the HTTP m
 - `post`
 - `put`
 
-A full list of supported functions can be found in the [Router API documentation](/docs/api/core/classes/index.Router.html).
+A full list of supported functions can be found in the [Router API documentation](/docs/api/core/classes/router_Router.default.html).
 
 ## Route Execution {/* route-execution */}
 
@@ -438,7 +444,7 @@ Evaluate site performance and QA functionality by deploying your property to {{ 
 
 Assess performance and caching behavior from the {{ PORTAL_LINK }}. Fine-tune your configuration by adding routes and then redeploying your property. Once you are ready to serve production traffic through {{ PRODUCT }}, update your site's DNS to point to our service.
 
-[Learn more.](/guides/production)
+[Learn more.](/guides/basics/hostnames_and_origins#serving-traffic-through)
 
 ## Examples {/* examples */}
 
@@ -454,15 +460,13 @@ This example demonstrates a basic {{ PRODUCT }} configuration for `publicdomainr
   repoUrl="https://github.com/edgio-docs/edgio-v7-simple-performance-example/"
 />
 
-<!-- TODO: update example to work on v7
 **Full-Featured Example**
 
 This example demonstrates a full-featured {{ PRODUCT }} configuration that showcases the following functionality:
 
-- [Proxying requests](/guides/performance/cdn_as_code/common_routing_patterns#proxying-an-origin) to multiple origins
-- Increasing the cache buffer during revalidation through [StaleWhileRevalidate](/guides/performance/caching#achieving-100-cache-hit-rates)
-- [Prerendering](/guides/performance/static_prerendering) pages and caching them to improve performance.
-- Instructing the browser to [prefetch](/guides/performance/prefetching) and [deep fetch](/guides/performance/prefetching#deep-fetching) cached content to improve performance.
+- [Proxying multiple origins](/guides/performance/cdn_as_code/route_features#proxying-an-origin)
+- Increasing the cache buffer during revalidation through [StaleWhileRevalidate](/guides/performance/caching#cache_hit_ratio_optimization)
+- [Prefetching](/guides/performance/prefetching) and [Deepfetching](/guides/performance/prefetching#deep-fetching) cached content to improve performance.
 
   <Callout type="info">
 
@@ -472,18 +476,16 @@ This example demonstrates a full-featured {{ PRODUCT }} configuration that showc
 
 - [Transforming and optimizing images](/guides/performance/image_optimization)
 - Transforming the response through [Serverless Compute](/guides/performance/serverless_compute)
-- [Removing response headers](/guides/performance/cdn_as_code#alter-requests-and-responses)
+- [Removing response headers](/guides/performance/cdn_as_code/route_features#altering-the-response)
 - [Normalizing the cache key](/guides/performance/caching#customizing-the-cache-key)
 - Generating performance insights through [DevTools](/guides/performance/observability/devtools)
 - Tracking [Core Web Vitals](/guides/performance/observability/real_user_monitoring) through real user monitoring (RUM).
 
 <ExampleButtons
   title="Full-Featured"
-  siteUrl="https://edgio-community-examples-full-featured-performance-live.layer0-limelight.link/"
-  repoUrl="https://github.com/edgio-docs/edgio-full-featured-performance-example/"
-  deployFromRepo
+  siteUrl="https://edgio-community-examples-v7-full-featured-perfor-f74158.edgio.link/"
+  repoUrl="https://github.com/edgio-docs/edgio-v7-full-featured-performance-example"
 />
--->
 
 ## Issues? {/* issues */}
 

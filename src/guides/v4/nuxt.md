@@ -24,14 +24,14 @@ This Nuxt.js example app uses ISG (Incremental Static Generation) to provide lig
   repoUrl="https://github.com/layer0-docs/layer0-nuxt-isg-example" 
   deployFromRepo />
 
-## Connector {/*connector*/}
+<!--## Connector {/*connector*/}
 
 This framework has a connector developed for {{ PRODUCT }}. See [Connectors](connectors) for more information.
 
 <ButtonLink variant="stroke" type="code" withIcon={true} href="https://github.com/layer0-docs/layer0-connectors/tree/main/layer0-nuxt-connector">
   View the Connector Code
 </ButtonLink>
-
+-->
 {{ PREREQ.md }}
 
 ## Creating a new Nuxt app {/*creating-a-new-nuxt-app*/}

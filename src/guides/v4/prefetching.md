@@ -293,7 +293,7 @@ function deepFetchResponsiveImages({$el, el, $}: DeepFetchCallbackParam) {
 
 {{ PRODUCT_NAME }} also enables caching and prefetching of GraphQL requests via a middleware for [Apollo](https://www.apollographql.com/apollo-client). To enable prefetching of GraphQL queries in both the edge and the service worker:
 
-1. Ensure that your GraphQL API is configured to accept GET requests. The Apollo client uses POST requests by default, but the Apollo server [automatically accepts both GETs and POSTs](https://www.apollographql.com/docs/apollo-server/v1/requests/). We use GETs instead of POSTs for two reasons:
+1. Ensure that your GraphQL API is configured to accept GET requests. The Apollo client uses POST requests by default, but the Apollo server [automatically accepts both GETs and POSTs](https://www.apollographql.com/docs/apollo-server/workflow/requests/). We use GETs instead of POSTs for two reasons:
 
    1. So that the URLs are sufficiently unique cache keys
    2. Browser cache APIs only support caching GETs

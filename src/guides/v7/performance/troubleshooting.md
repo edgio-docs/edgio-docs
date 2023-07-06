@@ -41,7 +41,7 @@ Note that this configuration will allow you to set breakpoints in both your {{ P
 
 By viewing the server logs in the {{ PORTAL }}, you can see all of the messages logged by your application using `console.log`, `console.warn`, etc...
 
-By enabling [Deep Request Inspection](/guides/develop/logs#deep-request-inspection) in your environment, you can also see the headers and body of every request and response served by your application via the {{ PRODUCT }} serverless cloud. You can also see each upstream API request made by your application.
+By enabling [Deep Request Inspection](/guides/logs/server_logs#deep-request-inspection) in your environment, you can also see the headers and body of every request and response served by your application via the {{ PRODUCT }} serverless cloud. You can also see each upstream API request made by your application.
 
 You can also use the server logs to debug **routing issues** going to **custom backends** by temporarily moving the proxy from the edge to serverless:
 
@@ -61,17 +61,17 @@ You can also use the server logs to debug **routing issues** going to **custom b
   })
 ```
 
-Once you have this deployed, you can observe the output in your [server logs](/guides/develop/logs#server-logs).
+Once you have this deployed, you can observe the output in your [server logs](/guides/logs/server_logs).
 
 Note that whenever possible, we strongly recommend to always proxy the traffic from the edge, as that is more performant and avoids serverless surcharges. The solution above should only be used as a temporary measure while addressing issues.
 
-[Learn more.](/guides/develop/logs#server-logs)
+[Learn more.](/guides/logs/server_logs)
 
 ### Access Logs {/* access-logs */}
 
 Access logs contain information about all requests, even those that never reach your application code (e.g. cache hits, static assets, requests routed to custom backends, edge redirects, and so on).
 
-[Learn more](/guides/develop/logs#access-logs)
+[Learn more](/guides/logs/access_logs)
 
 ## Confirming Behavior with CURL {/* confirming-behavior-with-curl */}
 
@@ -307,4 +307,4 @@ Troubleshoot your code to find and fix the error.
 #### Allowlist Error {/* allowlist-error */}
 
 If the command succeeds and finishes quickly, it is probably an allowlist error.
-Contact your operations team and ask them to add the IP addresses in [_Allowlisting_](/guides/basics/domains#allowing-ip-addresses) to your server's IP allowlist.
+Contact your operations team and ask them to add the IP addresses in [_Allowlisting_](/guides/basics/hostnames_and_origins#firewall-allowing-ip-addresses) to your server's IP allowlist.

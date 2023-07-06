@@ -235,7 +235,7 @@ The relevant configuration options generated include the `name` and `origins` pr
 - The `name` property is used to identify your {{ PRODUCT }} property in the {{ PORTAL_LINK }}
 - The `origins` property is used to configure the origins to which the router will connect when handling requests.
 
-[Learn more](/guides/performance/cdn_as_code/edgio_config.md) about the `{{ CONFIG_FILE }}` file and all the configuration options it supports.
+[Learn more](/guides/performance/cdn_as_code/edgio_config) about the `{{ CONFIG_FILE }}` file and all the configuration options it supports.
 
 ## Routes File {/* routes-file */}
 
@@ -444,7 +444,7 @@ Evaluate site performance and QA functionality by deploying your property to {{ 
 
 Assess performance and caching behavior from the {{ PORTAL_LINK }}. Fine-tune your configuration by adding routes and then redeploying your property. Once you are ready to serve production traffic through {{ PRODUCT }}, update your site's DNS to point to our service.
 
-[Learn more.](/guides/production)
+[Learn more.](/guides/basics/hostnames_and_origins#serving-traffic-through)
 
 ## Examples {/* examples */}
 

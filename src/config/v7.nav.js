@@ -450,6 +450,10 @@ const nav = {
           ],
         },
         {
+          title: 'Connectors',
+          path: 'sites_frameworks/connectors',
+        },
+        {
           title: 'Incremental Static Regeneration',
           path: 'sites_frameworks/isg',
         },

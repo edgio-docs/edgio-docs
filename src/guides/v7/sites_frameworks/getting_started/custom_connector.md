@@ -6,7 +6,7 @@ Custom Connector lets you build and deploy your project to {{ PRODUCT }} for any
 
 {{ PREREQ.md }}
 
-## Why Custom Connector {/* why-custom-connector */}
+<!-- ## Why Custom Connector {/* why-custom-connector */} -->
 
 ## Using Custom Connector {/* using-custom-connector */}
 

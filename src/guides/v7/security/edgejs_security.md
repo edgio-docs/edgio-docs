@@ -78,9 +78,14 @@ Additionally:
 - A request's protocol can be determined by reading the [`{{ HEADER_PREFIX }}-protocol`](/guides/performance/request#request-headers) request header.
 - During local development all requests will appear secure by default. To test your router for `http` protocol matching you must either set the `local_{{ COOKIE_PREFIX }}_emulate_http_protocol` cookie to `true` (if using a browser) or send an `{{ HEADER_PREFIX }}-protocol` request header set to `http`.
 -->
-**What is the minimum level of encryption?** 
 
-{{ PRODUCT_NAME }} enforces a minimum version of TLS 1.2 or higher.
+## TLS Version {/*tls-version*/}
+
+We recommend that you enable TLS 1.3, 1.2, or both on your web server(s). 
+
+**Key information:**
+-   A recommended best practice is to disable support for SSL/TLS versions 1.1 or older.
+-   TLS 1.3 improves security and performance of internet communications. Specifically, it eliminates known TLS 1.2 security vulnerabilities and prevents snooping and man-in-the-middle attacks.
 
 ## HTTP/1/2 Version {/*http12-version*/}
 

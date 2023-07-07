@@ -131,6 +131,6 @@ This connector is not built for a specific framework, it is used as a fallback f
   variant="stroke"
   type="code"
   withIcon={true}
-  href="https://github.com/edgio-docs/edgio-connectors/tree/main/custom-connector-connector">
+  href="https://github.com/edgio-docs/edgio-connectors/tree/main/edgio-custom-connector">
   View the Connector Code
 </ButtonLink>

@@ -84,7 +84,9 @@ Additionally:
 
 ## HTTP/1/2 Version {/*http12-version*/}
 
-The incoming HTTP version is independent of the upstream HTTP version. We support HTTP/1 or HTTP/2 on ingress requests. We prioritize HTTP/2 to origin servers. If the origin server does not support the incoming HTTP version (say version HTTP/2 came in but origin only supports HTTP/1), we will downgrade to successfully complete the request, but the outgoing response will return to HTTP/2.
+We support the following HTTP protocol versions for client requests to our network:
+-   **HTTP/1:** {{ PRODUCT }} uses the HTTP protocol version defined in the request when proxying requests to an origin and in the response provided to the client.
+-   **HTTP/2:** {{ PRODUCT }} uses the the HTTP/1.1 protocol when proxying requests to an origin and the HTTP/2 protocol for the response provided to the client.
 
 ## Secrets {/*secrets*/}
 

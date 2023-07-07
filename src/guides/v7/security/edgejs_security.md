@@ -33,7 +33,7 @@ export default new Router().match({}, {
         },
     },
 });
-
+```
 <!--## Basic Authentication {/*basic-authentication*/}
 
 You can add basic authentication to your site using the `requireBasicAuth` router method. For example, add the following to the top of your router:
@@ -94,11 +94,11 @@ store them in environment variables, then access them in your code from `process
 **To configure environment variables**
 
 {{ ENV_NAV }} **Environment Variables**.
-5.  Click **+ Add Environment Variable**.
-6.  Set the **Key** option to the name of the desired environment variable. Use this name to reference the environment variable in your code.
-7.  Set the **Value** option to the value that will replace references to this environment variable.
-8.  If this environment variable contains sensitive information, mark the **Keep this value a secret** option.
-9.  Click **Add variable**.
+2.  Click **+ Add Environment Variable**.
+3.  Set the **Key** option to the name of the desired environment variable. Use this name to reference the environment variable in your code.
+4.  Set the **Value** option to the value that will replace references to this environment variable.
+5.  If this environment variable contains sensitive information, mark the **Keep this value a secret** option.
+6.  Click **Add variable**.
 
 ![networking](/images/security/environment-variables.png?width=700)
 

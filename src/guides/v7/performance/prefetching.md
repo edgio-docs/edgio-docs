@@ -85,7 +85,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 Now when your client-side code runs, the service worker will be installed and will begin prefetching URLs.
 
-## Configuring Routes for Prefetching {/* configuring-routes-for-prefetching */}
+## Defining a Prefetching Caching Policy {/* defining-a-prefetching-caching-policy */}
 
 To ensure that excessive prefetch traffic isn't passed on to your origin, {{ PRODUCT_NAME }} will serve prefetch requests when a cached response is available at the edge. By default, all prefetch requests will be cached at the edge for 2 minutes (see [`DEFAULT_MAX_AGE_SECONDS`](/docs/api/prefetch/interfaces/sw_Prefetcher.PrefetcherConfig.html#defaultMaxAgeSeconds)). Additionally, you may configure a route that caches responses at the edge and in the service worker within your router, optionally giving it longer cache time for greater performance. In this example we define a route that caches product API calls for one hour:
 

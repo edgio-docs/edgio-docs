@@ -160,12 +160,12 @@ Use the {{ PRODUCT }} CLI to initialize your property. If you have already perfo
 
 During the initialization process, the {{ PRODUCT }} CLI created the following files:
 
-- `{{ CONFIG_FILE }}`: This file contains the configuration for your {{ PRODUCT }} property. You can use this file to configure your property's name, environments, origins, and other settings. [Learn more](/guides/performance/cdn_as_code/edgio_config.md).
+- `{{ CONFIG_FILE }}`: This file contains the configuration for your {{ PRODUCT }} property. You can use this file to configure your property's name, environments, origins, and other settings. [Learn more](/guides/performance/cdn_as_code/edgio_config).
 - {{ ROUTES_FILE }}: This file contains the router rules for your {{ PRODUCT }} property. You can use this file to define how {{ PRODUCT }} will handle requests to your property.
 
 ## Config File {/* config-file */}
 
-The `{{ CONFIG_FILE }}` file contains some configurations the router may reference for handling requests along with other components such as [connectors](/guides/sites_frameworks/connectors.md).
+The `{{ CONFIG_FILE }}` file contains some configurations the router may reference for handling requests along with other components such as [connectors](/guides/sites_frameworks/connectors).
 
 The default `{{ CONFIG_FILE }}` file contains the following configuration based on the input from out initialization process:
 

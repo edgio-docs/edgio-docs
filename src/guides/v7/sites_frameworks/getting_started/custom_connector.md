@@ -36,7 +36,7 @@ Next, you will be prompted to enter more information specific to your project an
   - `Please specify dev command if exists` - This is the command to run the local development server of your app. The dev command will be used when you run the `{{ CLI_CMD(dev) }}` command.
   - `Please specify dev ready message or timeout value in seconds to wait` - This is the message (or timeout seconds) that will be used to determine when the local development server is ready to accept requests. For example, the development server may print a message like `Server is listening on port 3000` when it is ready to accept requests. In this case, you could enter `listening on` as the dev ready message. If the development server does not print a message when it is ready, you can enter the number of seconds to wait before the development server is ready to accept requests.
 
-```bash
+```plain
 ✔ What is the build directory of your app? … dist
 ✔ What is the entry file of your app … index.js
 ✔ What is the envirovment variable name for port (if it is available)? … PORT

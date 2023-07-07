@@ -93,18 +93,21 @@ store them in environment variables, then access them in your code from `process
 
 **To configure environment variables**
 
-{{ ENV_NAV }} **Environment Variables**.
+1.  Navigate to the **Environment Variables** page.
+    {{ ENV_NAV }} **Environment Variables**.
 2.  Click **+ Add Environment Variable**.
 3.  Set the **Key** option to the name of the desired environment variable. Use this name to reference the environment variable in your code.
 4.  Set the **Value** option to the value that will replace references to this environment variable.
 5.  If this environment variable contains sensitive information, mark the **Keep this value a secret** option.
 6.  Click **Add variable**.
 
-![networking](/images/security/environment-variables.png?width=700)
+    Your new environment variable should now be listed.
+
+    ![networking](/images/security/environment-variables.png?width=700)
 
 Deploying to an environment using a deploy token pulls all environment variables and applies them to `process.env`. This allows these variables to be accessed at build time. 
 
-**Deploying with a deploy token example:** `{{ CLI_NAME }} deploy my-team --environment=production --token=(my token)`
+**Deploying with a deploy token example:** `{{ FULL_CLI_NAME }} deploy my-team --environment=production --token=(my token)`
 
 Use environment variables to store all of your build and runtime secrets in a single place, {{ PORTAL }}, rather than storing some in your CI system's secret manager.
 
@@ -118,15 +121,15 @@ Guard against this type of attack by ensuring that all request parameters that i
 
 For example, if you are rendering content based on a custom language cookie, then you must include it in your custom cache key:
 
-```js
-import { CustomCacheKey } from '{{ PACKAGE_NAME }}/core/router'
-
-router.get('/some/path/depending/on/language/cookie', ({ cache }) => {
-  cache({
-    key: new CustomCacheKey().addCookie('language'),
-    // Other options...
-  })
-})
+```js filename="./routes.js"
+export default new Router().match("/language/specific/:path", {
+    caching: {
+        cache_key_rewrite: {
+            source: "/language/specific/(.*)",
+            destination: "/language/specific/$1-%{cookie_language}",
+        },
+    },
+});
 ```
 <!--
 ## Bot Detection {/*bot-detection*/}

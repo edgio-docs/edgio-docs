@@ -144,7 +144,7 @@ By default, {{ PRODUCT }} does not cache the response when it contains [certain 
     ```js
     router.get('/some/path', {
       caching: {
-        ignore_origin_no_cache: true,
+        ignore_origin_no_cache: [200],
       },
     });
     ```
@@ -255,7 +255,7 @@ The response was not cached because it contained a `cache-control` header with `
 ```js
 router.get('/some/path', {
   caching: {
-    ignore_origin_no_cache: true,
+    ignore_origin_no_cache: [200],
   },
 });
 ```

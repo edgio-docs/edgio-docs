@@ -259,7 +259,7 @@ You may create, modify, and delete rules.
     1.  Click **+ Add** and then select **Add Else**. An ELSE statement wil appear.
     2.  Convert this ELSE statement to an ELSE IF statement by adding one or more match condition(s). 
 
-6.  Add more rules as needed by repeating steps 2 - 4.
+6.  Add more rules as needed by repeating steps 2 - 5.
 7.  Review your rules to verify how requests will be handled and the order in which rules will be applied to requests. 
 
     <Callout type="tip">

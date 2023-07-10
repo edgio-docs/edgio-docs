@@ -76,7 +76,7 @@ There are three types of statement:
 -   **ELSE:** Adding `Else` to a rule adds an ELSE statement. This type of statement determines how {{ PRODUCT }} will process all requests that do not satisfy at least one IF or ELSE IF statement defined within the same rule.
 -   **ELSE IF:** Adding a match condition to an ELSE statement converts it into an ELSE IF statement. This type of statement determines how {{ PRODUCT }} will process requests that meet the following requirements:
     -   The request does not satisfy the IF statement or any ELSE IF statements above this statement.
-	-   The request must satisfy all of the match condition(s) defined within this ELSE IF statement.
+    -   The request must satisfy all of the match condition(s) defined within this ELSE IF statement.
 
 <Callout type="info">
 
@@ -256,7 +256,7 @@ You may create, modify, and delete rules.
     4.  Click **Add Feature**.
 5.  Optional. Add an [ELSE or ELSE IF statement](#statements) to define an alternate set of logic for identifying and processing requests.
 
-    1.  Click **+ Add** and then select **Add Else**. An ELSE statement wil appear.
+    1.  Click **+ Add** and then select **Add Else**. An ELSE statement will appear.
     2.  Convert this ELSE statement to an ELSE IF statement by adding one or more match condition(s). 
 
 6.  Add more rules as needed by repeating steps 2 - 5.

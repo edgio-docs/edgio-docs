@@ -19,7 +19,7 @@ Automate the following tasks:
 
 </Callout>
 
-## Add Access Rule (ACL) {{/*add-access-rule-acl*/}}
+## Add Access Rule (ACL) {/*add-access-rule-acl*/}
 
 Creates an access rule that identifies valid or malicious requests via whitelists, accesslists, and blacklists.
 
@@ -93,8 +93,8 @@ A sample JSON request is shown below.
 ```json
 POST {{ API_URL }}/waf/v1.0/acl  HTTP/1.1
 Authorization: Bearer A1bcbGciO...pxmO17cRRKYQ
-Accept: `application/json`
-Content-Type: `application/json`
+Accept: application/json
+Content-Type: application/json
 Host:  {{ API_DOMAIN }}
 
 {
@@ -197,7 +197,7 @@ A sample JSON response is shown below.
 ```json
 HTTP/1.1 200 OK
 Cache-Control: private
-Content-Type: `application/json`; charset=utf-8
+Content-Type: application/json; charset=utf-8
 Date:  Thu, 15 Apr 2021 12:00:00 GMT
 Content-Length: 65
 
@@ -208,7 +208,7 @@ Content-Length: 65
 }
 ```
 
-## Delete Access Rule (ACL) {{/*delete-access-rule-acl*/}}
+## Delete Access Rule (ACL) {/*delete-access-rule-acl*/}
 
 Deletes an access rule (ACL) that identifies valid or malicious requests via whitelists, accesslists, and blacklists.
 
@@ -221,7 +221,7 @@ A request to delete an access rule is described below.
 Define the following variable when submitting the above request:
 
 -   **:** Required. Replace this variable with your team's tenant ID. 
--   **<ACCESS RULE ID>:** Required. Replace this variable with the system-defined ID for the desired access rule.
+-   `<ACCESS RULE ID>`**:** Required. Replace this variable with the system-defined ID for the desired access rule.
 
     <Callout type="tip">
 
@@ -258,8 +258,8 @@ A sample JSON request is shown below.
 ```json
 DELETE {{ API_URL }}/waf/v1.0/acl/CGifudum  HTTP/1.1
 Authorization: Bearer A1bcbGciO...19R1BDmpxmO17cRRKYQ
-Accept: `application/json`
-Content-Type: `application/json`
+Accept: application/json
+Content-Type: application/json
 Host: {{ API_DOMAIN }}
 ```
 
@@ -268,7 +268,7 @@ A sample JSON response is shown below.
 ```json
 HTTP/1.1 200 OK
 Cache-Control: private
-Content-Type: `application/json`; charset=utf-8
+Content-Type: application/json; charset=utf-8
 Date:  Thu, 15 Apr 2021 12:00:00 GMT
 Content-Length: 51
 
@@ -279,7 +279,7 @@ Content-Length: 51
 }
 ```
 
-## Get All Access Rules (ACLs) {{/*get-all-access-rules-acl*/}}
+## Get All Access Rules (ACLs) {/*get-all-access-rules-acl*/}
 
 Retrieves a list of access rules. An access rule identifies valid or malicious requests via whitelists, accesslists, and blacklists.
 
@@ -322,8 +322,8 @@ A sample JSON request is shown below.
 ```json
 GET {{ API_URL }}/waf/v1.0/acl  HTTP/1.1
 Authorization: Bearer A1bcbGciO...19R1BDmpxmO17cRRKYQ
-Accept: `application/json`
-Content-Type: `application/json`
+Accept: application/json
+Content-Type: application/json
 Host: {{ API_DOMAIN }}
 ```
 
@@ -332,7 +332,7 @@ A sample JSON response is shown below.
 ```json
 HTTP/1.1 200 OK
 Cache-Control: private
-Content-Type: `application/json`; charset=utf-8
+Content-Type: application/json; charset=utf-8
 Date:  Thu, 15 Apr 2021 12:00:00 GMT
 Content-Length: 141
 
@@ -344,7 +344,7 @@ Content-Length: 141
 ]
 ```
 
-## Get Access Rule (ACL) {{/*get-access-rule-acl*/}}
+## Get Access Rule (ACL) {/*get-access-rule-acl*/}
 
 Retrieves an access rule that identifies valid or malicious requests via whitelists, accesslists, and blacklists.
 
@@ -357,7 +357,7 @@ A request to retrieve an access rule is described below.
 Define the following variable when submitting the above request:
 
 -   **:** Required. Replace this variable with your team's tenant ID. 
--   **<ACCESS RULE ID>:** Required. Replace this variable with the system-defined ID for the desired access rule.
+-   `<ACCESS RULE ID>`**:** Required. Replace this variable with the system-defined ID for the desired access rule.
 
     <Callout type="tip">
 
@@ -423,8 +423,8 @@ A sample JSON request is shown below.
 ```json
 GET {{ API_URL }}/waf/v1.0/acl/CGifudum  HTTP/1.1
 Authorization: Bearer A1bcbGciO...19R1BDmpxmO17cRRKYQ
-Accept: `application/json`
-Content-Type: `application/json`
+Accept: application/json
+Content-Type: application/json
 Host: {{ API_DOMAIN }}
 ```
 
@@ -433,7 +433,7 @@ A sample JSON response is shown below.
 ```json
 HTTP/1.1 200 OK
 Cache-Control: private
-Content-Type: `application/json`; charset=utf-8
+Content-Type: application/json; charset=utf-8
 Date:  Thu, 15 Apr 2021 12:00:00 GMT
 Content-Length: 1400
 
@@ -541,7 +541,7 @@ Content-Length: 1400
 }
 ```
 
-## Update Access Rule (ACL) {{/*update-access-rule-acl*/}}
+## Update Access Rule (ACL) {/*update-access-rule-acl*/}
 
 Updates an access rule that identifies valid or malicious requests via whitelists, accesslists, and blacklists.
 
@@ -554,7 +554,7 @@ A request to update an access rule is described below.
 Define the following variable when submitting the above request:
 
 -   **:** Required. Replace this variable with your team's tenant ID. 
--   **<ACCESS RULE ID>:** Required. Replace this variable with the system-defined ID for the desired access rule.
+-   `<ACCESS RULE ID>`**:** Required. Replace this variable with the system-defined ID for the desired access rule.
 
     <Callout type="tip">
 
@@ -623,8 +623,8 @@ A sample JSON request is shown below.
 ```json
 PUT {{ API_URL }}/waf/v1.0/acl/CGifudum  HTTP/1.1
 Authorization: Bearer A1bcbGciO...19R1BDmpxmO17cRRKYQ
-Accept: `application/json`
-Content-Type: `application/json`
+Accept: application/json
+Content-Type: application/json
 Host: {{ API_DOMAIN }}
 
 {
@@ -728,7 +728,7 @@ A sample JSON response is shown below.
 ```json
 HTTP/1.1 200 OK
 Cache-Control: private
-Content-Type: `application/json`; charset=utf-8
+Content-Type: application/json; charset=utf-8
 Date:  Thu, 15 Apr 2021 12:00:00 GMT
 Content-Length: 51
 

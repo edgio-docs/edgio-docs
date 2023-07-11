@@ -605,7 +605,7 @@ const nav = {
             {
               title: '',
               path: '',
-            },			
+            },
             {
               title: 'Security',
               path: 'develop/rest_api/security',
@@ -641,9 +641,9 @@ const nav = {
           ],
         },
         {
-          title: 'Clear-Cache API',
+          title: 'Purge (Clear-Cache) API',
           path: 'develop/clear_cache',
-        },		
+        },
         {
           title: 'Deploy to Edgio Button',
           path: 'develop/deploy_to_edgio',

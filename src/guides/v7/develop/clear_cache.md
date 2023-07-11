@@ -1,5 +1,5 @@
 ---
-title: Clear-Cache Rest API
+title: Purge (Clear-Cache) Rest API
 ---
 
 Purge content through the [clear-cache endpoint](#clear-cache). 
@@ -9,7 +9,7 @@ Purge content through the [clear-cache endpoint](#clear-cache).
 Authenticate API requests by passing a deploy token throgh the `x-api-key` header.
 
 **To create a deploy token**
-1.  From the ${PORTAL_LINK}, select the desired private or team space.
+1.  From the {{ PORTAL_LINK }}, select the desired private or team space.
 2.  Select the desired property.
 3.  From the left-hand pane, select **Settings**.
 4.  From the **Deploy Tokens** section, click **Create new Deploy Token**.

@@ -431,6 +431,7 @@ const config = {
   PRODUCT_LEGACY_LOWER,
   APP_DOMAIN,
   APP_URL,
+  API_URL,
   CLI_CMD,
   CLI_NAME,
   CONFIG_FILE,

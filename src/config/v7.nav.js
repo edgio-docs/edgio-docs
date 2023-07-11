@@ -597,7 +597,53 @@ const nav = {
         {
           title: 'REST API',
           path: 'develop/rest_api',
+          routes: [
+            {
+              title: 'Authentication',
+              path: 'develop/rest_api/authentication',
+            },
+            {
+              title: '',
+              path: '',
+            },			
+            {
+              title: 'Security',
+              path: 'develop/rest_api/security',
+            },
+            {
+              title: 'Security Apps',
+              path: 'develop/rest_api/security_apps',
+            },
+            {
+              title: 'Access Rules',
+              path: 'develop/rest_api/access_rules',
+            },
+            {
+              title: 'Rate Rules',
+              path: 'develop/rest_api/rate_rules',
+            },
+            {
+              title: 'Bot Manager',
+              path: 'develop/rest_api/bot_manager',
+            },
+            {
+              title: 'Custom Rules',
+              path: 'develop/rest_api/custom_rules',
+            },
+            {
+              title: 'Managed Rules',
+              path: 'develop/rest_api/managed_rules',
+            },
+            {
+              title: 'API Security',
+              path: 'develop/rest_api/api_security',
+            },
+          ],
         },
+        {
+          title: 'Clear-Cache API',
+          path: 'develop/clear_cache',
+        },		
         {
           title: 'Deploy to Edgio Button',
           path: 'develop/deploy_to_edgio',

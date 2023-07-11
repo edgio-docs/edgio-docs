@@ -2,72 +2,38 @@
 title: REST API
 ---
 
-This guide covers the REST API provided by {{ PRODUCT_NAME }}.
+Our REST-compliant web services facilitate the integration of {{ PRODUCT }} {{ PRODUCT_SECURITY }} into your workflow(s), applications, or interfaces.
 
-## Authentication {/*authentication*/}
+Learn basic information about our services:
 
-To gain access to the api, provide a deploy token via the `x-api-key` header. Deploy tokens can be created from a site's settings tab in the {{ PORTAL }}.
+-   **Protocol:** HTTPS
+    
+    Communication (i.e., request-response) with our web services is only permitted via HTTPS. This ensures the privacy and integrity of your data.
 
-## Methods {/*methods*/}
+-   **Authentication/Authorization:** `Authorization` Header
+    
+    Our REST API services require authentication and authorization before a request to one of our endpoints will be honored.
+    
+    Authenticate and authorize your requests by passing the `Authorization` header with the following value:
+       
+    `Authorization: Bearer <OAUTH 2.0 TOKEN>`
+    
+    [Learn more.](FINDME)
 
-### clear-cache {/*clear-cache*/}
+-   **Request-Response (Accept and Content-Type):** JSON
+    
+    We strongly recommend that the request body be formatted using JavaScript Object Notation (JSON). Inform our web servers that the expected format for the request-response will be JSON through the `Accept` and `Content-Type` request headers.
+    
+    [Learn more.](FINDME)
 
-`POST {{ APP_URL }}/api/v1/clear-cache`
+-   **Programming Language:** Agnostic
+    
+    Our REST API services are designed to be programming language-agnostic. Feel free to use your preferred programming language (e.g., C#, C, PHP, Perl, etc.).
 
-Purges entries from the cache for a specific environment. You can purge specific paths or surrogate keys. If no paths or surrogate keys are provided all entries will be purged.
+-   **Services:** Our REST API consists of the following services:
 
-#### Request Headers {/*request-headers*/}
-
-The following request headers are required:
-
-- `x-api-key`: A site deploy token
-- `content-type`: `"application/json"`
-
-#### Body {/*body*/}
-
-Provide the following parameters as JSON in the post body.
-Note that only one of the optional arguments can be passed at a time, for example `paths` and `surrogateKeys` cannot be cleared at once.
-
-```json
-{
-  "team": "the team name",
-  "site": "the site name",
-  "environment": "the environment name",
-  "paths": ["Optional. An array of paths to clear. Use * as a wildcard."],
-  "surrogateKeys": ["Optional. An array of surrogate keys to clear"],
-  "cacheHashes": ["Optional. An array of cache hashes to clear"]
-}
-```
-
-#### Example: {/*example*/}
-
-```js
-const fetch = require('node-fetch')
-
-const deployToken = '*****'
-const team = 'my-team'
-const site = 'my-site'
-const environment = 'production'
-const paths = ['/some/path']
-
-async function clearCache() {
-  const res = await fetch('{{ APP_URL }}/api/v1/clear-cache', {
-    method: 'POST',
-    headers: {
-      'content-type': 'application/json',
-      'x-api-key': deployToken,
-    },
-    body: JSON.stringify({
-      team,
-      site,
-      environment,
-      paths,
-    }),
-  })
-
-  console.log('Status:', res.status, res.statusText)
-  console.log('Body:', await res.text())
-}
-
-clearCache()
-```
+    -   **waf:** This service contains endpoints that revolve around the following components: security apps, access rules, rate rules, custom rules, and managed rules.
+    -   **bot-security:** This service contains endpoints that revolve around Bot Manager.
+    -   **api-security:** This service contains endpoints that revolve around API Security.
+    
+Requests are authorized via OAuth 2.0.  [Learn more about authorization.](FINDME)

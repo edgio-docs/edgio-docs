@@ -32,6 +32,7 @@ const RUM_NS = 'Edgio'; // namespace for the JS package used by RUM
 
 const DOMAIN = 'edg.io';
 const DOMAIN_LEGACY = 'layer0.co';
+const API_DOMAIN = 'account.edgioapis.com';
 const APP_DOMAIN = `edgio.app`;
 const LINK_DOMAIN = `edgio.link`;
 const PERMALINK_DOMAIN = `edgio-perma.link`;
@@ -50,6 +51,7 @@ const HELP_URL = `https://${DOMAIN}/contact-support/?sgId=7bc47c45-c1d6-4189-b41
 const SUPPORT_URL = `https://${DOMAIN}/contact-support/?sgId=7bc47c45-c1d6-4189-b416-552581d86006`;
 const DOCS_URL = `https://${DOCS_DOMAIN}`;
 const DOCS_PAGES_REPO_URL = `https://${DOCS_PAGES_DOMAIN}`;
+const API_URL = `https://${API_DOMAIN}/app`;
 const LOGIN_URL = `${APP_URL}/?sgId=ef4d5169-93f2-4f55-aabb-dc3be4286e1f`;
 
 const PORTAL_LINK = `[${PORTAL}](${LOGIN_URL})`;
@@ -415,6 +417,7 @@ const PARTNERS_CONTACT = `partner@llnw.com`;
 
 const config = {
   ACCOUNT_UPGRADE,
+  API_DOMAIN,
   COMPANY_NAME,
   PRODUCT,
   PRODUCT_LEGACY,

@@ -22,7 +22,7 @@ The following endpoints automate the administration of WAF.
 | Managed Rules   |   |
 | API Security    |   |
 
-
+<!--
 
 
 
@@ -253,3 +253,4 @@ The recommended method for updating your configuration via a script is described
     - [Update Custom Rule Set](Update-Custom-Rule-Set.htmFINDME)
     - [Update Managed Rule (Profile)](Update-Profile.htmFINDME)
 
+-->

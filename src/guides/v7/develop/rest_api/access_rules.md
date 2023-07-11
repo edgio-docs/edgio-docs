@@ -234,6 +234,7 @@ Content-Length: 65
 }
 ```
 
+<!--
 Delete Access Rule (ACL)
 ========================
 
@@ -1289,3 +1290,4 @@ Content-Length: 51
 "success": true
 }
 ```
+-->

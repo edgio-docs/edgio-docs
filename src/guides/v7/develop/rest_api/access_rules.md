@@ -23,7 +23,7 @@ Automate the following tasks:
 
 Creates an access rule that identifies valid or malicious requests via whitelists, accesslists, and blacklists.
 
-### Request
+### Request {/*request-add-access-rule-acl*/}
 
 A request to create an access rule is described below.
 
@@ -33,11 +33,11 @@ Define the following variable when submitting the above request:
 
 -   **:** Required. Replace this variable with your team's tenant ID. 
 
-#### Request Headers
+#### Request Headers {/*request-headers-add-access-rule-acl*/}
 
 This endpoint only takes advantage of [common request headers](FINDME../../Introduction/Common_Request_and_Response_Elements.htm#Request).
 
-#### Request Body
+#### Request Body {/*request-body-add-access-rule-acl*/}
 
 Pass the following request body parameters:
 
@@ -60,7 +60,7 @@ Pass the following request body parameters:
 |url|Object|Contains access controls for URL paths. Specify a URL path pattern that starts directly after the hostname. Exclude a protocol or a hostname when defining `value \| values`. <br />**Sample value:** `/marketing` <br />All URL paths defined within a whitelist, accesslist, or blacklist are regular expressions.|
 |user_agent|Object|Contains access controls for user agents. All user agents defined within a whitelist, accesslist, or blacklist are regular expressions.|
 
-##### Access Control Object
+##### Access Control Object {/*access-control-object-add-access-rule-acl*/}
 
 The `asn`, `cookie`, `country`, `ip`, `referer`, `url`, and `user_agent` objects contain the following properties:
 
@@ -74,7 +74,7 @@ All entries within a cookie, referrer, URL, or user agent whitelist, accesslist,
 
 {{ API_RESPONSE.md }}
 
-#### Response Body
+#### Response Body {/*response-body-add-access-rule-acl*/}
 
 The response body for a successful request contains the following parameters:
 
@@ -86,7 +86,7 @@ The response body for a successful request contains the following parameters:
 
 {{ API_ERRORS.md }}
 
-### Sample Request and Response (JSON)
+### Sample Request and Response (JSON) {/*sample-request-and-response-json-add-access-rule-acl*/}
 
 A sample JSON request is shown below.
 
@@ -212,7 +212,7 @@ Content-Length: 65
 
 Deletes an access rule (ACL) that identifies valid or malicious requests via whitelists, accesslists, and blacklists.
 
-### Request
+### Request {/*request-delete-access-rule-acl*/}
 
 A request to delete an access rule is described below.
 
@@ -229,17 +229,17 @@ Define the following variable when submitting the above request:
 
 	</Callout>
 
-#### Request Headers
+#### Request Headers {/*request-headers-delete-access-rule-acl*/}
 
 This endpoint only takes advantage of [common request headers](FINDME../../Introduction/Common_Request_and_Response_Elements.htm#Request).
 
-#### Request Body
+#### Request Body {/*request-body-delete-access-rule-acl*/}
 
 Request body parameters are not required by this endpoint.
 
 {{ API_RESPONSE.md }}
 
-#### Response Body
+#### Response Body {/*response-body-delete-access-rule-acl*/}
 
 The response body for a successful request contains the following parameters:
 
@@ -251,7 +251,7 @@ The response body for a successful request contains the following parameters:
 
 {{ API_ERRORS.md }}
 
-### Sample Request and Response (JSON)
+### Sample Request and Response (JSON) {/*sample-request-and-response-json-delete-access-rule-acl*/}
 
 A sample JSON request is shown below.
 
@@ -283,7 +283,7 @@ Content-Length: 51
 
 Retrieves a list of access rules. An access rule identifies valid or malicious requests via whitelists, accesslists, and blacklists.
 
-### Request
+### Request {/*request-get-all-access-rules-acl*/}
 
 A request to retrieve all access rules is described below.
 
@@ -293,17 +293,17 @@ Define the following variable when submitting the above request:
 
 -   **:** Required. Replace this variable with your team's tenant ID. 
 
-#### Request Headers
+#### Request Headers {/*request-headers-get-all-access-rules-acl*/}
 
 This endpoint only takes advantage of [common request headers](FINDME../../Introduction/Common_Request_and_Response_Elements.htm#Request).
 
-#### Request Body
+#### Request Body {/*request-body-get-all-access-rules-acl*/}
 
 Request body parameters are not required by this endpoint.
 
 {{ API_RESPONSE.md }}
 
-#### Response Body
+#### Response Body {/*response-body=get-all-access-rules-acl*/}
 
 The response body for a successful request contains the following response elements for each access rule:
 
@@ -315,7 +315,7 @@ The response body for a successful request contains the following response eleme
 
 {{ API_ERRORS.md }}
 
-### Sample Request and Response (JSON)
+### Sample Request and Response (JSON) {/*sample-request-and-response-json-delete-access-rules-acl*/}
 
 A sample JSON request is shown below.
 
@@ -348,7 +348,7 @@ Content-Length: 141
 
 Retrieves an access rule that identifies valid or malicious requests via whitelists, accesslists, and blacklists.
 
-### Request
+### Request {/*request-get-access-rule-acl*/}
 
 A request to retrieve an access rule is described below.
 
@@ -365,17 +365,17 @@ Define the following variable when submitting the above request:
 
 	</Callout>
 
-#### Request Headers
+#### Request Headers {/*request-headers-get-access-rule-acl*/}
 
 This endpoint only takes advantage of [common request headers](FINDME../../Introduction/Common_Request_and_Response_Elements.htm#Request).
 
-#### Request Body
+#### Request Body {/*request-body-get-access-rule-acl*/}
 
 Request body parameters are not required by this endpoint.
 
 {{ API_RESPONSE.md }}
 
-#### Response Body
+#### Response Body {/*response-body-get-access-rule-acl*/}
 
 The response body for a successful request contains the following response elements for each access rule:
 
@@ -402,7 +402,7 @@ The response body for a successful request contains the following response eleme
 |user_agent|Object|Contains access controls for user agents. All user agents defined within a whitelist, accesslist, or blacklist are regular expressions.|
 |version|String|Reserved for future use.|
 
-##### Access Control Object
+##### Access Control Object {/*access-control-object-get-access-rule-acl*/}
 
 The `asn`, `cookie`, `country`, `ip`, `referer`, `url`, and `user_agent` objects contain the following properties:
 
@@ -416,7 +416,7 @@ All entries within a cookie, referrer, URL, or user agent whitelist, accesslist,
 
 {{ API_ERRORS.md }}
 
-### Sample Request and Response (JSON)
+### Sample Request and Response (JSON) {/*sample-request-and-response-json-get-access-rule-acl*/}
 
 A sample JSON request is shown below.
 
@@ -545,7 +545,7 @@ Content-Length: 1400
 
 Updates an access rule that identifies valid or malicious requests via whitelists, accesslists, and blacklists.
 
-### Request
+### Request {/*request-update-access-rule-acl*/}
 
 A request to update an access rule is described below.
 
@@ -562,11 +562,11 @@ Define the following variable when submitting the above request:
 
 	</Callout>
 
-#### Request Headers
+#### Request Headers {/*request-headers-update-access-rule-acl*/}
 
 This endpoint only takes advantage of [common request headers](FINDME../../Introduction/Common_Request_and_Response_Elements.htm#Request).
 
-#### Request Body
+#### Request Body {/*request-body-update-access-rule-acl*/}
 
 Pass the following request body parameters:
 
@@ -590,7 +590,7 @@ Pass the following request body parameters:
 |url|Object|Contains access controls for URL paths. Specify a URL path pattern that starts directly after the hostname. Exclude a protocol or a hostname when defining `value \| values`. <br />**Sample value:** `/marketing` <br />All URL paths defined within a whitelist, accesslist, or blacklist are regular expressions.|
 |user_agent|Object|Contains access controls for user agents. All user agents defined within a whitelist, accesslist, or blacklist are regular expressions.|
 
-##### Access Control Object
+##### Access Control Object {/*access-control-object-update-access-rule-acl*/}
 
 The `asn`, `cookie`, `country`, `ip`, `referer`, `url`, and `user_agent` objects contain the following properties:
 
@@ -604,7 +604,7 @@ All entries within a cookie, referrer, URL, or user agent whitelist, accesslist,
 
 {{ API_RESPONSE.md }}
 
-#### Response Body
+#### Response Body {/*response-body-update-access-rule-acl*/}
 
 The response body for a successful request contains the following parameters:
 
@@ -616,7 +616,7 @@ The response body for a successful request contains the following parameters:
 
 {{ API_ERRORS.md }}
 
-### Sample Request and Response (JSON)
+### Sample Request and Response (JSON) {/*sample-request-and-response-json-update-access-rule-acl*/}
 
 A sample JSON request is shown below.
 

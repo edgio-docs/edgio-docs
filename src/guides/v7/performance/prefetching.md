@@ -49,14 +49,90 @@ export default new Router()
 
 ## Registering the Service Worker {/* registering-the-service-worker */}
 
-Once you've created and defined a route to serve the service worker, code running in the browser window needs to register the service worker before prefetching can begin. How you do this depends on the front-end framework that you use.
+Once you've created and defined a route to serve the service worker, code running in the browser window needs to register the service worker before prefetching can begin.
 
 If you're not using a front-end framework that already registers the service worker, you can invoke the `install` function from `{{ PACKAGE_NAME }}/prefetch` to install the service worker within your client-side code. As an example, if your client-side code is in `app.js`, you can install the service worker by adding the following code to `app.js`:
 
 <a id="sample-install-prefetch-code" />
 
 ```js filename="app.js"
-import install from '{{ PACKAGE_NAME }}/prefetch/window/install';
+import { install , prefetch } from '{{ PACKAGE_NAME }}/prefetch/window';
+
+/*
+  Your client-side code here
+*/
+
+// install the service worker
+document.addEventListener('DOMContentLoaded', () => {
+  install({
+    /* install options */
+  });
+});
+```
+
+Now when your client-side code runs, the service worker will be installed and ready to prefetch URLs.
+
+See [InstallOptions](/docs/api/prefetch/interfaces/window_InstallOptions.default.html) for additional configuration when installing the service worker.
+
+## Defining a Prefetching Caching Policy {/* defining-a-prefetching-caching-policy */}
+
+To ensure that excessive prefetch traffic isn't passed on to your origin, {{ PRODUCT_NAME }} will serve prefetch requests when a cached response is available at the edge. You may configure a route that caches responses at the edge and in the service worker within your router, optionally giving it longer cache time for greater performance. In this example we define a route that caches product API calls for one hour:
+
+```js filename="routes.js"
+import {Router} from '{{ PACKAGE_NAME }}/core';
+
+export default new Router()
+  // cache the service worker at the edge for 1 day
+  .match('/service-worker.js', {
+    caching: {
+      max_age: '1d',
+      bypass_client_cache: true,
+    },
+  })
+  // serve the service worker from the /dist directory
+  .match('/service-worker.js', ({serviceWorker}) => {
+    serviceWorker('dist/service-worker.js');
+  })
+
+  // cache policy for product API calls
++  .get('/api/products/:id.json', {
++    caching: {
++      max_age: '1h',
++      stale_while_revalidate: '1d',
++      service_worker_max_age: '1h',
++    },
++    headers: {
++      set_response_headers: {
++        'x-sw-cache-control': 'max-age=3600',
++      },
++    },
++  });
+```
+
+Note that if you prefetch a URL without setting `caching.service_worker_max_age` as shown above, the response will still be prefetched and cached by the service worker with a short TTL (2 minutes by default). You can change the default TTL by setting [`defaultMaxAgeSeconds`](/docs/api/prefetch/interfaces/sw_Prefetcher.PrefetcherConfig.html#defaultMaxAgeSeconds) when initializing the `Prefetcher` instance in your service worker By default, all prefetch requests will be cached in the browser cache storage for 2 minutes:
+
+```js filename="service-worker.js"
+const prefetcher = new Prefetcher({defaultMaxAgeSeconds: 60 * 10}); // set the local cache TTL to 10 minutes
+```
+
+## Prefetching URLs {/* prefetching-urls */}
+
+With the service worker installed and a cache policy configured, you can now begin prefetching URLs. Prefetch requests are given the lowest priority. This ensures that they do not block more critical requests like API calls, images, scripts, and navigation.
+
+<Callout type="important">
+
+Note that in versions prior to {{ PRODUCT }} v7, prefetching was automatic based on routes defined with a caching rule utilizing the `cache-manifest.js` file. This is no longer the case in {{ PRODUCT }} v7. You must now explicitly prefetch URLs using the `prefetch` function, utilizing the [`watch`](/docs/api/prefetch/interfaces/window_InstallOptions.default.html#watch) option to prefetch URLs based on element visibility.
+
+</Callout>
+
+The [`prefetch`](/docs/api/prefetch/functions/window_prefetch.prefetch.html) function accepts a URL and an optional `config` object with properties defined in the [`PrefetchConfiguration`](/docs/api/prefetch/types/window_prefetch.PrefetchConfiguration.html) interface. This function may be called at any time after the service worker is installed. The following sections describe various ways to implement prefetching.
+
+### Automatic Prefetching {/* automatic-prefetching */}
+
+To automatically prefetch URLs based on element visibility, you can use the [`watch`](/docs/api/prefetch/interfaces/window_InstallOptions.default.html#watch) option when installing the service worker. The `watch` option accepts an array of objects with `selector` and `callback` properties. The `selector` property is a CSS selector that matches elements to watch for visibility. The `callback` property is a function that is called when an element matching the selector becomes visible. The callback function is passed the element as an argument. The following example will prefetch URLs for all links with an `href` attribute that are visible on the page:
+
+```js filename="app.js"
+import { install, prefetch } from '{{ PACKAGE_NAME }}/prefetch/window';
 
 /*
   Your client-side code here
@@ -83,90 +159,40 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 ```
 
-Now when your client-side code runs, the service worker will be installed and will begin prefetching URLs.
+### Manual Prefetching {/* manual-prefetching */}
 
-## Defining a Prefetching Caching Policy {/* defining-a-prefetching-caching-policy */}
+Manual prefetching utilizes the same `prefetch` function as automatic prefetching, but is called manually from your client-side code. This could be useful if you want to prefetch URLs based on user interaction or other events. The following example will prefetch URLs for links with an `href` attribute when the user hovers over them:
 
-To ensure that excessive prefetch traffic isn't passed on to your origin, {{ PRODUCT_NAME }} will serve prefetch requests when a cached response is available at the edge. By default, all prefetch requests will be cached at the edge for 2 minutes (see [`DEFAULT_MAX_AGE_SECONDS`](/docs/api/prefetch/interfaces/sw_Prefetcher.PrefetcherConfig.html#defaultMaxAgeSeconds)). Additionally, you may configure a route that caches responses at the edge and in the service worker within your router, optionally giving it longer cache time for greater performance. In this example we define a route that caches product API calls for one hour:
+```js filename="app.js"
+import { install, prefetch } from '{{ PACKAGE_NAME }}/prefetch/window';
 
-```js filename="routes.js"
-import {Router} from '{{ PACKAGE_NAME }}/core';
+/*
+  Your client-side code here
+*/
 
-export default new Router()
-  // cache the service worker at the edge for 1 day
-  .match('/service-worker.js', {
-    caching: {
-      max_age: '1d',
-      bypass_client_cache: true,
-    },
-  })
-  // serve the service worker from the /dist directory
-  .match('/service-worker.js', ({serviceWorker}) => {
-    serviceWorker('dist/service-worker.js');
-  })
+document.addEventListener('DOMContentLoaded', () => {
+  install({
+    /* install options */
+  });
 
-  // Here we configure a route for the product API.
-+  .get('/api/products/:id.json', {
-+    caching: {
-+      max_age: '1h',
-+      stale_while_revalidate: '1d',
-+      service_worker_max_age: '1h',
-+    },
-+    headers: {
-+      set_response_headers: {
-+        'x-sw-cache-control': 'max-age=3600',
-+      },
-+    },
-+  });
+  // prefetch URLs when the user hovers over them
+  document.addEventListener('mouseover', (e) => {
+    if (e.target.tagName === 'A') {
+      prefetch(e.target.getAttribute('href'));
+    }
+  });
+});
 ```
 
-Note that if you prefetch a URL without setting `caching.service_worker_max_age` as shown above, the response will still be prefetched and cached by the service worker with a short TTL (2 minutes by default). You can change the default TTL by setting `defaultMaxAgeSeconds` when initializing the `Prefetcher` instance in your service worker:
+## Framework Prefetch Components {/* framework-prefetch-components */}
 
-```js filename="service-worker.js"
-const prefetcher = new Prefetcher({defaultMaxAgeSeconds: 60 * 10}); // set the default TTL to 10 minutes
-```
-
-## Implementing Prefetching {/* implementing-prefetching */}
-
-To implement prefetching, we need to include code in our client-side bundle that will install the service worker and prefetch URLs. Implementation will vary depending on whether you are using a front-end framework or a [Traditional Site](/guides/performance/traditional_sites).
-
-- Traditional Sites:
-
-  For implementation on a traditional site, we recommend following the steps outlined in the [Configure Caching and Prefetching](guides/performance/traditional_sites#configure-caching-and-prefetching) section.
-
-- Frameworks:
-
-  {{ PRODUCT }} provides prefetch component integration for a few of the following front-end frameworks:
+{{ PRODUCT }} provides prefetch component integration for a few of the following front-end frameworks:
 
   - [Next.js](#nextjs)
   - [React](#react)
   - [Vue.js](#vuejs)
 
-  If you are using a different framework, you can still install the service worker and use the `prefetch` function from `{{ PACKAGE_NAME }}/prefetch/window/prefetch` to prefetch URLs. See the [sample code](#sample-install-prefetch-code) in [Registering the Service Worker](#registering-the-service-worker).
-
-<Callout type="important">
-
-Note that in versions prior to {{ PRODUCT }} v7, prefetching was automatic based on routes defined with a caching rule utilizing the `cache-manifest.js` file. This is no longer the case in {{ PRODUCT }} v7. You must now explicitly prefetch URLs using the `prefetch` function, utilizing the [`watch`](/docs/api/prefetch/interfaces/window_InstallOptions.default.html#watch) option to prefetch URLs when they become visible in the viewport.
-
-</Callout>
-
-Prefetch requests are given the lowest priority. This ensures that they do not block more critical requests like API calls, images, scripts, and navigation.
-
-You may also override the default TTL or the value of `service_worker_max_age` defined in `routes.js` by providing the `maxAgeSeconds` option to `prefetch` function call. This option is applied only to that function call and doesn't affect any other calls made later.
-
-```js filename="app.js"
-import {prefetch} from '{{ PACKAGE_NAME }}/prefetch/window';
-
-prefetch('/api/products/1.json', 'fetch', {
-  maxAgeSeconds: 300, // 5 minutes
-});
-```
-
-All prefetch function options can be found in its API Documentation [here](/docs/api/prefetch/types/window_prefetch.PrefetchConfiguration.html).
-
-## Frameworks {/* frameworks */}
-
-{{ PRODUCT }} provides prefetching integration for the following front-end frameworks:
+These components allow for easier prefetch integration with your existing framework code.
 
 ### React {/* react */}
 

@@ -101,17 +101,17 @@ If you are using Bot Manager Standard, then you may only apply a browser challen
 
     -   You may define a custom payload for the browser challenge by enabling the **Custom Browser Challenge Page** option and then setting the **Browser Challenge Page Template** option to a Base64-encoded HTML page that we will serve as a custom browser challenge. This HTML page must satisfy the following requirements:
 
-        -   It must contain the following mustache: `{{BOT_JS}}`
+        -   It must contain the following mustache: \{\{BOT_JS}}
 
             <Callout type="tip">
 
-              Due to the speed at which our JavaScript function is executed, we recommend that you place the `{{BOT_JS}}` mustache after all rendered content (e.g., near the end of the document's body).
+              Due to the speed at which our JavaScript function is executed, we recommend that you place the \{\{BOT_JS}} mustache after all rendered content (e.g., near the end of the document's body).
 
             </Callout>
 
             <Callout type="info">
 
-              We will replace the above `{{BOT_JS}}` mustache with JavaScript upon serving a browser challenge.
+              We will replace the above \{\{BOT_JS}} mustache with JavaScript upon serving a browser challenge.
 
             </Callout>
 

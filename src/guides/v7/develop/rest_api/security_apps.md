@@ -61,7 +61,7 @@ The response body for a successful request contains the following response eleme
 |scopes|Array of objects|Contains a list of Security Apps and their properties.|
 |version|String|Reserved for future use.|
 
-{{ API_SECURITY_APPS_SCOPES_ARRAY.md }}
+{{ API_SECURITY_SECURITY_APPS_SCOPES_ARRAY.md }}
 
 {{ API_ERRORS.md }}
 
@@ -202,7 +202,7 @@ Pass the following request body parameters:
 |scopes|Array of objects|Contains a list of Security Apps and their properties.|
 |version|String|Reserved for future use.|
 
-{{ API_SECURITY_APPS_SCOPES_ARRAY.md }}
+{{ API_SECURITY_SECURITY_APPS_SCOPES_ARRAY.md }}
 
 {{ API_RESPONSE.md }}
 

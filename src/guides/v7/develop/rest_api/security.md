@@ -8,7 +8,7 @@ title: Security
 
 </Callout>
 
-The following endpoints automate the administration of WAF.
+The following operations automate the administration of WAF.
 
 | Type            | Description  |
 |-----------------|---|
@@ -41,7 +41,7 @@ The following endpoints automate the administration of WAF.
 
 
 
-The following endpoints automate the administration of WAF.
+The following operations automate the administration of WAF.
 
 TypeDescriptionSecurity Application Manager
 
@@ -111,7 +111,7 @@ Endpoints:
 
 Threats Event Log
 
-The following endpoints retrieve WAF threat event log information:
+The following operations retrieve WAF threat event log information:
 
  Endpoint Description [Get Available Event Log Fields](../WAF/Get-ELF-Definitions.htmFINDME)
 
@@ -137,7 +137,7 @@ The following endpoints retrieve WAF threat event log information:
 
 Rates Event Log
 
-The following endpoints retrieve event log information on rate limited requests:
+The following operations retrieve event log information on rate limited requests:
 
  Endpoint Description [Get Available Event Log Fields ](../Rate-Limiting/Get-Available-Event-Log-Fields.htmFINDME)
 
@@ -166,7 +166,7 @@ The following endpoints retrieve event log information on rate limited requests:
 Responsive Threat Mitigation
 ---------------------------------------------------------------------
 
-Although the above endpoints may be used to automate many different aspects of WAF configuration, the primary purpose of these endpoints is to provide the means to automatically update it to adapt to a changing threat landscape.
+Although the above operations may be used to automate many different aspects of WAF configuration, the primary purpose of these operations is to provide the means to automatically update it to adapt to a changing threat landscape.
 
 The basic workflow for automated threat mitigation is:
 
@@ -189,7 +189,7 @@ Analyze traffic patterns to identify the source of the malicious attack.
 
 Example:
 
-For example, a sudden increase in traffic from a single IP address may be indicative of a malicious bot. If WAF is currently configured to audit traffic instead of blocking it, this may be detected by analyzing the response for the [Get Top Event Log Entries endpoint](../WAF/Get-EL-Top.htmFINDME).
+For example, a sudden increase in traffic from a single IP address may be indicative of a malicious bot. If WAF is currently configured to audit traffic instead of blocking it, this may be detected by analyzing the response for the [Get Top Event Log Entries operation](../WAF/Get-EL-Top.htmFINDME).
 
 A sample request that returns the top IP addresses that are generating traffic to your origin servers is shown below.
 
@@ -199,7 +199,7 @@ Threat Mitigation
 
 Update each relevant configuration so that it automatically detects and blocks the source of this application layer attack.
 
-Validate that a change will not negatively impact production traffic by auditing traffic using the desired configuration. Configure how traffic will be audited by defining acl\_audit\_id, profile\_audit\_id, and rules\_audit\_id within the desired Security Application Manager configuration via the [Manage All Security Application Manager Configurations (Scopes) endpoint](Manage-All-Scopes.htmFINDME). These properties identify how traffic will be audited via an access control list configuration, request profile, and a custom rule set, respectively.
+Validate that a change will not negatively impact production traffic by auditing traffic using the desired configuration. Configure how traffic will be audited by defining acl\_audit\_id, profile\_audit\_id, and rules\_audit\_id within the desired Security Application Manager configuration via the [Manage All Security Application Manager Configurations (Scopes) operation](Manage-All-Scopes.htmFINDME). These properties identify how traffic will be audited via an access control list configuration, request profile, and a custom rule set, respectively.
 
 The recommended method for updating your configuration via a script is described below.
 
@@ -207,7 +207,7 @@ The recommended method for updating your configuration via a script is described
     
     
     1. Identify the set of rules (e.g., access rules, managed rules, and custom rule sets) that require updating.
-    2. Request the [Get All Security Application Manager Configurations (Scopes) endpoint](Get-All-Scopes.htmFINDME).
+    2. Request the [Get All Security Application Manager Configurations (Scopes) operation](Get-All-Scopes.htmFINDME).
     3. Find all instances of the rules identified in step i:
         
         
@@ -219,13 +219,13 @@ The recommended method for updating your configuration via a script is described
             acl_audit_id | profile_audit_id | rules_audit_id
     
     Although malicious traffic may only be directed to one site, it may make sense to apply the same configuration (e.g., blacklisting an IP address) to all of your sites.
-2. Retrieve those configurations via one of the following endpoints:
+2. Retrieve those configurations via one of the following operations:
     
     
     - [Get Access Rule (ACL)](Get-ACL.htmFINDME)
     - [Get Custom Rule Set](Get-Custom-Rule-Set.htmFINDME)
     - [Get Managed Rule (Profile)](Get-Profile.htmFINDME)
-3. Modify the response from the above endpoint to allow WAF to identify the source of this malicious traffic.
+3. Modify the response from the above operation to allow WAF to identify the source of this malicious traffic.
     
     For example, if an IP address is identified as the source of malicious traffic, then add that IP address to the blacklist:
     
@@ -244,7 +244,7 @@ The recommended method for updating your configuration via a script is described
     ...
     
     
-4. Update the desired configuration via one of the following endpoints:
+4. Update the desired configuration via one of the following operations:
     
     
     - [Update Access Rule (ACL)](Update-ACL.htmFINDME)

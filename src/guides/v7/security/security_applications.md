@@ -413,7 +413,7 @@ variables that describe the event. These variables are described below.
 
 | Variable    | Description                                           |
 | ----------- | ----------- |
-| EVENT_ID    | Represents the system-defined ID assigned to the request that was identified as a threat.  Find out detailed information about the detected threat by passing this ID to the Get Event Log Entry endpoint (REST API).|
+| EVENT_ID    | Represents the system-defined ID assigned to the request that was identified as a threat. <!--Find out detailed information about the detected threat by passing this ID to the Get Event Log Entry endpoint (REST API).-->|
 | CLIENT_IP   | Represents the IP address of the device that submitted the detected threat.                        |
 | TIMESTAMP   | Represents the date and time at which the detected threat was submitted.                                 |
 | REQUEST_URL | Represents the URL for the request that was deemed a threat.                                               |

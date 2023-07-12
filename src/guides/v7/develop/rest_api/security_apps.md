@@ -14,6 +14,8 @@ A Security App:
 
 - Defines the production and audit enforcement action that will be applied to the requests identified as threats by the above rules.
 
+[Learn more about Security Apps.](/guides/security/security_applications)
+
 <Callout type="info">
 
   WAF Insights does not support automation through our REST API web service. If you are currently using WAF Insights, upgrade your WAF solution to take advantage of our REST API.
@@ -37,11 +39,11 @@ Define the following variable when submitting the above request:
 
 #### Request Headers
 
-This endpoint only takes advantage of [common request headers](../../Introduction/Common_Request_and_Response_Elements.htm#Request).
+This operation only takes advantage of [common request headers](../../Introduction/Common_Request_and_Response_Elements.htm#Request).
 
 #### Request Body
 
-Request body parameters are not required by this endpoint.
+Request body parameters are not required by this operation.
 
 {{ API_RESPONSE.md }}
 
@@ -69,10 +71,7 @@ A sample JSON request is shown below.
 
 ```json
 GET {{ API_URL }}/waf/v1.0/scopes  HTTP/1.1
-Authorization: Bearer A1bcbGciO...pxmO17cRRKYQ
-Accept: application/json
-Content-Type: application/json
-Host: {{ API_DOMAIN }}
+{{ API_SAMPLE_REQUEST_HEADERS.md }}
 ```
 
 A sample JSON response is shown below.
@@ -158,7 +157,7 @@ Creates, updates, and deletes one or more Security Apps.
 
 **Key information:**
 
--   This endpoint allows you to quickly create, update, or delete one or more Security Apps. These actions cannot be undone.
+-   This operation allows you to quickly create, update, or delete one or more Security Apps. These actions cannot be undone.
 -   Create a Security App by adding a scope object in the request.
 -   Update a Security App by modifying an existing scope object in the request. The id property identifies the Security App that will be updated.
 -   Delete a Security App by excluding a scope object from the request.
@@ -171,9 +170,9 @@ Creates, updates, and deletes one or more Security Apps.
 
 -   The recommended method for updating your Security Apps is to perform the following steps:
     
-    1.  Retrieve your current set of Security Apps via the [Get All Security Apps (Scopes) endpoint](FINDME).
+    1.  Retrieve your current set of Security Apps via the [Get All Security Apps (Scopes) operation](FINDME).
     2.  Add, modify, or remove Security Apps from the response as needed.
-    3.  Post the updated response to this endpoint.
+    3.  Post the updated response to this operation.
 
 ### Request
 
@@ -187,7 +186,7 @@ Define the following variable when submitting the above request:
 
 #### Request Headers
 
-This endpoint only takes advantage of [common request headers](../../Introduction/Common_Request_and_Response_Elements.htm#Request).
+This operation only takes advantage of [common request headers](../../Introduction/Common_Request_and_Response_Elements.htm#Request).
 
 #### Request Body
 
@@ -225,11 +224,7 @@ A sample JSON request is shown below.
 
 ```json
 POST {{ API_URL }}/waf/v1.0/scopes  HTTP/1.1
-
-Authorization: Bearer A1bcbGciO...pxmO17cRRKYQ
-Accept: application/json
-Content-Type: application/json
-Host: {{ API_DOMAIN }}
+{{ API_SAMPLE_REQUEST_HEADERS.md }}
 
 ```json
 {

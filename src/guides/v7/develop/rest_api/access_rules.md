@@ -35,7 +35,7 @@ Define the following variable when submitting the above request:
 
 #### Request Headers {/*request-headers-add-access-rule-acl*/}
 
-This endpoint only takes advantage of [common request headers](FINDME../../Introduction/Common_Request_and_Response_Elements.htm#Request).
+This operation only takes advantage of [common request headers](FINDME../../Introduction/Common_Request_and_Response_Elements.htm#Request).
 
 #### Request Body {/*request-body-add-access-rule-acl*/}
 
@@ -92,10 +92,7 @@ A sample JSON request is shown below.
 
 ```json
 POST {{ API_URL }}/waf/v1.0/acl  HTTP/1.1
-Authorization: Bearer A1bcbGciO...pxmO17cRRKYQ
-Accept: application/json
-Content-Type: application/json
-Host:  {{ API_DOMAIN }}
+{{ API_SAMPLE_REQUEST_HEADERS.md }}
 
 {
     "asn": {
@@ -225,17 +222,17 @@ Define the following variable when submitting the above request:
 
     <Callout type="tip">
 
-      Use the [Get All Access Rules (ACLs) endpoint](FINDME) to retrieve a list of access rules and their system-defined IDs
+      Use the [Get All Access Rules (ACLs) operation](FINDME) to retrieve a list of access rules and their system-defined IDs
 
 	</Callout>
 
 #### Request Headers {/*request-headers-delete-access-rule-acl*/}
 
-This endpoint only takes advantage of [common request headers](FINDME../../Introduction/Common_Request_and_Response_Elements.htm#Request).
+This operation only takes advantage of [common request headers](FINDME../../Introduction/Common_Request_and_Response_Elements.htm#Request).
 
 #### Request Body {/*request-body-delete-access-rule-acl*/}
 
-Request body parameters are not required by this endpoint.
+Request body parameters are not required by this operation.
 
 {{ API_RESPONSE.md }}
 
@@ -257,10 +254,7 @@ A sample JSON request is shown below.
 
 ```json
 DELETE {{ API_URL }}/waf/v1.0/acl/CGifudum  HTTP/1.1
-Authorization: Bearer A1bcbGciO...19R1BDmpxmO17cRRKYQ
-Accept: application/json
-Content-Type: application/json
-Host: {{ API_DOMAIN }}
+{{ API_SAMPLE_REQUEST_HEADERS.md }}
 ```
 
 A sample JSON response is shown below.
@@ -295,11 +289,11 @@ Define the following variable when submitting the above request:
 
 #### Request Headers {/*request-headers-get-all-access-rules-acl*/}
 
-This endpoint only takes advantage of [common request headers](FINDME../../Introduction/Common_Request_and_Response_Elements.htm#Request).
+This operation only takes advantage of [common request headers](FINDME../../Introduction/Common_Request_and_Response_Elements.htm#Request).
 
 #### Request Body {/*request-body-get-all-access-rules-acl*/}
 
-Request body parameters are not required by this endpoint.
+Request body parameters are not required by this operation.
 
 {{ API_RESPONSE.md }}
 
@@ -309,7 +303,7 @@ The response body for a successful request contains the following response eleme
 
 |Name|Data Type|Description|
 |--- |--- |--- |
-|id|String|Indicates the system-defined ID for the access rule. Pass this ID to the [Get Access Rule (ACL) endpoint](#get-access-rule-acl) to retrieve the properties for this access rule.|
+|id|String|Indicates the system-defined ID for the access rule. Pass this ID to the [Get Access Rule (ACL) operation](#get-access-rule-acl) to retrieve the properties for this access rule.|
 |last_modified_date|String|Indicates the date and time at which the access rule was last modified. <br />**Syntax:** `MM/DD/YYYYhh:mm:ss [AM|PM]`|
 |name|String|Indicates the name of the access rule.|
 
@@ -321,10 +315,7 @@ A sample JSON request is shown below.
 
 ```json
 GET {{ API_URL }}/waf/v1.0/acl  HTTP/1.1
-Authorization: Bearer A1bcbGciO...19R1BDmpxmO17cRRKYQ
-Accept: application/json
-Content-Type: application/json
-Host: {{ API_DOMAIN }}
+{{ API_SAMPLE_REQUEST_HEADERS.md }}
 ```
 
 A sample JSON response is shown below.
@@ -361,17 +352,17 @@ Define the following variable when submitting the above request:
 
     <Callout type="tip">
 
-      Use the [Get All Access Rules (ACLs) endpoint](FINDME) to retrieve a list of access rules and their system-defined IDs
+      Use the [Get All Access Rules (ACLs) operation](FINDME) to retrieve a list of access rules and their system-defined IDs
 
 	</Callout>
 
 #### Request Headers {/*request-headers-get-access-rule-acl*/}
 
-This endpoint only takes advantage of [common request headers](FINDME../../Introduction/Common_Request_and_Response_Elements.htm#Request).
+This operation only takes advantage of [common request headers](FINDME../../Introduction/Common_Request_and_Response_Elements.htm#Request).
 
 #### Request Body {/*request-body-get-access-rule-acl*/}
 
-Request body parameters are not required by this endpoint.
+Request body parameters are not required by this operation.
 
 {{ API_RESPONSE.md }}
 
@@ -422,10 +413,7 @@ A sample JSON request is shown below.
 
 ```json
 GET {{ API_URL }}/waf/v1.0/acl/CGifudum  HTTP/1.1
-Authorization: Bearer A1bcbGciO...19R1BDmpxmO17cRRKYQ
-Accept: application/json
-Content-Type: application/json
-Host: {{ API_DOMAIN }}
+{{ API_SAMPLE_REQUEST_HEADERS.md }}
 ```
 
 A sample JSON response is shown below.
@@ -558,13 +546,13 @@ Define the following variable when submitting the above request:
 
     <Callout type="tip">
 
-      Use the [Get All Access Rules (ACLs) endpoint](FINDME) to retrieve a list of access rules and their system-defined IDs
+      Use the [Get All Access Rules (ACLs) operation](FINDME) to retrieve a list of access rules and their system-defined IDs
 
 	</Callout>
 
 #### Request Headers {/*request-headers-update-access-rule-acl*/}
 
-This endpoint only takes advantage of [common request headers](FINDME../../Introduction/Common_Request_and_Response_Elements.htm#Request).
+This operation only takes advantage of [common request headers](FINDME../../Introduction/Common_Request_and_Response_Elements.htm#Request).
 
 #### Request Body {/*request-body-update-access-rule-acl*/}
 
@@ -622,10 +610,7 @@ A sample JSON request is shown below.
 
 ```json
 PUT {{ API_URL }}/waf/v1.0/acl/CGifudum  HTTP/1.1
-Authorization: Bearer A1bcbGciO...19R1BDmpxmO17cRRKYQ
-Accept: application/json
-Content-Type: application/json
-Host: {{ API_DOMAIN }}
+{{ API_SAMPLE_REQUEST_HEADERS.md }}
 
 {
     "asn": {

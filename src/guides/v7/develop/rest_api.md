@@ -12,7 +12,7 @@ Learn basic information about our services:
 
 -   **Authentication/Authorization:** `Authorization` Header
     
-    Our REST API services require authentication and authorization before a request to one of our endpoints will be honored.
+    Our REST API services require authentication and authorization before a request to one of our operations will be honored.
     
     Authenticate and authorize your requests by passing the `Authorization` header with the following value:
        
@@ -32,8 +32,8 @@ Learn basic information about our services:
 
 -   **Services:** Our REST API consists of the following services:
 
-    -   **waf:** This service contains endpoints that revolve around the following components: security apps, access rules, rate rules, custom rules, and managed rules.
-    -   **bot-security:** This service contains endpoints that revolve around Bot Manager.
-    -   **api-security:** This service contains endpoints that revolve around API Security.
+    -   **waf:** This service contains operations that revolve around the following components: security apps, access rules, rate rules, custom rules, and managed rules.
+    -   **bot-security:** This service contains operations that revolve around Bot Manager.
+    -   **api-security:** This service contains operations that revolve around API Security.
     
 Requests are authorized via OAuth 2.0.  [Learn more about authorization.](FINDME)

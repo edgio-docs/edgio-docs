@@ -41,6 +41,7 @@ export default new Router()
       bypass_client_cache: true,
     },
   })
+
   // serve the service worker from the /dist directory
   .match('/service-worker.js', ({serviceWorker}) => {
     serviceWorker('dist/service-worker.js');
@@ -78,7 +79,7 @@ See [InstallOptions](/docs/api/prefetch/interfaces/window_InstallOptions.default
 
 To ensure that excessive prefetch traffic isn't passed on to your origin, {{ PRODUCT_NAME }} will serve prefetch requests when a cached response is available at the edge. You may configure a route that caches responses at the edge and in the service worker within your router, optionally giving it longer cache time for greater performance. In this example we define a route that caches product API calls for one hour:
 
-```js filename="routes.js"
+```js diff filename="routes.js"
 import {Router} from '{{ PACKAGE_NAME }}/core';
 
 export default new Router()
@@ -89,12 +90,13 @@ export default new Router()
       bypass_client_cache: true,
     },
   })
+
   // serve the service worker from the /dist directory
   .match('/service-worker.js', ({serviceWorker}) => {
     serviceWorker('dist/service-worker.js');
   })
 
-  // cache policy for product API calls
++  // cache policy for product API calls
 +  .get('/api/products/:id.json', {
 +    caching: {
 +      max_age: '1h',
@@ -109,7 +111,7 @@ export default new Router()
 +  });
 ```
 
-Note that if you prefetch a URL without setting `caching.service_worker_max_age` as shown above, the response will still be prefetched and cached by the service worker with a short TTL (2 minutes by default). You can change the default TTL by setting [`defaultMaxAgeSeconds`](/docs/api/prefetch/interfaces/sw_Prefetcher.PrefetcherConfig.html#defaultMaxAgeSeconds) when initializing the `Prefetcher` instance in your service worker By default, all prefetch requests will be cached in the browser cache storage for 2 minutes:
+Note that if you prefetch a URL without setting `caching.service_worker_max_age` as shown above, the response will still be prefetched and cached by the service worker with a short TTL (2 minutes by default). You can change the default TTL by setting [`defaultMaxAgeSeconds`](/docs/api/prefetch/interfaces/sw_Prefetcher.PrefetcherConfig.html#defaultMaxAgeSeconds) when initializing the `Prefetcher` instance in your service worker. For example, to set the default TTL to 10 minutes, you would initialize the `Prefetcher` instance as follows:
 
 ```js filename="service-worker.js"
 const prefetcher = new Prefetcher({defaultMaxAgeSeconds: 60 * 10}); // set the local cache TTL to 10 minutes

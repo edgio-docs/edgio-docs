@@ -1,14 +1,16 @@
 ---
-title: Node.js Connector
+title: Custom Connector
 ---
 
-Node.js Connector lets you build and deploy your project to {{ PRODUCT }} for any framework that is not listed under our directly [supported frameworks](/guides/sites_frameworks/getting_started#supported-frameworks).
+Custom Connector lets you build and deploy your project to {{ PRODUCT }} for any framework that is not listed under our directly [supported frameworks](/guides/sites_frameworks/getting_started#supported-frameworks).
 
 {{ PREREQ.md }}
 
-## Using the Node.js Connector {/* using-nodejs-connector */}
+<!-- ## Why Custom Connector {/* why-custom-connector */} -->
 
-To use the Node.js Connector with your project, you'll first need to initialize your project using the {{ PRODUCT }} CLI with the following:
+## Using Custom Connector {/* using-custom-connector */}
+
+To use the Custom Connector with your project, you'll first need to initialize your project using the {{ PRODUCT }} CLI with the following:
 
 ```bash
 {{ CLI_CMD(init) }}
@@ -23,7 +25,7 @@ WARNING: No framework detected. You can still use {{ PRODUCT }}, we just need mo
     {{ PRODUCT }} Performance (CDN-as-code)
 ```
 
-Choose `{{ PRODUCT }} Sites (Web-app hosting)` from the list of options to prepare the project for Node.js Connector.
+Choose `{{ PRODUCT }} Sites (Web-app hosting)` from the list of options to prepare the project for Custom Connector.
 
 Next, you will be prompted to enter more information specific to your project and framework:
 
@@ -47,8 +49,8 @@ When initialization process is finished, {{ PRODUCT }} will automatically add al
 
 - The `{{ PACKAGE_NAME }}/core` package
 - The `{{ PACKAGE_NAME }}/cli` package
-- The `{{ PACKAGE_NAME }}/nodejs-connector` package
-- `{{ CONFIG_FILE }}` - Contains various configuration options for {{ PRODUCT }} including the connector [configuration](#nodejs-connector-configuration).
+- The `{{ PACKAGE_NAME }}/custom-connector` package
+- `{{ CONFIG_FILE }}` - Contains various configuration options for {{ PRODUCT }} including the connector [configuration](#custom-connector-configuration).
 - `routes.js` - A default routes file that sends all requests to the underlaying framework. Update this file to add caching or proxy some URLs to a different origin.
 
 ## Routing {/* routing */}
@@ -60,9 +62,9 @@ The default `routes.js` file created by `{{ CLI_CMD(init) }}` sends all requests
 // You should commit this file to source control.
 
 const {Router} = require('{{ PACKAGE_NAME }}/core/router');
-const {nodeRoutes} = require('{{ PACKAGE_NAME }}/nodejs-connector');
+const {customRoutes} = require('{{ PACKAGE_NAME }}/custom-connector');
 
-export default new Router().use(nodeRoutes);
+export default new Router().use(customRoutes);
 ```
 
 See [Routes](/guides/performance/cdn_as_code#routes) for information on defining routes, caching, and more.
@@ -93,15 +95,15 @@ Deploy your app to the {{ PRODUCT_PLATFORM }} by running the following commands 
 
 See [Deployments](/guides/basics/deployments) for more information.
 
-## Node.js Connector Configuration {/* nodejs-connector-configuration */}
+## Custom Connector Configuration {/* custom-connector-configuration */}
 
-After you initialize your project with the `{{ CLI_CMD(init) }}` command, {{ PRODUCT }} will create a `{{ CONFIG_FILE }}` file in your project's root directory. In the `{{ CONFIG_FILE }}` file you can configure your Node.js Connector.
+After you initialize your project with the `{{ CLI_CMD(init) }}` command, {{ PRODUCT }} will create a `{{ CONFIG_FILE }}` file in your project's root directory. In the `{{ CONFIG_FILE }}` file you can configure your Custom Connector.
 
 ```json
 {
   // rest of the config
 
-  "nodeConnector": {
+  "customConnector": {
     "buildFollder" : "dist",
     "entryFile": "index.js",
     "envPort": "PORT",
@@ -112,7 +114,7 @@ After you initialize your project with the `{{ CLI_CMD(init) }}` command, {{ PRO
 }
 ```
 
-In the `nodeConnector` object you can configure the following options:
+In the `customConnector` object you can configure the following options:
 
 - `buildFolder` - The build output folder of your app. Default value is `dist`.
 - `entryFile` - The entry file of your app. Default value is `index.js`.
@@ -129,6 +131,6 @@ This connector is not built for a specific framework, it is used as a fallback f
   variant="stroke"
   type="code"
   withIcon={true}
-  href="https://github.com/edgio-docs/edgio-connectors/tree/main/edgio-nodejs-connector">
+  href="https://github.com/edgio-docs/edgio-connectors/tree/main/edgio-custom-connector">
   View the Connector Code
 </ButtonLink>

@@ -64,30 +64,29 @@ const StyledChangelogContent = styled.div`
   }
 `;
 
-function ChangelogPage({ content, version }: { content: string; version: string }) {
+function ChangelogPage({content, version}: {content: string; version: string}) {
   const config = getVersionedConfig(version);
-  const isVersionFour = version === "v4";
+  const isVersionFour = version === 'v4';
 
   return (
     <Page>
       <MarkdownPage
-        meta={{ title: `${config.PRODUCT} ${version} Packages Changelog` }}
-      >
+        meta={{title: `${config.PRODUCT} ${version} Packages Changelog`}}>
         {!isVersionFour && (
           <Callout type="info">
             <p>
-              This page contains release notes related to the {config.PRODUCT} CLI
-              packages and connectors.
+              This page contains release notes related to the {config.PRODUCT}{' '}
+              CLI packages and connectors.
             </p>
 
             <p>
               See <Link href="/guides/release_notes">Release Notes</Link> for
-              changes related to the{" "}
+              changes related to the{' '}
               <Link href={config.APP_URL}>{config.PORTAL}</Link>
             </p>
           </Callout>
         )}
-        <StyledChangelogContent dangerouslySetInnerHTML={{ __html: content }} />
+        <StyledChangelogContent dangerouslySetInnerHTML={{__html: content}} />
       </MarkdownPage>
     </Page>
   );

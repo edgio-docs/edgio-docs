@@ -2,7 +2,11 @@
 title: Connectors
 ---
 
-Connector packages help build and run your app within {{ PRODUCT_NAME }}. When you run `{{ FULL_CLI_NAME }} init`, {{ PRODUCT_NAME }} CLI detects the framework used by your app and installs the corresponding connector package. For example, if you use Next.js, `{{ PACKAGE_NAME }}/next` will be installed. If no connector package exists for the framework that you use, you can still deploy to {{ PRODUCT_NAME }} by implementing the connector interface directly in your app.
+Connector packages help build and run your app within {{ PRODUCT_NAME }}. When you run `{{ FULL_CLI_NAME }} init`, {{ PRODUCT_NAME }} CLI detects the framework used by your app and installs the corresponding connector package. For example, if you use Next.js, `{{ PACKAGE_NAME }}/next` will be installed. If no connector package exists for the framework that you use, you can still deploy to {{ PRODUCT_NAME }} by using the [Custom Connector](/guides/sites_frameworks/getting_started/custom_connector) (recommended) or implementing the connector interface directly in your app as defined below.
+
+<PopularFrameworks />
+
+{{ PRODUCT }} supports a number of frameworks out of the box. If you use one of these popular frameworks, you can skip this guide and go directly to [Getting Started](/guides/sites_frameworks/getting_started).
 
 ## Writing a connector {/*writing-a-connector*/}
 

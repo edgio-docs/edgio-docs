@@ -115,7 +115,7 @@ Note that if you prefetch a URL without setting `caching.service_worker_max_age`
 const prefetcher = new Prefetcher({defaultMaxAgeSeconds: 60 * 10}); // set the local cache TTL to 10 minutes
 ```
 
-## Prefetching URLs {/* prefetching-urls */}
+## Prefetching Urls {/* prefetching-urls */}
 
 With the service worker installed and a cache policy configured, you can now begin prefetching URLs. Prefetch requests are given the lowest priority. This ensures that they do not block more critical requests like API calls, images, scripts, and navigation.
 
@@ -310,7 +310,7 @@ new Prefetcher({
 
 The `DeepFetchPlugin` can parse both HTML and JSON documents to extract the page assets that must be deep fetched. For {{ PRODUCT_NAME }} projects that are headless (i.e. the front end communicates with the backend through an API), you'll typically use the JSON option. However if the backend and front-end endpoints are communicating using HTML responses then you'll want to use the HTML option. Note that you can mix both HTML and JSON configuration objects in the an array passed to the `DeepFetchPlugin`.
 
-### Deep fetching URLs in JSON responses {/* deep-fetching-urls-in-json-responses */}
+### Deep Fetching Urls in JSON Responses {/* deep-fetching-urls-in-json-responses */}
 
 For JSON responses, you'll pass the `DeepFetchPlugin` an array of [DeepFetchJsonConfig interface]({{ DOCS_URL }}/docs/api/prefetch/interfaces/_sw_deepfetchplugin_.deepfetchjsonconfig.html) objects. These `DeepFetchJsonConfig` objects describe the asset URLs in the JSON response that should be prefetched. For example, the snippet below finds product images to deep fetch for a category page response:
 
@@ -333,7 +333,7 @@ new DeepFetchPlugin([
 
 The `jsonQuery` syntax is provided by the [json-query](https://github.com/auditassistant/json-query) library. You can test your JSON queries using their [JSON-query Tester Sandbox](https://maxleiko.github.io/json-query-tester/).
 
-### Deep Fetching for HTML documents {/* deep-fetching-for-html-documents */}
+### Deep Fetching for HTML Documents {/* deep-fetching-for-html-documents */}
 
 To deep fetch HTML documents, pass the plugin objects that match the [DeepFetchHtmlConfig interface]({{ DOCS_URL }}/docs/api/prefetch/interfaces/_sw_deepfetchplugin_.deepfetchhtmlconfig.html) and describe which HTML elements need to be prefetched via CSS selectors.
 
@@ -357,7 +357,7 @@ new Prefetcher({
 });
 ```
 
-#### Computing the URL to be prefetched {/* computing-the-url-to-be-prefetched */}
+#### Computing the URL to Be Prefetched {/* computing-the-url-to-be-prefetched */}
 
 In the example above the `img` element's `src` attribute contains URL that needs to be prefetched. Sometimes finding the URL to prefetch is not so straightforward. For example, apps sometimes use JavaScript to compute the URL for responsive images based on the user's device size. In such cases you can provide a `callback` function which will be passed all matching elements and decide what URLs to prefetch. Here is an example:
 

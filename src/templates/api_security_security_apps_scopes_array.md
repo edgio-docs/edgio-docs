@@ -30,7 +30,7 @@ The `acl_prod_action`, `profile_prod_action`, and `rules_prod_action` objects de
 
 |Name|Data Type|Description|
 |--- |--- |--- |
-|enf_type|String|Indicates the enforcement action that will be applied to traffic identified as a threat. Valid values are:<ul><li>**BLOCK_REQUEST:** Block Request</li></li>**ALERT:** Alert Only</li></li>**REDIRECT_302:** Redirect (HTTP 302)</li></li>**CUSTOM_RESPONSE:** Custom Response</li></ul>|
+|enf_type|String|Indicates the enforcement action that will be applied to traffic identified as a threat. Valid values are:<ul><li>**BLOCK_REQUEST:** Block Request</li><li>**ALERT:** Alert Only</li><li>**REDIRECT_302:** Redirect (HTTP 302)</li><li>**CUSTOM_RESPONSE:** Custom Response</li></ul>|
 |id|String|Reserved for future use.|
 |name|String|Indicates the name assigned to this enforcement action configuration.|
 |response_body_base64|String|`enf_type:` `CUSTOM_RESPONSE`. Indicates the response body for traffic identified as a threat. This value is Base64 encoded.|
@@ -48,8 +48,7 @@ The `bots_prod_action` object describes the browser challenge that will be appli
 |id|String|Reserved for future use.|
 |is_custom_challenge|Boolean|Indicates whether we will serve a standard or custom browser challenge. Valid values are: `true \| false`|
 |name|String|Indicates the name assigned to this enforcement action configuration.|
-|response_body_base64|String|`is_custom_challenge: True`. Contains a Base64 encoded HTML page that we will serve as a custom browser challenge. This HTML page must satisfy the following requirements:
-<ul><li>It must contain the following mustache: `{{BOT_JS}}` <br />Due to the speed at which our JavaScript function is executed, we recommend that you place the {{BOT_JS}} mustache after all rendered content (e.g., near the end of the document's body). <br />We will replace the above {{BOT_JS}} mustache with JavaScript upon serving a browser challenge.</li><li>It must check whether the user agent allows JavaScript using a <noscript> tag. Your custom HTML must display an error message if it has been disabled.</li><li>It must check whether the user agent allows third-party cookies. Your custom HTML must display an error message if they have been disabled.</li></ul> A custom browser challenge will not be served if your custom HTML does not satisfy the above requirements.|
+|response_body_base64|String|`is_custom_challenge: True`. Contains a Base64 encoded HTML page that we will serve as a custom browser challenge. This HTML page must satisfy the following requirements:<ul><li>It must contain the following mustache: \{\{BOT_JS}} <br />Due to the speed at which our JavaScript function is executed, we recommend that you place the \{\{BOT_JS}} mustache after all rendered content (e.g., near the end of the document's body). <br />We will replace the above \{\{BOT_JS}} mustache with JavaScript upon serving a browser challenge.</li><li>It must check whether the user agent allows JavaScript using a `<noscript>` tag. Your custom HTML must display an error message if it has been disabled.</li><li>It must check whether the user agent allows third-party cookies. Your custom HTML must display an error message if they have been disabled.</li></ul> A custom browser challenge will not be served if your custom HTML does not satisfy the above requirements.|
 |status|Integer|Indicates the HTTP status code (e.g., `404`) for the response provided to clients that are being served the browser challenge.|
 |valid_for_sec|Integer|Indicates the number of minutes for which our CDN will serve content to a client that solves a browser challenge without requiring an additional browser challenge to be solved. Specify a value between 1 and 1,440 minutes.|
 

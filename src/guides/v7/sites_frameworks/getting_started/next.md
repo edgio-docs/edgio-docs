@@ -7,9 +7,15 @@ This guide shows you how to deploy a [Next.js](https://nextjs.org/) application 
 ## Example {/* example */}
 
 <ExampleButtons
-  title="Next.js SSR"
+  title="Next.js SSR w/ Pages Router"
   siteUrl="https://edgio-community-examples-v7-nextjs-live.edgio.link/"
   repoUrl="https://github.com/edgio-docs/edgio-v7-nextjs-example"
+/>
+
+<ExampleButtons
+  title="Next.js SSR w/ App Router"
+  siteUrl="https://edgio-community-examples-v7-nextjs-app-router-live.edgio.link/"
+  repoUrl="https://github.com/edgio-docs/edgio-v7-nextjs-app-router-example"
 />
 
 <!-- ## Next.js Commerce {/* nextjs-commerce */}

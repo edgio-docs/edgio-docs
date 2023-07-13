@@ -16,6 +16,7 @@ const PRODUCT_NAME_LOWER = PRODUCT.toLowerCase();
 const PRODUCT_NAME_UPPER = PRODUCT.toUpperCase();
 const PRODUCT_LEGACY_LOWER = PRODUCT_LEGACY.toLowerCase();
 const PORTAL = `${COMPANY_NAME} Console`;
+const IDENTITY_DASHBOARD = `${PRODUCT} Identity Dashboard`;
 const DOCS_NAME = `${COMPANY_NAME} Docs`;
 
 const CLI_NAME = 'edg';
@@ -34,6 +35,7 @@ const DOMAIN = 'edg.io';
 const DOMAIN_LEGACY = 'layer0.co';
 const API_DOMAIN = 'edgioapis.com';
 const APP_DOMAIN = `edgio.app`;
+const IDENTITY_DOMAIN = `account.edgio.app`;
 const LINK_DOMAIN = `edgio.link`;
 const PERMALINK_DOMAIN = `edgio-perma.link`;
 const RUM_DOMAIN = `rum.edgio.net`;
@@ -52,10 +54,12 @@ const SUPPORT_URL = `https://${DOMAIN}/contact-support/?sgId=7bc47c45-c1d6-4189-
 const DOCS_URL = `https://${DOCS_DOMAIN}`;
 const DOCS_PAGES_REPO_URL = `https://${DOCS_PAGES_DOMAIN}`;
 const API_URL = `https://${API_DOMAIN}/app`;
+const IDENTITY_URL = `https://${IDENTITY_DOMAIN}`;
 const API_SECURITY_VERSION = '0.9';
 const LOGIN_URL = `${APP_URL}/?sgId=ef4d5169-93f2-4f55-aabb-dc3be4286e1f`;
 
 const PORTAL_LINK = `[${PORTAL}](${LOGIN_URL})`;
+const IDENTITY_LINK = `[${IDENTITY_DASHBOARD}](${IDENTITY_URL})`;
 
 const NODE_VERSION = '16.x';
 const STARTER_NAME = 'layer0-app';
@@ -455,6 +459,10 @@ const config = {
   FULL_CLI_NAME,
   HEADER_PREFIX,
   HELP_URL,
+  IDENTITY_DASHBOARD,
+  IDENTITY_DOMAIN,
+  IDENTITY_LINK,
+  IDENTITY_URL,
   LINK_DOMAIN,
   PERMALINK_DOMAIN,
   RUM_DOMAIN,

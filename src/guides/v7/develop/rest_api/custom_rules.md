@@ -106,6 +106,12 @@ Automate the following tasks:
     -   The request satisfies at least one `variable` object in the root of the `sec_rule` object.
     -   The request satisfies at least one `variable` object in each `chained_rule` object.
 
+## Authorization
+
+Authorize requests through the `app.waf` scope.
+
+[Learn more about authorization.](/guides/develop/rest_api/authentication)
+
 ## Add Custom Rule {/*add-custom-rule*/}
 
 Creates a custom rule set that defines custom threat assessment criteria.
@@ -128,7 +134,7 @@ This operation only takes advantage of [common request headers](FINDME../../Intr
 
 ### Request Body
 
-Pass the following request body parameters:
+Pass the following request body properties:
 
 |Name|Data Type|Description|
 |--- |--- |--- |
@@ -212,7 +218,7 @@ Each object within the `chained_rule` array describes an additional set of crite
 
 ### Response Body
 
-The response body for a successful request contains the following parameters:
+The response body for a successful request contains the following properties:
 
 |Name|Data Type|Description|
 |--- |--- |--- |
@@ -301,13 +307,13 @@ This operation only takes advantage of [common request headers](FINDME../../Intr
 
 ### Request Body
 
-Request body parameters are not required by this operation.
+Request body properties are not required by this operation.
 
 {{ API_RESPONSE.md }}
 
 ### Response Body
 
-The response body for a successful request contains the following parameters:
+The response body for a successful request contains the following properties:
 
 |Name|Data Type|Description|
 |--- |--- |--- |
@@ -362,7 +368,7 @@ This operation only takes advantage of [common request headers](FINDME../../Intr
 
 ### Request Body
 
-Request body parameters are not required by this operation.
+Request body properties are not required by this operation.
 
 {{ API_RESPONSE.md }}
 
@@ -428,7 +434,7 @@ This operation only takes advantage of [common request headers](FINDME../../Intr
 
 ### Request Body
 
-Request body parameters are not required by this operation.
+Request body properties are not required by this operation.
 
 {{ API_RESPONSE.md }}
 
@@ -599,7 +605,7 @@ This operation only takes advantage of [common request headers](FINDME../../Intr
 
 ### Request Body
 
-Pass the following request body parameters:
+Pass the following request body properties:
 
 |Name|Data Type|Description|
 |--- |--- |--- |
@@ -687,7 +693,7 @@ Each object within the `chained_rule` array describes an additional set of crite
 
 ### Response Body
 
-The response body for a successful request contains the following parameters:
+The response body for a successful request contains the following properties:
 
 |Name|Data Type|Description|
 |--- |--- |--- |

@@ -22,6 +22,11 @@ A Security App:
 
 </Callout>
 
+## Authorization
+
+Authorize requests through the `app.waf` scope.
+
+[Learn more about authorization.](/guides/develop/rest_api/authentication)
 
 ## Get All Security Apps (Scopes)
 
@@ -43,7 +48,7 @@ This operation only takes advantage of [common request headers](../../Introducti
 
 #### Request Body
 
-Request body parameters are not required by this operation.
+Request body properties are not required by this operation.
 
 {{ API_RESPONSE.md }}
 
@@ -190,7 +195,7 @@ This operation only takes advantage of [common request headers](../../Introducti
 
 #### Request Body
 
-Pass the following request body parameters:
+Pass the following request body properties:
 
 |Name|Data Type|Description|
 |--- |--- |--- |
@@ -208,7 +213,7 @@ Pass the following request body parameters:
 
 #### Response Body
 
-The response body for a successful request contains the following parameters:
+The response body for a successful request contains the following properties:
 
 |Name|Data Type|Description|
 |--- |--- |--- |

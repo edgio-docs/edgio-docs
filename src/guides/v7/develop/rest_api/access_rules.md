@@ -19,6 +19,12 @@ Automate the following tasks:
 
 </Callout>
 
+## Authorization
+
+Authorize requests through the `app.waf` scope.
+
+[Learn more about authorization.](/guides/develop/rest_api/authentication)
+
 ## Add Access Rule (ACL) {/*add-access-rule-acl*/}
 
 Creates an access rule that identifies valid or malicious requests via whitelists, accesslists, and blacklists.
@@ -39,7 +45,7 @@ This operation only takes advantage of [common request headers](FINDME../../Intr
 
 #### Request Body {/*request-body-add-access-rule-acl*/}
 
-Pass the following request body parameters:
+Pass the following request body properties:
 
 |Name|Data Type|Description|
 |--- |--- |--- |
@@ -76,7 +82,7 @@ All entries within a cookie, referrer, URL, or user agent whitelist, accesslist,
 
 #### Response Body {/*response-body-add-access-rule-acl*/}
 
-The response body for a successful request contains the following parameters:
+The response body for a successful request contains the following properties:
 
 |Name|Data Type|Description|
 |--- |--- |--- |
@@ -232,13 +238,13 @@ This operation only takes advantage of [common request headers](FINDME../../Intr
 
 #### Request Body {/*request-body-delete-access-rule-acl*/}
 
-Request body parameters are not required by this operation.
+Request body properties are not required by this operation.
 
 {{ API_RESPONSE.md }}
 
 #### Response Body {/*response-body-delete-access-rule-acl*/}
 
-The response body for a successful request contains the following parameters:
+The response body for a successful request contains the following properties:
 
 |Name|Data Type|Description|
 |--- |--- |--- |
@@ -293,7 +299,7 @@ This operation only takes advantage of [common request headers](FINDME../../Intr
 
 #### Request Body {/*request-body-get-all-access-rules-acl*/}
 
-Request body parameters are not required by this operation.
+Request body properties are not required by this operation.
 
 {{ API_RESPONSE.md }}
 
@@ -362,7 +368,7 @@ This operation only takes advantage of [common request headers](FINDME../../Intr
 
 #### Request Body {/*request-body-get-access-rule-acl*/}
 
-Request body parameters are not required by this operation.
+Request body properties are not required by this operation.
 
 {{ API_RESPONSE.md }}
 
@@ -556,7 +562,7 @@ This operation only takes advantage of [common request headers](FINDME../../Intr
 
 #### Request Body {/*request-body-update-access-rule-acl*/}
 
-Pass the following request body parameters:
+Pass the following request body properties:
 
 |Name|Data Type|Description|
 |--- |--- |--- |
@@ -594,7 +600,7 @@ All entries within a cookie, referrer, URL, or user agent whitelist, accesslist,
 
 #### Response Body {/*response-body-update-access-rule-acl*/}
 
-The response body for a successful request contains the following parameters:
+The response body for a successful request contains the following properties:
 
 |Name|Data Type|Description|
 |--- |--- |--- |

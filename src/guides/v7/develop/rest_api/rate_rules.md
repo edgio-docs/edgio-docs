@@ -19,6 +19,12 @@ Automate the following tasks:
 
 </Callout>
 
+## Authorization
+
+Authorize requests through the `app.waf` scope.
+
+[Learn more about authorization.](/guides/develop/rest_api/authentication)
+
 ## Add Rate Rule {/*add-rate-rule*/}
 
 Creates a rate rule that determines the maximum number of requests that will be allowed within a given time period.
@@ -39,7 +45,7 @@ This operation only takes advantage of [common request headers](../../Introducti
 
 ### Request Body
 
-Pass the following request body parameters:
+Pass the following request body properties:
 
 |Name|Data Type|Description|
 |--- |--- |--- |
@@ -93,7 +99,7 @@ The `op` object describes each match condition using the following properties:
 
 ### Response Body
 
-The response body for a successful request contains the following parameters:
+The response body for a successful request contains the following properties:
 
 |Name|Data Type|Description|
 |--- |--- |--- |
@@ -168,13 +174,13 @@ This operation only takes advantage of [common request headers](../../Introducti
 
 ### Request Body
 
-Request body parameters are not required by this operation.
+Request body properties are not required by this operation.
 
 {{ API_RESPONSE.md }}
 
 ### Response Body
 
-The response body for a successful request contains the following parameters:
+The response body for a successful request contains the following properties:
 
 |Name|Data Type|Description|
 |--- |--- |--- |
@@ -229,7 +235,7 @@ This operation only takes advantage of [common request headers](../../Introducti
 
 ### Request Body
 
-Request body parameters are not required by this operation.
+Request body properties are not required by this operation.
 
 {{ API_RESPONSE.md }}
 
@@ -291,7 +297,7 @@ This operation only takes advantage of [common request headers](../../Introducti
 
 ### Request Body
 
-Request body parameters are not required by this operation.
+Request body properties are not required by this operation.
 
 {{ API_RESPONSE.md }}
 
@@ -401,7 +407,7 @@ This operation only takes advantage of [common request headers](../../Introducti
 
 ### Request Body
 
-Pass the following request body parameters:
+Pass the following request body properties:
 
 |Name|Data Type|Description|
 |--- |--- |--- |
@@ -457,7 +463,7 @@ The `op` object describes each match condition using the following properties:
 
 ### Response Body
 
-The response body for a successful request contains the following parameters:
+The response body for a successful request contains the following properties:
 
 |Name|Data Type|Description|
 |--- |--- |--- |

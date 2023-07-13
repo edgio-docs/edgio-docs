@@ -9,7 +9,7 @@ Only authenticated requests to the REST API will be processed. This authenticati
 
 Authentication requires passing a unique value (i.e., token). Generate a token generated from your [OAuth 2.0](FINDME) credentials. By default, this type of token expires after 300 seconds.
     
-[Register your client application](FINDME) through the {{ PRODUCT }} Identity dashboard to generate OAuth 2.0 credentials through which you may authorize requests submitted to our API gateway ({{ API_DOMAIN }}).
+[Register your client application](FINDME) through the {{ IDENTITY_LINK }} to generate OAuth 2.0 credentials through which you may authorize requests submitted to our API gateway ({{ API_DOMAIN }}).
 
 ## Quick Start
 
@@ -53,16 +53,16 @@ A scope authorizes an API client to perform specific actions (e.g., create and r
 
 The above hierarchy allows you to grant broad or narrow permissions to your client. Each element in this hierarchy is described below.
 
--   **Namespace:** Identifies a broad category (i.e., ec).
--   **Service:** Identifies a product or a category of products (e.g., analytics, rules, and rtld).
+-   **Namespace:** Identifies a broad category (i.e., `app`).
+-   **Service:** Identifies a product or a category of products (e.g., `waf`, `bot_security`, and `api_security`).
     
     A scope may identify a product or a category of products through multiple services.  
-    **Example:**  Both analytics and rtap identify services in the following scope: ec.analytics.rtap.reports).
+    <!--**Example:**  Both x and y identify services in the following scope: `app.waf`).-->
 -   **Type:** Optional. Identifies a feature or a type of permission.
     
-    **Example:** In the following scope, deploy identifies a type of permission. In this case, deploy grants permissions to retrieve, submit, and delete deploy requests.
+    <!--**Example:** In the following scope, deploy identifies a type of permission. In this case, deploy grants permissions to retrieve, submit, and delete deploy requests.
     
-    ec.rules.deploy 
+    `app.waf`-->
 
 -   **Modifier:** Optional. Restricts the scope to a subset of permissions. Valid values are:
     -   **create:** Restricts the scope to the creation of a resource.
@@ -70,29 +70,27 @@ The above hierarchy allows you to grant broad or narrow permissions to your clie
     -   **delete:** Restricts the scope to the deletion of a resource.
     -   **read:** Restricts the scope to the retrieval of a resource.
     
-    **Example:** The `:read` modifier in the following scope authorizes the retrieval of deploy requests:
+    <!--**Example:** The `:read` modifier in the following scope authorizes the retrieval of deploy requests:
     
-    ec.rules.deploy:read
+    `app.waf`-->
 
 **Key information:**
 
 -   A security best practice is to only grant the set of scope(s) required for the automation task(s) that the client will perform.
 -   A broad scope grants all of the scopes underneath it.
     
-    **Example:** The following scope authorizes full access to Rules Engine:
-    
-    ec.rules
+    **Example:** The following scope authorizes full access to Bot Manager: `app.bot-security`
 
-	Alternatively, the following scope authorizes the creation, retrieval, modification, and deletion of Rules Engine drafts and policies:
+	<!--Alternatively, the following scope authorizes the creation, retrieval, modification, and deletion of X:
     
-    ec.rules.policy
+    `app.bot_security` -->
 -   One or more scope(s) must also be defined when requesting an access token. You may only specify a scope that has been explicitly granted or inherited from a broader scope.
 -   Common scopes are listed below.
     | Scope  | Description  |
     |---|---|
-    |   |   |
-    |   |   |
-    |   |   |
+    | app.waf  | Authorizes full access to security apps, access rules, rate rules, custom rules, and managed rules.   |
+    | app.bot_security  | Authorizes full access to Bot Manager.  |
+    | app.api_security  | Authorizes full access to API Security.  |
 
 ## Client Applications
 
@@ -117,7 +115,7 @@ The recommended approach for switching to a new secret key is to create a secret
 
 **To create an account for an API client**
 
-1. Navigate to the [Identity dashboard](https://{{ API_DOMAIN }}).
+1. Navigate to the {{ IDENTITY_LINK }}.
 2. Click **Clients** from the side navigation pane.
 3. Verify that the **Assigned to Tenant** option is set to the desired team.
 4. Click **Create New Client**.
@@ -136,7 +134,7 @@ A Quick Start page is shown upon creating an account for your API client. This p
 
 **To modify an API client's account**
 
-1. Navigate to the [Identity dashboard](https://{{ API_DOMAIN }}).
+1. Navigate to the {{ IDENTITY_LINK }}.
 2. Click **Clients** from the side navigation pane.
 3. Verify that the **Assigned to Tenant** option is set to the desired team.
 4. Click on ![](FINDME../Resources/Images/Icon/Icon-Open-Configuration.png) corresponding to the desired account.
@@ -203,7 +201,7 @@ A Quick Start page is shown upon creating an account for your API client. This p
 
 </Callout>
 
-1. Navigate to the [Identity dashboard](https://{{ API_DOMAIN }}).
+1. Navigate to the {{ IDENTITY_LINK }}.
 2. Click **Clients** from the side navigation pane.
 3. Verify that the **Assigned to Tenant** option is set to your customer account.
 4. Click on the desired account.
@@ -215,7 +213,7 @@ A Quick Start page is shown upon creating an account for your API client. This p
 
 Each request to our REST API service must be authorized through an access token. Access tokens provide temporary authorization (e.g., 5 minutes) to our REST API service. Once an access token expires, it may no longer be used to authorize requests. Attempting to authorize a request with an expired token will result in a `401 Unauthenticated Access` response.
 
-**Request syntax:** `POST https://id.vdms.io/connect/token`
+**Request syntax:** `POST https://account.edgio.app/connect/token`
 
 Requests for access tokens requires:
 
@@ -231,12 +229,12 @@ Requests for access tokens requires:
 **Sample request:**
 
 ``` curl
-POST https://{{ API_DOMAIN }}/connect/token HTTP/1.1
+POST https://account.edgio.app/connect/token HTTP/1.1
 Accept: application/json
 Content-Type: application/x-www-form-urlencoded
-Host: {{ API_DOMAIN }}
+Host: account.edgio.app
 
-client_id=J23...BCd J2345678-abcd-9012-efgh-34567890aBCd&client_secret=Fad...DFv Fad323FSd4GSdce3DFv&grant_type=client_credentials&scope=ec.rules
+client_id=J23...BCd J2345678-abcd-9012-efgh-34567890aBCd&client_secret=Fad...DFv Fad323FSd4GSdce3DFv&grant_type=client_credentials&scope=app.waf
 ```
 
 **Sample response:**

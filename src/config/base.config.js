@@ -32,7 +32,7 @@ const RUM_NS = 'Edgio'; // namespace for the JS package used by RUM
 
 const DOMAIN = 'edg.io';
 const DOMAIN_LEGACY = 'layer0.co';
-const API_DOMAIN = 'account.edgioapis.com';
+const API_DOMAIN = 'edgioapis.com';
 const APP_DOMAIN = `edgio.app`;
 const LINK_DOMAIN = `edgio.link`;
 const PERMALINK_DOMAIN = `edgio-perma.link`;

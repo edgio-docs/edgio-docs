@@ -290,8 +290,8 @@ const nav = {
               path: 'sites_frameworks/getting_started/brunch',
             },
             {
-              title: 'Custom Connector',
-              path: 'sites_frameworks/getting_started/custom_connector',
+              title: 'Nodejs Connector',
+              path: 'sites_frameworks/getting_started/nodejs_connector',
             },
             {
               title: 'Docusaurus',

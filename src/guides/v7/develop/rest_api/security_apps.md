@@ -31,11 +31,11 @@ Retrieves a list of Security Apps and their properties.
 
 A request to retrieve all Security Apps is described below.
 
-`GET {{ API_URL }}/waf/v1.0/scopes`
+`GET {{ API_URL }}/waf/{{ API_SECURITY_VERSION }}/<TENANT ID>/scopes`
 
 Define the following variable when submitting the above request:
 
--   **:** Required. Replace this variable with your team's tenant ID. 
+-   `<TENANT ID>`**:** Required. Replace this variable with your team's tenant ID. 
 
 #### Request Headers
 
@@ -70,7 +70,7 @@ The response body for a successful request contains the following response eleme
 A sample JSON request is shown below.
 
 ```json
-GET {{ API_URL }}/waf/v1.0/scopes  HTTP/1.1
+GET {{ API_URL }}/waf/{{ API_SECURITY_VERSION }}/<TENANT ID>/scopes  HTTP/1.1
 {{ API_SAMPLE_REQUEST_HEADERS.md }}
 ```
 
@@ -178,11 +178,11 @@ Creates, updates, and deletes one or more Security Apps.
 
 A request to manage Security Apps is described below.
 
-`POST {{ API_URL }}/waf/v1.0/scopes`
+`POST {{ API_URL }}/waf/{{ API_SECURITY_VERSION }}/<TENANT ID>/scopes`
 
 Define the following variable when submitting the above request:
 
--   **:** Required. Replace this variable with your team's tenant ID. 
+-   `<TENANT ID>`**:** Required. Replace this variable with your team's tenant ID. 
 
 #### Request Headers
 
@@ -223,7 +223,7 @@ The response body for a successful request contains the following parameters:
 A sample JSON request is shown below.
 
 ```json
-POST {{ API_URL }}/waf/v1.0/scopes  HTTP/1.1
+POST {{ API_URL }}/waf/{{ API_SECURITY_VERSION }}/<TENANT ID>/scopes  HTTP/1.1
 {{ API_SAMPLE_REQUEST_HEADERS.md }}
 
 ```json

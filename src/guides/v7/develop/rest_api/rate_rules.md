@@ -27,11 +27,11 @@ Creates a rate rule that determines the maximum number of requests that will be 
 
 A request to add a rate rule is described below.
 
-`POST {{ API_URL }}/waf/v1.0/limit`
+`POST {{ API_URL }}/waf/{{ API_SECURITY_VERSION }}/<TENANT ID>/limit`
 
 Define the following variable when submitting the above request:
 
--   **:** Required. Replace this variable with your team's tenant ID. 
+-   `<TENANT ID>`**:** Required. Replace this variable with your team's tenant ID. 
 
 ### Request Headers
 
@@ -109,7 +109,7 @@ The response body for a successful request contains the following parameters:
 A sample JSON request is shown below.
 
 ```json
-POST {{ API_URL }}/waf/v1.0/limit  HTTP/1.1
+POST {{ API_URL }}/waf/{{ API_SECURITY_VERSION }}/<TENANT ID>/limit  HTTP/1.1
 {{ API_SAMPLE_REQUEST_HEADERS.md }}
 
 {
@@ -155,11 +155,11 @@ Deletes a rate rule that determines the maximum number of requests that will be 
 
 A request to delete a rate rule is described below.
 
-`DELETE {{ API_URL })/waf/v1.0/limit/<RATE RULE ID>`
+`DELETE {{ API_URL })/waf/{{ API_SECURITY_VERSION }}/<TENANT ID>/limit/<RATE RULE ID>`
 
 Define the following variables when submitting the above request:
 
--   **:** Required. Replace this variable with your team's tenant ID. 
+-   `<TENANT ID>`**:** Required. Replace this variable with your team's tenant ID. 
 -   `<RATE RULE ID>`**:** Required. Replace this variable with the system-defined ID of the desired rate rule. Use the [Get All Rate Rules operation]() to retrieve a list of rate rules and their IDs.
 
 ### Request Headers
@@ -189,7 +189,7 @@ The response body for a successful request contains the following parameters:
 A sample JSON request is shown below.
 
 ```json
-DELETE {{ API_URL}}/waf/v1.0/limit/vTma2xvK  HTTP/1.1
+DELETE {{ API_URL}}/waf/{{ API_SECURITY_VERSION }}/<TENANT ID>/limit/vTma2xvK  HTTP/1.1
 {{ API_SAMPLE_REQUEST_HEADERS.md }}
 ```
 
@@ -217,11 +217,11 @@ Retrieves a list of rate rules. A rate rule determines the maximum number of req
 
 A request to retrieve all rate rules is described below.
 
-`GET {{ API_URL }}/waf/v1.0/limit`
+`GET {{ API_URL }}/waf/{{ API_SECURITY_VERSION }}/<TENANT ID>/limit`
 
 Define the following variable when submitting the above request:
 
--   **:** Required. Replace this variable with your team's tenant ID. 
+-   `<TENANT ID>`**:** Required. Replace this variable with your team's tenant ID. 
 
 ### Request Headers
 
@@ -250,7 +250,7 @@ The response body for a successful request contains the following response eleme
 A sample JSON request is shown below.
 
 ```json
-GET {{ API_URL }}/waf/v1.0/limit  HTTP/1.1
+GET {{ API_URL }}/waf/{{ API_SECURITY_VERSION }}/<TENANT ID>/limit  HTTP/1.1
 {{ API_SAMPLE_REQUEST_HEADERS.md }}
 ```
 
@@ -278,11 +278,11 @@ Retrieves a list of rate rules. A rate rule determines the maximum number of req
 
 A request to retrieve all rate rules is described below.
 
-`GET {{API_URL}}/waf/v1.0/limit/<RATE RULE ID>`
+`GET {{API_URL}}/waf/{{ API_SECURITY_VERSION }}/<TENANT ID>/limit/<RATE RULE ID>`
 
 Define the following variables when submitting the above request:
 
--   **:** Required. Replace this variable with your team's tenant ID. 
+-   `<TENANT ID>`**:** Required. Replace this variable with your team's tenant ID. 
 -   `<RATE RULE ID>`**:** Required. Replace this variable with the system-defined ID of the desired rate rule. Use the [Get All Rate Rules operation](#get-all-rate-rules) to retrieve a list of rate rules and their IDs.
 
 ### Request Headers
@@ -357,7 +357,7 @@ The `op` object describes each match condition using the following properties:
 A sample JSON request is shown below.
 
 ```json
-GET {{ API_URL }}/waf/v1.0/limit/vTma2xvK  HTTP/1.1
+GET {{ API_URL }}/waf/{{ API_SECURITY_VERSION }}/<TENANT ID>/limit/vTma2xvK  HTTP/1.1
 {{ API_SAMPLE_REQUEST_HEADERS.md }}
 ```
 
@@ -388,11 +388,11 @@ Updates a rate rule that determines the maximum number of requests that will be 
 
 A request to update a rate limit is described below.
 
-`PUT {{ API_URL }}/waf/v1.0/limit/<RATE RULE ID>`
+`PUT {{ API_URL }}/waf/{{ API_SECURITY_VERSION }}/<TENANT ID>/limit/<RATE RULE ID>`
 
 Define the following variable when submitting the above request:
 
--   **:** Required. Replace this variable with your team's tenant ID. 
+-   `<TENANT ID>`**:** Required. Replace this variable with your team's tenant ID. 
 -   `<RATE RULE ID>`**:** Required. Replace this variable with the system-defined ID of the desired rate rule. Use the [Get All Rate Rules operation](#get-all-rate-rules) to retrieve a list of rate rules and their IDs.
 
 ### Request Headers
@@ -472,7 +472,7 @@ The response body for a successful request contains the following parameters:
 A sample JSON request is shown below.
 
 ```json
-PUT {{ API_URL }}/waf/v1.0/limit/fgSagLvT  HTTP/1.1
+PUT {{ API_URL }}/waf/{{ API_SECURITY_VERSION }}/<TENANT ID>/limit/fgSagLvT  HTTP/1.1
 {{ API_SAMPLE_REQUEST_HEADERS.md }}
 
 {

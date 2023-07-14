@@ -29,7 +29,7 @@ Authorize requests through the `app.waf` scope.
 
 Creates an access rule that identifies valid or malicious requests via whitelists, accesslists, and blacklists.
 
-### Request {/*request-add-access-rule-acl*/}
+<h3>Request</h3>
 
 A request to create an access rule is described below.
 
@@ -39,11 +39,11 @@ Define the following variable when submitting the above request:
 
 -   `<TENANT ID>`**:** Required. Replace this variable with your team's tenant ID. 
 
-#### Request Headers {/*request-headers-add-access-rule-acl*/}
+<h4>Request Headers</h4>
 
 This operation only takes advantage of [common request headers](FINDME../../Introduction/Common_Request_and_Response_Elements.htm#Request).
 
-#### Request Body {/*request-body-add-access-rule-acl*/}
+<h4>Request Body</h4>
 
 Pass the following request body properties:
 
@@ -80,7 +80,7 @@ All entries within a cookie, referrer, URL, or user agent whitelist, accesslist,
 
 {{ API_RESPONSE.md }}
 
-#### Response Body {/*response-body-add-access-rule-acl*/}
+<h4>Response Body</h4>
 
 The response body for a successful request contains the following properties:
 
@@ -92,7 +92,7 @@ The response body for a successful request contains the following properties:
 
 {{ API_ERRORS.md }}
 
-### Sample Request and Response (JSON) {/*sample-request-and-response-json-add-access-rule-acl*/}
+<h3>Sample Request and Response (JSON)</h3>
 
 A sample JSON request is shown below.
 
@@ -215,7 +215,7 @@ Content-Length: 65
 
 Deletes an access rule (ACL) that identifies valid or malicious requests via whitelists, accesslists, and blacklists.
 
-### Request {/*request-delete-access-rule-acl*/}
+<h3>Request</h3>
 
 A request to delete an access rule is described below.
 
@@ -232,17 +232,17 @@ Define the following variable when submitting the above request:
 
 	</Callout>
 
-#### Request Headers {/*request-headers-delete-access-rule-acl*/}
+<h4>Request Headers</h4>
 
 This operation only takes advantage of [common request headers](FINDME../../Introduction/Common_Request_and_Response_Elements.htm#Request).
 
-#### Request Body {/*request-body-delete-access-rule-acl*/}
+<h4>Request Body</h4>
 
 Request body properties are not required by this operation.
 
 {{ API_RESPONSE.md }}
 
-#### Response Body {/*response-body-delete-access-rule-acl*/}
+<h4>Response Body</h4>
 
 The response body for a successful request contains the following properties:
 
@@ -254,7 +254,7 @@ The response body for a successful request contains the following properties:
 
 {{ API_ERRORS.md }}
 
-### Sample Request and Response (JSON) {/*sample-request-and-response-json-delete-access-rule-acl*/}
+<h3>Sample Request and Response (JSON)</h3>
 
 A sample JSON request is shown below.
 
@@ -283,7 +283,7 @@ Content-Length: 51
 
 Retrieves a list of access rules. An access rule identifies valid or malicious requests via whitelists, accesslists, and blacklists.
 
-### Request {/*request-get-all-access-rules-acl*/}
+<h3>Request</h3>
 
 A request to retrieve all access rules is described below.
 
@@ -293,17 +293,17 @@ Define the following variable when submitting the above request:
 
 -   `<TENANT ID>`**:** Required. Replace this variable with your team's tenant ID. 
 
-#### Request Headers {/*request-headers-get-all-access-rules-acl*/}
+<h4>Request Headers</h4>
 
 This operation only takes advantage of [common request headers](FINDME../../Introduction/Common_Request_and_Response_Elements.htm#Request).
 
-#### Request Body {/*request-body-get-all-access-rules-acl*/}
+<h4>Request Body</h4>
 
 Request body properties are not required by this operation.
 
 {{ API_RESPONSE.md }}
 
-#### Response Body {/*response-body=get-all-access-rules-acl*/}
+<h4>Response Body</h4>
 
 The response body for a successful request contains the following response elements for each access rule:
 
@@ -315,7 +315,7 @@ The response body for a successful request contains the following response eleme
 
 {{ API_ERRORS.md }}
 
-### Sample Request and Response (JSON) {/*sample-request-and-response-json-delete-access-rules-acl*/}
+<h3>Sample Request and Response (JSON)</h3>
 
 A sample JSON request is shown below.
 
@@ -345,7 +345,7 @@ Content-Length: 141
 
 Retrieves an access rule that identifies valid or malicious requests via whitelists, accesslists, and blacklists.
 
-### Request {/*request-get-access-rule-acl*/}
+<h3>Request</h3>
 
 A request to retrieve an access rule is described below.
 
@@ -362,17 +362,17 @@ Define the following variable when submitting the above request:
 
 	</Callout>
 
-#### Request Headers {/*request-headers-get-access-rule-acl*/}
+<h4>Request Headers</h4>
 
 This operation only takes advantage of [common request headers](FINDME../../Introduction/Common_Request_and_Response_Elements.htm#Request).
 
-#### Request Body {/*request-body-get-access-rule-acl*/}
+<h4>Request Body</h4>
 
 Request body properties are not required by this operation.
 
 {{ API_RESPONSE.md }}
 
-#### Response Body {/*response-body-get-access-rule-acl*/}
+<h4>Response Body</h4>
 
 The response body for a successful request contains the following response elements for each access rule:
 
@@ -413,7 +413,7 @@ All entries within a cookie, referrer, URL, or user agent whitelist, accesslist,
 
 {{ API_ERRORS.md }}
 
-### Sample Request and Response (JSON) {/*sample-request-and-response-json-get-access-rule-acl*/}
+<h3>Sample Request and Response (JSON)</h3>
 
 A sample JSON request is shown below.
 
@@ -539,7 +539,7 @@ Content-Length: 1400
 
 Updates an access rule that identifies valid or malicious requests via whitelists, accesslists, and blacklists.
 
-### Request {/*request-update-access-rule-acl*/}
+<h3>Request</h3>
 
 A request to update an access rule is described below.
 
@@ -556,11 +556,11 @@ Define the following variable when submitting the above request:
 
 	</Callout>
 
-#### Request Headers {/*request-headers-update-access-rule-acl*/}
+<h4>Request Headers</h4>
 
 This operation only takes advantage of [common request headers](FINDME../../Introduction/Common_Request_and_Response_Elements.htm#Request).
 
-#### Request Body {/*request-body-update-access-rule-acl*/}
+<h4>Request Body</h4>
 
 Pass the following request body properties:
 
@@ -598,7 +598,7 @@ All entries within a cookie, referrer, URL, or user agent whitelist, accesslist,
 
 {{ API_RESPONSE.md }}
 
-#### Response Body {/*response-body-update-access-rule-acl*/}
+<h4>Response Body</h4>
 
 The response body for a successful request contains the following properties:
 
@@ -610,7 +610,7 @@ The response body for a successful request contains the following properties:
 
 {{ API_ERRORS.md }}
 
-### Sample Request and Response (JSON) {/*sample-request-and-response-json-update-access-rule-acl*/}
+<h3>Sample Request and Response (JSON)</h3>
 
 A sample JSON request is shown below.
 

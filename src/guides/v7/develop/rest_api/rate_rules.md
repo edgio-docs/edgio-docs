@@ -29,7 +29,7 @@ Authorize requests through the `app.waf` scope.
 
 Creates a rate rule that determines the maximum number of requests that will be allowed within a given time period.
 
-### Request
+<h3>Request</h3>
 
 A request to add a rate rule is described below.
 
@@ -39,11 +39,11 @@ Define the following variable when submitting the above request:
 
 -   `<TENANT ID>`**:** Required. Replace this variable with your team's tenant ID. 
 
-### Request Headers
+<h4>Request Headers</h4>
 
 This operation only takes advantage of [common request headers](../../Introduction/Common_Request_and_Response_Elements.htm#Request).
 
-### Request Body
+<h4>Request Body</h4>
 
 Pass the following request body properties:
 
@@ -97,7 +97,7 @@ The `op` object describes each match condition using the following properties:
 
 {{ API_RESPONSE.md }}
 
-### Response Body
+<h4>Request Body</h4>
 
 The response body for a successful request contains the following properties:
 
@@ -110,7 +110,7 @@ The response body for a successful request contains the following properties:
 
 {{ API_ERRORS.md }}
 
-### Sample Request and Response (JSON)
+<h3>Sample Request and Response (JSON)</h3>
 
 A sample JSON request is shown below.
 
@@ -157,7 +157,7 @@ Content-Length: 164
 
 Deletes a rate rule that determines the maximum number of requests that will be allowed within a given time period.
 
-### Request
+<h3>Request</h3>
 
 A request to delete a rate rule is described below.
 
@@ -166,19 +166,19 @@ A request to delete a rate rule is described below.
 Define the following variables when submitting the above request:
 
 -   `<TENANT ID>`**:** Required. Replace this variable with your team's tenant ID. 
--   `<RATE RULE ID>`**:** Required. Replace this variable with the system-defined ID of the desired rate rule. Use the [Get All Rate Rules operation]() to retrieve a list of rate rules and their IDs.
+-   `<RATE RULE ID>`**:** Required. Replace this variable with the system-defined ID of the desired rate rule. Use the [Get All Rate Rules operation](#get-all-rate-rules) to retrieve a list of rate rules and their IDs.
 
-### Request Headers
+<h4>Request Headers</h4>
 
 This operation only takes advantage of [common request headers](../../Introduction/Common_Request_and_Response_Elements.htm#Request).
 
-### Request Body
+<h4>Request Body</h4>
 
 Request body properties are not required by this operation.
 
 {{ API_RESPONSE.md }}
 
-### Response Body
+<h4>Request Body</h4>
 
 The response body for a successful request contains the following properties:
 
@@ -190,7 +190,7 @@ The response body for a successful request contains the following properties:
 
 {{ API_ERRORS.md }}
 
-### Sample Request and Response (JSON)
+<h3>Sample Request and Response (JSON)</h3>
 
 A sample JSON request is shown below.
 
@@ -219,7 +219,7 @@ Content-Length: 51
 
 Retrieves a list of rate rules. A rate rule determines the maximum number of requests that will be allowed within a given time period.
 
-### Request
+<h3>Request</h3>
 
 A request to retrieve all rate rules is described below.
 
@@ -229,29 +229,29 @@ Define the following variable when submitting the above request:
 
 -   `<TENANT ID>`**:** Required. Replace this variable with your team's tenant ID. 
 
-### Request Headers
+<h4>Request Headers</h4>
 
 This operation only takes advantage of [common request headers](../../Introduction/Common_Request_and_Response_Elements.htm#Request).
 
-### Request Body
+<h4>Request Body</h4>
 
 Request body properties are not required by this operation.
 
 {{ API_RESPONSE.md }}
 
-### Response Body
+<h4>Request Body</h4>
 
 The response body for a successful request contains the following response elements for each rate rule:
 
 |Name|Data Type|Description|
 |--- |--- |--- |
-|id|String|Indicates the system-defined ID for the rate rule. Pass this ID to the [Get Rate Rule operation]() to retrieve the properties for this rate rule.|
+|id|String|Indicates the system-defined ID for the rate rule. Pass this ID to the [Get Rate Rule operation](#get-rate-rule) to retrieve the properties for this rate rule.|
 |last_modified_date|String|Indicates the date and time at which the rate rule was last modified. <br />**Syntax:** `YYYY-MM-DDThh:mm:ss:ffffffZ`|
 |name|String|Indicates the name of the rate rule.|
 
 {{ API_ERRORS.md }}
 
-### Sample Request and Response (JSON)
+<h3>Sample Request and Response (JSON)</h3>
 
 A sample JSON request is shown below.
 
@@ -280,7 +280,7 @@ Content-Length: 57
 
 Retrieves a list of rate rules. A rate rule determines the maximum number of requests that will be allowed within a given time period.
 
-### Request
+<h3>Request</h3>
 
 A request to retrieve all rate rules is described below.
 
@@ -291,17 +291,17 @@ Define the following variables when submitting the above request:
 -   `<TENANT ID>`**:** Required. Replace this variable with your team's tenant ID. 
 -   `<RATE RULE ID>`**:** Required. Replace this variable with the system-defined ID of the desired rate rule. Use the [Get All Rate Rules operation](#get-all-rate-rules) to retrieve a list of rate rules and their IDs.
 
-### Request Headers
+<h4>Request Headers</h4>
 
 This operation only takes advantage of [common request headers](../../Introduction/Common_Request_and_Response_Elements.htm#Request).
 
-### Request Body
+<h4>Request Body</h4>
 
 Request body properties are not required by this operation.
 
 {{ API_RESPONSE.md }}
 
-### Response Body
+<h4>Request Body</h4>
 
 The response body for a successful request contains the following response elements:
 
@@ -358,7 +358,7 @@ The `op` object describes each match condition using the following properties:
 
 {{ API_ERRORS.md }}
 
-### Sample Request and Response (JSON)
+<h3>Sample Request and Response (JSON)</h3>
 
 A sample JSON request is shown below.
 
@@ -390,7 +390,7 @@ Content-Length: 164
 
 Updates a rate rule that determines the maximum number of requests that will be allowed within a given time period.
 
-### Request
+<h3>Request</h3>
 
 A request to update a rate limit is described below.
 
@@ -401,11 +401,11 @@ Define the following variable when submitting the above request:
 -   `<TENANT ID>`**:** Required. Replace this variable with your team's tenant ID. 
 -   `<RATE RULE ID>`**:** Required. Replace this variable with the system-defined ID of the desired rate rule. Use the [Get All Rate Rules operation](#get-all-rate-rules) to retrieve a list of rate rules and their IDs.
 
-### Request Headers
+<h4>Request Headers</h4>
 
 This operation only takes advantage of [common request headers](../../Introduction/Common_Request_and_Response_Elements.htm#Request).
 
-### Request Body
+<h4>Request Body</h4>
 
 Pass the following request body properties:
 
@@ -461,7 +461,7 @@ The `op` object describes each match condition using the following properties:
 
 {{ API_RESPONSE.md }}
 
-### Response Body
+<h4>Request Body</h4>
 
 The response body for a successful request contains the following properties:
 
@@ -473,7 +473,7 @@ The response body for a successful request contains the following properties:
 
 {{ API_ERRORS.md }}
 
-### Sample Request and Response (JSON)
+<h3>Sample Request and Response (JSON)</h3>
 
 A sample JSON request is shown below.
 

@@ -32,7 +32,7 @@ Authorize requests through the `app.waf` scope.
 
 Creates a managed rule that identifies a rule set configuration and describes a valid request.
 
-### Request
+<h3>Request</h3>
 
 A request to create a managed rule is described below.
 
@@ -42,11 +42,11 @@ Define the following variable when submitting the above request:
 
 -   `<TENANT ID>`**:** Required. Replace this variable with your team's tenant ID. 
 
-### Request Headers
+<h4>Request Headers</h4>
 
 This operation only takes advantage of [common request headers](../../Introduction/Common_Request_and_Response_Elements.htm#Request).
 
-### Request Body
+<h4>Request Body</h4>
 
 Pass the following request body properties:
 
@@ -106,7 +106,7 @@ The `rule_target_updates` array describes each target using the following proper
 
 {{ API_RESPONSE.md }}
 
-### Response Body
+<h4>Response Body</h4>
 
 The response body for a successful request contains the following properties:
 
@@ -118,7 +118,7 @@ The response body for a successful request contains the following properties:
 
 {{ API_ERRORS.md }}
 
-### Sample Request and Response (JSON)
+<h3>Sample Request and Response (JSON)</h3>
 
 A sample JSON request is shown below.
 
@@ -200,17 +200,17 @@ Define the following variables when submitting the above request:
 -   `<TENANT ID>`**:** Required. Replace this variable with your team's tenant ID. 
 -   `<MANAGED RULE ID>`**:** Required. Replace this variable with the system-defined ID for the desired managed rule. Use the [Get All Managed Rules operation](#get-all-managed-rules) to retrieve a list of managed rules and their system-defined IDs.
 
-### Request Headers
+<h4>Request Headers</h4>
 
 This operation only takes advantage of [common request headers](../../Introduction/Common_Request_and_Response_Elements.htm#Request).
 
-### Request Body
+<h4>Request Body</h4>
 
 Request body properties are not required by this operation.
 
 {{ API_RESPONSE.md }}
 
-### Response Body
+<h4>Response Body</h4>
 
 The response body for a successful request contains the following properties:
 
@@ -222,7 +222,7 @@ The response body for a successful request contains the following properties:
 
 {{ API_ERRORS.md }}
 
-### Sample Request and Response (JSON)
+<h3>Sample Request and Response (JSON)</h3>
 
 A sample JSON request is shown below.
 
@@ -250,7 +250,7 @@ Content-Length: 51
 
 Retrieves a list of managed rules. A managed rule identifies a rule set configuration and describes a valid request.
 
-### Request
+<h3>Request</h3>
 
 A request to retrieve all managed rules is described below.
 
@@ -260,17 +260,17 @@ Define the following variable when submitting the above request:
 
 -   `<TENANT ID>`**:** Required. Replace this variable with your team's tenant ID. 
 
-### Request Headers
+<h4>Request Headers</h4>
 
 This operation only takes advantage of [common request headers](../../Introduction/Common_Request_and_Response_Elements.htm#Request).
 
-### Request Body
+<h4>Request Body</h4>
 
 Request body properties are not required by this operation.
 
 {{ API_RESPONSE.md }}
 
-### Response Body
+<h4>Response Body</h4>
 
 The response body for a successful request contains the following response elements for each managed rule:
 
@@ -285,7 +285,7 @@ The response body for a successful request contains the following response eleme
 
 {{ API_ERRORS.md }}
 
-### Sample Request and Response (JSON)
+<h3>Sample Request and Response (JSON)</h3>
 
 A sample JSON request is shown below.
 
@@ -318,7 +318,7 @@ Content-Length: 221
 
 Retrieves a list of the available policies for the specified rule set.
 
-### Request
+<h3>Request</h3>
 
 A request to retrieve policies is described below.
 
@@ -330,17 +330,17 @@ Define the following variables when submitting the above request:
 -   `<RULE SET ID>`**:** Required. Replace this variable with the system-defined ID of the rule set whose policies will be retrieved. Find out the system-defined ID of the rule set associated with the desired managed rule through the `ruleset_id` response property of the [Get Managed Rule operation](#get-managed-rule). Alternatively, retrieve a list of the available rule sets and their system-defined IDs through the [Get Available Rule Sets operation](#get-available-rule-sets).
 -   `<RULE SET VERSION>`**:** Required. Replace this variable with the version of the rule set whose policies will be retrieved. Find out the version of the rule set associated with the desired managed rule through the `ruleset_version` response property of the [Get Managed Rule operation](#get-managed-rule).
 
-### Request Headers
+<h4>Request Headers</h4>
 
 This operation only takes advantage of [common request headers](../../Introduction/Common_Request_and_Response_Elements.htm#Request).
 
-### Request Body
+<h4>Request Body</h4>
 
 Request body properties are not required by this operation.
 
 {{ API_RESPONSE.md }}
 
-### Response Body
+<h4>Response Body</h4>
 
 The response body for a successful request contains the following response properties for each policy returned by this operation:
 
@@ -488,7 +488,7 @@ Retrieves a list of the available rule sets. The purpose of this operation is to
   
 </Callout>
 
-### Request
+<h3>Request</h3>
 
 A request to retrieve rule sets is described below.
 
@@ -498,17 +498,17 @@ Define the following variable when submitting the above request:
 
 -   `<TENANT ID>`**:** Required. Replace this variable with your team's tenant ID. 
 
-### Request Headers
+<h4>Request Headers</h4>
 
 This operation only takes advantage of [common request headers](../../Introduction/Common_Request_and_Response_Elements.htm#Request).
 
-### Request Body
+<h4>Request Body</h4>
 
 Request body properties are not required by this operation.
 
 {{ API_RESPONSE.md }}
 
-### Response Body
+<h4>Response Body</h4>
 
 The response body for a successful request contains the following response properties for each rule set returned by this operation:
 
@@ -584,7 +584,7 @@ Content-Length: 665
 
 Retrieves the set of rules associated with the specified policy. The set of rules associated with a policy may vary by a rule set's version.
 
-### Request
+<h3>Request</h3>
 
 A request to retrieve rules is described below.
 
@@ -597,17 +597,17 @@ Define the following variables when submitting the above request:
 -   `<RULE SET VERSION>`**:** Required. Replace this variable with the version of the rule set that contains the policy whose rules will be retrieved. Find out the version of the rule set associated with the desired managed rule through the `ruleset_version` response property of the [Get Managed Rule operation](#get-managed-rule).
 -   `<POLICY ID>`**:** Required. Replace this variable with the system-defined ID of the policy whose rules will be retrieved. Use the [Get Available Policies operation](#get-available-policies) to retrieve a list of the available policies and their system-defined IDs.
 
-### Request Headers
+<h4>Request Headers</h4>
 
 This operation only takes advantage of [common request headers](../../Introduction/Common_Request_and_Response_Elements.htm#Request).
 
-### Request Body
+<h4>Request Body</h4>
 
 Request body properties are not required by this operation.
 
 {{ API_RESPONSE.md }}
 
-### Response Body
+<h4>Response Body</h4>
 
 The response body for a successful request contains the following response properties for each rule returned by this operation:
 
@@ -700,7 +700,7 @@ Content-Length: 1194
 
 Retrieves a managed rule that identifies a rule set configuration and describes a valid request.
 
-### Request
+<h3>Request</h3>
 
 A request to retrieve a managed rule is described below.
 
@@ -711,17 +711,17 @@ Define the following variables when submitting the above request:
 -   `<TENANT ID>`**:** Required. Replace this variable with your team's tenant ID. 
 -   `<MANAGED RULE ID>`**:** Required. Replace this variable with the system-defined ID for the desired managed rule. Use the [Get All Managed Rules operation](#get-all-managed-rules) to retrieve a list of managed rules and their system-defined IDs.
 
-### Request Headers
+<h4>Request Headers</h4>
 
 This operation only takes advantage of [common request headers](../../Introduction/Common_Request_and_Response_Elements.htm#Request).
 
-### Request Body
+<h4>Request Body</h4>
 
 Request body properties are not required by this operation.
 
 {{ API_RESPONSE.md }}
 
-### Response Body
+<h4>Response Body</h4>
 
 The response body for a successful request contains the following response elements for each managed rule:
 
@@ -787,7 +787,7 @@ The `rule_target_updates` array describes each target using the following proper
 
 {{ API_ERRORS.md }}
 
-### Sample Request and Response (JSON)
+<h3>Sample Request and Response (JSON)</h3>
 
 A sample JSON request is shown below.
 
@@ -856,7 +856,7 @@ Content-Length: 1400
 
 Updates a managed rule that identifies a rule set configuration and describes a valid request.
 
-### Request
+<h3>Request</h3>
 
 A request to update a managed rule is described below.
 
@@ -867,11 +867,11 @@ Define the following variables when submitting the above request:
 -   `<TENANT ID>`**:** Required. Replace this variable with your team's tenant ID. 
 -   `<MANAGED RULE ID>`**:** Required. Replace this variable with the system-defined ID for the desired managed rule. Use the [Get All Managed Rules operation](#get-all-managed-rules) to retrieve a list of managed rules and their system-defined IDs.
 
-### Request Headers
+<h4>Request Headers</h4>
 
 This operation only takes advantage of [common request headers](../../Introduction/Common_Request_and_Response_Elements.htm#Request).
 
-### Request Body
+<h4>Request Body</h4>
 
 Pass the following request body properties:
 
@@ -931,7 +931,7 @@ The `rule_target_updates` array describes each target using the following proper
 
 {{ API_RESPONSE.md }}
 
-### Response Body
+<h4>Response Body</h4>
 
 The response body for a successful request contains the following properties:
 
@@ -943,7 +943,7 @@ The response body for a successful request contains the following properties:
 
 {{ API_ERRORS.md }}
 
-### Sample Request and Response (JSON)
+<h3>Sample Request and Response (JSON)</h3>
 
 A sample JSON request is shown below.
 

@@ -1,4 +1,4 @@
-##### Errors
+<h4>Errors</h4>
 
 The response body for an unsuccessful request contains the following parameters:
 
@@ -7,7 +7,7 @@ The response body for an unsuccessful request contains the following parameters:
 |success|Boolean|Returns `false`.|
 |errors|Array of objects|Contains one or more error(s).|
 
-###### errors Array
+<h5>errors Array</h5>
 
 The `errors` array describes each error that occurred using the following properties:
 

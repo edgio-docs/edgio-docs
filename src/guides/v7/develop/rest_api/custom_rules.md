@@ -128,11 +128,11 @@ Define the following variable when submitting the above request:
 
 -   `<TENANT ID>`**:** Required. Replace this variable with your team's tenant ID. 
 
-<h3>Request Headers</h3>
+<h4>Request Headers</h4>
 
 This operation only takes advantage of [common request headers](FINDME../../Introduction/Common_Request_and_Response_Elements.htm#Request).
 
-<h3>Request Body</h3>
+<h4>Request Body</h4>
 
 Pass the following request body properties:
 
@@ -301,11 +301,11 @@ Define the following variables when submitting the above request:
 -   `<TENANT ID>`**:** Required. Replace this variable with your team's tenant ID. 
 -   `<CUSTOM RULE ID>`**:** Replace this variable with the system-defined ID for your custom rule. Use the [Get All Custom Rules operation](#get-all-custom-rules) to retrieve a list of custom rule sets and their IDs.
 
-<h3>Request Headers</h3>
+<h4>Request Headers</h4>
 
 This operation only takes advantage of [common request headers](FINDME../../Introduction/Common_Request_and_Response_Elements.htm#Request).
 
-<h3>Request Body</h3>
+<h4>Request Body</h4>
 
 Request body properties are not required by this operation.
 
@@ -362,11 +362,11 @@ Define the following variable when submitting the above request:
 
 -   `<TENANT ID>`**:** Required. Replace this variable with your team's tenant ID. 
 
-<h3>Request Headers</h3>
+<h4>Request Headers</h4>
 
 This operation only takes advantage of [common request headers](FINDME../../Introduction/Common_Request_and_Response_Elements.htm#Request).
 
-<h3>Request Body</h3>
+<h4>Request Body</h4>
 
 Request body properties are not required by this operation.
 
@@ -428,11 +428,11 @@ Define the following variables when submitting the above request:
 -   `<CUSTOM RULE ID>`**:** Replace this variable with the system-defined ID for your custom rule. Use the [Get All Custom Rules operation](#get-all-custom-rules) to retrieve a list of custom rule sets and their IDs.
 
 
-<h3>Request Headers</h3>
+<h4>Request Headers</h4>
 
 This operation only takes advantage of [common request headers](FINDME../../Introduction/Common_Request_and_Response_Elements.htm#Request).
 
-<h3>Request Body</h3>
+<h4>Request Body</h4>
 
 Request body properties are not required by this operation.
 
@@ -599,11 +599,11 @@ Define the following variables when submitting the above request:
 -   `<TENANT ID>`**:** Required. Replace this variable with your team's tenant ID. 
 -   `<CUSTOM RULE ID>`**:** Replace this variable with the system-defined ID for your custom rule. Use the [Get All Custom Rules operation](#get-all-custom-rules) to retrieve a list of custom rule sets and their IDs.
 
-<h3>Request Headers</h3>
+<h4>Request Headers</h4>
 
 This operation only takes advantage of [common request headers](FINDME../../Introduction/Common_Request_and_Response_Elements.htm#Request).
 
-<h3>Request Body</h3>
+<h4>Request Body</h4>
 
 Pass the following request body properties:
 

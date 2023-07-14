@@ -32,7 +32,7 @@ Authorize requests through the `app.waf` scope.
 
 Retrieves a list of Security Apps and their properties. 
 
-### Request
+<h3>Request</h3>
 
 A request to retrieve all Security Apps is described below.
 
@@ -42,17 +42,17 @@ Define the following variable when submitting the above request:
 
 -   `<TENANT ID>`**:** Required. Replace this variable with your team's tenant ID. 
 
-#### Request Headers
+<h4>Request Headers</h4>
 
 This operation only takes advantage of [common request headers](../../Introduction/Common_Request_and_Response_Elements.htm#Request).
 
-#### Request Body
+<h4>Request Body</h4>
 
 Request body properties are not required by this operation.
 
 {{ API_RESPONSE.md }}
 
-#### Response Body
+<h4>Response Body</h4>
 
 The response body for a successful request contains the following response elements:
 
@@ -70,7 +70,7 @@ The response body for a successful request contains the following response eleme
 
 {{ API_ERRORS.md }}
 
-### Sample Request and Response (JSON)
+<h3>Sample Request and Response (JSON)</h3>
 
 A sample JSON request is shown below.
 
@@ -179,7 +179,7 @@ Creates, updates, and deletes one or more Security Apps.
     2.  Add, modify, or remove Security Apps from the response as needed.
     3.  Post the updated response to this operation.
 
-### Request
+<h3>Request</h3>
 
 A request to manage Security Apps is described below.
 
@@ -189,11 +189,11 @@ Define the following variable when submitting the above request:
 
 -   `<TENANT ID>`**:** Required. Replace this variable with your team's tenant ID. 
 
-#### Request Headers
+<h4>Request Headers</h4>
 
 This operation only takes advantage of [common request headers](../../Introduction/Common_Request_and_Response_Elements.htm#Request).
 
-#### Request Body
+<h4>Request Body</h4>
 
 Pass the following request body properties:
 
@@ -211,7 +211,7 @@ Pass the following request body properties:
 
 {{ API_RESPONSE.md }}
 
-#### Response Body
+<h4>Response Body</h4>
 
 The response body for a successful request contains the following properties:
 
@@ -223,7 +223,7 @@ The response body for a successful request contains the following properties:
 
 {{ API_ERRORS.md }}
 
-### Sample Request and Response (JSON)
+<h3>Sample Request and Response (JSON)</h3>
 
 A sample JSON request is shown below.
 

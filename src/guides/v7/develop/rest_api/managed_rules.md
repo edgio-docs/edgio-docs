@@ -1,5 +1,5 @@
 ---
-title: Managed Rules
+title: Managed Rules API
 ---
 
 A managed rule identifies threats through predefined rules and prevents false positives.
@@ -10,11 +10,13 @@ Automate the following tasks:
 -   [Add Managed Rule](#add-managed-rule)
 -   [Delete Managed Rule](#delete-managed-rule)
 -   [Get All Managed Rules](#get-all-managed-rules)
--   [Get Available Policies](#get-available-policies)
--   [Get Available Rule Sets](#get-available-rule-sets)
--   [Get Available Rules](#get-available-rules)
 -   [Get Managed Rule](#get-managed-rule)
 -   [Update Managed Rule](#update-managed-rule)
+
+Retrieve all available managed rule sets (e.g., ERS), policies (e.g., TW IP Reputation), and rules (e.g., 2200000):
+-   [Get Available Policies](#get-available-policies)
+-   [Get Available Managed Rule Sets](#get-available-managed-rule-sets)
+-   [Get Available Rules](#get-available-rules)
 
 <Callout type="info">
 
@@ -44,7 +46,7 @@ Define the following variable when submitting the above request:
 
 <h4>Request Headers</h4>
 
-This operation only takes advantage of [common request headers](../../Introduction/Common_Request_and_Response_Elements.htm#Request).
+This operation only takes advantage of [common request headers](FINDME/../Introduction/Common_Request_and_Response_Elements.htm#Request).
 
 <h4>Request Body</h4>
 
@@ -57,7 +59,7 @@ Pass the following request body properties:
 |name|String|Indicates the name of the managed rule.|
 |policies|Array of string values|Contains a list of policies that have been enabled on this managed rule. Use the [Get Available Policies operation](#get-available-policies) to retrieve a list of policies and their IDs.|
 |rule_target_updates|Array of objects|Defines one or more targets that will be ignored and/or replaced.<br /> **Key information:** <ul><li>If `is_negated` is set to `true`, then this target identifies rule criterion that will be ignored when identifying threats.</li><li>The `replace_target` property defines criterion that will be used to identify threats instead of the existing criterion.</li><li>If `is_regex` property is set to `true`, then you may use regular expressions to define criteria for identifying multiple types of threats.</li><li>A maximum of 25 target configurations may be created.</li></ul>|
-|ruleset_id|String|Required. Indicates the ID for the rule set associated with this managed rule. Use the [Get Available Rule Sets operation](#get-available-rule-sets) to retrieve a list of rule sets and their IDs.|
+|ruleset_id|String|Required. Indicates the ID for the rule set associated with this managed rule. Use the [Get Available Managed Rule Sets operation](#get-available-managed-rule-sets) to retrieve a list of rule sets and their IDs.|
 |ruleset_version|String|Required. Indicates the version of the rule set associated with this managed rule.|
 
 #### disabled_rules Array
@@ -202,7 +204,7 @@ Define the following variables when submitting the above request:
 
 <h4>Request Headers</h4>
 
-This operation only takes advantage of [common request headers](../../Introduction/Common_Request_and_Response_Elements.htm#Request).
+This operation only takes advantage of [common request headers](FINDME/../Introduction/Common_Request_and_Response_Elements.htm#Request).
 
 <h4>Request Body</h4>
 
@@ -262,7 +264,7 @@ Define the following variable when submitting the above request:
 
 <h4>Request Headers</h4>
 
-This operation only takes advantage of [common request headers](../../Introduction/Common_Request_and_Response_Elements.htm#Request).
+This operation only takes advantage of [common request headers](FINDME/../Introduction/Common_Request_and_Response_Elements.htm#Request).
 
 <h4>Request Body</h4>
 
@@ -327,12 +329,12 @@ A request to retrieve policies is described below.
 Define the following variables when submitting the above request:
 
 -   `<TENANT ID>`**:** Required. Replace this variable with your team's tenant ID. 
--   `<RULE SET ID>`**:** Required. Replace this variable with the system-defined ID of the rule set whose policies will be retrieved. Find out the system-defined ID of the rule set associated with the desired managed rule through the `ruleset_id` response property of the [Get Managed Rule operation](#get-managed-rule). Alternatively, retrieve a list of the available rule sets and their system-defined IDs through the [Get Available Rule Sets operation](#get-available-rule-sets).
+-   `<RULE SET ID>`**:** Required. Replace this variable with the system-defined ID of the rule set whose policies will be retrieved. Find out the system-defined ID of the rule set associated with the desired managed rule through the `ruleset_id` response property of the [Get Managed Rule operation](#get-managed-rule). Alternatively, retrieve a list of the available rule sets and their system-defined IDs through the [Get Available Managed Rule Sets operation](#get-available-managed-rule-sets).
 -   `<RULE SET VERSION>`**:** Required. Replace this variable with the version of the rule set whose policies will be retrieved. Find out the version of the rule set associated with the desired managed rule through the `ruleset_version` response property of the [Get Managed Rule operation](#get-managed-rule).
 
 <h4>Request Headers</h4>
 
-This operation only takes advantage of [common request headers](../../Introduction/Common_Request_and_Response_Elements.htm#Request).
+This operation only takes advantage of [common request headers](FINDME/../Introduction/Common_Request_and_Response_Elements.htm#Request).
 
 <h4>Request Body</h4>
 
@@ -478,7 +480,7 @@ Content-Length: 2603
 ]
 ```
 
-## Get Available Rule Sets {/*get-available-rule-sets*/}
+## Get Available Managed Rule Sets {/*get-available-managed-rule-sets*/}
 
 Retrieves a list of the available rule sets. The purpose of this operation is to identify each rule set/version combination (e.g., ECRS) that may be assigned to a managed rule.
 
@@ -500,7 +502,7 @@ Define the following variable when submitting the above request:
 
 <h4>Request Headers</h4>
 
-This operation only takes advantage of [common request headers](../../Introduction/Common_Request_and_Response_Elements.htm#Request).
+This operation only takes advantage of [common request headers](FINDME/../Introduction/Common_Request_and_Response_Elements.htm#Request).
 
 <h4>Request Body</h4>
 
@@ -593,13 +595,13 @@ A request to retrieve rules is described below.
 Define the following variables when submitting the above request:
 
 -   `<TENANT ID>`**:** Required. Replace this variable with your team's tenant ID. 
--   `<RULE SET ID>`**:** Required. Replace this variable with the system-defined ID of the rule set that contains the policy whose rules will be retrieved. Find out the system-defined ID of the rule set associated with the desired managed rule through the `ruleset_id` response property of the [Get Managed Rule operation](#get-managed-rule). Alternatively, retrieve a list of the available rule sets and their system-defined IDs through the [Get Available Rule Sets operation](#get-available-rule-sets).
+-   `<RULE SET ID>`**:** Required. Replace this variable with the system-defined ID of the rule set that contains the policy whose rules will be retrieved. Find out the system-defined ID of the rule set associated with the desired managed rule through the `ruleset_id` response property of the [Get Managed Rule operation](#get-managed-rule). Alternatively, retrieve a list of the available rule sets and their system-defined IDs through the [Get Available Managed Rule Sets operation](#get-available-managed-rule-sets).
 -   `<RULE SET VERSION>`**:** Required. Replace this variable with the version of the rule set that contains the policy whose rules will be retrieved. Find out the version of the rule set associated with the desired managed rule through the `ruleset_version` response property of the [Get Managed Rule operation](#get-managed-rule).
 -   `<POLICY ID>`**:** Required. Replace this variable with the system-defined ID of the policy whose rules will be retrieved. Use the [Get Available Policies operation](#get-available-policies) to retrieve a list of the available policies and their system-defined IDs.
 
 <h4>Request Headers</h4>
 
-This operation only takes advantage of [common request headers](../../Introduction/Common_Request_and_Response_Elements.htm#Request).
+This operation only takes advantage of [common request headers](FINDME/../Introduction/Common_Request_and_Response_Elements.htm#Request).
 
 <h4>Request Body</h4>
 
@@ -713,7 +715,7 @@ Define the following variables when submitting the above request:
 
 <h4>Request Headers</h4>
 
-This operation only takes advantage of [common request headers](../../Introduction/Common_Request_and_Response_Elements.htm#Request).
+This operation only takes advantage of [common request headers](FINDME/../Introduction/Common_Request_and_Response_Elements.htm#Request).
 
 <h4>Request Body</h4>
 
@@ -737,7 +739,7 @@ The response body for a successful request contains the following response eleme
 |name|String|Indicates the name of the managed rule.|
 |policies|Array of string values|Contains a list of policies that have been enabled on this managed rule. Identify each desired policy by its system-defined ID. Use the [Get Available Policies operation](#get-available-policies) to retrieve a list of policies and their IDs.|
 |rule_target_updates|Array of objects|Defines one or more targets that will be ignored and/or replaced.<br />**Key information:** <ul><li>If `is_negated` is set to `true`, then this target identifies rule criterion that will be ignored when identifying threats.</li><li>The `replace_target` property defines criterion that will be used to identify threats instead of the existing criterion.</li><li>If `is_regex` property is set to `true`, then you may use regular expressions to define criteria for identifying multiple types of threats.</li><li>A maximum of 25 target configurations may be created.</li></ul>|
-|ruleset_id|String|Indicates the ID for the rule set associated with this managed rule. Use the [Get Available Rule Sets operation](#get-available-rule-sets) to retrieve a list of rule sets and their IDs.|
+|ruleset_id|String|Indicates the ID for the rule set associated with this managed rule. Use the [Get Available Managed Rule Sets operation](#get-available-managed-rule-sets) to retrieve a list of rule sets and their IDs.|
 |ruleset_version|String|Indicates the version of the rule set associated with this managed rule.|
 |version|String|Reserved for future use.|
 
@@ -869,7 +871,7 @@ Define the following variables when submitting the above request:
 
 <h4>Request Headers</h4>
 
-This operation only takes advantage of [common request headers](../../Introduction/Common_Request_and_Response_Elements.htm#Request).
+This operation only takes advantage of [common request headers](FINDME/../Introduction/Common_Request_and_Response_Elements.htm#Request).
 
 <h4>Request Body</h4>
 
@@ -882,7 +884,7 @@ Pass the following request body properties:
 |name|String|Indicates the name of the managed rule.|
 |policies|Array of string values|Contains a list of policies that have been enabled on this managed rule. Use the [Get Available Policies operation](#get-available-policies) to retrieve a list of policies and their IDs.|
 |rule_target_updates|Array of objects|Defines one or more targets that will be ignored and/or replaced. <br />**Key information:** <ul><li>If `is_negated` is set to `true`, then this target identifies rule criterion that will be ignored when identifying threats.</li><li>The `replace_target` property defines criterion that will be used to identify threats instead of the existing criterion.</li><li>If `is_regex` property is set to `true`, then you may use regular expressions to define criteria for identifying multiple types of threats.</li><li>A maximum of 25 target configurations may be created.</li></ul>|
-|ruleset_id|String|Required. Indicates the ID for the rule set associated with this managed rule. Use the [Get Available Rule Sets operation](#get-available-rule-sets) to retrieve a list of rule sets and their IDs.|
+|ruleset_id|String|Required. Indicates the ID for the rule set associated with this managed rule. Use the [Get Available Managed Rule Sets operation](#get-available-managed-rule-sets) to retrieve a list of rule sets and their IDs.|
 |ruleset_version|String|Required. Indicates the version of the rule set associated with this managed rule.|
 
 #### disabled_rules Array

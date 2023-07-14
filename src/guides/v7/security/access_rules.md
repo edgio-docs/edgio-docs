@@ -388,7 +388,7 @@ You may create, modify, and delete access rules.
 
 1.  Navigate to the **Access Rules** page.
     {{ SECURITY_NAV }} **Access Rules**.
-2.  Click **Add Access Rule**.
+2.  Click **+ New Access Ruleset**.
 3.  In the **Name of Rule** option, type the unique name by which this
     access rule will be identified. This name should be sufficiently
     descriptive to identify it when setting up a Security Application

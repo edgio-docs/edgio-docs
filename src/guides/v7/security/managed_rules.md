@@ -306,7 +306,7 @@ You may create, modify, and delete managed rules.
 **To create a managed rule**
 1.  Navigate to the **Managed Rules** page.
     {{ SECURITY_NAV }} **Managed Rules**.
-2.  Click **Add Managed Rule**.
+2.  Click **+ New Managed Ruleset**.
 3.  In the **Name** option, type the unique name by which this
     managed rule will be identified. This name should be sufficiently
     descriptive to identify it when setting up a Security Application

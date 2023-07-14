@@ -1,5 +1,5 @@
 ---
-title: Access Rules
+title: Access Rules API
 ---
 
 An access rule identifies legitimate traffic and threats through access controls.

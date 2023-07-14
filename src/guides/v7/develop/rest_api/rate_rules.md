@@ -1,5 +1,5 @@
 ---
-title: Rate Rules
+title: Rate Rules API
 ---
 
 A rate rule restricts the flow of site traffic.
@@ -41,7 +41,7 @@ Define the following variable when submitting the above request:
 
 <h4>Request Headers</h4>
 
-This operation only takes advantage of [common request headers](../../Introduction/Common_Request_and_Response_Elements.htm#Request).
+This operation only takes advantage of [common request headers](FINDME/../Introduction/Common_Request_and_Response_Elements.htm#Request).
 
 <h4>Request Body</h4>
 
@@ -170,7 +170,7 @@ Define the following variables when submitting the above request:
 
 <h4>Request Headers</h4>
 
-This operation only takes advantage of [common request headers](../../Introduction/Common_Request_and_Response_Elements.htm#Request).
+This operation only takes advantage of [common request headers](FINDME/../Introduction/Common_Request_and_Response_Elements.htm#Request).
 
 <h4>Request Body</h4>
 
@@ -231,7 +231,7 @@ Define the following variable when submitting the above request:
 
 <h4>Request Headers</h4>
 
-This operation only takes advantage of [common request headers](../../Introduction/Common_Request_and_Response_Elements.htm#Request).
+This operation only takes advantage of [common request headers](FINDME/../Introduction/Common_Request_and_Response_Elements.htm#Request).
 
 <h4>Request Body</h4>
 
@@ -293,7 +293,7 @@ Define the following variables when submitting the above request:
 
 <h4>Request Headers</h4>
 
-This operation only takes advantage of [common request headers](../../Introduction/Common_Request_and_Response_Elements.htm#Request).
+This operation only takes advantage of [common request headers](FINDME/../Introduction/Common_Request_and_Response_Elements.htm#Request).
 
 <h4>Request Body</h4>
 
@@ -403,7 +403,7 @@ Define the following variable when submitting the above request:
 
 <h4>Request Headers</h4>
 
-This operation only takes advantage of [common request headers](../../Introduction/Common_Request_and_Response_Elements.htm#Request).
+This operation only takes advantage of [common request headers](FINDME/../Introduction/Common_Request_and_Response_Elements.htm#Request).
 
 <h4>Request Body</h4>
 

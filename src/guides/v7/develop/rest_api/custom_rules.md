@@ -1,5 +1,5 @@
 ---
-title: Custom Rules
+title: Custom Rules API
 ---
 
 A custom rule tailors how {{ PRODUCT }} {{ PRODUCT_SECURITY }} identifies a threat. 

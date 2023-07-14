@@ -431,12 +431,12 @@ You may create, modify, and delete custom rule sets.
 **To create a custom rule set**
 1.  Navigate to the **Custom Rules** page.
     {{ SECURITY_NAV }} **Custom Rules**.
-2.  Click **Add Custom Rule**.
+2.  Click **+ New Custom Ruleset**.
 3.  In the **Name** option, type the unique name by which this
     custom rule set will be identified. This name should be sufficiently
     descriptive to identify it when setting up a Security Application
     configuration.
-4.  Create a custom rule by clicking **+ Add Rule**. Find the rule's **Name**
+4.  Create a custom rule by clicking **+ New Rule**. Find the rule's **Name**
     option and set it to a name that identifies
     the purpose of this rule.
 5.  In the **Rule ID** option, specify a number between
@@ -513,7 +513,7 @@ You may create, modify, and delete custom rule sets.
 8.  Optional. Click **+ Add Condition** to add another
     condition that must be met prior to threat identification. Repeat
     step 7 for this new condition.
-9.  Optional. Click **+ Add Rule** to add another rule through
+9.  Optional. Click **+ New Rule** to add another rule through
     which {{ PRODUCT_SECURITY }} may identify threats. Repeat steps 7 and 8.
 10. Click **Submit**.
 

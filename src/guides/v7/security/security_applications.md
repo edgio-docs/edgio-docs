@@ -487,7 +487,7 @@ configurations.
 **To create a Security Application configuration**
 1.  Navigate to the **Security Application Manager** page.
     {{ SECURITY_NAV }} **Security Apps**.
-2.  Click **Add New**.
+2.  Click **+ New Security App**.
 3.  In the **Name** option, type the unique name by which this
     Security Application configuration will be identified.
 4.  Optional. Identify the set of traffic to which this security policy

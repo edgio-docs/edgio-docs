@@ -113,23 +113,23 @@ Threats Event Log
 
 The following operations retrieve WAF threat event log information:
 
- Endpoint Description [Get Available Event Log Fields](../WAF/Get-ELF-Definitions.htmFINDME)
+ Endpoint Description [Get Available Event Log Fields](FINDME/WAF/Get-ELF-Definitions.htmFINDME)
 
   Provides definitions for event log fields.
 
-  [Get Event Count](../WAF/Get-EL-Count.htmFINDME)
+  [Get Event Count](FINDME/WAF/Get-EL-Count.htmFINDME)
 
   Indicates the total number of threats detected over a given time period.
 
-  [Get Event Log Entries](../WAF/Get-EL-Data.htmFINDME)
+  [Get Event Log Entries](FINDME/WAF/Get-EL-Data.htmFINDME)
 
   Retrieves event log data over a given time period.
 
-  [Get Event Log Entry](../WAF/Get-Event-Log-Entry.htmFINDME)
+  [Get Event Log Entry](FINDME/WAF/Get-Event-Log-Entry.htmFINDME)
 
   Retrieves detailed information for a specific event log entry.
 
-  [Get Top Event Log Entries](../WAF/Get-EL-Top.htmFINDME)
+  [Get Top Event Log Entries](FINDME/WAF/Get-EL-Top.htmFINDME)
 
   Retrieves the top 10 events for the specified field.
 
@@ -139,23 +139,23 @@ Rates Event Log
 
 The following operations retrieve event log information on rate limited requests:
 
- Endpoint Description [Get Available Event Log Fields ](../Rate-Limiting/Get-Available-Event-Log-Fields.htmFINDME)
+ Endpoint Description [Get Available Event Log Fields ](FINDME/Rate-Limiting/Get-Available-Event-Log-Fields.htmFINDME)
 
   Retrieves a list of the available event log fields.
 
-  [Get Event Log Entries ](../Rate-Limiting/Get-Event-Log-Entries.htmFINDME)
+  [Get Event Log Entries ](FINDME/Rate-Limiting/Get-Event-Log-Entries.htmFINDME)
 
   Retrieves event log information for a set of rate limited requests.
 
-  [Get Event Log Entry ](../Rate-Limiting/Get-Event-Log-Entry.htmFINDME)
+  [Get Event Log Entry ](FINDME/Rate-Limiting/Get-Event-Log-Entry.htmFINDME)
 
   Retrieves event log information for a specific rate limited request.
 
-  [Get Event Log Entry Count ](../Rate-Limiting/Get-Event-Log-Entry-Count.htmFINDME)
+  [Get Event Log Entry Count ](FINDME/Rate-Limiting/Get-Event-Log-Entry-Count.htmFINDME)
 
   Indicates the total number of rate limited requests that meet the specified criteria.
 
-  [Get Top Event Log Entries ](../Rate-Limiting/Get-Top-Event-Log-Entries.htmFINDME)
+  [Get Top Event Log Entries ](FINDME/Rate-Limiting/Get-Top-Event-Log-Entries.htmFINDME)
 
   Indicates the type of records that are most frequently rate limited.
 
@@ -189,7 +189,7 @@ Analyze traffic patterns to identify the source of the malicious attack.
 
 Example:
 
-For example, a sudden increase in traffic from a single IP address may be indicative of a malicious bot. If WAF is currently configured to audit traffic instead of blocking it, this may be detected by analyzing the response for the [Get Top Event Log Entries operation](../WAF/Get-EL-Top.htmFINDME).
+For example, a sudden increase in traffic from a single IP address may be indicative of a malicious bot. If WAF is currently configured to audit traffic instead of blocking it, this may be detected by analyzing the response for the [Get Top Event Log Entries operation](FINDME/WAF/Get-EL-Top.htmFINDME).
 
 A sample request that returns the top IP addresses that are generating traffic to your origin servers is shown below.
 

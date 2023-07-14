@@ -118,7 +118,7 @@ Creates a custom rule set that defines custom threat assessment criteria.
 
 [View key configuration information.](#key-information)
 
-### Request
+<h3>Request</h3>
 
 A request to create a custom rule set is described below.
 
@@ -128,11 +128,11 @@ Define the following variable when submitting the above request:
 
 -   `<TENANT ID>`**:** Required. Replace this variable with your team's tenant ID. 
 
-### Request Headers
+<h3>Request Headers</h3>
 
 This operation only takes advantage of [common request headers](FINDME../../Introduction/Common_Request_and_Response_Elements.htm#Request).
 
-### Request Body
+<h3>Request Body</h3>
 
 Pass the following request body properties:
 
@@ -216,7 +216,7 @@ Each object within the `chained_rule` array describes an additional set of crite
 
 {{ API_RESPONSE.md }}
 
-### Response Body
+<h4>Response Body</h4>
 
 The response body for a successful request contains the following properties:
 
@@ -290,7 +290,7 @@ Content-Length: 65
 
 Deletes a custom rule.
 
-### Request
+<h3>Request</h3>
 
 A request to delete a custom rule is described below.
 
@@ -301,17 +301,17 @@ Define the following variables when submitting the above request:
 -   `<TENANT ID>`**:** Required. Replace this variable with your team's tenant ID. 
 -   `<CUSTOM RULE ID>`**:** Replace this variable with the system-defined ID for your custom rule. Use the [Get All Custom Rules operation](#get-all-custom-rules) to retrieve a list of custom rule sets and their IDs.
 
-### Request Headers
+<h3>Request Headers</h3>
 
 This operation only takes advantage of [common request headers](FINDME../../Introduction/Common_Request_and_Response_Elements.htm#Request).
 
-### Request Body
+<h3>Request Body</h3>
 
 Request body properties are not required by this operation.
 
 {{ API_RESPONSE.md }}
 
-### Response Body
+<h3>Response Body</h3>
 
 The response body for a successful request contains the following properties:
 
@@ -352,7 +352,7 @@ Content-Length: 65
 
 Retrieves a list of custom rule sets. A custom rule set allows you to define custom threat assessment criterion.
 
-### Request
+<h3>Request</h3>
 
 A request to retrieve all custom rule sets is described below.
 
@@ -362,17 +362,17 @@ Define the following variable when submitting the above request:
 
 -   `<TENANT ID>`**:** Required. Replace this variable with your team's tenant ID. 
 
-### Request Headers
+<h3>Request Headers</h3>
 
 This operation only takes advantage of [common request headers](FINDME../../Introduction/Common_Request_and_Response_Elements.htm#Request).
 
-### Request Body
+<h3>Request Body</h3>
 
 Request body properties are not required by this operation.
 
 {{ API_RESPONSE.md }}
 
-### Response Body
+<h3>Response Body</h3>
 
 The response body for a successful request contains the following response elements for each custom rule set:
 
@@ -416,7 +416,7 @@ Retrieves a custom rule set. Use a custom rule to define custom threat assessmen
 
 [View key configuration information.](#key-information)
 
-### Request
+<h3>Request</h3>
 
 A request to retrieve a custom rule is described below.
 
@@ -428,17 +428,17 @@ Define the following variables when submitting the above request:
 -   `<CUSTOM RULE ID>`**:** Replace this variable with the system-defined ID for your custom rule. Use the [Get All Custom Rules operation](#get-all-custom-rules) to retrieve a list of custom rule sets and their IDs.
 
 
-### Request Headers
+<h3>Request Headers</h3>
 
 This operation only takes advantage of [common request headers](FINDME../../Introduction/Common_Request_and_Response_Elements.htm#Request).
 
-### Request Body
+<h3>Request Body</h3>
 
 Request body properties are not required by this operation.
 
 {{ API_RESPONSE.md }}
 
-### Response Body
+<h3>Response Body</h3>
 
 The response body for a successful request contains the following response elements:
 
@@ -588,7 +588,7 @@ Updates a custom rule that defines custom threat assessment criteria.
 
 [View key configuration information.](#key-information)
 
-### Request
+<h3>Request</h3>
 
 A request to update a custom rule set is described below.
 
@@ -599,11 +599,11 @@ Define the following variables when submitting the above request:
 -   `<TENANT ID>`**:** Required. Replace this variable with your team's tenant ID. 
 -   `<CUSTOM RULE ID>`**:** Replace this variable with the system-defined ID for your custom rule. Use the [Get All Custom Rules operation](#get-all-custom-rules) to retrieve a list of custom rule sets and their IDs.
 
-### Request Headers
+<h3>Request Headers</h3>
 
 This operation only takes advantage of [common request headers](FINDME../../Introduction/Common_Request_and_Response_Elements.htm#Request).
 
-### Request Body
+<h3>Request Body</h3>
 
 Pass the following request body properties:
 
@@ -691,7 +691,7 @@ Each object within the `chained_rule` array describes an additional set of crite
 
 {{ API_RESPONSE.md }}
 
-### Response Body
+<h3>Response Body</h3>
 
 The response body for a successful request contains the following properties:
 

@@ -1,4 +1,4 @@
-### Response {/*response*/}
+<h3>Response</h3>
 
 The response to the above request includes an HTTP status code, response headers, and a response body.
 

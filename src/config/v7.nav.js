@@ -290,6 +290,10 @@ const nav = {
               path: 'sites_frameworks/getting_started/brunch',
             },
             {
+              title: 'Custom Connector',
+              path: 'sites_frameworks/getting_started/custom_connector',
+            },
+            {
               title: 'Docusaurus',
               path: 'sites_frameworks/getting_started/docusaurus',
             },
@@ -474,33 +478,6 @@ const nav = {
       ],
     },
     {
-      title: 'Third-Party Integrations',
-      path: 'integrations',
-      icon: 'gear',
-      routes: [
-        {
-          title: 'BigCommerce',
-          path: 'integrations/bigcommerce',
-        },
-        {
-          title: 'Bloomreach',
-          path: 'integrations/bloomreach',
-        },
-        {
-          title: 'Shopify Hydrogen',
-          path: 'integrations/shopify_hydrogen',
-        },
-        {
-          title: 'Swell',
-          path: 'integrations/swell',
-        },
-        {
-          title: 'WordPress',
-          path: 'integrations/wordpress',
-        },
-      ],
-    },
-    {
       title: 'Logs',
       path: 'logs',
       icon: 'data-plain',
@@ -643,10 +620,6 @@ const nav = {
         {
           title: 'Purge (Clear-Cache) API',
           path: 'develop/clear_cache',
-        },
-        {
-          title: 'Deploy to Edgio Button',
-          path: 'develop/deploy_to_edgio',
         },
         {
           title: 'EdgeJS API Reference',

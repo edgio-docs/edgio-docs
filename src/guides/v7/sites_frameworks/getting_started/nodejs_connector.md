@@ -1,16 +1,16 @@
 ---
-title: Nodejs Connector
+title: Node.js Connector
 ---
 
-Nodejs Connector lets you build and deploy your project to {{ PRODUCT }} for any framework that is not listed under our directly [supported frameworks](/guides/sites_frameworks/getting_started#supported-frameworks).
+Node.js Connector lets you build and deploy your project to {{ PRODUCT }} for any framework that is not listed under our directly [supported frameworks](/guides/sites_frameworks/getting_started#supported-frameworks).
 
 {{ PREREQ.md }}
 
-<!-- ## Why Nodejs Connector {/* why-nodejs-connector */} -->
+<!-- ## Why Node.js Connector {/* why-nodejs-connector */} -->
 
-## Using Nodejs Connector {/* using-nodejs-connector */}
+## Using Node.js Connector {/* using-nodejs-connector */}
 
-To use the Nodejs Connector with your project, you'll first need to initialize your project using the {{ PRODUCT }} CLI with the following:
+To use the Node.js Connector with your project, you'll first need to initialize your project using the {{ PRODUCT }} CLI with the following:
 
 ```bash
 {{ CLI_CMD(init) }}
@@ -25,13 +25,13 @@ WARNING: No framework detected. You can still use {{ PRODUCT }}, we just need mo
     {{ PRODUCT }} Performance (CDN-as-code)
 ```
 
-Choose `{{ PRODUCT }} Sites (Web-app hosting)` from the list of options to prepare the project for Nodejs Connector.
+Choose `{{ PRODUCT }} Sites (Web-app hosting)` from the list of options to prepare the project for Node.js Connector.
 
 Next, you will be prompted to enter more information specific to your project and framework:
 
   - `What is the build directory for server files of your app? (Leave blank if not applicable)` - This is the output directory where all of your framework's build files are located. A common build directory is `dist`, but this may vary depending on your framework.
   - `What is the path of the entry file (relative to build directory) of your app? (Leave blank if not applicable)` - This is the entry file of your app. A common entry file is `index.js`, but this may vary depending on your framework.
-  - `What is static files directory of your app? (Leave blank if not applicable)` - This is the directory where all of your static files are located. A common static files directory is `public`, but this may vary depending on your framework.
+  - `What is the static files directory of your app? (Leave blank if not applicable)` - This is the directory where all of your static files are located. A common static files directory is `public`, but this may vary depending on your framework.
   - `What is the environment variable name for port (if available) your app server listens to?` - This is the name of the environment variable for setting the port the project will run on. Note: many frameworks use `PORT` as the default environment variable name for port. {{ PRODUCT }} will pass the port value to your app via the environment variable specified here.
   - `Please specify build command (if available)` - This is the build command of your app. The build command will be used when you run the `{{ CLI_CMD(build) }}` command.
   - `Please specify dev command (if available)` - This is the command to run the local development server of your app. The dev command will be used when you run the `{{ CLI_CMD(dev) }}` command.
@@ -40,7 +40,7 @@ Next, you will be prompted to enter more information specific to your project an
 ```plain
 ✔ What is the build directory for server files of your app? (Leave blank if not applicable) … dist
 ✔ What is the path of the entry file (relative to build directory) of your app? (Leave blank if not applicable) … index.js
-✔ What is static files directory of your app? (Leave blank if not applicable) … public
+✔ What is the static files directory of your app? (Leave blank if not applicable) … public
 ✔ What is the environment variable name for port (if available) your app server listens to? … PORT
 ✔ Please specify build command (if available) … custom_fw build
 ✔ Please specify dev command (if available) … custom_fw dev
@@ -52,7 +52,7 @@ When initialization process is finished, {{ PRODUCT }} will automatically add al
 - The `{{ PACKAGE_NAME }}/core` package
 - The `{{ PACKAGE_NAME }}/cli` package
 - The `{{ PACKAGE_NAME }}/nodejs-connector` package
-- `{{ CONFIG_FILE }}` - Contains var`ious configuration options for {{ PRODUCT }} including the connector [configuration](#nodejs-connector-configuration).
+- `{{ CONFIG_FILE }}` - Contains various configuration options for {{ PRODUCT }} including the connector [configuration](#nodejs-connector-configuration).
 - `routes.js` - A default routes file that sends all requests to the underlaying framework. Update this file to add caching or proxy some URLs to a different origin.
 
 ## Routing {/* routing */}
@@ -64,9 +64,9 @@ The default `routes.js` file created by `{{ CLI_CMD(init) }}` sends all requests
 // You should commit this file to source control.
 
 const {Router} = require('{{ PACKAGE_NAME }}/core/router');
-const {customRoutes} = require('{{ PACKAGE_NAME }}/nodejs-connector');
+const {nodejsRoutes} = require('{{ PACKAGE_NAME }}/nodejs-connector');
 
-export default new Router().use(customRoutes);
+export default new Router().use(nodejsRoutes);
 ```
 
 See [Routes](/guides/performance/cdn_as_code#routes) for information on defining routes, caching, and more.
@@ -97,9 +97,9 @@ Deploy your app to the {{ PRODUCT_PLATFORM }} by running the following commands 
 
 See [Deployments](/guides/basics/deployments) for more information.
 
-## Nodejs Connector Configuration {/* nodejs-connector-configuration */}
+## Node.js Connector Configuration {/* nodejs-connector-configuration */}
 
-After you initialize your project with the `{{ CLI_CMD(init) }}` command, {{ PRODUCT }} will create a `{{ CONFIG_FILE }}` file in your project's root directory. In the `{{ CONFIG_FILE }}` file you can configure your Nodejs Connector.
+After you initialize your project with the `{{ CLI_CMD(init) }}` command, {{ PRODUCT }} will create a `{{ CONFIG_FILE }}` file in your project's root directory. In the `{{ CONFIG_FILE }}` file you can configure your Node.js Connector.
 
 ```json
 {

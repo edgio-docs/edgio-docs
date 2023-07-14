@@ -228,7 +228,7 @@ The response body for a successful request contains the following properties:
 
 {{ API_ERRORS.md }}
 
-### Sample Request and Response (JSON)
+<h3>Sample Request and Response (JSON)</h3>
 
 A sample JSON request is shown below.
 
@@ -323,7 +323,7 @@ The response body for a successful request contains the following properties:
 
 {{ API_ERRORS.md }}
 
-### Sample Request and Response (JSON)
+<h3>Sample Request and Response (JSON)</h3>
 
 A sample JSON request is shown below.
 
@@ -384,7 +384,7 @@ The response body for a successful request contains the following response eleme
 
 {{ API_ERRORS.md }}
 
-### Sample Request and Response (JSON)
+<h3>Sample Request and Response (JSON)</h3>
 
 A sample JSON request is shown below.
 
@@ -526,7 +526,7 @@ Each object within the `chained_rule` array describes an additional set of crite
 
 {{ API_ERRORS.md }}
 
-### Sample Request and Response (JSON)
+<h3>Sample Request and Response (JSON)</h3>
 
 A sample JSON request is shown below.
 
@@ -703,7 +703,7 @@ The response body for a successful request contains the following properties:
 
 {{ API_ERRORS.md }}
 
-### Sample Request and Response (JSON)
+<h3>Sample Request and Response (JSON)</h3>
 
 A sample JSON request is shown below.
 

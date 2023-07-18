@@ -35,22 +35,21 @@ Set up bot manager by performing the following steps:
 
 **Key information:** <a id="key-information" />
 
--   A bot manager configuration must be assigned a bot rule set. Each bot rule set contains one or more bot rules. Each bot rule defines the set of requests that will require a client (e.g., a web browser) to solve a challenge before resolving the request.
--   There are two types of bot rules:
-
-    -   **Reputation Database:** A bot rule that relies on our reputation database is defined through the `directive.include` property.
+-   Setting up bot manager involves two configurations:
+    -   **Bot Manager Configuration:** This configuration defines a set of enforcement actions and when they will be applied to traffic. You must assign a bot rule set to this configuration through the `bots_prod_id` property.
+    -   **Bot Rule Set:** This configuration defines how bot traffic will be identified through one or more bot rules. Each bot rule defines how {{ PRODUCT }} will identify bots for a set of requests. You may identify bot traffic through our bot reputation database or through custom match conditions. 
+        -   **Reputation Database:** A bot rule that relies on our reputation database is defined through the `directive.include` property.
         
-        **Example:**
+            **Example:**
         
-        ```json
-        ...
-        {
-            "directive": [{
-                    "include": "r3010_ec_bot_challenge_reputation.conf.json"
-        ...
-        ```
-
-    -   **Custom Match Conditions:** A bot rule that contains match conditions is defined through a `directive.sec_rule` object.
+            ```json
+            ...
+            {
+                "directive": [{
+                        "include": "r3010_ec_bot_challenge_reputation.conf.json"
+            ...
+            ```
+        -   **Custom Match Conditions:** A bot rule that contains match conditions is defined through a `directive.sec_rule` object.
 -   A bot rule that contains custom match conditions may contain up to 6 sets of criteria to identify a request. The root of the `sec_rule` object defines the first set of criteria. Define additional criteria through `chained_rule` objects.
 -   Define criteria by specifying an `operator` object and one or more `variable` object(s). A set of criteria is satisfied when at least one `variable` object results in a successful match.
     

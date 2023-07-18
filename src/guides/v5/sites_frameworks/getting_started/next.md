@@ -2,12 +2,6 @@
 title: Next.js
 ---
 
-<Callout type="critical">
-
-  This article is incompatible with [recent Remix changes](https://remix.run/docs/en/1.18.1/pages/technical-explanation#http-handler-and-adapters). Contact your account manager or our [sales department](https://edg.io/contact-us/) at 1 (866) 200 - 5463 to get started with Remix and the latest version of {{ PRODUCT }} {{ PRODUCT_APPLICATIONS }}.
-
-</Callout>
-
 This guide shows you how to deploy a [Next.js](https://nextjs.org/) application to {{ PRODUCT }}.
 
 <Video src="https://www.youtube.com/watch?v=ZN5oYSSpnmc" />

@@ -2,16 +2,23 @@
 title: Bot Manager API
 ---
 
-A bot manager configuration mitigates undesired bot traffic and prevents them from performing undesired or malicious activity.
+A bot manager configuration mitigates undesired bot traffic and prevents them from performing undesired or malicious activity. 
 
 [Learn more about bot manager.](/guides/security/bot_rules)
 
 Automate the following tasks:
--   [Add Bot Manager Configuration](#add-bot-manager-configuration)
--   [Delete Bot Manager Configuration](#delete-bot-manager-configuration)
--   [Get All Bot Manager Configurations](#get-all-bot-manager-configurations)
--   [Get Bot Manager Configuration](#get-bot-manager-configuration)
--   [Update Bot Manager Configuration](#update-bot-manager-configuration)
+-   Bot manager configuration:
+    -   [Add Bot Manager Configuration](#add-bot-manager-configuration)
+    -   [Delete Bot Manager Configuration](#delete-bot-manager-configuration)
+    -   [Get All Bot Manager Configurations](#get-all-bot-manager-configurations)
+    -   [Get Bot Manager Configuration](#get-bot-manager-configuration)
+    -   [Update Bot Manager Configuration](#update-bot-manager-configuration)
+-   Bot rule set configuration:
+    -   [Add Bot Rule Set](#add-bot-rule-set)
+    -   [Delete Bot Rule Set](#delete-bot-rule-set)
+    -   [Get All Bot Rule Sets](#get-all-bot-rule-sets)
+    -   [Get Bot Rule Set](#get-bot-rule-set)
+    -   [Update Bot Rule Set](#update-bot-rule-set)
 
 <Callout type="info">
 
@@ -19,9 +26,16 @@ Automate the following tasks:
 
 </Callout>
 
+## Setup
+
+Set up bot manager by performing the following steps:
+1.  Create a bot rule set configuration through the [Add Bot Rule Set operation](#add-bot-rule-set).
+2.  Create a bot manager configuration through the [Add Bot Manager Configuration operation](#add-bot-manager-configuration) and assign it the bot rule set created in the previous step.
+
+
 **Key information:** <a id="key-information" />
 
--   A bot manager configuration contains one or more bot rules. Each bot rule defines the set of requests that will require a client (e.g., a web browser) to solve a challenge before resolving the request.
+-   A bot manager configuration must be assigned a bot rule set. Each bot rule set contains one or more bot rules. Each bot rule defines the set of requests that will require a client (e.g., a web browser) to solve a challenge before resolving the request.
 -   There are two types of bot rules:
 
     -   **Reputation Database:** A bot rule that relies on our reputation database is defined through the `directive.include` property.
@@ -128,11 +142,11 @@ Creates a bot manager configuration.
 
 A request to add a bot manager configuration is described below.
 
-`POST {{ API_URL }}/waf/{{ API_SECURITY_VERSION }}/<TENANT ID>/bots`
+`POST {{ API_URL }}/waf/{{ API_SECURITY_VERSION }}/<TEAM ID>/bot-managers`
 
 Define the following variable when submitting the above request:
 
--   `<TENANT ID>`**:** Required. Replace this variable with your team's tenant ID. 
+-   `<TEAM ID>`**:** Required. Replace this variable with your team's tenant ID. 
 
 <h4>Request Headers</h4>
 
@@ -144,8 +158,484 @@ Pass the following request body properties:
 
 |Name|Data Type|Description|
 |--- |--- |--- |
-|directive|Array of objects|Required. Contains the bot rules associated with this bot manager configuration. You may create up to 10 bot rules per bot manager configuration.|
+| actions | Object | Contains the set of enforcement actions that may be applied to this bot manager configuration. |
+| bots_prod_id | String | Indicates the system-defined ID for the bot rule set that will be applied to production traffic for this Security Application Manager configuration. Use the [Get All Bot Rule Sets operation](#get-all-bot-rule-sets) to retrieve a list of bot rule sets and their IDs.|
+| exception_cookie | Array of string values | Identifies traffic that will be exempt from bot detection by cookie. Specify each desired cookie using the following syntax: `<COOKIE NAME>:<COOKIE VALUE>`. {{ PRODUCT }} treats the cookie's value as a regular expression. |
+| exception_ja3  | Array of string values | Identifies traffic that will be exempt from bot detection by JA3 fingerprint. A JA3 fingerprint identifies a client using key characteristics from a TLS request. |
+| exception_url  | Array of string values | Identifies traffic that will be exempt from bot detection by URL. Specify each desired URL as a regular expression.|
+| exception_user_agent  | Array of string values | Identifies traffic that will be exempt from bot detection by user agent. Specify each desired user agent as a regular expression.|
+| inspect_known_bots  | Boolean | Determines whether {{ PRODUCT }} will automatically detect the known bots defined within the `known_bots` array. |
+| known_bots | Array of objects | Contains the set of known bots that {{ PRODUCT }} may automatically detect and the enforcement action that may be applied to them. |
+| last_modified_date | String | Reserved for future use.|
+| last_modified_by | String | Reserved for future use. |
 |name|String|Indicates the name assigned to this bot manager configuration.|
+| spoof_bot_action_type | String | Indicates the enforcement action that will be applied to traffic spoofing a known bot defined within the `known_bots` array. Valid values are: `ALERT \| BLOCK_REQUEST \| CUSTOM_RESPONSE \| RECAPTCHA \| REDIRECT_302` |
+| team_id | String | Indicates the team's tenant ID.|
+
+#### Enforcement Action Object
+
+The `actions` object contains an object for each enforcement action associated with this bot manager configuration. Valid objects are:
+`ALERT | BLOCK_REQUEST | BROWSER_CHALLENGE | CUSTOM_RESPONSE | REDIRECT_302 | RECAPTCHA`
+
+Each of the above objects describes an enforcement action through the following properties:
+
+|Name|Data Type|Description|
+|--- |--- |--- |
+| enf_type | String | Identifies the type of enforcement action. Valid values are: `ALERT \| BLOCK_REQUEST \| BROWSER_CHALLENGE \| CUSTOM_RESPONSE \| RECAPTCHA \| REDIRECT_302`|
+| failed_action_type | String | RECAPTCHA only. Indicates the enforcement action that will be applied when the client’s reCAPTCHA score is unacceptable. Valid values are: `ALERT \| BLOCK_REQUEST \| CUSTOM_RESPONSE \| REDIRECT_302 `|
+| id | String | Reserved for future use. |
+| is_custom_challenge | Boolean | BROWSER_CHALLENGE only. Indicates whether we will serve a standard or custom browser challenge. |
+| name | String | Reserved for future use. |
+| response_body_base64 | String | BROWSER_CHALLENGE and CUSTOM_RESPONSE. Determines the response body that will be sent for traffic identified as a threat. This value is Base64 encoded.|
+| response_headers | Object | CUSTOM_RESPONSE only. Determines the set of response headers that will be sent for traffic identified as a threat. Each response header is specified as a name/value pair. |
+| status | Integer | BROWSER_CHALLENGE, CUSTOM_RESPONSE, and RECAPTCHA. Determines the HTTP status code (e.g., `404`) for the custom response that will be sent for traffic identified as a threat. |
+| url | String | REDIRECT_302 only. Indicates the URL to which requests identified as a threat will be redirected.|
+| valid_for_sec | Integer | BROWSER_CHALLENGE and RECAPTCHA. Indicates the number of minutes for which our CDN will serve content to a client that solves a browser challenge without requiring an additional browser challenge to be solved. Specify a value between 1 and 1,440 minutes.|
+
+#### known_bots Array
+
+The `known_bots` array contains an object for each known bot that {{ PRODUCT }} will automatically detect. This object contains the following properties:
+
+|Name|Data Type|Description|
+|--- |--- |--- |
+| action_type| String | Required. Identifies the type of enforcement action that will be applied to a known bot. Valid values are: `ALERT \| BLOCK_REQUEST \| CUSTOM_RESPONSE \| RECAPTCHA \| REDIRECT_302`|
+| bot_token| String | Required. Identifies a known bot. |
+
+{{ API_RESPONSE.md }}
+
+<h4>Response Body</h4>
+
+The response body for a successful request contains the following properties:
+
+|Name|Data Type|Description|
+|--- |--- |--- |
+|id|String|Indicates the system-defined ID for the resource.|
+|status|String|Returns `success`.|
+|success|Boolean|Returns `true`.|
+
+{{ API_ERRORS.md }}
+
+<h3>Sample Request and Response (JSON)</h3>
+
+A sample JSON request is shown below.
+
+```json
+POST  {{ API_URL }}/waf/{{ API_SECURITY_VERSION }}/12345/bot-managers  HTTP/1.1
+{{ API_SAMPLE_REQUEST_HEADERS.md }}
+
+{
+    FINDME
+}
+```
+
+A sample JSON response is shown below.
+
+```json
+HTTP/1.1 200 OK
+Cache-Control: private
+Content-Type: application/json; charset=utf-8
+Date:  Thu, 15 Apr 2021 12:00:00 GMT
+Content-Length: 65
+
+{
+    "id": "pfJKToQF",
+    "status": "success",
+    "success": true
+}
+```
+
+## Delete Bot Manager Configuration {/*delete-bot-manager-configuration*/}
+
+Deletes a bot manager configuration.
+
+<h3>Request</h3>
+
+A request to delete a bot manager configuration is described below.
+
+`DELETE {{ API_URL }}/waf/{{ API_SECURITY_VERSION }}/<TEAM ID>/bot-managers/<BOT MANAGER CONFIGURATION ID>`
+
+Define the following variables when submitting the above request:
+
+-   `<TEAM ID>`**:** Required. Replace this variable with your team's tenant ID. 
+-   `<BOT MANAGER CONFIGURATION ID>`**:** Required. Replace this variable with the system-defined ID for the desired bot manager configuration. Use the [Get All Bot Manager Configurations operation](#get-all-bot-manager-configurations) to retrieve a list of bot manager configurations and their system-defined IDs.
+
+<h4>Request Headers</h4>
+
+This operation only takes advantage of [common request headers](FINDME/../Introduction/Common_Request_and_Response_Elements.htm#Request).
+
+<h4>Request Body</h4>
+
+Request body properties are not required by this operation.
+
+{{ API_RESPONSE.md }}
+
+<h4>Response Body</h4>
+
+The response body for a successful request contains the following properties:
+
+|Name|Data Type|Description|
+|--- |--- |--- |
+|id|String|Indicates the system-defined ID for the resource.|
+|status|String|Returns `success`.|
+|success|Boolean|Returns `true`.|
+
+{{ API_ERRORS.md }}
+
+<h3>Sample Request and Response (JSON)</h3>
+
+A sample JSON request is shown below.
+
+```json
+DELETE {{ API_URL }}/waf/{{ API_SECURITY_VERSION }}/12345/bot-managers/pfJKToQF  HTTP/1.1
+{{ API_SAMPLE_REQUEST_HEADERS.md }}
+```
+
+A sample JSON response is shown below.
+
+```json
+HTTP/1.1 200 OK
+Cache-Control: private
+Content-Type: application/json; charset=utf-8
+Date:  Thu, 15 Apr 2021 12:00:00 GMT
+Content-Length: 65
+
+{
+    "id": "pfJKToQF",
+    "status": "success",
+    "success": true
+}
+```
+
+## Get All Bot Manager Configurations {/*get-all-bot-manager-configurations*/}
+
+Retrieves a list of bot manager configurations. A bot manager configuration defines the set of requests that will be protected by bot rules. 
+
+<h3>Request</h3>
+
+A request to retrieve all bot manager configurations is described below.
+
+`GET {{ API_URL }}/waf/{{ API_SECURITY_VERSION }}/<TEAM ID>/bot-managers`
+
+Define the following variable when submitting the above request:
+
+-   `<TEAM ID>`**:** Required. Replace this variable with your team's tenant ID. 
+
+<h4>Request Headers</h4>
+
+This operation only takes advantage of [common request headers](FINDME/../Introduction/Common_Request_and_Response_Elements.htm#Request).
+
+<h4>Request Body</h4>
+
+Request body properties are not required by this operation.
+
+{{ API_RESPONSE.md }}
+
+<h4>Response Body</h4>
+
+The response body for a successful request contains the following response elements for each bot manager configuration:
+
+|Name|Data Type|Description|
+|--- |--- |--- |
+|id|String|Indicates the system-defined ID for the bot manager configuration. Pass this ID to the [Get Bot Manager Configuration operation](#get-bot-manager-configuration) to retrieve the properties for this bot manager configuration.|
+|last_modified_date|String|Indicates the date and time at which the bot manager configuration was last modified. <br />**Syntax:** `MM/DD/YYYYhh:mm:ss [AM\|PM]`|
+|name|String|Indicates the name of the bot manager configuration.|
+
+{{ API_ERRORS.md }}
+
+<h3>Sample Request and Response (JSON)</h3>
+
+A sample JSON request is shown below.
+
+```json
+GET {{ API_URL }}/waf/{{ API_SECURITY_VERSION }}/12345/bot-managers  HTTP/1.1
+{{ API_SAMPLE_REQUEST_HEADERS.md }}
+```
+
+A sample JSON response is shown below.
+
+```json
+HTTP/1.1 200 OK
+Cache-Control: private
+Content-Type: application/json; charset=utf-8
+Date:  Thu, 15 Apr 2021 12:00:00 GMT
+Content-Length: 114
+
+[{
+        "name": "My Bot Manager Configuration",
+        "last_modified_date": "2021-12-15T17:27:37.691682Z"
+        "id": "1CaCTGJV"
+    }
+]
+```
+
+## Get Bot Manager Configuration {/*get-bot-manager-configuration*/}
+
+Retrieves a bot manager configuration. A bot manager configuration contains one or more bot rules. 
+
+<h3>Request</h3>
+
+A request to retrieve a bot manager configuration is described below.
+
+`GET {{ API_URL }}/waf/{{ API_SECURITY_VERSION }}/<TEAM ID>/bot-managers/<BOT MANAGER CONFIGURATION ID>`
+
+Define the following variables when submitting the above request:
+
+-   `<TEAM ID>`**:** Required. Replace this variable with your team's tenant ID. 
+-   `<BOT MANAGER CONFIGURATION ID>`**:** Required. Replace this variable with the system-defined ID for the desired bot manager configuration. Use the [Get All Bot Manager Configurations operation](#get-all-bot-manager-configurations) to retrieve a list of bot manager configurations and their system-defined IDs.
+
+<h4>Request Headers</h4>
+
+This operation only takes advantage of [common request headers](FINDME/../Introduction/Common_Request_and_Response_Elements.htm#Request).
+
+<h4>Request Body</h4>
+
+Request body properties are not required by this operation.
+
+{{ API_RESPONSE.md }}
+
+<h4>Response Body</h4>
+
+The response body for a successful request contains the following response elements for each bot manager configuration:
+
+|Name|Data Type|Description|
+|--- |--- |--- |
+| actions | Object | Contains the set of enforcement actions that may be applied to this bot manager configuration. |
+| bots_prod_id | String | Indicates the system-defined ID for the bot rule set that will be applied to production traffic for this Security Application Manager configuration. Use the [Get All Bot Rule Sets operation](#get-all-bot-rule-sets) to retrieve a list of bot rule sets and their IDs.|
+| exception_cookie | Array of string values | Identifies traffic that will be exempt from bot detection by cookie. <br />**Syntax:** `<COOKIE NAME>:<COOKIE VALUE>`. <br />{{ PRODUCT }} treats the cookie's value as a regular expression. |
+| exception_ja3  | Array of string values | Identifies traffic that will be exempt from bot detection by JA3 fingerprint. A JA3 fingerprint identifies a client using key characteristics from a TLS request. |
+| exception_url  | Array of string values | Identifies traffic that will be exempt from bot detection by URL. Each value is interpreted as a regular expression.|
+| exception_user_agent  | Array of string values | Identifies traffic that will be exempt from bot detection by user agent. Each value is interpreted as a regular expression.|
+| inspect_known_bots  | Boolean | Indicates whether {{ PRODUCT }} will automatically detect the known bots defined within the `known_bots` array. |
+| known_bots | Array of objects | Contains the set of known bots that {{ PRODUCT }} may automatically detect and the enforcement action that may be applied to them. |
+| last_modified_date | String|Indicates the timestamp at which this bot manager configuration was last modified. <br />**Syntax:** `YYYY-MM-DDThh:mm:ss:ffffffZ`|
+| last_modified_by | String | Reserved for future use. |
+|name|String|Indicates the name assigned to this bot manager configuration.|
+| spoof_bot_action_type | String | Indicates the enforcement action that will be applied to traffic spoofing a known bot defined within the `known_bots` array. Valid values are: `ALERT \| BLOCK_REQUEST \| CUSTOM_RESPONSE \| RECAPTCHA \| REDIRECT_302` |
+| team_id | String | Indicates the team's tenant ID.|
+
+#### Enforcement Action Object
+
+The `actions` object contains an object for each enforcement action associated with this bot manager configuration. Valid objects are:
+`ALERT | BLOCK_REQUEST | BROWSER_CHALLENGE | CUSTOM_RESPONSE | REDIRECT_302 | RECAPTCHA`
+
+Each of the above objects describes an enforcement action through the following properties:
+
+|Name|Data Type|Description|
+|--- |--- |--- |
+| enf_type | String | Identifies the type of enforcement action. Valid values are: `ALERT \| BLOCK_REQUEST \| BROWSER_CHALLENGE \| CUSTOM_RESPONSE \| RECAPTCHA \| REDIRECT_302`|
+| failed_action_type | String | RECAPTCHA only. Indicates the enforcement action that will be applied when the client’s reCAPTCHA score is unacceptable. Valid values are: `ALERT \| BLOCK_REQUEST \| CUSTOM_RESPONSE \| REDIRECT_302 `|
+| id | String | Reserved for future use. |
+| is_custom_challenge | Boolean | BROWSER_CHALLENGE only. Indicates whether we will serve a standard or custom browser challenge. |
+| name | String | Reserved for future use. |
+| response_body_base64 | String | BROWSER_CHALLENGE and CUSTOM_RESPONSE. Determines the response body that will be sent for traffic identified as a threat. This value is Base64 encoded.|
+| response_headers | Object | CUSTOM_RESPONSE only. Determines the set of response headers that will be sent for traffic identified as a threat. Each response header is specified as a name/value pair. |
+| status | Integer | BROWSER_CHALLENGE, CUSTOM_RESPONSE, and RECAPTCHA. Determines the HTTP status code (e.g., `404`) for the custom response that will be sent for traffic identified as a threat. |
+| url | String | REDIRECT_302 only. Indicates the URL to which requests identified as a threat will be redirected.|
+| valid_for_sec | Integer | BROWSER_CHALLENGE and RECAPTCHA. Indicates the number of minutes for which our CDN will serve content to a client that solves a browser challenge without requiring an additional browser challenge to be solved. Specify a value between 1 and 1,440 minutes.|
+
+#### known_bots Array
+
+The `known_bots` array contains an object for each known bot that {{ PRODUCT }} will automatically detect. This object contains the following properties:
+
+|Name|Data Type|Description|
+|--- |--- |--- |
+| action_type| String | Identifies the type of enforcement action that will be applied to a known bot. Valid values are: `ALERT \| BLOCK_REQUEST \| CUSTOM_RESPONSE \| RECAPTCHA \| REDIRECT_302`|
+| bot_token| String | Identifies a known bot. |
+
+{{ API_ERRORS.md }}
+
+<h3>Sample Request and Response (JSON)</h3>
+
+A sample JSON request is shown below.
+
+```json
+GET {{ API_URL }}/waf/{{ API_SECURITY_VERSION }}/12345/bot-managers/pfJKToQF  HTTP/1.1
+{{ API_SAMPLE_REQUEST_HEADERS.md }}
+```
+
+A sample JSON response is shown below.
+
+```json
+HTTP/1.1 200 OK
+Cache-Control: private
+Content-Type: application/json; charset=utf-8
+Date:  Thu, 15 Apr 2021 12:00:00 GMT
+Content-Length: 750
+
+{
+FINDME
+}
+```
+
+## Update Bot Manager Configuration {/*update-bot-manager-configuration*/}
+
+Updates a bot manager configuration. A bot manager configuration contains one or more bot rules. 
+
+<h3>Request</h3>
+
+A request to update a bot manager configuration is described below.
+
+`PUT {{ API_URL }}/waf/{{ API_SECURITY_VERSION }}/<TEAM ID>/bot-managers/<BOT MANAGER CONFIGURATION ID>`
+
+Define the following variables when submitting the above request:
+
+-   `<TEAM ID>`**:** Required. Replace this variable with your team's tenant ID. 
+-   `<BOT MANAGER CONFIGURATION ID>`**:** Required. Replace this variable with the system-defined ID for the desired bot manager configuration. Use the [Get All Bot Manager Configurations operation](#get-all-bot-manager-configurations) to retrieve a list of bot manager configurations and their system-defined IDs.
+
+<h4>Request Headers</h4>
+
+This operation only takes advantage of [common request headers](FINDME/../Introduction/Common_Request_and_Response_Elements.htm#Request).
+
+<h4>Request Body</h4>
+
+Pass the following request body properties:
+
+|Name|Data Type|Description|
+|--- |--- |--- |
+| actions | Object | Contains the set of enforcement actions that may be applied to this bot manager configuration. |
+| bots_prod_id | String | Indicates the system-defined ID for the bot rule set that will be applied to production traffic for this Security Application Manager configuration. Use the [Get All Bot Rule Sets operation](#get-all-bot-rule-sets) to retrieve a list of bot rule sets and their IDs.|
+| exception_cookie | Array of string values | Identifies traffic that will be exempt from bot detection by cookie. Specify each desired cookie using the following syntax: `<COOKIE NAME>:<COOKIE VALUE>`. {{ PRODUCT }} treats the cookie's value as a regular expression. |
+| exception_ja3  | Array of string values | Identifies traffic that will be exempt from bot detection by JA3 fingerprint. A JA3 fingerprint identifies a client using key characteristics from a TLS request. |
+| exception_url  | Array of string values | Identifies traffic that will be exempt from bot detection by URL. Specify each desired URL as a regular expression.|
+| exception_user_agent  | Array of string values | Identifies traffic that will be exempt from bot detection by user agent. Specify each desired user agent as a regular expression.|
+| inspect_known_bots  | Boolean | Determines whether {{ PRODUCT }} will automatically detect the known bots defined within the `known_bots` array. |
+| known_bots | Array of objects | Contains the set of known bots that {{ PRODUCT }} may automatically detect and the enforcement action that may be applied to them. |
+| last_modified_date | String | Reserved for future use.|
+| last_modified_by | String | Reserved for future use. |
+|name|String|Indicates the name assigned to this bot manager configuration.|
+| spoof_bot_action_type | String | Indicates the enforcement action that will be applied to traffic spoofing a known bot defined within the `known_bots` array. Valid values are: `ALERT \| BLOCK_REQUEST \| CUSTOM_RESPONSE \| RECAPTCHA \| REDIRECT_302` |
+| team_id | String | Indicates the team's tenant ID.|
+
+#### Enforcement Action Object
+
+The `actions` object contains an object for each enforcement action associated with this bot manager configuration. Valid objects are:
+`ALERT | BLOCK_REQUEST | BROWSER_CHALLENGE | CUSTOM_RESPONSE | REDIRECT_302 | RECAPTCHA`
+
+Each of the above objects describes an enforcement action through the following properties:
+
+|Name|Data Type|Description|
+|--- |--- |--- |
+| enf_type | String | Identifies the type of enforcement action. Valid values are: `ALERT \| BLOCK_REQUEST \| BROWSER_CHALLENGE \| CUSTOM_RESPONSE \| RECAPTCHA \| REDIRECT_302`|
+| failed_action_type | String | RECAPTCHA only. Indicates the enforcement action that will be applied when the client’s reCAPTCHA score is unacceptable. Valid values are: `ALERT \| BLOCK_REQUEST \| CUSTOM_RESPONSE \| REDIRECT_302 `|
+| id | String | Reserved for future use. |
+| is_custom_challenge | Boolean | BROWSER_CHALLENGE only. Indicates whether we will serve a standard or custom browser challenge. |
+| name | String | Reserved for future use. |
+| response_body_base64 | String | BROWSER_CHALLENGE and CUSTOM_RESPONSE. Determines the response body that will be sent for traffic identified as a threat. This value is Base64 encoded.|
+| response_headers | Object | CUSTOM_RESPONSE only. Determines the set of response headers that will be sent for traffic identified as a threat. Each response header is specified as a name/value pair. |
+| status | Integer | BROWSER_CHALLENGE, CUSTOM_RESPONSE, and RECAPTCHA. Determines the HTTP status code (e.g., `404`) for the custom response that will be sent for traffic identified as a threat. |
+| url | String | REDIRECT_302 only. Indicates the URL to which requests identified as a threat will be redirected.|
+| valid_for_sec | Integer | BROWSER_CHALLENGE and RECAPTCHA. Indicates the number of minutes for which our CDN will serve content to a client that solves a browser challenge without requiring an additional browser challenge to be solved. Specify a value between 1 and 1,440 minutes.|
+
+#### known_bots Array
+
+The `known_bots` array contains an object for each known bot that {{ PRODUCT }} will automatically detect. This object contains the following properties:
+
+|Name|Data Type|Description|
+|--- |--- |--- |
+| action_type| String | Required. Identifies the type of enforcement action that will be applied to a known bot. Valid values are: `ALERT \| BLOCK_REQUEST \| CUSTOM_RESPONSE \| RECAPTCHA \| REDIRECT_302`|
+| bot_token| String | Required. Identifies a known bot. |
+
+{{ API_RESPONSE.md }}
+
+<h4>Response Body</h4>
+
+The response body for a successful request contains the following properties:
+
+|Name|Data Type|Description|
+|--- |--- |--- |
+|id|String|Indicates the system-defined ID for the resource.|
+|status|String|Returns `success`.|
+|success|Boolean|Returns `true`.|
+
+{{ API_ERRORS.md }}
+
+<h3>Sample Request and Response (JSON)</h3>
+
+A sample JSON request is shown below.
+
+```json
+PUT  {{ API_URL }}/waf/{{ API_SECURITY_VERSION }}/12345/bot-managers/pfJKToQF  HTTP/1.1
+{{ API_SAMPLE_REQUEST_HEADERS.md }}
+
+{
+    "directive": [{
+            "include": "r3010_ec_bot_challenge_reputation.conf.json"
+        }, {
+            "sec_rule": {
+                "action": {
+                    "id": "77000001",
+                    "t": [
+                        "NONE"
+                    ]
+                },
+                "chained_rule": [],
+                "name": "Popular Bots",
+                "operator": {
+                    "type": "RX",
+                    "value": ".*(Googlebot|Bingbot|Slurp|DuckDuckBot|Baiduspider|YandexBot|Spider|Exabot|facebot).*"
+                },
+                "variable": [{
+                        "match": [{
+                                "value": "User-Agent"
+                            }
+                        ],
+                        "type": "REQUEST_HEADERS"
+                    }
+                ]
+            }
+        }
+    ],
+    "name": "My Bot Manager Configuration"
+}
+```
+
+A sample JSON response is shown below.
+
+```json
+HTTP/1.1 200 OK
+Cache-Control: private
+Content-Type: application/json; charset=utf-8
+Date:  Thu, 15 Apr 2021 12:00:00 GMT
+Content-Length: 65
+
+{
+    "id": "pfJKToQF",
+    "status": "success",
+    "success": true
+}
+```
+
+## Add Bot Rule Sets {/*add-bot-rule-set*/}
+
+Creates a bot rule set. 
+
+[View key configuration information.](#key-information)
+
+<h3>Request</h3>
+
+A request to add a bot rule set is described below.
+
+`POST {{ API_URL }}/waf/{{ API_SECURITY_VERSION }}/<TEAM ID>/bots`
+
+Define the following variable when submitting the above request:
+
+-   `<TEAM ID>`**:** Required. Replace this variable with your team's tenant ID. 
+
+<h4>Request Headers</h4>
+
+This operation only takes advantage of [common request headers](FINDME/../Introduction/Common_Request_and_Response_Elements.htm#Request).
+
+<h4>Request Body</h4>
+
+Pass the following request body properties:
+
+|Name|Data Type|Description|
+|--- |--- |--- |
+|directive|Array of objects|Required. Contains the bot rules associated with this bot rule set. You may create up to 10 bot rules per bot rule set.|
+|id |String |Reserved for future use. |
+| last_modified_date | String | Reserved for future use.|
+|name|String|Indicates the name assigned to this bot rule set.|
+| team_id | String | Indicates the team's tenant ID.|
 
 #### directive Array
 
@@ -287,7 +777,7 @@ POST  {{ API_URL }}/waf/{{ API_SECURITY_VERSION }}/12345/bots  HTTP/1.1
             }
         }
     ],
-    "name": "My Bot Manager Configuration"
+    "name": "My Bot Rule Sets"
 }
 ```
 
@@ -307,20 +797,20 @@ Content-Length: 65
 }
 ```
 
-## Delete Bot Manager Configuration {/*delete-bot-manager-configuration*/}
+## Delete Bot Rule Sets {/*delete-bot-rule-set*/}
 
-Deletes a bot manager configuration.
+Deletes a bot rule set.
 
 <h3>Request</h3>
 
-A request to delete a bot manager configuration is described below.
+A request to delete a bot rule set is described below.
 
-`DELETE {{ API_URL }}/waf/{{ API_SECURITY_VERSION }}/<TENANT ID>/bots/<BOT MANAGER CONFIGURATION ID>`
+`DELETE {{ API_URL }}/waf/{{ API_SECURITY_VERSION }}/<TEAM ID>/bots/<BOT MANAGER CONFIGURATION ID>`
 
 Define the following variables when submitting the above request:
 
--   `<TENANT ID>`**:** Required. Replace this variable with your team's tenant ID. 
--   `<BOT MANAGER CONFIGURATION ID>`**:** Required. Replace this variable with the system-defined ID for the desired bot manager configuration. Use the [Get All Bot Manager Configurations operation](#get-all-bot-manager-configurations) to retrieve a list of bot manager configurations and their system-defined IDs.
+-   `<TEAM ID>`**:** Required. Replace this variable with your team's tenant ID. 
+-   `<BOT MANAGER CONFIGURATION ID>`**:** Required. Replace this variable with the system-defined ID for the desired bot rule set. Use the [Get All Bot Rule Setss operation](#get-all-bot-rule-sets) to retrieve a list of bot rule sets and their system-defined IDs.
 
 <h4>Request Headers</h4>
 
@@ -369,19 +859,19 @@ Content-Length: 65
 }
 ```
 
-## Get All Bot Manager Configurations {/*get-all-bot-manager-configurations*/}
+## Get All Bot Rule Setss {/*get-all-bot-rule-sets*/}
 
-Retrieves a list of bot manager configurations. A bot manager configuration defines the set of requests that will be protected by bot rules. 
+Retrieves a list of bot rule sets. A bot rule set defines the set of requests that will be protected by bot rules. 
 
 <h3>Request</h3>
 
-A request to retrieve all bot manager configurations is described below.
+A request to retrieve all bot rule sets is described below.
 
-`GET {{ API_URL }}/waf/{{ API_SECURITY_VERSION }}/<TENANT ID>/bots`
+`GET {{ API_URL }}/waf/{{ API_SECURITY_VERSION }}/<TEAM ID>/bots`
 
 Define the following variable when submitting the above request:
 
--   `<TENANT ID>`**:** Required. Replace this variable with your team's tenant ID. 
+-   `<TEAM ID>`**:** Required. Replace this variable with your team's tenant ID. 
 
 <h4>Request Headers</h4>
 
@@ -395,13 +885,13 @@ Request body properties are not required by this operation.
 
 <h4>Response Body</h4>
 
-The response body for a successful request contains the following response elements for each bot manager configuration:
+The response body for a successful request contains the following response elements for each bot rule set:
 
 |Name|Data Type|Description|
 |--- |--- |--- |
-|id|String|Indicates the system-defined ID for the bot manager configuration. Pass this ID to the [Get Bot Manager Configuration operation](#get-bot-manager-configuration) to retrieve the properties for this bot manager configuration.|
-|last_modified_date|String|Indicates the date and time at which the bot manager configuration was last modified. <br />**Syntax:** `MM/DD/YYYYhh:mm:ss [AM\|PM]`|
-|name|String|Indicates the name of the bot manager configuration.|
+|id|String|Indicates the system-defined ID for the bot rule set. Pass this ID to the [Get Bot Rule Sets operation](#get-bot-rule-set) to retrieve the properties for this bot rule set.|
+|last_modified_date|String|Indicates the date and time at which the bot rule set was last modified. <br />**Syntax:** `MM/DD/YYYYhh:mm:ss [AM\|PM]`|
+|name|String|Indicates the name of the bot rule set.|
 
 {{ API_ERRORS.md }}
 
@@ -424,27 +914,27 @@ Date:  Thu, 15 Apr 2021 12:00:00 GMT
 Content-Length: 114
 
 [{
-        "name": "My Bot Manager Configuration",
+        "name": "My Bot Rule Sets",
         "last_modified_date": "2021-12-15T17:27:37.691682Z"
         "id": "1CaCTGJV"
     }
 ]
 ```
 
-## Get Bot Manager Configuration {/*get-bot-manager-configuration*/}
+## Get Bot Rule Sets {/*get-bot-rule-set*/}
 
-Retrieves a bot manager configuration. A bot manager configuration contains one or more bot rules. 
+Retrieves a bot rule set. A bot rule set contains one or more bot rules. 
 
 <h3>Request</h3>
 
-A request to retrieve a bot manager configuration is described below.
+A request to retrieve a bot rule set is described below.
 
-`GET {{ API_URL }}/waf/{{ API_SECURITY_VERSION }}/<TENANT ID>/bots/<BOT MANAGER CONFIGURATION ID>`
+`GET {{ API_URL }}/waf/{{ API_SECURITY_VERSION }}/<TEAM ID>/bots/<BOT MANAGER CONFIGURATION ID>`
 
 Define the following variables when submitting the above request:
 
--   `<TENANT ID>`**:** Required. Replace this variable with your team's tenant ID. 
--   `<BOT MANAGER CONFIGURATION ID>`**:** Required. Replace this variable with the system-defined ID for the desired bot manager configuration. Use the [Get All Bot Manager Configurations operation](#get-all-bot-manager-configurations) to retrieve a list of bot manager configurations and their system-defined IDs.
+-   `<TEAM ID>`**:** Required. Replace this variable with your team's tenant ID. 
+-   `<BOT MANAGER CONFIGURATION ID>`**:** Required. Replace this variable with the system-defined ID for the desired bot rule set. Use the [Get All Bot Rule Setss operation](#get-all-bot-rule-sets) to retrieve a list of bot rule sets and their system-defined IDs.
 
 <h4>Request Headers</h4>
 
@@ -458,15 +948,15 @@ Request body properties are not required by this operation.
 
 <h4>Response Body</h4>
 
-The response body for a successful request contains the following response elements for each bot manager configuration:
+The response body for a successful request contains the following response elements for each bot rule set:
 
 |Name|Data Type|Description|
 |--- |--- |--- |
 |customer_id|String|Identifies your account by its customer account number.|
-|directive|Array of objects|Contains the bot rules associated with this bot manager configuration.|
-|id|String|Indicates the system-defined ID for this bot manager configuration.|
-|last_modified_date|String|Indicates the timestamp at which this bot manager configuration was last modified. <br />**Syntax:** `YYYY-MM-DDThh:mm:ss:ffffffZ` |
-|name|String|Indicates the name assigned to this bot manager configuration.|
+|directive|Array of objects|Contains the bot rules associated with this bot rule set.|
+|id|String|Indicates the system-defined ID for this bot rule set.|
+|last_modified_date|String|Indicates the timestamp at which this bot rule set was last modified. <br />**Syntax:** `YYYY-MM-DDThh:mm:ss:ffffffZ` |
+|name|String|Indicates the name assigned to this bot rule set.|
 
 #### directive Array
 
@@ -474,7 +964,7 @@ The `directive` array describes each bot rule through the following properties:
 
 |Name|Data Type|Description|
 |--- |--- |--- |
-|include|String|Indicates that the bot rule that will use our reputation database. This type of rule is satisfied when the client's IP address matches an IP address defined within our reputation database. Our reputation database contains a list of IP addresses known to be used by bots. This property is only returned when your bot manager configuration contains a bot rule that uses our reputation database. Returns the following value: `r3010_ec_bot_challenge_reputation.conf.json`|
+|include|String|Indicates that the bot rule that will use our reputation database. This type of rule is satisfied when the client's IP address matches an IP address defined within our reputation database. Our reputation database contains a list of IP addresses known to be used by bots. This property is only returned when your bot rule set contains a bot rule that uses our reputation database. Returns the following value: `r3010_ec_bot_challenge_reputation.conf.json`|
 |sec_rule|Object|Indicates that the bot rule that will use custom match conditions. This type of rule is satisfied when a match is found for each of its conditions. A condition determines request identification by defining what will be matched (i.e., `variable`), how it will be matched (i.e., `operator`), and a match value.|
 
 #### sec_rule Object
@@ -606,24 +1096,24 @@ Content-Length: 750
     "id": "pfJKToQF",
     "last_modified_by": "joe@example.com via MCC portal",
     "last_modified_date": "2022-05-04T17:18:33.017946Z",
-    "name": "My Bot Manager Configuration"
+    "name": "My Bot Rule Sets"
 }
 ```
 
-## Update Bot Manager Configuration {/*update-bot-manager-configuration*/}
+## Update Bot Rule Sets {/*update-bot-rule-set*/}
 
-Updates a bot manager configuration. A bot manager configuration contains one or more bot rules. 
+Updates a bot rule set. A bot rule set contains one or more bot rules. 
 
 <h3>Request</h3>
 
-A request to update a bot manager configuration is described below.
+A request to update a bot rule set is described below.
 
-`PUT {{ API_URL }}/waf/{{ API_SECURITY_VERSION }}/<TENANT ID>/bots/<BOT MANAGER CONFIGURATION ID>`
+`PUT {{ API_URL }}/waf/{{ API_SECURITY_VERSION }}/<TEAM ID>/bots/<BOT MANAGER CONFIGURATION ID>`
 
 Define the following variables when submitting the above request:
 
--   `<TENANT ID>`**:** Required. Replace this variable with your team's tenant ID. 
--   `<BOT MANAGER CONFIGURATION ID>`**:** Required. Replace this variable with the system-defined ID for the desired bot manager configuration. Use the [Get All Bot Manager Configurations operation](#get-all-bot-manager-configurations) to retrieve a list of bot manager configurations and their system-defined IDs.
+-   `<TEAM ID>`**:** Required. Replace this variable with your team's tenant ID. 
+-   `<BOT MANAGER CONFIGURATION ID>`**:** Required. Replace this variable with the system-defined ID for the desired bot rule set. Use the [Get All Bot Rule Setss operation](#get-all-bot-rule-sets) to retrieve a list of bot rule sets and their system-defined IDs.
 
 <h4>Request Headers</h4>
 
@@ -636,10 +1126,10 @@ Pass the following request body properties:
 |Name|Data Type|Description|
 |--- |--- |--- |
 |customer_id|String|Identifies your account by its customer account number.|
-|directive|Array of objects|Required. Contains the bot rules associated with this bot manager configuration. You may create up to 10 bot rules per bot manager configuration.|
-|id|String|Indicates the system-defined ID for this bot manager configuration.|
-|last_modified_date|String|Indicates the timestamp at which this bot manager configuration was last modified. <br />**Syntax:** `YYYY-MM-DDThh:mm:ss:ffffffZ`|
-|name|String|Indicates the name assigned to this bot manager configuration.|
+|directive|Array of objects|Required. Contains the bot rules associated with this bot rule set. You may create up to 10 bot rules per bot rule set.|
+|id|String|Indicates the system-defined ID for this bot rule set.|
+|last_modified_date|String|Indicates the timestamp at which this bot rule set was last modified. <br />**Syntax:** `YYYY-MM-DDThh:mm:ss:ffffffZ`|
+|name|String|Indicates the name assigned to this bot rule set.|
 
 #### directive Array
 
@@ -789,7 +1279,7 @@ PUT  {{ API_URL }}/waf/{{ API_SECURITY_VERSION }}/12345/bots/pfJKToQF  HTTP/1.1
             }
         }
     ],
-    "name": "My Bot Manager Configuration"
+    "name": "My Bot Rule Sets"
 }
 ```
 

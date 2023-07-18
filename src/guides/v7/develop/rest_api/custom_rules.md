@@ -122,11 +122,11 @@ Creates a custom rule set that defines custom threat assessment criteria.
 
 A request to create a custom rule set is described below.
 
-`POST {{ API_URL }}/waf/{{ API_SECURITY_VERSION }}/<TENANT ID>/rules`
+`POST {{ API_URL }}/waf/{{ API_SECURITY_VERSION }}/<TEAM ID>/rules`
 
 Define the following variable when submitting the above request:
 
--   `<TENANT ID>`**:** Required. Replace this variable with your team's tenant ID. 
+-   `<TEAM ID>`**:** Required. Replace this variable with your team's tenant ID. 
 
 <h4>Request Headers</h4>
 
@@ -294,11 +294,11 @@ Deletes a custom rule.
 
 A request to delete a custom rule is described below.
 
-`DELETE {{ API_URL }}/waf/{{ API_SECURITY_VERSION }}/<TENANT ID>/rules/<CUSTOM RULE ID>`
+`DELETE {{ API_URL }}/waf/{{ API_SECURITY_VERSION }}/<TEAM ID>/rules/<CUSTOM RULE ID>`
 
 Define the following variables when submitting the above request:
 
--   `<TENANT ID>`**:** Required. Replace this variable with your team's tenant ID. 
+-   `<TEAM ID>`**:** Required. Replace this variable with your team's tenant ID. 
 -   `<CUSTOM RULE ID>`**:** Replace this variable with the system-defined ID for your custom rule. Use the [Get All Custom Rules operation](#get-all-custom-rules) to retrieve a list of custom rule sets and their IDs.
 
 <h4>Request Headers</h4>
@@ -356,11 +356,11 @@ Retrieves a list of custom rule sets. A custom rule set allows you to define cus
 
 A request to retrieve all custom rule sets is described below.
 
-`GET {{ API_URL }}/waf/{{ API_SECURITY_VERSION }}/<TENANT ID>/rules`
+`GET {{ API_URL }}/waf/{{ API_SECURITY_VERSION }}/<TEAM ID>/rules`
 
 Define the following variable when submitting the above request:
 
--   `<TENANT ID>`**:** Required. Replace this variable with your team's tenant ID. 
+-   `<TEAM ID>`**:** Required. Replace this variable with your team's tenant ID. 
 
 <h4>Request Headers</h4>
 
@@ -420,11 +420,11 @@ Retrieves a custom rule set. Use a custom rule to define custom threat assessmen
 
 A request to retrieve a custom rule is described below.
 
-`GET {{ API_URL }}/waf/{{ API_SECURITY_VERSION }}/<TENANT ID>/rules/<CUSTOM RULE ID>`
+`GET {{ API_URL }}/waf/{{ API_SECURITY_VERSION }}/<TEAM ID>/rules/<CUSTOM RULE ID>`
 
 Define the following variables when submitting the above request:
 
--   `<TENANT ID>`**:** Required. Replace this variable with your team's tenant ID. 
+-   `<TEAM ID>`**:** Required. Replace this variable with your team's tenant ID. 
 -   `<CUSTOM RULE ID>`**:** Replace this variable with the system-defined ID for your custom rule. Use the [Get All Custom Rules operation](#get-all-custom-rules) to retrieve a list of custom rule sets and their IDs.
 
 
@@ -592,11 +592,11 @@ Updates a custom rule that defines custom threat assessment criteria.
 
 A request to update a custom rule set is described below.
 
-`PUT {{ API_URL }}/waf/{{ API_SECURITY_VERSION }}/<TENANT ID>/rules/<CUSTOM RULE ID>`
+`PUT {{ API_URL }}/waf/{{ API_SECURITY_VERSION }}/<TEAM ID>/rules/<CUSTOM RULE ID>`
 
 Define the following variables when submitting the above request:
 
--   `<TENANT ID>`**:** Required. Replace this variable with your team's tenant ID. 
+-   `<TEAM ID>`**:** Required. Replace this variable with your team's tenant ID. 
 -   `<CUSTOM RULE ID>`**:** Replace this variable with the system-defined ID for your custom rule. Use the [Get All Custom Rules operation](#get-all-custom-rules) to retrieve a list of custom rule sets and their IDs.
 
 <h4>Request Headers</h4>

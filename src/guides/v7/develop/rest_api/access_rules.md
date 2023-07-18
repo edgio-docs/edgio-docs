@@ -33,11 +33,11 @@ Creates an access rule that identifies valid or malicious requests via whitelist
 
 A request to create an access rule is described below.
 
-`POST {{ API_URL }}/waf/{{ API_SECURITY_VERSION }}/<TENANT ID>/acl`
+`POST {{ API_URL }}/waf/{{ API_SECURITY_VERSION }}/<TEAM ID>/acl`
 
 Define the following variable when submitting the above request:
 
--   `<TENANT ID>`**:** Required. Replace this variable with your team's tenant ID. 
+-   `<TEAM ID>`**:** Required. Replace this variable with your team's tenant ID. 
 
 <h4>Request Headers</h4>
 
@@ -97,7 +97,7 @@ The response body for a successful request contains the following properties:
 A sample JSON request is shown below.
 
 ```json
-POST {{ API_URL }}/waf/{{ API_SECURITY_VERSION }}/<TENANT ID>/acl  HTTP/1.1
+POST {{ API_URL }}/waf/{{ API_SECURITY_VERSION }}/<TEAM ID>/acl  HTTP/1.1
 {{ API_SAMPLE_REQUEST_HEADERS.md }}
 
 {
@@ -219,11 +219,11 @@ Deletes an access rule (ACL) that identifies valid or malicious requests via whi
 
 A request to delete an access rule is described below.
 
-`DELETE {{ API_URL }}/waf/{{ API_SECURITY_VERSION }}/<TENANT ID>/acl/<ACCESS RULE ID>`
+`DELETE {{ API_URL }}/waf/{{ API_SECURITY_VERSION }}/<TEAM ID>/acl/<ACCESS RULE ID>`
 
 Define the following variable when submitting the above request:
 
--   `<TENANT ID>`**:** Required. Replace this variable with your team's tenant ID. 
+-   `<TEAM ID>`**:** Required. Replace this variable with your team's tenant ID. 
 -   `<ACCESS RULE ID>`**:** Required. Replace this variable with the system-defined ID for the desired access rule.
 
     <Callout type="tip">
@@ -259,7 +259,7 @@ The response body for a successful request contains the following properties:
 A sample JSON request is shown below.
 
 ```json
-DELETE {{ API_URL }}/waf/{{ API_SECURITY_VERSION }}/<TENANT ID>/acl/CGifudum  HTTP/1.1
+DELETE {{ API_URL }}/waf/{{ API_SECURITY_VERSION }}/<TEAM ID>/acl/CGifudum  HTTP/1.1
 {{ API_SAMPLE_REQUEST_HEADERS.md }}
 ```
 
@@ -287,11 +287,11 @@ Retrieves a list of access rules. An access rule identifies valid or malicious r
 
 A request to retrieve all access rules is described below.
 
-`GET {{ API_URL }}/waf/{{ API_SECURITY_VERSION }}/<TENANT ID>/acl`
+`GET {{ API_URL }}/waf/{{ API_SECURITY_VERSION }}/<TEAM ID>/acl`
 
 Define the following variable when submitting the above request:
 
--   `<TENANT ID>`**:** Required. Replace this variable with your team's tenant ID. 
+-   `<TEAM ID>`**:** Required. Replace this variable with your team's tenant ID. 
 
 <h4>Request Headers</h4>
 
@@ -320,7 +320,7 @@ The response body for a successful request contains the following response eleme
 A sample JSON request is shown below.
 
 ```json
-GET {{ API_URL }}/waf/{{ API_SECURITY_VERSION }}/<TENANT ID>/acl  HTTP/1.1
+GET {{ API_URL }}/waf/{{ API_SECURITY_VERSION }}/<TEAM ID>/acl  HTTP/1.1
 {{ API_SAMPLE_REQUEST_HEADERS.md }}
 ```
 
@@ -349,11 +349,11 @@ Retrieves an access rule that identifies valid or malicious requests via whiteli
 
 A request to retrieve an access rule is described below.
 
-`GET {{ API_URL }}/waf/{{ API_SECURITY_VERSION }}/<TENANT ID>/acl/<ACCESS RULE ID>`
+`GET {{ API_URL }}/waf/{{ API_SECURITY_VERSION }}/<TEAM ID>/acl/<ACCESS RULE ID>`
 
 Define the following variable when submitting the above request:
 
--   `<TENANT ID>`**:** Required. Replace this variable with your team's tenant ID. 
+-   `<TEAM ID>`**:** Required. Replace this variable with your team's tenant ID. 
 -   `<ACCESS RULE ID>`**:** Required. Replace this variable with the system-defined ID for the desired access rule.
 
     <Callout type="tip">
@@ -418,7 +418,7 @@ All entries within a cookie, referrer, URL, or user agent whitelist, accesslist,
 A sample JSON request is shown below.
 
 ```json
-GET {{ API_URL }}/waf/{{ API_SECURITY_VERSION }}/<TENANT ID>/acl/CGifudum  HTTP/1.1
+GET {{ API_URL }}/waf/{{ API_SECURITY_VERSION }}/<TEAM ID>/acl/CGifudum  HTTP/1.1
 {{ API_SAMPLE_REQUEST_HEADERS.md }}
 ```
 
@@ -543,11 +543,11 @@ Updates an access rule that identifies valid or malicious requests via whitelist
 
 A request to update an access rule is described below.
 
-`PUT {{ API_URL }}/waf/{{ API_SECURITY_VERSION }}/<TENANT ID>/acl/<ACCESS RULE ID>`
+`PUT {{ API_URL }}/waf/{{ API_SECURITY_VERSION }}/<TEAM ID>/acl/<ACCESS RULE ID>`
 
 Define the following variable when submitting the above request:
 
--   `<TENANT ID>`**:** Required. Replace this variable with your team's tenant ID. 
+-   `<TEAM ID>`**:** Required. Replace this variable with your team's tenant ID. 
 -   `<ACCESS RULE ID>`**:** Required. Replace this variable with the system-defined ID for the desired access rule.
 
     <Callout type="tip">
@@ -615,7 +615,7 @@ The response body for a successful request contains the following properties:
 A sample JSON request is shown below.
 
 ```json
-PUT {{ API_URL }}/waf/{{ API_SECURITY_VERSION }}/<TENANT ID>/acl/CGifudum  HTTP/1.1
+PUT {{ API_URL }}/waf/{{ API_SECURITY_VERSION }}/<TEAM ID>/acl/CGifudum  HTTP/1.1
 {{ API_SAMPLE_REQUEST_HEADERS.md }}
 
 {

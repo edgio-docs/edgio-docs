@@ -250,6 +250,13 @@ Conditional routes allow you to apply [Rules](/guides/performance/rules) to a re
 
 ### Using the `.if()`, `.elseif()`, and `.else()` Methods {/* using-the-if-elseif-and-else-methods */}
 
+The `.if()`, `.elseif()`, and `.else()` methods are used to apply if/then logic to a request. These methods accept a single argument of type `Matches`. You can see the full specification of the `Matches` type in the [API reference](/docs/api/core/interfaces/types.Matches.html).
+
+```js filename="./routes.js"
+
+```
+
+
 ### Using the `.conditional()` Method {/* using-the-conditional-method */}
 
 Let's revisit the example from our [Default Route Configuration](/guides/performance/cdn_as_code#default-route-configuration) section where we cached all requests to `/api/*`:

@@ -24,9 +24,9 @@ This guide shows you how to configure {{ PRODUCT_NAME }} to prerender pages to t
 experience when accessing your site. Static prerendering works by sending requests to your application code and caching the result right after your site is deployed.
 In this way, you simply build your app to implement server-side rendering and get the speed benefits of a static site for some or all of your pages. This feature is especially useful for large, complex sites that have too many URLs to prerender without incurring exceptionally long build times.
 
-## Specifying the URLs to Prerender {/* specifying-the-urls-to-prerender */}
+## Specifying the Urls to Prerender {/* specifying-the-urls-to-prerender */}
 
-To specify which URLs should be prerendered, use the Router's [prerender]({{ DOCS_URL }}/docs/api/core/classes/_router_router_.router.html#prerender) function. The `prerender` function accepts an array of [PrerenderRequest] objects or an async function that returns the same:
+To specify which URLs should be prerendered, use the Router's [prerender](/docs/api/core/classes/_router_router_.router.html#prerender) function. The `prerender` function accepts an array of [PrerenderRequest] objects or an async function that returns the same:
 
 ### Example: Hardcoded Paths {/* example-hardcoded-paths */}
 
@@ -121,7 +121,7 @@ router = new Router().prerender([
 
 To ensure that client-side navigation is as fast as possible, it is important to prerender not just HTML responses but API calls as well. Some frameworks, such as Next.js, embed a build ID in API URLs to ensure the client receives responses from the correct version of the backend. In other frameworks, the convention for how API URLs are structured is left to the developer.
 
-### Example: Next.js getServerSideProps {/* example-nextjs-getserversideprops */}
+### Example: Next.js Getserversideprops {/* example-nextjs-getserversideprops */}
 
 ```js
 const {Router} = require('{{ PACKAGE_NAME }}/core/router');
@@ -206,7 +206,7 @@ By default, {{ PRODUCT_NAME }} prerenders a maximum of 200 URLs at a time. This 
 
 <a id="viewing-prerendering-results-in-the-developer-console"></a>
 
-## Viewing Prerendering Results in the {{ PORTAL }} {/* viewing-prerendering-results-in-the-developer-console */}
+## Viewing Prerendering Results in the {{ Portal }} {/* viewing-prerendering-results-in-the */}
 
 When you deploy a new version of your site, you can view the progress and results of prerendering from the deployment
 view in {{ PORTAL }}:

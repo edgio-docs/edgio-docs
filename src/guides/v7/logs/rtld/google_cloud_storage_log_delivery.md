@@ -62,6 +62,6 @@ RTLD may automatically deliver compressed log data to a Google Cloud Storage buc
     1.  Set the **Bucket** option to the name of the Google Cloud Storage bucket to which log data will be posted.
     2.  Optional. Set the **Prefix** option to the desired prefix that defines a virtual log file storage location and/or a prefix that will be added to each object added to your bucket.
     
-        [Learn more.](/log-file-prefix)
+        [Learn more about prefixes.](#log-file-prefix)
 
 {{ RTLD_PROFILE_SETUP_2 }}

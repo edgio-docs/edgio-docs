@@ -4,7 +4,7 @@ title: Next.js Commerce
 
 This guide shows you how to deploy the [Next.js Commerce](https://github.com/vercel/commerce) starter kit on {{ PRODUCT }}. Note that Next.js Commerce repo is actively under development. This repo requires an account on the [BigCommerce](https://www.bigcommerce.com/) platform. BigCommerce has a generous free trial which can be used.
 
-## Next.js Commerce Example {/*nextjs-commerce-example*/}
+## Next.js Commerce Example {/* nextjs-commerce-example */}
 
 Here is an example of the [Next.js Commerce](https://nextjs.org/commerce) template running on {{ PRODUCT }}. It uses all of the latest Next.js 10 features including image optimization, localization, and incremental static regeneration with stale-while-revalidate.
 
@@ -20,13 +20,13 @@ Here is an example of the [Next.js Commerce](https://nextjs.org/commerce) templa
 
 {{ PREREQ.md }}
 
-## Deploy the Example {/*deploy-the-example*/}
+## Deploy the Example {/* deploy-the-example */}
 
 Quickly launch an example with no code by clicking the "Deploy to {{ PRODUCT }}" button.
 
 <ButtonLink variant="stroke" type="deploy" withIcon={true} href="{{ APP_URL }}/deploy?button&deploy&repo=https%3A%2F%2Fgithub.com%2Fedgio-docs%2Fedgio-nextjs-commerce-example" />
 
-## Deploying the official Next.js Commerce repository {/*deploying-the-official-nextjs-commerce-repository*/}
+## Deploying the Official Next.js Commerce Repository {/* deploying-the-official-nextjs-commerce-repository */}
 
 If you wish to deploy to {{ PRODUCT }} from the official Next.js Commerce repository, follow these steps:
 
@@ -68,7 +68,7 @@ BIGCOMMERCE_STORE_API_STORE_HASH=${STORE_HASH}
 - `STORE_HASH`: You can retrieve it from your BigCommerce store control panel URL in the format of `https://store-${STORE_HASH}.mybigcommerce.com/manage/dashboard`
 - `STORE_TOKEN|STORE_CLIENT`: For instructions on generating Store API credentials, visit [Obtaining Store API Credentials](https://developer.bigcommerce.com/api-docs/getting-started/authentication/rest-api-authentication#obtaining-store-api-credentials)
 - `STOREFRONT_API_TOKEN`: For instructions on generating the Storefront API token, visit [Create a Token](https://developer.bigcommerce.com/api-reference/store-management/tokens/api-token/createtoken).
-- `CHANNEL_ID`: Visit [Building Channels](https://developer.bigcommerce.com/docs/ZG9jOjE5NjMyODU-building-channels-quick-start) to learn how to create a channel for use in your application.
+- `CHANNEL_ID`: Visit [Building Channels](https://developer.bigcommerce.com/api-docs/channels/quick-start) to learn how to create a channel for use in your application.
 
 4. Deploy to {{ PRODUCT }}.
 
@@ -86,7 +86,7 @@ Or from within `site` directory
 
 ---
 
-## Learn more {/*learn-more*/}
+## Learn More {/* learn-more */}
 
 <Callout type="info">
 
@@ -100,7 +100,7 @@ Or from within `site` directory
 
 </Callout>
 
-## Connector {/*connector*/}
+## Connector {/* connector */}
 
 This framework has a connector developed for {{ PRODUCT }}. See [Connectors](/guides/sites_frameworks/connectors) for more information.
 

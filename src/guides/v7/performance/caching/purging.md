@@ -1,5 +1,5 @@
 ---
-title: Purging
+title: Purging Cached Content
 ---
 
 Purge cached content to force the CDN to request a new version of that content from an origin server or Serverless Compute. This ensures that the latest version of that content is delivered to your clients.
@@ -22,7 +22,7 @@ Purge by relative path, surrogate key, or all cached content using the:
 
 </Callout>
 
-## Relative Path {/*relative-path*/}
+## Relative Path {/* relative-path */}
 
 You may specify a relative path that identifies the set of cached respones that will be purged. This relative path starts directly after the hostname.
 
@@ -46,7 +46,7 @@ Alternatively, you can use an `*` to recursively purge a directory. The followin
 
 `/sports/*` 
 
-## Surrogate Key {/*surrogate-key*/}
+## Surrogate Key {/* surrogate-key */}
 
 You  may purge cached content by surrogate key (aka cache tag). A surrogate key is a label that you may apply to cached responses. Purging by surrogate key allows you to purge related content across your entire site. 
 
@@ -56,7 +56,7 @@ You  may purge cached content by surrogate key (aka cache tag). A surrogate key 
 
 </Callout>
 
-#### Tagging Cached Content {/*tagging-cached-content*/}
+#### Tagging Cached Content {/* tagging-cached-content */}
 
 Apply a surrogate key by setting the `Surrogate-Key` response header. 
 
@@ -68,7 +68,7 @@ For example, the following response header applies three surrogate keys to the c
 
 `Surrogate-Key: sports basketball march-tournament`
 
-## {{ PORTAL }} {/*console*/}
+## {{ Portal }} {/*  */}
 
 Use the {{ PORTAL }} to purge cached content within a specific environment. 
 
@@ -92,7 +92,7 @@ Use the {{ PORTAL }} to purge cached content within a specific environment.
 
 5.  When prompted, click **Purge** to confirm that your content will be purged.
 
-## {{ PRODUCT }} CLI {/*cli*/}
+## {{ Product }} CLI {/* cli */}
 
 Purge cached content through the {{ PRODUCT }} CLI by passing the [cache-clear argument](/guides/develop/cli#cache-clear). You may purge:
 
@@ -108,7 +108,7 @@ Run the following command to purge the `basketball` surrogate key from the `prod
 {{ FULL_CLI_NAME }} cache-clear --team=my-team --property=my-videos --environment=production --surrogate-key=basketball
 ```
 
-## REST API {/*rest-api*/}
+## Rest API {/* rest-api */}
 
 Purge cached content through the {{ PRODUCT }} REST API through the [clear-cache endpoint](/guides/develop/rest_api#clear-cache). You may purge:
 
@@ -116,7 +116,7 @@ Purge cached content through the {{ PRODUCT }} REST API through the [clear-cache
 -   **By relative path:** Pass the `paths` array of string values. You may use an `*` to represent zero or more characters.
 -   **By surrogate key:** Pass the `surrogateKeys` array of string values. [Learn more about surrogate keys.](#surrogate-key)
 
-## Deployments {/*deployments*/}
+## Deployments {/* deployments */}
 
 By default, all cached responses are purged from an environment when you deploy a new version of your site. Override this behavior by marking the **Preserve cache between deployments** setting on the **Caching** page.
 
@@ -126,15 +126,15 @@ By default, all cached responses are purged from an environment when you deploy 
 
 </Callout>
 
-## Static prerendering after clearing the cache {/*static-prerendering-after-clearing-the-cache*/}
+## Static Prerendering after Clearing the Cache {/* static-prerendering-after-clearing-the-cache */}
 
 If you have enabled [static prerendering](/guides/performance/static_prerendering), the cache will automatically be repopulated when you clear all entries from the cache (such as when you select _Purge all entries_ in the {{ PORTAL }} or run `{{ FULL_CLI_NAME }} cache-clear` without providing `--path` or `--surrogate-key`). You can view the prerendering progress by clicking on the active deployment for the environment that was cleared.
 
-## Automated Purging {/*automated-purging*/}
+## Automated Purging {/* automated-purging */}
 
 Automate cache purging through [NPM scripts](#npm-scripts) and [GitHub actions](#github-actions).
 
-### NPM Scripts {/*npm-scripts*/}
+### Npm Scripts {/* npm-scripts */}
 
 Here is an example script you can add to your `package.json` to handle cache clearing for each environment. You can also configure scripts to clear by surrogate key, path, or group (As defined in {{ PRODUCT_NAME }} Console)
 
@@ -152,7 +152,7 @@ These scripts assume that you have created environments called "production", "st
   },
 ```
 
-### GitHub Actions {/*github-actions*/}
+### GitHub Actions {/* github-actions */}
 
 Here is an example GitHub action that clears the cache at a scheduled time using the jobs defined in your `package.json`
 

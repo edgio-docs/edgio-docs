@@ -6,10 +6,10 @@ Get started with {{ PRODUCT }} by performing these steps:
 
 1.  [Create an {{ PRODUCT }} account.](#create-account)
 2.  [Create an {{ PRODUCT }} property.](#create-property)
-3.  [Test your property.](#testing)
+3.  [Test your property.](#test-your-property)
 4.  [Next steps.](#next-steps)
 
-## Step 1: Create an {{ PRODUCT }} Account {/*create-account*/}
+## Step 1: Create an {{ Product }} Account {/* step-1-create-an-account */}
 
 Signing up for an {{ PRODUCT }} account is free and quick.
 
@@ -22,7 +22,7 @@ Signing up for an {{ PRODUCT }} account is free and quick.
 
 2.  Click **Accept** to accept our terms of service and privacy policy.
 
-## Step 2: Create an {{ PRODUCT }} Property {/*create-property*/}
+## Step 2: Create an {{ Product }} Property {/* step-2-create-an-property */}
 
 Each website that will run behind {{ PRODUCT }} requires an {{ PRODUCT }} property. A property determines how {{ PRODUCT }} will process your website's traffic.
 
@@ -87,13 +87,13 @@ Each website that will run behind {{ PRODUCT }} requires an {{ PRODUCT }} proper
 
     Once you have successfully deployed your property to {{ PRODUCT }}, our CLI provides an edge URL that allows you to preview your site. Learn how to [get started with CDN-as-code.](/guides/performance/cdn_as_code/getting_started)
 
-## Step 3: Test Your Property {/*test-your-property*/}
+## Step 3: Test Your Property {/* step-3-test-your-property */}
 
 Once your property is successfully deployed to the {{ PRODUCT }} network, a URL will appear within the **Latest Production Deployment** section. Follow that link to preview your site behind {{ PRODUCT }}.
 
 ![Latest Production Deployment](/images/v7/basics/deployment-latest-production.png)
 
-## Next Steps {/*next-steps*/}
+## Next Steps {/* next-steps */}
 
 Congratulations on setting up a basic property on {{ PRODUCT }}! 
 

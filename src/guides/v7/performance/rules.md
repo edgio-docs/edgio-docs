@@ -14,7 +14,7 @@ Rules determine how requests for a specific environment will be processed.
 
 <Video src="https://www.youtube.com/watch?v=5xPItxYBGK0" />
 
-## Quick Start {/*quick-start*/}
+## Quick Start {/* quick-start */}
 
 Set up your rules through the following steps:
 
@@ -22,7 +22,7 @@ Set up your rules through the following steps:
 2.  Define one or more rule(s) for that environment. Each rule should contain at least one feature.
 3.  Apply your rules to that environment by deploying your changes.
 
-## Rules and CDN-as-Code {/*rules-and-cdn-as-code*/}
+## Rules and CDN-As-Code {/* rules-and-cdn-as-code */}
 
 There are two workflows for defining your CDN configuration:
 
@@ -47,21 +47,46 @@ For example, if you deploy rules to an environment and a teammate deploys a CDN-
 
 </Callout>
 
-## Rules {/*rules*/}
+## Rules {/* rules */}
 
-A rule:
+A rule consists of a set of IF, ELSE, and ELSE IF statements that define the logic through which requests are identified and processed.
 
--   Identifies a set of requests through conditions. 
+Each statement may contain:
+-   A set of match conditions that define the criteria used to identify requests. 
 
-    A rule is only applicable to requests that satisfy all of its conditions. By default, a new rule applies to all requests since it does not contain conditions.
+    For example, you may identify requests by URL path, request headers, or geolocation.
+	
+-   A set of features that define how the CDN will process requests identified by its conditional expression.
 
--   Defines how requests will be processed through features. A feature identifies an action and how it will be applied to requests.
+    For example, you may define a caching policy, set response headers, or redirect requests.
+
+Each of these components are identified in the following illustration.
+
+![Rule components](/images/v7/performance/rule-components.gif)
 
 For example, the following rule applies a caching policy to all `GET` requests whose relative path starts with `/marketing/`.
 
 ![Rule Example](/images/v7/performance/rule-condition-feature-example.png)
 
-### Conditions {/*conditions*/}
+### Statements {/* statements */}
+
+There are three types of statement:
+
+-   **IF:** By default, adding a match condition or feature creates an IF statement and places the new entry within it. You may then add additional match conditions and features. 
+-   **ELSE:** Adding `Else` to a rule adds an ELSE statement. This type of statement determines how {{ PRODUCT }} will process all requests that do not satisfy at least one IF or ELSE IF statement defined within the same rule.
+-   **ELSE IF:** Adding a match condition to an ELSE statement converts it into an ELSE IF statement. This type of statement determines how {{ PRODUCT }} will process requests that meet the following requirements:
+    -   The request does not satisfy the IF statement or any ELSE IF statements above this statement.
+    -   The request must satisfy all of the match condition(s) defined within this ELSE IF statement.
+
+<Callout type="info">
+
+  By default, an IF or ELSE IF statement requires requests to satisfy all match condition(s) defined within that statement.   
+  
+  [Learn how to toggle this behavior.](#multiple-conditions)
+
+</Callout>
+
+### Conditions {/* conditions */}
 
 A condition identifies a set of requests. Setting up a condition requires:
 
@@ -80,18 +105,18 @@ Identify all `GET` requests through the following condition:
 
 Learn more about [types of conditions](/guides/performance/rules/conditions) and [operators](/guides/performance/rules/operators).
 
-#### Multiple Conditions {/*multiple-conditions*/}
+#### Multiple Conditions {/* multiple-conditions */}
 
-You may add multiple conditions to a rule. By default, a request must satisfy each condition defined within a rule. This is indicated by an `and` label. However, you may configure your rule to only require a single condition by toggling the `and` label to `or`.
+By default, an IF or ELSE IF statement requires requests to satisfy all match condition(s) defined within that statement. This is indicated by an `and` label. However, you may modify an IF or ELSE IF statement to only require a single condition by toggling the `and` label to `or`.
 
-**To match requests using a single condition**
+**To toggle matching logic**
 
 1.  Create a rule with multiple condition(s).
-2.  Click on the `and` label.
+2.  From the desired IF or ELSE IF statement, click on the `and` label that appears directly to left of a match condition.
 
     ![Toggle condition logic](/images/v7/performance/rules-change-condition-logic.png)
 
-3.  When prompted, click **Change operators** to only require a single condition before matching a request to this rule.
+3.  When prompted, click **Change operators** to only require a single condition before matching a request for this IF or ELSE IF statement.
 
 <Callout type="info">
 
@@ -105,7 +130,7 @@ You may add multiple conditions to a rule. By default, a request must satisfy ea
 
 </Callout>
 
-### Features {/*features*/}
+### Features {/* features */}
 
 A feature determines how requests will be processed. They are categorized as follows:
 
@@ -120,7 +145,7 @@ A feature determines how requests will be processed. They are categorized as fol
 -   [Set Variables](/guides/performance/rules/features#set-variables): Assigns a value to one or more user-defined variable(s) that are  passed to your bespoke traffic processing solution.
 -   [URL](/guides/performance/rules/features#url): Redirects or rewrites requests to a different URL.
 
-##  Rule Precedence {/*rule-precedence*/}
+##  Rule Precedence {/* rule-precedence */}
 
 You may create multiple rules. The use of multiple rules facilitates:
 
@@ -140,7 +165,7 @@ A good rule of thumb when determining where a rule should be positioned is to or
 
 ![Order of Precedence](/images/v7/performance/rules-order-of-precedence.png)
 
-### Exceptions to Rule Precedence {/*exceptions-to-rule-precedence*/}
+### Exceptions to Rule Precedence {/* exceptions-to-rule-precedence */}
 
 The following cases are exceptions to the order-based rule precedence stated above:
 
@@ -154,7 +179,7 @@ The following cases are exceptions to the order-based rule precedence stated abo
 
 -   **Token Auth Precedence:** The Token Auth feature takes precedence over most features with the exception of the URL Rewrite feature. This occurs regardless of rule order.
 
-### Fine-Tuning Your Rules {/*fine-tuning-your-rules*/}
+### Fine-Tuning Your Rules {/* fine-tuning-your-rules */}
 
 If the response provided by {{ PRODUCT }} does not match your expectations, you can check the [{{ HEADER_PREFIX }}-mr response header](/guides/performance/response#-mr) to find out which rules were applied to a request. This response header identifies each rule that was applied to a request by its number. Display rule numbers by clicking **Show Rule Numbers**.
 
@@ -168,7 +193,7 @@ You can now use this information to adjust your rules. For example, you may adju
 
 <Video src="https://www.youtube.com/watch?v=oQ5EMbxvprM" />
 
-## Sample Scenario {/*sample-scenario*/}
+## Sample Scenario {/* sample-scenario */}
 
 In this sample scenario, create the following rules:
 
@@ -184,7 +209,7 @@ In this sample scenario, create the following rules:
 
 </Callout>
 
-## Managing Rules {/*managing-rules*/}
+## Managing Rules {/* managing-rules */}
 
 You may create, modify, and delete rules.
 
@@ -212,19 +237,30 @@ You may create, modify, and delete rules.
     3.  From the left-hand pane, select **Rules**. 
 2.  Add a rule by clicking **+ Add Rule**.
 3.  Add a condition that defines the set of requests for which this rule will be applied. Repeat this step as needed.
-    1.  Click **+ Add Condition**.
+    1.  Click **+ Add** and then select **Add Condition**.
     2.  From the **Variable** option, select the method by which requests will be identified. 
     3.  From the **Operator** option, define the relationship between the variable selected in the previous step and the value that will be defined in the next step.
-    4.  In the **Match Value** option, define a value that will be compared against for each request. 
+    4.  In the **Value** option, define a value that will be compared against for each request. 
     5.  Click **Add Condition**.
 4.  Add a feature that determines how the requests defined in the previous step will be processed. Repeat this step as needed.
-    1.  Click **+ Add Feature**.
-    2.  From the **Feature Type** option, select the category that best corresponds to the desired feature.
-    3.  From the **Feature** option, select the desired feature.
-    4.  Configure the selected feature.
-    5.  Click **Add Feature**.
-5.  Add more rules as needed by repeating steps 2 - 4.
-6.  Review your rules to verify how requests will be handled and the order in which rules will be applied to requests. 
+    1.  Click **+ Add** and then select **Add Feature**.
+    2.  From the **Feature** option, select the desired feature.
+
+	    <Callout type="tip">
+		
+		  Features are listed by category. If you already know the name of the desired feature, type any part of its name to filter the list. 		  
+		
+		</Callout>
+
+    3.  Configure the selected feature.
+    4.  Click **Add Feature**.
+5.  Optional. Add an [ELSE or ELSE IF statement](#statements) to define an alternate set of logic for identifying and processing requests.
+
+    1.  Click **+ Add** and then select **Add Else**. An ELSE statement will appear.
+    2.  Convert this ELSE statement to an ELSE IF statement by adding one or more match condition(s). 
+
+6.  Add more rules as needed by repeating steps 2 - 5.
+7.  Review your rules to verify how requests will be handled and the order in which rules will be applied to requests. 
 
     <Callout type="tip">
 
@@ -232,7 +268,7 @@ You may create, modify, and delete rules.
 
     </Callout>
 
-7.  Click **Deploy Changes**.
+8.  Click **Deploy Changes**.
 
 **To delete a rule**
 

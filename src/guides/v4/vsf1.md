@@ -2,15 +2,14 @@
 title: Vue Storefront 1
 ---
 
-## Example Site {/*example-site*/}
+## Example Site {/* example-site */}
 
 <ExampleButtons
   title="VSF1"
-  siteUrl="https://layer0-docs-layer0-vue-storefront-example-default.layer0-limelight.link"
   repoUrl="https://github.com/layer0-docs/layer0-vue-storefront-example" 
   deployFromRepo />
 
-## 1. Install Vue Storefront {/*1-install-vue-storefront*/}
+## 1. Install Vue Storefront {/* 1-install-vue-storefront */}
 
 Install the Vue Storefront application using this guide: https://docs.vuestorefront.io/guide/installation/linux-mac.html
 
@@ -20,12 +19,12 @@ Install the Vue Storefront application using this guide: https://docs.vuestorefr
 nvm use 14
 ```
 
-## 2. Prepare VSF files for {{ PRODUCT_NAME }} {/*2-prepare-vsf-files-for-layer0*/}
+## 2. Prepare Vsf Files for {{ Product_name }} {/* 2-prepare-vsf-files-for */}
 
 - In the new VSF project, go to `src/themes/default` (or any theme you're using) and remove `.git` folder from it to save that in Git VCS.
 - Go to `.gitignore` file and remove `config/local.json` line to keep it tracked.
 
-## 3. Install {{ PRODUCT_NAME }} {/*3-install-layer0*/}
+## 3. Install {{ Product_name }} {/* 3-install */}
 
 - Install {{ PRODUCT_NAME }} packages: `yarn add -D -W {{ PACKAGE_NAME }}/cli && yarn add -W {{ PACKAGE_NAME }}/core {{ PACKAGE_NAME }}/prefetch {{ PACKAGE_NAME }}/devtools`
 - Create a file called `{{ CONFIG_FILE }}` in the root directory of your project and configure your origin and images hosts as backends. For example:

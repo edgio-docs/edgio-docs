@@ -65,7 +65,7 @@ If you don't already have a Next.js application, you can create one using:
 npx create-next-app@latest
 ```
 
-### Initializing your Project {/* initializing-your-project */}
+### Initializing Your Project {/* initializing-your-project */}
 
 Initialize your project for use with {{ PRODUCT }} by running the following command in your project's root directory:
 
@@ -105,7 +105,7 @@ module.exports = with{{ PRODUCT }}(
 
 <a id="with"></a>
 
-### with{{ PRODUCT }} {/* with */}
+### With{{ Product }} {/* with */}
 
 The `with{{ PRODUCT }}` plugin optimizes the Next.js build for running on {{ PRODUCT }}. It is required to deploy your application on {{ PRODUCT }} and accepts the following parameters:
 
@@ -120,11 +120,11 @@ This document will be updated once the problem is fully resolved.
 
 </Callout>
 
-### withServiceWorker {/* withserviceworker */}
+### Withserviceworker {/* withserviceworker */}
 
-The `withServiceWorker` plugin builds a service worker from `sw/service-worker.js` that prefetches and caches all static JS assets and enables {{ PRODUCT }}'s [prefetching](/guides/next#prefetching) functionality.
+The `withServiceWorker` plugin builds a service worker from `sw/service-worker.js` that prefetches and caches all static JS assets and enables {{ PRODUCT }}'s [prefetching](#prefetching) functionality.
 
-## {{ PRODUCT_NAME }} Devtools {/* devtools */}
+## {{ Product_name }} Devtools {/* devtools */}
 
 By default, [Devtools](/guides/performance/observability/devtools) are enabled on production builds of Next.js with {{ PRODUCT }}. To disable devtools in production, add the `disableEdgioDevTools` flag:
 
@@ -274,7 +274,7 @@ export default new Router()
   .use(nextRoutes);
 ```
 
-### nextRoutes {/* nextroutes */}
+### Nextroutes {/* nextroutes */}
 
 In the above code, `nextRoutes` adds all Next.js routes to the router based on the `/pages` directory. You can add additional routes before and after `nextRoutes`. For example, you can choose to send some URLs to an alternate backend. This is useful for gradually replacing an existing site with a new Next.js app.
 
@@ -304,7 +304,7 @@ module.exports = {
 
 Using environment variables here allows you to configure different legacy domains for each {{ PRODUCT }} environment.
 
-### rewrites and redirects {/* rewrites-and-redirects */}
+### Rewrites and Redirects {/* rewrites-and-redirects */}
 
 The `nextRoutes` plugin automatically adds routes for [rewrites](https://nextjs.org/docs/api-reference/next.config.js/rewrites) and [redirects](https://nextjs.org/docs/api-reference/next.config.js/redirects) specified in `next.config.js`. Redirects are served directly from the network edge to maximize performance.
 
@@ -342,7 +342,7 @@ export default new Router()
   .use(nextRoutes);
 ```
 
-### Preventing Next.js pages from being cached by other CDNs {/* preventing-nextjs-pages-from-being-cached-by-other-cdns */}
+### Preventing Next.js Pages from Being Cached by Other Cdns {/* preventing-nextjs-pages-from-being-cached-by-other-cdns */}
 
 By default, Next.js adds a `cache-control: private, no-cache, no-store, must-revalidate` header to all responses from `getServerSideProps`. The presence of `private` would prevent {{ PRODUCT_NAME }} from caching the response, so `nextRoutes` from `{{ PACKAGE_NAME }}/next` automatically removes the `private` portion of the header to enable caching at the edge. If you want your responses to be private, you need to specify a `cache-control` header using the router:
 
@@ -357,7 +357,7 @@ new Router().get('/my-private-page', ({setResponseHeader}) => {
 
 Doing so will prevent other CDNs running in front of {{ PRODUCT_NAME }} from caching the response.
 
-## Using next-i18next {/* using-next-i18next */}
+## Using Next-I18next {/* using-next-i18next */}
 
 The [next-i18next](https://github.com/isaachinman/next-i18next) package is a popular solution for adding localization to Next.js apps. It has some issues when running in serverless deployments, but you can work around these:
 
@@ -414,7 +414,7 @@ module.exports = {
 
 A working example app can be found [here](https://github.com/edgio-docs/edgio-next-i18n-example).
 
-## Image optimizer {/* image-optimizer */}
+## Image Optimizer {/* image-optimizer */}
 
 By default, Next.js image optimizer is replaced by our image optimizer, which is available in all build modes. You can disable it and use the built-in Next.js image optimizer instead by adding `disableImageOptimizer: true` to the `{{ CONFIG_FILE }}` file.
 
@@ -448,7 +448,7 @@ Note that NextRouter.render404 and renderNextPage are retired when using Next.js
 
 </Callout>
 
-## Support for Next.js Middleware (BETA) {/* support-for-nextjs-middleware-beta */}
+## Support for Next.js Middleware (Beta) {/* support-for-nextjs-middleware-beta */}
 
 {{ PRODUCT_NAME }} supports Next.js middleware starting with Next.js 12.2.0.
 
@@ -468,7 +468,7 @@ Next.js Runtime Configuration requires {{ PRODUCT }} 6.0.5+. See <a href="/guide
 
 These additional options allow you to change certain behavior of routes that are generated by `nextRoutes`.
 
-### `setEnforceTrailingSlash` {/* set-enforce-trailing-slash */}
+### `setenforcetrailingslash` {/* setenforcetrailingslash */}
 
 Set this option to `true` to suppress the default Next.js behavior of removing trailing slashes when performing a redirect.
 
@@ -483,7 +483,7 @@ nextRoutes.setEnforceTrailingSlash(true);
 export default new Router().use(nextRoutes);
 ```
 
-### `setQueryDuplicatesToArrayOnly` {/* set-query-duplicates-to-array-only */}
+### `setqueryduplicatestoarrayonly` {/* setqueryduplicatestoarrayonly */}
 
 This option allows you to change the way Next.js duplicate query parameters are parsed by the `renderNextPage` function.
 

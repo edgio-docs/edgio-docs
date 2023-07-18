@@ -4,11 +4,11 @@ title: BigCommerce
 
 This guide shows you how to deploy a [BigCommerce](https://www.bigcommerce.com/) backed application on {{ PRODUCT }}.
 
-## What is BigCommerce? {/*what-is-bigcommerce*/}
+## What Is Bigcommerce? {/* what-is-bigcommerce */}
 
 BigCommerce is an API driven ecommerce platform. Used by some of the biggest brands on the planet, BigCommerce provides solutions for B2B, wholesale, omnichannel, offline to online, international and multi-storefront. They provide deep integrations to social media platforms and have a robust partner network of technology and integration partners.
 
-## Example {/*example*/}
+## Example {/* example */}
 
 This example is a Next.js app powered by a BigCommerce backend.
 
@@ -20,7 +20,7 @@ This example is a Next.js app powered by a BigCommerce backend.
 
 {{ PREREQ.md }}
 
-## Setting up a BigCommerce Headless Example {/*setting-up-a-bigcommerce-headless-example*/}
+## Setting up a Bigcommerce Headless Example {/* setting-up-a-bigcommerce-headless-example */}
 
 We will go through how to set-up your BigCommerce Storefront and the configuration it requires. There are two paths we can take here to generate a project to start:
 
@@ -29,7 +29,7 @@ We will go through how to set-up your BigCommerce Storefront and the configurati
 
 If you go with option 1, continue to the Storefront setup section.
 
-### Generate a Next.js Commerce Project {/*generate-a-nextjs-commerce-project*/}
+### Generate a Next.js Commerce Project {/* generate-a-nextjs-commerce-project */}
 
 1. Clone the official Next.js Commerce [repository](https://github.com/vercel/commerce) and install the dependencies.
 
@@ -46,7 +46,7 @@ cd site
 {{ CLI_NAME }} init
 ```
 
-### Update the Example or Generated Project for use with BigCommerce {/*update-the-example-or-generated-project-for-use-with-bigcommerce*/}
+### Update the Example or Generated Project for Use with Bigcommerce {/* update-the-example-or-generated-project-for-use-with-bigcommerce */}
 
 Skip to the [Storefront Setup](#storefront_setup) section for a detailed explanation on how to setup a BigCommerce site. After that, return to this section to enter values as needed.
 
@@ -86,7 +86,7 @@ BIGCOMMERCE_STORE_API_CLIENT_SECRET=${CLIENT_SECRET}
  npm run dev
 ```
 
-### Deploy the project {/*deploy-the-project*/}
+### Deploy the Project {/* deploy-the-project */}
 
 From within the `site` directory, run
 
@@ -94,7 +94,7 @@ From within the `site` directory, run
 {{ CLI_NAME }} deploy
 ```
 
-## BigCommerce Storefront Setup {/*bigcommerce-storefront-setup*/}
+## Bigcommerce Storefront Setup {/* bigcommerce-storefront-setup */}
 
 1. [Login](https://login.bigcommerce.com/login) or [Signup](https://www.bigcommerce.com/start-your-trial) for an account with BigCommerce.
 
@@ -130,7 +130,7 @@ From within the `site` directory, run
 
 For this next step you will need the store hash (available in the URL bar) and the API token you just created.
 
-1. To create a channel we need to issue a `curl` request to the BigCommerce API. Open the API [doc](https://developer.bigcommerce.com/api-reference/b3A6MzU5MDQ0NDc-create-a-channel) for additional information. Use the `curl` below, substituting values where needed.
+1. To create a channel we need to issue a `curl` request to the BigCommerce API. Learn more at the [BigCommerce Developer Portal](https://developer.bigcommerce.com/docs/rest-management/channels#create-a-channel). Use the `curl` below, substituting values where needed.
 
 ```bash
  curl --request POST \
@@ -154,7 +154,7 @@ For this next step you will need the store hash (available in the URL bar) and t
 
 ![](/images/bigcommerce/routes.png?width=600)
 
-4. With a channel and routes created, the last item to use the BigCommerce API for is generating an Auth token for use with the GraphQL API. You will have to revisit this once you have deployed your application for the first time to add the allowed domain. Open the API [doc](https://developer.bigcommerce.com/api-reference/b3A6MzU5MDUxNTI-create-a-token#requestrunner) for additional information.
+4. With a channel and routes created, the last item to use the BigCommerce API for is generating an Auth token for use with the GraphQL API. You will have to revisit this once you have deployed your application for the first time to add the allowed domain. Learn more at the [BigCommerce Developer Portal](https://developer.bigcommerce.com/docs/rest-management/channels#create-a-channel).
 
 ```bash
 curl --request POST \

@@ -41,7 +41,7 @@ Note that this configuration will allow you to set breakpoints in both your {{ P
 
 By viewing the server logs in the {{ PORTAL }}, you can see all of the messages logged by your application using `console.log`, `console.warn`, etc...
 
-By enabling [Deep Request Inspection](/guides/develop/logs#deep-request-inspection) in your environment, you can also see the headers and body of every request and response served by your application via the {{ PRODUCT }} serverless cloud. You can also see each upstream API request made by your application.
+By enabling [Deep Request Inspection](/guides/logs/server_logs#deep-request-inspection) in your environment, you can also see the headers and body of every request and response served by your application via the {{ PRODUCT }} serverless cloud. You can also see each upstream API request made by your application.
 
 You can also use the server logs to debug **routing issues** going to **custom backends** by temporarily moving the proxy from the edge to serverless:
 
@@ -61,19 +61,19 @@ You can also use the server logs to debug **routing issues** going to **custom b
   })
 ```
 
-Once you have this deployed, you can observe the output in your [server logs](/guides/develop/logs#server-logs).
+Once you have this deployed, you can observe the output in your [server logs](/guides/logs/server_logs).
 
 Note that whenever possible, we strongly recommend to always proxy the traffic from the edge, as that is more performant and avoids serverless surcharges. The solution above should only be used as a temporary measure while addressing issues.
 
-[Learn more.](/guides/develop/logs#server-logs)
+[Learn more.](/guides/logs/server_logs)
 
 ### Access Logs {/* access-logs */}
 
 Access logs contain information about all requests, even those that never reach your application code (e.g. cache hits, static assets, requests routed to custom backends, edge redirects, and so on).
 
-[Learn more](/guides/develop/logs#access-logs)
+[Learn more](/guides/logs/access_logs)
 
-## Confirming Behavior with CURL {/* confirming-behavior-with-curl */}
+## Confirming Behavior with Curl {/* confirming-behavior-with-curl */}
 
 Removing the browser as a variable in your equation is a good way to confirm what the origin server is doing. Below are a few of the common CURL commands we leverage to verify behavior.
 
@@ -118,7 +118,7 @@ curl -vv --silent https://www.yoursite.com/?{{ PRODUCT_NAME_LOWER }}_debug=true 
 
 `2>&1` is only present to make terminal work with `grep`
 
-## Checking your Permalinks vs Edge links {/* checking-your-permalinks-vs-edge-links */}
+## Checking Your Permalinks Vs Edge Links {/* checking-your-permalinks-vs-edge-links */}
 
 A Permalink request will skip the edge (cache) and go straight to the serverless tier. This will likely degrade performance, but does allow for verification of a function.
 
@@ -152,7 +152,7 @@ module.exports = with{{ PRODUCT }}(
 )
 ```
 
-### Nuxt.js {/* nuxtjs */}
+### Nuxt.JS {/* nuxtjs */}
 
 Set `{{ FULL_CLI_NAME }}SourceMaps: true` in the config for `{{ PACKAGE_NAME }}/nuxt/module` in `buildModules` in `nuxt.config.js`:
 
@@ -198,7 +198,7 @@ Following are two request flows that are helpful as background to troubleshootin
 1. A requesting client sends a request to {{ PRODUCT }} for an asset.
 2. The {{ PRODUCT }} edge finds the asset in cache and returns it to the client.
 
-##### Assets Served via Customer SSR Code and Customer Backend {/* assets-served-via-customer-ssr-code-and-customer-backend */}
+##### Assets Served via Customer Ssr Code and Customer Backend {/* assets-served-via-customer-ssr-code-and-customer-backend */}
 
 This flow is where 539 errors might occur.
 
@@ -252,7 +252,7 @@ Before continuing, it is helpful to see what a good request and response flow lo
 | 3    | The request from your SSR code to your backend server. If this line ends with a `<status code> in XXms`, then the SSR received a response from your backend server. In this example the HTTP status code was `200`, indicating success. If the line does not end with a `<status code> in XXms`, there was a problem with the request to your backend server (see [Backend Server Error](#backend-server-error)). |
 | 4    | The response from the SSR to the browser, and ends with the status code for the response. If this line is present, the SSR code ran to completion. If this line is missing there was a problem (see [Error in SSR Code](#error-in-ssr-code)).                                                                                                                                                                     |
 
-#### Error in SSR Code {/* error-in-ssr-code */}
+#### Error in Ssr Code {/* error-in-ssr-code */}
 
 If a request looks like the following, your SSR code contains an error.
 
@@ -298,7 +298,7 @@ To determine if there is an allowlist error, do the following:
 
 The outcome will be either [SSR code error](#ssr-code-error) or an [allowlist error](#allowlist-error).
 
-#### SSR Code Error {/* ssr-code-error */}
+#### Ssr Code Error {/* ssr-code-error */}
 
 If the command fails or does not respond, there is an error in your code, most likely a badly formed request.
 
@@ -307,4 +307,4 @@ Troubleshoot your code to find and fix the error.
 #### Allowlist Error {/* allowlist-error */}
 
 If the command succeeds and finishes quickly, it is probably an allowlist error.
-Contact your operations team and ask them to add the IP addresses in [_Allowlisting_](/guides/basics/domains#allowing-ip-addresses) to your server's IP allowlist.
+Contact your operations team and ask them to add the IP addresses in [_Allowlisting_](/guides/basics/hostnames_and_origins#firewall-allowing-ip-addresses) to your server's IP allowlist.

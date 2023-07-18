@@ -4,7 +4,7 @@ title: Razzle
 
 This guide shows you how to deploy a [Razzle](https://razzlejs.org/) application to {{ PRODUCT }}.
 
-## Example {/*example*/}
+## Example {/* example */}
 
 <ExampleButtons
   title="Razzle"
@@ -12,17 +12,17 @@ This guide shows you how to deploy a [Razzle](https://razzlejs.org/) application
   repoUrl="https://github.com/layer0-docs/layer0-razzle-example"
   deployFromRepo />
 
-## Connector {/*connector*/}
+<!--## Connector {/*connector*/}
 
 This framework has a connector developed for {{ PRODUCT }}. See [Connectors](connectors) for more information.
 
 <ButtonLink variant="stroke" type="code" withIcon={true} href="https://github.com/layer0-docs/layer0-connectors/tree/main/layer0-razzle-connector">
   View the Connector Code
 </ButtonLink>
-
+-->
 {{ PREREQ.md }}
 
-## Getting Started {/*getting-started*/}
+## Getting Started {/* getting-started */}
 
 To prepare your Razzle app for deployment on {{ PRODUCT }}, run the following in the root folder of your project:
 
@@ -40,7 +40,7 @@ This will automatically add all of the required dependencies and files to your p
 - `sw/service-worker.js` - The source code for your service worker, which enables prefetching when running on {{ PRODUCT }}.
 - `{{ CONFIG_FILE }}` - Contains configuration options for deploying on {{ PRODUCT }}.
 
-## Running Locally {/*running-locally*/}
+## Running Locally {/* running-locally */}
 
 Test your app with the {{ PRODUCT_PLATFORM }} on your local machine by running the following command in your project's root directory:
 
@@ -48,7 +48,7 @@ Test your app with the {{ PRODUCT_PLATFORM }} on your local machine by running t
 {{ CLI_NAME }} dev
 ```
 
-### Simulate edge caching locally {/*simulate-edge-caching-locally*/}
+### Simulate Edge Caching Locally {/* simulate-edge-caching-locally */}
 
 To simulate edge caching locally, run:
 
@@ -56,7 +56,7 @@ To simulate edge caching locally, run:
 {{ CLI_NAME }} dev --cache
 ```
 
-## Deploying {/*deploying*/}
+## Deploying {/* deploying */}
 
 Deploy your app to the {{ PRODUCT_PLATFORM }} by running the following command in your project's root directory:
 

@@ -104,7 +104,7 @@ The captured parameter value will be provided as an array.
 router.match(
   {
     path: '/some-path', // value is route-pattern syntax
-    method: /GET|POST/i, // value is a regular expression
+    method: "GET", // value is a string
     cookies: {currency: /^(usd)$/i}, // keys are cookie names, values are regular expressions
     headers: {'some-header': /^some-value$/i}, // keys are header names, values are regular expressions
     query: {page: /^(1|2|3)$/}, // keys are query parameter names, values are regular expressions
@@ -115,7 +115,7 @@ router.match(
 );
 ```
 
-## Negated Route Matching (Using `not`) {/* negated-route-matching */}
+## Negated Route Matching (Using `not`) {/* negated-route-matching-using-not */}
 
 Previously, we showed how to match requests based on path, method, query parameters, cookies, and request headers. You can also negate these matches by specifying a `not` key in the object passed to your route criteria. For example, the following route matches all requests whose relative path does not match `/some-path`:
 
@@ -144,7 +144,7 @@ router.match(
       },
     },
     method: {
-      not: /POST/i,
+      not: "POST",
     },
     cookies: {
       currency: {
@@ -165,7 +165,7 @@ router.match(
 
 This example matches all requests to `/some-path` except for those with query parameter `page=1|2|3`
 
-## Exact Path Matching {/* exact-matching */}
+## Exact Path Matching {/* exact-path-matching */}
 
 As described in [Simple Path Matching](#simple-path-matching), this type of route matching is based on [path-to-regexp](https://github.com/pillarjs/path-to-regexp#path-to-regexp). While this is a rather universal approach to matching requests, {{ PRODUCT }} provides additional options for matching requests.
 
@@ -246,7 +246,7 @@ Regular expression matching is also available for matching query parameters, coo
 
 Conditional routes allow you to apply [Rules](/guides/performance/rules) to a request using advanced if/then logic by the means of logical and comparison operators.
 
-### Using the `.conditional()` method {/* using-the-conditional-method */}
+### Using the `.conditional()` Method {/* using-the-conditional-method */}
 
 Let's revisit the example from our [Default Route Configuration](/guides/performance/cdn_as_code#default-route-configuration) section where we cached all requests to `/api/*`:
 

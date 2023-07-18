@@ -4,7 +4,7 @@ title: Nuxt.js
 
 This guide shows you how to deploy a Nuxt.js application to {{ PRODUCT }}. If you run into any issues please consult the [Troubleshooting](#section_troubleshooting) section.
 
-## Example SSR Site {/*example-ssr-site*/}
+## Example Ssr Site {/* example-ssr-site */}
 
 This Nuxt.js example app uses server-side rendering and prefetching to provide lightening-fast transitions between pages.
 
@@ -14,7 +14,7 @@ This Nuxt.js example app uses server-side rendering and prefetching to provide l
   repoUrl="https://github.com/layer0-docs/layer0-nuxt-example" 
   deployFromRepo />
 
-## Example ISG Site {/*example-isg-site*/}
+## Example Isg Site {/* example-isg-site */}
 
 This Nuxt.js example app uses ISG (Incremental Static Generation) to provide lightening-fast transitions between pages.
 
@@ -24,17 +24,17 @@ This Nuxt.js example app uses ISG (Incremental Static Generation) to provide lig
   repoUrl="https://github.com/layer0-docs/layer0-nuxt-isg-example" 
   deployFromRepo />
 
-## Connector {/*connector*/}
+<!--## Connector {/*connector*/}
 
 This framework has a connector developed for {{ PRODUCT }}. See [Connectors](connectors) for more information.
 
 <ButtonLink variant="stroke" type="code" withIcon={true} href="https://github.com/layer0-docs/layer0-connectors/tree/main/layer0-nuxt-connector">
   View the Connector Code
 </ButtonLink>
-
+-->
 {{ PREREQ.md }}
 
-## Creating a new Nuxt app {/*creating-a-new-nuxt-app*/}
+## Creating a New Nuxt App {/* creating-a-new-nuxt-app */}
 
 If you don't already have a nuxt.js application, you can create one using:
 
@@ -47,7 +47,7 @@ Nuxt's create module will ask you a series of questions to configure your app. M
 - For `Choose rendering mode` select `Universal (SSR)`
 - Your answers to the other questions should not matter for the purposes of this guide.
 
-## Adding {{ PRODUCT }} to an existing Nuxt app {/*adding-edgio-to-an-existing-nuxt-app*/}
+## Adding {{ Product }} to an Existing Nuxt App {/* adding-to-an-existing-nuxt-app */}
 
 To prepare your Nuxt.js application for {{ PRODUCT }}:
 
@@ -152,7 +152,7 @@ And here is the `package.json` after modifications by `{{ CLI_NAME }} init`:
 }
 ```
 
-## Run the Nuxt.js app locally on {{ PRODUCT }} {/*run-the-nuxtjs-app-locally-on-edgio*/}
+## Run the Nuxt.JS App Locally on {{ Product }} {/* run-the-nuxtjs-app-locally-on */}
 
 Run the Nuxt.js app with the command:
 
@@ -162,7 +162,7 @@ npm run {{ CLI_NAME }}:dev
 
 Load the site: http://127.0.0.1:3000
 
-## modules vs buildModules {/*modules-vs-buildmodules*/}
+## Modules Vs Buildmodules {/* modules-vs-buildmodules */}
 
 Nuxt does not bundle packages listed in the `modules` property of `nuxt.config.js` when building your app for production.
 This can lead to an increased bundle size and slow down server-side rendering. Most Nuxt modules can be moved to
@@ -174,7 +174,7 @@ This can lead to an increased bundle size and slow down server-side rendering. M
 
 Doing so will exclude these modules from your production deployment and keep the bundle size as small as possible.
 
-## Routing {/*routing*/}
+## Routing {/* routing */}
 
 The next few sections of this guide explain how {{ PRODUCT_NAME }} interacts with Nuxt's routing, which is important if you are migrating an existing application. If you just created a new nuxt app, you can jump to [Running Locally](#section_running_locally) and come back to these sections later.
 {{ PRODUCT_NAME }} supports Nuxt.js's built-in routing scheme. The default `routes.js` file created by `{{ CLI_NAME }} init` sends all requests to Nuxt.js via a fallback route:
@@ -192,7 +192,7 @@ module.exports = new Router()
   .use(nuxtRoutes)
 ```
 
-### nuxtRoutes Middleware {/*nuxtroutes-middleware*/}
+### Nuxtroutes Middleware {/* nuxtroutes-middleware */}
 
 In the code above, `nuxtRoutes` adds all Nuxt.js routes based on the `/pages` directory. It's also compatible with extending Nuxt's router via the `router` config in `nuxt.config.js`, for example:
 
@@ -237,7 +237,7 @@ module.exports = {
 
 Using environment variables here allows you to configure different legacy domains for each {{ PRODUCT }} environment.
 
-### Caching {/*caching*/}
+### Caching {/* caching */}
 
 The easiest way to add edge caching to your nuxt.js app is to add caching routes before the middleware. For example,
 imagine you have `/pages/c/_categoryId.js`:
@@ -259,7 +259,7 @@ new Router()
   .use(nuxtMiddleware)
 ```
 
-## Prefetching {/*prefetching*/}
+## Prefetching {/* prefetching */}
 
 The `{{ PACKAGE_NAME }}/nuxt/module` builds a service worker that enables prefetching using {{ PRODUCT }} and injects it into your app's browser code. The service worker is based on Google's [Workbox](https://developers.google.com/web/tools/workbox) library. The entry point for the service worker source code is `sw/service-worker.js`. If your app has an existing service worker that uses workbox, you can copy its contents into `sw/service-worker.js` and simply add the following to your service worker:
 
@@ -294,7 +294,7 @@ The above allows you to prefetch pages from {{ PRODUCT_EDGE }}'s cache to greatl
 
 The `Prefetch` component fetches data for the linked page from {{ PRODUCT_EDGE }}'s cache based on the `url` property and adds it to the service worker's cache when the link becomes visible in the viewport. When the user taps on the link, the page transition will be instantaneous because the browser won't need to fetch data from the network.
 
-## Serving Sitemap with SSR {/*serving-sitemap-with-ssr*/}
+## Serving Sitemap with Ssr {/* serving-sitemap-with-ssr */}
 
 You can configure Nuxt to generate a sitemap in SSR mode with the following configuration:
 
@@ -333,11 +333,11 @@ new Router()
 
 This will send all traffic for `/sitemap.xml` to Nuxt middleware for server-side rendering.
 
-## Static Sites {/*static-sites*/}
+## Static Sites {/* static-sites */}
 
 {{ PRODUCT }} supports fully and partially static sites using Nuxt [generate](https://nuxtjs.org/docs/2.x/configuration-glossary/configuration-generate). To deploy a static Nuxt site on {{ PRODUCT }}, simply set `target: 'static'` in `nuxt.config.js` and run `{{ CLI_NAME }} deploy`. This will run `nuxt build` and `nuxt generate` to generate a static version of your site.
 
-### Incremental Static Rendering (ISG) {/*incremental-static-rendering-isg*/}
+### Incremental Static Rendering (Isg) {/* incremental-static-rendering-isg */}
 
 By default, requests for any pages that are not statically rendered at build time will fall back to server side rendering. If you use the {{ PRODUCT }} router to cache pages that are not statically rendered, the first user who attempts to access the page will see the fallback HTML page generated by Nuxt (200.html by default). {{ PRODUCT }} will render and cache the HTML in the background so that subsequent visits result in a full HTML response. This behavior is similar to Next.js incremental static rendering (ISG). Here is an example route that adds caching for a partially static page:
 
@@ -361,11 +361,11 @@ export default new Router()
   .use(nuxtRoutes)
 ```
 
-### Rendering a 404 Page {/*rendering-a-404-page*/}
+### Rendering a 404 Page {/* rendering-a-404-page */}
 
 If you set the `fallback` property in the [generate](https://nuxtjs.org/docs/2.x/configuration-glossary/configuration-generate/#fallback) config to `true`, Nuxt.js will generate a 404.html page that will be served whenever the URL does not match a static page. {{ PRODUCT_NAME }} will send a 404 http status for these URLs. Note that if you set the fallback property to a string, Nuxt will generate a fallback page with that name, and {{ PRODUCT_NAME }} will serve it with a 200 http status when the URL does not match a statically generated page.
 
-## includeFiles {/*includefiles*/}
+## Includefiles {/* includefiles */}
 
 Nuxt requires that certain resources are included in a build and deploy to have access to them. As such, at times this will require additional configuration. To include additional resources for server side rendering, API calls, etc., use the `includeFiles` option in your `{{ CONFIG_FILE }}` file. [Read more](/guides/layer0_config#section_includefiles)
 
@@ -385,7 +385,7 @@ includeFiles: {
 }
 ```
 
-## Nitro {/*nitro*/}
+## Nitro {/* nitro */}
 
 The Nuxt team provides a renderer called [Nitro](https://www.npmjs.com/package/@nuxt/nitro) which optimizes your application for serverless deployment and greatly minimizes the size of your server application bundle. If you're running into the size limitation for serverless bundles (50MB), you might try adding Nitro to your app. As of June 2021 Nitro is still not production ready, so use at your own risk.
 
@@ -421,11 +421,11 @@ npm install -D @nuxt/nitro @{{ PRODUCT_NAME_LOWER }}/nuxt-nitro`
 
 5. If you've previously added `@{{ PRODUCT_NAME_LOWER }}/nuxt` as a dependency, you can remove it.
 
-### Additional Nitro Resources {/*additional-nitro-resources*/}
+### Additional Nitro Resources {/* additional-nitro-resources */}
 
 - [Nitro Demo Application from the Nuxt Team](https://github.com/nuxt/nitro-demo)
 
-## Running Locally {/*running-locally*/}
+## Running Locally {/* running-locally */}
 
 Test your app with {{ PRODUCT_PLATFORM }} on your local machine by running the following command in your project's root directory:
 
@@ -441,7 +441,7 @@ You can do a production build of your app and test it locally using:
 
 Setting `--production` runs your app exactly as it will be uploaded to the {{ PRODUCT_NAME }} cloud using serverless-offline.
 
-## Deploying {/*deploying*/}
+## Deploying {/* deploying */}
 
 Deploy your app to the {{ PRODUCT_PLATFORM }} by running the following command in your project's root directory:
 
@@ -451,19 +451,19 @@ Deploy your app to the {{ PRODUCT_PLATFORM }} by running the following command i
 
 See [deploying](deploy_apps) for more information.
 
-## Troubleshooting {/*troubleshooting*/}
+## Troubleshooting {/* troubleshooting */}
 
 The following section describes common gotchas and their workarounds.
 
 ---
 
-### I get an error message `Nuxt.js Internal Server Error` {/*i-get-an-error-message-nuxtjs-internal-server-error*/}
+### I Get an Error Message `nuxt.JS Internal Server Error` {/* i-get-an-error-message-nuxtjs-internal-server-error */}
 
 This may be because you have a custom server framework (such as Express). Please make sure you selected `None` when asked to choose `Choose custom server framework` during the creation of your nuxt app.
 
 ---
 
-### {{ CLI_NAME }} init doesn't work {/*-cli_name--init-doesnt-work*/}
+### {{ Cli_name }} Init Doesn't Work {/* init-doesnt-work */}
 
 If you get a command not found error such as:
 
@@ -480,7 +480,7 @@ npm i -g {{ PACKAGE_NAME }}/cli
 
 ---
 
-### Make sure your version of the {{ PRODUCT }} CLI is current {/*make-sure-your-version-of-edgio-cli-is-current*/}
+### Make Sure Your Version of the {{ Product }} CLI Is Current {/* make-sure-your-version-of-the-cli-is-current */}
 
 If you previously installed the {{ PRODUCT }} CLI, make sure your version is current.
 
@@ -506,7 +506,7 @@ npm update -g {{ PACKAGE_NAME }}/cli
 
 ---
 
-### Error on deploy: `{{ PRODUCT_NAME_LOWER }}-deploy-lambda: Unzipped size must be smaller than...` {/*error-on-deploy-layer0-deploy-lambda-unzipped-size-must-be-smaller-than-*/}
+### Error on Deploy: `{{ Product_name_lower }}-Deploy-Lambda: Unzipped Size Must Be Smaller Than...` {/* error-on-deploy-deploy-lambda-unzipped-size-must-be-smaller-than */}
 
 As the error states, there is an upper limit on how big a package can be when deployed to our serverless infrastructure. Some common strategies for solving:
 

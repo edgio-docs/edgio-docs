@@ -45,8 +45,9 @@ function addHeaderID(line, slugger) {
     return line;
   }
 
-  const match =
-    /^(#+\s+)(.+?)(\s*\{(?:\/\*|#)([^\}\*\/]+)(?:\*\/)?\}\s*)?$/.exec(line);
+  const match = /^(#+\s+)([^{]+)(\{\s*(?:\/\*([^*\/]+)\*\/)?\s*\})(.*)$/.exec(
+    line
+  );
   const isHeaderWithConstant = line.includes('{{') || line.includes('}}');
   const before = isHeaderWithConstant
     ? replaceConstantInHeader(match[1] + match[2])
@@ -87,13 +88,16 @@ function addHeaderID(line, slugger) {
     );
   }
 
+  const remainingHeading = (match[5] || '').trim();
+
   return (
     match[1] +
     title(match[2], {special: packageJson.titles}) +
     ' {/* ' +
     id.trim() +
-    ' */}'
-  );
+    ' */}' +
+    ` ${remainingHeading}`
+  ).trim();
 }
 
 function addHeaderIDs(lines) {

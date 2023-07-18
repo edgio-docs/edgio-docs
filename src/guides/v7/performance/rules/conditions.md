@@ -12,7 +12,7 @@ A match condition identifies the set of requests to which one or more feature(s)
 | Miscellaneous  | <ul><li>[Random Integer](#random-integer)</li></ul>  |
 | Response  | <ul><li>[Response Status Code](#response-status-code)</li></ul>  |
 
-#### Asn {/*asn*/} <edgejs>location</edgejs> {/* asn-asn-edgejslocationedgejs */}
+#### Asn   {/* asn */} <edgejs>location</edgejs>
 
 Identifies requests by the network from which the request was issued. A network is identified by its Autonomous System Number (ASN).
 
@@ -51,7 +51,7 @@ router.conditional({
 
 </edgejs>
 
-#### Brand Name {/*brand-Name*/} <edgejs>device</edgejs> {/* brand-name-brand-name-edgejsdeviceedgejs */}
+#### Brand Name   {/* brand-name */} <edgejs>device</edgejs>
 
 Identifies requests by the manufacturer (e.g., Samsung) of the device that issued the request.
 
@@ -86,7 +86,7 @@ router.conditional({
 ```
 </edgejs>
 
-#### City {/*city*/} <edgejs>location</edgejs> {/* city-city-edgejslocationedgejs */}
+#### City   {/* city */} <edgejs>location</edgejs>
 
 Identifies requests by the city from which they originated.
 
@@ -121,7 +121,7 @@ router.conditional({
 
 </edgejs>
 
-#### Client Ip {/*client-Ip*/} <edgejs>request</edgejs> {/* client-ip-client-ip-edgejsrequestedgejs */}
+#### Client Ip   {/* client-ip */} <edgejs>request</edgejs>
 
 Identifies requests that originate from a particular IP address.
 
@@ -185,7 +185,7 @@ router.conditional({
 ```
 </edgejs>
 
-#### Continent {/*continent*/} <edgejs>location</edgejs> {/* continent-continent-edgejslocationedgejs */}
+#### Continent   {/* continent */} <edgejs>location</edgejs>
 
 Identifies requests by the continent from which the request was issued.
 
@@ -240,7 +240,7 @@ router.conditional({
 
 </edgejs>
 
-#### Cookie {/*cookie*/} <edgejs>request</edgejs> {/* cookie-cookie-edgejsrequestedgejs */}
+#### Cookie   {/* cookie */} <edgejs>request</edgejs>
 
 Identifies requests by a cookie's value.
 
@@ -280,7 +280,7 @@ router.conditional({
 ```
 </edgejs>
 
-#### Country {/*country*/} <edgejs>location</edgejs> {/* country-country-edgejslocationedgejs */}
+#### Country   {/* country */} <edgejs>location</edgejs>
 
 Identifies requests by the country from which the request was issued. Specify each desired country through its [country code](/guides/reference/country_codes).
 
@@ -326,7 +326,7 @@ router.conditional({
 </edgejs>
 
 <!--
-#### Device Operating System {/*device-Operating-System*/} <edgejs>device</edgejs> {/* device-operating-system-device-operating-system-edgejsdeviceedgejs */}
+#### Device Operating System   {/* device-operating-system */} <edgejs>device</edgejs>
 
 Identifies requests by the operating system (e.g., IOS) of the device that issued the request.
 
@@ -337,7 +337,7 @@ Identifies requests by the operating system (e.g., IOS) of the device that issue
 </edgejs>
 -->
 
-#### Directory {/*directory*/} <edgejs>request.path</edgejs> {/* directory-directory-edgejsrequestpathedgejs */}
+#### Directory   {/* directory */} <edgejs>request.path</edgejs>
 
 Identifies requests by the request URL's relative path. This relative path excludes the filename of the requested asset.
 
@@ -372,7 +372,7 @@ router.conditional({
 ```
 </edgejs>
 
-#### Dma Code {/*dma-Code*/} <edgejs>location</edgejs> {/* dma-code-dma-code-edgejslocationedgejs */}
+#### Dma Code   {/* dma-code */} <edgejs>location</edgejs>
 
 Identifies requests by the metro code (Designated Market Area - DMA) from which the request was issued.
 
@@ -418,7 +418,7 @@ router.conditional({
 ```
 </edgejs>
 
-#### Dual Orientation {/*dual-Orientation*/} <edgejs>device</edgejs> {/* dual-orientation-dual-orientation-edgejsdeviceedgejs */}
+#### Dual Orientation   {/* dual-orientation */} <edgejs>device</edgejs>
 
 Identifies requests by whether the device that issued the request supports dual orientation (i.e., portrait and landscape).
 
@@ -442,7 +442,7 @@ router.conditional({
 ```
 </edgejs>
 
-#### Extension {/*extension*/} <edgejs>request.path</edgejs> {/* extension-extension-edgejsrequestpathedgejs */}
+#### Extension   {/* extension */} <edgejs>request.path</edgejs>
 
 Identifies requests by the file extension defined in the URL.
 
@@ -482,7 +482,7 @@ router.conditional({
 </edgejs>
 
 
-#### Filename {/*filename*/} <edgejs>request.path</edgejs> {/* filename-filename-edgejsrequestpathedgejs */}
+#### Filename   {/* filename */} <edgejs>request.path</edgejs>
 
 Identifies requests by the filename defined in the URL. 
 
@@ -518,7 +518,7 @@ router.conditional({
 ```
 </edgejs>
 
-#### HTML Preferred Dtd {/*HTML-Preferred-Dtd*/} <edgejs>device</edgejs> {/* html-preferred-dtd-html-preferred-dtd-edgejsdeviceedgejs */}
+#### HTML Preferred Dtd   {/* html-preferred-dtd */} <edgejs>device</edgejs>
 
 Identifies requests by a device's preferred document type definition (DTD) for HTML content (e.g., `html4`).
 
@@ -544,7 +544,7 @@ router.conditional({
 
 </edgejs>
 
-#### Image Inlining {/*image-Inlining*/} <edgejs>device</edgejs> {/* image-inlining-image-inlining-edgejsdeviceedgejs */}
+#### Image Inlining   {/* image-inlining */} <edgejs>device</edgejs>
 
 Identifies requests by whether the device that issued the request supports Base64-encoded images.
 
@@ -569,7 +569,7 @@ router.conditional({
 ```
 </edgejs>
 
-#### Is Android {/*is-Android*/} <edgejs>device</edgejs> {/* is-android-is-android-edgejsdeviceedgejs */}
+#### Is Android   {/* is-android */} <edgejs>device</edgejs>
 
 Identifies requests by whether the operating system of the device that issued the request is Android.
 
@@ -594,7 +594,7 @@ router.conditional({
 ```
 </edgejs>
 
-#### Is App {/*is-App*/} <edgejs>device</edgejs> {/* is-app-is-app-edgejsdeviceedgejs */}
+#### Is App   {/* is-app */} <edgejs>device</edgejs>
 
 Identifies requests by whether the device that issued the request is a native application. 
 
@@ -619,7 +619,7 @@ router.conditional({
 </edgejs>
 
 <!--
-#### Is Full Desktop {/*is-Full-Desktop*/} <edgejs>device</edgejs> {/* is-full-desktop-is-full-desktop-edgejsdeviceedgejs */}
+#### Is Full Desktop   {/* is-full-desktop */} <edgejs>device</edgejs>
 
 Identifies requests by whether the device that issued the request provides a full desktop experience.
 
@@ -645,7 +645,7 @@ router.conditional({
 </edgejs>
 -->
 
-#### Is iOS {/*is-iOS*/} <edgejs>device</edgejs> {/* is-ios-is-ios-edgejsdeviceedgejs */}
+#### Is iOS   {/* is-ios */} <edgejs>device</edgejs>
 
 Identifies requests by whether the operating system of the device that issued the request is iOS.
 
@@ -670,7 +670,7 @@ router.conditional({
 ```
 </edgejs>
 
-#### Is Robot {/*is-Robot*/} <edgejs>device</edgejs> {/* is-robot-is-robot-edgejsdeviceedgejs */}
+#### Is Robot   {/* is-robot */} <edgejs>device</edgejs>
 
 Identifies requests by whether the device that issued the request is considered to be an automated HTTP client (e.g., a robot crawler).
 
@@ -695,7 +695,7 @@ router.conditional({
 ```
 </edgejs>
 
-#### Is Smartphone {/*is-Smartphone*/} <edgejs>device</edgejs> {/* is-smartphone-is-smartphone-edgejsdeviceedgejs */}
+#### Is Smartphone   {/* is-smartphone */} <edgejs>device</edgejs>
 
 Identifies requests by whether the device that issued the request is a smartphone.
 
@@ -720,7 +720,7 @@ router.conditional({
 ```
 </edgejs>
 
-#### Is Smarttv {/*is-Smarttv*/} <edgejs>device</edgejs> {/* is-smarttv-is-smarttv-edgejsdeviceedgejs */}
+#### Is Smarttv   {/* is-smarttv */} <edgejs>device</edgejs>
 
 Identifies requests by whether the device that issued the request is a smart TV.
 
@@ -745,7 +745,7 @@ router.conditional({
 ```
 </edgejs>
 
-#### Is Tablet {/*is-Tablet*/} <edgejs>device</edgejs> {/* is-tablet-is-tablet-edgejsdeviceedgejs */}
+#### Is Tablet   {/* is-tablet */} <edgejs>device</edgejs>
 
 Identifies requests by whether the device that issued the request is a tablet. This is an OS-independent description.
 
@@ -770,7 +770,7 @@ router.conditional({
 ```
 </edgejs>
 
-#### Is Touchscreen {/*is-Touchscreen*/} <edgejs>device</edgejs> {/* is-touchscreen-is-touchscreen-edgejsdeviceedgejs */}
+#### Is Touchscreen   {/* is-touchscreen */} <edgejs>device</edgejs>
 
 Identifies requests by whether the device that issued the request uses a touchscreen as the primary pointing device.
 
@@ -795,7 +795,7 @@ router.conditional({
 ```
 </edgejs>
 
-#### Is Windows Phone {/*is-Windows-Phone*/} <edgejs>device</edgejs> {/* is-windows-phone-is-windows-phone-edgejsdeviceedgejs */}
+#### Is Windows Phone   {/* is-windows-phone */} <edgejs>device</edgejs>
 
 Identifies requests by whether the device that issued the request is a Windows Mobile 6.5/Windows Phone 7 or higher.
 
@@ -820,7 +820,7 @@ router.conditional({
 ```
 </edgejs>
 
-#### Is Wireless Device {/*is-Wireless-Device*/} <edgejs>device</edgejs> {/* is-wireless-device-is-wireless-device-edgejsdeviceedgejs */}
+#### Is Wireless Device   {/* is-wireless-device */} <edgejs>device</edgejs>
 
 Identifies requests by whether the device that issued the request is a wireless device. 
 
@@ -845,7 +845,7 @@ router.conditional({
 ```
 </edgejs>
 
-#### Latitude {/*latitude*/} <edgejs>location</edgejs> {/* latitude-latitude-edgejslocationedgejs */}
+#### Latitude   {/* latitude */} <edgejs>location</edgejs>
 
 Identifies requests by the latitude from which the request was issued.
 
@@ -885,7 +885,7 @@ router.conditional({
 ```
 </edgejs>
 
-#### Longitude {/*longitude*/} <edgejs>location</edgejs> {/* longitude-longitude-edgejslocationedgejs */}
+#### Longitude   {/* longitude */} <edgejs>location</edgejs>
 
 Identifies requests by the longitude from which the request was issued.
 
@@ -925,7 +925,7 @@ router.conditional({
 ```
 </edgejs>
 
-#### Marketing Name {/*marketing-Name*/} <edgejs>device</edgejs> {/* marketing-name-marketing-name-edgejsdeviceedgejs */}
+#### Marketing Name   {/* marketing-name */} <edgejs>device</edgejs>
 
 Identifies requests by the marketing name (e.g., `BlackBerry 8100 Pearl`) of the device that issued the request.
 
@@ -958,7 +958,7 @@ router.conditional({
 ```
 </edgejs>
 
-#### Method {/*method*/} <edgejs>request</edgejs> {/* method-method-edgejsrequestedgejs */}
+#### Method   {/* method */} <edgejs>request</edgejs>
 
 Identifies requests by their HTTP method. Only assets that are requested using the selected request method will satisfy this condition.
 
@@ -993,7 +993,7 @@ router.conditional({
 ```
 </edgejs>
 
-#### Metro Code {/*metro-Code*/} <edgejs>location</edgejs> {/* metro-code-metro-code-edgejslocationedgejs */}
+#### Metro Code   {/* metro-code */} <edgejs>location</edgejs>
 
 Identifies requests by the metro code (Designated Market Area - DMA) from which the request was issued.
 
@@ -1039,7 +1039,7 @@ router.conditional({
 ```
 </edgejs>
 
-#### Mobile Browser {/*mobile-Browser*/} <edgejs>device</edgejs> {/* mobile-browser-mobile-browser-edgejsdeviceedgejs */}
+#### Mobile Browser   {/* mobile-browser */} <edgejs>device</edgejs>
 
 Identifies requests by the name of the browser (e.g., Chrome) that issued the request.
 
@@ -1072,7 +1072,7 @@ router.conditional({
 ```
 </edgejs>
 
-#### Model Name {/*model-Name*/} <edgejs>device</edgejs> {/* model-name-model-name-edgejsdeviceedgejs */}
+#### Model Name   {/* model-name */} <edgejs>device</edgejs>
 
 Identifies requests by the model name (e.g., s10) of the device that issued the request.
 
@@ -1105,7 +1105,7 @@ router.conditional({
 ```
 </edgejs>
 
-#### Origin Path {/*origin-Path*/} <edgejs>request</edgejs> {/* origin-path-origin-path-edgejsrequestedgejs */}
+#### Origin Path   {/* origin-path */} <edgejs>request</edgejs>
 
 Identifies requests by the request URL's relative path. This relative path comparison is performed on rewritten or redirected URLs.
 
@@ -1182,7 +1182,7 @@ router.conditional({
 ```
 </edgejs>
 
-#### Path {/*path*/} <edgejs>request</edgejs> {/* path-path-edgejsrequestedgejs */}
+#### Path   {/* path */} <edgejs>request</edgejs>
 
 Identifies requests by the relative path of the request URL submitted by the client.
 
@@ -1260,7 +1260,7 @@ router.conditional({
 ```
 </edgejs>
 
-#### Pop Code {/*pop-Code*/} <edgejs>request</edgejs> {/* pop-code-pop-code-edgejsrequestedgejs */}
+#### Pop Code   {/* pop-code */} <edgejs>request</edgejs>
 
 Identifies requests by the point-of-presence (POP) that processed the request. Set this match condition to the three-letter code for the desired POP.
 
@@ -1288,7 +1288,7 @@ router.conditional({
 ```
 </edgejs>
 
-#### Postal Code {/*postal-Code*/} <edgejs>location</edgejs> {/* postal-code-postal-code-edgejslocationedgejs */}
+#### Postal Code   {/* postal-code */} <edgejs>location</edgejs>
 
 Identifies requests by the postal code from which the request was issued.
 
@@ -1325,7 +1325,7 @@ router.conditional({
 ```
 </edgejs>
 
-#### Progressive Download {/*progressive-Download*/} <edgejs>device</edgejs> {/* progressive-download-progressive-download-edgejsdeviceedgejs */}
+#### Progressive Download   {/* progressive-download */} <edgejs>device</edgejs>
 
 Identifies requests by whether the device that issued the request supports the playback of audio/video while it is still being downloaded.
 
@@ -1349,7 +1349,7 @@ router.conditional({
 ```
 </edgejs>
 
-#### Query {/*query*/} <edgejs>request</edgejs> {/* query-query-edgejsrequestedgejs */}
+#### Query   {/* query */} <edgejs>request</edgejs>
 
 Identifies requests by the query string of the request URL submitted by the client.
 
@@ -1426,7 +1426,7 @@ router.conditional({
 ```
 </edgejs>
 
-#### Query Parameter {/*query-Parameter*/} <edgejs>request.origin_query</edgejs> {/* query-parameter-query-parameter-edgejsrequestorigin_queryedgejs */}
+#### Query Parameter   {/* query-parameter */} <edgejs>request.origin_query</edgejs>
 
 Identifies requests by the value assigned to a query string parameter in the request URL. This comparison is performed on rewritten or redirected URLs.
 
@@ -1483,7 +1483,7 @@ router.conditional({
 ```
 </edgejs>
 
-#### Query String {/*query-String*/} <edgejs>request</edgejs> {/* query-string-query-string-edgejsrequestedgejs */}
+#### Query String   {/* query-string */} <edgejs>request</edgejs>
 
 Identifies requests by the query string of the requested URL. This query string comparison is performed on rewritten or redirected URLs.
 
@@ -1560,7 +1560,7 @@ router.conditional({
 ```
 </edgejs>
 
-#### Random Integer {/*random-Integer*/} <edgejs>random</edgejs> {/* random-integer-random-integer-edgejsrandomedgejs */}
+#### Random Integer   {/* random-integer */} <edgejs>random</edgejs>
 
 Identifies requests by performing a comparison against a random integer. 
 
@@ -1611,7 +1611,7 @@ router.conditional({
 ```
 </edgejs>
 
-#### Referring Domain {/*referring-Domain*/} <edgejs>request</edgejs> {/* referring-domain-referring-domain-edgejsrequestedgejs */}
+#### Referring Domain   {/* referring-domain */} <edgejs>request</edgejs>
 
 Identifies requests by the referrer's hostname. A referrer's hostname is determined by the `Referer` header.
 
@@ -1644,7 +1644,7 @@ router.conditional({
 ```
 </edgejs>
 
-#### Region Code {/*region-Code*/} <edgejs>location</edgejs> {/* region-code-region-code-edgejslocationedgejs */}
+#### Region Code   {/* region-code */} <edgejs>location</edgejs>
 
 Identifies requests by the code for the region (e.g., state or province) from which the request was issued.
 
@@ -1730,7 +1730,7 @@ router.conditional({
 ```
 </edgejs>
 
-#### Release Date {/*release-Date*/} <edgejs>device</edgejs> {/* release-date-release-date-edgejsdeviceedgejs */}
+#### Release Date   {/* release-date */} <edgejs>device</edgejs>
 
 Identifies requests by the date on which the device that issued the request was added to the WURFL database.
 
@@ -1764,7 +1764,7 @@ router.conditional({
 ```
 </edgejs>
 
-#### Request Header {/*request-Header*/} <edgejs>request.header</edgejs> {/* request-header-request-header-edgejsrequestheaderedgejs */}
+#### Request Header   {/* request-header */} <edgejs>request.header</edgejs>
 
 Identifies requests by request header value.
 
@@ -1812,7 +1812,7 @@ router.conditional({
 ```
 </edgejs>
 
-#### Resolution Height {/*resolution-Height*/} <edgejs>device</edgejs> {/* resolution-height-resolution-height-edgejsdeviceedgejs */}
+#### Resolution Height   {/* resolution-height */} <edgejs>device</edgejs>
 
 Identifies requests by the height, in pixels, of the device that issued the request.
 
@@ -1847,7 +1847,7 @@ router.conditional({
 ```
 </edgejs>
 
-#### Resolution Width {/*resolution-Width*/} <edgejs>device</edgejs> {/* resolution-width-resolution-width-edgejsdeviceedgejs */}
+#### Resolution Width   {/* resolution-width */} <edgejs>device</edgejs>
 
 Identifies requests by the width, in pixels, of the device that issued the request.
 
@@ -1882,7 +1882,7 @@ router.conditional({
 ```
 </edgejs>
 
-#### Response Status Code {/*response-Status-Code*/} <edgejs>response</edgejs> {/* response-status-code-response-status-code-edgejsresponseedgejs */}
+#### Response Status Code   {/* response-status-code */} <edgejs>response</edgejs>
 
 Identifies requests whose response matches a HTTP status code. 
 
@@ -1939,7 +1939,7 @@ router.conditional({
 ```
 </edgejs>
 
-#### Scheme {/*scheme*/} <edgejs>request</edgejs> {/* scheme-scheme-edgejsrequestedgejs */}
+#### Scheme   {/* scheme */} <edgejs>request</edgejs>
 
 Identifies requests by their HTTP protocol: HTTP or HTTPS.
 

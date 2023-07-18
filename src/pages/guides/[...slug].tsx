@@ -198,6 +198,8 @@ export async function getStaticProps({params}: {params: any}) {
     },
   });
 
+  console.log('headings', headings);
+
   if (mdxSource.frontmatter?.redirect) {
     return {
       redirect: {

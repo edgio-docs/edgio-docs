@@ -161,7 +161,9 @@
   },
   "titles": [
     "JSON",
-    "Vue.js"
+    "Vue.js",
+    "BigCommerce",
+    "SSR"
   ],
   "nextBundleAnalysis": {
     "budget": null,

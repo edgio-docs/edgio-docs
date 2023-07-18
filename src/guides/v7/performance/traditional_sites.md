@@ -65,7 +65,7 @@ Use this worksheet when auditing your site for personalized content to inventory
 
 [{{ PRODUCT_NAME }} Origin Content Changes Worksheet](https://docs.google.com/spreadsheets/d/1vFQl6Eh8vF9CbDpuu9cRYYzPyqBfLcNrRRU_0QwqAMM/edit?usp=sharing)
 
-## Connector {/* connector */}
+<!-- ## Connector {/* connector */}
 
 This framework has a connector developed for {{ PRODUCT_NAME }}. See [Connectors](/guides/sites_frameworks/connectors) for more information.
 
@@ -75,7 +75,7 @@ This framework has a connector developed for {{ PRODUCT_NAME }}. See [Connectors
   withIcon={true}
   href="https://github.com/edgio-docs/edgio-connectors/tree/main/edgio-starter-connector">
   View the Connector Code
-</ButtonLink>
+</ButtonLink> -->
 
 {{ PREREQ.md }}
 
@@ -87,73 +87,204 @@ Create a project through the following command:
   npx {{ PACKAGE_NAME }}/cli@{{ PACKAGE_VERSION }} init \
     {{ INIT_ARG_EDGIO_VERSION }} \
     --name <DOMAIN> \
-    --environment default \
-    --origin <DOMAIN> \
-    --deploy
+    --origin <DOMAIN>
 ```
 
 Replace `<DOMAIN>` with your website's domain when running the above command.
 
-<Callout type="tip">
+<Callout type="important">
 
-If possible, try to run the above command from your website's root directory.
+If asked by the CLI, choose **{{ PRODUCT }} Performance (CDN-as-Code)** as the project type.
 
 </Callout>
 
+Once your project has been initialized, change into the directory of your project and run the following command to add the `{{ PACKAGE_NAME }}/starter` connector:
+
+<SnippetGroup>
+
+```bash tabLabel="npm"
+npm i -D {{ PACKAGE_NAME }}/starter@{{ PACKAGE_VERSION }}
+```
+
+```bash tabLabel="Yarn 1 Classic"
+yarn add --dev {{ PACKAGE_NAME }}/starter@{{ PACKAGE_VERSION }}
+```
+
+</SnippetGroup>
+
+This connector will be used below for bundling and serving your site.
+
 ### Project Structure {/* project-structure */}
 
-Before we get started, you should familiarize yourself with some of the key files in the {{ PRODUCT_NAME }} project:
+Before we get started, you should familiarize yourself with some of the key files in the {{ PRODUCT_NAME }} project. We will create these files in a following step, but for now, here's a quick overview of what they do:
 
-- `service-worker.ts`: Is run on the browser. The service worker is able to prefetch content (main product image, scripts, fonts, links, etc. as defined here) from within the potential next page’s document. We call this method "deepfetching".
-  This file is where deepfetching rules are defined: the selector, how many elements, which attribute to fetch, resource type, and an optional callback function for more complex fetches (as shown in the example). Here's more detailed info about [deepfetching](#deep-fetching).
-- `shoppingFlowRouteFeatures.ts`: Is run on {{ PRODUCT_NAME }}. It’s where the caching rules get implemented, as well as where the modifications to be made to the requests and/or responses to support caching of dynamic content are defined.
-- `routes.ts`: This is where the routes to be cached and prefetched are defined, as well as what to pass through without modification and what to serve up as static content.
-- `browser.ts`: This is the entry point for the `main.js` javascript bundle which is added to the window.
+- `routes.ts`: This is automatically created during the `init` process and is where the routes to be cached and prefetched are defined, caching rules, as well as what to pass through without modification and what to serve up as static content.
+- `src/service-worker.ts`: Executed in the browser. The service worker is able to prefetch content (main product image, scripts, fonts, links, etc. as defined here) from within the potential next page’s document. We call this method "deep fetching".
+  This file is where deep-fetching rules are defined: the selector, how many elements, which attribute to fetch, resource type, and an optional callback function for more complex fetches (as shown in the example). Here's more detailed info about [deep fetching](#deep-fetching).
+- `src/browser.ts`: This is the entry point for the javascript bundle to be injected into the page. Logic for installing the service worker and other browser-specific functionality can be added here.
+
+<Callout type="important">
+
+  The `routes.ts` file is automatically created during the `init` process. You will need to create the `src/service-worker.ts` and `src/browser.ts` files under the `src` directory.
+
+</Callout>
 
 ## Configure Caching and Prefetching {/* configure-caching-and-prefetching */}
 
 Next we need to configure the caching in our newly created project. To do so, add a route for each URL you want to cache to the `routes.ts` file. For example, consider a site where the homepage (`/`), category pages (`/category/xxxx`), and product pages (`/product/yyyy`) are to be cached. Then your `routes.ts` file would look like:
 
-```typescript
-// routes.ts
+```js filename="routes.ts"
 import {Router} from '{{ PACKAGE_NAME }}/core/router';
-import shoppingFlowRouteFeatures from './shoppingFlowRouteFeatures';
 
 export default new Router().get(
   ['/collections/:path*', '/products/:path*', '/'],
-  shoppingFlowRouteFeatures
+  {
+    caching: {
+      max_age: '1h',
+      service_worker_max_age: '1h',
+      bypass_client_cache: true,
+    },
+    headers: {
+      set_response_headers: {
+        'x-sw-cache-control': 'max-age=3600',
+      },
+      remove_origin_response_headers: ['set-cookie'],
+    },
+    origin: {
+      set_origin: 'origin',
+    },
+  }
 );
 ```
 
-```typescript
-// shoppingFlowRouteFeatures.ts
-const features = {
-  caching: {
-    max_age: '1h',
-    service_worker_max_age: '1h',
-    bypass_client_cache: true,
-  },
-  headers: {
-    set_response_headers: {
-      'x-sw-cache-control': 'max-age=3600',
-    },
-    remove_origin_response_headers: ['set-cookie'],
-  },
-  origin: {
-    set_origin: 'origin',
-  },
-};
-
-export default handler;
-```
-
-Refer to the guides on [CDN-as-code](/guides/performance/cdn_as_code) and [Caching](/guides/performance/caching) for the full syntax to use in your `routes.js` file.
+Refer to the guides on [CDN-as-code](/guides/performance/cdn_as_code) and [Caching](/guides/performance/caching) for the full syntax to use in your `routes.ts` file.
 
 In addition to configuring your caching in `routes.ts` as shown above, you may need to employ [advanced prefetching techniques](#advanced-prefetching-techniques) to achieve the best possible performance
 
+## Configure the Service Worker {/* configuring-the-service-worker */}
+
+To enable prefetching, your site's service worker needs to use the `{{ PACKAGE_NAME }}/prefetch` library's `Prefetcher` class. If your site doesn't currently have a service worker, one can easily be created using Google's [Workbox](https://developers.google.com/web/tools/workbox).
+
+Here's an example service worker based on Workbox:
+
+```js filename="src/service-worker.ts"
+import {skipWaiting, clientsClaim} from 'workbox-core';
+import {precacheAndRoute} from 'workbox-precaching';
+import {Prefetcher} from '{{ PACKAGE_NAME }}/prefetch/sw';
+
+skipWaiting();
+clientsClaim();
+precacheAndRoute(self.__WB_MANIFEST || []);
+
+new Prefetcher().route();
+```
+
+## Serve the Service Worker {/* serving-the-service-worker */}
+
+Within the {{ PRODUCT }} router, we'll need to serve the `service-worker.ts` file when requested by the browser. This can be accomplished automatically using the `{{ PACKAGE_NAME }}/starter` connector installed in the earlier step
+
+### Using `starterRoutes` (Recommended) {/* using-starter-routes */}
+
+By importing `starterRoutes` from `@edgio/starter`, the `service-worker.ts` file will be served automatically from the `dist/service-worker.ts` path. This is the recommended approach.
+
+```js filename="routes.ts" ins="3,21"
+import {Router} from '{{ PACKAGE_NAME }}/core/router';
+import shoppingFlowRouteFeatures from './shoppingFlowRouteFeatures';
+import {injectBrowserScript, starterRoutes} from '@edgio/starter';
+
+export default new Router()
+  .get(['/collections/:path*', '/products/:path*', '/'], {
+    caching: {
+      max_age: '1h',
+      service_worker_max_age: '1h',
+      bypass_client_cache: true,
+    },
+    headers: {
+      set_response_headers: {
+        'x-sw-cache-control': 'max-age=3600',
+      },
+      remove_origin_response_headers: ['set-cookie'],
+    },
+    origin: {
+      set_origin: 'origin',
+    },
+  })
+  .use(starterRoutes);
+```
+
+## Install the Service Worker {/* installing-the-service-worker */}
+
+Once you've created a service worker, code running in the browser window needs to register the service worker before prefetching can begin. To do this, we create a `browser.ts` file which will be injected into the page:
+
+```js filename="src/browser.ts"
+import install from '@edgio/prefetch/window/install';
+import {prefetch} from '@edgio/prefetch/window/prefetch';
+
+document.addEventListener('DOMContentLoaded', () => {
+  install({
+    watch: [
+      {
+        selector: 'a[href^="/"]',
+        callback: (el) => {
+          prefetch(el.getAttribute('href'));
+        },
+      },
+      {
+        selector: 'link[href^="/"]',
+        callback: (el) => {
+          prefetch(el.getAttribute('href'));
+        },
+      },
+    ],
+  });
+});
+```
+
+In this file, we're using the `install` function to register the service worker and the `prefetch` function to prefetch content. The `install` function takes an object with a `watch` property. The `watch` property is an array of objects that define what content to prefetch. In this example, we're prefetching all links and stylesheets that start with a `/`.
+
+## Injecting browser.ts into the Response {/* injecting-browser-js */}
+
+Now that we've defined the client-side prefetch logic, we must inject the `browser.ts` file into the response. Injecting the script into the response allows for it to be executed in the browser once the response is received. To do this, we need to modify the router to transform the response we've received from the origin, add our browser script to the head of the document, and then send the modified response to the client.
+
+### Transforming the Response {/* transforming-the-response */}
+
+To transform the origin response and inject the `browser.ts` file, we'll use the `transformResponse` property on the `proxy` function. This function takes a callback function that receives the response from the origin and returns a modified response. We can then pass the response to the `injectBrowserScript` function to automatically add the `browser.ts` file to the head of the document.
+
+```js filename="routes.ts" ins="3,23-28"
+import {Router} from '{{ PACKAGE_NAME }}/core/router';
+import shoppingFlowRouteFeatures from './shoppingFlowRouteFeatures';
+import {injectBrowserScript, starterRoutes} from '@edgio/starter';
+
+export default new Router()
+  .get(['/collections/:path*', '/products/:path*', '/'], {
+    caching: {
+      max_age: '1h',
+      service_worker_max_age: '1h',
+      bypass_client_cache: true,
+    },
+    headers: {
+      set_response_headers: {
+        'x-sw-cache-control': 'max-age=3600',
+      },
+      remove_origin_response_headers: ['set-cookie'],
+    },
+    origin: {
+      set_origin: 'origin',
+    },
+  })
+  .get(['/collections/:path*', '/products/:path*', '/'], ({proxy}) => {
+    proxy('origin', {
+      transformResponse: (response) => {
+        injectBrowserScript(response);
+      },
+    });
+  })
+  .use(starterRoutes);
+```
+
 ### Understanding Caching and Prefetching {/* understanding-caching-and-prefetching */}
 
-By injecting `main.js` into your app's front-end code, your app will automatically prefetch all visible HTML links with URLs that match a route configured with `caching.max_age` and `caching.service_worker_max_age` (in essence, when you configure a route to be cached, you are also declaring it to be a candidate for prefetching as well). Links that are visible when the page first loads are fetched immediately. Additional links will be fetched when the user scrolls down the page and more links become visible.
+By injecting `browser.ts` into your app's front-end code, your app will register the service worker and prefetch URLs that you have configured match a route configured with `caching.max_age` and `caching.service_worker_max_age` (in essence, when you configure a route to be cached, you are also declaring it to be a candidate for prefetching as well). Links that are visible when the page first loads are fetched immediately. Additional links will be fetched when the user scrolls down the page and more links become visible.
 
 Prefetching can generate substantial additional network traffic. {{ PRODUCT_NAME }} automatically shields your origin from this additional traffic by only serving prefetch requests from the edge cache. If a prefetch request cannot be served from the cache, {{ PRODUCT_NAME }} will return an HTTP 412 status and the request will not be proxied to the origin. When this happens, the only effect for the user is that they will not see the speed benefit of prefetching. Therefore, the effectiveness of prefetching ramps up over time as users visit pages throughout your site. When the edge cache is cleared, either through the {{ PORTAL }} or automatically following a deployment, the speed benefit of prefetching is decreased until the cache fills up based on organic traffic.
 
@@ -247,8 +378,6 @@ export default new Router()
 ``` -->
 
 ### Prefetching based on Element Visibility {/* prefetching-based-on-element-visibility */}
-
-By default, `<a>` tags are watched by the Prefetcher so that the value of their `href` attributes are prefetched once the links become visible in the viewport. However, sometimes you might need to trigger a prefetch based on the visibility of other types of elements.
 
 When installing the service worker, you can specify a `watch` list. Elements that match `watch` selectors can trigger a callback function when they become visible in the viewport:
 

@@ -605,7 +605,7 @@ Content-Length: 65
 }
 ```
 
-## Add Bot Rule Sets {/*add-bot-rule-set*/}
+## Add Bot Rule Set {/*add-bot-rule-set*/}
 
 Creates a bot rule set. 
 
@@ -777,7 +777,7 @@ POST  {{ API_URL }}/waf/{{ API_SECURITY_VERSION }}/12345/bots  HTTP/1.1
             }
         }
     ],
-    "name": "My Bot Rule Sets"
+    "name": "My Bot Rule Set"
 }
 ```
 
@@ -797,7 +797,7 @@ Content-Length: 65
 }
 ```
 
-## Delete Bot Rule Sets {/*delete-bot-rule-set*/}
+## Delete Bot Rule Set {/*delete-bot-rule-set*/}
 
 Deletes a bot rule set.
 
@@ -805,12 +805,12 @@ Deletes a bot rule set.
 
 A request to delete a bot rule set is described below.
 
-`DELETE {{ API_URL }}/waf/{{ API_SECURITY_VERSION }}/<TEAM ID>/bots/<BOT MANAGER CONFIGURATION ID>`
+`DELETE {{ API_URL }}/waf/{{ API_SECURITY_VERSION }}/<TEAM ID>/bots/<BOT RULE SET ID>`
 
 Define the following variables when submitting the above request:
 
 -   `<TEAM ID>`**:** Required. Replace this variable with your team's tenant ID. 
--   `<BOT MANAGER CONFIGURATION ID>`**:** Required. Replace this variable with the system-defined ID for the desired bot rule set. Use the [Get All Bot Rule Setss operation](#get-all-bot-rule-sets) to retrieve a list of bot rule sets and their system-defined IDs.
+-   `<BOT RULE SET ID>`**:** Required. Replace this variable with the system-defined ID for the desired bot rule set. Use the [Get All Bot Rule Sets operation](#get-all-bot-rule-sets) to retrieve a list of bot rule sets and their system-defined IDs.
 
 <h4>Request Headers</h4>
 
@@ -859,7 +859,7 @@ Content-Length: 65
 }
 ```
 
-## Get All Bot Rule Setss {/*get-all-bot-rule-sets*/}
+## Get All Bot Rule Sets {/*get-all-bot-rule-sets*/}
 
 Retrieves a list of bot rule sets. A bot rule set defines the set of requests that will be protected by bot rules. 
 
@@ -889,7 +889,7 @@ The response body for a successful request contains the following response eleme
 
 |Name|Data Type|Description|
 |--- |--- |--- |
-|id|String|Indicates the system-defined ID for the bot rule set. Pass this ID to the [Get Bot Rule Sets operation](#get-bot-rule-set) to retrieve the properties for this bot rule set.|
+|id|String|Indicates the system-defined ID for the bot rule set. Pass this ID to the [Get Bot Rule Set operation](#get-bot-rule-set) to retrieve the properties for this bot rule set.|
 |last_modified_date|String|Indicates the date and time at which the bot rule set was last modified. <br />**Syntax:** `MM/DD/YYYYhh:mm:ss [AM\|PM]`|
 |name|String|Indicates the name of the bot rule set.|
 
@@ -914,14 +914,14 @@ Date:  Thu, 15 Apr 2021 12:00:00 GMT
 Content-Length: 114
 
 [{
-        "name": "My Bot Rule Sets",
+        "name": "My Bot Rule Set",
         "last_modified_date": "2021-12-15T17:27:37.691682Z"
         "id": "1CaCTGJV"
     }
 ]
 ```
 
-## Get Bot Rule Sets {/*get-bot-rule-set*/}
+## Get Bot Rule Set {/*get-bot-rule-set*/}
 
 Retrieves a bot rule set. A bot rule set contains one or more bot rules. 
 
@@ -929,12 +929,12 @@ Retrieves a bot rule set. A bot rule set contains one or more bot rules.
 
 A request to retrieve a bot rule set is described below.
 
-`GET {{ API_URL }}/waf/{{ API_SECURITY_VERSION }}/<TEAM ID>/bots/<BOT MANAGER CONFIGURATION ID>`
+`GET {{ API_URL }}/waf/{{ API_SECURITY_VERSION }}/<TEAM ID>/bots/<BOT RULE SET ID>`
 
 Define the following variables when submitting the above request:
 
 -   `<TEAM ID>`**:** Required. Replace this variable with your team's tenant ID. 
--   `<BOT MANAGER CONFIGURATION ID>`**:** Required. Replace this variable with the system-defined ID for the desired bot rule set. Use the [Get All Bot Rule Setss operation](#get-all-bot-rule-sets) to retrieve a list of bot rule sets and their system-defined IDs.
+-   `<BOT RULE SET ID>`**:** Required. Replace this variable with the system-defined ID for the desired bot rule set. Use the [Get All Bot Rule Sets operation](#get-all-bot-rule-sets) to retrieve a list of bot rule sets and their system-defined IDs.
 
 <h4>Request Headers</h4>
 
@@ -952,7 +952,7 @@ The response body for a successful request contains the following response eleme
 
 |Name|Data Type|Description|
 |--- |--- |--- |
-|customer_id|String|Identifies your account by its customer account number.|
+|team_id|String|Identifies your team by its tenant ID. |
 |directive|Array of objects|Contains the bot rules associated with this bot rule set.|
 |id|String|Indicates the system-defined ID for this bot rule set.|
 |last_modified_date|String|Indicates the timestamp at which this bot rule set was last modified. <br />**Syntax:** `YYYY-MM-DDThh:mm:ss:ffffffZ` |
@@ -1096,11 +1096,11 @@ Content-Length: 750
     "id": "pfJKToQF",
     "last_modified_by": "joe@example.com via MCC portal",
     "last_modified_date": "2022-05-04T17:18:33.017946Z",
-    "name": "My Bot Rule Sets"
+    "name": "My Bot Rule Set"
 }
 ```
 
-## Update Bot Rule Sets {/*update-bot-rule-set*/}
+## Update Bot Rule Set {/*update-bot-rule-set*/}
 
 Updates a bot rule set. A bot rule set contains one or more bot rules. 
 
@@ -1108,12 +1108,12 @@ Updates a bot rule set. A bot rule set contains one or more bot rules.
 
 A request to update a bot rule set is described below.
 
-`PUT {{ API_URL }}/waf/{{ API_SECURITY_VERSION }}/<TEAM ID>/bots/<BOT MANAGER CONFIGURATION ID>`
+`PUT {{ API_URL }}/waf/{{ API_SECURITY_VERSION }}/<TEAM ID>/bots/<BOT RULE SET ID>`
 
 Define the following variables when submitting the above request:
 
 -   `<TEAM ID>`**:** Required. Replace this variable with your team's tenant ID. 
--   `<BOT MANAGER CONFIGURATION ID>`**:** Required. Replace this variable with the system-defined ID for the desired bot rule set. Use the [Get All Bot Rule Setss operation](#get-all-bot-rule-sets) to retrieve a list of bot rule sets and their system-defined IDs.
+-   `<BOT RULE SET ID>`**:** Required. Replace this variable with the system-defined ID for the desired bot rule set. Use the [Get All Bot Rule Sets operation](#get-all-bot-rule-sets) to retrieve a list of bot rule sets and their system-defined IDs.
 
 <h4>Request Headers</h4>
 
@@ -1279,7 +1279,7 @@ PUT  {{ API_URL }}/waf/{{ API_SECURITY_VERSION }}/12345/bots/pfJKToQF  HTTP/1.1
             }
         }
     ],
-    "name": "My Bot Rule Sets"
+    "name": "My Bot Rule Set"
 }
 ```
 
